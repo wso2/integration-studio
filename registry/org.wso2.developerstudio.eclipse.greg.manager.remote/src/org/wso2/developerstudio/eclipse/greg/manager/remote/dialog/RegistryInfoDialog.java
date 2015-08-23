@@ -41,7 +41,7 @@ import org.wso2.developerstudio.eclipse.greg.base.logger.ExceptionHandler;
 import org.wso2.developerstudio.eclipse.greg.base.model.RegistryNode;
 import org.wso2.developerstudio.eclipse.greg.base.model.RegistryURLNode;
 import org.wso2.developerstudio.eclipse.greg.manager.remote.Activator;
-import org.wso2.developerstudio.eclipse.greg.manager.remote.views.ApiMangerRegistryBrowserView;
+import org.wso2.developerstudio.eclipse.greg.manager.remote.views.RegistryBrowserAPIMView;
 import org.wso2.developerstudio.eclipse.greg.manager.remote.views.RegistryBrowserView;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
@@ -67,7 +67,6 @@ public class RegistryInfoDialog extends Dialog {
 	private ExceptionHandler exceptionHandler;
 	private ArrayList<RegistryNode> URLInfoList;
 	private boolean dialogStatus = true;
-	private boolean isAPIMbrowser = false;
 	private String startpath;
 
 	public RegistryInfoDialog(Shell parentShell, RegistryURLNode regUrlData) {
@@ -76,12 +75,11 @@ public class RegistryInfoDialog extends Dialog {
 		this.regURLData = regUrlData;
 	}
 	
-	public RegistryInfoDialog(Shell parentShell, RegistryURLNode regUrlData,String path,boolean mode) {
+	public RegistryInfoDialog(Shell parentShell, RegistryURLNode regUrlData,String path) {
 		super(parentShell);
 		mainShell = parentShell;
 		this.regURLData = regUrlData;
 		startpath = path;
-		isAPIMbrowser = mode;
 
 	}
 	public void create() {
@@ -90,7 +88,7 @@ public class RegistryInfoDialog extends Dialog {
 
 	protected Control createDialogArea(final Composite parent) {
 		String title="Add Registry";
-		if(ApiMangerRegistryBrowserView.isAPIMperspective()){
+		if(RegistryBrowserAPIMView.isAPIMperspective()){
 			title="Login to API Manager Registry";
 		}
 		parent.getShell().setText(title);
@@ -119,7 +117,7 @@ public class RegistryInfoDialog extends Dialog {
 			}
 		});
 
-		if (!isAPIMbrowser){
+		if (!RegistryBrowserAPIMView.isAPIMperspective()){
 		Label pathLabel = new Label(container, SWT.NONE);
 		pathLabel.setText("Path: ");
 		gd = new GridData();
@@ -136,7 +134,7 @@ public class RegistryInfoDialog extends Dialog {
 				setPath(path);
 			}
 		});
-		pathText.setText(startpath);
+		pathText.setText("/");
 		}else {
 			
 			setPath(startpath);
@@ -175,7 +173,7 @@ public class RegistryInfoDialog extends Dialog {
 			}
 		});
 
-		if(!ApiMangerRegistryBrowserView.isAPIMperspective()){
+		if(!RegistryBrowserAPIMView.isAPIMperspective()){
 		final Button button = new Button(container, SWT.CHECK);
 		button.setText("Save Credentials");
 		button.addSelectionListener(new SelectionListener() {
@@ -193,7 +191,7 @@ public class RegistryInfoDialog extends Dialog {
 		}
 
 		
-		if(isAPIMbrowser){
+		if(RegistryBrowserAPIMView.isAPIMperspective()){
 			try {
 				Login login = new Login();				
 				setDefaultValuesForLoginDialog(login.getUrl(), login.getUsername(), login.getPassword());

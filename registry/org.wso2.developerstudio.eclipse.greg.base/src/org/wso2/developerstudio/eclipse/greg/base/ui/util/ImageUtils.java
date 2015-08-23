@@ -113,6 +113,7 @@ public class ImageUtils {
 	public static final String ICON_PASTE = "paste.png";
 
 	public static final String ICON_RENAME = "rename.png";
+	public static final String ICON_SEQ = "seq.png";
 	/**
 	 * create ImageDescriptor 
 	 * @param imgName

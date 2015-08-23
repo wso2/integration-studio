@@ -13,27 +13,37 @@
 
 package org.wso2.developerstudio.eclipse.greg.manager.remote.views;
 
-import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 import java.lang.reflect.InvocationTargetException;
 import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.text.MessageFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Observable;
 import java.util.Observer;
+import java.util.Set;
 
 import org.apache.commons.io.FileUtils;
+import org.eclipse.core.resources.IResource;
+import org.eclipse.core.resources.IResourceChangeEvent;
+import org.eclipse.core.resources.IResourceChangeListener;
+import org.eclipse.core.resources.IResourceDelta;
+import org.eclipse.core.resources.IResourceDeltaVisitor;
+import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.MultiStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
-import org.eclipse.core.runtime.Status;
+import org.eclipse.core.runtime.Platform;
+import org.eclipse.e4.core.contexts.EclipseContextFactory;
+import org.eclipse.e4.core.contexts.IEclipseContext;
 import org.eclipse.e4.core.services.events.IEventBroker;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.GroupMarker;
@@ -42,7 +52,6 @@ import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.IToolBarManager;
 import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.action.Separator;
-import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.jface.dialogs.IInputValidator;
 import org.eclipse.jface.dialogs.InputDialog;
 import org.eclipse.jface.dialogs.MessageDialog;
@@ -55,9 +64,6 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.TreeSelection;
 import org.eclipse.jface.window.Window;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.events.ModifyEvent;
-import org.eclipse.swt.events.ModifyListener;
-import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
@@ -67,27 +73,27 @@ import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.swt.widgets.Tree;
-import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IMemento;
 import org.eclipse.ui.IPartListener2;
+import org.eclipse.ui.IPerspectiveDescriptor;
+import org.eclipse.ui.IPropertyListener;
 import org.eclipse.ui.IViewSite;
 import org.eclipse.ui.IWorkbenchActionConstants;
 import org.eclipse.ui.IWorkbenchPartReference;
+import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PartInitException;
+import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.contexts.IContextActivation;
 import org.eclipse.ui.contexts.IContextService;
 import org.eclipse.ui.handlers.IHandlerActivation;
 import org.eclipse.ui.handlers.IHandlerService;
 import org.eclipse.ui.part.ViewPart;
+import org.osgi.framework.Bundle;
 import org.osgi.service.event.Event;
 import org.osgi.service.event.EventHandler;
-import org.wso2.carbon.registry.core.Collection;
-import org.wso2.carbon.registry.core.Resource;
-import org.wso2.carbon.registry.core.exceptions.RegistryException;
-import org.wso2.carbon.registry.ws.stub.xsd.WSResourceData;
+import org.wso2.developerstudio.eclipse.greg.apim.action.Login;
 import org.wso2.developerstudio.eclipse.greg.base.core.Registry;
-import org.wso2.developerstudio.eclipse.greg.base.heartbeat.RegistryHeartBeatTester;
 import org.wso2.developerstudio.eclipse.greg.base.interfaces.RegistryBrowserTraverseListener;
 import org.wso2.developerstudio.eclipse.greg.base.logger.ExceptionHandler;
 import org.wso2.developerstudio.eclipse.greg.base.managers.RemoteContentManager;
@@ -96,10 +102,7 @@ import org.wso2.developerstudio.eclipse.greg.base.model.RegistryNode;
 import org.wso2.developerstudio.eclipse.greg.base.model.RegistryResourceNode;
 import org.wso2.developerstudio.eclipse.greg.base.model.RegistryResourceType;
 import org.wso2.developerstudio.eclipse.greg.base.model.RegistryURLNode;
-import org.wso2.developerstudio.eclipse.greg.base.model.RegistryUser;
 import org.wso2.developerstudio.eclipse.greg.base.model.RegistryUserContainer;
-import org.wso2.developerstudio.eclipse.greg.base.model.RegistryUserManagerContainer;
-import org.wso2.developerstudio.eclipse.greg.base.model.RegistryUserRole;
 import org.wso2.developerstudio.eclipse.greg.base.model.RegistryUserRoleContainer;
 import org.wso2.developerstudio.eclipse.greg.base.persistent.RegistryURLInfo;
 import org.wso2.developerstudio.eclipse.greg.base.persistent.RegistryUrlStore;
@@ -110,101 +113,60 @@ import org.wso2.developerstudio.eclipse.greg.core.exception.InvalidRegistryURLEx
 import org.wso2.developerstudio.eclipse.greg.core.exception.UnknownRegistryException;
 import org.wso2.developerstudio.eclipse.greg.manager.remote.Activator;
 import org.wso2.developerstudio.eclipse.greg.manager.remote.dialog.RegistryInfoDialog;
-import org.wso2.developerstudio.eclipse.greg.manager.remote.dragdrop.DragDropUtils;
-import org.wso2.developerstudio.eclipse.greg.manager.remote.dragdrop.Queue;
 import org.wso2.developerstudio.eclipse.greg.manager.remote.utils.Utils;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.platform.core.templates.ArtifactTemplate;
 import org.wso2.developerstudio.eclipse.platform.core.templates.ArtifactTemplateHandler;
 import org.wso2.developerstudio.eclipse.platform.ui.utils.MessageDialogUtils;
-import org.wso2.developerstudio.eclipse.usermgt.remote.UserManager;
 
 public class RegistryBrowserAPIMView extends ViewPart implements Observer {
 
+	private static final int TARGET_RESOURCE = 2;
+	private static final int COPY_RESOURCE = 1;
 	private static final int LOGIN_SHELL_HEIGHT = 250;
 	private static final int LOGIN_SHELL_WIDTH = 600;
-	private static final String OUT_SEQUENCE_LOCATION = "out";
-	private static final String IN_SEQUENCE_LOCATION = "in";
-	private static final String FAULT_SEQUENCE_LOCATION = "fault";
+
 	public static final String EVENT_TOPIC_EXPAND_TREE = "ExpandTree";
 	public static final String EVENT_TOPIC_OPEN_EDITOR = "OPEN_EDITOR";
+	public static final String EVENT_TOPIC_PASTE = "PASTE_EVENT";
 	public static final String EVENT_TOPIC_POPULATE_NODE_DATA = "NODEDATA_PUPULATE";
 	public static final String EVENT_TOPIC_POPULATE_TREE_DATA = "TREE_DATA_PUPULATE";
 	public static final String EVENT_TOPIC_POPULATE_CHANGE_NODE_DATA = "CHANGE_NODE_DATA_POPULATE";
 	private static final String DEFAULT_PATH = "/";
-	private static final int CHAR_SHIFT = 32;
+	
+/*	private static final int CHAR_SHIFT = 32;
 	private static final int CHAR_R = 114;
 	private static final int CHAR_V = 118;
-	private static final int CHAR_C = 99;
+	private static final int CHAR_C = 99;*/
 
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
+	
+	private static final String APIM_CUSTOMSEQUENCES_PATH = "/_system/governance/apimgt/customsequences";
 
 	Action addRegistryAction;
-	Action addCollectionAction;
-	Action addResourceAction;
-	Action deleteAction;
-	Action renameAction;
-	Action enableAction;
-	Action disableAction;
-	Action refreshAction;
-
-	Action multipleFileAction;
-	Action multipleFolderAction;
-	Action metaDataAction;
-	Action propertyAction;
-	Action associationAction;
-	Action lifeCyclesAction;
-	Action dependenciesAction;
-
-	Action communityAction;
-	Action commentsAction;
-	Action ratingsAction;
-	Action tagsAction;
-	Action linkWithEditorAction;
-
-	Action importFromAction;
-	Action exportToAction;
-
-	Action changeRolePermission;
-	Action modifyResourcePermission;
-
-	Action addUsers;
-	Action addRoles;
-	Action modifyUserInfo;
-
-	Action copyAction;
-	Action pasteAction;
+	Action discardAllchangesAction;
+	Action commitAllchangesAction;
 
 	IMemento memento;
 	private Tree tree;
 	private RegistryTreeViewer treeViewer;
 
-	private RegistryURLNode regUrlNode;
+	private RegistryURLNode regUrlNode1;
+	private RegistryURLNode localUrlNode;
 	private RegistryNode regNode;
 	private RegistryResourceNode regResourceNode;
-	private RegistryResourceNode targetRegResourceNode;
-	private RegistryUserRole regUserRole;
-	private RegistryUserContainer regUserContainer;
-	private RegistryUserRoleContainer regRoleContainer;
-	private UserManager um;
-
-	private ArrayList<RegistryResourceNode> resourceNodes;
-	private ArrayList<RegistryNode> list;
+	private Map<String, RegistryResourceNode> changedResourceNodes;
 	private Registry registry;
+	private RegistryBrowserAPIMViewLabelProvider labelProvider;
 
 	private String uname;
 	private String resourcePath;
-
 	private String pwd;
 	private URL serverURL;
 
-	private Composite parentComposite;
 	private ExceptionHandler exeptionHandler;
-
-	private Object selectedObj;
 	public static RegistryBrowserAPIMView lastInstance;
-
 	private static RegistryPropertyViewer registryPropertyViewer;
 	private static ResourceInfoViewer resourceInfoViewer;
 
@@ -213,42 +175,21 @@ public class RegistryBrowserAPIMView extends ViewPart implements Observer {
 	 * multipleResourceUploadMenu; private MenuManager versionSubMenu;
 	 */
 	private MenuManager apimMenuManager;
-
-	private DragDropUtils dragDropUtils;
-
 	private boolean isApiManagerview;
 	private String apimRegPath;
 
 	// private String[] children= null;
 	// private IViewSite viewSite;
 
-	private ArrayList<String> children;
-	private Action resourceInformationAction;
-
 	private Text txtTraverse;
-	private ArrayList<Object> selectedItemList;
-
 	private boolean linkedWithEditor;
-
 	public static final int CNTRL_KEY_CODE = 262144;
-
 	boolean cntrlKeyPressed;
 
-	private List<String> versionList;
-
 	private RegistryResourceNode selectedEditorRegistryResourcePathData;
-
-	private RegistryHeartBeatTester registryHeartBeatTester;
-
 	private RegistryResourceNode copyRegResourceNode;
-
 	private IEventBroker broker;
-
 	private boolean traversePathChanged;
-
-	private int chkTraverseDelay = 100;
-
-	private int elapsedTime = 0;
 
 	IContextActivation activation;
 	IHandlerActivation activateDeleteHandler;
@@ -257,6 +198,7 @@ public class RegistryBrowserAPIMView extends ViewPart implements Observer {
 	IHandlerActivation activateRenameHandler;
 	IHandlerActivation activateCopyHandler;
 	IHandlerActivation activatePasteHandler;
+	private String apimRegpath;
 
 	public RegistryResourceNode getCopyRegResourceNode() {
 		return copyRegResourceNode;
@@ -277,13 +219,41 @@ public class RegistryBrowserAPIMView extends ViewPart implements Observer {
 
 	public RegistryBrowserAPIMView() {
 		super();
-		selectedItemList = new ArrayList<Object>();
-		this.regUrlNode = new RegistryURLNode();
-		regUrlNode.addObserver(this);
+		setApiManagerview(true);	
+		try {
+			setApimRegPath(new Login().getRegpath());
+		} catch (Exception e) {
+			log.error("API Manager Registry path cannot be reslove due to", e);
+			setApimRegPath(APIM_CUSTOMSEQUENCES_PATH);	 
+		}
+		
+		Bundle bundle = Platform.getBundle(Activator.PLUGIN_ID);		
+		IEclipseContext eclipseContext = EclipseContextFactory.getServiceContext(bundle.getBundleContext());
+		eclipseContext.set(org.eclipse.e4.core.services.log.Logger.class, null);		
+		IEventBroker iEventBroker = eclipseContext.get(IEventBroker.class);		
+		iEventBroker.subscribe(EVENT_TOPIC_EXPAND_TREE,getTreeExpandHandler() );
+		iEventBroker.subscribe(EVENT_TOPIC_OPEN_EDITOR,getOPenEditorEvent());
+		iEventBroker.subscribe(EVENT_TOPIC_PASTE,getPasteEvent());		
+		setBroker(iEventBroker);
+		
+		changedResourceNodes = new HashMap<String, RegistryResourceNode>();
+		exeptionHandler = new ExceptionHandler();
+		this.localUrlNode = new RegistryURLNode();
+		localUrlNode.addObserver(this);
 		lastInstance = this;
-		// registryHeartBeatTester = new RegistryHeartBeatTester(regUrlNode);
-		new Thread(registryHeartBeatTester).start();
+		doSavet();
 	}
+
+
+public static boolean isAPIMperspective(){
+	 IWorkbenchWindow workbenchWindow = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
+	 IPerspectiveDescriptor perspective = workbenchWindow.getActivePage().getPerspective();
+	
+	if ("org.wso2.developerstudio.registry.remote.registry.apim.pespective".equals(perspective.getId())){
+		return true;
+	}
+	return false;
+}
 
 	public void init(IViewSite site) throws PartInitException {
 		super.init(site);
@@ -298,7 +268,6 @@ public class RegistryBrowserAPIMView extends ViewPart implements Observer {
 
 	public void createPartControl(Composite parent) {
 
-		parentComposite = parent;
 		GridLayout gridLayout = new GridLayout();
 		gridLayout.numColumns = 1;
 		parent.setLayout(gridLayout);
@@ -307,114 +276,215 @@ public class RegistryBrowserAPIMView extends ViewPart implements Observer {
 		createToolbar(parent);
 
 	}
+	
+	@Override
+	public void setFocus() {
+
+	}
+	
+	public void update(Observable o, Object arg) {
+		if (o instanceof RegistryBrowserTraverseListener) {
+			RegistryBrowserTraverseListener r = (RegistryBrowserTraverseListener) o;
+			traverseRegistryBrowser(r.getUrl(), r.getPath());
+		} else {
+			Display.getDefault().asyncExec(new Runnable() {
+				public void run() {
+					treeViewer.refresh(localUrlNode.isRefreshExisting());
+				}
+			});
+		}
+	}
+
+	public void traverseRegistryBrowser(String url, String path) {
+		List<RegistryNode> urlInfoList = localUrlNode.getUrlInfoList();
+		RegistryNode correctRegistryData = null;
+		for (RegistryNode registryData : urlInfoList) {
+			if (registryData.getUrl().toString().equals(url) && path.startsWith(registryData.getRegistryStartingPath())) {
+				correctRegistryData = registryData;
+				break;
+			}
+		}
+		if (correctRegistryData == null) {
+			try {
+				RegistryURLInfo registryUrlInfo = new RegistryURLInfo();
+
+				registryUrlInfo.setPersist(false);
+				registryUrlInfo.setUrl(new URL(url));
+				registryUrlInfo.setPath(DEFAULT_PATH);
+				correctRegistryData = localUrlNode.addRegistry(registryUrlInfo, null);
+			} catch (MalformedURLException e) {
+				log.error(e.getMessage(), e);
+			}
+
+		}
+		selectTreeViewerPath(correctRegistryData, path);
+	}
+
+	public void dispose() {
+		IEventBroker broker = getBroker();
+		if(broker!=null){
+			broker.unsubscribe(getTreeExpandHandler());
+			broker.unsubscribe(getOPenEditorEvent());
+			broker.unsubscribe(getPasteEvent());
+		//	broker.unsubscribe(getTreeNodeSelctionHandler());
+		}
+		deactivateActionHandlers();
+		IContextService contextService = (IContextService) getSite().getService(IContextService.class);
+		contextService.deactivateContext(activation);
+		
+		super.dispose();
+	}
+	
+	private void deactivateActionHandlers() {
+	IHandlerService handlerService = (IHandlerService) getSite().getService(IHandlerService.class);
+
+	handlerService.deactivateHandler(activateDeleteHandler);
+	handlerService.deactivateHandler(activateRefreshHandler);
+	handlerService.deactivateHandler(activateAddResourceHandler);
+	handlerService.deactivateHandler(activateRenameHandler);
+	handlerService.deactivateHandler(activateCopyHandler);
+	handlerService.deactivateHandler(activatePasteHandler);
+}
+
+	public void removeRegistryNode(String url, String path) {
+		List<RegistryNode> urlInfoList = localUrlNode.getUrlInfoList();
+		RegistryNode correctRegistryData = null;
+		for (RegistryNode registryData : urlInfoList) {
+			if (registryData.getUrl().toString().equals(url) && path.startsWith(registryData.getRegistryStartingPath())) {
+				correctRegistryData = registryData;
+				break;
+			}
+		}
+		localUrlNode.removeRegistry(correctRegistryData);
+	}
+
+	public void traverseRegistryBrowser(RegistryResourceNode registryResourcePathData) {
+		selectTreeViewerPath(registryResourcePathData.getConnectionInfo(),
+				registryResourcePathData.getRegistryResourcePath());
+	}
 
 	protected void loginToAPIMRegistry(Composite parent) {
 		exeptionHandler = new ExceptionHandler();
-		RegistryInfoDialog dialog = null;
 
-		dialog = new RegistryInfoDialog(parent.getShell(), regUrlNode, getApimRegPath(), true);
+		RegistryInfoDialog dialog = null;
+		dialog = new RegistryInfoDialog(parent.getShell(), regUrlNode1, getApimRegPath());
 		dialog.setBlockOnOpen(true);
 		dialog.create();
 		dialog.getShell().setSize(LOGIN_SHELL_WIDTH, LOGIN_SHELL_HEIGHT);
 		int status = dialog.open();
 		if (status == Window.OK) {
-
 			URI pathUri = null;
-
 			try {
 				pathUri = new URI(dialog.getServerUrl());
 				serverURL = pathUri.toURL();
 				uname = dialog.getUserName();
 				pwd = dialog.getPasswd();
-				String path = dialog.getPath();
+				apimRegpath = dialog.getPath();
 
 				if (!Utils.isValidServerURL(dialog.getServerUrl())) {
 					if (!MessageDialog.openQuestion(parent.getShell(), "Connection Fail",
-							"Establishing connection to the server failed. Do you want to add it anyway ?")) {
+							"Establishing connection to the server failed")) {
 						return;
 					}
 				}
 
-				// Verify the Registry path
-				Registry reg = new Registry(uname, pwd, dialog.getServerUrl());
-				reg.getResourcesPerCollection(getApimRegPath());
-
-				regUrlNode.addRegistry(
-						RegistryUrlStore.getInstance().addRegistryUrl(serverURL, uname, path, isApiManagerview()), pwd);
-				setUname(uname);
-				setPwd(pwd);
-				setServerURL(serverURL);
-
-				// EXPANDING THE THREE
-				try {
-					new ProgressMonitorDialog(getSite().getShell()).run(true, true, new IRunnableWithProgress() {
-
-						public void run(IProgressMonitor monitor) throws InvocationTargetException,
-								InterruptedException {
-
-							if (treeViewer != null) {
-								monitor.beginTask("", 100);
-								monitor.worked(60);
-								broker.send(EVENT_TOPIC_EXPAND_TREE, null);
-								monitor.worked(100);
-								monitor.done();
-							}
-
-						}
-					});
-				} catch (InvocationTargetException e) {
-					log.error("Tree expanding fail" + e.getMessage(), e);
-				} catch (InterruptedException e) {
-					log.error("Tree expanding fail" + e.getMessage(), e);
-				}
+				verifyRegistryPath(dialog);
+				cloneRegistryModel();
+				expanTree();
 
 			} catch (URISyntaxException e) {
 				exeptionHandler.showMessage(Display.getCurrent().getActiveShell(),
-						"Cannot establish the connection with given URL");
+						"Cannot establish the connection with given URL due to " + e.getMessage());
 				log.error("Cannot establish the connection with given URL", e);
 			} catch (MalformedURLException e) {
 				exeptionHandler.showMessage(Display.getCurrent().getActiveShell(),
-						"Cannot establish the connection with given URL");
+						"Cannot establish the connection with given URL due to " + e.getMessage());
 				log.error("Cannot establish the connection with given URL", e);
 			} catch (UnknownRegistryException e) {
-				MultiStatus createMultiStatusMsg = createMultiStatus("Error Registry path , "
-						+ "This can be due to multipe reasons \n 1) This may not a APIM server \n  2 ) De"
-						+ "fault sequence location has been changed \n\n "
-						+ "You can overide the default setting from eclipse prefernace", e);
-				ErrorDialog.openError(Display.getCurrent().getActiveShell(), "Cannot Load APIM Reg browser",
-						"Error Registry path , This can be due to multipe reasons \n Wrong server",
-						createMultiStatusMsg);
-				log.error("Login Error", e);
+				exeptionHandler.showMessage(Display.getCurrent().getActiveShell(),
+						"Cannot establish the connection with given URL due to " + e.getMessage());
+				log.error("Cannot establish the connection with given URL", e);
+
 			} catch (InvalidRegistryURLException e) {
-				MultiStatus createMultiStatusMsg = createMultiStatus("Error Registry path , "
-						+ "This can be due to multipe reasons \n 1) This may not a APIM server \n  2 ) De"
-						+ "fault sequence location has been changed \n\n "
-						+ "You can overide the default setting from eclipse prefernace", e);
-				ErrorDialog.openError(Display.getCurrent().getActiveShell(), "Cannot Load APIM Reg browser",
-						"Error Registry path , This can be due to multipe reasons \n Wrong server",
-						createMultiStatusMsg);
-				log.error("Login Error", e);
+				exeptionHandler.showMessage(Display.getCurrent().getActiveShell(),
+						"Cannot establish the connection with given URL due to " + e.getMessage());
+				log.error("Cannot establish the connection with given URL", e);
+			} catch (CloneNotSupportedException e) {
+				exeptionHandler.showMessage(Display.getCurrent().getActiveShell(),
+						"Registy cloning process has failed due to " + e.getMessage());
+				log.error("Registy cloning process has failed due to " + e.getMessage(), e);
 			}
 
 		}
 
 	}
 
+	private void cloneRegistryModel() throws CloneNotSupportedException {
+
+		regUrlNode1 = new RegistryURLNode();
+		regUrlNode1.addRegistry(
+				RegistryUrlStore.getInstance().addRegistryUrl(serverURL, uname, apimRegpath, isApiManagerview()), pwd);
+		setUname(uname);
+		setPwd(pwd);
+		setServerURL(serverURL);
+
+		List<RegistryNode> urlInfoList = regUrlNode1.getUrlInfoList();
+		localUrlNode = new RegistryURLNode();
+		localUrlNode.setUrlInfoList(urlInfoList);
+		RegistryNode registryNode = urlInfoList.get(0);
+		RegistryNode localRegnode = localUrlNode.getUrlInfoList().get(0);
+		RegistryContentContainer registryContainer = registryNode.getRegistryContainer();
+		RegistryContentContainer localContainer = new RegistryContentContainer();
+		RegistryResourceNode localcustomSequenceNode = null;
+		RegistryResourceNode remotecustomSequenceNode = registryContainer.getRegistryContent().get(0);
+
+		localcustomSequenceNode = (RegistryResourceNode) remotecustomSequenceNode.clone();
+		localContainer.addRegistryContent(localcustomSequenceNode);
+		localRegnode.setRegistryContent(localContainer);
+		treeViewer.setInput(localUrlNode);
+	}
+
+	// Verify the Registry path
+	private void verifyRegistryPath(RegistryInfoDialog dialog) throws InvalidRegistryURLException,
+			UnknownRegistryException {
+
+		Registry reg = new Registry(uname, pwd, dialog.getServerUrl());
+		reg.getResourcesPerCollection(getApimRegPath());
+	}
+
+	private void expanTree() {
+		try {
+			new ProgressMonitorDialog(getSite().getShell()).run(true, true, new IRunnableWithProgress() {
+				public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
+					if (treeViewer != null) {
+						monitor.beginTask("", 100);
+						monitor.worked(60);
+						broker.send(EVENT_TOPIC_EXPAND_TREE, null);
+						monitor.worked(100);
+						monitor.done();
+					}
+				}
+			});
+		} catch (InvocationTargetException e) {
+			log.error("Tree expanding fail" + e.getMessage(), e);
+		} catch (InterruptedException e) {
+			log.error("Tree expanding fail" + e.getMessage(), e);
+		}
+	}
+
 	protected Control createContent(final Composite parent) {
-		exeptionHandler = new ExceptionHandler();
-		txtTraverse = new Text(parent, SWT.SINGLE | SWT.BORDER);
-		txtTraverse.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
-		selectedItemList = new ArrayList<Object>();
+		addControls(parent);
+		addListeners();
+		Menu menu = addContextMenu();
+		apimMenuManager.setRemoveAllWhenShown(true);
+		treeViewer.getControl().setMenu(menu);
+		treeViewer.setInput(localUrlNode);
 
-		txtTraverse.addModifyListener(new ModifyListener() {
-			public void modifyText(ModifyEvent arg0) {
-				setTraversePathChanged(true);
+		return tree;
 
-			}
+	}
 
-		});
-		txtTraverse.setEnabled(false);
-		getSite().getShell().getDisplay().timerExec(chkTraverseDelay, new TextContributionItem());
+	private void addControls(final Composite parent) {
 		treeViewer = new RegistryTreeViewer(parent, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL | SWT.BORDER,
 				exeptionHandler, false, true);
 		tree = treeViewer.getTree();
@@ -422,8 +492,11 @@ public class RegistryBrowserAPIMView extends ViewPart implements Observer {
 		data.widthHint = 450;
 		data.heightHint = 250;
 		tree.setLayoutData(data);
-		// treeViewer.setLabelProvider(labelProvider);
+		labelProvider = new RegistryBrowserAPIMViewLabelProvider();
+		treeViewer.setLabelProvider(labelProvider);
+	}
 
+	private void addListeners() {
 		treeViewer.addDoubleClickListener(new IDoubleClickListener() {
 			public void doubleClick(DoubleClickEvent event) {
 				final Object obj = event.getSelection();
@@ -451,8 +524,9 @@ public class RegistryBrowserAPIMView extends ViewPart implements Observer {
 			}
 
 		});
+	}
 
-		// APIM spesific implimentaion
+	private Menu addContextMenu() {
 		ImageDescriptor metadataImgDes = ImageUtils.getImageDescriptor(ImageUtils.ACTION_ADD_METADATA);
 		apimMenuManager = new MenuManager("Actions menu", metadataImgDes, "org.wso2.apim.devs");
 		Menu menu = apimMenuManager.createContextMenu(treeViewer.getControl());
@@ -481,7 +555,7 @@ public class RegistryBrowserAPIMView extends ViewPart implements Observer {
 								manager.add(new Separator());
 								manager.add(deleteSequenceAction(node));
 
-								if (node.isFileLocallyModified()) {
+								if (node.isFileLocallyModified() || node.isIsdeleted() || node.isRename()) {
 									manager.add(new GroupMarker(IWorkbenchActionConstants.MB_ADDITIONS));
 									manager.add(new Separator());
 									manager.add(commitSequence(node));
@@ -497,7 +571,7 @@ public class RegistryBrowserAPIMView extends ViewPart implements Observer {
 									manager.add(new GroupMarker(IWorkbenchActionConstants.MB_ADDITIONS));
 									manager.add(new Separator());
 									manager.add(createSequenceAction(node));
-									manager.add(imporSequenceAction(node));
+									manager.add(importSequenceAction(node));
 									manager.add(new GroupMarker(IWorkbenchActionConstants.MB_ADDITIONS));
 									manager.add(new Separator());
 
@@ -515,115 +589,108 @@ public class RegistryBrowserAPIMView extends ViewPart implements Observer {
 			}
 
 		});
-		apimMenuManager.setRemoveAllWhenShown(true);
-		treeViewer.getControl().setMenu(menu);
-		treeViewer.setInput(regUrlNode);
-
-		return tree;
-
+		return menu;
 	}
 
 	private void createToolbar(final Composite parent) {
+		addLoginToolbarAction(parent);
+		discardAllChnangesToolbarAction();
+		commitAllChangesToolbarAction();
 
+		IToolBarManager mgr = getViewSite().getActionBars().getToolBarManager();
+		mgr.add(discardAllchangesAction);
+		mgr.add(commitAllchangesAction);
+		mgr.add(addRegistryAction);
+		mgr.update(true);
+	}
+
+	private void commitAllChangesToolbarAction() {
+		commitAllchangesAction = new Action("Push all changes ") {
+			public void run() {
+				if (MessageDialog.openQuestion(Display.getCurrent().getActiveShell(), "Apply Chanages",
+						"Are You Sure ,  You want to Push all local changes into remote API Manager server ?")) {
+					pushAllchnages();
+				}
+			}
+		};
+		commitAllchangesAction.setImageDescriptor(ImageUtils.getImageDescriptor(ImageUtils.ACTION_ADD_TO_REGSITRY));
+		commitAllchangesAction.setToolTipText("Push All changes to the server");
+		commitAllchangesAction.setEnabled(false);
+	}
+
+	private void discardAllChnangesToolbarAction() {
+		discardAllchangesAction = new Action("discard all loacl changes ") {
+			public void run() {
+				if (MessageDialog.openQuestion(Display.getCurrent().getActiveShell(), "Discard Chanages",
+						"Are You Sure , that you want to DISCARD ALL LOCAL CHANGES and "
+								+ "synchronize with the remote API Manager server ?")) {
+					try {
+						cloneRegistryModel();
+						expanTree();
+						changedResourceNodes.clear();
+						updateDirtyState();
+					} catch (CloneNotSupportedException e) {
+						MessageDialog.openError(Display.getCurrent().getActiveShell(), "Remote synchronization",
+								"Registy synchronization process has failed due to " + e.getMessage());
+						log.error("Registy cloning process has failed due to " + e.getMessage(), e);
+					}
+				}
+			}
+		};
+		// Synchronize
+		discardAllchangesAction.setImageDescriptor(ImageUtils.getImageDescriptor(ImageUtils.ACTION_CHECK_OUT_MENU));
+		discardAllchangesAction.setToolTipText("Discard all loacl changes and synchronize with server");
+		discardAllchangesAction.setEnabled(false);
+	}
+
+	private void addLoginToolbarAction(final Composite parent) {
 		addRegistryAction = new Action("Login ") {
 			public void run() {
 				loginToAPIMRegistry(parent);
 			}
 		};
 		addRegistryAction.setImageDescriptor(ImageUtils.getImageDescriptor(ImageUtils.ICON_USERS));
-		IToolBarManager mgr;
-		mgr = getViewSite().getActionBars().getToolBarManager();
-		mgr.add(addRegistryAction);
-		mgr.update(true);
+		addRegistryAction.setToolTipText("Login");
 	}
 
-	protected void renameItem(Composite parent) {
-		// for (int i = 0; i < selectedItemList.size(); i++) {
-		// selectedObj = selectedItemList.get(i);
-		if (selectedObj instanceof RegistryResourceNode) {
-			RegistryResourceNode regResourceNode = (RegistryResourceNode) selectedObj;
-			final String currentName = regResourceNode.getLastSegmentInPath();
-			InputDialog inputDialog = new InputDialog(parent.getShell(), "Rename resource", "New name:", currentName,
-					new IInputValidator() {
-						public String isValid(String value) {
-							if (value == null || value.equals("")) {
-								return "Specify a new name to the resource";
-							} else if (value.equals(currentName)) {
-								return "Specify a new name to the resource";
-							} else {
-								return null;
-							}
-						}
-					});
-			if (inputDialog.open() == InputDialog.OK) {
-				String newName = inputDialog.getValue();
-				String newPath = regResourceNode.getParent()
-						+ (regResourceNode.getParent().endsWith(DEFAULT_PATH) ? newName : DEFAULT_PATH + newName);
-				registry = regResourceNode.getConnectionInfo().getRegistry();
-				try {
-					if (regResourceNode.getResourceType() == RegistryResourceType.RESOURCE) {
-						try {
-							if (regResourceNode.getFileEditor() != null) {
-								if (regResourceNode.getFileEditor().isDirty()) {
-									if (MessageDialogUtils.question(regResourceNode.getFileEditor().getSite()
-											.getShell(), "Do you want to save changes?")) {
+	private void pushAllchnages() {
+		try {
+			Set<String> keySet = changedResourceNodes.keySet();
+			for (String key : keySet) {
+				RegistryResourceNode registryResourceNode = changedResourceNodes.get(key);
 
-										regResourceNode.getFileEditor().doSave(new NullProgressMonitor());
-
-										regResourceNode.saveChangesToRegistry();
-										// Resource
-										// renamedResource=registry.get(regResourceNode.getRegistryResourcePath());
-										// renamedResource.setContentStream(new
-										// FileInputStream(regResourceNode.getFile()));
-										// registry.put(regResourceNode.getRegistryResourcePath(),renamedResource );
-									}
-								}
-								regResourceNode.getFileEditor().getEditorSite().getPage()
-										.closeEditor(regResourceNode.getFileEditor(), false);
-								regResourceNode.getFileEditor().dispose();
-							}
-
-						} catch (Exception e) {
-							log.error("Could not close associated editor for this resource" + e.getMessage(), e);
-							exeptionHandler.showMessage(parent.getShell(),
-									"Could not close associated editor for this resource");
-						}
-					}
-					registry.rename(regResourceNode.getRegistryResourcePath(), newPath);
-					regResourceNode.setResourceName(newName);
-					regResourceNode.getRegistryResourceNodeParent().setIterativeRefresh(true);
-					regUrlNode.dataChanged(true);
-
-					/*
-					 * try { openResourceInEditor(regResourceNode); } catch (Exception e) {
-					 * log.error("Could not open the file type in the editor" + e.getMessage(), e); exeptionHandler
-					 * .showMessage(parent.getShell(), "Could not open the file type in the editor"); }
-					 */
-				} catch (InvalidRegistryURLException e) {
-					log.error("Resouece renanming issue due to " + e.getMessage(), e);
-				} catch (UnknownRegistryException e) {
-					log.error("Resouece renaming issue due to " + e.getMessage(), e);
+				if (registryResourceNode.isIsdeleted()) {
+					deleteSequence(registryResourceNode);
+				} else if (registryResourceNode.isIsnew()) {
+					registryResourceNode.putFile();
+					MessageDialogUtils.info(Display.getCurrent().getActiveShell(), " ",
+							"Sucessfully applied the local changes");
+				} else {
+					registryResourceNode.saveChangesToRegistry();
+					refreshItem(registryResourceNode);
+					MessageDialogUtils.info(Display.getCurrent().getActiveShell(), " ",
+							"Sucessfully applied the local changes");
 				}
 			}
-			// }
-
+			changedResourceNodes.clear();
+			updateDirtyState();
+		} catch (InvalidRegistryURLException | UnknownRegistryException e) {
+			MessageDialog.openError(Display.getCurrent().getActiveShell(), "Push Changes Dialog",
+					"Cannot push all the chnages due to " + e.getMessage());
+			log.error("Cannot push all the chnages due to " + e.getMessage(), e);
 		}
 
 	}
 
-	protected EventHandler getTreeExpandHandler() {
-		return new EventHandler() {
-			public void handleEvent(final Event event) {
-
-				Display.getDefault().asyncExec(new Runnable() {
-					@SuppressWarnings({})
-					@Override
-					public void run() {
-						treeViewer.expandAll();
-					}
-				});
-			}
-		};
+	private void updateDirtyState() {
+		if (changedResourceNodes.isEmpty()) {
+			discardAllchangesAction.setEnabled(false);
+			commitAllchangesAction.setEnabled(false);
+		} else {
+			discardAllchangesAction.setEnabled(true);
+			;
+			commitAllchangesAction.setEnabled(true);
+		}
 	}
 
 	private void refreshItem(Object selectedObj) {
@@ -638,37 +705,119 @@ public class RegistryBrowserAPIMView extends ViewPart implements Observer {
 		} else if (selectedObj instanceof RegistryUserRoleContainer) {
 			((RegistryUserRoleContainer) selectedObj).setIterativeRefresh(true);
 		}
-		regUrlNode.dataChanged(false);
+		localUrlNode.dataChanged(false);
 	}
 
-	public void setFocus() {
+	private EventHandler getTreeExpandHandler() {
+		return new EventHandler() {
+			public void handleEvent(final Event event) {
 
+				Display.getDefault().asyncExec(new Runnable() {
+					@SuppressWarnings({})
+					@Override
+					public void run() {
+						treeViewer.expandAll();
+					}
+				});
+			}
+		};
 	}
 
-	private void openResourceInEditor(RegistryResourceNode resourcePathObj) {
-		if (resourcePathObj.getFile() != null && resourcePathObj.getFile().exists()) {
-			try {
-				FileUtils.forceDelete(resourcePathObj.getFile());
-
-				// saveChangesToRegistry(); RegistryresourceNode clazz
-			} catch (IOException e) {
-				log.error("Failed to delete the old file", e);
+	// File Editing
+	private void openResourceInEditor(final RegistryResourceNode resourceNode) {
+		if (resourceNode.isIsdeleted()) {
+			MessageDialogUtils.error(Display.getCurrent().getActiveShell(), resourceNode.getResourceName()
+					+ " cannot be"
+					+ " opened since this is marked  as a deleted resource , if you want to open undo the delete "
+					+ "operation and try again");
+			return;
+		}
+		if (!resourceNode.isIsnew()) {
+			if (resourceNode.getNewFile() != null && resourceNode.getNewFile().exists()) {
+				try {
+					FileUtils.forceDelete(resourceNode.getFile());
+				} catch (IOException e) {
+					log.error("Failed to delete the old file", e);
+				}
 			}
 		}
 
-		// FIXME- use broker to open the editor and block the display thread while opening the editor
-
-		File tempFile = resourcePathObj.getFile();
-		IEditorPart editor = RemoteContentManager.openFile(tempFile);
-		if (resourcePathObj.getFileEditor() != editor) {
-			editor.getSite().getPage().addPartListener(new RegistryContentPartListener(resourcePathObj, editor));
+		File tempFile = null;
+		if (resourceNode.isIsnew()) {
+			tempFile = resourceNode.getNewFile();
+		} else {
+			tempFile = resourceNode.getFile();
+		}
+		final IEditorPart editor = RemoteContentManager.openFile(tempFile);
+		if (resourceNode.getFileEditor() != editor) {
+			editor.getSite().getPage().addPartListener(new RegistryContentPartListener(resourceNode, editor));
 		}
 
-		resourcePathObj.setFileEditor(editor);
+		resourceNode.setFileEditor(editor);
+		if (!resourceNode.isIsnew()) {
+			changedResourceNodes.put(resourceNode.getRegistryResourcePath(), resourceNode);
+			updateDirtyState();
+			editor.addPropertyListener(new IPropertyListener() {
+				public void propertyChanged(Object obj, int prop) {
+					if (editor.isDirty())
+						try {
+							changedResourceNodes.put(resourceNode.getRegistryResourcePath(), resourceNode);
+							updateDirtyState();
+						} catch (Exception e) {
+							log.error(e);
+						}
+				}
+			});
+		}
 
 	}
 
-	protected EventHandler getOPenEditorEvent() {
+	protected int INTERESTING_CHANGES = IResourceDelta.CONTENT | IResourceDelta.MOVED_FROM | IResourceDelta.MOVED_TO
+			| IResourceDelta.REPLACED;
+
+	public void doSavet() {
+		IResourceChangeListener listener = new IResourceChangeListener() {
+			public void resourceChanged(IResourceChangeEvent event) {
+				try {
+					event.getDelta().accept(new IResourceDeltaVisitor() {
+						public boolean visit(IResourceDelta delta) {
+							IResource resource = delta.getResource();
+							if (resource.getType() == IResource.ROOT) {
+								return true;
+							} else if (resource.getType() == IResource.PROJECT) {
+								return true;
+							} else if (resource.getType() == IResource.FILE) {
+								if (delta.getKind() == IResourceDelta.CHANGED && resource.exists()) {
+									if ((delta.getFlags() & INTERESTING_CHANGES) != 0) {
+										// modifiedResources.add(resource);
+										// System.out.println(resource.getName());
+										return true;
+									}
+								} else if (delta.getKind() == IResourceDelta.ADDED) {
+									// System.out.println(resource.getName());
+									return true;
+								} else if (delta.getKind() == IResourceDelta.REMOVED) {
+									// System.out.println(resource.getName());
+									return true;
+								}
+							} else if (resource.getType() == IResource.FOLDER) {
+								// System.out.println(resource.getName());
+								return true;
+							}
+							return false;
+						}
+					});
+				} catch (CoreException e) {
+					 
+					e.printStackTrace();
+				}
+
+			}
+		};
+		ResourcesPlugin.getWorkspace().addResourceChangeListener(listener);
+	}
+
+	private EventHandler getOPenEditorEvent() {
 		return new EventHandler() {
 			public void handleEvent(final Event event) {
 				Display.getDefault().asyncExec(new Runnable() {
@@ -698,246 +847,19 @@ public class RegistryBrowserAPIMView extends ViewPart implements Observer {
 
 	}
 
-	protected EventHandler getTreeSelectionChenageHandler() {
-		return new EventHandler() {
-			public void handleEvent(final Event event) {
-				Display.getDefault().asyncExec(new Runnable() {
-					@SuppressWarnings({})
-					@Override
-					public void run() {
-						System.out.println("This is getTreeSelectionChenageHandler()");
-						SelectionEvent selectionEvent = (SelectionEvent) event.getProperty(IEventBroker.DATA);
-						Object obj = selectionEvent.getSource();
-						if (obj instanceof Tree) {
-							if (selectionEvent.stateMask == SWT.CTRL) {
-								setCntrlKeyPressed(true);
-								if (!selectedItemList.contains(obj)) {
-									selectedItemList.add(obj);
-								}
-							} else {
-								selectedItemList = new ArrayList<Object>();
-								selectedItemList.add(obj);
-							}
-						}
-					}
-				});
-			}
-		};
-	}
-
-	protected EventHandler getTreeNodeSelctionChangedHandler() {
-		return new EventHandler() {
-			public void handleEvent(final Event event) {
-
-				Display.getDefault().asyncExec(new Runnable() {
-					@SuppressWarnings({})
-					@Override
-					public void run() {
-						System.out.println("This is getTreeNodeSelctionChangedHandler()");
-						TreeSelection obj = (TreeSelection) event.getProperty(IEventBroker.DATA);
-						Object object = ((TreeSelection) obj).getFirstElement();
-						selectedObj = object;
-						if (!(selectedItemList.contains(selectedObj))) {
-							selectedItemList.add(selectedObj);
-						}
-						txtTraverse.setEnabled(true);
-						if (object instanceof RegistryNode) {
-							deleteAction.setImageDescriptor(ImageUtils
-									.getImageDescriptor(ImageUtils.ACTION_DELETE_REGISTRY));
-							regNode = (RegistryNode) object;
-							if (regNode.isEnabled()) {
-								regResourceNode = regNode.getRegistryContainer().getRegistryContent().get(0);
-								resourcePath = regResourceNode.getRegistryResourcePath();
-								if (resourceNodes != null) {
-									if (resourceNodes.isEmpty()) {
-										resourceNodes.add(regResourceNode);
-									}
-								}
-								// resourcePathList.add(regResourcePathData);
-								// regResourcePathData.setResourcePathList(resourcePathList);
-								setResourcePath(resourcePath);
-								setRegData(regNode);
-								setRegResourcePathData(regResourceNode);
-							} else {
-								regResourceNode = null;
-								resourcePath = null;
-								setResourcePath(resourcePath);
-								setRegData(regNode);
-								setRegResourcePathData(regResourceNode);
-							}
-
-						} else if (object instanceof RegistryResourceNode) {
-
-							// regResourceNode = (RegistryResourceNode) object;
-							// resourcePath = regResourceNode.getRegistryResourcePath();
-
-							/*
-							 * if (resourceNodes != null) { if (resourceNodes.isEmpty()) { try { resourceNodes =
-							 * regResourceNode.getResourceNodeList(); } catch (Exception e) {
-							 * regResourceNode.setError(true);
-							 * exeptionHandler.showMessage(Display.getCurrent().getActiveShell(),
-							 * "Cannot establish the connection"); } } }
-							 */
-
-							/*
-							 * if (regResourceNode.getResourceType() == RegistryResourceType.RESOURCE) {
-							 * deleteAction.setImageDescriptor(ImageUtils
-							 * .getImageDescriptor(ImageUtils.ACTION_DELETE_RESOURCE));
-							 * 
-							 * try {
-							 * 
-							 * resourceNodes = regResourceNode.getResourceNodeList();
-							 * 
-							 * } catch (Exception e) { regResourceNode.setError(true);
-							 * exeptionHandler.showMessage(Display.getCurrent().getActiveShell(),
-							 * "Cannot establish the connection with given URL"); } } else {
-							 * deleteAction.setImageDescriptor(ImageUtils
-							 * .getImageDescriptor(ImageUtils.ACTION_DELETE_COLLECTION)); } if (resourceNodes == null)
-							 * resourceNodes = new ArrayList<RegistryResourceNode>(); if (resourceNodes.isEmpty()) { //
-							 * resourceNodes.add(regResourceNode); } //setResourcePath(resourcePath);
-							 * //setRegResourcePathData(regResourceNode); // } else if (object instanceof
-							 * RegistryUserRole) {
-							 */
-							selectedObj = object;
-						} else if (object instanceof RegistryUser) {
-							selectedObj = object;
-						} else if (object instanceof RegistryUserManagerContainer) {
-							selectedObj = object;
-						} else if (object instanceof RegistryUserContainer) {
-							selectedObj = object;
-						} else if (object instanceof RegistryUserRoleContainer) {
-							selectedObj = object;
-						} else if (object instanceof RegistryContentContainer) {
-							selectedObj = object;
-						} else {
-							selectedObj = null;
-							selectedItemList = new ArrayList<Object>();
-							txtTraverse.setEnabled(false);
-						}
-					}
-				});
-			}
-		};
-	}
-
-	protected EventHandler getTreeNodeSelctionHandler() {
-		return new EventHandler() {
-			public void handleEvent(final Event event) {
-
-				Display.getDefault().asyncExec(new Runnable() {
-					@SuppressWarnings({})
-					@Override
-					public void run() {
-
-						SelectionEvent selectionEvent = (SelectionEvent) event.getProperty(IEventBroker.DATA);
-						Object obj = selectionEvent.getSource();
-						if (obj instanceof Tree) {
-							if (((Tree) obj).getSelection().length > 0) {
-								Object object = ((Tree) obj).getSelection()[0].getData();
-								if (object instanceof RegistryNode) {
-									// closeOpenEditor();
-									registry = ((RegistryNode) object).getRegistry();
-								} else if (object instanceof RegistryResourceNode) {
-									registry = ((RegistryResourceNode) object).getConnectionInfo().getRegistry();
-								}
-								WSResourceData wsResourceData = null;
-								if (registry != null && regResourceNode != null
-										&& regResourceNode.getConnectionInfo() != null
-										&& regResourceNode.getConnectionInfo().isEnabled()) {
-									wsResourceData = registry.getAll(regResourceNode.getRegistryResourcePath());
-								}
-								if (registry != null && getRegistryPropertyViewer() != null) {
-									getRegistryPropertyViewer().setRegistryResourcePathData(regResourceNode);
-									try {
-										if (regResourceNode != null && regResourceNode.getConnectionInfo() != null
-												&& regResourceNode.getConnectionInfo().isEnabled()) {
-											getRegistryPropertyViewer().updateMe(wsResourceData);
-										}
-									} catch (Exception e) {
-										log.error(e.getMessage(), e);
-										registry.clearSessionProperties();
-									}
-								}
-								if (registry != null && getResourceInfoViewer() != null) {
-									getResourceInfoViewer().setRegistryResourcePathData(regResourceNode);
-									try {
-										if (regResourceNode != null && regResourceNode.getConnectionInfo() != null
-												&& regResourceNode.getConnectionInfo().isEnabled()) {
-											getResourceInfoViewer().updateMe(wsResourceData);
-										}
-									} catch (Exception e) {
-										log.error(e.getMessage(), e);
-										registry.clearSessionProperties();
-									}
-								}
-							}
-						}
-					}
-				});
-			}
-		};
-	}
-
-	public void update(Observable o, Object arg) {
-		if (o instanceof RegistryBrowserTraverseListener) {
-			RegistryBrowserTraverseListener r = (RegistryBrowserTraverseListener) o;
-			traverseRegistryBrowser(r.getUrl(), r.getPath());
-		} else {
-			Display.getDefault().asyncExec(new Runnable() {
-				public void run() {
-					treeViewer.refresh(regUrlNode.isRefreshExisting());
-				}
-			});
+	private boolean closeEditor(final RegistryResourceNode regResourceNode) {
+		boolean closeEditor = true;
+		RegistryResourceType resourceType = regResourceNode.getResourceType();
+		IEditorPart fileEditor = regResourceNode.getFileEditor();
+		if (resourceType == RegistryResourceType.RESOURCE && fileEditor != null) {
+			closeEditor = regResourceNode.getFileEditor().getEditorSite().getPage()
+					.closeEditor(regResourceNode.getFileEditor(), false);
 		}
+		return closeEditor;
 	}
-
-	public void traverseRegistryBrowser(String url, String path) {
-		List<RegistryNode> urlInfoList = regUrlNode.getUrlInfoList();
-		RegistryNode correctRegistryData = null;
-		for (RegistryNode registryData : urlInfoList) {
-			if (registryData.getUrl().toString().equals(url) && path.startsWith(registryData.getRegistryStartingPath())) {
-				correctRegistryData = registryData;
-				break;
-			}
-		}
-		if (correctRegistryData == null) {
-			try {
-				RegistryURLInfo registryUrlInfo = new RegistryURLInfo();
-				;
-				registryUrlInfo.setPersist(false);
-				registryUrlInfo.setUrl(new URL(url));
-				registryUrlInfo.setPath(DEFAULT_PATH);
-				correctRegistryData = regUrlNode.addRegistry(registryUrlInfo, null);
-			} catch (MalformedURLException e) {
-				log.error(e.getMessage(), e);
-			}
-
-		}
-		selectTreeViewerPath(correctRegistryData, path);
-	}
-
-	public void removeRegistryNode(String url, String path) {
-		List<RegistryNode> urlInfoList = regUrlNode.getUrlInfoList();
-		RegistryNode correctRegistryData = null;
-		for (RegistryNode registryData : urlInfoList) {
-			if (registryData.getUrl().toString().equals(url) && path.startsWith(registryData.getRegistryStartingPath())) {
-				correctRegistryData = registryData;
-				break;
-			}
-		}
-		regUrlNode.removeRegistry(correctRegistryData);
-	}
-
-	public void traverseRegistryBrowser(RegistryResourceNode registryResourcePathData) {
-		selectTreeViewerPath(registryResourcePathData.getConnectionInfo(),
-				registryResourcePathData.getRegistryResourcePath());
-	}
-
-	// APIM Actions
 
 	private Action copySequenceAction(final RegistryResourceNode regResourceNode) {
-
-		Action copyActionAM = new Action("Copy") {
+		Action copyActionAM = new Action("Copy	") {
 			public void run() {
 				if (regResourceNode.getResourceType() == RegistryResourceType.RESOURCE) {
 					try {
@@ -946,7 +868,6 @@ public class RegistryBrowserAPIMView extends ViewPart implements Observer {
 								&& MessageDialogUtils.question(regResourceNode.getFileEditor().getSite().getShell(),
 										"Do you want to save changes and copy?")) {
 							regResourceNode.getFileEditor().doSave(new NullProgressMonitor());
-							// regResourceNode.saveChangesToRegistry();
 						}
 					} catch (Exception e) {
 						exeptionHandler.showMessage(Display.getDefault().getActiveShell(),
@@ -968,8 +889,101 @@ public class RegistryBrowserAPIMView extends ViewPart implements Observer {
 
 	}
 
-	private Action createSequenceAction(final RegistryResourceNode selectedNode) {
+	private Action pasteSequenceAction(final RegistryResourceNode targetRegResource,
+			final RegistryResourceNode copyRegResource) {
+		Action paste = new Action("Paste	") {
+			@Override
+			public void run() {
+				try {
+					if (copyRegResource != null) {
+						if (MessageDialog.openConfirm(
+								Display.getCurrent().getActiveShell(),
+								"Continue copy-paste...",
+								copyRegResource.getRegistryResourcePath() + " will be copied to "
+										+ targetRegResource.getCaption() + ". Continue?")) {
 
+							Map<Integer, RegistryResourceNode> resourceMap = new HashMap<Integer, RegistryResourceNode>();
+							resourceMap.put(COPY_RESOURCE, copyRegResource);
+							resourceMap.put(TARGET_RESOURCE, targetRegResource);
+							broker.send(EVENT_TOPIC_PASTE, targetRegResource);
+
+						}
+					}
+
+				} catch (Exception e) {
+					log.error("copry action error", e);
+				}
+			}
+
+			@Override
+			public ImageDescriptor getImageDescriptor() {
+				ImageDescriptor metadataImgDes = ImageUtils.getImageDescriptor(ImageUtils.ICON_PASTE);
+				return metadataImgDes;
+			}
+		};
+
+		return paste;
+	}
+
+	private EventHandler getPasteEvent() {
+		return new EventHandler() {
+			public void handleEvent(final Event event) {
+				Display.getDefault().asyncExec(new Runnable() {
+					@SuppressWarnings({})
+					@Override
+					public void run() {
+						Object property = event.getProperty(IEventBroker.DATA);
+						if (property instanceof RegistryResourceNode) {
+							RegistryResourceNode copyRegResource = getCopyRegResourceNode();
+							RegistryResourceNode targetRegResource = (RegistryResourceNode) property;
+
+							if (copyRegResource != null) {
+
+								String path = copyRegResource.getRegistryResourcePath();
+								String destinationPath = targetRegResource.getRegistryResourcePath()
+										+ path.substring(copyRegResource.getRegistryResourceNodeParent()
+												.getRegistryResourcePath().length());
+
+								ArrayList<RegistryResourceNode> localResourceNodeList = targetRegResource
+										.getLocalResourceNodeList();
+								for (RegistryResourceNode registryResourceNode : localResourceNodeList) {
+									if (copyRegResource.getResourceName()
+											.equals(registryResourceNode.getResourceName())) {
+										MessageDialogUtils.error(
+												Display.getCurrent().getActiveShell(),
+												"",
+												"This operation cannot be performed because the "
+														+ copyRegResource.getResourceName()
+														+ "resource already exists!");
+										return;
+									}
+								}
+
+								RegistryResourceNode newNode = new RegistryResourceNode(localUrlNode.getUrlInfoList()
+										.get(0), destinationPath, targetRegResource);
+								newNode.setRegistryResource(RegistryResourceType.RESOURCE);
+								newNode.setResourceName(copyRegResource.getResourceName());
+								newNode.setNew(true);
+								newNode.setAllowExapand(false);
+								newNode.setIterativeRefresh(false);
+								newNode.setMediaType("application/xml");
+								newNode.setNewFile(copyRegResource.getFile());
+								targetRegResource.addChildResource(newNode);
+								changedResourceNodes.put(newNode.getRegistryResourcePath(), newNode);
+								treeViewer.setInput(localUrlNode);
+							}
+						}
+					}
+
+				});
+
+			}
+
+		};
+
+	}
+
+	private Action createSequenceAction(final RegistryResourceNode selectedNode) {
 		Action createResource = new Action("Create     ") {
 			public void run() {
 
@@ -991,38 +1005,8 @@ public class RegistryBrowserAPIMView extends ViewPart implements Observer {
 				String selectedPath = selectedNode.getRegistryResourcePath();
 				selectedPath = selectedPath.endsWith("/") ? selectedPath : selectedPath + "/";
 
-				try {
-					if (registry == null) {
-						registry = selectedNode.getConnectionInfo().getRegistry();
-					}
-
-					Resource resource = registry.newResource();
-					resource.setDescription("");
-					ArtifactTemplate selectedTemplate = ArtifactTemplateHandler
-							.getArtifactTemplates("org.wso2.developerstudio.eclipse.esb.sequence");
-					String templateContent = org.wso2.developerstudio.eclipse.utils.file.FileUtils
-							.getContentAsString(selectedTemplate.getTemplateDataStream());
-					templateContent = templateContent.replaceFirst("name=", " name=");
-					String source = MessageFormat.format(templateContent, sqNameWithoutExtetion);
-
-					InputStream is = new ByteArrayInputStream(source.getBytes());
-					resource.setContentStream(is);
-					resource.setMediaType("application/xml");// FIXME : should not be hardcoded here
-					String resourceName = selectedPath + sqName;
-					registry.put(resourceName, resource);
-					selectedNode.refreshChildren();
-					selectedNode.getConnectionInfo().getRegUrlData().refreshViewer(false);
-
-				} catch (InvalidRegistryURLException e) {
-					log.error("Create New Sequence from APIM perspective failed due to  " + e.getMessage(), e);
-				} catch (UnknownRegistryException e) {
-					log.error("Create New Sequence from APIM perspective failed due to  " + e.getMessage(), e);
-				} catch (RegistryException e) {
-					log.error("Create New Sequence from APIM perspective failed due to  " + e.getMessage(), e);
-				} catch (IOException e) {
-					log.error("Create New Sequence from APIM perspective failed due to  ", e);
-				}
-
+				treeViewer.getTree();
+				createSequnceInRegistry(selectedNode, sqNameWithoutExtetion, sqName, selectedPath);
 			}
 
 			@Override
@@ -1037,131 +1021,39 @@ public class RegistryBrowserAPIMView extends ViewPart implements Observer {
 
 	}
 
-	private Action pasteSequenceAction(final RegistryResourceNode targetRegResource,
-			final RegistryResourceNode copyRegResource) {
+	private void createSequnceInRegistry(final RegistryResourceNode selectedNode, String sqNameWithoutExtetion,
+			String sqName, String selectedPath) {
+		try {
 
-		Action paste = new Action("Paste     ") {
-			@Override
-			public void run() {
+			ArtifactTemplate selectedTemplate = ArtifactTemplateHandler
+					.getArtifactTemplates("org.wso2.developerstudio.eclipse.esb.sequence");
+			String templateContent = org.wso2.developerstudio.eclipse.utils.file.FileUtils
+					.getContentAsString(selectedTemplate.getTemplateDataStream());
+			templateContent = templateContent.replaceFirst("name=", " name=");
+			String source = MessageFormat.format(templateContent, sqNameWithoutExtetion);
+			Path tempDir = Files.createTempDirectory("tempfiles");
+			String filePath = tempDir.toString() + File.separator + sqName;
+			File sourceFile = new File(filePath);
+			FileUtils.writeStringToFile(sourceFile, source);
+			String registryResourcePath = selectedPath + sqName;
 
-				try {
+			localUrlNode.getUrlInfoList().get(0);
+			RegistryResourceNode newNode = new RegistryResourceNode(localUrlNode.getUrlInfoList().get(0),
+					registryResourcePath, selectedNode);
+			newNode.setRegistryResource(RegistryResourceType.RESOURCE);
+			newNode.setResourceName(sqName);
+			newNode.setNew(true);
+			newNode.setAllowExapand(false);
+			newNode.setIterativeRefresh(false);
+			newNode.setMediaType("application/xml");
+			newNode.setNewFile(sourceFile);
+			selectedNode.addChildResource(newNode);
+			changedResourceNodes.put(newNode.getRegistryResourcePath(), newNode);
+			treeViewer.setInput(localUrlNode);
 
-					if (copyRegResource != null) {
-
-						dragDropUtils = new DragDropUtils();
-
-						Queue queue = dragDropUtils.retrieveContentsFromRegistry(
-								targetRegResource.getRegistryResourcePath(), copyRegResource);
-						registry = targetRegResource.getConnectionInfo().getRegistry();
-						int initialCount = queue.count();
-						children = new ArrayList<String>();
-						for (int i = 0; i < initialCount; i++) {
-							Object element = queue.remove();
-							if (element instanceof Collection) {
-								String[] elements = ((Collection) element).getChildren();
-								for (int j = 0; j < elements.length; j++) {
-									children.add(elements[j]);
-								}
-
-							} else if (element instanceof Resource) {
-								children.add(((Resource) element).getId());
-							}
-						}
-
-						final Registry fromRegistry = copyRegResource.getConnectionInfo().getRegistry();
-						final Registry toRegistry = targetRegResource.getConnectionInfo().getRegistry();
-
-						if (MessageDialog.openConfirm(
-								Display.getCurrent().getActiveShell(),
-								"Continue copy-paste...",
-								copyRegResource.getRegistryResourcePath() + " will be copied to "
-										+ targetRegResource.getCaption() + ". Continue?")) {
-							try {
-								new ProgressMonitorDialog(getSite().getShell()).run(true, true,
-										new IRunnableWithProgress() {
-
-											public void run(IProgressMonitor monitor) throws InvocationTargetException,
-													InterruptedException {
-												List<String> list;
-												try {
-													monitor.beginTask("Copy-Paste resources...", children.size() + 1);
-													list = new ArrayList<String>();
-													list.add(copyRegResource.getRegistryResourcePath());
-													while (list.size() != 0) {
-														String path = list.get(0);
-														Resource resource = fromRegistry.get(path);
-														if (resource instanceof Collection) {
-															String[] children = ((Collection) resource).getChildren();
-															for (String child : children) {
-																list.add(child);
-															}
-														}
-
-														String destinationPath = targetRegResource
-																.getRegistryResourcePath()
-																+ path.substring(copyRegResource
-																		.getRegistryResourceNodeParent()
-																		.getRegistryResourcePath().length());
-
-														toRegistry.put(destinationPath, resource);
-														list.remove(0);
-														monitor.worked(1);
-													}
-													monitor.setTaskName("Refreshing tree...");
-													monitor.worked(1);
-
-													try {
-														// setCopyRegResourceNode(null);
-														Display.getDefault().asyncExec(new Runnable() {
-															public void run() {
-																try {
-																	targetRegResource.refreshChildren();
-																} catch (InvalidRegistryURLException e) {
-																	log.error(
-																			"Resouece paste issue due to "
-																					+ e.getMessage(), e);
-																} catch (UnknownRegistryException e) {
-																	log.error(
-																			"Resouece paste issue due to "
-																					+ e.getMessage(), e);
-																}
-																targetRegResource.getConnectionInfo().getRegUrlData()
-																		.refreshViewer(false);
-															}
-
-														});
-														monitor.worked(1);
-													} catch (Exception e) {
-														log.error("Resouece paste issue due to " + e.getMessage(), e);
-													}
-												} catch (Exception e) {
-													log.error("Resouece paste issue due to " + e.getMessage(), e);
-												}
-												monitor.done();
-											}
-
-										});
-							} catch (InvocationTargetException e) {
-								log.error("Resouece paste issue due to " + e.getMessage(), e);
-							} catch (InterruptedException e) {
-								log.error("Resouece paste issue due to " + e.getMessage(), e);
-							}
-
-						}
-					}
-				} catch (Exception e) {
-					log.error("copry action error", e);
-				}
-			}
-
-			@Override
-			public ImageDescriptor getImageDescriptor() {
-				ImageDescriptor metadataImgDes = ImageUtils.getImageDescriptor(ImageUtils.ICON_PASTE);
-				return metadataImgDes;
-			}
-		};
-
-		return paste;
+		} catch (IOException e) {
+			log.error("Create New Sequence from APIM perspective failed due to  ", e);
+		}
 	}
 
 	protected Action renameSequenceAction(final RegistryResourceNode regResourceNode) {
@@ -1186,40 +1078,32 @@ public class RegistryBrowserAPIMView extends ViewPart implements Observer {
 					String newName = inputDialog.getValue();
 					String newPath = regResourceNode.getParent()
 							+ (regResourceNode.getParent().endsWith(DEFAULT_PATH) ? newName : DEFAULT_PATH + newName);
-					registry = regResourceNode.getConnectionInfo().getRegistry();
-					try {
-						if (regResourceNode.getResourceType() == RegistryResourceType.RESOURCE) {
-							try {
-								if (regResourceNode.getFileEditor() != null) {
-									if (regResourceNode.getFileEditor().isDirty()) {
-										if (MessageDialogUtils.question(regResourceNode.getFileEditor().getSite()
-												.getShell(), "Do you want to save changes?")) {
-
-											regResourceNode.getFileEditor().doSave(new NullProgressMonitor());
-
-											regResourceNode.saveChangesToRegistry();
-
-										}
+					if (regResourceNode.getResourceType() == RegistryResourceType.RESOURCE) {
+						try {
+							if (regResourceNode.getFileEditor() != null) {
+								if (regResourceNode.getFileEditor().isDirty()) {
+									if (MessageDialogUtils.question(regResourceNode.getFileEditor().getSite()
+											.getShell(), "Do you want to save changes?")) {
+										regResourceNode.getFileEditor().doSave(new NullProgressMonitor());
 									}
-									regResourceNode.getFileEditor().getEditorSite().getPage()
-											.closeEditor(regResourceNode.getFileEditor(), false);
-									regResourceNode.getFileEditor().dispose();
 								}
-
-							} catch (Exception e) {
-								log.error("Could not close associated editor for this resource" + e.getMessage(), e);
+								regResourceNode.getFileEditor().getEditorSite().getPage()
+										.closeEditor(regResourceNode.getFileEditor(), false);
+								regResourceNode.getFileEditor().dispose();
 							}
-						}
-						registry.rename(regResourceNode.getRegistryResourcePath(), newPath);
-						regResourceNode.setResourceName(newName);
-						regResourceNode.getRegistryResourceNodeParent().setIterativeRefresh(true);
-						regUrlNode.dataChanged(true);
 
-					} catch (InvalidRegistryURLException e) {
-						log.error("Resouece renanming issue due to " + e.getMessage(), e);
-					} catch (UnknownRegistryException e) {
-						log.error("Resouece renaming issue due to " + e.getMessage(), e);
+						} catch (Exception e) {
+							log.error("Could not close associated editor for this resource" + e.getMessage(), e);
+						}
 					}
+
+					regResourceNode.setOldPath(regResourceNode.getRegistryResourcePath());
+					regResourceNode.setNewPath(newPath);
+					regResourceNode.setRename(true);
+					regResourceNode.setResourceName(newName);
+					changedResourceNodes.put(regResourceNode.getRegistryResourcePath(), regResourceNode);
+					updateDirtyState();
+					treeViewer.setInput(localUrlNode);
 				}
 			}
 
@@ -1233,48 +1117,46 @@ public class RegistryBrowserAPIMView extends ViewPart implements Observer {
 	}
 
 	public Action deleteSequenceAction(final RegistryResourceNode regResourceNode) {
+
 		Action delete = new Action("Delete                       ^D") {
 			@Override
 			public void run() {
 				if (MessageDialog.openQuestion(Display.getCurrent().getActiveShell(), "Delete Item",
 						"Are you sure you want to delete the item ?")) {
 
-					try {
+					boolean closeEditor = closeEditor(regResourceNode);
+					if (closeEditor) {
 
-						registry = regResourceNode.getConnectionInfo().getRegistry();
-						String selectedPath = regResourceNode.getRegistryResourcePath();
-						SWTControlUtils.closeAssociatedEditor(regResourceNode.getEditorInput());
-						registry.delete(selectedPath);
+						regResourceNode.setIsdeleted(true);
+						changedResourceNodes.put(regResourceNode.getRegistryResourcePath(), regResourceNode);
+						treeViewer.setInput(localUrlNode);
+						try {
+							new ProgressMonitorDialog(getSite().getShell()).run(true, true,
+									new IRunnableWithProgress() {
 
-						if (regResourceNode.getRegistryResourceNodeParent() == null) {
-							refreshItem(regResourceNode.getRegistryResourceNodeParent());
-						} else {
-							Display.getDefault().asyncExec(new Runnable() {
+										public void run(IProgressMonitor monitor) throws InvocationTargetException,
+												InterruptedException {
 
-								public void run() {
-									try {
-										regResourceNode.getRegistryResourceNodeParent().refreshChildren();
-									} catch (InvalidRegistryURLException e) {
-										log.error("Error while deleting action error due to " + e.getMessage(), e);
-									} catch (UnknownRegistryException e) {
-										log.error("Error while deleting action error due to " + e.getMessage(), e);
-									}
-								}
-							});
+											if (treeViewer != null) {
+												monitor.beginTask("", 100);
+												monitor.worked(60);
+												broker.send(EVENT_TOPIC_EXPAND_TREE, null);
+												monitor.worked(100);
+												monitor.done();
+											}
+
+										}
+									});
+						} catch (InvocationTargetException e) {
+							log.error("Tree expanding fail" + e.getMessage(), e);
+						} catch (InterruptedException e) {
+							log.error("Tree expanding fail" + e.getMessage(), e);
 						}
 
-						// TOOLS-623
-						if (regResourceNode.getResourceType() == RegistryResourceType.RESOURCE
-								&& regResourceNode.getFileEditor() != null) {
-							regResourceNode.getFileEditor().getEditorSite().getPage()
-									.closeEditor(regResourceNode.getFileEditor(), false);
-						}
-						regUrlNode.dataChanged(false);
-
-					} catch (Exception e) {
-						MessageDialogUtils.error(Display.getCurrent().getActiveShell(),
-								"Error while deleting resource: " + e.getMessage());
-						log.error(e);
+					} else {
+						MessageDialog
+								.openError(Display.getCurrent().getActiveShell(), "Editor closing dialog",
+										"Associated editor couldn't close , please close the editor first and re-try to delete");
 					}
 				}
 			}
@@ -1288,7 +1170,29 @@ public class RegistryBrowserAPIMView extends ViewPart implements Observer {
 		return delete;
 	}
 
-	public Action imporSequenceAction(final RegistryResourceNode regResourceNode) {
+	private void deleteSequence(final RegistryResourceNode regResourceNode) {
+		try {
+			// Deleting the resource from remote model
+			registry = regResourceNode.getConnectionInfo().getRegistry();
+			String selectedPath = regResourceNode.getRegistryResourcePath();
+			SWTControlUtils.closeAssociatedEditor(regResourceNode.getEditorInput());
+			registry.delete(selectedPath);
+
+			// Removing resource from localModel
+			RegistryResourceNode nodeParent = regResourceNode.getRegistryResourceNodeParent();
+			nodeParent.getResourceNodeList().remove(regResourceNode);
+
+			treeViewer.setInput(localUrlNode);
+			expanTree();
+
+		} catch (Exception e) {
+			MessageDialogUtils.error(Display.getCurrent().getActiveShell(),
+					"Error while deleting resource: " + e.getMessage());
+			log.error(e);
+		}
+	}
+
+	public Action importSequenceAction(final RegistryResourceNode regResourceNode) {
 		Action importAction = new Action("Import sequence") {
 			@Override
 			public void run() {
@@ -1312,10 +1216,25 @@ public class RegistryBrowserAPIMView extends ViewPart implements Observer {
 
 					if (MessageDialog.openQuestion(Display.getCurrent().getActiveShell(), "Apply Chanages",
 							"Are you sure you want to Push Changes into remote registry ?")) {
-						regResourceNode.saveChangesToRegistry();
-						refreshItem(regResourceNode);
-						MessageDialogUtils.info(Display.getCurrent().getActiveShell(), " ",
-								"Sucessfully applied the local changes");
+
+						if (regResourceNode.isIsdeleted()) {
+							deleteSequence(regResourceNode);
+						} else if (regResourceNode.isIsnew()) {
+							regResourceNode.putFile();
+							MessageDialogUtils.info(Display.getCurrent().getActiveShell(), " ",
+									"Sucessfully applied the local changes");
+						} else {
+							if (regResourceNode.isRename()) {
+								regResourceNode.rename();
+							}
+							regResourceNode.saveChangesToRegistry();
+							refreshItem(regResourceNode);
+							MessageDialogUtils.info(Display.getCurrent().getActiveShell(), " ",
+									"Sucessfully applied the local changes");
+						}
+
+						changedResourceNodes.remove(regResourceNode.getRegistryResourcePath());
+						updateDirtyState();
 					}
 
 				} catch (Exception e) {
@@ -1373,126 +1292,87 @@ public class RegistryBrowserAPIMView extends ViewPart implements Observer {
 
 	private void importFiles(final RegistryResourceNode regResourceNode) {
 		final FileDialog fileDialog = new FileDialog(Display.getCurrent().getActiveShell(), SWT.SINGLE);
-		fileDialog.setText("Select files to be uploaded to the registry");
+		fileDialog.setText("Select file to be uploaded to the registry");
 		if (fileDialog.open() != null) {
 			final String fileName = fileDialog.getFileName();
 			if (MessageDialog.openConfirm(Display.getCurrent().getActiveShell(), "Continue uploading...",
 					" file will be uploaded. Continue?")) {
-				try {
-					new ProgressMonitorDialog(getSite().getShell()).run(true, true, new IRunnableWithProgress() {
-						public void run(IProgressMonitor monitor) throws InvocationTargetException,
-								InterruptedException {
+				File file = new File(fileDialog.getFilterPath(), fileName);
+				if (file.exists()) {
 
-							monitor.beginTask("Uploading resources...", 100);
-							monitor.worked(0);
-							int count = 0;
-							monitor.setTaskName("Uploading " + fileName + "...");
-							try {
-								File file = new File(fileDialog.getFilterPath(), fileName);
-								if (file.exists()) {
-									regResourceNode.getConnectionInfo().getRegistry()
-											.addFileToRegistry(file, regResourceNode.getRegistryResourcePath(), null);
-								}
-								monitor.worked(1);
-							} catch (Exception e) {
-								MessageDialogUtils.error(Display.getCurrent().getActiveShell(),
-										"Error while Uploading " + fileName + "... due to : " + e.getMessage());
-								log.error("Error while Uploading " + fileName + "... due to : " + e.getMessage(), e);
-							}
-							monitor.setTaskName("Refreshing tree...");
-							monitor.worked(1);
-							try {
-								monitor.worked(++count);
-								Display.getDefault().asyncExec(new Runnable() {
-									public void run() {
-										try {
-											regResourceNode.refreshChildren();
-										} catch (InvalidRegistryURLException e) {
-											log.error(e.getMessage(), e);
-										} catch (UnknownRegistryException e) {
-											log.error(e.getMessage(), e);
-										}
-										regResourceNode.getConnectionInfo().getRegUrlData().refreshViewer(false);
-									}
+					String destinationPath = regResourceNode.getRegistryResourcePath() + File.separator + fileName;
+					RegistryResourceNode newNode = new RegistryResourceNode(localUrlNode.getUrlInfoList().get(0),
+							destinationPath, regResourceNode);
 
-								});
+					newNode.setRegistryResource(RegistryResourceType.RESOURCE);
+					newNode.setResourceName(fileName);
+					newNode.setNew(true);
+					newNode.setAllowExapand(false);
+					newNode.setIterativeRefresh(false);
+					newNode.setMediaType("application/xml");
+					newNode.setNewFile(file);
+					regResourceNode.addChildResource(newNode);
+					changedResourceNodes.put(newNode.getRegistryResourcePath(), newNode);
+					treeViewer.setInput(localUrlNode);
 
-								monitor.setTaskName("Opening the file ...");
-								monitor.worked(1);
-
-							} catch (Exception e) {
-								MessageDialogUtils.error(Display.getCurrent().getActiveShell(),
-										"Error while Refreshing tree... due to : " + e.getMessage());
-								log.error("Error while Refreshing tree... due to : " + e.getMessage(), e);
-							}
-							monitor.done();
-						}
-
-					});
-				} catch (InvocationTargetException e) {
-					log.error(e.getMessage(), e);
-				} catch (InterruptedException e) {
-					log.error(e.getMessage(), e);
 				}
-
 			}
 		}
 	}
 
-	private static MultiStatus createMultiStatus(String msg, Throwable t) {
+	/*
+	 * private Action checkoutAction(final RegistryResourceNode regResourceNode) {
+	 * 
+	 * Action copyActionAM = new Action("Checkout") { public void run() { if (regResourceNode.getResourceType() ==
+	 * RegistryResourceType.COLLECTION) { checkoutRegpath(regResourceNode); } setCopyRegResourceNode(regResourceNode); }
+	 * 
+	 * @Override public ImageDescriptor getImageDescriptor() { ImageDescriptor metadataImgDes =
+	 * ImageUtils.getImageDescriptor(ImageUtils.ACTION_CHECK_OUT_MENU); return metadataImgDes; }
+	 * 
+	 * };
+	 * 
+	 * return copyActionAM;
+	 * 
+	 * }
+	 */
 
-		List<Status> childStatuses = new ArrayList<Status>();
-		StackTraceElement[] stackTraces = Thread.currentThread().getStackTrace();
-
-		for (StackTraceElement stackTrace : stackTraces) {
-			Status status = new Status(IStatus.ERROR, "com.example.e4.rcp.todo", stackTrace.toString());
-			childStatuses.add(status);
-		}
-
-		MultiStatus ms = new MultiStatus("com.example.e4.rcp.todo", IStatus.ERROR,
-				childStatuses.toArray(new Status[] {}), t.toString(), t);
-		return ms;
-	}
+	// TODO - If APIM support CAR in the future then we can use method to create Regresource project
+	/*
+	 * private String checkoutRegpath(final RegistryResourceNode regResourceNode) { try { String checkoutPath=""; String
+	 * chkoutFolder=""; if (regResourceNode.getResourceType() == RegistryResourceType.RESOURCE) { chkoutFolder =
+	 * regResourceNode.getRegistryResourceNodeParent().getLastSegmentInPath(); checkoutPath =
+	 * regResourceNode.getRegistryResourceNodeParent() .getRegistryResourcePath(); } else if
+	 * (regResourceNode.getResourceType() == RegistryResourceType.UNDEFINED) { throw new
+	 * Exception("Resource not Defined"); } else { chkoutFolder =regResourceNode.getLastSegmentInPath(); checkoutPath =
+	 * regResourceNode.getRegistryResourcePath(); } if (chkoutFolder.equals("/")) { chkoutFolder = "ROOT"; }
+	 * 
+	 * String projectName = "APIMRegistry"; String rootWorkspaceLocation =
+	 * ResourcesPlugin.getWorkspace().getRoot().getLocation().toOSString() + File.separator + projectName;
+	 * IWorkspaceRoot root = ResourcesPlugin.getWorkspace().getRoot(); IProject project = root.getProject(projectName);
+	 * project.create(new NullProgressMonitor()); project.open(new NullProgressMonitor());
+	 * 
+	 * IPath path = project.getLocation(); path = path.append(chkoutFolder);
+	 * 
+	 * // IProject project = root.getProject(path.segment(0)); // path = root.getLocation().append(path);
+	 * 
+	 * 
+	 * try { if (RegistryCheckInClientUtils.isCheckoutPathValid(path.toOSString())) { (new
+	 * File(path.toOSString())).mkdirs(); try { RegistryCheckInClientUtils.checkout(regResourceNode.getConnectionInfo()
+	 * .getUsername(), regResourceNode.getConnectionInfo() .getPassword(), path.toOSString(),
+	 * regResourceNode.getConnectionInfo() .getUrl().toString(), checkoutPath); } catch (SynchronizationException e1) {
+	 * log.error(e1); } try { project.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor()); } catch
+	 * (CoreException e) { log.error(e); } }
+	 * 
+	 * 
+	 * } catch (Exception e1) { MessageDialog.openError(Display.getCurrent().getActiveShell(), "Error in checkout path",
+	 * e1.getMessage()); } return checkoutPath; } catch (Exception e) { log.error(e); }
+	 * 
+	 * return null; }
+	 */
 
 	// Utitlity methods
 
-	private void changeRegistryUrlStatus(boolean enabled) {
-		if (selectedObj instanceof RegistryNode) {
-			RegistryNode regData = (RegistryNode) selectedObj;
-			if (enabled) {
-				if (!Utils.isValidServerURL(regData.getServerUrl())) {
-					MessageDialog.openError(Display.getCurrent().getActiveShell(), "Connect with the registry...",
-							"This registry instance is unreachable: \n\n\t" + regData.getServerUrl());
-					regData.setPersistantEnabled(enabled);
-					regData.setEnabled(false);
-					return;
-				}
-			}
-			regData.setUserEnabled(enabled);
-			regData.setPersistantEnabled(enabled);
-			regData.getRegUrlData().refreshViewer(true);
-			// updateToolbar();
-		}
-	}
-
-	public void dispose() {
-		deactivateActionHandlers();
-
-		IContextService contextService = (IContextService) getSite().getService(IContextService.class);
-		contextService.deactivateContext(activation);
-		super.dispose();
-	}
-
-	private void deactivateActionHandlers() {
-		IHandlerService handlerService = (IHandlerService) getSite().getService(IHandlerService.class);
-
-		handlerService.deactivateHandler(activateDeleteHandler);
-		handlerService.deactivateHandler(activateRefreshHandler);
-		handlerService.deactivateHandler(activateAddResourceHandler);
-		handlerService.deactivateHandler(activateRenameHandler);
-		handlerService.deactivateHandler(activateCopyHandler);
-		handlerService.deactivateHandler(activatePasteHandler);
-	}
+	
 
 	// Getter & Setters
 
@@ -1553,11 +1433,11 @@ public class RegistryBrowserAPIMView extends ViewPart implements Observer {
 	}
 
 	public RegistryURLNode getRegUrlData() {
-		return regUrlNode;
+		return localUrlNode;
 	}
 
 	public void setRegUrlData(RegistryURLNode regUrlData) {
-		this.regUrlNode = regUrlData;
+		this.localUrlNode = regUrlData;
 	}
 
 	public RegistryNode getRegData() {
@@ -1598,7 +1478,6 @@ public class RegistryBrowserAPIMView extends ViewPart implements Observer {
 
 	public void setTraversePathChanged(boolean traversePathChanged) {
 		this.traversePathChanged = traversePathChanged;
-		elapsedTime = 0;
 	}
 
 	public boolean isTraversePathChanged() {
@@ -1675,7 +1554,7 @@ public class RegistryBrowserAPIMView extends ViewPart implements Observer {
 		}
 	}
 
-	public class VersionViewAction extends Action {
+	/*public class VersionViewAction extends Action {
 
 		RegistryResourceNode registryResourcePathData;
 		String verstionPath;
@@ -1705,8 +1584,8 @@ public class RegistryBrowserAPIMView extends ViewPart implements Observer {
 			}
 		}
 	}
-
-	public class RestoreVersionAction extends Action {
+*/
+	/*public class RestoreVersionAction extends Action {
 		RegistryResourceNode registryResourcePathData;
 		String versionPath;
 
@@ -1729,24 +1608,8 @@ public class RegistryBrowserAPIMView extends ViewPart implements Observer {
 			}
 		}
 	}
+*/
 
-	public class TextContributionItem implements Runnable {
-		public void run() {
-			if (isTraversePathChanged()) {
-				if (elapsedTime > 600) {
-					if (regNode == null)
-						regNode = regUrlNode.getUrlInfoList().get(0);
-					String txt = getTraversePath();
-					treeViewer.expandTree(regNode, txt);
-					txtTraverse.setFocus();
-					setTraversePathChanged(false);
-					elapsedTime = 0;
-				} else
-					elapsedTime += chkTraverseDelay;
 
-			}
-			if (getSite().getShell() != null)
-				getSite().getShell().getDisplay().timerExec(chkTraverseDelay, this);
-		}
-	}
+	
 }

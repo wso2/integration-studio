@@ -22,7 +22,6 @@ import org.eclipse.ui.IPerspectiveFactory;
 
 public class ApimRegistryPerspectiveFactory implements IPerspectiveFactory {
 
-	private static final String BROWSER_FOLDER = "browserFolder";
 	private static final String REGISTRY_APIM_VIEW = "org.wso2.developerstudio.registry.remote.registry.api.view";
 
 	public void createInitialLayout(IPageLayout layout) {
@@ -37,9 +36,21 @@ public class ApimRegistryPerspectiveFactory implements IPerspectiveFactory {
 	public void defineLayout(IPageLayout layout) {
 		String editorArea = layout.getEditorArea();
 		layout.setEditorAreaVisible(true);
-		IFolderLayout browserFolder = layout.createFolder(BROWSER_FOLDER, IPageLayout.LEFT, (float) 0.25, //$NON-NLS-1$
-				editorArea);
-		browserFolder.addView(REGISTRY_APIM_VIEW);
+		
+		IFolderLayout topLeft = layout.createFolder("topLeft",
+				IPageLayout.LEFT, 0.30f, editorArea);
+		topLeft.addView(REGISTRY_APIM_VIEW);
+		// topLeft.addPlaceholder(IPageLayout.ID_BOOKMARKS);
+
+		// Bottom left: Outline view and Property Sheet view
+		IFolderLayout bottomLeft = layout.createFolder("bottomLeft",
+				IPageLayout.BOTTOM, 0.65f, "topLeft");
+		bottomLeft.addView(IPageLayout.ID_OUTLINE);
+		// bottomLeft.addView(IPageLayout.ID_PROP_SHEET);
+
+		IFolderLayout rightArea = layout.createFolder("bottom",
+				IPageLayout.BOTTOM, 0.65f, editorArea);
+		rightArea.addView(IPageLayout.ID_PROP_SHEET);
 
 	}
 

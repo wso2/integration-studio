@@ -30,6 +30,7 @@ import org.apache.maven.model.Repository;
 import org.apache.maven.model.RepositoryPolicy;
 import org.apache.maven.project.MavenProject;
 import org.codehaus.plexus.util.xml.pull.XmlPullParserException;
+import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IProjectDescription;
@@ -278,14 +279,16 @@ public abstract class AbstractWSO2ProjectCreationWizard extends Wizard implement
 			parentProject = root.getProject(parentName);
 			
 			if (parentProject != null && !parentProject.hasNature(Constants.MAVEN_MULTI_MODULE_PROJECT_NATURE)) {
+				
 				String newlocation = parentFile.getParent() + File.separator + name;
 				location = new File(newlocation);
 				getModel().setLocation(location);
-				isParentMMM = false;
-			}
+			 	isParentMMM = false;
+			} 
+		} catch (CoreException e) {			
+			log.warn("Cannot create project in selected location ", e);
+			return createProjectInDefaultWorkspace(name);
 			
-		} catch (CoreException e) {
-			log.error("Error occured while Seleting the parent location ", e);
 		}
 		
 		IProjectDescription newProjectDescription = project.getWorkspace().newProjectDescription(name);

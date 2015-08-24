@@ -25,24 +25,26 @@ import org.wso2.developerstudio.eclipse.platform.core.project.model.ProjectDataM
 public class InboundEndpointCreationTypes extends AbstractListDataProvider {
 
 	@Override
-    public List<ListData> getListData(String modelProperty, ProjectDataModel model) {
+	public List<ListData> getListData(String modelProperty, ProjectDataModel model) {
 		List<ListData> epTypeList = new ArrayList<ListData>();
 		epTypeList.add(createListData(InboundEndpointArtifactProperties.typeHTTP,
-		                              InboundEndpointArtifactProperties.typeHTTP));
+				InboundEndpointArtifactProperties.typeHTTP));
 		epTypeList.add(createListData(InboundEndpointArtifactProperties.typeFile,
-		                              InboundEndpointArtifactProperties.typeFile));
+				InboundEndpointArtifactProperties.typeFile));
 		epTypeList.add(createListData(InboundEndpointArtifactProperties.typeJMS,
-		                              InboundEndpointArtifactProperties.typeJMS));
+				InboundEndpointArtifactProperties.typeJMS));
 		epTypeList.add(createListData(InboundEndpointArtifactProperties.typeCustom,
-		                              InboundEndpointArtifactProperties.typeCustom));
+				InboundEndpointArtifactProperties.typeCustom));
 		epTypeList.add(createListData(InboundEndpointArtifactProperties.typeHTTPS,
-                InboundEndpointArtifactProperties.typeHTTPS));
+				InboundEndpointArtifactProperties.typeHTTPS));
 		epTypeList.add(createListData(InboundEndpointArtifactProperties.typeHL7,
-                InboundEndpointArtifactProperties.typeHL7));
+				InboundEndpointArtifactProperties.typeHL7));
 		epTypeList.add(createListData(InboundEndpointArtifactProperties.typeKAFKA,
-                InboundEndpointArtifactProperties.typeKAFKA));
+				InboundEndpointArtifactProperties.typeKAFKA));
 		epTypeList.add(createListData(InboundEndpointArtifactProperties.typeCXF_WS_RM,
-                InboundEndpointArtifactProperties.typeCXF_WS_RM));
+				InboundEndpointArtifactProperties.typeCXF_WS_RM));
+		epTypeList.add(createListData(InboundEndpointArtifactProperties.typeMQTT,
+				InboundEndpointArtifactProperties.typeMQTT));
 		return epTypeList;
 	}
 

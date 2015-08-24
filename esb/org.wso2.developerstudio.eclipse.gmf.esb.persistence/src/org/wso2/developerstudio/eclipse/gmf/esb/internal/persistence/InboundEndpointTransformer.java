@@ -138,6 +138,34 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
 			if (StringUtils.isNotBlank(String.valueOf(visualInboundEndpoint.isApiDispatchingEnabled()))) {
 				inboundEndpoint.addParameter(InboundEndpointConstants.API_DISPATCHING_ENABLED,
 						String.valueOf(visualInboundEndpoint.isApiDispatchingEnabled()));
+			}			
+			if (StringUtils.isNotBlank(String.valueOf(visualInboundEndpoint.getInboundWorkerPoolSizeCore()))) {
+				inboundEndpoint.addParameter(InboundEndpointConstants.INBOUND_WORKER_POOL_SIZE_CORE,
+						String.valueOf(visualInboundEndpoint.getInboundWorkerPoolSizeCore()));
+			}
+			if (StringUtils.isNotBlank(String.valueOf(visualInboundEndpoint.getInboundWorkerPoolSizeMax()))) {
+				inboundEndpoint.addParameter(InboundEndpointConstants.INBOUND_WORKER_POOL_SIZE_MAX,
+						String.valueOf(visualInboundEndpoint.getInboundWorkerPoolSizeMax()));
+			}
+			if (StringUtils.isNotBlank(String.valueOf(visualInboundEndpoint.getInboundWorkerThreadKeepAliveSec()))) {
+				inboundEndpoint.addParameter(InboundEndpointConstants.INBOUND_WORKER_THREAD_KEEP_ALIVE_SEC,
+						String.valueOf(visualInboundEndpoint.getInboundWorkerThreadKeepAliveSec()));
+			}
+			if (StringUtils.isNotBlank(String.valueOf(visualInboundEndpoint.getInboundWorkerPoolQueueLength()))) {
+				inboundEndpoint.addParameter(InboundEndpointConstants.INBOUND_WORKER_POOL_QUEUE_LENGTH,
+						String.valueOf(visualInboundEndpoint.getInboundWorkerPoolQueueLength()));
+			}
+			if (StringUtils.isNotBlank(String.valueOf(visualInboundEndpoint.getInboundThreadGroupId()))) {
+				inboundEndpoint.addParameter(InboundEndpointConstants.INBOUND_THREAD_GROUOP_ID,
+						String.valueOf(visualInboundEndpoint.getInboundThreadGroupId()));
+			}
+			if (StringUtils.isNotBlank(String.valueOf(visualInboundEndpoint.getInboundThreadId()))) {
+				inboundEndpoint.addParameter(InboundEndpointConstants.INBOUND_THREAD_ID,
+						String.valueOf(visualInboundEndpoint.getInboundThreadId()));
+			}
+			if (StringUtils.isNotBlank(String.valueOf(visualInboundEndpoint.getDispatchFilterPattern()))) {
+				inboundEndpoint.addParameter(InboundEndpointConstants.DISPATCH_FILTER_PATTERN,
+						String.valueOf(visualInboundEndpoint.getDispatchFilterPattern()));
 			}
 			break;
 		case FILE:
@@ -251,7 +279,15 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
 			if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportVFSFileProcessCount())) {
 				inboundEndpoint.addParameter(InboundEndpointConstants.VFS_FILE_PROCESS_COUNT,
 						visualInboundEndpoint.getTransportVFSFileProcessCount());
+			}		
+			if (StringUtils.isNotBlank(String.valueOf(visualInboundEndpoint.isTransportVFSStreaming()))) {
+				inboundEndpoint.addParameter(InboundEndpointConstants.VFS_STREAMING,
+						String.valueOf(visualInboundEndpoint.isTransportVFSStreaming()));
 			}
+			if (StringUtils.isNotBlank(String.valueOf(visualInboundEndpoint.isTransportVFSBuild()))) {
+				inboundEndpoint.addParameter(InboundEndpointConstants.VFS_BUILD,
+						String.valueOf(visualInboundEndpoint.isTransportVFSBuild()));
+			}			
 			break;
 		case JMS:
 			if (StringUtils.isNotBlank(visualInboundEndpoint.getInterval())) {
@@ -330,10 +366,17 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
 			if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportJMSContentType())) {
 				inboundEndpoint.addParameter(InboundEndpointConstants.JMS_CONTENT_TYPE,
 						visualInboundEndpoint.getTransportJMSContentType());
-			}
+			}			
+			if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportJMSReplyDestination())) {
+				inboundEndpoint.addParameter(InboundEndpointConstants.JMS_REPLY_DESTINATION,
+						visualInboundEndpoint.getTransportJMSReplyDestination());
+			}			
+			if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportJMSPubSubNoLocal())) {
+				inboundEndpoint.addParameter(InboundEndpointConstants.JMS_PUB_SUB_NO_LOCAL,
+						visualInboundEndpoint.getTransportJMSPubSubNoLocal());
+			}			
 			break;
 		case CUSTOM:
-
 			if (StringUtils.isNotBlank(visualInboundEndpoint.getInterval())) {
 				inboundEndpoint.addParameter(InboundEndpointConstants.INTERVAL, visualInboundEndpoint.getInterval());
 			}
@@ -357,6 +400,34 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
 			if (StringUtils.isNotBlank(String.valueOf(visualInboundEndpoint.isApiDispatchingEnabled()))) {
 				inboundEndpoint.addParameter(InboundEndpointConstants.API_DISPATCHING_ENABLED,
 						String.valueOf(visualInboundEndpoint.isApiDispatchingEnabled()));
+			}
+			if (StringUtils.isNotBlank(String.valueOf(visualInboundEndpoint.getInboundWorkerPoolSizeCore()))) {
+				inboundEndpoint.addParameter(InboundEndpointConstants.INBOUND_WORKER_POOL_SIZE_CORE,
+						String.valueOf(visualInboundEndpoint.getInboundWorkerPoolSizeCore()));
+			}
+			if (StringUtils.isNotBlank(String.valueOf(visualInboundEndpoint.getInboundWorkerPoolSizeMax()))) {
+				inboundEndpoint.addParameter(InboundEndpointConstants.INBOUND_WORKER_POOL_SIZE_MAX,
+						String.valueOf(visualInboundEndpoint.getInboundWorkerPoolSizeMax()));
+			}
+			if (StringUtils.isNotBlank(String.valueOf(visualInboundEndpoint.getInboundWorkerThreadKeepAliveSec()))) {
+				inboundEndpoint.addParameter(InboundEndpointConstants.INBOUND_WORKER_THREAD_KEEP_ALIVE_SEC,
+						String.valueOf(visualInboundEndpoint.getInboundWorkerThreadKeepAliveSec()));
+			}
+			if (StringUtils.isNotBlank(String.valueOf(visualInboundEndpoint.getInboundWorkerPoolQueueLength()))) {
+				inboundEndpoint.addParameter(InboundEndpointConstants.INBOUND_WORKER_POOL_QUEUE_LENGTH,
+						String.valueOf(visualInboundEndpoint.getInboundWorkerPoolQueueLength()));
+			}
+			if (StringUtils.isNotBlank(String.valueOf(visualInboundEndpoint.getInboundThreadGroupId()))) {
+				inboundEndpoint.addParameter(InboundEndpointConstants.INBOUND_THREAD_GROUOP_ID,
+						String.valueOf(visualInboundEndpoint.getInboundThreadGroupId()));
+			}
+			if (StringUtils.isNotBlank(String.valueOf(visualInboundEndpoint.getInboundThreadId()))) {
+				inboundEndpoint.addParameter(InboundEndpointConstants.INBOUND_THREAD_ID,
+						String.valueOf(visualInboundEndpoint.getInboundThreadId()));
+			}
+			if (StringUtils.isNotBlank(String.valueOf(visualInboundEndpoint.getDispatchFilterPattern()))) {
+				inboundEndpoint.addParameter(InboundEndpointConstants.DISPATCH_FILTER_PATTERN,
+						String.valueOf(visualInboundEndpoint.getDispatchFilterPattern()));
 			}
 			if (StringUtils.isNotBlank(visualInboundEndpoint.getTruststore())) {
 				inboundEndpoint
@@ -505,6 +576,59 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
 						String.valueOf(visualInboundEndpoint.isEnableSSL()));
 			}
 			break;
+			
+			
+			
+		case MQTT:
+			if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportMQTTConnectionFactory())) {
+				inboundEndpoint.addParameter(InboundEndpointConstants.INBOUND_MQTT_CONNECTION_FACTORY,
+						visualInboundEndpoint.getTransportMQTTConnectionFactory());
+			}
+			if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportMQTTServerHostName())) {
+				inboundEndpoint.addParameter(InboundEndpointConstants.INBOUND_MQTT_SERVER_HOST_NAME,
+						visualInboundEndpoint.getTransportMQTTServerHostName());
+			}
+			if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportMQTTServerPort())) {
+				inboundEndpoint.addParameter(InboundEndpointConstants.INBOUND_MQTT_SERVER_PORT,
+						visualInboundEndpoint.getTransportMQTTServerPort());
+			}
+			
+			if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportMQTTTopicName())) {
+				inboundEndpoint.addParameter(InboundEndpointConstants.INBOUND_MQTT_TOPIC_NAME,
+						visualInboundEndpoint.getTransportMQTTTopicName());
+			}
+			
+			if (StringUtils.isNotBlank(String.valueOf(visualInboundEndpoint.getContentType().getLiteral()))) {
+				inboundEndpoint.addParameter(InboundEndpointConstants.INBOUND_MQTT_CONTENT_TYPE, visualInboundEndpoint
+						.getContentType().getLiteral());
+			}
+			
+			if (StringUtils.isNotBlank(String.valueOf(visualInboundEndpoint.getTransportMQTTSubscriptionQOS().getLiteral()))) {
+				inboundEndpoint.addParameter(InboundEndpointConstants.INBOUND_MQTT_SUBSCRIPTION_QOS, visualInboundEndpoint
+						.getTransportMQTTSubscriptionQOS().getLiteral());
+			}
+			
+			//Session clean 
+			
+			if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportMQTTSslEnable())) {
+				inboundEndpoint.addParameter(InboundEndpointConstants.INBOUND_MQTT_SSL_ENABLE,
+						visualInboundEndpoint.getTransportMQTTSslEnable());
+			}
+			
+			if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportMQTTTemporaryStoreDirectory())) {
+				inboundEndpoint.addParameter(InboundEndpointConstants.INBOUND_MQTT_TEMPORARY_STORE_DIRECTORY,
+						visualInboundEndpoint.getTransportMQTTTemporaryStoreDirectory());
+			}
+			
+			if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportMQTTSubscriptionUsername())) {
+				inboundEndpoint.addParameter(InboundEndpointConstants.INBOUND_MQTT_SUBSCRIPTION_USERNAME,
+						visualInboundEndpoint.getTransportMQTTSubscriptionUsername());
+			}			
+			if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportMQTTSubscriptionPassword())) {
+				inboundEndpoint.addParameter(InboundEndpointConstants.INBOUND_MQTT_SUBSCRIPTION_PASSWORD,
+						visualInboundEndpoint.getTransportMQTTSubscriptionPassword());
+			}			
+			break;			
 		default:
 			break;
 		}

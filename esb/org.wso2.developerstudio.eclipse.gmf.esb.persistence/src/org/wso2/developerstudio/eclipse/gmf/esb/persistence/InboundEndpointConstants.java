@@ -7,6 +7,14 @@ public class InboundEndpointConstants {
 
 	public static final String INBOUND_HTTP_PORT = "inbound.http.port";
 	public static final String API_DISPATCHING_ENABLED = "api.dispatching.enabled";
+	
+	public static final String INBOUND_WORKER_POOL_SIZE_CORE = "inbound.worker.pool.size.core";
+	public static final String INBOUND_WORKER_POOL_SIZE_MAX = "inbound.worker.pool.size.max";
+	public static final String INBOUND_WORKER_THREAD_KEEP_ALIVE_SEC = "inbound.worker.thread.keep.alive.sec";
+	public static final String INBOUND_WORKER_POOL_QUEUE_LENGTH = "inbound.worker.pool.queue.length";
+	public static final String INBOUND_THREAD_GROUOP_ID = "inbound.thread.group.id";
+	public static final String INBOUND_THREAD_ID = "inbound.thread.id";
+	public static final String DISPATCH_FILTER_PATTERN = "dispatch.filter.pattern";
 
 	public static final String INTERVAL = "interval";
 	public static final String SEQUENTIAL = "sequential";
@@ -35,7 +43,10 @@ public class InboundEndpointConstants {
 	public static final String VFS_FILESORT_ATTRIBUTE = "transport.vfs.FileSortAttribute";
 	public static final String VFS_FILESORT_ASCENDING = "transport.vfs.FileSortAscending";
 	public static final String VFS_SUBFOLDER_TIMESTAMP_FORMAT = "transport.vfs.SubFolderTimestampFormat";
-	public static final String VFS_CREATE_FOLDER = "transport.vfs.CreateFolder";
+	public static final String VFS_CREATE_FOLDER = "transport.vfs.CreateFolder";	
+	public static final String VFS_STREAMING = "transport.vfs.Streaming";
+	public static final String VFS_BUILD = "transport.vfs.Build";
+	
 
 	public static final String JMS_JAVA_NAMING_FACTORY_INITIAL = "java.naming.factory.initial";
 	public static final String JMS_JAVA_NAMING_PROVIDER_URL = "java.naming.provider.url";
@@ -53,6 +64,9 @@ public class InboundEndpointConstants {
 	public static final String JMS_MESSAGE_SELECTOR = "transport.jms.MessageSelector";
 	public static final String JMS_RECIEVE_TIMEOUT = "transport.jms.ReceiveTimeout";
 	public static final String JMS_CONTENT_TYPE = "transport.jms.ContentType";
+	
+	public static final String JMS_REPLY_DESTINATION = "transport.jms.ReplyDestination";
+	public static final String JMS_PUB_SUB_NO_LOCAL = "transport.jms.PubSubNoLocal";
 
 	public static final String KEYSTORE = "keystore";
 	public static final String TRUSTSTORE = "truststore";
@@ -89,6 +103,19 @@ public class InboundEndpointConstants {
 	public static final String INBOUND_CXF_RM_HOST = "inbound.cxf.rm.host";
 	public static final String INBOUND_CXF_RM_PORT = "inbound.cxf.rm.port";
 	public static final String INBOUND_CXF_RM_CONFIG_FILE = "inbound.cxf.rm.config-file";
-	public static final String ENABLE_SSL = "enableSSL";
+	public static final String ENABLE_SSL = "enableSSL";	
+	
+	public static final String INBOUND_MQTT_CONNECTION_FACTORY = "mqtt.connection.factory";
+	public static final String INBOUND_MQTT_SERVER_HOST_NAME = "mqtt.server.host.name";
+	public static final String INBOUND_MQTT_SERVER_PORT = "mqtt.server.port";	
+	public static final String INBOUND_MQTT_TOPIC_NAME = "mqtt.topic.name";
+	public static final String INBOUND_MQTT_CONTENT_TYPE = "content.type";
+	public static final String INBOUND_MQTT_SUBSCRIPTION_QOS = "mqtt.subscription.qos";
+	public static final String INBOUND_MQTT_SESSION_CLEAN = "mqtt.session.clean";
+	public static final String INBOUND_MQTT_SSL_ENABLE = "mqtt.ssl.enable";
+	public static final String INBOUND_MQTT_BLOCKING_SENDER = "mqtt.blocking.sender";
+	public static final String INBOUND_MQTT_TEMPORARY_STORE_DIRECTORY = "mqtt.temporary.store.directory";
+	public static final String INBOUND_MQTT_SUBSCRIPTION_USERNAME = "mqtt.subscription.username";
+	public static final String INBOUND_MQTT_SUBSCRIPTION_PASSWORD = "mqtt.subscription.password";
 
 }

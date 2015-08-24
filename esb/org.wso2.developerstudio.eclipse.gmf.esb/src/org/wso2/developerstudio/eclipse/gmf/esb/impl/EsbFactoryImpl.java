@@ -657,6 +657,8 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
 				return createJMSSessionAcknowledgementFromString(eDataType, initialValue);
 			case EsbPackage.JMS_CACHE_LEVEL:
 				return createJMSCacheLevelFromString(eDataType, initialValue);
+			case EsbPackage.MQTT_SUBSCRIPTION_QOS:
+				return createMQTTSubscriptionQOSFromString(eDataType, initialValue);
 			case EsbPackage.MAP:
 				return createMapFromString(eDataType, initialValue);
 			default:
@@ -903,6 +905,8 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
 				return convertJMSSessionAcknowledgementToString(eDataType, instanceValue);
 			case EsbPackage.JMS_CACHE_LEVEL:
 				return convertJMSCacheLevelToString(eDataType, instanceValue);
+			case EsbPackage.MQTT_SUBSCRIPTION_QOS:
+				return convertMQTTSubscriptionQOSToString(eDataType, instanceValue);
 			case EsbPackage.MAP:
 				return convertMapToString(eDataType, instanceValue);
 			default:
@@ -6966,6 +6970,26 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
 	 * @generated
 	 */
 	public String convertJMSCacheLevelToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public MQTTSubscriptionQOS createMQTTSubscriptionQOSFromString(EDataType eDataType, String initialValue) {
+		MQTTSubscriptionQOS result = MQTTSubscriptionQOS.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertMQTTSubscriptionQOSToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

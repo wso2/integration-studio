@@ -150,6 +150,15 @@ public class MavenUtils {
 		return plugin;
 	}
 	
+	/**
+	 * Checks if a plugin entry already exists with given details
+	 * 
+	 * @param project
+	 * @param groupId
+	 * @param artifactId
+	 * @param version
+	 * @return
+	 */
 	public static boolean checkOldPluginEntry(MavenProject project, String groupId,
 			String artifactId, String version) {
 		List<Plugin> plugins = project.getBuild().getPlugins();
@@ -166,6 +175,26 @@ public class MavenUtils {
 			}
 		}
 		return exists;
+	}
+	
+	/**
+	 * Checks if a plugin entry already exists with given details
+	 * 
+	 * @param project
+	 * @param groupId
+	 * @param artifactId
+	 * @return
+	 */
+	public static boolean checkOldPluginEntry(MavenProject project, String groupId, String artifactId) {
+		List<Plugin> plugins = project.getBuild().getPlugins();
+		Iterator<Plugin> iterator = plugins.iterator();
+		while (iterator.hasNext()) {
+			Plugin plugin = iterator.next();
+			if (plugin.getGroupId().equals(groupId) && plugin.getArtifactId().equals(artifactId)) {
+				return true;
+			}
+		}
+		return false;
 	}
 	
 	public static String getMavenModuleRelativePath(File mavenModuleProject, File mavenProject){

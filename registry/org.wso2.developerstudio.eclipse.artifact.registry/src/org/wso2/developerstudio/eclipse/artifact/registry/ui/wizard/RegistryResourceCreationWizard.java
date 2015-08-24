@@ -26,7 +26,6 @@ import java.util.regex.Pattern;
 
 import org.apache.maven.model.Plugin;
 import org.apache.maven.model.PluginExecution;
-import org.apache.maven.model.Repository;
 import org.apache.maven.project.MavenProject;
 import org.codehaus.plexus.util.xml.Xpp3Dom;
 import org.eclipse.core.resources.IContainer;
@@ -45,9 +44,6 @@ import org.wso2.developerstudio.eclipse.artifact.registry.Activator;
 import org.wso2.developerstudio.eclipse.artifact.registry.model.RegistryArtifactModel;
 import org.wso2.developerstudio.eclipse.artifact.registry.utils.RegistryArtifactConstants;
 import org.wso2.developerstudio.eclipse.artifact.registry.utils.RegistryResourceImageUtils;
-import org.wso2.developerstudio.eclipse.platform.core.registry.util.RegistryResourceInfo;
-import org.wso2.developerstudio.eclipse.platform.core.registry.util.RegistryResourceInfoDoc;
-import org.wso2.developerstudio.eclipse.platform.core.registry.util.RegistryResourceUtils;
 import org.wso2.developerstudio.eclipse.artifact.registry.utils.RegistryTemplate;
 import org.wso2.developerstudio.eclipse.capp.maven.utils.MavenConstants;
 import org.wso2.developerstudio.eclipse.general.project.artifact.GeneralProjectArtifact;
@@ -63,6 +59,9 @@ import org.wso2.developerstudio.eclipse.greg.manager.local.utils.RegistryCheckIn
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
+import org.wso2.developerstudio.eclipse.platform.core.registry.util.RegistryResourceInfo;
+import org.wso2.developerstudio.eclipse.platform.core.registry.util.RegistryResourceInfoDoc;
+import org.wso2.developerstudio.eclipse.platform.core.registry.util.RegistryResourceUtils;
 import org.wso2.developerstudio.eclipse.platform.ui.wizard.AbstractWSO2ProjectCreationWizard;
 import org.wso2.developerstudio.eclipse.platform.ui.wizard.pages.ProjectOptionsPage;
 import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
@@ -75,7 +74,6 @@ public class RegistryResourceCreationWizard extends AbstractWSO2ProjectCreationW
 	private static final String PROJECT_WIZARD_WINDOW_TITLE = "New Registry Resource";
 	private final RegistryArtifactModel regModel;
 	private IFile resourceFile;
-	private String version = "1.0.0";
 	
 	public RegistryResourceCreationWizard() {
 		regModel = new RegistryArtifactModel();
@@ -221,61 +219,36 @@ public class RegistryResourceCreationWizard extends AbstractWSO2ProjectCreationW
 		return true;
 	}
 	
-	private void updatePOM(IProject project) throws Exception{
+	private void updatePOM(IProject project) throws Exception {
 		MavenProject mavenProject;
-		
 		File mavenProjectPomLocation = project.getFile("pom.xml").getLocation().toFile();
-		
-		
-		if(!mavenProjectPomLocation.exists()){
-			mavenProject = MavenUtils.createMavenProject("org.wso2.carbon." + project.getName() , project.getName(), "1.0.0","pom");
+		if (!mavenProjectPomLocation.exists()) {
+			mavenProject = MavenUtils.createMavenProject("org.wso2.carbon." + project.getName(), project.getName(),
+					"1.0.0", "pom");
 		} else {
 			mavenProject = MavenUtils.getMavenProject(mavenProjectPomLocation);
 		}
-		 version = mavenProject.getVersion();
-		 //version  = version.replaceAll("-SNAPSHOT$", "");
-		boolean pluginExists = MavenUtils.checkOldPluginEntry(mavenProject,
-				"org.wso2.maven", "wso2-general-project-plugin",
-				MavenConstants.WSO2_GENERAL_PROJECT_VERSION);
-		if(pluginExists){
-			return ;
+
+		// Skip changing the pom file if group ID and artifact ID are matched
+		if (MavenUtils.checkOldPluginEntry(mavenProject, "org.wso2.maven", "wso2-general-project-plugin")) {
+			return;
 		}
-		
-		Plugin plugin = MavenUtils.createPluginEntry(mavenProject, "org.wso2.maven", "wso2-general-project-plugin", MavenConstants.WSO2_GENERAL_PROJECT_VERSION, true);
-		
+
+		Plugin plugin = MavenUtils.createPluginEntry(mavenProject, "org.wso2.maven", "wso2-general-project-plugin",
+				MavenConstants.WSO2_GENERAL_PROJECT_VERSION, true);
 		PluginExecution pluginExecution;
-		
 		pluginExecution = new PluginExecution();
 		pluginExecution.addGoal("pom-gen");
 		pluginExecution.setPhase("process-resources");
 		pluginExecution.setId("registry");
 		plugin.addExecution(pluginExecution);
-		
+
 		Xpp3Dom configurationNode = MavenUtils.createMainConfigurationNode();
 		Xpp3Dom artifactLocationNode = MavenUtils.createXpp3Node(configurationNode, "artifactLocation");
 		artifactLocationNode.setValue(".");
 		Xpp3Dom typeListNode = MavenUtils.createXpp3Node(configurationNode, "typeList");
 		typeListNode.setValue("${artifact.types}");
 		pluginExecution.setConfiguration(configurationNode);
-		
-		Repository repo = new Repository();
-		repo.setUrl("http://dist.wso2.org/maven2");
-		repo.setId("wso2-maven2-repository-1");
-		
-		Repository repo1 = new Repository();
-		repo1.setUrl("http://maven.wso2.org/nexus/content/groups/wso2-public/");
-		repo1.setId("wso2-nexus-maven2-repository-1");
-		
-		if (!mavenProject.getRepositories().contains(repo)) {
-	        mavenProject.getModel().addRepository(repo);
-	        mavenProject.getModel().addPluginRepository(repo);
-        }
-
-		if (!mavenProject.getRepositories().contains(repo1)) {
-	        mavenProject.getModel().addRepository(repo1);
-	        mavenProject.getModel().addPluginRepository(repo1);
-        }
-		
 		MavenUtils.saveMavenProject(mavenProject, mavenProjectPomLocation);
 	}
 	

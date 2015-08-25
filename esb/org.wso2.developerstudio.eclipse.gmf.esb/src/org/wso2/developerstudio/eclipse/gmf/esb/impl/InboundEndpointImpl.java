@@ -43,6 +43,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointType;
 import org.wso2.developerstudio.eclipse.gmf.esb.JMSCacheLevel;
 import org.wso2.developerstudio.eclipse.gmf.esb.JMSConnectionFactoryType;
 import org.wso2.developerstudio.eclipse.gmf.esb.JMSSessionAcknowledgement;
+import org.wso2.developerstudio.eclipse.gmf.esb.MQTTSubscriptionQOS;
 import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.VFSAction;
 import org.wso2.developerstudio.eclipse.gmf.esb.VFSFileSort;
@@ -64,6 +65,13 @@ import org.wso2.developerstudio.eclipse.gmf.esb.VFSFileSort;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getClass_ <em>Class</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getProtocol <em>Protocol</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getInboundHttpPort <em>Inbound Http Port</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getInboundWorkerPoolSizeCore <em>Inbound Worker Pool Size Core</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getInboundWorkerPoolSizeMax <em>Inbound Worker Pool Size Max</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getInboundWorkerThreadKeepAliveSec <em>Inbound Worker Thread Keep Alive Sec</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getInboundWorkerPoolQueueLength <em>Inbound Worker Pool Queue Length</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getInboundThreadGroupId <em>Inbound Thread Group Id</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getInboundThreadId <em>Inbound Thread Id</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getDispatchFilterPattern <em>Dispatch Filter Pattern</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getInterval <em>Interval</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isSequential <em>Sequential</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isCoordination <em>Coordination</em>}</li>
@@ -85,6 +93,8 @@ import org.wso2.developerstudio.eclipse.gmf.esb.VFSFileSort;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportVFSAutoLockReleaseInterval <em>Transport VFS Auto Lock Release Interval</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isTransportVFSLockReleaseSameNode <em>Transport VFS Lock Release Same Node</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isTransportVFSDistributedLock <em>Transport VFS Distributed Lock</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isTransportVFSStreaming <em>Transport VFS Streaming</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isTransportVFSBuild <em>Transport VFS Build</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportVFSDistributedTimeout <em>Transport VFS Distributed Timeout</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getJavaNamingFactoryInitial <em>Java Naming Factory Initial</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getJavaNamingProviderUrl <em>Java Naming Provider Url</em>}</li>
@@ -108,6 +118,20 @@ import org.wso2.developerstudio.eclipse.gmf.esb.VFSFileSort;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isTransportVFSCreateFolder <em>Transport VFS Create Folder</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJMSReceiveTimeout <em>Transport JMS Receive Timeout</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJMSContentType <em>Transport JMS Content Type</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJMSContentTypeProperty <em>Transport JMS Content Type Property</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJMSReplyDestination <em>Transport JMS Reply Destination</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJMSPubSubNoLocal <em>Transport JMS Pub Sub No Local</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportMQTTConnectionFactory <em>Transport MQTT Connection Factory</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportMQTTServerHostName <em>Transport MQTT Server Host Name</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportMQTTServerPort <em>Transport MQTT Server Port</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportMQTTTopicName <em>Transport MQTT Topic Name</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportMQTTSubscriptionQOS <em>Transport MQTT Subscription QOS</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isTransportMQTTSessionClean <em>Transport MQTT Session Clean</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportMQTTSslEnable <em>Transport MQTT Ssl Enable</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isTransportMQTTBlockingSender <em>Transport MQTT Blocking Sender</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportMQTTTemporaryStoreDirectory <em>Transport MQTT Temporary Store Directory</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportMQTTSubscriptionUsername <em>Transport MQTT Subscription Username</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportMQTTSubscriptionPassword <em>Transport MQTT Subscription Password</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTruststore <em>Truststore</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getKeystore <em>Keystore</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getSslVerifyClient <em>Ssl Verify Client</em>}</li>
@@ -298,6 +322,146 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * @ordered
 	 */
 	protected String inboundHttpPort = INBOUND_HTTP_PORT_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getInboundWorkerPoolSizeCore() <em>Inbound Worker Pool Size Core</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInboundWorkerPoolSizeCore()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String INBOUND_WORKER_POOL_SIZE_CORE_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getInboundWorkerPoolSizeCore() <em>Inbound Worker Pool Size Core</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInboundWorkerPoolSizeCore()
+	 * @generated
+	 * @ordered
+	 */
+	protected String inboundWorkerPoolSizeCore = INBOUND_WORKER_POOL_SIZE_CORE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getInboundWorkerPoolSizeMax() <em>Inbound Worker Pool Size Max</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInboundWorkerPoolSizeMax()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String INBOUND_WORKER_POOL_SIZE_MAX_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getInboundWorkerPoolSizeMax() <em>Inbound Worker Pool Size Max</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInboundWorkerPoolSizeMax()
+	 * @generated
+	 * @ordered
+	 */
+	protected String inboundWorkerPoolSizeMax = INBOUND_WORKER_POOL_SIZE_MAX_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getInboundWorkerThreadKeepAliveSec() <em>Inbound Worker Thread Keep Alive Sec</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInboundWorkerThreadKeepAliveSec()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String INBOUND_WORKER_THREAD_KEEP_ALIVE_SEC_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getInboundWorkerThreadKeepAliveSec() <em>Inbound Worker Thread Keep Alive Sec</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInboundWorkerThreadKeepAliveSec()
+	 * @generated
+	 * @ordered
+	 */
+	protected String inboundWorkerThreadKeepAliveSec = INBOUND_WORKER_THREAD_KEEP_ALIVE_SEC_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getInboundWorkerPoolQueueLength() <em>Inbound Worker Pool Queue Length</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInboundWorkerPoolQueueLength()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String INBOUND_WORKER_POOL_QUEUE_LENGTH_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getInboundWorkerPoolQueueLength() <em>Inbound Worker Pool Queue Length</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInboundWorkerPoolQueueLength()
+	 * @generated
+	 * @ordered
+	 */
+	protected String inboundWorkerPoolQueueLength = INBOUND_WORKER_POOL_QUEUE_LENGTH_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getInboundThreadGroupId() <em>Inbound Thread Group Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInboundThreadGroupId()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String INBOUND_THREAD_GROUP_ID_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getInboundThreadGroupId() <em>Inbound Thread Group Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInboundThreadGroupId()
+	 * @generated
+	 * @ordered
+	 */
+	protected String inboundThreadGroupId = INBOUND_THREAD_GROUP_ID_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getInboundThreadId() <em>Inbound Thread Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInboundThreadId()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String INBOUND_THREAD_ID_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getInboundThreadId() <em>Inbound Thread Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInboundThreadId()
+	 * @generated
+	 * @ordered
+	 */
+	protected String inboundThreadId = INBOUND_THREAD_ID_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getDispatchFilterPattern() <em>Dispatch Filter Pattern</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDispatchFilterPattern()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String DISPATCH_FILTER_PATTERN_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getDispatchFilterPattern() <em>Dispatch Filter Pattern</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDispatchFilterPattern()
+	 * @generated
+	 * @ordered
+	 */
+	protected String dispatchFilterPattern = DISPATCH_FILTER_PATTERN_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getInterval() <em>Interval</em>}' attribute.
@@ -718,6 +882,46 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * @ordered
 	 */
 	protected boolean transportVFSDistributedLock = TRANSPORT_VFS_DISTRIBUTED_LOCK_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isTransportVFSStreaming() <em>Transport VFS Streaming</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isTransportVFSStreaming()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean TRANSPORT_VFS_STREAMING_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isTransportVFSStreaming() <em>Transport VFS Streaming</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isTransportVFSStreaming()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean transportVFSStreaming = TRANSPORT_VFS_STREAMING_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isTransportVFSBuild() <em>Transport VFS Build</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isTransportVFSBuild()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean TRANSPORT_VFS_BUILD_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isTransportVFSBuild() <em>Transport VFS Build</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isTransportVFSBuild()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean transportVFSBuild = TRANSPORT_VFS_BUILD_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getTransportVFSDistributedTimeout() <em>Transport VFS Distributed Timeout</em>}' attribute.
@@ -1178,6 +1382,286 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * @ordered
 	 */
 	protected String transportJMSContentType = TRANSPORT_JMS_CONTENT_TYPE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getTransportJMSContentTypeProperty() <em>Transport JMS Content Type Property</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportJMSContentTypeProperty()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String TRANSPORT_JMS_CONTENT_TYPE_PROPERTY_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getTransportJMSContentTypeProperty() <em>Transport JMS Content Type Property</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportJMSContentTypeProperty()
+	 * @generated
+	 * @ordered
+	 */
+	protected String transportJMSContentTypeProperty = TRANSPORT_JMS_CONTENT_TYPE_PROPERTY_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getTransportJMSReplyDestination() <em>Transport JMS Reply Destination</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportJMSReplyDestination()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String TRANSPORT_JMS_REPLY_DESTINATION_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getTransportJMSReplyDestination() <em>Transport JMS Reply Destination</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportJMSReplyDestination()
+	 * @generated
+	 * @ordered
+	 */
+	protected String transportJMSReplyDestination = TRANSPORT_JMS_REPLY_DESTINATION_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getTransportJMSPubSubNoLocal() <em>Transport JMS Pub Sub No Local</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportJMSPubSubNoLocal()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String TRANSPORT_JMS_PUB_SUB_NO_LOCAL_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getTransportJMSPubSubNoLocal() <em>Transport JMS Pub Sub No Local</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportJMSPubSubNoLocal()
+	 * @generated
+	 * @ordered
+	 */
+	protected String transportJMSPubSubNoLocal = TRANSPORT_JMS_PUB_SUB_NO_LOCAL_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getTransportMQTTConnectionFactory() <em>Transport MQTT Connection Factory</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportMQTTConnectionFactory()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String TRANSPORT_MQTT_CONNECTION_FACTORY_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getTransportMQTTConnectionFactory() <em>Transport MQTT Connection Factory</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportMQTTConnectionFactory()
+	 * @generated
+	 * @ordered
+	 */
+	protected String transportMQTTConnectionFactory = TRANSPORT_MQTT_CONNECTION_FACTORY_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getTransportMQTTServerHostName() <em>Transport MQTT Server Host Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportMQTTServerHostName()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String TRANSPORT_MQTT_SERVER_HOST_NAME_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getTransportMQTTServerHostName() <em>Transport MQTT Server Host Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportMQTTServerHostName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String transportMQTTServerHostName = TRANSPORT_MQTT_SERVER_HOST_NAME_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getTransportMQTTServerPort() <em>Transport MQTT Server Port</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportMQTTServerPort()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String TRANSPORT_MQTT_SERVER_PORT_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getTransportMQTTServerPort() <em>Transport MQTT Server Port</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportMQTTServerPort()
+	 * @generated
+	 * @ordered
+	 */
+	protected String transportMQTTServerPort = TRANSPORT_MQTT_SERVER_PORT_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getTransportMQTTTopicName() <em>Transport MQTT Topic Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportMQTTTopicName()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String TRANSPORT_MQTT_TOPIC_NAME_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getTransportMQTTTopicName() <em>Transport MQTT Topic Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportMQTTTopicName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String transportMQTTTopicName = TRANSPORT_MQTT_TOPIC_NAME_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getTransportMQTTSubscriptionQOS() <em>Transport MQTT Subscription QOS</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportMQTTSubscriptionQOS()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final MQTTSubscriptionQOS TRANSPORT_MQTT_SUBSCRIPTION_QOS_EDEFAULT = MQTTSubscriptionQOS.ZERO;
+
+	/**
+	 * The cached value of the '{@link #getTransportMQTTSubscriptionQOS() <em>Transport MQTT Subscription QOS</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportMQTTSubscriptionQOS()
+	 * @generated
+	 * @ordered
+	 */
+	protected MQTTSubscriptionQOS transportMQTTSubscriptionQOS = TRANSPORT_MQTT_SUBSCRIPTION_QOS_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isTransportMQTTSessionClean() <em>Transport MQTT Session Clean</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isTransportMQTTSessionClean()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean TRANSPORT_MQTT_SESSION_CLEAN_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isTransportMQTTSessionClean() <em>Transport MQTT Session Clean</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isTransportMQTTSessionClean()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean transportMQTTSessionClean = TRANSPORT_MQTT_SESSION_CLEAN_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getTransportMQTTSslEnable() <em>Transport MQTT Ssl Enable</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportMQTTSslEnable()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String TRANSPORT_MQTT_SSL_ENABLE_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getTransportMQTTSslEnable() <em>Transport MQTT Ssl Enable</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportMQTTSslEnable()
+	 * @generated
+	 * @ordered
+	 */
+	protected String transportMQTTSslEnable = TRANSPORT_MQTT_SSL_ENABLE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isTransportMQTTBlockingSender() <em>Transport MQTT Blocking Sender</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isTransportMQTTBlockingSender()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean TRANSPORT_MQTT_BLOCKING_SENDER_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isTransportMQTTBlockingSender() <em>Transport MQTT Blocking Sender</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isTransportMQTTBlockingSender()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean transportMQTTBlockingSender = TRANSPORT_MQTT_BLOCKING_SENDER_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getTransportMQTTTemporaryStoreDirectory() <em>Transport MQTT Temporary Store Directory</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportMQTTTemporaryStoreDirectory()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String TRANSPORT_MQTT_TEMPORARY_STORE_DIRECTORY_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getTransportMQTTTemporaryStoreDirectory() <em>Transport MQTT Temporary Store Directory</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportMQTTTemporaryStoreDirectory()
+	 * @generated
+	 * @ordered
+	 */
+	protected String transportMQTTTemporaryStoreDirectory = TRANSPORT_MQTT_TEMPORARY_STORE_DIRECTORY_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getTransportMQTTSubscriptionUsername() <em>Transport MQTT Subscription Username</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportMQTTSubscriptionUsername()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String TRANSPORT_MQTT_SUBSCRIPTION_USERNAME_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getTransportMQTTSubscriptionUsername() <em>Transport MQTT Subscription Username</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportMQTTSubscriptionUsername()
+	 * @generated
+	 * @ordered
+	 */
+	protected String transportMQTTSubscriptionUsername = TRANSPORT_MQTT_SUBSCRIPTION_USERNAME_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getTransportMQTTSubscriptionPassword() <em>Transport MQTT Subscription Password</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportMQTTSubscriptionPassword()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String TRANSPORT_MQTT_SUBSCRIPTION_PASSWORD_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getTransportMQTTSubscriptionPassword() <em>Transport MQTT Subscription Password</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportMQTTSubscriptionPassword()
+	 * @generated
+	 * @ordered
+	 */
+	protected String transportMQTTSubscriptionPassword = TRANSPORT_MQTT_SUBSCRIPTION_PASSWORD_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getTruststore() <em>Truststore</em>}' attribute.
@@ -2813,6 +3297,153 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getInboundWorkerPoolSizeCore() {
+		return inboundWorkerPoolSizeCore;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setInboundWorkerPoolSizeCore(String newInboundWorkerPoolSizeCore) {
+		String oldInboundWorkerPoolSizeCore = inboundWorkerPoolSizeCore;
+		inboundWorkerPoolSizeCore = newInboundWorkerPoolSizeCore;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__INBOUND_WORKER_POOL_SIZE_CORE, oldInboundWorkerPoolSizeCore, inboundWorkerPoolSizeCore));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getInboundWorkerPoolSizeMax() {
+		return inboundWorkerPoolSizeMax;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setInboundWorkerPoolSizeMax(String newInboundWorkerPoolSizeMax) {
+		String oldInboundWorkerPoolSizeMax = inboundWorkerPoolSizeMax;
+		inboundWorkerPoolSizeMax = newInboundWorkerPoolSizeMax;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__INBOUND_WORKER_POOL_SIZE_MAX, oldInboundWorkerPoolSizeMax, inboundWorkerPoolSizeMax));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getInboundWorkerThreadKeepAliveSec() {
+		return inboundWorkerThreadKeepAliveSec;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setInboundWorkerThreadKeepAliveSec(String newInboundWorkerThreadKeepAliveSec) {
+		String oldInboundWorkerThreadKeepAliveSec = inboundWorkerThreadKeepAliveSec;
+		inboundWorkerThreadKeepAliveSec = newInboundWorkerThreadKeepAliveSec;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__INBOUND_WORKER_THREAD_KEEP_ALIVE_SEC, oldInboundWorkerThreadKeepAliveSec, inboundWorkerThreadKeepAliveSec));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getInboundWorkerPoolQueueLength() {
+		return inboundWorkerPoolQueueLength;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setInboundWorkerPoolQueueLength(String newInboundWorkerPoolQueueLength) {
+		String oldInboundWorkerPoolQueueLength = inboundWorkerPoolQueueLength;
+		inboundWorkerPoolQueueLength = newInboundWorkerPoolQueueLength;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__INBOUND_WORKER_POOL_QUEUE_LENGTH, oldInboundWorkerPoolQueueLength, inboundWorkerPoolQueueLength));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getInboundThreadGroupId() {
+		return inboundThreadGroupId;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setInboundThreadGroupId(String newInboundThreadGroupId) {
+		String oldInboundThreadGroupId = inboundThreadGroupId;
+		inboundThreadGroupId = newInboundThreadGroupId;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__INBOUND_THREAD_GROUP_ID, oldInboundThreadGroupId, inboundThreadGroupId));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getInboundThreadId() {
+		return inboundThreadId;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setInboundThreadId(String newInboundThreadId) {
+		String oldInboundThreadId = inboundThreadId;
+		inboundThreadId = newInboundThreadId;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__INBOUND_THREAD_ID, oldInboundThreadId, inboundThreadId));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getDispatchFilterPattern() {
+		return dispatchFilterPattern;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setDispatchFilterPattern(String newDispatchFilterPattern) {
+		String oldDispatchFilterPattern = dispatchFilterPattern;
+		dispatchFilterPattern = newDispatchFilterPattern;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__DISPATCH_FILTER_PATTERN, oldDispatchFilterPattern, dispatchFilterPattern));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public String getInterval() {
 		return interval;
 	}
@@ -3247,6 +3878,48 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 		transportVFSDistributedLock = newTransportVFSDistributedLock;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_DISTRIBUTED_LOCK, oldTransportVFSDistributedLock, transportVFSDistributedLock));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isTransportVFSStreaming() {
+		return transportVFSStreaming;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTransportVFSStreaming(boolean newTransportVFSStreaming) {
+		boolean oldTransportVFSStreaming = transportVFSStreaming;
+		transportVFSStreaming = newTransportVFSStreaming;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_STREAMING, oldTransportVFSStreaming, transportVFSStreaming));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isTransportVFSBuild() {
+		return transportVFSBuild;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTransportVFSBuild(boolean newTransportVFSBuild) {
+		boolean oldTransportVFSBuild = transportVFSBuild;
+		transportVFSBuild = newTransportVFSBuild;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_BUILD, oldTransportVFSBuild, transportVFSBuild));
 	}
 
 	/**
@@ -3737,6 +4410,300 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getTransportJMSContentTypeProperty() {
+		return transportJMSContentTypeProperty;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTransportJMSContentTypeProperty(String newTransportJMSContentTypeProperty) {
+		String oldTransportJMSContentTypeProperty = transportJMSContentTypeProperty;
+		transportJMSContentTypeProperty = newTransportJMSContentTypeProperty;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_CONTENT_TYPE_PROPERTY, oldTransportJMSContentTypeProperty, transportJMSContentTypeProperty));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getTransportJMSReplyDestination() {
+		return transportJMSReplyDestination;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTransportJMSReplyDestination(String newTransportJMSReplyDestination) {
+		String oldTransportJMSReplyDestination = transportJMSReplyDestination;
+		transportJMSReplyDestination = newTransportJMSReplyDestination;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_REPLY_DESTINATION, oldTransportJMSReplyDestination, transportJMSReplyDestination));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getTransportJMSPubSubNoLocal() {
+		return transportJMSPubSubNoLocal;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTransportJMSPubSubNoLocal(String newTransportJMSPubSubNoLocal) {
+		String oldTransportJMSPubSubNoLocal = transportJMSPubSubNoLocal;
+		transportJMSPubSubNoLocal = newTransportJMSPubSubNoLocal;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_PUB_SUB_NO_LOCAL, oldTransportJMSPubSubNoLocal, transportJMSPubSubNoLocal));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getTransportMQTTConnectionFactory() {
+		return transportMQTTConnectionFactory;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTransportMQTTConnectionFactory(String newTransportMQTTConnectionFactory) {
+		String oldTransportMQTTConnectionFactory = transportMQTTConnectionFactory;
+		transportMQTTConnectionFactory = newTransportMQTTConnectionFactory;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_CONNECTION_FACTORY, oldTransportMQTTConnectionFactory, transportMQTTConnectionFactory));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getTransportMQTTServerHostName() {
+		return transportMQTTServerHostName;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTransportMQTTServerHostName(String newTransportMQTTServerHostName) {
+		String oldTransportMQTTServerHostName = transportMQTTServerHostName;
+		transportMQTTServerHostName = newTransportMQTTServerHostName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SERVER_HOST_NAME, oldTransportMQTTServerHostName, transportMQTTServerHostName));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getTransportMQTTServerPort() {
+		return transportMQTTServerPort;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTransportMQTTServerPort(String newTransportMQTTServerPort) {
+		String oldTransportMQTTServerPort = transportMQTTServerPort;
+		transportMQTTServerPort = newTransportMQTTServerPort;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SERVER_PORT, oldTransportMQTTServerPort, transportMQTTServerPort));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getTransportMQTTTopicName() {
+		return transportMQTTTopicName;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTransportMQTTTopicName(String newTransportMQTTTopicName) {
+		String oldTransportMQTTTopicName = transportMQTTTopicName;
+		transportMQTTTopicName = newTransportMQTTTopicName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_TOPIC_NAME, oldTransportMQTTTopicName, transportMQTTTopicName));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public MQTTSubscriptionQOS getTransportMQTTSubscriptionQOS() {
+		return transportMQTTSubscriptionQOS;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTransportMQTTSubscriptionQOS(MQTTSubscriptionQOS newTransportMQTTSubscriptionQOS) {
+		MQTTSubscriptionQOS oldTransportMQTTSubscriptionQOS = transportMQTTSubscriptionQOS;
+		transportMQTTSubscriptionQOS = newTransportMQTTSubscriptionQOS == null ? TRANSPORT_MQTT_SUBSCRIPTION_QOS_EDEFAULT : newTransportMQTTSubscriptionQOS;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SUBSCRIPTION_QOS, oldTransportMQTTSubscriptionQOS, transportMQTTSubscriptionQOS));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isTransportMQTTSessionClean() {
+		return transportMQTTSessionClean;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTransportMQTTSessionClean(boolean newTransportMQTTSessionClean) {
+		boolean oldTransportMQTTSessionClean = transportMQTTSessionClean;
+		transportMQTTSessionClean = newTransportMQTTSessionClean;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SESSION_CLEAN, oldTransportMQTTSessionClean, transportMQTTSessionClean));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getTransportMQTTSslEnable() {
+		return transportMQTTSslEnable;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTransportMQTTSslEnable(String newTransportMQTTSslEnable) {
+		String oldTransportMQTTSslEnable = transportMQTTSslEnable;
+		transportMQTTSslEnable = newTransportMQTTSslEnable;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_ENABLE, oldTransportMQTTSslEnable, transportMQTTSslEnable));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isTransportMQTTBlockingSender() {
+		return transportMQTTBlockingSender;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTransportMQTTBlockingSender(boolean newTransportMQTTBlockingSender) {
+		boolean oldTransportMQTTBlockingSender = transportMQTTBlockingSender;
+		transportMQTTBlockingSender = newTransportMQTTBlockingSender;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_BLOCKING_SENDER, oldTransportMQTTBlockingSender, transportMQTTBlockingSender));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getTransportMQTTTemporaryStoreDirectory() {
+		return transportMQTTTemporaryStoreDirectory;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTransportMQTTTemporaryStoreDirectory(String newTransportMQTTTemporaryStoreDirectory) {
+		String oldTransportMQTTTemporaryStoreDirectory = transportMQTTTemporaryStoreDirectory;
+		transportMQTTTemporaryStoreDirectory = newTransportMQTTTemporaryStoreDirectory;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_TEMPORARY_STORE_DIRECTORY, oldTransportMQTTTemporaryStoreDirectory, transportMQTTTemporaryStoreDirectory));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getTransportMQTTSubscriptionUsername() {
+		return transportMQTTSubscriptionUsername;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTransportMQTTSubscriptionUsername(String newTransportMQTTSubscriptionUsername) {
+		String oldTransportMQTTSubscriptionUsername = transportMQTTSubscriptionUsername;
+		transportMQTTSubscriptionUsername = newTransportMQTTSubscriptionUsername;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SUBSCRIPTION_USERNAME, oldTransportMQTTSubscriptionUsername, transportMQTTSubscriptionUsername));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getTransportMQTTSubscriptionPassword() {
+		return transportMQTTSubscriptionPassword;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTransportMQTTSubscriptionPassword(String newTransportMQTTSubscriptionPassword) {
+		String oldTransportMQTTSubscriptionPassword = transportMQTTSubscriptionPassword;
+		transportMQTTSubscriptionPassword = newTransportMQTTSubscriptionPassword;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SUBSCRIPTION_PASSWORD, oldTransportMQTTSubscriptionPassword, transportMQTTSubscriptionPassword));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public String getTruststore() {
 		return truststore;
 	}
@@ -3910,6 +4877,20 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 				return getProtocol();
 			case EsbPackage.INBOUND_ENDPOINT__INBOUND_HTTP_PORT:
 				return getInboundHttpPort();
+			case EsbPackage.INBOUND_ENDPOINT__INBOUND_WORKER_POOL_SIZE_CORE:
+				return getInboundWorkerPoolSizeCore();
+			case EsbPackage.INBOUND_ENDPOINT__INBOUND_WORKER_POOL_SIZE_MAX:
+				return getInboundWorkerPoolSizeMax();
+			case EsbPackage.INBOUND_ENDPOINT__INBOUND_WORKER_THREAD_KEEP_ALIVE_SEC:
+				return getInboundWorkerThreadKeepAliveSec();
+			case EsbPackage.INBOUND_ENDPOINT__INBOUND_WORKER_POOL_QUEUE_LENGTH:
+				return getInboundWorkerPoolQueueLength();
+			case EsbPackage.INBOUND_ENDPOINT__INBOUND_THREAD_GROUP_ID:
+				return getInboundThreadGroupId();
+			case EsbPackage.INBOUND_ENDPOINT__INBOUND_THREAD_ID:
+				return getInboundThreadId();
+			case EsbPackage.INBOUND_ENDPOINT__DISPATCH_FILTER_PATTERN:
+				return getDispatchFilterPattern();
 			case EsbPackage.INBOUND_ENDPOINT__INTERVAL:
 				return getInterval();
 			case EsbPackage.INBOUND_ENDPOINT__SEQUENTIAL:
@@ -3952,6 +4933,10 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 				return isTransportVFSLockReleaseSameNode();
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_DISTRIBUTED_LOCK:
 				return isTransportVFSDistributedLock();
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_STREAMING:
+				return isTransportVFSStreaming();
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_BUILD:
+				return isTransportVFSBuild();
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_DISTRIBUTED_TIMEOUT:
 				return getTransportVFSDistributedTimeout();
 			case EsbPackage.INBOUND_ENDPOINT__JAVA_NAMING_FACTORY_INITIAL:
@@ -3998,6 +4983,34 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 				return getTransportJMSReceiveTimeout();
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_CONTENT_TYPE:
 				return getTransportJMSContentType();
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_CONTENT_TYPE_PROPERTY:
+				return getTransportJMSContentTypeProperty();
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_REPLY_DESTINATION:
+				return getTransportJMSReplyDestination();
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_PUB_SUB_NO_LOCAL:
+				return getTransportJMSPubSubNoLocal();
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_CONNECTION_FACTORY:
+				return getTransportMQTTConnectionFactory();
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SERVER_HOST_NAME:
+				return getTransportMQTTServerHostName();
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SERVER_PORT:
+				return getTransportMQTTServerPort();
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_TOPIC_NAME:
+				return getTransportMQTTTopicName();
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SUBSCRIPTION_QOS:
+				return getTransportMQTTSubscriptionQOS();
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SESSION_CLEAN:
+				return isTransportMQTTSessionClean();
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_ENABLE:
+				return getTransportMQTTSslEnable();
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_BLOCKING_SENDER:
+				return isTransportMQTTBlockingSender();
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_TEMPORARY_STORE_DIRECTORY:
+				return getTransportMQTTTemporaryStoreDirectory();
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SUBSCRIPTION_USERNAME:
+				return getTransportMQTTSubscriptionUsername();
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SUBSCRIPTION_PASSWORD:
+				return getTransportMQTTSubscriptionPassword();
 			case EsbPackage.INBOUND_ENDPOINT__TRUSTSTORE:
 				return getTruststore();
 			case EsbPackage.INBOUND_ENDPOINT__KEYSTORE:
@@ -4111,6 +5124,27 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 			case EsbPackage.INBOUND_ENDPOINT__INBOUND_HTTP_PORT:
 				setInboundHttpPort((String)newValue);
 				return;
+			case EsbPackage.INBOUND_ENDPOINT__INBOUND_WORKER_POOL_SIZE_CORE:
+				setInboundWorkerPoolSizeCore((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__INBOUND_WORKER_POOL_SIZE_MAX:
+				setInboundWorkerPoolSizeMax((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__INBOUND_WORKER_THREAD_KEEP_ALIVE_SEC:
+				setInboundWorkerThreadKeepAliveSec((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__INBOUND_WORKER_POOL_QUEUE_LENGTH:
+				setInboundWorkerPoolQueueLength((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__INBOUND_THREAD_GROUP_ID:
+				setInboundThreadGroupId((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__INBOUND_THREAD_ID:
+				setInboundThreadId((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__DISPATCH_FILTER_PATTERN:
+				setDispatchFilterPattern((String)newValue);
+				return;
 			case EsbPackage.INBOUND_ENDPOINT__INTERVAL:
 				setInterval((String)newValue);
 				return;
@@ -4173,6 +5207,12 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 				return;
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_DISTRIBUTED_LOCK:
 				setTransportVFSDistributedLock((Boolean)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_STREAMING:
+				setTransportVFSStreaming((Boolean)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_BUILD:
+				setTransportVFSBuild((Boolean)newValue);
 				return;
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_DISTRIBUTED_TIMEOUT:
 				setTransportVFSDistributedTimeout((String)newValue);
@@ -4242,6 +5282,48 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 				return;
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_CONTENT_TYPE:
 				setTransportJMSContentType((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_CONTENT_TYPE_PROPERTY:
+				setTransportJMSContentTypeProperty((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_REPLY_DESTINATION:
+				setTransportJMSReplyDestination((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_PUB_SUB_NO_LOCAL:
+				setTransportJMSPubSubNoLocal((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_CONNECTION_FACTORY:
+				setTransportMQTTConnectionFactory((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SERVER_HOST_NAME:
+				setTransportMQTTServerHostName((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SERVER_PORT:
+				setTransportMQTTServerPort((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_TOPIC_NAME:
+				setTransportMQTTTopicName((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SUBSCRIPTION_QOS:
+				setTransportMQTTSubscriptionQOS((MQTTSubscriptionQOS)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SESSION_CLEAN:
+				setTransportMQTTSessionClean((Boolean)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_ENABLE:
+				setTransportMQTTSslEnable((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_BLOCKING_SENDER:
+				setTransportMQTTBlockingSender((Boolean)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_TEMPORARY_STORE_DIRECTORY:
+				setTransportMQTTTemporaryStoreDirectory((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SUBSCRIPTION_USERNAME:
+				setTransportMQTTSubscriptionUsername((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SUBSCRIPTION_PASSWORD:
+				setTransportMQTTSubscriptionPassword((String)newValue);
 				return;
 			case EsbPackage.INBOUND_ENDPOINT__TRUSTSTORE:
 				setTruststore((String)newValue);
@@ -4391,6 +5473,27 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 			case EsbPackage.INBOUND_ENDPOINT__INBOUND_HTTP_PORT:
 				setInboundHttpPort(INBOUND_HTTP_PORT_EDEFAULT);
 				return;
+			case EsbPackage.INBOUND_ENDPOINT__INBOUND_WORKER_POOL_SIZE_CORE:
+				setInboundWorkerPoolSizeCore(INBOUND_WORKER_POOL_SIZE_CORE_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__INBOUND_WORKER_POOL_SIZE_MAX:
+				setInboundWorkerPoolSizeMax(INBOUND_WORKER_POOL_SIZE_MAX_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__INBOUND_WORKER_THREAD_KEEP_ALIVE_SEC:
+				setInboundWorkerThreadKeepAliveSec(INBOUND_WORKER_THREAD_KEEP_ALIVE_SEC_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__INBOUND_WORKER_POOL_QUEUE_LENGTH:
+				setInboundWorkerPoolQueueLength(INBOUND_WORKER_POOL_QUEUE_LENGTH_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__INBOUND_THREAD_GROUP_ID:
+				setInboundThreadGroupId(INBOUND_THREAD_GROUP_ID_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__INBOUND_THREAD_ID:
+				setInboundThreadId(INBOUND_THREAD_ID_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__DISPATCH_FILTER_PATTERN:
+				setDispatchFilterPattern(DISPATCH_FILTER_PATTERN_EDEFAULT);
+				return;
 			case EsbPackage.INBOUND_ENDPOINT__INTERVAL:
 				setInterval(INTERVAL_EDEFAULT);
 				return;
@@ -4453,6 +5556,12 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 				return;
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_DISTRIBUTED_LOCK:
 				setTransportVFSDistributedLock(TRANSPORT_VFS_DISTRIBUTED_LOCK_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_STREAMING:
+				setTransportVFSStreaming(TRANSPORT_VFS_STREAMING_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_BUILD:
+				setTransportVFSBuild(TRANSPORT_VFS_BUILD_EDEFAULT);
 				return;
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_DISTRIBUTED_TIMEOUT:
 				setTransportVFSDistributedTimeout(TRANSPORT_VFS_DISTRIBUTED_TIMEOUT_EDEFAULT);
@@ -4522,6 +5631,48 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 				return;
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_CONTENT_TYPE:
 				setTransportJMSContentType(TRANSPORT_JMS_CONTENT_TYPE_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_CONTENT_TYPE_PROPERTY:
+				setTransportJMSContentTypeProperty(TRANSPORT_JMS_CONTENT_TYPE_PROPERTY_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_REPLY_DESTINATION:
+				setTransportJMSReplyDestination(TRANSPORT_JMS_REPLY_DESTINATION_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_PUB_SUB_NO_LOCAL:
+				setTransportJMSPubSubNoLocal(TRANSPORT_JMS_PUB_SUB_NO_LOCAL_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_CONNECTION_FACTORY:
+				setTransportMQTTConnectionFactory(TRANSPORT_MQTT_CONNECTION_FACTORY_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SERVER_HOST_NAME:
+				setTransportMQTTServerHostName(TRANSPORT_MQTT_SERVER_HOST_NAME_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SERVER_PORT:
+				setTransportMQTTServerPort(TRANSPORT_MQTT_SERVER_PORT_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_TOPIC_NAME:
+				setTransportMQTTTopicName(TRANSPORT_MQTT_TOPIC_NAME_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SUBSCRIPTION_QOS:
+				setTransportMQTTSubscriptionQOS(TRANSPORT_MQTT_SUBSCRIPTION_QOS_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SESSION_CLEAN:
+				setTransportMQTTSessionClean(TRANSPORT_MQTT_SESSION_CLEAN_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_ENABLE:
+				setTransportMQTTSslEnable(TRANSPORT_MQTT_SSL_ENABLE_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_BLOCKING_SENDER:
+				setTransportMQTTBlockingSender(TRANSPORT_MQTT_BLOCKING_SENDER_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_TEMPORARY_STORE_DIRECTORY:
+				setTransportMQTTTemporaryStoreDirectory(TRANSPORT_MQTT_TEMPORARY_STORE_DIRECTORY_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SUBSCRIPTION_USERNAME:
+				setTransportMQTTSubscriptionUsername(TRANSPORT_MQTT_SUBSCRIPTION_USERNAME_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SUBSCRIPTION_PASSWORD:
+				setTransportMQTTSubscriptionPassword(TRANSPORT_MQTT_SUBSCRIPTION_PASSWORD_EDEFAULT);
 				return;
 			case EsbPackage.INBOUND_ENDPOINT__TRUSTSTORE:
 				setTruststore(TRUSTSTORE_EDEFAULT);
@@ -4660,6 +5811,20 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 				return PROTOCOL_EDEFAULT == null ? protocol != null : !PROTOCOL_EDEFAULT.equals(protocol);
 			case EsbPackage.INBOUND_ENDPOINT__INBOUND_HTTP_PORT:
 				return INBOUND_HTTP_PORT_EDEFAULT == null ? inboundHttpPort != null : !INBOUND_HTTP_PORT_EDEFAULT.equals(inboundHttpPort);
+			case EsbPackage.INBOUND_ENDPOINT__INBOUND_WORKER_POOL_SIZE_CORE:
+				return INBOUND_WORKER_POOL_SIZE_CORE_EDEFAULT == null ? inboundWorkerPoolSizeCore != null : !INBOUND_WORKER_POOL_SIZE_CORE_EDEFAULT.equals(inboundWorkerPoolSizeCore);
+			case EsbPackage.INBOUND_ENDPOINT__INBOUND_WORKER_POOL_SIZE_MAX:
+				return INBOUND_WORKER_POOL_SIZE_MAX_EDEFAULT == null ? inboundWorkerPoolSizeMax != null : !INBOUND_WORKER_POOL_SIZE_MAX_EDEFAULT.equals(inboundWorkerPoolSizeMax);
+			case EsbPackage.INBOUND_ENDPOINT__INBOUND_WORKER_THREAD_KEEP_ALIVE_SEC:
+				return INBOUND_WORKER_THREAD_KEEP_ALIVE_SEC_EDEFAULT == null ? inboundWorkerThreadKeepAliveSec != null : !INBOUND_WORKER_THREAD_KEEP_ALIVE_SEC_EDEFAULT.equals(inboundWorkerThreadKeepAliveSec);
+			case EsbPackage.INBOUND_ENDPOINT__INBOUND_WORKER_POOL_QUEUE_LENGTH:
+				return INBOUND_WORKER_POOL_QUEUE_LENGTH_EDEFAULT == null ? inboundWorkerPoolQueueLength != null : !INBOUND_WORKER_POOL_QUEUE_LENGTH_EDEFAULT.equals(inboundWorkerPoolQueueLength);
+			case EsbPackage.INBOUND_ENDPOINT__INBOUND_THREAD_GROUP_ID:
+				return INBOUND_THREAD_GROUP_ID_EDEFAULT == null ? inboundThreadGroupId != null : !INBOUND_THREAD_GROUP_ID_EDEFAULT.equals(inboundThreadGroupId);
+			case EsbPackage.INBOUND_ENDPOINT__INBOUND_THREAD_ID:
+				return INBOUND_THREAD_ID_EDEFAULT == null ? inboundThreadId != null : !INBOUND_THREAD_ID_EDEFAULT.equals(inboundThreadId);
+			case EsbPackage.INBOUND_ENDPOINT__DISPATCH_FILTER_PATTERN:
+				return DISPATCH_FILTER_PATTERN_EDEFAULT == null ? dispatchFilterPattern != null : !DISPATCH_FILTER_PATTERN_EDEFAULT.equals(dispatchFilterPattern);
 			case EsbPackage.INBOUND_ENDPOINT__INTERVAL:
 				return INTERVAL_EDEFAULT == null ? interval != null : !INTERVAL_EDEFAULT.equals(interval);
 			case EsbPackage.INBOUND_ENDPOINT__SEQUENTIAL:
@@ -4702,6 +5867,10 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 				return transportVFSLockReleaseSameNode != TRANSPORT_VFS_LOCK_RELEASE_SAME_NODE_EDEFAULT;
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_DISTRIBUTED_LOCK:
 				return transportVFSDistributedLock != TRANSPORT_VFS_DISTRIBUTED_LOCK_EDEFAULT;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_STREAMING:
+				return transportVFSStreaming != TRANSPORT_VFS_STREAMING_EDEFAULT;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_BUILD:
+				return transportVFSBuild != TRANSPORT_VFS_BUILD_EDEFAULT;
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_DISTRIBUTED_TIMEOUT:
 				return TRANSPORT_VFS_DISTRIBUTED_TIMEOUT_EDEFAULT == null ? transportVFSDistributedTimeout != null : !TRANSPORT_VFS_DISTRIBUTED_TIMEOUT_EDEFAULT.equals(transportVFSDistributedTimeout);
 			case EsbPackage.INBOUND_ENDPOINT__JAVA_NAMING_FACTORY_INITIAL:
@@ -4748,6 +5917,34 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 				return TRANSPORT_JMS_RECEIVE_TIMEOUT_EDEFAULT == null ? transportJMSReceiveTimeout != null : !TRANSPORT_JMS_RECEIVE_TIMEOUT_EDEFAULT.equals(transportJMSReceiveTimeout);
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_CONTENT_TYPE:
 				return TRANSPORT_JMS_CONTENT_TYPE_EDEFAULT == null ? transportJMSContentType != null : !TRANSPORT_JMS_CONTENT_TYPE_EDEFAULT.equals(transportJMSContentType);
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_CONTENT_TYPE_PROPERTY:
+				return TRANSPORT_JMS_CONTENT_TYPE_PROPERTY_EDEFAULT == null ? transportJMSContentTypeProperty != null : !TRANSPORT_JMS_CONTENT_TYPE_PROPERTY_EDEFAULT.equals(transportJMSContentTypeProperty);
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_REPLY_DESTINATION:
+				return TRANSPORT_JMS_REPLY_DESTINATION_EDEFAULT == null ? transportJMSReplyDestination != null : !TRANSPORT_JMS_REPLY_DESTINATION_EDEFAULT.equals(transportJMSReplyDestination);
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_PUB_SUB_NO_LOCAL:
+				return TRANSPORT_JMS_PUB_SUB_NO_LOCAL_EDEFAULT == null ? transportJMSPubSubNoLocal != null : !TRANSPORT_JMS_PUB_SUB_NO_LOCAL_EDEFAULT.equals(transportJMSPubSubNoLocal);
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_CONNECTION_FACTORY:
+				return TRANSPORT_MQTT_CONNECTION_FACTORY_EDEFAULT == null ? transportMQTTConnectionFactory != null : !TRANSPORT_MQTT_CONNECTION_FACTORY_EDEFAULT.equals(transportMQTTConnectionFactory);
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SERVER_HOST_NAME:
+				return TRANSPORT_MQTT_SERVER_HOST_NAME_EDEFAULT == null ? transportMQTTServerHostName != null : !TRANSPORT_MQTT_SERVER_HOST_NAME_EDEFAULT.equals(transportMQTTServerHostName);
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SERVER_PORT:
+				return TRANSPORT_MQTT_SERVER_PORT_EDEFAULT == null ? transportMQTTServerPort != null : !TRANSPORT_MQTT_SERVER_PORT_EDEFAULT.equals(transportMQTTServerPort);
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_TOPIC_NAME:
+				return TRANSPORT_MQTT_TOPIC_NAME_EDEFAULT == null ? transportMQTTTopicName != null : !TRANSPORT_MQTT_TOPIC_NAME_EDEFAULT.equals(transportMQTTTopicName);
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SUBSCRIPTION_QOS:
+				return transportMQTTSubscriptionQOS != TRANSPORT_MQTT_SUBSCRIPTION_QOS_EDEFAULT;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SESSION_CLEAN:
+				return transportMQTTSessionClean != TRANSPORT_MQTT_SESSION_CLEAN_EDEFAULT;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_ENABLE:
+				return TRANSPORT_MQTT_SSL_ENABLE_EDEFAULT == null ? transportMQTTSslEnable != null : !TRANSPORT_MQTT_SSL_ENABLE_EDEFAULT.equals(transportMQTTSslEnable);
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_BLOCKING_SENDER:
+				return transportMQTTBlockingSender != TRANSPORT_MQTT_BLOCKING_SENDER_EDEFAULT;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_TEMPORARY_STORE_DIRECTORY:
+				return TRANSPORT_MQTT_TEMPORARY_STORE_DIRECTORY_EDEFAULT == null ? transportMQTTTemporaryStoreDirectory != null : !TRANSPORT_MQTT_TEMPORARY_STORE_DIRECTORY_EDEFAULT.equals(transportMQTTTemporaryStoreDirectory);
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SUBSCRIPTION_USERNAME:
+				return TRANSPORT_MQTT_SUBSCRIPTION_USERNAME_EDEFAULT == null ? transportMQTTSubscriptionUsername != null : !TRANSPORT_MQTT_SUBSCRIPTION_USERNAME_EDEFAULT.equals(transportMQTTSubscriptionUsername);
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SUBSCRIPTION_PASSWORD:
+				return TRANSPORT_MQTT_SUBSCRIPTION_PASSWORD_EDEFAULT == null ? transportMQTTSubscriptionPassword != null : !TRANSPORT_MQTT_SUBSCRIPTION_PASSWORD_EDEFAULT.equals(transportMQTTSubscriptionPassword);
 			case EsbPackage.INBOUND_ENDPOINT__TRUSTSTORE:
 				return TRUSTSTORE_EDEFAULT == null ? truststore != null : !TRUSTSTORE_EDEFAULT.equals(truststore);
 			case EsbPackage.INBOUND_ENDPOINT__KEYSTORE:
@@ -4842,6 +6039,20 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 		result.append(protocol);
 		result.append(", inboundHttpPort: ");
 		result.append(inboundHttpPort);
+		result.append(", inboundWorkerPoolSizeCore: ");
+		result.append(inboundWorkerPoolSizeCore);
+		result.append(", inboundWorkerPoolSizeMax: ");
+		result.append(inboundWorkerPoolSizeMax);
+		result.append(", inboundWorkerThreadKeepAliveSec: ");
+		result.append(inboundWorkerThreadKeepAliveSec);
+		result.append(", inboundWorkerPoolQueueLength: ");
+		result.append(inboundWorkerPoolQueueLength);
+		result.append(", inboundThreadGroupId: ");
+		result.append(inboundThreadGroupId);
+		result.append(", inboundThreadId: ");
+		result.append(inboundThreadId);
+		result.append(", dispatchFilterPattern: ");
+		result.append(dispatchFilterPattern);
 		result.append(", interval: ");
 		result.append(interval);
 		result.append(", sequential: ");
@@ -4884,6 +6095,10 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 		result.append(transportVFSLockReleaseSameNode);
 		result.append(", transportVFSDistributedLock: ");
 		result.append(transportVFSDistributedLock);
+		result.append(", transportVFSStreaming: ");
+		result.append(transportVFSStreaming);
+		result.append(", transportVFSBuild: ");
+		result.append(transportVFSBuild);
 		result.append(", transportVFSDistributedTimeout: ");
 		result.append(transportVFSDistributedTimeout);
 		result.append(", javaNamingFactoryInitial: ");
@@ -4930,6 +6145,34 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 		result.append(transportJMSReceiveTimeout);
 		result.append(", transportJMSContentType: ");
 		result.append(transportJMSContentType);
+		result.append(", transportJMSContentTypeProperty: ");
+		result.append(transportJMSContentTypeProperty);
+		result.append(", transportJMSReplyDestination: ");
+		result.append(transportJMSReplyDestination);
+		result.append(", transportJMSPubSubNoLocal: ");
+		result.append(transportJMSPubSubNoLocal);
+		result.append(", transportMQTTConnectionFactory: ");
+		result.append(transportMQTTConnectionFactory);
+		result.append(", transportMQTTServerHostName: ");
+		result.append(transportMQTTServerHostName);
+		result.append(", transportMQTTServerPort: ");
+		result.append(transportMQTTServerPort);
+		result.append(", transportMQTTTopicName: ");
+		result.append(transportMQTTTopicName);
+		result.append(", transportMQTTSubscriptionQOS: ");
+		result.append(transportMQTTSubscriptionQOS);
+		result.append(", transportMQTTSessionClean: ");
+		result.append(transportMQTTSessionClean);
+		result.append(", transportMQTTSslEnable: ");
+		result.append(transportMQTTSslEnable);
+		result.append(", transportMQTTBlockingSender: ");
+		result.append(transportMQTTBlockingSender);
+		result.append(", transportMQTTTemporaryStoreDirectory: ");
+		result.append(transportMQTTTemporaryStoreDirectory);
+		result.append(", transportMQTTSubscriptionUsername: ");
+		result.append(transportMQTTSubscriptionUsername);
+		result.append(", transportMQTTSubscriptionPassword: ");
+		result.append(transportMQTTSubscriptionPassword);
 		result.append(", truststore: ");
 		result.append(truststore);
 		result.append(", keystore: ");

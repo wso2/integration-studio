@@ -101,7 +101,15 @@ public enum InboundEndpointType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	CXF_WS_RM(7, "cxf_ws_rm", "CXF_WS_RM");
+	CXF_WS_RM(7, "cxf_ws_rm", "CXF_WS_RM"), /**
+	 * The '<em><b>Mqtt</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #MQTT_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	MQTT(8, "mqtt", "MQTT");
 
 	/**
 	 * The '<em><b>Http</b></em>' literal value.
@@ -224,6 +232,21 @@ public enum InboundEndpointType implements Enumerator {
 	public static final int CXF_WS_RM_VALUE = 7;
 
 	/**
+	 * The '<em><b>Mqtt</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>Mqtt</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #MQTT
+	 * @model name="mqtt" literal="MQTT"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int MQTT_VALUE = 8;
+
+	/**
 	 * An array of all the '<em><b>Inbound Endpoint Type</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -239,6 +262,7 @@ public enum InboundEndpointType implements Enumerator {
 			HL7,
 			KAFKA,
 			CXF_WS_RM,
+			MQTT,
 		};
 
 	/**
@@ -297,6 +321,7 @@ public enum InboundEndpointType implements Enumerator {
 			case HL7_VALUE: return HL7;
 			case KAFKA_VALUE: return KAFKA;
 			case CXF_WS_RM_VALUE: return CXF_WS_RM;
+			case MQTT_VALUE: return MQTT;
 		}
 		return null;
 	}

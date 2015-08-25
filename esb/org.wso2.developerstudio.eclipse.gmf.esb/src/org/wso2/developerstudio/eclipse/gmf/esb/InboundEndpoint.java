@@ -36,6 +36,13 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getClass_ <em>Class</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getProtocol <em>Protocol</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getInboundHttpPort <em>Inbound Http Port</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getInboundWorkerPoolSizeCore <em>Inbound Worker Pool Size Core</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getInboundWorkerPoolSizeMax <em>Inbound Worker Pool Size Max</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getInboundWorkerThreadKeepAliveSec <em>Inbound Worker Thread Keep Alive Sec</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getInboundWorkerPoolQueueLength <em>Inbound Worker Pool Queue Length</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getInboundThreadGroupId <em>Inbound Thread Group Id</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getInboundThreadId <em>Inbound Thread Id</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getDispatchFilterPattern <em>Dispatch Filter Pattern</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getInterval <em>Interval</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#isSequential <em>Sequential</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#isCoordination <em>Coordination</em>}</li>
@@ -57,6 +64,8 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportVFSAutoLockReleaseInterval <em>Transport VFS Auto Lock Release Interval</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#isTransportVFSLockReleaseSameNode <em>Transport VFS Lock Release Same Node</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#isTransportVFSDistributedLock <em>Transport VFS Distributed Lock</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#isTransportVFSStreaming <em>Transport VFS Streaming</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#isTransportVFSBuild <em>Transport VFS Build</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportVFSDistributedTimeout <em>Transport VFS Distributed Timeout</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getJavaNamingFactoryInitial <em>Java Naming Factory Initial</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getJavaNamingProviderUrl <em>Java Naming Provider Url</em>}</li>
@@ -80,6 +89,20 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#isTransportVFSCreateFolder <em>Transport VFS Create Folder</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportJMSReceiveTimeout <em>Transport JMS Receive Timeout</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportJMSContentType <em>Transport JMS Content Type</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportJMSContentTypeProperty <em>Transport JMS Content Type Property</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportJMSReplyDestination <em>Transport JMS Reply Destination</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportJMSPubSubNoLocal <em>Transport JMS Pub Sub No Local</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportMQTTConnectionFactory <em>Transport MQTT Connection Factory</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportMQTTServerHostName <em>Transport MQTT Server Host Name</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportMQTTServerPort <em>Transport MQTT Server Port</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportMQTTTopicName <em>Transport MQTT Topic Name</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportMQTTSubscriptionQOS <em>Transport MQTT Subscription QOS</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#isTransportMQTTSessionClean <em>Transport MQTT Session Clean</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportMQTTSslEnable <em>Transport MQTT Ssl Enable</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#isTransportMQTTBlockingSender <em>Transport MQTT Blocking Sender</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportMQTTTemporaryStoreDirectory <em>Transport MQTT Temporary Store Directory</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportMQTTSubscriptionUsername <em>Transport MQTT Subscription Username</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportMQTTSubscriptionPassword <em>Transport MQTT Subscription Password</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTruststore <em>Truststore</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getKeystore <em>Keystore</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getSslVerifyClient <em>Ssl Verify Client</em>}</li>
@@ -1138,6 +1161,188 @@ public interface InboundEndpoint extends EsbElement {
 	void setInboundHttpPort(String value);
 
 	/**
+	 * Returns the value of the '<em><b>Inbound Worker Pool Size Core</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Inbound Worker Pool Size Core</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Inbound Worker Pool Size Core</em>' attribute.
+	 * @see #setInboundWorkerPoolSizeCore(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_InboundWorkerPoolSizeCore()
+	 * @model
+	 * @generated
+	 */
+	String getInboundWorkerPoolSizeCore();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getInboundWorkerPoolSizeCore <em>Inbound Worker Pool Size Core</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Inbound Worker Pool Size Core</em>' attribute.
+	 * @see #getInboundWorkerPoolSizeCore()
+	 * @generated
+	 */
+	void setInboundWorkerPoolSizeCore(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Inbound Worker Pool Size Max</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Inbound Worker Pool Size Max</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Inbound Worker Pool Size Max</em>' attribute.
+	 * @see #setInboundWorkerPoolSizeMax(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_InboundWorkerPoolSizeMax()
+	 * @model
+	 * @generated
+	 */
+	String getInboundWorkerPoolSizeMax();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getInboundWorkerPoolSizeMax <em>Inbound Worker Pool Size Max</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Inbound Worker Pool Size Max</em>' attribute.
+	 * @see #getInboundWorkerPoolSizeMax()
+	 * @generated
+	 */
+	void setInboundWorkerPoolSizeMax(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Inbound Worker Thread Keep Alive Sec</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Inbound Worker Thread Keep Alive Sec</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Inbound Worker Thread Keep Alive Sec</em>' attribute.
+	 * @see #setInboundWorkerThreadKeepAliveSec(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_InboundWorkerThreadKeepAliveSec()
+	 * @model
+	 * @generated
+	 */
+	String getInboundWorkerThreadKeepAliveSec();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getInboundWorkerThreadKeepAliveSec <em>Inbound Worker Thread Keep Alive Sec</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Inbound Worker Thread Keep Alive Sec</em>' attribute.
+	 * @see #getInboundWorkerThreadKeepAliveSec()
+	 * @generated
+	 */
+	void setInboundWorkerThreadKeepAliveSec(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Inbound Worker Pool Queue Length</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Inbound Worker Pool Queue Length</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Inbound Worker Pool Queue Length</em>' attribute.
+	 * @see #setInboundWorkerPoolQueueLength(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_InboundWorkerPoolQueueLength()
+	 * @model
+	 * @generated
+	 */
+	String getInboundWorkerPoolQueueLength();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getInboundWorkerPoolQueueLength <em>Inbound Worker Pool Queue Length</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Inbound Worker Pool Queue Length</em>' attribute.
+	 * @see #getInboundWorkerPoolQueueLength()
+	 * @generated
+	 */
+	void setInboundWorkerPoolQueueLength(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Inbound Thread Group Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Inbound Thread Group Id</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Inbound Thread Group Id</em>' attribute.
+	 * @see #setInboundThreadGroupId(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_InboundThreadGroupId()
+	 * @model
+	 * @generated
+	 */
+	String getInboundThreadGroupId();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getInboundThreadGroupId <em>Inbound Thread Group Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Inbound Thread Group Id</em>' attribute.
+	 * @see #getInboundThreadGroupId()
+	 * @generated
+	 */
+	void setInboundThreadGroupId(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Inbound Thread Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Inbound Thread Id</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Inbound Thread Id</em>' attribute.
+	 * @see #setInboundThreadId(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_InboundThreadId()
+	 * @model
+	 * @generated
+	 */
+	String getInboundThreadId();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getInboundThreadId <em>Inbound Thread Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Inbound Thread Id</em>' attribute.
+	 * @see #getInboundThreadId()
+	 * @generated
+	 */
+	void setInboundThreadId(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Dispatch Filter Pattern</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Dispatch Filter Pattern</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Dispatch Filter Pattern</em>' attribute.
+	 * @see #setDispatchFilterPattern(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_DispatchFilterPattern()
+	 * @model
+	 * @generated
+	 */
+	String getDispatchFilterPattern();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getDispatchFilterPattern <em>Dispatch Filter Pattern</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Dispatch Filter Pattern</em>' attribute.
+	 * @see #getDispatchFilterPattern()
+	 * @generated
+	 */
+	void setDispatchFilterPattern(String value);
+
+	/**
 	 * Returns the value of the '<em><b>Interval</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -1699,6 +1904,60 @@ public interface InboundEndpoint extends EsbElement {
 	 * @generated
 	 */
 	void setTransportVFSDistributedLock(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Transport VFS Streaming</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Transport VFS Streaming</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Transport VFS Streaming</em>' attribute.
+	 * @see #setTransportVFSStreaming(boolean)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportVFSStreaming()
+	 * @model default="false"
+	 * @generated
+	 */
+	boolean isTransportVFSStreaming();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#isTransportVFSStreaming <em>Transport VFS Streaming</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Transport VFS Streaming</em>' attribute.
+	 * @see #isTransportVFSStreaming()
+	 * @generated
+	 */
+	void setTransportVFSStreaming(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Transport VFS Build</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Transport VFS Build</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Transport VFS Build</em>' attribute.
+	 * @see #setTransportVFSBuild(boolean)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportVFSBuild()
+	 * @model default="false"
+	 * @generated
+	 */
+	boolean isTransportVFSBuild();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#isTransportVFSBuild <em>Transport VFS Build</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Transport VFS Build</em>' attribute.
+	 * @see #isTransportVFSBuild()
+	 * @generated
+	 */
+	void setTransportVFSBuild(boolean value);
 
 	/**
 	 * Returns the value of the '<em><b>Transport VFS Distributed Timeout</b></em>' attribute.
@@ -2310,6 +2569,373 @@ public interface InboundEndpoint extends EsbElement {
 	 * @generated
 	 */
 	void setTransportJMSContentType(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Transport JMS Content Type Property</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Transport JMS Content Type Property</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Transport JMS Content Type Property</em>' attribute.
+	 * @see #setTransportJMSContentTypeProperty(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportJMSContentTypeProperty()
+	 * @model
+	 * @generated
+	 */
+	String getTransportJMSContentTypeProperty();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportJMSContentTypeProperty <em>Transport JMS Content Type Property</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Transport JMS Content Type Property</em>' attribute.
+	 * @see #getTransportJMSContentTypeProperty()
+	 * @generated
+	 */
+	void setTransportJMSContentTypeProperty(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Transport JMS Reply Destination</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Transport JMS Reply Destination</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Transport JMS Reply Destination</em>' attribute.
+	 * @see #setTransportJMSReplyDestination(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportJMSReplyDestination()
+	 * @model
+	 * @generated
+	 */
+	String getTransportJMSReplyDestination();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportJMSReplyDestination <em>Transport JMS Reply Destination</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Transport JMS Reply Destination</em>' attribute.
+	 * @see #getTransportJMSReplyDestination()
+	 * @generated
+	 */
+	void setTransportJMSReplyDestination(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Transport JMS Pub Sub No Local</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Transport JMS Pub Sub No Local</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Transport JMS Pub Sub No Local</em>' attribute.
+	 * @see #setTransportJMSPubSubNoLocal(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportJMSPubSubNoLocal()
+	 * @model
+	 * @generated
+	 */
+	String getTransportJMSPubSubNoLocal();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportJMSPubSubNoLocal <em>Transport JMS Pub Sub No Local</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Transport JMS Pub Sub No Local</em>' attribute.
+	 * @see #getTransportJMSPubSubNoLocal()
+	 * @generated
+	 */
+	void setTransportJMSPubSubNoLocal(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Transport MQTT Connection Factory</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Transport MQTT Connection Factory</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Transport MQTT Connection Factory</em>' attribute.
+	 * @see #setTransportMQTTConnectionFactory(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportMQTTConnectionFactory()
+	 * @model
+	 * @generated
+	 */
+	String getTransportMQTTConnectionFactory();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportMQTTConnectionFactory <em>Transport MQTT Connection Factory</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Transport MQTT Connection Factory</em>' attribute.
+	 * @see #getTransportMQTTConnectionFactory()
+	 * @generated
+	 */
+	void setTransportMQTTConnectionFactory(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Transport MQTT Server Host Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Transport MQTT Server Host Name</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Transport MQTT Server Host Name</em>' attribute.
+	 * @see #setTransportMQTTServerHostName(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportMQTTServerHostName()
+	 * @model
+	 * @generated
+	 */
+	String getTransportMQTTServerHostName();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportMQTTServerHostName <em>Transport MQTT Server Host Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Transport MQTT Server Host Name</em>' attribute.
+	 * @see #getTransportMQTTServerHostName()
+	 * @generated
+	 */
+	void setTransportMQTTServerHostName(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Transport MQTT Server Port</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Transport MQTT Server Port</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Transport MQTT Server Port</em>' attribute.
+	 * @see #setTransportMQTTServerPort(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportMQTTServerPort()
+	 * @model
+	 * @generated
+	 */
+	String getTransportMQTTServerPort();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportMQTTServerPort <em>Transport MQTT Server Port</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Transport MQTT Server Port</em>' attribute.
+	 * @see #getTransportMQTTServerPort()
+	 * @generated
+	 */
+	void setTransportMQTTServerPort(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Transport MQTT Topic Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Transport MQTT Topic Name</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Transport MQTT Topic Name</em>' attribute.
+	 * @see #setTransportMQTTTopicName(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportMQTTTopicName()
+	 * @model
+	 * @generated
+	 */
+	String getTransportMQTTTopicName();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportMQTTTopicName <em>Transport MQTT Topic Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Transport MQTT Topic Name</em>' attribute.
+	 * @see #getTransportMQTTTopicName()
+	 * @generated
+	 */
+	void setTransportMQTTTopicName(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Transport MQTT Subscription QOS</b></em>' attribute.
+	 * The literals are from the enumeration {@link org.wso2.developerstudio.eclipse.gmf.esb.MQTTSubscriptionQOS}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Transport MQTT Subscription QOS</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Transport MQTT Subscription QOS</em>' attribute.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.MQTTSubscriptionQOS
+	 * @see #setTransportMQTTSubscriptionQOS(MQTTSubscriptionQOS)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportMQTTSubscriptionQOS()
+	 * @model
+	 * @generated
+	 */
+	MQTTSubscriptionQOS getTransportMQTTSubscriptionQOS();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportMQTTSubscriptionQOS <em>Transport MQTT Subscription QOS</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Transport MQTT Subscription QOS</em>' attribute.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.MQTTSubscriptionQOS
+	 * @see #getTransportMQTTSubscriptionQOS()
+	 * @generated
+	 */
+	void setTransportMQTTSubscriptionQOS(MQTTSubscriptionQOS value);
+
+	/**
+	 * Returns the value of the '<em><b>Transport MQTT Session Clean</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Transport MQTT Session Clean</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Transport MQTT Session Clean</em>' attribute.
+	 * @see #setTransportMQTTSessionClean(boolean)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportMQTTSessionClean()
+	 * @model
+	 * @generated
+	 */
+	boolean isTransportMQTTSessionClean();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#isTransportMQTTSessionClean <em>Transport MQTT Session Clean</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Transport MQTT Session Clean</em>' attribute.
+	 * @see #isTransportMQTTSessionClean()
+	 * @generated
+	 */
+	void setTransportMQTTSessionClean(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Transport MQTT Ssl Enable</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Transport MQTT Ssl Enable</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Transport MQTT Ssl Enable</em>' attribute.
+	 * @see #setTransportMQTTSslEnable(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportMQTTSslEnable()
+	 * @model
+	 * @generated
+	 */
+	String getTransportMQTTSslEnable();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportMQTTSslEnable <em>Transport MQTT Ssl Enable</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Transport MQTT Ssl Enable</em>' attribute.
+	 * @see #getTransportMQTTSslEnable()
+	 * @generated
+	 */
+	void setTransportMQTTSslEnable(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Transport MQTT Blocking Sender</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Transport MQTT Blocking Sender</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Transport MQTT Blocking Sender</em>' attribute.
+	 * @see #setTransportMQTTBlockingSender(boolean)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportMQTTBlockingSender()
+	 * @model
+	 * @generated
+	 */
+	boolean isTransportMQTTBlockingSender();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#isTransportMQTTBlockingSender <em>Transport MQTT Blocking Sender</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Transport MQTT Blocking Sender</em>' attribute.
+	 * @see #isTransportMQTTBlockingSender()
+	 * @generated
+	 */
+	void setTransportMQTTBlockingSender(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Transport MQTT Temporary Store Directory</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Transport MQTT Temporary Store Directory</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Transport MQTT Temporary Store Directory</em>' attribute.
+	 * @see #setTransportMQTTTemporaryStoreDirectory(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportMQTTTemporaryStoreDirectory()
+	 * @model
+	 * @generated
+	 */
+	String getTransportMQTTTemporaryStoreDirectory();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportMQTTTemporaryStoreDirectory <em>Transport MQTT Temporary Store Directory</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Transport MQTT Temporary Store Directory</em>' attribute.
+	 * @see #getTransportMQTTTemporaryStoreDirectory()
+	 * @generated
+	 */
+	void setTransportMQTTTemporaryStoreDirectory(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Transport MQTT Subscription Username</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Transport MQTT Subscription Username</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Transport MQTT Subscription Username</em>' attribute.
+	 * @see #setTransportMQTTSubscriptionUsername(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportMQTTSubscriptionUsername()
+	 * @model
+	 * @generated
+	 */
+	String getTransportMQTTSubscriptionUsername();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportMQTTSubscriptionUsername <em>Transport MQTT Subscription Username</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Transport MQTT Subscription Username</em>' attribute.
+	 * @see #getTransportMQTTSubscriptionUsername()
+	 * @generated
+	 */
+	void setTransportMQTTSubscriptionUsername(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Transport MQTT Subscription Password</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Transport MQTT Subscription Password</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Transport MQTT Subscription Password</em>' attribute.
+	 * @see #setTransportMQTTSubscriptionPassword(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportMQTTSubscriptionPassword()
+	 * @model
+	 * @generated
+	 */
+	String getTransportMQTTSubscriptionPassword();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportMQTTSubscriptionPassword <em>Transport MQTT Subscription Password</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Transport MQTT Subscription Password</em>' attribute.
+	 * @see #getTransportMQTTSubscriptionPassword()
+	 * @generated
+	 */
+	void setTransportMQTTSubscriptionPassword(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Truststore</b></em>' attribute.

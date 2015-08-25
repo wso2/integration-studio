@@ -1259,11 +1259,19 @@ public class AppfactoryApplicationListView extends ViewPart {
         String httpPostrespond = HttpsJaggeryClient.httpPost(
                 JagApiProperties.getDeployArtifactUrl(),
                 params); 
-        if(!"false".equals(httpPostrespond)){ //$NON-NLS-1$
+        if (!"false".equals(httpPostrespond)) { //$NON-NLS-1$  
             printInfoLog(Messages.AppfactoryApplicationListView_deploy_printInfoLog_2);
-        }else{
-            printErrorLog(Messages.AppfactoryApplicationListView_deploy_printErrorLog_3);
-            printInfoLog(Messages.AppfactoryApplicationListView_deploy_printInfoLog_3);
+        } else {
+            boolean reLoginSuccessful = Authenticator.getInstance().reLogin();
+            if (reLoginSuccessful) {
+                httpPostrespond = HttpsJaggeryClient.httpPost(JagApiProperties.getDeployArtifactUrl(), params);
+                if (!"false".equals(httpPostrespond)) { //$NON-NLS-1$  
+                    printInfoLog(Messages.AppfactoryApplicationListView_deploy_printInfoLog_2);
+                } 
+            } else {
+                printErrorLog(Messages.AppfactoryApplicationListView_deploy_printErrorLog_3);
+                printInfoLog(Messages.AppfactoryApplicationListView_deploy_printInfoLog_3);
+            }
         }
     }
 
@@ -1284,10 +1292,18 @@ public class AppfactoryApplicationListView extends ViewPart {
         String httpPostrespond = HttpsJaggeryClient.httpPost(
                 JagApiProperties.getCreateArtifactUrl(),
                 params); 
-        if(!"false".equals(httpPostrespond)){ //$NON-NLS-1$
+        if (!"false".equals(httpPostrespond)) { //$NON-NLS-1$
             printInfoLog("Build invoked successfully.");
-        }else{
-            printErrorLog("Failed invoking build.");
+        } else {
+            boolean reLoginSuccessful = Authenticator.getInstance().reLogin();
+            if (reLoginSuccessful) {
+                httpPostrespond = HttpsJaggeryClient.httpPost(JagApiProperties.getDeployArtifactUrl(), params);
+                if (!"false".equals(httpPostrespond)) { //$NON-NLS-1$
+                    printInfoLog("Build invoked successfully.");
+                }
+            } else {
+                printErrorLog("Failed invoking build.");
+            }
         }
     }
 

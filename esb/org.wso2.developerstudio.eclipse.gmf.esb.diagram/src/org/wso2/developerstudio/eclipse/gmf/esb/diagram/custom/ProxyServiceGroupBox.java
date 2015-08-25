@@ -64,7 +64,7 @@ public class ProxyServiceGroupBox extends RoundedRectangle {
 
 		RectangleFigure imageRectangle = new RectangleFigure();
 		imageRectangle.setOutline(false);
-		imageRectangle.setBackgroundColor(new Color(null, 233, 245, 215));
+		imageRectangle.setBackgroundColor(new Color(null, 0, 125, 133));
 		imageRectangle.setPreferredSize(new Dimension(36, 40));
 		imageRectangle.add(img);
 
@@ -83,7 +83,7 @@ public class ProxyServiceGroupBox extends RoundedRectangle {
 		// Rectangle to contain the name label.
 		RectangleFigure esbNodeTypeNameRectangle = new RectangleFigure();
 		esbNodeTypeNameRectangle.setOutline(false);
-		esbNodeTypeNameRectangle.setBackgroundColor(new Color(null, 233, 245, 215));
+		esbNodeTypeNameRectangle.setBackgroundColor(new Color(null, 0, 125, 133));
 		esbNodeTypeNameRectangle.setPreferredSize(new Dimension(65, 20));
 		esbNodeTypeNameRectangle.setMinimumSize(new Dimension(65, 20));
 		esbNodeTypeNameRectangle.setMaximumSize(new Dimension(65, 20));
@@ -123,7 +123,7 @@ public class ProxyServiceGroupBox extends RoundedRectangle {
 		innerRect.setBorder(innerRectBorder);
 		innerRect.setPreferredSize(new Dimension(95, 25));
 		innerRect.setMinimumSize(new Dimension(80, 100));
-		innerRect.setBackgroundColor(new Color(null, 233, 245, 215));
+		innerRect.setBackgroundColor(new Color(null, 0, 125, 133));
 
 		GridLayout innerRectLayout = new GridLayout();
 		innerRectLayout.numColumns = 1;

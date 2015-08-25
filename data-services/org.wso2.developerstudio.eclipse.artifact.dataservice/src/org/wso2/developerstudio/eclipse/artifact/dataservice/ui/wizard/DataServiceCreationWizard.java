@@ -28,10 +28,9 @@ import javax.xml.stream.FactoryConfigurationError;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.maven.model.Plugin;
 import org.apache.maven.model.PluginExecution;
-import org.apache.maven.model.Repository;
-import org.apache.maven.model.RepositoryPolicy;
 import org.apache.maven.project.MavenProject;
 import org.codehaus.plexus.util.xml.Xpp3Dom;
+import org.codehaus.plexus.util.xml.pull.XmlPullParserException;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
@@ -74,7 +73,6 @@ public class DataServiceCreationWizard extends AbstractWSO2ProjectCreationWizard
 	private static final String IMPORT_OPTION = "import.ds";
 	private static final String NEW_OPTION = "new.ds";
 	private static final String POM_FILE = "pom.xml";
-	private static final String ARTIFACT_TAG = "artifact";
 	private static final String GROUP_ID = "org.wso2.maven";
 	private static final String ARTIFACT_ID = "maven-dataservice-plugin";
 	private static final String ARTIFACT_FILE = "artifact.xml";
@@ -220,19 +218,16 @@ public class DataServiceCreationWizard extends AbstractWSO2ProjectCreationWizard
 	 *            current .dbs file
 	 * @throws Exception
 	 */
-	public void updateDSSPlugin(File openFile, File mavenProjectPom) throws Exception {
+	public void updateDSSPlugin(File openFile, File mavenProjectPom) throws IOException, XmlPullParserException {
 		MavenProject mavenProject = MavenUtils.getMavenProject(mavenProjectPom);
 
-		boolean pluginExists = MavenUtils.checkOldPluginEntry(mavenProject, GROUP_ID, ARTIFACT_ID,
-				MavenConstants.MAVEN_DATASERVICE_PLUGIN_VERSION);
-
-		if (pluginExists) {
+		// Skip changing the pom file if group ID and artifact ID are matched
+		if (MavenUtils.checkOldPluginEntry(mavenProject, GROUP_ID, ARTIFACT_ID)) {
 			return;
 		}
 
 		Plugin pluginEntry = MavenUtils.createPluginEntry(mavenProject, GROUP_ID, ARTIFACT_ID,
 				MavenConstants.MAVEN_DATASERVICE_PLUGIN_VERSION, true);
-
 		PluginExecution pluginExecution = new PluginExecution();
 		pluginExecution.addGoal("pom-gen");
 		pluginExecution.setPhase("process-resources");
@@ -244,24 +239,7 @@ public class DataServiceCreationWizard extends AbstractWSO2ProjectCreationWizard
 		Xpp3Dom typeListNode = MavenUtils.createXpp3Node(configurationNode, "typeList");
 		typeListNode.setValue("${artifact.types}");
 		pluginExecution.setConfiguration(configurationNode);
-
 		pluginEntry.addExecution(pluginExecution);
-		Repository repo = new Repository();
-		repo.setUrl("http://maven.wso2.org/nexus/content/groups/wso2-public/");
-		repo.setId("wso2-nexus");
-
-		RepositoryPolicy releasePolicy = new RepositoryPolicy();
-		releasePolicy.setEnabled(true);
-		releasePolicy.setUpdatePolicy("daily");
-		releasePolicy.setChecksumPolicy("ignore");
-
-		repo.setReleases(releasePolicy);
-
-		if (!mavenProject.getRepositories().contains(repo)) {
-			mavenProject.getModel().addRepository(repo);
-			mavenProject.getModel().addPluginRepository(repo);
-		}
-
 		MavenUtils.saveMavenProject(mavenProject, mavenProjectPom);
 	}
 

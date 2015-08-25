@@ -34,12 +34,13 @@ import org.apache.axiom.om.OMElement;
 import org.apache.commons.lang.StringUtils;
 import org.apache.maven.model.Plugin;
 import org.apache.maven.model.PluginExecution;
-import org.apache.maven.model.Repository;
 import org.apache.maven.project.MavenProject;
 import org.apache.synapse.config.xml.MessageProcessorSerializer;
 import org.apache.synapse.message.processor.MessageProcessor;
 import org.apache.synapse.message.processor.impl.forwarder.ScheduledMessageForwardingProcessor;
 import org.apache.synapse.message.processor.impl.sampler.SamplingProcessor;
+import org.codehaus.plexus.util.xml.Xpp3Dom;
+import org.codehaus.plexus.util.xml.pull.XmlPullParserException;
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
@@ -48,7 +49,6 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
-import org.eclipse.core.runtime.Platform;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.wso2.developerstudio.eclipse.artifact.messageprocessor.Activator;
 import org.wso2.developerstudio.eclipse.artifact.messageprocessor.model.MessageProcessorModel;
@@ -64,7 +64,6 @@ import org.wso2.developerstudio.eclipse.platform.ui.editor.Openable;
 import org.wso2.developerstudio.eclipse.platform.ui.startup.ESBGraphicalEditor;
 import org.wso2.developerstudio.eclipse.platform.ui.wizard.AbstractWSO2ProjectCreationWizard;
 import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
-import org.codehaus.plexus.util.xml.Xpp3Dom;
 
 public class MessageProcessorCreationWizard extends AbstractWSO2ProjectCreationWizard {
 
@@ -170,50 +169,30 @@ public class MessageProcessorCreationWizard extends AbstractWSO2ProjectCreationW
 		return artifact;
 	}
 
-	public void updatePom() throws Exception {
+	public void updatePom() throws IOException, XmlPullParserException {
 		File mavenProjectPomLocation = esbProject.getFile("pom.xml").getLocation().toFile();
 		MavenProject mavenProject = MavenUtils.getMavenProject(mavenProjectPomLocation);
-		 version  = mavenProject.getVersion();
-		 //version  = version.replaceAll("-SNAPSHOT$", "");
-		boolean pluginExists = MavenUtils.checkOldPluginEntry(mavenProject, "org.wso2.maven",
-				"wso2-esb-messageprocessor-plugin",
-				MavenConstants.WSO2_ESB_MESSAGE_STORE_PLUGIN_VERSION);
-		if (pluginExists) {
+		version = mavenProject.getVersion();
+
+		// Skip changing the pom file if group ID and artifact ID are matched
+		if (MavenUtils.checkOldPluginEntry(mavenProject, "org.wso2.maven", "wso2-esb-messageprocessor-plugin")) {
 			return;
 		}
 
 		Plugin plugin = MavenUtils.createPluginEntry(mavenProject, "org.wso2.maven",
-				"wso2-esb-messageprocessor-plugin",
-				MavenConstants.WSO2_ESB_MESSAGE_PROCESSOR_PLUGIN_VERSION, true);
-
+				"wso2-esb-messageprocessor-plugin", MavenConstants.WSO2_ESB_MESSAGE_PROCESSOR_PLUGIN_VERSION, true);
 		PluginExecution pluginExecution = new PluginExecution();
 		pluginExecution.addGoal("pom-gen");
 		pluginExecution.setPhase("process-resources");
 		pluginExecution.setId("task");
 
 		Xpp3Dom configurationNode = MavenUtils.createMainConfigurationNode();
-		Xpp3Dom artifactLocationNode = MavenUtils.createXpp3Node(configurationNode,
-				"artifactLocation");
+		Xpp3Dom artifactLocationNode = MavenUtils.createXpp3Node(configurationNode, "artifactLocation");
 		artifactLocationNode.setValue(".");
 		Xpp3Dom typeListNode = MavenUtils.createXpp3Node(configurationNode, "typeList");
 		typeListNode.setValue("${artifact.types}");
 		pluginExecution.setConfiguration(configurationNode);
-
 		plugin.addExecution(pluginExecution);
-
-		String disableWSO2Repo = Platform.getPreferencesService()
-				.getString("org.wso2.developerstudio.eclipse.platform.ui", DISABLE_WSO2_REPOSITORY,
-						null, null);
-		if (disableWSO2Repo == null) {
-			MavenUtils.updateMavenRepo(mavenProject);
-		}
-		Repository globalRepositoryFromPreference = getGlobalRepositoryFromPreference();
-
-		if (globalRepositoryFromPreference != null) {
-			mavenProject.getModel().addRepository(globalRepositoryFromPreference);
-			mavenProject.getModel().addPluginRepository(globalRepositoryFromPreference);
-		}
-
 		MavenUtils.saveMavenProject(mavenProject, mavenProjectPomLocation);
 	}
 

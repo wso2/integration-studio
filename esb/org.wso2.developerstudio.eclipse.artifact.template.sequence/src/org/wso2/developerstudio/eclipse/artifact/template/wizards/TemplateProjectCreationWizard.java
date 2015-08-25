@@ -31,10 +31,9 @@ import org.apache.axiom.om.impl.builder.StAXOMBuilder;
 import org.apache.commons.lang.StringUtils;
 import org.apache.maven.model.Plugin;
 import org.apache.maven.model.PluginExecution;
-import org.apache.maven.model.Repository;
-import org.apache.maven.model.RepositoryPolicy;
 import org.apache.maven.project.MavenProject;
 import org.codehaus.plexus.util.xml.Xpp3Dom;
+import org.codehaus.plexus.util.xml.pull.XmlPullParserException;
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
@@ -43,10 +42,10 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.jface.dialogs.MessageDialog;
-import org.wso2.developerstudio.eclipse.artifact.template.validators.HttpMethodList.HttpMethodType;
 import org.wso2.developerstudio.eclipse.artifact.template.Activator;
-import org.wso2.developerstudio.eclipse.artifact.template.utils.TemplateImageUtils;
 import org.wso2.developerstudio.eclipse.artifact.template.model.TemplateModel;
+import org.wso2.developerstudio.eclipse.artifact.template.utils.TemplateImageUtils;
+import org.wso2.developerstudio.eclipse.artifact.template.validators.HttpMethodList.HttpMethodType;
 import org.wso2.developerstudio.eclipse.capp.maven.utils.MavenConstants;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBArtifact;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBProjectArtifact;
@@ -197,49 +196,30 @@ public class TemplateProjectCreationWizard extends AbstractWSO2ProjectCreationWi
         return newContent;
 	}
 
-	public void updatePom() throws Exception{
+	public void updatePom() throws IOException, XmlPullParserException {
 		File mavenProjectPomLocation = project.getFile("pom.xml").getLocation().toFile();
 		MavenProject mavenProject = MavenUtils.getMavenProject(mavenProjectPomLocation);
-		 version  = mavenProject.getVersion();
-		 //version  = version.replaceAll("-SNAPSHOT$", "");
-		boolean pluginExists = MavenUtils.checkOldPluginEntry(mavenProject,
-				"org.wso2.maven", "wso2-esb-template-plugin",
-				MavenConstants.WSO2_ESB_TEMPLATE_VERSION);
-		if(pluginExists){
-			return ;
+		version = mavenProject.getVersion();
+
+		// Skip changing the pom file if group ID and artifact ID are matched
+		if (MavenUtils.checkOldPluginEntry(mavenProject, "org.wso2.maven", "wso2-esb-template-plugin")) {
+			return;
 		}
-		
-		Plugin plugin = MavenUtils.createPluginEntry(mavenProject, "org.wso2.maven", "wso2-esb-template-plugin", MavenConstants.WSO2_ESB_TEMPLATE_VERSION, true);
-		
+
+		Plugin plugin = MavenUtils.createPluginEntry(mavenProject, "org.wso2.maven", "wso2-esb-template-plugin",
+				MavenConstants.WSO2_ESB_TEMPLATE_VERSION, true);
 		PluginExecution pluginExecution = new PluginExecution();
 		pluginExecution.addGoal("pom-gen");
 		pluginExecution.setPhase("process-resources");
 		pluginExecution.setId("template");
-		
+
 		Xpp3Dom configurationNode = MavenUtils.createMainConfigurationNode();
 		Xpp3Dom artifactLocationNode = MavenUtils.createXpp3Node(configurationNode, "artifactLocation");
 		artifactLocationNode.setValue(".");
 		Xpp3Dom typeListNode = MavenUtils.createXpp3Node(configurationNode, "typeList");
 		typeListNode.setValue("${artifact.types}");
 		pluginExecution.setConfiguration(configurationNode);
-		
 		plugin.addExecution(pluginExecution);
-		Repository repo = new Repository();
-		repo.setUrl("http://maven.wso2.org/nexus/content/groups/wso2-public/");
-		repo.setId("wso2-nexus");
-		
-		RepositoryPolicy releasePolicy=new RepositoryPolicy();
-		releasePolicy.setEnabled(true);
-		releasePolicy.setUpdatePolicy("daily");
-		releasePolicy.setChecksumPolicy("ignore");
-		
-		repo.setReleases(releasePolicy);
-		
-		if (!mavenProject.getRepositories().contains(repo)) {
-	        mavenProject.getModel().addRepository(repo);
-	        mavenProject.getModel().addPluginRepository(repo);
-        }
-		
 		MavenUtils.saveMavenProject(mavenProject, mavenProjectPomLocation);
 	}
 	

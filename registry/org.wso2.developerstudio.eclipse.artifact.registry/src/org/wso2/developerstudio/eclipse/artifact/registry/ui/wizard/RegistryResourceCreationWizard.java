@@ -28,6 +28,7 @@ import org.apache.maven.model.Plugin;
 import org.apache.maven.model.PluginExecution;
 import org.apache.maven.project.MavenProject;
 import org.codehaus.plexus.util.xml.Xpp3Dom;
+import org.codehaus.plexus.util.xml.pull.XmlPullParserException;
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
@@ -219,7 +220,7 @@ public class RegistryResourceCreationWizard extends AbstractWSO2ProjectCreationW
 		return true;
 	}
 	
-	private void updatePOM(IProject project) throws Exception {
+	private void updatePOM(IProject project) throws IOException, XmlPullParserException {
 		MavenProject mavenProject;
 		File mavenProjectPomLocation = project.getFile("pom.xml").getLocation().toFile();
 		if (!mavenProjectPomLocation.exists()) {

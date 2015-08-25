@@ -27,12 +27,11 @@ import javax.xml.namespace.QName;
 import org.apache.axiom.om.OMElement;
 import org.apache.maven.model.Plugin;
 import org.apache.maven.model.PluginExecution;
-import org.apache.maven.model.Repository;
-import org.apache.maven.model.RepositoryPolicy;
 import org.apache.maven.project.MavenProject;
 import org.apache.synapse.config.xml.inbound.InboundEndpointSerializer;
 import org.apache.synapse.inbound.InboundEndpoint;
 import org.codehaus.plexus.util.xml.Xpp3Dom;
+import org.codehaus.plexus.util.xml.pull.XmlPullParserException;
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
@@ -77,10 +76,6 @@ public class InboundEndpointProjectCreationWizard extends AbstractWSO2ProjectCre
 	private static final String PLUGIN_ID = "inboundendpoint";
 	private static final String ARTIFACT_LOCATION ="artifactLocation";
 	private static final String TYPE_LIST ="typeList";
-	private static final String REPO_URL = "http://maven.wso2.org/nexus/content/groups/wso2-public/";
-	private static final String REPO_ID = "wso2-nexus";
-	private static final String REPO_POLICY = "daily";
-	private static final String REPO_CHECKSUM = "ignore";
 	private static final String CUSTOM = "custom";
 	private static final String KEY ="key";
 	
@@ -183,50 +178,31 @@ public class InboundEndpointProjectCreationWizard extends AbstractWSO2ProjectCre
 		return true;
 	}
 	
-	public void updatePom() throws Exception{
+	public void updatePom() throws IOException, XmlPullParserException {
 		File mavenProjectPomLocation = esbProject.getFile(POM_FILE).getLocation().toFile();
 		MavenProject mavenProject = MavenUtils.getMavenProject(mavenProjectPomLocation);
-		 version = mavenProject.getVersion();
-		boolean pluginExists = MavenUtils.checkOldPluginEntry(mavenProject,
-				MAVEN_ID, INBOUND_EP_PLUGIN_ID,
-				MavenConstants.WSO2_ESB_INBOUND_ENDPOINT_VERSION);
-		if(pluginExists){
-			return ;
+		version = mavenProject.getVersion();
+
+		// Skip changing the pom file if group ID and artifact ID are matched
+		if (MavenUtils.checkOldPluginEntry(mavenProject, MAVEN_ID, INBOUND_EP_PLUGIN_ID)) {
+			return;
 		}
-		
-		Plugin plugin = MavenUtils.createPluginEntry(mavenProject, MAVEN_ID, INBOUND_EP_PLUGIN_ID, MavenConstants.WSO2_ESB_INBOUND_ENDPOINT_VERSION, true);
-		
+
+		Plugin plugin = MavenUtils.createPluginEntry(mavenProject, MAVEN_ID, INBOUND_EP_PLUGIN_ID,
+				MavenConstants.WSO2_ESB_INBOUND_ENDPOINT_VERSION, true);
 		PluginExecution pluginExecution = new PluginExecution();
 		pluginExecution.addGoal(PLUGIN_GOAL);
 		pluginExecution.setPhase(PLUGIN_PHASE);
 		pluginExecution.setId(PLUGIN_ID);
-		
+
 		Xpp3Dom configurationNode = MavenUtils.createMainConfigurationNode();
 		Xpp3Dom artifactLocationNode = MavenUtils.createXpp3Node(configurationNode, ARTIFACT_LOCATION);
 		artifactLocationNode.setValue(".");
 		Xpp3Dom typeListNode = MavenUtils.createXpp3Node(configurationNode, TYPE_LIST);
 		typeListNode.setValue("${artifact.types}");
 		pluginExecution.setConfiguration(configurationNode);
-		
 		plugin.addExecution(pluginExecution);
-		Repository repo = new Repository();
-		repo.setUrl(REPO_URL);
-		repo.setId(REPO_ID);
-		
-		RepositoryPolicy releasePolicy=new RepositoryPolicy();
-		releasePolicy.setEnabled(true);
-		releasePolicy.setUpdatePolicy(REPO_POLICY);
-		releasePolicy.setChecksumPolicy(REPO_CHECKSUM);
-		
-		repo.setReleases(releasePolicy);
-		
-		if (!mavenProject.getRepositories().contains(repo)) {
-	        mavenProject.getModel().addRepository(repo);
-	        mavenProject.getModel().addPluginRepository(repo);
-        }
-
 		MavenUtils.saveMavenProject(mavenProject, mavenProjectPomLocation);
-
 	}
 	
 	protected boolean isRequiredWorkingSet() {

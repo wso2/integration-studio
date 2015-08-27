@@ -329,7 +329,7 @@ public class APIResourceInputConnectorEditPart extends AbstractBaseFigureInputCo
 			this.setFill(false);
 			this.setOutline(false);
 			// this.setBackgroundColor(get);
-			this.setPreferredSize(new Dimension(22, 18));
+			this.setPreferredSize(new Dimension(12, 9));
 			createContents();
 		}
 
@@ -345,12 +345,12 @@ public class APIResourceInputConnectorEditPart extends AbstractBaseFigureInputCo
 
 			ImageDescriptor imgDesc1 = EsbDiagramEditorPlugin.getBundledImageDescriptor("icons/ico20/arrowWest.png");
 			ImageFigure img1 = new ImageFigure(imgDesc1.createImage());
-			img1.setSize(new Dimension(22, 18));
+			img1.setSize(new Dimension(12, 9));
 
 			RectangleFigure imageRectangle11 = new RectangleFigure();
 			imageRectangle11.setOutline(false);
 			imageRectangle11.setBackgroundColor(new Color(null, 255, 255, 255));
-			imageRectangle11.setPreferredSize(new Dimension(22, 18));
+			imageRectangle11.setPreferredSize(new Dimension(12, 9));
 			imageRectangle11.add(img1);
 
 			this.add(imageRectangle11, constraintImageRectangle11);

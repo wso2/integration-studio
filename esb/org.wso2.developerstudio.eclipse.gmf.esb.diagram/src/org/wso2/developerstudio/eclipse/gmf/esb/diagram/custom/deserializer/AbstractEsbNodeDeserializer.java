@@ -359,6 +359,24 @@ public abstract class AbstractEsbNodeDeserializer<T,R extends EsbNode> implement
 							}
 						}
 					}
+					LinkedList<EsbNode> outSeq = connectionFlowMap.get(pair.getValue());
+					if (outSeq == null || outSeq.size() == 0) {
+						continue;
+					}
+
+					sourceConnector = EditorUtils.getProxyOutSequenceOutputConnector((ShapeNodeEditPart) EditorUtils
+							.getAbstractBaseFigureEditPart((EditPart) getEditpart(outSeq.getLast())));
+					if (outSeq.size() > 0 && outSeq.getLast() != null) {
+						targetConnector = EditorUtils.getInputConnector((ShapeNodeEditPart) getEditpart(outSeq
+								.getLast()));
+					} else {
+						if (pair.getValue() instanceof AbstractConnectorEditPart) {
+							targetConnector = (AbstractConnectorEditPart) pair.getValue();
+						} else
+							continue;
+
+					}
+					
 				} else if (firstPart instanceof APIResourceOutputConnectorEditPart
 						&& secondPart instanceof APIResourceInputConnectorEditPart) {
 					LinkedList<EsbNode> seq = connectionFlowMap.get(pair.getKey());
@@ -373,6 +391,23 @@ public abstract class AbstractEsbNodeDeserializer<T,R extends EsbNode> implement
 								break;
 							}
 						}
+					}
+					LinkedList<EsbNode> outSeq = connectionFlowMap.get(pair.getValue());
+					if (outSeq == null || outSeq.size() == 0) {
+						continue;
+					}
+
+					sourceConnector = EditorUtils.getProxyOutSequenceOutputConnector((ShapeNodeEditPart) EditorUtils
+							.getAbstractBaseFigureEditPart((EditPart) getEditpart(outSeq.getLast())));
+					if (outSeq.size() > 0 && outSeq.getLast() != null) {
+						targetConnector = EditorUtils.getInputConnector((ShapeNodeEditPart) getEditpart(outSeq
+								.getLast()));
+					} else {
+						if (pair.getValue() instanceof AbstractConnectorEditPart) {
+							targetConnector = (AbstractConnectorEditPart) pair.getValue();
+						} else
+							continue;
+
 					}
 				}else {
 					LinkedList<EsbNode> outSeq = connectionFlowMap.get(pair.getValue());

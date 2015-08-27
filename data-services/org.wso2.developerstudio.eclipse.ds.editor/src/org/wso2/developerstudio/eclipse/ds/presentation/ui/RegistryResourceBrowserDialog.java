@@ -20,7 +20,6 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.List;
 
-
 import org.apache.commons.lang.StringUtils;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.window.Window;
@@ -44,6 +43,7 @@ import org.wso2.developerstudio.eclipse.general.project.dialogs.DeveloperStudioE
 import org.wso2.developerstudio.eclipse.general.project.dialogs.NewResourceTemplateDialog;
 import org.wso2.developerstudio.eclipse.greg.core.interfaces.IRegistryConnection;
 import org.wso2.developerstudio.eclipse.greg.core.interfaces.IRegistryData;
+import org.wso2.developerstudio.eclipse.greg.core.interfaces.IRegistryFile;
 import org.wso2.developerstudio.eclipse.greg.core.interfaces.IRegistryHandler;
 
 /**
@@ -270,7 +270,8 @@ public class RegistryResourceBrowserDialog extends Dialog {
 	private void openRegistryResourceProviderDialog(){
 		//hide();
 		try{
-		    DeveloperStudioElementProviderDialog registryResourceProviderSelector = new DeveloperStudioElementProviderDialog(getParentShell(),new Class[]{}, new HashMap<String,List<String>>());
+			PolicyFileProviderDialog registryResourceProviderSelector = new PolicyFileProviderDialog(getParentShell(),
+					new Class[] { IRegistryFile.class }, new HashMap<String, List<String>>());
 			registryResourceProviderSelector.create();
 			registryResourceProviderSelector.getShell().setText("Workspace Element Providers");
 			registryResourceProviderSelector.open();

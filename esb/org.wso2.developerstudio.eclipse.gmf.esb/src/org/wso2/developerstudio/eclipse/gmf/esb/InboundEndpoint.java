@@ -99,10 +99,10 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportMQTTSubscriptionQOS <em>Transport MQTT Subscription QOS</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#isTransportMQTTSessionClean <em>Transport MQTT Session Clean</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportMQTTSslEnable <em>Transport MQTT Ssl Enable</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#isTransportMQTTBlockingSender <em>Transport MQTT Blocking Sender</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportMQTTTemporaryStoreDirectory <em>Transport MQTT Temporary Store Directory</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportMQTTSubscriptionUsername <em>Transport MQTT Subscription Username</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportMQTTSubscriptionPassword <em>Transport MQTT Subscription Password</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportMQTTClientId <em>Transport MQTT Client Id</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTruststore <em>Truststore</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getKeystore <em>Keystore</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getSslVerifyClient <em>Ssl Verify Client</em>}</li>
@@ -2834,32 +2834,6 @@ public interface InboundEndpoint extends EsbElement {
 	void setTransportMQTTSslEnable(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Transport MQTT Blocking Sender</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Transport MQTT Blocking Sender</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Transport MQTT Blocking Sender</em>' attribute.
-	 * @see #setTransportMQTTBlockingSender(boolean)
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportMQTTBlockingSender()
-	 * @model
-	 * @generated
-	 */
-	boolean isTransportMQTTBlockingSender();
-
-	/**
-	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#isTransportMQTTBlockingSender <em>Transport MQTT Blocking Sender</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Transport MQTT Blocking Sender</em>' attribute.
-	 * @see #isTransportMQTTBlockingSender()
-	 * @generated
-	 */
-	void setTransportMQTTBlockingSender(boolean value);
-
-	/**
 	 * Returns the value of the '<em><b>Transport MQTT Temporary Store Directory</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -2936,6 +2910,32 @@ public interface InboundEndpoint extends EsbElement {
 	 * @generated
 	 */
 	void setTransportMQTTSubscriptionPassword(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Transport MQTT Client Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Transport MQTT Client Id</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Transport MQTT Client Id</em>' attribute.
+	 * @see #setTransportMQTTClientId(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportMQTTClientId()
+	 * @model
+	 * @generated
+	 */
+	String getTransportMQTTClientId();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportMQTTClientId <em>Transport MQTT Client Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Transport MQTT Client Id</em>' attribute.
+	 * @see #getTransportMQTTClientId()
+	 * @generated
+	 */
+	void setTransportMQTTClientId(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Truststore</b></em>' attribute.

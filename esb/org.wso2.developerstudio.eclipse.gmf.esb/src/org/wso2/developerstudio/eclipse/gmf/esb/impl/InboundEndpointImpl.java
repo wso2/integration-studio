@@ -128,10 +128,10 @@ import org.wso2.developerstudio.eclipse.gmf.esb.VFSFileSort;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportMQTTSubscriptionQOS <em>Transport MQTT Subscription QOS</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isTransportMQTTSessionClean <em>Transport MQTT Session Clean</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportMQTTSslEnable <em>Transport MQTT Ssl Enable</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isTransportMQTTBlockingSender <em>Transport MQTT Blocking Sender</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportMQTTTemporaryStoreDirectory <em>Transport MQTT Temporary Store Directory</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportMQTTSubscriptionUsername <em>Transport MQTT Subscription Username</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportMQTTSubscriptionPassword <em>Transport MQTT Subscription Password</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportMQTTClientId <em>Transport MQTT Client Id</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTruststore <em>Truststore</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getKeystore <em>Keystore</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getSslVerifyClient <em>Ssl Verify Client</em>}</li>
@@ -1584,26 +1584,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	protected String transportMQTTSslEnable = TRANSPORT_MQTT_SSL_ENABLE_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #isTransportMQTTBlockingSender() <em>Transport MQTT Blocking Sender</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isTransportMQTTBlockingSender()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final boolean TRANSPORT_MQTT_BLOCKING_SENDER_EDEFAULT = false;
-
-	/**
-	 * The cached value of the '{@link #isTransportMQTTBlockingSender() <em>Transport MQTT Blocking Sender</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isTransportMQTTBlockingSender()
-	 * @generated
-	 * @ordered
-	 */
-	protected boolean transportMQTTBlockingSender = TRANSPORT_MQTT_BLOCKING_SENDER_EDEFAULT;
-
-	/**
 	 * The default value of the '{@link #getTransportMQTTTemporaryStoreDirectory() <em>Transport MQTT Temporary Store Directory</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1662,6 +1642,26 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * @ordered
 	 */
 	protected String transportMQTTSubscriptionPassword = TRANSPORT_MQTT_SUBSCRIPTION_PASSWORD_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getTransportMQTTClientId() <em>Transport MQTT Client Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportMQTTClientId()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String TRANSPORT_MQTT_CLIENT_ID_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getTransportMQTTClientId() <em>Transport MQTT Client Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportMQTTClientId()
+	 * @generated
+	 * @ordered
+	 */
+	protected String transportMQTTClientId = TRANSPORT_MQTT_CLIENT_ID_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getTruststore() <em>Truststore</em>}' attribute.
@@ -4620,27 +4620,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isTransportMQTTBlockingSender() {
-		return transportMQTTBlockingSender;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setTransportMQTTBlockingSender(boolean newTransportMQTTBlockingSender) {
-		boolean oldTransportMQTTBlockingSender = transportMQTTBlockingSender;
-		transportMQTTBlockingSender = newTransportMQTTBlockingSender;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_BLOCKING_SENDER, oldTransportMQTTBlockingSender, transportMQTTBlockingSender));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public String getTransportMQTTTemporaryStoreDirectory() {
 		return transportMQTTTemporaryStoreDirectory;
 	}
@@ -4697,6 +4676,27 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 		transportMQTTSubscriptionPassword = newTransportMQTTSubscriptionPassword;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SUBSCRIPTION_PASSWORD, oldTransportMQTTSubscriptionPassword, transportMQTTSubscriptionPassword));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getTransportMQTTClientId() {
+		return transportMQTTClientId;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTransportMQTTClientId(String newTransportMQTTClientId) {
+		String oldTransportMQTTClientId = transportMQTTClientId;
+		transportMQTTClientId = newTransportMQTTClientId;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_CLIENT_ID, oldTransportMQTTClientId, transportMQTTClientId));
 	}
 
 	/**
@@ -5003,14 +5003,14 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 				return isTransportMQTTSessionClean();
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_ENABLE:
 				return getTransportMQTTSslEnable();
-			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_BLOCKING_SENDER:
-				return isTransportMQTTBlockingSender();
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_TEMPORARY_STORE_DIRECTORY:
 				return getTransportMQTTTemporaryStoreDirectory();
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SUBSCRIPTION_USERNAME:
 				return getTransportMQTTSubscriptionUsername();
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SUBSCRIPTION_PASSWORD:
 				return getTransportMQTTSubscriptionPassword();
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_CLIENT_ID:
+				return getTransportMQTTClientId();
 			case EsbPackage.INBOUND_ENDPOINT__TRUSTSTORE:
 				return getTruststore();
 			case EsbPackage.INBOUND_ENDPOINT__KEYSTORE:
@@ -5313,9 +5313,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_ENABLE:
 				setTransportMQTTSslEnable((String)newValue);
 				return;
-			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_BLOCKING_SENDER:
-				setTransportMQTTBlockingSender((Boolean)newValue);
-				return;
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_TEMPORARY_STORE_DIRECTORY:
 				setTransportMQTTTemporaryStoreDirectory((String)newValue);
 				return;
@@ -5324,6 +5321,9 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 				return;
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SUBSCRIPTION_PASSWORD:
 				setTransportMQTTSubscriptionPassword((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_CLIENT_ID:
+				setTransportMQTTClientId((String)newValue);
 				return;
 			case EsbPackage.INBOUND_ENDPOINT__TRUSTSTORE:
 				setTruststore((String)newValue);
@@ -5662,9 +5662,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_ENABLE:
 				setTransportMQTTSslEnable(TRANSPORT_MQTT_SSL_ENABLE_EDEFAULT);
 				return;
-			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_BLOCKING_SENDER:
-				setTransportMQTTBlockingSender(TRANSPORT_MQTT_BLOCKING_SENDER_EDEFAULT);
-				return;
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_TEMPORARY_STORE_DIRECTORY:
 				setTransportMQTTTemporaryStoreDirectory(TRANSPORT_MQTT_TEMPORARY_STORE_DIRECTORY_EDEFAULT);
 				return;
@@ -5673,6 +5670,9 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 				return;
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SUBSCRIPTION_PASSWORD:
 				setTransportMQTTSubscriptionPassword(TRANSPORT_MQTT_SUBSCRIPTION_PASSWORD_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_CLIENT_ID:
+				setTransportMQTTClientId(TRANSPORT_MQTT_CLIENT_ID_EDEFAULT);
 				return;
 			case EsbPackage.INBOUND_ENDPOINT__TRUSTSTORE:
 				setTruststore(TRUSTSTORE_EDEFAULT);
@@ -5937,14 +5937,14 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 				return transportMQTTSessionClean != TRANSPORT_MQTT_SESSION_CLEAN_EDEFAULT;
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_ENABLE:
 				return TRANSPORT_MQTT_SSL_ENABLE_EDEFAULT == null ? transportMQTTSslEnable != null : !TRANSPORT_MQTT_SSL_ENABLE_EDEFAULT.equals(transportMQTTSslEnable);
-			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_BLOCKING_SENDER:
-				return transportMQTTBlockingSender != TRANSPORT_MQTT_BLOCKING_SENDER_EDEFAULT;
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_TEMPORARY_STORE_DIRECTORY:
 				return TRANSPORT_MQTT_TEMPORARY_STORE_DIRECTORY_EDEFAULT == null ? transportMQTTTemporaryStoreDirectory != null : !TRANSPORT_MQTT_TEMPORARY_STORE_DIRECTORY_EDEFAULT.equals(transportMQTTTemporaryStoreDirectory);
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SUBSCRIPTION_USERNAME:
 				return TRANSPORT_MQTT_SUBSCRIPTION_USERNAME_EDEFAULT == null ? transportMQTTSubscriptionUsername != null : !TRANSPORT_MQTT_SUBSCRIPTION_USERNAME_EDEFAULT.equals(transportMQTTSubscriptionUsername);
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SUBSCRIPTION_PASSWORD:
 				return TRANSPORT_MQTT_SUBSCRIPTION_PASSWORD_EDEFAULT == null ? transportMQTTSubscriptionPassword != null : !TRANSPORT_MQTT_SUBSCRIPTION_PASSWORD_EDEFAULT.equals(transportMQTTSubscriptionPassword);
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_CLIENT_ID:
+				return TRANSPORT_MQTT_CLIENT_ID_EDEFAULT == null ? transportMQTTClientId != null : !TRANSPORT_MQTT_CLIENT_ID_EDEFAULT.equals(transportMQTTClientId);
 			case EsbPackage.INBOUND_ENDPOINT__TRUSTSTORE:
 				return TRUSTSTORE_EDEFAULT == null ? truststore != null : !TRUSTSTORE_EDEFAULT.equals(truststore);
 			case EsbPackage.INBOUND_ENDPOINT__KEYSTORE:
@@ -6165,14 +6165,14 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 		result.append(transportMQTTSessionClean);
 		result.append(", transportMQTTSslEnable: ");
 		result.append(transportMQTTSslEnable);
-		result.append(", transportMQTTBlockingSender: ");
-		result.append(transportMQTTBlockingSender);
 		result.append(", transportMQTTTemporaryStoreDirectory: ");
 		result.append(transportMQTTTemporaryStoreDirectory);
 		result.append(", transportMQTTSubscriptionUsername: ");
 		result.append(transportMQTTSubscriptionUsername);
 		result.append(", transportMQTTSubscriptionPassword: ");
 		result.append(transportMQTTSubscriptionPassword);
+		result.append(", transportMQTTClientId: ");
+		result.append(transportMQTTClientId);
 		result.append(", truststore: ");
 		result.append(truststore);
 		result.append(", keystore: ");

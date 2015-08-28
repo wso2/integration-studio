@@ -23348,22 +23348,13 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	int INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_ENABLE = ESB_ELEMENT_FEATURE_COUNT + 72;
 
 	/**
-	 * The feature id for the '<em><b>Transport MQTT Blocking Sender</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INBOUND_ENDPOINT__TRANSPORT_MQTT_BLOCKING_SENDER = ESB_ELEMENT_FEATURE_COUNT + 73;
-
-	/**
 	 * The feature id for the '<em><b>Transport MQTT Temporary Store Directory</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INBOUND_ENDPOINT__TRANSPORT_MQTT_TEMPORARY_STORE_DIRECTORY = ESB_ELEMENT_FEATURE_COUNT + 74;
+	int INBOUND_ENDPOINT__TRANSPORT_MQTT_TEMPORARY_STORE_DIRECTORY = ESB_ELEMENT_FEATURE_COUNT + 73;
 
 	/**
 	 * The feature id for the '<em><b>Transport MQTT Subscription Username</b></em>' attribute.
@@ -23372,7 +23363,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int INBOUND_ENDPOINT__TRANSPORT_MQTT_SUBSCRIPTION_USERNAME = ESB_ELEMENT_FEATURE_COUNT + 75;
+	int INBOUND_ENDPOINT__TRANSPORT_MQTT_SUBSCRIPTION_USERNAME = ESB_ELEMENT_FEATURE_COUNT + 74;
 
 	/**
 	 * The feature id for the '<em><b>Transport MQTT Subscription Password</b></em>' attribute.
@@ -23381,7 +23372,16 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int INBOUND_ENDPOINT__TRANSPORT_MQTT_SUBSCRIPTION_PASSWORD = ESB_ELEMENT_FEATURE_COUNT + 76;
+	int INBOUND_ENDPOINT__TRANSPORT_MQTT_SUBSCRIPTION_PASSWORD = ESB_ELEMENT_FEATURE_COUNT + 75;
+
+	/**
+	 * The feature id for the '<em><b>Transport MQTT Client Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INBOUND_ENDPOINT__TRANSPORT_MQTT_CLIENT_ID = ESB_ELEMENT_FEATURE_COUNT + 76;
 
 	/**
 	 * The feature id for the '<em><b>Truststore</b></em>' attribute.
@@ -33794,17 +33794,6 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	EAttribute getInboundEndpoint_TransportMQTTSslEnable();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#isTransportMQTTBlockingSender <em>Transport MQTT Blocking Sender</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Transport MQTT Blocking Sender</em>'.
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#isTransportMQTTBlockingSender()
-	 * @see #getInboundEndpoint()
-	 * @generated
-	 */
-	EAttribute getInboundEndpoint_TransportMQTTBlockingSender();
-
-	/**
 	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportMQTTTemporaryStoreDirectory <em>Transport MQTT Temporary Store Directory</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -33836,6 +33825,17 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 */
 	EAttribute getInboundEndpoint_TransportMQTTSubscriptionPassword();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportMQTTClientId <em>Transport MQTT Client Id</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Transport MQTT Client Id</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportMQTTClientId()
+	 * @see #getInboundEndpoint()
+	 * @generated
+	 */
+	EAttribute getInboundEndpoint_TransportMQTTClientId();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTruststore <em>Truststore</em>}'.
@@ -48353,14 +48353,6 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 		EAttribute INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_ENABLE = eINSTANCE.getInboundEndpoint_TransportMQTTSslEnable();
 
 		/**
-		 * The meta object literal for the '<em><b>Transport MQTT Blocking Sender</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute INBOUND_ENDPOINT__TRANSPORT_MQTT_BLOCKING_SENDER = eINSTANCE.getInboundEndpoint_TransportMQTTBlockingSender();
-
-		/**
 		 * The meta object literal for the '<em><b>Transport MQTT Temporary Store Directory</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -48383,6 +48375,14 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 		 * @generated
 		 */
 		EAttribute INBOUND_ENDPOINT__TRANSPORT_MQTT_SUBSCRIPTION_PASSWORD = eINSTANCE.getInboundEndpoint_TransportMQTTSubscriptionPassword();
+
+		/**
+		 * The meta object literal for the '<em><b>Transport MQTT Client Id</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute INBOUND_ENDPOINT__TRANSPORT_MQTT_CLIENT_ID = eINSTANCE.getInboundEndpoint_TransportMQTTClientId();
 
 		/**
 		 * The meta object literal for the '<em><b>Truststore</b></em>' attribute feature.

@@ -462,20 +462,19 @@ public class InboundEndpointDeserializer extends
 			}		
 			else if (paramEntry.getKey().equals(InboundEndpointConstants.INBOUND_MQTT_SSL_ENABLE)) {
 				executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_ENABLE, paramEntry.getValue());
-			}			
-			else if (paramEntry.getKey().equals(InboundEndpointConstants.INBOUND_MQTT_BLOCKING_SENDER)) {
-				if (paramEntry.getValue().equals(TRUE)) {
-					executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_MQTT_BLOCKING_SENDER, true);
-				} else {
-					executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_MQTT_BLOCKING_SENDER, false);
-				}
-			}			
+			}		
 			else if (paramEntry.getKey().equals(InboundEndpointConstants.INBOUND_MQTT_SUBSCRIPTION_USERNAME)) {
 				executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_MQTT_SUBSCRIPTION_USERNAME, paramEntry.getValue());
 			}
 			else if (paramEntry.getKey().equals(InboundEndpointConstants.INBOUND_MQTT_SUBSCRIPTION_PASSWORD)) {
 				executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_MQTT_SUBSCRIPTION_PASSWORD, paramEntry.getValue());
-			}		
+			}
+			else if (paramEntry.getKey().equals(InboundEndpointConstants.INBOUND_MQTT_CLIENT_ID)) {
+				executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_MQTT_CLIENT_ID, paramEntry.getValue());
+			}
+			else if (paramEntry.getKey().equals(InboundEndpointConstants.INBOUND_MQTT_RECONNECTION_INTERVAL)) {
+				executeSetValueCommand(INBOUND_ENDPOINT__INTERVAL, paramEntry.getValue());
+			}	
 			else if (paramEntry.getKey().equals(InboundEndpointConstants.ZOOKEEPER_CONNECT)) {
 				executeSetValueCommand(INBOUND_ENDPOINT__ZOOKEEPER_CONNECT, paramEntry.getValue());
 			} else if (paramEntry.getKey().equals(InboundEndpointConstants.GROUP_ID)) {

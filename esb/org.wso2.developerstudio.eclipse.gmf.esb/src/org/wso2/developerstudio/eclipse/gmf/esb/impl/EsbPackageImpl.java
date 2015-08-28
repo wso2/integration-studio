@@ -11135,7 +11135,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getInboundEndpoint_TransportMQTTBlockingSender() {
+	public EAttribute getInboundEndpoint_TransportMQTTTemporaryStoreDirectory() {
 		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(73);
 	}
 
@@ -11144,7 +11144,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getInboundEndpoint_TransportMQTTTemporaryStoreDirectory() {
+	public EAttribute getInboundEndpoint_TransportMQTTSubscriptionUsername() {
 		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(74);
 	}
 
@@ -11153,7 +11153,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getInboundEndpoint_TransportMQTTSubscriptionUsername() {
+	public EAttribute getInboundEndpoint_TransportMQTTSubscriptionPassword() {
 		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(75);
 	}
 
@@ -11162,7 +11162,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getInboundEndpoint_TransportMQTTSubscriptionPassword() {
+	public EAttribute getInboundEndpoint_TransportMQTTClientId() {
 		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(76);
 	}
 
@@ -19447,10 +19447,10 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_MQTT_SUBSCRIPTION_QOS);
 		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_MQTT_SESSION_CLEAN);
 		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_ENABLE);
-		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_MQTT_BLOCKING_SENDER);
 		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_MQTT_TEMPORARY_STORE_DIRECTORY);
 		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_MQTT_SUBSCRIPTION_USERNAME);
 		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_MQTT_SUBSCRIPTION_PASSWORD);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_MQTT_CLIENT_ID);
 		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRUSTSTORE);
 		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__KEYSTORE);
 		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__SSL_VERIFY_CLIENT);
@@ -21729,10 +21729,10 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		initEAttribute(getInboundEndpoint_TransportMQTTSubscriptionQOS(), this.getMQTTSubscriptionQOS(), "transportMQTTSubscriptionQOS", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getInboundEndpoint_TransportMQTTSessionClean(), ecorePackage.getEBoolean(), "transportMQTTSessionClean", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getInboundEndpoint_TransportMQTTSslEnable(), ecorePackage.getEString(), "transportMQTTSslEnable", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getInboundEndpoint_TransportMQTTBlockingSender(), ecorePackage.getEBoolean(), "transportMQTTBlockingSender", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getInboundEndpoint_TransportMQTTTemporaryStoreDirectory(), ecorePackage.getEString(), "transportMQTTTemporaryStoreDirectory", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getInboundEndpoint_TransportMQTTSubscriptionUsername(), ecorePackage.getEString(), "transportMQTTSubscriptionUsername", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getInboundEndpoint_TransportMQTTSubscriptionPassword(), ecorePackage.getEString(), "transportMQTTSubscriptionPassword", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_TransportMQTTClientId(), ecorePackage.getEString(), "transportMQTTClientId", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getInboundEndpoint_Truststore(), ecorePackage.getEString(), "truststore", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getInboundEndpoint_Keystore(), ecorePackage.getEString(), "keystore", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getInboundEndpoint_SslVerifyClient(), ecorePackage.getEString(), "sslVerifyClient", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

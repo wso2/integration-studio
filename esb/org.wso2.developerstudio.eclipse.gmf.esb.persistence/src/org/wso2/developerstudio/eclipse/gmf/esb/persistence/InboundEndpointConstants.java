@@ -113,9 +113,9 @@ public class InboundEndpointConstants {
 	public static final String INBOUND_MQTT_SUBSCRIPTION_QOS = "mqtt.subscription.qos";
 	public static final String INBOUND_MQTT_SESSION_CLEAN = "mqtt.session.clean";
 	public static final String INBOUND_MQTT_SSL_ENABLE = "mqtt.ssl.enable";
-	public static final String INBOUND_MQTT_BLOCKING_SENDER = "mqtt.blocking.sender";
 	public static final String INBOUND_MQTT_TEMPORARY_STORE_DIRECTORY = "mqtt.temporary.store.directory";
 	public static final String INBOUND_MQTT_SUBSCRIPTION_USERNAME = "mqtt.subscription.username";
 	public static final String INBOUND_MQTT_SUBSCRIPTION_PASSWORD = "mqtt.subscription.password";
-
+	public static final String INBOUND_MQTT_CLIENT_ID = "mqtt.client.id";
+	public static final String INBOUND_MQTT_RECONNECTION_INTERVAL = "mqtt.reconnection.interval";
 }

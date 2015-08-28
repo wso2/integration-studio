@@ -193,18 +193,19 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 		case MQTT:
 			addSequentialPropertyDescriptor(object);
 			addCoordinationPropertyDescriptor(object);
-			addIntervalPropertyDescriptor(object);
-			addTransportMQTTBlockingSenderPropertyDescriptor(object);
 			addTransportMQTTConnectionFactoryPropertyDescriptor(object);
 			addTransportMQTTServerHostNamePropertyDescriptor(object);
 			addTransportMQTTServerPortPropertyDescriptor(object);
+			addTransportMQTTTopicNamePropertyDescriptor(object);
+			addContentTypePropertyDescriptor(object);
+			addTransportMQTTSubscriptionQOSPropertyDescriptor(object);
 			addTransportMQTTSessionCleanPropertyDescriptor(object);
 			addTransportMQTTSslEnablePropertyDescriptor(object);
-			addTransportMQTTSubscriptionPasswordPropertyDescriptor(object);
-			addTransportMQTTSubscriptionQOSPropertyDescriptor(object);
-			addTransportMQTTSubscriptionUsernamePropertyDescriptor(object);
 			addTransportMQTTTemporaryStoreDirectoryPropertyDescriptor(object);
-			addTransportMQTTTopicNamePropertyDescriptor(object);
+			addTransportMQTTSubscriptionUsernamePropertyDescriptor(object);
+			addTransportMQTTSubscriptionPasswordPropertyDescriptor(object);
+			addTransportMQTTClientIdPropertyDescriptor(object);
+			addIntervalPropertyDescriptor(object);
 		default:
 			break;
 		}
@@ -2103,28 +2104,6 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 	}
 
 	/**
-	 * This adds a property descriptor for the Transport MQTT Blocking Sender feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	protected void addTransportMQTTBlockingSenderPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_InboundEndpoint_transportMQTTBlockingSender_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_transportMQTTBlockingSender_feature", "_UI_InboundEndpoint_type"),
-				 EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_MQTT_BLOCKING_SENDER,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-				 "Parameters",
-				 null));
-	}
-
-	/**
 	 * This adds a property descriptor for the Transport MQTT Temporary Store Directory feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2187,6 +2166,28 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 "Parameters",
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Transport MQTT Client Id feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	protected void addTransportMQTTClientIdPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_InboundEndpoint_transportMQTTClientId_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_transportMQTTClientId_feature", "_UI_InboundEndpoint_type"),
+				 EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_MQTT_CLIENT_ID,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
 				 null));
 	}
 
@@ -2425,10 +2426,10 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SUBSCRIPTION_QOS:
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SESSION_CLEAN:
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_ENABLE:
-			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_BLOCKING_SENDER:
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_TEMPORARY_STORE_DIRECTORY:
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SUBSCRIPTION_USERNAME:
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SUBSCRIPTION_PASSWORD:
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_CLIENT_ID:
 			case EsbPackage.INBOUND_ENDPOINT__TRUSTSTORE:
 			case EsbPackage.INBOUND_ENDPOINT__KEYSTORE:
 			case EsbPackage.INBOUND_ENDPOINT__SSL_VERIFY_CLIENT:

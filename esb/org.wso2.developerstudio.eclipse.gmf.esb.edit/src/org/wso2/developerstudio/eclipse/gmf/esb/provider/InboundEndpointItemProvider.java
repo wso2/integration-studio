@@ -78,6 +78,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 			addDispatchFilterPatternPropertyDescriptor(object);
 			break;
 		case FILE:
+			addIntervalPropertyDescriptor(object);
 			addSequentialPropertyDescriptor(object);
 			addCoordinationPropertyDescriptor(object);
 			addTransportVFSFileURIPropertyDescriptor(object);
@@ -109,9 +110,9 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 			addTransportVFSBuildPropertyDescriptor(object);
 			break;
 		case JMS:
-			addSequentialPropertyDescriptor(object);
-			addCoordinationPropertyDescriptor(object);
 			addIntervalPropertyDescriptor(object);
+			addSequentialPropertyDescriptor(object);
+			addCoordinationPropertyDescriptor(object);			
 			addJavaNamingFactoryInitialPropertyDescriptor(object);
 			addJavaNamingProviderUrlPropertyDescriptor(object);
 			addTransportJMSConnectionFactoryJNDINamePropertyDescriptor(object);
@@ -205,7 +206,6 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 			addTransportMQTTSubscriptionUsernamePropertyDescriptor(object);
 			addTransportMQTTSubscriptionPasswordPropertyDescriptor(object);
 			addTransportMQTTClientIdPropertyDescriptor(object);
-			addIntervalPropertyDescriptor(object);
 		default:
 			break;
 		}

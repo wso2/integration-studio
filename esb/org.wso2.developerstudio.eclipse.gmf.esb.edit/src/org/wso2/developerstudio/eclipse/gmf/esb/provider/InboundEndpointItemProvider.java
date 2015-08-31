@@ -206,6 +206,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 			addTransportMQTTSubscriptionUsernamePropertyDescriptor(object);
 			addTransportMQTTSubscriptionPasswordPropertyDescriptor(object);
 			addTransportMQTTClientIdPropertyDescriptor(object);
+			addIntervalPropertyDescriptor(object);
 		default:
 			break;
 		}

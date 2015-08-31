@@ -580,6 +580,10 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
 			
 			
 		case MQTT:
+			if (StringUtils.isNotBlank(String.valueOf(visualInboundEndpoint.isSequential()))) {
+				inboundEndpoint.addParameter(InboundEndpointConstants.SEQUENTIAL,
+						String.valueOf(visualInboundEndpoint.isSequential()));
+			}
 			if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportMQTTConnectionFactory())) {
 				inboundEndpoint.addParameter(InboundEndpointConstants.INBOUND_MQTT_CONNECTION_FACTORY,
 						visualInboundEndpoint.getTransportMQTTConnectionFactory());
@@ -607,8 +611,11 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
 				inboundEndpoint.addParameter(InboundEndpointConstants.INBOUND_MQTT_SUBSCRIPTION_QOS, visualInboundEndpoint
 						.getTransportMQTTSubscriptionQOS().getLiteral());
 			}
-			
-			//Session clean 
+
+			if (StringUtils.isNotBlank(String.valueOf(visualInboundEndpoint.isTransportMQTTSessionClean()))) {
+				inboundEndpoint.addParameter(InboundEndpointConstants.INBOUND_MQTT_SESSION_CLEAN,
+						String.valueOf(visualInboundEndpoint.isTransportMQTTSessionClean()));
+			}
 			
 			if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportMQTTSslEnable())) {
 				inboundEndpoint.addParameter(InboundEndpointConstants.INBOUND_MQTT_SSL_ENABLE,
@@ -627,7 +634,15 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
 			if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportMQTTSubscriptionPassword())) {
 				inboundEndpoint.addParameter(InboundEndpointConstants.INBOUND_MQTT_SUBSCRIPTION_PASSWORD,
 						visualInboundEndpoint.getTransportMQTTSubscriptionPassword());
-			}			
+			}
+			if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportMQTTClientId())) {
+				inboundEndpoint.addParameter(InboundEndpointConstants.INBOUND_MQTT_CLIENT_ID,
+						visualInboundEndpoint.getTransportMQTTClientId());
+			}
+			if (StringUtils.isNotBlank(visualInboundEndpoint.getInterval())) {
+				inboundEndpoint.addParameter(InboundEndpointConstants.INBOUND_MQTT_RECONNECTION_INTERVAL,
+						visualInboundEndpoint.getInterval());
+			}
 			break;			
 		default:
 			break;

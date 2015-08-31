@@ -453,15 +453,18 @@ public class InboundEndpointDeserializer extends
 			}			
 			else if (paramEntry.getKey().equals(InboundEndpointConstants.INBOUND_MQTT_SUBSCRIPTION_QOS)) {
 				if (paramEntry.getValue().equals("0")) {
-					executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_JMS_CACHE_LEVEL, MQTTSubscriptionQOS.ZERO);
+					executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_MQTT_SUBSCRIPTION_QOS, MQTTSubscriptionQOS.ZERO);
 				} else if (paramEntry.getValue().equals("1")) {
-					executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_JMS_CACHE_LEVEL, MQTTSubscriptionQOS.ONE);
+					executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_MQTT_SUBSCRIPTION_QOS, MQTTSubscriptionQOS.ONE);
 				} else if (paramEntry.getValue().equals("2")) {
-					executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_JMS_CACHE_LEVEL, MQTTSubscriptionQOS.TWO);
+					executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_MQTT_SUBSCRIPTION_QOS, MQTTSubscriptionQOS.TWO);
 				}
 			}		
 			else if (paramEntry.getKey().equals(InboundEndpointConstants.INBOUND_MQTT_SSL_ENABLE)) {
 				executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_ENABLE, paramEntry.getValue());
+			}		
+			else if (paramEntry.getKey().equals(InboundEndpointConstants.INBOUND_MQTT_TEMPORARY_STORE_DIRECTORY)) {
+				executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_MQTT_TEMPORARY_STORE_DIRECTORY, paramEntry.getValue());
 			}		
 			else if (paramEntry.getKey().equals(InboundEndpointConstants.INBOUND_MQTT_SUBSCRIPTION_USERNAME)) {
 				executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_MQTT_SUBSCRIPTION_USERNAME, paramEntry.getValue());
@@ -474,7 +477,7 @@ public class InboundEndpointDeserializer extends
 			}
 			else if (paramEntry.getKey().equals(InboundEndpointConstants.INBOUND_MQTT_RECONNECTION_INTERVAL)) {
 				executeSetValueCommand(INBOUND_ENDPOINT__INTERVAL, paramEntry.getValue());
-			}	
+			}
 			else if (paramEntry.getKey().equals(InboundEndpointConstants.ZOOKEEPER_CONNECT)) {
 				executeSetValueCommand(INBOUND_ENDPOINT__ZOOKEEPER_CONNECT, paramEntry.getValue());
 			} else if (paramEntry.getKey().equals(InboundEndpointConstants.GROUP_ID)) {

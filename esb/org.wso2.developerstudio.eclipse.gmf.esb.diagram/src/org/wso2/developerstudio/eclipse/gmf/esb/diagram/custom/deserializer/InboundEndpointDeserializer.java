@@ -52,6 +52,7 @@ public class InboundEndpointDeserializer extends
 	private static final String HTTPS = "https";
 	private static final String HL7 = "hl7";
 	private static final String KAFKA = "kafka";
+	private static final String CUSTOM = "custom";
 	private static final String CXF_WS_RM = "cxf_ws_rm";
 	private static final String MQTT = "mqtt";
 	private static final String TRUE = "true";
@@ -110,6 +111,9 @@ public class InboundEndpointDeserializer extends
 			updateParameters(object);
 		} else if (KAFKA.equals(object.getProtocol())) {
 			executeSetValueCommand(INBOUND_ENDPOINT__TYPE, InboundEndpointType.KAFKA);
+			updateParameters(object);
+		} else if (CUSTOM.equals(object.getProtocol())) {
+			executeSetValueCommand(INBOUND_ENDPOINT__TYPE, InboundEndpointType.CUSTOM);
 			updateParameters(object);
 		} else if (CXF_WS_RM.equals(object.getProtocol())) {
 			executeSetValueCommand(INBOUND_ENDPOINT__TYPE, InboundEndpointType.CXF_WS_RM);

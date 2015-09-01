@@ -271,7 +271,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String CLASS_EDEFAULT = null;
+	protected static final String CLASS_EDEFAULT = "";
 
 	/**
 	 * The cached value of the '{@link #getClass_() <em>Class</em>}' attribute.
@@ -291,7 +291,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String PROTOCOL_EDEFAULT = null;
+	protected static final String PROTOCOL_EDEFAULT = "";
 
 	/**
 	 * The cached value of the '{@link #getProtocol() <em>Protocol</em>}' attribute.
@@ -311,7 +311,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String INBOUND_HTTP_PORT_EDEFAULT = null;
+	protected static final String INBOUND_HTTP_PORT_EDEFAULT = "";
 
 	/**
 	 * The cached value of the '{@link #getInboundHttpPort() <em>Inbound Http Port</em>}' attribute.
@@ -331,7 +331,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String INBOUND_WORKER_POOL_SIZE_CORE_EDEFAULT = null;
+	protected static final String INBOUND_WORKER_POOL_SIZE_CORE_EDEFAULT = "";
 
 	/**
 	 * The cached value of the '{@link #getInboundWorkerPoolSizeCore() <em>Inbound Worker Pool Size Core</em>}' attribute.
@@ -351,7 +351,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String INBOUND_WORKER_POOL_SIZE_MAX_EDEFAULT = null;
+	protected static final String INBOUND_WORKER_POOL_SIZE_MAX_EDEFAULT = "";
 
 	/**
 	 * The cached value of the '{@link #getInboundWorkerPoolSizeMax() <em>Inbound Worker Pool Size Max</em>}' attribute.
@@ -371,7 +371,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String INBOUND_WORKER_THREAD_KEEP_ALIVE_SEC_EDEFAULT = null;
+	protected static final String INBOUND_WORKER_THREAD_KEEP_ALIVE_SEC_EDEFAULT = "";
 
 	/**
 	 * The cached value of the '{@link #getInboundWorkerThreadKeepAliveSec() <em>Inbound Worker Thread Keep Alive Sec</em>}' attribute.
@@ -391,7 +391,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String INBOUND_WORKER_POOL_QUEUE_LENGTH_EDEFAULT = null;
+	protected static final String INBOUND_WORKER_POOL_QUEUE_LENGTH_EDEFAULT = "";
 
 	/**
 	 * The cached value of the '{@link #getInboundWorkerPoolQueueLength() <em>Inbound Worker Pool Queue Length</em>}' attribute.
@@ -411,7 +411,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String INBOUND_THREAD_GROUP_ID_EDEFAULT = null;
+	protected static final String INBOUND_THREAD_GROUP_ID_EDEFAULT = "";
 
 	/**
 	 * The cached value of the '{@link #getInboundThreadGroupId() <em>Inbound Thread Group Id</em>}' attribute.
@@ -431,7 +431,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String INBOUND_THREAD_ID_EDEFAULT = null;
+	protected static final String INBOUND_THREAD_ID_EDEFAULT = "";
 
 	/**
 	 * The cached value of the '{@link #getInboundThreadId() <em>Inbound Thread Id</em>}' attribute.
@@ -451,7 +451,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String DISPATCH_FILTER_PATTERN_EDEFAULT = null;
+	protected static final String DISPATCH_FILTER_PATTERN_EDEFAULT = "";
 
 	/**
 	 * The cached value of the '{@link #getDispatchFilterPattern() <em>Dispatch Filter Pattern</em>}' attribute.
@@ -471,7 +471,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String INTERVAL_EDEFAULT = null;
+	protected static final String INTERVAL_EDEFAULT = "";
 
 	/**
 	 * The cached value of the '{@link #getInterval() <em>Interval</em>}' attribute.
@@ -531,7 +531,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String TRANSPORT_VFS_FILE_URI_EDEFAULT = null;
+	protected static final String TRANSPORT_VFS_FILE_URI_EDEFAULT = "";
 
 	/**
 	 * The cached value of the '{@link #getTransportVFSFileURI() <em>Transport VFS File URI</em>}' attribute.
@@ -551,7 +551,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String TRANSPORT_VFS_CONTENT_TYPE_EDEFAULT = null;
+	protected static final String TRANSPORT_VFS_CONTENT_TYPE_EDEFAULT = "";
 
 	/**
 	 * The cached value of the '{@link #getTransportVFSContentType() <em>Transport VFS Content Type</em>}' attribute.
@@ -571,7 +571,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String TRANSPORT_VFS_FILE_NAME_PATTERN_EDEFAULT = null;
+	protected static final String TRANSPORT_VFS_FILE_NAME_PATTERN_EDEFAULT = "";
 
 	/**
 	 * The cached value of the '{@link #getTransportVFSFileNamePattern() <em>Transport VFS File Name Pattern</em>}' attribute.
@@ -591,7 +591,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String TRANSPORT_VFS_FILE_PROCESS_INTERVAL_EDEFAULT = null;
+	protected static final String TRANSPORT_VFS_FILE_PROCESS_INTERVAL_EDEFAULT = "";
 
 	/**
 	 * The cached value of the '{@link #getTransportVFSFileProcessInterval() <em>Transport VFS File Process Interval</em>}' attribute.
@@ -611,7 +611,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String TRANSPORT_VFS_FILE_PROCESS_COUNT_EDEFAULT = null;
+	protected static final String TRANSPORT_VFS_FILE_PROCESS_COUNT_EDEFAULT = "";
 
 	/**
 	 * The cached value of the '{@link #getTransportVFSFileProcessCount() <em>Transport VFS File Process Count</em>}' attribute.
@@ -651,7 +651,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String TRANSPORT_VFS_MAX_RETRY_COUNT_EDEFAULT = null;
+	protected static final String TRANSPORT_VFS_MAX_RETRY_COUNT_EDEFAULT = "";
 
 	/**
 	 * The cached value of the '{@link #getTransportVFSMaxRetryCount() <em>Transport VFS Max Retry Count</em>}' attribute.
@@ -671,7 +671,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String TRANSPORT_VFS_RECONNECT_TIMEOUT_EDEFAULT = null;
+	protected static final String TRANSPORT_VFS_RECONNECT_TIMEOUT_EDEFAULT = "";
 
 	/**
 	 * The cached value of the '{@link #getTransportVFSReconnectTimeout() <em>Transport VFS Reconnect Timeout</em>}' attribute.
@@ -711,7 +711,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String TRANSPORT_VFS_MOVE_AFTER_PROCESS_EDEFAULT = null;
+	protected static final String TRANSPORT_VFS_MOVE_AFTER_PROCESS_EDEFAULT = "";
 
 	/**
 	 * The cached value of the '{@link #getTransportVFSMoveAfterProcess() <em>Transport VFS Move After Process</em>}' attribute.
@@ -751,7 +751,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String TRANSPORT_VFS_MOVE_AFTER_ERRORS_EDEFAULT = null;
+	protected static final String TRANSPORT_VFS_MOVE_AFTER_ERRORS_EDEFAULT = "";
 
 	/**
 	 * The cached value of the '{@link #getTransportVFSMoveAfterErrors() <em>Transport VFS Move After Errors</em>}' attribute.
@@ -791,7 +791,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String TRANSPORT_VFS_MOVE_AFTER_FAILURE_EDEFAULT = null;
+	protected static final String TRANSPORT_VFS_MOVE_AFTER_FAILURE_EDEFAULT = "";
 
 	/**
 	 * The cached value of the '{@link #getTransportVFSMoveAfterFailure() <em>Transport VFS Move After Failure</em>}' attribute.
@@ -831,7 +831,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String TRANSPORT_VFS_AUTO_LOCK_RELEASE_INTERVAL_EDEFAULT = null;
+	protected static final String TRANSPORT_VFS_AUTO_LOCK_RELEASE_INTERVAL_EDEFAULT = "";
 
 	/**
 	 * The cached value of the '{@link #getTransportVFSAutoLockReleaseInterval() <em>Transport VFS Auto Lock Release Interval</em>}' attribute.
@@ -931,7 +931,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String TRANSPORT_VFS_DISTRIBUTED_TIMEOUT_EDEFAULT = null;
+	protected static final String TRANSPORT_VFS_DISTRIBUTED_TIMEOUT_EDEFAULT = "";
 
 	/**
 	 * The cached value of the '{@link #getTransportVFSDistributedTimeout() <em>Transport VFS Distributed Timeout</em>}' attribute.
@@ -951,7 +951,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String JAVA_NAMING_FACTORY_INITIAL_EDEFAULT = null;
+	protected static final String JAVA_NAMING_FACTORY_INITIAL_EDEFAULT = "";
 
 	/**
 	 * The cached value of the '{@link #getJavaNamingFactoryInitial() <em>Java Naming Factory Initial</em>}' attribute.
@@ -971,7 +971,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String JAVA_NAMING_PROVIDER_URL_EDEFAULT = null;
+	protected static final String JAVA_NAMING_PROVIDER_URL_EDEFAULT = "";
 
 	/**
 	 * The cached value of the '{@link #getJavaNamingProviderUrl() <em>Java Naming Provider Url</em>}' attribute.
@@ -991,7 +991,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String TRANSPORT_JMS_CONNECTION_FACTORY_JNDI_NAME_EDEFAULT = null;
+	protected static final String TRANSPORT_JMS_CONNECTION_FACTORY_JNDI_NAME_EDEFAULT = "";
 
 	/**
 	 * The cached value of the '{@link #getTransportJMSConnectionFactoryJNDIName() <em>Transport JMS Connection Factory JNDI Name</em>}' attribute.
@@ -1031,7 +1031,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String TRANSPORT_JMS_DESTINATION_EDEFAULT = null;
+	protected static final String TRANSPORT_JMS_DESTINATION_EDEFAULT = "";
 
 	/**
 	 * The cached value of the '{@link #getTransportJMSDestination() <em>Transport JMS Destination</em>}' attribute.
@@ -1111,7 +1111,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String TRANSPORT_JMS_USER_NAME_EDEFAULT = null;
+	protected static final String TRANSPORT_JMS_USER_NAME_EDEFAULT = "";
 
 	/**
 	 * The cached value of the '{@link #getTransportJMSUserName() <em>Transport JMS User Name</em>}' attribute.
@@ -1131,7 +1131,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String TRANSPORT_JMS_PASSWORD_EDEFAULT = null;
+	protected static final String TRANSPORT_JMS_PASSWORD_EDEFAULT = "";
 
 	/**
 	 * The cached value of the '{@link #getTransportJMSPassword() <em>Transport JMS Password</em>}' attribute.
@@ -1151,7 +1151,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String TRANSPORT_JMSJMS_SPEC_VERSION_EDEFAULT = null;
+	protected static final String TRANSPORT_JMSJMS_SPEC_VERSION_EDEFAULT = "";
 
 	/**
 	 * The cached value of the '{@link #getTransportJMSJMSSpecVersion() <em>Transport JMSJMS Spec Version</em>}' attribute.
@@ -1171,7 +1171,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String TRANSPORT_JMS_SUBSCRIPTION_DURABLE_EDEFAULT = null;
+	protected static final String TRANSPORT_JMS_SUBSCRIPTION_DURABLE_EDEFAULT = "";
 
 	/**
 	 * The cached value of the '{@link #getTransportJMSSubscriptionDurable() <em>Transport JMS Subscription Durable</em>}' attribute.
@@ -1191,7 +1191,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String TRANSPORT_JMS_DURABLE_SUBSCRIBER_CLIENT_ID_EDEFAULT = null;
+	protected static final String TRANSPORT_JMS_DURABLE_SUBSCRIBER_CLIENT_ID_EDEFAULT = "";
 
 	/**
 	 * The cached value of the '{@link #getTransportJMSDurableSubscriberClientID() <em>Transport JMS Durable Subscriber Client ID</em>}' attribute.
@@ -1211,7 +1211,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String TRANSPORT_JMS_MESSAGE_SELECTOR_EDEFAULT = null;
+	protected static final String TRANSPORT_JMS_MESSAGE_SELECTOR_EDEFAULT = "";
 
 	/**
 	 * The cached value of the '{@link #getTransportJMSMessageSelector() <em>Transport JMS Message Selector</em>}' attribute.
@@ -1251,7 +1251,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String TRANSPORT_VFS_MOVE_TIMESTAMP_FORMAT_EDEFAULT = null;
+	protected static final String TRANSPORT_VFS_MOVE_TIMESTAMP_FORMAT_EDEFAULT = "";
 
 	/**
 	 * The cached value of the '{@link #getTransportVFSMoveTimestampFormat() <em>Transport VFS Move Timestamp Format</em>}' attribute.
@@ -1311,7 +1311,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String TRANSPORT_VFS_SUB_FOLDER_TIMESTAMP_FORMAT_EDEFAULT = null;
+	protected static final String TRANSPORT_VFS_SUB_FOLDER_TIMESTAMP_FORMAT_EDEFAULT = "";
 
 	/**
 	 * The cached value of the '{@link #getTransportVFSSubFolderTimestampFormat() <em>Transport VFS Sub Folder Timestamp Format</em>}' attribute.
@@ -1351,7 +1351,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String TRANSPORT_JMS_RECEIVE_TIMEOUT_EDEFAULT = null;
+	protected static final String TRANSPORT_JMS_RECEIVE_TIMEOUT_EDEFAULT = "";
 
 	/**
 	 * The cached value of the '{@link #getTransportJMSReceiveTimeout() <em>Transport JMS Receive Timeout</em>}' attribute.
@@ -1371,7 +1371,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String TRANSPORT_JMS_CONTENT_TYPE_EDEFAULT = null;
+	protected static final String TRANSPORT_JMS_CONTENT_TYPE_EDEFAULT = "";
 
 	/**
 	 * The cached value of the '{@link #getTransportJMSContentType() <em>Transport JMS Content Type</em>}' attribute.
@@ -1391,7 +1391,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String TRANSPORT_JMS_CONTENT_TYPE_PROPERTY_EDEFAULT = null;
+	protected static final String TRANSPORT_JMS_CONTENT_TYPE_PROPERTY_EDEFAULT = "";
 
 	/**
 	 * The cached value of the '{@link #getTransportJMSContentTypeProperty() <em>Transport JMS Content Type Property</em>}' attribute.
@@ -1411,7 +1411,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String TRANSPORT_JMS_REPLY_DESTINATION_EDEFAULT = null;
+	protected static final String TRANSPORT_JMS_REPLY_DESTINATION_EDEFAULT = "";
 
 	/**
 	 * The cached value of the '{@link #getTransportJMSReplyDestination() <em>Transport JMS Reply Destination</em>}' attribute.
@@ -1431,7 +1431,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String TRANSPORT_JMS_PUB_SUB_NO_LOCAL_EDEFAULT = null;
+	protected static final String TRANSPORT_JMS_PUB_SUB_NO_LOCAL_EDEFAULT = "";
 
 	/**
 	 * The cached value of the '{@link #getTransportJMSPubSubNoLocal() <em>Transport JMS Pub Sub No Local</em>}' attribute.
@@ -1451,7 +1451,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String TRANSPORT_MQTT_CONNECTION_FACTORY_EDEFAULT = null;
+	protected static final String TRANSPORT_MQTT_CONNECTION_FACTORY_EDEFAULT = "";
 
 	/**
 	 * The cached value of the '{@link #getTransportMQTTConnectionFactory() <em>Transport MQTT Connection Factory</em>}' attribute.
@@ -1471,7 +1471,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String TRANSPORT_MQTT_SERVER_HOST_NAME_EDEFAULT = null;
+	protected static final String TRANSPORT_MQTT_SERVER_HOST_NAME_EDEFAULT = "";
 
 	/**
 	 * The cached value of the '{@link #getTransportMQTTServerHostName() <em>Transport MQTT Server Host Name</em>}' attribute.
@@ -1491,7 +1491,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String TRANSPORT_MQTT_SERVER_PORT_EDEFAULT = null;
+	protected static final String TRANSPORT_MQTT_SERVER_PORT_EDEFAULT = "";
 
 	/**
 	 * The cached value of the '{@link #getTransportMQTTServerPort() <em>Transport MQTT Server Port</em>}' attribute.
@@ -1511,7 +1511,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String TRANSPORT_MQTT_TOPIC_NAME_EDEFAULT = null;
+	protected static final String TRANSPORT_MQTT_TOPIC_NAME_EDEFAULT = "";
 
 	/**
 	 * The cached value of the '{@link #getTransportMQTTTopicName() <em>Transport MQTT Topic Name</em>}' attribute.
@@ -1571,7 +1571,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String TRANSPORT_MQTT_SSL_ENABLE_EDEFAULT = null;
+	protected static final String TRANSPORT_MQTT_SSL_ENABLE_EDEFAULT = "";
 
 	/**
 	 * The cached value of the '{@link #getTransportMQTTSslEnable() <em>Transport MQTT Ssl Enable</em>}' attribute.
@@ -1591,7 +1591,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String TRANSPORT_MQTT_TEMPORARY_STORE_DIRECTORY_EDEFAULT = null;
+	protected static final String TRANSPORT_MQTT_TEMPORARY_STORE_DIRECTORY_EDEFAULT = "";
 
 	/**
 	 * The cached value of the '{@link #getTransportMQTTTemporaryStoreDirectory() <em>Transport MQTT Temporary Store Directory</em>}' attribute.
@@ -1611,7 +1611,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String TRANSPORT_MQTT_SUBSCRIPTION_USERNAME_EDEFAULT = null;
+	protected static final String TRANSPORT_MQTT_SUBSCRIPTION_USERNAME_EDEFAULT = "";
 
 	/**
 	 * The cached value of the '{@link #getTransportMQTTSubscriptionUsername() <em>Transport MQTT Subscription Username</em>}' attribute.
@@ -1631,7 +1631,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String TRANSPORT_MQTT_SUBSCRIPTION_PASSWORD_EDEFAULT = null;
+	protected static final String TRANSPORT_MQTT_SUBSCRIPTION_PASSWORD_EDEFAULT = "";
 
 	/**
 	 * The cached value of the '{@link #getTransportMQTTSubscriptionPassword() <em>Transport MQTT Subscription Password</em>}' attribute.
@@ -1651,7 +1651,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String TRANSPORT_MQTT_CLIENT_ID_EDEFAULT = null;
+	protected static final String TRANSPORT_MQTT_CLIENT_ID_EDEFAULT = "";
 
 	/**
 	 * The cached value of the '{@link #getTransportMQTTClientId() <em>Transport MQTT Client Id</em>}' attribute.
@@ -1671,7 +1671,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String TRUSTSTORE_EDEFAULT = null;
+	protected static final String TRUSTSTORE_EDEFAULT = "";
 
 	/**
 	 * The cached value of the '{@link #getTruststore() <em>Truststore</em>}' attribute.
@@ -1691,7 +1691,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String KEYSTORE_EDEFAULT = null;
+	protected static final String KEYSTORE_EDEFAULT = "";
 
 	/**
 	 * The cached value of the '{@link #getKeystore() <em>Keystore</em>}' attribute.
@@ -1711,7 +1711,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String SSL_VERIFY_CLIENT_EDEFAULT = null;
+	protected static final String SSL_VERIFY_CLIENT_EDEFAULT = "";
 
 	/**
 	 * The cached value of the '{@link #getSslVerifyClient() <em>Ssl Verify Client</em>}' attribute.
@@ -1731,7 +1731,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String SSL_PROTOCOL_EDEFAULT = null;
+	protected static final String SSL_PROTOCOL_EDEFAULT = "";
 
 	/**
 	 * The cached value of the '{@link #getSslProtocol() <em>Ssl Protocol</em>}' attribute.
@@ -1751,7 +1751,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String HTTPS_PROTOCOLS_EDEFAULT = null;
+	protected static final String HTTPS_PROTOCOLS_EDEFAULT = "";
 
 	/**
 	 * The cached value of the '{@link #getHttpsProtocols() <em>Https Protocols</em>}' attribute.
@@ -1771,7 +1771,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String CERTIFICATE_REVOCATION_VERIFIER_EDEFAULT = null;
+	protected static final String CERTIFICATE_REVOCATION_VERIFIER_EDEFAULT = "";
 
 	/**
 	 * The cached value of the '{@link #getCertificateRevocationVerifier() <em>Certificate Revocation Verifier</em>}' attribute.
@@ -1791,7 +1791,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String INBOUND_HL7_PORT_EDEFAULT = null;
+	protected static final String INBOUND_HL7_PORT_EDEFAULT = "";
 
 	/**
 	 * The cached value of the '{@link #getInboundHL7Port() <em>Inbound HL7 Port</em>}' attribute.
@@ -1831,7 +1831,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String INBOUND_HL7_MESSAGE_PRE_PROCESSOR_EDEFAULT = null;
+	protected static final String INBOUND_HL7_MESSAGE_PRE_PROCESSOR_EDEFAULT = "";
 
 	/**
 	 * The cached value of the '{@link #getInboundHL7MessagePreProcessor() <em>Inbound HL7 Message Pre Processor</em>}' attribute.
@@ -1851,7 +1851,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String INBOUND_HL7_CHAR_SET_EDEFAULT = null;
+	protected static final String INBOUND_HL7_CHAR_SET_EDEFAULT = "";
 
 	/**
 	 * The cached value of the '{@link #getInboundHL7CharSet() <em>Inbound HL7 Char Set</em>}' attribute.
@@ -1871,7 +1871,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String INBOUND_HL7_TIME_OUT_EDEFAULT = null;
+	protected static final String INBOUND_HL7_TIME_OUT_EDEFAULT = "";
 
 	/**
 	 * The cached value of the '{@link #getInboundHL7TimeOut() <em>Inbound HL7 Time Out</em>}' attribute.
@@ -1911,7 +1911,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String INBOUND_HL7_BUILD_INVALID_MESSAGES_EDEFAULT = null;
+	protected static final String INBOUND_HL7_BUILD_INVALID_MESSAGES_EDEFAULT = "";
 
 	/**
 	 * The cached value of the '{@link #getInboundHL7BuildInvalidMessages() <em>Inbound HL7 Build Invalid Messages</em>}' attribute.
@@ -1931,7 +1931,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String INBOUND_HL7_PASS_THROUGH_INVALID_MESSAGES_EDEFAULT = null;
+	protected static final String INBOUND_HL7_PASS_THROUGH_INVALID_MESSAGES_EDEFAULT = "";
 
 	/**
 	 * The cached value of the '{@link #getInboundHL7PassThroughInvalidMessages() <em>Inbound HL7 Pass Through Invalid Messages</em>}' attribute.
@@ -1951,7 +1951,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String ZOOKEEPER_CONNECT_EDEFAULT = null;
+	protected static final String ZOOKEEPER_CONNECT_EDEFAULT = "";
 
 	/**
 	 * The cached value of the '{@link #getZookeeperConnect() <em>Zookeeper Connect</em>}' attribute.
@@ -1971,7 +1971,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String GROUP_ID_EDEFAULT = null;
+	protected static final String GROUP_ID_EDEFAULT = "";
 
 	/**
 	 * The cached value of the '{@link #getGroupId() <em>Group Id</em>}' attribute.
@@ -2031,7 +2031,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String TOPICS_EDEFAULT = null;
+	protected static final String TOPICS_EDEFAULT = "";
 
 	/**
 	 * The cached value of the '{@link #getTopics() <em>Topics</em>}' attribute.
@@ -2051,7 +2051,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String SIMPLE_TOPIC_EDEFAULT = null;
+	protected static final String SIMPLE_TOPIC_EDEFAULT = "";
 
 	/**
 	 * The cached value of the '{@link #getSimpleTopic() <em>Simple Topic</em>}' attribute.
@@ -2071,7 +2071,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String SIMPLE_BROKERS_EDEFAULT = null;
+	protected static final String SIMPLE_BROKERS_EDEFAULT = "";
 
 	/**
 	 * The cached value of the '{@link #getSimpleBrokers() <em>Simple Brokers</em>}' attribute.
@@ -2091,7 +2091,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String SIMPLE_PORT_EDEFAULT = null;
+	protected static final String SIMPLE_PORT_EDEFAULT = "";
 
 	/**
 	 * The cached value of the '{@link #getSimplePort() <em>Simple Port</em>}' attribute.
@@ -2111,7 +2111,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String SIMPLE_PARTITION_EDEFAULT = null;
+	protected static final String SIMPLE_PARTITION_EDEFAULT = "";
 
 	/**
 	 * The cached value of the '{@link #getSimplePartition() <em>Simple Partition</em>}' attribute.
@@ -2131,7 +2131,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String SIMPLE_MAX_MESSAGES_TO_READ_EDEFAULT = null;
+	protected static final String SIMPLE_MAX_MESSAGES_TO_READ_EDEFAULT = "";
 
 	/**
 	 * The cached value of the '{@link #getSimpleMaxMessagesToRead() <em>Simple Max Messages To Read</em>}' attribute.
@@ -2151,7 +2151,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String THREAD_COUNT_EDEFAULT = null;
+	protected static final String THREAD_COUNT_EDEFAULT = "";
 
 	/**
 	 * The cached value of the '{@link #getThreadCount() <em>Thread Count</em>}' attribute.
@@ -2171,7 +2171,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String ZOOKEEPER_SESSION_TIMEOUT_MS_EDEFAULT = null;
+	protected static final String ZOOKEEPER_SESSION_TIMEOUT_MS_EDEFAULT = "";
 
 	/**
 	 * The cached value of the '{@link #getZookeeperSessionTimeoutMs() <em>Zookeeper Session Timeout Ms</em>}' attribute.
@@ -2191,7 +2191,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String ZOOKEEPER_SYNC_TIME_MS_EDEFAULT = null;
+	protected static final String ZOOKEEPER_SYNC_TIME_MS_EDEFAULT = "";
 
 	/**
 	 * The cached value of the '{@link #getZookeeperSyncTimeMs() <em>Zookeeper Sync Time Ms</em>}' attribute.
@@ -2211,7 +2211,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String AUTO_COMMIT_INTERVAL_MS_EDEFAULT = null;
+	protected static final String AUTO_COMMIT_INTERVAL_MS_EDEFAULT = "";
 
 	/**
 	 * The cached value of the '{@link #getAutoCommitIntervalMs() <em>Auto Commit Interval Ms</em>}' attribute.
@@ -2231,7 +2231,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String AUTO_OFFSET_RESET_EDEFAULT = null;
+	protected static final String AUTO_OFFSET_RESET_EDEFAULT = "";
 
 	/**
 	 * The cached value of the '{@link #getAutoOffsetReset() <em>Auto Offset Reset</em>}' attribute.
@@ -2251,7 +2251,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String INBOUND_CXF_RM_HOST_EDEFAULT = null;
+	protected static final String INBOUND_CXF_RM_HOST_EDEFAULT = "";
 
 	/**
 	 * The cached value of the '{@link #getInboundCxfRmHost() <em>Inbound Cxf Rm Host</em>}' attribute.
@@ -2271,7 +2271,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String INBOUND_CXF_RM_PORT_EDEFAULT = null;
+	protected static final String INBOUND_CXF_RM_PORT_EDEFAULT = "";
 
 	/**
 	 * The cached value of the '{@link #getInboundCxfRmPort() <em>Inbound Cxf Rm Port</em>}' attribute.
@@ -2291,7 +2291,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String INBOUND_CXF_RM_CONFIG_FILE_EDEFAULT = null;
+	protected static final String INBOUND_CXF_RM_CONFIG_FILE_EDEFAULT = "";
 
 	/**
 	 * The cached value of the '{@link #getInboundCxfRmConfigFile() <em>Inbound Cxf Rm Config File</em>}' attribute.

@@ -115,8 +115,8 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getInboundHL7CharSet <em>Inbound HL7 Char Set</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getInboundHL7TimeOut <em>Inbound HL7 Time Out</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#isInboundHL7ValidateMessage <em>Inbound HL7 Validate Message</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getInboundHL7BuildInvalidMessages <em>Inbound HL7 Build Invalid Messages</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getInboundHL7PassThroughInvalidMessages <em>Inbound HL7 Pass Through Invalid Messages</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#isInboundHL7BuildInvalidMessages <em>Inbound HL7 Build Invalid Messages</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#isInboundHL7PassThroughInvalidMessages <em>Inbound HL7 Pass Through Invalid Messages</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getZookeeperConnect <em>Zookeeper Connect</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getGroupId <em>Group Id</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getContentType <em>Content Type</em>}</li>
@@ -385,6 +385,7 @@ public interface InboundEndpoint extends EsbElement {
 
 	/**
 	 * Returns the value of the '<em><b>Inbound HL7 Auto Ack</b></em>' attribute.
+	 * The default value is <code>"true"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Inbound HL7 Auto Ack</em>' attribute isn't clear,
@@ -394,7 +395,7 @@ public interface InboundEndpoint extends EsbElement {
 	 * @return the value of the '<em>Inbound HL7 Auto Ack</em>' attribute.
 	 * @see #setInboundHL7AutoAck(boolean)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_InboundHL7AutoAck()
-	 * @model
+	 * @model default="true"
 	 * @generated
 	 */
 	boolean isInboundHL7AutoAck();
@@ -438,7 +439,7 @@ public interface InboundEndpoint extends EsbElement {
 
 	/**
 	 * Returns the value of the '<em><b>Inbound HL7 Char Set</b></em>' attribute.
-	 * The default value is <code>""</code>.
+	 * The default value is <code>"UTF-8"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Inbound HL7 Char Set</em>' attribute isn't clear,
@@ -448,7 +449,7 @@ public interface InboundEndpoint extends EsbElement {
 	 * @return the value of the '<em>Inbound HL7 Char Set</em>' attribute.
 	 * @see #setInboundHL7CharSet(String)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_InboundHL7CharSet()
-	 * @model default=""
+	 * @model default="UTF-8"
 	 * @generated
 	 */
 	String getInboundHL7CharSet();
@@ -465,7 +466,7 @@ public interface InboundEndpoint extends EsbElement {
 
 	/**
 	 * Returns the value of the '<em><b>Inbound HL7 Time Out</b></em>' attribute.
-	 * The default value is <code>""</code>.
+	 * The default value is <code>"10000"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Inbound HL7 Time Out</em>' attribute isn't clear,
@@ -475,7 +476,7 @@ public interface InboundEndpoint extends EsbElement {
 	 * @return the value of the '<em>Inbound HL7 Time Out</em>' attribute.
 	 * @see #setInboundHL7TimeOut(String)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_InboundHL7TimeOut()
-	 * @model default=""
+	 * @model default="10000"
 	 * @generated
 	 */
 	String getInboundHL7TimeOut();
@@ -492,6 +493,7 @@ public interface InboundEndpoint extends EsbElement {
 
 	/**
 	 * Returns the value of the '<em><b>Inbound HL7 Validate Message</b></em>' attribute.
+	 * The default value is <code>"true"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Inbound HL7 Validate Message</em>' attribute isn't clear,
@@ -501,7 +503,7 @@ public interface InboundEndpoint extends EsbElement {
 	 * @return the value of the '<em>Inbound HL7 Validate Message</em>' attribute.
 	 * @see #setInboundHL7ValidateMessage(boolean)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_InboundHL7ValidateMessage()
-	 * @model
+	 * @model default="true"
 	 * @generated
 	 */
 	boolean isInboundHL7ValidateMessage();
@@ -518,7 +520,7 @@ public interface InboundEndpoint extends EsbElement {
 
 	/**
 	 * Returns the value of the '<em><b>Inbound HL7 Build Invalid Messages</b></em>' attribute.
-	 * The default value is <code>""</code>.
+	 * The default value is <code>"true"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Inbound HL7 Build Invalid Messages</em>' attribute isn't clear,
@@ -526,26 +528,26 @@ public interface InboundEndpoint extends EsbElement {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Inbound HL7 Build Invalid Messages</em>' attribute.
-	 * @see #setInboundHL7BuildInvalidMessages(String)
+	 * @see #setInboundHL7BuildInvalidMessages(boolean)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_InboundHL7BuildInvalidMessages()
-	 * @model default=""
+	 * @model default="true"
 	 * @generated
 	 */
-	String getInboundHL7BuildInvalidMessages();
+	boolean isInboundHL7BuildInvalidMessages();
 
 	/**
-	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getInboundHL7BuildInvalidMessages <em>Inbound HL7 Build Invalid Messages</em>}' attribute.
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#isInboundHL7BuildInvalidMessages <em>Inbound HL7 Build Invalid Messages</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Inbound HL7 Build Invalid Messages</em>' attribute.
-	 * @see #getInboundHL7BuildInvalidMessages()
+	 * @see #isInboundHL7BuildInvalidMessages()
 	 * @generated
 	 */
-	void setInboundHL7BuildInvalidMessages(String value);
+	void setInboundHL7BuildInvalidMessages(boolean value);
 
 	/**
 	 * Returns the value of the '<em><b>Inbound HL7 Pass Through Invalid Messages</b></em>' attribute.
-	 * The default value is <code>""</code>.
+	 * The default value is <code>"true"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Inbound HL7 Pass Through Invalid Messages</em>' attribute isn't clear,
@@ -553,22 +555,22 @@ public interface InboundEndpoint extends EsbElement {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Inbound HL7 Pass Through Invalid Messages</em>' attribute.
-	 * @see #setInboundHL7PassThroughInvalidMessages(String)
+	 * @see #setInboundHL7PassThroughInvalidMessages(boolean)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_InboundHL7PassThroughInvalidMessages()
-	 * @model default=""
+	 * @model default="true"
 	 * @generated
 	 */
-	String getInboundHL7PassThroughInvalidMessages();
+	boolean isInboundHL7PassThroughInvalidMessages();
 
 	/**
-	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getInboundHL7PassThroughInvalidMessages <em>Inbound HL7 Pass Through Invalid Messages</em>}' attribute.
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#isInboundHL7PassThroughInvalidMessages <em>Inbound HL7 Pass Through Invalid Messages</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Inbound HL7 Pass Through Invalid Messages</em>' attribute.
-	 * @see #getInboundHL7PassThroughInvalidMessages()
+	 * @see #isInboundHL7PassThroughInvalidMessages()
 	 * @generated
 	 */
-	void setInboundHL7PassThroughInvalidMessages(String value);
+	void setInboundHL7PassThroughInvalidMessages(boolean value);
 
 	/**
 	 * Returns the value of the '<em><b>Zookeeper Connect</b></em>' attribute.

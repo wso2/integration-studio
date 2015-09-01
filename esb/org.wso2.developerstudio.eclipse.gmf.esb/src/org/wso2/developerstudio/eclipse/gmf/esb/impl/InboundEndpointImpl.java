@@ -149,8 +149,8 @@ import org.wso2.developerstudio.eclipse.gmf.esb.VFSFileSort;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getInboundHL7CharSet <em>Inbound HL7 Char Set</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getInboundHL7TimeOut <em>Inbound HL7 Time Out</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isInboundHL7ValidateMessage <em>Inbound HL7 Validate Message</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getInboundHL7BuildInvalidMessages <em>Inbound HL7 Build Invalid Messages</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getInboundHL7PassThroughInvalidMessages <em>Inbound HL7 Pass Through Invalid Messages</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isInboundHL7BuildInvalidMessages <em>Inbound HL7 Build Invalid Messages</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isInboundHL7PassThroughInvalidMessages <em>Inbound HL7 Pass Through Invalid Messages</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getZookeeperConnect <em>Zookeeper Connect</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getGroupId <em>Group Id</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getContentType <em>Content Type</em>}</li>
@@ -1841,7 +1841,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean INBOUND_HL7_AUTO_ACK_EDEFAULT = false;
+	protected static final boolean INBOUND_HL7_AUTO_ACK_EDEFAULT = true;
 
 	/**
 	 * The cached value of the '{@link #isInboundHL7AutoAck() <em>Inbound HL7 Auto Ack</em>}' attribute.
@@ -1881,7 +1881,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String INBOUND_HL7_CHAR_SET_EDEFAULT = "";
+	protected static final String INBOUND_HL7_CHAR_SET_EDEFAULT = "UTF-8";
 
 	/**
 	 * The cached value of the '{@link #getInboundHL7CharSet() <em>Inbound HL7 Char Set</em>}' attribute.
@@ -1901,7 +1901,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String INBOUND_HL7_TIME_OUT_EDEFAULT = "";
+	protected static final String INBOUND_HL7_TIME_OUT_EDEFAULT = "10000";
 
 	/**
 	 * The cached value of the '{@link #getInboundHL7TimeOut() <em>Inbound HL7 Time Out</em>}' attribute.
@@ -1921,7 +1921,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean INBOUND_HL7_VALIDATE_MESSAGE_EDEFAULT = false;
+	protected static final boolean INBOUND_HL7_VALIDATE_MESSAGE_EDEFAULT = true;
 
 	/**
 	 * The cached value of the '{@link #isInboundHL7ValidateMessage() <em>Inbound HL7 Validate Message</em>}' attribute.
@@ -1934,44 +1934,44 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	protected boolean inboundHL7ValidateMessage = INBOUND_HL7_VALIDATE_MESSAGE_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getInboundHL7BuildInvalidMessages() <em>Inbound HL7 Build Invalid Messages</em>}' attribute.
+	 * The default value of the '{@link #isInboundHL7BuildInvalidMessages() <em>Inbound HL7 Build Invalid Messages</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getInboundHL7BuildInvalidMessages()
+	 * @see #isInboundHL7BuildInvalidMessages()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String INBOUND_HL7_BUILD_INVALID_MESSAGES_EDEFAULT = "";
+	protected static final boolean INBOUND_HL7_BUILD_INVALID_MESSAGES_EDEFAULT = true;
 
 	/**
-	 * The cached value of the '{@link #getInboundHL7BuildInvalidMessages() <em>Inbound HL7 Build Invalid Messages</em>}' attribute.
+	 * The cached value of the '{@link #isInboundHL7BuildInvalidMessages() <em>Inbound HL7 Build Invalid Messages</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getInboundHL7BuildInvalidMessages()
+	 * @see #isInboundHL7BuildInvalidMessages()
 	 * @generated
 	 * @ordered
 	 */
-	protected String inboundHL7BuildInvalidMessages = INBOUND_HL7_BUILD_INVALID_MESSAGES_EDEFAULT;
+	protected boolean inboundHL7BuildInvalidMessages = INBOUND_HL7_BUILD_INVALID_MESSAGES_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getInboundHL7PassThroughInvalidMessages() <em>Inbound HL7 Pass Through Invalid Messages</em>}' attribute.
+	 * The default value of the '{@link #isInboundHL7PassThroughInvalidMessages() <em>Inbound HL7 Pass Through Invalid Messages</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getInboundHL7PassThroughInvalidMessages()
+	 * @see #isInboundHL7PassThroughInvalidMessages()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String INBOUND_HL7_PASS_THROUGH_INVALID_MESSAGES_EDEFAULT = "";
+	protected static final boolean INBOUND_HL7_PASS_THROUGH_INVALID_MESSAGES_EDEFAULT = true;
 
 	/**
-	 * The cached value of the '{@link #getInboundHL7PassThroughInvalidMessages() <em>Inbound HL7 Pass Through Invalid Messages</em>}' attribute.
+	 * The cached value of the '{@link #isInboundHL7PassThroughInvalidMessages() <em>Inbound HL7 Pass Through Invalid Messages</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getInboundHL7PassThroughInvalidMessages()
+	 * @see #isInboundHL7PassThroughInvalidMessages()
 	 * @generated
 	 * @ordered
 	 */
-	protected String inboundHL7PassThroughInvalidMessages = INBOUND_HL7_PASS_THROUGH_INVALID_MESSAGES_EDEFAULT;
+	protected boolean inboundHL7PassThroughInvalidMessages = INBOUND_HL7_PASS_THROUGH_INVALID_MESSAGES_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getZookeeperConnect() <em>Zookeeper Connect</em>}' attribute.
@@ -3290,7 +3290,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getInboundHL7BuildInvalidMessages() {
+	public boolean isInboundHL7BuildInvalidMessages() {
 		return inboundHL7BuildInvalidMessages;
 	}
 
@@ -3299,8 +3299,8 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setInboundHL7BuildInvalidMessages(String newInboundHL7BuildInvalidMessages) {
-		String oldInboundHL7BuildInvalidMessages = inboundHL7BuildInvalidMessages;
+	public void setInboundHL7BuildInvalidMessages(boolean newInboundHL7BuildInvalidMessages) {
+		boolean oldInboundHL7BuildInvalidMessages = inboundHL7BuildInvalidMessages;
 		inboundHL7BuildInvalidMessages = newInboundHL7BuildInvalidMessages;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_BUILD_INVALID_MESSAGES, oldInboundHL7BuildInvalidMessages, inboundHL7BuildInvalidMessages));
@@ -3311,7 +3311,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getInboundHL7PassThroughInvalidMessages() {
+	public boolean isInboundHL7PassThroughInvalidMessages() {
 		return inboundHL7PassThroughInvalidMessages;
 	}
 
@@ -3320,8 +3320,8 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setInboundHL7PassThroughInvalidMessages(String newInboundHL7PassThroughInvalidMessages) {
-		String oldInboundHL7PassThroughInvalidMessages = inboundHL7PassThroughInvalidMessages;
+	public void setInboundHL7PassThroughInvalidMessages(boolean newInboundHL7PassThroughInvalidMessages) {
+		boolean oldInboundHL7PassThroughInvalidMessages = inboundHL7PassThroughInvalidMessages;
 		inboundHL7PassThroughInvalidMessages = newInboundHL7PassThroughInvalidMessages;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_PASS_THROUGH_INVALID_MESSAGES, oldInboundHL7PassThroughInvalidMessages, inboundHL7PassThroughInvalidMessages));
@@ -6091,9 +6091,9 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 			case EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_VALIDATE_MESSAGE:
 				return isInboundHL7ValidateMessage();
 			case EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_BUILD_INVALID_MESSAGES:
-				return getInboundHL7BuildInvalidMessages();
+				return isInboundHL7BuildInvalidMessages();
 			case EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_PASS_THROUGH_INVALID_MESSAGES:
-				return getInboundHL7PassThroughInvalidMessages();
+				return isInboundHL7PassThroughInvalidMessages();
 			case EsbPackage.INBOUND_ENDPOINT__ZOOKEEPER_CONNECT:
 				return getZookeeperConnect();
 			case EsbPackage.INBOUND_ENDPOINT__GROUP_ID:
@@ -6467,10 +6467,10 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 				setInboundHL7ValidateMessage((Boolean)newValue);
 				return;
 			case EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_BUILD_INVALID_MESSAGES:
-				setInboundHL7BuildInvalidMessages((String)newValue);
+				setInboundHL7BuildInvalidMessages((Boolean)newValue);
 				return;
 			case EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_PASS_THROUGH_INVALID_MESSAGES:
-				setInboundHL7PassThroughInvalidMessages((String)newValue);
+				setInboundHL7PassThroughInvalidMessages((Boolean)newValue);
 				return;
 			case EsbPackage.INBOUND_ENDPOINT__ZOOKEEPER_CONNECT:
 				setZookeeperConnect((String)newValue);
@@ -7225,9 +7225,9 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 			case EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_VALIDATE_MESSAGE:
 				return inboundHL7ValidateMessage != INBOUND_HL7_VALIDATE_MESSAGE_EDEFAULT;
 			case EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_BUILD_INVALID_MESSAGES:
-				return INBOUND_HL7_BUILD_INVALID_MESSAGES_EDEFAULT == null ? inboundHL7BuildInvalidMessages != null : !INBOUND_HL7_BUILD_INVALID_MESSAGES_EDEFAULT.equals(inboundHL7BuildInvalidMessages);
+				return inboundHL7BuildInvalidMessages != INBOUND_HL7_BUILD_INVALID_MESSAGES_EDEFAULT;
 			case EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_PASS_THROUGH_INVALID_MESSAGES:
-				return INBOUND_HL7_PASS_THROUGH_INVALID_MESSAGES_EDEFAULT == null ? inboundHL7PassThroughInvalidMessages != null : !INBOUND_HL7_PASS_THROUGH_INVALID_MESSAGES_EDEFAULT.equals(inboundHL7PassThroughInvalidMessages);
+				return inboundHL7PassThroughInvalidMessages != INBOUND_HL7_PASS_THROUGH_INVALID_MESSAGES_EDEFAULT;
 			case EsbPackage.INBOUND_ENDPOINT__ZOOKEEPER_CONNECT:
 				return ZOOKEEPER_CONNECT_EDEFAULT == null ? zookeeperConnect != null : !ZOOKEEPER_CONNECT_EDEFAULT.equals(zookeeperConnect);
 			case EsbPackage.INBOUND_ENDPOINT__GROUP_ID:

@@ -475,13 +475,13 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
 				inboundEndpoint.addParameter(InboundEndpointConstants.INBOUND_HL7_VALIDATE_MESSAGE,
 						String.valueOf(visualInboundEndpoint.isInboundHL7ValidateMessage()));
 			}
-			if (StringUtils.isNotBlank(visualInboundEndpoint.getInboundHL7BuildInvalidMessages())) {
+			if (StringUtils.isNotBlank(String.valueOf(visualInboundEndpoint.isInboundHL7BuildInvalidMessages()))) {
 				inboundEndpoint.addParameter(InboundEndpointConstants.INBOUND_HL7_BUILD_INVALID_MESSAGES,
-						visualInboundEndpoint.getInboundHL7BuildInvalidMessages());
+						String.valueOf(visualInboundEndpoint.isInboundHL7BuildInvalidMessages()));
 			}
-			if (StringUtils.isNotBlank(visualInboundEndpoint.getInboundHL7PassThroughInvalidMessages())) {
+			if (StringUtils.isNotBlank(String.valueOf(visualInboundEndpoint.isInboundHL7PassThroughInvalidMessages()))) {
 				inboundEndpoint.addParameter(InboundEndpointConstants.INBOUND_HL7_PASSTHROUHG_INVALID_MESSAGES,
-						visualInboundEndpoint.getInboundHL7PassThroughInvalidMessages());
+						String.valueOf(visualInboundEndpoint.isInboundHL7PassThroughInvalidMessages()));
 			}
 			break;
 		case KAFKA:

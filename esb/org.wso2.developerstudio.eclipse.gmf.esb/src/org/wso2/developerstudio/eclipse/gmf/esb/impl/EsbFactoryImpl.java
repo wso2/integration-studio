@@ -643,8 +643,18 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
 				return createInboundEndpointTypeFromString(eDataType, initialValue);
 			case EsbPackage.CONTENT_TYPE:
 				return createContentTypeFromString(eDataType, initialValue);
+			case EsbPackage.TOPICS_TYPE:
+				return createTopicsTypeFromString(eDataType, initialValue);
+			case EsbPackage.TOPIC_FILTER_FROM_TYPE:
+				return createTopicFilterFromTypeFromString(eDataType, initialValue);
 			case EsbPackage.CONSUMER_TYPE:
 				return createConsumerTypeFromString(eDataType, initialValue);
+			case EsbPackage.AUTO_OFFSET_RESET_TYPE:
+				return createAutoOffsetResetTypeFromString(eDataType, initialValue);
+			case EsbPackage.PARTITION_ASSIGNMENT_STRATEGY_TYPE:
+				return createPartitionAssignmentStrategyTypeFromString(eDataType, initialValue);
+			case EsbPackage.OFFSETS_STORAGE_TYPE:
+				return createOffsetsStorageTypeFromString(eDataType, initialValue);
 			case EsbPackage.ENABLE:
 				return createEnableFromString(eDataType, initialValue);
 			case EsbPackage.VFS_ACTION:
@@ -891,8 +901,18 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
 				return convertInboundEndpointTypeToString(eDataType, instanceValue);
 			case EsbPackage.CONTENT_TYPE:
 				return convertContentTypeToString(eDataType, instanceValue);
+			case EsbPackage.TOPICS_TYPE:
+				return convertTopicsTypeToString(eDataType, instanceValue);
+			case EsbPackage.TOPIC_FILTER_FROM_TYPE:
+				return convertTopicFilterFromTypeToString(eDataType, instanceValue);
 			case EsbPackage.CONSUMER_TYPE:
 				return convertConsumerTypeToString(eDataType, instanceValue);
+			case EsbPackage.AUTO_OFFSET_RESET_TYPE:
+				return convertAutoOffsetResetTypeToString(eDataType, instanceValue);
+			case EsbPackage.PARTITION_ASSIGNMENT_STRATEGY_TYPE:
+				return convertPartitionAssignmentStrategyTypeToString(eDataType, instanceValue);
+			case EsbPackage.OFFSETS_STORAGE_TYPE:
+				return convertOffsetsStorageTypeToString(eDataType, instanceValue);
 			case EsbPackage.ENABLE:
 				return convertEnableToString(eDataType, instanceValue);
 			case EsbPackage.VFS_ACTION:
@@ -6838,6 +6858,46 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public TopicsType createTopicsTypeFromString(EDataType eDataType, String initialValue) {
+		TopicsType result = TopicsType.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertTopicsTypeToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TopicFilterFromType createTopicFilterFromTypeFromString(EDataType eDataType, String initialValue) {
+		TopicFilterFromType result = TopicFilterFromType.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertTopicFilterFromTypeToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public ConsumerType createConsumerTypeFromString(EDataType eDataType, String initialValue) {
 		ConsumerType result = ConsumerType.get(initialValue);
 		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
@@ -6850,6 +6910,66 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
 	 * @generated
 	 */
 	public String convertConsumerTypeToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public AutoOffsetResetType createAutoOffsetResetTypeFromString(EDataType eDataType, String initialValue) {
+		AutoOffsetResetType result = AutoOffsetResetType.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertAutoOffsetResetTypeToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public PartitionAssignmentStrategyType createPartitionAssignmentStrategyTypeFromString(EDataType eDataType, String initialValue) {
+		PartitionAssignmentStrategyType result = PartitionAssignmentStrategyType.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertPartitionAssignmentStrategyTypeToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public OffsetsStorageType createOffsetsStorageTypeFromString(EDataType eDataType, String initialValue) {
+		OffsetsStorageType result = OffsetsStorageType.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertOffsetsStorageTypeToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

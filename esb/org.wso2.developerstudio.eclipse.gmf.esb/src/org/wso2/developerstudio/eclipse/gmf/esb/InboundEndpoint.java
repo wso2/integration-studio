@@ -119,19 +119,44 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getInboundHL7PassThroughInvalidMessages <em>Inbound HL7 Pass Through Invalid Messages</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getZookeeperConnect <em>Zookeeper Connect</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getGroupId <em>Group Id</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getConsumerType <em>Consumer Type</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getContentType <em>Content Type</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTopics <em>Topics</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getSimpleTopic <em>Simple Topic</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getSimpleBrokers <em>Simple Brokers</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getSimplePort <em>Simple Port</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getSimplePartition <em>Simple Partition</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getSimpleMaxMessagesToRead <em>Simple Max Messages To Read</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getConsumerType <em>Consumer Type</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTopicsOrTopicFilter <em>Topics Or Topic Filter</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTopicsName <em>Topics Name</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTopicFilterFrom <em>Topic Filter From</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTopicFilterName <em>Topic Filter Name</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getSimpleConsumerTopic <em>Simple Consumer Topic</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getSimpleConsumerBrokers <em>Simple Consumer Brokers</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getSimpleConsumerPort <em>Simple Consumer Port</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getSimpleConsumerPartition <em>Simple Consumer Partition</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getSimpleConsumerMaxMessagesToRead <em>Simple Consumer Max Messages To Read</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getThreadCount <em>Thread Count</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getZookeeperSessionTimeoutMs <em>Zookeeper Session Timeout Ms</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getZookeeperSyncTimeMs <em>Zookeeper Sync Time Ms</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getConsumerId <em>Consumer Id</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getSocketTimeoutMs <em>Socket Timeout Ms</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getSocketReceiveBufferBytes <em>Socket Receive Buffer Bytes</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getFetchMessageMaxBytes <em>Fetch Message Max Bytes</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getNumConsumerFetches <em>Num Consumer Fetches</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#isAutoCommitEnable <em>Auto Commit Enable</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getAutoCommitIntervalMs <em>Auto Commit Interval Ms</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getQueuedMaxMessageChunks <em>Queued Max Message Chunks</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getRebalanceMaxRetries <em>Rebalance Max Retries</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getFetchMinBytes <em>Fetch Min Bytes</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getFetchWaitMaxMs <em>Fetch Wait Max Ms</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getRebalanceBackoffMs <em>Rebalance Backoff Ms</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getRefreshLeaderBackoffMs <em>Refresh Leader Backoff Ms</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getAutoOffsetReset <em>Auto Offset Reset</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getConsumerTimeoutMs <em>Consumer Timeout Ms</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#isExcludeInternalTopics <em>Exclude Internal Topics</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getPartitionAssignmentStrategy <em>Partition Assignment Strategy</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getClientId <em>Client Id</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getZookeeperSessionTimeoutMs <em>Zookeeper Session Timeout Ms</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getZookeeperConnectionTimeoutMs <em>Zookeeper Connection Timeout Ms</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getZookeeperSyncTimeMs <em>Zookeeper Sync Time Ms</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getOffsetsStorage <em>Offsets Storage</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getOffsetsChannelBackoffMs <em>Offsets Channel Backoff Ms</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getOffsetsChannelSocketTimeoutMs <em>Offsets Channel Socket Timeout Ms</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getOffsetsCommitMaxRetries <em>Offsets Commit Max Retries</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#isDualCommitEnabled <em>Dual Commit Enabled</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getInboundCxfRmHost <em>Inbound Cxf Rm Host</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getInboundCxfRmPort <em>Inbound Cxf Rm Port</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getInboundCxfRmConfigFile <em>Inbound Cxf Rm Config File</em>}</li>
@@ -629,6 +654,246 @@ public interface InboundEndpoint extends EsbElement {
 	void setConsumerType(ConsumerType value);
 
 	/**
+	 * Returns the value of the '<em><b>Topics Or Topic Filter</b></em>' attribute.
+	 * The literals are from the enumeration {@link org.wso2.developerstudio.eclipse.gmf.esb.TopicsType}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Topics Or Topic Filter</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Topics Or Topic Filter</em>' attribute.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.TopicsType
+	 * @see #setTopicsOrTopicFilter(TopicsType)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TopicsOrTopicFilter()
+	 * @model
+	 * @generated
+	 */
+	TopicsType getTopicsOrTopicFilter();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTopicsOrTopicFilter <em>Topics Or Topic Filter</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Topics Or Topic Filter</em>' attribute.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.TopicsType
+	 * @see #getTopicsOrTopicFilter()
+	 * @generated
+	 */
+	void setTopicsOrTopicFilter(TopicsType value);
+
+	/**
+	 * Returns the value of the '<em><b>Topics Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Topics Name</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Topics Name</em>' attribute.
+	 * @see #setTopicsName(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TopicsName()
+	 * @model
+	 * @generated
+	 */
+	String getTopicsName();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTopicsName <em>Topics Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Topics Name</em>' attribute.
+	 * @see #getTopicsName()
+	 * @generated
+	 */
+	void setTopicsName(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Topic Filter From</b></em>' attribute.
+	 * The literals are from the enumeration {@link org.wso2.developerstudio.eclipse.gmf.esb.TopicFilterFromType}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Topic Filter From</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Topic Filter From</em>' attribute.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.TopicFilterFromType
+	 * @see #setTopicFilterFrom(TopicFilterFromType)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TopicFilterFrom()
+	 * @model
+	 * @generated
+	 */
+	TopicFilterFromType getTopicFilterFrom();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTopicFilterFrom <em>Topic Filter From</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Topic Filter From</em>' attribute.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.TopicFilterFromType
+	 * @see #getTopicFilterFrom()
+	 * @generated
+	 */
+	void setTopicFilterFrom(TopicFilterFromType value);
+
+	/**
+	 * Returns the value of the '<em><b>Topic Filter Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Topic Filter Name</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Topic Filter Name</em>' attribute.
+	 * @see #setTopicFilterName(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TopicFilterName()
+	 * @model
+	 * @generated
+	 */
+	String getTopicFilterName();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTopicFilterName <em>Topic Filter Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Topic Filter Name</em>' attribute.
+	 * @see #getTopicFilterName()
+	 * @generated
+	 */
+	void setTopicFilterName(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Simple Consumer Topic</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Simple Consumer Topic</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Simple Consumer Topic</em>' attribute.
+	 * @see #setSimpleConsumerTopic(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_SimpleConsumerTopic()
+	 * @model
+	 * @generated
+	 */
+	String getSimpleConsumerTopic();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getSimpleConsumerTopic <em>Simple Consumer Topic</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Simple Consumer Topic</em>' attribute.
+	 * @see #getSimpleConsumerTopic()
+	 * @generated
+	 */
+	void setSimpleConsumerTopic(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Simple Consumer Brokers</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Simple Consumer Brokers</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Simple Consumer Brokers</em>' attribute.
+	 * @see #setSimpleConsumerBrokers(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_SimpleConsumerBrokers()
+	 * @model
+	 * @generated
+	 */
+	String getSimpleConsumerBrokers();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getSimpleConsumerBrokers <em>Simple Consumer Brokers</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Simple Consumer Brokers</em>' attribute.
+	 * @see #getSimpleConsumerBrokers()
+	 * @generated
+	 */
+	void setSimpleConsumerBrokers(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Simple Consumer Port</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Simple Consumer Port</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Simple Consumer Port</em>' attribute.
+	 * @see #setSimpleConsumerPort(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_SimpleConsumerPort()
+	 * @model
+	 * @generated
+	 */
+	String getSimpleConsumerPort();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getSimpleConsumerPort <em>Simple Consumer Port</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Simple Consumer Port</em>' attribute.
+	 * @see #getSimpleConsumerPort()
+	 * @generated
+	 */
+	void setSimpleConsumerPort(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Simple Consumer Partition</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Simple Consumer Partition</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Simple Consumer Partition</em>' attribute.
+	 * @see #setSimpleConsumerPartition(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_SimpleConsumerPartition()
+	 * @model
+	 * @generated
+	 */
+	String getSimpleConsumerPartition();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getSimpleConsumerPartition <em>Simple Consumer Partition</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Simple Consumer Partition</em>' attribute.
+	 * @see #getSimpleConsumerPartition()
+	 * @generated
+	 */
+	void setSimpleConsumerPartition(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Simple Consumer Max Messages To Read</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Simple Consumer Max Messages To Read</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Simple Consumer Max Messages To Read</em>' attribute.
+	 * @see #setSimpleConsumerMaxMessagesToRead(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_SimpleConsumerMaxMessagesToRead()
+	 * @model
+	 * @generated
+	 */
+	String getSimpleConsumerMaxMessagesToRead();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getSimpleConsumerMaxMessagesToRead <em>Simple Consumer Max Messages To Read</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Simple Consumer Max Messages To Read</em>' attribute.
+	 * @see #getSimpleConsumerMaxMessagesToRead()
+	 * @generated
+	 */
+	void setSimpleConsumerMaxMessagesToRead(String value);
+
+	/**
 	 * Returns the value of the '<em><b>Content Type</b></em>' attribute.
 	 * The literals are from the enumeration {@link org.wso2.developerstudio.eclipse.gmf.esb.ContentType}.
 	 * <!-- begin-user-doc -->
@@ -658,168 +923,6 @@ public interface InboundEndpoint extends EsbElement {
 	void setContentType(ContentType value);
 
 	/**
-	 * Returns the value of the '<em><b>Topics</b></em>' attribute.
-	 * The default value is <code>""</code>.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Topics</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Topics</em>' attribute.
-	 * @see #setTopics(String)
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_Topics()
-	 * @model default=""
-	 * @generated
-	 */
-	String getTopics();
-
-	/**
-	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTopics <em>Topics</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Topics</em>' attribute.
-	 * @see #getTopics()
-	 * @generated
-	 */
-	void setTopics(String value);
-
-	/**
-	 * Returns the value of the '<em><b>Simple Topic</b></em>' attribute.
-	 * The default value is <code>""</code>.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Simple Topic</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Simple Topic</em>' attribute.
-	 * @see #setSimpleTopic(String)
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_SimpleTopic()
-	 * @model default=""
-	 * @generated
-	 */
-	String getSimpleTopic();
-
-	/**
-	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getSimpleTopic <em>Simple Topic</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Simple Topic</em>' attribute.
-	 * @see #getSimpleTopic()
-	 * @generated
-	 */
-	void setSimpleTopic(String value);
-
-	/**
-	 * Returns the value of the '<em><b>Simple Brokers</b></em>' attribute.
-	 * The default value is <code>""</code>.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Simple Brokers</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Simple Brokers</em>' attribute.
-	 * @see #setSimpleBrokers(String)
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_SimpleBrokers()
-	 * @model default=""
-	 * @generated
-	 */
-	String getSimpleBrokers();
-
-	/**
-	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getSimpleBrokers <em>Simple Brokers</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Simple Brokers</em>' attribute.
-	 * @see #getSimpleBrokers()
-	 * @generated
-	 */
-	void setSimpleBrokers(String value);
-
-	/**
-	 * Returns the value of the '<em><b>Simple Port</b></em>' attribute.
-	 * The default value is <code>""</code>.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Simple Port</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Simple Port</em>' attribute.
-	 * @see #setSimplePort(String)
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_SimplePort()
-	 * @model default=""
-	 * @generated
-	 */
-	String getSimplePort();
-
-	/**
-	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getSimplePort <em>Simple Port</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Simple Port</em>' attribute.
-	 * @see #getSimplePort()
-	 * @generated
-	 */
-	void setSimplePort(String value);
-
-	/**
-	 * Returns the value of the '<em><b>Simple Partition</b></em>' attribute.
-	 * The default value is <code>""</code>.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Simple Partition</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Simple Partition</em>' attribute.
-	 * @see #setSimplePartition(String)
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_SimplePartition()
-	 * @model default=""
-	 * @generated
-	 */
-	String getSimplePartition();
-
-	/**
-	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getSimplePartition <em>Simple Partition</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Simple Partition</em>' attribute.
-	 * @see #getSimplePartition()
-	 * @generated
-	 */
-	void setSimplePartition(String value);
-
-	/**
-	 * Returns the value of the '<em><b>Simple Max Messages To Read</b></em>' attribute.
-	 * The default value is <code>""</code>.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Simple Max Messages To Read</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Simple Max Messages To Read</em>' attribute.
-	 * @see #setSimpleMaxMessagesToRead(String)
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_SimpleMaxMessagesToRead()
-	 * @model default=""
-	 * @generated
-	 */
-	String getSimpleMaxMessagesToRead();
-
-	/**
-	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getSimpleMaxMessagesToRead <em>Simple Max Messages To Read</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Simple Max Messages To Read</em>' attribute.
-	 * @see #getSimpleMaxMessagesToRead()
-	 * @generated
-	 */
-	void setSimpleMaxMessagesToRead(String value);
-
-	/**
 	 * Returns the value of the '<em><b>Thread Count</b></em>' attribute.
 	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
@@ -845,6 +948,162 @@ public interface InboundEndpoint extends EsbElement {
 	 * @generated
 	 */
 	void setThreadCount(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Consumer Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Consumer Id</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Consumer Id</em>' attribute.
+	 * @see #setConsumerId(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_ConsumerId()
+	 * @model
+	 * @generated
+	 */
+	String getConsumerId();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getConsumerId <em>Consumer Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Consumer Id</em>' attribute.
+	 * @see #getConsumerId()
+	 * @generated
+	 */
+	void setConsumerId(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Socket Timeout Ms</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Socket Timeout Ms</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Socket Timeout Ms</em>' attribute.
+	 * @see #setSocketTimeoutMs(int)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_SocketTimeoutMs()
+	 * @model
+	 * @generated
+	 */
+	int getSocketTimeoutMs();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getSocketTimeoutMs <em>Socket Timeout Ms</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Socket Timeout Ms</em>' attribute.
+	 * @see #getSocketTimeoutMs()
+	 * @generated
+	 */
+	void setSocketTimeoutMs(int value);
+
+	/**
+	 * Returns the value of the '<em><b>Socket Receive Buffer Bytes</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Socket Receive Buffer Bytes</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Socket Receive Buffer Bytes</em>' attribute.
+	 * @see #setSocketReceiveBufferBytes(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_SocketReceiveBufferBytes()
+	 * @model
+	 * @generated
+	 */
+	String getSocketReceiveBufferBytes();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getSocketReceiveBufferBytes <em>Socket Receive Buffer Bytes</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Socket Receive Buffer Bytes</em>' attribute.
+	 * @see #getSocketReceiveBufferBytes()
+	 * @generated
+	 */
+	void setSocketReceiveBufferBytes(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Fetch Message Max Bytes</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Fetch Message Max Bytes</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Fetch Message Max Bytes</em>' attribute.
+	 * @see #setFetchMessageMaxBytes(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_FetchMessageMaxBytes()
+	 * @model
+	 * @generated
+	 */
+	String getFetchMessageMaxBytes();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getFetchMessageMaxBytes <em>Fetch Message Max Bytes</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Fetch Message Max Bytes</em>' attribute.
+	 * @see #getFetchMessageMaxBytes()
+	 * @generated
+	 */
+	void setFetchMessageMaxBytes(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Num Consumer Fetches</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Num Consumer Fetches</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Num Consumer Fetches</em>' attribute.
+	 * @see #setNumConsumerFetches(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_NumConsumerFetches()
+	 * @model
+	 * @generated
+	 */
+	String getNumConsumerFetches();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getNumConsumerFetches <em>Num Consumer Fetches</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Num Consumer Fetches</em>' attribute.
+	 * @see #getNumConsumerFetches()
+	 * @generated
+	 */
+	void setNumConsumerFetches(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Auto Commit Enable</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Auto Commit Enable</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Auto Commit Enable</em>' attribute.
+	 * @see #setAutoCommitEnable(boolean)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_AutoCommitEnable()
+	 * @model
+	 * @generated
+	 */
+	boolean isAutoCommitEnable();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#isAutoCommitEnable <em>Auto Commit Enable</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Auto Commit Enable</em>' attribute.
+	 * @see #isAutoCommitEnable()
+	 * @generated
+	 */
+	void setAutoCommitEnable(boolean value);
 
 	/**
 	 * Returns the value of the '<em><b>Zookeeper Session Timeout Ms</b></em>' attribute.
@@ -874,6 +1133,33 @@ public interface InboundEndpoint extends EsbElement {
 	void setZookeeperSessionTimeoutMs(String value);
 
 	/**
+	 * Returns the value of the '<em><b>Zookeeper Connection Timeout Ms</b></em>' attribute.
+	 * The default value is <code>""</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Zookeeper Connection Timeout Ms</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Zookeeper Connection Timeout Ms</em>' attribute.
+	 * @see #setZookeeperConnectionTimeoutMs(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_ZookeeperConnectionTimeoutMs()
+	 * @model default=""
+	 * @generated
+	 */
+	String getZookeeperConnectionTimeoutMs();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getZookeeperConnectionTimeoutMs <em>Zookeeper Connection Timeout Ms</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Zookeeper Connection Timeout Ms</em>' attribute.
+	 * @see #getZookeeperConnectionTimeoutMs()
+	 * @generated
+	 */
+	void setZookeeperConnectionTimeoutMs(String value);
+
+	/**
 	 * Returns the value of the '<em><b>Zookeeper Sync Time Ms</b></em>' attribute.
 	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
@@ -899,6 +1185,142 @@ public interface InboundEndpoint extends EsbElement {
 	 * @generated
 	 */
 	void setZookeeperSyncTimeMs(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Offsets Storage</b></em>' attribute.
+	 * The literals are from the enumeration {@link org.wso2.developerstudio.eclipse.gmf.esb.OffsetsStorageType}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Offsets Storage</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Offsets Storage</em>' attribute.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.OffsetsStorageType
+	 * @see #setOffsetsStorage(OffsetsStorageType)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_OffsetsStorage()
+	 * @model
+	 * @generated
+	 */
+	OffsetsStorageType getOffsetsStorage();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getOffsetsStorage <em>Offsets Storage</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Offsets Storage</em>' attribute.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.OffsetsStorageType
+	 * @see #getOffsetsStorage()
+	 * @generated
+	 */
+	void setOffsetsStorage(OffsetsStorageType value);
+
+	/**
+	 * Returns the value of the '<em><b>Offsets Channel Backoff Ms</b></em>' attribute.
+	 * The default value is <code>""</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Offsets Channel Backoff Ms</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Offsets Channel Backoff Ms</em>' attribute.
+	 * @see #setOffsetsChannelBackoffMs(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_OffsetsChannelBackoffMs()
+	 * @model default=""
+	 * @generated
+	 */
+	String getOffsetsChannelBackoffMs();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getOffsetsChannelBackoffMs <em>Offsets Channel Backoff Ms</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Offsets Channel Backoff Ms</em>' attribute.
+	 * @see #getOffsetsChannelBackoffMs()
+	 * @generated
+	 */
+	void setOffsetsChannelBackoffMs(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Offsets Channel Socket Timeout Ms</b></em>' attribute.
+	 * The default value is <code>""</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Offsets Channel Socket Timeout Ms</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Offsets Channel Socket Timeout Ms</em>' attribute.
+	 * @see #setOffsetsChannelSocketTimeoutMs(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_OffsetsChannelSocketTimeoutMs()
+	 * @model default=""
+	 * @generated
+	 */
+	String getOffsetsChannelSocketTimeoutMs();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getOffsetsChannelSocketTimeoutMs <em>Offsets Channel Socket Timeout Ms</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Offsets Channel Socket Timeout Ms</em>' attribute.
+	 * @see #getOffsetsChannelSocketTimeoutMs()
+	 * @generated
+	 */
+	void setOffsetsChannelSocketTimeoutMs(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Offsets Commit Max Retries</b></em>' attribute.
+	 * The default value is <code>""</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Offsets Commit Max Retries</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Offsets Commit Max Retries</em>' attribute.
+	 * @see #setOffsetsCommitMaxRetries(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_OffsetsCommitMaxRetries()
+	 * @model default=""
+	 * @generated
+	 */
+	String getOffsetsCommitMaxRetries();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getOffsetsCommitMaxRetries <em>Offsets Commit Max Retries</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Offsets Commit Max Retries</em>' attribute.
+	 * @see #getOffsetsCommitMaxRetries()
+	 * @generated
+	 */
+	void setOffsetsCommitMaxRetries(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Dual Commit Enabled</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Dual Commit Enabled</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Dual Commit Enabled</em>' attribute.
+	 * @see #setDualCommitEnabled(boolean)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_DualCommitEnabled()
+	 * @model
+	 * @generated
+	 */
+	boolean isDualCommitEnabled();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#isDualCommitEnabled <em>Dual Commit Enabled</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Dual Commit Enabled</em>' attribute.
+	 * @see #isDualCommitEnabled()
+	 * @generated
+	 */
+	void setDualCommitEnabled(boolean value);
 
 	/**
 	 * Returns the value of the '<em><b>Auto Commit Interval Ms</b></em>' attribute.
@@ -928,8 +1350,169 @@ public interface InboundEndpoint extends EsbElement {
 	void setAutoCommitIntervalMs(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Auto Offset Reset</b></em>' attribute.
+	 * Returns the value of the '<em><b>Queued Max Message Chunks</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Queued Max Message Chunks</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Queued Max Message Chunks</em>' attribute.
+	 * @see #setQueuedMaxMessageChunks(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_QueuedMaxMessageChunks()
+	 * @model
+	 * @generated
+	 */
+	String getQueuedMaxMessageChunks();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getQueuedMaxMessageChunks <em>Queued Max Message Chunks</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Queued Max Message Chunks</em>' attribute.
+	 * @see #getQueuedMaxMessageChunks()
+	 * @generated
+	 */
+	void setQueuedMaxMessageChunks(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Rebalance Max Retries</b></em>' attribute.
 	 * The default value is <code>""</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Rebalance Max Retries</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Rebalance Max Retries</em>' attribute.
+	 * @see #setRebalanceMaxRetries(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_RebalanceMaxRetries()
+	 * @model default=""
+	 * @generated
+	 */
+	String getRebalanceMaxRetries();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getRebalanceMaxRetries <em>Rebalance Max Retries</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Rebalance Max Retries</em>' attribute.
+	 * @see #getRebalanceMaxRetries()
+	 * @generated
+	 */
+	void setRebalanceMaxRetries(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Fetch Min Bytes</b></em>' attribute.
+	 * The default value is <code>""</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Fetch Min Bytes</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Fetch Min Bytes</em>' attribute.
+	 * @see #setFetchMinBytes(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_FetchMinBytes()
+	 * @model default=""
+	 * @generated
+	 */
+	String getFetchMinBytes();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getFetchMinBytes <em>Fetch Min Bytes</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Fetch Min Bytes</em>' attribute.
+	 * @see #getFetchMinBytes()
+	 * @generated
+	 */
+	void setFetchMinBytes(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Fetch Wait Max Ms</b></em>' attribute.
+	 * The default value is <code>""</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Fetch Wait Max Ms</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Fetch Wait Max Ms</em>' attribute.
+	 * @see #setFetchWaitMaxMs(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_FetchWaitMaxMs()
+	 * @model default=""
+	 * @generated
+	 */
+	String getFetchWaitMaxMs();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getFetchWaitMaxMs <em>Fetch Wait Max Ms</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Fetch Wait Max Ms</em>' attribute.
+	 * @see #getFetchWaitMaxMs()
+	 * @generated
+	 */
+	void setFetchWaitMaxMs(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Rebalance Backoff Ms</b></em>' attribute.
+	 * The default value is <code>""</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Rebalance Backoff Ms</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Rebalance Backoff Ms</em>' attribute.
+	 * @see #setRebalanceBackoffMs(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_RebalanceBackoffMs()
+	 * @model default=""
+	 * @generated
+	 */
+	String getRebalanceBackoffMs();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getRebalanceBackoffMs <em>Rebalance Backoff Ms</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Rebalance Backoff Ms</em>' attribute.
+	 * @see #getRebalanceBackoffMs()
+	 * @generated
+	 */
+	void setRebalanceBackoffMs(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Refresh Leader Backoff Ms</b></em>' attribute.
+	 * The default value is <code>""</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Refresh Leader Backoff Ms</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Refresh Leader Backoff Ms</em>' attribute.
+	 * @see #setRefreshLeaderBackoffMs(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_RefreshLeaderBackoffMs()
+	 * @model default=""
+	 * @generated
+	 */
+	String getRefreshLeaderBackoffMs();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getRefreshLeaderBackoffMs <em>Refresh Leader Backoff Ms</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Refresh Leader Backoff Ms</em>' attribute.
+	 * @see #getRefreshLeaderBackoffMs()
+	 * @generated
+	 */
+	void setRefreshLeaderBackoffMs(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Auto Offset Reset</b></em>' attribute.
+	 * The literals are from the enumeration {@link org.wso2.developerstudio.eclipse.gmf.esb.AutoOffsetResetType}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Auto Offset Reset</em>' attribute isn't clear,
@@ -937,22 +1520,133 @@ public interface InboundEndpoint extends EsbElement {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Auto Offset Reset</em>' attribute.
-	 * @see #setAutoOffsetReset(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.AutoOffsetResetType
+	 * @see #setAutoOffsetReset(AutoOffsetResetType)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_AutoOffsetReset()
-	 * @model default=""
+	 * @model
 	 * @generated
 	 */
-	String getAutoOffsetReset();
+	AutoOffsetResetType getAutoOffsetReset();
 
 	/**
 	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getAutoOffsetReset <em>Auto Offset Reset</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Auto Offset Reset</em>' attribute.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.AutoOffsetResetType
 	 * @see #getAutoOffsetReset()
 	 * @generated
 	 */
-	void setAutoOffsetReset(String value);
+	void setAutoOffsetReset(AutoOffsetResetType value);
+
+	/**
+	 * Returns the value of the '<em><b>Consumer Timeout Ms</b></em>' attribute.
+	 * The default value is <code>""</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Consumer Timeout Ms</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Consumer Timeout Ms</em>' attribute.
+	 * @see #setConsumerTimeoutMs(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_ConsumerTimeoutMs()
+	 * @model default=""
+	 * @generated
+	 */
+	String getConsumerTimeoutMs();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getConsumerTimeoutMs <em>Consumer Timeout Ms</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Consumer Timeout Ms</em>' attribute.
+	 * @see #getConsumerTimeoutMs()
+	 * @generated
+	 */
+	void setConsumerTimeoutMs(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Exclude Internal Topics</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Exclude Internal Topics</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Exclude Internal Topics</em>' attribute.
+	 * @see #setExcludeInternalTopics(boolean)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_ExcludeInternalTopics()
+	 * @model
+	 * @generated
+	 */
+	boolean isExcludeInternalTopics();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#isExcludeInternalTopics <em>Exclude Internal Topics</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Exclude Internal Topics</em>' attribute.
+	 * @see #isExcludeInternalTopics()
+	 * @generated
+	 */
+	void setExcludeInternalTopics(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Partition Assignment Strategy</b></em>' attribute.
+	 * The literals are from the enumeration {@link org.wso2.developerstudio.eclipse.gmf.esb.PartitionAssignmentStrategyType}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Partition Assignment Strategy</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Partition Assignment Strategy</em>' attribute.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.PartitionAssignmentStrategyType
+	 * @see #setPartitionAssignmentStrategy(PartitionAssignmentStrategyType)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_PartitionAssignmentStrategy()
+	 * @model
+	 * @generated
+	 */
+	PartitionAssignmentStrategyType getPartitionAssignmentStrategy();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getPartitionAssignmentStrategy <em>Partition Assignment Strategy</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Partition Assignment Strategy</em>' attribute.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.PartitionAssignmentStrategyType
+	 * @see #getPartitionAssignmentStrategy()
+	 * @generated
+	 */
+	void setPartitionAssignmentStrategy(PartitionAssignmentStrategyType value);
+
+	/**
+	 * Returns the value of the '<em><b>Client Id</b></em>' attribute.
+	 * The default value is <code>""</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Client Id</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Client Id</em>' attribute.
+	 * @see #setClientId(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_ClientId()
+	 * @model default=""
+	 * @generated
+	 */
+	String getClientId();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getClientId <em>Client Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Client Id</em>' attribute.
+	 * @see #getClientId()
+	 * @generated
+	 */
+	void setClientId(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Inbound Cxf Rm Host</b></em>' attribute.

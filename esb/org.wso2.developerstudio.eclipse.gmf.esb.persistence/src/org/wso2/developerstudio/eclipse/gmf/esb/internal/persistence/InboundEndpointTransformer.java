@@ -511,32 +511,6 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
 				inboundEndpoint.addParameter(InboundEndpointConstants.CONTENT_TYPE, visualInboundEndpoint
 						.getContentType().getLiteral());
 			}
-			if (StringUtils.isNotBlank(visualInboundEndpoint.getTopics())) {
-				inboundEndpoint.addParameter(InboundEndpointConstants.TOPICS, visualInboundEndpoint.getTopics());
-			}
-			if (StringUtils.isNotBlank(visualInboundEndpoint.getTopics())) {
-				inboundEndpoint.addParameter(InboundEndpointConstants.TOPICS, visualInboundEndpoint.getTopics());
-			}
-			if (StringUtils.isNotBlank(visualInboundEndpoint.getSimpleTopic())) {
-				inboundEndpoint.addParameter(InboundEndpointConstants.SIMPLE_TOPIC,
-						visualInboundEndpoint.getSimpleTopic());
-			}
-			if (StringUtils.isNotBlank(visualInboundEndpoint.getSimpleBrokers())) {
-				inboundEndpoint.addParameter(InboundEndpointConstants.SIMPLE_BROKERS,
-						visualInboundEndpoint.getSimpleBrokers());
-			}
-			if (StringUtils.isNotBlank(visualInboundEndpoint.getSimplePort())) {
-				inboundEndpoint.addParameter(InboundEndpointConstants.SIMPLE_PORT,
-						visualInboundEndpoint.getSimplePort());
-			}
-			if (StringUtils.isNotBlank(visualInboundEndpoint.getSimplePartition())) {
-				inboundEndpoint.addParameter(InboundEndpointConstants.SIMPLE_PARTITION,
-						visualInboundEndpoint.getSimplePartition());
-			}
-			if (StringUtils.isNotBlank(visualInboundEndpoint.getSimpleMaxMessagesToRead())) {
-				inboundEndpoint.addParameter(InboundEndpointConstants.SIMPLE_MAX_MESSAGE_TOREAD,
-						visualInboundEndpoint.getSimpleMaxMessagesToRead());
-			}
 			if (StringUtils.isNotBlank(visualInboundEndpoint.getThreadCount())) {
 				inboundEndpoint.addParameter(InboundEndpointConstants.THREAD_COUNT,
 						visualInboundEndpoint.getThreadCount());
@@ -552,10 +526,6 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
 			if (StringUtils.isNotBlank(visualInboundEndpoint.getAutoCommitIntervalMs())) {
 				inboundEndpoint.addParameter(InboundEndpointConstants.AUTO_COMMIY_INTERVAL_MS,
 						visualInboundEndpoint.getAutoCommitIntervalMs());
-			}
-			if (StringUtils.isNotBlank(visualInboundEndpoint.getAutoOffsetReset())) {
-				inboundEndpoint.addParameter(InboundEndpointConstants.AUTO_OFFSET_REST,
-						visualInboundEndpoint.getAutoOffsetReset());
 			}
 			break;
 		case CXF_WS_RM:

@@ -38,6 +38,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.JMSCacheLevel;
 import org.wso2.developerstudio.eclipse.gmf.esb.JMSConnectionFactoryType;
 import org.wso2.developerstudio.eclipse.gmf.esb.JMSSessionAcknowledgement;
 import org.wso2.developerstudio.eclipse.gmf.esb.MQTTSubscriptionQOS;
+import org.wso2.developerstudio.eclipse.gmf.esb.TopicsType;
 import org.wso2.developerstudio.eclipse.gmf.esb.VFSAction;
 import org.wso2.developerstudio.eclipse.gmf.esb.VFSFileSort;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
@@ -483,34 +484,28 @@ public class InboundEndpointDeserializer extends
 			else if (paramEntry.getKey().equals(InboundEndpointConstants.INBOUND_MQTT_RECONNECTION_INTERVAL)) {
 				executeSetValueCommand(INBOUND_ENDPOINT__INTERVAL, paramEntry.getValue());
 			}
+			
+			// KAFKA properties
 			else if (paramEntry.getKey().equals(InboundEndpointConstants.ZOOKEEPER_CONNECT)) {
 				executeSetValueCommand(INBOUND_ENDPOINT__ZOOKEEPER_CONNECT, paramEntry.getValue());
 			} else if (paramEntry.getKey().equals(InboundEndpointConstants.GROUP_ID)) {
 				executeSetValueCommand(INBOUND_ENDPOINT__GROUP_ID, paramEntry.getValue());
-			} else if (paramEntry.getKey().equals(InboundEndpointConstants.CONSUMER_TYPE)) {
-				if (paramEntry.getValue().equals(HIGHLEVEL)) {
-					executeSetValueCommand(INBOUND_ENDPOINT__CONSUMER_TYPE, ConsumerType.HIGHLEVEL);
-				} else {
-					executeSetValueCommand(INBOUND_ENDPOINT__CONSUMER_TYPE, ConsumerType.SIMPLE);
-				}
 			} else if (paramEntry.getKey().equals(InboundEndpointConstants.CONTENT_TYPE)) {
 				if (paramEntry.getValue().equals(APPLICATION_XML)) {
 					executeSetValueCommand(INBOUND_ENDPOINT__CONTENT_TYPE, ContentType.XML);
 				} else {
 					executeSetValueCommand(INBOUND_ENDPOINT__CONTENT_TYPE, ContentType.JSON);
 				}
-			} else if (paramEntry.getKey().equals(InboundEndpointConstants.TOPICS)) {
-				executeSetValueCommand(INBOUND_ENDPOINT__TOPICS, paramEntry.getValue());
-			} else if (paramEntry.getKey().equals(InboundEndpointConstants.SIMPLE_TOPIC)) {
-				executeSetValueCommand(INBOUND_ENDPOINT__SIMPLE_TOPIC, paramEntry.getValue());
-			} else if (paramEntry.getKey().equals(InboundEndpointConstants.SIMPLE_BROKERS)) {
-				executeSetValueCommand(INBOUND_ENDPOINT__SIMPLE_BROKERS, paramEntry.getValue());
-			} else if (paramEntry.getKey().equals(InboundEndpointConstants.SIMPLE_PORT)) {
-				executeSetValueCommand(INBOUND_ENDPOINT__SIMPLE_PORT, paramEntry.getValue());
-			} else if (paramEntry.getKey().equals(InboundEndpointConstants.SIMPLE_PARTITION)) {
-				executeSetValueCommand(INBOUND_ENDPOINT__SIMPLE_PARTITION, paramEntry.getValue());
-			} else if (paramEntry.getKey().equals(InboundEndpointConstants.SIMPLE_MAX_MESSAGE_TOREAD)) {
-				executeSetValueCommand(INBOUND_ENDPOINT__SIMPLE_MAX_MESSAGES_TO_READ, paramEntry.getValue());
+			} else if (paramEntry.getKey().equals(InboundEndpointConstants.CONSUMER_TYPE)) {
+				if (paramEntry.getValue().equals(HIGHLEVEL)) {
+					executeSetValueCommand(INBOUND_ENDPOINT__CONSUMER_TYPE, ConsumerType.HIGHLEVEL);
+					if (paramEntry.getKey().equals(InboundEndpointConstants.TOPICS)) {
+						executeSetValueCommand(INBOUND_ENDPOINT__TOPICS_OR_TOPIC_FILTER, TopicsType.TOPICS);
+					}
+					
+				} else {
+					executeSetValueCommand(INBOUND_ENDPOINT__CONSUMER_TYPE, ConsumerType.SIMPLE);
+				}
 			} else if (paramEntry.getKey().equals(InboundEndpointConstants.THREAD_COUNT)) {
 				executeSetValueCommand(INBOUND_ENDPOINT__THREAD_COUNT, paramEntry.getValue());
 			} else if (paramEntry.getKey().equals(InboundEndpointConstants.ZOOKEEPER_SEESION_TIMEOUT_MS)) {

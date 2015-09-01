@@ -28,6 +28,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+import org.wso2.developerstudio.eclipse.gmf.esb.AutoOffsetResetType;
 import org.wso2.developerstudio.eclipse.gmf.esb.ConsumerType;
 import org.wso2.developerstudio.eclipse.gmf.esb.ContentType;
 import org.wso2.developerstudio.eclipse.gmf.esb.Enable;
@@ -44,7 +45,11 @@ import org.wso2.developerstudio.eclipse.gmf.esb.JMSCacheLevel;
 import org.wso2.developerstudio.eclipse.gmf.esb.JMSConnectionFactoryType;
 import org.wso2.developerstudio.eclipse.gmf.esb.JMSSessionAcknowledgement;
 import org.wso2.developerstudio.eclipse.gmf.esb.MQTTSubscriptionQOS;
+import org.wso2.developerstudio.eclipse.gmf.esb.OffsetsStorageType;
+import org.wso2.developerstudio.eclipse.gmf.esb.PartitionAssignmentStrategyType;
 import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
+import org.wso2.developerstudio.eclipse.gmf.esb.TopicFilterFromType;
+import org.wso2.developerstudio.eclipse.gmf.esb.TopicsType;
 import org.wso2.developerstudio.eclipse.gmf.esb.VFSAction;
 import org.wso2.developerstudio.eclipse.gmf.esb.VFSFileSort;
 
@@ -148,19 +153,44 @@ import org.wso2.developerstudio.eclipse.gmf.esb.VFSFileSort;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getInboundHL7PassThroughInvalidMessages <em>Inbound HL7 Pass Through Invalid Messages</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getZookeeperConnect <em>Zookeeper Connect</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getGroupId <em>Group Id</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getConsumerType <em>Consumer Type</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getContentType <em>Content Type</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTopics <em>Topics</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getSimpleTopic <em>Simple Topic</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getSimpleBrokers <em>Simple Brokers</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getSimplePort <em>Simple Port</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getSimplePartition <em>Simple Partition</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getSimpleMaxMessagesToRead <em>Simple Max Messages To Read</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getConsumerType <em>Consumer Type</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTopicsOrTopicFilter <em>Topics Or Topic Filter</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTopicsName <em>Topics Name</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTopicFilterFrom <em>Topic Filter From</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTopicFilterName <em>Topic Filter Name</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getSimpleConsumerTopic <em>Simple Consumer Topic</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getSimpleConsumerBrokers <em>Simple Consumer Brokers</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getSimpleConsumerPort <em>Simple Consumer Port</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getSimpleConsumerPartition <em>Simple Consumer Partition</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getSimpleConsumerMaxMessagesToRead <em>Simple Consumer Max Messages To Read</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getThreadCount <em>Thread Count</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getZookeeperSessionTimeoutMs <em>Zookeeper Session Timeout Ms</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getZookeeperSyncTimeMs <em>Zookeeper Sync Time Ms</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getConsumerId <em>Consumer Id</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getSocketTimeoutMs <em>Socket Timeout Ms</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getSocketReceiveBufferBytes <em>Socket Receive Buffer Bytes</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getFetchMessageMaxBytes <em>Fetch Message Max Bytes</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getNumConsumerFetches <em>Num Consumer Fetches</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isAutoCommitEnable <em>Auto Commit Enable</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getAutoCommitIntervalMs <em>Auto Commit Interval Ms</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getQueuedMaxMessageChunks <em>Queued Max Message Chunks</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getRebalanceMaxRetries <em>Rebalance Max Retries</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getFetchMinBytes <em>Fetch Min Bytes</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getFetchWaitMaxMs <em>Fetch Wait Max Ms</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getRebalanceBackoffMs <em>Rebalance Backoff Ms</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getRefreshLeaderBackoffMs <em>Refresh Leader Backoff Ms</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getAutoOffsetReset <em>Auto Offset Reset</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getConsumerTimeoutMs <em>Consumer Timeout Ms</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isExcludeInternalTopics <em>Exclude Internal Topics</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getPartitionAssignmentStrategy <em>Partition Assignment Strategy</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getClientId <em>Client Id</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getZookeeperSessionTimeoutMs <em>Zookeeper Session Timeout Ms</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getZookeeperConnectionTimeoutMs <em>Zookeeper Connection Timeout Ms</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getZookeeperSyncTimeMs <em>Zookeeper Sync Time Ms</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getOffsetsStorage <em>Offsets Storage</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getOffsetsChannelBackoffMs <em>Offsets Channel Backoff Ms</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getOffsetsChannelSocketTimeoutMs <em>Offsets Channel Socket Timeout Ms</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getOffsetsCommitMaxRetries <em>Offsets Commit Max Retries</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isDualCommitEnabled <em>Dual Commit Enabled</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getInboundCxfRmHost <em>Inbound Cxf Rm Host</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getInboundCxfRmPort <em>Inbound Cxf Rm Port</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getInboundCxfRmConfigFile <em>Inbound Cxf Rm Config File</em>}</li>
@@ -1984,26 +2014,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	protected String groupId = GROUP_ID_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getConsumerType() <em>Consumer Type</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getConsumerType()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final ConsumerType CONSUMER_TYPE_EDEFAULT = ConsumerType.HIGHLEVEL;
-
-	/**
-	 * The cached value of the '{@link #getConsumerType() <em>Consumer Type</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getConsumerType()
-	 * @generated
-	 * @ordered
-	 */
-	protected ConsumerType consumerType = CONSUMER_TYPE_EDEFAULT;
-
-	/**
 	 * The default value of the '{@link #getContentType() <em>Content Type</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2024,124 +2034,204 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	protected ContentType contentType = CONTENT_TYPE_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getTopics() <em>Topics</em>}' attribute.
+	 * The default value of the '{@link #getConsumerType() <em>Consumer Type</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getTopics()
+	 * @see #getConsumerType()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String TOPICS_EDEFAULT = "";
+	protected static final ConsumerType CONSUMER_TYPE_EDEFAULT = ConsumerType.HIGHLEVEL;
 
 	/**
-	 * The cached value of the '{@link #getTopics() <em>Topics</em>}' attribute.
+	 * The cached value of the '{@link #getConsumerType() <em>Consumer Type</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getTopics()
+	 * @see #getConsumerType()
 	 * @generated
 	 * @ordered
 	 */
-	protected String topics = TOPICS_EDEFAULT;
+	protected ConsumerType consumerType = CONSUMER_TYPE_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getSimpleTopic() <em>Simple Topic</em>}' attribute.
+	 * The default value of the '{@link #getTopicsOrTopicFilter() <em>Topics Or Topic Filter</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getSimpleTopic()
+	 * @see #getTopicsOrTopicFilter()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String SIMPLE_TOPIC_EDEFAULT = "";
+	protected static final TopicsType TOPICS_OR_TOPIC_FILTER_EDEFAULT = TopicsType.TOPICS;
 
 	/**
-	 * The cached value of the '{@link #getSimpleTopic() <em>Simple Topic</em>}' attribute.
+	 * The cached value of the '{@link #getTopicsOrTopicFilter() <em>Topics Or Topic Filter</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getSimpleTopic()
+	 * @see #getTopicsOrTopicFilter()
 	 * @generated
 	 * @ordered
 	 */
-	protected String simpleTopic = SIMPLE_TOPIC_EDEFAULT;
+	protected TopicsType topicsOrTopicFilter = TOPICS_OR_TOPIC_FILTER_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getSimpleBrokers() <em>Simple Brokers</em>}' attribute.
+	 * The default value of the '{@link #getTopicsName() <em>Topics Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getSimpleBrokers()
+	 * @see #getTopicsName()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String SIMPLE_BROKERS_EDEFAULT = "";
+	protected static final String TOPICS_NAME_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getSimpleBrokers() <em>Simple Brokers</em>}' attribute.
+	 * The cached value of the '{@link #getTopicsName() <em>Topics Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getSimpleBrokers()
+	 * @see #getTopicsName()
 	 * @generated
 	 * @ordered
 	 */
-	protected String simpleBrokers = SIMPLE_BROKERS_EDEFAULT;
+	protected String topicsName = TOPICS_NAME_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getSimplePort() <em>Simple Port</em>}' attribute.
+	 * The default value of the '{@link #getTopicFilterFrom() <em>Topic Filter From</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getSimplePort()
+	 * @see #getTopicFilterFrom()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String SIMPLE_PORT_EDEFAULT = "";
+	protected static final TopicFilterFromType TOPIC_FILTER_FROM_EDEFAULT = TopicFilterFromType.FILTER_FROM_WHITELIST;
 
 	/**
-	 * The cached value of the '{@link #getSimplePort() <em>Simple Port</em>}' attribute.
+	 * The cached value of the '{@link #getTopicFilterFrom() <em>Topic Filter From</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getSimplePort()
+	 * @see #getTopicFilterFrom()
 	 * @generated
 	 * @ordered
 	 */
-	protected String simplePort = SIMPLE_PORT_EDEFAULT;
+	protected TopicFilterFromType topicFilterFrom = TOPIC_FILTER_FROM_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getSimplePartition() <em>Simple Partition</em>}' attribute.
+	 * The default value of the '{@link #getTopicFilterName() <em>Topic Filter Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getSimplePartition()
+	 * @see #getTopicFilterName()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String SIMPLE_PARTITION_EDEFAULT = "";
+	protected static final String TOPIC_FILTER_NAME_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getSimplePartition() <em>Simple Partition</em>}' attribute.
+	 * The cached value of the '{@link #getTopicFilterName() <em>Topic Filter Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getSimplePartition()
+	 * @see #getTopicFilterName()
 	 * @generated
 	 * @ordered
 	 */
-	protected String simplePartition = SIMPLE_PARTITION_EDEFAULT;
+	protected String topicFilterName = TOPIC_FILTER_NAME_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getSimpleMaxMessagesToRead() <em>Simple Max Messages To Read</em>}' attribute.
+	 * The default value of the '{@link #getSimpleConsumerTopic() <em>Simple Consumer Topic</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getSimpleMaxMessagesToRead()
+	 * @see #getSimpleConsumerTopic()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String SIMPLE_MAX_MESSAGES_TO_READ_EDEFAULT = "";
+	protected static final String SIMPLE_CONSUMER_TOPIC_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getSimpleMaxMessagesToRead() <em>Simple Max Messages To Read</em>}' attribute.
+	 * The cached value of the '{@link #getSimpleConsumerTopic() <em>Simple Consumer Topic</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getSimpleMaxMessagesToRead()
+	 * @see #getSimpleConsumerTopic()
 	 * @generated
 	 * @ordered
 	 */
-	protected String simpleMaxMessagesToRead = SIMPLE_MAX_MESSAGES_TO_READ_EDEFAULT;
+	protected String simpleConsumerTopic = SIMPLE_CONSUMER_TOPIC_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getSimpleConsumerBrokers() <em>Simple Consumer Brokers</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSimpleConsumerBrokers()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String SIMPLE_CONSUMER_BROKERS_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getSimpleConsumerBrokers() <em>Simple Consumer Brokers</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSimpleConsumerBrokers()
+	 * @generated
+	 * @ordered
+	 */
+	protected String simpleConsumerBrokers = SIMPLE_CONSUMER_BROKERS_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getSimpleConsumerPort() <em>Simple Consumer Port</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSimpleConsumerPort()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String SIMPLE_CONSUMER_PORT_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getSimpleConsumerPort() <em>Simple Consumer Port</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSimpleConsumerPort()
+	 * @generated
+	 * @ordered
+	 */
+	protected String simpleConsumerPort = SIMPLE_CONSUMER_PORT_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getSimpleConsumerPartition() <em>Simple Consumer Partition</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSimpleConsumerPartition()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String SIMPLE_CONSUMER_PARTITION_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getSimpleConsumerPartition() <em>Simple Consumer Partition</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSimpleConsumerPartition()
+	 * @generated
+	 * @ordered
+	 */
+	protected String simpleConsumerPartition = SIMPLE_CONSUMER_PARTITION_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getSimpleConsumerMaxMessagesToRead() <em>Simple Consumer Max Messages To Read</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSimpleConsumerMaxMessagesToRead()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String SIMPLE_CONSUMER_MAX_MESSAGES_TO_READ_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getSimpleConsumerMaxMessagesToRead() <em>Simple Consumer Max Messages To Read</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSimpleConsumerMaxMessagesToRead()
+	 * @generated
+	 * @ordered
+	 */
+	protected String simpleConsumerMaxMessagesToRead = SIMPLE_CONSUMER_MAX_MESSAGES_TO_READ_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getThreadCount() <em>Thread Count</em>}' attribute.
@@ -2164,44 +2254,124 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	protected String threadCount = THREAD_COUNT_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getZookeeperSessionTimeoutMs() <em>Zookeeper Session Timeout Ms</em>}' attribute.
+	 * The default value of the '{@link #getConsumerId() <em>Consumer Id</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getZookeeperSessionTimeoutMs()
+	 * @see #getConsumerId()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String ZOOKEEPER_SESSION_TIMEOUT_MS_EDEFAULT = "";
+	protected static final String CONSUMER_ID_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getZookeeperSessionTimeoutMs() <em>Zookeeper Session Timeout Ms</em>}' attribute.
+	 * The cached value of the '{@link #getConsumerId() <em>Consumer Id</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getZookeeperSessionTimeoutMs()
+	 * @see #getConsumerId()
 	 * @generated
 	 * @ordered
 	 */
-	protected String zookeeperSessionTimeoutMs = ZOOKEEPER_SESSION_TIMEOUT_MS_EDEFAULT;
+	protected String consumerId = CONSUMER_ID_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getZookeeperSyncTimeMs() <em>Zookeeper Sync Time Ms</em>}' attribute.
+	 * The default value of the '{@link #getSocketTimeoutMs() <em>Socket Timeout Ms</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getZookeeperSyncTimeMs()
+	 * @see #getSocketTimeoutMs()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String ZOOKEEPER_SYNC_TIME_MS_EDEFAULT = "";
+	protected static final int SOCKET_TIMEOUT_MS_EDEFAULT = 0;
 
 	/**
-	 * The cached value of the '{@link #getZookeeperSyncTimeMs() <em>Zookeeper Sync Time Ms</em>}' attribute.
+	 * The cached value of the '{@link #getSocketTimeoutMs() <em>Socket Timeout Ms</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getZookeeperSyncTimeMs()
+	 * @see #getSocketTimeoutMs()
 	 * @generated
 	 * @ordered
 	 */
-	protected String zookeeperSyncTimeMs = ZOOKEEPER_SYNC_TIME_MS_EDEFAULT;
+	protected int socketTimeoutMs = SOCKET_TIMEOUT_MS_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getSocketReceiveBufferBytes() <em>Socket Receive Buffer Bytes</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSocketReceiveBufferBytes()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String SOCKET_RECEIVE_BUFFER_BYTES_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getSocketReceiveBufferBytes() <em>Socket Receive Buffer Bytes</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSocketReceiveBufferBytes()
+	 * @generated
+	 * @ordered
+	 */
+	protected String socketReceiveBufferBytes = SOCKET_RECEIVE_BUFFER_BYTES_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getFetchMessageMaxBytes() <em>Fetch Message Max Bytes</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFetchMessageMaxBytes()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String FETCH_MESSAGE_MAX_BYTES_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getFetchMessageMaxBytes() <em>Fetch Message Max Bytes</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFetchMessageMaxBytes()
+	 * @generated
+	 * @ordered
+	 */
+	protected String fetchMessageMaxBytes = FETCH_MESSAGE_MAX_BYTES_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getNumConsumerFetches() <em>Num Consumer Fetches</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getNumConsumerFetches()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String NUM_CONSUMER_FETCHES_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getNumConsumerFetches() <em>Num Consumer Fetches</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getNumConsumerFetches()
+	 * @generated
+	 * @ordered
+	 */
+	protected String numConsumerFetches = NUM_CONSUMER_FETCHES_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isAutoCommitEnable() <em>Auto Commit Enable</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isAutoCommitEnable()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean AUTO_COMMIT_ENABLE_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isAutoCommitEnable() <em>Auto Commit Enable</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isAutoCommitEnable()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean autoCommitEnable = AUTO_COMMIT_ENABLE_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getAutoCommitIntervalMs() <em>Auto Commit Interval Ms</em>}' attribute.
@@ -2224,6 +2394,126 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	protected String autoCommitIntervalMs = AUTO_COMMIT_INTERVAL_MS_EDEFAULT;
 
 	/**
+	 * The default value of the '{@link #getQueuedMaxMessageChunks() <em>Queued Max Message Chunks</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getQueuedMaxMessageChunks()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String QUEUED_MAX_MESSAGE_CHUNKS_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getQueuedMaxMessageChunks() <em>Queued Max Message Chunks</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getQueuedMaxMessageChunks()
+	 * @generated
+	 * @ordered
+	 */
+	protected String queuedMaxMessageChunks = QUEUED_MAX_MESSAGE_CHUNKS_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getRebalanceMaxRetries() <em>Rebalance Max Retries</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRebalanceMaxRetries()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String REBALANCE_MAX_RETRIES_EDEFAULT = "";
+
+	/**
+	 * The cached value of the '{@link #getRebalanceMaxRetries() <em>Rebalance Max Retries</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRebalanceMaxRetries()
+	 * @generated
+	 * @ordered
+	 */
+	protected String rebalanceMaxRetries = REBALANCE_MAX_RETRIES_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getFetchMinBytes() <em>Fetch Min Bytes</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFetchMinBytes()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String FETCH_MIN_BYTES_EDEFAULT = "";
+
+	/**
+	 * The cached value of the '{@link #getFetchMinBytes() <em>Fetch Min Bytes</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFetchMinBytes()
+	 * @generated
+	 * @ordered
+	 */
+	protected String fetchMinBytes = FETCH_MIN_BYTES_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getFetchWaitMaxMs() <em>Fetch Wait Max Ms</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFetchWaitMaxMs()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String FETCH_WAIT_MAX_MS_EDEFAULT = "";
+
+	/**
+	 * The cached value of the '{@link #getFetchWaitMaxMs() <em>Fetch Wait Max Ms</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFetchWaitMaxMs()
+	 * @generated
+	 * @ordered
+	 */
+	protected String fetchWaitMaxMs = FETCH_WAIT_MAX_MS_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getRebalanceBackoffMs() <em>Rebalance Backoff Ms</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRebalanceBackoffMs()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String REBALANCE_BACKOFF_MS_EDEFAULT = "";
+
+	/**
+	 * The cached value of the '{@link #getRebalanceBackoffMs() <em>Rebalance Backoff Ms</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRebalanceBackoffMs()
+	 * @generated
+	 * @ordered
+	 */
+	protected String rebalanceBackoffMs = REBALANCE_BACKOFF_MS_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getRefreshLeaderBackoffMs() <em>Refresh Leader Backoff Ms</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRefreshLeaderBackoffMs()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String REFRESH_LEADER_BACKOFF_MS_EDEFAULT = "";
+
+	/**
+	 * The cached value of the '{@link #getRefreshLeaderBackoffMs() <em>Refresh Leader Backoff Ms</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRefreshLeaderBackoffMs()
+	 * @generated
+	 * @ordered
+	 */
+	protected String refreshLeaderBackoffMs = REFRESH_LEADER_BACKOFF_MS_EDEFAULT;
+
+	/**
 	 * The default value of the '{@link #getAutoOffsetReset() <em>Auto Offset Reset</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2231,7 +2521,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String AUTO_OFFSET_RESET_EDEFAULT = "";
+	protected static final AutoOffsetResetType AUTO_OFFSET_RESET_EDEFAULT = AutoOffsetResetType.SMALLEST;
 
 	/**
 	 * The cached value of the '{@link #getAutoOffsetReset() <em>Auto Offset Reset</em>}' attribute.
@@ -2241,7 +2531,247 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * @generated
 	 * @ordered
 	 */
-	protected String autoOffsetReset = AUTO_OFFSET_RESET_EDEFAULT;
+	protected AutoOffsetResetType autoOffsetReset = AUTO_OFFSET_RESET_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getConsumerTimeoutMs() <em>Consumer Timeout Ms</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getConsumerTimeoutMs()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String CONSUMER_TIMEOUT_MS_EDEFAULT = "";
+
+	/**
+	 * The cached value of the '{@link #getConsumerTimeoutMs() <em>Consumer Timeout Ms</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getConsumerTimeoutMs()
+	 * @generated
+	 * @ordered
+	 */
+	protected String consumerTimeoutMs = CONSUMER_TIMEOUT_MS_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isExcludeInternalTopics() <em>Exclude Internal Topics</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isExcludeInternalTopics()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean EXCLUDE_INTERNAL_TOPICS_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isExcludeInternalTopics() <em>Exclude Internal Topics</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isExcludeInternalTopics()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean excludeInternalTopics = EXCLUDE_INTERNAL_TOPICS_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getPartitionAssignmentStrategy() <em>Partition Assignment Strategy</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPartitionAssignmentStrategy()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final PartitionAssignmentStrategyType PARTITION_ASSIGNMENT_STRATEGY_EDEFAULT = PartitionAssignmentStrategyType.ROUNDROBIN;
+
+	/**
+	 * The cached value of the '{@link #getPartitionAssignmentStrategy() <em>Partition Assignment Strategy</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPartitionAssignmentStrategy()
+	 * @generated
+	 * @ordered
+	 */
+	protected PartitionAssignmentStrategyType partitionAssignmentStrategy = PARTITION_ASSIGNMENT_STRATEGY_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getClientId() <em>Client Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getClientId()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String CLIENT_ID_EDEFAULT = "";
+
+	/**
+	 * The cached value of the '{@link #getClientId() <em>Client Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getClientId()
+	 * @generated
+	 * @ordered
+	 */
+	protected String clientId = CLIENT_ID_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getZookeeperSessionTimeoutMs() <em>Zookeeper Session Timeout Ms</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getZookeeperSessionTimeoutMs()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String ZOOKEEPER_SESSION_TIMEOUT_MS_EDEFAULT = "";
+
+	/**
+	 * The cached value of the '{@link #getZookeeperSessionTimeoutMs() <em>Zookeeper Session Timeout Ms</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getZookeeperSessionTimeoutMs()
+	 * @generated
+	 * @ordered
+	 */
+	protected String zookeeperSessionTimeoutMs = ZOOKEEPER_SESSION_TIMEOUT_MS_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getZookeeperConnectionTimeoutMs() <em>Zookeeper Connection Timeout Ms</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getZookeeperConnectionTimeoutMs()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String ZOOKEEPER_CONNECTION_TIMEOUT_MS_EDEFAULT = "";
+
+	/**
+	 * The cached value of the '{@link #getZookeeperConnectionTimeoutMs() <em>Zookeeper Connection Timeout Ms</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getZookeeperConnectionTimeoutMs()
+	 * @generated
+	 * @ordered
+	 */
+	protected String zookeeperConnectionTimeoutMs = ZOOKEEPER_CONNECTION_TIMEOUT_MS_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getZookeeperSyncTimeMs() <em>Zookeeper Sync Time Ms</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getZookeeperSyncTimeMs()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String ZOOKEEPER_SYNC_TIME_MS_EDEFAULT = "";
+
+	/**
+	 * The cached value of the '{@link #getZookeeperSyncTimeMs() <em>Zookeeper Sync Time Ms</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getZookeeperSyncTimeMs()
+	 * @generated
+	 * @ordered
+	 */
+	protected String zookeeperSyncTimeMs = ZOOKEEPER_SYNC_TIME_MS_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getOffsetsStorage() <em>Offsets Storage</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOffsetsStorage()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final OffsetsStorageType OFFSETS_STORAGE_EDEFAULT = OffsetsStorageType.ZOOKEEPER;
+
+	/**
+	 * The cached value of the '{@link #getOffsetsStorage() <em>Offsets Storage</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOffsetsStorage()
+	 * @generated
+	 * @ordered
+	 */
+	protected OffsetsStorageType offsetsStorage = OFFSETS_STORAGE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getOffsetsChannelBackoffMs() <em>Offsets Channel Backoff Ms</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOffsetsChannelBackoffMs()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String OFFSETS_CHANNEL_BACKOFF_MS_EDEFAULT = "";
+
+	/**
+	 * The cached value of the '{@link #getOffsetsChannelBackoffMs() <em>Offsets Channel Backoff Ms</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOffsetsChannelBackoffMs()
+	 * @generated
+	 * @ordered
+	 */
+	protected String offsetsChannelBackoffMs = OFFSETS_CHANNEL_BACKOFF_MS_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getOffsetsChannelSocketTimeoutMs() <em>Offsets Channel Socket Timeout Ms</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOffsetsChannelSocketTimeoutMs()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String OFFSETS_CHANNEL_SOCKET_TIMEOUT_MS_EDEFAULT = "";
+
+	/**
+	 * The cached value of the '{@link #getOffsetsChannelSocketTimeoutMs() <em>Offsets Channel Socket Timeout Ms</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOffsetsChannelSocketTimeoutMs()
+	 * @generated
+	 * @ordered
+	 */
+	protected String offsetsChannelSocketTimeoutMs = OFFSETS_CHANNEL_SOCKET_TIMEOUT_MS_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getOffsetsCommitMaxRetries() <em>Offsets Commit Max Retries</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOffsetsCommitMaxRetries()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String OFFSETS_COMMIT_MAX_RETRIES_EDEFAULT = "";
+
+	/**
+	 * The cached value of the '{@link #getOffsetsCommitMaxRetries() <em>Offsets Commit Max Retries</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOffsetsCommitMaxRetries()
+	 * @generated
+	 * @ordered
+	 */
+	protected String offsetsCommitMaxRetries = OFFSETS_COMMIT_MAX_RETRIES_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isDualCommitEnabled() <em>Dual Commit Enabled</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isDualCommitEnabled()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean DUAL_COMMIT_ENABLED_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isDualCommitEnabled() <em>Dual Commit Enabled</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isDualCommitEnabled()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean dualCommitEnabled = DUAL_COMMIT_ENABLED_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getInboundCxfRmHost() <em>Inbound Cxf Rm Host</em>}' attribute.
@@ -2865,6 +3395,195 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public TopicsType getTopicsOrTopicFilter() {
+		return topicsOrTopicFilter;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTopicsOrTopicFilter(TopicsType newTopicsOrTopicFilter) {
+		TopicsType oldTopicsOrTopicFilter = topicsOrTopicFilter;
+		topicsOrTopicFilter = newTopicsOrTopicFilter == null ? TOPICS_OR_TOPIC_FILTER_EDEFAULT : newTopicsOrTopicFilter;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TOPICS_OR_TOPIC_FILTER, oldTopicsOrTopicFilter, topicsOrTopicFilter));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getTopicsName() {
+		return topicsName;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTopicsName(String newTopicsName) {
+		String oldTopicsName = topicsName;
+		topicsName = newTopicsName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TOPICS_NAME, oldTopicsName, topicsName));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TopicFilterFromType getTopicFilterFrom() {
+		return topicFilterFrom;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTopicFilterFrom(TopicFilterFromType newTopicFilterFrom) {
+		TopicFilterFromType oldTopicFilterFrom = topicFilterFrom;
+		topicFilterFrom = newTopicFilterFrom == null ? TOPIC_FILTER_FROM_EDEFAULT : newTopicFilterFrom;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TOPIC_FILTER_FROM, oldTopicFilterFrom, topicFilterFrom));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getTopicFilterName() {
+		return topicFilterName;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTopicFilterName(String newTopicFilterName) {
+		String oldTopicFilterName = topicFilterName;
+		topicFilterName = newTopicFilterName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TOPIC_FILTER_NAME, oldTopicFilterName, topicFilterName));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getSimpleConsumerTopic() {
+		return simpleConsumerTopic;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSimpleConsumerTopic(String newSimpleConsumerTopic) {
+		String oldSimpleConsumerTopic = simpleConsumerTopic;
+		simpleConsumerTopic = newSimpleConsumerTopic;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__SIMPLE_CONSUMER_TOPIC, oldSimpleConsumerTopic, simpleConsumerTopic));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getSimpleConsumerBrokers() {
+		return simpleConsumerBrokers;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSimpleConsumerBrokers(String newSimpleConsumerBrokers) {
+		String oldSimpleConsumerBrokers = simpleConsumerBrokers;
+		simpleConsumerBrokers = newSimpleConsumerBrokers;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__SIMPLE_CONSUMER_BROKERS, oldSimpleConsumerBrokers, simpleConsumerBrokers));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getSimpleConsumerPort() {
+		return simpleConsumerPort;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSimpleConsumerPort(String newSimpleConsumerPort) {
+		String oldSimpleConsumerPort = simpleConsumerPort;
+		simpleConsumerPort = newSimpleConsumerPort;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__SIMPLE_CONSUMER_PORT, oldSimpleConsumerPort, simpleConsumerPort));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getSimpleConsumerPartition() {
+		return simpleConsumerPartition;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSimpleConsumerPartition(String newSimpleConsumerPartition) {
+		String oldSimpleConsumerPartition = simpleConsumerPartition;
+		simpleConsumerPartition = newSimpleConsumerPartition;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__SIMPLE_CONSUMER_PARTITION, oldSimpleConsumerPartition, simpleConsumerPartition));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getSimpleConsumerMaxMessagesToRead() {
+		return simpleConsumerMaxMessagesToRead;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSimpleConsumerMaxMessagesToRead(String newSimpleConsumerMaxMessagesToRead) {
+		String oldSimpleConsumerMaxMessagesToRead = simpleConsumerMaxMessagesToRead;
+		simpleConsumerMaxMessagesToRead = newSimpleConsumerMaxMessagesToRead;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__SIMPLE_CONSUMER_MAX_MESSAGES_TO_READ, oldSimpleConsumerMaxMessagesToRead, simpleConsumerMaxMessagesToRead));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public ContentType getContentType() {
 		return contentType;
 	}
@@ -2879,132 +3598,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 		contentType = newContentType == null ? CONTENT_TYPE_EDEFAULT : newContentType;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__CONTENT_TYPE, oldContentType, contentType));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String getTopics() {
-		return topics;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setTopics(String newTopics) {
-		String oldTopics = topics;
-		topics = newTopics;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TOPICS, oldTopics, topics));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String getSimpleTopic() {
-		return simpleTopic;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setSimpleTopic(String newSimpleTopic) {
-		String oldSimpleTopic = simpleTopic;
-		simpleTopic = newSimpleTopic;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__SIMPLE_TOPIC, oldSimpleTopic, simpleTopic));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String getSimpleBrokers() {
-		return simpleBrokers;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setSimpleBrokers(String newSimpleBrokers) {
-		String oldSimpleBrokers = simpleBrokers;
-		simpleBrokers = newSimpleBrokers;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__SIMPLE_BROKERS, oldSimpleBrokers, simpleBrokers));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String getSimplePort() {
-		return simplePort;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setSimplePort(String newSimplePort) {
-		String oldSimplePort = simplePort;
-		simplePort = newSimplePort;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__SIMPLE_PORT, oldSimplePort, simplePort));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String getSimplePartition() {
-		return simplePartition;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setSimplePartition(String newSimplePartition) {
-		String oldSimplePartition = simplePartition;
-		simplePartition = newSimplePartition;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__SIMPLE_PARTITION, oldSimplePartition, simplePartition));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String getSimpleMaxMessagesToRead() {
-		return simpleMaxMessagesToRead;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setSimpleMaxMessagesToRead(String newSimpleMaxMessagesToRead) {
-		String oldSimpleMaxMessagesToRead = simpleMaxMessagesToRead;
-		simpleMaxMessagesToRead = newSimpleMaxMessagesToRead;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__SIMPLE_MAX_MESSAGES_TO_READ, oldSimpleMaxMessagesToRead, simpleMaxMessagesToRead));
 	}
 
 	/**
@@ -3033,6 +3626,132 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getConsumerId() {
+		return consumerId;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setConsumerId(String newConsumerId) {
+		String oldConsumerId = consumerId;
+		consumerId = newConsumerId;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__CONSUMER_ID, oldConsumerId, consumerId));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public int getSocketTimeoutMs() {
+		return socketTimeoutMs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSocketTimeoutMs(int newSocketTimeoutMs) {
+		int oldSocketTimeoutMs = socketTimeoutMs;
+		socketTimeoutMs = newSocketTimeoutMs;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__SOCKET_TIMEOUT_MS, oldSocketTimeoutMs, socketTimeoutMs));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getSocketReceiveBufferBytes() {
+		return socketReceiveBufferBytes;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSocketReceiveBufferBytes(String newSocketReceiveBufferBytes) {
+		String oldSocketReceiveBufferBytes = socketReceiveBufferBytes;
+		socketReceiveBufferBytes = newSocketReceiveBufferBytes;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__SOCKET_RECEIVE_BUFFER_BYTES, oldSocketReceiveBufferBytes, socketReceiveBufferBytes));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getFetchMessageMaxBytes() {
+		return fetchMessageMaxBytes;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setFetchMessageMaxBytes(String newFetchMessageMaxBytes) {
+		String oldFetchMessageMaxBytes = fetchMessageMaxBytes;
+		fetchMessageMaxBytes = newFetchMessageMaxBytes;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__FETCH_MESSAGE_MAX_BYTES, oldFetchMessageMaxBytes, fetchMessageMaxBytes));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getNumConsumerFetches() {
+		return numConsumerFetches;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setNumConsumerFetches(String newNumConsumerFetches) {
+		String oldNumConsumerFetches = numConsumerFetches;
+		numConsumerFetches = newNumConsumerFetches;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__NUM_CONSUMER_FETCHES, oldNumConsumerFetches, numConsumerFetches));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isAutoCommitEnable() {
+		return autoCommitEnable;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setAutoCommitEnable(boolean newAutoCommitEnable) {
+		boolean oldAutoCommitEnable = autoCommitEnable;
+		autoCommitEnable = newAutoCommitEnable;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__AUTO_COMMIT_ENABLE, oldAutoCommitEnable, autoCommitEnable));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public String getZookeeperSessionTimeoutMs() {
 		return zookeeperSessionTimeoutMs;
 	}
@@ -3047,6 +3766,27 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 		zookeeperSessionTimeoutMs = newZookeeperSessionTimeoutMs;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__ZOOKEEPER_SESSION_TIMEOUT_MS, oldZookeeperSessionTimeoutMs, zookeeperSessionTimeoutMs));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getZookeeperConnectionTimeoutMs() {
+		return zookeeperConnectionTimeoutMs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setZookeeperConnectionTimeoutMs(String newZookeeperConnectionTimeoutMs) {
+		String oldZookeeperConnectionTimeoutMs = zookeeperConnectionTimeoutMs;
+		zookeeperConnectionTimeoutMs = newZookeeperConnectionTimeoutMs;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__ZOOKEEPER_CONNECTION_TIMEOUT_MS, oldZookeeperConnectionTimeoutMs, zookeeperConnectionTimeoutMs));
 	}
 
 	/**
@@ -3075,6 +3815,111 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public OffsetsStorageType getOffsetsStorage() {
+		return offsetsStorage;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setOffsetsStorage(OffsetsStorageType newOffsetsStorage) {
+		OffsetsStorageType oldOffsetsStorage = offsetsStorage;
+		offsetsStorage = newOffsetsStorage == null ? OFFSETS_STORAGE_EDEFAULT : newOffsetsStorage;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__OFFSETS_STORAGE, oldOffsetsStorage, offsetsStorage));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getOffsetsChannelBackoffMs() {
+		return offsetsChannelBackoffMs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setOffsetsChannelBackoffMs(String newOffsetsChannelBackoffMs) {
+		String oldOffsetsChannelBackoffMs = offsetsChannelBackoffMs;
+		offsetsChannelBackoffMs = newOffsetsChannelBackoffMs;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__OFFSETS_CHANNEL_BACKOFF_MS, oldOffsetsChannelBackoffMs, offsetsChannelBackoffMs));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getOffsetsChannelSocketTimeoutMs() {
+		return offsetsChannelSocketTimeoutMs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setOffsetsChannelSocketTimeoutMs(String newOffsetsChannelSocketTimeoutMs) {
+		String oldOffsetsChannelSocketTimeoutMs = offsetsChannelSocketTimeoutMs;
+		offsetsChannelSocketTimeoutMs = newOffsetsChannelSocketTimeoutMs;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__OFFSETS_CHANNEL_SOCKET_TIMEOUT_MS, oldOffsetsChannelSocketTimeoutMs, offsetsChannelSocketTimeoutMs));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getOffsetsCommitMaxRetries() {
+		return offsetsCommitMaxRetries;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setOffsetsCommitMaxRetries(String newOffsetsCommitMaxRetries) {
+		String oldOffsetsCommitMaxRetries = offsetsCommitMaxRetries;
+		offsetsCommitMaxRetries = newOffsetsCommitMaxRetries;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__OFFSETS_COMMIT_MAX_RETRIES, oldOffsetsCommitMaxRetries, offsetsCommitMaxRetries));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isDualCommitEnabled() {
+		return dualCommitEnabled;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setDualCommitEnabled(boolean newDualCommitEnabled) {
+		boolean oldDualCommitEnabled = dualCommitEnabled;
+		dualCommitEnabled = newDualCommitEnabled;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__DUAL_COMMIT_ENABLED, oldDualCommitEnabled, dualCommitEnabled));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public String getAutoCommitIntervalMs() {
 		return autoCommitIntervalMs;
 	}
@@ -3096,7 +3941,133 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getAutoOffsetReset() {
+	public String getQueuedMaxMessageChunks() {
+		return queuedMaxMessageChunks;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setQueuedMaxMessageChunks(String newQueuedMaxMessageChunks) {
+		String oldQueuedMaxMessageChunks = queuedMaxMessageChunks;
+		queuedMaxMessageChunks = newQueuedMaxMessageChunks;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__QUEUED_MAX_MESSAGE_CHUNKS, oldQueuedMaxMessageChunks, queuedMaxMessageChunks));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getRebalanceMaxRetries() {
+		return rebalanceMaxRetries;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setRebalanceMaxRetries(String newRebalanceMaxRetries) {
+		String oldRebalanceMaxRetries = rebalanceMaxRetries;
+		rebalanceMaxRetries = newRebalanceMaxRetries;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__REBALANCE_MAX_RETRIES, oldRebalanceMaxRetries, rebalanceMaxRetries));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getFetchMinBytes() {
+		return fetchMinBytes;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setFetchMinBytes(String newFetchMinBytes) {
+		String oldFetchMinBytes = fetchMinBytes;
+		fetchMinBytes = newFetchMinBytes;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__FETCH_MIN_BYTES, oldFetchMinBytes, fetchMinBytes));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getFetchWaitMaxMs() {
+		return fetchWaitMaxMs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setFetchWaitMaxMs(String newFetchWaitMaxMs) {
+		String oldFetchWaitMaxMs = fetchWaitMaxMs;
+		fetchWaitMaxMs = newFetchWaitMaxMs;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__FETCH_WAIT_MAX_MS, oldFetchWaitMaxMs, fetchWaitMaxMs));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getRebalanceBackoffMs() {
+		return rebalanceBackoffMs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setRebalanceBackoffMs(String newRebalanceBackoffMs) {
+		String oldRebalanceBackoffMs = rebalanceBackoffMs;
+		rebalanceBackoffMs = newRebalanceBackoffMs;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__REBALANCE_BACKOFF_MS, oldRebalanceBackoffMs, rebalanceBackoffMs));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getRefreshLeaderBackoffMs() {
+		return refreshLeaderBackoffMs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setRefreshLeaderBackoffMs(String newRefreshLeaderBackoffMs) {
+		String oldRefreshLeaderBackoffMs = refreshLeaderBackoffMs;
+		refreshLeaderBackoffMs = newRefreshLeaderBackoffMs;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__REFRESH_LEADER_BACKOFF_MS, oldRefreshLeaderBackoffMs, refreshLeaderBackoffMs));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public AutoOffsetResetType getAutoOffsetReset() {
 		return autoOffsetReset;
 	}
 
@@ -3105,11 +4076,95 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setAutoOffsetReset(String newAutoOffsetReset) {
-		String oldAutoOffsetReset = autoOffsetReset;
-		autoOffsetReset = newAutoOffsetReset;
+	public void setAutoOffsetReset(AutoOffsetResetType newAutoOffsetReset) {
+		AutoOffsetResetType oldAutoOffsetReset = autoOffsetReset;
+		autoOffsetReset = newAutoOffsetReset == null ? AUTO_OFFSET_RESET_EDEFAULT : newAutoOffsetReset;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__AUTO_OFFSET_RESET, oldAutoOffsetReset, autoOffsetReset));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getConsumerTimeoutMs() {
+		return consumerTimeoutMs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setConsumerTimeoutMs(String newConsumerTimeoutMs) {
+		String oldConsumerTimeoutMs = consumerTimeoutMs;
+		consumerTimeoutMs = newConsumerTimeoutMs;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__CONSUMER_TIMEOUT_MS, oldConsumerTimeoutMs, consumerTimeoutMs));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isExcludeInternalTopics() {
+		return excludeInternalTopics;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setExcludeInternalTopics(boolean newExcludeInternalTopics) {
+		boolean oldExcludeInternalTopics = excludeInternalTopics;
+		excludeInternalTopics = newExcludeInternalTopics;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__EXCLUDE_INTERNAL_TOPICS, oldExcludeInternalTopics, excludeInternalTopics));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public PartitionAssignmentStrategyType getPartitionAssignmentStrategy() {
+		return partitionAssignmentStrategy;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setPartitionAssignmentStrategy(PartitionAssignmentStrategyType newPartitionAssignmentStrategy) {
+		PartitionAssignmentStrategyType oldPartitionAssignmentStrategy = partitionAssignmentStrategy;
+		partitionAssignmentStrategy = newPartitionAssignmentStrategy == null ? PARTITION_ASSIGNMENT_STRATEGY_EDEFAULT : newPartitionAssignmentStrategy;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__PARTITION_ASSIGNMENT_STRATEGY, oldPartitionAssignmentStrategy, partitionAssignmentStrategy));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getClientId() {
+		return clientId;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setClientId(String newClientId) {
+		String oldClientId = clientId;
+		clientId = newClientId;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__CLIENT_ID, oldClientId, clientId));
 	}
 
 	/**
@@ -5043,32 +6098,82 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 				return getZookeeperConnect();
 			case EsbPackage.INBOUND_ENDPOINT__GROUP_ID:
 				return getGroupId();
-			case EsbPackage.INBOUND_ENDPOINT__CONSUMER_TYPE:
-				return getConsumerType();
 			case EsbPackage.INBOUND_ENDPOINT__CONTENT_TYPE:
 				return getContentType();
-			case EsbPackage.INBOUND_ENDPOINT__TOPICS:
-				return getTopics();
-			case EsbPackage.INBOUND_ENDPOINT__SIMPLE_TOPIC:
-				return getSimpleTopic();
-			case EsbPackage.INBOUND_ENDPOINT__SIMPLE_BROKERS:
-				return getSimpleBrokers();
-			case EsbPackage.INBOUND_ENDPOINT__SIMPLE_PORT:
-				return getSimplePort();
-			case EsbPackage.INBOUND_ENDPOINT__SIMPLE_PARTITION:
-				return getSimplePartition();
-			case EsbPackage.INBOUND_ENDPOINT__SIMPLE_MAX_MESSAGES_TO_READ:
-				return getSimpleMaxMessagesToRead();
+			case EsbPackage.INBOUND_ENDPOINT__CONSUMER_TYPE:
+				return getConsumerType();
+			case EsbPackage.INBOUND_ENDPOINT__TOPICS_OR_TOPIC_FILTER:
+				return getTopicsOrTopicFilter();
+			case EsbPackage.INBOUND_ENDPOINT__TOPICS_NAME:
+				return getTopicsName();
+			case EsbPackage.INBOUND_ENDPOINT__TOPIC_FILTER_FROM:
+				return getTopicFilterFrom();
+			case EsbPackage.INBOUND_ENDPOINT__TOPIC_FILTER_NAME:
+				return getTopicFilterName();
+			case EsbPackage.INBOUND_ENDPOINT__SIMPLE_CONSUMER_TOPIC:
+				return getSimpleConsumerTopic();
+			case EsbPackage.INBOUND_ENDPOINT__SIMPLE_CONSUMER_BROKERS:
+				return getSimpleConsumerBrokers();
+			case EsbPackage.INBOUND_ENDPOINT__SIMPLE_CONSUMER_PORT:
+				return getSimpleConsumerPort();
+			case EsbPackage.INBOUND_ENDPOINT__SIMPLE_CONSUMER_PARTITION:
+				return getSimpleConsumerPartition();
+			case EsbPackage.INBOUND_ENDPOINT__SIMPLE_CONSUMER_MAX_MESSAGES_TO_READ:
+				return getSimpleConsumerMaxMessagesToRead();
 			case EsbPackage.INBOUND_ENDPOINT__THREAD_COUNT:
 				return getThreadCount();
-			case EsbPackage.INBOUND_ENDPOINT__ZOOKEEPER_SESSION_TIMEOUT_MS:
-				return getZookeeperSessionTimeoutMs();
-			case EsbPackage.INBOUND_ENDPOINT__ZOOKEEPER_SYNC_TIME_MS:
-				return getZookeeperSyncTimeMs();
+			case EsbPackage.INBOUND_ENDPOINT__CONSUMER_ID:
+				return getConsumerId();
+			case EsbPackage.INBOUND_ENDPOINT__SOCKET_TIMEOUT_MS:
+				return getSocketTimeoutMs();
+			case EsbPackage.INBOUND_ENDPOINT__SOCKET_RECEIVE_BUFFER_BYTES:
+				return getSocketReceiveBufferBytes();
+			case EsbPackage.INBOUND_ENDPOINT__FETCH_MESSAGE_MAX_BYTES:
+				return getFetchMessageMaxBytes();
+			case EsbPackage.INBOUND_ENDPOINT__NUM_CONSUMER_FETCHES:
+				return getNumConsumerFetches();
+			case EsbPackage.INBOUND_ENDPOINT__AUTO_COMMIT_ENABLE:
+				return isAutoCommitEnable();
 			case EsbPackage.INBOUND_ENDPOINT__AUTO_COMMIT_INTERVAL_MS:
 				return getAutoCommitIntervalMs();
+			case EsbPackage.INBOUND_ENDPOINT__QUEUED_MAX_MESSAGE_CHUNKS:
+				return getQueuedMaxMessageChunks();
+			case EsbPackage.INBOUND_ENDPOINT__REBALANCE_MAX_RETRIES:
+				return getRebalanceMaxRetries();
+			case EsbPackage.INBOUND_ENDPOINT__FETCH_MIN_BYTES:
+				return getFetchMinBytes();
+			case EsbPackage.INBOUND_ENDPOINT__FETCH_WAIT_MAX_MS:
+				return getFetchWaitMaxMs();
+			case EsbPackage.INBOUND_ENDPOINT__REBALANCE_BACKOFF_MS:
+				return getRebalanceBackoffMs();
+			case EsbPackage.INBOUND_ENDPOINT__REFRESH_LEADER_BACKOFF_MS:
+				return getRefreshLeaderBackoffMs();
 			case EsbPackage.INBOUND_ENDPOINT__AUTO_OFFSET_RESET:
 				return getAutoOffsetReset();
+			case EsbPackage.INBOUND_ENDPOINT__CONSUMER_TIMEOUT_MS:
+				return getConsumerTimeoutMs();
+			case EsbPackage.INBOUND_ENDPOINT__EXCLUDE_INTERNAL_TOPICS:
+				return isExcludeInternalTopics();
+			case EsbPackage.INBOUND_ENDPOINT__PARTITION_ASSIGNMENT_STRATEGY:
+				return getPartitionAssignmentStrategy();
+			case EsbPackage.INBOUND_ENDPOINT__CLIENT_ID:
+				return getClientId();
+			case EsbPackage.INBOUND_ENDPOINT__ZOOKEEPER_SESSION_TIMEOUT_MS:
+				return getZookeeperSessionTimeoutMs();
+			case EsbPackage.INBOUND_ENDPOINT__ZOOKEEPER_CONNECTION_TIMEOUT_MS:
+				return getZookeeperConnectionTimeoutMs();
+			case EsbPackage.INBOUND_ENDPOINT__ZOOKEEPER_SYNC_TIME_MS:
+				return getZookeeperSyncTimeMs();
+			case EsbPackage.INBOUND_ENDPOINT__OFFSETS_STORAGE:
+				return getOffsetsStorage();
+			case EsbPackage.INBOUND_ENDPOINT__OFFSETS_CHANNEL_BACKOFF_MS:
+				return getOffsetsChannelBackoffMs();
+			case EsbPackage.INBOUND_ENDPOINT__OFFSETS_CHANNEL_SOCKET_TIMEOUT_MS:
+				return getOffsetsChannelSocketTimeoutMs();
+			case EsbPackage.INBOUND_ENDPOINT__OFFSETS_COMMIT_MAX_RETRIES:
+				return getOffsetsCommitMaxRetries();
+			case EsbPackage.INBOUND_ENDPOINT__DUAL_COMMIT_ENABLED:
+				return isDualCommitEnabled();
 			case EsbPackage.INBOUND_ENDPOINT__INBOUND_CXF_RM_HOST:
 				return getInboundCxfRmHost();
 			case EsbPackage.INBOUND_ENDPOINT__INBOUND_CXF_RM_PORT:
@@ -5373,44 +6478,119 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 			case EsbPackage.INBOUND_ENDPOINT__GROUP_ID:
 				setGroupId((String)newValue);
 				return;
-			case EsbPackage.INBOUND_ENDPOINT__CONSUMER_TYPE:
-				setConsumerType((ConsumerType)newValue);
-				return;
 			case EsbPackage.INBOUND_ENDPOINT__CONTENT_TYPE:
 				setContentType((ContentType)newValue);
 				return;
-			case EsbPackage.INBOUND_ENDPOINT__TOPICS:
-				setTopics((String)newValue);
+			case EsbPackage.INBOUND_ENDPOINT__CONSUMER_TYPE:
+				setConsumerType((ConsumerType)newValue);
 				return;
-			case EsbPackage.INBOUND_ENDPOINT__SIMPLE_TOPIC:
-				setSimpleTopic((String)newValue);
+			case EsbPackage.INBOUND_ENDPOINT__TOPICS_OR_TOPIC_FILTER:
+				setTopicsOrTopicFilter((TopicsType)newValue);
 				return;
-			case EsbPackage.INBOUND_ENDPOINT__SIMPLE_BROKERS:
-				setSimpleBrokers((String)newValue);
+			case EsbPackage.INBOUND_ENDPOINT__TOPICS_NAME:
+				setTopicsName((String)newValue);
 				return;
-			case EsbPackage.INBOUND_ENDPOINT__SIMPLE_PORT:
-				setSimplePort((String)newValue);
+			case EsbPackage.INBOUND_ENDPOINT__TOPIC_FILTER_FROM:
+				setTopicFilterFrom((TopicFilterFromType)newValue);
 				return;
-			case EsbPackage.INBOUND_ENDPOINT__SIMPLE_PARTITION:
-				setSimplePartition((String)newValue);
+			case EsbPackage.INBOUND_ENDPOINT__TOPIC_FILTER_NAME:
+				setTopicFilterName((String)newValue);
 				return;
-			case EsbPackage.INBOUND_ENDPOINT__SIMPLE_MAX_MESSAGES_TO_READ:
-				setSimpleMaxMessagesToRead((String)newValue);
+			case EsbPackage.INBOUND_ENDPOINT__SIMPLE_CONSUMER_TOPIC:
+				setSimpleConsumerTopic((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__SIMPLE_CONSUMER_BROKERS:
+				setSimpleConsumerBrokers((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__SIMPLE_CONSUMER_PORT:
+				setSimpleConsumerPort((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__SIMPLE_CONSUMER_PARTITION:
+				setSimpleConsumerPartition((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__SIMPLE_CONSUMER_MAX_MESSAGES_TO_READ:
+				setSimpleConsumerMaxMessagesToRead((String)newValue);
 				return;
 			case EsbPackage.INBOUND_ENDPOINT__THREAD_COUNT:
 				setThreadCount((String)newValue);
 				return;
-			case EsbPackage.INBOUND_ENDPOINT__ZOOKEEPER_SESSION_TIMEOUT_MS:
-				setZookeeperSessionTimeoutMs((String)newValue);
+			case EsbPackage.INBOUND_ENDPOINT__CONSUMER_ID:
+				setConsumerId((String)newValue);
 				return;
-			case EsbPackage.INBOUND_ENDPOINT__ZOOKEEPER_SYNC_TIME_MS:
-				setZookeeperSyncTimeMs((String)newValue);
+			case EsbPackage.INBOUND_ENDPOINT__SOCKET_TIMEOUT_MS:
+				setSocketTimeoutMs((Integer)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__SOCKET_RECEIVE_BUFFER_BYTES:
+				setSocketReceiveBufferBytes((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__FETCH_MESSAGE_MAX_BYTES:
+				setFetchMessageMaxBytes((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__NUM_CONSUMER_FETCHES:
+				setNumConsumerFetches((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__AUTO_COMMIT_ENABLE:
+				setAutoCommitEnable((Boolean)newValue);
 				return;
 			case EsbPackage.INBOUND_ENDPOINT__AUTO_COMMIT_INTERVAL_MS:
 				setAutoCommitIntervalMs((String)newValue);
 				return;
+			case EsbPackage.INBOUND_ENDPOINT__QUEUED_MAX_MESSAGE_CHUNKS:
+				setQueuedMaxMessageChunks((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__REBALANCE_MAX_RETRIES:
+				setRebalanceMaxRetries((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__FETCH_MIN_BYTES:
+				setFetchMinBytes((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__FETCH_WAIT_MAX_MS:
+				setFetchWaitMaxMs((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__REBALANCE_BACKOFF_MS:
+				setRebalanceBackoffMs((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__REFRESH_LEADER_BACKOFF_MS:
+				setRefreshLeaderBackoffMs((String)newValue);
+				return;
 			case EsbPackage.INBOUND_ENDPOINT__AUTO_OFFSET_RESET:
-				setAutoOffsetReset((String)newValue);
+				setAutoOffsetReset((AutoOffsetResetType)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__CONSUMER_TIMEOUT_MS:
+				setConsumerTimeoutMs((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__EXCLUDE_INTERNAL_TOPICS:
+				setExcludeInternalTopics((Boolean)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__PARTITION_ASSIGNMENT_STRATEGY:
+				setPartitionAssignmentStrategy((PartitionAssignmentStrategyType)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__CLIENT_ID:
+				setClientId((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__ZOOKEEPER_SESSION_TIMEOUT_MS:
+				setZookeeperSessionTimeoutMs((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__ZOOKEEPER_CONNECTION_TIMEOUT_MS:
+				setZookeeperConnectionTimeoutMs((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__ZOOKEEPER_SYNC_TIME_MS:
+				setZookeeperSyncTimeMs((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__OFFSETS_STORAGE:
+				setOffsetsStorage((OffsetsStorageType)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__OFFSETS_CHANNEL_BACKOFF_MS:
+				setOffsetsChannelBackoffMs((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__OFFSETS_CHANNEL_SOCKET_TIMEOUT_MS:
+				setOffsetsChannelSocketTimeoutMs((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__OFFSETS_COMMIT_MAX_RETRIES:
+				setOffsetsCommitMaxRetries((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__DUAL_COMMIT_ENABLED:
+				setDualCommitEnabled((Boolean)newValue);
 				return;
 			case EsbPackage.INBOUND_ENDPOINT__INBOUND_CXF_RM_HOST:
 				setInboundCxfRmHost((String)newValue);
@@ -5722,44 +6902,119 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 			case EsbPackage.INBOUND_ENDPOINT__GROUP_ID:
 				setGroupId(GROUP_ID_EDEFAULT);
 				return;
-			case EsbPackage.INBOUND_ENDPOINT__CONSUMER_TYPE:
-				setConsumerType(CONSUMER_TYPE_EDEFAULT);
-				return;
 			case EsbPackage.INBOUND_ENDPOINT__CONTENT_TYPE:
 				setContentType(CONTENT_TYPE_EDEFAULT);
 				return;
-			case EsbPackage.INBOUND_ENDPOINT__TOPICS:
-				setTopics(TOPICS_EDEFAULT);
+			case EsbPackage.INBOUND_ENDPOINT__CONSUMER_TYPE:
+				setConsumerType(CONSUMER_TYPE_EDEFAULT);
 				return;
-			case EsbPackage.INBOUND_ENDPOINT__SIMPLE_TOPIC:
-				setSimpleTopic(SIMPLE_TOPIC_EDEFAULT);
+			case EsbPackage.INBOUND_ENDPOINT__TOPICS_OR_TOPIC_FILTER:
+				setTopicsOrTopicFilter(TOPICS_OR_TOPIC_FILTER_EDEFAULT);
 				return;
-			case EsbPackage.INBOUND_ENDPOINT__SIMPLE_BROKERS:
-				setSimpleBrokers(SIMPLE_BROKERS_EDEFAULT);
+			case EsbPackage.INBOUND_ENDPOINT__TOPICS_NAME:
+				setTopicsName(TOPICS_NAME_EDEFAULT);
 				return;
-			case EsbPackage.INBOUND_ENDPOINT__SIMPLE_PORT:
-				setSimplePort(SIMPLE_PORT_EDEFAULT);
+			case EsbPackage.INBOUND_ENDPOINT__TOPIC_FILTER_FROM:
+				setTopicFilterFrom(TOPIC_FILTER_FROM_EDEFAULT);
 				return;
-			case EsbPackage.INBOUND_ENDPOINT__SIMPLE_PARTITION:
-				setSimplePartition(SIMPLE_PARTITION_EDEFAULT);
+			case EsbPackage.INBOUND_ENDPOINT__TOPIC_FILTER_NAME:
+				setTopicFilterName(TOPIC_FILTER_NAME_EDEFAULT);
 				return;
-			case EsbPackage.INBOUND_ENDPOINT__SIMPLE_MAX_MESSAGES_TO_READ:
-				setSimpleMaxMessagesToRead(SIMPLE_MAX_MESSAGES_TO_READ_EDEFAULT);
+			case EsbPackage.INBOUND_ENDPOINT__SIMPLE_CONSUMER_TOPIC:
+				setSimpleConsumerTopic(SIMPLE_CONSUMER_TOPIC_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__SIMPLE_CONSUMER_BROKERS:
+				setSimpleConsumerBrokers(SIMPLE_CONSUMER_BROKERS_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__SIMPLE_CONSUMER_PORT:
+				setSimpleConsumerPort(SIMPLE_CONSUMER_PORT_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__SIMPLE_CONSUMER_PARTITION:
+				setSimpleConsumerPartition(SIMPLE_CONSUMER_PARTITION_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__SIMPLE_CONSUMER_MAX_MESSAGES_TO_READ:
+				setSimpleConsumerMaxMessagesToRead(SIMPLE_CONSUMER_MAX_MESSAGES_TO_READ_EDEFAULT);
 				return;
 			case EsbPackage.INBOUND_ENDPOINT__THREAD_COUNT:
 				setThreadCount(THREAD_COUNT_EDEFAULT);
 				return;
-			case EsbPackage.INBOUND_ENDPOINT__ZOOKEEPER_SESSION_TIMEOUT_MS:
-				setZookeeperSessionTimeoutMs(ZOOKEEPER_SESSION_TIMEOUT_MS_EDEFAULT);
+			case EsbPackage.INBOUND_ENDPOINT__CONSUMER_ID:
+				setConsumerId(CONSUMER_ID_EDEFAULT);
 				return;
-			case EsbPackage.INBOUND_ENDPOINT__ZOOKEEPER_SYNC_TIME_MS:
-				setZookeeperSyncTimeMs(ZOOKEEPER_SYNC_TIME_MS_EDEFAULT);
+			case EsbPackage.INBOUND_ENDPOINT__SOCKET_TIMEOUT_MS:
+				setSocketTimeoutMs(SOCKET_TIMEOUT_MS_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__SOCKET_RECEIVE_BUFFER_BYTES:
+				setSocketReceiveBufferBytes(SOCKET_RECEIVE_BUFFER_BYTES_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__FETCH_MESSAGE_MAX_BYTES:
+				setFetchMessageMaxBytes(FETCH_MESSAGE_MAX_BYTES_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__NUM_CONSUMER_FETCHES:
+				setNumConsumerFetches(NUM_CONSUMER_FETCHES_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__AUTO_COMMIT_ENABLE:
+				setAutoCommitEnable(AUTO_COMMIT_ENABLE_EDEFAULT);
 				return;
 			case EsbPackage.INBOUND_ENDPOINT__AUTO_COMMIT_INTERVAL_MS:
 				setAutoCommitIntervalMs(AUTO_COMMIT_INTERVAL_MS_EDEFAULT);
 				return;
+			case EsbPackage.INBOUND_ENDPOINT__QUEUED_MAX_MESSAGE_CHUNKS:
+				setQueuedMaxMessageChunks(QUEUED_MAX_MESSAGE_CHUNKS_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__REBALANCE_MAX_RETRIES:
+				setRebalanceMaxRetries(REBALANCE_MAX_RETRIES_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__FETCH_MIN_BYTES:
+				setFetchMinBytes(FETCH_MIN_BYTES_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__FETCH_WAIT_MAX_MS:
+				setFetchWaitMaxMs(FETCH_WAIT_MAX_MS_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__REBALANCE_BACKOFF_MS:
+				setRebalanceBackoffMs(REBALANCE_BACKOFF_MS_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__REFRESH_LEADER_BACKOFF_MS:
+				setRefreshLeaderBackoffMs(REFRESH_LEADER_BACKOFF_MS_EDEFAULT);
+				return;
 			case EsbPackage.INBOUND_ENDPOINT__AUTO_OFFSET_RESET:
 				setAutoOffsetReset(AUTO_OFFSET_RESET_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__CONSUMER_TIMEOUT_MS:
+				setConsumerTimeoutMs(CONSUMER_TIMEOUT_MS_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__EXCLUDE_INTERNAL_TOPICS:
+				setExcludeInternalTopics(EXCLUDE_INTERNAL_TOPICS_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__PARTITION_ASSIGNMENT_STRATEGY:
+				setPartitionAssignmentStrategy(PARTITION_ASSIGNMENT_STRATEGY_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__CLIENT_ID:
+				setClientId(CLIENT_ID_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__ZOOKEEPER_SESSION_TIMEOUT_MS:
+				setZookeeperSessionTimeoutMs(ZOOKEEPER_SESSION_TIMEOUT_MS_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__ZOOKEEPER_CONNECTION_TIMEOUT_MS:
+				setZookeeperConnectionTimeoutMs(ZOOKEEPER_CONNECTION_TIMEOUT_MS_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__ZOOKEEPER_SYNC_TIME_MS:
+				setZookeeperSyncTimeMs(ZOOKEEPER_SYNC_TIME_MS_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__OFFSETS_STORAGE:
+				setOffsetsStorage(OFFSETS_STORAGE_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__OFFSETS_CHANNEL_BACKOFF_MS:
+				setOffsetsChannelBackoffMs(OFFSETS_CHANNEL_BACKOFF_MS_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__OFFSETS_CHANNEL_SOCKET_TIMEOUT_MS:
+				setOffsetsChannelSocketTimeoutMs(OFFSETS_CHANNEL_SOCKET_TIMEOUT_MS_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__OFFSETS_COMMIT_MAX_RETRIES:
+				setOffsetsCommitMaxRetries(OFFSETS_COMMIT_MAX_RETRIES_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__DUAL_COMMIT_ENABLED:
+				setDualCommitEnabled(DUAL_COMMIT_ENABLED_EDEFAULT);
 				return;
 			case EsbPackage.INBOUND_ENDPOINT__INBOUND_CXF_RM_HOST:
 				setInboundCxfRmHost(INBOUND_CXF_RM_HOST_EDEFAULT);
@@ -5977,32 +7232,82 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 				return ZOOKEEPER_CONNECT_EDEFAULT == null ? zookeeperConnect != null : !ZOOKEEPER_CONNECT_EDEFAULT.equals(zookeeperConnect);
 			case EsbPackage.INBOUND_ENDPOINT__GROUP_ID:
 				return GROUP_ID_EDEFAULT == null ? groupId != null : !GROUP_ID_EDEFAULT.equals(groupId);
-			case EsbPackage.INBOUND_ENDPOINT__CONSUMER_TYPE:
-				return consumerType != CONSUMER_TYPE_EDEFAULT;
 			case EsbPackage.INBOUND_ENDPOINT__CONTENT_TYPE:
 				return contentType != CONTENT_TYPE_EDEFAULT;
-			case EsbPackage.INBOUND_ENDPOINT__TOPICS:
-				return TOPICS_EDEFAULT == null ? topics != null : !TOPICS_EDEFAULT.equals(topics);
-			case EsbPackage.INBOUND_ENDPOINT__SIMPLE_TOPIC:
-				return SIMPLE_TOPIC_EDEFAULT == null ? simpleTopic != null : !SIMPLE_TOPIC_EDEFAULT.equals(simpleTopic);
-			case EsbPackage.INBOUND_ENDPOINT__SIMPLE_BROKERS:
-				return SIMPLE_BROKERS_EDEFAULT == null ? simpleBrokers != null : !SIMPLE_BROKERS_EDEFAULT.equals(simpleBrokers);
-			case EsbPackage.INBOUND_ENDPOINT__SIMPLE_PORT:
-				return SIMPLE_PORT_EDEFAULT == null ? simplePort != null : !SIMPLE_PORT_EDEFAULT.equals(simplePort);
-			case EsbPackage.INBOUND_ENDPOINT__SIMPLE_PARTITION:
-				return SIMPLE_PARTITION_EDEFAULT == null ? simplePartition != null : !SIMPLE_PARTITION_EDEFAULT.equals(simplePartition);
-			case EsbPackage.INBOUND_ENDPOINT__SIMPLE_MAX_MESSAGES_TO_READ:
-				return SIMPLE_MAX_MESSAGES_TO_READ_EDEFAULT == null ? simpleMaxMessagesToRead != null : !SIMPLE_MAX_MESSAGES_TO_READ_EDEFAULT.equals(simpleMaxMessagesToRead);
+			case EsbPackage.INBOUND_ENDPOINT__CONSUMER_TYPE:
+				return consumerType != CONSUMER_TYPE_EDEFAULT;
+			case EsbPackage.INBOUND_ENDPOINT__TOPICS_OR_TOPIC_FILTER:
+				return topicsOrTopicFilter != TOPICS_OR_TOPIC_FILTER_EDEFAULT;
+			case EsbPackage.INBOUND_ENDPOINT__TOPICS_NAME:
+				return TOPICS_NAME_EDEFAULT == null ? topicsName != null : !TOPICS_NAME_EDEFAULT.equals(topicsName);
+			case EsbPackage.INBOUND_ENDPOINT__TOPIC_FILTER_FROM:
+				return topicFilterFrom != TOPIC_FILTER_FROM_EDEFAULT;
+			case EsbPackage.INBOUND_ENDPOINT__TOPIC_FILTER_NAME:
+				return TOPIC_FILTER_NAME_EDEFAULT == null ? topicFilterName != null : !TOPIC_FILTER_NAME_EDEFAULT.equals(topicFilterName);
+			case EsbPackage.INBOUND_ENDPOINT__SIMPLE_CONSUMER_TOPIC:
+				return SIMPLE_CONSUMER_TOPIC_EDEFAULT == null ? simpleConsumerTopic != null : !SIMPLE_CONSUMER_TOPIC_EDEFAULT.equals(simpleConsumerTopic);
+			case EsbPackage.INBOUND_ENDPOINT__SIMPLE_CONSUMER_BROKERS:
+				return SIMPLE_CONSUMER_BROKERS_EDEFAULT == null ? simpleConsumerBrokers != null : !SIMPLE_CONSUMER_BROKERS_EDEFAULT.equals(simpleConsumerBrokers);
+			case EsbPackage.INBOUND_ENDPOINT__SIMPLE_CONSUMER_PORT:
+				return SIMPLE_CONSUMER_PORT_EDEFAULT == null ? simpleConsumerPort != null : !SIMPLE_CONSUMER_PORT_EDEFAULT.equals(simpleConsumerPort);
+			case EsbPackage.INBOUND_ENDPOINT__SIMPLE_CONSUMER_PARTITION:
+				return SIMPLE_CONSUMER_PARTITION_EDEFAULT == null ? simpleConsumerPartition != null : !SIMPLE_CONSUMER_PARTITION_EDEFAULT.equals(simpleConsumerPartition);
+			case EsbPackage.INBOUND_ENDPOINT__SIMPLE_CONSUMER_MAX_MESSAGES_TO_READ:
+				return SIMPLE_CONSUMER_MAX_MESSAGES_TO_READ_EDEFAULT == null ? simpleConsumerMaxMessagesToRead != null : !SIMPLE_CONSUMER_MAX_MESSAGES_TO_READ_EDEFAULT.equals(simpleConsumerMaxMessagesToRead);
 			case EsbPackage.INBOUND_ENDPOINT__THREAD_COUNT:
 				return THREAD_COUNT_EDEFAULT == null ? threadCount != null : !THREAD_COUNT_EDEFAULT.equals(threadCount);
-			case EsbPackage.INBOUND_ENDPOINT__ZOOKEEPER_SESSION_TIMEOUT_MS:
-				return ZOOKEEPER_SESSION_TIMEOUT_MS_EDEFAULT == null ? zookeeperSessionTimeoutMs != null : !ZOOKEEPER_SESSION_TIMEOUT_MS_EDEFAULT.equals(zookeeperSessionTimeoutMs);
-			case EsbPackage.INBOUND_ENDPOINT__ZOOKEEPER_SYNC_TIME_MS:
-				return ZOOKEEPER_SYNC_TIME_MS_EDEFAULT == null ? zookeeperSyncTimeMs != null : !ZOOKEEPER_SYNC_TIME_MS_EDEFAULT.equals(zookeeperSyncTimeMs);
+			case EsbPackage.INBOUND_ENDPOINT__CONSUMER_ID:
+				return CONSUMER_ID_EDEFAULT == null ? consumerId != null : !CONSUMER_ID_EDEFAULT.equals(consumerId);
+			case EsbPackage.INBOUND_ENDPOINT__SOCKET_TIMEOUT_MS:
+				return socketTimeoutMs != SOCKET_TIMEOUT_MS_EDEFAULT;
+			case EsbPackage.INBOUND_ENDPOINT__SOCKET_RECEIVE_BUFFER_BYTES:
+				return SOCKET_RECEIVE_BUFFER_BYTES_EDEFAULT == null ? socketReceiveBufferBytes != null : !SOCKET_RECEIVE_BUFFER_BYTES_EDEFAULT.equals(socketReceiveBufferBytes);
+			case EsbPackage.INBOUND_ENDPOINT__FETCH_MESSAGE_MAX_BYTES:
+				return FETCH_MESSAGE_MAX_BYTES_EDEFAULT == null ? fetchMessageMaxBytes != null : !FETCH_MESSAGE_MAX_BYTES_EDEFAULT.equals(fetchMessageMaxBytes);
+			case EsbPackage.INBOUND_ENDPOINT__NUM_CONSUMER_FETCHES:
+				return NUM_CONSUMER_FETCHES_EDEFAULT == null ? numConsumerFetches != null : !NUM_CONSUMER_FETCHES_EDEFAULT.equals(numConsumerFetches);
+			case EsbPackage.INBOUND_ENDPOINT__AUTO_COMMIT_ENABLE:
+				return autoCommitEnable != AUTO_COMMIT_ENABLE_EDEFAULT;
 			case EsbPackage.INBOUND_ENDPOINT__AUTO_COMMIT_INTERVAL_MS:
 				return AUTO_COMMIT_INTERVAL_MS_EDEFAULT == null ? autoCommitIntervalMs != null : !AUTO_COMMIT_INTERVAL_MS_EDEFAULT.equals(autoCommitIntervalMs);
+			case EsbPackage.INBOUND_ENDPOINT__QUEUED_MAX_MESSAGE_CHUNKS:
+				return QUEUED_MAX_MESSAGE_CHUNKS_EDEFAULT == null ? queuedMaxMessageChunks != null : !QUEUED_MAX_MESSAGE_CHUNKS_EDEFAULT.equals(queuedMaxMessageChunks);
+			case EsbPackage.INBOUND_ENDPOINT__REBALANCE_MAX_RETRIES:
+				return REBALANCE_MAX_RETRIES_EDEFAULT == null ? rebalanceMaxRetries != null : !REBALANCE_MAX_RETRIES_EDEFAULT.equals(rebalanceMaxRetries);
+			case EsbPackage.INBOUND_ENDPOINT__FETCH_MIN_BYTES:
+				return FETCH_MIN_BYTES_EDEFAULT == null ? fetchMinBytes != null : !FETCH_MIN_BYTES_EDEFAULT.equals(fetchMinBytes);
+			case EsbPackage.INBOUND_ENDPOINT__FETCH_WAIT_MAX_MS:
+				return FETCH_WAIT_MAX_MS_EDEFAULT == null ? fetchWaitMaxMs != null : !FETCH_WAIT_MAX_MS_EDEFAULT.equals(fetchWaitMaxMs);
+			case EsbPackage.INBOUND_ENDPOINT__REBALANCE_BACKOFF_MS:
+				return REBALANCE_BACKOFF_MS_EDEFAULT == null ? rebalanceBackoffMs != null : !REBALANCE_BACKOFF_MS_EDEFAULT.equals(rebalanceBackoffMs);
+			case EsbPackage.INBOUND_ENDPOINT__REFRESH_LEADER_BACKOFF_MS:
+				return REFRESH_LEADER_BACKOFF_MS_EDEFAULT == null ? refreshLeaderBackoffMs != null : !REFRESH_LEADER_BACKOFF_MS_EDEFAULT.equals(refreshLeaderBackoffMs);
 			case EsbPackage.INBOUND_ENDPOINT__AUTO_OFFSET_RESET:
-				return AUTO_OFFSET_RESET_EDEFAULT == null ? autoOffsetReset != null : !AUTO_OFFSET_RESET_EDEFAULT.equals(autoOffsetReset);
+				return autoOffsetReset != AUTO_OFFSET_RESET_EDEFAULT;
+			case EsbPackage.INBOUND_ENDPOINT__CONSUMER_TIMEOUT_MS:
+				return CONSUMER_TIMEOUT_MS_EDEFAULT == null ? consumerTimeoutMs != null : !CONSUMER_TIMEOUT_MS_EDEFAULT.equals(consumerTimeoutMs);
+			case EsbPackage.INBOUND_ENDPOINT__EXCLUDE_INTERNAL_TOPICS:
+				return excludeInternalTopics != EXCLUDE_INTERNAL_TOPICS_EDEFAULT;
+			case EsbPackage.INBOUND_ENDPOINT__PARTITION_ASSIGNMENT_STRATEGY:
+				return partitionAssignmentStrategy != PARTITION_ASSIGNMENT_STRATEGY_EDEFAULT;
+			case EsbPackage.INBOUND_ENDPOINT__CLIENT_ID:
+				return CLIENT_ID_EDEFAULT == null ? clientId != null : !CLIENT_ID_EDEFAULT.equals(clientId);
+			case EsbPackage.INBOUND_ENDPOINT__ZOOKEEPER_SESSION_TIMEOUT_MS:
+				return ZOOKEEPER_SESSION_TIMEOUT_MS_EDEFAULT == null ? zookeeperSessionTimeoutMs != null : !ZOOKEEPER_SESSION_TIMEOUT_MS_EDEFAULT.equals(zookeeperSessionTimeoutMs);
+			case EsbPackage.INBOUND_ENDPOINT__ZOOKEEPER_CONNECTION_TIMEOUT_MS:
+				return ZOOKEEPER_CONNECTION_TIMEOUT_MS_EDEFAULT == null ? zookeeperConnectionTimeoutMs != null : !ZOOKEEPER_CONNECTION_TIMEOUT_MS_EDEFAULT.equals(zookeeperConnectionTimeoutMs);
+			case EsbPackage.INBOUND_ENDPOINT__ZOOKEEPER_SYNC_TIME_MS:
+				return ZOOKEEPER_SYNC_TIME_MS_EDEFAULT == null ? zookeeperSyncTimeMs != null : !ZOOKEEPER_SYNC_TIME_MS_EDEFAULT.equals(zookeeperSyncTimeMs);
+			case EsbPackage.INBOUND_ENDPOINT__OFFSETS_STORAGE:
+				return offsetsStorage != OFFSETS_STORAGE_EDEFAULT;
+			case EsbPackage.INBOUND_ENDPOINT__OFFSETS_CHANNEL_BACKOFF_MS:
+				return OFFSETS_CHANNEL_BACKOFF_MS_EDEFAULT == null ? offsetsChannelBackoffMs != null : !OFFSETS_CHANNEL_BACKOFF_MS_EDEFAULT.equals(offsetsChannelBackoffMs);
+			case EsbPackage.INBOUND_ENDPOINT__OFFSETS_CHANNEL_SOCKET_TIMEOUT_MS:
+				return OFFSETS_CHANNEL_SOCKET_TIMEOUT_MS_EDEFAULT == null ? offsetsChannelSocketTimeoutMs != null : !OFFSETS_CHANNEL_SOCKET_TIMEOUT_MS_EDEFAULT.equals(offsetsChannelSocketTimeoutMs);
+			case EsbPackage.INBOUND_ENDPOINT__OFFSETS_COMMIT_MAX_RETRIES:
+				return OFFSETS_COMMIT_MAX_RETRIES_EDEFAULT == null ? offsetsCommitMaxRetries != null : !OFFSETS_COMMIT_MAX_RETRIES_EDEFAULT.equals(offsetsCommitMaxRetries);
+			case EsbPackage.INBOUND_ENDPOINT__DUAL_COMMIT_ENABLED:
+				return dualCommitEnabled != DUAL_COMMIT_ENABLED_EDEFAULT;
 			case EsbPackage.INBOUND_ENDPOINT__INBOUND_CXF_RM_HOST:
 				return INBOUND_CXF_RM_HOST_EDEFAULT == null ? inboundCxfRmHost != null : !INBOUND_CXF_RM_HOST_EDEFAULT.equals(inboundCxfRmHost);
 			case EsbPackage.INBOUND_ENDPOINT__INBOUND_CXF_RM_PORT:
@@ -6205,32 +7510,82 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 		result.append(zookeeperConnect);
 		result.append(", groupId: ");
 		result.append(groupId);
-		result.append(", consumerType: ");
-		result.append(consumerType);
 		result.append(", contentType: ");
 		result.append(contentType);
-		result.append(", topics: ");
-		result.append(topics);
-		result.append(", simpleTopic: ");
-		result.append(simpleTopic);
-		result.append(", simpleBrokers: ");
-		result.append(simpleBrokers);
-		result.append(", simplePort: ");
-		result.append(simplePort);
-		result.append(", simplePartition: ");
-		result.append(simplePartition);
-		result.append(", simpleMaxMessagesToRead: ");
-		result.append(simpleMaxMessagesToRead);
+		result.append(", consumerType: ");
+		result.append(consumerType);
+		result.append(", topicsOrTopicFilter: ");
+		result.append(topicsOrTopicFilter);
+		result.append(", topicsName: ");
+		result.append(topicsName);
+		result.append(", topicFilterFrom: ");
+		result.append(topicFilterFrom);
+		result.append(", topicFilterName: ");
+		result.append(topicFilterName);
+		result.append(", simpleConsumerTopic: ");
+		result.append(simpleConsumerTopic);
+		result.append(", simpleConsumerBrokers: ");
+		result.append(simpleConsumerBrokers);
+		result.append(", simpleConsumerPort: ");
+		result.append(simpleConsumerPort);
+		result.append(", simpleConsumerPartition: ");
+		result.append(simpleConsumerPartition);
+		result.append(", simpleConsumerMaxMessagesToRead: ");
+		result.append(simpleConsumerMaxMessagesToRead);
 		result.append(", threadCount: ");
 		result.append(threadCount);
-		result.append(", zookeeperSessionTimeoutMs: ");
-		result.append(zookeeperSessionTimeoutMs);
-		result.append(", zookeeperSyncTimeMs: ");
-		result.append(zookeeperSyncTimeMs);
+		result.append(", consumerId: ");
+		result.append(consumerId);
+		result.append(", socketTimeoutMs: ");
+		result.append(socketTimeoutMs);
+		result.append(", socketReceiveBufferBytes: ");
+		result.append(socketReceiveBufferBytes);
+		result.append(", fetchMessageMaxBytes: ");
+		result.append(fetchMessageMaxBytes);
+		result.append(", numConsumerFetches: ");
+		result.append(numConsumerFetches);
+		result.append(", autoCommitEnable: ");
+		result.append(autoCommitEnable);
 		result.append(", autoCommitIntervalMs: ");
 		result.append(autoCommitIntervalMs);
+		result.append(", queuedMaxMessageChunks: ");
+		result.append(queuedMaxMessageChunks);
+		result.append(", rebalanceMaxRetries: ");
+		result.append(rebalanceMaxRetries);
+		result.append(", fetchMinBytes: ");
+		result.append(fetchMinBytes);
+		result.append(", fetchWaitMaxMs: ");
+		result.append(fetchWaitMaxMs);
+		result.append(", rebalanceBackoffMs: ");
+		result.append(rebalanceBackoffMs);
+		result.append(", refreshLeaderBackoffMs: ");
+		result.append(refreshLeaderBackoffMs);
 		result.append(", autoOffsetReset: ");
 		result.append(autoOffsetReset);
+		result.append(", consumerTimeoutMs: ");
+		result.append(consumerTimeoutMs);
+		result.append(", excludeInternalTopics: ");
+		result.append(excludeInternalTopics);
+		result.append(", partitionAssignmentStrategy: ");
+		result.append(partitionAssignmentStrategy);
+		result.append(", clientId: ");
+		result.append(clientId);
+		result.append(", zookeeperSessionTimeoutMs: ");
+		result.append(zookeeperSessionTimeoutMs);
+		result.append(", zookeeperConnectionTimeoutMs: ");
+		result.append(zookeeperConnectionTimeoutMs);
+		result.append(", zookeeperSyncTimeMs: ");
+		result.append(zookeeperSyncTimeMs);
+		result.append(", offsetsStorage: ");
+		result.append(offsetsStorage);
+		result.append(", offsetsChannelBackoffMs: ");
+		result.append(offsetsChannelBackoffMs);
+		result.append(", offsetsChannelSocketTimeoutMs: ");
+		result.append(offsetsChannelSocketTimeoutMs);
+		result.append(", offsetsCommitMaxRetries: ");
+		result.append(offsetsCommitMaxRetries);
+		result.append(", dualCommitEnabled: ");
+		result.append(dualCommitEnabled);
 		result.append(", inboundCxfRmHost: ");
 		result.append(inboundCxfRmHost);
 		result.append(", inboundCxfRmPort: ");

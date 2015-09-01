@@ -32,42 +32,40 @@ import org.eclipse.emf.common.util.Enumerator;
  */
 public enum VFSAction implements Enumerator {
 	/**
-	 * The '<em><b>None</b></em>' literal object.
+	 * The '<em><b>DELETE</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #NONE_VALUE
+	 * @see #DELETE_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	NONE(0, "none", "none"),
-
-	/**
-	 * The '<em><b>Move</b></em>' literal object.
+	DELETE(0, "DELETE", "DELETE"), /**
+	 * The '<em><b>MOVE</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #MOVE_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	MOVE(1, "move", "move");
+	MOVE(1, "MOVE", "MOVE");
 
 	/**
-	 * The '<em><b>None</b></em>' literal value.
+	 * The '<em><b>DELETE</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>None</b></em>' literal object isn't clear,
+	 * If the meaning of '<em><b>DELETE</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #NONE
-	 * @model name="none"
+	 * @see #DELETE
+	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final int NONE_VALUE = 0;
+	public static final int DELETE_VALUE = 0;
 
 	/**
-	 * The '<em><b>Move</b></em>' literal value.
+	 * The '<em><b>MOVE</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>Move</b></em>' literal object isn't clear,
@@ -75,7 +73,7 @@ public enum VFSAction implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #MOVE
-	 * @model name="move"
+	 * @model
 	 * @generated
 	 * @ordered
 	 */
@@ -89,7 +87,7 @@ public enum VFSAction implements Enumerator {
 	 */
 	private static final VFSAction[] VALUES_ARRAY =
 		new VFSAction[] {
-			NONE,
+			DELETE,
 			MOVE,
 		};
 
@@ -141,7 +139,7 @@ public enum VFSAction implements Enumerator {
 	 */
 	public static VFSAction get(int value) {
 		switch (value) {
-			case NONE_VALUE: return NONE;
+			case DELETE_VALUE: return DELETE;
 			case MOVE_VALUE: return MOVE;
 		}
 		return null;

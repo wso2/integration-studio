@@ -1843,7 +1843,7 @@ public interface InboundEndpoint extends EsbElement {
 
 	/**
 	 * Returns the value of the '<em><b>Transport VFS Auto Lock Release</b></em>' attribute.
-	 * The default value is <code>"true"</code>.
+	 * The default value is <code>"false"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Transport VFS Auto Lock Release</em>' attribute isn't clear,
@@ -1853,7 +1853,7 @@ public interface InboundEndpoint extends EsbElement {
 	 * @return the value of the '<em>Transport VFS Auto Lock Release</em>' attribute.
 	 * @see #setTransportVFSAutoLockRelease(boolean)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportVFSAutoLockRelease()
-	 * @model default="true"
+	 * @model default="false"
 	 * @generated
 	 */
 	boolean isTransportVFSAutoLockRelease();
@@ -1897,7 +1897,7 @@ public interface InboundEndpoint extends EsbElement {
 
 	/**
 	 * Returns the value of the '<em><b>Transport VFS Lock Release Same Node</b></em>' attribute.
-	 * The default value is <code>"true"</code>.
+	 * The default value is <code>"false"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Transport VFS Lock Release Same Node</em>' attribute isn't clear,
@@ -1907,7 +1907,7 @@ public interface InboundEndpoint extends EsbElement {
 	 * @return the value of the '<em>Transport VFS Lock Release Same Node</em>' attribute.
 	 * @see #setTransportVFSLockReleaseSameNode(boolean)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportVFSLockReleaseSameNode()
-	 * @model default="true"
+	 * @model default="false"
 	 * @generated
 	 */
 	boolean isTransportVFSLockReleaseSameNode();
@@ -1924,7 +1924,7 @@ public interface InboundEndpoint extends EsbElement {
 
 	/**
 	 * Returns the value of the '<em><b>Transport VFS Distributed Lock</b></em>' attribute.
-	 * The default value is <code>"true"</code>.
+	 * The default value is <code>"false"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Transport VFS Distributed Lock</em>' attribute isn't clear,
@@ -1934,7 +1934,7 @@ public interface InboundEndpoint extends EsbElement {
 	 * @return the value of the '<em>Transport VFS Distributed Lock</em>' attribute.
 	 * @see #setTransportVFSDistributedLock(boolean)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportVFSDistributedLock()
-	 * @model default="true"
+	 * @model default="false"
 	 * @generated
 	 */
 	boolean isTransportVFSDistributedLock();
@@ -2498,6 +2498,7 @@ public interface InboundEndpoint extends EsbElement {
 
 	/**
 	 * Returns the value of the '<em><b>Transport VFS File Sort Ascending</b></em>' attribute.
+	 * The default value is <code>"true"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Transport VFS File Sort Ascending</em>' attribute isn't clear,
@@ -2507,7 +2508,7 @@ public interface InboundEndpoint extends EsbElement {
 	 * @return the value of the '<em>Transport VFS File Sort Ascending</em>' attribute.
 	 * @see #setTransportVFSFileSortAscending(boolean)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportVFSFileSortAscending()
-	 * @model
+	 * @model default="true"
 	 * @generated
 	 */
 	boolean isTransportVFSFileSortAscending();
@@ -2551,6 +2552,7 @@ public interface InboundEndpoint extends EsbElement {
 
 	/**
 	 * Returns the value of the '<em><b>Transport VFS Create Folder</b></em>' attribute.
+	 * The default value is <code>"true"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Transport VFS Create Folder</em>' attribute isn't clear,
@@ -2560,7 +2562,7 @@ public interface InboundEndpoint extends EsbElement {
 	 * @return the value of the '<em>Transport VFS Create Folder</em>' attribute.
 	 * @see #setTransportVFSCreateFolder(boolean)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportVFSCreateFolder()
-	 * @model
+	 * @model default="true"
 	 * @generated
 	 */
 	boolean isTransportVFSCreateFolder();

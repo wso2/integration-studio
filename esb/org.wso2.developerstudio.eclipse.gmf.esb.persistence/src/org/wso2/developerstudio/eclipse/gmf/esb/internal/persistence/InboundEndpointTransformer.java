@@ -134,10 +134,6 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
 			if (StringUtils.isNotBlank(visualInboundEndpoint.getInboundHttpPort())) {
 				inboundEndpoint.addParameter(InboundEndpointConstants.INBOUND_HTTP_PORT,
 						visualInboundEndpoint.getInboundHttpPort());
-			}
-			if (StringUtils.isNotBlank(String.valueOf(visualInboundEndpoint.isApiDispatchingEnabled()))) {
-				inboundEndpoint.addParameter(InboundEndpointConstants.API_DISPATCHING_ENABLED,
-						String.valueOf(visualInboundEndpoint.isApiDispatchingEnabled()));
 			}			
 			if (StringUtils.isNotBlank(String.valueOf(visualInboundEndpoint.getInboundWorkerPoolSizeCore()))) {
 				inboundEndpoint.addParameter(InboundEndpointConstants.INBOUND_WORKER_POOL_SIZE_CORE,
@@ -396,10 +392,6 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
 			}
 			if (StringUtils.isNotBlank(visualInboundEndpoint.getKeystore())) {
 				inboundEndpoint.addParameter(InboundEndpointConstants.KEYSTORE, visualInboundEndpoint.getKeystore());
-			}
-			if (StringUtils.isNotBlank(String.valueOf(visualInboundEndpoint.isApiDispatchingEnabled()))) {
-				inboundEndpoint.addParameter(InboundEndpointConstants.API_DISPATCHING_ENABLED,
-						String.valueOf(visualInboundEndpoint.isApiDispatchingEnabled()));
 			}
 			if (StringUtils.isNotBlank(String.valueOf(visualInboundEndpoint.getInboundWorkerPoolSizeCore()))) {
 				inboundEndpoint.addParameter(InboundEndpointConstants.INBOUND_WORKER_POOL_SIZE_CORE,

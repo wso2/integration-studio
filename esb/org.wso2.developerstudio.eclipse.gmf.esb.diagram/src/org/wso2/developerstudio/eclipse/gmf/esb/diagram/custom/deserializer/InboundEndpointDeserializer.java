@@ -187,12 +187,6 @@ public class InboundEndpointDeserializer extends
 		for (Map.Entry<String, String> paramEntry : object.getParametersMap().entrySet()) {
 			if (paramEntry.getKey().equals(InboundEndpointConstants.INBOUND_HTTP_PORT)) {
 				executeSetValueCommand(INBOUND_ENDPOINT__INBOUND_HTTP_PORT, paramEntry.getValue());
-			} else if (paramEntry.getKey().equals(InboundEndpointConstants.API_DISPATCHING_ENABLED)) {
-				if (paramEntry.getValue().equals(TRUE)) {
-					executeSetValueCommand(INBOUND_ENDPOINT__API_DISPATCHING_ENABLED, true);
-				} else {
-					executeSetValueCommand(INBOUND_ENDPOINT__API_DISPATCHING_ENABLED, false);
-				}
 			} else if (paramEntry.getKey().equals(InboundEndpointConstants.INTERVAL)) {
 				executeSetValueCommand(INBOUND_ENDPOINT__INTERVAL, paramEntry.getValue());
 			}			

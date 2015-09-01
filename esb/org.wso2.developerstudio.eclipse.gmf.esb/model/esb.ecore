@@ -2903,8 +2903,7 @@
         defaultValueLiteral=""/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="contentType" eType="#//ContentType"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="consumerType" eType="#//ConsumerType"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="topicsType" eType="#//TopicsType"
-        defaultValueLiteral=""/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="topicsOrTopicFilter" eType="#//TopicsType"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="topicsName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="topicFilterFrom" eType="#//TopicFilterFromType"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="topicFilterName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

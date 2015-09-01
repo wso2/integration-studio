@@ -214,11 +214,9 @@ public class InboundEndpointProjectCreationWizard extends AbstractWSO2ProjectCre
 			InboundEndpoint inboundEndpoint= new InboundEndpoint();
 			inboundEndpoint.setName(ieModel.getName());
 			if(ieModel.getProtocol().equals(CUSTOM)){
-				inboundEndpoint.setClassImpl(ieModel.getClassImpl());
-			} 
-			else{
-				inboundEndpoint.setProtocol(ieModel.getProtocol());
-			}
+				inboundEndpoint.setClassImpl("");
+			}			
+			inboundEndpoint.setProtocol(ieModel.getProtocol());
 	
 			//Sets an empty string value for sequence and onerror sequence
 			inboundEndpoint.setInjectingSeq("");

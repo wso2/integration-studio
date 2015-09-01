@@ -603,8 +603,8 @@
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//Enable/disable"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//VFSAction">
-      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//VFSAction/none"/>
-      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//VFSAction/move"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//VFSAction/DELETE"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//VFSAction/MOVE"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//VFSFileSort">
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//VFSFileSort/none"/>

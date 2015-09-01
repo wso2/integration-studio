@@ -22391,7 +22391,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		addEEnumLiteral(enableEEnum, Enable.DISABLE);
 
 		initEEnum(vfsActionEEnum, VFSAction.class, "VFSAction");
-		addEEnumLiteral(vfsActionEEnum, VFSAction.NONE);
+		addEEnumLiteral(vfsActionEEnum, VFSAction.DELETE);
 		addEEnumLiteral(vfsActionEEnum, VFSAction.MOVE);
 
 		initEEnum(vfsFileSortEEnum, VFSFileSort.class, "VFSFileSort");

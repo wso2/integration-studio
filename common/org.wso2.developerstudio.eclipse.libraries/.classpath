@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
+	<classpathentry exported="true" kind="lib" path="lib/js_1.6.0.R7-wso2v1.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/abdera_1.0.0.wso2v3.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/avro-1.7.5.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/axiom_1.2.11.wso2v6.jar"/>

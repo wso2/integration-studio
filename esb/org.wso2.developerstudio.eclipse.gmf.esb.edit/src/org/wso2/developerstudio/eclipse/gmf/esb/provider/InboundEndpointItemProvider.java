@@ -95,6 +95,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 			addTransportVFSMoveAfterErrorsPropertyDescriptor(object);
 			addTransportVFSActionAfterFailurePropertyDescriptor(object);
 			addTransportVFSMoveAfterFailurePropertyDescriptor(object);
+			addTransportVFSMoveTimestampFormatPropertyDescriptor(object);
 			addTransportVFSAutoLockReleasePropertyDescriptor(object);
 			addTransportVFSAutoLockReleaseIntervalPropertyDescriptor(object);
 			addTransportVFSLockReleaseSameNodePropertyDescriptor(object);
@@ -1764,7 +1765,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 	/**
 	 * This adds a property descriptor for the Transport VFS Move Timestamp Format feature.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	protected void addTransportVFSMoveTimestampFormatPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -1778,7 +1779,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
+				 "Parameters",
 				 null));
 	}
 

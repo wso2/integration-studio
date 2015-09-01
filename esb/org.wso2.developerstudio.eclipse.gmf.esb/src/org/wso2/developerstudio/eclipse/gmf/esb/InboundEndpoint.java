@@ -333,6 +333,7 @@ public interface InboundEndpoint extends EsbElement {
 
 	/**
 	 * Returns the value of the '<em><b>Inbound HL7 Port</b></em>' attribute.
+	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Inbound HL7 Port</em>' attribute isn't clear,
@@ -342,7 +343,7 @@ public interface InboundEndpoint extends EsbElement {
 	 * @return the value of the '<em>Inbound HL7 Port</em>' attribute.
 	 * @see #setInboundHL7Port(String)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_InboundHL7Port()
-	 * @model
+	 * @model default=""
 	 * @generated
 	 */
 	String getInboundHL7Port();
@@ -385,6 +386,7 @@ public interface InboundEndpoint extends EsbElement {
 
 	/**
 	 * Returns the value of the '<em><b>Inbound HL7 Message Pre Processor</b></em>' attribute.
+	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Inbound HL7 Message Pre Processor</em>' attribute isn't clear,
@@ -394,7 +396,7 @@ public interface InboundEndpoint extends EsbElement {
 	 * @return the value of the '<em>Inbound HL7 Message Pre Processor</em>' attribute.
 	 * @see #setInboundHL7MessagePreProcessor(String)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_InboundHL7MessagePreProcessor()
-	 * @model
+	 * @model default=""
 	 * @generated
 	 */
 	String getInboundHL7MessagePreProcessor();
@@ -411,6 +413,7 @@ public interface InboundEndpoint extends EsbElement {
 
 	/**
 	 * Returns the value of the '<em><b>Inbound HL7 Char Set</b></em>' attribute.
+	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Inbound HL7 Char Set</em>' attribute isn't clear,
@@ -420,7 +423,7 @@ public interface InboundEndpoint extends EsbElement {
 	 * @return the value of the '<em>Inbound HL7 Char Set</em>' attribute.
 	 * @see #setInboundHL7CharSet(String)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_InboundHL7CharSet()
-	 * @model
+	 * @model default=""
 	 * @generated
 	 */
 	String getInboundHL7CharSet();
@@ -437,6 +440,7 @@ public interface InboundEndpoint extends EsbElement {
 
 	/**
 	 * Returns the value of the '<em><b>Inbound HL7 Time Out</b></em>' attribute.
+	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Inbound HL7 Time Out</em>' attribute isn't clear,
@@ -446,7 +450,7 @@ public interface InboundEndpoint extends EsbElement {
 	 * @return the value of the '<em>Inbound HL7 Time Out</em>' attribute.
 	 * @see #setInboundHL7TimeOut(String)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_InboundHL7TimeOut()
-	 * @model
+	 * @model default=""
 	 * @generated
 	 */
 	String getInboundHL7TimeOut();
@@ -489,6 +493,7 @@ public interface InboundEndpoint extends EsbElement {
 
 	/**
 	 * Returns the value of the '<em><b>Inbound HL7 Build Invalid Messages</b></em>' attribute.
+	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Inbound HL7 Build Invalid Messages</em>' attribute isn't clear,
@@ -498,7 +503,7 @@ public interface InboundEndpoint extends EsbElement {
 	 * @return the value of the '<em>Inbound HL7 Build Invalid Messages</em>' attribute.
 	 * @see #setInboundHL7BuildInvalidMessages(String)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_InboundHL7BuildInvalidMessages()
-	 * @model
+	 * @model default=""
 	 * @generated
 	 */
 	String getInboundHL7BuildInvalidMessages();
@@ -515,6 +520,7 @@ public interface InboundEndpoint extends EsbElement {
 
 	/**
 	 * Returns the value of the '<em><b>Inbound HL7 Pass Through Invalid Messages</b></em>' attribute.
+	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Inbound HL7 Pass Through Invalid Messages</em>' attribute isn't clear,
@@ -524,7 +530,7 @@ public interface InboundEndpoint extends EsbElement {
 	 * @return the value of the '<em>Inbound HL7 Pass Through Invalid Messages</em>' attribute.
 	 * @see #setInboundHL7PassThroughInvalidMessages(String)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_InboundHL7PassThroughInvalidMessages()
-	 * @model
+	 * @model default=""
 	 * @generated
 	 */
 	String getInboundHL7PassThroughInvalidMessages();
@@ -541,6 +547,7 @@ public interface InboundEndpoint extends EsbElement {
 
 	/**
 	 * Returns the value of the '<em><b>Zookeeper Connect</b></em>' attribute.
+	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Zookeeper Connect</em>' attribute isn't clear,
@@ -550,7 +557,7 @@ public interface InboundEndpoint extends EsbElement {
 	 * @return the value of the '<em>Zookeeper Connect</em>' attribute.
 	 * @see #setZookeeperConnect(String)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_ZookeeperConnect()
-	 * @model
+	 * @model default=""
 	 * @generated
 	 */
 	String getZookeeperConnect();
@@ -567,6 +574,7 @@ public interface InboundEndpoint extends EsbElement {
 
 	/**
 	 * Returns the value of the '<em><b>Group Id</b></em>' attribute.
+	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Group Id</em>' attribute isn't clear,
@@ -576,7 +584,7 @@ public interface InboundEndpoint extends EsbElement {
 	 * @return the value of the '<em>Group Id</em>' attribute.
 	 * @see #setGroupId(String)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_GroupId()
-	 * @model
+	 * @model default=""
 	 * @generated
 	 */
 	String getGroupId();
@@ -651,6 +659,7 @@ public interface InboundEndpoint extends EsbElement {
 
 	/**
 	 * Returns the value of the '<em><b>Topics</b></em>' attribute.
+	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Topics</em>' attribute isn't clear,
@@ -660,7 +669,7 @@ public interface InboundEndpoint extends EsbElement {
 	 * @return the value of the '<em>Topics</em>' attribute.
 	 * @see #setTopics(String)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_Topics()
-	 * @model
+	 * @model default=""
 	 * @generated
 	 */
 	String getTopics();
@@ -677,6 +686,7 @@ public interface InboundEndpoint extends EsbElement {
 
 	/**
 	 * Returns the value of the '<em><b>Simple Topic</b></em>' attribute.
+	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Simple Topic</em>' attribute isn't clear,
@@ -686,7 +696,7 @@ public interface InboundEndpoint extends EsbElement {
 	 * @return the value of the '<em>Simple Topic</em>' attribute.
 	 * @see #setSimpleTopic(String)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_SimpleTopic()
-	 * @model
+	 * @model default=""
 	 * @generated
 	 */
 	String getSimpleTopic();
@@ -703,6 +713,7 @@ public interface InboundEndpoint extends EsbElement {
 
 	/**
 	 * Returns the value of the '<em><b>Simple Brokers</b></em>' attribute.
+	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Simple Brokers</em>' attribute isn't clear,
@@ -712,7 +723,7 @@ public interface InboundEndpoint extends EsbElement {
 	 * @return the value of the '<em>Simple Brokers</em>' attribute.
 	 * @see #setSimpleBrokers(String)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_SimpleBrokers()
-	 * @model
+	 * @model default=""
 	 * @generated
 	 */
 	String getSimpleBrokers();
@@ -729,6 +740,7 @@ public interface InboundEndpoint extends EsbElement {
 
 	/**
 	 * Returns the value of the '<em><b>Simple Port</b></em>' attribute.
+	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Simple Port</em>' attribute isn't clear,
@@ -738,7 +750,7 @@ public interface InboundEndpoint extends EsbElement {
 	 * @return the value of the '<em>Simple Port</em>' attribute.
 	 * @see #setSimplePort(String)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_SimplePort()
-	 * @model
+	 * @model default=""
 	 * @generated
 	 */
 	String getSimplePort();
@@ -755,6 +767,7 @@ public interface InboundEndpoint extends EsbElement {
 
 	/**
 	 * Returns the value of the '<em><b>Simple Partition</b></em>' attribute.
+	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Simple Partition</em>' attribute isn't clear,
@@ -764,7 +777,7 @@ public interface InboundEndpoint extends EsbElement {
 	 * @return the value of the '<em>Simple Partition</em>' attribute.
 	 * @see #setSimplePartition(String)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_SimplePartition()
-	 * @model
+	 * @model default=""
 	 * @generated
 	 */
 	String getSimplePartition();
@@ -781,6 +794,7 @@ public interface InboundEndpoint extends EsbElement {
 
 	/**
 	 * Returns the value of the '<em><b>Simple Max Messages To Read</b></em>' attribute.
+	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Simple Max Messages To Read</em>' attribute isn't clear,
@@ -790,7 +804,7 @@ public interface InboundEndpoint extends EsbElement {
 	 * @return the value of the '<em>Simple Max Messages To Read</em>' attribute.
 	 * @see #setSimpleMaxMessagesToRead(String)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_SimpleMaxMessagesToRead()
-	 * @model
+	 * @model default=""
 	 * @generated
 	 */
 	String getSimpleMaxMessagesToRead();
@@ -807,6 +821,7 @@ public interface InboundEndpoint extends EsbElement {
 
 	/**
 	 * Returns the value of the '<em><b>Thread Count</b></em>' attribute.
+	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Thread Count</em>' attribute isn't clear,
@@ -816,7 +831,7 @@ public interface InboundEndpoint extends EsbElement {
 	 * @return the value of the '<em>Thread Count</em>' attribute.
 	 * @see #setThreadCount(String)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_ThreadCount()
-	 * @model
+	 * @model default=""
 	 * @generated
 	 */
 	String getThreadCount();
@@ -833,6 +848,7 @@ public interface InboundEndpoint extends EsbElement {
 
 	/**
 	 * Returns the value of the '<em><b>Zookeeper Session Timeout Ms</b></em>' attribute.
+	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Zookeeper Session Timeout Ms</em>' attribute isn't clear,
@@ -842,7 +858,7 @@ public interface InboundEndpoint extends EsbElement {
 	 * @return the value of the '<em>Zookeeper Session Timeout Ms</em>' attribute.
 	 * @see #setZookeeperSessionTimeoutMs(String)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_ZookeeperSessionTimeoutMs()
-	 * @model
+	 * @model default=""
 	 * @generated
 	 */
 	String getZookeeperSessionTimeoutMs();
@@ -859,6 +875,7 @@ public interface InboundEndpoint extends EsbElement {
 
 	/**
 	 * Returns the value of the '<em><b>Zookeeper Sync Time Ms</b></em>' attribute.
+	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Zookeeper Sync Time Ms</em>' attribute isn't clear,
@@ -868,7 +885,7 @@ public interface InboundEndpoint extends EsbElement {
 	 * @return the value of the '<em>Zookeeper Sync Time Ms</em>' attribute.
 	 * @see #setZookeeperSyncTimeMs(String)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_ZookeeperSyncTimeMs()
-	 * @model
+	 * @model default=""
 	 * @generated
 	 */
 	String getZookeeperSyncTimeMs();
@@ -885,6 +902,7 @@ public interface InboundEndpoint extends EsbElement {
 
 	/**
 	 * Returns the value of the '<em><b>Auto Commit Interval Ms</b></em>' attribute.
+	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Auto Commit Interval Ms</em>' attribute isn't clear,
@@ -894,7 +912,7 @@ public interface InboundEndpoint extends EsbElement {
 	 * @return the value of the '<em>Auto Commit Interval Ms</em>' attribute.
 	 * @see #setAutoCommitIntervalMs(String)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_AutoCommitIntervalMs()
-	 * @model
+	 * @model default=""
 	 * @generated
 	 */
 	String getAutoCommitIntervalMs();
@@ -911,6 +929,7 @@ public interface InboundEndpoint extends EsbElement {
 
 	/**
 	 * Returns the value of the '<em><b>Auto Offset Reset</b></em>' attribute.
+	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Auto Offset Reset</em>' attribute isn't clear,
@@ -920,7 +939,7 @@ public interface InboundEndpoint extends EsbElement {
 	 * @return the value of the '<em>Auto Offset Reset</em>' attribute.
 	 * @see #setAutoOffsetReset(String)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_AutoOffsetReset()
-	 * @model
+	 * @model default=""
 	 * @generated
 	 */
 	String getAutoOffsetReset();
@@ -937,6 +956,7 @@ public interface InboundEndpoint extends EsbElement {
 
 	/**
 	 * Returns the value of the '<em><b>Inbound Cxf Rm Host</b></em>' attribute.
+	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Inbound Cxf Rm Host</em>' attribute isn't clear,
@@ -946,7 +966,7 @@ public interface InboundEndpoint extends EsbElement {
 	 * @return the value of the '<em>Inbound Cxf Rm Host</em>' attribute.
 	 * @see #setInboundCxfRmHost(String)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_InboundCxfRmHost()
-	 * @model
+	 * @model default=""
 	 * @generated
 	 */
 	String getInboundCxfRmHost();
@@ -963,6 +983,7 @@ public interface InboundEndpoint extends EsbElement {
 
 	/**
 	 * Returns the value of the '<em><b>Inbound Cxf Rm Port</b></em>' attribute.
+	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Inbound Cxf Rm Port</em>' attribute isn't clear,
@@ -972,7 +993,7 @@ public interface InboundEndpoint extends EsbElement {
 	 * @return the value of the '<em>Inbound Cxf Rm Port</em>' attribute.
 	 * @see #setInboundCxfRmPort(String)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_InboundCxfRmPort()
-	 * @model
+	 * @model default=""
 	 * @generated
 	 */
 	String getInboundCxfRmPort();
@@ -989,6 +1010,7 @@ public interface InboundEndpoint extends EsbElement {
 
 	/**
 	 * Returns the value of the '<em><b>Inbound Cxf Rm Config File</b></em>' attribute.
+	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Inbound Cxf Rm Config File</em>' attribute isn't clear,
@@ -998,7 +1020,7 @@ public interface InboundEndpoint extends EsbElement {
 	 * @return the value of the '<em>Inbound Cxf Rm Config File</em>' attribute.
 	 * @see #setInboundCxfRmConfigFile(String)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_InboundCxfRmConfigFile()
-	 * @model
+	 * @model default=""
 	 * @generated
 	 */
 	String getInboundCxfRmConfigFile();
@@ -1084,6 +1106,7 @@ public interface InboundEndpoint extends EsbElement {
 
 	/**
 	 * Returns the value of the '<em><b>Class</b></em>' attribute.
+	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Class</em>' attribute isn't clear,
@@ -1093,7 +1116,7 @@ public interface InboundEndpoint extends EsbElement {
 	 * @return the value of the '<em>Class</em>' attribute.
 	 * @see #setClass(String)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_Class()
-	 * @model
+	 * @model default=""
 	 * @generated
 	 */
 	String getClass_();
@@ -1110,6 +1133,7 @@ public interface InboundEndpoint extends EsbElement {
 
 	/**
 	 * Returns the value of the '<em><b>Protocol</b></em>' attribute.
+	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Protocol</em>' attribute isn't clear,
@@ -1119,7 +1143,7 @@ public interface InboundEndpoint extends EsbElement {
 	 * @return the value of the '<em>Protocol</em>' attribute.
 	 * @see #setProtocol(String)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_Protocol()
-	 * @model
+	 * @model default=""
 	 * @generated
 	 */
 	String getProtocol();
@@ -1136,6 +1160,7 @@ public interface InboundEndpoint extends EsbElement {
 
 	/**
 	 * Returns the value of the '<em><b>Inbound Http Port</b></em>' attribute.
+	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Inbound Http Port</em>' attribute isn't clear,
@@ -1145,7 +1170,7 @@ public interface InboundEndpoint extends EsbElement {
 	 * @return the value of the '<em>Inbound Http Port</em>' attribute.
 	 * @see #setInboundHttpPort(String)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_InboundHttpPort()
-	 * @model
+	 * @model default=""
 	 * @generated
 	 */
 	String getInboundHttpPort();
@@ -1162,6 +1187,7 @@ public interface InboundEndpoint extends EsbElement {
 
 	/**
 	 * Returns the value of the '<em><b>Inbound Worker Pool Size Core</b></em>' attribute.
+	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Inbound Worker Pool Size Core</em>' attribute isn't clear,
@@ -1171,7 +1197,7 @@ public interface InboundEndpoint extends EsbElement {
 	 * @return the value of the '<em>Inbound Worker Pool Size Core</em>' attribute.
 	 * @see #setInboundWorkerPoolSizeCore(String)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_InboundWorkerPoolSizeCore()
-	 * @model
+	 * @model default=""
 	 * @generated
 	 */
 	String getInboundWorkerPoolSizeCore();
@@ -1188,6 +1214,7 @@ public interface InboundEndpoint extends EsbElement {
 
 	/**
 	 * Returns the value of the '<em><b>Inbound Worker Pool Size Max</b></em>' attribute.
+	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Inbound Worker Pool Size Max</em>' attribute isn't clear,
@@ -1197,7 +1224,7 @@ public interface InboundEndpoint extends EsbElement {
 	 * @return the value of the '<em>Inbound Worker Pool Size Max</em>' attribute.
 	 * @see #setInboundWorkerPoolSizeMax(String)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_InboundWorkerPoolSizeMax()
-	 * @model
+	 * @model default=""
 	 * @generated
 	 */
 	String getInboundWorkerPoolSizeMax();
@@ -1214,6 +1241,7 @@ public interface InboundEndpoint extends EsbElement {
 
 	/**
 	 * Returns the value of the '<em><b>Inbound Worker Thread Keep Alive Sec</b></em>' attribute.
+	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Inbound Worker Thread Keep Alive Sec</em>' attribute isn't clear,
@@ -1223,7 +1251,7 @@ public interface InboundEndpoint extends EsbElement {
 	 * @return the value of the '<em>Inbound Worker Thread Keep Alive Sec</em>' attribute.
 	 * @see #setInboundWorkerThreadKeepAliveSec(String)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_InboundWorkerThreadKeepAliveSec()
-	 * @model
+	 * @model default=""
 	 * @generated
 	 */
 	String getInboundWorkerThreadKeepAliveSec();
@@ -1240,6 +1268,7 @@ public interface InboundEndpoint extends EsbElement {
 
 	/**
 	 * Returns the value of the '<em><b>Inbound Worker Pool Queue Length</b></em>' attribute.
+	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Inbound Worker Pool Queue Length</em>' attribute isn't clear,
@@ -1249,7 +1278,7 @@ public interface InboundEndpoint extends EsbElement {
 	 * @return the value of the '<em>Inbound Worker Pool Queue Length</em>' attribute.
 	 * @see #setInboundWorkerPoolQueueLength(String)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_InboundWorkerPoolQueueLength()
-	 * @model
+	 * @model default=""
 	 * @generated
 	 */
 	String getInboundWorkerPoolQueueLength();
@@ -1266,6 +1295,7 @@ public interface InboundEndpoint extends EsbElement {
 
 	/**
 	 * Returns the value of the '<em><b>Inbound Thread Group Id</b></em>' attribute.
+	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Inbound Thread Group Id</em>' attribute isn't clear,
@@ -1275,7 +1305,7 @@ public interface InboundEndpoint extends EsbElement {
 	 * @return the value of the '<em>Inbound Thread Group Id</em>' attribute.
 	 * @see #setInboundThreadGroupId(String)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_InboundThreadGroupId()
-	 * @model
+	 * @model default=""
 	 * @generated
 	 */
 	String getInboundThreadGroupId();
@@ -1292,6 +1322,7 @@ public interface InboundEndpoint extends EsbElement {
 
 	/**
 	 * Returns the value of the '<em><b>Inbound Thread Id</b></em>' attribute.
+	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Inbound Thread Id</em>' attribute isn't clear,
@@ -1301,7 +1332,7 @@ public interface InboundEndpoint extends EsbElement {
 	 * @return the value of the '<em>Inbound Thread Id</em>' attribute.
 	 * @see #setInboundThreadId(String)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_InboundThreadId()
-	 * @model
+	 * @model default=""
 	 * @generated
 	 */
 	String getInboundThreadId();
@@ -1318,6 +1349,7 @@ public interface InboundEndpoint extends EsbElement {
 
 	/**
 	 * Returns the value of the '<em><b>Dispatch Filter Pattern</b></em>' attribute.
+	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Dispatch Filter Pattern</em>' attribute isn't clear,
@@ -1327,7 +1359,7 @@ public interface InboundEndpoint extends EsbElement {
 	 * @return the value of the '<em>Dispatch Filter Pattern</em>' attribute.
 	 * @see #setDispatchFilterPattern(String)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_DispatchFilterPattern()
-	 * @model
+	 * @model default=""
 	 * @generated
 	 */
 	String getDispatchFilterPattern();
@@ -1344,6 +1376,7 @@ public interface InboundEndpoint extends EsbElement {
 
 	/**
 	 * Returns the value of the '<em><b>Interval</b></em>' attribute.
+	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Interval</em>' attribute isn't clear,
@@ -1353,7 +1386,7 @@ public interface InboundEndpoint extends EsbElement {
 	 * @return the value of the '<em>Interval</em>' attribute.
 	 * @see #setInterval(String)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_Interval()
-	 * @model
+	 * @model default=""
 	 * @generated
 	 */
 	String getInterval();
@@ -1424,6 +1457,7 @@ public interface InboundEndpoint extends EsbElement {
 
 	/**
 	 * Returns the value of the '<em><b>Transport VFS File URI</b></em>' attribute.
+	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Transport VFS File URI</em>' attribute isn't clear,
@@ -1433,7 +1467,7 @@ public interface InboundEndpoint extends EsbElement {
 	 * @return the value of the '<em>Transport VFS File URI</em>' attribute.
 	 * @see #setTransportVFSFileURI(String)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportVFSFileURI()
-	 * @model
+	 * @model default=""
 	 * @generated
 	 */
 	String getTransportVFSFileURI();
@@ -1450,6 +1484,7 @@ public interface InboundEndpoint extends EsbElement {
 
 	/**
 	 * Returns the value of the '<em><b>Transport VFS Content Type</b></em>' attribute.
+	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Transport VFS Content Type</em>' attribute isn't clear,
@@ -1459,7 +1494,7 @@ public interface InboundEndpoint extends EsbElement {
 	 * @return the value of the '<em>Transport VFS Content Type</em>' attribute.
 	 * @see #setTransportVFSContentType(String)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportVFSContentType()
-	 * @model
+	 * @model default=""
 	 * @generated
 	 */
 	String getTransportVFSContentType();
@@ -1476,6 +1511,7 @@ public interface InboundEndpoint extends EsbElement {
 
 	/**
 	 * Returns the value of the '<em><b>Transport VFS File Name Pattern</b></em>' attribute.
+	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Transport VFS File Name Pattern</em>' attribute isn't clear,
@@ -1485,7 +1521,7 @@ public interface InboundEndpoint extends EsbElement {
 	 * @return the value of the '<em>Transport VFS File Name Pattern</em>' attribute.
 	 * @see #setTransportVFSFileNamePattern(String)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportVFSFileNamePattern()
-	 * @model
+	 * @model default=""
 	 * @generated
 	 */
 	String getTransportVFSFileNamePattern();
@@ -1502,6 +1538,7 @@ public interface InboundEndpoint extends EsbElement {
 
 	/**
 	 * Returns the value of the '<em><b>Transport VFS File Process Interval</b></em>' attribute.
+	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Transport VFS File Process Interval</em>' attribute isn't clear,
@@ -1511,7 +1548,7 @@ public interface InboundEndpoint extends EsbElement {
 	 * @return the value of the '<em>Transport VFS File Process Interval</em>' attribute.
 	 * @see #setTransportVFSFileProcessInterval(String)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportVFSFileProcessInterval()
-	 * @model
+	 * @model default=""
 	 * @generated
 	 */
 	String getTransportVFSFileProcessInterval();
@@ -1528,6 +1565,7 @@ public interface InboundEndpoint extends EsbElement {
 
 	/**
 	 * Returns the value of the '<em><b>Transport VFS File Process Count</b></em>' attribute.
+	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Transport VFS File Process Count</em>' attribute isn't clear,
@@ -1537,7 +1575,7 @@ public interface InboundEndpoint extends EsbElement {
 	 * @return the value of the '<em>Transport VFS File Process Count</em>' attribute.
 	 * @see #setTransportVFSFileProcessCount(String)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportVFSFileProcessCount()
-	 * @model
+	 * @model default=""
 	 * @generated
 	 */
 	String getTransportVFSFileProcessCount();
@@ -1583,6 +1621,7 @@ public interface InboundEndpoint extends EsbElement {
 
 	/**
 	 * Returns the value of the '<em><b>Transport VFS Max Retry Count</b></em>' attribute.
+	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Transport VFS Max Retry Count</em>' attribute isn't clear,
@@ -1592,7 +1631,7 @@ public interface InboundEndpoint extends EsbElement {
 	 * @return the value of the '<em>Transport VFS Max Retry Count</em>' attribute.
 	 * @see #setTransportVFSMaxRetryCount(String)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportVFSMaxRetryCount()
-	 * @model
+	 * @model default=""
 	 * @generated
 	 */
 	String getTransportVFSMaxRetryCount();
@@ -1609,6 +1648,7 @@ public interface InboundEndpoint extends EsbElement {
 
 	/**
 	 * Returns the value of the '<em><b>Transport VFS Reconnect Timeout</b></em>' attribute.
+	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Transport VFS Reconnect Timeout</em>' attribute isn't clear,
@@ -1618,7 +1658,7 @@ public interface InboundEndpoint extends EsbElement {
 	 * @return the value of the '<em>Transport VFS Reconnect Timeout</em>' attribute.
 	 * @see #setTransportVFSReconnectTimeout(String)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportVFSReconnectTimeout()
-	 * @model
+	 * @model default=""
 	 * @generated
 	 */
 	String getTransportVFSReconnectTimeout();
@@ -1664,6 +1704,7 @@ public interface InboundEndpoint extends EsbElement {
 
 	/**
 	 * Returns the value of the '<em><b>Transport VFS Move After Process</b></em>' attribute.
+	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Transport VFS Move After Process</em>' attribute isn't clear,
@@ -1673,7 +1714,7 @@ public interface InboundEndpoint extends EsbElement {
 	 * @return the value of the '<em>Transport VFS Move After Process</em>' attribute.
 	 * @see #setTransportVFSMoveAfterProcess(String)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportVFSMoveAfterProcess()
-	 * @model
+	 * @model default=""
 	 * @generated
 	 */
 	String getTransportVFSMoveAfterProcess();
@@ -1719,6 +1760,7 @@ public interface InboundEndpoint extends EsbElement {
 
 	/**
 	 * Returns the value of the '<em><b>Transport VFS Move After Errors</b></em>' attribute.
+	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Transport VFS Move After Errors</em>' attribute isn't clear,
@@ -1728,7 +1770,7 @@ public interface InboundEndpoint extends EsbElement {
 	 * @return the value of the '<em>Transport VFS Move After Errors</em>' attribute.
 	 * @see #setTransportVFSMoveAfterErrors(String)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportVFSMoveAfterErrors()
-	 * @model
+	 * @model default=""
 	 * @generated
 	 */
 	String getTransportVFSMoveAfterErrors();
@@ -1774,6 +1816,7 @@ public interface InboundEndpoint extends EsbElement {
 
 	/**
 	 * Returns the value of the '<em><b>Transport VFS Move After Failure</b></em>' attribute.
+	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Transport VFS Move After Failure</em>' attribute isn't clear,
@@ -1783,7 +1826,7 @@ public interface InboundEndpoint extends EsbElement {
 	 * @return the value of the '<em>Transport VFS Move After Failure</em>' attribute.
 	 * @see #setTransportVFSMoveAfterFailure(String)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportVFSMoveAfterFailure()
-	 * @model
+	 * @model default=""
 	 * @generated
 	 */
 	String getTransportVFSMoveAfterFailure();
@@ -1827,6 +1870,7 @@ public interface InboundEndpoint extends EsbElement {
 
 	/**
 	 * Returns the value of the '<em><b>Transport VFS Auto Lock Release Interval</b></em>' attribute.
+	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Transport VFS Auto Lock Release Interval</em>' attribute isn't clear,
@@ -1836,7 +1880,7 @@ public interface InboundEndpoint extends EsbElement {
 	 * @return the value of the '<em>Transport VFS Auto Lock Release Interval</em>' attribute.
 	 * @see #setTransportVFSAutoLockReleaseInterval(String)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportVFSAutoLockReleaseInterval()
-	 * @model
+	 * @model default=""
 	 * @generated
 	 */
 	String getTransportVFSAutoLockReleaseInterval();
@@ -1961,6 +2005,7 @@ public interface InboundEndpoint extends EsbElement {
 
 	/**
 	 * Returns the value of the '<em><b>Transport VFS Distributed Timeout</b></em>' attribute.
+	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Transport VFS Distributed Timeout</em>' attribute isn't clear,
@@ -1970,7 +2015,7 @@ public interface InboundEndpoint extends EsbElement {
 	 * @return the value of the '<em>Transport VFS Distributed Timeout</em>' attribute.
 	 * @see #setTransportVFSDistributedTimeout(String)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportVFSDistributedTimeout()
-	 * @model
+	 * @model default=""
 	 * @generated
 	 */
 	String getTransportVFSDistributedTimeout();
@@ -1987,6 +2032,7 @@ public interface InboundEndpoint extends EsbElement {
 
 	/**
 	 * Returns the value of the '<em><b>Java Naming Factory Initial</b></em>' attribute.
+	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Java Naming Factory Initial</em>' attribute isn't clear,
@@ -1996,7 +2042,7 @@ public interface InboundEndpoint extends EsbElement {
 	 * @return the value of the '<em>Java Naming Factory Initial</em>' attribute.
 	 * @see #setJavaNamingFactoryInitial(String)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_JavaNamingFactoryInitial()
-	 * @model
+	 * @model default=""
 	 * @generated
 	 */
 	String getJavaNamingFactoryInitial();
@@ -2013,6 +2059,7 @@ public interface InboundEndpoint extends EsbElement {
 
 	/**
 	 * Returns the value of the '<em><b>Java Naming Provider Url</b></em>' attribute.
+	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Java Naming Provider Url</em>' attribute isn't clear,
@@ -2022,7 +2069,7 @@ public interface InboundEndpoint extends EsbElement {
 	 * @return the value of the '<em>Java Naming Provider Url</em>' attribute.
 	 * @see #setJavaNamingProviderUrl(String)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_JavaNamingProviderUrl()
-	 * @model
+	 * @model default=""
 	 * @generated
 	 */
 	String getJavaNamingProviderUrl();
@@ -2039,6 +2086,7 @@ public interface InboundEndpoint extends EsbElement {
 
 	/**
 	 * Returns the value of the '<em><b>Transport JMS Connection Factory JNDI Name</b></em>' attribute.
+	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Transport JMS Connection Factory JNDI Name</em>' attribute isn't clear,
@@ -2048,7 +2096,7 @@ public interface InboundEndpoint extends EsbElement {
 	 * @return the value of the '<em>Transport JMS Connection Factory JNDI Name</em>' attribute.
 	 * @see #setTransportJMSConnectionFactoryJNDIName(String)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportJMSConnectionFactoryJNDIName()
-	 * @model
+	 * @model default=""
 	 * @generated
 	 */
 	String getTransportJMSConnectionFactoryJNDIName();
@@ -2094,6 +2142,7 @@ public interface InboundEndpoint extends EsbElement {
 
 	/**
 	 * Returns the value of the '<em><b>Transport JMS Destination</b></em>' attribute.
+	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Transport JMS Destination</em>' attribute isn't clear,
@@ -2103,7 +2152,7 @@ public interface InboundEndpoint extends EsbElement {
 	 * @return the value of the '<em>Transport JMS Destination</em>' attribute.
 	 * @see #setTransportJMSDestination(String)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportJMSDestination()
-	 * @model
+	 * @model default=""
 	 * @generated
 	 */
 	String getTransportJMSDestination();
@@ -2205,6 +2254,7 @@ public interface InboundEndpoint extends EsbElement {
 
 	/**
 	 * Returns the value of the '<em><b>Transport JMS User Name</b></em>' attribute.
+	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Transport JMS User Name</em>' attribute isn't clear,
@@ -2214,7 +2264,7 @@ public interface InboundEndpoint extends EsbElement {
 	 * @return the value of the '<em>Transport JMS User Name</em>' attribute.
 	 * @see #setTransportJMSUserName(String)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportJMSUserName()
-	 * @model
+	 * @model default=""
 	 * @generated
 	 */
 	String getTransportJMSUserName();
@@ -2231,6 +2281,7 @@ public interface InboundEndpoint extends EsbElement {
 
 	/**
 	 * Returns the value of the '<em><b>Transport JMS Password</b></em>' attribute.
+	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Transport JMS Password</em>' attribute isn't clear,
@@ -2240,7 +2291,7 @@ public interface InboundEndpoint extends EsbElement {
 	 * @return the value of the '<em>Transport JMS Password</em>' attribute.
 	 * @see #setTransportJMSPassword(String)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportJMSPassword()
-	 * @model
+	 * @model default=""
 	 * @generated
 	 */
 	String getTransportJMSPassword();
@@ -2257,6 +2308,7 @@ public interface InboundEndpoint extends EsbElement {
 
 	/**
 	 * Returns the value of the '<em><b>Transport JMSJMS Spec Version</b></em>' attribute.
+	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Transport JMSJMS Spec Version</em>' attribute isn't clear,
@@ -2266,7 +2318,7 @@ public interface InboundEndpoint extends EsbElement {
 	 * @return the value of the '<em>Transport JMSJMS Spec Version</em>' attribute.
 	 * @see #setTransportJMSJMSSpecVersion(String)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportJMSJMSSpecVersion()
-	 * @model
+	 * @model default=""
 	 * @generated
 	 */
 	String getTransportJMSJMSSpecVersion();
@@ -2283,6 +2335,7 @@ public interface InboundEndpoint extends EsbElement {
 
 	/**
 	 * Returns the value of the '<em><b>Transport JMS Subscription Durable</b></em>' attribute.
+	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Transport JMS Subscription Durable</em>' attribute isn't clear,
@@ -2292,7 +2345,7 @@ public interface InboundEndpoint extends EsbElement {
 	 * @return the value of the '<em>Transport JMS Subscription Durable</em>' attribute.
 	 * @see #setTransportJMSSubscriptionDurable(String)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportJMSSubscriptionDurable()
-	 * @model
+	 * @model default=""
 	 * @generated
 	 */
 	String getTransportJMSSubscriptionDurable();
@@ -2309,6 +2362,7 @@ public interface InboundEndpoint extends EsbElement {
 
 	/**
 	 * Returns the value of the '<em><b>Transport JMS Durable Subscriber Client ID</b></em>' attribute.
+	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Transport JMS Durable Subscriber Client ID</em>' attribute isn't clear,
@@ -2318,7 +2372,7 @@ public interface InboundEndpoint extends EsbElement {
 	 * @return the value of the '<em>Transport JMS Durable Subscriber Client ID</em>' attribute.
 	 * @see #setTransportJMSDurableSubscriberClientID(String)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportJMSDurableSubscriberClientID()
-	 * @model
+	 * @model default=""
 	 * @generated
 	 */
 	String getTransportJMSDurableSubscriberClientID();
@@ -2335,6 +2389,7 @@ public interface InboundEndpoint extends EsbElement {
 
 	/**
 	 * Returns the value of the '<em><b>Transport JMS Message Selector</b></em>' attribute.
+	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Transport JMS Message Selector</em>' attribute isn't clear,
@@ -2344,7 +2399,7 @@ public interface InboundEndpoint extends EsbElement {
 	 * @return the value of the '<em>Transport JMS Message Selector</em>' attribute.
 	 * @see #setTransportJMSMessageSelector(String)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportJMSMessageSelector()
-	 * @model
+	 * @model default=""
 	 * @generated
 	 */
 	String getTransportJMSMessageSelector();
@@ -2387,6 +2442,7 @@ public interface InboundEndpoint extends EsbElement {
 
 	/**
 	 * Returns the value of the '<em><b>Transport VFS Move Timestamp Format</b></em>' attribute.
+	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Transport VFS Move Timestamp Format</em>' attribute isn't clear,
@@ -2396,7 +2452,7 @@ public interface InboundEndpoint extends EsbElement {
 	 * @return the value of the '<em>Transport VFS Move Timestamp Format</em>' attribute.
 	 * @see #setTransportVFSMoveTimestampFormat(String)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportVFSMoveTimestampFormat()
-	 * @model
+	 * @model default=""
 	 * @generated
 	 */
 	String getTransportVFSMoveTimestampFormat();
@@ -2468,6 +2524,7 @@ public interface InboundEndpoint extends EsbElement {
 
 	/**
 	 * Returns the value of the '<em><b>Transport VFS Sub Folder Timestamp Format</b></em>' attribute.
+	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Transport VFS Sub Folder Timestamp Format</em>' attribute isn't clear,
@@ -2477,7 +2534,7 @@ public interface InboundEndpoint extends EsbElement {
 	 * @return the value of the '<em>Transport VFS Sub Folder Timestamp Format</em>' attribute.
 	 * @see #setTransportVFSSubFolderTimestampFormat(String)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportVFSSubFolderTimestampFormat()
-	 * @model
+	 * @model default=""
 	 * @generated
 	 */
 	String getTransportVFSSubFolderTimestampFormat();
@@ -2520,6 +2577,7 @@ public interface InboundEndpoint extends EsbElement {
 
 	/**
 	 * Returns the value of the '<em><b>Transport JMS Receive Timeout</b></em>' attribute.
+	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Transport JMS Receive Timeout</em>' attribute isn't clear,
@@ -2529,7 +2587,7 @@ public interface InboundEndpoint extends EsbElement {
 	 * @return the value of the '<em>Transport JMS Receive Timeout</em>' attribute.
 	 * @see #setTransportJMSReceiveTimeout(String)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportJMSReceiveTimeout()
-	 * @model
+	 * @model default=""
 	 * @generated
 	 */
 	String getTransportJMSReceiveTimeout();
@@ -2546,6 +2604,7 @@ public interface InboundEndpoint extends EsbElement {
 
 	/**
 	 * Returns the value of the '<em><b>Transport JMS Content Type</b></em>' attribute.
+	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Transport JMS Content Type</em>' attribute isn't clear,
@@ -2555,7 +2614,7 @@ public interface InboundEndpoint extends EsbElement {
 	 * @return the value of the '<em>Transport JMS Content Type</em>' attribute.
 	 * @see #setTransportJMSContentType(String)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportJMSContentType()
-	 * @model
+	 * @model default=""
 	 * @generated
 	 */
 	String getTransportJMSContentType();
@@ -2572,6 +2631,7 @@ public interface InboundEndpoint extends EsbElement {
 
 	/**
 	 * Returns the value of the '<em><b>Transport JMS Content Type Property</b></em>' attribute.
+	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Transport JMS Content Type Property</em>' attribute isn't clear,
@@ -2581,7 +2641,7 @@ public interface InboundEndpoint extends EsbElement {
 	 * @return the value of the '<em>Transport JMS Content Type Property</em>' attribute.
 	 * @see #setTransportJMSContentTypeProperty(String)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportJMSContentTypeProperty()
-	 * @model
+	 * @model default=""
 	 * @generated
 	 */
 	String getTransportJMSContentTypeProperty();
@@ -2598,6 +2658,7 @@ public interface InboundEndpoint extends EsbElement {
 
 	/**
 	 * Returns the value of the '<em><b>Transport JMS Reply Destination</b></em>' attribute.
+	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Transport JMS Reply Destination</em>' attribute isn't clear,
@@ -2607,7 +2668,7 @@ public interface InboundEndpoint extends EsbElement {
 	 * @return the value of the '<em>Transport JMS Reply Destination</em>' attribute.
 	 * @see #setTransportJMSReplyDestination(String)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportJMSReplyDestination()
-	 * @model
+	 * @model default=""
 	 * @generated
 	 */
 	String getTransportJMSReplyDestination();
@@ -2624,6 +2685,7 @@ public interface InboundEndpoint extends EsbElement {
 
 	/**
 	 * Returns the value of the '<em><b>Transport JMS Pub Sub No Local</b></em>' attribute.
+	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Transport JMS Pub Sub No Local</em>' attribute isn't clear,
@@ -2633,7 +2695,7 @@ public interface InboundEndpoint extends EsbElement {
 	 * @return the value of the '<em>Transport JMS Pub Sub No Local</em>' attribute.
 	 * @see #setTransportJMSPubSubNoLocal(String)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportJMSPubSubNoLocal()
-	 * @model
+	 * @model default=""
 	 * @generated
 	 */
 	String getTransportJMSPubSubNoLocal();
@@ -2650,6 +2712,7 @@ public interface InboundEndpoint extends EsbElement {
 
 	/**
 	 * Returns the value of the '<em><b>Transport MQTT Connection Factory</b></em>' attribute.
+	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Transport MQTT Connection Factory</em>' attribute isn't clear,
@@ -2659,7 +2722,7 @@ public interface InboundEndpoint extends EsbElement {
 	 * @return the value of the '<em>Transport MQTT Connection Factory</em>' attribute.
 	 * @see #setTransportMQTTConnectionFactory(String)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportMQTTConnectionFactory()
-	 * @model
+	 * @model default=""
 	 * @generated
 	 */
 	String getTransportMQTTConnectionFactory();
@@ -2676,6 +2739,7 @@ public interface InboundEndpoint extends EsbElement {
 
 	/**
 	 * Returns the value of the '<em><b>Transport MQTT Server Host Name</b></em>' attribute.
+	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Transport MQTT Server Host Name</em>' attribute isn't clear,
@@ -2685,7 +2749,7 @@ public interface InboundEndpoint extends EsbElement {
 	 * @return the value of the '<em>Transport MQTT Server Host Name</em>' attribute.
 	 * @see #setTransportMQTTServerHostName(String)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportMQTTServerHostName()
-	 * @model
+	 * @model default=""
 	 * @generated
 	 */
 	String getTransportMQTTServerHostName();
@@ -2702,6 +2766,7 @@ public interface InboundEndpoint extends EsbElement {
 
 	/**
 	 * Returns the value of the '<em><b>Transport MQTT Server Port</b></em>' attribute.
+	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Transport MQTT Server Port</em>' attribute isn't clear,
@@ -2711,7 +2776,7 @@ public interface InboundEndpoint extends EsbElement {
 	 * @return the value of the '<em>Transport MQTT Server Port</em>' attribute.
 	 * @see #setTransportMQTTServerPort(String)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportMQTTServerPort()
-	 * @model
+	 * @model default=""
 	 * @generated
 	 */
 	String getTransportMQTTServerPort();
@@ -2728,6 +2793,7 @@ public interface InboundEndpoint extends EsbElement {
 
 	/**
 	 * Returns the value of the '<em><b>Transport MQTT Topic Name</b></em>' attribute.
+	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Transport MQTT Topic Name</em>' attribute isn't clear,
@@ -2737,7 +2803,7 @@ public interface InboundEndpoint extends EsbElement {
 	 * @return the value of the '<em>Transport MQTT Topic Name</em>' attribute.
 	 * @see #setTransportMQTTTopicName(String)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportMQTTTopicName()
-	 * @model
+	 * @model default=""
 	 * @generated
 	 */
 	String getTransportMQTTTopicName();
@@ -2809,6 +2875,7 @@ public interface InboundEndpoint extends EsbElement {
 
 	/**
 	 * Returns the value of the '<em><b>Transport MQTT Ssl Enable</b></em>' attribute.
+	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Transport MQTT Ssl Enable</em>' attribute isn't clear,
@@ -2818,7 +2885,7 @@ public interface InboundEndpoint extends EsbElement {
 	 * @return the value of the '<em>Transport MQTT Ssl Enable</em>' attribute.
 	 * @see #setTransportMQTTSslEnable(String)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportMQTTSslEnable()
-	 * @model
+	 * @model default=""
 	 * @generated
 	 */
 	String getTransportMQTTSslEnable();
@@ -2835,6 +2902,7 @@ public interface InboundEndpoint extends EsbElement {
 
 	/**
 	 * Returns the value of the '<em><b>Transport MQTT Temporary Store Directory</b></em>' attribute.
+	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Transport MQTT Temporary Store Directory</em>' attribute isn't clear,
@@ -2844,7 +2912,7 @@ public interface InboundEndpoint extends EsbElement {
 	 * @return the value of the '<em>Transport MQTT Temporary Store Directory</em>' attribute.
 	 * @see #setTransportMQTTTemporaryStoreDirectory(String)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportMQTTTemporaryStoreDirectory()
-	 * @model
+	 * @model default=""
 	 * @generated
 	 */
 	String getTransportMQTTTemporaryStoreDirectory();
@@ -2861,6 +2929,7 @@ public interface InboundEndpoint extends EsbElement {
 
 	/**
 	 * Returns the value of the '<em><b>Transport MQTT Subscription Username</b></em>' attribute.
+	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Transport MQTT Subscription Username</em>' attribute isn't clear,
@@ -2870,7 +2939,7 @@ public interface InboundEndpoint extends EsbElement {
 	 * @return the value of the '<em>Transport MQTT Subscription Username</em>' attribute.
 	 * @see #setTransportMQTTSubscriptionUsername(String)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportMQTTSubscriptionUsername()
-	 * @model
+	 * @model default=""
 	 * @generated
 	 */
 	String getTransportMQTTSubscriptionUsername();
@@ -2887,6 +2956,7 @@ public interface InboundEndpoint extends EsbElement {
 
 	/**
 	 * Returns the value of the '<em><b>Transport MQTT Subscription Password</b></em>' attribute.
+	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Transport MQTT Subscription Password</em>' attribute isn't clear,
@@ -2896,7 +2966,7 @@ public interface InboundEndpoint extends EsbElement {
 	 * @return the value of the '<em>Transport MQTT Subscription Password</em>' attribute.
 	 * @see #setTransportMQTTSubscriptionPassword(String)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportMQTTSubscriptionPassword()
-	 * @model
+	 * @model default=""
 	 * @generated
 	 */
 	String getTransportMQTTSubscriptionPassword();
@@ -2913,6 +2983,7 @@ public interface InboundEndpoint extends EsbElement {
 
 	/**
 	 * Returns the value of the '<em><b>Transport MQTT Client Id</b></em>' attribute.
+	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Transport MQTT Client Id</em>' attribute isn't clear,
@@ -2922,7 +2993,7 @@ public interface InboundEndpoint extends EsbElement {
 	 * @return the value of the '<em>Transport MQTT Client Id</em>' attribute.
 	 * @see #setTransportMQTTClientId(String)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportMQTTClientId()
-	 * @model
+	 * @model default=""
 	 * @generated
 	 */
 	String getTransportMQTTClientId();
@@ -2939,6 +3010,7 @@ public interface InboundEndpoint extends EsbElement {
 
 	/**
 	 * Returns the value of the '<em><b>Truststore</b></em>' attribute.
+	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Truststore</em>' attribute isn't clear,
@@ -2948,7 +3020,7 @@ public interface InboundEndpoint extends EsbElement {
 	 * @return the value of the '<em>Truststore</em>' attribute.
 	 * @see #setTruststore(String)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_Truststore()
-	 * @model
+	 * @model default=""
 	 * @generated
 	 */
 	String getTruststore();
@@ -2965,6 +3037,7 @@ public interface InboundEndpoint extends EsbElement {
 
 	/**
 	 * Returns the value of the '<em><b>Keystore</b></em>' attribute.
+	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Keystore</em>' attribute isn't clear,
@@ -2974,7 +3047,7 @@ public interface InboundEndpoint extends EsbElement {
 	 * @return the value of the '<em>Keystore</em>' attribute.
 	 * @see #setKeystore(String)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_Keystore()
-	 * @model
+	 * @model default=""
 	 * @generated
 	 */
 	String getKeystore();
@@ -2991,6 +3064,7 @@ public interface InboundEndpoint extends EsbElement {
 
 	/**
 	 * Returns the value of the '<em><b>Ssl Verify Client</b></em>' attribute.
+	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Ssl Verify Client</em>' attribute isn't clear,
@@ -3000,7 +3074,7 @@ public interface InboundEndpoint extends EsbElement {
 	 * @return the value of the '<em>Ssl Verify Client</em>' attribute.
 	 * @see #setSslVerifyClient(String)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_SslVerifyClient()
-	 * @model
+	 * @model default=""
 	 * @generated
 	 */
 	String getSslVerifyClient();
@@ -3017,6 +3091,7 @@ public interface InboundEndpoint extends EsbElement {
 
 	/**
 	 * Returns the value of the '<em><b>Ssl Protocol</b></em>' attribute.
+	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Ssl Protocol</em>' attribute isn't clear,
@@ -3026,7 +3101,7 @@ public interface InboundEndpoint extends EsbElement {
 	 * @return the value of the '<em>Ssl Protocol</em>' attribute.
 	 * @see #setSslProtocol(String)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_SslProtocol()
-	 * @model
+	 * @model default=""
 	 * @generated
 	 */
 	String getSslProtocol();
@@ -3043,6 +3118,7 @@ public interface InboundEndpoint extends EsbElement {
 
 	/**
 	 * Returns the value of the '<em><b>Https Protocols</b></em>' attribute.
+	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Https Protocols</em>' attribute isn't clear,
@@ -3052,7 +3128,7 @@ public interface InboundEndpoint extends EsbElement {
 	 * @return the value of the '<em>Https Protocols</em>' attribute.
 	 * @see #setHttpsProtocols(String)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_HttpsProtocols()
-	 * @model
+	 * @model default=""
 	 * @generated
 	 */
 	String getHttpsProtocols();
@@ -3069,6 +3145,7 @@ public interface InboundEndpoint extends EsbElement {
 
 	/**
 	 * Returns the value of the '<em><b>Certificate Revocation Verifier</b></em>' attribute.
+	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Certificate Revocation Verifier</em>' attribute isn't clear,
@@ -3078,7 +3155,7 @@ public interface InboundEndpoint extends EsbElement {
 	 * @return the value of the '<em>Certificate Revocation Verifier</em>' attribute.
 	 * @see #setCertificateRevocationVerifier(String)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_CertificateRevocationVerifier()
-	 * @model
+	 * @model default=""
 	 * @generated
 	 */
 	String getCertificateRevocationVerifier();

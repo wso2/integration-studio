@@ -6,6 +6,7 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.SEQUE
 import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EditorUtils.SEQUENCE_RESOURCE_DIR;
 import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EditorUtils.SYNAPSE_CONFIG_DIR;
 
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.text.MessageFormat;
 import java.util.ArrayList;
@@ -556,10 +557,10 @@ public class SequenceEditPart extends FixedSizedAbstractMediator {
 				addSequenceToArtifactXML(name);
 				String path = fileTobeOpened.getParent().getFullPath() + "/";
 				ArtifactTemplate sequenceArtifactTemplate = SequenceTemplate.getArtifactTemplates()[0];
-				fileTobeOpened
-						.create(sequenceArtifactTemplate.getTemplateDataStream(), true, new NullProgressMonitor());
 				String source = FileUtils.getContentAsString(sequenceArtifactTemplate.getTemplateDataStream());
 				source = MessageFormat.format(source, name);
+				fileTobeOpened
+				.create(new ByteArrayInputStream(source.getBytes()), true, new NullProgressMonitor());
 				Openable openable = ESBGraphicalEditor.getOpenable();
 				openable.editorOpen(fileTobeOpened.getName(), ArtifactType.SEQUENCE.getLiteral(), path, source);
 			}

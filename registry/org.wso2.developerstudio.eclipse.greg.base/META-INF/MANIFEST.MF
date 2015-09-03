@@ -76,4 +76,4 @@ Bundle-ClassPath: .,
  lib/org.wso2.carbon.core_4.0.1.jar,
  lib/org.wso2.carbon.registry.ws.client_4.0.1.jar
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7

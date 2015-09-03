@@ -16,8 +16,13 @@
 
 package org.wso2.developerstudio.eclipse.esb.project;
 
+import org.eclipse.core.resources.IResourceChangeEvent;
+import org.eclipse.core.resources.IWorkspace;
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
+
+
 
 /**
  * The activator class controls the plug-in life cycle
@@ -26,6 +31,7 @@ public class Activator extends AbstractUIPlugin {
 
 	// The plug-in ID
 	public static final String PLUGIN_ID = "org.wso2.developerstudio.eclipse.esb.project"; //$NON-NLS-1$
+	private FileModificationManager fileModificationManager;
 
 	// The shared instance
 	private static Activator plugin;
@@ -43,6 +49,12 @@ public class Activator extends AbstractUIPlugin {
 	public void start(BundleContext context) throws Exception {
 		super.start(context);
 		plugin = this;
+		
+		plugin = this;
+		IWorkspace workspace = ResourcesPlugin.getWorkspace();
+		fileModificationManager = new FileModificationManager();
+		workspace.addResourceChangeListener(fileModificationManager,
+				IResourceChangeEvent.POST_CHANGE);
 	}
 
 	/*

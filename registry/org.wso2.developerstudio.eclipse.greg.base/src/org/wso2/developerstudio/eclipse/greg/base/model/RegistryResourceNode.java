@@ -22,6 +22,9 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
+import java.nio.file.CopyOption;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -29,6 +32,7 @@ import java.util.Map;
 import java.util.regex.Pattern;
 
 import org.apache.commons.io.FileUtils;
+import org.eclipse.core.resources.IFile;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IPerspectiveDescriptor;
@@ -59,6 +63,7 @@ public class RegistryResourceNode implements Cloneable {
 	private RegistryNode connectionInfo;
 	private String mediaType;
 	private boolean allowExapand = true;
+	private boolean dirty;
 	private List<String> versions;
 	private Map<String, VersionContent> retrievedVersionsContent;
 	private IEditorPart editor;
@@ -72,6 +77,7 @@ public class RegistryResourceNode implements Cloneable {
 	private boolean isnew;
 	private boolean rename;
 	private File newFile;
+	private IFile workspaceFile;
 	
 	public void setRegistryResource(RegistryResourceType registryResource) {
 		this.registryResource = registryResource;
@@ -133,6 +139,7 @@ public class RegistryResourceNode implements Cloneable {
 				Registry registry = this.getConnectionInfo().getRegistry();
 				try {
 					registry.rename(oldPath, newPath);
+					//rename = false;
 					return true;
 				} catch (InvalidRegistryURLException e) {
 					log.error("Renaming opertaion failed due to"+e.getMessage(), e);
@@ -261,6 +268,10 @@ public class RegistryResourceNode implements Cloneable {
 		}
 	}
 
+	
+   public void removeFromVersionContent(){
+	   retrievedVersionsContent.remove(getResourceName());
+   }
 	/**
 	 * return the caption for the tree item
 	 */
@@ -621,7 +632,7 @@ public class RegistryResourceNode implements Cloneable {
 	public VersionContent getVersionContent(String version, String filePath) {
 		
 		VersionContent vc = null;
-		if(!isnew){
+		if(!isnew && !rename){
 		String versionName=getNameofTheResource(version);
 		version=appendPath(getParent(), versionName);
 		if (retrievedVersionsContent == null) {
@@ -687,7 +698,7 @@ public class RegistryResourceNode implements Cloneable {
 	 * @return
 	 */
 	public boolean isFileLocallyModified() {
-		if(isnew){
+		if(isnew || rename){
 			return true;
 		}else{
 			  VersionContent versionContent = getVersionContent(getLatestVersion());
@@ -702,7 +713,12 @@ public class RegistryResourceNode implements Cloneable {
 	 * @return
 	 */
 	public File getFile(String version) {
-		return getVersionContent(version).getFile();
+		
+		VersionContent versionContent = getVersionContent(version);
+		if(versionContent!=null){
+			return versionContent.getFile();
+		}
+		return null;
 	}
 
 	/**
@@ -722,8 +738,18 @@ public class RegistryResourceNode implements Cloneable {
 	 * @return
 	 */
 	public File getFile() {
+		if(this.isnew ||this.rename){
+			return this.getNewFile();
+		}
 		return getFile(getLatestVersion());
 	}
+	
+	public File getLocalFile() {
+		
+		 return getFile();
+	}
+	
+	
 
 	/**
 	 * get the latest version
@@ -763,6 +789,34 @@ public class RegistryResourceNode implements Cloneable {
 		return false;
 	}
 
+	
+	public boolean removeLocalContent(){
+		InputStream contentStream=null;
+		try {
+		    contentStream = getConnectionInfo().getRegistry().get(getRegistryResourcePath()).getContentStream();		  
+		    Files.copy(contentStream, getFile().toPath(),StandardCopyOption.REPLACE_EXISTING);
+			return true;
+		} catch (InvalidRegistryURLException e) {
+			 log.error("Error while Connecting to registry due to "+e.getMessage(), e);
+		} catch (UnknownRegistryException e) {
+			 log.error("Error while Connecting to registry due to "+e.getMessage(), e);
+		} catch (RegistryException e) {
+			 log.error("Error while Connecting to registry due to "+e.getMessage(), e);
+		} catch (IOException e) {
+			 log.error("Error while Copying contents due to "+e.getMessage(), e);
+		}finally{
+			 if(contentStream!=null){
+				 try {
+					contentStream.close();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
+			 }
+		}
+		return false;
+	}
 	/**
 	 * save the changes of the latest version to the registry
 	 * 
@@ -775,7 +829,7 @@ public class RegistryResourceNode implements Cloneable {
 		Resource resource;
 		try {
 			resource = getConnectionInfo().getRegistry()
-					.get(getRegistryResourcePath());
+					.get(getRegistryResourcePath());						
 			resource.setContentStream(new FileInputStream(file));
 		
 			getConnectionInfo().getRegistry().put(getRegistryResourcePath(), resource);
@@ -1120,5 +1174,23 @@ public class RegistryResourceNode implements Cloneable {
 	public void setRename(boolean rename) {
 		this.rename = rename;
 	}
+
+	public boolean isDirty() {
+		return dirty;
+	}
+
+	public void setDirty(boolean dirty) {
+		this.dirty = dirty;
+	}
+
+	public IFile getWorkspaceFile() {
+		return workspaceFile;
+	}
+
+	public void setWorkspaceFile(IFile workspaceFile) {
+		this.workspaceFile = workspaceFile;
+	}
+
+
 	
 }

@@ -29,6 +29,7 @@ import org.eclipse.core.resources.IWorkspace;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.core.runtime.QualifiedName;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorPart;
@@ -53,9 +54,10 @@ import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
 
 
 public class RemoteContentManager {
+	public static final String APIM_TEM_FILES = "apimTemFiles";
 	private static final String ESB_REMOTE_TEMP_PROJECT_NATURE = "org.wso2.developerstudio.esb.remoteTempNature";
 	private static IDeveloperStudioLog log=Logger.getLog(Activator.PLUGIN_ID);
-
+    private static IFile workspaceFIle;
 
 	/**
 	 * get the editor input
@@ -119,15 +121,16 @@ public class RemoteContentManager {
 
 			IFileStore fileStore = EFS.getLocalFileSystem().getStore(fileToOpen.toURI());
 			IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
-			try {
+			try {	
 				
 				String parentFileName = fileToOpen.getParentFile().getName();
 				IPath projLocation = new org.eclipse.core.runtime.Path(fileToOpen.getPath());
 				String projPath = projLocation.removeLastSegments(2).toOSString() + File.separator + parentFileName;
 				
 				/*Adding dot character to start the project name to hide it in the project explorer since this is a temp project  */
-				String tempProjectName = "." + parentFileName;
+				String tempProjectName = "."+ parentFileName;
 				IWorkspace ws = ResourcesPlugin.getWorkspace();
+			   
 				IProject project = ws.getRoot().getProject(tempProjectName);
 				IProjectDescription description = ws.newProjectDescription(tempProjectName);				
 				String[] naturesIds = new String[] { ESB_REMOTE_TEMP_PROJECT_NATURE };
@@ -141,6 +144,8 @@ public class RemoteContentManager {
 				}
 				
 				IFile workspaceFile = project.getFile(fileToOpen.getName());
+
+				
 				String source = FileUtils.getContentAsString(fileToOpen);
 				InputStream is = new ByteArrayInputStream(source.getBytes());
                 if(workspaceFile.exists()){
@@ -153,7 +158,7 @@ public class RemoteContentManager {
 				ArtifactType artifactType = (ArtifactType) openable.artifactTypeResolver(source);
 				
 				IEditorPart editorOpen = openable.editorOpen(artifactType.getLiteral(),source,workspaceFile);
-
+				setWorkspaceFile(workspaceFile);
 				return editorOpen;
 
 			} catch (UnrecogizedArtifactTypeException e) {
@@ -176,6 +181,14 @@ public class RemoteContentManager {
 					"File cannot be open");
 		}
 		return null;
+	}
+
+	public static IFile getWorkspaceFile() {
+		return workspaceFIle;
+	}
+
+	public static void setWorkspaceFile(IFile fullpath) {
+		RemoteContentManager.workspaceFIle = fullpath;
 	}
 
 }

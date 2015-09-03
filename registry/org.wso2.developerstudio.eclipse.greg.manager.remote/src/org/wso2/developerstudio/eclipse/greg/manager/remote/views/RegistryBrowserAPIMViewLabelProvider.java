@@ -88,5 +88,6 @@ public class RegistryBrowserAPIMViewLabelProvider extends StyledCellLabelProvide
 		
 		super.update(cell);
 	}
-
+	
+ 
 }

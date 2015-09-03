@@ -273,6 +273,16 @@ public class MessageProcessorCreationWizard extends AbstractWSO2ProjectCreationW
 				messageProcessorPrameeters.put("non.retry.status.codes",
 						messageProcessorModel.getNonRetryHttpStatusCodes());
 			}
+			
+			if (StringUtils.isNotBlank(messageProcessorModel.getDropMessageAfterMaxDeliveryAttempts())) {
+				messageProcessorPrameeters.put("max.delivery.drop",
+						messageProcessorModel.getDropMessageAfterMaxDeliveryAttempts());
+			}
+			
+			if (StringUtils.isNotBlank(messageProcessorModel.getTaskCount())) {
+				messageProcessorPrameeters.put("member.count",
+						messageProcessorModel.getTaskCount());
+			}
 
 			messageProcessor = new ScheduledMessageForwardingProcessor();
 

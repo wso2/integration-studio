@@ -669,6 +669,8 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
 				return createJMSCacheLevelFromString(eDataType, initialValue);
 			case EsbPackage.MQTT_SUBSCRIPTION_QOS:
 				return createMQTTSubscriptionQOSFromString(eDataType, initialValue);
+			case EsbPackage.ENABLE_DISABLE_STATE:
+				return createEnableDisableStateFromString(eDataType, initialValue);
 			case EsbPackage.MAP:
 				return createMapFromString(eDataType, initialValue);
 			default:
@@ -927,6 +929,8 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
 				return convertJMSCacheLevelToString(eDataType, instanceValue);
 			case EsbPackage.MQTT_SUBSCRIPTION_QOS:
 				return convertMQTTSubscriptionQOSToString(eDataType, instanceValue);
+			case EsbPackage.ENABLE_DISABLE_STATE:
+				return convertEnableDisableStateToString(eDataType, instanceValue);
 			case EsbPackage.MAP:
 				return convertMapToString(eDataType, instanceValue);
 			default:
@@ -7110,6 +7114,26 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
 	 * @generated
 	 */
 	public String convertMQTTSubscriptionQOSToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EnableDisableState createEnableDisableStateFromString(EDataType eDataType, String initialValue) {
+		EnableDisableState result = EnableDisableState.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertEnableDisableStateToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

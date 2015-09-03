@@ -654,6 +654,10 @@
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//MQTTSubscriptionQOS/one"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//MQTTSubscriptionQOS/two"/>
     </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//EnableDisableState">
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//EnableDisableState/Disabled"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//EnableDisableState/Enabled"/>
+    </genEnums>
     <genDataTypes ecoreDataType="esb.ecore#//Map">
       <genTypeParameters ecoreTypeParameter="esb.ecore#//Map/K"/>
       <genTypeParameters ecoreTypeParameter="esb.ecore#//Map/V"/>
@@ -2127,6 +2131,7 @@
       <genFeatures createChild="false" propertyCategory="Additional Parameters" ecoreFeature="ecore:EAttribute esb.ecore#//MessageProcessor/samplingConcurrency"/>
       <genFeatures createChild="false" propertyCategory="Additional Parameters" propertyDescription="Maximum Re Delivery Attempts"
           ecoreFeature="ecore:EAttribute esb.ecore#//MessageProcessor/maxDeliveryAttempts"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//MessageProcessor/dropMessageAfterMaximumDeliveryAttempts"/>
       <genFeatures createChild="false" propertyCategory="Additional Parameters" propertyDescription="Axis2 Client Repository Path"
           ecoreFeature="ecore:EAttribute esb.ecore#//MessageProcessor/axis2ClientRepository"/>
       <genFeatures createChild="false" propertyCategory="Additional Parameters" propertyDescription="Axis2 Configuration"
@@ -2145,6 +2150,7 @@
           propertyDescription="Message Processor Parameters" propertySortChoices="true"
           ecoreFeature="ecore:EReference esb.ecore#//MessageProcessor/parameters"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//MessageProcessor/bindProcessor"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//MessageProcessor/taskCount"/>
     </genClasses>
     <genClasses ecoreClass="esb.ecore#//APIHandler">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//APIHandler/className"/>

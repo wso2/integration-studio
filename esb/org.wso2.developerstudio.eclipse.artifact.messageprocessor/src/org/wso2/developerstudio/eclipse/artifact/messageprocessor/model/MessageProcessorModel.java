@@ -68,6 +68,8 @@ public class MessageProcessorModel extends ProjectDataModel {
 	private int forwardingInterval;
 	private int samplingInterval;
 	private int samplingConcurrency;
+	private String dropMessageAfterMaxDeliveryAttempts;
+	private String taskCount;
 	private IContainer saveLocation;
 	private HashMap<String, String> customProcessorParameters = new HashMap<String, String>();
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
@@ -83,6 +85,7 @@ public class MessageProcessorModel extends ProjectDataModel {
 		forwardingInterval = 1000;
 		samplingInterval = 1000;
 		samplingConcurrency = 1;
+		taskCount = "1";
 	}
 
 	public String getMessageProcessorName() {
@@ -285,6 +288,25 @@ public class MessageProcessorModel extends ProjectDataModel {
 	public void setNonRetryHttpStatusCode(String nonRetryHttpStatusCode) {
 		this.nonRetryHttpStatusCodes = nonRetryHttpStatusCode;
 	}
+	
+	
+
+	public String getDropMessageAfterMaxDeliveryAttempts() {
+		return dropMessageAfterMaxDeliveryAttempts;
+	}
+
+	public void setDropMessageAfterMaxDeliveryAttempts(
+			String dropMessageAfterMaxDeliveryAttempts) {
+		this.dropMessageAfterMaxDeliveryAttempts = dropMessageAfterMaxDeliveryAttempts;
+	}
+
+	public String getTaskCount() {
+		return taskCount;
+	}
+
+	public void setTaskCount(String taskCount) {
+		this.taskCount = taskCount;
+	}
 
 	@Override
 	public Object getModelPropertyValue(String key) {
@@ -345,6 +367,10 @@ public class MessageProcessorModel extends ProjectDataModel {
 				modelPropertyValue = getNonRetryHttpStatusCodes();
 			} else if(key.equals("Forwarding_processor.Bind_processor_server")){
 				modelPropertyValue = getBindProcessorToServer();
+			} else if(key.equals("Forwarding_processor.drop_message_after_maximum_delivery_attempts")){
+				modelPropertyValue = getDropMessageAfterMaxDeliveryAttempts();
+			} else if(key.equals("Forwarding_processor.task_count")){
+				modelPropertyValue = getTaskCount();
 			}
 		}
 
@@ -456,6 +482,10 @@ public class MessageProcessorModel extends ProjectDataModel {
 			setNonRetryHttpStatusCode(data.toString());
 		} else if (key.equals("Forwarding_processor.Bind_processor_server")) {
 			setBindProcessorToServer(data.toString());
+		} else if (key.equals("Forwarding_processor.drop_message_after_maximum_delivery_attempts")) {
+			setDropMessageAfterMaxDeliveryAttempts(data.toString());
+		} else if (key.equals("Forwarding_processor.task_count")) {
+			setTaskCount(data.toString());
 		} 
 
 		return returnValue;

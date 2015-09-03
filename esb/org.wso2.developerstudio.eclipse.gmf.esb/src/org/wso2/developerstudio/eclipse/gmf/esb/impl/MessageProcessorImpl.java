@@ -34,6 +34,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
 import org.wso2.developerstudio.eclipse.esb.core.utils.ESBMediaTypeConstants;
+import org.wso2.developerstudio.eclipse.gmf.esb.EnableDisableState;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 import org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor;
 import org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessorParameter;
@@ -62,6 +63,7 @@ import org.wso2.developerstudio.eclipse.platform.core.utils.DeveloperStudioProvi
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getSamplingInterval <em>Sampling Interval</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getSamplingConcurrency <em>Sampling Concurrency</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getMaxDeliveryAttempts <em>Max Delivery Attempts</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getDropMessageAfterMaximumDeliveryAttempts <em>Drop Message After Maximum Delivery Attempts</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getAxis2ClientRepository <em>Axis2 Client Repository</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getAxis2Configuration <em>Axis2 Configuration</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getReplySequenceName <em>Reply Sequence Name</em>}</li>
@@ -72,6 +74,7 @@ import org.wso2.developerstudio.eclipse.platform.core.utils.DeveloperStudioProvi
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getNonRetryHttpStatusCodes <em>Non Retry Http Status Codes</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getParameters <em>Parameters</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#isBindProcessor <em>Bind Processor</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getTaskCount <em>Task Count</em>}</li>
  * </ul>
  * </p>
  *
@@ -299,6 +302,26 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
 	protected int maxDeliveryAttempts = MAX_DELIVERY_ATTEMPTS_EDEFAULT;
 
 	/**
+	 * The default value of the '{@link #getDropMessageAfterMaximumDeliveryAttempts() <em>Drop Message After Maximum Delivery Attempts</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDropMessageAfterMaximumDeliveryAttempts()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final EnableDisableState DROP_MESSAGE_AFTER_MAXIMUM_DELIVERY_ATTEMPTS_EDEFAULT = EnableDisableState.DISABLED;
+
+	/**
+	 * The cached value of the '{@link #getDropMessageAfterMaximumDeliveryAttempts() <em>Drop Message After Maximum Delivery Attempts</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDropMessageAfterMaximumDeliveryAttempts()
+	 * @generated
+	 * @ordered
+	 */
+	protected EnableDisableState dropMessageAfterMaximumDeliveryAttempts = DROP_MESSAGE_AFTER_MAXIMUM_DELIVERY_ATTEMPTS_EDEFAULT;
+
+	/**
 	 * The default value of the '{@link #getAxis2ClientRepository() <em>Axis2 Client Repository</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -467,6 +490,26 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
 	 * @ordered
 	 */
 	protected boolean bindProcessor = BIND_PROCESSOR_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getTaskCount() <em>Task Count</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTaskCount()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String TASK_COUNT_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getTaskCount() <em>Task Count</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTaskCount()
+	 * @generated
+	 * @ordered
+	 */
+	protected String taskCount = TASK_COUNT_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -822,6 +865,27 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EnableDisableState getDropMessageAfterMaximumDeliveryAttempts() {
+		return dropMessageAfterMaximumDeliveryAttempts;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setDropMessageAfterMaximumDeliveryAttempts(EnableDisableState newDropMessageAfterMaximumDeliveryAttempts) {
+		EnableDisableState oldDropMessageAfterMaximumDeliveryAttempts = dropMessageAfterMaximumDeliveryAttempts;
+		dropMessageAfterMaximumDeliveryAttempts = newDropMessageAfterMaximumDeliveryAttempts == null ? DROP_MESSAGE_AFTER_MAXIMUM_DELIVERY_ATTEMPTS_EDEFAULT : newDropMessageAfterMaximumDeliveryAttempts;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_PROCESSOR__DROP_MESSAGE_AFTER_MAXIMUM_DELIVERY_ATTEMPTS, oldDropMessageAfterMaximumDeliveryAttempts, dropMessageAfterMaximumDeliveryAttempts));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public String getAxis2ClientRepository() {
 		return axis2ClientRepository;
 	}
@@ -1067,6 +1131,27 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getTaskCount() {
+		return taskCount;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTaskCount(String newTaskCount) {
+		String oldTaskCount = taskCount;
+		taskCount = newTaskCount;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_PROCESSOR__TASK_COUNT, oldTaskCount, taskCount));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -1116,6 +1201,8 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
 				return getSamplingConcurrency();
 			case EsbPackage.MESSAGE_PROCESSOR__MAX_DELIVERY_ATTEMPTS:
 				return getMaxDeliveryAttempts();
+			case EsbPackage.MESSAGE_PROCESSOR__DROP_MESSAGE_AFTER_MAXIMUM_DELIVERY_ATTEMPTS:
+				return getDropMessageAfterMaximumDeliveryAttempts();
 			case EsbPackage.MESSAGE_PROCESSOR__AXIS2_CLIENT_REPOSITORY:
 				return getAxis2ClientRepository();
 			case EsbPackage.MESSAGE_PROCESSOR__AXIS2_CONFIGURATION:
@@ -1136,6 +1223,8 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
 				return getParameters();
 			case EsbPackage.MESSAGE_PROCESSOR__BIND_PROCESSOR:
 				return isBindProcessor();
+			case EsbPackage.MESSAGE_PROCESSOR__TASK_COUNT:
+				return getTaskCount();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -1185,6 +1274,9 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
 			case EsbPackage.MESSAGE_PROCESSOR__MAX_DELIVERY_ATTEMPTS:
 				setMaxDeliveryAttempts((Integer)newValue);
 				return;
+			case EsbPackage.MESSAGE_PROCESSOR__DROP_MESSAGE_AFTER_MAXIMUM_DELIVERY_ATTEMPTS:
+				setDropMessageAfterMaximumDeliveryAttempts((EnableDisableState)newValue);
+				return;
 			case EsbPackage.MESSAGE_PROCESSOR__AXIS2_CLIENT_REPOSITORY:
 				setAxis2ClientRepository((String)newValue);
 				return;
@@ -1215,6 +1307,9 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
 				return;
 			case EsbPackage.MESSAGE_PROCESSOR__BIND_PROCESSOR:
 				setBindProcessor((Boolean)newValue);
+				return;
+			case EsbPackage.MESSAGE_PROCESSOR__TASK_COUNT:
+				setTaskCount((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -1264,6 +1359,9 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
 			case EsbPackage.MESSAGE_PROCESSOR__MAX_DELIVERY_ATTEMPTS:
 				setMaxDeliveryAttempts(MAX_DELIVERY_ATTEMPTS_EDEFAULT);
 				return;
+			case EsbPackage.MESSAGE_PROCESSOR__DROP_MESSAGE_AFTER_MAXIMUM_DELIVERY_ATTEMPTS:
+				setDropMessageAfterMaximumDeliveryAttempts(DROP_MESSAGE_AFTER_MAXIMUM_DELIVERY_ATTEMPTS_EDEFAULT);
+				return;
 			case EsbPackage.MESSAGE_PROCESSOR__AXIS2_CLIENT_REPOSITORY:
 				setAxis2ClientRepository(AXIS2_CLIENT_REPOSITORY_EDEFAULT);
 				return;
@@ -1293,6 +1391,9 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
 				return;
 			case EsbPackage.MESSAGE_PROCESSOR__BIND_PROCESSOR:
 				setBindProcessor(BIND_PROCESSOR_EDEFAULT);
+				return;
+			case EsbPackage.MESSAGE_PROCESSOR__TASK_COUNT:
+				setTaskCount(TASK_COUNT_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -1330,6 +1431,8 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
 				return samplingConcurrency != SAMPLING_CONCURRENCY_EDEFAULT;
 			case EsbPackage.MESSAGE_PROCESSOR__MAX_DELIVERY_ATTEMPTS:
 				return maxDeliveryAttempts != MAX_DELIVERY_ATTEMPTS_EDEFAULT;
+			case EsbPackage.MESSAGE_PROCESSOR__DROP_MESSAGE_AFTER_MAXIMUM_DELIVERY_ATTEMPTS:
+				return dropMessageAfterMaximumDeliveryAttempts != DROP_MESSAGE_AFTER_MAXIMUM_DELIVERY_ATTEMPTS_EDEFAULT;
 			case EsbPackage.MESSAGE_PROCESSOR__AXIS2_CLIENT_REPOSITORY:
 				return AXIS2_CLIENT_REPOSITORY_EDEFAULT == null ? axis2ClientRepository != null : !AXIS2_CLIENT_REPOSITORY_EDEFAULT.equals(axis2ClientRepository);
 			case EsbPackage.MESSAGE_PROCESSOR__AXIS2_CONFIGURATION:
@@ -1350,6 +1453,8 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
 				return parameters != null && !parameters.isEmpty();
 			case EsbPackage.MESSAGE_PROCESSOR__BIND_PROCESSOR:
 				return bindProcessor != BIND_PROCESSOR_EDEFAULT;
+			case EsbPackage.MESSAGE_PROCESSOR__TASK_COUNT:
+				return TASK_COUNT_EDEFAULT == null ? taskCount != null : !TASK_COUNT_EDEFAULT.equals(taskCount);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -1384,6 +1489,8 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
 		result.append(samplingConcurrency);
 		result.append(", maxDeliveryAttempts: ");
 		result.append(maxDeliveryAttempts);
+		result.append(", dropMessageAfterMaximumDeliveryAttempts: ");
+		result.append(dropMessageAfterMaximumDeliveryAttempts);
 		result.append(", axis2ClientRepository: ");
 		result.append(axis2ClientRepository);
 		result.append(", axis2Configuration: ");
@@ -1398,6 +1505,8 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
 		result.append(nonRetryHttpStatusCodes);
 		result.append(", bindProcessor: ");
 		result.append(bindProcessor);
+		result.append(", taskCount: ");
+		result.append(taskCount);
 		result.append(')');
 		return result.toString();
 	}

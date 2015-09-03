@@ -100,6 +100,12 @@ public class MessageProcessorTransformer {
 			if (StringUtils.isNotBlank(model.getNonRetryHttpStatusCodes())) {
 				parameters.put("non.retry.status.codes", model.getNonRetryHttpStatusCodes());
 			}
+			if (StringUtils.isNotBlank(model.getDropMessageAfterMaximumDeliveryAttempts().getLiteral())) {
+				parameters.put("max.delivery.drop", model.getDropMessageAfterMaximumDeliveryAttempts().getLiteral());
+			}
+			if (StringUtils.isNotBlank(model.getTaskCount())) {
+				parameters.put("member.count", model.getTaskCount());
+			}
 
 		} else if (model.getProcessorType() == MessageProcessorType.MSG_SAMPLING) {			
 			className = "org.apache.synapse.message.processor.impl.sampler.SamplingProcessor";

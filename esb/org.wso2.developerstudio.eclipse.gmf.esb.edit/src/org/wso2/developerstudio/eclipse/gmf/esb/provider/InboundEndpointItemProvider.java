@@ -172,15 +172,29 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 			addGroupIdPropertyDescriptor(object);
 			addContentTypePropertyDescriptor(object);
 			addConsumerTypePropertyDescriptor(object);
-			addTopicsOrTopicFilterPropertyDescriptor(object);
-			addTopicsNamePropertyDescriptor(object);
-			addTopicFilterFromPropertyDescriptor(object);
-			addTopicFilterNamePropertyDescriptor(object);
-			addSimpleConsumerTopicPropertyDescriptor(object);
-			addSimpleConsumerBrokersPropertyDescriptor(object);
-			addSimpleConsumerPortPropertyDescriptor(object);
-			addSimpleConsumerPartitionPropertyDescriptor(object);
-			addSimpleConsumerMaxMessagesToReadPropertyDescriptor(object);
+
+			switch (inboundEndpoint.getConsumerType()) {
+			case HIGHLEVEL:
+				addTopicsOrTopicFilterPropertyDescriptor(object);
+				switch (inboundEndpoint.getTopicsOrTopicFilter()) {
+				case TOPICS:
+					addTopicsNamePropertyDescriptor(object);
+					break;
+				case TOPIC_FILTER:
+					addTopicFilterFromPropertyDescriptor(object);
+					addTopicFilterNamePropertyDescriptor(object);
+					break;
+				}
+				break;
+			case SIMPLE:
+				addSimpleConsumerTopicPropertyDescriptor(object);
+				addSimpleConsumerBrokersPropertyDescriptor(object);
+				addSimpleConsumerPortPropertyDescriptor(object);
+				addSimpleConsumerPartitionPropertyDescriptor(object);
+				addSimpleConsumerMaxMessagesToReadPropertyDescriptor(object);
+				break;
+			}
+
 			addThreadCountPropertyDescriptor(object);
 			addConsumerIdPropertyDescriptor(object);
 			addSocketTimeoutMsPropertyDescriptor(object);
@@ -1678,13 +1692,19 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 	 * @generated
 	 */
 	protected void addIntervalPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_InboundEndpoint_interval_feature"),
-				getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_interval_feature",
-						"_UI_InboundEndpoint_type"), EsbPackage.Literals.INBOUND_ENDPOINT__INTERVAL, true, false,
-				false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_InboundEndpoint_interval_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_interval_feature", "_UI_InboundEndpoint_type"),
+				 EsbPackage.Literals.INBOUND_ENDPOINT__INTERVAL,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
@@ -1694,13 +1714,19 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 	 * @generated
 	 */
 	protected void addSequentialPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_InboundEndpoint_sequential_feature"),
-				getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_sequential_feature",
-						"_UI_InboundEndpoint_type"), EsbPackage.Literals.INBOUND_ENDPOINT__SEQUENTIAL, true, false,
-				false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_InboundEndpoint_sequential_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_sequential_feature", "_UI_InboundEndpoint_type"),
+				 EsbPackage.Literals.INBOUND_ENDPOINT__SEQUENTIAL,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
@@ -1710,13 +1736,19 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 	 * @generated
 	 */
 	protected void addCoordinationPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_InboundEndpoint_coordination_feature"),
-				getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_coordination_feature",
-						"_UI_InboundEndpoint_type"), EsbPackage.Literals.INBOUND_ENDPOINT__COORDINATION, true, false,
-				false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_InboundEndpoint_coordination_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_coordination_feature", "_UI_InboundEndpoint_type"),
+				 EsbPackage.Literals.INBOUND_ENDPOINT__COORDINATION,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**

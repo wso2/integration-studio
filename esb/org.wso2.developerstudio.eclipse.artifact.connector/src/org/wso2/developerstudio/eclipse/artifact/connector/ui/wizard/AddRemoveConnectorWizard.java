@@ -19,6 +19,8 @@ package org.wso2.developerstudio.eclipse.artifact.connector.ui.wizard;
 import java.io.File;
 import java.util.regex.Pattern;
 
+import javax.xml.stream.FactoryConfigurationError;
+
 import org.apache.maven.model.Dependency;
 import org.apache.maven.model.Plugin;
 import org.apache.maven.project.MavenProject;
@@ -32,6 +34,7 @@ import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.eclipse.artifact.connector.Activator;
@@ -48,7 +51,11 @@ public class AddRemoveConnectorWizard extends AbstractWSO2ProjectCreationWizard 
 
 	private static final String GROUP_ID =".lib";
 	private ConnectorModel libraryModel;
-	private ConnectorWizardPage wizardPage;
+	private ConnectorModel removeConnectorModel;	
+	private ConnectorProjectArtifact connectorProjectArtifact;
+	private ConnectorWizardPage addWizardPage;
+	private ImportRemoveSelectionWizardPage selectionPage;
+	private RemoveConnectorWizardPage removeWizardPage;
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 	private MavenProject mavenProject;
 	private IProject project;
@@ -104,27 +111,56 @@ public class AddRemoveConnectorWizard extends AbstractWSO2ProjectCreationWizard 
 				}
 			}
 
-			wizardPage = new ConnectorWizardPage(true);
+			addWizardPage = new ConnectorWizardPage(true);
 			super.setModel(libraryModel);
 		}
-		wizardPage = new ConnectorWizardPage(true);
+		addWizardPage = new ConnectorWizardPage(true);
+		removeConnectorModel = new ConnectorModel();		
+		connectorProjectArtifact = new ConnectorProjectArtifact();
+		init();
+	}	
+	
+	public void init() {
+		selectionPage = new ImportRemoveSelectionWizardPage();
+		addWizardPage = new ConnectorWizardPage(true);
+		removeWizardPage = new RemoveConnectorWizardPage(project, connectorProjectArtifact);
+		setWindowTitle("Add or Remove Connectors");
 	}
 
 	@Override
 	public void addPages() {
-		addPage(wizardPage);
+		addPage(selectionPage);
+		addPage(addWizardPage);
+		addPage(removeWizardPage);
 	}
 
 	@Override
 	public boolean canFinish() {
-		if (wizardPage != null) {
-			return wizardPage.isValid();
-		} else {
+		if (addWizardPage.equals(getContainer().getCurrentPage())) {
+			return addWizardPage.isValid();
+		} else if(removeWizardPage.equals(getContainer().getCurrentPage())){
 			return true;
 		}
+		return false;
 	}
 
-	public boolean performFinish() {
+	public boolean performFinish() {		
+		if(addWizardPage.equals(getContainer().getCurrentPage())){
+			return performFinishAdd();
+			
+		}else if(removeWizardPage.equals(getContainer().getCurrentPage())){
+			try {
+				return performFinishRemove();
+			} catch (FactoryConfigurationError | Exception e) {
+				log.error("Error while removing connectors from the project : "+project.getName(), e);
+				MessageDialog.openError(getShell(), "Error while removing connectors from the project : "+project.getName(), e.getMessage());
+				return false;
+			}
+		}
+		return false;
+	}	
+	
+	private boolean performFinishAdd(){
 		boolean result;
 		try {
 			copyConnectors();
@@ -135,6 +171,21 @@ public class AddRemoveConnectorWizard extends AbstractWSO2ProjectCreationWizard 
 			result = false;
 		}
 		return result;
+	}
+	
+	private boolean performFinishRemove() throws FactoryConfigurationError, Exception{
+		for (TableItem tableItem : removeWizardPage.getTable().getItems()) {
+			if (tableItem.getChecked()) {				
+				ConnectorArtifact connectorArtifact= (ConnectorArtifact) tableItem.getData();
+				connectorProjectArtifact.removeESBArtifact(connectorArtifact);				
+				project.getFile(connectorArtifact.getFile()).delete(true, new NullProgressMonitor());
+			}
+		}
+	
+		connectorProjectArtifact.toFile();
+		project.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
+		
+		return true;
 	}
 
 	private void copyConnectors() throws Exception{
@@ -185,5 +236,29 @@ public class AddRemoveConnectorWizard extends AbstractWSO2ProjectCreationWizard 
 
 	public ConnectorModel getLibraryModel() {
 		return libraryModel;
+	}
+	
+	public ConnectorWizardPage getAddWizardPage() {
+		return addWizardPage;
+	}
+
+	public void setAddWizardPage(ConnectorWizardPage addWizardPage) {
+		this.addWizardPage = addWizardPage;
+	}
+
+	public RemoveConnectorWizardPage getRemoveWizardPage() {
+		return removeWizardPage;
+	}
+
+	public void setRemoveWizardPage(RemoveConnectorWizardPage removeWizardPage) {
+		this.removeWizardPage = removeWizardPage;
+	}
+	
+	public ConnectorModel getRemoveConnectorModel() {
+		return removeConnectorModel;
+	}
+
+	public void setRemoveConnectorModel(ConnectorModel removeConnectorModel) {
+		this.removeConnectorModel = removeConnectorModel;
 	}
 }

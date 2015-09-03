@@ -99,7 +99,7 @@ public class ScriptMediatorImpl extends MediatorImpl implements ScriptMediator {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String MEDIATE_FUNCTION_EDEFAULT = "mediate";
+	protected static final String MEDIATE_FUNCTION_EDEFAULT = "";
 
 	/**
 	 * The cached value of the '{@link #getMediateFunction() <em>Mediate Function</em>}' attribute.

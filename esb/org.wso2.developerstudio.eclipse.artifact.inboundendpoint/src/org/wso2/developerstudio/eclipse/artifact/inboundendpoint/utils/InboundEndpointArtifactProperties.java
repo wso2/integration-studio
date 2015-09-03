@@ -30,6 +30,7 @@ public final class InboundEndpointArtifactProperties extends NLS {
 	public static String typeHL7;
 	public static String typeKAFKA;
 	public static String typeCXF_WS_RM;
+	public static String typeMQTT;
 	
 
 	// project wizard page properties

@@ -65,7 +65,7 @@ public class BPELSecurityWizardPage extends WizardPage {
 	private static final String APPLY_SECURITY_LABEL = "Apply Security";
 	private static final String SERVICE_LIST_LABEL = "Services";
 	private static final String POLICY_FILE_LABEL = "Policy File";
-	private static final String BROWSE_LABEL = "Browse...";
+	private static final String BROWSE_LABEL = "Browse";
 
 	private static final String BPEL_CONTENT = "bpelContent";
 	private static final String SERVICE_XML_FILE = "service.xml";
@@ -108,11 +108,11 @@ public class BPELSecurityWizardPage extends WizardPage {
 		setControl(container);
 
 		Label lblServiceLabel = new Label(container, SWT.NONE);
-		lblServiceLabel.setBounds(10, 10, 108, 17);
+		lblServiceLabel.setBounds(20, 10, 108, 17);
 		lblServiceLabel.setText(SERVICE_LIST_LABEL);
 
 		cmbServiceList = new Combo(container, SWT.READ_ONLY);
-		cmbServiceList.setBounds(164, 9, 366, 27);
+		cmbServiceList.setBounds(100, 10, 366, 15);
 		fillComboBoxWithServices();
 
 		cmbServiceList.addSelectionListener(new SelectionListener() {
@@ -135,11 +135,11 @@ public class BPELSecurityWizardPage extends WizardPage {
 		});
 
 		Label lblPolicyLabel = new Label(container, SWT.NONE);
-		lblPolicyLabel.setBounds(10, 10, 108, 17);
-		lblPolicyLabel.setText(APPLY_SECURITY_LABEL);
+		lblPolicyLabel.setBounds(20, 45, 152, 20);
+		lblPolicyLabel.setText(POLICY_FILE_LABEL);
 
 		txtPolicyFile = new Text(container, SWT.BORDER);
-		txtPolicyFile.setBounds(164, 49, 366, 27);
+		txtPolicyFile.setBounds(100, 45, 366, 20);
 		value = getPolicyFromTheSource();
 		if (StringUtils.isNotEmpty(value)) {
 			txtPolicyFile.setText(value);
@@ -149,7 +149,7 @@ public class BPELSecurityWizardPage extends WizardPage {
 
 		btnBrowsePolicyFile = new Button(container, SWT.NONE);
 		btnBrowsePolicyFile.setText(BROWSE_LABEL);
-		btnBrowsePolicyFile.setBounds(536, 49, 100, 27);
+		btnBrowsePolicyFile.setBounds(470, 45, 100, 27);
 
 		btnBrowsePolicyFile.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
@@ -159,10 +159,6 @@ public class BPELSecurityWizardPage extends WizardPage {
 			}
 
 		});
-
-		Label lblPolicyFile = new Label(container, SWT.NONE);
-		lblPolicyFile.setBounds(10, 53, 152, 20);
-		lblPolicyFile.setText(POLICY_FILE_LABEL);
 
 		txtPolicyFile.addListener(SWT.Modify, new Listener() {
 			public void handleEvent(Event event) {

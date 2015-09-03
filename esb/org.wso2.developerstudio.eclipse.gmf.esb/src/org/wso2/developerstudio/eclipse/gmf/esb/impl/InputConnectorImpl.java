@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+import org.wso2.developerstudio.eclipse.gmf.esb.APIResourceOutputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.CallMediatorEndpointOutputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.CloneMediatorTargetOutputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.ComplexEndpointsOutputConnector;
@@ -27,6 +28,8 @@ import org.wso2.developerstudio.eclipse.gmf.esb.InputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.LoadBalanceEndPointOutputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.OutputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.ProxyInSequenceInputConnector;
+import org.wso2.developerstudio.eclipse.gmf.esb.ProxyOutputConnector;
+import org.wso2.developerstudio.eclipse.gmf.esb.ProxyServiceFaultContainer;
 import org.wso2.developerstudio.eclipse.gmf.esb.RecipientListEndPointOutputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.SendMediatorEndpointOutputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.SendMediatorOutputConnector;
@@ -134,6 +137,12 @@ public abstract class InputConnectorImpl extends EsbConnectorImpl implements Inp
 				}
 			}
 			return true;
+		}
+		/*
+		 * Avoid connecting Proxy/API resource output connector to the mediator in the fault sequence(TOOLS-3081)
+		 */
+		if((sourceEnd instanceof ProxyOutputConnector || sourceEnd instanceof APIResourceOutputConnector) && this.eContainer.eContainer().eContainer() instanceof ProxyServiceFaultContainer){
+			return false;
 		}
 		// By default we allow only one incoming connection from any source.
 		return getIncomingLinks().isEmpty();

@@ -20,6 +20,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.synapse.endpoints.Endpoint;
 import org.apache.synapse.mediators.Value;
 import org.apache.synapse.mediators.base.SequenceMediator;
@@ -67,12 +68,16 @@ public class ScriptMediatorTransformer extends AbstractEsbNodeTransformer {
 		}
 	}
 	
-	private org.apache.synapse.mediators.bsf.ScriptMediator createScriptMediator(EsbNode subject) throws JaxenException{
+	private org.apache.synapse.mediators.bsf.ScriptMediator createScriptMediator(EsbNode subject) throws JaxenException, TransformerException{
 		Assert.isTrue(subject instanceof ScriptMediator, "Invalid subject.");
 		ScriptMediator visualScript = (ScriptMediator)subject;
 		ScriptType scriptType = visualScript.getScriptType();
 		int scriptTypeValue = scriptType.getValue();
 		String language=visualScript.getScriptLanguage().getLiteral();
+		String function = visualScript.getMediateFunction();
+		if(scriptTypeValue == 1 && StringUtils.isBlank(function)){
+			throw new TransformerException("Function cannot be empty in Script mediator. Please specify a function");
+		}
 		org.apache.synapse.mediators.bsf.ScriptMediator scriptMediator =null;
 		if(scriptTypeValue==0){
 		String scriptSourceCode=visualScript.getScriptBody();
@@ -98,7 +103,7 @@ public class ScriptMediatorTransformer extends AbstractEsbNodeTransformer {
 				}
 		        value = new Value(synapseXPath);
 		    }
-			scriptMediator = new org.apache.synapse.mediators.bsf.ScriptMediator(language,includeMap,value,visualScript.getMediateFunction(),null);
+			scriptMediator = new org.apache.synapse.mediators.bsf.ScriptMediator(language,includeMap,value,function,null);
 		}
 		setCommonProperties(scriptMediator, visualScript);
  

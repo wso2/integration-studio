@@ -68,9 +68,16 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 		switch (inboundEndpoint.getType()) {
 		case HTTP:
 			addInboundHttpPortPropertyDescriptor(object);
-			addApiDispatchingEnabledPropertyDescriptor(object);
+			addInboundWorkerPoolSizeCorePropertyDescriptor(object);
+			addInboundWorkerPoolSizeMaxPropertyDescriptor(object);
+			addInboundWorkerThreadKeepAliveSecPropertyDescriptor(object);
+			addInboundWorkerPoolQueueLengthPropertyDescriptor(object);
+			addInboundThreadGroupIdPropertyDescriptor(object);
+			addInboundThreadIdPropertyDescriptor(object);
+			addDispatchFilterPatternPropertyDescriptor(object);
 			break;
 		case FILE:
+			addIntervalPropertyDescriptor(object);
 			addSequentialPropertyDescriptor(object);
 			addCoordinationPropertyDescriptor(object);
 			addTransportVFSFileURIPropertyDescriptor(object);
@@ -87,6 +94,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 			addTransportVFSMoveAfterErrorsPropertyDescriptor(object);
 			addTransportVFSActionAfterFailurePropertyDescriptor(object);
 			addTransportVFSMoveAfterFailurePropertyDescriptor(object);
+			addTransportVFSMoveTimestampFormatPropertyDescriptor(object);
 			addTransportVFSAutoLockReleasePropertyDescriptor(object);
 			addTransportVFSAutoLockReleaseIntervalPropertyDescriptor(object);
 			addTransportVFSLockReleaseSameNodePropertyDescriptor(object);
@@ -96,11 +104,15 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 			addTransportVFSFileSortAscendingPropertyDescriptor(object);
 			addTransportVFSSubFolderTimestampFormatPropertyDescriptor(object);
 			addTransportVFSCreateFolderPropertyDescriptor(object);
+			addTransportVFSStreamingPropertyDescriptor(object);
+			addTransportVFSBuildPropertyDescriptor(object);
+			addTransportVFSStreamingPropertyDescriptor(object);
+			addTransportVFSBuildPropertyDescriptor(object);
 			break;
 		case JMS:
-			addSequentialPropertyDescriptor(object);
-			addCoordinationPropertyDescriptor(object);
 			addIntervalPropertyDescriptor(object);
+			addSequentialPropertyDescriptor(object);
+			addCoordinationPropertyDescriptor(object);			
 			addJavaNamingFactoryInitialPropertyDescriptor(object);
 			addJavaNamingProviderUrlPropertyDescriptor(object);
 			addTransportJMSConnectionFactoryJNDINamePropertyDescriptor(object);
@@ -117,6 +129,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 			addTransportJMSMessageSelectorPropertyDescriptor(object);
 			addTransportJMSReceiveTimeoutPropertyDescriptor(object);
 			addTransportJMSContentTypePropertyDescriptor(object);
+			addTransportJMSReplyDestinationPropertyDescriptor(object);
 			break;
 		case CUSTOM:
 			addClassPropertyDescriptor(object);
@@ -128,12 +141,18 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 		case HTTPS:
 			addInboundHttpPortPropertyDescriptor(object);
 			addKeystorePropertyDescriptor(object);
-			addApiDispatchingEnabledPropertyDescriptor(object);
+			addInboundWorkerPoolSizeCorePropertyDescriptor(object);
+			addInboundWorkerPoolSizeMaxPropertyDescriptor(object);
+			addInboundWorkerThreadKeepAliveSecPropertyDescriptor(object);
+			addInboundWorkerPoolQueueLengthPropertyDescriptor(object);
+			addInboundThreadGroupIdPropertyDescriptor(object);
+			addInboundThreadIdPropertyDescriptor(object);
 			addTruststorePropertyDescriptor(object);
 			addSslVerifyClientPropertyDescriptor(object);
 			addSslProtocolPropertyDescriptor(object);
 			addHttpsProtocolsPropertyDescriptor(object);
 			addCertificateRevocationVerifierPropertyDescriptor(object);
+			addDispatchFilterPatternPropertyDescriptor(object);
 			break;
 		case HL7:
 			addInboundHL7PortPropertyDescriptor(object);
@@ -153,12 +172,6 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 			addGroupIdPropertyDescriptor(object);
 			addConsumerTypePropertyDescriptor(object);
 			addContentTypePropertyDescriptor(object);
-			addTopicsPropertyDescriptor(object);
-			addSimpleTopicPropertyDescriptor(object);
-			addSimpleBrokersPropertyDescriptor(object);
-			addSimplePortPropertyDescriptor(object);
-			addSimplePartitionPropertyDescriptor(object);
-			addSimpleMaxMessagesToReadPropertyDescriptor(object);
 			addThreadCountPropertyDescriptor(object);
 			addZookeeperSessionTimeoutMsPropertyDescriptor(object);
 			addZookeeperSyncTimeMsPropertyDescriptor(object);
@@ -171,6 +184,22 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 			addInboundCxfRmConfigFilePropertyDescriptor(object);
 			addEnableSSLPropertyDescriptor(object);
 			break;
+		case MQTT:
+			addSequentialPropertyDescriptor(object);
+			addCoordinationPropertyDescriptor(object);
+			addTransportMQTTConnectionFactoryPropertyDescriptor(object);
+			addTransportMQTTServerHostNamePropertyDescriptor(object);
+			addTransportMQTTServerPortPropertyDescriptor(object);
+			addTransportMQTTTopicNamePropertyDescriptor(object);
+			addContentTypePropertyDescriptor(object);
+			addTransportMQTTSubscriptionQOSPropertyDescriptor(object);
+			addTransportMQTTSessionCleanPropertyDescriptor(object);
+			addTransportMQTTSslEnablePropertyDescriptor(object);
+			addTransportMQTTTemporaryStoreDirectoryPropertyDescriptor(object);
+			addTransportMQTTSubscriptionUsernamePropertyDescriptor(object);
+			addTransportMQTTSubscriptionPasswordPropertyDescriptor(object);
+			addTransportMQTTClientIdPropertyDescriptor(object);
+			addIntervalPropertyDescriptor(object);
 		default:
 			break;
 		}
@@ -464,6 +493,204 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 	}
 
 	/**
+	 * This adds a property descriptor for the Topics Or Topic Filter feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addTopicsOrTopicFilterPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_InboundEndpoint_topicsOrTopicFilter_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_topicsOrTopicFilter_feature", "_UI_InboundEndpoint_type"),
+				 EsbPackage.Literals.INBOUND_ENDPOINT__TOPICS_OR_TOPIC_FILTER,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Topics Name feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addTopicsNamePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_InboundEndpoint_topicsName_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_topicsName_feature", "_UI_InboundEndpoint_type"),
+				 EsbPackage.Literals.INBOUND_ENDPOINT__TOPICS_NAME,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Topic Filter From feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addTopicFilterFromPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_InboundEndpoint_topicFilterFrom_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_topicFilterFrom_feature", "_UI_InboundEndpoint_type"),
+				 EsbPackage.Literals.INBOUND_ENDPOINT__TOPIC_FILTER_FROM,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Topic Filter Name feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addTopicFilterNamePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_InboundEndpoint_topicFilterName_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_topicFilterName_feature", "_UI_InboundEndpoint_type"),
+				 EsbPackage.Literals.INBOUND_ENDPOINT__TOPIC_FILTER_NAME,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Simple Consumer Topic feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addSimpleConsumerTopicPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_InboundEndpoint_simpleConsumerTopic_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_simpleConsumerTopic_feature", "_UI_InboundEndpoint_type"),
+				 EsbPackage.Literals.INBOUND_ENDPOINT__SIMPLE_CONSUMER_TOPIC,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Simple Consumer Brokers feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addSimpleConsumerBrokersPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_InboundEndpoint_simpleConsumerBrokers_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_simpleConsumerBrokers_feature", "_UI_InboundEndpoint_type"),
+				 EsbPackage.Literals.INBOUND_ENDPOINT__SIMPLE_CONSUMER_BROKERS,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Simple Consumer Port feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addSimpleConsumerPortPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_InboundEndpoint_simpleConsumerPort_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_simpleConsumerPort_feature", "_UI_InboundEndpoint_type"),
+				 EsbPackage.Literals.INBOUND_ENDPOINT__SIMPLE_CONSUMER_PORT,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Simple Consumer Partition feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addSimpleConsumerPartitionPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_InboundEndpoint_simpleConsumerPartition_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_simpleConsumerPartition_feature", "_UI_InboundEndpoint_type"),
+				 EsbPackage.Literals.INBOUND_ENDPOINT__SIMPLE_CONSUMER_PARTITION,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Simple Consumer Max Messages To Read feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addSimpleConsumerMaxMessagesToReadPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_InboundEndpoint_simpleConsumerMaxMessagesToRead_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_simpleConsumerMaxMessagesToRead_feature", "_UI_InboundEndpoint_type"),
+				 EsbPackage.Literals.INBOUND_ENDPOINT__SIMPLE_CONSUMER_MAX_MESSAGES_TO_READ,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This adds a property descriptor for the Content Type feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -477,138 +704,6 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 				 getString("_UI_InboundEndpoint_contentType_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_contentType_feature", "_UI_InboundEndpoint_type"),
 				 EsbPackage.Literals.INBOUND_ENDPOINT__CONTENT_TYPE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 "Parameters",
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Topics feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	protected void addTopicsPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_InboundEndpoint_topics_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_topics_feature", "_UI_InboundEndpoint_type"),
-				 EsbPackage.Literals.INBOUND_ENDPOINT__TOPICS,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 "Parameters",
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Simple Topic feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	protected void addSimpleTopicPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_InboundEndpoint_simpleTopic_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_simpleTopic_feature", "_UI_InboundEndpoint_type"),
-				 EsbPackage.Literals.INBOUND_ENDPOINT__SIMPLE_TOPIC,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 "Parameters",
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Simple Brokers feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	protected void addSimpleBrokersPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_InboundEndpoint_simpleBrokers_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_simpleBrokers_feature", "_UI_InboundEndpoint_type"),
-				 EsbPackage.Literals.INBOUND_ENDPOINT__SIMPLE_BROKERS,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 "Parameters",
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Simple Port feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	protected void addSimplePortPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_InboundEndpoint_simplePort_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_simplePort_feature", "_UI_InboundEndpoint_type"),
-				 EsbPackage.Literals.INBOUND_ENDPOINT__SIMPLE_PORT,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 "Parameters",
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Simple Partition feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	protected void addSimplePartitionPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_InboundEndpoint_simplePartition_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_simplePartition_feature", "_UI_InboundEndpoint_type"),
-				 EsbPackage.Literals.INBOUND_ENDPOINT__SIMPLE_PARTITION,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 "Parameters",
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Simple Max Messages To Read feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	protected void addSimpleMaxMessagesToReadPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_InboundEndpoint_simpleMaxMessagesToRead_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_simpleMaxMessagesToRead_feature", "_UI_InboundEndpoint_type"),
-				 EsbPackage.Literals.INBOUND_ENDPOINT__SIMPLE_MAX_MESSAGES_TO_READ,
 				 true,
 				 false,
 				 false,
@@ -640,6 +735,138 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 	}
 
 	/**
+	 * This adds a property descriptor for the Consumer Id feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addConsumerIdPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_InboundEndpoint_consumerId_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_consumerId_feature", "_UI_InboundEndpoint_type"),
+				 EsbPackage.Literals.INBOUND_ENDPOINT__CONSUMER_ID,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Socket Timeout Ms feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addSocketTimeoutMsPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_InboundEndpoint_socketTimeoutMs_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_socketTimeoutMs_feature", "_UI_InboundEndpoint_type"),
+				 EsbPackage.Literals.INBOUND_ENDPOINT__SOCKET_TIMEOUT_MS,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Socket Receive Buffer Bytes feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addSocketReceiveBufferBytesPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_InboundEndpoint_socketReceiveBufferBytes_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_socketReceiveBufferBytes_feature", "_UI_InboundEndpoint_type"),
+				 EsbPackage.Literals.INBOUND_ENDPOINT__SOCKET_RECEIVE_BUFFER_BYTES,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Fetch Message Max Bytes feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addFetchMessageMaxBytesPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_InboundEndpoint_fetchMessageMaxBytes_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_fetchMessageMaxBytes_feature", "_UI_InboundEndpoint_type"),
+				 EsbPackage.Literals.INBOUND_ENDPOINT__FETCH_MESSAGE_MAX_BYTES,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Num Consumer Fetches feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addNumConsumerFetchesPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_InboundEndpoint_numConsumerFetches_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_numConsumerFetches_feature", "_UI_InboundEndpoint_type"),
+				 EsbPackage.Literals.INBOUND_ENDPOINT__NUM_CONSUMER_FETCHES,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Auto Commit Enable feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addAutoCommitEnablePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_InboundEndpoint_autoCommitEnable_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_autoCommitEnable_feature", "_UI_InboundEndpoint_type"),
+				 EsbPackage.Literals.INBOUND_ENDPOINT__AUTO_COMMIT_ENABLE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This adds a property descriptor for the Zookeeper Session Timeout Ms feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -658,6 +885,28 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 "Parameters",
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Zookeeper Connection Timeout Ms feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addZookeeperConnectionTimeoutMsPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_InboundEndpoint_zookeeperConnectionTimeoutMs_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_zookeeperConnectionTimeoutMs_feature", "_UI_InboundEndpoint_type"),
+				 EsbPackage.Literals.INBOUND_ENDPOINT__ZOOKEEPER_CONNECTION_TIMEOUT_MS,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
 				 null));
 	}
 
@@ -684,6 +933,116 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 	}
 
 	/**
+	 * This adds a property descriptor for the Offsets Storage feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addOffsetsStoragePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_InboundEndpoint_offsetsStorage_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_offsetsStorage_feature", "_UI_InboundEndpoint_type"),
+				 EsbPackage.Literals.INBOUND_ENDPOINT__OFFSETS_STORAGE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Offsets Channel Backoff Ms feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addOffsetsChannelBackoffMsPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_InboundEndpoint_offsetsChannelBackoffMs_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_offsetsChannelBackoffMs_feature", "_UI_InboundEndpoint_type"),
+				 EsbPackage.Literals.INBOUND_ENDPOINT__OFFSETS_CHANNEL_BACKOFF_MS,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Offsets Channel Socket Timeout Ms feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addOffsetsChannelSocketTimeoutMsPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_InboundEndpoint_offsetsChannelSocketTimeoutMs_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_offsetsChannelSocketTimeoutMs_feature", "_UI_InboundEndpoint_type"),
+				 EsbPackage.Literals.INBOUND_ENDPOINT__OFFSETS_CHANNEL_SOCKET_TIMEOUT_MS,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Offsets Commit Max Retries feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addOffsetsCommitMaxRetriesPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_InboundEndpoint_offsetsCommitMaxRetries_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_offsetsCommitMaxRetries_feature", "_UI_InboundEndpoint_type"),
+				 EsbPackage.Literals.INBOUND_ENDPOINT__OFFSETS_COMMIT_MAX_RETRIES,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Dual Commit Enabled feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addDualCommitEnabledPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_InboundEndpoint_dualCommitEnabled_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_dualCommitEnabled_feature", "_UI_InboundEndpoint_type"),
+				 EsbPackage.Literals.INBOUND_ENDPOINT__DUAL_COMMIT_ENABLED,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This adds a property descriptor for the Auto Commit Interval Ms feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -706,6 +1065,138 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 	}
 
 	/**
+	 * This adds a property descriptor for the Queued Max Message Chunks feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addQueuedMaxMessageChunksPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_InboundEndpoint_queuedMaxMessageChunks_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_queuedMaxMessageChunks_feature", "_UI_InboundEndpoint_type"),
+				 EsbPackage.Literals.INBOUND_ENDPOINT__QUEUED_MAX_MESSAGE_CHUNKS,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Rebalance Max Retries feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addRebalanceMaxRetriesPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_InboundEndpoint_rebalanceMaxRetries_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_rebalanceMaxRetries_feature", "_UI_InboundEndpoint_type"),
+				 EsbPackage.Literals.INBOUND_ENDPOINT__REBALANCE_MAX_RETRIES,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Fetch Min Bytes feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addFetchMinBytesPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_InboundEndpoint_fetchMinBytes_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_fetchMinBytes_feature", "_UI_InboundEndpoint_type"),
+				 EsbPackage.Literals.INBOUND_ENDPOINT__FETCH_MIN_BYTES,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Fetch Wait Max Ms feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addFetchWaitMaxMsPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_InboundEndpoint_fetchWaitMaxMs_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_fetchWaitMaxMs_feature", "_UI_InboundEndpoint_type"),
+				 EsbPackage.Literals.INBOUND_ENDPOINT__FETCH_WAIT_MAX_MS,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Rebalance Backoff Ms feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addRebalanceBackoffMsPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_InboundEndpoint_rebalanceBackoffMs_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_rebalanceBackoffMs_feature", "_UI_InboundEndpoint_type"),
+				 EsbPackage.Literals.INBOUND_ENDPOINT__REBALANCE_BACKOFF_MS,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Refresh Leader Backoff Ms feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addRefreshLeaderBackoffMsPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_InboundEndpoint_refreshLeaderBackoffMs_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_refreshLeaderBackoffMs_feature", "_UI_InboundEndpoint_type"),
+				 EsbPackage.Literals.INBOUND_ENDPOINT__REFRESH_LEADER_BACKOFF_MS,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This adds a property descriptor for the Auto Offset Reset feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -724,6 +1215,94 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 "Parameters",
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Consumer Timeout Ms feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addConsumerTimeoutMsPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_InboundEndpoint_consumerTimeoutMs_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_consumerTimeoutMs_feature", "_UI_InboundEndpoint_type"),
+				 EsbPackage.Literals.INBOUND_ENDPOINT__CONSUMER_TIMEOUT_MS,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Exclude Internal Topics feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addExcludeInternalTopicsPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_InboundEndpoint_excludeInternalTopics_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_excludeInternalTopics_feature", "_UI_InboundEndpoint_type"),
+				 EsbPackage.Literals.INBOUND_ENDPOINT__EXCLUDE_INTERNAL_TOPICS,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Partition Assignment Strategy feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addPartitionAssignmentStrategyPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_InboundEndpoint_partitionAssignmentStrategy_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_partitionAssignmentStrategy_feature", "_UI_InboundEndpoint_type"),
+				 EsbPackage.Literals.INBOUND_ENDPOINT__PARTITION_ASSIGNMENT_STRATEGY,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Client Id feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addClientIdPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_InboundEndpoint_clientId_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_clientId_feature", "_UI_InboundEndpoint_type"),
+				 EsbPackage.Literals.INBOUND_ENDPOINT__CLIENT_ID,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
 				 null));
 	}
 
@@ -905,6 +1484,160 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 				getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_inboundHttpPort_feature",
 						"_UI_InboundEndpoint_type"), EsbPackage.Literals.INBOUND_ENDPOINT__INBOUND_HTTP_PORT, true,
 				false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, "Parameters", null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Inbound Worker Pool Size Core feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	protected void addInboundWorkerPoolSizeCorePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_InboundEndpoint_inboundWorkerPoolSizeCore_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_inboundWorkerPoolSizeCore_feature", "_UI_InboundEndpoint_type"),
+				 EsbPackage.Literals.INBOUND_ENDPOINT__INBOUND_WORKER_POOL_SIZE_CORE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 "Parameters",
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Inbound Worker Pool Size Max feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	protected void addInboundWorkerPoolSizeMaxPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_InboundEndpoint_inboundWorkerPoolSizeMax_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_inboundWorkerPoolSizeMax_feature", "_UI_InboundEndpoint_type"),
+				 EsbPackage.Literals.INBOUND_ENDPOINT__INBOUND_WORKER_POOL_SIZE_MAX,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 "Parameters",
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Inbound Worker Thread Keep Alive Sec feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	protected void addInboundWorkerThreadKeepAliveSecPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_InboundEndpoint_inboundWorkerThreadKeepAliveSec_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_inboundWorkerThreadKeepAliveSec_feature", "_UI_InboundEndpoint_type"),
+				 EsbPackage.Literals.INBOUND_ENDPOINT__INBOUND_WORKER_THREAD_KEEP_ALIVE_SEC,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 "Parameters",
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Inbound Worker Pool Queue Length feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	protected void addInboundWorkerPoolQueueLengthPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_InboundEndpoint_inboundWorkerPoolQueueLength_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_inboundWorkerPoolQueueLength_feature", "_UI_InboundEndpoint_type"),
+				 EsbPackage.Literals.INBOUND_ENDPOINT__INBOUND_WORKER_POOL_QUEUE_LENGTH,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 "Parameters",
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Inbound Thread Group Id feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	protected void addInboundThreadGroupIdPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_InboundEndpoint_inboundThreadGroupId_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_inboundThreadGroupId_feature", "_UI_InboundEndpoint_type"),
+				 EsbPackage.Literals.INBOUND_ENDPOINT__INBOUND_THREAD_GROUP_ID,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 "Parameters",
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Inbound Thread Id feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	protected void addInboundThreadIdPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_InboundEndpoint_inboundThreadId_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_inboundThreadId_feature", "_UI_InboundEndpoint_type"),
+				 EsbPackage.Literals.INBOUND_ENDPOINT__INBOUND_THREAD_ID,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 "Parameters",
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Dispatch Filter Pattern feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	protected void addDispatchFilterPatternPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_InboundEndpoint_dispatchFilterPattern_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_dispatchFilterPattern_feature", "_UI_InboundEndpoint_type"),
+				 EsbPackage.Literals.INBOUND_ENDPOINT__DISPATCH_FILTER_PATTERN,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 "Parameters",
+				 null));
 	}
 
 	/**
@@ -1259,6 +1992,50 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 	}
 
 	/**
+	 * This adds a property descriptor for the Transport VFS Streaming feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	protected void addTransportVFSStreamingPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_InboundEndpoint_transportVFSStreaming_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_transportVFSStreaming_feature", "_UI_InboundEndpoint_type"),
+				 EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_VFS_STREAMING,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 "Parameters",
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Transport VFS Build feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	protected void addTransportVFSBuildPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_InboundEndpoint_transportVFSBuild_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_transportVFSBuild_feature", "_UI_InboundEndpoint_type"),
+				 EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_VFS_BUILD,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 "Parameters",
+				 null));
+	}
+
+	/**
 	 * This adds a property descriptor for the Transport VFS Distributed Timeout
 	 * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
@@ -1512,25 +2289,9 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 	}
 
 	/**
-	 * This adds a property descriptor for the Api Dispatching Enabled feature.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated NOT
-	 */
-	protected void addApiDispatchingEnabledPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_InboundEndpoint_apiDispatchingEnabled_feature"),
-				getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_apiDispatchingEnabled_feature",
-						"_UI_InboundEndpoint_type"), EsbPackage.Literals.INBOUND_ENDPOINT__API_DISPATCHING_ENABLED,
-				true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, "Parameters", null));
-	}
-
-	/**
 	 * This adds a property descriptor for the Transport VFS Move Timestamp Format feature.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	protected void addTransportVFSMoveTimestampFormatPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -1544,7 +2305,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
+				 "Parameters",
 				 null));
 	}
 
@@ -1648,6 +2409,314 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 				getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_transportJMSContentType_feature",
 						"_UI_InboundEndpoint_type"), EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_JMS_CONTENT_TYPE,
 				true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, "Parameters", null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Transport JMS Content Type Property feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addTransportJMSContentTypePropertyPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_InboundEndpoint_transportJMSContentTypeProperty_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_transportJMSContentTypeProperty_feature", "_UI_InboundEndpoint_type"),
+				 EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_JMS_CONTENT_TYPE_PROPERTY,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Transport JMS Reply Destination feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	protected void addTransportJMSReplyDestinationPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_InboundEndpoint_transportJMSReplyDestination_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_transportJMSReplyDestination_feature", "_UI_InboundEndpoint_type"),
+				 EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_JMS_REPLY_DESTINATION,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 "Parameters",
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Transport JMS Pub Sub No Local feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	protected void addTransportJMSPubSubNoLocalPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_InboundEndpoint_transportJMSPubSubNoLocal_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_transportJMSPubSubNoLocal_feature", "_UI_InboundEndpoint_type"),
+				 EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_JMS_PUB_SUB_NO_LOCAL,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 "Parameters",
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Transport MQTT Connection Factory feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	protected void addTransportMQTTConnectionFactoryPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_InboundEndpoint_transportMQTTConnectionFactory_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_transportMQTTConnectionFactory_feature", "_UI_InboundEndpoint_type"),
+				 EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_MQTT_CONNECTION_FACTORY,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 "Parameters",
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Transport MQTT Server Host Name feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	protected void addTransportMQTTServerHostNamePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_InboundEndpoint_transportMQTTServerHostName_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_transportMQTTServerHostName_feature", "_UI_InboundEndpoint_type"),
+				 EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_MQTT_SERVER_HOST_NAME,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 "Parameters",
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Transport MQTT Server Port feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	protected void addTransportMQTTServerPortPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_InboundEndpoint_transportMQTTServerPort_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_transportMQTTServerPort_feature", "_UI_InboundEndpoint_type"),
+				 EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_MQTT_SERVER_PORT,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 "Parameters",
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Transport MQTT Topic Name feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	protected void addTransportMQTTTopicNamePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_InboundEndpoint_transportMQTTTopicName_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_transportMQTTTopicName_feature", "_UI_InboundEndpoint_type"),
+				 EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_MQTT_TOPIC_NAME,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 "Parameters",
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Transport MQTT Subscription QOS feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	protected void addTransportMQTTSubscriptionQOSPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_InboundEndpoint_transportMQTTSubscriptionQOS_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_transportMQTTSubscriptionQOS_feature", "_UI_InboundEndpoint_type"),
+				 EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_MQTT_SUBSCRIPTION_QOS,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 "Parameters",
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Transport MQTT Session Clean feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	protected void addTransportMQTTSessionCleanPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_InboundEndpoint_transportMQTTSessionClean_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_transportMQTTSessionClean_feature", "_UI_InboundEndpoint_type"),
+				 EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_MQTT_SESSION_CLEAN,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 "Parameters",
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Transport MQTT Ssl Enable feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	protected void addTransportMQTTSslEnablePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_InboundEndpoint_transportMQTTSslEnable_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_transportMQTTSslEnable_feature", "_UI_InboundEndpoint_type"),
+				 EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_ENABLE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 "Parameters",
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Transport MQTT Temporary Store Directory feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	protected void addTransportMQTTTemporaryStoreDirectoryPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_InboundEndpoint_transportMQTTTemporaryStoreDirectory_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_transportMQTTTemporaryStoreDirectory_feature", "_UI_InboundEndpoint_type"),
+				 EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_MQTT_TEMPORARY_STORE_DIRECTORY,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 "Parameters",
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Transport MQTT Subscription Username feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	protected void addTransportMQTTSubscriptionUsernamePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_InboundEndpoint_transportMQTTSubscriptionUsername_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_transportMQTTSubscriptionUsername_feature", "_UI_InboundEndpoint_type"),
+				 EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_MQTT_SUBSCRIPTION_USERNAME,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 "Parameters",
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Transport MQTT Subscription Password feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	protected void addTransportMQTTSubscriptionPasswordPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_InboundEndpoint_transportMQTTSubscriptionPassword_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_transportMQTTSubscriptionPassword_feature", "_UI_InboundEndpoint_type"),
+				 EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_MQTT_SUBSCRIPTION_PASSWORD,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 "Parameters",
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Transport MQTT Client Id feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	protected void addTransportMQTTClientIdPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_InboundEndpoint_transportMQTTClientId_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_transportMQTTClientId_feature", "_UI_InboundEndpoint_type"),
+				 EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_MQTT_CLIENT_ID,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 "Parameters",
+				 null));
 	}
 
 	/**
@@ -1822,6 +2891,13 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 			case EsbPackage.INBOUND_ENDPOINT__CLASS:
 			case EsbPackage.INBOUND_ENDPOINT__PROTOCOL:
 			case EsbPackage.INBOUND_ENDPOINT__INBOUND_HTTP_PORT:
+			case EsbPackage.INBOUND_ENDPOINT__INBOUND_WORKER_POOL_SIZE_CORE:
+			case EsbPackage.INBOUND_ENDPOINT__INBOUND_WORKER_POOL_SIZE_MAX:
+			case EsbPackage.INBOUND_ENDPOINT__INBOUND_WORKER_THREAD_KEEP_ALIVE_SEC:
+			case EsbPackage.INBOUND_ENDPOINT__INBOUND_WORKER_POOL_QUEUE_LENGTH:
+			case EsbPackage.INBOUND_ENDPOINT__INBOUND_THREAD_GROUP_ID:
+			case EsbPackage.INBOUND_ENDPOINT__INBOUND_THREAD_ID:
+			case EsbPackage.INBOUND_ENDPOINT__DISPATCH_FILTER_PATTERN:
 			case EsbPackage.INBOUND_ENDPOINT__INTERVAL:
 			case EsbPackage.INBOUND_ENDPOINT__SEQUENTIAL:
 			case EsbPackage.INBOUND_ENDPOINT__COORDINATION:
@@ -1843,6 +2919,8 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_AUTO_LOCK_RELEASE_INTERVAL:
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_LOCK_RELEASE_SAME_NODE:
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_DISTRIBUTED_LOCK:
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_STREAMING:
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_BUILD:
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_DISTRIBUTED_TIMEOUT:
 			case EsbPackage.INBOUND_ENDPOINT__JAVA_NAMING_FACTORY_INITIAL:
 			case EsbPackage.INBOUND_ENDPOINT__JAVA_NAMING_PROVIDER_URL:
@@ -1858,7 +2936,6 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_SUBSCRIPTION_DURABLE:
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_DURABLE_SUBSCRIBER_CLIENT_ID:
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_MESSAGE_SELECTOR:
-			case EsbPackage.INBOUND_ENDPOINT__API_DISPATCHING_ENABLED:
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_TIMESTAMP_FORMAT:
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_SORT_ATTRIBUTE:
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_SORT_ASCENDING:
@@ -1866,6 +2943,20 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_CREATE_FOLDER:
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_RECEIVE_TIMEOUT:
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_CONTENT_TYPE:
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_CONTENT_TYPE_PROPERTY:
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_REPLY_DESTINATION:
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_PUB_SUB_NO_LOCAL:
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_CONNECTION_FACTORY:
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SERVER_HOST_NAME:
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SERVER_PORT:
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_TOPIC_NAME:
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SUBSCRIPTION_QOS:
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SESSION_CLEAN:
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_ENABLE:
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_TEMPORARY_STORE_DIRECTORY:
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SUBSCRIPTION_USERNAME:
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SUBSCRIPTION_PASSWORD:
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_CLIENT_ID:
 			case EsbPackage.INBOUND_ENDPOINT__TRUSTSTORE:
 			case EsbPackage.INBOUND_ENDPOINT__KEYSTORE:
 			case EsbPackage.INBOUND_ENDPOINT__SSL_VERIFY_CLIENT:
@@ -1882,19 +2973,44 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 			case EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_PASS_THROUGH_INVALID_MESSAGES:
 			case EsbPackage.INBOUND_ENDPOINT__ZOOKEEPER_CONNECT:
 			case EsbPackage.INBOUND_ENDPOINT__GROUP_ID:
-			case EsbPackage.INBOUND_ENDPOINT__CONSUMER_TYPE:
 			case EsbPackage.INBOUND_ENDPOINT__CONTENT_TYPE:
-			case EsbPackage.INBOUND_ENDPOINT__TOPICS:
-			case EsbPackage.INBOUND_ENDPOINT__SIMPLE_TOPIC:
-			case EsbPackage.INBOUND_ENDPOINT__SIMPLE_BROKERS:
-			case EsbPackage.INBOUND_ENDPOINT__SIMPLE_PORT:
-			case EsbPackage.INBOUND_ENDPOINT__SIMPLE_PARTITION:
-			case EsbPackage.INBOUND_ENDPOINT__SIMPLE_MAX_MESSAGES_TO_READ:
+			case EsbPackage.INBOUND_ENDPOINT__CONSUMER_TYPE:
+			case EsbPackage.INBOUND_ENDPOINT__TOPICS_OR_TOPIC_FILTER:
+			case EsbPackage.INBOUND_ENDPOINT__TOPICS_NAME:
+			case EsbPackage.INBOUND_ENDPOINT__TOPIC_FILTER_FROM:
+			case EsbPackage.INBOUND_ENDPOINT__TOPIC_FILTER_NAME:
+			case EsbPackage.INBOUND_ENDPOINT__SIMPLE_CONSUMER_TOPIC:
+			case EsbPackage.INBOUND_ENDPOINT__SIMPLE_CONSUMER_BROKERS:
+			case EsbPackage.INBOUND_ENDPOINT__SIMPLE_CONSUMER_PORT:
+			case EsbPackage.INBOUND_ENDPOINT__SIMPLE_CONSUMER_PARTITION:
+			case EsbPackage.INBOUND_ENDPOINT__SIMPLE_CONSUMER_MAX_MESSAGES_TO_READ:
 			case EsbPackage.INBOUND_ENDPOINT__THREAD_COUNT:
-			case EsbPackage.INBOUND_ENDPOINT__ZOOKEEPER_SESSION_TIMEOUT_MS:
-			case EsbPackage.INBOUND_ENDPOINT__ZOOKEEPER_SYNC_TIME_MS:
+			case EsbPackage.INBOUND_ENDPOINT__CONSUMER_ID:
+			case EsbPackage.INBOUND_ENDPOINT__SOCKET_TIMEOUT_MS:
+			case EsbPackage.INBOUND_ENDPOINT__SOCKET_RECEIVE_BUFFER_BYTES:
+			case EsbPackage.INBOUND_ENDPOINT__FETCH_MESSAGE_MAX_BYTES:
+			case EsbPackage.INBOUND_ENDPOINT__NUM_CONSUMER_FETCHES:
+			case EsbPackage.INBOUND_ENDPOINT__AUTO_COMMIT_ENABLE:
 			case EsbPackage.INBOUND_ENDPOINT__AUTO_COMMIT_INTERVAL_MS:
+			case EsbPackage.INBOUND_ENDPOINT__QUEUED_MAX_MESSAGE_CHUNKS:
+			case EsbPackage.INBOUND_ENDPOINT__REBALANCE_MAX_RETRIES:
+			case EsbPackage.INBOUND_ENDPOINT__FETCH_MIN_BYTES:
+			case EsbPackage.INBOUND_ENDPOINT__FETCH_WAIT_MAX_MS:
+			case EsbPackage.INBOUND_ENDPOINT__REBALANCE_BACKOFF_MS:
+			case EsbPackage.INBOUND_ENDPOINT__REFRESH_LEADER_BACKOFF_MS:
 			case EsbPackage.INBOUND_ENDPOINT__AUTO_OFFSET_RESET:
+			case EsbPackage.INBOUND_ENDPOINT__CONSUMER_TIMEOUT_MS:
+			case EsbPackage.INBOUND_ENDPOINT__EXCLUDE_INTERNAL_TOPICS:
+			case EsbPackage.INBOUND_ENDPOINT__PARTITION_ASSIGNMENT_STRATEGY:
+			case EsbPackage.INBOUND_ENDPOINT__CLIENT_ID:
+			case EsbPackage.INBOUND_ENDPOINT__ZOOKEEPER_SESSION_TIMEOUT_MS:
+			case EsbPackage.INBOUND_ENDPOINT__ZOOKEEPER_CONNECTION_TIMEOUT_MS:
+			case EsbPackage.INBOUND_ENDPOINT__ZOOKEEPER_SYNC_TIME_MS:
+			case EsbPackage.INBOUND_ENDPOINT__OFFSETS_STORAGE:
+			case EsbPackage.INBOUND_ENDPOINT__OFFSETS_CHANNEL_BACKOFF_MS:
+			case EsbPackage.INBOUND_ENDPOINT__OFFSETS_CHANNEL_SOCKET_TIMEOUT_MS:
+			case EsbPackage.INBOUND_ENDPOINT__OFFSETS_COMMIT_MAX_RETRIES:
+			case EsbPackage.INBOUND_ENDPOINT__DUAL_COMMIT_ENABLED:
 			case EsbPackage.INBOUND_ENDPOINT__INBOUND_CXF_RM_HOST:
 			case EsbPackage.INBOUND_ENDPOINT__INBOUND_CXF_RM_PORT:
 			case EsbPackage.INBOUND_ENDPOINT__INBOUND_CXF_RM_CONFIG_FILE:

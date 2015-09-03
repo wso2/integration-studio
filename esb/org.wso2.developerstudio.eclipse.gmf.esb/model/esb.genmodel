@@ -588,22 +588,43 @@
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//InboundEndpointType/hl7"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//InboundEndpointType/kafka"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//InboundEndpointType/cxf_ws_rm"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//InboundEndpointType/mqtt"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//ContentType">
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//ContentType/xml"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//ContentType/json"/>
     </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//TopicsType">
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//TopicsType/topics"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//TopicsType/TopicFilter"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//TopicFilterFromType">
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//TopicFilterFromType/filterFromWhitelist"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//TopicFilterFromType/filterFromBlacklist"/>
+    </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//ConsumerType">
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//ConsumerType/highlevel"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//ConsumerType/simple"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//AutoOffsetResetType">
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//AutoOffsetResetType/smallest"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//AutoOffsetResetType/largest"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//PartitionAssignmentStrategyType">
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//PartitionAssignmentStrategyType/roundrobin"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//PartitionAssignmentStrategyType/range"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//OffsetsStorageType">
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//OffsetsStorageType/zookeeper"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//OffsetsStorageType/kafka"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//Enable">
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//Enable/enable"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//Enable/disable"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//VFSAction">
-      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//VFSAction/none"/>
-      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//VFSAction/move"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//VFSAction/DELETE"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//VFSAction/MOVE"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//VFSFileSort">
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//VFSFileSort/none"/>
@@ -627,6 +648,15 @@
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//JMSCacheLevel/three"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//JMSCacheLevel/four"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//JMSCacheLevel/five"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//MQTTSubscriptionQOS">
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//MQTTSubscriptionQOS/zero"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//MQTTSubscriptionQOS/one"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//MQTTSubscriptionQOS/two"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//EnableDisableState">
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//EnableDisableState/Disabled"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//EnableDisableState/Enabled"/>
     </genEnums>
     <genDataTypes ecoreDataType="esb.ecore#//Map">
       <genTypeParameters ecoreTypeParameter="esb.ecore#//Map/K"/>
@@ -2101,6 +2131,7 @@
       <genFeatures createChild="false" propertyCategory="Additional Parameters" ecoreFeature="ecore:EAttribute esb.ecore#//MessageProcessor/samplingConcurrency"/>
       <genFeatures createChild="false" propertyCategory="Additional Parameters" propertyDescription="Maximum Re Delivery Attempts"
           ecoreFeature="ecore:EAttribute esb.ecore#//MessageProcessor/maxDeliveryAttempts"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//MessageProcessor/dropMessageAfterMaximumDeliveryAttempts"/>
       <genFeatures createChild="false" propertyCategory="Additional Parameters" propertyDescription="Axis2 Client Repository Path"
           ecoreFeature="ecore:EAttribute esb.ecore#//MessageProcessor/axis2ClientRepository"/>
       <genFeatures createChild="false" propertyCategory="Additional Parameters" propertyDescription="Axis2 Configuration"
@@ -2119,6 +2150,7 @@
           propertyDescription="Message Processor Parameters" propertySortChoices="true"
           ecoreFeature="ecore:EReference esb.ecore#//MessageProcessor/parameters"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//MessageProcessor/bindProcessor"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//MessageProcessor/taskCount"/>
     </genClasses>
     <genClasses ecoreClass="esb.ecore#//APIHandler">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//APIHandler/className"/>
@@ -2183,6 +2215,13 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/class"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/protocol"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/inboundHttpPort"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/inboundWorkerPoolSizeCore"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/inboundWorkerPoolSizeMax"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/inboundWorkerThreadKeepAliveSec"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/inboundWorkerPoolQueueLength"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/inboundThreadGroupId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/inboundThreadId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/dispatchFilterPattern"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/interval"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/sequential"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/coordination"/>
@@ -2204,6 +2243,8 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportVFSAutoLockReleaseInterval"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportVFSLockReleaseSameNode"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportVFSDistributedLock"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportVFSStreaming"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportVFSBuild"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportVFSDistributedTimeout"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/javaNamingFactoryInitial"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/javaNamingProviderUrl"/>
@@ -2219,7 +2260,6 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportJMSSubscriptionDurable"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportJMSDurableSubscriberClientID"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportJMSMessageSelector"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/apiDispatchingEnabled"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportVFSMoveTimestampFormat"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportVFSFileSortAttribute"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportVFSFileSortAscending"/>
@@ -2227,6 +2267,20 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportVFSCreateFolder"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportJMSReceiveTimeout"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportJMSContentType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportJMSContentTypeProperty"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportJMSReplyDestination"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportJMSPubSubNoLocal"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportMQTTConnectionFactory"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportMQTTServerHostName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportMQTTServerPort"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportMQTTTopicName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportMQTTSubscriptionQOS"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportMQTTSessionClean"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportMQTTSslEnable"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportMQTTTemporaryStoreDirectory"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportMQTTSubscriptionUsername"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportMQTTSubscriptionPassword"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportMQTTClientId"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/truststore"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/keystore"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/sslVerifyClient"/>
@@ -2243,19 +2297,44 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/inboundHL7PassThroughInvalidMessages"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/zookeeperConnect"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/groupId"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/consumerType"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/contentType"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/topics"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/simpleTopic"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/simpleBrokers"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/simplePort"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/simplePartition"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/simpleMaxMessagesToRead"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/consumerType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/topicsOrTopicFilter"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/topicsName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/topicFilterFrom"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/topicFilterName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/simpleConsumerTopic"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/simpleConsumerBrokers"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/simpleConsumerPort"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/simpleConsumerPartition"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/simpleConsumerMaxMessagesToRead"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/threadCount"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/zookeeperSessionTimeoutMs"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/zookeeperSyncTimeMs"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/consumerId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/socketTimeoutMs"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/socketReceiveBufferBytes"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/fetchMessageMaxBytes"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/numConsumerFetches"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/autoCommitEnable"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/autoCommitIntervalMs"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/queuedMaxMessageChunks"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/rebalanceMaxRetries"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/fetchMinBytes"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/fetchWaitMaxMs"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/rebalanceBackoffMs"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/refreshLeaderBackoffMs"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/autoOffsetReset"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/consumerTimeoutMs"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/excludeInternalTopics"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/partitionAssignmentStrategy"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/clientId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/zookeeperSessionTimeoutMs"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/zookeeperConnectionTimeoutMs"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/zookeeperSyncTimeMs"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/offsetsStorage"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/offsetsChannelBackoffMs"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/offsetsChannelSocketTimeoutMs"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/offsetsCommitMaxRetries"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/dualCommitEnabled"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/inboundCxfRmHost"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/inboundCxfRmPort"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/inboundCxfRmConfigFile"/>

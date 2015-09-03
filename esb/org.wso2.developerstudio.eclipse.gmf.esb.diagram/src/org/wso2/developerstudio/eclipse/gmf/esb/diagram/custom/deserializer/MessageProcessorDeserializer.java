@@ -17,12 +17,14 @@
 package org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer;
 
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.*;
+
 import java.util.Map;
 import java.util.Map.Entry;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.synapse.message.processor.MessageProcessor;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.EnableDisableState;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessorParameter;
 import org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessorType;
@@ -179,6 +181,27 @@ AbstractEsbNodeDeserializer<MessageProcessor, org.wso2.developerstudio.eclipse.g
 						Object value = parameters.get("non.retry.status.codes");
 						if (StringUtils.isNotBlank(value.toString())) {
 							executeSetValueCommand(MESSAGE_PROCESSOR__NON_RETRY_HTTP_STATUS_CODES,
+									value.toString());
+						}
+					}
+					if (parameters.containsKey("max.delivery.drop")) {
+						Object value = parameters.get("max.delivery.drop");
+						if (StringUtils.isNotBlank(value.toString())) {
+							executeSetValueCommand(MESSAGE_PROCESSOR__DROP_MESSAGE_AFTER_MAXIMUM_DELIVERY_ATTEMPTS,
+									value.toString());
+							if ("Enabled".equals(value)) {
+								executeSetValueCommand(MESSAGE_PROCESSOR__DROP_MESSAGE_AFTER_MAXIMUM_DELIVERY_ATTEMPTS,
+										EnableDisableState.ENABLED);
+							} else {
+								executeSetValueCommand(MESSAGE_PROCESSOR__DROP_MESSAGE_AFTER_MAXIMUM_DELIVERY_ATTEMPTS,
+										EnableDisableState.DISABLED);
+							}
+						}
+					}
+					if (parameters.containsKey("member.count")) {
+						Object value = parameters.get("member.count");
+						if (StringUtils.isNotBlank(value.toString())) {
+							executeSetValueCommand(MESSAGE_PROCESSOR__TASK_COUNT,
 									value.toString());
 						}
 					}

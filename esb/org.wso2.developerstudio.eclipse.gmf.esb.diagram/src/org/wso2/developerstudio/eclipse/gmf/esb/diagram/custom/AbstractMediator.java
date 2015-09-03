@@ -57,6 +57,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.Activator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.connections.ConnectionCalculator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.layout.XYRepossition;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.utils.MediatorFigureReverser;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.APIResourceInputConnectorEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.APIResourceOutSequenceOutputConnectorEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.APIResourceOutputConnectorEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.AggregateMediatorEditPart;
@@ -714,7 +715,8 @@ public abstract class AbstractMediator extends AbstractBorderedShapeEditPart imp
 					 * for proxy service input Connector
 					 */
 					if (((this.getParent() instanceof MediatorFlowMediatorFlowCompartment6EditPart) && ((AbstractInputConnectorEditPart) element instanceof ProxyFaultInputConnectorEditPart))
-							|| ((this.getParent() instanceof MediatorFlowMediatorFlowCompartmentEditPart) && ((AbstractInputConnectorEditPart) element instanceof ProxyInputConnectorEditPart))) {
+							|| ((this.getParent() instanceof MediatorFlowMediatorFlowCompartmentEditPart) && ((AbstractInputConnectorEditPart) element instanceof ProxyInputConnectorEditPart))
+							|| ((this.getParent() instanceof MediatorFlowMediatorFlowCompartmentEditPart) && ((AbstractInputConnectorEditPart) element instanceof APIResourceInputConnectorEditPart))) {
 						inputConnectorEditpartList
 								.add((AbstractInputConnectorEditPart) element);
 					}

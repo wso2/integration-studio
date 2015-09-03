@@ -17,6 +17,7 @@
 package org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer;
 
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.*;
+
 import java.util.Map;
 
 import org.apache.commons.lang.StringUtils;
@@ -36,6 +37,9 @@ import org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointType;
 import org.wso2.developerstudio.eclipse.gmf.esb.JMSCacheLevel;
 import org.wso2.developerstudio.eclipse.gmf.esb.JMSConnectionFactoryType;
 import org.wso2.developerstudio.eclipse.gmf.esb.JMSSessionAcknowledgement;
+import org.wso2.developerstudio.eclipse.gmf.esb.MQTTSubscriptionQOS;
+import org.wso2.developerstudio.eclipse.gmf.esb.TopicFilterFromType;
+import org.wso2.developerstudio.eclipse.gmf.esb.TopicsType;
 import org.wso2.developerstudio.eclipse.gmf.esb.VFSAction;
 import org.wso2.developerstudio.eclipse.gmf.esb.VFSFileSort;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
@@ -50,10 +54,13 @@ public class InboundEndpointDeserializer extends
 	private static final String HTTPS = "https";
 	private static final String HL7 = "hl7";
 	private static final String KAFKA = "kafka";
+	private static final String CUSTOM = "custom";
 	private static final String CXF_WS_RM = "cxf_ws_rm";
+	private static final String MQTT = "mqtt";
 	private static final String TRUE = "true";
 	private static final String NONE = "none";
-	private static final String ENABLE = "enable";
+	private static final String DELETE = "DELETE";
+    private static final String ENABLE = "enable";
 	private static final String NAME = "name";
 	private static final String SIZE = "size";
 	private static final String TOPIC = "topic";
@@ -107,8 +114,14 @@ public class InboundEndpointDeserializer extends
 		} else if (KAFKA.equals(object.getProtocol())) {
 			executeSetValueCommand(INBOUND_ENDPOINT__TYPE, InboundEndpointType.KAFKA);
 			updateParameters(object);
+		} else if (CUSTOM.equals(object.getProtocol())) {
+			executeSetValueCommand(INBOUND_ENDPOINT__TYPE, InboundEndpointType.CUSTOM);
+			updateParameters(object);
 		} else if (CXF_WS_RM.equals(object.getProtocol())) {
 			executeSetValueCommand(INBOUND_ENDPOINT__TYPE, InboundEndpointType.CXF_WS_RM);
+			updateParameters(object);
+		} else if (MQTT.equals(object.getProtocol())) {
+			executeSetValueCommand(INBOUND_ENDPOINT__TYPE, InboundEndpointType.MQTT);
 			updateParameters(object);
 		}
 
@@ -175,15 +188,25 @@ public class InboundEndpointDeserializer extends
 		for (Map.Entry<String, String> paramEntry : object.getParametersMap().entrySet()) {
 			if (paramEntry.getKey().equals(InboundEndpointConstants.INBOUND_HTTP_PORT)) {
 				executeSetValueCommand(INBOUND_ENDPOINT__INBOUND_HTTP_PORT, paramEntry.getValue());
-			} else if (paramEntry.getKey().equals(InboundEndpointConstants.API_DISPATCHING_ENABLED)) {
-				if (paramEntry.getValue().equals(TRUE)) {
-					executeSetValueCommand(INBOUND_ENDPOINT__API_DISPATCHING_ENABLED, true);
-				} else {
-					executeSetValueCommand(INBOUND_ENDPOINT__API_DISPATCHING_ENABLED, false);
-				}
 			} else if (paramEntry.getKey().equals(InboundEndpointConstants.INTERVAL)) {
 				executeSetValueCommand(INBOUND_ENDPOINT__INTERVAL, paramEntry.getValue());
-			} else if (paramEntry.getKey().equals(InboundEndpointConstants.SEQUENTIAL)) {
+			}			
+			else if (paramEntry.getKey().equals(InboundEndpointConstants.INBOUND_WORKER_POOL_SIZE_CORE)) {
+				executeSetValueCommand(INBOUND_ENDPOINT__INBOUND_WORKER_POOL_SIZE_CORE, paramEntry.getValue());
+			} else if (paramEntry.getKey().equals(InboundEndpointConstants.INBOUND_WORKER_POOL_SIZE_MAX)) {
+				executeSetValueCommand(INBOUND_ENDPOINT__INBOUND_WORKER_POOL_SIZE_MAX, paramEntry.getValue());
+			} else if (paramEntry.getKey().equals(InboundEndpointConstants.INBOUND_WORKER_THREAD_KEEP_ALIVE_SEC)) {
+				executeSetValueCommand(INBOUND_ENDPOINT__INBOUND_WORKER_THREAD_KEEP_ALIVE_SEC, paramEntry.getValue());
+			} else if (paramEntry.getKey().equals(InboundEndpointConstants.INBOUND_WORKER_POOL_QUEUE_LENGTH)) {
+				executeSetValueCommand(INBOUND_ENDPOINT__INBOUND_WORKER_POOL_QUEUE_LENGTH, paramEntry.getValue());
+			} else if (paramEntry.getKey().equals(InboundEndpointConstants.INBOUND_THREAD_GROUOP_ID)) {
+				executeSetValueCommand(INBOUND_ENDPOINT__INBOUND_THREAD_GROUP_ID, paramEntry.getValue());
+			} else if (paramEntry.getKey().equals(InboundEndpointConstants.INBOUND_THREAD_ID)) {
+				executeSetValueCommand(INBOUND_ENDPOINT__INBOUND_THREAD_ID, paramEntry.getValue());
+			} else if (paramEntry.getKey().equals(InboundEndpointConstants.DISPATCH_FILTER_PATTERN)) {
+				executeSetValueCommand(INBOUND_ENDPOINT__DISPATCH_FILTER_PATTERN, paramEntry.getValue());
+			}		
+			else if (paramEntry.getKey().equals(InboundEndpointConstants.SEQUENTIAL)) {
 				if (paramEntry.getValue().equals(TRUE)) {
 					executeSetValueCommand(INBOUND_ENDPOINT__SEQUENTIAL, true);
 				} else {
@@ -218,24 +241,24 @@ public class InboundEndpointDeserializer extends
 			} else if (paramEntry.getKey().equals(InboundEndpointConstants.VFS_RECONNECT_TIMEOUT)) {
 				executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_VFS_RECONNECT_TIMEOUT, paramEntry.getValue());
 			} else if (paramEntry.getKey().equals(InboundEndpointConstants.VFS_ACTION_AFTER_PROCESS)) {
-				if (paramEntry.getValue().equals(NONE)) {
-					executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_VFS_ACTION_AFTER_PROCESS, VFSAction.NONE);
+				if (paramEntry.getValue().equals(DELETE)) {
+					executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_VFS_ACTION_AFTER_PROCESS, VFSAction.DELETE);
 				} else {
 					executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_VFS_ACTION_AFTER_PROCESS, VFSAction.MOVE);
 				}
 			} else if (paramEntry.getKey().equals(InboundEndpointConstants.VFS_MOVE_AFTER_PROCESS)) {
 				executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_AFTER_PROCESS, paramEntry.getValue());
 			} else if (paramEntry.getKey().equals(InboundEndpointConstants.VFS_ACTION_AFTER_ERRORS)) {
-				if (paramEntry.getValue().equals(NONE)) {
-					executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_VFS_ACTION_AFTER_ERRORS, VFSAction.NONE);
+				if (paramEntry.getValue().equals(DELETE)) {
+					executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_VFS_ACTION_AFTER_ERRORS, VFSAction.DELETE);
 				} else {
 					executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_VFS_ACTION_AFTER_ERRORS, VFSAction.MOVE);
 				}
 			} else if (paramEntry.getKey().equals(InboundEndpointConstants.VFS_MOVE_AFTER_ERRORS)) {
 				executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_AFTER_ERRORS, paramEntry.getValue());
 			} else if (paramEntry.getKey().equals(InboundEndpointConstants.VFS_ACTION_AFTER_FAILURE)) {
-				if (paramEntry.getValue().equals(NONE)) {
-					executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_VFS_ACTION_AFTER_FAILURE, VFSAction.NONE);
+				if (paramEntry.getValue().equals(DELETE)) {
+					executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_VFS_ACTION_AFTER_FAILURE, VFSAction.DELETE);
 				} else {
 					executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_VFS_ACTION_AFTER_FAILURE, VFSAction.MOVE);
 				}
@@ -292,7 +315,22 @@ public class InboundEndpointDeserializer extends
 				} else {
 					executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_VFS_CREATE_FOLDER, false);
 				}
-			} else if (paramEntry.getKey().equals(InboundEndpointConstants.JMS_JAVA_NAMING_FACTORY_INITIAL)) {
+			}			
+			else if (paramEntry.getKey().equals(InboundEndpointConstants.VFS_STREAMING)) {
+				if (paramEntry.getValue().equals(TRUE)) {
+					executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_VFS_STREAMING, true);
+				} else {
+					executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_VFS_STREAMING, false);
+				}
+			}
+			else if (paramEntry.getKey().equals(InboundEndpointConstants.VFS_BUILD)) {
+				if (paramEntry.getValue().equals(TRUE)) {
+					executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_VFS_BUILD, true);
+				} else {
+					executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_VFS_BUILD, false);
+				}
+			}		
+			else if (paramEntry.getKey().equals(InboundEndpointConstants.JMS_JAVA_NAMING_FACTORY_INITIAL)) {
 				executeSetValueCommand(INBOUND_ENDPOINT__JAVA_NAMING_FACTORY_INITIAL, paramEntry.getValue());
 			} else if (paramEntry.getKey().equals(InboundEndpointConstants.JMS_JAVA_NAMING_PROVIDER_URL)) {
 				executeSetValueCommand(INBOUND_ENDPOINT__JAVA_NAMING_PROVIDER_URL, paramEntry.getValue());
@@ -358,7 +396,12 @@ public class InboundEndpointDeserializer extends
 				executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_JMS_RECEIVE_TIMEOUT, paramEntry.getValue());
 			} else if (paramEntry.getKey().equals(InboundEndpointConstants.JMS_CONTENT_TYPE)) {
 				executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_JMS_CONTENT_TYPE, paramEntry.getValue());
-			} else if (paramEntry.getKey().equals(InboundEndpointConstants.KEYSTORE)) {
+			} else if (paramEntry.getKey().equals(InboundEndpointConstants.JMS_REPLY_DESTINATION)) {
+				executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_JMS_REPLY_DESTINATION, paramEntry.getValue());
+			} else if (paramEntry.getKey().equals(InboundEndpointConstants.JMS_PUB_SUB_NO_LOCAL)) {
+				executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_JMS_PUB_SUB_NO_LOCAL, paramEntry.getValue());
+			}		
+			else if (paramEntry.getKey().equals(InboundEndpointConstants.KEYSTORE)) {
 				executeSetValueCommand(INBOUND_ENDPOINT__KEYSTORE, paramEntry.getValue());
 			} else if (paramEntry.getKey().equals(InboundEndpointConstants.TRUSTSTORE)) {
 				executeSetValueCommand(INBOUND_ENDPOINT__TRUSTSTORE, paramEntry.getValue());
@@ -395,45 +438,141 @@ public class InboundEndpointDeserializer extends
 			} else if (paramEntry.getKey().equals(InboundEndpointConstants.INBOUND_HL7_PASSTHROUHG_INVALID_MESSAGES)) {
 				executeSetValueCommand(INBOUND_ENDPOINT__INBOUND_HL7_PASS_THROUGH_INVALID_MESSAGES,
 						paramEntry.getValue());
-			} else if (paramEntry.getKey().equals(InboundEndpointConstants.ZOOKEEPER_CONNECT)) {
+			} 
+			
+			else if (paramEntry.getKey().equals(InboundEndpointConstants.INBOUND_MQTT_CONNECTION_FACTORY)) {
+				executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_MQTT_CONNECTION_FACTORY, paramEntry.getValue());
+			}
+			else if (paramEntry.getKey().equals(InboundEndpointConstants.INBOUND_MQTT_SERVER_HOST_NAME)) {
+				executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_MQTT_SERVER_HOST_NAME, paramEntry.getValue());
+			}
+			else if (paramEntry.getKey().equals(InboundEndpointConstants.INBOUND_MQTT_SERVER_PORT)) {
+				executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_MQTT_SERVER_PORT, paramEntry.getValue());
+			}
+			else if (paramEntry.getKey().equals(InboundEndpointConstants.INBOUND_MQTT_TOPIC_NAME)) {
+				executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_MQTT_TOPIC_NAME, paramEntry.getValue());
+			}			
+			else if (paramEntry.getKey().equals(InboundEndpointConstants.INBOUND_MQTT_SUBSCRIPTION_QOS)) {
+				if (paramEntry.getValue().equals("0")) {
+					executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_MQTT_SUBSCRIPTION_QOS, MQTTSubscriptionQOS.ZERO);
+				} else if (paramEntry.getValue().equals("1")) {
+					executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_MQTT_SUBSCRIPTION_QOS, MQTTSubscriptionQOS.ONE);
+				} else if (paramEntry.getValue().equals("2")) {
+					executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_MQTT_SUBSCRIPTION_QOS, MQTTSubscriptionQOS.TWO);
+				}
+			}		
+			else if (paramEntry.getKey().equals(InboundEndpointConstants.INBOUND_MQTT_SSL_ENABLE)) {
+				executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_ENABLE, paramEntry.getValue());
+			}		
+			else if (paramEntry.getKey().equals(InboundEndpointConstants.INBOUND_MQTT_TEMPORARY_STORE_DIRECTORY)) {
+				executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_MQTT_TEMPORARY_STORE_DIRECTORY, paramEntry.getValue());
+			}		
+			else if (paramEntry.getKey().equals(InboundEndpointConstants.INBOUND_MQTT_SUBSCRIPTION_USERNAME)) {
+				executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_MQTT_SUBSCRIPTION_USERNAME, paramEntry.getValue());
+			}
+			else if (paramEntry.getKey().equals(InboundEndpointConstants.INBOUND_MQTT_SUBSCRIPTION_PASSWORD)) {
+				executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_MQTT_SUBSCRIPTION_PASSWORD, paramEntry.getValue());
+			}
+			else if (paramEntry.getKey().equals(InboundEndpointConstants.INBOUND_MQTT_CLIENT_ID)) {
+				executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_MQTT_CLIENT_ID, paramEntry.getValue());
+			}
+			else if (paramEntry.getKey().equals(InboundEndpointConstants.INBOUND_MQTT_RECONNECTION_INTERVAL)) {
+				executeSetValueCommand(INBOUND_ENDPOINT__INTERVAL, paramEntry.getValue());
+			}
+			
+			// KAFKA properties
+			else if (paramEntry.getKey().equals(InboundEndpointConstants.ZOOKEEPER_CONNECT)) {
 				executeSetValueCommand(INBOUND_ENDPOINT__ZOOKEEPER_CONNECT, paramEntry.getValue());
 			} else if (paramEntry.getKey().equals(InboundEndpointConstants.GROUP_ID)) {
 				executeSetValueCommand(INBOUND_ENDPOINT__GROUP_ID, paramEntry.getValue());
-			} else if (paramEntry.getKey().equals(InboundEndpointConstants.CONSUMER_TYPE)) {
-				if (paramEntry.getValue().equals(HIGHLEVEL)) {
-					executeSetValueCommand(INBOUND_ENDPOINT__CONSUMER_TYPE, ConsumerType.HIGHLEVEL);
-				} else {
-					executeSetValueCommand(INBOUND_ENDPOINT__CONSUMER_TYPE, ConsumerType.SIMPLE);
-				}
 			} else if (paramEntry.getKey().equals(InboundEndpointConstants.CONTENT_TYPE)) {
 				if (paramEntry.getValue().equals(APPLICATION_XML)) {
 					executeSetValueCommand(INBOUND_ENDPOINT__CONTENT_TYPE, ContentType.XML);
 				} else {
 					executeSetValueCommand(INBOUND_ENDPOINT__CONTENT_TYPE, ContentType.JSON);
 				}
+			} else if (paramEntry.getKey().equals(InboundEndpointConstants.CONSUMER_TYPE)) {
+				if (paramEntry.getValue().equals(HIGHLEVEL)) {
+					executeSetValueCommand(INBOUND_ENDPOINT__CONSUMER_TYPE, ConsumerType.HIGHLEVEL);					
+				} else {
+					executeSetValueCommand(INBOUND_ENDPOINT__CONSUMER_TYPE, ConsumerType.SIMPLE);
+				}
 			} else if (paramEntry.getKey().equals(InboundEndpointConstants.TOPICS)) {
-				executeSetValueCommand(INBOUND_ENDPOINT__TOPICS, paramEntry.getValue());
+				executeSetValueCommand(INBOUND_ENDPOINT__TOPICS_OR_TOPIC_FILTER, TopicsType.TOPICS);
+				executeSetValueCommand(INBOUND_ENDPOINT__TOPICS_NAME, paramEntry.getValue());
+			} else if (paramEntry.getKey().equals(InboundEndpointConstants.TOPIC_FILTER)) {
+				executeSetValueCommand(INBOUND_ENDPOINT__TOPICS_OR_TOPIC_FILTER, TopicsType.TOPIC_FILTER);
+				executeSetValueCommand(INBOUND_ENDPOINT__TOPIC_FILTER_NAME, paramEntry.getValue());
+			} else if (paramEntry.getKey().equals(InboundEndpointConstants.FILTER_FROM_WHITELIST)) {
+				executeSetValueCommand(INBOUND_ENDPOINT__TOPIC_FILTER_NAME, TopicFilterFromType.FILTER_FROM_WHITELIST);
+			} else if (paramEntry.getKey().equals(InboundEndpointConstants.FILTER_FROM_BLACKLIST)) {
+				executeSetValueCommand(INBOUND_ENDPOINT__TOPIC_FILTER_NAME, TopicFilterFromType.FILTER_FROM_BLACKLIST);
 			} else if (paramEntry.getKey().equals(InboundEndpointConstants.SIMPLE_TOPIC)) {
-				executeSetValueCommand(INBOUND_ENDPOINT__SIMPLE_TOPIC, paramEntry.getValue());
+				executeSetValueCommand(INBOUND_ENDPOINT__SIMPLE_CONSUMER_TOPIC, paramEntry.getValue());
 			} else if (paramEntry.getKey().equals(InboundEndpointConstants.SIMPLE_BROKERS)) {
-				executeSetValueCommand(INBOUND_ENDPOINT__SIMPLE_BROKERS, paramEntry.getValue());
+				executeSetValueCommand(INBOUND_ENDPOINT__SIMPLE_CONSUMER_BROKERS, paramEntry.getValue());
 			} else if (paramEntry.getKey().equals(InboundEndpointConstants.SIMPLE_PORT)) {
-				executeSetValueCommand(INBOUND_ENDPOINT__SIMPLE_PORT, paramEntry.getValue());
+				executeSetValueCommand(INBOUND_ENDPOINT__SIMPLE_CONSUMER_PORT, paramEntry.getValue());
 			} else if (paramEntry.getKey().equals(InboundEndpointConstants.SIMPLE_PARTITION)) {
-				executeSetValueCommand(INBOUND_ENDPOINT__SIMPLE_PARTITION, paramEntry.getValue());
-			} else if (paramEntry.getKey().equals(InboundEndpointConstants.SIMPLE_MAX_MESSAGE_TOREAD)) {
-				executeSetValueCommand(INBOUND_ENDPOINT__SIMPLE_MAX_MESSAGES_TO_READ, paramEntry.getValue());
+				executeSetValueCommand(INBOUND_ENDPOINT__SIMPLE_CONSUMER_PARTITION, paramEntry.getValue());
+			} else if (paramEntry.getKey().equals(InboundEndpointConstants.SIMPLE_MAX_MESSAGES_TO_READ)) {
+				executeSetValueCommand(INBOUND_ENDPOINT__SIMPLE_CONSUMER_MAX_MESSAGES_TO_READ, paramEntry.getValue());
 			} else if (paramEntry.getKey().equals(InboundEndpointConstants.THREAD_COUNT)) {
 				executeSetValueCommand(INBOUND_ENDPOINT__THREAD_COUNT, paramEntry.getValue());
-			} else if (paramEntry.getKey().equals(InboundEndpointConstants.ZOOKEEPER_SEESION_TIMEOUT_MS)) {
+			} else if (paramEntry.getKey().equals(InboundEndpointConstants.CONSUMER_ID)) {
+				executeSetValueCommand(INBOUND_ENDPOINT__CONSUMER_ID, paramEntry.getValue());
+			} else if (paramEntry.getKey().equals(InboundEndpointConstants.SOCKET_TIMEOUT_MS)) {
+				executeSetValueCommand(INBOUND_ENDPOINT__SOCKET_TIMEOUT_MS, paramEntry.getValue());
+			} else if (paramEntry.getKey().equals(InboundEndpointConstants.SOCKET_RECEIVE_BUFFER_BYTES)) {
+				executeSetValueCommand(INBOUND_ENDPOINT__SOCKET_RECEIVE_BUFFER_BYTES, paramEntry.getValue());
+			} else if (paramEntry.getKey().equals(InboundEndpointConstants.FETCH_MESSAGE_MAX_BYTES)) {
+				executeSetValueCommand(INBOUND_ENDPOINT__FETCH_MESSAGE_MAX_BYTES, paramEntry.getValue());
+			} else if (paramEntry.getKey().equals(InboundEndpointConstants.NUM_CONSUMER_FETCHES)) {
+				executeSetValueCommand(INBOUND_ENDPOINT__NUM_CONSUMER_FETCHES, paramEntry.getValue());
+			} else if (paramEntry.getKey().equals(InboundEndpointConstants.AUTO_COMMIT_ENABLE)) {
+				executeSetValueCommand(INBOUND_ENDPOINT__AUTO_COMMIT_ENABLE, paramEntry.getValue());
+			} else if (paramEntry.getKey().equals(InboundEndpointConstants.AUTO_COMMIT_INTERVAL_MS)) {
+				executeSetValueCommand(INBOUND_ENDPOINT__AUTO_COMMIT_INTERVAL_MS, paramEntry.getValue());
+			} else if (paramEntry.getKey().equals(InboundEndpointConstants.QUEUED_MAX_MESSAGE_CHUNKS)) {
+				executeSetValueCommand(INBOUND_ENDPOINT__QUEUED_MAX_MESSAGE_CHUNKS, paramEntry.getValue());
+			} else if (paramEntry.getKey().equals(InboundEndpointConstants.REBALANCE_MAX_RETRIES)) {
+				executeSetValueCommand(INBOUND_ENDPOINT__REBALANCE_MAX_RETRIES, paramEntry.getValue());
+			} else if (paramEntry.getKey().equals(InboundEndpointConstants.FETCH_MIN_BYTES)) {
+				executeSetValueCommand(INBOUND_ENDPOINT__FETCH_MIN_BYTES, paramEntry.getValue());
+			} else if (paramEntry.getKey().equals(InboundEndpointConstants.FETCH_WAIT_MAX_MS)) {
+				executeSetValueCommand(INBOUND_ENDPOINT__FETCH_WAIT_MAX_MS, paramEntry.getValue());
+			} else if (paramEntry.getKey().equals(InboundEndpointConstants.REBALANCE_BACKOFF_MS)) {
+				executeSetValueCommand(INBOUND_ENDPOINT__REBALANCE_BACKOFF_MS, paramEntry.getValue());
+			} else if (paramEntry.getKey().equals(InboundEndpointConstants.REFRESH_LEADER_BACKOFF_MS)) {
+				executeSetValueCommand(INBOUND_ENDPOINT__REFRESH_LEADER_BACKOFF_MS, paramEntry.getValue());
+			} else if (paramEntry.getKey().equals(InboundEndpointConstants.AUTO_OFFSET_RESET)) {
+				executeSetValueCommand(INBOUND_ENDPOINT__AUTO_OFFSET_RESET, paramEntry.getValue());
+			} else if (paramEntry.getKey().equals(InboundEndpointConstants.CONSUMER_TIMEOUT_MS)) {
+				executeSetValueCommand(INBOUND_ENDPOINT__CONSUMER_TIMEOUT_MS, paramEntry.getValue());
+			} else if (paramEntry.getKey().equals(InboundEndpointConstants.EXCLUDE_INTERNAL_TOPICS)) {
+				executeSetValueCommand(INBOUND_ENDPOINT__EXCLUDE_INTERNAL_TOPICS, paramEntry.getValue());
+			} else if (paramEntry.getKey().equals(InboundEndpointConstants.PARTITION_ASSIGNMENT_STRATEGY)) {
+				executeSetValueCommand(INBOUND_ENDPOINT__PARTITION_ASSIGNMENT_STRATEGY, paramEntry.getValue());
+			} else if (paramEntry.getKey().equals(InboundEndpointConstants.CLIENT_ID)) {
+				executeSetValueCommand(INBOUND_ENDPOINT__CLIENT_ID, paramEntry.getValue());
+			} else if (paramEntry.getKey().equals(InboundEndpointConstants.ZOOKEEPER_SESSION_TIMEOUT_MS)) {
 				executeSetValueCommand(INBOUND_ENDPOINT__ZOOKEEPER_SESSION_TIMEOUT_MS, paramEntry.getValue());
+			} else if (paramEntry.getKey().equals(InboundEndpointConstants.ZOOKEEPER_CONNECTION_TIMEOUT_MS)) {
+				executeSetValueCommand(INBOUND_ENDPOINT__ZOOKEEPER_CONNECTION_TIMEOUT_MS, paramEntry.getValue());
 			} else if (paramEntry.getKey().equals(InboundEndpointConstants.ZOOKEEPER_SYNC_TIME_MS)) {
 				executeSetValueCommand(INBOUND_ENDPOINT__ZOOKEEPER_SYNC_TIME_MS, paramEntry.getValue());
-			} else if (paramEntry.getKey().equals(InboundEndpointConstants.AUTO_COMMIY_INTERVAL_MS)) {
-				executeSetValueCommand(INBOUND_ENDPOINT__AUTO_COMMIT_INTERVAL_MS, paramEntry.getValue());
-			} else if (paramEntry.getKey().equals(InboundEndpointConstants.AUTO_OFFSET_REST)) {
-				executeSetValueCommand(INBOUND_ENDPOINT__AUTO_OFFSET_RESET, paramEntry.getValue());
-			} else if (paramEntry.getKey().equals(InboundEndpointConstants.INBOUND_CXF_RM_HOST)) {
+			} else if (paramEntry.getKey().equals(InboundEndpointConstants.OFFSETS_STORAGE)) {
+				executeSetValueCommand(INBOUND_ENDPOINT__OFFSETS_STORAGE, paramEntry.getValue());
+			} else if (paramEntry.getKey().equals(InboundEndpointConstants.OFFSETS_CHANNEL_BACKOFF_MS)) {
+				executeSetValueCommand(INBOUND_ENDPOINT__OFFSETS_CHANNEL_BACKOFF_MS, paramEntry.getValue());
+			} else if (paramEntry.getKey().equals(InboundEndpointConstants.OFFSETS_CHANNEL_SOCKET_TIMEOUT_MS)) {
+				executeSetValueCommand(INBOUND_ENDPOINT__OFFSETS_CHANNEL_SOCKET_TIMEOUT_MS, paramEntry.getValue());
+			} else if (paramEntry.getKey().equals(InboundEndpointConstants.OFFSETS_COMMIT_MAX_RETRIES)) {
+				executeSetValueCommand(INBOUND_ENDPOINT__OFFSETS_COMMIT_MAX_RETRIES, paramEntry.getValue());
+			} else if (paramEntry.getKey().equals(InboundEndpointConstants.DUAL_COMMIT_ENABLED)) {
+				executeSetValueCommand(INBOUND_ENDPOINT__DUAL_COMMIT_ENABLED, paramEntry.getValue());
+
+			}else if (paramEntry.getKey().equals(InboundEndpointConstants.INBOUND_CXF_RM_HOST)) {
 				executeSetValueCommand(INBOUND_ENDPOINT__INBOUND_CXF_RM_HOST, paramEntry.getValue());
 			} else if (paramEntry.getKey().equals(InboundEndpointConstants.INBOUND_CXF_RM_PORT)) {
 				executeSetValueCommand(INBOUND_ENDPOINT__INBOUND_CXF_RM_PORT, paramEntry.getValue());

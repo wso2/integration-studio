@@ -96,7 +96,7 @@ public interface ScriptMediator extends Mediator {
 
 	/**
 	 * Returns the value of the '<em><b>Mediate Function</b></em>' attribute.
-	 * The default value is <code>"mediate"</code>.
+	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Mediate Function</em>' attribute isn't clear,
@@ -106,7 +106,7 @@ public interface ScriptMediator extends Mediator {
 	 * @return the value of the '<em>Mediate Function</em>' attribute.
 	 * @see #setMediateFunction(String)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getScriptMediator_MediateFunction()
-	 * @model default="mediate"
+	 * @model default=""
 	 * @generated
 	 */
 	String getMediateFunction();

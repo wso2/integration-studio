@@ -16,6 +16,8 @@
 
 package org.wso2.developerstudio.eclipse.artifact.messagestore.ui.wizard;
 
+import static org.wso2.developerstudio.eclipse.artifact.messagestore.Constants.FIELD_IMPORT_STORE;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -27,6 +29,26 @@ import java.util.regex.Pattern;
 
 import javax.xml.namespace.QName;
 
+import org.apache.axiom.om.OMAttribute;
+import org.apache.axiom.om.OMElement;
+import org.apache.commons.lang.StringUtils;
+import org.apache.maven.model.Plugin;
+import org.apache.maven.model.PluginExecution;
+import org.apache.maven.project.MavenProject;
+import org.apache.synapse.config.xml.MessageStoreSerializer;
+import org.apache.synapse.message.store.MessageStore;
+import org.apache.synapse.message.store.impl.memory.InMemoryStore;
+import org.codehaus.plexus.util.xml.Xpp3Dom;
+import org.codehaus.plexus.util.xml.pull.XmlPullParserException;
+import org.eclipse.core.resources.IContainer;
+import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.IResource;
+import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.core.runtime.Path;
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.wso2.developerstudio.eclipse.artifact.messagestore.Activator;
 import org.wso2.developerstudio.eclipse.artifact.messagestore.model.MessageStoreModel;
 import org.wso2.developerstudio.eclipse.artifact.messagestore.provider.JDBCConnectionInformationList.JDBCConnectionInformationType;
@@ -43,30 +65,6 @@ import org.wso2.developerstudio.eclipse.platform.ui.editor.Openable;
 import org.wso2.developerstudio.eclipse.platform.ui.startup.ESBGraphicalEditor;
 import org.wso2.developerstudio.eclipse.platform.ui.wizard.AbstractWSO2ProjectCreationWizard;
 import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
-import org.codehaus.plexus.util.xml.Xpp3Dom;
-import org.eclipse.core.resources.IContainer;
-import org.eclipse.core.resources.IFile;
-import org.eclipse.core.resources.IProject;
-import org.eclipse.core.resources.IResource;
-import org.eclipse.core.resources.ResourcesPlugin;
-import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.NullProgressMonitor;
-import org.eclipse.core.runtime.Path;
-import org.eclipse.core.runtime.Platform;
-import org.eclipse.jface.dialogs.MessageDialog;
-
-import static org.wso2.developerstudio.eclipse.artifact.messagestore.Constants.*;
-
-import org.apache.maven.model.Plugin;
-import org.apache.maven.model.PluginExecution;
-import org.apache.maven.model.Repository;
-import org.apache.maven.project.MavenProject;
-import org.apache.synapse.config.xml.MessageStoreSerializer;
-import org.apache.synapse.message.store.MessageStore;
-import org.apache.axiom.om.OMAttribute;
-import org.apache.axiom.om.OMElement;
-import org.apache.commons.lang.StringUtils;
-import org.apache.synapse.message.store.impl.memory.InMemoryStore;
 
 /**
  * WSO2 message-store creation wizard class
@@ -304,55 +302,31 @@ public class MessageStoreCreationWizard extends AbstractWSO2ProjectCreationWizar
 		return messageStoreElement.toString().replace("><", ">" + lineSeparator + "<");
 	}
 	
-	public void updatePom() throws Exception {
-		File mavenProjectPomLocation = esbProject.getFile("pom.xml")
-				.getLocation().toFile();
-		MavenProject mavenProject = MavenUtils
-				.getMavenProject(mavenProjectPomLocation);
-		 version  = mavenProject.getVersion();
-		 //version  = version.replaceAll("-SNAPSHOT$", "");
-		boolean pluginExists = MavenUtils.checkOldPluginEntry(mavenProject,
-				"org.wso2.maven", "wso2-esb-messagestore-plugin",
-				MavenConstants.WSO2_ESB_MESSAGE_STORE_PLUGIN_VERSION);
-		if (pluginExists) {
+	public void updatePom() throws IOException, XmlPullParserException {
+		File mavenProjectPomLocation = esbProject.getFile("pom.xml").getLocation().toFile();
+		MavenProject mavenProject = MavenUtils.getMavenProject(mavenProjectPomLocation);
+		version = mavenProject.getVersion();
+
+		// Skip changing the pom file if group ID and artifact ID are matched
+		if (MavenUtils.checkOldPluginEntry(mavenProject, "org.wso2.maven", "wso2-esb-messagestore-plugin",
+				MavenConstants.WSO2_ESB_MESSAGE_STORE_PLUGIN_VERSION)) {
 			return;
 		}
 
-		Plugin plugin = MavenUtils.createPluginEntry(mavenProject,
-				"org.wso2.maven", "wso2-esb-messagestore-plugin",
+		Plugin plugin = MavenUtils.createPluginEntry(mavenProject, "org.wso2.maven", "wso2-esb-messagestore-plugin",
 				MavenConstants.WSO2_ESB_MESSAGE_STORE_PLUGIN_VERSION, true);
-
 		PluginExecution pluginExecution = new PluginExecution();
 		pluginExecution.addGoal("pom-gen");
 		pluginExecution.setPhase("process-resources");
 		pluginExecution.setId("task");
 
 		Xpp3Dom configurationNode = MavenUtils.createMainConfigurationNode();
-		Xpp3Dom artifactLocationNode = MavenUtils.createXpp3Node(
-				configurationNode, "artifactLocation");
+		Xpp3Dom artifactLocationNode = MavenUtils.createXpp3Node(configurationNode, "artifactLocation");
 		artifactLocationNode.setValue(".");
-		Xpp3Dom typeListNode = MavenUtils.createXpp3Node(configurationNode,
-				"typeList");
+		Xpp3Dom typeListNode = MavenUtils.createXpp3Node(configurationNode, "typeList");
 		typeListNode.setValue("${artifact.types}");
 		pluginExecution.setConfiguration(configurationNode);
-
 		plugin.addExecution(pluginExecution);
-
-		String disableWSO2Repo = Platform.getPreferencesService().getString(
-				"org.wso2.developerstudio.eclipse.platform.ui",
-				DISABLE_WSO2_REPOSITORY, null, null);
-		if (disableWSO2Repo == null) {
-			MavenUtils.updateMavenRepo(mavenProject);
-		}
-		Repository globalRepositoryFromPreference = getGlobalRepositoryFromPreference();
-
-		if (globalRepositoryFromPreference != null) {
-			mavenProject.getModel().addRepository(
-					globalRepositoryFromPreference);
-			mavenProject.getModel().addPluginRepository(
-					globalRepositoryFromPreference);
-		}
-
 		MavenUtils.saveMavenProject(mavenProject, mavenProjectPomLocation);
 	}
 

@@ -29,37 +29,40 @@
 			<!-- Forwarding_Processor & Sampling_Processor : begin -->
 			<data modelProperty="FS_processor.processor_state" type="list"
 				fieldController="org.wso2.developerstudio.eclipse.artifact.messageprocessor.validator.MessageProcessorFieldController"
-				controlData="select=single;modify=non-editable;class=org.wso2.developerstudio.eclipse.artifact.messageprocessor.provider.ProcessorStateList">Processor state *</data>			
+				controlData="select=single;modify=non-editable;class=org.wso2.developerstudio.eclipse.artifact.messageprocessor.provider.ProcessorStateList">Processor state *</data>
 			<data modelProperty="FS_processor.configuration_file_path" type="string"
 				fieldController="org.wso2.developerstudio.eclipse.artifact.messageprocessor.validator.MessageProcessorFieldController">Quartz configuration file path</data>
 			<data modelProperty="FS_processor.cron_expression" type="string"
 				fieldController="org.wso2.developerstudio.eclipse.artifact.messageprocessor.validator.MessageProcessorFieldController">Cron Expression</data>
 			<data modelProperty="FS_processor.pinned_servers" type="string"
 				fieldController="org.wso2.developerstudio.eclipse.artifact.messageprocessor.validator.MessageProcessorFieldController">Pinned Servers</data>
-			
+
 			<!-- Forwarding_Processor & Sampling_Processor : end -->
 
 			<!-- Forwarding_Processor : begin -->
-			<data modelProperty="Forwarding_processor.forwarding_interval" 
+			<data modelProperty="Forwarding_processor.forwarding_interval"
 				type="string"
 				fieldController="org.wso2.developerstudio.eclipse.artifact.messageprocessor.validator.MessageProcessorFieldController">Forwarding interval (Millis)</data>
-			<data modelProperty="Forwarding_processor.retry_interval" 
-				type="string"
+			<data modelProperty="Forwarding_processor.retry_interval" type="string"
 				fieldController="org.wso2.developerstudio.eclipse.artifact.messageprocessor.validator.MessageProcessorFieldController">Retry interval (Millis)</data>
-			<data modelProperty="Forwarding_processor.non_retry_http_status_codes" 
+			<data modelProperty="Forwarding_processor.non_retry_http_status_codes"
 				type="string"
 				fieldController="org.wso2.developerstudio.eclipse.artifact.messageprocessor.validator.MessageProcessorFieldController">Non retry http status codes (eg - 304, 305)</data>
 			<data modelProperty="Forwarding_processor.delivery_attempts"
 				type="string"
 				fieldController="org.wso2.developerstudio.eclipse.artifact.messageprocessor.validator.MessageProcessorFieldController">Maximum delivery attempts</data>
+			<data
+				modelProperty="Forwarding_processor.drop_message_after_maximum_delivery_attempts"
+				type="list"
+				fieldController="org.wso2.developerstudio.eclipse.artifact.messageprocessor.validator.MessageProcessorFieldController"
+				controlData="select=single;modify=non-editable;class=org.wso2.developerstudio.eclipse.artifact.messageprocessor.provider.EnableDisableDataList">Drop message after maximum delivery attempts</data>
 			<data modelProperty="Forwarding_processor.client_repository"
 				type="string"
 				fieldController="org.wso2.developerstudio.eclipse.artifact.messageprocessor.validator.MessageProcessorFieldController">Axis2 Client repository</data>
 			<data modelProperty="Forwarding_processor.axis2_configuration"
 				type="string"
 				fieldController="org.wso2.developerstudio.eclipse.artifact.messageprocessor.validator.MessageProcessorFieldController">Axis2 Configuration</data>
-			<data modelProperty="Forwarding_processor.endpoint_name"
-				type="resource+text"
+			<data modelProperty="Forwarding_processor.endpoint_name" type="resource+text"
 				fieldController="org.wso2.developerstudio.eclipse.artifact.messageprocessor.validator.MessageProcessorFieldController"
 				controlData="select=single;modify=readonly;registry.selection.type=resource">Endpoint name *</data>
 			<data modelProperty="Forwarding_processor.Reply_sequence_name"
@@ -69,10 +72,14 @@
 			<data modelProperty="Forwarding_processor.Fault_sequence_name"
 				type="resource+text"
 				fieldController="org.wso2.developerstudio.eclipse.artifact.messageprocessor.validator.MessageProcessorFieldController"
-				controlData="select=single;modify=readonly;registry.selection.type=resource">Fault sequence name</data>	
-			<data modelProperty="Forwarding_processor.Bind_processor_server" type="list"
+				controlData="select=single;modify=readonly;registry.selection.type=resource">Fault sequence name</data>
+			<data modelProperty="Forwarding_processor.Bind_processor_server"
+				type="list"
 				fieldController="org.wso2.developerstudio.eclipse.artifact.messageprocessor.validator.MessageProcessorFieldController"
-				controlData="select=single;modify=non-editable;class=org.wso2.developerstudio.eclipse.artifact.messageprocessor.provider.BindProcessorList">Bind Processor to Server </data>			
+				controlData="select=single;modify=non-editable;class=org.wso2.developerstudio.eclipse.artifact.messageprocessor.provider.BindProcessorList">Bind Processor to Server </data>
+			<data modelProperty="Forwarding_processor.task_count"
+				type="string"
+				fieldController="org.wso2.developerstudio.eclipse.artifact.messageprocessor.validator.MessageProcessorFieldController">Task Count (Cluster Mode)</data>
 			<!-- Forwarding_Processor : end -->
 
 
@@ -82,7 +89,8 @@
 				controlData="select=single;modify=readonly;registry.selection.type=resource">Sequence *</data>
 			<data modelProperty="sampling_processor.sampling_interval" type="string"
 				fieldController="org.wso2.developerstudio.eclipse.artifact.messageprocessor.validator.MessageProcessorFieldController">Sampling interval (Millis)</data>
-			<data modelProperty="sampling_processor.sampling_concurrency" type="string"
+			<data modelProperty="sampling_processor.sampling_concurrency"
+				type="string"
 				fieldController="org.wso2.developerstudio.eclipse.artifact.messageprocessor.validator.MessageProcessorFieldController">Sampling concurrency</data>
 			<!-- Sampling_Processor : end -->
 
@@ -101,7 +109,8 @@
 				controlData="filterClass=org.wso2.developerstudio.eclipse.artifact.messageprocessor.filter.ESBProjectFilter">Save location:</data>
 			<data modelProperty="create.esb.prj" type="link"
 				fieldController="org.wso2.developerstudio.eclipse.artifact.messageprocessor.validator.MessageProcessorFieldController"
-				group="location" controlData="align=right">&lt;a&gt;Create a new ESB project...&lt;/a&gt;</data>
+				group="location" controlData="align=right">&lt;a&gt;Create a new ESB
+				project...&lt;/a&gt;</data>
 		</settings>
 
 
@@ -114,11 +123,11 @@
 			<data modelProperty="save.location" type="workspacefolder"
 				fieldController="org.wso2.developerstudio.eclipse.artifact.messageprocessor.validator.MessageProcessorFieldController"
 				controlData="filterClass=org.wso2.developerstudio.eclipse.artifact.messageprocessor.filter.ESBProjectFilter">
-				Save in: </data>
+				Save in:
+			</data>
 			<data modelProperty="create.esb.prj" type="link"
 				fieldController="org.wso2.developerstudio.eclipse.artifact.messageprocessor.validator.MessageProcessorFieldController"
-				controlData="align=right">&lt;a&gt;Create new Project...&lt;/a&gt;
-			</data>
+				controlData="align=right">&lt;a&gt;Create new Project...&lt;/a&gt; </data>
 			<data modelProperty="available.processors" type="list"
 				fieldController="org.wso2.developerstudio.eclipse.artifact.messageprocessor.validator.MessageProcessorFieldController"
 				controlData="select=multiple;selectAllbtn=true;modify=non-editable;class=org.wso2.developerstudio.eclipse.artifact.messageprocessor.provider.MessageProcessorList">Available Message-Processors</data>

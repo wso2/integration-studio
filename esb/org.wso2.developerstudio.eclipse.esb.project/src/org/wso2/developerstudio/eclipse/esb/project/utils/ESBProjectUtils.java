@@ -27,8 +27,6 @@ import javax.xml.stream.FactoryConfigurationError;
 import org.apache.axiom.om.OMElement;
 import org.apache.maven.model.Plugin;
 import org.apache.maven.model.PluginExecution;
-import org.apache.maven.model.Repository;
-import org.apache.maven.model.RepositoryPolicy;
 import org.apache.maven.project.MavenProject;
 import org.codehaus.plexus.util.xml.Xpp3Dom;
 import org.eclipse.core.resources.IProject;
@@ -287,13 +285,12 @@ public class ESBProjectUtils {
 	public static void addPluginEntry(MavenProject mavenProject, String groupId, String artifactId, String version, String Id) {
 	    List<Plugin> plugins = mavenProject.getBuild().getPlugins();
 		for (Plugin plg : plugins) {
-			if (plg.getGroupId().equalsIgnoreCase(groupId) && plg.getArtifactId().equalsIgnoreCase(artifactId) && plg.getVersion().equalsIgnoreCase(version) ) {
+			if (plg.getGroupId().equalsIgnoreCase(groupId) && plg.getArtifactId().equalsIgnoreCase(artifactId)) {
 				return;
 			}
 		}
 		
-		Plugin plugin = MavenUtils.createPluginEntry(mavenProject, groupId, artifactId, version, true);
-		
+		Plugin plugin = MavenUtils.createPluginEntry(mavenProject, groupId, artifactId, version, true);		
 		PluginExecution pluginExecution = new PluginExecution();
 		pluginExecution.addGoal("pom-gen");
 		pluginExecution.setPhase("process-resources");
@@ -304,24 +301,8 @@ public class ESBProjectUtils {
 		artifactLocationNode.setValue(".");
 		Xpp3Dom typeListNode = MavenUtils.createXpp3Node(configurationNode, "typeList");
 		typeListNode.setValue("${artifact.types}");
-		pluginExecution.setConfiguration(configurationNode);
-		
+		pluginExecution.setConfiguration(configurationNode);		
 		plugin.addExecution(pluginExecution);
-		Repository repo = new Repository();
-		repo.setUrl("http://maven.wso2.org/nexus/content/groups/wso2-public/");
-		repo.setId("wso2-nexus");
-		
-		RepositoryPolicy releasePolicy=new RepositoryPolicy();
-		releasePolicy.setEnabled(true);
-		releasePolicy.setUpdatePolicy("daily");
-		releasePolicy.setChecksumPolicy("ignore");
-		
-		repo.setReleases(releasePolicy);
-		
-		if (!mavenProject.getRepositories().contains(repo)) {
-	        mavenProject.getModel().addRepository(repo);
-	        mavenProject.getModel().addPluginRepository(repo);
-        }
     }
 	
 	public static void createArtifactMetaDataEntry(String name, String type,

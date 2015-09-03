@@ -4,6 +4,7 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EditorUtil
 import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EditorUtils.TEMPLATE_RESOURCE_DIR;
 import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EditorUtils.getActiveProject;
 
+import java.io.ByteArrayInputStream;
 import java.text.MessageFormat;
 
 import org.apache.commons.lang.RandomStringUtils;
@@ -362,10 +363,10 @@ public class CallTemplateMediatorEditPart extends FixedSizedAbstractMediator {
 					addSequenceToArtifactXML(name);
 					String path = fileTobeOpened.getParent().getFullPath() + "/";
 					ArtifactTemplate sequenceArtifactTemplate = TemplateList.getArtifactTemplates()[0];
-					fileTobeOpened.create(sequenceArtifactTemplate.getTemplateDataStream(), true,
-							new NullProgressMonitor());
 					String source = FileUtils.getContentAsString(sequenceArtifactTemplate.getTemplateDataStream());
 					source = MessageFormat.format(source, name);
+					fileTobeOpened.create(new ByteArrayInputStream(source.getBytes()), true,
+							new NullProgressMonitor());
 					Openable openable = ESBGraphicalEditor.getOpenable();
 					openable.editorOpen(fileTobeOpened.getName(), ArtifactType.TEMPLATE_SEQUENCE.getLiteral(), path,
 							source);

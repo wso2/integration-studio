@@ -274,7 +274,7 @@ public class MediatorFlow5EditPart extends AbstractMediatorFlowEditPart {
 			RoundedRectangle topRectangle = new RoundedRectangle();
 			topRectangle.setCornerDimensions(new Dimension(0, 0));
 			topRectangle.setOutline(false);
-			topRectangle.setBackgroundColor(new Color(null, 113, 183, 64));
+			topRectangle.setBackgroundColor(new Color(null, 0, 125, 133));
 			topRectangle.setPreferredSize(new Dimension(195, 20));
 			topRectangle.setMinimumSize(new Dimension(195, 20));
 

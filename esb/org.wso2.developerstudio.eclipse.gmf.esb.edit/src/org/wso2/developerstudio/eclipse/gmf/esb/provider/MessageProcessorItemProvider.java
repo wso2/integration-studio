@@ -76,12 +76,14 @@ public class MessageProcessorItemProvider
 			addRetryIntervalPropertyDescriptor(object);
 			addNonRetryHttpStatusCodesPropertyDescriptor(object);
 			addMaxDeliveryAttemptsPropertyDescriptor(object);
+			addDropMessageAfterMaximumDeliveryAttemptsPropertyDescriptor(object);
 			addAxis2ClientRepositoryPropertyDescriptor(object);
 			addAxis2ConfigurationPropertyDescriptor(object);
 			addReplySequenceNamePropertyDescriptor(object);
 			addFaultSequenceNamePropertyDescriptor(object);
 			addQuartzConfigFilePathPropertyDescriptor(object);
 			addCronExpressionPropertyDescriptor(object);
+			addTaskCountPropertyDescriptor(object);
 			addPinnedServersPropertyDescriptor(object);
 			addBindProcessorPropertyDescriptor(object);
 			break;
@@ -373,6 +375,28 @@ public class MessageProcessorItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Drop Message After Maximum Delivery Attempts feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	protected void addDropMessageAfterMaximumDeliveryAttemptsPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_MessageProcessor_dropMessageAfterMaximumDeliveryAttempts_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_MessageProcessor_dropMessageAfterMaximumDeliveryAttempts_feature", "_UI_MessageProcessor_type"),
+				 EsbPackage.Literals.MESSAGE_PROCESSOR__DROP_MESSAGE_AFTER_MAXIMUM_DELIVERY_ATTEMPTS,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 getString("_UI_AdditionalParametersPropertyCategory"),
+				 null));
+	}
+
+	/**
 	 * This adds a property descriptor for the Axis2 Client Repository feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -593,6 +617,28 @@ public class MessageProcessorItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Task Count feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	protected void addTaskCountPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_MessageProcessor_taskCount_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_MessageProcessor_taskCount_feature", "_UI_MessageProcessor_type"),
+				 EsbPackage.Literals.MESSAGE_PROCESSOR__TASK_COUNT,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 getString("_UI_AdditionalParametersPropertyCategory"),
+				 null));
+	}
+
+	/**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -669,6 +715,7 @@ public class MessageProcessorItemProvider
 			case EsbPackage.MESSAGE_PROCESSOR__SAMPLING_INTERVAL:
 			case EsbPackage.MESSAGE_PROCESSOR__SAMPLING_CONCURRENCY:
 			case EsbPackage.MESSAGE_PROCESSOR__MAX_DELIVERY_ATTEMPTS:
+			case EsbPackage.MESSAGE_PROCESSOR__DROP_MESSAGE_AFTER_MAXIMUM_DELIVERY_ATTEMPTS:
 			case EsbPackage.MESSAGE_PROCESSOR__AXIS2_CLIENT_REPOSITORY:
 			case EsbPackage.MESSAGE_PROCESSOR__AXIS2_CONFIGURATION:
 			case EsbPackage.MESSAGE_PROCESSOR__QUARTZ_CONFIG_FILE_PATH:
@@ -676,6 +723,7 @@ public class MessageProcessorItemProvider
 			case EsbPackage.MESSAGE_PROCESSOR__PINNED_SERVERS:
 			case EsbPackage.MESSAGE_PROCESSOR__NON_RETRY_HTTP_STATUS_CODES:
 			case EsbPackage.MESSAGE_PROCESSOR__BIND_PROCESSOR:
+			case EsbPackage.MESSAGE_PROCESSOR__TASK_COUNT:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case EsbPackage.MESSAGE_PROCESSOR__ENDPOINT_NAME:

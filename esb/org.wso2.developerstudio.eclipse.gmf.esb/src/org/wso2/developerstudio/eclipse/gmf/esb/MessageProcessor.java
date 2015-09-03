@@ -37,6 +37,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getSamplingInterval <em>Sampling Interval</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getSamplingConcurrency <em>Sampling Concurrency</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getMaxDeliveryAttempts <em>Max Delivery Attempts</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getDropMessageAfterMaximumDeliveryAttempts <em>Drop Message After Maximum Delivery Attempts</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getAxis2ClientRepository <em>Axis2 Client Repository</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getAxis2Configuration <em>Axis2 Configuration</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getReplySequenceName <em>Reply Sequence Name</em>}</li>
@@ -47,6 +48,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getNonRetryHttpStatusCodes <em>Non Retry Http Status Codes</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getParameters <em>Parameters</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#isBindProcessor <em>Bind Processor</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getTaskCount <em>Task Count</em>}</li>
  * </ul>
  * </p>
  *
@@ -377,6 +379,35 @@ public interface MessageProcessor extends EsbElement {
 	void setMaxDeliveryAttempts(int value);
 
 	/**
+	 * Returns the value of the '<em><b>Drop Message After Maximum Delivery Attempts</b></em>' attribute.
+	 * The literals are from the enumeration {@link org.wso2.developerstudio.eclipse.gmf.esb.EnableDisableState}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Drop Message After Maximum Delivery Attempts</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Drop Message After Maximum Delivery Attempts</em>' attribute.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EnableDisableState
+	 * @see #setDropMessageAfterMaximumDeliveryAttempts(EnableDisableState)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getMessageProcessor_DropMessageAfterMaximumDeliveryAttempts()
+	 * @model
+	 * @generated
+	 */
+	EnableDisableState getDropMessageAfterMaximumDeliveryAttempts();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getDropMessageAfterMaximumDeliveryAttempts <em>Drop Message After Maximum Delivery Attempts</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Drop Message After Maximum Delivery Attempts</em>' attribute.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EnableDisableState
+	 * @see #getDropMessageAfterMaximumDeliveryAttempts()
+	 * @generated
+	 */
+	void setDropMessageAfterMaximumDeliveryAttempts(EnableDisableState value);
+
+	/**
 	 * Returns the value of the '<em><b>Axis2 Client Repository</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -625,5 +656,31 @@ public interface MessageProcessor extends EsbElement {
 	 * @generated
 	 */
 	void setBindProcessor(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Task Count</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Task Count</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Task Count</em>' attribute.
+	 * @see #setTaskCount(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getMessageProcessor_TaskCount()
+	 * @model
+	 * @generated
+	 */
+	String getTaskCount();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getTaskCount <em>Task Count</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Task Count</em>' attribute.
+	 * @see #getTaskCount()
+	 * @generated
+	 */
+	void setTaskCount(String value);
 
 } // MessageProcessor

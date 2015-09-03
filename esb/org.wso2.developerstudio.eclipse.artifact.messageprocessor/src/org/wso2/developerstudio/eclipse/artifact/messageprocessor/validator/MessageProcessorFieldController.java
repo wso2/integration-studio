@@ -151,6 +151,8 @@ public class MessageProcessorFieldController extends AbstractFieldController{
 			updatedList.add("Forwarding_processor.retry_interval");
 			updatedList.add("Forwarding_processor.Fault_reg");
 			updatedList.add("Forwarding_processor.non_retry_http_status_codes");
+			updatedList.add("Forwarding_processor.drop_message_after_maximum_delivery_attempts");
+			updatedList.add("Forwarding_processor.task_count");
 			updatedList.add("sampling_processor.sequence");
 			updatedList.add("sampling_processor.sampling_interval");
 			updatedList.add("sampling_processor.sampling_concurrency");

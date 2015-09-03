@@ -48,28 +48,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.persistence.InboundEndpointConst
 public class InboundEndpointDeserializer extends
 		AbstractEsbNodeDeserializer<InboundEndpoint, org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint> {
 
-	private static final String HTTP = "http";
-	private static final String FILE = "file";
-	private static final String JMS = "jms";
-	private static final String HTTPS = "https";
-	private static final String HL7 = "hl7";
-	private static final String KAFKA = "kafka";
-	private static final String CUSTOM = "custom";
-	private static final String CXF_WS_RM = "cxf_ws_rm";
-	private static final String MQTT = "mqtt";
-	private static final String TRUE = "true";
-	private static final String NONE = "none";
-	private static final String DELETE = "DELETE";
-    private static final String ENABLE = "enable";
-	private static final String NAME = "name";
-	private static final String SIZE = "size";
-	private static final String TOPIC = "topic";
-	private static final String AUTO_ACKNOWLEDGE = "AUTO_ACKNOWLEDGE";
-	private static final String CLIENT_ACKNOWLEDGE = "CLIENT_ACKNOWLEDGE";
-	private static final String DUPS_OK_ACKNOWLEDGE = "DUPS_OK_ACKNOWLEDGE";
-	private static final String HIGHLEVEL = "highlevel";
-	private static final String APPLICATION_XML = "application/xml";
-
 	@Override
 	public org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint createNode(IGraphicalEditPart part,
 			InboundEndpoint object) {
@@ -96,31 +74,31 @@ public class InboundEndpointDeserializer extends
 			updateCustomParameters(object);
 		}
 
-		if (HTTP.equals(object.getProtocol())) {
+		if (InboundEndpointConstants.HTTP.equals(object.getProtocol())) {
 			executeSetValueCommand(INBOUND_ENDPOINT__TYPE, InboundEndpointType.HTTP);
 			updateParameters(object);
-		} else if (FILE.equals(object.getProtocol())) {
+		} else if (InboundEndpointConstants.FILE.equals(object.getProtocol())) {
 			executeSetValueCommand(INBOUND_ENDPOINT__TYPE, InboundEndpointType.FILE);
 			updateParameters(object);
-		} else if (JMS.equals(object.getProtocol())) {
+		} else if (InboundEndpointConstants.JMS.equals(object.getProtocol())) {
 			executeSetValueCommand(INBOUND_ENDPOINT__TYPE, InboundEndpointType.JMS);
 			updateParameters(object);
-		} else if (HTTPS.equals(object.getProtocol())) {
+		} else if (InboundEndpointConstants.HTTPS.equals(object.getProtocol())) {
 			executeSetValueCommand(INBOUND_ENDPOINT__TYPE, InboundEndpointType.HTTPS);
 			updateParameters(object);
-		} else if (HL7.equals(object.getProtocol())) {
+		} else if (InboundEndpointConstants.HL7.equals(object.getProtocol())) {
 			executeSetValueCommand(INBOUND_ENDPOINT__TYPE, InboundEndpointType.HL7);
 			updateParameters(object);
-		} else if (KAFKA.equals(object.getProtocol())) {
+		} else if (InboundEndpointConstants.KAFKA.equals(object.getProtocol())) {
 			executeSetValueCommand(INBOUND_ENDPOINT__TYPE, InboundEndpointType.KAFKA);
 			updateParameters(object);
-		} else if (CUSTOM.equals(object.getProtocol())) {
+		} else if (InboundEndpointConstants.CUSTOM.equals(object.getProtocol())) {
 			executeSetValueCommand(INBOUND_ENDPOINT__TYPE, InboundEndpointType.CUSTOM);
 			updateParameters(object);
-		} else if (CXF_WS_RM.equals(object.getProtocol())) {
+		} else if (InboundEndpointConstants.CXF_WS_RM.equals(object.getProtocol())) {
 			executeSetValueCommand(INBOUND_ENDPOINT__TYPE, InboundEndpointType.CXF_WS_RM);
 			updateParameters(object);
-		} else if (MQTT.equals(object.getProtocol())) {
+		} else if (InboundEndpointConstants.MQTT.equals(object.getProtocol())) {
 			executeSetValueCommand(INBOUND_ENDPOINT__TYPE, InboundEndpointType.MQTT);
 			updateParameters(object);
 		}
@@ -207,13 +185,13 @@ public class InboundEndpointDeserializer extends
 				executeSetValueCommand(INBOUND_ENDPOINT__DISPATCH_FILTER_PATTERN, paramEntry.getValue());
 			}		
 			else if (paramEntry.getKey().equals(InboundEndpointConstants.SEQUENTIAL)) {
-				if (paramEntry.getValue().equals(TRUE)) {
+				if (paramEntry.getValue().equals(InboundEndpointConstants.TRUE)) {
 					executeSetValueCommand(INBOUND_ENDPOINT__SEQUENTIAL, true);
 				} else {
 					executeSetValueCommand(INBOUND_ENDPOINT__SEQUENTIAL, false);
 				}
 			} else if (paramEntry.getKey().equals(InboundEndpointConstants.COORDINATION)) {
-				if (paramEntry.getValue().equals(TRUE)) {
+				if (paramEntry.getValue().equals(InboundEndpointConstants.TRUE)) {
 					executeSetValueCommand(INBOUND_ENDPOINT__COORDINATION, true);
 				} else {
 					executeSetValueCommand(INBOUND_ENDPOINT__COORDINATION, false);
@@ -241,7 +219,7 @@ public class InboundEndpointDeserializer extends
 			} else if (paramEntry.getKey().equals(InboundEndpointConstants.VFS_RECONNECT_TIMEOUT)) {
 				executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_VFS_RECONNECT_TIMEOUT, paramEntry.getValue());
 			} else if (paramEntry.getKey().equals(InboundEndpointConstants.VFS_ACTION_AFTER_PROCESS)) {
-				if (paramEntry.getValue().equals(DELETE)) {
+				if (paramEntry.getValue().equals(InboundEndpointConstants.DELETE)) {
 					executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_VFS_ACTION_AFTER_PROCESS, VFSAction.DELETE);
 				} else {
 					executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_VFS_ACTION_AFTER_PROCESS, VFSAction.MOVE);
@@ -249,7 +227,7 @@ public class InboundEndpointDeserializer extends
 			} else if (paramEntry.getKey().equals(InboundEndpointConstants.VFS_MOVE_AFTER_PROCESS)) {
 				executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_AFTER_PROCESS, paramEntry.getValue());
 			} else if (paramEntry.getKey().equals(InboundEndpointConstants.VFS_ACTION_AFTER_ERRORS)) {
-				if (paramEntry.getValue().equals(DELETE)) {
+				if (paramEntry.getValue().equals(InboundEndpointConstants.DELETE)) {
 					executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_VFS_ACTION_AFTER_ERRORS, VFSAction.DELETE);
 				} else {
 					executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_VFS_ACTION_AFTER_ERRORS, VFSAction.MOVE);
@@ -257,7 +235,7 @@ public class InboundEndpointDeserializer extends
 			} else if (paramEntry.getKey().equals(InboundEndpointConstants.VFS_MOVE_AFTER_ERRORS)) {
 				executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_AFTER_ERRORS, paramEntry.getValue());
 			} else if (paramEntry.getKey().equals(InboundEndpointConstants.VFS_ACTION_AFTER_FAILURE)) {
-				if (paramEntry.getValue().equals(DELETE)) {
+				if (paramEntry.getValue().equals(InboundEndpointConstants.DELETE)) {
 					executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_VFS_ACTION_AFTER_FAILURE, VFSAction.DELETE);
 				} else {
 					executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_VFS_ACTION_AFTER_FAILURE, VFSAction.MOVE);
@@ -267,7 +245,7 @@ public class InboundEndpointDeserializer extends
 			} else if (paramEntry.getKey().equals(InboundEndpointConstants.VFS_MOVE_TIMESTAMP_FORMAT)) {
 				executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_TIMESTAMP_FORMAT, paramEntry.getValue());
 			} else if (paramEntry.getKey().equals(InboundEndpointConstants.VFS_AUTO_LOCK_RELEASE)) {
-				if (paramEntry.getValue().equals(TRUE)) {
+				if (paramEntry.getValue().equals(InboundEndpointConstants.TRUE)) {
 					executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_VFS_AUTO_LOCK_RELEASE, true);
 				} else {
 					executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_VFS_AUTO_LOCK_RELEASE, false);
@@ -276,13 +254,13 @@ public class InboundEndpointDeserializer extends
 				executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_VFS_AUTO_LOCK_RELEASE_INTERVAL,
 						paramEntry.getValue());
 			} else if (paramEntry.getKey().equals(InboundEndpointConstants.VFS_LOCK_RELEASE_SAME_NODE)) {
-				if (paramEntry.getValue().equals(TRUE)) {
+				if (paramEntry.getValue().equals(InboundEndpointConstants.TRUE)) {
 					executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_VFS_LOCK_RELEASE_SAME_NODE, true);
 				} else {
 					executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_VFS_LOCK_RELEASE_SAME_NODE, false);
 				}
 			} else if (paramEntry.getKey().equals(InboundEndpointConstants.VFS_DISTRIBUTED_LOCK)) {
-				if (paramEntry.getValue().equals(TRUE)) {
+				if (paramEntry.getValue().equals(InboundEndpointConstants.TRUE)) {
 					executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_VFS_DISTRIBUTED_LOCK, true);
 				} else {
 					executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_VFS_DISTRIBUTED_LOCK, false);
@@ -290,18 +268,18 @@ public class InboundEndpointDeserializer extends
 			} else if (paramEntry.getKey().equals(InboundEndpointConstants.VFS_DISTRIBUTED_TIMEOUT)) {
 				executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_VFS_DISTRIBUTED_TIMEOUT, paramEntry.getValue());
 			} else if (paramEntry.getKey().equals(InboundEndpointConstants.VFS_FILESORT_ATTRIBUTE)) {
-				if (paramEntry.getValue().equals(NONE)) {
+				if (paramEntry.getValue().equals(InboundEndpointConstants.NONE)) {
 					executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_SORT_ATTRIBUTE, VFSFileSort.NONE);
-				} else if (paramEntry.getValue().equals(NAME)) {
+				} else if (paramEntry.getValue().equals(InboundEndpointConstants.NAME)) {
 					executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_SORT_ATTRIBUTE, VFSFileSort.NAME);
-				} else if (paramEntry.getValue().equals(SIZE)) {
+				} else if (paramEntry.getValue().equals(InboundEndpointConstants.SIZE)) {
 					executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_SORT_ATTRIBUTE, VFSFileSort.SIZE);
 				} else {
 					executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_SORT_ATTRIBUTE,
 							VFSFileSort.LASTMODIFIEDTIMESTAMP);
 				}
 			} else if (paramEntry.getKey().equals(InboundEndpointConstants.VFS_FILESORT_ASCENDING)) {
-				if (paramEntry.getValue().equals(TRUE)) {
+				if (paramEntry.getValue().equals(InboundEndpointConstants.TRUE)) {
 					executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_SORT_ASCENDING, true);
 				} else {
 					executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_SORT_ASCENDING, false);
@@ -310,21 +288,21 @@ public class InboundEndpointDeserializer extends
 				executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_VFS_SUB_FOLDER_TIMESTAMP_FORMAT,
 						paramEntry.getValue());
 			} else if (paramEntry.getKey().equals(InboundEndpointConstants.VFS_CREATE_FOLDER)) {
-				if (paramEntry.getValue().equals(TRUE)) {
+				if (paramEntry.getValue().equals(InboundEndpointConstants.TRUE)) {
 					executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_VFS_CREATE_FOLDER, true);
 				} else {
 					executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_VFS_CREATE_FOLDER, false);
 				}
 			}			
 			else if (paramEntry.getKey().equals(InboundEndpointConstants.VFS_STREAMING)) {
-				if (paramEntry.getValue().equals(TRUE)) {
+				if (paramEntry.getValue().equals(InboundEndpointConstants.TRUE)) {
 					executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_VFS_STREAMING, true);
 				} else {
 					executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_VFS_STREAMING, false);
 				}
 			}
 			else if (paramEntry.getKey().equals(InboundEndpointConstants.VFS_BUILD)) {
-				if (paramEntry.getValue().equals(TRUE)) {
+				if (paramEntry.getValue().equals(InboundEndpointConstants.TRUE)) {
 					executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_VFS_BUILD, true);
 				} else {
 					executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_VFS_BUILD, false);
@@ -338,7 +316,7 @@ public class InboundEndpointDeserializer extends
 				executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_JMS_CONNECTION_FACTORY_JNDI_NAME,
 						paramEntry.getValue());
 			} else if (paramEntry.getKey().equals(InboundEndpointConstants.JMS_CONNECTION_FACTORY_TYPE)) {
-				if (paramEntry.getValue().equals(TOPIC)) {
+				if (paramEntry.getValue().equals(InboundEndpointConstants.TOPIC)) {
 					executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_JMS_CONNECTION_FACTORY_TYPE,
 							JMSConnectionFactoryType.TOPIC);
 				} else {
@@ -348,19 +326,19 @@ public class InboundEndpointDeserializer extends
 			} else if (paramEntry.getKey().equals(InboundEndpointConstants.JMS_DESTINATION)) {
 				executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_JMS_DESTINATION, paramEntry.getValue());
 			} else if (paramEntry.getKey().equals(InboundEndpointConstants.JMS_SESSION_TRANSACTED)) {
-				if (paramEntry.getValue().equals(TRUE)) {
+				if (paramEntry.getValue().equals(InboundEndpointConstants.TRUE)) {
 					executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_JMS_SESSION_TRANSACTED, true);
 				} else {
 					executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_JMS_SESSION_TRANSACTED, false);
 				}
 			} else if (paramEntry.getKey().equals(InboundEndpointConstants.JMS_SESSION_ACKNOWLEDGEMENT)) {
-				if (paramEntry.getValue().equals(AUTO_ACKNOWLEDGE)) {
+				if (paramEntry.getValue().equals(InboundEndpointConstants.AUTO_ACKNOWLEDGE)) {
 					executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_JMS_SESSION_ACKNOWLEDGEMENT,
 							JMSSessionAcknowledgement.AUTO_ACKNOWLEDGE);
-				} else if (paramEntry.getValue().equals(CLIENT_ACKNOWLEDGE)) {
+				} else if (paramEntry.getValue().equals(InboundEndpointConstants.CLIENT_ACKNOWLEDGE)) {
 					executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_JMS_SESSION_ACKNOWLEDGEMENT,
 							JMSSessionAcknowledgement.CLIENT_ACKNOWLEDGE);
-				} else if (paramEntry.getValue().equals(DUPS_OK_ACKNOWLEDGE)) {
+				} else if (paramEntry.getValue().equals(InboundEndpointConstants.DUPS_OK_ACKNOWLEDGE)) {
 					executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_JMS_SESSION_ACKNOWLEDGEMENT,
 							JMSSessionAcknowledgement.DUPS_OK_ACKNOWLEDGE);
 				} else {
@@ -416,7 +394,7 @@ public class InboundEndpointDeserializer extends
 			} else if (paramEntry.getKey().equals(InboundEndpointConstants.INBOUND_HL7_PORT)) {
 				executeSetValueCommand(INBOUND_ENDPOINT__INBOUND_HL7_PORT, paramEntry.getValue());
 			} else if (paramEntry.getKey().equals(InboundEndpointConstants.INBOUND_HL7_AUTOACK)) {
-				if (paramEntry.getValue().equals(TRUE)) {
+				if (paramEntry.getValue().equals(InboundEndpointConstants.TRUE)) {
 					executeSetValueCommand(INBOUND_ENDPOINT__INBOUND_HL7_AUTO_ACK, true);
 				} else {
 					executeSetValueCommand(INBOUND_ENDPOINT__INBOUND_HL7_AUTO_ACK, false);
@@ -428,7 +406,7 @@ public class InboundEndpointDeserializer extends
 			} else if (paramEntry.getKey().equals(InboundEndpointConstants.INBOUND_HL7_CHARSET)) {
 				executeSetValueCommand(INBOUND_ENDPOINT__INBOUND_HL7_CHAR_SET, paramEntry.getValue());
 			} else if (paramEntry.getKey().equals(InboundEndpointConstants.INBOUND_HL7_VALIDATE_MESSAGE)) {
-				if (paramEntry.getValue().equals(TRUE)) {
+				if (paramEntry.getValue().equals(InboundEndpointConstants.TRUE)) {
 					executeSetValueCommand(INBOUND_ENDPOINT__INBOUND_HL7_VALIDATE_MESSAGE, true);
 				} else {
 					executeSetValueCommand(INBOUND_ENDPOINT__INBOUND_HL7_VALIDATE_MESSAGE, false);
@@ -486,13 +464,13 @@ public class InboundEndpointDeserializer extends
 			} else if (paramEntry.getKey().equals(InboundEndpointConstants.GROUP_ID)) {
 				executeSetValueCommand(INBOUND_ENDPOINT__GROUP_ID, paramEntry.getValue());
 			} else if (paramEntry.getKey().equals(InboundEndpointConstants.CONTENT_TYPE)) {
-				if (paramEntry.getValue().equals(APPLICATION_XML)) {
+				if (paramEntry.getValue().equals(InboundEndpointConstants.APPLICATION_XML)) {
 					executeSetValueCommand(INBOUND_ENDPOINT__CONTENT_TYPE, ContentType.XML);
 				} else {
 					executeSetValueCommand(INBOUND_ENDPOINT__CONTENT_TYPE, ContentType.JSON);
 				}
 			} else if (paramEntry.getKey().equals(InboundEndpointConstants.CONSUMER_TYPE)) {
-				if (paramEntry.getValue().equals(HIGHLEVEL)) {
+				if (paramEntry.getValue().equals(InboundEndpointConstants.HIGHLEVEL)) {
 					executeSetValueCommand(INBOUND_ENDPOINT__CONSUMER_TYPE, ConsumerType.HIGHLEVEL);					
 				} else {
 					executeSetValueCommand(INBOUND_ENDPOINT__CONSUMER_TYPE, ConsumerType.SIMPLE);
@@ -504,9 +482,9 @@ public class InboundEndpointDeserializer extends
 				executeSetValueCommand(INBOUND_ENDPOINT__TOPICS_OR_TOPIC_FILTER, TopicsType.TOPIC_FILTER);
 				executeSetValueCommand(INBOUND_ENDPOINT__TOPIC_FILTER_NAME, paramEntry.getValue());
 			} else if (paramEntry.getKey().equals(InboundEndpointConstants.FILTER_FROM_WHITELIST)) {
-				executeSetValueCommand(INBOUND_ENDPOINT__TOPIC_FILTER_NAME, TopicFilterFromType.FILTER_FROM_WHITELIST);
+				executeSetValueCommand(INBOUND_ENDPOINT__TOPIC_FILTER_FROM, TopicFilterFromType.FILTER_FROM_WHITELIST);
 			} else if (paramEntry.getKey().equals(InboundEndpointConstants.FILTER_FROM_BLACKLIST)) {
-				executeSetValueCommand(INBOUND_ENDPOINT__TOPIC_FILTER_NAME, TopicFilterFromType.FILTER_FROM_BLACKLIST);
+				executeSetValueCommand(INBOUND_ENDPOINT__TOPIC_FILTER_FROM, TopicFilterFromType.FILTER_FROM_BLACKLIST);
 			} else if (paramEntry.getKey().equals(InboundEndpointConstants.SIMPLE_TOPIC)) {
 				executeSetValueCommand(INBOUND_ENDPOINT__SIMPLE_CONSUMER_TOPIC, paramEntry.getValue());
 			} else if (paramEntry.getKey().equals(InboundEndpointConstants.SIMPLE_BROKERS)) {
@@ -571,15 +549,16 @@ public class InboundEndpointDeserializer extends
 				executeSetValueCommand(INBOUND_ENDPOINT__OFFSETS_COMMIT_MAX_RETRIES, paramEntry.getValue());
 			} else if (paramEntry.getKey().equals(InboundEndpointConstants.DUAL_COMMIT_ENABLED)) {
 				executeSetValueCommand(INBOUND_ENDPOINT__DUAL_COMMIT_ENABLED, paramEntry.getValue());
+			}
 
-			}else if (paramEntry.getKey().equals(InboundEndpointConstants.INBOUND_CXF_RM_HOST)) {
+			else if (paramEntry.getKey().equals(InboundEndpointConstants.INBOUND_CXF_RM_HOST)) {
 				executeSetValueCommand(INBOUND_ENDPOINT__INBOUND_CXF_RM_HOST, paramEntry.getValue());
 			} else if (paramEntry.getKey().equals(InboundEndpointConstants.INBOUND_CXF_RM_PORT)) {
 				executeSetValueCommand(INBOUND_ENDPOINT__INBOUND_CXF_RM_PORT, paramEntry.getValue());
 			} else if (paramEntry.getKey().equals(InboundEndpointConstants.INBOUND_CXF_RM_CONFIG_FILE)) {
 				executeSetValueCommand(INBOUND_ENDPOINT__INBOUND_CXF_RM_CONFIG_FILE, paramEntry.getValue());
 			} else if (paramEntry.getKey().equals(InboundEndpointConstants.ENABLE_SSL)) {
-				if (paramEntry.getValue().equals(TRUE)) {
+				if (paramEntry.getValue().equals(InboundEndpointConstants.TRUE)) {
 					executeSetValueCommand(INBOUND_ENDPOINT__ENABLE_SSL, true);
 				} else {
 					executeSetValueCommand(INBOUND_ENDPOINT__ENABLE_SSL, false);

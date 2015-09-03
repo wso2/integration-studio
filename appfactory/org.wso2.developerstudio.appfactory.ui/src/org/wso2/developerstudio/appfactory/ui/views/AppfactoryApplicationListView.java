@@ -647,17 +647,17 @@ public class AppfactoryApplicationListView extends ViewPart {
 
 				appInfo.setLableState(1);
 				broker.send("Appversionupdate", model); //$NON-NLS-1$
-				if(getVersionInfo(appInfo, monitor)){
-					getForkedVersionsInfo(appInfo, monitor);
-					getTeamInfo(appInfo, monitor);
+				if(getVersionInfo(appInfo, new SubProgressMonitor(monitor, 25))){
+					getForkedVersionsInfo(appInfo, new SubProgressMonitor(monitor, 25));
+					getTeamInfo(appInfo, new SubProgressMonitor(monitor, 25));
 					//getDbInfo(appInfo, monitor);/*currently not supporting*/
-					getDSInfo(appInfo, monitor);
-					appInfo.setLableState(2);
-					
-				}else{
-					appInfo.setLableState(0);
-				}			
+					getDSInfo(appInfo, new SubProgressMonitor(monitor, 25));
+					appInfo.setLableState(2);		
+                } else {
+                    appInfo.setLableState(0);
+                }
 				updateUI(appInfo);
+				monitor.done();
 				
 			    return Status.OK_STATUS;
 			  }
@@ -665,7 +665,7 @@ public class AppfactoryApplicationListView extends ViewPart {
 			  private boolean getVersionInfo(
 						final ApplicationInfo appInfo,
 						final IProgressMonitor monitor) {
-					monitor.subTask(Messages.AppfactoryApplicationListView_getVersionInfo_monitor_text_2);
+					monitor.beginTask(Messages.AppfactoryApplicationListView_getVersionInfo_monitor_text_2, 100);
 					monitor.worked(20);	   
 					boolean result = model.setversionInfo(appInfo);
 					if(!result){
@@ -676,12 +676,14 @@ public class AppfactoryApplicationListView extends ViewPart {
 					}
 					if(result){
 					monitor.subTask(Messages.AppfactoryApplicationListView_getVersionInfo_monitor_text_3);
-					monitor.worked(30);	 
+					monitor.worked(60);	 
 					broker.send("Appversionupdate", model); //$NON-NLS-1$
-					monitor.worked(32);
+					monitor.worked(20);
+					monitor.done();
 					return true;
 					}else{
-
+					    monitor.worked(80);
+	                    monitor.done();
 						return false;
 					}
 				}
@@ -689,8 +691,8 @@ public class AppfactoryApplicationListView extends ViewPart {
 				private boolean getForkedVersionsInfo(
 						final ApplicationInfo appInfo,
 						final IProgressMonitor monitor) {
-					monitor.subTask(Messages.AppfactoryApplicationListView_getForkedAppVersions_monitor_text_1);
-					monitor.worked(38);	   
+					monitor.beginTask(Messages.AppfactoryApplicationListView_getForkedAppVersions_monitor_text_1, 100);
+					monitor.worked(20);	   
 					boolean result = model.setForkedRepoInfo(appInfo);
 					if(!result){
 						boolean reLogin = Authenticator.getInstance().reLogin();
@@ -700,20 +702,21 @@ public class AppfactoryApplicationListView extends ViewPart {
 					}
 					if(result){
 					monitor.subTask(Messages.AppfactoryApplicationListView_getVersionInfo_monitor_text_3);
-					monitor.worked(42);	 
+					monitor.worked(60);	 
 					broker.send("Appversionupdate", model); //$NON-NLS-1$
-					monitor.worked(50);
+					monitor.worked(20);
 					return true;
 					}else{
-
+					    monitor.worked(80);
+                        monitor.done();
 						return false;
 					}
 				}
 				
 				private boolean getTeamInfo(final ApplicationInfo appInfo,
 						final IProgressMonitor monitor) {
-					monitor.subTask(Messages.AppfactoryApplicationListView_getTeamInfo_monitor_text_1);
-					monitor.worked(60);	   
+					monitor.beginTask(Messages.AppfactoryApplicationListView_getTeamInfo_monitor_text_1, 100);
+					monitor.worked(20);	   
 					boolean result = model.setRoleInfomation(appInfo);
 					if(!result){
 						boolean reLogin = Authenticator.getInstance().reLogin();
@@ -725,9 +728,12 @@ public class AppfactoryApplicationListView extends ViewPart {
 					monitor.subTask(Messages.AppfactoryApplicationListView_getTeamInfo_monitor_text_2);
 					monitor.worked(60);	 
 					broker.send("Appversionupdate", model); //$NON-NLS-1$
-					monitor.worked(90);
+					monitor.worked(20);
+					monitor.done();
 					return true;
 					}else{
+					    monitor.worked(80);
+                        monitor.done();
 						return false;
 					}
 				}
@@ -735,8 +741,8 @@ public class AppfactoryApplicationListView extends ViewPart {
 				@SuppressWarnings("unused")
 				private boolean getDbInfo(final ApplicationInfo appInfo,
 						final IProgressMonitor monitor) {
-					monitor.subTask(Messages.AppfactoryApplicationListView_getDbInfo_monitor_text_1);
-					monitor.worked(60);	   
+					monitor.beginTask(Messages.AppfactoryApplicationListView_getDbInfo_monitor_text_1, 100);
+					monitor.worked(20);	   
 					boolean result = model.setDBInfomation(appInfo);
 					if(!result){
 						boolean reLogin = Authenticator.getInstance().reLogin();
@@ -748,17 +754,20 @@ public class AppfactoryApplicationListView extends ViewPart {
 					monitor.subTask(Messages.AppfactoryApplicationListView_getDbInfo_monitor_text_2);
 					monitor.worked(60);	 
 					broker.send("Appversionupdate", model); //$NON-NLS-1$
-					monitor.worked(90);
+					monitor.worked(20);
+					monitor.done();
 					return true;
 					}else{
+					    monitor.worked(80);
+                        monitor.done();
 						return false;
 					}
 				}
 				
 				private boolean getDSInfo(final ApplicationInfo appInfo,
 						final IProgressMonitor monitor) {
-					monitor.subTask(Messages.AppfactoryApplicationListView_getDSInfo_monitor_text_2);
-					monitor.worked(60);	   
+					monitor.beginTask(Messages.AppfactoryApplicationListView_getDSInfo_monitor_text_2, 100);
+					monitor.worked(20);	   
 					boolean result = model.setDSInfomation(appInfo);
 					if(!result){
 						boolean reLogin = Authenticator.getInstance().reLogin();
@@ -770,9 +779,12 @@ public class AppfactoryApplicationListView extends ViewPart {
 					monitor.subTask(Messages.AppfactoryApplicationListView_getDSInfo_monitor_text_3);
 					monitor.worked(60);	 
 					broker.send("Appversionupdate", model); //$NON-NLS-1$
-					monitor.worked(90);
+					monitor.worked(20);
+					monitor.done();
 					return true;
 					}else{
+					    monitor.worked(80);
+                        monitor.done();
 						return false;
 					}
 				}
@@ -1361,7 +1373,7 @@ public class AppfactoryApplicationListView extends ViewPart {
 			info.setLocalRepo(localRepo);
 		}
         monitor.worked(5);	
-		JgitRepoManager manager = new JgitRepoManager(info.getLocalRepo(), info.getRepoURL());
+		JgitRepoManager manager = new JgitRepoManager(info);
 		
 		if(!manager.isCloned()){
 		    File localRepoDir = new File(info.getLocalRepo());

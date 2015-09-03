@@ -16,6 +16,7 @@
 package org.wso2.developerstudio.appfactory.core.repository;
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 import org.eclipse.jgit.api.*;
 import org.eclipse.jgit.api.errors.*;
@@ -26,6 +27,8 @@ import org.eclipse.jgit.storage.file.FileRepositoryBuilder;
 import org.wso2.developerstudio.appfactory.core.Activator;
 import org.wso2.developerstudio.appfactory.core.authentication.Authenticator;
 import org.wso2.developerstudio.appfactory.core.authentication.UserPasswordCredentials;
+import org.wso2.developerstudio.appfactory.core.model.AppUserInfo;
+import org.wso2.developerstudio.appfactory.core.model.AppVersionInfo;
 import org.wso2.developerstudio.eclipse.distribution.project.ui.wizard.ProjectsImportPage;
 import org.wso2.developerstudio.eclipse.distribution.project.ui.wizard.ProjectsImportPage.ProjectRecord;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
@@ -40,7 +43,9 @@ public class JgitRepoManager {
     private Git git;
     private boolean cloned;
     UsernamePasswordCredentialsProvider provider;
+    AppVersionInfo appVersionInfo;
     private static IDeveloperStudioLog log=Logger.getLog(Activator.PLUGIN_ID);
+
     public JgitRepoManager(String localPath,String uri) throws IOException {
     	 this.localPath =localPath;
          this.remotePath = uri;
@@ -51,27 +56,46 @@ public class JgitRepoManager {
              setCloned(true);
          }
          UserPasswordCredentials credentials = Authenticator.getInstance().getCredentials();
-         provider = new UsernamePasswordCredentialsProvider(credentials.getGitUser(), credentials.getPassword());
-         
+         provider = new UsernamePasswordCredentialsProvider(credentials.getGitUser(), credentials.getPassword());       
          
 	}
-   public void createGitRepo(){
-		try {
-			 File gitDir = new File(localPath +File.separator+ ".git");
-			 localRepo = FileRepositoryBuilder.create(gitDir);
-			//localRepo = new FileRepository(localPath +File.separator +".git");
-			localRepo.create();
-		} catch (Exception e) {
-			log.error("Git Repository creation Error : ", e);
-		}
+
+    public JgitRepoManager(AppVersionInfo info) throws IOException {
+        this(info.getLocalRepo(), info.getRepoURL());
+        this.appVersionInfo = info;
     }
 
-    public void gitClone() throws InvalidRemoteException, TransportException, GitAPIException   {     
+    public void createGitRepo() {
+        try {
+            File gitDir = new File(localPath + File.separator + ".git");
+            localRepo = FileRepositoryBuilder.create(gitDir);
+            // localRepo = new FileRepository(localPath +File.separator +".git");
+            localRepo.create();
+        } catch (Exception e) {
+            log.error("Git Repository creation Error : ", e);
+        }
+    }
+
+    public void gitClone() throws InvalidRemoteException, TransportException, GitAPIException, IOException   {     
          Git.cloneRepository() 
            .setCredentialsProvider(provider)
            .setURI(remotePath)
            .setDirectory(new File(localPath))
-           .call();  
+           .call();
+         setRepoAuthor();
+    }
+
+    private void setRepoAuthor() throws IOException {
+        String currentUser = Authenticator.getInstance().getCredentials().getGitUser();
+        List<AppUserInfo> applicationDevelopers = appVersionInfo.getVersionGroup().getApplication()
+                .getApplicationDevelopers();
+        for (AppUserInfo user : applicationDevelopers) {
+            if (currentUser.equals(user.getEmail())) {
+                localRepo.getConfig().setString("user", null, "name", user.getFirstName() + " " + user.getLastName());
+                localRepo.getConfig().setString("user", null, "email", user.getEmail());
+                localRepo.getConfig().save();
+            }
+        }
     }
 
 	public void branchCreate(String branch) throws IOException,

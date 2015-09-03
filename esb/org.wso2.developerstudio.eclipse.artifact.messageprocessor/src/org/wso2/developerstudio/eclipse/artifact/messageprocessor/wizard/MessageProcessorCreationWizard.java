@@ -239,6 +239,10 @@ public class MessageProcessorCreationWizard extends AbstractWSO2ProjectCreationW
 				messageProcessorPrameeters.put("message.processor.fault.sequence",
 						messageProcessorModel.getFaultSequenceName());
 			}
+			if (StringUtils.isNotBlank(messageProcessorModel.getDeactivateSequenceName())) {
+				messageProcessorPrameeters.put("message.processor.deactivate.sequence",
+						messageProcessorModel.getDeactivateSequenceName());
+			}
 			if (StringUtils.isNotBlank(messageProcessorModel.getConfigurationFilePath())) {
 				messageProcessorPrameeters.put("quartz.conf",
 						messageProcessorModel.getConfigurationFilePath());
@@ -247,10 +251,6 @@ public class MessageProcessorCreationWizard extends AbstractWSO2ProjectCreationW
 				messageProcessorPrameeters.put("cronExpression",
 						messageProcessorModel.getCronExpression());
 			}
-			if (StringUtils.isNotBlank(messageProcessorModel.getPinnedServers())) {
-				messageProcessorPrameeters.put("pinnedServers",
-						messageProcessorModel.getPinnedServers());
-			}
 			if (StringUtils.isNotBlank(messageProcessorModel.getProcessorState())) {
 				if (messageProcessorModel.getProcessorState().equals("Activate")) {
 					Boolean isActive = true;
@@ -258,15 +258,6 @@ public class MessageProcessorCreationWizard extends AbstractWSO2ProjectCreationW
 				} else {
 					Boolean isActive = false;
 					messageProcessorPrameeters.put("is.active", isActive.toString());
-				}
-			}
-			if (StringUtils.isNotBlank(messageProcessorModel.getBindProcessorToServer())) {
-				if (messageProcessorModel.getBindProcessorToServer().equals("true")) {
-					Boolean isBind = true;
-					messageProcessorPrameeters.put("bind.processor.server", isBind.toString());
-				} else {
-					Boolean isBind = false;
-					messageProcessorPrameeters.put("bind.processor.server", isBind.toString());
 				}
 			}
 			if (StringUtils.isNotBlank(messageProcessorModel.getNonRetryHttpStatusCodes())) {
@@ -311,10 +302,6 @@ public class MessageProcessorCreationWizard extends AbstractWSO2ProjectCreationW
 			if (StringUtils.isNotBlank(messageProcessorModel.getCronExpression())) {
 				messageProcessorPrameeters.put("cronExpression",
 						messageProcessorModel.getCronExpression());
-			}
-			if (StringUtils.isNotBlank(messageProcessorModel.getPinnedServers())) {
-				messageProcessorPrameeters.put("pinnedServers",
-						messageProcessorModel.getPinnedServers());
 			}
 			if (StringUtils.isNotBlank(messageProcessorModel.getSequence())) {
 				messageProcessorPrameeters.put("sequence", messageProcessorModel.getSequence());

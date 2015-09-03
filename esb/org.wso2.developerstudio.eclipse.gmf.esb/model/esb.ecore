@@ -2614,7 +2614,8 @@
         defaultValueLiteral="1000"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="samplingConcurrency" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
         defaultValueLiteral="1"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="maxDeliveryAttempts" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="maxDeliveryAttempts" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+        defaultValueLiteral="4"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="dropMessageAfterMaximumDeliveryAttempts"
         eType="#//EnableDisableState"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="axis2ClientRepository"
@@ -2624,14 +2625,14 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="faultSequenceName" eType="#//RegistryKeyProperty"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="deactivateSequenceName"
+        eType="#//RegistryKeyProperty" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="quartzConfigFilePath" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="cronExpression" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="pinnedServers" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="nonRetryHttpStatusCodes"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" upperBound="-1"
         eType="#//MessageProcessorParameter" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="bindProcessor" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="taskCount" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="APIHandler" eSuperTypes="#//EsbNode">

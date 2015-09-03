@@ -53,17 +53,16 @@ public class MessageProcessorModel extends ProjectDataModel {
 	private String retryInterval;
 	private String configurationFilePath;
 	private String cronExpression;
-	private String pinnedServers;
 	private String deliveryAttempts;
 	private String clientRepository;
 	private String axis2Configuration;
 	private String replySequenceName;
 	private String FaultSequenceName;
-	private String sequence;
+	private String deactivateSequenceName;
+    private String sequence;
 	private String classFQN;
 	private String endpointName;
 	private String processorState;
-	private String bindProcessorToServer;
 	private String nonRetryHttpStatusCodes;
 	private int forwardingInterval;
 	private int samplingInterval;
@@ -81,7 +80,7 @@ public class MessageProcessorModel extends ProjectDataModel {
 		selectedProcessorList = new ArrayList<OMElement>();
 		messageProcessorType = "Scheduled Message Forwarding Processor";
 		retryInterval = "1000";
-		deliveryAttempts = "-1";
+		deliveryAttempts = "4";
 		forwardingInterval = 1000;
 		samplingInterval = 1000;
 		samplingConcurrency = 1;
@@ -136,14 +135,6 @@ public class MessageProcessorModel extends ProjectDataModel {
 		this.cronExpression = cronExpression;
 	}
 
-	public String getPinnedServers() {
-		return pinnedServers;
-	}
-
-	public void setPinnedServers(String pinnedServers) {
-		this.pinnedServers = pinnedServers;
-	}
-
 	public String getDeliveryAttempts() {
 		return deliveryAttempts;
 	}
@@ -182,6 +173,14 @@ public class MessageProcessorModel extends ProjectDataModel {
 
 	public void setFaultSequenceName(String faultSequenceName) {
 		FaultSequenceName = faultSequenceName;
+	}
+
+	public String getDeactivateSequenceName() {
+		return deactivateSequenceName;
+	}
+
+	public void setDeactivateSequenceName(String deactivateSequenceName) {
+		this.deactivateSequenceName = deactivateSequenceName;
 	}
 
 	public String getSequence() {
@@ -236,15 +235,6 @@ public class MessageProcessorModel extends ProjectDataModel {
 		this.processorState = processorState;
 	}
 	
-	public String getBindProcessorToServer(){
-		return bindProcessorToServer;
-	}
-	
-	public void setBindProcessorToServer(String bindProcessorToServer){
-		this.bindProcessorToServer = bindProcessorToServer;
-	}
-	
-
 	public int getForwardingInterval() {
 		return forwardingInterval;
 	}
@@ -325,8 +315,6 @@ public class MessageProcessorModel extends ProjectDataModel {
 				modelPropertyValue = getConfigurationFilePath();
 			} else if (key.equals("FS_processor.cron_expression")) {
 				modelPropertyValue = getCronExpression();
-			} else if (key.equals("FS_processor.pinned_servers")) {
-				modelPropertyValue = getPinnedServers();
 			} else if (key.equals("Forwarding_processor.delivery_attempts")) {
 				modelPropertyValue = getDeliveryAttempts();
 			} else if (key.equals("Forwarding_processor.client_repository")) {
@@ -335,8 +323,8 @@ public class MessageProcessorModel extends ProjectDataModel {
 				modelPropertyValue = getAxis2Configuration();
 			} else if (key.equals("Forwarding_processor.Reply_sequence_name")) {
 				modelPropertyValue = getReplySequenceName();
-			} else if (key.equals("Forwarding_processor.Fault_sequence_name")) {
-				modelPropertyValue = getFaultSequenceName();
+			} else if (key.equals("Forwarding_processor.Deactivate_sequence_name")) {
+				modelPropertyValue = getDeactivateSequenceName();
 			} else if (key.equals("sampling_processor.sequence")) {
 				modelPropertyValue = getSequence();
 			} else if (key.equals("custom_processor.class_FQN")) {
@@ -365,8 +353,6 @@ public class MessageProcessorModel extends ProjectDataModel {
 				modelPropertyValue = getSamplingConcurrency();
 			} else if (key.equals("Forwarding_processor.non_retry_http_status_codes")) {
 				modelPropertyValue = getNonRetryHttpStatusCodes();
-			} else if(key.equals("Forwarding_processor.Bind_processor_server")){
-				modelPropertyValue = getBindProcessorToServer();
 			} else if(key.equals("Forwarding_processor.drop_message_after_maximum_delivery_attempts")){
 				modelPropertyValue = getDropMessageAfterMaxDeliveryAttempts();
 			} else if(key.equals("Forwarding_processor.task_count")){
@@ -393,8 +379,6 @@ public class MessageProcessorModel extends ProjectDataModel {
 			setConfigurationFilePath(data.toString());
 		} else if (key.equals("FS_processor.cron_expression")) {
 			setCronExpression(data.toString());
-		} else if (key.equals("FS_processor.pinned_servers")) {
-			setPinnedServers(data.toString());
 		} else if (key.equals("Forwarding_processor.delivery_attempts")) {
 			setDeliveryAttempts(data.toString());
 		} else if (key.equals("Forwarding_processor.client_repository")) {
@@ -405,6 +389,8 @@ public class MessageProcessorModel extends ProjectDataModel {
 			setReplySequenceName(data.toString());
 		} else if (key.equals("Forwarding_processor.Fault_sequence_name")) {
 			setFaultSequenceName(data.toString());
+		} else if (key.equals("Forwarding_processor.Deactivate_sequence_name")) {
+			setDeactivateSequenceName(data.toString());
 		} else if (key.equals("sampling_processor.sequence")) {
 			setSequence(data.toString());
 		} else if (key.equals("custom_processor.class_FQN")) {
@@ -480,8 +466,6 @@ public class MessageProcessorModel extends ProjectDataModel {
 			}
 		} else if (key.equals("Forwarding_processor.non_retry_http_status_codes")) {
 			setNonRetryHttpStatusCode(data.toString());
-		} else if (key.equals("Forwarding_processor.Bind_processor_server")) {
-			setBindProcessorToServer(data.toString());
 		} else if (key.equals("Forwarding_processor.drop_message_after_maximum_delivery_attempts")) {
 			setDropMessageAfterMaxDeliveryAttempts(data.toString());
 		} else if (key.equals("Forwarding_processor.task_count")) {

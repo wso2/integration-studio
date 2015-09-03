@@ -21848,13 +21848,22 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	int MESSAGE_PROCESSOR__FAULT_SEQUENCE_NAME = ESB_ELEMENT_FEATURE_COUNT + 16;
 
 	/**
+	 * The feature id for the '<em><b>Deactivate Sequence Name</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MESSAGE_PROCESSOR__DEACTIVATE_SEQUENCE_NAME = ESB_ELEMENT_FEATURE_COUNT + 17;
+
+	/**
 	 * The feature id for the '<em><b>Quartz Config File Path</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MESSAGE_PROCESSOR__QUARTZ_CONFIG_FILE_PATH = ESB_ELEMENT_FEATURE_COUNT + 17;
+	int MESSAGE_PROCESSOR__QUARTZ_CONFIG_FILE_PATH = ESB_ELEMENT_FEATURE_COUNT + 18;
 
 	/**
 	 * The feature id for the '<em><b>Cron Expression</b></em>' attribute.
@@ -21863,16 +21872,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int MESSAGE_PROCESSOR__CRON_EXPRESSION = ESB_ELEMENT_FEATURE_COUNT + 18;
-
-	/**
-	 * The feature id for the '<em><b>Pinned Servers</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MESSAGE_PROCESSOR__PINNED_SERVERS = ESB_ELEMENT_FEATURE_COUNT + 19;
+	int MESSAGE_PROCESSOR__CRON_EXPRESSION = ESB_ELEMENT_FEATURE_COUNT + 19;
 
 	/**
 	 * The feature id for the '<em><b>Non Retry Http Status Codes</b></em>' attribute.
@@ -21893,22 +21893,13 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	int MESSAGE_PROCESSOR__PARAMETERS = ESB_ELEMENT_FEATURE_COUNT + 21;
 
 	/**
-	 * The feature id for the '<em><b>Bind Processor</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MESSAGE_PROCESSOR__BIND_PROCESSOR = ESB_ELEMENT_FEATURE_COUNT + 22;
-
-	/**
 	 * The feature id for the '<em><b>Task Count</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MESSAGE_PROCESSOR__TASK_COUNT = ESB_ELEMENT_FEATURE_COUNT + 23;
+	int MESSAGE_PROCESSOR__TASK_COUNT = ESB_ELEMENT_FEATURE_COUNT + 22;
 
 	/**
 	 * The number of structural features of the '<em>Message Processor</em>' class.
@@ -21917,7 +21908,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int MESSAGE_PROCESSOR_FEATURE_COUNT = ESB_ELEMENT_FEATURE_COUNT + 24;
+	int MESSAGE_PROCESSOR_FEATURE_COUNT = ESB_ELEMENT_FEATURE_COUNT + 23;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.APIHandlerImpl <em>API Handler</em>}' class.
@@ -32377,6 +32368,17 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	EReference getMessageProcessor_FaultSequenceName();
 
 	/**
+	 * Returns the meta object for the containment reference '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getDeactivateSequenceName <em>Deactivate Sequence Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Deactivate Sequence Name</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getDeactivateSequenceName()
+	 * @see #getMessageProcessor()
+	 * @generated
+	 */
+	EReference getMessageProcessor_DeactivateSequenceName();
+
+	/**
 	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getQuartzConfigFilePath <em>Quartz Config File Path</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -32399,17 +32401,6 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	EAttribute getMessageProcessor_CronExpression();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getPinnedServers <em>Pinned Servers</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Pinned Servers</em>'.
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getPinnedServers()
-	 * @see #getMessageProcessor()
-	 * @generated
-	 */
-	EAttribute getMessageProcessor_PinnedServers();
-
-	/**
 	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getNonRetryHttpStatusCodes <em>Non Retry Http Status Codes</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -32430,17 +32421,6 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 */
 	EReference getMessageProcessor_Parameters();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#isBindProcessor <em>Bind Processor</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Bind Processor</em>'.
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#isBindProcessor()
-	 * @see #getMessageProcessor()
-	 * @generated
-	 */
-	EAttribute getMessageProcessor_BindProcessor();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getTaskCount <em>Task Count</em>}'.
@@ -47705,6 +47685,14 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 		EReference MESSAGE_PROCESSOR__FAULT_SEQUENCE_NAME = eINSTANCE.getMessageProcessor_FaultSequenceName();
 
 		/**
+		 * The meta object literal for the '<em><b>Deactivate Sequence Name</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference MESSAGE_PROCESSOR__DEACTIVATE_SEQUENCE_NAME = eINSTANCE.getMessageProcessor_DeactivateSequenceName();
+
+		/**
 		 * The meta object literal for the '<em><b>Quartz Config File Path</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -47721,14 +47709,6 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 		EAttribute MESSAGE_PROCESSOR__CRON_EXPRESSION = eINSTANCE.getMessageProcessor_CronExpression();
 
 		/**
-		 * The meta object literal for the '<em><b>Pinned Servers</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute MESSAGE_PROCESSOR__PINNED_SERVERS = eINSTANCE.getMessageProcessor_PinnedServers();
-
-		/**
 		 * The meta object literal for the '<em><b>Non Retry Http Status Codes</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -47743,14 +47723,6 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 		 * @generated
 		 */
 		EReference MESSAGE_PROCESSOR__PARAMETERS = eINSTANCE.getMessageProcessor_Parameters();
-
-		/**
-		 * The meta object literal for the '<em><b>Bind Processor</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute MESSAGE_PROCESSOR__BIND_PROCESSOR = eINSTANCE.getMessageProcessor_BindProcessor();
 
 		/**
 		 * The meta object literal for the '<em><b>Task Count</b></em>' attribute feature.

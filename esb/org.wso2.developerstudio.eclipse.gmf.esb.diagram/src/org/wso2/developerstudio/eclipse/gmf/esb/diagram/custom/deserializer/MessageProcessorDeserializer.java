@@ -136,6 +136,16 @@ AbstractEsbNodeDeserializer<MessageProcessor, org.wso2.developerstudio.eclipse.g
 									faultSequence);
 						}
 					}
+					if (parameters.containsKey("message.processor.deactivate.sequence")) {
+						Object value = parameters.get("message.processor.deactivate.sequence");
+						if (StringUtils.isNotBlank(value.toString())) {
+							RegistryKeyProperty deactivateSequence = EsbFactory.eINSTANCE
+									.createRegistryKeyProperty();
+							deactivateSequence.setKeyValue(value.toString());
+							executeSetValueCommand(MESSAGE_PROCESSOR__DEACTIVATE_SEQUENCE_NAME,
+									deactivateSequence);
+						}
+					}
 					if (parameters.containsKey("quartz.conf")) {
 						Object value = parameters.get("quartz.conf");
 						if (StringUtils.isNotBlank(value.toString())) {
@@ -150,13 +160,6 @@ AbstractEsbNodeDeserializer<MessageProcessor, org.wso2.developerstudio.eclipse.g
 									value.toString());
 						}
 					}
-					if (parameters.containsKey("pinnedServers")) {
-						Object value = parameters.get("pinnedServers");
-						if (StringUtils.isNotBlank(value.toString())) {
-							executeSetValueCommand(MESSAGE_PROCESSOR__PINNED_SERVERS,
-									value.toString());
-						}
-					}
 					if (parameters.containsKey("is.active")) {
 						Object value = parameters.get("is.active");
 						if (StringUtils.isNotBlank(value.toString())) {
@@ -167,14 +170,6 @@ AbstractEsbNodeDeserializer<MessageProcessor, org.wso2.developerstudio.eclipse.g
 								executeSetValueCommand(MESSAGE_PROCESSOR__PROCESSOR_STATE,
 										ProcessorState.DEACTIVATE);
 							}
-						}
-					}
-					if(parameters.containsKey("bind.processor.server")){
-						Object value = parameters.get("bind.processor.server");
-						if("true".equals(value)){
-							executeSetValueCommand(MESSAGE_PROCESSOR__BIND_PROCESSOR, true);
-						}else{
-							executeSetValueCommand(MESSAGE_PROCESSOR__BIND_PROCESSOR, false);
 						}
 					}
 					if (parameters.containsKey("non.retry.status.codes")) {
@@ -246,13 +241,6 @@ AbstractEsbNodeDeserializer<MessageProcessor, org.wso2.developerstudio.eclipse.g
 						Object value = parameters.get("cronExpression");
 						if (StringUtils.isNotBlank(value.toString())) {
 							executeSetValueCommand(MESSAGE_PROCESSOR__CRON_EXPRESSION,
-									value.toString());
-						}
-					}
-					if (parameters.containsKey("pinnedServers")) {
-						Object value = parameters.get("pinnedServers");
-						if (StringUtils.isNotBlank(value.toString())) {
-							executeSetValueCommand(MESSAGE_PROCESSOR__PINNED_SERVERS,
 									value.toString());
 						}
 					}

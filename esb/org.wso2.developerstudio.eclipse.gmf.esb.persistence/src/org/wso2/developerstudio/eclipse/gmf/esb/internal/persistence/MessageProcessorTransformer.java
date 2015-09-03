@@ -64,10 +64,6 @@ public class MessageProcessorTransformer {
 				}
 			}
 			
-			if(StringUtils.isNotBlank(String.valueOf(model.isBindProcessor()))){
-				    parameters.put("bind.processor.server", String.valueOf(model.isBindProcessor()));
-			}
-			
 			parameters.put("interval", ((Long) model.getForwardingInterval()).toString());
 			parameters.put("client.retry.interval", ((Long) model.getRetryInterval()).toString());
 			parameters.put("max.delivery.attempts", ((Integer) model.getMaxDeliveryAttempts()).toString());
@@ -88,14 +84,16 @@ public class MessageProcessorTransformer {
 				parameters.put("message.processor.fault.sequence", model.getFaultSequenceName()
 						.getKeyValue());
 			}
+			if (model.getDeactivateSequenceName() != null
+					&& StringUtils.isNotBlank(model.getDeactivateSequenceName().getKeyValue())) {
+				parameters.put("message.processor.deactivate.sequence", model.getDeactivateSequenceName()
+						.getKeyValue());
+			}
 			if (StringUtils.isNotBlank(model.getQuartzConfigFilePath())) {
 				parameters.put("quartz.conf", model.getQuartzConfigFilePath());
 			}
 			if (StringUtils.isNotBlank(model.getCronExpression())) {
 				parameters.put("cronExpression", model.getCronExpression());
-			}
-			if (StringUtils.isNotBlank(model.getPinnedServers())) {
-				parameters.put("pinnedServers", model.getPinnedServers());
 			}
 			if (StringUtils.isNotBlank(model.getNonRetryHttpStatusCodes())) {
 				parameters.put("non.retry.status.codes", model.getNonRetryHttpStatusCodes());
@@ -129,9 +127,6 @@ public class MessageProcessorTransformer {
 			}
 			if (StringUtils.isNotBlank(model.getCronExpression())) {
 				parameters.put("cronExpression", model.getCronExpression());
-			}
-			if (StringUtils.isNotBlank(model.getPinnedServers())) {
-				parameters.put("pinnedServers", model.getPinnedServers());
 			}
 
 		} else if (model.getProcessorType() == MessageProcessorType.CUSTOM) {

@@ -507,17 +507,9 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
 				inboundEndpoint.addParameter(InboundEndpointConstants.THREAD_COUNT,
 						visualInboundEndpoint.getThreadCount());
 			}
-			if (StringUtils.isNotBlank(visualInboundEndpoint.getZookeeperSessionTimeoutMs())) {
-				inboundEndpoint.addParameter(InboundEndpointConstants.ZOOKEEPER_SEESION_TIMEOUT_MS,
-						visualInboundEndpoint.getZookeeperSessionTimeoutMs());
-			}
 			if (StringUtils.isNotBlank(visualInboundEndpoint.getZookeeperSyncTimeMs())) {
 				inboundEndpoint.addParameter(InboundEndpointConstants.ZOOKEEPER_SYNC_TIME_MS,
 						visualInboundEndpoint.getZookeeperSyncTimeMs());
-			}
-			if (StringUtils.isNotBlank(visualInboundEndpoint.getAutoCommitIntervalMs())) {
-				inboundEndpoint.addParameter(InboundEndpointConstants.AUTO_COMMIY_INTERVAL_MS,
-						visualInboundEndpoint.getAutoCommitIntervalMs());
 			}
 			break;
 		case CXF_WS_RM:

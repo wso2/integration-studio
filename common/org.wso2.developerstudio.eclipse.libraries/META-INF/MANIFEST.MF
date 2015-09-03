@@ -1247,6 +1247,7 @@ Export-Package: com.damnhandy.uri.template,
  org.jaxen;uses:="org.jaxen.saxpath,org.jaxen.expr",
  org.jruby.exceptions;uses:="org.jruby,org.jruby.internal.runtime",
  org.milyn.scribe.register;uses:="new org.milyn.scribe.register",
+ org.mozilla.javascript,
  org.osgi.framework;version="1.3.0",
  org.quartz;version="2.1.1";uses:="org.quartz.utils,org.quartz.spi,org.quartz.impl.matchers",
  org.springframework.beans.factory.support;
@@ -1674,7 +1675,8 @@ Bundle-ClassPath: .,
  lib/xml-resolver-1.2.jar,
  lib/xmlbeans_2.3.0.wso2v1.jar,
  lib/XmlSchema_1.4.7.wso2v3.jar,
- lib/zip4j_1.3.1.jar
+ lib/zip4j_1.3.1.jar,
+ lib/js_1.6.0.R7-wso2v1.jar
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.jdt.ui,

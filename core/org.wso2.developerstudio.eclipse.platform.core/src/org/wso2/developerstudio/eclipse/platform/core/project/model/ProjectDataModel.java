@@ -44,7 +44,7 @@ public abstract class ProjectDataModel extends Observable {
 	private String groupId = "com.example";
 	private boolean isUserSet;
 
-	public String getProjectName() {
+	public String getReceiverName() {
 		return projectName;
 	}
 
@@ -84,7 +84,7 @@ public abstract class ProjectDataModel extends Observable {
 
 	public MavenInfo getMavenInfo() {
 		if (mavenInfo == null) {
-			mavenInfo = new MavenInfo(getGroupId(), getProjectName(), "1.0.0");
+			mavenInfo = new MavenInfo(getGroupId(), getReceiverName(), "1.0.0");
 		}
 		return mavenInfo;
 	}
@@ -123,7 +123,7 @@ public abstract class ProjectDataModel extends Observable {
 	 */
 	public Object getModelPropertyValue(String key) {
 		if (key.equalsIgnoreCase("project.name")) {
-			return getProjectName();
+			return getReceiverName();
 		} else if (key.equalsIgnoreCase("import.file")) {
 			return getImportFile();
 		}

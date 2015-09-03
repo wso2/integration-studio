@@ -713,7 +713,7 @@ public class DataServiceModel extends ProjectDataModel {
 				WizardDialog dialog = new WizardDialog(shell, dsProjectWizard);
 				dialog.create();
 				if (dialog.open() == Dialog.OK) {
-					String projectName = dsProjectWizard.getModel().getProjectName();
+					String projectName = dsProjectWizard.getModel().getReceiverName();
 					dsProject = ResourcesPlugin.getWorkspace().getRoot().getProject(projectName);
 				}
 				return dsProject;

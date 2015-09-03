@@ -62,7 +62,7 @@ public class WebAppModel extends ProjectDataModel {
 
 	
 	public void setProjectName(String projectName) throws ObserverFailedException {
-		if (getProjectName() != null && getProjectName().equals(getWebContextRoot())) {
+		if (getReceiverName() != null && getReceiverName().equals(getWebContextRoot())) {
 			setWebContextRoot(projectName);
 		}
 		super.setProjectName(projectName);

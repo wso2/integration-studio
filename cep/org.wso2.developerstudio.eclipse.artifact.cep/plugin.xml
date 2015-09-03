@@ -3,13 +3,13 @@
 <plugin>
 <!--extension
          point="org.eclipse.ui.newWizards">
-         <wizard name="CEP Project" category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.eclipse.artifact.cep.category"
+         <wizard name="Analytics Project" category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.eclipse.artifact.cep.category"
 			class="org.wso2.developerstudio.eclipse.artifact.cep.ui.wizard.CEPProjectCreationWizard"
 			wizardManifest="project_wizard.xml"
 			id="org.wso2.developerstudio.eclipse.artifact.newcepartifact"
 			project="true"
-			icon="icons/buket-16x16.png">
-			<description>CEP Bucket Project</description>
+			icon="icons/analytics-16x16.png">
+			<description>CEP Analytics Project</description>
 		</wizard>
          <category
                id="org.wso2.developerstudio.eclipse.artifact.cep.category"
@@ -17,8 +17,34 @@
                parentCategory="org.wso2.developerstudio.eclipse.capp.project">
          </category>
    </extension>  
+   
+   
+   <extension
+		point="org.wso2.developerstudio.eclipse.platform.core.intro.ui.dashboard">
+		<wizardCategory category="org.wso2.developerstudio.eclipse.artifact.cep.category"/>
+    	<category id="dashboard.category.cep" showTitle="true"
+                  title="Analytics"
+                  priority="8">
+        </category>
+        <wizardLink category="dashboard.category.cep" id="dashboard.wizardLink.cep"
+                    wizard="org.wso2.developerstudio.eclipse.artifact.newcepartifact">
+        </wizardLink>
+        <wizardLink category="dashboard.category.cep" id="dashboard.wizardLink.cep.execution-plan"
+                    wizard="org.wso2.developerstudio.eclipse.artifact.newexecution-planartifact">
+        </wizardLink>
+        <wizardLink category="dashboard.category.cep" id="dashboard.wizardLink.cep.stream"
+                    wizard="org.wso2.developerstudio.eclipse.artifact.newstreamartifact">
+        </wizardLink>
+        <wizardLink category="dashboard.category.cep" id="dashboard.wizardLink.cep.publisher"
+                    wizard="org.wso2.developerstudio.eclipse.artifact.newpublisherartifact">
+        </wizardLink>
+        <wizardLink category="dashboard.category.cep" id="dashboard.wizardLink.cep.receiver"
+                    wizard="org.wso2.developerstudio.eclipse.artifact.newreceiverartifact">
+        </wizardLink>
+   </extension>
+ 
    <extension point="org.eclipse.core.resources.natures"
-		id="org.wso2.developerstudio.eclipse.cep.project.nature" name="CEP_PROJECT_NATURE">
+		id="org.wso2.developerstudio.eclipse.artifact.cep.project.nature" name="CEP_PROJECT_NATURE">
 		<runtime>
 			<run
 				class="org.wso2.developerstudio.eclipse.artifact.cep.project.nature.CEPProjectNature">
@@ -27,74 +53,80 @@
 	</extension>
 
 	<extension point="org.eclipse.ui.ide.projectNatureImages">
-		<image id="org.wso2.developerstudio.eclipse.cep.project.natureImage"
-			natureId="org.wso2.developerstudio.eclipse.cep.project.nature" icon="icons/buket-12x12.png">
+		<image id="org.wso2.developerstudio.eclipse.artifact.cep.project.natureImage"
+			natureId="org.wso2.developerstudio.eclipse.artifact.cep.project.nature" icon="icons/analytics-12x12.png">
 		</image>
-	</extension>-->
-	  <!--<extension point="org.eclipse.ui.navigator.navigatorContent">	
-	 <navigatorContent activeByDefault="true"
-			priority="high"
-			id="org.eclipse.ui.navigator.resourceContent"
-			name="test">
-				<commonWizard 
-					menuGroupId="3org.wso2.developerstudio.eclipse.artifact.newcepartifact"
-			  	 	type="new"
-					wizardId="org.wso2.developerstudio.eclipse.artifact.newcepartifact">
-					<enablement>
-						<or>
-							<adapt type="org.eclipse.core.resources.IProject"/>
-							<adapt type="org.eclipse.core.resources.IFolder"/>
-						</or>
-					</enablement>
-				</commonWizard>
-				<triggerPoints>
-				           <or>         
-				              <instanceof 
-				                    value="org.eclipse.core.resources.IWorkspaceRoot" /> 
-				              <instanceof
-				                    value="org.eclipse.core.resources.IProject" />  
-				              <instanceof  
-				                     value="org.eclipse.core.resources.IFolder" /> 
-				           </or>
-				  </triggerPoints>
-		</navigatorContent>
-		</extension>-->
-<!--				<extension point="org.eclipse.ui.navigator.navigatorContent">    
-            <commonWizard type="new"
-                menuGroupId="2org.wso2.developerstudio.eclipse.artifact.newcepartifact"
-                wizardId="org.wso2.developerstudio.eclipse.artifact.newcepartifact">
-                <enablement>
-                    <or>
-                        <adapt type="org.eclipse.core.resources.IProject">
-                            <test property="org.eclipse.core.resources.projectNature"
-                                value="org.wso2.developerstudio.eclipse.mavenmultimodule.project.nature" />
-                                </adapt>
-                       <adapt type="org.eclipse.jdt.core.IPackageFragment">
-							<test property="org.wso2.developerstudio.projectNature"
-								value="org.wso2.developerstudio.eclipse.mavenmultimodule.project.nature" />
-						</adapt>
-                    </or>
-                </enablement>
-            </commonWizard>
-    </extension>
-		 <extension
-       point="org.wso2.developerstudio.eclipse.project.export.handler">
+	</extension>
+    
+    <extension
+       point="org.eclipse.ltk.core.refactoring.renameParticipants">
+       <renameParticipant
+			class="org.wso2.developerstudio.eclipse.artifact.cep.project.refactoring.rename.CEPArtifactRenameParticipant"
+			id="CEPArtifactRenameParticipant"
+			name="CEPArtifactRename">
+				<enablement>
+					<and>
+							<instanceof
+								value="org.eclipse.core.resources.IFile">
+							</instanceof>
+						<adapt type="org.eclipse.core.resources.IResource">
+             				<test
+                   				property="org.eclipse.core.resources.projectNature"
+                   				value="org.wso2.developerstudio.eclipse.artifact.cep.project.nature">
+             				</test>
+         				</adapt>
+					</and>
+				</enablement>
+		</renameParticipant>
+ </extension>
+  <extension
+         point="org.eclipse.ltk.core.refactoring.deleteParticipants">
+       <deleteParticipant
+			class="org.wso2.developerstudio.eclipse.artifact.cep.project.refactoring.delete.CEPArtifactMetaDataDeleteParticipant"
+			id="CEPArtifactMetaDataDeleteParticipant"
+			name="CEPArtifactMetaDataDeleteParticipantRefactor">
+				<enablement>
+					<and>
+							<instanceof
+								value="org.eclipse.core.resources.IFile">
+							</instanceof>
+						<adapt type="org.eclipse.core.resources.IResource">
+             				<test
+                   				property="org.eclipse.core.resources.projectNature"
+                   				value="org.wso2.developerstudio.eclipse.artifact.cep.project.nature">
+             				</test>
+         				</adapt>
+					</and>
+				</enablement>
+		</deleteParticipant>
+   </extension>
+	
+	<extension point="org.wso2.developerstudio.eclipse.project.export.handler">
     <handler
-          class="org.wso2.developerstudio.eclipse.artifact.cep.project.export.CEPArtfactExportHandler"
+          class="org.wso2.developerstudio.eclipse.artifact.cep.project.export.CEPArtifactExportHandler"
           id="org.wso2.developerstudio.eclipse.artifact.cep.project.export.handler"
           type="cep/bucket">
     </handler>
- </extension>
-    <extension
-          point="org.eclipse.ui.editors">
-       <editor
-             class="org.wso2.developerstudio.eclipse.artifact.cep.editor.CEPProjectEditor"
-             extensions="xml"
-             id="org.wso2.developerstudio.eclipse.artifact.cep.editor.CEPProjectEditor"
-             name="CEPEditor">
-          <contentTypeBinding
-                contentTypeId="org.wso2.developerstudio.eclipse.artifact.cep.content-type.cepservice">
-          </contentTypeBinding>
-       </editor>
-    </extension>-->
+ 	</extension>
+ 	
+ 	<extension point="org.eclipse.wst.xml.core.catalogContributions"> 
+  		<catalogContribution
+			id="org.wso2.developerstudio.eclipse.artifact.cep.receiver.xml"> 
+  		<public 
+ 	 		publicId="http://wso2.org/carbon/eventreceiver" 
+ 	 		uri="platform:/plugin/org.wso2.developerstudio.eclipse.artifact.cep/schema/receiver.xsd"> 
+  		</public> 
+ 	 	</catalogContribution> 	 
+ 	</extension>
+ 	
+ 	<extension point="org.eclipse.wst.xml.core.catalogContributions"> 
+  		<catalogContribution
+			id="org.wso2.developerstudio.eclipse.artifact.cep.publisher.xml"> 
+  		<public 
+ 	 		publicId="http://wso2.org/carbon/eventpublisher" 
+ 	 		uri="platform:/plugin/org.wso2.developerstudio.eclipse.artifact.cep/schema/publisher.xsd"> 
+  		</public> 
+ 	 	</catalogContribution> 	 
+ 	</extension>
+ 	  
 </plugin>

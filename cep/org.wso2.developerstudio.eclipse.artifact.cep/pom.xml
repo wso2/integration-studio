@@ -26,5 +26,5 @@
     <artifactId>org.wso2.developerstudio.eclipse.artifact.cep</artifactId>
     <version>2.1.0</version>
   <packaging>eclipse-plugin</packaging>
-    <name>Developer Studio CEP Artifact</name>
+    <name>Developer Studio CEP</name>
 </project>

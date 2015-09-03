@@ -23,7 +23,7 @@ public class CEPArtifactConstants extends NLS {
 	public static final String BUNDLE_NAME = "cepartifactconstants";
 
 	// project wizard page properties
-	public static String WIZARD_OPTION_BUCKET_NAME;
+	public static String WIZARD_OPTION_ANALYTICS_NAME;
 	public static String WIZARD_OPTION_IMPORT_FILE;
 	public static String WIZARD_OPTION_BUCKET_NAMESPACE;
 	public static String WIZARD_OPTION_CEP_ENGINEPROVIDER;

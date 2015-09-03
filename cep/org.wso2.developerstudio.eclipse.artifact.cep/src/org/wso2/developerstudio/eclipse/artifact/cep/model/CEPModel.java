@@ -16,47 +16,62 @@
 
 package org.wso2.developerstudio.eclipse.artifact.cep.model;
 
+import java.io.File;
+
 import org.wso2.developerstudio.eclipse.artifact.cep.utils.CEPArtifactConstants;
 import org.wso2.developerstudio.eclipse.platform.core.exception.ObserverFailedException;
 import org.wso2.developerstudio.eclipse.platform.core.project.model.ProjectDataModel;
-import org.wso2.developerstudio.eclipse.utils.project.ProjectUtils;
 
 public class CEPModel extends ProjectDataModel {
-
-	private String bucketName;
+	
+	private File cepProjectLocation;
+	
+	private String analyticsName;
 
 	public CEPModel() {
 
 	}
 
-	public String getBucketName() {
-		return bucketName;
+	public String getAnalyticsName() {
+		return analyticsName;
 	}
 
-	public void setBucketName(String bucketName) {
-		this.bucketName = bucketName;
+	public void setAnalyticsName(String analyticsName) {
+		this.analyticsName = analyticsName;
+	}
+	
+	public void setLocation(File location) {
+		// TODO Auto-generated method stub
+		super.setLocation(location);
+	}
+	
+	public File getLocation() {
+		// TODO Auto-generated method stub
+		return super.getLocation();
 	}
 
 	public Object getModelPropertyValue(String key) {
 		Object modelPropertyValue = super.getModelPropertyValue(key);
 
-		if (key.equals(CEPArtifactConstants.WIZARD_OPTION_BUCKET_NAME)) {
-			modelPropertyValue = getBucketName();
+		if (key.equals(CEPArtifactConstants.WIZARD_OPTION_ANALYTICS_NAME)) {
+			modelPropertyValue = getAnalyticsName();
 		}
 		return modelPropertyValue;
 	}
-
+	public void setCepProjectLocation(File cepProjectLocation) {
+		this.cepProjectLocation=cepProjectLocation;
+	}
+	public File getCepProjectLocation() {
+		return cepProjectLocation;
+	}
+	
 	public boolean setModelPropertyValue(String key, Object data)
 			throws ObserverFailedException {
 		boolean returnValue = super.setModelPropertyValue(key, data);
-		if (key.equals("import.file")) {
-			if (getImportFile() != null
-					&& !getImportFile().toString().equals("")) {
-				setProjectName(ProjectUtils
-						.fileNameWithoutExtension(getImportFile().getName()));
-			}
-		} else if (key.equals(CEPArtifactConstants.WIZARD_OPTION_BUCKET_NAME)) {
-			setBucketName(data.toString());
+		if (key.equals("cep.location")) {
+			setCepProjectLocation(new File(data.toString()));
+		} else if (key.equals(CEPArtifactConstants.WIZARD_OPTION_ANALYTICS_NAME)) {
+			setAnalyticsName(data.toString());
 		}
 
 		return returnValue;

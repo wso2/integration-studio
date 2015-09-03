@@ -1,36 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <wizard>
-	<projectOptions title="CEP Artifact Creation Options" 
+	<projectOptions title="Analytics Project Creation Options" 
 					description="Select how you would like to create your new project" 
 					error="Please select a method to create the project">
-		<option id="new.cepproject" default="true">Create New CEP Project</option>
-		<option id="import.cepproject">Import CEP Project</option>
+		<option id="new.cepproject" default="true">Create New Analytics Project</option>
+		<option id="import.cepproject">Point to Analytics Config Folder (&lt;CARBON_HOME&gt;/repository/deployment/server/)</option>
 	</projectOptions>
 	
 	<projectOptionSettings>
 		<settings optionId="new.cepproject" 
-				  title="CEP Project" 
-				  description="Create a new CEP Project" 
-				  error="Please give a name to the Bucket">
-			<data modelProperty="project.name" type="string" fieldController="org.wso2.developerstudio.eclipse.artifact.cep.validators.CEPProjectFieldController">Bucket Name*</data>	  
-			
-			
-			
-			
-			
+				  title="Analytics Project" 
+				  description="Create a new Analytics Project" 
+				  error="Please give a name to the Project">
+			<data modelProperty="project.name" type="string" fieldController="org.wso2.developerstudio.eclipse.artifact.cep.validators.CEPProjectFieldController">Analytics Project Name*</data>	  
+	
 			<projectNatures>
 				<nature>org.eclipse.jdt.core.javanature</nature>
 			</projectNatures>
 		</settings>
 		<settings optionId="import.cepproject" 
-				  title="CEP Project" 
-				  description="Create a CEP Project using a CEP descriptor file" 
-				  error="Browse and select a CEP descriptor file">
-			<data modelProperty="import.file" type="file" filter="*.xml" fieldController="org.wso2.developerstudio.eclipse.artifact.cep.validators.CEPProjectFieldController">CEP Descriptor File*</data>
+				  title="Analytics Project" 
+				  description="Create an Analytics Project using existing Analytics Project" 
+				  error="Browse and select an existing Analytics Project">
+			<data modelProperty="project.name" type="string" fieldController="org.wso2.developerstudio.eclipse.artifact.cep.validators.CEPProjectFieldController">Project Name</data>
+			<data modelProperty="cep.location" type="dir" filter="main" fieldController="org.wso2.developerstudio.eclipse.artifact.cep.validators.CEPProjectFieldController">Analytics Config Folder Location</data>
 			<projectNatures>
 				<nature>org.eclipse.jdt.core.javanature</nature>
 			</projectNatures>
 		</settings>
+		
 	</projectOptionSettings>
 </wizard>
 	

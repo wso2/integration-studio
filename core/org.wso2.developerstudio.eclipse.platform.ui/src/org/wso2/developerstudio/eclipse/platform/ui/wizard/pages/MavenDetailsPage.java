@@ -164,9 +164,9 @@ public class MavenDetailsPage extends WizardPage implements Observer {
 				updatePageStatus();
 			}
 		});
-		if (dataModel.getProjectName() != null) {
-			lblArtifactIdValue.setText(dataModel.getProjectName());
-			mavenProjectInfo.setArtifactId(dataModel.getProjectName());
+		if (dataModel.getReceiverName() != null) {
+			lblArtifactIdValue.setText(dataModel.getReceiverName());
+			mavenProjectInfo.setArtifactId(dataModel.getReceiverName());
 			dataModel.setMavenInfo(mavenProjectInfo);
 		} else {
 			lblArtifactIdValue.setText("");
@@ -626,7 +626,7 @@ public class MavenDetailsPage extends WizardPage implements Observer {
 	
 	public void update(Observable o, Object arg) {
 		if (o == dataModel) {
-			if (dataModel.getProjectName() != null) {
+			if (dataModel.getReceiverName() != null) {
 				setArtifactIDLabel();
 			}
 		}
@@ -635,11 +635,11 @@ public class MavenDetailsPage extends WizardPage implements Observer {
 
 	public void setArtifactIDLabel() {
 		
-		if (dataModel.getProjectName() != null && !dataModel.getProjectName().equals("")) {
+		if (dataModel.getReceiverName() != null && !dataModel.getReceiverName().equals("")) {
 			MavenInfo newmavenProjectInfo=dataModel.getMavenInfo();	
-		    newmavenProjectInfo.setGroupId(dataModel.getGroupId()+"."+dataModel.getProjectName());
-			newmavenProjectInfo.setArtifactId(dataModel.getProjectName());
-			txtGroupId.setText(dataModel.getGroupId()+"."+dataModel.getProjectName());
+		    newmavenProjectInfo.setGroupId(dataModel.getGroupId()+"."+dataModel.getReceiverName());
+			newmavenProjectInfo.setArtifactId(dataModel.getReceiverName());
+			txtGroupId.setText(dataModel.getGroupId()+"."+dataModel.getReceiverName());
 			lblArtifactIdValue.setText(newmavenProjectInfo.getArtifactId());
 			txtVersion.setText(newmavenProjectInfo.getVersion());
 		} 

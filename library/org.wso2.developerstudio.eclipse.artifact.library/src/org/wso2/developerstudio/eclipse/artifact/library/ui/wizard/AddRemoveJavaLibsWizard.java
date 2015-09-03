@@ -145,7 +145,7 @@ public class AddRemoveJavaLibsWizard extends AbstractWSO2ProjectCreationWizard {
 	public boolean performFinish() {
 		try {
 			
-			IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(libraryModel.getProjectName());
+			IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(libraryModel.getReceiverName());
 			List<Dependency> dependencyList = new ArrayList<Dependency>();
 			List<String> exportedPackages = LibraryArtifactCreationWizard.fillDependencyList(project, libraryModel, dependencyList);
 			StringBuffer sb = new StringBuffer();

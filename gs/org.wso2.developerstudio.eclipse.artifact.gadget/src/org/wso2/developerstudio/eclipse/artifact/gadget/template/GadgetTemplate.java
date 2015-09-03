@@ -39,14 +39,14 @@ public class GadgetTemplate {
            buffer.append(" ?> \n");
 		   buffer.append("<gadget>\n");
            buffer.append("\t<name>");
-           buffer.append(model.getProjectName());
+           buffer.append(model.getReceiverName());
            buffer.append("</name>\n");
            buffer.append("\t<author>");
            buffer.append(model.getAuthor());
            buffer.append("</author>\n");
            buffer.append("\t<path>");
            buffer.append("/registry/resource/_system/config/repository/gadget-server/gadgets/");
-           buffer.append(model.getProjectName());
+           buffer.append(model.getReceiverName());
            buffer.append("/");
            buffer.append(model.getGadgetXml().replaceAll(".xml$","").concat(".xml"));
            buffer.append("</path>\n");

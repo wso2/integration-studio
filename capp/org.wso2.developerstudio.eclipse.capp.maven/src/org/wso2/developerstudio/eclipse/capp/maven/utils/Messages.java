@@ -23,7 +23,11 @@ public final class Messages extends NLS {
 	public static String MAVEN_GADGET_PLUGIN_VERSION;
 	public static String MAVEN_JAXWS_PLUGIN_VERSION;
 	public static String MAVEN_SYNAPSE_VERSION;
-	public static String MAVEN_CEP_VERSION;
+	public static String WSO2_CEP_VERSION;
+	public static String WSO2_CEP_STREAM_VERSION;
+	public static String WSO2_CEP_PUBLISHER_VERSION;
+	public static String WSO2_CEP_RECIEVER_VERSION;
+	public static String WSO2_CEP_EXECUTIONPLAN_VERSION;
 	public static String WSO2_ESB_ENDPOINT_VERSION;
 	public static String WSO2_ESB_LOCAL_ENTRY_VERSION;
 	public static String WSO2_ESB_PROXY_VERSION;

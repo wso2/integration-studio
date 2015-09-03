@@ -70,7 +70,7 @@ public class WorkingSetComposite extends Composite implements Observer  {
 		super(parent, style);
 		final Shell shell = parent.getShell();
 		setProjectModel(model);
-		setCurrentProjectName(model.getProjectName());
+		setCurrentProjectName(model.getReceiverName());
 	
 		workingSetManager = PlatformUI.getWorkbench().getWorkingSetManager();
 		workingSetMap = new HashMap<String, Integer>();
@@ -216,8 +216,8 @@ public class WorkingSetComposite extends Composite implements Observer  {
 	public void update(Observable o, Object arg) {
 		if (o == getProjectModel()) {
 			if (getCurrentProjectName() == null ||
-			    !getCurrentProjectName().equals(getProjectModel().getProjectName())) {
-				setCurrentProjectName(getProjectModel().getProjectName());
+			    !getCurrentProjectName().equals(getProjectModel().getReceiverName())) {
+				setCurrentProjectName(getProjectModel().getReceiverName());
 			}
 		}
 	}

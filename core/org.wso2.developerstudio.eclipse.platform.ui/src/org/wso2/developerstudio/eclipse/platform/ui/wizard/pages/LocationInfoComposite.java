@@ -84,7 +84,7 @@ public class LocationInfoComposite extends Composite implements Observer {
     public LocationInfoComposite(Composite parent, int style, ProjectDataModel model, final File location, ProjectOptionInfo optionDataInfo, WizardPage wizardPage) {
         super(parent, style);
         setProjectModel(model);
-        setCurrentProjectName(model.getProjectName());        
+        setCurrentProjectName(model.getReceiverName());        
     	File modelLocation = getProjectModel().getLocation();
     	if(modelLocation!=null){
     		 this.defaultLocation = modelLocation; /* Developer has changed the default selection location */
@@ -186,8 +186,8 @@ public class LocationInfoComposite extends Composite implements Observer {
     @Override
     public void update(Observable observable, Object arg) {
         if (observable == getProjectModel() && (getCurrentProjectName() == null ||
-                !getCurrentProjectName().equals(getProjectModel().getProjectName()))) {
-            setCurrentProjectName(getProjectModel().getProjectName());
+                !getCurrentProjectName().equals(getProjectModel().getReceiverName()))) {
+            setCurrentProjectName(getProjectModel().getReceiverName());
             if (defaultCheckButtonSelected) {
                 updateDefaultProjectLocation();
             }

@@ -17,143 +17,117 @@
 package org.wso2.developerstudio.eclipse.artifact.cep.ui.wizard;
 
 import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.eclipse.core.resources.IFile;
-import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
-import org.eclipse.core.resources.ResourcesPlugin;
-import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
-import org.eclipse.core.runtime.Path;
 import org.eclipse.jface.dialogs.MessageDialog;
-import org.eclipse.ui.PlatformUI;
-import org.eclipse.ui.ide.IDE;
-import org.eclipse.ui.part.FileEditorInput;
-import org.wso2.developerstudio.eclipse.artifact.cep.Activator;
-import org.wso2.developerstudio.eclipse.artifact.cep.editor.CEPProjectEditorPage;
+import org.eclipse.jface.viewers.ISelection;
 import org.wso2.developerstudio.eclipse.artifact.cep.model.CEPModel;
 import org.wso2.developerstudio.eclipse.artifact.cep.utils.CEPImageUtils;
-import org.wso2.developerstudio.eclipse.artifact.cep.utils.CEPTemplateUtils;
-
-import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
-import org.wso2.developerstudio.eclipse.logging.core.Logger;
+import org.wso2.developerstudio.eclipse.artifact.cep.utils.CEPProjectArtifact;
+import org.wso2.developerstudio.eclipse.artifact.cep.utils.CEPProjectUtils;
 import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
-import org.wso2.developerstudio.eclipse.platform.core.utils.XMLUtil;
 import org.wso2.developerstudio.eclipse.platform.ui.wizard.AbstractWSO2ProjectCreationWizard;
-import org.wso2.developerstudio.eclipse.utils.data.ITemporaryFileTag;
-import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
 import org.wso2.developerstudio.eclipse.utils.project.ProjectUtils;
 
 public class CEPProjectCreationWizard extends AbstractWSO2ProjectCreationWizard {
-	private static final String CEP_PROJECT_NATURE = "org.wso2.developerstudio.eclipse.cep.project.nature";
-	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
-	private final CEPModel cepModel;
-	private static final String CEP_WIZARD_WINDOW_TITLE = "New CEP Project";
+	private static final String CEP_PROJECT_NATURE = "org.wso2.developerstudio.eclipse.artifact.cep.project.nature";
+	private CEPModel cepProjectModel;
+	private static final String CEP_WIZARD_WINDOW_TITLE = "New Analytic Project";
 	private IProject project;
-	private File openFile = null;
+	//private File openFile = null;
+	private File pomfile;
+	private Map<File,String> fileList = new HashMap<File,String>();	
 
 	public CEPProjectCreationWizard() {
-		this.cepModel = new CEPModel();
-		setModel(this.cepModel);
+		this.cepProjectModel = new CEPModel();
+		setModel(this.cepProjectModel);
 		setWindowTitle(CEP_WIZARD_WINDOW_TITLE);
 		setDefaultPageImageDescriptor(CEPImageUtils.getInstance()
-				.getImageDescriptor("buket-64x64.png"));
+				.getImageDescriptor("analytics-64x64.png"));
 	}
 
 	public boolean performFinish() {
-		CEPProjectEditorPage.isCreatedProject = false;
-		boolean already = false;
+		
 		try {
-			if (getModel().getSelectedOption().equals("import.cepproject")) {
-				File importFile = getModel().getImportFile();
-				CEPProjectEditorPage.initialFileLocation = importFile
-						.getAbsolutePath();
-				CEPProjectEditorPage.isNewProject = false;
-				IProject exproject = ResourcesPlugin.getWorkspace().getRoot()
-						.getProject(cepModel.getProjectName());
-				if (exproject.exists()) {
-					MessageDialog.openError(getShell(), "ERROR",
-							"Project already exisits");
-				} else {
-					cepModel.setBucketName(cepModel.getProjectName());
-					project = createNewProject();
-					openFile = addCEPTemplate(project);
-				}
+			Map<File,String> cepArtiList = new HashMap<File,String>();	 
+			if (cepProjectModel.getSelectedOption().equals("import.cepproject")) {
+				cepArtiList = CEPProjectUtils.cepProjectFolderContentProcessing(cepProjectModel.getCepProjectLocation().getPath());
 			}
-			if (getModel().getSelectedOption().equals("new.cepproject")) {
-				project = createNewProject();
-				openFile = addCEPTemplate(project);
-				CEPProjectEditorPage.bucketProjectName = project.getName();
-				cepModel.setBucketName(project.getName());
+			project = createNewProject();
+			pomfile = project.getFile("pom.xml").getLocation().toFile();
+			createPOM(pomfile,"pom");
+			ProjectUtils.addNatureToProject(project,
+											false,
+			                                CEP_PROJECT_NATURE);
+			MavenUtils
+			.updateWithMavenEclipsePlugin(
+					pomfile,
+					new String[] { },
+					new String[] { CEP_PROJECT_NATURE });
+			
+			//Creating the metadata file artifact.xml while creating the CEP project. It will be hidden and users won't be able to see it via Eclipse.
+			CEPProjectArtifact artifact=new CEPProjectArtifact();
+			IFile file = project.getFile("artifact.xml");
+			artifact.setSource(file.getLocation().toFile());
+			artifact.toFile();
+			getModel().addToWorkingSet(project);
+			//Refresh the project to show the changes. But still won't see the newly created project.
+			project.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
+			refreshDistProjects();
+			//Setting the created file to be hidden so that users won't see it.
+			if(file.exists()){
+				file.setHidden(true);
 			}
-			if (!already) {
-				File pomfile = project.getFile("pom.xml").getLocation()
-						.toFile();
-				getModel().getMavenInfo().setPackageName(
-						"cep/bucket");
-				createPOM(pomfile);
-				ProjectUtils.addNatureToProject(project, false,
-						CEP_PROJECT_NATURE);
-				MavenUtils
-				.updateWithMavenEclipsePlugin(
-						pomfile,
-						new String[] {  },
-						new String[] { CEP_PROJECT_NATURE });
-				getModel().addToWorkingSet(project);
-				project.refreshLocal(IResource.DEPTH_INFINITE,
-						new NullProgressMonitor());
-				try {
-					refreshDistProjects();
-					IFile cepFile = ResourcesPlugin
-							.getWorkspace()
-							.getRoot()
-							.getFileForLocation(
-									Path.fromOSString(openFile
-											.getAbsolutePath()));
+			String groupId = getMavenGroupId(pomfile);
+			if (cepProjectModel.getSelectedOption().equals("new.cepproject")) {				
+				CEPProjectUtils.updatePom(project);
+				project.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
+				refreshDistProjects();
+			}else if(cepProjectModel.getSelectedOption().equals("import.cepproject")){
+				CEPProjectUtils.createCEPArtifacts(cepArtiList,project,pomfile,fileList,groupId);
+				
+				CEPProjectUtils.updatePom(project);
+				project.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
+				refreshDistProjects();
+				if (!fileList.isEmpty()) {
+		            if (MessageDialog.openQuestion(getShell(), "Open file(s) in the Editor",
+		                                           "Do you like to open the file(s) in Developer Studio?")) {
+			            for (File artifactFile : fileList.keySet()) {
+			            	super.openEditor(artifactFile);
+			            }
+		            }
+	            }
+			}
+		}catch (Exception e) {
+			MessageDialog.openError(getShell(), "Error while creating the project",
+                    e.getMessage());
+			return false;
 
-					IDE.openEditor(PlatformUI.getWorkbench()
-							.getActiveWorkbenchWindow().getActivePage(),
-							new FileEditorInput(cepFile),
-							"org.wso2.developerstudio.eclipse.artifact.cep.editor.CEPProjectEditor");
+		}
+	return true;
+	}
+		
 
-				} catch (Exception e) {
-					log.error("Cannot open file in editor", e);
-				}
-			}
-		} catch (CoreException e) {
-			log.error("CoreException has occurred", e);
-		} catch (Exception e) {
-			log.error("An unexpected error has occurred", e);
+		public CEPModel getCepProjectModel() {
+			return cepProjectModel;
 		}
 
-		return true;
-	}
-
-	private File addCEPTemplate(IProject project) throws Exception {
-		String eol = System.getProperty("line.separator");
-		ITemporaryFileTag cepTempTag = FileUtils.createNewTempTag();
-		File cepTemplateFile = new CEPTemplateUtils()
-				.getResourceFile("templates" + File.separator
-						+ "cepservice.xml");
-		String templateContent = FileUtils.getContentAsString(cepTemplateFile);
-		templateContent = templateContent.replaceAll("\\{", "<");
-		templateContent = templateContent.replaceAll("\\}", ">");
-		templateContent = templateContent.replaceAll("<service.name>",
-				cepModel.getBucketName());
-		IFolder cepfolder = project.getFolder("src" + File.separator + "main"
-				+ File.separator + "cepbucket");
-		File template = new File(cepfolder.getLocation().toFile(),
-				cepModel.getBucketName() + ".xml");
-		templateContent = XMLUtil.prettify(templateContent);
-		templateContent = templateContent.replaceAll("^" + eol, "");
-		FileUtils.createFile(template, templateContent);
-		cepTempTag.clearAndEnd();
-		return template;
-	}
-
-	public IResource getCreatedResource() {
-		return project;
-	}
-
+		public void setCepProjectModel(CEPModel cepProjectModel) {
+			this.cepProjectModel = cepProjectModel;
+		}
+		
+		public IResource getCreatedResource() {
+			return project;
+		}
+		
+		public void setCurrentSelection(ISelection currentSelection) {
+			// TODO Auto-generated method stub
+			super.setCurrentSelection(currentSelection);
+		}		
+		
 }

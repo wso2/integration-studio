@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension point="org.eclipse.ui.newWizards">
+         <wizard name="Receiver" 
+         	category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.eclipse.artifact.cep.category"
+			class="org.wso2.developerstudio.eclipse.artifact.cep.receiver.ui.wizard.ReceiverProjectCreationWizard"
+			wizardManifest="project_wizard.xml"
+			id="org.wso2.developerstudio.eclipse.artifact.newreceiverartifact"
+			project="true"
+			icon="icons/receiver-16x16.png">
+			<description>Receiver</description>
+		</wizard>
+         <category
+               id="org.wso2.developerstudio.eclipse.artifact.cep.receiver.category"
+               name="Receiver"
+               parentCategory="org.wso2.developerstudio.eclipse.capp.project">
+         </category>
+   </extension> 
+   
+   <extension point="org.eclipse.wst.sse.ui.completionProposal">
+  <proposalCategory
+      id="org.eclipse.wst.xml.ui.proposalCategory.xmlTemplates"
+      name="XML Templates">
+  </proposalCategory>
+  <proposalComputer
+      activate="false"
+      categoryId="org.eclipse.wst.xml.ui.proposalCategory.xmlTemplates"
+      class="org.eclipse.wst.xml.ui.internal.contentassist.AbstractXMLCompletionProposalComputer"
+      id="org.eclipse.wst.xml.ui.proposalComputer.xmlTemplates">
+    <contentType
+        id="org.eclipse.core.runtime.xml">
+    </contentType>
+  </proposalComputer>
+</extension>
+   
+   <!--extension id="analytictReceiver" name="Analytics_Receiver" point="org.eclipse.wst.validation.validatorV2">
+    <validator class="org.wso2.developerstudio.eclipse.artifact.cep.receiver.validators.CustomValidator" markerId="customMarker" version="3">
+    	<include>
+            <rules>
+               <fileext ext="xml"/>
+            </rules>
+         </include>
+    </validator>
+	</extension>
+	
+	<extension
+    point="org.eclipse.wst.xml.core.catalogContributions">
+    <catalogContribution id="default">
+        <uri
+             name="http://www.w3.org/2001/XMLSchema"
+             uri="platform:/plugin/org.eclipse.xsd/cache/www.w3.org/2001/XMLSchema.xsd" />
+        <system
+             systemId="http://www.w3.org/2001/xml.xsd"
+             uri="platform:/plugin/org.eclipse.xsd/cache/www.w3.org/2001/xml.xsd"/>             
+   </catalogContribution-->
+	
+   <extension point="org.eclipse.core.resources.natures"
+		id="org.wso2.developerstudio.eclipse.cep.receiver.project.nature" name="CEP_RECEIVER_NATURE">
+		<runtime>
+			<run
+				class="org.wso2.developerstudio.eclipse.artifact.cep.receiver.project.nature.ReceiverProjectNature">
+			</run>
+		</runtime>
+	</extension>
+
+	<!--extension point="org.eclipse.ui.ide.projectNatureImages">
+		<image id="org.wso2.developerstudio.eclipse.cep.receiver.project.natureImage"
+			natureId="org.wso2.developerstudio.eclipse.cep.receiver.project.nature" icon="icons/receiver-12x12.png">
+		</image>
+	</extension-->
+	 
+	<extension point="org.eclipse.ui.navigator.navigatorContent">    
+            <commonWizard type="new"
+                menuGroupId="2org.wso2.developerstudio.eclipse.artifact.cep"
+                wizardId="org.wso2.developerstudio.eclipse.artifact.newreceiverartifact">
+                <enablement>
+                    <or>
+                        <adapt type="org.eclipse.core.resources.IProject">
+                            <test property="org.eclipse.core.resources.projectNature"
+                                value="org.wso2.developerstudio.eclipse.artifact.cep.project.nature" />
+                                </adapt>
+                       <adapt type="org.eclipse.jdt.core.IPackageFragment">
+							<test property="org.wso2.developerstudio.projectNature"
+								value="org.wso2.developerstudio.eclipse.artifact.cep.project.nature" />
+						</adapt>
+						<adapt type="org.eclipse.core.resources.IFolder">  
+						   <test
+                       forcePluginActivation="true"
+                       property="org.eclipse.core.resources.name"
+                       value="receiver">
+                     </test>                        
+						</adapt>
+                    </or>
+                </enablement>
+            </commonWizard>
+    </extension>
+    
+    <extension
+          point="org.eclipse.ui.editors">
+       <editor
+             class="org.wso2.developerstudio.eclipse.artifact.cep.editor.CEPProjectEditor"
+             extensions="xml"
+             id="org.wso2.developerstudio.eclipse.artifact.cep.editor.CEPProjectEditor"
+             name="CEPEditor">
+          <contentTypeBinding
+                contentTypeId="org.wso2.developerstudio.eclipse.artifact.cep.content-type.cepservice">
+          </contentTypeBinding>
+       </editor>
+    </extension>
+    
+</plugin>

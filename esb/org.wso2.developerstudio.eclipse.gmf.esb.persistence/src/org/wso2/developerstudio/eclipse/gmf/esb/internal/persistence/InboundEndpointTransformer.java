@@ -27,6 +27,8 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbLink;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
 import org.wso2.developerstudio.eclipse.gmf.esb.OutputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.Sequence;
+import org.wso2.developerstudio.eclipse.gmf.esb.TopicFilterFromType;
+import org.wso2.developerstudio.eclipse.gmf.esb.TopicsType;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.InboundEndpointConstants;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
@@ -479,6 +481,8 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
 		case KAFKA:
 			if (StringUtils.isNotBlank(visualInboundEndpoint.getInterval())) {
 				inboundEndpoint.addParameter(InboundEndpointConstants.INTERVAL, visualInboundEndpoint.getInterval());
+			} else {
+				throw new TransformerException("Interval cannot be empty");
 			}
 			if (StringUtils.isNotBlank(String.valueOf(visualInboundEndpoint.isSequential()))) {
 				inboundEndpoint.addParameter(InboundEndpointConstants.SEQUENTIAL,
@@ -491,25 +495,191 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
 			if (StringUtils.isNotBlank(visualInboundEndpoint.getZookeeperConnect())) {
 				inboundEndpoint.addParameter(InboundEndpointConstants.ZOOKEEPER_CONNECT,
 						visualInboundEndpoint.getZookeeperConnect());
+			} else {
+				throw new TransformerException("Zookeeper cannot be empty");
 			}
 			if (StringUtils.isNotBlank(visualInboundEndpoint.getGroupId())) {
 				inboundEndpoint.addParameter(InboundEndpointConstants.GROUP_ID, visualInboundEndpoint.getGroupId());
-			}
-			if (StringUtils.isNotBlank(String.valueOf(visualInboundEndpoint.getConsumerType().getLiteral()))) {
-				inboundEndpoint.addParameter(InboundEndpointConstants.CONSUMER_TYPE, visualInboundEndpoint
-						.getConsumerType().getLiteral());
+			} else {
+				throw new TransformerException("Group ID cannot be empty");
 			}
 			if (StringUtils.isNotBlank(String.valueOf(visualInboundEndpoint.getContentType().getLiteral()))) {
 				inboundEndpoint.addParameter(InboundEndpointConstants.CONTENT_TYPE, visualInboundEndpoint
 						.getContentType().getLiteral());
 			}
+
+			String consumerType = visualInboundEndpoint.getConsumerType().getLiteral();
+			if (StringUtils.isNotBlank(consumerType)) {
+				inboundEndpoint.addParameter(InboundEndpointConstants.CONSUMER_TYPE, consumerType);
+				if (consumerType.equals(InboundEndpointConstants.HIGHLEVEL)) { // Consumer type highlevel case
+					String topicsOrTopicFilter = visualInboundEndpoint.getTopicsOrTopicFilter().getLiteral();
+					if (StringUtils.isNotBlank(topicsOrTopicFilter)) {
+						if (topicsOrTopicFilter.equals(TopicsType.TOPICS.getLiteral())) { // Topics type selected
+							if (StringUtils.isNotBlank(visualInboundEndpoint.getTopicsName())) {
+								inboundEndpoint.addParameter(InboundEndpointConstants.TOPICS,
+										visualInboundEndpoint.getTopicsName());
+							} else {
+								throw new TransformerException("Topics name cannot be empty");
+							}
+						} else { // Topic filter type selected
+							String topicFilterFromValue = visualInboundEndpoint.getTopicFilterFrom().getLiteral();
+							if (topicFilterFromValue.equals(TopicFilterFromType.FILTER_FROM_WHITELIST.getLiteral())) { // Whitelist
+								inboundEndpoint.addParameter(InboundEndpointConstants.FILTER_FROM_WHITELIST,
+										InboundEndpointConstants.TRUE);
+							} else { // Blacklist
+								inboundEndpoint.addParameter(InboundEndpointConstants.FILTER_FROM_BLACKLIST,
+										InboundEndpointConstants.TRUE);
+							}
+
+							// Topic filter name
+							if (StringUtils.isNotBlank(visualInboundEndpoint.getTopicFilterName())) {
+								inboundEndpoint.addParameter(InboundEndpointConstants.TOPIC_FILTER,
+										visualInboundEndpoint.getTopicFilterName());
+							} else {
+								throw new TransformerException("Topic filter name cannot be empty");
+							}
+						}
+					}
+				} else { // Consumer type simple case
+					if (StringUtils.isNotBlank(visualInboundEndpoint.getSimpleConsumerTopic())) {
+						inboundEndpoint.addParameter(InboundEndpointConstants.SIMPLE_TOPIC,
+								visualInboundEndpoint.getSimpleConsumerTopic());
+					} else {
+						throw new TransformerException("Simple consumer topic cannot be empty");
+					}
+					if (StringUtils.isNotBlank(visualInboundEndpoint.getSimpleConsumerBrokers())) {
+						inboundEndpoint.addParameter(InboundEndpointConstants.SIMPLE_BROKERS,
+								visualInboundEndpoint.getSimpleConsumerBrokers());
+					} else {
+						throw new TransformerException("Simple consumer brokers cannot be empty");
+					}
+					if (StringUtils.isNotBlank(visualInboundEndpoint.getSimpleConsumerPort())) {
+						inboundEndpoint.addParameter(InboundEndpointConstants.SIMPLE_PORT,
+								visualInboundEndpoint.getSimpleConsumerPort());
+					} else {
+						throw new TransformerException("Simple consumer port cannot be empty");
+					}
+					if (StringUtils.isNotBlank(visualInboundEndpoint.getSimpleConsumerPartition())) {
+						inboundEndpoint.addParameter(InboundEndpointConstants.SIMPLE_PARTITION,
+								visualInboundEndpoint.getSimpleConsumerPartition());
+					} else {
+						throw new TransformerException("Simple consumer partition cannot be empty");
+					}
+					if (StringUtils.isNotBlank(visualInboundEndpoint.getSimpleConsumerMaxMessagesToRead())) {
+						inboundEndpoint.addParameter(InboundEndpointConstants.SIMPLE_MAX_MESSAGES_TO_READ,
+								visualInboundEndpoint.getSimpleConsumerMaxMessagesToRead());
+					} else {
+						throw new TransformerException("Max messages to read cannot be empty");
+					}
+				}
+			}
+
+			// Non-mandatory fields
 			if (StringUtils.isNotBlank(visualInboundEndpoint.getThreadCount())) {
-				inboundEndpoint.addParameter(InboundEndpointConstants.THREAD_COUNT,
-						visualInboundEndpoint.getThreadCount());
+				inboundEndpoint.addParameter(InboundEndpointConstants.THREAD_COUNT, visualInboundEndpoint.getThreadCount());
+			}
+			if (StringUtils.isNotBlank(visualInboundEndpoint.getConsumerId())) {
+				inboundEndpoint.addParameter(InboundEndpointConstants.CONSUMER_ID, visualInboundEndpoint.getConsumerId());
+			}
+			inboundEndpoint.addParameter(InboundEndpointConstants.SOCKET_TIMEOUT_MS,
+					Integer.toString(visualInboundEndpoint.getSocketTimeoutMs()));
+			if (StringUtils.isNotBlank(visualInboundEndpoint.getSocketReceiveBufferBytes())) {
+				inboundEndpoint.addParameter(InboundEndpointConstants.SOCKET_RECEIVE_BUFFER_BYTES,
+						visualInboundEndpoint.getSocketReceiveBufferBytes());
+			}
+			if (StringUtils.isNotBlank(visualInboundEndpoint.getFetchMessageMaxBytes())) {
+				inboundEndpoint.addParameter(InboundEndpointConstants.FETCH_MESSAGE_MAX_BYTES,
+						visualInboundEndpoint.getFetchMessageMaxBytes());
+			}
+			if (StringUtils.isNotBlank(visualInboundEndpoint.getNumConsumerFetches())) {
+				inboundEndpoint.addParameter(InboundEndpointConstants.NUM_CONSUMER_FETCHES,
+						visualInboundEndpoint.getNumConsumerFetches());
+			}
+			if (visualInboundEndpoint.isAutoCommitEnable()) {
+				inboundEndpoint
+						.addParameter(InboundEndpointConstants.AUTO_COMMIT_ENABLE, InboundEndpointConstants.TRUE);
+			} else {
+				inboundEndpoint.addParameter(InboundEndpointConstants.AUTO_COMMIT_ENABLE,
+						InboundEndpointConstants.FALSE);
+			}
+			if (StringUtils.isNotBlank(visualInboundEndpoint.getAutoCommitIntervalMs())) {
+				inboundEndpoint.addParameter(InboundEndpointConstants.AUTO_COMMIT_INTERVAL_MS,
+						visualInboundEndpoint.getAutoCommitIntervalMs());
+			}
+			if (StringUtils.isNotBlank(visualInboundEndpoint.getQueuedMaxMessageChunks())) {
+				inboundEndpoint.addParameter(InboundEndpointConstants.QUEUED_MAX_MESSAGE_CHUNKS,
+						visualInboundEndpoint.getQueuedMaxMessageChunks());
+			}
+			if (StringUtils.isNotBlank(visualInboundEndpoint.getRebalanceMaxRetries())) {
+				inboundEndpoint.addParameter(InboundEndpointConstants.REBALANCE_MAX_RETRIES,
+						visualInboundEndpoint.getRebalanceMaxRetries());
+			}
+			if (StringUtils.isNotBlank(visualInboundEndpoint.getFetchMinBytes())) {
+				inboundEndpoint.addParameter(InboundEndpointConstants.FETCH_MIN_BYTES,
+						visualInboundEndpoint.getFetchMinBytes());
+			}
+			if (StringUtils.isNotBlank(visualInboundEndpoint.getFetchWaitMaxMs())) {
+				inboundEndpoint.addParameter(InboundEndpointConstants.FETCH_WAIT_MAX_MS,
+						visualInboundEndpoint.getFetchWaitMaxMs());
+			}
+			if (StringUtils.isNotBlank(visualInboundEndpoint.getRebalanceBackoffMs())) {
+				inboundEndpoint.addParameter(InboundEndpointConstants.REBALANCE_BACKOFF_MS,
+						visualInboundEndpoint.getRebalanceBackoffMs());
+			}
+			if (StringUtils.isNotBlank(visualInboundEndpoint.getRefreshLeaderBackoffMs())) {
+				inboundEndpoint.addParameter(InboundEndpointConstants.REFRESH_LEADER_BACKOFF_MS,
+						visualInboundEndpoint.getRefreshLeaderBackoffMs());
+			}
+			inboundEndpoint.addParameter(InboundEndpointConstants.AUTO_OFFSET_RESET, visualInboundEndpoint
+					.getAutoOffsetReset().getLiteral());
+			if (StringUtils.isNotBlank(visualInboundEndpoint.getConsumerTimeoutMs())) {
+				inboundEndpoint.addParameter(InboundEndpointConstants.CONSUMER_TIMEOUT_MS,
+						visualInboundEndpoint.getConsumerTimeoutMs());
+			}
+			if (visualInboundEndpoint.isExcludeInternalTopics()) {
+				inboundEndpoint.addParameter(InboundEndpointConstants.EXCLUDE_INTERNAL_TOPICS,
+						InboundEndpointConstants.TRUE);
+			} else {
+				inboundEndpoint.addParameter(InboundEndpointConstants.EXCLUDE_INTERNAL_TOPICS,
+						InboundEndpointConstants.FALSE);
+			}
+			inboundEndpoint.addParameter(InboundEndpointConstants.PARTITION_ASSIGNMENT_STRATEGY, visualInboundEndpoint
+					.getPartitionAssignmentStrategy().getLiteral());
+			if (StringUtils.isNotBlank(visualInboundEndpoint.getClientId())) {
+				inboundEndpoint.addParameter(InboundEndpointConstants.CLIENT_ID, visualInboundEndpoint.getClientId());
+			}
+			if (StringUtils.isNotBlank(visualInboundEndpoint.getZookeeperSessionTimeoutMs())) {
+				inboundEndpoint.addParameter(InboundEndpointConstants.ZOOKEEPER_SESSION_TIMEOUT_MS,
+						visualInboundEndpoint.getZookeeperSessionTimeoutMs());
+			}
+			if (StringUtils.isNotBlank(visualInboundEndpoint.getZookeeperConnectionTimeoutMs())) {
+				inboundEndpoint.addParameter(InboundEndpointConstants.ZOOKEEPER_CONNECTION_TIMEOUT_MS,
+						visualInboundEndpoint.getZookeeperConnectionTimeoutMs());
 			}
 			if (StringUtils.isNotBlank(visualInboundEndpoint.getZookeeperSyncTimeMs())) {
 				inboundEndpoint.addParameter(InboundEndpointConstants.ZOOKEEPER_SYNC_TIME_MS,
 						visualInboundEndpoint.getZookeeperSyncTimeMs());
+			}
+			inboundEndpoint.addParameter(InboundEndpointConstants.OFFSETS_STORAGE, visualInboundEndpoint
+					.getOffsetsStorage().getLiteral());
+			if (StringUtils.isNotBlank(visualInboundEndpoint.getOffsetsChannelBackoffMs())) {
+				inboundEndpoint.addParameter(InboundEndpointConstants.OFFSETS_CHANNEL_BACKOFF_MS,
+						visualInboundEndpoint.getOffsetsChannelBackoffMs());
+			}
+			if (StringUtils.isNotBlank(visualInboundEndpoint.getOffsetsChannelSocketTimeoutMs())) {
+				inboundEndpoint.addParameter(InboundEndpointConstants.OFFSETS_CHANNEL_SOCKET_TIMEOUT_MS,
+						visualInboundEndpoint.getOffsetsChannelSocketTimeoutMs());
+			}
+			if (StringUtils.isNotBlank(visualInboundEndpoint.getOffsetsCommitMaxRetries())) {
+				inboundEndpoint.addParameter(InboundEndpointConstants.OFFSETS_COMMIT_MAX_RETRIES,
+						visualInboundEndpoint.getOffsetsCommitMaxRetries());
+			}
+			if (visualInboundEndpoint.isDualCommitEnabled()) {
+				inboundEndpoint.addParameter(InboundEndpointConstants.DUAL_COMMIT_ENABLED,
+						InboundEndpointConstants.TRUE);
+			} else {
+				inboundEndpoint.addParameter(InboundEndpointConstants.DUAL_COMMIT_ENABLED,
+						InboundEndpointConstants.FALSE);
 			}
 			break;
 		case CXF_WS_RM:

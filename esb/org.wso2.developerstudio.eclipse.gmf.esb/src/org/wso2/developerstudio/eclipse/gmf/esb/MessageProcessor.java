@@ -42,12 +42,11 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getAxis2Configuration <em>Axis2 Configuration</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getReplySequenceName <em>Reply Sequence Name</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getFaultSequenceName <em>Fault Sequence Name</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getDeactivateSequenceName <em>Deactivate Sequence Name</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getQuartzConfigFilePath <em>Quartz Config File Path</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getCronExpression <em>Cron Expression</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getPinnedServers <em>Pinned Servers</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getNonRetryHttpStatusCodes <em>Non Retry Http Status Codes</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getParameters <em>Parameters</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#isBindProcessor <em>Bind Processor</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getTaskCount <em>Task Count</em>}</li>
  * </ul>
  * </p>
@@ -354,6 +353,7 @@ public interface MessageProcessor extends EsbElement {
 
 	/**
 	 * Returns the value of the '<em><b>Max Delivery Attempts</b></em>' attribute.
+	 * The default value is <code>"4"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Max Delivery Attempts</em>' attribute isn't clear,
@@ -363,7 +363,7 @@ public interface MessageProcessor extends EsbElement {
 	 * @return the value of the '<em>Max Delivery Attempts</em>' attribute.
 	 * @see #setMaxDeliveryAttempts(int)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getMessageProcessor_MaxDeliveryAttempts()
-	 * @model
+	 * @model default="4"
 	 * @generated
 	 */
 	int getMaxDeliveryAttempts();
@@ -512,6 +512,32 @@ public interface MessageProcessor extends EsbElement {
 	void setFaultSequenceName(RegistryKeyProperty value);
 
 	/**
+	 * Returns the value of the '<em><b>Deactivate Sequence Name</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Deactivate Sequence Name</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Deactivate Sequence Name</em>' containment reference.
+	 * @see #setDeactivateSequenceName(RegistryKeyProperty)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getMessageProcessor_DeactivateSequenceName()
+	 * @model containment="true"
+	 * @generated
+	 */
+	RegistryKeyProperty getDeactivateSequenceName();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getDeactivateSequenceName <em>Deactivate Sequence Name</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Deactivate Sequence Name</em>' containment reference.
+	 * @see #getDeactivateSequenceName()
+	 * @generated
+	 */
+	void setDeactivateSequenceName(RegistryKeyProperty value);
+
+	/**
 	 * Returns the value of the '<em><b>Quartz Config File Path</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -564,32 +590,6 @@ public interface MessageProcessor extends EsbElement {
 	void setCronExpression(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Pinned Servers</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Pinned Servers</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Pinned Servers</em>' attribute.
-	 * @see #setPinnedServers(String)
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getMessageProcessor_PinnedServers()
-	 * @model
-	 * @generated
-	 */
-	String getPinnedServers();
-
-	/**
-	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getPinnedServers <em>Pinned Servers</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Pinned Servers</em>' attribute.
-	 * @see #getPinnedServers()
-	 * @generated
-	 */
-	void setPinnedServers(String value);
-
-	/**
 	 * Returns the value of the '<em><b>Non Retry Http Status Codes</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -630,32 +630,6 @@ public interface MessageProcessor extends EsbElement {
 	 * @generated
 	 */
 	EList<MessageProcessorParameter> getParameters();
-
-	/**
-	 * Returns the value of the '<em><b>Bind Processor</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Bind Processor</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Bind Processor</em>' attribute.
-	 * @see #setBindProcessor(boolean)
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getMessageProcessor_BindProcessor()
-	 * @model
-	 * @generated
-	 */
-	boolean isBindProcessor();
-
-	/**
-	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#isBindProcessor <em>Bind Processor</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Bind Processor</em>' attribute.
-	 * @see #isBindProcessor()
-	 * @generated
-	 */
-	void setBindProcessor(boolean value);
 
 	/**
 	 * Returns the value of the '<em><b>Task Count</b></em>' attribute.

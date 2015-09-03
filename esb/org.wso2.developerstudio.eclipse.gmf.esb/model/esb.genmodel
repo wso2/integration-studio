@@ -2140,16 +2140,15 @@
           propertyDescription="Reply Sequence Name" propertySortChoices="true" ecoreFeature="ecore:EReference esb.ecore#//MessageProcessor/replySequenceName"/>
       <genFeatures notify="false" createChild="false" propertyCategory="Additional Parameters"
           propertyDescription="Fault Sequence Name" propertySortChoices="true" ecoreFeature="ecore:EReference esb.ecore#//MessageProcessor/faultSequenceName"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference esb.ecore#//MessageProcessor/deactivateSequenceName"/>
       <genFeatures createChild="false" propertyCategory="Additional Parameters" propertyDescription="Quartz Configuration File Path"
           ecoreFeature="ecore:EAttribute esb.ecore#//MessageProcessor/quartzConfigFilePath"/>
       <genFeatures createChild="false" propertyCategory="Additional Parameters" propertyDescription="Cron Expression"
           ecoreFeature="ecore:EAttribute esb.ecore#//MessageProcessor/cronExpression"/>
-      <genFeatures createChild="false" propertyCategory="Additional Parameters" ecoreFeature="ecore:EAttribute esb.ecore#//MessageProcessor/pinnedServers"/>
       <genFeatures createChild="false" propertyCategory="Additional Parameters" ecoreFeature="ecore:EAttribute esb.ecore#//MessageProcessor/nonRetryHttpStatusCodes"/>
       <genFeatures notify="false" createChild="false" propertyCategory="Additional Parameters"
           propertyDescription="Message Processor Parameters" propertySortChoices="true"
           ecoreFeature="ecore:EReference esb.ecore#//MessageProcessor/parameters"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//MessageProcessor/bindProcessor"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//MessageProcessor/taskCount"/>
     </genClasses>
     <genClasses ecoreClass="esb.ecore#//APIHandler">

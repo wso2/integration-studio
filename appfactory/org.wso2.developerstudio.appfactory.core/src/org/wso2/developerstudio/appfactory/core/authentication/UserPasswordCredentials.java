@@ -52,7 +52,6 @@ public class UserPasswordCredentials {
 	}
 
 	public String getGitUser() {
-		// TODO Auto-generated method stub
 		return user;
 	}
 

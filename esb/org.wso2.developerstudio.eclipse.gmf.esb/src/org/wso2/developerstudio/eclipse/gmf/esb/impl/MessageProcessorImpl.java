@@ -68,12 +68,11 @@ import org.wso2.developerstudio.eclipse.platform.core.utils.DeveloperStudioProvi
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getAxis2Configuration <em>Axis2 Configuration</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getReplySequenceName <em>Reply Sequence Name</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getFaultSequenceName <em>Fault Sequence Name</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getDeactivateSequenceName <em>Deactivate Sequence Name</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getQuartzConfigFilePath <em>Quartz Config File Path</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getCronExpression <em>Cron Expression</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getPinnedServers <em>Pinned Servers</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getNonRetryHttpStatusCodes <em>Non Retry Http Status Codes</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getParameters <em>Parameters</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#isBindProcessor <em>Bind Processor</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getTaskCount <em>Task Count</em>}</li>
  * </ul>
  * </p>
@@ -289,7 +288,7 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int MAX_DELIVERY_ATTEMPTS_EDEFAULT = 0;
+	protected static final int MAX_DELIVERY_ATTEMPTS_EDEFAULT = 4;
 
 	/**
 	 * The cached value of the '{@link #getMaxDeliveryAttempts() <em>Max Delivery Attempts</em>}' attribute.
@@ -382,6 +381,16 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
 	protected RegistryKeyProperty faultSequenceName;
 
 	/**
+	 * The cached value of the '{@link #getDeactivateSequenceName() <em>Deactivate Sequence Name</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDeactivateSequenceName()
+	 * @generated
+	 * @ordered
+	 */
+	protected RegistryKeyProperty deactivateSequenceName;
+
+	/**
 	 * The default value of the '{@link #getQuartzConfigFilePath() <em>Quartz Config File Path</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -422,26 +431,6 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
 	protected String cronExpression = CRON_EXPRESSION_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getPinnedServers() <em>Pinned Servers</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPinnedServers()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String PINNED_SERVERS_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getPinnedServers() <em>Pinned Servers</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPinnedServers()
-	 * @generated
-	 * @ordered
-	 */
-	protected String pinnedServers = PINNED_SERVERS_EDEFAULT;
-
-	/**
 	 * The default value of the '{@link #getNonRetryHttpStatusCodes() <em>Non Retry Http Status Codes</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -470,26 +459,6 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
 	 * @ordered
 	 */
 	protected EList<MessageProcessorParameter> parameters;
-
-	/**
-	 * The default value of the '{@link #isBindProcessor() <em>Bind Processor</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isBindProcessor()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final boolean BIND_PROCESSOR_EDEFAULT = false;
-
-	/**
-	 * The cached value of the '{@link #isBindProcessor() <em>Bind Processor</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isBindProcessor()
-	 * @generated
-	 * @ordered
-	 */
-	protected boolean bindProcessor = BIND_PROCESSOR_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getTaskCount() <em>Task Count</em>}' attribute.
@@ -1014,6 +983,49 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public RegistryKeyProperty getDeactivateSequenceName() {
+		return deactivateSequenceName;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetDeactivateSequenceName(RegistryKeyProperty newDeactivateSequenceName, NotificationChain msgs) {
+		RegistryKeyProperty oldDeactivateSequenceName = deactivateSequenceName;
+		deactivateSequenceName = newDeactivateSequenceName;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_PROCESSOR__DEACTIVATE_SEQUENCE_NAME, oldDeactivateSequenceName, newDeactivateSequenceName);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setDeactivateSequenceName(RegistryKeyProperty newDeactivateSequenceName) {
+		if (newDeactivateSequenceName != deactivateSequenceName) {
+			NotificationChain msgs = null;
+			if (deactivateSequenceName != null)
+				msgs = ((InternalEObject)deactivateSequenceName).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EsbPackage.MESSAGE_PROCESSOR__DEACTIVATE_SEQUENCE_NAME, null, msgs);
+			if (newDeactivateSequenceName != null)
+				msgs = ((InternalEObject)newDeactivateSequenceName).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EsbPackage.MESSAGE_PROCESSOR__DEACTIVATE_SEQUENCE_NAME, null, msgs);
+			msgs = basicSetDeactivateSequenceName(newDeactivateSequenceName, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_PROCESSOR__DEACTIVATE_SEQUENCE_NAME, newDeactivateSequenceName, newDeactivateSequenceName));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public String getQuartzConfigFilePath() {
 		return quartzConfigFilePath;
 	}
@@ -1056,27 +1068,6 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getPinnedServers() {
-		return pinnedServers;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setPinnedServers(String newPinnedServers) {
-		String oldPinnedServers = pinnedServers;
-		pinnedServers = newPinnedServers;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_PROCESSOR__PINNED_SERVERS, oldPinnedServers, pinnedServers));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public String getNonRetryHttpStatusCodes() {
 		return nonRetryHttpStatusCodes;
 	}
@@ -1103,27 +1094,6 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
 			parameters = new EObjectContainmentEList<MessageProcessorParameter>(MessageProcessorParameter.class, this, EsbPackage.MESSAGE_PROCESSOR__PARAMETERS);
 		}
 		return parameters;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isBindProcessor() {
-		return bindProcessor;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setBindProcessor(boolean newBindProcessor) {
-		boolean oldBindProcessor = bindProcessor;
-		bindProcessor = newBindProcessor;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_PROCESSOR__BIND_PROCESSOR, oldBindProcessor, bindProcessor));
 	}
 
 	/**
@@ -1163,6 +1133,8 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
 				return basicSetReplySequenceName(null, msgs);
 			case EsbPackage.MESSAGE_PROCESSOR__FAULT_SEQUENCE_NAME:
 				return basicSetFaultSequenceName(null, msgs);
+			case EsbPackage.MESSAGE_PROCESSOR__DEACTIVATE_SEQUENCE_NAME:
+				return basicSetDeactivateSequenceName(null, msgs);
 			case EsbPackage.MESSAGE_PROCESSOR__PARAMETERS:
 				return ((InternalEList<?>)getParameters()).basicRemove(otherEnd, msgs);
 		}
@@ -1211,18 +1183,16 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
 				return getReplySequenceName();
 			case EsbPackage.MESSAGE_PROCESSOR__FAULT_SEQUENCE_NAME:
 				return getFaultSequenceName();
+			case EsbPackage.MESSAGE_PROCESSOR__DEACTIVATE_SEQUENCE_NAME:
+				return getDeactivateSequenceName();
 			case EsbPackage.MESSAGE_PROCESSOR__QUARTZ_CONFIG_FILE_PATH:
 				return getQuartzConfigFilePath();
 			case EsbPackage.MESSAGE_PROCESSOR__CRON_EXPRESSION:
 				return getCronExpression();
-			case EsbPackage.MESSAGE_PROCESSOR__PINNED_SERVERS:
-				return getPinnedServers();
 			case EsbPackage.MESSAGE_PROCESSOR__NON_RETRY_HTTP_STATUS_CODES:
 				return getNonRetryHttpStatusCodes();
 			case EsbPackage.MESSAGE_PROCESSOR__PARAMETERS:
 				return getParameters();
-			case EsbPackage.MESSAGE_PROCESSOR__BIND_PROCESSOR:
-				return isBindProcessor();
 			case EsbPackage.MESSAGE_PROCESSOR__TASK_COUNT:
 				return getTaskCount();
 		}
@@ -1289,14 +1259,14 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
 			case EsbPackage.MESSAGE_PROCESSOR__FAULT_SEQUENCE_NAME:
 				setFaultSequenceName((RegistryKeyProperty)newValue);
 				return;
+			case EsbPackage.MESSAGE_PROCESSOR__DEACTIVATE_SEQUENCE_NAME:
+				setDeactivateSequenceName((RegistryKeyProperty)newValue);
+				return;
 			case EsbPackage.MESSAGE_PROCESSOR__QUARTZ_CONFIG_FILE_PATH:
 				setQuartzConfigFilePath((String)newValue);
 				return;
 			case EsbPackage.MESSAGE_PROCESSOR__CRON_EXPRESSION:
 				setCronExpression((String)newValue);
-				return;
-			case EsbPackage.MESSAGE_PROCESSOR__PINNED_SERVERS:
-				setPinnedServers((String)newValue);
 				return;
 			case EsbPackage.MESSAGE_PROCESSOR__NON_RETRY_HTTP_STATUS_CODES:
 				setNonRetryHttpStatusCodes((String)newValue);
@@ -1304,9 +1274,6 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
 			case EsbPackage.MESSAGE_PROCESSOR__PARAMETERS:
 				getParameters().clear();
 				getParameters().addAll((Collection<? extends MessageProcessorParameter>)newValue);
-				return;
-			case EsbPackage.MESSAGE_PROCESSOR__BIND_PROCESSOR:
-				setBindProcessor((Boolean)newValue);
 				return;
 			case EsbPackage.MESSAGE_PROCESSOR__TASK_COUNT:
 				setTaskCount((String)newValue);
@@ -1374,23 +1341,20 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
 			case EsbPackage.MESSAGE_PROCESSOR__FAULT_SEQUENCE_NAME:
 				setFaultSequenceName((RegistryKeyProperty)null);
 				return;
+			case EsbPackage.MESSAGE_PROCESSOR__DEACTIVATE_SEQUENCE_NAME:
+				setDeactivateSequenceName((RegistryKeyProperty)null);
+				return;
 			case EsbPackage.MESSAGE_PROCESSOR__QUARTZ_CONFIG_FILE_PATH:
 				setQuartzConfigFilePath(QUARTZ_CONFIG_FILE_PATH_EDEFAULT);
 				return;
 			case EsbPackage.MESSAGE_PROCESSOR__CRON_EXPRESSION:
 				setCronExpression(CRON_EXPRESSION_EDEFAULT);
 				return;
-			case EsbPackage.MESSAGE_PROCESSOR__PINNED_SERVERS:
-				setPinnedServers(PINNED_SERVERS_EDEFAULT);
-				return;
 			case EsbPackage.MESSAGE_PROCESSOR__NON_RETRY_HTTP_STATUS_CODES:
 				setNonRetryHttpStatusCodes(NON_RETRY_HTTP_STATUS_CODES_EDEFAULT);
 				return;
 			case EsbPackage.MESSAGE_PROCESSOR__PARAMETERS:
 				getParameters().clear();
-				return;
-			case EsbPackage.MESSAGE_PROCESSOR__BIND_PROCESSOR:
-				setBindProcessor(BIND_PROCESSOR_EDEFAULT);
 				return;
 			case EsbPackage.MESSAGE_PROCESSOR__TASK_COUNT:
 				setTaskCount(TASK_COUNT_EDEFAULT);
@@ -1441,18 +1405,16 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
 				return replySequenceName != null;
 			case EsbPackage.MESSAGE_PROCESSOR__FAULT_SEQUENCE_NAME:
 				return faultSequenceName != null;
+			case EsbPackage.MESSAGE_PROCESSOR__DEACTIVATE_SEQUENCE_NAME:
+				return deactivateSequenceName != null;
 			case EsbPackage.MESSAGE_PROCESSOR__QUARTZ_CONFIG_FILE_PATH:
 				return QUARTZ_CONFIG_FILE_PATH_EDEFAULT == null ? quartzConfigFilePath != null : !QUARTZ_CONFIG_FILE_PATH_EDEFAULT.equals(quartzConfigFilePath);
 			case EsbPackage.MESSAGE_PROCESSOR__CRON_EXPRESSION:
 				return CRON_EXPRESSION_EDEFAULT == null ? cronExpression != null : !CRON_EXPRESSION_EDEFAULT.equals(cronExpression);
-			case EsbPackage.MESSAGE_PROCESSOR__PINNED_SERVERS:
-				return PINNED_SERVERS_EDEFAULT == null ? pinnedServers != null : !PINNED_SERVERS_EDEFAULT.equals(pinnedServers);
 			case EsbPackage.MESSAGE_PROCESSOR__NON_RETRY_HTTP_STATUS_CODES:
 				return NON_RETRY_HTTP_STATUS_CODES_EDEFAULT == null ? nonRetryHttpStatusCodes != null : !NON_RETRY_HTTP_STATUS_CODES_EDEFAULT.equals(nonRetryHttpStatusCodes);
 			case EsbPackage.MESSAGE_PROCESSOR__PARAMETERS:
 				return parameters != null && !parameters.isEmpty();
-			case EsbPackage.MESSAGE_PROCESSOR__BIND_PROCESSOR:
-				return bindProcessor != BIND_PROCESSOR_EDEFAULT;
 			case EsbPackage.MESSAGE_PROCESSOR__TASK_COUNT:
 				return TASK_COUNT_EDEFAULT == null ? taskCount != null : !TASK_COUNT_EDEFAULT.equals(taskCount);
 		}
@@ -1499,12 +1461,8 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
 		result.append(quartzConfigFilePath);
 		result.append(", cronExpression: ");
 		result.append(cronExpression);
-		result.append(", pinnedServers: ");
-		result.append(pinnedServers);
 		result.append(", nonRetryHttpStatusCodes: ");
 		result.append(nonRetryHttpStatusCodes);
-		result.append(", bindProcessor: ");
-		result.append(bindProcessor);
 		result.append(", taskCount: ");
 		result.append(taskCount);
 		result.append(')');

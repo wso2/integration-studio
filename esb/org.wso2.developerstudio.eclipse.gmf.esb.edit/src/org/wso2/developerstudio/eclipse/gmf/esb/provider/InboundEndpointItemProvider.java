@@ -170,13 +170,58 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 			addCoordinationPropertyDescriptor(object);
 			addZookeeperConnectPropertyDescriptor(object);
 			addGroupIdPropertyDescriptor(object);
-			addConsumerTypePropertyDescriptor(object);
 			addContentTypePropertyDescriptor(object);
+			addConsumerTypePropertyDescriptor(object);
+
+			switch (inboundEndpoint.getConsumerType()) {
+			case HIGHLEVEL:
+				addTopicsOrTopicFilterPropertyDescriptor(object);
+				switch (inboundEndpoint.getTopicsOrTopicFilter()) {
+				case TOPICS:
+					addTopicsNamePropertyDescriptor(object);
+					break;
+				case TOPIC_FILTER:
+					addTopicFilterFromPropertyDescriptor(object);
+					addTopicFilterNamePropertyDescriptor(object);
+					break;
+				}
+				break;
+			case SIMPLE:
+				addSimpleConsumerTopicPropertyDescriptor(object);
+				addSimpleConsumerBrokersPropertyDescriptor(object);
+				addSimpleConsumerPortPropertyDescriptor(object);
+				addSimpleConsumerPartitionPropertyDescriptor(object);
+				addSimpleConsumerMaxMessagesToReadPropertyDescriptor(object);
+				break;
+			}
+
 			addThreadCountPropertyDescriptor(object);
-			addZookeeperSessionTimeoutMsPropertyDescriptor(object);
-			addZookeeperSyncTimeMsPropertyDescriptor(object);
+			addConsumerIdPropertyDescriptor(object);
+			addSocketTimeoutMsPropertyDescriptor(object);
+			addSocketReceiveBufferBytesPropertyDescriptor(object);
+			addFetchMessageMaxBytesPropertyDescriptor(object);
+			addNumConsumerFetchesPropertyDescriptor(object);
+			addAutoCommitEnablePropertyDescriptor(object);
 			addAutoCommitIntervalMsPropertyDescriptor(object);
+			addQueuedMaxMessageChunksPropertyDescriptor(object);
+			addRebalanceMaxRetriesPropertyDescriptor(object);
+			addFetchMinBytesPropertyDescriptor(object);
+			addFetchWaitMaxMsPropertyDescriptor(object);
+			addRebalanceBackoffMsPropertyDescriptor(object);
+			addRefreshLeaderBackoffMsPropertyDescriptor(object);
 			addAutoOffsetResetPropertyDescriptor(object);
+			addConsumerTimeoutMsPropertyDescriptor(object);
+			addExcludeInternalTopicsPropertyDescriptor(object);
+			addPartitionAssignmentStrategyPropertyDescriptor(object);
+			addClientIdPropertyDescriptor(object);
+			addZookeeperSessionTimeoutMsPropertyDescriptor(object);
+			addZookeeperConnectionTimeoutMsPropertyDescriptor(object);
+			addZookeeperSyncTimeMsPropertyDescriptor(object);
+			addOffsetsStoragePropertyDescriptor(object);
+			addOffsetsChannelBackoffMsPropertyDescriptor(object);
+			addOffsetsChannelSocketTimeoutMsPropertyDescriptor(object);
+			addOffsetsCommitMaxRetriesPropertyDescriptor(object);
+			addDualCommitEnabledPropertyDescriptor(object);
 			break;
 		case CXF_WS_RM:
 			addInboundCxfRmHostPropertyDescriptor(object);
@@ -430,7 +475,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 	 * This adds a property descriptor for the Zookeeper Connect feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
 	protected void addZookeeperConnectPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -444,7 +489,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 "Parameters",
+				 null,
 				 null));
 	}
 
@@ -452,7 +497,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 	 * This adds a property descriptor for the Group Id feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
 	protected void addGroupIdPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -466,7 +511,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 "Parameters",
+				 null,
 				 null));
 	}
 
@@ -474,7 +519,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 	 * This adds a property descriptor for the Consumer Type feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
 	protected void addConsumerTypePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -488,7 +533,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 "Parameters",
+				 null,
 				 null));
 	}
 
@@ -694,7 +739,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 	 * This adds a property descriptor for the Content Type feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
 	protected void addContentTypePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -708,7 +753,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 "Parameters",
+				 null,
 				 null));
 	}
 
@@ -738,7 +783,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 	 * This adds a property descriptor for the Consumer Id feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	protected void addConsumerIdPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -752,7 +797,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
+				 "Parameters",
 				 null));
 	}
 
@@ -760,7 +805,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 	 * This adds a property descriptor for the Socket Timeout Ms feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	protected void addSocketTimeoutMsPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -774,7 +819,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 				 false,
 				 false,
 				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
+				 "Parameters",
 				 null));
 	}
 
@@ -782,7 +827,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 	 * This adds a property descriptor for the Socket Receive Buffer Bytes feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	protected void addSocketReceiveBufferBytesPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -796,7 +841,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
+				 "Parameters",
 				 null));
 	}
 
@@ -804,7 +849,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 	 * This adds a property descriptor for the Fetch Message Max Bytes feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	protected void addFetchMessageMaxBytesPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -818,7 +863,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
+				 "Parameters",
 				 null));
 	}
 
@@ -826,7 +871,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 	 * This adds a property descriptor for the Num Consumer Fetches feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	protected void addNumConsumerFetchesPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -840,7 +885,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
+				 "Parameters",
 				 null));
 	}
 
@@ -848,7 +893,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 	 * This adds a property descriptor for the Auto Commit Enable feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	protected void addAutoCommitEnablePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -862,7 +907,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 				 false,
 				 false,
 				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-				 null,
+				 "Parameters",
 				 null));
 	}
 
@@ -892,7 +937,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 	 * This adds a property descriptor for the Zookeeper Connection Timeout Ms feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	protected void addZookeeperConnectionTimeoutMsPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -906,7 +951,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
+				 "Parameters",
 				 null));
 	}
 
@@ -936,7 +981,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 	 * This adds a property descriptor for the Offsets Storage feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	protected void addOffsetsStoragePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -950,7 +995,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
+				 "Parameters",
 				 null));
 	}
 
@@ -958,7 +1003,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 	 * This adds a property descriptor for the Offsets Channel Backoff Ms feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	protected void addOffsetsChannelBackoffMsPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -972,7 +1017,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
+				 "Parameters",
 				 null));
 	}
 
@@ -980,7 +1025,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 	 * This adds a property descriptor for the Offsets Channel Socket Timeout Ms feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	protected void addOffsetsChannelSocketTimeoutMsPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -994,7 +1039,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
+				 "Parameters",
 				 null));
 	}
 
@@ -1002,7 +1047,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 	 * This adds a property descriptor for the Offsets Commit Max Retries feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	protected void addOffsetsCommitMaxRetriesPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -1016,7 +1061,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
+				 "Parameters",
 				 null));
 	}
 
@@ -1024,7 +1069,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 	 * This adds a property descriptor for the Dual Commit Enabled feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	protected void addDualCommitEnabledPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -1038,7 +1083,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 				 false,
 				 false,
 				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-				 null,
+				 "Parameters",
 				 null));
 	}
 
@@ -1068,7 +1113,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 	 * This adds a property descriptor for the Queued Max Message Chunks feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	protected void addQueuedMaxMessageChunksPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -1082,7 +1127,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
+				 "Parameters",
 				 null));
 	}
 
@@ -1090,7 +1135,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 	 * This adds a property descriptor for the Rebalance Max Retries feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	protected void addRebalanceMaxRetriesPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -1104,7 +1149,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
+				 "Parameters",
 				 null));
 	}
 
@@ -1112,7 +1157,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 	 * This adds a property descriptor for the Fetch Min Bytes feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	protected void addFetchMinBytesPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -1126,7 +1171,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
+				 "Parameters",
 				 null));
 	}
 
@@ -1134,7 +1179,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 	 * This adds a property descriptor for the Fetch Wait Max Ms feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	protected void addFetchWaitMaxMsPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -1148,7 +1193,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
+				 "Parameters",
 				 null));
 	}
 
@@ -1156,7 +1201,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 	 * This adds a property descriptor for the Rebalance Backoff Ms feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	protected void addRebalanceBackoffMsPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -1170,7 +1215,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
+				 "Parameters",
 				 null));
 	}
 
@@ -1178,7 +1223,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 	 * This adds a property descriptor for the Refresh Leader Backoff Ms feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	protected void addRefreshLeaderBackoffMsPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -1192,7 +1237,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
+				 "Parameters",
 				 null));
 	}
 
@@ -1222,7 +1267,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 	 * This adds a property descriptor for the Consumer Timeout Ms feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	protected void addConsumerTimeoutMsPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -1236,7 +1281,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
+				 "Parameters",
 				 null));
 	}
 
@@ -1244,7 +1289,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 	 * This adds a property descriptor for the Exclude Internal Topics feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	protected void addExcludeInternalTopicsPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -1258,7 +1303,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 				 false,
 				 false,
 				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-				 null,
+				 "Parameters",
 				 null));
 	}
 
@@ -1266,7 +1311,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 	 * This adds a property descriptor for the Partition Assignment Strategy feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	protected void addPartitionAssignmentStrategyPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -1280,7 +1325,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
+				 "Parameters",
 				 null));
 	}
 
@@ -1288,7 +1333,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 	 * This adds a property descriptor for the Client Id feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	protected void addClientIdPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -1302,7 +1347,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
+				 "Parameters",
 				 null));
 	}
 
@@ -1644,48 +1689,66 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 	 * This adds a property descriptor for the Interval feature. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 * 
-	 * @generated NOT
+	 * @generated
 	 */
 	protected void addIntervalPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_InboundEndpoint_interval_feature"),
-				getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_interval_feature",
-						"_UI_InboundEndpoint_type"), EsbPackage.Literals.INBOUND_ENDPOINT__INTERVAL, true, false,
-				false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, "Parameters", null));
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_InboundEndpoint_interval_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_interval_feature", "_UI_InboundEndpoint_type"),
+				 EsbPackage.Literals.INBOUND_ENDPOINT__INTERVAL,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
 	 * This adds a property descriptor for the Sequential feature. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 * 
-	 * @generated NOT
+	 * @generated
 	 */
 	protected void addSequentialPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_InboundEndpoint_sequential_feature"),
-				getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_sequential_feature",
-						"_UI_InboundEndpoint_type"), EsbPackage.Literals.INBOUND_ENDPOINT__SEQUENTIAL, true, false,
-				false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, "Parameters", null));
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_InboundEndpoint_sequential_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_sequential_feature", "_UI_InboundEndpoint_type"),
+				 EsbPackage.Literals.INBOUND_ENDPOINT__SEQUENTIAL,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
 	 * This adds a property descriptor for the Coordination feature. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 * 
-	 * @generated NOT
+	 * @generated
 	 */
 	protected void addCoordinationPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_InboundEndpoint_coordination_feature"),
-				getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_coordination_feature",
-						"_UI_InboundEndpoint_type"), EsbPackage.Literals.INBOUND_ENDPOINT__COORDINATION, true, false,
-				false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, "Parameters", null));
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_InboundEndpoint_coordination_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_coordination_feature", "_UI_InboundEndpoint_type"),
+				 EsbPackage.Literals.INBOUND_ENDPOINT__COORDINATION,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**

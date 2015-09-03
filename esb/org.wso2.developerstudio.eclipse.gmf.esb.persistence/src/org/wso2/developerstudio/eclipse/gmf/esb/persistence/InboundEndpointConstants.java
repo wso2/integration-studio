@@ -2,6 +2,30 @@ package org.wso2.developerstudio.eclipse.gmf.esb.persistence;
 
 public class InboundEndpointConstants {
 
+	public static final String HTTP = "http";
+	public static final String FILE = "file";
+	public static final String JMS = "jms";
+	public static final String HTTPS = "https";
+	public static final String HL7 = "hl7";
+	public static final String KAFKA = "kafka";
+	public static final String CUSTOM = "custom";
+	public static final String CXF_WS_RM = "cxf_ws_rm";
+	public static final String MQTT = "mqtt";
+
+	public static final String TRUE = "true";
+	public static final String FALSE = "false";
+	public static final String NONE = "none";
+	public static final String DELETE = "DELETE";
+	public static final String ENABLE = "enable";
+	public static final String NAME = "name";
+	public static final String SIZE = "size";
+	public static final String TOPIC = "topic";
+	public static final String AUTO_ACKNOWLEDGE = "AUTO_ACKNOWLEDGE";
+	public static final String CLIENT_ACKNOWLEDGE = "CLIENT_ACKNOWLEDGE";
+	public static final String DUPS_OK_ACKNOWLEDGE = "DUPS_OK_ACKNOWLEDGE";
+	public static final String HIGHLEVEL = "highlevel";
+	public static final String APPLICATION_XML = "application/xml";
+	
 	public static final String SEQUENCE = "sequence";
 	public static final String ON_ERROR = "onError";
 

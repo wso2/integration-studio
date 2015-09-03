@@ -81,11 +81,10 @@ public class MessageProcessorItemProvider
 			addAxis2ConfigurationPropertyDescriptor(object);
 			addReplySequenceNamePropertyDescriptor(object);
 			addFaultSequenceNamePropertyDescriptor(object);
-			addQuartzConfigFilePathPropertyDescriptor(object);
+			addDeactivateSequenceNamePropertyDescriptor(object);
+            addQuartzConfigFilePathPropertyDescriptor(object);
 			addCronExpressionPropertyDescriptor(object);
 			addTaskCountPropertyDescriptor(object);
-			addPinnedServersPropertyDescriptor(object);
-			addBindProcessorPropertyDescriptor(object);
 			break;
 		}
 		case MSG_SAMPLING: {
@@ -95,7 +94,6 @@ public class MessageProcessorItemProvider
 			addSamplingConcurrencyPropertyDescriptor(object);
 			addQuartzConfigFilePathPropertyDescriptor(object);
 			addCronExpressionPropertyDescriptor(object);
-			addPinnedServersPropertyDescriptor(object);
 			break;
 		}
 		case CUSTOM: {
@@ -485,6 +483,28 @@ public class MessageProcessorItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Deactivate Sequence Name feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addDeactivateSequenceNamePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_MessageProcessor_deactivateSequenceName_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_MessageProcessor_deactivateSequenceName_feature", "_UI_MessageProcessor_type"),
+				 EsbPackage.Literals.MESSAGE_PROCESSOR__DEACTIVATE_SEQUENCE_NAME,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This adds a property descriptor for the Quartz Config File Path feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -520,28 +540,6 @@ public class MessageProcessorItemProvider
 				 getString("_UI_MessageProcessor_cronExpression_feature"),
 				 getString("_UI_MessageProcessor_cronExpression_description"),
 				 EsbPackage.Literals.MESSAGE_PROCESSOR__CRON_EXPRESSION,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 getString("_UI_AdditionalParametersPropertyCategory"),
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Pinned Servers feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addPinnedServersPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_MessageProcessor_pinnedServers_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_MessageProcessor_pinnedServers_feature", "_UI_MessageProcessor_type"),
-				 EsbPackage.Literals.MESSAGE_PROCESSOR__PINNED_SERVERS,
 				 true,
 				 false,
 				 false,
@@ -590,28 +588,6 @@ public class MessageProcessorItemProvider
 				 false,
 				 true,
 				 null,
-				 getString("_UI_AdditionalParametersPropertyCategory"),
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Bind Processor feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	protected void addBindProcessorPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_MessageProcessor_bindProcessor_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_MessageProcessor_bindProcessor_feature", "_UI_MessageProcessor_type"),
-				 EsbPackage.Literals.MESSAGE_PROCESSOR__BIND_PROCESSOR,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
 				 getString("_UI_AdditionalParametersPropertyCategory"),
 				 null));
 	}
@@ -720,9 +696,7 @@ public class MessageProcessorItemProvider
 			case EsbPackage.MESSAGE_PROCESSOR__AXIS2_CONFIGURATION:
 			case EsbPackage.MESSAGE_PROCESSOR__QUARTZ_CONFIG_FILE_PATH:
 			case EsbPackage.MESSAGE_PROCESSOR__CRON_EXPRESSION:
-			case EsbPackage.MESSAGE_PROCESSOR__PINNED_SERVERS:
 			case EsbPackage.MESSAGE_PROCESSOR__NON_RETRY_HTTP_STATUS_CODES:
-			case EsbPackage.MESSAGE_PROCESSOR__BIND_PROCESSOR:
 			case EsbPackage.MESSAGE_PROCESSOR__TASK_COUNT:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;

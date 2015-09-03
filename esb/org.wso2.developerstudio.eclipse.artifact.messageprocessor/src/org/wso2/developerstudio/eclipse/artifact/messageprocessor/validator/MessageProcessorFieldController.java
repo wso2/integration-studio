@@ -139,7 +139,6 @@ public class MessageProcessorFieldController extends AbstractFieldController{
 		if (modelProperty.equals("processor.type")) {
 			updatedList.add("FS_processor.configuration_file_path");
 			updatedList.add("FS_processor.cron_expression");
-			updatedList.add("FS_processor.pinned_servers");
 			updatedList.add("FS_processor.processor_state");
 			updatedList.add("Forwarding_processor.delivery_attempts");
 			updatedList.add("Forwarding_processor.client_repository");
@@ -147,6 +146,7 @@ public class MessageProcessorFieldController extends AbstractFieldController{
 			updatedList.add("Forwarding_processor.endpoint_name");
 			updatedList.add("Forwarding_processor.Reply_sequence_name");
 			updatedList.add("Forwarding_processor.Fault_sequence_name");
+			updatedList.add("Forwarding_processor.Deactivate_sequence_name");
 			updatedList.add("Forwarding_processor.forwarding_interval");
 			updatedList.add("Forwarding_processor.retry_interval");
 			updatedList.add("Forwarding_processor.Fault_reg");

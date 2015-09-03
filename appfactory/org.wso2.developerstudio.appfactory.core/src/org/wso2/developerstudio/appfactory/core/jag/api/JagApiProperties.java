@@ -29,7 +29,7 @@ public class JagApiProperties {
 	private static final String LAST_BUILD_URL_SFX  = "/appmgt/site/blocks/reposBuilds/list/ajax/list.jag";
 	private static final String CREATE_DEPLOY_URL_SFX  = "/appmgt/site/blocks/reposBuilds/add/ajax/add.jag";
 	private static final String Build_APPLICATION_URL_SFX = "/appmgt/site/blocks/lifecycle/add/ajax/add.jag";
-	private static final String APP_USER_ROLES_URL_SFX = "/appmgt/site/blocks/application/users/get/ajax/list.jag";
+	private static final String APP_USER_ROLES_URL_SFX = "/appmgt/site/blocks/application/user/get/ajax/list.jag";
 	private static final String APP_DB_INFO_URL ="/appmgt/site/blocks/rssmanager/add/ajax/add.jag";
 	private static final String APP_DS_INFO_URL ="/appmgt/site/blocks/resources/datasource/get/ajax/list.jag";
 	private static final String FORKED_VERSION_INFO_URL = "/appmgt/site/blocks/reposBuilds/list/ajax/list.jag"; 

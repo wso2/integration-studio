@@ -589,6 +589,7 @@
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//InboundEndpointType/kafka"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//InboundEndpointType/cxf_ws_rm"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//InboundEndpointType/mqtt"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//InboundEndpointType/RabbitMQ"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//ContentType">
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//ContentType/xml"/>
@@ -2340,6 +2341,32 @@
       <genFeatures children="true" createChild="true" propertyCategory="Parameters"
           propertyDescription="" propertySortChoices="true" ecoreFeature="ecore:EReference esb.ecore#//InboundEndpoint/serviceParameters"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/suspend"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportRabbitMqConnectionFactory"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportRabbitMqServerHostName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportRabbitMqServerPort"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportRabbitMqServerUserName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportRabbitMqServerPassword"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportRabbitMqQueueName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportRabbitMqExchangeName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportRabbitMqQueueDurable"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportRabbitMqQueueExclusive"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportRabbitMqQueueAutoDelete"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportRabbitMqQueueAutoAck"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportRabbitMqQueueRoutingKey"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportRabbitMqQueueDeliveryMode"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportRabbitMqExchangeType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportRabbitMqExchangeDurable"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportRabbitMqExchangeAutoDelete"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportRabbitMqServerVirtualHost"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportRabbitMqFactoryHeartbeat"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportRabbitMqConnectionSslEnabled"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportRabbitMqConnectionSslKeystoreLocation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportRabbitMqConnectionSslKeystoreType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportRabbitMqConnectionSslKeystorePassword"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportRabbitMqConnectionSslTruststoreLocation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportRabbitMqConnectionSslTruststoreType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportRabbitMqConnectionSslTruststorePassword"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportRabbitMqConnectionSslVersion"/>
     </genClasses>
     <genClasses ecoreClass="esb.ecore#//InboundEndpointParameter">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpointParameter/name"/>

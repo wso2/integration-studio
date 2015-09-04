@@ -101,6 +101,9 @@ public class InboundEndpointDeserializer extends
 		} else if (InboundEndpointConstants.MQTT.equals(object.getProtocol())) {
 			executeSetValueCommand(INBOUND_ENDPOINT__TYPE, InboundEndpointType.MQTT);
 			updateParameters(object);
+		} else if (InboundEndpointConstants.RABBITMQ.equals(object.getProtocol())) {
+			executeSetValueCommand(INBOUND_ENDPOINT__TYPE, InboundEndpointType.RABBIT_MQ);
+			updateParameters(object);
 		}
 
 		// Creating Sequence mediator graphically
@@ -549,6 +552,70 @@ public class InboundEndpointDeserializer extends
 				executeSetValueCommand(INBOUND_ENDPOINT__OFFSETS_COMMIT_MAX_RETRIES, paramEntry.getValue());
 			} else if (paramEntry.getKey().equals(InboundEndpointConstants.DUAL_COMMIT_ENABLED)) {
 				executeSetValueCommand(INBOUND_ENDPOINT__DUAL_COMMIT_ENABLED, paramEntry.getValue());
+			}
+			
+			// RabbitMQ properties
+			else if (paramEntry.getKey().equals(InboundEndpointConstants.RABBITMQ_CONNECTION_FACTORY)) {
+				executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_FACTORY, paramEntry.getValue());
+			} else if (paramEntry.getKey().equals(InboundEndpointConstants.RABBITMQ_SERVER_HOST_NAME)) {
+				executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_HOST_NAME, paramEntry.getValue());
+			} else if (paramEntry.getKey().equals(InboundEndpointConstants.RABBITMQ_SERVER_PORT)) {
+				executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_PORT, paramEntry.getValue());
+			} else if (paramEntry.getKey().equals(InboundEndpointConstants.RABBITMQ_SERVER_USER_NAME)) {
+				executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_USER_NAME, paramEntry.getValue());
+			} else if (paramEntry.getKey().equals(InboundEndpointConstants.RABBITMQ_SERVER_PASSWORD)) {
+				executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_PASSWORD, paramEntry.getValue());
+			} else if (paramEntry.getKey().equals(InboundEndpointConstants.RABBITMQ_QUEUE_NAME)) {
+				executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_NAME, paramEntry.getValue());
+			} else if (paramEntry.getKey().equals(InboundEndpointConstants.RABBITMQ_EXCHANGE_NAME)) {
+				executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_EXCHANGE_NAME, paramEntry.getValue());
+			} else if (paramEntry.getKey().equals(InboundEndpointConstants.RABBITMQ_QUEUE_DURABLE)) {
+				executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_DURABLE, paramEntry.getValue());
+			} else if (paramEntry.getKey().equals(InboundEndpointConstants.RABBITMQ_QUEUE_EXCLUSIVE)) {
+				executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_EXCLUSIVE, paramEntry.getValue());
+			} else if (paramEntry.getKey().equals(InboundEndpointConstants.RABBITMQ_QUEUE_AUTO_DELETE)) {
+				executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_AUTO_DELETE, paramEntry.getValue());
+			} else if (paramEntry.getKey().equals(InboundEndpointConstants.RABBITMQ_QUEUE_AUTO_ACK)) {
+				executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_AUTO_ACK, paramEntry.getValue());
+			} else if (paramEntry.getKey().equals(InboundEndpointConstants.RABBITMQ_QUEUE_ROUTING_KEY)) {
+				executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_ROUTING_KEY, paramEntry.getValue());
+			} else if (paramEntry.getKey().equals(InboundEndpointConstants.RABBITMQ_QUEUE_DELIVERY_MODE)) {
+				executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_DELIVERY_MODE, paramEntry.getValue());
+			} else if (paramEntry.getKey().equals(InboundEndpointConstants.RABBITMQ_EXCHANGE_TYPE)) {
+				executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_EXCHANGE_TYPE, paramEntry.getValue());
+			} else if (paramEntry.getKey().equals(InboundEndpointConstants.RABBITMQ_EXCHANGE_DURABLE)) {
+				executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_EXCHANGE_DURABLE, paramEntry.getValue());
+			} else if (paramEntry.getKey().equals(InboundEndpointConstants.RABBITMQ_EXCHANGE_AUTO_DELETE)) {
+				executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_EXCHANGE_AUTO_DELETE,
+						paramEntry.getValue());
+			} else if (paramEntry.getKey().equals(InboundEndpointConstants.RABBITMQ_SERVER_VIRTUAL_HOST)) {
+				executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_VIRTUAL_HOST, paramEntry.getValue());
+			} else if (paramEntry.getKey().equals(InboundEndpointConstants.RABBITMQ_FACTORY_HEARTBEAT)) {
+				executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_FACTORY_HEARTBEAT, paramEntry.getValue());
+			} else if (paramEntry.getKey().equals(InboundEndpointConstants.RABBITMQ_CONNECTION_SSL_ENABLED)) {
+				executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_ENABLED,
+						paramEntry.getValue());
+			} else if (paramEntry.getKey().equals(InboundEndpointConstants.RABBITMQ_CONNECTION_SSL_KEYSTORE_LOCATION)) {
+				executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_KEYSTORE_LOCATION,
+						paramEntry.getValue());
+			} else if (paramEntry.getKey().equals(InboundEndpointConstants.RABBITMQ_CONNECTION_SSL_KEYSTORE_TYPE)) {
+				executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_KEYSTORE_TYPE,
+						paramEntry.getValue());
+			} else if (paramEntry.getKey().equals(InboundEndpointConstants.RABBITMQ_CONNECTION_SSL_KEYSTORE_PASSWORD)) {
+				executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_KEYSTORE_PASSWORD,
+						paramEntry.getValue());
+			} else if (paramEntry.getKey().equals(InboundEndpointConstants.RABBITMQ_CONNECTION_SSL_TRUSTSTORE_LOCATION)) {
+				executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_LOCATION,
+						paramEntry.getValue());
+			} else if (paramEntry.getKey().equals(InboundEndpointConstants.RABBITMQ_CONNECTION_SSL_TRUSTSTORE_TYPE)) {
+				executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_TYPE,
+						paramEntry.getValue());
+			} else if (paramEntry.getKey().equals(InboundEndpointConstants.RABBITMQ_CONNECTION_SSL_TRUSTSTORE_PASSWORD)) {
+				executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_PASSWORD,
+						paramEntry.getValue());
+			} else if (paramEntry.getKey().equals(InboundEndpointConstants.RABBITMQ_CONNECTION_SSL_VERSION)) {
+				executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_VERSION,
+						paramEntry.getValue());
 			}
 
 			else if (paramEntry.getKey().equals(InboundEndpointConstants.INBOUND_CXF_RM_HOST)) {

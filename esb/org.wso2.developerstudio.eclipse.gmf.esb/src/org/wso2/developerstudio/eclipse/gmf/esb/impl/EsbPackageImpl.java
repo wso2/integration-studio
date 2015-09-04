@@ -10796,6 +10796,240 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getInboundEndpoint_TransportRabbitMqConnectionFactory() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(137);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_TransportRabbitMqServerHostName() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(138);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_TransportRabbitMqServerPort() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(139);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_TransportRabbitMqServerUserName() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(140);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_TransportRabbitMqServerPassword() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(141);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_TransportRabbitMqQueueName() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(142);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_TransportRabbitMqExchangeName() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(143);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_TransportRabbitMqQueueDurable() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(144);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_TransportRabbitMqQueueExclusive() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(145);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_TransportRabbitMqQueueAutoDelete() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(146);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_TransportRabbitMqQueueAutoAck() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(147);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_TransportRabbitMqQueueRoutingKey() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(148);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_TransportRabbitMqQueueDeliveryMode() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(149);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_TransportRabbitMqExchangeType() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(150);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_TransportRabbitMqExchangeDurable() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(151);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_TransportRabbitMqExchangeAutoDelete() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(152);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_TransportRabbitMqServerVirtualHost() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(153);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_TransportRabbitMqFactoryHeartbeat() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(154);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_TransportRabbitMqConnectionSslEnabled() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(155);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_TransportRabbitMqConnectionSslKeystoreLocation() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(156);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_TransportRabbitMqConnectionSslKeystoreType() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(157);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_TransportRabbitMqConnectionSslKeystorePassword() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(158);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_TransportRabbitMqConnectionSslTruststoreLocation() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(159);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_TransportRabbitMqConnectionSslTruststoreType() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(160);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_TransportRabbitMqConnectionSslTruststorePassword() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(161);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_TransportRabbitMqConnectionSslVersion() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(162);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getInboundEndpointParameter() {
 		return inboundEndpointParameterEClass;
 	}
@@ -19848,6 +20082,32 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__ENABLE_SSL);
 		createEReference(inboundEndpointEClass, INBOUND_ENDPOINT__SERVICE_PARAMETERS);
 		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__SUSPEND);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_FACTORY);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_HOST_NAME);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_PORT);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_USER_NAME);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_PASSWORD);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_NAME);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_EXCHANGE_NAME);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_DURABLE);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_EXCLUSIVE);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_AUTO_DELETE);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_AUTO_ACK);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_ROUTING_KEY);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_DELIVERY_MODE);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_EXCHANGE_TYPE);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_EXCHANGE_DURABLE);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_EXCHANGE_AUTO_DELETE);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_VIRTUAL_HOST);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_FACTORY_HEARTBEAT);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_ENABLED);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_KEYSTORE_LOCATION);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_KEYSTORE_TYPE);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_KEYSTORE_PASSWORD);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_LOCATION);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_TYPE);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_PASSWORD);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_VERSION);
 
 		inboundEndpointParameterEClass = createEClass(INBOUND_ENDPOINT_PARAMETER);
 		createEAttribute(inboundEndpointParameterEClass, INBOUND_ENDPOINT_PARAMETER__NAME);
@@ -22162,6 +22422,32 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		initEAttribute(getInboundEndpoint_EnableSSL(), ecorePackage.getEBoolean(), "enableSSL", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getInboundEndpoint_ServiceParameters(), this.getInboundEndpointParameter(), null, "serviceParameters", null, 0, -1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getInboundEndpoint_Suspend(), ecorePackage.getEBoolean(), "suspend", "false", 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_TransportRabbitMqConnectionFactory(), ecorePackage.getEString(), "transportRabbitMqConnectionFactory", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_TransportRabbitMqServerHostName(), ecorePackage.getEString(), "transportRabbitMqServerHostName", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_TransportRabbitMqServerPort(), ecorePackage.getEString(), "transportRabbitMqServerPort", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_TransportRabbitMqServerUserName(), ecorePackage.getEString(), "transportRabbitMqServerUserName", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_TransportRabbitMqServerPassword(), ecorePackage.getEString(), "transportRabbitMqServerPassword", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_TransportRabbitMqQueueName(), ecorePackage.getEString(), "transportRabbitMqQueueName", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_TransportRabbitMqExchangeName(), ecorePackage.getEString(), "transportRabbitMqExchangeName", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_TransportRabbitMqQueueDurable(), ecorePackage.getEString(), "transportRabbitMqQueueDurable", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_TransportRabbitMqQueueExclusive(), ecorePackage.getEString(), "transportRabbitMqQueueExclusive", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_TransportRabbitMqQueueAutoDelete(), ecorePackage.getEString(), "transportRabbitMqQueueAutoDelete", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_TransportRabbitMqQueueAutoAck(), ecorePackage.getEString(), "transportRabbitMqQueueAutoAck", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_TransportRabbitMqQueueRoutingKey(), ecorePackage.getEString(), "transportRabbitMqQueueRoutingKey", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_TransportRabbitMqQueueDeliveryMode(), ecorePackage.getEString(), "transportRabbitMqQueueDeliveryMode", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_TransportRabbitMqExchangeType(), ecorePackage.getEString(), "transportRabbitMqExchangeType", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_TransportRabbitMqExchangeDurable(), ecorePackage.getEString(), "transportRabbitMqExchangeDurable", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_TransportRabbitMqExchangeAutoDelete(), ecorePackage.getEString(), "transportRabbitMqExchangeAutoDelete", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_TransportRabbitMqServerVirtualHost(), ecorePackage.getEString(), "transportRabbitMqServerVirtualHost", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_TransportRabbitMqFactoryHeartbeat(), ecorePackage.getEString(), "transportRabbitMqFactoryHeartbeat", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_TransportRabbitMqConnectionSslEnabled(), ecorePackage.getEString(), "transportRabbitMqConnectionSslEnabled", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_TransportRabbitMqConnectionSslKeystoreLocation(), ecorePackage.getEString(), "transportRabbitMqConnectionSslKeystoreLocation", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_TransportRabbitMqConnectionSslKeystoreType(), ecorePackage.getEString(), "transportRabbitMqConnectionSslKeystoreType", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_TransportRabbitMqConnectionSslKeystorePassword(), ecorePackage.getEString(), "transportRabbitMqConnectionSslKeystorePassword", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_TransportRabbitMqConnectionSslTruststoreLocation(), ecorePackage.getEString(), "transportRabbitMqConnectionSslTruststoreLocation", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_TransportRabbitMqConnectionSslTruststoreType(), ecorePackage.getEString(), "transportRabbitMqConnectionSslTruststoreType", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_TransportRabbitMqConnectionSslTruststorePassword(), ecorePackage.getEString(), "transportRabbitMqConnectionSslTruststorePassword", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_TransportRabbitMqConnectionSslVersion(), ecorePackage.getEString(), "transportRabbitMqConnectionSslVersion", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(inboundEndpointParameterEClass, InboundEndpointParameter.class, "InboundEndpointParameter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getInboundEndpointParameter_Name(), ecorePackage.getEString(), "name", "parameter_name", 0, 1, InboundEndpointParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -22771,6 +23057,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		addEEnumLiteral(inboundEndpointTypeEEnum, InboundEndpointType.KAFKA);
 		addEEnumLiteral(inboundEndpointTypeEEnum, InboundEndpointType.CXF_WS_RM);
 		addEEnumLiteral(inboundEndpointTypeEEnum, InboundEndpointType.MQTT);
+		addEEnumLiteral(inboundEndpointTypeEEnum, InboundEndpointType.RABBIT_MQ);
 
 		initEEnum(contentTypeEEnum, ContentType.class, "ContentType");
 		addEEnumLiteral(contentTypeEEnum, ContentType.XML);

@@ -2999,7 +2999,7 @@
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="transportRabbitMqQueueAutoAck"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="transportRabbitMqQueueRoutingKkey"
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="transportRabbitMqQueueRoutingKey"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="transportRabbitMqQueueDeliveryMode"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

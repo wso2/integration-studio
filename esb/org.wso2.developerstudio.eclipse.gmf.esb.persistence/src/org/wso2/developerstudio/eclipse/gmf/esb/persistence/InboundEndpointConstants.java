@@ -11,6 +11,7 @@ public class InboundEndpointConstants {
 	public static final String CUSTOM = "custom";
 	public static final String CXF_WS_RM = "cxf_ws_rm";
 	public static final String MQTT = "mqtt";
+	public static final String RABBITMQ = "rabbitmq";
 
 	public static final String TRUE = "true";
 	public static final String FALSE = "false";
@@ -170,4 +171,31 @@ public class InboundEndpointConstants {
 	public static final String INBOUND_MQTT_SUBSCRIPTION_PASSWORD = "mqtt.subscription.password";
 	public static final String INBOUND_MQTT_CLIENT_ID = "mqtt.client.id";
 	public static final String INBOUND_MQTT_RECONNECTION_INTERVAL = "mqtt.reconnection.interval";
+
+	public static final String RABBITMQ_CONNECTION_FACTORY = "rabbitmq.connection.factory";
+	public static final String RABBITMQ_SERVER_HOST_NAME = "rabbitmq.server.host.name";
+	public static final String RABBITMQ_SERVER_PORT = "rabbitmq.server.port";
+	public static final String RABBITMQ_SERVER_USER_NAME = "rabbitmq.server.user.name";
+	public static final String RABBITMQ_SERVER_PASSWORD = "rabbitmq.server.password";
+	public static final String RABBITMQ_QUEUE_NAME = "rabbitmq.queue.name";
+	public static final String RABBITMQ_EXCHANGE_NAME = "rabbitmq.exchange.name";
+	public static final String RABBITMQ_QUEUE_DURABLE = "rabbitmq.queue.durable";
+	public static final String RABBITMQ_QUEUE_EXCLUSIVE = "rabbitmq.queue.exclusive";
+	public static final String RABBITMQ_QUEUE_AUTO_DELETE = "rabbitmq.queue.auto.delete";
+	public static final String RABBITMQ_QUEUE_AUTO_ACK = "rabbitmq.queue.auto.ack";
+	public static final String RABBITMQ_QUEUE_ROUTING_KEY = "rabbitmq.queue.routing.key";
+	public static final String RABBITMQ_QUEUE_DELIVERY_MODE = "rabbitmq.queue.delivery.mode";
+	public static final String RABBITMQ_EXCHANGE_TYPE = "rabbitmq.exchange.type";
+	public static final String RABBITMQ_EXCHANGE_DURABLE = "rabbitmq.exchange.durable";
+	public static final String RABBITMQ_EXCHANGE_AUTO_DELETE = "rabbitmq.exchange.auto.delete";
+	public static final String RABBITMQ_SERVER_VIRTUAL_HOST = "rabbitmq.server.virtual.host";
+	public static final String RABBITMQ_FACTORY_HEARTBEAT = "rabbitmq.factory.heartbeat";
+	public static final String RABBITMQ_CONNECTION_SSL_ENABLED = "rabbitmq.connection.ssl.enabled";
+	public static final String RABBITMQ_CONNECTION_SSL_KEYSTORE_LOCATION = "rabbitmq.connection.ssl.keystore.location";
+	public static final String RABBITMQ_CONNECTION_SSL_KEYSTORE_TYPE = "rabbitmq.connection.ssl.keystore.type";
+	public static final String RABBITMQ_CONNECTION_SSL_KEYSTORE_PASSWORD = "rabbitmq.connection.ssl.keystore.password";
+	public static final String RABBITMQ_CONNECTION_SSL_TRUSTSTORE_LOCATION = "rabbitmq.connection.ssl.truststore.location";
+	public static final String RABBITMQ_CONNECTION_SSL_TRUSTSTORE_TYPE = "rabbitmq.connection.ssl.truststore.type";
+	public static final String RABBITMQ_CONNECTION_SSL_TRUSTSTORE_PASSWORD = "rabbitmq.connection.ssl.truststore.password";
+	public static final String RABBITMQ_CONNECTION_SSL_VERSION = "rabbitmq.connection.ssl.version";
 }

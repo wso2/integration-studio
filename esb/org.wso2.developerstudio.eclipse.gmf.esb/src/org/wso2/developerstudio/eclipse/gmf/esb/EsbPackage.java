@@ -23933,13 +23933,247 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	int INBOUND_ENDPOINT__SUSPEND = ESB_ELEMENT_FEATURE_COUNT + 136;
 
 	/**
+	 * The feature id for the '<em><b>Transport Rabbit Mq Connection Factory</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_FACTORY = ESB_ELEMENT_FEATURE_COUNT + 137;
+
+	/**
+	 * The feature id for the '<em><b>Transport Rabbit Mq Server Host Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_HOST_NAME = ESB_ELEMENT_FEATURE_COUNT + 138;
+
+	/**
+	 * The feature id for the '<em><b>Transport Rabbit Mq Server Port</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_PORT = ESB_ELEMENT_FEATURE_COUNT + 139;
+
+	/**
+	 * The feature id for the '<em><b>Transport Rabbit Mq Server User Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_USER_NAME = ESB_ELEMENT_FEATURE_COUNT + 140;
+
+	/**
+	 * The feature id for the '<em><b>Transport Rabbit Mq Server Password</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_PASSWORD = ESB_ELEMENT_FEATURE_COUNT + 141;
+
+	/**
+	 * The feature id for the '<em><b>Transport Rabbit Mq Queue Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_NAME = ESB_ELEMENT_FEATURE_COUNT + 142;
+
+	/**
+	 * The feature id for the '<em><b>Transport Rabbit Mq Exchange Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_EXCHANGE_NAME = ESB_ELEMENT_FEATURE_COUNT + 143;
+
+	/**
+	 * The feature id for the '<em><b>Transport Rabbit Mq Queue Durable</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_DURABLE = ESB_ELEMENT_FEATURE_COUNT + 144;
+
+	/**
+	 * The feature id for the '<em><b>Transport Rabbit Mq Queue Exclusive</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_EXCLUSIVE = ESB_ELEMENT_FEATURE_COUNT + 145;
+
+	/**
+	 * The feature id for the '<em><b>Transport Rabbit Mq Queue Auto Delete</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_AUTO_DELETE = ESB_ELEMENT_FEATURE_COUNT + 146;
+
+	/**
+	 * The feature id for the '<em><b>Transport Rabbit Mq Queue Auto Ack</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_AUTO_ACK = ESB_ELEMENT_FEATURE_COUNT + 147;
+
+	/**
+	 * The feature id for the '<em><b>Transport Rabbit Mq Queue Routing Key</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_ROUTING_KEY = ESB_ELEMENT_FEATURE_COUNT + 148;
+
+	/**
+	 * The feature id for the '<em><b>Transport Rabbit Mq Queue Delivery Mode</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_DELIVERY_MODE = ESB_ELEMENT_FEATURE_COUNT + 149;
+
+	/**
+	 * The feature id for the '<em><b>Transport Rabbit Mq Exchange Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_EXCHANGE_TYPE = ESB_ELEMENT_FEATURE_COUNT + 150;
+
+	/**
+	 * The feature id for the '<em><b>Transport Rabbit Mq Exchange Durable</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_EXCHANGE_DURABLE = ESB_ELEMENT_FEATURE_COUNT + 151;
+
+	/**
+	 * The feature id for the '<em><b>Transport Rabbit Mq Exchange Auto Delete</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_EXCHANGE_AUTO_DELETE = ESB_ELEMENT_FEATURE_COUNT + 152;
+
+	/**
+	 * The feature id for the '<em><b>Transport Rabbit Mq Server Virtual Host</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_VIRTUAL_HOST = ESB_ELEMENT_FEATURE_COUNT + 153;
+
+	/**
+	 * The feature id for the '<em><b>Transport Rabbit Mq Factory Heartbeat</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_FACTORY_HEARTBEAT = ESB_ELEMENT_FEATURE_COUNT + 154;
+
+	/**
+	 * The feature id for the '<em><b>Transport Rabbit Mq Connection Ssl Enabled</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_ENABLED = ESB_ELEMENT_FEATURE_COUNT + 155;
+
+	/**
+	 * The feature id for the '<em><b>Transport Rabbit Mq Connection Ssl Keystore Location</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_KEYSTORE_LOCATION = ESB_ELEMENT_FEATURE_COUNT + 156;
+
+	/**
+	 * The feature id for the '<em><b>Transport Rabbit Mq Connection Ssl Keystore Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_KEYSTORE_TYPE = ESB_ELEMENT_FEATURE_COUNT + 157;
+
+	/**
+	 * The feature id for the '<em><b>Transport Rabbit Mq Connection Ssl Keystore Password</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_KEYSTORE_PASSWORD = ESB_ELEMENT_FEATURE_COUNT + 158;
+
+	/**
+	 * The feature id for the '<em><b>Transport Rabbit Mq Connection Ssl Truststore Location</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_LOCATION = ESB_ELEMENT_FEATURE_COUNT + 159;
+
+	/**
+	 * The feature id for the '<em><b>Transport Rabbit Mq Connection Ssl Truststore Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_TYPE = ESB_ELEMENT_FEATURE_COUNT + 160;
+
+	/**
+	 * The feature id for the '<em><b>Transport Rabbit Mq Connection Ssl Truststore Password</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_PASSWORD = ESB_ELEMENT_FEATURE_COUNT + 161;
+
+	/**
+	 * The feature id for the '<em><b>Transport Rabbit Mq Connection Ssl Version</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_VERSION = ESB_ELEMENT_FEATURE_COUNT + 162;
+
+	/**
 	 * The number of structural features of the '<em>Inbound Endpoint</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INBOUND_ENDPOINT_FEATURE_COUNT = ESB_ELEMENT_FEATURE_COUNT + 137;
+	int INBOUND_ENDPOINT_FEATURE_COUNT = ESB_ELEMENT_FEATURE_COUNT + 163;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointParameterImpl <em>Inbound Endpoint Parameter</em>}' class.
@@ -33614,6 +33848,292 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 */
 	EAttribute getInboundEndpoint_Suspend();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqConnectionFactory <em>Transport Rabbit Mq Connection Factory</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Transport Rabbit Mq Connection Factory</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqConnectionFactory()
+	 * @see #getInboundEndpoint()
+	 * @generated
+	 */
+	EAttribute getInboundEndpoint_TransportRabbitMqConnectionFactory();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqServerHostName <em>Transport Rabbit Mq Server Host Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Transport Rabbit Mq Server Host Name</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqServerHostName()
+	 * @see #getInboundEndpoint()
+	 * @generated
+	 */
+	EAttribute getInboundEndpoint_TransportRabbitMqServerHostName();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqServerPort <em>Transport Rabbit Mq Server Port</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Transport Rabbit Mq Server Port</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqServerPort()
+	 * @see #getInboundEndpoint()
+	 * @generated
+	 */
+	EAttribute getInboundEndpoint_TransportRabbitMqServerPort();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqServerUserName <em>Transport Rabbit Mq Server User Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Transport Rabbit Mq Server User Name</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqServerUserName()
+	 * @see #getInboundEndpoint()
+	 * @generated
+	 */
+	EAttribute getInboundEndpoint_TransportRabbitMqServerUserName();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqServerPassword <em>Transport Rabbit Mq Server Password</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Transport Rabbit Mq Server Password</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqServerPassword()
+	 * @see #getInboundEndpoint()
+	 * @generated
+	 */
+	EAttribute getInboundEndpoint_TransportRabbitMqServerPassword();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqQueueName <em>Transport Rabbit Mq Queue Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Transport Rabbit Mq Queue Name</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqQueueName()
+	 * @see #getInboundEndpoint()
+	 * @generated
+	 */
+	EAttribute getInboundEndpoint_TransportRabbitMqQueueName();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqExchangeName <em>Transport Rabbit Mq Exchange Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Transport Rabbit Mq Exchange Name</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqExchangeName()
+	 * @see #getInboundEndpoint()
+	 * @generated
+	 */
+	EAttribute getInboundEndpoint_TransportRabbitMqExchangeName();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqQueueDurable <em>Transport Rabbit Mq Queue Durable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Transport Rabbit Mq Queue Durable</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqQueueDurable()
+	 * @see #getInboundEndpoint()
+	 * @generated
+	 */
+	EAttribute getInboundEndpoint_TransportRabbitMqQueueDurable();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqQueueExclusive <em>Transport Rabbit Mq Queue Exclusive</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Transport Rabbit Mq Queue Exclusive</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqQueueExclusive()
+	 * @see #getInboundEndpoint()
+	 * @generated
+	 */
+	EAttribute getInboundEndpoint_TransportRabbitMqQueueExclusive();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqQueueAutoDelete <em>Transport Rabbit Mq Queue Auto Delete</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Transport Rabbit Mq Queue Auto Delete</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqQueueAutoDelete()
+	 * @see #getInboundEndpoint()
+	 * @generated
+	 */
+	EAttribute getInboundEndpoint_TransportRabbitMqQueueAutoDelete();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqQueueAutoAck <em>Transport Rabbit Mq Queue Auto Ack</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Transport Rabbit Mq Queue Auto Ack</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqQueueAutoAck()
+	 * @see #getInboundEndpoint()
+	 * @generated
+	 */
+	EAttribute getInboundEndpoint_TransportRabbitMqQueueAutoAck();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqQueueRoutingKey <em>Transport Rabbit Mq Queue Routing Key</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Transport Rabbit Mq Queue Routing Key</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqQueueRoutingKey()
+	 * @see #getInboundEndpoint()
+	 * @generated
+	 */
+	EAttribute getInboundEndpoint_TransportRabbitMqQueueRoutingKey();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqQueueDeliveryMode <em>Transport Rabbit Mq Queue Delivery Mode</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Transport Rabbit Mq Queue Delivery Mode</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqQueueDeliveryMode()
+	 * @see #getInboundEndpoint()
+	 * @generated
+	 */
+	EAttribute getInboundEndpoint_TransportRabbitMqQueueDeliveryMode();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqExchangeType <em>Transport Rabbit Mq Exchange Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Transport Rabbit Mq Exchange Type</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqExchangeType()
+	 * @see #getInboundEndpoint()
+	 * @generated
+	 */
+	EAttribute getInboundEndpoint_TransportRabbitMqExchangeType();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqExchangeDurable <em>Transport Rabbit Mq Exchange Durable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Transport Rabbit Mq Exchange Durable</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqExchangeDurable()
+	 * @see #getInboundEndpoint()
+	 * @generated
+	 */
+	EAttribute getInboundEndpoint_TransportRabbitMqExchangeDurable();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqExchangeAutoDelete <em>Transport Rabbit Mq Exchange Auto Delete</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Transport Rabbit Mq Exchange Auto Delete</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqExchangeAutoDelete()
+	 * @see #getInboundEndpoint()
+	 * @generated
+	 */
+	EAttribute getInboundEndpoint_TransportRabbitMqExchangeAutoDelete();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqServerVirtualHost <em>Transport Rabbit Mq Server Virtual Host</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Transport Rabbit Mq Server Virtual Host</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqServerVirtualHost()
+	 * @see #getInboundEndpoint()
+	 * @generated
+	 */
+	EAttribute getInboundEndpoint_TransportRabbitMqServerVirtualHost();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqFactoryHeartbeat <em>Transport Rabbit Mq Factory Heartbeat</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Transport Rabbit Mq Factory Heartbeat</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqFactoryHeartbeat()
+	 * @see #getInboundEndpoint()
+	 * @generated
+	 */
+	EAttribute getInboundEndpoint_TransportRabbitMqFactoryHeartbeat();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqConnectionSslEnabled <em>Transport Rabbit Mq Connection Ssl Enabled</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Transport Rabbit Mq Connection Ssl Enabled</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqConnectionSslEnabled()
+	 * @see #getInboundEndpoint()
+	 * @generated
+	 */
+	EAttribute getInboundEndpoint_TransportRabbitMqConnectionSslEnabled();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqConnectionSslKeystoreLocation <em>Transport Rabbit Mq Connection Ssl Keystore Location</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Transport Rabbit Mq Connection Ssl Keystore Location</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqConnectionSslKeystoreLocation()
+	 * @see #getInboundEndpoint()
+	 * @generated
+	 */
+	EAttribute getInboundEndpoint_TransportRabbitMqConnectionSslKeystoreLocation();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqConnectionSslKeystoreType <em>Transport Rabbit Mq Connection Ssl Keystore Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Transport Rabbit Mq Connection Ssl Keystore Type</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqConnectionSslKeystoreType()
+	 * @see #getInboundEndpoint()
+	 * @generated
+	 */
+	EAttribute getInboundEndpoint_TransportRabbitMqConnectionSslKeystoreType();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqConnectionSslKeystorePassword <em>Transport Rabbit Mq Connection Ssl Keystore Password</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Transport Rabbit Mq Connection Ssl Keystore Password</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqConnectionSslKeystorePassword()
+	 * @see #getInboundEndpoint()
+	 * @generated
+	 */
+	EAttribute getInboundEndpoint_TransportRabbitMqConnectionSslKeystorePassword();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqConnectionSslTruststoreLocation <em>Transport Rabbit Mq Connection Ssl Truststore Location</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Transport Rabbit Mq Connection Ssl Truststore Location</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqConnectionSslTruststoreLocation()
+	 * @see #getInboundEndpoint()
+	 * @generated
+	 */
+	EAttribute getInboundEndpoint_TransportRabbitMqConnectionSslTruststoreLocation();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqConnectionSslTruststoreType <em>Transport Rabbit Mq Connection Ssl Truststore Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Transport Rabbit Mq Connection Ssl Truststore Type</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqConnectionSslTruststoreType()
+	 * @see #getInboundEndpoint()
+	 * @generated
+	 */
+	EAttribute getInboundEndpoint_TransportRabbitMqConnectionSslTruststoreType();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqConnectionSslTruststorePassword <em>Transport Rabbit Mq Connection Ssl Truststore Password</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Transport Rabbit Mq Connection Ssl Truststore Password</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqConnectionSslTruststorePassword()
+	 * @see #getInboundEndpoint()
+	 * @generated
+	 */
+	EAttribute getInboundEndpoint_TransportRabbitMqConnectionSslTruststorePassword();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqConnectionSslVersion <em>Transport Rabbit Mq Connection Ssl Version</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Transport Rabbit Mq Connection Ssl Version</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqConnectionSslVersion()
+	 * @see #getInboundEndpoint()
+	 * @generated
+	 */
+	EAttribute getInboundEndpoint_TransportRabbitMqConnectionSslVersion();
 
 	/**
 	 * Returns the meta object for class '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointParameter <em>Inbound Endpoint Parameter</em>}'.
@@ -48645,6 +49165,214 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 		 * @generated
 		 */
 		EAttribute INBOUND_ENDPOINT__SUSPEND = eINSTANCE.getInboundEndpoint_Suspend();
+
+		/**
+		 * The meta object literal for the '<em><b>Transport Rabbit Mq Connection Factory</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_FACTORY = eINSTANCE.getInboundEndpoint_TransportRabbitMqConnectionFactory();
+
+		/**
+		 * The meta object literal for the '<em><b>Transport Rabbit Mq Server Host Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_HOST_NAME = eINSTANCE.getInboundEndpoint_TransportRabbitMqServerHostName();
+
+		/**
+		 * The meta object literal for the '<em><b>Transport Rabbit Mq Server Port</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_PORT = eINSTANCE.getInboundEndpoint_TransportRabbitMqServerPort();
+
+		/**
+		 * The meta object literal for the '<em><b>Transport Rabbit Mq Server User Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_USER_NAME = eINSTANCE.getInboundEndpoint_TransportRabbitMqServerUserName();
+
+		/**
+		 * The meta object literal for the '<em><b>Transport Rabbit Mq Server Password</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_PASSWORD = eINSTANCE.getInboundEndpoint_TransportRabbitMqServerPassword();
+
+		/**
+		 * The meta object literal for the '<em><b>Transport Rabbit Mq Queue Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_NAME = eINSTANCE.getInboundEndpoint_TransportRabbitMqQueueName();
+
+		/**
+		 * The meta object literal for the '<em><b>Transport Rabbit Mq Exchange Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_EXCHANGE_NAME = eINSTANCE.getInboundEndpoint_TransportRabbitMqExchangeName();
+
+		/**
+		 * The meta object literal for the '<em><b>Transport Rabbit Mq Queue Durable</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_DURABLE = eINSTANCE.getInboundEndpoint_TransportRabbitMqQueueDurable();
+
+		/**
+		 * The meta object literal for the '<em><b>Transport Rabbit Mq Queue Exclusive</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_EXCLUSIVE = eINSTANCE.getInboundEndpoint_TransportRabbitMqQueueExclusive();
+
+		/**
+		 * The meta object literal for the '<em><b>Transport Rabbit Mq Queue Auto Delete</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_AUTO_DELETE = eINSTANCE.getInboundEndpoint_TransportRabbitMqQueueAutoDelete();
+
+		/**
+		 * The meta object literal for the '<em><b>Transport Rabbit Mq Queue Auto Ack</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_AUTO_ACK = eINSTANCE.getInboundEndpoint_TransportRabbitMqQueueAutoAck();
+
+		/**
+		 * The meta object literal for the '<em><b>Transport Rabbit Mq Queue Routing Key</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_ROUTING_KEY = eINSTANCE.getInboundEndpoint_TransportRabbitMqQueueRoutingKey();
+
+		/**
+		 * The meta object literal for the '<em><b>Transport Rabbit Mq Queue Delivery Mode</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_DELIVERY_MODE = eINSTANCE.getInboundEndpoint_TransportRabbitMqQueueDeliveryMode();
+
+		/**
+		 * The meta object literal for the '<em><b>Transport Rabbit Mq Exchange Type</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_EXCHANGE_TYPE = eINSTANCE.getInboundEndpoint_TransportRabbitMqExchangeType();
+
+		/**
+		 * The meta object literal for the '<em><b>Transport Rabbit Mq Exchange Durable</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_EXCHANGE_DURABLE = eINSTANCE.getInboundEndpoint_TransportRabbitMqExchangeDurable();
+
+		/**
+		 * The meta object literal for the '<em><b>Transport Rabbit Mq Exchange Auto Delete</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_EXCHANGE_AUTO_DELETE = eINSTANCE.getInboundEndpoint_TransportRabbitMqExchangeAutoDelete();
+
+		/**
+		 * The meta object literal for the '<em><b>Transport Rabbit Mq Server Virtual Host</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_VIRTUAL_HOST = eINSTANCE.getInboundEndpoint_TransportRabbitMqServerVirtualHost();
+
+		/**
+		 * The meta object literal for the '<em><b>Transport Rabbit Mq Factory Heartbeat</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_FACTORY_HEARTBEAT = eINSTANCE.getInboundEndpoint_TransportRabbitMqFactoryHeartbeat();
+
+		/**
+		 * The meta object literal for the '<em><b>Transport Rabbit Mq Connection Ssl Enabled</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_ENABLED = eINSTANCE.getInboundEndpoint_TransportRabbitMqConnectionSslEnabled();
+
+		/**
+		 * The meta object literal for the '<em><b>Transport Rabbit Mq Connection Ssl Keystore Location</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_KEYSTORE_LOCATION = eINSTANCE.getInboundEndpoint_TransportRabbitMqConnectionSslKeystoreLocation();
+
+		/**
+		 * The meta object literal for the '<em><b>Transport Rabbit Mq Connection Ssl Keystore Type</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_KEYSTORE_TYPE = eINSTANCE.getInboundEndpoint_TransportRabbitMqConnectionSslKeystoreType();
+
+		/**
+		 * The meta object literal for the '<em><b>Transport Rabbit Mq Connection Ssl Keystore Password</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_KEYSTORE_PASSWORD = eINSTANCE.getInboundEndpoint_TransportRabbitMqConnectionSslKeystorePassword();
+
+		/**
+		 * The meta object literal for the '<em><b>Transport Rabbit Mq Connection Ssl Truststore Location</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_LOCATION = eINSTANCE.getInboundEndpoint_TransportRabbitMqConnectionSslTruststoreLocation();
+
+		/**
+		 * The meta object literal for the '<em><b>Transport Rabbit Mq Connection Ssl Truststore Type</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_TYPE = eINSTANCE.getInboundEndpoint_TransportRabbitMqConnectionSslTruststoreType();
+
+		/**
+		 * The meta object literal for the '<em><b>Transport Rabbit Mq Connection Ssl Truststore Password</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_PASSWORD = eINSTANCE.getInboundEndpoint_TransportRabbitMqConnectionSslTruststorePassword();
+
+		/**
+		 * The meta object literal for the '<em><b>Transport Rabbit Mq Connection Ssl Version</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_VERSION = eINSTANCE.getInboundEndpoint_TransportRabbitMqConnectionSslVersion();
 
 		/**
 		 * The meta object literal for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointParameterImpl <em>Inbound Endpoint Parameter</em>}' class.

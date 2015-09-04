@@ -197,6 +197,32 @@ import org.wso2.developerstudio.eclipse.gmf.esb.VFSFileSort;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isEnableSSL <em>Enable SSL</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getServiceParameters <em>Service Parameters</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isSuspend <em>Suspend</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqConnectionFactory <em>Transport Rabbit Mq Connection Factory</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqServerHostName <em>Transport Rabbit Mq Server Host Name</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqServerPort <em>Transport Rabbit Mq Server Port</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqServerUserName <em>Transport Rabbit Mq Server User Name</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqServerPassword <em>Transport Rabbit Mq Server Password</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqQueueName <em>Transport Rabbit Mq Queue Name</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqExchangeName <em>Transport Rabbit Mq Exchange Name</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqQueueDurable <em>Transport Rabbit Mq Queue Durable</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqQueueExclusive <em>Transport Rabbit Mq Queue Exclusive</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqQueueAutoDelete <em>Transport Rabbit Mq Queue Auto Delete</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqQueueAutoAck <em>Transport Rabbit Mq Queue Auto Ack</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqQueueRoutingKey <em>Transport Rabbit Mq Queue Routing Key</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqQueueDeliveryMode <em>Transport Rabbit Mq Queue Delivery Mode</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqExchangeType <em>Transport Rabbit Mq Exchange Type</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqExchangeDurable <em>Transport Rabbit Mq Exchange Durable</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqExchangeAutoDelete <em>Transport Rabbit Mq Exchange Auto Delete</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqServerVirtualHost <em>Transport Rabbit Mq Server Virtual Host</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqFactoryHeartbeat <em>Transport Rabbit Mq Factory Heartbeat</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqConnectionSslEnabled <em>Transport Rabbit Mq Connection Ssl Enabled</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqConnectionSslKeystoreLocation <em>Transport Rabbit Mq Connection Ssl Keystore Location</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqConnectionSslKeystoreType <em>Transport Rabbit Mq Connection Ssl Keystore Type</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqConnectionSslKeystorePassword <em>Transport Rabbit Mq Connection Ssl Keystore Password</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqConnectionSslTruststoreLocation <em>Transport Rabbit Mq Connection Ssl Truststore Location</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqConnectionSslTruststoreType <em>Transport Rabbit Mq Connection Ssl Truststore Type</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqConnectionSslTruststorePassword <em>Transport Rabbit Mq Connection Ssl Truststore Password</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqConnectionSslVersion <em>Transport Rabbit Mq Connection Ssl Version</em>}</li>
  * </ul>
  * </p>
  *
@@ -2884,6 +2910,526 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	protected boolean suspend = SUSPEND_EDEFAULT;
 
 	/**
+	 * The default value of the '{@link #getTransportRabbitMqConnectionFactory() <em>Transport Rabbit Mq Connection Factory</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportRabbitMqConnectionFactory()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String TRANSPORT_RABBIT_MQ_CONNECTION_FACTORY_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getTransportRabbitMqConnectionFactory() <em>Transport Rabbit Mq Connection Factory</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportRabbitMqConnectionFactory()
+	 * @generated
+	 * @ordered
+	 */
+	protected String transportRabbitMqConnectionFactory = TRANSPORT_RABBIT_MQ_CONNECTION_FACTORY_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getTransportRabbitMqServerHostName() <em>Transport Rabbit Mq Server Host Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportRabbitMqServerHostName()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String TRANSPORT_RABBIT_MQ_SERVER_HOST_NAME_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getTransportRabbitMqServerHostName() <em>Transport Rabbit Mq Server Host Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportRabbitMqServerHostName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String transportRabbitMqServerHostName = TRANSPORT_RABBIT_MQ_SERVER_HOST_NAME_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getTransportRabbitMqServerPort() <em>Transport Rabbit Mq Server Port</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportRabbitMqServerPort()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String TRANSPORT_RABBIT_MQ_SERVER_PORT_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getTransportRabbitMqServerPort() <em>Transport Rabbit Mq Server Port</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportRabbitMqServerPort()
+	 * @generated
+	 * @ordered
+	 */
+	protected String transportRabbitMqServerPort = TRANSPORT_RABBIT_MQ_SERVER_PORT_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getTransportRabbitMqServerUserName() <em>Transport Rabbit Mq Server User Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportRabbitMqServerUserName()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String TRANSPORT_RABBIT_MQ_SERVER_USER_NAME_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getTransportRabbitMqServerUserName() <em>Transport Rabbit Mq Server User Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportRabbitMqServerUserName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String transportRabbitMqServerUserName = TRANSPORT_RABBIT_MQ_SERVER_USER_NAME_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getTransportRabbitMqServerPassword() <em>Transport Rabbit Mq Server Password</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportRabbitMqServerPassword()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String TRANSPORT_RABBIT_MQ_SERVER_PASSWORD_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getTransportRabbitMqServerPassword() <em>Transport Rabbit Mq Server Password</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportRabbitMqServerPassword()
+	 * @generated
+	 * @ordered
+	 */
+	protected String transportRabbitMqServerPassword = TRANSPORT_RABBIT_MQ_SERVER_PASSWORD_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getTransportRabbitMqQueueName() <em>Transport Rabbit Mq Queue Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportRabbitMqQueueName()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String TRANSPORT_RABBIT_MQ_QUEUE_NAME_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getTransportRabbitMqQueueName() <em>Transport Rabbit Mq Queue Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportRabbitMqQueueName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String transportRabbitMqQueueName = TRANSPORT_RABBIT_MQ_QUEUE_NAME_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getTransportRabbitMqExchangeName() <em>Transport Rabbit Mq Exchange Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportRabbitMqExchangeName()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String TRANSPORT_RABBIT_MQ_EXCHANGE_NAME_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getTransportRabbitMqExchangeName() <em>Transport Rabbit Mq Exchange Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportRabbitMqExchangeName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String transportRabbitMqExchangeName = TRANSPORT_RABBIT_MQ_EXCHANGE_NAME_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getTransportRabbitMqQueueDurable() <em>Transport Rabbit Mq Queue Durable</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportRabbitMqQueueDurable()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String TRANSPORT_RABBIT_MQ_QUEUE_DURABLE_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getTransportRabbitMqQueueDurable() <em>Transport Rabbit Mq Queue Durable</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportRabbitMqQueueDurable()
+	 * @generated
+	 * @ordered
+	 */
+	protected String transportRabbitMqQueueDurable = TRANSPORT_RABBIT_MQ_QUEUE_DURABLE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getTransportRabbitMqQueueExclusive() <em>Transport Rabbit Mq Queue Exclusive</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportRabbitMqQueueExclusive()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String TRANSPORT_RABBIT_MQ_QUEUE_EXCLUSIVE_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getTransportRabbitMqQueueExclusive() <em>Transport Rabbit Mq Queue Exclusive</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportRabbitMqQueueExclusive()
+	 * @generated
+	 * @ordered
+	 */
+	protected String transportRabbitMqQueueExclusive = TRANSPORT_RABBIT_MQ_QUEUE_EXCLUSIVE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getTransportRabbitMqQueueAutoDelete() <em>Transport Rabbit Mq Queue Auto Delete</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportRabbitMqQueueAutoDelete()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String TRANSPORT_RABBIT_MQ_QUEUE_AUTO_DELETE_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getTransportRabbitMqQueueAutoDelete() <em>Transport Rabbit Mq Queue Auto Delete</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportRabbitMqQueueAutoDelete()
+	 * @generated
+	 * @ordered
+	 */
+	protected String transportRabbitMqQueueAutoDelete = TRANSPORT_RABBIT_MQ_QUEUE_AUTO_DELETE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getTransportRabbitMqQueueAutoAck() <em>Transport Rabbit Mq Queue Auto Ack</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportRabbitMqQueueAutoAck()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String TRANSPORT_RABBIT_MQ_QUEUE_AUTO_ACK_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getTransportRabbitMqQueueAutoAck() <em>Transport Rabbit Mq Queue Auto Ack</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportRabbitMqQueueAutoAck()
+	 * @generated
+	 * @ordered
+	 */
+	protected String transportRabbitMqQueueAutoAck = TRANSPORT_RABBIT_MQ_QUEUE_AUTO_ACK_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getTransportRabbitMqQueueRoutingKey() <em>Transport Rabbit Mq Queue Routing Key</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportRabbitMqQueueRoutingKey()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String TRANSPORT_RABBIT_MQ_QUEUE_ROUTING_KEY_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getTransportRabbitMqQueueRoutingKey() <em>Transport Rabbit Mq Queue Routing Key</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportRabbitMqQueueRoutingKey()
+	 * @generated
+	 * @ordered
+	 */
+	protected String transportRabbitMqQueueRoutingKey = TRANSPORT_RABBIT_MQ_QUEUE_ROUTING_KEY_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getTransportRabbitMqQueueDeliveryMode() <em>Transport Rabbit Mq Queue Delivery Mode</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportRabbitMqQueueDeliveryMode()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String TRANSPORT_RABBIT_MQ_QUEUE_DELIVERY_MODE_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getTransportRabbitMqQueueDeliveryMode() <em>Transport Rabbit Mq Queue Delivery Mode</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportRabbitMqQueueDeliveryMode()
+	 * @generated
+	 * @ordered
+	 */
+	protected String transportRabbitMqQueueDeliveryMode = TRANSPORT_RABBIT_MQ_QUEUE_DELIVERY_MODE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getTransportRabbitMqExchangeType() <em>Transport Rabbit Mq Exchange Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportRabbitMqExchangeType()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String TRANSPORT_RABBIT_MQ_EXCHANGE_TYPE_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getTransportRabbitMqExchangeType() <em>Transport Rabbit Mq Exchange Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportRabbitMqExchangeType()
+	 * @generated
+	 * @ordered
+	 */
+	protected String transportRabbitMqExchangeType = TRANSPORT_RABBIT_MQ_EXCHANGE_TYPE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getTransportRabbitMqExchangeDurable() <em>Transport Rabbit Mq Exchange Durable</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportRabbitMqExchangeDurable()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String TRANSPORT_RABBIT_MQ_EXCHANGE_DURABLE_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getTransportRabbitMqExchangeDurable() <em>Transport Rabbit Mq Exchange Durable</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportRabbitMqExchangeDurable()
+	 * @generated
+	 * @ordered
+	 */
+	protected String transportRabbitMqExchangeDurable = TRANSPORT_RABBIT_MQ_EXCHANGE_DURABLE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getTransportRabbitMqExchangeAutoDelete() <em>Transport Rabbit Mq Exchange Auto Delete</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportRabbitMqExchangeAutoDelete()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String TRANSPORT_RABBIT_MQ_EXCHANGE_AUTO_DELETE_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getTransportRabbitMqExchangeAutoDelete() <em>Transport Rabbit Mq Exchange Auto Delete</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportRabbitMqExchangeAutoDelete()
+	 * @generated
+	 * @ordered
+	 */
+	protected String transportRabbitMqExchangeAutoDelete = TRANSPORT_RABBIT_MQ_EXCHANGE_AUTO_DELETE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getTransportRabbitMqServerVirtualHost() <em>Transport Rabbit Mq Server Virtual Host</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportRabbitMqServerVirtualHost()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String TRANSPORT_RABBIT_MQ_SERVER_VIRTUAL_HOST_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getTransportRabbitMqServerVirtualHost() <em>Transport Rabbit Mq Server Virtual Host</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportRabbitMqServerVirtualHost()
+	 * @generated
+	 * @ordered
+	 */
+	protected String transportRabbitMqServerVirtualHost = TRANSPORT_RABBIT_MQ_SERVER_VIRTUAL_HOST_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getTransportRabbitMqFactoryHeartbeat() <em>Transport Rabbit Mq Factory Heartbeat</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportRabbitMqFactoryHeartbeat()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String TRANSPORT_RABBIT_MQ_FACTORY_HEARTBEAT_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getTransportRabbitMqFactoryHeartbeat() <em>Transport Rabbit Mq Factory Heartbeat</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportRabbitMqFactoryHeartbeat()
+	 * @generated
+	 * @ordered
+	 */
+	protected String transportRabbitMqFactoryHeartbeat = TRANSPORT_RABBIT_MQ_FACTORY_HEARTBEAT_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getTransportRabbitMqConnectionSslEnabled() <em>Transport Rabbit Mq Connection Ssl Enabled</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportRabbitMqConnectionSslEnabled()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String TRANSPORT_RABBIT_MQ_CONNECTION_SSL_ENABLED_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getTransportRabbitMqConnectionSslEnabled() <em>Transport Rabbit Mq Connection Ssl Enabled</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportRabbitMqConnectionSslEnabled()
+	 * @generated
+	 * @ordered
+	 */
+	protected String transportRabbitMqConnectionSslEnabled = TRANSPORT_RABBIT_MQ_CONNECTION_SSL_ENABLED_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getTransportRabbitMqConnectionSslKeystoreLocation() <em>Transport Rabbit Mq Connection Ssl Keystore Location</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportRabbitMqConnectionSslKeystoreLocation()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String TRANSPORT_RABBIT_MQ_CONNECTION_SSL_KEYSTORE_LOCATION_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getTransportRabbitMqConnectionSslKeystoreLocation() <em>Transport Rabbit Mq Connection Ssl Keystore Location</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportRabbitMqConnectionSslKeystoreLocation()
+	 * @generated
+	 * @ordered
+	 */
+	protected String transportRabbitMqConnectionSslKeystoreLocation = TRANSPORT_RABBIT_MQ_CONNECTION_SSL_KEYSTORE_LOCATION_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getTransportRabbitMqConnectionSslKeystoreType() <em>Transport Rabbit Mq Connection Ssl Keystore Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportRabbitMqConnectionSslKeystoreType()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String TRANSPORT_RABBIT_MQ_CONNECTION_SSL_KEYSTORE_TYPE_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getTransportRabbitMqConnectionSslKeystoreType() <em>Transport Rabbit Mq Connection Ssl Keystore Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportRabbitMqConnectionSslKeystoreType()
+	 * @generated
+	 * @ordered
+	 */
+	protected String transportRabbitMqConnectionSslKeystoreType = TRANSPORT_RABBIT_MQ_CONNECTION_SSL_KEYSTORE_TYPE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getTransportRabbitMqConnectionSslKeystorePassword() <em>Transport Rabbit Mq Connection Ssl Keystore Password</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportRabbitMqConnectionSslKeystorePassword()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String TRANSPORT_RABBIT_MQ_CONNECTION_SSL_KEYSTORE_PASSWORD_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getTransportRabbitMqConnectionSslKeystorePassword() <em>Transport Rabbit Mq Connection Ssl Keystore Password</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportRabbitMqConnectionSslKeystorePassword()
+	 * @generated
+	 * @ordered
+	 */
+	protected String transportRabbitMqConnectionSslKeystorePassword = TRANSPORT_RABBIT_MQ_CONNECTION_SSL_KEYSTORE_PASSWORD_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getTransportRabbitMqConnectionSslTruststoreLocation() <em>Transport Rabbit Mq Connection Ssl Truststore Location</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportRabbitMqConnectionSslTruststoreLocation()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_LOCATION_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getTransportRabbitMqConnectionSslTruststoreLocation() <em>Transport Rabbit Mq Connection Ssl Truststore Location</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportRabbitMqConnectionSslTruststoreLocation()
+	 * @generated
+	 * @ordered
+	 */
+	protected String transportRabbitMqConnectionSslTruststoreLocation = TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_LOCATION_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getTransportRabbitMqConnectionSslTruststoreType() <em>Transport Rabbit Mq Connection Ssl Truststore Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportRabbitMqConnectionSslTruststoreType()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_TYPE_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getTransportRabbitMqConnectionSslTruststoreType() <em>Transport Rabbit Mq Connection Ssl Truststore Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportRabbitMqConnectionSslTruststoreType()
+	 * @generated
+	 * @ordered
+	 */
+	protected String transportRabbitMqConnectionSslTruststoreType = TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_TYPE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getTransportRabbitMqConnectionSslTruststorePassword() <em>Transport Rabbit Mq Connection Ssl Truststore Password</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportRabbitMqConnectionSslTruststorePassword()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_PASSWORD_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getTransportRabbitMqConnectionSslTruststorePassword() <em>Transport Rabbit Mq Connection Ssl Truststore Password</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportRabbitMqConnectionSslTruststorePassword()
+	 * @generated
+	 * @ordered
+	 */
+	protected String transportRabbitMqConnectionSslTruststorePassword = TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_PASSWORD_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getTransportRabbitMqConnectionSslVersion() <em>Transport Rabbit Mq Connection Ssl Version</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportRabbitMqConnectionSslVersion()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String TRANSPORT_RABBIT_MQ_CONNECTION_SSL_VERSION_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getTransportRabbitMqConnectionSslVersion() <em>Transport Rabbit Mq Connection Ssl Version</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportRabbitMqConnectionSslVersion()
+	 * @generated
+	 * @ordered
+	 */
+	protected String transportRabbitMqConnectionSslVersion = TRANSPORT_RABBIT_MQ_CONNECTION_SSL_VERSION_EDEFAULT;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -4282,6 +4828,552 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 		suspend = newSuspend;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__SUSPEND, oldSuspend, suspend));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getTransportRabbitMqConnectionFactory() {
+		return transportRabbitMqConnectionFactory;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTransportRabbitMqConnectionFactory(String newTransportRabbitMqConnectionFactory) {
+		String oldTransportRabbitMqConnectionFactory = transportRabbitMqConnectionFactory;
+		transportRabbitMqConnectionFactory = newTransportRabbitMqConnectionFactory;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_FACTORY, oldTransportRabbitMqConnectionFactory, transportRabbitMqConnectionFactory));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getTransportRabbitMqServerHostName() {
+		return transportRabbitMqServerHostName;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTransportRabbitMqServerHostName(String newTransportRabbitMqServerHostName) {
+		String oldTransportRabbitMqServerHostName = transportRabbitMqServerHostName;
+		transportRabbitMqServerHostName = newTransportRabbitMqServerHostName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_HOST_NAME, oldTransportRabbitMqServerHostName, transportRabbitMqServerHostName));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getTransportRabbitMqServerPort() {
+		return transportRabbitMqServerPort;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTransportRabbitMqServerPort(String newTransportRabbitMqServerPort) {
+		String oldTransportRabbitMqServerPort = transportRabbitMqServerPort;
+		transportRabbitMqServerPort = newTransportRabbitMqServerPort;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_PORT, oldTransportRabbitMqServerPort, transportRabbitMqServerPort));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getTransportRabbitMqServerUserName() {
+		return transportRabbitMqServerUserName;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTransportRabbitMqServerUserName(String newTransportRabbitMqServerUserName) {
+		String oldTransportRabbitMqServerUserName = transportRabbitMqServerUserName;
+		transportRabbitMqServerUserName = newTransportRabbitMqServerUserName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_USER_NAME, oldTransportRabbitMqServerUserName, transportRabbitMqServerUserName));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getTransportRabbitMqServerPassword() {
+		return transportRabbitMqServerPassword;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTransportRabbitMqServerPassword(String newTransportRabbitMqServerPassword) {
+		String oldTransportRabbitMqServerPassword = transportRabbitMqServerPassword;
+		transportRabbitMqServerPassword = newTransportRabbitMqServerPassword;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_PASSWORD, oldTransportRabbitMqServerPassword, transportRabbitMqServerPassword));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getTransportRabbitMqQueueName() {
+		return transportRabbitMqQueueName;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTransportRabbitMqQueueName(String newTransportRabbitMqQueueName) {
+		String oldTransportRabbitMqQueueName = transportRabbitMqQueueName;
+		transportRabbitMqQueueName = newTransportRabbitMqQueueName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_NAME, oldTransportRabbitMqQueueName, transportRabbitMqQueueName));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getTransportRabbitMqExchangeName() {
+		return transportRabbitMqExchangeName;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTransportRabbitMqExchangeName(String newTransportRabbitMqExchangeName) {
+		String oldTransportRabbitMqExchangeName = transportRabbitMqExchangeName;
+		transportRabbitMqExchangeName = newTransportRabbitMqExchangeName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_EXCHANGE_NAME, oldTransportRabbitMqExchangeName, transportRabbitMqExchangeName));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getTransportRabbitMqQueueDurable() {
+		return transportRabbitMqQueueDurable;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTransportRabbitMqQueueDurable(String newTransportRabbitMqQueueDurable) {
+		String oldTransportRabbitMqQueueDurable = transportRabbitMqQueueDurable;
+		transportRabbitMqQueueDurable = newTransportRabbitMqQueueDurable;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_DURABLE, oldTransportRabbitMqQueueDurable, transportRabbitMqQueueDurable));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getTransportRabbitMqQueueExclusive() {
+		return transportRabbitMqQueueExclusive;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTransportRabbitMqQueueExclusive(String newTransportRabbitMqQueueExclusive) {
+		String oldTransportRabbitMqQueueExclusive = transportRabbitMqQueueExclusive;
+		transportRabbitMqQueueExclusive = newTransportRabbitMqQueueExclusive;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_EXCLUSIVE, oldTransportRabbitMqQueueExclusive, transportRabbitMqQueueExclusive));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getTransportRabbitMqQueueAutoDelete() {
+		return transportRabbitMqQueueAutoDelete;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTransportRabbitMqQueueAutoDelete(String newTransportRabbitMqQueueAutoDelete) {
+		String oldTransportRabbitMqQueueAutoDelete = transportRabbitMqQueueAutoDelete;
+		transportRabbitMqQueueAutoDelete = newTransportRabbitMqQueueAutoDelete;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_AUTO_DELETE, oldTransportRabbitMqQueueAutoDelete, transportRabbitMqQueueAutoDelete));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getTransportRabbitMqQueueAutoAck() {
+		return transportRabbitMqQueueAutoAck;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTransportRabbitMqQueueAutoAck(String newTransportRabbitMqQueueAutoAck) {
+		String oldTransportRabbitMqQueueAutoAck = transportRabbitMqQueueAutoAck;
+		transportRabbitMqQueueAutoAck = newTransportRabbitMqQueueAutoAck;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_AUTO_ACK, oldTransportRabbitMqQueueAutoAck, transportRabbitMqQueueAutoAck));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getTransportRabbitMqQueueRoutingKey() {
+		return transportRabbitMqQueueRoutingKey;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTransportRabbitMqQueueRoutingKey(String newTransportRabbitMqQueueRoutingKey) {
+		String oldTransportRabbitMqQueueRoutingKey = transportRabbitMqQueueRoutingKey;
+		transportRabbitMqQueueRoutingKey = newTransportRabbitMqQueueRoutingKey;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_ROUTING_KEY, oldTransportRabbitMqQueueRoutingKey, transportRabbitMqQueueRoutingKey));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getTransportRabbitMqQueueDeliveryMode() {
+		return transportRabbitMqQueueDeliveryMode;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTransportRabbitMqQueueDeliveryMode(String newTransportRabbitMqQueueDeliveryMode) {
+		String oldTransportRabbitMqQueueDeliveryMode = transportRabbitMqQueueDeliveryMode;
+		transportRabbitMqQueueDeliveryMode = newTransportRabbitMqQueueDeliveryMode;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_DELIVERY_MODE, oldTransportRabbitMqQueueDeliveryMode, transportRabbitMqQueueDeliveryMode));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getTransportRabbitMqExchangeType() {
+		return transportRabbitMqExchangeType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTransportRabbitMqExchangeType(String newTransportRabbitMqExchangeType) {
+		String oldTransportRabbitMqExchangeType = transportRabbitMqExchangeType;
+		transportRabbitMqExchangeType = newTransportRabbitMqExchangeType;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_EXCHANGE_TYPE, oldTransportRabbitMqExchangeType, transportRabbitMqExchangeType));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getTransportRabbitMqExchangeDurable() {
+		return transportRabbitMqExchangeDurable;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTransportRabbitMqExchangeDurable(String newTransportRabbitMqExchangeDurable) {
+		String oldTransportRabbitMqExchangeDurable = transportRabbitMqExchangeDurable;
+		transportRabbitMqExchangeDurable = newTransportRabbitMqExchangeDurable;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_EXCHANGE_DURABLE, oldTransportRabbitMqExchangeDurable, transportRabbitMqExchangeDurable));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getTransportRabbitMqExchangeAutoDelete() {
+		return transportRabbitMqExchangeAutoDelete;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTransportRabbitMqExchangeAutoDelete(String newTransportRabbitMqExchangeAutoDelete) {
+		String oldTransportRabbitMqExchangeAutoDelete = transportRabbitMqExchangeAutoDelete;
+		transportRabbitMqExchangeAutoDelete = newTransportRabbitMqExchangeAutoDelete;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_EXCHANGE_AUTO_DELETE, oldTransportRabbitMqExchangeAutoDelete, transportRabbitMqExchangeAutoDelete));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getTransportRabbitMqServerVirtualHost() {
+		return transportRabbitMqServerVirtualHost;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTransportRabbitMqServerVirtualHost(String newTransportRabbitMqServerVirtualHost) {
+		String oldTransportRabbitMqServerVirtualHost = transportRabbitMqServerVirtualHost;
+		transportRabbitMqServerVirtualHost = newTransportRabbitMqServerVirtualHost;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_VIRTUAL_HOST, oldTransportRabbitMqServerVirtualHost, transportRabbitMqServerVirtualHost));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getTransportRabbitMqFactoryHeartbeat() {
+		return transportRabbitMqFactoryHeartbeat;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTransportRabbitMqFactoryHeartbeat(String newTransportRabbitMqFactoryHeartbeat) {
+		String oldTransportRabbitMqFactoryHeartbeat = transportRabbitMqFactoryHeartbeat;
+		transportRabbitMqFactoryHeartbeat = newTransportRabbitMqFactoryHeartbeat;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_FACTORY_HEARTBEAT, oldTransportRabbitMqFactoryHeartbeat, transportRabbitMqFactoryHeartbeat));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getTransportRabbitMqConnectionSslEnabled() {
+		return transportRabbitMqConnectionSslEnabled;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTransportRabbitMqConnectionSslEnabled(String newTransportRabbitMqConnectionSslEnabled) {
+		String oldTransportRabbitMqConnectionSslEnabled = transportRabbitMqConnectionSslEnabled;
+		transportRabbitMqConnectionSslEnabled = newTransportRabbitMqConnectionSslEnabled;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_ENABLED, oldTransportRabbitMqConnectionSslEnabled, transportRabbitMqConnectionSslEnabled));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getTransportRabbitMqConnectionSslKeystoreLocation() {
+		return transportRabbitMqConnectionSslKeystoreLocation;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTransportRabbitMqConnectionSslKeystoreLocation(String newTransportRabbitMqConnectionSslKeystoreLocation) {
+		String oldTransportRabbitMqConnectionSslKeystoreLocation = transportRabbitMqConnectionSslKeystoreLocation;
+		transportRabbitMqConnectionSslKeystoreLocation = newTransportRabbitMqConnectionSslKeystoreLocation;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_KEYSTORE_LOCATION, oldTransportRabbitMqConnectionSslKeystoreLocation, transportRabbitMqConnectionSslKeystoreLocation));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getTransportRabbitMqConnectionSslKeystoreType() {
+		return transportRabbitMqConnectionSslKeystoreType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTransportRabbitMqConnectionSslKeystoreType(String newTransportRabbitMqConnectionSslKeystoreType) {
+		String oldTransportRabbitMqConnectionSslKeystoreType = transportRabbitMqConnectionSslKeystoreType;
+		transportRabbitMqConnectionSslKeystoreType = newTransportRabbitMqConnectionSslKeystoreType;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_KEYSTORE_TYPE, oldTransportRabbitMqConnectionSslKeystoreType, transportRabbitMqConnectionSslKeystoreType));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getTransportRabbitMqConnectionSslKeystorePassword() {
+		return transportRabbitMqConnectionSslKeystorePassword;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTransportRabbitMqConnectionSslKeystorePassword(String newTransportRabbitMqConnectionSslKeystorePassword) {
+		String oldTransportRabbitMqConnectionSslKeystorePassword = transportRabbitMqConnectionSslKeystorePassword;
+		transportRabbitMqConnectionSslKeystorePassword = newTransportRabbitMqConnectionSslKeystorePassword;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_KEYSTORE_PASSWORD, oldTransportRabbitMqConnectionSslKeystorePassword, transportRabbitMqConnectionSslKeystorePassword));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getTransportRabbitMqConnectionSslTruststoreLocation() {
+		return transportRabbitMqConnectionSslTruststoreLocation;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTransportRabbitMqConnectionSslTruststoreLocation(String newTransportRabbitMqConnectionSslTruststoreLocation) {
+		String oldTransportRabbitMqConnectionSslTruststoreLocation = transportRabbitMqConnectionSslTruststoreLocation;
+		transportRabbitMqConnectionSslTruststoreLocation = newTransportRabbitMqConnectionSslTruststoreLocation;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_LOCATION, oldTransportRabbitMqConnectionSslTruststoreLocation, transportRabbitMqConnectionSslTruststoreLocation));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getTransportRabbitMqConnectionSslTruststoreType() {
+		return transportRabbitMqConnectionSslTruststoreType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTransportRabbitMqConnectionSslTruststoreType(String newTransportRabbitMqConnectionSslTruststoreType) {
+		String oldTransportRabbitMqConnectionSslTruststoreType = transportRabbitMqConnectionSslTruststoreType;
+		transportRabbitMqConnectionSslTruststoreType = newTransportRabbitMqConnectionSslTruststoreType;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_TYPE, oldTransportRabbitMqConnectionSslTruststoreType, transportRabbitMqConnectionSslTruststoreType));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getTransportRabbitMqConnectionSslTruststorePassword() {
+		return transportRabbitMqConnectionSslTruststorePassword;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTransportRabbitMqConnectionSslTruststorePassword(String newTransportRabbitMqConnectionSslTruststorePassword) {
+		String oldTransportRabbitMqConnectionSslTruststorePassword = transportRabbitMqConnectionSslTruststorePassword;
+		transportRabbitMqConnectionSslTruststorePassword = newTransportRabbitMqConnectionSslTruststorePassword;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_PASSWORD, oldTransportRabbitMqConnectionSslTruststorePassword, transportRabbitMqConnectionSslTruststorePassword));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getTransportRabbitMqConnectionSslVersion() {
+		return transportRabbitMqConnectionSslVersion;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTransportRabbitMqConnectionSslVersion(String newTransportRabbitMqConnectionSslVersion) {
+		String oldTransportRabbitMqConnectionSslVersion = transportRabbitMqConnectionSslVersion;
+		transportRabbitMqConnectionSslVersion = newTransportRabbitMqConnectionSslVersion;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_VERSION, oldTransportRabbitMqConnectionSslVersion, transportRabbitMqConnectionSslVersion));
 	}
 
 	/**
@@ -6186,6 +7278,58 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 				return getServiceParameters();
 			case EsbPackage.INBOUND_ENDPOINT__SUSPEND:
 				return isSuspend();
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_FACTORY:
+				return getTransportRabbitMqConnectionFactory();
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_HOST_NAME:
+				return getTransportRabbitMqServerHostName();
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_PORT:
+				return getTransportRabbitMqServerPort();
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_USER_NAME:
+				return getTransportRabbitMqServerUserName();
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_PASSWORD:
+				return getTransportRabbitMqServerPassword();
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_NAME:
+				return getTransportRabbitMqQueueName();
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_EXCHANGE_NAME:
+				return getTransportRabbitMqExchangeName();
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_DURABLE:
+				return getTransportRabbitMqQueueDurable();
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_EXCLUSIVE:
+				return getTransportRabbitMqQueueExclusive();
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_AUTO_DELETE:
+				return getTransportRabbitMqQueueAutoDelete();
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_AUTO_ACK:
+				return getTransportRabbitMqQueueAutoAck();
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_ROUTING_KEY:
+				return getTransportRabbitMqQueueRoutingKey();
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_DELIVERY_MODE:
+				return getTransportRabbitMqQueueDeliveryMode();
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_EXCHANGE_TYPE:
+				return getTransportRabbitMqExchangeType();
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_EXCHANGE_DURABLE:
+				return getTransportRabbitMqExchangeDurable();
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_EXCHANGE_AUTO_DELETE:
+				return getTransportRabbitMqExchangeAutoDelete();
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_VIRTUAL_HOST:
+				return getTransportRabbitMqServerVirtualHost();
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_FACTORY_HEARTBEAT:
+				return getTransportRabbitMqFactoryHeartbeat();
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_ENABLED:
+				return getTransportRabbitMqConnectionSslEnabled();
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_KEYSTORE_LOCATION:
+				return getTransportRabbitMqConnectionSslKeystoreLocation();
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_KEYSTORE_TYPE:
+				return getTransportRabbitMqConnectionSslKeystoreType();
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_KEYSTORE_PASSWORD:
+				return getTransportRabbitMqConnectionSslKeystorePassword();
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_LOCATION:
+				return getTransportRabbitMqConnectionSslTruststoreLocation();
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_TYPE:
+				return getTransportRabbitMqConnectionSslTruststoreType();
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_PASSWORD:
+				return getTransportRabbitMqConnectionSslTruststorePassword();
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_VERSION:
+				return getTransportRabbitMqConnectionSslVersion();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -6611,6 +7755,84 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 			case EsbPackage.INBOUND_ENDPOINT__SUSPEND:
 				setSuspend((Boolean)newValue);
 				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_FACTORY:
+				setTransportRabbitMqConnectionFactory((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_HOST_NAME:
+				setTransportRabbitMqServerHostName((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_PORT:
+				setTransportRabbitMqServerPort((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_USER_NAME:
+				setTransportRabbitMqServerUserName((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_PASSWORD:
+				setTransportRabbitMqServerPassword((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_NAME:
+				setTransportRabbitMqQueueName((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_EXCHANGE_NAME:
+				setTransportRabbitMqExchangeName((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_DURABLE:
+				setTransportRabbitMqQueueDurable((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_EXCLUSIVE:
+				setTransportRabbitMqQueueExclusive((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_AUTO_DELETE:
+				setTransportRabbitMqQueueAutoDelete((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_AUTO_ACK:
+				setTransportRabbitMqQueueAutoAck((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_ROUTING_KEY:
+				setTransportRabbitMqQueueRoutingKey((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_DELIVERY_MODE:
+				setTransportRabbitMqQueueDeliveryMode((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_EXCHANGE_TYPE:
+				setTransportRabbitMqExchangeType((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_EXCHANGE_DURABLE:
+				setTransportRabbitMqExchangeDurable((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_EXCHANGE_AUTO_DELETE:
+				setTransportRabbitMqExchangeAutoDelete((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_VIRTUAL_HOST:
+				setTransportRabbitMqServerVirtualHost((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_FACTORY_HEARTBEAT:
+				setTransportRabbitMqFactoryHeartbeat((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_ENABLED:
+				setTransportRabbitMqConnectionSslEnabled((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_KEYSTORE_LOCATION:
+				setTransportRabbitMqConnectionSslKeystoreLocation((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_KEYSTORE_TYPE:
+				setTransportRabbitMqConnectionSslKeystoreType((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_KEYSTORE_PASSWORD:
+				setTransportRabbitMqConnectionSslKeystorePassword((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_LOCATION:
+				setTransportRabbitMqConnectionSslTruststoreLocation((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_TYPE:
+				setTransportRabbitMqConnectionSslTruststoreType((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_PASSWORD:
+				setTransportRabbitMqConnectionSslTruststorePassword((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_VERSION:
+				setTransportRabbitMqConnectionSslVersion((String)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -7034,6 +8256,84 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 			case EsbPackage.INBOUND_ENDPOINT__SUSPEND:
 				setSuspend(SUSPEND_EDEFAULT);
 				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_FACTORY:
+				setTransportRabbitMqConnectionFactory(TRANSPORT_RABBIT_MQ_CONNECTION_FACTORY_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_HOST_NAME:
+				setTransportRabbitMqServerHostName(TRANSPORT_RABBIT_MQ_SERVER_HOST_NAME_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_PORT:
+				setTransportRabbitMqServerPort(TRANSPORT_RABBIT_MQ_SERVER_PORT_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_USER_NAME:
+				setTransportRabbitMqServerUserName(TRANSPORT_RABBIT_MQ_SERVER_USER_NAME_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_PASSWORD:
+				setTransportRabbitMqServerPassword(TRANSPORT_RABBIT_MQ_SERVER_PASSWORD_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_NAME:
+				setTransportRabbitMqQueueName(TRANSPORT_RABBIT_MQ_QUEUE_NAME_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_EXCHANGE_NAME:
+				setTransportRabbitMqExchangeName(TRANSPORT_RABBIT_MQ_EXCHANGE_NAME_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_DURABLE:
+				setTransportRabbitMqQueueDurable(TRANSPORT_RABBIT_MQ_QUEUE_DURABLE_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_EXCLUSIVE:
+				setTransportRabbitMqQueueExclusive(TRANSPORT_RABBIT_MQ_QUEUE_EXCLUSIVE_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_AUTO_DELETE:
+				setTransportRabbitMqQueueAutoDelete(TRANSPORT_RABBIT_MQ_QUEUE_AUTO_DELETE_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_AUTO_ACK:
+				setTransportRabbitMqQueueAutoAck(TRANSPORT_RABBIT_MQ_QUEUE_AUTO_ACK_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_ROUTING_KEY:
+				setTransportRabbitMqQueueRoutingKey(TRANSPORT_RABBIT_MQ_QUEUE_ROUTING_KEY_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_DELIVERY_MODE:
+				setTransportRabbitMqQueueDeliveryMode(TRANSPORT_RABBIT_MQ_QUEUE_DELIVERY_MODE_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_EXCHANGE_TYPE:
+				setTransportRabbitMqExchangeType(TRANSPORT_RABBIT_MQ_EXCHANGE_TYPE_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_EXCHANGE_DURABLE:
+				setTransportRabbitMqExchangeDurable(TRANSPORT_RABBIT_MQ_EXCHANGE_DURABLE_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_EXCHANGE_AUTO_DELETE:
+				setTransportRabbitMqExchangeAutoDelete(TRANSPORT_RABBIT_MQ_EXCHANGE_AUTO_DELETE_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_VIRTUAL_HOST:
+				setTransportRabbitMqServerVirtualHost(TRANSPORT_RABBIT_MQ_SERVER_VIRTUAL_HOST_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_FACTORY_HEARTBEAT:
+				setTransportRabbitMqFactoryHeartbeat(TRANSPORT_RABBIT_MQ_FACTORY_HEARTBEAT_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_ENABLED:
+				setTransportRabbitMqConnectionSslEnabled(TRANSPORT_RABBIT_MQ_CONNECTION_SSL_ENABLED_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_KEYSTORE_LOCATION:
+				setTransportRabbitMqConnectionSslKeystoreLocation(TRANSPORT_RABBIT_MQ_CONNECTION_SSL_KEYSTORE_LOCATION_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_KEYSTORE_TYPE:
+				setTransportRabbitMqConnectionSslKeystoreType(TRANSPORT_RABBIT_MQ_CONNECTION_SSL_KEYSTORE_TYPE_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_KEYSTORE_PASSWORD:
+				setTransportRabbitMqConnectionSslKeystorePassword(TRANSPORT_RABBIT_MQ_CONNECTION_SSL_KEYSTORE_PASSWORD_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_LOCATION:
+				setTransportRabbitMqConnectionSslTruststoreLocation(TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_LOCATION_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_TYPE:
+				setTransportRabbitMqConnectionSslTruststoreType(TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_TYPE_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_PASSWORD:
+				setTransportRabbitMqConnectionSslTruststorePassword(TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_PASSWORD_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_VERSION:
+				setTransportRabbitMqConnectionSslVersion(TRANSPORT_RABBIT_MQ_CONNECTION_SSL_VERSION_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -7320,6 +8620,58 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 				return serviceParameters != null && !serviceParameters.isEmpty();
 			case EsbPackage.INBOUND_ENDPOINT__SUSPEND:
 				return suspend != SUSPEND_EDEFAULT;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_FACTORY:
+				return TRANSPORT_RABBIT_MQ_CONNECTION_FACTORY_EDEFAULT == null ? transportRabbitMqConnectionFactory != null : !TRANSPORT_RABBIT_MQ_CONNECTION_FACTORY_EDEFAULT.equals(transportRabbitMqConnectionFactory);
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_HOST_NAME:
+				return TRANSPORT_RABBIT_MQ_SERVER_HOST_NAME_EDEFAULT == null ? transportRabbitMqServerHostName != null : !TRANSPORT_RABBIT_MQ_SERVER_HOST_NAME_EDEFAULT.equals(transportRabbitMqServerHostName);
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_PORT:
+				return TRANSPORT_RABBIT_MQ_SERVER_PORT_EDEFAULT == null ? transportRabbitMqServerPort != null : !TRANSPORT_RABBIT_MQ_SERVER_PORT_EDEFAULT.equals(transportRabbitMqServerPort);
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_USER_NAME:
+				return TRANSPORT_RABBIT_MQ_SERVER_USER_NAME_EDEFAULT == null ? transportRabbitMqServerUserName != null : !TRANSPORT_RABBIT_MQ_SERVER_USER_NAME_EDEFAULT.equals(transportRabbitMqServerUserName);
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_PASSWORD:
+				return TRANSPORT_RABBIT_MQ_SERVER_PASSWORD_EDEFAULT == null ? transportRabbitMqServerPassword != null : !TRANSPORT_RABBIT_MQ_SERVER_PASSWORD_EDEFAULT.equals(transportRabbitMqServerPassword);
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_NAME:
+				return TRANSPORT_RABBIT_MQ_QUEUE_NAME_EDEFAULT == null ? transportRabbitMqQueueName != null : !TRANSPORT_RABBIT_MQ_QUEUE_NAME_EDEFAULT.equals(transportRabbitMqQueueName);
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_EXCHANGE_NAME:
+				return TRANSPORT_RABBIT_MQ_EXCHANGE_NAME_EDEFAULT == null ? transportRabbitMqExchangeName != null : !TRANSPORT_RABBIT_MQ_EXCHANGE_NAME_EDEFAULT.equals(transportRabbitMqExchangeName);
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_DURABLE:
+				return TRANSPORT_RABBIT_MQ_QUEUE_DURABLE_EDEFAULT == null ? transportRabbitMqQueueDurable != null : !TRANSPORT_RABBIT_MQ_QUEUE_DURABLE_EDEFAULT.equals(transportRabbitMqQueueDurable);
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_EXCLUSIVE:
+				return TRANSPORT_RABBIT_MQ_QUEUE_EXCLUSIVE_EDEFAULT == null ? transportRabbitMqQueueExclusive != null : !TRANSPORT_RABBIT_MQ_QUEUE_EXCLUSIVE_EDEFAULT.equals(transportRabbitMqQueueExclusive);
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_AUTO_DELETE:
+				return TRANSPORT_RABBIT_MQ_QUEUE_AUTO_DELETE_EDEFAULT == null ? transportRabbitMqQueueAutoDelete != null : !TRANSPORT_RABBIT_MQ_QUEUE_AUTO_DELETE_EDEFAULT.equals(transportRabbitMqQueueAutoDelete);
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_AUTO_ACK:
+				return TRANSPORT_RABBIT_MQ_QUEUE_AUTO_ACK_EDEFAULT == null ? transportRabbitMqQueueAutoAck != null : !TRANSPORT_RABBIT_MQ_QUEUE_AUTO_ACK_EDEFAULT.equals(transportRabbitMqQueueAutoAck);
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_ROUTING_KEY:
+				return TRANSPORT_RABBIT_MQ_QUEUE_ROUTING_KEY_EDEFAULT == null ? transportRabbitMqQueueRoutingKey != null : !TRANSPORT_RABBIT_MQ_QUEUE_ROUTING_KEY_EDEFAULT.equals(transportRabbitMqQueueRoutingKey);
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_DELIVERY_MODE:
+				return TRANSPORT_RABBIT_MQ_QUEUE_DELIVERY_MODE_EDEFAULT == null ? transportRabbitMqQueueDeliveryMode != null : !TRANSPORT_RABBIT_MQ_QUEUE_DELIVERY_MODE_EDEFAULT.equals(transportRabbitMqQueueDeliveryMode);
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_EXCHANGE_TYPE:
+				return TRANSPORT_RABBIT_MQ_EXCHANGE_TYPE_EDEFAULT == null ? transportRabbitMqExchangeType != null : !TRANSPORT_RABBIT_MQ_EXCHANGE_TYPE_EDEFAULT.equals(transportRabbitMqExchangeType);
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_EXCHANGE_DURABLE:
+				return TRANSPORT_RABBIT_MQ_EXCHANGE_DURABLE_EDEFAULT == null ? transportRabbitMqExchangeDurable != null : !TRANSPORT_RABBIT_MQ_EXCHANGE_DURABLE_EDEFAULT.equals(transportRabbitMqExchangeDurable);
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_EXCHANGE_AUTO_DELETE:
+				return TRANSPORT_RABBIT_MQ_EXCHANGE_AUTO_DELETE_EDEFAULT == null ? transportRabbitMqExchangeAutoDelete != null : !TRANSPORT_RABBIT_MQ_EXCHANGE_AUTO_DELETE_EDEFAULT.equals(transportRabbitMqExchangeAutoDelete);
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_VIRTUAL_HOST:
+				return TRANSPORT_RABBIT_MQ_SERVER_VIRTUAL_HOST_EDEFAULT == null ? transportRabbitMqServerVirtualHost != null : !TRANSPORT_RABBIT_MQ_SERVER_VIRTUAL_HOST_EDEFAULT.equals(transportRabbitMqServerVirtualHost);
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_FACTORY_HEARTBEAT:
+				return TRANSPORT_RABBIT_MQ_FACTORY_HEARTBEAT_EDEFAULT == null ? transportRabbitMqFactoryHeartbeat != null : !TRANSPORT_RABBIT_MQ_FACTORY_HEARTBEAT_EDEFAULT.equals(transportRabbitMqFactoryHeartbeat);
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_ENABLED:
+				return TRANSPORT_RABBIT_MQ_CONNECTION_SSL_ENABLED_EDEFAULT == null ? transportRabbitMqConnectionSslEnabled != null : !TRANSPORT_RABBIT_MQ_CONNECTION_SSL_ENABLED_EDEFAULT.equals(transportRabbitMqConnectionSslEnabled);
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_KEYSTORE_LOCATION:
+				return TRANSPORT_RABBIT_MQ_CONNECTION_SSL_KEYSTORE_LOCATION_EDEFAULT == null ? transportRabbitMqConnectionSslKeystoreLocation != null : !TRANSPORT_RABBIT_MQ_CONNECTION_SSL_KEYSTORE_LOCATION_EDEFAULT.equals(transportRabbitMqConnectionSslKeystoreLocation);
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_KEYSTORE_TYPE:
+				return TRANSPORT_RABBIT_MQ_CONNECTION_SSL_KEYSTORE_TYPE_EDEFAULT == null ? transportRabbitMqConnectionSslKeystoreType != null : !TRANSPORT_RABBIT_MQ_CONNECTION_SSL_KEYSTORE_TYPE_EDEFAULT.equals(transportRabbitMqConnectionSslKeystoreType);
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_KEYSTORE_PASSWORD:
+				return TRANSPORT_RABBIT_MQ_CONNECTION_SSL_KEYSTORE_PASSWORD_EDEFAULT == null ? transportRabbitMqConnectionSslKeystorePassword != null : !TRANSPORT_RABBIT_MQ_CONNECTION_SSL_KEYSTORE_PASSWORD_EDEFAULT.equals(transportRabbitMqConnectionSslKeystorePassword);
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_LOCATION:
+				return TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_LOCATION_EDEFAULT == null ? transportRabbitMqConnectionSslTruststoreLocation != null : !TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_LOCATION_EDEFAULT.equals(transportRabbitMqConnectionSslTruststoreLocation);
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_TYPE:
+				return TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_TYPE_EDEFAULT == null ? transportRabbitMqConnectionSslTruststoreType != null : !TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_TYPE_EDEFAULT.equals(transportRabbitMqConnectionSslTruststoreType);
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_PASSWORD:
+				return TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_PASSWORD_EDEFAULT == null ? transportRabbitMqConnectionSslTruststorePassword != null : !TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_PASSWORD_EDEFAULT.equals(transportRabbitMqConnectionSslTruststorePassword);
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_VERSION:
+				return TRANSPORT_RABBIT_MQ_CONNECTION_SSL_VERSION_EDEFAULT == null ? transportRabbitMqConnectionSslVersion != null : !TRANSPORT_RABBIT_MQ_CONNECTION_SSL_VERSION_EDEFAULT.equals(transportRabbitMqConnectionSslVersion);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -7596,6 +8948,58 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 		result.append(enableSSL);
 		result.append(", suspend: ");
 		result.append(suspend);
+		result.append(", transportRabbitMqConnectionFactory: ");
+		result.append(transportRabbitMqConnectionFactory);
+		result.append(", transportRabbitMqServerHostName: ");
+		result.append(transportRabbitMqServerHostName);
+		result.append(", transportRabbitMqServerPort: ");
+		result.append(transportRabbitMqServerPort);
+		result.append(", transportRabbitMqServerUserName: ");
+		result.append(transportRabbitMqServerUserName);
+		result.append(", transportRabbitMqServerPassword: ");
+		result.append(transportRabbitMqServerPassword);
+		result.append(", transportRabbitMqQueueName: ");
+		result.append(transportRabbitMqQueueName);
+		result.append(", transportRabbitMqExchangeName: ");
+		result.append(transportRabbitMqExchangeName);
+		result.append(", transportRabbitMqQueueDurable: ");
+		result.append(transportRabbitMqQueueDurable);
+		result.append(", transportRabbitMqQueueExclusive: ");
+		result.append(transportRabbitMqQueueExclusive);
+		result.append(", transportRabbitMqQueueAutoDelete: ");
+		result.append(transportRabbitMqQueueAutoDelete);
+		result.append(", transportRabbitMqQueueAutoAck: ");
+		result.append(transportRabbitMqQueueAutoAck);
+		result.append(", transportRabbitMqQueueRoutingKey: ");
+		result.append(transportRabbitMqQueueRoutingKey);
+		result.append(", transportRabbitMqQueueDeliveryMode: ");
+		result.append(transportRabbitMqQueueDeliveryMode);
+		result.append(", transportRabbitMqExchangeType: ");
+		result.append(transportRabbitMqExchangeType);
+		result.append(", transportRabbitMqExchangeDurable: ");
+		result.append(transportRabbitMqExchangeDurable);
+		result.append(", transportRabbitMqExchangeAutoDelete: ");
+		result.append(transportRabbitMqExchangeAutoDelete);
+		result.append(", transportRabbitMqServerVirtualHost: ");
+		result.append(transportRabbitMqServerVirtualHost);
+		result.append(", transportRabbitMqFactoryHeartbeat: ");
+		result.append(transportRabbitMqFactoryHeartbeat);
+		result.append(", transportRabbitMqConnectionSslEnabled: ");
+		result.append(transportRabbitMqConnectionSslEnabled);
+		result.append(", transportRabbitMqConnectionSslKeystoreLocation: ");
+		result.append(transportRabbitMqConnectionSslKeystoreLocation);
+		result.append(", transportRabbitMqConnectionSslKeystoreType: ");
+		result.append(transportRabbitMqConnectionSslKeystoreType);
+		result.append(", transportRabbitMqConnectionSslKeystorePassword: ");
+		result.append(transportRabbitMqConnectionSslKeystorePassword);
+		result.append(", transportRabbitMqConnectionSslTruststoreLocation: ");
+		result.append(transportRabbitMqConnectionSslTruststoreLocation);
+		result.append(", transportRabbitMqConnectionSslTruststoreType: ");
+		result.append(transportRabbitMqConnectionSslTruststoreType);
+		result.append(", transportRabbitMqConnectionSslTruststorePassword: ");
+		result.append(transportRabbitMqConnectionSslTruststorePassword);
+		result.append(", transportRabbitMqConnectionSslVersion: ");
+		result.append(transportRabbitMqConnectionSslVersion);
 		result.append(')');
 		return result.toString();
 	}

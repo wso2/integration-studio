@@ -23120,7 +23120,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		addEEnumLiteral(inboundEndpointTypeEEnum, InboundEndpointType.KAFKA);
 		addEEnumLiteral(inboundEndpointTypeEEnum, InboundEndpointType.CXF_WS_RM);
 		addEEnumLiteral(inboundEndpointTypeEEnum, InboundEndpointType.MQTT);
-		addEEnumLiteral(inboundEndpointTypeEEnum, InboundEndpointType.RABBIT_MQ);
+		addEEnumLiteral(inboundEndpointTypeEEnum, InboundEndpointType.RABBITMQ);
 		addEEnumLiteral(inboundEndpointTypeEEnum, InboundEndpointType.FEED);
 
 		initEEnum(contentTypeEEnum, ContentType.class, "ContentType");

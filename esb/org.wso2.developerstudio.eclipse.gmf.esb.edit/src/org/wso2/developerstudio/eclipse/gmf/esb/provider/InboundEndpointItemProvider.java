@@ -249,7 +249,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 			addTransportMQTTClientIdPropertyDescriptor(object);
 			addIntervalPropertyDescriptor(object);
 			break;
-		case RABBIT_MQ:
+		case RABBITMQ:
 			addSequentialPropertyDescriptor(object);
 			addCoordinationPropertyDescriptor(object);
 			addTransportRabbitMqConnectionFactoryPropertyDescriptor(object);

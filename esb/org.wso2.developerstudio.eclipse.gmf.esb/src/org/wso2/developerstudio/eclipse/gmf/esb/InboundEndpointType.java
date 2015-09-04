@@ -110,14 +110,14 @@ public enum InboundEndpointType implements Enumerator {
 	 * @ordered
 	 */
 	MQTT(8, "mqtt", "MQTT"), /**
-	 * The '<em><b>Rabbit MQ</b></em>' literal object.
+	 * The '<em><b>Rabbitmq</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #RABBIT_MQ_VALUE
+	 * @see #RABBITMQ_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	RABBIT_MQ(9, "RabbitMQ", "RabbitMQ"), /**
+	RABBITMQ(9, "rabbitmq", "RABBITMQ"), /**
 	 * The '<em><b>Feed</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -263,19 +263,19 @@ public enum InboundEndpointType implements Enumerator {
 	public static final int MQTT_VALUE = 8;
 
 	/**
-	 * The '<em><b>Rabbit MQ</b></em>' literal value.
+	 * The '<em><b>Rabbitmq</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>Rabbit MQ</b></em>' literal object isn't clear,
+	 * If the meaning of '<em><b>Rabbitmq</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #RABBIT_MQ
-	 * @model name="RabbitMQ"
+	 * @see #RABBITMQ
+	 * @model name="rabbitmq" literal="RABBITMQ"
 	 * @generated
 	 * @ordered
 	 */
-	public static final int RABBIT_MQ_VALUE = 9;
+	public static final int RABBITMQ_VALUE = 9;
 
 	/**
 	 * The '<em><b>Feed</b></em>' literal value.
@@ -309,7 +309,7 @@ public enum InboundEndpointType implements Enumerator {
 			KAFKA,
 			CXF_WS_RM,
 			MQTT,
-			RABBIT_MQ,
+			RABBITMQ,
 			FEED,
 		};
 
@@ -370,7 +370,7 @@ public enum InboundEndpointType implements Enumerator {
 			case KAFKA_VALUE: return KAFKA;
 			case CXF_WS_RM_VALUE: return CXF_WS_RM;
 			case MQTT_VALUE: return MQTT;
-			case RABBIT_MQ_VALUE: return RABBIT_MQ;
+			case RABBITMQ_VALUE: return RABBITMQ;
 			case FEED_VALUE: return FEED;
 		}
 		return null;

@@ -102,7 +102,7 @@ public class InboundEndpointDeserializer extends
 			executeSetValueCommand(INBOUND_ENDPOINT__TYPE, InboundEndpointType.MQTT);
 			updateParameters(object);
 		} else if (InboundEndpointConstants.RABBITMQ.equals(object.getProtocol())) {
-			executeSetValueCommand(INBOUND_ENDPOINT__TYPE, InboundEndpointType.RABBIT_MQ);
+			executeSetValueCommand(INBOUND_ENDPOINT__TYPE, InboundEndpointType.RABBITMQ);
 			updateParameters(object);
 		}
 

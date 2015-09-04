@@ -504,7 +504,7 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
 				inboundEndpoint.addParameter(InboundEndpointConstants.ZOOKEEPER_CONNECT,
 						visualInboundEndpoint.getZookeeperConnect());
 			} else {
-				throw new TransformerException("Zookeeper cannot be empty");
+				throw new TransformerException("Zookeeper connect cannot be empty");
 			}
 			if (StringUtils.isNotBlank(visualInboundEndpoint.getGroupId())) {
 				inboundEndpoint.addParameter(InboundEndpointConstants.GROUP_ID, visualInboundEndpoint.getGroupId());
@@ -707,10 +707,7 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
 				inboundEndpoint.addParameter(InboundEndpointConstants.ENABLE_SSL,
 						String.valueOf(visualInboundEndpoint.isEnableSSL()));
 			}
-			break;
-			
-			
-			
+			break;			
 		case MQTT:
 			if (StringUtils.isNotBlank(String.valueOf(visualInboundEndpoint.isSequential()))) {
 				inboundEndpoint.addParameter(InboundEndpointConstants.SEQUENTIAL,
@@ -775,7 +772,135 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
 				inboundEndpoint.addParameter(InboundEndpointConstants.INBOUND_MQTT_RECONNECTION_INTERVAL,
 						visualInboundEndpoint.getInterval());
 			}
-			break;			
+			break;
+		case RABBITMQ:
+			if (StringUtils.isNotBlank(String.valueOf(visualInboundEndpoint.isSequential()))) {
+				inboundEndpoint.addParameter(InboundEndpointConstants.SEQUENTIAL,
+						String.valueOf(visualInboundEndpoint.isSequential()));
+			}
+			if (StringUtils.isNotBlank(String.valueOf(visualInboundEndpoint.isSequential()))) {
+				inboundEndpoint.addParameter(InboundEndpointConstants.COORDINATION,
+						String.valueOf(visualInboundEndpoint.isCoordination()));
+			}
+			if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportRabbitMqConnectionFactory())) {
+				inboundEndpoint.addParameter(InboundEndpointConstants.RABBITMQ_CONNECTION_FACTORY,
+						visualInboundEndpoint.getTransportRabbitMqConnectionFactory());
+			} else {
+				throw new TransformerException("RabbitMQ connection factory cannot be empty");
+			}
+			if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportRabbitMqServerHostName())) {
+				inboundEndpoint.addParameter(InboundEndpointConstants.RABBITMQ_SERVER_HOST_NAME,
+						visualInboundEndpoint.getTransportRabbitMqServerHostName());
+			} else {
+				throw new TransformerException("RabbitMQ server hostname cannot be empty");
+			}
+			if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportRabbitMqServerPort())) {
+				inboundEndpoint.addParameter(InboundEndpointConstants.RABBITMQ_SERVER_PORT,
+						visualInboundEndpoint.getTransportRabbitMqServerPort());
+			} else {
+				throw new TransformerException("RabbitMQ server port cannot be empty");
+			}
+			if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportRabbitMqServerUserName())) {
+				inboundEndpoint.addParameter(InboundEndpointConstants.RABBITMQ_SERVER_USER_NAME,
+						visualInboundEndpoint.getTransportRabbitMqServerUserName());
+			} else {
+				throw new TransformerException("RabbitMQ server username cannot be empty");
+			}
+			if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportRabbitMqServerPassword())) {
+				inboundEndpoint.addParameter(InboundEndpointConstants.RABBITMQ_SERVER_PASSWORD,
+						visualInboundEndpoint.getTransportRabbitMqServerPassword());
+			} else {
+				throw new TransformerException("RabbitMQ server password cannot be empty");
+			}
+			if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportRabbitMqQueueName())) {
+				inboundEndpoint.addParameter(InboundEndpointConstants.RABBITMQ_QUEUE_NAME,
+						visualInboundEndpoint.getTransportRabbitMqQueueName());
+			} else {
+				throw new TransformerException("RabbitMQ queue name cannot be empty");
+			}
+			if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportRabbitMqExchangeName())) {
+				inboundEndpoint.addParameter(InboundEndpointConstants.RABBITMQ_EXCHANGE_NAME,
+						visualInboundEndpoint.getTransportRabbitMqExchangeName());
+			} else {
+				throw new TransformerException("RabbitMQ exchange name cannot be empty");
+			}
+			if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportRabbitMqQueueDurable())) {
+				inboundEndpoint.addParameter(InboundEndpointConstants.RABBITMQ_QUEUE_DURABLE,
+						visualInboundEndpoint.getTransportRabbitMqQueueDurable());
+			}
+			if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportRabbitMqQueueExclusive())) {
+				inboundEndpoint.addParameter(InboundEndpointConstants.RABBITMQ_QUEUE_EXCLUSIVE,
+						visualInboundEndpoint.getTransportRabbitMqQueueExclusive());
+			}
+			if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportRabbitMqQueueAutoDelete())) {
+				inboundEndpoint.addParameter(InboundEndpointConstants.RABBITMQ_QUEUE_AUTO_DELETE,
+						visualInboundEndpoint.getTransportRabbitMqQueueAutoDelete());
+			}
+			if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportRabbitMqQueueAutoAck())) {
+				inboundEndpoint.addParameter(InboundEndpointConstants.RABBITMQ_QUEUE_AUTO_ACK,
+						visualInboundEndpoint.getTransportRabbitMqQueueAutoAck());
+			}
+			if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportRabbitMqQueueRoutingKey())) {
+				inboundEndpoint.addParameter(InboundEndpointConstants.RABBITMQ_QUEUE_ROUTING_KEY,
+						visualInboundEndpoint.getTransportRabbitMqQueueRoutingKey());
+			}
+			if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportRabbitMqQueueDeliveryMode())) {
+				inboundEndpoint.addParameter(InboundEndpointConstants.RABBITMQ_QUEUE_DELIVERY_MODE,
+						visualInboundEndpoint.getTransportRabbitMqQueueDeliveryMode());
+			}
+			if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportRabbitMqExchangeType())) {
+				inboundEndpoint.addParameter(InboundEndpointConstants.RABBITMQ_EXCHANGE_TYPE,
+						visualInboundEndpoint.getTransportRabbitMqExchangeType());
+			}
+			if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportRabbitMqExchangeDurable())) {
+				inboundEndpoint.addParameter(InboundEndpointConstants.RABBITMQ_EXCHANGE_DURABLE,
+						visualInboundEndpoint.getTransportRabbitMqExchangeDurable());
+			}
+			if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportRabbitMqExchangeAutoDelete())) {
+				inboundEndpoint.addParameter(InboundEndpointConstants.RABBITMQ_EXCHANGE_AUTO_DELETE,
+						visualInboundEndpoint.getTransportRabbitMqExchangeAutoDelete());
+			}
+			if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportRabbitMqServerVirtualHost())) {
+				inboundEndpoint.addParameter(InboundEndpointConstants.RABBITMQ_SERVER_VIRTUAL_HOST,
+						visualInboundEndpoint.getTransportRabbitMqServerVirtualHost());
+			}
+			if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportRabbitMqFactoryHeartbeat())) {
+				inboundEndpoint.addParameter(InboundEndpointConstants.RABBITMQ_FACTORY_HEARTBEAT,
+						visualInboundEndpoint.getTransportRabbitMqFactoryHeartbeat());
+			}
+			if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportRabbitMqConnectionSslEnabled())) {
+				inboundEndpoint.addParameter(InboundEndpointConstants.RABBITMQ_CONNECTION_SSL_ENABLED,
+						visualInboundEndpoint.getTransportRabbitMqConnectionSslEnabled());
+			}
+			if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportRabbitMqConnectionSslKeystoreLocation())) {
+				inboundEndpoint.addParameter(InboundEndpointConstants.RABBITMQ_CONNECTION_SSL_KEYSTORE_LOCATION,
+						visualInboundEndpoint.getTransportRabbitMqConnectionSslKeystoreLocation());
+			}
+			if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportRabbitMqConnectionSslKeystoreType())) {
+				inboundEndpoint.addParameter(InboundEndpointConstants.RABBITMQ_CONNECTION_SSL_KEYSTORE_TYPE,
+						visualInboundEndpoint.getTransportRabbitMqConnectionSslKeystoreType());
+			}
+			if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportRabbitMqConnectionSslKeystorePassword())) {
+				inboundEndpoint.addParameter(InboundEndpointConstants.RABBITMQ_CONNECTION_SSL_KEYSTORE_PASSWORD,
+						visualInboundEndpoint.getTransportRabbitMqConnectionSslKeystorePassword());
+			}
+			if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportRabbitMqConnectionSslTruststoreLocation())) {
+				inboundEndpoint.addParameter(InboundEndpointConstants.RABBITMQ_CONNECTION_SSL_TRUSTSTORE_LOCATION,
+						visualInboundEndpoint.getTransportRabbitMqConnectionSslTruststoreLocation());
+			}
+			if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportRabbitMqConnectionSslTruststoreType())) {
+				inboundEndpoint.addParameter(InboundEndpointConstants.RABBITMQ_CONNECTION_SSL_TRUSTSTORE_TYPE,
+						visualInboundEndpoint.getTransportRabbitMqConnectionSslTruststoreType());
+			}
+			if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportRabbitMqConnectionSslTruststorePassword())) {
+				inboundEndpoint.addParameter(InboundEndpointConstants.RABBITMQ_CONNECTION_SSL_TRUSTSTORE_PASSWORD,
+						visualInboundEndpoint.getTransportRabbitMqConnectionSslTruststorePassword());
+			}
+			if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportRabbitMqConnectionSslVersion())) {
+				inboundEndpoint.addParameter(InboundEndpointConstants.RABBITMQ_CONNECTION_SSL_VERSION,
+						visualInboundEndpoint.getTransportRabbitMqConnectionSslVersion());
+			}
+			break;
 		default:
 			break;
 		}

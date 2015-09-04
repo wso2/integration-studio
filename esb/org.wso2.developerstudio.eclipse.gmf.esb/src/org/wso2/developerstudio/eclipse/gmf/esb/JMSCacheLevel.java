@@ -32,26 +32,6 @@ import org.eclipse.emf.common.util.Enumerator;
  */
 public enum JMSCacheLevel implements Enumerator {
 	/**
-	 * The '<em><b>One</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #ONE_VALUE
-	 * @generated
-	 * @ordered
-	 */
-	ONE(1, "one", "1"),
-
-	/**
-	 * The '<em><b>Two</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #TWO_VALUE
-	 * @generated
-	 * @ordered
-	 */
-	TWO(2, "two", "2"),
-
-	/**
 	 * The '<em><b>Three</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -59,57 +39,23 @@ public enum JMSCacheLevel implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	THREE(3, "three", "3"),
-
-	/**
-	 * The '<em><b>Four</b></em>' literal object.
+	THREE(3, "three", "3"), /**
+	 * The '<em><b>Two</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #FOUR_VALUE
+	 * @see #TWO_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	FOUR(4, "four", "4"),
-
-	/**
-	 * The '<em><b>Five</b></em>' literal object.
+	TWO(2, "two", "2"), /**
+	 * The '<em><b>One</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #FIVE_VALUE
+	 * @see #ONE_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	FIVE(5, "five", "5");
-
-	/**
-	 * The '<em><b>One</b></em>' literal value.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>One</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @see #ONE
-	 * @model name="one" literal="1"
-	 * @generated
-	 * @ordered
-	 */
-	public static final int ONE_VALUE = 1;
-
-	/**
-	 * The '<em><b>Two</b></em>' literal value.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Two</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @see #TWO
-	 * @model name="two" literal="2"
-	 * @generated
-	 * @ordered
-	 */
-	public static final int TWO_VALUE = 2;
+	ONE(1, "one", "1");
 
 	/**
 	 * The '<em><b>Three</b></em>' literal value.
@@ -127,34 +73,34 @@ public enum JMSCacheLevel implements Enumerator {
 	public static final int THREE_VALUE = 3;
 
 	/**
-	 * The '<em><b>Four</b></em>' literal value.
+	 * The '<em><b>Two</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>Four</b></em>' literal object isn't clear,
+	 * If the meaning of '<em><b>Two</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #FOUR
-	 * @model name="four" literal="4"
+	 * @see #TWO
+	 * @model name="two" literal="2"
 	 * @generated
 	 * @ordered
 	 */
-	public static final int FOUR_VALUE = 4;
+	public static final int TWO_VALUE = 2;
 
 	/**
-	 * The '<em><b>Five</b></em>' literal value.
+	 * The '<em><b>One</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>Five</b></em>' literal object isn't clear,
+	 * If the meaning of '<em><b>One</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #FIVE
-	 * @model name="five" literal="5"
+	 * @see #ONE
+	 * @model name="one" literal="1"
 	 * @generated
 	 * @ordered
 	 */
-	public static final int FIVE_VALUE = 5;
+	public static final int ONE_VALUE = 1;
 
 	/**
 	 * An array of all the '<em><b>JMS Cache Level</b></em>' enumerators.
@@ -164,11 +110,9 @@ public enum JMSCacheLevel implements Enumerator {
 	 */
 	private static final JMSCacheLevel[] VALUES_ARRAY =
 		new JMSCacheLevel[] {
-			ONE,
-			TWO,
 			THREE,
-			FOUR,
-			FIVE,
+			TWO,
+			ONE,
 		};
 
 	/**
@@ -219,11 +163,9 @@ public enum JMSCacheLevel implements Enumerator {
 	 */
 	public static JMSCacheLevel get(int value) {
 		switch (value) {
-			case ONE_VALUE: return ONE;
-			case TWO_VALUE: return TWO;
 			case THREE_VALUE: return THREE;
-			case FOUR_VALUE: return FOUR;
-			case FIVE_VALUE: return FIVE;
+			case TWO_VALUE: return TWO;
+			case ONE_VALUE: return ONE;
 		}
 		return null;
 	}

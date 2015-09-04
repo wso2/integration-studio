@@ -372,7 +372,15 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
 			if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportJMSPubSubNoLocal())) {
 				inboundEndpoint.addParameter(InboundEndpointConstants.JMS_PUB_SUB_NO_LOCAL,
 						visualInboundEndpoint.getTransportJMSPubSubNoLocal());
-			}			
+			}		
+			if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportJMSDurableSubscriberName())) {
+				inboundEndpoint.addParameter(InboundEndpointConstants.JMS_DURABLE_SUBSCRIBER_NAME,
+						visualInboundEndpoint.getTransportJMSDurableSubscriberName());
+			}
+			if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportJMSContentTypeProperty())) {
+				inboundEndpoint.addParameter(InboundEndpointConstants.JMS_CONTENT_TYPE_PROPERTY,
+						visualInboundEndpoint.getTransportJMSContentTypeProperty());
+			}
 			break;
 		case CUSTOM:
 			if (StringUtils.isNotBlank(visualInboundEndpoint.getInterval())) {

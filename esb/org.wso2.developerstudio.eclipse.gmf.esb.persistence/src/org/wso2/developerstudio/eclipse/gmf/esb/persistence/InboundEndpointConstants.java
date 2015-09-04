@@ -91,6 +91,9 @@ public class InboundEndpointConstants {
 	
 	public static final String JMS_REPLY_DESTINATION = "transport.jms.ReplyDestination";
 	public static final String JMS_PUB_SUB_NO_LOCAL = "transport.jms.PubSubNoLocal";
+	public static final String JMS_DURABLE_SUBSCRIBER_NAME = "transport.jms.DurableSubscriberName";
+	public static final String JMS_CONTENT_TYPE_PROPERTY = "transport.jms.ContentTypeProperty";
+
 
 	public static final String KEYSTORE = "keystore";
 	public static final String TRUSTSTORE = "truststore";

@@ -643,11 +643,9 @@
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//JMSSessionAcknowledgement/SESSION_TRANSACTED"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//JMSCacheLevel">
-      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//JMSCacheLevel/one"/>
-      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//JMSCacheLevel/two"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//JMSCacheLevel/three"/>
-      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//JMSCacheLevel/four"/>
-      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//JMSCacheLevel/five"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//JMSCacheLevel/two"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//JMSCacheLevel/one"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//MQTTSubscriptionQOS">
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//MQTTSubscriptionQOS/zero"/>
@@ -2269,6 +2267,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportJMSContentTypeProperty"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportJMSReplyDestination"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportJMSPubSubNoLocal"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportJMSDurableSubscriberName"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportMQTTConnectionFactory"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportMQTTServerHostName"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportMQTTServerPort"/>

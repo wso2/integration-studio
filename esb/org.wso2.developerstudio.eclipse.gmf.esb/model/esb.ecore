@@ -2813,7 +2813,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="transportJMSDestination"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" defaultValueLiteral=""/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="transportJMSSessionTransacted"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" defaultValueLiteral="true"/>
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" defaultValueLiteral="false"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="transportJMSSessionAcknowledgement"
         eType="#//JMSSessionAcknowledgement"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="transportJMSCacheLevel"
@@ -2850,6 +2850,8 @@
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" defaultValueLiteral=""/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="transportJMSPubSubNoLocal"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" defaultValueLiteral=""/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="transportJMSDurableSubscriberName"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="transportMQTTConnectionFactory"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" defaultValueLiteral=""/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="transportMQTTServerHostName"
@@ -3046,11 +3048,9 @@
     <eLiterals name="SESSION_TRANSACTED" value="3"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="JMSCacheLevel">
-    <eLiterals name="one" value="1" literal="1"/>
-    <eLiterals name="two" value="2" literal="2"/>
     <eLiterals name="three" value="3" literal="3"/>
-    <eLiterals name="four" value="4" literal="4"/>
-    <eLiterals name="five" value="5" literal="5"/>
+    <eLiterals name="two" value="2" literal="2"/>
+    <eLiterals name="one" value="1" literal="1"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="MQTTSubscriptionQOS">
     <eLiterals name="zero" literal="0"/>

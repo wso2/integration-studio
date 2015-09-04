@@ -352,11 +352,7 @@ public class InboundEndpointDeserializer extends
 					executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_JMS_CACHE_LEVEL, JMSCacheLevel.TWO);
 				} else if (paramEntry.getValue().equals("3")) {
 					executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_JMS_CACHE_LEVEL, JMSCacheLevel.THREE);
-				} else if (paramEntry.getValue().equals("4")) {
-					executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_JMS_CACHE_LEVEL, JMSCacheLevel.FOUR);
-				} else {
-					executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_JMS_CACHE_LEVEL, JMSCacheLevel.FIVE);
-				}
+				} 
 			} else if (paramEntry.getKey().equals(InboundEndpointConstants.JMS_USERNAME)) {
 				executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_JMS_USER_NAME, paramEntry.getValue());
 			} else if (paramEntry.getKey().equals(InboundEndpointConstants.JMS_PASSWORD)) {
@@ -378,6 +374,10 @@ public class InboundEndpointDeserializer extends
 				executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_JMS_REPLY_DESTINATION, paramEntry.getValue());
 			} else if (paramEntry.getKey().equals(InboundEndpointConstants.JMS_PUB_SUB_NO_LOCAL)) {
 				executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_JMS_PUB_SUB_NO_LOCAL, paramEntry.getValue());
+			} else if (paramEntry.getKey().equals(InboundEndpointConstants.JMS_DURABLE_SUBSCRIBER_NAME)) {
+				executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_JMS_DURABLE_SUBSCRIBER_NAME, paramEntry.getValue());
+			} else if (paramEntry.getKey().equals(InboundEndpointConstants.JMS_CONTENT_TYPE_PROPERTY)) {
+				executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_JMS_CONTENT_TYPE_PROPERTY, paramEntry.getValue());
 			}		
 			else if (paramEntry.getKey().equals(InboundEndpointConstants.KEYSTORE)) {
 				executeSetValueCommand(INBOUND_ENDPOINT__KEYSTORE, paramEntry.getValue());

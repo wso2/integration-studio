@@ -109,7 +109,23 @@ public enum InboundEndpointType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	MQTT(8, "mqtt", "MQTT");
+	MQTT(8, "mqtt", "MQTT"), /**
+	 * The '<em><b>Rabbitmq</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #RABBITMQ_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	RABBITMQ(9, "rabbitmq", "RABBITMQ"), /**
+	 * The '<em><b>Feed</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #FEED_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	FEED(10, "feed", "Feed");
 
 	/**
 	 * The '<em><b>Http</b></em>' literal value.
@@ -247,6 +263,36 @@ public enum InboundEndpointType implements Enumerator {
 	public static final int MQTT_VALUE = 8;
 
 	/**
+	 * The '<em><b>Rabbitmq</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>Rabbitmq</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #RABBITMQ
+	 * @model name="rabbitmq" literal="RABBITMQ"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int RABBITMQ_VALUE = 9;
+
+	/**
+	 * The '<em><b>Feed</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>Feed</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #FEED
+	 * @model name="feed" literal="Feed"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int FEED_VALUE = 10;
+
+	/**
 	 * An array of all the '<em><b>Inbound Endpoint Type</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -263,6 +309,8 @@ public enum InboundEndpointType implements Enumerator {
 			KAFKA,
 			CXF_WS_RM,
 			MQTT,
+			RABBITMQ,
+			FEED,
 		};
 
 	/**
@@ -322,6 +370,8 @@ public enum InboundEndpointType implements Enumerator {
 			case KAFKA_VALUE: return KAFKA;
 			case CXF_WS_RM_VALUE: return CXF_WS_RM;
 			case MQTT_VALUE: return MQTT;
+			case RABBITMQ_VALUE: return RABBITMQ;
+			case FEED_VALUE: return FEED;
 		}
 		return null;
 	}

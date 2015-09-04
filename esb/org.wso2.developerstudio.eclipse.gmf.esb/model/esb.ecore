@@ -2585,8 +2585,9 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="MessageProcessorType">
     <eLiterals name="SCHEDULED_MSG_FORWARDING" literal="SCHEDULED_MSG_FORWARDING"/>
-    <eLiterals name="MSG_SAMPLING" value="1" literal="MSG_SAMPLING"/>
-    <eLiterals name="CUSTOM" value="2" literal="CUSTOM"/>
+    <eLiterals name="SCHEDULED_FAILOVER_MSG_FORWARDING" value="1" literal="SCHEDULED_FAILOVER_MSG_FORWARDING"/>
+    <eLiterals name="MSG_SAMPLING" value="2" literal="MSG_SAMPLING"/>
+    <eLiterals name="CUSTOM" value="3" literal="CUSTOM"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="ProcessorState">
     <eLiterals name="ACTIVATE" literal="Activate"/>
@@ -2602,6 +2603,8 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="messageProcessorProvider"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="messageStore" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sourceMessageStore" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="targetMessageStore" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="processorState" eType="#//ProcessorState"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="endpointName" eType="#//RegistryKeyProperty"
         containment="true"/>
@@ -2813,7 +2816,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="transportJMSDestination"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" defaultValueLiteral=""/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="transportJMSSessionTransacted"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" defaultValueLiteral="true"/>
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" defaultValueLiteral="false"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="transportJMSSessionAcknowledgement"
         eType="#//JMSSessionAcknowledgement"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="transportJMSCacheLevel"
@@ -2850,6 +2853,8 @@
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" defaultValueLiteral=""/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="transportJMSPubSubNoLocal"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" defaultValueLiteral=""/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="transportJMSDurableSubscriberName"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="transportMQTTConnectionFactory"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" defaultValueLiteral=""/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="transportMQTTServerHostName"
@@ -2997,7 +3002,7 @@
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="transportRabbitMqQueueAutoAck"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="transportRabbitMqQueueRoutingKkey"
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="transportRabbitMqQueueRoutingKey"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="transportRabbitMqQueueDeliveryMode"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -3027,6 +3032,9 @@
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="transportRabbitMqConnectionSslVersion"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="transportFeedURL" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral=""/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="transportFeedType" eType="#//FeedType"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="InboundEndpointParameter">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
@@ -3044,7 +3052,8 @@
     <eLiterals name="kafka" value="6" literal="KAFKA"/>
     <eLiterals name="cxf_ws_rm" value="7" literal="CXF_WS_RM"/>
     <eLiterals name="mqtt" value="8" literal="MQTT"/>
-    <eLiterals name="RabbitMQ" value="9"/>
+    <eLiterals name="rabbitmq" value="9" literal="RABBITMQ"/>
+    <eLiterals name="feed" value="10" literal="Feed"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="ContentType">
     <eLiterals name="xml" literal="application/xml"/>
@@ -3099,16 +3108,18 @@
     <eLiterals name="SESSION_TRANSACTED" value="3"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="JMSCacheLevel">
-    <eLiterals name="one" value="1" literal="1"/>
-    <eLiterals name="two" value="2" literal="2"/>
     <eLiterals name="three" value="3" literal="3"/>
-    <eLiterals name="four" value="4" literal="4"/>
-    <eLiterals name="five" value="5" literal="5"/>
+    <eLiterals name="two" value="2" literal="2"/>
+    <eLiterals name="one" value="1" literal="1"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="MQTTSubscriptionQOS">
     <eLiterals name="zero" literal="0"/>
     <eLiterals name="one" value="1" literal="1"/>
     <eLiterals name="two" value="2" literal="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="FeedType">
+    <eLiterals name="atom" literal="Atom"/>
+    <eLiterals name="rss" value="1" literal="RSS"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="InboundEndpointContainer" eSuperTypes="#//EsbElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="sequenceContainer" eType="#//InboundEndpointSequenceContainer"

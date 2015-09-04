@@ -559,6 +559,7 @@
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//MessageProcessorType">
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//MessageProcessorType/SCHEDULED_MSG_FORWARDING"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//MessageProcessorType/SCHEDULED_FAILOVER_MSG_FORWARDING"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//MessageProcessorType/MSG_SAMPLING"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//MessageProcessorType/CUSTOM"/>
     </genEnums>
@@ -589,6 +590,8 @@
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//InboundEndpointType/kafka"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//InboundEndpointType/cxf_ws_rm"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//InboundEndpointType/mqtt"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//InboundEndpointType/rabbitmq"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//InboundEndpointType/feed"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//ContentType">
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//ContentType/xml"/>
@@ -643,16 +646,18 @@
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//JMSSessionAcknowledgement/SESSION_TRANSACTED"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//JMSCacheLevel">
-      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//JMSCacheLevel/one"/>
-      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//JMSCacheLevel/two"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//JMSCacheLevel/three"/>
-      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//JMSCacheLevel/four"/>
-      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//JMSCacheLevel/five"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//JMSCacheLevel/two"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//JMSCacheLevel/one"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//MQTTSubscriptionQOS">
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//MQTTSubscriptionQOS/zero"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//MQTTSubscriptionQOS/one"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//MQTTSubscriptionQOS/two"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//FeedType">
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//FeedType/atom"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//FeedType/rss"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//EnableDisableState">
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//EnableDisableState/Disabled"/>
@@ -2120,6 +2125,8 @@
           ecoreFeature="ecore:EAttribute esb.ecore#//MessageProcessor/processorType"/>
       <genFeatures createChild="false" propertyCategory="Basic" ecoreFeature="ecore:EAttribute esb.ecore#//MessageProcessor/messageProcessorProvider"/>
       <genFeatures createChild="false" propertyCategory="Basic" ecoreFeature="ecore:EAttribute esb.ecore#//MessageProcessor/messageStore"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//MessageProcessor/sourceMessageStore"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//MessageProcessor/targetMessageStore"/>
       <genFeatures createChild="false" propertyCategory="Additional Parameters" ecoreFeature="ecore:EAttribute esb.ecore#//MessageProcessor/processorState"/>
       <genFeatures children="true" createChild="true" propertyCategory="Basic" ecoreFeature="ecore:EReference esb.ecore#//MessageProcessor/endpointName"/>
       <genFeatures notify="false" createChild="false" propertyCategory="Basic" propertySortChoices="true"
@@ -2269,6 +2276,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportJMSContentTypeProperty"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportJMSReplyDestination"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportJMSPubSubNoLocal"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportJMSDurableSubscriberName"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportMQTTConnectionFactory"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportMQTTServerHostName"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportMQTTServerPort"/>
@@ -2341,6 +2349,34 @@
       <genFeatures children="true" createChild="true" propertyCategory="Parameters"
           propertyDescription="" propertySortChoices="true" ecoreFeature="ecore:EReference esb.ecore#//InboundEndpoint/serviceParameters"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/suspend"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportRabbitMqConnectionFactory"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportRabbitMqServerHostName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportRabbitMqServerPort"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportRabbitMqServerUserName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportRabbitMqServerPassword"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportRabbitMqQueueName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportRabbitMqExchangeName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportRabbitMqQueueDurable"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportRabbitMqQueueExclusive"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportRabbitMqQueueAutoDelete"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportRabbitMqQueueAutoAck"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportRabbitMqQueueRoutingKey"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportRabbitMqQueueDeliveryMode"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportRabbitMqExchangeType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportRabbitMqExchangeDurable"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportRabbitMqExchangeAutoDelete"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportRabbitMqServerVirtualHost"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportRabbitMqFactoryHeartbeat"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportRabbitMqConnectionSslEnabled"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportRabbitMqConnectionSslKeystoreLocation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportRabbitMqConnectionSslKeystoreType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportRabbitMqConnectionSslKeystorePassword"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportRabbitMqConnectionSslTruststoreLocation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportRabbitMqConnectionSslTruststoreType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportRabbitMqConnectionSslTruststorePassword"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportRabbitMqConnectionSslVersion"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportFeedURL"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportFeedType"/>
     </genClasses>
     <genClasses ecoreClass="esb.ecore#//InboundEndpointParameter">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpointParameter/name"/>

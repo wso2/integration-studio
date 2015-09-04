@@ -45,6 +45,8 @@ public class InboundEndpointCreationTypes extends AbstractListDataProvider {
 				InboundEndpointArtifactProperties.typeCXF_WS_RM));
 		epTypeList.add(createListData(InboundEndpointArtifactProperties.typeMQTT,
 				InboundEndpointArtifactProperties.typeMQTT));
+		epTypeList.add(createListData(InboundEndpointArtifactProperties.typeRabbitMq,
+				InboundEndpointArtifactProperties.typeRabbitMq));
 		return epTypeList;
 	}
 

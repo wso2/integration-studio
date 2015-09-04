@@ -985,6 +985,7 @@ Export-Package: com.damnhandy.uri.template,
    org.apache.synapse.core,
    org.apache.synapse.config,
    org.apache.synapse.message",
+ org.apache.synapse.message.processor.impl.failover,
  org.apache.synapse.message.processor.impl.forwarder;
   uses:="org.apache.synapse,
    org.quartz,

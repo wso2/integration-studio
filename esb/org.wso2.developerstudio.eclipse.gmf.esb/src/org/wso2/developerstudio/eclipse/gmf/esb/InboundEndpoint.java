@@ -91,6 +91,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportJMSContentTypeProperty <em>Transport JMS Content Type Property</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportJMSReplyDestination <em>Transport JMS Reply Destination</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportJMSPubSubNoLocal <em>Transport JMS Pub Sub No Local</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportJMSDurableSubscriberName <em>Transport JMS Durable Subscriber Name</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportMQTTConnectionFactory <em>Transport MQTT Connection Factory</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportMQTTServerHostName <em>Transport MQTT Server Host Name</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportMQTTServerPort <em>Transport MQTT Server Port</em>}</li>
@@ -162,6 +163,34 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#isEnableSSL <em>Enable SSL</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getServiceParameters <em>Service Parameters</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#isSuspend <em>Suspend</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqConnectionFactory <em>Transport Rabbit Mq Connection Factory</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqServerHostName <em>Transport Rabbit Mq Server Host Name</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqServerPort <em>Transport Rabbit Mq Server Port</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqServerUserName <em>Transport Rabbit Mq Server User Name</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqServerPassword <em>Transport Rabbit Mq Server Password</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqQueueName <em>Transport Rabbit Mq Queue Name</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqExchangeName <em>Transport Rabbit Mq Exchange Name</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqQueueDurable <em>Transport Rabbit Mq Queue Durable</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqQueueExclusive <em>Transport Rabbit Mq Queue Exclusive</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqQueueAutoDelete <em>Transport Rabbit Mq Queue Auto Delete</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqQueueAutoAck <em>Transport Rabbit Mq Queue Auto Ack</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqQueueRoutingKey <em>Transport Rabbit Mq Queue Routing Key</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqQueueDeliveryMode <em>Transport Rabbit Mq Queue Delivery Mode</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqExchangeType <em>Transport Rabbit Mq Exchange Type</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqExchangeDurable <em>Transport Rabbit Mq Exchange Durable</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqExchangeAutoDelete <em>Transport Rabbit Mq Exchange Auto Delete</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqServerVirtualHost <em>Transport Rabbit Mq Server Virtual Host</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqFactoryHeartbeat <em>Transport Rabbit Mq Factory Heartbeat</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqConnectionSslEnabled <em>Transport Rabbit Mq Connection Ssl Enabled</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqConnectionSslKeystoreLocation <em>Transport Rabbit Mq Connection Ssl Keystore Location</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqConnectionSslKeystoreType <em>Transport Rabbit Mq Connection Ssl Keystore Type</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqConnectionSslKeystorePassword <em>Transport Rabbit Mq Connection Ssl Keystore Password</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqConnectionSslTruststoreLocation <em>Transport Rabbit Mq Connection Ssl Truststore Location</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqConnectionSslTruststoreType <em>Transport Rabbit Mq Connection Ssl Truststore Type</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqConnectionSslTruststorePassword <em>Transport Rabbit Mq Connection Ssl Truststore Password</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqConnectionSslVersion <em>Transport Rabbit Mq Connection Ssl Version</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportFeedURL <em>Transport Feed URL</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportFeedType <em>Transport Feed Type</em>}</li>
  * </ul>
  * </p>
  *
@@ -1800,6 +1829,738 @@ public interface InboundEndpoint extends EsbElement {
 	void setSuspend(boolean value);
 
 	/**
+	 * Returns the value of the '<em><b>Transport Rabbit Mq Connection Factory</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Transport Rabbit Mq Connection Factory</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Transport Rabbit Mq Connection Factory</em>' attribute.
+	 * @see #setTransportRabbitMqConnectionFactory(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqConnectionFactory()
+	 * @model
+	 * @generated
+	 */
+	String getTransportRabbitMqConnectionFactory();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqConnectionFactory <em>Transport Rabbit Mq Connection Factory</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Transport Rabbit Mq Connection Factory</em>' attribute.
+	 * @see #getTransportRabbitMqConnectionFactory()
+	 * @generated
+	 */
+	void setTransportRabbitMqConnectionFactory(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Transport Rabbit Mq Server Host Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Transport Rabbit Mq Server Host Name</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Transport Rabbit Mq Server Host Name</em>' attribute.
+	 * @see #setTransportRabbitMqServerHostName(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqServerHostName()
+	 * @model
+	 * @generated
+	 */
+	String getTransportRabbitMqServerHostName();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqServerHostName <em>Transport Rabbit Mq Server Host Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Transport Rabbit Mq Server Host Name</em>' attribute.
+	 * @see #getTransportRabbitMqServerHostName()
+	 * @generated
+	 */
+	void setTransportRabbitMqServerHostName(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Transport Rabbit Mq Server Port</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Transport Rabbit Mq Server Port</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Transport Rabbit Mq Server Port</em>' attribute.
+	 * @see #setTransportRabbitMqServerPort(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqServerPort()
+	 * @model
+	 * @generated
+	 */
+	String getTransportRabbitMqServerPort();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqServerPort <em>Transport Rabbit Mq Server Port</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Transport Rabbit Mq Server Port</em>' attribute.
+	 * @see #getTransportRabbitMqServerPort()
+	 * @generated
+	 */
+	void setTransportRabbitMqServerPort(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Transport Rabbit Mq Server User Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Transport Rabbit Mq Server User Name</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Transport Rabbit Mq Server User Name</em>' attribute.
+	 * @see #setTransportRabbitMqServerUserName(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqServerUserName()
+	 * @model
+	 * @generated
+	 */
+	String getTransportRabbitMqServerUserName();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqServerUserName <em>Transport Rabbit Mq Server User Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Transport Rabbit Mq Server User Name</em>' attribute.
+	 * @see #getTransportRabbitMqServerUserName()
+	 * @generated
+	 */
+	void setTransportRabbitMqServerUserName(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Transport Rabbit Mq Server Password</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Transport Rabbit Mq Server Password</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Transport Rabbit Mq Server Password</em>' attribute.
+	 * @see #setTransportRabbitMqServerPassword(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqServerPassword()
+	 * @model
+	 * @generated
+	 */
+	String getTransportRabbitMqServerPassword();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqServerPassword <em>Transport Rabbit Mq Server Password</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Transport Rabbit Mq Server Password</em>' attribute.
+	 * @see #getTransportRabbitMqServerPassword()
+	 * @generated
+	 */
+	void setTransportRabbitMqServerPassword(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Transport Rabbit Mq Queue Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Transport Rabbit Mq Queue Name</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Transport Rabbit Mq Queue Name</em>' attribute.
+	 * @see #setTransportRabbitMqQueueName(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqQueueName()
+	 * @model
+	 * @generated
+	 */
+	String getTransportRabbitMqQueueName();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqQueueName <em>Transport Rabbit Mq Queue Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Transport Rabbit Mq Queue Name</em>' attribute.
+	 * @see #getTransportRabbitMqQueueName()
+	 * @generated
+	 */
+	void setTransportRabbitMqQueueName(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Transport Rabbit Mq Exchange Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Transport Rabbit Mq Exchange Name</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Transport Rabbit Mq Exchange Name</em>' attribute.
+	 * @see #setTransportRabbitMqExchangeName(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqExchangeName()
+	 * @model
+	 * @generated
+	 */
+	String getTransportRabbitMqExchangeName();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqExchangeName <em>Transport Rabbit Mq Exchange Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Transport Rabbit Mq Exchange Name</em>' attribute.
+	 * @see #getTransportRabbitMqExchangeName()
+	 * @generated
+	 */
+	void setTransportRabbitMqExchangeName(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Transport Rabbit Mq Queue Durable</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Transport Rabbit Mq Queue Durable</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Transport Rabbit Mq Queue Durable</em>' attribute.
+	 * @see #setTransportRabbitMqQueueDurable(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqQueueDurable()
+	 * @model
+	 * @generated
+	 */
+	String getTransportRabbitMqQueueDurable();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqQueueDurable <em>Transport Rabbit Mq Queue Durable</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Transport Rabbit Mq Queue Durable</em>' attribute.
+	 * @see #getTransportRabbitMqQueueDurable()
+	 * @generated
+	 */
+	void setTransportRabbitMqQueueDurable(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Transport Rabbit Mq Queue Exclusive</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Transport Rabbit Mq Queue Exclusive</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Transport Rabbit Mq Queue Exclusive</em>' attribute.
+	 * @see #setTransportRabbitMqQueueExclusive(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqQueueExclusive()
+	 * @model
+	 * @generated
+	 */
+	String getTransportRabbitMqQueueExclusive();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqQueueExclusive <em>Transport Rabbit Mq Queue Exclusive</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Transport Rabbit Mq Queue Exclusive</em>' attribute.
+	 * @see #getTransportRabbitMqQueueExclusive()
+	 * @generated
+	 */
+	void setTransportRabbitMqQueueExclusive(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Transport Rabbit Mq Queue Auto Delete</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Transport Rabbit Mq Queue Auto Delete</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Transport Rabbit Mq Queue Auto Delete</em>' attribute.
+	 * @see #setTransportRabbitMqQueueAutoDelete(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqQueueAutoDelete()
+	 * @model
+	 * @generated
+	 */
+	String getTransportRabbitMqQueueAutoDelete();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqQueueAutoDelete <em>Transport Rabbit Mq Queue Auto Delete</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Transport Rabbit Mq Queue Auto Delete</em>' attribute.
+	 * @see #getTransportRabbitMqQueueAutoDelete()
+	 * @generated
+	 */
+	void setTransportRabbitMqQueueAutoDelete(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Transport Rabbit Mq Queue Auto Ack</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Transport Rabbit Mq Queue Auto Ack</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Transport Rabbit Mq Queue Auto Ack</em>' attribute.
+	 * @see #setTransportRabbitMqQueueAutoAck(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqQueueAutoAck()
+	 * @model
+	 * @generated
+	 */
+	String getTransportRabbitMqQueueAutoAck();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqQueueAutoAck <em>Transport Rabbit Mq Queue Auto Ack</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Transport Rabbit Mq Queue Auto Ack</em>' attribute.
+	 * @see #getTransportRabbitMqQueueAutoAck()
+	 * @generated
+	 */
+	void setTransportRabbitMqQueueAutoAck(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Transport Rabbit Mq Queue Routing Key</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Transport Rabbit Mq Queue Routing Key</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Transport Rabbit Mq Queue Routing Key</em>' attribute.
+	 * @see #setTransportRabbitMqQueueRoutingKey(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqQueueRoutingKey()
+	 * @model
+	 * @generated
+	 */
+	String getTransportRabbitMqQueueRoutingKey();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqQueueRoutingKey <em>Transport Rabbit Mq Queue Routing Key</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Transport Rabbit Mq Queue Routing Key</em>' attribute.
+	 * @see #getTransportRabbitMqQueueRoutingKey()
+	 * @generated
+	 */
+	void setTransportRabbitMqQueueRoutingKey(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Transport Rabbit Mq Queue Delivery Mode</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Transport Rabbit Mq Queue Delivery Mode</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Transport Rabbit Mq Queue Delivery Mode</em>' attribute.
+	 * @see #setTransportRabbitMqQueueDeliveryMode(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqQueueDeliveryMode()
+	 * @model
+	 * @generated
+	 */
+	String getTransportRabbitMqQueueDeliveryMode();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqQueueDeliveryMode <em>Transport Rabbit Mq Queue Delivery Mode</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Transport Rabbit Mq Queue Delivery Mode</em>' attribute.
+	 * @see #getTransportRabbitMqQueueDeliveryMode()
+	 * @generated
+	 */
+	void setTransportRabbitMqQueueDeliveryMode(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Transport Rabbit Mq Exchange Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Transport Rabbit Mq Exchange Type</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Transport Rabbit Mq Exchange Type</em>' attribute.
+	 * @see #setTransportRabbitMqExchangeType(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqExchangeType()
+	 * @model
+	 * @generated
+	 */
+	String getTransportRabbitMqExchangeType();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqExchangeType <em>Transport Rabbit Mq Exchange Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Transport Rabbit Mq Exchange Type</em>' attribute.
+	 * @see #getTransportRabbitMqExchangeType()
+	 * @generated
+	 */
+	void setTransportRabbitMqExchangeType(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Transport Rabbit Mq Exchange Durable</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Transport Rabbit Mq Exchange Durable</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Transport Rabbit Mq Exchange Durable</em>' attribute.
+	 * @see #setTransportRabbitMqExchangeDurable(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqExchangeDurable()
+	 * @model
+	 * @generated
+	 */
+	String getTransportRabbitMqExchangeDurable();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqExchangeDurable <em>Transport Rabbit Mq Exchange Durable</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Transport Rabbit Mq Exchange Durable</em>' attribute.
+	 * @see #getTransportRabbitMqExchangeDurable()
+	 * @generated
+	 */
+	void setTransportRabbitMqExchangeDurable(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Transport Rabbit Mq Exchange Auto Delete</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Transport Rabbit Mq Exchange Auto Delete</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Transport Rabbit Mq Exchange Auto Delete</em>' attribute.
+	 * @see #setTransportRabbitMqExchangeAutoDelete(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqExchangeAutoDelete()
+	 * @model
+	 * @generated
+	 */
+	String getTransportRabbitMqExchangeAutoDelete();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqExchangeAutoDelete <em>Transport Rabbit Mq Exchange Auto Delete</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Transport Rabbit Mq Exchange Auto Delete</em>' attribute.
+	 * @see #getTransportRabbitMqExchangeAutoDelete()
+	 * @generated
+	 */
+	void setTransportRabbitMqExchangeAutoDelete(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Transport Rabbit Mq Server Virtual Host</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Transport Rabbit Mq Server Virtual Host</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Transport Rabbit Mq Server Virtual Host</em>' attribute.
+	 * @see #setTransportRabbitMqServerVirtualHost(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqServerVirtualHost()
+	 * @model
+	 * @generated
+	 */
+	String getTransportRabbitMqServerVirtualHost();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqServerVirtualHost <em>Transport Rabbit Mq Server Virtual Host</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Transport Rabbit Mq Server Virtual Host</em>' attribute.
+	 * @see #getTransportRabbitMqServerVirtualHost()
+	 * @generated
+	 */
+	void setTransportRabbitMqServerVirtualHost(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Transport Rabbit Mq Factory Heartbeat</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Transport Rabbit Mq Factory Heartbeat</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Transport Rabbit Mq Factory Heartbeat</em>' attribute.
+	 * @see #setTransportRabbitMqFactoryHeartbeat(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqFactoryHeartbeat()
+	 * @model
+	 * @generated
+	 */
+	String getTransportRabbitMqFactoryHeartbeat();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqFactoryHeartbeat <em>Transport Rabbit Mq Factory Heartbeat</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Transport Rabbit Mq Factory Heartbeat</em>' attribute.
+	 * @see #getTransportRabbitMqFactoryHeartbeat()
+	 * @generated
+	 */
+	void setTransportRabbitMqFactoryHeartbeat(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Transport Rabbit Mq Connection Ssl Enabled</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Transport Rabbit Mq Connection Ssl Enabled</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Transport Rabbit Mq Connection Ssl Enabled</em>' attribute.
+	 * @see #setTransportRabbitMqConnectionSslEnabled(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqConnectionSslEnabled()
+	 * @model
+	 * @generated
+	 */
+	String getTransportRabbitMqConnectionSslEnabled();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqConnectionSslEnabled <em>Transport Rabbit Mq Connection Ssl Enabled</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Transport Rabbit Mq Connection Ssl Enabled</em>' attribute.
+	 * @see #getTransportRabbitMqConnectionSslEnabled()
+	 * @generated
+	 */
+	void setTransportRabbitMqConnectionSslEnabled(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Transport Rabbit Mq Connection Ssl Keystore Location</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Transport Rabbit Mq Connection Ssl Keystore Location</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Transport Rabbit Mq Connection Ssl Keystore Location</em>' attribute.
+	 * @see #setTransportRabbitMqConnectionSslKeystoreLocation(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqConnectionSslKeystoreLocation()
+	 * @model
+	 * @generated
+	 */
+	String getTransportRabbitMqConnectionSslKeystoreLocation();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqConnectionSslKeystoreLocation <em>Transport Rabbit Mq Connection Ssl Keystore Location</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Transport Rabbit Mq Connection Ssl Keystore Location</em>' attribute.
+	 * @see #getTransportRabbitMqConnectionSslKeystoreLocation()
+	 * @generated
+	 */
+	void setTransportRabbitMqConnectionSslKeystoreLocation(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Transport Rabbit Mq Connection Ssl Keystore Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Transport Rabbit Mq Connection Ssl Keystore Type</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Transport Rabbit Mq Connection Ssl Keystore Type</em>' attribute.
+	 * @see #setTransportRabbitMqConnectionSslKeystoreType(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqConnectionSslKeystoreType()
+	 * @model
+	 * @generated
+	 */
+	String getTransportRabbitMqConnectionSslKeystoreType();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqConnectionSslKeystoreType <em>Transport Rabbit Mq Connection Ssl Keystore Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Transport Rabbit Mq Connection Ssl Keystore Type</em>' attribute.
+	 * @see #getTransportRabbitMqConnectionSslKeystoreType()
+	 * @generated
+	 */
+	void setTransportRabbitMqConnectionSslKeystoreType(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Transport Rabbit Mq Connection Ssl Keystore Password</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Transport Rabbit Mq Connection Ssl Keystore Password</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Transport Rabbit Mq Connection Ssl Keystore Password</em>' attribute.
+	 * @see #setTransportRabbitMqConnectionSslKeystorePassword(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqConnectionSslKeystorePassword()
+	 * @model
+	 * @generated
+	 */
+	String getTransportRabbitMqConnectionSslKeystorePassword();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqConnectionSslKeystorePassword <em>Transport Rabbit Mq Connection Ssl Keystore Password</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Transport Rabbit Mq Connection Ssl Keystore Password</em>' attribute.
+	 * @see #getTransportRabbitMqConnectionSslKeystorePassword()
+	 * @generated
+	 */
+	void setTransportRabbitMqConnectionSslKeystorePassword(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Transport Rabbit Mq Connection Ssl Truststore Location</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Transport Rabbit Mq Connection Ssl Truststore Location</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Transport Rabbit Mq Connection Ssl Truststore Location</em>' attribute.
+	 * @see #setTransportRabbitMqConnectionSslTruststoreLocation(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqConnectionSslTruststoreLocation()
+	 * @model
+	 * @generated
+	 */
+	String getTransportRabbitMqConnectionSslTruststoreLocation();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqConnectionSslTruststoreLocation <em>Transport Rabbit Mq Connection Ssl Truststore Location</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Transport Rabbit Mq Connection Ssl Truststore Location</em>' attribute.
+	 * @see #getTransportRabbitMqConnectionSslTruststoreLocation()
+	 * @generated
+	 */
+	void setTransportRabbitMqConnectionSslTruststoreLocation(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Transport Rabbit Mq Connection Ssl Truststore Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Transport Rabbit Mq Connection Ssl Truststore Type</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Transport Rabbit Mq Connection Ssl Truststore Type</em>' attribute.
+	 * @see #setTransportRabbitMqConnectionSslTruststoreType(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqConnectionSslTruststoreType()
+	 * @model
+	 * @generated
+	 */
+	String getTransportRabbitMqConnectionSslTruststoreType();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqConnectionSslTruststoreType <em>Transport Rabbit Mq Connection Ssl Truststore Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Transport Rabbit Mq Connection Ssl Truststore Type</em>' attribute.
+	 * @see #getTransportRabbitMqConnectionSslTruststoreType()
+	 * @generated
+	 */
+	void setTransportRabbitMqConnectionSslTruststoreType(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Transport Rabbit Mq Connection Ssl Truststore Password</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Transport Rabbit Mq Connection Ssl Truststore Password</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Transport Rabbit Mq Connection Ssl Truststore Password</em>' attribute.
+	 * @see #setTransportRabbitMqConnectionSslTruststorePassword(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqConnectionSslTruststorePassword()
+	 * @model
+	 * @generated
+	 */
+	String getTransportRabbitMqConnectionSslTruststorePassword();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqConnectionSslTruststorePassword <em>Transport Rabbit Mq Connection Ssl Truststore Password</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Transport Rabbit Mq Connection Ssl Truststore Password</em>' attribute.
+	 * @see #getTransportRabbitMqConnectionSslTruststorePassword()
+	 * @generated
+	 */
+	void setTransportRabbitMqConnectionSslTruststorePassword(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Transport Rabbit Mq Connection Ssl Version</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Transport Rabbit Mq Connection Ssl Version</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Transport Rabbit Mq Connection Ssl Version</em>' attribute.
+	 * @see #setTransportRabbitMqConnectionSslVersion(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqConnectionSslVersion()
+	 * @model
+	 * @generated
+	 */
+	String getTransportRabbitMqConnectionSslVersion();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqConnectionSslVersion <em>Transport Rabbit Mq Connection Ssl Version</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Transport Rabbit Mq Connection Ssl Version</em>' attribute.
+	 * @see #getTransportRabbitMqConnectionSslVersion()
+	 * @generated
+	 */
+	void setTransportRabbitMqConnectionSslVersion(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Transport Feed URL</b></em>' attribute.
+	 * The default value is <code>""</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Transport Feed URL</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Transport Feed URL</em>' attribute.
+	 * @see #setTransportFeedURL(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportFeedURL()
+	 * @model default=""
+	 * @generated
+	 */
+	String getTransportFeedURL();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportFeedURL <em>Transport Feed URL</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Transport Feed URL</em>' attribute.
+	 * @see #getTransportFeedURL()
+	 * @generated
+	 */
+	void setTransportFeedURL(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Transport Feed Type</b></em>' attribute.
+	 * The literals are from the enumeration {@link org.wso2.developerstudio.eclipse.gmf.esb.FeedType}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Transport Feed Type</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Transport Feed Type</em>' attribute.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.FeedType
+	 * @see #setTransportFeedType(FeedType)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportFeedType()
+	 * @model
+	 * @generated
+	 */
+	FeedType getTransportFeedType();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportFeedType <em>Transport Feed Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Transport Feed Type</em>' attribute.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.FeedType
+	 * @see #getTransportFeedType()
+	 * @generated
+	 */
+	void setTransportFeedType(FeedType value);
+
+	/**
 	 * Returns the value of the '<em><b>Class</b></em>' attribute.
 	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
@@ -2864,7 +3625,7 @@ public interface InboundEndpoint extends EsbElement {
 
 	/**
 	 * Returns the value of the '<em><b>Transport JMS Session Transacted</b></em>' attribute.
-	 * The default value is <code>"true"</code>.
+	 * The default value is <code>"false"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Transport JMS Session Transacted</em>' attribute isn't clear,
@@ -2874,7 +3635,7 @@ public interface InboundEndpoint extends EsbElement {
 	 * @return the value of the '<em>Transport JMS Session Transacted</em>' attribute.
 	 * @see #setTransportJMSSessionTransacted(boolean)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportJMSSessionTransacted()
-	 * @model default="true"
+	 * @model default="false"
 	 * @generated
 	 */
 	boolean isTransportJMSSessionTransacted();
@@ -3380,6 +4141,32 @@ public interface InboundEndpoint extends EsbElement {
 	 * @generated
 	 */
 	void setTransportJMSPubSubNoLocal(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Transport JMS Durable Subscriber Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Transport JMS Durable Subscriber Name</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Transport JMS Durable Subscriber Name</em>' attribute.
+	 * @see #setTransportJMSDurableSubscriberName(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportJMSDurableSubscriberName()
+	 * @model
+	 * @generated
+	 */
+	String getTransportJMSDurableSubscriberName();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportJMSDurableSubscriberName <em>Transport JMS Durable Subscriber Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Transport JMS Durable Subscriber Name</em>' attribute.
+	 * @see #getTransportJMSDurableSubscriberName()
+	 * @generated
+	 */
+	void setTransportJMSDurableSubscriberName(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Transport MQTT Connection Factory</b></em>' attribute.

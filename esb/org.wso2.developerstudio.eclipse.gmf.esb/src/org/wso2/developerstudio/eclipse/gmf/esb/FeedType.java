@@ -23,115 +23,93 @@ import org.eclipse.emf.common.util.Enumerator;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the literals of the enumeration '<em><b>JMS Cache Level</b></em>',
+ * A representation of the literals of the enumeration '<em><b>Feed Type</b></em>',
  * and utility methods for working with them.
  * <!-- end-user-doc -->
- * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getJMSCacheLevel()
+ * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getFeedType()
  * @model
  * @generated
  */
-public enum JMSCacheLevel implements Enumerator {
+public enum FeedType implements Enumerator {
 	/**
-	 * The '<em><b>Three</b></em>' literal object.
+	 * The '<em><b>Atom</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #THREE_VALUE
+	 * @see #ATOM_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	THREE(3, "three", "3"), /**
-	 * The '<em><b>Two</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #TWO_VALUE
-	 * @generated
-	 * @ordered
-	 */
-	TWO(2, "two", "2"), /**
-	 * The '<em><b>One</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #ONE_VALUE
-	 * @generated
-	 * @ordered
-	 */
-	ONE(1, "one", "1");
+	ATOM(0, "atom", "Atom"),
 
 	/**
-	 * The '<em><b>Three</b></em>' literal value.
+	 * The '<em><b>Rss</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #RSS_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	RSS(1, "rss", "RSS");
+
+	/**
+	 * The '<em><b>Atom</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>Three</b></em>' literal object isn't clear,
+	 * If the meaning of '<em><b>Atom</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #THREE
-	 * @model name="three" literal="3"
+	 * @see #ATOM
+	 * @model name="atom" literal="Atom"
 	 * @generated
 	 * @ordered
 	 */
-	public static final int THREE_VALUE = 3;
+	public static final int ATOM_VALUE = 0;
 
 	/**
-	 * The '<em><b>Two</b></em>' literal value.
+	 * The '<em><b>Rss</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>Two</b></em>' literal object isn't clear,
+	 * If the meaning of '<em><b>Rss</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #TWO
-	 * @model name="two" literal="2"
+	 * @see #RSS
+	 * @model name="rss" literal="RSS"
 	 * @generated
 	 * @ordered
 	 */
-	public static final int TWO_VALUE = 2;
+	public static final int RSS_VALUE = 1;
 
 	/**
-	 * The '<em><b>One</b></em>' literal value.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>One</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @see #ONE
-	 * @model name="one" literal="1"
-	 * @generated
-	 * @ordered
-	 */
-	public static final int ONE_VALUE = 1;
-
-	/**
-	 * An array of all the '<em><b>JMS Cache Level</b></em>' enumerators.
+	 * An array of all the '<em><b>Feed Type</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final JMSCacheLevel[] VALUES_ARRAY =
-		new JMSCacheLevel[] {
-			THREE,
-			TWO,
-			ONE,
+	private static final FeedType[] VALUES_ARRAY =
+		new FeedType[] {
+			ATOM,
+			RSS,
 		};
 
 	/**
-	 * A public read-only list of all the '<em><b>JMS Cache Level</b></em>' enumerators.
+	 * A public read-only list of all the '<em><b>Feed Type</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List<JMSCacheLevel> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<FeedType> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
-	 * Returns the '<em><b>JMS Cache Level</b></em>' literal with the specified literal value.
+	 * Returns the '<em><b>Feed Type</b></em>' literal with the specified literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static JMSCacheLevel get(String literal) {
+	public static FeedType get(String literal) {
 		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-			JMSCacheLevel result = VALUES_ARRAY[i];
+			FeedType result = VALUES_ARRAY[i];
 			if (result.toString().equals(literal)) {
 				return result;
 			}
@@ -140,14 +118,14 @@ public enum JMSCacheLevel implements Enumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>JMS Cache Level</b></em>' literal with the specified name.
+	 * Returns the '<em><b>Feed Type</b></em>' literal with the specified name.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static JMSCacheLevel getByName(String name) {
+	public static FeedType getByName(String name) {
 		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-			JMSCacheLevel result = VALUES_ARRAY[i];
+			FeedType result = VALUES_ARRAY[i];
 			if (result.getName().equals(name)) {
 				return result;
 			}
@@ -156,16 +134,15 @@ public enum JMSCacheLevel implements Enumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>JMS Cache Level</b></em>' literal with the specified integer value.
+	 * Returns the '<em><b>Feed Type</b></em>' literal with the specified integer value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static JMSCacheLevel get(int value) {
+	public static FeedType get(int value) {
 		switch (value) {
-			case THREE_VALUE: return THREE;
-			case TWO_VALUE: return TWO;
-			case ONE_VALUE: return ONE;
+			case ATOM_VALUE: return ATOM;
+			case RSS_VALUE: return RSS;
 		}
 		return null;
 	}
@@ -197,7 +174,7 @@ public enum JMSCacheLevel implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private JMSCacheLevel(int value, String name, String literal) {
+	private FeedType(int value, String name, String literal) {
 		this.value = value;
 		this.name = name;
 		this.literal = literal;
@@ -241,4 +218,4 @@ public enum JMSCacheLevel implements Enumerator {
 		return literal;
 	}
 	
-} //JMSCacheLevel
+} //FeedType

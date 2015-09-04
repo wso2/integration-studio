@@ -37,6 +37,7 @@ import org.apache.maven.model.PluginExecution;
 import org.apache.maven.project.MavenProject;
 import org.apache.synapse.config.xml.MessageProcessorSerializer;
 import org.apache.synapse.message.processor.MessageProcessor;
+import org.apache.synapse.message.processor.impl.failover.FailoverScheduledMessageForwardingProcessor;
 import org.apache.synapse.message.processor.impl.forwarder.ScheduledMessageForwardingProcessor;
 import org.apache.synapse.message.processor.impl.sampler.SamplingProcessor;
 import org.codehaus.plexus.util.xml.Xpp3Dom;
@@ -207,69 +208,90 @@ public class MessageProcessorCreationWizard extends AbstractWSO2ProjectCreationW
 		if (messageProcessorModel.getMessageProcessorType().equals(
 				"Scheduled Message Forwarding Processor")) {
 			messageProcessorPrameeters = new HashMap<String, Object>();
-			
+
 			// Fixing TOOLS-2026.
-			//className = "org.apache.synapse.message.processors.forward.ScheduledMessageForwardingProcessor";
+			// className =
+			// "org.apache.synapse.message.processors.forward.ScheduledMessageForwardingProcessor";
 			className = "org.apache.synapse.message.processor.impl.forwarder.ScheduledMessageForwardingProcessor";
 
 			messageProcessorPrameeters.put("interval",
-					((Integer) messageProcessorModel.getForwardingInterval()).toString());
+					((Integer) messageProcessorModel.getForwardingInterval())
+							.toString());
 
-			if (StringUtils.isNotBlank(messageProcessorModel.getRetryInterval())) {
+			if (StringUtils
+					.isNotBlank(messageProcessorModel.getRetryInterval())) {
 				messageProcessorPrameeters.put("client.retry.interval",
 						messageProcessorModel.getRetryInterval());
 			}
-			if (StringUtils.isNotBlank(messageProcessorModel.getDeliveryAttempts())) {
+			if (StringUtils.isNotBlank(messageProcessorModel
+					.getDeliveryAttempts())) {
 				messageProcessorPrameeters.put("max.delivery.attempts",
 						messageProcessorModel.getDeliveryAttempts());
 			}
-			if (StringUtils.isNotBlank(messageProcessorModel.getClientRepository())) {
+			if (StringUtils.isNotBlank(messageProcessorModel
+					.getClientRepository())) {
 				messageProcessorPrameeters.put("axis2.repo",
 						messageProcessorModel.getClientRepository());
 			}
-			if (StringUtils.isNotBlank(messageProcessorModel.getAxis2Configuration())) {
+			if (StringUtils.isNotBlank(messageProcessorModel
+					.getAxis2Configuration())) {
 				messageProcessorPrameeters.put("axis2.config",
 						messageProcessorModel.getAxis2Configuration());
 			}
-			if (StringUtils.isNotBlank(messageProcessorModel.getReplySequenceName())) {
-				messageProcessorPrameeters.put("message.processor.reply.sequence",
+			if (StringUtils.isNotBlank(messageProcessorModel
+					.getReplySequenceName())) {
+				messageProcessorPrameeters.put(
+						"message.processor.reply.sequence",
 						messageProcessorModel.getReplySequenceName());
 			}
-			if (StringUtils.isNotBlank(messageProcessorModel.getFaultSequenceName())) {
-				messageProcessorPrameeters.put("message.processor.fault.sequence",
+			if (StringUtils.isNotBlank(messageProcessorModel
+					.getFaultSequenceName())) {
+				messageProcessorPrameeters.put(
+						"message.processor.fault.sequence",
 						messageProcessorModel.getFaultSequenceName());
 			}
-			if (StringUtils.isNotBlank(messageProcessorModel.getDeactivateSequenceName())) {
-				messageProcessorPrameeters.put("message.processor.deactivate.sequence",
+			if (StringUtils.isNotBlank(messageProcessorModel
+					.getDeactivateSequenceName())) {
+				messageProcessorPrameeters.put(
+						"message.processor.deactivate.sequence",
 						messageProcessorModel.getDeactivateSequenceName());
 			}
-			if (StringUtils.isNotBlank(messageProcessorModel.getConfigurationFilePath())) {
+			if (StringUtils.isNotBlank(messageProcessorModel
+					.getConfigurationFilePath())) {
 				messageProcessorPrameeters.put("quartz.conf",
 						messageProcessorModel.getConfigurationFilePath());
 			}
-			if (StringUtils.isNotBlank(messageProcessorModel.getCronExpression())) {
+			if (StringUtils.isNotBlank(messageProcessorModel
+					.getCronExpression())) {
 				messageProcessorPrameeters.put("cronExpression",
 						messageProcessorModel.getCronExpression());
 			}
-			if (StringUtils.isNotBlank(messageProcessorModel.getProcessorState())) {
-				if (messageProcessorModel.getProcessorState().equals("Activate")) {
+			if (StringUtils.isNotBlank(messageProcessorModel
+					.getProcessorState())) {
+				if (messageProcessorModel.getProcessorState()
+						.equals("Activate")) {
 					Boolean isActive = true;
-					messageProcessorPrameeters.put("is.active", isActive.toString());
+					messageProcessorPrameeters.put("is.active",
+							isActive.toString());
 				} else {
 					Boolean isActive = false;
-					messageProcessorPrameeters.put("is.active", isActive.toString());
+					messageProcessorPrameeters.put("is.active",
+							isActive.toString());
 				}
 			}
-			if (StringUtils.isNotBlank(messageProcessorModel.getNonRetryHttpStatusCodes())) {
+			if (StringUtils.isNotBlank(messageProcessorModel
+					.getNonRetryHttpStatusCodes())) {
 				messageProcessorPrameeters.put("non.retry.status.codes",
 						messageProcessorModel.getNonRetryHttpStatusCodes());
 			}
-			
-			if (StringUtils.isNotBlank(messageProcessorModel.getDropMessageAfterMaxDeliveryAttempts())) {
+
+			if (StringUtils.isNotBlank(messageProcessorModel
+					.getDropMessageAfterMaxDeliveryAttempts())) {
 				messageProcessorPrameeters.put("max.delivery.drop",
-						messageProcessorModel.getDropMessageAfterMaxDeliveryAttempts());
+						messageProcessorModel
+								.getDropMessageAfterMaxDeliveryAttempts());
 			}
-			
+
 			if (StringUtils.isNotBlank(messageProcessorModel.getTaskCount())) {
 				messageProcessorPrameeters.put("member.count",
 						messageProcessorModel.getTaskCount());
@@ -277,9 +299,12 @@ public class MessageProcessorCreationWizard extends AbstractWSO2ProjectCreationW
 
 			messageProcessor = new ScheduledMessageForwardingProcessor();
 
-			messageProcessor.setTargetEndpoint(messageProcessorModel.getEndpointName());
-			messageProcessor.setName(messageProcessorModel.getMessageProcessorName());
-			messageProcessor.setMessageStoreName(messageProcessorModel.getMessageStore());
+			messageProcessor.setTargetEndpoint(messageProcessorModel
+					.getEndpointName());
+			messageProcessor.setName(messageProcessorModel
+					.getMessageProcessorName());
+			messageProcessor.setMessageStoreName(messageProcessorModel
+					.getMessageStore());
 			messageProcessor.setParameters(messageProcessorPrameeters);
 
 		} else if (messageProcessorModel.getMessageProcessorType().equals(
@@ -345,7 +370,69 @@ public class MessageProcessorCreationWizard extends AbstractWSO2ProjectCreationW
 					}
 				}
 			}
-		}
+		} else if (messageProcessorModel.getMessageProcessorType().equals(
+				"Scheduled Failover Message Forwarding Processor")) {
+			messageProcessorPrameeters = new HashMap<String, Object>();
+			className = "org.apache.synapse.message.processor.impl.failover.FailoverScheduledMessageForwardingProcessor";
+
+			messageProcessorPrameeters.put("interval",
+					((Integer) messageProcessorModel.getForwardingInterval()).toString());
+
+			if (StringUtils.isNotBlank(messageProcessorModel.getRetryInterval())) {
+				messageProcessorPrameeters.put("client.retry.interval",
+						messageProcessorModel.getRetryInterval());
+			}
+			if (StringUtils.isNotBlank(messageProcessorModel.getDeliveryAttempts())) {
+				messageProcessorPrameeters.put("max.delivery.attempts",
+						messageProcessorModel.getDeliveryAttempts());
+			}
+			if (StringUtils.isNotBlank(messageProcessorModel.getFaultSequenceName())) {
+				messageProcessorPrameeters.put("message.processor.fault.sequence",
+						messageProcessorModel.getFaultSequenceName());
+			}
+			if (StringUtils.isNotBlank(messageProcessorModel.getDeactivateSequenceName())) {
+				messageProcessorPrameeters.put("message.processor.deactivate.sequence",
+						messageProcessorModel.getDeactivateSequenceName());
+			}
+			if (StringUtils.isNotBlank(messageProcessorModel.getConfigurationFilePath())) {
+				messageProcessorPrameeters.put("quartz.conf",
+						messageProcessorModel.getConfigurationFilePath());
+			}
+			if (StringUtils.isNotBlank(messageProcessorModel.getCronExpression())) {
+				messageProcessorPrameeters.put("cronExpression",
+						messageProcessorModel.getCronExpression());
+			}
+			if (StringUtils.isNotBlank(messageProcessorModel.getProcessorState())) {
+				if (messageProcessorModel.getProcessorState().equals("Activate")) {
+					Boolean isActive = true;
+					messageProcessorPrameeters.put("is.active", isActive.toString());
+				} else {
+					Boolean isActive = false;
+					messageProcessorPrameeters.put("is.active", isActive.toString());
+				}
+			}
+			if (StringUtils.isNotBlank(messageProcessorModel.getDropMessageAfterMaxDeliveryAttempts())) {
+				messageProcessorPrameeters.put("max.delivery.drop",
+						messageProcessorModel.getDropMessageAfterMaxDeliveryAttempts());
+			}
+			
+			if (StringUtils.isNotBlank(messageProcessorModel.getTaskCount())) {
+				messageProcessorPrameeters.put("member.count",
+						messageProcessorModel.getTaskCount());
+			}
+			
+			if (StringUtils.isNotBlank(messageProcessorModel.getTargetMessageStore())) {
+				messageProcessorPrameeters.put("message.target.store.name",
+						messageProcessorModel.getTargetMessageStore());
+			}
+
+			messageProcessor = new FailoverScheduledMessageForwardingProcessor();
+
+			messageProcessor.setName(messageProcessorModel.getMessageProcessorName());
+			messageProcessor.setMessageStoreName(messageProcessorModel.getSourceMessageStore());
+			messageProcessor.setParameters(messageProcessorPrameeters);
+
+		} 
 
 		messageProcessorElement = MessageProcessorSerializer.serializeMessageProcessor(null,
 				messageProcessor);

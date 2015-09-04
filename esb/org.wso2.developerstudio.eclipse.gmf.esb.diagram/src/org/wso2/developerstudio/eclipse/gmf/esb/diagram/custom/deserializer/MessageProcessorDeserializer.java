@@ -38,15 +38,15 @@ import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom.Dumm
  * processor object
  */
 public class MessageProcessorDeserializer
-extends
-AbstractEsbNodeDeserializer<MessageProcessor, org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor> {
+		extends
+		AbstractEsbNodeDeserializer<MessageProcessor, org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor> {
 
 	// Fixing TOOLS-2026.
 	private static final String scheduledMessageForwardingProcessorOld = "org.apache.synapse.message.processors.forward.ScheduledMessageForwardingProcessor";
 	private static final String messageSamplingProcessorOld = "org.apache.synapse.message.processors.sampler.SamplingProcessor";
 	private static final String scheduledMessageForwardingProcessor = "org.apache.synapse.message.processor.impl.forwarder.ScheduledMessageForwardingProcessor";
 	private static final String messageSamplingProcessor = "org.apache.synapse.message.processor.impl.sampler.SamplingProcessor";
-	
+
 	@Override
 	public org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor createNode(
 			IGraphicalEditPart part, MessageProcessor processor) {
@@ -57,35 +57,39 @@ AbstractEsbNodeDeserializer<MessageProcessor, org.wso2.developerstudio.eclipse.g
 		if (processor instanceof DummyMessageProcessor) {
 			DummyMessageProcessor dummyMessageProcessor = (DummyMessageProcessor) processor;
 			if (StringUtils.isNotBlank(dummyMessageProcessor.getClassName())) {
-				if (dummyMessageProcessor.getClassName()
-						.equals(scheduledMessageForwardingProcessor)
-						|| dummyMessageProcessor.getClassName().equals(
-								scheduledMessageForwardingProcessorOld)) {
+				if (dummyMessageProcessor.getClassName().equals(
+						scheduledMessageForwardingProcessor)) {
 					// Scheduled Message Forwarding Processor
 					executeSetValueCommand(MESSAGE_PROCESSOR__PROCESSOR_TYPE,
 							MessageProcessorType.SCHEDULED_MSG_FORWARDING);
-					Map<String, Object> parameters = dummyMessageProcessor.getParameters();
+					Map<String, Object> parameters = dummyMessageProcessor
+							.getParameters();
 
 					// Endpoint name.
 					if (StringUtils.isNotBlank(processor.getTargetEndpoint())) {
 						RegistryKeyProperty endpointName = EsbFactory.eINSTANCE
 								.createRegistryKeyProperty();
 						endpointName.setKeyValue(processor.getTargetEndpoint());
-						executeSetValueCommand(MESSAGE_PROCESSOR__ENDPOINT_NAME, endpointName);
+						executeSetValueCommand(
+								MESSAGE_PROCESSOR__ENDPOINT_NAME, endpointName);
 					}
 
 					// Parameters.
 					if (parameters.containsKey("client.retry.interval")) {
 						Object value = parameters.get("client.retry.interval");
-						if (value != null && StringUtils.isNumeric(value.toString())) {
-							executeSetValueCommand(MESSAGE_PROCESSOR__RETRY_INTERVAL, new Long(
-									value.toString()));
+						if (value != null
+								&& StringUtils.isNumeric(value.toString())) {
+							executeSetValueCommand(
+									MESSAGE_PROCESSOR__RETRY_INTERVAL,
+									new Long(value.toString()));
 						}
 					}
 					if (parameters.containsKey("interval")) {
 						Object value = parameters.get("interval");
-						if (value != null && StringUtils.isNumeric(value.toString())) {
-							executeSetValueCommand(MESSAGE_PROCESSOR__FORWARDING_INTERVAL,
+						if (value != null
+								&& StringUtils.isNumeric(value.toString())) {
+							executeSetValueCommand(
+									MESSAGE_PROCESSOR__FORWARDING_INTERVAL,
 									new Long(value.toString()));
 						}
 					}
@@ -93,70 +97,86 @@ AbstractEsbNodeDeserializer<MessageProcessor, org.wso2.developerstudio.eclipse.g
 						Object value = parameters.get("max.delivery.attempts");
 						if (value != null) {
 							try {
-								executeSetValueCommand(MESSAGE_PROCESSOR__MAX_DELIVERY_ATTEMPTS,
+								executeSetValueCommand(
+										MESSAGE_PROCESSOR__MAX_DELIVERY_ATTEMPTS,
 										new Integer(value.toString()));
-							} catch(NumberFormatException e) {
-								//set default value -1
-								executeSetValueCommand(MESSAGE_PROCESSOR__MAX_DELIVERY_ATTEMPTS, -1);
+							} catch (NumberFormatException e) {
+								// set default value -1
+								executeSetValueCommand(
+										MESSAGE_PROCESSOR__MAX_DELIVERY_ATTEMPTS,
+										-1);
 							}
-							
+
 						}
 					}
 					if (parameters.containsKey("axis2.repo")) {
 						Object value = parameters.get("axis2.repo");
 						if (StringUtils.isNotBlank(value.toString())) {
-							executeSetValueCommand(MESSAGE_PROCESSOR__AXIS2_CLIENT_REPOSITORY,
+							executeSetValueCommand(
+									MESSAGE_PROCESSOR__AXIS2_CLIENT_REPOSITORY,
 									value.toString());
 						}
 					}
 					if (parameters.containsKey("axis2.config")) {
 						Object value = parameters.get("axis2.config");
 						if (StringUtils.isNotBlank(value.toString())) {
-							executeSetValueCommand(MESSAGE_PROCESSOR__AXIS2_CONFIGURATION,
+							executeSetValueCommand(
+									MESSAGE_PROCESSOR__AXIS2_CONFIGURATION,
 									value.toString());
 						}
 					}
-					if (parameters.containsKey("message.processor.reply.sequence")) {
-						Object value = parameters.get("message.processor.reply.sequence");
+					if (parameters
+							.containsKey("message.processor.reply.sequence")) {
+						Object value = parameters
+								.get("message.processor.reply.sequence");
 						if (StringUtils.isNotBlank(value.toString())) {
 							RegistryKeyProperty replaySequence = EsbFactory.eINSTANCE
 									.createRegistryKeyProperty();
 							replaySequence.setKeyValue(value.toString());
-							executeSetValueCommand(MESSAGE_PROCESSOR__REPLY_SEQUENCE_NAME,
+							executeSetValueCommand(
+									MESSAGE_PROCESSOR__REPLY_SEQUENCE_NAME,
 									replaySequence);
 						}
 					}
-					if (parameters.containsKey("message.processor.fault.sequence")) {
-						Object value = parameters.get("message.processor.fault.sequence");
+					if (parameters
+							.containsKey("message.processor.fault.sequence")) {
+						Object value = parameters
+								.get("message.processor.fault.sequence");
 						if (StringUtils.isNotBlank(value.toString())) {
 							RegistryKeyProperty faultSequence = EsbFactory.eINSTANCE
 									.createRegistryKeyProperty();
 							faultSequence.setKeyValue(value.toString());
-							executeSetValueCommand(MESSAGE_PROCESSOR__FAULT_SEQUENCE_NAME,
+							executeSetValueCommand(
+									MESSAGE_PROCESSOR__FAULT_SEQUENCE_NAME,
 									faultSequence);
 						}
 					}
-					if (parameters.containsKey("message.processor.deactivate.sequence")) {
-						Object value = parameters.get("message.processor.deactivate.sequence");
+					if (parameters
+							.containsKey("message.processor.deactivate.sequence")) {
+						Object value = parameters
+								.get("message.processor.deactivate.sequence");
 						if (StringUtils.isNotBlank(value.toString())) {
 							RegistryKeyProperty deactivateSequence = EsbFactory.eINSTANCE
 									.createRegistryKeyProperty();
 							deactivateSequence.setKeyValue(value.toString());
-							executeSetValueCommand(MESSAGE_PROCESSOR__DEACTIVATE_SEQUENCE_NAME,
+							executeSetValueCommand(
+									MESSAGE_PROCESSOR__DEACTIVATE_SEQUENCE_NAME,
 									deactivateSequence);
 						}
 					}
 					if (parameters.containsKey("quartz.conf")) {
 						Object value = parameters.get("quartz.conf");
 						if (StringUtils.isNotBlank(value.toString())) {
-							executeSetValueCommand(MESSAGE_PROCESSOR__QUARTZ_CONFIG_FILE_PATH,
+							executeSetValueCommand(
+									MESSAGE_PROCESSOR__QUARTZ_CONFIG_FILE_PATH,
 									value.toString());
 						}
 					}
 					if (parameters.containsKey("cronExpression")) {
 						Object value = parameters.get("cronExpression");
 						if (StringUtils.isNotBlank(value.toString())) {
-							executeSetValueCommand(MESSAGE_PROCESSOR__CRON_EXPRESSION,
+							executeSetValueCommand(
+									MESSAGE_PROCESSOR__CRON_EXPRESSION,
 									value.toString());
 						}
 					}
@@ -164,10 +184,12 @@ AbstractEsbNodeDeserializer<MessageProcessor, org.wso2.developerstudio.eclipse.g
 						Object value = parameters.get("is.active");
 						if (StringUtils.isNotBlank(value.toString())) {
 							if ("true".equals(value)) {
-								executeSetValueCommand(MESSAGE_PROCESSOR__PROCESSOR_STATE,
+								executeSetValueCommand(
+										MESSAGE_PROCESSOR__PROCESSOR_STATE,
 										ProcessorState.ACTIVATE);
 							} else {
-								executeSetValueCommand(MESSAGE_PROCESSOR__PROCESSOR_STATE,
+								executeSetValueCommand(
+										MESSAGE_PROCESSOR__PROCESSOR_STATE,
 										ProcessorState.DEACTIVATE);
 							}
 						}
@@ -175,20 +197,24 @@ AbstractEsbNodeDeserializer<MessageProcessor, org.wso2.developerstudio.eclipse.g
 					if (parameters.containsKey("non.retry.status.codes")) {
 						Object value = parameters.get("non.retry.status.codes");
 						if (StringUtils.isNotBlank(value.toString())) {
-							executeSetValueCommand(MESSAGE_PROCESSOR__NON_RETRY_HTTP_STATUS_CODES,
+							executeSetValueCommand(
+									MESSAGE_PROCESSOR__NON_RETRY_HTTP_STATUS_CODES,
 									value.toString());
 						}
 					}
 					if (parameters.containsKey("max.delivery.drop")) {
 						Object value = parameters.get("max.delivery.drop");
 						if (StringUtils.isNotBlank(value.toString())) {
-							executeSetValueCommand(MESSAGE_PROCESSOR__DROP_MESSAGE_AFTER_MAXIMUM_DELIVERY_ATTEMPTS,
+							executeSetValueCommand(
+									MESSAGE_PROCESSOR__DROP_MESSAGE_AFTER_MAXIMUM_DELIVERY_ATTEMPTS,
 									value.toString());
 							if ("Enabled".equals(value)) {
-								executeSetValueCommand(MESSAGE_PROCESSOR__DROP_MESSAGE_AFTER_MAXIMUM_DELIVERY_ATTEMPTS,
+								executeSetValueCommand(
+										MESSAGE_PROCESSOR__DROP_MESSAGE_AFTER_MAXIMUM_DELIVERY_ATTEMPTS,
 										EnableDisableState.ENABLED);
 							} else {
-								executeSetValueCommand(MESSAGE_PROCESSOR__DROP_MESSAGE_AFTER_MAXIMUM_DELIVERY_ATTEMPTS,
+								executeSetValueCommand(
+										MESSAGE_PROCESSOR__DROP_MESSAGE_AFTER_MAXIMUM_DELIVERY_ATTEMPTS,
 										EnableDisableState.DISABLED);
 							}
 						}
@@ -196,51 +222,95 @@ AbstractEsbNodeDeserializer<MessageProcessor, org.wso2.developerstudio.eclipse.g
 					if (parameters.containsKey("member.count")) {
 						Object value = parameters.get("member.count");
 						if (StringUtils.isNotBlank(value.toString())) {
-							executeSetValueCommand(MESSAGE_PROCESSOR__TASK_COUNT,
+							executeSetValueCommand(
+									MESSAGE_PROCESSOR__TASK_COUNT,
 									value.toString());
 						}
 					}
-				} else if (dummyMessageProcessor.getClassName().equals(messageSamplingProcessor)
-						|| dummyMessageProcessor.getClassName().equals(messageSamplingProcessorOld)) {
-					// Message Sampling Processor
-					executeSetValueCommand(MESSAGE_PROCESSOR__PROCESSOR_TYPE,
-							MessageProcessorType.MSG_SAMPLING);
-					Map<String, Object> parameters = dummyMessageProcessor.getParameters();
+				} else if (dummyMessageProcessor
+						.getClassName()
+						.equals("org.apache.synapse.message.processor.impl.failover.FailoverScheduledMessageForwardingProcessor")) {
+					// Scheduled Fail over Message Forwarding Processor
+					executeSetValueCommand(
+							MESSAGE_PROCESSOR__PROCESSOR_TYPE,
+							MessageProcessorType.SCHEDULED_FAILOVER_MSG_FORWARDING);
+					Map<String, Object> parameters = dummyMessageProcessor
+							.getParameters();
 
-					if (parameters.containsKey("sequence")) {
-						Object value = parameters.get("sequence");
-						if (StringUtils.isNotBlank(value.toString())) {
-							RegistryKeyProperty sequence = EsbFactory.eINSTANCE
-									.createRegistryKeyProperty();
-							sequence.setKeyValue(value.toString());
-							executeSetValueCommand(MESSAGE_PROCESSOR__SEQUENCE, sequence);
+					// Parameters.
+					if (parameters.containsKey("client.retry.interval")) {
+						Object value = parameters.get("client.retry.interval");
+						if (value != null
+								&& StringUtils.isNumeric(value.toString())) {
+							executeSetValueCommand(
+									MESSAGE_PROCESSOR__RETRY_INTERVAL,
+									new Long(value.toString()));
 						}
 					}
 					if (parameters.containsKey("interval")) {
 						Object value = parameters.get("interval");
-						if (value != null && StringUtils.isNumeric(value.toString())) {
-							executeSetValueCommand(MESSAGE_PROCESSOR__SAMPLING_INTERVAL, new Long(
-									value.toString()));
+						if (value != null
+								&& StringUtils.isNumeric(value.toString())) {
+							executeSetValueCommand(
+									MESSAGE_PROCESSOR__FORWARDING_INTERVAL,
+									new Long(value.toString()));
 						}
 					}
-					if (parameters.containsKey("concurrency")) {
-						Object value = parameters.get("concurrency");
-						if (value != null && StringUtils.isNumeric(value.toString())) {
-							executeSetValueCommand(MESSAGE_PROCESSOR__SAMPLING_CONCURRENCY,
-									new Integer(value.toString()));
+					if (parameters.containsKey("max.delivery.attempts")) {
+						Object value = parameters.get("max.delivery.attempts");
+						if (value != null) {
+							try {
+								executeSetValueCommand(
+										MESSAGE_PROCESSOR__MAX_DELIVERY_ATTEMPTS,
+										new Integer(value.toString()));
+							} catch (NumberFormatException e) {
+								// set default value -1
+								executeSetValueCommand(
+										MESSAGE_PROCESSOR__MAX_DELIVERY_ATTEMPTS,
+										-1);
+							}
+
+						}
+					}
+					if (parameters
+							.containsKey("message.processor.fault.sequence")) {
+						Object value = parameters
+								.get("message.processor.fault.sequence");
+						if (StringUtils.isNotBlank(value.toString())) {
+							RegistryKeyProperty faultSequence = EsbFactory.eINSTANCE
+									.createRegistryKeyProperty();
+							faultSequence.setKeyValue(value.toString());
+							executeSetValueCommand(
+									MESSAGE_PROCESSOR__FAULT_SEQUENCE_NAME,
+									faultSequence);
+						}
+					}
+					if (parameters
+							.containsKey("message.processor.deactivate.sequence")) {
+						Object value = parameters
+								.get("message.processor.deactivate.sequence");
+						if (StringUtils.isNotBlank(value.toString())) {
+							RegistryKeyProperty deactivateSequence = EsbFactory.eINSTANCE
+									.createRegistryKeyProperty();
+							deactivateSequence.setKeyValue(value.toString());
+							executeSetValueCommand(
+									MESSAGE_PROCESSOR__DEACTIVATE_SEQUENCE_NAME,
+									deactivateSequence);
 						}
 					}
 					if (parameters.containsKey("quartz.conf")) {
 						Object value = parameters.get("quartz.conf");
 						if (StringUtils.isNotBlank(value.toString())) {
-							executeSetValueCommand(MESSAGE_PROCESSOR__QUARTZ_CONFIG_FILE_PATH,
+							executeSetValueCommand(
+									MESSAGE_PROCESSOR__QUARTZ_CONFIG_FILE_PATH,
 									value.toString());
 						}
 					}
 					if (parameters.containsKey("cronExpression")) {
 						Object value = parameters.get("cronExpression");
 						if (StringUtils.isNotBlank(value.toString())) {
-							executeSetValueCommand(MESSAGE_PROCESSOR__CRON_EXPRESSION,
+							executeSetValueCommand(
+									MESSAGE_PROCESSOR__CRON_EXPRESSION,
 									value.toString());
 						}
 					}
@@ -248,10 +318,114 @@ AbstractEsbNodeDeserializer<MessageProcessor, org.wso2.developerstudio.eclipse.g
 						Object value = parameters.get("is.active");
 						if (StringUtils.isNotBlank(value.toString())) {
 							if ("true".equals(value)) {
-								executeSetValueCommand(MESSAGE_PROCESSOR__PROCESSOR_STATE,
+								executeSetValueCommand(
+										MESSAGE_PROCESSOR__PROCESSOR_STATE,
 										ProcessorState.ACTIVATE);
 							} else {
-								executeSetValueCommand(MESSAGE_PROCESSOR__PROCESSOR_STATE,
+								executeSetValueCommand(
+										MESSAGE_PROCESSOR__PROCESSOR_STATE,
+										ProcessorState.DEACTIVATE);
+							}
+						}
+					}
+					if (parameters.containsKey("max.delivery.drop")) {
+						Object value = parameters.get("max.delivery.drop");
+						if (StringUtils.isNotBlank(value.toString())) {
+							executeSetValueCommand(
+									MESSAGE_PROCESSOR__DROP_MESSAGE_AFTER_MAXIMUM_DELIVERY_ATTEMPTS,
+									value.toString());
+							if ("Enabled".equals(value)) {
+								executeSetValueCommand(
+										MESSAGE_PROCESSOR__DROP_MESSAGE_AFTER_MAXIMUM_DELIVERY_ATTEMPTS,
+										EnableDisableState.ENABLED);
+							} else {
+								executeSetValueCommand(
+										MESSAGE_PROCESSOR__DROP_MESSAGE_AFTER_MAXIMUM_DELIVERY_ATTEMPTS,
+										EnableDisableState.DISABLED);
+							}
+						}
+					}
+					if (parameters.containsKey("member.count")) {
+						Object value = parameters.get("member.count");
+						if (StringUtils.isNotBlank(value.toString())) {
+							executeSetValueCommand(
+									MESSAGE_PROCESSOR__TASK_COUNT,
+									value.toString());
+						}
+					}
+					if (parameters.containsKey("message.target.store.name")) {
+						Object value = parameters
+								.get("message.target.store.name");
+						if (StringUtils.isNotBlank(value.toString())) {
+							executeSetValueCommand(
+									MESSAGE_PROCESSOR__TARGET_MESSAGE_STORE,
+									value.toString());
+						}
+					}
+				} else if (dummyMessageProcessor.getClassName().equals(
+						messageSamplingProcessor)
+						|| dummyMessageProcessor.getClassName().equals(
+								messageSamplingProcessorOld)) {
+					// Message Sampling Processor
+					executeSetValueCommand(MESSAGE_PROCESSOR__PROCESSOR_TYPE,
+							MessageProcessorType.MSG_SAMPLING);
+					Map<String, Object> parameters = dummyMessageProcessor
+							.getParameters();
+
+					if (parameters.containsKey("sequence")) {
+						Object value = parameters.get("sequence");
+						if (StringUtils.isNotBlank(value.toString())) {
+							RegistryKeyProperty sequence = EsbFactory.eINSTANCE
+									.createRegistryKeyProperty();
+							sequence.setKeyValue(value.toString());
+							executeSetValueCommand(MESSAGE_PROCESSOR__SEQUENCE,
+									sequence);
+						}
+					}
+					if (parameters.containsKey("interval")) {
+						Object value = parameters.get("interval");
+						if (value != null
+								&& StringUtils.isNumeric(value.toString())) {
+							executeSetValueCommand(
+									MESSAGE_PROCESSOR__SAMPLING_INTERVAL,
+									new Long(value.toString()));
+						}
+					}
+					if (parameters.containsKey("concurrency")) {
+						Object value = parameters.get("concurrency");
+						if (value != null
+								&& StringUtils.isNumeric(value.toString())) {
+							executeSetValueCommand(
+									MESSAGE_PROCESSOR__SAMPLING_CONCURRENCY,
+									new Integer(value.toString()));
+						}
+					}
+					if (parameters.containsKey("quartz.conf")) {
+						Object value = parameters.get("quartz.conf");
+						if (StringUtils.isNotBlank(value.toString())) {
+							executeSetValueCommand(
+									MESSAGE_PROCESSOR__QUARTZ_CONFIG_FILE_PATH,
+									value.toString());
+						}
+					}
+					if (parameters.containsKey("cronExpression")) {
+						Object value = parameters.get("cronExpression");
+						if (StringUtils.isNotBlank(value.toString())) {
+							executeSetValueCommand(
+									MESSAGE_PROCESSOR__CRON_EXPRESSION,
+									value.toString());
+						}
+					}
+					if (parameters.containsKey("is.active")) {
+						Object value = parameters.get("is.active");
+						if (StringUtils.isNotBlank(value.toString())) {
+							if ("true".equals(value)) {
+								executeSetValueCommand(
+										MESSAGE_PROCESSOR__PROCESSOR_STATE,
+										ProcessorState.ACTIVATE);
+							} else {
+								executeSetValueCommand(
+										MESSAGE_PROCESSOR__PROCESSOR_STATE,
 										ProcessorState.DEACTIVATE);
 							}
 						}
@@ -260,23 +434,31 @@ AbstractEsbNodeDeserializer<MessageProcessor, org.wso2.developerstudio.eclipse.g
 					// Custom Message Processor
 					executeSetValueCommand(MESSAGE_PROCESSOR__PROCESSOR_TYPE,
 							MessageProcessorType.CUSTOM);
-					executeSetValueCommand(MESSAGE_PROCESSOR__MESSAGE_PROCESSOR_PROVIDER,
+					executeSetValueCommand(
+							MESSAGE_PROCESSOR__MESSAGE_PROCESSOR_PROVIDER,
 							dummyMessageProcessor.getClassName());
 
-					for (Entry<String, Object> parameter : dummyMessageProcessor.getParameters()
-							.entrySet()) {
+					for (Entry<String, Object> parameter : dummyMessageProcessor
+							.getParameters().entrySet()) {
 						MessageProcessorParameter processorParameter = EsbFactory.eINSTANCE
 								.createMessageProcessorParameter();
 						processorParameter.setParameterName(parameter.getKey());
-						processorParameter.setParameterValue(parameter.getValue().toString());
-						executeAddValueCommand(messageProcessor.getParameters(), processorParameter);
+						processorParameter.setParameterValue(parameter
+								.getValue().toString());
+						executeAddValueCommand(
+								messageProcessor.getParameters(),
+								processorParameter);
 					}
 				}
 			}
 		}
 
-		executeSetValueCommand(MESSAGE_PROCESSOR__PROCESSOR_NAME, processor.getName());
-		executeSetValueCommand(MESSAGE_PROCESSOR__MESSAGE_STORE, processor.getMessageStoreName());
+		executeSetValueCommand(MESSAGE_PROCESSOR__PROCESSOR_NAME,
+				processor.getName());
+		executeSetValueCommand(MESSAGE_PROCESSOR__MESSAGE_STORE,
+				processor.getMessageStoreName());
+		executeSetValueCommand(MESSAGE_PROCESSOR__SOURCE_MESSAGE_STORE,
+				processor.getMessageStoreName());
 
 		return messageProcessor;
 	}

@@ -169,20 +169,6 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
         super();
         IWorkbench workbench = PlatformUI.getWorkbench();
         IWorkbenchWindow window = workbench.getActiveWorkbenchWindow();   
-        IPerspectiveDescriptor perspective = window.getActivePage().getPerspective();
-        // open the perspective "wso2 esb graphical"
-        // TODO review if this is the best place for switching
-        try {        	
-        	if ("org.wso2.developerstudio.registry.remote.registry.apim.pespective".equals(perspective.getId()) ||
-        			"org.wso2.developerstudio.registry.remote.registry.pespective".equals(perspective.getId())){        	
-        		//Do not change the original perspective  TODO - change the perspective may adding additional views 
-        	}else{
-        		workbench.showPerspective("org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.perspective", window);
-        	}
-		} catch (WorkbenchException e) {
-			log.error("Perspective change failed when loading ESB editor "+e.getMessage(), e);
-		}
-
     }
  
 
@@ -755,13 +741,9 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
     }
     
 
-	public boolean isDirty() {	
-		try {
-			if (getEditor(0) instanceof EsbDiagramEditor) {
-				return getEditor(0).isDirty() || sourceDirty;
-			}
-		} catch (Exception e) {
-			log.error("accour an error while getting the editor due to" +e.getMessage(), e);
+	public boolean isDirty() {
+		if (getEditor(0) instanceof EsbDiagramEditor) {
+			return getEditor(0).isDirty() || sourceDirty;
 		}
 		return super.isDirty();
 	}

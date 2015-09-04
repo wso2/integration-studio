@@ -1,29 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <plugin>
-   <extension-point id="org.wso2.developerstudio.eclipse.greg.viewer.action" name="WSO2 Registry Viewer Action Contributor" schema="schema/org.wso2.developerstudio.eclipse.greg.viewer.action.exsd"/>
+   <extension-point id="org.wso2.developerstudio.eclipse.greg.viewer.action" name="WSO2 Registry Viewer Action Contributor" 
+   schema="schema/org.wso2.developerstudio.eclipse.greg.viewer.action.exsd"/>
 	
 	<extension point="org.eclipse.ui.views">
 		<view id="org.wso2.developerstudio.registry.remote.registry.api.view" name="WSO2 APIM Registry" icon="icons/api-default.png"
-			class="org.wso2.developerstudio.eclipse.greg.manager.remote.views.ApiMangerRegistryBrowserView" />
+			class="org.wso2.developerstudio.eclipse.greg.manager.remote.views.RegistryBrowserAPIMView" />
 	</extension>
 	
-	<extension point="org.eclipse.ui.views">
-		<view id="org.wso2.developerstudio.registry.remote.registry.view" name="WSO2 Registry Browser" icon="icons/registry.png"
-			class="org.wso2.developerstudio.eclipse.greg.manager.remote.views.RegistryBrowserView" />
-	</extension>
+	<extension
+       point="org.eclipse.ui.views">
+    <view
+          class="org.wso2.developerstudio.eclipse.greg.manager.remote.views.RegistryBrowserView"
+          icon="icons/registry.png"
+          id="org.wso2.developerstudio.registry.remote.registry.view"
+          name="WSO2 Registry Browser">
+    </view>
+ </extension>
 
-	<extension point="org.eclipse.ui.views">
-		<view id="org.wso2.developerstudio.eclipse.registry.properties" name="Resource Metadata"
-			class="org.wso2.developerstudio.eclipse.greg.manager.remote.views.RegistryPropertyViewer"
-			icon="icons/registryProperties.png" />
-	</extension>
+	<extension
+       point="org.eclipse.ui.views">
+    <view
+          class="org.wso2.developerstudio.eclipse.greg.manager.remote.views.RegistryPropertyViewer"
+          icon="icons/registryProperties.png"
+          id="org.wso2.developerstudio.eclipse.registry.properties"
+          name="Resource Metadata">
+    </view>
+ </extension>
 	
-	<extension point="org.eclipse.ui.views">
-		<view id="org.wso2.developerstudio.eclipse.registry.resource.info" name="Resource Info"
-			class="org.wso2.developerstudio.eclipse.greg.manager.remote.views.ResourceInfoViewer"
-			icon="icons/registryProperties.png" />
-	</extension>
+	<extension
+       point="org.eclipse.ui.views">
+    <view
+          class="org.wso2.developerstudio.eclipse.greg.manager.remote.views.ResourceInfoViewer"
+          icon="icons/registryProperties.png"
+          id="org.wso2.developerstudio.eclipse.registry.resource.info"
+          name="Resource Info">
+    </view>
+ </extension>
 	
 <extension
        point="org.eclipse.ui.commands">

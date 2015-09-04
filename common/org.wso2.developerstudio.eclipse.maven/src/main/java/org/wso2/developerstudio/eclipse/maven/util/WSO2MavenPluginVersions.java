@@ -28,47 +28,47 @@ public class WSO2MavenPluginVersions {
 	private static final Map<String, String> PLUGIN_VERSIONS = new HashMap<String, String>();
 	
 	static {
-		PLUGIN_VERSIONS.put("maven-axis2-plugin", "2.0.12");
-		PLUGIN_VERSIONS.put("maven-bpel-plugin", "2.0.12");
-		
-		PLUGIN_VERSIONS.put("maven-carbon-ui-plugin", "2.0.12");
-		PLUGIN_VERSIONS.put("maven-cep-plugin", "1.0.11");
-		PLUGIN_VERSIONS.put("maven-dataservice-plugin", "2.0.12");
-		PLUGIN_VERSIONS.put("maven-ds-validator-plugin", "2.0.12");
-		PLUGIN_VERSIONS.put("maven-endpoint-plugin", "2.0.12");
-		PLUGIN_VERSIONS.put("maven-gadget-plugin", "2.0.12");
-		PLUGIN_VERSIONS.put("maven-inboundendpoint-plugin", "1.0.0-SNAPSHOT");
-		PLUGIN_VERSIONS.put("maven-jaxws-plugin", "2.0.12");
-		PLUGIN_VERSIONS.put("maven-library-plugin", "2.0.12");
-		PLUGIN_VERSIONS.put("maven-localentry-plugin", "2.0.12");
-		PLUGIN_VERSIONS.put("maven-proxy-plugin", "2.0.12");
-		PLUGIN_VERSIONS.put("maven-registry-filter-plugin", "2.0.12");
-		PLUGIN_VERSIONS.put("maven-registry-handler-plugin", "2.0.12");
-		PLUGIN_VERSIONS.put("maven-registry-plugin", "2.0.12");
-		PLUGIN_VERSIONS.put("maven-sequence-plugin", "2.0.12");
-		PLUGIN_VERSIONS.put("maven-stratos-plugin", "2.0.12");
-		PLUGIN_VERSIONS.put("maven-synapse-mediator-plugin", "2.0.12");
-		PLUGIN_VERSIONS.put("maven-synapse-plugin", "2.0.12");
-		PLUGIN_VERSIONS.put("maven-war-plugin", "2.0.12");
-		
-		PLUGIN_VERSIONS.put("wso2-esb-api-plugin", "2.0.12");
-		PLUGIN_VERSIONS.put("wso2-esb-endpoint-plugin", "2.0.12");
-		PLUGIN_VERSIONS.put("wso2-esb-inboundendpoint-plugin", "1.0.0-SNAPSHOT");
-		PLUGIN_VERSIONS.put("wso2-esb-localentry-plugin", "2.0.12");
-		PLUGIN_VERSIONS.put("wso2-esb-proxy-plugin", "2.0.12");
-		PLUGIN_VERSIONS.put("wso2-esb-sequence-plugin", "2.0.12");
-		PLUGIN_VERSIONS.put("wso2-esb-synapse-plugin", "2.0.12");
-		PLUGIN_VERSIONS.put("wso2-esb-task-plugin", "2.0.12");
-		PLUGIN_VERSIONS.put("wso2-esb-template-plugin", "2.0.12");
-		PLUGIN_VERSIONS.put("wso2-esb-messageprocessor-plugin", "1.0.8");
-		PLUGIN_VERSIONS.put("wso2-esb-messagestore-plugin", "1.0.8");
-		
-		PLUGIN_VERSIONS.put("wso2-general-project-plugin", "2.0.12");
-		
-		PLUGIN_VERSIONS.put("maven-qos-plugin", "1.0.7");
-		
-		PLUGIN_VERSIONS.put("maven-car-deploy-plugin", "1.0.12");
-	    PLUGIN_VERSIONS.put("maven-car-plugin", "2.0.12");
+		PLUGIN_VERSIONS.put("maven-axis2-plugin", "2.1.0");
+		PLUGIN_VERSIONS.put("maven-bpel-plugin", "2.1.0");
+
+		PLUGIN_VERSIONS.put("maven-carbon-ui-plugin", "2.1.0");
+		PLUGIN_VERSIONS.put("maven-cep-plugin", "1.1.0");
+		PLUGIN_VERSIONS.put("maven-dataservice-plugin", "2.1.0");
+		PLUGIN_VERSIONS.put("maven-ds-validator-plugin", "2.1.0");
+		PLUGIN_VERSIONS.put("maven-endpoint-plugin", "2.1.0");
+		PLUGIN_VERSIONS.put("maven-gadget-plugin", "2.1.0");
+		PLUGIN_VERSIONS.put("maven-inboundendpoint-plugin", "1.0.0");
+		PLUGIN_VERSIONS.put("maven-jaxws-plugin", "2.1.0");
+		PLUGIN_VERSIONS.put("maven-library-plugin", "2.1.0");
+		PLUGIN_VERSIONS.put("maven-localentry-plugin", "2.1.0");
+		PLUGIN_VERSIONS.put("maven-proxy-plugin", "2.1.0");
+		PLUGIN_VERSIONS.put("maven-registry-filter-plugin", "2.1.0");
+		PLUGIN_VERSIONS.put("maven-registry-handler-plugin", "2.1.0");
+		PLUGIN_VERSIONS.put("maven-registry-plugin", "2.1.0");
+		PLUGIN_VERSIONS.put("maven-sequence-plugin", "2.1.0");
+		PLUGIN_VERSIONS.put("maven-stratos-plugin", "2.1.0");
+		PLUGIN_VERSIONS.put("maven-synapse-mediator-plugin", "2.1.0");
+		PLUGIN_VERSIONS.put("maven-synapse-plugin", "2.1.0");
+		PLUGIN_VERSIONS.put("maven-war-plugin", "2.1.0");
+
+		PLUGIN_VERSIONS.put("wso2-esb-api-plugin", "2.1.0");
+		PLUGIN_VERSIONS.put("wso2-esb-endpoint-plugin", "2.1.0");
+		PLUGIN_VERSIONS.put("wso2-esb-inboundendpoint-plugin", "1.0.0");
+		PLUGIN_VERSIONS.put("wso2-esb-localentry-plugin", "2.1.0");
+		PLUGIN_VERSIONS.put("wso2-esb-proxy-plugin", "2.1.0");
+		PLUGIN_VERSIONS.put("wso2-esb-sequence-plugin", "2.1.0");
+		PLUGIN_VERSIONS.put("wso2-esb-synapse-plugin", "2.1.0");
+		PLUGIN_VERSIONS.put("wso2-esb-task-plugin", "2.1.0");
+		PLUGIN_VERSIONS.put("wso2-esb-template-plugin", "2.1.0");
+		PLUGIN_VERSIONS.put("wso2-esb-messageprocessor-plugin", "1.1.0");
+		PLUGIN_VERSIONS.put("wso2-esb-messagestore-plugin", "1.1.0");
+
+		PLUGIN_VERSIONS.put("wso2-general-project-plugin", "2.1.0");
+
+		PLUGIN_VERSIONS.put("maven-qos-plugin", "1.1.0");
+
+		PLUGIN_VERSIONS.put("maven-car-deploy-plugin", "1.1.0");
+		PLUGIN_VERSIONS.put("maven-car-plugin", "2.1.0");
 	}
 	
 	private WSO2MavenPluginVersions(){

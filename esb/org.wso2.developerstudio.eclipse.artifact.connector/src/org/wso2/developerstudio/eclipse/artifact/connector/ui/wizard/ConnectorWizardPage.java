@@ -40,10 +40,12 @@ import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableItem;
+import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.model.WorkbenchLabelProvider;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.wso2.developerstudio.eclipse.artifact.connector.Activator;
 import org.wso2.developerstudio.eclipse.artifact.connector.model.ConnectorModel;
+import org.wso2.developerstudio.eclipse.artifact.connector.ui.dialog.WorkspaceConnectorImportDialog;
 
 public class ConnectorWizardPage extends WizardPage {
 	private TableViewer tblLibraryInfoViewer;
@@ -82,8 +84,8 @@ public class ConnectorWizardPage extends WizardPage {
 
 		tblLibraryInfoViewer = new TableViewer(container, SWT.BORDER | SWT.FULL_SELECTION);
 		Table tblLibraryInfo = tblLibraryInfoViewer.getTable();
-		GridData gd_tblLibraryInfo = new GridData(SWT.FILL, SWT.CENTER, true, false, 5, 1);
-		gd_tblLibraryInfo.heightHint = 167;
+		GridData gd_tblLibraryInfo = new GridData(SWT.FILL, SWT.FILL, true, false, 3, 3);
+		gd_tblLibraryInfo.heightHint = 250;
 		tblLibraryInfo.setLayoutData(gd_tblLibraryInfo);
 
 		tblLibraryInfoViewer.setContentProvider(new ITreeContentProvider() {
@@ -158,6 +160,22 @@ public class ConnectorWizardPage extends WizardPage {
 
 		tblLibraryInfoViewer.setInput(model.getConnectors());
 
+		//Workspace Button
+		Button btbWorkspace = new Button(container, SWT.NONE);
+		btbWorkspace.addSelectionListener(new SelectionAdapter() {
+
+			public void widgetSelected(SelectionEvent e) {
+				WorkspaceConnectorImportDialog dialog = new WorkspaceConnectorImportDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), model, tblLibraryInfoViewer);
+				dialog.open();
+				tblLibraryInfoViewer.refresh();
+				validate();
+			}
+		});
+		GridData gd_btnWorkspace = new GridData(SWT.RIGHT, SWT.TOP, false, false, 2, 1);
+		gd_btnWorkspace.widthHint = 90;
+		btbWorkspace.setLayoutData(gd_btnWorkspace);
+		btbWorkspace.setText("Workspace");		
+		
 		Button btnFileSystem = new Button(container, SWT.NONE);
 		btnFileSystem.addSelectionListener(new SelectionAdapter() {
 
@@ -168,17 +186,14 @@ public class ConnectorWizardPage extends WizardPage {
 						model.getConnectors().add(file);
 					}
 				}
-
 				tblLibraryInfoViewer.refresh();
 				validate();
 			}
 		});
-		GridData gd_btnFileSystem = new GridData(SWT.LEFT, SWT.CENTER, false, false, 1, 1);
+		GridData gd_btnFileSystem = new GridData(SWT.RIGHT, SWT.TOP, false, false, 2, 1);
 		gd_btnFileSystem.widthHint = 90;
 		btnFileSystem.setLayoutData(gd_btnFileSystem);
 		btnFileSystem.setText("File System");
-		new Label(container, SWT.NONE);
-		new Label(container, SWT.NONE);
 
 		Button btnRemove = new Button(container, SWT.NONE);
 		btnRemove.addSelectionListener(new SelectionAdapter() {
@@ -199,7 +214,7 @@ public class ConnectorWizardPage extends WizardPage {
 				validate();
 			}
 		});
-		GridData gd_btnRemove = new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1);
+		GridData gd_btnRemove = new GridData(SWT.RIGHT, SWT.TOP, false, false, 2, 1);
 		gd_btnRemove.widthHint = 90;
 		btnRemove.setLayoutData(gd_btnRemove);
 		btnRemove.setText("Remove");

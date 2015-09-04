@@ -114,6 +114,7 @@
 				</enablement>
 		</deleteParticipant>
    </extension>
+
 	<extension
 			point="org.eclipse.ui.navigator.viewer">
 		<viewerContentBinding viewerId="org.eclipse.ui.navigator.ProjectExplorer">

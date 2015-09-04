@@ -41,6 +41,8 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.core.runtime.jobs.Job;
+import org.eclipse.e4.core.services.events.IEventBroker;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -106,6 +108,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.persistence.EsbModelTransformer;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.SequenceInfo;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
+import org.wso2.developerstudio.eclipse.platform.core.event.EsbEditorEvent;
 
 /**
  * The main editor class which contains design view and source view
@@ -165,12 +168,15 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
     public EsbMultiPageEditor() {
         super();
         IWorkbench workbench = PlatformUI.getWorkbench();
-        IWorkbenchWindow window = workbench.getActiveWorkbenchWindow();        
+        IWorkbenchWindow window = workbench.getActiveWorkbenchWindow();   
+        IPerspectiveDescriptor perspective = window.getActivePage().getPerspective();
         // open the perspective "wso2 esb graphical"
         // TODO review if this is the best place for switching
-        try {
-        	IPerspectiveDescriptor perspective = window.getActivePage().getPerspective();
-        	if (!"org.wso2.developerstudio.registry.remote.registry.apim.pespective".equals(perspective.getId())){        	
+        try {        	
+        	if ("org.wso2.developerstudio.registry.remote.registry.apim.pespective".equals(perspective.getId()) ||
+        			"org.wso2.developerstudio.registry.remote.registry.pespective".equals(perspective.getId())){        	
+        		//Do not change the original perspective  TODO - change the perspective may adding additional views 
+        	}else{
         		workbench.showPerspective("org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.perspective", window);
         	}
 		} catch (WorkbenchException e) {
@@ -317,7 +323,9 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
 			}
 		});
     }
-
+    
+    
+   
     /**
      * Creates page 1 of the multi-page editor,
      * which allows you to edit the xml.
@@ -620,14 +628,14 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
 	}
     
     
-	private void updateAssociatedXMLFile(IProgressMonitor monitor) throws Exception {
+	private IFile updateAssociatedXMLFile(IProgressMonitor monitor) throws Exception {
 		EsbDiagram diagram = (EsbDiagram) graphicalEditor.getDiagram().getElement();
 		EsbServer server = diagram.getServer();
 		IFile xmlFile = ((EsbEditorInput) getEditor(0).getEditorInput()).getXmlResource();
 		String source = EsbModelTransformer.instance.designToSource(server);
 		if (source == null) {
 			log.warn("Could not get the source");
-			return;
+			return null;
 		}
 		InputStream is = new ByteArrayInputStream(source.getBytes());
 		if (xmlFile.exists()) {
@@ -635,6 +643,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
 		} else {
 			xmlFile.create(is, true, monitor);
 		}
+		return xmlFile;
 	}
 	
 	private void updateAssociatedDiagrams() {
@@ -713,7 +722,13 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
 		EsbServer esbServer = EditorUtils.getEsbServer(graphicalEditor);
 		// Since Complex endpoint type editors dose not have assiociated xml file do not need to call this.
         try {
-        	updateAssociatedXMLFile(monitor);
+        	IFile updateAssociatedXMLFile = updateAssociatedXMLFile(monitor);
+        	IEventBroker iEventBroker = EsbEditorEvent.getiEventBroker();
+    	     if(iEventBroker!=null){
+    	    
+				iEventBroker.send(EsbEditorEvent.EVENT_TOPIC_SAVE_EDITORS, updateAssociatedXMLFile.getLocation()
+						.toOSString());
+    	     }
 		} catch (Exception e) {
 			sourceDirty=true;
 			log.error("Error while saving the diagram", e);
@@ -734,12 +749,19 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
         getEditor(0).doSave(monitor);
         
 		EditorUtils.setLockmode(graphicalEditor, false);
+		
+	    
+		
     }
     
 
-	public boolean isDirty() {
-		if (getEditor(0) instanceof EsbDiagramEditor) {
-			return getEditor(0).isDirty() || sourceDirty;
+	public boolean isDirty() {	
+		try {
+			if (getEditor(0) instanceof EsbDiagramEditor) {
+				return getEditor(0).isDirty() || sourceDirty;
+			}
+		} catch (Exception e) {
+			log.error("accour an error while getting the editor due to" +e.getMessage(), e);
 		}
 		return super.isDirty();
 	}

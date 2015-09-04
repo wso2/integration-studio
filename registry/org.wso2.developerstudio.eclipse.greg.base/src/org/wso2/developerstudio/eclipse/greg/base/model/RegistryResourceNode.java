@@ -20,7 +20,11 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.MalformedURLException;
+import java.nio.file.CopyOption;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -28,6 +32,7 @@ import java.util.Map;
 import java.util.regex.Pattern;
 
 import org.apache.commons.io.FileUtils;
+import org.eclipse.core.resources.IFile;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IPerspectiveDescriptor;
@@ -47,7 +52,8 @@ import org.wso2.developerstudio.eclipse.greg.resource.authorization.ResourceAdmi
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
-public class RegistryResourceNode {
+
+public class RegistryResourceNode implements Cloneable {
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
 	private RegistryResourceNode registryResourceNodeParent;
@@ -55,16 +61,23 @@ public class RegistryResourceNode {
 	private boolean error = false;
 	private ArrayList<RegistryResourceNode> resourceNodeList;
 	private RegistryNode connectionInfo;
-	// private Boolean registryResource = null;
 	private String mediaType;
 	private boolean allowExapand = true;
+	private boolean dirty;
 	private List<String> versions;
 	private Map<String, VersionContent> retrievedVersionsContent;
 	private IEditorPart editor;
 	private RegistryResourceType registryResource = RegistryResourceType.UNDEFINED;
 	private String resourceName;
+	private String oldPath;
+	private String newPath;
 	private Boolean hasWritePermissions=null;
 	private boolean ismodifiyed ;
+	private boolean isdeleted;
+	private boolean isnew;
+	private boolean rename;
+	private File newFile;
+	private IFile workspaceFile;
 	
 	public void setRegistryResource(RegistryResourceType registryResource) {
 		this.registryResource = registryResource;
@@ -120,6 +133,24 @@ public class RegistryResourceNode {
 		}
 	}
 	
+	public boolean rename(){
+		if(rename){
+			if(newPath!=null && oldPath!=null){
+				Registry registry = this.getConnectionInfo().getRegistry();
+				try {
+					registry.rename(oldPath, newPath);
+					//rename = false;
+					return true;
+				} catch (InvalidRegistryURLException e) {
+					log.error("Renaming opertaion failed due to"+e.getMessage(), e);
+				} catch (UnknownRegistryException e) {
+					log.error("Renaming opertaion failed due to"+e.getMessage(), e);
+				}
+			}
+		}
+		return false;
+	}
+	
 	/**
 	 * get ResourceNodeList which contains selected RegistryResourceNode object
 	 * of the tree view
@@ -128,11 +159,11 @@ public class RegistryResourceNode {
 	 * @throws UnknownRegistryException
 	 * @throws InvalidRegistryURLException
 	 */
-	public ArrayList<RegistryResourceNode> getResourceNodeList()
-			throws InvalidRegistryURLException, UnknownRegistryException {
+	private ArrayList<RegistryResourceNode> getRemoteResourceNodeList() throws InvalidRegistryURLException,
+			UnknownRegistryException {
 		/**
-		 * initially setError should be set false. Content provider and label
-		 * provider is called only when setError is set to false
+		 * initially setError should be set false. Content provider and label provider is called only when setError is
+		 * set to false
 		 */
 		setError(false);
 		if (resourceNodeList == null || iterativeRefresh) {
@@ -141,83 +172,78 @@ public class RegistryResourceNode {
 				setError(true);
 				return null;
 			}
-//			Display.getDefault().syncExec(new Runnable() {
-//				
-//				public void run() {
-//					setIterativeRefresh(true);					
-//				}
-//			});
-			Resource resourcesPerCollection = registry
-					.getResourcesPerCollection(getRegistryResourcePath());
+
+			Resource resourcesPerCollection = registry.getResourcesPerCollection(getRegistryResourcePath());
 			resourceNodeList = new ArrayList<RegistryResourceNode>();
 			if (resourcesPerCollection instanceof Collection) {
 				Collection collec = (Collection) resourcesPerCollection;
 				try {
 					String[] children = collec.getChildren();
 					for (String childPath : children) {
-						resourceNodeList.add(new RegistryResourceNode(
-								getConnectionInfo(), childPath, this));
+						resourceNodeList.add(new RegistryResourceNode(getConnectionInfo(), childPath, this));
 					}
 					setRegistryResource(RegistryResourceType.COLLECTION);
 				} catch (RegistryException e) {
 					setRegistryResource(RegistryResourceType.UNDEFINED);
-					throw new UnknownRegistryException(
-							"Error while retrieving registry collection children paths: "
-									+ e.getMessage(), e);
-					
+					throw new UnknownRegistryException("Error while retrieving registry collection children paths: "
+							+ e.getMessage(), e);
 				}
-				
+
 			} else {
 				setRegistryResource(RegistryResourceType.UNDEFINED);
 				getResourceType();
 			}
-			
+
 			if (isIterativeRefresh()) {
-//				Display.getDefault().syncExec(new Runnable() {
-//					public void run() {
-//						try {
-//							refreshChildren();
-//						} catch (InvalidRegistryURLException e) {
-//							// TODO Auto-generated catch block
-//							e.printStackTrace();
-//						} catch (UnknownRegistryException e) {
-//							// TODO Auto-generated catch block
-//							e.printStackTrace();
-//						}					
-//					}
-//				});
-				
 				Display.getDefault().syncExec(new Runnable() {
-					
+
 					public void run() {
 						for (RegistryResourceNode child : resourceNodeList) {
 							child.setIterativeRefresh(true);
-						}					
+						}
 					}
 				});
 				Display.getDefault().syncExec(new Runnable() {
-					
+
 					public void run() {
-						setIterativeRefresh(false);					
+						setIterativeRefresh(false);
 					}
 				});
 			}
 		}
 		return resourceNodeList;
 	}
-
+	
+	public ArrayList<RegistryResourceNode> getResourceNodeList()
+			throws InvalidRegistryURLException, UnknownRegistryException {		
+		 if(resourceNodeList==null){
+			 return getRemoteResourceNodeList();
+		 }
+		return resourceNodeList;
+	}
+	
+	public ArrayList<RegistryResourceNode> getLocalResourceNodeList() {		
+		 if(resourceNodeList==null){
+			 return new ArrayList<RegistryResourceNode>();
+		 } 
+		return resourceNodeList;
+	}
+	
 	/**
 	 * add new selected tree items to registryResourceNodeList
 	 * 
 	 * @param nwResourceNodeList
 	 */
-	public void setResourceNodeList(
-			ArrayList<RegistryResourceNode> nwResourceNodeList) {
-		for (int i = 0; i < nwResourceNodeList.size(); i++) {
-			if (resourceNodeList.contains(nwResourceNodeList.get(i))) {
-			} else {
-				resourceNodeList.add(nwResourceNodeList.get(i));
+	public void setResourceNodeList(ArrayList<RegistryResourceNode> nwResourceNodeList) {
+		if (resourceNodeList != null) {
+			for (int i = 0; i < nwResourceNodeList.size(); i++) {
+				if (resourceNodeList.contains(nwResourceNodeList.get(i))) {
+				} else {
+					resourceNodeList.add(nwResourceNodeList.get(i));
+				}
 			}
+		} else {
+			resourceNodeList = nwResourceNodeList;
 		}
 	}
 
@@ -242,6 +268,10 @@ public class RegistryResourceNode {
 		}
 	}
 
+	
+   public void removeFromVersionContent(){
+	   retrievedVersionsContent.remove(getResourceName());
+   }
 	/**
 	 * return the caption for the tree item
 	 */
@@ -287,7 +317,7 @@ public class RegistryResourceNode {
 	}
 
 	/**
-	 * caption of the resource to dispaly in the registry tree
+	 * caption of the resource to display in the registry tree
 	 * 
 	 * @return
 	 */
@@ -308,6 +338,30 @@ public class RegistryResourceNode {
 			return split[split.length - 1];
 		}
 	}
+	
+	public void putFile(){
+		try{
+		    Registry registry = getConnectionInfo().getRegistry();
+			Resource resource = registry.newResource();
+			resource.setDescription("");							
+			InputStream is = new FileInputStream(newFile);
+			resource.setContentStream(is);
+			resource.setMediaType(getMediaType());				
+		    registry.put(getRegistryResourcePath(), resource);
+		    this.isnew = false;
+		}catch(IOException | InvalidRegistryURLException | UnknownRegistryException | RegistryException e){
+			log.error("Registry put has failed " +e.getMessage(),e);
+		}
+		
+	}
+
+	public File getNewFile() {
+		return newFile;
+	}
+
+	public void setNewFile(File newFile) {
+		this.newFile = newFile;
+	}
 
 	/**
 	 * refresh registry tree when a new resource or collection added, updated or
@@ -316,66 +370,59 @@ public class RegistryResourceNode {
 	 * @throws UnknownRegistryException
 	 * @throws InvalidRegistryURLException
 	 */
-	public void refreshChildren() throws InvalidRegistryURLException,
-			UnknownRegistryException {
-		Registry registry = getConnectionInfo().getRegistry();
-		Resource resource = registry
-				.getResourcesPerCollection(getRegistryResourcePath());
-		// if the resource is a collection
-		if (resource instanceof Collection) {
-			Collection collec = (Collection) resource;
-			ArrayList<String> newItemsList = new ArrayList<String>();
-			// create a clone from the previous resource node list
-			ArrayList<RegistryResourceNode> registryResourceNodesClone;
-			try {
-				String[] children = collec.getChildren();
-				registryResourceNodesClone = (ArrayList<RegistryResourceNode>) resourceNodeList.clone();
-				for (String childPath : children) {
-					boolean found = false;
-					for (RegistryResourceNode registryResourceNode : registryResourceNodesClone) {
-						String path = registryResourceNode
-								.getRegistryResourcePath();
-						// if resouce path is already existing in the clone,
-						// remove from the clone
-						if (childPath.equals(path)) {
-							found = true;
-							registryResourceNodesClone
-									.remove(registryResourceNode);
-							break;
+	
+	@SuppressWarnings("unchecked")
+	public void refreshChildren() throws InvalidRegistryURLException, UnknownRegistryException {
+
+		if (!isnew) {
+
+			Registry registry = getConnectionInfo().getRegistry();
+			Resource resource = registry.getResourcesPerCollection(getRegistryResourcePath());
+			if (resource instanceof Collection) {
+				Collection collec = (Collection) resource;
+				ArrayList<String> newItemsList = new ArrayList<String>();
+				ArrayList<RegistryResourceNode> registryResourceNodesClone;
+				try {
+					String[] children = collec.getChildren();
+					registryResourceNodesClone = (ArrayList<RegistryResourceNode>) resourceNodeList.clone();
+					for (String childPath : children) {
+						boolean found = false;
+						for (RegistryResourceNode registryResourceNode : registryResourceNodesClone) {
+							String path = registryResourceNode.getRegistryResourcePath();
+							if (childPath.equals(path)) {
+								found = true;
+								registryResourceNodesClone.remove(registryResourceNode);
+								break;
+							}
+						}
+						if (!found) {
+							newItemsList.add(childPath);
+							RegistryResourceNode regResNode = new RegistryResourceNode(connectionInfo, childPath, this);
+							regResNode.setNew(true);
+							if (!resourceNodeList.contains(regResNode)) {
+								resourceNodeList.add(regResNode);
+							}
 						}
 					}
-					// if child path is not in the previous resource node list,
-					// add it to the resource path list
-					if (!found) {
-						newItemsList.add(childPath);
-						RegistryResourceNode regResNode = new RegistryResourceNode(
-								connectionInfo, childPath, this);
-						if (!resourceNodeList.contains(regResNode)) {
-							resourceNodeList.add(regResNode);
-						}
-					}
+				} catch (RegistryException e) {
+					throw new UnknownRegistryException(
+							"Error occured while retreiving registry collection children paths: " + e.getMessage(), e);
 				}
-			} catch (RegistryException e) {
-				throw new UnknownRegistryException(
-						"Error occured while retreiving registry collection children paths: "
-								+ e.getMessage(), e);
-			}
 
-			/**
-			 * if there are items still left in the clone, which means it is
-			 * deleted resource from registry, it should be removed from
-			 * registryResourceNodeList
-			 */
-			for (int j = 0; j < registryResourceNodesClone.size(); j++) {
-				RegistryResourceNode tempData = registryResourceNodesClone
-						.get(j);
-				resourceNodeList.remove(tempData);
-			}
+				/**
+				 * if there are items still left in the clone, which means it is deleted resource from registry, it
+				 * should be removed from registryResourceNodeList
+				 */
+				for (int j = 0; j < registryResourceNodesClone.size(); j++) {
+					RegistryResourceNode tempData = registryResourceNodesClone.get(j);
+					resourceNodeList.remove(tempData);
+				}
 
+			}
 		}
 
 	}
-
+	
 	/**
 	 * return RegistryData object
 	 * 
@@ -583,12 +630,15 @@ public class RegistryResourceNode {
 	 * @return
 	 */
 	public VersionContent getVersionContent(String version, String filePath) {
+		
+		VersionContent vc = null;
+		if(!isnew && !rename){
 		String versionName=getNameofTheResource(version);
 		version=appendPath(getParent(), versionName);
 		if (retrievedVersionsContent == null) {
 			retrievedVersionsContent = new HashMap<String, VersionContent>();
 		}
-		VersionContent vc = null;
+		 vc = null;
 		if (!retrievedVersionsContent.containsKey(versionName)) {
 			try {
 				File content = null;
@@ -634,9 +684,12 @@ public class RegistryResourceNode {
 				e.printStackTrace();
 			}
 		}
-		if (vc == null)
+		if (vc == null){
 			vc = retrievedVersionsContent.get(versionName);
+			}
+		} 
 		return vc;
+		
 	}
 
 	/**
@@ -645,7 +698,12 @@ public class RegistryResourceNode {
 	 * @return
 	 */
 	public boolean isFileLocallyModified() {
-		return getVersionContent(getLatestVersion()).isFileChanged();
+		if(isnew || rename){
+			return true;
+		}else{
+			  VersionContent versionContent = getVersionContent(getLatestVersion());
+			return versionContent.isFileChanged();
+		}
 	}
 
 	/**
@@ -655,7 +713,12 @@ public class RegistryResourceNode {
 	 * @return
 	 */
 	public File getFile(String version) {
-		return getVersionContent(version).getFile();
+		
+		VersionContent versionContent = getVersionContent(version);
+		if(versionContent!=null){
+			return versionContent.getFile();
+		}
+		return null;
 	}
 
 	/**
@@ -675,8 +738,18 @@ public class RegistryResourceNode {
 	 * @return
 	 */
 	public File getFile() {
+		if(this.isnew ||this.rename){
+			return this.getNewFile();
+		}
 		return getFile(getLatestVersion());
 	}
+	
+	public File getLocalFile() {
+		
+		 return getFile();
+	}
+	
+	
 
 	/**
 	 * get the latest version
@@ -716,6 +789,34 @@ public class RegistryResourceNode {
 		return false;
 	}
 
+	
+	public boolean removeLocalContent(){
+		InputStream contentStream=null;
+		try {
+		    contentStream = getConnectionInfo().getRegistry().get(getRegistryResourcePath()).getContentStream();		  
+		    Files.copy(contentStream, getFile().toPath(),StandardCopyOption.REPLACE_EXISTING);
+			return true;
+		} catch (InvalidRegistryURLException e) {
+			 log.error("Error while Connecting to registry due to "+e.getMessage(), e);
+		} catch (UnknownRegistryException e) {
+			 log.error("Error while Connecting to registry due to "+e.getMessage(), e);
+		} catch (RegistryException e) {
+			 log.error("Error while Connecting to registry due to "+e.getMessage(), e);
+		} catch (IOException e) {
+			 log.error("Error while Copying contents due to "+e.getMessage(), e);
+		}finally{
+			 if(contentStream!=null){
+				 try {
+					contentStream.close();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
+			 }
+		}
+		return false;
+	}
 	/**
 	 * save the changes of the latest version to the registry
 	 * 
@@ -728,7 +829,7 @@ public class RegistryResourceNode {
 		Resource resource;
 		try {
 			resource = getConnectionInfo().getRegistry()
-					.get(getRegistryResourcePath());
+					.get(getRegistryResourcePath());						
 			resource.setContentStream(new FileInputStream(file));
 		
 			getConnectionInfo().getRegistry().put(getRegistryResourcePath(), resource);
@@ -764,13 +865,19 @@ public class RegistryResourceNode {
 					.updateChecksum();
 		}
 	}
+	
+	@Override
+	public Object clone() throws CloneNotSupportedException {
+		// TODO Auto-generated method stub
+		return super.clone();
+	}
 
 	/**
 	 * 
 	 * VersionContent class
 	 * 
 	 */
-	public class VersionContent {
+	public class VersionContent implements Cloneable{
 		private File file;
 		private long checksum;
 		private ResourceEditorInput editorInput;
@@ -793,6 +900,11 @@ public class RegistryResourceNode {
 			setVersionName(versionName);
 		}
 
+		@Override
+		public Object clone() throws CloneNotSupportedException {
+			// TODO Auto-generated method stub
+			return super.clone();
+		}
 		/**
 		 * calculate the checksum for the file
 		 * 
@@ -864,6 +976,9 @@ public class RegistryResourceNode {
 			}
 			return file;
 		}
+		
+		
+	
 
 		/**
 		 * set the checksum for the latest version
@@ -937,7 +1052,7 @@ public class RegistryResourceNode {
 	 */
 	public void setFileEditor(IEditorPart editor) {
 
-	  if(!isAPIMperspective()){
+	  if(!isAPIMperspective()){		  
 		if (editor != null && this.editor != editor) {
 			this.editor = editor;
 			editor.addPropertyListener(new IPropertyListener() {
@@ -952,7 +1067,9 @@ public class RegistryResourceNode {
 				}
 			});
 		}
+		
 	  }else{
+		  this.editor = editor;
 		  getFile();
 	  }
 		  
@@ -1017,4 +1134,63 @@ public class RegistryResourceNode {
 		}
 		return null;
 	}
+
+	public boolean isIsdeleted() {
+		return isdeleted;
+	}
+
+	public void setIsdeleted(boolean isdeleted) {
+		this.isdeleted = isdeleted;
+	}
+
+	public boolean isIsnew() {
+		return isnew;
+	}
+
+	public String getNewPath() {
+		return newPath;
+	}
+
+	public void setNewPath(String newPath) {
+		this.newPath = newPath;
+	}
+
+	public String getOldPath() {
+		return oldPath;
+	}
+
+	public void setOldPath(String oldPath) {
+		this.oldPath = oldPath;
+	}
+
+	public void setNew(boolean nNew) {
+		this.isnew = nNew;
+	}
+
+	public boolean isRename() {
+		return rename;
+	}
+
+	public void setRename(boolean rename) {
+		this.rename = rename;
+	}
+
+	public boolean isDirty() {
+		return dirty;
+	}
+
+	public void setDirty(boolean dirty) {
+		this.dirty = dirty;
+	}
+
+	public IFile getWorkspaceFile() {
+		return workspaceFile;
+	}
+
+	public void setWorkspaceFile(IFile workspaceFile) {
+		this.workspaceFile = workspaceFile;
+	}
+
+
+	
 }

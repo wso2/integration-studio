@@ -335,4 +335,31 @@ public class ESBProjectUtils {
 		MavenUtils.saveMavenProject(mavenProject, mavenProjectPomLocation);
 	
 	}	
+	
+	public static String getType(String dirName) {
+		switch (dirName) {
+		case "endpoints":
+			return "endpoint";
+		case "sequences":
+			return "sequence";
+		case "proxy-services":
+			return "proxy-service";
+		case "local-entries":
+			return "local-entry";
+		case "tasks":
+			return "task";
+		case "api":
+			return "api";
+		case "templates":
+			return "sequenceTemplate";
+		case "message-stores":
+			return "message-store";
+		case "message-processors":
+			return "message-processors";	
+		case "inbound-endpoints":
+			return "inbound-endpoint";
+		default:
+			return "";
+		}
+	}
 }

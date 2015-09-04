@@ -547,7 +547,7 @@ public class MessageProcessorItemProvider
 	 * This adds a property descriptor for the Deactivate Sequence Name feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	protected void addDeactivateSequenceNamePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -561,7 +561,7 @@ public class MessageProcessorItemProvider
 				 false,
 				 true,
 				 null,
-				 null,
+				 getString("_UI_AdditionalParametersPropertyCategory"),
 				 null));
 	}
 

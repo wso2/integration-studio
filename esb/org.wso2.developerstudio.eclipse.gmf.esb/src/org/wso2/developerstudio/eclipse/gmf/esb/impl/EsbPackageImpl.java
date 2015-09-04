@@ -220,6 +220,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.FaultMediatorOutputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.FaultReasonType;
 import org.wso2.developerstudio.eclipse.gmf.esb.FaultSoapVersion;
 import org.wso2.developerstudio.eclipse.gmf.esb.FaultStringType;
+import org.wso2.developerstudio.eclipse.gmf.esb.FeedType;
 import org.wso2.developerstudio.eclipse.gmf.esb.FilterConditionType;
 import org.wso2.developerstudio.eclipse.gmf.esb.FilterContainer;
 import org.wso2.developerstudio.eclipse.gmf.esb.FilterFailContainer;
@@ -3920,6 +3921,13 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * @generated
 	 */
 	private EEnum mqttSubscriptionQOSEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum feedTypeEEnum = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -11023,6 +11031,24 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 */
 	public EAttribute getInboundEndpoint_TransportRabbitMqConnectionSslVersion() {
 		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(162);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_TransportFeedURL() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(163);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_TransportFeedType() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(164);
 	}
 
 	/**
@@ -18266,6 +18292,15 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EEnum getFeedType() {
+		return feedTypeEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getEnableDisableState() {
 		return enableDisableStateEEnum;
 	}
@@ -20108,6 +20143,8 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_TYPE);
 		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_PASSWORD);
 		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_VERSION);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_FEED_URL);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_FEED_TYPE);
 
 		inboundEndpointParameterEClass = createEClass(INBOUND_ENDPOINT_PARAMETER);
 		createEAttribute(inboundEndpointParameterEClass, INBOUND_ENDPOINT_PARAMETER__NAME);
@@ -20256,6 +20293,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		jmsSessionAcknowledgementEEnum = createEEnum(JMS_SESSION_ACKNOWLEDGEMENT);
 		jmsCacheLevelEEnum = createEEnum(JMS_CACHE_LEVEL);
 		mqttSubscriptionQOSEEnum = createEEnum(MQTT_SUBSCRIPTION_QOS);
+		feedTypeEEnum = createEEnum(FEED_TYPE);
 		enableDisableStateEEnum = createEEnum(ENABLE_DISABLE_STATE);
 
 		// Create data types
@@ -22448,6 +22486,8 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		initEAttribute(getInboundEndpoint_TransportRabbitMqConnectionSslTruststoreType(), ecorePackage.getEString(), "transportRabbitMqConnectionSslTruststoreType", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getInboundEndpoint_TransportRabbitMqConnectionSslTruststorePassword(), ecorePackage.getEString(), "transportRabbitMqConnectionSslTruststorePassword", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getInboundEndpoint_TransportRabbitMqConnectionSslVersion(), ecorePackage.getEString(), "transportRabbitMqConnectionSslVersion", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_TransportFeedURL(), ecorePackage.getEString(), "transportFeedURL", "", 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_TransportFeedType(), this.getFeedType(), "transportFeedType", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(inboundEndpointParameterEClass, InboundEndpointParameter.class, "InboundEndpointParameter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getInboundEndpointParameter_Name(), ecorePackage.getEString(), "name", "parameter_name", 0, 1, InboundEndpointParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -23058,6 +23098,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		addEEnumLiteral(inboundEndpointTypeEEnum, InboundEndpointType.CXF_WS_RM);
 		addEEnumLiteral(inboundEndpointTypeEEnum, InboundEndpointType.MQTT);
 		addEEnumLiteral(inboundEndpointTypeEEnum, InboundEndpointType.RABBIT_MQ);
+		addEEnumLiteral(inboundEndpointTypeEEnum, InboundEndpointType.FEED);
 
 		initEEnum(contentTypeEEnum, ContentType.class, "ContentType");
 		addEEnumLiteral(contentTypeEEnum, ContentType.XML);
@@ -23120,6 +23161,10 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		addEEnumLiteral(mqttSubscriptionQOSEEnum, MQTTSubscriptionQOS.ZERO);
 		addEEnumLiteral(mqttSubscriptionQOSEEnum, MQTTSubscriptionQOS.ONE);
 		addEEnumLiteral(mqttSubscriptionQOSEEnum, MQTTSubscriptionQOS.TWO);
+
+		initEEnum(feedTypeEEnum, FeedType.class, "FeedType");
+		addEEnumLiteral(feedTypeEEnum, FeedType.ATOM);
+		addEEnumLiteral(feedTypeEEnum, FeedType.RSS);
 
 		initEEnum(enableDisableStateEEnum, EnableDisableState.class, "EnableDisableState");
 		addEEnumLiteral(enableDisableStateEEnum, EnableDisableState.DISABLED);

@@ -590,6 +590,7 @@
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//InboundEndpointType/cxf_ws_rm"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//InboundEndpointType/mqtt"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//InboundEndpointType/RabbitMQ"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//InboundEndpointType/feed"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//ContentType">
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//ContentType/xml"/>
@@ -652,6 +653,10 @@
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//MQTTSubscriptionQOS/zero"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//MQTTSubscriptionQOS/one"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//MQTTSubscriptionQOS/two"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//FeedType">
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//FeedType/atom"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//FeedType/rss"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//EnableDisableState">
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//EnableDisableState/Disabled"/>
@@ -2367,6 +2372,8 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportRabbitMqConnectionSslTruststoreType"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportRabbitMqConnectionSslTruststorePassword"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportRabbitMqConnectionSslVersion"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportFeedURL"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportFeedType"/>
     </genClasses>
     <genClasses ecoreClass="esb.ecore#//InboundEndpointParameter">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpointParameter/name"/>

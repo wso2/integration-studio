@@ -278,6 +278,11 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 			addTransportRabbitMqConnectionSslTruststoreTypePropertyDescriptor(object);
 			addTransportRabbitMqConnectionSslTruststorePasswordPropertyDescriptor(object);
 			addTransportRabbitMqConnectionSslVersionPropertyDescriptor(object);
+			break;			
+		case FEED:
+			addIntervalPropertyDescriptor(object);
+			addTransportFeedURLPropertyDescriptor(object);
+			addTransportFeedTypePropertyDescriptor(object);
 			break;
 		default:
 			break;
@@ -2090,6 +2095,50 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 	}
 
 	/**
+	 * This adds a property descriptor for the Transport Feed URL feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addTransportFeedURLPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_InboundEndpoint_transportFeedURL_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_transportFeedURL_feature", "_UI_InboundEndpoint_type"),
+				 EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_FEED_URL,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Transport Feed Type feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addTransportFeedTypePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_InboundEndpoint_transportFeedType_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_transportFeedType_feature", "_UI_InboundEndpoint_type"),
+				 EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_FEED_TYPE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This adds a property descriptor for the Class feature. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 * 
@@ -3734,6 +3783,8 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_TYPE:
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_PASSWORD:
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_VERSION:
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_FEED_URL:
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_FEED_TYPE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case EsbPackage.INBOUND_ENDPOINT__SEQUENCE_INPUT_CONNECTOR:

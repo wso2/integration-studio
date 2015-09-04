@@ -3029,6 +3029,9 @@
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="transportRabbitMqConnectionSslVersion"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="transportFeedURL" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral=""/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="transportFeedType" eType="#//FeedType"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="InboundEndpointParameter">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
@@ -3047,6 +3050,7 @@
     <eLiterals name="cxf_ws_rm" value="7" literal="CXF_WS_RM"/>
     <eLiterals name="mqtt" value="8" literal="MQTT"/>
     <eLiterals name="RabbitMQ" value="9"/>
+    <eLiterals name="feed" value="10" literal="Feed"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="ContentType">
     <eLiterals name="xml" literal="application/xml"/>
@@ -3109,6 +3113,10 @@
     <eLiterals name="zero" literal="0"/>
     <eLiterals name="one" value="1" literal="1"/>
     <eLiterals name="two" value="2" literal="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="FeedType">
+    <eLiterals name="atom" literal="Atom"/>
+    <eLiterals name="rss" value="1" literal="RSS"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="InboundEndpointContainer" eSuperTypes="#//EsbElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="sequenceContainer" eType="#//InboundEndpointSequenceContainer"

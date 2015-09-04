@@ -189,6 +189,8 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqConnectionSslTruststoreType <em>Transport Rabbit Mq Connection Ssl Truststore Type</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqConnectionSslTruststorePassword <em>Transport Rabbit Mq Connection Ssl Truststore Password</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqConnectionSslVersion <em>Transport Rabbit Mq Connection Ssl Version</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportFeedURL <em>Transport Feed URL</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportFeedType <em>Transport Feed Type</em>}</li>
  * </ul>
  * </p>
  *
@@ -2501,6 +2503,62 @@ public interface InboundEndpoint extends EsbElement {
 	 * @generated
 	 */
 	void setTransportRabbitMqConnectionSslVersion(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Transport Feed URL</b></em>' attribute.
+	 * The default value is <code>""</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Transport Feed URL</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Transport Feed URL</em>' attribute.
+	 * @see #setTransportFeedURL(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportFeedURL()
+	 * @model default=""
+	 * @generated
+	 */
+	String getTransportFeedURL();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportFeedURL <em>Transport Feed URL</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Transport Feed URL</em>' attribute.
+	 * @see #getTransportFeedURL()
+	 * @generated
+	 */
+	void setTransportFeedURL(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Transport Feed Type</b></em>' attribute.
+	 * The literals are from the enumeration {@link org.wso2.developerstudio.eclipse.gmf.esb.FeedType}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Transport Feed Type</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Transport Feed Type</em>' attribute.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.FeedType
+	 * @see #setTransportFeedType(FeedType)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportFeedType()
+	 * @model
+	 * @generated
+	 */
+	FeedType getTransportFeedType();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportFeedType <em>Transport Feed Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Transport Feed Type</em>' attribute.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.FeedType
+	 * @see #getTransportFeedType()
+	 * @generated
+	 */
+	void setTransportFeedType(FeedType value);
 
 	/**
 	 * Returns the value of the '<em><b>Class</b></em>' attribute.

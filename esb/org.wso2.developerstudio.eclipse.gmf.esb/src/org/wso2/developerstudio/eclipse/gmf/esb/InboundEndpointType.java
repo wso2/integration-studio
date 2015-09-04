@@ -117,7 +117,15 @@ public enum InboundEndpointType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	RABBIT_MQ(9, "RabbitMQ", "RabbitMQ");
+	RABBIT_MQ(9, "RabbitMQ", "RabbitMQ"), /**
+	 * The '<em><b>Feed</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #FEED_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	FEED(10, "feed", "Feed");
 
 	/**
 	 * The '<em><b>Http</b></em>' literal value.
@@ -270,6 +278,21 @@ public enum InboundEndpointType implements Enumerator {
 	public static final int RABBIT_MQ_VALUE = 9;
 
 	/**
+	 * The '<em><b>Feed</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>Feed</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #FEED
+	 * @model name="feed" literal="Feed"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int FEED_VALUE = 10;
+
+	/**
 	 * An array of all the '<em><b>Inbound Endpoint Type</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -287,6 +310,7 @@ public enum InboundEndpointType implements Enumerator {
 			CXF_WS_RM,
 			MQTT,
 			RABBIT_MQ,
+			FEED,
 		};
 
 	/**
@@ -347,6 +371,7 @@ public enum InboundEndpointType implements Enumerator {
 			case CXF_WS_RM_VALUE: return CXF_WS_RM;
 			case MQTT_VALUE: return MQTT;
 			case RABBIT_MQ_VALUE: return RABBIT_MQ;
+			case FEED_VALUE: return FEED;
 		}
 		return null;
 	}

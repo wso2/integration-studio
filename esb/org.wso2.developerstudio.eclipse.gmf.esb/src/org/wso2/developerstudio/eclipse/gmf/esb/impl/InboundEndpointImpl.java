@@ -33,6 +33,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.ConsumerType;
 import org.wso2.developerstudio.eclipse.gmf.esb.ContentType;
 import org.wso2.developerstudio.eclipse.gmf.esb.Enable;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
+import org.wso2.developerstudio.eclipse.gmf.esb.FeedType;
 import org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointContainer;
 import org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointOnErrorSequenceInputConnector;
@@ -223,6 +224,8 @@ import org.wso2.developerstudio.eclipse.gmf.esb.VFSFileSort;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqConnectionSslTruststoreType <em>Transport Rabbit Mq Connection Ssl Truststore Type</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqConnectionSslTruststorePassword <em>Transport Rabbit Mq Connection Ssl Truststore Password</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqConnectionSslVersion <em>Transport Rabbit Mq Connection Ssl Version</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportFeedURL <em>Transport Feed URL</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportFeedType <em>Transport Feed Type</em>}</li>
  * </ul>
  * </p>
  *
@@ -3430,6 +3433,46 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	protected String transportRabbitMqConnectionSslVersion = TRANSPORT_RABBIT_MQ_CONNECTION_SSL_VERSION_EDEFAULT;
 
 	/**
+	 * The default value of the '{@link #getTransportFeedURL() <em>Transport Feed URL</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportFeedURL()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String TRANSPORT_FEED_URL_EDEFAULT = "";
+
+	/**
+	 * The cached value of the '{@link #getTransportFeedURL() <em>Transport Feed URL</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportFeedURL()
+	 * @generated
+	 * @ordered
+	 */
+	protected String transportFeedURL = TRANSPORT_FEED_URL_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getTransportFeedType() <em>Transport Feed Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportFeedType()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final FeedType TRANSPORT_FEED_TYPE_EDEFAULT = FeedType.ATOM;
+
+	/**
+	 * The cached value of the '{@link #getTransportFeedType() <em>Transport Feed Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportFeedType()
+	 * @generated
+	 * @ordered
+	 */
+	protected FeedType transportFeedType = TRANSPORT_FEED_TYPE_EDEFAULT;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -5374,6 +5417,48 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 		transportRabbitMqConnectionSslVersion = newTransportRabbitMqConnectionSslVersion;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_VERSION, oldTransportRabbitMqConnectionSslVersion, transportRabbitMqConnectionSslVersion));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getTransportFeedURL() {
+		return transportFeedURL;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTransportFeedURL(String newTransportFeedURL) {
+		String oldTransportFeedURL = transportFeedURL;
+		transportFeedURL = newTransportFeedURL;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_FEED_URL, oldTransportFeedURL, transportFeedURL));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public FeedType getTransportFeedType() {
+		return transportFeedType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTransportFeedType(FeedType newTransportFeedType) {
+		FeedType oldTransportFeedType = transportFeedType;
+		transportFeedType = newTransportFeedType == null ? TRANSPORT_FEED_TYPE_EDEFAULT : newTransportFeedType;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_FEED_TYPE, oldTransportFeedType, transportFeedType));
 	}
 
 	/**
@@ -7330,6 +7415,10 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 				return getTransportRabbitMqConnectionSslTruststorePassword();
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_VERSION:
 				return getTransportRabbitMqConnectionSslVersion();
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_FEED_URL:
+				return getTransportFeedURL();
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_FEED_TYPE:
+				return getTransportFeedType();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -7833,6 +7922,12 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_VERSION:
 				setTransportRabbitMqConnectionSslVersion((String)newValue);
 				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_FEED_URL:
+				setTransportFeedURL((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_FEED_TYPE:
+				setTransportFeedType((FeedType)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -8334,6 +8429,12 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_VERSION:
 				setTransportRabbitMqConnectionSslVersion(TRANSPORT_RABBIT_MQ_CONNECTION_SSL_VERSION_EDEFAULT);
 				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_FEED_URL:
+				setTransportFeedURL(TRANSPORT_FEED_URL_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_FEED_TYPE:
+				setTransportFeedType(TRANSPORT_FEED_TYPE_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -8672,6 +8773,10 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 				return TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_PASSWORD_EDEFAULT == null ? transportRabbitMqConnectionSslTruststorePassword != null : !TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_PASSWORD_EDEFAULT.equals(transportRabbitMqConnectionSslTruststorePassword);
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_VERSION:
 				return TRANSPORT_RABBIT_MQ_CONNECTION_SSL_VERSION_EDEFAULT == null ? transportRabbitMqConnectionSslVersion != null : !TRANSPORT_RABBIT_MQ_CONNECTION_SSL_VERSION_EDEFAULT.equals(transportRabbitMqConnectionSslVersion);
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_FEED_URL:
+				return TRANSPORT_FEED_URL_EDEFAULT == null ? transportFeedURL != null : !TRANSPORT_FEED_URL_EDEFAULT.equals(transportFeedURL);
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_FEED_TYPE:
+				return transportFeedType != TRANSPORT_FEED_TYPE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -9000,6 +9105,10 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 		result.append(transportRabbitMqConnectionSslTruststorePassword);
 		result.append(", transportRabbitMqConnectionSslVersion: ");
 		result.append(transportRabbitMqConnectionSslVersion);
+		result.append(", transportFeedURL: ");
+		result.append(transportFeedURL);
+		result.append(", transportFeedType: ");
+		result.append(transportFeedType);
 		result.append(')');
 		return result.toString();
 	}

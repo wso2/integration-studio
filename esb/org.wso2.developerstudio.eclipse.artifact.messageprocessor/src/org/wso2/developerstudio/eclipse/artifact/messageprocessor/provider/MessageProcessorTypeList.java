@@ -35,7 +35,8 @@ public class MessageProcessorTypeList extends AbstractListDataProvider{
 		list.add(createListData("Scheduled Message Forwarding Processor","Scheduled Message Forwarding Processor"));
 		list.add(createListData("Message Sampling Processor","Message Sampling Processor"));
 		list.add(createListData("Custom Message Processor","Custom Message Processor"));
-		return list;
+		list.add(createListData("Scheduled Failover Message Forwarding Processor","Scheduled Failover Message Forwarding Processor"));
+        return list;
 	}
 	
 }

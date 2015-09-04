@@ -66,10 +66,10 @@ public class MessageProcessorItemProvider
 
 		addProcessorTypePropertyDescriptor(object);
 		addProcessorNamePropertyDescriptor(object);
-		addMessageStorePropertyDescriptor(object);
 		
 		switch (messageProcessor.getProcessorType()) {
 		case SCHEDULED_MSG_FORWARDING: {
+			addMessageStorePropertyDescriptor(object);
 			addEndpointNamePropertyDescriptor(object);
 			addProcessorStatePropertyDescriptor(object);
 			addForwardingIntervalPropertyDescriptor(object);
@@ -87,7 +87,23 @@ public class MessageProcessorItemProvider
 			addTaskCountPropertyDescriptor(object);
 			break;
 		}
+		case SCHEDULED_FAILOVER_MSG_FORWARDING: {
+			addSourceMessageStorePropertyDescriptor(object);
+			addTargetMessageStorePropertyDescriptor(object);
+            addProcessorStatePropertyDescriptor(object);
+			addForwardingIntervalPropertyDescriptor(object);
+			addRetryIntervalPropertyDescriptor(object);
+			addMaxDeliveryAttemptsPropertyDescriptor(object);
+			addDropMessageAfterMaximumDeliveryAttemptsPropertyDescriptor(object);
+			addFaultSequenceNamePropertyDescriptor(object);
+			addDeactivateSequenceNamePropertyDescriptor(object);
+            addQuartzConfigFilePathPropertyDescriptor(object);
+			addCronExpressionPropertyDescriptor(object);
+			addTaskCountPropertyDescriptor(object);
+			break;
+		}
 		case MSG_SAMPLING: {
+			addMessageStorePropertyDescriptor(object);
 			addProcessorStatePropertyDescriptor(object);
 			addSequencePropertyDescriptor(object);
 			addSamplingIntervalPropertyDescriptor(object);
@@ -97,6 +113,7 @@ public class MessageProcessorItemProvider
 			break;
 		}
 		case CUSTOM: {
+			addMessageStorePropertyDescriptor(object);
 			addMessageProcessorProviderPropertyDescriptor(object);
 			addParametersPropertyDescriptor(object);
 			break;
@@ -193,6 +210,50 @@ public class MessageProcessorItemProvider
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 getString("_UI_BasicPropertyCategory"),
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Source Message Store feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addSourceMessageStorePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_MessageProcessor_sourceMessageStore_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_MessageProcessor_sourceMessageStore_feature", "_UI_MessageProcessor_type"),
+				 EsbPackage.Literals.MESSAGE_PROCESSOR__SOURCE_MESSAGE_STORE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Target Message Store feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addTargetMessageStorePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_MessageProcessor_targetMessageStore_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_MessageProcessor_targetMessageStore_feature", "_UI_MessageProcessor_type"),
+				 EsbPackage.Literals.MESSAGE_PROCESSOR__TARGET_MESSAGE_STORE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
 				 null));
 	}
 
@@ -685,6 +746,8 @@ public class MessageProcessorItemProvider
 			case EsbPackage.MESSAGE_PROCESSOR__PROCESSOR_TYPE:
 			case EsbPackage.MESSAGE_PROCESSOR__MESSAGE_PROCESSOR_PROVIDER:
 			case EsbPackage.MESSAGE_PROCESSOR__MESSAGE_STORE:
+			case EsbPackage.MESSAGE_PROCESSOR__SOURCE_MESSAGE_STORE:
+			case EsbPackage.MESSAGE_PROCESSOR__TARGET_MESSAGE_STORE:
 			case EsbPackage.MESSAGE_PROCESSOR__PROCESSOR_STATE:
 			case EsbPackage.MESSAGE_PROCESSOR__RETRY_INTERVAL:
 			case EsbPackage.MESSAGE_PROCESSOR__FORWARDING_INTERVAL:

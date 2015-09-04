@@ -21731,13 +21731,31 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	int MESSAGE_PROCESSOR__MESSAGE_STORE = ESB_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
+	 * The feature id for the '<em><b>Source Message Store</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MESSAGE_PROCESSOR__SOURCE_MESSAGE_STORE = ESB_ELEMENT_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>Target Message Store</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MESSAGE_PROCESSOR__TARGET_MESSAGE_STORE = ESB_ELEMENT_FEATURE_COUNT + 5;
+
+	/**
 	 * The feature id for the '<em><b>Processor State</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MESSAGE_PROCESSOR__PROCESSOR_STATE = ESB_ELEMENT_FEATURE_COUNT + 4;
+	int MESSAGE_PROCESSOR__PROCESSOR_STATE = ESB_ELEMENT_FEATURE_COUNT + 6;
 
 	/**
 	 * The feature id for the '<em><b>Endpoint Name</b></em>' containment reference.
@@ -21746,7 +21764,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int MESSAGE_PROCESSOR__ENDPOINT_NAME = ESB_ELEMENT_FEATURE_COUNT + 5;
+	int MESSAGE_PROCESSOR__ENDPOINT_NAME = ESB_ELEMENT_FEATURE_COUNT + 7;
 
 	/**
 	 * The feature id for the '<em><b>Sequence</b></em>' containment reference.
@@ -21755,7 +21773,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int MESSAGE_PROCESSOR__SEQUENCE = ESB_ELEMENT_FEATURE_COUNT + 6;
+	int MESSAGE_PROCESSOR__SEQUENCE = ESB_ELEMENT_FEATURE_COUNT + 8;
 
 	/**
 	 * The feature id for the '<em><b>Retry Interval</b></em>' attribute.
@@ -21764,7 +21782,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int MESSAGE_PROCESSOR__RETRY_INTERVAL = ESB_ELEMENT_FEATURE_COUNT + 7;
+	int MESSAGE_PROCESSOR__RETRY_INTERVAL = ESB_ELEMENT_FEATURE_COUNT + 9;
 
 	/**
 	 * The feature id for the '<em><b>Forwarding Interval</b></em>' attribute.
@@ -21773,7 +21791,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int MESSAGE_PROCESSOR__FORWARDING_INTERVAL = ESB_ELEMENT_FEATURE_COUNT + 8;
+	int MESSAGE_PROCESSOR__FORWARDING_INTERVAL = ESB_ELEMENT_FEATURE_COUNT + 10;
 
 	/**
 	 * The feature id for the '<em><b>Sampling Interval</b></em>' attribute.
@@ -21782,7 +21800,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int MESSAGE_PROCESSOR__SAMPLING_INTERVAL = ESB_ELEMENT_FEATURE_COUNT + 9;
+	int MESSAGE_PROCESSOR__SAMPLING_INTERVAL = ESB_ELEMENT_FEATURE_COUNT + 11;
 
 	/**
 	 * The feature id for the '<em><b>Sampling Concurrency</b></em>' attribute.
@@ -21791,7 +21809,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int MESSAGE_PROCESSOR__SAMPLING_CONCURRENCY = ESB_ELEMENT_FEATURE_COUNT + 10;
+	int MESSAGE_PROCESSOR__SAMPLING_CONCURRENCY = ESB_ELEMENT_FEATURE_COUNT + 12;
 
 	/**
 	 * The feature id for the '<em><b>Max Delivery Attempts</b></em>' attribute.
@@ -21800,7 +21818,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int MESSAGE_PROCESSOR__MAX_DELIVERY_ATTEMPTS = ESB_ELEMENT_FEATURE_COUNT + 11;
+	int MESSAGE_PROCESSOR__MAX_DELIVERY_ATTEMPTS = ESB_ELEMENT_FEATURE_COUNT + 13;
 
 	/**
 	 * The feature id for the '<em><b>Drop Message After Maximum Delivery Attempts</b></em>' attribute.
@@ -21809,7 +21827,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int MESSAGE_PROCESSOR__DROP_MESSAGE_AFTER_MAXIMUM_DELIVERY_ATTEMPTS = ESB_ELEMENT_FEATURE_COUNT + 12;
+	int MESSAGE_PROCESSOR__DROP_MESSAGE_AFTER_MAXIMUM_DELIVERY_ATTEMPTS = ESB_ELEMENT_FEATURE_COUNT + 14;
 
 	/**
 	 * The feature id for the '<em><b>Axis2 Client Repository</b></em>' attribute.
@@ -21818,7 +21836,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int MESSAGE_PROCESSOR__AXIS2_CLIENT_REPOSITORY = ESB_ELEMENT_FEATURE_COUNT + 13;
+	int MESSAGE_PROCESSOR__AXIS2_CLIENT_REPOSITORY = ESB_ELEMENT_FEATURE_COUNT + 15;
 
 	/**
 	 * The feature id for the '<em><b>Axis2 Configuration</b></em>' attribute.
@@ -21827,7 +21845,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int MESSAGE_PROCESSOR__AXIS2_CONFIGURATION = ESB_ELEMENT_FEATURE_COUNT + 14;
+	int MESSAGE_PROCESSOR__AXIS2_CONFIGURATION = ESB_ELEMENT_FEATURE_COUNT + 16;
 
 	/**
 	 * The feature id for the '<em><b>Reply Sequence Name</b></em>' containment reference.
@@ -21836,7 +21854,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int MESSAGE_PROCESSOR__REPLY_SEQUENCE_NAME = ESB_ELEMENT_FEATURE_COUNT + 15;
+	int MESSAGE_PROCESSOR__REPLY_SEQUENCE_NAME = ESB_ELEMENT_FEATURE_COUNT + 17;
 
 	/**
 	 * The feature id for the '<em><b>Fault Sequence Name</b></em>' containment reference.
@@ -21845,7 +21863,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int MESSAGE_PROCESSOR__FAULT_SEQUENCE_NAME = ESB_ELEMENT_FEATURE_COUNT + 16;
+	int MESSAGE_PROCESSOR__FAULT_SEQUENCE_NAME = ESB_ELEMENT_FEATURE_COUNT + 18;
 
 	/**
 	 * The feature id for the '<em><b>Deactivate Sequence Name</b></em>' containment reference.
@@ -21854,7 +21872,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int MESSAGE_PROCESSOR__DEACTIVATE_SEQUENCE_NAME = ESB_ELEMENT_FEATURE_COUNT + 17;
+	int MESSAGE_PROCESSOR__DEACTIVATE_SEQUENCE_NAME = ESB_ELEMENT_FEATURE_COUNT + 19;
 
 	/**
 	 * The feature id for the '<em><b>Quartz Config File Path</b></em>' attribute.
@@ -21863,7 +21881,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int MESSAGE_PROCESSOR__QUARTZ_CONFIG_FILE_PATH = ESB_ELEMENT_FEATURE_COUNT + 18;
+	int MESSAGE_PROCESSOR__QUARTZ_CONFIG_FILE_PATH = ESB_ELEMENT_FEATURE_COUNT + 20;
 
 	/**
 	 * The feature id for the '<em><b>Cron Expression</b></em>' attribute.
@@ -21872,7 +21890,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int MESSAGE_PROCESSOR__CRON_EXPRESSION = ESB_ELEMENT_FEATURE_COUNT + 19;
+	int MESSAGE_PROCESSOR__CRON_EXPRESSION = ESB_ELEMENT_FEATURE_COUNT + 21;
 
 	/**
 	 * The feature id for the '<em><b>Non Retry Http Status Codes</b></em>' attribute.
@@ -21881,7 +21899,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int MESSAGE_PROCESSOR__NON_RETRY_HTTP_STATUS_CODES = ESB_ELEMENT_FEATURE_COUNT + 20;
+	int MESSAGE_PROCESSOR__NON_RETRY_HTTP_STATUS_CODES = ESB_ELEMENT_FEATURE_COUNT + 22;
 
 	/**
 	 * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
@@ -21890,7 +21908,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int MESSAGE_PROCESSOR__PARAMETERS = ESB_ELEMENT_FEATURE_COUNT + 21;
+	int MESSAGE_PROCESSOR__PARAMETERS = ESB_ELEMENT_FEATURE_COUNT + 23;
 
 	/**
 	 * The feature id for the '<em><b>Task Count</b></em>' attribute.
@@ -21899,7 +21917,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int MESSAGE_PROCESSOR__TASK_COUNT = ESB_ELEMENT_FEATURE_COUNT + 22;
+	int MESSAGE_PROCESSOR__TASK_COUNT = ESB_ELEMENT_FEATURE_COUNT + 24;
 
 	/**
 	 * The number of structural features of the '<em>Message Processor</em>' class.
@@ -21908,7 +21926,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int MESSAGE_PROCESSOR_FEATURE_COUNT = ESB_ELEMENT_FEATURE_COUNT + 23;
+	int MESSAGE_PROCESSOR_FEATURE_COUNT = ESB_ELEMENT_FEATURE_COUNT + 25;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.APIHandlerImpl <em>API Handler</em>}' class.
@@ -32494,6 +32512,28 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 */
 	EAttribute getMessageProcessor_MessageStore();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getSourceMessageStore <em>Source Message Store</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Source Message Store</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getSourceMessageStore()
+	 * @see #getMessageProcessor()
+	 * @generated
+	 */
+	EAttribute getMessageProcessor_SourceMessageStore();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getTargetMessageStore <em>Target Message Store</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Target Message Store</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getTargetMessageStore()
+	 * @see #getMessageProcessor()
+	 * @generated
+	 */
+	EAttribute getMessageProcessor_TargetMessageStore();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getProcessorState <em>Processor State</em>}'.
@@ -48179,6 +48219,22 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 		 * @generated
 		 */
 		EAttribute MESSAGE_PROCESSOR__MESSAGE_STORE = eINSTANCE.getMessageProcessor_MessageStore();
+
+		/**
+		 * The meta object literal for the '<em><b>Source Message Store</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MESSAGE_PROCESSOR__SOURCE_MESSAGE_STORE = eINSTANCE.getMessageProcessor_SourceMessageStore();
+
+		/**
+		 * The meta object literal for the '<em><b>Target Message Store</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MESSAGE_PROCESSOR__TARGET_MESSAGE_STORE = eINSTANCE.getMessageProcessor_TargetMessageStore();
 
 		/**
 		 * The meta object literal for the '<em><b>Processor State</b></em>' attribute feature.

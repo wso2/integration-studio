@@ -42,6 +42,14 @@ public enum MessageProcessorType implements Enumerator {
 	SCHEDULED_MSG_FORWARDING(0, "SCHEDULED_MSG_FORWARDING", "SCHEDULED_MSG_FORWARDING"),
 
 	/**
+	 * The '<em><b>SCHEDULED FAILOVER MSG FORWARDING</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #SCHEDULED_FAILOVER_MSG_FORWARDING_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	SCHEDULED_FAILOVER_MSG_FORWARDING(1, "SCHEDULED_FAILOVER_MSG_FORWARDING", "SCHEDULED_FAILOVER_MSG_FORWARDING"), /**
 	 * The '<em><b>MSG SAMPLING</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -49,7 +57,7 @@ public enum MessageProcessorType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	MSG_SAMPLING(1, "MSG_SAMPLING", "MSG_SAMPLING"),
+	MSG_SAMPLING(2, "MSG_SAMPLING", "MSG_SAMPLING"),
 
 	/**
 	 * The '<em><b>CUSTOM</b></em>' literal object.
@@ -59,7 +67,7 @@ public enum MessageProcessorType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	CUSTOM(2, "CUSTOM", "CUSTOM");
+	CUSTOM(3, "CUSTOM", "CUSTOM");
 
 	/**
 	 * The '<em><b>SCHEDULED MSG FORWARDING</b></em>' literal value.
@@ -77,6 +85,21 @@ public enum MessageProcessorType implements Enumerator {
 	public static final int SCHEDULED_MSG_FORWARDING_VALUE = 0;
 
 	/**
+	 * The '<em><b>SCHEDULED FAILOVER MSG FORWARDING</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>SCHEDULED FAILOVER MSG FORWARDING</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #SCHEDULED_FAILOVER_MSG_FORWARDING
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int SCHEDULED_FAILOVER_MSG_FORWARDING_VALUE = 1;
+
+	/**
 	 * The '<em><b>MSG SAMPLING</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -89,7 +112,7 @@ public enum MessageProcessorType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int MSG_SAMPLING_VALUE = 1;
+	public static final int MSG_SAMPLING_VALUE = 2;
 
 	/**
 	 * The '<em><b>CUSTOM</b></em>' literal value.
@@ -104,7 +127,7 @@ public enum MessageProcessorType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int CUSTOM_VALUE = 2;
+	public static final int CUSTOM_VALUE = 3;
 
 	/**
 	 * An array of all the '<em><b>Message Processor Type</b></em>' enumerators.
@@ -115,6 +138,7 @@ public enum MessageProcessorType implements Enumerator {
 	private static final MessageProcessorType[] VALUES_ARRAY =
 		new MessageProcessorType[] {
 			SCHEDULED_MSG_FORWARDING,
+			SCHEDULED_FAILOVER_MSG_FORWARDING,
 			MSG_SAMPLING,
 			CUSTOM,
 		};
@@ -168,6 +192,7 @@ public enum MessageProcessorType implements Enumerator {
 	public static MessageProcessorType get(int value) {
 		switch (value) {
 			case SCHEDULED_MSG_FORWARDING_VALUE: return SCHEDULED_MSG_FORWARDING;
+			case SCHEDULED_FAILOVER_MSG_FORWARDING_VALUE: return SCHEDULED_FAILOVER_MSG_FORWARDING;
 			case MSG_SAMPLING_VALUE: return MSG_SAMPLING;
 			case CUSTOM_VALUE: return CUSTOM;
 		}

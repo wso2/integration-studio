@@ -105,6 +105,50 @@ public class MessageProcessorTransformer {
 				parameters.put("member.count", model.getTaskCount());
 			}
 
+		} if (model.getProcessorType() == MessageProcessorType.SCHEDULED_FAILOVER_MSG_FORWARDING) {
+			className = "org.apache.synapse.message.processor.impl.failover.FailoverScheduledMessageForwardingProcessor";
+			messageProcessor.setMessageStoreName(model.getSourceMessageStore());
+
+			if (StringUtils.isNotBlank(model.getProcessorState().getLiteral())) {
+				if (model.getProcessorState().getLiteral().equals("Activate")) {
+					Boolean isActive = true;
+					parameters.put("is.active", isActive.toString());
+				} else {
+					Boolean isActive = false;
+					parameters.put("is.active", isActive.toString());
+				}
+			}
+			
+			parameters.put("interval", ((Long) model.getForwardingInterval()).toString());
+			parameters.put("client.retry.interval", ((Long) model.getRetryInterval()).toString());
+			parameters.put("max.delivery.attempts", ((Integer) model.getMaxDeliveryAttempts()).toString());
+
+			if (model.getFaultSequenceName() != null
+					&& StringUtils.isNotBlank(model.getFaultSequenceName().getKeyValue())) {
+				parameters.put("message.processor.fault.sequence", model.getFaultSequenceName()
+						.getKeyValue());
+			}
+			if (model.getDeactivateSequenceName() != null
+					&& StringUtils.isNotBlank(model.getDeactivateSequenceName().getKeyValue())) {
+				parameters.put("message.processor.deactivate.sequence", model.getDeactivateSequenceName()
+						.getKeyValue());
+			}
+			if (StringUtils.isNotBlank(model.getQuartzConfigFilePath())) {
+				parameters.put("quartz.conf", model.getQuartzConfigFilePath());
+			}
+			if (StringUtils.isNotBlank(model.getCronExpression())) {
+				parameters.put("cronExpression", model.getCronExpression());
+			}
+			if (StringUtils.isNotBlank(model.getDropMessageAfterMaximumDeliveryAttempts().getLiteral())) {
+				parameters.put("max.delivery.drop", model.getDropMessageAfterMaximumDeliveryAttempts().getLiteral());
+			}
+			if (StringUtils.isNotBlank(model.getTaskCount())) {
+				parameters.put("member.count", model.getTaskCount());
+			}
+			if (StringUtils.isNotBlank(model.getTargetMessageStore())) {
+				parameters.put("message.target.store.name", model.getTargetMessageStore());
+			}
+
 		} else if (model.getProcessorType() == MessageProcessorType.MSG_SAMPLING) {			
 			className = "org.apache.synapse.message.processor.impl.sampler.SamplingProcessor";
 

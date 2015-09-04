@@ -559,6 +559,7 @@
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//MessageProcessorType">
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//MessageProcessorType/SCHEDULED_MSG_FORWARDING"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//MessageProcessorType/SCHEDULED_FAILOVER_MSG_FORWARDING"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//MessageProcessorType/MSG_SAMPLING"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//MessageProcessorType/CUSTOM"/>
     </genEnums>
@@ -2124,6 +2125,8 @@
           ecoreFeature="ecore:EAttribute esb.ecore#//MessageProcessor/processorType"/>
       <genFeatures createChild="false" propertyCategory="Basic" ecoreFeature="ecore:EAttribute esb.ecore#//MessageProcessor/messageProcessorProvider"/>
       <genFeatures createChild="false" propertyCategory="Basic" ecoreFeature="ecore:EAttribute esb.ecore#//MessageProcessor/messageStore"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//MessageProcessor/sourceMessageStore"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//MessageProcessor/targetMessageStore"/>
       <genFeatures createChild="false" propertyCategory="Additional Parameters" ecoreFeature="ecore:EAttribute esb.ecore#//MessageProcessor/processorState"/>
       <genFeatures children="true" createChild="true" propertyCategory="Basic" ecoreFeature="ecore:EReference esb.ecore#//MessageProcessor/endpointName"/>
       <genFeatures notify="false" createChild="false" propertyCategory="Basic" propertySortChoices="true"

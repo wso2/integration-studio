@@ -2585,8 +2585,9 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="MessageProcessorType">
     <eLiterals name="SCHEDULED_MSG_FORWARDING" literal="SCHEDULED_MSG_FORWARDING"/>
-    <eLiterals name="MSG_SAMPLING" value="1" literal="MSG_SAMPLING"/>
-    <eLiterals name="CUSTOM" value="2" literal="CUSTOM"/>
+    <eLiterals name="SCHEDULED_FAILOVER_MSG_FORWARDING" value="1" literal="SCHEDULED_FAILOVER_MSG_FORWARDING"/>
+    <eLiterals name="MSG_SAMPLING" value="2" literal="MSG_SAMPLING"/>
+    <eLiterals name="CUSTOM" value="3" literal="CUSTOM"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="ProcessorState">
     <eLiterals name="ACTIVATE" literal="Activate"/>
@@ -2602,6 +2603,8 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="messageProcessorProvider"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="messageStore" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sourceMessageStore" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="targetMessageStore" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="processorState" eType="#//ProcessorState"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="endpointName" eType="#//RegistryKeyProperty"
         containment="true"/>

@@ -50,6 +50,8 @@ public class MessageProcessorModel extends ProjectDataModel {
 	private String messageProcessorName;
 	private String messageProcessorType;
 	private String messageStore;
+	private String sourceMessageStore;
+	private String targetMessageStore;
 	private String retryInterval;
 	private String configurationFilePath;
 	private String cronExpression;
@@ -97,6 +99,22 @@ public class MessageProcessorModel extends ProjectDataModel {
 
 	public void setMessageStore(String messageStore) {
 		this.messageStore = messageStore;
+	}
+
+	public String getSourceMessageStore() {
+		return sourceMessageStore;
+	}
+
+	public void setSourceMessageStore(String sourceMessageStore) {
+		this.sourceMessageStore = sourceMessageStore;
+	}
+
+	public String getTargetMessageStore() {
+		return targetMessageStore;
+	}
+
+	public void setTargetMessageStore(String targetMessageStore) {
+		this.targetMessageStore = targetMessageStore;
 	}
 
 	public void setMessageProcessorName(String messageProcessorName) {
@@ -307,15 +325,15 @@ public class MessageProcessorModel extends ProjectDataModel {
 				modelPropertyValue = getMessageProcessorName();
 			} else if (key.equals("processor.type")) {
 				modelPropertyValue = getMessageProcessorType();
-			} else if (key.equals("processor.store")) {
+			} else if (key.equals("FSC_processor.store")) {
 				modelPropertyValue = getMessageStore();
-			} else if (key.equals("Forwarding_processor.retry_interval")) {
+			} else if (key.equals("FS_processor.retry_interval")) {
 				modelPropertyValue = getRetryInterval();
-			} else if (key.equals("FS_processor.configuration_file_path")) {
+			} else if (key.equals("FSS_processor.configuration_file_path")) {
 				modelPropertyValue = getConfigurationFilePath();
-			} else if (key.equals("FS_processor.cron_expression")) {
+			} else if (key.equals("FSS_processor.cron_expression")) {
 				modelPropertyValue = getCronExpression();
-			} else if (key.equals("Forwarding_processor.delivery_attempts")) {
+			} else if (key.equals("FS_processor.delivery_attempts")) {
 				modelPropertyValue = getDeliveryAttempts();
 			} else if (key.equals("Forwarding_processor.client_repository")) {
 				modelPropertyValue = getClientRepository();
@@ -323,7 +341,9 @@ public class MessageProcessorModel extends ProjectDataModel {
 				modelPropertyValue = getAxis2Configuration();
 			} else if (key.equals("Forwarding_processor.Reply_sequence_name")) {
 				modelPropertyValue = getReplySequenceName();
-			} else if (key.equals("Forwarding_processor.Deactivate_sequence_name")) {
+			} else if (key.equals("FS_processor.Fault_sequence_name")) {
+				modelPropertyValue = getFaultSequenceName();
+			} else if (key.equals("FS_processor.Deactivate_sequence_name")) {
 				modelPropertyValue = getDeactivateSequenceName();
 			} else if (key.equals("sampling_processor.sequence")) {
 				modelPropertyValue = getSequence();
@@ -343,7 +363,7 @@ public class MessageProcessorModel extends ProjectDataModel {
 				}
 			} else if (key.equals("Forwarding_processor.endpoint_name")) {
 				modelPropertyValue = getEndpointName();
-			} else if (key.equals("Forwarding_processor.forwarding_interval")) {
+			} else if (key.equals("FS_processor.forwarding_interval")) {
 				modelPropertyValue = getForwardingInterval();
 			} else if (key.equals("FS_processor.processor_state")) {
 				modelPropertyValue = getProcessorState();
@@ -353,10 +373,14 @@ public class MessageProcessorModel extends ProjectDataModel {
 				modelPropertyValue = getSamplingConcurrency();
 			} else if (key.equals("Forwarding_processor.non_retry_http_status_codes")) {
 				modelPropertyValue = getNonRetryHttpStatusCodes();
-			} else if(key.equals("Forwarding_processor.drop_message_after_maximum_delivery_attempts")){
+			} else if(key.equals("FS_processor.drop_message_after_maximum_delivery_attempts")){
 				modelPropertyValue = getDropMessageAfterMaxDeliveryAttempts();
-			} else if(key.equals("Forwarding_processor.task_count")){
+			} else if(key.equals("FS_processor.task_count")){
 				modelPropertyValue = getTaskCount();
+			} else if(key.equals("Scheduled_Failover_processor.source_store")){
+				modelPropertyValue = getSourceMessageStore();
+			} else if(key.equals("Scheduled_Failover_processor.target_store")){
+				modelPropertyValue = getTargetMessageStore();
 			}
 		}
 
@@ -371,15 +395,15 @@ public class MessageProcessorModel extends ProjectDataModel {
 			setMessageProcessorName(data.toString());
 		} else if (key.equals("processor.type")) {
 			setMessageProcessorType(data.toString());
-		} else if (key.equals("processor.store")) {
+		} else if (key.equals("FSC_processor.store")) {
 			setMessageStore(data.toString());
-		} else if (key.equals("Forwarding_processor.retry_interval")) {
+		} else if (key.equals("FS_processor.retry_interval")) {
 			setRetryInterval(data.toString());
-		} else if (key.equals("FS_processor.configuration_file_path")) {
+		} else if (key.equals("FSS_processor.configuration_file_path")) {
 			setConfigurationFilePath(data.toString());
-		} else if (key.equals("FS_processor.cron_expression")) {
+		} else if (key.equals("FSS_processor.cron_expression")) {
 			setCronExpression(data.toString());
-		} else if (key.equals("Forwarding_processor.delivery_attempts")) {
+		} else if (key.equals("FS_processor.delivery_attempts")) {
 			setDeliveryAttempts(data.toString());
 		} else if (key.equals("Forwarding_processor.client_repository")) {
 			setClientRepository(data.toString());
@@ -387,9 +411,9 @@ public class MessageProcessorModel extends ProjectDataModel {
 			setAxis2Configuration(data.toString());
 		} else if (key.equals("Forwarding_processor.Reply_sequence_name")) {
 			setReplySequenceName(data.toString());
-		} else if (key.equals("Forwarding_processor.Fault_sequence_name")) {
+		} else if (key.equals("FS_processor.Fault_sequence_name")) {
 			setFaultSequenceName(data.toString());
-		} else if (key.equals("Forwarding_processor.Deactivate_sequence_name")) {
+		} else if (key.equals("FS_processor.Deactivate_sequence_name")) {
 			setDeactivateSequenceName(data.toString());
 		} else if (key.equals("sampling_processor.sequence")) {
 			setSequence(data.toString());
@@ -444,13 +468,13 @@ public class MessageProcessorModel extends ProjectDataModel {
 			}
 		} else if (key.equals("Forwarding_processor.endpoint_name")) {
 			setEndpointName(data.toString());
-		} else if (key.equals("Forwarding_processor.forwarding_interval")) {
+		} else if (key.equals("FS_processor.forwarding_interval")) {
 			try {
 				setForwardingInterval(Integer.parseInt(data.toString()));
 			} catch (NumberFormatException ex) {
 				// ignore
 			}
-		} else if (key.equals("FS_processor.processor_state")) {
+		} else if (key.equals("FSS_processor.processor_state")) {
 			setProcessorState(data.toString());
 		} else if (key.equals("sampling_processor.sampling_interval")) {
 			try {
@@ -466,10 +490,14 @@ public class MessageProcessorModel extends ProjectDataModel {
 			}
 		} else if (key.equals("Forwarding_processor.non_retry_http_status_codes")) {
 			setNonRetryHttpStatusCode(data.toString());
-		} else if (key.equals("Forwarding_processor.drop_message_after_maximum_delivery_attempts")) {
+		} else if (key.equals("FS_processor.drop_message_after_maximum_delivery_attempts")) {
 			setDropMessageAfterMaxDeliveryAttempts(data.toString());
-		} else if (key.equals("Forwarding_processor.task_count")) {
+		} else if (key.equals("FS_processor.task_count")) {
 			setTaskCount(data.toString());
+		} else if (key.equals("Scheduled_Failover_processor.source_store")) {
+			setSourceMessageStore(data.toString());
+		} else if (key.equals("Scheduled_Failover_processor.target_store")) {
+			setTargetMessageStore(data.toString());
 		} 
 
 		return returnValue;

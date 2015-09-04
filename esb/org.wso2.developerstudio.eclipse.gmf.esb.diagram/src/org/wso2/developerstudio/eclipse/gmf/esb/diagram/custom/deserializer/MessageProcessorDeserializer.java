@@ -200,6 +200,115 @@ AbstractEsbNodeDeserializer<MessageProcessor, org.wso2.developerstudio.eclipse.g
 									value.toString());
 						}
 					}
+				} if (dummyMessageProcessor.getClassName()
+						.equals("org.apache.synapse.message.processor.impl.failover.FailoverScheduledMessageForwardingProcessor")) {
+					// Scheduled Fail over Message Forwarding Processor
+					executeSetValueCommand(MESSAGE_PROCESSOR__PROCESSOR_TYPE,
+							MessageProcessorType.SCHEDULED_FAILOVER_MSG_FORWARDING);
+					Map<String, Object> parameters = dummyMessageProcessor.getParameters();
+
+					// Parameters.
+					if (parameters.containsKey("client.retry.interval")) {
+						Object value = parameters.get("client.retry.interval");
+						if (value != null && StringUtils.isNumeric(value.toString())) {
+							executeSetValueCommand(MESSAGE_PROCESSOR__RETRY_INTERVAL, new Long(
+									value.toString()));
+						}
+					}
+					if (parameters.containsKey("interval")) {
+						Object value = parameters.get("interval");
+						if (value != null && StringUtils.isNumeric(value.toString())) {
+							executeSetValueCommand(MESSAGE_PROCESSOR__FORWARDING_INTERVAL,
+									new Long(value.toString()));
+						}
+					}
+					if (parameters.containsKey("max.delivery.attempts")) {
+						Object value = parameters.get("max.delivery.attempts");
+						if (value != null) {
+							try {
+								executeSetValueCommand(MESSAGE_PROCESSOR__MAX_DELIVERY_ATTEMPTS,
+										new Integer(value.toString()));
+							} catch(NumberFormatException e) {
+								//set default value -1
+								executeSetValueCommand(MESSAGE_PROCESSOR__MAX_DELIVERY_ATTEMPTS, -1);
+							}
+							
+						}
+					}
+					if (parameters.containsKey("message.processor.fault.sequence")) {
+						Object value = parameters.get("message.processor.fault.sequence");
+						if (StringUtils.isNotBlank(value.toString())) {
+							RegistryKeyProperty faultSequence = EsbFactory.eINSTANCE
+									.createRegistryKeyProperty();
+							faultSequence.setKeyValue(value.toString());
+							executeSetValueCommand(MESSAGE_PROCESSOR__FAULT_SEQUENCE_NAME,
+									faultSequence);
+						}
+					}
+					if (parameters.containsKey("message.processor.deactivate.sequence")) {
+						Object value = parameters.get("message.processor.deactivate.sequence");
+						if (StringUtils.isNotBlank(value.toString())) {
+							RegistryKeyProperty deactivateSequence = EsbFactory.eINSTANCE
+									.createRegistryKeyProperty();
+							deactivateSequence.setKeyValue(value.toString());
+							executeSetValueCommand(MESSAGE_PROCESSOR__DEACTIVATE_SEQUENCE_NAME,
+									deactivateSequence);
+						}
+					}
+					if (parameters.containsKey("quartz.conf")) {
+						Object value = parameters.get("quartz.conf");
+						if (StringUtils.isNotBlank(value.toString())) {
+							executeSetValueCommand(MESSAGE_PROCESSOR__QUARTZ_CONFIG_FILE_PATH,
+									value.toString());
+						}
+					}
+					if (parameters.containsKey("cronExpression")) {
+						Object value = parameters.get("cronExpression");
+						if (StringUtils.isNotBlank(value.toString())) {
+							executeSetValueCommand(MESSAGE_PROCESSOR__CRON_EXPRESSION,
+									value.toString());
+						}
+					}
+					if (parameters.containsKey("is.active")) {
+						Object value = parameters.get("is.active");
+						if (StringUtils.isNotBlank(value.toString())) {
+							if ("true".equals(value)) {
+								executeSetValueCommand(MESSAGE_PROCESSOR__PROCESSOR_STATE,
+										ProcessorState.ACTIVATE);
+							} else {
+								executeSetValueCommand(MESSAGE_PROCESSOR__PROCESSOR_STATE,
+										ProcessorState.DEACTIVATE);
+							}
+						}
+					}
+					if (parameters.containsKey("max.delivery.drop")) {
+						Object value = parameters.get("max.delivery.drop");
+						if (StringUtils.isNotBlank(value.toString())) {
+							executeSetValueCommand(MESSAGE_PROCESSOR__DROP_MESSAGE_AFTER_MAXIMUM_DELIVERY_ATTEMPTS,
+									value.toString());
+							if ("Enabled".equals(value)) {
+								executeSetValueCommand(MESSAGE_PROCESSOR__DROP_MESSAGE_AFTER_MAXIMUM_DELIVERY_ATTEMPTS,
+										EnableDisableState.ENABLED);
+							} else {
+								executeSetValueCommand(MESSAGE_PROCESSOR__DROP_MESSAGE_AFTER_MAXIMUM_DELIVERY_ATTEMPTS,
+										EnableDisableState.DISABLED);
+							}
+						}
+					}
+					if (parameters.containsKey("member.count")) {
+						Object value = parameters.get("member.count");
+						if (StringUtils.isNotBlank(value.toString())) {
+							executeSetValueCommand(MESSAGE_PROCESSOR__TASK_COUNT,
+									value.toString());
+						}
+					}
+					if (parameters.containsKey("message.target.store.name")) {
+						Object value = parameters.get("message.target.store.name");
+						if (StringUtils.isNotBlank(value.toString())) {
+							executeSetValueCommand(MESSAGE_PROCESSOR__TARGET_MESSAGE_STORE,
+									value.toString());
+						}
+					}
 				} else if (dummyMessageProcessor.getClassName().equals(messageSamplingProcessor)
 						|| dummyMessageProcessor.getClassName().equals(messageSamplingProcessorOld)) {
 					// Message Sampling Processor
@@ -277,6 +386,7 @@ AbstractEsbNodeDeserializer<MessageProcessor, org.wso2.developerstudio.eclipse.g
 
 		executeSetValueCommand(MESSAGE_PROCESSOR__PROCESSOR_NAME, processor.getName());
 		executeSetValueCommand(MESSAGE_PROCESSOR__MESSAGE_STORE, processor.getMessageStoreName());
+		executeSetValueCommand(MESSAGE_PROCESSOR__SOURCE_MESSAGE_STORE, processor.getMessageStoreName());
 
 		return messageProcessor;
 	}

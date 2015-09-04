@@ -55,6 +55,8 @@ import org.wso2.developerstudio.eclipse.platform.core.utils.DeveloperStudioProvi
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getProcessorType <em>Processor Type</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getMessageProcessorProvider <em>Message Processor Provider</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getMessageStore <em>Message Store</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getSourceMessageStore <em>Source Message Store</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getTargetMessageStore <em>Target Message Store</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getProcessorState <em>Processor State</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getEndpointName <em>Endpoint Name</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getSequence <em>Sequence</em>}</li>
@@ -159,6 +161,46 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
 	 * @ordered
 	 */
 	protected String messageStore = MESSAGE_STORE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getSourceMessageStore() <em>Source Message Store</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSourceMessageStore()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String SOURCE_MESSAGE_STORE_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getSourceMessageStore() <em>Source Message Store</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSourceMessageStore()
+	 * @generated
+	 * @ordered
+	 */
+	protected String sourceMessageStore = SOURCE_MESSAGE_STORE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getTargetMessageStore() <em>Target Message Store</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTargetMessageStore()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String TARGET_MESSAGE_STORE_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getTargetMessageStore() <em>Target Message Store</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTargetMessageStore()
+	 * @generated
+	 * @ordered
+	 */
+	protected String targetMessageStore = TARGET_MESSAGE_STORE_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getProcessorState() <em>Processor State</em>}' attribute.
@@ -615,6 +657,48 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
 		messageStore = newMessageStore;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_PROCESSOR__MESSAGE_STORE, oldMessageStore, messageStore));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getSourceMessageStore() {
+		return sourceMessageStore;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSourceMessageStore(String newSourceMessageStore) {
+		String oldSourceMessageStore = sourceMessageStore;
+		sourceMessageStore = newSourceMessageStore;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_PROCESSOR__SOURCE_MESSAGE_STORE, oldSourceMessageStore, sourceMessageStore));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getTargetMessageStore() {
+		return targetMessageStore;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTargetMessageStore(String newTargetMessageStore) {
+		String oldTargetMessageStore = targetMessageStore;
+		targetMessageStore = newTargetMessageStore;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_PROCESSOR__TARGET_MESSAGE_STORE, oldTargetMessageStore, targetMessageStore));
 	}
 
 	/**
@@ -1157,6 +1241,10 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
 				return getMessageProcessorProvider();
 			case EsbPackage.MESSAGE_PROCESSOR__MESSAGE_STORE:
 				return getMessageStore();
+			case EsbPackage.MESSAGE_PROCESSOR__SOURCE_MESSAGE_STORE:
+				return getSourceMessageStore();
+			case EsbPackage.MESSAGE_PROCESSOR__TARGET_MESSAGE_STORE:
+				return getTargetMessageStore();
 			case EsbPackage.MESSAGE_PROCESSOR__PROCESSOR_STATE:
 				return getProcessorState();
 			case EsbPackage.MESSAGE_PROCESSOR__ENDPOINT_NAME:
@@ -1219,6 +1307,12 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
 				return;
 			case EsbPackage.MESSAGE_PROCESSOR__MESSAGE_STORE:
 				setMessageStore((String)newValue);
+				return;
+			case EsbPackage.MESSAGE_PROCESSOR__SOURCE_MESSAGE_STORE:
+				setSourceMessageStore((String)newValue);
+				return;
+			case EsbPackage.MESSAGE_PROCESSOR__TARGET_MESSAGE_STORE:
+				setTargetMessageStore((String)newValue);
 				return;
 			case EsbPackage.MESSAGE_PROCESSOR__PROCESSOR_STATE:
 				setProcessorState((ProcessorState)newValue);
@@ -1302,6 +1396,12 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
 			case EsbPackage.MESSAGE_PROCESSOR__MESSAGE_STORE:
 				setMessageStore(MESSAGE_STORE_EDEFAULT);
 				return;
+			case EsbPackage.MESSAGE_PROCESSOR__SOURCE_MESSAGE_STORE:
+				setSourceMessageStore(SOURCE_MESSAGE_STORE_EDEFAULT);
+				return;
+			case EsbPackage.MESSAGE_PROCESSOR__TARGET_MESSAGE_STORE:
+				setTargetMessageStore(TARGET_MESSAGE_STORE_EDEFAULT);
+				return;
 			case EsbPackage.MESSAGE_PROCESSOR__PROCESSOR_STATE:
 				setProcessorState(PROCESSOR_STATE_EDEFAULT);
 				return;
@@ -1379,6 +1479,10 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
 				return MESSAGE_PROCESSOR_PROVIDER_EDEFAULT == null ? messageProcessorProvider != null : !MESSAGE_PROCESSOR_PROVIDER_EDEFAULT.equals(messageProcessorProvider);
 			case EsbPackage.MESSAGE_PROCESSOR__MESSAGE_STORE:
 				return MESSAGE_STORE_EDEFAULT == null ? messageStore != null : !MESSAGE_STORE_EDEFAULT.equals(messageStore);
+			case EsbPackage.MESSAGE_PROCESSOR__SOURCE_MESSAGE_STORE:
+				return SOURCE_MESSAGE_STORE_EDEFAULT == null ? sourceMessageStore != null : !SOURCE_MESSAGE_STORE_EDEFAULT.equals(sourceMessageStore);
+			case EsbPackage.MESSAGE_PROCESSOR__TARGET_MESSAGE_STORE:
+				return TARGET_MESSAGE_STORE_EDEFAULT == null ? targetMessageStore != null : !TARGET_MESSAGE_STORE_EDEFAULT.equals(targetMessageStore);
 			case EsbPackage.MESSAGE_PROCESSOR__PROCESSOR_STATE:
 				return processorState != PROCESSOR_STATE_EDEFAULT;
 			case EsbPackage.MESSAGE_PROCESSOR__ENDPOINT_NAME:
@@ -1439,6 +1543,10 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
 		result.append(messageProcessorProvider);
 		result.append(", messageStore: ");
 		result.append(messageStore);
+		result.append(", sourceMessageStore: ");
+		result.append(sourceMessageStore);
+		result.append(", targetMessageStore: ");
+		result.append(targetMessageStore);
 		result.append(", processorState: ");
 		result.append(processorState);
 		result.append(", retryInterval: ");

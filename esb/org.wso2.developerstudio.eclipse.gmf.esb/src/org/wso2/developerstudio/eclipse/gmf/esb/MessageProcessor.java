@@ -29,6 +29,8 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getProcessorType <em>Processor Type</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getMessageProcessorProvider <em>Message Processor Provider</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getMessageStore <em>Message Store</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getSourceMessageStore <em>Source Message Store</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getTargetMessageStore <em>Target Message Store</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getProcessorState <em>Processor State</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getEndpointName <em>Endpoint Name</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getSequence <em>Sequence</em>}</li>
@@ -162,6 +164,58 @@ public interface MessageProcessor extends EsbElement {
 	 * @generated
 	 */
 	void setMessageStore(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Source Message Store</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Source Message Store</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Source Message Store</em>' attribute.
+	 * @see #setSourceMessageStore(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getMessageProcessor_SourceMessageStore()
+	 * @model
+	 * @generated
+	 */
+	String getSourceMessageStore();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getSourceMessageStore <em>Source Message Store</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Source Message Store</em>' attribute.
+	 * @see #getSourceMessageStore()
+	 * @generated
+	 */
+	void setSourceMessageStore(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Target Message Store</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Target Message Store</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Target Message Store</em>' attribute.
+	 * @see #setTargetMessageStore(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getMessageProcessor_TargetMessageStore()
+	 * @model
+	 * @generated
+	 */
+	String getTargetMessageStore();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getTargetMessageStore <em>Target Message Store</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Target Message Store</em>' attribute.
+	 * @see #getTargetMessageStore()
+	 * @generated
+	 */
+	void setTargetMessageStore(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Processor State</b></em>' attribute.

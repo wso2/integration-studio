@@ -39,15 +39,15 @@ import java.util.Set;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang.exception.CloneFailedException;
 import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.IWorkspace;
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
-import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
-import org.eclipse.e4.core.contexts.EclipseContextFactory;
-import org.eclipse.e4.core.contexts.IEclipseContext;
 import org.eclipse.e4.core.services.events.IEventBroker;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.GroupMarker;
@@ -92,7 +92,6 @@ import org.eclipse.ui.contexts.IContextService;
 import org.eclipse.ui.handlers.IHandlerActivation;
 import org.eclipse.ui.handlers.IHandlerService;
 import org.eclipse.ui.part.ViewPart;
-import org.osgi.framework.Bundle;
 import org.osgi.service.event.Event;
 import org.osgi.service.event.EventHandler;
 import org.wso2.developerstudio.eclipse.greg.apim.action.Login;
@@ -114,7 +113,6 @@ import org.wso2.developerstudio.eclipse.greg.core.exception.InvalidRegistryURLEx
 import org.wso2.developerstudio.eclipse.greg.core.exception.UnknownRegistryException;
 import org.wso2.developerstudio.eclipse.greg.manager.remote.Activator;
 import org.wso2.developerstudio.eclipse.greg.manager.remote.dialog.RegistryInfoDialog;
-import org.wso2.developerstudio.eclipse.greg.manager.remote.utils.Utils;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.platform.core.event.EsbEditorEvent;
@@ -156,7 +154,8 @@ public class RegistryBrowserAPIMView extends ViewPart implements Observer {
 	private static final String TOOLBAR_ACTION_COMMIT = "Push all changes ";
 	private static final String TOOLTIP_COMMIT_ALL_CHANGES = "Push All changes to the server";
 	private static final String TOOLTIP_DISCARD_CHANGES = "Discard all loacl changes and synchronize with server";
-	private static final String DISCARD_ALL_LOACL_CHANGES = "discard all loacl changes ";	
+	private static final String DISCARD_ALL_LOACL_CHANGES = "discard all loacl changes ";
+	private static final String EXSIT_MSG = "There are uncommitted changes. Commit Changes ? \n(All changes will be discarded unless they are committed before exsit)";
 	private static final String DELETE_ACTION_LABEL = "Delete   ";
 	private static final String RENAME_ACTION_LABEL = "Rename   ";
 	private static final String CREATE_ACTION_LABEL = "Create   ";
@@ -167,7 +166,6 @@ public class RegistryBrowserAPIMView extends ViewPart implements Observer {
 	private static final int EXPAND_LEVEL = 4;
 	private static final int LOGIN_SHELL_HEIGHT = 250;
 	private static final int LOGIN_SHELL_WIDTH = 600;
-	private static final String EVENT_TOPIC_OPEN_EDITOR = "APIM_OPEN_EDITOR";
 	private static final String DEFAULT_PATH = "/";	
 	private static final String APIM_CUSTOMSEQUENCES_PATH = "/_system/governance/apimgt/customsequences";
 	
@@ -194,7 +192,7 @@ public class RegistryBrowserAPIMView extends ViewPart implements Observer {
 	private RegistryBrowserAPIMViewLabelProvider labelProvider;
 
 	private ExceptionHandler exeptionHandler;
-	public static RegistryBrowserAPIMView lastInstance;
+	//public static RegistryBrowserAPIMView lastInstance1;
 	private static RegistryPropertyViewer registryPropertyViewer;
 	private static ResourceInfoViewer resourceInfoViewer;
 
@@ -208,7 +206,7 @@ public class RegistryBrowserAPIMView extends ViewPart implements Observer {
 
 	private RegistryResourceNode selectedEditorRegistryResourcePathData;
 	private RegistryResourceNode copyRegResourceNode;
-	private IEventBroker broker;
+	//private IEventBroker broker;
 	private boolean traversePathChanged;
 
 	private IContextActivation activation;
@@ -222,7 +220,7 @@ public class RegistryBrowserAPIMView extends ViewPart implements Observer {
 
 
 
-	@SuppressWarnings("restriction")
+
 	public RegistryBrowserAPIMView() {
 		super();
 		setApiManagerview(true);	
@@ -233,17 +231,9 @@ public class RegistryBrowserAPIMView extends ViewPart implements Observer {
 			setApimRegPath(APIM_CUSTOMSEQUENCES_PATH);	 
 		}
 		
-		Bundle bundle = Platform.getBundle(Activator.PLUGIN_ID);		
-		IEclipseContext eclipseContext = EclipseContextFactory.getServiceContext(bundle.getBundleContext());
-		eclipseContext.set(org.eclipse.e4.core.services.log.Logger.class, null);		
-		IEventBroker iEventBroker = eclipseContext.get(IEventBroker.class);		
-		
-	//	EsbEditorEvent editorEvent = new EsbEditorEvent();
+
 		EsbEditorEvent.CreateBroker(Activator.PLUGIN_ID);
 		EsbEditorEvent.subscribe(getDoSaveEventHandler());
-		iEventBroker.subscribe(EVENT_TOPIC_OPEN_EDITOR,getOPenEditorEvent());
-		
-		setBroker(iEventBroker);
 		
 		changedResourceNodes = new HashMap<String, RegistryResourceNode>();
 		exeptionHandler = new ExceptionHandler();
@@ -251,7 +241,6 @@ public class RegistryBrowserAPIMView extends ViewPart implements Observer {
 		openNodeSet = new HashSet<RegistryResourceNode>();
 		openNodesMap = new HashMap<String, RegistryResourceNode>();
 		localUrlNode.addObserver(this);
-		lastInstance = this;
 		 
 	}
 
@@ -349,28 +338,54 @@ public class RegistryBrowserAPIMView extends ViewPart implements Observer {
 	}
 
 	public void dispose() {
-		IEventBroker broker = getBroker();
-		if(broker!=null){
-			broker.unsubscribe(getOPenEditorEvent());
-		}
+		checkUnCommitChanages();
+		cleanWorkSpace();
+
 		deactivateActionHandlers();
 		IContextService contextService = (IContextService) getSite().getService(IContextService.class);
 		contextService.deactivateContext(activation);
-        for (RegistryResourceNode registryResourceNode : openNodeSet) {
-			closeEditor(registryResourceNode);
-			IFile workspaceFile = registryResourceNode.getWorkspaceFile();
-			if(workspaceFile !=null && workspaceFile.exists()){
-				try {
-					workspaceFile.delete(true, new NullProgressMonitor());
-				} catch (CoreException e) {
-					log.error("Error while deleting the workspace file due to "+e.getMessage(), e);
-				}
-
-			}
-
-		}
 
 		super.dispose();
+	}
+
+	private void checkUnCommitChanages() {
+		if (!changedResourceNodes.isEmpty()) {
+
+			if (MessageDialog.openQuestion(Display.getCurrent().getActiveShell(), APPLY_CHANAGES_DIALOG_TITLE,
+					EXSIT_MSG)) {
+				Set<String> keySet = changedResourceNodes.keySet();
+				for (String key : keySet) {
+
+					RegistryResourceNode registryResourceNode = changedResourceNodes.get(key);
+					try {
+						commitSequence(registryResourceNode);
+					} catch (InvalidRegistryURLException | UnknownRegistryException | IOException | CoreException e) {
+						log.error("Error while committing chnages on exsit", e);
+					}
+
+				}
+			}
+		}
+		changedResourceNodes.clear();
+	}
+
+	private void cleanWorkSpace() {
+		for (RegistryResourceNode registryResourceNode : openNodeSet) {
+			closeEditor(registryResourceNode);
+		}
+		IWorkspace ws = ResourcesPlugin.getWorkspace(); // Crash recovery system IProject[] projects =
+		IProject[] projects = ws.getRoot().getProjects();
+		for (IProject iProject : projects) {
+			try {
+				if (iProject != null && iProject.exists()
+						&& iProject.hasNature(RemoteContentManager.ESB_REMOTE_TEMP_PROJECT_NATURE)) {
+
+					iProject.delete(true, new NullProgressMonitor());
+				}
+			} catch (CoreException e) {
+				log.error("Error while deleting the temp projects file due to " + e.getMessage(), e);
+			}
+		}
 	}
 	
 	private void deactivateActionHandlers() {
@@ -401,7 +416,7 @@ public class RegistryBrowserAPIMView extends ViewPart implements Observer {
 				registryResourcePathData.getRegistryResourcePath());
 	}
 
-	protected void loginToAPIMRegistry(Composite parent) {
+	protected void loginToAPIMRegistry(Composite parent) throws InvalidRegistryURLException, UnknownRegistryException, MalformedURLException, URISyntaxException {
 		exeptionHandler = new ExceptionHandler();
 
 		RegistryInfoDialog dialog = null;
@@ -419,34 +434,9 @@ public class RegistryBrowserAPIMView extends ViewPart implements Observer {
 				pwd = dialog.getPasswd();
 				apimRegpath = dialog.getPath();
 
-				if (!Utils.isValidServerURL(dialog.getServerUrl())) {
-					if (!MessageDialog.openQuestion(parent.getShell(), "Connection Fail",
-							"Establishing connection to the server failed")) {
-						return;
-					}
-				}
-
 				verifyRegistryPath(dialog);
 				cloneRegistryModel();
-				
 
-			} catch (URISyntaxException e) {
-				exeptionHandler.showMessage(Display.getCurrent().getActiveShell(),
-						"Cannot establish the connection with given URL due to " + e.getMessage());
-				log.error("Cannot establish the connection with given URL", e);
-			} catch (MalformedURLException e) {
-				exeptionHandler.showMessage(Display.getCurrent().getActiveShell(),
-						"Cannot establish the connection with given URL due to " + e.getMessage());
-				log.error("Cannot establish the connection with given URL", e);
-			} catch (UnknownRegistryException e) {
-				exeptionHandler.showMessage(Display.getCurrent().getActiveShell(),
-						"Cannot establish the connection with given URL due to " + e.getMessage());
-				log.error("Cannot establish the connection with given URL", e);
-
-			} catch (InvalidRegistryURLException e) {
-				exeptionHandler.showMessage(Display.getCurrent().getActiveShell(),
-						"Cannot establish the connection with given URL due to " + e.getMessage());
-				log.error("Cannot establish the connection with given URL", e);
 			} catch (CloneFailedException e) {
 				exeptionHandler.showMessage(Display.getCurrent().getActiveShell(),
 						"Registy cloning process has failed due to " + e.getMessage());
@@ -539,30 +529,16 @@ public class RegistryBrowserAPIMView extends ViewPart implements Observer {
 	private void addListeners() {
 		treeViewer.addDoubleClickListener(new IDoubleClickListener() {
 			public void doubleClick(DoubleClickEvent event) {
-				final Object obj = event.getSelection();
-				if (obj instanceof TreeSelection) {
-					try {
-						new ProgressMonitorDialog(getSite().getShell()).run(true, true, new IRunnableWithProgress() {
-							public void run(IProgressMonitor monitor) throws InvocationTargetException,
-									InterruptedException {
-								if (treeViewer != null) {
-									monitor.beginTask("", 100);
-									monitor.worked(60);
-									broker.send(EVENT_TOPIC_OPEN_EDITOR, obj);
-									monitor.worked(100);
-									monitor.done();
-								}
-							}
-						});
-
-					} catch (InvocationTargetException e) {
-						log.error("Tree expanding fail" + e.getMessage(), e);
-					} catch (InterruptedException e) {
-						log.error("Tree expanding fail" + e.getMessage(), e);
-					}
+				final Object selectionEvent = event.getSelection();
+				if (selectionEvent instanceof TreeSelection) {							
+					Object object = ((TreeSelection) selectionEvent).getFirstElement();
+					if (object instanceof RegistryResourceNode) {
+						final RegistryResourceNode resourcePathObj = (RegistryResourceNode) object;
+						openResourceInEditor(resourcePathObj);
+					}	
 				}
+		 
 			}
-
 		});
 	}
 			
@@ -698,7 +674,12 @@ public class RegistryBrowserAPIMView extends ViewPart implements Observer {
 	private void addLoginToolbarAction(final Composite parent) {
 		addRegistryAction = new Action(LOGIN_ACTION_LABEL) {
 			public void run() {
-				loginToAPIMRegistry(parent);
+				try {
+					loginToAPIMRegistry(parent);
+				} catch (InvalidRegistryURLException | UnknownRegistryException | MalformedURLException
+						| URISyntaxException e) {
+					 log.error("Failed to login to the APIM view due to", e);
+				}
 			}
 		};
 		addRegistryAction.setImageDescriptor(ImageUtils.getImageDescriptor(ImageUtils.ICON_USERS));
@@ -830,11 +811,10 @@ public class RegistryBrowserAPIMView extends ViewPart implements Observer {
 		}
 
 		final IEditorPart editor = RemoteContentManager.openFile(tempFile);
-		if (resourceNode.getFileEditor() != editor) {
+	/*	if (resourceNode.getFileEditor() != editor) {
 			editor.getSite().getPage().addPartListener(new RegistryContentPartListener(resourceNode, editor));
 		}
-
-		resourceNode.setFileEditor(editor);
+*/		resourceNode.setFileEditor(editor);
 		openNodeSet.add(resourceNode);
 		openNodesMap.put(RemoteContentManager.getWorkspaceFile().getLocation().toOSString(), resourceNode);
 		resourceNode.setDirty(false);
@@ -842,7 +822,7 @@ public class RegistryBrowserAPIMView extends ViewPart implements Observer {
 		
 	}
 
-	private EventHandler getOPenEditorEvent() {
+	/*private EventHandler getOPenEditorEvent() {
 		return new EventHandler() {
 			public void handleEvent(final Event event) {
 				Display.getDefault().asyncExec(new Runnable() {
@@ -870,7 +850,7 @@ public class RegistryBrowserAPIMView extends ViewPart implements Observer {
 
 		};
 
-	}
+	}*/
 
 	private boolean closeEditor(final RegistryResourceNode regResourceNode) {
 		boolean closeEditor = true;
@@ -1484,8 +1464,8 @@ public class RegistryBrowserAPIMView extends ViewPart implements Observer {
 		regResourceNode.setIsmodifiyed(false);
 		IFile workspaceFile = regResourceNode.getWorkspaceFile();
 		if (workspaceFile != null && workspaceFile.exists()) {
-			workspaceFile.delete(true, new NullProgressMonitor());
-
+			workspaceFile.getProject().delete(true, new NullProgressMonitor());
+			//workspaceFile.delete(true, new NullProgressMonitor());
 		}
 
 	}
@@ -1625,14 +1605,6 @@ public class RegistryBrowserAPIMView extends ViewPart implements Observer {
 
 	public String getUname() {
 		return uname;
-	}
-
-	public IEventBroker getBroker() {
-		return broker;
-	}
-
-	public void setBroker(IEventBroker broker) {
-		this.broker = broker;
 	}
 
 	public RegistryURLNode getRegUrlData() {

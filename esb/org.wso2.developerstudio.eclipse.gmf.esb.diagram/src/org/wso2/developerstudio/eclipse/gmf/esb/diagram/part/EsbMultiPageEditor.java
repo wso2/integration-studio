@@ -19,6 +19,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -60,6 +61,8 @@ import org.eclipse.gmf.runtime.diagram.ui.resources.editor.document.IDocument;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.impl.NodeImpl;
 import org.eclipse.jface.dialogs.ErrorDialog;
+import org.eclipse.jface.dialogs.ProgressMonitorDialog;
+import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.text.DocumentEvent;
 import org.eclipse.jface.text.IDocumentListener;
 import org.eclipse.jface.viewers.StructuredSelection;
@@ -454,22 +457,42 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
      * Creates the pages of the multi-page editor.
      */
     protected void createPages() {
-        createPage0();
-        EsbDiagram diagram = (EsbDiagram) graphicalEditor.getDiagram().getElement();
-		EsbServer server = diagram.getServer();	
-        switch (server.getType()) {
-		case COMPLEX_ENDPOINT:			
-			break;
-		default:
-			createPage1();
-			break;
-		}
-        EditorUtils.setLockmode(graphicalEditor, true);
-		//IFile file = ((IFileEditorInput)getEditorInput()).getFile();
-/*        ElementDuplicator endPointDuplicator = new ElementDuplicator(file.getProject(),getGraphicalEditor());        
-        endPointDuplicator.updateAssociatedDiagrams(this);*/
-        EditorUtils.setLockmode(graphicalEditor, false);
-        
+    	
+    	try {
+			new ProgressMonitorDialog(getSite().getShell()).run(true, true, new IRunnableWithProgress() {
+				public void run(final IProgressMonitor monitor)  {
+					    monitor.beginTask("opening ESB editor", 100);
+					     Display.getDefault().syncExec(new Runnable() {
+							
+							@Override
+							public void run() {
+								 monitor.worked(10);
+							    createPage0();
+							    monitor.worked(50);
+						        EsbDiagram diagram = (EsbDiagram) graphicalEditor.getDiagram().getElement();
+								EsbServer server = diagram.getServer();	
+						        switch (server.getType()) {
+								case COMPLEX_ENDPOINT:			
+									break;
+								default:
+									createPage1();
+									break;
+								}
+						        monitor.worked(100);
+						        EditorUtils.setLockmode(graphicalEditor, true);
+								//IFile file = ((IFileEditorInput)getEditorInput()).getFile();
+						/*        ElementDuplicator endPointDuplicator = new ElementDuplicator(file.getProject(),getGraphicalEditor());        
+						        endPointDuplicator.updateAssociatedDiagrams(this);*/
+						        EditorUtils.setLockmode(graphicalEditor, false);
+						        monitor.done();
+							}
+						});
+					    }
+			        });
+		} catch (InvocationTargetException | InterruptedException e ) {
+			 log.error("Error while opening the ESB editor", e);
+		}  
+    	   
         //createPage2();
     }
     

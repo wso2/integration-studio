@@ -29,6 +29,7 @@ import net.lingala.zip4j.exception.ZipException;
 
 import org.apache.commons.io.FileUtils;
 import org.eclipse.core.resources.IResource;
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.wizard.Wizard;
@@ -111,12 +112,23 @@ public class CloudConnectorImportWizard extends Wizard {
 	 */
 	private boolean performFinishFileSystem() {
 		String source = storeWizardPage.getCloudConnectorPath();
-		try {
+		try {		
+			String parentDirectoryPath = ResourcesPlugin.getWorkspace().getRoot().getLocation().toString()
+					+ File.separator + DIR_DOT_METADATA + File.separator + DIR_CONNECTORS;
+			File parentDirectory = new File(parentDirectoryPath);
+			if (!parentDirectory.exists()) {
+				parentDirectory.mkdir();
+			}
+			File file = new File(source);
+			FileUtils.copyFileToDirectory(file, parentDirectory);
+			
 			updateProjects(source);
 		} catch (ZipException e) {
 			log.error("Error while extracting the connector zip : " + source, e);
 		} catch (CoreException e) {
 			log.error("Cannot refresh the project", e);
+		} catch (IOException e) {
+			log.error("Error while copying the connector zip : " + source, e);
 		}
 		return true;
 	}

@@ -90,8 +90,6 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 			addTransportVFSReconnectTimeoutPropertyDescriptor(object);
 			addTransportVFSActionAfterProcessPropertyDescriptor(object);
 			addTransportVFSMoveAfterProcessPropertyDescriptor(object);
-			addTransportVFSActionAfterErrorsPropertyDescriptor(object);
-			addTransportVFSMoveAfterErrorsPropertyDescriptor(object);
 			addTransportVFSActionAfterFailurePropertyDescriptor(object);
 			addTransportVFSMoveAfterFailurePropertyDescriptor(object);
 			addTransportVFSMoveTimestampFormatPropertyDescriptor(object);

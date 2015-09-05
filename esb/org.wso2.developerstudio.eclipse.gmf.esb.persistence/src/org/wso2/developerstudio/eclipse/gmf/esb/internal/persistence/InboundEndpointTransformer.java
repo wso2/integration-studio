@@ -178,11 +178,6 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
 				inboundEndpoint.addParameter(InboundEndpointConstants.COORDINATION,
 						String.valueOf(visualInboundEndpoint.isCoordination()));
 			}
-			if (StringUtils.isNotBlank(String.valueOf(visualInboundEndpoint.getTransportVFSActionAfterErrors()
-					.getLiteral()))) {
-				inboundEndpoint.addParameter(InboundEndpointConstants.VFS_ACTION_AFTER_ERRORS, visualInboundEndpoint
-						.getTransportVFSActionAfterErrors().getLiteral());
-			}
 			if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportVFSContentType())) {
 				inboundEndpoint.addParameter(InboundEndpointConstants.VFS_CONTENT_TYPE,
 						visualInboundEndpoint.getTransportVFSContentType());
@@ -240,10 +235,6 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
 			if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportVFSFileProcessInterval())) {
 				inboundEndpoint.addParameter(InboundEndpointConstants.VFS_FILE_PROCESS_INTERVAL,
 						visualInboundEndpoint.getTransportVFSFileProcessInterval());
-			}
-			if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportVFSMoveAfterErrors())) {
-				inboundEndpoint.addParameter(InboundEndpointConstants.VFS_MOVE_AFTER_ERRORS,
-						visualInboundEndpoint.getTransportVFSMoveAfterErrors());
 			}
 			if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportVFSMoveAfterProcess())) {
 				inboundEndpoint.addParameter(InboundEndpointConstants.VFS_MOVE_AFTER_PROCESS,

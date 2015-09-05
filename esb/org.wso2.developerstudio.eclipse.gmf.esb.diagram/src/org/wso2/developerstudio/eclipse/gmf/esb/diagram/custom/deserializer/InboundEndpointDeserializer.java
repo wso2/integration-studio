@@ -233,14 +233,6 @@ public class InboundEndpointDeserializer extends
 				}
 			} else if (paramEntry.getKey().equals(InboundEndpointConstants.VFS_MOVE_AFTER_PROCESS)) {
 				executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_AFTER_PROCESS, paramEntry.getValue());
-			} else if (paramEntry.getKey().equals(InboundEndpointConstants.VFS_ACTION_AFTER_ERRORS)) {
-				if (paramEntry.getValue().equals(InboundEndpointConstants.DELETE)) {
-					executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_VFS_ACTION_AFTER_ERRORS, VFSAction.DELETE);
-				} else {
-					executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_VFS_ACTION_AFTER_ERRORS, VFSAction.MOVE);
-				}
-			} else if (paramEntry.getKey().equals(InboundEndpointConstants.VFS_MOVE_AFTER_ERRORS)) {
-				executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_AFTER_ERRORS, paramEntry.getValue());
 			} else if (paramEntry.getKey().equals(InboundEndpointConstants.VFS_ACTION_AFTER_FAILURE)) {
 				if (paramEntry.getValue().equals(InboundEndpointConstants.DELETE)) {
 					executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_VFS_ACTION_AFTER_FAILURE, VFSAction.DELETE);

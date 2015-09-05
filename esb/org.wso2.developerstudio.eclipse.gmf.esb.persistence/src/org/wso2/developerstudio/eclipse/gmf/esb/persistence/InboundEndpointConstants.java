@@ -12,6 +12,7 @@ public class InboundEndpointConstants {
 	public static final String CXF_WS_RM = "cxf_ws_rm";
 	public static final String MQTT = "mqtt";
 	public static final String RABBITMQ = "rabbitmq";
+	public static final String FEED = "feed";
 
 	public static final String TRUE = "true";
 	public static final String FALSE = "false";
@@ -198,4 +199,8 @@ public class InboundEndpointConstants {
 	public static final String RABBITMQ_CONNECTION_SSL_TRUSTSTORE_TYPE = "rabbitmq.connection.ssl.truststore.type";
 	public static final String RABBITMQ_CONNECTION_SSL_TRUSTSTORE_PASSWORD = "rabbitmq.connection.ssl.truststore.password";
 	public static final String RABBITMQ_CONNECTION_SSL_VERSION = "rabbitmq.connection.ssl.version";
+	
+	public static final String INBOUND_FEED_URL = "feed.url";
+	public static final String INBOUND_FEED_TYPE = "feed.type";
+	public static final String ATOM = "Atom";
 }

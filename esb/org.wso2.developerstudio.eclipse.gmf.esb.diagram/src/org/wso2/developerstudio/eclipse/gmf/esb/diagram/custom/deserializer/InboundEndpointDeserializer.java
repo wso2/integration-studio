@@ -32,6 +32,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.ConsumerType;
 import org.wso2.developerstudio.eclipse.gmf.esb.ContentType;
 import org.wso2.developerstudio.eclipse.gmf.esb.Enable;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
+import org.wso2.developerstudio.eclipse.gmf.esb.FeedType;
 import org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointParameter;
 import org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointType;
 import org.wso2.developerstudio.eclipse.gmf.esb.JMSCacheLevel;
@@ -103,6 +104,9 @@ public class InboundEndpointDeserializer extends
 			updateParameters(object);
 		} else if (InboundEndpointConstants.RABBITMQ.equals(object.getProtocol())) {
 			executeSetValueCommand(INBOUND_ENDPOINT__TYPE, InboundEndpointType.RABBITMQ);
+			updateParameters(object);
+		} else if (InboundEndpointConstants.FEED.equals(object.getProtocol())) {
+			executeSetValueCommand(INBOUND_ENDPOINT__TYPE, InboundEndpointType.FEED);
 			updateParameters(object);
 		}
 
@@ -616,6 +620,16 @@ public class InboundEndpointDeserializer extends
 			} else if (paramEntry.getKey().equals(InboundEndpointConstants.RABBITMQ_CONNECTION_SSL_VERSION)) {
 				executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_VERSION,
 						paramEntry.getValue());
+			}
+			
+			else if (paramEntry.getKey().equals(InboundEndpointConstants.INBOUND_FEED_URL)) {
+				executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_FEED_URL, paramEntry.getValue());
+			} else if (paramEntry.getKey().equals(InboundEndpointConstants.INBOUND_FEED_TYPE)) {
+				if (paramEntry.getValue().equals(InboundEndpointConstants.ATOM)) {
+					executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_FEED_TYPE, FeedType.ATOM);
+				} else {
+					executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_FEED_TYPE, FeedType.RSS);
+				}
 			}
 
 			else if (paramEntry.getKey().equals(InboundEndpointConstants.INBOUND_CXF_RM_HOST)) {

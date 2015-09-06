@@ -227,8 +227,16 @@ public class RegistryFilterCreationWizard extends
 	} 
 	
 	private void addDependancies(IProject project) throws Exception {
-			String projectDependencies = Constants.PROJECT_DEPENDENCIES;
-			String[] depedencyList = projectDependencies.split(Constants.DEPENDENCY_DELIMITER);
+
+		String[] depedencyList = new String[] { LibraryUtils.abdera_wso2vXX_jar, LibraryUtils.axiom_1_2_11_wso2vXX_jar,
+				LibraryUtils.axis2_1_6_1_wso2vXX_jar, LibraryUtils.commons_codec_wso2vXX_jar,
+				LibraryUtils.commons_httpclient_wso2vXX_jar, LibraryUtils.commons_io_wso2vXX_jar,
+				LibraryUtils.commons_loggingwso2vXX_jar, LibraryUtils.geronimo_stax_api_wso2vXX_jar,
+				LibraryUtils.httpcore_4_3_0_wso2vXX_jar, LibraryUtils.neethi_wso2vXX_jar,
+				LibraryUtils.not_yet_commons_ssl_wso2vXX_jar, LibraryUtils.carbon_registry_api_xxx_jar,
+				LibraryUtils.carbon_registry_core_xxx_jar, LibraryUtils.wsdl4j_wso2vXX_jar,
+				LibraryUtils.XmlSchema_wso2vXX_jar, LibraryUtils.woden_1_0_0_M8_wso2vXX_jar };
+			
 			for (String dependency : depedencyList) {
 				JavaUtils.addJarLibraryToProject(project,
 						LibraryUtils.getDependencyPath(dependency));

@@ -310,23 +310,18 @@ public class CarbonUIbundleWizard extends AbstractWSO2ProjectCreationWizard {
 		return folder;
 	}
 	
-	private void addDependancies(IProject project) {
-		try {
+	private void addDependancies(IProject project) throws JavaModelException {
+ 
 			String[] depedencyList1 = getDepandanceyList();
 			for (String libName : depedencyList1) {
 				File dependencyPath = LibraryUtils.getDependencyPath(libName);
 				JavaUtils.addJarLibraryToProject(project, dependencyPath);
 			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		 
 	}
 	
-	private String[] getDepandanceyList() throws Exception {
-		ResourceBundle mediatorPropetiesBundle = ResourceBundle.getBundle("carbonUI");
-		String jarList = mediatorPropetiesBundle.getString("Plugin_dependencies");
-		String delimiter = ",";
-		String[] depedencyList = jarList.split(delimiter);
+	private String[] getDepandanceyList(){
+		String[] depedencyList = new String[] { LibraryUtils.eclips_osgi_xxx_jar};
 		return depedencyList;
 	}
 }

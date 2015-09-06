@@ -21,15 +21,13 @@ import org.wso2.developerstudio.eclipse.utils.ide.EclipseUtils;
 public class LibraryUtils {
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 	
+	public static String abdera_wso2vXX_jar = "abdera_1.0.0.wso2v3.jar"; 	
 	public static String axiom_1_2_11_wso2vXX_jar = "axiom_1.2.11.wso2v6.jar"; 
 	public static String axis2_1_6_1_wso2vXX_jar = "axis2_1.6.1.wso2v14.jar";
 	public static String httpcore_4_3_0_wso2vXX_jar = "httpcore_4.3.3.wso2v1.jar";
 	public static String woden_1_0_0_M8_wso2vXX_jar = "woden_1.0.0.M9-wso2v1.jar";
 	public static String synapse_core_2_1_2_wso2vXX_jar = "synapse-core_2.1.3.wso2v7.jar";
-	public static String carbon_registry_api_xxx_jar = "org.wso2.carbon.registry.api_4.4.1.jar";
-	public static String carbon_registry_core_xxx_jar = "org.wso2.carbon.registry.core_4.4.1.jar";	
-	public static String abdera_wso2vXX_jar = "abdera_1.0.0.wso2v3.jar"; 	
-	
+		
 	public static String commons_codec_wso2vXX_jar = "commons-codec_1.4.0.wso2v1.jar"; 
 	public static String commons_httpclient_wso2vXX_jar = "commons-httpclient_3.1.0.wso2v2.jar"; 
 	public static String commons_io_wso2vXX_jar = "commons-io_2.0.0.wso2v2.jar"; 
@@ -41,10 +39,13 @@ public class LibraryUtils {
 	public static String wsdl4j_wso2vXX_jar = "wsdl4j_1.6.2.wso2v4.jar"; 
 	public static String XmlSchema_wso2vXX_jar = "XmlSchema_1.4.7.wso2v3.jar"; 
 	
-	 
+	public static String carbon_registry_api_xxx_jar = "org.wso2.carbon.registry.api_4.4.1.jar";
+	public static String carbon_registry_core_xxx_jar = "org.wso2.carbon.registry.core_4.4.1.jar";	
+	public static String carbon_dataservices_core_xxx_jar ="org.wso2.carbon.dataservices.core_4.2.0.jar";
 	
-
-	
+	public static String eclips_osgi_xxx_jar ="org.eclipse.osgi_3.9.1.v20130814-1242.jar";
+												
+	 	
 	public static File getDependencyPath(String dependencyName, boolean isRelativePath){
 		String dependencyPath = getLibLocation() + dependencyName;  
 		URL resource = getResourceURL(dependencyPath);

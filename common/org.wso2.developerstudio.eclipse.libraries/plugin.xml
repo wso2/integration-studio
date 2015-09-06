@@ -113,7 +113,7 @@
 			categoryId="org.wso2.developerstudio.eclipse.libraries.category.general" />
 		<library jar="lib/axiom_1.2.11.wso2v6.jar"
 			categoryId="org.wso2.developerstudio.eclipse.libraries.category.general" />
-		<library jar="lib/axis2_1.6.1.wso2v12.jar"
+		<library jar="lib/axis2_1.6.1.wso2v14.jar"
 			categoryId="org.wso2.developerstudio.eclipse.libraries.category.axis2" />
 		<library jar="lib/commons-codec_1.4.0.wso2v1.jar"
 			categoryId="org.wso2.developerstudio.eclipse.libraries.category.axis2" />
@@ -129,7 +129,7 @@
 			categoryId="org.wso2.developerstudio.eclipse.libraries.category.general,org.wso2.developerstudio.eclipse.libraries.category.axis2" />
 		<library jar="lib/geronimo-stax-api_1.0_spec_1.0.1.wso2v2.jar"
 			categoryId="org.wso2.developerstudio.eclipse.libraries.category.general,org.wso2.developerstudio.eclipse.libraries.category.axis2" />
-		<library jar="lib/httpcore_4.3.0.wso2v1.jar"
+		<library jar="lib/httpcore_4.3.3.wso2v1.jar"
 			categoryId="org.wso2.developerstudio.eclipse.libraries.category.axis2" />
 		<!--library jar="lib/jettison-1.1.jar"
 			categoryId="org.wso2.developerstudio.eclipse.libraries.category.is" /-->
@@ -145,9 +145,9 @@
 			categoryId="org.wso2.developerstudio.eclipse.libraries.category.is" />
 		<library jar="lib/opensaml2_2.4.1.wso2v1.jar"
 			categoryId="org.wso2.developerstudio.eclipse.libraries.category.is" />
-		<library jar="lib/org.wso2.carbon.registry.core_4.4.0.jar"
+		<library jar="lib/org.wso2.carbon.registry.core_4.4.1.jar"
 			categoryId="org.wso2.developerstudio.eclipse.libraries.category.greg" />
-		<library jar="lib/org.wso2.carbon.user.core_4.4.0.jar"
+		<library jar="lib/org.wso2.carbon.user.core_4.4.1.jar"
 			categoryId="org.wso2.developerstudio.eclipse.libraries.category.greg" />
 		<library jar="lib/rampart-core_1.6.1.wso2v14.jar"
 			categoryId="org.wso2.developerstudio.eclipse.libraries.category.is" />
@@ -155,29 +155,29 @@
 			categoryId="org.wso2.developerstudio.eclipse.libraries.category.is" />
 		<library jar="lib/rampart-trust_1.6.1.wso2v14.jar"
 			categoryId="org.wso2.developerstudio.eclipse.libraries.category.is" />
-		<library jar="lib/woden_1.0.0.M8-wso2v1.jar"
+		<library jar="lib/woden_1.0.0.M9-wso2v1.jar"
 			categoryId="org.wso2.developerstudio.eclipse.libraries.category.axis2" />
 		<library jar="lib/wsdl4j_1.6.2.wso2v4.jar"
 			categoryId="org.wso2.developerstudio.eclipse.libraries.category.axis2" />
 		<!--library jar="lib/wss4j-1.5.10.wso2v2.jar"
 			categoryId="org.wso2.developerstudio.eclipse.libraries.category.axis2" /-->
-		<library jar="lib/XmlSchema_1.4.7.wso2v2.jar"
+		<library jar="lib/XmlSchema_1.4.7.wso2v3.jar"
 			categoryId="org.wso2.developerstudio.eclipse.libraries.category.general,org.wso2.developerstudio.eclipse.libraries.category.axis2" />
-		<library jar="lib/org.wso2.carbon.authenticator.proxy_4.4.0.jar"
+		<library jar="lib/org.wso2.carbon.authenticator.proxy_4.4.1.jar"
 			categoryId="org.wso2.developerstudio.eclipse.libraries.category.carbon" />
 		<library jar="lib/org.wso2.carbon.dataservices.core_4.2.0.jar"
 			categoryId="org.wso2.developerstudio.eclipse.libraries.category.ds" />
-		<library jar="lib/synapse-core_2.1.2.wso2v2.jar"
+		<library jar="lib/synapse-core_2.1.3.wso2v7.jar"
 			categoryId="org.wso2.developerstudio.eclipse.libraries.category.esb" />
-		<library jar="lib/synapse-commons_2.1.3.wso2v5.jar"
+		<library jar="lib/synapse-commons_2.1.3.wso2v7.jar"
 			categoryId="org.wso2.developerstudio.eclipse.libraries.category.esb" />
-		<library jar="lib/synapse-tasks_2.1.3.wso2v5.jar"
+		<library jar="lib/synapse-tasks_2.1.3.wso2v7.jar"
 			categoryId="org.wso2.developerstudio.eclipse.libraries.category.esb" />
-		<library jar="lib/synapse-nhttp-transport_2.1.3.wso2v5.jar"
+		<library jar="lib/synapse-nhttp-transport_2.1.3.wso2v7.jar"
 			categoryId="org.wso2.developerstudio.eclipse.libraries.category.esb" />
 		<library jar="lib/org.wso2.carbon.governance.registry.extensions_4.4.1.jar"
 			categoryId="org.wso2.developerstudio.eclipse.libraries.category.greg" />
-		<library jar="lib/org.eclipse.osgi_3.8.1.v20120830-144521.jar"
+		<library jar="lib/org.eclipse.osgi_3.9.1.v20130814-1242.jar"
 			categoryId="org.wso2.developerstudio.eclipse.libraries.category.general" />
 	</extension>
 

@@ -33,6 +33,7 @@ import org.eclipse.jdt.core.IJavaProject;
 import org.eclipse.jdt.core.IPackageFragment;
 import org.eclipse.jdt.core.IPackageFragmentRoot;
 import org.eclipse.jdt.core.JavaCore;
+import org.eclipse.jdt.core.JavaModelException;
 import org.eclipse.jdt.ui.JavaUI;
 import org.eclipse.jface.wizard.IWizardPage;
 import org.eclipse.ui.IEditorPart;
@@ -169,23 +170,25 @@ public class DataServiceValidatorCreationWizard extends AbstractWSO2ProjectCreat
 		return project;
 	}
 	
-	private void addDependancies(IProject project) {
-		try {
+	private void addDependancies(IProject project) throws JavaModelException {
+
 			String[] depedencyList1 = getDepandanceyList();
 			for (String libName : depedencyList1) {
 				JavaUtils.addJarLibraryToProject(project,
 						LibraryUtils.getDependencyPath(libName));
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+			}		
 	}
 	
-	private String[] getDepandanceyList() throws Exception {
-		ResourceBundle mediatorPropetiesBundle = ResourceBundle.getBundle("dsValidator");
-		String jarList = mediatorPropetiesBundle.getString("Plugin_dependencies");
-		String delimiter = ",";
-		String[] depedencyList = jarList.split(delimiter);
+	private String[] getDepandanceyList() {
+		String[] depedencyList = new String[] { LibraryUtils.abdera_wso2vXX_jar, LibraryUtils.axiom_1_2_11_wso2vXX_jar,
+				LibraryUtils.axis2_1_6_1_wso2vXX_jar, LibraryUtils.commons_codec_wso2vXX_jar,
+				LibraryUtils.commons_httpclient_wso2vXX_jar, LibraryUtils.commons_io_wso2vXX_jar,
+				LibraryUtils.commons_loggingwso2vXX_jar, LibraryUtils.geronimo_stax_api_wso2vXX_jar,
+				LibraryUtils.httpcore_4_3_0_wso2vXX_jar, LibraryUtils.neethi_wso2vXX_jar,
+				LibraryUtils.not_yet_commons_ssl_wso2vXX_jar, LibraryUtils.carbon_dataservices_core_xxx_jar,
+				LibraryUtils.wsdl4j_wso2vXX_jar, LibraryUtils.XmlSchema_wso2vXX_jar,
+				LibraryUtils.woden_1_0_0_M8_wso2vXX_jar };
+		
 		return depedencyList;
 	}
 }

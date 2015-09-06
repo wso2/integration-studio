@@ -35,7 +35,7 @@ public class ResourcesContentProvider implements ITreeContentProvider {
 	
 	private static IDeveloperStudioLog log=Logger.getLog(Activator.PLUGIN_ID);
 	
-	private static final String navigatorLabel = "Registry Resources View";
+	private static final String navigatorLabel = "Registry Resources View [Read Only]";
 	private IProject project;
 	private NavigatorNode root;
 	

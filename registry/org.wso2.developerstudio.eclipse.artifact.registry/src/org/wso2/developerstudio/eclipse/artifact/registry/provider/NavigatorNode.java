@@ -50,12 +50,14 @@ public class NavigatorNode {
 				String filename = ((RegistryItem) item).getFile();
 				if (filename.lastIndexOf(".") != -1) {
 					filename = "file" + filename.substring(filename.lastIndexOf("."));
-					return PlatformUI.getWorkbench().getEditorRegistry().getImageDescriptor(filename)
-					                 .createImage();
+					
+					/*return PlatformUI.getWorkbench().getEditorRegistry().getImageDescriptor(filename)
+					                 .createImage();*/
+					return SWTResourceManager.getImage(this.getClass(), "/icons/resource.png");
 				}
 			}
 		}
-		return SWTResourceManager.getImage(this.getClass(), "/icons/registry_collection.png");
+		return SWTResourceManager.getImage(this.getClass(), "/icons/registry_nav.png");
 	}
 
 	public Object[] getChildren() {

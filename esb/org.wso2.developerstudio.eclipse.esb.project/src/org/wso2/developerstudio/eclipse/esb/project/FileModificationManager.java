@@ -84,7 +84,8 @@ public class FileModificationManager implements IResourceChangeListener {
 						return false;
 					} else if (resource.getType() == IResource.FILE) {
 						if (delta.getKind() == IResourceDelta.ADDED) {
-
+							
+							IPath movedToPath = delta.getMovedToPath();
 							Job job = new Job("update ArifactXML") {
 
 								@Override
@@ -149,13 +150,15 @@ public class FileModificationManager implements IResourceChangeListener {
 												artifact.addESBArtifact(esbArtifact);
 												artifact.toFile();
 											} else {
+												IPath movedFromPath = delta.getMovedFromPath();
+												if(movedFromPath!=null){
 												Display.getDefault().syncExec(new Runnable() {
 
 													@Override
 													public void run() {
 
 														MessageDialog.openError(Display.getCurrent().getActiveShell(),
-																"Error Adding", "Cannot do this operayion due to invalid location");
+																"Error Move", "Cannot move due to invalid location");
 
 														try {
 															IUndoContext workspaceContext = (IUndoContext) ResourcesPlugin
@@ -169,7 +172,7 @@ public class FileModificationManager implements IResourceChangeListener {
 
 													}
 												});
-
+											}
 											}
 										}
 									} catch (FactoryConfigurationError | Exception e) {

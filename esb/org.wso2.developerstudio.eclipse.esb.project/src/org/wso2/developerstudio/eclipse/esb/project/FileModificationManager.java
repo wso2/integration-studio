@@ -68,111 +68,125 @@ public class FileModificationManager implements IResourceChangeListener {
 		try {
 			event.getDelta().accept(new IResourceDeltaVisitor() {
 				public boolean visit(final IResourceDelta delta) {
+
 					final IResource resource = delta.getResource();
 					if (resource.getType() == IResource.ROOT) {
 						return true;
 					} else if (resource.getType() == IResource.PROJECT) {
-						IProject iProject = (IProject) resource;
 						try {
-							if (iProject.hasNature(ESB_PROJECT_NATURE)) {
+							IProject iProject = (IProject) resource;
+							if (iProject != null && iProject.isOpen() && iProject.hasNature(ESB_PROJECT_NATURE)) {
 								return true;
 							}
 						} catch (CoreException e) {
-							log.error(e);
+							log.error("Error while checking the project nature", e);
 							return false;
 						}
 						return false;
 					} else if (resource.getType() == IResource.FILE) {
 						if (delta.getKind() == IResourceDelta.ADDED) {
-							
-							IPath movedToPath = delta.getMovedToPath();
+
 							Job job = new Job("update ArifactXML") {
 
 								@Override
 								protected IStatus run(IProgressMonitor monitor) {
 									try {
-										final IFile file = (IFile) resource;
-										IProject iProject = file.getProject();
-										IFolder folder = (IFolder) file.getParent();
-										IPath location = file.getLocation();
-										IPath removeLastSegments = location.removeLastSegments(2);
-										String grandParentDir = removeLastSegments.lastSegment();
+										if (resource instanceof IFile) {
+											final IFile file = (IFile) resource;
+											IProject iProject = file.getProject();
+											if (file.getParent() instanceof IFolder) {
+												IFolder folder = (IFolder) file.getParent();
+												IPath location = file.getLocation();
+												IPath removeLastSegments = location.removeLastSegments(2);
+												String grandParentDir = removeLastSegments.lastSegment();
 
-										if (SYNAPSE_CONFIG_DIR.equals(grandParentDir)) {
+												if (SYNAPSE_CONFIG_DIR.equals(grandParentDir)) {
 
-											String source = FileUtils.getContentAsString(file.getLocationURI().toURL());
-											Openable openable = ESBGraphicalEditor.getOpenable();
-											ArtifactType artifactType = (ArtifactType) openable
-													.artifactTypeResolver(source);
+													String source = FileUtils.getContentAsString(file.getLocationURI()
+															.toURL());
+													Openable openable = ESBGraphicalEditor.getOpenable();
+													ArtifactType artifactType = (ArtifactType) openable
+															.artifactTypeResolver(source);
 
-											final String folderType = folder.getName();
-											final String arifacLiteral = artifactType.getName().toLowerCase();
+													final String folderType = folder.getName();
+													final String arifacLiteral = artifactType.getName().toLowerCase();
 
-											if (folderType.startsWith(arifacLiteral)) {
+													if (folderType.startsWith(arifacLiteral)) {
 
-												File arifact = iProject.getFile(ARTIFACT_MEATADATA_FILE).getLocation()
-														.toFile();
-												ESBProjectArtifact artifact = new ESBProjectArtifact();
-												artifact.fromFile(arifact);
-												List<ESBArtifact> allESBArtifacts = artifact.getAllESBArtifacts();
-												ESBArtifact esbTempartifact = null;
-												for (ESBArtifact esbartifact : allESBArtifacts) {
-													String name = esbartifact.getName() + ".xml";
-													if (name.equals(file.getName())) {
-														return Status.OK_STATUS;
-													}
-													esbTempartifact = esbartifact;
-												}
-
-												String version = "";
-												String type = COMMAN_NAME + ESBProjectUtils.getType(folder.getName());
-												String groupId = "";
-												String name = file.getName().split("\\.")[0];
-
-												if (esbTempartifact == null) {
-													File pomLocation = iProject.getFile(POM).getLocation().toFile();
-													MavenProject mavenProject = MavenUtils.getMavenProject(pomLocation);
-													version = mavenProject.getVersion();
-													groupId = mavenProject.getGroupId();
-												} else {
-													version = esbTempartifact.getVersion();
-													groupId = esbTempartifact.getGroupId();
-												}
-
-												ESBArtifact esbArtifact = new ESBArtifact();
-												esbArtifact.setName(name);
-												esbArtifact.setVersion(version);
-												esbArtifact.setType(type);
-												esbArtifact.setServerRole(ESB_SEVER_ROLE);
-												esbArtifact.setGroupId(groupId);
-												// Should not use file separator here
-												esbArtifact.setFile(FILE_PATH + folder.getName() + "/" + file.getName());
-												artifact.addESBArtifact(esbArtifact);
-												artifact.toFile();
-											} else {
-												IPath movedFromPath = delta.getMovedFromPath();
-												if(movedFromPath!=null){
-												Display.getDefault().syncExec(new Runnable() {
-
-													@Override
-													public void run() {
-
-														MessageDialog.openError(Display.getCurrent().getActiveShell(),
-																"Error Move", "Cannot move due to invalid location");
-
-														try {
-															IUndoContext workspaceContext = (IUndoContext) ResourcesPlugin
-																	.getWorkspace().getAdapter(IUndoContext.class);
-															OperationHistoryFactory.getOperationHistory().undo(
-																	workspaceContext, new NullProgressMonitor(), null);
-
-														} catch (ExecutionException e) {
-															log.error("Cannot undo last operation", e);
+														File arifact = iProject.getFile(ARTIFACT_MEATADATA_FILE)
+																.getLocation().toFile();
+														ESBProjectArtifact artifact = new ESBProjectArtifact();
+														artifact.fromFile(arifact);
+														List<ESBArtifact> allESBArtifacts = artifact
+																.getAllESBArtifacts();
+														ESBArtifact esbTempartifact = null;
+														for (ESBArtifact esbartifact : allESBArtifacts) {
+															String name = esbartifact.getName() + ".xml";
+															if (name.equals(file.getName())) {
+																return Status.OK_STATUS;
+															}
+															esbTempartifact = esbartifact;
 														}
 
+														String version = "";
+														String type = COMMAN_NAME
+																+ ESBProjectUtils.getType(folder.getName());
+														String groupId = "";
+														String name = file.getName().split("\\.")[0];
+
+														if (esbTempartifact == null) {
+															File pomLocation = iProject.getFile(POM).getLocation()
+																	.toFile();
+															MavenProject mavenProject = MavenUtils
+																	.getMavenProject(pomLocation);
+															version = mavenProject.getVersion();
+															groupId = mavenProject.getGroupId();
+														} else {
+															version = esbTempartifact.getVersion();
+															groupId = esbTempartifact.getGroupId();
+														}
+
+														ESBArtifact esbArtifact = new ESBArtifact();
+														esbArtifact.setName(name);
+														esbArtifact.setVersion(version);
+														esbArtifact.setType(type);
+														esbArtifact.setServerRole(ESB_SEVER_ROLE);
+														esbArtifact.setGroupId(groupId);
+														// Should not use file separator here
+														esbArtifact.setFile(FILE_PATH + folder.getName() + "/"
+																+ file.getName());
+														artifact.addESBArtifact(esbArtifact);
+														artifact.toFile();
+													} else {
+														IPath movedFromPath = delta.getMovedFromPath();
+														if (movedFromPath != null) {
+															Display.getDefault().syncExec(new Runnable() {
+
+																@Override
+																public void run() {
+
+																	MessageDialog.openError(Display.getCurrent()
+																			.getActiveShell(), "Error Move",
+																			"Cannot move due to invalid location");
+
+																	try {
+																		IUndoContext workspaceContext = (IUndoContext) ResourcesPlugin
+																				.getWorkspace().getAdapter(
+																						IUndoContext.class);
+																		OperationHistoryFactory
+																				.getOperationHistory()
+																				.undo(workspaceContext,
+																						new NullProgressMonitor(), null);
+
+																	} catch (ExecutionException e) {
+																		log.error("Cannot undo last operation", e);
+																	}
+
+																}
+															});
+														}
 													}
-												});
-											}
+												}
 											}
 										}
 									} catch (FactoryConfigurationError | Exception e) {
@@ -190,33 +204,35 @@ public class FileModificationManager implements IResourceChangeListener {
 								@Override
 								protected IStatus run(IProgressMonitor monitor) {
 									try {
-										IFile file = (IFile) resource;
-										if (file.exists()) {
-											IProject project = file.getProject();
-											IPath location = file.getLocation();
-											IPath removeLastSegments = location.removeLastSegments(2);
-											String grandParentDir = removeLastSegments.lastSegment();
+										if (resource instanceof IFile) {
+											IFile file = (IFile) resource;
+											if (file.exists()) {
+												IProject project = file.getProject();
+												IPath location = file.getLocation();
+												IPath removeLastSegments = location.removeLastSegments(2);
+												String grandParentDir = removeLastSegments.lastSegment();
 
-											if (SYNAPSE_CONFIG_DIR.equals(grandParentDir)) {
-												File arifact = project.getFile(ARTIFACT_MEATADATA_FILE).getLocation()
-														.toFile();
-												ESBProjectArtifact artifact = new ESBProjectArtifact();
-												artifact.fromFile(arifact);
-												List<ESBArtifact> allESBArtifacts = artifact.getAllESBArtifacts();
-												ESBArtifact removeNode = null;
-												Iterator<ESBArtifact> iterator = allESBArtifacts.iterator();
-												while (iterator.hasNext()) {
-													ESBArtifact esbartifact = iterator.next();
-													String name = esbartifact.getName() + ".xml";
-													if (name.equals(file.getName())) {
-														removeNode = esbartifact;
-														break;
+												if (SYNAPSE_CONFIG_DIR.equals(grandParentDir)) {
+													File arifact = project.getFile(ARTIFACT_MEATADATA_FILE)
+															.getLocation().toFile();
+													ESBProjectArtifact artifact = new ESBProjectArtifact();
+													artifact.fromFile(arifact);
+													List<ESBArtifact> allESBArtifacts = artifact.getAllESBArtifacts();
+													ESBArtifact removeNode = null;
+													Iterator<ESBArtifact> iterator = allESBArtifacts.iterator();
+													while (iterator.hasNext()) {
+														ESBArtifact esbartifact = iterator.next();
+														String name = esbartifact.getName() + ".xml";
+														if (name.equals(file.getName())) {
+															removeNode = esbartifact;
+															break;
+														}
+
 													}
-
-												}
-												if (removeNode != null) {
-													artifact.removeESBArtifact(removeNode);
-													artifact.toFile();
+													if (removeNode != null) {
+														artifact.removeESBArtifact(removeNode);
+														artifact.toFile();
+													}
 												}
 											}
 										}

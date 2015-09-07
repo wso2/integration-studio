@@ -52,6 +52,8 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getJdbcPassword <em>Jdbc Password</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getJdbcDatasourceName <em>Jdbc Datasource Name</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getParameters <em>Parameters</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#isEnableProducerGuaranteedDelivery <em>Enable Producer Guaranteed Delivery</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getFailoverMessageStore <em>Failover Message Store</em>}</li>
  * </ul>
  * </p>
  *
@@ -761,5 +763,59 @@ public interface MessageStore extends EsbElement {
 	 * @generated
 	 */
 	EList<MessageStoreParameter> getParameters();
+
+	/**
+	 * Returns the value of the '<em><b>Enable Producer Guaranteed Delivery</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Enable Producer Guaranteed Delivery</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Enable Producer Guaranteed Delivery</em>' attribute.
+	 * @see #setEnableProducerGuaranteedDelivery(boolean)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getMessageStore_EnableProducerGuaranteedDelivery()
+	 * @model default="false"
+	 * @generated
+	 */
+	boolean isEnableProducerGuaranteedDelivery();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#isEnableProducerGuaranteedDelivery <em>Enable Producer Guaranteed Delivery</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Enable Producer Guaranteed Delivery</em>' attribute.
+	 * @see #isEnableProducerGuaranteedDelivery()
+	 * @generated
+	 */
+	void setEnableProducerGuaranteedDelivery(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Failover Message Store</b></em>' attribute.
+	 * The default value is <code>""</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Failover Message Store</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Failover Message Store</em>' attribute.
+	 * @see #setFailoverMessageStore(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getMessageStore_FailoverMessageStore()
+	 * @model default=""
+	 * @generated
+	 */
+	String getFailoverMessageStore();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getFailoverMessageStore <em>Failover Message Store</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Failover Message Store</em>' attribute.
+	 * @see #getFailoverMessageStore()
+	 * @generated
+	 */
+	void setFailoverMessageStore(String value);
 
 } // MessageStore

@@ -52,7 +52,13 @@
 				fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController">Enable Connection caching</data>
 			<data modelProperty="jms.timeout" type="string"
 				fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController">Consumer Receive Timeout</data>
-			<!-- JMS : end -->		
+	        <data modelProperty="jms.enable.producer.guaranteed.delivery" type="list"
+                fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController"
+                controlData="select=single;modify=non-editable;class=org.wso2.developerstudio.eclipse.artifact.messagestore.provider.GuaranteedDeliveryEnableDisableList">Enable Producer Guaranteed Delivery</data>
+            <data modelProperty="jms.failover.message.store" type="list"
+                fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController"
+                controlData="select=single;modify=non-editable;class=org.wso2.developerstudio.eclipse.artifact.messagestore.provider.AvailableMessageStoreList">Failover Message Store</data>
+      		<!-- JMS : end -->		
 			
 			<!-- Custom : begin -->
 			<data modelProperty="custom.provider-class" type="string"
@@ -79,6 +85,12 @@
 				fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController">Password</data>
 			<data modelProperty="rabbitmq.virtual-host" type="string"
 				fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController">Virtual Host</data>
+            <data modelProperty="rabbitmq.enable.producer.guaranteed.delivery" type="list"
+                fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController"
+                controlData="select=single;modify=non-editable;class=org.wso2.developerstudio.eclipse.artifact.messagestore.provider.GuaranteedDeliveryEnableDisableList">Enable Producer Guaranteed Delivery</data>
+            <data modelProperty="rabbitmq.failover.message.store" type="list"
+                fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController"
+                controlData="select=single;modify=non-editable;class=org.wso2.developerstudio.eclipse.artifact.messagestore.provider.AvailableMessageStoreList">Failover Message Store</data>
 			<!-- RabbitMQ : end -->
 
 			<!-- JDBC : begin -->
@@ -97,8 +109,14 @@
 				fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController">Password</data>
 			<data modelProperty="jdbc.datasource-name" type="string"
 				fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController">Datasource Name</data>
-			<!-- JDBC : end -->
-			
+            <data modelProperty="jdbc.enable.producer.guaranteed.delivery" type="list"
+                fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController"
+                controlData="select=single;modify=non-editable;class=org.wso2.developerstudio.eclipse.artifact.messagestore.provider.GuaranteedDeliveryEnableDisableList">Enable Producer Guaranteed Delivery</data>
+            <data modelProperty="jdbc.failover.message.store" type="list"
+                fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController"
+                controlData="select=single;modify=non-editable;class=org.wso2.developerstudio.eclipse.artifact.messagestore.provider.AvailableMessageStoreList">Failover Message Store</data>
+			<!-- JDBC : end -->      
+
 			<group id ="location"/>	
 			<data modelProperty="save.location" type="workspacefolder"
 				fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController"

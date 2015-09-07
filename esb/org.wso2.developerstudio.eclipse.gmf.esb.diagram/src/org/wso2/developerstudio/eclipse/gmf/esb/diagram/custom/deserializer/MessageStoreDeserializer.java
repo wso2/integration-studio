@@ -47,6 +47,9 @@ public class MessageStoreDeserializer
 	private static final String STORE_JMS_CONNECTION_FACTORY = "store.jms.connection.factory";
 	private static final String STORE_JMS_DESTINATION = "store.jms.destination";
 	
+	private static final String STORE_PRODUCER_GUARANTEED_DELIVERY_ENABLE = "store.producer.guaranteed.delivery.enable";
+	private static final String STORE_FAILOVER_MESSAGE_STORE_NAME = "store.failover.message.store.name";
+	
 	private static final String JAVA_NAMING_PROVIDER_URL = "java.naming.provider.url";
 	private static final String JAVA_NAMING_FACTORY_INITIAL = "java.naming.factory.initial";
 	
@@ -139,6 +142,21 @@ public class MessageStoreDeserializer
 									executeSetValueCommand(MESSAGE_STORE__ENABLE_CACHING, false);
 								}
 							}
+						} else if (param.getKey().equals(STORE_PRODUCER_GUARANTEED_DELIVERY_ENABLE)) {
+							Object value = params.get(STORE_PRODUCER_GUARANTEED_DELIVERY_ENABLE);							
+							if (value != null) {
+								if ("true".equals(value)) {
+									executeSetValueCommand(MESSAGE_STORE__ENABLE_PRODUCER_GUARANTEED_DELIVERY, true);
+								} else if ("false".equals(value)) {
+									executeSetValueCommand(MESSAGE_STORE__ENABLE_PRODUCER_GUARANTEED_DELIVERY, false);
+								}
+							}
+						} else if (param.getKey().equals(STORE_FAILOVER_MESSAGE_STORE_NAME)) {
+								Object value = params.get(STORE_FAILOVER_MESSAGE_STORE_NAME);
+								if (StringUtils.isNotBlank(value.toString())) {
+									executeSetValueCommand(MESSAGE_STORE__FAILOVER_MESSAGE_STORE,
+											value.toString());
+								}
 						} 
 					/*	else if (param.getKey().equals("store.jms.ConsumerReceiveTimeOut")) {
 							Object value = params.get("store.jms.ConsumerReceiveTimeOut");
@@ -207,6 +225,18 @@ public class MessageStoreDeserializer
 							if (StringUtils.isNotBlank(value)) {
 								executeSetValueCommand(MESSAGE_STORE__VIRTUAL_HOST, value);
 							}
+						} else if (param.getKey().equals(STORE_PRODUCER_GUARANTEED_DELIVERY_ENABLE)) {							
+							if (value != null) {
+								if ("true".equals(value)) {
+									executeSetValueCommand(MESSAGE_STORE__ENABLE_PRODUCER_GUARANTEED_DELIVERY, true);
+								} else if ("false".equals(value)) {
+									executeSetValueCommand(MESSAGE_STORE__ENABLE_PRODUCER_GUARANTEED_DELIVERY, false);
+								}
+							}
+						} else if (param.getKey().equals(STORE_FAILOVER_MESSAGE_STORE_NAME)) {
+								if (StringUtils.isNotBlank(value)) {
+									executeSetValueCommand(MESSAGE_STORE__FAILOVER_MESSAGE_STORE, value);
+								}
 						}
 					}
 				} else if (dummyStore.getClassName().equals(JDBC_MS_FQN)) {
@@ -219,6 +249,18 @@ public class MessageStoreDeserializer
 							if (StringUtils.isNotBlank(value)) {
 								executeSetValueCommand(MESSAGE_STORE__JDBC_DATABASE_TABLE, value);
 							}
+						} else if (param.getKey().equals(STORE_PRODUCER_GUARANTEED_DELIVERY_ENABLE)) {							
+								if (value != null) {
+									if ("true".equals(value)) {
+										executeSetValueCommand(MESSAGE_STORE__ENABLE_PRODUCER_GUARANTEED_DELIVERY, true);
+									} else if ("false".equals(value)) {
+										executeSetValueCommand(MESSAGE_STORE__ENABLE_PRODUCER_GUARANTEED_DELIVERY, false);
+									}
+								}
+						} else if (param.getKey().equals(STORE_FAILOVER_MESSAGE_STORE_NAME)) {
+									if (StringUtils.isNotBlank(value)) {
+										executeSetValueCommand(MESSAGE_STORE__FAILOVER_MESSAGE_STORE, value);
+									}
 						} else if (param.getKey().equals(STORE_JDBC_DS_NAME)) {
 							if (StringUtils.isNotBlank(value)) {
 								// Set connection information to datasource
@@ -274,5 +316,4 @@ public class MessageStoreDeserializer
 		
 		return messageStore;
 	}
-
 }

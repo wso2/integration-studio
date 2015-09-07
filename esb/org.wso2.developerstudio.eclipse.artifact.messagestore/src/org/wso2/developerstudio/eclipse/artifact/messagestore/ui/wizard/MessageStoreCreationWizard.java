@@ -92,13 +92,17 @@ public class MessageStoreCreationWizard extends AbstractWSO2ProjectCreationWizar
 	private static final String STORE_RABBITMQ_QUEUE_NAME = "store.rabbitmq.queue.name";
 	private static final String STORE_RABBITMQ_HOST_PORT = "store.rabbitmq.host.port";
 	private static final String STORE_RABBITMQ_HOST_NAME = "store.rabbitmq.host.name";
+	private static final String STORE_RABBITMQ_PRODUCER_GUARANTEED_DELIVERY_ENABLE = "store.producer.guaranteed.delivery.enable";
+	private static final String STORE_RABBITMQ_FAILOVER_MESSAGE_STORE_NAME = "store.failover.message.store.name";
 	
 	private static final String STORE_JDBC_DS_NAME = "store.jdbc.dsName";
 	private static final String STORE_JDBC_PASSWORD = "store.jdbc.password";
 	private static final String STORE_JDBC_USERNAME = "store.jdbc.username";
 	private static final String STORE_JDBC_CONNECTION_URL = "store.jdbc.connection.url";
 	private static final String STORE_JDBC_DRIVER = "store.jdbc.driver";
-	private static final String STORE_JDBC_TABLE = "store.jdbc.table";
+	private static final String STORE_JDBC_TABLE = "store.jdbc.table";	
+	private static final String STORE_JDBC_PRODUCER_GUARANTEED_DELIVERY_ENABLE = "store.producer.guaranteed.delivery.enable";
+	private static final String STORE_JDBC_FAILOVER_MESSAGE_STORE_NAME = "store.failover.message.store.name";
 	
 	public MessageStoreCreationWizard() {
 		messageStoreModel = new MessageStoreModel();
@@ -224,7 +228,14 @@ public class MessageStoreCreationWizard extends AbstractWSO2ProjectCreationWizar
 			}
 			if(!StringUtils.isBlank(messageStoreModel.getJmsApiVersion())){
 				parameters.put("store.jms.JMSSpecVersion", messageStoreModel.getJmsApiVersion());
+			}			
+			if(!StringUtils.isBlank(messageStoreModel.getJmsEnableProducerGuaranteedDelivery())){
+				parameters.put("store.producer.guaranteed.delivery.enable", messageStoreModel.getJmsEnableProducerGuaranteedDelivery());
+			}			
+			if(!StringUtils.isBlank(messageStoreModel.getJmsFailoverMessageStore())){
+				parameters.put("store.failover.message.store.name", messageStoreModel.getJmsFailoverMessageStore());
 			}
+			
 			parameters.put("store.jms.cache.connection", ((Boolean)messageStoreModel.getJmsEnableCaching()).toString());
 			parameters.put("store.jms.ConsumerReceiveTimeOut", ((Integer)messageStoreModel.getJmsTimeout()).toString());
 
@@ -253,11 +264,25 @@ public class MessageStoreCreationWizard extends AbstractWSO2ProjectCreationWizar
 			}
 			if (StringUtils.isNotBlank(messageStoreModel.getRabbitMQVirtualHost())) {
 				parameters.put(STORE_RABBITMQ_VIRTUAL_HOST, messageStoreModel.getRabbitMQVirtualHost());
+			}			
+			if (StringUtils.isNotBlank(messageStoreModel.getRabbitMQEnableProducerGuaranteedDelivery())) {
+				parameters.put(STORE_RABBITMQ_PRODUCER_GUARANTEED_DELIVERY_ENABLE, messageStoreModel.getRabbitMQEnableProducerGuaranteedDelivery());
 			}
+			if (StringUtils.isNotBlank(messageStoreModel.getRabbitMQFailoverMessageStore())) {
+				parameters.put(STORE_RABBITMQ_FAILOVER_MESSAGE_STORE_NAME, messageStoreModel.getRabbitMQFailoverMessageStore());
+			}
+			
+			
 		} else if (messageStoreModel.getMessageStoreType() == MessageStoreType.JDBC) {
 			className = JDBC_MS_FQN;
 			if (StringUtils.isNotBlank(messageStoreModel.getJdbcDatabaseTable())) {
 				parameters.put(STORE_JDBC_TABLE, messageStoreModel.getJdbcDatabaseTable());
+			}
+			if (StringUtils.isNotBlank(messageStoreModel.getJdbcEnableProducerGuaranteedDelivery())) {
+				parameters.put(STORE_JDBC_PRODUCER_GUARANTEED_DELIVERY_ENABLE, messageStoreModel.getJdbcEnableProducerGuaranteedDelivery());
+			}
+			if (StringUtils.isNotBlank(messageStoreModel.getJdbcFailoverMessageStore())) {
+				parameters.put(STORE_JDBC_FAILOVER_MESSAGE_STORE_NAME, messageStoreModel.getJdbcFailoverMessageStore());
 			}
 			// Switch between connection pool and datasource
 			String jdbcConnectionInformation = messageStoreModel.getJdbcConnectionInformation();

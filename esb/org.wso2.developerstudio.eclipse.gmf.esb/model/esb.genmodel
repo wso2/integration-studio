@@ -2114,6 +2114,8 @@
       <genFeatures children="true" createChild="true" propertyCategory="Additional Parameters"
           propertyDescription="Message Store Parameters" propertySortChoices="true"
           ecoreFeature="ecore:EReference esb.ecore#//MessageStore/parameters"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//MessageStore/enableProducerGuaranteedDelivery"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//MessageStore/failoverMessageStore"/>
     </genClasses>
     <genClasses ecoreClass="esb.ecore#//MessageProcessorParameter">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//MessageProcessorParameter/parameterName"/>

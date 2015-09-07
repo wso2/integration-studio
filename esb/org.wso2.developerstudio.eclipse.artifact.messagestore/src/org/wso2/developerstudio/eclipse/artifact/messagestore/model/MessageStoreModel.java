@@ -66,7 +66,10 @@ public class MessageStoreModel extends ProjectDataModel  {
 	private String jmsQueueName;
 	private boolean jmsEnableCaching;
 	private int jmsTimeout;
-	private String jmsUsername;
+	private String jmsUsername;	
+	private String jmsEnableProducerGuaranteedDelivery;
+	private String jmsFailoverMessageStore;
+	
 	private String storeName;
 	private IContainer saveLocation;
 	private Map<String,String> customParameters = new HashMap<String,String>();
@@ -81,6 +84,8 @@ public class MessageStoreModel extends ProjectDataModel  {
 	private String rabbitMQUserName;
 	private String rabbitMQPassword;
 	private String rabbitMQVirtualHost;
+	private String rabbitMQEnableProducerGuaranteedDelivery;
+	private String rabbitMQFailoverMessageStore;
 
 	private String jdbcDatabaseTable;
 	private String jdbcConnectionInformation;
@@ -89,6 +94,8 @@ public class MessageStoreModel extends ProjectDataModel  {
 	private String jdbcUser;
 	private String jdbcPassword;
 	private String jdbcDatasourceName;
+	private String jdbcEnableProducerGuaranteedDelivery;
+	private String jdbcFailoverMessageStore;
 
 	public MessageStoreModel() {
 		availableStoreslist = new ArrayList<OMElement>();
@@ -315,6 +322,54 @@ public class MessageStoreModel extends ProjectDataModel  {
 		this.messageStoreType = messageStoreType;
 	}
 	
+	public String getJmsEnableProducerGuaranteedDelivery() {
+		return jmsEnableProducerGuaranteedDelivery;
+	}
+
+	public void setJmsEnableProducerGuaranteedDelivery(String jmsEnableProducerGuaranteedDelivery) {
+		this.jmsEnableProducerGuaranteedDelivery = jmsEnableProducerGuaranteedDelivery;
+	}
+
+	public String getJmsFailoverMessageStore() {
+		return jmsFailoverMessageStore;
+	}
+
+	public void setJmsFailoverMessageStore(String jmsFailoverMessageStore) {
+		this.jmsFailoverMessageStore = jmsFailoverMessageStore;
+	}
+
+	public String getRabbitMQEnableProducerGuaranteedDelivery() {
+		return rabbitMQEnableProducerGuaranteedDelivery;
+	}
+
+	public void setRabbitMQEnableProducerGuaranteedDelivery(String rabbitMQEnableProducerGuaranteedDelivery) {
+		this.rabbitMQEnableProducerGuaranteedDelivery = rabbitMQEnableProducerGuaranteedDelivery;
+	}
+
+	public String getRabbitMQFailoverMessageStore() {
+		return rabbitMQFailoverMessageStore;
+	}
+
+	public void setRabbitMQFailoverMessageStore(String rabbitMQFailoverMessageStore) {
+		this.rabbitMQFailoverMessageStore = rabbitMQFailoverMessageStore;
+	}
+
+	public String getJdbcEnableProducerGuaranteedDelivery() {
+		return jdbcEnableProducerGuaranteedDelivery;
+	}
+
+	public void setJdbcEnableProducerGuaranteedDelivery(String jdbcEnableProducerGuaranteedDelivery) {
+		this.jdbcEnableProducerGuaranteedDelivery = jdbcEnableProducerGuaranteedDelivery;
+	}
+
+	public String getJdbcFailoverMessageStore() {
+		return jdbcFailoverMessageStore;
+	}
+
+	public void setJdbcFailoverMessageStore(String jdbcFailoverMessageStore) {
+		this.jdbcFailoverMessageStore = jdbcFailoverMessageStore;
+	}
+	
 	@Override
 	public Object getModelPropertyValue(String key) {
 		Object value = super.getModelPropertyValue(key);
@@ -340,6 +395,10 @@ public class MessageStoreModel extends ProjectDataModel  {
 			value = getJmsTimeout();
 		} else if (key.equals(Constants.FIELD_JMS_USER_NAME)) {
 			value = getJmsUsername();
+		} else if (key.equals(Constants.FIELD_JMS_ENABLE_PRODUCER_GUARANTEED_DELIVERY)) {
+			value = getJmsEnableCaching();
+		} else if (key.equals(Constants.FIELD_JMS_FAILOVER_MESSAGE_STORE)) {
+			value = getJmsTimeout();
 		} else if (key.equals(Constants.FIELD_RABBITMQ_SERVER_HOST_NAME)) {
 			value = getRabbitMQServerHostName();
 		} else if (key.equals(Constants.FIELD_RABBITMQ_SERVER_HOST_PORT)) {
@@ -356,6 +415,10 @@ public class MessageStoreModel extends ProjectDataModel  {
 			value = getRabbitMQPassword();
 		} else if (key.equals(Constants.FIELD_RABBITMQ_VIRTUAL_HOST)) {
 			value = getRabbitMQVirtualHost();
+		} else if (key.equals(Constants.FIELD_RABBITMQ_ENABLE_PRODUCER_GUARANTEED_DELIVERY)) {
+			value = getJmsEnableCaching();
+		} else if (key.equals(Constants.FIELD_RABBITMQ_FAILOVER_MESSAGE_STORE)) {
+			value = getJmsTimeout();
 		} else if (key.equals(Constants.FIELD_JDBC_DATABASE_TABLE)) {
 			value = getJdbcDatabaseTable();
 		} else if (key.equals(Constants.FIELD_JDBC_CONNECTION_INFORMATION)) {
@@ -370,6 +433,10 @@ public class MessageStoreModel extends ProjectDataModel  {
 			value = getJdbcPassword();
 		} else if (key.equals(Constants.FIELD_JDBC_DATASOURCE_NAME)) {
 			value = getJdbcDatasourceName();
+		} else if (key.equals(Constants.FIELD_JDBC_ENABLE_PRODUCER_GUARANTEED_DELIVERY)) {
+			value = getJmsEnableCaching();
+		} else if (key.equals(Constants.FIELD_JDBC_FAILOVER_MESSAGE_STORE)) {
+			value = getJmsTimeout();
 		} else if (key.equals(Constants.FIELD_STORE_NAME)) {
 			value = getStoreName();
 		} else if(key.equals(Constants.FIELD_SAVE_LOCATION)){
@@ -420,7 +487,16 @@ public class MessageStoreModel extends ProjectDataModel  {
 			}
 		} else if (key.equals(Constants.FIELD_JMS_USER_NAME)) {
 			setJmsUsername(data.toString());
-		} else if (key.equals(Constants.FIELD_RABBITMQ_SERVER_HOST_NAME)) {
+		} 
+		
+		 else if (key.equals(Constants.FIELD_JMS_ENABLE_PRODUCER_GUARANTEED_DELIVERY)) {
+				setJmsEnableProducerGuaranteedDelivery(data.toString());
+			}
+		 else if (key.equals(Constants.FIELD_JMS_FAILOVER_MESSAGE_STORE)) {
+				setJmsFailoverMessageStore(data.toString());
+			}
+		
+		else if (key.equals(Constants.FIELD_RABBITMQ_SERVER_HOST_NAME)) {
 			setRabbitMQServerHostName(data.toString());
 		} else if (key.equals(Constants.FIELD_RABBITMQ_SERVER_HOST_PORT)) {
 			setRabbitMQServerHostPort(data.toString());
@@ -436,7 +512,17 @@ public class MessageStoreModel extends ProjectDataModel  {
 			setRabbitMQPassword(data.toString());
 		} else if (key.equals(Constants.FIELD_RABBITMQ_VIRTUAL_HOST)) {
 			setRabbitMQVirtualHost(data.toString());
-		} else if (key.equals(Constants.FIELD_JDBC_DATABASE_TABLE)) {
+		}
+		
+		 else if (key.equals(Constants.FIELD_RABBITMQ_ENABLE_PRODUCER_GUARANTEED_DELIVERY)) {
+				setRabbitMQEnableProducerGuaranteedDelivery(data.toString());
+			}
+		 else if (key.equals(Constants.FIELD_RABBITMQ_FAILOVER_MESSAGE_STORE)) {
+				setRabbitMQFailoverMessageStore(data.toString());
+			}
+		
+		
+		else if (key.equals(Constants.FIELD_JDBC_DATABASE_TABLE)) {
 			setJdbcDatabaseTable(data.toString());
 		} else if (key.equals(Constants.FIELD_JDBC_CONNECTION_INFORMATION)) {
 			setJdbcConnectionInformation(data.toString());
@@ -450,7 +536,16 @@ public class MessageStoreModel extends ProjectDataModel  {
 			setJdbcPassword(data.toString());
 		} else if (key.equals(Constants.FIELD_JDBC_DATASOURCE_NAME)) {
 			setJdbcDatasourceName(data.toString());
-		} else if (key.equals(Constants.FIELD_STORE_NAME)) {
+		} 
+		
+		 else if (key.equals(Constants.FIELD_JDBC_ENABLE_PRODUCER_GUARANTEED_DELIVERY)) {
+				setJdbcEnableProducerGuaranteedDelivery(data.toString());
+			}
+		 else if (key.equals(Constants.FIELD_JDBC_FAILOVER_MESSAGE_STORE)) {
+				setJdbcFailoverMessageStore(data.toString());
+			}
+		
+		else if (key.equals(Constants.FIELD_STORE_NAME)) {
 			setStoreName(data.toString());
 		} else if (key.equals(Constants.FIELD_CUSTOM_PROVIDER_CLASS)) {
 			setCustomProviderClass(data.toString());

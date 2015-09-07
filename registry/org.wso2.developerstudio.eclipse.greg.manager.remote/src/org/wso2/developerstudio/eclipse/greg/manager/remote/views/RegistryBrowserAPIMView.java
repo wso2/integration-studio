@@ -377,7 +377,7 @@ public class RegistryBrowserAPIMView extends ViewPart implements Observer {
 		IProject[] projects = ws.getRoot().getProjects();
 		for (IProject iProject : projects) {
 			try {
-				if (iProject != null && iProject.exists()
+				if (iProject != null && iProject.exists() && iProject.isOpen()
 						&& iProject.hasNature(RemoteContentManager.ESB_REMOTE_TEMP_PROJECT_NATURE)) {
 
 					iProject.delete(true, new NullProgressMonitor());

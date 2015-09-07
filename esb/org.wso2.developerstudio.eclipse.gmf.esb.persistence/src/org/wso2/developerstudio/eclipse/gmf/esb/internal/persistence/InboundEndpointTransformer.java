@@ -90,29 +90,27 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
 	private InboundEndpoint create(org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint visualInboundEndpoint) throws TransformerException {
 		InboundEndpoint inboundEndpoint = new InboundEndpoint();
 		inboundEndpoint.setName(visualInboundEndpoint.getName());
-		
-		Sequence sequence = getSequence(visualInboundEndpoint.getSequenceOutputConnector());
-		Sequence onErrorSequence = getSequence(visualInboundEndpoint.getOnErrorSequenceOutputConnector());
-		if(sequence == null && onErrorSequence == null){
-			throw new TransformerException("Sequence and On Error Sequence cannot be empty. Please include a Sequence and an On Error Sequence");
-		}
-	
-		if (sequence != null) {
-			inboundEndpoint.setInjectingSeq(sequence.getName());
-		} else {
-			throw new TransformerException("Sequence cannot be empty. Please include a Sequence");
-		}
-		
-		if (onErrorSequence != null) {
-			inboundEndpoint.setOnErrorSeq(onErrorSequence.getName());
-		} else {
-			throw new TransformerException("On Error Sequence cannot be empty. Please include an On Error Sequence");
-		}
+
+		// TODO: This validation should be done properly for specific inbound endpoint types
+		// TOOLS-3039
+		/*
+		 * Sequence sequence = getSequence(visualInboundEndpoint.getSequenceOutputConnector()); Sequence onErrorSequence
+		 * = getSequence(visualInboundEndpoint.getOnErrorSequenceOutputConnector());
+		 * 
+		 * if(sequence == null && onErrorSequence == null){ throw new TransformerException(
+		 * "Sequence and On Error Sequence cannot be empty. Please include a Sequence and an On Error Sequence"); }
+		 * 
+		 * if (sequence != null) { inboundEndpoint.setInjectingSeq(sequence.getName()); } else { throw new
+		 * TransformerException("Sequence cannot be empty. Please include a Sequence"); }
+		 * 
+		 * if (onErrorSequence != null) { inboundEndpoint.setOnErrorSeq(onErrorSequence.getName()); } else { throw new
+		 * TransformerException("On Error Sequence cannot be empty. Please include an On Error Sequence"); }
+		 */
 
 		if (StringUtils.isNotBlank(String.valueOf(visualInboundEndpoint.isSuspend()))) {
 			inboundEndpoint.setSuspend(visualInboundEndpoint.isSuspend());
 		}
-		
+
 		if (visualInboundEndpoint.getType().getName().equals(CUSTOM)) {
 			if (StringUtils.isNotBlank(visualInboundEndpoint.getClass_())) {
 				inboundEndpoint.setClassImpl(visualInboundEndpoint.getClass_());

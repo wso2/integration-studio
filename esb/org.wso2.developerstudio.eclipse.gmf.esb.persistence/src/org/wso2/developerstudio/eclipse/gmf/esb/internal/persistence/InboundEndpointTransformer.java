@@ -93,17 +93,26 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
 
 		// TODO: This validation should be done properly for specific inbound endpoint types
 		// TOOLS-3039
+		Sequence sequence = getSequence(visualInboundEndpoint.getSequenceOutputConnector());
+		Sequence onErrorSequence = getSequence(visualInboundEndpoint.getOnErrorSequenceOutputConnector());
+
 		/*
-		 * Sequence sequence = getSequence(visualInboundEndpoint.getSequenceOutputConnector()); Sequence onErrorSequence
-		 * = getSequence(visualInboundEndpoint.getOnErrorSequenceOutputConnector());
-		 * 
-		 * if(sequence == null && onErrorSequence == null){ throw new TransformerException(
+		 * if (sequence == null && onErrorSequence == null) { throw new TransformerException(
 		 * "Sequence and On Error Sequence cannot be empty. Please include a Sequence and an On Error Sequence"); }
-		 * 
-		 * if (sequence != null) { inboundEndpoint.setInjectingSeq(sequence.getName()); } else { throw new
-		 * TransformerException("Sequence cannot be empty. Please include a Sequence"); }
-		 * 
-		 * if (onErrorSequence != null) { inboundEndpoint.setOnErrorSeq(onErrorSequence.getName()); } else { throw new
+		 */
+
+		if (sequence != null) {
+			inboundEndpoint.setInjectingSeq(sequence.getName());
+		}
+		/*
+		 * else { throw new TransformerException("Sequence cannot be empty. Please include a Sequence"); }
+		 */
+
+		if (onErrorSequence != null) {
+			inboundEndpoint.setOnErrorSeq(onErrorSequence.getName());
+		}
+		/*
+		 * else { throw new
 		 * TransformerException("On Error Sequence cannot be empty. Please include an On Error Sequence"); }
 		 */
 

@@ -787,38 +787,57 @@ public class RegistryBrowserAPIMView extends ViewPart implements Observer {
 	}
 
 	private void openResourceInEditor(final RegistryResourceNode resourceNode) {
-		if (resourceNode.isIsdeleted()) {
-			MessageDialogUtils.error(Display.getCurrent().getActiveShell(), resourceNode.getResourceName()
-					+ " cannot be"
-					+ " opened since this is marked  as a deleted resource , if you want to open undo the delete "
-					+ "operation and try again");
-			return;
-		}
 		
-		File tempFile = null;
-		if (resourceNode.isIsnew() || resourceNode.isRename()) {
-			tempFile = resourceNode.getNewFile();
-		}else{
-			if (resourceNode.getNewFile() != null && resourceNode.getNewFile().exists()) {
-				try {
-					FileUtils.forceDelete(resourceNode.getLocalFile());
-				} catch (IOException e) {
-					log.error("Failed to delete the old file", e);
+		try {
+			new ProgressMonitorDialog(getSite().getShell()).run(true, true, new IRunnableWithProgress() {
+				public void run(final IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
+ 
+						monitor.beginTask("Openning the editor", 100);
+						
+						Display.getDefault().syncExec(new Runnable() {
+							
+							@Override
+							public void run() {
+								if (resourceNode.isIsdeleted()) {
+									MessageDialogUtils.error(Display.getCurrent().getActiveShell(), resourceNode.getResourceName()
+											+ " cannot be"
+											+ " opened since this is marked  as a deleted resource , if you want to open undo the delete "
+											+ "operation and try again");
+									return;
+								}
+								monitor.worked(20);
+								File tempFile = null;
+								if (resourceNode.isIsnew() || resourceNode.isRename()) {
+									tempFile = resourceNode.getNewFile();
+								}else{
+									if (resourceNode.getNewFile() != null && resourceNode.getNewFile().exists()) {
+										try {
+											FileUtils.forceDelete(resourceNode.getLocalFile());
+										} catch (IOException e) {
+											log.error("Failed to delete the old file", e);
+										}
+									}
+									
+									tempFile = resourceNode.getLocalFile();
+								}
+								monitor.worked(30);
+								final IEditorPart editor = RemoteContentManager.openFile(tempFile);
+								monitor.worked(70);
+								resourceNode.setFileEditor(editor);
+								openNodeSet.add(resourceNode);
+								openNodesMap.put(RemoteContentManager.getWorkspaceFile().getLocation().toOSString(), resourceNode);
+								resourceNode.setDirty(false);
+								resourceNode.setWorkspaceFile(RemoteContentManager.getWorkspaceFile()); 
+								monitor.done();
+								
+							}
+						});
 				}
-			}
-			
-			tempFile = resourceNode.getLocalFile();
+			});
+		} catch (InvocationTargetException | InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-
-		final IEditorPart editor = RemoteContentManager.openFile(tempFile);
-	/*	if (resourceNode.getFileEditor() != editor) {
-			editor.getSite().getPage().addPartListener(new RegistryContentPartListener(resourceNode, editor));
-		}
-*/		resourceNode.setFileEditor(editor);
-		openNodeSet.add(resourceNode);
-		openNodesMap.put(RemoteContentManager.getWorkspaceFile().getLocation().toOSString(), resourceNode);
-		resourceNode.setDirty(false);
-		resourceNode.setWorkspaceFile(RemoteContentManager.getWorkspaceFile());
 		
 	}
 

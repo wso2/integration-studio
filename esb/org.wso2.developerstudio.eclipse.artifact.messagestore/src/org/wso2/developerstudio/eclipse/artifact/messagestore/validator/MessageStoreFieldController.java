@@ -126,7 +126,9 @@ public class MessageStoreFieldController  extends AbstractFieldController  {
 			updateFields.add(FIELD_JMS_API_VERSION);
 			updateFields.add(FIELD_JMS_QUEUE_NAME);
 			updateFields.add(FIELD_JMS_ENABLE_CACHING);
-			updateFields.add(FIELD_JMS_TIMEOUT);
+			updateFields.add(FIELD_JMS_TIMEOUT);			
+			updateFields.add(FIELD_JMS_ENABLE_PRODUCER_GUARANTEED_DELIVERY);
+			updateFields.add(FIELD_JMS_FAILOVER_MESSAGE_STORE);
 			
 			updateFields.add(FIELD_RABBITMQ_SERVER_HOST_NAME);
 			updateFields.add(FIELD_RABBITMQ_SERVER_HOST_PORT);
@@ -135,7 +137,9 @@ public class MessageStoreFieldController  extends AbstractFieldController  {
 			updateFields.add(FIELD_RABBITMQ_ROUTING_KEY);
 			updateFields.add(FIELD_RABBITMQ_USER_NAME);
 			updateFields.add(FIELD_RABBITMQ_PASSWORD);
-			updateFields.add(FIELD_RABBITMQ_VIRTUAL_HOST);
+			updateFields.add(FIELD_RABBITMQ_VIRTUAL_HOST);			
+			updateFields.add(FIELD_RABBITMQ_ENABLE_PRODUCER_GUARANTEED_DELIVERY);
+			updateFields.add(FIELD_RABBITMQ_FAILOVER_MESSAGE_STORE);
 
 			updateFields.add(FIELD_JDBC_DATABASE_TABLE);
 			updateFields.add(FIELD_JDBC_CONNECTION_INFORMATION);
@@ -143,7 +147,9 @@ public class MessageStoreFieldController  extends AbstractFieldController  {
 			updateFields.add(FIELD_JDBC_URL);
 			updateFields.add(FIELD_JDBC_USER);
 			updateFields.add(FIELD_JDBC_PASSWORD);
-			updateFields.add(FIELD_JDBC_DATASOURCE_NAME);
+			updateFields.add(FIELD_JDBC_DATASOURCE_NAME);			
+			updateFields.add(FIELD_JDBC_ENABLE_PRODUCER_GUARANTEED_DELIVERY);
+			updateFields.add(FIELD_JDBC_FAILOVER_MESSAGE_STORE);
 			
 			updateFields.add(FIELD_CUSTOM_PROVIDER_CLASS);
 			updateFields.add(FIELD_CUSTOM_PARAMETERS);

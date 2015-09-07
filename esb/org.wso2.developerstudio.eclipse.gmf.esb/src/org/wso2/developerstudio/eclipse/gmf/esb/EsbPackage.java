@@ -21621,13 +21621,31 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	int MESSAGE_STORE__PARAMETERS = ESB_ELEMENT_FEATURE_COUNT + 26;
 
 	/**
+	 * The feature id for the '<em><b>Enable Producer Guaranteed Delivery</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MESSAGE_STORE__ENABLE_PRODUCER_GUARANTEED_DELIVERY = ESB_ELEMENT_FEATURE_COUNT + 27;
+
+	/**
+	 * The feature id for the '<em><b>Failover Message Store</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MESSAGE_STORE__FAILOVER_MESSAGE_STORE = ESB_ELEMENT_FEATURE_COUNT + 28;
+
+	/**
 	 * The number of structural features of the '<em>Message Store</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MESSAGE_STORE_FEATURE_COUNT = ESB_ELEMENT_FEATURE_COUNT + 27;
+	int MESSAGE_STORE_FEATURE_COUNT = ESB_ELEMENT_FEATURE_COUNT + 29;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageProcessorParameterImpl <em>Message Processor Parameter</em>}' class.
@@ -32426,6 +32444,28 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 */
 	EReference getMessageStore_Parameters();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#isEnableProducerGuaranteedDelivery <em>Enable Producer Guaranteed Delivery</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Enable Producer Guaranteed Delivery</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#isEnableProducerGuaranteedDelivery()
+	 * @see #getMessageStore()
+	 * @generated
+	 */
+	EAttribute getMessageStore_EnableProducerGuaranteedDelivery();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getFailoverMessageStore <em>Failover Message Store</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Failover Message Store</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getFailoverMessageStore()
+	 * @see #getMessageStore()
+	 * @generated
+	 */
+	EAttribute getMessageStore_FailoverMessageStore();
 
 	/**
 	 * Returns the meta object for class '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessorParameter <em>Message Processor Parameter</em>}'.
@@ -48151,6 +48191,22 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 		 * @generated
 		 */
 		EReference MESSAGE_STORE__PARAMETERS = eINSTANCE.getMessageStore_Parameters();
+
+		/**
+		 * The meta object literal for the '<em><b>Enable Producer Guaranteed Delivery</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MESSAGE_STORE__ENABLE_PRODUCER_GUARANTEED_DELIVERY = eINSTANCE.getMessageStore_EnableProducerGuaranteedDelivery();
+
+		/**
+		 * The meta object literal for the '<em><b>Failover Message Store</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MESSAGE_STORE__FAILOVER_MESSAGE_STORE = eINSTANCE.getMessageStore_FailoverMessageStore();
 
 		/**
 		 * The meta object literal for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageProcessorParameterImpl <em>Message Processor Parameter</em>}' class.

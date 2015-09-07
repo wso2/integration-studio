@@ -53,6 +53,9 @@ public class MessageStoreTransformer {
 	private static final String RABBITMQ_MS_FQN = "org.apache.synapse.message.store.impl.rabbitmq.RabbitMQStore";
 	private static final String JDBC_MS_FQN = "org.apache.synapse.message.store.impl.jdbc.JDBCMessageStore";
 	
+	private static final String STORE_FAILOVER_MESSAGE_STORE_NAME = "store.failover.message.store.name";
+	private static final String STORE_PRODUCER_GUARANTEED_DELIVERY_ENABLE = "store.producer.guaranteed.delivery.enable";
+	
 	public static OMElement createMessageStore(MessageStore model){
 		Map<String, Object> parameters = new HashMap<String, Object>();
 		String className = null;
@@ -91,9 +94,15 @@ public class MessageStoreTransformer {
 			if (!StringUtils.isBlank(model.getPassword())) {
 				parameters.put("store.jms.password", model.getPassword());
 			}
+			
 			parameters.put("store.jms.JMSSpecVersion", model.getJmsSpecVersion().getLiteral());
 			parameters.put("store.jms.cache.connection",
 					((Boolean) model.isEnableCaching()).toString());
+			
+			if (StringUtils.isNotBlank(model.getFailoverMessageStore())) {
+				parameters.put(STORE_FAILOVER_MESSAGE_STORE_NAME, model.getFailoverMessageStore());
+			}
+			parameters.put(STORE_PRODUCER_GUARANTEED_DELIVERY_ENABLE, ((Boolean) model.isEnableProducerGuaranteedDelivery()).toString());
 
 			/*
 			 * Any additional parameters not listed above will handle here
@@ -133,11 +142,19 @@ public class MessageStoreTransformer {
 			if (StringUtils.isNotBlank(model.getVirtualHost())) {
 				parameters.put(STORE_RABBITMQ_VIRTUAL_HOST, model.getVirtualHost());
 			}
+			if (StringUtils.isNotBlank(model.getFailoverMessageStore())) {
+				parameters.put(STORE_FAILOVER_MESSAGE_STORE_NAME, model.getFailoverMessageStore());
+			}
+			parameters.put(STORE_PRODUCER_GUARANTEED_DELIVERY_ENABLE, ((Boolean) model.isEnableProducerGuaranteedDelivery()).toString());
 		} else if (model.getStoreType() == MessageStoreType.JDBC) {
 			className = JDBC_MS_FQN;
 			if (StringUtils.isNotBlank(model.getJdbcDatabaseTable())) {
 				parameters.put(STORE_JDBC_TABLE, model.getJdbcDatabaseTable());
 			}
+			if (StringUtils.isNotBlank(model.getFailoverMessageStore())) {
+				parameters.put(STORE_FAILOVER_MESSAGE_STORE_NAME, model.getFailoverMessageStore());
+			}
+			parameters.put(STORE_PRODUCER_GUARANTEED_DELIVERY_ENABLE, ((Boolean) model.isEnableProducerGuaranteedDelivery()).toString());
 			// Switch between connection pool and datasource
 			String jdbcConnectionInformation = model.getJdbcConnectionInformation().toString();
 			if (StringUtils.isNotBlank(jdbcConnectionInformation)) {

@@ -71,6 +71,8 @@ import org.wso2.developerstudio.eclipse.gmf.esb.MessageStoreType;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getJdbcPassword <em>Jdbc Password</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getJdbcDatasourceName <em>Jdbc Datasource Name</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getParameters <em>Parameters</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#isEnableProducerGuaranteedDelivery <em>Enable Producer Guaranteed Delivery</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getFailoverMessageStore <em>Failover Message Store</em>}</li>
  * </ul>
  * </p>
  *
@@ -606,6 +608,46 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
 	 * @ordered
 	 */
 	protected EList<MessageStoreParameter> parameters;
+
+	/**
+	 * The default value of the '{@link #isEnableProducerGuaranteedDelivery() <em>Enable Producer Guaranteed Delivery</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isEnableProducerGuaranteedDelivery()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean ENABLE_PRODUCER_GUARANTEED_DELIVERY_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isEnableProducerGuaranteedDelivery() <em>Enable Producer Guaranteed Delivery</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isEnableProducerGuaranteedDelivery()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean enableProducerGuaranteedDelivery = ENABLE_PRODUCER_GUARANTEED_DELIVERY_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getFailoverMessageStore() <em>Failover Message Store</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFailoverMessageStore()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String FAILOVER_MESSAGE_STORE_EDEFAULT = "";
+
+	/**
+	 * The cached value of the '{@link #getFailoverMessageStore() <em>Failover Message Store</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFailoverMessageStore()
+	 * @generated
+	 * @ordered
+	 */
+	protected String failoverMessageStore = FAILOVER_MESSAGE_STORE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1189,6 +1231,48 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isEnableProducerGuaranteedDelivery() {
+		return enableProducerGuaranteedDelivery;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setEnableProducerGuaranteedDelivery(boolean newEnableProducerGuaranteedDelivery) {
+		boolean oldEnableProducerGuaranteedDelivery = enableProducerGuaranteedDelivery;
+		enableProducerGuaranteedDelivery = newEnableProducerGuaranteedDelivery;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_STORE__ENABLE_PRODUCER_GUARANTEED_DELIVERY, oldEnableProducerGuaranteedDelivery, enableProducerGuaranteedDelivery));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getFailoverMessageStore() {
+		return failoverMessageStore;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setFailoverMessageStore(String newFailoverMessageStore) {
+		String oldFailoverMessageStore = failoverMessageStore;
+		failoverMessageStore = newFailoverMessageStore;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_STORE__FAILOVER_MESSAGE_STORE, oldFailoverMessageStore, failoverMessageStore));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -1260,6 +1344,10 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
 				return getJdbcDatasourceName();
 			case EsbPackage.MESSAGE_STORE__PARAMETERS:
 				return getParameters();
+			case EsbPackage.MESSAGE_STORE__ENABLE_PRODUCER_GUARANTEED_DELIVERY:
+				return isEnableProducerGuaranteedDelivery();
+			case EsbPackage.MESSAGE_STORE__FAILOVER_MESSAGE_STORE:
+				return getFailoverMessageStore();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -1355,6 +1443,12 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
 				getParameters().clear();
 				getParameters().addAll((Collection<? extends MessageStoreParameter>)newValue);
 				return;
+			case EsbPackage.MESSAGE_STORE__ENABLE_PRODUCER_GUARANTEED_DELIVERY:
+				setEnableProducerGuaranteedDelivery((Boolean)newValue);
+				return;
+			case EsbPackage.MESSAGE_STORE__FAILOVER_MESSAGE_STORE:
+				setFailoverMessageStore((String)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -1448,6 +1542,12 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
 			case EsbPackage.MESSAGE_STORE__PARAMETERS:
 				getParameters().clear();
 				return;
+			case EsbPackage.MESSAGE_STORE__ENABLE_PRODUCER_GUARANTEED_DELIVERY:
+				setEnableProducerGuaranteedDelivery(ENABLE_PRODUCER_GUARANTEED_DELIVERY_EDEFAULT);
+				return;
+			case EsbPackage.MESSAGE_STORE__FAILOVER_MESSAGE_STORE:
+				setFailoverMessageStore(FAILOVER_MESSAGE_STORE_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -1514,6 +1614,10 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
 				return JDBC_DATASOURCE_NAME_EDEFAULT == null ? jdbcDatasourceName != null : !JDBC_DATASOURCE_NAME_EDEFAULT.equals(jdbcDatasourceName);
 			case EsbPackage.MESSAGE_STORE__PARAMETERS:
 				return parameters != null && !parameters.isEmpty();
+			case EsbPackage.MESSAGE_STORE__ENABLE_PRODUCER_GUARANTEED_DELIVERY:
+				return enableProducerGuaranteedDelivery != ENABLE_PRODUCER_GUARANTEED_DELIVERY_EDEFAULT;
+			case EsbPackage.MESSAGE_STORE__FAILOVER_MESSAGE_STORE:
+				return FAILOVER_MESSAGE_STORE_EDEFAULT == null ? failoverMessageStore != null : !FAILOVER_MESSAGE_STORE_EDEFAULT.equals(failoverMessageStore);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -1580,6 +1684,10 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
 		result.append(jdbcPassword);
 		result.append(", jdbcDatasourceName: ");
 		result.append(jdbcDatasourceName);
+		result.append(", enableProducerGuaranteedDelivery: ");
+		result.append(enableProducerGuaranteedDelivery);
+		result.append(", failoverMessageStore: ");
+		result.append(failoverMessageStore);
 		result.append(')');
 		return result.toString();
 	}

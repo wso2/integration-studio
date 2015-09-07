@@ -37,6 +37,8 @@ public class Constants extends NLS {
 	public static String FIELD_JMS_ENABLE_CACHING;
 	public static String FIELD_JMS_TIMEOUT;
 	public static String FIELD_JMS_USER_NAME;
+	public static String FIELD_JMS_ENABLE_PRODUCER_GUARANTEED_DELIVERY;
+	public static String FIELD_JMS_FAILOVER_MESSAGE_STORE;
 	public static String FIELD_RABBITMQ_SERVER_HOST_NAME;
 	public static String FIELD_RABBITMQ_SERVER_HOST_PORT;
 	public static String FIELD_RABBITMQ_QUEUE_NAME;
@@ -45,6 +47,8 @@ public class Constants extends NLS {
 	public static String FIELD_RABBITMQ_USER_NAME;
 	public static String FIELD_RABBITMQ_PASSWORD;
 	public static String FIELD_RABBITMQ_VIRTUAL_HOST;
+	public static String FIELD_RABBITMQ_ENABLE_PRODUCER_GUARANTEED_DELIVERY;
+	public static String FIELD_RABBITMQ_FAILOVER_MESSAGE_STORE;	
 	public static String FIELD_JDBC_DATABASE_TABLE;
 	public static String FIELD_JDBC_CONNECTION_INFORMATION;
 	public static String FIELD_JDBC_DRIVER;
@@ -52,6 +56,8 @@ public class Constants extends NLS {
 	public static String FIELD_JDBC_USER;
 	public static String FIELD_JDBC_PASSWORD;
 	public static String FIELD_JDBC_DATASOURCE_NAME;
+	public static String FIELD_JDBC_ENABLE_PRODUCER_GUARANTEED_DELIVERY;
+	public static String FIELD_JDBC_FAILOVER_MESSAGE_STORE;
 	public static String FIELD_SAVE_LOCATION;
 	public static String FIELD_STORE_NAME;
 	public static String FIELD_STORE_TYPE;

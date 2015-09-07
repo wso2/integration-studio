@@ -9589,6 +9589,24 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getMessageStore_EnableProducerGuaranteedDelivery() {
+		return (EAttribute)messageStoreEClass.getEStructuralFeatures().get(27);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMessageStore_FailoverMessageStore() {
+		return (EAttribute)messageStoreEClass.getEStructuralFeatures().get(28);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getMessageProcessorParameter() {
 		return messageProcessorParameterEClass;
 	}
@@ -19907,6 +19925,8 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		createEAttribute(messageStoreEClass, MESSAGE_STORE__JDBC_PASSWORD);
 		createEAttribute(messageStoreEClass, MESSAGE_STORE__JDBC_DATASOURCE_NAME);
 		createEReference(messageStoreEClass, MESSAGE_STORE__PARAMETERS);
+		createEAttribute(messageStoreEClass, MESSAGE_STORE__ENABLE_PRODUCER_GUARANTEED_DELIVERY);
+		createEAttribute(messageStoreEClass, MESSAGE_STORE__FAILOVER_MESSAGE_STORE);
 
 		messageProcessorParameterEClass = createEClass(MESSAGE_PROCESSOR_PARAMETER);
 		createEAttribute(messageProcessorParameterEClass, MESSAGE_PROCESSOR_PARAMETER__PARAMETER_NAME);
@@ -22252,6 +22272,8 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		initEAttribute(getMessageStore_JdbcPassword(), ecorePackage.getEString(), "jdbcPassword", null, 0, 1, MessageStore.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMessageStore_JdbcDatasourceName(), ecorePackage.getEString(), "jdbcDatasourceName", null, 0, 1, MessageStore.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getMessageStore_Parameters(), this.getMessageStoreParameter(), null, "parameters", null, 0, -1, MessageStore.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMessageStore_EnableProducerGuaranteedDelivery(), ecorePackage.getEBoolean(), "enableProducerGuaranteedDelivery", "false", 0, 1, MessageStore.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMessageStore_FailoverMessageStore(), ecorePackage.getEString(), "failoverMessageStore", "", 0, 1, MessageStore.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(messageProcessorParameterEClass, MessageProcessorParameter.class, "MessageProcessorParameter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getMessageProcessorParameter_ParameterName(), ecorePackage.getEString(), "parameterName", null, 0, 1, MessageProcessorParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

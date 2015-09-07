@@ -85,6 +85,8 @@ public class MessageStoreItemProvider
 			addPasswordPropertyDescriptor(object);
 			addJmsSpecVersionPropertyDescriptor(object);
 			addEnableCachingPropertyDescriptor(object);
+			addEnableProducerGuaranteedDeliveryPropertyDescriptor(object);
+			addFailoverMessageStorePropertyDescriptor(object);
 			//addTimeoutPropertyDescriptor(object);
 			break;
 		case CUSTOM:
@@ -100,6 +102,8 @@ public class MessageStoreItemProvider
 			addRabbitMQUserNamePropertyDescriptor(object);
 			addRabbitMQPasswordPropertyDescriptor(object);
 			addVirtualHostPropertyDescriptor(object);
+			addEnableProducerGuaranteedDeliveryPropertyDescriptor(object);
+			addFailoverMessageStorePropertyDescriptor(object);
 			break;
 		case JDBC:
 			addJdbcDatabaseTablePropertyDescriptor(object);
@@ -116,6 +120,8 @@ public class MessageStoreItemProvider
 				addJdbcDatasourceNamePropertyDescriptor(object);
 				break;
 			}
+			addEnableProducerGuaranteedDeliveryPropertyDescriptor(object);
+			addFailoverMessageStorePropertyDescriptor(object);
 			break;
 		default:
 			break;
@@ -719,6 +725,50 @@ public class MessageStoreItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Enable Producer Guaranteed Delivery feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	protected void addEnableProducerGuaranteedDeliveryPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_MessageStore_enableProducerGuaranteedDelivery_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_MessageStore_enableProducerGuaranteedDelivery_feature", "_UI_MessageStore_type"),
+				 EsbPackage.Literals.MESSAGE_STORE__ENABLE_PRODUCER_GUARANTEED_DELIVERY,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 "Guaranteed Delivery Parameters",
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Failover Message Store feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	protected void addFailoverMessageStorePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_MessageStore_failoverMessageStore_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_MessageStore_failoverMessageStore_feature", "_UI_MessageStore_type"),
+				 EsbPackage.Literals.MESSAGE_STORE__FAILOVER_MESSAGE_STORE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 "Guaranteed Delivery Parameters",
+				 null));
+	}
+
+	/**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -811,6 +861,8 @@ public class MessageStoreItemProvider
 			case EsbPackage.MESSAGE_STORE__JDBC_USER:
 			case EsbPackage.MESSAGE_STORE__JDBC_PASSWORD:
 			case EsbPackage.MESSAGE_STORE__JDBC_DATASOURCE_NAME:
+			case EsbPackage.MESSAGE_STORE__ENABLE_PRODUCER_GUARANTEED_DELIVERY:
+			case EsbPackage.MESSAGE_STORE__FAILOVER_MESSAGE_STORE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case EsbPackage.MESSAGE_STORE__PARAMETERS:

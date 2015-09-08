@@ -31,7 +31,7 @@ public class Activator extends AbstractUIPlugin {
 
 	// The plug-in ID
 	public static final String PLUGIN_ID = "org.wso2.developerstudio.eclipse.esb.project"; //$NON-NLS-1$
-	private FileModificationManager fileModificationManager;
+   //private FileModificationManager fileModificationManager;
 
 	// The shared instance
 	private static Activator plugin;
@@ -50,11 +50,10 @@ public class Activator extends AbstractUIPlugin {
 		super.start(context);
 		plugin = this;
 		
-		plugin = this;
-		IWorkspace workspace = ResourcesPlugin.getWorkspace();
+	/*	IWorkspace workspace = ResourcesPlugin.getWorkspace();
 		fileModificationManager = new FileModificationManager();
 		workspace.addResourceChangeListener(fileModificationManager,
-				IResourceChangeEvent.POST_CHANGE);
+				IResourceChangeEvent.POST_CHANGE);*/
 	}
 
 	/*

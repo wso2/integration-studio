@@ -198,18 +198,16 @@ public class CloudConnectorDirectoryTraverser {
 	 * @param connectorName
 	 * @return
 	 */
-	public String getConnectorDirectoryPathFromConnectorName(String workspacePath,
-			String connectorName) {
+	public String getConnectorDirectoryPathFromConnectorName(String workspacePath, String connectorName) {
 		String connectorDirectoryPath = null;
 		workspacePath += File.separator + connectorPathFromWorkspace;
 
 		File directory = new File(workspacePath);
 		if (directory.isDirectory()) {
-			String[] children = directory.list();
+			File[] children = directory.listFiles();
 			for (int i = 0; i < children.length; ++i) {
-				if (connectorName.equals(children[i].split("-")[0])) {
-					connectorDirectoryPath = workspacePath + File.separator + children[i];
-					return connectorDirectoryPath;
+				if (children[i].isDirectory() && connectorName.equals(children[i].getName().split("-")[0])) {
+					return children[i].getAbsolutePath();
 				}
 			}
 		}

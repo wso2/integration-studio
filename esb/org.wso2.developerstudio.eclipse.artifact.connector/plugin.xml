@@ -82,14 +82,6 @@
                 </enablement>
             </commonWizard>
     </extension>        
-   	<extension
-         point="org.wso2.developerstudio.eclipse.project.export.handler">
-      <handler
-            class="org.wso2.developerstudio.eclipse.artifact.mediator.project.export.MediatorExportHandler"
-            id="org.wso2.developerstudio.eclipse.artifact.mediator.project.export.handler"
-            type="lib/synapse/mediator">
-      </handler>
-   </extension> 
    <extension point="org.wso2.developerstudio.eclipse.platform.core.intro.ui.dashboard">	
 		<wizardLink category="dashboard.category.esb" id="dashboard.wizardLink.esb.connector.project"
 			wizard="org.wso2.developerstudio.eclipse.artifact.newconnectorartifact" priority="2">

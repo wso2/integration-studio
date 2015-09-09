@@ -7,6 +7,7 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EditorUtil
 import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EditorUtils.SYNAPSE_CONFIG_DIR;
 
 import java.io.ByteArrayInputStream;
+import java.io.File;
 import java.io.IOException;
 import java.text.MessageFormat;
 import java.util.ArrayList;
@@ -14,10 +15,13 @@ import java.util.Collections;
 import java.util.List;
 
 import org.apache.commons.lang.RandomStringUtils;
+import org.apache.maven.model.Plugin;
+import org.apache.maven.model.PluginExecution;
 import org.apache.maven.project.MavenProject;
+import org.codehaus.plexus.util.xml.Xpp3Dom;
+import org.codehaus.plexus.util.xml.pull.XmlPullParserException;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
-import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.draw2d.Figure;
 import org.eclipse.draw2d.IFigure;
@@ -30,7 +34,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gef.EditPart;
@@ -80,6 +83,7 @@ import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.FileEditorInput;
 import org.wso2.developerstudio.eclipse.artifact.sequence.validators.SequenceTemplate;
+import org.wso2.developerstudio.eclipse.capp.maven.utils.MavenConstants;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBArtifact;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBProjectArtifact;
 import org.wso2.developerstudio.eclipse.esb.project.utils.ESBProjectUtils;
@@ -489,7 +493,7 @@ public class SequenceEditPart extends FixedSizedAbstractMediator {
 		String groupID = "com.example";
 		try {
 			MavenProject mavenProject = MavenUtils.getMavenProject(project.getFile("pom.xml").getLocation().toFile());
-			groupID = mavenProject.getGroupId();
+			groupID = mavenProject.getGroupId() + ".sequence";
 		} catch (Exception e) {
 			//ignore. Then group id would be default. 
 		}
@@ -554,6 +558,7 @@ public class SequenceEditPart extends FixedSizedAbstractMediator {
 				OpenEditorUtils oeUtils = new OpenEditorUtils();
 				oeUtils.openSeparateEditor(fileTobeOpened);
 			} else {
+				updatePom();
 				addSequenceToArtifactXML(name);
 				String path = fileTobeOpened.getParent().getFullPath() + "/";
 				ArtifactTemplate sequenceArtifactTemplate = SequenceTemplate.getArtifactTemplates()[0];
@@ -577,6 +582,32 @@ public class SequenceEditPart extends FixedSizedAbstractMediator {
 			}
 			return true;
 		}
+	}
+	
+	private void updatePom() throws IOException, XmlPullParserException {
+		File mavenProjectPomLocation = getActiveProject().getFile("pom.xml").getLocation().toFile();
+		MavenProject mavenProject = MavenUtils.getMavenProject(mavenProjectPomLocation);
+
+		// Skip changing the pom file if group ID and artifact ID are matched
+		if (MavenUtils.checkOldPluginEntry(mavenProject, "org.wso2.maven", "wso2-esb-sequence-plugin")) {
+			return;
+		}
+
+		Plugin plugin = MavenUtils.createPluginEntry(mavenProject, "org.wso2.maven", "wso2-esb-sequence-plugin",
+				MavenConstants.WSO2_ESB_SEQUENCE_VERSION, true);
+		PluginExecution pluginExecution = new PluginExecution();
+		pluginExecution.addGoal("pom-gen");
+		pluginExecution.setPhase("process-resources");
+		pluginExecution.setId("sequence");
+
+		Xpp3Dom configurationNode = MavenUtils.createMainConfigurationNode();
+		Xpp3Dom artifactLocationNode = MavenUtils.createXpp3Node(configurationNode, "artifactLocation");
+		artifactLocationNode.setValue(".");
+		Xpp3Dom typeListNode = MavenUtils.createXpp3Node(configurationNode, "typeList");
+		typeListNode.setValue("${artifact.types}");
+		pluginExecution.setConfiguration(configurationNode);
+		plugin.addExecution(pluginExecution);
+		MavenUtils.saveMavenProject(mavenProject, mavenProjectPomLocation);
 	}
 
 	private PaletteContainer createSequenceGroup() {

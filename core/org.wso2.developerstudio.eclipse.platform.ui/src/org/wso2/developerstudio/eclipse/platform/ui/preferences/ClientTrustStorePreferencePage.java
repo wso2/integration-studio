@@ -1,5 +1,7 @@
 package org.wso2.developerstudio.eclipse.platform.ui.preferences;
 
+import org.eclipse.core.runtime.Platform;
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.preference.BooleanFieldEditor;
 import org.eclipse.jface.preference.ComboFieldEditor;
 import org.eclipse.jface.preference.FieldEditorPreferencePage;
@@ -7,8 +9,10 @@ import org.eclipse.jface.preference.FileFieldEditor;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.preference.StringFieldEditor;
 import org.eclipse.jface.util.IPropertyChangeListener;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPreferencePage;
+import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.eclipse.platform.ui.Activator;
 
 public class ClientTrustStorePreferencePage extends FieldEditorPreferencePage
@@ -57,7 +61,7 @@ public class ClientTrustStorePreferencePage extends FieldEditorPreferencePage
 					@Override
 					public void propertyChange(
 							org.eclipse.jface.util.PropertyChangeEvent arg0) {
-						// Setting/unsetting echo char
+
 						if (arg0.getProperty() == SHOW_PLAIN_PASSWORD) {
 							boolean boolean1 = preferenceStore
 									.getBoolean(SHOW_PLAIN_PASSWORD);
@@ -70,17 +74,20 @@ public class ClientTrustStorePreferencePage extends FieldEditorPreferencePage
 										getFieldEditorParent())
 										.setEchoChar('*');
 							}
+							
 						}
 
 						if (arg0.getProperty() == TRUST_STORE_LOCATION) {
 							String string = preferenceStore
 									.getString(TRUST_STORE_LOCATION);
 							if (!string.equals("") && !string.endsWith(".jks")) {
-								setErrorMessage("You cannot set non JKS trust stores from Developer Studio");
+								MessageDialog.openError(Display.getCurrent().getActiveShell(),
+										"Error Dialog", "You cannot set non JKS trust stores from Developer Studio");
 							}
 						}
+						
 					}
-				});
+				});		
 	}
 
 }

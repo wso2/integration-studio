@@ -33,8 +33,8 @@ import org.eclipse.core.resources.IWorkspace;
 import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IPath;
-import org.eclipse.swt.SWT;
-import org.eclipse.swt.widgets.MessageBox;
+import org.eclipse.core.runtime.Platform;
+import org.eclipse.core.runtime.preferences.IPreferencesService;
 import org.wso2.carbon.core.services.authentication.AuthenticationAdminStub;
 import org.wso2.carbon.core.services.authentication.AuthenticationExceptionException;
 //import org.wso2.carbon.user.mgt.stub.GetUsersOfRoleUserAdminExceptionException;
@@ -43,6 +43,7 @@ import org.wso2.carbon.user.mgt.stub.UserAdminUserAdminException;
 import org.wso2.carbon.user.mgt.stub.types.carbon.FlaggedName;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
+//import org.wso2.developerstudio.eclipse.platform.ui.preferences.ClientTrustStorePreferencePage;
 
 public class UserManager {
 	private static IDeveloperStudioLog log=Logger.getLog(Activator.PLUGIN_ID);
@@ -51,7 +52,19 @@ public class UserManager {
 	private String username;
 	private String password;
 	private UserAdminStub stub;
+	private static IPreferencesService preferenceStore;
+	//FIXME - please take these constant from platform core budndle currently I am not changing platformcore due to release 
+	public static final String TRUST_STORE_PASSWORD = "TRUST_STORE_PASSWORD";
+	public static final String SHOW_PLAIN_PASSWORD = "SHOW_PLAIN_PASSWORD";
+	public static final String TRUST_STORE_TYPE = "TRUST_STORE_TYPE";
+	public static final String TRUST_STORE_LOCATION = "TRUST_STORE_LOCATION";
 
+	
+	static {
+		preferenceStore = Platform.getPreferencesService();
+	}
+	
+	
 	public UserManager(String url, String username, String password) {
 		init();
 		setUrl(url);
@@ -60,9 +73,24 @@ public class UserManager {
 	}
 
 	private static void init() {
-		System.setProperty("javax.net.ssl.trustStore", getJKSPath());
-		System.setProperty("javax.net.ssl.trustStorePassword", "wso2carbon");
-		System.setProperty("javax.net.ssl.trustStoreType", "JKS");
+		String clientTrustStoreLocation = preferenceStore.getString("org.wso2.developerstudio.eclipse.platform.ui",
+				TRUST_STORE_LOCATION, null, null);
+		String clientTrustStoreType = preferenceStore.getString("org.wso2.developerstudio.eclipse.platform.ui",
+				TRUST_STORE_TYPE, null, null);
+		String clientTrustStorePassword = preferenceStore.getString("org.wso2.developerstudio.eclipse.platform.ui",
+				TRUST_STORE_PASSWORD, null, null);
+
+		if (clientTrustStoreLocation != null && clientTrustStorePassword != null
+				&& clientTrustStoreLocation.endsWith(".jks") && !clientTrustStorePassword.equals("")) {
+			System.setProperty("javax.net.ssl.trustStoreType", clientTrustStoreType);
+			System.setProperty("javax.net.ssl.trustStore", clientTrustStoreLocation);
+			System.setProperty("javax.net.ssl.trustStorePassword", clientTrustStorePassword);
+		} else {
+			System.setProperty("javax.net.ssl.trustStoreType", "JKS");
+			System.setProperty("javax.net.ssl.trustStore", getJKSPath());
+			System.setProperty("javax.net.ssl.trustStorePassword", "wso2carbon");
+		}
+		
 	}
 
 	private static String getJKSPath() {
@@ -248,13 +276,14 @@ public class UserManager {
 			} catch (MalformedURLException e) {
 				log.error(e);
 			}
+			
+			init();
 			AuthenticationAdminStub authenticationStub = new AuthenticationAdminStub(
 					getUrl() + "services/AuthenticationAdmin");
 
 			authenticationStub._getServiceClient().getOptions()
 					.setManageSession(true);
-			boolean loginStatus = authenticationStub.login(getUsername(),
-					getPassword(), url.getHost());
+			boolean loginStatus = authenticationStub.login(getUsername(),getPassword(), url.getHost());
 			
 			if (!loginStatus) {
 				//TODO: Throw the {@link:InvalidAuthenticationException}

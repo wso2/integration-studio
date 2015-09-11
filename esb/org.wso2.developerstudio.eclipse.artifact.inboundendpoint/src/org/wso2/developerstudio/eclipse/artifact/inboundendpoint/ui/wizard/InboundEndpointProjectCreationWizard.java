@@ -247,7 +247,9 @@ public class InboundEndpointProjectCreationWizard extends AbstractWSO2ProjectCre
 				artifact.setType(TYPE);
 				artifact.setServerRole(SERVER_ROLE);
 				artifact.setGroupId(groupId);
-				artifact.setFile(FileUtils.getRelativePath(importLocation.getProject().getLocation().toFile(), new File(importLocation.getLocation().toFile(),key+XML_EXTENSION)));
+					artifact.setFile(FileUtils.getRelativePath(importLocation.getProject().getLocation().toFile(),
+							new File(importLocation.getLocation().toFile(), key + XML_EXTENSION)).replaceAll(
+							Pattern.quote(File.separator), "/"));
 				esbProjectArtifact.addESBArtifact(artifact);
 				}
 			}
@@ -264,7 +266,9 @@ public class InboundEndpointProjectCreationWizard extends AbstractWSO2ProjectCre
 			artifact.setType(TYPE);
 			artifact.setServerRole(SERVER_ROLE);
 			artifact.setGroupId(groupId);
-			artifact.setFile(FileUtils.getRelativePath(importLocation.getProject().getLocation().toFile(), new File(importLocation.getLocation().toFile(),key+XML_EXTENSION)));
+				artifact.setFile(FileUtils.getRelativePath(importLocation.getProject().getLocation().toFile(),
+						new File(importLocation.getLocation().toFile(), key + XML_EXTENSION)).replaceAll(
+						Pattern.quote(File.separator), "/"));
 			esbProjectArtifact.addESBArtifact(artifact);
 			}
 		}

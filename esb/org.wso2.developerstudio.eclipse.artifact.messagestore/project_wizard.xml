@@ -48,10 +48,6 @@
 			<data modelProperty="jms.api-version" type="list"
 				fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController"
 				controlData="select=single;modify=non-editable;class=org.wso2.developerstudio.eclipse.artifact.messagestore.provider.SpecVersionList">JMS API specification Version</data>
-			<data modelProperty="jms.enable-caching" type="choice"
-				fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController">Enable Connection caching</data>
-			<data modelProperty="jms.timeout" type="string"
-				fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController">Consumer Receive Timeout</data>
 	        <data modelProperty="jms.enable.producer.guaranteed.delivery" type="list"
                 fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController"
                 controlData="select=single;modify=non-editable;class=org.wso2.developerstudio.eclipse.artifact.messagestore.provider.GuaranteedDeliveryEnableDisableList">Enable Producer Guaranteed Delivery</data>

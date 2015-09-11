@@ -84,7 +84,6 @@ public class MessageStoreItemProvider
 			addUserNamePropertyDescriptor(object);
 			addPasswordPropertyDescriptor(object);
 			addJmsSpecVersionPropertyDescriptor(object);
-			addEnableCachingPropertyDescriptor(object);
 			addEnableProducerGuaranteedDeliveryPropertyDescriptor(object);
 			addFailoverMessageStorePropertyDescriptor(object);
 			//addTimeoutPropertyDescriptor(object);

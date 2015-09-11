@@ -101,18 +101,16 @@ public class CallMediatorTransformer extends AbstractEsbNodeTransformer {
 		if (visualCallMediator.getEndpointType() == CallMediatorEndpointType.XPATH) {
 			NamespacedProperty nameSpacedProperty = visualCallMediator.getEndpointXpath();
 			Endpoint resolvingEndpoint = getEndpointFromXpath(nameSpacedProperty);
-			synapseCallMediator.setEndpoint(null);
 			synapseCallMediator.setEndpoint(resolvingEndpoint);
 		} else if (visualCallMediator.getEndpointType() == CallMediatorEndpointType.REGISRTYKEY) {
 			RegistryKeyProperty regKey = visualCallMediator.getEndpointRegistrykey();
 			IndirectEndpoint indirectEndpoint = new IndirectEndpoint();
 			indirectEndpoint.setKey(regKey.getKeyValue());
-			synapseCallMediator.setEndpoint(null);
 			synapseCallMediator.setEndpoint(indirectEndpoint);
 		} else {
 			synapseCallMediator.setEndpoint(null);
 		}
-		
+		synapseCallMediator.setBlocking(visualCallMediator.isEnableBlockingCalls());
 		return synapseCallMediator;
 	}
 	

@@ -72,6 +72,7 @@ public class CallMediatorItemProvider
 		super.getPropertyDescriptors(object);	
 		
 		addEndpointTypePropertyDescriptor(object);
+		addEnableBlockingCallsPropertyDescriptor(object);
 		switch (callMediator.getEndpointType()) {
 		case NONE:
 		case INLINE:
@@ -107,6 +108,28 @@ public class CallMediatorItemProvider
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Enable Blocking Calls feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addEnableBlockingCallsPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_CallMediator_enableBlockingCalls_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_CallMediator_enableBlockingCalls_feature", "_UI_CallMediator_type"),
+				 EsbPackage.Literals.CALL_MEDIATOR__ENABLE_BLOCKING_CALLS,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -228,6 +251,7 @@ public class CallMediatorItemProvider
 
 		switch (notification.getFeatureID(CallMediator.class)) {
 			case EsbPackage.CALL_MEDIATOR__ENDPOINT_TYPE:
+			case EsbPackage.CALL_MEDIATOR__ENABLE_BLOCKING_CALLS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case EsbPackage.CALL_MEDIATOR__INPUT_CONNECTOR:

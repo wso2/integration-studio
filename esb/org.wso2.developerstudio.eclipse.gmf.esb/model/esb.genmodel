@@ -725,6 +725,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//CallMediator/endpointOutputConnector"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//CallMediator/mediatorFlow"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//CallMediator/endpointType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//CallMediator/enableBlockingCalls"/>
       <genFeatures children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//CallMediator/endpointRegistrykey"/>
       <genFeatures children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//CallMediator/endpointXpath"/>
     </genClasses>

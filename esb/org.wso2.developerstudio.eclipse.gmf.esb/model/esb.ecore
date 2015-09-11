@@ -100,6 +100,8 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="mediatorFlow" eType="#//MediatorFlow"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="endpointType" eType="#//CallMediatorEndpointType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="enableBlockingCalls" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="false"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="endpointRegistrykey" eType="#//RegistryKeyProperty"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="endpointXpath" eType="#//NamespacedProperty"

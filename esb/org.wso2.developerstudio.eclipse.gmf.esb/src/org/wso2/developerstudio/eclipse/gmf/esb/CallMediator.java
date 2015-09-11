@@ -31,6 +31,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CallMediator#getEndpointOutputConnector <em>Endpoint Output Connector</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CallMediator#getMediatorFlow <em>Mediator Flow</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CallMediator#getEndpointType <em>Endpoint Type</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CallMediator#isEnableBlockingCalls <em>Enable Blocking Calls</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CallMediator#getEndpointRegistrykey <em>Endpoint Registrykey</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CallMediator#getEndpointXpath <em>Endpoint Xpath</em>}</li>
  * </ul>
@@ -189,6 +190,33 @@ public interface CallMediator extends Mediator {
 	 * @generated
 	 */
 	void setEndpointType(CallMediatorEndpointType value);
+
+	/**
+	 * Returns the value of the '<em><b>Enable Blocking Calls</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Enable Blocking Calls</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Enable Blocking Calls</em>' attribute.
+	 * @see #setEnableBlockingCalls(boolean)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getCallMediator_EnableBlockingCalls()
+	 * @model default="false"
+	 * @generated
+	 */
+	boolean isEnableBlockingCalls();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.CallMediator#isEnableBlockingCalls <em>Enable Blocking Calls</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Enable Blocking Calls</em>' attribute.
+	 * @see #isEnableBlockingCalls()
+	 * @generated
+	 */
+	void setEnableBlockingCalls(boolean value);
 
 	/**
 	 * Returns the value of the '<em><b>Endpoint Registrykey</b></em>' containment reference.

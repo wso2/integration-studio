@@ -53,6 +53,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CallMediatorImpl#getEndpointOutputConnector <em>Endpoint Output Connector</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CallMediatorImpl#getMediatorFlow <em>Mediator Flow</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CallMediatorImpl#getEndpointType <em>Endpoint Type</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CallMediatorImpl#isEnableBlockingCalls <em>Enable Blocking Calls</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CallMediatorImpl#getEndpointRegistrykey <em>Endpoint Registrykey</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CallMediatorImpl#getEndpointXpath <em>Endpoint Xpath</em>}</li>
  * </ul>
@@ -130,6 +131,26 @@ public class CallMediatorImpl extends MediatorImpl implements CallMediator {
 	 * @ordered
 	 */
 	protected CallMediatorEndpointType endpointType = ENDPOINT_TYPE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isEnableBlockingCalls() <em>Enable Blocking Calls</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isEnableBlockingCalls()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean ENABLE_BLOCKING_CALLS_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isEnableBlockingCalls() <em>Enable Blocking Calls</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isEnableBlockingCalls()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean enableBlockingCalls = ENABLE_BLOCKING_CALLS_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getEndpointRegistrykey() <em>Endpoint Registrykey</em>}' containment reference.
@@ -391,6 +412,27 @@ public class CallMediatorImpl extends MediatorImpl implements CallMediator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isEnableBlockingCalls() {
+		return enableBlockingCalls;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setEnableBlockingCalls(boolean newEnableBlockingCalls) {
+		boolean oldEnableBlockingCalls = enableBlockingCalls;
+		enableBlockingCalls = newEnableBlockingCalls;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.CALL_MEDIATOR__ENABLE_BLOCKING_CALLS, oldEnableBlockingCalls, enableBlockingCalls));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public RegistryKeyProperty getEndpointRegistrykey() {
 		return endpointRegistrykey;
 	}
@@ -516,6 +558,8 @@ public class CallMediatorImpl extends MediatorImpl implements CallMediator {
 				return getMediatorFlow();
 			case EsbPackage.CALL_MEDIATOR__ENDPOINT_TYPE:
 				return getEndpointType();
+			case EsbPackage.CALL_MEDIATOR__ENABLE_BLOCKING_CALLS:
+				return isEnableBlockingCalls();
 			case EsbPackage.CALL_MEDIATOR__ENDPOINT_REGISTRYKEY:
 				return getEndpointRegistrykey();
 			case EsbPackage.CALL_MEDIATOR__ENDPOINT_XPATH:
@@ -551,6 +595,9 @@ public class CallMediatorImpl extends MediatorImpl implements CallMediator {
 				return;
 			case EsbPackage.CALL_MEDIATOR__ENDPOINT_TYPE:
 				setEndpointType((CallMediatorEndpointType)newValue);
+				return;
+			case EsbPackage.CALL_MEDIATOR__ENABLE_BLOCKING_CALLS:
+				setEnableBlockingCalls((Boolean)newValue);
 				return;
 			case EsbPackage.CALL_MEDIATOR__ENDPOINT_REGISTRYKEY:
 				setEndpointRegistrykey((RegistryKeyProperty)newValue);
@@ -588,6 +635,9 @@ public class CallMediatorImpl extends MediatorImpl implements CallMediator {
 			case EsbPackage.CALL_MEDIATOR__ENDPOINT_TYPE:
 				setEndpointType(ENDPOINT_TYPE_EDEFAULT);
 				return;
+			case EsbPackage.CALL_MEDIATOR__ENABLE_BLOCKING_CALLS:
+				setEnableBlockingCalls(ENABLE_BLOCKING_CALLS_EDEFAULT);
+				return;
 			case EsbPackage.CALL_MEDIATOR__ENDPOINT_REGISTRYKEY:
 				setEndpointRegistrykey((RegistryKeyProperty)null);
 				return;
@@ -618,6 +668,8 @@ public class CallMediatorImpl extends MediatorImpl implements CallMediator {
 				return mediatorFlow != null;
 			case EsbPackage.CALL_MEDIATOR__ENDPOINT_TYPE:
 				return endpointType != ENDPOINT_TYPE_EDEFAULT;
+			case EsbPackage.CALL_MEDIATOR__ENABLE_BLOCKING_CALLS:
+				return enableBlockingCalls != ENABLE_BLOCKING_CALLS_EDEFAULT;
 			case EsbPackage.CALL_MEDIATOR__ENDPOINT_REGISTRYKEY:
 				return endpointRegistrykey != null;
 			case EsbPackage.CALL_MEDIATOR__ENDPOINT_XPATH:
@@ -638,6 +690,8 @@ public class CallMediatorImpl extends MediatorImpl implements CallMediator {
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (endpointType: ");
 		result.append(endpointType);
+		result.append(", enableBlockingCalls: ");
+		result.append(enableBlockingCalls);
 		result.append(')');
 		return result.toString();
 	}

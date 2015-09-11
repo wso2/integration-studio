@@ -4351,8 +4351,17 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getCallMediator_EnableBlockingCalls() {
+		return (EAttribute)callMediatorEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EReference getCallMediator_EndpointRegistrykey() {
-		return (EReference)callMediatorEClass.getEStructuralFeatures().get(6);
+		return (EReference)callMediatorEClass.getEStructuralFeatures().get(7);
 	}
 
 	/**
@@ -4361,7 +4370,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * @generated
 	 */
 	public EReference getCallMediator_EndpointXpath() {
-		return (EReference)callMediatorEClass.getEStructuralFeatures().get(7);
+		return (EReference)callMediatorEClass.getEStructuralFeatures().get(8);
 	}
 
 	/**
@@ -18427,6 +18436,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		createEReference(callMediatorEClass, CALL_MEDIATOR__ENDPOINT_OUTPUT_CONNECTOR);
 		createEReference(callMediatorEClass, CALL_MEDIATOR__MEDIATOR_FLOW);
 		createEAttribute(callMediatorEClass, CALL_MEDIATOR__ENDPOINT_TYPE);
+		createEAttribute(callMediatorEClass, CALL_MEDIATOR__ENABLE_BLOCKING_CALLS);
 		createEReference(callMediatorEClass, CALL_MEDIATOR__ENDPOINT_REGISTRYKEY);
 		createEReference(callMediatorEClass, CALL_MEDIATOR__ENDPOINT_XPATH);
 
@@ -20764,6 +20774,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		initEReference(getCallMediator_EndpointOutputConnector(), this.getCallMediatorEndpointOutputConnector(), null, "endpointOutputConnector", null, 0, 1, CallMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getCallMediator_MediatorFlow(), this.getMediatorFlow(), null, "mediatorFlow", null, 0, 1, CallMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCallMediator_EndpointType(), this.getCallMediatorEndpointType(), "endpointType", null, 0, 1, CallMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getCallMediator_EnableBlockingCalls(), ecorePackage.getEBoolean(), "enableBlockingCalls", "false", 0, 1, CallMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getCallMediator_EndpointRegistrykey(), this.getRegistryKeyProperty(), null, "endpointRegistrykey", null, 0, 1, CallMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getCallMediator_EndpointXpath(), this.getNamespacedProperty(), null, "endpointXpath", null, 0, 1, CallMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 

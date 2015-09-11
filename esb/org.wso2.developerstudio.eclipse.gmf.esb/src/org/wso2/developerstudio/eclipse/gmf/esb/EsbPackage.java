@@ -578,13 +578,22 @@ public interface EsbPackage extends EPackage {
 	int CALL_MEDIATOR__ENDPOINT_TYPE = MEDIATOR_FEATURE_COUNT + 5;
 
 	/**
+	 * The feature id for the '<em><b>Enable Blocking Calls</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CALL_MEDIATOR__ENABLE_BLOCKING_CALLS = MEDIATOR_FEATURE_COUNT + 6;
+
+	/**
 	 * The feature id for the '<em><b>Endpoint Registrykey</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CALL_MEDIATOR__ENDPOINT_REGISTRYKEY = MEDIATOR_FEATURE_COUNT + 6;
+	int CALL_MEDIATOR__ENDPOINT_REGISTRYKEY = MEDIATOR_FEATURE_COUNT + 7;
 
 	/**
 	 * The feature id for the '<em><b>Endpoint Xpath</b></em>' containment reference.
@@ -593,7 +602,7 @@ public interface EsbPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CALL_MEDIATOR__ENDPOINT_XPATH = MEDIATOR_FEATURE_COUNT + 7;
+	int CALL_MEDIATOR__ENDPOINT_XPATH = MEDIATOR_FEATURE_COUNT + 8;
 
 	/**
 	 * The number of structural features of the '<em>Call Mediator</em>' class.
@@ -602,7 +611,7 @@ public interface EsbPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CALL_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 8;
+	int CALL_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CallMediatorInputConnectorImpl <em>Call Mediator Input Connector</em>}' class.
@@ -26211,6 +26220,17 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	EAttribute getCallMediator_EndpointType();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.CallMediator#isEnableBlockingCalls <em>Enable Blocking Calls</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Enable Blocking Calls</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.CallMediator#isEnableBlockingCalls()
+	 * @see #getCallMediator()
+	 * @generated
+	 */
+	EAttribute getCallMediator_EnableBlockingCalls();
+
+	/**
 	 * Returns the meta object for the containment reference '{@link org.wso2.developerstudio.eclipse.gmf.esb.CallMediator#getEndpointRegistrykey <em>Endpoint Registrykey</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -43201,6 +43221,14 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 		 * @generated
 		 */
 		EAttribute CALL_MEDIATOR__ENDPOINT_TYPE = eINSTANCE.getCallMediator_EndpointType();
+
+		/**
+		 * The meta object literal for the '<em><b>Enable Blocking Calls</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CALL_MEDIATOR__ENABLE_BLOCKING_CALLS = eINSTANCE.getCallMediator_EnableBlockingCalls();
 
 		/**
 		 * The meta object literal for the '<em><b>Endpoint Registrykey</b></em>' containment reference feature.

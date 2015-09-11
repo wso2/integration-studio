@@ -652,7 +652,8 @@ public class AppfactoryApplicationListView extends ViewPart {
 					getTeamInfo(appInfo, new SubProgressMonitor(monitor, 25));
 					//getDbInfo(appInfo, monitor);/*currently not supporting*/
 					getDSInfo(appInfo, new SubProgressMonitor(monitor, 25));
-					appInfo.setLableState(2);		
+					appInfo.setLableState(2);
+					appDetailView.updateView(appInfo);
                 } else {
                     appInfo.setLableState(0);
                 }

@@ -95,7 +95,7 @@
 
 			<!-- JDBC : begin -->
 			<data modelProperty="jdbc.database-table" type="string"
-				fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController">Database Table</data>
+				fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController">Database Table*</data>
 			<data modelProperty="jdbc.connection-information" type="list"
 				fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController"
 				controlData="select=single;modify=non-editable;class=org.wso2.developerstudio.eclipse.artifact.messagestore.provider.JDBCConnectionInformationList">Connection Information*</data>

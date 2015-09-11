@@ -80,6 +80,10 @@ public class MessageStoreFieldController  extends AbstractFieldController  {
 			if (rabbitmq) {
 				CommonFieldValidator.validateRequiredField(value, "RabbitMQ Server Host Port cannot be empty");
 			}
+		} else if (key.equals(FIELD_JDBC_DATABASE_TABLE)) {
+			if (jdbc) {
+				CommonFieldValidator.validateRequiredField(value, "Database Table cannot be empty");
+			}
 		} else if (key.equals(FIELD_JDBC_DRIVER)) {
 			if (jdbc && !isCarbonDataSource) {
 				CommonFieldValidator.validateRequiredField(value, "JDBC Driver cannot be empty");

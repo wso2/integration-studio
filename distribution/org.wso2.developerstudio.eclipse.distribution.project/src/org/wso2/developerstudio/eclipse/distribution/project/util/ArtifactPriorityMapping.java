@@ -33,7 +33,8 @@ public class ArtifactPriorityMapping {
 		priority.put("synapse/local-entry", 2);
 
 		// lib type artifacts get third priority.
-		priority.put("lib/synapse/mediator", 3);
+		priority.put("lib/synapse/mediator", 3);		
+		priority.put("synapse/lib", 3);
 		priority.put("lib/registry/filter", 3);
 		priority.put("lib/library/bundle", 3);
 		priority.put("lib/dataservice/validator", 3);

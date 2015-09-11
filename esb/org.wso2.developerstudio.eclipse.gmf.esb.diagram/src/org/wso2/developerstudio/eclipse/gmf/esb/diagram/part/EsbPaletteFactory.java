@@ -198,7 +198,7 @@ public class EsbPaletteFactory {
 		paletteContainer.add(createDBReportMediator17CreationTool());
 		paletteContainer.add(createEnqueueMediator35CreationTool());
 		paletteContainer.add(createEventMediator8CreationTool());
-		paletteContainer.add(createRMSequenceMediator28CreationTool());
+		//paletteContainer.add(createRMSequenceMediator28CreationTool());
 		paletteContainer.add(createThrottleMediator27CreationTool());
 		paletteContainer.add(createTransactionMediator26CreationTool());
 

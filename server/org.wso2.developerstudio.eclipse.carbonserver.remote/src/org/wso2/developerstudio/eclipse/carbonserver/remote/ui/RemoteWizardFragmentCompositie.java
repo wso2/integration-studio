@@ -1,11 +1,14 @@
 package org.wso2.developerstudio.eclipse.carbonserver.remote.ui;
 
+import java.io.IOException;
+import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 
 import javax.net.ssl.HttpsURLConnection;
 
+import org.eclipse.core.runtime.Assert;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.swt.SWT;
@@ -25,6 +28,8 @@ import org.eclipse.wst.server.core.IServerWorkingCopy;
 import org.eclipse.wst.server.ui.wizard.IWizardHandle;
 import org.wso2.developerstudio.eclipse.carbonserver.base.utils.CarbonServerUtils;
 import org.wso2.developerstudio.eclipse.carbonserver.remote.internal.RemoteCarbonServer;
+
+import sun.org.mozilla.javascript.internal.ast.ThrowStatement;
 
 public class RemoteWizardFragmentCompositie extends Composite {
 	private Text txtUrl;
@@ -89,7 +94,7 @@ public class RemoteWizardFragmentCompositie extends Composite {
 					validateURL();
 					MessageDialog.openInformation(getShell(), title, "Server exists");
 				} catch (Exception e1) {
-					MessageDialog.openError(getShell(), title, e1.getMessage());
+					MessageDialog.openError(getShell(), title, e1.toString());
 				}
 			}
 		});
@@ -173,17 +178,12 @@ public class RemoteWizardFragmentCompositie extends Composite {
 		btnTestCredentialsButton.setText("Validate...");
 	}
 
-	private void validateURL() throws Exception{
-		URLConnection conn = getServerURL().openConnection();
-		
-		int responseCode;
-        try {
-            responseCode = ((HttpsURLConnection)conn).getResponseCode();
-        } catch (Exception e) {
-        	throw new Exception("Unable to connect with the server",e);
-        }
-		if (responseCode!=200 && responseCode!=302){
-        	throw new Exception("Server is has not fully started or incorrect URL");
+	private void validateURL() throws Exception {
+		HttpURLConnection conn = (HttpURLConnection) getServerURL().openConnection();
+		conn.connect();
+		int responseCode = conn.getResponseCode();
+		if (HttpURLConnection.HTTP_OK != responseCode && HttpURLConnection.HTTP_MOVED_TEMP != conn.getResponseCode()) {
+			throw new Exception("Server is has not fully started or incorrect URL");
 		}
 	}
 	

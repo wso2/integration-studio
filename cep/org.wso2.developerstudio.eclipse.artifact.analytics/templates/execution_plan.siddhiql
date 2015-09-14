@@ -1,0 +1,23 @@
+/* Enter a unique ExecutionPlan */
+@Plan:name('<execution-plan.name>')
+
+/* Enter a unique description for ExecutionPlan */
+-- @Plan:description('ExecutionPlan')
+
+/* define streams/tables and write queries here ... */
+
+@Import('twitterFeed:1.0.0')
+define stream TwitterFeed (company string, wordCount int);
+
+@Export('HighFrequentTweets:1.0.0')
+define stream HighFrequentTweets (company string, words long);
+
+
+
+partition with (company of TwitterFeed) 
+begin @info(name = 'query1') 
+from TwitterFeed#window.time(1 min)
+select company as company, sum(wordCount) as words 
+having words > 10
+insert into HighFrequentTweets;
+end ;

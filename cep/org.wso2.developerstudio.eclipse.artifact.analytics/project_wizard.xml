@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wizard>
+	<projectOptions title="Analytics Project Creation Options" 
+					description="Select how you would like to create your new project" 
+					error="Please select a method to create the project">
+		<option id="new.analyticsProject" default="true">Create New Analytics Project</option>
+		<option id="import.analyticsProject">New AnalyticsProject By Artifacts in Deployment Server (&lt;CARBON_HOME&gt;/repository/deployment/server/)</option>
+	</projectOptions>
+	
+	<projectOptionSettings>
+		<settings optionId="new.analyticsProject" 
+				  title="Analytics Project" 
+				  description="Create a new Analytics Project" 
+				  error="Please give a name to the Project">
+			<data modelProperty="project.name" type="string" fieldController="org.wso2.developerstudio.eclipse.artifact.analytics.validators.AnalyticsProjectFieldController">Analytics Project Name*</data>	  
+	
+			<projectNatures>
+				<nature>org.eclipse.jdt.core.javanature</nature>
+			</projectNatures>
+		</settings>
+		<settings optionId="import.analyticsProject" 
+				  title="Analytics Project" 
+				  description="Create an Analytics Project using existing Analytics Project" 
+				  error="Browse and select an existing Analytics Project">
+			<data modelProperty="project.name" type="string" fieldController="org.wso2.developerstudio.eclipse.artifact.analytics.validators.AnalyticsProjectFieldController">Analytics Project Name*</data>
+			<data modelProperty="project.location" type="dir" filter="server" fieldController="org.wso2.developerstudio.eclipse.artifact.analytics.validators.AnalyticsProjectFieldController">Deployment Server Location*</data>
+			<projectNatures>
+				<nature>org.eclipse.jdt.core.javanature</nature>
+			</projectNatures>
+		</settings>
+		
+	</projectOptionSettings>
+</wizard>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

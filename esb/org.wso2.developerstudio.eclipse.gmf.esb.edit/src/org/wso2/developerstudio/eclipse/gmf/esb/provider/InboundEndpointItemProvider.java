@@ -134,9 +134,8 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 			break;
 		case CUSTOM:
 			addClassPropertyDescriptor(object);
+			addInboundEndpointBehaviourPropertyDescriptor(object);
 			addIntervalPropertyDescriptor(object);
-			addSequentialPropertyDescriptor(object);
-			addCoordinationPropertyDescriptor(object);
 			addServiceParametersPropertyDescriptor(object);
 			break;
 		case HTTPS:
@@ -2169,6 +2168,28 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 	}
 
 	/**
+	 * This adds a property descriptor for the Inbound Endpoint Behaviour feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	protected void addInboundEndpointBehaviourPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_InboundEndpoint_inboundEndpointBehaviour_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_inboundEndpointBehaviour_feature", "_UI_InboundEndpoint_type"),
+				 EsbPackage.Literals.INBOUND_ENDPOINT__INBOUND_ENDPOINT_BEHAVIOUR,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 "Parameters",
+				 null));
+	}
+
+	/**
 	 * This adds a property descriptor for the Inbound Http Port feature. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 * 
@@ -3628,6 +3649,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 			case EsbPackage.INBOUND_ENDPOINT__TYPE:
 			case EsbPackage.INBOUND_ENDPOINT__CLASS:
 			case EsbPackage.INBOUND_ENDPOINT__PROTOCOL:
+			case EsbPackage.INBOUND_ENDPOINT__INBOUND_ENDPOINT_BEHAVIOUR:
 			case EsbPackage.INBOUND_ENDPOINT__INBOUND_HTTP_PORT:
 			case EsbPackage.INBOUND_ENDPOINT__INBOUND_WORKER_POOL_SIZE_CORE:
 			case EsbPackage.INBOUND_ENDPOINT__INBOUND_WORKER_POOL_SIZE_MAX:

@@ -58,7 +58,7 @@ public class BAMMediatorTransformer extends AbstractEsbNodeTransformer{
 		/*
 		 * Check subject.
 		 */
-		Assert.isTrue(subject instanceof BAMMediator, "Invalid subject.");
+		Assert.isTrue(subject instanceof BAMMediator, "Invalid subject."); //$NON-NLS-1$
 		BAMMediator visualBAMMediator = (BAMMediator) subject;
 
 		org.wso2.carbon.mediator.bam.BamMediator bamMediator = new org.wso2.carbon.mediator.bam.BamMediator();
@@ -66,7 +66,8 @@ public class BAMMediatorTransformer extends AbstractEsbNodeTransformer{
 		if (StringUtils.isNotEmpty(visualBAMMediator.getServerProfile())) {
 			bamMediator.setServerProfile(visualBAMMediator.getServerProfile());
 		} else {
-			throw new IllegalArgumentException("BAM Mediator Error : Server Profile Name is required");
+			throw new IllegalArgumentException(
+					Messages.BAMMediatorTransformer_Server_Profile_Name_Required_Error_Message);
 		}
 
 		if (StringUtils.isNotEmpty(visualBAMMediator.getStreamName())) {
@@ -76,10 +77,12 @@ public class BAMMediatorTransformer extends AbstractEsbNodeTransformer{
 				streamConfiguration.setVersion(visualBAMMediator.getStreamVersion());
 				bamMediator.getStream().setStreamConfiguration(streamConfiguration);
 			} else {
-				throw new IllegalArgumentException("BAM Mediator Error : Stream Version is required");
+				throw new IllegalArgumentException(
+						Messages.BAMMediatorTransformer_Stream_Version_Required_Error_Message);
 			}
 		} else {
-			throw new IllegalArgumentException("BAM Mediator Error : Stream Name is required");
+			throw new IllegalArgumentException(
+					Messages.BAMMediatorTransformer_Stream_Name_Required_Error_Message);
 		}
 		return bamMediator;
 	}

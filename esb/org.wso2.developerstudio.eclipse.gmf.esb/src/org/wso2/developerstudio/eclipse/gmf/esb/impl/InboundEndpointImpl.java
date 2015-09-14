@@ -35,6 +35,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.Enable;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 import org.wso2.developerstudio.eclipse.gmf.esb.FeedType;
 import org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint;
+import org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointBehaviourType;
 import org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointContainer;
 import org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointOnErrorSequenceInputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointOnErrorSequenceOutputConnector;
@@ -70,6 +71,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.VFSFileSort;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getType <em>Type</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getClass_ <em>Class</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getProtocol <em>Protocol</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getInboundEndpointBehaviour <em>Inbound Endpoint Behaviour</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getInboundHttpPort <em>Inbound Http Port</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getInboundWorkerPoolSizeCore <em>Inbound Worker Pool Size Core</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getInboundWorkerPoolSizeMax <em>Inbound Worker Pool Size Max</em>}</li>
@@ -361,6 +363,26 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * @ordered
 	 */
 	protected String protocol = PROTOCOL_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getInboundEndpointBehaviour() <em>Inbound Endpoint Behaviour</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInboundEndpointBehaviour()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final InboundEndpointBehaviourType INBOUND_ENDPOINT_BEHAVIOUR_EDEFAULT = InboundEndpointBehaviourType.POLLING_INBOUND_ENDPOINT;
+
+	/**
+	 * The cached value of the '{@link #getInboundEndpointBehaviour() <em>Inbound Endpoint Behaviour</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInboundEndpointBehaviour()
+	 * @generated
+	 * @ordered
+	 */
+	protected InboundEndpointBehaviourType inboundEndpointBehaviour = INBOUND_ENDPOINT_BEHAVIOUR_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getInboundHttpPort() <em>Inbound Http Port</em>}' attribute.
@@ -5508,6 +5530,27 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public InboundEndpointBehaviourType getInboundEndpointBehaviour() {
+		return inboundEndpointBehaviour;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setInboundEndpointBehaviour(InboundEndpointBehaviourType newInboundEndpointBehaviour) {
+		InboundEndpointBehaviourType oldInboundEndpointBehaviour = inboundEndpointBehaviour;
+		inboundEndpointBehaviour = newInboundEndpointBehaviour == null ? INBOUND_ENDPOINT_BEHAVIOUR_EDEFAULT : newInboundEndpointBehaviour;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__INBOUND_ENDPOINT_BEHAVIOUR, oldInboundEndpointBehaviour, inboundEndpointBehaviour));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public String getInboundHttpPort() {
 		return inboundHttpPort;
 	}
@@ -7107,6 +7150,8 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 				return getClass_();
 			case EsbPackage.INBOUND_ENDPOINT__PROTOCOL:
 				return getProtocol();
+			case EsbPackage.INBOUND_ENDPOINT__INBOUND_ENDPOINT_BEHAVIOUR:
+				return getInboundEndpointBehaviour();
 			case EsbPackage.INBOUND_ENDPOINT__INBOUND_HTTP_PORT:
 				return getInboundHttpPort();
 			case EsbPackage.INBOUND_ENDPOINT__INBOUND_WORKER_POOL_SIZE_CORE:
@@ -7458,6 +7503,9 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 				return;
 			case EsbPackage.INBOUND_ENDPOINT__PROTOCOL:
 				setProtocol((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__INBOUND_ENDPOINT_BEHAVIOUR:
+				setInboundEndpointBehaviour((InboundEndpointBehaviourType)newValue);
 				return;
 			case EsbPackage.INBOUND_ENDPOINT__INBOUND_HTTP_PORT:
 				setInboundHttpPort((String)newValue);
@@ -7967,6 +8015,9 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 			case EsbPackage.INBOUND_ENDPOINT__PROTOCOL:
 				setProtocol(PROTOCOL_EDEFAULT);
 				return;
+			case EsbPackage.INBOUND_ENDPOINT__INBOUND_ENDPOINT_BEHAVIOUR:
+				setInboundEndpointBehaviour(INBOUND_ENDPOINT_BEHAVIOUR_EDEFAULT);
+				return;
 			case EsbPackage.INBOUND_ENDPOINT__INBOUND_HTTP_PORT:
 				setInboundHttpPort(INBOUND_HTTP_PORT_EDEFAULT);
 				return;
@@ -8465,6 +8516,8 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 				return CLASS_EDEFAULT == null ? class_ != null : !CLASS_EDEFAULT.equals(class_);
 			case EsbPackage.INBOUND_ENDPOINT__PROTOCOL:
 				return PROTOCOL_EDEFAULT == null ? protocol != null : !PROTOCOL_EDEFAULT.equals(protocol);
+			case EsbPackage.INBOUND_ENDPOINT__INBOUND_ENDPOINT_BEHAVIOUR:
+				return inboundEndpointBehaviour != INBOUND_ENDPOINT_BEHAVIOUR_EDEFAULT;
 			case EsbPackage.INBOUND_ENDPOINT__INBOUND_HTTP_PORT:
 				return INBOUND_HTTP_PORT_EDEFAULT == null ? inboundHttpPort != null : !INBOUND_HTTP_PORT_EDEFAULT.equals(inboundHttpPort);
 			case EsbPackage.INBOUND_ENDPOINT__INBOUND_WORKER_POOL_SIZE_CORE:
@@ -8799,6 +8852,8 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 		result.append(class_);
 		result.append(", protocol: ");
 		result.append(protocol);
+		result.append(", inboundEndpointBehaviour: ");
+		result.append(inboundEndpointBehaviour);
 		result.append(", inboundHttpPort: ");
 		result.append(inboundHttpPort);
 		result.append(", inboundWorkerPoolSizeCore: ");

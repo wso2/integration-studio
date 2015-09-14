@@ -33,6 +33,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.ContentType;
 import org.wso2.developerstudio.eclipse.gmf.esb.Enable;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.FeedType;
+import org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointBehaviourType;
 import org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointParameter;
 import org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointType;
 import org.wso2.developerstudio.eclipse.gmf.esb.JMSCacheLevel;
@@ -202,6 +203,12 @@ public class InboundEndpointDeserializer extends
 					executeSetValueCommand(INBOUND_ENDPOINT__COORDINATION, true);
 				} else {
 					executeSetValueCommand(INBOUND_ENDPOINT__COORDINATION, false);
+				}
+			} else if (paramEntry.getKey().equals(InboundEndpointConstants.INBOUND_BEHAVIOUR)) {
+				if (paramEntry.getValue().equals("polling")) {
+					executeSetValueCommand(INBOUND_ENDPOINT__INBOUND_ENDPOINT_BEHAVIOUR, InboundEndpointBehaviourType.POLLING_INBOUND_ENDPOINT);
+				} else {
+					executeSetValueCommand(INBOUND_ENDPOINT__INBOUND_ENDPOINT_BEHAVIOUR, InboundEndpointBehaviourType.LISTENING_INBOUND_ENDPOINT);
 				}
 			} else if (paramEntry.getKey().equals(InboundEndpointConstants.VFS_FILE_URI)) {
 				executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_URI, paramEntry.getValue());

@@ -27,6 +27,8 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
 	private static final String BAM_MEDIATOR_DEFAULT_SERVER_PROFILE_NAME = "server_profile_name";
 	private static final String BAM_MEDIATOR_DEFAULT_STREAM_NAME = "stream_name";
 	private static final String BAM_MEDIATOR_DEFAULT_STREAM_VERSION = "1.0.0";
+	private static final String OAUTH_MEDIATOR_DEFAULT_USERNAME = "username";
+	private static final String OAUTH_MEDIATOR_DEFAULT_PASSWORD = "password";
 	/**
 	 * Creates the default factory implementation.
 	 * <!-- begin-user-doc -->
@@ -643,6 +645,8 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
 				return createProtocolFromString(eDataType, initialValue);
 			case EsbPackage.INBOUND_ENDPOINT_TYPE:
 				return createInboundEndpointTypeFromString(eDataType, initialValue);
+			case EsbPackage.INBOUND_ENDPOINT_BEHAVIOUR_TYPE:
+				return createInboundEndpointBehaviourTypeFromString(eDataType, initialValue);
 			case EsbPackage.CONTENT_TYPE:
 				return createContentTypeFromString(eDataType, initialValue);
 			case EsbPackage.TOPICS_TYPE:
@@ -907,6 +911,8 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
 				return convertProtocolToString(eDataType, instanceValue);
 			case EsbPackage.INBOUND_ENDPOINT_TYPE:
 				return convertInboundEndpointTypeToString(eDataType, instanceValue);
+			case EsbPackage.INBOUND_ENDPOINT_BEHAVIOUR_TYPE:
+				return convertInboundEndpointBehaviourTypeToString(eDataType, instanceValue);
 			case EsbPackage.CONTENT_TYPE:
 				return convertContentTypeToString(eDataType, instanceValue);
 			case EsbPackage.TOPICS_TYPE:
@@ -3700,6 +3706,8 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
 		OAuthMediatorImpl oAuthMediator = new OAuthMediatorImpl();
 		oAuthMediator.setInputConnector(createOAuthMediatorInputConnector());
 		oAuthMediator.setOutputConnector(createOAuthMediatorOutputConnector());
+		oAuthMediator.setUsername(OAUTH_MEDIATOR_DEFAULT_USERNAME);
+		oAuthMediator.setPassword(OAUTH_MEDIATOR_DEFAULT_PASSWORD);
 		return oAuthMediator;
 	}
 
@@ -6862,6 +6870,26 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
 	 * @generated
 	 */
 	public String convertInboundEndpointTypeToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public InboundEndpointBehaviourType createInboundEndpointBehaviourTypeFromString(EDataType eDataType, String initialValue) {
+		InboundEndpointBehaviourType result = InboundEndpointBehaviourType.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertInboundEndpointBehaviourTypeToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

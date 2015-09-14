@@ -35,6 +35,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getType <em>Type</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getClass_ <em>Class</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getProtocol <em>Protocol</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getInboundEndpointBehaviour <em>Inbound Endpoint Behaviour</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getInboundHttpPort <em>Inbound Http Port</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getInboundWorkerPoolSizeCore <em>Inbound Worker Pool Size Core</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getInboundWorkerPoolSizeMax <em>Inbound Worker Pool Size Max</em>}</li>
@@ -2613,6 +2614,35 @@ public interface InboundEndpoint extends EsbElement {
 	 * @generated
 	 */
 	void setProtocol(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Inbound Endpoint Behaviour</b></em>' attribute.
+	 * The literals are from the enumeration {@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointBehaviourType}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Inbound Endpoint Behaviour</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Inbound Endpoint Behaviour</em>' attribute.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointBehaviourType
+	 * @see #setInboundEndpointBehaviour(InboundEndpointBehaviourType)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_InboundEndpointBehaviour()
+	 * @model
+	 * @generated
+	 */
+	InboundEndpointBehaviourType getInboundEndpointBehaviour();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getInboundEndpointBehaviour <em>Inbound Endpoint Behaviour</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Inbound Endpoint Behaviour</em>' attribute.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointBehaviourType
+	 * @see #getInboundEndpointBehaviour()
+	 * @generated
+	 */
+	void setInboundEndpointBehaviour(InboundEndpointBehaviourType value);
 
 	/**
 	 * Returns the value of the '<em><b>Inbound Http Port</b></em>' attribute.

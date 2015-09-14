@@ -645,6 +645,10 @@
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//InboundEndpointType/rabbitmq"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//InboundEndpointType/feed"/>
     </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//InboundEndpointBehaviourType">
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//InboundEndpointBehaviourType/pollingInboundEndpoint"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//InboundEndpointBehaviourType/listeningInboundEndpoint"/>
+    </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//ContentType">
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//ContentType/xml"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//ContentType/json"/>
@@ -2276,6 +2280,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/type"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/class"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/protocol"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/inboundEndpointBehaviour"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/inboundHttpPort"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/inboundWorkerPoolSizeCore"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/inboundWorkerPoolSizeMax"/>

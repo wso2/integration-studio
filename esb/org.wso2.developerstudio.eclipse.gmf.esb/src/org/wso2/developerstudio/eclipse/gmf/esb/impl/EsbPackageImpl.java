@@ -330,6 +330,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.PropertyDataType;
 import org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediatorInputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediatorOutputConnector;
+import org.wso2.developerstudio.eclipse.gmf.esb.PropertyName;
 import org.wso2.developerstudio.eclipse.gmf.esb.PropertyScope;
 import org.wso2.developerstudio.eclipse.gmf.esb.PropertyValueType;
 import org.wso2.developerstudio.eclipse.gmf.esb.Protocol;
@@ -3207,6 +3208,13 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * @generated
 	 */
 	private EEnum propertyValueTypeEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum propertyNameEEnum = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -6603,6 +6611,15 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 */
 	public EAttribute getPropertyMediator_ValueStringCapturingGroup() {
 		return (EAttribute)propertyMediatorEClass.getEStructuralFeatures().get(15);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getPropertyMediator_NewPropertyName() {
+		return (EAttribute)propertyMediatorEClass.getEStructuralFeatures().get(16);
 	}
 
 	/**
@@ -17419,6 +17436,15 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EEnum getPropertyName() {
+		return propertyNameEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getEnrichSourceInlineType() {
 		return enrichSourceInlineTypeEEnum;
 	}
@@ -18757,6 +18783,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		createEAttribute(propertyMediatorEClass, PROPERTY_MEDIATOR__OM);
 		createEAttribute(propertyMediatorEClass, PROPERTY_MEDIATOR__VALUE_STRING_PATTERN);
 		createEAttribute(propertyMediatorEClass, PROPERTY_MEDIATOR__VALUE_STRING_CAPTURING_GROUP);
+		createEAttribute(propertyMediatorEClass, PROPERTY_MEDIATOR__NEW_PROPERTY_NAME);
 
 		propertyMediatorInputConnectorEClass = createEClass(PROPERTY_MEDIATOR_INPUT_CONNECTOR);
 
@@ -20241,6 +20268,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		propertyActionEEnum = createEEnum(PROPERTY_ACTION);
 		propertyScopeEEnum = createEEnum(PROPERTY_SCOPE);
 		propertyValueTypeEEnum = createEEnum(PROPERTY_VALUE_TYPE);
+		propertyNameEEnum = createEEnum(PROPERTY_NAME);
 		enrichSourceInlineTypeEEnum = createEEnum(ENRICH_SOURCE_INLINE_TYPE);
 		enrichSourceTypeEEnum = createEEnum(ENRICH_SOURCE_TYPE);
 		enrichTargetActionEEnum = createEEnum(ENRICH_TARGET_ACTION);
@@ -21086,7 +21114,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		initEClass(propertyMediatorEClass, PropertyMediator.class, "PropertyMediator", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getPropertyMediator_InputConnector(), this.getPropertyMediatorInputConnector(), null, "inputConnector", null, 0, 1, PropertyMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPropertyMediator_OutputConnector(), this.getPropertyMediatorOutputConnector(), null, "outputConnector", null, 0, 1, PropertyMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPropertyMediator_PropertyName(), ecorePackage.getEString(), "propertyName", "property_name", 0, 1, PropertyMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPropertyMediator_PropertyName(), this.getPropertyName(), "propertyName", "New Property...", 0, 1, PropertyMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPropertyMediator_PropertyDataType(), this.getPropertyDataType(), "propertyDataType", "STRING", 0, 1, PropertyMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPropertyMediator_PropertyAction(), this.getPropertyAction(), "propertyAction", null, 0, 1, PropertyMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPropertyMediator_PropertyScope(), this.getPropertyScope(), "propertyScope", null, 0, 1, PropertyMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -21100,6 +21128,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		initEAttribute(getPropertyMediator_OM(), ecorePackage.getEString(), "OM", "<value/>", 0, 1, PropertyMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPropertyMediator_ValueStringPattern(), ecorePackage.getEString(), "valueStringPattern", null, 0, 1, PropertyMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPropertyMediator_ValueStringCapturingGroup(), ecorePackage.getEInt(), "valueStringCapturingGroup", "0", 0, 1, PropertyMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPropertyMediator_NewPropertyName(), ecorePackage.getEString(), "newPropertyName", "", 0, 1, PropertyMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(propertyMediatorInputConnectorEClass, PropertyMediatorInputConnector.class, "PropertyMediatorInputConnector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -22698,6 +22727,58 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		initEEnum(propertyValueTypeEEnum, PropertyValueType.class, "PropertyValueType");
 		addEEnumLiteral(propertyValueTypeEEnum, PropertyValueType.LITERAL);
 		addEEnumLiteral(propertyValueTypeEEnum, PropertyValueType.EXPRESSION);
+
+		initEEnum(propertyNameEEnum, PropertyName.class, "PropertyName");
+		addEEnumLiteral(propertyNameEEnum, PropertyName.NEW_PROPERTY_NAME);
+		addEEnumLiteral(propertyNameEEnum, PropertyName.PRESERVE_WS_ADDRESSING);
+		addEEnumLiteral(propertyNameEEnum, PropertyName.RESPONSE);
+		addEEnumLiteral(propertyNameEEnum, PropertyName.OUT_ONLY);
+		addEEnumLiteral(propertyNameEEnum, PropertyName.ERROR_CODE);
+		addEEnumLiteral(propertyNameEEnum, PropertyName.ERROR_MESSAGE);
+		addEEnumLiteral(propertyNameEEnum, PropertyName.ERROR_DETAIL);
+		addEEnumLiteral(propertyNameEEnum, PropertyName.ERROR_EXCEPTION);
+		addEEnumLiteral(propertyNameEEnum, PropertyName.TRANSPORT_HEADERS);
+		addEEnumLiteral(propertyNameEEnum, PropertyName.MESSAGE_TYPE);
+		addEEnumLiteral(propertyNameEEnum, PropertyName.CONTENT_TYPE);
+		addEEnumLiteral(propertyNameEEnum, PropertyName.DISABLE_ADDRESSING_FOR_OUT_MESSAGES);
+		addEEnumLiteral(propertyNameEEnum, PropertyName.DISABLE_SMOOKS_RESULT_PAYLOAD);
+		addEEnumLiteral(propertyNameEEnum, PropertyName.CLIENT_API_NON_BLOCKING);
+		addEEnumLiteral(propertyNameEEnum, PropertyName.TRANSPORT_NON_BLOCKING);
+		addEEnumLiteral(propertyNameEEnum, PropertyName.TRANSPORT_IN_NAME);
+		addEEnumLiteral(propertyNameEEnum, PropertyName.PRESERVE_PROCESSED_HEADERS);
+		addEEnumLiteral(propertyNameEEnum, PropertyName.SERVER_IP);
+		addEEnumLiteral(propertyNameEEnum, PropertyName.FORCE_ERROR_ON_SOAP_FAULT);
+		addEEnumLiteral(propertyNameEEnum, PropertyName.POST_TO_URI);
+		addEEnumLiteral(propertyNameEEnum, PropertyName.FORCE_SC_ACCEPTED);
+		addEEnumLiteral(propertyNameEEnum, PropertyName.DISABLE_CHUNKING);
+		addEEnumLiteral(propertyNameEEnum, PropertyName.NO_ENTITY_BODY);
+		addEEnumLiteral(propertyNameEEnum, PropertyName.FORCE_HTTP_10);
+		addEEnumLiteral(propertyNameEEnum, PropertyName.HTTP_SC);
+		addEEnumLiteral(propertyNameEEnum, PropertyName.FAULTS_AS_HTTP_200);
+		addEEnumLiteral(propertyNameEEnum, PropertyName.NO_KEEPALIVE);
+		addEEnumLiteral(propertyNameEEnum, PropertyName.REST_URL_POSTFIX);
+		addEEnumLiteral(propertyNameEEnum, PropertyName.REQUEST_HOST_HEADER);
+		addEEnumLiteral(propertyNameEEnum, PropertyName.FORCE_POST_PUT_NOBODY);
+		addEEnumLiteral(propertyNameEEnum, PropertyName.FORCE_HTTP_CONTENT_LENGTH);
+		addEEnumLiteral(propertyNameEEnum, PropertyName.COPY_CONTENT_LENGTH_FROM_INCOMING);
+		addEEnumLiteral(propertyNameEEnum, PropertyName.TO);
+		addEEnumLiteral(propertyNameEEnum, PropertyName.FROM);
+		addEEnumLiteral(propertyNameEEnum, PropertyName.ACTION);
+		addEEnumLiteral(propertyNameEEnum, PropertyName.REPLY_TO);
+		addEEnumLiteral(propertyNameEEnum, PropertyName.MESSAGE_ID);
+		addEEnumLiteral(propertyNameEEnum, PropertyName.RELATES_TO);
+		addEEnumLiteral(propertyNameEEnum, PropertyName.FAULT_TO);
+		addEEnumLiteral(propertyNameEEnum, PropertyName.CACHE_LEVEL);
+		addEEnumLiteral(propertyNameEEnum, PropertyName.CONCURRENT_CONSUMERS);
+		addEEnumLiteral(propertyNameEEnum, PropertyName.HTTP_ETAG);
+		addEEnumLiteral(propertyNameEEnum, PropertyName.JMS_COORELATION_ID);
+		addEEnumLiteral(propertyNameEEnum, PropertyName.MAX_CONCURRENT_CONSUMERS);
+		addEEnumLiteral(propertyNameEEnum, PropertyName.MERCURY_SEQUENCE_KEY);
+		addEEnumLiteral(propertyNameEEnum, PropertyName.MERCURY_LAST_MESSAGE);
+		addEEnumLiteral(propertyNameEEnum, PropertyName.SYSTEM_DATE);
+		addEEnumLiteral(propertyNameEEnum, PropertyName.SYSTEM_TIME);
+		addEEnumLiteral(propertyNameEEnum, PropertyName.MESSAGE_FORMAT);
+		addEEnumLiteral(propertyNameEEnum, PropertyName.OPERATION_NAME);
 
 		initEEnum(enrichSourceInlineTypeEEnum, EnrichSourceInlineType.class, "EnrichSourceInlineType");
 		addEEnumLiteral(enrichSourceInlineTypeEEnum, EnrichSourceInlineType.CONTENT);

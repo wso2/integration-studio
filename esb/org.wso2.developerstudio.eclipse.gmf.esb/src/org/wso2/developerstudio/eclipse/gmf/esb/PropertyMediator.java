@@ -31,6 +31,7 @@ package org.wso2.developerstudio.eclipse.gmf.esb;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#getOM <em>OM</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#getValueStringPattern <em>Value String Pattern</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#getValueStringCapturingGroup <em>Value String Capturing Group</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#getNewPropertyName <em>New Property Name</em>}</li>
  * </ul>
  * </p>
  *
@@ -41,7 +42,8 @@ package org.wso2.developerstudio.eclipse.gmf.esb;
 public interface PropertyMediator extends Mediator {
 	/**
 	 * Returns the value of the '<em><b>Property Name</b></em>' attribute.
-	 * The default value is <code>"property_name"</code>.
+	 * The default value is <code>"New Property..."</code>.
+	 * The literals are from the enumeration {@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyName}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Property Name</em>' attribute isn't clear,
@@ -49,22 +51,24 @@ public interface PropertyMediator extends Mediator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Property Name</em>' attribute.
-	 * @see #setPropertyName(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.PropertyName
+	 * @see #setPropertyName(PropertyName)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getPropertyMediator_PropertyName()
-	 * @model default="property_name"
+	 * @model default="New Property..."
 	 * @generated
 	 */
-	String getPropertyName();
+	PropertyName getPropertyName();
 
 	/**
 	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#getPropertyName <em>Property Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Property Name</em>' attribute.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.PropertyName
 	 * @see #getPropertyName()
 	 * @generated
 	 */
-	void setPropertyName(String value);
+	void setPropertyName(PropertyName value);
 
 	/**
 	 * Returns the value of the '<em><b>Property Data Type</b></em>' attribute.
@@ -420,6 +424,33 @@ public interface PropertyMediator extends Mediator {
 	 * @generated
 	 */
 	void setValueStringCapturingGroup(int value);
+
+	/**
+	 * Returns the value of the '<em><b>New Property Name</b></em>' attribute.
+	 * The default value is <code>""</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>New Property Name</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>New Property Name</em>' attribute.
+	 * @see #setNewPropertyName(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getPropertyMediator_NewPropertyName()
+	 * @model default=""
+	 * @generated
+	 */
+	String getNewPropertyName();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#getNewPropertyName <em>New Property Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>New Property Name</em>' attribute.
+	 * @see #getNewPropertyName()
+	 * @generated
+	 */
+	void setNewPropertyName(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Input Connector</b></em>' containment reference.

@@ -12,24 +12,16 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EStructuralFeature;
-
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
-import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
-import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
-import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 import org.wso2.developerstudio.eclipse.gmf.esb.PropertyAction;
-import org.wso2.developerstudio.eclipse.gmf.esb.PropertyDataType;
 import org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator;
+import org.wso2.developerstudio.eclipse.gmf.esb.PropertyName;
 import org.wso2.developerstudio.eclipse.gmf.esb.PropertyValueType;
 
 /**
@@ -67,7 +59,10 @@ public class PropertyMediatorItemProvider
 		super.getPropertyDescriptors(object);
 		
 		addPropertyNamePropertyDescriptor(object);
-		addPropertyActionPropertyDescriptor(object);				
+		if(property.getPropertyName().equals(PropertyName.NEW_PROPERTY_NAME)){
+			addNewPropertyNamePropertyDescriptor(object);
+		}
+		addPropertyActionPropertyDescriptor(object);	
 						
 		if (property.getPropertyAction().equals(PropertyAction.SET)) {
 			addValueTypePropertyDescriptor(object);
@@ -412,6 +407,28 @@ public class PropertyMediatorItemProvider
 				 null));
 	}
 	
+	/**
+	 * This adds a property descriptor for the New Property Name feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addNewPropertyNamePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_PropertyMediator_newPropertyName_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_PropertyMediator_newPropertyName_feature", "_UI_PropertyMediator_type"),
+				 EsbPackage.Literals.PROPERTY_MEDIATOR__NEW_PROPERTY_NAME,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
 	protected void addValueExpressionPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add
             (createItemPropertyDescriptor
@@ -483,7 +500,8 @@ public class PropertyMediatorItemProvider
 	
 	@Override
 	public String getText(Object object) {
-		String label = ((PropertyMediator)object).getPropertyName();
+		PropertyName labelValue = ((PropertyMediator)object).getPropertyName();
+		String label = labelValue == null ? null : labelValue.toString();
 		return label == null || label.length() == 0 ?
 			getString("_UI_PropertyMediator_type") :
 			getString("_UI_PropertyMediator_type") + " " + label;
@@ -515,6 +533,7 @@ public class PropertyMediatorItemProvider
 			case EsbPackage.PROPERTY_MEDIATOR__OM:
 			case EsbPackage.PROPERTY_MEDIATOR__VALUE_STRING_PATTERN:
 			case EsbPackage.PROPERTY_MEDIATOR__VALUE_STRING_CAPTURING_GROUP:
+			case EsbPackage.PROPERTY_MEDIATOR__NEW_PROPERTY_NAME:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case EsbPackage.PROPERTY_MEDIATOR__INPUT_CONNECTOR:
@@ -553,5 +572,4 @@ public class PropertyMediatorItemProvider
 				(EsbPackage.Literals.PROPERTY_MEDIATOR__VALUE_EXPRESSION,
 				 EsbFactory.eINSTANCE.createNamespacedProperty()));
 	}
-
 }

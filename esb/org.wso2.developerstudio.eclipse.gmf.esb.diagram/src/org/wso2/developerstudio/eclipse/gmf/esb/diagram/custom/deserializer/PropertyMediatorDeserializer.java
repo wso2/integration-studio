@@ -16,17 +16,7 @@
 
 package org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer;
 
-import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.PROPERTY_MEDIATOR__PROPERTY_ACTION;
-import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.PROPERTY_MEDIATOR__PROPERTY_DATA_TYPE;
-import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.PROPERTY_MEDIATOR__PROPERTY_NAME;
-import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.PROPERTY_MEDIATOR__PROPERTY_SCOPE;
-import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.PROPERTY_MEDIATOR__VALUE_EXPRESSION;
-import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.PROPERTY_MEDIATOR__VALUE;
-import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.PROPERTY_MEDIATOR__VALUE_STRING_PATTERN;
-import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.PROPERTY_MEDIATOR__VALUE_TYPE;
-import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.PROPERTY_MEDIATOR__VALUE_STRING_CAPTURING_GROUP;
-import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.PROPERTY_MEDIATOR__OM;
-import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.PROPERTY_MEDIATOR__BOOLEAN;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.*;
 
 import java.util.regex.Pattern;
 
@@ -40,6 +30,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.PropertyAction;
 import org.wso2.developerstudio.eclipse.gmf.esb.PropertyDataType;
 import org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator;
+import org.wso2.developerstudio.eclipse.gmf.esb.PropertyName;
 import org.wso2.developerstudio.eclipse.gmf.esb.PropertyScope;
 import org.wso2.developerstudio.eclipse.gmf.esb.PropertyValueType;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
@@ -65,7 +56,13 @@ public class PropertyMediatorDeserializer extends
 		if (propertyMediator.getName() != null) {
 
 			//vishualProp.setPropertyName(propertyMediator.getName());
-			executeSetValueCommand(PROPERTY_MEDIATOR__PROPERTY_NAME, propertyMediator.getName());
+			PropertyName propertyName = PropertyName.get(propertyMediator.getName());
+			if(propertyName != null){
+				executeSetValueCommand(PROPERTY_MEDIATOR__PROPERTY_NAME, PropertyName.get(propertyMediator.getName()));
+			}else{
+				executeSetValueCommand(PROPERTY_MEDIATOR__PROPERTY_NAME, PropertyName.NEW_PROPERTY_NAME);
+				executeSetValueCommand(PROPERTY_MEDIATOR__NEW_PROPERTY_NAME, propertyMediator.getName());
+			}
 		}
 		
 		String scope = propertyMediator.getScope();

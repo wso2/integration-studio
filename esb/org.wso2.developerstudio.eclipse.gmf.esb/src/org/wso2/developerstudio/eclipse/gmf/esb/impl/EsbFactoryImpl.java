@@ -465,6 +465,8 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
 				return createPropertyScopeFromString(eDataType, initialValue);
 			case EsbPackage.PROPERTY_VALUE_TYPE:
 				return createPropertyValueTypeFromString(eDataType, initialValue);
+			case EsbPackage.PROPERTY_NAME:
+				return createPropertyNameFromString(eDataType, initialValue);
 			case EsbPackage.ENRICH_SOURCE_INLINE_TYPE:
 				return createEnrichSourceInlineTypeFromString(eDataType, initialValue);
 			case EsbPackage.ENRICH_SOURCE_TYPE:
@@ -727,6 +729,8 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
 				return convertPropertyScopeToString(eDataType, instanceValue);
 			case EsbPackage.PROPERTY_VALUE_TYPE:
 				return convertPropertyValueTypeToString(eDataType, instanceValue);
+			case EsbPackage.PROPERTY_NAME:
+				return convertPropertyNameToString(eDataType, instanceValue);
 			case EsbPackage.ENRICH_SOURCE_INLINE_TYPE:
 				return convertEnrichSourceInlineTypeToString(eDataType, instanceValue);
 			case EsbPackage.ENRICH_SOURCE_TYPE:
@@ -5078,6 +5082,26 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
 	 * @generated
 	 */
 	public String convertPropertyValueTypeToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public PropertyName createPropertyNameFromString(EDataType eDataType, String initialValue) {
+		PropertyName result = PropertyName.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertPropertyNameToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

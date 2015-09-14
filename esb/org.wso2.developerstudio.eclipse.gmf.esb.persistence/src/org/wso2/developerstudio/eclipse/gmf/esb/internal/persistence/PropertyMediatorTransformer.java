@@ -50,6 +50,7 @@ import org.wso2.developerstudio.eclipse.logging.core.Logger;
  */
 public class PropertyMediatorTransformer extends AbstractEsbNodeTransformer {
 	
+	private final String NEW_PROPERTY = "New Property...";
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 	/**
 	 * {@inheritDoc}
@@ -87,7 +88,7 @@ public class PropertyMediatorTransformer extends AbstractEsbNodeTransformer {
 		}		
 	}
 	
-	private org.apache.synapse.mediators.builtin.PropertyMediator createPropertyMediator(EsbNode subject) throws XMLStreamException, JaxenException{
+	private org.apache.synapse.mediators.builtin.PropertyMediator createPropertyMediator(EsbNode subject) throws XMLStreamException, JaxenException, TransformerException{
 		// Check subject.
 		Assert.isTrue(subject instanceof PropertyMediator, "Invalid subject.");
 		PropertyMediator visualProp = (PropertyMediator) subject;
@@ -96,9 +97,18 @@ public class PropertyMediatorTransformer extends AbstractEsbNodeTransformer {
 		org.apache.synapse.mediators.builtin.PropertyMediator propMediator = new org.apache.synapse.mediators.builtin.PropertyMediator();
 		setCommonProperties(propMediator, visualProp);
 		{			
-			String pName = visualProp.getPropertyName();
+			String pName = visualProp.getPropertyName().getLiteral();
 			if (pName != null && !pName.equals("")) {
-				propMediator.setName(visualProp.getPropertyName());
+				if(NEW_PROPERTY.equals(pName)){
+					String newPropertyName = visualProp.getNewPropertyName();
+					if(newPropertyName != null && !"".equals(newPropertyName)){						
+						propMediator.setName(newPropertyName);
+					}else{
+						throw new TransformerException("Property name cannot be empty in Property mediator. Please specify a property name");
+					}
+				}else{
+					propMediator.setName(visualProp.getPropertyName().getLiteral());
+				}				
 			}
 			// Action.
 			switch (visualProp.getPropertyAction()) {

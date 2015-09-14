@@ -21,6 +21,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.PropertyDataType;
 import org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediatorInputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediatorOutputConnector;
+import org.wso2.developerstudio.eclipse.gmf.esb.PropertyName;
 import org.wso2.developerstudio.eclipse.gmf.esb.PropertyScope;
 import org.wso2.developerstudio.eclipse.gmf.esb.PropertyValueType;
 
@@ -47,6 +48,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.PropertyValueType;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.PropertyMediatorImpl#getOM <em>OM</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.PropertyMediatorImpl#getValueStringPattern <em>Value String Pattern</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.PropertyMediatorImpl#getValueStringCapturingGroup <em>Value String Capturing Group</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.PropertyMediatorImpl#getNewPropertyName <em>New Property Name</em>}</li>
  * </ul>
  * </p>
  *
@@ -81,7 +83,7 @@ public class PropertyMediatorImpl extends MediatorImpl implements PropertyMediat
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String PROPERTY_NAME_EDEFAULT = "property_name";
+	protected static final PropertyName PROPERTY_NAME_EDEFAULT = PropertyName.NEW_PROPERTY_NAME;
 
 	/**
 	 * The cached value of the '{@link #getPropertyName() <em>Property Name</em>}' attribute.
@@ -91,7 +93,7 @@ public class PropertyMediatorImpl extends MediatorImpl implements PropertyMediat
 	 * @generated
 	 * @ordered
 	 */
-	protected String propertyName = PROPERTY_NAME_EDEFAULT;
+	protected PropertyName propertyName = PROPERTY_NAME_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getPropertyDataType() <em>Property Data Type</em>}' attribute.
@@ -344,6 +346,26 @@ public class PropertyMediatorImpl extends MediatorImpl implements PropertyMediat
 	protected int valueStringCapturingGroup = VALUE_STRING_CAPTURING_GROUP_EDEFAULT;
 
 	/**
+	 * The default value of the '{@link #getNewPropertyName() <em>New Property Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getNewPropertyName()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String NEW_PROPERTY_NAME_EDEFAULT = "";
+
+	/**
+	 * The cached value of the '{@link #getNewPropertyName() <em>New Property Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getNewPropertyName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String newPropertyName = NEW_PROPERTY_NAME_EDEFAULT;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated NOT
@@ -374,7 +396,7 @@ public class PropertyMediatorImpl extends MediatorImpl implements PropertyMediat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getPropertyName() {
+	public PropertyName getPropertyName() {
 		return propertyName;
 	}
 
@@ -383,9 +405,9 @@ public class PropertyMediatorImpl extends MediatorImpl implements PropertyMediat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setPropertyName(String newPropertyName) {
-		String oldPropertyName = propertyName;
-		propertyName = newPropertyName;
+	public void setPropertyName(PropertyName newPropertyName) {
+		PropertyName oldPropertyName = propertyName;
+		propertyName = newPropertyName == null ? PROPERTY_NAME_EDEFAULT : newPropertyName;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.PROPERTY_MEDIATOR__PROPERTY_NAME, oldPropertyName, propertyName));
 	}
@@ -690,6 +712,27 @@ public class PropertyMediatorImpl extends MediatorImpl implements PropertyMediat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getNewPropertyName() {
+		return newPropertyName;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setNewPropertyName(String newNewPropertyName) {
+		String oldNewPropertyName = newPropertyName;
+		newPropertyName = newNewPropertyName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.PROPERTY_MEDIATOR__NEW_PROPERTY_NAME, oldNewPropertyName, newPropertyName));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public PropertyMediatorInputConnector getInputConnector() {
 		return inputConnector;
 	}
@@ -831,6 +874,8 @@ public class PropertyMediatorImpl extends MediatorImpl implements PropertyMediat
 				return getValueStringPattern();
 			case EsbPackage.PROPERTY_MEDIATOR__VALUE_STRING_CAPTURING_GROUP:
 				return getValueStringCapturingGroup();
+			case EsbPackage.PROPERTY_MEDIATOR__NEW_PROPERTY_NAME:
+				return getNewPropertyName();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -851,7 +896,7 @@ public class PropertyMediatorImpl extends MediatorImpl implements PropertyMediat
 				setOutputConnector((PropertyMediatorOutputConnector)newValue);
 				return;
 			case EsbPackage.PROPERTY_MEDIATOR__PROPERTY_NAME:
-				setPropertyName((String)newValue);
+				setPropertyName((PropertyName)newValue);
 				return;
 			case EsbPackage.PROPERTY_MEDIATOR__PROPERTY_DATA_TYPE:
 				setPropertyDataType((PropertyDataType)newValue);
@@ -891,6 +936,9 @@ public class PropertyMediatorImpl extends MediatorImpl implements PropertyMediat
 				return;
 			case EsbPackage.PROPERTY_MEDIATOR__VALUE_STRING_CAPTURING_GROUP:
 				setValueStringCapturingGroup((Integer)newValue);
+				return;
+			case EsbPackage.PROPERTY_MEDIATOR__NEW_PROPERTY_NAME:
+				setNewPropertyName((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -953,6 +1001,9 @@ public class PropertyMediatorImpl extends MediatorImpl implements PropertyMediat
 			case EsbPackage.PROPERTY_MEDIATOR__VALUE_STRING_CAPTURING_GROUP:
 				setValueStringCapturingGroup(VALUE_STRING_CAPTURING_GROUP_EDEFAULT);
 				return;
+			case EsbPackage.PROPERTY_MEDIATOR__NEW_PROPERTY_NAME:
+				setNewPropertyName(NEW_PROPERTY_NAME_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -971,7 +1022,7 @@ public class PropertyMediatorImpl extends MediatorImpl implements PropertyMediat
 			case EsbPackage.PROPERTY_MEDIATOR__OUTPUT_CONNECTOR:
 				return outputConnector != null;
 			case EsbPackage.PROPERTY_MEDIATOR__PROPERTY_NAME:
-				return PROPERTY_NAME_EDEFAULT == null ? propertyName != null : !PROPERTY_NAME_EDEFAULT.equals(propertyName);
+				return propertyName != PROPERTY_NAME_EDEFAULT;
 			case EsbPackage.PROPERTY_MEDIATOR__PROPERTY_DATA_TYPE:
 				return propertyDataType != PROPERTY_DATA_TYPE_EDEFAULT;
 			case EsbPackage.PROPERTY_MEDIATOR__PROPERTY_ACTION:
@@ -998,6 +1049,8 @@ public class PropertyMediatorImpl extends MediatorImpl implements PropertyMediat
 				return VALUE_STRING_PATTERN_EDEFAULT == null ? valueStringPattern != null : !VALUE_STRING_PATTERN_EDEFAULT.equals(valueStringPattern);
 			case EsbPackage.PROPERTY_MEDIATOR__VALUE_STRING_CAPTURING_GROUP:
 				return valueStringCapturingGroup != VALUE_STRING_CAPTURING_GROUP_EDEFAULT;
+			case EsbPackage.PROPERTY_MEDIATOR__NEW_PROPERTY_NAME:
+				return NEW_PROPERTY_NAME_EDEFAULT == null ? newPropertyName != null : !NEW_PROPERTY_NAME_EDEFAULT.equals(newPropertyName);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -1039,6 +1092,8 @@ public class PropertyMediatorImpl extends MediatorImpl implements PropertyMediat
 		result.append(valueStringPattern);
 		result.append(", valueStringCapturingGroup: ");
 		result.append(valueStringCapturingGroup);
+		result.append(", newPropertyName: ");
+		result.append(newPropertyName);
 		result.append(')');
 		return result.toString();
 	}

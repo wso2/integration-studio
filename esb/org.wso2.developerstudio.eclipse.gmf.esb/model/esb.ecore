@@ -568,8 +568,8 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="outputConnector" eType="#//PropertyMediatorOutputConnector"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="propertyName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
-        defaultValueLiteral="property_name"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="propertyName" eType="#//PropertyName"
+        defaultValueLiteral="New Property..."/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="propertyDataType" eType="#//PropertyDataType"
         defaultValueLiteral="STRING"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="propertyAction" eType="#//PropertyAction"/>
@@ -589,6 +589,8 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="valueStringPattern" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="valueStringCapturingGroup"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" defaultValueLiteral="0"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="newPropertyName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral=""/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PropertyMediatorInputConnector" eSuperTypes="#//InputConnector"/>
   <eClassifiers xsi:type="ecore:EClass" name="PropertyMediatorOutputConnector" eSuperTypes="#//OutputConnector"/>
@@ -616,6 +618,58 @@
   <eClassifiers xsi:type="ecore:EEnum" name="PropertyValueType">
     <eLiterals name="LITERAL"/>
     <eLiterals name="EXPRESSION" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="PropertyName">
+    <eLiterals name="newPropertyName" literal="New Property..."/>
+    <eLiterals name="PRESERVE_WS_ADDRESSING" value="1" literal="PRESERVE_WS_ADDRESSING"/>
+    <eLiterals name="RESPONSE" value="2" literal="RESPONSE"/>
+    <eLiterals name="OUT_ONLY" value="3" literal="OUT_ONLY"/>
+    <eLiterals name="ERROR_CODE" value="4" literal="ERROR_CODE"/>
+    <eLiterals name="ERROR_MESSAGE" value="5" literal="ERROR_MESSAGE"/>
+    <eLiterals name="ERROR_DETAIL" value="6" literal="ERROR_DETAIL"/>
+    <eLiterals name="ERROR_EXCEPTION" value="7" literal="ERROR_EXCEPTION"/>
+    <eLiterals name="TRANSPORT_HEADERS" value="8" literal="TRANSPORT_HEADERS"/>
+    <eLiterals name="messageType" value="9" literal="messageType"/>
+    <eLiterals name="ContentType" value="10" literal="ContentType"/>
+    <eLiterals name="disableAddressingForOutMessages" value="11" literal="disableAddressingForOutMessages"/>
+    <eLiterals name="DISABLE_SMOOKS_RESULT_PAYLOAD" value="12" literal="DISABLE_SMOOKS_RESULT_PAYLOAD"/>
+    <eLiterals name="ClientApiNonBlocking" value="13" literal="ClientApiNonBlocking"/>
+    <eLiterals name="transportNonBlocking" value="14" literal="transportNonBlocking"/>
+    <eLiterals name="TRANSPORT_IN_NAME" value="15" literal="TRANSPORT_IN_NAME"/>
+    <eLiterals name="preserveProcessedHeaders" value="16" literal="preserveProcessedHeaders"/>
+    <eLiterals name="SERVER_IP" value="17" literal="SERVER_IP"/>
+    <eLiterals name="FORCE_ERROR_ON_SOAP_FAULT" value="18" literal="FORCE_ERROR_ON_SOAP_FAULT"/>
+    <eLiterals name="POST_TO_URI" value="19" literal="POST_TO_URI"/>
+    <eLiterals name="FORCE_SC_ACCEPTED" value="20" literal="FORCE_SC_ACCEPTED"/>
+    <eLiterals name="DISABLE_CHUNKING" value="21" literal="DISABLE_CHUNKING"/>
+    <eLiterals name="NO_ENTITY_BODY" value="22" literal="NO_ENTITY_BODY"/>
+    <eLiterals name="FORCE_HTTP_1_0" value="23" literal="FORCE_HTTP_1_0"/>
+    <eLiterals name="HTTP_SC" value="24" literal="HTTP_SC"/>
+    <eLiterals name="FAULTS_AS_HTTP_200" value="25" literal="FAULTS_AS_HTTP_200"/>
+    <eLiterals name="NO_KEEPALIVE" value="26" literal="NO_KEEPALIVE"/>
+    <eLiterals name="REST_URL_POSTFIX" value="27" literal="REST_URL_POSTFIX"/>
+    <eLiterals name="REQUEST_HOST_HEADER" value="28" literal="REQUEST_HOST_HEADER"/>
+    <eLiterals name="FORCE_POST_PUT_NOBODY" value="29" literal="FORCE_POST_PUT_NOBODY"/>
+    <eLiterals name="FORCE_HTTP_CONTENT_LENGTH" value="30" literal="FORCE_HTTP_CONTENT_LENGTH"/>
+    <eLiterals name="COPY_CONTENT_LENGTH_FROM_INCOMING" value="31" literal="COPY_CONTENT_LENGTH_FROM_INCOMING"/>
+    <eLiterals name="To" value="32" literal="To"/>
+    <eLiterals name="From" value="33" literal="From"/>
+    <eLiterals name="Action" value="34" literal="Action"/>
+    <eLiterals name="ReplyTo" value="35" literal="ReplyTo"/>
+    <eLiterals name="MessageID" value="36" literal="MessageID"/>
+    <eLiterals name="RelatesTo" value="37" literal="RelatesTo"/>
+    <eLiterals name="FaultTo" value="38" literal="FaultTo"/>
+    <eLiterals name="CacheLevel" value="39" literal="CacheLevel"/>
+    <eLiterals name="ConcurrentConsumers" value="40" literal="ConcurrentConsumers"/>
+    <eLiterals name="HTTP_ETAG" value="41" literal="HTTP_ETAG"/>
+    <eLiterals name="JMS_COORELATION_ID" value="42" literal="JMS_COORELATION_ID"/>
+    <eLiterals name="MaxConcurrentConsumers" value="43" literal="MaxConcurrentConsumers"/>
+    <eLiterals name="MercurySequenceKey" value="44" literal="MercurySequenceKey"/>
+    <eLiterals name="MercuryLastMessage" value="45" literal="MercuryLastMessage"/>
+    <eLiterals name="SYSTEM_DATE" value="47" literal="SYSTEM_DATE"/>
+    <eLiterals name="SYSTEM_TIME" value="48" literal="SYSTEM_TIME"/>
+    <eLiterals name="MESSAGE_FORMAT" value="49" literal="MESSAGE_FORMAT"/>
+    <eLiterals name="OperationName" value="50" literal="OperationName"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="NamespacedProperty" eSuperTypes="#//EsbNode">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="prettyName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"

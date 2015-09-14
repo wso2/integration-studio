@@ -27,6 +27,8 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
 	private static final String BAM_MEDIATOR_DEFAULT_SERVER_PROFILE_NAME = "server_profile_name";
 	private static final String BAM_MEDIATOR_DEFAULT_STREAM_NAME = "stream_name";
 	private static final String BAM_MEDIATOR_DEFAULT_STREAM_VERSION = "1.0.0";
+	private static final String OAUTH_MEDIATOR_DEFAULT_USERNAME = "username";
+	private static final String OAUTH_MEDIATOR_DEFAULT_PASSWORD = "password";
 	/**
 	 * Creates the default factory implementation.
 	 * <!-- begin-user-doc -->
@@ -3696,6 +3698,8 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
 		OAuthMediatorImpl oAuthMediator = new OAuthMediatorImpl();
 		oAuthMediator.setInputConnector(createOAuthMediatorInputConnector());
 		oAuthMediator.setOutputConnector(createOAuthMediatorOutputConnector());
+		oAuthMediator.setUsername(OAUTH_MEDIATOR_DEFAULT_USERNAME);
+		oAuthMediator.setPassword(OAUTH_MEDIATOR_DEFAULT_PASSWORD);
 		return oAuthMediator;
 	}
 

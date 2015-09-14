@@ -45,6 +45,7 @@ public class InboundEndpointConstants {
 	public static final String INTERVAL = "interval";
 	public static final String SEQUENTIAL = "sequential";
 	public static final String COORDINATION = "coordination";
+	public static final String INBOUND_BEHAVIOUR = "inbound.behavior";
 
 	public static final String VFS_FILE_URI = "transport.vfs.FileURI";
 	public static final String VFS_CONTENT_TYPE = "transport.vfs.ContentType";

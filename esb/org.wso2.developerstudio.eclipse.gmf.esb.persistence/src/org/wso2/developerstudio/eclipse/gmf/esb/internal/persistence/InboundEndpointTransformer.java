@@ -571,18 +571,6 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
 						visualInboundEndpoint.getInterval());
 			}
 			if (StringUtils.isNotBlank(String.valueOf(visualInboundEndpoint
-					.isSequential()))) {
-				inboundEndpoint.addParameter(
-						InboundEndpointConstants.SEQUENTIAL,
-						String.valueOf(visualInboundEndpoint.isSequential()));
-			}
-			if (StringUtils.isNotBlank(String.valueOf(visualInboundEndpoint
-					.isSequential()))) {
-				inboundEndpoint.addParameter(
-						InboundEndpointConstants.COORDINATION,
-						String.valueOf(visualInboundEndpoint.isCoordination()));
-			}
-			if (StringUtils.isNotBlank(String.valueOf(visualInboundEndpoint
 					.getInboundEndpointBehaviour()))) {
 				String behaviourValue = visualInboundEndpoint
 						.getInboundEndpointBehaviour()

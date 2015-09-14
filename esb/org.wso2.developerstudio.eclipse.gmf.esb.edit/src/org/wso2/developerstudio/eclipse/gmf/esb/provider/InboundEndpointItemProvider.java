@@ -136,8 +136,6 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 			addClassPropertyDescriptor(object);
 			addInboundEndpointBehaviourPropertyDescriptor(object);
 			addIntervalPropertyDescriptor(object);
-			addSequentialPropertyDescriptor(object);
-			addCoordinationPropertyDescriptor(object);
 			addServiceParametersPropertyDescriptor(object);
 			break;
 		case HTTPS:

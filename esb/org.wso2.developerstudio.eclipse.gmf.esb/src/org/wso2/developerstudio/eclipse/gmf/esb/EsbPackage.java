@@ -25678,7 +25678,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getInboundEndpointBehaviourType()
 	 * @generated
 	 */
-	int INBOUND_ENDPOINT_BEHAVIOUR_TYPE = 470;
+	int INBOUND_ENDPOINT_BEHAVIOUR_TYPE = 471;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.ContentType <em>Content Type</em>}' enum.
@@ -25688,7 +25688,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getContentType()
 	 * @generated
 	 */
-	int CONTENT_TYPE = 471;
+	int CONTENT_TYPE = 472;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.TopicsType <em>Topics Type</em>}' enum.
@@ -25698,7 +25698,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getTopicsType()
 	 * @generated
 	 */
-	int TOPICS_TYPE = 472;
+	int TOPICS_TYPE = 473;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.TopicFilterFromType <em>Topic Filter From Type</em>}' enum.
@@ -25708,7 +25708,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getTopicFilterFromType()
 	 * @generated
 	 */
-	int TOPIC_FILTER_FROM_TYPE = 473;
+	int TOPIC_FILTER_FROM_TYPE = 474;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.ConsumerType <em>Consumer Type</em>}' enum.
@@ -25718,7 +25718,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getConsumerType()
 	 * @generated
 	 */
-	int CONSUMER_TYPE = 474;
+	int CONSUMER_TYPE = 475;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AutoOffsetResetType <em>Auto Offset Reset Type</em>}' enum.
@@ -25728,7 +25728,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getAutoOffsetResetType()
 	 * @generated
 	 */
-	int AUTO_OFFSET_RESET_TYPE = 475;
+	int AUTO_OFFSET_RESET_TYPE = 476;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.PartitionAssignmentStrategyType <em>Partition Assignment Strategy Type</em>}' enum.
@@ -25738,7 +25738,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getPartitionAssignmentStrategyType()
 	 * @generated
 	 */
-	int PARTITION_ASSIGNMENT_STRATEGY_TYPE = 476;
+	int PARTITION_ASSIGNMENT_STRATEGY_TYPE = 477;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.OffsetsStorageType <em>Offsets Storage Type</em>}' enum.
@@ -25748,7 +25748,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getOffsetsStorageType()
 	 * @generated
 	 */
-	int OFFSETS_STORAGE_TYPE = 477;
+	int OFFSETS_STORAGE_TYPE = 478;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.Enable <em>Enable</em>}' enum.
@@ -25758,7 +25758,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getEnable()
 	 * @generated
 	 */
-	int ENABLE = 478;
+	int ENABLE = 479;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.VFSAction <em>VFS Action</em>}' enum.
@@ -25768,7 +25768,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getVFSAction()
 	 * @generated
 	 */
-	int VFS_ACTION = 479;
+	int VFS_ACTION = 480;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.VFSFileSort <em>VFS File Sort</em>}' enum.
@@ -25778,7 +25778,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getVFSFileSort()
 	 * @generated
 	 */
-	int VFS_FILE_SORT = 480;
+	int VFS_FILE_SORT = 481;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.JMSConnectionFactoryType <em>JMS Connection Factory Type</em>}' enum.
@@ -25788,7 +25788,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getJMSConnectionFactoryType()
 	 * @generated
 	 */
-	int JMS_CONNECTION_FACTORY_TYPE = 481;
+	int JMS_CONNECTION_FACTORY_TYPE = 482;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.JMSSessionAcknowledgement <em>JMS Session Acknowledgement</em>}' enum.
@@ -25798,7 +25798,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getJMSSessionAcknowledgement()
 	 * @generated
 	 */
-	int JMS_SESSION_ACKNOWLEDGEMENT = 482;
+	int JMS_SESSION_ACKNOWLEDGEMENT = 483;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.JMSCacheLevel <em>JMS Cache Level</em>}' enum.
@@ -25808,7 +25808,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getJMSCacheLevel()
 	 * @generated
 	 */
-	int JMS_CACHE_LEVEL = 483;
+	int JMS_CACHE_LEVEL = 484;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MQTTSubscriptionQOS <em>MQTT Subscription QOS</em>}' enum.
@@ -25818,7 +25818,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getMQTTSubscriptionQOS()
 	 * @generated
 	 */
-	int MQTT_SUBSCRIPTION_QOS = 484;
+	int MQTT_SUBSCRIPTION_QOS = 485;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.FeedType <em>Feed Type</em>}' enum.
@@ -25828,7 +25828,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getFeedType()
 	 * @generated
 	 */
-	int FEED_TYPE = 485;
+	int FEED_TYPE = 486;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EnableDisableState <em>Enable Disable State</em>}' enum.
@@ -25838,7 +25838,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getEnableDisableState()
 	 * @generated
 	 */
-	int ENABLE_DISABLE_STATE = 486;
+	int ENABLE_DISABLE_STATE = 487;
 
 	/**
 	 * The meta object id for the '<em>Map</em>' data type.
@@ -25848,7 +25848,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getMap()
 	 * @generated
 	 */
-	int MAP = 487;
+	int MAP = 488;
 
 
 	/**

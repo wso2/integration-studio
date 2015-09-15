@@ -392,7 +392,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String INBOUND_HTTP_PORT_EDEFAULT = "";
+	protected static final String INBOUND_HTTP_PORT_EDEFAULT = "8000";
 
 	/**
 	 * The cached value of the '{@link #getInboundHttpPort() <em>Inbound Http Port</em>}' attribute.

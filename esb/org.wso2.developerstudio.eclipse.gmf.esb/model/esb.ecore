@@ -2805,7 +2805,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="inboundEndpointBehaviour"
         eType="#//InboundEndpointBehaviourType"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="inboundHttpPort" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
-        defaultValueLiteral=""/>
+        defaultValueLiteral="8000"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="inboundWorkerPoolSizeCore"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" defaultValueLiteral=""/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="inboundWorkerPoolSizeMax"

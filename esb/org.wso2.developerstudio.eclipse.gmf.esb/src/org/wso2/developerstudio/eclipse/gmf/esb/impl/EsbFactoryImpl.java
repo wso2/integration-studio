@@ -2924,6 +2924,7 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
         inboundEndpoint.setOnErrorSequenceInputConnector(createInboundEndpointOnErrorSequenceInputConnector());
         inboundEndpoint.setOnErrorSequenceOutputConnector(createInboundEndpointOnErrorSequenceOutputConnector());
         inboundEndpoint.setContainer(createInboundEndpointContainer());
+        //inboundEndpoint.setInboundHttpPort("8000");
 		return inboundEndpoint;
 	}
 

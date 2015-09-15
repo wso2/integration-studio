@@ -2646,7 +2646,7 @@ public interface InboundEndpoint extends EsbElement {
 
 	/**
 	 * Returns the value of the '<em><b>Inbound Http Port</b></em>' attribute.
-	 * The default value is <code>""</code>.
+	 * The default value is <code>"8000"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Inbound Http Port</em>' attribute isn't clear,
@@ -2656,7 +2656,7 @@ public interface InboundEndpoint extends EsbElement {
 	 * @return the value of the '<em>Inbound Http Port</em>' attribute.
 	 * @see #setInboundHttpPort(String)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_InboundHttpPort()
-	 * @model default=""
+	 * @model default="8000"
 	 * @generated
 	 */
 	String getInboundHttpPort();

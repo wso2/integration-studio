@@ -166,6 +166,8 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
 				inboundEndpoint.addParameter(
 						InboundEndpointConstants.INBOUND_HTTP_PORT,
 						visualInboundEndpoint.getInboundHttpPort());
+			} else {
+				throw new IllegalArgumentException("HTTP Inbound Endpoint Error : Inbound HTTP Port is Required");
 			}
 			if (StringUtils.isNotBlank(String.valueOf(visualInboundEndpoint
 					.getInboundWorkerPoolSizeCore()))) {

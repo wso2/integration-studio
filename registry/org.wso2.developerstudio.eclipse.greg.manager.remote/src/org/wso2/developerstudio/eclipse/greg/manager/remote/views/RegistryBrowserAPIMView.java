@@ -122,7 +122,7 @@ import org.wso2.developerstudio.eclipse.platform.ui.utils.MessageDialogUtils;
 
 public class RegistryBrowserAPIMView extends ViewPart implements Observer {
 
-	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
+    private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 	
 	//TODO - externalize these messages
 	private static final String SELECT_FILE_TO_BE_UPLOADED = "Select file to be uploaded to the registry";
@@ -1425,7 +1425,8 @@ public class RegistryBrowserAPIMView extends ViewPart implements Observer {
 	private void commitSequence(final RegistryResourceNode regResourceNode) throws IOException,
 			InvalidRegistryURLException, UnknownRegistryException, CoreException {
 		if (regResourceNode.getFileEditor() != null
-				&& regResourceNode.getFileEditor().isDirty()
+		        && !regResourceNode.isIsdeleted()
+		        && regResourceNode.getFileEditor().isDirty()
 				&& MessageDialogUtils.question(regResourceNode.getFileEditor().getSite().getShell(), "'"
 						+ regResourceNode.getResourceName() + Q_SAVE_CHANGES_AND_COMMIT)) {
 			regResourceNode.setDirty(false);

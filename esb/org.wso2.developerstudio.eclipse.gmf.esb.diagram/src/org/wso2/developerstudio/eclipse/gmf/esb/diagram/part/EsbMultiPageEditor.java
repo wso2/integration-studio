@@ -516,7 +516,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
 						 * This is to avoid RJS0007E Semantic refresh failed issue appears in compartments, which has
 						 * only one node. This should be replaced with the better approach
 						 */
-						AbstractEsbNodeDeserializer.relocateStartNodes();
+						//AbstractEsbNodeDeserializer.relocateStartNodes();
 
 						if (!dirty && isDirty()) {
 							// remove any dirty status introduced by ElementDuplicator or relocateStartNodes();

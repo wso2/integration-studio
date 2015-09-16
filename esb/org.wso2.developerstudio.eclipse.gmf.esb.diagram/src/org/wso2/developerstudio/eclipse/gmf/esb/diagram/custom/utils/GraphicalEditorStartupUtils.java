@@ -18,28 +18,19 @@ package org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.utils;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.ResourcesPlugin;
-import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.common.util.Enumerator;
-import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PlatformUI;
-import org.wso2.developerstudio.eclipse.gmf.esb.diagram.Activator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EditorUtils;
-import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.AbstractEsbNodeDeserializer;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.Deserializer;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbDiagramEditor;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbEditorInput;
-import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbMultiPageEditor;
-import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
-import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.platform.ui.editor.Openable;
 import org.wso2.developerstudio.eclipse.platform.ui.utils.UnrecogizedArtifactTypeException;
 
 public class GraphicalEditorStartupUtils implements Openable {
-
-	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
 	@Override
 	public IEditorPart editorOpen(String name, String type, String locatioin, String source)
@@ -76,25 +67,6 @@ public class GraphicalEditorStartupUtils implements Openable {
 	 
 		IWorkbenchPage activePage = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
 		IEditorPart openEditor = activePage.openEditor(new EsbEditorInput(null, xmlFile, type), EsbDiagramEditor.ID, true, IWorkbenchPage.MATCH_INPUT);
-		EsbMultiPageEditor multipageEitor = ((EsbMultiPageEditor) openEditor);
-		final EsbDiagramEditor graphicalEditor = multipageEitor.getGraphicalEditor();
-
-		Deserializer deserializer = Deserializer.getInstance();
-		try {
-			deserializer.updateDesign(source, graphicalEditor);
-		} catch (Exception e) {
-			log.error("Error while generating diagram from source", e);
-		}
-		
-		Display.getDefault().asyncExec(new Runnable() {
-
-			public void run() {
-				EditorUtils.setLockmode(graphicalEditor, true);
-				AbstractEsbNodeDeserializer.relocateStartNodes();
-				graphicalEditor.doSave(new NullProgressMonitor());
-				EditorUtils.setLockmode(graphicalEditor, false);
-			}
-		});
 		
 		if("endpoint".equals(type)){
 			EditorUtils.updateToolpalette();

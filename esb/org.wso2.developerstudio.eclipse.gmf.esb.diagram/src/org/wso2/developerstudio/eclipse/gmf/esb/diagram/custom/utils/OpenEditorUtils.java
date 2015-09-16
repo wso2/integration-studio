@@ -20,19 +20,15 @@ import java.io.IOException;
 
 import org.apache.commons.io.FileUtils;
 import org.eclipse.core.resources.IFile;
-import org.eclipse.core.runtime.NullProgressMonitor;
-import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.eclipse.gmf.esb.ArtifactType;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.Activator;
-import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EditorUtils;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.Deserializer;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbDiagramEditor;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbEditorInput;
-import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbMultiPageEditor;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
@@ -57,24 +53,7 @@ public class OpenEditorUtils {
 			IWorkbenchPage activePage = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
 			IEditorPart openEditor = activePage.openEditor(
 					new EsbEditorInput(null, fileTobeOpened, artifactType.getLiteral()), EsbDiagramEditor.ID, true, IWorkbenchPage.MATCH_INPUT);
-			EsbMultiPageEditor multipageEitor = ((EsbMultiPageEditor) openEditor);
-			final EsbDiagramEditor graphicalEditor = multipageEitor.getGraphicalEditor();
 
-			if (graphicalEditor != null) {
-				Display.getCurrent().asyncExec(new Runnable() {
-					public void run() {
-						try {
-							deserializer.updateDesign(source, graphicalEditor);
-							graphicalEditor.doSave(new NullProgressMonitor());
-							EditorUtils.setLockmode(graphicalEditor, false);
-
-						} catch (Exception e) {
-							log.error("Error occured while deserializing ", e);
-						}
-
-					}
-				});
-			}
 			return openEditor;
 		} catch (PartInitException e) {
 			log.error("Error occured while opening a separate editor", e);

@@ -12,9 +12,9 @@
 				  description="Create a new Publisher Artifact" 
 				  error="Please give a name for the Publisher">
 				  
-			<data modelProperty="project.name" type="string" fieldController="org.wso2.developerstudio.eclipse.artifact.cep.publisher.validators.PublisherFieldController">Publisher Name    </data>
-			<data modelProperty="save.file" type="workspacefolder" fieldController="org.wso2.developerstudio.eclipse.artifact.cep.publisher.validators.PublisherFieldController" controlData="filterClass=org.wso2.developerstudio.eclipse.artifact.cep.publisher.validators.PublisherProjectFilter">Save Publisher in:</data>
-			<data modelProperty="create.cep.prj" type="link" fieldController="org.wso2.developerstudio.eclipse.artifact.cep.publisher.validators.PublisherFieldController" controlData="align=right">&lt;a&gt;Create new Project...&lt;/a&gt;</data>
+			<data modelProperty="project.name" type="string" fieldController="org.wso2.developerstudio.eclipse.artifact.analytics.publisher.validators.PublisherFieldController">Publisher Name    </data>
+			<data modelProperty="selected.project" type="workspacefolder" fieldController="org.wso2.developerstudio.eclipse.artifact.analytics.publisher.validators.PublisherFieldController" controlData="filterClass=org.wso2.developerstudio.eclipse.artifact.analytics.publisher.validators.PublisherProjectFilter">Save Publisher in:</data>
+			<data modelProperty="create.analytics.project" type="link" fieldController="org.wso2.developerstudio.eclipse.artifact.analytics.publisher.validators.PublisherFieldController" controlData="align=right">&lt;a&gt;Create new Project...&lt;/a&gt;</data>
 		
 		</settings>
 		
@@ -23,9 +23,9 @@
 				  description="Create a Publisher Artifact using a configuration file with Publisher defined" 
 				  error="Browse and select a Eventpublisher configuration file">
 			
-			<data modelProperty="import.file" type="file" filter="*.xml" fieldController="org.wso2.developerstudio.eclipse.artifact.cep.publisher.validators.PublisherFieldController">Publisher Configuration File</data>
-			<data modelProperty="save.file" type="workspacefolder" fieldController="org.wso2.developerstudio.eclipse.artifact.cep.publisher.validators.PublisherFieldController" controlData="filterClass=org.wso2.developerstudio.eclipse.artifact.cep.publisher.validators.PublisherProjectFilter" >Save Publisher in: </data>
-			<data modelProperty="create.cep.prj" type="link" fieldController="org.wso2.developerstudio.eclipse.artifact.cep.publisher.validators.PublisherFieldController" controlData="align=right" >&lt;a&gt;Create new Project...&lt;/a&gt;</data>
+			<data modelProperty="import.file" type="file" filter="*.xml" fieldController="org.wso2.developerstudio.eclipse.artifact.analytics.publisher.validators.PublisherFieldController">Publisher Configuration File</data>
+			<data modelProperty="selected.project" type="workspacefolder" fieldController="org.wso2.developerstudio.eclipse.artifact.analytics.publisher.validators.PublisherFieldController" controlData="filterClass=org.wso2.developerstudio.eclipse.artifact.analytics.publisher.validators.PublisherProjectFilter" >Save Publisher in: </data>
+			<data modelProperty="create.analytics.project" type="link" fieldController="org.wso2.developerstudio.eclipse.artifact.analytics.publisher.validators.PublisherFieldController" controlData="align=right" >&lt;a&gt;Create new Project...&lt;/a&gt;</data>
 			
 		</settings>
 	</projectOptionSettings>

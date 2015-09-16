@@ -24,6 +24,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
+
 import org.apache.maven.model.Plugin;
 import org.apache.maven.model.PluginExecution;
 import org.apache.maven.model.Repository;
@@ -39,14 +40,11 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.jface.dialogs.MessageDialog;
-import org.eclipse.jface.viewers.ISelection;
-import org.eclipse.jface.wizard.IWizardPage;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.ide.IDE;
 import org.wso2.developerstudio.eclipse.artifact.analytics.execution_plan.Activator;
 import org.wso2.developerstudio.eclipse.artifact.analytics.execution_plan.model.Execution_planModel;
 import org.wso2.developerstudio.eclipse.artifact.analytics.execution_plan.utils.Execution_PlanImageUtils;
-import org.wso2.developerstudio.eclipse.artifact.analytics.execution_plan.validators.Execution_planProjectFilter;
 import org.wso2.developerstudio.eclipse.artifact.analytics.utils.AnalyticsArtifactModel;
 import org.wso2.developerstudio.eclipse.artifact.analytics.utils.AnalyticsConstants;
 import org.wso2.developerstudio.eclipse.artifact.analytics.utils.AnalyticsProjectArtifactCreator;
@@ -56,7 +54,6 @@ import org.wso2.developerstudio.eclipse.capp.maven.utils.MavenConstants;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
-import org.wso2.developerstudio.eclipse.platform.core.project.model.ProjectDataModel;
 import org.wso2.developerstudio.eclipse.platform.ui.wizard.AbstractWSO2ProjectCreationWizard;
 import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
 
@@ -68,11 +65,9 @@ public class Execution_planProjectCreationWizard extends AbstractWSO2ProjectCrea
 	private List<File> fileList = new ArrayList<File>();
 	private IProject project;
 	
-	private String version="1.0.0";
-	
 	public Execution_planProjectCreationWizard() {
-		this.executionPlanModel = new Execution_planModel();
-		setModel(this.executionPlanModel);
+		executionPlanModel = new Execution_planModel();
+		setModel(executionPlanModel);
 		setWindowTitle(ExecutionPlanConstants.WIZARD_WINDOW_TITLE);
 		setDefaultPageImageDescriptor(Execution_PlanImageUtils.getInstance()
 				.getImageDescriptor("execution_plan-64x64.png"));
@@ -90,7 +85,7 @@ public class Execution_planProjectCreationWizard extends AbstractWSO2ProjectCrea
 		try {
 			executionPlanModel = (Execution_planModel) getModel();
 			project = executionPlanModel.getExecution_planSaveLocation().getProject();
-			if(!createExecution_planArtifact(project,executionPlanModel)){
+			if(!createExecution_planArtifact()){
 			  return false;
 			}
 			project.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
@@ -120,29 +115,18 @@ public class Execution_planProjectCreationWizard extends AbstractWSO2ProjectCrea
 			}
 		}
 	
-	@Override
-	public boolean performCancel() {
-		Execution_planProjectFilter.setShowGeneralProjects(false);
-		return super.performCancel();
-	}
-	
-	@Override
-	public IWizardPage getPreviousPage(IWizardPage page) {
-		return super.getPreviousPage(page);
-	}
-	
 	public void updatePom() throws Exception{
 		File mavenProjectPomLocation = project.getFile("pom.xml").getLocation().toFile();
 		MavenProject mavenProject = MavenUtils.getMavenProject(mavenProjectPomLocation);
 		
 		boolean pluginExists = MavenUtils.checkOldPluginEntry(mavenProject,
 				"org.wso2.maven", "wso2-analytics-execution-plan-plugin",
-				MavenConstants.WSO2_CEP_EXECUTIONPLAN_VERSION);
+				MavenConstants.WSO2_ANALYTICS_EXECUTIONPLAN_VERSION);
 		if(pluginExists){
 			return ;
 		}
 		
-		Plugin plugin = MavenUtils.createPluginEntry(mavenProject, "org.wso2.maven", "wso2-cep-execution-plan-plugin", MavenConstants.WSO2_CEP_EXECUTIONPLAN_VERSION, true);
+		Plugin plugin = MavenUtils.createPluginEntry(mavenProject, "org.wso2.maven", "wso2-cep-execution-plan-plugin", MavenConstants.WSO2_ANALYTICS_EXECUTIONPLAN_VERSION, true);
 		
 		PluginExecution pluginExecution = new PluginExecution();
 		pluginExecution.addGoal("pom-gen");
@@ -176,8 +160,20 @@ public class Execution_planProjectCreationWizard extends AbstractWSO2ProjectCrea
 		MavenUtils.saveMavenProject(mavenProject, mavenProjectPomLocation);
 	}
 	
+	public String getProjectVersion(File pomLocation) {
+		String version = "1.0.0";
+		if (pomLocation != null && pomLocation.exists()) {
+			try {
+				MavenProject mavenProject = MavenUtils.getMavenProject(pomLocation);
+				version = mavenProject.getVersion();
+			} catch (Exception e) {
+				log.error("error reading pom file", e);
+			}
+		}
+		return version;
+	}
 	
-	public boolean createExecution_planArtifact(IProject prj,Execution_planModel rModel) throws Exception {
+	public boolean createExecution_planArtifact() throws Exception {
         boolean isNewArtifact =true;
         IContainer location = project.getFolder("src" + File.separator + "main" + File.separator
 				+ AnalyticsConstants.ANALYTICS_EXECUTION_PLAN_DIR);
@@ -188,7 +184,7 @@ public class Execution_planProjectCreationWizard extends AbstractWSO2ProjectCrea
 				.getLocation().toFile());
 		
 		File pomfile = project.getFile("pom.xml").getLocation().toFile();
-		getModel().getMavenInfo().setPackageName("execution-plan");
+		getModel().getMavenInfo().setPackageName(AnalyticsConstants.ANALYTICS_EXECUTION_PLAN_DIR);
 		if (!pomfile.exists()) {
 			createPOM(pomfile);
 		}
@@ -197,7 +193,8 @@ public class Execution_planProjectCreationWizard extends AbstractWSO2ProjectCrea
 		project.refreshLocal(IResource.DEPTH_INFINITE,
 				new NullProgressMonitor());
 		String groupId = getMavenGroupId(pomfile);
-		groupId += ".execution-plan";
+		groupId += "."+ AnalyticsConstants.ANALYTICS_EXECUTION_PLAN_DIR;
+		String version = getProjectVersion(pomfile);
 
 		if (getModel().getSelectedOption().equals(ExecutionPlanConstants.WIZARD_OPTION_IMPORT_EXECUTIONPLAN_PROJECT)) {
 			IFile execution_plan = location.getFile(new Path(getModel().getImportFile().getName()));
@@ -207,19 +204,17 @@ public class Execution_planProjectCreationWizard extends AbstractWSO2ProjectCrea
 				}
 				isNewArtifact = false;
 			} 	
-			copyImportFile(location,isNewArtifact,groupId);
+			copyImportFile(location,isNewArtifact,groupId,version);
 		} else {
 			File analyticsTemplateFile = new AnalyticsTemplateUtils().getResourceFile("templates" + File.separator
-					+ "execution_plan.siddhiql");
+					+ AnalyticsConstants.TEMPLATE_EXECUTIONPLAN);
 			String templateContent = FileUtils.getContentAsString(analyticsTemplateFile);
-			String content = templateContent.replaceAll("<execution-plan.name>", executionPlanModel.getReceiverName());
+			String content = templateContent.replaceAll(AnalyticsConstants.NAMETAG_EXECUTIONPLAN_TEMPLATE, executionPlanModel.getReceiverName());
 			File destFile = new File(location.getLocation().toFile(),
 					executionPlanModel.getReceiverName() + "."+AnalyticsConstants.EXTENTION_EXECUTION_PLAN);
 			FileUtils.createFile(destFile, content);
 			fileList.add(destFile);
-			
-			
-			
+
 			AnalyticsArtifactModel artifact = new AnalyticsArtifactModel();
 			artifact.setName(executionPlanModel.getReceiverName());
 			artifact.setVersion(version);
@@ -238,13 +233,13 @@ public class Execution_planProjectCreationWizard extends AbstractWSO2ProjectCrea
 	}
 	
 
-	public void copyImportFile(IContainer importLocation,boolean isNewAritfact, String groupId) throws IOException {
+	public void copyImportFile(IContainer importLocation,boolean isNewAritfact, String groupId, String version) throws IOException {
 		File importFile = getModel().getImportFile();
 		File destFile = null;
 		destFile = new File(importLocation.getLocation().toFile(), importFile.getName());
 		FileUtils.copy(importFile, destFile);
 		fileList.add(destFile);
-		String name = importFile.getName().replaceAll(".siddhiql$","");
+		String name = importFile.getName().replaceAll("."+AnalyticsConstants.EXTENTION_EXECUTION_PLAN+"$","");
 		if(isNewAritfact){
 			AnalyticsArtifactModel artifact=new AnalyticsArtifactModel();
 			artifact.setName(name);
@@ -259,34 +254,8 @@ public class Execution_planProjectCreationWizard extends AbstractWSO2ProjectCrea
 		}
 	}
 	
-	public void setProject(IProject project) {
-		this.project = project;
-	}
-	
-	public void setModel(ProjectDataModel model) {
-		super.setModel(model);
-	}
-	
 	public IResource getCreatedResource() {
-		// TODO Auto-generated method stub
 		return null;
 	}
-	
-	
-	public Execution_planModel getCepEventexecution_planProjectModel() {
-		return executionPlanModel;
-	}
-
-	public void setCepProjectModel(Execution_planModel analyticsProjectModel) {
-		this.executionPlanModel = analyticsProjectModel;
-	}
-		
-		
-	public void setCurrentSelection(ISelection currentSelection) {
-		// TODO Auto-generated method stub
-		super.setCurrentSelection(currentSelection);
-	}	
-			
-		
 		
 }

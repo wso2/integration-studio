@@ -19,6 +19,8 @@
 package org.wso2.developerstudio.eclipse.artifact.analytics.validators;
 
 import java.io.File;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.wso2.developerstudio.eclipse.artifact.analytics.utils.AnalyticsConstants;
 import org.wso2.developerstudio.eclipse.platform.core.exception.FieldValidationException;
@@ -27,7 +29,9 @@ import org.wso2.developerstudio.eclipse.platform.core.project.model.ProjectDataM
 import org.wso2.developerstudio.eclipse.platform.ui.validator.CommonFieldValidator;
 
 public class AnalyticsProjectFieldController extends AbstractFieldController {
-
+	
+	private final static Pattern ADDITIONAL_FOLDERS_PATTERN = Pattern.compile("([\\/\\\\]repository[\\/\\\\]deployment[\\/\\\\]server)$");
+	
 	public void validate(String modelProperty, Object value, ProjectDataModel model)
 	        throws FieldValidationException {
 		if (modelProperty.equals(AnalyticsConstants.WIZARD_OPTION_ANALYTICS_NAME)) {
@@ -37,7 +41,8 @@ public class AnalyticsProjectFieldController extends AbstractFieldController {
 				throw new FieldValidationException("Specified folder location is invalid");
 			}
 			String name = value.toString();
-			if (name.trim().equals("")) {
+			Matcher additionlFolderMatcher = ADDITIONAL_FOLDERS_PATTERN.matcher(name);
+			if (name.trim().equals("")||!additionlFolderMatcher.find()) {
 				throw new FieldValidationException("Specified folder location is invalid");
 			} else{
 				File folderLocation = (File) value;

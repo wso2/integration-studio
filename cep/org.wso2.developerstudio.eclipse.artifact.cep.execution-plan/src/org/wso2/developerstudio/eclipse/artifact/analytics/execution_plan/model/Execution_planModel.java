@@ -130,8 +130,8 @@ public class Execution_planModel extends ProjectDataModel {
 		return newExecution_planSaveLocation;
 	}
 
-	public void setExecution_planSaveLocation(IContainer sequenceSaveLocation) {
-		this.execution_planSaveLocation = sequenceSaveLocation;
+	public void setExecution_planSaveLocation(IContainer execution_planSaveLocation) {
+		this.execution_planSaveLocation = execution_planSaveLocation;
 	}
 
 	public IContainer getExecution_planSaveLocation() {

@@ -12,9 +12,9 @@
 				  description="Create a new Receiver Artifact" 
 				  error="Please give a name for the Receiver">
 				  
-			<data modelProperty="project.name" type="string" fieldController="org.wso2.developerstudio.eclipse.artifact.cep.receiver.validators.ReceiverFieldController">Receiver Name    </data>
-			<data modelProperty="save.file" type="workspacefolder" fieldController="org.wso2.developerstudio.eclipse.artifact.cep.receiver.validators.ReceiverFieldController" controlData="filterClass=org.wso2.developerstudio.eclipse.artifact.cep.receiver.validators.ReceiverProjectFilter">Save Receiver in:</data>
-			<data modelProperty="create.cep.prj" type="link" fieldController="org.wso2.developerstudio.eclipse.artifact.cep.receiver.validators.ReceiverFieldController" controlData="align=right">&lt;a&gt;Create new Project...&lt;/a&gt;</data>
+			<data modelProperty="project.name" type="string" fieldController="org.wso2.developerstudio.eclipse.artifact.analytics.receiver.validators.ReceiverFieldController">Receiver Name    </data>
+			<data modelProperty="selected.project" type="workspacefolder" fieldController="org.wso2.developerstudio.eclipse.artifact.analytics.receiver.validators.ReceiverFieldController" controlData="filterClass=org.wso2.developerstudio.eclipse.artifact.analytics.receiver.validators.ReceiverProjectFilter">Save Receiver in:</data>
+			<data modelProperty="create.analytics.project" type="link" fieldController="org.wso2.developerstudio.eclipse.artifact.analytics.receiver.validators.ReceiverFieldController" controlData="align=right">&lt;a&gt;Create new Project...&lt;/a&gt;</data>
 		
 		</settings>
 		
@@ -23,9 +23,9 @@
 				  description="Create a Receiver Artifact using a configuration file with Receiver defined" 
 				  error="Browse and select a Eventpublisher configuration file">
 			
-			<data modelProperty="import.file" type="file" filter="*.xml" fieldController="org.wso2.developerstudio.eclipse.artifact.cep.receiver.validators.ReceiverFieldController">Receiver Configuration File</data>
-			<data modelProperty="save.file" type="workspacefolder" fieldController="org.wso2.developerstudio.eclipse.artifact.cep.receiver.validators.ReceiverFieldController" controlData="filterClass=org.wso2.developerstudio.eclipse.artifact.cep.receiver.validators.ReceiverProjectFilter" >Save Receiver in: </data>
-			<data modelProperty="create.cep.prj" type="link" fieldController="org.wso2.developerstudio.eclipse.artifact.cep.receiver.validators.ReceiverFieldController" controlData="align=right" >&lt;a&gt;Create new Project...&lt;/a&gt;</data>
+			<data modelProperty="import.file" type="file" filter="*.xml" fieldController="org.wso2.developerstudio.eclipse.artifact.analytics.receiver.validators.ReceiverFieldController">Receiver Configuration File</data>
+			<data modelProperty="selected.project" type="workspacefolder" fieldController="org.wso2.developerstudio.eclipse.artifact.analytics.receiver.validators.ReceiverFieldController" controlData="filterClass=org.wso2.developerstudio.eclipse.artifact.analytics.receiver.validators.ReceiverProjectFilter" >Save Receiver in: </data>
+			<data modelProperty="create.analytics.project" type="link" fieldController="org.wso2.developerstudio.eclipse.artifact.analytics.receiver.validators.ReceiverFieldController" controlData="align=right" >&lt;a&gt;Create new Project...&lt;/a&gt;</data>
 			
 		</settings>
 	</projectOptionSettings>

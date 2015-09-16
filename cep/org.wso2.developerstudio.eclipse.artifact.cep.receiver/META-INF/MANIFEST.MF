@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: CEP
-Bundle-SymbolicName: org.wso2.developerstudio.eclipse.artifact.cep.receiver;singleton:=true
+Bundle-SymbolicName: org.wso2.developerstudio.eclipse.artifact.analytics.receiver;singleton:=true
 Bundle-Version: 2.1.0
-Bundle-Activator: org.wso2.developerstudio.eclipse.artifact.cep.receiver.Activator
+Bundle-Activator: org.wso2.developerstudio.eclipse.artifact.analytics.receiver.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.ui.forms,
@@ -12,6 +12,7 @@ Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Import-Package: org.apache.axiom.om,
  org.apache.axiom.om.impl.builder,
+ org.apache.commons.io;version="2.0.0.wso2v1",
  org.apache.commons.lang;version="2.6.0.wso2v1",
  org.apache.maven.model,
  org.apache.maven.project,
@@ -39,7 +40,7 @@ Import-Package: org.apache.axiom.om,
  org.wso2.carbon.cep.core.mapping.output,
  org.wso2.carbon.cep.core.mapping.output.mapping,
  org.wso2.carbon.cep.core.mapping.output.property,
- org.wso2.developerstudio.eclipse.artifact.cep.utils,
+ org.wso2.developerstudio.eclipse.artifact.analytics.utils,
  org.wso2.developerstudio.eclipse.capp.maven.utils,
  org.wso2.developerstudio.eclipse.general.project.artifact,
  org.wso2.developerstudio.eclipse.general.project.artifact.bean,

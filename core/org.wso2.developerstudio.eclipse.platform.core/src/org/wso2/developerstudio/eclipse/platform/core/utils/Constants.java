@@ -61,7 +61,7 @@ public class Constants extends NLS{
    public static String GENERAL_PROJECT_NATURE;
    public static String CARBON_UI_PROJECT_NATURE;
    public static String DISTRIBUTION_PROJECT_NATURE;
-   public static String CEP_PROJECT_NATURE;
+   public static String ANALYTICS_PROJECT_NATURE;
    public static String BRS_PROJECT_NATURE ;
    public static String JAGGERY_NATURE;
    public static String SERVICE_META_PROJECT_NATURE;
@@ -96,7 +96,7 @@ public class Constants extends NLS{
       list.add(GENERAL_PROJECT_NATURE);
       list.add(CARBON_UI_PROJECT_NATURE);
       list.add(DISTRIBUTION_PROJECT_NATURE);
-      list.add(CEP_PROJECT_NATURE);
+      list.add(ANALYTICS_PROJECT_NATURE);
       list.add(BRS_PROJECT_NATURE);
       list.add(JAGGERY_NATURE);
       list.add(SERVICE_META_PROJECT_NATURE);

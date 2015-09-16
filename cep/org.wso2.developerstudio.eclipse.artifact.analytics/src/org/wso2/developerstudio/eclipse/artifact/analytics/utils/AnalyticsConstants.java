@@ -48,6 +48,14 @@ public class AnalyticsConstants extends NLS {
 	public static String ARTIFACT_TYPE_STREAM;
 	public static String ARTIFACT_TYPE_RECEIVER;
 	public static String ARTIFACT_TYPE_PUBLISHER;
+	public static String TEMPLATE_EXECUTIONPLAN;
+	public static String TEMPLATE_PUBLISHER;
+	public static String TEMPLATE_RECEIVER;
+	public static String TEMPLATE_STREAM;
+	public static String NAMETAG_EXECUTIONPLAN_TEMPLATE;
+	public static String NAMETAG_PUBLISHER_TEMPLATE;
+	public static String NAMETAG_RECEIVER_TEMPLATE;
+	public static String NAMETAG_STREAM_TEMPLATE;
 	static {
 		// initialize resource bundle
 		NLS.initializeMessages(BUNDLE_NAME, AnalyticsConstants.class);

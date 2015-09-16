@@ -76,7 +76,7 @@ public class ProjectExportWizard extends Wizard implements IExportWizard {
 					   project.hasNature(Constants.REGISTRY_FILTER_PROJECT_NATURE) ||
 					   project.hasNature(Constants.REGISTRY_HANDLER_PROJECT_NATURE) ||
 					   project.hasNature(Constants.CARBON_UI_PROJECT_NATURE)||
-					   project.hasNature(Constants.CEP_PROJECT_NATURE)||
+					   project.hasNature(Constants.ANALYTICS_PROJECT_NATURE)||
 					   project.hasNature(Constants.BRS_PROJECT_NATURE)||
 					   project.hasNature(Constants.JAGGERY_NATURE)){
 				exportArchivable(project);

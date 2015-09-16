@@ -59,7 +59,9 @@ import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 public class AppfactoryApplicationDetailsView extends ViewPart {
 
-	public static final String ID = "org.wso2.developerstudio.appfactory.ui.views.AppfactoryView";
+	private static final int USERNAME_COULMN_INDEX = 2;
+    private static final int DATASOURCE_URL_COLUMN_INDEX = 1;
+    public static final String ID = "org.wso2.developerstudio.appfactory.ui.views.AppfactoryView";
 	public static final String DS_WIZARD_ID = "org.eclipse.datatools.connectivity.internal.ui.wizards.newconnectionprofile";
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 	private static final String APPINFO_TAB_ITEM_NAME = "Application Info";
@@ -86,6 +88,8 @@ public class AppfactoryApplicationDetailsView extends ViewPart {
 	private TabItem currentStatusTabItem;
 	private TabItem teamTabItem;
 	private TabItem dataSourcesTabItem;
+    private TableEditor dbColumnEditor;
+    private TableEditor userNameColumnEditor;
 
 	public AppfactoryApplicationDetailsView() {
 		AppfactoryApplicationListView.setAppDetailView(this);
@@ -166,7 +170,14 @@ public class AppfactoryApplicationDetailsView extends ViewPart {
 		removeChildControls(repoTypeComposite);
 		removeChildControls(appOwnerComposite);
 		removeChildControls(descriptionComposite);
-		
+        Control oldDBEditor = dbColumnEditor.getEditor();
+        if (oldDBEditor != null) {
+            oldDBEditor.dispose();
+        }
+        Control oldUNEditor = userNameColumnEditor.getEditor();
+        if (oldUNEditor != null) {
+            oldUNEditor.dispose();
+        }
 		currentStatusTable.removeAll();
 		dataSourcesTable.clearAll();	
 		teamDetailsTable.removeAll();
@@ -448,30 +459,41 @@ public class AppfactoryApplicationDetailsView extends ViewPart {
 			column.setText(titles[i]);
 			column.pack();
 		}
-		
-		final TableEditor editor = new TableEditor(dataSourcesTable);
-		editor.horizontalAlignment = SWT.LEFT;
-		editor.grabHorizontal = true;
+		dbColumnEditor = new TableEditor(dataSourcesTable);
+		dbColumnEditor.horizontalAlignment = SWT.LEFT;
+		dbColumnEditor.grabHorizontal = true;
+        
+        userNameColumnEditor = new TableEditor(dataSourcesTable);
+        userNameColumnEditor.horizontalAlignment = SWT.LEFT;
+        userNameColumnEditor.grabHorizontal = true;
 
 		dataSourcesTable.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
 				// Clean up any previous editor control
-				Control oldEditor = editor.getEditor();
-				if (oldEditor != null)
-					oldEditor.dispose();
-
+			    Control oldDBEditor = dbColumnEditor.getEditor();
+		        if (oldDBEditor != null) {
+		            oldDBEditor.dispose();
+		        }
+		        Control oldUNEditor = userNameColumnEditor.getEditor();
+		        if (oldUNEditor != null) {
+		            oldUNEditor.dispose();
+		        }
 				// Identify the selected row
 				TableItem item = (TableItem) e.item;
 				if (item == null)
 					return;
 
-				final int dbURLIndex = 1;
 				Text uRLEditor = new Text(dataSourcesTable, SWT.NONE);
-				uRLEditor.setText(item.getText(dbURLIndex));
+				uRLEditor.setText(item.getText(DATASOURCE_URL_COLUMN_INDEX));
 				uRLEditor.setEditable(false);
 				uRLEditor.selectAll();
 				uRLEditor.setFocus();
-				editor.setEditor(uRLEditor, item, dbURLIndex);
+				dbColumnEditor.setEditor(uRLEditor, item, DATASOURCE_URL_COLUMN_INDEX);
+				
+                Text userNameEditor = new Text(dataSourcesTable, SWT.NONE);
+                userNameEditor.setText(item.getText(USERNAME_COULMN_INDEX));
+                userNameEditor.setEditable(false);
+                userNameColumnEditor.setEditor(userNameEditor, item, USERNAME_COULMN_INDEX);
 			}
 		});
 

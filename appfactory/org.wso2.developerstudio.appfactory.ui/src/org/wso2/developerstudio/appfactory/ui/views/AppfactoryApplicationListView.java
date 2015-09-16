@@ -225,11 +225,9 @@ public class AppfactoryApplicationListView extends ViewPart {
 					{
 						appInfo = ((AppVersionInfo)selection.getFirstElement()).getVersionGroup().getApplication();
 					}
-					
+					appDetailView.clear();
 					if (!appInfo.getappVersionList().isEmpty()) {
 						appDetailView.updateView(appInfo);
-					}else{
-						appDetailView.clear();
 					}
 				} catch (Throwable e) {
 				  /*safe to ignore*/
@@ -252,7 +250,14 @@ public class AppfactoryApplicationListView extends ViewPart {
 					}else if (selectedNode instanceof AppVersionGroup) {
 						viewer.setExpandedState(selectedNode,
 								!viewer.getExpandedState(selectedNode));
-					}
+                    } else if (selectedNode instanceof ApplicationInfo) {
+                        ApplicationInfo appInfo = (ApplicationInfo) selectedNode;
+                        if (appInfo.isLoaded()) {
+                            viewer.setExpandedState(selectedNode, !viewer.getExpandedState(selectedNode));
+                        } else {
+                            getAppVersions(appInfo);
+                        }
+                    }
 				} catch (Throwable e) {
 					  /*safe to ignore*/
 				 } 
@@ -633,6 +638,7 @@ public class AppfactoryApplicationListView extends ViewPart {
 		      public void run() {
 		         viewer.refresh();
 		         appDetailView.updateView(appInfo);
+		         viewer.setExpandedState(appInfo, !viewer.getExpandedState(appInfo));
 		      }
 		});
 			
@@ -653,6 +659,7 @@ public class AppfactoryApplicationListView extends ViewPart {
 					//getDbInfo(appInfo, monitor);/*currently not supporting*/
 					getDSInfo(appInfo, new SubProgressMonitor(monitor, 25));
 					appInfo.setLableState(2);
+					appInfo.setLoaded(true);
                 } else {
                     appInfo.setLableState(0);
                 }

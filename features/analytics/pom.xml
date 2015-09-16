@@ -9,12 +9,12 @@
     </parent>
     <groupId>org.wso2.developerstudio</groupId>
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>wso2-eclipse-developerstudio-cep-feature</artifactId>
+    <artifactId>wso2-eclipse-developerstudio-analytics-feature</artifactId>
     <version>2.1.0</version>
     <packaging>pom</packaging>
-    <name>WSO2 Eclipse CEP Features</name>
+    <name>WSO2 Eclipse Analytics Features</name>
     <modules>
-	    <module>org.wso2.developerstudio.eclipse.cep.artifact.feature</module>
+	    <module>org.wso2.developerstudio.eclipse.analytics.artifact.feature</module>
     </modules>
 </project>
 

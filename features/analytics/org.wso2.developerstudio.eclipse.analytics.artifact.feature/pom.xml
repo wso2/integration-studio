@@ -22,17 +22,17 @@
 
     <parent>
         <groupId>org.wso2.developerstudio</groupId>
-        <artifactId>wso2-eclipse-developerstudio-cep-feature</artifactId>
+        <artifactId>wso2-eclipse-developerstudio-analytics-feature</artifactId>
         <version>2.1.0</version>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>org.wso2.developerstudio.eclipse.cep.artifact.feature</artifactId>
-    <version>${cep.feature.version}</version>
+    <artifactId>org.wso2.developerstudio.eclipse.analytics.artifact.feature</artifactId>
+    <version>${analytics.feature.version}</version>
     <packaging>pom</packaging>
     <name>Complex Event Server Artifact</name>
     <url>http://wso2.org</url>
-    <description>This feature contains WSO2 Developer Studio CEP artifact Feature</description>
+    <description>This feature contains WSO2 Developer Studio Analytics artifact Feature</description>
     <build>
         <plugins>
             <plugin>
@@ -50,7 +50,7 @@
                             <id>${project.artifactId}</id>
                             <propertiesFile>../../feature.properties</propertiesFile>
                             <bundles>
-                                <bundleDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.artifact.cep:${cep.artifact.version}</bundleDef>
+                                <bundleDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.artifact.analytics:${analytics.artifact.version}</bundleDef>
                             </bundles>
                         </configuration>
                     </execution>

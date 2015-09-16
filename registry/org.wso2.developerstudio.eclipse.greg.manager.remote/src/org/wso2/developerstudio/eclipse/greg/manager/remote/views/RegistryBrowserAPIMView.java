@@ -632,7 +632,6 @@ public class RegistryBrowserAPIMView extends ViewPart implements Observer {
 			public void run() {
 				if (MessageDialog.openQuestion(Display.getCurrent().getActiveShell(), APPLY_CHANAGES_DIALOG_TITLE,
 						"Are You Sure ,  You want to Push all local changes into remote API Manager server ?")) {
-					
 					pushAllchnages();
 				}
 			}
@@ -687,51 +686,29 @@ public class RegistryBrowserAPIMView extends ViewPart implements Observer {
 	}
 
 	private void pushAllchnages() {
-		
-		Job job = new Job("push All Chnages") {
-			
-			@Override
-			protected IStatus run(final IProgressMonitor monitor) {
-				try {
-					
-					Set<String> keySet = changedResourceNodes.keySet();
-					int size = keySet.size();
-					monitor.beginTask("commit changes", size*10);
-					int val= 10;
-					for (String key : keySet) {
-						
-						RegistryResourceNode registryResourceNode = changedResourceNodes.get(key);
-						commitSequence(registryResourceNode);
-						monitor.worked(val);
-						val = val+10;
-					}
-					changedResourceNodes.clear();
-					updateDirtyState();
-					Display.getDefault().asyncExec(new Runnable() {
-						@SuppressWarnings({})
-						@Override
-						public void run() {
-							treeViewer.setInput(localUrlNode);
-							treeViewer.expandToLevel(EXPAND_LEVEL);
-							MessageDialogUtils.info(Display.getCurrent().getActiveShell(), " ",
-									SUCESSFULLY_APPLIED_THE_LOCAL_CHANGES);
-							monitor.done();
-						}
-					});	
-					
-				} catch (InvalidRegistryURLException | UnknownRegistryException | IOException | CoreException e) {
-					MessageDialog.openError(Display.getCurrent().getActiveShell(), "Push Changes Dialog",
-							"Cannot push all the chnages due to " + e.getMessage());
-					log.error("Cannot push all the chnages due to " + e.getMessage(), e);
-					return Status.CANCEL_STATUS;
-					
-				}
-
-				return Status.OK_STATUS;
-			}
-		};
-		job.schedule();
-		
+	    try {         
+            Set<String> keySet = changedResourceNodes.keySet();
+            for (String key : keySet) { 
+                RegistryResourceNode registryResourceNode = changedResourceNodes.get(key);
+                commitSequence(registryResourceNode);
+            }
+            changedResourceNodes.clear();
+            updateDirtyState();
+            Display.getDefault().asyncExec(new Runnable() {
+                @SuppressWarnings({})
+                @Override
+                public void run() {
+                    treeViewer.setInput(localUrlNode);
+                    treeViewer.expandToLevel(EXPAND_LEVEL);
+                    MessageDialogUtils.info(Display.getCurrent().getActiveShell(), " ",
+                            SUCESSFULLY_APPLIED_THE_LOCAL_CHANGES);
+                }
+            });   
+        } catch (InvalidRegistryURLException | UnknownRegistryException | IOException | CoreException e) {
+            MessageDialog.openError(Display.getCurrent().getActiveShell(), "Push Changes Dialog",
+                    "Cannot push all the chnages due to " + e.getMessage());
+            log.error("Cannot push all the chnages due to " + e.getMessage(), e);
+        }	
 	}
 
 	private void updateDirtyState() {

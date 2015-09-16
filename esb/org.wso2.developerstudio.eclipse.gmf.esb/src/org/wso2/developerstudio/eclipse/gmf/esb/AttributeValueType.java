@@ -32,16 +32,14 @@ import org.eclipse.emf.common.util.Enumerator;
  */
 public enum AttributeValueType implements Enumerator {
 	/**
-	 * The '<em><b>STRING</b></em>' literal object.
+	 * The '<em><b>VALUE</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #STRING_VALUE
+	 * @see #VALUE_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	STRING(0, "STRING", "STRING"),
-
-	/**
+	VALUE(0, "VALUE", "VALUE"), /**
 	 * The '<em><b>EXPRESSION</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -52,19 +50,19 @@ public enum AttributeValueType implements Enumerator {
 	EXPRESSION(1, "EXPRESSION", "EXPRESSION");
 
 	/**
-	 * The '<em><b>STRING</b></em>' literal value.
+	 * The '<em><b>VALUE</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>STRING</b></em>' literal object isn't clear,
+	 * If the meaning of '<em><b>VALUE</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #STRING
+	 * @see #VALUE
 	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final int STRING_VALUE = 0;
+	public static final int VALUE_VALUE = 0;
 
 	/**
 	 * The '<em><b>EXPRESSION</b></em>' literal value.
@@ -89,7 +87,7 @@ public enum AttributeValueType implements Enumerator {
 	 */
 	private static final AttributeValueType[] VALUES_ARRAY =
 		new AttributeValueType[] {
-			STRING,
+			VALUE,
 			EXPRESSION,
 		};
 
@@ -141,7 +139,7 @@ public enum AttributeValueType implements Enumerator {
 	 */
 	public static AttributeValueType get(int value) {
 		switch (value) {
-			case STRING_VALUE: return STRING;
+			case VALUE_VALUE: return VALUE;
 			case EXPRESSION_VALUE: return EXPRESSION;
 		}
 		return null;

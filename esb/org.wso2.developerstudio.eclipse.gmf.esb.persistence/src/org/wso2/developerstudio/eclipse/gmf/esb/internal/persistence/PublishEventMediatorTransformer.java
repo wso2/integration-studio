@@ -106,8 +106,8 @@ public class PublishEventMediatorTransformer extends AbstractEsbNodeTransformer 
 			if (StringUtils.isNotEmpty(visualAttribute.getAttributeName())) {
 				attribute.setKey(visualAttribute.getAttributeName());
 			}
-			if (visualAttribute.getAttributeValueType().getLiteral().equals(AttributeValueType.STRING.getLiteral())) {
-				attribute.setType(AttributeValueType.STRING.getLiteral());
+			if (visualAttribute.getAttributeValueType().getLiteral().equals(AttributeValueType.VALUE.getLiteral())) {
+				attribute.setType(AttributeValueType.VALUE.getLiteral());
 				attribute.setValue(visualAttribute.getAttributeValue());
 			}
 			if (visualAttribute.getAttributeValueType().getLiteral().equals(AttributeValueType.EXPRESSION.getLiteral())) {

@@ -80,7 +80,7 @@
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//LogLevel/CUSTOM"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//AttributeValueType">
-      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//AttributeValueType/STRING"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//AttributeValueType/VALUE"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//AttributeValueType/EXPRESSION"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//BeanMediatorAction">

@@ -467,7 +467,7 @@
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="AttributeValueType">
-    <eLiterals name="STRING" literal="STRING"/>
+    <eLiterals name="VALUE" literal="VALUE"/>
     <eLiterals name="EXPRESSION" value="1" literal="EXPRESSION"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="BAMMediator" eSuperTypes="#//Mediator">

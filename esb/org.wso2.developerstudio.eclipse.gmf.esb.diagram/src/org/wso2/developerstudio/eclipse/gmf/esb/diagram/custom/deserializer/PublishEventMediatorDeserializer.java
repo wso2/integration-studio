@@ -66,7 +66,7 @@ public class PublishEventMediatorDeserializer extends
 				metaAttribute.setAttributeName(metaProperty.getKey());
 			}
 			if (metaProperty.getValue() != null) {
-				metaAttribute.setAttributeValueType(AttributeValueType.STRING);
+				metaAttribute.setAttributeValueType(AttributeValueType.VALUE);
 				metaAttribute.setAttributeValue(metaProperty.getValue());
 			} else if (metaProperty.getExpression() != null) {
 				metaAttribute.setAttributeValueType(AttributeValueType.EXPRESSION);
@@ -90,7 +90,7 @@ public class PublishEventMediatorDeserializer extends
 				correlationAttribute.setAttributeName(correlationProperty.getKey());
 			}
 			if (correlationProperty.getValue() != null) {
-				correlationAttribute.setAttributeValueType(AttributeValueType.STRING);
+				correlationAttribute.setAttributeValueType(AttributeValueType.VALUE);
 				correlationAttribute.setAttributeValue(correlationProperty.getValue());
 			} else if (correlationProperty.getExpression() != null) {
 				correlationAttribute.setAttributeValueType(AttributeValueType.EXPRESSION);
@@ -113,7 +113,7 @@ public class PublishEventMediatorDeserializer extends
 				payloadAttribute.setAttributeName(payloadProperty.getKey());
 			}
 			if (payloadProperty.getValue() != null) {
-				payloadAttribute.setAttributeValueType(AttributeValueType.STRING);
+				payloadAttribute.setAttributeValueType(AttributeValueType.VALUE);
 				payloadAttribute.setAttributeValue(payloadProperty.getValue());
 			} else if (payloadProperty.getExpression() != null) {
 				payloadAttribute.setAttributeValueType(AttributeValueType.EXPRESSION);
@@ -137,7 +137,7 @@ public class PublishEventMediatorDeserializer extends
 				arbitraryAttribute.setAttributeName(arbitraryProperty.getKey());
 			}
 			if (arbitraryProperty.getValue() != null) {
-				arbitraryAttribute.setAttributeValueType(AttributeValueType.STRING);
+				arbitraryAttribute.setAttributeValueType(AttributeValueType.VALUE);
 				arbitraryAttribute.setAttributeValue(arbitraryProperty.getValue());
 			} else if (arbitraryProperty.getExpression() != null) {
 				arbitraryAttribute.setAttributeValueType(AttributeValueType.EXPRESSION);

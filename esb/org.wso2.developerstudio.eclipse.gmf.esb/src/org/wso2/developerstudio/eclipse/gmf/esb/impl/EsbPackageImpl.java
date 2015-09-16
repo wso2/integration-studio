@@ -22701,7 +22701,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		addEEnumLiteral(logLevelEEnum, LogLevel.CUSTOM);
 
 		initEEnum(attributeValueTypeEEnum, AttributeValueType.class, "AttributeValueType");
-		addEEnumLiteral(attributeValueTypeEEnum, AttributeValueType.STRING);
+		addEEnumLiteral(attributeValueTypeEEnum, AttributeValueType.VALUE);
 		addEEnumLiteral(attributeValueTypeEEnum, AttributeValueType.EXPRESSION);
 
 		initEEnum(beanMediatorActionEEnum, BeanMediatorAction.class, "BeanMediatorAction");

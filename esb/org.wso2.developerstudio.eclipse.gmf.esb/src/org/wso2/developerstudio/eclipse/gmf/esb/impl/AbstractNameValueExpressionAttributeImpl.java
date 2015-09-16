@@ -70,7 +70,7 @@ public abstract class AbstractNameValueExpressionAttributeImpl extends EsbNodeIm
 	 * @generated
 	 * @ordered
 	 */
-	protected static final AttributeValueType ATTRIBUTE_VALUE_TYPE_EDEFAULT = AttributeValueType.STRING;
+	protected static final AttributeValueType ATTRIBUTE_VALUE_TYPE_EDEFAULT = AttributeValueType.VALUE;
 	/**
 	 * The cached value of the '{@link #getAttributeValueType() <em>Attribute Value Type</em>}' attribute.
 	 * <!-- begin-user-doc -->

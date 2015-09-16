@@ -20,6 +20,7 @@ import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.edit.command.AddCommand;
 import org.eclipse.emf.edit.command.RemoveCommand;
+import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.swt.SWT;
@@ -96,7 +97,7 @@ public class ConfigurePublishEventAttributesDialog extends Dialog {
 
 		newAttributeButton = new Button(container, SWT.NONE);
 		{
-			newAttributeButton.setText("New...");
+			newAttributeButton.setText("New");
 			FormData newAttributeButtonLayoutData = new FormData(80, SWT.DEFAULT);
 			newAttributeButtonLayoutData.top = new FormAttachment(publishEventAttributeLabel, 10);
 			newAttributeButtonLayoutData.right = new FormAttachment(100);
@@ -150,7 +151,7 @@ public class ConfigurePublishEventAttributesDialog extends Dialog {
 			nameColumn.setWidth(150);
 			valueColumn.setText("Value/Expression");
 			valueColumn.setWidth(200);
-			typeColumn.setText("Type");
+			typeColumn.setText("Attribute Value");
 			typeColumn.setWidth(150);
 
 			publishEventAttributeTable.setHeaderVisible(true);
@@ -209,7 +210,7 @@ public class ConfigurePublishEventAttributesDialog extends Dialog {
 		// value type table editor
 		valueTypeEditor = initTableEditor(valueTypeEditor, item.getParent());
 		cmbValueType = new Combo(item.getParent(), SWT.READ_ONLY);
-		cmbValueType.setItems(new String[] { AttributeValueType.STRING.getLiteral(),
+		cmbValueType.setItems(new String[] { AttributeValueType.VALUE.getLiteral(),
 				AttributeValueType.EXPRESSION.getLiteral() });
 		cmbValueType.setText(item.getText(2));
 		valueTypeEditor.setEditor(cmbValueType, item, 2);
@@ -254,7 +255,7 @@ public class ConfigurePublishEventAttributesDialog extends Dialog {
 
 	private TableItem bindPublishEventAttribute(PublishEventMediatorAttribute attribute) {
 		TableItem item = new TableItem(publishEventAttributeTable, SWT.NONE);
-		if (attribute.getAttributeValueType().getLiteral().equals(AttributeValueType.STRING.getLiteral())) {
+		if (attribute.getAttributeValueType().getLiteral().equals(AttributeValueType.VALUE.getLiteral())) {
 			item.setText(new String[] { attribute.getAttributeName(), attribute.getAttributeValue(),
 					attribute.getAttributeValueType().getLiteral() });
 		}
@@ -379,8 +380,8 @@ public class ConfigurePublishEventAttributesDialog extends Dialog {
 				// Update the publishEvent attribute with the latest data from table row
 				attribute.setAttributeName(item.getText(0));
 
-				if (item.getText(2).equals(AttributeValueType.STRING.getLiteral())) {
-					attribute.setAttributeValueType(AttributeValueType.STRING);
+				if (item.getText(2).equals(AttributeValueType.VALUE.getLiteral())) {
+					attribute.setAttributeValueType(AttributeValueType.VALUE);
 					attribute.setAttributeValue(item.getText(1));
 				} else if (item.getText(2).equals(AttributeValueType.EXPRESSION.getLiteral())) {
 					attribute.setAttributeValueType(AttributeValueType.EXPRESSION);
@@ -409,6 +410,31 @@ public class ConfigurePublishEventAttributesDialog extends Dialog {
 							EsbPackage.Literals.PUBLISH_EVENT_MEDIATOR__ARBITRARY_ATTRIBUTES, attribute);
 				}
 				getResultCommand().append(addCmd);
+			} else {
+				// If the property name needs to be updated.
+					SetCommand setCmdName = new SetCommand(editingDomain, attribute,
+							EsbPackage.Literals.ABSTRACT_NAME_VALUE_EXPRESSION_ATTRIBUTE__ATTRIBUTE_NAME, item.getText(0));
+					getResultCommand().append(setCmdName);
+					if (item.getText(2).equals(AttributeValueType.VALUE.getLiteral())) {
+						SetCommand setCmdType = new SetCommand(editingDomain, attribute,
+								EsbPackage.Literals.ABSTRACT_NAME_VALUE_EXPRESSION_ATTRIBUTE__ATTRIBUTE_VALUE_TYPE, AttributeValueType.VALUE);
+						getResultCommand().append(setCmdType);
+						SetCommand setCmdValue = new SetCommand(editingDomain, attribute,
+								EsbPackage.Literals.ABSTRACT_NAME_VALUE_EXPRESSION_ATTRIBUTE__ATTRIBUTE_VALUE, item.getText(1));
+						getResultCommand().append(setCmdValue);
+					} else if (item.getText(2).equals(AttributeValueType.EXPRESSION.getLiteral())) {
+						SetCommand setCmdType = new SetCommand(editingDomain, attribute,
+								EsbPackage.Literals.ABSTRACT_NAME_VALUE_EXPRESSION_ATTRIBUTE__ATTRIBUTE_VALUE_TYPE, AttributeValueType.EXPRESSION);
+						getResultCommand().append(setCmdType);
+						
+						NamespacedProperty namespaceProperty = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
+						namespaceProperty.setPropertyValue(item.getText(1));
+						namespaceProperty.setNamespaces(expression.getNamespaces());
+						
+						SetCommand setCmdExpression = new SetCommand(editingDomain, attribute,
+								EsbPackage.Literals.ABSTRACT_NAME_VALUE_EXPRESSION_ATTRIBUTE__ATTRIBUTE_EXPRESSION, namespaceProperty);
+						getResultCommand().append(setCmdExpression);
+					}
 			}
 		}
 		// Apply changes.

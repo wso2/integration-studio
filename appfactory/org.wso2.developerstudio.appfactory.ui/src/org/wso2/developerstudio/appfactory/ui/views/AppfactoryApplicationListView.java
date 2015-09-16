@@ -1402,12 +1402,12 @@ public class AppfactoryApplicationListView extends ViewPart {
 	        monitor.worked(5);    
 			manager.gitClone();
 			monitor.worked(65); 
-			if(!"trunk".equals(info.getVersion())){	    //$NON-NLS-1$
-					manager.checkout(info.getVersion());
-					monitor.worked(10);
-					monitor.subTask(Messages.AppfactoryApplicationListView_checkout_moniter_msg_2);
-					printInfoLog(Messages.AppfactoryApplicationListView_checkout_plog_msg_2);
-				}
+            if (!"trunk".equals(info.getVersion()) || !"master".equals(info.getVersion())) { //$NON-NLS-1$
+                manager.checkout(info.getVersion());
+                monitor.worked(10);
+                monitor.subTask(Messages.AppfactoryApplicationListView_checkout_moniter_msg_2);
+                printInfoLog(Messages.AppfactoryApplicationListView_checkout_plog_msg_2);
+            }
 		}else {
 			manager.checkout(info.getVersion());
 			monitor.worked(10);

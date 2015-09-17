@@ -1949,7 +1949,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//Sequences/outputConnector"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//Sequences/inputConnector"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//Sequences/mediatorFlow"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//Sequences/name"/>
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//Sequences/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//Sequences/recieveSequence"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//Sequences/associatedProxy"/>
       <genFeatures children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//Sequences/onError"/>

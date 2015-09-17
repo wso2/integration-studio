@@ -87,7 +87,7 @@ public class SequencesItemProvider
 				 getString("_UI_Sequences_name_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_Sequences_name_feature", "_UI_Sequences_type"),
 				 EsbPackage.Literals.SEQUENCES__NAME,
-				 true,
+				 false,
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,

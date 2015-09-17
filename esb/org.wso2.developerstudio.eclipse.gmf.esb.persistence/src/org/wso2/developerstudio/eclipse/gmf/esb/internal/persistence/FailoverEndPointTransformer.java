@@ -116,14 +116,15 @@ public class FailoverEndPointTransformer extends AbstractEndpointTransformer {
 
 	public FailoverEndpoint create(TransformationInfo info, FailoverEndPoint visualEndPoint, String name,
 			List<Endpoint> endPoints) throws TransformerException {
-		IEditorPart editorPart = null;
-		IProject activeProject = null;
-		FailoverEndpoint synapseFailEP = new FailoverEndpoint();
-
+		
 		if (StringUtils.isEmpty(visualEndPoint.getName())) {
 			throw new TransformerException(
 					"FailoverEndPoint should be configured. Double click on endpoint to configure.");
 		}
+		
+		IEditorPart editorPart = null;
+		IProject activeProject = null;
+		FailoverEndpoint synapseFailEP = new FailoverEndpoint();
 
 		if (StringUtils.isNotBlank(name)) {
 			synapseFailEP.setName(name);

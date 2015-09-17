@@ -572,7 +572,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
 //		}
 		if (sourceEditor != null) {
 			String xmlSource = sourceEditor.getDocument().get();
-			if (xmlSource != null) {
+			if (xmlSource != null && sourceDirty) {
 				if (!xmlSource.trim().isEmpty()) {
 					rebuildModelObject(xmlSource);
 				}

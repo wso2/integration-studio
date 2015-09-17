@@ -32,6 +32,7 @@ import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.wso2.carbon.mediator.publishevent.Property;
+import org.wso2.developerstudio.eclipse.gmf.esb.AttributeType;
 import org.wso2.developerstudio.eclipse.gmf.esb.AttributeValueType;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
@@ -65,6 +66,9 @@ public class PublishEventMediatorDeserializer extends
 			if (StringUtils.isNotEmpty(metaProperty.getKey())) {
 				metaAttribute.setAttributeName(metaProperty.getKey());
 			}
+			if (StringUtils.isNotEmpty(metaProperty.getType())) {
+				metaAttribute.setAttributeType(AttributeType.getByName(metaProperty.getType()));
+			}
 			if (metaProperty.getValue() != null) {
 				metaAttribute.setAttributeValueType(AttributeValueType.VALUE);
 				metaAttribute.setAttributeValue(metaProperty.getValue());
@@ -89,6 +93,9 @@ public class PublishEventMediatorDeserializer extends
 			if (StringUtils.isNotEmpty(correlationProperty.getKey())) {
 				correlationAttribute.setAttributeName(correlationProperty.getKey());
 			}
+			if (StringUtils.isNotEmpty(correlationProperty.getType())) {
+				correlationAttribute.setAttributeType(AttributeType.getByName(correlationProperty.getType()));
+			}
 			if (correlationProperty.getValue() != null) {
 				correlationAttribute.setAttributeValueType(AttributeValueType.VALUE);
 				correlationAttribute.setAttributeValue(correlationProperty.getValue());
@@ -111,6 +118,9 @@ public class PublishEventMediatorDeserializer extends
 
 			if (StringUtils.isNotEmpty(payloadProperty.getKey())) {
 				payloadAttribute.setAttributeName(payloadProperty.getKey());
+			}
+			if (StringUtils.isNotEmpty(payloadProperty.getType())) {
+				payloadAttribute.setAttributeType(AttributeType.getByName(payloadProperty.getType()));
 			}
 			if (payloadProperty.getValue() != null) {
 				payloadAttribute.setAttributeValueType(AttributeValueType.VALUE);
@@ -135,6 +145,9 @@ public class PublishEventMediatorDeserializer extends
 
 			if (StringUtils.isNotEmpty(arbitraryProperty.getKey())) {
 				arbitraryAttribute.setAttributeName(arbitraryProperty.getKey());
+			}
+			if (StringUtils.isNotEmpty(arbitraryProperty.getType())) {
+				arbitraryAttribute.setAttributeType(AttributeType.getByName(arbitraryProperty.getType()));
 			}
 			if (arbitraryProperty.getValue() != null) {
 				arbitraryAttribute.setAttributeValueType(AttributeValueType.VALUE);

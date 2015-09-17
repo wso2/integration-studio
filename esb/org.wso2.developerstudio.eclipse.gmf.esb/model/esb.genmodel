@@ -83,6 +83,14 @@
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//AttributeValueType/VALUE"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//AttributeValueType/EXPRESSION"/>
     </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//AttributeType">
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//AttributeType/STRING"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//AttributeType/INTEGER"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//AttributeType/BOOLEAN"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//AttributeType/DOUBLE"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//AttributeType/FLOAT"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//AttributeType/LONG"/>
+    </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//BeanMediatorAction">
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//BeanMediatorAction/CREATE"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//BeanMediatorAction/REMOVE"/>
@@ -1000,6 +1008,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//AbstractNameValueExpressionAttribute/attributeName"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//AbstractNameValueExpressionAttribute/attributeValueType"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//AbstractNameValueExpressionAttribute/attributeValue"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//AbstractNameValueExpressionAttribute/attributeType"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//AbstractNameValueExpressionAttribute/attributeExpression"/>
     </genClasses>
     <genClasses ecoreClass="esb.ecore#//BAMMediator">

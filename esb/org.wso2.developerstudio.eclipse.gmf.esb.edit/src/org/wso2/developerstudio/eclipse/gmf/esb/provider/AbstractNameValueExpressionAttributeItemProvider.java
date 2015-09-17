@@ -62,6 +62,7 @@ public class AbstractNameValueExpressionAttributeItemProvider extends EsbNodeIte
 			addAttributeNamePropertyDescriptor(object);
 			addAttributeValueTypePropertyDescriptor(object);
 			addAttributeValuePropertyDescriptor(object);
+			addAttributeTypePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -133,6 +134,28 @@ public class AbstractNameValueExpressionAttributeItemProvider extends EsbNodeIte
 	}
 
 	/**
+	 * This adds a property descriptor for the Attribute Type feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addAttributeTypePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_AbstractNameValueExpressionAttribute_attributeType_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_AbstractNameValueExpressionAttribute_attributeType_feature", "_UI_AbstractNameValueExpressionAttribute_type"),
+				 EsbPackage.Literals.ABSTRACT_NAME_VALUE_EXPRESSION_ATTRIBUTE__ATTRIBUTE_TYPE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -192,6 +215,7 @@ public class AbstractNameValueExpressionAttributeItemProvider extends EsbNodeIte
 			case EsbPackage.ABSTRACT_NAME_VALUE_EXPRESSION_ATTRIBUTE__ATTRIBUTE_NAME:
 			case EsbPackage.ABSTRACT_NAME_VALUE_EXPRESSION_ATTRIBUTE__ATTRIBUTE_VALUE_TYPE:
 			case EsbPackage.ABSTRACT_NAME_VALUE_EXPRESSION_ATTRIBUTE__ATTRIBUTE_VALUE:
+			case EsbPackage.ABSTRACT_NAME_VALUE_EXPRESSION_ATTRIBUTE__ATTRIBUTE_TYPE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case EsbPackage.ABSTRACT_NAME_VALUE_EXPRESSION_ATTRIBUTE__ATTRIBUTE_EXPRESSION:

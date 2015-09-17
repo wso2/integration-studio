@@ -52,6 +52,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.AggregateMediatorOutputConnector
 import org.wso2.developerstudio.eclipse.gmf.esb.AggregateSequenceType;
 import org.wso2.developerstudio.eclipse.gmf.esb.ApiResourceUrlStyle;
 import org.wso2.developerstudio.eclipse.gmf.esb.ArtifactType;
+import org.wso2.developerstudio.eclipse.gmf.esb.AttributeType;
 import org.wso2.developerstudio.eclipse.gmf.esb.AttributeValueType;
 import org.wso2.developerstudio.eclipse.gmf.esb.AutoOffsetResetType;
 import org.wso2.developerstudio.eclipse.gmf.esb.AutoscaleInMediator;
@@ -3152,6 +3153,13 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EEnum attributeTypeEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EEnum beanMediatorActionEEnum = null;
 
 	/**
@@ -6068,8 +6076,17 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getAbstractNameValueExpressionAttribute_AttributeType() {
+		return (EAttribute)abstractNameValueExpressionAttributeEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EReference getAbstractNameValueExpressionAttribute_AttributeExpression() {
-		return (EReference)abstractNameValueExpressionAttributeEClass.getEStructuralFeatures().get(3);
+		return (EReference)abstractNameValueExpressionAttributeEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -17372,6 +17389,15 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EEnum getAttributeType() {
+		return attributeTypeEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getBeanMediatorAction() {
 		return beanMediatorActionEEnum;
 	}
@@ -18735,6 +18761,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		createEAttribute(abstractNameValueExpressionAttributeEClass, ABSTRACT_NAME_VALUE_EXPRESSION_ATTRIBUTE__ATTRIBUTE_NAME);
 		createEAttribute(abstractNameValueExpressionAttributeEClass, ABSTRACT_NAME_VALUE_EXPRESSION_ATTRIBUTE__ATTRIBUTE_VALUE_TYPE);
 		createEAttribute(abstractNameValueExpressionAttributeEClass, ABSTRACT_NAME_VALUE_EXPRESSION_ATTRIBUTE__ATTRIBUTE_VALUE);
+		createEAttribute(abstractNameValueExpressionAttributeEClass, ABSTRACT_NAME_VALUE_EXPRESSION_ATTRIBUTE__ATTRIBUTE_TYPE);
 		createEReference(abstractNameValueExpressionAttributeEClass, ABSTRACT_NAME_VALUE_EXPRESSION_ATTRIBUTE__ATTRIBUTE_EXPRESSION);
 
 		bamMediatorEClass = createEClass(BAM_MEDIATOR);
@@ -20286,6 +20313,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		logCategoryEEnum = createEEnum(LOG_CATEGORY);
 		logLevelEEnum = createEEnum(LOG_LEVEL);
 		attributeValueTypeEEnum = createEEnum(ATTRIBUTE_VALUE_TYPE);
+		attributeTypeEEnum = createEEnum(ATTRIBUTE_TYPE);
 		beanMediatorActionEEnum = createEEnum(BEAN_MEDIATOR_ACTION);
 		endPointAddressingVersionEEnum = createEEnum(END_POINT_ADDRESSING_VERSION);
 		endPointTimeOutActionEEnum = createEEnum(END_POINT_TIME_OUT_ACTION);
@@ -21077,6 +21105,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		initEAttribute(getAbstractNameValueExpressionAttribute_AttributeName(), ecorePackage.getEString(), "attributeName", "attribute_name", 0, 1, AbstractNameValueExpressionAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAbstractNameValueExpressionAttribute_AttributeValueType(), this.getAttributeValueType(), "attributeValueType", null, 0, 1, AbstractNameValueExpressionAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAbstractNameValueExpressionAttribute_AttributeValue(), ecorePackage.getEString(), "attributeValue", "attribute_value", 0, 1, AbstractNameValueExpressionAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAbstractNameValueExpressionAttribute_AttributeType(), this.getAttributeType(), "attributeType", null, 0, 1, AbstractNameValueExpressionAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getAbstractNameValueExpressionAttribute_AttributeExpression(), this.getNamespacedProperty(), null, "attributeExpression", null, 0, 1, AbstractNameValueExpressionAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(bamMediatorEClass, BAMMediator.class, "BAMMediator", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -22703,6 +22732,14 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		initEEnum(attributeValueTypeEEnum, AttributeValueType.class, "AttributeValueType");
 		addEEnumLiteral(attributeValueTypeEEnum, AttributeValueType.VALUE);
 		addEEnumLiteral(attributeValueTypeEEnum, AttributeValueType.EXPRESSION);
+
+		initEEnum(attributeTypeEEnum, AttributeType.class, "AttributeType");
+		addEEnumLiteral(attributeTypeEEnum, AttributeType.STRING);
+		addEEnumLiteral(attributeTypeEEnum, AttributeType.INTEGER);
+		addEEnumLiteral(attributeTypeEEnum, AttributeType.BOOLEAN);
+		addEEnumLiteral(attributeTypeEEnum, AttributeType.DOUBLE);
+		addEEnumLiteral(attributeTypeEEnum, AttributeType.FLOAT);
+		addEEnumLiteral(attributeTypeEEnum, AttributeType.LONG);
 
 		initEEnum(beanMediatorActionEEnum, BeanMediatorAction.class, "BeanMediatorAction");
 		addEEnumLiteral(beanMediatorActionEEnum, BeanMediatorAction.CREATE);

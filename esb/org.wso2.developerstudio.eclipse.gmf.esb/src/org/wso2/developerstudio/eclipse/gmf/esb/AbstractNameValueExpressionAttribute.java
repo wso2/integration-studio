@@ -27,6 +27,7 @@ package org.wso2.developerstudio.eclipse.gmf.esb;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractNameValueExpressionAttribute#getAttributeName <em>Attribute Name</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractNameValueExpressionAttribute#getAttributeValueType <em>Attribute Value Type</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractNameValueExpressionAttribute#getAttributeValue <em>Attribute Value</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractNameValueExpressionAttribute#getAttributeType <em>Attribute Type</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractNameValueExpressionAttribute#getAttributeExpression <em>Attribute Expression</em>}</li>
  * </ul>
  * </p>
@@ -119,6 +120,35 @@ public interface AbstractNameValueExpressionAttribute extends EsbNode {
 	 * @generated
 	 */
 	void setAttributeValue(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Attribute Type</b></em>' attribute.
+	 * The literals are from the enumeration {@link org.wso2.developerstudio.eclipse.gmf.esb.AttributeType}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Attribute Type</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Attribute Type</em>' attribute.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.AttributeType
+	 * @see #setAttributeType(AttributeType)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getAbstractNameValueExpressionAttribute_AttributeType()
+	 * @model
+	 * @generated
+	 */
+	AttributeType getAttributeType();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractNameValueExpressionAttribute#getAttributeType <em>Attribute Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Attribute Type</em>' attribute.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.AttributeType
+	 * @see #getAttributeType()
+	 * @generated
+	 */
+	void setAttributeType(AttributeType value);
 
 	/**
 	 * Returns the value of the '<em><b>Attribute Expression</b></em>' containment reference.

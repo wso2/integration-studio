@@ -449,6 +449,8 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
 				return createLogLevelFromString(eDataType, initialValue);
 			case EsbPackage.ATTRIBUTE_VALUE_TYPE:
 				return createAttributeValueTypeFromString(eDataType, initialValue);
+			case EsbPackage.ATTRIBUTE_TYPE:
+				return createAttributeTypeFromString(eDataType, initialValue);
 			case EsbPackage.BEAN_MEDIATOR_ACTION:
 				return createBeanMediatorActionFromString(eDataType, initialValue);
 			case EsbPackage.END_POINT_ADDRESSING_VERSION:
@@ -715,6 +717,8 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
 				return convertLogLevelToString(eDataType, instanceValue);
 			case EsbPackage.ATTRIBUTE_VALUE_TYPE:
 				return convertAttributeValueTypeToString(eDataType, instanceValue);
+			case EsbPackage.ATTRIBUTE_TYPE:
+				return convertAttributeTypeToString(eDataType, instanceValue);
 			case EsbPackage.BEAN_MEDIATOR_ACTION:
 				return convertBeanMediatorActionToString(eDataType, instanceValue);
 			case EsbPackage.END_POINT_ADDRESSING_VERSION:
@@ -4911,6 +4915,26 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
 	 * @generated
 	 */
 	public String convertAttributeValueTypeToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public AttributeType createAttributeTypeFromString(EDataType eDataType, String initialValue) {
+		AttributeType result = AttributeType.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertAttributeTypeToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

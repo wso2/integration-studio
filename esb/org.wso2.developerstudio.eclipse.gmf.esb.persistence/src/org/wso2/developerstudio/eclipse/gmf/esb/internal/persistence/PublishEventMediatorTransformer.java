@@ -109,6 +109,9 @@ public class PublishEventMediatorTransformer extends AbstractEsbNodeTransformer 
 			if (visualAttribute.getAttributeValueType().getLiteral().equals(AttributeValueType.VALUE.getLiteral())) {
 				attribute.setValue(visualAttribute.getAttributeValue());
 			}
+			if (StringUtils.isNotEmpty(visualAttribute.getAttributeType().getLiteral())) {
+				attribute.setType(visualAttribute.getAttributeType().getLiteral());
+			}
 			if (visualAttribute.getAttributeValueType().getLiteral().equals(AttributeValueType.EXPRESSION.getLiteral())) {
 				// ESB supports only STRING for attribute type, hence value is set to STRING at any given time
 				NamespacedProperty namespacedExpression = visualAttribute.getAttributeExpression();

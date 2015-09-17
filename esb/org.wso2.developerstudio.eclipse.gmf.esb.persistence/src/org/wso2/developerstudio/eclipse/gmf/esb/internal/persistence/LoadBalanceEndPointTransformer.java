@@ -107,7 +107,8 @@ public class LoadBalanceEndPointTransformer extends AbstractEndpointTransformer 
 
 	}
 
-	public void createSynapseObject(TransformationInfo info, EObject subject, List<Endpoint> endPoints) {
+	public void createSynapseObject(TransformationInfo info, EObject subject,
+			List<Endpoint> endPoints) throws TransformerException {
 
 		Assert.isTrue(subject instanceof LoadBalanceEndPoint, "Invalid subject.");
 		LoadBalanceEndPoint visualEndPoint = (LoadBalanceEndPoint) subject;
@@ -115,7 +116,8 @@ public class LoadBalanceEndPointTransformer extends AbstractEndpointTransformer 
 
 	}
 
-	public void transformWithinSequence(TransformationInfo information, EsbNode subject, SequenceMediator sequence)
+	public void transformWithinSequence(TransformationInfo information,
+			EsbNode subject, SequenceMediator sequence)
 			throws TransformerException {
 		Assert.isTrue(subject instanceof LoadBalanceEndPoint, "Invalid subject");
 		LoadBalanceEndPoint visualEndPoint = (LoadBalanceEndPoint) subject;
@@ -123,9 +125,14 @@ public class LoadBalanceEndPointTransformer extends AbstractEndpointTransformer 
 		setEndpointToSendOrCallMediator(sequence, synapseEP);
 	}
 
-	public LoadbalanceEndpoint create(TransformationInfo info, LoadBalanceEndPoint visualEndPoint, String name,
-			List<Endpoint> endPoints) {
+	public LoadbalanceEndpoint create(TransformationInfo info,
+			LoadBalanceEndPoint visualEndPoint, String name,
+			List<Endpoint> endPoints) throws TransformerException {
 
+		if (StringUtils.isEmpty(visualEndPoint.getName())) {
+			throw new TransformerException(
+					"Load-BalanceEndPoint should be configured. Double click on endpoint to configure.");
+		}
 		IEditorPart editorPart = null;
 		IProject activeProject = null;
 		List<Endpoint> endPointsList = new ArrayList<Endpoint>();

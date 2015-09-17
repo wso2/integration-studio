@@ -118,7 +118,8 @@ public class RecipientListEndPointTransformer extends AbstractEndpointTransforme
 		}
 	}
 
-	public void transformWithinSequence(TransformationInfo information, EsbNode subject, SequenceMediator sequence)
+	public void transformWithinSequence(TransformationInfo information,
+			EsbNode subject, SequenceMediator sequence)
 			throws TransformerException {
 		Assert.isTrue(subject instanceof RecipientListEndPoint, "Invalid subject");
 		RecipientListEndPoint endPointModel = (RecipientListEndPoint) subject;
@@ -131,11 +132,17 @@ public class RecipientListEndPointTransformer extends AbstractEndpointTransforme
 		}		
 	}
 
-	public RecipientListEndpoint create(TransformationInfo info, RecipientListEndPoint model, String name,
-			List<Endpoint> endPoints) throws JaxenException {
+	public RecipientListEndpoint create(TransformationInfo info,
+			RecipientListEndPoint model, String name, List<Endpoint> endPoints)
+			throws JaxenException, TransformerException {
 		RecipientListEndpoint recipientList;
 		IEditorPart editorPart = null;
 		IProject activeProject = null;
+
+		if (StringUtils.isEmpty(model.getName())) {
+			throw new TransformerException(
+					"RecipientListEndPoint should be configured. Double click on endpoint to configure.");
+		}
 
 		if (model.getEndpointType().getLiteral().equals(RecipientListEndpointType.VALUE.getLiteral())
 				|| model.getEndpointType().getLiteral().equals(RecipientListEndpointType.XPATH.getLiteral())) {

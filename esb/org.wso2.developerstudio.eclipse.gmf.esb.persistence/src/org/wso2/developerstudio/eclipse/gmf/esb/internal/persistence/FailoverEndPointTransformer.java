@@ -96,7 +96,8 @@ public class FailoverEndPointTransformer extends AbstractEndpointTransformer {
 
 	}
 
-	public void createSynapseObject(TransformationInfo info, EObject subject, List<Endpoint> endPoints) {
+	public void createSynapseObject(TransformationInfo info, EObject subject,
+			List<Endpoint> endPoints) throws TransformerException {
 
 		Assert.isTrue(subject instanceof FailoverEndPoint, "Invalid subject.");
 		FailoverEndPoint visualEndPoint = (FailoverEndPoint) subject;
@@ -104,7 +105,8 @@ public class FailoverEndPointTransformer extends AbstractEndpointTransformer {
 
 	}
 
-	public void transformWithinSequence(TransformationInfo information, EsbNode subject, SequenceMediator sequence)
+	public void transformWithinSequence(TransformationInfo information,
+			EsbNode subject, SequenceMediator sequence)
 			throws TransformerException {
 		Assert.isTrue(subject instanceof FailoverEndPoint, "Invalid subject");
 		FailoverEndPoint visualEndPoint = (FailoverEndPoint) subject;
@@ -113,10 +115,15 @@ public class FailoverEndPointTransformer extends AbstractEndpointTransformer {
 	}
 
 	public FailoverEndpoint create(TransformationInfo info, FailoverEndPoint visualEndPoint, String name,
-			List<Endpoint> endPoints) {
+			List<Endpoint> endPoints) throws TransformerException {
 		IEditorPart editorPart = null;
 		IProject activeProject = null;
 		FailoverEndpoint synapseFailEP = new FailoverEndpoint();
+
+		if (StringUtils.isEmpty(visualEndPoint.getName())) {
+			throw new TransformerException(
+					"FailoverEndPoint should be configured. Double click on endpoint to configure.");
+		}
 
 		if (StringUtils.isNotBlank(name)) {
 			synapseFailEP.setName(name);

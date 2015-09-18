@@ -812,8 +812,7 @@ public class RegistryBrowserAPIMView extends ViewPart implements Observer {
 				}
 			});
 		} catch (InvocationTargetException | InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			log.error("Error openning sequence.", e);
 		}
 		
 	}
@@ -1422,50 +1421,40 @@ public class RegistryBrowserAPIMView extends ViewPart implements Observer {
 		return commit;
 	}
 	
-	private void commitSequence(final RegistryResourceNode regResourceNode) throws IOException,
-			InvalidRegistryURLException, UnknownRegistryException, CoreException {
-		if (regResourceNode.getFileEditor() != null
-		        && !regResourceNode.isIsdeleted()
-		        && regResourceNode.getFileEditor().isDirty()
-				&& MessageDialogUtils.question(regResourceNode.getFileEditor().getSite().getShell(), "'"
-						+ regResourceNode.getResourceName() + Q_SAVE_CHANGES_AND_COMMIT)) {
-			regResourceNode.setDirty(false);
-			regResourceNode.getFileEditor().doSave(new NullProgressMonitor());
-
-			openNodesMap.put(regResourceNode.getLocalFile().getAbsolutePath(), regResourceNode);
-		} else {
-			openNodesMap.put(regResourceNode.getLocalFile().getAbsolutePath(), regResourceNode);
-		}
-
-		if (regResourceNode.isIsdeleted()) {
-			deleteSequence(regResourceNode);
-		} else if (regResourceNode.isIsnew()) {
-			regResourceNode.putFile();
-			regResourceNode.setNew(false);
-		} else {
-			if (regResourceNode.isRename()) {
-
-				regResourceNode.rename();
-				File source = regResourceNode.getFile();
-				regResourceNode.setRename(false);
-				File dest = regResourceNode.getFile();
-				copyFileToFile(source, dest);
-				regResourceNode.saveChangesToRegistry();
-				regResourceNode.removeFromVersionContent();
-
-			} else {
-				regResourceNode.saveChangesToRegistry();
-			}
-
-		}
-		regResourceNode.setIsmodifiyed(false);
-		IFile workspaceFile = regResourceNode.getWorkspaceFile();
-		if (workspaceFile != null && workspaceFile.exists()) {
-			workspaceFile.getProject().delete(true, new NullProgressMonitor());
-			//workspaceFile.delete(true, new NullProgressMonitor());
-		}
-
-	}
+    private void commitSequence(final RegistryResourceNode regResourceNode) throws IOException,
+            InvalidRegistryURLException, UnknownRegistryException, CoreException {
+        if (regResourceNode.isIsdeleted()) {
+            deleteSequence(regResourceNode);
+            IFile workspaceFile = regResourceNode.getWorkspaceFile();
+            if (workspaceFile != null && workspaceFile.exists()) {
+                workspaceFile.getProject().delete(true, new NullProgressMonitor());
+            }
+        } else {
+            if (regResourceNode.getFileEditor() != null
+                    && regResourceNode.getFileEditor().isDirty()
+                    && MessageDialogUtils.question(regResourceNode.getFileEditor().getSite().getShell(), "'"
+                            + regResourceNode.getResourceName() + Q_SAVE_CHANGES_AND_COMMIT)) {
+                regResourceNode.setDirty(false);
+                regResourceNode.getFileEditor().doSave(new NullProgressMonitor());
+            }
+            openNodesMap.put(regResourceNode.getWorkspaceFile().getLocation().toOSString(), regResourceNode);
+            if (regResourceNode.isIsnew()) {
+                regResourceNode.putFile();
+                regResourceNode.setNew(false);
+            } else if (regResourceNode.isRename()) {
+                regResourceNode.rename();
+                File source = regResourceNode.getFile();
+                regResourceNode.setRename(false);
+                File dest = regResourceNode.getFile();
+                copyFileToFile(source, dest);
+                regResourceNode.saveChangesToRegistry();
+                regResourceNode.removeFromVersionContent();
+            } else {
+                regResourceNode.saveChangesToRegistry();
+            }
+        }
+        regResourceNode.setIsmodifiyed(false);
+    }
 
 	private Action discartSequenceAction(final RegistryResourceNode regResourceNode) {
 

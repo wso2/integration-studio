@@ -367,9 +367,10 @@ public class CarbonServer44Utils {
 				Node httpNode = (Node) catelinaXPath.evaluate(
 						"/Server/Service/Connector[1]/@port", catelinaDocument,
 						XPathConstants.NODE);
-				Node httpsNode = (Node) catelinaXPath.evaluate(
-						"/Server/Service/Connector[@sslProtocol=\"TLS\"]/@port", catelinaDocument,
-						XPathConstants.NODE);
+				Node httpsNode = (Node) catelinaXPath
+						.evaluate(
+								CarbonServerConstants.CATALINA_XPATH_EXPRESSION_FOR_SSL_ENABLED_PORT,
+								catelinaDocument, XPathConstants.NODE);
 				Node offSet=(Node) xPath.evaluate("/Server/Ports/Offset", document,XPathConstants.NODE);
 				for (ServerPort serverPort : serverPorts) {
 					ServerPort port = serverPort;

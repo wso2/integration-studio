@@ -248,7 +248,10 @@ public class CarbonServerBehavior44 extends CarbonServerBehaviour{
 			int offSet = Integer.parseInt((String)xPath.evaluate("/Server/Ports/Offset", document, XPathConstants.STRING));
 //			XPathExpression  xPathExpression=xPath.compile("/:Server/:Ports/:ServletTransports/:HTTPS");
 //			String evaluate = xPathExpression.evaluate(inputSource);
-			String evaluate = (String)catelineXPath.evaluate("/Server/Service/Connector[@sslProtocol=\"TLS\"]/@port", catelinaDocument, XPathConstants.STRING);
+			String evaluate = (String) catelineXPath
+					.evaluate(
+							CarbonServerConstants.CATALINA_XPATH_EXPRESSION_FOR_SSL_ENABLED_PORT,
+							catelinaDocument, XPathConstants.STRING);
 			
 			if(!evaluate.equals("")){
 				port = Integer.parseInt(evaluate)+offSet;

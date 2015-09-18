@@ -31,25 +31,24 @@ public class MavenPropertyTester extends PropertyTester{
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
 	
-    public boolean test(Object arg0, String arg1, Object[] arg2, Object arg3) {
+   public boolean test(Object arg0, String arg1, Object[] arg2, Object arg3) {
 		
 		if(arg0 instanceof IProject){
 			IProject project= (IProject)arg0;
-			if(project.isOpen()){
-				List<String> allNatures = Constants.getAllNatures();
-				for (String nature : allNatures) {
-	                try {
-	                    if(project.hasNature(nature)){
-	                    	return false;
-	                    }
-                    } catch (CoreException e) {
-	                    log.error("Error occured while trying to access the project "+project.getName(), e);
-                    }
-                }
+			if(project!=null && project.exists() && project.isOpen()){
+ 
+					try {
+						if(project.hasNature(Constants.MAVEN_MULTI_MODULE_PROJECT_NATURE)){
+							return true;
+						}
+					} catch (CoreException e) {
+						log.error("Error while getting the nature in MavenPropertyTester", e);
+					}
 			}
 		}
 		
-	    return true;
+	    return false;
     }
+
 
 }

@@ -85,7 +85,7 @@ public class MvnMultiModuleWizard extends AbstractWSO2ProjectCreationWizard {
 					
 					List<String> modules = mavenProject2.getModules();
 					MvnMultiModuleProjectList projectListProvider = new MvnMultiModuleProjectList();
-					List<ListData> listData = projectListProvider.getListData(null, null);
+					List<ListData> listData = projectListProvider.getListData(null, moduleModel);
 
 					for (ListData data : listData) {
 						IProject moduleProject = (IProject) data.getData();

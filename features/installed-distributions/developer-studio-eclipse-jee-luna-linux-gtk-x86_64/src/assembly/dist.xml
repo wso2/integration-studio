@@ -16,7 +16,7 @@
  ~ under the License.
  -->
 <assembly>
-  
+
     <!--baseDirectory>target</baseDirectory-->
   <formats>
     <format>zip</format>
@@ -26,6 +26,8 @@
     <fileSet>
       <directory>${project.build.directory}/eclipse</directory>
       <outputDirectory>eclipse</outputDirectory>
+      <fileMode>0777</fileMode>
+      <directoryMode>0777</directoryMode>
     </fileSet>
   </fileSets>
 </assembly>

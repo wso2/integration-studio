@@ -66,6 +66,9 @@ import org.eclipse.swt.events.MouseEvent;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IFileEditorInput;
+import org.eclipse.ui.IPerspectiveDescriptor;
+import org.eclipse.ui.IWorkbench;
+import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.eclipse.capp.core.manifest.ArtifactDependency;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.Artifact;
@@ -114,12 +117,38 @@ public class EsbPaletteFactory {
 	 * @generated NOT
 	 */
 	public void fillPalette(PaletteRoot paletteRoot) {
-		paletteRoot.add(createNodes1Group());
-		paletteRoot.add(createMediators2Group());
-		paletteRoot.add(createEndPoints3Group());
-		paletteRoot.add(createLinks4Group());
-		//paletteRoot.add(createHelpers5Group());
-		//paletteRoot.add(createCloudConnectors6Group());
+
+		// open the perspective "wso2 esb graphical"
+		// TODO review if this is the best place for switching
+		
+		// Reason for handling this error - If any runtime error occur while getting the perspective id then ESB editor
+		// should be open in a normal way
+		try {
+			IWorkbench workbench = PlatformUI.getWorkbench();
+			IWorkbenchWindow window = workbench.getActiveWorkbenchWindow();
+			IPerspectiveDescriptor perspective = window.getActivePage().getPerspective();
+			if ("org.wso2.developerstudio.registry.remote.registry.apim.pespective".equals(perspective.getId())) {
+				paletteRoot.add(createNodes1Group());
+				paletteRoot.add(createMediatorsAPIMGroup());
+				paletteRoot.add(createEndPoints3Group());
+				paletteRoot.add(createLinks4Group());
+			} else {
+				paletteRoot.add(createNodes1Group());
+				paletteRoot.add(createMediators2Group());
+				paletteRoot.add(createEndPoints3Group());
+				paletteRoot.add(createLinks4Group());
+			}
+		} catch (Exception e) {
+			log.error("Rrror occur while obtaining the perspective Id " + e.getMessage(), e);
+		// If any error occur while obtaining the perspective Id then the ESB editor loads in a normal way
+			paletteRoot.add(createNodes1Group());
+			paletteRoot.add(createMediators2Group());
+			paletteRoot.add(createEndPoints3Group());
+			paletteRoot.add(createLinks4Group());
+		}
+
+		// paletteRoot.add(createHelpers5Group());
+		// paletteRoot.add(createCloudConnectors6Group());
 	}
 
 	/**
@@ -223,6 +252,103 @@ public class EsbPaletteFactory {
 		//paletteContainer.add(createRouterMediator38CreationTool()); removed as requested in TOOLS-1800
 		paletteContainer.add(createBuilderMediator32CreationTool());
 		paletteContainer.add(createRuleMediator30CreationTool());
+
+		// Agent Mediator Category separator.
+		paletteContainer.add(new PaletteSeparator("Agent"));
+
+		paletteContainer.add(createBAMMediator40CreationTool());
+		paletteContainer.add(createPublishEventMediator48CreationTool());
+
+		paletteContainer.setInitialState(INITIAL_STATE_CLOSED);
+		return paletteContainer;
+	}
+
+	/**
+	 * Creates "Mediators" palette tool for APIM group
+	 * @generated NOT
+	 */
+	private PaletteContainer createMediatorsAPIMGroup() {
+		PaletteDrawer paletteContainer = new PaletteDrawer(
+				Messages.Mediators2Group_title);
+		paletteContainer.setId("createMediatorsAPIMGroup"); //$NON-NLS-1$	
+		paletteContainer.add(createCallMediator45CreationTool());				
+		//paletteContainer.add(createCallTemplateMediator33CreationTool());
+		paletteContainer.add(createDropMediator1CreationTool());		
+		paletteContainer.add(createLogMediator3CreationTool());		
+		//paletteContainer.add(createLoopBackMediator43CreationTool());		
+		paletteContainer.add(createPropertyMediator4CreationTool());		
+		//paletteContainer.add(createRespondMediator44CreationTool());
+		//paletteContainer.add(createSendMediator19CreationTool());		
+		paletteContainer.add(createSequence4CreationTool());		
+		//paletteContainer.add(createStoreMediator31CreationTool());
+		
+		// Core Mediator Category separator.
+		paletteContainer.add(new PaletteSeparator("Core"));
+
+		paletteContainer.add(createConditionalRouterMediator39CreationTool());
+		paletteContainer.add(createFilterMediator2CreationTool());
+		paletteContainer.add(createSwitchMediator7CreationTool());
+		paletteContainer.add(createValidateMediator37CreationTool());
+		
+		
+
+		// Filter Mediator Category separator.
+		paletteContainer.add(new PaletteSeparator("Filter"));
+
+	//	paletteContainer.add(createBeanMediator41CreationTool());
+		paletteContainer.add(createClassMediator10CreationTool());
+	//	paletteContainer.add(createCommandMediator15CreationTool());
+	//	paletteContainer.add(createEJBMediator42CreationTool());		
+		paletteContainer.add(createScriptMediator12CreationTool());		
+	//	paletteContainer.add(createSpringMediator11CreationTool());
+
+		// Extension Mediator Category separator.
+		paletteContainer.add(new PaletteSeparator("Extension"));
+
+		paletteContainer.add(createEnrichMediator5CreationTool());
+		paletteContainer.add(createFaultMediator13CreationTool());
+		paletteContainer.add(createHeaderMediator20CreationTool());
+		paletteContainer.add(createPayloadFactoryMediator34CreationTool());
+		//paletteContainer.add(createSmooksMediator18CreationTool());
+		paletteContainer.add(createURLRewriteMediator36CreationTool());
+		paletteContainer.add(createXQueryMediator14CreationTool());
+		paletteContainer.add(createXSLTMediator6CreationTool());
+		//paletteContainer.add(createDataMapperMediator46CreationTool()); // enabled
+		paletteContainer.add(createFastXSLTMediator47CreationTool());
+
+		// Transform Mediator Category separator.
+		paletteContainer.add(new PaletteSeparator("Transform"));
+
+		paletteContainer.add(createCacheMediator23CreationTool());
+		paletteContainer.add(createDBLookupMediator16CreationTool());
+		paletteContainer.add(createDBReportMediator17CreationTool());
+		paletteContainer.add(createEnqueueMediator35CreationTool());
+		paletteContainer.add(createEventMediator8CreationTool());
+		//paletteContainer.add(createRMSequenceMediator28CreationTool());
+		paletteContainer.add(createThrottleMediator27CreationTool());
+		paletteContainer.add(createTransactionMediator26CreationTool());
+
+		// Advanced Mediator Category separator.
+		paletteContainer.add(new PaletteSeparator("Advanced"));
+
+		paletteContainer.add(createAggregateMediator24CreationTool());
+		paletteContainer.add(createCalloutMediator25CreationTool());
+		paletteContainer.add(createCloneMediator21CreationTool());
+		paletteContainer.add(createIterateMediator22CreationTool());
+		paletteContainer.add(createForEachMediator7CreationTool());
+
+		// Advanced Mediator Category separator.
+		paletteContainer.add(new PaletteSeparator("Advanced1"));
+
+		paletteContainer.add(createEntitlementMediator9CreationTool());
+	//	paletteContainer.add(createOAuthMediator29CreationTool());
+
+		// Advanced Mediator Category separator.
+		paletteContainer.add(new PaletteSeparator("Advanced2"));
+
+		//paletteContainer.add(createRouterMediator38CreationTool()); removed as requested in TOOLS-1800
+		paletteContainer.add(createBuilderMediator32CreationTool());
+	//	paletteContainer.add(createRuleMediator30CreationTool());
 
 		// Agent Mediator Category separator.
 		paletteContainer.add(new PaletteSeparator("Agent"));

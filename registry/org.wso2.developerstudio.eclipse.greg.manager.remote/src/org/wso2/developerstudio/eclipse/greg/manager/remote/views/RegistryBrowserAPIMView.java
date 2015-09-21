@@ -65,6 +65,7 @@ import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.DoubleClickEvent;
 import org.eclipse.jface.viewers.IDoubleClickListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.jface.viewers.OpenEvent;
 import org.eclipse.jface.viewers.TreeSelection;
 import org.eclipse.jface.window.Window;
 import org.eclipse.swt.SWT;
@@ -801,8 +802,52 @@ public class RegistryBrowserAPIMView extends ViewPart implements Observer {
 								final IEditorPart editor = RemoteContentManager.openFile(tempFile);
 								monitor.worked(70);
 								resourceNode.setFileEditor(editor);
+								editor.getEditorSite().getPage().addPartListener(new IPartListener2() {
+                                    
+                                    @Override
+                                    public void partVisible(IWorkbenchPartReference arg0) {
+                                        // Do nothing
+                                    }
+                                    
+                                    @Override
+                                    public void partOpened(IWorkbenchPartReference arg0) {
+                                        // Do nothing 
+                                    }
+                                    
+                                    @Override
+                                    public void partInputChanged(IWorkbenchPartReference arg0) {
+                                        // Do nothing
+                                    }
+                                    
+                                    @Override
+                                    public void partHidden(IWorkbenchPartReference arg0) {
+                                        // Do nothing
+                                    }
+                                    
+                                    @Override
+                                    public void partDeactivated(IWorkbenchPartReference arg0) {
+                                        // Do nothing
+                                    }
+                                    
+                                    @Override
+                                    public void partClosed(IWorkbenchPartReference partRef) {
+                                       if(partRef.getPart(false).equals(editor)){
+                                           resourceNode.setFileEditor(null);
+                                       }  
+                                    }
+                                    
+                                    @Override
+                                    public void partBroughtToTop(IWorkbenchPartReference arg0) {
+                                        // Do nothing     
+                                    }
+                                    
+                                    @Override
+                                    public void partActivated(IWorkbenchPartReference arg0) {
+                                        // Do nothing
+                                    }
+                                });
 								openNodeSet.add(resourceNode);
-								openNodesMap.put(RemoteContentManager.getWorkspaceFile().getLocation().toOSString(), resourceNode);
+								openNodesMap.put(resourceNode.getLocalFile().getAbsolutePath(), resourceNode);
 								resourceNode.setDirty(false);
 								resourceNode.setWorkspaceFile(RemoteContentManager.getWorkspaceFile()); 
 								monitor.done();
@@ -1437,10 +1482,15 @@ public class RegistryBrowserAPIMView extends ViewPart implements Observer {
                 regResourceNode.setDirty(false);
                 regResourceNode.getFileEditor().doSave(new NullProgressMonitor());
             }
-            openNodesMap.put(regResourceNode.getWorkspaceFile().getLocation().toOSString(), regResourceNode);
             if (regResourceNode.isIsnew()) {
+                File newFile = regResourceNode.getNewFile();
                 regResourceNode.putFile();
                 regResourceNode.setNew(false);
+                if(regResourceNode.getFileEditor() != null){
+                    closeEditor(regResourceNode);
+                    newFile.delete();
+                    openResourceInEditor(regResourceNode);
+                }
             } else if (regResourceNode.isRename()) {
                 regResourceNode.rename();
                 File source = regResourceNode.getFile();
@@ -1452,6 +1502,7 @@ public class RegistryBrowserAPIMView extends ViewPart implements Observer {
             } else {
                 regResourceNode.saveChangesToRegistry();
             }
+            openNodesMap.put(regResourceNode.getLocalFile().getAbsolutePath(), regResourceNode);
         }
         regResourceNode.setIsmodifiyed(false);
     }

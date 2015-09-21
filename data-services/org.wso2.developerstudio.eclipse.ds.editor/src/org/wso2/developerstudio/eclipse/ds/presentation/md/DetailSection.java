@@ -1203,6 +1203,18 @@ public class DetailSection {
 					voidMaker();
 					voidMaker();
 				}
+				
+				if (displayName
+                        .equals(DetailSectionCustomUiConstants.RESULT_OUTPUT_TYPE)) {
+
+				    labelMaker(DetailSectionCustomUiConstants.RESULT_OUTPUT_TYPE_LABEL);
+				    sectionUtil.getAttributeField(detailsclient, toolkit,
+                            result, result.getOutputType(),
+                            DsPackage.eINSTANCE.getResultMapping_OutputType(),
+                            DetailSectionCustomUiConstants.STRING);
+                    voidMaker();
+                    voidMaker();
+                }
 
 			}
 		}

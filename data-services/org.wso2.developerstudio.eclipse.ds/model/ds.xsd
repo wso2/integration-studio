@@ -1,292 +1,304 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- ~ Copyright (c) 2005-2010, WSO2 Inc. (http://www.wso2.org) All Rights 
-	Reserved. ~ ~ WSO2 Inc. licenses this file to you under the Apache License, 
-	~ Version 2.0 (the "License"); you may not use this file except ~ in compliance 
-	with the License. ~ You may obtain a copy of the License at ~ ~ http://www.apache.org/licenses/LICENSE-2.0 
-	~ ~ Unless required by applicable law or agreed to in writing, ~ software 
-	distributed under the License is distributed on an ~ "AS IS" BASIS, WITHOUT 
-	WARRANTIES OR CONDITIONS OF ANY ~ KIND, either express or implied. See the 
-	License for the ~ specific language governing permissions and limitations 
-	~ under the License. -->
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-	xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" ecore:package="org.wso2.developerstudio.eclipse.ds"
-	xmlns:ds="http:///org/wso2/developerstudio/eclipse/ds">
-
-	<xs:element name="data">
-		<xs:complexType ecore:name="DataService">
-			<xs:choice maxOccurs="unbounded" ecore:featureMap="">
-				<xs:element name="description" maxOccurs="1" minOccurs="0" />
-				<xs:element name="config" maxOccurs="unbounded"
-					minOccurs="1">
-					<xs:complexType ecore:name="DataSourceConfiguration">
-						<xs:sequence>
-							<xs:element ref="property" maxOccurs="unbounded"
-								minOccurs="1" />
-						</xs:sequence>
-						<xs:attribute name="id" type="xs:string" use="optional" />
-					</xs:complexType>
-				</xs:element>
-				<xs:element name="query" maxOccurs="unbounded" minOccurs="0">
-					<xs:complexType ecore:name="Query">
-						<xs:choice maxOccurs="unbounded" ecore:featureMap="">
-							<xs:element name="sql" maxOccurs="unbounded"
-								minOccurs="0" />
-							<xs:element name="sparql" maxOccurs="1" minOccurs="0" />
-							<xs:element name="properties" maxOccurs="1" minOccurs="0">
-								<xs:complexType ecore:name="QueryPropertyList">
-									<xs:sequence>
-										<xs:element name="property" minOccurs="0"
-											maxOccurs="5">
-											<xs:complexType ecore:name="QueryProperty">
-												<xs:simpleContent>
-													<xs:extension base="xs:string">
-														<xs:attribute name="name" type="xs:string"
-															use="required" />
-													</xs:extension>
-												</xs:simpleContent>
-											</xs:complexType>
-										</xs:element>
-									</xs:sequence>
-								</xs:complexType>
-							</xs:element>
-							<xs:element name="result" maxOccurs="1" minOccurs="0">
-								<xs:complexType ecore:name="ResultMapping">
-									<xs:choice maxOccurs="unbounded" ecore:featureMap="">
-										<xs:element name="element" maxOccurs="unbounded"
-											minOccurs="0">
-											<xs:complexType ecore:name="ElementMapping">
-												<xs:attribute name="name" type="xs:string" use="required" />
-												<xs:attribute name="column" type="xs:string"
-													use="required" />
-												<xs:attribute name="xsdType" type="xs:string"
-													use="optional" />
-												<xs:attribute name="requiredRoles" type="xs:string"
-													use="optional" />
-												<xs:attribute name="export" type="xs:string"
-													use="optional" />
-											</xs:complexType>
-										</xs:element>
-										<xs:element name="attribute" maxOccurs="unbounded"
-											minOccurs="0">
-											<xs:complexType ecore:name="AttributeMapping">
-												<xs:attribute name="name" type="xs:string" use="required" />
-												<xs:attribute name="column" type="xs:string"
-													use="required" />
-												<xs:attribute name="xsdType" type="xs:string"
-													use="optional" />
-												<xs:attribute name="requiredRoles" type="xs:string"
-													use="optional" />
-											</xs:complexType>
-										</xs:element>
-										<xs:element ref="call-query" maxOccurs="unbounded"
-											minOccurs="0" />
-									</xs:choice>
-									<xs:attribute name="element" type="xs:string" use="required" />
-									<xs:attribute name="rowName" type="xs:string" use="required" />
-									<xs:attribute name="defaultNamespace" type="xs:string"
-										use="optional" />
-									<xs:attribute name="xsltPath" type="xs:string"
-										use="optional" />
-									<xs:attribute name="useColumnNumbers" type="xs:string"
-										use="optional" />
-								</xs:complexType>
-							</xs:element>
-							<xs:element name="excel" maxOccurs="unbounded"
-								minOccurs="0">
-								<xs:complexType ecore:name="ExcelQuery">
-									<xs:sequence>
-										<xs:element name="workbookname" type="xs:string" />
-										<xs:element name="hasheader" type="xs:boolean" />
-										<xs:element name="startingrow" type="xs:unsignedLong" />
-										<xs:element name="maxrowcount" type="xs:unsignedLong" />
-									</xs:sequence>
-								</xs:complexType>
-							</xs:element>
-							<xs:element name="gspread" maxOccurs="unbounded"
-								minOccurs="0">
-								<xs:complexType ecore:name="GSpreadQuery">
-									<xs:sequence>
-										<xs:element name="worksheetnumber" type="xs:unsignedLong" />
-										<xs:element name="startingrow" type="xs:unsignedLong" />
-										<xs:element name="maxrowcount" type="xs:unsignedLong" />
-										<xs:element name="hasheader" type="xs:boolean" />
-									</xs:sequence>
-								</xs:complexType>
-							</xs:element>
-							<xs:element name="param" maxOccurs="unbounded"
-								minOccurs="0">
-								<xs:complexType ecore:name="QueryParameter">
-									<xs:sequence>
-										<xs:element name="validateLongRange" maxOccurs="1"
-											minOccurs="0">
-											<xs:complexType ecore:name="LongRangeValidator">
-												<xs:attribute name="minimum" type="xs:long"
-													use="optional" />
-												<xs:attribute name="maximum" type="xs:long"
-													use="optional" />
-											</xs:complexType>
-										</xs:element>
-										<xs:element name="validateDoubleRange" maxOccurs="1"
-											minOccurs="0">
-											<xs:complexType ecore:name="DoubleRangeValidator">
-												<xs:attribute name="minimum" type="xs:double"
-													use="optional" />
-												<xs:attribute name="maximum" type="xs:double"
-													use="optional" />
-											</xs:complexType>
-										</xs:element>
-										<xs:element name="validateLength" maxOccurs="1"
-											minOccurs="0">
-											<xs:complexType ecore:name="LengthValidator">
-												<xs:attribute name="minimum" type="xs:unsignedLong"
-													use="optional" />
-												<xs:attribute name="maximum" type="xs:unsignedLong"
-													use="optional" />
-											</xs:complexType>
-										</xs:element>
-										<xs:element name="validatePattern" maxOccurs="unbounded"
-											minOccurs="0">
-											<xs:complexType ecore:name="PatternValidator">
-												<xs:attribute name="pattern" type="xs:string"
-													use="required" />
-											</xs:complexType>
-										</xs:element>
-										<xs:element name="validateCustom" maxOccurs="unbounded"
-											minOccurs="0">
-											<xs:complexType ecore:name="CustomValidator">
-												<xs:attribute name="class" type="xs:string"
-													use="required" />
-											</xs:complexType>
-										</xs:element>
-									</xs:sequence>
-									<xs:attribute name="name" type="xs:string" use="required" />
-									<xs:attribute name="paramType" type="xs:string"
-										use="optional" />
-									<xs:attribute name="sqlType" type="xs:string" use="required" />
-									<xs:attribute name="type" type="xs:string" use="optional" />
-									<xs:attribute name="ordinal" type="xs:unsignedInt"
-										use="optional" />
-									<xs:attribute name="defaultValue" type="xs:string"
-										use="optional" />
-									<xs:attribute name="structType" type="xs:string"
-										use="optional" />
-								</xs:complexType>
-							</xs:element>
-						</xs:choice>
-						<xs:attribute name="id" type="xs:string" use="required" />
-						<xs:attribute name="useConfig" type="xs:string" use="optional" />
-						<xs:attribute name="input-event-trigger" type="xs:string"
-							use="optional" />
-						<xs:attribute name="output-event-trigger" type="xs:string"
-							use="optional" />
-						<xs:attribute name="returnGeneratedKeys" type="xs:boolean"
-							use="optional" />
-						<xs:attribute name="keyColumns" type="xs:string" use="optional" />
-					</xs:complexType>
-				</xs:element>
-				<xs:element name="event-trigger" maxOccurs="unbounded"
-					minOccurs="0">
-					<xs:complexType ecore:name="EventTrigger">
-						<xs:sequence>
-							<xs:element name="expression" type="xs:string"
-								maxOccurs="1" minOccurs="1" />
-							<xs:element name="target-topic" type="xs:string"
-								maxOccurs="1" minOccurs="1" />
-							<xs:element name="subscriptions" maxOccurs="1"
-								minOccurs="1">
-								<xs:complexType ecore:name="EventSubscriptionList">
-									<xs:sequence>
-										<!--<xs:element name="subscription" maxOccurs="unbounded" minOccurs="1"/> 
-											old -->
-										<xs:element name="subscription" maxOccurs="unbounded"
-											minOccurs="1" />
-									</xs:sequence>
-								</xs:complexType>
-							</xs:element>
-						</xs:sequence>
-						<xs:attribute name="id" type="xs:string" use="required" />
-						<xs:attribute name="language" type="xs:string" use="optional" />
-					</xs:complexType>
-				</xs:element>
-				<xs:element name="operation" maxOccurs="unbounded"
-					minOccurs="0">
-					<xs:complexType ecore:name="Operation">
-						<xs:choice ecore:featureMap="">
-							<xs:element ref="call-query" maxOccurs="1" minOccurs="1" />
-							<xs:element name="call-query-group" maxOccurs="1"
-								minOccurs="0">
-								<xs:complexType ecore:name="CallQueryList">
-									<xs:sequence>
-										<xs:element ref="call-query" maxOccurs="unbounded"
-											minOccurs="1" />
-									</xs:sequence>
-								</xs:complexType>
-							</xs:element>
-						</xs:choice>
-						<xs:attribute name="name" type="xs:string" use="required" />
-						<xs:attribute name="disableStreaming" type="xs:boolean"
-							use="optional" />
-					</xs:complexType>
-				</xs:element>
-				<xs:element name="resource" maxOccurs="unbounded"
-					minOccurs="0">
-					<xs:complexType ecore:name="Resource">
-						<xs:sequence>
-							<xs:element ref="call-query" maxOccurs="1" minOccurs="1" />
-						</xs:sequence>
-						<xs:attribute name="path" type="xs:string" use="required" />
-						<xs:attribute name="method" type="xs:string" use="required" />
-						<xs:attribute name="returnRequestStatus" type="xs:boolean"
-							use="optional" />
-					</xs:complexType>
-				</xs:element>
-			</xs:choice>
-			<xs:attribute name="name" type="xs:string" use="required" />
-			<xs:attribute name="enableBatchRequests" type="xs:boolean"
-				use="optional" />
-			<xs:attribute name="enableBoxcarring" type="xs:boolean"
-				use="optional" />
-			<xs:attribute name="serviceStatus" use="optional">
-				<xs:simpleType ecore:name="ServiceStatus">
-					<xs:restriction base="xs:string">
-						<xs:enumeration value="active" />
-						<xs:enumeration value="inactive" />
-					</xs:restriction>
-				</xs:simpleType>
-			</xs:attribute>
-			<xs:attribute name="baseURI" type="xs:string" use="optional" />
-			<xs:attribute name="enableDTP" type="xs:boolean" use="optional" />
-			<xs:attribute name="serviceGroup" type="xs:string" use="optional" />
-		</xs:complexType>
-	</xs:element>
-
-	<xs:element name="call-query">
-		<xs:complexType ecore:name="CallQuery">
-			<xs:sequence>
-				<xs:element name="with-param" maxOccurs="unbounded"
-					minOccurs="0">
-					<xs:complexType ecore:name="ParameterMapping">
-						<xs:attribute name="name" type="xs:string" use="required" />
-						<xs:attribute name="query-param" type="xs:string"
-							use="optional" />
-						<xs:attribute name="column" type="xs:string" use="optional" />
-					</xs:complexType>
-				</xs:element>
-			</xs:sequence>
-			<xs:attribute name="href" type="xs:string" use="required" />
-		</xs:complexType>
-	</xs:element>
-
-	<xs:element name="property">
-		<xs:complexType ecore:name="ConfigurationProperty">
-
-			<xs:simpleContent>
-				<xs:extension base="xs:string">
-					<xs:attribute name="name" type="xs:string" use="required" />
-				</xs:extension>
-			</xs:simpleContent>
-
-		</xs:complexType>
-	</xs:element>
-</xs:schema>
-
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xsd:schema xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ecore:nsPrefix="ds" ecore:package="org.wso2.developerstudio.eclipse.ds">
+  <xsd:import namespace="http://www.eclipse.org/emf/2002/Ecore" schemaLocation="platform:/plugin/org.eclipse.emf.ecore/model/Ecore.xsd"/>
+  <xsd:element name="call-query" type="call-query_._type"/>
+  <xsd:element name="data" type="data_._type"/>
+  <xsd:element name="hasheader" type="hasheader_._type"/>
+  <xsd:element name="maxrowcount" type="maxrowcount_._type"/>
+  <xsd:element name="property" type="property_._type"/>
+  <xsd:element name="sql" type="sql_._type"/>
+  <xsd:element name="startingrow" type="startingrow_._type"/>
+  <xsd:complexType ecore:name="AttributeMapping" name="attribute_._type">
+    <xsd:attribute name="column" type="xsd:string" use="required"/>
+    <xsd:attribute name="name" type="xsd:string" use="required"/>
+    <xsd:attribute name="requiredRoles" type="xsd:string"/>
+    <xsd:attribute name="xsdType" type="xsd:string"/>
+    <xsd:attribute default="false" ecore:unsettable="false" name="optional" type="ecore:EBoolean"/>
+  </xsd:complexType>
+  <xsd:complexType ecore:name="CallQuery" mixed="true" name="call-query_._type">
+    <xsd:sequence>
+      <xsd:element ecore:name="withParam" maxOccurs="unbounded" minOccurs="0" name="with-param" type="with-param_._type"/>
+    </xsd:sequence>
+    <xsd:attribute name="href" type="xsd:string" use="required"/>
+  </xsd:complexType>
+  <xsd:complexType ecore:name="CallQueryList" mixed="true" name="call-query-group_._type">
+    <xsd:sequence>
+      <xsd:element ecore:name="callQuery" maxOccurs="unbounded" ref="call-query"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType ecore:name="ConfigurationProperty" name="property_._type">
+    <xsd:simpleContent>
+      <xsd:extension base="xsd:string">
+        <xsd:attribute name="name" type="xsd:string" use="required"/>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType ecore:name="CustomValidator" name="validateCustom_._type">
+    <xsd:attribute name="class" type="xsd:string" use="required"/>
+  </xsd:complexType>
+  <xsd:complexType ecore:name="DataService" mixed="true" name="data_._type">
+    <xsd:sequence>
+      <xsd:element name="description" type="description_._type"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="config" type="config_._type"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="query" type="query_._type"/>
+      <xsd:element ecore:name="eventTrigger" maxOccurs="unbounded" minOccurs="0" name="event-trigger" type="event-trigger_._type"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="operation" type="operation_._type"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="resource" type="resource_._type"/>
+      <xsd:element ecore:unsettable="false" minOccurs="0" name="enableSec" type="xsd:boolean"/>
+      <xsd:element name="policy" type="RegistryKeyProperty"/>
+      <xsd:element ecore:name="featureAllowRoles" name="parameter" type="parameter_._type"/>
+    </xsd:sequence>
+    <xsd:attribute name="baseURI" type="xsd:string"/>
+    <xsd:attribute ecore:unsettable="false" name="enableBatchRequests" type="xsd:boolean"/>
+    <xsd:attribute ecore:unsettable="false" name="enableBoxcarring" type="xsd:boolean"/>
+    <xsd:attribute ecore:unsettable="false" name="enableDTP" type="xsd:boolean"/>
+    <xsd:attribute name="name" type="xsd:string" use="required"/>
+    <xsd:attribute name="serviceGroup" type="xsd:string"/>
+    <xsd:attribute name="serviceNamespace" type="xsd:string"/>
+    <xsd:attribute name="serviceStatus" type="serviceStatus_._type"/>
+    <xsd:attribute ecore:unsettable="false" name="disableStreaming" type="xsd:boolean"/>
+    <xsd:attribute name="transports" type="xsd:string" use="required"/>
+  </xsd:complexType>
+  <xsd:complexType ecore:name="DataSourceConfiguration" mixed="true" name="config_._type">
+    <xsd:sequence>
+      <xsd:element maxOccurs="unbounded" ref="property"/>
+    </xsd:sequence>
+    <xsd:attribute name="id" type="xsd:string"/>
+  </xsd:complexType>
+  <xsd:complexType ecore:name="Description" name="description_._type">
+    <xsd:simpleContent>
+      <xsd:extension base="xsd:string"/>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType ecore:name="DoubleRangeValidator" name="validateDoubleRange_._type">
+    <xsd:attribute ecore:unsettable="false" name="maximum" type="xsd:double"/>
+    <xsd:attribute ecore:unsettable="false" name="minimum" type="xsd:double"/>
+  </xsd:complexType>
+  <xsd:complexType ecore:name="ElementMapping" mixed="true" name="element_._type">
+    <xsd:sequence>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="element" type="element_._type"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="attribute" type="attribute_._type"/>
+      <xsd:element ecore:name="callQuery" minOccurs="0" ref="call-query"/>
+    </xsd:sequence>
+    <xsd:attribute name="column" type="xsd:string" use="required"/>
+    <xsd:attribute name="export" type="xsd:string"/>
+    <xsd:attribute name="name" type="xsd:string" use="required"/>
+    <xsd:attribute name="requiredRoles" type="xsd:string"/>
+    <xsd:attribute name="exportType" type="xsd:string"/>
+    <xsd:attribute name="namespace" type="xsd:string"/>
+    <xsd:attribute name="xsdType" type="xsd:string"/>
+    <xsd:attribute ecore:unsettable="false" name="isComplexType" type="ecore:EBoolean"/>
+    <xsd:attribute ecore:name="queryParam" name="query-param" type="xsd:string"/>
+    <xsd:attribute name="value" type="xsd:string"/>
+    <xsd:attribute default="false" ecore:unsettable="false" name="optional" type="ecore:EBoolean"/>
+    <xsd:attribute name="arrayName" type="xsd:string"/>
+  </xsd:complexType>
+  <xsd:complexType ecore:name="EventSubscriptionList" mixed="true" name="subscriptions_._type">
+    <xsd:sequence>
+      <xsd:element maxOccurs="unbounded" name="subscription" type="subscription_._type"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType ecore:name="EventTrigger" mixed="true" name="event-trigger_._type">
+    <xsd:sequence>
+      <xsd:element name="expression" type="expression_._type"/>
+      <xsd:element ecore:name="targetTopic" name="target-topic" type="target-topic_._type"/>
+      <xsd:element name="subscriptions" type="subscriptions_._type"/>
+    </xsd:sequence>
+    <xsd:attribute name="id" type="xsd:string" use="required"/>
+    <xsd:attribute name="language" type="xsd:string"/>
+  </xsd:complexType>
+  <xsd:complexType ecore:name="ExcelQuery" mixed="true" name="excel_._type">
+    <xsd:sequence>
+      <xsd:element name="workbookname" type="workbookname_._type"/>
+      <xsd:element ref="hasheader"/>
+      <xsd:element ref="startingrow"/>
+      <xsd:element ref="maxrowcount"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType ecore:name="Expression" name="expression_._type">
+    <xsd:simpleContent>
+      <xsd:extension base="xsd:string"/>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType ecore:name="GSpreadQuery" mixed="true" name="gspread_._type">
+    <xsd:sequence>
+      <xsd:element name="worksheetnumber" type="worksheetnumber_._type"/>
+      <xsd:element ref="startingrow"/>
+      <xsd:element ref="maxrowcount"/>
+      <xsd:element ref="hasheader"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType ecore:name="HasHeader" name="hasheader_._type">
+    <xsd:simpleContent ecore:unsettable="false">
+      <xsd:extension base="xsd:boolean"/>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType ecore:name="LengthValidator" name="validateLength_._type">
+    <xsd:attribute ecore:unsettable="false" name="maximum" type="xsd:long"/>
+    <xsd:attribute ecore:unsettable="false" name="minimum" type="xsd:long"/>
+  </xsd:complexType>
+  <xsd:complexType ecore:name="LongRangeValidator" name="validateLongRange_._type">
+    <xsd:attribute ecore:unsettable="false" name="maximum" type="xsd:long"/>
+    <xsd:attribute ecore:unsettable="false" name="minimum" type="xsd:long"/>
+  </xsd:complexType>
+  <xsd:complexType ecore:name="MaxRowCount" name="maxrowcount_._type">
+    <xsd:simpleContent ecore:unsettable="false">
+      <xsd:extension base="xsd:long"/>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType ecore:name="Operation" mixed="true" name="operation_._type">
+    <xsd:sequence>
+      <xsd:element ecore:name="callQuery" minOccurs="0" ref="call-query"/>
+      <xsd:element ecore:name="callQueryGroup" minOccurs="0" name="call-query-group" type="call-query-group_._type"/>
+    </xsd:sequence>
+    <xsd:attribute ecore:unsettable="false" name="disableStreaming" type="xsd:boolean"/>
+    <xsd:attribute ecore:unsettable="false" name="returnRequestStatus" type="xsd:boolean" use="required"/>
+    <xsd:attribute name="name" type="xsd:string" use="required"/>
+  </xsd:complexType>
+  <xsd:complexType ecore:name="ParameterMapping" name="with-param_._type">
+    <xsd:attribute name="column" type="xsd:string"/>
+    <xsd:attribute name="name" type="xsd:string" use="required"/>
+    <xsd:attribute ecore:name="queryParam" name="query-param" type="xsd:string"/>
+  </xsd:complexType>
+  <xsd:complexType ecore:name="PatternValidator" name="validatePattern_._type">
+    <xsd:attribute name="pattern" type="xsd:string" use="required"/>
+  </xsd:complexType>
+  <xsd:complexType ecore:name="Query" mixed="true" name="query_._type">
+    <xsd:sequence>
+      <xsd:element ecore:resolveProxies="true" maxOccurs="unbounded" minOccurs="0" name="expression" type="queryExpression_._type"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" ref="sql"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="sparql" type="sparql_._type"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="properties" type="properties_._type"/>
+      <xsd:element minOccurs="0" name="result" type="result_._type"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="excel" type="excel_._type"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="gspread" type="gspread_._type"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="param" type="param_._type"/>
+    </xsd:sequence>
+    <xsd:attribute name="id" type="xsd:string" use="required"/>
+    <xsd:attribute ecore:name="inputEventTrigger" name="input-event-trigger" type="xsd:string"/>
+    <xsd:attribute ecore:name="outputEventTrigger" name="output-event-trigger" type="xsd:string"/>
+    <xsd:attribute ecore:unsettable="false" name="returnGeneratedKeys" type="xsd:boolean"/>
+    <xsd:attribute name="useConfig" type="xsd:string"/>
+    <xsd:attribute name="keyColumns" type="xsd:string"/>
+  </xsd:complexType>
+  <xsd:complexType ecore:name="QueryParameter" mixed="true" name="param_._type">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="validateLongRange" type="validateLongRange_._type"/>
+      <xsd:element minOccurs="0" name="validateDoubleRange" type="validateDoubleRange_._type"/>
+      <xsd:element minOccurs="0" name="validateLength" type="validateLength_._type"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="validatePattern" type="validatePattern_._type"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="validateCustom" type="validateCustom_._type"/>
+    </xsd:sequence>
+    <xsd:attribute name="defaultValue" type="xsd:string"/>
+    <xsd:attribute name="name" type="xsd:string" use="required"/>
+    <xsd:attribute ecore:unsettable="false" name="ordinal" type="xsd:int"/>
+    <xsd:attribute name="paramType" type="xsd:string"/>
+    <xsd:attribute name="sqlType" type="xsd:string" use="required"/>
+    <xsd:attribute name="structType" type="xsd:string"/>
+    <xsd:attribute name="type" type="xsd:string"/>
+  </xsd:complexType>
+  <xsd:complexType ecore:name="QueryProperty" name="property_._1_._type">
+    <xsd:simpleContent>
+      <xsd:extension base="xsd:string">
+        <xsd:attribute name="name" type="xsd:string" use="required"/>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType ecore:name="QueryPropertyList" mixed="true" name="properties_._type">
+    <xsd:sequence>
+      <xsd:element maxOccurs="5" minOccurs="0" name="property" type="property_._1_._type"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType ecore:name="Resource" mixed="true" name="resource_._type">
+    <xsd:sequence>
+      <xsd:element ecore:name="callQuery" ref="call-query"/>
+    </xsd:sequence>
+    <xsd:attribute name="method" type="xsd:string" use="required"/>
+    <xsd:attribute name="path" type="xsd:string" use="required"/>
+    <xsd:attribute ecore:unsettable="false" name="returnRequestStatus" type="xsd:boolean" use="required"/>
+  </xsd:complexType>
+  <xsd:complexType ecore:name="ResultMapping" mixed="true" name="result_._type">
+    <xsd:sequence>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="element" type="element_._type"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="attribute" type="attribute_._type"/>
+      <xsd:element ecore:name="callQuery" maxOccurs="unbounded" minOccurs="0" ref="call-query"/>
+    </xsd:sequence>
+    <xsd:attribute name="defaultNamespace" type="xsd:string"/>
+    <xsd:attribute ecore:name="elementName" name="element" type="xsd:string" use="required"/>
+    <xsd:attribute name="rowName" type="xsd:string" use="required"/>
+    <xsd:attribute ecore:unsettable="false" name="useColumnNumbers" type="xsd:boolean"/>
+    <xsd:attribute ecore:unsettable="false" name="escapeNonPrintableChar" type="xsd:boolean"/>
+    <xsd:attribute name="xsltPath" type="xsd:string"/>
+    <xsd:attribute default="" ecore:unsettable="false" name="outputType" type="xsd:string"/>
+  </xsd:complexType>
+  <xsd:simpleType ecore:name="ServiceStatus" name="serviceStatus_._type">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="active"/>
+      <xsd:enumeration value="inactive"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType ecore:name="Sparql" name="sparql_._type">
+    <xsd:simpleContent>
+      <xsd:extension base="xsd:string"/>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType ecore:name="Sql" name="sql_._type">
+    <xsd:simpleContent>
+      <xsd:extension base="xsd:string">
+        <xsd:attribute name="dialect" type="xsd:string"/>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType ecore:name="QueryExpression" name="queryExpression_._type">
+    <xsd:simpleContent>
+      <xsd:extension base="xsd:string"/>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType ecore:name="StartingRow" name="startingrow_._type">
+    <xsd:simpleContent ecore:unsettable="false">
+      <xsd:extension base="xsd:long"/>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType ecore:name="Subscription" name="subscription_._type">
+    <xsd:simpleContent>
+      <xsd:extension base="xsd:string"/>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType ecore:name="TargetTopic" name="target-topic_._type">
+    <xsd:simpleContent>
+      <xsd:extension base="xsd:string"/>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType ecore:name="WorkBookName" name="workbookname_._type">
+    <xsd:simpleContent>
+      <xsd:extension base="xsd:string"/>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType ecore:name="WorkSheetNumber" name="worksheetnumber_._type">
+    <xsd:simpleContent>
+      <xsd:extension base="xsd:string"/>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType ecore:name="Policy" name="policy_._type">
+    <xsd:attribute name="key" type="xsd:string" use="required"/>
+  </xsd:complexType>
+  <xsd:complexType ecore:name="DataServiceParameter" name="parameter_._type">
+    <xsd:simpleContent ecore:lowerBound="1">
+      <xsd:extension base="xsd:string">
+        <xsd:attribute name="name" type="xsd:string" use="required"/>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name="RegistryKeyProperty">
+    <xsd:attribute name="key" type="ecore:EString"/>
+  </xsd:complexType>
+  <xsd:simpleType ecore:instanceClass="java.util.Map" name="Map">
+    <xsd:annotation>
+      <xsd:appinfo ecore:key="typeParameters" source="http://www.eclipse.org/emf/2002/Ecore">
+        <typeParameter name="K"/>
+        <typeParameter name="V"/>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string"/>
+  </xsd:simpleType>
+</xsd:schema>

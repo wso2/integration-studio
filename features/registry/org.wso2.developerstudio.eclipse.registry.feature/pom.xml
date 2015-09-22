@@ -51,7 +51,6 @@
                                 <bundleDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.greg.manager.local:${greg.tools.version}</bundleDef>
                                 <bundleDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.greg.manager.remote:${greg.tools.version}</bundleDef>
                                 <bundleDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.greg.perspective:${greg.tools.version}</bundleDef>
-                              	<bundleDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.greg.apim.perspective:${greg.tools.version}</bundleDef>
 				<bundleDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.greg.resource.authorization:${greg.tools.version}</bundleDef>
                                 <bundleDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.greg.search:${greg.tools.version}</bundleDef>
                                 <bundleDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.greg.registry.handler:${greg.tools.version}</bundleDef>

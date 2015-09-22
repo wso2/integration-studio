@@ -73,6 +73,7 @@
 							<publishArtifacts>true</publishArtifacts>
 							<publishArtifactRepository>true</publishArtifactRepository>
 					<featureArtifacts>
+						<featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.apim.feature:${apim.tools.feature.version}</featureArtifactDef>
 						<featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.carbonstudio.feature:${carbonstudio.tools.feature.version}</featureArtifactDef>
 	
 						<featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.appserver.feature:${appserver.tools.feature.version}</featureArtifactDef>
@@ -334,6 +335,7 @@
 						<label>WSO2 Developer Studio</label>
 						<description>WSO2 Developer Studio - Selecting this whole category will install all the features related to Developer Studio</description>
 						<features>
+							<featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.apim.feature:${apim.tools.feature.version}</featureArtifactDef>
 							<featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.appserver.feature:${appserver.tools.feature.version}</featureArtifactDef>
 							<featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.appserver.artifact.feature:${appserver.tools.feature.version}</featureArtifactDef>
 							<featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.bpel.feature:${bps.tools.feature.version}</featureArtifactDef>

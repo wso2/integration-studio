@@ -138,15 +138,15 @@ public class ConfigureEndPointPropertiesDialog extends TitleAreaDialog {
 		});
 		
 		TableColumn tblclmnName = new TableColumn(tblProperties, SWT.NONE);
-		tblclmnName.setWidth(150);
+		tblclmnName.setWidth(200);
 		tblclmnName.setText("Name");
 		
 		TableColumn tblclmnValue = new TableColumn(tblProperties, SWT.NONE);
-		tblclmnValue.setWidth(200);
+		tblclmnValue.setWidth(250);
 		tblclmnValue.setText("Value");		
 		
 		TableColumn tblclmnScope = new TableColumn(tblProperties, SWT.NONE);
-		tblclmnScope.setWidth(30);
+		tblclmnScope.setWidth(160);
 		tblclmnScope.setText("Scope");
 		
 		

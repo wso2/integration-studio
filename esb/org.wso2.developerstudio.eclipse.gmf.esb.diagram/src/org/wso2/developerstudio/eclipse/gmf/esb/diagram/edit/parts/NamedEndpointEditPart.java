@@ -90,6 +90,10 @@ import org.wso2.developerstudio.eclipse.artifact.endpoint.validators.EndPointTem
 import org.wso2.developerstudio.eclipse.capp.maven.utils.MavenConstants;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBArtifact;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBProjectArtifact;
+import org.wso2.developerstudio.eclipse.general.project.artifact.GeneralProjectArtifact;
+import org.wso2.developerstudio.eclipse.general.project.artifact.RegistryArtifact;
+import org.wso2.developerstudio.eclipse.general.project.artifact.bean.RegistryElement;
+import org.wso2.developerstudio.eclipse.general.project.artifact.bean.RegistryItem;
 import org.wso2.developerstudio.eclipse.gmf.esb.ArtifactType;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 import org.wso2.developerstudio.eclipse.gmf.esb.KeyType;
@@ -595,14 +599,28 @@ public class NamedEndpointEditPart extends ComplexFiguredAbstractEndpoint {
 		IFile file = currentProject.getFile(ENDPOINT_RESOURCE_DIR + "/" + fileURI1);
 
 		if (!file.exists()) {
-			IFile fileTobeOpened = currentProject.getFile(SYNAPSE_CONFIG_DIR + "/endpoints/" + name + ".xml");
+			IFile fileTobeOpened = null;
+			
 			try {
+				boolean registryProject = false;
+				if(currentProject.hasNature("org.wso2.developerstudio.eclipse.general.project.nature")){
+				     fileTobeOpened = currentProject.getFile(name + ".xml");
+				     registryProject = true;
+				}else{
+					 fileTobeOpened = currentProject.getFile(SYNAPSE_CONFIG_DIR + "/endpoints/" + name + ".xml");
+				}
+							
 				if (fileTobeOpened.exists()) {
 					OpenEditorUtils oeUtils = new OpenEditorUtils();
 					oeUtils.openSeparateEditor(fileTobeOpened);
 				} else {
-					updatePom();
-					addEndpointToArtifactXML(name);
+					if(registryProject){
+							addEndpointToRegistryArtifactXML(name, currentProject);
+						}else{
+							addEndpointToArtifactXML(name);
+							updatePom();
+						}
+					
 					String path = fileTobeOpened.getParent().getFullPath() + "/";
 					ArtifactTemplate endpointArtifactTemplate = EndPointTemplateList.getArtifactTemplates()[0];
 
@@ -676,6 +694,7 @@ public class NamedEndpointEditPart extends ComplexFiguredAbstractEndpoint {
 		return entry;
 	}
 
+	
 	private void addEndpointToArtifactXML(String endpointName) {
 		IProject activeProject = getActiveProject();
 		ESBProjectArtifact esbProjectArtifact = new ESBProjectArtifact();
@@ -688,6 +707,35 @@ public class NamedEndpointEditPart extends ComplexFiguredAbstractEndpoint {
 			log.error("Error while updating Artifact.xml");
 		}
 	}
+	
+	private void addEndpointToRegistryArtifactXML(String endpointName, IProject currentProject) {
+		
+		GeneralProjectArtifact generalProjectArtifact = new GeneralProjectArtifact();
+		try {
+			generalProjectArtifact.fromFile(currentProject.getFile("artifact.xml").getLocation().toFile());
+			File pomLocation = currentProject.getFile("pom.xml").getLocation().toFile();
+			MavenProject mavenProject = MavenUtils.getMavenProject(pomLocation);
+			RegistryArtifact artifact = new RegistryArtifact();
+			artifact.setName(endpointName);
+			artifact.setVersion(mavenProject.getVersion());
+			artifact.setType("registry/resource");
+			artifact.setServerRole("GovernanceRegistry");
+			artifact.setGroupId(mavenProject.getGroupId()+".resource");
+
+			RegistryElement item = new RegistryItem();
+			((RegistryItem) item).setFile(endpointName + ".xml");
+			((RegistryItem) item).setPath("/_system/governance/endpoints");
+			((RegistryItem) item).setMediaType("application/vnd.wso2.esb.endpoint");
+			artifact.addRegistryElement(item);
+			generalProjectArtifact.addArtifact(artifact);
+			generalProjectArtifact.toFile();
+
+		} catch (Exception e) {
+			log.error("Error while updating Artifact.xml", e);
+		}
+	}
+	
+	
 
 	/**
 	 * @generated NOT

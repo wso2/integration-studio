@@ -379,9 +379,11 @@ public abstract class AbstractWSO2ProjectCreationWizard extends Wizard implement
 		}
 		projectList = sortProjects(projectList);
 		for (IProject iProject : projectList) {
+			if(iProject!=null && iProject.exists() && iProject.isOpen()){
 			String relativePath = FileUtils.getRelativePath(parentProject.getLocation().toFile(),
 					iProject.getLocation().toFile()).replaceAll(Pattern.quote(File.separator), "/");
 			sortedModuleList.add(relativePath);
+			}
 		}
 		sortedModuleList.addAll(nonProjectModuleList);
 		return sortedModuleList;

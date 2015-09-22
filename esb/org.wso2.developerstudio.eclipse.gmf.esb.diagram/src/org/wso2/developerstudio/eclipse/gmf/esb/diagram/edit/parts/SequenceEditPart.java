@@ -22,6 +22,7 @@ import org.codehaus.plexus.util.xml.Xpp3Dom;
 import org.codehaus.plexus.util.xml.pull.XmlPullParserException;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
+import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.draw2d.Figure;
 import org.eclipse.draw2d.IFigure;
@@ -87,6 +88,10 @@ import org.wso2.developerstudio.eclipse.capp.maven.utils.MavenConstants;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBArtifact;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBProjectArtifact;
 import org.wso2.developerstudio.eclipse.esb.project.utils.ESBProjectUtils;
+import org.wso2.developerstudio.eclipse.general.project.artifact.GeneralProjectArtifact;
+import org.wso2.developerstudio.eclipse.general.project.artifact.RegistryArtifact;
+import org.wso2.developerstudio.eclipse.general.project.artifact.bean.RegistryElement;
+import org.wso2.developerstudio.eclipse.general.project.artifact.bean.RegistryItem;
 import org.wso2.developerstudio.eclipse.gmf.esb.ArtifactType;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 import org.wso2.developerstudio.eclipse.gmf.esb.KeyType;
@@ -553,13 +558,26 @@ public class SequenceEditPart extends FixedSizedAbstractMediator {
 					.getModel()).getElement()).getName());
 		}
 		if (!file.exists()) {
-			IFile fileTobeOpened = currentProject.getFile(SYNAPSE_CONFIG_DIR + "/sequences/" + name + ".xml");
+			IFile fileTobeOpened = null;
+			boolean registryProject = false;
+			if(currentProject.hasNature("org.wso2.developerstudio.eclipse.general.project.nature")){
+			     fileTobeOpened = currentProject.getFile(name + ".xml");
+			     registryProject = true;
+			}else{
+				 fileTobeOpened = currentProject.getFile(SYNAPSE_CONFIG_DIR + "/sequences/" + name + ".xml");
+			}
+			
 			if (fileTobeOpened.exists()) {
 				OpenEditorUtils oeUtils = new OpenEditorUtils();
 				oeUtils.openSeparateEditor(fileTobeOpened);
-			} else {
-				updatePom();
-				addSequenceToArtifactXML(name);
+			} else {				
+				if(registryProject){
+					addSequenceToRegistryArtifactXML(name, currentProject);
+				}else{
+					addSequenceToArtifactXML(name);
+					updatePom();
+				}
+				
 				String path = fileTobeOpened.getParent().getFullPath() + "/";
 				ArtifactTemplate sequenceArtifactTemplate = SequenceTemplate.getArtifactTemplates()[0];
 				String source = FileUtils.getContentAsString(sequenceArtifactTemplate.getTemplateDataStream());
@@ -700,7 +718,7 @@ public class SequenceEditPart extends FixedSizedAbstractMediator {
 						 if (commandSequenceCount.canExecute()) {
 						 getEditDomain().getCommandStack().execute(commandSequenceCount);
 						 }*/
-
+		
 						SetRequest setRequest = new SetRequest(editingDomain, sequence, EsbPackage.eINSTANCE
 								.getSequence_Name(), sequenceName);
 						SetValueCommand operation = new SetValueCommand(setRequest) {
@@ -777,7 +795,33 @@ public class SequenceEditPart extends FixedSizedAbstractMediator {
 					"src/main/synapse-config/sequences/" + sequenceName + ".xml", "synapse/sequence"));
 			esbProjectArtifact.toFile();
 		} catch (Exception e) {
-			log.error("Error while updating Artifact.xml");
+			log.error("Error while updating Artifact.xml",e);
+		}
+	}
+	
+	private void addSequenceToRegistryArtifactXML(String sequenceName, IProject currentProject) {
+		GeneralProjectArtifact generalProjectArtifact = new GeneralProjectArtifact();
+		try {
+			generalProjectArtifact.fromFile(currentProject.getFile("artifact.xml").getLocation().toFile());
+			File pomLocation = currentProject.getFile("pom.xml").getLocation().toFile();
+			MavenProject mavenProject = MavenUtils.getMavenProject(pomLocation);
+			RegistryArtifact artifact = new RegistryArtifact();
+			artifact.setName(sequenceName);
+			artifact.setVersion(mavenProject.getVersion());
+			artifact.setType("registry/resource");
+			artifact.setServerRole("GovernanceRegistry");
+			artifact.setGroupId(mavenProject.getGroupId()+".resource");
+
+			RegistryElement item = new RegistryItem();
+			((RegistryItem) item).setFile(sequenceName + ".xml");
+			((RegistryItem) item).setPath("/_system/governance/sequences");
+			((RegistryItem) item).setMediaType("application/vnd.wso2.sequence");
+			artifact.addRegistryElement(item);
+			generalProjectArtifact.addArtifact(artifact);
+			generalProjectArtifact.toFile();
+
+		} catch (Exception e) {
+			log.error("Error while updating Artifact.xml", e);
 		}
 	}
 

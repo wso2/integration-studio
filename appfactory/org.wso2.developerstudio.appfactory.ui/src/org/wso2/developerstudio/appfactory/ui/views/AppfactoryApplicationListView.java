@@ -496,33 +496,50 @@ public class AppfactoryApplicationListView extends ViewPart {
 		 } 
 	}
 	
-	private List<ApplicationInfo> getApplist(){
-		 if(Authenticator.getInstance().getCredentials()!=null){
-		 Map<String,String> params = new HashMap<String,String>();
-		 params.put("action",JagApiProperties.USER_APP_LIST__ACTION); //$NON-NLS-1$
-		 params.put("userName",Authenticator.getInstance().getCredentials().getUser());  //$NON-NLS-1$
-		 printInfoLog(Messages.AppfactoryApplicationListView_getApplist_plog_msg_001);
-		 String respond = HttpsJaggeryClient.httpPost(JagApiProperties.getAppInfoUrl(), params);
-		 if("false".equals(respond)){ //$NON-NLS-1$
-		  printErrorLog(Messages.AppfactoryApplicationListView_getApplist_plog_msg_01);	 
-	      boolean val = Authenticator.getInstance().reLogin();
-	      if(val){
-	       printInfoLog(Messages.AppfactoryApplicationListView_getApplist_plog_msg_0);	  
-	       respond = HttpsJaggeryClient.httpPost(JagApiProperties.getAppInfoUrl(), params);
-	      }else{
-	    	printErrorLog(Messages.AppfactoryApplicationListView_getApplist_plog_msg_1 +
-	    			Messages.AppfactoryApplicationListView_getApplist_plog_msg_2);  
-	      }
-		 }
-		 if(!"false".equals(respond)){ //$NON-NLS-1$
-	     printInfoLog(Messages.AppfactoryApplicationListView_getApplist_plog_msg_3);	 
-		 Gson gson = new Gson();
-		 Type collectionType = new TypeToken<java.util.List<ApplicationInfo>>(){}.getType();
-		 return gson.fromJson(respond, collectionType);
-		 }
-		}
-		 return new ArrayList<ApplicationInfo>();
-	}
+    private List<ApplicationInfo> getApplist() {
+        if (Authenticator.getInstance().getCredentials() != null) {
+            Map<String, String> params = new HashMap<String, String>();
+            params.put("action", JagApiProperties.USER_APP_LIST__ACTION); //$NON-NLS-1$
+            params.put("userName", Authenticator.getInstance().getCredentials().getUser()); //$NON-NLS-1$
+            printInfoLog(Messages.AppfactoryApplicationListView_getApplist_plog_msg_001);
+            String respond = HttpsJaggeryClient.httpPost(JagApiProperties.getAppInfoUrl(), params);
+            if ("false".equals(respond)) { //$NON-NLS-1$
+                printErrorLog(Messages.AppfactoryApplicationListView_getApplist_plog_msg_01);
+                boolean loginSuccessful = Authenticator.getInstance().reLogin();
+                if (loginSuccessful) {
+                    printInfoLog(Messages.AppfactoryApplicationListView_getApplist_plog_msg_0);
+                    respond = HttpsJaggeryClient.httpPost(JagApiProperties.getAppInfoUrl(), params);
+                } else {
+                    printErrorLog(Messages.AppfactoryApplicationListView_getApplist_plog_msg_1
+                            + Messages.AppfactoryApplicationListView_getApplist_plog_msg_2);
+                }
+            }
+            if (!"false".equals(respond)) { //$NON-NLS-1$
+                printInfoLog(Messages.AppfactoryApplicationListView_getApplist_plog_msg_3);
+                Gson gson = new Gson();
+                Type collectionType = new TypeToken<java.util.List<ApplicationInfo>>() {
+                }.getType();
+                List<ApplicationInfo> appList = gson.fromJson(respond, collectionType);
+                List<ApplicationInfo> filteredAppList = new ArrayList<>();
+                for (ApplicationInfo applicationInfo : appList) {
+                    /*
+                     * filter out following Uploaded app types from the list -
+                     * Uploaded-App-Jax-RS
+                     * Uploaded-binary-App-war
+                     * Uploaded-App-Jax-WS
+                     * Uploaded-App-Jaggery
+                     */
+                    if (applicationInfo.getType().startsWith("Uploaded-")) { //$NON-NLS-1$
+                        continue;
+                    } else {
+                        filteredAppList.add(applicationInfo);
+                    }
+                }
+                return filteredAppList;
+            }
+        }
+        return new ArrayList<ApplicationInfo>();
+    }
  
     private void createToolbar() {
     	toolBarmgr = getViewSite().getActionBars().getToolBarManager();

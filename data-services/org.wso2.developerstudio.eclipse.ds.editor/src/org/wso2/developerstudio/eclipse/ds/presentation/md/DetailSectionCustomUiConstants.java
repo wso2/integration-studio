@@ -59,6 +59,8 @@ public interface DetailSectionCustomUiConstants {
 	public String RESULT_USE_COLUMN_NUMBERS = "Use Column Numbers";
 	public String RESULT_ESCAPE_NONPRINTABLE_CHAR = "Escape Non-printable Characters";
 	public String RESULT_XSLT_PATH = "XSLT Path";
+	public String RESULT_OUTPUT_TYPE = "outputType";
+	public String RESULT_OUTPUT_TYPE_LABEL = "Output Type";
 	// Display items
 
 	public String QUERY_TIMEOUT_DISPLAY = "Timeout (Seconds)";

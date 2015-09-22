@@ -400,6 +400,8 @@
 						<arg value="org.wso2.developerstudio.eclipse.brs.artifact.feature.feature.group" />
 						<arg value="-installIU" />
 						<arg value="org.wso2.developerstudio.eclipse.appfactory.feature.feature.group" />
+						<arg value="-installIU" />
+						<arg value="org.wso2.developerstudio.eclipse.apim.feature.feature.group" />
 		 				<arg value="-installIU" />
                         			<arg value="org.wso2.developerstudio.eclipse.jaggery.artifact.feature.feature.group" />
 						<arg value="-installIU" />

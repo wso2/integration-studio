@@ -27,31 +27,31 @@ import org.wso2.developerstudio.eclipse.ds.DsPackage;
 public class DsXMLProcessor extends XMLProcessor {
 
 	/**
-	 * Public constructor to instantiate the helper.
-	 * <!-- begin-user-doc -->
+     * Public constructor to instantiate the helper.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public DsXMLProcessor() {
-		super(new EPackageRegistryImpl(EPackage.Registry.INSTANCE));
-		extendedMetaData.putPackage(null, DsPackage.eINSTANCE);
-	}
+        super(new EPackageRegistryImpl(EPackage.Registry.INSTANCE));
+        extendedMetaData.putPackage(null, DsPackage.eINSTANCE);
+    }
 
 	/**
-	 * Register for "*" and "xml" file extensions the DsResourceFactoryImpl factory.
-	 * <!-- begin-user-doc -->
+     * Register for "*" and "xml" file extensions the DsResourceFactoryImpl factory.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 
 	@Override
 	protected Map<String, Resource.Factory> getRegistrations() {
-		if (registrations == null) {
-			super.getRegistrations();
-			registrations.put(XML_EXTENSION, new DsResourceFactoryImpl());
-			registrations.put(STAR_EXTENSION, new DsResourceFactoryImpl());
-		}
-		return registrations;
-	}
+        if (registrations == null) {
+            super.getRegistrations();
+            registrations.put(XML_EXTENSION, new DsResourceFactoryImpl());
+            registrations.put(STAR_EXTENSION, new DsResourceFactoryImpl());
+        }
+        return registrations;
+    }
 
 } // DsXMLProcessor

@@ -91,19 +91,19 @@ public class DsActionBarContributor extends EditingDomainActionBarContributor im
                                                                              ISelectionChangedListener {
 
 	/**
-	 * This keeps track of the active editor.
-	 * <!-- begin-user-doc --> <!--
+     * This keeps track of the active editor.
+     * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected IEditorPart activeEditorPart;
 
 	/**
-	 * This keeps track of the current selection provider.
-	 * <!-- begin-user-doc
+     * This keeps track of the current selection provider.
+     * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected ISelectionProvider selectionProvider;
 
 	/**
@@ -262,22 +262,22 @@ public class DsActionBarContributor extends EditingDomainActionBarContributor im
 	private Object referenceObject = null;
 
 	/**
-	 * This action opens the Properties view.
-	 * <!-- begin-user-doc --> <!--
+     * This action opens the Properties view.
+     * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected IAction showPropertiesViewAction = new Action(DsEditorPlugin.INSTANCE.getString("_UI_ShowPropertiesView_menu_item")) {
-			@Override
-			public void run() {
-				try {
-					getPage().showView("org.eclipse.ui.views.PropertySheet");
-				}
-				catch (PartInitException exception) {
-					DsEditorPlugin.INSTANCE.log(exception);
-				}
-			}
-		};
+            @Override
+            public void run() {
+                try {
+                    getPage().showView("org.eclipse.ui.views.PropertySheet");
+                }
+                catch (PartInitException exception) {
+                    DsEditorPlugin.INSTANCE.log(exception);
+                }
+            }
+        };
 
 	/**
 	 * This action refreshes the viewer of the current editor if the editor
@@ -287,28 +287,28 @@ public class DsActionBarContributor extends EditingDomainActionBarContributor im
 	 * @generated
 	 */
 	protected IAction refreshViewerAction = new Action(DsEditorPlugin.INSTANCE.getString("_UI_RefreshViewer_menu_item")) {
-			@Override
-			public boolean isEnabled() {
-				return activeEditorPart instanceof IViewerProvider;
-			}
+            @Override
+            public boolean isEnabled() {
+                return activeEditorPart instanceof IViewerProvider;
+            }
 
-			@Override
-			public void run() {
-				if (activeEditorPart instanceof IViewerProvider) {
-					Viewer viewer = ((IViewerProvider)activeEditorPart).getViewer();
-					if (viewer != null) {
-						viewer.refresh();
-					}
-				}
-			}
-		};
+            @Override
+            public void run() {
+                if (activeEditorPart instanceof IViewerProvider) {
+                    Viewer viewer = ((IViewerProvider)activeEditorPart).getViewer();
+                    if (viewer != null) {
+                        viewer.refresh();
+                    }
+                }
+            }
+        };
 
 	/**
-	 * This will contain one {@link org.eclipse.emf.edit.ui.action.CreateChildAction} corresponding to each descriptor
-	 * generated for the current selection by the item provider.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
+     * This will contain one {@link org.eclipse.emf.edit.ui.action.CreateChildAction} corresponding to each descriptor
+     * generated for the current selection by the item provider.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * @generated
+     */
 	protected Collection<IAction> createChildActions;
 
 	/**
@@ -321,33 +321,33 @@ public class DsActionBarContributor extends EditingDomainActionBarContributor im
 	protected IMenuManager createChildMenuManager;
 
 	/**
-	 * This will contain one {@link org.eclipse.emf.edit.ui.action.CreateSiblingAction} corresponding to each descriptor
-	 * generated for the current selection by the item provider.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
+     * This will contain one {@link org.eclipse.emf.edit.ui.action.CreateSiblingAction} corresponding to each descriptor
+     * generated for the current selection by the item provider.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * @generated
+     */
 	protected Collection<IAction> createSiblingActions;
 
 	/**
-	 * This is the menu manager into which menu contribution items should be added for CreateSibling actions.
-	 * <!-- begin-user-doc --> <!--
+     * This is the menu manager into which menu contribution items should be added for CreateSibling actions.
+     * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected IMenuManager createSiblingMenuManager;
 
 	/**
-	 * This creates an instance of the contributor.
-	 * <!-- begin-user-doc --> <!--
+     * This creates an instance of the contributor.
+     * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public DsActionBarContributor() {
-		super(ADDITIONS_LAST_STYLE);
-		loadResourceAction = new LoadResourceAction();
-		validateAction = new ValidateAction();
-		controlAction = new ControlAction();
-	}
+        super(ADDITIONS_LAST_STYLE);
+        loadResourceAction = new LoadResourceAction();
+        validateAction = new ValidateAction();
+        controlAction = new ControlAction();
+    }
 
 	/**
 	 * This adds Separators for editor additions to the tool bar. <!--
@@ -360,9 +360,9 @@ public class DsActionBarContributor extends EditingDomainActionBarContributor im
 
 	@Override
 	public void contributeToToolBar(IToolBarManager toolBarManager) {
-		toolBarManager.add(new Separator("ds-settings"));
-		toolBarManager.add(new Separator("ds-additions"));
-	}
+        toolBarManager.add(new Separator("ds-settings"));
+        toolBarManager.add(new Separator("ds-additions"));
+    }
 
 	/**
 	 * This adds to the menu bar a menu and some separators for editor
@@ -442,36 +442,36 @@ public class DsActionBarContributor extends EditingDomainActionBarContributor im
 	}
 
 	/**
-	 * When the active editor changes, this remembers the change and registers with it as a selection provider.
-	 * <!-- begin-user-doc --> <!--
+     * When the active editor changes, this remembers the change and registers with it as a selection provider.
+     * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 
 	@Override
 	public void setActiveEditor(IEditorPart part) {
-		super.setActiveEditor(part);
-		activeEditorPart = part;
+        super.setActiveEditor(part);
+        activeEditorPart = part;
 
-		// Switch to the new selection provider.
-		//
-		if (selectionProvider != null) {
-			selectionProvider.removeSelectionChangedListener(this);
-		}
-		if (part == null) {
-			selectionProvider = null;
-		}
-		else {
-			selectionProvider = part.getSite().getSelectionProvider();
-			selectionProvider.addSelectionChangedListener(this);
+        // Switch to the new selection provider.
+        //
+        if (selectionProvider != null) {
+            selectionProvider.removeSelectionChangedListener(this);
+        }
+        if (part == null) {
+            selectionProvider = null;
+        }
+        else {
+            selectionProvider = part.getSite().getSelectionProvider();
+            selectionProvider.addSelectionChangedListener(this);
 
-			// Fake a selection changed event to update the menus.
-			//
-			if (selectionProvider.getSelection() != null) {
-				selectionChanged(new SelectionChangedEvent(selectionProvider, selectionProvider.getSelection()));
-			}
-		}
-	}
+            // Fake a selection changed event to update the menus.
+            //
+            if (selectionProvider.getSelection() != null) {
+                selectionChanged(new SelectionChangedEvent(selectionProvider, selectionProvider.getSelection()));
+            }
+        }
+    }
 
 	/**
 	 * This handles the functionality when the selection is changed.
@@ -751,91 +751,91 @@ public class DsActionBarContributor extends EditingDomainActionBarContributor im
 	}
 
 	/**
-	 * This generates a {@link org.eclipse.emf.edit.ui.action.CreateChildAction} for each object in <code>descriptors</code>,
-	 * and returns the collection of these actions.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
+     * This generates a {@link org.eclipse.emf.edit.ui.action.CreateChildAction} for each object in <code>descriptors</code>,
+     * and returns the collection of these actions.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * @generated
+     */
 	protected Collection<IAction> generateCreateChildActions(Collection<?> descriptors,
 	                                                         ISelection selection) {
-		Collection<IAction> actions = new ArrayList<IAction>();
-		if (descriptors != null) {
-			for (Object descriptor : descriptors) {
-				actions.add(new CreateChildAction(activeEditorPart, selection, descriptor));
-			}
-		}
-		return actions;
-	}
+        Collection<IAction> actions = new ArrayList<IAction>();
+        if (descriptors != null) {
+            for (Object descriptor : descriptors) {
+                actions.add(new CreateChildAction(activeEditorPart, selection, descriptor));
+            }
+        }
+        return actions;
+    }
 
 	/**
-	 * This generates a {@link org.eclipse.emf.edit.ui.action.CreateSiblingAction} for each object in <code>descriptors</code>,
-	 * and returns the collection of these actions.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
+     * This generates a {@link org.eclipse.emf.edit.ui.action.CreateSiblingAction} for each object in <code>descriptors</code>,
+     * and returns the collection of these actions.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * @generated
+     */
 	protected Collection<IAction> generateCreateSiblingActions(Collection<?> descriptors,
 	                                                           ISelection selection) {
-		Collection<IAction> actions = new ArrayList<IAction>();
-		if (descriptors != null) {
-			for (Object descriptor : descriptors) {
-				actions.add(new CreateSiblingAction(activeEditorPart, selection, descriptor));
-			}
-		}
-		return actions;
-	}
+        Collection<IAction> actions = new ArrayList<IAction>();
+        if (descriptors != null) {
+            for (Object descriptor : descriptors) {
+                actions.add(new CreateSiblingAction(activeEditorPart, selection, descriptor));
+            }
+        }
+        return actions;
+    }
 
 	/**
-	 * This populates the specified <code>manager</code> with {@link org.eclipse.jface.action.ActionContributionItem}s
-	 * based on the {@link org.eclipse.jface.action.IAction}s contained in the <code>actions</code> collection,
-	 * by inserting them before the specified contribution item <code>contributionID</code>.
-	 * If <code>contributionID</code> is <code>null</code>, they are simply added.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
+     * This populates the specified <code>manager</code> with {@link org.eclipse.jface.action.ActionContributionItem}s
+     * based on the {@link org.eclipse.jface.action.IAction}s contained in the <code>actions</code> collection,
+     * by inserting them before the specified contribution item <code>contributionID</code>.
+     * If <code>contributionID</code> is <code>null</code>, they are simply added.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * @generated
+     */
 	protected void populateManager(IContributionManager manager,
 	                               Collection<? extends IAction> actions, String contributionID) {
-		if (actions != null) {
-			for (IAction action : actions) {
-				if (contributionID != null) {
-					manager.insertBefore(contributionID, action);
-				}
-				else {
-					manager.add(action);
-				}
-			}
-		}
-	}
+        if (actions != null) {
+            for (IAction action : actions) {
+                if (contributionID != null) {
+                    manager.insertBefore(contributionID, action);
+                }
+                else {
+                    manager.add(action);
+                }
+            }
+        }
+    }
 
 	/**
-	 * This removes from the specified <code>manager</code> all {@link org.eclipse.jface.action.ActionContributionItem}s
-	 * based on the {@link org.eclipse.jface.action.IAction}s contained in the <code>actions</code> collection.
-	 * <!-- begin-user-doc --> <!--
+     * This removes from the specified <code>manager</code> all {@link org.eclipse.jface.action.ActionContributionItem}s
+     * based on the {@link org.eclipse.jface.action.IAction}s contained in the <code>actions</code> collection.
+     * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected void depopulateManager(IContributionManager manager,
 	                                 Collection<? extends IAction> actions) {
-		if (actions != null) {
-			IContributionItem[] items = manager.getItems();
-			for (int i = 0; i < items.length; i++) {
-				// Look into SubContributionItems
-				//
-				IContributionItem contributionItem = items[i];
-				while (contributionItem instanceof SubContributionItem) {
-					contributionItem = ((SubContributionItem)contributionItem).getInnerItem();
-				}
+        if (actions != null) {
+            IContributionItem[] items = manager.getItems();
+            for (int i = 0; i < items.length; i++) {
+                // Look into SubContributionItems
+                //
+                IContributionItem contributionItem = items[i];
+                while (contributionItem instanceof SubContributionItem) {
+                    contributionItem = ((SubContributionItem)contributionItem).getInnerItem();
+                }
 
-				// Delete the ActionContributionItems with matching action.
-				//
-				if (contributionItem instanceof ActionContributionItem) {
-					IAction action = ((ActionContributionItem)contributionItem).getAction();
-					if (actions.contains(action)) {
-						manager.remove(contributionItem);
-					}
-				}
-			}
-		}
-	}
+                // Delete the ActionContributionItems with matching action.
+                //
+                if (contributionItem instanceof ActionContributionItem) {
+                    IAction action = ((ActionContributionItem)contributionItem).getAction();
+                    if (actions.contains(action)) {
+                        manager.remove(contributionItem);
+                    }
+                }
+            }
+        }
+    }
 
 	/**
 	 * This populates the pop-up menu(context menu) before it appears. <!--
@@ -995,25 +995,25 @@ public class DsActionBarContributor extends EditingDomainActionBarContributor im
 
 	@Override
 	protected void addGlobalActions(IMenuManager menuManager) {
-		menuManager.insertAfter("additions-end", new Separator("ui-actions"));
-		menuManager.insertAfter("ui-actions", showPropertiesViewAction);
+        menuManager.insertAfter("additions-end", new Separator("ui-actions"));
+        menuManager.insertAfter("ui-actions", showPropertiesViewAction);
 
-		refreshViewerAction.setEnabled(refreshViewerAction.isEnabled());		
-		menuManager.insertAfter("ui-actions", refreshViewerAction);
+        refreshViewerAction.setEnabled(refreshViewerAction.isEnabled());		
+        menuManager.insertAfter("ui-actions", refreshViewerAction);
 
-		super.addGlobalActions(menuManager);
-	}
+        super.addGlobalActions(menuManager);
+    }
 
 	/**
-	 * This ensures that a delete action will clean up all references to deleted objects.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
+     * This ensures that a delete action will clean up all references to deleted objects.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * @generated
+     */
 
 	@Override
 	protected boolean removeAllReferencesOnDelete() {
-		return true;
-	}
+        return true;
+    }
 
 	/**
 	 * Populate Data Source Actions for Different Types of Data Sources.

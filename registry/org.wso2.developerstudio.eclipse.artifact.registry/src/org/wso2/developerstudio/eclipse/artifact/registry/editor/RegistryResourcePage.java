@@ -123,11 +123,12 @@ public class RegistryResourcePage extends FormPage {
 		listSection.setClient(comp);
 		
 		//Creating the table which hosts Artifact List
-		artifactListTable = toolkit.createTable(comp,  SWT.MULTI|SWT.FULL_SELECTION);
+		artifactListTable = toolkit.createTable(comp, SWT.READ_ONLY);
 		artifactListTable.setBackground(SWTResourceManager.getColor(255, 255, 224));
 		artifactListTable.setBounds(4, 2, 22, 10);
-		TableColumn tc1 = new TableColumn(artifactListTable, SWT.CENTER);
-		TableColumn tc2 = new TableColumn(artifactListTable, SWT.LEFT);
+	 
+		TableColumn tc1 = new TableColumn(artifactListTable, SWT.CENTER & SWT.READ_ONLY);
+		TableColumn tc2 = new TableColumn(artifactListTable, SWT.LEFT & SWT.READ_ONLY);
 		tc1.setResizable(false);
 		tc2.setText("Artifact List");
 		tc1.setWidth(0);
@@ -136,7 +137,7 @@ public class RegistryResourcePage extends FormPage {
 
 		// Adding Table editor for editing Artifact Names
 		artifactNameEditor = new TableEditor(artifactListTable);
-		artifactNameEditor.setEditor(new Text(artifactListTable, SWT.BORDER));
+		artifactNameEditor.setEditor(new Text(artifactListTable, SWT.READ_ONLY));
 		artifactNameEditor.horizontalAlignment = SWT.LEFT;
 		artifactNameEditor.grabHorizontal = true;
 		artifactNameEditor.minimumWidth = 50;
@@ -211,8 +212,9 @@ public class RegistryResourcePage extends FormPage {
 		      }
 		    });
 		
-		//Adding Mouse Listener to allow editing artifact name
-		artifactListTable.addListener(SWT.MouseDown, new Listener() {
+		//Adding Mouse Listener to allow editing artifact name  Removing this - this leads to crash the editor 
+		//Also purpose of having this is allow users to rename the artifact then the rename participant also not working
+	/*	artifactListTable.addListener(SWT.MouseDown, new Listener() {
 			
 			public void handleEvent(Event event) {
 				 // Clean up any previous editor control
@@ -324,7 +326,7 @@ public class RegistryResourcePage extends FormPage {
 		        artifactListTable.redraw();
 			}
 		});
-
+*/
 	}
 	
 	

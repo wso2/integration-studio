@@ -36,6 +36,7 @@
     </distributionManagement>
 
     <modules>
+	<module>APIM</module>  
         <module>server</module>    
         <module>core</module> 
         <module>usermgt</module>                    

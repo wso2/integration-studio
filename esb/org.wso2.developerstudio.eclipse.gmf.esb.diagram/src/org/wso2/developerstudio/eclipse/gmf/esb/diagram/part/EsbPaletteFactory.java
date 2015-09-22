@@ -31,6 +31,8 @@ import org.apache.commons.lang.WordUtils;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.EditPartViewer;
 import org.eclipse.gef.Tool;
@@ -48,9 +50,12 @@ import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramEditDomain;
 import org.eclipse.gmf.runtime.diagram.ui.tools.UnspecifiedTypeConnectionTool;
 import org.eclipse.gmf.runtime.diagram.ui.tools.UnspecifiedTypeCreationTool;
 import org.eclipse.gmf.runtime.emf.type.core.IElementType;
+import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.jface.resource.ImageDescriptor;
+import org.eclipse.swt.SWTException;
 import org.eclipse.swt.events.MouseEvent;
 import org.eclipse.swt.graphics.Image;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IFileEditorInput;
 import org.eclipse.ui.IPerspectiveDescriptor;
@@ -1651,11 +1656,18 @@ public class EsbPaletteFactory {
 		if (keys != null) {
 			Arrays.sort(keys);
 			for (int k = 0; k < keys.length; ++k) {
-				container.add(createCloudConnectorOperationCreationTool(
-						(String) keys[k], "cloudConnectorOperation-"
-								+ cloudConnectorName, connectorPath
-								+ File.separator + "icon" + File.separator
-								+ "icon-small.gif"));
+				try {
+					container.add(createCloudConnectorOperationCreationTool((String) keys[k],
+							"cloudConnectorOperation-" + cloudConnectorName, connectorPath + File.separator + "icon"
+									+ File.separator + "icon-small.gif"));
+				} catch (SWTException e) {
+					container.getChildren().clear();
+					log.error("Failed to add connector " + cloudConnectorName + " to the tool palette", e);
+					IStatus errorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage());
+					ErrorDialog.openError(Display.getCurrent().getActiveShell(), "Error in connector",
+							"Failed to add connector " + cloudConnectorName + " to the tool palette", errorStatus);
+					return;
+				}
 			}
 		}
 
@@ -2020,8 +2032,8 @@ public class EsbPaletteFactory {
 		return paletteContainer;
 	}
 
-	private ToolEntry createCloudConnectorOperationCreationTool(String name,
-			String ID, String imagePath) {
+	private ToolEntry createCloudConnectorOperationCreationTool(String name, String ID, String imagePath)
+			throws SWTException {
 		NodeToolEntry entry = new NodeToolEntry(
 				name,
 				Messages.CloudConnectorOperation6CreationTool_desc,

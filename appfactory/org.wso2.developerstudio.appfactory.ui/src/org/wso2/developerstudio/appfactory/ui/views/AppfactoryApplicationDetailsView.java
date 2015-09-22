@@ -77,7 +77,6 @@ public class AppfactoryApplicationDetailsView extends ViewPart {
 	private Button dsConfigWizard;
 	
 	private Composite appTypeComposite;
-	private Composite repoTypeComposite;
 	private Composite appOwnerComposite;
 	private Composite descriptionComposite;
 /*	private Composite databaseInfoComposite;
@@ -167,7 +166,6 @@ public class AppfactoryApplicationDetailsView extends ViewPart {
 		
 		// Clear Application Info Tab
 		removeChildControls(appTypeComposite);
-		removeChildControls(repoTypeComposite);
 		removeChildControls(appOwnerComposite);
 		removeChildControls(descriptionComposite);
         Control oldDBEditor = dbColumnEditor.getEditor();
@@ -248,12 +246,14 @@ public class AppfactoryApplicationDetailsView extends ViewPart {
 		// scroller.setExpandVertical(true);
 		scroller.setExpandHorizontal(true);
 		Composite composite = new Composite(scroller, SWT.NULL);
-		composite.setLayout(new FillLayout(SWT.VERTICAL));
+		FillLayout fillLayout = new FillLayout(SWT.VERTICAL);
+		fillLayout.marginWidth = 20;
+        composite.setLayout(fillLayout);
 		composite.setBackground(tabFolder.getBackground());
 		scroller.setContent(composite);
 		scroller.setMinSize(composite.computeSize(SWT.DEFAULT, SWT.DEFAULT));
 
-		String[] names = new String[] { "Application Type", "Repository Type", "Application Owner",
+		String[] names = new String[] { "Application Type","Application Owner",
 				"Description", "Version", "Repository URL" };
 
 		createLabel(composite, SWT.NONE, "", new GridData(), scroller.getBackground(), new Font(
@@ -270,16 +270,6 @@ public class AppfactoryApplicationDetailsView extends ViewPart {
 				null, "", 15, SWT.BOLD));
 
 		createCompositeLabel(composite, names[1]);
-		repoTypeComposite = new Composite(composite, SWT.NONE);
-		repoTypeComposite.setBackground(tabFolder.getBackground());
-		GridLayout repoTypeGridLayout = new GridLayout(1, false);
-		repoTypeGridLayout.marginWidth = 20;
-		repoTypeComposite.setLayout(repoTypeGridLayout);
-
-		createLabel(composite, SWT.NONE, "", new GridData(), scroller.getBackground(), new Font(
-				null, "", 15, SWT.BOLD));
-
-		createCompositeLabel(composite, names[2]);
 		appOwnerComposite = new Composite(composite, SWT.NONE);
 		appOwnerComposite.setBackground(tabFolder.getBackground());
 		GridLayout appOwnerGridLayout = new GridLayout(1, false);
@@ -289,7 +279,7 @@ public class AppfactoryApplicationDetailsView extends ViewPart {
 		createLabel(composite, SWT.NONE, "", new GridData(), scroller.getBackground(), new Font(
 				null, "", 15, SWT.BOLD));
 
-		createCompositeLabel(composite, names[3]);
+		createCompositeLabel(composite, names[2]);
 		descriptionComposite = new Composite(composite, SWT.NONE);
 		descriptionComposite.setBackground(tabFolder.getBackground());
 		GridLayout descriptionGridLayout = new GridLayout(1, false);
@@ -453,7 +443,7 @@ public class AppfactoryApplicationDetailsView extends ViewPart {
 		});
 
 
-		String[] titles = { "Name","DB Url","user"};
+		String[] titles = { "Name","DB URL","User"};
 		for (int i = 0; i < titles.length; i++) {
 			TableColumn column = new TableColumn(dataSourcesTable, SWT.BOLD);
 			column.setText(titles[i]);
@@ -517,18 +507,6 @@ public class AppfactoryApplicationDetailsView extends ViewPart {
 			}
 			appTypeComposite.pack();
 			appTypeComposite.layout();
-
-			removeChildControls(repoTypeComposite);
-			if (applicationInfo.getRepositoryType() != null
-					&& !applicationInfo.getRepositoryType().equals("")) {
-				createLabel(repoTypeComposite, SWT.NONE, applicationInfo.getRepositoryType(),
-						getGridData(), tabFolder.getBackground(), null);
-			} else {
-				createLabel(repoTypeComposite, SWT.NONE, DEFAULT_VALUE, getGridData(),
-						tabFolder.getBackground(), null);
-			}
-			repoTypeComposite.pack();
-			repoTypeComposite.layout();
 			removeChildControls(appOwnerComposite);
 			if (applicationInfo.getApplicationOwner() != null
 					&& !applicationInfo.getApplicationOwner().equals("")) {

@@ -149,8 +149,8 @@ public abstract class AbstractEndpointTransformer extends AbstractEsbNodeTransfo
 							.toArray()[i];
 					String namespaceUri = property.getValueExpression().getNamespaces().get(prefix);
 					XPath.addNamespace(prefix, namespaceUri);
-					mediatorProperty.setExpression(XPath);
-				}			
+				}	
+				mediatorProperty.setExpression(XPath);
 			} catch (JaxenException e) {
 				log.error("Error while persisting Endpoint properties", e);
 			}

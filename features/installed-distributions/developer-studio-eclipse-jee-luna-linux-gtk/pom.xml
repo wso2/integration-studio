@@ -395,8 +395,8 @@
 						<arg value="-installIU" />
 						<arg value="org.smooks.edi.editor-feature.feature.group" />
 						<arg value="-installIU" />
-						<arg value="org.wso2.developerstudio.eclipse.cep.artifact.feature.feature.group" />
-						<arg value="-installIU" />
+					<!--	<arg value="org.wso2.developerstudio.eclipse.cep.artifact.feature.feature.group" />
+						<arg value="-installIU" />-->
 						<arg value="org.wso2.developerstudio.eclipse.brs.artifact.feature.feature.group" />
 						<arg value="-installIU" />
 						<arg value="org.wso2.developerstudio.eclipse.appfactory.feature.feature.group" />

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <plugin>
-   <extension
+<!--extension
          point="org.eclipse.ui.newWizards">
          <wizard name="CEP Project" category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.eclipse.artifact.cep.category"
 			class="org.wso2.developerstudio.eclipse.artifact.cep.ui.wizard.CEPProjectCreationWizard"
@@ -30,7 +30,7 @@
 		<image id="org.wso2.developerstudio.eclipse.cep.project.natureImage"
 			natureId="org.wso2.developerstudio.eclipse.cep.project.nature" icon="icons/buket-12x12.png">
 		</image>
-	</extension>
+	</extension>-->
 	  <!--<extension point="org.eclipse.ui.navigator.navigatorContent">	
 	 <navigatorContent activeByDefault="true"
 			priority="high"
@@ -59,7 +59,7 @@
 				  </triggerPoints>
 		</navigatorContent>
 		</extension>-->
-				<extension point="org.eclipse.ui.navigator.navigatorContent">    
+<!--				<extension point="org.eclipse.ui.navigator.navigatorContent">    
             <commonWizard type="new"
                 menuGroupId="2org.wso2.developerstudio.eclipse.artifact.newcepartifact"
                 wizardId="org.wso2.developerstudio.eclipse.artifact.newcepartifact">
@@ -96,5 +96,5 @@
                 contentTypeId="org.wso2.developerstudio.eclipse.artifact.cep.content-type.cepservice">
           </contentTypeBinding>
        </editor>
-    </extension>
+    </extension>-->
 </plugin>

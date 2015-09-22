@@ -396,7 +396,7 @@ limitations under the License.
         <wizardCategory category="org.wso2.developerstudio.eclipse.extensions.features"/>
         <wizardCategory category="org.wso2.developerstudio.eclipse.message.mediation.project.types"/>
         <wizardCategory category="org.wso2.developerstudio.eclipse.message.mediation.features"/>
-        <wizardCategory category="org.wso2.developerstudio.eclipse.artifact.cep.category"/>
+    <!--<wizardCategory category="org.wso2.developerstudio.eclipse.artifact.cep.category"/>-->
         <category id="dashboard.category.appserv" showTitle="true"
                   title="Application Server"
                   priority="1">
@@ -425,10 +425,10 @@ limitations under the License.
                   title="Gadget Server"
                   priority="7">
         </category>
-        <category id="dashboard.category.cep" showTitle="true"
+    <!--<category id="dashboard.category.cep" showTitle="true"
                   title="Complex Event Processing Server"
                   priority="8">
-        </category>
+        </category>-->
 
         <!-- appserv -->
         <wizardLink category="dashboard.category.appserv" id="1dashboard.wizardLink.axis2"
@@ -549,10 +549,10 @@ limitations under the License.
                     wizard="org.wso2.developerstudio.eclipse.artifact.newgadgetartifact">
         </wizardLink>
 
-        <!-- CEP -->
+        <!-- CEP 
         <wizardLink category="dashboard.category.cep" id="dashboard.wizardLink.cep"
                     wizard="org.wso2.developerstudio.eclipse.artifact.newcepartifact">
-        </wizardLink>
+        </wizardLink> -->
 
         <!-- BRS -->
         <wizardCategory

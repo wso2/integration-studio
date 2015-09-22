@@ -30,7 +30,7 @@
                 <!--module>data-mapper</module-->
 		<module>esb</module>
 		<module>gs</module>
-		<module>cep</module>
+	<!--	<module>cep</module>-->
 		<module>brs</module>
 		<module>appfactory</module>
 		<module>jaggery</module>

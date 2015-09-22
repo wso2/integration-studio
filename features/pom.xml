@@ -52,7 +52,7 @@
 	<module>distribution</module>
 	<module>library</module>
 	<module>gadgets</module>
-	<module>cep</module>
+<!--	<module>cep</module>-->
 	<module>brs</module>
 <!--	<module>SoapUI</module>-->
 <!--	<module>tcpmon</module>-->

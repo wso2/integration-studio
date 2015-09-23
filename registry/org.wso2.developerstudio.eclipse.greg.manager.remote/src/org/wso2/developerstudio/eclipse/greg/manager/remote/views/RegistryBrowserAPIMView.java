@@ -1536,6 +1536,7 @@ public class RegistryBrowserAPIMView extends ViewPart implements Observer {
 						if(discardSequence){							
 							changedResourceNodes.remove(regResourceNode.getRegistryResourcePath());
 							updateDirtyState();
+							regResourceNode.setIsdeleted(false);
 							refreshTreeviewer(regResourceNode);							
 							MessageDialogUtils.info(Display.getCurrent().getActiveShell(), "",
 									SUCESSFULLY_DISCARDED_THE_LOCALCHANGES);

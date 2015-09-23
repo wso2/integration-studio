@@ -256,6 +256,7 @@ public class AppfactoryApplicationListView extends ViewPart {
                             viewer.setExpandedState(selectedNode, !viewer.getExpandedState(selectedNode));
                         } else {
                             getAppVersions(appInfo);
+                            getDataSources(appInfo);
                         }
                     }
 				} catch (Throwable e) {
@@ -650,7 +651,6 @@ public class AppfactoryApplicationListView extends ViewPart {
 	
 	
 	private void updateUI(final ApplicationInfo appInfo){
-		
 		Display.getDefault().asyncExec(new Runnable() {
 		      public void run() {
 		         viewer.refresh();
@@ -670,11 +670,10 @@ public class AppfactoryApplicationListView extends ViewPart {
 
 				appInfo.setLableState(1);
 				broker.send("Appversionupdate", model); //$NON-NLS-1$
-				if(getVersionInfo(appInfo, new SubProgressMonitor(monitor, 25))){
-					getForkedVersionsInfo(appInfo, new SubProgressMonitor(monitor, 25));
-					getTeamInfo(appInfo, new SubProgressMonitor(monitor, 25));
+				if(getVersionInfo(appInfo, new SubProgressMonitor(monitor, 33))){
+					getForkedVersionsInfo(appInfo, new SubProgressMonitor(monitor, 33));
+					getTeamInfo(appInfo, new SubProgressMonitor(monitor, 34));
 					//getDbInfo(appInfo, monitor);/*currently not supporting*/
-					getDSInfo(appInfo, new SubProgressMonitor(monitor, 25));
 					appInfo.setLableState(2);
 					appInfo.setLoaded(true);
                 } else {
@@ -786,36 +785,48 @@ public class AppfactoryApplicationListView extends ViewPart {
                         monitor.done();
 						return false;
 					}
-				}
-				
-				private boolean getDSInfo(final ApplicationInfo appInfo,
-						final IProgressMonitor monitor) {
-					monitor.beginTask(Messages.AppfactoryApplicationListView_getDSInfo_monitor_text_2, 100);
-					monitor.worked(20);	   
-					boolean result = model.setDSInfomation(appInfo);
-					if(!result){
-						boolean reLogin = Authenticator.getInstance().reLogin();
-						if(reLogin){
-							result = model.setDSInfomation(appInfo);
-						}
-					}
-					if(result){
-					monitor.subTask(Messages.AppfactoryApplicationListView_getDSInfo_monitor_text_3);
-					monitor.worked(60);	 
-					broker.send("Appversionupdate", model); //$NON-NLS-1$
-					monitor.worked(20);
-					monitor.done();
-					return true;
-					}else{
-					    monitor.worked(80);
-                        monitor.done();
-						return false;
-					}
-				}
-				
+				}				
 			};
 		job.schedule();
 	}
+	
+    private void getDataSources(final ApplicationInfo appInfo) {
+        Job job = new Job("Loading datasources") {
+            @Override
+            protected IStatus run(IProgressMonitor monitor) {
+                monitor.beginTask("Loading datasources", 100);
+                getDSInfo(appInfo, new SubProgressMonitor(monitor, 80));
+                updateUI(appInfo);
+                monitor.done();
+                return Status.OK_STATUS;
+            }
+
+            private boolean getDSInfo(final ApplicationInfo appInfo, final IProgressMonitor monitor) {
+                monitor.beginTask(Messages.AppfactoryApplicationListView_getDSInfo_monitor_text_2, 100);
+                monitor.worked(20);
+                boolean result = model.setDSInfomation(appInfo);
+                if (!result) {
+                    boolean reLogin = Authenticator.getInstance().reLogin();
+                    if (reLogin) {
+                        result = model.setDSInfomation(appInfo);
+                    }
+                }
+                if (result) {
+                    monitor.subTask(Messages.AppfactoryApplicationListView_getDSInfo_monitor_text_3);
+                    monitor.worked(60);
+                    broker.send("Appversionupdate", model); //$NON-NLS-1$
+                    monitor.worked(20);
+                    monitor.done();
+                    return true;
+                } else {
+                    monitor.worked(80);
+                    monitor.done();
+                    return false;
+                }
+            }
+        };
+        job.schedule();
+    }
  
 	private void getbuildLogsJob(final AppVersionInfo appInfo,final boolean deploy) { 
 		Job job = new Job(Messages.AppfactoryApplicationListView_getbuildLogsJob_title) { 
@@ -922,6 +933,7 @@ public class AppfactoryApplicationListView extends ViewPart {
 			public void run() {
 				try {
 					getAppVersions(appInfo);
+					getDataSources(appInfo);
 				} catch (Exception e) {
 					appInfo.setLableState(0);
 					log.error(e);
@@ -1263,7 +1275,7 @@ public class AppfactoryApplicationListView extends ViewPart {
                 String.valueOf(appInfo.isForkedVersion()));
         params.put("lastBuildId", String.valueOf(buildId));
         params.put("tenantDomain", Authenticator.getInstance().getSelectedTenant());
-        BufferedReader rd = HttpsJaggeryClient.doHttpPost(
+        BufferedReader rd = HttpsJaggeryClient.getPostResponseBuffer(
                 JagApiProperties.getBuildLogsUrl(), params);
 
         String line = "";

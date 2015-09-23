@@ -12,12 +12,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package org.wso2.developerstudio.appfactory.core.client;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
+import java.net.SocketTimeoutException;
 import java.net.URL;
 import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
@@ -43,178 +42,223 @@ import org.apache.http.conn.ssl.SSLSocketFactory;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.impl.conn.tsccm.ThreadSafeClientConnManager;
 import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.params.BasicHttpParams;
+import org.apache.http.params.HttpConnectionParams;
+import org.apache.http.params.HttpParams;
 import org.apache.http.util.EntityUtils;
 import org.wso2.developerstudio.appfactory.core.Activator;
 import org.wso2.developerstudio.appfactory.core.authentication.Authenticator;
 import org.wso2.developerstudio.appfactory.core.model.ErrorType;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
- 
+
 public class HttpsJaggeryClient {
-	private static IDeveloperStudioLog log=Logger.getLog(Activator.PLUGIN_ID);
-    private static HttpClient  client;
-    private static String cookie;
 
-	public static String httpPostLogin(String urlStr, Map<String,String> params){
- 
-	    client = new DefaultHttpClient();
-	    client = HttpsJaggeryClient.wrapClient(client,urlStr);
+    public static final String TIMEOUT_RESPONSE = "timeout";
+    public static final String FALSE_RESPONSE = "false";
+    public static final int DEFAULT_SOCKET_TIMEOUT = 30000;
+    
+    private static final String COOKIE_HEADER = "Cookie";
+    private static final String SET_COOKIE_HEADER = "Set-Cookie";
+    private static final int STATUS_OK = 200;
+    
+    private static HttpClient httpClient;
+    private static String sessionCookie;
 
-	    HttpPost post = new HttpPost(urlStr);
-	    String respond = "";
-	    HttpResponse response=null;
-	    
-	     try
-	     {
-			  List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(1);
-			  Set<String> keySet = params.keySet();
-		  
-			  for (String key : keySet) {
-				  nameValuePairs.add(new BasicNameValuePair(key, params.get(key)));
-			   }
-		      post.setEntity(new UrlEncodedFormEntity(nameValuePairs));
-		      response = client.execute(post);
-		      
-		      if(200==response.getStatusLine().getStatusCode())
-		      {
-		    	  cookie = response.getFirstHeader("Set-Cookie").getValue().split(";")[0];
-			      HttpEntity entityGetAppsOfUser = response.getEntity();
-			      BufferedReader rd = new BufferedReader(new InputStreamReader(entityGetAppsOfUser.getContent()));
-			      StringBuilder sb = new StringBuilder();
-			      String line ="";
-			      
-			      while ((line = rd.readLine()) != null) {
-			                  sb.append(line);
-			      }
-			      respond = sb.toString();
-			      
-			      if("false".equals(respond)){
-			    	  Authenticator.getInstance().setErrorcode(ErrorType.INVALID);
-			      }
-			      EntityUtils.consume(entityGetAppsOfUser);
-			      
-			      if (entityGetAppsOfUser != null) {
-			    	  entityGetAppsOfUser.getContent().close();
-			      }
-		      }
-		      else
-		      {
-				     Authenticator.getInstance().setErrorcode(ErrorType.FAILD);
-		    	     Authenticator.getInstance().setErrormsg(response.getStatusLine().getReasonPhrase());
-		    	     log.error("("+response.getStatusLine().getStatusCode()+")"+
-		    	    		 ":"+response.getStatusLine().getReasonPhrase());
-		    	     return "false";
-		      }
-		     
-	      }
-	      catch(Exception e)
-	      {   	     
-	    	     Authenticator.getInstance().setErrorcode(ErrorType.ERROR);
-	    	     log.error("Connection failure",e); 
-	        	 return "false";
-	       }
-	       finally
-	       {
-	           client.getConnectionManager().closeExpiredConnections();
-	       }
- 
-         return respond;
-	}
-	
-	public static String httpPost(String urlStr, Map<String,String> params){
-		   
-		   if(client ==null){
-			   httpPostLogin(urlStr,params);
-		   }
-		    HttpPost post = new HttpPost(urlStr);
-		    String respond = "";
-		    HttpResponse response=null;
-	         try{
-		      List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(1);
-			  Set<String> keySet = params.keySet();
-			  for (String key : keySet) {
-				  nameValuePairs.add(new BasicNameValuePair(key, params.get(key)));
-			   }
-			  
-		      post.setEntity(new UrlEncodedFormEntity(nameValuePairs));
-		      if(cookie!=null){
-		    	  post.setHeader("Cookie", cookie);
-		      }
-		      response = client.execute(post);
-		      if(200==response.getStatusLine().getStatusCode()){
-		      HttpEntity entityGetAppsOfUser = response.getEntity();
-		      BufferedReader rd = new BufferedReader(new InputStreamReader(entityGetAppsOfUser.getContent()));
-		      StringBuilder sb = new StringBuilder();
-		      String line ="";
-		      while ((line = rd.readLine()) != null) {
-		                  sb.append(line);
-		            }
-		      respond = sb.toString();
-		      if("false".equals(respond)){
-		    	  Authenticator.getInstance().setErrorcode(ErrorType.INVALID);
-		      }
-		      EntityUtils.consume(entityGetAppsOfUser);
-		      if (entityGetAppsOfUser != null) {
-		    	  entityGetAppsOfUser.getContent().close();
-		    	}
-		      }else{
-				     Authenticator.getInstance().setErrorcode(ErrorType.FAILD);
-		    	     Authenticator.getInstance().setErrormsg(response.getStatusLine().getReasonPhrase());
-		    	     log.error("("+response.getStatusLine().getStatusCode()+")"+
-		    	    		 ":"+response.getStatusLine().getReasonPhrase());
-		    	  return "false";
-		      }
-		     
-	      }catch(Exception e){   	     
-	    	     Authenticator.getInstance().setErrorcode(ErrorType.ERROR);
-	    	     log.error("Connection failure",e); 
-	        	 return "false";
-	         } finally{
-	           client.getConnectionManager().closeExpiredConnections();
-	         }
- 
-     return respond;	       
-  }
+    private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
-	public static BufferedReader doHttpPost(String urlStr, Map<String, String> params) {
+    public static String httpPostLogin(String postURL, Map<String, String> requestParams) {
 
-		if (client == null) {
-			httpPostLogin(urlStr, params);
-		}
-		HttpPost post = new HttpPost(urlStr);
-		HttpResponse response = null;
-		BufferedReader reader = null;
-		try {
-			List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(1);
-			Set<String> keySet = params.keySet();
-			for (String key : keySet) {
-				nameValuePairs
-						.add(new BasicNameValuePair(key, params.get(key)));
-			}
+        httpClient = new DefaultHttpClient();
+        httpClient = HttpsJaggeryClient.wrapClient(httpClient, postURL);
+        HttpPost postRequest = new HttpPost(postURL);
+        String jsonResponse = "";
+        HttpResponse postResponse = null;
 
-			post.setEntity(new UrlEncodedFormEntity(nameValuePairs));
-			if (cookie != null) {
-				post.setHeader("Cookie", cookie);
-			}
-			response = client.execute(post);
-			
-			if (200 == response.getStatusLine().getStatusCode()) {
-				HttpEntity entity = response.getEntity();
-				reader = new BufferedReader(new InputStreamReader(
-							entity.getContent()));
-			}
-		} catch (Exception e) {
-			Authenticator.getInstance().setErrorcode(ErrorType.ERROR);
-			log.error("Connection failure", e);
-			return null;
-		} finally {
-			client.getConnectionManager().closeExpiredConnections();
-		}
+        try {
+            List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(1);
+            Set<String> paramKeys = requestParams.keySet();
 
-		return reader;
-	}
-	@SuppressWarnings("deprecation")
-	public static HttpClient wrapClient(HttpClient base,String urlStr) {
+            for (String paramKey : paramKeys) {
+                nameValuePairs.add(new BasicNameValuePair(paramKey, requestParams.get(paramKey)));
+            }
+            postRequest.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+            postResponse = httpClient.execute(postRequest);
+
+            if (STATUS_OK == postResponse.getStatusLine().getStatusCode()) {
+                sessionCookie = postResponse.getFirstHeader(SET_COOKIE_HEADER).getValue().split(";")[0];
+                HttpEntity entity = postResponse.getEntity();
+                BufferedReader reader = new BufferedReader(new InputStreamReader(entity.getContent()));
+                StringBuilder responseBuilder = new StringBuilder();
+                String line = "";
+                while ((line = reader.readLine()) != null) {
+                    responseBuilder.append(line);
+                }
+                jsonResponse = responseBuilder.toString();
+                if (FALSE_RESPONSE.equals(jsonResponse)) {
+                    Authenticator.getInstance().setErrorcode(ErrorType.INVALID);
+                }
+                EntityUtils.consume(entity);
+                if (entity != null) {
+                    entity.getContent().close();
+                }
+            } else {
+                Authenticator.getInstance().setErrorcode(ErrorType.FAILD);
+                Authenticator.getInstance().setErrormsg(postResponse.getStatusLine().getReasonPhrase());
+                log.error("(" + postResponse.getStatusLine().getStatusCode() + ")" + ":"
+                        + postResponse.getStatusLine().getReasonPhrase());
+                return FALSE_RESPONSE;
+            }
+        } catch (Exception e) {
+            Authenticator.getInstance().setErrorcode(ErrorType.ERROR);
+            log.error("Connection failure", e);
+            return FALSE_RESPONSE;
+        } finally {
+            httpClient.getConnectionManager().closeExpiredConnections();
+        }
+        return jsonResponse;
+    }
+
+    public static String httpPost(String postURL, Map<String, String> requestParams) {
+        if (httpClient == null) {
+            httpPostLogin(postURL, requestParams);
+        }
+        HttpPost postRequest = new HttpPost(postURL);
+        String jsonResponse = "";
+        HttpResponse postResponse = null;
+        try {
+            List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(1);
+            Set<String> paramKeys = requestParams.keySet();
+            for (String paramKey : paramKeys) {
+                nameValuePairs.add(new BasicNameValuePair(paramKey, requestParams.get(paramKey)));
+            }
+            postRequest.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+            if (sessionCookie != null) {
+                postRequest.setHeader(COOKIE_HEADER, sessionCookie);
+            }
+            postResponse = httpClient.execute(postRequest);
+            if (STATUS_OK == postResponse.getStatusLine().getStatusCode()) {
+                HttpEntity entity = postResponse.getEntity();
+                BufferedReader reader = new BufferedReader(new InputStreamReader(entity.getContent()));
+                StringBuilder responseBuilder = new StringBuilder();
+                String line = "";
+                while ((line = reader.readLine()) != null) {
+                    responseBuilder.append(line);
+                }
+                jsonResponse = responseBuilder.toString();
+                if (FALSE_RESPONSE.equals(jsonResponse)) {
+                    Authenticator.getInstance().setErrorcode(ErrorType.INVALID);
+                }
+                EntityUtils.consume(entity);
+                if (entity != null) {
+                    entity.getContent().close();
+                }
+            } else {
+                Authenticator.getInstance().setErrorcode(ErrorType.FAILD);
+                Authenticator.getInstance().setErrormsg(postResponse.getStatusLine().getReasonPhrase());
+                log.error("(" + postResponse.getStatusLine().getStatusCode() + ")" + ":"
+                        + postResponse.getStatusLine().getReasonPhrase());
+                return FALSE_RESPONSE;
+            }
+        } catch (Exception e) {
+            Authenticator.getInstance().setErrorcode(ErrorType.ERROR);
+            log.error("Connection failure", e);
+            return FALSE_RESPONSE;
+        } finally {
+            httpClient.getConnectionManager().closeExpiredConnections();
+        }
+        return jsonResponse;
+    }
+    
+    public static String httpPostWithSoTimeout(String postURL, Map<String, String> requestParams, int socketTimeout){
+        if (httpClient == null) {
+            httpPostLogin(postURL, requestParams);
+        }
+        httpClient.getParams().setIntParameter(HttpConnectionParams.SO_TIMEOUT, socketTimeout);
+        HttpPost postRequest = new HttpPost(postURL);
+        String jsonResponse = "";
+        HttpResponse postResponse = null;
+        try {
+            List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(1);
+            Set<String> paramKeys = requestParams.keySet();
+            for (String paramKey : paramKeys) {
+                nameValuePairs.add(new BasicNameValuePair(paramKey, requestParams.get(paramKey)));
+            }
+            postRequest.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+            if (sessionCookie != null) {
+                postRequest.setHeader(COOKIE_HEADER, sessionCookie);
+            }
+            postResponse = httpClient.execute(postRequest);
+            if (STATUS_OK == postResponse.getStatusLine().getStatusCode()) {
+                HttpEntity entity = postResponse.getEntity();
+                BufferedReader reader = new BufferedReader(new InputStreamReader(entity.getContent()));
+                StringBuilder responseBuilder = new StringBuilder();
+                String line = "";
+                while ((line = reader.readLine()) != null) {
+                    responseBuilder.append(line);
+                }
+                jsonResponse = responseBuilder.toString();
+                if (FALSE_RESPONSE.equals(jsonResponse)) {
+                    Authenticator.getInstance().setErrorcode(ErrorType.INVALID);
+                }
+                EntityUtils.consume(entity);
+                if (entity != null) {
+                    entity.getContent().close();
+                }
+            } else {
+                Authenticator.getInstance().setErrorcode(ErrorType.FAILD);
+                Authenticator.getInstance().setErrormsg(postResponse.getStatusLine().getReasonPhrase());
+                log.error("(" + postResponse.getStatusLine().getStatusCode() + ")" + ":"
+                        + postResponse.getStatusLine().getReasonPhrase());
+                return FALSE_RESPONSE;
+            }
+        } catch (SocketTimeoutException e) {
+            log.error("Connection failure due to socket timeout.", e);
+            return TIMEOUT_RESPONSE;   
+        } catch (Exception e) {
+            Authenticator.getInstance().setErrorcode(ErrorType.ERROR);
+            log.error("Connection failure", e);
+            return FALSE_RESPONSE;
+        } finally {
+            httpClient.getConnectionManager().closeExpiredConnections();
+        }
+        return jsonResponse;
+    }
+
+    public static BufferedReader getPostResponseBuffer(String postURL, Map<String, String> requestParams) {
+        if (httpClient == null) {
+            httpPostLogin(postURL, requestParams);
+        }
+        HttpPost postRequest = new HttpPost(postURL);
+        HttpResponse jsonResponse = null;
+        BufferedReader reader = null;
+        try {
+            List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(1);
+            Set<String> paramKeys = requestParams.keySet();
+            for (String paramKey : paramKeys) {
+                nameValuePairs.add(new BasicNameValuePair(paramKey, requestParams.get(paramKey)));
+            }
+            postRequest.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+            if (sessionCookie != null) {
+                postRequest.setHeader(COOKIE_HEADER, sessionCookie);
+            }
+            jsonResponse = httpClient.execute(postRequest);
+            if (STATUS_OK == jsonResponse.getStatusLine().getStatusCode()) {
+                HttpEntity entity = jsonResponse.getEntity();
+                reader = new BufferedReader(new InputStreamReader(entity.getContent()));
+            }
+        } catch (Exception e) {
+            Authenticator.getInstance().setErrorcode(ErrorType.ERROR);
+            log.error("Connection failure", e);
+            return null;
+        } finally {
+            httpClient.getConnectionManager().closeExpiredConnections();
+        }
+        return reader;
+    }
+
+    @SuppressWarnings("deprecation")
+    public static HttpClient wrapClient(HttpClient base, String urlStr) {
         try {
             SSLContext ctx = SSLContext.getInstance("TLS");
             X509TrustManager tm = new X509TrustManager() {
@@ -229,34 +273,34 @@ public class HttpsJaggeryClient {
                     return null;
                 }
             };
-            ctx.init(null, new TrustManager[]{tm}, null);
+            ctx.init(null, new TrustManager[] { tm }, null);
             SSLSocketFactory ssf = new SSLSocketFactory(ctx);
             ssf.setHostnameVerifier(SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER);
-          
-            ClientConnectionManager ccm =  new ThreadSafeClientConnManager();
+
+            ClientConnectionManager ccm = new ThreadSafeClientConnManager();
             SchemeRegistry sr = ccm.getSchemeRegistry();
             URL url = new URL(urlStr);
             int port = url.getPort();
-            if(port==-1){
-            	port=443;
+            if (port == -1) {
+                port = 443;
             }
             String protocol = url.getProtocol();
-            if("https".equals(protocol)){
-            	 if(port==-1){
-                 	port=443;
-                 }
-            }else if("http".equals(protocol)){
-            	 if(port==-1){
-                 	port=80;
-                 }
+            if ("https".equals(protocol)) {
+                if (port == -1) {
+                    port = 443;
+                }
+            } else if ("http".equals(protocol)) {
+                if (port == -1) {
+                    port = 80;
+                }
             }
             sr.register(new Scheme(protocol, ssf, port));
-            
+
             return new DefaultHttpClient(ccm, base.getParams());
         } catch (Throwable ex) {
             ex.printStackTrace();
             log.error("Trust Manager Error", ex);
             return null;
-        } 
+        }
     }
 }

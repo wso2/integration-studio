@@ -39,7 +39,8 @@ import com.google.gson.JsonParser;
 
 public class AppListModel {
 	
-	private static IDeveloperStudioLog log=Logger.getLog(Activator.PLUGIN_ID);
+	private static final int RETRY_DELAY = 30000;
+    private static IDeveloperStudioLog log=Logger.getLog(Activator.PLUGIN_ID);
 	
 		public List<ApplicationInfo> getCategories(List<ApplicationInfo> apps) {
 			// TODO  can do changes to default model
@@ -108,49 +109,49 @@ public class AppListModel {
 			return true;
 		}
 	}
-	
- 
-	public boolean setDSInfomation(ApplicationInfo applicationInfo) {
-		String respond;
-		Map<String, String> params;
-		params = new HashMap<String, String>();
-		params.put("action", JagApiProperties.App_DS_INFO_ACTION);
-		params.put("applicationKey", applicationInfo.getKey());
 
-		respond = HttpsJaggeryClient.httpPost(
-				JagApiProperties.getAppDsInfoUrl(), params);
-		
-		if ("false".equals(respond))
-		{
-			return false;
-		}
-		else
-		{
-			List<DataSource> dataSources = new ArrayList<DataSource>();
-			
-			JsonElement element = new JsonParser().parse(respond);
-			JsonObject object = element.getAsJsonObject();
-			
-			for (Map.Entry<String,JsonElement> entry : object.entrySet())
-			{
-				DataSource source = new DataSource();
-				source.setName(entry.getKey());
-				
-			    JsonObject objDev = entry.getValue().getAsJsonObject().getAsJsonObject("environments").getAsJsonObject("Development");
+    public boolean setDSInfomation(ApplicationInfo applicationInfo) {
+        String respond;
+        Map<String, String> params;
+        params = new HashMap<String, String>();
+        params.put("action", JagApiProperties.App_DS_INFO_ACTION);
+        params.put("applicationKey", applicationInfo.getKey());
+        // do post with a socket timeout set
+        respond = HttpsJaggeryClient.httpPostWithSoTimeout(JagApiProperties.getAppDsInfoUrl(), params,
+                HttpsJaggeryClient.DEFAULT_SOCKET_TIMEOUT);
 
-			    Map<String, String> configs = new HashMap<String, String>();
-			    configs.put("url", objDev.get("url").getAsString());
-			    configs.put("username", objDev.get("username").getAsString());
-			    
-			    source.setConfig(configs);
-			    dataSources.add(source);
-			}
-			
-			applicationInfo.setDatasources(dataSources);
-		}
-		
-		return true;
-	}
+        if (HttpsJaggeryClient.FALSE_RESPONSE.equals(respond)) {
+            return false;
+        } else if (HttpsJaggeryClient.TIMEOUT_RESPONSE.equals(respond)) {
+            try {
+                // wait sometime (till tenants are loaded) before retrying
+                Thread.sleep(RETRY_DELAY);
+            } catch (InterruptedException e) {
+                log.error("Error while waiting to retry http post.", e);
+                return false;
+            }
+            respond = HttpsJaggeryClient.httpPost(JagApiProperties.getAppDsInfoUrl(), params);
+            if (HttpsJaggeryClient.FALSE_RESPONSE.equals(respond)) {
+                return false;
+            }
+        }
+        List<DataSource> dataSources = new ArrayList<DataSource>();
+        JsonElement element = new JsonParser().parse(respond);
+        JsonObject object = element.getAsJsonObject();
+        for (Map.Entry<String, JsonElement> entry : object.entrySet()) {
+            DataSource source = new DataSource();
+            source.setName(entry.getKey());
+            JsonObject objDev = entry.getValue().getAsJsonObject().getAsJsonObject("environments")
+                    .getAsJsonObject("Development");
+            Map<String, String> configs = new HashMap<String, String>();
+            configs.put("url", objDev.get("url").getAsString());
+            configs.put("username", objDev.get("username").getAsString());
+            source.setConfig(configs);
+            dataSources.add(source);
+        }
+        applicationInfo.setDatasources(dataSources);
+        return true;
+    }
 	
 	public boolean setDBInfomation(ApplicationInfo applicationInfo) {
 		String respond;

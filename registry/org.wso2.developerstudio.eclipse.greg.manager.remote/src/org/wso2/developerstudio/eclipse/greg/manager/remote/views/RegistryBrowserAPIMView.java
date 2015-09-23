@@ -43,6 +43,7 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IWorkspace;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
@@ -735,7 +736,8 @@ public class RegistryBrowserAPIMView extends ViewPart implements Observer {
 					@SuppressWarnings({})
 					@Override
 					public void run() {
-						String fileName = (String) event.getProperty(IEventBroker.DATA);						
+						String fileName = (String) event.getProperty(IEventBroker.DATA);
+						fileName = getLastTwoSegments(fileName);
 						if (!openNodesMap.isEmpty()) {
 							RegistryResourceNode registryResourceNode = openNodesMap.get(fileName);
 							if (registryResourceNode != null) {
@@ -759,11 +761,25 @@ public class RegistryBrowserAPIMView extends ViewPart implements Observer {
 						}
 
 					}
+
+				
 				});
 			}
 		};
 	}
 
+	private String getLastTwoSegments(String fileName) {
+		org.eclipse.core.runtime.Path path = new org.eclipse.core.runtime.Path(fileName);
+		 int segmentCount = path.segmentCount();
+		 int firstSegmentCount=0;
+		 if(segmentCount>2){
+			 firstSegmentCount = segmentCount-2;
+		 }else{
+			 return fileName;
+		 }
+		 return path.removeFirstSegments(firstSegmentCount).toOSString();
+	}
+	
 	private void openResourceInEditor(final RegistryResourceNode resourceNode) {
 		
 		try {
@@ -847,7 +863,9 @@ public class RegistryBrowserAPIMView extends ViewPart implements Observer {
                                     }
                                 });
 								openNodeSet.add(resourceNode);
-								openNodesMap.put(resourceNode.getLocalFile().getAbsolutePath(), resourceNode);
+								String absolutePath = resourceNode.getLocalFile().getAbsolutePath();
+								absolutePath = getLastTwoSegments(absolutePath);
+								openNodesMap.put(absolutePath, resourceNode);
 								resourceNode.setDirty(false);
 								resourceNode.setWorkspaceFile(RemoteContentManager.getWorkspaceFile()); 
 								monitor.done();

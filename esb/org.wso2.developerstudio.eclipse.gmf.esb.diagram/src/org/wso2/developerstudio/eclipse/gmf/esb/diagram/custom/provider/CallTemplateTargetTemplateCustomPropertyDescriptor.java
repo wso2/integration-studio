@@ -186,43 +186,48 @@ public class CallTemplateTargetTemplateCustomPropertyDescriptor extends Property
 		};
 	}	
 	
-	//TODO This method should be defined as a generic method rather defining here.
-	public Map<String,String> getAvailableDynamicSequenceTemplates() throws CoreException, IOException {
-		
-		Map<String,String> availableTemplatesMap = new HashMap<String,String>();
+	// TODO This method should be defined as a generic method rather defining here.
+	public Map<String, String> getAvailableDynamicSequenceTemplates() throws CoreException, IOException {
+
+		Map<String, String> availableTemplatesMap = new HashMap<String, String>();
 		IProject[] projects = ResourcesPlugin.getWorkspace().getRoot().getProjects();
 		for (IProject workspaceProject : projects) {
-			if (workspaceProject.isOpen() && workspaceProject.hasNature("org.wso2.developerstudio.eclipse.general.project.nature")) {
-					GeneralProjectArtifact generalProjectArtifact = new GeneralProjectArtifact();
-					try{			
-						generalProjectArtifact.fromFile(workspaceProject.getFile("artifact.xml").getLocation().toFile());
-						List<RegistryArtifact> allGREGArtifacts = generalProjectArtifact.getAllArtifacts();
-						for(RegistryArtifact registryArtifact :allGREGArtifacts){
-							if(registryArtifact.getType().equals("registry/resource")){		
-								 java.util.List<RegistryElement> elements = registryArtifact.getAllRegistryItems();		
-										 for (RegistryElement registryElement : elements) {
-											 if(registryElement instanceof RegistryItem){    		 
-									    		String  mediaType = ((RegistryItem)registryElement).getMediaType();	 							    		 
-									    		if (mediaType.equals("application/vnd.wso2.template")){									    			
-									    			String filePath=workspaceProject.getLocation().toOSString()+File.separator+((RegistryItem)registryElement).getFile();									    			
-									    			String path  = ((RegistryItem)registryElement).getPath() + "/"+ ((RegistryItem)registryElement).getFile();
-									    			if(path.startsWith("/_system/governance/")){		
-								    				path = String.format("gov:%s", path.substring("/_system/governance/".length()));
-								    			    } else if (path.startsWith("/_system/config/")) {
-								    				path = String.format("conf:%s", path.substring("/_system/config/".length()));
-									    			}									    		
-													availableTemplatesMap.put(path, filePath);
-												}
-									    	}
-										 }
-									 }
+			if (workspaceProject.isOpen()
+					&& workspaceProject.hasNature("org.wso2.developerstudio.eclipse.general.project.nature")) {
+				GeneralProjectArtifact generalProjectArtifact = new GeneralProjectArtifact();
+				try {
+					generalProjectArtifact.fromFile(workspaceProject.getFile("artifact.xml").getLocation().toFile());
+					List<RegistryArtifact> allGREGArtifacts = generalProjectArtifact.getAllArtifacts();
+					for (RegistryArtifact registryArtifact : allGREGArtifacts) {
+						if (registryArtifact.getType().equals("registry/resource")) {
+							java.util.List<RegistryElement> elements = registryArtifact.getAllRegistryItems();
+							for (RegistryElement registryElement : elements) {
+								if (registryElement instanceof RegistryItem) {
+									String mediaType = ((RegistryItem) registryElement).getMediaType();
+									if (mediaType.equals("application/vnd.wso2.template")) {
+										String filePath = workspaceProject.getLocation().toOSString() + File.separator
+												+ ((RegistryItem) registryElement).getFile();
+										String path = ((RegistryItem) registryElement).getPath() + "/"
+												+ registryArtifact.getName() + ".xml"; // .xml is a constant for
+																						// sequence temple type
+										if (path.startsWith("/_system/governance/")) {
+											path = String.format("gov:%s",
+													path.substring("/_system/governance/".length()));
+										} else if (path.startsWith("/_system/config/")) {
+											path = String
+													.format("conf:%s", path.substring("/_system/config/".length()));
+										}
+										availableTemplatesMap.put(path, filePath);
+									}
 								}
 							}
-					catch (Exception e) {
-						log.error("Error occured while scanning the workspace for Templates", e);
+						}
 					}
-				}			
-			}		
+				} catch (Exception e) {
+					log.error("Error occured while scanning the workspace for Templates", e);
+				}
+			}
+		}
 		return availableTemplatesMap;
-	}	
+	}
 }

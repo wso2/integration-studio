@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<eventPublisher name="<publisher.name>" statistics="disable"
-  trace="disable" xmlns="http://wso2.org/carbon/eventpublisher">
-  <from streamName="HighFrequentTweets" version="1.0.0"/>
-  <mapping customMapping="disable" type="json"/>
-  <to eventAdapterType="logger">
-    <property name="uniqueId">highFrequentTweetsLogger</property>
-  </to>
-</eventPublisher>

@@ -120,18 +120,18 @@ public class Execution_planProjectCreationWizard extends AbstractWSO2ProjectCrea
 		MavenProject mavenProject = MavenUtils.getMavenProject(mavenProjectPomLocation);
 		
 		boolean pluginExists = MavenUtils.checkOldPluginEntry(mavenProject,
-				"org.wso2.maven", "wso2-analytics-execution-plan-plugin",
+				"org.wso2.maven", "maven-executionplan-plugin",
 				MavenConstants.WSO2_ANALYTICS_EXECUTIONPLAN_VERSION);
 		if(pluginExists){
 			return ;
 		}
 		
-		Plugin plugin = MavenUtils.createPluginEntry(mavenProject, "org.wso2.maven", "wso2-cep-execution-plan-plugin", MavenConstants.WSO2_ANALYTICS_EXECUTIONPLAN_VERSION, true);
+		Plugin plugin = MavenUtils.createPluginEntry(mavenProject, "org.wso2.maven", "maven-executionplan-plugin", MavenConstants.WSO2_ANALYTICS_EXECUTIONPLAN_VERSION, true);
 		
 		PluginExecution pluginExecution = new PluginExecution();
 		pluginExecution.addGoal("pom-gen");
 		pluginExecution.setPhase("process-resources");
-		pluginExecution.setId("execution-plan-point");
+		pluginExecution.setId("executionplan-point");
 		
 		Xpp3Dom configurationNode = MavenUtils.createMainConfigurationNode();
 		Xpp3Dom artifactLocationNode = MavenUtils.createXpp3Node(configurationNode, "artifactLocation");

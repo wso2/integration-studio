@@ -26,7 +26,7 @@
                   title="Analytics"
                   priority="8">
         </category>
-        <wizardLink category="dashboard.category.analytics" id="dashboard.wizardLink.analytics"
+        <wizardLink category="dashboard.category.analytics" id="dashboard.wizardLink.analytics.project"
                     wizard="org.wso2.developerstudio.eclipse.artifact.newAnalyticsProject">
         </wizardLink>
         <wizardLink category="dashboard.category.analytics" id="dashboard.wizardLink.analytics.execution-plan"

@@ -119,13 +119,13 @@ public class ReceiverProjectCreationWizard extends AbstractWSO2ProjectCreationWi
 		MavenProject mavenProject = MavenUtils.getMavenProject(mavenProjectPomLocation);
 		
 		boolean pluginExists = MavenUtils.checkOldPluginEntry(mavenProject,
-				"org.wso2.maven", "wso2-analytics-receiver-plugin",
+				"org.wso2.maven", "maven-eventreceiver-plugin",
 				MavenConstants.WSO2_ANALYTICS_RECEIVER_VERSION);
 		if(pluginExists){
 			return ;
 		}
 		
-		Plugin plugin = MavenUtils.createPluginEntry(mavenProject, "org.wso2.maven", "wso2-cep-receiver-plugin", MavenConstants.WSO2_ANALYTICS_RECEIVER_VERSION, true);
+		Plugin plugin = MavenUtils.createPluginEntry(mavenProject, "org.wso2.maven", "maven-eventreceiver-plugin", MavenConstants.WSO2_ANALYTICS_RECEIVER_VERSION, true);
 		
 		PluginExecution pluginExecution = new PluginExecution();
 		pluginExecution.addGoal("pom-gen");

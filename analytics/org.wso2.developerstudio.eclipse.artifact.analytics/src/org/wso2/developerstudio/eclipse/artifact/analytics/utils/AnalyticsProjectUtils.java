@@ -116,14 +116,14 @@ public class AnalyticsProjectUtils {
 			int dirCount = dirs.length;
 			for (int i = 0; i < dirCount; ++i) {
 				String name=dirs[i].getName();
-				if(name.equals(AnalyticsConstants.ANALYTICS_EXECUTION_PLAN_DIR)){
-					processFiles(editorList, rootDir + File.separator+AnalyticsConstants.ANALYTICS_EXECUTION_PLAN_DIR);
-				}else if(name.equals(AnalyticsConstants.ANALYTICS_STREAM_DIR)){
-					processFiles(editorList, rootDir + File.separator+AnalyticsConstants.ANALYTICS_STREAM_DIR);
-				}else if(name.equals(AnalyticsConstants.ANALYTICS_RECEIVER_DIR)){
-					processFiles(editorList, rootDir + File.separator+AnalyticsConstants.ANALYTICS_RECEIVER_DIR);
-				}else if(name.equals(AnalyticsConstants.ANALYTICS_PUBLISHER_DIR)){
-					processFiles(editorList, rootDir + File.separator+AnalyticsConstants.ANALYTICS_PUBLISHER_DIR);
+				if(name.equals(AnalyticsConstants.DEPLOYMENT_SERVER_EXECUTION_PLAN_DIR)){
+					processFiles(editorList, rootDir + File.separator+AnalyticsConstants.DEPLOYMENT_SERVER_EXECUTION_PLAN_DIR);
+				}else if(name.equals(AnalyticsConstants.DEPLOYMENT_SERVER_PUBLISHER_DIR)){
+					processFiles(editorList, rootDir + File.separator+AnalyticsConstants.DEPLOYMENT_SERVER_PUBLISHER_DIR);
+				}else if(name.equals(AnalyticsConstants.DEPLOYMENT_SERVER_RECEIVER_DIR)){
+					processFiles(editorList, rootDir + File.separator+AnalyticsConstants.DEPLOYMENT_SERVER_RECEIVER_DIR);
+				}else if(name.equals(AnalyticsConstants.DEPLOYMENT_SERVER_STREAM_DIR)){
+					processFiles(editorList, rootDir + File.separator+AnalyticsConstants.DEPLOYMENT_SERVER_STREAM_DIR);
 				}
 			} 
 		}else{
@@ -328,7 +328,7 @@ public class AnalyticsProjectUtils {
 		File mavenProjectPomLocation = project.getFile("pom.xml").getLocation().toFile();
 		MavenProject mavenProject = MavenUtils.getMavenProject(mavenProjectPomLocation);
 
-		addPluginEntry(mavenProject, "org.wso2.maven","wso2-cep-plugin", MavenConstants.WSO2_ANALYTICS_VERSION,"analytics");
+		addPluginEntry(mavenProject, "org.wso2.maven","wso2-analytics-plugin", MavenConstants.WSO2_ANALYTICS_VERSION,"analytics");
 		
 		MavenUtils.saveMavenProject(mavenProject, mavenProjectPomLocation);
 	

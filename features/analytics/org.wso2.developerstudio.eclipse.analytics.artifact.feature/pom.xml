@@ -30,7 +30,7 @@
     <artifactId>org.wso2.developerstudio.eclipse.analytics.artifact.feature</artifactId>
     <version>${analytics.feature.version}</version>
     <packaging>pom</packaging>
-    <name>Complex Event Server Artifact</name>
+    <name>Analytics Project Artifact</name>
     <url>http://wso2.org</url>
     <description>This feature contains WSO2 Developer Studio Analytics artifact Feature</description>
     <build>
@@ -51,6 +51,10 @@
                             <propertiesFile>../../feature.properties</propertiesFile>
                             <bundles>
                                 <bundleDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.artifact.analytics:${analytics.artifact.version}</bundleDef>
+				<bundleDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.artifact.analytics.execution_plan:${analytics.artifact.version}</bundleDef>
+				<bundleDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.artifact.analytics.publisher:${analytics.artifact.version}</bundleDef>
+				<bundleDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.artifact.analytics.receiver:${analytics.artifact.version}</bundleDef>
+				<bundleDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.artifact.analytics.stream:${analytics.artifact.version}</bundleDef>
                             </bundles>
                         </configuration>
                     </execution>

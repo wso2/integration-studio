@@ -119,13 +119,13 @@ public class StreamProjectCreationWizard extends AbstractWSO2ProjectCreationWiza
 		MavenProject mavenProject = MavenUtils.getMavenProject(mavenProjectPomLocation);
 		
 		boolean pluginExists = MavenUtils.checkOldPluginEntry(mavenProject,
-				"org.wso2.maven", "wso2-analytics-stream-plugin",
+				"org.wso2.maven", "maven-eventstream-plugin",
 				MavenConstants.WSO2_ANALYTICS_STREAM_VERSION);
 		if(pluginExists){
 			return ;
 		}
 		
-		Plugin plugin = MavenUtils.createPluginEntry(mavenProject, "org.wso2.maven", "wso2-cep-stream-plugin", MavenConstants.WSO2_ANALYTICS_STREAM_VERSION, true);
+		Plugin plugin = MavenUtils.createPluginEntry(mavenProject, "org.wso2.maven", "maven-eventstream-plugin", MavenConstants.WSO2_ANALYTICS_STREAM_VERSION, true);
 		
 		PluginExecution pluginExecution = new PluginExecution();
 		pluginExecution.addGoal("pom-gen");

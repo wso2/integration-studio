@@ -698,7 +698,6 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
     public void doSave(IProgressMonitor monitor) {
     	//Fixing TOOLS-2958
     	setContextClassLoader();
-		sourceDirty = false;
 		if (getActivePage() == SOURCE_VIEW_PAGE_INDEX) {
 			try {
 				handleDesignViewActivatedEvent();
@@ -709,6 +708,8 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
 				firePropertyChange(PROP_DIRTY);
 			}
 		}
+		sourceDirty = false;
+
 		getEditor(0).doSave(monitor);
 		EsbServer esbServer = EditorUtils.getEsbServer(graphicalEditor);
 		// Since Complex endpoint type editors dose not have assiociated xml file do not need to call this.

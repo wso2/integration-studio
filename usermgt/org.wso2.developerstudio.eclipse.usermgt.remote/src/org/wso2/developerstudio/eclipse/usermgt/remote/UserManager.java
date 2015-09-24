@@ -20,6 +20,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.lang.reflect.InvocationTargetException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.rmi.RemoteException;
@@ -33,8 +34,12 @@ import org.eclipse.core.resources.IWorkspace;
 import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IPath;
+import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.preferences.IPreferencesService;
+import org.eclipse.jface.dialogs.ProgressMonitorDialog;
+import org.eclipse.jface.operation.IRunnableWithProgress;
+import org.eclipse.ui.PlatformUI;
 import org.wso2.carbon.core.services.authentication.AuthenticationAdminStub;
 import org.wso2.carbon.core.services.authentication.AuthenticationExceptionException;
 //import org.wso2.carbon.user.mgt.stub.GetUsersOfRoleUserAdminExceptionException;
@@ -217,29 +222,60 @@ public class UserManager {
 		return new String[] {};
 	}
 
-	public String[] getUserRoles() throws Exception {
-
-		FlaggedName[] roles = getStub().getAllRolesNames("*", -1);
-		List<String> list = new ArrayList<String>();
-		for (FlaggedName flaggedName : roles) {
-			list.add(flaggedName.getItemName());
+	private List<String> getRolesFromSever(final String fileter) throws RemoteException, UserAdminUserAdminException,
+			AuthenticationExceptionException {
+		final List<String> list = new ArrayList<String>();
+		try {
+			new ProgressMonitorDialog(PlatformUI.getWorkbench().getDisplay().getActiveShell()).run(true, true, new IRunnableWithProgress() {
+				public void run(IProgressMonitor monitor) throws InvocationTargetException,
+						InterruptedException{
+					    FlaggedName[] roles = null;
+					    monitor.beginTask("Getting Sever Roles", 100);
+					    monitor.worked(20);
+							try {
+								roles = getStub().getAllRolesNames(fileter, -1);
+							} catch (RemoteException | UserAdminUserAdminException | AuthenticationExceptionException e) {
+								 e.printStackTrace();
+								 new Throwable("Error while getting the severRole", e);
+							}
+						 
+					int i=5;
+					for (FlaggedName flaggedName : roles) {
+						 monitor.worked(50+i);						 
+						list.add(flaggedName.getItemName());
+						i++;
+					}
+					String roleName = list.get(list.size()-1);
+					if("true".equals(roleName)||"false".equals(roleName)){
+						list.remove(list.size()-1);
+					}
+					 monitor.done();
+				}
+			});
+		} catch (InvocationTargetException | InterruptedException  e) {
+			 e.printStackTrace();
+			 new Throwable("Error while getting the severRole", e);
 		}
+					
+		return list;
+	}
+	
+	public String[] getUserRoles(String fileter) throws Exception {
+		List<String> list = getRolesFromSever(fileter);
 		return list.toArray(new String[]{});
 	}
 
-	public String[] getRoles() {
+	public String[] getRoles(String fileter) {
 		try {
-			FlaggedName[] roles = getStub().getAllRolesNames("*", -1);
-			List<String> list = new ArrayList<String>();
-			for (FlaggedName flaggedName : roles) {
-				list.add(flaggedName.getItemName());
-			}
+			List<String> list = getRolesFromSever(fileter);
 			return list.toArray(new String[] {});
 		} catch (Exception e) {
 			log.error(e);
 		}
 		return new String[] {};
 	}
+	
+	
 
 	public String[] getUsersForRoles(String role) {
 		List<String> list = new ArrayList<String>();

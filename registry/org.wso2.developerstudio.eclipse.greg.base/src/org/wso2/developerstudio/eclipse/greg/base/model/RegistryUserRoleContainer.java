@@ -50,7 +50,7 @@ public class RegistryUserRoleContainer {
 		if (userRoles == null || isIterativeRefresh()) {
 			UserManager userManager = getRegistryUserManagerContainer().getUserManager();
 			userRoles = new ArrayList<RegistryUserRole>();
-			String[] roles = userManager.getRoles();
+			String[] roles = userManager.getRoles("*");
 			for (String role : roles) {
 				userRoles.add(new RegistryUserRole(role, this));
 			}

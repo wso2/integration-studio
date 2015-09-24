@@ -166,7 +166,7 @@ public class UserPermissionDialog extends Dialog {
 		ArrayList<Role> resourceInfo = rsAd.getPermissionPerResource(regResourceNode
 																		.getRegistryResourcePath());
 		ArrayList<String> string=new ArrayList<String>();
-		string.addAll(Arrays.asList(regResourceNode.getConnectionInfo().getUserManagerContent().getUserManager().getRoles()));
+		string.addAll(Arrays.asList(regResourceNode.getConnectionInfo().getUserManagerContent().getUserManager().getRoles("*")));
 		
 		table.removeAll();
 		Map<String, Role> rolePermissionMap = getRolePermissionMap(resourceInfo);
@@ -445,7 +445,7 @@ public class UserPermissionDialog extends Dialog {
 	 */
 	public String[] getRolesPerUser() {
 		UserManager um = regResourceNode.getConnectionInfo().getUserManagerContent().getUserManager();
-		String[] roles = um.getRoles();
+		String[] roles = um.getRoles("*");
 		return roles;
 	}
 

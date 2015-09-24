@@ -43,7 +43,7 @@ public class UserManagerUtils {
 
 	public String[] getRoles(String filter, int limit) {
 		if (userManager != null) {
-			return userManager.getRoles();
+			return userManager.getRoles(filter);
 		}
 
 		return new String[] {};

@@ -94,7 +94,7 @@ public class ClientTrustStorePreferencePage extends FieldEditorPreferencePage im
 	@Override
 	public boolean performOk() {
 		boolean performOk = super.performOk();
-		String message = "You must restart eclipse to apply these chnages, Restart Now ?";
+		String message = "You must restart eclipse to apply these changes, Restart Now ?";
 		if(MessageDialog.openQuestion(Display.getCurrent().getActiveShell(),"Developer Studio Info", message)){
 			PlatformUI.getWorkbench().restart();
 		}

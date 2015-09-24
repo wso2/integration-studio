@@ -51,20 +51,9 @@ public class UserManagerUtils {
 		List<String> filteredRoleList = null;
 
 		if (userManager != null) {
-			userRoleList = userManager.getUserRoles();
+			userRoleList = userManager.getUserRoles(filter);
 			filteredRoleList = new ArrayList<String>();
-			if (filter.equals("*")) {
-				filteredRoleList = Arrays.asList(userRoleList);
-			} else{
-				Pattern pattern = Pattern.compile(filter);
-				for (String role : userRoleList) {
-					Matcher matcher = pattern.matcher(role);
-					if (matcher.find()) {
-						filteredRoleList.add(role);
-					}
-				}
-			}
-			
+			filteredRoleList = Arrays.asList(userRoleList);			
 		}
 		return filteredRoleList;
 	}

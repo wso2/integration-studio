@@ -402,7 +402,7 @@ public class AddUserInfoWizardPage extends WizardPage {
 
 	public String[] getRoles() {
 		if (um != null) {
-			return um.getRoles();
+			return um.getRoles("*");
 		}
 		return null;
 

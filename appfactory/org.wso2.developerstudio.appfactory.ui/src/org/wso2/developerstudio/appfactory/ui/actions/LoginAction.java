@@ -28,6 +28,7 @@ import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.appfactory.core.authentication.Authenticator;
 import org.wso2.developerstudio.appfactory.core.authentication.UserPasswordCredentials;
 import org.wso2.developerstudio.appfactory.core.client.CloudAdminServiceClient;
+import org.wso2.developerstudio.appfactory.core.client.HttpsJaggeryClient;
 import org.wso2.developerstudio.appfactory.core.jag.api.JagApiProperties;
 import org.wso2.developerstudio.appfactory.ui.Activator;
 import org.wso2.developerstudio.appfactory.ui.preference.AppFactoryPreferencePage;
@@ -74,6 +75,8 @@ public class LoginAction {
 		 setUsername(preferenceStore.getString(AppFactoryPreferencePage.APP_FACTORY_USERNAME));
 		 setPassword(preferenceStore.getString(AppFactoryPreferencePage.APP_FACTORY_PASSWORD));
 		 String val = preferenceStore.getString(AppFactoryPreferencePage.APP_FACTORY_SAVE);
+		 HttpsJaggeryClient.setSotimeout(preferenceStore.getInt(AppFactoryPreferencePage.SO_TIME_OUT));
+		 HttpsJaggeryClient.setRetryDelay(preferenceStore.getInt(AppFactoryPreferencePage.RETRY_DELAY));
 		 if("true".equals(val)){
 			 setSave(true);
 		 }else{

@@ -20,16 +20,24 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 
+import org.eclipse.jface.preference.IPreferenceStore;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
+import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
+import org.wso2.developerstudio.eclipse.logging.core.Logger;
+import org.wso2.developerstudio.eclipse.platform.ui.preferences.ClientTrustStorePreferencePage;
+
 
 public class Activator implements BundleActivator {
 	
 	// The plug-in ID
 	public static final String PLUGIN_ID = "org.wso2.developerstudio.appfactory.core"; //$NON-NLS-1$
+	
 
 	private static BundleContext context;
 
+	private static Activator plugin;
+	
 	static BundleContext getContext() {
 		return context;
 	}
@@ -40,6 +48,9 @@ public class Activator implements BundleActivator {
 	 */
 	public void start(BundleContext bundleContext) throws Exception {
 		Activator.context = bundleContext;
+		
+		if(!loadJKSfromEclipsePrefernaces()){
+		
 		String jksPath = new String();
 		FileOutputStream fos;
 		try {
@@ -60,6 +71,9 @@ public class Activator implements BundleActivator {
 			
 		}
 	}
+		 
+		plugin = this;
+	}
 
 	/*
 	 * (non-Javadoc)
@@ -67,6 +81,43 @@ public class Activator implements BundleActivator {
 	 */
 	public void stop(BundleContext bundleContext) throws Exception {
 		Activator.context = null;
+	}
+	
+	public static Activator getDefault() {
+		return plugin;
+	}
+	
+	private static boolean loadJKSfromEclipsePrefernaces(){
+		
+		try{
+
+		IPreferenceStore preferenceStore = org.wso2.developerstudio.eclipse.platform.ui.Activator.getDefault()
+					.getPreferenceStore();
+
+		if(preferenceStore.getString(ClientTrustStorePreferencePage.TRUST_STORE_LOCATION).isEmpty()){
+			return false;
+		}
+		if(preferenceStore.getString(ClientTrustStorePreferencePage.TRUST_STORE_PASSWORD).isEmpty()){
+			return false;
+		}
+		if(preferenceStore.getString(ClientTrustStorePreferencePage.TRUST_STORE_TYPE).isEmpty()){
+			return false;
+		}
+		
+			System.setProperty("javax.net.ssl.trustStore",
+					preferenceStore.getString(ClientTrustStorePreferencePage.TRUST_STORE_LOCATION));
+			System.setProperty("javax.net.ssl.trustStorePassword",
+					preferenceStore.getString(ClientTrustStorePreferencePage.TRUST_STORE_PASSWORD));
+			System.setProperty("javax.net.ssl.trustStoreType",
+					preferenceStore.getString(ClientTrustStorePreferencePage.TRUST_STORE_TYPE));		
+		return true;
+		
+		}catch(Exception e){
+			IDeveloperStudioLog log = Logger.getLog(org.wso2.developerstudio.eclipse.platform.ui.Activator.PLUGIN_ID);
+			log.error("Cannot load values from Eclipse perfernces to read JKS"+e.getMessage(), e);
+		}
+		
+		return false;
 	}
 
 }

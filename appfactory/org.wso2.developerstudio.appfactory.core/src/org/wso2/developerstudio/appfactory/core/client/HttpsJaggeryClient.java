@@ -56,7 +56,8 @@ public class HttpsJaggeryClient {
 
     public static final String TIMEOUT_RESPONSE = "timeout";
     public static final String FALSE_RESPONSE = "false";
-    public static final int DEFAULT_SOCKET_TIMEOUT = 30000;
+    public static  int soTimeout = 30000;
+    private static int reTryDelay = 30000;
     
     private static final String COOKIE_HEADER = "Cookie";
     private static final String SET_COOKIE_HEADER = "Set-Cookie";
@@ -65,7 +66,29 @@ public class HttpsJaggeryClient {
     private static HttpClient httpClient;
     private static String sessionCookie;
 
+
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
+    
+    
+    public static int getRetryDelay() {
+		return reTryDelay;
+	}
+
+	public static void setRetryDelay(int retryDelay) {
+		 if(retryDelay>0){
+			 HttpsJaggeryClient.reTryDelay = retryDelay;
+		 }
+	}
+
+	public static int getSotimeout(){     
+    	return soTimeout;
+    }
+    
+    public static void setSotimeout(int val){
+        if(val>0){
+        	soTimeout = val;
+        }
+   }
 
     public static String httpPostLogin(String postURL, Map<String, String> requestParams) {
 

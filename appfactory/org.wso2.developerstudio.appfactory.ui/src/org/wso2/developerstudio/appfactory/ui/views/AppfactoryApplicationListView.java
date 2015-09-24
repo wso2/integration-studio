@@ -863,7 +863,7 @@ public class AppfactoryApplicationListView extends ViewPart {
 	}
 
     private void getBuildJob(final AppVersionInfo appInfo) {
-        Job job = new Job("Inoking a build") {
+        Job job = new Job("Invoking a build") {
             @Override
             protected IStatus run(final IProgressMonitor monitor) {
                 UISynchronize uiSynchronize = new UISynchronize() {
@@ -1056,7 +1056,7 @@ public class AppfactoryApplicationListView extends ViewPart {
                 try {
                     getbuildLogsJob(info,true);
                 } catch (Exception e) {
-                    log.error("Error occured while invoking build.", e); //$NON-NLS-1$
+                    log.error("Error occurred while invoking build.", e); //$NON-NLS-1$
                 }
             };
             public String getText() {
@@ -1621,7 +1621,7 @@ public class AppfactoryApplicationListView extends ViewPart {
                     operationText = "Creating a new project.";
                     monitor.subTask(operationText);
                     project.create(new SubProgressMonitor(monitor, 30));
-                    operationText = "openning new project.";
+                    operationText = "Opening new project.";
                     monitor.subTask(operationText);
                     project.open(new SubProgressMonitor(monitor, 30));
                 }
@@ -1629,7 +1629,7 @@ public class AppfactoryApplicationListView extends ViewPart {
                 operationText = "Creating a new project.";
                 monitor.subTask(operationText);
                 project.create(new SubProgressMonitor(monitor, 30));
-                operationText = "openning new project.";
+                operationText = "Opening new project.";
                 monitor.subTask(operationText);
                 project.open(new SubProgressMonitor(monitor, 30));
             }

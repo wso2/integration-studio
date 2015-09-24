@@ -26,7 +26,7 @@ import org.wso2.developerstudio.eclipse.greg.apim.perspective.Activator;
 
 public class ApimPreferencePage extends FieldEditorPreferencePage implements IWorkbenchPreferencePage {
 
-	private static final String WSO2_APIM_PREFERENCES_TITLE = "WSO2 APIM User Preferences.";
+	private static final String WSO2_APIM_PREFERENCES_TITLE = "WSO2 APIManager User Preferences.";
 	private static final String LABEL_HOST_URL = "&Host Url :";
 	private static final String LABEL_USERNAME = "Username :";
 	private static final String LABEL_PASSWORD = "Password :";

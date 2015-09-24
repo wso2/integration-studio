@@ -39,7 +39,7 @@ import com.google.gson.JsonParser;
 
 public class AppListModel {
 	
-	private static final int RETRY_DELAY = 30000;
+	//private static final int RETRY_DELAY = 30000;
     private static IDeveloperStudioLog log=Logger.getLog(Activator.PLUGIN_ID);
 	
 		public List<ApplicationInfo> getCategories(List<ApplicationInfo> apps) {
@@ -118,14 +118,14 @@ public class AppListModel {
         params.put("applicationKey", applicationInfo.getKey());
         // do post with a socket timeout set
         respond = HttpsJaggeryClient.httpPostWithSoTimeout(JagApiProperties.getAppDsInfoUrl(), params,
-                HttpsJaggeryClient.DEFAULT_SOCKET_TIMEOUT);
+                HttpsJaggeryClient.getSotimeout());
 
         if (HttpsJaggeryClient.FALSE_RESPONSE.equals(respond)) {
             return false;
         } else if (HttpsJaggeryClient.TIMEOUT_RESPONSE.equals(respond)) {
             try {
                 // wait sometime (till tenants are loaded) before retrying
-                Thread.sleep(RETRY_DELAY);
+                Thread.sleep(HttpsJaggeryClient.getRetryDelay());
             } catch (InterruptedException e) {
                 log.error("Error while waiting to retry http post.", e);
                 return false;

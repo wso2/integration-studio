@@ -108,11 +108,11 @@ public class BPELSecurityWizardPage extends WizardPage {
 		setControl(container);
 
 		Label lblServiceLabel = new Label(container, SWT.NONE);
-		lblServiceLabel.setBounds(20, 10, 108, 17);
+		lblServiceLabel.setBounds(20, 10, 70, 17);
 		lblServiceLabel.setText(SERVICE_LIST_LABEL);
 
 		cmbServiceList = new Combo(container, SWT.READ_ONLY);
-		cmbServiceList.setBounds(100, 10, 366, 15);
+		cmbServiceList.setBounds(100, 5, 366, 15);
 		fillComboBoxWithServices();
 
 		cmbServiceList.addSelectionListener(new SelectionListener() {
@@ -135,11 +135,11 @@ public class BPELSecurityWizardPage extends WizardPage {
 		});
 
 		Label lblPolicyLabel = new Label(container, SWT.NONE);
-		lblPolicyLabel.setBounds(20, 45, 152, 20);
+		lblPolicyLabel.setBounds(20, 50, 70, 20);
 		lblPolicyLabel.setText(POLICY_FILE_LABEL);
 
 		txtPolicyFile = new Text(container, SWT.BORDER);
-		txtPolicyFile.setBounds(100, 45, 366, 20);
+		txtPolicyFile.setBounds(100, 45, 366, 30);
 		value = getPolicyFromTheSource();
 		if (StringUtils.isNotEmpty(value)) {
 			txtPolicyFile.setText(value);

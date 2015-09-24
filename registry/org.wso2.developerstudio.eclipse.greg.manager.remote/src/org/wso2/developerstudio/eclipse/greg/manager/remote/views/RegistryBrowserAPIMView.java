@@ -43,7 +43,6 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IWorkspace;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
@@ -66,7 +65,6 @@ import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.DoubleClickEvent;
 import org.eclipse.jface.viewers.IDoubleClickListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.jface.viewers.OpenEvent;
 import org.eclipse.jface.viewers.TreeSelection;
 import org.eclipse.jface.window.Window;
 import org.eclipse.swt.SWT;
@@ -126,17 +124,16 @@ public class RegistryBrowserAPIMView extends ViewPart implements Observer {
 
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 	
-	//TODO - externalize these messages
-	private static final String SELECT_FILE_TO_BE_UPLOADED = "Select file to be uploaded to the registry";
+    private static final String SELECT_FILE_TO_BE_UPLOADED = "Select file to be uploaded to the registry";
 	private static final String ERROR_WHILE_PERFORMING_THIS_OPERATION_MSG = "Error while performing this operation";
-	private static final String SUCESSFULLY_DISCARDED_THE_LOCALCHANGES = "Sucessfully discarded the localchanges";
+	private static final String SUCCESSFULLY_DISCARDED_THE_LOCAL_CHANGES = "Successfully discarded the local changes";
 	private static final String Q_DISCARD_LOCAL_CHANGES = "Are you sure you want to discard local changes ?";
-	private static final String DISCARD_CHANAGES_DIALOG_TITLE = "Discard Chanages";
+	private static final String DISCARD_CHANGES_DIALOG_TITLE = "Discard Changes";
 	private static final String DISCARD_LOCAL_CHANGES_TITLE = "discard local changes";
 	private static final String Q_SAVE_CHANGES_AND_COMMIT = "' has been modified, Do you want to save changes and commit ?";
-	private static final String SUCESSFULLY_APPLIED_THE_LOCAL_CHANGES = "Sucessfully applied the local changes";
-	private static final String ARE_YOU_SURE_YOU_WANT_TO_PUSH_CHANGES_INTO_REMOTE_REGISTRY = "Are you sure you want to Push Changes into remote registry ?";
-	private static final String APPLY_CHANAGES_DIALOG_TITLE = "Apply Chanages";
+	private static final String SUCCESSFULLY_APPLIED_THE_LOCAL_CHANGES = "Successfully applied the local changes";
+	private static final String ARE_YOU_SURE_YOU_WANT_TO_PUSH_CHANGES_INTO_REMOTE_REGISTRY = "Are you sure you want to push changes into remote registry ?";
+	private static final String APPLY_CHANGES_DIALOG_TITLE = "Apply Changes";
 	private static final String COMMIT_FILE_MENU_NAME = "Commit file ";
 	private static final String PUSH_CHANGES_MENU_NAME = "Push Changes ";
 	private static final String DO_YOU_WANT_TO_SAVE_CHANGES = "Do you want to save changes?";
@@ -154,10 +151,10 @@ public class RegistryBrowserAPIMView extends ViewPart implements Observer {
 	private static final String COULD_NOT_CLOSE_ASSOCIATED_EDITOR_FOR_THIS_RESOURCE = "Could not close associated editor for this resource";
 	private static final String DO_YOU_WANT_TO_SAVE_CHANGES_AND_COPY = "Do you want to save changes and copy?";
 	private static final String TOOLBAR_ACTION_COMMIT = "Push all changes ";
-	private static final String TOOLTIP_COMMIT_ALL_CHANGES = "Push All changes to the server";
-	private static final String TOOLTIP_DISCARD_CHANGES = "Discard all loacl changes and synchronize with server";
-	private static final String DISCARD_ALL_LOACL_CHANGES = "discard all loacl changes ";
-	private static final String EXSIT_MSG = "There are uncommitted changes. Commit Changes ? \n(All changes will be discarded unless they are committed before exsit)";
+	private static final String TOOLTIP_COMMIT_ALL_CHANGES = "Push all changes to the server";
+	private static final String TOOLTIP_DISCARD_CHANGES = "Discard all local changes and synchronize with server";
+	private static final String DISCARD_ALL_LOCAL_CHANGES = "discard all local changes ";
+	private static final String EXIST_MSG = "There are uncommitted changes. Commit Changes ? \n(All changes will be discarded unless they are committed before exist)";
 	private static final String DELETE_ACTION_LABEL = "Delete   ";
 	private static final String RENAME_ACTION_LABEL = "Rename   ";
 	private static final String CREATE_ACTION_LABEL = "Create   ";
@@ -165,11 +162,12 @@ public class RegistryBrowserAPIMView extends ViewPart implements Observer {
 	private static final String COPY_ACTION_LABEL   = "Copy    ";
 	private static final String LOGIN_ACTION_LABEL  = "Login   ";
 	
+
 	private static final int EXPAND_LEVEL = 4;
 	private static final int LOGIN_SHELL_HEIGHT = 250;
 	private static final int LOGIN_SHELL_WIDTH = 600;
 	private static final String DEFAULT_PATH = "/";	
-	private static final String APIM_CUSTOMSEQUENCES_PATH = "/_system/governance/apimgt/customsequences";
+	private static final String APIM_CUSTOM_SEQUENCES_DEFAULT_PATH = "/_system/governance/apimgt/customsequences";
 	
 	private String uname;
 	private String resourcePath;
@@ -193,7 +191,7 @@ public class RegistryBrowserAPIMView extends ViewPart implements Observer {
 	private Registry registry;
 	private RegistryBrowserAPIMViewLabelProvider labelProvider;
 
-	private ExceptionHandler exeptionHandler;
+	private ExceptionHandler exceptionHandler;
 	//public static RegistryBrowserAPIMView lastInstance1;
 	private static RegistryPropertyViewer registryPropertyViewer;
 	private static ResourceInfoViewer resourceInfoViewer;
@@ -229,8 +227,8 @@ public class RegistryBrowserAPIMView extends ViewPart implements Observer {
 		try {
 			setApimRegPath(new Login().getRegpath());
 		} catch (Exception e) {
-			log.error("API Manager Registry path cannot be reslove due to", e);
-			setApimRegPath(APIM_CUSTOMSEQUENCES_PATH);	 
+			log.error("API Manager Registry path cannot be resolve due to", e);
+			setApimRegPath(APIM_CUSTOM_SEQUENCES_DEFAULT_PATH);	 
 		}
 		
 
@@ -238,7 +236,7 @@ public class RegistryBrowserAPIMView extends ViewPart implements Observer {
 		EsbEditorEvent.subscribe(getDoSaveEventHandler());
 		
 		changedResourceNodes = new HashMap<String, RegistryResourceNode>();
-		exeptionHandler = new ExceptionHandler();
+		exceptionHandler = new ExceptionHandler();
 		this.localUrlNode = new RegistryURLNode();
 		openNodeSet = new HashSet<RegistryResourceNode>();
 		openNodesMap = new HashMap<String, RegistryResourceNode>();
@@ -353,8 +351,8 @@ public class RegistryBrowserAPIMView extends ViewPart implements Observer {
 	private void checkUnCommitChanages() {
 		if (!changedResourceNodes.isEmpty()) {
 
-			if (MessageDialog.openQuestion(Display.getCurrent().getActiveShell(), APPLY_CHANAGES_DIALOG_TITLE,
-					EXSIT_MSG)) {
+			if (MessageDialog.openQuestion(Display.getCurrent().getActiveShell(), APPLY_CHANGES_DIALOG_TITLE,
+					EXIST_MSG)) {
 				Set<String> keySet = changedResourceNodes.keySet();
 				for (String key : keySet) {
 
@@ -362,7 +360,7 @@ public class RegistryBrowserAPIMView extends ViewPart implements Observer {
 					try {
 						commitSequence(registryResourceNode);
 					} catch (InvalidRegistryURLException | UnknownRegistryException | IOException | CoreException e) {
-						log.error("Error while committing chnages on exsit", e);
+						log.error("Error while committing changes on exist", e);
 					}
 
 				}
@@ -419,7 +417,7 @@ public class RegistryBrowserAPIMView extends ViewPart implements Observer {
 	}
 
 	protected void loginToAPIMRegistry(Composite parent) throws InvalidRegistryURLException, UnknownRegistryException, MalformedURLException, URISyntaxException {
-		exeptionHandler = new ExceptionHandler();
+		exceptionHandler = new ExceptionHandler();
 
 		RegistryInfoDialog dialog = null;
 		dialog = new RegistryInfoDialog(parent.getShell(), regUrlNode1, getApimRegPath());
@@ -440,9 +438,9 @@ public class RegistryBrowserAPIMView extends ViewPart implements Observer {
 				cloneRegistryModel();
 
 			} catch (CloneFailedException e) {
-				exeptionHandler.showMessage(Display.getCurrent().getActiveShell(),
-						"Registy cloning process has failed due to " + e.getMessage());
-				log.error("Registy cloning process has failed due to " + e.getMessage(), e);
+				exceptionHandler.showMessage(Display.getCurrent().getActiveShell(),
+						"Registry cloning process has failed due to " + e.getMessage());
+				log.error("Registry cloning process has failed due to " + e.getMessage(), e);
 			}
 
 		}
@@ -451,7 +449,7 @@ public class RegistryBrowserAPIMView extends ViewPart implements Observer {
 
 	private void cloneRegistryModel() throws CloneFailedException {
 
-	 Job job = new Job("cloning Job") {
+	 Job job = new Job("Cloning Job") {
 		
 		@Override
 		protected IStatus run(IProgressMonitor monitor) {
@@ -518,7 +516,7 @@ public class RegistryBrowserAPIMView extends ViewPart implements Observer {
 
 	private void addControls(final Composite parent) {
 		treeViewer = new RegistryTreeViewer(parent, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL | SWT.BORDER,
-				exeptionHandler, false, true);
+				exceptionHandler, false, true);
 		tree = treeViewer.getTree();
 		GridData data = new GridData(GridData.FILL_BOTH);
 		data.widthHint = 450;
@@ -632,9 +630,9 @@ public class RegistryBrowserAPIMView extends ViewPart implements Observer {
 	private void commitAllChangesToolbarAction() {
 		commitAllchangesAction = new Action(TOOLBAR_ACTION_COMMIT) {
 			public void run() {
-				if (MessageDialog.openQuestion(Display.getCurrent().getActiveShell(), APPLY_CHANAGES_DIALOG_TITLE,
-						"Are You Sure ,  You want to Push all local changes into remote API Manager server ?")) {
-					pushAllchnages();
+				if (MessageDialog.openQuestion(Display.getCurrent().getActiveShell(), APPLY_CHANGES_DIALOG_TITLE,
+						"Are You Sure, You want to Push all local changes into the remote APIManager server ?")) {
+					pushAllchanges();
 				}
 			}
 		};
@@ -644,10 +642,10 @@ public class RegistryBrowserAPIMView extends ViewPart implements Observer {
 	}
 
 	private void discardAllChnangesToolbarAction() {
-		discardAllchangesAction = new Action(DISCARD_ALL_LOACL_CHANGES) {
+		discardAllchangesAction = new Action(DISCARD_ALL_LOCAL_CHANGES) {
 			public void run() {
-				if (MessageDialog.openQuestion(Display.getCurrent().getActiveShell(), DISCARD_CHANAGES_DIALOG_TITLE,
-						"Are you sure ,that you want to discard all local chnages ?")) {
+				if (MessageDialog.openQuestion(Display.getCurrent().getActiveShell(), DISCARD_CHANGES_DIALOG_TITLE,
+						"Are you sure, that you want to discard all local changes ?")) {
 					try {
 						 
 						 for (RegistryResourceNode registryResourceNode : openNodeSet) {
@@ -658,15 +656,15 @@ public class RegistryBrowserAPIMView extends ViewPart implements Observer {
 						updateDirtyState();
 						cloneRegistryModel();
 					} catch (CloneFailedException e) {
-						MessageDialog.openError(Display.getCurrent().getActiveShell(), "Remote synchronization",
-								"Registy synchronization process has failed due to " + e.getMessage());
+						MessageDialog.openError(Display.getCurrent().getActiveShell(), "Remote synchronisation",
+								"Registry synchronisation process has failed due to " + e.getMessage());
 						
-						log.error("Registy cloning process has failed due to " + e.getMessage(), e);
+						log.error("Registry cloning process has failed due to " + e.getMessage(), e);
 					}
 				}
 			}
 		};
-		// Synchronize
+		// Synchronise
 		discardAllchangesAction.setImageDescriptor(ImageUtils.getImageDescriptor(ImageUtils.ACTION_CHECK_OUT_MENU));
 		discardAllchangesAction.setToolTipText(TOOLTIP_DISCARD_CHANGES);
 		discardAllchangesAction.setEnabled(false);
@@ -679,7 +677,7 @@ public class RegistryBrowserAPIMView extends ViewPart implements Observer {
 					loginToAPIMRegistry(parent);
 				} catch (InvalidRegistryURLException | UnknownRegistryException | MalformedURLException
 						| URISyntaxException e) {
-					 log.error("Failed to login to the APIM view due to", e);
+					 log.error("Failed to login to the APIManager view due to", e);
 				}
 			}
 		};
@@ -687,7 +685,7 @@ public class RegistryBrowserAPIMView extends ViewPart implements Observer {
 		addRegistryAction.setToolTipText("Login");
 	}
 
-	private void pushAllchnages() {
+	private void pushAllchanges() {
 	    try {         
             Set<String> keySet = changedResourceNodes.keySet();
             for (String key : keySet) { 
@@ -703,13 +701,13 @@ public class RegistryBrowserAPIMView extends ViewPart implements Observer {
                     treeViewer.setInput(localUrlNode);
                     treeViewer.expandToLevel(EXPAND_LEVEL);
                     MessageDialogUtils.info(Display.getCurrent().getActiveShell(), " ",
-                            SUCESSFULLY_APPLIED_THE_LOCAL_CHANGES);
+                            SUCCESSFULLY_APPLIED_THE_LOCAL_CHANGES);
                 }
             });   
         } catch (InvalidRegistryURLException | UnknownRegistryException | IOException | CoreException e) {
             MessageDialog.openError(Display.getCurrent().getActiveShell(), "Push Changes Dialog",
-                    "Cannot push all the chnages due to " + e.getMessage());
-            log.error("Cannot push all the chnages due to " + e.getMessage(), e);
+                    "Cannot push all the changes due to " + e.getMessage());
+            log.error("Cannot push all the changes due to " + e.getMessage(), e);
         }	
 	}
 
@@ -786,7 +784,7 @@ public class RegistryBrowserAPIMView extends ViewPart implements Observer {
 			new ProgressMonitorDialog(getSite().getShell()).run(true, true, new IRunnableWithProgress() {
 				public void run(final IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
  
-						monitor.beginTask("Openning the editor", 100);
+						monitor.beginTask("Opening the editor", 100);
 						
 						Display.getDefault().syncExec(new Runnable() {
 							
@@ -795,7 +793,7 @@ public class RegistryBrowserAPIMView extends ViewPart implements Observer {
 								if (resourceNode.isIsdeleted()) {
 									MessageDialogUtils.error(Display.getCurrent().getActiveShell(), resourceNode.getResourceName()
 											+ " cannot be"
-											+ " opened since this is marked  as a deleted resource , if you want to open undo the delete "
+											+ " opened since this is marked as a deleted resource, if you want to open undo the delete "
 											+ "operation and try again");
 									return;
 								}
@@ -875,7 +873,7 @@ public class RegistryBrowserAPIMView extends ViewPart implements Observer {
 				}
 			});
 		} catch (InvocationTargetException | InterruptedException e) {
-			log.error("Error openning sequence.", e);
+			log.error("Error opening sequence.", e);
 		}
 		
 	}
@@ -935,7 +933,7 @@ public class RegistryBrowserAPIMView extends ViewPart implements Observer {
 								regResourceNode.getFileEditor().doSave(new NullProgressMonitor());
 							}
 						} catch (Exception e) {
-							exeptionHandler.showMessage(Display.getDefault().getActiveShell(),
+							exceptionHandler.showMessage(Display.getDefault().getActiveShell(),
 									COULD_NOT_CLOSE_ASSOCIATED_EDITOR_FOR_THIS_RESOURCE);
 						}
 					}
@@ -972,7 +970,7 @@ public class RegistryBrowserAPIMView extends ViewPart implements Observer {
 					}
 
 				} catch (Exception e) {
-					log.error("copry action error", e);
+					log.error("Copy action error", e);
 					MessageDialogUtils.error(Display.getCurrent().getActiveShell(), "",
 							THIS_OPERATION_CANNOT_BE_PERFORMED_BECAUSE_THE + e.getMessage());
 				}
@@ -1057,7 +1055,7 @@ public class RegistryBrowserAPIMView extends ViewPart implements Observer {
 						
 					}
 				} catch (IOException e) {
-					 log.error("pasting error",e);
+					 log.error("Pasting error",e);
 					  throw new InvocationTargetException(e);
 				}
 			}
@@ -1081,7 +1079,7 @@ public class RegistryBrowserAPIMView extends ViewPart implements Observer {
 				} catch (InvocationTargetException | InterruptedException e) {
 					  MessageDialogUtils.error(Display.getCurrent().getActiveShell(), "", 
 							  THIS_OPERATION_CANNOT_BE_PERFORMED_BECAUSE_THE + e.getMessage());
-			    	  log.error("Error while creating a newfile", e);
+			    	  log.error("Error while creating a new file", e);
 				}
 								
 			}
@@ -1104,7 +1102,7 @@ public class RegistryBrowserAPIMView extends ViewPart implements Observer {
 			public void run(final IProgressMonitor monitor) throws InvocationTargetException,
 					InterruptedException{
 				try {
-					monitor.beginTask("create new Sequence", 100);					
+					monitor.beginTask("Create new Sequence", 100);					
 					String sqName = "";
 					if (newName.contains(".xml")) {
 						sqName = newName;
@@ -1209,7 +1207,7 @@ public class RegistryBrowserAPIMView extends ViewPart implements Observer {
 							updateDirtyState();
 							refreshTreeviewer(regResourceNode);		
 						} catch (InvocationTargetException | IOException | InterruptedException e) {
-					    	  log.error("Error while creating a newfile", e);
+					    	  log.error("Error while creating a new file", e);
 						}
 			}
 			
@@ -1337,9 +1335,9 @@ public class RegistryBrowserAPIMView extends ViewPart implements Observer {
 			public void run() {
 				 String msg = null;
 				 if(regResourceNode.isIsnew()){
-					 msg = "Are you sure you want to delete the item permentaly ?";
+					 msg = "Are you sure you want to delete the item permanently ?";
 				 }else{
-					 msg = "Are you sure you want to mark this as a delete item ?";
+					 msg = "Are you sure you want to mark this as a deleted item ?";
 				 }
 				if (MessageDialog.openQuestion(Display.getCurrent().getActiveShell(), "Delete Item",msg)) {
 
@@ -1385,7 +1383,7 @@ public class RegistryBrowserAPIMView extends ViewPart implements Observer {
 					} else {
 						MessageDialog
 								.openError(Display.getCurrent().getActiveShell(), "Editor closing dialog",
-										"Associated editor couldn't close , please close the editor first and re-try to delete");
+										"Associated editor couldn't close, please close the editor first and re-try to delete");
 					}
 				}
 			}
@@ -1452,7 +1450,7 @@ public class RegistryBrowserAPIMView extends ViewPart implements Observer {
 			public void run() {
 				 
 
-					if (MessageDialog.openQuestion(Display.getCurrent().getActiveShell(), APPLY_CHANAGES_DIALOG_TITLE,
+					if (MessageDialog.openQuestion(Display.getCurrent().getActiveShell(), APPLY_CHANGES_DIALOG_TITLE,
 							ARE_YOU_SURE_YOU_WANT_TO_PUSH_CHANGES_INTO_REMOTE_REGISTRY)) {					
 						   
 							try {
@@ -1460,7 +1458,7 @@ public class RegistryBrowserAPIMView extends ViewPart implements Observer {
 								changedResourceNodes.remove(regResourceNode.getRegistryResourcePath());
 								updateDirtyState();
 								refreshTreeviewer(regResourceNode);
-								MessageDialogUtils.info(Display.getCurrent().getActiveShell(), " ", SUCESSFULLY_APPLIED_THE_LOCAL_CHANGES);
+								MessageDialogUtils.info(Display.getCurrent().getActiveShell(), " ", SUCCESSFULLY_APPLIED_THE_LOCAL_CHANGES);
 							} catch (InvalidRegistryURLException | UnknownRegistryException | IOException
 									| CoreException e) {
 								MessageDialogUtils.error(Display.getCurrent().getActiveShell(), " ",
@@ -1530,7 +1528,7 @@ public class RegistryBrowserAPIMView extends ViewPart implements Observer {
 		Action commit = new Action(DISCARD_LOCAL_CHANGES_TITLE) {
 			public void run() {
 			 
-					if (MessageDialog.openQuestion(Display.getCurrent().getActiveShell(), DISCARD_CHANAGES_DIALOG_TITLE,
+					if (MessageDialog.openQuestion(Display.getCurrent().getActiveShell(), DISCARD_CHANGES_DIALOG_TITLE,
 							Q_DISCARD_LOCAL_CHANGES)) {						
 						boolean discardSequence = discardSequence(regResourceNode);						
 						if(discardSequence){							
@@ -1539,7 +1537,7 @@ public class RegistryBrowserAPIMView extends ViewPart implements Observer {
 							regResourceNode.setIsdeleted(false);
 							refreshTreeviewer(regResourceNode);							
 							MessageDialogUtils.info(Display.getCurrent().getActiveShell(), "",
-									SUCESSFULLY_DISCARDED_THE_LOCALCHANGES);
+									SUCCESSFULLY_DISCARDED_THE_LOCAL_CHANGES);
 						}else{
 							MessageDialogUtils.error(Display.getCurrent().getActiveShell(), "",
 									ERROR_WHILE_PERFORMING_THIS_OPERATION_MSG);

@@ -40,3 +40,4 @@ Bundle-ClassPath: .,
  lib/org.wso2.carbon.user.mgt.stub_4.2.0.jar
 Export-Package: org.wso2.carbon.core.services.authentication,
  org.wso2.developerstudio.eclipse.usermgt.remote
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7

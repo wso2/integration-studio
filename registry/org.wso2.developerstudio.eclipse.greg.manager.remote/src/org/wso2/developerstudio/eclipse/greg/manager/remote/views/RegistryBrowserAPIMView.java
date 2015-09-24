@@ -1518,7 +1518,8 @@ public class RegistryBrowserAPIMView extends ViewPart implements Observer {
             } else {
                 regResourceNode.saveChangesToRegistry();
             }
-            openNodesMap.put(regResourceNode.getLocalFile().getAbsolutePath(), regResourceNode);
+            String filepath = getLastTwoSegments(regResourceNode.getLocalFile().getAbsolutePath());
+            openNodesMap.put(filepath, regResourceNode);
         }
         regResourceNode.setIsmodifiyed(false);
     }

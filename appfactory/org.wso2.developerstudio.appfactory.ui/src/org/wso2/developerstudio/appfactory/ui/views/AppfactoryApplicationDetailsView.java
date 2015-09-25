@@ -57,7 +57,7 @@ import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 public class AppfactoryApplicationDetailsView extends ViewPart {
 
-	private static final int USERNAME_COULMN_INDEX = 2;
+    private static final int USERNAME_COULMN_INDEX = 2;
     private static final int DATASOURCE_URL_COLUMN_INDEX = 1;
     public static final String ID = "org.wso2.developerstudio.appfactory.ui.views.AppfactoryView";
 	public static final String DS_WIZARD_ID = "org.eclipse.datatools.connectivity.internal.ui.wizards.newconnectionprofile";
@@ -67,6 +67,9 @@ public class AppfactoryApplicationDetailsView extends ViewPart {
 	private static final String TEAM_TAB_ITEM_NAME = "Team Details";
 	private static final String DATA_SOURCES_TAB_ITEM_NAME = "Data Sources";
 	private static final String DEFAULT_VALUE = "Not Available";
+	private static final String BUILD_NULL_MSG = "build null null";
+    private static final String NULL_MSG = "null";
+    private static final String NOT_AVAILABLE_MSG = "N/A";
 
 	private Table currentStatusTable;
 	private Table teamDetailsTable;
@@ -547,7 +550,12 @@ public class AppfactoryApplicationDetailsView extends ViewPart {
 			for (AppVersionInfo appVersionInfo : version) {
 				TableItem item = new TableItem(currentStatusTable, SWT.NONE);
 				item.setText(0, appVersionInfo.getVersion());
-				item.setText(1, appVersionInfo.getLastBuildResult());
+                if (BUILD_NULL_MSG.equals(appVersionInfo.getLastBuildResult().trim())
+                        || NULL_MSG.equals(appVersionInfo.getLastBuildResult().trim())) {
+                    item.setText(1, NOT_AVAILABLE_MSG); //$NON-NLS-1$
+                } else {
+                    item.setText(1, appVersionInfo.getLastBuildResult());
+                }
 				item.setText(2, appVersionInfo.getRepoURL());
 				 
 			}

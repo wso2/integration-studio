@@ -32,7 +32,7 @@ public class AppListLabelProvider extends StyledCellLabelProvider {
 		StyledString text = new StyledString();
 		if (element instanceof ApplicationInfo) {
 			ApplicationInfo app = (ApplicationInfo) element;
-			text.append(app.getKey());
+			text.append(app.getName());
 			ImageDescriptor imageDescriptorFromPlugin = Activator.imageDescriptorFromPlugin(Activator.PLUGIN_ID,
 					"/icons/submodules.gif");
 			cell.setImage(imageDescriptorFromPlugin.createImage());

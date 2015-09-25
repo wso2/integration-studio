@@ -45,7 +45,7 @@ import org.wso2.developerstudio.eclipse.utils.project.ProjectUtils;
 
 public class ConnectorCreationWizard extends AbstractWSO2ProjectCreationWizard {
 
-	private static final String PROJECT_WIZARD_WINDOW_TITLE = "New Connector Project";
+	private static final String PROJECT_WIZARD_WINDOW_TITLE = "New Connector Exporter Project";
 	private static final String CONNECTOR_PROJECT_NATURE = "org.wso2.developerstudio.eclipse.artifact.connector.project.nature";
 	private ConnectorModel customMediatorModel;
 	private IProject project;

@@ -20,17 +20,12 @@ package org.wso2.developerstudio.eclipse.artifact.registry.editor;
 import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Random;
 
 import org.apache.commons.lang.StringUtils;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.TableEditor;
-import org.eclipse.swt.events.FocusEvent;
-import org.eclipse.swt.events.FocusListener;
-import org.eclipse.swt.events.KeyEvent;
-import org.eclipse.swt.events.KeyListener;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.SelectionEvent;
@@ -42,16 +37,13 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
-import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Listener;
-import org.eclipse.swt.widgets.MessageBox;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.swt.widgets.Text;
-import org.eclipse.swt.widgets.Widget;
 import org.eclipse.ui.forms.IManagedForm;
 import org.eclipse.ui.forms.editor.FormEditor;
 import org.eclipse.ui.forms.editor.FormPage;
@@ -123,12 +115,12 @@ public class RegistryResourcePage extends FormPage {
 		listSection.setClient(comp);
 		
 		//Creating the table which hosts Artifact List
-		artifactListTable = toolkit.createTable(comp, SWT.READ_ONLY);
+		artifactListTable = toolkit.createTable(comp,SWT.SINGLE|SWT.FULL_SELECTION);
 		artifactListTable.setBackground(SWTResourceManager.getColor(255, 255, 224));
 		artifactListTable.setBounds(4, 2, 22, 10);
 	 
-		TableColumn tc1 = new TableColumn(artifactListTable, SWT.CENTER & SWT.READ_ONLY);
-		TableColumn tc2 = new TableColumn(artifactListTable, SWT.LEFT & SWT.READ_ONLY);
+		TableColumn tc1 = new TableColumn(artifactListTable, SWT.CENTER);
+		TableColumn tc2 = new TableColumn(artifactListTable, SWT.LEFT );
 		tc1.setResizable(false);
 		tc2.setText("Artifact List");
 		tc1.setWidth(0);
@@ -137,7 +129,7 @@ public class RegistryResourcePage extends FormPage {
 
 		// Adding Table editor for editing Artifact Names
 		artifactNameEditor = new TableEditor(artifactListTable);
-		artifactNameEditor.setEditor(new Text(artifactListTable, SWT.READ_ONLY));
+		artifactNameEditor.setEditor(new Text(artifactListTable, SWT.LEFT));
 		artifactNameEditor.horizontalAlignment = SWT.LEFT;
 		artifactNameEditor.grabHorizontal = true;
 		artifactNameEditor.minimumWidth = 50;

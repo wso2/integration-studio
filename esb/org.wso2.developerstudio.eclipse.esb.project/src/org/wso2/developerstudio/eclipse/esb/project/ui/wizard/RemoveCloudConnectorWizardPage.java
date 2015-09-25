@@ -115,7 +115,7 @@ public class RemoveCloudConnectorWizardPage extends WizardPage{
 	 * List available connectors
 	 */
 	private void listConnectors(Table table) {				
-		String connectorDirectory = getSelectedProject().getWorkspace().getRoot().getLocation().toString()
+		String connectorDirectory = getSelectedProject().getWorkspace().getRoot().getLocation().toOSString()
 				+ File.separator + DIR_DOT_METADATA + File.separator + DIR_CONNECTORS;
 		File directory=new File(connectorDirectory);
 		if(directory.isDirectory()){

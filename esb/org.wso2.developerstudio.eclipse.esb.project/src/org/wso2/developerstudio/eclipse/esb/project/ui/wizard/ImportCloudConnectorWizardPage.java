@@ -253,7 +253,7 @@ public class ImportCloudConnectorWizardPage extends WizardPage {
 			progressService.runInUI(PlatformUI.getWorkbench().getProgressService(), new IRunnableWithProgress() {
 				public void run(IProgressMonitor monitor) {					
 					try {
-						String iconCacheDirPath = getSelectedProject().getWorkspace().getRoot().getLocation().toString()
+						String iconCacheDirPath = getSelectedProject().getWorkspace().getRoot().getLocation().toOSString()
 								+ File.separator + DIR_DOT_METADATA + File.separator + DIR_CACHE;
 						File iconCacheDir = new File(iconCacheDirPath);
 						if (!iconCacheDir.exists()) {

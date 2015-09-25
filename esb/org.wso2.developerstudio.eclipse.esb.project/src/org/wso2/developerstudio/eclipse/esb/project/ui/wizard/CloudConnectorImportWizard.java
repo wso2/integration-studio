@@ -1,17 +1,14 @@
 /*
  * Copyright (c) 2010-2015, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
+ * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations under the License.
  */
 
 package org.wso2.developerstudio.eclipse.esb.project.ui.wizard;
@@ -48,12 +45,13 @@ public class CloudConnectorImportWizard extends Wizard {
 	private RemoveCloudConnectorWizardPage removeWizardPage;
 	private ImportRemoveSelectionWizardPage selectionPage;
 	private static final String DIR_DOT_METADATA = ".metadata";
-	private static final String DIR_CONNECTORS = ".Connectors";	
+	private static final String DIR_CONNECTORS = ".Connectors";
 
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
 	/**
 	 * Initializing wizard
+	 * 
 	 * @param selection
 	 */
 	public void init(IStructuredSelection selection) {
@@ -72,33 +70,32 @@ public class CloudConnectorImportWizard extends Wizard {
 		addPage(removeWizardPage);
 		super.addPages();
 	}
-	
+
 	/**
-	 * Importing connector zip file to Developer Studio either from fileSystem or
-	 * connector store.
+	 * Importing connector zip file to Developer Studio either from fileSystem or connector store.
 	 */
 	public boolean performFinish() {
-		if(storeWizardPage.equals(getContainer().getCurrentPage())){
+		if (storeWizardPage.equals(getContainer().getCurrentPage())) {
 			if (storeWizardPage.getConnectorStore().getSelection()) {
 				return performFinishStore();
 			} else if (storeWizardPage.getFileSystem().getSelection()) {
 				return performFinishFileSystem();
 			}
-		}else if(removeWizardPage.equals(getContainer().getCurrentPage())){
+		} else if (removeWizardPage.equals(getContainer().getCurrentPage())) {
 			return performFinishRemove();
 		}
 		return false;
 	}
 
 	/**
-	 * This method will download the connector zip file and extract it to the
-	 * relevant location when user has selected import from connector store option.
+	 * This method will download the connector zip file and extract it to the relevant location when user has selected
+	 * import from connector store option.
 	 */
 	private boolean performFinishStore() {
 		for (TableItem tableItem : storeWizardPage.getTable().getItems()) {
 			if (tableItem.getChecked()) {
 				String downloadLink = ((Connector) tableItem.getData()).getAttributes().getOverview_downloadlink();
-				if(!downloadConnectorAndUpdateProjects(downloadLink)){
+				if (!downloadConnectorAndUpdateProjects(downloadLink)) {
 					return false;
 				}
 			}
@@ -107,13 +104,13 @@ public class CloudConnectorImportWizard extends Wizard {
 	}
 
 	/**
-	 * This method will extract connector zip file to the relevant location when
-	 * user has selected import from file system option.
+	 * This method will extract connector zip file to the relevant location when user has selected import from file
+	 * system option.
 	 */
 	private boolean performFinishFileSystem() {
 		String source = storeWizardPage.getCloudConnectorPath();
-		try {		
-			String parentDirectoryPath = ResourcesPlugin.getWorkspace().getRoot().getLocation().toString()
+		try {
+			String parentDirectoryPath = ResourcesPlugin.getWorkspace().getRoot().getLocation().toOSString()
 					+ File.separator + DIR_DOT_METADATA + File.separator + DIR_CONNECTORS;
 			File parentDirectory = new File(parentDirectoryPath);
 			if (!parentDirectory.exists()) {
@@ -121,7 +118,7 @@ public class CloudConnectorImportWizard extends Wizard {
 			}
 			File file = new File(source);
 			FileUtils.copyFileToDirectory(file, parentDirectory);
-			
+
 			updateProjects(source);
 		} catch (ZipException e) {
 			log.error("Error while extracting the connector zip : " + source, e);
@@ -132,14 +129,15 @@ public class CloudConnectorImportWizard extends Wizard {
 		}
 		return true;
 	}
-	
+
 	/**
 	 * This method will remove selected connectors from the file system.
 	 */
 	private boolean performFinishRemove() {
 		for (TableItem tableItem : removeWizardPage.getTable().getItems()) {
 			if (tableItem.getChecked()) {
-				String filePath = ((org.wso2.developerstudio.eclipse.esb.project.ui.wizard.Connector) tableItem.getData()).getConnectorFilePath();
+				String filePath = ((org.wso2.developerstudio.eclipse.esb.project.ui.wizard.Connector) tableItem
+						.getData()).getConnectorFilePath();
 				try {
 					FileUtils.deleteDirectory(new File(filePath));
 				} catch (IOException e) {
@@ -165,13 +163,14 @@ public class CloudConnectorImportWizard extends Wizard {
 		ZipFile zipFile = new ZipFile(source);
 		String[] segments = source.split(Pattern.quote(File.separator));
 		String zipFileName = segments[segments.length - 1].split(".zip")[0];
-		String parentDirectoryPath = storeWizardPage.getSelectedProject().getWorkspace().getRoot().getLocation().toString()
-				+ File.separator + DIR_DOT_METADATA + File.separator + DIR_CONNECTORS ;		
+		String parentDirectoryPath = storeWizardPage.getSelectedProject().getWorkspace().getRoot().getLocation()
+				.toOSString()
+				+ File.separator + DIR_DOT_METADATA + File.separator + DIR_CONNECTORS;
 		File parentDirectory = new File(parentDirectoryPath);
 		if (!parentDirectory.exists()) {
 			parentDirectory.mkdir();
-		}		
-		String zipDestination = parentDirectoryPath + File.separator + zipFileName;		
+		}
+		String zipDestination = parentDirectoryPath + File.separator + zipFileName;
 		zipFile.getFile();
 		zipFile.extractAll(zipDestination);
 		IUpdateGMFPlugin updateGMFPlugin = GMFPluginDetails.getiUpdateGMFPlugin();
@@ -183,7 +182,7 @@ public class CloudConnectorImportWizard extends Wizard {
 		 */
 		storeWizardPage.getSelectedProject().refreshLocal(IResource.DEPTH_INFINITE, null);
 	}
-	
+
 	private boolean downloadConnectorAndUpdateProjects(String downloadLink) {
 		String zipDestination = null;
 		try {
@@ -191,7 +190,7 @@ public class CloudConnectorImportWizard extends Wizard {
 			String[] segments = downloadLink.split("/");
 			String zipFileName = segments[segments.length - 1];
 			String parentDirectoryPath = storeWizardPage.getSelectedProject().getWorkspace().getRoot().getLocation()
-					.toString()
+					.toOSString()
 					+ File.separator + DIR_DOT_METADATA + File.separator + DIR_CONNECTORS;
 			File parentDirectory = new File(parentDirectoryPath);
 			if (!parentDirectory.exists()) {
@@ -222,7 +221,7 @@ public class CloudConnectorImportWizard extends Wizard {
 		}
 		return false;
 	}
-	
+
 	public ImportCloudConnectorWizardPage getStoreWizardPage() {
 		return storeWizardPage;
 	}

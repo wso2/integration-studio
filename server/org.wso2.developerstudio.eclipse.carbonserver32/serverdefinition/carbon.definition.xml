@@ -72,7 +72,7 @@
         label="Enable hot update of published server modules" 
         type="boolean"
         context="server"
-        default="false" />
+        default="true" />
         
     <property 
         id="osgi.console" 

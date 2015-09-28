@@ -124,18 +124,14 @@
 	<start>
 		<mainClass>org.wso2.carbon.bootstrap.Bootstrap</mainClass>
 		<workingDirectory>${carbon.home}</workingDirectory>
-        <vmParameters>-Xbootclasspath/a::"${carbon.home}/lib/xboot/org.wso2.carbon.xboot-4.0.0.jar" -Xms512m -Xmx1024m -XX:MaxPermSize=128m -Dcom.sun.management.jmxremote -Djava.io.tmpdir="${carbon.home}/tmp" -Dwso2.server.standalone=true -Dcarbon.home="${carbon.home}" -Dcarbon.registry.root=/ -Djava.endorsed.dirs="${carbon.home}/lib/endorsed" -Djava.util.logging.config.file="${carbon.home}/repository/conf/log4j.properties" -Dcomponents.repo="${carbon.home}/repository/components/plugins" -Dcarbon.config.dir.path="${carbon.home}/repository/conf" -Dcom.atomikos.icatch.file="${carbon.home}/lib/transactions.properties" -Dcom.atomikos.icatch.hide_init_file_path=true -Dorg.apache.jasper.compiler.Parser.STRICT_QUOTE_ESCAPING=false -Dcatalina.base="${carbon.home}/lib/tomcat" -Djava.net.preferIPv4Stack=true -Dcom.ibm.cacheLocalHost=true -Dconf.location="${carbon.home}/repository/conf"</vmParameters>
+        <vmParameters>-Xms256m -Xmx1024m -XX:MaxPermSize=256m -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath="${carbon.home}/repository/logs/heap-dump.hprof" -Dcom.sun.management.jmxremote -Djava.endorsed.dirs="${carbon.home}/lib/endorsed" -Djava.io.tmpdir="${carbon.home}/tmp" -Dcatalina.base="${carbon.home}/lib/tomcat" -Dwso2.server.standalone=true -Dcarbon.registry.root=/ -Dcarbon.home="${carbon.home}" -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager -Dcarbon.config.dir.path="${carbon.home}/repository/conf" -Djava.util.logging.config.file="${carbon.home}/repository/conf/etc/logging-bridge.properties" -Dcomponents.repo="${carbon.home}/repository/components/plugins" -Dconf.location="${carbon.home}/repository/conf" -Dcom.atomikos.icatch.file="${carbon.home}/lib/transactions.properties" -Dcom.atomikos.icatch.hide_init_file_path=true -Dorg.apache.jasper.compiler.Parser.STRICT_QUOTE_ESCAPING=false -Dorg.apache.jasper.runtime.BodyContentImpl.LIMIT_BUFFER=true -Dcom.sun.jndi.ldap.connect.pool.authentication=simple -Dcom.sun.jndi.ldap.connect.pool.timeout=3000 -Dorg.terracotta.quartz.skipUpdateCheck=true -Djava.security.egd=file:/dev/./urandom -Dfile.encoding=UTF8 -Djava.net.preferIPv4Stack=true -Dcom.ibm.cacheLocalHost=true -DworkerNode=false</vmParameters>
         <programArguments></programArguments>
 		<classpathReference>carbon.libs</classpathReference>
 		<debugPort>${carbon.debug}</debugPort>
 	</start>
-	
+
 	<classpath id="carbon.libs">
 		<archive path="${carbon.home}/lib" />
 		<archive path="${carbon.home}/bin" />
-		<archive path="${carbon.home}/lib/endorsed" />
-		<!-- archive path="${carbon.home}/lib/patches" /-->
-		<archive path="${carbon.home}/repository/components/lib" />
-		<archive path="${carbon.home}/repository/components/extensions" />		
 	</classpath>
 </tns:ServerRuntime>

@@ -306,8 +306,8 @@ public class AnalyticsProjectUtils {
 	public static void createArtifactMetaDataEntry(String name,String version, String type,
 			File baseDir, String groupId,IProject project, String extension) throws FactoryConfigurationError,
 			Exception {
-		AnalyticsProjectArtifactCreator esbProjectArtifact = new AnalyticsProjectArtifactCreator();
-		esbProjectArtifact.fromFile(project.getFile("artifact.xml")
+		AnalyticsProjectArtifactCreator analyticsProjectArtifact = new AnalyticsProjectArtifactCreator();
+		analyticsProjectArtifact.fromFile(project.getFile("artifact.xml")
 				.getLocation().toFile());
 		AnalyticsArtifactModel artifact = new AnalyticsArtifactModel();
 		artifact.setName(name);
@@ -319,8 +319,8 @@ public class AnalyticsProjectUtils {
 				project.getLocation().toFile(),
 				new File(baseDir, name + extension)).replaceAll(
 				Pattern.quote(File.separator), "/"));
-		esbProjectArtifact.addAnalyticsArtifact(artifact);
-		esbProjectArtifact.toFile();
+		analyticsProjectArtifact.addAnalyticsArtifact(artifact);
+		analyticsProjectArtifact.toFile();
 	}
 	
 	public static void updatePom(IProject project) throws Exception {

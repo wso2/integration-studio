@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Analytics:Project
-Bundle-SymbolicName: org.wso2.developerstudio.eclipse.analytics.project;singleton:=true
+Bundle-SymbolicName: org.wso2.developerstudio.eclipse.artifact.analytics;singleton:=true
 Bundle-Version: 2.1.0
 Bundle-Activator: org.wso2.developerstudio.eclipse.artifact.analytics.Activator
 Require-Bundle: org.eclipse.ui,

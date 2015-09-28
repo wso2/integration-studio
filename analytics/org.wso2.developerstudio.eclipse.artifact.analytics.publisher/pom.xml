@@ -24,7 +24,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>org.wso2.developerstudio.eclipse.artifact.analytics.publisher</artifactId>
-    <version>2.1.0</version>
+    <version>1.0.0</version>
   <packaging>eclipse-plugin</packaging>
     <name>Developer Studio Analytics Publisher</name>
 </project>

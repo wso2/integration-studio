@@ -22,5 +22,4 @@ public class ProjectConstants {
 	public static final String DSS_NATURE_ID="org.wso2.developerstudio.eclipse.ds.project.nature";
 	public static final String BPS_NATURE_ID="org.wso2.developerstudio.eclipse.bpel.project.nature";
 	public static final String BRS_NATURE_ID="org.wso2.developerstudio.eclipse.artifact.businessruleservice.project.nature";
-	public static final String CEP_NATURE_ID="org.wso2.developerstudio.eclipse.artifact.cep.project.nature";
 }

@@ -23,8 +23,8 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.wso2.developerstudio.eclipse.artifact.analytics.receiver.model.ReceiverModel;
 import org.wso2.developerstudio.eclipse.artifact.analytics.receiver.utils.ReceiverConstants;
-import org.wso2.developerstudio.eclipse.artifact.analytics.utils.AnalyticsProjectArtifactCreator;
 import org.wso2.developerstudio.eclipse.artifact.analytics.utils.AnalyticsArtifactModel;
+import org.wso2.developerstudio.eclipse.artifact.analytics.utils.AnalyticsProjectArtifactCreator;
 import org.wso2.developerstudio.eclipse.platform.core.exception.FieldValidationException;
 import org.wso2.developerstudio.eclipse.platform.core.model.AbstractFieldController;
 import org.wso2.developerstudio.eclipse.platform.core.project.model.ProjectDataModel;
@@ -34,50 +34,51 @@ import java.util.List;
 
 public class ReceiverFieldController extends AbstractFieldController {
 
-	
-	public void validate(String modelProperty, Object value, ProjectDataModel model)
-	        throws FieldValidationException {
-		if (modelProperty.equals(ReceiverConstants.WIZARD_OPTION_RECEIVER_NAME)) {
-		     CommonFieldValidator.validateArtifactName(value);
-		     if (value != null) {
-				String resource = value.toString();
-				ReceiverModel receiverModel = (ReceiverModel) model;
-				if (receiverModel != null) {
-					IContainer resLocation = receiverModel.getReceiverSaveLocation();
-					if (resLocation != null) {
-						IProject project = resLocation.getProject();
-						AnalyticsProjectArtifactCreator analyticsProjectArtifact = new AnalyticsProjectArtifactCreator();
-						try {
-							analyticsProjectArtifact.fromFile(project.getFile("artifact.xml").getLocation().toFile());
-							List<AnalyticsArtifactModel> allArtifacts = analyticsProjectArtifact.getAllAnalyticsArtifacts();
-							for (AnalyticsArtifactModel artifact : allArtifacts) {
-								if (resource.equals(artifact.getName())) {
-									throw new FieldValidationException("");
-								}
-							}
 
-						} catch (Exception e) {
-							throw new FieldValidationException("Artifact name already exsits");
-						}
-					}
-				}		 	 
-			}     
-		} else if (modelProperty.equals(ReceiverConstants.WIZARD_OPTION_RECEIVER_IMPORT_LOCATION)) {
-			 CommonFieldValidator.validateImportFile(value);
-		}  else if (modelProperty.equals(ReceiverConstants.WIZARD_OPTION_RECEIVER_SAVE_LOCATION)) {
-			IResource resource = (IResource)value;
-			if(null== resource || !resource.exists())	
-				throw new FieldValidationException("Specified project or path doesn't exist");
-		}
+    public void validate(String modelProperty, Object value, ProjectDataModel model)
+            throws FieldValidationException {
+        if (modelProperty.equals(ReceiverConstants.WIZARD_OPTION_RECEIVER_NAME)) {
+            CommonFieldValidator.validateArtifactName(value);
+            if (value != null) {
+                String resource = value.toString();
+                ReceiverModel receiverModel = (ReceiverModel) model;
+                if (receiverModel != null) {
+                    IContainer resLocation = receiverModel.getReceiverSaveLocation();
+                    if (resLocation != null) {
+                        IProject project = resLocation.getProject();
+                        AnalyticsProjectArtifactCreator analyticsProjectArtifact = new AnalyticsProjectArtifactCreator();
+                        try {
+                            analyticsProjectArtifact.fromFile(project.getFile("artifact.xml").getLocation().toFile());
+                            List<AnalyticsArtifactModel> allArtifacts = analyticsProjectArtifact.getAllAnalyticsArtifacts();
+                            for (AnalyticsArtifactModel artifact : allArtifacts) {
+                                if (resource.equals(artifact.getName())) {
+                                    throw new FieldValidationException("");
+                                }
+                            }
 
-	}
-	
-	public boolean isReadOnlyField(String modelProperty, ProjectDataModel model) {
-		boolean readOnlyField = super.isReadOnlyField(modelProperty, model);
-		if (modelProperty.equals(ReceiverConstants.WIZARD_OPTION_RECEIVER_SAVE_LOCATION)) {
-			readOnlyField = true;
-		}
-	    return readOnlyField;
-	}
+                        } catch (Exception e) {
+                            throw new FieldValidationException("Artifact name already exsits");
+                        }
+                    }
+                }
+            }
+        } else if (modelProperty.equals(ReceiverConstants.WIZARD_OPTION_RECEIVER_IMPORT_LOCATION)) {
+            CommonFieldValidator.validateImportFile(value);
+        } else if (modelProperty.equals(ReceiverConstants.WIZARD_OPTION_RECEIVER_SAVE_LOCATION)) {
+            IResource resource = (IResource) value;
+            if (null == resource || !resource.exists()) {
+                throw new FieldValidationException("Specified project or path doesn't exist");
+            }
+        }
+
+    }
+
+    public boolean isReadOnlyField(String modelProperty, ProjectDataModel model) {
+        boolean readOnlyField = super.isReadOnlyField(modelProperty, model);
+        if (modelProperty.equals(ReceiverConstants.WIZARD_OPTION_RECEIVER_SAVE_LOCATION)) {
+            readOnlyField = true;
+        }
+        return readOnlyField;
+    }
 
 }

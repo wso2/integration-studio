@@ -544,7 +544,6 @@ limitations under the License.
                     wizard="org.wso2.developerstudio.eclipse.artifact.newgadgetartifact">
         </wizardLink>
 
-        <!-- CEP -->
 
         <!-- BRS -->
         <wizardCategory
@@ -585,7 +584,6 @@ limitations under the License.
     
         <extension
           point="org.wso2.developerstudio.eclipse.platform.core.artifacttemplates">
-             
        <template
              file="resources/templates/sequences/sequence.xml"
              id="org.wso2.developerstudio.eclipse.esb.sequence"

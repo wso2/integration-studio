@@ -29,39 +29,39 @@ import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-public class StreamArtifactExportHandler extends ProjectArtifactHandler{
-	private static final String FILE_EXTENSION = "json";
+public class StreamArtifactExportHandler extends ProjectArtifactHandler {
+    private static final String FILE_EXTENSION = "json";
 
     public List<IResource> exportArtifact(IProject project) throws Exception {
-    	List<IResource> exportResources = new ArrayList<IResource>();
-			 File[] jsonfiles = FileUtils.getAllMatchingFiles(project.getLocation()
-					.toString(), null, FILE_EXTENSION,
-					   new ArrayList<File>());
-			 for(File jsonfile : jsonfiles) {
-				if(isStream(jsonfile)) {
-					String jsonFileLocation = jsonfile.toString()
-					.replaceAll(
-							"^" + project.getLocation().toString()
-									+ File.separator, "");
-					IFile jsonFileRef = project.getFile(jsonFileLocation);
-					exportResources.add((IResource) jsonFileRef);
-				}
-			 }
-		return exportResources;
+        List<IResource> exportResources = new ArrayList<IResource>();
+        File[] jsonfiles = FileUtils.getAllMatchingFiles(project.getLocation()
+                        .toString(), null, FILE_EXTENSION,
+                new ArrayList<File>());
+        for (File jsonfile : jsonfiles) {
+            if (isStream(jsonfile)) {
+                String jsonFileLocation = jsonfile.toString()
+                        .replaceAll(
+                                "^" + project.getLocation().toString()
+                                        + File.separator, "");
+                IFile jsonFileRef = project.getFile(jsonFileLocation);
+                exportResources.add((IResource) jsonFileRef);
+            }
+        }
+        return exportResources;
     }
-    
-    private boolean isStream(File jsonFile){
-		try {
-			OMElement documentElement = new StAXOMBuilder(new FileInputStream(jsonFile))
-					.getDocumentElement();
-			String localName = documentElement.getLocalName();
-			if (localName.equals("stream")) {
-				return true;
-			}
-		} catch (Exception ignored ) {
-	      // ignored 
-		} 
-		return false;
-	}
+
+    private boolean isStream(File jsonFile) {
+        try {
+            OMElement documentElement = new StAXOMBuilder(new FileInputStream(jsonFile))
+                    .getDocumentElement();
+            String localName = documentElement.getLocalName();
+            if (localName.equals("stream")) {
+                return true;
+            }
+        } catch (Exception ignored) {
+            // ignored
+        }
+        return false;
+    }
 
 }

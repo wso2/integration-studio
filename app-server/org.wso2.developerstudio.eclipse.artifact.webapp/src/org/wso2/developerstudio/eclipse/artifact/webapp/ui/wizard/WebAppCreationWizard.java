@@ -83,7 +83,7 @@ public class WebAppCreationWizard extends AbstractWSO2ProjectCreationWizard {
 	public boolean performFinish() {
 		try {
 			if (getModel().getSelectedOption().equals("import.webapp")) {
-				IProject exproject = ResourcesPlugin.getWorkspace().getRoot().getProject(webAppModel.getReceiverName());
+				IProject exproject = ResourcesPlugin.getWorkspace().getRoot().getProject(webAppModel.getProjectName());
 				if(exproject.exists()){
 					if(!MessageDialog.openQuestion(getShell(), "WARNING", "Do you like to override exsiting project in the workspace")){
 						return false;	

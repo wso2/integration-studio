@@ -49,7 +49,7 @@ public class JaxwsModel extends ProjectDataModel {
 	public boolean setModelPropertyValue(String key, Object data) throws ObserverFailedException {
 		boolean returnValue = super.setModelPropertyValue(key, data);
 		if (key.equals("import.file")) {
-			if(getReceiverName()==null || getReceiverName().trim().equals("")){
+			if(getProjectName()==null || getProjectName().trim().equals("")){
 				if (getImportFile() != null && !getImportFile().toString().equals("")) {
 					setProjectName(ProjectUtils.fileNameWithoutExtension(getImportFile().getName()));
 				}

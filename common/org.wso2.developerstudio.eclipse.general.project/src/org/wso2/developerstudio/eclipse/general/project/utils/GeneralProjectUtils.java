@@ -40,7 +40,7 @@ public class GeneralProjectUtils {
 				regModel.setLocation(location);
 				dialog.create();
 				if(dialog.open() ==Dialog.OK){
-					String projectName = basicProjectWizard.getModel().getReceiverName();					
+					String projectName = basicProjectWizard.getModel().getProjectName();					
 					newProject = ResourcesPlugin.getWorkspace().getRoot().getProject(projectName);
 				}
 				return newProject;

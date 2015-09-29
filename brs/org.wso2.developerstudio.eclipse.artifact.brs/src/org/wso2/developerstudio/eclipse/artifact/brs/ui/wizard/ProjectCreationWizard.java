@@ -110,7 +110,7 @@ public class ProjectCreationWizard extends AbstractWSO2ProjectCreationWizard {
 
 			IProject existingProject =
 				ResourcesPlugin.getWorkspace().getRoot()
-				.getProject(rsModel.getReceiverName());
+				.getProject(rsModel.getProjectName());
 
 
 			if (existingProject.exists()) {

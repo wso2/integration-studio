@@ -66,7 +66,7 @@ public class ESBProjectUtils {
 				esbProjectWizard.getModel().setLocation(location);
 				dialog.create();
 				if(dialog.open() ==Dialog.OK){
-					String projectName = esbProjectWizard.getModel().getReceiverName();
+					String projectName = esbProjectWizard.getModel().getProjectName();
 					esbProject = ResourcesPlugin.getWorkspace().getRoot()
 							.getProject(projectName);
 				}

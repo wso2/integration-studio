@@ -233,10 +233,9 @@ public class CarExportHandler extends ProjectArtifactHandler {
 	}
 	
 	private String getFileName(DependencyData dependencyData) {
-
 		String fileName = String.format("%s-%s.%s", dependencyData.getDependency().getArtifactId(),
-					dependencyData.getDependency().getVersion(), ArtifactTypeMapping
-							.getType(dependencyData.getCApptype()));
+				dependencyData.getDependency().getVersion(), ArtifactTypeMapping
+						.getType(dependencyData.getCApptype()));
 		return fileName;
 	}
 	

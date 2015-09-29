@@ -261,7 +261,7 @@ public class RegistryHandlerCreationWizard extends
 
 		IType javaITypeForClass = null;
 		propertyMap = handlerInfo.getHandlerProperties();
-		String projectName = regModel.getReceiverName();
+		String projectName = regModel.getProjectName();
 		if (projectName != null && !projectName.equalsIgnoreCase("")) {
 			javaITypeForClass =
 			                    JavaUtils.getJavaITypeForClass(JavaCore.create(ResourcesPlugin.getWorkspace()
@@ -319,7 +319,7 @@ public class RegistryHandlerCreationWizard extends
 		}
 
 		javaITypeForClass = null;
-		projectName = regModel.getReceiverName();
+		projectName = regModel.getProjectName();
 		if (projectName != null && !projectName.equalsIgnoreCase("")) {
 			javaITypeForClass =
 			                    JavaUtils.getJavaITypeForClass(JavaCore.create(ResourcesPlugin.getWorkspace()

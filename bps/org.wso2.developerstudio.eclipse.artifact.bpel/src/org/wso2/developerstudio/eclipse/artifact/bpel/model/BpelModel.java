@@ -57,7 +57,7 @@ public class BpelModel extends ProjectDataModel {
 	}
 	
 	public void setProjectName(String projectName) throws ObserverFailedException {
-		if (getReceiverName() != null && getReceiverName().equals(getProcessName())) {
+		if (getProjectName() != null && getProjectName().equals(getProcessName())) {
 			setProcessName(projectName);
 		}
 		super.setProjectName(projectName);

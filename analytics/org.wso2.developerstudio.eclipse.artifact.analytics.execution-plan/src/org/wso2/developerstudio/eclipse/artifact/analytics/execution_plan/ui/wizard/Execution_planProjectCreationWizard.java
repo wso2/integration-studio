@@ -209,21 +209,21 @@ public class Execution_planProjectCreationWizard extends AbstractWSO2ProjectCrea
 			File analyticsTemplateFile = new AnalyticsTemplateUtils().getResourceFile("templates" + File.separator
 					+ AnalyticsConstants.TEMPLATE_EXECUTIONPLAN);
 			String templateContent = FileUtils.getContentAsString(analyticsTemplateFile);
-			String content = templateContent.replaceAll(AnalyticsConstants.NAMETAG_EXECUTIONPLAN_TEMPLATE, executionPlanModel.getReceiverName());
+			String content = templateContent.replaceAll(AnalyticsConstants.NAMETAG_EXECUTIONPLAN_TEMPLATE, executionPlanModel.getProjectName());
 			File destFile = new File(location.getLocation().toFile(),
-					executionPlanModel.getReceiverName() + "."+AnalyticsConstants.EXTENTION_EXECUTION_PLAN);
+					executionPlanModel.getProjectName() + "."+AnalyticsConstants.EXTENTION_EXECUTION_PLAN);
 			FileUtils.createFile(destFile, content);
 			fileList.add(destFile);
 
 			AnalyticsArtifactModel artifact = new AnalyticsArtifactModel();
-			artifact.setName(executionPlanModel.getReceiverName());
+			artifact.setName(executionPlanModel.getProjectName());
 			artifact.setVersion(version);
 			artifact.setType(AnalyticsConstants.ARTIFACT_TYPE_EXECUTIONPLAN);
 			artifact.setServerRole(AnalyticsConstants.ANALYTICS_SERVER_NAME);
 			artifact.setGroupId(groupId);
 			artifact.setFile(FileUtils.getRelativePath(project.getLocation()
 					.toFile(), new File(location.getLocation().toFile(),
-							executionPlanModel.getReceiverName() + "."+AnalyticsConstants.EXTENTION_EXECUTION_PLAN)).replaceAll(Pattern.quote(File.separator), "/"));
+							executionPlanModel.getProjectName() + "."+AnalyticsConstants.EXTENTION_EXECUTION_PLAN)).replaceAll(Pattern.quote(File.separator), "/"));
 			analyticsProjectArtifact.addAnalyticsArtifact(artifact);
 		}
 		analyticsProjectArtifact.toFile();

@@ -498,8 +498,12 @@ public class RuleServiceEditorPage extends FormPage {
 
 	public void refreshForm() throws XMLStreamException,  IOException, RuleConfigurationException {
 		initContent();
-		txtServiceName.setText(ruleservice.getName());
-		txtTargetNameSpace.setText(ruleservice.getTargetNamespace());
+		if (ruleservice.getName() != null) {
+			txtServiceName.setText(ruleservice.getName());
+		}
+		if (ruleservice.getTargetNamespace() != null) {
+			txtTargetNameSpace.setText(ruleservice.getTargetNamespace());
+		}
 		if (ruleservice.getScope() != null) {
 			comboScope.setText(ruleservice.getScope());
 		}

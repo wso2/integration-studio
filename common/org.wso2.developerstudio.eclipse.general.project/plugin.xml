@@ -124,5 +124,24 @@
 					</and>
 				</enablement>
 		</moveParticipant>
- </extension>
+ </extension> 
+	
+	 <extension point="org.eclipse.ui.popupMenus">
+	        <objectContribution objectClass="org.eclipse.core.resources.IProject" id="org.wso2.developerstudio.eclipse.general.project.popup.importcloudconnector">
+	               <action
+	                        label="Add or Remove Connector"
+	                        icon="icons/car.png"
+	                   class="org.wso2.developerstudio.eclipse.general.project.ui.action.ImportCloudConnectorAction"
+	                        id="org.wso2.developerstudio.eclipse.general.project.ui.action.cloudConnectorImport">
+	               </action>
+	               <enablement>
+						<adapt type="org.eclipse.core.resources.IProject">
+						 <or>
+							<test property="org.eclipse.core.resources.projectNature"
+								value="org.wso2.developerstudio.eclipse.general.project.nature" />
+		 				</or>
+						</adapt>
+				</enablement>
+	          </objectContribution>     
+	 </extension>
 </plugin>

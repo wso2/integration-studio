@@ -59,13 +59,13 @@ import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
 import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
 
 public class AnalyticsProjectUtils {
-	
+
 	private static IDeveloperStudioLog log=Logger.getLog(Activator.PLUGIN_ID);
-	
+
 	private final static String ADDITIONAL_FOLDERS =File.separator+"repository"+
 			File.separator+"deployment"+File.separator+"server";
 	private final static String PROJECT_PATH = "src" + File.separator + "main" + File.separator;
-	
+
 	public static IProject createAnalyticsProject(Shell shell,File location){
 		IWizardDescriptor wizardDesc = PlatformUI.getWorkbench().getNewWizardRegistry().findWizard("org.wso2.developerstudio.eclipse.artifact.newAnalyticsProject");
 		if (wizardDesc!=null) {
@@ -91,8 +91,8 @@ public class AnalyticsProjectUtils {
 		}
 		return null;
 	}
-	
-	
+
+
 	public static boolean artifactExists(IProject project, String artifactName) throws Exception {
 		AnalyticsProjectArtifactCreator analyticsProjectArtifact = new AnalyticsProjectArtifactCreator();
 		analyticsProjectArtifact.fromFile(project.getFile("artifact.xml").getLocation().toFile());
@@ -103,12 +103,12 @@ public class AnalyticsProjectUtils {
 		}
 		return false;
 	}
-	
+
 	public static Map<File,AnalyticsEntryTypes> deploymentServerContentProcessing(
 			String deploymentServerFolderPath) throws IOException,Exception {
 
-		Map<File,AnalyticsEntryTypes> editorList = new HashMap<File,AnalyticsEntryTypes>();	
-	
+		Map<File,AnalyticsEntryTypes> editorList = new HashMap<File,AnalyticsEntryTypes>();
+
 		File rootDir = new File(deploymentServerFolderPath);
 
 		if(rootDir.exists() && rootDir.getPath().endsWith(ADDITIONAL_FOLDERS)){
@@ -125,13 +125,13 @@ public class AnalyticsProjectUtils {
 				}else if(name.equals(AnalyticsConstants.DEPLOYMENT_SERVER_STREAM_DIR)){
 					processFiles(editorList, rootDir + File.separator+AnalyticsConstants.DEPLOYMENT_SERVER_STREAM_DIR);
 				}
-			} 
+			}
 		}else{
 			throw new Exception("Please provide a valid directory");
 		}
 		return editorList;
 	}
-	
+
 	//select multiple files from project folder after validation of the project artifact
 	private static void processFiles(Map<File,AnalyticsEntryTypes> editorList,
 			String dirPath) throws IOException{
@@ -143,28 +143,28 @@ public class AnalyticsProjectUtils {
 			FileReader fileReader = new FileReader(files[j]);
 			BufferedReader reader = new BufferedReader(fileReader);
 			String line = reader.readLine();
-			
-			//artifact name extract from file name.  			
+
+			//artifact name extract from file name.
 			String originalName = extractArtifactFileName(files[j]);
-			
+
 			//These patterns check file name with file content name.
 			String regStream = "\"(name)\"\\s*?:\\s*\"("+originalName+")\"";
 			String regExecutionplan = "\\@(Plan:name)\\('("+originalName+")'\\)";
 			String regPublisher = "(eventPublisher)\\s*?(name)\\s*=\\s*?\"("+originalName+")\"";
 			String regReceiver = "(eventReceiver)\\s*?(name)\\s*=\\s*?\"("+originalName+")\"";
-			
+
 			Pattern patternStream = Pattern.compile(regStream);
 			Pattern patternExecutionplan = Pattern.compile(regExecutionplan);
 			Pattern patternPublisher = Pattern.compile(regPublisher);
 			Pattern patternReceiver = Pattern.compile(regReceiver);
-			
+
 			while (line != null) {
 
 				Matcher matcherStream = patternStream.matcher(line);
 				Matcher matcherExecutionplan = patternExecutionplan.matcher(line);
-				Matcher matcherPublisher = patternPublisher.matcher(line);	
+				Matcher matcherPublisher = patternPublisher.matcher(line);
 				Matcher matcherReceiver = patternReceiver.matcher(line);
-				
+
 				if(matcherStream.find()){
 					File selectedFile = files[j];
 					editorList.put(selectedFile,AnalyticsEntryTypes.STREAM);
@@ -187,11 +187,11 @@ public class AnalyticsProjectUtils {
 			}
 			fileReader.close();
 			reader.close();
-		}	
+		}
 	}
-	
+
 	//artifact name extract from file name, if include any version part remove it. streamName_1.0.0.json -> streamName.json
-	private static String extractArtifactFileName(File file){  			
+	private static String extractArtifactFileName(File file){
 		String extention = FilenameUtils.getExtension((file.getAbsolutePath()));
 		String fileName = FilenameUtils.getBaseName(file.getAbsolutePath());
 		if(extention.equals(AnalyticsConstants.EXTENTION_STREAM)){
@@ -203,47 +203,47 @@ public class AnalyticsProjectUtils {
 		}
 		return fileName;
 	}
-	
+
 	public static void createAnalyticsArtifacts(Map<File,AnalyticsEntryTypes> selectedFilesList,IProject project,File pomfile,
 			Map<File,AnalyticsEntryTypes> fileList,String groupId) throws FactoryConfigurationError, Exception {
-			
+
 		if (!selectedFilesList.isEmpty()) {
-		    for (File file : selectedFilesList.keySet()) {	  	
+		    for (File file : selectedFilesList.keySet()) {
 				String dirName =null;
 				switch (selectedFilesList.get(file)) {
-				
-		            case STREAM: 
-		            	dirName = AnalyticsConstants.ANALYTICS_STREAM_DIR;                
+
+		            case STREAM:
+		            	dirName = AnalyticsConstants.ANALYTICS_STREAM_DIR;
 		                artifactGenerator(file ,project,pomfile,fileList,dirName,groupId,"wso2-analytics-stream-plugin",MavenConstants.WSO2_ANALYTICS_STREAM_VERSION,
 		                		dirName,AnalyticsConstants.EXTENTION_STREAM, AnalyticsEntryTypes.STREAM );
 		                break;
-		                
+
 		            case PUBLISHER:
-		            	dirName = AnalyticsConstants.ANALYTICS_PUBLISHER_DIR;                
+		            	dirName = AnalyticsConstants.ANALYTICS_PUBLISHER_DIR;
 		                artifactGenerator(file ,project,pomfile,fileList,dirName,groupId,"wso2-analytics-publisher-plugin",MavenConstants.WSO2_ANALYTICS_PUBLISHER_VERSION,
 		                		dirName,AnalyticsConstants.EXTENTION_PUBLISHER, AnalyticsEntryTypes.PUBLISHER );
 		                break;
-		             
+
 		            case RECEIVER:
-		            	dirName = AnalyticsConstants.ANALYTICS_RECEIVER_DIR;                
+		            	dirName = AnalyticsConstants.ANALYTICS_RECEIVER_DIR;
 		                artifactGenerator(file ,project,pomfile,fileList,dirName,groupId,"wso2-analytics-receiver-plugin",MavenConstants.WSO2_ANALYTICS_RECEIVER_VERSION,
 		                		dirName,AnalyticsConstants.EXTENTION_RECEIVER, AnalyticsEntryTypes.RECEIVER );
 		                break;
-		            	
+
 		            case EXECUTIONPLAN:
-		            	dirName = AnalyticsConstants.ANALYTICS_EXECUTION_PLAN_DIR;                
+		            	dirName = AnalyticsConstants.ANALYTICS_EXECUTION_PLAN_DIR;
 		                artifactGenerator(file ,project,pomfile,fileList,dirName,groupId,"wso2-analytics-execution-plan-plugin",MavenConstants.WSO2_ANALYTICS_EXECUTIONPLAN_VERSION,
 		                		dirName,AnalyticsConstants.EXTENTION_EXECUTION_PLAN, AnalyticsEntryTypes.EXECUTIONPLAN);
 		                break;
 
-				}      	   	
+				}
 		    }
 	    }
     }
 
 	private static void artifactGenerator(File file , IProject project, File pomfile,Map<File,AnalyticsEntryTypes> fileList,
 			String dirName, String groupId,String artifactId,String version,String id, String extention, AnalyticsEntryTypes entryType )throws FactoryConfigurationError, Exception{
-		
+
 		String fileContents = null;
 		FileInputStream inputStream = new FileInputStream(file);
 		try {
@@ -251,7 +251,7 @@ public class AnalyticsProjectUtils {
 		} finally {
 		    inputStream.close();
 		}
-		//artifact name extract from file name.  			
+		//artifact name extract from file name.
 		String artifactName = extractArtifactFileName(file);
 		File baseDir = project.getFolder(PROJECT_PATH + dirName).getLocation().toFile();
     	File destFile = new File(baseDir, artifactName + "." + extention);
@@ -262,7 +262,7 @@ public class AnalyticsProjectUtils {
     	fileList.put(destFile, entryType);
     	createArtifactMetaDataEntry(artifactName,version,"event/"+id,baseDir, groupId + "." +id,project,"." + extention);
 	}
-	
+
 	public static void addPluginEntry(MavenProject mavenProject, String groupId, String artifactId, String version, String Id) {
 	    List<Plugin> plugins = mavenProject.getBuild().getPlugins();
 		for (Plugin plg : plugins) {
@@ -270,39 +270,39 @@ public class AnalyticsProjectUtils {
 				return;
 			}
 		}
-		
+
 		Plugin plugin = MavenUtils.createPluginEntry(mavenProject, groupId, artifactId, version, true);
-		
+
 		PluginExecution pluginExecution = new PluginExecution();
 		pluginExecution.addGoal("pom-gen");
 		pluginExecution.setPhase("process-resources");
 		pluginExecution.setId(Id);
-		
+
 		Xpp3Dom configurationNode = MavenUtils.createMainConfigurationNode();
 		Xpp3Dom artifactLocationNode = MavenUtils.createXpp3Node(configurationNode, "artifactLocation");
 		artifactLocationNode.setValue(".");
 		Xpp3Dom typeListNode = MavenUtils.createXpp3Node(configurationNode, "typeList");
 		typeListNode.setValue("${artifact.types}");
 		pluginExecution.setConfiguration(configurationNode);
-		
+
 		plugin.addExecution(pluginExecution);
 		Repository repo = new Repository();
 		repo.setUrl("http://maven.wso2.org/nexus/content/groups/wso2-public/");
 		repo.setId("wso2-nexus");
-		
+
 		RepositoryPolicy releasePolicy=new RepositoryPolicy();
 		releasePolicy.setEnabled(true);
 		releasePolicy.setUpdatePolicy("daily");
 		releasePolicy.setChecksumPolicy("ignore");
-		
+
 		repo.setReleases(releasePolicy);
-		
+
 		if (!mavenProject.getRepositories().contains(repo)) {
 	        mavenProject.getModel().addRepository(repo);
 	        mavenProject.getModel().addPluginRepository(repo);
         }
     }
-	
+
 	public static void createArtifactMetaDataEntry(String name,String version, String type,
 			File baseDir, String groupId,IProject project, String extension) throws FactoryConfigurationError,
 			Exception {
@@ -322,15 +322,4 @@ public class AnalyticsProjectUtils {
 		analyticsProjectArtifact.addAnalyticsArtifact(artifact);
 		analyticsProjectArtifact.toFile();
 	}
-	
-	public static void updatePom(IProject project) throws Exception {
-
-		File mavenProjectPomLocation = project.getFile("pom.xml").getLocation().toFile();
-		MavenProject mavenProject = MavenUtils.getMavenProject(mavenProjectPomLocation);
-
-		addPluginEntry(mavenProject, "org.wso2.maven","wso2-analytics-plugin", MavenConstants.WSO2_ANALYTICS_VERSION,"analytics");
-		
-		MavenUtils.saveMavenProject(mavenProject, mavenProjectPomLocation);
-	
-	}	
 }

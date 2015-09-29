@@ -78,14 +78,12 @@ public class AnalyticsProjectCreationWizard extends AbstractWSO2ProjectCreationW
 			}
 			String groupId = getMavenGroupId(pomfile);
 			if (analyticsProjectModel.getSelectedOption().equals(AnalyticsConstants.WIZARD_OPTION_NEW_ANALYTICS_PROJECT)) {				
-				AnalyticsProjectUtils.updatePom(analyticsProject);
 				analyticsProject.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
 				refreshDistProjects();
 			}else if(analyticsProjectModel.getSelectedOption().equals(AnalyticsConstants.WIZARD_OPTION_IMPORT_ANALYTICS_PROJECT)){
 				Map<File,AnalyticsEntryTypes> selectedArtifactList = new HashMap<File,AnalyticsEntryTypes>();
 				selectedArtifactList = AnalyticsProjectUtils.deploymentServerContentProcessing(analyticsProjectModel.getAnalyticsProjectLocation().getPath());
 				AnalyticsProjectUtils.createAnalyticsArtifacts(selectedArtifactList,analyticsProject,pomfile,artifactList,groupId);
-				AnalyticsProjectUtils.updatePom(analyticsProject);
 				analyticsProject.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
 				refreshDistProjects();
 				if (!artifactList.isEmpty()) {

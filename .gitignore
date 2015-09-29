@@ -3,4 +3,3 @@ target/
 bin/
 # see http://schacon.github.io/git/gitignore.html for config details
 
-/.project

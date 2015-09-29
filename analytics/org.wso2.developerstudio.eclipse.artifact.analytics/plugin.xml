@@ -72,7 +72,7 @@
 						<adapt type="org.eclipse.core.resources.IResource">
              				<test
                    				property="org.eclipse.core.resources.projectNature"
-                   				value="org.wso2.developerstudio.eclipse.artifact.cep.project.nature">
+                   				value="org.wso2.developerstudio.eclipse.artifact.analytics.project.nature">
              				</test>
          				</adapt>
 					</and>
@@ -93,7 +93,7 @@
 						<adapt type="org.eclipse.core.resources.IResource">
              				<test
                    				property="org.eclipse.core.resources.projectNature"
-                   				value="org.wso2.developerstudio.eclipse.artifact.cep.project.nature">
+                   				value="org.wso2.developerstudio.eclipse.artifact.analytics.project.nature">
              				</test>
          				</adapt>
 					</and>

@@ -61,6 +61,7 @@ import org.eclipse.gmf.runtime.diagram.ui.resources.editor.document.IDocument;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.impl.NodeImpl;
 import org.eclipse.jface.dialogs.ErrorDialog;
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.text.DocumentEvent;
@@ -237,24 +238,28 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
         EsbEditorInput input = (EsbEditorInput) getEditor(0).getEditorInput();
 		IFile file = input.getXmlResource();
 		IProject activeProject = file.getProject();
-		
-		//String connectorDirectory=activeProject.getLocation().toOSString()+File.separator+"cloudConnectors";
-		String connectorDirectory = activeProject.getWorkspace().getRoot().getLocation()
-				.toOSString()
-				+ File.separator + CloudConnectorDirectoryTraverser.connectorPathFromWorkspace;
-		File directory=new File(connectorDirectory);
-		if(directory.isDirectory()){
-			File[] children=directory.listFiles();
-	        for(int i=0;i<children.length;++i){
-	        	if(children[i].isDirectory()){
-	        		esbPaletteFactory.addCloudConnectorOperations(getEditor(0), children[i].getName());
-	        	}
-	        }
-		}
-
+		CloudConnectorDirectoryTraverser.getInstance().validate(activeProject);
+ 
+	 if(CloudConnectorDirectoryTraverser.getInstance().validate(activeProject)) {
+		String connectorDirectory=activeProject.getLocation().toOSString()+File.separator+"cloudConnectors";
+		try {			
+			File directory=new File(connectorDirectory);
+			if(directory.isDirectory()){
+				File[] children=directory.listFiles();
+			    for(int i=0;i<children.length;++i){
+			    	if(children[i].isDirectory()){
+			    		esbPaletteFactory.addCloudConnectorOperations(getEditor(0), children[i].getName());
+			    	}
+			    }
+			}
+		} catch (Exception e1) {
+		 MessageDialog.openError(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), "Developer studio Error",
+				 "Error while loading the Connectors"+e1.getMessage());
+		} 
+   }
         
         
-
+       
         
 		String pathName=activeProject.getLocation().toOSString()+File.separator+"resources";
 /*		File resources=new File(pathName);

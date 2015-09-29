@@ -99,64 +99,43 @@ public class CloudConnectorOperationExtFactory extends AbstractMediatorFactory{
 	
 	public List<QName> getTagQNameList() throws Exception {
 		ArrayList<QName> tagQNameList = new ArrayList<QName>();
-/*		IContainer cloudConnectorsRoot = EditorUtils.getActiveProject()
-				.getFolder("cloudConnectors");*/
-		//IContainer cloudConnectorsRoot = ((IFileEditorInput)EsbMultiPageEditor.currentEditor.getEditorInput()).getFile().getProject()
-		//		.getFolder("cloudConnectors");
-		/*String path = ResourcesPlugin.getWorkspace().getRoot().getLocation().toOSString()
-				+ File.separator + ".tmp";
-		IContainer tmp = ResourcesPlugin.getWorkspace().getRoot().getContainerForLocation(new Path(path));
+		try {
+			
+			IEditorInput iEditorInput = EsbMultiPageEditor.currentEditor.getEditorInput();
+			IFile file = null;
+			if(iEditorInput instanceof IFileEditorInput){
+				file = ((IFileEditorInput) EsbMultiPageEditor.currentEditor
+						.getEditorInput()).getFile();
+			}else if(iEditorInput instanceof EsbEditorInput){
+				file = ((EsbEditorInput) EsbMultiPageEditor.currentEditor
+						.getEditorInput()).getXmlResource();
+			}else {
+				throw new Exception("Unsupported IEditorInput type. Unable to retrieve file information for editor input");
+			}
+			
 
-		if (tmp != null && tmp.exists()) {
-			IContainer cloudConnectorsRoot = tmp.getFolder(new Path("Connectors"));
-			if(cloudConnectorsRoot != null && cloudConnectorsRoot.exists()){
-				IResource[] directories = cloudConnectorsRoot.members();
-				for (int i = 0; i < directories.length; ++i) {
-					CloudConnectorDirectoryTraverser directoryTraverser = CloudConnectorDirectoryTraverser
-							.getInstance(directories[i].getLocation().toOSString());
-					Map<String, String> map = directoryTraverser.getOperationsConnectorComponentNameMap();
-					Iterator<String> iterator = map.keySet().iterator();
-					while (iterator.hasNext()) {
-						String key = iterator.next();
-						tagQNameList.add(new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, map.get(key) + "."
-								+ key));
+			String connectorRootPath = file.getProject().getWorkspace().getRoot().getLocation()
+					.toString()
+					+ File.separator + CloudConnectorDirectoryTraverser.connectorPathFromWorkspace;
+			File directory = new File(connectorRootPath);
+
+			if (directory != null && directory.isDirectory()) {
+				File[] files=directory.listFiles();
+				for (int i = 0; i < files.length; ++i) {
+					if (files[i].isDirectory()) {
+						CloudConnectorDirectoryTraverser directoryTraverser = CloudConnectorDirectoryTraverser
+								.getInstance(connectorRootPath + File.separator + files[i].getName());
+						Map<String, String> map = directoryTraverser.getOperationsConnectorComponentNameMap();
+						Iterator<String> iterator = map.keySet().iterator();
+						while (iterator.hasNext()) {
+							String key = iterator.next();
+							tagQNameList.add(new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, map.get(key) + "." + key));
+						}
 					}
 				}
 			}
-		}*/
-		
-		IEditorInput iEditorInput = EsbMultiPageEditor.currentEditor.getEditorInput();
-		IFile file = null;
-		if(iEditorInput instanceof IFileEditorInput){
-			file = ((IFileEditorInput) EsbMultiPageEditor.currentEditor
-					.getEditorInput()).getFile();
-		}else if(iEditorInput instanceof EsbEditorInput){
-			file = ((EsbEditorInput) EsbMultiPageEditor.currentEditor
-					.getEditorInput()).getXmlResource();
-		}else {
-			throw new Exception("Unsupported IEditorInput type. Unable to retrieve file information for editor input");
-		}
-		
-
-		String connectorRootPath = file.getProject().getWorkspace().getRoot().getLocation()
-				.toString()
-				+ File.separator + CloudConnectorDirectoryTraverser.connectorPathFromWorkspace;
-		File directory = new File(connectorRootPath);
-
-		if (directory != null && directory.isDirectory()) {
-			File[] files=directory.listFiles();
-			for (int i = 0; i < files.length; ++i) {
-				if (files[i].isDirectory()) {
-					CloudConnectorDirectoryTraverser directoryTraverser = CloudConnectorDirectoryTraverser
-							.getInstance(connectorRootPath + File.separator + files[i].getName());
-					Map<String, String> map = directoryTraverser.getOperationsConnectorComponentNameMap();
-					Iterator<String> iterator = map.keySet().iterator();
-					while (iterator.hasNext()) {
-						String key = iterator.next();
-						tagQNameList.add(new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, map.get(key) + "." + key));
-					}
-				}
-			}
+		} catch (Exception e) {
+		 log.error("Error while loading Connectors", e);
 		}
 		
 		return tagQNameList;

@@ -30,6 +30,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.CloudConnectorOperationParamEdit
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.RuleOptionType;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EditorUtils;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.cloudconnector.CloudConnectorDirectoryTraverser;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
 import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom.CloudConnectorOperationExt;
@@ -43,6 +44,8 @@ public class CloudConnectorOperationDeserializer extends AbstractEsbNodeDeserial
 		Assert.isTrue(object instanceof CloudConnectorOperationExt,"Unsupported mediator passed in for deserialization");
 		CloudConnectorOperationExt operation = (CloudConnectorOperationExt) object;
 		cloudConnectorName=operation.getCloudConnectorName();
+		
+	//	EditorUtils.getActiveEditor().getEditorSite().getPage().closeEditor(getDiagramEditor(), false);
 		
 		final CloudConnectorOperation operationModel = (CloudConnectorOperation) DeserializerUtils.createNode(part, EsbElementTypes.CloudConnectorOperation_3722);
 		setElementToEdit(operationModel);

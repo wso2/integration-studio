@@ -33,6 +33,8 @@ import org.apache.synapse.config.xml.TemplateMediatorFactory;
 import org.apache.synapse.mediators.template.TemplateMediator;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.emf.ecore.xml.type.internal.QName;
+import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.Activator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EditorUtils;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.MediatorFactoryUtils;
@@ -77,15 +79,15 @@ public class CloudConnectorDirectoryTraverser {
 		return instance;
 	}
 	
-	private void deserializeConnectorXML(){
-		try{
+	private void deserializeConnectorXML() throws Exception{
+		//try{
 			File artifactsFile = new File(rootDirectory+File.separator+connectorFileName);
 			String artifactsContent = FileUtils.getContentAsString(artifactsFile);
 			connector = new Connector();
 			connector.deserialize(artifactsContent);
-		}catch(Exception e){
+		/*}catch(Exception e){
 			log.error("Error while deserializing connector xml", e);
-		}
+		}*/
 	}
 		
 	private TemplateMediator readTemplateConfiguration(String fileLocation) throws IOException, XMLStreamException{
@@ -105,6 +107,62 @@ public class CloudConnectorDirectoryTraverser {
 	public Collection<String> getCloudConnectorConfigurationParameters() throws Exception{
 		return readTemplateConfiguration(getConfigurationFileLocation(getOperationFileNamesMap())).getParameters();
 	}
+	
+	public boolean validate(IProject activeProject){
+		try{			
+			String connectorDirectory = activeProject.getWorkspace().getRoot().getLocation().toOSString() + File.separator
+					+ CloudConnectorDirectoryTraverser.connectorPathFromWorkspace;
+					File directory=new File(connectorDirectory);
+					List<String> errorList = new ArrayList<String>();
+					boolean foundConnectors =false;
+					if(directory.isDirectory() && directory.listFiles().length>0){						
+						File[] children=directory.listFiles();
+				        for(int i=0;i<children.length;++i){
+				        	if(children[i].isDirectory()){
+				        		foundConnectors = true;
+				        	     String connectorPath = connectorDirectory + File.separator + children[i].getName();				        		 
+				        		try {		
+				        			if(new File(connectorPath + File.separator + "icon"+ File.separator + "icon-small.gif").exists() && 
+				        					new File(connectorPath + File.separator + "icon"+ File.separator + "icon-large.gif").exists()){
+				        				CloudConnectorDirectoryTraverser.getInstance(connectorPath).getOperationsMap();
+				        			}else{				        				
+				        				log.error("Missing icons files of "+children[i].getName());
+										errorList.add("Missing icons files of "+children[i].getName());
+										FileUtils.deleteDirectories(connectorPath);
+				        			}																	
+								} catch (Exception e) {
+									 FileUtils.deleteDirectories(connectorPath);	
+									 log.error("Missing icons files of "+children[i].getName());
+									errorList.add("Missing icons files of "+children[i].getName());
+								}
+				        	}
+				        }
+					}else{
+						return false;
+					}
+
+			if(foundConnectors){
+			 	if(errorList.isEmpty()){
+			 		return true;
+			 	}else{
+			 		String message="";
+			 		for (String errorMessgae : errorList) {
+			 			message = message + errorMessgae + "\n";
+					}
+			 		MessageDialog.openWarning(PlatformUI.getWorkbench().getDisplay().getActiveShell(),"Developer Studio Error Dialog", message);
+			 		return false;
+			 	}
+				
+			}		
+			return false;
+			
+		}catch(Exception e){
+			return false;
+		}
+		
+	}
+	
+
 	
 	/**
 	 * Returning Operations map in the Cloud Connector zip. This map contains
@@ -167,24 +225,34 @@ public class CloudConnectorDirectoryTraverser {
 	
 	public Map<String, String> getOperationsConnectorComponentNameMap() throws Exception{
 		Map<String, String> operationNamesAndConnectorComponentNameMap=new HashMap<String,String>();
-		deserializeConnectorXML();
-		for (Dependency dependency : connector.getComponentDependencies()) {
-			String pathname = rootDirectory +File.separator+ dependency.getComponent();
-			File artifactFile = new File(pathname + File.separator+componentFileName);
-			String artifactContent = FileUtils.getContentAsString(artifactFile);
-			Component subComponent = new Component();
-			subComponent.deserialize(artifactContent);
-			for (SubComponents subComponents : subComponent.getSubComponents()) {
-				operationNamesAndConnectorComponentNameMap.put(subComponents.getName(),connector.getConnectorName());
-			}
+		//try {
+			deserializeConnectorXML();
+			for (Dependency dependency : connector.getComponentDependencies()) {
+				String pathname = rootDirectory +File.separator+ dependency.getComponent();
+				File artifactFile = new File(pathname + File.separator+componentFileName);
+				String artifactContent = FileUtils.getContentAsString(artifactFile);
+				Component subComponent = new Component();
+				subComponent.deserialize(artifactContent);
+				for (SubComponents subComponents : subComponent.getSubComponents()) {
+					operationNamesAndConnectorComponentNameMap.put(subComponents.getName(),connector.getConnectorName());
+				}
 
-		}
+			}
+	/*	} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}*/
 		return operationNamesAndConnectorComponentNameMap;
 	}
 	
 	
 	public String getCloudConnectorName(){
-		deserializeConnectorXML();
+		try {
+			deserializeConnectorXML();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return connector.getConnectorName();
 	}
 	

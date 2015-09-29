@@ -27,6 +27,7 @@ import org.apache.synapse.mediators.builtin.SendMediator;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.validation.internal.util.Log;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.RootEditPart;
 import org.eclipse.gef.ui.palette.PaletteViewer;
@@ -37,6 +38,7 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeNodeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramEditDomain;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IEditorReference;
@@ -542,7 +544,17 @@ public class EditorUtils {
 						}else{
 							//esbPaletteFactory.addCloudConnectorOperations(((EsbMultiPageEditor) editor).getGraphicalEditor());
 						}
-						addCloudConnectorOperations(((EsbMultiPageEditor) editor).getGraphicalEditor(), esbPaletteFactory);
+						try {
+							EsbEditorInput input = (EsbEditorInput) ((EsbMultiPageEditor) editor).getGraphicalEditor().getEditorInput();
+							IFile file = input.getXmlResource();
+							IProject activeProject = file.getProject();
+							if(CloudConnectorDirectoryTraverser.getInstance().validate(activeProject)){
+								addCloudConnectorOperations(((EsbMultiPageEditor) editor).getGraphicalEditor(), esbPaletteFactory);
+							}	
+						} catch (Exception e) {
+						 MessageDialog.openError(PlatformUI.getWorkbench().getDisplay().getActiveShell(),
+									 "Developer Studio Error Dialog", "Error while loading the connector due to "+e.getMessage());							 
+						}
 						
 						// Initialize palette viewer key handler. 
 						PaletteViewer paletteViewer = ((DiagramEditDomain) ((EsbMultiPageEditor) editor).getGraphicalEditor().getDiagramEditDomain())
@@ -557,7 +569,7 @@ public class EditorUtils {
 	}
 	
 	
-	private static void addCloudConnectorOperations(EsbDiagramEditor editorPart,EsbPaletteFactory esbPaletteFactory){
+	private static void addCloudConnectorOperations(EsbDiagramEditor editorPart,EsbPaletteFactory esbPaletteFactory) throws Exception{
 		EsbEditorInput input = (EsbEditorInput) editorPart.getEditorInput();
 		IFile file = input.getXmlResource();
 		IProject activeProject = file.getProject();

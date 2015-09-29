@@ -31,111 +31,110 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AnalyticsMetaDataFileDeleteChange extends TextFileChange {
-	IDeveloperStudioLog log= Logger.getLog(Activator.PLUGIN_ID);
-	
-	private IFile metaDataFile;
-	private IFile originalFile;
+    IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
-	public AnalyticsMetaDataFileDeleteChange(String name, IFile file, IFile originalFile) {
-		super(name, file);
-		metaDataFile = file;
-		this.originalFile = originalFile;
+    private IFile metaDataFile;
+    private IFile originalFile;
 
-		addTextEdits();
-	}
+    public AnalyticsMetaDataFileDeleteChange(String name, IFile file, IFile originalFile) {
+        super(name, file);
+        metaDataFile = file;
+        this.originalFile = originalFile;
 
-	private void addTextEdits() {
-		if (metaDataFile.getName().equalsIgnoreCase("artifact.xml")) {
-			setEdit(new MultiTextEdit());
-			try {
-				identifyReplaces();
-			} catch (IOException e) {
-				log.error("Error occured while generating the Refactoring", e);
-			}
-		}
-	}
+        addTextEdits();
+    }
 
-	private void identifyReplaces() throws IOException {
-		String artifactsStart = "<artifacts>";
-		String artifactsEnd = "</artifacts>";
-		String artifactStart = "<artifact";
-		String artifactEnd = "</artifact>";
-		String nameProperty = "name=\"";
-	//	String versionProperty = "version=\"";
+    private void addTextEdits() {
+        if (metaDataFile.getName().equalsIgnoreCase("artifact.xml")) {
+            setEdit(new MultiTextEdit());
+            try {
+                identifyReplaces();
+            } catch (IOException e) {
+                log.error("Error occured while generating the Refactoring", e);
+            }
+        }
+    }
 
-		List<String> artifactEntry = new ArrayList<String>();
-		boolean isArtifact = false;
-		boolean isArtifacts = false;
-		boolean isArtifactMatch = false;
-		boolean isArtifactLine=false;
+    private void identifyReplaces() throws IOException {
+        String artifactsStart = "<artifacts>";
+        String artifactsEnd = "</artifacts>";
+        String artifactStart = "<artifact";
+        String artifactEnd = "</artifact>";
+        String nameProperty = "name=\"";
 
-		int fullIndex = 0;
-		int startIndex = 0;
-		BufferedReader reader =
-		                        new BufferedReader(new FileReader(metaDataFile.getLocation()
-		                                                                      .toFile()));
-		String line = reader.readLine();
-		String fileName =
-		                  originalFile.getName().substring(0,
-		                                                   originalFile.getName().length() -
-		                                                       originalFile.getFileExtension()
-		                                                                   .length() - 1);
-		while (line != null) {
-			if (!isArtifacts && line.contains(artifactsStart)) {
-				isArtifacts = true;
-			}
+        List<String> artifactEntry = new ArrayList<String>();
+        boolean isArtifact = false;
+        boolean isArtifacts = false;
+        boolean isArtifactMatch = false;
+        boolean isArtifactLine = false;
 
-			if (isArtifacts && line.contains(artifactsEnd)) {
-				isArtifacts = false;
-			}
+        int fullIndex = 0;
+        int startIndex = 0;
+        BufferedReader reader =
+                new BufferedReader(new FileReader(metaDataFile.getLocation()
+                        .toFile()));
+        String line = reader.readLine();
+        String fileName =
+                originalFile.getName().substring(0,
+                        originalFile.getName().length() -
+                                originalFile.getFileExtension()
+                                        .length() - 1);
+        while (line != null) {
+            if (!isArtifacts && line.contains(artifactsStart)) {
+                isArtifacts = true;
+            }
 
-			if (isArtifacts) {
-				isArtifactLine=false;
-				if (!isArtifact && line.trim().startsWith(artifactStart)) {
-					int artifactTagIndex = line.indexOf(artifactStart);
-					startIndex = fullIndex + artifactTagIndex;
-					if (line.contains(nameProperty + fileName + "\"")) {
-						isArtifact = true;
-						artifactEntry.add(line.substring(artifactTagIndex));
-						isArtifactLine=true;
-					} else {
-						isArtifact = false;
-						artifactEntry.clear();
-						startIndex = 0;
-					}
-				}
+            if (isArtifacts && line.contains(artifactsEnd)) {
+                isArtifacts = false;
+            }
 
-				if (isArtifact) {
-					if (!isArtifactLine && !artifactEntry.contains(line)) {
-						artifactEntry.add(line);
-					}
-					if (line.trim().startsWith(artifactEnd)) {
-						isArtifact = false;
-						isArtifactMatch = true;
-					}
-				}
+            if (isArtifacts) {
+                isArtifactLine = false;
+                if (!isArtifact && line.trim().startsWith(artifactStart)) {
+                    int artifactTagIndex = line.indexOf(artifactStart);
+                    startIndex = fullIndex + artifactTagIndex;
+                    if (line.contains(nameProperty + fileName + "\"")) {
+                        isArtifact = true;
+                        artifactEntry.add(line.substring(artifactTagIndex));
+                        isArtifactLine = true;
+                    } else {
+                        isArtifact = false;
+                        artifactEntry.clear();
+                        startIndex = 0;
+                    }
+                }
 
-				if (isArtifactMatch) {
-					int length = 0;
-					for (String string : artifactEntry) {
-						length += charsOnTheLine(string);
-					}
-					addEdit(new DeleteEdit(startIndex, length));
-					break;
-				}
+                if (isArtifact) {
+                    if (!isArtifactLine && !artifactEntry.contains(line)) {
+                        artifactEntry.add(line);
+                    }
+                    if (line.trim().startsWith(artifactEnd)) {
+                        isArtifact = false;
+                        isArtifactMatch = true;
+                    }
+                }
 
-			}
+                if (isArtifactMatch) {
+                    int length = 0;
+                    for (String string : artifactEntry) {
+                        length += charsOnTheLine(string);
+                    }
+                    addEdit(new DeleteEdit(startIndex, length));
+                    break;
+                }
 
-			fullIndex += charsOnTheLine(line);
-			line = reader.readLine();
-		}
-		reader.close();
-	}
+            }
 
-	private int charsOnTheLine(String line) {
-		// Here we need to add one to represent the newline character
-		line+=System.getProperty( "line.separator" );
-		return line.length();
-	}
+            fullIndex += charsOnTheLine(line);
+            line = reader.readLine();
+        }
+        reader.close();
+    }
+
+    private int charsOnTheLine(String line) {
+        // Here we need to add one to represent the newline character
+        line += System.getProperty("line.separator");
+        return line.length();
+    }
 
 }

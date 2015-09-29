@@ -68,20 +68,12 @@ public class AnalyticsMetaDataFileChange extends TextFileChange {
         String case2String = "/" + originalName + ".xml";
         String originalFileEndsWithFileTag = case2String + "</file>";
         while (line != null) {
-//				There can be only 2 occurrences. Pls have a look below.
-//			    <artifact name="proxy1" version="1.0.0" type="synapse/proxy-service" serverRole="EnterpriseServiceBus">
-//		        <file>src/main/synapse-config/proxy-services/proxy1.xml</file>
-//		        </artifact>
             String[] stringArray = line.split(" ");
             if (line.contains(nameElementEqulasOriginalName) && stringArray[getarrayIndexWithString(nameElement, stringArray)].equals(nameElementEqulasOriginalName)) {
-                //CASE 1 => <artifact name="proxy1" version="1.0.0" type="synapse/proxy-service" serverRole="EnterpriseServiceBus">
-                //Swapping 1 element for "\""
                 int case1LineIndex = line.indexOf(case1String) + 1;
                 addEdit(new ReplaceEdit(fullIndex + case1LineIndex, originalName.length(), newName));
             } else {
                 if (line.endsWith(originalFileEndsWithFileTag)) {
-                    //CASE 2 => <file>src/main/synapse-config/proxy-services/proxy1.xml</file>
-                    //Swapping 1 element for File.separator
                     int case2LineIndex = line.indexOf(case2String) + 1;
                     addEdit(new ReplaceEdit(fullIndex + case2LineIndex, originalName.length(), newName));
                 }

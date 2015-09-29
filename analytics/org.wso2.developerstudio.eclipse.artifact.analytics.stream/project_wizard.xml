@@ -13,7 +13,7 @@
 				  error="Please give a name for the Stream">
 				  
 			<data modelProperty="project.name" type="string" fieldController="org.wso2.developerstudio.eclipse.artifact.analytics.stream.validators.StreamFieldController">Stream Name    </data>
-			<data modelProperty="save.file" type="workspacefolder" fieldController="org.wso2.developerstudio.eclipse.artifact.analytics.stream.validators.StreamFieldController" controlData="filterClass=org.wso2.developerstudio.eclipse.artifact.analytics.stream.validators.StreamProjectFilter">Save Stream in:</data>
+			<data modelProperty="selected.project" type="workspacefolder" fieldController="org.wso2.developerstudio.eclipse.artifact.analytics.stream.validators.StreamFieldController" controlData="filterClass=org.wso2.developerstudio.eclipse.artifact.analytics.stream.validators.StreamProjectFilter">Save Stream in:</data>
 			<data modelProperty="create.analytics.project" type="link" fieldController="org.wso2.developerstudio.eclipse.artifact.analytics.stream.validators.StreamFieldController" controlData="align=right">&lt;a&gt;Create new Project...&lt;/a&gt;</data>
 		
 		</settings>
@@ -24,7 +24,7 @@
 				  error="Browse and select a Eventstream configuration file">
 			
 			<data modelProperty="import.file" type="file" filter="*.json" fieldController="org.wso2.developerstudio.eclipse.artifact.analytics.stream.validators.StreamFieldController">Stream Configuration File</data>
-			<data modelProperty="save.file" type="workspacefolder" fieldController="org.wso2.developerstudio.eclipse.artifact.analytics.stream.validators.StreamFieldController" controlData="filterClass=org.wso2.developerstudio.eclipse.artifact.analytics.stream.validators.StreamProjectFilter" >Save Stream in: </data>
+			<data modelProperty="selected.project" type="workspacefolder" fieldController="org.wso2.developerstudio.eclipse.artifact.analytics.stream.validators.StreamFieldController" controlData="filterClass=org.wso2.developerstudio.eclipse.artifact.analytics.stream.validators.StreamProjectFilter" >Save Stream in: </data>
 			<data modelProperty="create.analytics.project" type="link" fieldController="org.wso2.developerstudio.eclipse.artifact.analytics.stream.validators.StreamFieldController" controlData="align=right" >&lt;a&gt;Create new Project...&lt;/a&gt;</data>
 			
 		</settings>

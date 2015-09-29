@@ -23,7 +23,7 @@
     <parent>
         <groupId>org.wso2.developerstudio</groupId>
         <artifactId>wso2-eclipse-developerstudio-analytics-feature</artifactId>
-        <version>2.1.0</version>
+        <version>1.0.0</version>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
@@ -32,7 +32,8 @@
     <packaging>pom</packaging>
     <name>Analytics Project Artifact</name>
     <url>http://wso2.org</url>
-    <description>This feature contains WSO2 Developer Studio Analytics artifact Feature</description>
+    <description>This feature contains WSO2 Developer Studio Analytics artifact Feature
+    </description>
     <build>
         <plugins>
             <plugin>
@@ -50,11 +51,21 @@
                             <id>${project.artifactId}</id>
                             <propertiesFile>../../feature.properties</propertiesFile>
                             <bundles>
-                                <bundleDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.artifact.analytics:${analytics.artifact.version}</bundleDef>
-				<bundleDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.artifact.analytics.execution_plan:${analytics.artifact.version}</bundleDef>
-				<bundleDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.artifact.analytics.publisher:${analytics.artifact.version}</bundleDef>
-				<bundleDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.artifact.analytics.receiver:${analytics.artifact.version}</bundleDef>
-				<bundleDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.artifact.analytics.stream:${analytics.artifact.version}</bundleDef>
+                                <bundleDef>
+                                    org.wso2.developerstudio:org.wso2.developerstudio.eclipse.artifact.analytics:${analytics.artifact.version}
+                                </bundleDef>
+                                <bundleDef>
+                                    org.wso2.developerstudio:org.wso2.developerstudio.eclipse.artifact.analytics.execution_plan:${analytics.artifact.version}
+                                </bundleDef>
+                                <bundleDef>
+                                    org.wso2.developerstudio:org.wso2.developerstudio.eclipse.artifact.analytics.publisher:${analytics.artifact.version}
+                                </bundleDef>
+                                <bundleDef>
+                                    org.wso2.developerstudio:org.wso2.developerstudio.eclipse.artifact.analytics.receiver:${analytics.artifact.version}
+                                </bundleDef>
+                                <bundleDef>
+                                    org.wso2.developerstudio:org.wso2.developerstudio.eclipse.artifact.analytics.stream:${analytics.artifact.version}
+                                </bundleDef>
                             </bundles>
                         </configuration>
                     </execution>

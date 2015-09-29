@@ -127,27 +127,6 @@ public class CommonArtifactDeleteParticipant extends DeleteParticipant{
 		
 		AnalyticsArtifactModel analyticsArtifact = RefactorUtils.getAnalyticsArtifactFromFile(originalFile,AnalyticsConstants.ANALYTICS_PROJECT_NATURE);
 		
-		if(analyticsArtifact != null){
-//			String type=cepArtifact.getType().substring("synapse/".length());
-//			String path=type;
-//			String prefix=type;
-//			if(type.equalsIgnoreCase("proxy-service")){
-//				path="proxy-services";
-//				prefix="proxy";
-//			}else if(type.equalsIgnoreCase("local-entry")){
-//				prefix="localentry";
-//				path="local-entries";
-//			}else if(type.equalsIgnoreCase("sequence")){
-//				path="sequences";
-//			}else if(type.equalsIgnoreCase("task")){
-//				path="tasks";
-//			}else if(type.equalsIgnoreCase("template")){
-//				path="templates";
-//			}else if(type.equalsIgnoreCase("endpoint")){
-//				path="endpoints";
-//			}
-		}
-		
 		return deleteChange;
     }
 

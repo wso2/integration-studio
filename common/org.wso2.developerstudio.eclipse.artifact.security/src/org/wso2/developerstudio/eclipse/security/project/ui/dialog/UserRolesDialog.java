@@ -299,7 +299,8 @@ public class UserRolesDialog extends Dialog {
         } catch (Exception e) {
             //If the server connection fails due to connectivity issues or invalid credentials, showing an error message
             MessageBox msg = new MessageBox(getShell(), SWT.ICON_ERROR);
-            msg.setMessage(SecurityFormMessageConstants.SERVER_CONNECTION_FAILURE_MESSAGE);
+            String exception = "\nError: " + e.getMessage();
+            msg.setMessage(SecurityFormMessageConstants.SERVER_CONNECTION_FAILURE_MESSAGE + exception);
             msg.open();
             return;
         }

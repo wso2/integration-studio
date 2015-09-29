@@ -37,6 +37,7 @@ import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
 
 import javax.xml.stream.FactoryConfigurationError;
 import java.io.File;
+import java.util.List;
 import java.util.regex.Pattern;
 
 public class RefactorUtils {

@@ -208,21 +208,21 @@ public class PublisherProjectCreationWizard extends AbstractWSO2ProjectCreationW
             File analyticsTemplateFile = new AnalyticsTemplateUtils().getResourceFile("templates" + File.separator
                     + AnalyticsConstants.TEMPLATE_PUBLISHER);
             String templateContent = FileUtils.getContentAsString(analyticsTemplateFile);
-            String content = templateContent.replaceAll(AnalyticsConstants.NAMETAG_PUBLISHER_TEMPLATE, publisherModel.getReceiverName());
+            String content = templateContent.replaceAll(AnalyticsConstants.NAMETAG_PUBLISHER_TEMPLATE, publisherModel.getProjectName());
             File destFile = new File(location.getLocation().toFile(),
-                    publisherModel.getReceiverName() + "." + AnalyticsConstants.EXTENTION_PUBLISHER);
+                    publisherModel.getProjectName() + "." + AnalyticsConstants.EXTENTION_PUBLISHER);
             FileUtils.createFile(destFile, content);
             fileList.add(destFile);
 
             AnalyticsArtifactModel artifact = new AnalyticsArtifactModel();
-            artifact.setName(publisherModel.getReceiverName());
+            artifact.setName(publisherModel.getProjectName());
             artifact.setVersion(version);
             artifact.setType(AnalyticsConstants.ARTIFACT_TYPE_PUBLISHER);
             artifact.setServerRole(AnalyticsConstants.ANALYTICS_SERVER_NAME);
             artifact.setGroupId(groupId);
             artifact.setFile(FileUtils.getRelativePath(project.getLocation()
                     .toFile(), new File(location.getLocation().toFile(),
-                    publisherModel.getReceiverName() + "." + AnalyticsConstants.EXTENTION_PUBLISHER)).replaceAll(Pattern.quote(File.separator), "/"));
+                    publisherModel.getProjectName() + "." + AnalyticsConstants.EXTENTION_PUBLISHER)).replaceAll(Pattern.quote(File.separator), "/"));
             analyticsProjectArtifact.addAnalyticsArtifact(artifact);
         }
         analyticsProjectArtifact.toFile();

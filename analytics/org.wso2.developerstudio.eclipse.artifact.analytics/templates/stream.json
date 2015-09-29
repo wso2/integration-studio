@@ -3,13 +3,25 @@
   "version": "1.0.0",
   "nickName": "",
   "description": "",
+  "metaData": [
+    {
+      "name": "",
+      "type": "STRING"
+    }
+  ],
+  "correlationData": [
+    {
+      "name": "",
+      "type": "INT"
+    }
+  ],
   "payloadData": [
     {
-      "name": "company",
+      "name": "",
       "type": "STRING"
     },
     {
-      "name": "words",
+      "name": "",
       "type": "LONG"
     }
   ]

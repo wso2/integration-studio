@@ -44,6 +44,7 @@ import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.swt.widgets.Text;
+import org.wso2.developerstudio.eclipse.gmf.esb.EndPointProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 import org.wso2.developerstudio.eclipse.gmf.esb.Template;
@@ -129,8 +130,10 @@ public class ConfigureTemplateParametersDialog extends Dialog {
 
 			newParameterButton.addListener(SWT.Selection, new Listener() {
 				public void handleEvent(Event event) {
-					TableItem item = bindParameter(EsbFactory.eINSTANCE
-							.createTemplateParameter());
+					TemplateParameter parameter = EsbFactory.eINSTANCE
+							.createTemplateParameter();
+					parameter.setName("parameter_value");
+					TableItem item = bindParameter(parameter);
 					parametersTable.select(parametersTable.indexOf(item));
 				}
 			});

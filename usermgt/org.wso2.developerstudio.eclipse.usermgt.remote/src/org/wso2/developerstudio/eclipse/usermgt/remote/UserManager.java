@@ -222,39 +222,37 @@ public class UserManager {
 		return new String[] {};
 	}
 
-	private List<String> getRolesFromSever(final String fileter) throws RemoteException, UserAdminUserAdminException,
-			AuthenticationExceptionException {
+	private List<String> getRolesFromSever(final String fileter) throws Exception {
 		final List<String> list = new ArrayList<String>();
 		try {
 			new ProgressMonitorDialog(PlatformUI.getWorkbench().getDisplay().getActiveShell()).run(true, true, new IRunnableWithProgress() {
 				public void run(IProgressMonitor monitor) throws InvocationTargetException,
 						InterruptedException{
-					    FlaggedName[] roles = null;
-					    monitor.beginTask("Getting Sever Roles", 100);
-					    monitor.worked(20);
-							try {
-								roles = getStub().getAllRolesNames(fileter, -1);
-							} catch (RemoteException | UserAdminUserAdminException | AuthenticationExceptionException e) {
-								 e.printStackTrace();
-								 new Throwable("Error while getting the severRole", e);
-							}
-						 
-					int i=5;
-					for (FlaggedName flaggedName : roles) {
-						 monitor.worked(50+i);						 
-						list.add(flaggedName.getItemName());
-						i++;
-					}
-					String roleName = list.get(list.size()-1);
-					if("true".equals(roleName)||"false".equals(roleName)){
-						list.remove(list.size()-1);
-					}
-					 monitor.done();
+                            FlaggedName[] roles = null;
+                            monitor.beginTask("Getting Sever Roles", 100);
+                            monitor.worked(20);
+                            try {
+                                roles = getStub().getAllRolesNames(fileter, -1);
+                            } catch (Exception e) {
+                                throw new InvocationTargetException(e, e.getMessage());
+                            }
+
+                            int i = 5;
+                            for (FlaggedName flaggedName : roles) {
+                                monitor.worked(50 + i);
+                                list.add(flaggedName.getItemName());
+                                i++;
+                            }
+                            String roleName = list.get(list.size() - 1);
+                            if ("true".equals(roleName) || "false".equals(roleName)) {
+                                list.remove(list.size() - 1);
+                            }
+                            monitor.done();
 				}
 			});
-		} catch (InvocationTargetException | InterruptedException  e) {
-			 e.printStackTrace();
-			 new Throwable("Error while getting the severRole", e);
+		} catch (Exception  e) {
+		     log.error("Error while getting role names from server", e);
+			 throw e;
 		}
 					
 		return list;

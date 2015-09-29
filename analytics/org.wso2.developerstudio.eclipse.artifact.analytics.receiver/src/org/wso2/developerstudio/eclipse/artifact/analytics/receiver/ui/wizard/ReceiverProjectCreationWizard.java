@@ -208,21 +208,21 @@ public class ReceiverProjectCreationWizard extends AbstractWSO2ProjectCreationWi
 			File analyticsTemplateFile = new AnalyticsTemplateUtils().getResourceFile("templates" + File.separator
 					+ AnalyticsConstants.TEMPLATE_RECEIVER);
 			String templateContent = FileUtils.getContentAsString(analyticsTemplateFile);
-			String content = templateContent.replaceAll(AnalyticsConstants.NAMETAG_RECEIVER_TEMPLATE, receiverModel.getReceiverName());
+			String content = templateContent.replaceAll(AnalyticsConstants.NAMETAG_RECEIVER_TEMPLATE, receiverModel.getProjectName());
 			File destFile = new File(location.getLocation().toFile(),
-					receiverModel.getReceiverName() + "."+AnalyticsConstants.EXTENTION_RECEIVER);
+					receiverModel.getProjectName() + "."+AnalyticsConstants.EXTENTION_RECEIVER);
 			FileUtils.createFile(destFile, content);
 			fileList.add(destFile);
 
 			AnalyticsArtifactModel artifact = new AnalyticsArtifactModel();
-			artifact.setName(receiverModel.getReceiverName());
+			artifact.setName(receiverModel.getProjectName());
 			artifact.setVersion(version);
 			artifact.setType(AnalyticsConstants.ARTIFACT_TYPE_RECEIVER);
 			artifact.setServerRole(AnalyticsConstants.ANALYTICS_SERVER_NAME);
 			artifact.setGroupId(groupId);
 			artifact.setFile(FileUtils.getRelativePath(project.getLocation()
 					.toFile(), new File(location.getLocation().toFile(),
-							receiverModel.getReceiverName() + "."+AnalyticsConstants.EXTENTION_RECEIVER)).replaceAll(Pattern.quote(File.separator), "/"));
+							receiverModel.getProjectName() + "."+AnalyticsConstants.EXTENTION_RECEIVER)).replaceAll(Pattern.quote(File.separator), "/"));
 			analyticsProjectArtifact.addAnalyticsArtifact(artifact);
 		}
 		analyticsProjectArtifact.toFile();

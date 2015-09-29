@@ -208,21 +208,21 @@ public class StreamProjectCreationWizard extends AbstractWSO2ProjectCreationWiza
 			File analyticsTemplateFile = new AnalyticsTemplateUtils().getResourceFile("templates" + File.separator
 					+ AnalyticsConstants.TEMPLATE_STREAM);
 			String templateContent = FileUtils.getContentAsString(analyticsTemplateFile);
-			String content = templateContent.replaceAll(AnalyticsConstants.NAMETAG_STREAM_TEMPLATE, streamModel.getReceiverName());
+			String content = templateContent.replaceAll(AnalyticsConstants.NAMETAG_STREAM_TEMPLATE, streamModel.getProjectName());
 			File destFile = new File(location.getLocation().toFile(),
-					streamModel.getReceiverName() + "."+AnalyticsConstants.EXTENTION_STREAM);
+					streamModel.getProjectName() + "."+AnalyticsConstants.EXTENTION_STREAM);
 			FileUtils.createFile(destFile, content);
 			fileList.add(destFile);
 
 			AnalyticsArtifactModel artifact = new AnalyticsArtifactModel();
-			artifact.setName(streamModel.getReceiverName());
+			artifact.setName(streamModel.getProjectName());
 			artifact.setVersion(version);
 			artifact.setType(AnalyticsConstants.ARTIFACT_TYPE_STREAM);
 			artifact.setServerRole(AnalyticsConstants.ANALYTICS_SERVER_NAME);
 			artifact.setGroupId(groupId);
 			artifact.setFile(FileUtils.getRelativePath(project.getLocation()
 					.toFile(), new File(location.getLocation().toFile(),
-							streamModel.getReceiverName() + "."+AnalyticsConstants.EXTENTION_STREAM)).replaceAll(Pattern.quote(File.separator), "/"));
+							streamModel.getProjectName() + "."+AnalyticsConstants.EXTENTION_STREAM)).replaceAll(Pattern.quote(File.separator), "/"));
 			analyticsProjectArtifact.addAnalyticsArtifact(artifact);
 		}
 		analyticsProjectArtifact.toFile();

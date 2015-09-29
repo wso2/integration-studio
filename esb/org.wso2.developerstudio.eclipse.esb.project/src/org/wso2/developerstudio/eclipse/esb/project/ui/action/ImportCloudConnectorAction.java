@@ -30,7 +30,6 @@ public class ImportCloudConnectorAction implements IActionDelegate{
     public void run(IAction action) {
 		if (selection != null) {
 			CloudConnectorImportWizard wizard = new CloudConnectorImportWizard();
-			wizard.init(selection);
 			WizardDialog exportWizardDialog = new WizardDialog(PlatformUI.getWorkbench()
 					.getActiveWorkbenchWindow().getShell(), wizard);
 			exportWizardDialog.open();

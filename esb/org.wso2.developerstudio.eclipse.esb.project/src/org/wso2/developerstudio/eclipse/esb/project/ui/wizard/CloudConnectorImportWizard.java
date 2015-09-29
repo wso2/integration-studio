@@ -29,16 +29,18 @@ import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.swt.widgets.TableItem;
+import org.eclipse.ui.IWorkbenchWindow;
+import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.eclipse.esb.project.Activator;
 import org.wso2.developerstudio.eclipse.esb.project.connector.store.Connector;
 import org.wso2.developerstudio.eclipse.esb.project.control.graphicalproject.GMFPluginDetails;
 import org.wso2.developerstudio.eclipse.esb.project.control.graphicalproject.IUpdateGMFPlugin;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
+import org.wso2.developerstudio.eclipse.platform.ui.wizard.AbstractWSO2ProjectCreationWizard;
 
-public class CloudConnectorImportWizard extends Wizard {
+public class CloudConnectorImportWizard extends AbstractWSO2ProjectCreationWizard {
 
 	private static final int BUFFER_SIZE = 4096;
 	private ImportCloudConnectorWizardPage storeWizardPage;
@@ -49,16 +51,17 @@ public class CloudConnectorImportWizard extends Wizard {
 
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
-	/**
-	 * Initializing wizard
-	 * 
-	 * @param selection
-	 */
-	public void init(IStructuredSelection selection) {
-		selectionPage = new ImportRemoveSelectionWizardPage(selection);
-		storeWizardPage = new ImportCloudConnectorWizardPage(selection);
-		removeWizardPage = new RemoveCloudConnectorWizardPage(selection);
-		setWindowTitle("Add or Remove Connectors");
+	public CloudConnectorImportWizard() {
+		IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
+		if (window != null) {
+			IStructuredSelection selection = (IStructuredSelection) window.getSelectionService().getSelection();
+			if (selection != null) {
+				selectionPage = new ImportRemoveSelectionWizardPage(selection);
+				storeWizardPage = new ImportCloudConnectorWizardPage(selection);
+				removeWizardPage = new RemoveCloudConnectorWizardPage(selection);
+				setWindowTitle("Add or Remove Connectors");
+			}
+		}
 	}
 
 	/**
@@ -68,7 +71,6 @@ public class CloudConnectorImportWizard extends Wizard {
 		addPage(selectionPage);
 		addPage(storeWizardPage);
 		addPage(removeWizardPage);
-		super.addPages();
 	}
 
 	/**
@@ -236,5 +238,10 @@ public class CloudConnectorImportWizard extends Wizard {
 
 	public void setRemoveWizardPage(RemoveCloudConnectorWizardPage removeWizardPage) {
 		this.removeWizardPage = removeWizardPage;
+	}
+
+	@Override
+	public IResource getCreatedResource() {
+		return null;
 	}
 }

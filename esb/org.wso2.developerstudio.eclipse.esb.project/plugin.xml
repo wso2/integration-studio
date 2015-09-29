@@ -29,6 +29,16 @@
 		</wizard>
    </extension>
    
+	<extension point="org.eclipse.ui.newWizards">
+         <wizard name="Add Connector to workspace"
+			category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.eclipse.extensions/org.wso2.developerstudio.eclipse.extensions.project.types"
+			class="org.wso2.developerstudio.eclipse.esb.project.ui.wizard.CloudConnectorImportWizard"
+			id="org.wso2.developerstudio.eclipse.artifact.addconnectortoworkspace"
+			icon="icons/new-mediator-16x16.png">
+			<description>Add Connector to workspace</description>
+		</wizard>
+   </extension>
+   
     <!--<extension point="org.eclipse.ui.navigator.navigatorContent">	
 	   <navigatorContent activeByDefault="true" priority="high" id="org.eclipse.ui.navigator.resourceContent" name="test">
 				<commonWizard 

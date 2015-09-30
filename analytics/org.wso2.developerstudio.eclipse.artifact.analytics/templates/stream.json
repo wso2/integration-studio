@@ -1,0 +1,28 @@
+{
+  "name": "<stream.name>",
+  "version": "1.0.0",
+  "nickName": "",
+  "description": "",
+  "metaData": [
+    {
+      "name": "",
+      "type": "STRING"
+    }
+  ],
+  "correlationData": [
+    {
+      "name": "",
+      "type": "INT"
+    }
+  ],
+  "payloadData": [
+    {
+      "name": "",
+      "type": "STRING"
+    },
+    {
+      "name": "",
+      "type": "LONG"
+    }
+  ]
+}

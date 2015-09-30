@@ -115,7 +115,7 @@
 						<featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.gadget.artifact.feature:${common.tools.version}</featureArtifactDef>
 						<featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.gs.jaggery.feature:${jaggery.tools.version}</featureArtifactDef>
 						<featureArtifactDef>org.wso2.developerstudio:org.smooks.edi.editor-feature:${smooks.edi.editor.version}</featureArtifactDef>
-					<!--	<featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.cep.artifact.feature:${cep.feature.version}</featureArtifactDef>-->
+						<featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.analytics.artifact.feature:${analytics.feature.version}</featureArtifactDef>
 						<featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.jaggery.artifact.feature:${jaggery.feature.version}</featureArtifactDef>				
 						<featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.brs.artifact.feature:${brs.feature.version}</featureArtifactDef>
 						<featureArtifactDef>org.wso2.developerstudio:org.wso2.soapui.feature:${soapui.feature.version}</featureArtifactDef>
@@ -372,7 +372,7 @@
 							<featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.framework.samples.feature:${core.framework.feature.version}</featureArtifactDef>
 							<featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.server.framework.feature:${server.framework.feature.version}</featureArtifactDef>
 							<featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.usermgt.core.feature:${usermgt.tools.feature.version}</featureArtifactDef>
-						<!--	<featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.cep.artifact.feature:${cep.feature.version}</featureArtifactDef>-->
+							<featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.analytics.artifact.feature:${analytics.feature.version}</featureArtifactDef>
 							<featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.jaggery.artifact.feature:${jaggery.feature.version}</featureArtifactDef>				
 							
 

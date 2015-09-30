@@ -1,0 +1,7 @@
+/* Enter a unique ExecutionPlan */
+@Plan:name('<execution-plan.name>')
+
+/* Enter a unique description for ExecutionPlan */
+-- @Plan:description('ExecutionPlan')
+
+/* define streams/tables and write queries here ... */

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension point="org.eclipse.ui.newWizards">
+         <wizard name="Stream" 
+         	category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.eclipse.artifact.analytics.category"
+			class="org.wso2.developerstudio.eclipse.artifact.analytics.stream.ui.wizard.StreamProjectCreationWizard"
+			wizardManifest="project_wizard.xml"
+			id="org.wso2.developerstudio.eclipse.artifact.newstreamartifact"
+			icon="icons/stream-16x16.png">
+			<description>Stream</description>
+		</wizard>
+         <category
+               id="org.wso2.developerstudio.eclipse.artifact.analytics.stream.category"
+               name="Stream"
+               parentCategory="org.wso2.developerstudio.eclipse.capp.project">
+         </category>
+   </extension>
+   
+	<extension point="org.eclipse.ui.navigator.navigatorContent">    
+            <commonWizard type="new"
+                menuGroupId="2org.wso2.developerstudio.eclipse.artifact.analytics"
+                wizardId="org.wso2.developerstudio.eclipse.artifact.newstreamartifact">
+                <enablement>
+                    <or>
+                        <adapt type="org.eclipse.core.resources.IProject">
+                            <test property="org.eclipse.core.resources.projectNature"
+                                value="org.wso2.developerstudio.eclipse.artifact.analytics.project.nature" />
+                                </adapt>
+                       <adapt type="org.eclipse.jdt.core.IPackageFragment">
+							<test property="org.wso2.developerstudio.projectNature"
+								value="org.wso2.developerstudio.eclipse.artifact.analytics.project.nature" />
+						</adapt>
+						<adapt type="org.eclipse.core.resources.IFolder">  
+						   <test
+                       forcePluginActivation="true"
+                       property="org.eclipse.core.resources.name"
+                       value="stream">
+                     </test>                        
+						</adapt>
+                    </or>
+                </enablement>
+            </commonWizard>
+    </extension>
+</plugin>

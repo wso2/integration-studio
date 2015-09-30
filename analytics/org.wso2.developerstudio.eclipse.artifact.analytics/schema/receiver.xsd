@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://wso2.org/carbon/eventreceiver"
+	xmlns:tns="http://wso2.org/carbon/eventreceiver"
+	elementFormDefault="qualified">
+
+	<element name="eventReceiver" type="tns:eventReceiver"></element>
+
+	<complexType name="eventReceiver">
+		<sequence>
+			<element name="from" type="tns:from" maxOccurs="unbounded"
+				minOccurs="1">
+			</element>
+			<element name="mapping" type="tns:mapping"
+				maxOccurs="unbounded" minOccurs="1">
+			</element>
+			<element name="to" type="tns:to" maxOccurs="unbounded"
+				minOccurs="1">
+			</element>
+		</sequence>
+		<attribute name="name" use="required">
+			<simpleType>
+				<restriction base="string"></restriction>
+			</simpleType>
+		</attribute>
+		<attribute name="statistics" type="tns:switch" use="required"></attribute>
+		<attribute name="trace" type="tns:switch" use="required"></attribute>
+    </complexType>
+
+	<complexType name="from">
+		<sequence>
+			<element name="property" type="tns:property"></element>
+		</sequence>
+		<attribute name="eventAdapterType"
+			type="tns:eventAdapterType">
+			<annotation>
+				<documentation></documentation>
+			</annotation>
+		</attribute>
+	</complexType>
+
+	<complexType name="mapping">
+		<sequence>
+			<element name="property" type="tns:mapProperty" maxOccurs="unbounded" minOccurs="0"></element>
+		</sequence>
+		<attribute name="customMapping" type="tns:switch"></attribute>
+		<attribute name="type" type="tns:type"></attribute>
+	</complexType>
+
+	<complexType name="to">
+		<attribute name="streamName" type="string"></attribute>
+		<attribute name="version">
+			<simpleType>
+				<restriction base="string">
+					<pattern value="\d*\.\d*\.\d*"></pattern>
+				</restriction>
+			</simpleType>
+		</attribute>
+	</complexType>
+
+	<complexType name="property">
+		<simpleContent>
+			<extension base="string">
+				<attribute name="name" type="string"></attribute>
+			</extension>
+		</simpleContent>
+	</complexType>
+
+	<simpleType name="eventAdapterType">
+		<restriction base="string">
+			<enumeration value="http"></enumeration>
+			<enumeration value="jms"></enumeration>
+			<enumeration value="kafka"></enumeration>
+			<enumeration value="mqtt"></enumeration>
+			<enumeration value="soap"></enumeration>
+			<enumeration value="websocket"></enumeration>
+			<enumeration value="websocket.local"></enumeration>
+			<enumeration value="wso2event"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="switch">
+		<restriction base="string">
+			<enumeration value="disable"></enumeration>
+			<enumeration value="enable"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="type">
+		<restriction base="string">
+			<enumeration value="json"></enumeration>
+			<enumeration value="text"></enumeration>
+			<enumeration value="xml"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<complexType name="mapProperty">
+		<sequence>
+			<element name="from" type="tns:mapFrom"></element>
+			<element name="to" type="tns:mapTo"></element>
+		</sequence>
+	</complexType>
+
+
+	<complexType name="mapTo">
+		<attribute name="default" type="string"></attribute>
+		<attribute name="name" type="string"></attribute>
+		<attribute name="type" type="tns:version"></attribute>
+	</complexType>
+
+	<complexType name="mapFrom">
+		<attribute name="jsonPath" type="string"></attribute>
+		<attribute name="xpath" type="string"></attribute>
+	</complexType>
+
+
+	<simpleType name="version">
+		<restriction base="string">
+			<enumeration value="string"></enumeration>
+			<enumeration value="float"></enumeration>
+			<enumeration value="long"></enumeration>
+			<enumeration value="int"></enumeration>
+			<enumeration value="double"></enumeration>
+		</restriction>
+	</simpleType>
+</schema>

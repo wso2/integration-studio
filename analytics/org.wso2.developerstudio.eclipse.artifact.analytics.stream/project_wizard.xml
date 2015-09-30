@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wizard>
+	<projectOptions title="Stream Artifact Creation Options" 
+					description="Select how you would like to create your new Stream artifact" 
+					error="Please select a method to create the Stream  artifact">
+		<option id="new.stream" default="true">Create New Stream</option>
+		<option id="import.stream">Import Stream </option>
+	</projectOptions>
+	<projectOptionSettings>
+		<settings optionId="new.stream" 
+				  title="Stream Artifact" 
+				  description="Create a new Stream Artifact" 
+				  error="Please give a name for the Stream">
+				  
+			<data modelProperty="project.name" type="string" fieldController="org.wso2.developerstudio.eclipse.artifact.analytics.stream.validators.StreamFieldController">Stream Name    </data>
+			<data modelProperty="selected.project" type="workspacefolder" fieldController="org.wso2.developerstudio.eclipse.artifact.analytics.stream.validators.StreamFieldController" controlData="filterClass=org.wso2.developerstudio.eclipse.artifact.analytics.stream.validators.StreamProjectFilter">Save Stream in:</data>
+			<data modelProperty="create.analytics.project" type="link" fieldController="org.wso2.developerstudio.eclipse.artifact.analytics.stream.validators.StreamFieldController" controlData="align=right">&lt;a&gt;Create new Project...&lt;/a&gt;</data>
+		
+		</settings>
+		
+		<settings optionId="import.stream" 
+				  title="Stream Artifact" 
+				  description="Create a Stream Artifact using a configuration file with Stream defined" 
+				  error="Browse and select a Eventstream configuration file">
+			
+			<data modelProperty="import.file" type="file" filter="*.json" fieldController="org.wso2.developerstudio.eclipse.artifact.analytics.stream.validators.StreamFieldController">Stream Configuration File</data>
+			<data modelProperty="selected.project" type="workspacefolder" fieldController="org.wso2.developerstudio.eclipse.artifact.analytics.stream.validators.StreamFieldController" controlData="filterClass=org.wso2.developerstudio.eclipse.artifact.analytics.stream.validators.StreamProjectFilter" >Save Stream in: </data>
+			<data modelProperty="create.analytics.project" type="link" fieldController="org.wso2.developerstudio.eclipse.artifact.analytics.stream.validators.StreamFieldController" controlData="align=right" >&lt;a&gt;Create new Project...&lt;/a&gt;</data>
+			
+		</settings>
+	</projectOptionSettings>
+</wizard>

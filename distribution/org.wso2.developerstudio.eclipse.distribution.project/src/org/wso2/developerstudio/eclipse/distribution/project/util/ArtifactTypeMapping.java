@@ -30,7 +30,10 @@ public final class ArtifactTypeMapping {
 		type.put("webapp/jaxws","war");
 		type.put("lib/library/bundle","jar");
 		type.put("service/dataservice","dbs");
-		type.put("cep/bucket","xml");
+		type.put("event/stream","json");
+		type.put("event/publisher","xml");
+		type.put("event/receiver","xml");
+		type.put("event/execution-plan","siddhiql");	
 		type.put("synapse/local-entry","xml");
 		type.put("synapse/proxy-service","xml");
 		type.put("carbon/application","car");

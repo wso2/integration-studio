@@ -68,13 +68,14 @@ public class ProjectList extends AbstractListDataProvider {
 					   project.hasNature(Constants.REGISTRY_HANDLER_PROJECT_NATURE) ||
 					   project.hasNature(Constants.GENERAL_PROJECT_NATURE) ||
 					   project.hasNature(Constants.CARBON_UI_PROJECT_NATURE)||
-					   project.hasNature(Constants.CEP_PROJECT_NATURE)||
+					   project.hasNature(Constants.ANALYTICS_PROJECT_NATURE)||
 					   project.hasNature(Constants.BRS_PROJECT_NATURE)||
 					   project.hasNature(Constants.JAGGERY_NATURE)||
 					   project.hasNature(Constants.SERVICE_META_PROJECT_NATURE)||
 					   project.hasNature(Constants.CONNECTOR_PROJECT_NATURE)){
 						try {
-							if (project.hasNature(Constants.ESB_PROJECT_NATURE) || project.hasNature(Constants.GENERAL_PROJECT_NATURE)||project.hasNature(Constants.DS_PROJECT_NATURE)||project.hasNature(Constants.CONNECTOR_PROJECT_NATURE)) {
+							if (project.hasNature(Constants.ESB_PROJECT_NATURE) || project.hasNature(Constants.GENERAL_PROJECT_NATURE)||project.hasNature(Constants.DS_PROJECT_NATURE)||project.hasNature(Constants.CONNECTOR_PROJECT_NATURE)||project.hasNature(Constants.ANALYTICS_PROJECT_NATURE)) { 
+
 								IFile artifactXMLFile = project.getFile(Constants.ARTIFACT_XML);
 								
 								MavenProject mavenProject= DistProjectUtils.getMavenProject(project);

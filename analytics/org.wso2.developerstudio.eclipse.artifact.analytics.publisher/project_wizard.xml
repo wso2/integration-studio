@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wizard>
+	<projectOptions title="Publisher Artifact Creation Options" 
+					description="Select how you would like to create your new Publisher artifact" 
+					error="Please select a method to create the Publisher  artifact">
+		<option id="new.publisher" default="true">Create New Publisher</option>
+		<option id="import.publisher">Import Publisher </option>
+	</projectOptions>
+	<projectOptionSettings>
+		<settings optionId="new.publisher" 
+				  title="Publisher Artifact" 
+				  description="Create a new Publisher Artifact" 
+				  error="Please give a name for the Publisher">
+				  
+			<data modelProperty="project.name" type="string" fieldController="org.wso2.developerstudio.eclipse.artifact.analytics.publisher.validators.PublisherFieldController">Publisher Name    </data>
+			<data modelProperty="selected.project" type="workspacefolder" fieldController="org.wso2.developerstudio.eclipse.artifact.analytics.publisher.validators.PublisherFieldController" controlData="filterClass=org.wso2.developerstudio.eclipse.artifact.analytics.publisher.validators.PublisherProjectFilter">Save Publisher in:</data>
+			<data modelProperty="create.analytics.project" type="link" fieldController="org.wso2.developerstudio.eclipse.artifact.analytics.publisher.validators.PublisherFieldController" controlData="align=right">&lt;a&gt;Create new Project...&lt;/a&gt;</data>
+		
+		</settings>
+		
+		<settings optionId="import.publisher" 
+				  title="Publisher Artifact" 
+				  description="Create a Publisher Artifact using a configuration file with Publisher defined" 
+				  error="Browse and select a Eventpublisher configuration file">
+			
+			<data modelProperty="import.file" type="file" filter="*.xml" fieldController="org.wso2.developerstudio.eclipse.artifact.analytics.publisher.validators.PublisherFieldController">Publisher Configuration File</data>
+			<data modelProperty="selected.project" type="workspacefolder" fieldController="org.wso2.developerstudio.eclipse.artifact.analytics.publisher.validators.PublisherFieldController" controlData="filterClass=org.wso2.developerstudio.eclipse.artifact.analytics.publisher.validators.PublisherProjectFilter" >Save Publisher in: </data>
+			<data modelProperty="create.analytics.project" type="link" fieldController="org.wso2.developerstudio.eclipse.artifact.analytics.publisher.validators.PublisherFieldController" controlData="align=right" >&lt;a&gt;Create new Project...&lt;/a&gt;</data>
+			
+		</settings>
+	</projectOptionSettings>
+</wizard>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wizard>
+	<projectOptions title="Receiver Artifact Creation Options" 
+					description="Select how you would like to create your new Reciever artifact" 
+					error="Please select a method to create the Reciever  artifact">
+		<option id="new.receiver" default="true">Create New Receiver</option>
+		<option id="import.receiver">Import Receiver </option>
+	</projectOptions>
+	<projectOptionSettings>
+		<settings optionId="new.receiver" 
+				  title="Receiver Artifact" 
+				  description="Create a new Receiver Artifact" 
+				  error="Please give a name for the Receiver">
+				  
+			<data modelProperty="project.name" type="string" fieldController="org.wso2.developerstudio.eclipse.artifact.analytics.receiver.validators.ReceiverFieldController">Receiver Name    </data>
+			<data modelProperty="selected.project" type="workspacefolder" fieldController="org.wso2.developerstudio.eclipse.artifact.analytics.receiver.validators.ReceiverFieldController" controlData="filterClass=org.wso2.developerstudio.eclipse.artifact.analytics.receiver.validators.ReceiverProjectFilter">Save Receiver in:</data>
+			<data modelProperty="create.analytics.project" type="link" fieldController="org.wso2.developerstudio.eclipse.artifact.analytics.receiver.validators.ReceiverFieldController" controlData="align=right">&lt;a&gt;Create new Project...&lt;/a&gt;</data>
+		
+		</settings>
+		
+		<settings optionId="import.receiver" 
+				  title="Receiver Artifact" 
+				  description="Create a Receiver Artifact using a configuration file with Receiver defined" 
+				  error="Browse and select a Eventpublisher configuration file">
+			
+			<data modelProperty="import.file" type="file" filter="*.xml" fieldController="org.wso2.developerstudio.eclipse.artifact.analytics.receiver.validators.ReceiverFieldController">Receiver Configuration File</data>
+			<data modelProperty="selected.project" type="workspacefolder" fieldController="org.wso2.developerstudio.eclipse.artifact.analytics.receiver.validators.ReceiverFieldController" controlData="filterClass=org.wso2.developerstudio.eclipse.artifact.analytics.receiver.validators.ReceiverProjectFilter" >Save Receiver in: </data>
+			<data modelProperty="create.analytics.project" type="link" fieldController="org.wso2.developerstudio.eclipse.artifact.analytics.receiver.validators.ReceiverFieldController" controlData="align=right" >&lt;a&gt;Create new Project...&lt;/a&gt;</data>
+			
+		</settings>
+	</projectOptionSettings>
+</wizard>

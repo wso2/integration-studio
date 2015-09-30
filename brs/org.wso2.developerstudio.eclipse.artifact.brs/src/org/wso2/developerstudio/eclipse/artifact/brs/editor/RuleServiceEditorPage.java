@@ -101,6 +101,12 @@ public class RuleServiceEditorPage extends FormPage {
 	private int operationTableIndex;
 	private Combo comboScope;
 
+	private final static String REQUEST_SCOPE = "Request";
+	private final static String TRANSPORT_SESSION_SCOPE = "Transport Session";
+	private final static String SOAP_SESSION_SCOPE = "Soap Session";
+	private final static String APPLICATION_SCOPE = "Application";
+	private final static String SPACE_CHARACTOR = " ";
+	private final static String EMPTY_STRING = "";
 
 	public RuleServiceEditorPage(FormEditor editor, String id, String title) {
 		super(editor, id, title);
@@ -190,7 +196,10 @@ public class RuleServiceEditorPage extends FormPage {
 		managedform.getToolkit().createLabel(managedform.getForm().getBody(),
 				"Scope", SWT.NONE);
 		comboScope = new Combo(managedform.getForm().getBody(), SWT.READ_ONLY);
-		comboScope.setItems(new String[] { "Request", "Transport Session", "Soap Session","Application"});
+		comboScope
+				.setItems(new String[] { REQUEST_SCOPE,
+						TRANSPORT_SESSION_SCOPE, SOAP_SESSION_SCOPE,
+						APPLICATION_SCOPE });
 
 		GridData gd_txtScope = new GridData(SWT.LEFT, SWT.CENTER, true, false,
 				3, 1);
@@ -204,7 +213,8 @@ public class RuleServiceEditorPage extends FormPage {
 			@Override
 			public void widgetSelected(SelectionEvent event) {
 				setPageDirty(true);
-				setScope(comboScope.getText().trim());
+				setScope(comboScope.getText().toLowerCase()
+						.replaceAll(SPACE_CHARACTOR, EMPTY_STRING));
 				updateDirtyState();
 			}
 
@@ -488,10 +498,15 @@ public class RuleServiceEditorPage extends FormPage {
 
 	public void refreshForm() throws XMLStreamException,  IOException, RuleConfigurationException {
 		initContent();
-
-		txtServiceName.setText(ruleservice.getName());
-		txtTargetNameSpace.setText(ruleservice.getTargetNamespace());
-		comboScope.setText(ruleservice.getScope());
+		if (ruleservice.getName() != null) {
+			txtServiceName.setText(ruleservice.getName());
+		}
+		if (ruleservice.getTargetNamespace() != null) {
+			txtTargetNameSpace.setText(ruleservice.getTargetNamespace());
+		}
+		if (ruleservice.getScope() != null) {
+			comboScope.setText(ruleservice.getScope());
+		}
 		viewer.setInput(ruleservice.getRuleSet().getRules().toArray());
 		operationTableViewer.setInput(ruleservice.getOperations().toArray());
 	}

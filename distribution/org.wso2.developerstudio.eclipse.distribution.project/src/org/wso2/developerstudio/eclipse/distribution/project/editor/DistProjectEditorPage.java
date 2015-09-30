@@ -104,6 +104,7 @@ public class DistProjectEditorPage extends FormPage {
 	private Text txtVersion;
 	private Text txtDescription;
 	private boolean pageDirty;
+	Properties properties;
 	
 	IStatus editorStatus = new Status(IStatus.OK, Activator.PLUGIN_ID, "");
 
@@ -633,7 +634,12 @@ public class DistProjectEditorPage extends FormPage {
 			for (String dependency : getMissingDependencyList().keySet()) {
 				createNode(trDependencies, getMissingDependencyList().get(dependency), false);
 				((MultiStatus)editorStatus).add(new Status( IStatus.WARNING, Activator.PLUGIN_ID,dependency + " is unresolvable"));
+				
+				String artifactInfo = DistProjectUtils.getArtifactInfoAsString( getMissingDependencyList().get(dependency));
+				parentPrj.getModel().getProperties().remove(artifactInfo);
 			}
+						
+			writeProperties();
 			setPageDirty(true);
 			updateDirtyState();
 		} 

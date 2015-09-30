@@ -23,6 +23,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
 import java.util.UUID;
@@ -105,6 +106,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.ExceptionMessageM
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.cloudconnector.CloudConnectorDirectoryTraverser;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.AbstractEsbNodeDeserializer;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.Deserializer;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.Deserializer.DeserializeStatus;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.MediatorFactoryUtils;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.utils.UpdateGMFPlugin;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.SequenceEditPart;
@@ -195,17 +197,27 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
 					final String source = new Scanner(inputStream).useDelimiter("\\A").next();					
 					ArtifactType artifactType = deserializer.getArtifactType(source);
 	            	editorInput = new EsbEditorInput(null,file,artifactType.getLiteral());
-	            	Display.getDefault().asyncExec(new Runnable() {	            						
-	            						@Override
-	            						public void run() {
-	            							try {	            								
-	            								deserializer.updateDesign(source, graphicalEditor);
-	            								doSave(new NullProgressMonitor());
-	            							} catch (Exception e) {
-	            								log.error("Error while generating diagram from source", e);
-	            							}
-	            						}
-	            					});
+	            	
+	            
+            		Display.getDefault().asyncExec(new Runnable() {	            						
+            						@Override
+            						public void run() {
+            							try {	
+            								final DeserializeStatus deserializeStatus = deserializer.isValidSynapseConfig(source);
+            								if (deserializeStatus.isValid()) {
+            									deserializer.updateDesign(source, graphicalEditor);
+            									doSave(new NullProgressMonitor());
+            								} else {
+            									setActivePage(SOURCE_VIEW_PAGE_INDEX);
+            									sourceEditor.getDocument().set(source);
+            									printHandleDesignViewActivatedEventErrorMessageSimple(deserializeStatus.getExecption());
+            								}
+            								
+            							} catch (Exception e) {
+            								log.error("Error while generating diagram from source", e);
+            							}
+            						}
+            					});
 	            	inputStream.close();
 				} catch (CoreException e1) {
 					log.error("Error while generating diagram from source", e1);
@@ -238,7 +250,6 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
         EsbEditorInput input = (EsbEditorInput) getEditor(0).getEditorInput();
 		IFile file = input.getXmlResource();
 		IProject activeProject = file.getProject();
-		CloudConnectorDirectoryTraverser.getInstance().validate(activeProject);
  
 	 if(CloudConnectorDirectoryTraverser.getInstance().validate(activeProject)) {
 		String connectorDirectory=activeProject.getLocation().toOSString()+File.separator+"cloudConnectors";
@@ -501,8 +512,22 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
 		// Invoke the appropriate handler method.
 		switch (pageIndex) {
 		case DESIGN_VIEW_PAGE_INDEX: {
-			String source = sourceEditor.getDocument().get();
+			
 			MediatorFactoryUtils.registerFactories();
+			String source = sourceEditor.getDocument().get();
+			
+			final Deserializer deserializer = Deserializer.getInstance(); 	
+			if (!source.isEmpty()) {
+				DeserializeStatus deserializeStatus = deserializer.isValidSynapseConfig(source);
+				if (!deserializeStatus.isValid()) {
+					setActivePage(SOURCE_VIEW_PAGE_INDEX);
+	     			sourceEditor.getDocument().set(source);
+					firePropertyChange(PROP_DIRTY);
+					printHandleDesignViewActivatedEventErrorMessageSimple(deserializeStatus.getExecption());
+					return;
+				}
+			}
+			
 			try {
 				handleDesignViewActivatedEvent();
 				Display.getCurrent().asyncExec(new Runnable() {
@@ -535,6 +560,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
 				});
 			} catch (Exception e) {
 				setActivePage(SOURCE_VIEW_PAGE_INDEX);
+				
 				sourceEditor.getDocument().set(source);
 				printHandleDesignViewActivatedEventErrorMessage(e);
 			} finally {
@@ -546,7 +572,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
 		}
 		case SOURCE_VIEW_PAGE_INDEX: {			
 			try {
-				updateSequenceDetails();
+				updateSequenceDetails(); 
 				handleSourceViewActivatedEvent();
 			} catch (Exception e) {
 				log.error("Cannot update source view", e);
@@ -600,6 +626,15 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
 		ErrorDialog.openError(Display.getCurrent().getActiveShell(), "Error", errorMsgHeader, editorStatus);
 	}
 	
+	private void printHandleDesignViewActivatedEventErrorMessageSimple(Exception e) {
+		// if rebuild fails editor should be marked as dirty
+		log.error("Error while generating diagram from source", e);
+		String errorMsgHeader = "There is an error in proxy configuration, this may either be a invalid xml or invalid mediator configuration "
+				+ " Please see the log for more details.";
+		IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage());
+		ErrorDialog.openError(Display.getCurrent().getActiveShell(), "Error", errorMsgHeader, editorStatus);
+	}
+
 	
 	/**
 	 * Performs necessary house-keeping tasks whenever the source view is
@@ -642,6 +677,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
 		return xmlFile;
 	}
 	
+		
 	private void updateAssociatedDiagrams() {
 		
 		EsbDiagram diagram = (EsbDiagram) graphicalEditor.getDiagram().getElement();
@@ -705,7 +741,23 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
     	setContextClassLoader();
 		if (getActivePage() == SOURCE_VIEW_PAGE_INDEX) {
 			try {
-				handleDesignViewActivatedEvent();
+				String xmlSource = sourceEditor.getDocument().get();
+		    	final Deserializer deserializer = Deserializer.getInstance(); 				
+		    	DeserializeStatus deserializeStatus = deserializer.isValidSynapseConfig(xmlSource);
+				if (deserializeStatus.isValid()) {
+					handleDesignViewActivatedEvent();
+				} else {
+					IEditorInput editorInput = getEditorInput();
+					IFile file = ((FileEditorInput) editorInput).getFile();
+					//printHandleDesignViewActivatedEventErrorMessageSimple(deserializeStatus.getExecption());
+					if (MessageDialog.openQuestion(Display.getCurrent().getActiveShell(), "There are errors in source configuration",
+							"Are you sure, that you want to save the changes with the errors? \n" + deserializeStatus.getExecption().getStackTrace().toString())) {
+						saveForcefully(xmlSource, file, monitor);
+						sourceDirty = false;
+						firePropertyChange(PROP_DIRTY);
+					}
+					return;
+				}
 			} catch (Exception e) {
 				printHandleDesignViewActivatedEventErrorMessage(e);
 			} finally {
@@ -746,9 +798,6 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
         getEditor(0).doSave(monitor);
         
 		EditorUtils.setLockmode(graphicalEditor, false);
-		
-	    
-		
     }
     
 
@@ -836,11 +885,15 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
 			}
 
 			if (editorPart != null) {
-				EsbEditorInput input = (EsbEditorInput) editorPart
-						.getEditorInput();
-				IFile file = input.getXmlResource();
+				IFile file = null;
+				if (editorPart.getEditorInput() instanceof EsbEditorInput) {
+					EsbEditorInput input = (EsbEditorInput) editorPart.getEditorInput();
+					file = input.getXmlResource();
+				} else if (editorPart.getEditorInput() instanceof FileEditorInput) {
+					FileEditorInput input = (FileEditorInput) editorPart.getEditorInput();
+					file = input.getFile();
+				}
 				activeProject = file.getProject();
-
 			}
 
 		}
@@ -986,6 +1039,26 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
     
 	public void setZoom(double zoom) {
 		this.zoom = zoom;
+	}
+	
+	//20150929
+	private IFile saveForcefully(String source, IFile xmlFile, IProgressMonitor monitor) {
+		
+		InputStream is = new ByteArrayInputStream(source.getBytes());
+		if (xmlFile.exists()) {
+			try {
+				xmlFile.setContents(is, true, true, monitor);
+			} catch (CoreException e) {
+				log.error(e); //TODO give meaningful error
+			}
+		} else {
+			try {
+				xmlFile.create(is, true, monitor);
+			} catch (CoreException e) {
+				log.error(e); //TODO give meaningful error
+			}
+		}
+		return xmlFile;
 	}
 	
 }

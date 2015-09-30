@@ -381,5 +381,33 @@ public class Deserializer {
 		}
 		return mediatorFlowContainerList;
 	}
+	
+	public DeserializeStatus isValidSynapseConfig(String source) {
+		try {
+			Map<String,Object> artifacts = getArtifacts(source);
+			return new DeserializeStatus(true, null);
+		} catch (Exception e) {
+			return new DeserializeStatus(false, e);
+		}
+	}
+	
+	public class DeserializeStatus {
+		boolean isValid;
+		Exception execption;
+		
+		public boolean isValid() {
+			return isValid;
+		}
+		
+		public Exception getExecption() {
+			return execption;
+		}
+		
+		public DeserializeStatus(boolean isValid, Exception execption) {
+			super();
+			this.isValid = isValid;
+			this.execption = execption;
+		}
+	}
 
 }

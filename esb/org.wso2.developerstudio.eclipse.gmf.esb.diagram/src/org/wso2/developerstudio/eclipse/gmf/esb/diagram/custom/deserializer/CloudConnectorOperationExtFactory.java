@@ -99,8 +99,7 @@ public class CloudConnectorOperationExtFactory extends AbstractMediatorFactory{
 	
 	public List<QName> getTagQNameList() throws Exception {
 		ArrayList<QName> tagQNameList = new ArrayList<QName>();
-		try {
-			
+
 			IEditorInput iEditorInput = EsbMultiPageEditor.currentEditor.getEditorInput();
 			IFile file = null;
 			if(iEditorInput instanceof IFileEditorInput){
@@ -134,9 +133,6 @@ public class CloudConnectorOperationExtFactory extends AbstractMediatorFactory{
 					}
 				}
 			}
-		} catch (Exception e) {
-		 log.error("Error while loading Connectors", e);
-		}
 		
 		return tagQNameList;
 	}

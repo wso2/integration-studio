@@ -618,8 +618,8 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
 		sourceDirty = true;
 		// if rebuild fails editor should be marked as dirty
 		log.error("Error while generating diagram from source", e);
-		String errorMsgHeader = "Error occuerd during buidling the esb design view."
-				+ " Any changes you make in the source view to be discarded." + " Please see the log for more details.";
+		String errorMsgHeader = "Error occured while buidling design view."
+				+ " Any changes you made in the source view will be discarded." + " Please see the log for more details.";
 		String simpleMessage = ExceptionMessageMapper.getNonTechnicalMessage(e.getMessage());
 		IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, simpleMessage);
 		ErrorDialog.openError(Display.getCurrent().getActiveShell(), "Error", errorMsgHeader, editorStatus);
@@ -628,15 +628,15 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
 	private void printHandleDesignViewActivatedEventErrorMessageSimple(Exception e) {
 		log.error("Error while generating diagram from source", e); 
 		String topStackTrace = e.getStackTrace()[0].toString();
-		String errorMsgHeader = "There are errors in source configuration, \nThis may due to invalid xml or invalid mediator configuration "
+		String errorMsgHeader = "There are errors in source configuration. \nThis may be due to an invalid xml or an invalid mediator configuration. "
 				+ " \nPlease see the error log for more details.";
 		if (topStackTrace.contains("MediatorFactoryFinder.getMediator")){
-			errorMsgHeader = "There are some unknown mediator configurations, "
-					+ "if you using connectors make sure you have added those in to the project."
+			errorMsgHeader = "Unknown mediator configuration found. "
+					+ " Add any missing connectors to workspace before opening the file. "
 					+ "\nPlease see the error log for more details.";
 		}
 		IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage());
-		ErrorDialog.openError(Display.getCurrent().getActiveShell(), "Errors in Source", errorMsgHeader, editorStatus);
+		ErrorDialog.openError(Display.getCurrent().getActiveShell(), "Error in Configuration", errorMsgHeader, editorStatus);
 	}
 
 	
@@ -753,9 +753,8 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
 				} else {
 					IEditorInput editorInput = getEditorInput();
 					IFile file = ((FileEditorInput) editorInput).getFile();
-					if (MessageDialog.openQuestion(Display.getCurrent().getActiveShell(), "Erros in Source",
-							"There are erros in source, if you want to save the changes with errors click 'Yes', "
-							+ "else click 'No' to correct the errors and save later.")) {
+					if (MessageDialog.openQuestion(Display.getCurrent().getActiveShell(), "Error in Configuration",
+							"There are erros in source confiuration, Save anyway?")) {
 					saveForcefully(xmlSource, file, monitor);
 						sourceDirty = false;
 						firePropertyChange(PROP_DIRTY);

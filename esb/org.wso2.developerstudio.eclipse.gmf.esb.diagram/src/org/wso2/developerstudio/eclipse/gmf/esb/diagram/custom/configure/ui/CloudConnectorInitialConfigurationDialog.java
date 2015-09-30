@@ -246,12 +246,14 @@ public class CloudConnectorInitialConfigurationDialog extends TitleAreaDialog {
 
 		paramTable.addListener(SWT.Selection, tblPropertiesListener);
 
-		for (String param : parameters) {
-			CallTemplateParameter callTemplateParameter=EsbFactory.eINSTANCE.createCallTemplateParameter();
-			callTemplateParameter.setParameterName(param);
-			callTemplateParameter.setParameterValue("");
-			callTemplateParameter.setTemplateParameterType(RuleOptionType.VALUE);
-			bindPram(callTemplateParameter);
+		if (parameters != null) {
+			for (String param : parameters) {
+				CallTemplateParameter callTemplateParameter=EsbFactory.eINSTANCE.createCallTemplateParameter();
+				callTemplateParameter.setParameterName(param);
+				callTemplateParameter.setParameterValue("");
+				callTemplateParameter.setTemplateParameterType(RuleOptionType.VALUE);
+				bindPram(callTemplateParameter);
+			}
 		}
 
 		//setupTableEditor(paramTable);

@@ -197,13 +197,12 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
 					final String source = new Scanner(inputStream).useDelimiter("\\A").next();					
 					ArtifactType artifactType = deserializer.getArtifactType(source);
 	            	editorInput = new EsbEditorInput(null,file,artifactType.getLiteral());
-	            	
-	            
-            		Display.getDefault().asyncExec(new Runnable() {	            						
+            		
+	            	Display.getDefault().asyncExec(new Runnable() {	            						
             						@Override
             						public void run() {
             							try {	
-            								final DeserializeStatus deserializeStatus = deserializer.isValidSynapseConfig(source);
+            								DeserializeStatus deserializeStatus = deserializer.isValidSynapseConfig(source);
             								if (deserializeStatus.isValid()) {
             									deserializer.updateDesign(source, graphicalEditor);
             									doSave(new NullProgressMonitor());
@@ -627,12 +626,17 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
 	}
 	
 	private void printHandleDesignViewActivatedEventErrorMessageSimple(Exception e) {
-		// if rebuild fails editor should be marked as dirty
-		log.error("Error while generating diagram from source", e);
-		String errorMsgHeader = "There is an error in proxy configuration, this may either be a invalid xml or invalid mediator configuration "
-				+ " Please see the log for more details.";
+		log.error("Error while generating diagram from source", e); 
+		String topStackTrace = e.getStackTrace()[0].toString();
+		String errorMsgHeader = "There are errors in source configuration, \nThis may due to invalid xml or invalid mediator configuration "
+				+ " \nPlease see the error log for more details.";
+		if (topStackTrace.contains("MediatorFactoryFinder.getMediator")){
+			errorMsgHeader = "There are some unknown mediator configurations, "
+					+ "if you using connectors make sure you have added those in to the project."
+					+ "\nPlease see the error log for more details.";
+		}
 		IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage());
-		ErrorDialog.openError(Display.getCurrent().getActiveShell(), "Error", errorMsgHeader, editorStatus);
+		ErrorDialog.openError(Display.getCurrent().getActiveShell(), "Errors in Source", errorMsgHeader, editorStatus);
 	}
 
 	
@@ -749,10 +753,10 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
 				} else {
 					IEditorInput editorInput = getEditorInput();
 					IFile file = ((FileEditorInput) editorInput).getFile();
-					//printHandleDesignViewActivatedEventErrorMessageSimple(deserializeStatus.getExecption());
-					if (MessageDialog.openQuestion(Display.getCurrent().getActiveShell(), "There are errors in source configuration",
-							"Are you sure, that you want to save the changes with the errors? \n" + deserializeStatus.getExecption().getStackTrace().toString())) {
-						saveForcefully(xmlSource, file, monitor);
+					if (MessageDialog.openQuestion(Display.getCurrent().getActiveShell(), "Erros in Source",
+							"There are erros in source, if you want to save the changes with errors click 'Yes', "
+							+ "else click 'No' to correct the errors and save later.")) {
+					saveForcefully(xmlSource, file, monitor);
 						sourceDirty = false;
 						firePropertyChange(PROP_DIRTY);
 					}
@@ -1042,23 +1046,23 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
 	}
 	
 	//20150929
-	private IFile saveForcefully(String source, IFile xmlFile, IProgressMonitor monitor) {
+	private void saveForcefully(String source, IFile xmlFile, IProgressMonitor monitor) {
 		
 		InputStream is = new ByteArrayInputStream(source.getBytes());
-		if (xmlFile.exists()) {
-			try {
+		try {
+			if (xmlFile.exists()) {
 				xmlFile.setContents(is, true, true, monitor);
-			} catch (CoreException e) {
-				log.error(e); //TODO give meaningful error
-			}
-		} else {
-			try {
+			} else {
 				xmlFile.create(is, true, monitor);
-			} catch (CoreException e) {
-				log.error(e); //TODO give meaningful error
+			} 
+		} catch (CoreException e) {
+				log.error("Error occured while saving " + e.getMessage()); 
 			}
+		try {
+			is.close();
+		} catch (IOException e) {
+			log.error("Error occured while saving " + e.getMessage()); 
 		}
-		return xmlFile;
 	}
 	
 }

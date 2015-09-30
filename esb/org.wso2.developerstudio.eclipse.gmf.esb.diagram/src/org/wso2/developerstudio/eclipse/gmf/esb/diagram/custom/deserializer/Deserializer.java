@@ -404,7 +404,6 @@ public class Deserializer {
 		}
 		
 		public DeserializeStatus(boolean isValid, Exception execption) {
-			super();
 			this.isValid = isValid;
 			this.execption = execption;
 		}

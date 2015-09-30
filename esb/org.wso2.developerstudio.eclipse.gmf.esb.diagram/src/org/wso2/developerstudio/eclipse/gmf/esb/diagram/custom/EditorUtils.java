@@ -26,6 +26,9 @@ import org.apache.synapse.mediators.base.SequenceMediator;
 import org.apache.synapse.mediators.builtin.SendMediator;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IPath;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.internal.util.Log;
 import org.eclipse.gef.EditPart;
@@ -90,6 +93,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbDiagramEditor;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbEditorInput;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbMultiPageEditor;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbPaletteFactory;
+import org.wso2.developerstudio.eclipse.platform.core.utils.Constants;
 
 public class EditorUtils {
 	
@@ -105,7 +109,8 @@ public class EditorUtils {
 	public static final String TASK_RESOURCE_DIR = "src/main/graphical-synapse-config/tasks";
 	public static final String API_RESOURCE_DIR = "src/main/graphical-synapse-config/api";
 	public static final String COMPLEX_ENDPOINT_RESOURCE_DIR = "src/main/graphical-synapse-config/complex_endpoints";
-	
+	private static final int NUMBER_OF_SEGMENTS_IN_PATH_AFTER_ESBCONFIG_PROJECT = 5;
+
 	public static AbstractInputConnectorEditPart getInputConnector(ShapeNodeEditPart parent){
 		for(int i=0;i<parent.getChildren().size();++i){					
 			if(parent.getChildren().get(i) instanceof AbstractInputConnectorEditPart){
@@ -727,6 +732,49 @@ public class EditorUtils {
 		return activeProject;
 	}
 	
+	/**
+	 * This method made for fix JIRA Tools 3213. This method calls in
+	 * SequenceEditPart to create new sequence. This only returns most close
+	 * ESBConfig project to the artifact.
+	 * 
+	 * @return
+	 * @throws CoreException
+	 */
+	public static IProject getActiveProjectSafemode() throws CoreException {
+
+		IEditorPart editorPart = null;
+		IProject activeProject = null;
+		IEditorReference[] editorReferences = PlatformUI.getWorkbench()
+				.getActiveWorkbenchWindow().getActivePage()
+				.getEditorReferences();
+		IFile file = null;
+		for (IEditorReference editorReference : editorReferences) {
+			IEditorPart editor = editorReference.getEditor(false);
+			if (editor != null) {
+				editorPart = editor.getSite().getWorkbenchWindow()
+						.getActivePage().getActiveEditor();
+			}
+			if (editorPart != null) {
+				EsbEditorInput input = (EsbEditorInput) editorPart
+						.getEditorInput();
+				file = input.getXmlResource();
+				activeProject = file.getProject();
+			}
+
+		}
+		if (!(activeProject.hasNature(Constants.ESB_PROJECT_NATURE) || activeProject
+				.hasNature(Constants.GENERAL_PROJECT_NATURE))) {
+			activeProject = getParentESBProject(file);
+		}
+		return activeProject;
+	}
+
+	private static IProject getParentESBProject(IFile file) {
+		IPath path = file.getFullPath();
+		path = path.removeLastSegments(NUMBER_OF_SEGMENTS_IN_PATH_AFTER_ESBCONFIG_PROJECT);
+		String name = path.lastSegment();
+		return ResourcesPlugin.getWorkspace().getRoot().getProject(name);
+	}
 	/**
 	 * Return the active editor
 	 */

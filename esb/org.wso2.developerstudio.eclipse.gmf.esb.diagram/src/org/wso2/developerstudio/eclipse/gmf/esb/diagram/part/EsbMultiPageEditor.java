@@ -287,14 +287,14 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
 			} catch (FileNotFoundException e) {
 				log.error("File is not available.", e);
 			} catch (IOException e) {
-				log.error("Error occured while trying to load properties", e);
+				log.error("Error occurred while trying to load properties", e);
 			} finally {
 				if (inStream != null) {
 					try {
 						inStream.close();
 					} catch (IOException e) {
 						log.error(
-								"Error occured while tying to close the file stream",
+								"Error occurred while tying to close the file stream",
 								e);
 					}
 				}
@@ -618,7 +618,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
 		sourceDirty = true;
 		// if rebuild fails editor should be marked as dirty
 		log.error("Error while generating diagram from source", e);
-		String errorMsgHeader = "Error occured while buidling design view."
+		String errorMsgHeader = "Error occurred while building design view."
 				+ " Any changes you made in the source view will be discarded." + " Please see the log for more details.";
 		String simpleMessage = ExceptionMessageMapper.getNonTechnicalMessage(e.getMessage());
 		IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, simpleMessage);
@@ -754,7 +754,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
 					IEditorInput editorInput = getEditorInput();
 					IFile file = ((FileEditorInput) editorInput).getFile();
 					if (MessageDialog.openQuestion(Display.getCurrent().getActiveShell(), "Error in Configuration",
-							"There are erros in source confiuration, Save anyway?")) {
+							"There are errors in source configuration, Save anyway?")) {
 					saveForcefully(xmlSource, file, monitor);
 						sourceDirty = false;
 						firePropertyChange(PROP_DIRTY);
@@ -1055,12 +1055,12 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
 				xmlFile.create(is, true, monitor);
 			} 
 		} catch (CoreException e) {
-				log.error("Error occured while saving " + e.getMessage()); 
+				log.error("Error occurred while saving " + e.getMessage()); 
 			}
 		try {
 			is.close();
 		} catch (IOException e) {
-			log.error("Error occured while saving " + e.getMessage()); 
+			log.error("Error occurred while saving " + e.getMessage()); 
 		}
 	}
 	

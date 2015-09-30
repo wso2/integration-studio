@@ -518,7 +518,7 @@ public class SequenceEditPart extends FixedSizedAbstractMediator {
 	}
 
 	public void openWithSeparateEditor() throws Exception {
-		IProject activeProject = EditorUtils.getActiveProject();
+		IProject activeProject = EditorUtils.getActiveProjectSafemode();
 
 		String name = ((Sequence) ((org.eclipse.gmf.runtime.notation.impl.NodeImpl) getModel()).getElement()).getName();
 		//if (sequenceStorage.sequences.get(name) == null) {

@@ -66,6 +66,7 @@ import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.platform.ui.utils.UnrecogizedArtifactTypeException;
 import org.apache.axiom.om.OMAbstractFactory;
+import org.apache.axiom.om.OMAttribute;
 import org.apache.axiom.om.OMElement;
 import org.apache.axiom.om.util.AXIOMUtil;
 import org.apache.commons.collections.IteratorUtils;
@@ -395,33 +396,53 @@ public class Deserializer {
 		}
 	}
 	
-	public String validate(DeserializeStatus ststus) {
-		String source = ststus.getsource();
-		if (source != null) {
-			try {
-				OMElement element = AXIOMUtil.stringToOM(source);
-				Iterator<OMElement> childElements = element.getChildElements();
-				List<OMElement> myList = IteratorUtils.toList(childElements);
+	public String validate(OMElement element, OMElement elementSub) {
+		try {
+			Iterator<OMElement> childElements = elementSub.getChildElements();
+			List<OMElement> childElementsList = IteratorUtils.toList(childElements);
 
-				for (OMElement omElement : myList) {
-					omElement.detach();
-				}
-				for (OMElement omElement : myList) {
-					element.addChild(omElement);
-					try {
-						getArtifacts(element.toStringWithConsume());
-					} catch (Exception ignore) {//this exception has been already logged 
-						return "Unknown synapse configuration tag  ' " + omElement.getLocalName() + " ' \n\n \t ' "
-								+ omElement.toStringWithConsume() + " ' \n";
+			for (OMElement omElement : childElementsList) {
+				omElement.detach();
+			}
+			for (OMElement omElement : childElementsList) {
+
+				try {
+					getArtifacts(element.toStringWithConsume());
+				} catch (Exception e) {
+					if (!elementSub.getLocalName().equals("proxy") && !elementSub.getLocalName().equals("target")) {
+						String nameSpace = "xmlns=\"http://ws.apache.org/ns/synapse\"";
+						String errorLine = omElement.toStringWithConsume();
+						String errorLineWithoutNS = errorLine.replaceAll(nameSpace, "");
+						return "Unknown synapse configuration tag: \n\n" + "At Line " + omElement.getLineNumber()
+								+ ", " + errorLineWithoutNS + "\n";
 					}
 				}
-			} catch (Exception e) {
-				log.error("Error while validating the configuration", e);
+
+				elementSub.addChild(omElement);
+				try {
+					getArtifacts(element.toStringWithConsume());
+				} catch (Exception e) {
+					List<OMElement> subChildElements = IteratorUtils.toList(omElement.getChildElements());
+					if (subChildElements.size() > 0) {
+						String returnMessage = validate(element, omElement);
+						if (!returnMessage.equals("ErrorNotFound")) {
+							return returnMessage;
+						}
+					} else {
+						String nameSpace = "xmlns=\"http://ws.apache.org/ns/synapse\"";
+						String errorLine = omElement.toStringWithConsume();
+						String errorLineWithoutNS = errorLine.replaceAll(nameSpace, "");
+						return "Unknown synapse configuration tag: \n\n" + "At Line " + omElement.getLineNumber()
+								+ ", " + errorLineWithoutNS + "\n";
+					}
+				}
 			}
+		} catch (Exception e) {
+			log.error("Error while validating the configuration", e);
 		}
-		return "Error while validating the configuration";
-	} 
-	
+		return "ErrorNotFound";
+	}
+
 	public class DeserializeStatus {
 		boolean isValid;
 		Exception execption;

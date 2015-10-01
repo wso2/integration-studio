@@ -19,6 +19,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.StringReader;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -29,6 +30,13 @@ import java.util.Set;
 import java.util.UUID;
 import java.util.Scanner;
 
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.stream.XMLStreamException;
+
+import org.apache.axiom.om.OMElement;
+import org.apache.axiom.om.util.AXIOMUtil;
 import org.apache.synapse.mediators.builtin.LogMediator;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
@@ -40,6 +48,7 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.MultiStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Status;
@@ -115,6 +124,8 @@ import org.wso2.developerstudio.eclipse.gmf.esb.persistence.SequenceInfo;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.platform.core.event.EsbEditorEvent;
+import org.xml.sax.InputSource;
+import org.xml.sax.SAXException;
 
 /**
  * The main editor class which contains design view and source view
@@ -167,6 +178,8 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
 	public static EsbMultiPageEditor currentEditor;
 	
 	private double zoom = 1.0;
+	private String fileName;
+	private String validationMessage;
 
 	/**
      * Creates a multi-page editor
@@ -190,6 +203,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
             IEditorInput editorInput = getEditorInput();
             if (editorInput instanceof FileEditorInput) {
             	IFile file = ((FileEditorInput) editorInput).getFile();
+            	fileName = file.getName();
             	final Deserializer deserializer = Deserializer.getInstance(); 
             	InputStream inputStream = null;
 				try {
@@ -625,29 +639,55 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
 		ErrorDialog.openError(Display.getCurrent().getActiveShell(), "Error", errorMsgHeader, editorStatus);
 	}
 	
-	private void printHandleDesignViewActivatedEventErrorMessageSimple(Exception e,DeserializeStatus deserializeStatus) {
-		log.error("Error while generating diagram from source", e); 
+	private void printHandleDesignViewActivatedEventErrorMessageSimple(Exception e, DeserializeStatus deserializeStatus) {
 		String topStackTrace = e.getStackTrace()[0].toString();
-		String errorMsgHeader = "There are errors in source configuration. \nThis may be due to an invalid XML or an invalid mediator configuration. "
-				+ " \nPlease see the error log for more details.";
-		if (topStackTrace.contains("MediatorFactoryFinder.getMediator")){
-			errorMsgHeader = "Unknown mediator configuration found. "
-					+ " Add any missing connectors to workspace before opening the file. "
-					+ "\nPlease see the error log for more details.";
+		String errorMsgHeader = fileName + " has some syntax errors";
+		if (topStackTrace.contains("MediatorFactoryFinder.getMediator")) {
+			errorMsgHeader = fileName + " has some syntax errors";
 		}
 		IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage());
-		ErrorDialog.openError(Display.getCurrent().getActiveShell(), "Error in Configuration", errorMsgHeader, editorStatus);
-		if(MessageDialog.openQuestion(Display.getCurrent().getActiveShell(), "Errors in Source", errorMsgHeader+" \n\n"+" Validate ?")){
 
-			String validater = Deserializer.getInstance().validate(deserializeStatus); 
-			MessageDialog.openInformation(Display.getCurrent().getActiveShell(), "Errors in Source", validater);
+		MessageDialog dialog = new MessageDialog(Display.getCurrent().getActiveShell(), "Error Dialog", null,
+				errorMsgHeader, MessageDialog.ERROR, new String[] { "OK", "Show Details" }, 0);
+		int result = dialog.open();
+		if (result == 1) {
+			String source = deserializeStatus.getsource();
+			DocumentBuilderFactory domParserFactory = DocumentBuilderFactory.newInstance();
+			domParserFactory.setValidating(true);
+			DocumentBuilder builder;
+			try {
+				builder = domParserFactory.newDocumentBuilder();
+				builder.parse(new InputSource(new StringReader(source)));
 
+				final OMElement element = AXIOMUtil.stringToOM(source);
+				try {
+					new ProgressMonitorDialog(PlatformUI.getWorkbench().getDisplay().getActiveShell()).run(true, true,
+							new IRunnableWithProgress() {
+								public void run(IProgressMonitor monitor) throws InvocationTargetException,
+										InterruptedException {
+									monitor.beginTask("Generating Error Report", 100);
+									monitor.worked(IProgressMonitor.UNKNOWN);
+									validationMessage = Deserializer.getInstance().validate(element, element);
+									monitor.done();
+
+								}
+							});
+				} catch (InvocationTargetException | InterruptedException exception) {
+					log.error("Error while validating synapse syntax", exception);
+				}
+				MessageDialog
+						.openInformation(Display.getCurrent().getActiveShell(), "Error Details", validationMessage);
+
+			} catch (IOException | ParserConfigurationException | XMLStreamException exception) {
+				MessageDialog.openInformation(Display.getCurrent().getActiveShell(), "Error Details",
+						"Errors in XML formatting");
+			} catch (SAXException exception) {
+				MessageDialog.openInformation(Display.getCurrent().getActiveShell(), "Error Details",
+						"Errors in XML formatting: " + exception.getMessage());
 			}
-
-
+		}
 	}
 
-	
 	/**
 	 * Performs necessary house-keeping tasks whenever the source view is
 	 * activated.
@@ -761,6 +801,8 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
 				} else {
 					IEditorInput editorInput = getEditorInput();
 					IFile file = ((FileEditorInput) editorInput).getFile();
+					
+					printHandleDesignViewActivatedEventErrorMessageSimple(deserializeStatus.getExecption(),deserializeStatus); 
 					if (MessageDialog.openQuestion(Display.getCurrent().getActiveShell(), "Error in Configuration",
 							"There are errors in source configuration, Save anyway?")) {
 					saveForcefully(xmlSource, file, monitor);

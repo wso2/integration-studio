@@ -119,18 +119,18 @@ public class PublisherProjectCreationWizard extends AbstractWSO2ProjectCreationW
         MavenProject mavenProject = MavenUtils.getMavenProject(mavenProjectPomLocation);
 
         boolean pluginExists = MavenUtils.checkOldPluginEntry(mavenProject,
-                "org.wso2.maven", "maven-eventpublisher-plugin",
+                "org.wso2.maven", "analytics-publisher-maven-plugin",
                 MavenConstants.WSO2_ANALYTICS_PUBLISHER_VERSION);
         if (pluginExists) {
             return;
         }
 
-        Plugin plugin = MavenUtils.createPluginEntry(mavenProject, "org.wso2.maven", "maven-eventpublisher-plugin", MavenConstants.WSO2_ANALYTICS_PUBLISHER_VERSION, true);
+        Plugin plugin = MavenUtils.createPluginEntry(mavenProject, "org.wso2.maven", "analytics-publisher-maven-plugin", MavenConstants.WSO2_ANALYTICS_PUBLISHER_VERSION, true);
 
         PluginExecution pluginExecution = new PluginExecution();
         pluginExecution.addGoal("pom-gen");
         pluginExecution.setPhase("process-resources");
-        pluginExecution.setId("publisher-point");
+        pluginExecution.setId("publisher");
 
         Xpp3Dom configurationNode = MavenUtils.createMainConfigurationNode();
         Xpp3Dom artifactLocationNode = MavenUtils.createXpp3Node(configurationNode, "artifactLocation");

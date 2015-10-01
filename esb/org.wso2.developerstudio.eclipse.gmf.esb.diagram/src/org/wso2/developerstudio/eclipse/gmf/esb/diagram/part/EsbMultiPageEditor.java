@@ -209,7 +209,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
             								} else {
             									setActivePage(SOURCE_VIEW_PAGE_INDEX);
             									sourceEditor.getDocument().set(source);
-            									printHandleDesignViewActivatedEventErrorMessageSimple(deserializeStatus.getExecption());
+            									printHandleDesignViewActivatedEventErrorMessageSimple(deserializeStatus.getExecption(),deserializeStatus);
             								}
             								
             							} catch (Exception e) {

@@ -120,13 +120,13 @@ public class Execution_planProjectCreationWizard extends AbstractWSO2ProjectCrea
 		MavenProject mavenProject = MavenUtils.getMavenProject(mavenProjectPomLocation);
 		
 		boolean pluginExists = MavenUtils.checkOldPluginEntry(mavenProject,
-				"org.wso2.maven", "wso2-analytics-execution-plan-plugin",
+				"org.wso2.maven", "analytics-execution-plan-maven-plugin",
 				MavenConstants.WSO2_ANALYTICS_EXECUTIONPLAN_VERSION);
 		if(pluginExists){
 			return ;
 		}
 		
-		Plugin plugin = MavenUtils.createPluginEntry(mavenProject, "org.wso2.maven", "wso2-analytics-execution-plan-plugin", MavenConstants.WSO2_ANALYTICS_EXECUTIONPLAN_VERSION, true);
+		Plugin plugin = MavenUtils.createPluginEntry(mavenProject, "org.wso2.maven", "analytics-execution-plan-maven-plugin", MavenConstants.WSO2_ANALYTICS_EXECUTIONPLAN_VERSION, true);
 		
 		PluginExecution pluginExecution = new PluginExecution();
 		pluginExecution.addGoal("pom-gen");

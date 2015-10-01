@@ -119,13 +119,13 @@ public class PublisherProjectCreationWizard extends AbstractWSO2ProjectCreationW
         MavenProject mavenProject = MavenUtils.getMavenProject(mavenProjectPomLocation);
 
         boolean pluginExists = MavenUtils.checkOldPluginEntry(mavenProject,
-                "org.wso2.maven", "wso2-analytics-publisher-plugin",
+                "org.wso2.maven", "analytics-publisher-maven-plugin",
                 MavenConstants.WSO2_ANALYTICS_PUBLISHER_VERSION);
         if (pluginExists) {
             return;
         }
 
-        Plugin plugin = MavenUtils.createPluginEntry(mavenProject, "org.wso2.maven", "wso2-analytics-publisher-plugin", MavenConstants.WSO2_ANALYTICS_PUBLISHER_VERSION, true);
+        Plugin plugin = MavenUtils.createPluginEntry(mavenProject, "org.wso2.maven", "analytics-publisher-maven-plugin", MavenConstants.WSO2_ANALYTICS_PUBLISHER_VERSION, true);
 
         PluginExecution pluginExecution = new PluginExecution();
         pluginExecution.addGoal("pom-gen");

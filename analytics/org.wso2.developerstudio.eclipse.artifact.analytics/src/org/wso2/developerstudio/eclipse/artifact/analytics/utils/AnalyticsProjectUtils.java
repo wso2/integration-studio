@@ -257,7 +257,7 @@ public class AnalyticsProjectUtils {
     	File destFile = new File(baseDir, artifactName + "." + extention);
     	FileUtils.createFile(destFile, fileContents);
     	MavenProject mavenProject = MavenUtils.getMavenProject(pomfile);
-    	addPluginEntry(mavenProject, groupId,artifactId,version,id);
+    	addPluginEntry(mavenProject,"org.wso2.maven",artifactId,version,id);
     	MavenUtils.saveMavenProject(mavenProject, pomfile);
     	fileList.put(destFile, entryType);
     	createArtifactMetaDataEntry(artifactName,version,"event/"+id,baseDir, groupId + "." +id,project,"." + extention);

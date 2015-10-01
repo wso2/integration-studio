@@ -24,8 +24,11 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.ListIterator;
 import java.util.Map;
 import java.util.Properties;
+
+import javax.xml.stream.XMLStreamException;
 
 import org.apache.synapse.config.Entry;
 import org.apache.synapse.config.SynapseConfiguration;
@@ -65,6 +68,7 @@ import org.wso2.developerstudio.eclipse.platform.ui.utils.UnrecogizedArtifactTyp
 import org.apache.axiom.om.OMAbstractFactory;
 import org.apache.axiom.om.OMElement;
 import org.apache.axiom.om.util.AXIOMUtil;
+import org.apache.commons.collections.IteratorUtils;
 import org.wso2.developerstudio.eclipse.gmf.esb.ArtifactType;
 import org.apache.synapse.config.xml.ProxyServiceFactory;
 import org.apache.synapse.config.xml.rest.APIFactory;
@@ -384,17 +388,48 @@ public class Deserializer {
 	
 	public DeserializeStatus isValidSynapseConfig(String source) {
 		try {
-			Map<String,Object> artifacts = getArtifacts(source);
-			return new DeserializeStatus(true, null);
+			getArtifacts(source);
+			return new DeserializeStatus(true, null,source);
 		} catch (Exception e) {
-			return new DeserializeStatus(false, e);
+			return new DeserializeStatus(false, e,source);
 		}
 	}
+	
+	public String validate(DeserializeStatus ststus) {
+		String source = ststus.getsource();
+		if (source != null) {
+			try {
+				OMElement element = AXIOMUtil.stringToOM(source);
+				Iterator<OMElement> childElements = element.getChildElements();
+				List<OMElement> myList = IteratorUtils.toList(childElements);
+
+				for (OMElement omElement : myList) {
+					omElement.detach();
+				}
+				for (OMElement omElement : myList) {
+					element.addChild(omElement);
+					try {
+						getArtifacts(element.toStringWithConsume());
+					} catch (Exception ignore) {//this exception has been already logged 
+						return "Unknown synapse configuration tag  ' " + omElement.getLocalName() + " ' \n\n \t ' "
+								+ omElement.toStringWithConsume() + " ' \n";
+					}
+				}
+			} catch (Exception e) {
+				log.error("Error while validating the configuration", e);
+			}
+		}
+		return "Error while validating the configuration";
+	} 
 	
 	public class DeserializeStatus {
 		boolean isValid;
 		Exception execption;
+		String source;
 		
+		public String getsource(){
+			return source;
+		}
 		public boolean isValid() {
 			return isValid;
 		}
@@ -403,9 +438,10 @@ public class Deserializer {
 			return execption;
 		}
 		
-		public DeserializeStatus(boolean isValid, Exception execption) {
+		public DeserializeStatus(boolean isValid, Exception execption,String source) {
 			this.isValid = isValid;
 			this.execption = execption;
+			this.source = source;
 		}
 	}
 

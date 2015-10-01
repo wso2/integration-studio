@@ -522,7 +522,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
 					setActivePage(SOURCE_VIEW_PAGE_INDEX);
 	     			sourceEditor.getDocument().set(source);
 					firePropertyChange(PROP_DIRTY);
-					printHandleDesignViewActivatedEventErrorMessageSimple(deserializeStatus.getExecption());
+					printHandleDesignViewActivatedEventErrorMessageSimple(deserializeStatus.getExecption(),deserializeStatus); 
 					return;
 				}
 			}
@@ -625,10 +625,10 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
 		ErrorDialog.openError(Display.getCurrent().getActiveShell(), "Error", errorMsgHeader, editorStatus);
 	}
 	
-	private void printHandleDesignViewActivatedEventErrorMessageSimple(Exception e) {
+	private void printHandleDesignViewActivatedEventErrorMessageSimple(Exception e,DeserializeStatus deserializeStatus) {
 		log.error("Error while generating diagram from source", e); 
 		String topStackTrace = e.getStackTrace()[0].toString();
-		String errorMsgHeader = "There are errors in source configuration. \nThis may be due to an invalid xml or an invalid mediator configuration. "
+		String errorMsgHeader = "There are errors in source configuration. \nThis may be due to an invalid XML or an invalid mediator configuration. "
 				+ " \nPlease see the error log for more details.";
 		if (topStackTrace.contains("MediatorFactoryFinder.getMediator")){
 			errorMsgHeader = "Unknown mediator configuration found. "
@@ -637,6 +637,14 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
 		}
 		IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage());
 		ErrorDialog.openError(Display.getCurrent().getActiveShell(), "Error in Configuration", errorMsgHeader, editorStatus);
+		if(MessageDialog.openQuestion(Display.getCurrent().getActiveShell(), "Errors in Source", errorMsgHeader+" \n\n"+" Validate ?")){
+
+			String validater = Deserializer.getInstance().validate(deserializeStatus); 
+			MessageDialog.openInformation(Display.getCurrent().getActiveShell(), "Errors in Source", validater);
+
+			}
+
+
 	}
 
 	

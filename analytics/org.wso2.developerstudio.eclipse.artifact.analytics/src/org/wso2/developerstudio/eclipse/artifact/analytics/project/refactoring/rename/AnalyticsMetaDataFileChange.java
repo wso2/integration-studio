@@ -34,13 +34,14 @@ public class AnalyticsMetaDataFileChange extends TextFileChange {
     private IFile metaDataFile;
     private String newName;
     private String originalName;
+    private String extension;
 
-    public AnalyticsMetaDataFileChange(String name, IFile file, String originalName, String newName) {
+    public AnalyticsMetaDataFileChange(String name, IFile file, String originalName, String newName , String extension) {
         super(name, file);
         metaDataFile = file;
         this.originalName = originalName;
         this.newName = newName;
-
+        this.extension = extension;
         addTextEdits();
     }
 
@@ -61,17 +62,19 @@ public class AnalyticsMetaDataFileChange extends TextFileChange {
         BufferedReader reader =
                 new BufferedReader(new FileReader(metaDataFile.getLocation()
                         .toFile()));
-        String case1String = "\"" + originalName + "\"";
+        String nameWithoutExtention = originalName.substring(0,originalName.length()-extension.length()-1);
+        String newNameWithoutExtention = newName.substring(0,newName.length()-extension.length()-1);
+        String case1String = "\"" + nameWithoutExtention + "\"";
         String nameElement = "name=";
         String nameElementEqulasOriginalName = nameElement + case1String;
         String line = reader.readLine();
-        String case2String = "/" + originalName + ".xml";
+        String case2String = "/" + originalName;
         String originalFileEndsWithFileTag = case2String + "</file>";
         while (line != null) {
             String[] stringArray = line.split(" ");
             if (line.contains(nameElementEqulasOriginalName) && stringArray[getarrayIndexWithString(nameElement, stringArray)].equals(nameElementEqulasOriginalName)) {
                 int case1LineIndex = line.indexOf(case1String) + 1;
-                addEdit(new ReplaceEdit(fullIndex + case1LineIndex, originalName.length(), newName));
+                addEdit(new ReplaceEdit(fullIndex + case1LineIndex,nameWithoutExtention.length(), newNameWithoutExtention));
             } else {
                 if (line.endsWith(originalFileEndsWithFileTag)) {
                     int case2LineIndex = line.indexOf(case2String) + 1;

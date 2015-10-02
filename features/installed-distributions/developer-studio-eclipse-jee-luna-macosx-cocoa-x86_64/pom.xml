@@ -398,7 +398,7 @@
 					 	<arg value="-installIU" />
                                                 <arg value="org.wso2.developerstudio.eclipse.jaggery.artifact.feature.feature.group" />
 		 				<arg value="-installIU" />
-                        			<arg value="org.wso2.developerstudio.eclipse.analytics.artifact.feature" />
+                        			<arg value="org.wso2.developerstudio.eclipse.analytics.artifact.feature.feature.group" />
 						<arg value="-installIU" />
 						<arg value="org.wso2.soapui.feature.feature.group" />
 						<arg value="-installIU" />

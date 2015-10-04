@@ -86,7 +86,7 @@
             name="Carbon Application Endpoints">
       </endpoint>
    </extension>
- <extension
+ <!-- <extension
        point="org.eclipse.ltk.core.refactoring.renameParticipants">
        <renameParticipant
 			class="org.wso2.developerstudio.eclipse.artifact.endpoint.refactor.EndpointRenameRefactorParticipant"
@@ -127,5 +127,5 @@
 					</and>
 				</enablement>
 		</deleteParticipant>
-   </extension>
+   </extension>-->
 </plugin>

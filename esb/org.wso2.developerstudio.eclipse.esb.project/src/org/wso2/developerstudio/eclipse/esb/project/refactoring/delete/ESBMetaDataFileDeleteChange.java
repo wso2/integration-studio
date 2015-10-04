@@ -60,7 +60,7 @@ public class ESBMetaDataFileDeleteChange extends TextFileChange {
 			try {
 				identifyReplaces();
 			} catch (IOException e) {
-				log.error("Error occured while generating the Refactoring", e);
+				log.error("Error occurred while generating the Refactoring", e);
 			}
 		}
 	}

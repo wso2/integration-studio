@@ -53,7 +53,7 @@ public class EndpointArtifactFileChange extends TextFileChange {
 				identifyReplaces();
 			}
 		} catch (IOException e) {
-			log.error("Encoutered an IO Error trying to manipulate the file", e);
+			log.error("Encountered an IO Error trying to manipulate the file", e);
 		}
 	}
 

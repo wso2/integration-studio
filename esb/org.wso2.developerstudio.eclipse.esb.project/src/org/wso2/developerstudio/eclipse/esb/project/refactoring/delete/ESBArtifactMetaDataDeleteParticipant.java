@@ -18,10 +18,15 @@ package org.wso2.developerstudio.eclipse.esb.project.refactoring.delete;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+
+import org.apache.maven.model.Dependency;
+import org.apache.maven.project.MavenProject;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.OperationCanceledException;
@@ -30,8 +35,16 @@ import org.eclipse.ltk.core.refactoring.CompositeChange;
 import org.eclipse.ltk.core.refactoring.RefactoringStatus;
 import org.eclipse.ltk.core.refactoring.participants.CheckConditionsContext;
 import org.eclipse.ltk.core.refactoring.participants.DeleteParticipant;
+import org.wso2.developerstudio.eclipse.esb.project.Activator;
+import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBArtifact;
+import org.wso2.developerstudio.eclipse.esb.project.utils.RefactorUtils;
+import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
+import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
 public class ESBArtifactMetaDataDeleteParticipant extends DeleteParticipant {
+	
+	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
+	
 	private IFile originalFile;
 	private static int numOfFiles;
 	private static int currentFileNum;
@@ -41,7 +54,9 @@ public class ESBArtifactMetaDataDeleteParticipant extends DeleteParticipant {
 	@Override
 	public RefactoringStatus checkConditions(IProgressMonitor arg0, CheckConditionsContext arg1)
 			throws OperationCanceledException {
-		return RefactoringStatus.createWarningStatus("You are about to delete an ESB Artifact");
+		String msg ="[warning] - Only the CApp(pom.xml) & project meta data file(arifact.xml) will be updated, but If any other references,"
+				+ "those will be remain unchanged";
+		return RefactoringStatus.createWarningStatus(msg);
 	}
 
 	@Override
@@ -55,11 +70,62 @@ public class ESBArtifactMetaDataDeleteParticipant extends DeleteParticipant {
 				change.add(new ESBMetaDataFileDeleteChange(project.getName(), project.getFile("artifact.xml"), fileList));
 			}
 			resetStaticVariables();
+			change.add(createChangeCApp());
 			return change;
 		}
 		return emptychange;
 	}
 
+	
+	private Change createChangeCApp() throws CoreException, OperationCanceledException {
+
+		CompositeChange deleteChange = new CompositeChange("Delete from CApp");
+
+		IProject[] projects = ResourcesPlugin.getWorkspace().getRoot().getProjects();
+
+		for (IProject project : projects) {
+			if (project.isOpen() && project.hasNature("org.wso2.developerstudio.eclipse.distribution.project.nature")) {
+				try {
+					IFile pomFile = project.getFile("pom.xml");
+					MavenProject mavenProject = RefactorUtils.getMavenProject(project);
+
+					ESBArtifact esbArtifactFromFile = RefactorUtils.getESBArtifactFromFile(originalFile,
+							"org.wso2.developerstudio.eclipse.esb.project.nature");
+					Dependency projectDependency = null;
+
+					if (esbArtifactFromFile != null) {
+						projectDependency = new Dependency();
+						projectDependency.setGroupId(esbArtifactFromFile.getGroupId());
+						projectDependency.setArtifactId(originalFile.getName().substring(0,
+								originalFile.getName().length() - originalFile.getFileExtension().length() - 1));
+						projectDependency.setVersion(esbArtifactFromFile.getVersion());
+					} else {
+						projectDependency = RefactorUtils.getDependencyForTheProject(originalFile);
+						projectDependency.setArtifactId(originalFile.getName().substring(0,
+								originalFile.getName().length() - originalFile.getFileExtension().length() - 1));
+					}
+
+					if (mavenProject != null) {
+						List<?> dependencies = mavenProject.getDependencies();
+						for (Iterator<?> iterator = dependencies.iterator(); iterator.hasNext();) {
+							Dependency dependency = (Dependency) iterator.next();
+							if (RefactorUtils.isDependenciesEqual(projectDependency, dependency)) {
+								deleteChange.add(new MavenConfigurationFileDeleteChange(project.getName(), pomFile,
+										projectDependency));
+							}
+						}
+					}
+				} catch (Exception e) {
+					log.error("Error while refactoring in CApp pom.xml", e);
+				}
+			}
+		}
+
+		return deleteChange;
+	}
+	
+	
+	
 	private void resetStaticVariables() {
 		changeFileList.clear();
 		projectList.clear();

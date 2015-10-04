@@ -57,6 +57,11 @@ public class MavenConfigurationFileDeleteChange extends TextFileChange {
 			identifyDepenencyEntry();
 		}
 	}
+	
+	private String getArtifactInfoAsString(Dependency dep) {
+		String suffix= "";
+		return  suffix.concat(dep.getGroupId().concat("_._").concat(dep.getArtifactId()));
+	}
 
 	private void identifyDepenencyEntry() {
 		FileReader fileReader = null;
@@ -81,13 +86,21 @@ public class MavenConfigurationFileDeleteChange extends TextFileChange {
 			boolean isArtifactMatch = false;
 			boolean isVersionMatch = false;
 			Dependency dependencyForTheProject = deletingArtifactDependency;
-
+			String artifactProperty = getArtifactInfoAsString(dependencyForTheProject);
 			fileReader = new FileReader(pomFile.getLocation().toFile());
 			reader = new BufferedReader(fileReader);
 
 			String line = reader.readLine();
 
 			while (line != null) {
+				
+				if(line.contains(artifactProperty)){
+					String propertyStart = "<"+artifactProperty+">";
+					int start = fullIndex + line.indexOf(propertyStart);
+					String propertyend ="</"+artifactProperty+">";
+					int end = line.indexOf(propertyend) + propertyend.length();
+					addEdit(new DeleteEdit(start, end));
+				}
 
 				if (!isDependencies && line.contains(dependenciesStart)) {
 					isDependencies = true;
@@ -198,21 +211,21 @@ public class MavenConfigurationFileDeleteChange extends TextFileChange {
 				line = reader.readLine();
 			}
 		} catch (Exception e) {
-			log.error("Error occured while trying to generate the Refactoring for the Registry Resource Artifact", e);
+			log.error("Error occurred while trying to generate the Refactoring for the Registry Resource Artifact", e);
 		}finally{
 			try {
 	            if (fileReader != null) {
 	                fileReader.close();
                 }
             } catch (IOException e) {
-            	log.error("Error occured while trying to close the file stream", e);
+            	log.error("Error occurred while trying to close the file stream", e);
             }
 			try {
 				if (reader != null) {
 	                reader.close();
                 }
             } catch (IOException e) {
-            	log.error("Error occured while trying to close the file stream.", e);
+            	log.error("Error occurred while trying to close the file stream.", e);
             }
 		}
 

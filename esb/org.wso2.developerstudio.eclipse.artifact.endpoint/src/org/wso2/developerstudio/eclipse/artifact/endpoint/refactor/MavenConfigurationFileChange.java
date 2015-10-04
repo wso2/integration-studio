@@ -16,6 +16,11 @@
 
 package org.wso2.developerstudio.eclipse.artifact.endpoint.refactor;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
+import org.apache.maven.model.Dependency;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.CoreException;
@@ -26,10 +31,6 @@ import org.wso2.developerstudio.eclipse.artifact.endpoint.Activator;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-
 public class MavenConfigurationFileChange extends TextFileChange {
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
@@ -38,17 +39,18 @@ public class MavenConfigurationFileChange extends TextFileChange {
 	private IProject refactoringProject;
 	private String previousLine = "";
 	private String newName;
-
+	Dependency dependency;
 	MultiTextEdit multiEdit;
 
 	public MavenConfigurationFileChange(String name, IFile file, String previousName,
-	                                    IProject refactoringProject, String newName) {
+	                                    IProject refactoringProject, String newName,Dependency dependency) {
 		super(name, file);
 		pomFile = file;
 
 		this.previousName = previousName;
 		this.refactoringProject = refactoringProject;
 		this.newName = newName;
+		this.dependency = dependency;
 		addTextEdits();
 	}
 
@@ -67,9 +69,9 @@ public class MavenConfigurationFileChange extends TextFileChange {
 					dependencyReplacement();
 				}
 			} catch (CoreException e) {
-				log.error("Error occured while trying to generate the Refactoring", e);
+				log.error("Error occurred while trying to generate the Refactoring", e);
 			} catch (IOException e) {
-				log.error("Error occured while trying to manipulate the file", e);
+				log.error("Error occurred while trying to manipulate the file", e);
 			}
 
 		}
@@ -79,9 +81,14 @@ public class MavenConfigurationFileChange extends TextFileChange {
 		// Here we need to add one to represent the newline character
 		return line.length()+1;
 	}
-
+	
+	private String getArtifactInfoAsString(Dependency dep) {
+		String suffix= "";
+		return  suffix.concat(dep.getGroupId().concat("_._").concat(dep.getArtifactId()));
+	}
 	private void dependencyReplacement() throws IOException {
 		int fullIndex = 0;
+
 		FileReader fileReader = new FileReader(pomFile.getLocation().toFile());
 		BufferedReader reader = new BufferedReader(fileReader);
 		String dependenciesStart = "<dependencies>";
@@ -91,7 +98,25 @@ public class MavenConfigurationFileChange extends TextFileChange {
 		String case2String = "</artifactId>";
 		String artifactId = previousName;
 		String line = reader.readLine();
+		String artifactProperty = getArtifactInfoAsString(dependency);
+		dependency.setArtifactId(newName);
+		String newartifactProperty = getArtifactInfoAsString(dependency);
+		
 		while (line != null) {
+			
+			if(line.contains(artifactProperty)){
+				String propertyStart = "<"+artifactProperty+">";
+				int start = fullIndex + line.indexOf(propertyStart);
+				String newPropertyName =  "<"+newartifactProperty+">";
+				addEdit(new ReplaceEdit(start, propertyStart.length(), newPropertyName));
+								
+				String propertyend ="</"+artifactProperty+">";
+				start = fullIndex + line.indexOf(propertyend);
+				String newPropertyNameend =  "</"+newartifactProperty+">";
+				addEdit(new ReplaceEdit(start, propertyend.length(), newPropertyNameend));
+				
+				
+			}
 			if (!isDependencies && line.contains(dependenciesStart)) {
 				isDependencies = true;
 			}

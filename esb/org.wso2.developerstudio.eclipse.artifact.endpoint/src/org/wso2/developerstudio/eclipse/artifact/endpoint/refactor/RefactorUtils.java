@@ -120,14 +120,11 @@ public class RefactorUtils {
 					}
 			}
 		} catch (CoreException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			 log.error("Error while reading ESB Project", e);
 		} catch (FactoryConfigurationError e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			 log.error("Error while reading ESB Project", e);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			 log.error("Error while reading ESB Project", e);
 		}
 		
 		return null;

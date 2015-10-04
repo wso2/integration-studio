@@ -16,23 +16,20 @@
 
 package org.wso2.developerstudio.eclipse.artifact.endpoint.refactor;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.apache.maven.model.Dependency;
 import org.eclipse.core.resources.IFile;
-import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.ltk.core.refactoring.Change;
 import org.eclipse.ltk.core.refactoring.TextFileChange;
 import org.eclipse.text.edits.DeleteEdit;
 import org.eclipse.text.edits.MultiTextEdit;
 import org.wso2.developerstudio.eclipse.artifact.endpoint.Activator;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
-
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class MavenConfigurationFileDeleteChange extends TextFileChange {
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
@@ -41,11 +38,11 @@ public class MavenConfigurationFileDeleteChange extends TextFileChange {
 	private IFile pomFile;
 	private Dependency deletingArtifactDependency;
 
+
 	public MavenConfigurationFileDeleteChange(String name, IFile file, Dependency deletingArtifactDependency) {
 		super(name, file);
 		pomFile = file;
 		this.deletingArtifactDependency=deletingArtifactDependency;
-
 		addTextEdits();
 	}
 	
@@ -59,6 +56,11 @@ public class MavenConfigurationFileDeleteChange extends TextFileChange {
 		if (pomFile.exists()) {
 			identifyDepenencyEntry();
 		}
+	}
+	
+	private String getArtifactInfoAsString(Dependency dep) {
+		String suffix= "";
+		return  suffix.concat(dep.getGroupId().concat("_._").concat(dep.getArtifactId()));
 	}
 
 	private void identifyDepenencyEntry() {
@@ -85,6 +87,8 @@ public class MavenConfigurationFileDeleteChange extends TextFileChange {
 			boolean isArtifactMatch = false;
 			boolean isVersionMatch = false;
 			Dependency dependencyForTheProject = deletingArtifactDependency;
+			String artifactProperty = getArtifactInfoAsString(dependencyForTheProject);
+			
 
 			fileReader = new FileReader(pomFile.getLocation().toFile());
 			reader = new BufferedReader(fileReader);
@@ -93,6 +97,14 @@ public class MavenConfigurationFileDeleteChange extends TextFileChange {
 
 			while (line != null) {
 
+				if(line.contains(artifactProperty)){
+					String propertyStart = "<"+artifactProperty+">";
+					int start = fullIndex + line.indexOf(propertyStart);
+					String propertyend ="</"+artifactProperty+">";
+					int end = line.indexOf(propertyend) + propertyend.length();
+					addEdit(new DeleteEdit(start, end));
+				}
+					
 				if (!isDependencies && line.contains(dependenciesStart)) {
 					isDependencies = true;
 				}
@@ -201,22 +213,26 @@ public class MavenConfigurationFileDeleteChange extends TextFileChange {
 				fullIndex += RefactorUtils.charsOnTheLine(line);
 				line = reader.readLine();
 			}
+			
+			
+			
+			
 		} catch (Exception e) {
-			log.error("Error occured while trying to generate the Refactoring for the project", e);
+			log.error("Error occurred while trying to generate the Refactoring for the project", e);
 		}finally{
 			try {
 	            if (fileReader != null) {
 	                fileReader.close();
                 }
             } catch (IOException e) {
-            	log.error("Error occured while trying to close the file stream", e);
+            	log.error("Error occurred while trying to close the file stream", e);
             }
 			try {
 				if (reader != null) {
 	                reader.close();
                 }
             } catch (IOException e) {
-            	log.error("Error occured while trying to close the file stream.", e);
+            	log.error("Error occurred while trying to close the file stream.", e);
             }
 		}
 

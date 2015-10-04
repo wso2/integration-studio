@@ -24,6 +24,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
+import java.util.Set;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
@@ -104,7 +105,6 @@ public class DistProjectEditorPage extends FormPage {
 	private Text txtVersion;
 	private Text txtDescription;
 	private boolean pageDirty;
-	Properties properties;
 	
 	IStatus editorStatus = new Status(IStatus.OK, Activator.PLUGIN_ID, "");
 
@@ -200,8 +200,10 @@ public class DistProjectEditorPage extends FormPage {
 	private void writeProperties(){
 		Properties properties = parentPrj.getModel().getProperties();
 		identifyNonProjectProperties(properties);
+		List<String> arifactinfoList = new ArrayList<String>();
 		for (Dependency dependency : getDependencyList().values()) {
 			String artifactInfo = DistProjectUtils.getArtifactInfoAsString(dependency);
+			arifactinfoList.add(artifactInfo);
 			if(serverRoleList.containsKey(artifactInfo)){
 				properties.put(artifactInfo, serverRoleList.get(artifactInfo));
 			} else{
@@ -212,6 +214,7 @@ public class DistProjectEditorPage extends FormPage {
 		parentPrj.getModel().setProperties(properties);
 	}
 	
+
 	private Properties identifyNonProjectProperties(Properties properties){
 		Map<String, DependencyData> dependencies = getProjectList();
 		for (Iterator iterator = dependencies.values().iterator(); iterator.hasNext();) {
@@ -634,12 +637,7 @@ public class DistProjectEditorPage extends FormPage {
 			for (String dependency : getMissingDependencyList().keySet()) {
 				createNode(trDependencies, getMissingDependencyList().get(dependency), false);
 				((MultiStatus)editorStatus).add(new Status( IStatus.WARNING, Activator.PLUGIN_ID,dependency + " is unresolvable"));
-				
-				String artifactInfo = DistProjectUtils.getArtifactInfoAsString( getMissingDependencyList().get(dependency));
-				parentPrj.getModel().getProperties().remove(artifactInfo);
 			}
-						
-			writeProperties();
 			setPageDirty(true);
 			updateDirtyState();
 		} 
@@ -810,8 +808,8 @@ public class DistProjectEditorPage extends FormPage {
 				FileUtils.copy(CarbonArchive.getLocation().toFile(), destFileName);
 			}	 
 		} catch (Exception e) {
-			log.error("An error occured while creating the carbon archive file", e);
-			exportMsg.setMessage("An error occured while creating the carbon archive file. For more details view the log");
+			log.error("An error occurred while creating the carbon archive file", e);
+			exportMsg.setMessage("An error occurred while creating the carbon archive file. For more details view the log");
 			exportMsg.open();
 		}
 	}

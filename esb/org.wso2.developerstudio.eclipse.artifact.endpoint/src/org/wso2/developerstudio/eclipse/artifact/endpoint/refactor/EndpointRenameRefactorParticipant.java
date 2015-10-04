@@ -1,17 +1,14 @@
 /*
  * Copyright (c) 2012, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
  * 
  * http://www.apache.org/licenses/LICENSE-2.0
  * 
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
+ * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations under the License.
  */
 
 package org.wso2.developerstudio.eclipse.artifact.endpoint.refactor;
@@ -46,8 +43,7 @@ public class EndpointRenameRefactorParticipant extends RenameParticipant {
 	private String changedFileName;
 	private IProject esbProject;
 	private static List<String> skipList;
-	protected final static String EDITOR_ID =
-	                                          "org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbMultiPageEditor";
+	protected final static String EDITOR_ID = "org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbMultiPageEditor";
 
 	static {
 		skipList = new ArrayList<String>();
@@ -57,31 +53,27 @@ public class EndpointRenameRefactorParticipant extends RenameParticipant {
 	}
 
 	public RefactoringStatus checkConditions(IProgressMonitor arg0, CheckConditionsContext arg1)
-	                                                                                            throws OperationCanceledException {
-		String fileName=null;
-		String ext="";
+			throws OperationCanceledException {
+		String fileName = null;
+		String ext = "";
 		if (originalFile != null) {
 			List<String> matchinFilesList = new ArrayList<String>();
 			fileName = RefactorUtils.getFilenameWOExtension(changedFileName);
 			ext = RefactorUtils.getFilenameExtension(changedFileName);
 
 			org.wso2.developerstudio.eclipse.utils.file.FileUtils.getAllExactMatchingFiles(esbProject.getLocation()
-			                                                                                         .toOSString(),fileName,
-			                                                                              ext,matchinFilesList,
-			                                                                               skipList);
+					.toOSString(), fileName, ext, matchinFilesList, skipList);
 
 			if (!matchinFilesList.isEmpty()) {
-				return RefactoringStatus.createFatalErrorStatus("An ESB Artifact already exists with the same name " +
-				                                                changedFileName +
-				                                                " in the project " +
-				                                                esbProject.getName());
+				return RefactoringStatus.createFatalErrorStatus("An ESB Artifact already exists with the same name "
+						+ changedFileName + " in the project " + esbProject.getName());
 			} else if (esbProject.getName().equalsIgnoreCase(fileName)) {
-				return RefactoringStatus.createFatalErrorStatus("You are trying to rename your ESB Artifact to have the project name.");
+				return RefactoringStatus
+						.createFatalErrorStatus("You are trying to rename your ESB Artifact to have the project name.");
 			}
 
-			return RefactoringStatus.createInfoStatus("You are about to rename your ESB Artifact " +
-			                                          originalFile.getName() + " to " +
-			                                          changedFileName);
+			return RefactoringStatus.createInfoStatus("You are about to rename your ESB Artifact "
+					+ originalFile.getName() + " to " + changedFileName);
 		}
 
 		return RefactoringStatus.createFatalErrorStatus("You are trying to rename a different resource than a file");
@@ -90,50 +82,38 @@ public class EndpointRenameRefactorParticipant extends RenameParticipant {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see
-	 * org.eclipse.ltk.core.refactoring.participants.RefactoringParticipant#
+	 * @see org.eclipse.ltk.core.refactoring.participants.RefactoringParticipant#
 	 * createPreChange(org.eclipse.core.runtime.IProgressMonitor)
 	 */
-	public Change createPreChange(IProgressMonitor arg0) throws CoreException,
-	                                                    OperationCanceledException {
+	public Change createPreChange(IProgressMonitor arg0) throws CoreException, OperationCanceledException {
 
 		String changedNameWithoutExtention = FilenameUtils.removeExtension(changedFileName);
 		String originalNameWithoutExtension = FilenameUtils.removeExtension(originalFile.getName());
 		CompositeChange compositeChange = new CompositeChange("ESB Artifact Rename");
 
 		// Change content of the original file
-		EndpointArtifactFileChange endpointArtifactFileChange =
-		                                                        new EndpointArtifactFileChange(
-		                                                                                       "Renaming ESB Artifact " +
-		                                                                                               originalNameWithoutExtension,
-		                                                                                       originalFile,
-		                                                                                       originalNameWithoutExtension,
-		                                                                                       changedNameWithoutExtention);
+		EndpointArtifactFileChange endpointArtifactFileChange = new EndpointArtifactFileChange("Renaming ESB Artifact "
+				+ originalNameWithoutExtension, originalFile, originalNameWithoutExtension, changedNameWithoutExtention);
 		compositeChange.add(endpointArtifactFileChange);
 
 		IProject[] projects = ResourcesPlugin.getWorkspace().getRoot().getProjects();
 		for (int i = 0; i < projects.length; i++) {
-			if (projects[i].isOpen() &&
-			    projects[i].hasNature("org.wso2.developerstudio.eclipse.distribution.project.nature")) {
+			if (projects[i].isOpen()
+					&& projects[i].hasNature("org.wso2.developerstudio.eclipse.distribution.project.nature")) {
 				try {
-					MavenProject mavenProject =
-					                            MavenUtils.getMavenProject(projects[i].getFile("pom.xml")
-					                                                                  .getLocation()
-					                                                                  .toFile());
+					MavenProject mavenProject = MavenUtils.getMavenProject(projects[i].getFile("pom.xml").getLocation()
+							.toFile());
 					List<?> dependencies = mavenProject.getDependencies();
 					for (Iterator<?> iterator = dependencies.iterator(); iterator.hasNext();) {
 						Dependency dependency = (Dependency) iterator.next();
 						if (originalNameWithoutExtension.equalsIgnoreCase(dependency.getArtifactId())) {
-							compositeChange.add(new MavenConfigurationFileChange(
-							                                                     projects[i].getName(),
-							                                                     projects[i].getFile("pom.xml"),
-							                                                     originalNameWithoutExtension,
-							                                                     projects[i],
-							                                                     changedNameWithoutExtention));
+							compositeChange.add(new MavenConfigurationFileChange(projects[i].getName(), projects[i]
+									.getFile("pom.xml"), originalNameWithoutExtension, projects[i],
+									changedNameWithoutExtention, dependency));
 						}
 					}
 				} catch (Exception e) {
-					log.error("Error occured while trying to generate the Refactoring.", e);
+					log.error("Error occurred while trying to generate the Refactoring.", e);
 				}
 			}
 		}
@@ -156,8 +136,7 @@ public class EndpointRenameRefactorParticipant extends RenameParticipant {
 	}
 
 	@Override
-	public Change createChange(IProgressMonitor arg0) throws CoreException,
-	                                                 OperationCanceledException {
+	public Change createChange(IProgressMonitor arg0) throws CoreException, OperationCanceledException {
 		return null;
 	}
 

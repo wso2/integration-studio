@@ -34,7 +34,7 @@ public class RefactorUtils {
 		
 		if (mavenProject != null) {
 			dependency.setGroupId(mavenProject.getGroupId() + ".resource");
-			dependency.setArtifactId(mavenProject.getGroupId());
+			dependency.setArtifactId(mavenProject.getArtifactId());
 			dependency.setVersion(mavenProject.getVersion());
 		}
 		return dependency;
@@ -44,7 +44,7 @@ public class RefactorUtils {
 		try {
 				return MavenUtils.getMavenProject(project.getFile("pom.xml").getLocation().toFile());
 		} catch (Exception e) {
-			log.error("Failed to retrive the maven project for the given project", e);
+			log.error("Failed to retrieve the maven project for the given project", e);
 		}
 		return null;
 	}

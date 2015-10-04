@@ -17,11 +17,15 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.query
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
-Import-Package: org.eclipse.ltk.core.refactoring,
+Import-Package: org.apache.commons.io;version="2.0.0.wso2v1",
+ org.apache.maven.model,
+ org.apache.maven.project,
+ org.eclipse.ltk.core.refactoring,
  org.eclipse.ltk.core.refactoring.participants,
  org.eclipse.text.edits,
  org.eclipse.ui.plugin,
  org.wso2.developerstudio.eclipse.ds,
  org.wso2.developerstudio.eclipse.logging.core,
+ org.wso2.developerstudio.eclipse.maven.util,
  org.wso2.developerstudio.eclipse.utils.file
 Bundle-Activator: org.wso2.developerstudio.eclipse.ds.Activator

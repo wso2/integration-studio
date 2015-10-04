@@ -404,20 +404,20 @@ public class Deserializer {
 			for (OMElement omElement : childElementsList) {
 				omElement.detach();
 			}
-			for (OMElement omElement : childElementsList) {
-
-				try {
-					getArtifacts(element.toStringWithConsume());
-				} catch (Exception e) {
-					if (!elementSub.getLocalName().equals("proxy") && !elementSub.getLocalName().equals("target")) {
-						String nameSpace = "xmlns=\"http://ws.apache.org/ns/synapse\"";
-						String errorLine = omElement.toStringWithConsume();
-						String errorLineWithoutNS = errorLine.replaceAll(nameSpace, "");
-						return "Unknown synapse configuration tag: \n\n" + "At Line " + omElement.getLineNumber()
-								+ ", " + errorLineWithoutNS + "\n";
-					}
+			
+			try {
+				getArtifacts(element.toStringWithConsume());
+			} catch (Exception e) {
+				if (!elementSub.getLocalName().equals("proxy") && !elementSub.getLocalName().equals("target")) {
+					String nameSpace = "xmlns=\"http://ws.apache.org/ns/synapse\"";
+					String errorLine = elementSub.toStringWithConsume();
+					String errorLineWithoutNS = errorLine.replaceAll(nameSpace, "");
+					return "Unknown synapse configuration tag: \n\n" + "At Line " + elementSub.getLineNumber()
+							+ ", " + errorLineWithoutNS + "\n";
 				}
-
+			}
+			
+			for (OMElement omElement : childElementsList) {
 				elementSub.addChild(omElement);
 				try {
 					getArtifacts(element.toStringWithConsume());

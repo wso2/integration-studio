@@ -36,6 +36,15 @@ import java.util.Observable;
 import java.util.Observer;
 import java.util.Set;
 
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang.exception.CloneFailedException;
 import org.eclipse.core.resources.IFile;
@@ -94,6 +103,8 @@ import org.eclipse.ui.handlers.IHandlerService;
 import org.eclipse.ui.part.ViewPart;
 import org.osgi.service.event.Event;
 import org.osgi.service.event.EventHandler;
+import org.w3c.dom.Document;
+import org.w3c.dom.Node;
 import org.wso2.developerstudio.eclipse.greg.apim.action.Login;
 import org.wso2.developerstudio.eclipse.greg.base.core.Registry;
 import org.wso2.developerstudio.eclipse.greg.base.interfaces.RegistryBrowserTraverseListener;
@@ -119,6 +130,7 @@ import org.wso2.developerstudio.eclipse.platform.core.event.EsbEditorEvent;
 import org.wso2.developerstudio.eclipse.platform.core.templates.ArtifactTemplate;
 import org.wso2.developerstudio.eclipse.platform.core.templates.ArtifactTemplateHandler;
 import org.wso2.developerstudio.eclipse.platform.ui.utils.MessageDialogUtils;
+import org.xml.sax.SAXException;
 
 public class RegistryBrowserAPIMView extends ViewPart implements Observer {
 
@@ -1306,17 +1318,38 @@ public class RegistryBrowserAPIMView extends ViewPart implements Observer {
 								@SuppressWarnings({})
 								@Override
 								public void run() {
-									if (regResourceNode.getFileEditor() != null) {
-										if (regResourceNode.getFileEditor().isDirty()) {
-											if (MessageDialogUtils.question(regResourceNode.getFileEditor().getSite().getShell(),
-													DO_YOU_WANT_TO_SAVE_CHANGES)) {
-												regResourceNode.getFileEditor().doSave(new NullProgressMonitor());
-											}
-										}
-										closeEditor(regResourceNode);
-									    openResourceInEditor(regResourceNode);
-									}							 
+                                    if (regResourceNode.getFileEditor() != null) {
+                                        if (regResourceNode.getFileEditor().isDirty()) {
+                                            if (MessageDialogUtils.question(regResourceNode.getFileEditor().getSite()
+                                                    .getShell(), DO_YOU_WANT_TO_SAVE_CHANGES)) {
+                                                regResourceNode.getFileEditor().doSave(new NullProgressMonitor());
+                                            }
+                                        }
+                                        closeEditor(regResourceNode);
+                                        updateSequenceName(regResourceNode.getNewFile());
+                                        openResourceInEditor(regResourceNode);
+                                    } else {
+                                        updateSequenceName(regResourceNode.getNewFile());
+                                    }					 
 								}
+
+                                private void updateSequenceName(File file) {
+                                    try {
+                                        DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
+                                        DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
+                                        Document doc = docBuilder.parse(file);
+                                        Node sequence = doc.getElementsByTagName("sequence").item(0);
+                                        Node sequenceName = sequence.getAttributes().getNamedItem("name");
+                                        sequenceName.setNodeValue(newName);  
+                                        TransformerFactory transformerFactory = TransformerFactory.newInstance();
+                                        Transformer transformer = transformerFactory.newTransformer();
+                                        DOMSource source = new DOMSource(doc);
+                                        StreamResult result = new StreamResult(file);
+                                        transformer.transform(source, result);
+                                    } catch (SAXException | IOException | ParserConfigurationException | TransformerException e) {
+                                        log.error("Error while renaming sequence.", e);
+                                    }
+                                }
 							});	
 								
 					monitor.worked(100);

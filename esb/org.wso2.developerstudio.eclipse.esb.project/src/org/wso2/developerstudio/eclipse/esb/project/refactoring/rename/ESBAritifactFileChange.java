@@ -1,41 +1,24 @@
-/*
- * Copyright (c) 2012, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
- * 
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- * 
- * http://www.apache.org/licenses/LICENSE-2.0
- * 
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-package org.wso2.developerstudio.eclipse.artifact.endpoint.refactor;
-
-import org.eclipse.core.resources.IFile;
-import org.eclipse.ltk.core.refactoring.TextFileChange;
-import org.eclipse.text.edits.MultiTextEdit;
-import org.eclipse.text.edits.ReplaceEdit;
-import org.wso2.developerstudio.eclipse.artifact.endpoint.Activator;
-import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
-import org.wso2.developerstudio.eclipse.logging.core.Logger;
+package org.wso2.developerstudio.eclipse.esb.project.refactoring.rename;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class EndpointArtifactFileChange extends TextFileChange {
-	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
+import org.eclipse.core.resources.IFile;
+import org.eclipse.ltk.core.refactoring.TextFileChange;
+import org.eclipse.text.edits.MultiTextEdit;
+import org.eclipse.text.edits.ReplaceEdit;
+import org.wso2.developerstudio.eclipse.esb.project.Activator;
+import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
+import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
+public class ESBAritifactFileChange extends TextFileChange{
+	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 	private IFile endpointFile;
 	private String newName;
 	private String originalName;
 
-	public EndpointArtifactFileChange(String name, IFile file, String originalName, String newName) {
+	public ESBAritifactFileChange(String name, IFile file, String originalName, String newName) {
 		super(name, file);
 		endpointFile = file;
 		this.originalName = originalName;
@@ -53,7 +36,7 @@ public class EndpointArtifactFileChange extends TextFileChange {
 				identifyReplaces();
 			}
 		} catch (IOException e) {
-			log.error("Encountered an IO Error trying to manipulate the file", e);
+			log.error("Error while trying to manipulate the file", e);
 		}
 	}
 

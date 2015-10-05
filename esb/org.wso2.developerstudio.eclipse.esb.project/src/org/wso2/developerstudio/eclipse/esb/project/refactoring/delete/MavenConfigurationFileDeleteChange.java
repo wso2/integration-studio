@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ * Copyright (c) 2015, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,22 +14,23 @@
  * limitations under the License.
  */
 
-package org.wso2.developerstudio.eclipse.general.project.refactor;
-
-import org.apache.maven.model.Dependency;
-import org.eclipse.core.resources.IFile;
-import org.eclipse.ltk.core.refactoring.TextFileChange;
-import org.eclipse.text.edits.DeleteEdit;
-import org.eclipse.text.edits.MultiTextEdit;
-import org.wso2.developerstudio.eclipse.general.project.Activator;
-import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
-import org.wso2.developerstudio.eclipse.logging.core.Logger;
+package org.wso2.developerstudio.eclipse.esb.project.refactoring.delete;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+import org.apache.maven.model.Dependency;
+import org.eclipse.core.resources.IFile;
+import org.eclipse.ltk.core.refactoring.TextFileChange;
+import org.eclipse.text.edits.DeleteEdit;
+import org.eclipse.text.edits.MultiTextEdit;
+import org.wso2.developerstudio.eclipse.esb.project.Activator;
+import org.wso2.developerstudio.eclipse.esb.project.utils.RefactorUtils;
+import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
+import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
 public class MavenConfigurationFileDeleteChange extends TextFileChange {
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
@@ -38,14 +39,14 @@ public class MavenConfigurationFileDeleteChange extends TextFileChange {
 	private IFile pomFile;
 	private Dependency deletingArtifactDependency;
 
+
 	public MavenConfigurationFileDeleteChange(String name, IFile file, Dependency deletingArtifactDependency) {
 		super(name, file);
 		pomFile = file;
 		this.deletingArtifactDependency=deletingArtifactDependency;
-
 		addTextEdits();
 	}
-
+	
 	private void addTextEdits() {
 
 		multiEdit = new MultiTextEdit();
@@ -82,24 +83,27 @@ public class MavenConfigurationFileDeleteChange extends TextFileChange {
 			boolean isDependencies = false;
 			boolean isDependency = false;
 			List<String> dependencyEntry = new ArrayList<String>();
+			// boolean isGroupId=false;
 			boolean isGroupMatch = false;
 			boolean isArtifactMatch = false;
 			boolean isVersionMatch = false;
 			Dependency dependencyForTheProject = deletingArtifactDependency;
 			String artifactProperty = getArtifactInfoAsString(dependencyForTheProject);
+			
+
 			fileReader = new FileReader(pomFile.getLocation().toFile());
 			reader = new BufferedReader(fileReader);
 
 			String line = reader.readLine();
 
 			while (line != null) {
-				
+
 				if(line.contains(artifactProperty)){
 					String propertyStart = "<"+artifactProperty+">";
 					int start = fullIndex + line.indexOf(propertyStart);
 					addEdit(new DeleteEdit(start,line.trim().length()));
 				}
-
+					
 				if (!isDependencies && line.contains(dependenciesStart)) {
 					isDependencies = true;
 				}
@@ -208,8 +212,12 @@ public class MavenConfigurationFileDeleteChange extends TextFileChange {
 				fullIndex += RefactorUtils.charsOnTheLine(line);
 				line = reader.readLine();
 			}
+			
+			
+			
+			
 		} catch (Exception e) {
-			log.error("Error occurred while trying to generate the Refactoring for the Registry Resource Artifact", e);
+			log.error("Error occurred while trying to generate the Refactoring for the project", e);
 		}finally{
 			try {
 	            if (fileReader != null) {

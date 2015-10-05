@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ * Copyright (c) 2015, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.developerstudio.eclipse.artifact.endpoint.refactor;
+package org.wso2.developerstudio.eclipse.general.project.refactor;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -27,11 +27,11 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.ltk.core.refactoring.TextFileChange;
 import org.eclipse.text.edits.MultiTextEdit;
 import org.eclipse.text.edits.ReplaceEdit;
-import org.wso2.developerstudio.eclipse.artifact.endpoint.Activator;
+import org.wso2.developerstudio.eclipse.general.project.Activator;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
-public class MavenConfigurationFileChange extends TextFileChange {
+public class MavenConfigurationFileRenameChange extends TextFileChange {
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
 	private IFile pomFile;
@@ -42,7 +42,7 @@ public class MavenConfigurationFileChange extends TextFileChange {
 	Dependency dependency;
 	MultiTextEdit multiEdit;
 
-	public MavenConfigurationFileChange(String name, IFile file, String previousName,
+	public MavenConfigurationFileRenameChange(String name, IFile file, String previousName,
 	                                    IProject refactoringProject, String newName,Dependency dependency) {
 		super(name, file);
 		pomFile = file;

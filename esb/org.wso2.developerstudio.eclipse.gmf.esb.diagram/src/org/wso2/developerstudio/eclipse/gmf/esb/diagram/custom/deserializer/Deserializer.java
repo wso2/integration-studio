@@ -408,7 +408,7 @@ public class Deserializer {
 			try {
 				getArtifacts(element.toStringWithConsume());
 			} catch (Exception e) {
-				if (!elementSub.getLocalName().equals("proxy") && !elementSub.getLocalName().equals("target")) {
+				if (!(elementSub.getLocalName().equals("proxy") || elementSub.getLocalName().equals("target") || elementSub.getLocalName().equals("template") || elementSub.getLocalName().equals("api"))) {
 					String nameSpace = "xmlns=\"http://ws.apache.org/ns/synapse\"";
 					String errorLine = elementSub.toStringWithConsume();
 					String errorLineWithoutNS = errorLine.replaceAll(nameSpace, "");

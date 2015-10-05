@@ -87,11 +87,10 @@ public class AnalyticsArtifactRenameParticipant extends RenameParticipant {
 	public Change createChange(IProgressMonitor arg0) throws CoreException,
 	                                                 OperationCanceledException {
 		CompositeChange change=new CompositeChange("Analytics Artifact Model Rename");
-		String originalFileNamewithExtension = originalFile.getName();
+		String originalFileName = originalFile.getName();
+		String extension = originalFile.getFileExtension();
 		IFile artifactFile = analyticsProject.getFile("artifact.xml");
-		String originalNameWithoutExtension = originalFileNamewithExtension.substring(0,originalFileNamewithExtension.length()-4);
-		String changedNameWithoutextension = changedFileName.substring(0,changedFileName.length()-4);
-		change.add(new AnalyticsMetaDataFileChange("Meta data file", artifactFile, originalNameWithoutExtension, changedNameWithoutextension));
+		change.add(new AnalyticsMetaDataFileChange("Meta data file", artifactFile, originalFileName, changedFileName,extension));
 		return change;
 	}
 

@@ -65,7 +65,7 @@
          point="org.eclipse.emf.validation.ui.UIRegisteredClientContext">
       <clientContext id="org.wso2.developerstudio.eclipse.ds.ModelConstraintsContext"/>
    </extension>
-   
+  
    <extension
        point="org.eclipse.ltk.core.refactoring.renameParticipants">
        <renameParticipant
@@ -87,12 +87,55 @@
 				</enablement>
 		</renameParticipant>
    </extension>
+    <extension
+       point="org.eclipse.ltk.core.refactoring.renameParticipants">
+       <renameParticipant
+			class=" org.wso2.developerstudio.eclipse.ds.capp.refactor.DataServiceRenameParticipant"
+			id="DataServiceRenameParticipantForCApp"
+			name="DataServiceRenameUpdateforCApp">
+				<enablement>
+					<and>
+							<instanceof
+								value="org.eclipse.core.resources.IFile">
+							</instanceof>
+						<adapt type="org.eclipse.core.resources.IResource">
+             				<test
+                   				property="org.eclipse.core.resources.projectNature"
+                   				value="org.wso2.developerstudio.eclipse.ds.project.nature">
+             				</test>
+         				</adapt>
+					</and>
+				</enablement>
+		</renameParticipant>
+   </extension>
+   
    <extension
          point="org.eclipse.ltk.core.refactoring.deleteParticipants">
        <deleteParticipant
 			class="org.wso2.developerstudio.eclipse.ds.refactor.DataServiceDeleteParticipant"
 			id="DataServiceDeleteParticipant"
 			name="DataServiceDelete">
+				<enablement>
+					<and>
+							<instanceof
+								value="org.eclipse.core.resources.IFile">
+							</instanceof>
+						<adapt type="org.eclipse.core.resources.IResource">
+             				<test
+                   				property="org.eclipse.core.resources.projectNature"
+                   				value="org.wso2.developerstudio.eclipse.ds.project.nature">
+             				</test>
+         				</adapt>
+					</and>
+				</enablement>
+		</deleteParticipant>
+   </extension>
+   <extension
+         point="org.eclipse.ltk.core.refactoring.deleteParticipants">
+       <deleteParticipant
+			class="org.wso2.developerstudio.eclipse.ds.capp.refactor.DataServiceDeleteParticipant"
+			id="DataServiceDeleteParticipantForCapp"
+			name="DataServiceDelete and Update CApp">
 				<enablement>
 					<and>
 							<instanceof

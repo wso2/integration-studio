@@ -21,6 +21,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.apache.maven.model.Dependency;
 import org.eclipse.core.resources.IFile;
@@ -98,12 +100,18 @@ public class MavenConfigurationFileDeleteChange extends TextFileChange {
 
 			while (line != null) {
 
-				if(line.contains(artifactProperty)){
-					String propertyStart = "<"+artifactProperty+">";
-					int start = fullIndex + line.indexOf(propertyStart);
-					addEdit(new DeleteEdit(start,line.trim().length()));
+				if (line.contains(artifactProperty)) {
+					String patternstr = "^(.)*(\\s)*(<){1}" + artifactProperty + "(>){1}(.)*(>)$";
+					Pattern pattern = Pattern.compile(patternstr);
+					Matcher matcher = pattern.matcher(line);
+
+					if (matcher.find()) {
+						String propertyStart = "<" + artifactProperty + ">";
+						int start = fullIndex + line.indexOf(propertyStart);
+						addEdit(new DeleteEdit(start, line.trim().length()));
+					}
 				}
-					
+
 				if (!isDependencies && line.contains(dependenciesStart)) {
 					isDependencies = true;
 				}

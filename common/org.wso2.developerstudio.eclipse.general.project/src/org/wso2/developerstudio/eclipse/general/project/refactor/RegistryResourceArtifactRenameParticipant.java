@@ -124,8 +124,13 @@ public class RegistryResourceArtifactRenameParticipant extends RenameParticipant
 		RegistryResourceArtifactFileChange registryResourceArtifactFileChange = new RegistryResourceArtifactFileChange(
 				"Changing original file content " + originalNameWithoutExtension, originalFile,
 				originalNameWithoutExtension, changedNameWithoutExtention);
+		
+		
 		change.add(registryResourceArtifactFileChange);
-		deleteFromPOM(change);
+		
+		
+		
+	
 
 		if (originalFile != null) {
 			change.add(new RegistryMetadataFileChange("Meta data file", registryProject.getFile("artifact.xml"),
@@ -250,7 +255,7 @@ public class RegistryResourceArtifactRenameParticipant extends RenameParticipant
 
 	@Override
 	public Change createChange(IProgressMonitor pm) throws CoreException, OperationCanceledException {
-		// TODO Auto-generated method stub
+
 		return null;
 	}
 

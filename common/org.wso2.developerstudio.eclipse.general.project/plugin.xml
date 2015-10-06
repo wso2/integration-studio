@@ -46,6 +46,24 @@
 					</and>
 				</enablement>
 		</renameParticipant>
+		 <renameParticipant
+			class="org.wso2.developerstudio.eclipse.general.project.capp.refactor.RegistryResourceArtifactRenameParticipant"
+			id="RegistryResourceArtifactRenameParticipantCApp"
+			name="RegistryResourceArtifactRenameCApp">
+				<enablement>
+					<and>
+							<instanceof
+								value="org.eclipse.core.resources.IResource">
+							</instanceof>
+						<adapt type="org.eclipse.core.resources.IResource">
+             				<test
+                   				property="org.eclipse.core.resources.projectNature"
+                   				value="org.wso2.developerstudio.eclipse.general.project.nature">
+             				</test>
+         				</adapt>
+					</and>
+				</enablement>
+		</renameParticipant>
  </extension>
  <extension
        point="org.eclipse.ltk.core.refactoring.deleteParticipants">
@@ -85,7 +103,29 @@
 					</and>
 				</enablement>
 		</deleteParticipant>
+		 <deleteParticipant
+			class="org.wso2.developerstudio.eclipse.general.project.capp.refactor.RegistryResourceArtifactDeleteParticipant"
+			id="RegistryResiurceArtifactDeleteParticipantForCapp"
+			name="RegistryResiurceArtifactDeleteParticipantRefactorCapp">
+				<enablement>
+					<and>
+							<instanceof
+								value="org.eclipse.core.resources.IResource">
+							</instanceof>
+						<adapt type="org.eclipse.core.resources.IResource">
+             				<test
+                   				property="org.eclipse.core.resources.projectNature"
+                   				value="org.wso2.developerstudio.eclipse.general.project.nature">
+             				</test>
+         				</adapt>
+					</and>
+				</enablement>
+		</deleteParticipant>
  </extension>
+ 
+ 
+ 
+ 
  <extension
        point="org.eclipse.ltk.core.refactoring.moveParticipants">
        <moveParticipant

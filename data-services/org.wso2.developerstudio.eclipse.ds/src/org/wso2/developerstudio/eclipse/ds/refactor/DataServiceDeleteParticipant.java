@@ -17,14 +17,9 @@
 package org.wso2.developerstudio.eclipse.ds.refactor;
 
 import java.io.IOException;
-import java.util.Iterator;
-import java.util.List;
 
-import org.apache.maven.model.Dependency;
-import org.apache.maven.project.MavenProject;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
-import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.OperationCanceledException;
@@ -37,7 +32,6 @@ import org.wso2.developerstudio.eclipse.ds.Activator;
 import org.wso2.developerstudio.eclipse.ds.util.Messages;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
-import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
 
 
 public class DataServiceDeleteParticipant extends DeleteParticipant {
@@ -75,7 +69,7 @@ public class DataServiceDeleteParticipant extends DeleteParticipant {
 	}
 
 	@Override
-	public Change createChange(IProgressMonitor arg0) throws CoreException, OperationCanceledException {
+	public Change createPreChange(IProgressMonitor arg0) throws CoreException, OperationCanceledException {
 		CompositeChange change = new CompositeChange(Messages.DataServiceDeleteParticipant_DataServiceDelete);
 		IFile artifactFile = dsProject.getFile(ARTIFACT_XML_FILE);
 		try {
@@ -85,61 +79,13 @@ public class DataServiceDeleteParticipant extends DeleteParticipant {
 		} catch (IOException e) {
 			throw new OperationCanceledException(Messages.DataServiceDeleteParticipant_ArtifactXmlDeleteChangeFailed);
 		}
-		deleteFromPOM(change);
 		return change;
 	}
 	
-	private void deleteFromPOM(CompositeChange deleteChange) throws CoreException {
-		IProject[] projects = ResourcesPlugin.getWorkspace().getRoot().getProjects();
-
-		for (IProject project : projects) {
-			if (project.isOpen() && project.hasNature("org.wso2.developerstudio.eclipse.distribution.project.nature")) {
-				try {
-					IFile pomFile = project.getFile("pom.xml");
-
-					MavenProject mavenProject = MavenUtils.getMavenProject(project.getFile("pom.xml").getLocation()
-							.toFile());
-
-					Dependency projectDependency = getDependencyForTheProject(originalFile.getProject());
-
-					if (originalFile instanceof IFile) {
-						projectDependency.setArtifactId(originalFile.getName().substring(0,
-								originalFile.getName().length() - originalFile.getFileExtension().length() - 1));
-					} else {
-						projectDependency.setArtifactId(originalFile.getName());
-					}
-					List<?> dependencies = mavenProject.getDependencies();
-					for (Iterator<?> iterator = dependencies.iterator(); iterator.hasNext();) {
-						Dependency dependency = (Dependency) iterator.next();
-						if (isDependenciesEqual(projectDependency, dependency)) {
-							deleteChange.add(new MavenConfigurationFileDeleteChange(project.getName(), pomFile,
-									projectDependency));
-						}
-					}
-				} catch (Exception e) {
-					log.error("Error occurred while trying to generate the Refactoring", e);
-				}
-			}
-		}
-	}
-	
-   private Dependency getDependencyForTheProject(IProject project) throws Exception {
-	   
-	   MavenProject mavenProject =  MavenUtils.getMavenProject(project.getFile("pom.xml").getLocation().toFile());
-	   Dependency dependency = new Dependency();		
-		if (mavenProject != null) {
-			dependency.setGroupId(mavenProject.getGroupId() + ".dataservice");
-			dependency.setArtifactId(mavenProject.getArtifactId());
-			dependency.setVersion(mavenProject.getVersion());
-		}
-		return dependency;
-	}
-
-	
-   private boolean isDependenciesEqual(Dependency source, Dependency target) {
-		return (source.getGroupId().equalsIgnoreCase(target.getGroupId()) &&
-		        source.getArtifactId().equalsIgnoreCase(target.getArtifactId()) && source.getVersion()
-		                                                                                 .equalsIgnoreCase(target.getVersion()));
-	}
+@Override
+public Change createChange(IProgressMonitor pm) throws CoreException, OperationCanceledException {
+	// TODO Auto-generated method stub
+	return null;
+}
 
 }

@@ -83,7 +83,7 @@ public class RegistryResourceArtifactDeleteParticipant extends DeleteParticipant
 			// since the operation flow should not be interrupted even if the file is not an ESB related file
 			log.info("The file is not an ESB artifact");
 		}
-		deleteFromPOM(deleteChange);
+		
 		return deleteChange;
 	}
 

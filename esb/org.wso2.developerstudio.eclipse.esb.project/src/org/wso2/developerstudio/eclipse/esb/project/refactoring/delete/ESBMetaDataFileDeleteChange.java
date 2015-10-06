@@ -17,6 +17,8 @@
 package org.wso2.developerstudio.eclipse.esb.project.refactoring.delete;
 
 import org.eclipse.core.resources.IFile;
+import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.ltk.core.refactoring.TextFileChange;
 import org.eclipse.text.edits.DeleteEdit;
 import org.eclipse.text.edits.MultiTextEdit;
@@ -42,6 +44,12 @@ public class ESBMetaDataFileDeleteChange extends TextFileChange {
 		this.originalFile = originalFile;
 
 		addTextEdits();
+		try {
+			file.refreshLocal(0, new NullProgressMonitor());
+			originalFile.refreshLocal(0, new NullProgressMonitor());
+		} catch (CoreException ignrore) {
+ 
+		}
 	}
 
 	public ESBMetaDataFileDeleteChange(String name, IFile file, List<IFile> fileList) {

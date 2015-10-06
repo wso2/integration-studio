@@ -74,7 +74,7 @@
 			<enumeration value="mqtt"></enumeration>
 			<enumeration value="soap"></enumeration>
 			<enumeration value="websocket"></enumeration>
-			<enumeration value="websocket.local"></enumeration>
+			<enumeration value="websocket-local"></enumeration>
 			<enumeration value="wso2event"></enumeration>
 		</restriction>
 	</simpleType>

@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.io.FilenameUtils;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.platform.core.interfaces.IMediaTypeResolverProvider;
@@ -108,18 +109,38 @@ public class MediaManager {
 	public static IMediaTypeResolverProvider getMediaTypeResolver(File file) {
 		if (file.isFile()){
 			IMediaTypeResolverProvider[] resourceMediaTypeResolver = MediaManager.getMediaTypeResolver();
-			IMediaTypeResolverProvider selectedProvider=null;
-			for (IMediaTypeResolverProvider resolverProvider : resourceMediaTypeResolver) {
-				if (resolverProvider.isMediaType(file)){
-					if ((selectedProvider==null) || (selectedProvider.getPriority()<resolverProvider.getPriority())){
-						selectedProvider=resolverProvider;
-					}
-				}
-			}
-			return selectedProvider;
+			String extension = FilenameUtils.getExtension(file.getAbsolutePath());
+			return getSelectedProvider(file, resourceMediaTypeResolver, extension);
 		}
 		return null;
 	}
+
+    private static IMediaTypeResolverProvider getSelectedProvider(File file,
+            IMediaTypeResolverProvider[] resourceMediaTypeResolver,
+            String extension) {
+        IMediaTypeResolverProvider selectedProvider = null;
+        if (extension != null) {
+            for (IMediaTypeResolverProvider resolverProvider : resourceMediaTypeResolver) {
+                if (resolverProvider.getExtensions().contains(extension)) {
+                    if (resolverProvider.isMediaType(file)) {
+                        if ((selectedProvider == null)
+                                || (selectedProvider.getPriority() < resolverProvider.getPriority())) {
+                            selectedProvider = resolverProvider;
+                        }
+                    }
+                }
+            }
+        } else {
+            for (IMediaTypeResolverProvider resolverProvider : resourceMediaTypeResolver) {
+                if (resolverProvider.isMediaType(file)) {
+                    if ((selectedProvider == null) || (selectedProvider.getPriority() < resolverProvider.getPriority())) {
+                        selectedProvider = resolverProvider;
+                    }
+                }
+            }
+        }
+        return selectedProvider;
+    }
 	
 	public static String getMediaType(URL url) throws IOException {
 		IMediaTypeResolverProvider selectedProvider = getMediaTypeResolver(url);

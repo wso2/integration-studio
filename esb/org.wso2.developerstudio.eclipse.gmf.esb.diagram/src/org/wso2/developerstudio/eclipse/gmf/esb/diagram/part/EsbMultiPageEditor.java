@@ -791,6 +791,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
     public void doSave(IProgressMonitor monitor) {
     	//Fixing TOOLS-2958
     	setContextClassLoader();
+    	boolean isSaveAllow=true;
 		if (getActivePage() == SOURCE_VIEW_PAGE_INDEX) {
 			try {
 				String xmlSource = sourceEditor.getDocument().get();
@@ -812,13 +813,16 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
 					return;
 				}
 			} catch (Exception e) {
+				isSaveAllow=false;
 				printHandleDesignViewActivatedEventErrorMessage(e);
 			} finally {
 				AbstractEsbNodeDeserializer.cleanupData();
 				firePropertyChange(PROP_DIRTY);
 			}
 		}
-		sourceDirty = false;
+		if (isSaveAllow) {
+			sourceDirty = false;
+		}
 
 		getEditor(0).doSave(monitor);
 		EsbServer esbServer = EditorUtils.getEsbServer(graphicalEditor);

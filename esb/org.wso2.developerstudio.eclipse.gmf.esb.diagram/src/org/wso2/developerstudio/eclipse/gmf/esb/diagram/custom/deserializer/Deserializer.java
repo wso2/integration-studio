@@ -408,16 +408,21 @@ public class Deserializer {
 			try {
 				getArtifacts(element.toStringWithConsume());
 			} catch (Exception e) {
-				if (!(elementSub.getLocalName().equals("proxy") || elementSub.getLocalName().equals("target") || elementSub.getLocalName().equals("template") || elementSub.getLocalName().equals("api"))) {
+				if (!(elementSub.getLocalName().equals("proxy") || elementSub.getLocalName().equals("target")
+						|| elementSub.getLocalName().equals("template") || elementSub.getLocalName().equals("api"))) {
 					String nameSpace = "xmlns=\"http://ws.apache.org/ns/synapse\"";
 					String errorLine = elementSub.toStringWithConsume();
 					String errorLineWithoutNS = errorLine.replaceAll(nameSpace, "");
-					return "Unknown synapse configuration tag: \n\n" + "At Line " + elementSub.getLineNumber()
-							+ ", " + errorLineWithoutNS + "\n";
+					return "Unknown synapse configuration tag: \n\n" + "At Line " + elementSub.getLineNumber() + ", "
+							+ errorLineWithoutNS + "\n";
 				}
 			}
 			
 			for (OMElement omElement : childElementsList) {
+				if (omElement.getLocalName().equals("parameter")) {
+					continue;
+				}
+				
 				elementSub.addChild(omElement);
 				try {
 					getArtifacts(element.toStringWithConsume());

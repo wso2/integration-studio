@@ -111,7 +111,7 @@ public class EndpointArtifactFileChange extends TextFileChange {
 	private int getArrayIndexWithString(String stringToSearch, String[] array) {
 		int index = 0;
 		for (String string : array) {
-			if (string.contains(stringToSearch)) {
+			if (string.startsWith(stringToSearch)) {
 				return index;
 			}
 			index++;

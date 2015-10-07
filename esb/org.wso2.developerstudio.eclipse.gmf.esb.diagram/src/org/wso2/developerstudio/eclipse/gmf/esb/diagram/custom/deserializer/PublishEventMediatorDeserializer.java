@@ -69,9 +69,13 @@ public class PublishEventMediatorDeserializer extends
 			if (StringUtils.isNotEmpty(metaProperty.getType())) {
 				metaAttribute.setAttributeType(AttributeType.getByName(metaProperty.getType()));
 			}
+			
+			metaAttribute.setDefaultValue(metaProperty.getDefaultValue());
+			
 			if (metaProperty.getValue() != null) {
 				metaAttribute.setAttributeValueType(AttributeValueType.VALUE);
 				metaAttribute.setAttributeValue(metaProperty.getValue());
+				
 			} else if (metaProperty.getExpression() != null) {
 				metaAttribute.setAttributeValueType(AttributeValueType.EXPRESSION);
 				SynapsePath xpath = metaProperty.getExpression();
@@ -96,6 +100,9 @@ public class PublishEventMediatorDeserializer extends
 			if (StringUtils.isNotEmpty(correlationProperty.getType())) {
 				correlationAttribute.setAttributeType(AttributeType.getByName(correlationProperty.getType()));
 			}
+			
+			correlationAttribute.setDefaultValue(correlationProperty.getDefaultValue());
+			
 			if (correlationProperty.getValue() != null) {
 				correlationAttribute.setAttributeValueType(AttributeValueType.VALUE);
 				correlationAttribute.setAttributeValue(correlationProperty.getValue());
@@ -122,6 +129,9 @@ public class PublishEventMediatorDeserializer extends
 			if (StringUtils.isNotEmpty(payloadProperty.getType())) {
 				payloadAttribute.setAttributeType(AttributeType.getByName(payloadProperty.getType()));
 			}
+			
+			payloadAttribute.setDefaultValue(payloadProperty.getDefaultValue());
+			
 			if (payloadProperty.getValue() != null) {
 				payloadAttribute.setAttributeValueType(AttributeValueType.VALUE);
 				payloadAttribute.setAttributeValue(payloadProperty.getValue());
@@ -149,6 +159,9 @@ public class PublishEventMediatorDeserializer extends
 			if (StringUtils.isNotEmpty(arbitraryProperty.getType())) {
 				arbitraryAttribute.setAttributeType(AttributeType.getByName(arbitraryProperty.getType()));
 			}
+			
+			arbitraryAttribute.setDefaultValue(arbitraryProperty.getDefaultValue());
+			
 			if (arbitraryProperty.getValue() != null) {
 				arbitraryAttribute.setAttributeValueType(AttributeValueType.VALUE);
 				arbitraryAttribute.setAttributeValue(arbitraryProperty.getValue());

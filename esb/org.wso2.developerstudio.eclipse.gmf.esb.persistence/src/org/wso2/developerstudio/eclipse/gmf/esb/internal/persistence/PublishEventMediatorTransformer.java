@@ -88,11 +88,9 @@ public class PublishEventMediatorTransformer extends AbstractEsbNodeTransformer 
 			}
 			// PublishEvent event attributes
 			publishEventMediator.setMetaProperties(getVisualAttributes(visualPublishEvent.getMetaAttributes()));
-			publishEventMediator.setCorrelationProperties(getVisualAttributes(visualPublishEvent
-					.getCorrelationAttributes()));
+			publishEventMediator.setCorrelationProperties(getVisualAttributes(visualPublishEvent.getCorrelationAttributes()));
 			publishEventMediator.setPayloadProperties(getVisualAttributes(visualPublishEvent.getPayloadAttributes()));
-			publishEventMediator
-					.setArbitraryProperties(getVisualAttributes(visualPublishEvent.getArbitraryAttributes()));
+			publishEventMediator.setArbitraryProperties(getVisualAttributes(visualPublishEvent.getArbitraryAttributes()));
 		}
 		return publishEventMediator;
 	}
@@ -127,6 +125,7 @@ public class PublishEventMediatorTransformer extends AbstractEsbNodeTransformer 
 					attribute.setExpression((SynapseXPath) propertyExpression);
 				}
 			}
+			attribute.setDefaultValue(visualAttribute.getDefaultValue());
 			attributesList.add(attribute);
 		}
 		return attributesList;

@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
@@ -108,7 +109,7 @@ public class DistProjectEditorPage extends FormPage {
 	
 	IStatus editorStatus = new Status(IStatus.OK, Activator.PLUGIN_ID, "");
 
-	private Map<String,Dependency> dependencyList = new HashMap<String, Dependency>();
+	private Map<String,Dependency> dependencyList = new LinkedHashMap<String, Dependency>();
 	private Map<String,String> serverRoleList = new HashMap<String, String>();
 	private SortedMap<String,DependencyData> projectList = Collections.synchronizedSortedMap(new TreeMap<String, DependencyData>(Collections.reverseOrder()));
 	private Map<String,Dependency> missingDependencyList = new HashMap<String, Dependency>();
@@ -150,7 +151,7 @@ public class DistProjectEditorPage extends FormPage {
 		ProjectList projectListProvider = new ProjectList();
 		List<ListData> projectListData = projectListProvider.getListData(null, null);
 		SortedMap<String,DependencyData> projectList= Collections.synchronizedSortedMap(new TreeMap<String, DependencyData>());
-		Map<String,Dependency> dependencyMap = new HashMap<String, Dependency>();
+		Map<String,Dependency> dependencyMap = new LinkedHashMap<String, Dependency>();
 		for (ListData data : projectListData) {
 			DependencyData dependencyData = (DependencyData)data.getData();
 			projectList.put(data.getCaption(), dependencyData);

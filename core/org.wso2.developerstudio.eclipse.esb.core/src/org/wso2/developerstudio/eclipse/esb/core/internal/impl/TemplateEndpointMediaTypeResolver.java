@@ -36,7 +36,7 @@ public class TemplateEndpointMediaTypeResolver extends AbstractXmlDocMediaTypeRe
                 Iterator endpointElementItrtr = root.getChildrenWithLocalName("endpoint");
                 isEndpointTemplate = endpointElementItrtr.hasNext(); 
             }
-        } catch (Exception e) {
+        } catch (XMLStreamException | FactoryConfigurationError e) {
             isEndpointTemplate = false;
         }
         return isEndpointTemplate;

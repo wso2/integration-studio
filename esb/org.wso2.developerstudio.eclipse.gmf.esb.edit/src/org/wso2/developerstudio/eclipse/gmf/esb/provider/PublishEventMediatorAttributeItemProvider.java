@@ -22,8 +22,12 @@ import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.ViewerNotification;
+import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 import org.wso2.developerstudio.eclipse.gmf.esb.PublishEventMediatorAttribute;
 
 /**
@@ -54,8 +58,31 @@ public class PublishEventMediatorAttributeItemProvider extends AbstractNameValue
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addDefaultValuePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
+	}
+
+	/**
+	 * This adds a property descriptor for the Default Value feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addDefaultValuePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_PublishEventMediatorAttribute_defaultValue_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_PublishEventMediatorAttribute_defaultValue_feature", "_UI_PublishEventMediatorAttribute_type"),
+				 EsbPackage.Literals.PUBLISH_EVENT_MEDIATOR_ATTRIBUTE__DEFAULT_VALUE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
@@ -94,6 +121,12 @@ public class PublishEventMediatorAttributeItemProvider extends AbstractNameValue
 	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
+
+		switch (notification.getFeatureID(PublishEventMediatorAttribute.class)) {
+			case EsbPackage.PUBLISH_EVENT_MEDIATOR_ATTRIBUTE__DEFAULT_VALUE:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+				return;
+		}
 		super.notifyChanged(notification);
 	}
 

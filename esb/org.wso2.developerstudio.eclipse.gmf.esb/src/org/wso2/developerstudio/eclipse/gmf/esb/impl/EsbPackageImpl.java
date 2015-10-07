@@ -6040,6 +6040,15 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getPublishEventMediatorAttribute_DefaultValue() {
+		return (EAttribute)publishEventMediatorAttributeEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getAbstractNameValueExpressionAttribute() {
 		return abstractNameValueExpressionAttributeEClass;
 	}
@@ -18756,6 +18765,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		publishEventMediatorOutputConnectorEClass = createEClass(PUBLISH_EVENT_MEDIATOR_OUTPUT_CONNECTOR);
 
 		publishEventMediatorAttributeEClass = createEClass(PUBLISH_EVENT_MEDIATOR_ATTRIBUTE);
+		createEAttribute(publishEventMediatorAttributeEClass, PUBLISH_EVENT_MEDIATOR_ATTRIBUTE__DEFAULT_VALUE);
 
 		abstractNameValueExpressionAttributeEClass = createEClass(ABSTRACT_NAME_VALUE_EXPRESSION_ATTRIBUTE);
 		createEAttribute(abstractNameValueExpressionAttributeEClass, ABSTRACT_NAME_VALUE_EXPRESSION_ATTRIBUTE__ATTRIBUTE_NAME);
@@ -21100,6 +21110,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		initEClass(publishEventMediatorOutputConnectorEClass, PublishEventMediatorOutputConnector.class, "PublishEventMediatorOutputConnector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(publishEventMediatorAttributeEClass, PublishEventMediatorAttribute.class, "PublishEventMediatorAttribute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getPublishEventMediatorAttribute_DefaultValue(), ecorePackage.getEString(), "defaultValue", "", 0, 1, PublishEventMediatorAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(abstractNameValueExpressionAttributeEClass, AbstractNameValueExpressionAttribute.class, "AbstractNameValueExpressionAttribute", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getAbstractNameValueExpressionAttribute_AttributeName(), ecorePackage.getEString(), "attributeName", "attribute_name", 0, 1, AbstractNameValueExpressionAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

@@ -1003,7 +1003,9 @@
     </genClasses>
     <genClasses ecoreClass="esb.ecore#//PublishEventMediatorInputConnector"/>
     <genClasses ecoreClass="esb.ecore#//PublishEventMediatorOutputConnector"/>
-    <genClasses ecoreClass="esb.ecore#//PublishEventMediatorAttribute"/>
+    <genClasses ecoreClass="esb.ecore#//PublishEventMediatorAttribute">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//PublishEventMediatorAttribute/defaultValue"/>
+    </genClasses>
     <genClasses image="false" ecoreClass="esb.ecore#//AbstractNameValueExpressionAttribute">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//AbstractNameValueExpressionAttribute/attributeName"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//AbstractNameValueExpressionAttribute/attributeValueType"/>

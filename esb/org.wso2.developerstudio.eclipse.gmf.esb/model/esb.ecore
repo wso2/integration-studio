@@ -455,7 +455,10 @@
       eSuperTypes="#//InputConnector"/>
   <eClassifiers xsi:type="ecore:EClass" name="PublishEventMediatorOutputConnector"
       eSuperTypes="#//OutputConnector"/>
-  <eClassifiers xsi:type="ecore:EClass" name="PublishEventMediatorAttribute" eSuperTypes="#//AbstractNameValueExpressionAttribute"/>
+  <eClassifiers xsi:type="ecore:EClass" name="PublishEventMediatorAttribute" eSuperTypes="#//AbstractNameValueExpressionAttribute">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="defaultValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral=""/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AbstractNameValueExpressionAttribute"
       abstract="true" eSuperTypes="#//EsbNode">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="attributeName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"

@@ -4940,13 +4940,22 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	int PUBLISH_EVENT_MEDIATOR_ATTRIBUTE__ATTRIBUTE_EXPRESSION = ABSTRACT_NAME_VALUE_EXPRESSION_ATTRIBUTE__ATTRIBUTE_EXPRESSION;
 
 	/**
+	 * The feature id for the '<em><b>Default Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PUBLISH_EVENT_MEDIATOR_ATTRIBUTE__DEFAULT_VALUE = ABSTRACT_NAME_VALUE_EXPRESSION_ATTRIBUTE_FEATURE_COUNT + 0;
+
+	/**
 	 * The number of structural features of the '<em>Publish Event Mediator Attribute</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PUBLISH_EVENT_MEDIATOR_ATTRIBUTE_FEATURE_COUNT = ABSTRACT_NAME_VALUE_EXPRESSION_ATTRIBUTE_FEATURE_COUNT + 0;
+	int PUBLISH_EVENT_MEDIATOR_ATTRIBUTE_FEATURE_COUNT = ABSTRACT_NAME_VALUE_EXPRESSION_ATTRIBUTE_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -28264,6 +28273,17 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	EClass getPublishEventMediatorAttribute();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.PublishEventMediatorAttribute#getDefaultValue <em>Default Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Default Value</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.PublishEventMediatorAttribute#getDefaultValue()
+	 * @see #getPublishEventMediatorAttribute()
+	 * @generated
+	 */
+	EAttribute getPublishEventMediatorAttribute_DefaultValue();
+
+	/**
 	 * Returns the meta object for class '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractNameValueExpressionAttribute <em>Abstract Name Value Expression Attribute</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -44944,6 +44964,14 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 		 * @generated
 		 */
 		EClass PUBLISH_EVENT_MEDIATOR_ATTRIBUTE = eINSTANCE.getPublishEventMediatorAttribute();
+
+		/**
+		 * The meta object literal for the '<em><b>Default Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PUBLISH_EVENT_MEDIATOR_ATTRIBUTE__DEFAULT_VALUE = eINSTANCE.getPublishEventMediatorAttribute_DefaultValue();
 
 		/**
 		 * The meta object literal for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.AbstractNameValueExpressionAttributeImpl <em>Abstract Name Value Expression Attribute</em>}' class.

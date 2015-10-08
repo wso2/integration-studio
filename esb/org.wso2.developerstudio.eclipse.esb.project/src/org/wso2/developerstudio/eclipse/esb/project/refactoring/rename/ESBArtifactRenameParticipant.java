@@ -75,10 +75,8 @@ public class ESBArtifactRenameParticipant extends RenameParticipant {
 				return RefactoringStatus.createFatalErrorStatus("You are trying to rename your ESB Artifact to have the project name.");
 			}
 
-			String msg ="[warning] - "+originalFile.getName()+" change to"+changedFileName+" "
-					+ " and only the CApp(pom.xml) & project meta data file(arifact.xml) will be updated, but If any other references,"
-					+ " those will be remain unchanged";
-			return RefactoringStatus.createWarningStatus(msg);
+			String msg ="Update ESB meta-data model";
+			return RefactoringStatus.createInfoStatus(msg);
 			
 		}
 

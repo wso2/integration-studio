@@ -38,13 +38,13 @@ import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
 public class EndpointArtifactDeleteParticipant extends DeleteParticipant {
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
-
+    String msg="Update CApp if it's referred";
 	private IFile originalFile;
 
 	@Override
 	public RefactoringStatus checkConditions(IProgressMonitor arg0, CheckConditionsContext arg1)
 			throws OperationCanceledException {
-		return RefactoringStatus.createWarningStatus("You are about to delete an ESB artifact from CApp");
+		return RefactoringStatus.createInfoStatus(msg);
 	}
 
 	@Override
@@ -92,8 +92,7 @@ public class EndpointArtifactDeleteParticipant extends DeleteParticipant {
 							}
 						}
 					}
-					
-					
+  
 				} catch (Exception e) {
 					log.error("Error occurred while trying to generate the Refactoring", e);
 				}finally{
@@ -127,7 +126,7 @@ public class EndpointArtifactDeleteParticipant extends DeleteParticipant {
 
 	@Override
 	public Change createChange(IProgressMonitor arg0) throws CoreException, OperationCanceledException {
-		CompositeChange deleteChange = new CompositeChange("Delete ESB Graphical Artifact Metadata");
+		CompositeChange deleteChange = new CompositeChange("Delete ESB Graphical Artifact Metadata if exists only");
 
 		IProject esbProject = originalFile.getProject();
 		esbProject.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());

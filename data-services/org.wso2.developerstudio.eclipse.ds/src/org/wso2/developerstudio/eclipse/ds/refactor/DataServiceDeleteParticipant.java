@@ -48,7 +48,7 @@ public class DataServiceDeleteParticipant extends DeleteParticipant {
 	@Override
 	public RefactoringStatus checkConditions(IProgressMonitor arg0, CheckConditionsContext arg1)
 			throws OperationCanceledException {
-		return RefactoringStatus.createWarningStatus(Messages.DataServiceDeleteParticipant_DeleteWarning);
+		return RefactoringStatus.createInfoStatus("Update Data Service meta-data model");
 	}
 
 	@Override

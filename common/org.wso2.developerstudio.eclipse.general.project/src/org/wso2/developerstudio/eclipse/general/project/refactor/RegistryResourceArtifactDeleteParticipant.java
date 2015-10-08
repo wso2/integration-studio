@@ -52,7 +52,7 @@ public class RegistryResourceArtifactDeleteParticipant extends DeleteParticipant
 	@Override
 	public RefactoringStatus checkConditions(IProgressMonitor arg0, CheckConditionsContext arg1)
 	                                                                                            throws OperationCanceledException {
-		return RefactoringStatus.createWarningStatus("You are about to delete a Registry Resource Artifact");
+		return RefactoringStatus.createInfoStatus("Update registry resource meta-data model");
 	}
 
 	@Override

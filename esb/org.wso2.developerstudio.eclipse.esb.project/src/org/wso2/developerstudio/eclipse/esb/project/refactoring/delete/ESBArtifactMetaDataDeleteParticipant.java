@@ -48,9 +48,8 @@ public class ESBArtifactMetaDataDeleteParticipant extends DeleteParticipant {
 	@Override
 	public RefactoringStatus checkConditions(IProgressMonitor arg0, CheckConditionsContext arg1)
 			throws OperationCanceledException {
-		String msg ="[warning] - Only the CApp(pom.xml) & project meta data file(arifact.xml) will be updated, but If any other references,"
-				+ "those will be remain unchanged";
-		return RefactoringStatus.createWarningStatus(msg);
+		String msg ="Update ESB meta-data model";
+		return RefactoringStatus.createInfoStatus(msg);
 	}
 
 	@Override
@@ -58,7 +57,7 @@ public class ESBArtifactMetaDataDeleteParticipant extends DeleteParticipant {
 		CompositeChange emptychange = new CompositeChange("ESB Artifact Delete");
 		currentFileNum++;
 		if (numOfFiles == currentFileNum) {
-			CompositeChange change = new CompositeChange("ESB Artifact.xml file Delete");
+			CompositeChange change = new CompositeChange("Update arifact.xml");
 			for (IProject project : projectList) {
 				List<IFile> fileList = changeFileList.get(project);
 				change.add(new ESBMetaDataFileDeleteChange(project.getName(), project.getFile("artifact.xml"), fileList));

@@ -73,8 +73,7 @@ public class EndpointRenameRefactorParticipant extends RenameParticipant {
 						.createFatalErrorStatus("You are trying to rename your ESB Artifact to have the project name.");
 			}
 
-			return RefactoringStatus.createInfoStatus("You are about to rename your ESB Artifact "
-					+ originalFile.getName() + " to " + changedFileName);
+			return RefactoringStatus.createInfoStatus("Update CApp if it's referred");
 		}
 
 		return RefactoringStatus.createFatalErrorStatus("You are trying to rename a different resource than a file");
@@ -90,7 +89,7 @@ public class EndpointRenameRefactorParticipant extends RenameParticipant {
 
 		String changedNameWithoutExtention = FilenameUtils.removeExtension(changedFileName);
 		String originalNameWithoutExtension = FilenameUtils.removeExtension(originalFile.getName());
-		CompositeChange compositeChange = new CompositeChange("ESB Artifact Rename in CApp");
+		CompositeChange compositeChange = new CompositeChange("ESB Artifact Rename");
 
 		// Change content of the original file
 		EndpointArtifactFileChange endpointArtifactFileChange = new EndpointArtifactFileChange("Renaming ESB Artifact in CApp"

@@ -11,11 +11,12 @@
  * specific language governing permissions and limitations under the License.
  */
 
-package org.wso2.developerstudio.eclipse.general.project.refactor;
+package org.wso2.developerstudio.eclipse.general.project.capp.refactor;
 
-import org.apache.axiom.om.OMElement;
-import org.apache.axiom.om.OMXMLBuilderFactory;
-import org.apache.axiom.om.OMXMLParserWrapper;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
 import org.apache.commons.io.FilenameUtils;
 import org.apache.maven.model.Dependency;
 import org.apache.maven.project.MavenProject;
@@ -25,29 +26,23 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.OperationCanceledException;
-import org.eclipse.core.runtime.Path;
 import org.eclipse.ltk.core.refactoring.Change;
 import org.eclipse.ltk.core.refactoring.CompositeChange;
 import org.eclipse.ltk.core.refactoring.RefactoringStatus;
 import org.eclipse.ltk.core.refactoring.participants.CheckConditionsContext;
 import org.eclipse.ltk.core.refactoring.participants.RenameParticipant;
 import org.wso2.developerstudio.eclipse.general.project.Activator;
+import org.wso2.developerstudio.eclipse.general.project.refactor.MavenConfigurationFileRenameChange;
+import org.wso2.developerstudio.eclipse.general.project.refactor.RefactorUtils;
 import org.wso2.developerstudio.eclipse.general.project.utils.GeneralProjectUtils;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-
 public class RegistryResourceArtifactRenameParticipant extends RenameParticipant {
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
-	private static final String ESB_EXTENSION = ".esb";
-	private static final String ESB_DIAGRAM_EXTENSION = ".esb_diagram";
 	private IFile originalFile;
 	private IFolder originalFolder;
 	private String changedFileName;
@@ -97,7 +92,7 @@ public class RegistryResourceArtifactRenameParticipant extends RenameParticipant
 			}
 
 			if (originalFile != null) {
-				return RefactoringStatus.createInfoStatus("Update registry resource mata-data model");
+				return RefactoringStatus.createInfoStatus("Update CApp if it's referred");
 			} else {
 				return RefactoringStatus.createInfoStatus("You are about the rename your Registry Artifact "
 						+ originalFolder.getName() + " to " + changedFolderName);
@@ -108,73 +103,20 @@ public class RegistryResourceArtifactRenameParticipant extends RenameParticipant
 				.createFatalErrorStatus("You are trying to rename a different entity than a collection or a resource");
 	}
 
-	public Change createPreChange(IProgressMonitor arg0) throws CoreException, OperationCanceledException {
-
-		String changedNameWithoutExtention = FilenameUtils.removeExtension(changedFileName);
-		String originalNameWithoutExtension = FilenameUtils.removeExtension(originalFile.getName());
-		String prefix = getDirectoryPrefix();
-		String originalEsbFileName = getESBFilePath(originalNameWithoutExtension, false, prefix);
-		String originalEsbDiagramFileName = getESBFilePath(originalNameWithoutExtension, true, prefix);
-		String changedEsbFileName = getESBFilePath(changedNameWithoutExtention, false, prefix);
-		String changedEsbDiagramFileName = getESBFilePath(changedNameWithoutExtention, true, prefix);
-
-		CompositeChange change = new CompositeChange("Registry Artifact Rename & Update references");
-
-		RegistryResourceArtifactFileChange registryResourceArtifactFileChange = new RegistryResourceArtifactFileChange(
-				"Changing original file content " + originalNameWithoutExtension, originalFile,
-				originalNameWithoutExtension, changedNameWithoutExtention);
-		
-		
-		change.add(registryResourceArtifactFileChange);
-		
-		
-		
-	
-
-		if (originalFile != null) {
-			change.add(new RegistryMetadataFileChange("Meta data file", registryProject.getFile("artifact.xml"),
-					originalFile, changedFileName, RegistryArtifactType.Resource));
-		} else {
-			change.add(new RegistryMetadataFileChange("Meta data file", registryProject.getFile("artifact.xml"),
-					originalFolder, changedFolderName, RegistryArtifactType.Collection));
-		}
-
-		/*
-		 * Rename artifact_<name>.esb and artifact_<name>.esb_diagram
-		 */
-		IFile esbIFile = originalFile.getParent().getFile(new Path(originalEsbFileName));
-		if (esbIFile.exists()) {
-			RegistryResourceEsbFileChange esbFileChange = new RegistryResourceEsbFileChange(
-					"Changing ESB file content", esbIFile, originalNameWithoutExtension, changedNameWithoutExtention);
-			change.add(esbFileChange);
-			RegistryResourceEsbFileRename esbFileRename = new RegistryResourceEsbFileRename(esbIFile,
-					changedEsbFileName);
-			change.add(esbFileRename);
-		}
-
-		IFile esbDiagramIFile = originalFile.getParent().getFile(new Path(originalEsbDiagramFileName));
-		if (esbDiagramIFile.exists()) {
-			RegistryResourceEsbFileChange esbDiagramFileChange = new RegistryResourceEsbFileChange(
-					"Changing ESB diagram file content", esbDiagramIFile, originalNameWithoutExtension,
-					changedNameWithoutExtention);
-			change.add(esbDiagramFileChange);
-			RegistryResourceEsbFileRename esbDiagramFileRename = new RegistryResourceEsbFileRename(esbDiagramIFile,
-					changedEsbDiagramFileName);
-			change.add(esbDiagramFileRename);
-		}
-
-		return change;
-	}
-
 	private void deleteFromPOM(CompositeChange deleteChange) throws CoreException {
-		
+		IFile pomFile=null;
 		IProject[] projects = ResourcesPlugin.getWorkspace().getRoot().getProjects();
 		String changedNameWithoutExtention = FilenameUtils.removeExtension(changedFileName);
 		String originalNameWithoutExtension = FilenameUtils.removeExtension(originalFile.getName());
 		for (IProject project : projects) {
 			if (project.isOpen() && project.hasNature("org.wso2.developerstudio.eclipse.distribution.project.nature")) {
 				try {
-					IFile pomFile = project.getFile("pom.xml");
+					  pomFile = project.getFile("pom.xml");
+					try {
+						pomFile.refreshLocal(0, new NullProgressMonitor());
+					} catch (Exception ignore) {
+
+					}
 					MavenProject mavenProject = RefactorUtils.getMavenProject(project);
 					Dependency projectDependency = RefactorUtils.getDependencyForTheProject(originalFile.getProject());
 					if (originalFile instanceof IFile) {
@@ -191,44 +133,21 @@ public class RegistryResourceArtifactRenameParticipant extends RenameParticipant
 									originalNameWithoutExtension, project, changedNameWithoutExtention, dependency));
 						}
 					}
+
 				} catch (Exception e) {
 					log.error("Error occurred while trying to generate the Refactoring", e);
-				}
-			}
-		}
-		
-	}
-
-	private String getESBFilePath(String filename, boolean isDiagram, String prefix) {
-		if (isDiagram) {
-			return prefix + filename + ESB_DIAGRAM_EXTENSION;
-		}
-		return prefix + filename + ESB_EXTENSION;
-	}
-
-	private String getDirectoryPrefix() {
-
-		String directoryPrefix = "";
-		InputStream in = null;
-
-		try {
-			in = originalFile.getContents(true);
-			OMXMLParserWrapper builder = OMXMLBuilderFactory.createOMBuilder(in);
-			OMElement documentElement = builder.getDocumentElement();
-			directoryPrefix = documentElement.getLocalName() + "_";
-		} catch (Exception e) {
-			log.info("File contains non-XML content.");
-		} finally {
-			if (in != null) {
-				try {
-					in.close();
-				} catch (IOException e) {
-					log.error("Error occurred while trying to close resource stream", e);
-				}
+				}finally{
+						try {
+							   if (pomFile != null) {
+								pomFile.refreshLocal(0, new NullProgressMonitor());
+							   }
+						 } catch (Exception ignore) {
+	
+						 }
+				  }
 			}
 		}
 
-		return directoryPrefix;
 	}
 
 	public String getName() {
@@ -254,8 +173,9 @@ public class RegistryResourceArtifactRenameParticipant extends RenameParticipant
 
 	@Override
 	public Change createChange(IProgressMonitor pm) throws CoreException, OperationCanceledException {
-
-		return null;
+		CompositeChange change = new CompositeChange("Update CApp references");
+		deleteFromPOM(change);
+		return change;
 	}
 
 }

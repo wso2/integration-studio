@@ -80,14 +80,10 @@ public class CloudConnectorDirectoryTraverser {
 	}
 	
 	private void deserializeConnectorXML() throws Exception{
-		//try{
 			File artifactsFile = new File(rootDirectory+File.separator+connectorFileName);
 			String artifactsContent = FileUtils.getContentAsString(artifactsFile);
 			connector = new Connector();
 			connector.deserialize(artifactsContent);
-		/*}catch(Exception e){
-			log.error("Error while deserializing connector xml", e);
-		}*/
 	}
 		
 	private TemplateMediator readTemplateConfiguration(String fileLocation) throws IOException, XMLStreamException{
@@ -121,7 +117,22 @@ public class CloudConnectorDirectoryTraverser {
 				        	if(children[i].isDirectory()){
 				        		foundConnectors = true;
 				        	     String connectorPath = connectorDirectory + File.separator + children[i].getName();				        		 
-				        		try {		
+				        		try {
+				        			File artifactsFile = new File(connectorPath+File.separator+connectorFileName);
+				        			String artifactsContent = FileUtils.getContentAsString(artifactsFile);
+				        			connector = new Connector();
+				        			connector.deserialize(artifactsContent);		
+				        			
+				        			if(!connector.getConnectorName().equals(children[i].getName().split("-")[0])){
+				        				log.error("Connector directory name "+children[i].getName()+""
+				        						+ "doesn't match with the connector name "+connector.getConnectorName());
+										errorList.add("Connector directory name "+children[i].getName()+""
+				        						+ " doesn't match with the connector name "+connector.getConnectorName() +
+				        						"valid connector should have 'name-connector-1.0.0' format");
+										FileUtils.deleteDirectories(connectorPath);
+										continue;				        				
+				        			}
+
 				        			if(new File(connectorPath + File.separator + "icon"+ File.separator + "icon-small.gif").exists() && 
 				        					new File(connectorPath + File.separator + "icon"+ File.separator + "icon-large.gif").exists()){
 				        				CloudConnectorDirectoryTraverser.getInstance(connectorPath).getOperationsMap();
@@ -132,8 +143,8 @@ public class CloudConnectorDirectoryTraverser {
 				        			}																	
 								} catch (Exception e) {
 									 FileUtils.deleteDirectories(connectorPath);	
-									 log.error("Missing icons files of "+children[i].getName());
-									errorList.add("Missing icons files of "+children[i].getName());
+									 log.error("Error while loading the connector due to  "+e.getMessage(),e);
+									errorList.add("Error while loading the connector due to  "+e.getMessage());
 								}
 				        	}
 				        }
@@ -149,7 +160,7 @@ public class CloudConnectorDirectoryTraverser {
 			 		for (String errorMessgae : errorList) {
 			 			message = message + errorMessgae + "\n";
 					}
-			 		MessageDialog.openWarning(PlatformUI.getWorkbench().getDisplay().getActiveShell(),"Developer Studio Error Dialog", message);
+			 		MessageDialog.openWarning(PlatformUI.getWorkbench().getDisplay().getActiveShell(),"Connector loading error", message);
 			 		return false;
 			 	}
 				
@@ -157,6 +168,7 @@ public class CloudConnectorDirectoryTraverser {
 			return false;
 			
 		}catch(Exception e){
+			log.error("Error while validating the connectors", e);
 			return false;
 		}
 		
@@ -174,7 +186,7 @@ public class CloudConnectorDirectoryTraverser {
 	
 	public Map<String, String> getOperationFileNamesMap() throws Exception{		
 		Map<String, String> operationFileNamesMap=new HashMap<String,String>();
-		deserializeConnectorXML();
+		deserializeConnectorXML();		
 		for (Dependency dependency : connector.getComponentDependencies()) {
 			String pathname = rootDirectory +File.separator+ dependency.getComponent();
 			File artifactFile = new File(pathname + File.separator+componentFileName);
@@ -184,8 +196,7 @@ public class CloudConnectorDirectoryTraverser {
 			for (SubComponents subComponents : subComponent.getSubComponents()) {
 				operationFileNamesMap.put(subComponents.getFileName(),dependency.getComponent());
 			}
-
-		}
+		}		
 		return operationFileNamesMap;
 	}
 	
@@ -225,7 +236,6 @@ public class CloudConnectorDirectoryTraverser {
 	
 	public Map<String, String> getOperationsConnectorComponentNameMap() throws Exception{
 		Map<String, String> operationNamesAndConnectorComponentNameMap=new HashMap<String,String>();
-		//try {
 			deserializeConnectorXML();
 			for (Dependency dependency : connector.getComponentDependencies()) {
 				String pathname = rootDirectory +File.separator+ dependency.getComponent();
@@ -238,10 +248,6 @@ public class CloudConnectorDirectoryTraverser {
 				}
 
 			}
-	/*	} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}*/
 		return operationNamesAndConnectorComponentNameMap;
 	}
 	
@@ -250,8 +256,7 @@ public class CloudConnectorDirectoryTraverser {
 		try {
 			deserializeConnectorXML();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			 log.error("Error while deserializing the connector", e);
 		}
 		return connector.getConnectorName();
 	}
@@ -269,12 +274,11 @@ public class CloudConnectorDirectoryTraverser {
 	public String getConnectorDirectoryPathFromConnectorName(String workspacePath, String connectorName) {
 		String connectorDirectoryPath = null;
 		workspacePath += File.separator + connectorPathFromWorkspace;
-
 		File directory = new File(workspacePath);
 		if (directory.isDirectory()) {
 			File[] children = directory.listFiles();
 			for (int i = 0; i < children.length; ++i) {
-				if (children[i].isDirectory() && connectorName.equals(children[i].getName().split("-")[0])) {
+				if (children[i].isDirectory() && connectorName.equalsIgnoreCase(children[i].getName().split("-")[0])) {
 					return children[i].getAbsolutePath();
 				}
 			}
@@ -322,9 +326,9 @@ public class CloudConnectorDirectoryTraverser {
 				return templateMediator.getParameters();
 			}
 		} catch (XMLStreamException e) {
-			log.error("Error occured while parsing selected template file", e);
+			log.error("Error occurred while parsing selected template file", e);
 		} catch (IOException e) {
-			log.error("Error occured while reading selected template file", e);
+			log.error("Error occurred while reading selected template file", e);
 		}
 
 		return parameters;

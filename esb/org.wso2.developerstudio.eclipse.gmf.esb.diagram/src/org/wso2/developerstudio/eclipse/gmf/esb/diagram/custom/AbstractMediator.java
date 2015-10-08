@@ -485,24 +485,24 @@ public abstract class AbstractMediator extends AbstractBorderedShapeEditPart imp
 		
 		if  (this instanceof SendMediatorEditPart || this instanceof DropMediatorEditPart || this instanceof RespondMediatorEditPart || this instanceof LoopBackMediatorEditPart) {
 			EditPart compartment = this.getParent();
-			if (isComplexCompartment(compartment) && restrictAddingOfMediatorInsideComlpexMediators(nearestInputConnector, nearestEsbLinkInputConnector)) {
-					mediatorRestricted = true;
-				if (this instanceof SendMediatorEditPart){
-					mediatorType = "Send Mediator";
-					deleteNewlyAddedMediator(warningAddingMediatorsAlreadyAvailableBegin + mediatorType + warningAddingMediatorsAlreadyAvailableEnd);
-					return;
-					}
-				else if (this instanceof DropMediatorEditPart){
-					mediatorType = "Drop Mediator";
-					deleteNewlyAddedMediator(warningAddingMediatorsAlreadyAvailableBegin + mediatorType + warningAddingMediatorsAlreadyAvailableEnd);
-					return;
-				}
-				else if (this instanceof LoopBackMediatorEditPart){
-					mediatorType = "LoopBack Mediator";
-					deleteNewlyAddedMediator(warningAddingMediatorsAlreadyAvailableBegin + mediatorType + warningAddingMediatorsAlreadyAvailableEnd);
-					return;
-				}			
-			}
+//			if (isComplexCompartment(compartment) && restrictAddingOfMediatorInsideComlpexMediators(nearestInputConnector, nearestEsbLinkInputConnector)) {
+//					mediatorRestricted = true;
+//				if (this instanceof SendMediatorEditPart){
+//					mediatorType = "Send Mediator";
+//					deleteNewlyAddedMediator(warningAddingMediatorsAlreadyAvailableBegin + mediatorType + warningAddingMediatorsAlreadyAvailableEnd);
+//					return;
+//					}
+//				else if (this instanceof DropMediatorEditPart){
+//					mediatorType = "Drop Mediator";
+//					deleteNewlyAddedMediator(warningAddingMediatorsAlreadyAvailableBegin + mediatorType + warningAddingMediatorsAlreadyAvailableEnd);
+//					return;
+//				}
+//				else if (this instanceof LoopBackMediatorEditPart){
+//					mediatorType = "LoopBack Mediator";
+//					deleteNewlyAddedMediator(warningAddingMediatorsAlreadyAvailableBegin + mediatorType + warningAddingMediatorsAlreadyAvailableEnd);
+//					return;
+//				}			
+//			}
 			
 			if (!mediatorRestricted) {
 				if (restrictAddingOfMediator(nearestInputConnector, nearestEsbLinkInputConnector)) {

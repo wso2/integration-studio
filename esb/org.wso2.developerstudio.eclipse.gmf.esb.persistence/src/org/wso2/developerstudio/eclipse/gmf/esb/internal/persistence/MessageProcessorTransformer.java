@@ -104,6 +104,14 @@ public class MessageProcessorTransformer {
 			if (StringUtils.isNotBlank(model.getTaskCount())) {
 				parameters.put("member.count", model.getTaskCount());
 			}
+			
+			EList<MessageProcessorParameter> processorParameters = model.getParameters();
+			for (MessageProcessorParameter param : processorParameters) {
+				if (StringUtils.isNotBlank(param.getParameterName())
+						&& StringUtils.isNotBlank(param.getParameterValue())) {
+					parameters.put(param.getParameterName(), param.getParameterValue());
+				}
+			}
 
 		} if (model.getProcessorType() == MessageProcessorType.SCHEDULED_FAILOVER_MSG_FORWARDING) {
 			className = "org.apache.synapse.message.processor.impl.failover.FailoverScheduledMessageForwardingProcessor";
@@ -148,6 +156,15 @@ public class MessageProcessorTransformer {
 			if (StringUtils.isNotBlank(model.getTargetMessageStore())) {
 				parameters.put("message.target.store.name", model.getTargetMessageStore());
 			}
+			
+			EList<MessageProcessorParameter> processorParameters = model.getParameters();
+			for (MessageProcessorParameter param : processorParameters) {
+				if (StringUtils.isNotBlank(param.getParameterName())
+						&& StringUtils.isNotBlank(param.getParameterValue())) {
+					parameters.put(param.getParameterName(), param.getParameterValue());
+				}
+			}
+			
 
 		} else if (model.getProcessorType() == MessageProcessorType.MSG_SAMPLING) {			
 			className = "org.apache.synapse.message.processor.impl.sampler.SamplingProcessor";
@@ -171,6 +188,14 @@ public class MessageProcessorTransformer {
 			}
 			if (StringUtils.isNotBlank(model.getCronExpression())) {
 				parameters.put("cronExpression", model.getCronExpression());
+			}
+			
+			EList<MessageProcessorParameter> processorParameters = model.getParameters();
+			for (MessageProcessorParameter param : processorParameters) {
+				if (StringUtils.isNotBlank(param.getParameterName())
+						&& StringUtils.isNotBlank(param.getParameterValue())) {
+					parameters.put(param.getParameterName(), param.getParameterValue());
+				}
 			}
 
 		} else if (model.getProcessorType() == MessageProcessorType.CUSTOM) {

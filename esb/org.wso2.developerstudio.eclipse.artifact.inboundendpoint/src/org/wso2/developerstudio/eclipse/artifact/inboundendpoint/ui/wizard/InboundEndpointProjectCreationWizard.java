@@ -59,6 +59,19 @@ import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
 
 public class InboundEndpointProjectCreationWizard extends AbstractWSO2ProjectCreationWizard {
 	
+	private static final String RABBITMQ_EXCHANGE_NAME = "rabbitmq.exchange.name";
+	private static final String RABBITMQ_QUEUE_NAME = "rabbitmq.queue.name";
+	private static final String RABBITMQ_SERVER_PASSWORD = "rabbitmq.server.password";
+	private static final String RABBITMQ_SERVER_USER_NAME = "rabbitmq.server.user.name";
+	private static final String RABBITMQ_SERVER_PORT = "rabbitmq.server.port";
+	private static final String RABBITMQ_SERVER_HOST_NAME = "rabbitmq.server.host.name";
+	private static final String RABBITMQ_CONNECTION_FACTORY = "rabbitmq.connection.factory";
+	private static final String RABBITMQ = "rabbitmq";
+	private static final String INTERVAL = "interval";
+	private static final String TOPICS = "topics";
+	private static final String KAFKA_GROUP_ID = "group.id";
+	private static final String ZOOKEEPER_CONNECT = "zookeeper.connect";
+	private static final String KAFKA = "kafka";
 	private static final String XML_EXTENSION = ".xml";
 	private static final String SRC_FOLDER ="src";
 	private static final String MAIN_FOLDER="main";
@@ -211,13 +224,31 @@ public class InboundEndpointProjectCreationWizard extends AbstractWSO2ProjectCre
 	
 	private void writeTemplete(File inboundEndpointFile){
 		try {
+			
 			InboundEndpoint inboundEndpoint= new InboundEndpoint();
 			inboundEndpoint.setName(ieModel.getName());
+			
 			if(ieModel.getProtocol().equals(CUSTOM)){
-				inboundEndpoint.setClassImpl("");
-			}			
-			inboundEndpoint.setProtocol(ieModel.getProtocol());
-	
+				inboundEndpoint.setClassImpl("org.wso2.sample.inbound.CustomClass");
+			} else {
+				inboundEndpoint.setProtocol(ieModel.getProtocol());
+				if(ieModel.getProtocol().equals(KAFKA)){
+					inboundEndpoint.addParameter(ZOOKEEPER_CONNECT, "zookeeperConnect");
+					inboundEndpoint.addParameter(KAFKA_GROUP_ID, "sampleGroupID");
+					inboundEndpoint.addParameter(TOPICS, "sampleTopic");
+					inboundEndpoint.addParameter(INTERVAL, "100");
+				}
+				if(ieModel.getProtocol().equals(RABBITMQ)){
+					inboundEndpoint.addParameter(RABBITMQ_CONNECTION_FACTORY, "connection_factory");
+					inboundEndpoint.addParameter(RABBITMQ_SERVER_HOST_NAME, "loclahost");
+					inboundEndpoint.addParameter(RABBITMQ_SERVER_PORT, "5672");
+					inboundEndpoint.addParameter(RABBITMQ_SERVER_USER_NAME, "guest");
+					inboundEndpoint.addParameter(RABBITMQ_SERVER_PASSWORD, "guest");
+					inboundEndpoint.addParameter(RABBITMQ_QUEUE_NAME, "queue_name");
+					inboundEndpoint.addParameter(RABBITMQ_EXCHANGE_NAME, "excahnge_name");
+				}
+			}
+			
 			//Sets an empty string value for sequence and onerror sequence
 			inboundEndpoint.setInjectingSeq("");
 			inboundEndpoint.setOnErrorSeq("");

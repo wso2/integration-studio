@@ -101,7 +101,7 @@ public class PayloadFactoryMediatorTransformer extends AbstractEsbNodeTransforme
 				NamespacedProperty namespacedProperty = arg.getArgumentExpression();
 				// SynapsePath expression = new SynapseXPath(namespacedProperty.getPropertyValue());
 				SynapsePath expression = CustomSynapsePathFactory.getSynapsePath(namespacedProperty
-						.getPropertyValue());
+						.getPropertyValue(), arg.getEvaluator());
 				// SynapseJsonPath doesn't support namespaces
 				if (namespacedProperty.getNamespaces() != null
 						&& !(expression instanceof SynapseJsonPath)) {

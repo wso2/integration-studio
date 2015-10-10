@@ -77,7 +77,7 @@ public class ImportCloudConnectorWizardPage extends WizardPage {
 	private Button fileSystem;	
 	private static final String DIR_DOT_METADATA = ".metadata";
 	private static final String DIR_CACHE = ".cache";
-	private static final String CONNECTOR_STORE_URL = "https://storepreview.wso2.com:9448";
+	private static final String CONNECTOR_STORE_URL = "https://store.wso2.com/store";
 	
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 

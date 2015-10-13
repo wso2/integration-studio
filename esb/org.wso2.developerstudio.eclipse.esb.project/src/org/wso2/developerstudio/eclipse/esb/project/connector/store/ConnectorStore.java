@@ -43,7 +43,7 @@ public class ConnectorStore {
 
     private static final int TIMEOUT = 180000;
     private static final String HTTP_SOCKET_TIMEOUT = "http.socket.timeout";
-    private static final String ASSETS = "/apis/assets/esbconnector";
+    private static final String ASSETS = "/store/apis/assets/esbconnector";
 
 	/**
 	 * This will connect to connector store using provided URL and retrieve information for available connectors in the

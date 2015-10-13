@@ -19,6 +19,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Pattern;
 
 import net.lingala.zip4j.core.ZipFile;
@@ -28,6 +30,10 @@ import org.apache.commons.io.FileUtils;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
+import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.ui.IWorkbenchWindow;
@@ -93,17 +99,35 @@ public class CloudConnectorImportWizard extends AbstractWSO2ProjectCreationWizar
 	 * This method will download the connector zip file and extract it to the relevant location when user has selected
 	 * import from connector store option.
 	 */
-	private boolean performFinishStore() {
-		for (TableItem tableItem : storeWizardPage.getTable().getItems()) {
-			if (tableItem.getChecked()) {
-				String downloadLink = ((Connector) tableItem.getData()).getAttributes().getOverview_downloadlink();
-				if (!downloadConnectorAndUpdateProjects(downloadLink)) {
-					return false;
-				}
-			}
-		}
-		return true;
-	}
+    private boolean performFinishStore() {
+        final List<Connector> selectedConnectors = new ArrayList<>();
+        for (TableItem tableItem : storeWizardPage.getTable().getItems()) {
+            if (tableItem.getChecked()) {
+                selectedConnectors.add((Connector) tableItem.getData());
+            }
+        }
+        Job downloadJob = new Job("Downloading Connectors") {
+            @Override
+            protected IStatus run(IProgressMonitor monitor) {
+                int noOfConnectors = selectedConnectors.size();
+                int count = 1;
+                monitor.beginTask("Downloading connector", noOfConnectors);
+                for (Connector connector : selectedConnectors) {
+                    monitor.subTask(count + " of " + noOfConnectors + " : "
+                            + connector.getAttributes().getOverview_name() + " connector");
+                    String downloadLink = connector.getAttributes().getOverview_downloadlink();
+                    downloadConnectorAndUpdateProjects(downloadLink);
+                    monitor.worked(1);
+                    count++;
+                }
+                monitor.done();
+                return Status.OK_STATUS;
+            }
+        };
+        downloadJob.schedule();
+        return true;
+    }
+	
 
 	/**
 	 * This method will extract connector zip file to the relevant location when user has selected import from file

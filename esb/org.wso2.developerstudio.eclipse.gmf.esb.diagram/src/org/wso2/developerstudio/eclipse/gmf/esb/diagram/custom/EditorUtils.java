@@ -529,7 +529,7 @@ public class EditorUtils {
 	}
 
 	public static void updateToolpalette() {
-		Display.getCurrent().asyncExec(new Runnable() {			
+		Display.getDefault().asyncExec(new Runnable() {			
 			public void run() {
 				IEditorReference editorReferences[] = PlatformUI.getWorkbench().getActiveWorkbenchWindow()
 						.getActivePage().getEditorReferences();

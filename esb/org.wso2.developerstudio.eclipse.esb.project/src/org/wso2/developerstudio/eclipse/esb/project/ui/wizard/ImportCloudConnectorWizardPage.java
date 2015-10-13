@@ -263,13 +263,13 @@ public class ImportCloudConnectorWizardPage extends WizardPage {
 						}
 						int page = 1;
                         monitor.beginTask("Fetching list of connectors", 1000);
-                        monitor.subTask("Fetching page " + page);
+                        monitor.subTask("Searching connectors in store : page " + page);
                         List<Connector> tmpList = ConnectorStore.getConnectorInfo(txtConnectorStoreURL.getText(), page);
 						while (tmpList != null && !tmpList.isEmpty()) {
                             connectorList.addAll(tmpList);
                             monitor.worked(25);
                             ++page;
-                            monitor.subTask("Fetching page " + page);
+                            monitor.subTask("Searching connectors in store : page " + page);
                             tmpList = ConnectorStore.getConnectorInfo(txtConnectorStoreURL.getText(), page);
 						}
 						int workUnit = (1000 - (25*page))/connectorList.size();

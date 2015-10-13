@@ -233,10 +233,10 @@ public class InboundEndpointProjectCreationWizard extends AbstractWSO2ProjectCre
 			} else {
 				inboundEndpoint.setProtocol(ieModel.getProtocol());
 				if(ieModel.getProtocol().equals(KAFKA)){
-					inboundEndpoint.addParameter(ZOOKEEPER_CONNECT, "zookeeperConnect");
+					inboundEndpoint.addParameter(ZOOKEEPER_CONNECT, "localhost:2181");
 					inboundEndpoint.addParameter(KAFKA_GROUP_ID, "sampleGroupID");
 					inboundEndpoint.addParameter(TOPICS, "sampleTopic");
-					inboundEndpoint.addParameter(INTERVAL, "100");
+					inboundEndpoint.addParameter(INTERVAL, "1000");
 				}
 				if(ieModel.getProtocol().equals(RABBITMQ)){
 					inboundEndpoint.addParameter(RABBITMQ_CONNECTION_FACTORY, "connection_factory");

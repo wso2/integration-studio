@@ -20,6 +20,7 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.*;
 
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Set;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.synapse.message.processor.MessageProcessor;
@@ -64,6 +65,7 @@ public class MessageProcessorDeserializer
 							MessageProcessorType.SCHEDULED_MSG_FORWARDING);
 					Map<String, Object> parameters = dummyMessageProcessor
 							.getParameters();
+					Set<String> keySet = parameters.keySet();
 
 					// Endpoint name.
 					if (StringUtils.isNotBlank(processor.getTargetEndpoint())) {
@@ -76,13 +78,15 @@ public class MessageProcessorDeserializer
 
 					// Parameters.
 					if (parameters.containsKey("client.retry.interval")) {
-						Object value = parameters.get("client.retry.interval");
+						Object value = parameters.get("client.retry.interval");						
 						if (value != null
 								&& StringUtils.isNumeric(value.toString())) {
+							
 							executeSetValueCommand(
 									MESSAGE_PROCESSOR__RETRY_INTERVAL,
 									new Long(value.toString()));
 						}
+						keySet.remove("client.retry.interval");
 					}
 					if (parameters.containsKey("interval")) {
 						Object value = parameters.get("interval");
@@ -91,7 +95,9 @@ public class MessageProcessorDeserializer
 							executeSetValueCommand(
 									MESSAGE_PROCESSOR__FORWARDING_INTERVAL,
 									new Long(value.toString()));
+							
 						}
+						keySet.remove("interval");
 					}
 					if (parameters.containsKey("max.delivery.attempts")) {
 						Object value = parameters.get("max.delivery.attempts");
@@ -105,9 +111,9 @@ public class MessageProcessorDeserializer
 								executeSetValueCommand(
 										MESSAGE_PROCESSOR__MAX_DELIVERY_ATTEMPTS,
 										-1);
-							}
-
+							}						
 						}
+						keySet.remove("max.delivery.attempts");
 					}
 					if (parameters.containsKey("axis2.repo")) {
 						Object value = parameters.get("axis2.repo");
@@ -115,15 +121,18 @@ public class MessageProcessorDeserializer
 							executeSetValueCommand(
 									MESSAGE_PROCESSOR__AXIS2_CLIENT_REPOSITORY,
 									value.toString());
+							
 						}
+						keySet.remove("axis2.repo");
 					}
 					if (parameters.containsKey("axis2.config")) {
 						Object value = parameters.get("axis2.config");
 						if (StringUtils.isNotBlank(value.toString())) {
 							executeSetValueCommand(
 									MESSAGE_PROCESSOR__AXIS2_CONFIGURATION,
-									value.toString());
+									value.toString());							
 						}
+						keySet.remove("axis2.config");
 					}
 					if (parameters
 							.containsKey("message.processor.reply.sequence")) {
@@ -135,8 +144,9 @@ public class MessageProcessorDeserializer
 							replaySequence.setKeyValue(value.toString());
 							executeSetValueCommand(
 									MESSAGE_PROCESSOR__REPLY_SEQUENCE_NAME,
-									replaySequence);
+									replaySequence);							
 						}
+						keySet.remove("message.processor.reply.sequence");
 					}
 					if (parameters
 							.containsKey("message.processor.fault.sequence")) {
@@ -149,7 +159,10 @@ public class MessageProcessorDeserializer
 							executeSetValueCommand(
 									MESSAGE_PROCESSOR__FAULT_SEQUENCE_NAME,
 									faultSequence);
+							
 						}
+						keySet.remove("message.processor.fault.sequence");
+						
 					}
 					if (parameters
 							.containsKey("message.processor.deactivate.sequence")) {
@@ -162,7 +175,9 @@ public class MessageProcessorDeserializer
 							executeSetValueCommand(
 									MESSAGE_PROCESSOR__DEACTIVATE_SEQUENCE_NAME,
 									deactivateSequence);
+							
 						}
+						keySet.remove("message.processor.deactivate.sequence");
 					}
 					if (parameters.containsKey("quartz.conf")) {
 						Object value = parameters.get("quartz.conf");
@@ -170,7 +185,9 @@ public class MessageProcessorDeserializer
 							executeSetValueCommand(
 									MESSAGE_PROCESSOR__QUARTZ_CONFIG_FILE_PATH,
 									value.toString());
+							
 						}
+						keySet.remove("quartz.conf");
 					}
 					if (parameters.containsKey("cronExpression")) {
 						Object value = parameters.get("cronExpression");
@@ -178,7 +195,9 @@ public class MessageProcessorDeserializer
 							executeSetValueCommand(
 									MESSAGE_PROCESSOR__CRON_EXPRESSION,
 									value.toString());
+							
 						}
+						keySet.remove("cronExpression");
 					}
 					if (parameters.containsKey("is.active")) {
 						Object value = parameters.get("is.active");
@@ -192,7 +211,9 @@ public class MessageProcessorDeserializer
 										MESSAGE_PROCESSOR__PROCESSOR_STATE,
 										ProcessorState.DEACTIVATE);
 							}
+							
 						}
+						keySet.remove("is.active");
 					}
 					if (parameters.containsKey("non.retry.status.codes")) {
 						Object value = parameters.get("non.retry.status.codes");
@@ -200,7 +221,9 @@ public class MessageProcessorDeserializer
 							executeSetValueCommand(
 									MESSAGE_PROCESSOR__NON_RETRY_HTTP_STATUS_CODES,
 									value.toString());
+							
 						}
+						keySet.remove("non.retry.status.codes");
 					}
 					if (parameters.containsKey("max.delivery.drop")) {
 						Object value = parameters.get("max.delivery.drop");
@@ -217,7 +240,9 @@ public class MessageProcessorDeserializer
 										MESSAGE_PROCESSOR__DROP_MESSAGE_AFTER_MAXIMUM_DELIVERY_ATTEMPTS,
 										EnableDisableState.DISABLED);
 							}
+							
 						}
+						keySet.remove("max.delivery.drop");
 					}
 					if (parameters.containsKey("member.count")) {
 						Object value = parameters.get("member.count");
@@ -225,8 +250,22 @@ public class MessageProcessorDeserializer
 							executeSetValueCommand(
 									MESSAGE_PROCESSOR__TASK_COUNT,
 									value.toString());
+						
 						}
+						keySet.remove("member.count");
 					}
+					
+					//Adding custom parameters				
+					for (String parameter : keySet) {
+						MessageProcessorParameter processorParameter = EsbFactory.eINSTANCE
+								.createMessageProcessorParameter();						
+						processorParameter.setParameterName(parameter);
+						processorParameter.setParameterValue(parameters.get(parameter).toString());
+						executeAddValueCommand(
+								messageProcessor.getParameters(),
+								processorParameter);
+					}
+	
 				} else if (dummyMessageProcessor
 						.getClassName()
 						.equals("org.apache.synapse.message.processor.impl.failover.FailoverScheduledMessageForwardingProcessor")) {
@@ -236,7 +275,7 @@ public class MessageProcessorDeserializer
 							MessageProcessorType.SCHEDULED_FAILOVER_MSG_FORWARDING);
 					Map<String, Object> parameters = dummyMessageProcessor
 							.getParameters();
-
+					Set<String> keySet = parameters.keySet();
 					// Parameters.
 					if (parameters.containsKey("client.retry.interval")) {
 						Object value = parameters.get("client.retry.interval");
@@ -245,7 +284,9 @@ public class MessageProcessorDeserializer
 							executeSetValueCommand(
 									MESSAGE_PROCESSOR__RETRY_INTERVAL,
 									new Long(value.toString()));
+							
 						}
+						keySet.remove("client.retry.interval");
 					}
 					if (parameters.containsKey("interval")) {
 						Object value = parameters.get("interval");
@@ -254,7 +295,9 @@ public class MessageProcessorDeserializer
 							executeSetValueCommand(
 									MESSAGE_PROCESSOR__FORWARDING_INTERVAL,
 									new Long(value.toString()));
+						
 						}
+						keySet.remove("interval");
 					}
 					if (parameters.containsKey("max.delivery.attempts")) {
 						Object value = parameters.get("max.delivery.attempts");
@@ -268,9 +311,9 @@ public class MessageProcessorDeserializer
 								executeSetValueCommand(
 										MESSAGE_PROCESSOR__MAX_DELIVERY_ATTEMPTS,
 										-1);
-							}
-
+							}							
 						}
+						keySet.remove("max.delivery.attempts");
 					}
 					if (parameters
 							.containsKey("message.processor.fault.sequence")) {
@@ -284,6 +327,7 @@ public class MessageProcessorDeserializer
 									MESSAGE_PROCESSOR__FAULT_SEQUENCE_NAME,
 									faultSequence);
 						}
+						keySet.remove("message.processor.fault.sequence");
 					}
 					if (parameters
 							.containsKey("message.processor.deactivate.sequence")) {
@@ -297,6 +341,7 @@ public class MessageProcessorDeserializer
 									MESSAGE_PROCESSOR__DEACTIVATE_SEQUENCE_NAME,
 									deactivateSequence);
 						}
+						keySet.remove("message.processor.deactivate.sequence");
 					}
 					if (parameters.containsKey("quartz.conf")) {
 						Object value = parameters.get("quartz.conf");
@@ -305,6 +350,7 @@ public class MessageProcessorDeserializer
 									MESSAGE_PROCESSOR__QUARTZ_CONFIG_FILE_PATH,
 									value.toString());
 						}
+						keySet.remove("quartz.conf");
 					}
 					if (parameters.containsKey("cronExpression")) {
 						Object value = parameters.get("cronExpression");
@@ -313,6 +359,7 @@ public class MessageProcessorDeserializer
 									MESSAGE_PROCESSOR__CRON_EXPRESSION,
 									value.toString());
 						}
+						keySet.remove("cronExpression");
 					}
 					if (parameters.containsKey("is.active")) {
 						Object value = parameters.get("is.active");
@@ -327,6 +374,7 @@ public class MessageProcessorDeserializer
 										ProcessorState.DEACTIVATE);
 							}
 						}
+						keySet.remove("is.active");
 					}
 					if (parameters.containsKey("max.delivery.drop")) {
 						Object value = parameters.get("max.delivery.drop");
@@ -344,6 +392,7 @@ public class MessageProcessorDeserializer
 										EnableDisableState.DISABLED);
 							}
 						}
+						keySet.remove("max.delivery.drop");
 					}
 					if (parameters.containsKey("member.count")) {
 						Object value = parameters.get("member.count");
@@ -352,6 +401,7 @@ public class MessageProcessorDeserializer
 									MESSAGE_PROCESSOR__TASK_COUNT,
 									value.toString());
 						}
+						keySet.remove("member.count");
 					}
 					if (parameters.containsKey("message.target.store.name")) {
 						Object value = parameters
@@ -361,7 +411,19 @@ public class MessageProcessorDeserializer
 									MESSAGE_PROCESSOR__TARGET_MESSAGE_STORE,
 									value.toString());
 						}
+						keySet.remove("message.target.store.name");
 					}
+					//Adding custom parameters
+					for (String parameter : keySet) {
+						MessageProcessorParameter processorParameter = EsbFactory.eINSTANCE
+								.createMessageProcessorParameter();						
+						processorParameter.setParameterName(parameter);
+						processorParameter.setParameterValue(parameters.get(parameter).toString());
+						executeAddValueCommand(
+								messageProcessor.getParameters(),
+								processorParameter);
+					}
+					
 				} else if (dummyMessageProcessor.getClassName().equals(
 						messageSamplingProcessor)
 						|| dummyMessageProcessor.getClassName().equals(
@@ -371,6 +433,7 @@ public class MessageProcessorDeserializer
 							MessageProcessorType.MSG_SAMPLING);
 					Map<String, Object> parameters = dummyMessageProcessor
 							.getParameters();
+					Set<String> keySet = parameters.keySet();
 
 					if (parameters.containsKey("sequence")) {
 						Object value = parameters.get("sequence");
@@ -381,6 +444,7 @@ public class MessageProcessorDeserializer
 							executeSetValueCommand(MESSAGE_PROCESSOR__SEQUENCE,
 									sequence);
 						}
+						keySet.remove("sequence");
 					}
 					if (parameters.containsKey("interval")) {
 						Object value = parameters.get("interval");
@@ -390,6 +454,7 @@ public class MessageProcessorDeserializer
 									MESSAGE_PROCESSOR__SAMPLING_INTERVAL,
 									new Long(value.toString()));
 						}
+						keySet.remove("interval");
 					}
 					if (parameters.containsKey("concurrency")) {
 						Object value = parameters.get("concurrency");
@@ -399,6 +464,7 @@ public class MessageProcessorDeserializer
 									MESSAGE_PROCESSOR__SAMPLING_CONCURRENCY,
 									new Integer(value.toString()));
 						}
+						keySet.remove("concurrency");
 					}
 					if (parameters.containsKey("quartz.conf")) {
 						Object value = parameters.get("quartz.conf");
@@ -407,6 +473,7 @@ public class MessageProcessorDeserializer
 									MESSAGE_PROCESSOR__QUARTZ_CONFIG_FILE_PATH,
 									value.toString());
 						}
+						keySet.remove("quartz.conf");
 					}
 					if (parameters.containsKey("cronExpression")) {
 						Object value = parameters.get("cronExpression");
@@ -415,6 +482,7 @@ public class MessageProcessorDeserializer
 									MESSAGE_PROCESSOR__CRON_EXPRESSION,
 									value.toString());
 						}
+						keySet.remove("cronExpression");
 					}
 					if (parameters.containsKey("is.active")) {
 						Object value = parameters.get("is.active");
@@ -429,7 +497,20 @@ public class MessageProcessorDeserializer
 										ProcessorState.DEACTIVATE);
 							}
 						}
+						keySet.remove("is.active");
 					}
+					
+					//Adding custom parameters
+					for (String parameter : keySet) {
+						MessageProcessorParameter processorParameter = EsbFactory.eINSTANCE
+								.createMessageProcessorParameter();						
+						processorParameter.setParameterName(parameter);
+						processorParameter.setParameterValue(parameters.get(parameter).toString());
+						executeAddValueCommand(
+								messageProcessor.getParameters(),
+								processorParameter);
+					}
+					
 				} else {
 					// Custom Message Processor
 					executeSetValueCommand(MESSAGE_PROCESSOR__PROCESSOR_TYPE,

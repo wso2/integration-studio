@@ -41,7 +41,9 @@ import com.google.gson.reflect.TypeToken;
 
 public class ConnectorStore {
 
-	private static final String ASSETS = "/store/apis/assets/esbconnector";
+    private static final int TIMEOUT = 180000;
+    private static final String HTTP_SOCKET_TIMEOUT = "http.socket.timeout";
+    private static final String ASSETS = "/apis/assets/esbconnector";
 
 	/**
 	 * This will connect to connector store using provided URL and retrieve information for available connectors in the
@@ -58,6 +60,7 @@ public class ConnectorStore {
 	public static List<Connector> getConnectorInfo(String url, int page) throws NoSuchAlgorithmException,
 			KeyManagementException, HttpException, IOException {
 		HttpClient httpclient = new HttpClient();
+        httpclient.getParams().setIntParameter(HTTP_SOCKET_TIMEOUT, TIMEOUT);
 		SSLContext ctx;
 		ctx = SSLContext.getInstance("TLS");
 		ctx.init(new KeyManager[0], new TrustManager[] { new DefaultTrustManager() }, new SecureRandom());

@@ -85,6 +85,7 @@ public class MessageProcessorItemProvider
             addQuartzConfigFilePathPropertyDescriptor(object);
 			addCronExpressionPropertyDescriptor(object);
 			addTaskCountPropertyDescriptor(object);
+			addParametersPropertyDescriptor(object);
 			break;
 		}
 		case SCHEDULED_FAILOVER_MSG_FORWARDING: {
@@ -100,6 +101,7 @@ public class MessageProcessorItemProvider
             addQuartzConfigFilePathPropertyDescriptor(object);
 			addCronExpressionPropertyDescriptor(object);
 			addTaskCountPropertyDescriptor(object);
+			addParametersPropertyDescriptor(object);
 			break;
 		}
 		case MSG_SAMPLING: {
@@ -110,6 +112,7 @@ public class MessageProcessorItemProvider
 			addSamplingConcurrencyPropertyDescriptor(object);
 			addQuartzConfigFilePathPropertyDescriptor(object);
 			addCronExpressionPropertyDescriptor(object);
+			addParametersPropertyDescriptor(object);
 			break;
 		}
 		case CUSTOM: {

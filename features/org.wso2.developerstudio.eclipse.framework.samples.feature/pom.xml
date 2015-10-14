@@ -48,7 +48,7 @@
                             <id>${project.artifactId}</id>
                             <propertiesFile>../../feature.properties</propertiesFile>
                             <bundles>
-                                <bundleDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.samples:${core.tools.version}</bundleDef>
+                                <bundleDef>org.wso2.eclipse:org.wso2.developerstudio.eclipse.samples:${core.tools.version}</bundleDef>
                             </bundles>
                         </configuration>
                     </execution>

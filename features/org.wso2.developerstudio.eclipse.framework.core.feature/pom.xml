@@ -49,8 +49,8 @@
                             <propertiesFile>../../feature.properties</propertiesFile>
                             <bundles>
                                 <!--bundleDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.bpel.core:${core.tools.version}</bundleDef-->
-                                <bundleDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.platform.core:${core.tools.version}</bundleDef>
-                                <bundleDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.platform.ui:${core.tools.version}</bundleDef>
+                                <bundleDef>org.wso2.eclipse:org.wso2.developerstudio.eclipse.platform.core:${core.tools.version}</bundleDef>
+                                <bundleDef>org.wso2.eclipse:org.wso2.developerstudio.eclipse.platform.ui:${core.tools.version}</bundleDef>
                                 <!--bundleDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.greg.core:${core.tools.version}</bundleDef-->
                                 <!--bundleDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.esb.core:${core.tools.version}</bundleDef-->
                             </bundles>

@@ -1,0 +1,33 @@
+<wizard>
+	<projectOptions title="Maven multi module wizard" description="Select how you would like to create your new project" error="Please select a method to create the project">
+		<option id="mavneInfo" default="true">maven info</option>
+	</projectOptions>
+	<projectOptionSettings>
+		<settings optionId="mavneInfo" title="Maven Information settings" description="Specify the maven information" error="Please select a method to create the project">
+			<data modelProperty="group.id" type="string"    fieldController="org.wso2.developerstudio.eclipse.platform.ui.mvn.wizard.MvnMutiModuleFieldsController">Group Id</data>
+			<data modelProperty="project.name" type="string" fieldController="org.wso2.developerstudio.eclipse.platform.ui.mvn.wizard.MvnMutiModuleFieldsController">Artifact Id</data>			
+			<data modelProperty="version.id" type="string"  fieldController="org.wso2.developerstudio.eclipse.platform.ui.mvn.wizard.MvnMutiModuleFieldsController">Version</data>
+			
+			<data modelProperty="required.parent" type="choice"
+		fieldController="org.wso2.developerstudio.eclipse.platform.ui.mvn.wizard.MvnMutiModuleFieldsController">Specify Parent</data>
+			<data modelProperty="parent.list" type="list"
+	fieldController="org.wso2.developerstudio.eclipse.platform.ui.mvn.wizard.MvnMutiModuleFieldsController"
+	controlData="select=single;modify=non-editable;class=org.wso2.developerstudio.eclipse.platform.ui.provider.MavenParentProjectList">Parent Project</data>
+
+	<data modelProperty="parent.group" type="string"
+		fieldController="org.wso2.developerstudio.eclipse.platform.ui.mvn.wizard.MvnMutiModuleFieldsController">Group Id</data>
+	<data modelProperty="parent.artifact" type="string"
+		fieldController="org.wso2.developerstudio.eclipse.platform.ui.mvn.wizard.MvnMutiModuleFieldsController">Artifact Id</data>
+	<data modelProperty="parent.version" type="string"
+		fieldController="org.wso2.developerstudio.eclipse.platform.ui.mvn.wizard.MvnMutiModuleFieldsController">Version</data>
+		<data modelProperty="relative.path" type="string"
+		fieldController="org.wso2.developerstudio.eclipse.platform.ui.mvn.wizard.MvnMutiModuleFieldsController">Relative Path</data>
+		
+			<group id="projects"></group>
+			<data group="projects" modelProperty="workspace.project" type="list" fieldController="org.wso2.developerstudio.eclipse.platform.ui.mvn.wizard.MvnMutiModuleFieldsController"
+				  controlData="select=multiple;selectAllbtn=true;modify=non-editable;class=org.wso2.developerstudio.eclipse.platform.ui.mvn.wizard.MvnMultiModuleProjectList">Projects</data>
+			<!--data group="projects" modelProperty="workspace.project.ext" type="composite"  fieldController="org.wso2.developerstudio.eclipse.platform.ui.mvn.wizard.MvnMutiModuleFieldsController"
+			 controlData="class=org.wso2.developerstudio.eclipse.platform.ui.mvn.wizard.ProjectExplorerCtrlProvider">Projects</data-->
+		</settings>
+	</projectOptionSettings> 
+</wizard> 

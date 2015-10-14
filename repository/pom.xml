@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+		~ Copyright (c) WSO2 Inc. (http://wso2.com) All Rights Reserved. ~ ~
+		Licensed under the Apache License, Version 2.0 (the "License"); ~ you
+		may not use this file except in compliance with the License. ~ You may
+		obtain a copy of the License at ~ ~
+		http://www.apache.org/licenses/LICENSE-2.0 ~ ~ Unless required by
+		applicable law or agreed to in writing, software ~ distributed under
+		the License is distributed on an "AS IS" BASIS, ~ WITHOUT WARRANTIES
+		OR CONDITIONS OF ANY KIND, either express or implied. ~ See the
+		License for the specific language governing permissions and ~
+		limitations under the License.
+	-->
+<project
+    xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <parent>
+        <groupId>org.wso2.eclipse</groupId>
+        <artifactId>wso2-eclipse-parent</artifactId>
+        <version>4.0.0</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>wso2-developer-studio</artifactId>
+    <packaging>pom</packaging>
+    <name>WSO2 Carbon Eclipse - P2 Feature Repository</name>
+    <url>http://wso2.org</url>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>2.0-alpha-4</version>
+                <inherited>false</inherited>
+                <executions>
+                    <execution>
+                        <id>1-unpack-p2-agent-distribution</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>unpack</goal>
+                        </goals>
+                        <configuration>
+                            <artifactItems>
+                                <artifactItem>
+                                    <groupId>org.wso2.carbon</groupId>
+                                    <artifactId>wso2-p2-agent</artifactId>
+                                    <version>${carbon.version}</version>
+                                    <type>zip</type>
+                                    <overWrite>true</overWrite>
+                                    <outputDirectory>target/p2-agent</outputDirectory>
+                                </artifactItem>
+                            </artifactItems>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.wso2.maven</groupId>
+                <artifactId>carbon-p2-plugin</artifactId>
+                <version>1.3.1</version>
+                <executions>
+                    <execution>
+                        <id>2-p2-repo-generation</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>p2-repo-gen</goal>
+                        </goals>
+                        <configuration>
+                            <name>WSO2 Developer Studio</name>
+                            <archive>true</archive>
+                            <p2AgentLocation>${basedir}/target/p2-agent</p2AgentLocation>
+                            <publishArtifacts>true</publishArtifacts>
+                            <publishArtifactRepository>true</publishArtifactRepository>
+                            <featureArtifacts>
+                                <!--<featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.apim.feature:${apim.tools.feature.version}</featureArtifactDef><featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.carbonstudio.feature:${carbonstudio.tools.feature.version}</featureArtifactDef><featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.appserver.feature:${appserver.tools.feature.version}</featureArtifactDef><featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.appserver.artifact.feature:${appserver.tools.feature.version}</featureArtifactDef><featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.bpel.feature:${bps.tools.feature.version}</featureArtifactDef><featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.bpel.artifact.feature:${bps.tools.feature.version}</featureArtifactDef> -->
+                                <!--featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.bpel.connector.feature:${bps.connector.tools.feature.version}</featureArtifactDef-->
+                                <!--<featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.registry.feature:${registry.tools.feature.version}</featureArtifactDef><featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.registry.artifact.feature:${registry.tools.feature.version}</featureArtifactDef><featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.esb.artifact.feature:${esb.tools.feature.version}</featureArtifactDef><featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.esb.graphical.editor.feature:${esb.graphical.editor.feature.version}</featureArtifactDef><featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.appfactory.feature:${appfactory.tools.feature.version}</featureArtifactDef><featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.ds.feature:${ds.tools.feature.version}</featureArtifactDef><featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.ds.artifact.feature:${ds.tools.artifact.feature.version}</featureArtifactDef><featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.usermgt.core.feature:${usermgt.tools.feature.version}</featureArtifactDef><featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.carbon.uibundle.artifact.feature:${carbon.tools.feature.version}</featureArtifactDef><featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.capp.framework.feature:${capp.tools.feature.version}</featureArtifactDef><featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.registry.connector.feature:${greg.connector.tools.feature.version}</featureArtifactDef> -->
+                                <!--<featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.server.framework.feature:${server.framework.feature.version}</featureArtifactDef> -->
+                                <featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.framework.core.feature:${core.framework.feature.version}</featureArtifactDef>
+                                <featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.framework.samples.feature:${core.framework.feature.version}</featureArtifactDef>
+                                <!--<featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.carbonserver.30.feature:${carbonserver.30.feature.version}</featureArtifactDef><featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.carbonserver.31.feature:${carbonserver.31.feature.version}</featureArtifactDef><featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.carbonserver.32.feature:${carbonserver.32.feature.version}</featureArtifactDef><featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.carbonserver.40.feature:${carbonserver.40.feature.version}</featureArtifactDef><featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.carbonserver.42.feature:${carbonserver.42.feature.version}</featureArtifactDef><featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.carbonserver.44.feature:${carbonserver.44.feature.version}</featureArtifactDef><featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.carbonserver.remote.feature:${carbonserver.remote.feature.version}</featureArtifactDef> -->
+                                <!--<featureArtifactDef>org.jboss.tools:org.jboss.tools.smooks.feature:${smooks.feature.version}</featureArtifactDef><featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.distribution.project.feature:${common.tools.version}</featureArtifactDef> -->
+                                <!--<featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.artifact.library.feature:${common.tools.version}</featureArtifactDef>-->
+                                <!--<featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.gadget.artifact.feature:${common.tools.version}</featureArtifactDef><featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.gs.jaggery.feature:${jaggery.tools.version}</featureArtifactDef><featureArtifactDef>org.wso2.developerstudio:org.smooks.edi.editor-feature:${smooks.edi.editor.version}</featureArtifactDef><featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.analytics.artifact.feature:${analytics.feature.version}</featureArtifactDef><featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.jaggery.artifact.feature:${jaggery.feature.version}</featureArtifactDef><featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.brs.artifact.feature:${brs.feature.version}</featureArtifactDef><featureArtifactDef>org.wso2.developerstudio:org.wso2.soapui.feature:${soapui.feature.version}</featureArtifactDef><featureArtifactDef>org.wso2.developerstudio:org.wso2.tcpmon.feature:${tcpmon.feature.version}</featureArtifactDef> -->
+                                <!--featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.qos.artifact.feature:${qos.feature.version}</featureArtifactDef-->
+                                <!--<featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.security.artifact.feature:${security.feature.version}</featureArtifactDef> -->
+                            </featureArtifacts>
+                            <bundleArtifacts>
+                                <bundleArtifactDef>org.wso2.eclipse:org.wso2.developerstudio.eclipse.logging:${common.logging.version}</bundleArtifactDef>
+                                <bundleArtifactDef>org.wso2.eclipse:org.wso2.developerstudio.eclipse.utils:${common.utils.version}</bundleArtifactDef>
+                                <bundleArtifactDef>org.wso2.eclipse:org.wso2.developerstudio.eclipse.ui:${common.ui.version}</bundleArtifactDef>
+                                <bundleArtifactDef>org.wso2.eclipse:org.wso2.developerstudio.eclipse.maven:${common.maven.version}</bundleArtifactDef>
+                                <!--<bundleArtifactDef>org.wso2.eclipse:org.wso2.developerstudio.eclipse.general.project:${common.tools.version}</bundleArtifactDef> -->
+                                <bundleArtifactDef>org.wso2.eclipse:org.wso2.developerstudio.eclipse.libraries:${common.libraries.version}</bundleArtifactDef>
+                                <!--bundleArtifactDef>org.milyn:milyn-smooks-all:1.5.1</bundleArtifactDef-->
+                                <!--   <bundleArtifactDef>org.milyn:org.milyn.smooks.osgi:1.5.0.SNAPSHOT</bundleArtifactDef> -->
+                                <!--EMF -updated to Kepler SR2 -->
+                                <bundleArtifactDef>org.eclipse:org.eclipse.emf.validation:1.8.0.201405281429</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse:org.eclipse.emf.validation.ui:1.7.0.201405281429</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse:org.eclipse.emf.query:1.7.0.201405281426</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse:org.eclipse.emf.transaction:1.8.0.201405281451</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse:org.eclipse.emf.workspace:1.5.1.201405281451</bundleArtifactDef>
+                                <!-- EMF -updated to Luna -->
+                                <bundleArtifactDef>org.eclipse:org.eclipse.emf.activities:2.6.0.v20150123-0452</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse:org.eclipse.emf.cheatsheets:2.5.0.v20150123-0452</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse:org.eclipse.emf.doc:2.7.0.v20150123-0452</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse:org.eclipse.emf.example.installer:1.3.1.v20150123-0452</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse:org.eclipse.emf.examples:2.6.0.v20150123-0452</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse:org.eclipse.emf.examples.databinding.project.core:1.0.0.v20150123-0452</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse:org.eclipse.emf.examples.databinding.project.core.model:1.0.0.v20150123-0452</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse:org.eclipse.emf.examples.databinding.project.ui.rcp:1.1.1.v20150123-0452</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse:org.eclipse.emf.examples.generator.validator:1.2.1.v20150123-0452</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse:org.eclipse.emf.examples.jet.article2:2.4.0.v20150123-0452</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse:org.eclipse.emf.examples.library:2.5.0.v20150123-0452</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse:org.eclipse.emf.examples.library.edit:2.5.0.v20150123-0452</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse:org.eclipse.emf.examples.library.editor:2.5.0.v20150123-0452</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse:org.eclipse.emf.exporter.html:2.6.0.v20150123-0452</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse:org.eclipse.emf.java:2.5.0.v20150123-0452</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse:org.eclipse.emf.java.editor:2.5.0.v20150123-0452</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse:org.eclipse.emf.java.edit:2.5.0.v20150123-0452</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse:org.eclipse.emf.query.doc:1.2.0.201405281426</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse:org.eclipse.emf.query.examples:1.2.0.201405281426</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse:org.eclipse.emf.query.examples.ocl:2.0.0.201405281426</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse:org.eclipse.emf.query.examples.statements:1.7.0.201405281426</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse:org.eclipse.emf.query.ocl:2.0.0.201405281426</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse:org.eclipse.emf.transaction.doc:1.4.0.201405281451</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse:org.eclipse.emf.transaction.examples:1.2.100.201405281451</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse:org.eclipse.emf.transaction.ui:1.4.0.201405281451</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse:org.eclipse.emf.validation.doc:1.3.0.201405281429</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse:org.eclipse.emf.validation.examples:1.3.0.201405281429</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse:org.eclipse.emf.validation.ocl:1.4.0.201405281429</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse:org.eclipse.emf.validation.ui.ide:1.3.0.201405281429</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse:org.eclipse.emf.workspace.doc:1.3.0.201405281451</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse:org.eclipse.emf.workspace.ui:1.3.0.201405281451</bundleArtifactDef>
+                                <!-- GEF -updated to Luna -->
+                                <bundleArtifactDef>org.eclipse:org.eclipse.gef.doc.isv:3.9.100.201408150207</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse:org.eclipse.gef.examples.ui.pde:3.8.1.201408150207</bundleArtifactDef>
+                                <!--GMF -updated to Kepler SR2 -->
+                                <bundleArtifactDef>lpg.runtime:lpg.runtime.java:2.0.17.v201004271640</bundleArtifactDef>
+                                <bundleArtifactDef>org.apache.xmlgraphics:org.apache.batik.bridge:1.6.0.v201011041432</bundleArtifactDef>
+                                <bundleArtifactDef>org.apache.xmlgraphics:org.apache.batik.css:1.6.0.v201011041432</bundleArtifactDef>
+                                <bundleArtifactDef>org.apache.xmlgraphics:org.apache.batik.dom.svg:1.6.0.v201011041432</bundleArtifactDef>
+                                <bundleArtifactDef>org.apache.xmlgraphics:org.apache.batik.dom:1.6.0.v201011041432</bundleArtifactDef>
+                                <bundleArtifactDef>org.apache.xmlgraphics:org.apache.batik.ext.awt:1.6.0.v201011041432</bundleArtifactDef>
+                                <bundleArtifactDef>org.apache.xmlgraphics:org.apache.batik.parser:1.6.0.v201011041432</bundleArtifactDef>
+                                <bundleArtifactDef>org.apache.xmlgraphics:org.apache.batik.pdf:1.6.0.v201105071520</bundleArtifactDef>
+                                <bundleArtifactDef>org.apache.xmlgraphics:org.apache.batik.svggen:1.6.0.v201011041432</bundleArtifactDef>
+                                <bundleArtifactDef>org.apache.xmlgraphics:org.apache.batik.transcoder:1.6.0.v201011041432</bundleArtifactDef>
+                                <bundleArtifactDef>org.apache.xmlgraphics:org.apache.batik.util.gui:1.6.0.v201011041432</bundleArtifactDef>
+                                <bundleArtifactDef>org.apache.xmlgraphics:org.apache.batik.util:1.6.0.v201011041432</bundleArtifactDef>
+                                <bundleArtifactDef>org.apache.xmlgraphics:org.apache.batik.xml:1.6.0.v201011041432</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse.gmf.tooling.runtime:org.eclipse.gmf.tooling.runtime:3.2.0.201502182128</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse.gmf.runtime.common.core:org.eclipse.gmf.runtime.common.core:1.7.0.201408201453</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse.gmf.runtime.common:org.eclipse.gmf.runtime.common.ui:1.8.1.201408201453</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse.gmf.runtime.common.ui.action.ide:org.eclipse.gmf.runtime.common.ui.action.ide:1.7.0.201408201453</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse.gmf.runtime.common.ui.action:org.eclipse.gmf.runtime.common.ui.action:1.7.0.201408201453</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse.gmf.runtime.common.ui.printing:org.eclipse.gmf.runtime.common.ui.printing:1.7.0.201408201453</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse.gmf.runtime.common.ui.services.action:org.eclipse.gmf.runtime.common.ui.services.action:1.7.0.201408201453</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse.gmf.runtime.common.ui.services.properties:org.eclipse.gmf.runtime.common.ui.services.properties:1.7.0.201408201453</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse.gmf.runtime.common.ui.services:org.eclipse.gmf.runtime.common.ui.services:1.7.0.201408201453</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse.gmf.runtime.diagram.core:org.eclipse.gmf.runtime.diagram.core:1.7.0.201408201453</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse.gmf.runtime.diagram.ui.actions:org.eclipse.gmf.runtime.diagram.ui.actions:1.7.0.201408201453</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse.gmf.runtime.diagram.ui.printing.render:org.eclipse.gmf.runtime.diagram.ui.printing.render:1.8.0.201408201453</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse.gmf.runtime.diagram.ui.printing:org.eclipse.gmf.runtime.diagram.ui.printing:1.7.0.201408201453</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse.gmf.runtime.diagram.ui.properties:org.eclipse.gmf.runtime.diagram.ui.properties:1.7.0.201408201453</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse.gmf.runtime.diagram.ui.providers.ide:org.eclipse.gmf.runtime.diagram.ui.providers.ide:1.7.0.201408201453</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse.gmf.runtime.diagram.ui.providers:org.eclipse.gmf.runtime.diagram.ui.providers:1.7.0.201408201453</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse.gmf.runtime.diagram.ui.render:org.eclipse.gmf.runtime.diagram.ui.render:1.7.0.201408201453</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse.gmf.runtime.diagram.ui.resources.editor.ide:org.eclipse.gmf.runtime.diagram.ui.resources.editor.ide:1.7.0.201408201453</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse.gmf.runtime.diagram.ui.resources.editor:org.eclipse.gmf.runtime.diagram.ui.resources.editor:1.7.0.201408201453</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse.gmf.runtime.diagram.ui:org.eclipse.gmf.runtime.diagram.ui:1.8.0.201408201453</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse.gmf.runtime.draw2d.ui.render.awt:org.eclipse.gmf.runtime.draw2d.ui.render.awt:1.8.0.201408201453</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse.gmf.runtime.draw2d.ui.render:org.eclipse.gmf.runtime.draw2d.ui.render:1.7.0.201408201453</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse.gmf.runtime.draw2d.ui:org.eclipse.gmf.runtime.draw2d.ui:1.8.0.201408201453</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse.gmf.runtime.emf.commands.core:org.eclipse.gmf.runtime.emf.commands.core:1.7.0.201408201453</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse.gmf.runtime.emf.core:org.eclipse.gmf.runtime.emf.core:1.7.0.201408201453</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse.gmf.runtime.emf.type.core:org.eclipse.gmf.runtime.emf.type.core:1.7.0.201408201453</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse.gmf.runtime.emf.ui.properties:org.eclipse.gmf.runtime.emf.ui.properties:1.7.0.201408201453</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse.gmf.runtime.emf.ui:org.eclipse.gmf.runtime.emf.ui:1.7.0.201408201453</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse.gmf.runtime.gef.ui:org.eclipse.gmf.runtime.gef.ui:1.7.0.201408201453</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse.gmf.runtime.notation:org.eclipse.gmf.runtime.notation:1.8.0.201405281433</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse.ocl:org.eclipse.ocl.ecore:3.3.100.v20140610-0641</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse:org.eclipse.ocl:3.4.2.v20140725-2242</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse:org.eclipse.ocl.common:1.2.0.v20140610-0641</bundleArtifactDef>
+                                <bundleArtifactDef>org.w3c.css:org.w3c.css.sac:1.3.1.v200903091627</bundleArtifactDef>
+                                <bundleArtifactDef>org.w3c.dom:org.w3c.dom.events:3.0.0.draft20060413_v201105210656</bundleArtifactDef>
+                                <bundleArtifactDef>org.w3c.dom:org.w3c.dom.smil:1.0.1.v200903091627</bundleArtifactDef>
+                                <bundleArtifactDef>org.w3c.dom:org.w3c.dom.svg:1.1.0.v201011041433</bundleArtifactDef>
+                                <!--GMF -updated to Luna -->
+                                <bundleArtifactDef>org.eclipse.gmf.bridge:org.eclipse.gmf.bridge:1.3.1.201502182128</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse.gmf.bridge.trace:org.eclipse.gmf.bridge.trace:1.3.0.201502182128</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse.gmf.bridge.ui:org.eclipse.gmf.bridge.ui:1.5.1.201502182128</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse.gmf.bridge.ui.dashboard:org.eclipse.gmf.bridge.ui.dashboard:2.3.0.201502182128</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse.gmf.codegen:org.eclipse.gmf.codegen:2.11.0.201502182128</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse.gmf.codegen.edit:org.eclipse.gmf.codegen.edit:2.9.0.201502182128</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse.gmf.codegen.ui:org.eclipse.gmf.codegen.ui:1.3.0.201502182128</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse.gmf.common:org.eclipse.gmf.common:1.3.0.201502182128</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse.gmf.doc:org.eclipse.gmf.doc:1.3.0.201502182128</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse.gmf.doc.ui:org.eclipse.gmf.doc.ui:1.3.0.201502182128</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse.gmf.ecore.editor:org.eclipse.gmf.ecore.editor:2.2.0.201502182128</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse.gmf.examples.runtime:org.eclipse.gmf.examples.runtime:1.8.1.201408201453</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse.gmf.examples.runtime.common.service:org.eclipse.gmf.examples.runtime.common.service:1.2.0.201408201453</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse.gmf.examples.runtime.diagram.decorator:org.eclipse.gmf.examples.runtime.diagram.decorator:1.8.1.201408201453</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse.gmf.examples.runtime.diagram.geoshapes:org.eclipse.gmf.examples.runtime.diagram.geoshapes:1.8.0.201408201453</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse.gmf.examples.runtime.diagram.layout:org.eclipse.gmf.examples.runtime.diagram.layout:1.8.1.201408201453</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse.gmf.examples.runtime.diagram.logic:org.eclipse.gmf.examples.runtime.diagram.logic:1.7.0.201408201453</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse.gmf.examples.runtime.diagram.logic.model:org.eclipse.gmf.examples.runtime.diagram.logic.model:1.2.0.201408201453</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse.gmf.examples.runtime.diagram.logic.model.edit:org.eclipse.gmf.examples.runtime.diagram.logic.model.edit:1.2.0.201408201453</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse.gmf.examples.runtime.diagram.logic.model.editor:org.eclipse.gmf.examples.runtime.diagram.logic.model.editor:1.2.0.201408201453</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse.gmf.examples.runtime.emf.clipboard:org.eclipse.gmf.examples.runtime.emf.clipboard:1.2.0.201408201453</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse.gmf.examples.runtime.ui.pde:org.eclipse.gmf.examples.runtime.ui.pde:1.7.0.201408201453</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse.gmf.graphdef:org.eclipse.gmf.graphdef:2.9.0.201502182128</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse.gmf.graphdef.codegen:org.eclipse.gmf.graphdef.codegen:2.10.0.201502182128</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse.gmf.graphdef.codegen.ui:org.eclipse.gmf.graphdef.codegen.ui:1.3.0.201502182128</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse.gmf.graphdef.edit:org.eclipse.gmf.graphdef.edit:2.9.0.201502182128</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse.gmf.map:org.eclipse.gmf.map:2.9.0.201502182128</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse.gmf.map.edit:org.eclipse.gmf.map.edit:2.9.0.201502182128</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse.gmf.runtime.common.ui.printing.win32:org.eclipse.gmf.runtime.common.ui.printing.win32:1.7.0.201408201453</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse.gmf.runtime.common.ui.services.dnd:org.eclipse.gmf.runtime.common.ui.services.dnd:1.7.0.201408201453</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse.gmf.runtime.common.ui.services.dnd.ide:org.eclipse.gmf.runtime.common.ui.services.dnd.ide:1.7.0.201408201453</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse.gmf.runtime.diagram.ui.dnd:org.eclipse.gmf.runtime.diagram.ui.dnd:1.7.0.201408201453</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse.gmf.runtime.diagram.ui.geoshapes:org.eclipse.gmf.runtime.diagram.ui.geoshapes:1.7.0.201408201453</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse.gmf.runtime.emf.clipboard.core:org.eclipse.gmf.runtime.emf.clipboard.core:1.7.0.201408201453</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse.gmf.runtime.emf.type.ui:org.eclipse.gmf.runtime.emf.type.ui:1.7.0.201408201453</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse.gmf.runtime.lite.svg:org.eclipse.gmf.runtime.lite.svg:1.0.0.201502182128</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse.gmf.runtime.notation.edit:org.eclipse.gmf.runtime.notation.edit:1.7.0.201405281433</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse.gmf.runtime.notation.providers:org.eclipse.gmf.runtime.notation.providers:1.7.0.201408201453</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse.gmf.runtime.notation.sdk:org.eclipse.gmf.runtime.notation.sdk:1.7.0.201405281433</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse.gmf.sdk:org.eclipse.gmf.sdk:1.0.0.201502182128</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse.gmf.tooldef:org.eclipse.gmf.tooldef:2.3.0.201502182128</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse.gmf.tooldef.edit:org.eclipse.gmf.tooldef.edit:2.3.0.201502182128</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse.gmf.tooling:org.eclipse.gmf.tooling:2.1.0.201502182128</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse.gmf.validate:org.eclipse.gmf.validate:1.2.0.201502182128</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse.gmf.xpand:org.eclipse.gmf.xpand:2.2.0.201502182128</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse.gmf.xpand.editor:org.eclipse.gmf.xpand.editor:2.2.0.201502182128</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse.gmf.xpand.qvtlibrary:org.eclipse.gmf.xpand.qvtlibrary:1.2.0.201502182128</bundleArtifactDef>
+                                <!-- END OF GMF JARS -->
+                                <!-- M2M updated to Luna -->
+                                <bundleArtifactDef>org.eclipse:org.eclipse.m2m.qvt.oml:3.4.1.v20150201-1444</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse:org.eclipse.m2m.qvt.oml.common:3.4.0.v20140306-0649</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse:org.eclipse.m2m.qvt.oml.cst.parser:3.4.0.v20140429-1120</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse:org.eclipse.m2m.qvt.oml.ecore.imperativeocl:3.3.0.v20140317-1132</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse:org.eclipse.m2m.qvt.oml.emf.util:3.4.0.v20140306-0718</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse:org.eclipse.m2m.qvt.oml.project:3.4.0.v20140506-1859</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse:org.eclipse.m2m.qvt.oml.runtime:3.4.0.v20150201-1444</bundleArtifactDef>
+                                <!-- draw2d updated to Luna -->
+                                <bundleArtifactDef>org.eclipse:org.eclipse.draw2d.doc.isv:3.9.101.201408150207</bundleArtifactDef>
+                                <!--bundleArtifactDef>com.google:com.google.collect:0.8.0.v201008251220</bundleArtifactDef><bundleArtifactDef>com.google:com.google.inject:2.0.0.v201003051000</bundleArtifactDef-->
+                                <bundleArtifactDef>org.eclipse.zest:org.eclipse.zest.core:1.5.100.201408150207</bundleArtifactDef>
+                                <bundleArtifactDef>org.eclipse.zest:org.eclipse.zest.layouts:1.1.100.201408150207</bundleArtifactDef>
+                                <!-- Zest updated to Luna -->
+                                <bundleArtifactDef>org.eclipse.zest:org.eclipse.zest.doc.isv:1.5.100.201408150207</bundleArtifactDef>
+                                <!-- Smooks dependency for Luna.-->
+                                <bundleArtifactDef>org:org.junit4:4.8.1.v20120523-1257-wso2v1</bundleArtifactDef>
+                            </bundleArtifacts>
+                            <categories>
+                                <category>
+                                    <id>org.wso2.developerstudio.eclipse.carbonstudio.tools</id>
+                                    <label>WSO2 Developer Studio</label>
+                                    <description>WSO2 Developer Studio - Selecting this whole category will install all the features related to Developer Studio</description>
+                                    <features>
+                                        <!--	<featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.apim.feature:${apim.tools.feature.version}</featureArtifactDef><featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.appserver.feature:${appserver.tools.feature.version}</featureArtifactDef><featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.appserver.artifact.feature:${appserver.tools.feature.version}</featureArtifactDef><featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.bpel.feature:${bps.tools.feature.version}</featureArtifactDef><featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.bpel.artifact.feature:${bps.tools.feature.version}</featureArtifactDef> -->
+                                        <!--featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.bpel.connector.feature:${bps.connector.tools.feature.version}</featureArtifactDef-->
+                                        <!--<featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.registry.feature:${registry.tools.feature.version}</featureArtifactDef><featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.registry.artifact.feature:${registry.tools.feature.version}</featureArtifactDef><featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.esb.artifact.feature:${esb.tools.feature.version}</featureArtifactDef><featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.esb.graphical.editor.feature:${esb.graphical.editor.feature.version}</featureArtifactDef><featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.appfactory.feature:${appfactory.tools.feature.version}</featureArtifactDef><featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.ds.feature:${ds.tools.feature.version}</featureArtifactDef><featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.ds.artifact.feature:${ds.tools.artifact.feature.version}</featureArtifactDef><featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.carbon.uibundle.artifact.feature:${carbon.tools.feature.version}</featureArtifactDef><featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.registry.connector.feature:${greg.connector.tools.feature.version}</featureArtifactDef><featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.capp.framework.feature:${capp.tools.feature.version}</featureArtifactDef><featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.carbonserver.30.feature:${carbonserver.30.feature.version}</featureArtifactDef><featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.carbonserver.31.feature:${carbonserver.31.feature.version}</featureArtifactDef><featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.carbonserver.32.feature:${carbonserver.32.feature.version}</featureArtifactDef><featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.carbonserver.40.feature:${carbonserver.40.feature.version}</featureArtifactDef><featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.carbonserver.42.feature:${carbonserver.42.feature.version}</featureArtifactDef><featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.carbonserver.44.feature:${carbonserver.44.feature.version}</featureArtifactDef><featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.carbonserver.remote.feature:${carbonserver.remote.feature.version}</featureArtifactDef><featureArtifactDef>org.jboss.tools:org.jboss.tools.smooks.feature:${smooks.feature.version}</featureArtifactDef><featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.distribution.project.feature:${common.tools.version}</featureArtifactDef><featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.artifact.library.feature:${common.tools.version}</featureArtifactDef><featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.gadget.artifact.feature:${common.tools.version}</featureArtifactDef><featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.gs.jaggery.feature:${jaggery.tools.version}</featureArtifactDef><featureArtifactDef>org.wso2.developerstudio:org.smooks.edi.editor-feature:${smooks.edi.editor.version}</featureArtifactDef>-->
+                                        <featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.framework.core.feature:${core.framework.feature.version}</featureArtifactDef>
+                                        <featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.framework.samples.feature:${core.framework.feature.version}</featureArtifactDef>
+                                        <!--<featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.server.framework.feature:${server.framework.feature.version}</featureArtifactDef> -->
+                                        <!--<featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.usermgt.core.feature:${usermgt.tools.feature.version}</featureArtifactDef><featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.analytics.artifact.feature:${analytics.feature.version}</featureArtifactDef><featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.jaggery.artifact.feature:${jaggery.feature.version}</featureArtifactDef><featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.brs.artifact.feature:${brs.feature.version}</featureArtifactDef><featureArtifactDef>org.wso2.developerstudio:org.wso2.soapui.feature:${soapui.feature.version}</featureArtifactDef><featureArtifactDef>org.wso2.developerstudio:org.wso2.tcpmon.feature:${tcpmon.feature.version}</featureArtifactDef> -->
+                                        <!--featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.qos.artifact.feature:${qos.feature.version}</featureArtifactDef-->
+                                        <!--<featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.security.artifact.feature:${security.feature.version}</featureArtifactDef> -->
+                                    </features>
+                                </category>
+                                <!--category><id>org.wso2.developerstudio.eclipse.product.tools</id><label>WSO2 Eclipse Product Tools</label><features></features></category><category><id>org.wso2.developerstudio.eclipse.server.tools</id><label>WSO2 Eclipse Server Adapters</label><features></features></category-->
+                            </categories>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <version>1.6</version>
+                <executions>
+                    <execution>
+                        <id>release-distribution</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>attach-artifact</goal>
+                        </goals>
+                        <configuration>
+                            <artifacts>
+                                <artifact>
+                                    <file>target/${project.artifactId}_${project.version}.zip</file>
+                                    <type>zip</type>
+                                </artifact>
+                            </artifacts>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+    <properties>
+        <carbon.version>3.2.0</carbon.version>
+    </properties>
+</project>

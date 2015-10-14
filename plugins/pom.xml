@@ -1,0 +1,24 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <parent>
+    	<groupId>org.wso2.eclipse</groupId>
+    	<artifactId>wso2-eclipse-parent</artifactId>
+    	<version>4.0.0</version>
+    </parent>
+	<artifactId>wso2-eclipse-plugins</artifactId>
+    <modelVersion>4.0.0</modelVersion>
+    <packaging>pom</packaging>
+    <name>WSO2 Eclipse Plugins</name>
+    <modules>
+<module>org.wso2.developerstudio.eclipse.libraries</module>
+        <module>org.wso2.developerstudio.eclipse.logging</module>
+        <module>org.wso2.developerstudio.eclipse.ui</module>
+        <module>org.wso2.developerstudio.eclipse.utils</module>
+	<module>org.wso2.developerstudio.eclipse.maven</module>
+	 <module>org.wso2.developerstudio.eclipse.platform.core</module>
+        <module>org.wso2.developerstudio.eclipse.platform.ui</module>
+        <module>org.wso2.developerstudio.eclipse.samples</module>
+    </modules>
+</project>
+

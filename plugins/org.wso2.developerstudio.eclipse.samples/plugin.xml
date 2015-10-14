@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension-point id="org.wso2.developerstudio.eclipse.samples" name="Developer Studio Samples" schema="schema/org.wso2.developerstudio.eclipse.samples.exsd"/>
+	<extension point="org.eclipse.ui.menus">
+       <menuContribution
+            locationURI="menu:org.wso2.developerstudio.eclipse.platform.ui.main?=group.filter">
+         <menu label="Samples" mnemonic="S"
+               id="org.wso2.developerstudio.eclipse.samples.menu">
+			<dynamic class="org.wso2.developerstudio.eclipse.samples.menu.contributors.DeveloperStudioSampleMenuContributor"
+				id="org.wso2.developerstudio.eclipse.samples.menu.items" />
+         </menu>
+      </menuContribution>
+	</extension> 
+</plugin>

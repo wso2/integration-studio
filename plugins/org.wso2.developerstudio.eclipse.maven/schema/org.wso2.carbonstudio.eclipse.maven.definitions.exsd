@@ -1,0 +1,276 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- Schema file written by PDE -->
+<schema targetNamespace="org.wso2.developerstudio.eclipse.maven" xmlns="http://www.w3.org/2001/XMLSchema">
+<annotation>
+      <appinfo>
+         <meta.schema plugin="org.wso2.developerstudio.eclipse.maven" id="org.wso2.developerstudio.eclipse.maven.definitions" name="Maven Definition Data"/>
+      </appinfo>
+      <documentation>
+         [Enter description of this extension point.]
+      </documentation>
+   </annotation>
+
+   <element name="extension">
+      <annotation>
+         <appinfo>
+            <meta.element />
+         </appinfo>
+      </annotation>
+      <complexType>
+         <choice minOccurs="1" maxOccurs="unbounded">
+            <element ref="archetype"/>
+            <element ref="plugin"/>
+         </choice>
+         <attribute name="point" type="string" use="required">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="id" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="name" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+               <appinfo>
+                  <meta.attribute translatable="true"/>
+               </appinfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="archetype">
+      <complexType>
+         <choice minOccurs="0" maxOccurs="unbounded">
+            <element ref="dependency"/>
+         </choice>
+         <attribute name="groupId" type="string" use="required">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="artifactId" type="string" use="required">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="version" type="string" use="required">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="class" type="string">
+            <annotation>
+               <documentation>
+                  For customized execution of creating maven project from the arche type
+               </documentation>
+               <appinfo>
+                  <meta.attribute kind="java" basedOn=":org.wso2.developerstudio.eclipse.maven.executor.IMavenCustomExecution"/>
+               </appinfo>
+            </annotation>
+         </attribute>
+         <attribute name="id" type="string" use="required">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="archeTypePluginFile" type="string">
+            <annotation>
+               <documentation>
+                  Users can point to a resource in the plugin as the maven artifact which will provide the arche type implementation.
+               </documentation>
+               <appinfo>
+                  <meta.attribute kind="resource"/>
+               </appinfo>
+            </annotation>
+         </attribute>
+         <attribute name="executeMode" type="string" use="default" value="DEFAULT">
+            <annotation>
+               <documentation>
+                  Whether to execute the maven operation in ONLINE, OFFLINE or DEFAULT mode. In DEFAULT mode it will use the user preference settings by default.
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="templates" type="string">
+            <annotation>
+               <documentation>
+                  Specify templates in the arche type in the form of &quot;&lt;templateId1&gt;:&lt;Caption1&gt;;&lt;templateId2&gt;:&lt;Caption3&gt;&quot;. Here &lt;templateId1&gt; could be in the form of &quot;&lt;templateEnablingSystemProperty&gt;=&lt;id&gt;&quot;
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="name" type="string" use="required">
+            <annotation>
+               <documentation>
+                  Presentable name for the arche type
+               </documentation>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="dependency">
+      <annotation>
+         <documentation>
+            This is a maven dependency
+         </documentation>
+      </annotation>
+      <complexType>
+         <attribute name="groupId" type="string" use="required">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="artifactId" type="string" use="required">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="version" type="string" use="required">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="resource" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+               <appinfo>
+                  <meta.attribute kind="resource"/>
+               </appinfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="plugin">
+      <complexType>
+         <choice minOccurs="0" maxOccurs="unbounded">
+            <element ref="dependency"/>
+         </choice>
+         <attribute name="groupId" type="string" use="required">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="artifactId" type="string" use="required">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="version" type="string" use="required">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="goals" type="string">
+            <annotation>
+               <documentation>
+                  Comma separated list of goals
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="id" type="string" use="required">
+            <annotation>
+               <documentation>
+                  An Id to uniquely identify this maven plugin (this is not the execution Id)
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="class" type="string">
+            <annotation>
+               <documentation>
+                  For customized execution of creating maven project from the arche type
+               </documentation>
+               <appinfo>
+                  <meta.attribute kind="java" basedOn=":org.wso2.developerstudio.eclipse.maven.executor.IMavenCustomExecution"/>
+               </appinfo>
+            </annotation>
+         </attribute>
+         <attribute name="executeMode" type="string" use="default" value="DEFAULT">
+            <annotation>
+               <documentation>
+                  Whether to execute the maven operation in ONLINE, OFFLINE or DEFAULT mode. In DEFAULT mode it will use the user preference settings by default.
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="pluginFile" type="string">
+            <annotation>
+               <documentation>
+                  Users can point to a resource in the plugin as the maven artifact plugin which will contribute the mojos.
+               </documentation>
+               <appinfo>
+                  <meta.attribute kind="resource"/>
+               </appinfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <annotation>
+      <appinfo>
+         <meta.section type="since"/>
+      </appinfo>
+      <documentation>
+         [Enter the first release in which this extension point appears.]
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appinfo>
+         <meta.section type="examples"/>
+      </appinfo>
+      <documentation>
+         [Enter extension point usage example here.]
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appinfo>
+         <meta.section type="apiinfo"/>
+      </appinfo>
+      <documentation>
+         [Enter API information here.]
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appinfo>
+         <meta.section type="implementation"/>
+      </appinfo>
+      <documentation>
+         [Enter information about supplied implementation of this extension point.]
+      </documentation>
+   </annotation>
+
+
+</schema>

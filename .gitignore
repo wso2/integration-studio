@@ -5,6 +5,7 @@ target/
 .project
 .classpath
 .settings/
+bin/
 
 ## No Eclipse settings from nested workspace
 .metadata/

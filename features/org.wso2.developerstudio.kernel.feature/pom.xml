@@ -42,7 +42,7 @@
                         </goals>
                         <configuration>
                             <id>${project.artifactId}</id>
-                            <propertiesFile>../../feature.properties</propertiesFile>
+                            <propertiesFile>../feature.properties</propertiesFile>
                             <bundles>
                                 <bundleDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.platform.core:${core.tools.version}</bundleDef>
                                 <bundleDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.platform.ui:${core.tools.version}</bundleDef>

@@ -3,6 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: Maven Invoker
 Bundle-SymbolicName: org.wso2.developerstudio.eclipse.maven;singleton:=true
 Bundle-Version: 4.0.0.qualifier
+Bundle-Vendor: WSO2
 Bundle-Activator: org.wso2.developerstudio.eclipse.maven.Activator
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
@@ -34,3 +35,4 @@ Export-Package: org.wso2.developerstudio.eclipse.maven,
  org.wso2.developerstudio.eclipse.maven.util
 Require-Bundle: org.eclipse.equinox.registry,
  org.eclipse.core.runtime
+

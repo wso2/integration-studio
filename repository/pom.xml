@@ -75,6 +75,7 @@
                             <featureArtifacts>
                                 <featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.kernel.feature:${kernel.feature.version}</featureArtifactDef>
                                 <featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.kernel.samples.feature:${kernel.samples.feature.version}</featureArtifactDef>
+                                <featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.kernel.webeditor.feature:${webeditor.version}</featureArtifactDef>
                             </featureArtifacts>
                             <bundleArtifacts>
                                 <bundleArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.logging:${common.logging.version}</bundleArtifactDef>
@@ -248,6 +249,7 @@
                                     <description>WSO2 Developer Studio Kernel - Selecting this whole category will install all the features related to Developer Studio Kernel</description>
                                     <features>
                                         <featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.kernel.feature:${kernel.feature.version}</featureArtifactDef>
+                                        <featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.kernel.webeditor.feature:${webeditor.version}</featureArtifactDef>
                                         <featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.kernel.samples.feature:${kernel.samples.feature.version}</featureArtifactDef>
                                     </features>
                                 </category>

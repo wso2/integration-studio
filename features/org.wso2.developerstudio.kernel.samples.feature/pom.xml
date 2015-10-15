@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!--
  ~ Copyright (c) WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
  ~
@@ -14,23 +14,19 @@
  ~ See the License for the specific language governing permissions and
  ~ limitations under the License.
 -->
-
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-
-    <parent>
-        <groupId>org.wso2.eclipse</groupId>
-        <artifactId>wso2-eclipse-tools-features</artifactId>
-        <version>4.0.0</version>
-    </parent>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>org.wso2.developerstudio.eclipse.framework.samples.feature</artifactId>
+    <parent>
+        <artifactId>wso2-developerstudio-kernel-features</artifactId>
+        <groupId>org.wso2.developerstudio</groupId>
+        <version>4.0.0-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+    <artifactId>org.wso2.developerstudio.kernel.samples.feature</artifactId>
     <packaging>pom</packaging>
-    <name>WSO2 Eclipse Framework Samples Feature</name>
+    <name>WSO2 Developer Studio Kernel Samples Feature</name>
+    <description>This feature contains the samples for Developer Studio Kernel</description>
     <url>http://wso2.org</url>
-    <description>This feature contains the framework bundles for samples</description>
-
     <build>
         <plugins>
             <plugin>
@@ -48,7 +44,7 @@
                             <id>${project.artifactId}</id>
                             <propertiesFile>../../feature.properties</propertiesFile>
                             <bundles>
-                                <bundleDef>org.wso2.eclipse:org.wso2.developerstudio.eclipse.samples:${core.tools.version}</bundleDef>
+                                <bundleDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.samples:${core.tools.version}</bundleDef>
                             </bundles>
                         </configuration>
                     </execution>

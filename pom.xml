@@ -1,46 +1,102 @@
-<project
-    xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+~ Copyright (c) WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+~
+~ Licensed under the Apache License, Version 2.0 (the "License");
+~ you may not use this file except in compliance with the License.
+~ You may obtain a copy of the License at
+~
+~      http://www.apache.org/licenses/LICENSE-2.0
+~
+~ Unless required by applicable law or agreed to in writing, software
+~ distributed under the License is distributed on an "AS IS" BASIS,
+~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+~ See the License for the specific language governing permissions and
+~ limitations under the License.
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0-SNAPSHOT" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0-SNAPSHOT http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>org.wso2.eclipse</groupId>
-    <artifactId>wso2-eclipse-parent</artifactId>
-    <version>4.0.0</version>
+    <groupId>org.wso2.developerstudio</groupId>
+    <artifactId>wso2-developerstudio-kernel-parent</artifactId>
+    <version>4.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
-    <name>WSO2 Eclipse Tools Parent</name>
-    <profiles>
-        <profile>
-            <id>default</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-            <modules>
-                <module>plugins</module>
-
-                <module>features</module>
-                <module>repository</module>
-                <module>samples</module>
-                <module>tests</module>
-            </modules>
-        </profile>
-        <profile>
-            <id>release</id>
-            <modules>
-                <module>plugins</module>
-
-                <module>features</module>
-                <module>repository</module>
-		<module>samples</module>
-                <module>tests</module>
-            </modules>
-        </profile>
-    </profiles>
+    <name>WSO2 Developer Studio Kernel Parent</name>
+    <modules>
+        <module>plugins</module>
+        <module>features</module>
+        <module>repository</module>
+        <module>samples</module>
+        <module>tests</module>
+    </modules>
     <scm>
-        <url>https://github.com/wso2/developer-studio.git</url>
-        <developerConnection>scm:git:https://github.com/wso2/developer-studio.git</developerConnection>
         <connection>scm:git:https://github.com/wso2/developer-studio.git</connection>
+        <developerConnection>scm:git:https://github.com/wso2/developer-studio.git</developerConnection>
         <tag>HEAD</tag>
+        <url>https://github.com/wso2/developer-studio.git</url>
     </scm>
+    <distributionManagement>
+        <repository>
+            <id>nexus-releases</id>
+            <name>WSO2 Release Distribution Repository</name>
+            <url>http://maven.wso2.org/nexus/service/local/staging/deploy/maven2/</url>
+        </repository>
+    </distributionManagement>
+    <properties>
+        <axis2.mr.tools.version>4.0.0-SNAPSHOT</axis2.mr.tools.version>
+        <carbon.tools.version>4.0.0-SNAPSHOT</carbon.tools.version>
+        <common.framework.feature.version>4.0.0-SNAPSHOT</common.framework.feature.version>
+        <!--********** bundle plugin versions **********-->
+        <common.libraries.version>4.0.0-SNAPSHOT</common.libraries.version>
+        <common.logging.version>4.0.0-SNAPSHOT</common.logging.version>
+        <common.maven.version>4.0.0-SNAPSHOT</common.maven.version>
+        <common.tools.version>4.0.0-SNAPSHOT</common.tools.version>
+        <common.ui.version>4.0.0-SNAPSHOT</common.ui.version>
+        <common.utils.version>4.0.0-SNAPSHOT</common.utils.version>
+        <kernel.feature.version>4.0.0-SNAPSHOT</kernel.feature.version>
+        <kernel.samples.feature.version>4.0.0-SNAPSHOT</kernel.samples.feature.version>
+        <core.plugins.version>4.0.0-SNAPSHOT</core.plugins.version>
+        <core.tools.version>4.0.0-SNAPSHOT</core.tools.version>
+        <logging.tools.version>4.0.0-SNAPSHOT</logging.tools.version>
+        <osde.feature.version>4.0.0-SNAPSHOT</osde.feature.version>
+        <osde.tools.version>0.9.5</osde.tools.version>
+        <p2.manager.version>4.0.0-SNAPSHOT</p2.manager.version>
+        <p2.manager36.version>4.0.0-SNAPSHOT</p2.manager36.version>
+        <project.scm.id>my-scm-server</project.scm.id>
+        <tycho-version>0.23.0</tycho-version>
+        <version.sortpom.plugin>2.3.0</version.sortpom.plugin>
+    </properties>
+    <repositories>
+        <repository>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>daily</updatePolicy>
+                <checksumPolicy>ignore</checksumPolicy>
+            </releases>
+            <id>Eclipse-p2-repo</id>
+            <url>http://download.eclipse.org/releases/luna/</url>
+            <layout>p2</layout>
+        </repository>
+        <repository>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>daily</updatePolicy>
+                <checksumPolicy>ignore</checksumPolicy>
+            </releases>
+            <id>WSO2-Nexus-Maven-Repository</id>
+            <url>http://maven.wso2.org/nexus/content/groups/wso2-public/</url>
+            <layout>default</layout>
+        </repository>
+        <repository>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>daily</updatePolicy>
+                <checksumPolicy>ignore</checksumPolicy>
+            </snapshots>
+            <id>WSO2-Nexus-Maven-SNAPSHOT-Repository</id>
+            <url>http://maven.wso2.org/nexus/content/repositories/wso2.maven2.snapshot/</url>
+            <layout>default</layout>
+        </repository>
+    </repositories>
     <pluginRepositories>
         <pluginRepository>
             <id>repository.dev.java.net-maven2</id>
@@ -54,50 +110,11 @@
             <url>http://download.eclipse.org/bpel/site/</url>
             <layout>default</layout>
         </pluginRepository>
-	<pluginRepository>
+        <pluginRepository>
             <id>wso2-maven2-repository</id>
             <url>http://dist.wso2.org/maven2</url>
         </pluginRepository>
     </pluginRepositories>
-    <distributionManagement>
-        <repository>
-            <id>nexus-releases</id>
-            <name>WSO2 Release Distribution Repository</name>
-            <url>http://maven.wso2.org/nexus/service/local/staging/deploy/maven2/</url>
-        </repository>
-    </distributionManagement>
-    <repositories>
-        <repository>
-            <id>Eclipse-p2-repo</id>
-            <layout>p2</layout>
-            <url>http://download.eclipse.org/releases/luna/</url>
-            <releases>
-                <enabled>true</enabled>
-                <updatePolicy>daily</updatePolicy>
-                <checksumPolicy>ignore</checksumPolicy>
-            </releases>
-        </repository>
-        <repository>
-            <id>WSO2-Nexus-Maven-Repository</id>
-            <layout>default</layout>
-            <url>http://maven.wso2.org/nexus/content/groups/wso2-public/</url>
-            <releases>
-                <enabled>true</enabled>
-                <updatePolicy>daily</updatePolicy>
-                <checksumPolicy>ignore</checksumPolicy>
-            </releases>
-        </repository>
-        <repository>
-            <id>WSO2-Nexus-Maven-SNAPSHOT-Repository</id>
-            <layout>default</layout>
-            <url>http://maven.wso2.org/nexus/content/repositories/wso2.maven2.snapshot/</url>
-            <snapshots>
-                <enabled>true</enabled>
-                <updatePolicy>daily</updatePolicy>
-                <checksumPolicy>ignore</checksumPolicy>
-            </snapshots>
-        </repository>
-    </repositories>
     <build>
         <extensions>
             <extension>
@@ -106,6 +123,23 @@
                 <version>2.1</version>
             </extension>
         </extensions>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>com.google.code.sortpom</groupId>
+                    <artifactId>maven-sortpom-plugin</artifactId>
+                    <version>${version.sortpom.plugin}</version>
+                    <configuration>
+                        <expandEmptyElements>false</expandEmptyElements>
+                        <nrOfIndentSpace>4</nrOfIndentSpace>
+                        <createBackupFile>false</createBackupFile>
+                        <sortProperties>true</sortProperties>
+                        <sortDependencies>groupId,artifactId,scope</sortDependencies>
+                        <verifyFail>Stop</verifyFail>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
         <plugins>
             <plugin>
                 <groupId>org.eclipse.tycho</groupId>
@@ -192,26 +226,4 @@
             </plugin>
         </plugins>
     </build>
-    <properties>
-        <tycho-version>0.23.0</tycho-version>
-        <!--********** bundle plugin versions **********-->
-        <common.libraries.version>4.0.0</common.libraries.version>
-        <logging.tools.version>4.0.0</logging.tools.version>
-        <common.utils.version>4.0.0</common.utils.version>
-        <core.plugins.version>4.0.0</core.plugins.version>
-        <carbon.tools.version>4.0.0</carbon.tools.version>
-        <common.ui.version>4.0.0</common.ui.version>
-        <common.maven.version>4.0.0</common.maven.version>
-        <common.tools.version>4.0.0</common.tools.version>
-        <axis2.mr.tools.version>4.0.0</axis2.mr.tools.version>
-        <core.tools.version>4.0.0</core.tools.version>
-        <p2.manager.version>4.0.0</p2.manager.version>
-        <p2.manager36.version>4.0.0</p2.manager36.version>
-        <common.logging.version>4.0.0</common.logging.version>
-        <osde.tools.version>0.9.5</osde.tools.version>
-        <core.framework.feature.version>4.0.0</core.framework.feature.version>
-        <common.framework.feature.version>4.0.0</common.framework.feature.version>
-        <osde.feature.version>4.0.0</osde.feature.version>
-        <project.scm.id>my-scm-server</project.scm.id>
-    </properties>
 </project>

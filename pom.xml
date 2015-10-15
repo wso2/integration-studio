@@ -52,15 +52,16 @@
         <common.tools.version>4.0.0-SNAPSHOT</common.tools.version>
         <common.ui.version>4.0.0-SNAPSHOT</common.ui.version>
         <common.utils.version>4.0.0-SNAPSHOT</common.utils.version>
-        <kernel.feature.version>4.0.0-SNAPSHOT</kernel.feature.version>
-        <kernel.samples.feature.version>4.0.0-SNAPSHOT</kernel.samples.feature.version>
         <core.plugins.version>4.0.0-SNAPSHOT</core.plugins.version>
         <core.tools.version>4.0.0-SNAPSHOT</core.tools.version>
+        <kernel.feature.version>4.0.0-SNAPSHOT</kernel.feature.version>
+        <kernel.samples.feature.version>4.0.0-SNAPSHOT</kernel.samples.feature.version>
         <logging.tools.version>4.0.0-SNAPSHOT</logging.tools.version>
         <osde.feature.version>4.0.0-SNAPSHOT</osde.feature.version>
         <osde.tools.version>0.9.5</osde.tools.version>
         <p2.manager.version>4.0.0-SNAPSHOT</p2.manager.version>
         <p2.manager36.version>4.0.0-SNAPSHOT</p2.manager36.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.scm.id>my-scm-server</project.scm.id>
         <tycho-version>0.23.0</tycho-version>
         <version.sortpom.plugin>2.3.0</version.sortpom.plugin>

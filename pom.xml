@@ -65,6 +65,7 @@
         <project.scm.id>my-scm-server</project.scm.id>
         <tycho-version>0.23.0</tycho-version>
         <version.sortpom.plugin>2.3.0</version.sortpom.plugin>
+        <version.mvn-resource-plugin>2.7</version.mvn-resource-plugin>
         <embedded.tomcat.version>4.0.0-SNAPSHOT</embedded.tomcat.version>
         <webeditor.version>4.0.0-SNAPSHOT</webeditor.version>
     </properties>

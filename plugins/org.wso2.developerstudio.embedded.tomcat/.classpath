@@ -3,5 +3,13 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
 	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
 	<classpathentry kind="src" path="src/"/>
+	<classpathentry exported="true" kind="lib" path="libs/ecj-4.4.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/tomcat-dbcp.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/tomcat-embed-core.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/tomcat-embed-el.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/tomcat-embed-jasper.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/tomcat-embed-logging-juli.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/tomcat-embed-logging-log4j.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/tomcat7-embed-websocket.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

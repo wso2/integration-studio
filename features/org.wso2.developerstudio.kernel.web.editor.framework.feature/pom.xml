@@ -7,9 +7,9 @@
 		<version>4.0.0-SNAPSHOT</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
-	<artifactId>org.wso2.developerstudio.kernel.samples.feature</artifactId>
+	<artifactId>org.wso2.developerstudio.kernel.web.editor.framework.feature</artifactId>
 	<packaging>eclipse-feature</packaging>
-	<name>WSO2 Developer Studio Kernel Samples Feature</name>
+	<name>WSO2 Developer Studio Kernel Web based Editor Framework Feature</name>
 	<build>
 		<plugins>
 			<plugin>

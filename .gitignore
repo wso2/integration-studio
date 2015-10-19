@@ -15,6 +15,10 @@ test-output/
 *.iws
 .idea/
 
+
+# Igonore duplicated feature.common.properties
+feature.common.properties
+
 ## No Eclipse settings from nested workspace
 .metadata/
 

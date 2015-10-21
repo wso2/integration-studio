@@ -16,32 +16,20 @@
 package org.wso2.developerstudio.internal.tomcat;
 
 import java.io.File;
-import java.lang.reflect.Method;
-import java.net.MalformedURLException;
-import java.net.URI;
 import java.net.URL;
-import java.net.URLClassLoader;
-import java.util.ArrayList;
-import java.util.List;
 
 import org.eclipse.core.runtime.FileLocator;
+import org.eclipse.core.runtime.Path;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
+import org.wso2.developerstudio.internal.tomcat.server.EmbeddedTomcatManager;
 
 public class EmbeddedTomcatPlugin implements BundleActivator {
 
 	public static final String PLUGIN_ID = "org.wso2.developerstudio.internal.tomcat";
-
-	private static final String LIBS_DIR = "libs";
-	private static final String SERVER_CLASS = "org.wso2.developerstudio.internal.tomcat.server.TomcatServerImpl";
-	private static final String METHOD_START = "start";
-	private static final String METHOD_SET_WEB_ROOT = "setWebAppRoot";
-	private static final String METHOD_STOP = "stop";
-	private static final String WEBAPPS_DIR = "webapps";
-	private static final String METHOD_GET_APP_URL = "getAppURL";
-	private static final String METHOD_GET_SERVER_PORT = "getServerPort";
+	protected static ClassLoader bundleCtxtClassLoader;
 
 	private static BundleContext context;
 
@@ -51,11 +39,12 @@ public class EmbeddedTomcatPlugin implements BundleActivator {
 	/** The shared plug-in instance */
 	private static EmbeddedTomcatPlugin plugin;
 	/** Tomcat instance */
-	private Object serverInstance;
+	private EmbeddedTomcatManager tomcatManager;
 
 	public void start(BundleContext bundleContext) throws Exception {
 		context = bundleContext;
 		plugin = this;
+        bundleCtxtClassLoader = Thread.currentThread().getContextClassLoader();
 		log.info("Starting embedded tomcat server of DevStudio.");
 		// Start embedded Tomcat with a separate class loader
 		Thread tomcatThread = new Thread(new Runnable() {
@@ -63,49 +52,12 @@ public class EmbeddedTomcatPlugin implements BundleActivator {
 			@Override
 			public void run() {
 				try {
-					final List<URL> classPath = new ArrayList<>();
-					// Add root directory of the bundle to class-path
-					final URL bundleURI = FileLocator.resolve(context
-							.getBundle().getResource("."));
-					classPath.add(bundleURI);
-
-					// Add third party libs to class-path
-					final URI libsURI = FileLocator.resolve(
-							context.getBundle().getResource(LIBS_DIR)).toURI();
-					final File libs = new File(libsURI);
-					addJarsToClassPath(libs, classPath);
-
-					ClassLoader tomcatClassLoader = new URLClassLoader(
-							classPath.toArray(new URL[classPath.size()]));
-					// Set the proper class loader for this thread.
-					Thread.currentThread().setContextClassLoader(
-							tomcatClassLoader);
-
-					Class<?> serverClass = tomcatClassLoader
-							.loadClass(SERVER_CLASS);
-					serverInstance = serverClass.newInstance();
-
-					// Set web application root
-					File webAppRoot = new File(FileLocator.resolve(
-							context.getBundle().getResource(WEBAPPS_DIR))
-							.toURI());
-					Method setWebRootMethod = serverInstance.getClass()
-							.getMethod(METHOD_SET_WEB_ROOT, File.class);
-					setWebRootMethod.invoke(serverInstance, webAppRoot);
-
-					// Start the server
-					Method startMethod = serverInstance.getClass().getMethod(
-							METHOD_START, new Class[0]);
-					startMethod.invoke(serverInstance, new Object[0]);
-
-					// get server port
-					Method getPortMethod = serverInstance.getClass().getMethod(
-							METHOD_GET_SERVER_PORT, new Class[0]);
-					Integer port = (Integer) getPortMethod.invoke(
-							serverInstance, new Object[0]);
+					Thread.currentThread().setContextClassLoader(bundleCtxtClassLoader);
+					tomcatManager = new EmbeddedTomcatManager();
+					tomcatManager.start();
+					Integer port = tomcatManager.getServerPort();
 					log.info("Embedded tomcat server is suceessfully started on port "
 							+ port);
-
 				} catch (Exception ex) {
 					log.error("Error while starting embedded tomcat server.",
 							ex);
@@ -121,10 +73,7 @@ public class EmbeddedTomcatPlugin implements BundleActivator {
 		plugin = null;
 		context = null;
 		try {
-			// invoke stop method of the server
-			Method m = serverInstance.getClass().getMethod(METHOD_STOP,
-					new Class[0]);
-			m.invoke(serverInstance, new Object[0]);
+			tomcatManager.stop();
 		} catch (Exception e) {
 			log.error(
 					"Error while stopping embedded tomcat server of DevStudio.",
@@ -150,10 +99,7 @@ public class EmbeddedTomcatPlugin implements BundleActivator {
 	 * @throws Exception
 	 */
 	public String getAppURL(String appID) throws Exception {
-		Method m = serverInstance.getClass().getMethod(METHOD_GET_APP_URL,
-				String.class);
-		Object result = m.invoke(serverInstance, appID);
-		return result.toString();
+		return tomcatManager.getAppURL(appID);
 	}
 
 	/**
@@ -163,30 +109,5 @@ public class EmbeddedTomcatPlugin implements BundleActivator {
 	 */
 	public static BundleContext getContext() {
 		return context;
-	}
-
-	/**
-	 * Method to capture URLs of jar files in a particular directory.
-	 * 
-	 * @param root
-	 *            Directory to scan for jar files.
-	 * @param classPath
-	 *            List to put captured jar URLs.
-	 * @throws MalformedURLException
-	 */
-	private static void addJarsToClassPath(File root, List<URL> classPath)
-			throws MalformedURLException {
-		File[] files = root.listFiles();
-		if (files == null) {
-			return;
-		}
-		for (File file : files) {
-			if (file.isDirectory() && file.canRead()) {
-				addJarsToClassPath(file, classPath);
-			} else if (file.isFile() && file.canRead()
-					&& file.getName().toLowerCase().endsWith(".jar")) {
-				classPath.add(file.toURI().toURL());
-			}
-		}
 	}
 }

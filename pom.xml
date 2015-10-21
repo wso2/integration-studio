@@ -68,6 +68,7 @@
         <version.mvn-resource-plugin>2.7</version.mvn-resource-plugin>
         <embedded.tomcat.version>4.0.0-SNAPSHOT</embedded.tomcat.version>
         <webeditor.version>4.0.0-SNAPSHOT</webeditor.version>
+        <wso2.tomcat.version>7.0.59.wso2v3</wso2.tomcat.version>
     </properties>
     <repositories>
         <repository>
@@ -89,6 +90,16 @@
             <id>WSO2-Nexus-Maven-Repository</id>
             <url>http://maven.wso2.org/nexus/content/groups/wso2-public/</url>
             <layout>default</layout>
+        </repository>
+        <repository>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>daily</updatePolicy>
+                <checksumPolicy>ignore</checksumPolicy>
+            </releases>
+            <id>WSO2-p2-Repository</id>
+            <url>http://product-dist.wso2.com/p2/carbon/releases/wilkes/</url>
+            <layout>p2</layout>
         </repository>
         <repository>
             <snapshots>

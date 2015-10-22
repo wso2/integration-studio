@@ -31,7 +31,6 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
-import org.wso2.developerstudio.eclipse.platform.core.utils.Validator;
 import org.wso2.developerstudio.eclipse.platform.ui.Activator;
 import org.wso2.developerstudio.eclipse.platform.ui.dialogs.TrustCertificateDialog;
 
@@ -68,11 +67,7 @@ public class EclipseSWTTrustManager implements X509TrustManager {
 	}
 
 	public void checkServerTrusted(X509Certificate[] certs, String authType) throws CertificateException {
-//        if (!Validator.isCertChainValid(certs)){
-//        	TrustCertificateDialog trustCertificateDialog = new TrustCertificateDialog(Display.getDefault().getActiveShell(),certs[0].toString());
-//        	if (trustCertificateDialog.open()==IDialogConstants.NO_ID)
-//        		throw new CertificateException("Untrusted certificate");
-//        }
+
 	}
 
 	public X509Certificate[] getAcceptedIssuers() {

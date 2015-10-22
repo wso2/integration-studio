@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2010, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ * Copyright (c) 2010-2015, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,7 +21,11 @@ import org.apache.axiom.om.OMElement;
 import org.apache.axiom.om.OMFactory;
 import org.apache.axiom.om.impl.builder.StAXOMBuilder;
 import org.apache.axiom.om.util.AXIOMUtil;
+import org.eclipse.core.internal.runtime.Log;
 import org.eclipse.core.resources.IFile;
+import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
+import org.wso2.developerstudio.eclipse.logging.core.Logger;
+import org.wso2.developerstudio.eclipse.platform.core.Activator;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -46,6 +50,7 @@ import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 
 public abstract class AbstractXMLDoc extends AbstractManifest {
+	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 	public static OMFactory factory = OMAbstractFactory.getOMFactory();
 
 	protected List<OMElement> getChildElements(OMElement parentElement, String tagName) {
@@ -55,8 +60,7 @@ public abstract class AbstractXMLDoc extends AbstractManifest {
 			Object o = children.next();
 			if (o instanceof OMElement) {
 				OMElement child = (OMElement) o;
-				if (tagName == null || tagName.trim().equals("") ||
-				    child.getLocalName().equals(tagName)) {
+				if (tagName == null || tagName.trim().equals("") || child.getLocalName().equals(tagName)) {
 					elements.add(child);
 				}
 			}
@@ -84,22 +88,25 @@ public abstract class AbstractXMLDoc extends AbstractManifest {
 	}
 
 	private static final String prettyPrintStylesheet =
-	        "<xsl:stylesheet xmlns:xsl='http://www.w3.org/1999/XSL/Transform' version='1.0' "
-	                + " xmlns:xalan='http://xml.apache.org/xslt' "
-	                + " exclude-result-prefixes='xalan'>"
-	                + "  <xsl:output method='xml' indent='yes' xalan:indent-amount='4'/>"
-	                + "  <xsl:strip-space elements='*'/>" + "  <xsl:template match='/'>"
-	                + "    <xsl:apply-templates/>" + "  </xsl:template>"
-	                + "  <xsl:template match='node() | @*'>" + "        <xsl:copy>"
-	                + "          <xsl:apply-templates select='node() | @*'/>"
-	                + "        </xsl:copy>" + "  </xsl:template>" + "</xsl:stylesheet>";
+	                                                    "<xsl:stylesheet xmlns:xsl='http://www.w3.org/1999/XSL/Transform' version='1.0' "
+	                                                            + " xmlns:xalan='http://xml.apache.org/xslt' "
+	                                                            + " exclude-result-prefixes='xalan'>"
+	                                                            + "  <xsl:output method='xml' indent='yes' xalan:indent-amount='4'/>"
+	                                                            + "  <xsl:strip-space elements='*'/>"
+	                                                            + "  <xsl:template match='/'>"
+	                                                            + "    <xsl:apply-templates/>"
+	                                                            + "  </xsl:template>"
+	                                                            + "  <xsl:template match='node() | @*'>"
+	                                                            + "        <xsl:copy>"
+	                                                            + "          <xsl:apply-templates select='node() | @*'/>"
+	                                                            + "        </xsl:copy>" + "  </xsl:template>"
+	                                                            + "</xsl:stylesheet>";
 
 	protected static void prettify(OMElement wsdlElement, OutputStream out) throws Exception {
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
 		wsdlElement.serialize(baos);
 
-		Source stylesheetSource =
-		        new StreamSource(new ByteArrayInputStream(prettyPrintStylesheet.getBytes()));
+		Source stylesheetSource = new StreamSource(new ByteArrayInputStream(prettyPrintStylesheet.getBytes()));
 		Source xmlSource = new StreamSource(new ByteArrayInputStream(baos.toByteArray()));
 
 		TransformerFactory tf = TransformerFactory.newInstance();
@@ -120,10 +127,10 @@ public abstract class AbstractXMLDoc extends AbstractManifest {
 		FileInputStream fileInputStream = new FileInputStream(file);
 		deserialize(fileInputStream);
 		try {
-	        fileInputStream.close();
-        } catch (IOException e) {
-        	// stream is already closed
-        }
+			fileInputStream.close();
+		} catch (IOException e) {
+			log.error(e.getMessage(), e);
+		}
 	}
 
 	public void deserialize(IFile file) throws Exception {
@@ -139,9 +146,8 @@ public abstract class AbstractXMLDoc extends AbstractManifest {
 
 	public void deserialize(String xml) throws Exception {
 		XMLStreamReader parser =
-		        XMLInputFactory.newInstance().createXMLStreamReader(
-		                                                            new ByteArrayInputStream(xml
-		                                                                    .getBytes()));
+		                         XMLInputFactory.newInstance()
+		                                        .createXMLStreamReader(new ByteArrayInputStream(xml.getBytes()));
 		StAXOMBuilder builder = new StAXOMBuilder(parser);
 		OMElement documentElement = builder.getDocumentElement();
 		deserialize(documentElement);
@@ -151,7 +157,6 @@ public abstract class AbstractXMLDoc extends AbstractManifest {
 
 	protected abstract String serialize();
 
-	
 	public String toString() {
 		return serialize();
 	}

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ * Copyright (c) 2010-2015, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,21 +23,22 @@ import org.eclipse.osgi.util.NLS;
 
 public class Constants extends NLS {
 	public static final String BUNDLE_NAME = "org.wso2.developerstudio.eclipse.platform.core.registry.util.constants";
-	
-	public static final int REGISTRY_RESOURCE = 0; 
-	public static final int REGISTRY_COLLECTION = 1; 
-	public static final int REGISTRY_DUMP = 2; 
-	public static final int REGISTRY_UNDEFINED=-1;
+
+	public static final int REGISTRY_RESOURCE = 0;
+	public static final int REGISTRY_COLLECTION = 1;
+	public static final int REGISTRY_DUMP = 2;
+	public static final int REGISTRY_UNDEFINED = -1;
 	public static String STATIC_PATHS;
-	
+
 	static {
 		// initialize resource bundle
 		NLS.initializeMessages(BUNDLE_NAME, Constants.class);
 	}
-	
+
 	private static List<String> staticPathList;
-	public static List<String> getStaticPath(){
-		if (staticPathList==null){
+
+	public static List<String> getStaticPath() {
+		if (staticPathList == null) {
 			staticPathList = Arrays.asList(STATIC_PATHS.split(","));
 		}
 		return staticPathList;

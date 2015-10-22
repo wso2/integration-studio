@@ -1,7 +1,7 @@
-<proxy xmlns="http://ws.apache.org/ns/synapse"
-	name="{proxy.name}" transports="https,http" statistics="disable"
-	trace="disable" startOnLoad="true">
-	<target{endpoint.key.def}>
+<proxy xmlns="http://ws.apache.org/ns/synapse" name="{proxy.name}"
+	transports="https,http" statistics="disable" trace="disable"
+	startOnLoad="true">
+	<target { endpoint.key.def }>
 		<inSequence>
 			<header
 				xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"

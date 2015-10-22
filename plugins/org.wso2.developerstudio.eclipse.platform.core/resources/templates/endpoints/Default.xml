@@ -1,5 +1,5 @@
-<endpoint xmlns="{1}" name="{0}" >
-	<default >
+<endpoint xmlns="{1}" name="{0}">
+	<default>
 		<suspendOnFailure>
 			<progressionFactor>1.0</progressionFactor>
 		</suspendOnFailure>

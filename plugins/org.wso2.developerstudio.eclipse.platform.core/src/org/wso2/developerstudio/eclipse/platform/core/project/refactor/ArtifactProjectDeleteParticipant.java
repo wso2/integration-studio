@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ * Copyright (c) 2010-2015, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -58,10 +58,9 @@ public class ArtifactProjectDeleteParticipant extends DeleteParticipant {
 	 * where user can be informed.
 	 */
 	@Override
-	public RefactoringStatus checkConditions(IProgressMonitor arg0,
-			CheckConditionsContext arg1) throws OperationCanceledException {
-		return RefactoringStatus
-				.createWarningStatus("You are about to delete your Artifact project");
+	public RefactoringStatus checkConditions(IProgressMonitor arg0, CheckConditionsContext arg1)
+	                                                                                            throws OperationCanceledException {
+		return RefactoringStatus.createWarningStatus("You are about to delete your Artifact project");
 	}
 
 	/**
@@ -72,46 +71,32 @@ public class ArtifactProjectDeleteParticipant extends DeleteParticipant {
 	 * tasks in this method.
 	 */
 	@Override
-	public Change createPreChange(IProgressMonitor arg0) throws CoreException,
-			OperationCanceledException {
+	public Change createPreChange(IProgressMonitor arg0) throws CoreException, OperationCanceledException {
 
-		CompositeChange deleteChange = new CompositeChange(
-				"Delete Artifact Project");
+		CompositeChange deleteChange = new CompositeChange("Delete Artifact Project");
 
-		IProject[] projects = ResourcesPlugin.getWorkspace().getRoot()
-				.getProjects();
+		IProject[] projects = ResourcesPlugin.getWorkspace().getRoot().getProjects();
 
 		for (IProject project : projects) {
-			if (project.isOpen()
-					&& project
-							.hasNature("org.wso2.developerstudio.eclipse.distribution.project.nature")) {
+			if (project.isOpen() && project.hasNature("org.wso2.developerstudio.eclipse.distribution.project.nature")) {
 				try {
 					IFile pomFile = project.getFile(POM_XML);
-					MavenProject mavenProject = ProjectRefactorUtils
-							.getMavenProject(project);
-					Dependency projectDependency = ProjectRefactorUtils
-							.getDependencyForTheProject(originalProject);
+					MavenProject mavenProject = ProjectRefactorUtils.getMavenProject(project);
+					Dependency projectDependency = ProjectRefactorUtils.getDependencyForTheProject(originalProject);
 					if (mavenProject != null) {
 						List<?> dependencies = mavenProject.getDependencies();
 						if (projectDependency != null) {
-							for (Iterator<?> iterator = dependencies.iterator(); iterator
-									.hasNext();) {
-								Dependency dependency = (Dependency) iterator
-										.next();
-								if (ProjectRefactorUtils.isDependenciesEqual(
-										projectDependency, dependency)) {
-									deleteChange
-											.add(new MavenConfigurationFileDeleteChange(
-													project.getName(), pomFile,
-													originalProject));
+							for (Iterator<?> iterator = dependencies.iterator(); iterator.hasNext();) {
+								Dependency dependency = (Dependency) iterator.next();
+								if (ProjectRefactorUtils.isDependenciesEqual(projectDependency, dependency)) {
+									deleteChange.add(new MavenConfigurationFileDeleteChange(project.getName(), pomFile,
+									                                                        originalProject));
 								}
 							}
 						}
 					}
 				} catch (Exception e) {
-					log.error(
-							"Error occured while trying to generate the Refactoring",
-							e);
+					log.error("Error occured while trying to generate the Refactoring", e);
 				}
 			}
 		}
@@ -139,8 +124,7 @@ public class ArtifactProjectDeleteParticipant extends DeleteParticipant {
 	 * Normally this method is used for clean up tasks.
 	 */
 	@Override
-	public Change createChange(IProgressMonitor arg0) throws CoreException,
-			OperationCanceledException {
+	public Change createChange(IProgressMonitor arg0) throws CoreException, OperationCanceledException {
 		// TODO Auto-generated method stub
 		return null;
 	}

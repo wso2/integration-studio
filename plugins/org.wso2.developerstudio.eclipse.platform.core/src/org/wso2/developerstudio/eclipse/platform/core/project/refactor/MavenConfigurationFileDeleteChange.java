@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ * Copyright (c) 2010-2015, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -57,9 +57,7 @@ public class MavenConfigurationFileDeleteChange extends TextFileChange {
 
 		multiEdit = new MultiTextEdit();
 		setEdit(multiEdit);
-
 		setSaveMode(FORCE_SAVE);
-
 		if (pomFile.exists()) {
 			identifyDepenencyEntry();
 		}
@@ -87,12 +85,10 @@ public class MavenConfigurationFileDeleteChange extends TextFileChange {
 			boolean isDependencies = false;
 			boolean isDependency = false;
 			List<String> dependencyEntry = new ArrayList<String>();
-			// boolean isGroupId=false;
 			boolean isGroupMatch = false;
 			boolean isArtifactMatch = false;
 			boolean isVersionMatch = false;
-			Dependency dependencyForTheProject =
-			                                     ProjectRefactorUtils.getDependencyForTheProject(deletingProject);
+			Dependency dependencyForTheProject = ProjectRefactorUtils.getDependencyForTheProject(deletingProject);
 
 			if (dependencyForTheProject != null) {
 				fileReader = new FileReader(pomFile.getLocation().toFile());
@@ -125,9 +121,7 @@ public class MavenConfigurationFileDeleteChange extends TextFileChange {
 									int start = line.indexOf(groupIdStart);
 									int end = line.indexOf(groupIdEnd);
 
-									String groupId =
-									                 line.substring(start + groupIdStart.length(),
-									                                end);
+									String groupId = line.substring(start + groupIdStart.length(), end);
 									if (groupId.equalsIgnoreCase(dependencyForTheProject.getGroupId())) {
 										isGroupMatch = true;
 										if (!dependencyEntry.contains(line)) {
@@ -140,16 +134,12 @@ public class MavenConfigurationFileDeleteChange extends TextFileChange {
 								}
 							}
 
-							if (isGroupMatch && line.contains(artifactIdStart) &&
-							    line.contains(artifactIdEnd)) {
+							if (isGroupMatch && line.contains(artifactIdStart) && line.contains(artifactIdEnd)) {
 								if (line.contains(dependencyForTheProject.getArtifactId())) {
 									int start = line.indexOf(artifactIdStart);
 									int end = line.indexOf(artifactIdEnd);
 
-									String artifactId =
-									                    line.substring(start +
-									                                           artifactIdStart.length(),
-									                                   end);
+									String artifactId = line.substring(start + artifactIdStart.length(), end);
 									if (artifactId.equalsIgnoreCase(dependencyForTheProject.getArtifactId())) {
 										isArtifactMatch = true;
 										if (!dependencyEntry.contains(line)) {
@@ -168,9 +158,7 @@ public class MavenConfigurationFileDeleteChange extends TextFileChange {
 									int start = line.indexOf(versionStart);
 									int end = line.indexOf(versionEnd);
 
-									String version =
-									                 line.substring(start + versionStart.length(),
-									                                end);
+									String version = line.substring(start + versionStart.length(), end);
 									if (version.equalsIgnoreCase(dependencyForTheProject.getVersion())) {
 										isVersionMatch = true;
 										if (!dependencyEntry.contains(line)) {

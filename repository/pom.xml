@@ -75,8 +75,10 @@
                             <featureArtifacts>
                                 <featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.kernel.feature:${kernel.feature.version}</featureArtifactDef>
                                 <featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.kernel.samples.feature:${kernel.samples.feature.version}</featureArtifactDef>
-								<featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.kernel.webeditor.feature:${webeditor.version}</featureArtifactDef>
-								<featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.kernel.pluginsamples.feature:${plugin.samples.feature.version}</featureArtifactDef>
+				<featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.kernel.webeditor.feature:${webeditor.version}</featureArtifactDef>
+				<featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.kernel.pluginsamples.feature:${plugin.samples.feature.version}</featureArtifactDef>
+				<featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.registry.feature:${kernel.feature.version}</featureArtifactDef>
+				<featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.usermgt.core.feature:${kernel.feature.version}</featureArtifactDef>
                             </featureArtifacts>
                             <bundleArtifacts>
 				<bundleArtifactDef>org.wso2.tomcat:tomcat:${wso2.tomcat.version}</bundleArtifactDef>
@@ -254,6 +256,8 @@
                                         <featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.kernel.webeditor.feature:${webeditor.version}</featureArtifactDef>
                                         <featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.kernel.samples.feature:${kernel.samples.feature.version}</featureArtifactDef>
                                         <featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.kernel.pluginsamples.feature:${plugin.samples.feature.version}</featureArtifactDef>
+					<featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.registry.feature:${kernel.feature.version}</featureArtifactDef>
+					<featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.usermgt.core.feature:${kernel.feature.version}</featureArtifactDef>
                                     </features>
                                 </category>
                             </categories>

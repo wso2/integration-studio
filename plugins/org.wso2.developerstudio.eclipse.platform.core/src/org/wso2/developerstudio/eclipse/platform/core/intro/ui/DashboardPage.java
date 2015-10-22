@@ -1,11 +1,12 @@
- /* Copyright (c) 2011, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
- *
+/*
+ * Copyright (c) 2010-2015, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -68,20 +69,20 @@ import org.wso2.developerstudio.eclipse.samples.wizards.ProjectCreationWizard;
  *
  */
 public class DashboardPage extends FormPage {
-	
-	private static IDeveloperStudioLog log=Logger.getLog(Activator.PLUGIN_ID);
-	
-	private static Map<String, String[]> wizardCategoryMap=new LinkedHashMap<String, String[]>(); 
-	private  Map<String, IWizardDescriptor> wizardDescriptor; 
-	private  Map<String, Action> customActions = new LinkedHashMap<String, Action>(); 
+
+	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
+
+	private static Map<String, String[]> wizardCategoryMap = new LinkedHashMap<String, String[]>();
+	private Map<String, IWizardDescriptor> wizardDescriptor;
+	private Map<String, Action> customActions = new LinkedHashMap<String, Action>();
 	private static final String PROJECT_EXPLORER_PARTID = "org.eclipse.ui.navigator.ProjectExplorer";
 	private static final String PACKAGE_EXPLORER_PARTID = "org.eclipse.jdt.ui.PackageExplorer";
 	private ISelectionListener selectionListener = null;
 	private ISelection selection = null;
 	private static List<DashboardCategory> categories;
-	
-	static{
-		
+
+	static {
+
 		categories = DashboardContributionsHandler.getCategories();
 		for (DashboardCategory category : categories) {
 			List<String> wizardIds = new ArrayList<String>();
@@ -89,22 +90,20 @@ public class DashboardPage extends FormPage {
 			for (DashboardLink dashboardLink : wizards) {
 				wizardIds.add(dashboardLink.getName());
 			}
-			wizardCategoryMap.put(category.getName(),wizardIds.toArray(new String[] {}));
+			wizardCategoryMap.put(category.getName(), wizardIds.toArray(new String[] {}));
 		}
-		
-		/* Dashboard items for core features not handle by DashboardContributionsHandler */
-		/*wizardCategoryMap.put("Distribution", new String[]{
-				"org.wso2.developerstudio.eclipse.distribution.project",
-				});*/
-		wizardCategoryMap.put("Maven", new String[]{
-				"org.wso2.developerstudio.eclipse.platform.ui.mvn.wizard.MvnMultiModuleWizard",
-				});		
-		/*wizardCategoryMap.put("AddServer", new String[]{
-				"org.eclipse.wst.server.ui.new.server",
-				});*/		
+
+		/*
+		 * Dashboard items for core features not handle by
+		 * DashboardContributionsHandler
+		 */
+		wizardCategoryMap.put("Maven",
+		                      new String[] { "org.wso2.developerstudio.eclipse.platform.ui.mvn.wizard.MvnMultiModuleWizard", });
 	}
+
 	/**
 	 * Create the form page.
+	 * 
 	 * @param id
 	 * @param title
 	 */
@@ -114,6 +113,7 @@ public class DashboardPage extends FormPage {
 
 	/**
 	 * Create the form page.
+	 * 
 	 * @param editor
 	 * @param id
 	 * @param title
@@ -127,136 +127,102 @@ public class DashboardPage extends FormPage {
 
 	/**
 	 * Create contents of the form.
+	 * 
 	 * @param managedForm
 	 */
 	protected void createFormContent(IManagedForm managedForm) {
-		
-		//setting initial selection
-		ISelection initialSelection = getSite().getWorkbenchWindow().getSelectionService()
-				.getSelection(PROJECT_EXPLORER_PARTID);
+
+		// setting initial selection
+		ISelection initialSelection =
+		                              getSite().getWorkbenchWindow().getSelectionService()
+		                                       .getSelection(PROJECT_EXPLORER_PARTID);
 		if (initialSelection != null) {
 			selection = initialSelection;
 		} else {
-			initialSelection = getSite().getWorkbenchWindow().getSelectionService()
-					.getSelection(PACKAGE_EXPLORER_PARTID);
+			initialSelection =
+			                   getSite().getWorkbenchWindow().getSelectionService()
+			                            .getSelection(PACKAGE_EXPLORER_PARTID);
 			if (initialSelection != null) {
 				selection = initialSelection;
 			}
 		}
-		
+
 		selectionListener = new ISelectionListener() {
 			public void selectionChanged(IWorkbenchPart workbenchPart, ISelection sel) {
 				selection = sel;
 			}
 		};
-		getSite().getWorkbenchWindow().getSelectionService().addSelectionListener(PROJECT_EXPLORER_PARTID,selectionListener);
-		getSite().getWorkbenchWindow().getSelectionService().addSelectionListener(PACKAGE_EXPLORER_PARTID,selectionListener);
-		
-		managedForm.getForm().setImage(DashboardUtil.resizeImage(SWTResourceManager.getImage(this.getClass(), "/intro/css/graphics/cApp-wizard.png"),32,32));
+		getSite().getWorkbenchWindow().getSelectionService()
+		         .addSelectionListener(PROJECT_EXPLORER_PARTID, selectionListener);
+		getSite().getWorkbenchWindow().getSelectionService()
+		         .addSelectionListener(PACKAGE_EXPLORER_PARTID, selectionListener);
+
+		managedForm.getForm()
+		           .setImage(DashboardUtil.resizeImage(SWTResourceManager.getImage(this.getClass(),
+		                                                                           "/intro/css/graphics/cApp-wizard.png"),
+		                                               32, 32));
 		FormToolkit toolkit = managedForm.getToolkit();
 		ScrolledForm form = managedForm.getForm();
 		form.setText("WSO2 Developer Studio");
 		Composite body = form.getBody();
 		toolkit.decorateFormHeading(form.getForm());
 		toolkit.paintBordersFor(body);
-		
-		Section sctnCreate = managedForm.getToolkit().createSection(managedForm.getForm().getBody(), Section.TWISTIE | Section.TITLE_BAR);
+
+		Section sctnCreate =
+		                     managedForm.getToolkit().createSection(managedForm.getForm().getBody(),
+		                                                            Section.TWISTIE | Section.TITLE_BAR);
 		sctnCreate.setBounds(10, 10, 650, 1200);
 		managedForm.getToolkit().paintBordersFor(sctnCreate);
 		sctnCreate.setText("Create");
 		sctnCreate.setExpanded(true);
-		
+
 		Composite composite = managedForm.getToolkit().createComposite(sctnCreate, SWT.NONE);
 		managedForm.getToolkit().paintBordersFor(composite);
 		sctnCreate.setClient(composite);
 		composite.setLayout(new GridLayout(2, false));
-		
+
 		wizardDescriptor = getWizardDescriptors();
-		
+
 		customActions = DashboardContributionsHandler.getCustomActions();
 
 		for (DashboardCategory category : categories) {
-			createCategory(managedForm,composite,category.getName());
+			createCategory(managedForm, composite, category.getName());
 		}
 
 		sctnCreate.setExpanded(true);
-		
-		/*Section sctnDistribution = managedForm.getToolkit().createSection(managedForm.getForm().getBody(), Section.TWISTIE | Section.TITLE_BAR);
-		sctnDistribution.setBounds(700, 10, 300, 75);
-		managedForm.getToolkit().paintBordersFor(sctnDistribution);
-		sctnDistribution.setText("Distribution");
-		
-		Composite comDistribution = managedForm.getToolkit().createComposite(sctnDistribution, SWT.NONE);
-		managedForm.getToolkit().paintBordersFor(comDistribution);
-		sctnDistribution.setClient(comDistribution);
-		comDistribution.setLayout(new GridLayout(1, false));
-		ImageDescriptor distImageDesc = ImageDescriptor.createFromImage(DashboardUtil.resizeImage(SWTResourceManager
-				.getImage(this.getClass(), "/intro/css/graphics/distribution-project-wizard.png"),
-				32, 32));
-		createTitlelessCategory(managedForm,comDistribution,"Distribution",distImageDesc);
-		sctnDistribution.setExpanded(true);*/
-		
-		Section sctnMaven = managedForm.getToolkit().createSection(managedForm.getForm().getBody(), Section.TWISTIE | Section.TITLE_BAR);
+
+		Section sctnMaven =
+		                    managedForm.getToolkit().createSection(managedForm.getForm().getBody(),
+		                                                           Section.TWISTIE | Section.TITLE_BAR);
 		sctnMaven.setBounds(700, 10, 300, 75);
 		managedForm.getToolkit().paintBordersFor(sctnMaven);
 		sctnMaven.setText("Maven");
-		
+
 		Composite comMaven = managedForm.getToolkit().createComposite(sctnMaven, SWT.NONE);
 		managedForm.getToolkit().paintBordersFor(comMaven);
 		sctnMaven.setClient(comMaven);
 		comMaven.setLayout(new GridLayout(1, false));
-		ImageDescriptor mavenImageDesc = ImageDescriptor.createFromImage(DashboardUtil.resizeImage(SWTResourceManager
-				.getImage(this.getClass(), "/intro/css/graphics/maven-24x24.png"),
-				32, 32));
-		createTitlelessCategory(managedForm,comMaven,"Maven",mavenImageDesc);
-		sctnMaven.setExpanded(true);		
-		
-		/*Section sctnAddServer = managedForm.getToolkit().createSection(managedForm.getForm().getBody(), Section.TWISTIE | Section.TITLE_BAR);
-		sctnAddServer.setBounds(700, 170, 300, 75);
-		managedForm.getToolkit().paintBordersFor(sctnAddServer);
-		sctnAddServer.setText("Add Server");
-		
-		Composite comAddServer = managedForm.getToolkit().createComposite(sctnAddServer, SWT.NONE);
-		managedForm.getToolkit().paintBordersFor(comAddServer);
-		sctnAddServer.setClient(comAddServer);
-		comAddServer.setLayout(new GridLayout(1, false));
-		ImageDescriptor addServerImageDesc = ImageDescriptor.createFromImage(DashboardUtil.resizeImage(SWTResourceManager
-				.getImage(this.getClass(), "/intro/css/graphics/server.png"),
-				32, 32));
-		createTitlelessCategory(managedForm,comAddServer,"AddServer",addServerImageDesc);
-		sctnAddServer.setExpanded(true);	
-		
-		Section sctnSamples = managedForm.getToolkit().createSection(managedForm.getForm().getBody(), Section.TWISTIE | Section.TITLE_BAR);
-		sctnSamples.setBounds(700, 250, 300, 800);
-		managedForm.getToolkit().paintBordersFor(sctnSamples);
-		sctnSamples.setText("Samples");
-		
-		Composite comSamples = managedForm.getToolkit().createComposite(sctnSamples, SWT.NONE);
-		managedForm.getToolkit().paintBordersFor(comSamples);
-		sctnSamples.setClient(comSamples);
-		comSamples.setLayout(new GridLayout(1, false));
-		createSamples(managedForm,comSamples);
-		sctnSamples.setExpanded(true);*/
-		
+		ImageDescriptor mavenImageDesc =
+		                                 ImageDescriptor.createFromImage(DashboardUtil.resizeImage(SWTResourceManager.getImage(this.getClass(),
+		                                                                                                                       "/intro/css/graphics/maven-24x24.png"),
+		                                                                                           32, 32));
+		createTitlelessCategory(managedForm, comMaven, "Maven", mavenImageDesc);
+		sctnMaven.setExpanded(true);
 	}
-	
+
 	private Map<String, IWizardDescriptor> getWizardDescriptors() {
 		Map<String, IWizardDescriptor> descriptorMap = new HashMap<String, IWizardDescriptor>();
-		List<String> categoryContributions = DashboardContributionsHandler
-				.getCategoryContributions();
-		//categoryContributions.add("org.wso2.developerstudio.eclipse.capp.distribution");
-		categoryContributions.add("org.wso2.developerstudio.eclipse.maven.features");	
+		List<String> categoryContributions = DashboardContributionsHandler.getCategoryContributions();
+		categoryContributions.add("org.wso2.developerstudio.eclipse.maven.features");
 		categoryContributions.add("org.eclipse.wst.server.ui");
-		/* Dashboard items for core features not handle by DashboardContributionsHandler */
 		List<IWizardDescriptor> descriptors = getWizardDescriptor(categoryContributions.toArray(new String[] {}));
-		
 		for (IWizardDescriptor descriptor : descriptors) {
 			descriptorMap.put(descriptor.getId(), descriptor);
-        }
+		}
 		return descriptorMap;
 	}
-	
-	private List<IWizardDescriptor> getWizardDescriptor(String... categories){
+
+	private List<IWizardDescriptor> getWizardDescriptor(String... categories) {
 		List<IWizardDescriptor> descriptors = new ArrayList<IWizardDescriptor>();
 		IWizardRegistry wizardRegistry = PlatformUI.getWorkbench().getNewWizardRegistry();
 		for (String category : categories) {
@@ -265,71 +231,75 @@ public class DashboardPage extends FormPage {
 				IWizardDescriptor[] wizards = wizardCategory.getWizards();
 				descriptors.addAll(Arrays.asList(wizards));
 			}
-        }
+		}
 		return descriptors;
 	}
-	
+
 	/**
 	 * Create contents of category
+	 * 
 	 * @param managedForm
 	 * @param composite
 	 * @param category
 	 */
-	private void createCategory(IManagedForm managedForm,Composite composite, String category){
-		int itemCount=0;
+	private void createCategory(IManagedForm managedForm, Composite composite, String category) {
+		int itemCount = 0;
 		Label lblcategory = managedForm.getToolkit().createLabel(composite, category, SWT.NONE);
 		lblcategory.setFont(SWTResourceManager.getFont("Sans", 10, SWT.BOLD));
-		GridData gd_category = new GridData(SWT.FILL, SWT.CENTER, true, false,2, 1);
-		gd_category.verticalIndent=10;
+		GridData gd_category = new GridData(SWT.FILL, SWT.CENTER, true, false, 2, 1);
+		gd_category.verticalIndent = 10;
 		lblcategory.setLayoutData(gd_category);
-		
-		for (String  id : wizardCategoryMap.get(category)){
-		if(wizardDescriptor.containsKey(id)){
-			itemCount++;
-			createWizardLink(managedForm, composite,wizardDescriptor.get(id));
-		} else if (customActions.containsKey(id)){
-			itemCount++;
-			createLink(managedForm, composite,customActions.get(id));
+
+		for (String id : wizardCategoryMap.get(category)) {
+			if (wizardDescriptor.containsKey(id)) {
+				itemCount++;
+				createWizardLink(managedForm, composite, wizardDescriptor.get(id));
+			} else if (customActions.containsKey(id)) {
+				itemCount++;
+				createLink(managedForm, composite, customActions.get(id));
+			}
 		}
-		}
-		if(itemCount %2 ==1){
+		if (itemCount % 2 == 1) {
 			new Label(composite, SWT.NONE);
 		}
 	}
-	
+
 	/**
 	 * Create contents of category with title
+	 * 
 	 * @param managedForm
 	 * @param composite
 	 * @param category
 	 */
-	private void createTitlelessCategory(IManagedForm managedForm,Composite composite, String category,ImageDescriptor customImage){
-		int itemCount=0;
-		
-		for (String  id : wizardCategoryMap.get(category)){
-		if(wizardDescriptor.containsKey(id)){
-			itemCount++;
-			createWizardLink(managedForm, composite,wizardDescriptor.get(id),customImage);
+	private void createTitlelessCategory(IManagedForm managedForm, Composite composite, String category,
+	                                     ImageDescriptor customImage) {
+		int itemCount = 0;
+
+		for (String id : wizardCategoryMap.get(category)) {
+			if (wizardDescriptor.containsKey(id)) {
+				itemCount++;
+				createWizardLink(managedForm, composite, wizardDescriptor.get(id), customImage);
+			}
 		}
-		}
-		if(itemCount %2 ==1){
+		if (itemCount % 2 == 1) {
 			new Label(composite, SWT.NONE);
 		}
 	}
-	
+
 	/**
 	 * Create contents of wizard link with custom image
+	 * 
 	 * @param managedForm
 	 * @param composite
 	 * @param wizard
 	 * @param customImage
 	 */
-	private void createWizardLink(IManagedForm managedForm,Composite composite,IWizardDescriptor wizard,ImageDescriptor customImage){
+	private void createWizardLink(IManagedForm managedForm, Composite composite, IWizardDescriptor wizard,
+	                              ImageDescriptor customImage) {
 		final String wizardId = wizard.getId();
 		ImageHyperlink wizardLink = managedForm.getToolkit().createImageHyperlink(composite, SWT.NONE);
-		ImageDescriptor descriptionImage = (customImage != null) ? customImage : wizard
-				.getImageDescriptor();
-		if(descriptionImage!=null){
+		ImageDescriptor descriptionImage = (customImage != null) ? customImage : wizard.getImageDescriptor();
+		if (descriptionImage != null) {
 			wizardLink.setImage(descriptionImage.createImage());
 		}
 		managedForm.getToolkit().paintBordersFor(wizardLink);
@@ -338,32 +308,32 @@ public class DashboardPage extends FormPage {
 		GridData gd_wizardLink = new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1);
 		wizardLink.setLayoutData(gd_wizardLink);
 		wizardLink.addHyperlinkListener(new IHyperlinkListener() {
-			
+
 			public void linkActivated(HyperlinkEvent evt) {
 				openWizard(wizardId);
 			}
-			
+
 			public void linkEntered(HyperlinkEvent evt) {
-				
+
 			}
 
 			public void linkExited(HyperlinkEvent evt) {
-				
+
 			}
 		});
 	}
-	
-	
+
 	/**
 	 * Create contents of link with custom action
+	 * 
 	 * @param managedForm
 	 * @param composite
 	 * @param action
 	 */
-	private void createLink(IManagedForm managedForm,Composite composite,final Action action){
+	private void createLink(IManagedForm managedForm, Composite composite, final Action action) {
 		ImageHyperlink wizardLink = managedForm.getToolkit().createImageHyperlink(composite, SWT.NONE);
 		ImageDescriptor descriptionImage = action.getImageDescriptor();
-		if(descriptionImage!=null){
+		if (descriptionImage != null) {
 			wizardLink.setImage(descriptionImage.createImage());
 		}
 		managedForm.getToolkit().paintBordersFor(wizardLink);
@@ -372,43 +342,45 @@ public class DashboardPage extends FormPage {
 		GridData gd_wizardLink = new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1);
 		wizardLink.setLayoutData(gd_wizardLink);
 		wizardLink.addHyperlinkListener(new IHyperlinkListener() {
-			
+
 			public void linkActivated(HyperlinkEvent evt) {
 				action.run();
 			}
-			
+
 			public void linkEntered(HyperlinkEvent evt) {
-				
+
 			}
 
 			public void linkExited(HyperlinkEvent evt) {
-				
+
 			}
 		});
 	}
-	
+
 	/**
 	 * Create contents of wizard link
+	 * 
 	 * @param managedForm
 	 * @param composite
 	 * @param wizard
 	 */
-	private void createWizardLink(IManagedForm managedForm,Composite composite,IWizardDescriptor wizard){
-		createWizardLink(managedForm,composite,wizard,null);
-	}
-	
-	private void createSamples(IManagedForm managedForm,Composite composite){
-		List<IDeveloperStudioSampleContributor> samples = ExtensionPointHandler.getSamples();
-		for (IDeveloperStudioSampleContributor contributor : samples) {
-			createSampleLink(managedForm,composite,contributor);
-        }
+	private void createWizardLink(IManagedForm managedForm, Composite composite, IWizardDescriptor wizard) {
+		createWizardLink(managedForm, composite, wizard, null);
 	}
 
-	private void createSampleLink(IManagedForm managedForm,Composite composite,final IDeveloperStudioSampleContributor contributor){
+	private void createSamples(IManagedForm managedForm, Composite composite) {
+		List<IDeveloperStudioSampleContributor> samples = ExtensionPointHandler.getSamples();
+		for (IDeveloperStudioSampleContributor contributor : samples) {
+			createSampleLink(managedForm, composite, contributor);
+		}
+	}
+
+	private void createSampleLink(IManagedForm managedForm, Composite composite,
+	                              final IDeveloperStudioSampleContributor contributor) {
 		ImageHyperlink sampleLink = managedForm.getToolkit().createImageHyperlink(composite, SWT.NONE);
 		ImageDescriptor descriptionImage = contributor.getWizardPageImage();
-		if(descriptionImage!=null){
-			sampleLink.setImage(DashboardUtil.resizeImage(descriptionImage.createImage(),32,32));
+		if (descriptionImage != null) {
+			sampleLink.setImage(DashboardUtil.resizeImage(descriptionImage.createImage(), 32, 32));
 		}
 		managedForm.getToolkit().paintBordersFor(sampleLink);
 		sampleLink.setText(contributor.getCaption());
@@ -416,37 +388,35 @@ public class DashboardPage extends FormPage {
 		GridData gd_sampleLink = new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1);
 		sampleLink.setLayoutData(gd_sampleLink);
 		sampleLink.addHyperlinkListener(new IHyperlinkListener() {
-			
+
 			public void linkActivated(HyperlinkEvent evt) {
 				createProject(contributor);
 			}
-			
+
 			public void linkEntered(HyperlinkEvent evt) {
-				
+
 			}
 
 			public void linkExited(HyperlinkEvent evt) {
-				
+
 			}
 		});
 	}
-	
 
-	
-	private void createProject(IDeveloperStudioSampleContributor contributor){
+	private void createProject(IDeveloperStudioSampleContributor contributor) {
 		Shell shell = Display.getCurrent().getActiveShell();
 		String projectName = contributor.getProjectName();
 		ImageDescriptor wizardImage = contributor.getWizardPageImage();
 		String title = contributor.getCaption();
-		
+
 		ProjectCreationWizard wizard = new ProjectCreationWizard(projectName, title, wizardImage);
 		wizard.setWindowTitle(contributor.getCaption());
 		wizard.init(PlatformUI.getWorkbench(), null);
 		WizardDialog wizardDialog = new WizardDialog(shell, wizard);
 
 		wizardDialog.create();
-		
-		if (wizardDialog.open()==Dialog.OK){
+
+		if (wizardDialog.open() == Dialog.OK) {
 			IProject createdProject = wizard.getCreatedProject();
 			try {
 				if (!createdProject.exists()) {
@@ -455,36 +425,38 @@ public class DashboardPage extends FormPage {
 				if (!createdProject.isOpen()) {
 					createdProject.open(null);
 				}
-	            contributor.addSampleTo(createdProject);
-            } catch (Exception e) {
-            	log.error("Cannot open wizard",e);
-            }
+				contributor.addSampleTo(createdProject);
+			} catch (Exception e) {
+				log.error("Cannot open wizard", e);
+			}
 		}
 	}
-	
+
 	/**
 	 * Open a project wizard
-	 * @param id 
+	 * 
+	 * @param id
 	 */
 	private void openWizard(String id) {
-		 IWizardDescriptor descriptor = PlatformUI.getWorkbench()
-		   .getNewWizardRegistry().findWizard(id);
-		 try {
-		   if (null != descriptor) {
-			 IWorkbenchWizard wizard = descriptor.createWizard();
-			 wizard.init(PlatformUI.getWorkbench(), getCurrentSelection());
-		     WizardDialog wd = new WizardDialog(PlatformUI.getWorkbench()
-						.getActiveWorkbenchWindow().getShell(), wizard);
-		     wd.setTitle(wizard.getWindowTitle());
-		     wd.open();
-		   }
-		 } catch (CoreException e) {
-		   log.error("Cannot open wizard",e);
-		 }
+		IWizardDescriptor descriptor = PlatformUI.getWorkbench().getNewWizardRegistry().findWizard(id);
+		try {
+			if (null != descriptor) {
+				IWorkbenchWizard wizard = descriptor.createWizard();
+				wizard.init(PlatformUI.getWorkbench(), getCurrentSelection());
+				WizardDialog wd =
+				                  new WizardDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
+				                                   wizard);
+				wd.setTitle(wizard.getWindowTitle());
+				wd.open();
+			}
+		} catch (CoreException e) {
+			log.error("Cannot open wizard", e);
 		}
-	
+	}
+
 	/**
 	 * Get current selection
+	 * 
 	 * @return
 	 */
 	private IStructuredSelection getCurrentSelection() {
@@ -493,10 +465,9 @@ public class DashboardPage extends FormPage {
 		}
 		return new StructuredSelection();
 	}
-	
+
 	public void dispose() {
-		ISelectionService selectionService = getSite().getWorkbenchWindow()
-				.getSelectionService();
+		ISelectionService selectionService = getSite().getWorkbenchWindow().getSelectionService();
 		selectionService.removeSelectionListener(selectionListener);
 		super.dispose();
 	}

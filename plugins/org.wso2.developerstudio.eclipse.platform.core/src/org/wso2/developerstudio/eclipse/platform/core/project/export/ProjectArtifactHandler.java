@@ -1,12 +1,12 @@
 /*
- * Copyright (c) 2011, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
- *
+ * Copyright (c) 2010-2015, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -32,42 +32,38 @@ import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.jdt.core.IJavaProject;
 import org.eclipse.jdt.core.JavaCore;
 import org.eclipse.osgi.storagemanager.StorageManager;
+import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
+import org.wso2.developerstudio.eclipse.logging.core.Logger;
+import org.wso2.developerstudio.eclipse.platform.core.Activator;
 import org.wso2.developerstudio.eclipse.platform.core.utils.Constants;
 import org.wso2.developerstudio.eclipse.utils.file.TempFileUtils;
 
 public abstract class ProjectArtifactHandler {
+	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 	private NullProgressMonitor nullProgressMonitor = new NullProgressMonitor();
-	
+
 	public abstract List<IResource> exportArtifact(IProject projecmessaget) throws Exception;
-	
-	protected  NullProgressMonitor getProgressMonitor() {
+
+	protected NullProgressMonitor getProgressMonitor() {
 		return nullProgressMonitor;
 	}
 
 	protected File createTempProject() throws Exception {
-//		IProject tempProject = ResourcesPlugin.getWorkspace().getRoot()
-//				.getProject(".temp" + System.currentTimeMillis());
-		File tempProject=TempFileUtils.createTempFile("temp", Long.toString(System.currentTimeMillis()), null);
+		File tempProject = TempFileUtils.createTempFile("temp", Long.toString(System.currentTimeMillis()), null);
 		tempProject.delete();
 		tempProject.mkdir();
-//		tempProject.create(getProgressMonitor());
-//		tempProject.open(getProgressMonitor());
-//		tempProject.setHidden(true);
 		return tempProject;
 	}
-	
-	protected IPath getOutputPath(IJavaProject project) throws Exception{
-		return ResourcesPlugin.getWorkspace().getRoot()
-		.getFolder(project.getOutputLocation()).getLocation();
+
+	protected IPath getOutputPath(IJavaProject project) throws Exception {
+		return ResourcesPlugin.getWorkspace().getRoot().getFolder(project.getOutputLocation()).getLocation();
 	}
-	
-	protected IPath getResourcePath(IProject project) throws Exception{
-		return project.getFolder(
-				"src" + File.separator + "main" + File.separator
-						+ "resources").getLocation();
+
+	protected IPath getResourcePath(IProject project) throws Exception {
+		return project.getFolder("src" + File.separator + "main" + File.separator + "resources").getLocation();
 	}
-	
-	protected IFile getTargetArchive(IProject project,String ext) throws Exception{
+
+	protected IFile getTargetArchive(IProject project, String ext) throws Exception {
 		String finalName = String.format("%s.%s", project.getName(), ext);
 		IFolder binaries = project.getFolder("target");
 		if (!binaries.exists()) {
@@ -77,9 +73,9 @@ public abstract class ProjectArtifactHandler {
 		IFile archive = project.getFile("target" + File.separator + finalName);
 		return archive;
 	}
-	
-	protected IFile getTargetArchive(IProject project,String version,String ext) throws Exception{
-		String finalName = String.format("%s.%s", project.getName()+"_"+version, ext);
+
+	protected IFile getTargetArchive(IProject project, String version, String ext) throws Exception {
+		String finalName = String.format("%s.%s", project.getName() + "_" + version, ext);
 		IFolder binaries = project.getFolder("target");
 		if (!binaries.exists()) {
 			binaries.create(true, true, getProgressMonitor());
@@ -88,24 +84,23 @@ public abstract class ProjectArtifactHandler {
 		IFile archive = project.getFile("target" + File.separator + finalName);
 		return archive;
 	}
-	
+
 	protected void clearTarget(IProject project) {
 		try {
-			project.build(IncrementalProjectBuilder.CLEAN_BUILD,
-							getProgressMonitor());
+			project.build(IncrementalProjectBuilder.CLEAN_BUILD, getProgressMonitor());
 			File target = project.getFolder("target").getLocation().toFile();
 			FileUtils.cleanDirectory(target);
 		} catch (Exception e) {
-			// TODO: log error
+			log.error("Error while cleaning the target directory", e);
 		}
 	}
-	
-	protected IFolder getTempDirInWorksapce(String projectName, String dirName){
-		String dir = String.format("%s_%s", projectName,dirName);
+
+	protected IFolder getTempDirInWorksapce(String projectName, String dirName) {
+		String dir = String.format("%s_%s", projectName, dirName);
 		IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(".tmp");
-		if(project.exists()){
+		if (project.exists()) {
 			IFolder tmpDir = project.getFolder(dir);
-			if(!tmpDir.exists()){
+			if (!tmpDir.exists()) {
 				try {
 					tmpDir.create(false, true, null);
 					return tmpDir;
@@ -113,53 +108,51 @@ public abstract class ProjectArtifactHandler {
 					return null;
 				}
 			} else {
-				return tmpDir ;
+				return tmpDir;
 			}
-			
-		} else{
+
+		} else {
 			try {
 				project.create(null);
-				return getTempDirInWorksapce(projectName,dir);
+				return getTempDirInWorksapce(projectName, dir);
 			} catch (Exception e) {
 				return null;
 			}
 		}
 	}
-	
-	protected void clearTempDirInWorksapce(String projectName, String dirName){
-		String dir = String.format("%s_%s", projectName,dirName);
+
+	protected void clearTempDirInWorksapce(String projectName, String dirName) {
+		String dir = String.format("%s_%s", projectName, dirName);
 		IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(".tmp");
-		if(project.exists()){
+		if (project.exists()) {
 			IFolder tmpDir = project.getFolder(dir);
-			if(tmpDir.exists()){
+			if (tmpDir.exists()) {
 				try {
 					tmpDir.delete(true, null);
 				} catch (CoreException e) {
-					//ignore
+					log.error(e.getMessage(), e);
 				}
-			} 
+			}
 		}
 	}
-	
+
 	/**
 	 * create new StorageManager
+	 * 
 	 * @param project
 	 * @return new StorageManager
 	 */
-	protected StorageManager createStorageManager(IProject project){
+	protected StorageManager createStorageManager(IProject project) {
 		return new StorageManager(project.getLocation().toFile(), "false");
 	}
-	
-	protected File createTempDir(File project, String name)
-			throws Exception {
-//		StorageManager manager = createStorageManager(project);
-//		File dir = manager.createTempFile(name);
+
+	protected File createTempDir(File project, String name) throws Exception {
 		File dir = TempFileUtils.createTempFile(name, null, project);
 		dir.delete();
 		dir.mkdir();
-//		dir.delete();
 		return dir;
 	}
+
 	/**
 	 * 
 	 * @param project
@@ -167,20 +160,18 @@ public abstract class ProjectArtifactHandler {
 	 * @throws Exception
 	 */
 	protected IPath buildJavaProject(IProject project) throws Exception {
-		project.build(IncrementalProjectBuilder.CLEAN_BUILD,
-						getProgressMonitor());
-		project.build(IncrementalProjectBuilder.FULL_BUILD,
-				getProgressMonitor());
+		project.build(IncrementalProjectBuilder.CLEAN_BUILD, getProgressMonitor());
+		project.build(IncrementalProjectBuilder.FULL_BUILD, getProgressMonitor());
 		IJavaProject javaProject = JavaCore.create(project);
 		return getOutputPath(javaProject);
 	}
-	
-	protected void clearProject(IProject project){
+
+	protected void clearProject(IProject project) {
 		try {
 			project.delete(true, nullProgressMonitor);
 		} catch (CoreException e) {
-			e.printStackTrace();
+			log.error(e.getMessage(), e);
 		}
 	}
-	
+
 }

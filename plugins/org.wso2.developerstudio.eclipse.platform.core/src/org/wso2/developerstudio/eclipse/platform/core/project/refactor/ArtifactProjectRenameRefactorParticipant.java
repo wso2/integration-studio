@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ * Copyright (c) 2010-2015, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -64,9 +64,7 @@ public class ArtifactProjectRenameRefactorParticipant extends RenameParticipant 
 	public RefactoringStatus checkConditions(IProgressMonitor arg0, CheckConditionsContext arg1)
 	                                                                                            throws OperationCanceledException {
 		return RefactoringStatus.createWarningStatus("You are about to rename your project and configuration from " +
-		                                             originalProject.getName() +
-		                                             " to " +
-		                                             latestName);
+		                                             originalProject.getName() + " to " + latestName);
 	}
 
 	/**
@@ -79,8 +77,7 @@ public class ArtifactProjectRenameRefactorParticipant extends RenameParticipant 
 	 * for those tasks in this method.
 	 */
 	@Override
-	public Change createPreChange(IProgressMonitor arg0) throws CoreException,
-	                                                    OperationCanceledException {
+	public Change createPreChange(IProgressMonitor arg0) throws CoreException, OperationCanceledException {
 
 		IFile pomFile = originalProject.getFile("pom.xml");
 
@@ -102,18 +99,15 @@ public class ArtifactProjectRenameRefactorParticipant extends RenameParticipant 
 			    projects[i].hasNature("org.wso2.developerstudio.eclipse.distribution.project.nature")) {
 				try {
 					MavenProject mavenProject =
-					                            MavenUtils.getMavenProject(projects[i].getFile("pom.xml")
-					                                                                  .getLocation()
+					                            MavenUtils.getMavenProject(projects[i].getFile("pom.xml").getLocation()
 					                                                                  .toFile());
 					List<?> dependencies = mavenProject.getDependencies();
 					for (Iterator<?> iterator = dependencies.iterator(); iterator.hasNext();) {
 						Dependency dependency = (Dependency) iterator.next();
 						if (originalProject.getName().equalsIgnoreCase(dependency.getArtifactId())) {
-							artifactChange.add(new MavenConfigurationFileChange(
-							                                                    projects[i].getName(),
+							artifactChange.add(new MavenConfigurationFileChange(projects[i].getName(),
 							                                                    projects[i].getFile("pom.xml"),
-							                                                    originalProject.getName(),
-							                                                    projects[i],
+							                                                    originalProject.getName(), projects[i],
 							                                                    latestName));
 						}
 					}
@@ -148,8 +142,7 @@ public class ArtifactProjectRenameRefactorParticipant extends RenameParticipant 
 	 * for clean up tasks.
 	 */
 	@Override
-	public Change createChange(IProgressMonitor arg0) throws CoreException,
-	                                                 OperationCanceledException {
+	public Change createChange(IProgressMonitor arg0) throws CoreException, OperationCanceledException {
 		return null;
 	}
 

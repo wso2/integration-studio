@@ -1,4 +1,4 @@
-<endpoint xmlns="http://ws.apache.org/ns/synapse" name="{ep.name}" >
+<endpoint xmlns="http://ws.apache.org/ns/synapse" name="{ep.name}">
 	<http uri-template="{http.uritemplate}" method="{http.method}">
 		<suspendOnFailure>
 			<progressionFactor>1.0</progressionFactor>

@@ -12,7 +12,11 @@ Require-Bundle: org.eclipse.core.runtime,
  javax.servlet;bundle-version="3.0.0",
  org.eclipse.equinox.registry
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Export-Package: org.wso2.developerstudio.embedded.tomcat,
+ org.wso2.developerstudio.embedded.tomcat.api
+Bundle-Activator: org.wso2.developerstudio.embedded.tomcat.EmbeddedTomcatPlugin
+Import-Package: org.apache.commons.io;version="2.0.0.wso2v1",
+ org.osgi.framework,
+ org.wso2.developerstudio.eclipse.utils.archive
 Bundle-ActivationPolicy: lazy
-Export-Package: org.wso2.developerstudio.internal.tomcat
-Bundle-Activator: org.wso2.developerstudio.internal.tomcat.EmbeddedTomcatPlugin
-Import-Package: org.osgi.framework
+Service-Component: OSGI-INF/tomcat-service.xml

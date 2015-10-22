@@ -30,6 +30,9 @@
         <module>org.wso2.developerstudio.kernel.samples.feature</module>
         <module>org.wso2.developerstudio.kernel.webeditor.feature</module>
         <module>org.wso2.developerstudio.kernel.pluginsamples.feature</module>
+        <module>org.wso2.developerstudio.registry.feature</module>
+	<module>org.wso2.developerstudio.usermgt.core.feature</module>
+
     </modules>
     <distributionManagement>
         <repository>

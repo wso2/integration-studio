@@ -1,12 +1,12 @@
 /*
- * Copyright (c) 2011, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
- *
+ * Copyright (c) 2010-2015, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -24,7 +24,7 @@ public class MavenInfo {
 	private String version;
 	private String packageName;
 	private Parent parentProject;
-	
+
 	public Parent getParentProject() {
 		return parentProject;
 	}
@@ -33,19 +33,19 @@ public class MavenInfo {
 		this.parentProject = parentProject;
 	}
 
-	public MavenInfo(String groupId, String projectName, String version, String packageName){
+	public MavenInfo(String groupId, String projectName, String version, String packageName) {
 		setGroupId(groupId);
 		setArtifactId(projectName);
 		setVersion(version);
 		this.packageName = packageName;
 	}
-	
-	public MavenInfo(String groupId, String projectName, String version){
+
+	public MavenInfo(String groupId, String projectName, String version) {
 		setGroupId(groupId);
 		setArtifactId(projectName);
 		setVersion(version);
 	}
-	
+
 	public String getGroupId() {
 		return groupId;
 	}
@@ -77,5 +77,5 @@ public class MavenInfo {
 	public void setPackageName(String packageName) {
 		this.packageName = packageName;
 	}
-	
+
 }

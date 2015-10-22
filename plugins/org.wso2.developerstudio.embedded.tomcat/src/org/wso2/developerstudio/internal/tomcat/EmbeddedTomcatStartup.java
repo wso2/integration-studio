@@ -21,6 +21,7 @@ import org.osgi.framework.BundleContext;
 import org.osgi.framework.BundleException;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
+import org.wso2.developerstudio.embedded.tomcat.EmbeddedTomcatPlugin;
 
 public class EmbeddedTomcatStartup implements IStartup {
 

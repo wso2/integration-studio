@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.developerstudio.internal.tomcat.api;
+package org.wso2.developerstudio.embedded.tomcat.api;
 
 public interface ITomcatServer {
 
@@ -40,18 +40,4 @@ public interface ITomcatServer {
 	 * @return complete URL to access given web application.
 	 */
 	String getAppURL(String appID);
-
-	/**
-	 * Method to start the embedded tomcat server.
-	 * 
-	 * @throws Exception
-	 */
-	void start() throws Exception;
-
-	/**
-	 * Method to stop the embedded tomcat server.
-	 * 
-	 * @throws Exception
-	 */
-	void stop() throws Exception;
 }

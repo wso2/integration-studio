@@ -13,18 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.developerstudio.internal.tomcat;
+package org.wso2.developerstudio.embedded.tomcat;
 
-import java.io.File;
-import java.net.URL;
-
-import org.eclipse.core.runtime.FileLocator;
-import org.eclipse.core.runtime.Path;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
-import org.wso2.developerstudio.internal.tomcat.server.EmbeddedTomcatManager;
+import org.wso2.developerstudio.embedded.tomcat.server.EmbeddedTomcatServer;
 
 public class EmbeddedTomcatPlugin implements BundleActivator {
 
@@ -39,25 +34,26 @@ public class EmbeddedTomcatPlugin implements BundleActivator {
 	/** The shared plug-in instance */
 	private static EmbeddedTomcatPlugin plugin;
 	/** Tomcat instance */
-	private EmbeddedTomcatManager tomcatManager;
+	private EmbeddedTomcatServer tomcatServer;
 
 	public void start(BundleContext bundleContext) throws Exception {
 		context = bundleContext;
 		plugin = this;
         bundleCtxtClassLoader = Thread.currentThread().getContextClassLoader();
-		log.info("Starting embedded tomcat server of DevStudio.");
+
 		// Start embedded Tomcat with a separate class loader
 		Thread tomcatThread = new Thread(new Runnable() {
-
 			@Override
 			public void run() {
 				try {
+					log.info("Starting embedded tomcat server of DevStudio.");
 					Thread.currentThread().setContextClassLoader(bundleCtxtClassLoader);
-					tomcatManager = new EmbeddedTomcatManager();
-					tomcatManager.start();
-					Integer port = tomcatManager.getServerPort();
+					tomcatServer = new EmbeddedTomcatServer();
+					tomcatServer.start();
+					Integer port = tomcatServer.getServerPort();
 					log.info("Embedded tomcat server is suceessfully started on port "
 							+ port);
+					Thread.sleep(15000);
 				} catch (Exception ex) {
 					log.error("Error while starting embedded tomcat server.",
 							ex);
@@ -65,7 +61,6 @@ public class EmbeddedTomcatPlugin implements BundleActivator {
 			}
 		});
 		tomcatThread.start();
-		// wait till server is started completely
 		tomcatThread.join();
 	}
 
@@ -73,7 +68,7 @@ public class EmbeddedTomcatPlugin implements BundleActivator {
 		plugin = null;
 		context = null;
 		try {
-			tomcatManager.stop();
+			tomcatServer.stop();
 		} catch (Exception e) {
 			log.error(
 					"Error while stopping embedded tomcat server of DevStudio.",
@@ -96,10 +91,9 @@ public class EmbeddedTomcatPlugin implements BundleActivator {
 	 * @param appID
 	 *            Unique ID for the web application.
 	 * @return Complete URL to access a given web application.
-	 * @throws Exception
 	 */
-	public String getAppURL(String appID) throws Exception {
-		return tomcatManager.getAppURL(appID);
+	public String getAppURL(String appID){
+		return tomcatServer.getAppURL(appID);
 	}
 
 	/**

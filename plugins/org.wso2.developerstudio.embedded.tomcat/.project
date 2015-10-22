@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>org.wso2.developerstudio.internel.tomcat</name>
+	<name>org.wso2.developerstudio.embedded.tomcat</name>
 	<comment></comment>
 	<projects>
 	</projects>

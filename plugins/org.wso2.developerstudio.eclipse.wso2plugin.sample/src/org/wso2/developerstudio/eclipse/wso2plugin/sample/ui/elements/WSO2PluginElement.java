@@ -24,17 +24,28 @@ public class WSO2PluginElement {
 	String pluginName;
 	String pluginDescription;
 	String pluginArchive;
+	String bundleID;
 
-	@Override
-	public String toString() {
-		return pluginName;
-	}
-
-	public WSO2PluginElement(String pluginName, String pluginArchive, String description) {
+	public WSO2PluginElement(String pluginName, String pluginArchive,
+			String description, String pluginBundleID) {
 		super();
 		this.pluginName = pluginName;
 		this.pluginArchive = pluginArchive;
 		this.pluginDescription = description;
+		this.bundleID = pluginBundleID;
+	}
+
+	public String getBundleID() {
+		return bundleID;
+	}
+
+	public void setBundleID(String bundleID) {
+		this.bundleID = bundleID;
+	}
+
+	@Override
+	public String toString() {
+		return pluginName;
 	}
 
 	public String getPluginDescription() {

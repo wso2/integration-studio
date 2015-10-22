@@ -169,11 +169,12 @@ public class WSO2PluginProjectWizard extends AbstractWSO2ProjectCreationWizard {
 				.getAttribute(WSO2PluginConstants.PLUGIN_ARCHIVE_LOCATION);
 		String description = config
 				.getAttribute(WSO2PluginConstants.GET_PLUGIN_DESCRIPTION);
-		if (name == null || archive == null) {
+		String providerBundleID = config.getContributor().getName();
+		if (name == null || archive == null || providerBundleID == null) {
 			openSelectedProjectInWorkspace(selectedPlugin);
 		}
 		WSO2PluginElement pluginElem = new WSO2PluginElement(name, archive,
-				description);
+				description, providerBundleID);
 
 		return pluginElem;
 	}
@@ -189,8 +190,9 @@ public class WSO2PluginProjectWizard extends AbstractWSO2ProjectCreationWizard {
 				.getFirstElement();
 		String projectName = wso2PluginProjectModel.getPluginProjectName();
 		String projectArchiveLoc = element.getPluginArchive();
+		String pluginID = element.getBundleID();
 		try {
-			openZipArchive(projectArchiveLoc, projectName);
+			openZipArchive(projectArchiveLoc, projectName, pluginID);
 		} catch (CoreException e) {
 			log.error(
 					"An Exception was thrown in creating the new project with the given project name : "
@@ -216,8 +218,8 @@ public class WSO2PluginProjectWizard extends AbstractWSO2ProjectCreationWizard {
 
 	}
 
-	private void openZipArchive(String projectArchiveLoc, String projectName)
-			throws CoreException, IOException {
+	private void openZipArchive(String projectArchiveLoc, String projectName,
+			String pluginBundleID) throws CoreException, IOException {
 		ITemporaryFileTag sampleTempTag = FileUtils.createNewTempTag();
 		IWorkspace workspace = ResourcesPlugin.getWorkspace();
 		IProjectDescription newProjectDescription = workspace
@@ -225,8 +227,8 @@ public class WSO2PluginProjectWizard extends AbstractWSO2ProjectCreationWizard {
 		IProject newProject = workspace.getRoot().getProject(projectName);
 		newProject.create(newProjectDescription, null);
 		newProject.open(null);
-		URL zipLocationURL = FileLocator.find(Platform
-				.getBundle(WSO2PluginConstants.SAMPLE_PROVIDING_BUNDLE_ID),
+		URL zipLocationURL = FileLocator.find(
+				Platform.getBundle(pluginBundleID),
 				new Path(projectArchiveLoc), null);
 		File destinationFile = FileUtils.createTempFile();
 		FileUtils.createFile(destinationFile, zipLocationURL.openStream());
@@ -282,11 +284,13 @@ public class WSO2PluginProjectWizard extends AbstractWSO2ProjectCreationWizard {
 
 		for (StackTraceElement stackTrace : stackTraces) {
 			Status status = new Status(IStatus.ERROR,
-					"org.wso2.developerstudio.eclipse.wso2plugin.sample.ui", stackTrace.toString());
+					"org.wso2.developerstudio.eclipse.wso2plugin.sample.ui",
+					stackTrace.toString());
 			childStatuses.add(status);
 		}
 
-		MultiStatus ms = new MultiStatus("org.wso2.developerstudio.eclipse.wso2plugin.sample.ui",
+		MultiStatus ms = new MultiStatus(
+				"org.wso2.developerstudio.eclipse.wso2plugin.sample.ui",
 				IStatus.ERROR, childStatuses.toArray(new Status[] {}),
 				t.toString(), t);
 		return ms;

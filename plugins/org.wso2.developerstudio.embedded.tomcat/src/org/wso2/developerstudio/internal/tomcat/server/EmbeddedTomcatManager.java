@@ -63,8 +63,8 @@ public class EmbeddedTomcatManager implements ITomcatServer {
 		IExtensionPoint ep = reg.getExtensionPoint(WEB_APP_EXT_POINT_ID);
 		IExtension[] extensions = ep.getExtensions();
 		for (IExtension ext : extensions) {
-			Bundle bundle = ext.getDeclaringPluginDescriptor().getPlugin()
-					.getBundle();
+			String bundleName = ext.getContributor().getName();
+			Bundle bundle = Platform.getBundle(bundleName);
 			IConfigurationElement element = ext.getConfigurationElements()[0];
 			String appID = element.getAttribute("appID");
 			String relativePath = element.getAttribute("relativePath");

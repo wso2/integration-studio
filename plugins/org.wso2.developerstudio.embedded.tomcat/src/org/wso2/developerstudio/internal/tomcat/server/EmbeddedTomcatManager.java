@@ -19,47 +19,62 @@ import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.ServerSocket;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import javax.servlet.ServletException;
 
 import org.apache.catalina.Context;
 import org.apache.catalina.LifecycleException;
 import org.apache.catalina.startup.Tomcat;
+import org.eclipse.core.runtime.FileLocator;
+import org.eclipse.core.runtime.IConfigurationElement;
+import org.eclipse.core.runtime.IExtension;
+import org.eclipse.core.runtime.IExtensionPoint;
+import org.eclipse.core.runtime.IExtensionRegistry;
+import org.eclipse.core.runtime.Path;
+import org.eclipse.core.runtime.Platform;
+import org.osgi.framework.Bundle;
+import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
+import org.wso2.developerstudio.eclipse.logging.core.Logger;
+import org.wso2.developerstudio.internal.tomcat.EmbeddedTomcatPlugin;
 import org.wso2.developerstudio.internal.tomcat.api.ITomcatServer;
 
-public class TomcatServerImpl implements ITomcatServer {
+public class EmbeddedTomcatManager implements ITomcatServer {
 
+	private static final String WEB_APP_EXT_POINT_ID = "org.wso2.developerstudio.embedded.webapp";
 	private static final String WEB_XML_REL_PATH = "/WEB-INF/web.xml";
 	protected Tomcat tomcat;
 	protected Map<String, String> deployedApps;
 	protected Integer port;
-	protected File webAppRoot;
-	protected Logger logger;
+	
+	private static IDeveloperStudioLog log = Logger.getLog(EmbeddedTomcatPlugin.PLUGIN_ID);
 
-	public File getWebAppRoot() {
-		return webAppRoot;
-	}
 
-	public void setWebAppRoot(File webAppRoot) {
-		this.webAppRoot = webAppRoot;
-	}
-
-	public TomcatServerImpl() throws IOException {
-		logger = Logger.getLogger("org.apache");
-		logger.setLevel(Level.ALL);
+	public EmbeddedTomcatManager() throws IOException {
 		deployedApps = new HashMap<>();
 		configureServer();
 	}
 
 	private void initWebApps() throws Exception {
-		for (File file : webAppRoot.listFiles()) {
-			if (file.isDirectory()) {
-				addWebApp(file.getName(), "/" + file.getName(),
-						file.getAbsolutePath());
+		IExtensionRegistry reg = Platform.getExtensionRegistry();
+		IExtensionPoint ep = reg.getExtensionPoint(WEB_APP_EXT_POINT_ID);
+		IExtension[] extensions = ep.getExtensions();
+		for (IExtension ext : extensions) {
+			Bundle bundle = ext.getDeclaringPluginDescriptor().getPlugin()
+					.getBundle();
+			IConfigurationElement element = ext.getConfigurationElements()[0];
+			String appID = element.getAttribute("appID");
+			String relativePath = element.getAttribute("relativePath");
+			String isStatic = element.getAttribute("isStatic");
+			if (appID != null && relativePath != null) {
+				URL webAppsURL = FileLocator.find(bundle,
+						new Path(relativePath), null);
+				URL fileURL = FileLocator.toFileURL(webAppsURL);
+				addWebApp(appID, appID,
+						new File(fileURL.toURI()).getAbsolutePath());
 			}
 		}
 	}
@@ -110,6 +125,8 @@ public class TomcatServerImpl implements ITomcatServer {
 			appContext.setParentClassLoader(Thread.currentThread()
 					.getContextClassLoader());
 			deployedApps.put(appID, getURLForContext(context));
+			log.info("WebApp " + appID + " successfully deployed at " + deployedApps.get(appID));
+			
 		} catch (ServletException | MalformedURLException e) {
 			throw new Exception("Error while adding web app: " + appID + " at "
 					+ docBase + " to embedded tomcat server of DevStudio.", e);

@@ -22,10 +22,10 @@
         <version>4.0.0-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
-    <artifactId>org.wso2.developerstudio.kernel.samples.feature</artifactId>
+    <artifactId>org.wso2.developerstudio.kernel.feature</artifactId>
     <packaging>pom</packaging>
-    <name>WSO2 Developer Studio Kernel Samples Feature</name>
-    <description>This feature contains the samples for Developer Studio Kernel</description>
+    <name>WSO2 Developer Studio Kernel Feature</name>
+    <description>This feature contains the framework bundles for wso2 eclipse plugins</description>
     <url>http://wso2.org</url>
     <build>
         <plugins>
@@ -44,7 +44,8 @@
                             <id>${project.artifactId}</id>
                             <propertiesFile>../feature.properties</propertiesFile>
                             <bundles>
-                                <bundleDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.samples:${core.tools.version}</bundleDef>
+                                <bundleDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.platform.core:${core.tools.version}</bundleDef>
+                                <bundleDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.platform.ui:${core.tools.version}</bundleDef>
                             </bundles>
                         </configuration>
                     </execution>

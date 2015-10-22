@@ -53,7 +53,6 @@ public class EmbeddedTomcatPlugin implements BundleActivator {
 					Integer port = tomcatServer.getServerPort();
 					log.info("Embedded tomcat server is suceessfully started on port "
 							+ port);
-					Thread.sleep(15000);
 				} catch (Exception ex) {
 					log.error("Error while starting embedded tomcat server.",
 							ex);
@@ -61,6 +60,7 @@ public class EmbeddedTomcatPlugin implements BundleActivator {
 			}
 		});
 		tomcatThread.start();
+		// wait till the server is started completely
 		tomcatThread.join();
 	}
 

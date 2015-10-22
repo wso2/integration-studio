@@ -68,7 +68,7 @@ public class EmbeddedTomcatServer implements ITomcatServer {
 	
 	private static IDeveloperStudioLog log = Logger.getLog(EmbeddedTomcatPlugin.PLUGIN_ID);
 
-	public EmbeddedTomcatServer() throws IOException {
+	public EmbeddedTomcatServer() {
 		deployedApps = new HashMap<>();
 	}
 

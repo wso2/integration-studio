@@ -24,7 +24,7 @@
 			class="org.wso2.developerstudio.eclipse.wso2plugin.sample.ui.wizard.WSO2PluginProjectWizard"
 			id="org.wso2.developerstudio.eclipse.artifact.newwso2pluginproject"
 			wizardManifest="project_wizard.xml"
-			icon="icons/esb-project-12.png"
+			icon="icons/new-plugin-12x12.png"
 			project="true">
 			<description>WSO2 Plugin Project</description>
 		</wizard>

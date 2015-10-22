@@ -1,12 +1,12 @@
 /*
  * Copyright (c) 2015, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
- *
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
+ * 
  * http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -19,8 +19,6 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.text.MessageFormat;
-import java.util.ArrayList;
-import java.util.List;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IProjectDescription;
@@ -44,12 +42,15 @@ import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Display;
-import org.eclipse.swt.widgets.MessageBox;
+import org.eclipse.ui.IPerspectiveDescriptor;
+import org.eclipse.ui.IWorkbenchWindow;
+import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.WorkbenchException;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.platform.core.project.model.ProjectWizardSettings;
+import org.wso2.developerstudio.eclipse.platform.ui.utils.MessageDialogUtils;
 import org.wso2.developerstudio.eclipse.platform.ui.wizard.AbstractWSO2ProjectCreationWizard;
 import org.wso2.developerstudio.eclipse.platform.ui.wizard.pages.ProjectOptionsDataPage;
 import org.wso2.developerstudio.eclipse.platform.ui.wizard.pages.ProjectOptionsPage;
@@ -58,8 +59,8 @@ import org.wso2.developerstudio.eclipse.utils.data.ITemporaryFileTag;
 import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
 import org.wso2.developerstudio.eclipse.wso2plugin.sample.Activator;
 import org.wso2.developerstudio.eclipse.wso2plugin.sample.project.WSO2PluginProjectModel;
-import org.wso2.developerstudio.eclipse.wso2plugin.sample.ui.elements.WSO2PluginElement;
-import org.wso2.developerstudio.eclipse.wso2plugin.sample.ui.elements.WSO2PluginElementList;
+import org.wso2.developerstudio.eclipse.wso2plugin.sample.ui.elements.WSO2PluginSampleExt;
+import org.wso2.developerstudio.eclipse.wso2plugin.sample.ui.elements.WSO2PluginSampleExtList;
 import org.wso2.developerstudio.eclipse.wso2plugin.sample.util.WSO2PluginConstants;
 
 public class WSO2PluginProjectWizard extends AbstractWSO2ProjectCreationWizard {
@@ -69,30 +70,13 @@ public class WSO2PluginProjectWizard extends AbstractWSO2ProjectCreationWizard {
 	private boolean isWizardSelected = false;
 	boolean isProjectCreated = false;
 
-	public boolean isWizardSelected() {
-		return isWizardSelected;
-	}
-
-	public void setWizardSelected(boolean isWizardSelected) {
-		this.isWizardSelected = isWizardSelected;
-	}
-
-	public ISelection getSelectedPlugin() {
-		return selectedPlugin;
-	}
-
-	public void setSelectedPlugin(ISelection selectedPlugin) {
-		this.selectedPlugin = selectedPlugin;
-	}
-
 	public WSO2PluginProjectWizard() {
 		setWso2PluginProjectModel(new WSO2PluginProjectModel());
 		setModel(wso2PluginProjectModel);
 		setWindowTitle(WSO2PluginConstants.PROJECT_WIZARD_WINDOW_TITLE);
 	}
 
-	private void setWso2PluginProjectModel(
-			WSO2PluginProjectModel wso2PluginProjectModel) {
+	private void setWso2PluginProjectModel(WSO2PluginProjectModel wso2PluginProjectModel) {
 		this.wso2PluginProjectModel = wso2PluginProjectModel;
 	}
 
@@ -100,23 +84,26 @@ public class WSO2PluginProjectWizard extends AbstractWSO2ProjectCreationWizard {
 	public void addPages() {
 		URL resource = getWizardManifest();
 		try {
-			ProjectWizardSettings settings = new ProjectWizardSettings(
-					resource.openStream(), configElement);
+			ProjectWizardSettings settings =
+			                                 new ProjectWizardSettings(resource.openStream(),
+			                                                           configElement);
 
 			if (settings.getProjectOptions().size() == 1) {
-				getModel().setSelectedOption(
-						settings.getProjectOptions().get(0).getId());
+				getModel().setSelectedOption(settings.getProjectOptions().get(0).getId());
 			} else {
 				addPage(new ProjectOptionsPage(settings, getModel()));
 			}
-			addPage(new ProjectOptionsDataPage(settings, getModel(),
-					getCurrentSelection(), isRequireProjectLocationSection(),
-					isRequiredWorkingSet(), isRequiredWorkspaceLocation()));
+			addPage(new ProjectOptionsDataPage(settings, getModel(), getCurrentSelection(),
+			                                   isRequireProjectLocationSection(),
+			                                   isRequiredWorkingSet(),
+			                                   isRequiredWorkspaceLocation()));
 			if (isCustomPageRequired()) {
 				addPage(getCustomPage());
 			}
-			addPage(new WSO2PluginListSelectionPage(getAvailableWSO2Plugins(),
-					WSO2PluginConstants.PLUGIN_SELECT_WIZARD_PAGE_NAME, this));
+			addPage(new WSO2PluginListSelectionPage(
+			                                        getAvailableWSO2Plugins(),
+			                                        WSO2PluginConstants.PLUGIN_SELECT_WIZARD_PAGE_NAME,
+			                                        this));
 
 		} catch (Exception e) {
 			log.error("error adding pages", e);
@@ -131,10 +118,11 @@ public class WSO2PluginProjectWizard extends AbstractWSO2ProjectCreationWizard {
 
 	@Override
 	public boolean performFinish() {
-		Job projectCreationJob = new Job("Create Plugin project") {
+		Job projectCreationJob = new Job(WSO2PluginConstants.CREATE_PLUGIN_PROJECT_JOB) {
 			@Override
 			protected IStatus run(IProgressMonitor monitor) {
 				isProjectCreated = openSelectedProjectInWorkspace(selectedPlugin);
+				openJavaPerspective();
 				return Status.OK_STATUS;
 			}
 		};
@@ -142,18 +130,16 @@ public class WSO2PluginProjectWizard extends AbstractWSO2ProjectCreationWizard {
 		return true;
 	}
 
-	public WSO2PluginElementList getAvailableWSO2Plugins() {
-		WSO2PluginElementList elemList = new WSO2PluginElementList();
+	public WSO2PluginSampleExtList getAvailableWSO2Plugins() {
+		WSO2PluginSampleExtList elemList = new WSO2PluginSampleExtList();
 		IExtensionRegistry registry = Platform.getExtensionRegistry();
-		IExtensionPoint point = registry
-				.getExtensionPoint(WSO2PluginConstants.EXTENSION_ID);
+		IExtensionPoint point = registry.getExtensionPoint(WSO2PluginConstants.EXTENSION_ID);
 
 		IExtension[] extensions = point.getExtensions();
 		for (int i = 0; i < extensions.length; i++) {
-			IConfigurationElement[] elements = extensions[i]
-					.getConfigurationElements();
+			IConfigurationElement[] elements = extensions[i].getConfigurationElements();
 			for (int j = 0; j < elements.length; j++) {
-				WSO2PluginElement element = createWizardElement(elements[j]);
+				WSO2PluginSampleExt element = createWizardElement(elements[j]);
 				if (element != null) {
 					elemList.addWSO2Plugin(element);
 				}
@@ -163,18 +149,17 @@ public class WSO2PluginProjectWizard extends AbstractWSO2ProjectCreationWizard {
 		return elemList;
 	}
 
-	protected WSO2PluginElement createWizardElement(IConfigurationElement config) {
+	protected WSO2PluginSampleExt createWizardElement(IConfigurationElement config) {
 		String name = config.getAttribute(WSO2PluginConstants.PLUGIN_NAME);
-		String archive = config
-				.getAttribute(WSO2PluginConstants.PLUGIN_ARCHIVE_LOCATION);
-		String description = config
-				.getAttribute(WSO2PluginConstants.GET_PLUGIN_DESCRIPTION);
+		String archive = config.getAttribute(WSO2PluginConstants.PLUGIN_ARCHIVE_LOCATION);
+		String description = config.getAttribute(WSO2PluginConstants.GET_PLUGIN_DESCRIPTION);
 		String providerBundleID = config.getContributor().getName();
 		if (name == null || archive == null || providerBundleID == null) {
 			openSelectedProjectInWorkspace(selectedPlugin);
 		}
-		WSO2PluginElement pluginElem = new WSO2PluginElement(name, archive,
-				description, providerBundleID);
+		WSO2PluginSampleExt pluginElem =
+		                                 new WSO2PluginSampleExt(name, archive, description,
+		                                                         providerBundleID);
 
 		return pluginElem;
 	}
@@ -186,50 +171,52 @@ public class WSO2PluginProjectWizard extends AbstractWSO2ProjectCreationWizard {
 			return false;
 		}
 		IStructuredSelection structSelection = (IStructuredSelection) iSelection;
-		WSO2PluginElement element = (WSO2PluginElement) structSelection
-				.getFirstElement();
+		WSO2PluginSampleExt element = (WSO2PluginSampleExt) structSelection.getFirstElement();
 		String projectName = wso2PluginProjectModel.getPluginProjectName();
 		String projectArchiveLoc = element.getPluginArchive();
 		String pluginID = element.getBundleID();
 		try {
 			openZipArchive(projectArchiveLoc, projectName, pluginID);
 		} catch (CoreException e) {
-			log.error(
-					"An Exception was thrown in creating the new project with the given project name : "
-							+ projectName, e);
-			MultiStatus status = createMultiStatus(e.getLocalizedMessage(), e);
+			log.error("An Exception was thrown in creating the new project with the given project name : " +
+			                  projectName, e);
+			MultiStatus status =
+			                     MessageDialogUtils.createMultiStatus(e.getLocalizedMessage(),
+			                                                          e,
+			                                                          WSO2PluginConstants.PACKAGE_ID);
 			// show error dialog
-			ErrorDialog.openError(this.getShell(), "Error Occurred ",
-					"An Error Occurred in creating the specifid plugin. ",
-					status);
+			ErrorDialog.openError(this.getShell(), WSO2PluginConstants.ERROR_DIALOG_TITLE,
+			                      "An Error Occurred in creating the specifid plugin. ", status);
 			return false;
 		} catch (IOException e) {
-			log.error("An Exception was thrown in creating the new project  : "
-					+ projectName + ", with the selected sample : "
-					+ projectArchiveLoc, e);
-			MultiStatus status = createMultiStatus(e.getLocalizedMessage(), e);
+			log.error("An Exception was thrown in creating the new project  : " + projectName +
+			          ", with the selected sample : " + projectArchiveLoc, e);
+			MultiStatus status =
+			                     MessageDialogUtils.createMultiStatus(e.getLocalizedMessage(),
+			                                                          e,
+			                                                          WSO2PluginConstants.PACKAGE_ID);
 			// show error dialog
-			ErrorDialog.openError(this.getShell(), "Error Occurred ",
-					"An Error Occurred in creating the specifid plugin. ",
-					status);
+			ErrorDialog.openError(this.getShell(), WSO2PluginConstants.ERROR_DIALOG_TITLE,
+			                      "An Error Occurred in creating the specifid plugin. ", status);
 			return false;
 		}
 		return true;
 
 	}
 
-	private void openZipArchive(String projectArchiveLoc, String projectName,
-			String pluginBundleID) throws CoreException, IOException {
+	// TODO : this method should go to kernel platform core
+	private void openZipArchive(String projectArchiveLoc, String projectName, String pluginBundleID)
+	                                                                                                throws CoreException,
+	                                                                                                IOException {
 		ITemporaryFileTag sampleTempTag = FileUtils.createNewTempTag();
 		IWorkspace workspace = ResourcesPlugin.getWorkspace();
-		IProjectDescription newProjectDescription = workspace
-				.newProjectDescription(projectName);
+		IProjectDescription newProjectDescription = workspace.newProjectDescription(projectName);
 		IProject newProject = workspace.getRoot().getProject(projectName);
 		newProject.create(newProjectDescription, null);
 		newProject.open(null);
-		URL zipLocationURL = FileLocator.find(
-				Platform.getBundle(pluginBundleID),
-				new Path(projectArchiveLoc), null);
+		URL zipLocationURL =
+		                     FileLocator.find(Platform.getBundle(pluginBundleID),
+		                                      new Path(projectArchiveLoc), null);
 		File destinationFile = FileUtils.createTempFile();
 		FileUtils.createFile(destinationFile, zipLocationURL.openStream());
 		File resourceFile = destinationFile;
@@ -252,8 +239,7 @@ public class WSO2PluginProjectWizard extends AbstractWSO2ProjectCreationWizard {
 			}
 		}
 
-		FileUtils.copyDirectoryContents(sampleProjectTempLocation,
-				projectTempLocation);
+		FileUtils.copyDirectoryContents(sampleProjectTempLocation, projectTempLocation);
 		FileUtils.copyDirectoryContents(projectTempLocation, target);
 		newProject.refreshLocal(IResource.DEPTH_INFINITE, null);
 		newProject.close(new NullProgressMonitor());
@@ -264,8 +250,8 @@ public class WSO2PluginProjectWizard extends AbstractWSO2ProjectCreationWizard {
 
 	}
 
-	protected void updateWithParameterData(File projectDesc,
-			String parameterValue) throws IOException {
+	protected void updateWithParameterData(File projectDesc, String parameterValue)
+	                                                                               throws IOException {
 		String content = FileUtils.getContentAsString(projectDesc);
 		content = MessageFormat.format(content, parameterValue);
 		projectDesc.delete();
@@ -276,24 +262,53 @@ public class WSO2PluginProjectWizard extends AbstractWSO2ProjectCreationWizard {
 		return isWizardSelected;
 	}
 
-	private static MultiStatus createMultiStatus(String msg, Throwable t) {
+	public boolean isWizardSelected() {
+		return isWizardSelected;
+	}
 
-		List<Status> childStatuses = new ArrayList<>();
-		StackTraceElement[] stackTraces = Thread.currentThread()
-				.getStackTrace();
+	public void setWizardSelected(boolean isWizardSelected) {
+		this.isWizardSelected = isWizardSelected;
+	}
 
-		for (StackTraceElement stackTrace : stackTraces) {
-			Status status = new Status(IStatus.ERROR,
-					"org.wso2.developerstudio.eclipse.wso2plugin.sample.ui",
-					stackTrace.toString());
-			childStatuses.add(status);
+	public ISelection getSelectedPlugin() {
+		return selectedPlugin;
+	}
+
+	public void setSelectedPlugin(ISelection selectedPlugin) {
+		this.selectedPlugin = selectedPlugin;
+	}
+
+	private void openJavaPerspective() {
+
+		final IWorkbenchWindow workbenchWindow =
+		                                         PlatformUI.getWorkbench()
+		                                                   .getActiveWorkbenchWindow();
+		IPerspectiveDescriptor activePerspective = workbenchWindow.getActivePage().getPerspective();
+		if (activePerspective == null ||
+		    !activePerspective.getId().equals(WSO2PluginConstants.JAVA_PERSPECTIVE_ID)) {
+			Display.getCurrent().asyncExec(new Runnable() {
+				public void run() {
+					// switch perspective
+					try {
+						workbenchWindow.getWorkbench()
+						               .showPerspective(WSO2PluginConstants.JAVA_PERSPECTIVE_ID,
+						                                workbenchWindow);
+					} catch (WorkbenchException e) {
+						log.error("Can not switch to perspective: " +
+						          WSO2PluginConstants.JAVA_PERSPECTIVE_ID, e);
+						MultiStatus status =
+						                     MessageDialogUtils.createMultiStatus(e.getLocalizedMessage(),
+						                                                          e,
+						                                                          WSO2PluginConstants.PACKAGE_ID);
+						// show error dialog
+						ErrorDialog.openError(Display.getCurrent().getActiveShell(),
+						                      WSO2PluginConstants.ERROR_DIALOG_TITLE,
+						                      "An Error Occurred in creating the specifid plugin. ",
+						                      status);
+					}
+				}
+			});
 		}
-
-		MultiStatus ms = new MultiStatus(
-				"org.wso2.developerstudio.eclipse.wso2plugin.sample.ui",
-				IStatus.ERROR, childStatuses.toArray(new Status[] {}),
-				t.toString(), t);
-		return ms;
 	}
 
 }

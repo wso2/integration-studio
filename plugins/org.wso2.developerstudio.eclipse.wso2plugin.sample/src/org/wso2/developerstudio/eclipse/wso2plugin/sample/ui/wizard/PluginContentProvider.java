@@ -1,12 +1,12 @@
 /*
  * Copyright (c) 2015, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
- *
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
+ * 
  * http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -17,7 +17,7 @@
 package org.wso2.developerstudio.eclipse.wso2plugin.sample.ui.wizard;
 
 import org.eclipse.jface.viewers.ArrayContentProvider;
-import org.wso2.developerstudio.eclipse.wso2plugin.sample.ui.elements.WSO2PluginElementList;
+import org.wso2.developerstudio.eclipse.wso2plugin.sample.ui.elements.WSO2PluginSampleExtList;
 
 public class PluginContentProvider extends ArrayContentProvider {
 
@@ -38,9 +38,8 @@ public class PluginContentProvider extends ArrayContentProvider {
 	 */
 	@Override
 	public Object[] getElements(Object inputElement) {
-		if (inputElement instanceof WSO2PluginElementList) {
-			return (Object[]) ((WSO2PluginElementList) inputElement)
-					.getChildren();
+		if (inputElement instanceof WSO2PluginSampleExtList) {
+			return (Object[]) ((WSO2PluginSampleExtList) inputElement).getChildren();
 		}
 
 		return new Object[0];

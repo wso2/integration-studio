@@ -1,12 +1,12 @@
 /*
  * Copyright (c) 2015, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
- *
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
+ * 
  * http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -33,19 +33,19 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Label;
-import org.wso2.developerstudio.eclipse.wso2plugin.sample.ui.elements.WSO2PluginElement;
-import org.wso2.developerstudio.eclipse.wso2plugin.sample.ui.elements.WSO2PluginElementList;
+import org.wso2.developerstudio.eclipse.wso2plugin.sample.ui.elements.WSO2PluginSampleExt;
+import org.wso2.developerstudio.eclipse.wso2plugin.sample.ui.elements.WSO2PluginSampleExtList;
 import org.wso2.developerstudio.eclipse.wso2plugin.sample.util.WSO2PluginConstants;
 
 public class WSO2PluginListSelectionPage extends WizardSelectionPage {
 	TableViewer wizardSelectionViewer;
 	private WSO2PluginFormBrowser descriptionBrowser;
-	private WSO2PluginElementList wso2ElemList;
+	private WSO2PluginSampleExtList wso2ElemList;
 	private WSO2PluginProjectWizard wso2PluginProjectWizard;
 	private boolean isPluginProjectSelected;
 
-	public WSO2PluginListSelectionPage(WSO2PluginElementList elemList,
-			String pageName, WSO2PluginProjectWizard wso2PluginProjectWizard) {
+	public WSO2PluginListSelectionPage(WSO2PluginSampleExtList elemList, String pageName,
+	                                   WSO2PluginProjectWizard wso2PluginProjectWizard) {
 		super(pageName);
 		this.wso2PluginProjectWizard = wso2PluginProjectWizard;
 		this.wso2ElemList = elemList;
@@ -62,11 +62,9 @@ public class WSO2PluginListSelectionPage extends WizardSelectionPage {
 		@Override
 		public void run() {
 			selectionChanged(new SelectionChangedEvent(wizardSelectionViewer,
-					wizardSelectionViewer.getSelection()));
-			wso2PluginProjectWizard.setSelectedPlugin(wizardSelectionViewer
-					.getSelection());
+			                                           wizardSelectionViewer.getSelection()));
+			wso2PluginProjectWizard.setSelectedPlugin(wizardSelectionViewer.getSelection());
 			wso2PluginProjectWizard.setWizardSelected(isPluginProjectSelected);
-			// wso2PluginProjectWizard.canFinish();
 		}
 	}
 
@@ -92,22 +90,20 @@ public class WSO2PluginListSelectionPage extends WizardSelectionPage {
 		sashForm.setLayoutData(gd);
 
 		wizardSelectionViewer = new TableViewer(sashForm, SWT.BORDER);
-		wizardSelectionViewer.setContentProvider(PluginContentProvider
-				.getInstance());
-		wizardSelectionViewer.getTable().addSelectionListener(
-				new SelectionListener() {
+		wizardSelectionViewer.setContentProvider(PluginContentProvider.getInstance());
+		wizardSelectionViewer.getTable().addSelectionListener(new SelectionListener() {
 
-					@Override
-					public void widgetSelected(SelectionEvent e) {
-						isPluginProjectSelected = true;
-						pluginProjectSelectedAction.run();
-					}
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				isPluginProjectSelected = true;
+				pluginProjectSelectedAction.run();
+			}
 
-					@Override
-					public void widgetDefaultSelected(SelectionEvent e) {
-						// TODO Auto-generated method stub
-					}
-				});
+			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
+				// TODO Auto-generated method stub
+			}
+		});
 
 		createDescriptionIn(sashForm);
 		initializeViewer();
@@ -118,8 +114,7 @@ public class WSO2PluginListSelectionPage extends WizardSelectionPage {
 	}
 
 	public void createDescriptionIn(Composite composite) {
-		descriptionBrowser = new WSO2PluginFormBrowser(SWT.BORDER
-				| SWT.V_SCROLL);
+		descriptionBrowser = new WSO2PluginFormBrowser(SWT.BORDER | SWT.V_SCROLL);
 		descriptionBrowser.setText("");
 		descriptionBrowser.createControl(composite);
 		Control c = descriptionBrowser.getControl();
@@ -133,18 +128,17 @@ public class WSO2PluginListSelectionPage extends WizardSelectionPage {
 
 	public void selectionChanged(SelectionChangedEvent event) {
 		setErrorMessage(null);
-		IStructuredSelection selection = (IStructuredSelection) event
-				.getSelection();
-		WSO2PluginElement currentWizardSelection = null;
+		IStructuredSelection selection = (IStructuredSelection) event.getSelection();
+		WSO2PluginSampleExt currentWizardSelection = null;
 		Iterator<?> selectionItem = selection.iterator();
 		if (selectionItem.hasNext())
-			currentWizardSelection = (WSO2PluginElement) selectionItem.next();
+			currentWizardSelection = (WSO2PluginSampleExt) selectionItem.next();
 		if (currentWizardSelection == null) {
 			setDescriptionText(""); //$NON-NLS-1$
 			setSelectedNode(null);
 			return;
 		}
-		final WSO2PluginElement finalSelection = currentWizardSelection;
+		final WSO2PluginSampleExt finalSelection = currentWizardSelection;
 		setSelectedNode(createWizardNode(finalSelection));
 		setDescriptionText(finalSelection.getPluginDescription());
 		getContainer().updateButtons();
@@ -157,7 +151,7 @@ public class WSO2PluginListSelectionPage extends WizardSelectionPage {
 		descriptionBrowser.setText(text);
 	}
 
-	protected IWizardNode createWizardNode(WSO2PluginElement element) {
+	protected IWizardNode createWizardNode(WSO2PluginSampleExt element) {
 		return null;
 	}
 

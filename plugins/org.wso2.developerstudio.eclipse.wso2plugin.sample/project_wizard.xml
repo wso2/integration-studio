@@ -13,13 +13,6 @@
  		<data modelProperty="plugin.project.name"
  					type="string" 
  					fieldController="org.wso2.developerstudio.eclipse.wso2plugin.sample.validator.PluginProjectFiledController">Project Name   </data>
- 		<!-- <data modelProperty="pluginProjectClass.package.name" 
- 					type="string" 
- 					fieldController="org.wso2.developerstudio.eclipse.wso2plugin.sample.validator.PluginProjectFiledController" group="testid">Package Name</data>
- 		<data modelProperty="pluginProjectClass.name" 
- 					type="string" 
- 					fieldController="org.wso2.developerstudio.eclipse.wso2plugin.sample.validator.PluginProjectFiledController" group="testid">Class Name</data>	 
- 		 -->
  		 <group id="testid"></group>
  		
  		<projectNatures>

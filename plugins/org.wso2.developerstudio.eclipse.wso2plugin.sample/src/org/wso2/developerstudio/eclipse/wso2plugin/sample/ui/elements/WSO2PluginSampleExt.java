@@ -1,12 +1,12 @@
 /*
  * Copyright (c) 2015, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
- *
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
+ * 
  * http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -16,18 +16,19 @@
 package org.wso2.developerstudio.eclipse.wso2plugin.sample.ui.elements;
 
 /*
- * This is a WSO2 Plugin Element of which, the parameters should be defined when a sample is added via the 
+ * This is a WSO2 Plugin Element of which, the parameters should be defined when
+ * a sample is added via the
  * provided extension point to the developer studio plugin samples.
  */
-public class WSO2PluginElement {
+public class WSO2PluginSampleExt {
 
 	String pluginName;
 	String pluginDescription;
 	String pluginArchive;
 	String bundleID;
 
-	public WSO2PluginElement(String pluginName, String pluginArchive,
-			String description, String pluginBundleID) {
+	public WSO2PluginSampleExt(String pluginName, String pluginArchive, String description,
+	                           String pluginBundleID) {
 		super();
 		this.pluginName = pluginName;
 		this.pluginArchive = pluginArchive;

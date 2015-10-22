@@ -66,7 +66,7 @@ public class WSO2PluginListSelectionPage extends WizardSelectionPage {
 			wso2PluginProjectWizard.setSelectedPlugin(wizardSelectionViewer
 					.getSelection());
 			wso2PluginProjectWizard.setWizardSelected(isPluginProjectSelected);
-			//wso2PluginProjectWizard.canFinish();
+			// wso2PluginProjectWizard.canFinish();
 		}
 	}
 
@@ -94,22 +94,21 @@ public class WSO2PluginListSelectionPage extends WizardSelectionPage {
 		wizardSelectionViewer = new TableViewer(sashForm, SWT.BORDER);
 		wizardSelectionViewer.setContentProvider(PluginContentProvider
 				.getInstance());
-		wizardSelectionViewer.getTable().addSelectionListener(new SelectionListener() {
-			
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				isPluginProjectSelected = true;
-				pluginProjectSelectedAction.run();
-				
-			}
-			
-			@Override
-			public void widgetDefaultSelected(SelectionEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-		});
-		
+		wizardSelectionViewer.getTable().addSelectionListener(
+				new SelectionListener() {
+
+					@Override
+					public void widgetSelected(SelectionEvent e) {
+						isPluginProjectSelected = true;
+						pluginProjectSelectedAction.run();
+					}
+
+					@Override
+					public void widgetDefaultSelected(SelectionEvent e) {
+						// TODO Auto-generated method stub
+					}
+				});
+
 		createDescriptionIn(sashForm);
 		initializeViewer();
 
@@ -152,8 +151,9 @@ public class WSO2PluginListSelectionPage extends WizardSelectionPage {
 	}
 
 	public void setDescriptionText(String text) {
-		if (text == null)
+		if (text == null) {
 			text = WSO2PluginConstants.NO_DESCRIPTION_TO_BE_SET;
+		}
 		descriptionBrowser.setText(text);
 	}
 
@@ -162,10 +162,9 @@ public class WSO2PluginListSelectionPage extends WizardSelectionPage {
 	}
 
 	public boolean isPageComplete() {
-
-		if (isPluginProjectSelected)
+		if (isPluginProjectSelected) {
 			return true;
-
+		}
 		return false;
 	}
 

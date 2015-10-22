@@ -54,6 +54,7 @@
         <common.utils.version>4.0.0-SNAPSHOT</common.utils.version>
         <core.plugins.version>4.0.0-SNAPSHOT</core.plugins.version>
         <core.tools.version>4.0.0-SNAPSHOT</core.tools.version>
+        <plugin.samples.version>4.0.0-SNAPSHOT</plugin.samples.version>
         <kernel.feature.version>4.0.0-SNAPSHOT</kernel.feature.version>
         <kernel.samples.feature.version>4.0.0-SNAPSHOT</kernel.samples.feature.version>
         <logging.tools.version>4.0.0-SNAPSHOT</logging.tools.version>
@@ -68,6 +69,7 @@
         <version.mvn-resource-plugin>2.7</version.mvn-resource-plugin>
         <embedded.tomcat.version>4.0.0-SNAPSHOT</embedded.tomcat.version>
         <webeditor.version>4.0.0-SNAPSHOT</webeditor.version>
+        <plugin.samples.feature.version>4.0.0-SNAPSHOT</plugin.samples.feature.version>
         <wso2.tomcat.version>7.0.59.wso2v3</wso2.tomcat.version>
     </properties>
     <repositories>

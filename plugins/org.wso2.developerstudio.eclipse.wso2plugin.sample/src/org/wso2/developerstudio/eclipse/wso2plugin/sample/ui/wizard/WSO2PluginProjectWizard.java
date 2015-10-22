@@ -311,4 +311,21 @@ public class WSO2PluginProjectWizard extends AbstractWSO2ProjectCreationWizard {
 		}
 	}
 
+	protected URL getWizardManifest() {
+		if (configElement != null) {
+			String wizardManifestPath = configElement.getAttribute("wizardManifest");
+
+			URL docBaseResource =
+			                      FileLocator.find(Platform.getBundle(configElement.getContributor()
+			                                                                       .getName()),
+			                                       new Path(wizardManifestPath), null);
+			try {
+				return FileLocator.toFileURL(docBaseResource);
+			} catch (IOException e) {
+				log.error("an exception occurred in extracting the Wizard manifest from bundle", e);
+				return null;
+			}
+		}
+		return null;
+	}
 }

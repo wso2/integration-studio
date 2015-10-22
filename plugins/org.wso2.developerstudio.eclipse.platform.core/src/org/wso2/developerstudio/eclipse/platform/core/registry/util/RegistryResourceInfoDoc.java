@@ -1,12 +1,12 @@
 /*
- * Copyright (c) 2011, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
- *
+ * Copyright (c) 2010-2015, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -34,29 +34,24 @@ public class RegistryResourceInfoDoc extends AbstractXMLDoc {
 	private List<RegistryResourceInfo> registryResources = new ArrayList<RegistryResourceInfo>();
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
-	public void addRegistryResourceInfoDoc(String path, File inputFile,
-			int type, File base, String relativePath) {
-		if (type == Constants.REGISTRY_COLLECTION
-				&& Constants.getStaticPath().contains(path)) {
+	public void addRegistryResourceInfoDoc(String path, File inputFile, int type, File base, String relativePath) {
+		if (type == Constants.REGISTRY_COLLECTION && Constants.getStaticPath().contains(path)) {
 			File[] listFiles = inputFile.listFiles();
 			for (File file : listFiles) {
-				StringBuffer sb=new StringBuffer();
+				StringBuffer sb = new StringBuffer();
 				sb.append(path);
 				if (!file.isFile()) {
 					sb.append("/").append(file.getName());
 				}
-//				XXX: Be watchful whether this fix has broken the functionality due to string pointers
-				path=sb.toString();
-				addRegistryResourceInfoDoc(
-						sb.toString(),
-						file,
-						file.isFile() ? Constants.REGISTRY_RESOURCE
-								: Constants.REGISTRY_COLLECTION,
-						base, relativePath);
+				// XXX: Be watchful whether this fix has broken the
+				// functionality due to string pointers
+				path = sb.toString();
+				addRegistryResourceInfoDoc(sb.toString(), file, file.isFile() ? Constants.REGISTRY_RESOURCE
+				                                                             : Constants.REGISTRY_COLLECTION, base,
+				                           relativePath);
 			}
 		} else {
-			RegistryResourceInfo info = new RegistryResourceInfo(path,
-					inputFile, type, base, relativePath);
+			RegistryResourceInfo info = new RegistryResourceInfo(path, inputFile, type, base, relativePath);
 			info.setMediaType(MediaManager.getMediaType(inputFile));
 			getRegistryResources().add(info);
 		}

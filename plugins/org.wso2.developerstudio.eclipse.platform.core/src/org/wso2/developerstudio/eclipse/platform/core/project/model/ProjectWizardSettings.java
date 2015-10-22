@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ * Copyright (c) 2010-2015, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -30,7 +30,7 @@ import org.wso2.developerstudio.eclipse.platform.core.model.AbstractListDataProv
 import org.wso2.developerstudio.eclipse.platform.core.model.ICompositeProvider;
 import org.wso2.developerstudio.eclipse.platform.core.utils.RegistryOptionsConstants;
 
-//import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+// import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -50,8 +50,7 @@ public class ProjectWizardSettings extends AbstractXMLDoc {
 
 	private IConfigurationElement configElement;
 
-	public ProjectWizardSettings(InputStream settingsStream, IConfigurationElement configElement)
-	                                                                                             throws Exception {
+	public ProjectWizardSettings(InputStream settingsStream, IConfigurationElement configElement) throws Exception {
 		setConfigElement(configElement);
 		deserialize(settingsStream);
 	}
@@ -109,42 +108,36 @@ public class ProjectWizardSettings extends AbstractXMLDoc {
 		return data;
 	}
 
-	
 	protected void deserialize(OMElement documentElement) throws Exception {
 		List<OMElement> projectOptionsElement = getChildElements(documentElement, "projectOptions");
 		if (projectOptionsElement != null && projectOptionsElement.size() > 0) {
 			setProjectOptionsTitle(getAttribute(projectOptionsElement.get(0), "title"));
 			setProjectOptionsDescription(getAttribute(projectOptionsElement.get(0), "description"));
 			setProjectOptionsError(getAttribute(projectOptionsElement.get(0), "error"));
-			List<OMElement> projectOptionElements =
-			        getChildElements(projectOptionsElement.get(0), "option");
+			List<OMElement> projectOptionElements = getChildElements(projectOptionsElement.get(0), "option");
 			for (OMElement projectOptionElement : projectOptionElements) {
 				String id = getAttribute(projectOptionElement, "id");
 				String label = projectOptionElement.getText();
 				String defaultAttr = getAttribute(projectOptionElement, "default");
-				boolean isDefault =
-				        (defaultAttr == null ? false : defaultAttr.equalsIgnoreCase("true"));
+				boolean isDefault = (defaultAttr == null ? false : defaultAttr.equalsIgnoreCase("true"));
 				getProjectOptions().add(new ProjectOption(id, label, isDefault));
 			}
 		}
-		List<OMElement> projectOptionSettingsElement =
-		        getChildElements(documentElement, "projectOptionSettings");
+		List<OMElement> projectOptionSettingsElement = getChildElements(documentElement, "projectOptionSettings");
 		if (projectOptionSettingsElement != null && projectOptionSettingsElement.size() > 0) {
 			List<OMElement> projectOptionDataInfoElements =
-			        getChildElements(projectOptionSettingsElement.get(0), "settings");
+			                                                getChildElements(projectOptionSettingsElement.get(0),
+			                                                                 "settings");
 			for (OMElement projectOptionDataInfoElement : projectOptionDataInfoElements) {
 				String idAttribute = getAttribute(projectOptionDataInfoElement, "optionId");
 				String titleAttribute = getAttribute(projectOptionDataInfoElement, "title");
-				String descriptionAttribute =
-				        getAttribute(projectOptionDataInfoElement, "description");
+				String descriptionAttribute = getAttribute(projectOptionDataInfoElement, "description");
 				ProjectOptionInfo optionInfo = new ProjectOptionInfo();
 				optionInfo.setOptionId(idAttribute);
 				optionInfo.setTitle(titleAttribute);
 				optionInfo.setDescription(descriptionAttribute);
-				List<OMElement> groupElements =
-				        getChildElements(projectOptionDataInfoElement, "group");
-				Map<String, ProjectOptionDataGroup> tmpList =
-				        new HashMap<String, ProjectOptionDataGroup>();
+				List<OMElement> groupElements = getChildElements(projectOptionDataInfoElement, "group");
+				Map<String, ProjectOptionDataGroup> tmpList = new HashMap<String, ProjectOptionDataGroup>();
 				for (OMElement groupElement : groupElements) {
 					ProjectOptionDataGroup projectOptionDataGroup = new ProjectOptionDataGroup();
 					String groupIDAttr = getAttribute(groupElement, "id");
@@ -152,12 +145,10 @@ public class ProjectWizardSettings extends AbstractXMLDoc {
 					String parentGroupId = getAttribute(groupElement, "group");
 					Map<String, String> controlData = getControlData(groupElement);
 					if (controlData.containsKey("type")) {
-						projectOptionDataGroup.setCollapsible(controlData.get("type")
-						        .equals("collapsible"));
+						projectOptionDataGroup.setCollapsible(controlData.get("type").equals("collapsible"));
 					}
 					if (controlData.containsKey("state")) {
-						projectOptionDataGroup.setExpanded(controlData.get("state")
-						        .equals("expanded"));
+						projectOptionDataGroup.setExpanded(controlData.get("state").equals("expanded"));
 					}
 					updateIndentInfo(projectOptionDataGroup, controlData);
 					updateMarginInfo(projectOptionDataGroup, controlData);
@@ -180,8 +171,7 @@ public class ProjectWizardSettings extends AbstractXMLDoc {
 					}
 				}
 
-				List<OMElement> dataElements =
-				        getChildElements(projectOptionDataInfoElement, "data");
+				List<OMElement> dataElements = getChildElements(projectOptionDataInfoElement, "data");
 				for (OMElement dataElement : dataElements) {
 					ProjectOptionData projectOptionData = new ProjectOptionData();
 					String modelPropertyAttr = getAttribute(dataElement, "modelProperty");
@@ -190,8 +180,7 @@ public class ProjectWizardSettings extends AbstractXMLDoc {
 					String fieldControllerAttr = getAttribute(dataElement, "fieldController");
 					AbstractFieldController fieldControllerObj = null;
 					if (fieldControllerAttr != null && !fieldControllerAttr.equals("")) {
-						fieldControllerObj =
-						        (AbstractFieldController) createExecutable(fieldControllerAttr);
+						fieldControllerObj = (AbstractFieldController) createExecutable(fieldControllerAttr);
 					}
 					String groupAttr = getAttribute(dataElement, "group");
 					String captionAttr = dataElement.getText();
@@ -206,7 +195,7 @@ public class ProjectWizardSettings extends AbstractXMLDoc {
 							break;
 						case REGISTRY:
 						case REGISTRY_TEXT:
-							updateSelectedRegistryOptionType(dataElement,projectOptionData);
+							updateSelectedRegistryOptionType(dataElement, projectOptionData);
 							break;
 						case STRING:
 							setupTextControlData(dataElement, projectOptionData);
@@ -239,10 +228,9 @@ public class ProjectWizardSettings extends AbstractXMLDoc {
 					optionInfo.getProjectOptionsData().add(projectOptionData);
 				}
 				List<OMElement> projectNaturesElement =
-				        getChildElements(projectOptionDataInfoElement, "projectNatures");
+				                                        getChildElements(projectOptionDataInfoElement, "projectNatures");
 				if (projectNaturesElement != null && projectNaturesElement.size() > 0) {
-					List<OMElement> projectNatureElements =
-					        getChildElements(projectNaturesElement.get(0), "nature");
+					List<OMElement> projectNatureElements = getChildElements(projectNaturesElement.get(0), "nature");
 					for (OMElement projectNatureElement : projectNatureElements) {
 						optionInfo.getProjectNatures().add(projectNatureElement.getText());
 					}
@@ -252,41 +240,38 @@ public class ProjectWizardSettings extends AbstractXMLDoc {
 		}
 
 	}
-	
-	private void updateWithCompositeInfo(OMElement dataElement,
-			ProjectOptionData projectOptionData) throws CoreException {
+
+	private void updateWithCompositeInfo(OMElement dataElement, ProjectOptionData projectOptionData)
+	                                                                                                throws CoreException {
 		Map<String, String> controlData = getControlData(dataElement);
 		ICompositeProvider iCompositeProvider = null;
 		if (controlData.containsKey("class")) {
-			iCompositeProvider =(ICompositeProvider) createExecutable(controlData.get("class"));
+			iCompositeProvider = (ICompositeProvider) createExecutable(controlData.get("class"));
 		}
 		setupCommonControlData(dataElement, projectOptionData);
 		projectOptionData.setCompositeProvider(iCompositeProvider);
 
-		
 	}
 
-	private void updateSelectedRegistryOptionType(OMElement dataElement, ProjectOptionData projectOptionData) throws CoreException {
+	private void updateSelectedRegistryOptionType(OMElement dataElement, ProjectOptionData projectOptionData)
+	                                                                                                         throws CoreException {
 		Map<String, String> controlData = getControlData(dataElement);
 		String registyPathBindingProperty = null;
-		/*boolean editable = false;*/
 		if (controlData.containsKey("path.binding.property")) {
-			registyPathBindingProperty =controlData.get("path.binding.property");
+			registyPathBindingProperty = controlData.get("path.binding.property");
 		}
-		/*
-		if (controlData.containsKey("modify")) {
-			editable = controlData.get("modify").toLowerCase().equals("editable");
-		}*/
-		if(controlData.containsKey("registry.selection.type")){
+
+		if (controlData.containsKey("registry.selection.type")) {
 			String value = controlData.get("registry.selection.type");
-			if(value != null){
-				if(value.equals("collection")){
+			if (value != null) {
+				if (value.equals("collection")) {
 					projectOptionData.setRegistyResourceSelectionType(RegistryOptionsConstants.SELECTED_REGISTRY_PATH);
-				}else if(value.equals("resource")){
+				} else if (value.equals("resource")) {
 					projectOptionData.setRegistyResourceSelectionType(RegistryOptionsConstants.SELECTED_REGISTRY_RESOURCE);
-				}else if(value.equals("resource+collection")){
-					projectOptionData.setRegistyResourceSelectionType(RegistryOptionsConstants.SELECTED_REGISTRY_RESOURCE | RegistryOptionsConstants.SELECTED_REGISTRY_PATH);
-				}else if(value.equals("registy")){
+				} else if (value.equals("resource+collection")) {
+					projectOptionData.setRegistyResourceSelectionType(RegistryOptionsConstants.SELECTED_REGISTRY_RESOURCE |
+					                                                  RegistryOptionsConstants.SELECTED_REGISTRY_PATH);
+				} else if (value.equals("registy")) {
 					projectOptionData.setRegistyResourceSelectionType(RegistryOptionsConstants.SELECTED_REGISTRY);
 				}
 			}
@@ -295,27 +280,26 @@ public class ProjectWizardSettings extends AbstractXMLDoc {
 		}
 		projectOptionData.setRegistyPathBindingProperty(registyPathBindingProperty);
 	}
-	
 
 	private void setupCommonControlData(OMElement dataElement, ProjectOptionData projectOptionData) {
 		Map<String, String> controlData = getControlData(dataElement);
 		updateIndentInfo(projectOptionData, controlData);
 	}
-	
+
 	private void setupTextControlData(OMElement dataElement, ProjectOptionData projectOptionData) {
 		Map<String, String> controlData = getControlData(dataElement);
 		boolean multiline = false;
 		boolean listner = false;
-		String textToolTip=null;
+		String textToolTip = null;
 		if (controlData.containsKey("multiline")) {
-			multiline=controlData.get("multiline").toLowerCase().equals("true");
-			
+			multiline = controlData.get("multiline").toLowerCase().equals("true");
+
 		}
 		if (controlData.containsKey("listner")) {
-			listner=controlData.get("listner").toLowerCase().equals("true");			
+			listner = controlData.get("listner").toLowerCase().equals("true");
 		}
-		if(controlData.containsKey("toolTip")){
-			textToolTip=controlData.get("toolTip");
+		if (controlData.containsKey("toolTip")) {
+			textToolTip = controlData.get("toolTip");
 		}
 		projectOptionData.setAddListnner(listner);
 		projectOptionData.setTextMultiline(multiline);
@@ -325,8 +309,7 @@ public class ProjectWizardSettings extends AbstractXMLDoc {
 		setupCommonControlData(dataElement, projectOptionData);
 	}
 
-	private void updateMarginInfo(ProjectOptionDataGroup projectOptionDataGroup,
-	        Map<String, String> controlData) {
+	private void updateMarginInfo(ProjectOptionDataGroup projectOptionDataGroup, Map<String, String> controlData) {
 		if (controlData.containsKey("marginH")) {
 			projectOptionDataGroup.setMarginHeight(Integer.parseInt(controlData.get("marginH")));
 		}
@@ -336,20 +319,23 @@ public class ProjectWizardSettings extends AbstractXMLDoc {
 	}
 
 	private void updateWithTypeLinkInfo(OMElement dataElement, ProjectOptionData projectOptionData)
-	        throws CoreException {
+	                                                                                               throws CoreException {
 		Map<String, String> controlData = getControlData(dataElement);
 		SelectionListener selectionListenerClass = null;
 		int horizontalAlignment = SWT.LEFT;
 		if (controlData.containsKey("align")) {
 			String alignment = controlData.get("align").toLowerCase();
 			horizontalAlignment =
-			        alignment.equals("left") ? SWT.LEFT
-			                                : alignment.equals("right") ? SWT.RIGHT : alignment
-			                                        .equals("center") ? SWT.CENTER : SWT.FILL;
+			                      alignment.equals("left")
+			                                              ? SWT.LEFT
+			                                              : alignment.equals("right")
+			                                                                         ? SWT.RIGHT
+			                                                                         : alignment.equals("center")
+			                                                                                                     ? SWT.CENTER
+			                                                                                                     : SWT.FILL;
 		}
 		if (controlData.containsKey("onSelect")) {
-			selectionListenerClass =
-			        (SelectionListener) createExecutable(controlData.get("onSelect"));
+			selectionListenerClass = (SelectionListener) createExecutable(controlData.get("onSelect"));
 		}
 		setupCommonControlData(dataElement, projectOptionData);
 		projectOptionData.setLinkClickedListener(selectionListenerClass);
@@ -362,16 +348,19 @@ public class ProjectWizardSettings extends AbstractXMLDoc {
 		if (controlData.containsKey("align")) {
 			String alignment = controlData.get("align").toLowerCase();
 			horizontalAlignment =
-			        alignment.equals("left") ? SWT.LEFT
-			                                : alignment.equals("right") ? SWT.RIGHT : alignment
-			                                        .equals("center") ? SWT.CENTER : SWT.FILL;
+			                      alignment.equals("left")
+			                                              ? SWT.LEFT
+			                                              : alignment.equals("right")
+			                                                                         ? SWT.RIGHT
+			                                                                         : alignment.equals("center")
+			                                                                                                     ? SWT.CENTER
+			                                                                                                     : SWT.FILL;
 		}
 		setupCommonControlData(dataElement, projectOptionData);
 		projectOptionData.setLabelAlignment(horizontalAlignment);
 	}
 
-	private void updateIndentInfo(ProjectOptionData projectOptionData,
-	        Map<String, String> controlData) {
+	private void updateIndentInfo(ProjectOptionData projectOptionData, Map<String, String> controlData) {
 		if (controlData.containsKey("v-indent")) {
 			projectOptionData.setVerticalIndent(Integer.parseInt(controlData.get("v-indent")));
 		}
@@ -380,19 +369,17 @@ public class ProjectWizardSettings extends AbstractXMLDoc {
 		}
 	}
 
-	private void updateIndentInfo(ProjectOptionDataGroup projectOptionDataGroup,
-	        Map<String, String> controlData) {
+	private void updateIndentInfo(ProjectOptionDataGroup projectOptionDataGroup, Map<String, String> controlData) {
 		if (controlData.containsKey("v-indent")) {
 			projectOptionDataGroup.setVerticalIndent(Integer.parseInt(controlData.get("v-indent")));
 		}
 		if (controlData.containsKey("h-indent")) {
-			projectOptionDataGroup.setHorizontalIndent(Integer
-			        .parseInt(controlData.get("h-indent")));
+			projectOptionDataGroup.setHorizontalIndent(Integer.parseInt(controlData.get("h-indent")));
 		}
 	}
 
-	private void updateWithTypeWorkspaceInfo(OMElement dataElement,
-	        ProjectOptionData projectOptionData) throws CoreException {
+	private void updateWithTypeWorkspaceInfo(OMElement dataElement, ProjectOptionData projectOptionData)
+	                                                                                                    throws CoreException {
 		Map<String, String> controlData = getControlData(dataElement);
 		if (controlData.containsKey("filterClass")) {
 			ViewerFilter workspaceFilter = null;
@@ -403,15 +390,14 @@ public class ProjectWizardSettings extends AbstractXMLDoc {
 	}
 
 	private void updateWithTypeListInfo(OMElement dataElement, ProjectOptionData projectOptionData)
-	        throws CoreException {
+	                                                                                               throws CoreException {
 		Map<String, String> controlData = getControlData(dataElement);
 		AbstractListDataProvider dataProviderClass = null;
 		boolean multiSelect = false;
 		boolean editable = false;
 		boolean selectAllbtn = false;
 		if (controlData.containsKey("class")) {
-			dataProviderClass =
-			        (AbstractListDataProvider) createExecutable(controlData.get("class"));
+			dataProviderClass = (AbstractListDataProvider) createExecutable(controlData.get("class"));
 		}
 		if (controlData.containsKey("select")) {
 			multiSelect = !controlData.get("select").toLowerCase().equals("single");
@@ -419,10 +405,10 @@ public class ProjectWizardSettings extends AbstractXMLDoc {
 		if (controlData.containsKey("modify")) {
 			editable = controlData.get("modify").toLowerCase().equals("editable");
 		}
-		if(controlData.containsKey("selectAllbtn")){
-			selectAllbtn =  controlData.get("selectAllbtn").toLowerCase().equals("true");
+		if (controlData.containsKey("selectAllbtn")) {
+			selectAllbtn = controlData.get("selectAllbtn").toLowerCase().equals("true");
 		}
-			
+
 		setupCommonControlData(dataElement, projectOptionData);
 		projectOptionData.setListDataProvider(dataProviderClass);
 		projectOptionData.setListEditable(editable);
@@ -432,18 +418,15 @@ public class ProjectWizardSettings extends AbstractXMLDoc {
 
 	@SuppressWarnings("restriction")
 	private Object createExecutable(String className) throws CoreException {
-		return ((org.eclipse.core.internal.registry.ExtensionRegistry) Platform
-		        .getExtensionRegistry())
-		        .createExecutableExtension((RegistryContributor) getConfigElement()
-		                .getContributor(), className, null);
+		return ((org.eclipse.core.internal.registry.ExtensionRegistry) Platform.getExtensionRegistry()).createExecutableExtension((RegistryContributor) getConfigElement().getContributor(),
+		                                                                                                                          className,
+		                                                                                                                          null);
 	}
 
-	
 	protected String serialize() {
-		return null;//throw new NotImplementedException();
+		return null;// throw new NotImplementedException();
 	}
 
-	
 	protected String getDefaultName() {
 		return null;
 	}

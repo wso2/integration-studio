@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ * Copyright (c) 2010-2015, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,7 +25,6 @@ import org.wso2.developerstudio.eclipse.platform.core.model.ICompositeProvider;
 
 public class ProjectOptionData {
 	private String modelProperty;
-	// private String modelValue;
 	private String caption;
 	private String filter;
 	private String group;
@@ -51,17 +50,17 @@ public class ProjectOptionData {
 
 	// For labels
 	private int labelAlignment = SWT.LEFT;
-	
-	//For registry
+
+	// For registry
 	private int registyResourceSelectionType;
 	private String registyPathBindingProperty;
-	
-	//for textboxes 
+
+	// for textboxes
 	private boolean textMultiline;
-    private boolean addListnner;
-    private String toolTip;
-	
-	//for composite
+	private boolean addListnner;
+	private String toolTip;
+
+	// for composite
 	private ICompositeProvider iCompositeProvider;
 
 	public String getModelProperty() {
@@ -71,15 +70,6 @@ public class ProjectOptionData {
 	public void setModelProperty(String modelProperty) {
 		this.modelProperty = modelProperty;
 	}
-
-	//
-	// public String getModelValue() {
-	// return modelValue;
-	// }
-	//
-	// public void setModelValue(String modelValue) {
-	// this.modelValue = modelValue;
-	// }
 
 	public String getCaption() {
 		return caption;
@@ -160,7 +150,7 @@ public class ProjectOptionData {
 	public boolean isTextMultiline() {
 		return textMultiline;
 	}
-	
+
 	public void setListDataProvider(AbstractListDataProvider listDataProvider) {
 		this.listDataProvider = listDataProvider;
 	}
@@ -228,9 +218,9 @@ public class ProjectOptionData {
 	/**
 	 * registry options
 	 * public static final int SELECTED_NONE = 1;
-		public static final int SELECTED_REGISTRY = 2;
-		public static final int SELECTED_REGISTRY_PATH = 4;
-		public static final int SELECTED_REGISTRY_RESOURCE = 8;
+	 * public static final int SELECTED_REGISTRY = 2;
+	 * public static final int SELECTED_REGISTRY_PATH = 4;
+	 * public static final int SELECTED_REGISTRY_RESOURCE = 8;
 	 */
 	public void setRegistyResourceSelectionType(int registyResourceSelectionType) {
 		this.registyResourceSelectionType = registyResourceSelectionType;
@@ -249,7 +239,8 @@ public class ProjectOptionData {
 	}
 
 	/**
-	 * @param toolTip the toolTip to set
+	 * @param toolTip
+	 *            the toolTip to set
 	 */
 	public void setToolTip(String toolTip) {
 		this.toolTip = toolTip;

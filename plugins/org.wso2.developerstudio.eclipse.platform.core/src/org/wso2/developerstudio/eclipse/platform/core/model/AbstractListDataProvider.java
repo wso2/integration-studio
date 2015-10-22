@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ * Copyright (c) 2010-2015, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -51,15 +51,15 @@ public abstract class AbstractListDataProvider {
 		public Object getData() {
 			return data;
 		}
-		
-		public boolean equals(Object data){
-			if (data==getData()){
+
+		public boolean equals(Object data) {
+			if (data == getData()) {
 				return true;
-			}else if (data==null){
+			} else if (data == null) {
 				return false;
-			}else if (getData()==null){
+			} else if (getData() == null) {
 				return false;
-			}else{
+			} else {
 				return data.toString().equals(getData().toString());
 			}
 		}

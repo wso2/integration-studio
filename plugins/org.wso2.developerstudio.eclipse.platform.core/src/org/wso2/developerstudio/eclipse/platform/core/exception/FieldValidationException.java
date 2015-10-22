@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ * Copyright (c) 2010-2015, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,17 +20,14 @@ public class FieldValidationException extends Exception {
 	private String modelProperty;
 	private Object modelPropertyValue;
 
-	/**
-     * 
-     */
 	private static final long serialVersionUID = 5524585935216591796L;
 
 	public FieldValidationException(String message) {
 		super(message);
 	}
-	
+
 	public FieldValidationException(String message, Exception e) {
-		super(message,e);
+		super(message, e);
 	}
 
 	public void setModelProperty(String modelProperty) {

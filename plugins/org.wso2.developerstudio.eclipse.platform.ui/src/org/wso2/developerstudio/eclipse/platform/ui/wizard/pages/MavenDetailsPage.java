@@ -200,13 +200,12 @@ public class MavenDetailsPage extends WizardPage implements Observer {
 				if(!hasLoadedProjectList || hasParentProject){
 					try {
 							loadParentProjectInfo();
-					} catch (Exception ignored) {
-						//ignored
+					} catch (Exception e1) {
+						log.error(e1.getMessage(), e1);
 					}
 				}
 				
-				if (!btnhasMavenParent.getSelection()){
-					
+				if (!btnhasMavenParent.getSelection()){		
 					//Check whether the global setting is set. If set, user them. otherwise simply null
 					String text = preferencesService.
 							  getString("org.wso2.developerstudio.eclipse.platform.ui", GLOBAL_PARENT_MAVEN_GROUP_ID, null, null);

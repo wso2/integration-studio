@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ * Copyright (c) 2010-2015, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -51,8 +51,8 @@ public class MavenConfigurationFileChange extends TextFileChange {
 
 	MultiTextEdit multiEdit;
 
-	public MavenConfigurationFileChange(String name, IFile file, String previousName,
-	                                    IProject refactoringProject, String newName) {
+	public MavenConfigurationFileChange(String name, IFile file, String previousName, IProject refactoringProject,
+	                                    String newName) {
 		super(name, file);
 		pomFile = file;
 
@@ -135,8 +135,7 @@ public class MavenConfigurationFileChange extends TextFileChange {
 					if (line.contains(case1String) ||
 					    (previousLine.contains(case1String) && !previousLine.contains(case2String))) {
 						int case1LineIndex = line.indexOf(artifactId);
-						addEdit(new ReplaceEdit(fullIndex + case1LineIndex, artifactId.length(),
-						                        newName));
+						addEdit(new ReplaceEdit(fullIndex + case1LineIndex, artifactId.length(), newName));
 						break;
 
 					}
@@ -187,8 +186,7 @@ public class MavenConfigurationFileChange extends TextFileChange {
 				    (previousLine.contains(case1String) && !previousLine.contains(case2String))) {
 
 					int case1LineIndex = line.indexOf(artifactId);
-					addEdit(new ReplaceEdit(fullIndex + case1LineIndex, artifactId.length(),
-					                        newName));
+					addEdit(new ReplaceEdit(fullIndex + case1LineIndex, artifactId.length(), newName));
 					break;
 				}
 			}

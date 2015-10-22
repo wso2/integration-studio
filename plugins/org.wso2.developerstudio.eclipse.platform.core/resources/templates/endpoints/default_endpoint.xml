@@ -1,5 +1,5 @@
-<endpoint xmlns="http://ws.apache.org/ns/synapse" name="{ep.name}" >
-	<default >
+<endpoint xmlns="http://ws.apache.org/ns/synapse" name="{ep.name}">
+	<default>
 		<suspendOnFailure>
 			<progressionFactor>1.0</progressionFactor>
 		</suspendOnFailure>

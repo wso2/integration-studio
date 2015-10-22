@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ * Copyright (c) 2010-2015, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,14 +19,11 @@ package org.wso2.developerstudio.eclipse.platform.core.internal.impl.mediatypes;
 import org.wso2.developerstudio.eclipse.platform.core.interfaces.IMediaTypeResolver;
 import org.wso2.developerstudio.eclipse.platform.core.mediatype.AbstractFileNameExtensionMediaTypeResolver;
 
-public class DRLMediaTypeResolver extends
-AbstractFileNameExtensionMediaTypeResolver implements
-IMediaTypeResolver {
+public class DRLMediaTypeResolver extends AbstractFileNameExtensionMediaTypeResolver implements IMediaTypeResolver {
 
-	
 	public boolean isMediaType(String fileName) {
 		return hasExtension(fileName, "drl");
-		
+
 	}
 
 }

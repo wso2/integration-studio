@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ * Copyright (c) 2010-2015, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -50,8 +50,7 @@ public class RegistryResourceInfo extends AbstractXMLDoc {
 
 	}
 
-	public RegistryResourceInfo(String path, File inputFile, int type,
-			File base, String relativePt) {
+	public RegistryResourceInfo(String path, File inputFile, int type, File base, String relativePt) {
 		setPath(path);
 		setType(type);
 		setBase(base);
@@ -79,34 +78,29 @@ public class RegistryResourceInfo extends AbstractXMLDoc {
 
 		if (documentElement.getLocalName().equals(RESOURCE_TAG_NAME)) {
 			setType(Constants.REGISTRY_RESOURCE);
-			List<OMElement> childElements = getChildElements(documentElement,
-					"file");
+			List<OMElement> childElements = getChildElements(documentElement, "file");
 			if (childElements.size() > 0) {
 				setRelativePath(childElements.get(0).getText());
 			}
-			
-			List<OMElement> childElement = getChildElements(documentElement,
-			"mediaType");
+
+			List<OMElement> childElement = getChildElements(documentElement, "mediaType");
 			if (childElement.size() > 0) {
 				setMediaType(childElements.get(0).getText());
 			}
 		} else if (documentElement.getLocalName().equals(COLLECTION_TAG_NAME)) {
 			setType(Constants.REGISTRY_COLLECTION);
-			List<OMElement> childElements = getChildElements(documentElement,
-					"directory");
+			List<OMElement> childElements = getChildElements(documentElement, "directory");
 			if (childElements.size() > 0) {
 				setRelativePath(childElements.get(0).getText());
 			}
 		} else if (documentElement.getLocalName().equals(DUMP_TAG_NAME)) {
 			setType(Constants.REGISTRY_DUMP);
-			List<OMElement> childElements = getChildElements(documentElement,
-					"file");
+			List<OMElement> childElements = getChildElements(documentElement, "file");
 			if (childElements.size() > 0) {
 				setRelativePath(childElements.get(0).getText());
 			}
-		} 
-		List<OMElement> childElements = getChildElements(documentElement,
-				"path");
+		}
+		List<OMElement> childElements = getChildElements(documentElement, "path");
 		if (childElements.size() > 0) {
 			setPath(childElements.get(0).getText());
 		}
@@ -131,8 +125,7 @@ public class RegistryResourceInfo extends AbstractXMLDoc {
 		// String content = "";
 		if (getType() == Constants.REGISTRY_RESOURCE) {
 			documentElement = getElement("item", "");
-			OMElement fileElement = getElement("file",
-					getResourceBaseRelativePath());
+			OMElement fileElement = getElement("file", getResourceBaseRelativePath());
 			OMElement mediaTypeElement = getElement("mediatype", getMediaType());
 			documentElement.addChild(fileElement);
 			documentElement.addChild(mediaTypeElement);
@@ -141,8 +134,7 @@ public class RegistryResourceInfo extends AbstractXMLDoc {
 			// + "</file>\n\t" + "</item>";
 		} else if (getType() == Constants.REGISTRY_COLLECTION) {
 			documentElement = getElement("collection", "");
-			OMElement fileElement = getElement("directory",
-					getResourceBaseRelativePath());
+			OMElement fileElement = getElement("directory", getResourceBaseRelativePath());
 			documentElement.addChild(fileElement);
 			// content = "\t<collection>\n\t\t" + "<path>"
 			// + getPath() + "</path>\n\t\t"
@@ -152,8 +144,7 @@ public class RegistryResourceInfo extends AbstractXMLDoc {
 
 		} else {
 			documentElement = getElement("dump", "");
-			OMElement fileElement = getElement("file",
-					getResourceBaseRelativePath());
+			OMElement fileElement = getElement("file", getResourceBaseRelativePath());
 			documentElement.addChild(fileElement);
 			// content = "\t<item>\n\t\t" + "<path>" + getPath()
 			// + "</path>\n\t\t" + "<file>" + getResourceBaseRelativePath()
@@ -165,7 +156,7 @@ public class RegistryResourceInfo extends AbstractXMLDoc {
 	}
 
 	public String getResourceBaseRelativePath() {
-		if(sourceFile.equals(getBase())){
+		if (sourceFile.equals(getBase())) {
 			return getBase().getName();
 		}
 		return sourceFile.toString().substring(getBase().getPath().length() + 1);
@@ -175,9 +166,8 @@ public class RegistryResourceInfo extends AbstractXMLDoc {
 		if (getType() == Constants.REGISTRY_COLLECTION) {
 			return getPath().trim();
 		} else {
-			return getPath().trim().endsWith("/") ? getPath().trim()
-					+ getRelativePath() : getPath().trim() + "/"
-					+ getRelativePath();
+			return getPath().trim().endsWith("/") ? getPath().trim() + getRelativePath() : getPath().trim() + "/" +
+			                                                                               getRelativePath();
 		}
 	}
 

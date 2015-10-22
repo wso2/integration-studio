@@ -84,7 +84,7 @@ public abstract class AbstractWSO2ProjectCreationWizard extends Wizard implement
 
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 	private ProjectDataModel model;
-	private IConfigurationElement configElement;
+	protected IConfigurationElement configElement;
 	private ISelection currentSelection;
 	private boolean customPageRequired;
 	private WizardPage customPage;

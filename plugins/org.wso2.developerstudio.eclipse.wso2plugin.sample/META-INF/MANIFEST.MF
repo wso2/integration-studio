@@ -1,0 +1,33 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Developer Studio WSO2 Plugin Sample
+Bundle-SymbolicName: org.wso2.developerstudio.eclipse.wso2plugin.sample;singleton:=true
+Bundle-Version: 4.0.0.qualifier
+Bundle-Activator: org.wso2.developerstudio.eclipse.wso2plugin.sample.Activator
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.wso2.developerstudio.eclipse.platform.ui,
+ org.eclipse.core.resources,
+ org.wso2.developerstudio.eclipse.logging,
+ org.eclipse.ui.ide,
+ org.eclipse.ui.forms
+Export-Package: org.wso2.developerstudio.eclipse.wso2plugin.sample,
+ org.wso2.developerstudio.eclipse.wso2plugin.sample.ui.wizard
+Import-Package: 
+ org.apache.axiom.om;version="1.2.11.wso2v4",
+ org.eclipse.pde.internal.ui,
+ org.eclipse.pde.internal.ui.elements,
+ org.eclipse.pde.internal.ui.util,
+ org.eclipse.pde.internal.ui.wizards,
+ org.eclipse.pde.internal.ui.wizards.plugin,
+ org.eclipse.pde.ui,
+ org.eclipse.ui.internal.wizards.datatransfer,
+ org.wso2.developerstudio.eclipse.platform.core.exception,
+ org.wso2.developerstudio.eclipse.platform.core.model,
+ org.wso2.developerstudio.eclipse.platform.core.project.model,
+ org.wso2.developerstudio.eclipse.utils.archive,
+ org.wso2.developerstudio.eclipse.utils.data,
+ org.wso2.developerstudio.eclipse.utils.file,
+ org.wso2.developerstudio.eclipse.wso2plugin.sample.ui.wizard
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-ActivationPolicy: lazy

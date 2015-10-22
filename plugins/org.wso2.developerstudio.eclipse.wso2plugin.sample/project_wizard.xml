@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wizard>
+ <projectOptions title="WSO2 Plugin Project Creation Wizard "
+ 				 description="Select how you would like to create your new plugin project"
+ 				 error="Please select a method to create the plugin project">
+ 	<option id="new.plugin.project" default="true">Create New Plugin Project</option>
+ </projectOptions>
+ <projectOptionSettings>
+ 	<settings optionId="new.plugin.project"
+ 			  		title="Plugin Project Artifact"
+ 			  		description="Create a new Plugin Project"
+ 			  		error="Please give a name to create the plugin project">
+ 		<data modelProperty="plugin.project.name"
+ 					type="string" 
+ 					fieldController="org.wso2.developerstudio.eclipse.wso2plugin.sample.validator.PluginProjectFiledController">Project Name   </data>
+ 		<!-- <data modelProperty="pluginProjectClass.package.name" 
+ 					type="string" 
+ 					fieldController="org.wso2.developerstudio.eclipse.wso2plugin.sample.validator.PluginProjectFiledController" group="testid">Package Name</data>
+ 		<data modelProperty="pluginProjectClass.name" 
+ 					type="string" 
+ 					fieldController="org.wso2.developerstudio.eclipse.wso2plugin.sample.validator.PluginProjectFiledController" group="testid">Class Name</data>	 
+ 		 -->
+ 		 <group id="testid"></group>
+ 		
+ 		<projectNatures>
+			<nature>org.eclipse.jdt.core.javanature</nature>
+		</projectNatures>
+		</settings>
+ </projectOptionSettings>
+</wizard>

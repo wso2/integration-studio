@@ -1,0 +1,209 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- /*
+ * Copyright (c) 2015, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */ -->
+<schema targetNamespace="org.wso2.developerstudio.eclipse.wso2plugin.sample" xmlns="http://www.w3.org/2001/XMLSchema">
+<annotation>
+      <appInfo>
+         <meta.schema plugin="org.wso2.developerstudio.eclipse.wso2plugin.sample" id="templates" name="Extension Templates"/>
+      </appInfo>
+      <documentation>
+         This extension point registers plug-in project content templates that are used to generate code for the new extensions. Templates are used in two contexts:
+&lt;p&gt;
+&lt;ul&gt;
+&lt;li&gt; One or more templates are combined in a wizard that is contributed as plug-in content wizard using &lt;code&gt;org.eclipse.pde.ui.pluginContent&lt;/code&gt; extension point. These templates create interesting content for newly created plug-in projects. In addition, all the templates contributed using this extension point can be seen in a special version of the plug-in content wizard that lists the templates and allows users to freely combine the templates by checking them in the list.&lt;/li&gt;
+&lt;li&gt; A New extension can be added to an existing plug-in using a template.
+&lt;/li&gt;
+&lt;/ul&gt;
+      </documentation>
+   </annotation>
+   <element name="extension">
+      <annotation>
+         <appInfo>
+            <meta.element />
+         </appInfo>
+      </annotation>
+      <complexType>
+         <sequence>
+            <element ref="template" minOccurs="1" maxOccurs="unbounded"/>
+         </sequence>
+         <attribute name="point" type="string" use="required">
+            <annotation>
+               <documentation>
+                  a fully qualified identifier of the target extension point
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="id" type="string">
+            <annotation>
+               <documentation>
+                  an optional identifier of the extension instance
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="name" type="string">
+            <annotation>
+               <documentation>
+                  an optional name of the extension instance
+               </documentation>
+               <appInfo>
+                  <meta.attribute translatable="true"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+          <attribute name="icon" type="string">
+            <annotation>
+               <documentation>
+                  a relative path of an icon that will be used to visually 
+represent the template.
+               </documentation>
+               <appInfo>
+                  <meta.attribute kind="resource"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+          <attribute name="description" type="string">
+            <annotation>
+               <documentation>
+                  a simple description about the plugin.
+               </documentation>
+               <appInfo>
+                  <meta.attribute translatable="true"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+   <element name="template">
+      <annotation>
+         <appInfo>
+            <meta.element labelAttribute="name" icon="icon"/>
+         </appInfo>
+      </annotation>
+      <complexType>
+         <attribute name="id" type="string" use="required">
+            <annotation>
+               <documentation>
+                  a unique name that will be used to identify this template.
+               </documentation>
+               <appInfo>
+                  <meta.attribute kind="identifier"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+         <attribute name="name" type="string" use="required">
+            <annotation>
+               <documentation>
+                  a translatable name that will be used in UI representation
+of this template.
+               </documentation>
+               <appInfo>
+                  <meta.attribute translatable="true"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+         <attribute name="icon" type="string">
+            <annotation>
+               <documentation>
+                  a relative path of an icon that will be used to visually 
+represent the template.
+               </documentation>
+               <appInfo>
+                  <meta.attribute kind="resource"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+          <attribute name="archive" type="string" use="required">
+            <annotation>
+               <documentation>
+                  a relative path for the location of the sample archive for the plugin.
+               </documentation>
+               <appInfo>
+                  <meta.attribute translatable="true"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+          <attribute name="description" type="string">
+            <annotation>
+               <documentation>
+                  a simple description about the plugin.
+               </documentation>
+               <appInfo>
+                  <meta.attribute translatable="true"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+   <annotation>
+      <appInfo>
+         <meta.section type="apiInfo"/>
+      </appInfo>
+      <documentation>
+         Each template must provide a class that implements &lt;code&gt;org.eclipse.pde.ui.templates.ITemplateSection&lt;/code&gt; interface. However, abstract classes that implement the interface and can be extended are available.
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="since"/>
+      </appInfo>
+      <documentation>
+         2.0
+      </documentation>
+   </annotation>
+   <annotation>
+      <appInfo>
+         <meta.section type="examples"/>
+      </appInfo>
+      <documentation>
+         The following is an example of the template registration:
+&lt;p&gt;
+&lt;pre&gt;
+   &lt;extension
+         point=&quot;org.eclipse.pde.ui.templates&quot;&gt;
+      &lt;template
+            contributingId=&quot;org.eclipse.ui.actionSets&quot;
+            name=&quot;XYZ Action Set Generator&quot;
+   class=&quot;com.example.xyz.XYZActionSetTemplate&quot;
+            id=&quot;com.example.xyz.ActionSetTemplate&quot;&gt;
+      &lt;/template&gt;
+   &lt;/extension&gt;
+&lt;/pre&gt;
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="implementation"/>
+      </appInfo>
+      <documentation>
+         PDE UI contributes a number of templates that create extensions for the most popular extension points like editors, views, preferences etc.
+      </documentation>
+   </annotation>
+   <annotation>
+      <appInfo>
+         <meta.section type="copyright"/>
+      </appInfo>
+      <documentation>
+         Copyright (c) 2004, 2013 IBM Corporation and others.
+&lt;br&gt;
+All rights reserved. This program and the accompanying materials are made 
+available under the terms of the Eclipse Public License v1.0 which 
+accompanies this distribution, and is available at 
+&lt;a href=&quot;http://www.eclipse.org/legal/epl-v10.html&quot;&gt;http://www.eclipse.org/legal/epl-v10.html&lt;/a&gt;.
+      </documentation>
+   </annotation>
+</schema>

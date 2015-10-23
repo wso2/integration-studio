@@ -19,11 +19,12 @@ import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
+import org.wso2.developerstudio.embedded.tomcat.api.ITomcatServer;
 import org.wso2.developerstudio.embedded.tomcat.server.EmbeddedTomcatServer;
 
 public class EmbeddedTomcatPlugin implements BundleActivator {
 
-	public static final String PLUGIN_ID = "org.wso2.developerstudio.internal.tomcat";
+	public static final String PLUGIN_ID = "org.wso2.developerstudio.embedded.tomcat";
 	protected static ClassLoader bundleCtxtClassLoader;
 
 	private static BundleContext context;
@@ -86,6 +87,14 @@ public class EmbeddedTomcatPlugin implements BundleActivator {
 	}
 
 	/**
+	 * Method to get server instance
+	 * 
+	 * @return
+	 */
+	public ITomcatServer getServer(){
+		return  tomcatServer;
+	}
+	/**
 	 * Method to get the URL of a deployed web application.
 	 * 
 	 * @param appID
@@ -103,5 +112,9 @@ public class EmbeddedTomcatPlugin implements BundleActivator {
 	 */
 	public static BundleContext getContext() {
 		return context;
+	}
+
+	public ClassLoader getContextClassLoader() {
+		return bundleCtxtClassLoader;
 	}
 }

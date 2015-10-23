@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.developerstudio.internal.tomcat;
+package org.wso2.developerstudio.embedded.tomcat.startup;
 
 import org.eclipse.ui.IStartup;
 import org.osgi.framework.Bundle;

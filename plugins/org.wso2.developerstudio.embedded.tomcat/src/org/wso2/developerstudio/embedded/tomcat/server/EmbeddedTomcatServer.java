@@ -80,7 +80,7 @@ public class EmbeddedTomcatServer implements ITomcatServer {
 			tomcat.start();
 		} catch (LifecycleException e) {
 			throw new LifecycleException(
-					"Error while starting tomcat server of DevStudio.", e);
+					"Error while starting embedded tomcat server of DevStudio.", e);
 		}
 	}
 
@@ -126,6 +126,9 @@ public class EmbeddedTomcatServer implements ITomcatServer {
 		return rootURL + "/" + context;
 	}
 
+	/**
+	 * Read extensions to webapp extension point and deploy web apps
+	 */
 	private void initWebApps() {
 		IExtensionRegistry extentionRegistry = Platform.getExtensionRegistry();
 		IExtensionPoint webAppExtensionPoint = extentionRegistry
@@ -200,6 +203,26 @@ public class EmbeddedTomcatServer implements ITomcatServer {
 		}
 	}
 
+	private void initTomcat() throws IOException {
+		tomcat = new Tomcat();
+		try {
+			port = getAvailablePort();
+			tomcat.setPort(port);
+			String hostName= InetAddress.getLocalHost().getHostName();
+			rootURL = HTTP_PROTOCOL + hostName + ":" + port;
+		} catch (IOException e) {
+			throw new IOException(
+					"Error while configuring tomcat server of DevStudio.", e);
+		}
+	}
+
+	private Integer getAvailablePort() throws IOException {
+		ServerSocket socket = new ServerSocket(0);
+		Integer port = socket.getLocalPort();
+		socket.close();
+		return port;
+	}
+
 	private void extractWar(File webApp, File extractpath) throws IOException {
 		ZipFile zipFile = new ZipFile(webApp);
 		try {
@@ -221,26 +244,6 @@ public class EmbeddedTomcatServer implements ITomcatServer {
 		} finally {
 			zipFile.close();
 		}
-	}
-
-	private void initTomcat() throws IOException {
-		tomcat = new Tomcat();
-		try {
-			port = getAvailablePort();
-			tomcat.setPort(port);
-			String hostName= InetAddress.getLocalHost().getHostName();
-			rootURL = HTTP_PROTOCOL + hostName + ":" + port;
-		} catch (IOException e) {
-			throw new IOException(
-					"Error while configuring tomcat server of DevStudio.", e);
-		}
-	}
-
-	private Integer getAvailablePort() throws IOException {
-		ServerSocket socket = new ServerSocket(0);
-		Integer port = socket.getLocalPort();
-		socket.close();
-		return port;
 	}
 
 }

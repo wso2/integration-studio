@@ -15,7 +15,7 @@
  */
 package org.wso2.developerstudio.embedded.tomcat.api;
 
-public interface ITomcatServer {
+public interface IWebAppManager {
 
 	/**
 	 * Method to add a web application to server.
@@ -28,8 +28,7 @@ public interface ITomcatServer {
 	 *            Root folder of the application.
 	 * @throws Exception
 	 */
-	void addWebApp(String appID, String context, String docBase)
-			throws Exception;
+	void addWebApp(String appID, String context, String docBase);
 
 	/**
 	 * Method to get full URL to access a particular web application.
@@ -40,18 +39,4 @@ public interface ITomcatServer {
 	 * @return complete URL to access given web application.
 	 */
 	String getAppURL(String appID);
-	
-	/**
-	 * Method to start the embedded tomcat server.
-	 * 
-	 * @throws Exception
-	 */
-	void start() throws Exception;
-
-	/**
-	 * Method to stop the embedded tomcat server.
-	 * 
-	 * @throws Exception
-	 */
-	void stop() throws Exception;
 }

@@ -33,13 +33,16 @@ public class WebAppManagerImpl implements IWebAppManager {
 
 	@Override
 	public void addWebApp(String appID, String context, String docBase){
-		if(serverInstance != null){
+		if (serverInstance != null) {
 			try {
 				serverInstance.addWebApp(appID, context, docBase);
 			} catch (Exception e) {
 				log.error("Error deploying web application. AppID: " + appID, e);
 			}
-		}	
+		} else {
+			log.error("Error deploying web application. AppID: " + appID
+					+ ". Tomcat server instance is not found.");
+		}
 	}
 
 	@Override

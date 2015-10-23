@@ -39,6 +39,7 @@ import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.ui.part.MultiPageEditorPart;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
+import org.wso2.developerstudio.embedded.tomcat.api.IWebAppManager;
 import org.wso2.developerstudio.webeditor.AbstractWebEditorPlugin;
 import org.wso2.developerstudio.webeditor.function.ExecuteUndoableTaskFunction;
 import org.wso2.developerstudio.webeditor.function.GetDirtyContentFunction;
@@ -61,7 +62,7 @@ public abstract class AbstractWebBasedEditor extends EditorPart {
 	protected MultiPageEditorPart parentEditor;
 	protected boolean isDirty;
 	
-	private static IDeveloperStudioLog log = Logger.getLog(AbstractWebEditorPlugin.PLUGIN_ID);
+	protected static IDeveloperStudioLog log = Logger.getLog(AbstractWebEditorPlugin.PLUGIN_ID);
 
 	public AbstractWebBasedEditor() {
 		this.editorInstance = this;
@@ -73,7 +74,7 @@ public abstract class AbstractWebBasedEditor extends EditorPart {
 		this.parentEditor = parent;
 	}
 
-	public abstract String getWebAppURL();
+	public abstract String getWebAppID();
 
 	public abstract String getEditorName();
 
@@ -116,7 +117,7 @@ public abstract class AbstractWebBasedEditor extends EditorPart {
 	@Override
 	public void createPartControl(Composite parent) {
 		browser = new Browser(parent, SWT.NONE);
-		browser.setUrl(getWebAppURL());
+		browser.setUrl(getEditorURL());
 		browser.addControlListener(new ControlListener() {
 			public void controlResized(ControlEvent e) {
 			}
@@ -150,6 +151,14 @@ public abstract class AbstractWebBasedEditor extends EditorPart {
 		});
 		injectCustomJSFunctions();
 		setPartName(getEditorName());
+	}
+
+	private String getEditorURL() {
+		IWebAppManager appManagerRef = AbstractWebEditorPlugin.getDefault().getAppManager();
+		if(appManagerRef != null){
+			return appManagerRef.getAppURL(getWebAppID());
+		}
+		return null;
 	}
 
 	protected void injectCustomJSFunctions() {

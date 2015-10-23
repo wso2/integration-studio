@@ -53,9 +53,12 @@ import org.wso2.developerstudio.embedded.tomcat.api.ITomcatServer;
 
 public class EmbeddedTomcatServer implements ITomcatServer {
 
+	private static final String TOMCAT_TMP = "DevSTomcat";
+	private static final String JAVA_IO_TMPDIR = "java.io.tmpdir";
 	private static final String FOLDER_PREFIX = "tmp";
 	private static final String WAR_EXT = "war";
 	private static final String RELATIVE_PATH = "relativePath";
+	private static final String CONTEXT = "context";
 	private static final String APP_ID = "appID";
 	private static final String HTTP_PROTOCOL = "http://";
 	private static final String WEB_APP_EXT_POINT_ID = "org.wso2.developerstudio.embedded.webapp";
@@ -123,7 +126,7 @@ public class EmbeddedTomcatServer implements ITomcatServer {
 	}
 
 	private String getURLForContext(String context) {
-		return rootURL + "/" + context;
+		return rootURL + context;
 	}
 
 	/**
@@ -146,6 +149,7 @@ public class EmbeddedTomcatServer implements ITomcatServer {
 
 			String applicationID = webAppExtension.getAttribute(APP_ID);
 			String relativePath = webAppExtension.getAttribute(RELATIVE_PATH);
+			String context = webAppExtension.getAttribute(CONTEXT);
 
 			if (applicationID != null && relativePath != null) {
 				URL docBaseResource = FileLocator.find(contributingBundle,
@@ -188,7 +192,7 @@ public class EmbeddedTomcatServer implements ITomcatServer {
 				}
 				if (deployableDocBase != null) {
 					try {
-						addWebApp(applicationID, applicationID,
+						addWebApp(applicationID, context,
 								deployableDocBase);
 					} catch (Exception e) {
 						log.error("Error deploying webapp. AppID: "
@@ -208,7 +212,9 @@ public class EmbeddedTomcatServer implements ITomcatServer {
 		try {
 			port = getAvailablePort();
 			tomcat.setPort(port);
+			tomcat.setBaseDir(System.getProperty(JAVA_IO_TMPDIR) + File.separator + TOMCAT_TMP);
 			String hostName= InetAddress.getLocalHost().getHostName();
+			tomcat.getHost().setName(hostName);
 			rootURL = HTTP_PROTOCOL + hostName + ":" + port;
 		} catch (IOException e) {
 			throw new IOException(

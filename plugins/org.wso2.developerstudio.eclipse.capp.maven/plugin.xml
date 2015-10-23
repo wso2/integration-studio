@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension-point id="org.wso2.developerstudio.eclipse.capp.maven.artifact.mavenplugin.generator" name="Extension point to define plugin inputs for pom generation for a capp artifact" schema="schema/org.wso2.developerstudio.eclipse.capp.maven.artifact.mavenplugin.generator.exsd"/>
+
+</plugin>

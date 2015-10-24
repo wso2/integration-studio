@@ -15,6 +15,8 @@
  */
 package org.wso2.developerstudio.embedded.tomcat.api;
 
+import org.wso2.developerstudio.embedded.tomcat.exception.EmbeddedTomcatException;
+
 public interface ITomcatServer {
 
 	/**
@@ -29,7 +31,7 @@ public interface ITomcatServer {
 	 * @throws Exception
 	 */
 	void addWebApp(String appID, String context, String docBase)
-			throws Exception;
+			throws EmbeddedTomcatException;
 
 	/**
 	 * Method to get full URL to access a particular web application.
@@ -38,20 +40,21 @@ public interface ITomcatServer {
 	 *            Unique ID of the web application.
 	 * 
 	 * @return complete URL to access given web application.
+	 * @throws EmbeddedTomcatException 
 	 */
-	String getAppURL(String appID);
+	String getAppURL(String appID) throws EmbeddedTomcatException;
 	
 	/**
 	 * Method to start the embedded tomcat server.
 	 * 
 	 * @throws Exception
 	 */
-	void start() throws Exception;
+	void start() throws EmbeddedTomcatException;
 
 	/**
 	 * Method to stop the embedded tomcat server.
 	 * 
 	 * @throws Exception
 	 */
-	void stop() throws Exception;
+	void stop() throws EmbeddedTomcatException;
 }

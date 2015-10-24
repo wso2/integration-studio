@@ -18,39 +18,21 @@ package org.wso2.developerstudio.embedded.tomcat.server;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.embedded.tomcat.EmbeddedTomcatPlugin;
-import org.wso2.developerstudio.embedded.tomcat.api.ITomcatServer;
 import org.wso2.developerstudio.embedded.tomcat.api.IWebAppManager;
+import org.wso2.developerstudio.embedded.tomcat.exception.EmbeddedTomcatException;
 
 public class WebAppManagerImpl implements IWebAppManager {
 	
 	private static IDeveloperStudioLog log = Logger.getLog(EmbeddedTomcatPlugin.PLUGIN_ID);
 
-	ITomcatServer serverInstance;
-	
-	public WebAppManagerImpl() {
-		serverInstance = EmbeddedTomcatPlugin.getDefault().getServer();
+	@Override
+	public void addWebApp(String appID, String context, String docBase) throws EmbeddedTomcatException{
+		EmbeddedTomcatPlugin.getDefault().getServer().addWebApp(appID, context, docBase);
 	}
 
 	@Override
-	public void addWebApp(String appID, String context, String docBase){
-		if (serverInstance != null) {
-			try {
-				serverInstance.addWebApp(appID, context, docBase);
-			} catch (Exception e) {
-				log.error("Error deploying web application. AppID: " + appID, e);
-			}
-		} else {
-			log.error("Error deploying web application. AppID: " + appID
-					+ ". Tomcat server instance is not found.");
-		}
-	}
-
-	@Override
-	public String getAppURL(String appID) {
-		if(serverInstance != null){
-			return serverInstance.getAppURL(appID);
-		}
-		return null;
+	public String getAppURL(String appID) throws EmbeddedTomcatException {
+		return EmbeddedTomcatPlugin.getDefault().getServer().getAppURL(appID);
 	}
 
 }

@@ -15,6 +15,8 @@
  */
 package org.wso2.developerstudio.embedded.tomcat.api;
 
+import org.wso2.developerstudio.embedded.tomcat.exception.EmbeddedTomcatException;
+
 public interface IWebAppManager {
 
 	/**
@@ -28,7 +30,7 @@ public interface IWebAppManager {
 	 *            Root folder of the application.
 	 * @throws Exception
 	 */
-	void addWebApp(String appID, String context, String docBase);
+	void addWebApp(String appID, String context, String docBase) throws EmbeddedTomcatException;
 
 	/**
 	 * Method to get full URL to access a particular web application.
@@ -38,5 +40,5 @@ public interface IWebAppManager {
 	 * 
 	 * @return complete URL to access given web application.
 	 */
-	String getAppURL(String appID);
+	String getAppURL(String appID) throws EmbeddedTomcatException;
 }

@@ -20,6 +20,7 @@ import org.osgi.framework.BundleContext;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.embedded.tomcat.api.ITomcatServer;
+import org.wso2.developerstudio.embedded.tomcat.exception.EmbeddedTomcatException;
 import org.wso2.developerstudio.embedded.tomcat.server.EmbeddedTomcatServer;
 
 public class EmbeddedTomcatPlugin implements BundleActivator {
@@ -54,7 +55,7 @@ public class EmbeddedTomcatPlugin implements BundleActivator {
 					Integer port = tomcatServer.getServerPort();
 					log.info("Embedded tomcat server is suceessfully started on port "
 							+ port);
-				} catch (Exception ex) {
+				} catch (EmbeddedTomcatException ex) {
 					log.error("Error while starting embedded tomcat server.",
 							ex);
 				}
@@ -90,8 +91,12 @@ public class EmbeddedTomcatPlugin implements BundleActivator {
 	 * Method to get server instance
 	 * 
 	 * @return
+	 * @throws EmbeddedTomcatException 
 	 */
-	public ITomcatServer getServer(){
+	public ITomcatServer getServer() throws EmbeddedTomcatException{
+		if(tomcatServer == null){
+			throw new EmbeddedTomcatException("Server is not instantiated");
+		}
 		return  tomcatServer;
 	}
 	/**
@@ -100,8 +105,9 @@ public class EmbeddedTomcatPlugin implements BundleActivator {
 	 * @param appID
 	 *            Unique ID for the web application.
 	 * @return Complete URL to access a given web application.
+	 * @throws EmbeddedTomcatException 
 	 */
-	public String getAppURL(String appID){
+	public String getAppURL(String appID) throws EmbeddedTomcatException{
 		return tomcatServer.getAppURL(appID);
 	}
 

@@ -13,7 +13,7 @@ public class WebAppManagerServiceConsumer {
 	}
 	
 	public void unsetAppManager(IWebAppManager appManager){
-		if (appManager != AbstractWebEditorPlugin.getDefault().getAppManager()) {
+		if (appManager == AbstractWebEditorPlugin.getDefault().getAppManager()) {
 			AbstractWebEditorPlugin.getDefault().setAppManager(null);
 		}
 	}

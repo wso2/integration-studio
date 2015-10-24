@@ -20,6 +20,7 @@ import java.io.InputStream;
 
 import org.apache.commons.io.IOUtils;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.wso2.developerstudio.webeditor.core.AbstractWebBasedEditor;
 
 public class SaveContentFunction extends AbstractWebEditorFunction{
@@ -38,6 +39,7 @@ public class SaveContentFunction extends AbstractWebEditorFunction{
 			editorInput.getFile().setContents(inputStream,
 					true, true, null);
 			editor.setDirty(false);
+			editorInput.getFile().refreshLocal(0, new NullProgressMonitor());
 			return Boolean.TRUE.toString();
 		} catch (CoreException e) {
 			log.error(e);

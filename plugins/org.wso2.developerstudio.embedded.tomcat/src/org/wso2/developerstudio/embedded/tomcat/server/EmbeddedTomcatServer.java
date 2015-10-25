@@ -24,6 +24,7 @@ import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.net.URLEncoder;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
@@ -47,6 +48,7 @@ import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.embedded.tomcat.EmbeddedTomcatPlugin;
 import org.wso2.developerstudio.embedded.tomcat.api.ITomcatServer;
+import org.wso2.developerstudio.embedded.tomcat.exception.AppNotFoundException;
 import org.wso2.developerstudio.embedded.tomcat.exception.DuplicateAppIDException;
 import org.wso2.developerstudio.embedded.tomcat.exception.DuplicateContextException;
 import org.wso2.developerstudio.embedded.tomcat.exception.EmbeddedTomcatException;
@@ -130,6 +132,9 @@ public class EmbeddedTomcatServer implements ITomcatServer {
 
 	@Override
 	public String getAppURL(String appID) throws EmbeddedTomcatException {
+		if(!deployedApps.containsKey(appID)){
+			throw new AppNotFoundException(appID);
+		}
 		return deployedApps.get(appID);
 	}
 
@@ -171,8 +176,10 @@ public class EmbeddedTomcatServer implements ITomcatServer {
 				try {
 					// resolve resource from bundle jar
 					URL fileURL = FileLocator.toFileURL(docBaseResource);
-					readableDocBase = new File(fileURL.toURI());
-				} catch (IOException | URISyntaxException e) {
+					String encodedPath = URLEncoder.encode(fileURL.getPath(), "UTF-8").replace("+", "%20");
+					encodedPath = fileURL.toExternalForm();
+					readableDocBase = new File(encodedPath);
+				} catch (IOException e) {
 					log.error("Error while resolving webapp resources at "
 							+ docBaseResource, e);
 				}

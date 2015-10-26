@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="org.wso2.developerstudio.kernel.webeditor.tools.feature"
-      label="WSO2 Developer Studio Kernel Web Based Editor Tools Feature"
+      label="WSO2 Developer Studio Kernel Web Editor Tools"
       version="4.0.0.qualifier"
-	  provider-name="%providerName">
+      provider-name="%providerName">
 
    <description url="http://wso2.com">
       This feature contains bundles for wso2 eclipse web editor tools feature.
@@ -31,7 +31,7 @@
          version="0.0.0"
          unpack="false"/>
 
-	<plugin
+   <plugin
          id="tomcat"
          download-size="0"
          install-size="0"

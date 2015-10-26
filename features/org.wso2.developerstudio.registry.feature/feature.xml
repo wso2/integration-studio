@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
-      id="org.wso2.developerstudio.registry.featuree"
+      id="org.wso2.developerstudio.registry.feature"
       label="WSO2 Developer Studio Registry Feature"
       version="4.0.0.qualifier"
       provider-name="%providerName">
@@ -30,7 +30,8 @@
          install-size="0"
          version="0.0.0"
          unpack="false"/>
-	<plugin
+
+   <plugin
          id="org.wso2.developerstudio.eclipse.libraries"
          download-size="0"
          install-size="0"
@@ -43,6 +44,7 @@
          install-size="0"
          version="0.0.0"
          unpack="false"/>
+
    <plugin
          id="org.wso2.developerstudio.eclipse.registry.base"
          download-size="0"

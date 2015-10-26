@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
-      id="org.wso2.developerstudio.registry.featuree"
+      id="org.wso2.developerstudio.usermgt.core.feature"
       label="WSO2 Developer Studio User Management Core Tools"
       version="4.0.0.qualifier"
       provider-name="%providerName">

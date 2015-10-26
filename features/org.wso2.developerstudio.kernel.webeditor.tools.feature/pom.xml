@@ -9,7 +9,7 @@
 	</parent>
 	<artifactId>org.wso2.developerstudio.kernel.webeditor.tools.feature</artifactId>
 	<packaging>eclipse-feature</packaging>
-	<name>WSO2 Developer Studio Kernel Web based Editor Tools Feature</name>
+	<name>WSO2 Developer Studio Kernel Web Editor Tools</name>
 	<build>
 		<plugins>
 			<plugin>

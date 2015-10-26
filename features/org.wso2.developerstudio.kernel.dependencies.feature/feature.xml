@@ -60,7 +60,7 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse:org.eclipse.emf.cheatsheets"
+         id="org.eclipse.emf.cheatsheets"
          download-size="0"
          install-size="0"
          version="2.5.0.v20150123-0452"
@@ -518,7 +518,7 @@
          version="3.3.100.v20140610-0641"
          unpack="false"/>
 <plugin
-         id="org.eclipse:org.eclipse.ocl"
+         id="org.eclipse.ocl"
          download-size="0"
          install-size="0"
          version="3.4.2.v20140725-2242"

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.wso2.developerstudio.kernel.pluginsamples.feature"
+      label="WSO2 Developer Studio Kernel Plugin Samples Feature"
+      version="4.0.0.qualifier"
+      provider-name="%providerName">
+
+   <description url="http://wso2.com">
+      This feature contains the wso2 plugin samples for developer studio kernel.
+   </description>
+
+   <copyright url="%copyrightURL">
+      %copyright
+   </copyright>
+
+   <license url="%licenseURL">
+      %license
+   </license>
+
+   <plugin
+         id="org.wso2.developerstudio.eclipse.kernel.defaultsamples"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.wso2.developerstudio.eclipse.wso2plugin.sample"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>

@@ -39,6 +39,8 @@ import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.ui.part.MultiPageEditorPart;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
+import org.wso2.developerstudio.embedded.tomcat.api.IWebAppManager;
+import org.wso2.developerstudio.embedded.tomcat.exception.EmbeddedTomcatException;
 import org.wso2.developerstudio.webeditor.AbstractWebEditorPlugin;
 import org.wso2.developerstudio.webeditor.function.ExecuteUndoableTaskFunction;
 import org.wso2.developerstudio.webeditor.function.GetDirtyContentFunction;
@@ -60,20 +62,21 @@ public abstract class AbstractWebBasedEditor extends EditorPart {
 	protected String dirtyContent;
 	protected MultiPageEditorPart parentEditor;
 	protected boolean isDirty;
-	
-	private static IDeveloperStudioLog log = Logger.getLog(AbstractWebEditorPlugin.PLUGIN_ID);
+
+	protected static IDeveloperStudioLog log = Logger
+			.getLog(AbstractWebEditorPlugin.PLUGIN_ID);
 
 	public AbstractWebBasedEditor() {
 		this.editorInstance = this;
 		this.editorUndoContext = new ObjectUndoContext(this);
 	}
-	
-	public AbstractWebBasedEditor(MultiPageEditorPart parent){
+
+	public AbstractWebBasedEditor(MultiPageEditorPart parent) {
 		this();
 		this.parentEditor = parent;
 	}
 
-	public abstract String getWebAppURL();
+	public abstract String getWebAppID();
 
 	public abstract String getEditorName();
 
@@ -81,7 +84,11 @@ public abstract class AbstractWebBasedEditor extends EditorPart {
 
 	@Override
 	public void doSave(IProgressMonitor arg0) {
-		executeScriptOnBrowser(ScriptFactory.INVOKE_FN_SAVE_FILE);
+		try {
+			executeScriptOnBrowser(ScriptFactory.INVOKE_FN_SAVE_FILE);
+		} catch (WebBasedEditorException e) {
+			log.error("Error saving content to file.", e);
+		}
 	}
 
 	@Override
@@ -115,41 +122,64 @@ public abstract class AbstractWebBasedEditor extends EditorPart {
 
 	@Override
 	public void createPartControl(Composite parent) {
-		browser = new Browser(parent, SWT.NONE);
-		browser.setUrl(getWebAppURL());
-		browser.addControlListener(new ControlListener() {
-			public void controlResized(ControlEvent e) {
+		try {
+			browser = new Browser(parent, SWT.NONE);
+			browser.setUrl(getEditorURL());
+			browser.addControlListener(new ControlListener() {
+				public void controlResized(ControlEvent e) {
+				}
+
+				public void controlMoved(ControlEvent e) {
+				}
+			});
+			browser.addProgressListener(new ProgressListener() {
+
+				@Override
+				public void completed(ProgressEvent arg0) {
+					try {
+						executeScriptOnBrowser(ScriptFactory.INVOKE_FN_LOAD_FILE_CONTENT);
+					} catch (WebBasedEditorException e) {
+						log.error("Error loading file content.", e);
+					}
+				}
+
+				@Override
+				public void changed(ProgressEvent arg0) {
+
+				}
+			});
+			browser.addFocusListener(new FocusListener() {
+
+				@Override
+				public void focusLost(FocusEvent arg0) {
+
+				}
+
+				@Override
+				public void focusGained(FocusEvent arg0) {
+					editorInstance.setFocus();
+				}
+			});
+			injectCustomJSFunctions();
+			setPartName(getEditorName());
+		} catch (WebBasedEditorException e) {
+			log.error("Error instantiating Web Editor.", e);
+		}	
+	}
+
+	protected String getEditorURL() throws WebBasedEditorException {
+		IWebAppManager appManagerRef = AbstractWebEditorPlugin.getDefault()
+				.getAppManager();
+		if (appManagerRef != null) {
+			try {
+				return appManagerRef.getAppURL(getWebAppID());
+			} catch (EmbeddedTomcatException e) {
+				throw new WebBasedEditorException("Error while fetching web app URL"
+						+ " from WebAppManager service.", e);
 			}
-
-			public void controlMoved(ControlEvent e) {
-			}
-		});
-		browser.addProgressListener(new ProgressListener() {
-
-			@Override
-			public void completed(ProgressEvent arg0) {
-				executeScriptOnBrowser(ScriptFactory.INVOKE_FN_LOAD_FILE_CONTENT);
-			}
-
-			@Override
-			public void changed(ProgressEvent arg0) {
-
-			}
-		});
-		browser.addFocusListener(new FocusListener() {
-
-			@Override
-			public void focusLost(FocusEvent arg0) {
-
-			}
-
-			@Override
-			public void focusGained(FocusEvent arg0) {
-				editorInstance.setFocus();
-			}
-		});
-		injectCustomJSFunctions();
-		setPartName(getEditorName());
+		}
+		throw new WebBasedEditorException("Error fetching web app URL "
+				+ "from WebAppManager service. Service reference is null.");
 	}
 
 	protected void injectCustomJSFunctions() {
@@ -168,10 +198,9 @@ public abstract class AbstractWebBasedEditor extends EditorPart {
 
 	@Override
 	public void setFocus() {
-		if(parentEditor == null){
+		if (parentEditor == null) {
 			getEditorSite().getPage().activate(this);
-		}
-		else{
+		} else {
 			parentEditor.getEditorSite().getPage().activate(parentEditor);
 		}
 	}
@@ -181,11 +210,18 @@ public abstract class AbstractWebBasedEditor extends EditorPart {
 		return getEditorTitleToolTip();
 	}
 
-	public boolean executeScriptOnBrowser(BrowserScript script) {
+	public void executeScriptOnBrowser(BrowserScript script) throws WebBasedEditorException {
 		if (browser != null) {
-			return browser.execute(script.getScript());
+			boolean success = browser.execute(script.getScript());
+			if (!success) {
+				throw new WebBasedEditorException("Error executing Script:"
+						+ script.getScriptName()
+						+ " Browser returned execution failed status.");
+			}
+		} else {
+			throw new WebBasedEditorException("Error executing Script:"
+					+ script.getScriptName() + ". Browser instance not found.");
 		}
-		return false;
 	}
 
 	@Override
@@ -221,12 +257,12 @@ public abstract class AbstractWebBasedEditor extends EditorPart {
 	public void setDirtyContent(String dirtyContent) {
 		this.dirtyContent = dirtyContent;
 	}
-	
-	public void fetchDirtyContentFromWebApp(){
+
+	public void fetchDirtyContentFromWebApp() throws WebBasedEditorException {
 		executeScriptOnBrowser(ScriptFactory.INVOKE_FN_SET_IDE_DIRTY_CONTENT);
 	}
-	
-	public void loadDirtyContentToWebApp(){
+
+	public void loadDirtyContentToWebApp() throws WebBasedEditorException {
 		executeScriptOnBrowser(ScriptFactory.INVOKE_FN_LOAD_IDE_DIRTY_CONTENT);
 	}
 }

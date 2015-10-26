@@ -63,10 +63,10 @@
                </appinfo>
             </annotation>
          </attribute>
-         <attribute name="isStatic" type="boolean" use="default" value="false">
+         <attribute name="context" type="string" use="required">
             <annotation>
                <documentation>
-                  Flag to indicate whether this is a static web application which only contains static content such as html, css and js, etc. Set this to false if the application is a dynamic application which contains jsp, servlets, etc.
+                  Context, to which, the web app should be deployed.
                </documentation>
             </annotation>
          </attribute>
@@ -90,7 +90,7 @@
          &lt;extension point=&quot;org.wso2.developerstudio.embedded.webapp&quot;&gt;
          &lt;webapp appID=&quot;SampleEditorApp&quot;
             relativePath=&quot;SampleWebEditor/&quot;
-            isStatic=&quot;false&quot;&gt;
+            context=&quot;/SampleEditorApp&quot;&gt;
          &lt;/webapp&gt;
 &lt;/extension&gt;
       </documentation>

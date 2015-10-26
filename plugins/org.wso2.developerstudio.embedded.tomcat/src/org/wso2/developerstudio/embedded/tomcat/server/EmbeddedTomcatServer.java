@@ -21,17 +21,15 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.InetAddress;
-import java.net.MalformedURLException;
 import java.net.ServerSocket;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.net.URLEncoder;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
-
-import javax.servlet.ServletException;
 
 import org.apache.catalina.Context;
 import org.apache.catalina.LifecycleException;
@@ -50,12 +48,19 @@ import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.embedded.tomcat.EmbeddedTomcatPlugin;
 import org.wso2.developerstudio.embedded.tomcat.api.ITomcatServer;
+import org.wso2.developerstudio.embedded.tomcat.exception.AppNotFoundException;
+import org.wso2.developerstudio.embedded.tomcat.exception.DuplicateAppIDException;
+import org.wso2.developerstudio.embedded.tomcat.exception.DuplicateContextException;
+import org.wso2.developerstudio.embedded.tomcat.exception.EmbeddedTomcatException;
 
 public class EmbeddedTomcatServer implements ITomcatServer {
 
+	private static final String TOMCAT_TMP = "DevSTomcat";
+	private static final String JAVA_IO_TMPDIR = "java.io.tmpdir";
 	private static final String FOLDER_PREFIX = "tmp";
 	private static final String WAR_EXT = "war";
 	private static final String RELATIVE_PATH = "relativePath";
+	private static final String CONTEXT = "context";
 	private static final String APP_ID = "appID";
 	private static final String HTTP_PROTOCOL = "http://";
 	private static final String WEB_APP_EXT_POINT_ID = "org.wso2.developerstudio.embedded.webapp";
@@ -63,6 +68,7 @@ public class EmbeddedTomcatServer implements ITomcatServer {
 
 	protected Tomcat tomcat;
 	protected Map<String, String> deployedApps;
+	protected Map<String, String> usedContexts;
 	protected Integer port;
 	protected String rootURL;
 	
@@ -70,33 +76,42 @@ public class EmbeddedTomcatServer implements ITomcatServer {
 
 	public EmbeddedTomcatServer() {
 		deployedApps = new HashMap<>();
+		usedContexts = new HashMap<>();
 	}
 
-	public void start() throws Exception {
+	public void start() throws EmbeddedTomcatException {
 		try {
 			initTomcat();
-			initWebApps();
+			initWebAppExtensions();
 			tomcat.getHost();
 			tomcat.start();
 		} catch (LifecycleException e) {
-			throw new LifecycleException(
-					"Error while starting tomcat server of DevStudio.", e);
+			throw new EmbeddedTomcatException(
+					"Error while starting embedded tomcat server.", e);
 		}
 	}
 
-	public void stop() throws LifecycleException {
+	public void stop() throws EmbeddedTomcatException {
 		try {
 			tomcat.stop();
 		} catch (LifecycleException e) {
-			throw new LifecycleException(
-					"Error while stopping embedded tomcat server of DevStudio.",
+			throw new EmbeddedTomcatException(
+					"Error while stopping embedded tomcat server.",
 					e);
 		}
 	}
 
 	@Override
 	public void addWebApp(String appID, String context, String docBase)
-			throws Exception {
+			throws EmbeddedTomcatException {
+		if (deployedApps.containsKey(appID)) {
+			throw new DuplicateAppIDException("AppID:" + appID
+					+ " is already registered and deployed at "
+					+ deployedApps.get(appID));
+		} else if(usedContexts.containsKey(context)) {
+			throw new DuplicateContextException("Context: " + context
+					+ " is already used by the app:" + usedContexts.get(context));
+		}
 		try {
 			Context appContext = tomcat.addWebapp(context, docBase);
 			File configFile = new File(docBase + WEB_XML_REL_PATH);
@@ -106,15 +121,20 @@ public class EmbeddedTomcatServer implements ITomcatServer {
 			appContext.setParentClassLoader(Thread.currentThread()
 					.getContextClassLoader());
 			deployedApps.put(appID, getURLForContext(context));
-			log.info("WebApp " + appID + " successfully added at " + deployedApps.get(appID));	
-		} catch (ServletException | MalformedURLException e) {
-			throw new Exception("Error while adding web app: " + appID + " at "
-					+ docBase + " to embedded tomcat server of DevStudio.", e);
+			usedContexts.put(context, appID);
+			log.info("WebApp " + appID + " successfully added and will be deployed to "
+									+ deployedApps.get(appID));	
+		} catch (Exception e) {
+			throw new EmbeddedTomcatException("Error while adding web app: " + appID + " at "
+					+ docBase + " to embedded tomcat server.", e);
 		}
 	}
 
 	@Override
-	public String getAppURL(String appID) {
+	public String getAppURL(String appID) throws EmbeddedTomcatException {
+		if(!deployedApps.containsKey(appID)){
+			throw new AppNotFoundException(appID);
+		}
 		return deployedApps.get(appID);
 	}
 
@@ -123,10 +143,13 @@ public class EmbeddedTomcatServer implements ITomcatServer {
 	}
 
 	private String getURLForContext(String context) {
-		return rootURL + "/" + context;
+		return rootURL + context;
 	}
 
-	private void initWebApps() {
+	/**
+	 * Read extensions to webapp extension point and deploy them.
+	 */
+	private void initWebAppExtensions() {
 		IExtensionRegistry extentionRegistry = Platform.getExtensionRegistry();
 		IExtensionPoint webAppExtensionPoint = extentionRegistry
 				.getExtensionPoint(WEB_APP_EXT_POINT_ID);
@@ -143,6 +166,7 @@ public class EmbeddedTomcatServer implements ITomcatServer {
 
 			String applicationID = webAppExtension.getAttribute(APP_ID);
 			String relativePath = webAppExtension.getAttribute(RELATIVE_PATH);
+			String context = webAppExtension.getAttribute(CONTEXT);
 
 			if (applicationID != null && relativePath != null) {
 				URL docBaseResource = FileLocator.find(contributingBundle,
@@ -152,8 +176,10 @@ public class EmbeddedTomcatServer implements ITomcatServer {
 				try {
 					// resolve resource from bundle jar
 					URL fileURL = FileLocator.toFileURL(docBaseResource);
-					readableDocBase = new File(fileURL.toURI());
-				} catch (IOException | URISyntaxException e) {
+					String encodedPath = URLEncoder.encode(fileURL.getPath(), "UTF-8").replace("+", "%20");
+					encodedPath = fileURL.toExternalForm();
+					readableDocBase = new File(encodedPath);
+				} catch (IOException e) {
 					log.error("Error while resolving webapp resources at "
 							+ docBaseResource, e);
 				}
@@ -185,7 +211,7 @@ public class EmbeddedTomcatServer implements ITomcatServer {
 				}
 				if (deployableDocBase != null) {
 					try {
-						addWebApp(applicationID, applicationID,
+						addWebApp(applicationID, context,
 								deployableDocBase);
 					} catch (Exception e) {
 						log.error("Error deploying webapp. AppID: "
@@ -200,8 +226,30 @@ public class EmbeddedTomcatServer implements ITomcatServer {
 		}
 	}
 
-	private void extractWar(File webApp, File extractpath) throws IOException {
-		ZipFile zipFile = new ZipFile(webApp);
+	private void initTomcat() throws EmbeddedTomcatException {
+		tomcat = new Tomcat();
+		try {
+			port = getAvailablePort();
+			tomcat.setPort(port);
+			tomcat.setBaseDir(System.getProperty(JAVA_IO_TMPDIR) + File.separator + TOMCAT_TMP);
+			String hostName= InetAddress.getLocalHost().getHostName();
+			tomcat.getHost().setName(hostName);
+			rootURL = HTTP_PROTOCOL + hostName + ":" + port;
+		} catch (IOException e) {
+			throw new EmbeddedTomcatException(
+					"Error while configuring embedded tomcat server.", e);
+		}
+	}
+
+	private Integer getAvailablePort() throws IOException {
+		ServerSocket socket = new ServerSocket(0);
+		Integer port = socket.getLocalPort();
+		socket.close();
+		return port;
+	}
+
+	private void extractWar(File warFile, File extractpath) throws IOException {
+		ZipFile zipFile = new ZipFile(warFile);
 		try {
 			Enumeration<? extends ZipEntry> entries = zipFile.entries();
 			while (entries.hasMoreElements()) {
@@ -221,26 +269,6 @@ public class EmbeddedTomcatServer implements ITomcatServer {
 		} finally {
 			zipFile.close();
 		}
-	}
-
-	private void initTomcat() throws IOException {
-		tomcat = new Tomcat();
-		try {
-			port = getAvailablePort();
-			tomcat.setPort(port);
-			String hostName= InetAddress.getLocalHost().getHostName();
-			rootURL = HTTP_PROTOCOL + hostName + ":" + port;
-		} catch (IOException e) {
-			throw new IOException(
-					"Error while configuring tomcat server of DevStudio.", e);
-		}
-	}
-
-	private Integer getAvailablePort() throws IOException {
-		ServerSocket socket = new ServerSocket(0);
-		Integer port = socket.getLocalPort();
-		socket.close();
-		return port;
 	}
 
 }

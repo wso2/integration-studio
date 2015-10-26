@@ -29,6 +29,10 @@
 	<module>org.wso2.developerstudio.eclipse.registry.base</module>
 	<module>org.wso2.developerstudio.eclipse.registry.resource.authorization</module>
 	<module>org.wso2.developerstudio.eclipse.usermgt.remote</module>
+	<module>org.wso2.developerstudio.eclipse.capp.core</module>
+	<module>org.wso2.developerstudio.eclipse.capp.maven</module>
+	<module>org.wso2.developerstudio.eclipse.distribution.project</module>
+	<module>org.wso2.developerstudio.eclipse.distributionproject.module</module>
     </modules>
     <build>
         <plugins>

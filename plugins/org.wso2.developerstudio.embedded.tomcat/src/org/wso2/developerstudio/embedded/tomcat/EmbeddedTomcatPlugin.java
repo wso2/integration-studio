@@ -19,11 +19,13 @@ import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
+import org.wso2.developerstudio.embedded.tomcat.api.ITomcatServer;
+import org.wso2.developerstudio.embedded.tomcat.exception.EmbeddedTomcatException;
 import org.wso2.developerstudio.embedded.tomcat.server.EmbeddedTomcatServer;
 
 public class EmbeddedTomcatPlugin implements BundleActivator {
 
-	public static final String PLUGIN_ID = "org.wso2.developerstudio.internal.tomcat";
+	public static final String PLUGIN_ID = "org.wso2.developerstudio.embedded.tomcat";
 	protected static ClassLoader bundleCtxtClassLoader;
 
 	private static BundleContext context;
@@ -53,7 +55,7 @@ public class EmbeddedTomcatPlugin implements BundleActivator {
 					Integer port = tomcatServer.getServerPort();
 					log.info("Embedded tomcat server is suceessfully started on port "
 							+ port);
-				} catch (Exception ex) {
+				} catch (EmbeddedTomcatException ex) {
 					log.error("Error while starting embedded tomcat server.",
 							ex);
 				}
@@ -86,13 +88,26 @@ public class EmbeddedTomcatPlugin implements BundleActivator {
 	}
 
 	/**
+	 * Method to get server instance
+	 * 
+	 * @return
+	 * @throws EmbeddedTomcatException 
+	 */
+	public ITomcatServer getServer() throws EmbeddedTomcatException{
+		if(tomcatServer == null){
+			throw new EmbeddedTomcatException("Server is not instantiated");
+		}
+		return  tomcatServer;
+	}
+	/**
 	 * Method to get the URL of a deployed web application.
 	 * 
 	 * @param appID
 	 *            Unique ID for the web application.
 	 * @return Complete URL to access a given web application.
+	 * @throws EmbeddedTomcatException 
 	 */
-	public String getAppURL(String appID){
+	public String getAppURL(String appID) throws EmbeddedTomcatException{
 		return tomcatServer.getAppURL(appID);
 	}
 
@@ -103,5 +118,9 @@ public class EmbeddedTomcatPlugin implements BundleActivator {
 	 */
 	public static BundleContext getContext() {
 		return context;
+	}
+
+	public ClassLoader getContextClassLoader() {
+		return bundleCtxtClassLoader;
 	}
 }

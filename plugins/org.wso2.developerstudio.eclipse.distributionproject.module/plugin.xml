@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+	<extension point="org.eclipse.core.expressions.propertyTesters">
+   		<propertyTester
+      		id="org.wso2.developerstudio.eclipse.distribution.exportable"
+      		namespace="org.wso2.developerstudio.eclipse.distribution"
+      		properties="exportable"
+      		type="org.eclipse.core.resources.IProject"
+      		class="org.wso2.developerstudio.eclipse.distributionproject.module.utils.CAppPropertyTester">
+   		</propertyTester>
+	</extension>
+
+   <extension point="org.eclipse.wst.server.core.moduleTypes">
+   		<moduleType id="org.wso2.developerstudio.eclipse.carbon.module" name="WSO2 Carbon Module" />
+   </extension>
+   
+   <extension point="org.eclipse.wst.server.core.moduleFactories">
+      <moduleFactory
+          class="org.wso2.developerstudio.eclipse.distributionproject.module.factory.CarbonModuleFactory"
+          id="org.wso2.developerstudio.eclipse.carbon.moduleFactory"
+          projects="true">
+          <moduleType
+               types="org.wso2.developerstudio.eclipse.carbon.module"
+               versions="1.0">
+          </moduleType>
+      </moduleFactory>
+   </extension>
+	<extension point="org.eclipse.wst.common.project.facet.ui.images">
+		<image facet="org.wso2.developerstudio.eclipse.carbon.facetId" path="icons/car.png"/>
+	</extension>
+   <extension point="org.eclipse.wst.common.project.facet.core.facets">
+		<project-facet id="org.wso2.developerstudio.eclipse.carbon.facetId">
+			<label>WSO2 Carbon Application Facet</label>
+			<description>
+				This facet will create and install all WSO2 Carbon Application related file/folder structure for the project. 
+			</description>
+		</project-facet>
+		<project-facet-version facet="org.wso2.developerstudio.eclipse.carbon.facetId" version="1.0">
+			<group-member id="modules" />
+		</project-facet-version>
+		<action facet="org.wso2.developerstudio.eclipse.carbon.facetId" version="1.0" type="install">
+			<delegate
+				class="org.wso2.developerstudio.eclipse.distributionproject.module.factory.CarbonFacetInstallDelegate" />
+			<config-factory
+				class="org.wso2.developerstudio.eclipse.distributionproject.module.factory.CarbonFacetInstallDataModelProvider" />
+		</action>
+		<template id="org.wso2.developerstudio.eclipse.carbon.facetId.template">
+			<label>WSO2 Composite Application Project Template</label>
+			<fixed facet="org.wso2.developerstudio.eclipse.carbon.facetId" />
+	    </template>
+ </extension>
+     <extension point="org.eclipse.wst.server.core.moduleArtifactAdapters">
+   		<moduleArtifactAdapter
+            id="org.wso2.developerstudio.eclipse.distribution.project"
+            class="org.wso2.developerstudio.eclipse.distributionproject.module.factory.CarbonModuleArtifactAdapterImpl">
+         <enablement>
+           <with variable="selection">
+             <adapt type="org.eclipse.core.resources.IProject">
+             	<test property="org.wso2.developerstudio.eclipse.distribution.exportable" value="true"/>
+             </adapt>
+           </with>
+         </enablement>
+		</moduleArtifactAdapter>
+   </extension>
+</plugin>

@@ -18,6 +18,7 @@ package org.wso2.developerstudio.webeditor;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
+import org.wso2.developerstudio.embedded.tomcat.api.IWebAppManager;
 
 /**
  * The activator class controls the plug-in life cycle
@@ -29,6 +30,8 @@ public class AbstractWebEditorPlugin extends AbstractUIPlugin {
 
 	// The shared instance
 	private static AbstractWebEditorPlugin plugin;
+	
+	private IWebAppManager appManager;
 	
 	/**
 	 * The constructor
@@ -61,6 +64,14 @@ public class AbstractWebEditorPlugin extends AbstractUIPlugin {
 	 */
 	public static AbstractWebEditorPlugin getDefault() {
 		return plugin;
+	}
+
+	public IWebAppManager getAppManager() {
+		return appManager;
+	}
+
+	public void setAppManager(IWebAppManager appManager) {
+		this.appManager = appManager;
 	}
 
 	/**

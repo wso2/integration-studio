@@ -20,12 +20,15 @@ public class BrowserScript {
 	protected String script;
 	protected String functionName;
 	protected String[] args;
+	private String scriptName;
 
-	public BrowserScript(String script) {
+	public BrowserScript(String scriptName, String script) {
+		this.scriptName = scriptName;
 		this.script = script;
 	}
 
 	public BrowserScript(String functionName, String[] args) {
+		this.scriptName = "Function Call:" + functionName;
 		this.functionName = functionName;
 		this.args = args;
 		generateFunctionCallScript();
@@ -64,5 +67,13 @@ public class BrowserScript {
 	@Override
 	public String toString() {
 		return this.script;
+	}
+
+	public String getScriptName() {
+		return scriptName;
+	}
+
+	public void setScriptName(String scriptName) {
+		this.scriptName = scriptName;
 	}
 }

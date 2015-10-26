@@ -20,3 +20,6 @@ Bundle-ActivationPolicy: lazy
 Bundle-ClassPath: .,
  lib/gson-2.2.4.jar
 Export-Package: org.wso2.developerstudio.webeditor.core
+Import-Package: org.wso2.developerstudio.embedded.tomcat.api,
+ org.wso2.developerstudio.embedded.tomcat.exception
+Service-Component: OSGI-INF/web-app-manager-consumer.xml

@@ -36,8 +36,8 @@ public class ScriptFactory {
 		INVOKE_FN_LOAD_IDE_DIRTY_CONTENT = createFunctionCallScript("getIDEDirtyContent");
 	}
 
-	public static BrowserScript createScript(String script) {
-		return new BrowserScript(script);
+	public static BrowserScript createScript(String scriptName, String script) {
+		return new BrowserScript(scriptName, script);
 	}
 
 	public static BrowserScript createFunctionCallScript(String functionName,

@@ -6,4 +6,33 @@
   <packaging>eclipse-feature</packaging>
   <name>WSO2 Developer Studio Carbon Application Feature</name>
   <description>This feature contains the bundles for WSO2 Carbon application feature.</description>
+  <build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>${version.mvn-resource-plugin}</version>
+				<executions>
+					<execution>
+						<id>copy-resources</id>
+						<phase>validate</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${project.basedir}</outputDirectory>
+							<resources>
+								<resource>
+									<directory>../</directory>
+									<filtering>false</filtering>
+									<includes>
+										<include>feature.common.properties</include>
+									</includes>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
 </project>

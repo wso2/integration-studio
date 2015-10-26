@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="org.wso2.developerstudio.registry.feature"
-      label="WSO2 Developer Studio Registry Feature"
+      label="Registry Tools"
       version="4.0.0.qualifier"
       provider-name="%providerName">
 
    <description url="http://wso2.com">
-      This feature contains the registry bundles for wso2 eclipse plugins.
+      This feature will install plugins related to Carbon Registry Tools.
    </description>
 
    <copyright url="%copyrightURL">

@@ -32,6 +32,7 @@
 		<module>org.wso2.developerstudio.capp.feature</module>
         <module>org.wso2.developerstudio.kernel.webeditor.tools.feature</module>
         <module>org.wso2.developerstudio.kernel.pluginsamples.feature</module>
+		<module>org.wso2.developerstudio.kernel.dependencies.feature</module>
     </modules>
     <distributionManagement>
         <repository>

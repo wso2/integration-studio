@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="org.wso2.developerstudio.kernel.core.feature"
-      label="WSO2 Developer Studio Kernel Core Feature"
+      label="Core Plugins"
       version="4.0.0.qualifier"
       provider-name="%providerName">
 
    <description url="http://wso2.com">
-      WSO2 Developer Studio Kernel Core Feature.
+      This feature will install mandatory kernel plugins.
    </description>
 
    <copyright url="%copyrightURL">

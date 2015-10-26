@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="org.wso2.developerstudio.usermgt.core.feature"
-      label="WSO2 Developer Studio User Management Core Tools"
+      label="User Management Core"
       version="4.0.0.qualifier"
       provider-name="%providerName">
 
    <description url="http://wso2.com">
-      This feature contains bundles for wso2 eclipse user management feature.
+      This feature will install core plugins for User Management.
    </description>
 
    <copyright url="%copyrightURL">

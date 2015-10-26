@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="org.wso2.developerstudio.capp.feature"
-      label="WSO2 Developer Studio Carbon Application Feature"
+      label="Carbon Application Tools"
       version="4.0.0.qualifier"
       provider-name="%providerName">
 
    <description url="http://wso2.com">
-      This feature contains the bundles for WSO2 Carbon application feature.
+      This feature will install plugins related WSO2 Carbon Application Support.
    </description>
 
    <copyright url="%copyrightURL">

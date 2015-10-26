@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="org.wso2.developerstudio.kernel.pluginsamples.feature"
-      label="WSO2 Developer Studio Kernel Plugin Samples Feature"
+      label="Samples"
       version="4.0.0.qualifier"
       provider-name="%providerName">
 
    <description url="http://wso2.com">
-      This feature contains the wso2 plugin samples for developer studio kernel.
+      This feature contains the sample plugins for developer studio kernel.
    </description>
 
    <copyright url="%copyrightURL">

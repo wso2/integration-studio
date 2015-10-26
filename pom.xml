@@ -99,7 +99,7 @@
                 <updatePolicy>daily</updatePolicy>
                 <checksumPolicy>ignore</checksumPolicy>
             </releases>
-            <id>WSO2-p2-Repository</id>
+            <id>DevS-Deps-p2-Repository</id>
             <url>http://builder1.us1.wso2.org/~developerstudio/developer-studio-kernel/dependencies/p2/</url>
             <layout>p2</layout>
         </repository>

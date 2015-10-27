@@ -127,6 +127,12 @@
          version="2.5.0.v20150123-0452"
          unpack="false"/>
 <plugin
+         id="org.eclipse.emf.examples.library.edit"
+         download-size="0"
+         install-size="0"
+         version="2.5.0.v20150123-0452"
+         unpack="false"/>
+<plugin
          id="org.eclipse.emf.examples.library.editor"
          download-size="0"
          install-size="0"
@@ -355,7 +361,7 @@
          version="1.7.0.201408201453"
          unpack="false"/>
 <plugin
-         id="org.eclipse.gmf.runtime.common.ui.action"
+         id="org.eclipse.gmf.runtime.common.ui.action.ide"
          download-size="0"
          install-size="0"
          version="1.7.0.201408201453"

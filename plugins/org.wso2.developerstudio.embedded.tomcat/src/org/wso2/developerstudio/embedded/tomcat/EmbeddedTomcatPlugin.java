@@ -62,8 +62,6 @@ public class EmbeddedTomcatPlugin implements BundleActivator {
 			}
 		});
 		tomcatThread.start();
-		// wait till the server is started completely
-		tomcatThread.join();
 	}
 
 	public void stop(BundleContext bundleContext) throws Exception {

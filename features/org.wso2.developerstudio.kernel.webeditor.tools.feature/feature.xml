@@ -2,7 +2,7 @@
 <feature
       id="org.wso2.developerstudio.kernel.webeditor.tools.feature"
       label="Web Based Editor Framework"
-      version="4.0.0.qualifier"
+      version="4.0.0.M1"
       provider-name="%providerName">
 
    <description url="http://wso2.com">

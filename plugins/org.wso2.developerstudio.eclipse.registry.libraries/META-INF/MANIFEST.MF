@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Libraries
 Bundle-SymbolicName: org.wso2.developerstudio.eclipse.registry.libraries
-Bundle-Version: 4.0.0.qualifier
+Bundle-Version: 4.0.0.M1
 Bundle-ActivationPolicy: lazy
 Export-Package: org.wso2.developerstudio.eclipse.registry.libraries,
  org.wso2.developerstudio.eclipse.registry.libraries.utils

@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: org.wso2.developerstudio.webeditor
 Bundle-SymbolicName: org.wso2.developerstudio.webeditor;singleton:=true
-Bundle-Version: 4.0.0.qualifier
+Bundle-Version: 4.0.0.M1
 Bundle-Vendor: WSO2
 Bundle-Activator: org.wso2.developerstudio.webeditor.AbstractWebEditorPlugin
 Require-Bundle: org.eclipse.ui;bundle-version="3.106.0",

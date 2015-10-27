@@ -31,7 +31,6 @@
     <scm>
         <connection>scm:git:https://github.com/wso2/developer-studio.git</connection>
         <developerConnection>scm:git:https://github.com/wso2/developer-studio.git</developerConnection>
-        <tag>HEAD</tag>
         <url>https://github.com/wso2/developer-studio.git</url>
     </scm>
     <distributionManagement>
@@ -54,7 +53,7 @@
         <common.utils.version>4.0.0-SNAPSHOT</common.utils.version>
         <core.plugins.version>4.0.0-SNAPSHOT</core.plugins.version>
         <core.tools.version>4.0.0-SNAPSHOT</core.tools.version>
-        <plugin.samples.version>4.0.0-SNAPSHOT</plugin.samples.version>
+        <embedded.tomcat.version>4.0.0-SNAPSHOT</embedded.tomcat.version>
         <kernel.feature.version>4.0.0-SNAPSHOT</kernel.feature.version>
         <kernel.samples.feature.version>4.0.0-SNAPSHOT</kernel.samples.feature.version>
         <logging.tools.version>4.0.0-SNAPSHOT</logging.tools.version>
@@ -62,14 +61,14 @@
         <osde.tools.version>0.9.5</osde.tools.version>
         <p2.manager.version>4.0.0-SNAPSHOT</p2.manager.version>
         <p2.manager36.version>4.0.0-SNAPSHOT</p2.manager36.version>
+        <plugin.samples.feature.version>4.0.0-SNAPSHOT</plugin.samples.feature.version>
+        <plugin.samples.version>4.0.0-SNAPSHOT</plugin.samples.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.scm.id>my-scm-server</project.scm.id>
         <tycho-version>0.23.0</tycho-version>
-        <version.sortpom.plugin>2.3.0</version.sortpom.plugin>
         <version.mvn-resource-plugin>2.7</version.mvn-resource-plugin>
-        <embedded.tomcat.version>4.0.0-SNAPSHOT</embedded.tomcat.version>
+        <version.sortpom.plugin>2.3.0</version.sortpom.plugin>
         <webeditor.version>4.0.0-SNAPSHOT</webeditor.version>
-        <plugin.samples.feature.version>4.0.0-SNAPSHOT</plugin.samples.feature.version>
         <wso2.tomcat.version>7.0.59.wso2v3</wso2.tomcat.version>
     </properties>
     <repositories>
@@ -93,7 +92,7 @@
             <url>http://maven.wso2.org/nexus/content/groups/wso2-public/</url>
             <layout>default</layout>
         </repository>
-		<repository>
+        <repository>
             <releases>
                 <enabled>true</enabled>
                 <updatePolicy>daily</updatePolicy>

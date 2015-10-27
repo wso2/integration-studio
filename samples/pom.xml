@@ -11,7 +11,7 @@
     <artifactId>wso2-developer-studio-kernel-samples</artifactId>
     <packaging>pom</packaging>
     <name>WSO2 Developer Studio Kernel Samples</name>
-	<modules>
+    <modules>
         <module>org.wso2.developerstudio.eclipse.kernel.defaultsamples</module>
     </modules>
 </project>

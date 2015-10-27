@@ -22,7 +22,7 @@
     <parent>
         <artifactId>wso2-developerstudio-kernel-plugins</artifactId>
         <groupId>org.wso2.developerstudio</groupId>
-        <version>4.0.0.M1</version>
+        <version>4.0.0-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
     <artifactId>org.wso2.developerstudio.eclipse.samples</artifactId>
@@ -105,7 +105,7 @@
                             <tasks>
                             	<property name="eclipse.plugin.name" value="${artifactId}" />
                             	<property name="target.dir" value="${project.build.directory}" />
-                            	<property name="dependency.bundles" value="${dependency.bundles.location}" />
+                            	<property name="dependency.bundles" value="${dependency.bundles.location}"/>
                             	<property name="eclipse.home" value="${ECLIPSE_HOME}" />
                                 <ant antfile="${basedir}/build.xml" />
                             </tasks>

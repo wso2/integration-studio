@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Governance Registry Core
 Bundle-SymbolicName: org.wso2.developerstudio.eclipse.registry.core;singleton:=true
-Bundle-Version: 4.0.0.M1
+Bundle-Version: 4.0.0.qualifier
 Bundle-Activator: org.wso2.developerstudio.eclipse.registry.core.Activator
 Bundle-Vendor: WSO2
 Require-Bundle: org.eclipse.ui,

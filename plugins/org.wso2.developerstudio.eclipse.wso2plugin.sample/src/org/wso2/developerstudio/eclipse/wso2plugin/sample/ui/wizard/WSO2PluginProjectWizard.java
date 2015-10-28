@@ -44,9 +44,11 @@ import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IPerspectiveDescriptor;
+import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.WorkbenchException;
+import org.eclipse.ui.progress.UIJob;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.platform.core.project.model.ProjectWizardSettings;
@@ -122,7 +124,6 @@ public class WSO2PluginProjectWizard extends AbstractWSO2ProjectCreationWizard {
 			@Override
 			protected IStatus run(IProgressMonitor monitor) {
 				isProjectCreated = openSelectedProjectInWorkspace(selectedPlugin);
-				openJavaPerspective();
 				return Status.OK_STATUS;
 			}
 		};
@@ -247,7 +248,6 @@ public class WSO2PluginProjectWizard extends AbstractWSO2ProjectCreationWizard {
 		newProject.open(new NullProgressMonitor());
 		newProject.refreshLocal(IResource.DEPTH_INFINITE, null);
 		sampleTempTag.clearAndEnd();
-
 	}
 
 	protected void updateWithParameterData(File projectDesc, String parameterValue)
@@ -276,39 +276,6 @@ public class WSO2PluginProjectWizard extends AbstractWSO2ProjectCreationWizard {
 
 	public void setSelectedPlugin(ISelection selectedPlugin) {
 		this.selectedPlugin = selectedPlugin;
-	}
-
-	private void openJavaPerspective() {
-
-		final IWorkbenchWindow workbenchWindow =
-		                                         PlatformUI.getWorkbench()
-		                                                   .getActiveWorkbenchWindow();
-		IPerspectiveDescriptor activePerspective = workbenchWindow.getActivePage().getPerspective();
-		if (activePerspective == null ||
-		    !activePerspective.getId().equals(WSO2PluginConstants.JAVA_PERSPECTIVE_ID)) {
-			Display.getCurrent().asyncExec(new Runnable() {
-				public void run() {
-					// switch perspective
-					try {
-						workbenchWindow.getWorkbench()
-						               .showPerspective(WSO2PluginConstants.JAVA_PERSPECTIVE_ID,
-						                                workbenchWindow);
-					} catch (WorkbenchException e) {
-						log.error("Can not switch to perspective: " +
-						          WSO2PluginConstants.JAVA_PERSPECTIVE_ID, e);
-						MultiStatus status =
-						                     MessageDialogUtils.createMultiStatus(e.getLocalizedMessage(),
-						                                                          e,
-						                                                          WSO2PluginConstants.PACKAGE_ID);
-						// show error dialog
-						ErrorDialog.openError(Display.getCurrent().getActiveShell(),
-						                      WSO2PluginConstants.ERROR_DIALOG_TITLE,
-						                      "An Error Occurred in creating the specifid plugin. ",
-						                      status);
-					}
-				}
-			});
-		}
 	}
 
 	protected URL getWizardManifest() {

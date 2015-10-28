@@ -80,7 +80,7 @@ public class WSO2PluginListSelectionPage extends WizardSelectionPage {
 
 		// createAbove(container, 1);
 		Label label = new Label(container, SWT.NONE);
-		label.setText("myText");
+		label.setText("Select the WSO2 Developer Studio Plugin you want to Create from the List Below.");
 		GridData gd = new GridData();
 		label.setLayoutData(gd);
 

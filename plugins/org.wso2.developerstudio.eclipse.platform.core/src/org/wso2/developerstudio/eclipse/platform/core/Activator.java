@@ -24,14 +24,12 @@ public class Activator extends AbstractUIPlugin {
 	public static final String PLUGIN_ID = "org.wso2.tools.eclipse.platform.core";
 
 	private static Activator plugin;
-	private BundleContext context;
 
 	public Activator() {
 	}
 
 	public void start(BundleContext context) throws Exception {
 		super.start(context);
-		this.context = context;
 		plugin = this;
 	}
 
@@ -44,7 +42,4 @@ public class Activator extends AbstractUIPlugin {
 		return plugin;
 	}
 
-	public BundleContext getContext() {
-		return context;
-	}
 }

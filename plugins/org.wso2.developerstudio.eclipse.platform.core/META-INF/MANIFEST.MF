@@ -7,8 +7,7 @@ Bundle-Activator: org.wso2.developerstudio.eclipse.platform.core.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.ltk.core.refactoring,
- org.eclipse.core.expressions,
- org.eclipse.equinox.p2.core
+ org.eclipse.core.expressions
 Bundle-ActivationPolicy: lazy
 Export-Package: org.wso2.developerstudio.eclipse.platform.core,
  org.wso2.developerstudio.eclipse.platform.core.bundle,
@@ -42,7 +41,6 @@ Import-Package: javax.wsdl;version="[1.6.2.wso2v1,1.7.0)",
  org.eclipse.e4.core.contexts,
  org.eclipse.e4.core.services.events,
  org.eclipse.e4.core.services.log,
- org.eclipse.equinox.p2.repository,
  org.eclipse.jdt.core,
  org.eclipse.jface.text,
  org.eclipse.text.edits,

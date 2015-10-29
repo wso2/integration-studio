@@ -7,6 +7,7 @@ Bundle-Version: 4.0.0.qualifier
 Bundle-Activator: org.wso2.developerstudio.eclipse.kernel.defaultsamples.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime
+Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: org.wso2.developerstudio.eclipse.kernel.defaultsamples
 Import-Package: org.eclipse.core.resources,

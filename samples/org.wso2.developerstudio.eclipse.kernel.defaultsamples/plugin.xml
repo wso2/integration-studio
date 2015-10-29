@@ -23,21 +23,19 @@
            id="org.wso2.mediator.plugin.sample"
            name="WSO2ESBCustomArtifactPlugin"
            archive="samples/SampleArtifactPlugin.zip"
-           description="
-             This is a WSO2 ESB plugin project. 
-             This will give you a plugin project which when installed on eclipse will give you a new project creation option 
-             to create a custom artifact project for WSO2 ESB 4.9.0" >       
+           description="%Sampleartifactplugin_description" >       
       </template>
       <template
            id="org.wso2.analytics.plugin.sample"
            name="WSO2CEPMultipleArtifactProjectPlugin"
            archive="samples/SampleMultipleArtifactPlugin.zip"
-           description="
-             This is a WSO2 CEP plugin project. 
-             This will give you a plugin project which when installed on eclipse will give you a new project creation option 
-             to create a multiple artifact project, in which you can store multiple artifacts, It also includes a simple XML artifact 
-	     	 to be saved in the multiple artifact project. You can add as many artifacts as you want to be saved in the multiple artifact project following the same pattern. 
-	     	 And also you can even add new artifacts for the same multiple artifact project using different plugins" >       
+           description="%Multipleartifactplugin_description" >       
+      </template>
+      <template
+           id="org.wso2.perspective.plugin.sample"
+           name="SamplePerspectivePlugin"
+           archive="samples/PerspectivePluginSample.zip"
+           description="%Perspectiveplugin_description" >       
       </template>
    </extension>
 </plugin>

@@ -124,6 +124,17 @@
 				</enablement>
 		</deleteParticipant>
    </extension>
+   
+   <extension point="org.wso2.developerstudio.eclipse.platform.core.intro.ui.dashboard">
+	
+	<category id="dashboard.category.esb" showTitle="true" title="Enterprise Service Bus" priority="2" />
+	
+	<wizardLink category="dashboard.category.esb" id="1dashboard.wizardLink.esb.project"
+		wizard="org.wso2.developerstudio.eclipse.artifact.newesbproject"
+	priority="1">
+	</wizardLink>
+
+  </extension>
 
 	<extension
 			point="org.eclipse.ui.navigator.viewer">

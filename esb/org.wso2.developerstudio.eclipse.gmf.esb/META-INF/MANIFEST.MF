@@ -11,10 +11,9 @@ Export-Package: org.wso2.developerstudio.eclipse.gmf.esb,
  org.wso2.developerstudio.eclipse.gmf.esb.impl,
  org.wso2.developerstudio.eclipse.gmf.esb.util
 Require-Bundle: org.eclipse.core.runtime,
- org.eclipse.emf.ecore;visibility:=reexport
+ org.eclipse.emf.ecore;visibility:=reexport,
+ org.wso2.developerstudio.eclipse.platform.core;bundle-version="4.0.0"
 Bundle-ActivationPolicy: lazy
 Import-Package: org.eclipse.emf.ecore.xmi,
  org.eclipse.emf.ecore.xmi.impl,
- org.wso2.developerstudio.eclipse.esb.core.utils,
- org.wso2.developerstudio.eclipse.platform.core.mediatype,
- org.wso2.developerstudio.eclipse.platform.core.utils
+ org.wso2.developerstudio.eclipse.esb.core.utils

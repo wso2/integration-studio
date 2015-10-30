@@ -2,11 +2,16 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Project
 Bundle-SymbolicName: org.wso2.developerstudio.eclipse.esb.project;singleton:=true
-Bundle-Version: 3.8.0
+Bundle-Version: 4.0.0
 Bundle-Activator: org.wso2.developerstudio.eclipse.esb.project.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
- org.eclipse.ltk.core.refactoring
+ org.eclipse.ltk.core.refactoring,
+ org.wso2.developerstudio.eclipse.platform.core;bundle-version="4.0.0",
+ org.wso2.developerstudio.eclipse.platform.ui;bundle-version="4.0.0",
+ org.wso2.developerstudio.eclipse.utils;bundle-version="4.0.0",
+ org.wso2.developerstudio.eclipse.logging;bundle-version="4.0.0",
+ org.wso2.developerstudio.eclipse.maven;bundle-version="4.0.0"
 Bundle-ActivationPolicy: lazy
 Import-Package: com.google.gson;version="2.1.0",
  com.google.gson.reflect;version="2.1.0",
@@ -32,28 +37,9 @@ Import-Package: com.google.gson;version="2.1.0",
  org.eclipse.ui.navigator,
  org.eclipse.ui.part,
  org.eclipse.ui.wizards.newresource,
- org.wso2.developerstudio.eclipse.capp.core.manifest,
- org.wso2.developerstudio.eclipse.capp.maven.utils,
+ org.wso2.developerstudio.eclipse.esb.core,
  org.wso2.developerstudio.eclipse.esb.core.utils,
- org.wso2.developerstudio.eclipse.general.project.artifact,
- org.wso2.developerstudio.eclipse.general.project.artifact.bean,
- org.wso2.developerstudio.eclipse.gmf.esb,
- org.wso2.developerstudio.eclipse.logging.core,
- org.wso2.developerstudio.eclipse.maven.util,
- org.wso2.developerstudio.eclipse.platform.core.exception,
- org.wso2.developerstudio.eclipse.platform.core.manifest,
- org.wso2.developerstudio.eclipse.platform.core.model,
- org.wso2.developerstudio.eclipse.platform.core.nature,
- org.wso2.developerstudio.eclipse.platform.core.project.model,
- org.wso2.developerstudio.eclipse.platform.core.utils,
- org.wso2.developerstudio.eclipse.platform.ui.editor,
- org.wso2.developerstudio.eclipse.platform.ui.startup,
- org.wso2.developerstudio.eclipse.platform.ui.validator,
- org.wso2.developerstudio.eclipse.platform.ui.wizard,
- org.wso2.developerstudio.eclipse.utils.file,
- org.wso2.developerstudio.eclipse.utils.project,
- org.wso2.developerstudio.eclipse.utils.template,
- org.wso2.developerstudio.eclipse.utils.ui
+ org.wso2.developerstudio.eclipse.gmf.esb
 Export-Package: org.wso2.developerstudio.eclipse.esb.project.artifact,
  org.wso2.developerstudio.eclipse.esb.project.control.graphicalproject,
  org.wso2.developerstudio.eclipse.esb.project.filter,

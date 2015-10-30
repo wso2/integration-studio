@@ -56,9 +56,9 @@ import org.wso2.developerstudio.eclipse.esb.core.EsbConfigurationManager;
 import org.wso2.developerstudio.eclipse.esb.core.interfaces.IEsbEndpoint;
 import org.wso2.developerstudio.eclipse.esb.core.interfaces.IEsbLocalEntry;
 import org.wso2.developerstudio.eclipse.esb.core.interfaces.IEsbSequence;
-import org.wso2.developerstudio.eclipse.greg.core.RegistryManager;
-import org.wso2.developerstudio.eclipse.greg.core.interfaces.IRegistryFile;
-import org.wso2.developerstudio.eclipse.greg.core.interfaces.RegistryFileImpl;
+//import org.wso2.developerstudio.eclipse.greg.core.RegistryManager;
+//import org.wso2.developerstudio.eclipse.greg.core.interfaces.IRegistryFile;
+//import org.wso2.developerstudio.eclipse.greg.core.interfaces.RegistryFileImpl;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.platform.core.interfaces.IDeveloperStudioElement;
@@ -254,9 +254,12 @@ public class DeveloperStudioElementProviderDialog extends Dialog {
 		List<Class<?>> typesList = Arrays.asList(type);
 		
 		//IRegistryFile.class, IEsbEndpoint.class, IEsbSequence.class, IEsbLocalEntry.class
+		//TODO susinda fix this and uncomment
+		/*
 		if (typesList.contains(IRegistryFile.class)) {
 			list.addAll(Arrays.asList(RegistryManager.getResourceProviders(true)));
 		}
+		*/
 		
 		if (typesList.contains(IEsbEndpoint.class)) {
 			list.addAll(Arrays.asList(EsbConfigurationManager.getEndpointProviders(true)));

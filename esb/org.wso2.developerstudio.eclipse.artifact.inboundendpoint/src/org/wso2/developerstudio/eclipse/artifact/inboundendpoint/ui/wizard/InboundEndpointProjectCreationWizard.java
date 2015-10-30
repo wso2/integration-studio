@@ -45,7 +45,7 @@ import org.wso2.developerstudio.eclipse.artifact.inboundendpoint.Activator;
 import org.wso2.developerstudio.eclipse.artifact.inboundendpoint.model.InboundEndpointModel;
 import org.wso2.developerstudio.eclipse.artifact.inboundendpoint.utils.InboundEndpointArtifactProperties;
 import org.wso2.developerstudio.eclipse.artifact.inboundendpoint.utils.InboundEndpointImageUtils;
-import org.wso2.developerstudio.eclipse.capp.maven.utils.MavenConstants;
+import org.wso2.developerstudio.eclipse.esb.core.ESBMavenConstants;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBArtifact;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBProjectArtifact;
 import org.wso2.developerstudio.eclipse.gmf.esb.ArtifactType;
@@ -202,7 +202,7 @@ public class InboundEndpointProjectCreationWizard extends AbstractWSO2ProjectCre
 		}
 
 		Plugin plugin = MavenUtils.createPluginEntry(mavenProject, MAVEN_ID, INBOUND_EP_PLUGIN_ID,
-				MavenConstants.WSO2_ESB_INBOUND_ENDPOINT_VERSION, true);
+				ESBMavenConstants.WSO2_ESB_INBOUND_ENDPOINT_VERSION, true);
 		PluginExecution pluginExecution = new PluginExecution();
 		pluginExecution.addGoal(PLUGIN_GOAL);
 		pluginExecution.setPhase(PLUGIN_PHASE);

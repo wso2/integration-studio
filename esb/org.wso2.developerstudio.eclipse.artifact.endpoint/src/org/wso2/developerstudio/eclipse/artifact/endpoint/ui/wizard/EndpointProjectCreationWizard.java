@@ -33,6 +33,7 @@ import javax.xml.namespace.QName;
 import org.apache.axiom.om.OMAttribute;
 import org.apache.axiom.om.OMElement;
 import org.apache.axiom.om.impl.builder.StAXOMBuilder;
+import org.apache.commons.lang.NotImplementedException;
 import org.apache.commons.lang.StringUtils;
 import org.apache.maven.model.Plugin;
 import org.apache.maven.model.PluginExecution;
@@ -55,13 +56,15 @@ import org.wso2.developerstudio.eclipse.artifact.endpoint.utils.EndPointImageUti
 import org.wso2.developerstudio.eclipse.artifact.endpoint.utils.EpArtifactConstants;
 import org.wso2.developerstudio.eclipse.artifact.endpoint.validators.HttpMethodList.HttpMethodType;
 import org.wso2.developerstudio.eclipse.artifact.endpoint.validators.ProjectFilter;
-import org.wso2.developerstudio.eclipse.capp.maven.utils.MavenConstants;
+import org.wso2.developerstudio.eclipse.esb.core.ESBMavenConstants;
+//import org.wso2.developerstudio.eclipse.capp.maven.utils.MavenConstants;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBArtifact;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBProjectArtifact;
-import org.wso2.developerstudio.eclipse.general.project.artifact.GeneralProjectArtifact;
-import org.wso2.developerstudio.eclipse.general.project.artifact.RegistryArtifact;
-import org.wso2.developerstudio.eclipse.general.project.artifact.bean.RegistryElement;
-import org.wso2.developerstudio.eclipse.general.project.artifact.bean.RegistryItem;
+//TODO fix this
+//import org.wso2.developerstudio.eclipse.general.project.artifact.GeneralProjectArtifact;
+//import org.wso2.developerstudio.eclipse.general.project.artifact.RegistryArtifact;
+//import org.wso2.developerstudio.eclipse.general.project.artifact.bean.RegistryElement;
+//import org.wso2.developerstudio.eclipse.general.project.artifact.bean.RegistryItem;
 import org.wso2.developerstudio.eclipse.gmf.esb.ArtifactType;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
@@ -299,6 +302,9 @@ public class EndpointProjectCreationWizard extends AbstractWSO2ProjectCreationWi
 		RegistryResourceUtils.addRegistryResourceInfo(destFile, regResInfoDoc,
 				project.getLocation().toFile(), registryPath);
 
+		//TODO FIX this and remove exception
+		throw new NotImplementedException();
+		/*
 		GeneralProjectArtifact generalProjectArtifact = new GeneralProjectArtifact();
 		generalProjectArtifact.fromFile(project.getFile("artifact.xml")
 				.getLocation().toFile());
@@ -325,6 +331,7 @@ public class EndpointProjectCreationWizard extends AbstractWSO2ProjectCreationWi
 		}
 		generalProjectArtifact.addArtifact(artifact);
 		generalProjectArtifact.toFile();
+		*/
 		
 	}
 	
@@ -340,12 +347,12 @@ public class EndpointProjectCreationWizard extends AbstractWSO2ProjectCreationWi
 		
 		boolean pluginExists = MavenUtils.checkOldPluginEntry(mavenProject,
 				"org.wso2.maven", "wso2-general-project-plugin",
-				MavenConstants.WSO2_GENERAL_PROJECT_VERSION);
+				ESBMavenConstants.WSO2_GENERAL_PROJECT_VERSION);
 		if(pluginExists){
 			return ;
 		}
 	
-		Plugin plugin = MavenUtils.createPluginEntry(mavenProject, "org.wso2.maven", "wso2-general-project-plugin", MavenConstants.WSO2_GENERAL_PROJECT_VERSION, true);
+		Plugin plugin = MavenUtils.createPluginEntry(mavenProject, "org.wso2.maven", "wso2-general-project-plugin", ESBMavenConstants.WSO2_GENERAL_PROJECT_VERSION, true);
 		
 		PluginExecution pluginExecution;
 		
@@ -393,7 +400,7 @@ public class EndpointProjectCreationWizard extends AbstractWSO2ProjectCreationWi
 		}
 
 		Plugin plugin = MavenUtils.createPluginEntry(mavenProject, "org.wso2.maven", "wso2-esb-endpoint-plugin",
-				MavenConstants.WSO2_ESB_ENDPOINT_VERSION, true);
+				ESBMavenConstants.WSO2_ESB_ENDPOINT_VERSION, true);
 		PluginExecution pluginExecution = new PluginExecution();
 		pluginExecution.addGoal("pom-gen");
 		pluginExecution.setPhase("process-resources");

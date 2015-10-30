@@ -2,12 +2,16 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Connector
 Bundle-SymbolicName: org.wso2.developerstudio.eclipse.artifact.connector;singleton:=true
-Bundle-Version: 3.8.0
+Bundle-Version: 4.0.0
 Bundle-Activator: org.wso2.developerstudio.eclipse.artifact.connector.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
- org.eclipse.ui.ide,
- org.eclipse.core.resources
+ org.eclipse.core.resources,
+ org.wso2.developerstudio.eclipse.platform.core;bundle-version="4.0.0",
+ org.wso2.developerstudio.eclipse.platform.ui;bundle-version="4.0.0",
+ org.wso2.developerstudio.eclipse.logging;bundle-version="4.0.0",
+ org.wso2.developerstudio.eclipse.maven;bundle-version="4.0.0",
+ org.wso2.developerstudio.eclipse.utils;bundle-version="4.0.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
 Import-Package: org.apache.axiom.om;version="1.2.11.wso2v4",
@@ -15,20 +19,4 @@ Import-Package: org.apache.axiom.om;version="1.2.11.wso2v4",
  org.apache.maven.project,
  org.codehaus.plexus.util.xml,
  org.codehaus.plexus.util.xml.pull,
- org.eclipse.jdt.core,
- org.wso2.developerstudio.eclipse.capp.maven.utils,
- org.wso2.developerstudio.eclipse.libraries.utils,
- org.wso2.developerstudio.eclipse.logging.core,
- org.wso2.developerstudio.eclipse.maven.util,
- org.wso2.developerstudio.eclipse.platform.core.exception,
- org.wso2.developerstudio.eclipse.platform.core.manifest,
- org.wso2.developerstudio.eclipse.platform.core.model,
- org.wso2.developerstudio.eclipse.platform.core.nature,
- org.wso2.developerstudio.eclipse.platform.core.project.model,
- org.wso2.developerstudio.eclipse.platform.ui.validator,
- org.wso2.developerstudio.eclipse.platform.ui.wizard,
- org.wso2.developerstudio.eclipse.platform.ui.wizard.pages,
- org.wso2.developerstudio.eclipse.utils.file,
- org.wso2.developerstudio.eclipse.utils.jdt,
- org.wso2.developerstudio.eclipse.utils.project,
- org.wso2.developerstudio.eclipse.utils.ui
+ org.wso2.developerstudio.eclipse.esb.core

@@ -34,7 +34,7 @@ import org.wso2.developerstudio.eclipse.artifact.connector.Activator;
 import org.wso2.developerstudio.eclipse.artifact.connector.artifact.ConnectorProjectArtifact;
 import org.wso2.developerstudio.eclipse.artifact.connector.model.ConnectorModel;
 import org.wso2.developerstudio.eclipse.artifact.connector.utils.ConnectorImageUtils;
-import org.wso2.developerstudio.eclipse.capp.maven.utils.MavenConstants;
+import org.wso2.developerstudio.eclipse.esb.core.ESBMavenConstants;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
@@ -124,7 +124,7 @@ public class ConnectorCreationWizard extends AbstractWSO2ProjectCreationWizard {
 		}
 
 		Plugin plugin = MavenUtils.createPluginEntry(mavenProject, "org.wso2.maven", "wso2-esb-connector-plugin",
-				MavenConstants.WSO2_ESB_CONNECTOR_VERSION, true);
+				ESBMavenConstants.WSO2_ESB_CONNECTOR_VERSION, true);
 		PluginExecution pluginExecution = new PluginExecution();
 		pluginExecution.addGoal("pom-gen");
 		pluginExecution.setPhase("process-resources");

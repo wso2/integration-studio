@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <plugin>
- <extension point="org.eclipse.ui.newWizards">
+
+  <extension point="org.eclipse.ui.newWizards">
 		<wizard name="REST API" 
 			category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.eclipse.message.mediation/org.wso2.developerstudio.eclipse.message.mediation.features"
 			class="org.wso2.developerstudio.eclipse.artifact.synapse.api.ui.wizard.SynapseAPICreationWizard"
@@ -11,6 +12,8 @@
 			<description>Synapse API</description>
 		</wizard>
 	</extension>
+ 
+		
 	  <!--<extension point="org.eclipse.ui.navigator.navigatorContent">	
 	   <navigatorContent activeByDefault="true"
 			priority="high"
@@ -64,6 +67,7 @@
                 </enablement>
             </commonWizard>
     </extension>
+    
    <extension
 		point="org.wso2.developerstudio.eclipse.platform.core.intro.ui.dashboard">	
 	<wizardLink category="dashboard.category.esb" id="8dashboard.wizardLink.esb.synapse.api"

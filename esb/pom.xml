@@ -1,17 +1,21 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-    <parent>
-    	<groupId>org.wso2.eclipse</groupId>
-    	<artifactId>wso2-eclipse-parent</artifactId>
-    	<version>3.8.0</version>
-    </parent>
-	<groupId>org.wso2.developerstudio</groupId>
-	<artifactId>esb-tool-parent</artifactId>
+
+    <version>4.0.0</version>
+    <groupId>org.wso2.developerstudio</groupId>
+    <artifactId>esb-tool-parent</artifactId>
+    <name>WSO2 ESB Tool Parent</name>
+
     <modelVersion>4.0.0</modelVersion>
     <packaging>pom</packaging>
-    <name>WSO2 ESB Tool Parent</name>
+    
+
     <modules>
+	<module>org.wso2.developerstudio.eclipse.esb.core</module>
+        <module>org.wso2.developerstudio.eclipse.gmf.esb</module>
+        <module>org.wso2.developerstudio.eclipse.gmf.esb.edit</module>
+	<module>org.wso2.developerstudio.eclipse.gmf.esb.persistence</module>
 	<module>org.wso2.developerstudio.eclipse.esb.project</module>
 	<module>org.wso2.developerstudio.eclipse.artifact.endpoint</module>
 	<module>org.wso2.developerstudio.eclipse.artifact.proxyservice</module>
@@ -26,67 +30,101 @@
 	<module>org.wso2.developerstudio.eclipse.artifact.messageprocessor</module>
 	<module>org.wso2.developerstudio.eclipse.artifact.inboundendpoint</module>
 	<module>org.wso2.developerstudio.eclipse.artifact.connector</module>
-        <!--module>org.wso2.developerstudio.eclipse.esb</module>
-        <module>org.wso2.developerstudio.eclipse.esb.edit</module>
-        <module>org.wso2.developerstudio.eclipse.esb.editor</module>
-        <module>org.wso2.developerstudio.eclipse.esb.mediator</module>-->
-        <module>org.wso2.developerstudio.eclipse.gmf.esb</module>
-	<module>org.wso2.developerstudio.eclipse.gmf.esb.edit</module>
-	<module>org.wso2.developerstudio.eclipse.gmf.esb.persistence</module>
-	<!--module>org.wso2.developerstudio.eclipse.gmf.esb.deserializer</module-->
-	<module>org.wso2.developerstudio.eclipse.gmf.esb.diagram</module>
-    </modules>
-    <!--repositories>
-    	<repository>
-    		<id>wso2-maven2-repo</id>
-    		<name>WSO2 Maven2 Repo</name>
-    		<url>http://dist.wso2.org/maven2/</url>
-    	</repository>
-    </repositories>
-    <distributionManagement>
-        <repository>
-            <id>wso2-maven2-repository</id>
-            <name>WSO2 Maven2 Repository</name>
-            <url>scp://dist.wso2.org/home/httpd/dist.wso2.org/maven2/</url>
-        </repository>
-    </distributionManagement>
 
-    <dependencyManagement>
-    	<dependencies>
-	        <dependency>
-	            <groupId>org.wso2.eclipse</groupId>
-	            <artifactId>org.wso2.developerstudio.eclipse.libraries</artifactId>
-	            <version>${common.libraries.version}</version>
-	        </dependency>      
-            <dependency>
-                <groupId>org.wso2.eclipse</groupId>
-                <artifactId>org.wso2.developerstudio.eclipse.logging</artifactId>
-                <version>${logging.tools.version}</version>                
-            </dependency>    
-            <dependency>
-                <groupId>org.wso2.eclipse</groupId>
-                <artifactId>org.wso2.developerstudio.eclipse.utils</artifactId>
-	            <version>${common.utils.version}</version>
-            </dependency>           
-            <dependency>
-                <groupId>org.wso2.developerstudio</groupId>
-                <artifactId>org.wso2.developerstudio.eclipse.esb.core</artifactId>
-                <version>${core.plugins.version}</version>
-            </dependency>        
-            <dependency>
-                <groupId>org.wso2.developerstudio</groupId>
-                <artifactId>org.wso2.developerstudio.eclipse.platform.core</artifactId>
-                <version>${core.plugins.version}</version>
-            </dependency>                       	
-    	</dependencies>
-    </dependencyManagement>
+	<!--module>org.wso2.developerstudio.eclipse.gmf.esb.diagram</module-->
+    </modules>
+
     <properties>
-        <core.plugins.version>3.8.0-SNAPSHOT</core.plugins.version>                            
-        <esb.tools.version>3.8.0-SNAPSHOT</esb.tools.version>  
-	    <capp.tools.version>3.8.0-SNAPSHOT</capp.tools.version>  
-        <common.libraries.version>3.8.0-SNAPSHOT</common.libraries.version>   	 
-        <logging.tools.version>3.8.0-SNAPSHOT</logging.tools.version>  
-        <common.utils.version>3.8.0-SNAPSHOT</common.utils.version>                      	                             
-    </properties-->
+ 	<tycho-version>0.19.0</tycho-version>
+    </properties>
+
+    <pluginRepositories> 
+        <pluginRepository> 
+           <id>repository.dev.java.net-maven2</id>
+           <name>Java.net Repository for Maven</name> 
+           <url>http://download.java.net/maven/2/</url> 
+           <layout>default</layout> 
+        </pluginRepository>
+    </pluginRepositories>       
+    <repositories>
+	<repository>
+	     <id>Eclipse-p2-repo</id>
+	     <layout>p2</layout>
+	     <url>http://download.eclipse.org/releases/luna/</url>
+	     <releases>
+		<enabled>true</enabled>
+		<updatePolicy>daily</updatePolicy>
+		<checksumPolicy>ignore</checksumPolicy>
+	      </releases>
+	</repository>
+        <repository>
+            <id>developerstudio-kernel</id>
+            <layout>p2</layout>
+            <url>http://builder1.us1.wso2.org/~developerstudio/developer-studio-kernel/4.0.0/M0/p2/</url>
+        </repository>
+	<repository>
+	     <id>WSO2-Nexus-Maven-Repository</id>
+	     <layout>default</layout>
+	     <url>http://maven.wso2.org/nexus/content/groups/wso2-public/</url>
+	     <releases>
+		<enabled>true</enabled>
+		<updatePolicy>daily</updatePolicy>
+		<checksumPolicy>ignore</checksumPolicy>
+	      </releases>
+	</repository>
+    </repositories>
+
+    <build>
+	    <plugins>
+		<plugin>
+			<groupId>org.eclipse.tycho</groupId>
+			<artifactId>tycho-maven-plugin</artifactId>
+			<version>${tycho-version}</version>
+			<extensions>true</extensions>
+		</plugin>
+ 		<plugin>
+                <groupId>org.eclipse.tycho</groupId>
+                <artifactId>target-platform-configuration</artifactId>
+                <version>${tycho-version}</version>
+                <configuration>
+                        <resolver>p2</resolver>
+                        <environments>
+                                <environment>
+                                        <os>linux</os>
+                                        <ws>gtk</ws>
+                                        <arch>x86</arch>
+                                </environment>
+                                <environment>
+                                        <os>linux</os>
+                                        <ws>gtk</ws>
+                                        <arch>x86_64</arch>
+                                </environment>
+                                <environment>
+                                        <os>win32</os>
+                                        <ws>win32</ws>
+                                        <arch>x86</arch>
+                                </environment>
+                                <environment>
+                                        <os>win32</os>
+                                        <ws>win32</ws>
+                                        <arch>x86_64</arch>
+                                </environment>
+                                <environment>
+                                        <os>macosx</os>
+                                        <ws>cocoa</ws>
+                                        <arch>x86</arch>
+                                </environment>
+                                <environment>
+                                        <os>macosx</os>
+                                        <ws>cocoa</ws>
+                                        <arch>x86_64</arch>
+                                </environment>
+                        </environments>
+                </configuration>
+        </plugin>
+
+	    </plugins>
+    </build>
+
 </project>
 

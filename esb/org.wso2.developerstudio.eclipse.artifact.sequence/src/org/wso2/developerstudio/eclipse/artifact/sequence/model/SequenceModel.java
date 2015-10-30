@@ -20,9 +20,12 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.xml.stream.XMLStreamException;
+
 import org.apache.axiom.om.OMElement;
 import org.apache.axiom.om.OMException;
+import org.apache.commons.lang.NotImplementedException;
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
@@ -36,7 +39,7 @@ import org.wso2.developerstudio.eclipse.artifact.sequence.validators.ProjectFilt
 import org.wso2.developerstudio.eclipse.esb.core.utils.SynapseEntryType;
 import org.wso2.developerstudio.eclipse.esb.core.utils.SynapseFileUtils;
 import org.wso2.developerstudio.eclipse.esb.project.utils.ESBProjectUtils;
-import org.wso2.developerstudio.eclipse.general.project.utils.GeneralProjectUtils;
+//import org.wso2.developerstudio.eclipse.general.project.utils.GeneralProjectUtils;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.platform.core.exception.ObserverFailedException;
@@ -132,11 +135,14 @@ public class SequenceModel extends ProjectDataModel {
 			}
 		} else if (key.equals("create.esb.prj")) {
 			if(isSaveAsDynamic()){
-				Shell shell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
-				IProject generalProject = GeneralProjectUtils.createGeneralProject(shell,getLocation());
-				if(generalProject!=null){
-					setSequenceSaveLocation(generalProject);
-				}
+				
+				//TODO fix this and remove unimplemented exeption
+				throw new NotImplementedException();
+//				Shell shell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
+//				IProject generalProject = GeneralProjectUtils.createGeneralProject(shell,getLocation());
+//				if(generalProject!=null){
+//					setSequenceSaveLocation(generalProject);
+//				}
 				
 			} else{
 				Shell shell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();

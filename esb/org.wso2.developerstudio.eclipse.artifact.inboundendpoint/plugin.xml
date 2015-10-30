@@ -12,6 +12,7 @@
 			<description>Inbound Endpoint</description>
 		</wizard>
    </extension>
+   
    <extension point="org.eclipse.ui.navigator.navigatorContent">    
             <commonWizard type="new"
                 menuGroupId="2org.wso2.developerstudio.eclipse.artifact.esb"
@@ -45,4 +46,11 @@
             name="Carbon Application Inbound Endpoint">
       </inboundendpoint>
    </extension>
+   
+   <extension point="org.wso2.developerstudio.eclipse.platform.core.intro.ui.dashboard">	
+		<wizardLink category="dashboard.category.esb" id="dashboard.wizardLink.esb.inboundendpoint"
+			wizard="org.wso2.developerstudio.eclipse.artifact.newinboundendpointartifact" priority="10">
+		</wizardLink>
+	</extension>
+   
 </plugin>

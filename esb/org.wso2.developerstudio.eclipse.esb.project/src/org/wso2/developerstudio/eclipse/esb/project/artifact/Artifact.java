@@ -6,18 +6,18 @@ import java.util.List;
 import javax.xml.namespace.QName;
 
 import org.apache.axiom.om.OMElement;
+import org.wso2.developerstudio.eclipse.esb.core.ESBArtifact;
 import org.wso2.developerstudio.eclipse.platform.core.manifest.AbstractXMLDoc;
 
 public class Artifact extends AbstractXMLDoc{
 
-	private List<org.wso2.developerstudio.eclipse.capp.core.manifest.Artifact> artifacts=new ArrayList<org.wso2.developerstudio.eclipse.capp.core.manifest.Artifact>();
+	private List<ESBArtifact> artifacts = new ArrayList<ESBArtifact>();
 	
-	public List<org.wso2.developerstudio.eclipse.capp.core.manifest.Artifact> getArtifacts() {
+	public List<ESBArtifact> getArtifacts() {
 		return artifacts;
 	}
 
-	public void setArtifacts(
-			List<org.wso2.developerstudio.eclipse.capp.core.manifest.Artifact> artifacts) {
+	public void setArtifacts(List<ESBArtifact> artifacts) {
 		this.artifacts = artifacts;
 	}
 
@@ -27,7 +27,7 @@ public class Artifact extends AbstractXMLDoc{
 		for (OMElement omElement : artifactsElements) {
 			List<OMElement> artifactElements = getChildElements(omElement, "artifact");			
 			for (OMElement omElement2 : artifactElements) {				
-				org.wso2.developerstudio.eclipse.capp.core.manifest.Artifact artifact=new org.wso2.developerstudio.eclipse.capp.core.manifest.Artifact(); 
+				ESBArtifact artifact = new ESBArtifact(); 
 				artifact.setName(omElement2.getAttributeValue(new QName("name")));
 				artifacts.add(artifact);
 			}

@@ -61,7 +61,8 @@ import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.FileEditorInput;
 import org.wso2.developerstudio.eclipse.artifact.template.validators.TemplateList;
-import org.wso2.developerstudio.eclipse.capp.maven.utils.MavenConstants;
+import org.wso2.developerstudio.eclipse.esb.core.ESBMavenConstants;
+//import org.wso2.developerstudio.eclipse.capp.maven.utils.MavenConstants;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBArtifact;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBProjectArtifact;
 import org.wso2.developerstudio.eclipse.esb.project.utils.ESBProjectUtils;
@@ -407,7 +408,7 @@ public class CallTemplateMediatorEditPart extends FixedSizedAbstractMediator {
 		}
 
 		Plugin plugin = MavenUtils.createPluginEntry(mavenProject, "org.wso2.maven", "wso2-esb-template-plugin",
-				MavenConstants.WSO2_ESB_TEMPLATE_VERSION, true);
+				ESBMavenConstants.WSO2_ESB_TEMPLATE_VERSION, true);
 		PluginExecution pluginExecution = new PluginExecution();
 		pluginExecution.addGoal("pom-gen");
 		pluginExecution.setPhase("process-resources");

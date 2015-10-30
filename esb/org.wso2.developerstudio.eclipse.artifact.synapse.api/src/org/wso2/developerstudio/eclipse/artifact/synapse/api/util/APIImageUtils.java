@@ -25,8 +25,8 @@ public class APIImageUtils extends ImageUtils{
 	private static ImageUtils instance;
 
 	public static ImageUtils getInstance(){
-		if (instance==null){
-			instance=new APIImageUtils();
+		if (instance == null){
+			instance = new APIImageUtils();
 		}
 		return instance;
 	} 

@@ -46,10 +46,10 @@ import org.wso2.developerstudio.eclipse.esb.core.interfaces.IEsbSequence;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.RegistryKeyPropertyImpl;
-import org.wso2.developerstudio.eclipse.greg.core.interfaces.IRegistryConnection;
-import org.wso2.developerstudio.eclipse.greg.core.interfaces.IRegistryData;
-import org.wso2.developerstudio.eclipse.greg.core.interfaces.IRegistryFile;
-import org.wso2.developerstudio.eclipse.greg.core.interfaces.IRegistryHandler;
+//import org.wso2.developerstudio.eclipse.greg.core.interfaces.IRegistryConnection;
+//import org.wso2.developerstudio.eclipse.greg.core.interfaces.IRegistryData;
+//import org.wso2.developerstudio.eclipse.greg.core.interfaces.IRegistryFile;
+//import org.wso2.developerstudio.eclipse.greg.core.interfaces.IRegistryHandler;
 
 /**
  * A SWT based editor dialog to be used for editing registry key properties.
@@ -283,6 +283,8 @@ public class RegistryKeyPropertyEditorDialog extends Dialog {
 	private void openRegistryBrowser() {
 		// Open registry browser.
 		hide();
+		//TODO susinda fix this and uncomment
+		/*
 		try{
 			IRegistryConnection[] registryConnections = CAppEnvironment.getRegistryHandler().getRegistryConnections();
 			if (registryConnections.length==0){
@@ -304,6 +306,7 @@ public class RegistryKeyPropertyEditorDialog extends Dialog {
 		}finally{
 			show();
 		}
+		*/
 	}
 
 	private void setSelectedPath(String selectedPath) {
@@ -322,7 +325,8 @@ public class RegistryKeyPropertyEditorDialog extends Dialog {
 	@SuppressWarnings("unchecked")
 	private void openRegistryResourceProviderDialog(){
 		hide();
-		
+		//TODO susinda fix this and uncomment
+		/*
 		try{
 		DeveloperStudioElementProviderDialog registryResourceProviderSelector = new DeveloperStudioElementProviderDialog(getParentShell(),new Class[]{IRegistryFile.class, IEsbEndpoint.class, IEsbSequence.class, IEsbLocalEntry.class},(Map<String,List<String>>)rkProperty.getFilters());
 			
@@ -337,5 +341,6 @@ public class RegistryKeyPropertyEditorDialog extends Dialog {
 		}finally{
 			show();
 		}
+		*/
 	}
 }

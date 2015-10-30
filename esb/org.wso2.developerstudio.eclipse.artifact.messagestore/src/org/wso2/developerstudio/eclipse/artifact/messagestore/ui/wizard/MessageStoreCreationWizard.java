@@ -54,7 +54,7 @@ import org.wso2.developerstudio.eclipse.artifact.messagestore.model.MessageStore
 import org.wso2.developerstudio.eclipse.artifact.messagestore.provider.JDBCConnectionInformationList.JDBCConnectionInformationType;
 import org.wso2.developerstudio.eclipse.artifact.messagestore.provider.MessageStoreTypeList.MessageStoreType;
 import org.wso2.developerstudio.eclipse.artifact.messagestore.util.MessageStoreImageUtils;
-import org.wso2.developerstudio.eclipse.capp.maven.utils.MavenConstants;
+import org.wso2.developerstudio.eclipse.esb.core.ESBMavenConstants;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBArtifact;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBProjectArtifact;
 import org.wso2.developerstudio.eclipse.gmf.esb.ArtifactType;
@@ -334,12 +334,12 @@ public class MessageStoreCreationWizard extends AbstractWSO2ProjectCreationWizar
 
 		// Skip changing the pom file if group ID and artifact ID are matched
 		if (MavenUtils.checkOldPluginEntry(mavenProject, "org.wso2.maven", "wso2-esb-messagestore-plugin",
-				MavenConstants.WSO2_ESB_MESSAGE_STORE_PLUGIN_VERSION)) {
+				ESBMavenConstants.WSO2_ESB_MESSAGE_STORE_PLUGIN_VERSION)) {
 			return;
 		}
 
 		Plugin plugin = MavenUtils.createPluginEntry(mavenProject, "org.wso2.maven", "wso2-esb-messagestore-plugin",
-				MavenConstants.WSO2_ESB_MESSAGE_STORE_PLUGIN_VERSION, true);
+				ESBMavenConstants.WSO2_ESB_MESSAGE_STORE_PLUGIN_VERSION, true);
 		PluginExecution pluginExecution = new PluginExecution();
 		pluginExecution.addGoal("pom-gen");
 		pluginExecution.setPhase("process-resources");

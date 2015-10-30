@@ -30,6 +30,7 @@ import java.util.regex.Pattern;
 import javax.xml.namespace.QName;
 
 import org.apache.axiom.om.OMElement;
+import org.apache.commons.lang.NotImplementedException;
 import org.apache.maven.model.Plugin;
 import org.apache.maven.model.PluginExecution;
 import org.apache.maven.model.Repository;
@@ -50,19 +51,19 @@ import org.wso2.developerstudio.eclipse.artifact.sequence.Activator;
 import org.wso2.developerstudio.eclipse.artifact.sequence.model.SequenceModel;
 import org.wso2.developerstudio.eclipse.artifact.sequence.utils.SequenceImageUtils;
 import org.wso2.developerstudio.eclipse.artifact.sequence.validators.ProjectFilter;
-import org.wso2.developerstudio.eclipse.capp.maven.utils.MavenConstants;
+import org.wso2.developerstudio.eclipse.esb.core.ESBMavenConstants;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBArtifact;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBProjectArtifact;
-import org.wso2.developerstudio.eclipse.general.project.artifact.GeneralProjectArtifact;
-import org.wso2.developerstudio.eclipse.general.project.artifact.RegistryArtifact;
-import org.wso2.developerstudio.eclipse.general.project.artifact.bean.RegistryElement;
-import org.wso2.developerstudio.eclipse.general.project.artifact.bean.RegistryItem;
+//TODO fix this and remove NotImplementedException
+//import org.wso2.developerstudio.eclipse.general.project.artifact.GeneralProjectArtifact;
+//import org.wso2.developerstudio.eclipse.general.project.artifact.RegistryArtifact;
+//import org.wso2.developerstudio.eclipse.general.project.artifact.bean.RegistryElement;
+//import org.wso2.developerstudio.eclipse.general.project.artifact.bean.RegistryItem;
 import org.wso2.developerstudio.eclipse.gmf.esb.ArtifactType;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
 import org.wso2.developerstudio.eclipse.platform.core.project.model.ProjectDataModel;
-import org.wso2.developerstudio.eclipse.platform.core.registry.util.RegistryResourceInfo;
 import org.wso2.developerstudio.eclipse.platform.core.registry.util.RegistryResourceInfoDoc;
 import org.wso2.developerstudio.eclipse.platform.core.registry.util.RegistryResourceUtils;
 import org.wso2.developerstudio.eclipse.platform.core.templates.ArtifactTemplate;
@@ -157,7 +158,7 @@ public class SequenceProjectCreationWizard extends AbstractWSO2ProjectCreationWi
 		}
 
 		Plugin plugin = MavenUtils.createPluginEntry(mavenProject, "org.wso2.maven", "wso2-esb-sequence-plugin",
-				MavenConstants.WSO2_ESB_SEQUENCE_VERSION, true);
+				ESBMavenConstants.WSO2_ESB_SEQUENCE_VERSION, true);
 		PluginExecution pluginExecution = new PluginExecution();
 		pluginExecution.addGoal("pom-gen");
 		pluginExecution.setPhase("process-resources");
@@ -277,7 +278,9 @@ public class SequenceProjectCreationWizard extends AbstractWSO2ProjectCreationWi
 		RegistryResourceUtils.addRegistryResourceInfo(destFile, regResInfoDoc,
 				project.getLocation().toFile(), registryPath);
 		
-		
+		//TODO fix this and remove NotImplimented exception
+		throw new NotImplementedException();
+		/*
 		GeneralProjectArtifact generalProjectArtifact=new GeneralProjectArtifact();
 		generalProjectArtifact.fromFile(project.getFile("artifact.xml").getLocation().toFile());
 		
@@ -300,6 +303,7 @@ public class SequenceProjectCreationWizard extends AbstractWSO2ProjectCreationWi
         }
 		generalProjectArtifact.addArtifact(artifact);
 		generalProjectArtifact.toFile();
+		*/
 	}
 	
 	private void addGeneralProjectPlugin(IProject project) throws Exception{
@@ -314,12 +318,12 @@ public class SequenceProjectCreationWizard extends AbstractWSO2ProjectCreationWi
 		
 		boolean pluginExists = MavenUtils.checkOldPluginEntry(mavenProject,
 				"org.wso2.maven", "wso2-general-project-plugin",
-				MavenConstants.WSO2_GENERAL_PROJECT_VERSION);
+				ESBMavenConstants.WSO2_GENERAL_PROJECT_VERSION);
 		if(pluginExists){
 			return ;
 		}
 		
-		Plugin plugin = MavenUtils.createPluginEntry(mavenProject, "org.wso2.maven", "wso2-general-project-plugin", MavenConstants.WSO2_GENERAL_PROJECT_VERSION, true);
+		Plugin plugin = MavenUtils.createPluginEntry(mavenProject, "org.wso2.maven", "wso2-general-project-plugin", ESBMavenConstants.WSO2_GENERAL_PROJECT_VERSION, true);
 		
 		PluginExecution pluginExecution;
 		

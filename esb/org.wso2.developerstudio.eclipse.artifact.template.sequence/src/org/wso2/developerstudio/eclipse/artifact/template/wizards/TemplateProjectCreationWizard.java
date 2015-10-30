@@ -46,7 +46,7 @@ import org.wso2.developerstudio.eclipse.artifact.template.Activator;
 import org.wso2.developerstudio.eclipse.artifact.template.model.TemplateModel;
 import org.wso2.developerstudio.eclipse.artifact.template.utils.TemplateImageUtils;
 import org.wso2.developerstudio.eclipse.artifact.template.validators.HttpMethodList.HttpMethodType;
-import org.wso2.developerstudio.eclipse.capp.maven.utils.MavenConstants;
+import org.wso2.developerstudio.eclipse.esb.core.ESBMavenConstants;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBArtifact;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBProjectArtifact;
 import org.wso2.developerstudio.eclipse.gmf.esb.ArtifactType;
@@ -207,7 +207,7 @@ public class TemplateProjectCreationWizard extends AbstractWSO2ProjectCreationWi
 		}
 
 		Plugin plugin = MavenUtils.createPluginEntry(mavenProject, "org.wso2.maven", "wso2-esb-template-plugin",
-				MavenConstants.WSO2_ESB_TEMPLATE_VERSION, true);
+				ESBMavenConstants.WSO2_ESB_TEMPLATE_VERSION, true);
 		PluginExecution pluginExecution = new PluginExecution();
 		pluginExecution.addGoal("pom-gen");
 		pluginExecution.setPhase("process-resources");

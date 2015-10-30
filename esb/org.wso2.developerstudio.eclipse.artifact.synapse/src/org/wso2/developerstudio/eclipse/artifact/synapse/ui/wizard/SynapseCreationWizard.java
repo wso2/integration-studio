@@ -46,7 +46,7 @@ import org.wso2.developerstudio.eclipse.artifact.synapse.Activator;
 import org.wso2.developerstudio.eclipse.artifact.synapse.model.SynapseModel;
 import org.wso2.developerstudio.eclipse.artifact.synapse.template.SynapseClassTemplate;
 import org.wso2.developerstudio.eclipse.artifact.synapse.utils.SynapseImageUtils;
-import org.wso2.developerstudio.eclipse.capp.maven.utils.MavenConstants;
+import org.wso2.developerstudio.eclipse.esb.core.ESBMavenConstants;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBArtifact;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBProjectArtifact;
 import org.wso2.developerstudio.eclipse.esb.project.utils.ESBProjectUtils;
@@ -187,7 +187,7 @@ public class SynapseCreationWizard extends AbstractWSO2ProjectCreationWizard {
 		                                  synapseModel.getName().replaceAll(".xml$", "") + ".xml");
 		FileUtils.writeContent(synapseConfigFile, template);
 		MavenProject mavenProject = MavenUtils.getMavenProject(pomfile);
-		ESBProjectUtils.addPluginEntry(mavenProject,"org.wso2.maven","wso2-esb-synapse-plugin", MavenConstants.WSO2_ESB_SYNAPSE_VERSION,"synapse");
+		ESBProjectUtils.addPluginEntry(mavenProject,"org.wso2.maven","wso2-esb-synapse-plugin", ESBMavenConstants.WSO2_ESB_SYNAPSE_VERSION,"synapse");
 		MavenUtils.saveMavenProject(mavenProject, pomfile);
 		ESBProjectUtils.createArtifactMetaDataEntry(synapseModel.getName(), "synapse/configuration",
 		                            saveLocation.getLocation().toFile(),groupId + ".synapse",esbProject);

@@ -69,7 +69,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.policies.DataMapper
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.policies.DataMapperMediatorItemSemanticEditPolicy;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbVisualIDRegistry;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.DataMapperMediatorImpl;
-import org.wso2.developerstudio.eclipse.greg.core.interfaces.IRegistryFile;
+//import org.wso2.developerstudio.eclipse.greg.core.interfaces.IRegistryFile;
 import org.wso2.developerstudio.eclipse.platform.core.utils.CSProviderConstants;
 import org.wso2.developerstudio.eclipse.platform.ui.startup.DataMapperEditor;
 

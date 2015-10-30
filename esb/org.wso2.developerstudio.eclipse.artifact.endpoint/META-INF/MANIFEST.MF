@@ -2,63 +2,35 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Endpoint
 Bundle-SymbolicName: org.wso2.developerstudio.eclipse.artifact.endpoint;singleton:=true
-Bundle-Version: 3.8.0
+Bundle-Version: 4.0.0
 Bundle-Activator: org.wso2.developerstudio.eclipse.artifact.endpoint.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.core.resources,
- org.wso2.developerstudio.eclipse.libraries,
  org.eclipse.text,
- org.eclipse.ui.ide,
- org.eclipse.ui.editors
+ org.wso2.developerstudio.eclipse.platform.core;bundle-version="4.0.0",
+ org.wso2.developerstudio.eclipse.platform.ui;bundle-version="4.0.0",
+ org.wso2.developerstudio.eclipse.utils;bundle-version="4.0.0",
+ org.wso2.developerstudio.eclipse.logging;bundle-version="4.0.0"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Import-Package: org.apache.commons.lang,
+Import-Package: org.apache.axiom.om;version="1.2.11.wso2v4",
+ org.apache.axiom.om.impl.builder;version="1.2.11.wso2v4",
+ org.apache.commons.lang,
  org.apache.maven.model,
  org.apache.maven.project,
  org.codehaus.plexus.util.xml,
  org.codehaus.plexus.util.xml.pull,
- org.eclipse.jdt.core,
- org.eclipse.jface.text,
- org.eclipse.jface.text.source,
  org.eclipse.ltk.core.refactoring,
  org.eclipse.ltk.core.refactoring.participants,
  org.eclipse.ltk.core.refactoring.resource,
  org.eclipse.text.edits,
- org.eclipse.ui.ide,
- org.wso2.developerstudio.eclipse.capp.maven.utils,
+ org.wso2.developerstudio.eclipse.esb.core,
  org.wso2.developerstudio.eclipse.esb.core.configuration.impl,
  org.wso2.developerstudio.eclipse.esb.core.interfaces,
  org.wso2.developerstudio.eclipse.esb.core.utils,
  org.wso2.developerstudio.eclipse.esb.project.artifact,
  org.wso2.developerstudio.eclipse.esb.project.utils,
- org.wso2.developerstudio.eclipse.general.project.artifact,
- org.wso2.developerstudio.eclipse.general.project.artifact.bean,
- org.wso2.developerstudio.eclipse.general.project.utils,
  org.wso2.developerstudio.eclipse.gmf.esb,
- org.wso2.developerstudio.eclipse.logging.core,
- org.wso2.developerstudio.eclipse.maven.util,
- org.wso2.developerstudio.eclipse.platform.core.exception,
- org.wso2.developerstudio.eclipse.platform.core.interfaces,
- org.wso2.developerstudio.eclipse.platform.core.mediatype,
- org.wso2.developerstudio.eclipse.platform.core.model,
- org.wso2.developerstudio.eclipse.platform.core.nature,
- org.wso2.developerstudio.eclipse.platform.core.project.export,
- org.wso2.developerstudio.eclipse.platform.core.project.model,
- org.wso2.developerstudio.eclipse.platform.core.registry.util,
- org.wso2.developerstudio.eclipse.platform.core.templates,
- org.wso2.developerstudio.eclipse.platform.core.types,
- org.wso2.developerstudio.eclipse.platform.core.utils,
- org.wso2.developerstudio.eclipse.platform.ui.editor,
- org.wso2.developerstudio.eclipse.platform.ui.startup,
- org.wso2.developerstudio.eclipse.platform.ui.validator,
- org.wso2.developerstudio.eclipse.platform.ui.wizard,
- org.wso2.developerstudio.eclipse.platform.ui.wizard.pages,
- org.wso2.developerstudio.eclipse.utils.archive,
- org.wso2.developerstudio.eclipse.utils.file,
- org.wso2.developerstudio.eclipse.utils.jdt,
- org.wso2.developerstudio.eclipse.utils.project,
- org.wso2.developerstudio.eclipse.utils.template,
- org.wso2.developerstudio.eclipse.utils.ui,
- org.wso2.developerstudio.eclipse.utils.wst
+ org.wso2.developerstudio.eclipse.maven.util
 Export-Package: org.wso2.developerstudio.eclipse.artifact.endpoint.validators

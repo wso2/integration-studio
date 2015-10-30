@@ -42,7 +42,7 @@ import org.eclipse.jface.dialogs.MessageDialog;
 import org.wso2.developerstudio.eclipse.artifact.synapse.api.Activator;
 import org.wso2.developerstudio.eclipse.artifact.synapse.api.model.APIArtifactModel;
 import org.wso2.developerstudio.eclipse.artifact.synapse.api.util.APIImageUtils;
-import org.wso2.developerstudio.eclipse.capp.maven.utils.MavenConstants;
+import org.wso2.developerstudio.eclipse.esb.core.ESBMavenConstants;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBArtifact;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBProjectArtifact;
 import org.wso2.developerstudio.eclipse.gmf.esb.ArtifactType;
@@ -238,7 +238,7 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
 		}
 
 		Plugin plugin = MavenUtils.createPluginEntry(mavenProject, "org.wso2.maven", "wso2-esb-api-plugin",
-				MavenConstants.WSO2_ESB_API_VERSION, true);
+				ESBMavenConstants.WSO2_ESB_API_VERSION, true);
 		PluginExecution pluginExecution = new PluginExecution();
 		pluginExecution.addGoal("pom-gen");
 		pluginExecution.setPhase("process-resources");

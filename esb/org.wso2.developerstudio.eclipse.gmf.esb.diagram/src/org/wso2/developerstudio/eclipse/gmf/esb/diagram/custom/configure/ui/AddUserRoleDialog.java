@@ -26,7 +26,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 import org.wso2.developerstudio.eclipse.gmf.esb.ProxyService;
 import org.wso2.developerstudio.eclipse.gmf.esb.ProxyServiceParameter;
-import org.wso2.developerstudio.eclipse.platform.ui.dialogs.UserRolesDialog;
 
 public class AddUserRoleDialog extends UserRolesDialog {
 

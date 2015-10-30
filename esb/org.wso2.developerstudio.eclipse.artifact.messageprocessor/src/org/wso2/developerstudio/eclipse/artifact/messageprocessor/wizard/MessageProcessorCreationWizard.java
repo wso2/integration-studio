@@ -54,7 +54,8 @@ import org.eclipse.jface.dialogs.MessageDialog;
 import org.wso2.developerstudio.eclipse.artifact.messageprocessor.Activator;
 import org.wso2.developerstudio.eclipse.artifact.messageprocessor.model.MessageProcessorModel;
 import org.wso2.developerstudio.eclipse.artifact.messageprocessor.util.MessageProcessorImageUtils;
-import org.wso2.developerstudio.eclipse.capp.maven.utils.MavenConstants;
+import org.wso2.developerstudio.eclipse.esb.core.ESBMavenConstants;
+//import org.wso2.developerstudio.eclipse.capp.maven.utils.MavenConstants;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBArtifact;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBProjectArtifact;
 import org.wso2.developerstudio.eclipse.gmf.esb.ArtifactType;
@@ -181,7 +182,7 @@ public class MessageProcessorCreationWizard extends AbstractWSO2ProjectCreationW
 		}
 
 		Plugin plugin = MavenUtils.createPluginEntry(mavenProject, "org.wso2.maven",
-				"wso2-esb-messageprocessor-plugin", MavenConstants.WSO2_ESB_MESSAGE_PROCESSOR_PLUGIN_VERSION, true);
+				"wso2-esb-messageprocessor-plugin", ESBMavenConstants.WSO2_ESB_MESSAGE_PROCESSOR_PLUGIN_VERSION, true);
 		PluginExecution pluginExecution = new PluginExecution();
 		pluginExecution.addGoal("pom-gen");
 		pluginExecution.setPhase("process-resources");

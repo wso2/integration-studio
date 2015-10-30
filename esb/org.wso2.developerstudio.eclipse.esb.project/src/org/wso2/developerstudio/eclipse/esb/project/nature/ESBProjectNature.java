@@ -26,7 +26,7 @@ import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
-import org.wso2.developerstudio.eclipse.capp.maven.utils.MavenConstants;
+import org.wso2.developerstudio.eclipse.esb.core.ESBMavenConstants;
 import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
 import org.wso2.developerstudio.eclipse.platform.core.nature.AbstractWSO2ProjectNature;
 import org.wso2.developerstudio.eclipse.utils.project.ProjectUtils;
@@ -64,23 +64,23 @@ public class ESBProjectNature extends AbstractWSO2ProjectNature {
 		
 			{
 				PluginExecution pluginExecution = new PluginExecution();
-				pluginExecution.setId(MavenConstants.PACKAGE_PHASE);
-				pluginExecution.addGoal(MavenConstants.EXEC_GOAL);
-				pluginExecution.setPhase(MavenConstants.PACKAGE_PHASE);
+				pluginExecution.setId(ESBMavenConstants.PACKAGE_PHASE);
+				pluginExecution.addGoal(ESBMavenConstants.EXEC_GOAL);
+				pluginExecution.setPhase(ESBMavenConstants.PACKAGE_PHASE);
 
 				Xpp3Dom configurationNode = MavenUtils.createMainConfigurationNode();
-				Xpp3Dom executableNode = MavenUtils.createXpp3Node(configurationNode, MavenConstants.EXECUTABLE_TAG);
-				executableNode.setValue(MavenConstants.EXECUTABLE_VALUE);
+				Xpp3Dom executableNode = MavenUtils.createXpp3Node(configurationNode, ESBMavenConstants.EXECUTABLE_TAG);
+				executableNode.setValue(ESBMavenConstants.EXECUTABLE_VALUE);
 				Xpp3Dom workingDirectoryNode = MavenUtils.createXpp3Node(configurationNode,
-						MavenConstants.WORKING_DIRECTORY_TAG);
-				workingDirectoryNode.setValue(MavenConstants.WORKING_DIRECTORY_VALUE);
-				Xpp3Dom argumentsNode = MavenUtils.createXpp3Node(configurationNode, MavenConstants.ARGUMENTS_TAG);
-				Xpp3Dom cleanArgumentNode = MavenUtils.createXpp3Node(argumentsNode, MavenConstants.ARGUMENT_TAG);
-				cleanArgumentNode.setValue(MavenConstants.ARGUMENT_VALUE_CLEAN);
-				Xpp3Dom installArgumentNode = MavenUtils.createXpp3Node(argumentsNode, MavenConstants.ARGUMENT_TAG);
-				installArgumentNode.setValue(MavenConstants.PACKAGE_PHASE);
-				Xpp3Dom testSkipArgumentNode = MavenUtils.createXpp3Node(argumentsNode, MavenConstants.ARGUMENT_TAG);
-				testSkipArgumentNode.setValue(MavenConstants.ARGUMENT_VALUE_SKIP_TESTS);
+						ESBMavenConstants.WORKING_DIRECTORY_TAG);
+				workingDirectoryNode.setValue(ESBMavenConstants.WORKING_DIRECTORY_VALUE);
+				Xpp3Dom argumentsNode = MavenUtils.createXpp3Node(configurationNode, ESBMavenConstants.ARGUMENTS_TAG);
+				Xpp3Dom cleanArgumentNode = MavenUtils.createXpp3Node(argumentsNode, ESBMavenConstants.ARGUMENT_TAG);
+				cleanArgumentNode.setValue(ESBMavenConstants.ARGUMENT_VALUE_CLEAN);
+				Xpp3Dom installArgumentNode = MavenUtils.createXpp3Node(argumentsNode, ESBMavenConstants.ARGUMENT_TAG);
+				installArgumentNode.setValue(ESBMavenConstants.PACKAGE_PHASE);
+				Xpp3Dom testSkipArgumentNode = MavenUtils.createXpp3Node(argumentsNode, ESBMavenConstants.ARGUMENT_TAG);
+				testSkipArgumentNode.setValue(ESBMavenConstants.ARGUMENT_VALUE_SKIP_TESTS);
 
 				pluginExecution.setConfiguration(configurationNode);
 
@@ -88,23 +88,23 @@ public class ESBProjectNature extends AbstractWSO2ProjectNature {
 			}
 			{
 				PluginExecution pluginExecution = new PluginExecution();
-				pluginExecution.setId(MavenConstants.INSTALL_PHASE);
-				pluginExecution.addGoal(MavenConstants.EXEC_GOAL);
-				pluginExecution.setPhase(MavenConstants.INSTALL_PHASE);
+				pluginExecution.setId(ESBMavenConstants.INSTALL_PHASE);
+				pluginExecution.addGoal(ESBMavenConstants.EXEC_GOAL);
+				pluginExecution.setPhase(ESBMavenConstants.INSTALL_PHASE);
 
 				Xpp3Dom configurationNode = MavenUtils.createMainConfigurationNode();
-				Xpp3Dom executableNode = MavenUtils.createXpp3Node(configurationNode, MavenConstants.EXECUTABLE_TAG);
-				executableNode.setValue(MavenConstants.EXECUTABLE_VALUE);
+				Xpp3Dom executableNode = MavenUtils.createXpp3Node(configurationNode, ESBMavenConstants.EXECUTABLE_TAG);
+				executableNode.setValue(ESBMavenConstants.EXECUTABLE_VALUE);
 				Xpp3Dom workingDirectoryNode = MavenUtils.createXpp3Node(configurationNode,
-						MavenConstants.WORKING_DIRECTORY_TAG);
-				workingDirectoryNode.setValue(MavenConstants.WORKING_DIRECTORY_VALUE);
-				Xpp3Dom argumentsNode = MavenUtils.createXpp3Node(configurationNode, MavenConstants.ARGUMENTS_TAG);
-				Xpp3Dom cleanArgumentNode = MavenUtils.createXpp3Node(argumentsNode, MavenConstants.ARGUMENT_TAG);
-				cleanArgumentNode.setValue(MavenConstants.ARGUMENT_VALUE_CLEAN);
-				Xpp3Dom installArgumentNode = MavenUtils.createXpp3Node(argumentsNode, MavenConstants.ARGUMENT_TAG);
-				installArgumentNode.setValue(MavenConstants.INSTALL_PHASE);
-				Xpp3Dom testSkipArgumentNode = MavenUtils.createXpp3Node(argumentsNode, MavenConstants.ARGUMENT_TAG);
-				testSkipArgumentNode.setValue(MavenConstants.ARGUMENT_VALUE_SKIP_TESTS);
+						ESBMavenConstants.WORKING_DIRECTORY_TAG);
+				workingDirectoryNode.setValue(ESBMavenConstants.WORKING_DIRECTORY_VALUE);
+				Xpp3Dom argumentsNode = MavenUtils.createXpp3Node(configurationNode, ESBMavenConstants.ARGUMENTS_TAG);
+				Xpp3Dom cleanArgumentNode = MavenUtils.createXpp3Node(argumentsNode, ESBMavenConstants.ARGUMENT_TAG);
+				cleanArgumentNode.setValue(ESBMavenConstants.ARGUMENT_VALUE_CLEAN);
+				Xpp3Dom installArgumentNode = MavenUtils.createXpp3Node(argumentsNode, ESBMavenConstants.ARGUMENT_TAG);
+				installArgumentNode.setValue(ESBMavenConstants.INSTALL_PHASE);
+				Xpp3Dom testSkipArgumentNode = MavenUtils.createXpp3Node(argumentsNode, ESBMavenConstants.ARGUMENT_TAG);
+				testSkipArgumentNode.setValue(ESBMavenConstants.ARGUMENT_VALUE_SKIP_TESTS);
 
 				pluginExecution.setConfiguration(configurationNode);
 
@@ -112,21 +112,21 @@ public class ESBProjectNature extends AbstractWSO2ProjectNature {
 			}
 			{
 				PluginExecution pluginExecution = new PluginExecution();
-				pluginExecution.setId(MavenConstants.DEPLOY_PHASE);
-				pluginExecution.addGoal(MavenConstants.EXEC_GOAL);
-				pluginExecution.setPhase(MavenConstants.DEPLOY_PHASE);
+				pluginExecution.setId(ESBMavenConstants.DEPLOY_PHASE);
+				pluginExecution.addGoal(ESBMavenConstants.EXEC_GOAL);
+				pluginExecution.setPhase(ESBMavenConstants.DEPLOY_PHASE);
 
 				Xpp3Dom configurationNode = MavenUtils.createMainConfigurationNode();
-				Xpp3Dom executableNode = MavenUtils.createXpp3Node(configurationNode, MavenConstants.EXECUTABLE_TAG);
-				executableNode.setValue(MavenConstants.EXECUTABLE_VALUE);
+				Xpp3Dom executableNode = MavenUtils.createXpp3Node(configurationNode, ESBMavenConstants.EXECUTABLE_TAG);
+				executableNode.setValue(ESBMavenConstants.EXECUTABLE_VALUE);
 				Xpp3Dom workingDirectoryNode = MavenUtils.createXpp3Node(configurationNode,
-						MavenConstants.WORKING_DIRECTORY_TAG);
-				workingDirectoryNode.setValue(MavenConstants.WORKING_DIRECTORY_VALUE);
-				Xpp3Dom argumentsNode = MavenUtils.createXpp3Node(configurationNode, MavenConstants.ARGUMENTS_TAG);
-				Xpp3Dom deployArgumentNode = MavenUtils.createXpp3Node(argumentsNode, MavenConstants.ARGUMENT_TAG);
-				deployArgumentNode.setValue(MavenConstants.DEPLOY_PHASE);
-				Xpp3Dom testSkipArgumentNode = MavenUtils.createXpp3Node(argumentsNode, MavenConstants.ARGUMENT_TAG);
-				testSkipArgumentNode.setValue(MavenConstants.ARGUMENT_VALUE_SKIP_TESTS);
+						ESBMavenConstants.WORKING_DIRECTORY_TAG);
+				workingDirectoryNode.setValue(ESBMavenConstants.WORKING_DIRECTORY_VALUE);
+				Xpp3Dom argumentsNode = MavenUtils.createXpp3Node(configurationNode, ESBMavenConstants.ARGUMENTS_TAG);
+				Xpp3Dom deployArgumentNode = MavenUtils.createXpp3Node(argumentsNode, ESBMavenConstants.ARGUMENT_TAG);
+				deployArgumentNode.setValue(ESBMavenConstants.DEPLOY_PHASE);
+				Xpp3Dom testSkipArgumentNode = MavenUtils.createXpp3Node(argumentsNode, ESBMavenConstants.ARGUMENT_TAG);
+				testSkipArgumentNode.setValue(ESBMavenConstants.ARGUMENT_VALUE_SKIP_TESTS);
 
 				pluginExecution.setConfiguration(configurationNode);
 

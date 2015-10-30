@@ -12,6 +12,15 @@
 			<description>Proxy Service</description>
 		</wizard>
    </extension>
+   
+<extension point="org.wso2.developerstudio.eclipse.platform.core.intro.ui.dashboard">
+   <wizardLink category="dashboard.category.esb" id="2dashboard.wizardLink.esb.proxy"
+	wizard="org.wso2.developerstudio.eclipse.artifact.newproxyservice"
+	priority="2">
+</wizardLink>
+</extension>
+   
+   
    	<!--extension point="org.eclipse.core.resources.natures"
 		id="org.wso2.developerstudio.eclipse.proxy.project.nature" name="ProxyService Project Nature">
 		<runtime>

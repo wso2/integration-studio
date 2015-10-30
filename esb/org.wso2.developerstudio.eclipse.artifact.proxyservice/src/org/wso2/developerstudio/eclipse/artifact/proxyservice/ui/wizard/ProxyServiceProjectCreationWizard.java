@@ -45,7 +45,7 @@ import org.wso2.developerstudio.eclipse.artifact.proxyservice.model.ProxyService
 import org.wso2.developerstudio.eclipse.artifact.proxyservice.model.ProxyServiceModel.TargetEPType;
 import org.wso2.developerstudio.eclipse.artifact.proxyservice.utils.ProxyServiceImageUtils;
 import org.wso2.developerstudio.eclipse.artifact.proxyservice.utils.PsArtifactConstants;
-import org.wso2.developerstudio.eclipse.capp.maven.utils.MavenConstants;
+import org.wso2.developerstudio.eclipse.esb.core.ESBMavenConstants;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBArtifact;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBProjectArtifact;
 import org.wso2.developerstudio.eclipse.gmf.esb.ArtifactType;
@@ -179,7 +179,7 @@ public class ProxyServiceProjectCreationWizard extends AbstractWSO2ProjectCreati
 		}
 
 		Plugin plugin = MavenUtils.createPluginEntry(mavenProject, "org.wso2.maven", "wso2-esb-proxy-plugin",
-				MavenConstants.WSO2_ESB_PROXY_VERSION, true);
+				ESBMavenConstants.WSO2_ESB_PROXY_VERSION, true);
 		PluginExecution pluginExecution = new PluginExecution();
 		pluginExecution.addGoal("pom-gen");
 		pluginExecution.setPhase("process-resources");

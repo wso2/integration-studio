@@ -43,7 +43,7 @@ import org.wso2.developerstudio.eclipse.artifact.task.Activator;
 import org.wso2.developerstudio.eclipse.artifact.task.model.TaskModel;
 import org.wso2.developerstudio.eclipse.artifact.task.util.TaskImageUtils;
 import org.wso2.developerstudio.eclipse.artifact.task.validator.TriggerTypeList.TriggerType;
-import org.wso2.developerstudio.eclipse.capp.maven.utils.MavenConstants;
+import org.wso2.developerstudio.eclipse.esb.core.ESBMavenConstants;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBArtifact;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBProjectArtifact;
 import org.wso2.developerstudio.eclipse.gmf.esb.ArtifactType;
@@ -239,7 +239,7 @@ public class TaskCreationWizard extends AbstractWSO2ProjectCreationWizard {
 		}
 
 		Plugin plugin = MavenUtils.createPluginEntry(mavenProject, "org.wso2.maven", "wso2-esb-task-plugin",
-				MavenConstants.WSO2_ESB_TASK_VERSION, true);
+				ESBMavenConstants.WSO2_ESB_TASK_VERSION, true);
 		PluginExecution pluginExecution = new PluginExecution();
 		pluginExecution.addGoal("pom-gen");
 		pluginExecution.setPhase("process-resources");

@@ -20,16 +20,19 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+import org.apache.commons.lang.NotImplementedException;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.wso2.developerstudio.eclipse.artifact.sequence.Activator;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBArtifact;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBProjectArtifact;
-import org.wso2.developerstudio.eclipse.general.project.artifact.GeneralProjectArtifact;
-import org.wso2.developerstudio.eclipse.general.project.artifact.RegistryArtifact;
-import org.wso2.developerstudio.eclipse.general.project.artifact.bean.RegistryElement;
-import org.wso2.developerstudio.eclipse.general.project.artifact.bean.RegistryItem;
+//TODO fix this and remove NotImplementedException
+//import org.wso2.developerstudio.eclipse.general.project.artifact.GeneralProjectArtifact;
+//import org.wso2.developerstudio.eclipse.general.project.artifact.RegistryArtifact;
+//import org.wso2.developerstudio.eclipse.general.project.artifact.bean.RegistryElement;
+//import org.wso2.developerstudio.eclipse.general.project.artifact.bean.RegistryItem;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.platform.core.model.AbstractListDataProvider;
@@ -72,6 +75,10 @@ public class AvailableEPList extends AbstractListDataProvider{
 		List <String> availableEPList = new ArrayList<String>();
 		IProject[] projects = ResourcesPlugin.getWorkspace().getRoot().getProjects();
 		for (IProject workspaceProject : projects) {
+			
+			//TODO fix this and remove NotImplementedException
+			throw new NotImplementedException();
+			/*
 			if (workspaceProject.isOpen() && workspaceProject.hasNature("org.wso2.developerstudio.eclipse.general.project.nature")) {
 					GeneralProjectArtifact generalProjectArtifact = new GeneralProjectArtifact();
 					try{			
@@ -100,7 +107,9 @@ public class AvailableEPList extends AbstractListDataProvider{
 					catch (Exception e) {
 						log.error("Error occured while scanning the workspace for Sequence artifacts", e);
 					}
-				}			
+				}	
+				*/
+						
 			}		
 		return availableEPList;
 	}

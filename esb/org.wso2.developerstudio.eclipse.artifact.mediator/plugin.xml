@@ -91,4 +91,12 @@
             type="lib/synapse/mediator">
       </handler>
    </extension>
+   
+   <extension point="org.wso2.developerstudio.eclipse.platform.core.intro.ui.dashboard">
+   <wizardLink category="dashboard.category.esb" id="9dashboard.wizardLink.esb.mediator"
+	wizard="org.wso2.developerstudio.eclipse.artifact.newmediatorartifact"
+	priority="9">
+</wizardLink>
+</extension>
+   
 </plugin>

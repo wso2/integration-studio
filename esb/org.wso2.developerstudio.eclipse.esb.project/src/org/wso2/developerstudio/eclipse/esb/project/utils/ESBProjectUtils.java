@@ -38,7 +38,7 @@ import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.wizards.IWizardDescriptor;
-import org.wso2.developerstudio.eclipse.capp.maven.utils.MavenConstants;
+import org.wso2.developerstudio.eclipse.esb.core.ESBMavenConstants;
 import org.wso2.developerstudio.eclipse.esb.project.Activator;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBArtifact;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBProjectArtifact;
@@ -117,7 +117,7 @@ public class ESBProjectUtils {
 							.getMavenProject(pomfile);
 					addPluginEntry(mavenProject, "org.wso2.maven",
 							"wso2-esb-sequence-plugin",
-							MavenConstants.WSO2_ESB_SEQUENCE_VERSION,
+							ESBMavenConstants.WSO2_ESB_SEQUENCE_VERSION,
 							"sequence");
 					MavenUtils.saveMavenProject(mavenProject, pomfile);
 					
@@ -139,7 +139,7 @@ public class ESBProjectUtils {
 							.getMavenProject(pomfile);
 					addPluginEntry(mavenProject, "org.wso2.maven",
 							"wso2-esb-endpoint-plugin",
-							MavenConstants.WSO2_ESB_ENDPOINT_VERSION,
+							ESBMavenConstants.WSO2_ESB_ENDPOINT_VERSION,
 							"endpoint");
 					MavenUtils.saveMavenProject(mavenProject, pomfile);
 					fileList.put(destFile, "endpoint");
@@ -155,7 +155,7 @@ public class ESBProjectUtils {
 							.getMavenProject(pomfile);
 					addPluginEntry(mavenProject, "org.wso2.maven",
 							"wso2-esb-proxy-plugin",
-							MavenConstants.WSO2_ESB_PROXY_VERSION, "proxy");
+							ESBMavenConstants.WSO2_ESB_PROXY_VERSION, "proxy");
 					MavenUtils.saveMavenProject(mavenProject, pomfile);
 					fileList.put(destFile, "proxy");
 					createArtifactMetaDataEntry(qName, "synapse/proxy-service",
@@ -170,7 +170,7 @@ public class ESBProjectUtils {
 							.getMavenProject(pomfile);
 					addPluginEntry(mavenProject, "org.wso2.maven",
 							"wso2-esb-localentry-plugin",
-							MavenConstants.WSO2_ESB_LOCAL_ENTRY_VERSION,
+							ESBMavenConstants.WSO2_ESB_LOCAL_ENTRY_VERSION,
 							"localentry");
 					MavenUtils.saveMavenProject(mavenProject, pomfile);
 					fileList.put(destFile, "localEntry");
@@ -185,7 +185,7 @@ public class ESBProjectUtils {
 							.getMavenProject(pomfile);
 					addPluginEntry(mavenProject, "org.wso2.maven",
 							"wso2-esb-task-plugin",
-							MavenConstants.WSO2_ESB_TASK_VERSION, "task");
+							ESBMavenConstants.WSO2_ESB_TASK_VERSION, "task");
 					MavenUtils.saveMavenProject(mavenProject, pomfile);
 					fileList.put(destFile, "task");
 					createArtifactMetaDataEntry(qName, "synapse/task", baseDir,
@@ -199,7 +199,7 @@ public class ESBProjectUtils {
 							.getMavenProject(pomfile);
 					addPluginEntry(mavenProject, "org.wso2.maven",
 							"wso2-esb-api-plugin",
-							MavenConstants.WSO2_ESB_API_VERSION, "api");
+							ESBMavenConstants.WSO2_ESB_API_VERSION, "api");
 					MavenUtils.saveMavenProject(mavenProject, pomfile);
 					fileList.put(destFile, "api");
 					createArtifactMetaDataEntry(qName, "synapse/api", baseDir,
@@ -213,7 +213,7 @@ public class ESBProjectUtils {
 							.getMavenProject(pomfile);
 					addPluginEntry(mavenProject, "org.wso2.maven",
 							"wso2-esb-messagestore-plugin",
-							MavenConstants.WSO2_ESB_MESSAGE_STORE_PLUGIN_VERSION, "message-store");
+							ESBMavenConstants.WSO2_ESB_MESSAGE_STORE_PLUGIN_VERSION, "message-store");
 					MavenUtils.saveMavenProject(mavenProject, pomfile);
 					fileList.put(destFile, localName);
 					createArtifactMetaDataEntry(qName, "synapse/message-store", baseDir,
@@ -227,7 +227,7 @@ public class ESBProjectUtils {
 							.getMavenProject(pomfile);
 					addPluginEntry(mavenProject, "org.wso2.maven",
 							"wso2-esb-messageprocessor-plugin",
-							MavenConstants.WSO2_ESB_MESSAGE_PROCESSOR_PLUGIN_VERSION, "message-processor");
+							ESBMavenConstants.WSO2_ESB_MESSAGE_PROCESSOR_PLUGIN_VERSION, "message-processor");
 					MavenUtils.saveMavenProject(mavenProject, pomfile);
 					fileList.put(destFile, localName);
 					createArtifactMetaDataEntry(qName, "synapse/message-processors", baseDir,
@@ -243,7 +243,7 @@ public class ESBProjectUtils {
 						FileUtils.createFile(destFile, element.toString());
 						MavenProject mavenProject = MavenUtils.getMavenProject(pomfile);
 						addPluginEntry(mavenProject, "org.wso2.maven", "wso2-esb-template-plugin",
-								MavenConstants.WSO2_ESB_TEMPLATE_VERSION, "template");
+								ESBMavenConstants.WSO2_ESB_TEMPLATE_VERSION, "template");
 						MavenUtils.saveMavenProject(mavenProject, pomfile);
 						fileList.put(destFile, "template.sequence");
 						createArtifactMetaDataEntry(qName, "synapse/sequenceTemplate", baseDir,
@@ -270,7 +270,7 @@ public class ESBProjectUtils {
 						FileUtils.createFile(destFile, element.toString());
 						MavenProject mavenProject = MavenUtils.getMavenProject(pomfile);
 						addPluginEntry(mavenProject, "org.wso2.maven", "wso2-esb-template-plugin",
-								MavenConstants.WSO2_ESB_TEMPLATE_VERSION, "template");
+								ESBMavenConstants.WSO2_ESB_TEMPLATE_VERSION, "template");
 						MavenUtils.saveMavenProject(mavenProject, pomfile);
 						fileList.put(destFile, templateType);
 						createArtifactMetaDataEntry(qName, "synapse/endpointTemplate", baseDir,
@@ -330,7 +330,7 @@ public class ESBProjectUtils {
 		File mavenProjectPomLocation = project.getFile("pom.xml").getLocation().toFile();
 		MavenProject mavenProject = MavenUtils.getMavenProject(mavenProjectPomLocation);
 
-		addPluginEntry(mavenProject, "org.wso2.maven","wso2-esb-synapse-plugin", MavenConstants.WSO2_ESB_SYNAPSE_VERSION,"synapse");
+		addPluginEntry(mavenProject, "org.wso2.maven","wso2-esb-synapse-plugin", ESBMavenConstants.WSO2_ESB_SYNAPSE_VERSION,"synapse");
 		
 		MavenUtils.saveMavenProject(mavenProject, mavenProjectPomLocation);
 	

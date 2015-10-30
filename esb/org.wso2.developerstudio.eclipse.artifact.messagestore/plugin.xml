@@ -25,7 +25,7 @@
 			wizardManifest="project_wizard.xml"
 			id="org.wso2.developerstudio.eclipse.artifact.messagestore.wizard"
 			icon="icons/message-store-small.png">
-			<description>Scheduled Task</description>
+			<description>Message Store</description>
 		</wizard>
 	</extension>
 	  <!--<extension point="org.eclipse.ui.navigator.navigatorContent">	
@@ -81,6 +81,7 @@
                 </enablement>
             </commonWizard>
     </extension>
+   
    	<extension
 		point="org.wso2.developerstudio.eclipse.platform.core.intro.ui.dashboard">	
 	<wizardLink category="dashboard.category.esb" id="91dashboard.wizardLink.esb.messagestore"

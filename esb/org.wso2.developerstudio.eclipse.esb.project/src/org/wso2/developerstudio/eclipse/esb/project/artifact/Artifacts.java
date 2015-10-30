@@ -7,16 +7,16 @@ import javax.xml.namespace.QName;
 
 import org.apache.axiom.om.OMElement;
 import org.wso2.developerstudio.eclipse.platform.core.manifest.AbstractXMLDoc;
-import org.wso2.developerstudio.eclipse.capp.core.manifest.ArtifactDependency;
+import org.wso2.developerstudio.eclipse.esb.core.ESBArtifactDependency;
 
 public class Artifacts extends AbstractXMLDoc{
-	private List<ArtifactDependency> artifactDependencies=new ArrayList<ArtifactDependency>();
+	private List<ESBArtifactDependency> artifactDependencies=new ArrayList<ESBArtifactDependency>();
 	
-	public List<ArtifactDependency> getArtifactDependencies() {
+	public List<ESBArtifactDependency> getArtifactDependencies() {
 		return artifactDependencies;
 	}
 
-	public void setArtifactDependencies(List<ArtifactDependency> artifactDependencies) {
+	public void setArtifactDependencies(List<ESBArtifactDependency> artifactDependencies) {
 		this.artifactDependencies = artifactDependencies;
 	}
 
@@ -26,7 +26,7 @@ public class Artifacts extends AbstractXMLDoc{
 		for (OMElement omElement : artifactsElements) {
 			List<OMElement> artifactElements = getChildElements(omElement, "dependency");			
 			for (OMElement omElement2 : artifactElements) {				
-				ArtifactDependency artifactDependency=new ArtifactDependency(null, null); 
+				ESBArtifactDependency artifactDependency=new ESBArtifactDependency(null, null); 
 				artifactDependency.setName(omElement2.getAttributeValue(new QName("artifact")));
 				artifactDependencies.add(artifactDependency);
 			}

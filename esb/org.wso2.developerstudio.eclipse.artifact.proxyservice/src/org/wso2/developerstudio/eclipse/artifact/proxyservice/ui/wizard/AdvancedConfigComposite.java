@@ -23,7 +23,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Observable;
 
-import org.eclipse.jface.window.Window;
+import org.apache.commons.lang.NotImplementedException;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.SWT;
@@ -42,20 +42,28 @@ import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
+
 import static org.wso2.developerstudio.eclipse.esb.core.utils.ESBMediaTypeConstants.*;
-import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.provider.NamedEntityDescriptor;
-import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.provider.RegistryKeyPropertyEditorDialog;
+
+//TODO need to find a way to handle this
+//import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.provider.NamedEntityDescriptor;
+//import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.provider.RegistryKeyPropertyEditorDialog;
+
 import org.wso2.developerstudio.eclipse.artifact.proxyservice.model.ProxyServiceModel;
 import org.wso2.developerstudio.eclipse.artifact.proxyservice.model.ProxyServiceModel.TargetEPType;
 import org.wso2.developerstudio.eclipse.artifact.proxyservice.utils.PsArtifactConstants;
 import org.wso2.developerstudio.eclipse.artifact.proxyservice.validators.EndPointsList;
+
 import static org.wso2.developerstudio.eclipse.platform.core.mediatype.PlatformMediaTypeConstants.*;
+
 import org.wso2.developerstudio.eclipse.platform.core.model.AbstractComposite;
 import org.wso2.developerstudio.eclipse.platform.core.model.AbstractListDataProvider.ListData;
 import org.wso2.developerstudio.eclipse.platform.core.project.model.ProjectDataModel;
 import org.wso2.developerstudio.eclipse.platform.core.project.model.ProjectOptionData;
 import org.wso2.developerstudio.eclipse.platform.core.templates.ArtifactTemplate;
+
 import static org.wso2.developerstudio.eclipse.platform.core.utils.CSProviderConstants.*;
+
 import org.wso2.developerstudio.eclipse.platform.core.utils.DeveloperStudioProviderUtils;
 import org.wso2.developerstudio.eclipse.platform.core.utils.ResourceManager;
 
@@ -751,13 +759,15 @@ public class AdvancedConfigComposite extends AbstractComposite {
 				FILTER_MEDIA_TYPE,
 				mediaType);
 		registryKeyProperty.setKeyValue(textBox.getText());
-		RegistryKeyPropertyEditorDialog dialog = new RegistryKeyPropertyEditorDialog(getShell(), SWT.NULL,
-				registryKeyProperty, new ArrayList<NamedEntityDescriptor>());
-		int open = dialog.open();
-		if(open== Window.OK){
-			String keyValue = registryKeyProperty.getKeyValue();
-			textBox.setText(keyValue);
-		}
+		//TODO implement commnted codes and remove the exception
+		throw new NotImplementedException();
+//		RegistryKeyPropertyEditorDialog dialog = new RegistryKeyPropertyEditorDialog(getShell(), SWT.NULL,
+//				registryKeyProperty, new ArrayList<NamedEntityDescriptor>());
+//		int open = dialog.open();
+//		if(open== Window.OK){
+//			String keyValue = registryKeyProperty.getKeyValue();
+//			textBox.setText(keyValue);
+//		}
 	}
 
 	public void setModel(ProxyServiceModel model) {

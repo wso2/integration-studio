@@ -20,11 +20,11 @@
     <parent>
     	<groupId>org.wso2.developerstudio</groupId>
     	<artifactId>esb-tool-parent</artifactId>
-    	<version>3.8.0</version>
+    	<version>4.0.0</version>
     </parent>     
     <modelVersion>4.0.0</modelVersion>
     <artifactId>org.wso2.developerstudio.eclipse.artifact.sequence</artifactId>
-  <packaging>eclipse-plugin</packaging>
+    <packaging>eclipse-plugin</packaging>
     <name>Developer Studio Proxy Service artifact</name>
     <!--dependencies>
     	<dependency>

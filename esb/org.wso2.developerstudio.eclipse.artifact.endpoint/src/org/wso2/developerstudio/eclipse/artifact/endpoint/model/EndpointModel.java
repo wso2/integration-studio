@@ -18,6 +18,7 @@ package org.wso2.developerstudio.eclipse.artifact.endpoint.model;
 
 import org.apache.axiom.om.OMElement;
 import org.apache.axiom.om.OMException;
+import org.apache.commons.lang.NotImplementedException;
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.ResourcesPlugin;
@@ -36,7 +37,8 @@ import org.wso2.developerstudio.eclipse.esb.core.utils.SynapseFileUtils;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBArtifact;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBProjectArtifact;
 import org.wso2.developerstudio.eclipse.esb.project.utils.ESBProjectUtils;
-import org.wso2.developerstudio.eclipse.general.project.utils.GeneralProjectUtils;
+//TODO fix this
+//import org.wso2.developerstudio.eclipse.general.project.utils.GeneralProjectUtils;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.platform.core.exception.ObserverFailedException;
@@ -153,12 +155,15 @@ public class EndpointModel extends ProjectDataModel {
 			setEndpointSaveLocation((IContainer) data);
 			
 		} else if (key.equals(EpArtifactConstants.WIZARD_OPTION_CREATE_ESB_PROJECT)) {
-			if(getSelectedOption_DynamicEP()){				
-				Shell shell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();		
-				IProject generalProject = GeneralProjectUtils.createGeneralProject(shell,getLocation());
-				if(generalProject!=null){
-					setEndpointSaveLocation(generalProject);
-				}
+			if(getSelectedOption_DynamicEP()){		
+				
+				//TODO fix this and removeNotImplemented exception
+				throw new NotImplementedException();
+//				Shell shell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();		
+//				IProject generalProject = GeneralProjectUtils.createGeneralProject(shell,getLocation());
+//				if(generalProject!=null){
+//					setEndpointSaveLocation(generalProject);
+//				}
 			} else{
 				Shell shell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
 				IProject esbProject = ESBProjectUtils.createESBProject(shell,getLocation());

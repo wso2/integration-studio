@@ -70,4 +70,12 @@
                 </enablement>
             </commonWizard>
     </extension>
+    
+   <extension point="org.wso2.developerstudio.eclipse.platform.core.intro.ui.dashboard">
+	   <wizardLink category="dashboard.category.esb" id="dashboard.wizardLink.esb.synapse"
+		wizard="org.wso2.developerstudio.eclipse.artifact.synapseartifact"
+		priority="11">
+		</wizardLink>
+   </extension>
+    
    </plugin>

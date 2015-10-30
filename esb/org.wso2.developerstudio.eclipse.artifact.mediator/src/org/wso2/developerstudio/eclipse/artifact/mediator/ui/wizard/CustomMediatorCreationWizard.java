@@ -17,8 +17,6 @@
 package org.wso2.developerstudio.eclipse.artifact.mediator.ui.wizard;
 
 import java.io.File;
-import java.util.ResourceBundle;
-
 import org.apache.maven.model.Plugin;
 import org.apache.maven.project.MavenProject;
 import org.codehaus.plexus.util.xml.Xpp3Dom;

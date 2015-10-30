@@ -30,8 +30,7 @@
 	<module>org.wso2.developerstudio.eclipse.artifact.messageprocessor</module>
 	<module>org.wso2.developerstudio.eclipse.artifact.inboundendpoint</module>
 	<module>org.wso2.developerstudio.eclipse.artifact.connector</module>
-
-	<!--module>org.wso2.developerstudio.eclipse.gmf.esb.diagram</module-->
+	<module>org.wso2.developerstudio.eclipse.gmf.esb.diagram</module>
     </modules>
 
     <properties>
@@ -60,7 +59,7 @@
         <repository>
             <id>developerstudio-kernel</id>
             <layout>p2</layout>
-            <url>http://builder1.us1.wso2.org/~developerstudio/developer-studio-kernel/4.0.0/M0/p2/</url>
+            <url>http://builder1.us1.wso2.org/~developerstudio/developer-studio-kernel/4.0.0/M1/p2/</url>
         </repository>
 	<repository>
 	     <id>WSO2-Nexus-Maven-Repository</id>

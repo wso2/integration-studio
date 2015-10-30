@@ -23,10 +23,22 @@ import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
 import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
 
 public class MavenPomGenPluginUtils {
-	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
-
+	
+	private static final String POM = "pom";
+	private static final String JAR_DIRECTORY = "/jar";
+	private static final String CAPP_DIRECTORY = "/capp";
+	private static final String VERSION = "1.0.0";
+	private static final String WSO2_DIST_REPO = "http://dist.wso2.org/maven2";
+	private static final String CLASS = "class";
+	private static final String EXTENSION = "extension";
+	private static final String TYPE = "type";
+	private static final String ID = "id";
+	private static final String PLUGIN = "plugin";
+	private static final String TARGET = "target";
 	private static final String MAVEN_DEFINITION_HANDLER_EXTENSION = "org.wso2.developerstudio.eclipse.capp.maven.artifact.mavenplugin.generator";
 
+	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
+	
 	private static Map<String, MavenPluginContributor> archeTypeDefinitions;
 
 	static {
@@ -57,14 +69,14 @@ public class MavenPomGenPluginUtils {
 				.getConfigurationElementsFor(MAVEN_DEFINITION_HANDLER_EXTENSION);
 		for (IConfigurationElement e : config) {
 			try {
-				if (e.getName().equals("plugin")) {
+				if (e.getName().equals(PLUGIN)) {
 					MavenPluginContributor mavenPluginContributor = new MavenPluginContributor();
 
-					String id = e.getAttribute("id");
-					String type = e.getAttribute("type");
-					String extension = e.getAttribute("extension");
+					String id = e.getAttribute(ID);
+					String type = e.getAttribute(TYPE);
+					String extension = e.getAttribute(EXTENSION);
 					IMavenPluginContributorProvider provider = (IMavenPluginContributorProvider) e
-							.createExecutableExtension("class");
+							.createExecutableExtension(CLASS);
 
 					mavenPluginContributor.setArtifactType(type);
 					mavenPluginContributor.setExtension(extension);
@@ -74,8 +86,7 @@ public class MavenPomGenPluginUtils {
 					getPluginContributors().put(type, mavenPluginContributor);
 				}
 			} catch (Exception ex) {
-				log.error("Error loading extension point element: "
-						+ e.getName(), ex);
+				log.error("Error loading extension point element: " + e.getName(), ex);
 			}
 		}
 	}
@@ -83,12 +94,12 @@ public class MavenPomGenPluginUtils {
 	public static void updateAndSaveMavenCAppProject(MavenProject cappBuildMavenProject,IProject eclipseProject, File projectPOM, String parentPomArtifactId) throws Exception{
 		//Buid the CAR
 		Repository repo = new Repository();
-		repo.setUrl("http://dist.wso2.org/maven2");
+		repo.setUrl(WSO2_DIST_REPO);
 		repo.setId("wso2-maven2-repository-1");
 		cappBuildMavenProject.getModel().addRepository(repo);
 		// Modified the name to different value to support maven 3
 		Repository repo1 = new Repository();
-		repo1.setUrl("http://dist.wso2.org/maven2");
+		repo1.setUrl(WSO2_DIST_REPO);
 		repo1.setId("wso2-maven2-plugin-repository-1");
 		cappBuildMavenProject.getModel().addPluginRepository(repo1);
 		Map<String, MavenPluginContributor> pluginContributors = MavenPomGenPluginUtils.getPluginContributors();
@@ -106,21 +117,21 @@ public class MavenPomGenPluginUtils {
 		if (mavenProjectSaveLocation.exists()){
 			jarBuildMavenProject = MavenUtils.updateMavenProjectWithJarBuilderPlugin(eclipseProject, MavenUtils.getMavenProject(mavenProjectSaveLocation), mavenProjectSaveLocation);
 		}else{
-			jarBuildMavenProject = MavenUtils.updateMavenProjectWithJarBuilderPlugin(eclipseProject, cappBuildMavenProject.getGroupId(), eclipseProject.getName()+".jarbuilder", "1.0.0", mavenProjectSaveLocation);
+			jarBuildMavenProject = MavenUtils.updateMavenProjectWithJarBuilderPlugin(eclipseProject, cappBuildMavenProject.getGroupId(), eclipseProject.getName()+".jarbuilder", VERSION, mavenProjectSaveLocation);
 		}
 
 		//Build the parent 
 		File mavenRootPomSaveLocation = CAppEnvironment.getcAppManager().getCAppParentBuilderMavenProjectLocation(eclipseProject).getLocation().toFile();
 		MavenProject rootMavenProject=null;
 		if(!mavenRootPomSaveLocation.exists()){
-			rootMavenProject = MavenUtils.createMavenProject(cappBuildMavenProject.getGroupId(), parentPomArtifactId, "1.0.0", "pom");
+			rootMavenProject = MavenUtils.createMavenProject(cappBuildMavenProject.getGroupId(), parentPomArtifactId, VERSION, POM);
 		}else{
 			rootMavenProject = MavenUtils.getMavenProject(mavenRootPomSaveLocation);
 		}
 		MavenUtils.addMavenModulesToMavenProject(rootMavenProject, mavenRootPomSaveLocation, new File[] {cAppBuilderMavenProjectLocation, mavenProjectSaveLocation});
 
 		//Set parent pom & target directories
-		File parentTargetDir = new File(mavenRootPomSaveLocation.getParentFile(),"target");
+		File parentTargetDir = new File(mavenRootPomSaveLocation.getParentFile(), TARGET);
 		
 		Parent parent = new Parent();
 		parent.setGroupId(rootMavenProject.getGroupId());
@@ -128,10 +139,10 @@ public class MavenPomGenPluginUtils {
 		parent.setVersion(rootMavenProject.getVersion());
 		
 		cappBuildMavenProject.getModel().setParent(parent);
-		cappBuildMavenProject.getBuild().setDirectory(FileUtils.getRelativePath(cAppBuilderMavenProjectLocation.getParentFile(),parentTargetDir)+"/capp");
+		cappBuildMavenProject.getBuild().setDirectory(FileUtils.getRelativePath(cAppBuilderMavenProjectLocation.getParentFile(),parentTargetDir)+ CAPP_DIRECTORY);
 		
 		jarBuildMavenProject.getModel().setParent(parent);
-		jarBuildMavenProject.getBuild().setDirectory(FileUtils.getRelativePath(mavenProjectSaveLocation.getParentFile(),parentTargetDir)+"/jar");
+		jarBuildMavenProject.getBuild().setDirectory(FileUtils.getRelativePath(mavenProjectSaveLocation.getParentFile(),parentTargetDir)+ JAR_DIRECTORY);
 		
 		MavenUtils.saveMavenProject(cappBuildMavenProject, cAppBuilderMavenProjectLocation);
 		MavenUtils.saveMavenProject(jarBuildMavenProject, mavenProjectSaveLocation);

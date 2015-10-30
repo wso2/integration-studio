@@ -24,12 +24,14 @@ import org.wso2.developerstudio.eclipse.capp.maven.utils.MavenPomGenPluginUtils;
 import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
 import org.wso2.developerstudio.eclipse.samples.contributor.AbstractSampleContributor;
 
-/**
- *
- */
 public abstract class AbstractMavenSampleContributor extends AbstractSampleContributor{
 	
-	
+	private static final String PARENT = ".parent";
+	private static final String POM = "pom";
+	private static final String VERSION = "1.0.0";
+	private static final String BUILDER = ".builder";
+	private static final String ORG_WSO2_CAPP = "org.wso2.capp";
+
 	protected void addSampleTo(IProject project, boolean isMavenReady) throws Exception {
 		super.addSampleTo(project);
 		if(!project.isOpen()){
@@ -45,11 +47,11 @@ public abstract class AbstractMavenSampleContributor extends AbstractSampleContr
 	
 	protected void generateMavenPOMForSample(IProject project) throws Exception {
 	    MavenProject selectedProject=generateMavenProject(project);
-        MavenPomGenPluginUtils.updateAndSaveMavenCAppProject(selectedProject,project,null,selectedProject.getArtifactId()+".parent");
+        MavenPomGenPluginUtils.updateAndSaveMavenCAppProject(selectedProject,project,null,selectedProject.getArtifactId()+ PARENT);
     }
 	
     private MavenProject generateMavenProject(IProject eclipseProject){
-    	MavenProject project=MavenUtils.createMavenProject("org.wso2.capp", eclipseProject.getName()+".builder", "1.0.0", "pom");
+    	MavenProject project = MavenUtils.createMavenProject(ORG_WSO2_CAPP, eclipseProject.getName() + BUILDER, VERSION, POM);
     	return project;
     }
 

@@ -155,6 +155,6 @@ public class ArtifactDependency extends Observable implements Observer{
 	}
 	
 	public String getCaption(){
-		return getName()+" - "+getVersion();
+		return getName() + " - " + getVersion();
 	}
 }

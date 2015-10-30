@@ -18,17 +18,20 @@ package org.wso2.developerstudio.eclipse.capp.core.manifest;
 
 
 public class SimpleJarManifest extends AbstractManifest {
+	
+	private static final String MANIFEST_MF = "MANIFEST.MF";
+	private static final String MANIFEST_VERSION = "Manifest-Version";
 	private String manifestVersion="1.0";
 	
 	public String toString() {
 		String manifest;
-		manifest=appendLine(null, getManifestHeaderLine("Manifest-Version",getManifestVersion()));
+		manifest=appendLine(null, getManifestHeaderLine(MANIFEST_VERSION,getManifestVersion()));
 		manifest=appendLine(manifest, "\n\n");
 		return manifest;
     }
 	
 	protected String getDefaultName() {
-		return "MANIFEST.MF";
+		return MANIFEST_MF;
 	}
 
 	protected String getManifestVersion() {

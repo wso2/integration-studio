@@ -72,7 +72,7 @@ public class ArtifactFeatureCreator {
 	        tmpFolder = FileUtils.createTempDirectory();
 	        File pluginsPath = new File(tmpFolder,"plugins");
 	        File featuresPath = new File(tmpFolder,"features");
-	        File featurePath = new File(featuresPath,artifact.getName()+"_"+artifact.getVersion());
+	        File featurePath = new File(featuresPath,artifact.getName() + "_" + artifact.getVersion());
 	        File featureMetaInfPath = new File(featurePath,"META-INF");
 	        featureMetaInfPath.mkdirs();
 	        pluginsPath.mkdirs();

@@ -17,5 +17,5 @@
 package org.wso2.developerstudio.eclipse.capp.core.model;
 
 public class CARArtifactFeature {
-
+	//TODO find why this is here and remove once fixed
 }

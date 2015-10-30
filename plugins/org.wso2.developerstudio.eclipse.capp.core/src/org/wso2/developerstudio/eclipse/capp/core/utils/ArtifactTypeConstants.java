@@ -19,62 +19,15 @@ package org.wso2.developerstudio.eclipse.capp.core.utils;
 public class ArtifactTypeConstants {
 	
 	public final static String BPEL_ARTIFACT_TYPE = "bpel/workflow";
-	
-	/**
-     * 
-     */
 	public static final String LIB_LIBRARY_BUNDLE = "lib/library/bundle";
-
-	/**
-     * 
-     */
 	public static final String SERVICE_JAXWS = "webapp/jaxws";
-
-	/**
-     * 
-     */
 	public static final String LIB_REGISTRY_HANDLERS = "lib/registry/handlers";
-
-	/**
-     * 
-     */
 	public static final String LIB_REGISTRY_FILTER = "lib/registry/filter";
-
-	/**
-     * 
-     */
 	public static final String LIB_DATASERVICE_VALIDATOR = "lib/dataservice/validator";
-
-	/**
-     * 
-     */
 	public static final String LIB_SYNAPSE_MEDIATOR = "lib/synapse/mediator";
-
-	/**
-     * 
-     */
 	public static final String LIB_CARBON_UI = "lib/carbon/ui";
-
-
-
-	/**
-     * 
-     */
 	public static final String WSO2_GADGET = "wso2/gadget";
-
-
-
-	/**
-     * 
-     */
 	public static final String SERVICE_AXIS2_NAME = "service/axis2";
-	
-	/**
-	 * 
-	 */
 	public final static String ENDPOINT_ARTIFACT_TYPE="synapse/endpoint";
-	
 	public final static String WAR_ARTIFACT_TYPE="web/application";
-	
-
 }

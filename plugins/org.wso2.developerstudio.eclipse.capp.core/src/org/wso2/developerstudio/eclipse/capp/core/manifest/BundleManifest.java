@@ -21,6 +21,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BundleManifest extends SimpleJarManifest {
+	
+	private static final String DYNAMIC_IMPORT_PACKAGE = "DynamicImport-Package";
+	private static final String FRAGMENT_HOST = "Fragment-Host";
+	private static final String BUNDLE_CLASS_PATH = "Bundle-ClassPath";
+	private static final String IMPORT_PACKAGE = "Import-Package";
+	private static final String EXPORT_PACKAGE = "Export-Package";
+	private static final String BUNDLE_ACTIVATOR = "Bundle-Activator";
+	private static final String BUNDLE_DESCRIPTION = "Bundle-Description";
+	private static final String BUNDLE_VERSION = "Bundle-Version";
+	private static final String BUNDLE_NAME = "Bundle-Name";
+	private static final String BUNDLE_SYMBOLIC_NAME = "Bundle-SymbolicName";
+	private static final String MANIFEST_VERSION = "Manifest-Version";
+	
 	private String bundleSymbolicName;
 	private String bundleName;
 	private String bundleVersion;
@@ -94,7 +107,7 @@ public class BundleManifest extends SimpleJarManifest {
 			if (packages==null){
 				packages=packageName;
 			}else{
-				packages+= ","+packageName;
+				packages += "," +packageName;
 			}
 		}
 		return packages;
@@ -106,7 +119,7 @@ public class BundleManifest extends SimpleJarManifest {
 			if (imports==null){
 				imports=packageName;
 			}else{
-				imports+= ","+packageName;
+				imports += "," + packageName;
 			}
 		}
 		return imports;
@@ -138,31 +151,31 @@ public class BundleManifest extends SimpleJarManifest {
 	private List<String> getHeaderLines() {
 		List<String> list=new ArrayList<String>();
 		
-		list.add(getManifestHeaderLine("Manifest-Version",getManifestVersion()));
-		list.add(getManifestHeaderLine("Bundle-SymbolicName",getBundleSymbolicName()));
-		list.add(getManifestHeaderLine("Bundle-Name",getBundleName()));
-		list.add(getManifestHeaderLine("Bundle-Version",getEffectiveBundleVersion()));
-		list.add(getManifestHeaderLine("Bundle-Description",getBundleDescription()));
+		list.add(getManifestHeaderLine(MANIFEST_VERSION,getManifestVersion()));
+		list.add(getManifestHeaderLine(BUNDLE_SYMBOLIC_NAME,getBundleSymbolicName()));
+		list.add(getManifestHeaderLine(BUNDLE_NAME,getBundleName()));
+		list.add(getManifestHeaderLine(BUNDLE_VERSION,getEffectiveBundleVersion()));
+		list.add(getManifestHeaderLine(BUNDLE_DESCRIPTION,getBundleDescription()));
 		if (getBundleActivatorName()!=null){
-			list.add(getManifestHeaderLine("Bundle-Activator",getBundleActivatorName()));
+			list.add(getManifestHeaderLine(BUNDLE_ACTIVATOR,getBundleActivatorName()));
 		}
 		String exportPackageListString = getExportPackageListString();
 		if (exportPackageListString!=null){
-			list.add(getManifestHeaderLine("Export-Package",exportPackageListString));
+			list.add(getManifestHeaderLine(EXPORT_PACKAGE,exportPackageListString));
 		}
 		String importPackageListString = getImportPackageListString();
 		if (importPackageListString!=null){
-			list.add(getManifestHeaderLine("Import-Package",importPackageListString));
+			list.add(getManifestHeaderLine(IMPORT_PACKAGE,importPackageListString));
 		}
 		String bundleClassPathListString = getBundleClassPathListString();
 		if (bundleClassPathListString!=null){
-			list.add(getManifestHeaderLine("Bundle-ClassPath",bundleClassPathListString));
+			list.add(getManifestHeaderLine(BUNDLE_CLASS_PATH,bundleClassPathListString));
 		}
 		if (getFragmentHost()!=null && !getFragmentHost().trim().equals("")){
-			list.add(getManifestHeaderLine("Fragment-Host",getFragmentHost().trim()));			
+			list.add(getManifestHeaderLine(FRAGMENT_HOST,getFragmentHost().trim()));			
 		}
 		if (isDynamicImports()){
-			list.add(getManifestHeaderLine("DynamicImport-Package","*"));
+			list.add(getManifestHeaderLine(DYNAMIC_IMPORT_PACKAGE,"*"));
 		}
 		list.addAll(getAdditionalHeaders());
 		return list;

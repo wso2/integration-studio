@@ -77,14 +77,5 @@ public class WizardInfoPersister {
 	        }
 		}
 
-/*		
-		if(control instanceof Composite){
-			
-		}
-		
-		if(control instanceof Combo){
-			
-		}
-*/
 	}
 }

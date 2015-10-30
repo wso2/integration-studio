@@ -62,7 +62,7 @@ public class ArtifactBundleCreator {
         CAppArtifactBundleManifest cAppArtifactBundleManifest = new CAppArtifactBundleManifest(getArtifact());
         cAppArtifactBundleManifest.setParentApplication(getParentApplication());
         cAppArtifactBundleManifest.toFile(manifestFile);
-        File bundle = new File(tmpFolder,getArtifact().getName()+"-"+getArtifact().getTimestampedVersion()+".jar");
+        File bundle = new File(tmpFolder,getArtifact().getName()+"-"+getArtifact().getTimestampedVersion() + ".jar");
         new ArchiveManipulator().archiveDir(bundle.toString(), bundleContentPath.toString());
         return bundle;
 	}
@@ -72,7 +72,8 @@ public class ArtifactBundleCreator {
 	}
 	
 	public Map<Artifact,File> getArtifactContent(File contentLocation) throws Exception{
-        File tmpFolder = contentLocation==null? new File(FileUtils.createTempDirectory(),getArtifact().getName()+"-"+getArtifact().getTimestampedVersion()):contentLocation;
+        File tmpFolder = contentLocation==null? new File(FileUtils.createTempDirectory(),getArtifact().getName() 
+        		+ "-" + getArtifact().getTimestampedVersion()):contentLocation;
         FileUtils.copyDirectory(getLocation(), tmpFolder);
         return createArtifactMap(getArtifact(),tmpFolder);
 	}

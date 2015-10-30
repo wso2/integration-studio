@@ -29,12 +29,15 @@ import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
 public class Artifacts extends AbstractXMLDoc{
-	private static IDeveloperStudioLog log=Logger.getLog(Activator.PLUGIN_ID);
+	private static final String ARTIFACTS_XML = "artifacts.xml";
+	private static final String ARTIFACTS = "artifacts";
+
+	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
 	private List<Artifact> artifacts=new ArrayList<Artifact>();
 	
     protected String getDefaultName() {
-	    return "artifacts.xml";
+	    return ARTIFACTS_XML;
     }
 
 	public void setArtifacts(List<Artifact> artifacts) {
@@ -46,7 +49,7 @@ public class Artifacts extends AbstractXMLDoc{
     }
 
 	public OMElement getDocumentElement() {
-		OMElement documentElement = getElement("artifacts", "");
+		OMElement documentElement = getElement(ARTIFACTS, "");
 		for(Artifact artifact:getArtifacts()){
 			documentElement.addChild(artifact.getDocumentElement());
 		}

@@ -22,8 +22,6 @@ import java.util.regex.Pattern;
 
 public class ArtifactFileUtils {
 
-
-	
 	//file select options
 	public static final int ERROR_OPTION=0;
 	public static final int OPTION_TEMPLATE=1;
@@ -71,7 +69,7 @@ public class ArtifactFileUtils {
     }
     
     public static String getFileNameWithoutExtension(String filePath){
-		StringBuffer sb=new StringBuffer();
+		StringBuffer sb = new StringBuffer();
 		String[] fileInfo = filePath.split(Pattern.quote(File.separator));
 //		if(fileInfo[fileInfo.length - 1].contains("\\.")){
 		String[] splitByPeriod = fileInfo[fileInfo.length - 1].split("\\.");

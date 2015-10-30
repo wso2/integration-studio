@@ -16,6 +16,7 @@
 
 package org.wso2.developerstudio.eclipse.capp.core.manifest;
 
-public class CARManifest {
+public class CARManifest { 
+	//TODO find why this is here and remove
 
 }

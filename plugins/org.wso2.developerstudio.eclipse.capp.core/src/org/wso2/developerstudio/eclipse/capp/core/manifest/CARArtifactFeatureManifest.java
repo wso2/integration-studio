@@ -33,7 +33,8 @@ import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
 public class CARArtifactFeatureManifest extends AbstractXMLDoc{
-	private static IDeveloperStudioLog log=Logger.getLog(Activator.PLUGIN_ID);
+	
+	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
 	private String featureId;
 	private String version;

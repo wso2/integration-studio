@@ -32,7 +32,7 @@ import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
 public class CAppArtifactManifest {
-	private static IDeveloperStudioLog log=Logger.getLog(Activator.PLUGIN_ID);
+	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
 	private String artifactType;
 	private String version;
@@ -159,6 +159,7 @@ public class CAppArtifactManifest {
 		return element;
 	}
 	    
+	/* TODO find any usage, remove if this has not used
 	 public static void main (String[] b){
 		 CAppArtifactManifest a = new CAppArtifactManifest();
 		 a.setArtifactType("mtype");
@@ -167,4 +168,5 @@ public class CAppArtifactManifest {
 		 a.setVersion("1.0.0");
 		 System.out.println(a);
 	 }
+	 */
 }

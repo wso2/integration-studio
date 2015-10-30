@@ -47,7 +47,13 @@ import org.apache.axiom.om.impl.builder.StAXOMBuilder;
 import org.apache.axiom.om.util.AXIOMUtil;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.CoreException;
+import org.wso2.developerstudio.eclipse.capp.core.Activator;
+import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
+import org.wso2.developerstudio.eclipse.logging.core.Logger;
 public abstract class AbstractXMLDoc extends AbstractManifest{
+	
+	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
+
 	public static OMFactory factory = OMAbstractFactory.getOMFactory();
 
 	protected List<OMElement> getChildElements(OMElement parentElement, String tagName) {
@@ -57,7 +63,7 @@ public abstract class AbstractXMLDoc extends AbstractManifest{
 			Object o = children.next();
 			if (o instanceof OMElement) {
 				OMElement child = (OMElement) o;
-				if (tagName==null || tagName.trim().equals("") || child.getLocalName().equals(tagName)) {
+				if (tagName == null || tagName.trim().equals("") || child.getLocalName().equals(tagName)) {
 					elements.add(child);
 				}
 			}
@@ -105,11 +111,7 @@ public abstract class AbstractXMLDoc extends AbstractManifest{
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
 		wsdlElement.serialize(baos);
 
-		Source stylesheetSource =
-		                          new StreamSource(
-		                                           new ByteArrayInputStream(
-		                                                                    PRETTY_PRINT_STYLE_SHEET
-		                                                                                         .getBytes()));
+		Source stylesheetSource = new StreamSource(new ByteArrayInputStream(PRETTY_PRINT_STYLE_SHEET.getBytes()));
 		Source xmlSource = new StreamSource(new ByteArrayInputStream(baos.toByteArray()));
 
 		TransformerFactory tf = TransformerFactory.newInstance();
@@ -133,7 +135,7 @@ public abstract class AbstractXMLDoc extends AbstractManifest{
 		try {
 	        fileInputStream.close();
         } catch (IOException e) {
-        	// stream is already closed
+        	log.error("Error while closing the stream", e);
         }
 	}
 	
@@ -155,7 +157,7 @@ public abstract class AbstractXMLDoc extends AbstractManifest{
 					stream.close();
 				}
 			} catch (IOException e) {
-				// stream is already closed
+				log.error("Error while closing the stream", e);
 			}
 		}
 	}

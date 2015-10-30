@@ -25,7 +25,7 @@ import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
 public class RegistryConnection implements IRegistryConnection {
-	private static IDeveloperStudioLog log=Logger.getLog(Activator.PLUGIN_ID);
+	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
 	private URL url;
 	private String username;
@@ -73,10 +73,10 @@ public class RegistryConnection implements IRegistryConnection {
 
 	public String getCaption() {
 	    try {
-	        return getConnectionName()+" - "+new URL(getURL().toString()+getPath()).toString();
+	        return getConnectionName() + " - " + new URL(getURL().toString()+getPath()).toString();
         } catch (MalformedURLException e) {
 	        log.error(e);
         }
-        return getConnectionName()+" - "+getURL().toString();
+        return getConnectionName() + " - " + getURL().toString();
     }
 }

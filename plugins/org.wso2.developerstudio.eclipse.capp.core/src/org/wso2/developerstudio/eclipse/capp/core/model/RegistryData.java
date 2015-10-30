@@ -21,6 +21,7 @@ import org.wso2.developerstudio.eclipse.registry.core.interfaces.IRegistryData;
 public class RegistryData extends RegistryConnection implements IRegistryData {
 
 	int selectedItemType = 0;
+	
 	public int getType() {
 		return selectedItemType;
 	}

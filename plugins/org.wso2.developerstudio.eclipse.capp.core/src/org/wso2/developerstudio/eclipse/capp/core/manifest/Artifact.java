@@ -41,7 +41,19 @@ import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
 public class Artifact extends AbstractXMLDoc implements Observer{
-	private static IDeveloperStudioLog log=Logger.getLog(Activator.PLUGIN_ID);
+	
+	private static final String FILE = "file";
+	private static final String SUB_ARTIFACTS = "subArtifacts";
+	private static final String INCLUDE = "include";
+	private static final String ARTIFACT_XML = "artifact.xml";
+	private static final String DEPENDENCY = "dependency";
+	private static final String ARTIFACT = "artifact";
+	private static final String SERVER_ROLE = "serverRole";
+	private static final String TYPE = "type";
+	private static final String VERSION = "version";
+	private static final String NAME = "name";
+	
+	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
 	String name;
 	String version;
@@ -135,9 +147,9 @@ public class Artifact extends AbstractXMLDoc implements Observer{
 			dependencies = new ArrayList<ArtifactDependency>();
 			if (dependenciesElements!=null){
     			for (OMElement element : dependenciesElements) {
-    				String dependancyName = getAttribute(element, "artifact");
-    				String dependencyVersion = getAttribute(element, "version");
-    				String includeStr = getAttribute(element, "include");
+    				String dependancyName = getAttribute(element, ARTIFACT);
+    				String dependencyVersion = getAttribute(element, VERSION);
+    				String includeStr = getAttribute(element, INCLUDE);
     				boolean isInclude=false;
     				if (includeStr != null) {
     					isInclude=Boolean.parseBoolean(includeStr);			
@@ -157,7 +169,7 @@ public class Artifact extends AbstractXMLDoc implements Observer{
     				}else{
     					artifactDependency.addObserver(this);
     				}
-    				String serverRole = getAttribute(element, "serverRole");
+    				String serverRole = getAttribute(element, SERVER_ROLE);
     				if (serverRole != null && !serverRole.equals("")){
     					artifactDependency.setServerRole(serverRole);
     				}
@@ -199,20 +211,20 @@ public class Artifact extends AbstractXMLDoc implements Observer{
 	}
 
 	protected void deserialize(OMElement documentElement) {
-		setName(getAttribute(documentElement, "name"));
-		setVersion(getAttribute(documentElement, "version"));
-		setType(getAttribute(documentElement, "type"));
-		setServerRole(getAttribute(documentElement, "serverRole"));
-		List<OMElement> elements = getChildElements(documentElement, "file");
+		setName(getAttribute(documentElement, NAME));
+		setVersion(getAttribute(documentElement, VERSION));
+		setType(getAttribute(documentElement, TYPE));
+		setServerRole(getAttribute(documentElement, SERVER_ROLE));
+		List<OMElement> elements = getChildElements(documentElement, FILE);
 		if (elements.size() > 0) {
 			setFile(elements.get(0).getText());
 		}
 		setDependencies(null);
-		dependenciesElements = getChildElements(documentElement, "dependency");
+		dependenciesElements = getChildElements(documentElement, DEPENDENCY);
 		getSubArtifacts().clear();
-		elements = getChildElements(documentElement, "subArtifacts");
+		elements = getChildElements(documentElement, SUB_ARTIFACTS);
 		if (elements.size() > 0) {
-			elements = getChildElements(elements.get(0), "artifact");
+			elements = getChildElements(elements.get(0), ARTIFACT);
 			for (OMElement element : elements) {
 				Artifact artifact = new Artifact(null);
 				artifact.deserialize(element);
@@ -223,41 +235,41 @@ public class Artifact extends AbstractXMLDoc implements Observer{
 	}
 
 	public OMElement getDocumentElement() {
-		OMElement documentElement = getElement("artifact", "");
+		OMElement documentElement = getElement(ARTIFACT, "");
 		if (!isAnonymouse()) {
-			addAttribute(documentElement, "name", name);
+			addAttribute(documentElement, NAME, name);
         }
 
 		if (!isAnonymouse() && version != null) {
-			addAttribute(documentElement, "version", version);
+			addAttribute(documentElement, VERSION, version);
         }
 
 		if (type != null) {
-			addAttribute(documentElement, "type", type);
+			addAttribute(documentElement, TYPE, type);
         }
 
 		if (serverRole != null) {
-			addAttribute(documentElement, "serverRole", serverRole);
+			addAttribute(documentElement, SERVER_ROLE, serverRole);
         }
 
 		if (file != null) {
-			documentElement.addChild(getElement("file", file));
+			documentElement.addChild(getElement(FILE, file));
         }
 
 		for (ArtifactDependency dependency : getDependencies()) {
-			OMElement dependecyElement = getElement("dependency", "");
-			dependecyElement = addAttribute(dependecyElement, "artifact", dependency.getName());
-			dependecyElement = addAttribute(dependecyElement, "version", dependency.getVersion());
+			OMElement dependecyElement = getElement(DEPENDENCY, "");
+			dependecyElement = addAttribute(dependecyElement, ARTIFACT, dependency.getName());
+			dependecyElement = addAttribute(dependecyElement, VERSION, dependency.getVersion());
 			if (dependency.isInclude()) {
-				dependecyElement = addAttribute(dependecyElement, "include", Boolean.toString(dependency.isInclude()));
+				dependecyElement = addAttribute(dependecyElement, INCLUDE, Boolean.toString(dependency.isInclude()));
 			}
 			if (dependency.getServerRole()!=null){
-				dependecyElement = addAttribute(dependecyElement, "serverRole", dependency.getServerRole());
+				dependecyElement = addAttribute(dependecyElement, SERVER_ROLE, dependency.getServerRole());
 			}
 			documentElement.addChild(dependecyElement);
 		}
 		if (getSubArtifacts().size() > 0) {
-			OMElement subArtifactElement = getElement("subArtifacts", "");
+			OMElement subArtifactElement = getElement(SUB_ARTIFACTS, "");
 			for (Artifact subArtifact : getSubArtifacts()) {
 				subArtifactElement.addChild(subArtifact.getDocumentElement());
 			}
@@ -323,7 +335,7 @@ public class Artifact extends AbstractXMLDoc implements Observer{
 	}
 
     public String getDefaultName() {
-	    return "artifact.xml";
+	    return ARTIFACT_XML;
     }
 
 	public void setModificationStamp(long modificationStamp) {

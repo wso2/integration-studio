@@ -43,14 +43,14 @@ import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.ide.IDE;
 import org.wso2.developerstudio.eclipse.artifact.analytics.execution_plan.Activator;
-import org.wso2.developerstudio.eclipse.artifact.analytics.execution_plan.model.Execution_planModel;
-import org.wso2.developerstudio.eclipse.artifact.analytics.execution_plan.utils.Execution_PlanImageUtils;
+import org.wso2.developerstudio.eclipse.artifact.analytics.execution_plan.model.ExecutionPlanModel;
+import org.wso2.developerstudio.eclipse.artifact.analytics.execution_plan.utils.ExecutionPlanImageUtils;
 import org.wso2.developerstudio.eclipse.artifact.analytics.utils.AnalyticsArtifactModel;
 import org.wso2.developerstudio.eclipse.artifact.analytics.utils.AnalyticsConstants;
+import org.wso2.developerstudio.eclipse.artifact.analytics.utils.AnalyticsMavenConstants;
 import org.wso2.developerstudio.eclipse.artifact.analytics.utils.AnalyticsProjectArtifactCreator;
 import org.wso2.developerstudio.eclipse.artifact.analytics.utils.AnalyticsTemplateUtils;
 import org.wso2.developerstudio.eclipse.artifact.analytics.execution_plan.utils.ExecutionPlanConstants;
-import org.wso2.developerstudio.eclipse.capp.maven.utils.MavenConstants;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
@@ -58,18 +58,19 @@ import org.wso2.developerstudio.eclipse.platform.ui.wizard.AbstractWSO2ProjectCr
 import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
 
 
-public class Execution_planProjectCreationWizard extends AbstractWSO2ProjectCreationWizard {
+public class ExecutionPlanProjectCreationWizard extends AbstractWSO2ProjectCreationWizard {
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
-	private Execution_planModel executionPlanModel;
+	private ExecutionPlanModel executionPlanModel;
 	private AnalyticsProjectArtifactCreator analyticsProjectArtifact;
 	private List<File> fileList = new ArrayList<File>();
 	private IProject project;
+
 	
-	public Execution_planProjectCreationWizard() {
-		executionPlanModel = new Execution_planModel();
+	public ExecutionPlanProjectCreationWizard() {
+		executionPlanModel = new ExecutionPlanModel();
 		setModel(executionPlanModel);
 		setWindowTitle(ExecutionPlanConstants.WIZARD_WINDOW_TITLE);
-		setDefaultPageImageDescriptor(Execution_PlanImageUtils.getInstance()
+		setDefaultPageImageDescriptor(ExecutionPlanImageUtils.getInstance()
 				.getImageDescriptor("execution_plan-64x64.png"));
 	}
 	
@@ -83,7 +84,7 @@ public class Execution_planProjectCreationWizard extends AbstractWSO2ProjectCrea
 
 	public boolean performFinish() {
 		try {
-			executionPlanModel = (Execution_planModel) getModel();
+			executionPlanModel = (ExecutionPlanModel) getModel();
 			project = executionPlanModel.getExecution_planSaveLocation().getProject();
 			if(!createExecution_planArtifact()){
 			  return false;
@@ -120,13 +121,12 @@ public class Execution_planProjectCreationWizard extends AbstractWSO2ProjectCrea
 		MavenProject mavenProject = MavenUtils.getMavenProject(mavenProjectPomLocation);
 		
 		boolean pluginExists = MavenUtils.checkOldPluginEntry(mavenProject,
-				"org.wso2.maven", "analytics-execution-plan-maven-plugin",
-				MavenConstants.WSO2_ANALYTICS_EXECUTIONPLAN_VERSION);
+				"org.wso2.maven", "analytics-execution-plan-maven-plugin", AnalyticsMavenConstants.WSO2_ANALYTICS_EXECUTIONPLAN_VERSION);
 		if(pluginExists){
 			return ;
 		}
 		
-		Plugin plugin = MavenUtils.createPluginEntry(mavenProject, "org.wso2.maven", "analytics-execution-plan-maven-plugin", MavenConstants.WSO2_ANALYTICS_EXECUTIONPLAN_VERSION, true);
+		Plugin plugin = MavenUtils.createPluginEntry(mavenProject, "org.wso2.maven", "analytics-execution-plan-maven-plugin", AnalyticsMavenConstants.WSO2_ANALYTICS_EXECUTIONPLAN_VERSION, true);
 		
 		PluginExecution pluginExecution = new PluginExecution();
 		pluginExecution.addGoal("pom-gen");
@@ -206,8 +206,7 @@ public class Execution_planProjectCreationWizard extends AbstractWSO2ProjectCrea
 			} 	
 			copyImportFile(location,isNewArtifact,groupId,version);
 		} else {
-			File analyticsTemplateFile = new AnalyticsTemplateUtils().getResourceFile("templates" + File.separator
-					+ AnalyticsConstants.TEMPLATE_EXECUTIONPLAN);
+			File analyticsTemplateFile = new AnalyticsTemplateUtils().getResourceFile("templates" + File.separator + AnalyticsConstants.TEMPLATE_EXECUTIONPLAN);
 			String templateContent = FileUtils.getContentAsString(analyticsTemplateFile);
 			String content = templateContent.replaceAll(AnalyticsConstants.NAMETAG_EXECUTIONPLAN_TEMPLATE, executionPlanModel.getProjectName());
 			File destFile = new File(location.getLocation().toFile(),

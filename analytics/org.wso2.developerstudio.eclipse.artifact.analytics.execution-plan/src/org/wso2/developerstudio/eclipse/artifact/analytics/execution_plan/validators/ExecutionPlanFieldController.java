@@ -21,7 +21,7 @@ package org.wso2.developerstudio.eclipse.artifact.analytics.execution_plan.valid
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
-import org.wso2.developerstudio.eclipse.artifact.analytics.execution_plan.model.Execution_planModel;
+import org.wso2.developerstudio.eclipse.artifact.analytics.execution_plan.model.ExecutionPlanModel;
 import org.wso2.developerstudio.eclipse.artifact.analytics.execution_plan.utils.ExecutionPlanConstants;
 import org.wso2.developerstudio.eclipse.artifact.analytics.utils.AnalyticsProjectArtifactCreator;
 import org.wso2.developerstudio.eclipse.artifact.analytics.utils.AnalyticsArtifactModel;
@@ -32,7 +32,7 @@ import org.wso2.developerstudio.eclipse.platform.ui.validator.CommonFieldValidat
 
 import java.util.List;
 
-public class Execution_planFieldController extends AbstractFieldController {
+public class ExecutionPlanFieldController extends AbstractFieldController {
 
 	
 	public void validate(String modelProperty, Object value, ProjectDataModel model)
@@ -41,7 +41,7 @@ public class Execution_planFieldController extends AbstractFieldController {
 		     CommonFieldValidator.validateArtifactName(value);
 		     if (value != null) {
 				String resource = value.toString();
-				Execution_planModel executionPlanModel = (Execution_planModel) model;
+				ExecutionPlanModel executionPlanModel = (ExecutionPlanModel) model;
 				if (executionPlanModel != null) {
 					IContainer resLocation = executionPlanModel.getExecution_planSaveLocation();
 					if (resLocation != null) {

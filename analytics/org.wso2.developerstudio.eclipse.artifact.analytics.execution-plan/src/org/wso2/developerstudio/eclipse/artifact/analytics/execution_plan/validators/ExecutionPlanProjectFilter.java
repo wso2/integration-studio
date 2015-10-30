@@ -15,27 +15,26 @@
 * specific language governing permissions and limitations
 * under the License.
 */
+package org.wso2.developerstudio.eclipse.artifact.analytics.execution_plan.validators;
 
-package org.wso2.developerstudio.eclipse.artifact.analytics.execution_plan.utils;
+import org.eclipse.core.resources.IProject;
+import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.jface.viewers.ViewerFilter;
+import org.wso2.developerstudio.eclipse.artifact.analytics.utils.AnalyticsConstants;
 
-import org.eclipse.core.runtime.Platform;
-import org.osgi.framework.Bundle;
-import org.wso2.developerstudio.eclipse.artifact.analytics.execution_plan.Activator;
-import org.wso2.developerstudio.eclipse.utils.ui.ImageUtils;
+public class ExecutionPlanProjectFilter extends ViewerFilter {
 
-public class Execution_PlanImageUtils extends ImageUtils {
-
-	private static ImageUtils instance;
-
-	public static ImageUtils getInstance() {
-		if (instance == null) {
-			instance = new Execution_PlanImageUtils();
+	public boolean select(Viewer viewer, Object parentElement, Object element) {
+		
+		if (element instanceof IProject) {
+			try {
+				if (((IProject) element).hasNature
+						(AnalyticsConstants.ANALYTICS_PROJECT_NATURE)) {
+					return true;
+				}
+			} catch (Exception e) {/*ignore*/}
 		}
-		return instance;
+		return false;
 	}
-
-	public Bundle getBundle() {
-		return Platform.getBundle(Activator.PLUGIN_ID);
-	}
-
 }
+	

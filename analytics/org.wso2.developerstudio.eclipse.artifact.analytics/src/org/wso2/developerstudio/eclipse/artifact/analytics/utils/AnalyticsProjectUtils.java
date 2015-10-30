@@ -47,7 +47,6 @@ import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.wizards.IWizardDescriptor;
-import org.wso2.developerstudio.eclipse.capp.maven.utils.MavenConstants;
 import org.wso2.developerstudio.eclipse.artifact.analytics.Activator;
 import org.wso2.developerstudio.eclipse.artifact.analytics.ui.wizard.AnalyticsProjectCreationWizard;
 import org.wso2.developerstudio.eclipse.artifact.analytics.utils.AnalyticsArtifactModel;
@@ -214,25 +213,25 @@ public class AnalyticsProjectUtils {
 
 		            case STREAM:
 		            	dirName = AnalyticsConstants.ANALYTICS_STREAM_DIR;
-		                artifactGenerator(file ,project,pomfile,fileList,dirName,groupId,"analytics-stream-maven-plugin",MavenConstants.WSO2_ANALYTICS_STREAM_VERSION,
+		                artifactGenerator(file ,project,pomfile,fileList,dirName,groupId,"analytics-stream-maven-plugin", AnalyticsMavenConstants.WSO2_ANALYTICS_STREAM_VERSION,
 		                		dirName,AnalyticsConstants.EXTENTION_STREAM, AnalyticsEntryTypes.STREAM );
 		                break;
 
 		            case PUBLISHER:
 		            	dirName = AnalyticsConstants.ANALYTICS_PUBLISHER_DIR;
-		                artifactGenerator(file ,project,pomfile,fileList,dirName,groupId,"analytics-publisher-maven-plugin",MavenConstants.WSO2_ANALYTICS_PUBLISHER_VERSION,
+		                artifactGenerator(file ,project,pomfile,fileList,dirName,groupId,"analytics-publisher-maven-plugin", AnalyticsMavenConstants.WSO2_ANALYTICS_PUBLISHER_VERSION,
 		                		dirName,AnalyticsConstants.EXTENTION_PUBLISHER, AnalyticsEntryTypes.PUBLISHER );
 		                break;
 
 		            case RECEIVER:
 		            	dirName = AnalyticsConstants.ANALYTICS_RECEIVER_DIR;
-		                artifactGenerator(file ,project,pomfile,fileList,dirName,groupId,"analytics-receiver-maven-plugin",MavenConstants.WSO2_ANALYTICS_RECEIVER_VERSION,
+		                artifactGenerator(file ,project,pomfile,fileList,dirName,groupId,"analytics-receiver-maven-plugin", AnalyticsMavenConstants.WSO2_ANALYTICS_RECEIVER_VERSION,
 		                		dirName,AnalyticsConstants.EXTENTION_RECEIVER, AnalyticsEntryTypes.RECEIVER );
 		                break;
 
 		            case EXECUTIONPLAN:
 		            	dirName = AnalyticsConstants.ANALYTICS_EXECUTION_PLAN_DIR;
-		                artifactGenerator(file ,project,pomfile,fileList,dirName,groupId,"analytics-execution-plan-maven-plugin",MavenConstants.WSO2_ANALYTICS_EXECUTIONPLAN_VERSION,
+		                artifactGenerator(file ,project,pomfile,fileList,dirName,groupId,"analytics-execution-plan-maven-plugin", AnalyticsMavenConstants.WSO2_ANALYTICS_EXECUTIONPLAN_VERSION,
 		                		dirName,AnalyticsConstants.EXTENTION_EXECUTION_PLAN, AnalyticsEntryTypes.EXECUTIONPLAN);
 		                break;
 

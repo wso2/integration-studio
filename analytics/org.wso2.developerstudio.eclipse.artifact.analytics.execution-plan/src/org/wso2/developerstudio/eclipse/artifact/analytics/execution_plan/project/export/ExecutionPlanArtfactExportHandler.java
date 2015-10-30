@@ -34,7 +34,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Execution_planArtfactExportHandler extends ProjectArtifactHandler{
+public class ExecutionPlanArtfactExportHandler extends ProjectArtifactHandler{
 
     public List<IResource> exportArtifact(IProject project) throws Exception {
     	List<IResource> exportResources = new ArrayList<IResource>();

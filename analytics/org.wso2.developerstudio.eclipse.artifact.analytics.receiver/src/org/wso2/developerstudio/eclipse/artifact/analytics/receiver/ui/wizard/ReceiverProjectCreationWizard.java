@@ -47,10 +47,10 @@ import org.wso2.developerstudio.eclipse.artifact.analytics.receiver.model.Receiv
 import org.wso2.developerstudio.eclipse.artifact.analytics.receiver.utils.ReceiverImageUtils;
 import org.wso2.developerstudio.eclipse.artifact.analytics.utils.AnalyticsArtifactModel;
 import org.wso2.developerstudio.eclipse.artifact.analytics.utils.AnalyticsConstants;
+import org.wso2.developerstudio.eclipse.artifact.analytics.utils.AnalyticsMavenConstants;
 import org.wso2.developerstudio.eclipse.artifact.analytics.utils.AnalyticsProjectArtifactCreator;
 import org.wso2.developerstudio.eclipse.artifact.analytics.utils.AnalyticsTemplateUtils;
 import org.wso2.developerstudio.eclipse.artifact.analytics.receiver.utils.ReceiverConstants;
-import org.wso2.developerstudio.eclipse.capp.maven.utils.MavenConstants;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
@@ -120,12 +120,12 @@ public class ReceiverProjectCreationWizard extends AbstractWSO2ProjectCreationWi
 		
 		boolean pluginExists = MavenUtils.checkOldPluginEntry(mavenProject,
 				"org.wso2.maven", "analytics-receiver-maven-plugin",
-				MavenConstants.WSO2_ANALYTICS_RECEIVER_VERSION);
+				AnalyticsMavenConstants.WSO2_ANALYTICS_RECEIVER_VERSION);
 		if(pluginExists){
 			return ;
 		}
 		
-		Plugin plugin = MavenUtils.createPluginEntry(mavenProject, "org.wso2.maven", "analytics-receiver-maven-plugin", MavenConstants.WSO2_ANALYTICS_RECEIVER_VERSION, true);
+		Plugin plugin = MavenUtils.createPluginEntry(mavenProject, "org.wso2.maven", "analytics-receiver-maven-plugin", AnalyticsMavenConstants.WSO2_ANALYTICS_RECEIVER_VERSION, true);
 		
 		PluginExecution pluginExecution = new PluginExecution();
 		pluginExecution.addGoal("pom-gen");

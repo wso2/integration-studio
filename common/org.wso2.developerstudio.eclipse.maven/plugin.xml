@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<?eclipse version="3.6"?>
-<plugin>
-   <extension-point id="org.wso2.developerstudio.eclipse.maven.definitions" name="Maven ArcheType Definition Data" schema="schema/org.wso2.developerstudio.eclipse.maven.definitions.exsd"/>
-   
-</plugin>

@@ -15,6 +15,8 @@
  */
 package org.wso2.developerstudio.embedded.tomcat.server;
 
+import static org.apache.commons.lang.StringUtils.isNotEmpty;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -43,42 +45,48 @@ import org.eclipse.core.runtime.IExtensionPoint;
 import org.eclipse.core.runtime.IExtensionRegistry;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Platform;
+import org.eclipse.osgi.util.NLS;
 import org.osgi.framework.Bundle;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.embedded.tomcat.EmbeddedTomcatPlugin;
-import org.wso2.developerstudio.embedded.tomcat.api.ITomcatServer;
+import org.wso2.developerstudio.embedded.tomcat.Messages;
 import org.wso2.developerstudio.embedded.tomcat.exception.AppNotFoundException;
 import org.wso2.developerstudio.embedded.tomcat.exception.DuplicateAppIDException;
 import org.wso2.developerstudio.embedded.tomcat.exception.DuplicateContextException;
 import org.wso2.developerstudio.embedded.tomcat.exception.EmbeddedTomcatException;
 
-public class EmbeddedTomcatServer implements ITomcatServer {
+public class EmbeddedTomcatServer{
 
-	private static final String TOMCAT_TMP = "DevSTomcat";
-	private static final String JAVA_IO_TMPDIR = "java.io.tmpdir";
-	private static final String FOLDER_PREFIX = "tmp";
-	private static final String WAR_EXT = "war";
-	private static final String RELATIVE_PATH = "relativePath";
-	private static final String CONTEXT = "context";
-	private static final String APP_ID = "appID";
-	private static final String HTTP_PROTOCOL = "http://";
-	private static final String WEB_APP_EXT_POINT_ID = "org.wso2.developerstudio.embedded.webapp";
-	private static final String WEB_XML_REL_PATH = "/WEB-INF/web.xml";
+	private static final String TOMCAT_TMP = "DevSTomcatTmp"; //$NON-NLS-1$
+	private static final String JAVA_IO_TMPDIR = "java.io.tmpdir"; //$NON-NLS-1$
+	private static final String FOLDER_PREFIX = "tmp"; //$NON-NLS-1$
+	private static final String WAR_EXT = "war"; //$NON-NLS-1$
+	private static final String RELATIVE_PATH = "relativePath"; //$NON-NLS-1$
+	private static final String CONTEXT = "context"; //$NON-NLS-1$
+	private static final String APP_ID = "appID"; //$NON-NLS-1$
+	private static final String HTTP_PROTOCOL_PREFIX = "http://"; //$NON-NLS-1$
+	private static final String WEB_APP_EXT_POINT_ID = "org.wso2.developerstudio.embedded.webapp"; //$NON-NLS-1$
+	private static final String WEB_XML_REL_PATH = "/WEB-INF/web.xml"; //$NON-NLS-1$
 
+	private static IDeveloperStudioLog log = Logger.getLog(EmbeddedTomcatPlugin.PLUGIN_ID);
+	
 	protected Tomcat tomcat;
-	protected Map<String, String> deployedApps;
-	protected Map<String, String> usedContexts;
 	protected Integer port;
 	protected String rootURL;
-	
-	private static IDeveloperStudioLog log = Logger.getLog(EmbeddedTomcatPlugin.PLUGIN_ID);
+	protected Map<String, String> appIDToURLMap;
+	protected Map<String, String> contextToAppIDMap;
 
 	public EmbeddedTomcatServer() {
-		deployedApps = new HashMap<>();
-		usedContexts = new HashMap<>();
+		appIDToURLMap = new HashMap<>();
+		contextToAppIDMap = new HashMap<>();
 	}
 
+	/**
+	 * Starts Embedded Tomcat server.
+	 * 
+	 * @throws EmbeddedTomcatException
+	 */
 	public void start() throws EmbeddedTomcatException {
 		try {
 			initTomcat();
@@ -86,62 +94,92 @@ public class EmbeddedTomcatServer implements ITomcatServer {
 			tomcat.getHost();
 			tomcat.start();
 		} catch (LifecycleException e) {
-			throw new EmbeddedTomcatException(
-					"Error while starting embedded tomcat server.", e);
+			throw new EmbeddedTomcatException(Messages.ERROR_tomcatStartupError, e);
 		}
 	}
 
+	/**
+	 * Stops Embedded Tomcat server.
+	 * 
+	 * @throws EmbeddedTomcatException
+	 */
 	public void stop() throws EmbeddedTomcatException {
 		try {
 			tomcat.stop();
 		} catch (LifecycleException e) {
-			throw new EmbeddedTomcatException(
-					"Error while stopping embedded tomcat server.",
+			throw new EmbeddedTomcatException(Messages.ERROR_tomcatShutdownError,
 					e);
 		}
 	}
 
-	@Override
+	/**
+	 * Method to add a web application to server.
+	 * 
+	 * @param appID
+	 *            A unique ID for the app.
+	 * @param context
+	 *            Deploying context.
+	 * @param docBase
+	 *            Root folder of the application.
+	 * @throws Exception
+	 */
 	public void addWebApp(String appID, String context, String docBase)
 			throws EmbeddedTomcatException {
-		if (deployedApps.containsKey(appID)) {
-			throw new DuplicateAppIDException("AppID:" + appID
-					+ " is already registered and deployed at "
-					+ deployedApps.get(appID));
-		} else if(usedContexts.containsKey(context)) {
-			throw new DuplicateContextException("Context: " + context
-					+ " is already used by the app:" + usedContexts.get(context));
+		if (appIDToURLMap.containsKey(appID)) {
+			throw new DuplicateAppIDException(appID, appIDToURLMap.get(appID));
+		} else if (contextToAppIDMap.containsKey(context)) {
+			throw new DuplicateContextException(context,
+					contextToAppIDMap.get(context));
 		}
 		try {
 			Context appContext = tomcat.addWebapp(context, docBase);
-			File configFile = new File(docBase + WEB_XML_REL_PATH);
-			if (configFile.exists()) {
-				appContext.setConfigFile(configFile.toURI().toURL());
+			File webXML = new File(docBase + WEB_XML_REL_PATH);
+			if (webXML.exists()) {
+				appContext.setConfigFile(webXML.toURI().toURL());
 			}
 			appContext.setParentClassLoader(Thread.currentThread()
 					.getContextClassLoader());
-			deployedApps.put(appID, getURLForContext(context));
-			usedContexts.put(context, appID);
-			log.info("WebApp " + appID + " successfully added and will be deployed to "
-									+ deployedApps.get(appID));	
+			appIDToURLMap.put(appID, getURLForContext(context));
+			contextToAppIDMap.put(context, appID);
+			log.info(NLS.bind(Messages.INFO_appAddedSuccessfully, appID,
+					appIDToURLMap.get(appID)));
 		} catch (Exception e) {
-			throw new EmbeddedTomcatException("Error while adding web app: " + appID + " at "
-					+ docBase + " to embedded tomcat server.", e);
+			String errorMessage = NLS.bind(Messages.ERROR_errorAddingWebApp,
+					appID, docBase);
+			throw new EmbeddedTomcatException(errorMessage, e);
 		}
 	}
 
-	@Override
+	/**
+	 * Method to get full URL to access a particular web application.
+	 * 
+	 * @param appID
+	 *            Unique ID of the web application.
+	 * 
+	 * @return complete URL to access given web application.
+	 */
 	public String getAppURL(String appID) throws EmbeddedTomcatException {
-		if(!deployedApps.containsKey(appID)){
+		if(!appIDToURLMap.containsKey(appID)){
 			throw new AppNotFoundException(appID);
 		}
-		return deployedApps.get(appID);
+		return appIDToURLMap.get(appID);
 	}
 
+	/**
+	 * Getter for configured port.
+	 * 
+	 * @return port used by Tomcat.
+	 */
 	public Integer getServerPort(){
 		return port;
 	}
 
+	/**
+	 * Constructs the complete URL for a particular context.
+	 * 
+	 * @param context relative context path.
+	 * @return Full URL of the app.
+	 */
 	private String getURLForContext(String context) {
 		return rootURL + context;
 	}
@@ -150,25 +188,34 @@ public class EmbeddedTomcatServer implements ITomcatServer {
 	 * Read extensions to webapp extension point and deploy them.
 	 */
 	private void initWebAppExtensions() {
+
+		// Fetch extensions to extension point from registry.
 		IExtensionRegistry extentionRegistry = Platform.getExtensionRegistry();
 		IExtensionPoint webAppExtensionPoint = extentionRegistry
 				.getExtensionPoint(WEB_APP_EXT_POINT_ID);
 		IExtension[] webAppExtensions = webAppExtensionPoint.getExtensions();
 
+		// Iterate over all web extensions and deploy web apps.
+		// IMPORTANT: Continue deploying other apps upon any failures.
 		for (IExtension extensionConfig : webAppExtensions) {
 
-			String contributingBundleID = extensionConfig.getContributor()
-					.getName();
-			Bundle contributingBundle = Platform
-					.getBundle(contributingBundleID);
+			// Read extension point configuration.
+			String contributingBundleID = extensionConfig.getContributor().getName();
+			Bundle contributingBundle = Platform.getBundle(contributingBundleID);
 			IConfigurationElement webAppExtension = extensionConfig
 					.getConfigurationElements()[0];
-
+			// Derive attributes of WebApp Extension
 			String applicationID = webAppExtension.getAttribute(APP_ID);
 			String relativePath = webAppExtension.getAttribute(RELATIVE_PATH);
 			String context = webAppExtension.getAttribute(CONTEXT);
+			
+			// A common error message to display upon deployment error.
+			String appDeploymentErrorMsg = NLS.bind(
+					Messages.ERROR_appDeploymentFailed, applicationID,
+					contributingBundleID);
 
-			if (applicationID != null && relativePath != null) {
+			if (isNotEmpty(applicationID) && isNotEmpty(relativePath)
+					&& isNotEmpty(context)) {
 				URL docBaseResource = FileLocator.find(contributingBundle,
 						new Path(relativePath), null);
 				File readableDocBase = null;
@@ -176,12 +223,12 @@ public class EmbeddedTomcatServer implements ITomcatServer {
 				try {
 					// resolve resource from bundle jar
 					URL fileURL = FileLocator.toFileURL(docBaseResource);
-					String encodedPath = URLEncoder.encode(fileURL.getPath(), "UTF-8").replace("+", "%20");
-					encodedPath = fileURL.toExternalForm();
-					readableDocBase = new File(encodedPath);
-				} catch (IOException e) {
-					log.error("Error while resolving webapp resources at "
-							+ docBaseResource, e);
+					readableDocBase = new File(fileURL.toURI());
+				} catch (IOException | URISyntaxException e) {
+					String errorMessage = NLS.bind(
+							Messages.ERROR_resolvingResourcesFailed,
+							docBaseResource);
+					log.error(errorMessage, e);
 				}
 				if (readableDocBase != null) {
 					if (readableDocBase.isDirectory()) {
@@ -191,21 +238,25 @@ public class EmbeddedTomcatServer implements ITomcatServer {
 							.getExtension(readableDocBase.getAbsolutePath()))) {
 						// case 2: this is a war file
 						File extractDir = new File(
-								readableDocBase.getParentFile(), FOLDER_PREFIX
-										+ applicationID);
+								readableDocBase.getParentFile(),
+								FOLDER_PREFIX + applicationID);
 						if (!extractDir.exists()) {
 							if (!extractDir.mkdirs()) {
-								log.error("Error while creating destination folder "
-										+ extractDir);
+								String errorMessage = NLS.bind(
+										Messages.ERROR_failedCreatingTmpDirs,
+										extractDir);
+								log.error(errorMessage);
 							}
 						}
 						try {
 							extractWar(readableDocBase, extractDir);
 							deployableDocBase = extractDir.getAbsolutePath();
 						} catch (IOException e) {
-							log.error("Error while extracting webapp from "
-									+ readableDocBase.getPath() + " \nto "
-									+ extractDir.getPath(), e);
+							String errorMessage = NLS.bind(
+									Messages.ERROR_extractingWarFailed,
+									readableDocBase.getPath(),
+									extractDir.getPath());
+							log.error(errorMessage, e);
 						}
 					}
 				}
@@ -214,33 +265,49 @@ public class EmbeddedTomcatServer implements ITomcatServer {
 						addWebApp(applicationID, context,
 								deployableDocBase);
 					} catch (Exception e) {
-						log.error("Error deploying webapp. AppID: "
-								+ applicationID + ", Contributing Bundle: "
-								+ contributingBundleID, e);
+						log.error(appDeploymentErrorMsg, e);
 					}
 				} else {
-					log.error("Error deploying webapp. AppID: " + applicationID
-							+ ", Contributing Bundle: " + contributingBundleID);
+					log.error(appDeploymentErrorMsg);
 				}
+			} else {
+				String errorMessage = NLS.bind(
+						Messages.ERROR_missingRequiredConfig, new Object[] {
+								applicationID, relativePath, context });
+				log.error(errorMessage);
+				log.error(appDeploymentErrorMsg);
 			}
 		}
 	}
 
+	/**
+	 * Initialize Tomcat server.
+	 * 
+	 * @throws EmbeddedTomcatException
+	 */
 	private void initTomcat() throws EmbeddedTomcatException {
 		tomcat = new Tomcat();
 		try {
 			port = getAvailablePort();
 			tomcat.setPort(port);
-			tomcat.setBaseDir(System.getProperty(JAVA_IO_TMPDIR) + File.separator + TOMCAT_TMP);
-			String hostName= InetAddress.getLocalHost().getHostName();
+			tomcat.setBaseDir(System.getProperty(JAVA_IO_TMPDIR)
+					+ File.separator + TOMCAT_TMP);
+			String hostName = InetAddress.getLocalHost().getHostName();
 			tomcat.getHost().setName(hostName);
-			rootURL = HTTP_PROTOCOL + hostName + ":" + port;
+			rootURL = HTTP_PROTOCOL_PREFIX + hostName + ":" + port; //$NON-NLS-1$
 		} catch (IOException e) {
 			throw new EmbeddedTomcatException(
 					"Error while configuring embedded tomcat server.", e);
 		}
 	}
 
+	/**
+	 * Finds a port which is currently not in use.
+	 * 
+	 * @return Available Port.
+	 * 
+	 * @throws IOException
+	 */
 	private Integer getAvailablePort() throws IOException {
 		ServerSocket socket = new ServerSocket(0);
 		Integer port = socket.getLocalPort();
@@ -248,6 +315,14 @@ public class EmbeddedTomcatServer implements ITomcatServer {
 		return port;
 	}
 
+	/**
+	 * Extracts a war file to a given directory.
+	 * 
+	 * @param warFile Source war file.
+	 * @param extractpath Destination to extract.
+	 * 
+	 * @throws IOException
+	 */
 	private void extractWar(File warFile, File extractpath) throws IOException {
 		ZipFile zipFile = new ZipFile(warFile);
 		try {

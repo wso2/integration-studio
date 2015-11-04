@@ -22,6 +22,7 @@ import org.osgi.framework.BundleException;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.embedded.tomcat.EmbeddedTomcatPlugin;
+import org.wso2.developerstudio.embedded.tomcat.Messages;
 
 public class EmbeddedTomcatStartup implements IStartup {
 
@@ -35,7 +36,7 @@ public class EmbeddedTomcatStartup implements IStartup {
 			try {
 				bundle.start();
 			} catch (BundleException e) {
-				log.error("Error while starting embedded tomcat bundle", e);
+				log.error(Messages.ERROR_bundleEarlyStartupError, e);
 			}
 		}
 	}

@@ -17,7 +17,7 @@ Export-Package: org.wso2.developerstudio.embedded.tomcat,
  org.wso2.developerstudio.embedded.tomcat.exception
 Bundle-Activator: org.wso2.developerstudio.embedded.tomcat.EmbeddedTomcatPlugin
 Import-Package: org.apache.commons.io;version="2.0.0.wso2v1",
- org.osgi.framework,
- org.wso2.developerstudio.eclipse.utils.archive
+ org.apache.commons.lang;version="2.6.0",
+ org.osgi.framework
 Bundle-ActivationPolicy: lazy
 Service-Component: OSGI-INF/app-manager-service.xml

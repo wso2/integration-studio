@@ -131,9 +131,9 @@ public class CarExportHandler extends ProjectArtifactHandler {
 					ArtifactExportHandler artifactExportHandler = new ArtifactExportHandler();
 					artifactExportHandler.exportArtifact(artifactList, null, null, dependencyData, parent, null);
 				} else if (parent != null && self == null) { // these are
-				// registry resources that may have some other server role,
-				// to get the correct artifact exporter we need to set the
-				// server role here as GovernanceRegistry
+					// registry resources that may have some other server role,
+					// to get the correct artifact exporter we need to set the
+					// server role here as GovernanceRegistry
 					selectExporterExecCalss(GOVERNANCE_REGISTRY_SERVER_ROLE, artifactList, resourceProjectList, null,
 					                        dependencyData, parent, null);
 				} else {
@@ -248,8 +248,8 @@ public class CarExportHandler extends ProjectArtifactHandler {
 				}
 			}
 		} else {
-			log.info("No classes were found extending the extension point " +
-			         CAPP_PROJECT_EXPORT_HANDLER_EXTENSION_ID + "to perform the artifact export");
+			log.info("No classes were found extending the extension point " + CAPP_PROJECT_EXPORT_HANDLER_EXTENSION_ID +
+			         "to perform the artifact export");
 		}
 	}
 
@@ -263,10 +263,12 @@ public class CarExportHandler extends ProjectArtifactHandler {
 				log.error("Exception thrown in trying to execute the class to export car file artifacts " + execClass,
 				          e);
 			}
+
 			@Override
 			public void run() throws Exception {
-				((DefaultArtifactExportHandler) execClass).exportArtifact(artifactList, synapseProjectList, splitESBResources,
-				                                            dependencyData, parent, self);
+				((DefaultArtifactExportHandler) execClass).exportArtifact(artifactList, synapseProjectList,
+				                                                          splitESBResources, dependencyData, parent,
+				                                                          self);
 			}
 		};
 		SafeRunner.run(runnable);

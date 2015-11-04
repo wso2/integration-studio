@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.developerstudio.eclipse.distribution.project.validator;
+package org.wso2.developerstudio.eclipse.distribution.project.model;
 
 import org.apache.axiom.om.OMDocument;
 import org.apache.axiom.om.OMElement;
@@ -36,43 +36,46 @@ import javax.xml.stream.FactoryConfigurationError;
  * 
  * <?xml version="1.0" encoding="UTF-8"?>
  * <artifacts>
- * 	<artifact name="testEndpoint2" version="1.0.0" type="synapse/endpoint"
- * 			serverRole="EnterpriseServiceBus"
- * 			groupId="org.wso2.carbon.myapp">
- * 		<file>src\main\synapse-config\endpoints\testEndpoint2.xml</file>
- * 	</artifact>
- * 	<artifact name="testEndpoint3" version="1.0.0" type="synapse/endpoint"
- * 			serverRole="EnterpriseServiceBus"
- * 			groupId="org.wso2.carbon.myapp">
- * 		<file>src\main\synapse-config\endpoints\testEndpoint3.xml</file>
- * 	</artifact>
+ * <artifact name="testEndpoint2" version="1.0.0" type="synapse/endpoint"
+ * serverRole="EnterpriseServiceBus"
+ * groupId="org.wso2.carbon.myapp">
+ * <file>src\main\synapse-config\endpoints\testEndpoint2.xml</file>
+ * </artifact>
+ * <artifact name="testEndpoint3" version="1.0.0" type="synapse/endpoint"
+ * serverRole="EnterpriseServiceBus"
+ * groupId="org.wso2.carbon.myapp">
+ * <file>src\main\synapse-config\endpoints\testEndpoint3.xml</file>
+ * </artifact>
  * </artifacts>
  * 
  * Oct 21, 2011
  * 
  */
-public class GeneralProjectArtifact extends AbstractXMLDoc implements Observer{
-	List<GeneralArtifact> esbArtifacts=new ArrayList<GeneralArtifact>();
-	
+public class GeneralProjectArtifact extends AbstractXMLDoc implements Observer {
+	List<GeneralArtifact> esbArtifacts = new ArrayList<GeneralArtifact>();
+
 	private File source;
 
 	public void update(Observable o, Object arg) {
-		
+
 	}
 
 	protected void deserialize(OMElement documentElement) {
 		List<OMElement> artifactElements = getChildElements(documentElement, "artifact");
 		for (OMElement omElement : artifactElements) {
-	        GeneralArtifact artifact=new GeneralArtifact();
-	        artifact.setName(getAttribute(omElement, "name"));
-	        artifact.setVersion(getAttribute(omElement, "version"));
-	        artifact.setType(getAttribute(omElement, "type"));
-	        artifact.setServerRole(getAttribute(omElement, "serverRole"));
-	        artifact.setGroupId(getAttribute(omElement, "groupId"));
-	        artifact.setFile(getChildElements(omElement, "file").size()>0?getChildElements(omElement, "file").get(0).getText():null);
-	        
-	        esbArtifacts.add(artifact);
-        }
+			GeneralArtifact artifact = new GeneralArtifact();
+			artifact.setName(getAttribute(omElement, "name"));
+			artifact.setVersion(getAttribute(omElement, "version"));
+			artifact.setType(getAttribute(omElement, "type"));
+			artifact.setServerRole(getAttribute(omElement, "serverRole"));
+			artifact.setGroupId(getAttribute(omElement, "groupId"));
+			artifact.setFile(getChildElements(omElement, "file").size() > 0
+			                                                               ? getChildElements(omElement, "file").get(0)
+			                                                                                                    .getText()
+			                                                               : null);
+
+			esbArtifacts.add(artifact);
+		}
 	}
 
 	protected String serialize() {
@@ -92,72 +95,72 @@ public class GeneralProjectArtifact extends AbstractXMLDoc implements Observer{
 	protected String getDefaultName() {
 		return null;
 	}
-	
-	public void addESBArtifact(GeneralArtifact artifact){
+
+	public void addESBArtifact(GeneralArtifact artifact) {
 		esbArtifacts.add(artifact);
 	}
-	
-	public boolean removeESBArtifact(GeneralArtifact artifact){
+
+	public boolean removeESBArtifact(GeneralArtifact artifact) {
 		return esbArtifacts.remove(artifact);
 	}
-	
-	public List<GeneralArtifact> getAllESBArtifacts(){
+
+	public List<GeneralArtifact> getAllESBArtifacts() {
 		return Collections.unmodifiableList(esbArtifacts);
 	}
-	
+
 	public OMElement getDocumentElement() {
 		OMElement documentElement = getElement("artifacts", "");
-		
+
 		for (GeneralArtifact esbArtifact : esbArtifacts) {
 			OMElement artifactElement = getElement("artifact", "");
-			
-			if (!esbArtifact.isAnonymous()){
+
+			if (!esbArtifact.isAnonymous()) {
 				addAttribute(artifactElement, "name", esbArtifact.getName());
 			}
-			
-			if (!esbArtifact.isAnonymous() && esbArtifact.getGroupId() != null){
+
+			if (!esbArtifact.isAnonymous() && esbArtifact.getGroupId() != null) {
 				addAttribute(artifactElement, "groupId", esbArtifact.getGroupId());
 			}
-	        
-			if (!esbArtifact.isAnonymous() && esbArtifact.getVersion() != null){
+
+			if (!esbArtifact.isAnonymous() && esbArtifact.getVersion() != null) {
 				addAttribute(artifactElement, "version", esbArtifact.getVersion());
 			}
-			
-			if (esbArtifact.getType() != null){
+
+			if (esbArtifact.getType() != null) {
 				addAttribute(artifactElement, "type", esbArtifact.getType());
 			}
-			
-			if (esbArtifact.getServerRole() != null){
+
+			if (esbArtifact.getServerRole() != null) {
 				addAttribute(artifactElement, "serverRole", esbArtifact.getServerRole());
 			}
-			
-			if (esbArtifact.getFile() != null){
+
+			if (esbArtifact.getFile() != null) {
 				artifactElement.addChild(getElement("file", esbArtifact.getFile()));
 			}
-			
+
 			documentElement.addChild(artifactElement);
-        }
-		
+		}
+
 		return documentElement;
 	}
 
 	public void setSource(File source) {
-	    this.source = source;
-    }
-
-	public File getSource() {
-	    return source;
-    }
-	
-	public File toFile() throws Exception {
-		File savedFile = new File(toFile(getSource()).toString());
-	    return savedFile;
+		this.source = source;
 	}
 
-	public void fromFile(File file) throws FactoryConfigurationError, Exception{
+	public File getSource() {
+		return source;
+	}
+
+	public File toFile() throws Exception {
+		File savedFile = new File(toFile(getSource()).toString());
+		return savedFile;
+	}
+
+	public void fromFile(File file) throws FactoryConfigurationError, Exception {
 		setSource(file);
-		if (getSource().exists()){
-    		deserialize(getSource());
+		if (getSource().exists()) {
+			deserialize(getSource());
 		}
 	}
 

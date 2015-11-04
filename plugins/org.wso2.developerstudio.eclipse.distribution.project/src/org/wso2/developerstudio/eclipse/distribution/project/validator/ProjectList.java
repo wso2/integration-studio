@@ -30,6 +30,8 @@ import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.wso2.developerstudio.eclipse.distribution.project.Activator;
 import org.wso2.developerstudio.eclipse.distribution.project.model.DependencyData;
+import org.wso2.developerstudio.eclipse.distribution.project.model.GeneralArtifact;
+import org.wso2.developerstudio.eclipse.distribution.project.model.GeneralProjectArtifact;
 import org.wso2.developerstudio.eclipse.distribution.project.util.ArtifactTypeMapping;
 import org.wso2.developerstudio.eclipse.distribution.project.util.DistProjectUtils;
 import org.wso2.developerstudio.eclipse.distribution.project.util.ServerRoleMapping;

@@ -63,9 +63,10 @@ public class ArtifactData implements Comparable<ArtifactData> {
 	
 	@Override
 	public int compareTo(ArtifactData compareArtifactData) {
-		return ArtifactPriorityMapping.getPriority(this.getDependencyData()
+		ArtifactPriorityMapping artifactPriorityMapping = new ArtifactPriorityMapping();
+		return artifactPriorityMapping.getPriority(this.getDependencyData()
 				.getCApptype())
-				- ArtifactPriorityMapping.getPriority(compareArtifactData
+				- artifactPriorityMapping.getPriority(compareArtifactData
 						.getDependencyData().getCApptype());
 	}
 }

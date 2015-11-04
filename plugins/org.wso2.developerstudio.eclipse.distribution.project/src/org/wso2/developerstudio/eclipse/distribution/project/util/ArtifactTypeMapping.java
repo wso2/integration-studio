@@ -19,63 +19,32 @@ package org.wso2.developerstudio.eclipse.distribution.project.util;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.eclipse.core.runtime.IConfigurationElement;
+import org.wso2.developerstudio.eclipse.carbonserver.base.util.CarbonUtils;
+
 public final class ArtifactTypeMapping {
+	private static final String ARTIFACT_TYPE = "artifactType";
+	private static final String FILE_EXTENSION = "fileExtension";
+	private static final String REGISTER_ARTIFACT_MAPPING_EXTENSION_ID = "org.wso2.developerstudio.register.artifact.mapping";
 	private static Map<String, String> type = new HashMap<String, String>();
 	private static Map<String, String> subType = new HashMap<String, String>();
 	
-	static {
-		type.put("jaggery/app","zip");
-		type.put("bpel/workflow","zip");
-		type.put("lib/registry/filter","jar");
-		type.put("webapp/jaxws","war");
-		type.put("lib/library/bundle","jar");
-		type.put("service/dataservice","dbs");
-		type.put("event/stream","json");
-		type.put("event/publisher","xml");
-		type.put("event/receiver","xml");
-		type.put("event/execution-plan","siddhiql");	
-		type.put("synapse/local-entry","xml");
-		type.put("synapse/proxy-service","xml");
-		type.put("carbon/application","car");
-		type.put("registry/resource","zip");
-		type.put("lib/dataservice/validator","jar");
-		type.put("synapse/endpoint","xml");
-		type.put("web/application","war");
-		type.put("lib/carbon/ui","jar");
-		type.put("service/axis2","aar");
-		type.put("synapse/sequence","xml");
-		type.put("synapse/configuration","xml");
-		type.put("synapse/task","xml");
-		type.put("synapse/api","xml");
-		type.put("synapse/template","xml");
-		type.put("synapse/sequenceTemplate","xml");
-		type.put("synapse/endpointTemplate","xml");
-		type.put("synapse/message-store","xml");
-		type.put("synapse/event-source","xml");
-		type.put("synapse/message-processors","xml");
-		type.put("synapse/priority-executor","xml");
-		type.put("wso2/gadget","dar");
-		type.put("lib/registry/handlers","jar");
-		type.put("lib/synapse/mediator","jar");
-		type.put("service/rule", "aar");
-		type.put("service/meta","xml");
-		type.put("jaggery/app", "zip");
-		type.put("synapse/inbound-endpoint", "xml");
-		type.put("synapse/lib", "zip");
-		
+	public ArtifactTypeMapping(){
+		CarbonUtils carbonUtils = new CarbonUtils();
+		IConfigurationElement[] artifactMappings = carbonUtils.getExtensionPointmembers(REGISTER_ARTIFACT_MAPPING_EXTENSION_ID);
+		for (IConfigurationElement artifactmapping : artifactMappings){
+			  type.put(artifactmapping.getAttribute(ARTIFACT_TYPE), artifactmapping.getAttribute(FILE_EXTENSION));
+		}
 		subType.put("jar","jar");
 		subType.put("bundle","jar");
-	}
-	
-	private ArtifactTypeMapping(){
 		
 	}
 	
-	public static boolean isValidArtifactType(final String str) {
+	public boolean isValidArtifactType(final String str) {
 		return type.containsKey(str);
 	}
 	
-	public static String getType(final String packaging) {
+	public String getType(final String packaging) {
 		String value = "";
 		if (type.containsKey(packaging)) {
 			value = type.get(packaging);
@@ -89,7 +58,7 @@ public final class ArtifactTypeMapping {
 		return value;
 	}
 	
-	public static String getArtifactTypes(){
+	public String getArtifactTypes(){
 		StringBuffer artifactTypes = new StringBuffer();
 		for(String key: type.keySet()){
 			artifactTypes.append(key);

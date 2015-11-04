@@ -19,77 +19,31 @@ package org.wso2.developerstudio.eclipse.distribution.project.util;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.eclipse.core.runtime.IConfigurationElement;
+import org.wso2.developerstudio.eclipse.carbonserver.base.util.CarbonUtils;
+
 public class ArtifactPriorityMapping {
 
+	private static final String ARTIFACT_TYPE = "artifactType";
+	private static final String PRIORITY2 = "priority";
+	private static final String REGISTER_ARTIFACT_PRIORITY_MAPPING_EXTENSION_ID = "org.wso2.developerstudio.register.artifact.priority.mapping";
 	private static Map<String, Integer> priority = new HashMap<String, Integer>();
-
 	public static final int DEFAULT_PRIORITY = 5;
 
-	static {
-		// Registry resources get highest priority.
-		priority.put("registry/resource", 1);
-
-		// Local entries get second priority.
-		priority.put("synapse/local-entry", 2);
-
-		// lib type artifacts get third priority.
-		priority.put("lib/synapse/mediator", 3);		
-		priority.put("synapse/lib", 3);
-		priority.put("lib/registry/filter", 3);
-		priority.put("lib/library/bundle", 3);
-		priority.put("lib/dataservice/validator", 3);
-		priority.put("lib/registry/handlers", 3);
-		priority.put("lib/carbon/ui", 3);
-
-		// Message stores get fourth priority.
-		priority.put("synapse/message-store", 4);
-		
-		/*
-		 * Service meta should deploy prior to the services. Service meta
-		 * artifacts gets high priority over services (proxy-service,
-		 * dataservice, axis2)
-		 */
-		priority.put("service/meta", 4);
-
-		// Equal priority.
-		priority.put("jaggery/app", 5);
-		priority.put("bpel/workflow", 5);		
-		priority.put("webapp/jaxws", 5);		
-		priority.put("service/dataservice", 5);
-		priority.put("cep/bucket", 5);
-		priority.put("carbon/application", 5);	
-		priority.put("synapse/endpoint", 5);
-		priority.put("web/application", 5);		
-		priority.put("service/axis2", 5);
-		priority.put("synapse/sequence", 5);
-		priority.put("synapse/configuration", 5);
-		priority.put("synapse/api", 5);
-		priority.put("synapse/template", 5);
-		priority.put("synapse/sequenceTemplate", 5);
-		priority.put("synapse/endpointTemplate", 5);
-		priority.put("synapse/event-source", 5);
-		priority.put("synapse/message-processors", 5);
-		priority.put("synapse/priority-executor", 5);
-		priority.put("wso2/gadget", 5);	
-		priority.put("service/rule", 5);
-
-
-		priority.put("synapse/proxy-service", 6);
-
-		// Tasks get least priority.
-		priority.put("synapse/task", 7);
-		priority.put("synapse/inbound-endpoint", 7);
-	}
-
-	private ArtifactPriorityMapping() {
-
+	public ArtifactPriorityMapping() {
+		CarbonUtils carbonUtils = new CarbonUtils();
+		IConfigurationElement[] registeredPriorityMappings = carbonUtils.getExtensionPointmembers(REGISTER_ARTIFACT_PRIORITY_MAPPING_EXTENSION_ID);
+		for (IConfigurationElement priorityMapping : registeredPriorityMappings){
+			priority.put(priorityMapping.getAttribute(ARTIFACT_TYPE), Integer.valueOf(priorityMapping.getAttribute(PRIORITY2)));
+		}
+				
 	}
 
 	public static boolean isValidArtifactType(final String type) {
 		return priority.containsKey(type);
 	}
 
-	public static int getPriority(String type) {
+	public int getPriority(String type) {
 		try {
 			if (isValidArtifactType(type)) {
 				return priority.get(type);

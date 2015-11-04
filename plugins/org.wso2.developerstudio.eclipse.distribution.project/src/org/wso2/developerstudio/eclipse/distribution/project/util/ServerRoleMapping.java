@@ -19,45 +19,28 @@ package org.wso2.developerstudio.eclipse.distribution.project.util;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ServerRoleMapping {
+import org.eclipse.core.runtime.IConfigurationElement;
+import org.wso2.developerstudio.eclipse.carbonserver.base.util.CarbonUtils;
 
+public class ServerRoleMapping {
+	private static final String SERVER_ROLE = "serverRole";
+	private static final String ARTIFACT_TYPE = "artifactType";
+	private static final String REGISTER_SERVER_ROLE_EXTENSION_ID = "org.wso2.developerstudio.register.server.role";
+	// this should also be taken via an extension point
 	private static Map<String, String> serverRole = new HashMap<String, String>();
 
-	static {
-		serverRole.put("service/axis2", "ApplicationServer");
-		serverRole.put("webapp/jaxws", "ApplicationServer");
-		serverRole.put("service/dataservice", "DataServicesServer");
-		serverRole.put("cep/bucket","ComplexEventProcessor");
-		serverRole.put("synapse/sequence", "EnterpriseServiceBus");
-		serverRole.put("synapse/endpoint", "EnterpriseServiceBus");
-		serverRole.put("synapse/proxy-service", "EnterpriseServiceBus");
-		serverRole.put("synapse/configuration", "EnterpriseServiceBus");
-		serverRole.put("registry/resource", "GovernanceRegistry");
-		serverRole.put("bpel/workflow", "BusinessProcessServer");
-		serverRole.put("wso2/gadget", "GadgetServer");
-		serverRole.put("web/application", "ApplicationServer");
-		serverRole.put("war", "ApplicationServer");
-		serverRole.put("jar", "ApplicationServer");
-		serverRole.put("lib/carbon/ui", "ApplicationServer");
-		serverRole.put("lib/synapse/mediator", "EnterpriseServiceBus");
-		serverRole.put("lib/dataservice/validator", "DataServicesServer");
-		serverRole.put("lib/registry/handlers", "GovernanceRegistry");
-		serverRole.put("lib/registry/filter", "GovernanceRegistry");
-		serverRole.put("lib/library/bundle", "ApplicationServer");
-		serverRole.put("synapse/local-entry", "EnterpriseServiceBus");
-		serverRole.put("synapse/event-source", "EnterpriseServiceBus");
-		serverRole.put("synapse/task", "EnterpriseServiceBus");
-		serverRole.put("synapse/api", "EnterpriseServiceBus");
-		serverRole.put("synapse/template", "EnterpriseServiceBus");
-		serverRole.put("synapse/message-store", "EnterpriseServiceBus");
-		serverRole.put("synapse/priority-executor", "EnterpriseServiceBus");
-		serverRole.put("synapse/message-processors", "EnterpriseServiceBus");
-		serverRole.put("service/rule", "BusinessRulesServer");
-		serverRole.put("service/meta", "ApplicationServer");
-		serverRole.put("jaggery/app","JaggeryServer");
+	public ServerRoleMapping() {
+		CarbonUtils carbonUtils = new CarbonUtils();
+		IConfigurationElement[] confElems = carbonUtils
+				.getExtensionPointmembers(REGISTER_SERVER_ROLE_EXTENSION_ID);
+
+		for (IConfigurationElement elem : confElems) {
+			serverRole.put(elem.getAttribute(ARTIFACT_TYPE),
+					elem.getAttribute(SERVER_ROLE));
+		}
 	}
 
-	public static String getServerRole(String packaging) {
+	public String getServerRole(String packaging) {
 		String value = "";
 		if (serverRole.containsKey(packaging)) {
 			value = serverRole.get(packaging);

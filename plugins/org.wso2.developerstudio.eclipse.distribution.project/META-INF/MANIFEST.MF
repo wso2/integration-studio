@@ -5,7 +5,8 @@ Bundle-SymbolicName: org.wso2.developerstudio.eclipse.distribution.project;singl
 Bundle-Version: 4.0.0.qualifier
 Bundle-Activator: org.wso2.developerstudio.eclipse.distribution.project.Activator
 Require-Bundle: org.eclipse.ui,
- org.eclipse.core.runtime
+ org.eclipse.core.runtime,
+ org.wso2.developerstudio.eclipse.utils
 Bundle-ActivationPolicy: lazy
 Import-Package: org.apache.axiom.om,
  org.apache.commons.io;version="[2.0.0.wso2v1,2.0.1)",
@@ -35,9 +36,14 @@ Import-Package: org.apache.axiom.om,
  org.eclipse.wst.sse.ui,
  org.wso2.developerstudio.eclipse.capp.core.manifest,
  org.wso2.developerstudio.eclipse.capp.maven.utils,
+ org.wso2.developerstudio.eclipse.carbonserver.base.interfaces,
+ org.wso2.developerstudio.eclipse.carbonserver.base.manager,
+ org.wso2.developerstudio.eclipse.carbonserver.base.util,
+ org.wso2.developerstudio.eclipse.carbonserver.base.utils,
  org.wso2.developerstudio.eclipse.logging.core,
  org.wso2.developerstudio.eclipse.maven.util,
  org.wso2.developerstudio.eclipse.platform.core.exception,
+ org.wso2.developerstudio.eclipse.platform.core.manifest,
  org.wso2.developerstudio.eclipse.platform.core.model,
  org.wso2.developerstudio.eclipse.platform.core.nature,
  org.wso2.developerstudio.eclipse.platform.core.project.export,
@@ -47,12 +53,14 @@ Import-Package: org.apache.axiom.om,
  org.wso2.developerstudio.eclipse.platform.ui.editor,
  org.wso2.developerstudio.eclipse.platform.ui.validator,
  org.wso2.developerstudio.eclipse.platform.ui.wizard,
+ org.wso2.developerstudio.eclipse.server.base.core,
  org.wso2.developerstudio.eclipse.utils.archive,
  org.wso2.developerstudio.eclipse.utils.data,
  org.wso2.developerstudio.eclipse.utils.file,
  org.wso2.developerstudio.eclipse.utils.project,
  org.wso2.developerstudio.eclipse.utils.ui
 Export-Package: org.wso2.developerstudio.eclipse.distribution.project.export,
+ org.wso2.developerstudio.eclipse.distribution.project.model,
  org.wso2.developerstudio.eclipse.distribution.project.publisher,
  org.wso2.developerstudio.eclipse.distribution.project.ui.wizard,
  org.wso2.developerstudio.eclipse.distribution.project.util

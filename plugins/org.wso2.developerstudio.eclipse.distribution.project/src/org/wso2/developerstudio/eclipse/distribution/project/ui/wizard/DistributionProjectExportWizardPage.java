@@ -57,7 +57,7 @@ public class DistributionProjectExportWizardPage extends WizardPage {
 	private Map<String,TreeItem>  nodesWithSubNodes = new HashMap<String,TreeItem>();
 	private boolean pageDirty = false;
 	private boolean controlCreated = false;
-	
+	// need to get the server roles via an extension point without hard-coding
 	private final String[] serverRoles = new String[] { "GovernanceRegistry",
 			"BusinessProcessServer", "GadgetServer",
 			"EnterpriseServiceBus", "MashupServer",

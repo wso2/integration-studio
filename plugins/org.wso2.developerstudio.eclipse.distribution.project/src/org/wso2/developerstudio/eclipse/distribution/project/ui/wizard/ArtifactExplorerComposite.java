@@ -65,8 +65,7 @@ public class ArtifactExplorerComposite extends AbstractComposite {
 		setLayout(new GridLayout(3, false));
 		setModel((DistributionProjectModel) getProjectModel());
 		trDependencies = new Tree(this, SWT.CHECK|SWT.V_SCROLL|SWT.BORDER);
-		
-		GridData gridData = new GridData(SWT.FILL, SWT.CENTER, true, true, 3, 1);
+		GridData gridData = new GridData(SWT.LEFT, SWT.CENTER, true, true, 3, 1);
 		gridData.heightHint= 180;
 		trDependencies.setLayoutData(gridData);
 		trDependencies.setHeaderVisible(true);
@@ -75,20 +74,17 @@ public class ArtifactExplorerComposite extends AbstractComposite {
 		trclmnArtifact.setWidth(600);
 		trclmnArtifact.setText("Dependencies");
 		
-		/*
 		Label lblEmpty = new Label(this, SWT.NONE);
-		GridData gdEmpty = new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1);
+		GridData gdEmpty = new GridData(SWT.LEFT, SWT.CENTER, false, false, 1, 1);
 		gdEmpty.widthHint = 400;
 		lblEmpty.setLayoutData(gdEmpty);
-		*/
 		
-		//GridData data = new GridData(SWT.LEFT_TO_RIGHT, SWT.CENTER, false, false, 1, 1);
+		GridData gdBtn = new GridData(SWT.RIGHT, SWT.CENTER, true, false, 1, 1);
+		gdBtn.widthHint = 100;
 		
 		Button btnSelectAll = new Button(this,SWT.NONE);
 		btnSelectAll.setText("Select All");
-		
-		GridData data2 = new GridData(SWT.RIGHT_TO_LEFT, SWT.CENTER, false, false, 1, 1);
-		btnSelectAll.setLayoutData(data2);
+		btnSelectAll.setLayoutData(gdBtn);
 		btnSelectAll.addListener(SWT.MouseDown, new Listener() {
 			public void handleEvent(Event evt) {
 				selectedProjects = (Map<String, DependencyData>)((HashMap)getProjectList()).clone();
@@ -96,11 +92,10 @@ public class ArtifactExplorerComposite extends AbstractComposite {
 				updateModel();
 			}
 		});
-	
-		GridData data1 = new GridData(SWT.RIGHT_TO_LEFT, SWT.CENTER, false, false, 1, 1);
+		
 		Button btnDeselectAll = new Button(this,SWT.NONE);
 		btnDeselectAll.setText("Deselect All");
-		btnDeselectAll.setLayoutData(data1);
+		btnDeselectAll.setLayoutData(gdBtn);
 		
 		btnDeselectAll.addListener(SWT.MouseDown, new Listener() {
 			public void handleEvent(Event evt) {
@@ -109,7 +104,7 @@ public class ArtifactExplorerComposite extends AbstractComposite {
 				updateModel();
 			}
 		});
-		
+	
 		trDependencies.addSelectionListener(new SelectionListener() {
 
 			public void widgetSelected(SelectionEvent evt) {

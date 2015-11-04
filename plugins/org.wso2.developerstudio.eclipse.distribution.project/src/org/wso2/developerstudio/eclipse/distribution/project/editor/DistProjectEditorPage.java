@@ -134,6 +134,7 @@ public class DistProjectEditorPage extends FormPage {
 	
 	private Action exportAction;
 	private Action refreshAction;
+	private ArtifactTypeMapping artifactTypeMapping = new ArtifactTypeMapping();
 
 	public DistProjectEditorPage(String id, String title) {
 		super(id, title);
@@ -211,7 +212,7 @@ public class DistProjectEditorPage extends FormPage {
 				properties.put(artifactInfo, "capp/ApplicationServer");
 			}
 		}	
-		properties.put("artifact.types", ArtifactTypeMapping.getArtifactTypes());
+		properties.put("artifact.types", artifactTypeMapping.getArtifactTypes());
 		parentPrj.getModel().setProperties(properties);
 	}
 	

@@ -18,5 +18,33 @@
 			priority="2" />
        
  </extension>
-
+ <extension
+       point="org.wso2.developerstudio.eclipse.capp.project.export.handler">
+    <export.handler
+        executionclass="org.wso2.developerstudio.eclipse.registry.core.export.RegistryArtifactExporter"
+        server.role="capp/GovernenceRegistry"
+        id="org.wso2.developerstudio.eclipse.registry.core.export"/>
+ </extension>
+  <extension
+  point="org.wso2.developerstudio.register.artifact.priority.mapping">
+  <!--Registry resources get highest priority.-->
+  		<artifact.priority
+      artifactType="registry/resource"
+      priority="1"/>
+  </extension>
+  <extension
+        point="org.wso2.developerstudio.register.artifact.mapping">
+		 <artifact.mapping
+        artifactType="lib/registry/filter"
+        fileExtension="jar"/>
+        <artifact.mapping
+        artifactType="lib/registry/handlers"
+        fileExtension="jar"/>
+		 <artifact.mapping
+        artifactType="registry/resource"
+        fileExtension="zip"/>
+		 <artifact.mapping
+        artifactType="service/meta"
+        fileExtension="xml"/>
+  </extension>
 </plugin>

@@ -28,9 +28,6 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.IConfigurationElement;
-import org.eclipse.core.runtime.IExtension;
-import org.eclipse.core.runtime.IExtensionPoint;
-import org.eclipse.core.runtime.IExtensionRegistry;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.MultiStatus;
@@ -42,13 +39,7 @@ import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.swt.widgets.Display;
-import org.eclipse.ui.IPerspectiveDescriptor;
-import org.eclipse.ui.IWorkbench;
-import org.eclipse.ui.IWorkbenchWindow;
-import org.eclipse.ui.PlatformUI;
-import org.eclipse.ui.WorkbenchException;
-import org.eclipse.ui.progress.UIJob;
+import org.wso2.developerstudio.eclipse.carbonserver.base.util.CarbonUtils;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.platform.core.project.model.ProjectWizardSettings;
@@ -133,20 +124,15 @@ public class WSO2PluginProjectWizard extends AbstractWSO2ProjectCreationWizard {
 
 	public WSO2PluginSampleExtList getAvailableWSO2Plugins() {
 		WSO2PluginSampleExtList elemList = new WSO2PluginSampleExtList();
-		IExtensionRegistry registry = Platform.getExtensionRegistry();
-		IExtensionPoint point = registry.getExtensionPoint(WSO2PluginConstants.EXTENSION_ID);
-
-		IExtension[] extensions = point.getExtensions();
-		for (int i = 0; i < extensions.length; i++) {
-			IConfigurationElement[] elements = extensions[i].getConfigurationElements();
+		CarbonUtils carbonUtils = new CarbonUtils();
+		IConfigurationElement[] elements =
+                carbonUtils.getExtensionPointmembers(WSO2PluginConstants.EXTENSION_ID);
 			for (int j = 0; j < elements.length; j++) {
 				WSO2PluginSampleExt element = createWizardElement(elements[j]);
 				if (element != null) {
 					elemList.addWSO2Plugin(element);
 				}
 			}
-		}
-
 		return elemList;
 	}
 

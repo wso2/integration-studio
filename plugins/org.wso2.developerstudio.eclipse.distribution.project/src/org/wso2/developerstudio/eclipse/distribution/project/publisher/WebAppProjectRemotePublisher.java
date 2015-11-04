@@ -30,56 +30,63 @@ import org.wso2.developerstudio.eclipse.carbonserver.base.interfaces.ICredential
 import org.wso2.developerstudio.eclipse.carbonserver.base.manager.CarbonServerManager;
 import org.wso2.developerstudio.eclipse.carbonserver.base.utils.WebAppDeployer;
 
-public class WebAppProjectRemotePublisher implements ICarbonServerModulePublisher{
-	
+public class WebAppProjectRemotePublisher implements
+		ICarbonServerModulePublisher {
+
 	private WebAppDeployer webappDeployer;
 	private static final String WEBAPP_NATURE = "org.wso2.developerstudio.eclipse.webapp.project.nature";
 
 	@Override
 	public void publish(IProject project, IServer server, File serverHome,
 			File deployLocation) throws Exception {
-		
-		 if (project.hasNature(WEBAPP_NATURE)){
-			 
-				URL serverURL = CarbonServerManager.getServerURL(server);
-				ICredentials serverCredentials = CarbonServerManager.getServerCredentials(server);
-				webappDeployer = new WebAppDeployer();
-				WebAppArtfactExportHandler handler=new WebAppArtfactExportHandler();
-				List<IResource> exportArtifact = handler.exportArtifact(project);
-				File warFile = ((IFile)exportArtifact.get(0)).getLocation().toFile();
-				webappDeployer.deployWebApp(serverCredentials.getUsername(), serverCredentials.getPassword(), serverURL.toString(), warFile);
- 
-		 }		
+
+		if (project.hasNature(WEBAPP_NATURE)) {
+
+			URL serverURL = CarbonServerManager.getServerURL(server);
+			ICredentials serverCredentials = CarbonServerManager
+					.getServerCredentials(server);
+			webappDeployer = new WebAppDeployer();
+			WebAppArtfactExportHandler handler = new WebAppArtfactExportHandler();
+			List<IResource> exportArtifact = handler.exportArtifact(project);
+			File warFile = ((IFile) exportArtifact.get(0)).getLocation()
+					.toFile();
+			webappDeployer.deployWebApp(serverCredentials.getUsername(),
+					serverCredentials.getPassword(), serverURL.toString(),
+					warFile);
+
+		}
 	}
 
 	@Override
 	public void unpublish(IProject project, IServer server, File serverHome,
 			File deployLocation) throws Exception {
-		
-		if(webappDeployer == null){
+
+		if (webappDeployer == null) {
 			webappDeployer = new WebAppDeployer();
 		}
-		ICredentials serverCredentials = CarbonServerManager.getServerCredentials(server);
+		ICredentials serverCredentials = CarbonServerManager
+				.getServerCredentials(server);
 		URL serverURL = CarbonServerManager.getServerURL(server);
-		webappDeployer.undeployWebApp(serverCredentials.getUsername(), serverCredentials.getPassword(), serverURL.toString(), project.getName());
-		
+		webappDeployer.undeployWebApp(serverCredentials.getUsername(),
+				serverCredentials.getPassword(), serverURL.toString(),
+				project.getName());
+
 	}
 
 	@Override
 	public void hotUpdate(IProject project, IServer server, File serverHome,
 			File deployLocation) throws Exception {
-		
+
 		unpublish(project, server, serverHome, deployLocation);
 		publish(project, server, serverHome, deployLocation);
-		
+
 	}
 
 	@Override
 	public void setUpdatedResource(IResource updatedResource) {
 		// TODO Auto-generated method stub
-		
-	}
 
+	}
 
 }
 */

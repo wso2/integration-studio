@@ -1,0 +1,1281 @@
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ax2427="http://metadata.persistence.core.carbon.wso2.org/xsd" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:ax2425="http://mgt.webapp.carbon.wso2.org/xsd" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:tns="http://mgt.webapp.carbon.wso2.org" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://mgt.webapp.carbon.wso2.org">
+    <wsdl:documentation>WebappAdmin</wsdl:documentation>
+    <wsdl:types>
+        <xs:schema xmlns:ax2428="http://metadata.persistence.core.carbon.wso2.org/xsd" xmlns:ns="http://org.apache.axis2/xsd" xmlns:ax2426="http://mgt.webapp.carbon.wso2.org/xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://org.apache.axis2/xsd">
+            <xs:import namespace="http://mgt.webapp.carbon.wso2.org/xsd"></xs:import>
+            <xs:import namespace="http://metadata.persistence.core.carbon.wso2.org/xsd"></xs:import>
+            <xs:element name="uploadWebapp">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="webappUploadDataList" nillable="true" type="ax2425:WebappUploadData"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="uploadWebappResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" type="xs:boolean"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="stopWebapps">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="webappFileNames" nillable="true" type="xs:string"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="stopAllWebapps">
+                <xs:complexType>
+                    <xs:sequence></xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="startWebapps">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="webappFileNames" nillable="true" type="xs:string"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="startAllWebapps">
+                <xs:complexType>
+                    <xs:sequence></xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="setBamConfiguration">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="webappFileName" nillable="true" type="xs:string"></xs:element>
+                        <xs:element minOccurs="0" name="value" nillable="true" type="xs:string"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="reloadWebapps">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="webappFileNames" nillable="true" type="xs:string"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="reloadAllWebapps">
+                <xs:complexType>
+                    <xs:sequence></xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="isUnpackWARs">
+                <xs:complexType>
+                    <xs:sequence></xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="isUnpackWARsResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" type="xs:boolean"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="isDefaultVersionManagementEnabled">
+                <xs:complexType>
+                    <xs:sequence></xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="isDefaultVersionManagementEnabledResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" type="xs:boolean"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getStoppedWebapp">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="webappFileName" nillable="true" type="xs:string"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getStoppedWebappResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ax2425:WebappMetadata"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getStartedWebapp">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="webappFileName" nillable="true" type="xs:string"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getStartedWebappResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ax2425:WebappMetadata"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getPagedWebappsSummary">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="webappSearchString" nillable="true" type="xs:string"></xs:element>
+                        <xs:element minOccurs="0" name="webappState" nillable="true" type="xs:string"></xs:element>
+                        <xs:element minOccurs="0" name="webappType" nillable="true" type="xs:string"></xs:element>
+                        <xs:element minOccurs="0" name="pageNumber" type="xs:int"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getPagedWebappsSummaryResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ax2425:WebappsWrapper"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getPagedFaultyWebappsSummary">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="webappSearchString" nillable="true" type="xs:string"></xs:element>
+                        <xs:element minOccurs="0" name="webappType" nillable="true" type="xs:string"></xs:element>
+                        <xs:element minOccurs="0" name="pageNumber" type="xs:int"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getPagedFaultyWebappsSummaryResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ax2425:WebappsWrapper"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getBamConfiguration">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="webappFileName" nillable="true" type="xs:string"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getBamConfigurationResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getActiveSessions">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="webappFileName" nillable="true" type="xs:string"></xs:element>
+                        <xs:element minOccurs="0" name="pageNumber" type="xs:int"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getActiveSessionsResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ax2425:SessionsWrapper"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="expireSessionsInWebapps">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="webappFileNames" nillable="true" type="xs:string"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="expireSessionsInWebapp">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="webappFileName" nillable="true" type="xs:string"></xs:element>
+                        <xs:element minOccurs="0" name="maxSessionLifetimeMillis" type="xs:long"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="expireSessionsInAllWebapps">
+                <xs:complexType>
+                    <xs:sequence></xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="expireSessions">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="webappFileName" nillable="true" type="xs:string"></xs:element>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="sessionIDs" nillable="true" type="xs:string"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="expireAllSessions">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="webappFileName" nillable="true" type="xs:string"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="downloadWarFileHandler">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="fileName" nillable="true" type="xs:string"></xs:element>
+                        <xs:element minOccurs="0" name="webappType" nillable="true" type="xs:string"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="downloadWarFileHandlerResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:base64Binary"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="deleteWebapp">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="webappFileName" nillable="true" type="xs:string"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="deleteStoppedWebapps">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="webappFileNames" nillable="true" type="xs:string"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="deleteStartedWebapps">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="webappFileNames" nillable="true" type="xs:string"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="deleteFaultyWebapps">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="webappFileNames" nillable="true" type="xs:string"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="deleteAllWebApps">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="webappFileNames" nillable="true" type="xs:string"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="deleteAllStoppedWebapps">
+                <xs:complexType>
+                    <xs:sequence></xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="deleteAllStartedWebapps">
+                <xs:complexType>
+                    <xs:sequence></xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="deleteAllFaultyWebapps">
+                <xs:complexType>
+                    <xs:sequence></xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="WebappAdminArtifactMetadataException">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="ArtifactMetadataException" nillable="true" type="ax2427:ArtifactMetadataException"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="changeDefaultAppVersion">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="appGroupName" nillable="true" type="xs:string"></xs:element>
+                        <xs:element minOccurs="0" name="fileName" nillable="true" type="xs:string"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+        <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://metadata.persistence.core.carbon.wso2.org/xsd">
+            <xs:complexType name="ArtifactMetadataException">
+                <xs:sequence></xs:sequence>
+            </xs:complexType>
+        </xs:schema>
+        <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://mgt.webapp.carbon.wso2.org/xsd">
+            <xs:complexType name="WebappUploadData">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="dataHandler" nillable="true" type="xs:base64Binary"></xs:element>
+                    <xs:element minOccurs="0" name="fileName" nillable="true" type="xs:string"></xs:element>
+                    <xs:element minOccurs="0" name="version" nillable="true" type="xs:string"></xs:element>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="WebappMetadata">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="appVersion" nillable="true" type="xs:string"></xs:element>
+                    <xs:element minOccurs="0" name="context" nillable="true" type="xs:string"></xs:element>
+                    <xs:element minOccurs="0" name="contextPath" nillable="true" type="xs:string"></xs:element>
+                    <xs:element minOccurs="0" name="displayName" nillable="true" type="xs:string"></xs:element>
+                    <xs:element minOccurs="0" name="faultException" nillable="true" type="xs:string"></xs:element>
+                    <xs:element minOccurs="0" name="faulty" type="xs:boolean"></xs:element>
+                    <xs:element minOccurs="0" name="lastModifiedTime" type="xs:long"></xs:element>
+                    <xs:element minOccurs="0" name="running" type="xs:boolean"></xs:element>
+                    <xs:element minOccurs="0" name="serviceListPath" nillable="true" type="xs:string"></xs:element>
+                    <xs:element minOccurs="0" name="servletContext" nillable="true" type="xs:string"></xs:element>
+                    <xs:element minOccurs="0" name="started" type="xs:boolean"></xs:element>
+                    <xs:element minOccurs="0" name="state" nillable="true" type="xs:string"></xs:element>
+                    <xs:element minOccurs="0" name="statistics" nillable="true" type="ax2425:WebappStatistics"></xs:element>
+                    <xs:element minOccurs="0" name="webappFile" nillable="true" type="xs:string"></xs:element>
+                    <xs:element minOccurs="0" name="webappType" nillable="true" type="xs:string"></xs:element>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="WebappStatistics">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="activeSessions" type="xs:int"></xs:element>
+                    <xs:element minOccurs="0" name="avgSessionLifetime" type="xs:int"></xs:element>
+                    <xs:element minOccurs="0" name="expiredSessions" type="xs:long"></xs:element>
+                    <xs:element minOccurs="0" name="maxActiveSessions" type="xs:int"></xs:element>
+                    <xs:element minOccurs="0" name="maxSessionInactivityInterval" type="xs:int"></xs:element>
+                    <xs:element minOccurs="0" name="maxSessionLifetime" type="xs:int"></xs:element>
+                    <xs:element minOccurs="0" name="rejectedSessions" type="xs:int"></xs:element>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="WebappsWrapper">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="hostName" nillable="true" type="xs:string"></xs:element>
+                    <xs:element minOccurs="0" name="httpPort" type="xs:int"></xs:element>
+                    <xs:element minOccurs="0" name="httpsPort" type="xs:int"></xs:element>
+                    <xs:element minOccurs="0" name="numberOfCorrectWebapps" type="xs:int"></xs:element>
+                    <xs:element minOccurs="0" name="numberOfFaultyWebapps" type="xs:int"></xs:element>
+                    <xs:element minOccurs="0" name="numberOfPages" type="xs:int"></xs:element>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="webapps" nillable="true" type="ax2425:VersionedWebappMetadata"></xs:element>
+                    <xs:element minOccurs="0" name="webappsDir" nillable="true" type="xs:string"></xs:element>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="VersionedWebappMetadata">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="appVersionRoot" nillable="true" type="xs:string"></xs:element>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="versionGroups" nillable="true" type="ax2425:WebappMetadata"></xs:element>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="SessionsWrapper">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="numberOfActiveSessions" type="xs:int"></xs:element>
+                    <xs:element minOccurs="0" name="numberOfPages" type="xs:int"></xs:element>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="sessions" nillable="true" type="ax2425:SessionMetadata"></xs:element>
+                    <xs:element minOccurs="0" name="webappFileName" nillable="true" type="xs:string"></xs:element>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="SessionMetadata">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="authType" nillable="true" type="xs:string"></xs:element>
+                    <xs:element minOccurs="0" name="creationTime" type="xs:long"></xs:element>
+                    <xs:element minOccurs="0" name="lastAccessedTime" type="xs:long"></xs:element>
+                    <xs:element minOccurs="0" name="maxInactiveInterval" type="xs:long"></xs:element>
+                    <xs:element minOccurs="0" name="sessionId" nillable="true" type="xs:string"></xs:element>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="stopWebappsRequest">
+        <wsdl:part name="parameters" element="ns1:stopWebapps"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="expireAllSessionsRequest">
+        <wsdl:part name="parameters" element="ns1:expireAllSessions"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="setBamConfigurationRequest">
+        <wsdl:part name="parameters" element="ns1:setBamConfiguration"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="changeDefaultAppVersionRequest">
+        <wsdl:part name="parameters" element="ns1:changeDefaultAppVersion"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="WebappAdminArtifactMetadataException">
+        <wsdl:part name="parameters" element="ns1:WebappAdminArtifactMetadataException"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="startWebappsRequest">
+        <wsdl:part name="parameters" element="ns1:startWebapps"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="downloadWarFileHandlerRequest">
+        <wsdl:part name="parameters" element="ns1:downloadWarFileHandler"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="downloadWarFileHandlerResponse">
+        <wsdl:part name="parameters" element="ns1:downloadWarFileHandlerResponse"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="deleteStoppedWebappsRequest">
+        <wsdl:part name="parameters" element="ns1:deleteStoppedWebapps"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getPagedWebappsSummaryRequest">
+        <wsdl:part name="parameters" element="ns1:getPagedWebappsSummary"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getPagedWebappsSummaryResponse">
+        <wsdl:part name="parameters" element="ns1:getPagedWebappsSummaryResponse"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getBamConfigurationRequest">
+        <wsdl:part name="parameters" element="ns1:getBamConfiguration"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getBamConfigurationResponse">
+        <wsdl:part name="parameters" element="ns1:getBamConfigurationResponse"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="isDefaultVersionManagementEnabledRequest">
+        <wsdl:part name="parameters" element="ns1:isDefaultVersionManagementEnabled"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="isDefaultVersionManagementEnabledResponse">
+        <wsdl:part name="parameters" element="ns1:isDefaultVersionManagementEnabledResponse"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="expireSessionsInWebappsRequest">
+        <wsdl:part name="parameters" element="ns1:expireSessionsInWebapps"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="deleteAllFaultyWebappsRequest">
+        <wsdl:part name="parameters" element="ns1:deleteAllFaultyWebapps"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getPagedFaultyWebappsSummaryRequest">
+        <wsdl:part name="parameters" element="ns1:getPagedFaultyWebappsSummary"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getPagedFaultyWebappsSummaryResponse">
+        <wsdl:part name="parameters" element="ns1:getPagedFaultyWebappsSummaryResponse"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getStartedWebappRequest">
+        <wsdl:part name="parameters" element="ns1:getStartedWebapp"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getStartedWebappResponse">
+        <wsdl:part name="parameters" element="ns1:getStartedWebappResponse"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="deleteAllStartedWebappsRequest">
+        <wsdl:part name="parameters" element="ns1:deleteAllStartedWebapps"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="expireSessionsRequest">
+        <wsdl:part name="parameters" element="ns1:expireSessions"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="expireSessionsInAllWebappsRequest">
+        <wsdl:part name="parameters" element="ns1:expireSessionsInAllWebapps"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="expireSessionsInWebappRequest">
+        <wsdl:part name="parameters" element="ns1:expireSessionsInWebapp"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="stopAllWebappsRequest">
+        <wsdl:part name="parameters" element="ns1:stopAllWebapps"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="deleteAllStoppedWebappsRequest">
+        <wsdl:part name="parameters" element="ns1:deleteAllStoppedWebapps"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getActiveSessionsRequest">
+        <wsdl:part name="parameters" element="ns1:getActiveSessions"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getActiveSessionsResponse">
+        <wsdl:part name="parameters" element="ns1:getActiveSessionsResponse"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="deleteFaultyWebappsRequest">
+        <wsdl:part name="parameters" element="ns1:deleteFaultyWebapps"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getStoppedWebappRequest">
+        <wsdl:part name="parameters" element="ns1:getStoppedWebapp"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getStoppedWebappResponse">
+        <wsdl:part name="parameters" element="ns1:getStoppedWebappResponse"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="deleteAllWebAppsRequest">
+        <wsdl:part name="parameters" element="ns1:deleteAllWebApps"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="startAllWebappsRequest">
+        <wsdl:part name="parameters" element="ns1:startAllWebapps"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="deleteWebappRequest">
+        <wsdl:part name="parameters" element="ns1:deleteWebapp"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="deleteStartedWebappsRequest">
+        <wsdl:part name="parameters" element="ns1:deleteStartedWebapps"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="uploadWebappRequest">
+        <wsdl:part name="parameters" element="ns1:uploadWebapp"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="uploadWebappResponse">
+        <wsdl:part name="parameters" element="ns1:uploadWebappResponse"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="isUnpackWARsRequest">
+        <wsdl:part name="parameters" element="ns1:isUnpackWARs"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="isUnpackWARsResponse">
+        <wsdl:part name="parameters" element="ns1:isUnpackWARsResponse"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="reloadWebappsRequest">
+        <wsdl:part name="parameters" element="ns1:reloadWebapps"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="reloadAllWebappsRequest">
+        <wsdl:part name="parameters" element="ns1:reloadAllWebapps"></wsdl:part>
+    </wsdl:message>
+    <wsdl:portType name="WebappAdminPortType">
+        <wsdl:operation name="stopWebapps">
+            <wsdl:input message="tns:stopWebappsRequest" wsaw:Action="urn:stopWebapps"></wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="expireAllSessions">
+            <wsdl:input message="tns:expireAllSessionsRequest" wsaw:Action="urn:expireAllSessions"></wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="setBamConfiguration">
+            <wsdl:input message="tns:setBamConfigurationRequest" wsaw:Action="urn:setBamConfiguration"></wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="changeDefaultAppVersion">
+            <wsdl:input message="tns:changeDefaultAppVersionRequest" wsaw:Action="urn:changeDefaultAppVersion"></wsdl:input>
+            <wsdl:fault message="tns:WebappAdminArtifactMetadataException" name="WebappAdminArtifactMetadataException" wsaw:Action="urn:changeDefaultAppVersionWebappAdminArtifactMetadataException"></wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="startWebapps">
+            <wsdl:input message="tns:startWebappsRequest" wsaw:Action="urn:startWebapps"></wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="downloadWarFileHandler">
+            <wsdl:input message="tns:downloadWarFileHandlerRequest" wsaw:Action="urn:downloadWarFileHandler"></wsdl:input>
+            <wsdl:output message="tns:downloadWarFileHandlerResponse" wsaw:Action="urn:downloadWarFileHandlerResponse"></wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deleteStoppedWebapps">
+            <wsdl:input message="tns:deleteStoppedWebappsRequest" wsaw:Action="urn:deleteStoppedWebapps"></wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="getPagedWebappsSummary">
+            <wsdl:input message="tns:getPagedWebappsSummaryRequest" wsaw:Action="urn:getPagedWebappsSummary"></wsdl:input>
+            <wsdl:output message="tns:getPagedWebappsSummaryResponse" wsaw:Action="urn:getPagedWebappsSummaryResponse"></wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getBamConfiguration">
+            <wsdl:input message="tns:getBamConfigurationRequest" wsaw:Action="urn:getBamConfiguration"></wsdl:input>
+            <wsdl:output message="tns:getBamConfigurationResponse" wsaw:Action="urn:getBamConfigurationResponse"></wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="isDefaultVersionManagementEnabled">
+            <wsdl:input message="tns:isDefaultVersionManagementEnabledRequest" wsaw:Action="urn:isDefaultVersionManagementEnabled"></wsdl:input>
+            <wsdl:output message="tns:isDefaultVersionManagementEnabledResponse" wsaw:Action="urn:isDefaultVersionManagementEnabledResponse"></wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="expireSessionsInWebapps">
+            <wsdl:input message="tns:expireSessionsInWebappsRequest" wsaw:Action="urn:expireSessionsInWebapps"></wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="deleteAllFaultyWebapps">
+            <wsdl:input message="tns:deleteAllFaultyWebappsRequest" wsaw:Action="urn:deleteAllFaultyWebapps"></wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="getPagedFaultyWebappsSummary">
+            <wsdl:input message="tns:getPagedFaultyWebappsSummaryRequest" wsaw:Action="urn:getPagedFaultyWebappsSummary"></wsdl:input>
+            <wsdl:output message="tns:getPagedFaultyWebappsSummaryResponse" wsaw:Action="urn:getPagedFaultyWebappsSummaryResponse"></wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getStartedWebapp">
+            <wsdl:input message="tns:getStartedWebappRequest" wsaw:Action="urn:getStartedWebapp"></wsdl:input>
+            <wsdl:output message="tns:getStartedWebappResponse" wsaw:Action="urn:getStartedWebappResponse"></wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deleteAllStartedWebapps">
+            <wsdl:input message="tns:deleteAllStartedWebappsRequest" wsaw:Action="urn:deleteAllStartedWebapps"></wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="expireSessions">
+            <wsdl:input message="tns:expireSessionsRequest" wsaw:Action="urn:expireSessions"></wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="expireSessionsInAllWebapps">
+            <wsdl:input message="tns:expireSessionsInAllWebappsRequest" wsaw:Action="urn:expireSessionsInAllWebapps"></wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="expireSessionsInWebapp">
+            <wsdl:input message="tns:expireSessionsInWebappRequest" wsaw:Action="urn:expireSessionsInWebapp"></wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="stopAllWebapps">
+            <wsdl:input message="tns:stopAllWebappsRequest" wsaw:Action="urn:stopAllWebapps"></wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="deleteAllStoppedWebapps">
+            <wsdl:input message="tns:deleteAllStoppedWebappsRequest" wsaw:Action="urn:deleteAllStoppedWebapps"></wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="getActiveSessions">
+            <wsdl:input message="tns:getActiveSessionsRequest" wsaw:Action="urn:getActiveSessions"></wsdl:input>
+            <wsdl:output message="tns:getActiveSessionsResponse" wsaw:Action="urn:getActiveSessionsResponse"></wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deleteFaultyWebapps">
+            <wsdl:input message="tns:deleteFaultyWebappsRequest" wsaw:Action="urn:deleteFaultyWebapps"></wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="getStoppedWebapp">
+            <wsdl:input message="tns:getStoppedWebappRequest" wsaw:Action="urn:getStoppedWebapp"></wsdl:input>
+            <wsdl:output message="tns:getStoppedWebappResponse" wsaw:Action="urn:getStoppedWebappResponse"></wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deleteAllWebApps">
+            <wsdl:input message="tns:deleteAllWebAppsRequest" wsaw:Action="urn:deleteAllWebApps"></wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="startAllWebapps">
+            <wsdl:input message="tns:startAllWebappsRequest" wsaw:Action="urn:startAllWebapps"></wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="deleteWebapp">
+            <wsdl:input message="tns:deleteWebappRequest" wsaw:Action="urn:deleteWebapp"></wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="deleteStartedWebapps">
+            <wsdl:input message="tns:deleteStartedWebappsRequest" wsaw:Action="urn:deleteStartedWebapps"></wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="uploadWebapp">
+            <wsdl:input message="tns:uploadWebappRequest" wsaw:Action="urn:uploadWebapp"></wsdl:input>
+            <wsdl:output message="tns:uploadWebappResponse" wsaw:Action="urn:uploadWebappResponse"></wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="isUnpackWARs">
+            <wsdl:input message="tns:isUnpackWARsRequest" wsaw:Action="urn:isUnpackWARs"></wsdl:input>
+            <wsdl:output message="tns:isUnpackWARsResponse" wsaw:Action="urn:isUnpackWARsResponse"></wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="reloadWebapps">
+            <wsdl:input message="tns:reloadWebappsRequest" wsaw:Action="urn:reloadWebapps"></wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="reloadAllWebapps">
+            <wsdl:input message="tns:reloadAllWebappsRequest" wsaw:Action="urn:reloadAllWebapps"></wsdl:input>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="WebappAdminSoap11Binding" type="tns:WebappAdminPortType">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"></soap:binding>
+        <wsdl:operation name="stopWebapps">
+            <soap:operation soapAction="urn:stopWebapps" style="document"></soap:operation>
+            <wsdl:input>
+                <soap:body use="literal"></soap:body>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="expireAllSessions">
+            <soap:operation soapAction="urn:expireAllSessions" style="document"></soap:operation>
+            <wsdl:input>
+                <soap:body use="literal"></soap:body>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="setBamConfiguration">
+            <soap:operation soapAction="urn:setBamConfiguration" style="document"></soap:operation>
+            <wsdl:input>
+                <soap:body use="literal"></soap:body>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="changeDefaultAppVersion">
+            <soap:operation soapAction="urn:changeDefaultAppVersion" style="document"></soap:operation>
+            <wsdl:input>
+                <soap:body use="literal"></soap:body>
+            </wsdl:input>
+            <wsdl:fault name="WebappAdminArtifactMetadataException">
+                <soap:fault use="literal" name="WebappAdminArtifactMetadataException"></soap:fault>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="startWebapps">
+            <soap:operation soapAction="urn:startWebapps" style="document"></soap:operation>
+            <wsdl:input>
+                <soap:body use="literal"></soap:body>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="downloadWarFileHandler">
+            <soap:operation soapAction="urn:downloadWarFileHandler" style="document"></soap:operation>
+            <wsdl:input>
+                <soap:body use="literal"></soap:body>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"></soap:body>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getBamConfiguration">
+            <soap:operation soapAction="urn:getBamConfiguration" style="document"></soap:operation>
+            <wsdl:input>
+                <soap:body use="literal"></soap:body>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"></soap:body>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deleteStoppedWebapps">
+            <soap:operation soapAction="urn:deleteStoppedWebapps" style="document"></soap:operation>
+            <wsdl:input>
+                <soap:body use="literal"></soap:body>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="isDefaultVersionManagementEnabled">
+            <soap:operation soapAction="urn:isDefaultVersionManagementEnabled" style="document"></soap:operation>
+            <wsdl:input>
+                <soap:body use="literal"></soap:body>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"></soap:body>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getPagedWebappsSummary">
+            <soap:operation soapAction="urn:getPagedWebappsSummary" style="document"></soap:operation>
+            <wsdl:input>
+                <soap:body use="literal"></soap:body>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"></soap:body>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="expireSessionsInWebapps">
+            <soap:operation soapAction="urn:expireSessionsInWebapps" style="document"></soap:operation>
+            <wsdl:input>
+                <soap:body use="literal"></soap:body>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="deleteAllFaultyWebapps">
+            <soap:operation soapAction="urn:deleteAllFaultyWebapps" style="document"></soap:operation>
+            <wsdl:input>
+                <soap:body use="literal"></soap:body>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="getPagedFaultyWebappsSummary">
+            <soap:operation soapAction="urn:getPagedFaultyWebappsSummary" style="document"></soap:operation>
+            <wsdl:input>
+                <soap:body use="literal"></soap:body>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"></soap:body>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getStartedWebapp">
+            <soap:operation soapAction="urn:getStartedWebapp" style="document"></soap:operation>
+            <wsdl:input>
+                <soap:body use="literal"></soap:body>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"></soap:body>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deleteAllStartedWebapps">
+            <soap:operation soapAction="urn:deleteAllStartedWebapps" style="document"></soap:operation>
+            <wsdl:input>
+                <soap:body use="literal"></soap:body>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="expireSessionsInAllWebapps">
+            <soap:operation soapAction="urn:expireSessionsInAllWebapps" style="document"></soap:operation>
+            <wsdl:input>
+                <soap:body use="literal"></soap:body>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="expireSessions">
+            <soap:operation soapAction="urn:expireSessions" style="document"></soap:operation>
+            <wsdl:input>
+                <soap:body use="literal"></soap:body>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="expireSessionsInWebapp">
+            <soap:operation soapAction="urn:expireSessionsInWebapp" style="document"></soap:operation>
+            <wsdl:input>
+                <soap:body use="literal"></soap:body>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="stopAllWebapps">
+            <soap:operation soapAction="urn:stopAllWebapps" style="document"></soap:operation>
+            <wsdl:input>
+                <soap:body use="literal"></soap:body>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="getActiveSessions">
+            <soap:operation soapAction="urn:getActiveSessions" style="document"></soap:operation>
+            <wsdl:input>
+                <soap:body use="literal"></soap:body>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"></soap:body>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deleteAllStoppedWebapps">
+            <soap:operation soapAction="urn:deleteAllStoppedWebapps" style="document"></soap:operation>
+            <wsdl:input>
+                <soap:body use="literal"></soap:body>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="deleteFaultyWebapps">
+            <soap:operation soapAction="urn:deleteFaultyWebapps" style="document"></soap:operation>
+            <wsdl:input>
+                <soap:body use="literal"></soap:body>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="getStoppedWebapp">
+            <soap:operation soapAction="urn:getStoppedWebapp" style="document"></soap:operation>
+            <wsdl:input>
+                <soap:body use="literal"></soap:body>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"></soap:body>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="startAllWebapps">
+            <soap:operation soapAction="urn:startAllWebapps" style="document"></soap:operation>
+            <wsdl:input>
+                <soap:body use="literal"></soap:body>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="deleteAllWebApps">
+            <soap:operation soapAction="urn:deleteAllWebApps" style="document"></soap:operation>
+            <wsdl:input>
+                <soap:body use="literal"></soap:body>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="deleteWebapp">
+            <soap:operation soapAction="urn:deleteWebapp" style="document"></soap:operation>
+            <wsdl:input>
+                <soap:body use="literal"></soap:body>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="uploadWebapp">
+            <soap:operation soapAction="urn:uploadWebapp" style="document"></soap:operation>
+            <wsdl:input>
+                <soap:body use="literal"></soap:body>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"></soap:body>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deleteStartedWebapps">
+            <soap:operation soapAction="urn:deleteStartedWebapps" style="document"></soap:operation>
+            <wsdl:input>
+                <soap:body use="literal"></soap:body>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="reloadWebapps">
+            <soap:operation soapAction="urn:reloadWebapps" style="document"></soap:operation>
+            <wsdl:input>
+                <soap:body use="literal"></soap:body>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="isUnpackWARs">
+            <soap:operation soapAction="urn:isUnpackWARs" style="document"></soap:operation>
+            <wsdl:input>
+                <soap:body use="literal"></soap:body>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"></soap:body>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="reloadAllWebapps">
+            <soap:operation soapAction="urn:reloadAllWebapps" style="document"></soap:operation>
+            <wsdl:input>
+                <soap:body use="literal"></soap:body>
+            </wsdl:input>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="WebappAdminSoap12Binding" type="tns:WebappAdminPortType">
+        <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"></soap12:binding>
+        <wsdl:operation name="stopWebapps">
+            <soap12:operation soapAction="urn:stopWebapps" style="document"></soap12:operation>
+            <wsdl:input>
+                <soap12:body use="literal"></soap12:body>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="expireAllSessions">
+            <soap12:operation soapAction="urn:expireAllSessions" style="document"></soap12:operation>
+            <wsdl:input>
+                <soap12:body use="literal"></soap12:body>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="setBamConfiguration">
+            <soap12:operation soapAction="urn:setBamConfiguration" style="document"></soap12:operation>
+            <wsdl:input>
+                <soap12:body use="literal"></soap12:body>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="changeDefaultAppVersion">
+            <soap12:operation soapAction="urn:changeDefaultAppVersion" style="document"></soap12:operation>
+            <wsdl:input>
+                <soap12:body use="literal"></soap12:body>
+            </wsdl:input>
+            <wsdl:fault name="WebappAdminArtifactMetadataException">
+                <soap12:fault use="literal" name="WebappAdminArtifactMetadataException"></soap12:fault>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="startWebapps">
+            <soap12:operation soapAction="urn:startWebapps" style="document"></soap12:operation>
+            <wsdl:input>
+                <soap12:body use="literal"></soap12:body>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="downloadWarFileHandler">
+            <soap12:operation soapAction="urn:downloadWarFileHandler" style="document"></soap12:operation>
+            <wsdl:input>
+                <soap12:body use="literal"></soap12:body>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"></soap12:body>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getBamConfiguration">
+            <soap12:operation soapAction="urn:getBamConfiguration" style="document"></soap12:operation>
+            <wsdl:input>
+                <soap12:body use="literal"></soap12:body>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"></soap12:body>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deleteStoppedWebapps">
+            <soap12:operation soapAction="urn:deleteStoppedWebapps" style="document"></soap12:operation>
+            <wsdl:input>
+                <soap12:body use="literal"></soap12:body>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="isDefaultVersionManagementEnabled">
+            <soap12:operation soapAction="urn:isDefaultVersionManagementEnabled" style="document"></soap12:operation>
+            <wsdl:input>
+                <soap12:body use="literal"></soap12:body>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"></soap12:body>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getPagedWebappsSummary">
+            <soap12:operation soapAction="urn:getPagedWebappsSummary" style="document"></soap12:operation>
+            <wsdl:input>
+                <soap12:body use="literal"></soap12:body>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"></soap12:body>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="expireSessionsInWebapps">
+            <soap12:operation soapAction="urn:expireSessionsInWebapps" style="document"></soap12:operation>
+            <wsdl:input>
+                <soap12:body use="literal"></soap12:body>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="deleteAllFaultyWebapps">
+            <soap12:operation soapAction="urn:deleteAllFaultyWebapps" style="document"></soap12:operation>
+            <wsdl:input>
+                <soap12:body use="literal"></soap12:body>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="getPagedFaultyWebappsSummary">
+            <soap12:operation soapAction="urn:getPagedFaultyWebappsSummary" style="document"></soap12:operation>
+            <wsdl:input>
+                <soap12:body use="literal"></soap12:body>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"></soap12:body>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getStartedWebapp">
+            <soap12:operation soapAction="urn:getStartedWebapp" style="document"></soap12:operation>
+            <wsdl:input>
+                <soap12:body use="literal"></soap12:body>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"></soap12:body>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deleteAllStartedWebapps">
+            <soap12:operation soapAction="urn:deleteAllStartedWebapps" style="document"></soap12:operation>
+            <wsdl:input>
+                <soap12:body use="literal"></soap12:body>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="expireSessionsInAllWebapps">
+            <soap12:operation soapAction="urn:expireSessionsInAllWebapps" style="document"></soap12:operation>
+            <wsdl:input>
+                <soap12:body use="literal"></soap12:body>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="expireSessions">
+            <soap12:operation soapAction="urn:expireSessions" style="document"></soap12:operation>
+            <wsdl:input>
+                <soap12:body use="literal"></soap12:body>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="expireSessionsInWebapp">
+            <soap12:operation soapAction="urn:expireSessionsInWebapp" style="document"></soap12:operation>
+            <wsdl:input>
+                <soap12:body use="literal"></soap12:body>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="stopAllWebapps">
+            <soap12:operation soapAction="urn:stopAllWebapps" style="document"></soap12:operation>
+            <wsdl:input>
+                <soap12:body use="literal"></soap12:body>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="getActiveSessions">
+            <soap12:operation soapAction="urn:getActiveSessions" style="document"></soap12:operation>
+            <wsdl:input>
+                <soap12:body use="literal"></soap12:body>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"></soap12:body>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deleteAllStoppedWebapps">
+            <soap12:operation soapAction="urn:deleteAllStoppedWebapps" style="document"></soap12:operation>
+            <wsdl:input>
+                <soap12:body use="literal"></soap12:body>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="deleteFaultyWebapps">
+            <soap12:operation soapAction="urn:deleteFaultyWebapps" style="document"></soap12:operation>
+            <wsdl:input>
+                <soap12:body use="literal"></soap12:body>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="getStoppedWebapp">
+            <soap12:operation soapAction="urn:getStoppedWebapp" style="document"></soap12:operation>
+            <wsdl:input>
+                <soap12:body use="literal"></soap12:body>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"></soap12:body>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="startAllWebapps">
+            <soap12:operation soapAction="urn:startAllWebapps" style="document"></soap12:operation>
+            <wsdl:input>
+                <soap12:body use="literal"></soap12:body>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="deleteAllWebApps">
+            <soap12:operation soapAction="urn:deleteAllWebApps" style="document"></soap12:operation>
+            <wsdl:input>
+                <soap12:body use="literal"></soap12:body>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="deleteWebapp">
+            <soap12:operation soapAction="urn:deleteWebapp" style="document"></soap12:operation>
+            <wsdl:input>
+                <soap12:body use="literal"></soap12:body>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="uploadWebapp">
+            <soap12:operation soapAction="urn:uploadWebapp" style="document"></soap12:operation>
+            <wsdl:input>
+                <soap12:body use="literal"></soap12:body>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"></soap12:body>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deleteStartedWebapps">
+            <soap12:operation soapAction="urn:deleteStartedWebapps" style="document"></soap12:operation>
+            <wsdl:input>
+                <soap12:body use="literal"></soap12:body>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="reloadWebapps">
+            <soap12:operation soapAction="urn:reloadWebapps" style="document"></soap12:operation>
+            <wsdl:input>
+                <soap12:body use="literal"></soap12:body>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="isUnpackWARs">
+            <soap12:operation soapAction="urn:isUnpackWARs" style="document"></soap12:operation>
+            <wsdl:input>
+                <soap12:body use="literal"></soap12:body>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"></soap12:body>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="reloadAllWebapps">
+            <soap12:operation soapAction="urn:reloadAllWebapps" style="document"></soap12:operation>
+            <wsdl:input>
+                <soap12:body use="literal"></soap12:body>
+            </wsdl:input>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="WebappAdminHttpBinding" type="tns:WebappAdminPortType">
+        <http:binding verb="POST"></http:binding>
+        <wsdl:operation name="stopWebapps">
+            <http:operation location="stopWebapps"></http:operation>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"></mime:content>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="expireAllSessions">
+            <http:operation location="expireAllSessions"></http:operation>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"></mime:content>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="setBamConfiguration">
+            <http:operation location="setBamConfiguration"></http:operation>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"></mime:content>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="changeDefaultAppVersion">
+            <http:operation location="changeDefaultAppVersion"></http:operation>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"></mime:content>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="startWebapps">
+            <http:operation location="startWebapps"></http:operation>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"></mime:content>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="downloadWarFileHandler">
+            <http:operation location="downloadWarFileHandler"></http:operation>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"></mime:content>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"></mime:content>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getBamConfiguration">
+            <http:operation location="getBamConfiguration"></http:operation>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"></mime:content>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"></mime:content>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deleteStoppedWebapps">
+            <http:operation location="deleteStoppedWebapps"></http:operation>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"></mime:content>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="isDefaultVersionManagementEnabled">
+            <http:operation location="isDefaultVersionManagementEnabled"></http:operation>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"></mime:content>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"></mime:content>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getPagedWebappsSummary">
+            <http:operation location="getPagedWebappsSummary"></http:operation>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"></mime:content>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"></mime:content>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="expireSessionsInWebapps">
+            <http:operation location="expireSessionsInWebapps"></http:operation>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"></mime:content>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="deleteAllFaultyWebapps">
+            <http:operation location="deleteAllFaultyWebapps"></http:operation>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"></mime:content>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="getPagedFaultyWebappsSummary">
+            <http:operation location="getPagedFaultyWebappsSummary"></http:operation>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"></mime:content>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"></mime:content>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getStartedWebapp">
+            <http:operation location="getStartedWebapp"></http:operation>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"></mime:content>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"></mime:content>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deleteAllStartedWebapps">
+            <http:operation location="deleteAllStartedWebapps"></http:operation>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"></mime:content>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="expireSessionsInAllWebapps">
+            <http:operation location="expireSessionsInAllWebapps"></http:operation>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"></mime:content>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="expireSessions">
+            <http:operation location="expireSessions"></http:operation>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"></mime:content>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="expireSessionsInWebapp">
+            <http:operation location="expireSessionsInWebapp"></http:operation>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"></mime:content>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="stopAllWebapps">
+            <http:operation location="stopAllWebapps"></http:operation>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"></mime:content>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="getActiveSessions">
+            <http:operation location="getActiveSessions"></http:operation>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"></mime:content>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"></mime:content>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deleteAllStoppedWebapps">
+            <http:operation location="deleteAllStoppedWebapps"></http:operation>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"></mime:content>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="deleteFaultyWebapps">
+            <http:operation location="deleteFaultyWebapps"></http:operation>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"></mime:content>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="getStoppedWebapp">
+            <http:operation location="getStoppedWebapp"></http:operation>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"></mime:content>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"></mime:content>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="startAllWebapps">
+            <http:operation location="startAllWebapps"></http:operation>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"></mime:content>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="deleteAllWebApps">
+            <http:operation location="deleteAllWebApps"></http:operation>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"></mime:content>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="deleteWebapp">
+            <http:operation location="deleteWebapp"></http:operation>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"></mime:content>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="uploadWebapp">
+            <http:operation location="uploadWebapp"></http:operation>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"></mime:content>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"></mime:content>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deleteStartedWebapps">
+            <http:operation location="deleteStartedWebapps"></http:operation>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"></mime:content>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="reloadWebapps">
+            <http:operation location="reloadWebapps"></http:operation>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"></mime:content>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="isUnpackWARs">
+            <http:operation location="isUnpackWARs"></http:operation>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"></mime:content>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"></mime:content>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="reloadAllWebapps">
+            <http:operation location="reloadAllWebapps"></http:operation>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"></mime:content>
+            </wsdl:input>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="WebappAdmin">
+        <wsdl:port name="WebappAdminHttpsSoap11Endpoint" binding="tns:WebappAdminSoap11Binding">
+            <soap:address location="https://10.100.1.69:9443/services/WebappAdmin.WebappAdminHttpsSoap11Endpoint/"></soap:address>
+        </wsdl:port>
+        <wsdl:port name="WebappAdminHttpsSoap12Endpoint" binding="tns:WebappAdminSoap12Binding">
+            <soap12:address location="https://10.100.1.69:9443/services/WebappAdmin.WebappAdminHttpsSoap12Endpoint/"></soap12:address>
+        </wsdl:port>
+        <wsdl:port name="WebappAdminHttpsEndpoint" binding="tns:WebappAdminHttpBinding">
+            <http:address location="https://10.100.1.69:9443/services/WebappAdmin.WebappAdminHttpsEndpoint/"></http:address>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

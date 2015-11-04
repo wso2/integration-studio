@@ -22,6 +22,7 @@ Import-Package:
  org.eclipse.pde.internal.ui.wizards.plugin,
  org.eclipse.pde.ui,
  org.eclipse.ui.internal.wizards.datatransfer,
+ org.wso2.developerstudio.eclipse.carbonserver.base.util,
  org.wso2.developerstudio.eclipse.platform.core.exception,
  org.wso2.developerstudio.eclipse.platform.core.model,
  org.wso2.developerstudio.eclipse.platform.core.project.model,

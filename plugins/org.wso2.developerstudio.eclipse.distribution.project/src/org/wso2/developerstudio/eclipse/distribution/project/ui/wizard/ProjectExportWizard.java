@@ -35,8 +35,8 @@ import org.eclipse.ui.IWorkbench;
 import org.wso2.developerstudio.eclipse.distribution.project.Activator;
 import org.wso2.developerstudio.eclipse.distribution.project.util.ArtifactTypeMapping;
 import org.wso2.developerstudio.eclipse.distribution.project.util.DistProjectUtils;
-//import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBArtifact;
-//import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBProjectArtifact;
+import org.wso2.developerstudio.eclipse.distribution.project.validator.GeneralArtifact;
+import org.wso2.developerstudio.eclipse.distribution.project.validator.GeneralProjectArtifact;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.platform.core.project.export.util.ExportUtil;
@@ -48,6 +48,7 @@ public class ProjectExportWizard extends Wizard implements IExportWizard {
 	private final int ESB_PROJECT=1;
 	private final int GENERAL_PROJECT=2;
 	private static IDeveloperStudioLog log=Logger.getLog(Activator.PLUGIN_ID);
+	private ArtifactTypeMapping artifactTypeMapping = new ArtifactTypeMapping();
 
 	public void init(IWorkbench wb, IStructuredSelection selection) {
 		detailsPage = new ExportDetailsWizardPage(wb, selection);
@@ -80,11 +81,11 @@ public class ProjectExportWizard extends Wizard implements IExportWizard {
 					   project.hasNature(Constants.BRS_PROJECT_NATURE)||
 					   project.hasNature(Constants.JAGGERY_NATURE)){
 				exportArchivable(project);
-			} /*else if(project.hasNature(Constants.ESB_PROJECT_NATURE)){
+			} else if(project.hasNature(Constants.ESB_PROJECT_NATURE)){
 				exportNonArchivable(project,ESB_PROJECT);
 			} else if(project.hasNature(Constants.GENERAL_PROJECT_NATURE)){
 				exportNonArchivable(project,GENERAL_PROJECT);
-			}*/
+			}
 		} catch (Exception e) {
 			log.error("An error occured while creating the archive file", e);
 			exportMsg
@@ -112,7 +113,7 @@ public class ProjectExportWizard extends Wizard implements IExportWizard {
 		cAppType = mavenProject.getModel().getPackaging();
 		String version = mavenProject.getModel().getVersion();
 		if (cAppType == null
-				|| !ArtifactTypeMapping.isValidArtifactType(cAppType)) {
+				|| !artifactTypeMapping.isValidArtifactType(cAppType)) {
 			if (mavenProject.getModel().getProperties()
 					.containsKey("CApp.type")) {
 				cAppType = (String) mavenProject.getModel().getProperties()
@@ -122,7 +123,7 @@ public class ProjectExportWizard extends Wizard implements IExportWizard {
 		List<IResource> archive = ExportUtil.buildProject(
 				detailsPage.getSelectedProject(), cAppType);
 		if (archive.size() == 1) {
-			ext = ArtifactTypeMapping.getType(cAppType);
+			ext = artifactTypeMapping.getType(cAppType);
 			finalFileName = String.format("%s_%s.%s", project.getName(),
 					version, ext);
 			File destFileName = new File(detailsPage.getExportPath(),
@@ -136,7 +137,7 @@ public class ProjectExportWizard extends Wizard implements IExportWizard {
 		}
 	}
 	
-/*	private void exportNonArchivable(IProject project, int type) throws Exception{
+	private void exportNonArchivable(IProject project, int type) throws Exception{
 		MavenProject mavenProject = DistProjectUtils.getMavenProject(project);
 		String version = mavenProject.getModel().getVersion();
 		String finalFileName = String.format("%s_%s", project.getName(),
@@ -145,9 +146,9 @@ public class ProjectExportWizard extends Wizard implements IExportWizard {
 		finalFileName);
 		IFile artifactXMLFile = project.getFile(Constants.ARTIFACT_XML);
 		if (artifactXMLFile.exists()) {
-				ESBProjectArtifact artifactXMLDoc = new ESBProjectArtifact();
+			GeneralProjectArtifact artifactXMLDoc = new GeneralProjectArtifact();
 				artifactXMLDoc.fromFile(artifactXMLFile.getLocation().toFile());
-				List<ESBArtifact> artifacts = artifactXMLDoc.getAllESBArtifacts();
+				List<GeneralArtifact> artifacts = artifactXMLDoc.getAllESBArtifacts();
 				if(type==ESB_PROJECT){
 					exportESBArtifact(artifacts,project,destFileName);
 				} else if (type==GENERAL_PROJECT){
@@ -155,8 +156,8 @@ public class ProjectExportWizard extends Wizard implements IExportWizard {
 				}
 		}
 	}
-	*/
-	/*private void exportESBArtifact(List<ESBArtifact> artifacts,
+	
+	private void exportESBArtifact(List<GeneralArtifact> artifacts,
 			IProject project, File dir) throws Exception {
 		File synapseConfigDir = new File(dir, "synapse-config");
 		File endpointsDir = new File(synapseConfigDir, "endpoints");
@@ -194,7 +195,7 @@ public class ProjectExportWizard extends Wizard implements IExportWizard {
 			eventSourcesDir.mkdirs();
 		if (!priorityExecutorsDir.exists())
 			priorityExecutorsDir.mkdirs();
-		for (ESBArtifact artifact : artifacts) {
+		for (GeneralArtifact artifact : artifacts) {
 			String type = artifact.getType();
 			File file = project.getFile(artifact.getFile()).getLocation().toFile();
 			File dstFile=null;
@@ -236,7 +237,7 @@ public class ProjectExportWizard extends Wizard implements IExportWizard {
 		}
 	}
 	
-	private void exportRegResources(List<ESBArtifact> artifacts,IProject project,File dir) throws Exception{
+	private void exportRegResources(List<GeneralArtifact> artifacts,IProject project,File dir) throws Exception{
 		List<IResource> buildProject = ExportUtil.buildProject(
 				project,
 				"registry/resource");
@@ -250,5 +251,5 @@ public class ProjectExportWizard extends Wizard implements IExportWizard {
 						dstFile);
 			}
 		}
-	}*/
+	}
 }

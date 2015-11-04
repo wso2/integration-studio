@@ -33,6 +33,7 @@
         <module>org.wso2.developerstudio.kernel.webeditor.tools.feature</module>
         <module>org.wso2.developerstudio.kernel.pluginsamples.feature</module>
         <module>org.wso2.developerstudio.kernel.dependencies.feature</module>
+	<module>org.wso2.developerstudio.carbon.server.feature</module>
     </modules>
     <distributionManagement>
         <repository>

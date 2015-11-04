@@ -58,7 +58,6 @@ public class DistributionProjectWizard extends
 	public DistributionProjectWizard() {
 		setModel(new DistributionProjectModel());
 		setDefaultPageImageDescriptor(DistributionProjectImageUtils.getInstance().getImageDescriptor("distribution-project-wizard.png"));
-		getCurrentSelection();
 	}
 
 	public IResource getCreatedResource() {
@@ -134,8 +133,9 @@ public class DistributionProjectWizard extends
 				Dependency dependency = dependencyData.getDependency();
 				dependencyList.add(dependency);
 				properties.put(DistProjectUtils.getArtifactInfoAsString(dependency), dependencyData.getServerRole());
-			}	
-			properties.put("artifact.types", ArtifactTypeMapping.getArtifactTypes());
+			}
+			ArtifactTypeMapping artifactTypeMapping = new ArtifactTypeMapping();
+			properties.put("artifact.types", artifactTypeMapping.getArtifactTypes());
 			mavenProject.getModel().setProperties(properties);
 
 			MavenUtils.addMavenDependency(mavenProject, dependencyList);

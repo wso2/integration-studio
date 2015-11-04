@@ -29,6 +29,11 @@ import org.apache.maven.model.Dependency;
 import org.apache.maven.project.MavenProject;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
+import org.eclipse.core.runtime.IConfigurationElement;
+import org.eclipse.core.runtime.IExtension;
+import org.eclipse.core.runtime.IExtensionPoint;
+import org.eclipse.core.runtime.IExtensionRegistry;
+import org.eclipse.core.runtime.Platform;
 import org.wso2.developerstudio.eclipse.distribution.project.model.DependencyData;
 import org.wso2.developerstudio.eclipse.distribution.project.validator.ProjectList;
 import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
@@ -118,6 +123,14 @@ public class DistProjectUtils {
 			}
 		}
 		return serverRole;
+	}
+	
+	public String getFileName(DependencyData dependencyData) {
+		ArtifactTypeMapping artifactTypeMapping = new ArtifactTypeMapping();
+		String fileName = String.format("%s-%s.%s", dependencyData.getDependency().getArtifactId(),
+				dependencyData.getDependency().getVersion(), artifactTypeMapping
+						.getType(dependencyData.getCApptype()));
+		return fileName;
 	}
 	
 }

@@ -66,6 +66,7 @@ public class DistributionProjectExportWizard extends Wizard implements IExportWi
 	private Map<String,DependencyData> projectList= new HashMap<String, DependencyData>();
 	private Map<String,Dependency> dependencyMap = new HashMap<String, Dependency>();
 	private Map<String,String> serverRoleList = new HashMap<String, String>();
+	private ArtifactTypeMapping artifactTypeMapping = new ArtifactTypeMapping();
 	
 	@SuppressWarnings("unchecked")
 	public void init(IWorkbench workbench, IStructuredSelection selection) {
@@ -144,7 +145,7 @@ public class DistributionProjectExportWizard extends Wizard implements IExportWi
 				properties.put(artifactInfo, "capp/ApplicationServer");
 			}
 		}	
-		properties.put("artifact.types", ArtifactTypeMapping.getArtifactTypes());
+		properties.put("artifact.types", artifactTypeMapping.getArtifactTypes());
 		parentPrj.getModel().setProperties(properties);
 	}
 	

@@ -12,7 +12,7 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- 
+ */
 
 package org.wso2.developerstudio.eclipse.distribution.project.publisher;
 
@@ -59,11 +59,11 @@ public class CAppProjectRemotePublisher implements ICarbonServerModulePublisher{
 		
 		String cappName =  project.getName();
 		
-		CAppDeployer cappDeployer = new CAppDeployer();
+		/*CAppDeployer cappDeployer = new CAppDeployer();
 		Artifact superArtifact = CAppEnvironment.getcAppManager().getSuperArtifact(project);
 		CarExportHandler handler=new CarExportHandler();
 		List<IResource> exportArtifact = handler.exportArtifact(project);
-		File carFile = ((IFile)exportArtifact.get(0)).getLocation().toFile();
+		File carFile = ((IFile)exportArtifact.get(0)).getLocation().toFile();*/
 		CAppDeployer.unDeployCAR(serverURL.toString(), 
 								 serverCredentials.getUsername(), 
 								 serverCredentials.getPassword(), 
@@ -81,8 +81,8 @@ public class CAppProjectRemotePublisher implements ICarbonServerModulePublisher{
 			// Display.getDefault().asyncExec(new Runnable(){
 			public void run() {
 				try {
-					unpublish(project, server, serverHome, deployLocation);
-					Thread.sleep(10000);
+/*					unpublish(project, server, serverHome, deployLocation);
+					Thread.sleep(10000);*/
 					publish(project, server, serverHome, deployLocation);
 				} catch (Exception e) {
 				}
@@ -99,7 +99,12 @@ public class CAppProjectRemotePublisher implements ICarbonServerModulePublisher{
 		
 	}
 
+	@Override
+	public void setResourceChngeKind(int resourceChngeKind) {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 
 }
-*/

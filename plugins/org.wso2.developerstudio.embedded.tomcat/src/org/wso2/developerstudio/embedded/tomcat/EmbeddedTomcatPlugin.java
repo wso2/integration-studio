@@ -15,26 +15,23 @@
  */
 package org.wso2.developerstudio.embedded.tomcat;
 
+import org.eclipse.osgi.util.NLS;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
-import org.wso2.developerstudio.embedded.tomcat.api.ITomcatServer;
 import org.wso2.developerstudio.embedded.tomcat.exception.EmbeddedTomcatException;
 import org.wso2.developerstudio.embedded.tomcat.server.EmbeddedTomcatServer;
 
 public class EmbeddedTomcatPlugin implements BundleActivator {
 
-	public static final String PLUGIN_ID = "org.wso2.developerstudio.embedded.tomcat";
-	protected static ClassLoader bundleCtxtClassLoader;
+	public static final String PLUGIN_ID = "org.wso2.developerstudio.embedded.tomcat";//$NON-NLS-1$
 
+	private static ClassLoader bundleCtxtClassLoader;
 	private static BundleContext context;
-
-	private static IDeveloperStudioLog log = Logger
-			.getLog(EmbeddedTomcatPlugin.PLUGIN_ID);
-
-	/** The shared plug-in instance */
 	private static EmbeddedTomcatPlugin plugin;
+	private static IDeveloperStudioLog log = Logger.getLog(EmbeddedTomcatPlugin.PLUGIN_ID);
+
 	/** Tomcat instance */
 	private EmbeddedTomcatServer tomcatServer;
 
@@ -48,16 +45,14 @@ public class EmbeddedTomcatPlugin implements BundleActivator {
 			@Override
 			public void run() {
 				try {
-					log.info("Starting embedded tomcat server of DevStudio.");
+					log.info(Messages.INFO_startingTomcat);
 					Thread.currentThread().setContextClassLoader(bundleCtxtClassLoader);
 					tomcatServer = new EmbeddedTomcatServer();
 					tomcatServer.start();
 					Integer port = tomcatServer.getServerPort();
-					log.info("Embedded tomcat server is suceessfully started on port "
-							+ port);
+					log.info(NLS.bind(Messages.INFO_tomcatStarted, port));
 				} catch (EmbeddedTomcatException ex) {
-					log.error("Error while starting embedded tomcat server.",
-							ex);
+					log.error(Messages.ERROR_tomcatStartupError, ex);
 				}
 			}
 		});
@@ -70,9 +65,7 @@ public class EmbeddedTomcatPlugin implements BundleActivator {
 		try {
 			tomcatServer.stop();
 		} catch (Exception e) {
-			log.error(
-					"Error while stopping embedded tomcat server of DevStudio.",
-					e);
+			log.error(Messages.ERROR_tomcatShutdownError, e);
 		}
 	}
 
@@ -91,9 +84,9 @@ public class EmbeddedTomcatPlugin implements BundleActivator {
 	 * @return
 	 * @throws EmbeddedTomcatException 
 	 */
-	public ITomcatServer getServer() throws EmbeddedTomcatException{
+	public EmbeddedTomcatServer getServer() throws EmbeddedTomcatException{
 		if(tomcatServer == null){
-			throw new EmbeddedTomcatException("Server is not instantiated");
+			throw new EmbeddedTomcatException(Messages.ERROR_serverNotFound);
 		}
 		return  tomcatServer;
 	}

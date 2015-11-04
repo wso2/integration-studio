@@ -15,16 +15,14 @@
  */
 package org.wso2.developerstudio.embedded.tomcat.exception;
 
+import org.eclipse.osgi.util.NLS;
+import org.wso2.developerstudio.embedded.tomcat.Messages;
+
 public class DuplicateContextException extends EmbeddedTomcatException {
 
 	private static final long serialVersionUID = 3309958704648175710L;
 
-	public DuplicateContextException(String message) {
-		super(message);
+	public DuplicateContextException(String context, String appID) {
+		super(NLS.bind(Messages.ERROR_duplicateContext, context, appID));
 	}
-
-	public DuplicateContextException(String message, Throwable cause) {
-		super(message, cause);
-	}
-
 }

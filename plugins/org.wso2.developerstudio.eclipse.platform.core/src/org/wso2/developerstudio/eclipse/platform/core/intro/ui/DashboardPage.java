@@ -97,14 +97,10 @@ public class DashboardPage extends FormPage {
 		 * Dashboard items for core features not handle by
 		 * DashboardContributionsHandler
 		 */
-		wizardCategoryMap
-				.put("Distribution",
-						new String[] { "org.wso2.developerstudio.eclipse.distribution.project", });
+		wizardCategoryMap.put("Distribution", new String[] { "org.wso2.developerstudio.eclipse.distribution.project", });
 		wizardCategoryMap.put("Maven",
 		                      new String[] { "org.wso2.developerstudio.eclipse.platform.ui.mvn.wizard.MvnMultiModuleWizard", });
-		wizardCategoryMap.put("AddServer", new String[]{
-		                                				"org.eclipse.wst.server.ui.new.server",
-		                                				});
+		wizardCategoryMap.put("AddServer", new String[] { "org.eclipse.wst.server.ui.new.server", });
 	}
 
 	/**
@@ -195,50 +191,32 @@ public class DashboardPage extends FormPage {
 			createCategory(managedForm, composite, category.getName());
 		}
 		sctnCreate.setExpanded(true);
-		
-		Section sctnDistribution = managedForm.getToolkit().createSection(managedForm.getForm().getBody(), Section.TWISTIE | Section.TITLE_BAR);
-		sctnDistribution.setBounds(700, 10, 300, 75);
-		managedForm.getToolkit().paintBordersFor(sctnDistribution);
-		sctnDistribution.setText("Distribution");
-		
-		Composite comDistribution = managedForm.getToolkit().createComposite(sctnDistribution, SWT.NONE);
-		managedForm.getToolkit().paintBordersFor(comDistribution);
-		sctnDistribution.setClient(comDistribution);
-		comDistribution.setLayout(new GridLayout(1, false));
-		ImageDescriptor distImageDesc = ImageDescriptor.createFromImage(DashboardUtil.resizeImage(SWTResourceManager
-				.getImage(this.getClass(), "/intro/css/graphics/distribution-project-wizard.png"),
-				32, 32));
-		createTitlelessCategory(managedForm,comDistribution,"Distribution",distImageDesc);
-		sctnDistribution.setExpanded(true);
 
-		Section sctnMaven = managedForm.getToolkit().createSection(managedForm.getForm().getBody(),                                                           Section.TWISTIE | Section.TITLE_BAR);
-		sctnMaven.setBounds(700, 90, 300, 75);
-		managedForm.getToolkit().paintBordersFor(sctnMaven);
-		sctnMaven.setText("Maven");
-		Composite comMaven = managedForm.getToolkit().createComposite(sctnMaven, SWT.NONE);
-		managedForm.getToolkit().paintBordersFor(comMaven);
-		sctnMaven.setClient(comMaven);
-		comMaven.setLayout(new GridLayout(1, false));
-		ImageDescriptor mavenImageDesc = ImageDescriptor.createFromImage(DashboardUtil.resizeImage(SWTResourceManager.getImage(this.getClass(),
-		                                                                                                                       "/intro/css/graphics/maven-24x24.png"),
-		                                                                                           32, 32));
-		createTitlelessCategory(managedForm, comMaven, "Maven", mavenImageDesc);
-		sctnMaven.setExpanded(true);
-		
-		Section sctnAddServer = managedForm.getToolkit().createSection(managedForm.getForm().getBody(), Section.TWISTIE | Section.TITLE_BAR);
-		sctnAddServer.setBounds(700, 170, 300, 75);
-		managedForm.getToolkit().paintBordersFor(sctnAddServer);
-		sctnAddServer.setText("Add Server");
-		
-		Composite comAddServer = managedForm.getToolkit().createComposite(sctnAddServer, SWT.NONE);
-		managedForm.getToolkit().paintBordersFor(comAddServer);
-		sctnAddServer.setClient(comAddServer);
-		comAddServer.setLayout(new GridLayout(1, false));
-		ImageDescriptor addServerImageDesc = ImageDescriptor.createFromImage(DashboardUtil.resizeImage(SWTResourceManager
-				.getImage(this.getClass(), "/intro/css/graphics/server.png"),
-				32, 32));
-		createTitlelessCategory(managedForm,comAddServer,"AddServer",addServerImageDesc);
-		sctnAddServer.setExpanded(true);	
+		createDashboardCategoryEntry(managedForm, "Distribution", 10, "/intro/css/graphics/distribution-project-wizard.png",
+		                        "Distribution");
+		createDashboardCategoryEntry(managedForm, "Maven", 90, "/intro/css/graphics/maven-24x24.png", "Maven");
+		createDashboardCategoryEntry(managedForm, "Add Server", 170, "/intro/css/graphics/server.png", "AddServer");
+	}
+
+	private void createDashboardCategoryEntry(IManagedForm managedForm, String txtHeader, int verticalAlignment,
+	                                     String imageLoc, String title) {
+		Section addSection =
+		                     managedForm.getToolkit().createSection(managedForm.getForm().getBody(),
+		                                                            Section.TWISTIE | Section.TITLE_BAR);
+		addSection.setBounds(700, verticalAlignment, 300, 75);
+		managedForm.getToolkit().paintBordersFor(addSection);
+		addSection.setText(txtHeader);
+
+		Composite addComposite = managedForm.getToolkit().createComposite(addSection, SWT.NONE);
+		managedForm.getToolkit().paintBordersFor(addComposite);
+		addSection.setClient(addComposite);
+		addComposite.setLayout(new GridLayout(1, false));
+		ImageDescriptor addServerImageDesc =
+		                                     ImageDescriptor.createFromImage(DashboardUtil.resizeImage(SWTResourceManager.getImage(this.getClass(),
+		                                                                                                                           imageLoc),
+		                                                                                               32, 32));
+		createTitlelessCategory(managedForm, addComposite, title, addServerImageDesc);
+		addSection.setExpanded(true);
 	}
 
 	private Map<String, IWizardDescriptor> getWizardDescriptors() {

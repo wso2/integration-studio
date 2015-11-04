@@ -102,4 +102,42 @@
 			</includes>
 		</viewerContentBinding>
 	</extension>
+	  <extension
+       point="org.wso2.developerstudio.eclipse.carbonserver.publisher">
+        <publisher
+          class="org.wso2.developerstudio.eclipse.artifact.webapp.publisher.WebAppProjectPublisher"
+          id="org.wso2.developerstudio.eclipse.webapp.project.publisher30"
+          serverid="org.wso2.developerstudio.eclipse.carbon.server30">
+    </publisher>
+    <publisher
+          class="org.wso2.developerstudio.eclipse.artifact.webapp.publisher.WebAppProjectPublisher"
+          id="org.wso2.developerstudio.eclipse.webapp.project.publisher31"
+          serverid="org.wso2.developerstudio.eclipse.carbon.server31">
+    </publisher>
+    <publisher
+          class="org.wso2.developerstudio.eclipse.artifact.webapp.publisher.WebAppProjectPublisher"
+          id="org.wso2.developerstudio.eclipse.webapp.project.publisher32"
+          serverid="org.wso2.developerstudio.eclipse.carbon.server32">
+    </publisher>
+    <publisher
+          class="org.wso2.developerstudio.eclipse.artifact.webapp.publisher.WebAppProjectPublisher"
+          id="org.wso2.developerstudio.eclipse.webapp.project.publisher40"
+          serverid="org.wso2.developerstudio.eclipse.carbon.server40">
+    </publisher>
+    <publisher
+          class="org.wso2.developerstudio.eclipse.artifact.webapp.publisher.WebAppProjectPublisher"
+          id="org.wso2.developerstudio.eclipse.webapp.project.publisher42"
+          serverid="org.wso2.developerstudio.eclipse.carbon.server42">
+    </publisher>
+    <publisher
+          class="org.wso2.developerstudio.eclipse.artifact.webapp.publisher.WebAppProjectPublisher"
+          id="org.wso2.developerstudio.eclipse.webapp.project.publisher44"
+          serverid="org.wso2.developerstudio.eclipse.carbon.server44">
+    </publisher>
+    <publisher
+          class="org.wso2.developerstudio.eclipse.artifact.webapp.publisher.WebAppProjectRemotePublisher"
+          id="org.wso2.developerstudio.eclipse.webapp.project.publisher.remote"
+          serverid="org.wso2.developerstudio.eclipse.carbon.server.remote">          
+    </publisher>
+       </extension>
 </plugin>

@@ -102,6 +102,9 @@ public class DashboardPage extends FormPage {
 						new String[] { "org.wso2.developerstudio.eclipse.distribution.project", });
 		wizardCategoryMap.put("Maven",
 		                      new String[] { "org.wso2.developerstudio.eclipse.platform.ui.mvn.wizard.MvnMultiModuleWizard", });
+		wizardCategoryMap.put("AddServer", new String[]{
+		                                				"org.eclipse.wst.server.ui.new.server",
+		                                				});
 	}
 
 	/**
@@ -209,7 +212,7 @@ public class DashboardPage extends FormPage {
 		sctnDistribution.setExpanded(true);
 
 		Section sctnMaven = managedForm.getToolkit().createSection(managedForm.getForm().getBody(),                                                           Section.TWISTIE | Section.TITLE_BAR);
-		sctnMaven.setBounds(700, 170, 300, 75);
+		sctnMaven.setBounds(700, 90, 300, 75);
 		managedForm.getToolkit().paintBordersFor(sctnMaven);
 		sctnMaven.setText("Maven");
 		Composite comMaven = managedForm.getToolkit().createComposite(sctnMaven, SWT.NONE);
@@ -221,6 +224,21 @@ public class DashboardPage extends FormPage {
 		                                                                                           32, 32));
 		createTitlelessCategory(managedForm, comMaven, "Maven", mavenImageDesc);
 		sctnMaven.setExpanded(true);
+		
+		Section sctnAddServer = managedForm.getToolkit().createSection(managedForm.getForm().getBody(), Section.TWISTIE | Section.TITLE_BAR);
+		sctnAddServer.setBounds(700, 170, 300, 75);
+		managedForm.getToolkit().paintBordersFor(sctnAddServer);
+		sctnAddServer.setText("Add Server");
+		
+		Composite comAddServer = managedForm.getToolkit().createComposite(sctnAddServer, SWT.NONE);
+		managedForm.getToolkit().paintBordersFor(comAddServer);
+		sctnAddServer.setClient(comAddServer);
+		comAddServer.setLayout(new GridLayout(1, false));
+		ImageDescriptor addServerImageDesc = ImageDescriptor.createFromImage(DashboardUtil.resizeImage(SWTResourceManager
+				.getImage(this.getClass(), "/intro/css/graphics/server.png"),
+				32, 32));
+		createTitlelessCategory(managedForm,comAddServer,"AddServer",addServerImageDesc);
+		sctnAddServer.setExpanded(true);	
 	}
 
 	private Map<String, IWizardDescriptor> getWizardDescriptors() {

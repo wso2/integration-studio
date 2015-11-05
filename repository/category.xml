@@ -18,6 +18,9 @@
    <feature id="org.wso2.developerstudio.usermgt.core.feature" version="0.0.0">
       <category name="org.wso2.developerstudio.kernel"/>
    </feature>
+   <feature id="org.wso2.developerstudio.carbon.server.feature" version="0.0.0">
+      <category name="org.wso2.developerstudio.kernel"/>
+   </feature>
    <feature id="org.wso2.developerstudio.kernel.dependencies.feature" version="0.0.0">
       <category name="org.wso2.developerstudio.kernel.dependencies"/>
    </feature>

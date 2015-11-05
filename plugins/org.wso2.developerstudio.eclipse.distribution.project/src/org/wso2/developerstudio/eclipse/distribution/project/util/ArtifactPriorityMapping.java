@@ -21,6 +21,7 @@ import java.util.Map;
 
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.wso2.developerstudio.eclipse.carbonserver.base.util.CarbonUtils;
+import org.wso2.developerstudio.eclipse.platform.core.utils.DeveloperStudioProviderUtils;
 
 public class ArtifactPriorityMapping {
 
@@ -31,8 +32,8 @@ public class ArtifactPriorityMapping {
 	public static final int DEFAULT_PRIORITY = 5;
 
 	public ArtifactPriorityMapping() {
-		CarbonUtils carbonUtils = new CarbonUtils();
-		IConfigurationElement[] registeredPriorityMappings = carbonUtils.getExtensionPointmembers(REGISTER_ARTIFACT_PRIORITY_MAPPING_EXTENSION_ID);
+		DeveloperStudioProviderUtils devStudioUtils = new DeveloperStudioProviderUtils();
+		IConfigurationElement[] registeredPriorityMappings = devStudioUtils.getExtensionPointmembers(REGISTER_ARTIFACT_PRIORITY_MAPPING_EXTENSION_ID);
 		for (IConfigurationElement priorityMapping : registeredPriorityMappings){
 			priority.put(priorityMapping.getAttribute(ARTIFACT_TYPE), Integer.valueOf(priorityMapping.getAttribute(PRIORITY2)));
 		}

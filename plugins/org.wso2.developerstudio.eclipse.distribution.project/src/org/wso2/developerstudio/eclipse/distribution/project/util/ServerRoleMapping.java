@@ -21,6 +21,7 @@ import java.util.Map;
 
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.wso2.developerstudio.eclipse.carbonserver.base.util.CarbonUtils;
+import org.wso2.developerstudio.eclipse.platform.core.utils.DeveloperStudioProviderUtils;
 
 public class ServerRoleMapping {
 	private static final String SERVER_ROLE = "serverRole";
@@ -30,8 +31,8 @@ public class ServerRoleMapping {
 	private static Map<String, String> serverRole = new HashMap<String, String>();
 
 	public ServerRoleMapping() {
-		CarbonUtils carbonUtils = new CarbonUtils();
-		IConfigurationElement[] confElems = carbonUtils
+		DeveloperStudioProviderUtils devStudioUtils = new DeveloperStudioProviderUtils();
+		IConfigurationElement[] confElems = devStudioUtils
 				.getExtensionPointmembers(REGISTER_SERVER_ROLE_EXTENSION_ID);
 
 		for (IConfigurationElement elem : confElems) {

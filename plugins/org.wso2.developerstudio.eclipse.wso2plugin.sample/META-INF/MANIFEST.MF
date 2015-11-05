@@ -26,6 +26,7 @@ Import-Package:
  org.wso2.developerstudio.eclipse.platform.core.exception,
  org.wso2.developerstudio.eclipse.platform.core.model,
  org.wso2.developerstudio.eclipse.platform.core.project.model,
+ org.wso2.developerstudio.eclipse.platform.core.utils,
  org.wso2.developerstudio.eclipse.utils.archive,
  org.wso2.developerstudio.eclipse.utils.data,
  org.wso2.developerstudio.eclipse.utils.file,

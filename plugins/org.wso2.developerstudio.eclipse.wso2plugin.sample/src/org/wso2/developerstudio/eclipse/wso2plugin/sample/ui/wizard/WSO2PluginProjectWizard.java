@@ -43,6 +43,7 @@ import org.wso2.developerstudio.eclipse.carbonserver.base.util.CarbonUtils;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.platform.core.project.model.ProjectWizardSettings;
+import org.wso2.developerstudio.eclipse.platform.core.utils.DeveloperStudioProviderUtils;
 import org.wso2.developerstudio.eclipse.platform.ui.utils.MessageDialogUtils;
 import org.wso2.developerstudio.eclipse.platform.ui.wizard.AbstractWSO2ProjectCreationWizard;
 import org.wso2.developerstudio.eclipse.platform.ui.wizard.pages.ProjectOptionsDataPage;
@@ -124,9 +125,9 @@ public class WSO2PluginProjectWizard extends AbstractWSO2ProjectCreationWizard {
 
 	public WSO2PluginSampleExtList getAvailableWSO2Plugins() {
 		WSO2PluginSampleExtList elemList = new WSO2PluginSampleExtList();
-		CarbonUtils carbonUtils = new CarbonUtils();
+		DeveloperStudioProviderUtils devStudioUtils = new DeveloperStudioProviderUtils();
 		IConfigurationElement[] elements =
-                carbonUtils.getExtensionPointmembers(WSO2PluginConstants.EXTENSION_ID);
+				devStudioUtils.getExtensionPointmembers(WSO2PluginConstants.EXTENSION_ID);
 			for (int j = 0; j < elements.length; j++) {
 				WSO2PluginSampleExt element = createWizardElement(elements[j]);
 				if (element != null) {

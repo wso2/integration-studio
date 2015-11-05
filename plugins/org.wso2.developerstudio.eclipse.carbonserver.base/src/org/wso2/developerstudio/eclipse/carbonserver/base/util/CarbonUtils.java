@@ -63,6 +63,8 @@ import org.wso2.developerstudio.eclipse.carbonserver.base.constant.CarbonConfigu
 import org.wso2.developerstudio.eclipse.carbonserver.base.interfaces.ICarbonServerModulePublisher;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
+import org.wso2.developerstudio.eclipse.platform.core.utils.DeveloperStudioProviderUtils;
+import org.wso2.developerstudio.eclipse.platform.ui.preferences.DeveloperStudioPreferencePage;
 
 public class CarbonUtils {
 	private static IDeveloperStudioLog log=Logger.getLog(Activator.PLUGIN_ID);
@@ -148,7 +150,8 @@ public class CarbonUtils {
 	
 	public void publishWebApp(ICarbonServerModulePublisher publisher, String extensionID, String webProjectPublisherID, IResource resource, int resourceChngeKind, IProject project, IServer server)
 			throws CoreException, Exception {
-		IConfigurationElement[] registeredPublishers = getExtensionPointmembers(extensionID);
+		DeveloperStudioProviderUtils developerstudioUtils = new DeveloperStudioProviderUtils();
+		IConfigurationElement[] registeredPublishers = developerstudioUtils.getExtensionPointmembers(extensionID);
 		for (IConfigurationElement registeredPublisher : registeredPublishers) {
 			if (registeredPublisher.getAttribute(ID) == webProjectPublisherID) {
 				execClassObject = registeredPublisher
@@ -177,17 +180,6 @@ public class CarbonUtils {
 			}
 		};
 		SafeRunner.run(runnable);
-	}
-	
-	/**
-	 * This method will return an array of IConfigurationElements of all the instances that extends a given extension point
-	 * @param extensionID - the id of the extension point
-	 * @return the IConfigurationElements array of data of all extended instances
-	 */
-	public IConfigurationElement[] getExtensionPointmembers(String extensionID){
-		IExtensionRegistry reg = Platform.getExtensionRegistry();
-	    IConfigurationElement[] elements = reg.getConfigurationElementsFor(extensionID);
-	    return elements;
 	}
 	
 }

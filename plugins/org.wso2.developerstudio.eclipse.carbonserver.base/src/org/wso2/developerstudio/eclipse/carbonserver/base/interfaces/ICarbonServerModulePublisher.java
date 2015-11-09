@@ -1,12 +1,12 @@
 /*
  * Copyright (c) 2010, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
- *
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -25,8 +25,12 @@ import org.eclipse.wst.server.core.IServer;
 
 public interface ICarbonServerModulePublisher {
 	public void publish(IProject project, IServer server, File serverHome, File deployLocation) throws Exception;
+
 	public void unpublish(IProject project, IServer server, File serverHome, File deployLocation) throws Exception;
+
 	public void hotUpdate(IProject project, IServer server, File serverHome, File deployLocation) throws Exception;
+
 	public void setUpdatedResource(IResource updatedResource);
+
 	public void setResourceChngeKind(int resourceChngeKind);
 }

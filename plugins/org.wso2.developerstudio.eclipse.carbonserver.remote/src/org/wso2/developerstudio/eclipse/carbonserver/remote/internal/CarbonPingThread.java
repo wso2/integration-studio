@@ -1,12 +1,12 @@
 /*
  * Copyright (c) 2010, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
- *
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -15,6 +15,7 @@
  */
 
 package org.wso2.developerstudio.eclipse.carbonserver.remote.internal;
+
 import java.io.FileNotFoundException;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -37,19 +38,19 @@ public class CarbonPingThread implements Runnable {
 	private URL url;
 
 	private RemoteCarbonServerBehavior serverBehaviour;
-	
+
 	public CarbonPingThread(URL url, RemoteCarbonServerBehavior serverBehaviour) {
 		this.url = url;
-		this.serverBehaviour=serverBehaviour;
-		
+		this.serverBehaviour = serverBehaviour;
+
 	}
-	
-	public void startPing(){
+
+	public void startPing() {
 		Thread t = new Thread(this);
 		t.setDaemon(true);
 		t.start();
 	}
-	
+
 	private void ping() {
 		int count = 0;
 		try {
@@ -61,30 +62,31 @@ public class CarbonPingThread implements Runnable {
 			try {
 				if (count == maxPings) {
 					try {
-						if (serverBehaviour.isServerStarting()){
+						if (serverBehaviour.isServerStarting()) {
 							serverBehaviour.setServerStopped();
 						}
-					} catch (Exception e) {}
-				}else{
+					} catch (Exception e) {
+					}
+				} else {
 					count++;
 				}
 				URL pingUrl = url;
 				URLConnection conn = pingUrl.openConnection();
-				
+
 				int responseCode;
-                try {
-                    responseCode = ((HttpsURLConnection)conn).getResponseCode();
-                } catch (Exception e) {
-                	((HttpURLConnection)conn).disconnect();
-                	if (serverBehaviour.isServerStarted()){
+				try {
+					responseCode = ((HttpsURLConnection) conn).getResponseCode();
+				} catch (Exception e) {
+					((HttpURLConnection) conn).disconnect();
+					if (serverBehaviour.isServerStarted()) {
 						serverBehaviour.setServerStopped();
 					}
 					Thread.sleep(2000);
-                    continue;
-                }
-				if (responseCode!=200 && responseCode!=302){
+					continue;
+				}
+				if (responseCode != 200 && responseCode != 302) {
 					Thread.sleep(2000);
-					if (serverBehaviour.isServerStarted()){
+					if (serverBehaviour.isServerStarted()) {
 						serverBehaviour.setServerStopped();
 					}
 					continue;
@@ -94,7 +96,7 @@ public class CarbonPingThread implements Runnable {
 					Thread.sleep(2000);
 					serverBehaviour.setServerStarted();
 				}
-//				stop = true;
+				// stop = true;
 			} catch (FileNotFoundException fe) {
 				try {
 					Thread.sleep(PING_INTERVAL);
@@ -102,7 +104,7 @@ public class CarbonPingThread implements Runnable {
 					// ignore
 				}
 				serverBehaviour.setServerStarted();
-//				stop = true;
+				// stop = true;
 			} catch (Exception e) {
 				// pinging failed
 				if (!stop) {
@@ -114,11 +116,11 @@ public class CarbonPingThread implements Runnable {
 				}
 			}
 		}
-		if (serverBehaviour.isServerStarting()){
+		if (serverBehaviour.isServerStarting()) {
 			serverBehaviour.setServerStopped();
 		}
 	}
-	
+
 	/**
 	 * Tell the pinging to stop.
 	 */

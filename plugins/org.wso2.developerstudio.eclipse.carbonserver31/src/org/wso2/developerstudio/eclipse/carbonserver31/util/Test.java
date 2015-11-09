@@ -9,8 +9,8 @@ public class Test {
 
 	public static void main(String[] args) throws XPathExpressionException {
 		XPathFactory factory = XPathFactory.newInstance();
-    	XPath xPath=factory.newXPath();
-    	XPathExpression xPathExpression=xPath.compile("/transports/transport[name='http']/parameter[@name='port']");
-    	int a=10;
+		XPath xPath = factory.newXPath();
+		XPathExpression xPathExpression = xPath.compile("/transports/transport[name='http']/parameter[@name='port']");
+		int a = 10;
 	}
 }

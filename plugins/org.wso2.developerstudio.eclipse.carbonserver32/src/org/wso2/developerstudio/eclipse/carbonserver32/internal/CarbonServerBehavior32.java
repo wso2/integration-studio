@@ -1,12 +1,12 @@
 /*
  * Copyright (c) 2010, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
- *
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -57,241 +57,243 @@ import org.wso2.developerstudio.eclipse.carbonserver.base.service.util.CarbonUpl
 import org.wso2.developerstudio.eclipse.carbonserver32.operations.CommonOperations;
 import org.wso2.developerstudio.eclipse.carbonserver32.util.CarbonServer32Utils;
 import org.wso2.developerstudio.eclipse.carbonserver32.util.CarbonServerConstants;
+import org.wso2.developerstudio.eclipse.carbonserver32.Activator;
+import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
+import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.server.base.core.ServerController;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
-public class CarbonServerBehavior32 extends CarbonServerBehaviour{
-    private void checkClosed(IModule[] module) throws CoreException
-    {
-    	for( int i=0; i < module.length; i++ ){
-    		if( module[i] instanceof DeletedModule ){	
-                IStatus status = new Status(IStatus.ERROR,CorePlugin.PLUGIN_ID,0, NLS.bind(GenericServerCoreMessages.canNotPublishDeletedModule,module[i].getName()),null);
-                throw new CoreException(status);
-    		}
-    	}
-    }
-    public void publishModule(int kind, int deltaKind, IModule[] module,
-            IProgressMonitor monitor) throws CoreException {
-    	IModule m = module[module.length - 1];
-    	if(deltaKind == ADDED){
-    		checkClosed(module);
-    		ServerController.getInstance().getServerManager().publishServiceModule(getServer().getId(), "",m.getName());
-    	}else if(deltaKind == REMOVED){
-    		ServerController.getInstance().getServerManager().unpublishServiceModule(getServer().getId(), "",m.getName());
-        }else{
-    		checkClosed(module);
-//    		To add any new services
-//    		ServerController.getInstance().getServerManager().publishServiceModule(getServer().getId(), "",m.getName());
-    		ServerController.getInstance().getServerManager().hotUpdateServiceModule(getServer().getId(), "",m.getName());
-    	}
-        setModulePublishState( module, null );
-    }
-    private void setModulePublishState( IModule[] module, IStatus[] status ) throws CoreException {
-        if( module==null )
-            return;
-        for( int i=0; i < module.length; i++)
-        {
-            if(status == null ||
-                    status.length < i ||
-                    status[i]==null || 
-                    status[i].getSeverity() == IStatus.OK )
-            {
-            setModulePublishState(module, IServer.PUBLISH_STATE_NONE);    
-            }
-            else
-            {
-                if ( IStatus.ERROR == status[i].getSeverity() ){
-                    setModulePublishState( module, IServer.PUBLISH_STATE_UNKNOWN );
-                    throw new CoreException( status[i] );
-                }
-            }
-        }
-    }
-    
-    protected void doServerStartedTasks(){
-    	super.doServerStartedTasks();
- 		doBrowserPopup();
-    }
-    
-    protected void doServerStoppedTasks(){
-    }
-    
-    private void doBrowserPopup(){
-    	Boolean popupBrowser = CarbonServer32Utils.isServerStartBrowserPopup(getServer());
-    	if (popupBrowser!=null && popupBrowser){
-    		CarbonUploadServiceRequestUtil uoloadServiceRequestUtil = CarbonUploadServiceRequestUtil.getInstance();
-    		uoloadServiceRequestUtil.popupExternalBrowser(CommonOperations.getLocalServerPort(getServer())+ CarbonServer32Utils.getWebContextRoot(getServer()) + "/carbon");
-    		//uoloadServiceRequestUtil.popupInternalBrowser(CommonOperations.getLocalServerPort(getServer())+"/carbon");
-    	}
-    		
-    }
-    
-    protected String getVmArguments() {
-    	String vmArguments = super.getVmArguments();
-    	Boolean enableOSGIConsole=CarbonServer32Utils.isServerStartWithOSGiConsole(getServer());
-//    	String serverLocalWorkspacePath = WSASServerManager.getServerLocalWorkspacePath(getServer());
-//    	IPath serverHome = WSASServerManager.getServerHome(getServer());
-//    	vmArguments=vmArguments+" -Dcarbon.home=\""+serverHome.toOSString()+"\"";
-    	if (enableOSGIConsole!=null && enableOSGIConsole){
-    		vmArguments=vmArguments+" -DosgiConsole";
-    	}
-        return vmArguments;
-    }
-    
-    protected String[] getPingURLList()
-    {
-    	try {
-    		setServerisStillStarting(true);
-    		String url = "http://"+getServer().getHost();
-    		List<String> urls=new ArrayList<String>();
-    	  	ServerPort[] ports=getServerPorts(getServer());
-        	ServerPort sp = null;
-        	int port=0;
-        	int offSet=0;
-        	
-    	    for(int i=0;i<ports.length;i++){
-    	    	int j = CarbonServerConstants.PORT_CAPTIONS.indexOf(ports[i].getName());
-    	    	if(j!=-1 && CarbonServerConstants.PORT_IDS.get(j).equals("carbon.http")){
-    	    		sp=ports[i];
-    	        	port = sp.getPort();
-    	    	}else if(j!=-1 && CarbonServerConstants.PORT_IDS.get(j).equals("carbon.offset")){
-    	    		sp=ports[i];
-    	        	offSet = sp.getPort();
-    	    	} 
-    	    }
-    	    
-    	    String newUrl = url;
-    	    if (port != 80){
-    	    	newUrl = newUrl + ":" + (port+offSet); //$NON-NLS-1$
-    	    }
-    	    newUrl=newUrl + CarbonServer32Utils.getWebContextRoot(getServer()) + "/carbon";
-    	    urls.add(newUrl);
-    	    
-    		return urls.toArray(new String[]{});
-    	} catch (Exception e) {
-    		Trace.trace(Trace.SEVERE, "Can't ping for server startup."); 
-    	}  	
-    	return null;
-    }
-    
-    protected List getStartClasspath() {
-    	List startClasspath = super.getStartClasspath();
-        GenericServerRuntime runtime = getRuntimeDelegate();
+public class CarbonServerBehavior32 extends CarbonServerBehaviour {
 
-        IVMInstall vmInstall = runtime.getVMInstall();
-    	File jdkLib = new File(vmInstall.getInstallLocation(),"lib");
-    	
-    	if (jdkLib.exists() && jdkLib.isDirectory()) {
-	        for (String cpath : jdkLib.list()) {
-		        Path newCPath = new Path(new File(jdkLib, cpath).toString());
-		        String fileExtension = newCPath.getFileExtension();
-		        if (fileExtension != null && fileExtension.equalsIgnoreCase("jar"))
-			        startClasspath.add(JavaRuntime.newArchiveRuntimeClasspathEntry(newCPath));
-	        }
-        }
+	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
+
+	private void checkClosed(IModule[] module) throws CoreException {
+		for (int i = 0; i < module.length; i++) {
+			if (module[i] instanceof DeletedModule) {
+				IStatus status =
+				                 new Status(IStatus.ERROR, CorePlugin.PLUGIN_ID, 0,
+				                            NLS.bind(GenericServerCoreMessages.canNotPublishDeletedModule,
+				                                     module[i].getName()), null);
+				throw new CoreException(status);
+			}
+		}
+	}
+
+	public void publishModule(int kind, int deltaKind, IModule[] module, IProgressMonitor monitor) throws CoreException {
+		IModule m = module[module.length - 1];
+		if (deltaKind == ADDED) {
+			checkClosed(module);
+			ServerController.getInstance().getServerManager()
+			                .publishServiceModule(getServer().getId(), "", m.getName());
+		} else if (deltaKind == REMOVED) {
+			ServerController.getInstance().getServerManager()
+			                .unpublishServiceModule(getServer().getId(), "", m.getName());
+		} else {
+			checkClosed(module);
+			// To add any new services
+			ServerController.getInstance().getServerManager()
+			                .hotUpdateServiceModule(getServer().getId(), "", m.getName());
+		}
+		setModulePublishState(module, null);
+	}
+
+	private void setModulePublishState(IModule[] module, IStatus[] status) throws CoreException {
+		if (module == null)
+			return;
+		for (int i = 0; i < module.length; i++) {
+			if (status == null || status.length < i || status[i] == null || status[i].getSeverity() == IStatus.OK) {
+				setModulePublishState(module, IServer.PUBLISH_STATE_NONE);
+			} else {
+				if (IStatus.ERROR == status[i].getSeverity()) {
+					setModulePublishState(module, IServer.PUBLISH_STATE_UNKNOWN);
+					throw new CoreException(status[i]);
+				}
+			}
+		}
+	}
+
+	protected void doServerStartedTasks() {
+		super.doServerStartedTasks();
+		doBrowserPopup();
+	}
+
+	protected void doServerStoppedTasks() {
+	}
+
+	private void doBrowserPopup() {
+		Boolean popupBrowser = CarbonServer32Utils.isServerStartBrowserPopup(getServer());
+		if (popupBrowser != null && popupBrowser) {
+			CarbonUploadServiceRequestUtil uoloadServiceRequestUtil = CarbonUploadServiceRequestUtil.getInstance();
+			uoloadServiceRequestUtil.popupExternalBrowser(CommonOperations.getLocalServerPort(getServer()) +
+			                                              CarbonServer32Utils.getWebContextRoot(getServer()) +
+			                                              "/carbon");
+		}
+
+	}
+
+	protected String getVmArguments() {
+		String vmArguments = super.getVmArguments();
+		Boolean enableOSGIConsole = CarbonServer32Utils.isServerStartWithOSGiConsole(getServer());
+		if (enableOSGIConsole != null && enableOSGIConsole) {
+			vmArguments = vmArguments + " -DosgiConsole";
+		}
+		return vmArguments;
+	}
+
+	protected String[] getPingURLList() {
+		try {
+			setServerisStillStarting(true);
+			String url = "http://" + getServer().getHost();
+			List<String> urls = new ArrayList<String>();
+			ServerPort[] ports = getServerPorts(getServer());
+			ServerPort sp = null;
+			int port = 0;
+			int offSet = 0;
+
+			for (int i = 0; i < ports.length; i++) {
+				int j = CarbonServerConstants.PORT_CAPTIONS.indexOf(ports[i].getName());
+				if (j != -1 && CarbonServerConstants.PORT_IDS.get(j).equals("carbon.http")) {
+					sp = ports[i];
+					port = sp.getPort();
+				} else if (j != -1 && CarbonServerConstants.PORT_IDS.get(j).equals("carbon.offset")) {
+					sp = ports[i];
+					offSet = sp.getPort();
+				}
+			}
+
+			String newUrl = url;
+			if (port != 80) {
+				newUrl = newUrl + ":" + (port + offSet); //$NON-NLS-1$
+			}
+			newUrl = newUrl + CarbonServer32Utils.getWebContextRoot(getServer()) + "/carbon";
+			urls.add(newUrl);
+
+			return urls.toArray(new String[] {});
+		} catch (Exception e) {
+			Trace.trace(Trace.SEVERE, "Can't ping for server startup.");
+		}
+		return null;
+	}
+
+	protected List getStartClasspath() {
+		List startClasspath = super.getStartClasspath();
+		GenericServerRuntime runtime = getRuntimeDelegate();
+
+		IVMInstall vmInstall = runtime.getVMInstall();
+		File jdkLib = new File(vmInstall.getInstallLocation(), "lib");
+
+		if (jdkLib.exists() && jdkLib.isDirectory()) {
+			for (String cpath : jdkLib.list()) {
+				Path newCPath = new Path(new File(jdkLib, cpath).toString());
+				String fileExtension = newCPath.getFileExtension();
+				if (fileExtension != null && fileExtension.equalsIgnoreCase("jar"))
+					startClasspath.add(JavaRuntime.newArchiveRuntimeClasspathEntry(newCPath));
+			}
+		}
 		return startClasspath;
-    }
-    
+	}
+
 	protected String getCarbonXmlFilePath() {
 		IPath serverHome = CarbonServerManager.getServerHome(getServer());
-    	return CarbonServer32Utils.getServerXmlPathFromLocalWorkspaceRepo(serverHome.toOSString());
+		return CarbonServer32Utils.getServerXmlPathFromLocalWorkspaceRepo(serverHome.toOSString());
 	}
+
 	protected String getTransportXmlFilePath() {
 		IPath serverHome = CarbonServerManager.getServerHome(getServer());
-    	String transportsXmlPath = CarbonServer32Utils.getTransportsXmlPathFromLocalWorkspaceRepo(serverHome.toOSString());
+		String transportsXmlPath =
+		                           CarbonServer32Utils.getTransportsXmlPathFromLocalWorkspaceRepo(serverHome.toOSString());
 		return transportsXmlPath;
 	}
+
 	protected String getAxis2FilePath() {
 		return CarbonServer32Utils.getAxis2FilePath(getServer());
 	}
-	
+
 	protected Integer[] getAllPortsServerWillUse(IServer server) {
-		List<Integer> ports=new ArrayList<Integer>();
-    	
-    	String axis2FilePath = getAxis2FilePath();
-    	String transportsXmlPath = getTransportXmlFilePath();
-    	String carbonXmlPath = getCarbonXmlFilePath();
-    	
-//		addServletTransportsPorts(ports, transportsXmlPath);
-    	addServletTransportPorts(ports, carbonXmlPath);
+		List<Integer> ports = new ArrayList<Integer>();
+
+		String axis2FilePath = getAxis2FilePath();
+		String transportsXmlPath = getTransportXmlFilePath();
+		String carbonXmlPath = getCarbonXmlFilePath();
+
+		addServletTransportPorts(ports, carbonXmlPath);
 		addAxis2XmlPorts(ports, axis2FilePath);
-		
-		return ports.toArray(new Integer[]{});
+
+		return ports.toArray(new Integer[] {});
 	}
-	
+
 	protected void addServletTransportPorts(List<Integer> ports, String carbonXmlPath) {
-		int port=0;
+		int port = 0;
 		XPathFactory factory = XPathFactory.newInstance();
-		NamespaceContext cntx =  CarbonServer32Utils.getCarbonNamespace();
+		NamespaceContext cntx = CarbonServer32Utils.getCarbonNamespace();
 		File xmlDocument = new File(carbonXmlPath);
-    	try {
-			InputSource inputSource =  new InputSource(new FileInputStream(xmlDocument));
+		try {
+			InputSource inputSource = new InputSource(new FileInputStream(xmlDocument));
 			DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
-            Document document = builder.parse(xmlDocument);
-			XPath xPath=factory.newXPath();
+			Document document = builder.parse(xmlDocument);
+			XPath xPath = factory.newXPath();
 			xPath.setNamespaceContext(cntx);
-			
-			int offSet = Integer.parseInt((String)xPath.evaluate("/Server/Ports/Offset", document, XPathConstants.STRING));
-//			XPathExpression  xPathExpression=xPath.compile("/:Server/:Ports/:ServletTransports/:HTTPS");
-//			String evaluate = xPathExpression.evaluate(inputSource);
-			String evaluate = (String)xPath.evaluate("/Server/Ports/ServletTransports/HTTPS", document, XPathConstants.STRING);
-			
-			if(!evaluate.equals("")){
-				port = Integer.parseInt(evaluate)+offSet;
-			}else{
+
+			int offSet =
+			             Integer.parseInt((String) xPath.evaluate("/Server/Ports/Offset", document,
+			                                                      XPathConstants.STRING));
+			String evaluate =
+			                  (String) xPath.evaluate("/Server/Ports/ServletTransports/HTTPS", document,
+			                                          XPathConstants.STRING);
+
+			if (!evaluate.equals("")) {
+				port = Integer.parseInt(evaluate) + offSet;
+			} else {
 				port = getPortfromTransportXML("https");
 			}
 			ports.add(port);
-			inputSource =  new InputSource(new FileInputStream(xmlDocument));
+			inputSource = new InputSource(new FileInputStream(xmlDocument));
 			evaluate = (String) xPath.evaluate("/Server/Ports/ServletTransports/HTTP", document, XPathConstants.STRING);
 
-//			xPathExpression=xPath.compile("/:Server/:Ports/:ServletTransports/:HTTP");
-//			evaluate = xPathExpression.evaluate(inputSource);
-			if(!evaluate.equals("")){
-				port = Integer.parseInt(evaluate)+offSet;
-			}else{
+			if (!evaluate.equals("")) {
+				port = Integer.parseInt(evaluate) + offSet;
+			} else {
 				port = getPortfromTransportXML("http");
 			}
 			ports.add(port);
-			
+
 		} catch (NumberFormatException e) {
-			e.printStackTrace();
+			log.error(e);
 		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+			log.error(e);
 		} catch (XPathExpressionException e) {
-			e.printStackTrace();
+			log.error(e);
 		} catch (ParserConfigurationException e) {
-			e.printStackTrace();
+			log.error(e);
 		} catch (SAXException e) {
-			e.printStackTrace();
+			log.error(e);
 		} catch (IOException e) {
-			e.printStackTrace();
+			log.error(e);
 		}
 	}
-	
-	private int getPortfromTransportXML(String protocolType){
+
+	private int getPortfromTransportXML(String protocolType) {
 		int port = 0;
 		String transportsXmlPath = getTransportXmlFilePath();
 		XPathFactory factory = XPathFactory.newInstance();
 		File xmlDocument = new File(transportsXmlPath);
-    	try {
-			InputSource inputSource =  new InputSource(new FileInputStream(xmlDocument));
-			XPath xPath=factory.newXPath();
-			XPathExpression  xPathExpression=xPath.compile("/transports/transport[@name='" + protocolType + "']/parameter[@name='port']");
+		try {
+			InputSource inputSource = new InputSource(new FileInputStream(xmlDocument));
+			XPath xPath = factory.newXPath();
+			XPathExpression xPathExpression =
+			                                  xPath.compile("/transports/transport[@name='" + protocolType +
+			                                                "']/parameter[@name='port']");
 			String evaluate = xPathExpression.evaluate(inputSource);
 			port = Integer.parseInt(evaluate);
 		} catch (NumberFormatException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			log.error(e);
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			log.error(e);
 		} catch (XPathExpressionException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			log.error(e);
 		}
 		return port;
-		
+
 	}
 }

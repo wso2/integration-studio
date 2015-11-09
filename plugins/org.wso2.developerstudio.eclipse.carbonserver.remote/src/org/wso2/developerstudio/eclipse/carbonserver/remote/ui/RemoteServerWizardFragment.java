@@ -18,9 +18,9 @@ import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
 public class RemoteServerWizardFragment extends WizardFragment {
-	
+
 	private RemoteWizardFragmentCompositie comp;
-	private static IDeveloperStudioLog log=Logger.getLog(Activator.PLUGIN_ID);
+	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
 	/**
 	 * Create a new fragment.
@@ -40,7 +40,7 @@ public class RemoteServerWizardFragment extends WizardFragment {
 	 * @see WizardFragment#createComposite(Composite, IWizardHandle)
 	 */
 	public Composite createComposite(Composite parent, IWizardHandle wizard) {
-		comp = new RemoteWizardFragmentCompositie(parent, SWT.FILL,wizard);
+		comp = new RemoteWizardFragmentCompositie(parent, SWT.FILL, wizard);
 		wizard.setDescription("Carbon remote server details");
 		wizard.setTitle("Remote Carbon Server");
 		return comp;
@@ -61,26 +61,26 @@ public class RemoteServerWizardFragment extends WizardFragment {
 			comp.setRuntime(getTaskModel().getObject(TaskModel.TASK_SERVER));
 		}
 	}
-	
-    public void performFinish(IProgressMonitor monitor) throws CoreException {
-    	/*
-    	 * Focus Server view after clicking the Finish button. 
-    	 */
-    	Display.getDefault().asyncExec(new Runnable() {
-    	    public void run() {
-    	    	try {
-    	    		IWorkbenchWindow[] workbenchWindows = PlatformUI.getWorkbench().getWorkbenchWindows();
-    	    		if(workbenchWindows.length>0){
-    	    			IWorkbenchPage[] pages = workbenchWindows[0].getPages();
-    	    			if(pages.length>0){
-    	    				pages[0].showView("org.eclipse.wst.server.ui.ServersView");
-    	    			}
-    	    		}
+
+	public void performFinish(IProgressMonitor monitor) throws CoreException {
+		/*
+		 * Focus Server view after clicking the Finish button.
+		 */
+		Display.getDefault().asyncExec(new Runnable() {
+			public void run() {
+				try {
+					IWorkbenchWindow[] workbenchWindows = PlatformUI.getWorkbench().getWorkbenchWindows();
+					if (workbenchWindows.length > 0) {
+						IWorkbenchPage[] pages = workbenchWindows[0].getPages();
+						if (pages.length > 0) {
+							pages[0].showView("org.eclipse.wst.server.ui.ServersView");
+						}
+					}
 				} catch (PartInitException e) {
 					log.error("Error while opening Server view", e);
 				}
-    	    }
-    	});
-    	super.performFinish(monitor);
-    }
+			}
+		});
+		super.performFinish(monitor);
+	}
 }

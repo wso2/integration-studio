@@ -32,66 +32,72 @@ import org.wso2.developerstudio.eclipse.platform.ui.preferences.ClientTrustStore
 import org.wso2.developerstudio.eclipse.platform.ui.utils.SSLUtils;
 
 public class CAppDeployer {
-	
-	private static IDeveloperStudioLog log=Logger.getLog(Activator.PLUGIN_ID);
+
+	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 	private static IPreferencesService preferenceStore;
-	
+
 	/**
-	 * This method is used to upload car files in to your carbon server instances and to a tanent in the cloud platform.
-	 * @param username Username to access your server/tanent
-	 * @param pwd Password to access your server/tanent
-	 * @param url URL of the server/tanent
-	 * @param carFile File reference to the actual Car File.
+	 * This method is used to upload car files in to your carbon server
+	 * instances and to a tanent in the cloud platform.
+	 * 
+	 * @param username
+	 *            Username to access your server/tanent
+	 * @param pwd
+	 *            Password to access your server/tanent
+	 * @param url
+	 *            URL of the server/tanent
+	 * @param carFile
+	 *            File reference to the actual Car File.
 	 * @throws Exception
 	 */
-	public void deployCApp(String username, String pwd, String url, File carFile) throws Exception{
+	public void deployCApp(String username, String pwd, String url, File carFile) throws Exception {
 		CarbonAppUploaderStub carbonAppUploaderStub = getCarbonAppUploaderStub(username, pwd, url);
 		Options options = carbonAppUploaderStub._getServiceClient().getOptions();
 		options.setProperty(Constants.Configuration.ENABLE_MTOM, Constants.VALUE_TRUE);
 		UploadedFileItem uploadedFileItem = new UploadedFileItem();
-		DataHandler param=new DataHandler(carFile.toURI().toURL());
+		DataHandler param = new DataHandler(carFile.toURI().toURL());
 		uploadedFileItem.setDataHandler(param);
 		uploadedFileItem.setFileName(carFile.getName());
 		uploadedFileItem.setFileType("jar");
-		UploadedFileItem[] fileItems=new UploadedFileItem[]{uploadedFileItem};
+		UploadedFileItem[] fileItems = new UploadedFileItem[] { uploadedFileItem };
 		carbonAppUploaderStub.uploadApp(fileItems);
 	}
 
-	private CarbonAppUploaderStub getCarbonAppUploaderStub(String username,
-			String pwd, String url) throws Exception, AxisFault,
-			MalformedURLException {
+	private CarbonAppUploaderStub getCarbonAppUploaderStub(String username, String pwd, String url) throws Exception,
+	                                                                                               AxisFault,
+	                                                                                               MalformedURLException {
 		String sessionCookie = CarbonServerUtils.createSessionCookie(url, username, pwd);
-		CarbonAppUploaderStub carbonAppUploaderStub = new CarbonAppUploaderStub(CarbonServerUtils.getURL(url) + "/"+CarbonServerUtils.getServicePath()+"/CarbonAppUploader");
+		CarbonAppUploaderStub carbonAppUploaderStub =
+		                                              new CarbonAppUploaderStub(CarbonServerUtils.getURL(url) + "/" +
+		                                                                        CarbonServerUtils.getServicePath() +
+		                                                                        "/CarbonAppUploader");
 		SSLUtils.setSSLProtocolHandler(carbonAppUploaderStub);
 		carbonAppUploaderStub._getServiceClient().getOptions().setManageSession(true);
 		carbonAppUploaderStub._getServiceClient().getOptions().setProperty(HTTPConstants.COOKIE_STRING, sessionCookie);
 		return carbonAppUploaderStub;
 	}
-	
+
 	static {
 		preferenceStore = Platform.getPreferencesService();
-		
-		String clientTrustStoreLocation = preferenceStore
-				.getString("org.wso2.developerstudio.eclipse.platform.ui",
-						ClientTrustStorePreferencePage.TRUST_STORE_LOCATION,
-						null, null);
-		String clientTrustStoreType = preferenceStore.getString(
-				"org.wso2.developerstudio.eclipse.platform.ui",
-				ClientTrustStorePreferencePage.TRUST_STORE_TYPE, null, null);
-		String clientTrustStorePassword = preferenceStore
-				.getString("org.wso2.developerstudio.eclipse.platform.ui",
-						ClientTrustStorePreferencePage.TRUST_STORE_PASSWORD,
-						null, null);
+
+		String clientTrustStoreLocation =
+		                                  preferenceStore.getString("org.wso2.developerstudio.eclipse.platform.ui",
+		                                                            ClientTrustStorePreferencePage.TRUST_STORE_LOCATION,
+		                                                            null, null);
+		String clientTrustStoreType =
+		                              preferenceStore.getString("org.wso2.developerstudio.eclipse.platform.ui",
+		                                                        ClientTrustStorePreferencePage.TRUST_STORE_TYPE, null,
+		                                                        null);
+		String clientTrustStorePassword =
+		                                  preferenceStore.getString("org.wso2.developerstudio.eclipse.platform.ui",
+		                                                            ClientTrustStorePreferencePage.TRUST_STORE_PASSWORD,
+		                                                            null, null);
 
 		System.setProperty("javax.net.ssl.trustStoreType", "JKS");
-		if (clientTrustStoreLocation != null
-				&& clientTrustStorePassword != null
-				&& clientTrustStoreLocation.endsWith(".jks")
-				&& !clientTrustStorePassword.equals("")) {
-			System.setProperty("javax.net.ssl.trustStore",
-					clientTrustStoreLocation);
-			System.setProperty("javax.net.ssl.trustStorePassword",
-					clientTrustStorePassword);
+		if (clientTrustStoreLocation != null && clientTrustStorePassword != null &&
+		    clientTrustStoreLocation.endsWith(".jks") && !clientTrustStorePassword.equals("")) {
+			System.setProperty("javax.net.ssl.trustStore", clientTrustStoreLocation);
+			System.setProperty("javax.net.ssl.trustStorePassword", clientTrustStorePassword);
 		} else {
 			System.setProperty("javax.net.ssl.trustStore", getJKSPath());
 			System.setProperty("javax.net.ssl.trustStorePassword", "wso2carbon");
@@ -99,23 +105,17 @@ public class CAppDeployer {
 	}
 
 	private static String getJKSPath() {
-		extractFilesToLocation("resources/security",
-				new File(getMetaDataPath()));
-		String path = getMetaDataPath() + File.separator + "security"
-				+ File.separator + "wso2carbon.jks";
+		extractFilesToLocation("resources/security", new File(getMetaDataPath()));
+		String path = getMetaDataPath() + File.separator + "security" + File.separator + "wso2carbon.jks";
 		return path;
 	}
 
-	public static void extractFilesToLocation(String resourcePath,
-			File destination) {
-		URL resource = Activator.getDefault().getBundle().getResource(
-				resourcePath);
+	public static void extractFilesToLocation(String resourcePath, File destination) {
+		URL resource = Activator.getDefault().getBundle().getResource(resourcePath);
 		if (isResourceFolder(resource)) {
-			Enumeration confFolder = Activator.getDefault().getBundle()
-					.getEntryPaths(resourcePath);
+			Enumeration confFolder = Activator.getDefault().getBundle().getEntryPaths(resourcePath);
 			String[] filePath = resource.getFile().split("/");
-			File newDestinationPath = new File(destination,
-					filePath[filePath.length - 1]);
+			File newDestinationPath = new File(destination, filePath[filePath.length - 1]);
 			newDestinationPath.mkdirs();
 			while (confFolder != null && confFolder.hasMoreElements()) {
 				String newResourcefile = confFolder.nextElement().toString();
@@ -126,7 +126,7 @@ public class CAppDeployer {
 			copyResourceToDestination(resource, destination);
 		}
 	}
-	
+
 	private static boolean isResourceFolder(URL url) {
 		boolean result = true;
 		try {
@@ -139,11 +139,10 @@ public class CAppDeployer {
 		}
 		return result;
 	}
-	
+
 	private static void copyResourceToDestination(URL url, File destination) {
 		String[] filePath = url.getFile().split("/");
-		File destinationFile = new File(destination,
-				filePath[filePath.length - 1]);
+		File destinationFile = new File(destination, filePath[filePath.length - 1]);
 
 		InputStream confOpenStream;
 		try {
@@ -171,29 +170,39 @@ public class CAppDeployer {
 		String metadataPath = location.toOSString() + File.separator + ".metadata";
 		return metadataPath;
 	}
-	
+
 	/**
-	 * This method is used to remove car files from your carbon server instances and from tanent in the cloud platform.
-	 * @param serverURL Server instance URI or the tanent url
-	 * @param username Username
-	 * @param pwd Password
-	 * @param carName Car file name without extension.
+	 * This method is used to remove car files from your carbon server instances
+	 * and from tanent in the cloud platform.
+	 * 
+	 * @param serverURL
+	 *            Server instance URI or the tanent url
+	 * @param username
+	 *            Username
+	 * @param pwd
+	 *            Password
+	 * @param carName
+	 *            Car file name without extension.
 	 * @throws Exception
 	 */
-	public static void unDeployCAR(String serverURL, String username, String pwd, String carName) throws Exception{
+	public static void unDeployCAR(String serverURL, String username, String pwd, String carName) throws Exception {
 		ApplicationAdminStub appAdminStub = getApplicationAdminStub(serverURL, username, pwd);
-		try{
-            appAdminStub.deleteApplication(carName);
-        }catch(Exception e){
-        	log.error(e);
-        }
+		try {
+			appAdminStub.deleteApplication(carName);
+		} catch (Exception e) {
+			log.error(e);
+		}
 	}
 
-	private static ApplicationAdminStub getApplicationAdminStub(
-			String serverURL, String username, String pwd) throws Exception,
-			AxisFault, MalformedURLException {
+	private static ApplicationAdminStub getApplicationAdminStub(String serverURL, String username, String pwd)
+	                                                                                                          throws Exception,
+	                                                                                                          AxisFault,
+	                                                                                                          MalformedURLException {
 		String sessionCookie = CarbonServerUtils.createSessionCookie(serverURL, username, pwd);
-		ApplicationAdminStub appAdminStub = new ApplicationAdminStub(CarbonServerUtils.getURL(serverURL) + "/"+CarbonServerUtils.getServicePath()+"/ApplicationAdmin");
+		ApplicationAdminStub appAdminStub =
+		                                    new ApplicationAdminStub(CarbonServerUtils.getURL(serverURL) + "/" +
+		                                                             CarbonServerUtils.getServicePath() +
+		                                                             "/ApplicationAdmin");
 		SSLUtils.setSSLProtocolHandler(appAdminStub);
 		appAdminStub._getServiceClient().getOptions().setManageSession(true);
 		appAdminStub._getServiceClient().getOptions().setProperty(HTTPConstants.COOKIE_STRING, sessionCookie);

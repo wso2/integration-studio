@@ -37,8 +37,8 @@ public class ServerModuleEnablementPropertyTester extends PropertyTester {
 			IModule[] modules = (IModule[]) ((IServerModule) arg0).getModule();
 			for (IModule iModule : modules) {
 				String moduleType = iModule.getModuleType().getId();
-				if (WSO2_CARBON_MODULE.equals(moduleType)
-						&& ((IServerModule) arg0).getServer().getServerState() == IServer.STATE_STARTED) {
+				if (WSO2_CARBON_MODULE.equals(moduleType) &&
+				    ((IServerModule) arg0).getServer().getServerState() == IServer.STATE_STARTED) {
 					return true;
 				}
 			}

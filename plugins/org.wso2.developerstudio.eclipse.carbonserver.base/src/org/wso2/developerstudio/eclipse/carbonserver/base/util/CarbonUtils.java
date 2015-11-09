@@ -1,12 +1,12 @@
 /*
  * Copyright 2005,2006 WSO2, Inc. http://www.wso2.org
- *
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
+ * 
  * http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -15,13 +15,13 @@
  */
 /*
  * Copyright (c) 2010, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
- *
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -67,7 +67,7 @@ import org.wso2.developerstudio.eclipse.platform.core.utils.DeveloperStudioProvi
 import org.wso2.developerstudio.eclipse.platform.ui.preferences.DeveloperStudioPreferencePage;
 
 public class CarbonUtils {
-	private static IDeveloperStudioLog log=Logger.getLog(Activator.PLUGIN_ID);
+	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 	Object execClassObject;
 	String ID = "id";
 
@@ -81,7 +81,7 @@ public class CarbonUtils {
 		}
 		return hostName;
 	}
-	
+
 	public static String getIpAddress() {
 		String hostAddress = null;
 		try {
@@ -92,79 +92,63 @@ public class CarbonUtils {
 		}
 		return hostAddress;
 	}
-	
-	
+
 	public static String getWSASHTTPSAddress() {
-		String  wsasHTTPSAddress = null;
-		wsasHTTPSAddress = CarbonConfigurationConstant.HTTPS_PREFIX + 
-							getIpAddress()+":"+
-							CarbonConfigurationConstant.WSO2WSAS_HTTPS_PORT;
+		String wsasHTTPSAddress = null;
+		wsasHTTPSAddress =
+		                   CarbonConfigurationConstant.HTTPS_PREFIX + getIpAddress() + ":" +
+		                           CarbonConfigurationConstant.WSO2WSAS_HTTPS_PORT;
 		return wsasHTTPSAddress;
 	}
-	
+
 	public static String getWSASHTTPAddress() {
-		String  wsasHTTPAddress = null;
-		wsasHTTPAddress = CarbonConfigurationConstant.HTTP_PREFIX + 
-							getIpAddress()+":"+
-							CarbonConfigurationConstant.WSO2WSAS_HTTP_PORT;
+		String wsasHTTPAddress = null;
+		wsasHTTPAddress =
+		                  CarbonConfigurationConstant.HTTP_PREFIX + getIpAddress() + ":" +
+		                          CarbonConfigurationConstant.WSO2WSAS_HTTP_PORT;
 		return wsasHTTPAddress;
 	}
 
-//	private static Document getXmlDocument(String filename){
-//		DocumentBuilderFactory docBuilderFactory = DocumentBuilderFactory.newInstance();
-//		DocumentBuilder docBuilder;
-//		try {
-//			docBuilder = docBuilderFactory.newDocumentBuilder();
-//			Document doc = docBuilder.parse (new File(filename));
-//			return doc;
-//		} catch (ParserConfigurationException e) {
-//			return null;
-//		} catch (SAXException e) {
-//			return null;
-//		} catch (IOException e) {
-//			return null;
-//		}
-//	}
-	
-	public static List getJavaProjectSourceDirectories (IProject project){
-			    ArrayList srcPaths = new ArrayList();
-			    
-			    IJavaProject javaProject;
-			    String projectFullPath = project.getFullPath().toOSString();
-			    int pathLength = projectFullPath.length();
-			    try {
-					javaProject = (IJavaProject)project.getNature(JavaCore.NATURE_ID);
-					IClasspathEntry[] rawClasspath = javaProject.getRawClasspath();
-				    for(IClasspathEntry classpathEntry:rawClasspath){
-						if (classpathEntry.getEntryKind()==IClasspathEntry.CPE_SOURCE)
-				    	srcPaths.add(project.getLocation().append(classpathEntry.getPath().removeFirstSegments(1)).toOSString());
-				    }
-				} catch (CoreException e) {
-				    IPath[] paths = ResourceUtils.getAllJavaSourceLocations(project);
-				    for(IPath path:paths){
-				    	srcPaths.add(project.getLocation().append(path.removeFirstSegments(1)).toOSString());
-				    }		
-		 		}
-				return srcPaths;
+
+	public static List getJavaProjectSourceDirectories(IProject project) {
+		ArrayList srcPaths = new ArrayList();
+
+		IJavaProject javaProject;
+		String projectFullPath = project.getFullPath().toOSString();
+		int pathLength = projectFullPath.length();
+		try {
+			javaProject = (IJavaProject) project.getNature(JavaCore.NATURE_ID);
+			IClasspathEntry[] rawClasspath = javaProject.getRawClasspath();
+			for (IClasspathEntry classpathEntry : rawClasspath) {
+				if (classpathEntry.getEntryKind() == IClasspathEntry.CPE_SOURCE)
+					srcPaths.add(project.getLocation().append(classpathEntry.getPath().removeFirstSegments(1))
+					                    .toOSString());
+			}
+		} catch (CoreException e) {
+			IPath[] paths = ResourceUtils.getAllJavaSourceLocations(project);
+			for (IPath path : paths) {
+				srcPaths.add(project.getLocation().append(path.removeFirstSegments(1)).toOSString());
+			}
+		}
+		return srcPaths;
 	}
-	
-	public void publishWebApp(ICarbonServerModulePublisher publisher, String extensionID, String webProjectPublisherID, IResource resource, int resourceChngeKind, IProject project, IServer server)
-			throws CoreException, Exception {
+
+	public void publishWebApp(ICarbonServerModulePublisher publisher, String extensionID, String webProjectPublisherID,
+	                          IResource resource, int resourceChngeKind, IProject project, IServer server)
+	                                                                                                      throws CoreException,
+	                                                                                                      Exception {
 		DeveloperStudioProviderUtils developerstudioUtils = new DeveloperStudioProviderUtils();
 		IConfigurationElement[] registeredPublishers = developerstudioUtils.getExtensionPointmembers(extensionID);
 		for (IConfigurationElement registeredPublisher : registeredPublishers) {
 			if (registeredPublisher.getAttribute(ID) == webProjectPublisherID) {
-				execClassObject = registeredPublisher
-						.createExecutableExtension("class");
-				executeExtension(execClassObject, resource,
-						resourceChngeKind);
+				execClassObject = registeredPublisher.createExecutableExtension("class");
+				executeExtension(execClassObject, resource, resourceChngeKind);
 				publisher.hotUpdate(project, server, null, null);
 			}
 		}
 	}
-	
-	public void executeExtension(final Object execClass,
-			final IResource resource, final int resourceChngeKind) {
+
+	public void executeExtension(final Object execClass, final IResource resource, final int resourceChngeKind) {
 		ISafeRunnable runnable = new ISafeRunnable() {
 			@Override
 			public void handleException(Throwable e) {
@@ -173,13 +157,11 @@ public class CarbonUtils {
 
 			@Override
 			public void run() throws Exception {
-				((ICarbonServerModulePublisher) execClass)
-						.setUpdatedResource(resource);
-				((ICarbonServerModulePublisher) execClass)
-						.setResourceChngeKind(resourceChngeKind);
+				((ICarbonServerModulePublisher) execClass).setUpdatedResource(resource);
+				((ICarbonServerModulePublisher) execClass).setResourceChngeKind(resourceChngeKind);
 			}
 		};
 		SafeRunner.run(runnable);
 	}
-	
+
 }

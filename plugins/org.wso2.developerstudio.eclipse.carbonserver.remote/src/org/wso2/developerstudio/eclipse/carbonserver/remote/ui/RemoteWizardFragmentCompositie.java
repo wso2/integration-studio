@@ -30,15 +30,16 @@ public class RemoteWizardFragmentCompositie extends Composite {
 	private Text txtPassword;
 	private Text txtServicePath;
 
-	private boolean contentValid=false;
+	private boolean contentValid = false;
 	private IWizardHandle wizard;
 	private Object runtimeWC;
 	private RemoteCarbonServer remoteCarbonServer;
 	private Button btnTestConnection;
 	private Button btnTestCredentialsButton;
-	
+
 	/**
 	 * Create the composite.
+	 * 
 	 * @param parent
 	 * @param style
 	 */
@@ -46,18 +47,18 @@ public class RemoteWizardFragmentCompositie extends Composite {
 		super(parent, style);
 		setWizard(wizard);
 		setLayout(new GridLayout(1, false));
-		
+
 		Group grpServerDetails = new Group(this, SWT.NONE);
 		grpServerDetails.setText("Server Details");
 		grpServerDetails.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 1, 1));
 		grpServerDetails.setLayout(new GridLayout(3, false));
-		
+
 		Label lblServerUrl = new Label(grpServerDetails, SWT.NONE);
 		GridData gd_lblServerUrl = new GridData(SWT.LEFT, SWT.CENTER, false, false, 1, 1);
 		gd_lblServerUrl.widthHint = 75;
 		lblServerUrl.setLayoutData(gd_lblServerUrl);
 		lblServerUrl.setText("Server URL");
-		
+
 		txtUrl = new Text(grpServerDetails, SWT.BORDER);
 		txtUrl.addModifyListener(new ModifyListener() {
 			public void modifyText(ModifyEvent arg0) {
@@ -74,13 +75,13 @@ public class RemoteWizardFragmentCompositie extends Composite {
 		});
 		txtUrl.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 2, 1));
 		new Label(grpServerDetails, SWT.NONE);
-		
+
 		Label label = new Label(grpServerDetails, SWT.NONE);
 		label.setText("Eg: https://localhost:9443/<context-root>");
-		
+
 		btnTestConnection = new Button(grpServerDetails, SWT.NONE);
 		btnTestConnection.addSelectionListener(new SelectionAdapter() {
-			
+
 			public void widgetSelected(SelectionEvent e) {
 				String title = "Carbon Server URL";
 				try {
@@ -98,37 +99,37 @@ public class RemoteWizardFragmentCompositie extends Composite {
 
 		Label lblServicePath = new Label(grpServerDetails, SWT.NONE);
 		GridData gd_lblServicePath = new GridData(SWT.LEFT, SWT.CENTER, false, false, 1, 1);
-		gd_lblServicePath .widthHint = 85;
-		lblServicePath.setLayoutData(gd_lblServicePath );
+		gd_lblServicePath.widthHint = 85;
+		lblServicePath.setLayoutData(gd_lblServicePath);
 		lblServicePath.setText("ServicePath");
-		
+
 		txtServicePath = new Text(grpServerDetails, SWT.BORDER);
 		txtServicePath.setText("services");
 		CarbonServerUtils.setRemoteServicePath("services");
 		txtServicePath.addModifyListener(new ModifyListener() {
 			public void modifyText(ModifyEvent arg0) {
-				 CarbonServerUtils.setRemoteServicePath(txtServicePath.getText());
+				CarbonServerUtils.setRemoteServicePath(txtServicePath.getText());
 			}
 		});
 		txtServicePath.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 2, 1));
 		new Label(grpServerDetails, SWT.NONE);
-		
+
 		Label servicePathDesc = new Label(grpServerDetails, SWT.CENTER);
 		servicePathDesc.setText("(Value of the servicePath parameter defined in the axis2.xml file)");
-		
-		new Label(grpServerDetails, SWT.NONE);	
-		
+
+		new Label(grpServerDetails, SWT.NONE);
+
 		Group grpCredentials = new Group(this, SWT.NONE);
 		grpCredentials.setText("Credentials");
 		grpCredentials.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, false, 1, 1));
 		grpCredentials.setLayout(new GridLayout(2, false));
-		
+
 		Label lblUsername = new Label(grpCredentials, SWT.NONE);
 		GridData gd_lblUsername = new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1);
 		gd_lblUsername.widthHint = 75;
 		lblUsername.setLayoutData(gd_lblUsername);
 		lblUsername.setText("Username");
-		
+
 		txtUsername = new Text(grpCredentials, SWT.BORDER);
 		txtUsername.addModifyListener(new ModifyListener() {
 			public void modifyText(ModifyEvent arg0) {
@@ -139,10 +140,10 @@ public class RemoteWizardFragmentCompositie extends Composite {
 		GridData gd_txtAdmin_1 = new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1);
 		gd_txtAdmin_1.widthHint = 200;
 		txtUsername.setLayoutData(gd_txtAdmin_1);
-		
+
 		Label lblPassword = new Label(grpCredentials, SWT.NONE);
 		lblPassword.setText("Password");
-		
+
 		txtPassword = new Text(grpCredentials, SWT.BORDER | SWT.PASSWORD);
 		txtPassword.addModifyListener(new ModifyListener() {
 			public void modifyText(ModifyEvent arg0) {
@@ -152,7 +153,7 @@ public class RemoteWizardFragmentCompositie extends Composite {
 		});
 		txtPassword.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
 		new Label(grpCredentials, SWT.NONE);
-		
+
 		btnTestCredentialsButton = new Button(grpCredentials, SWT.NONE);
 		btnTestCredentialsButton.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
@@ -179,40 +180,41 @@ public class RemoteWizardFragmentCompositie extends Composite {
 			throw new Exception("Server is has not fully started or incorrect URL");
 		}
 	}
-	
-	private void validateCredentials() throws Exception{
+
+	private void validateCredentials() throws Exception {
 		validateURL();
-		String sessionCookie = CarbonServerUtils.createSessionCookie(getServerURL().toString(),getUsername(), getPassword());
-		if (sessionCookie==null){
+		String sessionCookie =
+		                       CarbonServerUtils.createSessionCookie(getServerURL().toString(), getUsername(),
+		                                                             getPassword());
+		if (sessionCookie == null) {
 			throw new Exception("Invalid credentials");
 		}
 	}
-	
+
 	protected String getValidateString() {
-		String msg=null;
-		if (getServerURL()==null){
-			msg="Invalid url for server url.";
+		String msg = null;
+		if (getServerURL() == null) {
+			msg = "Invalid url for server url.";
 		}
-		btnTestConnection.setEnabled(getServerURL()!=null);
-		boolean isUserNameInvalid = getUsername()==null || getUsername().equals("");
-		if (msg!=null && isUserNameInvalid){
-			msg="Username cannot be empty.";
+		btnTestConnection.setEnabled(getServerURL() != null);
+		boolean isUserNameInvalid = getUsername() == null || getUsername().equals("");
+		if (msg != null && isUserNameInvalid) {
+			msg = "Username cannot be empty.";
 		}
-		boolean isPasswordInvalid = getPassword()==null || getPassword().equals("");
-		if (msg!=null && isPasswordInvalid){
-			msg="Password cannot be empty.";
+		boolean isPasswordInvalid = getPassword() == null || getPassword().equals("");
+		if (msg != null && isPasswordInvalid) {
+			msg = "Password cannot be empty.";
 		}
 		btnTestCredentialsButton.setEnabled(btnTestConnection.isEnabled() && !isUserNameInvalid && !isPasswordInvalid);
-		setContentValid(msg==null);
-		getWizard().setMessage(msg, msg==null? IStatus.INFO:IStatus.ERROR);
+		setContentValid(msg == null);
+		getWizard().setMessage(msg, msg == null ? IStatus.INFO : IStatus.ERROR);
 		return msg;
 	}
 
-	
 	protected void checkSubclass() {
 		// Disable the check that prevents subclassing of SWT components
 	}
-	
+
 	public void setServerURL(String url) throws MalformedURLException {
 		remoteCarbonServer.setServerURL(new URL(url));
 	}
@@ -236,7 +238,7 @@ public class RemoteWizardFragmentCompositie extends Composite {
 	public String getPassword() {
 		return remoteCarbonServer.getPassword();
 	}
-	
+
 	public void setServicePath(String servicePath) {
 		remoteCarbonServer.setServicePath(servicePath);
 	}
@@ -256,16 +258,20 @@ public class RemoteWizardFragmentCompositie extends Composite {
 	public IWizardHandle getWizard() {
 		return wizard;
 	}
-	
+
 	protected void setRuntime(Object newRuntime) {
 		runtimeWC = newRuntime;
-		if (newRuntime==null){
-			remoteCarbonServer=null;
-		}else{
-			if (runtimeWC instanceof IServerWorkingCopy){
-				remoteCarbonServer=(RemoteCarbonServer) ((IServerWorkingCopy)runtimeWC).loadAdapter(RemoteCarbonServer.class, null);
-			}else if (runtimeWC instanceof IServer){
-				remoteCarbonServer=(RemoteCarbonServer) ((IServer)runtimeWC).loadAdapter(RemoteCarbonServer.class, null);
+		if (newRuntime == null) {
+			remoteCarbonServer = null;
+		} else {
+			if (runtimeWC instanceof IServerWorkingCopy) {
+				remoteCarbonServer =
+				                     (RemoteCarbonServer) ((IServerWorkingCopy) runtimeWC).loadAdapter(RemoteCarbonServer.class,
+				                                                                                       null);
+			} else if (runtimeWC instanceof IServer) {
+				remoteCarbonServer =
+				                     (RemoteCarbonServer) ((IServer) runtimeWC).loadAdapter(RemoteCarbonServer.class,
+				                                                                            null);
 			}
 			txtUsername.setText(remoteCarbonServer.getUsername());
 			txtPassword.setText(remoteCarbonServer.getPassword());

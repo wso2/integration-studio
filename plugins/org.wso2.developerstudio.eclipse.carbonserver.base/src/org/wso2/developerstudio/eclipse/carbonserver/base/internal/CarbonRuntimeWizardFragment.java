@@ -1,12 +1,12 @@
 /*
  * Copyright (c) 2012, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
- *
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -24,25 +24,25 @@ import org.eclipse.jst.server.generic.ui.internal.GenericServerRuntimeWizardFrag
 import org.eclipse.wst.server.core.IRuntimeWorkingCopy;
 import org.eclipse.wst.server.core.TaskModel;
 
-
 @SuppressWarnings("restriction")
 public class CarbonRuntimeWizardFragment extends GenericServerRuntimeWizardFragment {
 
 	public IRuntimeWorkingCopy runtime;
+
 	public boolean isComplete() {
-		  runtime = (IRuntimeWorkingCopy) getTaskModel().getObject(TaskModel.TASK_RUNTIME);
-		
-		if(runtime!=null){
-			GenericServerRuntime gRuntime = (GenericServerRuntime) runtime.loadAdapter(
-	                GenericServerRuntime.class, new NullProgressMonitor() );
-			
+		runtime = (IRuntimeWorkingCopy) getTaskModel().getObject(TaskModel.TASK_RUNTIME);
+
+		if (runtime != null) {
+			GenericServerRuntime gRuntime =
+			                                (GenericServerRuntime) runtime.loadAdapter(GenericServerRuntime.class,
+			                                                                           new NullProgressMonitor());
+
 			Map properties = gRuntime.getServerInstanceProperties();
-				String serverName = (String) properties.get("server.name");
-				if(serverName!=null){
+			String serverName = (String) properties.get("server.name");
+			if (serverName != null) {
 				runtime.setName(serverName);
 			}
 		}
 		return super.isComplete();
-	}	 
+	}
 }
- 

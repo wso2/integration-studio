@@ -1,12 +1,12 @@
 /*
  * Copyright (c) 2010, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
- *
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -114,7 +114,7 @@ public final class CarbonServerManager implements IServerManager {
 			IServerManager wsasServerManager = ServerController.getInstance().getServerManager();
 			HashMap<String, Object> operationParameters = new HashMap<String, Object>();
 			operationParameters.put(ICarbonOperationManager.PARAMETER_TYPE,
-					ICarbonOperationManager.OPERATION_GET_SERVER_PORTS);
+			                        ICarbonOperationManager.OPERATION_GET_SERVER_PORTS);
 			Object r;
 			CarbonServerInformation serverInformation = new CarbonServerInformation();
 			serverInformation.setServerId(server.getId());
@@ -283,7 +283,7 @@ public final class CarbonServerManager implements IServerManager {
 			IServerManager wsasServerManager = getInstance();
 			HashMap<String, Object> operationParameters = new HashMap<String, Object>();
 			operationParameters.put(ICarbonOperationManager.PARAMETER_TYPE,
-					ICarbonOperationManager.OPERATION_GET_SERVER_HOME);
+			                        ICarbonOperationManager.OPERATION_GET_SERVER_HOME);
 			Object r;
 			try {
 				r = wsasServerManager.executeOperationOnServer(server, operationParameters);
@@ -399,7 +399,7 @@ public final class CarbonServerManager implements IServerManager {
 			IServerManager wsasServerManager = ServerController.getInstance().getServerManager();
 			HashMap<String, Object> operationParameters = new HashMap<String, Object>();
 			operationParameters.put(ICarbonOperationManager.PARAMETER_TYPE,
-					ICarbonOperationManager.OPERATION_GET_LIBRARY_PATHS);
+			                        ICarbonOperationManager.OPERATION_GET_LIBRARY_PATHS);
 			Object r = wsasServerManager.executeOperationOnServer(server, operationParameters);// getWSDLConversionResultUrl(resourceFile);
 			if (r instanceof String[]) {
 				result = (String[]) r;
@@ -418,7 +418,7 @@ public final class CarbonServerManager implements IServerManager {
 			IServerManager wsasServerManager = ServerController.getInstance().getServerManager();
 			HashMap<String, Object> operationParameters = new HashMap<String, Object>();
 			operationParameters.put(ICarbonOperationManager.PARAMETER_TYPE,
-					ICarbonOperationManager.OPERATION_GET_SERVICE_WSDL_URL);
+			                        ICarbonOperationManager.OPERATION_GET_SERVICE_WSDL_URL);
 			operationParameters.put(ICarbonOperationManager.PARAMETER_SERVICE_NAME, serviceName);
 			Object r = wsasServerManager.executeOperationOnServer(server, operationParameters);// getWSDLConversionResultUrl(resourceFile);
 			if (r instanceof URL) {
@@ -434,7 +434,7 @@ public final class CarbonServerManager implements IServerManager {
 			IServerManager wsasServerManager = ServerController.getInstance().getServerManager();
 			HashMap<String, Object> operationParameters = new HashMap<String, Object>();
 			operationParameters.put(ICarbonOperationManager.PARAMETER_TYPE,
-					ICarbonOperationManager.OPERATION_GET_SERVICE_TRY_IT_URL);
+			                        ICarbonOperationManager.OPERATION_GET_SERVICE_TRY_IT_URL);
 			operationParameters.put(ICarbonOperationManager.PARAMETER_SERVICE_NAME, serviceName);
 			Object r = wsasServerManager.executeOperationOnServer(server, operationParameters);// getWSDLConversionResultUrl(resourceFile);
 			if (r instanceof URL) {
@@ -483,7 +483,7 @@ public final class CarbonServerManager implements IServerManager {
 		IServerManager wsasServerManager = ServerController.getInstance().getServerManager();
 		HashMap<String, Object> operationParameters = new HashMap<String, Object>();
 		operationParameters.put(ICarbonOperationManager.PARAMETER_TYPE,
-				ICarbonOperationManager.OPERATION_SUPPORTED_OPERATIONS);
+		                        ICarbonOperationManager.OPERATION_SUPPORTED_OPERATIONS);
 		operationParameters.put(ICarbonOperationManager.PARAMETER_OP_TYPES, operation);
 		Object r = wsasServerManager.executeOperationOnServer(server, operationParameters);
 		if (r instanceof Boolean) {
@@ -496,7 +496,7 @@ public final class CarbonServerManager implements IServerManager {
 		IServerManager wsasServerManager = ServerController.getInstance().getServerManager();
 		HashMap<String, Object> operationParameters = new HashMap<String, Object>();
 		operationParameters.put(ICarbonOperationManager.PARAMETER_TYPE,
-				ICarbonOperationManager.OPERATION_INITIALIZE_SERVER_CONFIGURATIONS);
+		                        ICarbonOperationManager.OPERATION_INITIALIZE_SERVER_CONFIGURATIONS);
 		wsasServerManager.executeOperationOnServer(server, operationParameters);
 	}
 
@@ -504,7 +504,7 @@ public final class CarbonServerManager implements IServerManager {
 		IServerManager wsasServerManager = ServerController.getInstance().getServerManager();
 		HashMap<String, Object> operationParameters = new HashMap<String, Object>();
 		operationParameters.put(ICarbonOperationManager.PARAMETER_TYPE,
-				ICarbonOperationManager.OPERATION_CLEANUP_SERVER_CONFIGURATIONS);
+		                        ICarbonOperationManager.OPERATION_CLEANUP_SERVER_CONFIGURATIONS);
 		wsasServerManager.executeOperationOnServer(server, operationParameters);
 	}
 
@@ -514,7 +514,7 @@ public final class CarbonServerManager implements IServerManager {
 		IServerManager wsasServerManager = ServerController.getInstance().getServerManager();
 		HashMap<String, Object> operationParameters = new HashMap<String, Object>();
 		operationParameters.put(ICarbonOperationManager.PARAMETER_TYPE,
-				ICarbonOperationManager.OPERATION_PUBLISH_MODULE);
+		                        ICarbonOperationManager.OPERATION_PUBLISH_MODULE);
 		operationParameters.put(ICarbonOperationManager.PARAMETER_WebTempPath, webTempPath);
 		operationParameters.put(ICarbonOperationManager.PARAMETER_PROJECT, project);
 		try {
@@ -533,7 +533,7 @@ public final class CarbonServerManager implements IServerManager {
 		CarbonServerManager wsasServerManager = this;
 		HashMap<String, Object> operationParameters = new HashMap<String, Object>();
 		operationParameters.put(ICarbonOperationManager.PARAMETER_TYPE,
-				ICarbonOperationManager.OPERATION_HOT_UPDATE_MODULE);
+		                        ICarbonOperationManager.OPERATION_HOT_UPDATE_MODULE);
 		operationParameters.put(ICarbonOperationManager.PARAMETER_WebTempPath, webTempPath);
 		operationParameters.put(ICarbonOperationManager.PARAMETER_PROJECT, project);
 		try {
@@ -552,7 +552,7 @@ public final class CarbonServerManager implements IServerManager {
 		CarbonServerManager wsasServerManager = this;
 		HashMap<String, Object> operationParameters = new HashMap<String, Object>();
 		operationParameters.put(ICarbonOperationManager.PARAMETER_TYPE,
-				ICarbonOperationManager.OPERATION_HOT_UPDATE_MODULE);
+		                        ICarbonOperationManager.OPERATION_HOT_UPDATE_MODULE);
 		operationParameters.put(ICarbonOperationManager.PARAMETER_WebTempPath, "");
 		operationParameters.put(ICarbonOperationManager.PARAMETER_PROJECT, project);
 		operationParameters.put(RESOURCE, resource);
@@ -572,7 +572,7 @@ public final class CarbonServerManager implements IServerManager {
 		CarbonServerManager wsasServerManager = this;
 		HashMap<String, Object> operationParameters = new HashMap<String, Object>();
 		operationParameters.put(ICarbonOperationManager.PARAMETER_TYPE,
-				ICarbonOperationManager.OPERATION_REDEPLOY_MODULE);
+		                        ICarbonOperationManager.OPERATION_REDEPLOY_MODULE);
 		operationParameters.put(ICarbonOperationManager.PARAMETER_WebTempPath, webTempPath);
 		operationParameters.put(ICarbonOperationManager.PARAMETER_PROJECT, project);
 		try {
@@ -591,7 +591,7 @@ public final class CarbonServerManager implements IServerManager {
 		CarbonServerManager wsasServerManager = this;
 		HashMap<String, Object> operationParameters = new HashMap<String, Object>();
 		operationParameters.put(ICarbonOperationManager.PARAMETER_TYPE,
-				ICarbonOperationManager.OPERATION_UNPUBLISH_MODULE);
+		                        ICarbonOperationManager.OPERATION_UNPUBLISH_MODULE);
 		operationParameters.put(ICarbonOperationManager.PARAMETER_WebTempPath, webTempPath);
 		operationParameters.put(ICarbonOperationManager.PARAMETER_PROJECT, project);
 		try {
@@ -605,10 +605,11 @@ public final class CarbonServerManager implements IServerManager {
 	}
 
 	public static boolean waitForServerToChangeState(IServer server, Shell shell, int changeStateFrom,
-			int changeStateTo, String msg) {
+	                                                 int changeStateTo, String msg) {
 		ProgressMonitorDialog progressMonitorDialog = new ProgressMonitorDialog(shell);
-		CarbonServerStateChange serverStateChange = new CarbonServerStateChange(server, changeStateFrom, changeStateTo,
-				180000, msg);
+		CarbonServerStateChange serverStateChange =
+		                                            new CarbonServerStateChange(server, changeStateFrom, changeStateTo,
+		                                                                        180000, msg);
 		progressMonitorDialog.setBlockOnOpen(false);
 		try {
 			progressMonitorDialog.run(true, true, serverStateChange);
@@ -623,7 +624,7 @@ public final class CarbonServerManager implements IServerManager {
 
 	public static boolean waitUntilTheServerStarts(IServer server, Shell shell) {
 		return waitForServerToChangeState(server, shell, IServer.STATE_STOPPED, IServer.STATE_STARTED,
-				"Starting WSAS Server " + server.getId() + "...");
+		                                  "Starting WSAS Server " + server.getId() + "...");
 	}
 
 	public Map<IFolder, IProject> getPublishedPaths(String serverId) {
@@ -636,7 +637,7 @@ public final class CarbonServerManager implements IServerManager {
 		IServerManager wsasServerManager = ServerController.getInstance().getServerManager();
 		HashMap<String, Object> operationParameters = new HashMap<String, Object>();
 		operationParameters.put(ICarbonOperationManager.PARAMETER_TYPE,
-				ICarbonOperationManager.OPERATION_GET_PUBLISHED_SERVICES);
+		                        ICarbonOperationManager.OPERATION_GET_PUBLISHED_SERVICES);
 		try {
 			Object result = wsasServerManager.executeOperationOnServer(server, operationParameters);
 			if (result instanceof Map) {
@@ -677,7 +678,7 @@ public final class CarbonServerManager implements IServerManager {
 		ICarbonOperationManager serverOperationManager = getServerOperationManagerByServerType(serverTypeId);
 		HashMap<String, Object> operationParameters = new HashMap<String, Object>();
 		operationParameters.put(ICarbonOperationManager.PARAMETER_TYPE,
-				ICarbonOperationManager.OPERATION_GET_LIBRARY_PATHS);
+		                        ICarbonOperationManager.OPERATION_GET_LIBRARY_PATHS);
 		Object r = serverOperationManager.executeOperation(operationParameters);
 		if (r instanceof String[]) {
 			result = (String[]) r;
@@ -697,7 +698,7 @@ public final class CarbonServerManager implements IServerManager {
 			IServerManager wsasServerManager = ServerController.getInstance().getServerManager();
 			HashMap<String, Object> operationParameters = new HashMap<String, Object>();
 			operationParameters.put(ICarbonOperationManager.PARAMETER_TYPE,
-					ICarbonOperationManager.OPERATION_GET_CODEGEN_LIBRARIES);
+			                        ICarbonOperationManager.OPERATION_GET_CODEGEN_LIBRARIES);
 			Object r = wsasServerManager.executeOperationOnServer(server, operationParameters);// getWSDLConversionResultUrl(resourceFile);
 			if (r instanceof String[]) {
 				result = (String[]) r;
@@ -711,7 +712,7 @@ public final class CarbonServerManager implements IServerManager {
 		ICarbonOperationManager serverOperationManager = getServerOperationManagerByServerType(serverTypeId);
 		HashMap<String, Object> operationParameters = new HashMap<String, Object>();
 		operationParameters.put(ICarbonOperationManager.PARAMETER_TYPE,
-				ICarbonOperationManager.OPERATION_GET_AXIS2_LIBRARIES);
+		                        ICarbonOperationManager.OPERATION_GET_AXIS2_LIBRARIES);
 		operationParameters.put(ICarbonOperationManager.PARAMETER_PATH, wsasHome);
 		Object r = serverOperationManager.executeOperation(operationParameters);
 		if (r instanceof String[]) {
@@ -743,8 +744,8 @@ public final class CarbonServerManager implements IServerManager {
 									IServer[] serversForProject = getServersForProject(rootProject);
 									for (IServer server : serversForProject) {
 										if (!CARBON_SERVER_TYPE_REMOTE.equalsIgnoreCase(server.getServerType().getId())) {
-											CarbonServerInformation serverInformation = getAppServerInformation().get(
-													server);
+											CarbonServerInformation serverInformation =
+											                                            getAppServerInformation().get(server);
 											if (!serverInformation.getChangedProjects().contains(rootProject)) {
 												serverInformation.getChangedProjects().add(rootProject);
 												hotUpdateWebApp(server.getId(), resource, rootProject.getName());
@@ -775,7 +776,7 @@ public final class CarbonServerManager implements IServerManager {
 		String[] result = null;
 		HashMap<String, Object> operationParameters = new HashMap<String, Object>();
 		operationParameters.put(ICarbonOperationManager.PARAMETER_TYPE,
-				ICarbonOperationManager.OPERATION_GET_CODEGEN_LIBRARIES);
+		                        ICarbonOperationManager.OPERATION_GET_CODEGEN_LIBRARIES);
 		operationParameters.put(ICarbonOperationManager.PARAMETER_RUNTIME, runtimeId);
 		operationParameters.put(ICarbonOperationManager.PARAMETER_PATH, runtimePath);
 		ICarbonOperationManager wsasOperationManager = getServerOperationManagerByServerType(serverTypeId);
@@ -792,7 +793,7 @@ public final class CarbonServerManager implements IServerManager {
 			IServerManager esbServerManager = ServerController.getInstance().getServerManager();
 			HashMap<String, Object> operationParameters = new HashMap<String, Object>();
 			operationParameters.put(ICarbonOperationManager.PARAMETER_TYPE,
-					ICarbonOperationManager.OPERATION_GET_SERVER_CREDENTIALS);
+			                        ICarbonOperationManager.OPERATION_GET_SERVER_CREDENTIALS);
 			Object r = esbServerManager.executeOperationOnServer(server, operationParameters);// getWSDLConversionResultUrl(resourceFile);
 			if (r instanceof Map) {
 				result = (Map<String, String>) r;
@@ -810,7 +811,7 @@ public final class CarbonServerManager implements IServerManager {
 			IServerManager esbServerManager = ServerController.getInstance().getServerManager();
 			HashMap<String, Object> operationParameters = new HashMap<String, Object>();
 			operationParameters.put(ICarbonOperationManager.PARAMETER_TYPE,
-					ICarbonOperationManager.OPERATION_SERVER_URL);
+			                        ICarbonOperationManager.OPERATION_SERVER_URL);
 			Object serverURL = esbServerManager.executeOperationOnServer(server, operationParameters);
 			if (serverURL instanceof URL) {
 				String serverId = server.getServerType().getId();
@@ -830,7 +831,7 @@ public final class CarbonServerManager implements IServerManager {
 			IServerManager esbServerManager = ServerController.getInstance().getServerManager();
 			HashMap<String, Object> operationParameters = new HashMap<String, Object>();
 			operationParameters.put(ICarbonOperationManager.PARAMETER_TYPE,
-					ICarbonOperationManager.OPERATION_GET_SERVER_AUTHENTICATED_COOKIE);
+			                        ICarbonOperationManager.OPERATION_GET_SERVER_AUTHENTICATED_COOKIE);
 			operationParameters.put(ICarbonOperationManager.PARAMETER_SERVER_PORT, httpsPort);
 			Object r = esbServerManager.executeOperationOnServer(server, operationParameters);
 			if (r instanceof String) {
@@ -861,14 +862,13 @@ public final class CarbonServerManager implements IServerManager {
 			IServerManager wsasServerManager = ServerController.getInstance().getServerManager();
 			HashMap<String, Object> operationParameters = new HashMap<String, Object>();
 			operationParameters.put(ICarbonOperationManager.PARAMETER_TYPE,
-					ICarbonOperationManager.OPERATION_SERVER_VERSION);
+			                        ICarbonOperationManager.OPERATION_SERVER_VERSION);
 			Object r = null;
 			try {
 				r = wsasServerManager.executeOperationOnServer(server, operationParameters);
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}// getWSDLConversionResultUrl(resourceFile);
+				log.error(e);
+			}
 			result = (String) r;
 		}
 		return result;

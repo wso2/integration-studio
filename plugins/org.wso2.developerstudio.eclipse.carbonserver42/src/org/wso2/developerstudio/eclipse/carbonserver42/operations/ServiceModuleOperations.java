@@ -1,12 +1,12 @@
 /*
  * Copyright (c) 2010, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
- *
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -61,8 +61,10 @@ public class ServiceModuleOperations {
 	IServer server;
 	private IResource resource;
 	private int resourceChngeKind;
-	private static final String CARBONSERVER_PUBLISHER_EXTENSION_ID = "org.wso2.developerstudio.eclipse.carbonserver.publisher";
-	private static final String WEBAPP_PROJECT_PUBLISHER42_ID = "org.wso2.developerstudio.eclipse.webapp.project.publisher42";
+	private static final String CARBONSERVER_PUBLISHER_EXTENSION_ID =
+	                                                                  "org.wso2.developerstudio.eclipse.carbonserver.publisher";
+	private static final String WEBAPP_PROJECT_PUBLISHER42_ID =
+	                                                            "org.wso2.developerstudio.eclipse.webapp.project.publisher42";
 	CarbonUtils carbonUtils = new CarbonUtils();
 
 	public ServiceModuleOperations(IProject project, IServer server) {
@@ -91,21 +93,14 @@ public class ServiceModuleOperations {
 
 	public void redeployModule(boolean force) {
 		CarbonServerInformation wsasServerInformation = CarbonServerManager.getAppServerInformation().get(server);
-		/*
-		 * if (!force &&
-		 * !wsasServerInformation.getChangedProjects().contains(project)){
-		 * return; }
-		 */
 		wsasServerInformation.getChangedProjects().remove(project);
 		List<ICarbonServerModulePublisher> projectPublishers = CarbonServer.getProjectPublishers(server);
 		if (projectPublishers != null && !projectPublishers.isEmpty()) {
-			// File carbonHome = new
-			// File(CarbonServerManager.getServerHome(server).toOSString());
-			// File deployPath = new
-			// File(CarbonServer40Utils.getRepositoryPathFromLocalWorkspaceRepo(CarbonServerManager.getServerLocalWorkspacePath(server)));
 			for (ICarbonServerModulePublisher publisher : projectPublishers) {
 				try {
-				carbonUtils.publishWebApp(publisher, CARBONSERVER_PUBLISHER_EXTENSION_ID ,WEBAPP_PROJECT_PUBLISHER42_ID, resource, resourceChngeKind, project, server);
+					carbonUtils.publishWebApp(publisher, CARBONSERVER_PUBLISHER_EXTENSION_ID,
+					                          WEBAPP_PROJECT_PUBLISHER42_ID, resource, resourceChngeKind, project,
+					                          server);
 				} catch (Exception e) {
 					log.error(e);
 				}
@@ -113,8 +108,9 @@ public class ServiceModuleOperations {
 		} else {
 			IPath webInfPath = J2EEUtils.getWebInfPath(project);
 			String servicesFolder = webInfPath.removeFirstSegments(1).toOSString() + "/services";
-			String absServicesFolder = FileUtils.addAnotherNodeToPath(project.getLocation().toOSString(),
-					servicesFolder);
+			String absServicesFolder =
+			                           FileUtils.addAnotherNodeToPath(project.getLocation().toOSString(),
+			                                                          servicesFolder);
 			IFolder folder = project.getFolder(servicesFolder);
 			File webTemp = new File(absServicesFolder);
 			String[] list = webTemp.list();
@@ -124,23 +120,24 @@ public class ServiceModuleOperations {
 
 			String classesDirectory = null;
 			if (projectRoot.toOSString().contains(ResourcesPlugin.getWorkspace().getRoot().getLocation().toOSString())) {
-				classesDirectory = ResourcesPlugin.getWorkspace().getRoot().getLocation()
-						.append(defaultClassesSubDirectory).toOSString();
+				classesDirectory =
+				                   ResourcesPlugin.getWorkspace().getRoot().getLocation()
+				                                  .append(defaultClassesSubDirectory).toOSString();
 			} else {
 				classesDirectory = projectRoot.append(defaultClassesSubDirectory).toOSString();
 			}
 			try {
 				folder.accept(visitor);
 			} catch (CoreException e1) {
-				e1.printStackTrace();
+				log.error(e1);
 			}
 			for (IResource resource : visitor.getResources()) {
 				try {
-					if ((!folder.getLocation().toOSString().equals(resource.getLocation().toOSString()))
-							&& resource instanceof IFolder) {
+					if ((!folder.getLocation().toOSString().equals(resource.getLocation().toOSString())) &&
+					    resource instanceof IFolder) {
 						IFolder folder2 = (IFolder) resource;
 						if (folder2.getFullPath().removeFirstSegments(folder.getFullPath().segmentCount())
-								.segmentCount() == 1) {
+						           .segmentCount() == 1) {
 							String repoServiceLocation = folder2.getLocation().toOSString();
 							FileUtils.copyDirectory(new File(classesDirectory), new File(repoServiceLocation));
 							folder2.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
@@ -164,10 +161,6 @@ public class ServiceModuleOperations {
 	public void publishServiceModule(String webTempFolder, String Service) {
 		List<ICarbonServerModulePublisher> projectPublishers = CarbonServer.getProjectPublishers(server);
 		if (projectPublishers != null && !projectPublishers.isEmpty()) {
-			// File carbonHome = new
-			// File(CarbonServerManager.getServerHome(server).toOSString());
-			// File deployPath = new
-			// File(CarbonServer40Utils.getRepositoryPathFromLocalWorkspaceRepo(CarbonServerManager.getServerLocalWorkspacePath(server)));
 			for (ICarbonServerModulePublisher publisher : projectPublishers) {
 				try {
 					publisher.publish(project, server, null, null);
@@ -177,19 +170,20 @@ public class ServiceModuleOperations {
 			}
 		} else {
 			String serverLocalWorkspacePath = CarbonServerManager.getServerLocalWorkspacePath(server);
-			File deployPath = new File(
-					CarbonServer42Utils.getRepositoryPathFromLocalWorkspaceRepo(serverLocalWorkspacePath));
-			String serverLocalRepoServiceLocation = FileUtils.addNodesToPath(deployPath.toString(),
-					new String[] { "axis2services" });
+			File deployPath =
+			                  new File(
+			                           CarbonServer42Utils.getRepositoryPathFromLocalWorkspaceRepo(serverLocalWorkspacePath));
+			String serverLocalRepoServiceLocation =
+			                                        FileUtils.addNodesToPath(deployPath.toString(),
+			                                                                 new String[] { "axis2services" });
 			IPath webInfPath = J2EEUtils.getWebInfPath(project);
 			String servicesFolder = webInfPath.removeFirstSegments(1).toOSString() + "/services";
-			String absServicesFolder = FileUtils.addAnotherNodeToPath(project.getLocation().toOSString(),
-					servicesFolder);
+			String absServicesFolder =
+			                           FileUtils.addAnotherNodeToPath(project.getLocation().toOSString(),
+			                                                          servicesFolder);
 			IFolder folder = project.getFolder(servicesFolder);
 			File webTemp = new File(absServicesFolder);
 			String[] list = webTemp.list();
-			// IPath[] allJavaSourceLocations =
-			// org.eclipse.jst.ws.internal.common.ResourceUtils.getAllJavaSourceLocations(project);
 			try {
 				IJavaProject javaProject = (IJavaProject) project.getNature(JavaCore.NATURE_ID);
 				IClasspathEntry[] rawClasspath = javaProject.getRawClasspath();
@@ -198,8 +192,9 @@ public class ServiceModuleOperations {
 					return;
 				for (String path : list) {
 					File tmpService = new File(FileUtils.addAnotherNodeToPath(absServicesFolder, path));
-					String serverRepoServicePath = FileUtils.addAnotherNodeToPath(serverLocalRepoServiceLocation,
-							project.getName() + "_" + path);
+					String serverRepoServicePath =
+					                               FileUtils.addAnotherNodeToPath(serverLocalRepoServiceLocation,
+					                                                              project.getName() + "_" + path);
 					try {
 						String serviceName = null;
 						IPath location = null;
@@ -207,7 +202,6 @@ public class ServiceModuleOperations {
 							FileUtils.copyDirectory(tmpService, new File(serverRepoServicePath));
 							FileUtils.deleteDirectories(tmpService);
 							IFolder folder2 = folder.getFolder(path);
-							// if (folder2.isLinked())
 							folder2.delete(true, new NullProgressMonitor());
 							folder2.createLink(new Path(serverRepoServicePath), IResource.NONE, null);
 							IClasspathEntry srcEntry = JavaCore.newSourceEntry(folder2.getFullPath());
@@ -220,10 +214,8 @@ public class ServiceModuleOperations {
 							FileUtils.copy(tmpService, new File(serverRepoServicePath));
 							tmpService.delete();
 							IFile file2 = folder.getFile(path);
-							// if (file2.isLinked())
 							file2.delete(true, new NullProgressMonitor());
 							file2.createLink(new Path(serverRepoServicePath), IResource.NONE, null);
-							// serviceName=WSASUtils.getServiceNameFromFolder(serverRepoServicePath);
 						}
 					} catch (IOException e) {
 						log.error(e);
@@ -248,21 +240,19 @@ public class ServiceModuleOperations {
 		if (serviceName == null)
 			return;
 		try {
-			ServiceWSDLRetriever.startWSDLRetriever(
-					new Path(FileUtils.addNodesToPath(location.toOSString(), new String[] { serviceName + ".wsdl" })),
-					CarbonServerManager.getServiceWSDLUrl(server, serviceName), project, delay);
+			ServiceWSDLRetriever.startWSDLRetriever(new Path(FileUtils.addNodesToPath(location.toOSString(),
+			                                                                          new String[] { serviceName +
+			                                                                                         ".wsdl" })),
+			                                        CarbonServerManager.getServiceWSDLUrl(server, serviceName),
+			                                        project, delay);
 		} catch (Exception e1) {
-			e1.printStackTrace();
+			log.error(e1);
 		}
 	}
 
 	public void unpublishServiceModule(String webTempFolder, String Service) {
 		List<ICarbonServerModulePublisher> projectPublishers = CarbonServer.getProjectPublishers(server);
 		if (projectPublishers != null && !projectPublishers.isEmpty()) {
-			// File carbonHome = new
-			// File(CarbonServerManager.getServerHome(server).toOSString());
-			// File deployPath = new
-			// File(CarbonServer40Utils.getRepositoryPathFromLocalWorkspaceRepo(CarbonServerManager.getServerLocalWorkspacePath(server)));
 			for (ICarbonServerModulePublisher publisher : projectPublishers) {
 				try {
 					publisher.unpublish(project, server, null, null);
@@ -285,8 +275,9 @@ public class ServiceModuleOperations {
 			}
 			IPath webInfPath = J2EEUtils.getWebInfPath(project);
 			String servicesFolder = webInfPath.removeFirstSegments(1).toOSString() + "/services";
-			String absServicesFolder = FileUtils.addAnotherNodeToPath(project.getLocation().toOSString(),
-					servicesFolder);
+			String absServicesFolder =
+			                           FileUtils.addAnotherNodeToPath(project.getLocation().toOSString(),
+			                                                          servicesFolder);
 			IFolder folder = project.getFolder(servicesFolder);
 			File webTemp = new File(absServicesFolder);
 			String[] list = webTemp.list();
@@ -294,7 +285,7 @@ public class ServiceModuleOperations {
 			try {
 				folder.accept(visitor);
 			} catch (CoreException e1) {
-				e1.printStackTrace();
+				log.error(e1);
 			}
 			try {
 				IJavaProject javaProject = (IJavaProject) project.getNature(JavaCore.NATURE_ID);
@@ -308,20 +299,19 @@ public class ServiceModuleOperations {
 							String repoServiceLocation = folder2.getLocation().toOSString();
 							folder2.delete(true, new NullProgressMonitor());
 							String projectServiceLocation = folder2.getFullPath().removeFirstSegments(1).toOSString();
-							FileUtils.copyDirectory(
-									new File(repoServiceLocation),
-									new File(FileUtils.addAnotherNodeToPath(project.getLocation().toOSString(),
-											projectServiceLocation)));
+							FileUtils.copyDirectory(new File(repoServiceLocation),
+							                        new File(FileUtils.addAnotherNodeToPath(project.getLocation()
+							                                                                       .toOSString(),
+							                                                                projectServiceLocation)));
 							FileUtils.deleteDirectories(new File(repoServiceLocation));
 						} else {
 							IFile file = (IFile) resource;
 							String repoServiceLocation = file.getLocation().toOSString();
 							file.delete(true, new NullProgressMonitor());
 							String projectServiceLocation = file.getFullPath().removeFirstSegments(1).toOSString();
-							FileUtils.copy(
-									new File(repoServiceLocation),
-									new File(FileUtils.addAnotherNodeToPath(project.getLocation().toOSString(),
-											projectServiceLocation)));
+							FileUtils.copy(new File(repoServiceLocation),
+							               new File(FileUtils.addAnotherNodeToPath(project.getLocation().toOSString(),
+							                                                       projectServiceLocation)));
 							(new File(repoServiceLocation)).delete();
 						}
 					} catch (Exception e) {
@@ -404,7 +394,7 @@ public class ServiceModuleOperations {
 		try {
 			folder.accept(visitor);
 		} catch (CoreException e1) {
-			e1.printStackTrace();
+			log.error(e1);
 		}
 		for (IResource resource : visitor.getResources()) {
 			Path path = new Path(resource.toString().substring(folder.toString().length()));
@@ -412,7 +402,6 @@ public class ServiceModuleOperations {
 				IFolder folder2 = (IFolder) resource;
 				IPath fullPath = folder2.getFullPath();
 				list.put(folder2, project);
-				// list.put(folder2.getLocation(),fullPath.segment(fullPath.segmentCount()-1));
 			}
 		}
 	}

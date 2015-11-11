@@ -21,13 +21,14 @@ import org.eclipse.core.commands.operations.OperationHistoryFactory;
 import org.eclipse.core.commands.operations.UndoContext;
 import org.wso2.developerstudio.webeditor.core.AbstractWebBasedEditor;
 import org.wso2.developerstudio.webeditor.model.UndoableBrowserOperation;
+import org.wso2.developerstudio.webeditor.util.WebEditorJSFunctions;
 
 public class ExecuteUndoableTaskFunction extends AbstractWebEditorFunction {
 
 	protected UndoContext undoContext;
 	
 	public ExecuteUndoableTaskFunction(AbstractWebBasedEditor editor) {
-		super(editor, "IDEExecUndoableOperation");
+		super(editor, WebEditorJSFunctions.IDE_EXEC_UNDOABLE_OPERATION_FUNCTION);
 		this.undoContext = editor.getUndoContext();
 	}
 

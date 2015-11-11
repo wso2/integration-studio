@@ -20,18 +20,21 @@ import java.io.InputStream;
 
 import org.apache.commons.io.IOUtils;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.wso2.developerstudio.webeditor.core.AbstractWebBasedEditor;
+import org.wso2.developerstudio.webeditor.util.WebEditorJSFunctions;
 
 public class GetFileContentFunction extends AbstractWebEditorFunction {
 
 	public GetFileContentFunction(AbstractWebBasedEditor editor) {
-		super(editor, "IDEGetFileContent");
+		super(editor, WebEditorJSFunctions.IDE_GET_FILE_CONTENT_FUNCTION);
 	}
 
 	@Override
 	public Object function(Object[] arguments) {
 		InputStream inputStream = null;
 		try {
+			editorInput.getFile().refreshLocal(0, new NullProgressMonitor());
 			inputStream = editorInput.getFile().getContents();
 			String content = IOUtils.toString(inputStream);
 			editor.setDirtyContent(content);

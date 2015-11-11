@@ -16,11 +16,12 @@
 package org.wso2.developerstudio.webeditor.function;
 
 import org.wso2.developerstudio.webeditor.core.AbstractWebBasedEditor;
+import org.wso2.developerstudio.webeditor.util.WebEditorJSFunctions;
 
 public class SetDirtyContentFunction extends AbstractWebEditorFunction{
 
 	public SetDirtyContentFunction(AbstractWebBasedEditor editor) {
-		super(editor, "IDESetDirtyContent");
+		super(editor, WebEditorJSFunctions.IDE_SET_DIRTY_CONTENT_FUNCTION);
 	}
 	
 	@Override

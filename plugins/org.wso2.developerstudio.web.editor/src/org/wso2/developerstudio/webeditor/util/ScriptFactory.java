@@ -19,6 +19,7 @@ import org.wso2.developerstudio.webeditor.model.BrowserScript;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
+import static org.wso2.developerstudio.webeditor.util.WebEditorJSFunctions.*;
 
 public class ScriptFactory {
 
@@ -30,10 +31,10 @@ public class ScriptFactory {
 
 	static {
 		gson = new Gson();
-		INVOKE_FN_LOAD_FILE_CONTENT = createFunctionCallScript("loadFileContent");
-		INVOKE_FN_SAVE_FILE = createFunctionCallScript("saveFile");
-		INVOKE_FN_SET_IDE_DIRTY_CONTENT = createFunctionCallScript("setIDEDirtyContent");
-		INVOKE_FN_LOAD_IDE_DIRTY_CONTENT = createFunctionCallScript("getIDEDirtyContent");
+		INVOKE_FN_LOAD_FILE_CONTENT = createFunctionCallScript(APP_LOAD_FILE_CONTENT_FUNCTION);
+		INVOKE_FN_SAVE_FILE = createFunctionCallScript(APP_SAVE_FILE_FUNCTION);
+		INVOKE_FN_SET_IDE_DIRTY_CONTENT = createFunctionCallScript(APP_SET_DIRTY_CONTENT_FUNCTION);
+		INVOKE_FN_LOAD_IDE_DIRTY_CONTENT = createFunctionCallScript(APP_GET_DIRTY_CONTENT_FUNCTION);
 	}
 
 	public static BrowserScript createScript(String scriptName, String script) {

@@ -22,6 +22,9 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.wso2.developerstudio.webeditor.core.AbstractWebBasedEditor;
+import org.wso2.developerstudio.webeditor.core.WebBasedEditorException;
+import org.wso2.developerstudio.webeditor.util.WebEditorJSFunctions;
+import org.wso2.developerstudio.webeditor.util.ScriptFactory;
 
 public class UndoableBrowserOperation extends AbstractOperation {
 
@@ -42,20 +45,30 @@ public class UndoableBrowserOperation extends AbstractOperation {
 
 	@Override
 	public IStatus redo(IProgressMonitor arg0, IAdaptable arg1)
-			throws ExecutionException {
-		if(browserEditor.sendUndoMessage(uniqueOperationID)){
-			return  Status.OK_STATUS;
+			throws ExecutionException {	
+		BrowserScript undoTask = ScriptFactory.createFunctionCallScript(
+				WebEditorJSFunctions.APP_REDO_FUNCTION,
+				new String[] { uniqueOperationID });
+		try {
+			browserEditor.executeScriptOnBrowser(undoTask);
+		} catch (WebBasedEditorException e) {
+			throw new ExecutionException("Error while redoing operation:" + uniqueOperationID, e);
 		}
-		return Status.CANCEL_STATUS;
+		return Status.OK_STATUS;
 	}
 
 	@Override
 	public IStatus undo(IProgressMonitor arg0, IAdaptable arg1)
 			throws ExecutionException {
-		if(browserEditor.sendRedoMessage(uniqueOperationID)){
-			return  Status.OK_STATUS;
+		BrowserScript undoTask = ScriptFactory.createFunctionCallScript(
+				WebEditorJSFunctions.APP_UNDO_FUNCTION,
+				new String[] { uniqueOperationID });
+		try {
+			browserEditor.executeScriptOnBrowser(undoTask);
+		} catch (WebBasedEditorException e) {
+			throw new ExecutionException("Error while undoing operation:" + uniqueOperationID, e);
 		}
-		return Status.CANCEL_STATUS;
+		return Status.OK_STATUS;
 	}
 
 	

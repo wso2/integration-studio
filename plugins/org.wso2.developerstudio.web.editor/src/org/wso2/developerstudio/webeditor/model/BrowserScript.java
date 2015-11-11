@@ -46,8 +46,8 @@ public class BrowserScript {
 				for (int argIndex = 0; argIndex < args.length; argIndex++) {
 					String argName = "arg" + argIndex;
 					argNames[argIndex] = argName;
-					scriptBuilder.append("var " + argName + " = "
-							+ args[argIndex] + ";");
+					scriptBuilder.append("var " + argName + " = \""
+							+ args[argIndex] + "\";");
 				}
 				scriptBuilder.append(functionName + "(");
 				for (int argNameIndex = 0; argNameIndex < argNames.length; argNameIndex++) {

@@ -31,6 +31,7 @@ import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorSite;
 import org.eclipse.ui.PartInitException;
+import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.ActionFactory;
 import org.eclipse.ui.operations.RedoActionHandler;
 import org.eclipse.ui.operations.UndoActionHandler;
@@ -49,7 +50,6 @@ import org.wso2.developerstudio.webeditor.function.SaveContentFunction;
 import org.wso2.developerstudio.webeditor.function.SetDirtyContentFunction;
 import org.wso2.developerstudio.webeditor.function.SetDirtyFunction;
 import org.wso2.developerstudio.webeditor.function.SetFocusToEditorPartFunction;
-import org.wso2.developerstudio.webeditor.handler.BrowserCopyActionHandler;
 import org.wso2.developerstudio.webeditor.model.BrowserScript;
 import org.wso2.developerstudio.webeditor.util.ScriptFactory;
 
@@ -111,8 +111,6 @@ public abstract class AbstractWebBasedEditor extends EditorPart {
 				new UndoActionHandler(site, editorUndoContext));
 		actionBars.setGlobalActionHandler(ActionFactory.REDO.getId(),
 				new RedoActionHandler(site, editorUndoContext));
-		actionBars.setGlobalActionHandler(ActionFactory.COPY.getId(),
-				new BrowserCopyActionHandler());
 	}
 
 	@Override
@@ -198,10 +196,13 @@ public abstract class AbstractWebBasedEditor extends EditorPart {
 
 	@Override
 	public void setFocus() {
+		// if this is a multipage editor, activate parent editor
 		if (parentEditor == null) {
-			getEditorSite().getPage().activate(this);
+			PlatformUI.getWorkbench().getActiveWorkbenchWindow()
+					.getActivePage().activate(editorInstance);
 		} else {
-			parentEditor.getEditorSite().getPage().activate(parentEditor);
+			PlatformUI.getWorkbench().getActiveWorkbenchWindow()
+					.getActivePage().activate(parentEditor);
 		}
 	}
 
@@ -232,14 +233,6 @@ public abstract class AbstractWebBasedEditor extends EditorPart {
 	public void setDirty(boolean isDirty) {
 		this.isDirty = isDirty;
 		firePropertyChange(PROP_DIRTY);
-	}
-
-	public boolean sendUndoMessage(String uniqueOperationID) {
-		return false;
-	}
-
-	public boolean sendRedoMessage(String uniqueOperationID) {
-		return false;
 	}
 
 	public Browser getBrowser() {

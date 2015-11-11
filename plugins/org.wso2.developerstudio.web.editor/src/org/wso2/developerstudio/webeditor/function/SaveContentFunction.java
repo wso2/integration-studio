@@ -22,11 +22,12 @@ import org.apache.commons.io.IOUtils;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.wso2.developerstudio.webeditor.core.AbstractWebBasedEditor;
+import org.wso2.developerstudio.webeditor.util.WebEditorJSFunctions;
 
 public class SaveContentFunction extends AbstractWebEditorFunction{
 
 	public SaveContentFunction(AbstractWebBasedEditor editor) {
-		super(editor, "IDESaveContent");
+		super(editor, WebEditorJSFunctions.IDE_SAVE_CONTENT_FUNCTION);
 	}
 
 	@Override

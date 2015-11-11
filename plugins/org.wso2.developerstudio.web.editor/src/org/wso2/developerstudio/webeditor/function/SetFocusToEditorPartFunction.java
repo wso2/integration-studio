@@ -16,11 +16,12 @@
 package org.wso2.developerstudio.webeditor.function;
 
 import org.wso2.developerstudio.webeditor.core.AbstractWebBasedEditor;
+import org.wso2.developerstudio.webeditor.util.WebEditorJSFunctions;
 
 public class SetFocusToEditorPartFunction extends AbstractWebEditorFunction {
 
 	public SetFocusToEditorPartFunction(AbstractWebBasedEditor editor) {
-		super(editor, "IDESetFocusToEditorPart");
+		super(editor, WebEditorJSFunctions.IDE_SET_FOCUS_TO_EDITOR_FUNCTION);
 	}
 
 	@Override

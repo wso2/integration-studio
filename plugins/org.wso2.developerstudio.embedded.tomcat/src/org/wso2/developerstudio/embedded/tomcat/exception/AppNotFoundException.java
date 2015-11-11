@@ -23,6 +23,6 @@ public class AppNotFoundException extends EmbeddedTomcatException {
 	private static final long serialVersionUID = 878234784147263928L;
 
 	public AppNotFoundException(String appID) {
-		super(NLS.bind(Messages.ERROR_appNotFound, appID));
+		super(NLS.bind(Messages.ERROR_APP_NOT_FOUND, appID));
 	}
 }

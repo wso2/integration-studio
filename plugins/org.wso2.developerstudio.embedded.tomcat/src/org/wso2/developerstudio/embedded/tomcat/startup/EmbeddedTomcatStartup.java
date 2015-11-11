@@ -36,7 +36,7 @@ public class EmbeddedTomcatStartup implements IStartup {
 			try {
 				bundle.start();
 			} catch (BundleException e) {
-				log.error(Messages.ERROR_bundleEarlyStartupError, e);
+				log.error(Messages.ERROR_EARLY_STARTUP_ERROR, e);
 			}
 		}
 	}

@@ -26,7 +26,6 @@ import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.URISyntaxException;
 import java.net.URL;
-import java.net.URLEncoder;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
@@ -94,7 +93,7 @@ public class EmbeddedTomcatServer{
 			tomcat.getHost();
 			tomcat.start();
 		} catch (LifecycleException e) {
-			throw new EmbeddedTomcatException(Messages.ERROR_tomcatStartupError, e);
+			throw new EmbeddedTomcatException(Messages.ERROR_TOMCAT_STARTUP_ERROR, e);
 		}
 	}
 
@@ -107,7 +106,7 @@ public class EmbeddedTomcatServer{
 		try {
 			tomcat.stop();
 		} catch (LifecycleException e) {
-			throw new EmbeddedTomcatException(Messages.ERROR_tomcatShutdownError,
+			throw new EmbeddedTomcatException(Messages.ERROR_TOMCAT_SHUTDOWN_ERROR,
 					e);
 		}
 	}
@@ -141,10 +140,10 @@ public class EmbeddedTomcatServer{
 					.getContextClassLoader());
 			appIDToURLMap.put(appID, getURLForContext(context));
 			contextToAppIDMap.put(context, appID);
-			log.info(NLS.bind(Messages.INFO_appAddedSuccessfully, appID,
+			log.info(NLS.bind(Messages.INFO_APP_ADDED_SUCCESSFULLY, appID,
 					appIDToURLMap.get(appID)));
 		} catch (Exception e) {
-			String errorMessage = NLS.bind(Messages.ERROR_errorAddingWebApp,
+			String errorMessage = NLS.bind(Messages.ERROR_ADDING_WEBAPP_FAILED,
 					appID, docBase);
 			throw new EmbeddedTomcatException(errorMessage, e);
 		}
@@ -211,7 +210,7 @@ public class EmbeddedTomcatServer{
 			
 			// A common error message to display upon deployment error.
 			String appDeploymentErrorMsg = NLS.bind(
-					Messages.ERROR_appDeploymentFailed, applicationID,
+					Messages.ERROR_APP_DEPLOYMENT_FAILED, applicationID,
 					contributingBundleID);
 
 			if (isNotEmpty(applicationID) && isNotEmpty(relativePath)
@@ -226,7 +225,7 @@ public class EmbeddedTomcatServer{
 					readableDocBase = new File(fileURL.toURI());
 				} catch (IOException | URISyntaxException e) {
 					String errorMessage = NLS.bind(
-							Messages.ERROR_resolvingResourcesFailed,
+							Messages.ERROR_RESOLVING_RESOURCES_FAILED,
 							docBaseResource);
 					log.error(errorMessage, e);
 				}
@@ -243,7 +242,7 @@ public class EmbeddedTomcatServer{
 						if (!extractDir.exists()) {
 							if (!extractDir.mkdirs()) {
 								String errorMessage = NLS.bind(
-										Messages.ERROR_failedCreatingTmpDirs,
+										Messages.ERROR_TMP_FILE_CREATION_FAILED,
 										extractDir);
 								log.error(errorMessage);
 							}
@@ -253,7 +252,7 @@ public class EmbeddedTomcatServer{
 							deployableDocBase = extractDir.getAbsolutePath();
 						} catch (IOException e) {
 							String errorMessage = NLS.bind(
-									Messages.ERROR_extractingWarFailed,
+									Messages.ERROR_WAR_EXTRACTION_FAILED,
 									readableDocBase.getPath(),
 									extractDir.getPath());
 							log.error(errorMessage, e);
@@ -272,7 +271,7 @@ public class EmbeddedTomcatServer{
 				}
 			} else {
 				String errorMessage = NLS.bind(
-						Messages.ERROR_missingRequiredConfig, new Object[] {
+						Messages.ERROR_MISSING_REQUIRED_CONFIG, new Object[] {
 								applicationID, relativePath, context });
 				log.error(errorMessage);
 				log.error(appDeploymentErrorMsg);
@@ -297,7 +296,7 @@ public class EmbeddedTomcatServer{
 			rootURL = HTTP_PROTOCOL_PREFIX + hostName + ":" + port; //$NON-NLS-1$
 		} catch (IOException e) {
 			throw new EmbeddedTomcatException(
-					"Error while configuring embedded tomcat server.", e);
+					Messages.ERROR_TOMCAT_INIT_ERROR, e);
 		}
 	}
 

@@ -27,23 +27,23 @@ public class Messages extends NLS {
 	private Messages() {
 	}
 
-	public static String EmbeddedTomcatMsg_0;
-	public static String INFO_startingTomcat;
-	public static String INFO_tomcatStarted;
-	public static String ERROR_tomcatStartupError;
-	public static String ERROR_tomcatShutdownError;
-	public static String ERROR_bundleShutdownError;
-	public static String ERROR_bundleStartupError;
-	public static String ERROR_serverNotFound;
-	public static String ERROR_duplicateContext;
-	public static String ERROR_appNotFound;
-	public static String ERROR_bundleEarlyStartupError;
-	public static String ERROR_duplicateAppID;
-	public static String INFO_appAddedSuccessfully;
-	public static String ERROR_errorAddingWebApp;
-	public static String ERROR_resolvingResourcesFailed;
-	public static String ERROR_failedCreatingTmpDirs;
-	public static String ERROR_extractingWarFailed;
-	public static String ERROR_appDeploymentFailed;
-	public static String ERROR_missingRequiredConfig;
+	public static String INFO_STARTING_TOMCAT;
+	public static String INFO_TOMCAT_STARTED;
+	public static String ERROR_TOMCAT_STARTUP_ERROR;
+	public static String ERROR_TOMCAT_INIT_ERROR;
+	public static String ERROR_TOMCAT_SHUTDOWN_ERROR;
+	public static String ERROR_BUNDLE_SHUTDOWN_ERROR;
+	public static String ERROR_BUNDLE_STARTUP_ERROR;
+	public static String ERROR_SERVER_NOT_FOUND;
+	public static String ERROR_DUPLICATE_CONTEXT;
+	public static String ERROR_APP_NOT_FOUND;
+	public static String ERROR_EARLY_STARTUP_ERROR;
+	public static String ERROR_DUPLICATE_APP_ID;
+	public static String INFO_APP_ADDED_SUCCESSFULLY;
+	public static String ERROR_ADDING_WEBAPP_FAILED;
+	public static String ERROR_RESOLVING_RESOURCES_FAILED;
+	public static String ERROR_TMP_FILE_CREATION_FAILED;
+	public static String ERROR_WAR_EXTRACTION_FAILED;
+	public static String ERROR_APP_DEPLOYMENT_FAILED;
+	public static String ERROR_MISSING_REQUIRED_CONFIG;
 }

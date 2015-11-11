@@ -23,6 +23,6 @@ public class DuplicateAppIDException extends EmbeddedTomcatException {
 	private static final long serialVersionUID = -4357527313010374145L;
 
 	public DuplicateAppIDException(String appID, String context) {
-		super(NLS.bind(Messages.ERROR_duplicateAppID, appID, context));
+		super(NLS.bind(Messages.ERROR_DUPLICATE_APP_ID, appID, context));
 	}
 }

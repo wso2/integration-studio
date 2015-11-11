@@ -27,7 +27,7 @@ public class EmbeddedTomcatPlugin implements BundleActivator {
 
 	public static final String PLUGIN_ID = "org.wso2.developerstudio.embedded.tomcat";//$NON-NLS-1$
 
-	private static ClassLoader bundleCtxtClassLoader;
+	private static ClassLoader bundleCtxClassLoader;
 	private static BundleContext context;
 	private static EmbeddedTomcatPlugin plugin;
 	private static IDeveloperStudioLog log = Logger.getLog(EmbeddedTomcatPlugin.PLUGIN_ID);
@@ -38,21 +38,21 @@ public class EmbeddedTomcatPlugin implements BundleActivator {
 	public void start(BundleContext bundleContext) throws Exception {
 		context = bundleContext;
 		plugin = this;
-        bundleCtxtClassLoader = Thread.currentThread().getContextClassLoader();
+        bundleCtxClassLoader = Thread.currentThread().getContextClassLoader();
 
 		// Start embedded Tomcat with a separate class loader
 		Thread tomcatThread = new Thread(new Runnable() {
 			@Override
 			public void run() {
 				try {
-					log.info(Messages.INFO_startingTomcat);
-					Thread.currentThread().setContextClassLoader(bundleCtxtClassLoader);
+					log.info(Messages.INFO_STARTING_TOMCAT);
+					Thread.currentThread().setContextClassLoader(bundleCtxClassLoader);
 					tomcatServer = new EmbeddedTomcatServer();
 					tomcatServer.start();
 					Integer port = tomcatServer.getServerPort();
-					log.info(NLS.bind(Messages.INFO_tomcatStarted, port));
+					log.info(NLS.bind(Messages.INFO_TOMCAT_STARTED, port));
 				} catch (EmbeddedTomcatException ex) {
-					log.error(Messages.ERROR_tomcatStartupError, ex);
+					log.error(Messages.ERROR_TOMCAT_STARTUP_ERROR, ex);
 				}
 			}
 		});
@@ -65,7 +65,7 @@ public class EmbeddedTomcatPlugin implements BundleActivator {
 		try {
 			tomcatServer.stop();
 		} catch (Exception e) {
-			log.error(Messages.ERROR_tomcatShutdownError, e);
+			log.error(Messages.ERROR_TOMCAT_SHUTDOWN_ERROR, e);
 		}
 	}
 
@@ -86,7 +86,7 @@ public class EmbeddedTomcatPlugin implements BundleActivator {
 	 */
 	public EmbeddedTomcatServer getServer() throws EmbeddedTomcatException{
 		if(tomcatServer == null){
-			throw new EmbeddedTomcatException(Messages.ERROR_serverNotFound);
+			throw new EmbeddedTomcatException(Messages.ERROR_SERVER_NOT_FOUND);
 		}
 		return  tomcatServer;
 	}
@@ -112,6 +112,6 @@ public class EmbeddedTomcatPlugin implements BundleActivator {
 	}
 
 	public ClassLoader getContextClassLoader() {
-		return bundleCtxtClassLoader;
+		return bundleCtxClassLoader;
 	}
 }

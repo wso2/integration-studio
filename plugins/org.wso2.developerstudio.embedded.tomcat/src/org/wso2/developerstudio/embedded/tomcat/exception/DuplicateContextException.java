@@ -23,6 +23,6 @@ public class DuplicateContextException extends EmbeddedTomcatException {
 	private static final long serialVersionUID = 3309958704648175710L;
 
 	public DuplicateContextException(String context, String appID) {
-		super(NLS.bind(Messages.ERROR_duplicateContext, context, appID));
+		super(NLS.bind(Messages.ERROR_DUPLICATE_CONTEXT, context, appID));
 	}
 }

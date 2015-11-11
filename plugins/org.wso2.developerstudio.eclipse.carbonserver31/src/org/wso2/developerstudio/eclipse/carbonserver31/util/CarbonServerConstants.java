@@ -67,7 +67,6 @@ public class CarbonServerConstants {
 	public static final String ESB_CONSOLE_HTTPS="esb.https";
 	
 	//If the following 3 final variables are changed, please update the 
-	//esb.definition.xml <port><name> tag also in parallel with the same values
 	public static final String ESB_TRANSPORT_HTTP_DESC="ESB transport http";
 	public static final String ESB_TRANSPORT_HTTPS_DESC="ESB transport https";
 	public static final String ESB_CONSOLE_HTTPS_DESC="ESB console port";

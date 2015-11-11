@@ -21,6 +21,7 @@ import java.util.Map;
 
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.wso2.developerstudio.eclipse.carbonserver.base.util.CarbonUtils;
+import org.wso2.developerstudio.eclipse.platform.core.utils.DeveloperStudioProviderUtils;
 
 public final class ArtifactTypeMapping {
 	private static final String ARTIFACT_TYPE = "artifactType";
@@ -30,8 +31,8 @@ public final class ArtifactTypeMapping {
 	private static Map<String, String> subType = new HashMap<String, String>();
 	
 	public ArtifactTypeMapping(){
-		CarbonUtils carbonUtils = new CarbonUtils();
-		IConfigurationElement[] artifactMappings = carbonUtils.getExtensionPointmembers(REGISTER_ARTIFACT_MAPPING_EXTENSION_ID);
+		DeveloperStudioProviderUtils devStudioUtils = new DeveloperStudioProviderUtils();
+		IConfigurationElement[] artifactMappings = devStudioUtils.getExtensionPointmembers(REGISTER_ARTIFACT_MAPPING_EXTENSION_ID);
 		for (IConfigurationElement artifactmapping : artifactMappings){
 			  type.put(artifactmapping.getAttribute(ARTIFACT_TYPE), artifactmapping.getAttribute(FILE_EXTENSION));
 		}

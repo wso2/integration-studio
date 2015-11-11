@@ -66,7 +66,6 @@ public class CommonOperations {
 			if (i!=-1 && CarbonServerConstants.PORT_IDS.get(i).equals("carbon.http"))
 				http=p.getPort();
 		}
-		//WSASServer31Utils.setTrustoreProperties(server);
 		return "http://"+server.getHost()+":"+http;
 	} 
 	

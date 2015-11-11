@@ -61,6 +61,7 @@ import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
 import org.wso2.developerstudio.eclipse.platform.core.model.AbstractListDataProvider.ListData;
 import org.wso2.developerstudio.eclipse.platform.core.project.export.ProjectArtifactHandler;
 import org.wso2.developerstudio.eclipse.platform.core.project.export.util.ExportUtil;
+import org.wso2.developerstudio.eclipse.platform.core.utils.DeveloperStudioProviderUtils;
 import org.wso2.developerstudio.eclipse.platform.core.utils.XMLUtil;
 import org.wso2.developerstudio.eclipse.utils.archive.ArchiveManipulator;
 import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
@@ -75,7 +76,8 @@ public class CarExportHandler extends ProjectArtifactHandler {
 	                                                                       "org.wso2.developerstudio.eclipse.capp.project.export.handler";
 	private static final String POM_FILE = "pom.xml";
 	private static final String SPLIT_DIR_NAME = "split_esb_resources";
-	CarbonUtils carbonUtils = new CarbonUtils();
+	DeveloperStudioProviderUtils devStudioUtils = new DeveloperStudioProviderUtils();
+	boolean isExecClassFound;
 
 	public List<IResource> exportArtifact(IProject project) throws Exception {
 		List<IResource> exportResources = new ArrayList<IResource>();
@@ -126,18 +128,26 @@ public class CarExportHandler extends ProjectArtifactHandler {
 					selectExporterExecCalss(serverRole, artifactList, graphicalSynapseProjectList, splitESBResources,
 					                        dependencyData, parent, self);
 				} else if (parent == null && self != null) { // artifacts as
-					// single
-					// archive
+					// single artifact archive
 					ArtifactExportHandler artifactExportHandler = new ArtifactExportHandler();
 					artifactExportHandler.exportArtifact(artifactList, null, null, dependencyData, parent, null);
+					isExecClassFound = true;
 				} else if (parent != null && self == null) { // these are
-					// registry resources that may have some other server role,
-					// to get the correct artifact exporter we need to set the
+					// registry resources may also have some other server role,
+					// therefore to get the correct artifact exporter we need to
+					// set the
 					// server role here as GovernanceRegistry
 					selectExporterExecCalss(GOVERNANCE_REGISTRY_SERVER_ROLE, artifactList, resourceProjectList, null,
 					                        dependencyData, parent, null);
 				} else {
-					// TODO : give an error message
+					log.error("unidentified artifact structure, cannot be exported as a deployable artifact for server " +
+					          serverRole);
+				}
+				if (!isExecClassFound) {
+					log.error("No appropriate class found extending the extension point " +
+					          CAPP_PROJECT_EXPORT_HANDLER_EXTENSION_ID +
+					          "to perform the artifact export for server role " + serverRole + "for dependency " +
+					          dependency.getArtifactId());
 				}
 			}
 		}
@@ -149,10 +159,6 @@ public class CarExportHandler extends ProjectArtifactHandler {
 		artifactElt.addAttribute("version", parentPrj.getModel().getVersion(), null);
 		artifactElt.addAttribute("type", "carbon/application", null);
 
-		/*
-		 * Sort artifacts in order to arrange them based on their priorities.
-		 * Fixing TOOLS-2335, TOOLS-2197
-		 */
 		Collections.sort(artifactList);
 
 		for (ArtifactData artifact : artifactList) {
@@ -227,7 +233,7 @@ public class CarExportHandler extends ProjectArtifactHandler {
 	                                     IFolder splitESBResources, DependencyData dependencyData, Object parent,
 	                                     Object self) {
 		IConfigurationElement[] elements =
-		                                   carbonUtils.getExtensionPointmembers(CAPP_PROJECT_EXPORT_HANDLER_EXTENSION_ID);
+		                                   devStudioUtils.getExtensionPointmembers(CAPP_PROJECT_EXPORT_HANDLER_EXTENSION_ID);
 		if (elements != null) {
 			for (int j = 0; j < elements.length; j++) {
 				IConfigurationElement config = elements[j];
@@ -237,6 +243,7 @@ public class CarExportHandler extends ProjectArtifactHandler {
 					try {
 						execClassObject = config.createExecutableExtension(EXECUTIONCLASS);
 						if (execClassObject instanceof DefaultArtifactExportHandler) {
+							isExecClassFound = true;
 							executeExtension(execClassObject, artifactList, synapseProjectList, splitESBResources,
 							                 dependencyData, parent, self);
 						}

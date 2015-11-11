@@ -28,7 +28,7 @@ import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import java.io.IOException;
 
 public class CarbonServerConsole {
-	private static IDeveloperStudioLog log=Logger.getLog(Activator.PLUGIN_ID);
+	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
 	public void printMessageInConsole(String consoleName, String messageToDisplay) {
 		IOConsole myConsole = findConsole(consoleName);
@@ -37,7 +37,7 @@ public class CarbonServerConsole {
 			out.write(messageToDisplay);
 			out.flush();
 		} catch (IOException e1) {
-			log.error("Writing content to Eclipse console failed due to "+e1.getMessage() , e1);
+			log.error("Writing content to Eclipse console failed due to " + e1.getMessage(), e1);
 		}
 	}
 

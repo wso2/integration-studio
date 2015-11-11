@@ -1,12 +1,12 @@
 /*
  * Copyright (c) 2010, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
- *
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -32,9 +32,12 @@ import org.wso2.developerstudio.eclipse.carbonserver.base.impl.CarbonServer;
 import org.wso2.developerstudio.eclipse.carbonserver.base.interfaces.ICarbonServerMonitor;
 import org.wso2.developerstudio.eclipse.carbonserver.base.manager.CarbonServerManager;
 import org.wso2.developerstudio.eclipse.carbonserver.base.manager.ICarbonOperationManager;
+import org.wso2.developerstudio.eclipse.carbonserver42.Activator;
 import org.wso2.developerstudio.eclipse.carbonserver42.monitor.CarbonServerListener;
 import org.wso2.developerstudio.eclipse.carbonserver42.util.CarbonServer42Utils;
 import org.wso2.developerstudio.eclipse.carbonserver42.util.CarbonServerConstants;
+import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
+import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.server.base.core.ServerController;
 import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
 import org.wso2.developerstudio.eclipse.carbonserver.base.utils.CarbonServerUtils;
@@ -47,6 +50,7 @@ import java.util.List;
 import java.util.Map;
 
 public class CarbonOperationsManager42 implements ICarbonOperationManager {
+	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
 	private static final String runtimeId = "org.wso2.developerstudio.eclipse.carbon.runtime42";
 
@@ -59,241 +63,168 @@ public class CarbonOperationsManager42 implements ICarbonOperationManager {
 			try {
 				int opType = Integer.parseInt(operation.get(ICarbonOperationManager.PARAMETER_TYPE).toString());
 				Object result = null;
-				// ValidatorOperation validatorOperation=null;
 				IServer server = null;
 				if (operation.containsKey(ICarbonOperationManager.PARAMETER_SERVER))
 					server = (IServer) operation.get(ICarbonOperationManager.PARAMETER_SERVER);
 				switch (opType) {
-				case ICarbonOperationManager.OPERATION_SUPPORTED_OPERATIONS:
-					result = false;
-					if (operation.containsKey(ICarbonOperationManager.PARAMETER_OP_TYPES))
-						result = isOperationSupported(Integer.parseInt(operation.get(
-								ICarbonOperationManager.PARAMETER_OP_TYPES).toString()));
-					break;
-				// case ICarbonOperationManager.OPERATION_WSDL_CONVERT_FILE:
-				// continueOperationWithServerStatus(server);
-				// WSDLConverterOperation converterOperation = new
-				// WSDLConverterOperation(server,false);
-				// if
-				// (operation.containsKey(ICarbonOperationManager.PARAMETER_PATH))
-				// result=converterOperation.getWSDLConversionResultUrl(operation.get(ICarbonOperationManager.PARAMETER_PATH).toString());
-				// else
-				// throw new InsufficientParamtersForCarbonOperationException();
-				// break;
-				// case ICarbonOperationManager.OPERATION_WSDL_CONVERT_URL:
-				// continueOperationWithServerStatus(server);
-				// WSDLConverterOperation converterOperation1 = new
-				// WSDLConverterOperation(server,true);
-				// if
-				// (operation.containsKey(ICarbonOperationManager.PARAMETER_PATH))
-				// result=converterOperation1.getWSDLConversionResultUrl(operation.get(ICarbonOperationManager.PARAMETER_PATH).toString());
-				// else
-				// throw new InsufficientParamtersForCarbonOperationException();
-				// break;
-				// case
-				// ICarbonOperationManager.OPERATION_MODULE_ARCHIVE_VALIDATE:
-				// continueOperationWithServerStatus(server);
-				// if
-				// (operation.containsKey(ICarbonOperationManager.PARAMETER_PATH))
-				// validatorOperation= new
-				// ValidatorOperation(opType,operation.get(ICarbonOperationManager.PARAMETER_PATH).toString(),server);
-				// else
-				// throw new InsufficientParamtersForCarbonOperationException();
-				// result=validatorOperation.getValidationResultUrl();
-				// break;
-				// case ICarbonOperationManager.OPERATION_MODULE_XML_VALIDATE:
-				// continueOperationWithServerStatus(server);
-				// if
-				// (operation.containsKey(ICarbonOperationManager.PARAMETER_PATH))
-				// validatorOperation= new
-				// ValidatorOperation(opType,operation.get(ICarbonOperationManager.PARAMETER_PATH).toString(),server);
-				// else
-				// throw new InsufficientParamtersForCarbonOperationException();
-				// result=validatorOperation.getValidationResultUrl();
-				// break;
-				// case
-				// ICarbonOperationManager.OPERATION_SERVICE_ARCHIVE_VALIDATE:
-				// continueOperationWithServerStatus(server);
-				// if
-				// (operation.containsKey(ICarbonOperationManager.PARAMETER_PATH))
-				// validatorOperation= new
-				// ValidatorOperation(opType,operation.get(ICarbonOperationManager.PARAMETER_PATH).toString(),server);
-				// else
-				// throw new InsufficientParamtersForCarbonOperationException();
-				// result=validatorOperation.getValidationResultUrl();
-				// break;
-				// case ICarbonOperationManager.OPERATION_SERVICE_XML_VALIDATE:
-				// continueOperationWithServerStatus(server);
-				// if
-				// (operation.containsKey(ICarbonOperationManager.PARAMETER_PATH))
-				// validatorOperation= new
-				// ValidatorOperation(opType,operation.get(ICarbonOperationManager.PARAMETER_PATH).toString(),server);
-				// else
-				// throw new InsufficientParamtersForCarbonOperationException();
-				// result=validatorOperation.getValidationResultUrl();
-				// break;
-				// case ICarbonOperationManager.OPERATION_WSDL_TRY_IT_URL:
-				// continueOperationWithServerStatus(server);
-				// TryItOperations tryItOperations=new TryItOperations(server);
-				// if
-				// (operation.containsKey(ICarbonOperationManager.PARAMETER_PATH))
-				// result=tryItOperations.getTryItUrlFromUrl(operation.get(ICarbonOperationManager.PARAMETER_PATH).toString());
-				// else
-				// throw new InsufficientParamtersForCarbonOperationException();
-				// break;
-				// case ICarbonOperationManager.OPERATION_WSDL_TRY_IT_FILE:
-				// continueOperationWithServerStatus(server);
-				// TryItOperations tryItOperations2=new TryItOperations(server);
-				// if
-				// (operation.containsKey(ICarbonOperationManager.PARAMETER_PATH))
-				// result=tryItOperations2.getTryItUrlFromFile(operation.get(ICarbonOperationManager.PARAMETER_PATH).toString());
-				// else
-				// throw new InsufficientParamtersForCarbonOperationException();
-				// break;
-				case ICarbonOperationManager.OPERATION_GET_LIBRARY_PATHS:
-					result = getLibraryPaths().toArray(new String[] {});
-					break;
-				case ICarbonOperationManager.OPERATION_GET_CODEGEN_LIBRARIES:
-					if (server == null) {
-						if (operation.containsKey(ICarbonOperationManager.PARAMETER_RUNTIME)) {
-							String path = (String) operation.get(ICarbonOperationManager.PARAMETER_PATH);
-							List<String> libraryPaths = getLibraryPaths();
-							List<String> absLibraryPaths = new ArrayList<String>();
-							for (String string : libraryPaths) {
-								absLibraryPaths.add(FileUtils.addAnotherNodeToPath(path, string));
+					case ICarbonOperationManager.OPERATION_SUPPORTED_OPERATIONS:
+						result = false;
+						if (operation.containsKey(ICarbonOperationManager.PARAMETER_OP_TYPES))
+							result =
+							         isOperationSupported(Integer.parseInt(operation.get(ICarbonOperationManager.PARAMETER_OP_TYPES)
+							                                                        .toString()));
+						break;
+					case ICarbonOperationManager.OPERATION_GET_LIBRARY_PATHS:
+						result = getLibraryPaths().toArray(new String[] {});
+						break;
+					case ICarbonOperationManager.OPERATION_GET_CODEGEN_LIBRARIES:
+						if (server == null) {
+							if (operation.containsKey(ICarbonOperationManager.PARAMETER_RUNTIME)) {
+								String path = (String) operation.get(ICarbonOperationManager.PARAMETER_PATH);
+								List<String> libraryPaths = getLibraryPaths();
+								List<String> absLibraryPaths = new ArrayList<String>();
+								for (String string : libraryPaths) {
+									absLibraryPaths.add(FileUtils.addAnotherNodeToPath(path, string));
+								}
+								result = getCodegenLibraries(absLibraryPaths.toArray(new String[] {}));
 							}
-							result = getCodegenLibraries(absLibraryPaths.toArray(new String[] {}));
-						}
-					} else {
-						String[] serverCodegenLibraries = CarbonServerManager.getServerLibraryPaths(server);
-						result = getCodegenLibraries(serverCodegenLibraries);
-					}
-					break;
-				case ICarbonOperationManager.OPERATION_GET_AXIS2_LIBRARIES:
-					if (operation.containsKey(ICarbonOperationManager.PARAMETER_PATH)) {
-						String path = operation.get(ICarbonOperationManager.PARAMETER_PATH).toString();
-						result = getAxis2Libraries(path);
-
-					}
-					break;
-				case ICarbonOperationManager.OPERATION_GET_SERVER_HOME:
-					if (server != null)
-						result = CommonOperations.getWSASHome(server);
-					break;
-				case ICarbonOperationManager.OPERATION_GET_SERVER_PORTS:
-					if (server != null)
-						result = CarbonServer42Utils.getServerPorts(server);
-					break;
-				case ICarbonOperationManager.OPERATION_INITIALIZE_SERVER_CONFIGURATIONS:
-					if (server != null)
-						initializeTheServer(server);
-					break;
-				case ICarbonOperationManager.OPERATION_CLEANUP_SERVER_CONFIGURATIONS:
-					if (server != null)
-						cleanupTheServer(server);
-					break;
-				case ICarbonOperationManager.OPERATION_PUBLISH_MODULE:
-					if (server != null)
-						if (operation.containsKey(ICarbonOperationManager.PARAMETER_PROJECT)) {
-							IProject project = (IProject) operation.get(ICarbonOperationManager.PARAMETER_PROJECT);
-							ServiceModuleOperations serviceModuleOperations = new ServiceModuleOperations(project,
-									server);
-							String path = null;
-							serviceModuleOperations.publishServiceModule(path, null);
-						}
-					break;
-				case ICarbonOperationManager.OPERATION_UNPUBLISH_MODULE:
-					if (server != null)
-						if (operation.containsKey(ICarbonOperationManager.PARAMETER_PROJECT)) {
-							IProject project = (IProject) operation.get(ICarbonOperationManager.PARAMETER_PROJECT);
-							ServiceModuleOperations serviceModuleOperations = new ServiceModuleOperations(project,
-									server);
-							String path = null;
-							serviceModuleOperations.unpublishServiceModule(path, null);
-						}
-					break;
-				case ICarbonOperationManager.OPERATION_HOT_UPDATE_MODULE:
-					if (server != null)
-						if (operation.containsKey(ICarbonOperationManager.PARAMETER_PROJECT)) {
-							IProject project = (IProject) operation.get(ICarbonOperationManager.PARAMETER_PROJECT);
-							ServiceModuleOperations serviceModuleOperations = new ServiceModuleOperations(project,
-									server);
-							IResource updatedResource = (IResource) operation.get("resource");
-							serviceModuleOperations.setUpdatedResource(updatedResource);
-							Integer resChangeKind = (Integer) operation.get("resourceChangeKind");
-							if (resChangeKind != null) {
-								serviceModuleOperations.setResourceChngeKind(resChangeKind);
-							}
-							serviceModuleOperations.hotUpdateModule();
-						}
-					break;
-				case ICarbonOperationManager.OPERATION_REDEPLOY_MODULE:
-					if (server != null)
-						if (operation.containsKey(ICarbonOperationManager.PARAMETER_PROJECT)) {
-							IProject project = (IProject) operation.get(ICarbonOperationManager.PARAMETER_PROJECT);
-							ServiceModuleOperations serviceModuleOperations = new ServiceModuleOperations(project,
-									server);
-							serviceModuleOperations.redeployModule();
-						}
-					break;
-				case ICarbonOperationManager.OPERATION_GET_PUBLISHED_SERVICES:
-					if (server != null) {
-						ServiceModuleOperations serviceModuleOperations;
-						if (operation.containsKey(ICarbonOperationManager.PARAMETER_PROJECT)) {
-							IProject project = (IProject) operation.get(ICarbonOperationManager.PARAMETER_PROJECT);
-							serviceModuleOperations = new ServiceModuleOperations(project, server);
 						} else {
-							serviceModuleOperations = new ServiceModuleOperations(null, server);
+							String[] serverCodegenLibraries = CarbonServerManager.getServerLibraryPaths(server);
+							result = getCodegenLibraries(serverCodegenLibraries);
 						}
-						return serviceModuleOperations.getServicesList();
-					}
-					break;
-				case ICarbonOperationManager.OPERATION_GET_SERVICE_WSDL_URL:
-					URL serviceWSDLUrl = null;
-					if (server != null) {
-						if (operation.containsKey(ICarbonOperationManager.PARAMETER_SERVICE_NAME)) {
-							String serviceName = (String) operation.get(ICarbonOperationManager.PARAMETER_SERVICE_NAME);
-							serviceWSDLUrl = getServiceWSDLUrl(server, serviceName);
-						}
-					}
-					result = serviceWSDLUrl;
-					break;
-				case ICarbonOperationManager.OPERATION_GET_SERVICE_TRY_IT_URL:
-					URL serviceTryItUrl = null;
-					if (server != null) {
-						if (operation.containsKey(ICarbonOperationManager.PARAMETER_SERVICE_NAME)) {
-							String serviceName = (String) operation.get(ICarbonOperationManager.PARAMETER_SERVICE_NAME);
-							serviceTryItUrl = getServiceTryItUrl(server, serviceName);
-						}
-					}
-					result = serviceTryItUrl;
-					break;
-				case ICarbonOperationManager.OPERATION_GET_SERVER_CREDENTIALS:
-					Map<String, String> serverCredentials = null;
-					if (server != null) {
-						serverCredentials = CarbonServer42Utils.getServerCredentials(server);
-					}
-					result = serverCredentials;
-					break;
-				case ICarbonOperationManager.OPERATION_GET_SERVER_AUTHENTICATED_COOKIE:
-					String cookie = null;
-					if (server != null) {
-						if (operation.containsKey(ICarbonOperationManager.PARAMETER_SERVER_PORT)) {
-							String serverPort = (String) operation.get(ICarbonOperationManager.PARAMETER_SERVER_PORT);
-							cookie = CarbonServer42Utils.getServerCookie(server, serverPort);
-						}
-					}
-					result = cookie;
-					break;
-				case ICarbonOperationManager.OPERATION_SERVER_URL:
-					result = CarbonServer42Utils.getServerURL(server);
-					break;
-				case ICarbonOperationManager.OPERATION_SERVER_VERSION:
-					result = CarbonServer42Utils.getServerVersion();
-					break;
+						break;
+					case ICarbonOperationManager.OPERATION_GET_AXIS2_LIBRARIES:
+						if (operation.containsKey(ICarbonOperationManager.PARAMETER_PATH)) {
+							String path = operation.get(ICarbonOperationManager.PARAMETER_PATH).toString();
+							result = getAxis2Libraries(path);
 
-				default:
-					throw new NoSuchCarbonOperationDefinedException();
+						}
+						break;
+					case ICarbonOperationManager.OPERATION_GET_SERVER_HOME:
+						if (server != null)
+							result = CommonOperations.getWSASHome(server);
+						break;
+					case ICarbonOperationManager.OPERATION_GET_SERVER_PORTS:
+						if (server != null)
+							result = CarbonServer42Utils.getServerPorts(server);
+						break;
+					case ICarbonOperationManager.OPERATION_INITIALIZE_SERVER_CONFIGURATIONS:
+						if (server != null)
+							initializeTheServer(server);
+						break;
+					case ICarbonOperationManager.OPERATION_CLEANUP_SERVER_CONFIGURATIONS:
+						if (server != null)
+							cleanupTheServer(server);
+						break;
+					case ICarbonOperationManager.OPERATION_PUBLISH_MODULE:
+						if (server != null)
+							if (operation.containsKey(ICarbonOperationManager.PARAMETER_PROJECT)) {
+								IProject project = (IProject) operation.get(ICarbonOperationManager.PARAMETER_PROJECT);
+								ServiceModuleOperations serviceModuleOperations =
+								                                                  new ServiceModuleOperations(project,
+								                                                                              server);
+								String path = null;
+								serviceModuleOperations.publishServiceModule(path, null);
+							}
+						break;
+					case ICarbonOperationManager.OPERATION_UNPUBLISH_MODULE:
+						if (server != null)
+							if (operation.containsKey(ICarbonOperationManager.PARAMETER_PROJECT)) {
+								IProject project = (IProject) operation.get(ICarbonOperationManager.PARAMETER_PROJECT);
+								ServiceModuleOperations serviceModuleOperations =
+								                                                  new ServiceModuleOperations(project,
+								                                                                              server);
+								String path = null;
+								serviceModuleOperations.unpublishServiceModule(path, null);
+							}
+						break;
+					case ICarbonOperationManager.OPERATION_HOT_UPDATE_MODULE:
+						if (server != null)
+							if (operation.containsKey(ICarbonOperationManager.PARAMETER_PROJECT)) {
+								IProject project = (IProject) operation.get(ICarbonOperationManager.PARAMETER_PROJECT);
+								ServiceModuleOperations serviceModuleOperations =
+								                                                  new ServiceModuleOperations(project,
+								                                                                              server);
+								IResource updatedResource = (IResource) operation.get("resource");
+								serviceModuleOperations.setUpdatedResource(updatedResource);
+								Integer resChangeKind = (Integer) operation.get("resourceChangeKind");
+								if (resChangeKind != null) {
+									serviceModuleOperations.setResourceChngeKind(resChangeKind);
+								}
+								serviceModuleOperations.hotUpdateModule();
+							}
+						break;
+					case ICarbonOperationManager.OPERATION_REDEPLOY_MODULE:
+						if (server != null)
+							if (operation.containsKey(ICarbonOperationManager.PARAMETER_PROJECT)) {
+								IProject project = (IProject) operation.get(ICarbonOperationManager.PARAMETER_PROJECT);
+								ServiceModuleOperations serviceModuleOperations =
+								                                                  new ServiceModuleOperations(project,
+								                                                                              server);
+								serviceModuleOperations.redeployModule();
+							}
+						break;
+					case ICarbonOperationManager.OPERATION_GET_PUBLISHED_SERVICES:
+						if (server != null) {
+							ServiceModuleOperations serviceModuleOperations;
+							if (operation.containsKey(ICarbonOperationManager.PARAMETER_PROJECT)) {
+								IProject project = (IProject) operation.get(ICarbonOperationManager.PARAMETER_PROJECT);
+								serviceModuleOperations = new ServiceModuleOperations(project, server);
+							} else {
+								serviceModuleOperations = new ServiceModuleOperations(null, server);
+							}
+							return serviceModuleOperations.getServicesList();
+						}
+						break;
+					case ICarbonOperationManager.OPERATION_GET_SERVICE_WSDL_URL:
+						URL serviceWSDLUrl = null;
+						if (server != null) {
+							if (operation.containsKey(ICarbonOperationManager.PARAMETER_SERVICE_NAME)) {
+								String serviceName =
+								                     (String) operation.get(ICarbonOperationManager.PARAMETER_SERVICE_NAME);
+								serviceWSDLUrl = getServiceWSDLUrl(server, serviceName);
+							}
+						}
+						result = serviceWSDLUrl;
+						break;
+					case ICarbonOperationManager.OPERATION_GET_SERVICE_TRY_IT_URL:
+						URL serviceTryItUrl = null;
+						if (server != null) {
+							if (operation.containsKey(ICarbonOperationManager.PARAMETER_SERVICE_NAME)) {
+								String serviceName =
+								                     (String) operation.get(ICarbonOperationManager.PARAMETER_SERVICE_NAME);
+								serviceTryItUrl = getServiceTryItUrl(server, serviceName);
+							}
+						}
+						result = serviceTryItUrl;
+						break;
+					case ICarbonOperationManager.OPERATION_GET_SERVER_CREDENTIALS:
+						Map<String, String> serverCredentials = null;
+						if (server != null) {
+							serverCredentials = CarbonServer42Utils.getServerCredentials(server);
+						}
+						result = serverCredentials;
+						break;
+					case ICarbonOperationManager.OPERATION_GET_SERVER_AUTHENTICATED_COOKIE:
+						String cookie = null;
+						if (server != null) {
+							if (operation.containsKey(ICarbonOperationManager.PARAMETER_SERVER_PORT)) {
+								String serverPort =
+								                    (String) operation.get(ICarbonOperationManager.PARAMETER_SERVER_PORT);
+								cookie = CarbonServer42Utils.getServerCookie(server, serverPort);
+							}
+						}
+						result = cookie;
+						break;
+					case ICarbonOperationManager.OPERATION_SERVER_URL:
+						result = CarbonServer42Utils.getServerURL(server);
+						break;
+					case ICarbonOperationManager.OPERATION_SERVER_VERSION:
+						result = CarbonServer42Utils.getServerVersion();
+						break;
+
+					default:
+						throw new NoSuchCarbonOperationDefinedException();
 				}
 
 				return result;
@@ -308,67 +239,33 @@ public class CarbonOperationsManager42 implements ICarbonOperationManager {
 	public boolean isOperationSupported(int operation) {
 		boolean result = false;
 		switch (operation) {
-		case OPERATION_SUPPORTED_OPERATIONS:
-			// case OPERATION_MODULE_ARCHIVE_VALIDATE :
-			// case OPERATION_MODULE_XML_VALIDATE :
-			// case OPERATION_SERVICE_ARCHIVE_VALIDATE :
-			// case OPERATION_SERVICE_XML_VALIDATE :
-		case OPERATION_GET_LIBRARY_PATHS:
-		case OPERATION_GET_SERVER_HOME:
-		case OPERATION_GET_SERVER_PORTS:
-		case OPERATION_WSDL_CONVERT_FILE:
-		case OPERATION_WSDL_CONVERT_URL:
-		case OPERATION_WSDL_TRY_IT_URL:
-		case OPERATION_WSDL_TRY_IT_FILE:
-		case OPERATION_GET_CODEGEN_LIBRARIES:
-		case OPERATION_GET_AXIS2_LIBRARIES:
-		case OPERATION_GET_SERVICE_WSDL_URL:
-		case OPERATION_GET_SERVICE_TRY_IT_URL:
-		case OPERATION_REDEPLOY_MODULE:
-			result = true;
-			break;
-		default:
-			result = false;
+			case OPERATION_SUPPORTED_OPERATIONS:
+			case OPERATION_GET_LIBRARY_PATHS:
+			case OPERATION_GET_SERVER_HOME:
+			case OPERATION_GET_SERVER_PORTS:
+			case OPERATION_WSDL_CONVERT_FILE:
+			case OPERATION_WSDL_CONVERT_URL:
+			case OPERATION_WSDL_TRY_IT_URL:
+			case OPERATION_WSDL_TRY_IT_FILE:
+			case OPERATION_GET_CODEGEN_LIBRARIES:
+			case OPERATION_GET_AXIS2_LIBRARIES:
+			case OPERATION_GET_SERVICE_WSDL_URL:
+			case OPERATION_GET_SERVICE_TRY_IT_URL:
+			case OPERATION_REDEPLOY_MODULE:
+				result = true;
+				break;
+			default:
+				result = false;
 		}
 		return result;
 	}
 
 	public void initializeTheServer(IServer server) throws CoreException {
 		String serverLocalWorkspacePath = CarbonServerManager.getServerLocalWorkspacePath(server);
-		// IPath serverHome = WSASServerManager.getServerHome(server);
-		// File serverWorkspaceFile = new File(serverLocalWorkspacePath);
-		// String[] paths=new String[]{"repository","deployment","server"};
-		String serverLocalRepoLocation = CarbonServer42Utils
-				.getRepositoryPathFromLocalWorkspaceRepo(serverLocalWorkspacePath);
-		// paths=new String[]{"repository","conf"};
-		String serverLocalConfLocation = CarbonServer42Utils
-				.getConfPathFromLocalWorkspaceRepo(serverLocalWorkspacePath);
-		// if (!serverWorkspaceFile.exists() ||
-		// serverWorkspaceFile.list().length==0){
-		// WSASFileUtils fileUtils = new WSASFileUtils();
-		// // (new File(serverLocalRepoLocation)).mkdirs();
-		// // String
-		// serverRepoLocation=FileUtils.addNodesToPath(serverHome.toOSString(),
-		// paths);
-		// // fileUtils.copyDirectoryRecursively(serverRepoLocation,
-		// serverLocalRepoLocation);
-		// //
-		// // (new File(serverLocalConfLocation)).mkdirs();
-		// // String
-		// serverConfLocation=FileUtils.addNodesToPath(serverHome.toOSString(),
-		// paths);
-		// // fileUtils.copyDirectoryRecursively(serverConfLocation,
-		// serverLocalConfLocation);
-		// fileUtils.copyDirectoryRecursively(serverHome.toOSString(),
-		// serverLocalWorkspacePath);
-		// fileUtils.deleteFolder(FileUtils.addNodesToPath(serverLocalWorkspacePath,
-		// new String[]{"repository","components"}));
-		// //
-		// fileUtils.deleteFolder(FileUtils.addNodesToPath(serverLocalWorkspacePath,
-		// new String[]{"lib"}));
-		// }
-		// CarbonServer31Utils.updateAndSaveCarbonXml(FileUtils.addNodesToPath(serverLocalConfLocation,new
-		// String[]{"carbon.xml"}), serverLocalRepoLocation,server);
+		String serverLocalRepoLocation =
+		                                 CarbonServer42Utils.getRepositoryPathFromLocalWorkspaceRepo(serverLocalWorkspacePath);
+		String serverLocalConfLocation =
+		                                 CarbonServer42Utils.getConfPathFromLocalWorkspaceRepo(serverLocalWorkspacePath);
 		CarbonServer42Utils.updateTransportPorts(server);
 		CarbonServer42Utils.updateAxis2XML(server);
 		// just retrieving the value for hotupdate will update the axis2.xml
@@ -382,11 +279,7 @@ public class CarbonOperationsManager42 implements ICarbonOperationManager {
 	}
 
 	public void cleanupTheServer(IServer server) {
-		// String serverLocalWorkspacePath =
-		// WSASServerManager.getServerLocalWorkspacePath(server);
-		// WSASFileUtils fileUtils = new WSASFileUtils();
 		unpublishAllModules(server);
-		// fileUtils.deleteFolder(serverLocalWorkspacePath);
 	}
 
 	private void unpublishAllModules(IServer server) {
@@ -396,13 +289,6 @@ public class CarbonOperationsManager42 implements ICarbonOperationManager {
 			serviceModuleOperation.unpublishServiceModule(null, null);
 		}
 	}
-
-	// private void continueOperationWithServerStatus(IServer server) throws
-	// CarbonServerNotRunningException{
-	// if (server.getServerState()!=IServer.STATE_STARTED){
-	// throw new CarbonServerNotRunningException();
-	// }
-	// }
 
 	private String[] getCodegenLibraries(String[] serverCodegenLibraries) throws Exception {
 		List<String> paths = new ArrayList<String>();
@@ -427,8 +313,8 @@ public class CarbonOperationsManager42 implements ICarbonOperationManager {
 	private void visitAllFiles(File dir, List paths, List alreadyAdded) {
 		if (!dir.toString().endsWith(".txt")) {
 			if (dir.isDirectory()) {
-				if (dir.getName().toString().equals("tomcat") || dir.getName().toString().equals("wsf")
-						|| dir.getName().toString().equals("patches")) {
+				if (dir.getName().toString().equals("tomcat") || dir.getName().toString().equals("wsf") ||
+				    dir.getName().toString().equals("patches")) {
 					// skip these libraris being loaded
 				} else {
 					String[] children = dir.list();
@@ -473,8 +359,8 @@ public class CarbonOperationsManager42 implements ICarbonOperationManager {
 
 	private void initializeServerRepoLibraries(String wsasHomeFodler) throws CoreException {
 		IPath wsasHome = new Path(wsasHomeFodler);
-		if (!(new File(wsasHome.append("repository").append("lib").toOSString())).exists()
-				|| (new File(wsasHome.append("repository").append("lib").toOSString())).list().length < 5) {
+		if (!(new File(wsasHome.append("repository").append("lib").toOSString())).exists() ||
+		    (new File(wsasHome.append("repository").append("lib").toOSString())).list().length < 5) {
 			AntRunner runner = new AntRunner();
 			IPath antFile = wsasHome.append("bin").append("build.xml");
 			if (antFile.toFile().exists()) {
@@ -502,13 +388,14 @@ public class CarbonOperationsManager42 implements ICarbonOperationManager {
 			if (serverPort.getProtocol().equalsIgnoreCase("http"))
 				httpPort = serverPort.getPort();
 		}
-		String serviceWSDLUrl = "http://localhost:" + httpPort + "/" + CarbonServerUtils.getServicePath() + "/"
-				+ serviceName + "?wsdl";
+		String serviceWSDLUrl =
+		                        "http://localhost:" + httpPort + "/" + CarbonServerUtils.getServicePath() + "/" +
+		                                serviceName + "?wsdl";
 		URL url = null;
 		try {
 			url = new URL(serviceWSDLUrl);
 		} catch (MalformedURLException e) {
-			// log.error(e);
+			log.error(e);
 		}
 		return url;
 	}
@@ -520,13 +407,14 @@ public class CarbonOperationsManager42 implements ICarbonOperationManager {
 			if (serverPort.getProtocol().equalsIgnoreCase("http"))
 				httpPort = serverPort.getPort();
 		}
-		String serviceWSDLUrl = "http://localhost:" + httpPort + "/" + CarbonServerUtils.getServicePath() + "/"
-				+ serviceName + "?tryit";
+		String serviceWSDLUrl =
+		                        "http://localhost:" + httpPort + "/" + CarbonServerUtils.getServicePath() + "/" +
+		                                serviceName + "?tryit";
 		URL url = null;
 		try {
 			url = new URL(serviceWSDLUrl);
 		} catch (MalformedURLException e) {
-			// log.error(e);
+			log.error(e);
 		}
 		return url;
 	}

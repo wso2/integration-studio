@@ -1,12 +1,12 @@
 /*
  * Copyright (c) 2010, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
- *
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -34,80 +34,91 @@ import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
 public class CarbonServerListener implements IServerListener {
-	private static IDeveloperStudioLog log=Logger.getLog(Activator.PLUGIN_ID);
+	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
-    private final List<ICarbonServerMonitor> serverMonitors;
+	private final List<ICarbonServerMonitor> serverMonitors;
 
-    public CarbonServerListener(List<ICarbonServerMonitor> serverMonitors) {
-	    this.serverMonitors = serverMonitors;
-    }
+	public CarbonServerListener(List<ICarbonServerMonitor> serverMonitors) {
+		this.serverMonitors = serverMonitors;
+	}
 
-    public void serverChanged(ServerEvent event) {
-    	switch(event.getState()){
-    		case IServer.STATE_STARTING:triggerStarting(event.getServer());break;
-    		case IServer.STATE_STARTED:triggerStarted(event.getServer());break;
-    		case IServer.STATE_STOPPING:triggerStopping(event.getServer());break;
-    		case IServer.STATE_STOPPED:triggerStopped(event.getServer());break;
-//            		case IServer.STATE_UNKNOWN:triggerStarting(event.getServer());break;
-    	}
-    }
+	public void serverChanged(ServerEvent event) {
+		switch (event.getState()) {
+			case IServer.STATE_STARTING:
+				triggerStarting(event.getServer());
+				break;
+			case IServer.STATE_STARTED:
+				triggerStarted(event.getServer());
+				break;
+			case IServer.STATE_STOPPING:
+				triggerStopping(event.getServer());
+				break;
+			case IServer.STATE_STOPPED:
+				triggerStopped(event.getServer());
+				break;
+		}
+	}
 
-    private void triggerStarting(IServer server){
-    	File cappMonitorBundle = CarbonServer44Utils.getCappMonitorBundle();
-		IPath dropins = CarbonServerManager.getServerHome(server).append("repository").append("components").append("dropins");
+	private void triggerStarting(IServer server) {
+		File cappMonitorBundle = CarbonServer44Utils.getCappMonitorBundle();
+		IPath dropins =
+		                CarbonServerManager.getServerHome(server).append("repository").append("components")
+		                                   .append("dropins");
 		try {
-	        FileUtils.copyFileToDirectory(cappMonitorBundle, new File(dropins.toOSString()));
-        } catch (IOException e1) {
-	        e1.printStackTrace();
-        }
-    	for (ICarbonServerMonitor monitor : serverMonitors) {
-            try {
-                monitor.starting(server);
-            } catch (Exception e) {
-                log.error(e);
-            }
-        }
-    }
+			FileUtils.copyFileToDirectory(cappMonitorBundle, new File(dropins.toOSString()));
+		} catch (IOException e1) {
+			log.error(e1);
+		}
+		for (ICarbonServerMonitor monitor : serverMonitors) {
+			try {
+				monitor.starting(server);
+			} catch (Exception e) {
+				log.error(e);
+			}
+		}
+	}
 
-    private void triggerStarted(IServer server){
-    	for (ICarbonServerMonitor monitor : serverMonitors) {
-            try {
-                monitor.started(server);
-            } catch (Exception e) {
-                log.error(e);
-            }
-        }
-    }
+	private void triggerStarted(IServer server) {
+		for (ICarbonServerMonitor monitor : serverMonitors) {
+			try {
+				monitor.started(server);
+			} catch (Exception e) {
+				log.error(e);
+			}
+		}
+	}
 
-    private void triggerStopping(IServer server){
-    	for (ICarbonServerMonitor monitor : serverMonitors) {
-            try {
-                monitor.stopping(server);
-            } catch (Exception e) {
-                log.error(e);
-            }
-        }
-    	//Displaying message that carbon server is about to shutdown
-    	CarbonServerConsole console=new CarbonServerConsole();
-    	console.printMessageInConsole(server.getName(), "Carbon Server "+server.getName()+ " is shutting down...\n");
-    }
+	private void triggerStopping(IServer server) {
+		for (ICarbonServerMonitor monitor : serverMonitors) {
+			try {
+				monitor.stopping(server);
+			} catch (Exception e) {
+				log.error(e);
+			}
+		}
+		// Displaying message that carbon server is about to shutdown
+		CarbonServerConsole console = new CarbonServerConsole();
+		console.printMessageInConsole(server.getName(), "Carbon Server " + server.getName() + " is shutting down...\n");
+	}
 
-    private void triggerStopped(IServer server){
-    	//Displaying message that carbon server is about to shutdown
-    	CarbonServerConsole console=new CarbonServerConsole();
-    	console.printMessageInConsole(server.getName(), "Carbon Server "+server.getName()+ " has shut down...\n");
-    	File cappMonitorBundle = CarbonServer44Utils.getCappMonitorBundle();
-		IPath dropins = CarbonServerManager.getServerHome(server).append("repository").append("components").append("dropins").append(cappMonitorBundle.getName());
+	private void triggerStopped(IServer server) {
+		// Displaying message that carbon server is about to shutdown
+		CarbonServerConsole console = new CarbonServerConsole();
+		console.printMessageInConsole(server.getName(), "Carbon Server " + server.getName() + " has shut down...\n");
+		File cappMonitorBundle = CarbonServer44Utils.getCappMonitorBundle();
+		IPath dropins =
+		                CarbonServerManager.getServerHome(server).append("repository").append("components")
+		                                   .append("dropins").append(cappMonitorBundle.getName());
 		File cappMonitorFile = new File(dropins.toOSString());
-		if (cappMonitorFile.exists()){
+		if (cappMonitorFile.exists()) {
 			cappMonitorFile.delete();
 		}
-    	for (ICarbonServerMonitor monitor : serverMonitors) {
-            try {
-                monitor.stopped(server);
-            } catch (Exception e) {
-                log.error(e);
-            }
-        }
-    }
+		for (ICarbonServerMonitor monitor : serverMonitors) {
+			try {
+				monitor.stopped(server);
+			} catch (Exception e) {
+				log.error(e);
+			}
+		}
+	}
 }

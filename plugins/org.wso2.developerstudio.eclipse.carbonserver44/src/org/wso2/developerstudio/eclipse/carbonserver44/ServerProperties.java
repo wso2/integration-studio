@@ -12,20 +12,24 @@ import javax.xml.xpath.XPathFactory;
 
 import org.w3c.dom.Document;
 import org.wso2.developerstudio.eclipse.carbonserver.base.manager.IProperties;
+import org.wso2.developerstudio.eclipse.carbonserver44.Activator;
 import org.wso2.developerstudio.eclipse.carbonserver44.util.CarbonServer44Utils;
+import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
+import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
 public class ServerProperties implements IProperties {
 
+	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
+
 	public ServerProperties() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public Map<String, String> getServerInstanceProperties(String serverPath) {
-		Map<String, String> serverInstanceProperties=null;
-		
+		Map<String, String> serverInstanceProperties = null;
+
 		try {
 			serverInstanceProperties = new HashMap<String, String>();
-			File file  = new File(CarbonServer44Utils.getCarbonXmlPathFromLocalWorkspaceRepo(serverPath));
+			File file = new File(CarbonServer44Utils.getCarbonXmlPathFromLocalWorkspaceRepo(serverPath));
 			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder builder = factory.newDocumentBuilder();
 			Document doc = builder.parse(file);
@@ -33,37 +37,37 @@ public class ServerProperties implements IProperties {
 			XPath xpath = xPathfactory.newXPath();
 			XPathExpression expr = xpath.compile("/Server/Ports/Offset");
 			String offset = expr.evaluate(doc);
-			
-		    file  = new File(CarbonServer44Utils.getCatelinaXmlPathFromLocalWorkspaceRepo(serverPath));
+
+			file = new File(CarbonServer44Utils.getCatelinaXmlPathFromLocalWorkspaceRepo(serverPath));
 			factory = DocumentBuilderFactory.newInstance();
-		    builder = factory.newDocumentBuilder();
+			builder = factory.newDocumentBuilder();
 			doc = builder.parse(file);
 			xPathfactory = XPathFactory.newInstance();
 			xpath = xPathfactory.newXPath();
-		    expr = xpath.compile("/Server/Service/Connector[1]/@port");
+			expr = xpath.compile("/Server/Service/Connector[1]/@port");
 			String http = expr.evaluate(doc);
 			expr = xpath.compile("/Server/Service/Connector[2]/@port");
 			String https = expr.evaluate(doc);
-			
-			file  = new File(CarbonServer44Utils.getAxis2XmlPathFromLocalWorkspaceRepo(serverPath));
+
+			file = new File(CarbonServer44Utils.getAxis2XmlPathFromLocalWorkspaceRepo(serverPath));
 			factory = DocumentBuilderFactory.newInstance();
-		    builder = factory.newDocumentBuilder();
+			builder = factory.newDocumentBuilder();
 			doc = builder.parse(file);
 			xPathfactory = XPathFactory.newInstance();
 			xpath = xPathfactory.newXPath();
-		    expr = xpath.compile("/axisconfig/transportReceiver[@name='http']/parameter[@name='port']");
+			expr = xpath.compile("/axisconfig/transportReceiver[@name='http']/parameter[@name='port']");
 			String trnhttp = expr.evaluate(doc);
 			expr = xpath.compile("/axisconfig/transportReceiver[@name='https']/parameter[@name='port']");
 			String trnhttps = expr.evaluate(doc);
-			
-			serverInstanceProperties.put("carbon.https",https);
-			serverInstanceProperties.put("carbon.offset",offset);
-			serverInstanceProperties.put("carbon.http",http); 
-			serverInstanceProperties.put("synapse.transport.http",trnhttp);
-			serverInstanceProperties.put("synapse.transport.https",trnhttps);
-			} catch (Exception e) {
-					/*Exception ignored*/
-			}
+
+			serverInstanceProperties.put("carbon.https", https);
+			serverInstanceProperties.put("carbon.offset", offset);
+			serverInstanceProperties.put("carbon.http", http);
+			serverInstanceProperties.put("synapse.transport.http", trnhttp);
+			serverInstanceProperties.put("synapse.transport.https", trnhttps);
+		} catch (Exception e) {
+			log.error(e);
+		}
 		return serverInstanceProperties;
 	}
 

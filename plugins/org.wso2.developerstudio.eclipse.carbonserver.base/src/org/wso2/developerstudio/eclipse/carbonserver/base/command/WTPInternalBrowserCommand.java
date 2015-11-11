@@ -1,12 +1,12 @@
 /*
  * Copyright 2005,2006 WSO2, Inc. http://www.wso2.org
- *
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
+ * 
  * http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -15,13 +15,13 @@
  */
 /*
  * Copyright (c) 2010, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
- *
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -42,20 +42,17 @@ import org.wso2.developerstudio.eclipse.carbonserver.base.Activator;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
-
 public class WTPInternalBrowserCommand {
-	private static IDeveloperStudioLog log=Logger.getLog(Activator.PLUGIN_ID);
+	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
 	private static IWebBrowser browser = null;
-	
+
 	public static void popUpInrernalBrouwser(String inURL) {
 
 		try {
-			IWorkbenchBrowserSupport browserSupport = Activator.getDefault()
-			.getWorkbench().getBrowserSupport();
+			IWorkbenchBrowserSupport browserSupport = Activator.getDefault().getWorkbench().getBrowserSupport();
 
-			browser = browserSupport.createBrowser(IWorkbenchBrowserSupport.LOCATION_BAR, 
-					null, null, null);
+			browser = browserSupport.createBrowser(IWorkbenchBrowserSupport.LOCATION_BAR, null, null, null);
 			URL url = new URL(inURL);
 			browser.openURL(url);
 		} catch (PartInitException e) {
@@ -64,13 +61,15 @@ public class WTPInternalBrowserCommand {
 			log.error(e);
 		}
 	}
-	
+
 	public static void popUpExternalBrouwser(String inURL) {
 
 		try {
 			IWorkbenchBrowserSupport browserSupport = Activator.getDefault().getWorkbench().getBrowserSupport();
-			DefaultWebBrowser browser = new DefaultWebBrowser(null,"test");
-//			browser = browserSupport.createBrowser(IWorkbenchBrowserSupport.AS_EDITOR,null, null, null);
+			DefaultWebBrowser browser = new DefaultWebBrowser(null, "test");
+			// browser =
+			// browserSupport.createBrowser(IWorkbenchBrowserSupport.AS_EDITOR,null,
+			// null, null);
 			URL url = new URL(inURL);
 			browser.openURL(url);
 		} catch (PartInitException e) {
@@ -80,10 +79,8 @@ public class WTPInternalBrowserCommand {
 		}
 	}
 
-
-	public static void closeUpInrernalBrouwser(){
+	public static void closeUpInrernalBrouwser() {
 		browser.close();
 	}
-	
 
 }

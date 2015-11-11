@@ -21,13 +21,11 @@ import org.eclipse.ui.forms.widgets.Section;
 import org.eclipse.wst.server.ui.editor.ServerEditorSection;
 import org.wso2.developerstudio.eclipse.carbonserver.remote.internal.RemoteCarbonServer;
 
-public class ConfigurationServerInfoSection extends ServerEditorSection{
-	
+public class ConfigurationServerInfoSection extends ServerEditorSection {
+
 	private Text urlText;
-//	private Button changeButton;
 	private String url;
-	
-	
+
 	public String getUrl() {
 		return url;
 	}
@@ -39,25 +37,27 @@ public class ConfigurationServerInfoSection extends ServerEditorSection{
 	public ConfigurationServerInfoSection() {
 		super();
 	}
-	
+
 	public void init(IEditorSite site, IEditorInput input) {
 		super.init(site, input);
 	}
-	
+
 	public void createSection(final Composite parent) {
 		super.createSection(parent);
 		GridData gd;
 		FormToolkit toolkit = getFormToolkit(parent.getDisplay());
-		final RemoteCarbonServer rcs=(RemoteCarbonServer)server.loadAdapter(RemoteCarbonServer.class, null);
+		final RemoteCarbonServer rcs = (RemoteCarbonServer) server.loadAdapter(RemoteCarbonServer.class, null);
 
-		Section section = toolkit.createSection(parent, ExpandableComposite.TWISTIE | ExpandableComposite.EXPANDED
-			| ExpandableComposite.TITLE_BAR | Section.DESCRIPTION | ExpandableComposite.FOCUS_TITLE);
+		Section section =
+		                  toolkit.createSection(parent, ExpandableComposite.TWISTIE | ExpandableComposite.EXPANDED |
+		                                                ExpandableComposite.TITLE_BAR | Section.DESCRIPTION |
+		                                                ExpandableComposite.FOCUS_TITLE);
 		section.setText("Remote Server Info");
 		section.setDescription("Remote Server Information");
 		section.setLayoutData(new GridData(GridData.FILL_HORIZONTAL | GridData.VERTICAL_ALIGN_FILL));
-		
+
 		Composite composite = toolkit.createComposite(section);
-		GridLayout layout = new GridLayout(2,true);
+		GridLayout layout = new GridLayout(2, true);
 		layout.marginHeight = 8;
 		layout.marginWidth = 8;
 		composite.setLayout(layout);
@@ -70,41 +70,13 @@ public class ConfigurationServerInfoSection extends ServerEditorSection{
 		gd = new GridData(GridData.FILL_HORIZONTAL);
 		gd.widthHint = 200;
 		urlText.setLayoutData(gd);
-		
-//		toolkit.createLabel(composite, "");
-//		changeButton = toolkit.createButton(composite, "Change URL", SWT.PUSH);
-//		gd = new GridData(GridData.HORIZONTAL_ALIGN_END);
-//		gd.widthHint = 100;
-//		changeButton.setLayoutData(gd);
-		
+
 		urlText.addModifyListener(new ModifyListener() {
-			
+
 			public void modifyText(ModifyEvent arg0) {
 				setUrl(urlText.getText());
 			}
 		});
-		
-//		changeButton.addSelectionListener(new SelectionListener() {
-//			
-//			public void widgetSelected(SelectionEvent arg0) {
-//				InputDialog dialog = new InputDialog(parent.getShell(), 
-//						"Server Info", 
-//						"Enter Server URL", 
-//						"https://10.100.1.43:9443/carbon", 
-//						null);
-//				dialog.open();
-//				urlText.setText(dialog.getValue());
-//				try {
-//					rcs.setServerURL(dialog.getValue());
-//				} catch (MalformedURLException e) {
-//					e.printStackTrace();
-//				}
-//			}
-//			
-//			public void widgetDefaultSelected(SelectionEvent arg0) {
-//				
-//			}
-//		});
-		
+
 	}
 }

@@ -1,12 +1,12 @@
 /*
  * Copyright (c) 2010, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
- *
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -27,35 +27,36 @@ import org.eclipse.swt.widgets.Text;
 
 public class Test {
 	public static void main(String[] args) {
-	    Display display = new Display();
-	    Shell shell = new Shell(display);
-	    shell.setSize(300, 200);
-	    shell.setText("Button Example");
-	    shell.setLayout(new RowLayout());
+		Display display = new Display();
+		Shell shell = new Shell(display);
+		shell.setSize(300, 200);
+		shell.setText("Button Example");
+		shell.setLayout(new RowLayout());
 
-	    final Button button = new Button(shell, SWT.CHECK);
-	    button.setText("Click Me");
-	    
-	    final Text text = new Text(shell, SWT.SHADOW_IN);
+		final Button button = new Button(shell, SWT.CHECK);
+		button.setText("Click Me");
 
-	    button.addSelectionListener(new SelectionListener() {
+		final Text text = new Text(shell, SWT.SHADOW_IN);
 
-	      public void widgetSelected(SelectionEvent event) {
-	        text.setText("No worries!");
-	        boolean g = button.getGrayed();
-	        boolean s = button.getSelection();
-        	button.setSelection(s ^ g);
-        	button.setGrayed(s && !g);
-	      }
-	      public void widgetDefaultSelected(SelectionEvent event) {
-	        text.setText("No worries!");
-	      }
-	    });
-	    shell.open();
-	    while (!shell.isDisposed()) {
-	      if (!display.readAndDispatch())
-	        display.sleep();
-	    }
-	    display.dispose();
-	  }
+		button.addSelectionListener(new SelectionListener() {
+
+			public void widgetSelected(SelectionEvent event) {
+				text.setText("No worries!");
+				boolean g = button.getGrayed();
+				boolean s = button.getSelection();
+				button.setSelection(s ^ g);
+				button.setGrayed(s && !g);
+			}
+
+			public void widgetDefaultSelected(SelectionEvent event) {
+				text.setText("No worries!");
+			}
+		});
+		shell.open();
+		while (!shell.isDisposed()) {
+			if (!display.readAndDispatch())
+				display.sleep();
+		}
+		display.dispose();
+	}
 }

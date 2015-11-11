@@ -1,12 +1,12 @@
 /*
  * Copyright (c) 2012, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
- *
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -52,46 +52,46 @@ import org.wso2.developerstudio.eclipse.logging.core.Logger;
 @SuppressWarnings("restriction")
 public class CarbonServerWizardFragment extends GenericServerWizardFragment {
 	private GenericServerCompositeDecorator[] decorators;
-	private static IDeveloperStudioLog log=Logger.getLog(Activator.PLUGIN_ID);
+	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
 	public void createContent(Composite parent, IWizardHandle handle) {
 		IServerWorkingCopy server = getServer();
 		GenericServer dl = (GenericServer) server.loadAdapter(GenericServer.class, null);
 		IRuntime runtime = dl.getServerWorkingCopy().getRuntime();
-		String location =runtime.getLocation().toOSString();
+		String location = runtime.getLocation().toOSString();
 		Map temserverInstanceProperties = dl.getServerInstanceProperties();
 		ServerRuntime definition = getServerTypeDefinitionFor(server);
 		String id = definition.getId();
 		EList property = definition.getProperty();
 		IExtensionRegistry extensionRegistry = Platform.getExtensionRegistry();
-		String PORT_ID="org.wso2.developerstudio.eclipse.carbonserver.base.serverProperties";
+		String PORT_ID = "org.wso2.developerstudio.eclipse.carbonserver.base.serverProperties";
 		IConfigurationElement[] configurationElementsFor = extensionRegistry.getConfigurationElementsFor(PORT_ID);
 		for (IConfigurationElement e : configurationElementsFor) {
-			 String attribute = e.getAttribute("serverId");
-			 if(id.equals(attribute)){
-				 Object o=null;
-					try {
-						o = e.createExecutableExtension("class");
-						  if (o instanceof IProperties) {
-					        	IProperties iPropertyManager = (IProperties)o;
-						Map<String, String> serverInstanceProperties = iPropertyManager
-								.getServerInstanceProperties(location);
-					            for (Object object : property) {
-						              Property p = (Property) object;					              
-						              String strPort = serverInstanceProperties.get(p.getId());
-						              if(strPort!=null){
-						            	  p.setDefault(strPort);
-						            	  temserverInstanceProperties.put(p.getId(), strPort);
-						              }
+			String attribute = e.getAttribute("serverId");
+			if (id.equals(attribute)) {
+				Object o = null;
+				try {
+					o = e.createExecutableExtension("class");
+					if (o instanceof IProperties) {
+						IProperties iPropertyManager = (IProperties) o;
+						Map<String, String> serverInstanceProperties =
+						                                               iPropertyManager.getServerInstanceProperties(location);
+						for (Object object : property) {
+							Property p = (Property) object;
+							String strPort = serverInstanceProperties.get(p.getId());
+							if (strPort != null) {
+								p.setDefault(strPort);
+								temserverInstanceProperties.put(p.getId(), strPort);
+							}
 
-								 }
-					         dl.setServerInstanceProperties(temserverInstanceProperties); 
-					    	 dl.saveConfiguration(new NullProgressMonitor());
-					        }
-					  } catch (CoreException e1) {
-				  } 
-			 }
-		}      
+						}
+						dl.setServerInstanceProperties(temserverInstanceProperties);
+						dl.saveConfiguration(new NullProgressMonitor());
+					}
+				} catch (CoreException e1) {
+				}
+			}
+		}
 		decorators = new GenericServerCompositeDecorator[1];
 		decorators[0] = new ServerTypeDefinitionServerDecorator(definition, null, getWizard(), dl);
 		new GenericServerComposite(parent, decorators);
@@ -102,14 +102,14 @@ public class CarbonServerWizardFragment extends GenericServerWizardFragment {
 	 * @return
 	 */
 	private ServerRuntime getServerTypeDefinitionFor(IServerWorkingCopy server) {
-		GenericServerRuntime runtime = (GenericServerRuntime) server.getRuntime().getAdapter(
-				GenericServerRuntime.class);
+		GenericServerRuntime runtime =
+		                               (GenericServerRuntime) server.getRuntime()
+		                                                            .getAdapter(GenericServerRuntime.class);
 		if (runtime == null) {
 			IRuntime wc = (IRuntime) getTaskModel().getObject(TaskModel.TASK_RUNTIME);
 			runtime = (GenericServerRuntime) wc.getAdapter(GenericServerRuntime.class);
 			if (runtime == null)
-				runtime = (GenericServerRuntime) wc.loadAdapter(GenericServerRuntime.class,
-						new NullProgressMonitor());
+				runtime = (GenericServerRuntime) wc.loadAdapter(GenericServerRuntime.class, new NullProgressMonitor());
 		}
 		String serverTyepId = server.getServerType().getId();
 		String runtimeTypeId = runtime.getRuntime().getRuntimeType().getId();
@@ -117,8 +117,7 @@ public class CarbonServerWizardFragment extends GenericServerWizardFragment {
 			return null;
 		}
 		Map runtimeProperties = runtime.getServerInstanceProperties();
-		ServerRuntime definition = getServerTypeDefinition(serverTyepId, runtimeTypeId,
-				runtimeProperties);
+		ServerRuntime definition = getServerTypeDefinition(serverTyepId, runtimeTypeId, runtimeProperties);
 		return definition;
 	}
 
@@ -126,54 +125,51 @@ public class CarbonServerWizardFragment extends GenericServerWizardFragment {
 	 * @return
 	 */
 	private IServerWorkingCopy getServer() {
-		IServerWorkingCopy server = (IServerWorkingCopy) getTaskModel().getObject(
-				TaskModel.TASK_SERVER);
+		IServerWorkingCopy server = (IServerWorkingCopy) getTaskModel().getObject(TaskModel.TASK_SERVER);
 		return server;
 	}
 
-	 public void enter() {
-	        if(decorators == null ){
-	            return;
-	        }
-	        for( int i = 0; i < decorators.length; i++ )
-	        {
-	            if( decorators[i].validate() )//failed do not continue
-	                return;
-	        }
-	    }
+	public void enter() {
+		if (decorators == null) {
+			return;
+		}
+		for (int i = 0; i < decorators.length; i++) {
+			if (decorators[i].validate())// failed do not continue
+				return;
+		}
+	}
 
-	    public void exit() {
-	        if(decorators == null ){
-	            return;
-	        }
-	        // validate needed to save the latest values.
-	        for( int i = 0; i < decorators.length; i++ )
-	        {
-	            if( decorators[i].validate() )//failed do not continue
-	                return;
-	        }
-	    }
-	    
-	    public void performFinish(IProgressMonitor monitor) throws CoreException {
-	    	/*
-	    	 * Focus Server view after clicking the Finish button. 
-	    	 */
-	    	Display.getDefault().asyncExec(new Runnable() {
-	    	    public void run() {
-	    	    	try {
-	    	    		IWorkbenchWindow[] workbenchWindows = PlatformUI.getWorkbench().getWorkbenchWindows();
-	    	    		if(workbenchWindows.length>0){
-	    	    			IWorkbenchPage[] pages = workbenchWindows[0].getPages();
-	    	    			if(pages.length>0){
-	    	    				pages[0].showView("org.eclipse.wst.server.ui.ServersView");
-	    	    			}
-	    	    		}
-					} catch (PartInitException e) {
-						log.error("Error while opening Server view", e);
+	public void exit() {
+		if (decorators == null) {
+			return;
+		}
+		// validate needed to save the latest values.
+		for (int i = 0; i < decorators.length; i++) {
+			if (decorators[i].validate())// failed do not continue
+				return;
+		}
+	}
+
+	public void performFinish(IProgressMonitor monitor) throws CoreException {
+		/*
+		 * Focus Server view after clicking the Finish button.
+		 */
+		Display.getDefault().asyncExec(new Runnable() {
+			public void run() {
+				try {
+					IWorkbenchWindow[] workbenchWindows = PlatformUI.getWorkbench().getWorkbenchWindows();
+					if (workbenchWindows.length > 0) {
+						IWorkbenchPage[] pages = workbenchWindows[0].getPages();
+						if (pages.length > 0) {
+							pages[0].showView("org.eclipse.wst.server.ui.ServersView");
+						}
 					}
-	    	    }
-	    	});
-	    	super.performFinish(monitor);
-	    }
+				} catch (PartInitException e) {
+					log.error("Error while opening Server view", e);
+				}
+			}
+		});
+		super.performFinish(monitor);
+	}
 
 }

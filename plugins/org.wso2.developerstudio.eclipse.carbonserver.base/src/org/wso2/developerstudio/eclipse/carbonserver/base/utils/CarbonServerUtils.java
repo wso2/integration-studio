@@ -1,12 +1,12 @@
 /*
  * Copyright (c) 2010, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
- *
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -69,67 +69,72 @@ public class CarbonServerUtils {
 	private static final String CARBON_XML = "carbon.xml";
 	private static final String CONF = "conf";
 	private static final String REPOSITORY = "repository";
-	private static IDeveloperStudioLog log=Logger.getLog(Activator.PLUGIN_ID);
+	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 	private static String servicePath;
 
-	public static String createSessionCookie(String serverURL, String username, String pwd) throws Exception{
+	public static String createSessionCookie(String serverURL, String username, String pwd) throws Exception {
 		AuthenticationAdminStub authenticationStub;
 		URL url = new URL(serverURL);
-		authenticationStub = new AuthenticationAdminStub(getURL(serverURL) + "/"+getServicePath()+"/AuthenticationAdmin");
+		authenticationStub =
+		                     new AuthenticationAdminStub(getURL(serverURL) + "/" + getServicePath() +
+		                                                 "/AuthenticationAdmin");
 		SSLUtils.setSSLProtocolHandler(authenticationStub);
 		authenticationStub._getServiceClient().getOptions().setManageSession(true);
-		if (authenticationStub.login(username, pwd, url.getHost())){
-			ServiceContext serviceContext = authenticationStub._getServiceClient().getLastOperationContext().getServiceContext();
+		if (authenticationStub.login(username, pwd, url.getHost())) {
+			ServiceContext serviceContext =
+			                                authenticationStub._getServiceClient().getLastOperationContext()
+			                                                  .getServiceContext();
 			String sessionCookie = (String) serviceContext.getProperty(HTTPConstants.COOKIE_STRING);
 			return sessionCookie;
-		}else{
+		} else {
 			return null;
 		}
 	}
-	
-	public static String getURL(String serverURL) throws MalformedURLException{
+
+	public static String getURL(String serverURL) throws MalformedURLException {
 		URL url = new URL(serverURL);
 		String endPart = url.getFile();
 		String validURL = "";
-		if(endPart.endsWith("/carbon") || endPart.endsWith("/"+getServicePath()) || endPart.endsWith("/registry")){
+		if (endPart.endsWith("/carbon") || endPart.endsWith("/" + getServicePath()) || endPart.endsWith("/registry")) {
 			String[] stringParts = serverURL.split("/");
 			int length = stringParts[stringParts.length - 1].length();
-//			for (int i = 0; i < stringParts.length - 1; i++) {
 			validURL = serverURL.substring(0, serverURL.length() - length);
-//			}
-		}else{
+			// }
+		} else {
 			validURL = serverURL;
 		}
 		return validURL;
-		
+
 	}
-	public static ServerPort[] getServerPorts(String serverHome){
-		String transportsXml = FileUtils.addNodesToPath(serverHome, new String[]{CONF,TRANSPORTS_XML});
+
+	public static ServerPort[] getServerPorts(String serverHome) {
+		String transportsXml = FileUtils.addNodesToPath(serverHome, new String[] { CONF, TRANSPORTS_XML });
 		XPathFactory factory = XPathFactory.newInstance();
 		File xmlDocument = new File(transportsXml);
-		ServerPort[] serverPorts=new ServerPort[2];
-    	try {
-			InputSource inputSource =  new InputSource(new FileInputStream(xmlDocument));
-	    	XPath xPath=factory.newXPath();
-	    	XPathExpression  xPathExpression=xPath.compile("/transports/transport[@name='http']/parameter[@name='port']");
-	    	String evaluate = xPathExpression.evaluate(inputSource);
-	    	serverPorts[0]=new ServerPort("server","",Integer.parseInt(evaluate),"http");
-			inputSource =  new InputSource(new FileInputStream(xmlDocument));
-	    	xPathExpression=xPath.compile("/transports/transport[@name='https']/parameter[@name='port']");
-	    	evaluate = xPathExpression.evaluate(inputSource);
-	    	serverPorts[1]=new ServerPort("server","",Integer.parseInt(evaluate),"https");
-	    } catch (FileNotFoundException e) {
+		ServerPort[] serverPorts = new ServerPort[2];
+		try {
+			InputSource inputSource = new InputSource(new FileInputStream(xmlDocument));
+			XPath xPath = factory.newXPath();
+			XPathExpression xPathExpression =
+			                                  xPath.compile("/transports/transport[@name='http']/parameter[@name='port']");
+			String evaluate = xPathExpression.evaluate(inputSource);
+			serverPorts[0] = new ServerPort("server", "", Integer.parseInt(evaluate), "http");
+			inputSource = new InputSource(new FileInputStream(xmlDocument));
+			xPathExpression = xPath.compile("/transports/transport[@name='https']/parameter[@name='port']");
+			evaluate = xPathExpression.evaluate(inputSource);
+			serverPorts[1] = new ServerPort("server", "", Integer.parseInt(evaluate), "https");
+		} catch (FileNotFoundException e) {
 			log.error(e);
 		} catch (XPathExpressionException e) {
 			log.error(e);
 		}
 		return serverPorts;
 	}
-	
-	
-	public static String getWebContextRoot(IServer server){
-		String transportsXml = FileUtils.addNodesToPath(CarbonServerManager
-				.getServerHome(server).toOSString(), new String[] { REPOSITORY,CONF, CARBON_XML });
+
+	public static String getWebContextRoot(IServer server) {
+		String transportsXml =
+		                       FileUtils.addNodesToPath(CarbonServerManager.getServerHome(server).toOSString(),
+		                                                new String[] { REPOSITORY, CONF, CARBON_XML });
 		String webContextRoot = null;
 		if (transportsXml != null) {
 			File xmlDocument = new File(transportsXml);
@@ -172,18 +177,21 @@ public class CarbonServerUtils {
 		}
 		return webContextRoot;
 	}
-	
+
 	public static void setServicePath(IServer server) {
-		String axis2Xml= FileUtils.addNodesToPath(CarbonServerManager
-				.getServerHome(server).toOSString(), new String[] { REPOSITORY,CONF,AXIS2,AXIS2_XML });
+		String axis2Xml =
+		                  FileUtils.addNodesToPath(CarbonServerManager.getServerHome(server).toOSString(),
+		                                           new String[] { REPOSITORY, CONF, AXIS2, AXIS2_XML });
 		XPathFactory factory = XPathFactory.newInstance();
-		
+
 		File xmlDocument = new File(axis2Xml);
 		try {
 			DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
 			Document document = builder.parse(xmlDocument);
-			XPath xPath=factory.newXPath();
-			Node servicePathNode = (Node)xPath.evaluate("/axisconfig/parameter[@name='servicePath']", document, XPathConstants.NODE);
+			XPath xPath = factory.newXPath();
+			Node servicePathNode =
+			                       (Node) xPath.evaluate("/axisconfig/parameter[@name='servicePath']", document,
+			                                             XPathConstants.NODE);
 			servicePath = servicePathNode.getTextContent();
 		} catch (ParserConfigurationException e) {
 			log.error(e);
@@ -196,42 +204,43 @@ public class CarbonServerUtils {
 		}
 
 	}
-	
+
 	public static void setRemoteServicePath(String remoteServicepath) {
 		servicePath = remoteServicepath;
 	}
-	
+
 	public static String getServicePath() {
 		return servicePath;
 	}
 
-	public static ServerPort[] getServerPorts(IServer server){
+	public static ServerPort[] getServerPorts(IServer server) {
 		return server.getServerPorts(new NullProgressMonitor());
 	}
 
-	public static String resolveProperties(IServer server, String property){
+	public static String resolveProperties(IServer server, String property) {
 		String propertyValue;
-		GenericServer gserver = (GenericServer)server.loadAdapter(ServerDelegate.class, null);
-		if (gserver==null || gserver.getServerDefinition()==null || gserver.getServerDefinition().getResolver()==null) return null;
+		GenericServer gserver = (GenericServer) server.loadAdapter(ServerDelegate.class, null);
+		if (gserver == null || gserver.getServerDefinition() == null ||
+		    gserver.getServerDefinition().getResolver() == null)
+			return null;
 		if (!property.startsWith("${"))
-			property="${"+property+"}";
-    	ServerRuntime serverDefinition = gserver.getServerDefinition();
-    	propertyValue = serverDefinition.getResolver().resolveProperties(property);
-    	return propertyValue;
+			property = "${" + property + "}";
+		ServerRuntime serverDefinition = gserver.getServerDefinition();
+		propertyValue = serverDefinition.getResolver().resolveProperties(property);
+		return propertyValue;
 	}
-	
-	public static IPath getCarbonHome(IServer server){
-    	return new Path(resolveProperties(server, WSAS_HOME));
+
+	public static IPath getCarbonHome(IServer server) {
+		return new Path(resolveProperties(server, WSAS_HOME));
 	}
-	
-	public static IPath getCarbonServerHome(IServer server){
-    	return new Path(resolveProperties(server, CARBON_HOME));
+
+	public static IPath getCarbonServerHome(IServer server) {
+		return new Path(resolveProperties(server, CARBON_HOME));
 	}
-	
-	public static String getAxis2FilePath(IServer server){
-		IPath serverHome = getCarbonHome(server);	
-		String axis2Xml = FileUtils.addNodesToPath(serverHome.toOSString(),
-				new String[] { CONF, AXIS2_XML });
+
+	public static String getAxis2FilePath(IServer server) {
+		IPath serverHome = getCarbonHome(server);
+		String axis2Xml = FileUtils.addNodesToPath(serverHome.toOSString(), new String[] { CONF, AXIS2_XML });
 		return axis2Xml;
 	}
 }

@@ -1,12 +1,12 @@
 /*
  * Copyright (c) 2010, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
- *
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -43,12 +43,15 @@ import org.eclipse.ui.forms.widgets.Section;
 import org.eclipse.wst.server.core.ServerPort;
 import org.eclipse.wst.server.ui.editor.ServerEditorSection;
 import org.wso2.developerstudio.eclipse.carbonserver.base.manager.CarbonServerManager;
+import org.wso2.developerstudio.eclipse.carbonserver40.Activator;
 import org.wso2.developerstudio.eclipse.carbonserver40.util.CarbonServer40Utils;
 import org.wso2.developerstudio.eclipse.carbonserver40.util.CarbonServerConstants;
+import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
+import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.server.base.core.ServerController;
 
 public class ConfigurationPortEditorSection extends ServerEditorSection {
-
+	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 	protected Table ports;
 	protected TableViewer viewer;
 
@@ -56,30 +59,19 @@ public class ConfigurationPortEditorSection extends ServerEditorSection {
 	 * ConfigurationPortEditorSection constructor comment.
 	 */
 	public ConfigurationPortEditorSection() {
-		
+
 		super();
+	}
+
+	protected void addChangeListener() {
 	}
 
 	/**
 	 * 
-	 */
-	protected void addChangeListener() {
-//		listener = new PropertyChangeListener() {
-//			public void propertyChange(PropertyChangeEvent event) {
-//				if (TomcatConfiguration.MODIFY_PORT_PROPERTY.equals(event.getPropertyName())) {
-//					String id = (String) event.getOldValue();
-//					Integer i = (Integer) event.getNewValue();
-//					changePortNumber(id, i.intValue());
-//				}
-//			}
-//		};
-//		tomcatConfiguration.addPropertyChangeListener(listener);
-	}
-	
-	/**
-	 * 
-	 * @param name java.lang.String
-	 * @param port int
+	 * @param name
+	 *            java.lang.String
+	 * @param port
+	 *            int
 	 */
 	protected void changePortNumber(String name, int port) {
 		TableItem[] items = ports.getItems();
@@ -89,32 +81,32 @@ public class ConfigurationPortEditorSection extends ServerEditorSection {
 			if (sp.getName().equals(name)) {
 				items[i].setData(new ServerPort(sp.getId(), sp.getName(), port, sp.getProtocol()));
 				items[i].setText(1, port + "");
-				CarbonServer40Utils.setServerConfigMapValue(server.getOriginal(),sp.getId(),port+"");
+				CarbonServer40Utils.setServerConfigMapValue(server.getOriginal(), sp.getId(), port + "");
 				CarbonServer40Utils.updateTransportPorts(server.getOriginal());
 				CarbonServer40Utils.updateAxis2XML(server.getOriginal());
-				/*if (i == selection) {
-					selectPort();
-				}*/
 				return;
 			}
 		}
 	}
-	
+
 	/**
 	 * Creates the SWT controls for this workbench part.
 	 *
-	 * @param parent the parent control
+	 * @param parent
+	 *            the parent control
 	 */
 	public void createSection(Composite parent) {
 		super.createSection(parent);
 		FormToolkit toolkit = getFormToolkit(parent.getDisplay());
-		
-		Section section = toolkit.createSection(parent, ExpandableComposite.TWISTIE | ExpandableComposite.EXPANDED
-			| ExpandableComposite.TITLE_BAR | Section.DESCRIPTION | ExpandableComposite.FOCUS_TITLE);
+
+		Section section =
+		                  toolkit.createSection(parent, ExpandableComposite.TWISTIE | ExpandableComposite.EXPANDED |
+		                                                ExpandableComposite.TITLE_BAR | Section.DESCRIPTION |
+		                                                ExpandableComposite.FOCUS_TITLE);
 		section.setText("Ports");
 		section.setDescription("Modify the server ports.");
 		section.setLayoutData(new GridData(GridData.FILL_HORIZONTAL | GridData.VERTICAL_ALIGN_FILL));
-		
+
 		// ports
 		Composite composite = toolkit.createComposite(section);
 		GridLayout layout = new GridLayout();
@@ -122,18 +114,15 @@ public class ConfigurationPortEditorSection extends ServerEditorSection {
 		layout.marginWidth = 8;
 		composite.setLayout(layout);
 		composite.setLayoutData(new GridData(GridData.VERTICAL_ALIGN_FILL | GridData.FILL_HORIZONTAL));
-		//IWorkbenchHelpSystem whs = PlatformUI.getWorkbench().getHelpSystem();
-		//whs.setHelp(composite, ContextIds.CONFIGURATION_EDITOR_PORTS);
 		toolkit.paintBordersFor(composite);
 		section.setClient(composite);
 
 		ports = toolkit.createTable(composite, SWT.V_SCROLL | SWT.H_SCROLL | SWT.FULL_SELECTION);
 		ports.setHeaderVisible(true);
 		ports.setLinesVisible(true);
-		//whs.setHelp(ports, ContextIds.CONFIGURATION_EDITOR_PORTS_LIST);
-		
+
 		TableLayout tableLayout = new TableLayout();
-	
+
 		TableColumn col = new TableColumn(ports, SWT.NONE);
 		col.setText("Port Name");
 		ColumnWeightData colData = new ColumnWeightData(15, 150, true);
@@ -149,16 +138,16 @@ public class ConfigurationPortEditorSection extends ServerEditorSection {
 		data.heightHint = 100;
 		ports.setLayoutData(data);
 		ports.setLayout(tableLayout);
-	
+
 		viewer = new TableViewer(ports);
-		viewer.setColumnProperties(new String[] {"name", "port"});
+		viewer.setColumnProperties(new String[] { "name", "port" });
 
 		initialize();
 	}
 
 	protected void setupPortEditors() {
-		viewer.setCellEditors(new CellEditor[] {null, new TextCellEditor(ports)});
-	
+		viewer.setCellEditors(new CellEditor[] { null, new TextCellEditor(ports) });
+
 		ICellModifier cellModifier = new ICellModifier() {
 			public Object getValue(Object element, String property) {
 				ServerPort sp = (ServerPort) element;
@@ -166,28 +155,27 @@ public class ConfigurationPortEditorSection extends ServerEditorSection {
 					return "-";
 				return sp.getPort() + "";
 			}
-	
+
 			public boolean canModify(Object element, String property) {
 				if ("port".equals(property))
 					return true;
-				
+
 				return false;
 			}
-	
+
 			public void modify(Object element, String property, Object value) {
 				try {
 					Item item = (Item) element;
 					ServerPort sp = (ServerPort) item.getData();
 					int port = Integer.parseInt((String) value);
-					changePortNumber(sp.getName(),port);
-					//execute(new ModifyPortCommand(tomcatConfiguration, sp.getId(), port));
+					changePortNumber(sp.getName(), port);
 				} catch (Exception ex) {
-					// ignore
+					log.error(ex);
 				}
 			}
 		};
 		viewer.setCellModifier(cellModifier);
-		
+
 		// preselect second column (Windows-only)
 		String os = System.getProperty("os.name");
 		if (os != null && os.toLowerCase().indexOf("win") >= 0) {
@@ -203,24 +191,23 @@ public class ConfigurationPortEditorSection extends ServerEditorSection {
 			});
 		}
 	}
-	
+
 	public void dispose() {
-//		if (tomcatConfiguration != null)
-//			tomcatConfiguration.removePropertyChangeListener(listener);
 	}
-	
-	/* (non-Javadoc)
+
+	/*
+	 * (non-Javadoc)
 	 * Initializes the editor part with a site and input.
 	 */
 	public void init(IEditorSite site, IEditorInput input) {
 		super.init(site, input);
-		
+
 		GenericServer gserver = (GenericServer) server.getOriginal().getAdapter(GenericServer.class);
 		try {
 			gserver.getServerInstanceProperties();
-			int a=10;
+			int a = 10;
 		} catch (Exception e) {
-			// ignore
+			log.error(e);
 		}
 		addChangeListener();
 		initialize();
@@ -235,26 +222,29 @@ public class ConfigurationPortEditorSection extends ServerEditorSection {
 
 		ports.removeAll();
 		CarbonServer40Utils.isServerStartBrowserPopup(server.getOriginal());
-		ServerPort[] serverPorts = ServerController.getInstance().getServerManager().getServerPorts(server.getOriginal());
+		ServerPort[] serverPorts =
+		                           ServerController.getInstance().getServerManager()
+		                                           .getServerPorts(server.getOriginal());
 		for (ServerPort serverPort : serverPorts) {
 			ServerPort port = serverPort;
 			TableItem item = new TableItem(ports, SWT.NONE);
 			String portStr = "-";
-			if (port.getPort() >= 0){
+			if (port.getPort() >= 0) {
 				portStr = port.getPort() + "";
 			}
-			String[] s = new String[] {port.getName(), portStr};
+			String[] s = new String[] { port.getName(), portStr };
 			item.setText(s);
-			//item.setImage(TomcatUIPlugin.getImage(TomcatUIPlugin.IMG_PORT));
 			int i = CarbonServerConstants.portCaptions.indexOf(port.getName());
-			if (i!=-1){
-				port=new ServerPort(CarbonServerConstants.portIds.get(i), port.getName(), port.getPort(), port.getProtocol());
+			if (i != -1) {
+				port =
+				       new ServerPort(CarbonServerConstants.portIds.get(i), port.getName(), port.getPort(),
+				                      port.getProtocol());
 			}
 			item.setData(port);
 		}
-		
+
 		if (readOnly) {
-			viewer.setCellEditors(new CellEditor[] {null, null});
+			viewer.setCellEditors(new CellEditor[] { null, null });
 			viewer.setCellModifier(null);
 		} else {
 			setupPortEditors();

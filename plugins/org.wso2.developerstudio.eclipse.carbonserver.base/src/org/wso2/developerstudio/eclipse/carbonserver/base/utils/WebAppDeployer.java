@@ -1,12 +1,12 @@
 /*
  * Copyright (c) 2015, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
- *
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -44,26 +44,35 @@ import org.wso2.developerstudio.eclipse.carbonserver.base.webapp.uploader.Webapp
 import org.wso2.developerstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.DeleteWebapp;
 import org.wso2.developerstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.UploadWebapp;
 import org.wso2.developerstudio.eclipse.carbonserver.base.webapp.uploader.WebappAdminStub.WebappUploadData;
+import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
+import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.platform.ui.preferences.ClientTrustStorePreferencePage;
 import org.wso2.developerstudio.eclipse.platform.ui.utils.SSLUtils;
 
 public class WebAppDeployer {
 
 	private static IPreferencesService preferenceStore;
+	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
 	static {
 		preferenceStore = Platform.getPreferencesService();
 
-		String clientTrustStoreLocation = preferenceStore.getString("org.wso2.developerstudio.eclipse.platform.ui",
-				ClientTrustStorePreferencePage.TRUST_STORE_LOCATION, null, null);
-		String clientTrustStoreType = preferenceStore.getString("org.wso2.developerstudio.eclipse.platform.ui",
-				ClientTrustStorePreferencePage.TRUST_STORE_TYPE, null, null);
-		String clientTrustStorePassword = preferenceStore.getString("org.wso2.developerstudio.eclipse.platform.ui",
-				ClientTrustStorePreferencePage.TRUST_STORE_PASSWORD, null, null);
+		String clientTrustStoreLocation =
+		                                  preferenceStore.getString("org.wso2.developerstudio.eclipse.platform.ui",
+		                                                            ClientTrustStorePreferencePage.TRUST_STORE_LOCATION,
+		                                                            null, null);
+		String clientTrustStoreType =
+		                              preferenceStore.getString("org.wso2.developerstudio.eclipse.platform.ui",
+		                                                        ClientTrustStorePreferencePage.TRUST_STORE_TYPE, null,
+		                                                        null);
+		String clientTrustStorePassword =
+		                                  preferenceStore.getString("org.wso2.developerstudio.eclipse.platform.ui",
+		                                                            ClientTrustStorePreferencePage.TRUST_STORE_PASSWORD,
+		                                                            null, null);
 
 		System.setProperty("javax.net.ssl.trustStoreType", "JKS");
-		if (clientTrustStoreLocation != null && clientTrustStorePassword != null
-				&& clientTrustStoreLocation.endsWith(".jks") && !clientTrustStorePassword.equals("")) {
+		if (clientTrustStoreLocation != null && clientTrustStorePassword != null &&
+		    clientTrustStoreLocation.endsWith(".jks") && !clientTrustStorePassword.equals("")) {
 			System.setProperty("javax.net.ssl.trustStore", clientTrustStoreLocation);
 			System.setProperty("javax.net.ssl.trustStorePassword", clientTrustStorePassword);
 		} else {
@@ -127,7 +136,7 @@ public class WebAppDeployer {
 			confOpenStream.close();
 			out.close();
 		} catch (IOException e) {
-			// log.error(e);
+			 log.error(e);
 		}
 	}
 
@@ -140,7 +149,7 @@ public class WebAppDeployer {
 	}
 
 	public void deployWebApp(String username, String pwd, String url, File warFile) throws AxisFault,
-			MalformedURLException, Exception {
+	                                                                               MalformedURLException, Exception {
 
 		WebappAdminStub webappAdminStub = getWebappAdminStub(username, pwd, url);
 		Options options = webappAdminStub._getServiceClient().getOptions();
@@ -153,13 +162,13 @@ public class WebAppDeployer {
 		tempData.setFileName(warFile.getName());
 		tempData.setDataHandler(datahandler);
 		webappUploadDataList.add(tempData);
-		uploadWebapp.setWebappUploadDataList(webappUploadDataList.toArray(new WebappUploadData[webappUploadDataList
-				.size()]));
+		uploadWebapp.setWebappUploadDataList(webappUploadDataList.toArray(new WebappUploadData[webappUploadDataList.size()]));
 		webappAdminStub.uploadWebapp(uploadWebapp);
 	}
 
 	public void undeployWebApp(String username, String pwd, String url, String webappName) throws AxisFault,
-			MalformedURLException, Exception {
+	                                                                                      MalformedURLException,
+	                                                                                      Exception {
 
 		WebappAdminStub webappAdminStub = getWebappAdminStub(username, pwd, url);
 		Options options = webappAdminStub._getServiceClient().getOptions();
@@ -171,11 +180,13 @@ public class WebAppDeployer {
 	}
 
 	private WebappAdminStub getWebappAdminStub(String username, String pwd, String url) throws Exception, AxisFault,
-			MalformedURLException {
+	                                                                                   MalformedURLException {
 
 		String sessionCookie = CarbonServerUtils.createSessionCookie(url, username, pwd);
-		WebappAdminStub webaapAdminStub = new WebappAdminStub(CarbonServerUtils.getURL(url) + File.separator
-				+ CarbonServerUtils.getServicePath() + File.separator + "WebappAdmin");
+		WebappAdminStub webaapAdminStub =
+		                                  new WebappAdminStub(CarbonServerUtils.getURL(url) + File.separator +
+		                                                      CarbonServerUtils.getServicePath() + File.separator +
+		                                                      "WebappAdmin");
 		SSLUtils.setSSLProtocolHandler(webaapAdminStub);
 		webaapAdminStub._getServiceClient().getOptions().setManageSession(true);
 		webaapAdminStub._getServiceClient().getOptions().setProperty(HTTPConstants.COOKIE_STRING, sessionCookie);

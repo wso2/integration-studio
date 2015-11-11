@@ -23,6 +23,9 @@ import java.util.Map;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IResource;
+import org.eclipse.core.runtime.IConfigurationElement;
+import org.eclipse.core.runtime.IExtensionRegistry;
+import org.eclipse.core.runtime.Platform;
 import org.wso2.developerstudio.eclipse.platform.core.MediaManager;
 
 public class DeveloperStudioProviderUtils {
@@ -101,6 +104,17 @@ public class DeveloperStudioProviderUtils {
 			}
 		}
 		return passed;
+	}
+	
+	/**
+	 * This method will return an array of IConfigurationElements of all the instances that extends a given extension point
+	 * @param extensionID - the id of the extension point
+	 * @return the IConfigurationElements array of data of all extended instances
+	 */
+	public IConfigurationElement[] getExtensionPointmembers(String extensionID){
+		IExtensionRegistry reg = Platform.getExtensionRegistry();
+	    IConfigurationElement[] elements = reg.getConfigurationElementsFor(extensionID);
+	    return elements;
 	}
 
 }

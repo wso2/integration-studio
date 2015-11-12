@@ -19,8 +19,8 @@
         <module>org.wso2.developerstudio.eclipse.platform.core</module>
         <module>org.wso2.developerstudio.eclipse.platform.ui</module>
         <module>org.wso2.developerstudio.eclipse.samples</module>
-        <module>org.wso2.developerstudio.embedded.tomcat</module>
-        <module>org.wso2.developerstudio.web.editor</module>
+        <module>org.wso2.developerstudio.eclipse.embedded.tomcat</module>
+        <module>org.wso2.developerstudio.eclipse.webui.core</module>
         <module>org.wso2.developerstudio.eclipse.wso2plugin.sample</module>
         <module>org.wso2.developerstudio.eclipse.registry.core</module>
         <module>org.wso2.developerstudio.eclipse.registry.libraries</module>

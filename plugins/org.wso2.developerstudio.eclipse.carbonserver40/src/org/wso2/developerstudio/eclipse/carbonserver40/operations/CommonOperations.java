@@ -16,83 +16,53 @@
 
 package org.wso2.developerstudio.eclipse.carbonserver40.operations;
 
-import java.io.File;
-import java.io.IOException;
-
-import org.apache.commons.httpclient.HttpClient;
-import org.apache.commons.httpclient.HttpException;
-import org.apache.commons.httpclient.methods.PostMethod;
-import org.apache.commons.httpclient.methods.multipart.FilePart;
-import org.apache.commons.httpclient.methods.multipart.MultipartRequestEntity;
-import org.apache.commons.httpclient.methods.multipart.Part;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.wst.server.core.IServer;
 import org.eclipse.wst.server.core.ServerPort;
+import org.wso2.developerstudio.eclipse.carbon.server.model.operations.CommonCarbonServerOperations;
+import org.wso2.developerstudio.eclipse.carbon.server.model.util.CarbonServerCommonConstants;
 import org.wso2.developerstudio.eclipse.carbonserver40.Activator;
 import org.wso2.developerstudio.eclipse.carbonserver40.util.CarbonServer40Utils;
-import org.wso2.developerstudio.eclipse.carbonserver40.util.CarbonServerConstants;
-import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
-import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.server.base.core.ServerController;
 
-@SuppressWarnings("restriction")
-public class CommonOperations {
-	private static final String ANY_FILE_UPLOADER_URL = "/fileupload/*";
-	private static final String TOOLS_FILE_UPLOADER_URL = "/fileupload/tools";
-	private static final String VALIDATOR_FILE_UPLOADER_URL = "/fileupload/aar_mar_validator";
-	private static final String TOOLS_ANY_FILE_UPLOAD_URL = "/fileupload/toolsAny";
+public class CommonOperations extends CommonCarbonServerOperations{
 
-	public static String uploadFile(File resourceUrl, String validatorUrl, String url) throws HttpException,
-	                                                                                  IOException {
-		File f = resourceUrl;
-		PostMethod filePost = new PostMethod(url);
-		Part part;
-		if (validatorUrl == null)
-			part = new FilePart(f.getName(), f);
-		else
-			part = new FilePart(validatorUrl, f.getName(), f);
-		filePost.setRequestEntity(new MultipartRequestEntity(new Part[] { part }, filePost.getParams()));
-		HttpClient client = new HttpClient();
-		int status = client.executeMethod(filePost);
-		String resultUUid = null;
-		resultUUid = filePost.getResponseBodyAsString();
-		filePost.releaseConnection();
-		return resultUUid;
-	}
+	private static CarbonServer40Utils carbonServer44Utils = new CarbonServer40Utils();
 
-	public static String getLocalServerPort(IServer server) {
+
+	public String getLocalServerPort(IServer server) {
 		ServerPort[] serverPorts = ServerController.getInstance().getServerManager().getServerPorts(server);
 		int httpPort = 0;
 		int offSet = 0;
 		for (ServerPort p : serverPorts) {
-			int i = CarbonServerConstants.portCaptions.indexOf(p.getName());
-			if (i != -1 && CarbonServerConstants.portIds.get(i).equals("carbon.http")) {
+			int i = CarbonServerCommonConstants.getPortcaptions(Activator.PLUGIN_ID).indexOf(p.getName());
+			if (i != -1 && CarbonServerCommonConstants.getPortids(Activator.PLUGIN_ID).get(i).equals("carbon.http")) {
 				httpPort = p.getPort();
-			} else if (i != -1 && CarbonServerConstants.portIds.get(i).equals("carbon.offset")) {
+			} else if (i != -1 && CarbonServerCommonConstants.getPortids(Activator.PLUGIN_ID).get(i).equals("carbon.offset")) {
 				offSet = p.getPort();
 			}
 		}
 		return "http://" + server.getHost() + ":" + (httpPort + offSet);
 	}
 
-	public static String getAnyFileUploaderUrl(IServer server) {
-		return getLocalServerPort(server) + ANY_FILE_UPLOADER_URL;
+	public String getAnyFileUploaderUrl(IServer server) {
+		return getLocalServerPort(server) + CarbonServerCommonConstants.getAnyFileUploaderUrl(Activator.PLUGIN_ID);
 	}
 
-	public static String getToolsUploadUrl(IServer server) {
-		return getLocalServerPort(server) + TOOLS_FILE_UPLOADER_URL;
+	public String getToolsUploadUrl(IServer server) {
+		return getLocalServerPort(server) + CarbonServerCommonConstants.getToolsFileUploaderUrl(Activator.PLUGIN_ID);
 	}
 
-	public static String getValidatorFileUploaderUrl(IServer server) {
-		return getLocalServerPort(server) + VALIDATOR_FILE_UPLOADER_URL;
+	public String getValidatorFileUploaderUrl(IServer server) {
+		return getLocalServerPort(server) + CarbonServerCommonConstants.getValidatorFileUploaderUrl(Activator.PLUGIN_ID);
 	}
 
-	public static String getToolsAnyFileUploaderUrl(IServer server) {
-		return getLocalServerPort(server) + TOOLS_ANY_FILE_UPLOAD_URL;
+	public String getToolsAnyFileUploaderUrl(IServer server) {
+		return getLocalServerPort(server) + CarbonServerCommonConstants.getToolsAnyFileUploadUrl(Activator.PLUGIN_ID);
 	}
 
-	public static IPath getWSASHome(IServer server) {
-		return new Path(CarbonServer40Utils.resolveProperties(server, "carbon.home"));
+	public IPath getWSASHome(IServer server) {
+		return new Path(carbonServer44Utils.resolveProperties(server, "carbon.home"));
 	}
 }

@@ -29,7 +29,8 @@ import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.wst.server.core.IServer;
 import org.eclipse.wst.server.core.ServerPort;
-import org.wso2.developerstudio.eclipse.carbonserver.remote.util.CarbonServerConstants;
+import org.wso2.developerstudio.eclipse.carbon.server.model.util.CarbonServerCommonConstants;
+import org.wso2.developerstudio.eclipse.carbonfeatures.Activator;
 import org.wso2.developerstudio.eclipse.carbonserver.remote.util.RemoteCarbonServerUtils;
 import org.wso2.developerstudio.eclipse.server.base.core.ServerController;
 
@@ -62,8 +63,8 @@ public class CommonOperations {
 		ServerPort[] serverPorts = ServerController.getInstance().getServerManager().getServerPorts(server);
 		int http = 9763;
 		for (ServerPort p : serverPorts) {
-			int i = CarbonServerConstants.PORT_CAPTIONS.indexOf(p.getName());
-			if (i != -1 && CarbonServerConstants.PORT_IDS.get(i).equals("carbon.http"))
+			int i = CarbonServerCommonConstants.getPortcaptions(Activator.PLUGIN_ID).indexOf(p.getName());
+			if (i != -1 && CarbonServerCommonConstants.getPortids(Activator.PLUGIN_ID).get(i).equals("carbon.http"))
 				http = p.getPort();
 		}
 		return "http://" + server.getHost() + ":" + http;

@@ -20,6 +20,7 @@ import org.wso2.developerstudio.eclipse.logging.core.Logger;
 public class ServerProperties implements IProperties {
 
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
+	private static CarbonServer44Utils carbonServer44Utils = new CarbonServer44Utils();
 
 	public ServerProperties() {
 	}
@@ -29,7 +30,7 @@ public class ServerProperties implements IProperties {
 
 		try {
 			serverInstanceProperties = new HashMap<String, String>();
-			File file = new File(CarbonServer44Utils.getCarbonXmlPathFromLocalWorkspaceRepo(serverPath));
+			File file = new File(carbonServer44Utils.getCarbonXmlPathFromLocalWorkspaceRepo(serverPath));
 			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder builder = factory.newDocumentBuilder();
 			Document doc = builder.parse(file);
@@ -38,7 +39,7 @@ public class ServerProperties implements IProperties {
 			XPathExpression expr = xpath.compile("/Server/Ports/Offset");
 			String offset = expr.evaluate(doc);
 
-			file = new File(CarbonServer44Utils.getCatelinaXmlPathFromLocalWorkspaceRepo(serverPath));
+			file = new File(carbonServer44Utils.getCatelinaXmlPathFromLocalWorkspaceRepo(serverPath));
 			factory = DocumentBuilderFactory.newInstance();
 			builder = factory.newDocumentBuilder();
 			doc = builder.parse(file);
@@ -49,7 +50,7 @@ public class ServerProperties implements IProperties {
 			expr = xpath.compile("/Server/Service/Connector[2]/@port");
 			String https = expr.evaluate(doc);
 
-			file = new File(CarbonServer44Utils.getAxis2XmlPathFromLocalWorkspaceRepo(serverPath));
+			file = new File(carbonServer44Utils.getAxis2XmlPathFromLocalWorkspaceRepo(serverPath));
 			factory = DocumentBuilderFactory.newInstance();
 			builder = factory.newDocumentBuilder();
 			doc = builder.parse(file);

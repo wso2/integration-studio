@@ -45,6 +45,7 @@ import org.eclipse.jst.ws.internal.common.J2EEUtils;
 import org.eclipse.jst.ws.internal.common.ResourceUtils;
 import org.eclipse.wst.server.core.IModule;
 import org.eclipse.wst.server.core.IServer;
+import org.wso2.developerstudio.eclipse.carbon.server.model.util.CarbonServerCommonUtils;
 import org.wso2.developerstudio.eclipse.carbonserver.base.impl.CarbonServer;
 import org.wso2.developerstudio.eclipse.carbonserver.base.interfaces.ICarbonServerModulePublisher;
 import org.wso2.developerstudio.eclipse.carbonserver.base.manager.CarbonServerInformation;
@@ -72,6 +73,7 @@ public class ServiceModuleOperations {
 	private int resourceChngeKind;
 	Object execClassObject;
 	CarbonUtils carbonUtils = new CarbonUtils();
+	private CarbonServer44Utils carbonServer44Utils = new CarbonServer44Utils();
 
 	public ServiceModuleOperations(IProject project, IServer server) {
 		this.project = project;
@@ -87,7 +89,7 @@ public class ServiceModuleOperations {
 	}
 
 	public void hotUpdateModule() throws CoreException {
-		if (!CarbonServer44Utils.isServerHotUpdate(server)) {
+		if (!CarbonServerCommonUtils.isServerHotUpdate(server)) {
 			return;
 		}
 		redeployModule(false);
@@ -181,7 +183,7 @@ public class ServiceModuleOperations {
 			String serverLocalWorkspacePath = CarbonServerManager.getServerLocalWorkspacePath(server);
 			File deployPath =
 			                  new File(
-			                           CarbonServer44Utils.getRepositoryPathFromLocalWorkspaceRepo(serverLocalWorkspacePath));
+			                           carbonServer44Utils.getRepositoryPathFromLocalWorkspaceRepo(serverLocalWorkspacePath));
 			String serverLocalRepoServiceLocation =
 			                                        FileUtils.addNodesToPath(deployPath.toString(),
 			                                                                 new String[] { "axis2services" });
@@ -419,7 +421,7 @@ public class ServiceModuleOperations {
 	private static final String DELIMETER = "\n";
 
 	public String[] getProjectDeployedServices(String projectName) {
-		String deployed = CarbonServer44Utils.getServerConfigMapValue(server, DEPLOYED + projectName);
+		String deployed = CarbonServerCommonUtils.getServerConfigMapValue(server, DEPLOYED + projectName);
 		if (deployed == null)
 			deployed = "";
 		String[] deployedFiles = deployed.split(DELIMETER);
@@ -427,11 +429,11 @@ public class ServiceModuleOperations {
 	}
 
 	public void removeDeployedServices(String projectName) {
-		CarbonServer44Utils.setServerConfigMapValue(server, DEPLOYED + projectName, null);
+		CarbonServerCommonUtils.setServerConfigMapValue(server, DEPLOYED + projectName, null);
 	}
 
 	public void addProjectDeployedServices(String projectName, String servicePath) {
-		String deployed = CarbonServer44Utils.getServerConfigMapValue(server, DEPLOYED + projectName);
+		String deployed = CarbonServerCommonUtils.getServerConfigMapValue(server, DEPLOYED + projectName);
 		if (deployed == null)
 			deployed = "";
 		String[] deployedFiles = deployed.split(DELIMETER);
@@ -442,7 +444,7 @@ public class ServiceModuleOperations {
 				found = true;
 		}
 		if (!found)
-			CarbonServer44Utils.setServerConfigMapValue(server, DEPLOYED + projectName, deployed);
+			CarbonServerCommonUtils.setServerConfigMapValue(server, DEPLOYED + projectName, deployed);
 
 	}
 }

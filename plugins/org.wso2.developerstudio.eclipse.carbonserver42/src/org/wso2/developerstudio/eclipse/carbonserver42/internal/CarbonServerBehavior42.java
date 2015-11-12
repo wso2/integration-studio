@@ -51,13 +51,14 @@ import org.eclipse.wst.server.core.IServer;
 import org.eclipse.wst.server.core.ServerPort;
 import org.eclipse.wst.server.core.internal.DeletedModule;
 import org.w3c.dom.Document;
+import org.wso2.developerstudio.eclipse.carbon.server.model.util.CarbonServerCommonConstants;
+import org.wso2.developerstudio.eclipse.carbon.server.model.util.CarbonServerCommonUtils;
 import org.wso2.developerstudio.eclipse.carbonserver.base.impl.CarbonServerBehaviour;
 import org.wso2.developerstudio.eclipse.carbonserver.base.manager.CarbonServerManager;
 import org.wso2.developerstudio.eclipse.carbonserver.base.service.util.CarbonUploadServiceRequestUtil;
 import org.wso2.developerstudio.eclipse.carbonserver42.Activator;
 import org.wso2.developerstudio.eclipse.carbonserver42.operations.CommonOperations;
 import org.wso2.developerstudio.eclipse.carbonserver42.util.CarbonServer42Utils;
-import org.wso2.developerstudio.eclipse.carbonserver42.util.CarbonServerConstants;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.server.base.core.ServerController;
@@ -67,6 +68,8 @@ import org.xml.sax.SAXException;
 public class CarbonServerBehavior42 extends CarbonServerBehaviour {
 
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
+	private CarbonServer42Utils carbonServer42Utils = new CarbonServer42Utils();
+	private CommonOperations commonOperations = new CommonOperations();
 
 	private void checkClosed(IModule[] module) throws CoreException {
 		for (int i = 0; i < module.length; i++) {
@@ -122,11 +125,11 @@ public class CarbonServerBehavior42 extends CarbonServerBehaviour {
 	}
 
 	private void doBrowserPopup() {
-		Boolean popupBrowser = CarbonServer42Utils.isServerStartBrowserPopup(getServer());
+		Boolean popupBrowser = CarbonServerCommonUtils.isServerStartBrowserPopup(getServer());
 		if (popupBrowser != null && popupBrowser) {
 			CarbonUploadServiceRequestUtil uoloadServiceRequestUtil = CarbonUploadServiceRequestUtil.getInstance();
-			uoloadServiceRequestUtil.popupExternalBrowser(CommonOperations.getLocalServerPort(getServer()) +
-			                                              CarbonServer42Utils.getWebContextRoot(getServer()) +
+			uoloadServiceRequestUtil.popupExternalBrowser(commonOperations .getLocalServerPort(getServer()) +
+			                                              carbonServer42Utils.getWebContextRoot(getServer()) +
 			                                              "/carbon");
 		}
 
@@ -134,7 +137,7 @@ public class CarbonServerBehavior42 extends CarbonServerBehaviour {
 
 	protected String getVmArguments() {
 		String vmArguments = super.getVmArguments();
-		Boolean enableOSGIConsole = CarbonServer42Utils.isServerStartWithOSGiConsole(getServer());
+		Boolean enableOSGIConsole = CarbonServerCommonUtils.isServerStartWithOSGiConsole(getServer());
 		if (enableOSGIConsole != null && enableOSGIConsole) {
 			vmArguments = vmArguments + " -DosgiConsole";
 		}
@@ -152,11 +155,11 @@ public class CarbonServerBehavior42 extends CarbonServerBehaviour {
 			int offSet = 0;
 
 			for (int i = 0; i < ports.length; i++) {
-				int j = CarbonServerConstants.portCaptions.indexOf(ports[i].getName());
-				if (j != -1 && CarbonServerConstants.portIds.get(j).equals("carbon.http")) {
+				int j = CarbonServerCommonConstants.getPortcaptions(Activator.PLUGIN_ID).indexOf(ports[i].getName());
+				if (j != -1 && CarbonServerCommonConstants.getPortids(Activator.PLUGIN_ID).get(j).equals("carbon.http")) {
 					sp = ports[i];
 					port = sp.getPort();
-				} else if (j != -1 && CarbonServerConstants.portIds.get(j).equals("carbon.offset")) {
+				} else if (j != -1 && CarbonServerCommonConstants.getPortids(Activator.PLUGIN_ID).get(j).equals("carbon.offset")) {
 					sp = ports[i];
 					offSet = sp.getPort();
 				}
@@ -166,7 +169,7 @@ public class CarbonServerBehavior42 extends CarbonServerBehaviour {
 			if (port != 80) {
 				newUrl = newUrl + ":" + (port + offSet); //$NON-NLS-1$
 			}
-			newUrl = newUrl + CarbonServer42Utils.getWebContextRoot(getServer()) + "/carbon";
+			newUrl = newUrl + carbonServer42Utils.getWebContextRoot(getServer()) + "/carbon";
 			urls.add(newUrl);
 
 			return urls.toArray(new String[] {});
@@ -196,23 +199,23 @@ public class CarbonServerBehavior42 extends CarbonServerBehaviour {
 
 	protected String getCarbonXmlFilePath() {
 		IPath serverHome = CarbonServerManager.getServerHome(getServer());
-		return CarbonServer42Utils.getServerXmlPathFromLocalWorkspaceRepo(serverHome.toOSString());
+		return carbonServer42Utils.getServerXmlPathFromLocalWorkspaceRepo(serverHome.toOSString());
 	}
 
 	protected String getCatelinaXmlFilePath() {
 		IPath serverHome = CarbonServerManager.getServerHome(getServer());
-		return CarbonServer42Utils.getCatelinaXmlPathFromLocalWorkspaceRepo(serverHome.toOSString());
+		return carbonServer42Utils.getCatelinaXmlPathFromLocalWorkspaceRepo(serverHome.toOSString());
 	}
 
 	protected String getTransportXmlFilePath() {
 		IPath serverHome = CarbonServerManager.getServerHome(getServer());
 		String transportsXmlPath =
-		                           CarbonServer42Utils.getTransportsXmlPathFromLocalWorkspaceRepo(serverHome.toOSString());
+		                           carbonServer42Utils.getTransportsXmlPathFromLocalWorkspaceRepo(serverHome.toOSString());
 		return transportsXmlPath;
 	}
 
 	protected String getAxis2FilePath() {
-		return CarbonServer42Utils.getAxis2FilePath(getServer());
+		return CarbonServerCommonUtils.getAxis2FilePath(getServer());
 	}
 
 	protected Integer[] getAllPortsServerWillUse(IServer server) {
@@ -231,7 +234,7 @@ public class CarbonServerBehavior42 extends CarbonServerBehaviour {
 	protected void addServletTransportPorts(List<Integer> ports, String carbonXmlPath, String catelinaXmlPath) {
 		int port = 0;
 		XPathFactory factory = XPathFactory.newInstance();
-		NamespaceContext cntx = CarbonServer42Utils.getCarbonNamespace();
+		NamespaceContext cntx = carbonServer42Utils.getCarbonNamespace();
 		File xmlDocument = new File(carbonXmlPath);
 		File catelineXmlDocument = new File(catelinaXmlPath);
 		try {

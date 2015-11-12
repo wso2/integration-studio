@@ -64,6 +64,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
+import org.wso2.developerstudio.eclipse.carbon.server.model.util.CarbonServerCommonConstants;
 import org.wso2.developerstudio.eclipse.carbonserver.base.manager.CarbonServerManager;
 import org.wso2.developerstudio.eclipse.carbonserver.base.utils.CarbonServerUtils;
 import org.wso2.developerstudio.eclipse.carbonserver.remote.Activator;
@@ -244,10 +245,10 @@ public class RemoteCarbonServerUtils {
 			                                       document, XPathConstants.NODE);
 			for (ServerPort serverPort : serverPorts) {
 				ServerPort port = serverPort;
-				int i = CarbonServerConstants.PORT_CAPTIONS.indexOf(serverPort.getName());
+				int i = CarbonServerCommonConstants.getPortcaptions(Activator.PLUGIN_ID).indexOf(serverPort.getName());
 				if (i != -1) {
 					port =
-					       new ServerPort(CarbonServerConstants.PORT_IDS.get(i), serverPort.getName(),
+					       new ServerPort(CarbonServerCommonConstants.getPortids(Activator.PLUGIN_ID).get(i), serverPort.getName(),
 					                      serverPort.getPort(), serverPort.getProtocol());
 				}
 				if (port.getId().equalsIgnoreCase("synapse.transport.http"))
@@ -297,10 +298,10 @@ public class RemoteCarbonServerUtils {
 			                                       document, XPathConstants.NODE);
 			for (ServerPort serverPort : serverPorts) {
 				ServerPort port = serverPort;
-				int i = CarbonServerConstants.PORT_CAPTIONS.indexOf(serverPort.getName());
+				int i = CarbonServerCommonConstants.getPortcaptions(Activator.PLUGIN_ID).indexOf(serverPort.getName());
 				if (i != -1) {
 					port =
-					       new ServerPort(CarbonServerConstants.PORT_IDS.get(i), serverPort.getName(),
+					       new ServerPort(CarbonServerCommonConstants.getPortids(Activator.PLUGIN_ID).get(i), serverPort.getName(),
 					                      serverPort.getPort(), serverPort.getProtocol());
 				}
 				if (port.getId().equalsIgnoreCase("carbon.http"))
@@ -599,8 +600,8 @@ public class RemoteCarbonServerUtils {
 		if (password == null) {
 			password = "admin";
 		}
-		credentials.put(CarbonServerConstants.USERNAME, username);
-		credentials.put(CarbonServerConstants.PASSWORD, password);
+		credentials.put(CarbonServerCommonConstants.getEsbUsername(), username);
+		credentials.put(CarbonServerCommonConstants.getEsbPassword(), password);
 		return credentials;
 	}
 
@@ -610,21 +611,21 @@ public class RemoteCarbonServerUtils {
 	}
 
 	public static void setServerUsername(IServer server, String username) {
-		setServerConfigMapValue(server, CarbonServerConstants.USERNAME, username);
+		setServerConfigMapValue(server, CarbonServerCommonConstants.getEsbUsername(), username);
 	}
 
 	public static void setServerPassword(IServer server, String password) {
-		setServerConfigMapValue(server, CarbonServerConstants.PASSWORD, password);
+		setServerConfigMapValue(server, CarbonServerCommonConstants.getEsbPassword(), password);
 	}
 
 	public static String getPortId(String name) {
 		String id = "carbon.https";
-		if (name.equalsIgnoreCase(CarbonServerConstants.ESB_CONSOLE_HTTPS_DESC))
-			id = CarbonServerConstants.ESB_CONSOLE_HTTPS;
-		if (name.equalsIgnoreCase(CarbonServerConstants.ESB_TRANSPORT_HTTP_DESC))
-			id = CarbonServerConstants.ESB_TRANSPORT_HTTP;
-		if (name.equalsIgnoreCase(CarbonServerConstants.ESB_TRANSPORT_HTTPS_DESC))
-			id = CarbonServerConstants.ESB_TRANSPORT_HTTPS;
+		if (name.equalsIgnoreCase(CarbonServerCommonConstants.getEsbConsoleHttpsDesc()))
+			id = CarbonServerCommonConstants.getEsbConsoleHttps();
+		if (name.equalsIgnoreCase(CarbonServerCommonConstants.getEsbTransportHttpDesc()))
+			id = CarbonServerCommonConstants.getEsbTransportHttp();
+		if (name.equalsIgnoreCase(CarbonServerCommonConstants.getEsbTransportHttpsDesc()))
+			id = CarbonServerCommonConstants.getEsbTransportHttps();
 		return id;
 	}
 

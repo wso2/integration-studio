@@ -38,6 +38,8 @@ public class CarbonServerListener implements IServerListener {
 
 	private final List<ICarbonServerMonitor> serverMonitors;
 
+	private CarbonServer42Utils carbonServer42Utils = new CarbonServer42Utils();
+
 	public CarbonServerListener(List<ICarbonServerMonitor> serverMonitors) {
 		this.serverMonitors = serverMonitors;
 	}
@@ -60,7 +62,7 @@ public class CarbonServerListener implements IServerListener {
 	}
 
 	private void triggerStarting(IServer server) {
-		File cappMonitorBundle = CarbonServer42Utils.getCappMonitorBundle();
+		File cappMonitorBundle = carbonServer42Utils .getCappMonitorBundle();
 		IPath dropins =
 		                CarbonServerManager.getServerHome(server).append("repository").append("components")
 		                                   .append("dropins");
@@ -105,7 +107,7 @@ public class CarbonServerListener implements IServerListener {
 		// Displaying message that carbon server is about to shutdown
 		CarbonServerConsole console = new CarbonServerConsole();
 		console.printMessageInConsole(server.getName(), "Carbon Server " + server.getName() + " has shut down...\n");
-		File cappMonitorBundle = CarbonServer42Utils.getCappMonitorBundle();
+		File cappMonitorBundle = carbonServer42Utils.getCappMonitorBundle();
 		IPath dropins =
 		                CarbonServerManager.getServerHome(server).append("repository").append("components")
 		                                   .append("dropins").append(cappMonitorBundle.getName());

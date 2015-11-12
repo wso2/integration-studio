@@ -27,6 +27,8 @@ import org.eclipse.wst.server.core.IModule;
 import org.eclipse.wst.server.core.IServer;
 import org.eclipse.wst.server.core.IServerListener;
 import org.eclipse.wst.server.core.ServerPort;
+import org.wso2.developerstudio.eclipse.carbon.server.model.util.CarbonServerCommonConstants;
+import org.wso2.developerstudio.eclipse.carbon.server.model.util.CarbonServerCommonUtils;
 import org.wso2.developerstudio.eclipse.carbonserver.base.exception.NoSuchCarbonOperationDefinedException;
 import org.wso2.developerstudio.eclipse.carbonserver.base.impl.CarbonServer;
 import org.wso2.developerstudio.eclipse.carbonserver.base.interfaces.ICarbonServerMonitor;
@@ -35,7 +37,6 @@ import org.wso2.developerstudio.eclipse.carbonserver.base.manager.ICarbonOperati
 import org.wso2.developerstudio.eclipse.carbonserver42.Activator;
 import org.wso2.developerstudio.eclipse.carbonserver42.monitor.CarbonServerListener;
 import org.wso2.developerstudio.eclipse.carbonserver42.util.CarbonServer42Utils;
-import org.wso2.developerstudio.eclipse.carbonserver42.util.CarbonServerConstants;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.server.base.core.ServerController;
@@ -53,6 +54,9 @@ public class CarbonOperationsManager42 implements ICarbonOperationManager {
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
 	private static final String runtimeId = "org.wso2.developerstudio.eclipse.carbon.runtime42";
+	private static CarbonServer42Utils carbonServer42Utils = new CarbonServer42Utils();
+
+	private CommonOperations commonOperations = new CommonOperations();
 
 	public String getRuntimeId() {
 		return runtimeId;
@@ -102,11 +106,11 @@ public class CarbonOperationsManager42 implements ICarbonOperationManager {
 						break;
 					case ICarbonOperationManager.OPERATION_GET_SERVER_HOME:
 						if (server != null)
-							result = CommonOperations.getWSASHome(server);
+							result = commonOperations .getWSASHome(server);
 						break;
 					case ICarbonOperationManager.OPERATION_GET_SERVER_PORTS:
 						if (server != null)
-							result = CarbonServer42Utils.getServerPorts(server);
+							result = carbonServer42Utils.getServerPorts(server);
 						break;
 					case ICarbonOperationManager.OPERATION_INITIALIZE_SERVER_CONFIGURATIONS:
 						if (server != null)
@@ -201,7 +205,7 @@ public class CarbonOperationsManager42 implements ICarbonOperationManager {
 					case ICarbonOperationManager.OPERATION_GET_SERVER_CREDENTIALS:
 						Map<String, String> serverCredentials = null;
 						if (server != null) {
-							serverCredentials = CarbonServer42Utils.getServerCredentials(server);
+							serverCredentials = CarbonServerCommonUtils.getServerCredentials(server);
 						}
 						result = serverCredentials;
 						break;
@@ -211,16 +215,16 @@ public class CarbonOperationsManager42 implements ICarbonOperationManager {
 							if (operation.containsKey(ICarbonOperationManager.PARAMETER_SERVER_PORT)) {
 								String serverPort =
 								                    (String) operation.get(ICarbonOperationManager.PARAMETER_SERVER_PORT);
-								cookie = CarbonServer42Utils.getServerCookie(server, serverPort);
+								cookie = CarbonServerCommonUtils.getServerCookie(server, serverPort);
 							}
 						}
 						result = cookie;
 						break;
 					case ICarbonOperationManager.OPERATION_SERVER_URL:
-						result = CarbonServer42Utils.getServerURL(server);
+						result = carbonServer42Utils.getServerURL(server);
 						break;
 					case ICarbonOperationManager.OPERATION_SERVER_VERSION:
-						result = CarbonServer42Utils.getServerVersion();
+						result = carbonServer42Utils.getServerVersion();
 						break;
 
 					default:
@@ -263,14 +267,14 @@ public class CarbonOperationsManager42 implements ICarbonOperationManager {
 	public void initializeTheServer(IServer server) throws CoreException {
 		String serverLocalWorkspacePath = CarbonServerManager.getServerLocalWorkspacePath(server);
 		String serverLocalRepoLocation =
-		                                 CarbonServer42Utils.getRepositoryPathFromLocalWorkspaceRepo(serverLocalWorkspacePath);
+		                                 carbonServer42Utils.getRepositoryPathFromLocalWorkspaceRepo(serverLocalWorkspacePath);
 		String serverLocalConfLocation =
-		                                 CarbonServer42Utils.getConfPathFromLocalWorkspaceRepo(serverLocalWorkspacePath);
-		CarbonServer42Utils.updateTransportPorts(server);
-		CarbonServer42Utils.updateAxis2XML(server);
+		                                 carbonServer42Utils.getConfPathFromLocalWorkspaceRepo(serverLocalWorkspacePath);
+		carbonServer42Utils.updateTransportPorts(server);
+		carbonServer42Utils.updateAxis2XML(server);
 		// just retrieving the value for hotupdate will update the axis2.xml
 		// also
-		CarbonServer42Utils.isServerHotUpdate(server);
+		CarbonServerCommonUtils.isServerHotUpdate(server);
 
 		initializeServerRepoLibraries(server);
 		List<ICarbonServerMonitor> serverMonitors = CarbonServer.getServerMonitors(server);
@@ -332,7 +336,8 @@ public class CarbonOperationsManager42 implements ICarbonOperationManager {
 
 	private boolean isValidFile(String fileName, List alreadyAdded) {
 		if (fileName.toLowerCase().startsWith("org.wso2.carbon")) {
-			for (String prefix : CarbonServerConstants.AXIS2_CODEGEN_LIB_PREFIXES) {
+			for (String prefix : CarbonServerCommonConstants.getStringArrayFromProprties(Activator.PLUGIN_ID,
+			                                                                             "AXIS2_CODEGEN_LIB_PREFIXES")) {
 				if (!alreadyAdded.contains(prefix))
 					if (fileName.toLowerCase().contains(prefix.toLowerCase())) {
 						alreadyAdded.add(prefix);
@@ -340,7 +345,8 @@ public class CarbonOperationsManager42 implements ICarbonOperationManager {
 					}
 			}
 		} else {
-			for (String prefix : CarbonServerConstants.AXIS2_UTIL_LIB_PREFIXES) {
+			for (String prefix : CarbonServerCommonConstants.getStringArrayFromProprties(Activator.PLUGIN_ID,
+			                                                                             "AXIS2_UTIL_LIB_PREFIXES")) {
 				if (!alreadyAdded.contains(prefix))
 					if (fileName.toLowerCase().contains(prefix.toLowerCase())) {
 						alreadyAdded.add(prefix);
@@ -353,7 +359,7 @@ public class CarbonOperationsManager42 implements ICarbonOperationManager {
 	}
 
 	private void initializeServerRepoLibraries(IServer server) throws CoreException {
-		IPath wsasHome = CommonOperations.getWSASHome(server);
+		IPath wsasHome = commonOperations.getWSASHome(server);
 		initializeServerRepoLibraries(wsasHome.toOSString());
 	}
 

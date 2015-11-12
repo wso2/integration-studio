@@ -16,22 +16,15 @@
    <license url="%licenseURL">
       %license
    </license>
-   <plugin
-         id="org.wso2.developerstudio.eclipse.carbonfeatures"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.wso2.developerstudio.eclipse.carbonserver.base"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
+   
    <plugin
          id="org.wso2.developerstudio.eclipse.carbonserver.remote"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+  <plugin
+         id="org.wso2.developerstudio.eclipse.carbon.server.model"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -85,11 +78,6 @@
          unpack="false"/>
 
 
-   <plugin
-         id="org.wso2.developerstudio.eclipse.server.base"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
+  
 
 </feature>

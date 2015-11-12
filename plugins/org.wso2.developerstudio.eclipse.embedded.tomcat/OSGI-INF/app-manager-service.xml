@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" immediate="true" name="org.wso2.developerstudio.eclipse.embedded.tomcat.appmanager">
+   <implementation class="org.wso2.developerstudio.eclipse.embedded.tomcat.server.WebAppManagerImpl"/>
+   <service>
+      <provide interface="org.wso2.developerstudio.eclipse.embedded.tomcat.api.IWebAppManager"/>
+   </service>
+</scr:component>

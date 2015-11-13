@@ -83,9 +83,7 @@ public class WSO2PluginProjectWizard extends AbstractWSO2ProjectCreationWizard {
 	public void addPages() {
 		URL resource = getWizardManifest();
 		try {
-			ProjectWizardSettings settings =
-			                                 new ProjectWizardSettings(resource.openStream(),
-			                                                           configElement);
+			ProjectWizardSettings settings = new ProjectWizardSettings(resource.openStream(), configElement);
 
 			if (settings.getProjectOptions().size() == 1) {
 				getModel().setSelectedOption(settings.getProjectOptions().get(0).getId());
@@ -93,16 +91,13 @@ public class WSO2PluginProjectWizard extends AbstractWSO2ProjectCreationWizard {
 				addPage(new ProjectOptionsPage(settings, getModel()));
 			}
 			addPage(new ProjectOptionsDataPage(settings, getModel(), getCurrentSelection(),
-			                                   isRequireProjectLocationSection(),
-			                                   isRequiredWorkingSet(),
+			                                   isRequireProjectLocationSection(), isRequiredWorkingSet(),
 			                                   isRequiredWorkspaceLocation()));
 			if (isCustomPageRequired()) {
 				addPage(getCustomPage());
 			}
-			addPage(new WSO2PluginListSelectionPage(
-			                                        getAvailableWSO2Plugins(),
-			                                        WSO2PluginConstants.PLUGIN_SELECT_WIZARD_PAGE_NAME,
-			                                        this));
+			addPage(new WSO2PluginListSelectionPage(getAvailableWSO2Plugins(),
+			                                        WSO2PluginConstants.PLUGIN_SELECT_WIZARD_PAGE_NAME, this));
 
 		} catch (Exception e) {
 			log.error("error adding pages", e);
@@ -131,14 +126,13 @@ public class WSO2PluginProjectWizard extends AbstractWSO2ProjectCreationWizard {
 	public WSO2PluginSampleExtList getAvailableWSO2Plugins() {
 		WSO2PluginSampleExtList elemList = new WSO2PluginSampleExtList();
 		DeveloperStudioProviderUtils devStudioUtils = new DeveloperStudioProviderUtils();
-		IConfigurationElement[] elements =
-				devStudioUtils.getExtensionPointmembers(WSO2PluginConstants.EXTENSION_ID);
-			for (int j = 0; j < elements.length; j++) {
-				WSO2PluginSampleExt element = createWizardElement(elements[j]);
-				if (element != null) {
-					elemList.addWSO2Plugin(element);
-				}
+		IConfigurationElement[] elements = devStudioUtils.getExtensionPointmembers(WSO2PluginConstants.EXTENSION_ID);
+		for (int j = 0; j < elements.length; j++) {
+			WSO2PluginSampleExt element = createWizardElement(elements[j]);
+			if (element != null) {
+				elemList.addWSO2Plugin(element);
 			}
+		}
 		return elemList;
 	}
 
@@ -147,30 +141,29 @@ public class WSO2PluginProjectWizard extends AbstractWSO2ProjectCreationWizard {
 		String archive = config.getAttribute(WSO2PluginConstants.PLUGIN_ARCHIVE_LOCATION);
 		String description = config.getAttribute(WSO2PluginConstants.GET_PLUGIN_DESCRIPTION);
 		String providerBundleID = config.getContributor().getName();
-		ImageDescriptor imageDescriptor = ImageDescriptor.createFromURL(FileLocator.find(Platform.getBundle(providerBundleID), new Path(WSO2PluginConstants.ICON), null));
+		String iconLoc = config.getAttribute(WSO2PluginConstants.ICON);
+		ImageDescriptor imageDescriptor =
+		                                  ImageDescriptor.createFromURL(FileLocator.find(Platform.getBundle(providerBundleID),
+		                                                                                 new Path(iconLoc), null));
 		org.eclipse.swt.graphics.Image image = imageDescriptor.createImage();
 		if (name == null || archive == null || providerBundleID == null) {
 			openSelectedProjectInWorkspace(selectedPlugin);
 		}
-		WSO2PluginSampleExt pluginElem =
-		                                 new WSO2PluginSampleExt(name, archive, description,
-		                                                         providerBundleID, image);
+		WSO2PluginSampleExt pluginElem = new WSO2PluginSampleExt(name, archive, description, providerBundleID, image);
 
 		return pluginElem;
 	}
 
 	private Image getImageFromBundle(String icon, String pluginID) {
 		Image imageFromPlugin = null;
-		URL iconLoc =
-                FileLocator.find(Platform.getBundle(pluginID),
-                                 new Path(icon), null);
+		URL iconLoc = FileLocator.find(Platform.getBundle(pluginID), new Path(icon), null);
 		try {
-	        imageFromPlugin = ImageIO.read(iconLoc);
-        } catch (IOException e) {
-	        log.error("could not load image icon ," + icon + "from plugin , " + pluginID);
-        } 
-	    return imageFromPlugin;
-    }
+			imageFromPlugin = ImageIO.read(iconLoc);
+		} catch (IOException e) {
+			log.error("could not load image icon ," + icon + "from plugin , " + pluginID);
+		}
+		return imageFromPlugin;
+	}
 
 	public boolean openSelectedProjectInWorkspace(ISelection iSelection) {
 
@@ -187,10 +180,9 @@ public class WSO2PluginProjectWizard extends AbstractWSO2ProjectCreationWizard {
 			openZipArchive(projectArchiveLoc, projectName, pluginID);
 		} catch (CoreException e) {
 			log.error("An Exception was thrown in creating the new project with the given project name : " +
-			                  projectName, e);
+			          projectName, e);
 			MultiStatus status =
-			                     MessageDialogUtils.createMultiStatus(e.getLocalizedMessage(),
-			                                                          e,
+			                     MessageDialogUtils.createMultiStatus(e.getLocalizedMessage(), e,
 			                                                          WSO2PluginConstants.PACKAGE_ID);
 			// show error dialog
 			ErrorDialog.openError(this.getShell(), WSO2PluginConstants.ERROR_DIALOG_TITLE,
@@ -200,8 +192,7 @@ public class WSO2PluginProjectWizard extends AbstractWSO2ProjectCreationWizard {
 			log.error("An Exception was thrown in creating the new project  : " + projectName +
 			          ", with the selected sample : " + projectArchiveLoc, e);
 			MultiStatus status =
-			                     MessageDialogUtils.createMultiStatus(e.getLocalizedMessage(),
-			                                                          e,
+			                     MessageDialogUtils.createMultiStatus(e.getLocalizedMessage(), e,
 			                                                          WSO2PluginConstants.PACKAGE_ID);
 			// show error dialog
 			ErrorDialog.openError(this.getShell(), WSO2PluginConstants.ERROR_DIALOG_TITLE,
@@ -222,9 +213,7 @@ public class WSO2PluginProjectWizard extends AbstractWSO2ProjectCreationWizard {
 		IProject newProject = workspace.getRoot().getProject(projectName);
 		newProject.create(newProjectDescription, null);
 		newProject.open(null);
-		URL zipLocationURL =
-		                     FileLocator.find(Platform.getBundle(pluginBundleID),
-		                                      new Path(projectArchiveLoc), null);
+		URL zipLocationURL = FileLocator.find(Platform.getBundle(pluginBundleID), new Path(projectArchiveLoc), null);
 		File destinationFile = FileUtils.createTempFile();
 		FileUtils.createFile(destinationFile, zipLocationURL.openStream());
 		File resourceFile = destinationFile;
@@ -257,8 +246,7 @@ public class WSO2PluginProjectWizard extends AbstractWSO2ProjectCreationWizard {
 		sampleTempTag.clearAndEnd();
 	}
 
-	protected void updateWithParameterData(File projectDesc, String parameterValue)
-	                                                                               throws IOException {
+	protected void updateWithParameterData(File projectDesc, String parameterValue) throws IOException {
 		String content = FileUtils.getContentAsString(projectDesc);
 		content = MessageFormat.format(content, parameterValue);
 		projectDesc.delete();
@@ -290,8 +278,7 @@ public class WSO2PluginProjectWizard extends AbstractWSO2ProjectCreationWizard {
 			String wizardManifestPath = configElement.getAttribute("wizardManifest");
 
 			URL docBaseResource =
-			                      FileLocator.find(Platform.getBundle(configElement.getContributor()
-			                                                                       .getName()),
+			                      FileLocator.find(Platform.getBundle(configElement.getContributor().getName()),
 			                                       new Path(wizardManifestPath), null);
 			try {
 				return FileLocator.toFileURL(docBaseResource);
@@ -302,5 +289,5 @@ public class WSO2PluginProjectWizard extends AbstractWSO2ProjectCreationWizard {
 		}
 		return null;
 	}
-	
+
 }

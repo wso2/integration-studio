@@ -57,6 +57,7 @@ public class WSO2PluginListSelectionPage extends WizardSelectionPage {
 	}
 
 	private WizardSelectedAction pluginProjectSelectedAction = new WizardSelectedAction();
+	private IBaseLabelProvider ListItemLabelProvider = new ListItemLabelProvider();
 
 	private class WizardSelectedAction extends Action {
 		public WizardSelectedAction() {
@@ -95,6 +96,7 @@ public class WSO2PluginListSelectionPage extends WizardSelectionPage {
 
 		wizardSelectionViewer = new TableViewer(sashForm, SWT.BORDER);
 		wizardSelectionViewer.setContentProvider(PluginContentProvider.getInstance());
+		wizardSelectionViewer.setLabelProvider(ListItemLabelProvider );
 		wizardSelectionViewer.getTable().addSelectionListener(new SelectionListener() {
 
 			@Override

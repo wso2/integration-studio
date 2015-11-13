@@ -41,7 +41,7 @@
            description="%Perspectiveplugin_description" >       
       </template>
        <template
-           id="org.wso2.perspective.plugin.sample"
+           id="org.wso2.view.plugin.sample"
            name="Plugin with a View"
            archive="samples/PerspectivePluginSample.zip"
            icon="icons/view.png"

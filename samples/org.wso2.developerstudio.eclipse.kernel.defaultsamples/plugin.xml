@@ -21,20 +21,23 @@
     <extension point="org.wso2.developerstudio.kernel.plugin.sample">
       <template
            id="org.wso2.mediator.plugin.sample"
-           name="WSO2ESBCustomArtifactPlugin"
+           name="Plug-in with a single Artifact"
            archive="samples/SampleArtifactPlugin.zip"
+           icon="icons/single-artifact.png"
            description="%Sampleartifactplugin_description" >       
       </template>
       <template
            id="org.wso2.analytics.plugin.sample"
-           name="WSO2CEPMultipleArtifactProjectPlugin"
+           name="Plug-in with multiple Artifacts"
            archive="samples/SampleMultipleArtifactPlugin.zip"
+           icon="icons/multiple-artifacts.png"
            description="%Multipleartifactplugin_description" >       
       </template>
       <template
            id="org.wso2.perspective.plugin.sample"
-           name="SamplePerspectivePlugin"
+           name="Sample Perspective Plugin"
            archive="samples/PerspectivePluginSample.zip"
+           icon="icons/perspective.png"
            description="%Perspectiveplugin_description" >       
       </template>
    </extension>

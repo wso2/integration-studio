@@ -15,6 +15,8 @@
  */
 package org.wso2.developerstudio.eclipse.wso2plugin.sample.ui.elements;
 
+import org.eclipse.swt.graphics.Image;
+
 /*
  * This is a WSO2 Plugin Element of which, the parameters should be defined when
  * a sample is added via the
@@ -26,14 +28,24 @@ public class WSO2PluginSampleExt {
 	String pluginDescription;
 	String pluginArchive;
 	String bundleID;
+	Image image;
+
+	public Image getImage() {
+		return image;
+	}
+
+	public void setImage(Image image) {
+		this.image = image;
+	}
 
 	public WSO2PluginSampleExt(String pluginName, String pluginArchive, String description,
-	                           String pluginBundleID) {
+	                           String pluginBundleID, Image image) {
 		super();
 		this.pluginName = pluginName;
 		this.pluginArchive = pluginArchive;
 		this.pluginDescription = description;
 		this.bundleID = pluginBundleID;
+		this.image = image;
 	}
 
 	public String getBundleID() {

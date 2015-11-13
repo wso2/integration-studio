@@ -30,6 +30,7 @@ Import-Package:
  org.wso2.developerstudio.eclipse.utils.archive,
  org.wso2.developerstudio.eclipse.utils.data,
  org.wso2.developerstudio.eclipse.utils.file,
+ org.wso2.developerstudio.eclipse.utils.ui,
  org.wso2.developerstudio.eclipse.wso2plugin.sample.ui.wizard
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy

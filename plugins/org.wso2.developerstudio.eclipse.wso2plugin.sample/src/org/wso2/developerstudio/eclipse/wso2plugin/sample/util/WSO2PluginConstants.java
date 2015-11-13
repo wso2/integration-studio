@@ -30,4 +30,5 @@ public class WSO2PluginConstants {
 	public static final String ERROR_DIALOG_TITLE = "Developer Studio";
 	public static final String CREATE_PLUGIN_PROJECT_JOB = "Create Plugin project";
 	public static final String JAVA_PERSPECTIVE_ID = "org.eclipse.jdt.ui.JavaBrowsingPerspective";
+	public static final String ICON = "icon";
 }

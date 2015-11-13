@@ -19,6 +19,7 @@ import java.util.Iterator;
 
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.dialogs.Dialog;
+import org.eclipse.jface.viewers.IBaseLabelProvider;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.TableViewer;
@@ -35,6 +36,7 @@ import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Label;
 import org.wso2.developerstudio.eclipse.wso2plugin.sample.ui.elements.WSO2PluginSampleExt;
 import org.wso2.developerstudio.eclipse.wso2plugin.sample.ui.elements.WSO2PluginSampleExtList;
+import org.wso2.developerstudio.eclipse.wso2plugin.sample.util.PluginImageUtils;
 import org.wso2.developerstudio.eclipse.wso2plugin.sample.util.WSO2PluginConstants;
 
 public class WSO2PluginListSelectionPage extends WizardSelectionPage {
@@ -49,7 +51,9 @@ public class WSO2PluginListSelectionPage extends WizardSelectionPage {
 		super(pageName);
 		this.wso2PluginProjectWizard = wso2PluginProjectWizard;
 		this.wso2ElemList = elemList;
+		setTitle("Templates");
 		setDescription(WSO2PluginConstants.PLUGIN_SELECTION_WIZARD_DESCRIPTION);
+		setImageDescriptor(PluginImageUtils.getInstance().getImageDescriptor("templates-icon.png"));
 	}
 
 	private WizardSelectedAction pluginProjectSelectedAction = new WizardSelectedAction();

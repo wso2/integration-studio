@@ -15,10 +15,13 @@
  */
 package org.wso2.developerstudio.eclipse.wso2plugin.sample.ui.wizard;
 
+import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.text.MessageFormat;
+
+import javax.imageio.ImageIO;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IProjectDescription;
@@ -37,8 +40,10 @@ import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.jface.dialogs.ErrorDialog;
+import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.pde.internal.ui.util.ImageOverlayIcon;
 import org.wso2.developerstudio.eclipse.carbonserver.base.util.CarbonUtils;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
@@ -142,15 +147,30 @@ public class WSO2PluginProjectWizard extends AbstractWSO2ProjectCreationWizard {
 		String archive = config.getAttribute(WSO2PluginConstants.PLUGIN_ARCHIVE_LOCATION);
 		String description = config.getAttribute(WSO2PluginConstants.GET_PLUGIN_DESCRIPTION);
 		String providerBundleID = config.getContributor().getName();
+		ImageDescriptor imageDescriptor = ImageDescriptor.createFromURL(FileLocator.find(Platform.getBundle(providerBundleID), new Path(WSO2PluginConstants.ICON), null));
+		org.eclipse.swt.graphics.Image image = imageDescriptor.createImage();
 		if (name == null || archive == null || providerBundleID == null) {
 			openSelectedProjectInWorkspace(selectedPlugin);
 		}
 		WSO2PluginSampleExt pluginElem =
 		                                 new WSO2PluginSampleExt(name, archive, description,
-		                                                         providerBundleID);
+		                                                         providerBundleID, image);
 
 		return pluginElem;
 	}
+
+	private Image getImageFromBundle(String icon, String pluginID) {
+		Image imageFromPlugin = null;
+		URL iconLoc =
+                FileLocator.find(Platform.getBundle(pluginID),
+                                 new Path(icon), null);
+		try {
+	        imageFromPlugin = ImageIO.read(iconLoc);
+        } catch (IOException e) {
+	        log.error("could not load image icon ," + icon + "from plugin , " + pluginID);
+        } 
+	    return imageFromPlugin;
+    }
 
 	public boolean openSelectedProjectInWorkspace(ISelection iSelection) {
 
@@ -282,4 +302,5 @@ public class WSO2PluginProjectWizard extends AbstractWSO2ProjectCreationWizard {
 		}
 		return null;
 	}
+	
 }

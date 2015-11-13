@@ -20,13 +20,19 @@
    <extension-point id="org.wso2.developerstudio.kernel.plugin.sample" name="PluginSample" schema="schema/org.wso2.developerstudio.kernel.plugin.sample.exsd"/>
 	<extension
          point="org.eclipse.ui.newWizards">
+          <category
+            name="WSO2"
+            id="org.wso2.developerstudio.category">
+      </category>
          <wizard name="WSO2 Plugin Project"
+         	category="org.wso2.developerstudio.category"
 			class="org.wso2.developerstudio.eclipse.wso2plugin.sample.ui.wizard.WSO2PluginProjectWizard"
 			id="org.wso2.developerstudio.eclipse.artifact.newwso2pluginproject"
 			wizardManifest="project_wizard.xml"
-			icon="icons/new-plugin-12x12.png"
+			icon="icons/plugin-icon.png"
 			project="true">
 			<description>WSO2 Plugin Project</description>
 		</wizard>
    </extension>
+   
 </plugin>

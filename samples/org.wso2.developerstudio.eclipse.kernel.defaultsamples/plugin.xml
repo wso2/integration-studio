@@ -43,7 +43,7 @@
        <template
            id="org.wso2.view.plugin.sample"
            name="Plugin with a View"
-           archive="samples/PerspectivePluginSample.zip"
+           archive="samples/ViewPluginSample.zip"
            icon="icons/view.png"
            description="%Viewplugin_description" >       
       </template>

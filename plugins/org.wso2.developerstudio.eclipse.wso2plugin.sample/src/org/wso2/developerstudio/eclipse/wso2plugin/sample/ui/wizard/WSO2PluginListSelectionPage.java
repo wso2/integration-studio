@@ -17,6 +17,8 @@ package org.wso2.developerstudio.eclipse.wso2plugin.sample.ui.wizard;
 
 import java.util.Iterator;
 
+import javax.swing.event.DocumentEvent.EventType;
+
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.viewers.IBaseLabelProvider;
@@ -77,13 +79,11 @@ public class WSO2PluginListSelectionPage extends WizardSelectionPage {
 		Composite container = new Composite(parent, SWT.NULL);
 		setControl(container);
 
-		// Composite container = new Composite(parent, SWT.NONE);
 		GridLayout layout = new GridLayout();
 		layout.verticalSpacing = 10;
 		container.setLayout(layout);
 		container.setLayoutData(new GridData(GridData.FILL_BOTH));
 
-		// createAbove(container, 1);
 		Label label = new Label(container, SWT.NONE);
 		label.setText("Select the WSO2 Developer Studio Plugin you want to Create from the List Below.");
 		GridData gd = new GridData();
@@ -107,7 +107,7 @@ public class WSO2PluginListSelectionPage extends WizardSelectionPage {
 
 			@Override
 			public void widgetDefaultSelected(SelectionEvent e) {
-				// TODO Auto-generated method stub
+				// no implementation
 			}
 		});
 

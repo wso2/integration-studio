@@ -43,6 +43,7 @@
 	<module>org.wso2.developerstudio.eclipse.carbonserver42</module>
 	<module>org.wso2.developerstudio.eclipse.carbonserver44</module>
  	<module>org.wso2.developerstudio.eclipse.server.base</module>
+ 	<module>org.wso2.developerstudio.eclipse.general.project</module>
     </modules>
     <build>
         <plugins>

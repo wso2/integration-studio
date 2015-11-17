@@ -351,7 +351,6 @@ public abstract class UserRolesDialog extends Dialog {
 		// clear table.
 		userRolesTable.removeAll();
 
-		/* commented by susinda TODO fix this
 		if (StringUtils.isNotBlank(serverUrlText.getText())
 				&& StringUtils.isNotBlank(userNameText.getText())
 				&& StringUtils.isNotBlank(passwordText.getText())) {
@@ -377,7 +376,6 @@ public abstract class UserRolesDialog extends Dialog {
 				}
 			}
 		}
-		*/
 	}
 
 	@Override

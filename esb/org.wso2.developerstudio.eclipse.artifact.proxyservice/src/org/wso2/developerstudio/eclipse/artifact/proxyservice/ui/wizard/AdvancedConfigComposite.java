@@ -23,7 +23,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Observable;
 
-import org.apache.commons.lang.NotImplementedException;
+import org.eclipse.jface.window.Window;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.SWT;
@@ -42,12 +42,10 @@ import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.provider.NamedEntityDescriptor;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.provider.RegistryKeyPropertyEditorDialog;
 
 import static org.wso2.developerstudio.eclipse.esb.core.utils.ESBMediaTypeConstants.*;
-
-//TODO need to find a way to handle this
-//import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.provider.NamedEntityDescriptor;
-//import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.provider.RegistryKeyPropertyEditorDialog;
 
 import org.wso2.developerstudio.eclipse.artifact.proxyservice.model.ProxyServiceModel;
 import org.wso2.developerstudio.eclipse.artifact.proxyservice.model.ProxyServiceModel.TargetEPType;
@@ -759,15 +757,13 @@ public class AdvancedConfigComposite extends AbstractComposite {
 				FILTER_MEDIA_TYPE,
 				mediaType);
 		registryKeyProperty.setKeyValue(textBox.getText());
-		//TODO implement commnted codes and remove the exception
-		throw new NotImplementedException();
-//		RegistryKeyPropertyEditorDialog dialog = new RegistryKeyPropertyEditorDialog(getShell(), SWT.NULL,
-//				registryKeyProperty, new ArrayList<NamedEntityDescriptor>());
-//		int open = dialog.open();
-//		if(open== Window.OK){
-//			String keyValue = registryKeyProperty.getKeyValue();
-//			textBox.setText(keyValue);
-//		}
+		RegistryKeyPropertyEditorDialog dialog = new RegistryKeyPropertyEditorDialog(getShell(), SWT.NULL,
+				registryKeyProperty, new ArrayList<NamedEntityDescriptor>());
+		int open = dialog.open();
+		if(open== Window.OK){
+			String keyValue = registryKeyProperty.getKeyValue();
+			textBox.setText(keyValue);
+		}
 	}
 
 	public void setModel(ProxyServiceModel model) {

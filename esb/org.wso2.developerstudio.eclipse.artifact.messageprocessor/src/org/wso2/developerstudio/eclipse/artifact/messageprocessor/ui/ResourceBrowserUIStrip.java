@@ -1,13 +1,11 @@
 package org.wso2.developerstudio.eclipse.artifact.messageprocessor.ui;
 
-
 import static org.wso2.developerstudio.eclipse.platform.core.utils.CSProviderConstants.FILTER_MEDIA_TYPE;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.commons.lang.NotImplementedException;
 import org.eclipse.jface.window.Window;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.KeyAdapter;
@@ -25,9 +23,11 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.provider.RegistryKeyPropertyEditorDialog;
 import org.wso2.developerstudio.eclipse.esb.core.utils.ESBMediaTypeConstants;
-//TODO fix this
-//import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.provider.RegistryKeyPropertyEditorDialog;
+// TODO fix this
+// import
+// org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.provider.RegistryKeyPropertyEditorDialog;
 import org.wso2.developerstudio.eclipse.platform.core.project.model.ProjectDataModel;
 import org.wso2.developerstudio.eclipse.platform.core.utils.DeveloperStudioProviderUtils;
 import org.wso2.developerstudio.eclipse.platform.ui.interfaces.IFieldControlData;
@@ -37,14 +37,15 @@ import org.wso2.developerstudio.eclipse.platform.ui.utils.WSO2UIToolkit;
 
 public class ResourceBrowserUIStrip implements UIControl {
 
-	Label regLabel; 
-	Button btnRegBrowse; 
+	Label regLabel;
+	Button btnRegBrowse;
+
 	@Override
-	public IFieldControlData createUIField(String id, Composite container, int columns,
-			Integer verticalIndent, Integer horizontalIndent, boolean isTextReadonly, Shell shell,
-			String label, String fileButtonCaption, int selectedOption, ProjectDataModel model,
-			String pathBindingProperty) {
-		if (id.equals("resource.browser")){
+	public IFieldControlData createUIField(String id, Composite container, int columns, Integer verticalIndent,
+	                                       Integer horizontalIndent, boolean isTextReadonly, Shell shell, String label,
+	                                       String fileButtonCaption, int selectedOption, ProjectDataModel model,
+	                                       String pathBindingProperty) {
+		if (id.equals("resource.browser")) {
 			regLabel = new Label(container, SWT.None);
 			regLabel.setText(label);
 			GridData gridData = new GridData();
@@ -55,7 +56,7 @@ public class ResourceBrowserUIStrip implements UIControl {
 				gridData.horizontalIndent = horizontalIndent;
 			}
 			regLabel.setLayoutData(gridData);
-			
+
 			final Text txtValue = new Text(container, SWT.BORDER);
 			txtValue.setEditable(!isTextReadonly);
 			if (columns != -1) {
@@ -66,122 +67,117 @@ public class ResourceBrowserUIStrip implements UIControl {
 				txtValue.setLayoutData(gridData);
 			}
 
-			
 			IFieldControlData regControlData =
-		        addRegistryBrowseButton(container, shell, label, fileButtonCaption, txtValue,selectedOption,model,pathBindingProperty);
+			                                   addRegistryBrowseButton(container, shell, label, fileButtonCaption,
+			                                                           txtValue, selectedOption, model,
+			                                                           pathBindingProperty);
 			return regControlData;
 		}
 		return null;
 	}
 
 	@Override
-	public IFieldControlData addRegistryBrowseButton(Composite container, Shell shell,
-			String label, String buttonCaption, Text txtValue, int selectedOption,
-			ProjectDataModel model, String pathBindingProperty) {
-		
-		IFieldControlData regFiledControlData =null;
+	public IFieldControlData addRegistryBrowseButton(Composite container, Shell shell, String label,
+	                                                 String buttonCaption, Text txtValue, int selectedOption,
+	                                                 ProjectDataModel model, String pathBindingProperty) {
 
-		if(txtValue.getEditable()){
+		IFieldControlData regFiledControlData = null;
+
+		if (txtValue.getEditable()) {
 			regFiledControlData = new ResourceTextFieldControlData(txtValue);
-		} else{
+		} else {
 			regFiledControlData = new ResourceFieldControlData(txtValue);
 		}
-		
+
 		btnRegBrowse = new Button(container, SWT.None);
 		btnRegBrowse.setText(buttonCaption);
-		btnRegBrowse.addSelectionListener(createResourceSelectionListner(shell, txtValue, selectedOption, model, pathBindingProperty));
-	
-		WSO2UIToolkit.propagateControlStatus(txtValue,regLabel,btnRegBrowse);
+		btnRegBrowse.addSelectionListener(createResourceSelectionListner(shell, txtValue, selectedOption, model,
+		                                                                 pathBindingProperty));
+
+		WSO2UIToolkit.propagateControlStatus(txtValue, regLabel, btnRegBrowse);
 		return regFiledControlData;
 	}
-	
-	
+
 	private SelectionListener createResourceSelectionListner(final Shell shell, final Text txtValue,
-			final int selectedOption, final ProjectDataModel model, final String pathBindingProperty) {
-		
+	                                                         final int selectedOption, final ProjectDataModel model,
+	                                                         final String pathBindingProperty) {
+
 		return new SelectionListener() {
 			public void widgetDefaultSelected(SelectionEvent evt) {
 				selectRegistryResource(shell, txtValue, ESBMediaTypeConstants.MEDIA_TYPE_SEQUENCE);
 			}
-			
+
 			public void widgetSelected(SelectionEvent event) {
 				widgetDefaultSelected(event);
 			}
 		};
 	}
-	
+
 	private void selectRegistryResource(final Shell shell, Text textBox, String mediaType) {
 		RegistryKeyProperty registryKeyProperty = EsbFactory.eINSTANCE.createRegistryKeyProperty();
-		
-        //TODO fix this and remove exception
-		throw new NotImplementedException();		
-//		RegistryKeyPropertyEditorDialog dialog = new RegistryKeyPropertyEditorDialog(shell, SWT.NULL,
-//				registryKeyProperty, null); //new ArrayList<NamedEntityDescriptor>()
-//		int open = dialog.open();
-//		if(open== Window.OK){
-//			String keyValue = registryKeyProperty.getKeyValue();
-//			textBox.setText(keyValue);
-//		}
+		RegistryKeyPropertyEditorDialog dialog =
+		                                         new RegistryKeyPropertyEditorDialog(shell, SWT.NULL,
+		                                                                             registryKeyProperty, null); // new
+																												 // ArrayList<NamedEntityDescriptor>()
+		int open = dialog.open();
+		if (open == Window.OK) {
+			String keyValue = registryKeyProperty.getKeyValue();
+			textBox.setText(keyValue);
+		}
 	}
-	
-	
-	
-	private static class ResourceFieldControlData implements IFieldControlData{
+
+	private static class ResourceFieldControlData implements IFieldControlData {
 
 		private Control control;
 		private IOnAction onAction;
-		
+
 		public Object getData() {
-			return  getControl().getData();
+			return getControl().getData();
 		}
 
-		
 		public void setData(Object data) {
-			if (data!=null){
+			if (data != null) {
 				((Text) getControl()).setText(data.toString());
 				getControl().setData(data);
-			} else{
+			} else {
 				((Text) getControl()).setText("");
 				getControl().setData(null);
 			}
 		}
 
-		
 		public Control getControl() {
 			return this.control;
 		}
-		
-		
-		public IOnAction getOnAction(){
+
+		public IOnAction getOnAction() {
 			return onAction;
 		}
 
-		
 		public void setOnAction(IOnAction action) {
 			this.onAction = action;
 			final Text ctrl = (Text) getControl();
 			ctrl.addModifyListener(new ModifyListener() {
-				
+
 				public void modifyText(ModifyEvent evt) {
-						getOnAction().onModifyAction();	
+					getOnAction().onModifyAction();
 				}
 			});
 			ctrl.addKeyListener(new KeyAdapter() {
-				
+
 				public void keyReleased(KeyEvent e) {
 					getControl().setData(null);
-					//FIXME
-				    super.keyReleased(e);
+					// FIXME
+					super.keyReleased(e);
 				}
 			});
 
 		}
-		
-		public ResourceFieldControlData(Control control){
+
+		public ResourceFieldControlData(Control control) {
 			this.control = control;
-		} 
+		}
 	}
-	
+
 	private static class ResourceTextFieldControlData implements IFieldControlData {
 		private Control control;
 		private IOnAction onAction;
@@ -227,5 +223,3 @@ public class ResourceBrowserUIStrip implements UIControl {
 
 	}
 }
-	
-	

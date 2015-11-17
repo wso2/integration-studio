@@ -11,7 +11,8 @@ Require-Bundle: org.eclipse.ui,
  org.wso2.developerstudio.eclipse.platform.ui;bundle-version="4.0.0",
  org.wso2.developerstudio.eclipse.utils;bundle-version="4.0.0",
  org.wso2.developerstudio.eclipse.logging;bundle-version="4.0.0",
- org.wso2.developerstudio.eclipse.maven;bundle-version="4.0.0"
+ org.wso2.developerstudio.eclipse.maven;bundle-version="4.0.0",
+ org.wso2.developerstudio.eclipse.gmf.esb
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Import-Package: org.apache.axiom.om,
@@ -30,4 +31,5 @@ Import-Package: org.apache.axiom.om,
  org.wso2.developerstudio.eclipse.esb.core.utils,
  org.wso2.developerstudio.eclipse.esb.project.artifact,
  org.wso2.developerstudio.eclipse.esb.project.utils,
- org.wso2.developerstudio.eclipse.gmf.esb
+ org.wso2.developerstudio.eclipse.gmf.esb,
+ org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.provider

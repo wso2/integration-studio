@@ -28,6 +28,18 @@
 		</image>
 	</extension>
 	
+ <extension point="org.wso2.developerstudio.eclipse.platform.core.intro.ui.dashboard">
+   <category id="dashboard.category.Greg" showTitle="true"
+			title="Governance Registry Artifacts"
+			priority="9">
+	</category>
+	<wizardLink category="dashboard.category.Greg"
+			id="dashboard.wizardLink.greg.filter.Project"
+			wizard="org.wso2.developerstudio.eclipse.artifact.newregistryfilter"
+			priority="1">
+	</wizardLink>
+ </extension>
+	
     <!--<extension point="org.eclipse.ui.navigator.navigatorContent">	
 	   <navigatorContent activeByDefault="true"
 			priority="high"

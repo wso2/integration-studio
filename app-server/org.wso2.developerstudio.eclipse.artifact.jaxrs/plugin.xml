@@ -18,6 +18,19 @@
 			<description>JAX-RS Service Class</description>
 		</wizard>	
 	</extension>
+	<extension
+		point="org.wso2.developerstudio.eclipse.platform.core.intro.ui.dashboard">
+     <category id="dashboard.category.AS" showTitle="true"
+			title="Web Applications and Service Artifacts"
+			priority="9">
+	</category>
+	<wizardLink category="dashboard.category.AS"
+			id="dashboard.wizardLink.AS.jax.rsProject"
+			wizard="org.wso2.developerstudio.eclipse.artifact.newjaxrsartifact"
+			priority="1">
+	</wizardLink>
+ </extension>
+		
 	<extension point="org.eclipse.core.resources.natures"
 		id="org.wso2.developerstudio.eclipse.jaxrs.project.nature" name="JAX RESTful Service Project Nature">
 		<runtime>

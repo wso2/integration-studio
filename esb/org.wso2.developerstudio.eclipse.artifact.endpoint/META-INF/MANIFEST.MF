@@ -31,6 +31,9 @@ Import-Package: org.apache.axiom.om;version="1.2.11.wso2v4",
  org.wso2.developerstudio.eclipse.esb.core.utils,
  org.wso2.developerstudio.eclipse.esb.project.artifact,
  org.wso2.developerstudio.eclipse.esb.project.utils,
+ org.wso2.developerstudio.eclipse.general.project.artifact,
+ org.wso2.developerstudio.eclipse.general.project.artifact.bean,
+ org.wso2.developerstudio.eclipse.general.project.utils,
  org.wso2.developerstudio.eclipse.gmf.esb,
  org.wso2.developerstudio.eclipse.maven.util
 Export-Package: org.wso2.developerstudio.eclipse.artifact.endpoint.validators

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ * Copyright (c) 2011-2015 WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,13 +18,11 @@ package org.wso2.developerstudio.eclipse.artifact.endpoint.model;
 
 import org.apache.axiom.om.OMElement;
 import org.apache.axiom.om.OMException;
-import org.apache.commons.lang.NotImplementedException;
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.Path;
-import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.eclipse.artifact.endpoint.Activator;
@@ -37,8 +35,10 @@ import org.wso2.developerstudio.eclipse.esb.core.utils.SynapseFileUtils;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBArtifact;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBProjectArtifact;
 import org.wso2.developerstudio.eclipse.esb.project.utils.ESBProjectUtils;
-//TODO fix this
-//import org.wso2.developerstudio.eclipse.general.project.utils.GeneralProjectUtils;
+import org.wso2.developerstudio.eclipse.general.project.utils.GeneralProjectUtils;
+// TODO fix this
+// import
+// org.wso2.developerstudio.eclipse.general.project.utils.GeneralProjectUtils;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.platform.core.exception.ObserverFailedException;
@@ -56,16 +56,16 @@ import javax.xml.stream.FactoryConfigurationError;
 import javax.xml.stream.XMLStreamException;
 
 public class EndpointModel extends ProjectDataModel {
-	
-	private static IDeveloperStudioLog log=Logger.getLog(Activator.PLUGIN_ID);
-	
+
+	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
+
 	public static final String CONF_REG_ID = "2";
 	public static final String GOV_REG_ID = "3";
 
 	private ArtifactTemplate selectedTemplate;
 	private String availableTemplate;
 	private String registryPathID = GOV_REG_ID;
-	private String dynamicEpRegistryPath= new String();
+	private String dynamicEpRegistryPath = new String();
 	private List<OMElement> availableEPList;
 	private IContainer endpointSaveLocation;
 	private IProject project;
@@ -80,9 +80,7 @@ public class EndpointModel extends ProjectDataModel {
 	private Boolean dyOption = false;
 	private Boolean stOption = true;
 	private HttpMethodType httpMethod;
-	private List<OMElement> selectedEPList=new ArrayList<OMElement>();
-	
-	
+	private List<OMElement> selectedEPList = new ArrayList<OMElement>();
 
 	public Object getModelPropertyValue(String key) {
 		Object modelPropertyValue = super.getModelPropertyValue(key);
@@ -91,37 +89,36 @@ public class EndpointModel extends ProjectDataModel {
 				modelPropertyValue = getSelectedTemplate();
 			} else if (key.equals(EpArtifactConstants.WIZARD_OPTION_DYNAMIC_EP)) {
 				modelPropertyValue = getSelectedOption_DynamicEP();
-			} else if(key.equals(EpArtifactConstants.WIZARD_OPTION_STATIC_EP)){
+			} else if (key.equals(EpArtifactConstants.WIZARD_OPTION_STATIC_EP)) {
 				modelPropertyValue = getSelectedOption_StaticEP();
 			} else if (key.equals(EpArtifactConstants.WIZARD_OPTION_REGISTRY_TYPE)) {
 				modelPropertyValue = getRegistryPathID();
 			} else if (key.equals(EpArtifactConstants.WIZARD_OPTION_SAVE_LOCATION)) {
 				modelPropertyValue = getEndpointSaveLocation();
-		    }else if(key.equals(EpArtifactConstants.WIZARD_OPTION_AVAILABLE_EPS)){
+			} else if (key.equals(EpArtifactConstants.WIZARD_OPTION_AVAILABLE_EPS)) {
 				modelPropertyValue = selectedEPList.toArray();
-			} else if (key.equals(EpArtifactConstants.WIZARD_OPTION_REGISTRY_PATH)){
+			} else if (key.equals(EpArtifactConstants.WIZARD_OPTION_REGISTRY_PATH)) {
 				modelPropertyValue = getDynamicEpRegistryPath();
-			}else if(key.equals(EpArtifactConstants.WIZARD_OPTION_TEMPLATE_TEMP_TARGET)){
-				//modelPropertyValue = getAvailableTemplates();
+			} else if (key.equals(EpArtifactConstants.WIZARD_OPTION_TEMPLATE_TEMP_TARGET)) {
+				// modelPropertyValue = getAvailableTemplates();
 				modelPropertyValue = getTemplateEPTargetTemp();
-			} else if (key.equals(EpArtifactConstants.WIZARD_OPTION_TEMPLATE_AVAILABLE)){
-			    modelPropertyValue = getAvailableTemplates();
-			}  
+			} else if (key.equals(EpArtifactConstants.WIZARD_OPTION_TEMPLATE_AVAILABLE)) {
+				modelPropertyValue = getAvailableTemplates();
+			}
 		}
 		return modelPropertyValue;
 	}
-	
+
 	public boolean setModelPropertyValue(String key, Object data) throws ObserverFailedException {
 		boolean returnResult = super.setModelPropertyValue(key, data);
 		if (key.equals(EpArtifactConstants.WIZARD_OPTION_IMPORT_FILE)) {
 			if (getImportFile() != null && !getImportFile().toString().equals("")) {
 				try {
 					List<OMElement> availableEPs = new ArrayList<OMElement>();
-					if (SynapseFileUtils.isSynapseConfGiven(getImportFile(),
-					                                        SynapseEntryType.END_POINT)) {
+					if (SynapseFileUtils.isSynapseConfGiven(getImportFile(), SynapseEntryType.END_POINT)) {
 						availableEPs =
-						        SynapseFileUtils.synapseFileProcessing(getImportFile().getPath(),
-						                                               SynapseEntryType.END_POINT);
+						               SynapseFileUtils.synapseFileProcessing(getImportFile().getPath(),
+						                                                      SynapseEntryType.END_POINT);
 						setAvailableEPList(availableEPs);
 						getSelectedEPList().clear();
 						getSelectedEPList().addAll(availableEPs);
@@ -138,71 +135,68 @@ public class EndpointModel extends ProjectDataModel {
 				} catch (Exception e) {
 					log.error("An unexpected error has occurred", e);
 				}
-			}				
-		}else if (key.equals(EpArtifactConstants.WIZARD_OPTION_EP_TYPE)) {
+			}
+		} else if (key.equals(EpArtifactConstants.WIZARD_OPTION_EP_TYPE)) {
 			ArtifactTemplate template = (ArtifactTemplate) data;
 			setSelectedTemplate(template);
 		} else if (key.equals(EpArtifactConstants.WIZARD_OPTION_DYNAMIC_EP)) {
 			ProjectFilter.setShowGeneralProjects((Boolean) data);
 			setEndpointSaveLocation("");
-			setSelectedOption_DynamicEP((Boolean)data);
-		} else if (key.equals(EpArtifactConstants.WIZARD_OPTION_STATIC_EP)){
-			setSelectedOption_StaticEP((Boolean)data);		
-		}else if (key.equals(EpArtifactConstants.WIZARD_OPTION_REGISTRY_TYPE)) {
+			setSelectedOption_DynamicEP((Boolean) data);
+		} else if (key.equals(EpArtifactConstants.WIZARD_OPTION_STATIC_EP)) {
+			setSelectedOption_StaticEP((Boolean) data);
+		} else if (key.equals(EpArtifactConstants.WIZARD_OPTION_REGISTRY_TYPE)) {
 			setDynamicEpRegistryPath("");
 			setRegistryPathID(data.toString());
 		} else if (key.equals(EpArtifactConstants.WIZARD_OPTION_SAVE_LOCATION)) {
 			setEndpointSaveLocation((IContainer) data);
-			
+
 		} else if (key.equals(EpArtifactConstants.WIZARD_OPTION_CREATE_ESB_PROJECT)) {
-			if(getSelectedOption_DynamicEP()){		
-				
-				//TODO fix this and removeNotImplemented exception
-				throw new NotImplementedException();
-//				Shell shell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();		
-//				IProject generalProject = GeneralProjectUtils.createGeneralProject(shell,getLocation());
-//				if(generalProject!=null){
-//					setEndpointSaveLocation(generalProject);
-//				}
-			} else{
+			if (getSelectedOption_DynamicEP()) {
 				Shell shell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
-				IProject esbProject = ESBProjectUtils.createESBProject(shell,getLocation());
-				if(esbProject!=null){
+				IProject generalProject = GeneralProjectUtils.createGeneralProject(shell, getLocation());
+				if (generalProject != null) {
+					setEndpointSaveLocation(generalProject);
+				}
+			} else {
+				Shell shell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
+				IProject esbProject = ESBProjectUtils.createESBProject(shell, getLocation());
+				if (esbProject != null) {
 					setEndpointSaveLocation(esbProject);
 				}
-			}			
+			}
 			// TODO show wizard to create a esb project
 			// get endpoint location of the esb project & set
 			// endpointSaveLocation as it is
-		}else if(key.equals(EpArtifactConstants.WIZARD_OPTION_EP_NAME)){
+		} else if (key.equals(EpArtifactConstants.WIZARD_OPTION_EP_NAME)) {
 			setEpName(data.toString());
-		}else if(key.equals(EpArtifactConstants.WIZARD_OPTION_TEMPLATE_ADDRESS_EP_URL)){
+		} else if (key.equals(EpArtifactConstants.WIZARD_OPTION_TEMPLATE_ADDRESS_EP_URL)) {
 			setAddressEPURI(data.toString());
-		}else if(key.equals(EpArtifactConstants.WIZARD_OPTION_TEMPLATE_WSDL_EP_URL)){
+		} else if (key.equals(EpArtifactConstants.WIZARD_OPTION_TEMPLATE_WSDL_EP_URL)) {
 			setWsdlEPURI(data.toString());
-		}else if(key.equals(EpArtifactConstants.WIZARD_OPTION_TEMPLATE_WSDL_EP_SERVICE)){
+		} else if (key.equals(EpArtifactConstants.WIZARD_OPTION_TEMPLATE_WSDL_EP_SERVICE)) {
 			setWsdlEPService(data.toString());
-		}else if(key.equals(EpArtifactConstants.WIZARD_OPTION_TEMPLATE_WSDL_EP_SERVICE_PORT)){
+		} else if (key.equals(EpArtifactConstants.WIZARD_OPTION_TEMPLATE_WSDL_EP_SERVICE_PORT)) {
 			setWsdlEPPort(data.toString());
-		}else if(key.equals(EpArtifactConstants.WIZARD_OPTION_TEMPLATE_TEMP_EP_URL)){
+		} else if (key.equals(EpArtifactConstants.WIZARD_OPTION_TEMPLATE_TEMP_EP_URL)) {
 			setTemplateEPURI(data.toString());
-		}else if(key.equals(EpArtifactConstants.WIZARD_OPTION_TEMPLATE_TEMP_TARGET)){
+		} else if (key.equals(EpArtifactConstants.WIZARD_OPTION_TEMPLATE_TEMP_TARGET)) {
 			setTemplateEPTargetTemp(data.toString());
-		}else if(key.equals(EpArtifactConstants.WIZARD_OPTION_HTTP_EP_URITEMPLATE)){
+		} else if (key.equals(EpArtifactConstants.WIZARD_OPTION_HTTP_EP_URITEMPLATE)) {
 			setHttpUriTemplate(data.toString());
-		}else if(key.equals(EpArtifactConstants.WIZARD_OPTION_HTTP_EP_METHOD)){
-			setHttpMethod((HttpMethodType)data);
-		}else if(key.equals(EpArtifactConstants.WIZARD_OPTION_AVAILABLE_EPS)){
-			Object[] selectedEPs = (Object[])data;
+		} else if (key.equals(EpArtifactConstants.WIZARD_OPTION_HTTP_EP_METHOD)) {
+			setHttpMethod((HttpMethodType) data);
+		} else if (key.equals(EpArtifactConstants.WIZARD_OPTION_AVAILABLE_EPS)) {
+			Object[] selectedEPs = (Object[]) data;
 			selectedEPList.clear();
 			for (Object object : selectedEPs) {
-				if(object instanceof OMElement){
-					selectedEPList.add((OMElement)object);
+				if (object instanceof OMElement) {
+					selectedEPList.add((OMElement) object);
 				}
 			}
 			setSelectedEPList(selectedEPList);
-		} else if (key.equals(EpArtifactConstants.WIZARD_OPTION_REGISTRY_PATH)){
-			if(null!=data){
+		} else if (key.equals(EpArtifactConstants.WIZARD_OPTION_REGISTRY_PATH)) {
+			if (null != data) {
 				setDynamicEpRegistryPath(data.toString());
 			}
 		} else if (key.equals(EpArtifactConstants.WIZARD_OPTION_TEMPLATE_AVAILABLE)) {
@@ -210,32 +204,32 @@ public class EndpointModel extends ProjectDataModel {
 			setTemplateEPTargetTemp(data.toString());
 		}
 
-	return returnResult;
+		return returnResult;
 
 	}
-	
+
 	public void setSelectedTemplate(ArtifactTemplate selectedTemplate) {
 		this.selectedTemplate = selectedTemplate;
 	}
 
 	public ArtifactTemplate getSelectedTemplate() {
-		if(selectedTemplate == null){
+		if (selectedTemplate == null) {
 			ArtifactTemplate[] artifactTemplates = EndPointTemplateList.getArtifactTemplates();
 			if (artifactTemplates.length > 0) {
 				selectedTemplate = artifactTemplates[0];// new
-														// ArtifactTemplate("org.wso2.developerstudio.eclipse.esb.template.ep0",
-														// "Default Endpoint");
+				                                        // ArtifactTemplate("org.wso2.developerstudio.eclipse.esb.template.ep0",
+				                                        // "Default Endpoint");
 			} else {
 				return null;
 			}
 		}
 		return selectedTemplate;
 	}
-	
+
 	public void setAvailableTemplates(String availableTemplate) {
 		this.availableTemplate = availableTemplate;
 	}
-	
+
 	public String getAvailableTemplates() {
 		return availableTemplate;
 	}
@@ -243,7 +237,7 @@ public class EndpointModel extends ProjectDataModel {
 	protected ListData createListData(String caption, Object data) {
 		return new ListData(caption, data);
 	}
-	
+
 	public void setDynamicEpRegistryPath(String dynamicEpRegistryPath) {
 		this.dynamicEpRegistryPath = dynamicEpRegistryPath;
 	}
@@ -266,26 +260,25 @@ public class EndpointModel extends ProjectDataModel {
 
 	public void setEndpointSaveLocation(String endpointSaveLocation) {
 		this.endpointSaveLocation =
-		        ResourcesPlugin.getWorkspace().getRoot()
-		                .getContainerForLocation(new Path(endpointSaveLocation));
+		                            ResourcesPlugin.getWorkspace().getRoot()
+		                                           .getContainerForLocation(new Path(endpointSaveLocation));
 	}
 
 	public IContainer getEndpointSaveLocation() {
 		return endpointSaveLocation;
 	}
-	
+
 	public void setLocation(File location) {
 		super.setLocation(location);
 		File absolutionPath = getLocation();
 		if (getEndpointSaveLocation() == null && absolutionPath != null) {
-			IContainer newEndpointSaveLocation =
-			        getContainer(absolutionPath, EpArtifactConstants.ESB_PROJECT_NATURE);
+			IContainer newEndpointSaveLocation = getContainer(absolutionPath, EpArtifactConstants.ESB_PROJECT_NATURE);
 			setEndpointSaveLocation(newEndpointSaveLocation);
 		}
 	}
 
 	public static IContainer getContainer(File absolutionPath, String projectNature) {
-		
+
 		IProject[] projects = ResourcesPlugin.getWorkspace().getRoot().getProjects();
 		int length = 0;
 		IProject currentSelection = null;
@@ -294,8 +287,7 @@ public class EndpointModel extends ProjectDataModel {
 				if (project.isOpen() && project.hasNature(projectNature)) {
 					File projectLocation = project.getLocation().toFile();
 					int projectLocationLength = projectLocation.toString().length();
-					if (projectLocationLength > length &&
-					    projectLocationLength <= absolutionPath.toString().length()) {
+					if (projectLocationLength > length && projectLocationLength <= absolutionPath.toString().length()) {
 						if (absolutionPath.toString().startsWith(projectLocation.toString())) {
 							length = projectLocationLength;
 							currentSelection = project;
@@ -309,9 +301,8 @@ public class EndpointModel extends ProjectDataModel {
 		IContainer newEndpointSaveLocation = null;
 		if (currentSelection != null) {
 			String path =
-			        absolutionPath.toString().substring(
-			                                            currentSelection.getLocation().toFile()
-			                                                    .toString().length());
+			              absolutionPath.toString().substring(currentSelection.getLocation().toFile().toString()
+			                                                                  .length());
 			if (path.equals("")) {
 				newEndpointSaveLocation = currentSelection;
 			} else {
@@ -328,7 +319,7 @@ public class EndpointModel extends ProjectDataModel {
 	public String getEpName() {
 		return epName;
 	}
-	
+
 	public String getAddressEPURI() {
 		return addressEPURI;
 	}
@@ -385,17 +376,14 @@ public class EndpointModel extends ProjectDataModel {
 		return selectedEPList;
 	}
 
-
 	public void setRegistryPathID(String registryPathID) {
 		this.registryPathID = registryPathID;
 	}
 
-
 	public String getRegistryPathID() {
 		return registryPathID;
 	}
-	
-	
+
 	public void setHttpUriTemplate(String uriTemplate) {
 		this.httpUriTemplate = uriTemplate;
 	}
@@ -403,7 +391,7 @@ public class EndpointModel extends ProjectDataModel {
 	public String getHttpUriTemplate() {
 		return httpUriTemplate;
 	}
-	
+
 	public void setHttpMethod(HttpMethodType method) {
 		this.httpMethod = method;
 	}
@@ -411,7 +399,7 @@ public class EndpointModel extends ProjectDataModel {
 	public HttpMethodType getHttpMethod() {
 		return httpMethod;
 	}
-	
+
 	public void setSelectedOption_DynamicEP(Boolean dyOption) {
 		this.dyOption = dyOption;
 	}
@@ -419,12 +407,12 @@ public class EndpointModel extends ProjectDataModel {
 	public Boolean getSelectedOption_DynamicEP() {
 		return dyOption;
 	}
-	
-	public void setSelectedOption_StaticEP(Boolean stOption){
+
+	public void setSelectedOption_StaticEP(Boolean stOption) {
 		this.stOption = stOption;
 	}
-	
-	public Boolean getSelectedOption_StaticEP(){
+
+	public Boolean getSelectedOption_StaticEP() {
 		return stOption;
 	}
 }

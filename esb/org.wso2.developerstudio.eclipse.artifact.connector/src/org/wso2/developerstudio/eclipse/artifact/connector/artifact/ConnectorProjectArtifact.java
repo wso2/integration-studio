@@ -29,7 +29,6 @@ import javax.xml.stream.FactoryConfigurationError;
 import org.apache.axiom.om.OMDocument;
 import org.apache.axiom.om.OMElement;
 import org.wso2.developerstudio.eclipse.platform.core.manifest.AbstractXMLDoc;
-
 /**
  * This class represents the .artifact.xml file which keeps the metadata of the artifacts included in an ESB project.
  * Structure of the file is as follows.

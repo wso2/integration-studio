@@ -25,7 +25,6 @@ import javax.xml.stream.XMLStreamException;
 
 import org.apache.axiom.om.OMElement;
 import org.apache.axiom.om.OMException;
-import org.apache.commons.lang.NotImplementedException;
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
@@ -39,7 +38,9 @@ import org.wso2.developerstudio.eclipse.artifact.sequence.validators.ProjectFilt
 import org.wso2.developerstudio.eclipse.esb.core.utils.SynapseEntryType;
 import org.wso2.developerstudio.eclipse.esb.core.utils.SynapseFileUtils;
 import org.wso2.developerstudio.eclipse.esb.project.utils.ESBProjectUtils;
-//import org.wso2.developerstudio.eclipse.general.project.utils.GeneralProjectUtils;
+import org.wso2.developerstudio.eclipse.general.project.utils.GeneralProjectUtils;
+// import
+// org.wso2.developerstudio.eclipse.general.project.utils.GeneralProjectUtils;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.platform.core.exception.ObserverFailedException;
@@ -47,9 +48,9 @@ import org.wso2.developerstudio.eclipse.platform.core.project.model.ProjectDataM
 import org.wso2.developerstudio.eclipse.utils.project.ProjectUtils;
 
 public class SequenceModel extends ProjectDataModel {
-	
-	private static IDeveloperStudioLog log=Logger.getLog(Activator.PLUGIN_ID);
-	
+
+	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
+
 	public static final String CONF_REG_ID = "2";
 	public static final String GOV_REG_ID = "3";
 
@@ -63,7 +64,6 @@ public class SequenceModel extends ProjectDataModel {
 	private String selectedEP = "";
 	private List<OMElement> selectedSeqList;
 
-	
 	public Object getModelPropertyValue(String key) {
 		Object modelPropertyValue = super.getModelPropertyValue(key);
 		if (modelPropertyValue == null) {
@@ -72,37 +72,37 @@ public class SequenceModel extends ProjectDataModel {
 			} else if (key.equals("reg.path")) {
 				modelPropertyValue = getRegistryPathID();
 			} else if (key.equals("save.file")) {
-				IContainer container= getSequenceSaveLocation();
-				if(container != null && container instanceof IFolder){
-					IFolder sequenceFolder = container.getProject().getFolder("src").getFolder("main").getFolder("synapse-config").getFolder("sequences");
+				IContainer container = getSequenceSaveLocation();
+				if (container != null && container instanceof IFolder) {
+					IFolder sequenceFolder =
+					                         container.getProject().getFolder("src").getFolder("main")
+					                                  .getFolder("synapse-config").getFolder("sequences");
 					modelPropertyValue = sequenceFolder;
-				}else{
+				} else {
 					modelPropertyValue = container;
 				}
-			} else if (key.equals("reg.browse")){
+			} else if (key.equals("reg.browse")) {
 				modelPropertyValue = getDynamicSeqRegistryPath();
-			} else if(key.equals("available.sequences")){
-				if(selectedSeqList!=null){
+			} else if (key.equals("available.sequences")) {
+				if (selectedSeqList != null) {
 					modelPropertyValue = selectedSeqList.toArray();
-					}
 				}
+			}
 		}
 		return modelPropertyValue;
 	}
 
-	
 	public boolean setModelPropertyValue(String key, Object data) throws ObserverFailedException {
 		boolean returnResult = super.setModelPropertyValue(key, data);
-		selectedSeqList = new ArrayList<OMElement>();	
+		selectedSeqList = new ArrayList<OMElement>();
 		if (key.equals("import.file")) {
 			if (getImportFile() != null && !getImportFile().toString().equals("")) {
 				try {
 					List<OMElement> availableSequences = new ArrayList<OMElement>();
-					if (SynapseFileUtils.isSynapseConfGiven(getImportFile(),
-					                                        SynapseEntryType.SEQUENCE)) {
+					if (SynapseFileUtils.isSynapseConfGiven(getImportFile(), SynapseEntryType.SEQUENCE)) {
 						availableSequences =
-						        SynapseFileUtils.synapseFileProcessing(getImportFile().getPath(),
-						                                               SynapseEntryType.SEQUENCE);
+						                     SynapseFileUtils.synapseFileProcessing(getImportFile().getPath(),
+						                                                            SynapseEntryType.SEQUENCE);
 						setAvailableSeqList(availableSequences);
 					} else {
 						setAvailableSeqList(new ArrayList<OMElement>());
@@ -126,59 +126,57 @@ public class SequenceModel extends ProjectDataModel {
 			setDynamicSeqRegistryPath("");
 			setRegistryPathID(data.toString());
 		} else if (key.equals("save.file")) {
-			IContainer container=(IContainer) data;
-			if(container != null && container instanceof IFolder){
-				IFolder sequenceFolder = container.getProject().getFolder("src").getFolder("main").getFolder("synapse-config").getFolder("sequences");
+			IContainer container = (IContainer) data;
+			if (container != null && container instanceof IFolder) {
+				IFolder sequenceFolder =
+				                         container.getProject().getFolder("src").getFolder("main")
+				                                  .getFolder("synapse-config").getFolder("sequences");
 				setSequenceSaveLocation(sequenceFolder);
-			}else{
+			} else {
 				setSequenceSaveLocation(container);
 			}
 		} else if (key.equals("create.esb.prj")) {
-			if(isSaveAsDynamic()){
-				
-				//TODO fix this and remove unimplemented exeption
-				throw new NotImplementedException();
-//				Shell shell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
-//				IProject generalProject = GeneralProjectUtils.createGeneralProject(shell,getLocation());
-//				if(generalProject!=null){
-//					setSequenceSaveLocation(generalProject);
-//				}
-				
-			} else{
+			if (isSaveAsDynamic()) {
 				Shell shell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
-				IProject esbProject = ESBProjectUtils.createESBProject(shell,getLocation());
-				if(esbProject!=null){
+				IProject generalProject = GeneralProjectUtils.createGeneralProject(shell, getLocation());
+				if (generalProject != null) {
+					setSequenceSaveLocation(generalProject);
+				}
+
+			} else {
+				Shell shell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
+				IProject esbProject = ESBProjectUtils.createESBProject(shell, getLocation());
+				if (esbProject != null) {
 					setSequenceSaveLocation(esbProject);
 				}
 			}
-		}else if(key.equals("sequence.name")){
+		} else if (key.equals("sequence.name")) {
 			setSequenceName(data.toString());
-		}else if(key.equals("on.error.sequence")){
+		} else if (key.equals("on.error.sequence")) {
 			String seqName = ProjectUtils.fileNameWithoutExtension((new File(data.toString())).getName());
 			setOnErrorSequence(seqName);
-		}else if(key.equals("available.eps")){					
-						String epName = "";
-						File file = (new File(data.toString()));
-						if (file.exists()){
-							if (file.getParent().contains("synapse-config")){
-								epName = ProjectUtils.fileNameWithoutExtension(file.getName());
-							}				
-						}	
-						else{
-							epName = data.toString();
-						}
-						setSelectedEP(epName);		
-		}else if(key.equals("available.sequences")){
-			Object[] selectedSequencess = (Object[])data;
+		} else if (key.equals("available.eps")) {
+			String epName = "";
+			File file = (new File(data.toString()));
+			if (file.exists()) {
+				if (file.getParent().contains("synapse-config")) {
+					epName = ProjectUtils.fileNameWithoutExtension(file.getName());
+				}
+			} else {
+				epName = data.toString();
+			}
+			setSelectedEP(epName);
+		} else if (key.equals("available.sequences")) {
+			Object[] selectedSequencess = (Object[]) data;
 			for (Object object : selectedSequencess) {
-				if(object instanceof OMElement){
-					if(!selectedSeqList.contains((OMElement)object)){
-						selectedSeqList.add((OMElement)object);
-					}				
+				if (object instanceof OMElement) {
+					if (!selectedSeqList.contains((OMElement) object)) {
+						selectedSeqList.add((OMElement) object);
+					}
 				}
 			}
-		}else if (key.equals("reg.browse")){
-			if(null!=data){
+		} else if (key.equals("reg.browse")) {
+			if (null != data) {
 				setDynamicSeqRegistryPath(data.toString());
 			}
 		}
@@ -196,16 +194,16 @@ public class SequenceModel extends ProjectDataModel {
 
 	public void setSequenceSaveLocation(String sequenceSaveLocation) {
 		this.setSequenceSaveLocation(ResourcesPlugin.getWorkspace().getRoot()
-		        .getContainerForLocation(new Path(sequenceSaveLocation)));
+		                                            .getContainerForLocation(new Path(sequenceSaveLocation)));
 	}
 
-	
 	public void setLocation(File location) {
 		super.setLocation(location);
 		File absolutionPath = getLocation();
 		if (getSequenceSaveLocation() == null && absolutionPath != null) {
 			IContainer newEndpointSaveLocation =
-			        getContainer(absolutionPath, "org.wso2.developerstudio.eclipse.esb.project.nature");
+			                                     getContainer(absolutionPath,
+			                                                  "org.wso2.developerstudio.eclipse.esb.project.nature");
 			setSequenceSaveLocation(newEndpointSaveLocation);
 		}
 	}
@@ -219,8 +217,7 @@ public class SequenceModel extends ProjectDataModel {
 				if (project.isOpen() && project.hasNature(projectNature)) {
 					File projectLocation = project.getLocation().toFile();
 					int projectLocationLength = projectLocation.toString().length();
-					if (projectLocationLength > length &&
-					    projectLocationLength <= absolutionPath.toString().length()) {
+					if (projectLocationLength > length && projectLocationLength <= absolutionPath.toString().length()) {
 						if (absolutionPath.toString().startsWith(projectLocation.toString())) {
 							length = projectLocationLength;
 							currentSelection = project;
@@ -234,9 +231,8 @@ public class SequenceModel extends ProjectDataModel {
 		IContainer newSequenceSaveLocation = null;
 		if (currentSelection != null) {
 			String path =
-			        absolutionPath.toString().substring(
-			                                            currentSelection.getLocation().toFile()
-			                                                    .toString().length());
+			              absolutionPath.toString().substring(currentSelection.getLocation().toFile().toString()
+			                                                                  .length());
 
 			if (path.equals("")) {
 				newSequenceSaveLocation = currentSelection;
@@ -280,7 +276,7 @@ public class SequenceModel extends ProjectDataModel {
 	}
 
 	public void setOnErrorSequence(String onErrorSequence) {
-		if(!onErrorSequence.equals("")){
+		if (!onErrorSequence.equals("")) {
 			onErrorSequence = "onError=\"" + onErrorSequence + "\"";
 		}
 		this.onErrorSequence = onErrorSequence;
@@ -291,8 +287,8 @@ public class SequenceModel extends ProjectDataModel {
 	}
 
 	public void setSelectedEP(String selectedEP) {
-		if(!selectedEP.equals("")){
-			selectedEP = "><send><endpoint key=\"" +  selectedEP + "\" /></send></sequence>";
+		if (!selectedEP.equals("")) {
+			selectedEP = "><send><endpoint key=\"" + selectedEP + "\" /></send></sequence>";
 		}
 		this.selectedEP = selectedEP;
 	}
@@ -309,11 +305,9 @@ public class SequenceModel extends ProjectDataModel {
 		return selectedSeqList;
 	}
 
-
 	public void setDynamicSeqRegistryPath(String dynamicSeqRegistryPath) {
 		this.dynamicSeqRegistryPath = dynamicSeqRegistryPath;
 	}
-
 
 	public String getDynamicSeqRegistryPath() {
 		return dynamicSeqRegistryPath;

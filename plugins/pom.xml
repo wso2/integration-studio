@@ -36,9 +36,6 @@
 	<module>org.wso2.developerstudio.eclipse.carbonserver.base</module>
 	<module>org.wso2.developerstudio.eclipse.carbon.server.model</module>
  	<module>org.wso2.developerstudio.eclipse.carbonserver.remote</module>
- 	<module>org.wso2.developerstudio.eclipse.carbonserver30</module>
-	<module>org.wso2.developerstudio.eclipse.carbonserver31</module>
- 	<module>org.wso2.developerstudio.eclipse.carbonserver32</module>
  	<module>org.wso2.developerstudio.eclipse.carbonserver40</module>
 	<module>org.wso2.developerstudio.eclipse.carbonserver42</module>
 	<module>org.wso2.developerstudio.eclipse.carbonserver44</module>

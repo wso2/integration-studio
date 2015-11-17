@@ -31,4 +31,13 @@ public class WSO2PluginConstants {
 	public static final String CREATE_PLUGIN_PROJECT_JOB = "Create Plugin project";
 	public static final String JAVA_PERSPECTIVE_ID = "org.eclipse.jdt.ui.JavaBrowsingPerspective";
 	public static final String ICON = "icon";
+	public static final String ICONS = "icons";
+	public static final String FILE_PROTOCOL = "file://";
+	public static final String SAMPLE_DESCRIPTION_FILE = "sample_description.json";
+	
+	public static final String GOOGLE_COM = "http://www.google.com";
+	public static final String HTTPS_GITHUB_COM_TIKAA_KERNEL_SAMPLES_GIT =
+	                                                                        "https://github.com/tikaa/kernelSamples.git";
+	public static final String DEV_STUDIO_CLONED_SAMPLES = "DevStudioClonedSamples";
+	public static final String JAVA_IO_TMPDIR = "java.io.tmpdir";
 }

@@ -17,6 +17,9 @@
 package org.wso2.developerstudio.eclipse.wso2plugin.sample.ui.wizard;
 
 import org.eclipse.jface.viewers.ArrayContentProvider;
+import org.eclipse.jface.viewers.IContentProvider;
+import org.eclipse.jface.viewers.IStructuredContentProvider;
+import org.eclipse.jface.viewers.Viewer;
 import org.wso2.developerstudio.eclipse.wso2plugin.sample.ui.elements.WSO2PluginSampleExtList;
 
 public class PluginContentProvider extends ArrayContentProvider {
@@ -44,4 +47,5 @@ public class PluginContentProvider extends ArrayContentProvider {
 
 		return new Object[0];
 	}
+
 }

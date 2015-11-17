@@ -15,13 +15,12 @@
  */
 package org.wso2.developerstudio.eclipse.wso2plugin.sample.ui.wizard;
 
-import java.awt.Image;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
 import java.text.MessageFormat;
-
-import javax.imageio.ImageIO;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IProjectDescription;
@@ -40,11 +39,8 @@ import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.jface.dialogs.ErrorDialog;
-import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.pde.internal.ui.util.ImageOverlayIcon;
-import org.wso2.developerstudio.eclipse.carbonserver.base.util.CarbonUtils;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.platform.core.project.model.ProjectWizardSettings;
@@ -62,7 +58,14 @@ import org.wso2.developerstudio.eclipse.wso2plugin.sample.ui.elements.WSO2Plugin
 import org.wso2.developerstudio.eclipse.wso2plugin.sample.ui.elements.WSO2PluginSampleExtList;
 import org.wso2.developerstudio.eclipse.wso2plugin.sample.util.WSO2PluginConstants;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonIOException;
+import com.google.gson.JsonParser;
+import com.google.gson.JsonSyntaxException;
+
 public class WSO2PluginProjectWizard extends AbstractWSO2ProjectCreationWizard {
+
 	private WSO2PluginProjectModel wso2PluginProjectModel;
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 	private ISelection selectedPlugin;
@@ -133,7 +136,42 @@ public class WSO2PluginProjectWizard extends AbstractWSO2ProjectCreationWizard {
 				elemList.addWSO2Plugin(element);
 			}
 		}
+		if (WSO2PluginListSelectionPage.isUpdateFromGit) {
+			String fileName = WSO2PluginListSelectionPage.tempCloneDir + File.separator;
+			WSO2PluginSampleExt[] pluginSampleExt =
+			                                        addWizardElemsFromDownloadedPlugins(fileName +
+			                                                                            WSO2PluginConstants.SAMPLE_DESCRIPTION_FILE);
+			for (WSO2PluginSampleExt pluginSamle : pluginSampleExt) {
+				String iconLocation = fileName + WSO2PluginConstants.ICONS + File.separator + pluginSamle.getIconLoc();
+				pluginSamle.setIconLoc(iconLocation);
+				String tempArchiveLoc = fileName + pluginSamle.getPluginArchive();
+				pluginSamle.setPluginArchive(tempArchiveLoc);
+				pluginSamle.setIsUpdatedFromGit(String.valueOf(true));
+				elemList.add(pluginSamle);
+			}
+		}
 		return elemList;
+	}
+
+	private WSO2PluginSampleExt[] addWizardElemsFromDownloadedPlugins(String fileName) {
+		Gson gson = new Gson();
+		JsonParser parser = new JsonParser();
+		JsonElement jsonElement = null;
+		try {
+			jsonElement = parser.parse(new FileReader(fileName));
+		} catch (JsonIOException | JsonSyntaxException | FileNotFoundException e1) {
+			log.error("Could not read the json file containing the plugin template information " + e1);
+			MultiStatus status =
+			                     MessageDialogUtils.createMultiStatus(e1.getLocalizedMessage(), e1,
+			                                                          WSO2PluginConstants.PACKAGE_ID);
+			// show error dialog
+			ErrorDialog.openError(this.getShell(), WSO2PluginConstants.ERROR_DIALOG_TITLE,
+			                      "Could not read the json file containing the plugin template information. ", status);
+		}
+		WSO2PluginSampleExt[] pluginSampleExt = gson.fromJson(jsonElement, WSO2PluginSampleExt[].class);
+
+		return pluginSampleExt;
+
 	}
 
 	protected WSO2PluginSampleExt createWizardElement(IConfigurationElement config) {
@@ -142,27 +180,14 @@ public class WSO2PluginProjectWizard extends AbstractWSO2ProjectCreationWizard {
 		String description = config.getAttribute(WSO2PluginConstants.GET_PLUGIN_DESCRIPTION);
 		String providerBundleID = config.getContributor().getName();
 		String iconLoc = config.getAttribute(WSO2PluginConstants.ICON);
-		ImageDescriptor imageDescriptor =
-		                                  ImageDescriptor.createFromURL(FileLocator.find(Platform.getBundle(providerBundleID),
-		                                                                                 new Path(iconLoc), null));
-		org.eclipse.swt.graphics.Image image = imageDescriptor.createImage();
 		if (name == null || archive == null || providerBundleID == null) {
 			openSelectedProjectInWorkspace(selectedPlugin);
 		}
-		WSO2PluginSampleExt pluginElem = new WSO2PluginSampleExt(name, archive, description, providerBundleID, image);
+		WSO2PluginSampleExt pluginElem =
+		                                 new WSO2PluginSampleExt(name, archive, description, providerBundleID, iconLoc,
+		                                                         String.valueOf(false));
 
 		return pluginElem;
-	}
-
-	private Image getImageFromBundle(String icon, String pluginID) {
-		Image imageFromPlugin = null;
-		URL iconLoc = FileLocator.find(Platform.getBundle(pluginID), new Path(icon), null);
-		try {
-			imageFromPlugin = ImageIO.read(iconLoc);
-		} catch (IOException e) {
-			log.error("could not load image icon ," + icon + "from plugin , " + pluginID);
-		}
-		return imageFromPlugin;
 	}
 
 	public boolean openSelectedProjectInWorkspace(ISelection iSelection) {
@@ -176,19 +201,66 @@ public class WSO2PluginProjectWizard extends AbstractWSO2ProjectCreationWizard {
 		String projectName = wso2PluginProjectModel.getPluginProjectName();
 		String projectArchiveLoc = element.getPluginArchive();
 		String pluginID = element.getBundleID();
+		boolean isFromGit = Boolean.parseBoolean(element.getIsUpdatedFromGit());
+		return openZipArchive(projectArchiveLoc, projectName, pluginID, isFromGit);
+
+	}
+
+	private boolean openZipArchive(String projectArchiveLoc, String projectName, String pluginBundleID,
+	                               boolean isFromLocalFileSys) {
+		ITemporaryFileTag sampleTempTag = FileUtils.createNewTempTag();
+		IWorkspace workspace = ResourcesPlugin.getWorkspace();
+		IProjectDescription newProjectDescription = workspace.newProjectDescription(projectName);
+		IProject newProject = workspace.getRoot().getProject(projectName);
 		try {
-			openZipArchive(projectArchiveLoc, projectName, pluginID);
-		} catch (CoreException e) {
-			log.error("An Exception was thrown in creating the new project with the given project name : " +
-			          projectName, e);
-			MultiStatus status =
-			                     MessageDialogUtils.createMultiStatus(e.getLocalizedMessage(), e,
-			                                                          WSO2PluginConstants.PACKAGE_ID);
-			// show error dialog
-			ErrorDialog.openError(this.getShell(), WSO2PluginConstants.ERROR_DIALOG_TITLE,
-			                      "An Error Occurred in creating the specifid plugin. ", status);
-			return false;
-		} catch (IOException e) {
+			newProject.create(newProjectDescription, null);
+
+			newProject.open(null);
+			URL zipLocationURL = null;
+			if (isFromLocalFileSys) {
+				zipLocationURL = new URL(WSO2PluginConstants.FILE_PROTOCOL + projectArchiveLoc);
+			} else {
+				zipLocationURL =
+				                 FileLocator.find(Platform.getBundle(pluginBundleID), new Path(projectArchiveLoc), null);
+			}
+			File destinationFile = FileUtils.createTempFile();
+			FileUtils.createFile(destinationFile, zipLocationURL.openStream());
+			File resourceFile = destinationFile;
+
+			File tempDir = FileUtils.createTempDirectory();
+			File target = newProject.getLocation().toFile();
+			File projectTempLocation = new File(tempDir, newProject.getName());
+
+			ArchiveManipulator archiveManipulator = new ArchiveManipulator();
+			archiveManipulator.extract(resourceFile, tempDir);
+			File[] listFiles = tempDir.listFiles();
+			String sampleName = listFiles[0].getName();
+			File sampleProjectTempLocation = new File(tempDir, sampleName);
+
+			File projectDesc = new File(sampleProjectTempLocation, ".project");
+			if (!sampleName.equals(newProject.getName())) {
+				if (projectDesc.exists() && projectDesc.isFile()) {
+					String parameterValue = newProject.getName();
+					updateWithParameterData(projectDesc, parameterValue);
+				}
+			}
+
+			FileUtils.copyDirectoryContents(sampleProjectTempLocation, projectTempLocation);
+			FileUtils.copyDirectoryContents(projectTempLocation, target);
+			newProject.refreshLocal(IResource.DEPTH_INFINITE, null);
+			newProject.close(new NullProgressMonitor());
+			newProject.refreshLocal(IResource.DEPTH_INFINITE, null);
+			newProject.open(new NullProgressMonitor());
+			newProject.refreshLocal(IResource.DEPTH_INFINITE, null);
+			sampleTempTag.clearAndEnd();
+			return true;
+		} catch (CoreException | IOException e) {
+			try {
+				newProject.delete(true, null);
+			} catch (CoreException e1) {
+				log.error("An Exception was thrown in deleting the new project  : " + newProject.getName() +
+				          ", with the selected sample : " + projectArchiveLoc, e);
+			}
 			log.error("An Exception was thrown in creating the new project  : " + projectName +
 			          ", with the selected sample : " + projectArchiveLoc, e);
 			MultiStatus status =
@@ -199,51 +271,6 @@ public class WSO2PluginProjectWizard extends AbstractWSO2ProjectCreationWizard {
 			                      "An Error Occurred in creating the specifid plugin. ", status);
 			return false;
 		}
-		return true;
-
-	}
-
-	// TODO : this method should go to kernel platform core
-	private void openZipArchive(String projectArchiveLoc, String projectName, String pluginBundleID)
-	                                                                                                throws CoreException,
-	                                                                                                IOException {
-		ITemporaryFileTag sampleTempTag = FileUtils.createNewTempTag();
-		IWorkspace workspace = ResourcesPlugin.getWorkspace();
-		IProjectDescription newProjectDescription = workspace.newProjectDescription(projectName);
-		IProject newProject = workspace.getRoot().getProject(projectName);
-		newProject.create(newProjectDescription, null);
-		newProject.open(null);
-		URL zipLocationURL = FileLocator.find(Platform.getBundle(pluginBundleID), new Path(projectArchiveLoc), null);
-		File destinationFile = FileUtils.createTempFile();
-		FileUtils.createFile(destinationFile, zipLocationURL.openStream());
-		File resourceFile = destinationFile;
-
-		File tempDir = FileUtils.createTempDirectory();
-		File target = newProject.getLocation().toFile();
-		File projectTempLocation = new File(tempDir, newProject.getName());
-
-		ArchiveManipulator archiveManipulator = new ArchiveManipulator();
-		archiveManipulator.extract(resourceFile, tempDir);
-		File[] listFiles = tempDir.listFiles();
-		String sampleName = listFiles[0].getName();
-		File sampleProjectTempLocation = new File(tempDir, sampleName);
-
-		File projectDesc = new File(sampleProjectTempLocation, ".project");
-		if (!sampleName.equals(newProject.getName())) {
-			if (projectDesc.exists() && projectDesc.isFile()) {
-				String parameterValue = newProject.getName();
-				updateWithParameterData(projectDesc, parameterValue);
-			}
-		}
-
-		FileUtils.copyDirectoryContents(sampleProjectTempLocation, projectTempLocation);
-		FileUtils.copyDirectoryContents(projectTempLocation, target);
-		newProject.refreshLocal(IResource.DEPTH_INFINITE, null);
-		newProject.close(new NullProgressMonitor());
-		newProject.refreshLocal(IResource.DEPTH_INFINITE, null);
-		newProject.open(new NullProgressMonitor());
-		newProject.refreshLocal(IResource.DEPTH_INFINITE, null);
-		sampleTempTag.clearAndEnd();
 	}
 
 	protected void updateWithParameterData(File projectDesc, String parameterValue) throws IOException {

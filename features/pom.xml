@@ -33,7 +33,10 @@
         <module>org.wso2.developerstudio.kernel.webui.tools.feature</module>
         <module>org.wso2.developerstudio.kernel.pluginsamples.feature</module>
         <module>org.wso2.developerstudio.kernel.dependencies.feature</module>
-	<module>org.wso2.developerstudio.carbon.server.feature</module>
+	<module>org.wso2.developerstudio.carbon.server-remote.feature</module>
+<module>org.wso2.developerstudio.carbon.server-40.feature</module>
+<module>org.wso2.developerstudio.carbon.server-42.feature</module>
+<module>org.wso2.developerstudio.carbon.server-44.feature</module>
     </modules>
     <distributionManagement>
         <repository>

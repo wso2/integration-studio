@@ -15,38 +15,54 @@
  */
 package org.wso2.developerstudio.eclipse.wso2plugin.sample.ui.wizard;
 
+import java.io.File;
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.Iterator;
 
-import javax.swing.event.DocumentEvent.EventType;
-
+import org.eclipse.core.runtime.MultiStatus;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.dialogs.Dialog;
+import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.jface.viewers.IBaseLabelProvider;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.wizard.IWizardNode;
 import org.eclipse.jface.wizard.WizardSelectionPage;
+import org.eclipse.jgit.api.errors.GitAPIException;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.SashForm;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Listener;
+import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
+import org.wso2.developerstudio.eclipse.logging.core.Logger;
+import org.wso2.developerstudio.eclipse.platform.ui.utils.MessageDialogUtils;
+import org.wso2.developerstudio.eclipse.wso2plugin.sample.Activator;
 import org.wso2.developerstudio.eclipse.wso2plugin.sample.ui.elements.WSO2PluginSampleExt;
 import org.wso2.developerstudio.eclipse.wso2plugin.sample.ui.elements.WSO2PluginSampleExtList;
+import org.wso2.developerstudio.eclipse.wso2plugin.sample.util.JGitSampleRepoManager;
 import org.wso2.developerstudio.eclipse.wso2plugin.sample.util.PluginImageUtils;
 import org.wso2.developerstudio.eclipse.wso2plugin.sample.util.WSO2PluginConstants;
 
 public class WSO2PluginListSelectionPage extends WizardSelectionPage {
+
 	TableViewer wizardSelectionViewer;
 	private WSO2PluginFormBrowser descriptionBrowser;
 	private WSO2PluginSampleExtList wso2ElemList;
 	private WSO2PluginProjectWizard wso2PluginProjectWizard;
 	private boolean isPluginProjectSelected;
+	public static boolean isUpdateFromGit;
+	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
 	public WSO2PluginListSelectionPage(WSO2PluginSampleExtList elemList, String pageName,
 	                                   WSO2PluginProjectWizard wso2PluginProjectWizard) {
@@ -60,6 +76,7 @@ public class WSO2PluginListSelectionPage extends WizardSelectionPage {
 
 	private WizardSelectedAction pluginProjectSelectedAction = new WizardSelectedAction();
 	private IBaseLabelProvider ListItemLabelProvider = new ListItemLabelProvider();
+	public static String tempCloneDir = null;
 
 	private class WizardSelectedAction extends Action {
 		public WizardSelectedAction() {
@@ -68,15 +85,14 @@ public class WSO2PluginListSelectionPage extends WizardSelectionPage {
 
 		@Override
 		public void run() {
-			selectionChanged(new SelectionChangedEvent(wizardSelectionViewer,
-			                                           wizardSelectionViewer.getSelection()));
+			selectionChanged(new SelectionChangedEvent(wizardSelectionViewer, wizardSelectionViewer.getSelection()));
 			wso2PluginProjectWizard.setSelectedPlugin(wizardSelectionViewer.getSelection());
 			wso2PluginProjectWizard.setWizardSelected(isPluginProjectSelected);
 		}
 	}
 
 	public void createControl(Composite parent) {
-		Composite container = new Composite(parent, SWT.NULL);
+		final Composite container = new Composite(parent, SWT.NULL);
 		setControl(container);
 
 		GridLayout layout = new GridLayout();
@@ -96,7 +112,7 @@ public class WSO2PluginListSelectionPage extends WizardSelectionPage {
 
 		wizardSelectionViewer = new TableViewer(sashForm, SWT.BORDER);
 		wizardSelectionViewer.setContentProvider(PluginContentProvider.getInstance());
-		wizardSelectionViewer.setLabelProvider(ListItemLabelProvider );
+		wizardSelectionViewer.setLabelProvider(ListItemLabelProvider);
 		wizardSelectionViewer.getTable().addSelectionListener(new SelectionListener() {
 
 			@Override
@@ -110,6 +126,62 @@ public class WSO2PluginListSelectionPage extends WizardSelectionPage {
 				// no implementation
 			}
 		});
+		Button updateButton = new Button(container, SWT.PUSH);
+		updateButton.setText("update plugin templates");
+		GridData bGrid = new GridData();
+		updateButton.setLayoutData(bGrid);
+		updateButton.addListener(SWT.Selection, new Listener() {
+
+			@Override
+			public void handleEvent(Event event) {
+				String property = WSO2PluginConstants.JAVA_IO_TMPDIR;
+				String tempDir = System.getProperty(property);
+				tempCloneDir = tempDir + File.separator + WSO2PluginConstants.DEV_STUDIO_CLONED_SAMPLES;
+				if (isInternetReachable()) {
+					container.getDisplay().asyncExec(new Runnable() {
+
+						@Override
+						public void run() {
+							isUpdateFromGit = true;
+							updateSampleTemplates();
+							WSO2PluginProjectWizard wso2PluginProjectWizard = new WSO2PluginProjectWizard();
+							WSO2PluginSampleExtList updatedElemList = wso2PluginProjectWizard.getAvailableWSO2Plugins();
+							wizardSelectionViewer.setInput(updatedElemList);
+						}
+					});
+
+				} else if ((new File(tempCloneDir)).exists()) {
+					container.getDisplay().asyncExec(new Runnable() {
+
+						@Override
+						public void run() {
+							isUpdateFromGit = true;
+							WSO2PluginProjectWizard wso2PluginProjectWizard = new WSO2PluginProjectWizard();
+							WSO2PluginSampleExtList updatedElemList = wso2PluginProjectWizard.getAvailableWSO2Plugins();
+							wizardSelectionViewer.setInput(updatedElemList);
+						}
+					});
+					MultiStatus status =
+		                     MessageDialogUtils.createMultiStatus("", new Throwable(),
+		                                                          WSO2PluginConstants.PACKAGE_ID);
+					ErrorDialog.openError(wizardSelectionViewer.getTable().getShell(),
+					                      WSO2PluginConstants.ERROR_DIALOG_TITLE,
+					                      "You are not connected to the internet, Using previously cloned temaplates list, please retry with a working internet connection to view latest templates. ",
+					                      status);
+
+				} else {
+					MultiStatus status =
+		                     MessageDialogUtils.createMultiStatus("", new Throwable(),
+		                                                          WSO2PluginConstants.PACKAGE_ID);
+					// show error dialog
+					ErrorDialog.openError(wizardSelectionViewer.getTable().getShell(),
+					                      WSO2PluginConstants.ERROR_DIALOG_TITLE,
+					                      "You are not connected to the internet, Please make sure you are connected to the internet to update plugin templates. ",
+					                      status);
+				}
+
+			}
+		});
 
 		createDescriptionIn(sashForm);
 		initializeViewer();
@@ -117,6 +189,7 @@ public class WSO2PluginListSelectionPage extends WizardSelectionPage {
 		wizardSelectionViewer.setInput(wso2ElemList);
 		Dialog.applyDialogFont(container);
 		setControl(container);
+
 	}
 
 	public void createDescriptionIn(Composite composite) {
@@ -130,6 +203,21 @@ public class WSO2PluginListSelectionPage extends WizardSelectionPage {
 	}
 
 	protected void initializeViewer() {
+	}
+
+	private void updateSampleTemplates() {
+		String gitRepoURL = WSO2PluginConstants.HTTPS_GITHUB_COM_TIKAA_KERNEL_SAMPLES_GIT;
+		File yourTempFile = new File(tempCloneDir);
+		try {
+			if (!yourTempFile.exists()) {
+				yourTempFile.mkdir();
+				JGitSampleRepoManager.gitClone(gitRepoURL, tempCloneDir);
+			} else {
+				JGitSampleRepoManager.gitPull(tempCloneDir);
+			}
+		} catch (GitAPIException | IOException e) {
+			log.error("could not clone content from the gir URL " + gitRepoURL + e);
+		}
 	}
 
 	public void selectionChanged(SelectionChangedEvent event) {
@@ -166,6 +254,23 @@ public class WSO2PluginListSelectionPage extends WizardSelectionPage {
 			return true;
 		}
 		return false;
+	}
+
+	public static boolean isInternetReachable() {
+		try {
+			// make a URL to a known source
+			URL url = new URL(WSO2PluginConstants.GOOGLE_COM);
+			// open a connection to that source
+			HttpURLConnection urlConnect = (HttpURLConnection) url.openConnection();
+			// trying to retrieve data from the source. If there
+			// is no connection, this line will fail
+			Object objData = urlConnect.getContent();
+
+		} catch (IOException e) {
+			return false;
+
+		}
+		return true;
 	}
 
 }

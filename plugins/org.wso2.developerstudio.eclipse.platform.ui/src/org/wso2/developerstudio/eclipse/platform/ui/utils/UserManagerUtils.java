@@ -17,13 +17,13 @@
 
 package org.wso2.developerstudio.eclipse.platform.ui.utils;
 
-//import org.wso2.developerstudio.eclipse.usermgt.remote.UserManager;
+import org.wso2.developerstudio.eclipse.usermgt.remote.UserManager;
 
 public class UserManagerUtils {
 
 	private static UserManagerUtils instance;
 
-	//private UserManager userManager;
+	private UserManager userManager;
 	
 	private UserManagerUtils() {
 		
@@ -37,7 +37,7 @@ public class UserManagerUtils {
 		return instance;
 	}
 
-	/*public void init(String url, String username, String password) {
+	public void init(String url, String username, String password) {
 		userManager = new UserManager(url, username, password);
 	}
 
@@ -47,5 +47,5 @@ public class UserManagerUtils {
 		}
 
 		return new String[] {};
-	}*/
+	}
 }

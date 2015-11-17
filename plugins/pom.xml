@@ -41,6 +41,12 @@
 	<module>org.wso2.developerstudio.eclipse.carbonserver44</module>
  	<module>org.wso2.developerstudio.eclipse.server.base</module>
  	<module>org.wso2.developerstudio.eclipse.general.project</module>
+ 	<module>org.wso2.developerstudio.eclipse.registry.perspective</module>
+ 	<module>org.wso2.developerstudio.eclipse.registry.search</module>
+ 	<module>org.wso2.developerstudio.eclipse.registry.manager.local</module>
+ 	<module>org.wso2.developerstudio.eclipse.artifact.registry</module>
+ 	<module>org.wso2.developerstudio.eclipse.registry.connector</module>
+
     </modules>
     <build>
         <plugins>

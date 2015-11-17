@@ -22,8 +22,8 @@ import java.util.List;
 import java.util.Map;
 import org.eclipse.swt.widgets.Shell;
 import org.wso2.developerstudio.eclipse.general.project.dialogs.DeveloperStudioElementProviderDialog;
-import org.wso2.developerstudio.eclipse.greg.core.RegistryManager;
-import org.wso2.developerstudio.eclipse.greg.core.interfaces.IRegistryFile;
+import org.wso2.developerstudio.eclipse.registry.core.RegistryManager;
+import org.wso2.developerstudio.eclipse.registry.core.interfaces.IRegistryFile;
 
 /**
  * Provides a dialog box to select resource files from the workspace for BPEL artifacts

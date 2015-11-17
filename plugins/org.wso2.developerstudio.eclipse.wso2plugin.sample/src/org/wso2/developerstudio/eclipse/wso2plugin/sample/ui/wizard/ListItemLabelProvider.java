@@ -35,7 +35,7 @@ public class ListItemLabelProvider extends LabelProvider implements ITableLabelP
 
 	public Image getImage(Object obj) {
 		WSO2PluginSampleExt elem = (WSO2PluginSampleExt)obj;
-		return elem.getImage();
+		return elem.getImage(elem.getIconLoc());
 		//return PlatformUI.getWorkbench().getSharedImages().getImage(ISharedImages.IMG_OBJ_ELEMENT);
 	}
 

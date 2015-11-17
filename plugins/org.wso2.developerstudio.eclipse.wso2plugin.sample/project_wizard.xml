@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <wizard>
- <projectOptions title="WSO2 Plugin Project Creation Wizard "
- 				 description="Select how you would like to create your new plugin project"
- 				 error="Please select a method to create the plugin project">
- 	<option id="new.plugin.project" default="true">Create New Plugin Project</option>
+ <projectOptions title="WSO2 Plug-in Project Creation Wizard "
+ 				 description="Select how you would like to create your new plug-in project"
+ 				 error="Please select a method to create the plug-in project">
+ 	<option id="new.plugin.project" default="true">Create New Plug-in Project</option>
  </projectOptions>
  <projectOptionSettings>
  	<settings optionId="new.plugin.project"

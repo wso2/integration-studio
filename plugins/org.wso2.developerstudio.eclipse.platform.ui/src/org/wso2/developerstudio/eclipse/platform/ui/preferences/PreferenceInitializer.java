@@ -17,8 +17,13 @@
 package org.wso2.developerstudio.eclipse.platform.ui.preferences;
 
 import org.eclipse.core.runtime.preferences.AbstractPreferenceInitializer;
+import org.eclipse.jface.preference.IPreferenceStore;
+import org.wso2.developerstudio.eclipse.platform.ui.Activator;
 
 public class PreferenceInitializer extends AbstractPreferenceInitializer {
+
+	public static final String KERNEL_SAMPLES_GIT = "https://github.com/tikaa/kernelSamples.git";
+	public static final String PREFERENCES_PLUGIN_ID = "org.wso2.developerstudio.eclipse.platform.ui";
 
 	/*
 	 * (non-Javadoc)
@@ -26,7 +31,8 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
 	 * @see org.eclipse.core.runtime.preferences.AbstractPreferenceInitializer#initializeDefaultPreferences()
 	 */
 	public void initializeDefaultPreferences() {
-//		IPreferenceStore store = Activator.getDefault().getPreferenceStore();
+		 IPreferenceStore store = Activator.getDefault().getPreferenceStore();
+		    store.setDefault(UpdateCheckerPreferencePage.PLUGIN_TEMPLATE_URL, KERNEL_SAMPLES_GIT);
 	}
 
 }

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wizard>
+	<projectOptions title="New Registry Resource" 
+					description="Create new Registry Resource" 
+					error="">
+		<option id="new.general" default="true">New Registry Resource</option>
+	</projectOptions>
+	<projectOptionSettings>
+		<settings optionId="new.general" 
+				  title="New Registry Resource" 
+				  description="Create new Registry Resource" 
+				  error="Please give a name for the registry resource">
+			<data modelProperty="project.name" type="string" fieldController="org.wso2.developerstudio.eclipse.general.project.controller.GeneralProjectFieldController">Project Name</data>
+			<projectNatures>
+				<nature>org.eclipse.jdt.core.javanature</nature>
+			</projectNatures>
+		</settings>
+	</projectOptionSettings>
+</wizard>

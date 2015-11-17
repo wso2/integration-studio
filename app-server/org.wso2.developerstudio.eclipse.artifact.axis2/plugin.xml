@@ -13,6 +13,23 @@
 			<description>Axis2 Service Project</description>
 		</wizard>
 	</extension>
+	
+	   <extension
+		point="org.wso2.developerstudio.eclipse.platform.core.intro.ui.dashboard">
+   <category id="dashboard.category.AS" showTitle="true"
+			title="Web App and Service Artifacts"
+			priority="9">
+	</category>
+	<wizardLink category="dashboard.category.AS"
+			id="dashboard.wizardLink.AS.axis2.serviceProject"
+			wizard="org.wso2.developerstudio.eclipse.artifact.newaxis2artifact"
+			priority="1">
+	</wizardLink>
+	<!-- <customAction
+			class="org.wso2.developerstudio.appfactory.ui.perspective.ShowAppFactoryPerspective"
+			id="org.wso2.developerstudio.AF.perspective.action">
+	</customAction> -->
+ </extension>
 
 	<extension point="org.eclipse.ui.newWizards">
 		<wizard name="Axis2 Service Class"

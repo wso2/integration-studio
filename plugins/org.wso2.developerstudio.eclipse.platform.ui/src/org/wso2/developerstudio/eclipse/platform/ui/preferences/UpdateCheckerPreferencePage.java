@@ -28,6 +28,7 @@ implements IWorkbenchPreferencePage {
 	public static final String UPDATE_INTAVAL = "UPDATE_INTAVAL";
 	public static final String RELESE_SITE_URL = "RELESE_SITE_URL";
 	public static final String UPDATE_SITE_URL = "UPDATE_SITE_URL";
+	public static final String PLUGIN_TEMPLATE_URL = "PLUGIN_TEMPLATE_URL";
 
 	private IPreferenceStore preferenceStore;
 	
@@ -47,6 +48,7 @@ implements IWorkbenchPreferencePage {
 		ComboFieldEditor editor = new ComboFieldEditor(UPDATE_INTAVAL, "Check update", types,
 				getFieldEditorParent());
 		addField(editor);	
+		addField(new StringFieldEditor(PLUGIN_TEMPLATE_URL, "Plug-in template location:", getFieldEditorParent()));
 	}	
 
 }

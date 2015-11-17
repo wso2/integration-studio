@@ -36,8 +36,6 @@ public class WSO2PluginConstants {
 	public static final String SAMPLE_DESCRIPTION_FILE = "sample_description.json";
 	
 	public static final String GOOGLE_COM = "http://www.google.com";
-	public static final String HTTPS_GITHUB_COM_TIKAA_KERNEL_SAMPLES_GIT =
-	                                                                        "https://github.com/tikaa/kernelSamples.git";
 	public static final String DEV_STUDIO_CLONED_SAMPLES = "DevStudioClonedSamples";
 	public static final String JAVA_IO_TMPDIR = "java.io.tmpdir";
 }

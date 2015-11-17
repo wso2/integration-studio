@@ -23,6 +23,7 @@ import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.graphics.Image;
+import org.wso2.developerstudio.eclipse.platform.ui.Activator;
 import org.wso2.developerstudio.eclipse.wso2plugin.sample.util.WSO2PluginConstants;
 
 import com.google.gson.annotations.SerializedName;
@@ -33,8 +34,6 @@ import com.google.gson.annotations.SerializedName;
  * provided extension point to the developer studio plugin samples.
  */
 public class WSO2PluginSampleExt {
-
-	
 
 	@SerializedName("pluginName")
 	String pluginName;
@@ -51,7 +50,7 @@ public class WSO2PluginSampleExt {
 
 	@SerializedName("iconLoc")
 	String iconLoc;
-	
+
 	@SerializedName("isUpdatedFromGit")
 	String isUpdatedFromGit;
 
@@ -82,16 +81,24 @@ public class WSO2PluginSampleExt {
 		this.isUpdatedFromGit = isPluginUpdatedFromGit;
 	}
 
-	public Image getImage() {
+	public Image getImage(String iconLocation) {
 		ImageDescriptor imageDescriptor = null;
 		if (!Boolean.parseBoolean(this.isUpdatedFromGit)) {
-			imageDescriptor =
-			                  ImageDescriptor.createFromURL(FileLocator.find(Platform.getBundle(bundleID),
-			                                                                 new Path(iconLoc), null));
+			if (iconLocation != null && !iconLocation.isEmpty()) {
+				imageDescriptor =
+				                  ImageDescriptor.createFromURL(FileLocator.find(Platform.getBundle(bundleID),
+				                                                                 new Path(iconLocation), null));
+			} else {
+				imageDescriptor =
+		                  ImageDescriptor.createFromURL(FileLocator.find(Platform.getBundle(Activator.PLUGIN_ID),
+		                                                                 new Path("icons/plugin-icon.png"), null));
+			}
 			return imageDescriptor.createImage();
 		} else {
 			try {
-				imageDescriptor = ImageDescriptor.createFromURL(new URL(WSO2PluginConstants.FILE_PROTOCOL + iconLoc));
+				imageDescriptor =
+				                  ImageDescriptor.createFromURL(new URL(WSO2PluginConstants.FILE_PROTOCOL +
+				                                                        iconLocation));
 				return imageDescriptor.createImage();
 			} catch (MalformedURLException e) {
 				// log image cannot be found at location

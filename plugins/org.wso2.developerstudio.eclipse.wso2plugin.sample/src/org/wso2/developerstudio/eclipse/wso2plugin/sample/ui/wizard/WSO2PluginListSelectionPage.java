@@ -22,6 +22,8 @@ import java.net.URL;
 import java.util.Iterator;
 
 import org.eclipse.core.runtime.MultiStatus;
+import org.eclipse.core.runtime.preferences.IEclipsePreferences;
+import org.eclipse.core.runtime.preferences.InstanceScope;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.dialogs.ErrorDialog;
@@ -46,6 +48,8 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Listener;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
+import org.wso2.developerstudio.eclipse.platform.ui.preferences.PreferenceInitializer;
+import org.wso2.developerstudio.eclipse.platform.ui.preferences.UpdateCheckerPreferencePage;
 import org.wso2.developerstudio.eclipse.platform.ui.utils.MessageDialogUtils;
 import org.wso2.developerstudio.eclipse.wso2plugin.sample.Activator;
 import org.wso2.developerstudio.eclipse.wso2plugin.sample.ui.elements.WSO2PluginSampleExt;
@@ -206,7 +210,9 @@ public class WSO2PluginListSelectionPage extends WizardSelectionPage {
 	}
 
 	private void updateSampleTemplates() {
-		String gitRepoURL = WSO2PluginConstants.HTTPS_GITHUB_COM_TIKAA_KERNEL_SAMPLES_GIT;
+		IEclipsePreferences prefs = InstanceScope.INSTANCE.getNode(PreferenceInitializer.PREFERENCES_PLUGIN_ID);
+		String value = prefs.get(UpdateCheckerPreferencePage.PLUGIN_TEMPLATE_URL, PreferenceInitializer.KERNEL_SAMPLES_GIT);
+		String gitRepoURL = value;
 		File yourTempFile = new File(tempCloneDir);
 		try {
 			if (!yourTempFile.exists()) {
@@ -216,7 +222,7 @@ public class WSO2PluginListSelectionPage extends WizardSelectionPage {
 				JGitSampleRepoManager.gitPull(tempCloneDir);
 			}
 		} catch (GitAPIException | IOException e) {
-			log.error("could not clone content from the gir URL " + gitRepoURL + e);
+			log.error("could not clone content from the git URL " + gitRepoURL + e);
 		}
 	}
 

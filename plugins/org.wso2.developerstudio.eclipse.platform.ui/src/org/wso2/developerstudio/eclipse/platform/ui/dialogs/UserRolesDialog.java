@@ -12,6 +12,8 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+ * 
+ */
  
 
 package org.wso2.developerstudio.eclipse.platform.ui.dialogs;
@@ -36,9 +38,6 @@ import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.swt.widgets.Text;
-//import org.wso2.developerstudio.eclipse.ds.DataService;
-//import org.wso2.developerstudio.eclipse.gmf.esb.ProxyService;
-//import org.wso2.developerstudio.eclipse.gmf.esb.ProxyServiceParameter;
 import org.wso2.developerstudio.eclipse.platform.ui.utils.UserManagerUtils;
 
 public abstract class UserRolesDialog extends Dialog {
@@ -82,14 +81,14 @@ public abstract class UserRolesDialog extends Dialog {
 	}
 	
 	
-	public UserRolesDialog(Shell parentShell,DataService dataService, String a) {
+	/*public UserRolesDialog(Shell parentShell,DataService dataService, String a) {
 		super(parentShell);
 		this.dataService = dataService;
-	}
+	}*/
 
-	*//**
+	/**
 	 * {@inheritDoc}
-	 *//*
+	 */
 	protected void configureShell(Shell newShell) {
 		super.configureShell(newShell);
 
@@ -319,8 +318,6 @@ public abstract class UserRolesDialog extends Dialog {
 			userRolesTable.setLayoutData(userRolesTableLayoutData);
 		}
 		
-		//loadConfiguration();
-
 		{
 			// Set default values.
 			serverUrlText.setText("https://localhost:9443/");
@@ -332,20 +329,6 @@ public abstract class UserRolesDialog extends Dialog {
 		}
 
 		return container;
-	}
-
-	private void loadConfiguration() {
-		if (object instanceof DataService) {
-			if (((DataService) object).getFeatureAllowRoles() != null
-					&& !StringUtils.isEmpty(((DataService) object)
-							.getFeatureAllowRoles().getValue())) {
-				userRoles = ((DataService) object).getFeatureAllowRoles()
-						.getValue();
-				if (!StringUtils.isEmpty(userRoles)) {
-					inlineUserRolesText.setText(userRoles);
-				}
-			}
-		}
 	}
 
 	private void listRoles() {
@@ -431,4 +414,3 @@ public abstract class UserRolesDialog extends Dialog {
 	}
 
 }
-*/

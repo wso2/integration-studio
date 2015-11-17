@@ -13,6 +13,16 @@
 			<description>Registry Resources Project</description>
 		</wizard>
    </extension>
+   <extension point="org.wso2.developerstudio.eclipse.platform.core.intro.ui.dashboard">
+   <category id="dashboard.category.greg" showTitle="true"
+                  title="Repository"
+                  priority="3">
+   </category>
+    <wizardLink category="dashboard.category.greg" id="dashboard.wizardLink.general.project"
+                    wizard="org.wso2.developerstudio.eclipse.general.project"
+                    priority="2">
+        </wizardLink>
+   </extension>
       <extension point="org.eclipse.core.resources.natures"
 		id="org.wso2.developerstudio.eclipse.general.project.nature" name="General Project Nature">
 		<runtime>

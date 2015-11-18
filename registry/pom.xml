@@ -12,20 +12,11 @@
     <packaging>pom</packaging>
     <name>WSO2 Carbon Application Eclipse Tools Parent</name>
     <modules>
-	    <module>org.wso2.developerstudio.eclipse.greg.libraries</module>
-	    <module>org.wso2.developerstudio.eclipse.greg.base</module>
-	    <module>org.wso2.developerstudio.eclipse.greg.manager.local</module>
-	    <module>org.wso2.developerstudio.eclipse.greg.manager.remote</module>
-	    <module>org.wso2.developerstudio.eclipse.greg.perspective</module>
-	    <module>org.wso2.developerstudio.eclipse.greg.resource.authorization</module>
-	    <module>org.wso2.developerstudio.eclipse.greg.search</module>
 	    <module>org.wso2.developerstudio.eclipse.greg.registry.filter</module>
 	    <module>org.wso2.developerstudio.eclipse.greg.registry.handler</module>
 	    <module>org.wso2.developerstudio.eclipse.greg.registry.aspects</module>
-	    <module>org.wso2.developerstudio.eclipse.artifact.registry</module>
 	    <module>org.wso2.developerstudio.eclipse.artifact.registry.filter</module>
 	    <module>org.wso2.developerstudio.eclipse.artifact.registry.handler</module>
-      <module>org.wso2.developerstudio.eclipse.greg.apim.perspective</module>
     </modules>
     <!--repositories>
     	<repository>

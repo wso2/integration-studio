@@ -22,7 +22,7 @@ import org.wso2.developerstudio.eclipse.platform.ui.Activator;
 
 public class PreferenceInitializer extends AbstractPreferenceInitializer {
 
-	public static final String KERNEL_SAMPLES_GIT = "https://github.com/tikaa/kernelSamples.git";
+	public static final String KERNEL_SAMPLES_GIT = "https://github.com/wso2/tooling-templates.git";
 	public static final String PREFERENCES_PLUGIN_ID = "org.wso2.developerstudio.eclipse.platform.ui";
 
 	/*

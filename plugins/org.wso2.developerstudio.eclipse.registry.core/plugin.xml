@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <plugin>
-   <!--<extension-point id="org.wso2.developerstudio.eclipse.greg.resourceProvider" name="This Extension point is responsible to registering Registry Reousrce Providers" schema="schema/org.wso2.developerstudio.eclipse.greg.resourceProvider.exsd"/>
+   <extension-point id="org.wso2.developerstudio.eclipse.greg.resourceProvider" name="This Extension point is responsible to registering Registry Reousrce Providers" schema="schema/org.wso2.developerstudio.eclipse.greg.resourceProvider.exsd"/>
 	<extension point="org.wso2.developerstudio.eclipse.greg.connector">
 	 	<registryartifact
 			class="org.wso2.developerstudio.eclipse.greg.core.internal.impl.RegistryRequester"
 			id="org.wso2.developerstudio.eclipse.greg.registry.requester">
 		</registryartifact>
-	</extension> -->
+	</extension> 
  <extension
        point="org.wso2.developerstudio.eclipse.platform.core.mediatype">
    		<resolver

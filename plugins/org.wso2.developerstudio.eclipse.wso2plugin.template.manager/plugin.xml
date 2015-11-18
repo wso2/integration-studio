@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<!--/*
+ * Copyright (c) 2015, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */-->
+<plugin>   
+   <extension-point id="org.wso2.developerstudio.kernel.wso2plugin.template" name="PluginSample" schema="schema/org.wso2.developerstudio.kernel.plugin.sample.exsd"/>
+	<extension
+         point="org.eclipse.ui.newWizards">
+         <wizard name="WSO2 Plugin Project"
+         	category="org.wso2.developerstudio.eclipse.capp.project"
+			class="org.wso2.developerstudio.eclipse.wso2plugin.template.manager.ui.wizard.WSO2PluginProjectWizard"
+			id="org.wso2.developerstudio.eclipse.artifact.newwso2pluginproject"
+			wizardManifest="project_wizard.xml"
+			icon="icons/plugin-icon.png"
+			project="true">
+			<description>WSO2 Plugin Project</description>
+		</wizard>
+   </extension>
+</plugin>

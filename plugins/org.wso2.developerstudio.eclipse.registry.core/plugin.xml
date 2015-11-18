@@ -7,7 +7,7 @@
 			class="org.wso2.developerstudio.eclipse.greg.core.internal.impl.RegistryRequester"
 			id="org.wso2.developerstudio.eclipse.greg.registry.requester">
 		</registryartifact>
-	</extension> 
+	</extension>
  <extension
        point="org.wso2.developerstudio.eclipse.platform.core.mediatype">
    		<resolver

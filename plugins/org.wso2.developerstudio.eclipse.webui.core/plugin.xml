@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <plugin>
- <extension point="org.wso2.developerstudio.kernel.plugin.sample">
+ <extension point="org.wso2.developerstudio.kernel.wso2plugin.template">
       <template
            id="org.wso2.developerstudio.eclipse.webui.editor.sample"
            name="Web Based Editor Sample"

@@ -38,9 +38,9 @@ import org.wso2.registry.checkin.Update;
 import org.wso2.registry.checkin.UserInputCode;
 import org.wso2.registry.checkin.UserInteractor;
 import org.wso2.carbon.registry.synchronization.Utils;
-import org.wso2.developerstudio.eclipse.greg.core.exception.InvalidRegistryURLException;
-import org.wso2.developerstudio.eclipse.greg.core.exception.RegistryContentRetrieveException;
-import org.wso2.developerstudio.eclipse.greg.core.exception.UnknownRegistryException;
+import org.wso2.developerstudio.eclipse.registry.core.exception.InvalidRegistryURLException;
+import org.wso2.developerstudio.eclipse.registry.core.exception.RegistryContentRetrieveException;
+import org.wso2.developerstudio.eclipse.registry.core.exception.UnknownRegistryException;
 import org.wso2.developerstudio.eclipse.greg.manager.local.Activator;
 import org.wso2.developerstudio.eclipse.greg.manager.local.bean.RemoteRegistryInfo;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
@@ -706,7 +706,7 @@ public class RegistryCheckInClientUtils {
 	
 	public static void download(String username, String password,String filePath, 
 	                			String registryUrl, String registryPath) throws InvalidRegistryURLException, UnknownRegistryException, RegistryContentRetrieveException, IOException{
-		org.wso2.developerstudio.eclipse.greg.base.core.Registry registry = new org.wso2.developerstudio.eclipse.greg.base.core.Registry(username,password,registryUrl);
+		org.wso2.developerstudio.eclipse.registry.base.core.Registry registry = new org.wso2.developerstudio.eclipse.registry.base.core.Registry(username,password,registryUrl);
 		File file = new File(filePath);
 		try {
 			if (!file.exists()){

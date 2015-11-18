@@ -44,7 +44,7 @@ import org.eclipse.ui.PlatformUI;
 //import org.wso2.developerstudio.eclipse.capp.project.ui.wizard.CAppProjectWizard;
 //import org.wso2.developerstudio.eclipse.capp.project.utils.CAppConstants;
 import org.wso2.developerstudio.eclipse.capp.core.artifacts.manager.CAppEnvironment;
-import org.wso2.developerstudio.eclipse.greg.core.interfaces.IRegistryHandler;
+import org.wso2.developerstudio.eclipse.registry.core.interfaces.IRegistryHandler;
 
 public class RegistryConnectionPage extends WizardPage {
 

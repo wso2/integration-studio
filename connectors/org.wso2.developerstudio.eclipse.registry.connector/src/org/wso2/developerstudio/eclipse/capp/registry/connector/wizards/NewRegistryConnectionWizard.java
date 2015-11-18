@@ -31,7 +31,7 @@ import org.wso2.developerstudio.eclipse.capp.core.model.RegistryData;
 import org.wso2.developerstudio.eclipse.capp.registry.connector.Activator;
 import org.wso2.developerstudio.eclipse.capp.registry.connector.utils.RegistryConnectorImageUtils;
 import org.wso2.developerstudio.eclipse.capp.registry.connector.utils.RegistryHandlerUtils;
-import org.wso2.developerstudio.eclipse.greg.core.interfaces.IRegistryConnection;
+import org.wso2.developerstudio.eclipse.registry.core.interfaces.IRegistryConnection;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 

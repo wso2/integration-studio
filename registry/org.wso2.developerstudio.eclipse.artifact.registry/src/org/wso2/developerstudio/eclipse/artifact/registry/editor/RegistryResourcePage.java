@@ -354,7 +354,7 @@ public class RegistryResourcePage extends FormPage {
 			String mediaType = null;
 			if (registryElement instanceof RegistryItem) {
 				name = ((RegistryItem) registryElement).getFile();
-				mediaType = MediaManager.getCustomMediaTypeIfSet(name);// to dynamically set the media type on every call for UI creation
+				mediaType = MediaManager.getCustomMediaType(name);// to dynamically set the media type on every call for UI creation
 				if (mediaType == null) {//if the user has not specified a custom media type use the original
 					mediaType = ((RegistryItem) registryElement).getMediaType();
 				}

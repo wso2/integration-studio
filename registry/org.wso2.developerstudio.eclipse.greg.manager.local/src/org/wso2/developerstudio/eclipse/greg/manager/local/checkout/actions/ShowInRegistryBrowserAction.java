@@ -28,7 +28,7 @@ import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.eclipse.greg.manager.local.Activator;
 import org.wso2.developerstudio.eclipse.greg.manager.local.bean.RemoteRegistryInfo;
 import org.wso2.developerstudio.eclipse.greg.manager.local.utils.RegistryCheckInClientUtils;
-import org.wso2.developerstudio.eclipse.greg.manager.remote.views.RegistryBrowserView;
+import org.wso2.developerstudio.eclipse.registry.manager.remote.views.RegistryBrowserView;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.platform.core.registry.util.RegistryResourceUtils;

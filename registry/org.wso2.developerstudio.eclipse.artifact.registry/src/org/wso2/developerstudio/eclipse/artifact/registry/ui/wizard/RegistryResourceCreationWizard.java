@@ -53,9 +53,9 @@ import org.wso2.developerstudio.eclipse.general.project.artifact.bean.RegistryCo
 import org.wso2.developerstudio.eclipse.general.project.artifact.bean.RegistryDump;
 import org.wso2.developerstudio.eclipse.general.project.artifact.bean.RegistryElement;
 import org.wso2.developerstudio.eclipse.general.project.artifact.bean.RegistryItem;
-import org.wso2.developerstudio.eclipse.greg.base.model.RegistryNode;
-import org.wso2.developerstudio.eclipse.greg.base.model.RegistryResourceNode;
-import org.wso2.developerstudio.eclipse.greg.base.model.RegistryResourceType;
+import org.wso2.developerstudio.eclipse.registry.base.model.RegistryNode;
+import org.wso2.developerstudio.eclipse.registry.base.model.RegistryResourceNode;
+import org.wso2.developerstudio.eclipse.registry.base.model.RegistryResourceType;
 import org.wso2.developerstudio.eclipse.greg.manager.local.utils.RegistryCheckInClientUtils;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;

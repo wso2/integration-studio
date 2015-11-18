@@ -30,7 +30,7 @@ import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.window.Window;
 import org.eclipse.swt.widgets.Display;
-import org.wso2.developerstudio.eclipse.greg.base.model.RegistryResourceNode;
+import org.wso2.developerstudio.eclipse.registry.base.model.RegistryResourceNode;
 import org.wso2.developerstudio.eclipse.greg.manager.local.Activator;
 import org.wso2.developerstudio.eclipse.greg.manager.local.dialog.RegistryCheckoutDialog;
 import org.wso2.developerstudio.eclipse.greg.manager.local.utils.RegistryCheckInClientUtils;

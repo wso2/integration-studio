@@ -23,7 +23,7 @@ import java.util.Map;
 
 import org.eclipse.core.resources.IProject;
 import org.wso2.developerstudio.eclipse.capp.registry.connector.utils.RegistryHandlerUtils;
-import org.wso2.developerstudio.eclipse.greg.core.interfaces.IRegistryConnection;
+import org.wso2.developerstudio.eclipse.registry.core.interfaces.IRegistryConnection;
 
 
 public class RegistryConnectionsNode {

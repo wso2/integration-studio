@@ -28,7 +28,7 @@ import org.wso2.developerstudio.eclipse.artifact.registry.utils.RegistryArtifact
 import org.wso2.developerstudio.eclipse.artifact.registry.utils.RegistryTemplate;
 import org.wso2.developerstudio.eclipse.general.project.artifact.GeneralProjectArtifact;
 import org.wso2.developerstudio.eclipse.general.project.artifact.RegistryArtifact;
-import org.wso2.developerstudio.eclipse.greg.base.model.RegistryResourceNode;
+import org.wso2.developerstudio.eclipse.registry.base.model.RegistryResourceNode;
 import org.wso2.developerstudio.eclipse.platform.core.exception.FieldValidationException;
 import org.wso2.developerstudio.eclipse.platform.core.model.AbstractFieldController;
 import org.wso2.developerstudio.eclipse.platform.core.project.model.ProjectDataModel;

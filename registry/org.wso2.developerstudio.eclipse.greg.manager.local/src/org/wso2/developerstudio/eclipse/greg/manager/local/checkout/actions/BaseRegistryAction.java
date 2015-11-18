@@ -23,7 +23,7 @@ import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
-import org.wso2.developerstudio.eclipse.greg.base.ui.util.SWTControlUtils;
+import org.wso2.developerstudio.eclipse.registry.base.ui.util.SWTControlUtils;
 
 
 public abstract class BaseRegistryAction implements IObjectActionDelegate {

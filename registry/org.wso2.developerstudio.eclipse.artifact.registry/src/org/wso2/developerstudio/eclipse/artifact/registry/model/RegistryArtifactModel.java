@@ -30,7 +30,7 @@ import org.wso2.developerstudio.eclipse.artifact.registry.Activator;
 import org.wso2.developerstudio.eclipse.artifact.registry.utils.RegistryArtifactConstants;
 import org.wso2.developerstudio.eclipse.artifact.registry.utils.RegistryTemplate;
 import org.wso2.developerstudio.eclipse.general.project.utils.GeneralProjectUtils;
-import org.wso2.developerstudio.eclipse.greg.base.model.RegistryResourceNode;
+import org.wso2.developerstudio.eclipse.registry.base.model.RegistryResourceNode;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.platform.core.exception.ObserverFailedException;

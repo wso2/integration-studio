@@ -16,7 +16,7 @@
 
 package org.wso2.developerstudio.eclipse.capp.registry.connector.model;
 
-import org.wso2.developerstudio.eclipse.greg.core.interfaces.IRegistryConnection;
+import org.wso2.developerstudio.eclipse.registry.core.interfaces.IRegistryConnection;
 
 public class RegistryConnectionNode {
 	private IRegistryConnection registryConnection;

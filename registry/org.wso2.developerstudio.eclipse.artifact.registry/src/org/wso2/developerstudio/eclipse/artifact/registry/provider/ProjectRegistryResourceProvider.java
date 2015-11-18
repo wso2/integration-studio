@@ -31,8 +31,8 @@ import org.apache.axiom.om.impl.builder.StAXOMBuilder;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.jface.resource.ImageDescriptor;
-import org.wso2.developerstudio.eclipse.greg.core.interfaces.IRegistryResource;
-import org.wso2.developerstudio.eclipse.greg.core.interfaces.IRegistryResourceProvider;
+import org.wso2.developerstudio.eclipse.registry.core.interfaces.IRegistryResource;
+import org.wso2.developerstudio.eclipse.registry.core.interfaces.IRegistryResourceProvider;
 import org.wso2.developerstudio.eclipse.platform.core.interfaces.IDeveloperStudioElement;
 import org.wso2.developerstudio.eclipse.platform.core.utils.ResourceManager;
 

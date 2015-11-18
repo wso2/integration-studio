@@ -39,7 +39,7 @@ import org.eclipse.jface.viewers.LabelProviderChangedEvent;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IDecoratorManager;
 import org.eclipse.ui.PlatformUI;
-import org.wso2.developerstudio.eclipse.greg.base.ui.util.ImageUtils;
+import org.wso2.developerstudio.eclipse.registry.base.ui.util.ImageUtils;
 import org.wso2.developerstudio.eclipse.greg.manager.local.Activator;
 import org.wso2.developerstudio.eclipse.greg.manager.local.bean.RemoteRegistryInfo;
 import org.wso2.developerstudio.eclipse.greg.manager.local.utils.RegistryCheckInClientUtils;

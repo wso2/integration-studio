@@ -21,8 +21,8 @@ import java.util.List;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.Platform;
 import org.wso2.developerstudio.eclipse.capp.registry.connector.handler.RegistryHandler;
-import org.wso2.developerstudio.eclipse.greg.core.interfaces.IRegistryHandler;
-import org.wso2.developerstudio.eclipse.greg.core.interfaces.IRegistryRequester;
+import org.wso2.developerstudio.eclipse.registry.core.interfaces.IRegistryHandler;
+import org.wso2.developerstudio.eclipse.registry.core.interfaces.IRegistryRequester;
 
 
 public class RegistryExtensionPointHandler {

@@ -166,7 +166,7 @@ public class WSO2PluginProjectWizard extends AbstractWSO2ProjectCreationWizard {
 			                                                          WSO2PluginConstants.PACKAGE_ID);
 			// show error dialog
 			ErrorDialog.openError(this.getShell(), WSO2PluginConstants.ERROR_DIALOG_TITLE,
-			                      "Could not read the json file containing the plugin template information. ", status);
+			                      "Could not read the json file containing the plugin template information. Sample List is empty ", status);
 		}
 		WSO2PluginSampleExt[] pluginSampleExt = gson.fromJson(jsonElement, WSO2PluginSampleExt[].class);
 

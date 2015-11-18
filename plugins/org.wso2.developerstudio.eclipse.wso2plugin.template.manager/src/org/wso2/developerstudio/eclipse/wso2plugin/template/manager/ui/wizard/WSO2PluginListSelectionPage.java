@@ -146,11 +146,12 @@ public class WSO2PluginListSelectionPage extends WizardSelectionPage {
 
 						@Override
 						public void run() {
-							isUpdateFromGit = true;
-							updateSampleTemplates();
-							WSO2PluginProjectWizard wso2PluginProjectWizard = new WSO2PluginProjectWizard();
-							WSO2PluginSampleExtList updatedElemList = wso2PluginProjectWizard.getAvailableWSO2Plugins();
-							wizardSelectionViewer.setInput(updatedElemList);
+							if(updateSampleTemplates()){
+								isUpdateFromGit = true;
+								WSO2PluginProjectWizard wso2PluginProjectWizard = new WSO2PluginProjectWizard();
+								WSO2PluginSampleExtList updatedElemList = wso2PluginProjectWizard.getAvailableWSO2Plugins();
+								wizardSelectionViewer.setInput(updatedElemList);
+							}
 						}
 					});
 
@@ -209,7 +210,7 @@ public class WSO2PluginListSelectionPage extends WizardSelectionPage {
 	protected void initializeViewer() {
 	}
 
-	private void updateSampleTemplates() {
+	private boolean updateSampleTemplates() {
 		IEclipsePreferences prefs = InstanceScope.INSTANCE.getNode(PreferenceInitializer.PREFERENCES_PLUGIN_ID);
 		String value = prefs.get(UpdateCheckerPreferencePage.PLUGIN_TEMPLATE_URL, PreferenceInitializer.KERNEL_SAMPLES_GIT);
 		String gitRepoURL = value;
@@ -218,12 +219,15 @@ public class WSO2PluginListSelectionPage extends WizardSelectionPage {
 			if (!yourTempFile.exists()) {
 				yourTempFile.mkdir();
 				JGitSampleRepoManager.gitClone(gitRepoURL, tempCloneDir);
+				return true;
 			} else {
 				JGitSampleRepoManager.gitPull(tempCloneDir);
+				return true;
 			}
 		} catch (GitAPIException | IOException e) {
 			log.error("could not clone content from the git URL " + gitRepoURL + e);
 		}
+		return false;
 	}
 
 	public void selectionChanged(SelectionChangedEvent event) {

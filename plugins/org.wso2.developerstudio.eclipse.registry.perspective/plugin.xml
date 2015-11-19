@@ -26,13 +26,13 @@
 	<extension point="org.eclipse.ui.perspectives">
 		<perspective id="org.wso2.developerstudio.registry.remote.registry.pespective"
 			name="WSO2 Registry" icon="icons/registry.png"
-			class="org.wso2.developerstudio.eclipse.greg.perspective.RegistryPerspectiveFactory" />
+			class="org.wso2.developerstudio.eclipse.registry.perspective.RegistryPerspectiveFactory" />
 	</extension>
 	
 	<extension
        point="org.eclipse.ui.views">
     <view
-          class="org.wso2.developerstudio.eclipse.greg.manager.remote.views.RegistryBrowserView"
+          class="org.wso2.developerstudio.eclipse.registry.manager.remote.views.RegistryBrowserView"
           icon="icons/registry.png"
           id="org.wso2.developerstudio.registry.remote.registry.view"
           name="WSO2 Registry Browser">
@@ -42,7 +42,7 @@
  	<extension
        point="org.eclipse.ui.views">
     <view
-          class="org.wso2.developerstudio.eclipse.greg.manager.remote.views.RegistryPropertyViewer"
+          class="org.wso2.developerstudio.eclipse.registry.manager.remote.views.RegistryPropertyViewer"
           icon="icons/registryProperties.png"
           id="org.wso2.developerstudio.eclipse.registry.properties"
           name="Resource Metadata">
@@ -52,7 +52,7 @@
  	<extension
        point="org.eclipse.ui.views">
     <view
-          class="org.wso2.developerstudio.eclipse.greg.manager.remote.views.ResourceInfoViewer"
+          class="org.wso2.developerstudio.eclipse.registry.manager.remote.views.ResourceInfoViewer"
           icon="icons/registryProperties.png"
           id="org.wso2.developerstudio.eclipse.registry.resource.info"
           name="Resource Info">

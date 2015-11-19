@@ -7,7 +7,7 @@
 	   	       label="WSO2 Registry Search"
 	   	       showScopeSection="false"
 	   	       icon="icons/registry-search.png"
-	   	       class="org.wso2.developerstudio.eclipse.greg.search.RegistrySearch">      
+	   	       class="org.wso2.developerstudio.eclipse.registry.search.RegistrySearch">      
    	       </page>    
    </extension> 
    <extension
@@ -15,8 +15,8 @@
         point="org.eclipse.search.searchResultViewPages">
 		<viewPage
 			id="SearchResultPage222"
-			searchResultClass="org.wso2.developerstudio.eclipse.greg.search.SearchResult"
-			class="org.wso2.developerstudio.eclipse.greg.search.RegistrySearchResultPage">
+			searchResultClass="org.wso2.developerstudio.eclipse.registry.search.SearchResult"
+			class="org.wso2.developerstudio.eclipse.registry.search.RegistrySearchResultPage">
 		</viewPage>
    </extension>
 </plugin>

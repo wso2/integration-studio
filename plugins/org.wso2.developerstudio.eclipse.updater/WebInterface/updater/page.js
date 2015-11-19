@@ -26,7 +26,7 @@ $(document).ready(function () {
 		var updateListTxt = "";
 		if (countSelectedUpdates === 0) {
 			updateListTxt = "";
-			$('#installBtn').prop('disabled', true);
+			$('#updateBtn').prop('disabled', true);
 		} else if (countSelectedUpdates === 1) {
 			updateListTxt = " 1 feature will be updated.";
 			$('#updateBtn').prop('disabled', false);
@@ -212,12 +212,12 @@ var createInstallItem = function(id, feature) {
 	return item;
 }
 
-var getAvailableUpdatesCallback= function(){
+var getAvailableUpdatesCallbackTest= function(){
 	  var map = '{"org.wso2.developerstudio.carbon.server.feature.feature.group":{"currentVersion":"4.0.0.201511171257","installable":false,"selected":false,"id":"org.wso2.developerstudio.carbon.server.feature.feature.group","label":"Carbon Server Tools","version":"4.0.0.201511171304","provider":"%providerName","descriptionURL":"http://wso2.com","description":"This feature will install plugins related to Carbon Server Tools.","iconURL":"/tmp/DevSUpdaterTmp/org.wso2.developerstudio.carbon.server.feature.feature.jar/4.0.0.201511171304/extracted/icon.png"},"org.wso2.developerstudio.capp.feature.feature.group":{"currentVersion":"4.0.0.201511171257","whatIsNew":"This property tells users about new things in this release/update. You can add a nice description about the new things in here.","bugFixes":"This property tells users about fixes done in this release/patch.You can inform users about the fixes you have done in this patch.","installable":false,"selected":false,"id":"org.wso2.developerstudio.capp.feature.feature.group","label":"Carbon Application Tools","version":"4.0.0.201511171304","provider":"%providerName","descriptionURL":"http://wso2.com","description":"This feature will install plugins related WSO2 Carbon Application Support.","iconURL":"/tmp/DevSUpdaterTmp/org.wso2.developerstudio.capp.feature.feature.jar/4.0.0.201511171304/extracted/icon.png"},"org.wso2.developerstudio.registry.feature.feature.group":{"currentVersion":"4.0.0.201511171257","installable":false,"selected":false,"id":"org.wso2.developerstudio.registry.feature.feature.group","label":"Registry Tools","version":"4.0.0.201511171304","provider":"%providerName","descriptionURL":"http://wso2.com","description":"This feature will install plugins related to Carbon Registry Tools.","iconURL":"/tmp/DevSUpdaterTmp/org.wso2.developerstudio.registry.feature.feature.jar/4.0.0.201511171304/extracted/icon.png"}}';
 		return map;
 	}
 
-var getAvailableFeaturesCallback= function(){
+var getAvailableFeaturesCallbackTest= function(){
   var map = '{"org.wso2.developerstudio.carbon.server.feature.feature.group":{"currentVersion":"4.0.0.201511171257","installable":false,"selected":false,"id":"org.wso2.developerstudio.carbon.server.feature.feature.group","label":"Carbon Server Tools","version":"4.0.0.201511171304","provider":"%providerName","descriptionURL":"http://wso2.com","description":"This feature will install plugins related to Carbon Server Tools.","iconURL":"/tmp/DevSUpdaterTmp/org.wso2.developerstudio.carbon.server.feature.feature.jar/4.0.0.201511171304/extracted/icon.png"},"org.wso2.developerstudio.capp.feature.feature.group":{"currentVersion":"4.0.0.201511171257","whatIsNew":"This property tells users about new things in this release/update. You can add a nice description about the new things in here.","bugFixes":"This property tells users about fixes done in this release/patch.You can inform users about the fixes you have done in this patch.","installable":false,"selected":false,"id":"org.wso2.developerstudio.capp.feature.feature.group","label":"Carbon Application Tools","version":"4.0.0.201511171304","provider":"%providerName","descriptionURL":"http://wso2.com","description":"This feature will install plugins related WSO2 Carbon Application Support.","iconURL":"/tmp/DevSUpdaterTmp/org.wso2.developerstudio.capp.feature.feature.jar/4.0.0.201511171304/extracted/icon.png"},"org.wso2.developerstudio.registry.feature.feature.group":{"currentVersion":"4.0.0.201511171257","installable":false,"selected":false,"id":"org.wso2.developerstudio.registry.feature.feature.group","label":"Registry Tools","version":"4.0.0.201511171304","provider":"%providerName","descriptionURL":"http://wso2.com","description":"This feature will install plugins related to Carbon Registry Tools.","iconURL":"/tmp/DevSUpdaterTmp/org.wso2.developerstudio.registry.feature.feature.jar/4.0.0.201511171304/extracted/icon.png"}}';
 	return map;
 }

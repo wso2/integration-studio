@@ -24,7 +24,7 @@
     </parent>
     <artifactId>org.wso2.developerstudio.eclipse.registry.manager.remote</artifactId>
     <packaging>eclipse-plugin</packaging>
-    <name>Developer Studio GReg Manager Remote</name>
+    <name>Developer Studio Registry Manager Remote</name>
     <!--dependencies>
         <dependency>
             <groupId>org.wso2.eclipse</groupId>

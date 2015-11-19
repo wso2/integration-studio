@@ -21,7 +21,7 @@ import org.osgi.framework.BundleContext;
 
 public class Activator extends AbstractUIPlugin {
 	private static Activator plugin;
-	public static final String PLUGIN_ID = "org.wso2.developerstudio.eclipse.greg.libraries";
+	public static final String PLUGIN_ID = "org.wso2.developerstudio.eclipse.registry.libraries";
 	
 	/*
 	 * (non-Javadoc)

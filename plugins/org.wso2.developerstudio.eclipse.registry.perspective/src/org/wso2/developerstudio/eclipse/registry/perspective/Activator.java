@@ -25,7 +25,7 @@ import org.osgi.framework.BundleContext;
 public class Activator extends AbstractUIPlugin {
 
 	// The plug-in ID
-	public static final String PLUGIN_ID = "org.wso2.developerstudio.eclipse.greg.perspective";
+	public static final String PLUGIN_ID = "org.wso2.developerstudio.eclipse.registry.perspective";
 
 	// The shared instance
 	private static Activator plugin;

@@ -24,7 +24,7 @@
     </parent>
     <artifactId>org.wso2.developerstudio.eclipse.registry.base</artifactId>
     <packaging>eclipse-plugin</packaging>
-    <name>Developer Studio GReg Base</name>
+    <name>Developer Studio Registry Base</name>
     <!--dependencies>
         <dependency>
             <groupId>org.wso2.eclipse</groupId>

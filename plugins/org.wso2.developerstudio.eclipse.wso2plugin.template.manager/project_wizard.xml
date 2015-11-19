@@ -12,7 +12,7 @@
  			  		error="Please give a name to create the plugin project">
  		<data modelProperty="plugin.project.name"
  					type="string" 
- 					fieldController="org.wso2.developerstudio.eclipse.wso2plugin.template.manager.validator.PluginProjectFiledController">Project Name   </data>
+ 					fieldController="org.wso2.developerstudio.eclipse.wso2plugin.template.manager.validator.PluginProjectFiledController">Plugin Id   </data>
  		 <group id="testid"></group>
  		
  		<projectNatures>

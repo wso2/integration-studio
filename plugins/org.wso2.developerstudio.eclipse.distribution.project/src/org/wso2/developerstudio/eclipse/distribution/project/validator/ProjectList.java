@@ -28,6 +28,7 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IWorkspace;
 import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.CoreException;
 import org.wso2.developerstudio.eclipse.distribution.project.Activator;
 import org.wso2.developerstudio.eclipse.distribution.project.model.DependencyData;
 import org.wso2.developerstudio.eclipse.distribution.project.model.GeneralArtifact;
@@ -93,8 +94,7 @@ public class ProjectList extends AbstractListDataProvider {
 							if (project.hasNature(Constants.ESB_PROJECT_NATURE)
 									|| project
 											.hasNature(Constants.GENERAL_PROJECT_NATURE)
-									|| project
-											.hasNature(Constants.DS_PROJECT_NATURE)
+									|| isMultipleArtifactDSSProject(project) 
 									|| project
 											.hasNature(Constants.CONNECTOR_PROJECT_NATURE)
 									|| project
@@ -231,5 +231,10 @@ public class ProjectList extends AbstractListDataProvider {
 			}
 		}
 		return list;
+	}
+	
+	private boolean isMultipleArtifactDSSProject(IProject project) throws CoreException {
+		return project.hasNature(Constants.DS_PROJECT_NATURE) &&
+		       (project.getFile(Constants.ARTIFACT_XML) != null && project.getFile(Constants.ARTIFACT_XML).exists());
 	}
 }

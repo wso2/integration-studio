@@ -19,6 +19,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -26,6 +27,7 @@ import java.lang.reflect.Type;
 import java.net.URL;
 import java.text.MessageFormat;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -162,7 +164,7 @@ public class WSO2PluginProjectWizard extends AbstractWSO2ProjectCreationWizard {
 					if (newElem != null) {
 						elemList.addWSO2Plugin(generateWSO2PluginSampleExt(fileName, pluginSampleId));
 					} else {
-						log.error("Template for " +pluginSampleId + "Could not be loaded." );
+						log.error("Template for " + pluginSampleId + "Could not be loaded.");
 					}
 				}
 
@@ -276,6 +278,17 @@ public class WSO2PluginProjectWizard extends AbstractWSO2ProjectCreationWizard {
 			ArchiveManipulator archiveManipulator = new ArchiveManipulator();
 			archiveManipulator.extract(resourceFile, tempDir);
 			File[] listFiles = tempDir.listFiles();
+			String[] extensionArray = { "java" };
+			Collection<File> listofFiles = org.apache.commons.io.FileUtils.listFiles(tempDir, extensionArray, true);
+			File[] fileArray = listofFiles.toArray(new File[listofFiles.size()]);
+			for (File javaFile : fileArray) {
+				if (javaFile.getName().contains("Activator.java")) {
+					// read the file and change the plugin ID
+					String content = IOUtils.toString(new FileInputStream(javaFile.getPath()), "UTF-8");
+					content = content.replaceAll("plugin_id_to_be_renamed", newProject.getName());
+					IOUtils.write(content, new FileOutputStream(javaFile.getPath()), "UTF-8");
+				}
+			}
 			String sampleName = listFiles[0].getName();
 			File sampleProjectTempLocation = new File(tempDir, sampleName);
 
@@ -286,7 +299,6 @@ public class WSO2PluginProjectWizard extends AbstractWSO2ProjectCreationWizard {
 					updateWithParameterData(projectDesc, parameterValue);
 				}
 			}
-
 			FileUtils.copyDirectoryContents(sampleProjectTempLocation, projectTempLocation);
 			FileUtils.copyDirectoryContents(projectTempLocation, target);
 			newProject.refreshLocal(IResource.DEPTH_INFINITE, null);

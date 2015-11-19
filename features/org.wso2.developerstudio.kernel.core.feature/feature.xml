@@ -101,5 +101,29 @@
          version="0.0.0"
          unpack="false"/>
 
+  <plugin
+         id="org.wso2.developerstudio.eclipse.artifact.security"
+
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+  <plugin
+         id="org.wso2.developerstudio.eclipse.security.ui"
+
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+  <plugin
+         id="org.wso2.developerstudio.eclipse.artifact.library"
+
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
 
 </feature>

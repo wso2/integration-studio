@@ -14,7 +14,6 @@
     <name>WSO2 Eclipse Tools Connector Features</name>
     <modules>
     	<module>org.wso2.developerstudio.eclipse.bpel.connector.feature</module>
-    	<module>org.wso2.developerstudio.eclipse.registry.connector.feature</module>
     </modules>
 </project>
 

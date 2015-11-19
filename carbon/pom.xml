@@ -12,7 +12,6 @@
     <packaging>pom</packaging>
     <name>WSO2 Carbon Tools Parent</name>
     <modules>
-        <!--module>org.wso2.developerstudio.eclipse.carbon.uibundle</module-->
 	<module>org.wso2.developerstudio.eclipse.artifact.carbon.ui.bundle</module>
     </modules>
     <!--dependencyManagement>

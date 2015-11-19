@@ -24,7 +24,7 @@
     </parent>
     <artifactId>org.wso2.developerstudio.eclipse.registry.resource.authorization</artifactId>
     <packaging>eclipse-plugin</packaging>
-    <name>Developer Studio GReg Resource Authorization</name>
+    <name>Developer Studio Registry Resource Authorization</name>
     <!--dependencies>
         <dependency>
             <groupId>org.wso2.eclipse</groupId>

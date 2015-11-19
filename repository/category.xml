@@ -36,6 +36,12 @@
    <feature id="org.wso2.developerstudio.kernel.registry.feature" version="0.0.0">
       <category name="org.wso2.developerstudio.kernel.common"/>
    </feature>
+   <feature id="org.wso2.developerstudio.kernel.security.feature" version="0.0.0">
+      <category name="org.wso2.developerstudio.kernel.common"/>
+   </feature>
+   <feature id="org.wso2.developerstudio.library.artifact.feature" version="0.0.0">
+      <category name="org.wso2.developerstudio.kernel.common"/>
+   </feature>
    <category-def name="org.wso2.developerstudio.kernel" label="WSO2 Developer Studio Kernel">
       <description>
 		WSO2 Developer Studio Kernel provides a set of core plugins which can be used to develop Eclipse plugins for the WSO2 products which are based on award wining WSO2 carbon platform. After a major architecture revamping with version 4.0.0, WSO2 Developer Studio is moved in to a kernel based model. All the product specific plugins will use the Developer Studio Kernel as the base for their implementation.

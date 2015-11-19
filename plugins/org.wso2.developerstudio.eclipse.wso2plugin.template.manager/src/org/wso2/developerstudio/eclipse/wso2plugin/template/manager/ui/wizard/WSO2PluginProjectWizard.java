@@ -15,13 +15,24 @@
  */
 package org.wso2.developerstudio.eclipse.wso2plugin.template.manager.ui.wizard;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.lang.reflect.Type;
 import java.net.URL;
 import java.text.MessageFormat;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
+import org.apache.commons.io.IOUtils;
+import org.codehaus.jettison.json.JSONException;
+import org.codehaus.jettison.json.JSONObject;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IProjectDescription;
 import org.eclipse.core.resources.IResource;
@@ -61,8 +72,10 @@ import org.wso2.developerstudio.eclipse.wso2plugin.template.manager.util.WSO2Plu
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonIOException;
+import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.google.gson.JsonSyntaxException;
+import com.google.gson.reflect.TypeToken;
 
 public class WSO2PluginProjectWizard extends AbstractWSO2ProjectCreationWizard {
 
@@ -127,6 +140,7 @@ public class WSO2PluginProjectWizard extends AbstractWSO2ProjectCreationWizard {
 	}
 
 	public WSO2PluginSampleExtList getAvailableWSO2Plugins() {
+		Map<String, String> availablePluginIds = new HashMap<String, String>();
 		WSO2PluginSampleExtList elemList = new WSO2PluginSampleExtList();
 		DeveloperStudioProviderUtils devStudioUtils = new DeveloperStudioProviderUtils();
 		IConfigurationElement[] elements = devStudioUtils.getExtensionPointmembers(WSO2PluginConstants.EXTENSION_ID);
@@ -134,43 +148,70 @@ public class WSO2PluginProjectWizard extends AbstractWSO2ProjectCreationWizard {
 			WSO2PluginSampleExt element = createWizardElement(elements[j]);
 			if (element != null) {
 				elemList.addWSO2Plugin(element);
+				availablePluginIds.put(element.getId(), element.getPluginName());
 			}
 		}
 		if (WSO2PluginListSelectionPage.isUpdateFromGit) {
 			String fileName = WSO2PluginListSelectionPage.tempCloneDir + File.separator;
-			WSO2PluginSampleExt[] pluginSampleExt =
-			                                        addWizardElemsFromDownloadedPlugins(fileName +
-			                                                                            WSO2PluginConstants.SAMPLE_DESCRIPTION_FILE);
-			for (WSO2PluginSampleExt pluginSamle : pluginSampleExt) {
-				String iconLocation = fileName + WSO2PluginConstants.ICONS + File.separator + pluginSamle.getIconLoc();
-				pluginSamle.setIconLoc(iconLocation);
-				String tempArchiveLoc = fileName + pluginSamle.getPluginArchive();
-				pluginSamle.setPluginArchive(tempArchiveLoc);
-				pluginSamle.setIsUpdatedFromGit(String.valueOf(true));
-				elemList.add(pluginSamle);
+			List<String> pluginSampleExt =
+			                               addWizardElemsFromDownloadedPlugins(fileName +
+			                                                                   WSO2PluginConstants.SAMPLE_DESCRIPTION_FILE);
+			for (String pluginSampleId : pluginSampleExt) {
+				if (!availablePluginIds.containsKey(pluginSampleId)) {
+					WSO2PluginSampleExt newElem = generateWSO2PluginSampleExt(fileName, pluginSampleId);
+					if (newElem != null) {
+						elemList.addWSO2Plugin(generateWSO2PluginSampleExt(fileName, pluginSampleId));
+					} else {
+						log.error("Template for " +pluginSampleId + "Could not be loaded." );
+					}
+				}
+
 			}
 		}
 		return elemList;
 	}
 
-	private WSO2PluginSampleExt[] addWizardElemsFromDownloadedPlugins(String fileName) {
+	private WSO2PluginSampleExt generateWSO2PluginSampleExt(String fileName, String pluginSamlpeId) {
+		Gson gson = new Gson();
+		WSO2PluginSampleExt wso2PluginSampleExt = null;
+		String fileToRead =
+		                    fileName + File.separator + pluginSamlpeId + File.separator +
+		                            WSO2PluginConstants.SAMPLE_DESCRIPTION_FILE;
+		try {
+			BufferedReader br = new BufferedReader(new FileReader(fileToRead));
+			wso2PluginSampleExt = gson.fromJson(br, WSO2PluginSampleExt.class);
+			wso2PluginSampleExt.setIsUpdatedFromGit("true");
+		} catch (JsonIOException | JsonSyntaxException | FileNotFoundException e) {
+			// TODO Auto-generated catch block
+		}
+
+		return wso2PluginSampleExt;
+
+	}
+
+	private List<String> addWizardElemsFromDownloadedPlugins(String fileName) {
 		Gson gson = new Gson();
 		JsonParser parser = new JsonParser();
 		JsonElement jsonElement = null;
+		List<String> templateIDList = new ArrayList<String>();;
 		try {
 			jsonElement = parser.parse(new FileReader(fileName));
-		} catch (JsonIOException | JsonSyntaxException | FileNotFoundException e1) {
+			Type type = new TypeToken<List<String>>() {
+			}.getType();
+			templateIDList = gson.fromJson(jsonElement, type);
+		} catch (JsonIOException | JsonSyntaxException | IOException e1) {
 			log.error("Could not read the json file containing the plugin template information " + e1);
 			MultiStatus status =
 			                     MessageDialogUtils.createMultiStatus(e1.getLocalizedMessage(), e1,
 			                                                          WSO2PluginConstants.PACKAGE_ID);
 			// show error dialog
-			ErrorDialog.openError(this.getShell(), WSO2PluginConstants.ERROR_DIALOG_TITLE,
-			                      "Could not read the json file containing the plugin template information. Sample List is empty ", status);
+			ErrorDialog.openError(this.getShell(),
+			                      WSO2PluginConstants.ERROR_DIALOG_TITLE,
+			                      "Could not read the json file containing the plugin template information. Sample List is empty ",
+			                      status);
 		}
-		WSO2PluginSampleExt[] pluginSampleExt = gson.fromJson(jsonElement, WSO2PluginSampleExt[].class);
 
-		return pluginSampleExt;
+		return templateIDList;
 
 	}
 
@@ -180,12 +221,13 @@ public class WSO2PluginProjectWizard extends AbstractWSO2ProjectCreationWizard {
 		String description = config.getAttribute(WSO2PluginConstants.GET_PLUGIN_DESCRIPTION);
 		String providerBundleID = config.getContributor().getName();
 		String iconLoc = config.getAttribute(WSO2PluginConstants.ICON);
+		String id = config.getAttribute(WSO2PluginConstants.PLUGIN_ID);
 		if (name == null || archive == null || providerBundleID == null) {
 			openSelectedProjectInWorkspace(selectedPlugin);
 		}
 		WSO2PluginSampleExt pluginElem =
 		                                 new WSO2PluginSampleExt(name, archive, description, providerBundleID, iconLoc,
-		                                                         String.valueOf(false));
+		                                                         String.valueOf(false), id);
 
 		return pluginElem;
 	}

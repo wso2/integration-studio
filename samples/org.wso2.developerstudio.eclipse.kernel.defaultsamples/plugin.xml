@@ -18,16 +18,16 @@
 */
 -->
 <plugin>  
-    <extension point="org.wso2.developerstudio.kernel.plugin.sample">
+    <extension point="org.wso2.developerstudio.kernel.wso2plugin.template">
       <template
-           id="org.wso2.mediator.plugin.sample"
+           id="org.wso2.artifact.plugin.sample"
            name="Single Module Project"
            archive="samples/SampleArtifactPlugin.zip"
            icon="icons/single-artifact.png"
            description="%Sampleartifactplugin_description" >       
       </template>
       <template
-           id="org.wso2.analytics.plugin.sample"
+           id="org.wso2.multiple.artifacts.plugin.sample"
            name="Multi Module Project"
            archive="samples/SampleMultipleArtifactPlugin.zip"
            icon="icons/multiple-artifacts.png"

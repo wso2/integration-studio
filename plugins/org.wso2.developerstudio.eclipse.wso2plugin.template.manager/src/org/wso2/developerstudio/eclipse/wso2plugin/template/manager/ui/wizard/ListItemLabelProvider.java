@@ -19,8 +19,6 @@ package org.wso2.developerstudio.eclipse.wso2plugin.template.manager.ui.wizard;
 import org.eclipse.jface.viewers.ITableLabelProvider;
 import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.swt.graphics.Image;
-import org.eclipse.ui.ISharedImages;
-import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.eclipse.wso2plugin.template.manager.ui.elements.WSO2PluginSampleExt;
 
 public class ListItemLabelProvider extends LabelProvider implements ITableLabelProvider {
@@ -35,7 +33,7 @@ public class ListItemLabelProvider extends LabelProvider implements ITableLabelP
 
 	public Image getImage(Object obj) {
 		WSO2PluginSampleExt elem = (WSO2PluginSampleExt)obj;
-		return elem.getImage(elem.getIconLoc());
+		return elem.getImage(elem.getIconLoc(), elem.getId(), elem.getIsUpdatedFromGit());
 		//return PlatformUI.getWorkbench().getSharedImages().getImage(ISharedImages.IMG_OBJ_ELEMENT);
 	}
 

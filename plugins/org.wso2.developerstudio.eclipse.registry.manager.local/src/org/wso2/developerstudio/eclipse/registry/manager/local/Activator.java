@@ -29,7 +29,7 @@ import org.wso2.developerstudio.eclipse.registry.manager.local.manager.FileModif
 public class Activator extends AbstractUIPlugin {
 
 	// The plug-in ID
-	public static final String PLUGIN_ID = "org.wso2.developerstudio.eclipse.greg.manager.local";
+	public static final String PLUGIN_ID = "org.wso2.developerstudio.eclipse.registry.manager.local";
 	private FileModificationManager fileModificationManager;
 
 	// The shared instance

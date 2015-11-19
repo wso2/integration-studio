@@ -15,6 +15,7 @@
  */
 package org.wso2.developerstudio.eclipse.wso2plugin.template.manager.ui.elements;
 
+import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -24,6 +25,7 @@ import org.eclipse.core.runtime.Platform;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.graphics.Image;
 import org.wso2.developerstudio.eclipse.platform.ui.Activator;
+import org.wso2.developerstudio.eclipse.wso2plugin.template.manager.ui.wizard.WSO2PluginListSelectionPage;
 import org.wso2.developerstudio.eclipse.wso2plugin.template.manager.util.WSO2PluginConstants;
 
 import com.google.gson.annotations.SerializedName;
@@ -54,6 +56,17 @@ public class WSO2PluginSampleExt {
 	@SerializedName("isUpdatedFromGit")
 	String isUpdatedFromGit;
 
+	@SerializedName("id")
+	String id;
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
 	public String getIsUpdatedFromGit() {
 		return isUpdatedFromGit;
 	}
@@ -71,7 +84,7 @@ public class WSO2PluginSampleExt {
 	}
 
 	public WSO2PluginSampleExt(String pluginName, String pluginArchive, String description, String pluginBundleID,
-	                           String iconLoc, String isPluginUpdatedFromGit) {
+	                           String iconLoc, String isPluginUpdatedFromGit, String pluginId) {
 		super();
 		this.pluginName = pluginName;
 		this.pluginArchive = pluginArchive;
@@ -79,26 +92,30 @@ public class WSO2PluginSampleExt {
 		this.bundleID = pluginBundleID;
 		this.iconLoc = iconLoc;
 		this.isUpdatedFromGit = isPluginUpdatedFromGit;
+		this.id = pluginId;
 	}
 
-	public Image getImage(String iconLocation) {
+	public Image getImage(String iconLocation, String id, String isFromGit) {
 		ImageDescriptor imageDescriptor = null;
-		if (!Boolean.parseBoolean(this.isUpdatedFromGit)) {
+		if (!Boolean.parseBoolean(isFromGit)) {
 			if (iconLocation != null && !iconLocation.isEmpty()) {
 				imageDescriptor =
 				                  ImageDescriptor.createFromURL(FileLocator.find(Platform.getBundle(bundleID),
 				                                                                 new Path(iconLocation), null));
 			} else {
 				imageDescriptor =
-		                  ImageDescriptor.createFromURL(FileLocator.find(Platform.getBundle(Activator.PLUGIN_ID),
-		                                                                 new Path("icons/plugin-icon.png"), null));
+				                  ImageDescriptor.createFromURL(FileLocator.find(Platform.getBundle(Activator.PLUGIN_ID),
+				                                                                 new Path("icons/plugin-icon.png"),
+				                                                                 null));
 			}
 			return imageDescriptor.createImage();
 		} else {
 			try {
+				String gitIconLoc =
+				                    WSO2PluginListSelectionPage.tempCloneDir + File.separator + id + File.separator +
+				                            "icons" + File.separator + iconLocation;
 				imageDescriptor =
-				                  ImageDescriptor.createFromURL(new URL(WSO2PluginConstants.FILE_PROTOCOL +
-				                                                        iconLocation));
+				                  ImageDescriptor.createFromURL(new URL(WSO2PluginConstants.FILE_PROTOCOL + gitIconLoc));
 				return imageDescriptor.createImage();
 			} catch (MalformedURLException e) {
 				// log image cannot be found at location

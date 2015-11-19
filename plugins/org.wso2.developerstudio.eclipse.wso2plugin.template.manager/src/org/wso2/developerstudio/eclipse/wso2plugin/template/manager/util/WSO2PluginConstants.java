@@ -22,7 +22,8 @@ public class WSO2PluginConstants {
 	public static final String NO_DESCRIPTION_TO_BE_SET = "No Description to be set";
 	public static final String PLUGIN_ARCHIVE_LOCATION = "archive";
 	public static final String PLUGIN_NAME = "name";
-	public static final String EXTENSION_ID = "org.wso2.developerstudio.kernel.plugin.sample";
+	public static final String PLUGIN_ID = "id";
+	public static final String EXTENSION_ID = "org.wso2.developerstudio.kernel.wso2plugin.template";
 	public static final String PROJECT_WIZARD_WINDOW_TITLE = "New WSO2 Plugin Project";
 	public static final String PLUGIN_SELECT_WIZARD_PAGE_NAME = "Select WSO2 Plugin template";
 	public static final String GET_PLUGIN_DESCRIPTION = "description";

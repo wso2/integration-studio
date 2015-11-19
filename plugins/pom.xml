@@ -21,6 +21,7 @@
         <module>org.wso2.developerstudio.eclipse.samples</module>
         <module>org.wso2.developerstudio.eclipse.embedded.tomcat</module>
         <module>org.wso2.developerstudio.eclipse.webui.core</module>
+	<module>org.wso2.developerstudio.eclipse.updater</module>
         <module>org.wso2.developerstudio.eclipse.wso2plugin.template.manager</module>
         <module>org.wso2.developerstudio.eclipse.registry.core</module>
         <module>org.wso2.developerstudio.eclipse.registry.libraries</module>

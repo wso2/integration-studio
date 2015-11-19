@@ -212,17 +212,19 @@ public class EmbeddedTomcatServer{
 			String appDeploymentErrorMsg = NLS.bind(
 					Messages.ERROR_APP_DEPLOYMENT_FAILED, applicationID,
 					contributingBundleID);
-
+			//TODO: is this necessary
 			if (isNotEmpty(applicationID) && isNotEmpty(relativePath)
 					&& isNotEmpty(context)) {
 				URL docBaseResource = FileLocator.find(contributingBundle,
 						new Path(relativePath), null);
+				// FIXME: add a boolean to indicate success 
 				File readableDocBase = null;
 				String deployableDocBase = null;
 				try {
 					// resolve resource from bundle jar
 					URL fileURL = FileLocator.toFileURL(docBaseResource);
 					readableDocBase = new File(fileURL.toURI());
+					// Fixme: seperate methods
 				} catch (IOException | URISyntaxException e) {
 					String errorMessage = NLS.bind(
 							Messages.ERROR_RESOLVING_RESOURCES_FAILED,

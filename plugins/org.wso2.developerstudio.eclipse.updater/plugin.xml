@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+    <extension
+         point="org.eclipse.ui.commands">
+      <command
+            defaultHandler="org.wso2.developerstudio.eclipse.updater.handler.UpdateHandler"
+            id="org.wso2.developerstudio.eclipse.updater.CheckUpdatesCmd"
+            name="Check for updates">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            locationURI="menu:org.wso2.developerstudio.eclipse.platform.ui.main">
+            <command
+                  commandId="org.wso2.developerstudio.eclipse.updater.CheckUpdatesCmd"
+                  label="Check for updates"
+                  style="push"
+                  tooltip="Check updates for Developer Studio">
+            </command>
+      </menuContribution>
+   </extension>
+</plugin>

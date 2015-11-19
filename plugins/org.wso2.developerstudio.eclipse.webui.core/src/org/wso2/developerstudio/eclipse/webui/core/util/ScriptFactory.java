@@ -15,6 +15,8 @@
  */
 package org.wso2.developerstudio.eclipse.webui.core.util;
 
+import java.lang.reflect.Type;
+
 import org.wso2.developerstudio.eclipse.webui.core.model.BrowserScript;
 
 import com.google.gson.Gson;
@@ -62,11 +64,31 @@ public class ScriptFactory {
 		return createFunctionCallScript(functionName, new String[] {});
 	}
 
-	private static String toJsonString(JsonElement jsonElement) {
+	public static String toJsonString(JsonElement jsonElement) {
 		return gson.toJson(jsonElement);
 	}
+	
+	public static String pojoToJson(Object pojo) {
+		return gson.toJson(pojo);
+	}
+	
+	public static <T> T jsonToPojo(String json, Type typeOfT){
+		return gson.fromJson(json,typeOfT);
+	}
+	
+	public static <T> T jsonToPojo(String json, Class<T> classOfT){
+		return gson.fromJson(json, classOfT);
+	}
+	
+	public static <T> T jsonToPojo(JsonElement json, Type typeOfT){
+		return gson.fromJson(json,typeOfT);
+	}
+	
+	public static <T> T jsonToPojo(JsonElement json, Class<T> classOfT){
+		return gson.fromJson(json, classOfT);
+	}
 
-	private static String[] toJsonStringArray(JsonElement[] jsonElements) {
+	public static String[] toJsonStringArray(JsonElement[] jsonElements) {
 		String[] elements = new String[jsonElements.length];
 		for (int index = 0; index < jsonElements.length; index++) {
 			elements[index] = toJsonString(jsonElements[index]);

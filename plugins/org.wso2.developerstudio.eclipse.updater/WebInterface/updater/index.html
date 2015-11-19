@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<link href="assets/metro/css/metro.css" rel="stylesheet">
+<link href="assets/metro/css/metro-icons.css" rel="stylesheet">
+<link href="assets/metro/css/metro-responsive.css" rel="stylesheet">
+<link href="assets/metro/css/jquery.jscrollpane.css" rel="stylesheet">
+
+
+<link href="style.css" rel="stylesheet">
+</head>
+<body
+	style="max-width: 800px; max-height: 700px; -moz-user-select: none; -webkit-user-select: none; -ms-user-select: none; user-select: none; -o-user-select: none;"
+	unselectable="on" onselectstart="return false;"
+	onmousedown="return false;">
+	<div class="window">
+		<div class="window-caption">
+			<span class="window-caption-icon"><span
+				class="mif-folder-download"></span></span> <span
+				class="window-caption-title">Update Manager for Developer
+				Studio</span> <span class="btn-min"></span> <span class="btn-max"></span> <span
+				class="btn-close" onclick="disposeWindowCallback()"></span>
+		</div>
+		<div class="window-content">
+			<div class="tabcontrol2" data-role="tabcontrol">
+				<ul class="tabs">
+					<li class="active"><a href="#updateTab">Updates</a></li>
+					<li class=""><a href="#installTab">available features</a></li>
+				</ul>
+				<div class="frames">
+					<div class="frame" id="updateTab"
+						style="min-height: 617px; display: block;">
+						<span id="updateAvailableSummary"></span> <span
+							id="updateSelectionSummary"></span> <br> <br>
+						<table class="table" style="max-height: 490px; overflow-y: scroll; padding: 5px;">
+							<tbody id="updateList">
+							</tbody>
+						</table>
+						<button type="button" class="button" id="updateBtn"
+							style="position: absolute; bottom: 15px; right: 20px;"
+							onclick="installSelectedUpdates();">Install Selected
+							Updates</button>
+
+					</div>
+					<div class="frame" id="installTab"
+						style="min-height: 617px; display: none;">
+						<span id="installAvailableSummary"></span> <span
+							id="installSelectionSummary"></span> <br> <br>
+						<div class="grid" id="installList" class="scroll-pane"
+							style="max-height: 490px; overflow-y: scroll; padding: 5px;">
+						</div>
+						<button type="button" class="button" id="installBtn"
+							style="position: absolute; bottom: 15px; right: 20px;"
+							onclick="installSelectedFeatures();">Install Selected
+							Features</button>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="assets/metro/js/jquery-2.1.3.min.js"></script>
+	<script src="assets/metro/js/metro.js"></script>
+	<script src="assets/metro/js/jquery.jscrollpane.min.js"></script>
+	<script src="assets/metro/js/jquery.mousewheel.js"></script>
+	<script src="page.js"></script>
+</body>
+</html>

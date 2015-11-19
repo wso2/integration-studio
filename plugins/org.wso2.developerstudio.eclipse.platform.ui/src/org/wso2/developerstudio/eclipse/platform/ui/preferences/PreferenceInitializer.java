@@ -24,6 +24,8 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
 
 	public static final String KERNEL_SAMPLES_GIT = "https://github.com/wso2/tooling-templates.git";
 	public static final String PREFERENCES_PLUGIN_ID = "org.wso2.developerstudio.eclipse.platform.ui";
+	public static final String RELEASE_SITE = "http://builder1.us1.wso2.org/~developerstudio/developer-studio-kernel/4.0.0/releases";
+	public static final String UPDATE_SITE = "http://builder1.us1.wso2.org/~developerstudio/developer-studio-kernel/4.0.0/updates";
 
 	/*
 	 * (non-Javadoc)
@@ -33,6 +35,8 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
 	public void initializeDefaultPreferences() {
 		 IPreferenceStore store = Activator.getDefault().getPreferenceStore();
 		    store.setDefault(UpdateCheckerPreferencePage.PLUGIN_TEMPLATE_URL, KERNEL_SAMPLES_GIT);
+		    store.setDefault(UpdateCheckerPreferencePage.RELESE_SITE_URL, RELEASE_SITE);
+		    store.setDefault(UpdateCheckerPreferencePage.UPDATE_SITE_URL, UPDATE_SITE);
 	}
 
 }

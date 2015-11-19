@@ -1,0 +1,20 @@
+
+.update-icon
+{
+    padding-left: 5px;
+}
+
+.install-icon
+{
+    padding-left: 5px;
+}
+
+.selected
+{
+    padding-left: 5px;
+    color: #05c338;
+}
+
+.tabcontrol2 .tabs li.active a{
+	text-shadow: none;
+}

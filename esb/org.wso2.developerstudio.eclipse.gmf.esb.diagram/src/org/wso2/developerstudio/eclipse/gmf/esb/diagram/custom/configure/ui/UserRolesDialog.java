@@ -36,8 +36,6 @@ import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.swt.widgets.Text;
-import org.wso2.developerstudio.eclipse.gmf.esb.ProxyService;
-import org.wso2.developerstudio.eclipse.gmf.esb.ProxyServiceParameter;
 import org.wso2.developerstudio.eclipse.platform.ui.utils.UserManagerUtils;
 
 public abstract class UserRolesDialog extends Dialog {

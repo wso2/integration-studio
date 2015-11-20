@@ -15,22 +15,17 @@
  */
 package org.wso2.developerstudio.eclipse.updater.handler;
 
-import java.lang.reflect.InvocationTargetException;
-
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
-import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.Path;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.SubMonitor;
+import org.eclipse.core.runtime.jobs.IJobChangeEvent;
 import org.eclipse.core.runtime.jobs.Job;
-import org.eclipse.jface.operation.IRunnableWithProgress;
+import org.eclipse.core.runtime.jobs.JobChangeAdapter;
 import org.eclipse.swt.widgets.Display;
-import org.eclipse.ui.PlatformUI;
-import org.eclipse.ui.progress.IProgressService;
-import org.osgi.framework.FrameworkUtil;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.updater.UpdaterPlugin;
@@ -41,50 +36,48 @@ public class UpdateHandler extends AbstractHandler {
 
 	protected static IDeveloperStudioLog log = Logger
 			.getLog(UpdaterPlugin.PLUGIN_ID);
+			
+	protected UpdateManager updateManager = new UpdateManager();
 
 	@Override
-	public Object execute(ExecutionEvent arg0) throws ExecutionException {
-		try {
-			IProgressService progressService = PlatformUI.getWorkbench()
-					.getProgressService();
-			final UpdateManager manager = new UpdateManager();
-			try {
-				progressService.runInUI(progressService,
-						new IRunnableWithProgress() {
+	public Object execute(ExecutionEvent arg0) throws ExecutionException {	
+		Job updateJob = new Job("Updater checker") {
+			@Override
+			protected IStatus run(IProgressMonitor monitor) {
+				try {
+					SubMonitor progress = SubMonitor.convert(monitor,
+							"Searching for updates.", 2);
+					updateManager.checkForAvailableUpdates(progress.newChild(1));
+					updateManager.checkForAvailableFeatures(progress.newChild(1));
+				} catch (Exception e) {
+					log.error("Error while checking updates.", e);
 
-							@Override
-							public void run(IProgressMonitor monitor)
-									throws InvocationTargetException,
-									InterruptedException {
-								try {
-									SubMonitor progress = SubMonitor.convert(
-											monitor,
-											"Checking for DevStudio updates.",
-											2);
-									manager.checkForAvailableUpdates(progress
-											.newChild(1));
-									manager.checkForAvailableFeatures(progress
-											.newChild(1));
-								} catch (Exception e) {
-									log.error("Error while checking updates.",
-											e);
-									throw new InvocationTargetException(e);
-								}
-
-							}
-						}, null);
-
-			} catch (InvocationTargetException | InterruptedException e1) {
-				log.error(e1);
+				}
+				return Status.OK_STATUS;
 			}
-
-			ProvisioningWindow provioningWindow = new ProvisioningWindow(
-					manager);
-			provioningWindow.open();
-		} catch (Exception ex) {
-			log.error(ex);
-		}
+		};
+		updateJob.schedule();
+		updateJob.addJobChangeListener(new UpdateJobCompletedHandler());
 		return null;
+	}
+	
+	class UpdateJobCompletedHandler extends JobChangeAdapter{
+		@Override
+		public void done(IJobChangeEvent event) {
+					Display.getDefault().syncExec(new Runnable() {
+			@Override
+			public void run() {
+				ProvisioningWindow provioningWindow;
+				try {
+					provioningWindow = new ProvisioningWindow(
+							updateManager);
+					provioningWindow.open();
+				} catch (Exception e) {
+					log.error(e);
+				}
+			}
+		});
+		}
 	}
 
 }

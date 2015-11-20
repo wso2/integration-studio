@@ -558,6 +558,7 @@ public class UpdateManager {
 	public void installSelectedUpdates(IProgressMonitor monitor) {
 		try {
 			URI[] repos = new URI[] { getDevStudioUpdateSite() };
+			session = new ProvisioningSession(p2Agent);
 			updateOperation = new UpdateOperation(session);
 			updateOperation.getProvisioningContext().setArtifactRepositories(
 					repos);
@@ -641,6 +642,7 @@ public class UpdateManager {
 				"Installing WSO2 features.", 2);
 
 		URI[] repos = new URI[] { getDevStudioReleaseSite() };
+		session = new ProvisioningSession(p2Agent);
 		installOperation = new InstallOperation(session, selectedFeatures);
 		installOperation.getProvisioningContext()
 				.setArtifactRepositories(repos);

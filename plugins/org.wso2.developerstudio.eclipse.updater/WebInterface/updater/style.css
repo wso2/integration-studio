@@ -21,3 +21,24 @@
 	text-shadow: none;
 	border-top: 2px #ddd solid;
 }
+
+td 
+{
+    vertical-align:middle;
+}
+
+#installTab{
+	width:680px; 
+	margin-left:10px; 
+	margin-right:10px; 
+	min-height: 620px; 
+	max-height: 620px;
+}
+
+#updateTab{
+	width:680px; 
+	margin-left:10px; 
+	margin-right:10px; 
+	min-height: 620px; 
+	max-height: 620px;
+}

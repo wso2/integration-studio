@@ -15,6 +15,8 @@
  */
 package org.wso2.developerstudio.eclipse.updater.handler;
 
+import java.lang.reflect.InvocationTargetException;
+
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
@@ -22,8 +24,12 @@ import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Path;
+import org.eclipse.core.runtime.SubMonitor;
 import org.eclipse.core.runtime.jobs.Job;
+import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.progress.IProgressService;
 import org.osgi.framework.FrameworkUtil;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
@@ -39,18 +45,44 @@ public class UpdateHandler extends AbstractHandler {
 	@Override
 	public Object execute(ExecutionEvent arg0) throws ExecutionException {
 		try {
-			UpdateManager manager = new UpdateManager();
-			manager.checkForAvailableUpdates(null);
-			manager.checkForAvailableFeatures(null);
-			// extract web interface file first.
-			FileLocator.toFileURL(FileLocator.find(
-					FrameworkUtil.getBundle(ProvisioningWindow.class),
-					new Path("WebInterface/updater"), null));
+			IProgressService progressService = PlatformUI.getWorkbench()
+					.getProgressService();
+			final UpdateManager manager = new UpdateManager();
+			try {
+				progressService.runInUI(progressService,
+						new IRunnableWithProgress() {
+
+							@Override
+							public void run(IProgressMonitor monitor)
+									throws InvocationTargetException,
+									InterruptedException {
+								try {
+									SubMonitor progress = SubMonitor.convert(
+											monitor,
+											"Checking for DevStudio updates.",
+											2);
+									manager.checkForAvailableUpdates(progress
+											.newChild(1));
+									manager.checkForAvailableFeatures(progress
+											.newChild(1));
+								} catch (Exception e) {
+									log.error("Error while checking updates.",
+											e);
+									throw new InvocationTargetException(e);
+								}
+
+							}
+						}, null);
+
+			} catch (InvocationTargetException | InterruptedException e1) {
+				log.error(e1);
+			}
+
 			ProvisioningWindow provioningWindow = new ProvisioningWindow(
 					manager);
 			provioningWindow.open();
-		} catch (Exception e) {
-			log.error("Error while opening update window.", e);
+		} catch (Exception ex) {
+			log.error(ex);
 		}
 		return null;
 	}

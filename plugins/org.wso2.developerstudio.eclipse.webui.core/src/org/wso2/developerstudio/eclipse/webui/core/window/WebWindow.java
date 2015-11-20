@@ -35,21 +35,21 @@ public class WebWindow {
 	protected Shell shell;
 
 	public WebWindow(String appID) throws WebUIException {
-		shell = new Shell(SWT.RESIZE & SWT.NO_SCROLL);
+		shell = new Shell(SWT.SHELL_TRIM & (~SWT.RESIZE));
 		positionShell();
 		composite = new WebComposite(appID, shell, SWT.NONE);
 		injectCallbacks();
 	}
 
 	public WebWindow(String appID, String appContext) throws WebUIException {
-		shell = new Shell(SWT.RESIZE & SWT.NO_SCROLL);
+		shell = new Shell(SWT.SHELL_TRIM & (~SWT.RESIZE));
 		positionShell();
 		composite = new WebComposite(appID, appContext, shell, SWT.NONE);
 		injectCallbacks();
 	}
 
 	public WebWindow(URL appURL) throws WebUIException {
-		shell = new Shell(SWT.RESIZE & SWT.NO_SCROLL);
+		shell = new Shell(SWT.SHELL_TRIM & (~SWT.RESIZE));
 		positionShell();
 		composite = new WebComposite(appURL, shell, SWT.NONE);
 		injectCallbacks();
@@ -79,6 +79,7 @@ public class WebWindow {
 	}
 
 	public void open() {
+		shell.setText("Updates Manager for Developer Studio");
 		shell.open();
 		shell.layout();
 		while (!shell.isDisposed()) {

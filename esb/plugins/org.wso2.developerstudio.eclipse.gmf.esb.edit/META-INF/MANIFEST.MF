@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-SymbolicName: org.wso2.developerstudio.eclipse.gmf.esb.edit;singleton:=true
+Bundle-Version: 4.0.0.qualifier
+Bundle-ClassPath: .
+Bundle-Activator: org.wso2.developerstudio.eclipse.gmf.esb.provider.EsbEditPlugin$Implementation
+Bundle-Vendor: %providerName
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Export-Package: org.wso2.developerstudio.eclipse.gmf.esb.provider
+Require-Bundle: org.eclipse.core.runtime,
+ org.wso2.developerstudio.eclipse.gmf.esb;visibility:=reexport,
+ org.eclipse.emf.edit;visibility:=reexport,
+ org.eclipse.emf.common.ui;bundle-version="2.6.0",
+ org.eclipse.emf.edit.ui;bundle-version="2.6.0"
+Bundle-ActivationPolicy: lazy

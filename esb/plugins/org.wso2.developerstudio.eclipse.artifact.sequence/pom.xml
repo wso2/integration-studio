@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ Copyright (c) 2010-2015, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+* http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<parent>
+		<groupId>org.wso2.developerstudio</groupId>
+		<artifactId>wso2-developerstudio-esb-plugins</artifactId>
+		<version>4.0.0-SNAPSHOT</version>
+	</parent>
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>org.wso2.developerstudio.eclipse.artifact.sequence</artifactId>
+	<packaging>eclipse-plugin</packaging>
+	<name>Developer Studio Proxy Service artifact</name>
+	<!--dependencies> <dependency> <groupId>org.wso2.developerstudio</groupId> 
+		<artifactId>org.wso2.developerstudio.eclipse.esb</artifactId> <version>${esb.tools.version}</version> 
+		</dependency> <dependency> <groupId>org.eclipse</groupId> <artifactId>org.eclipse.emf.ecore</artifactId> 
+		<version>2.5.0.v200906151043</version> </dependency> <dependency> <groupId>org.eclipse</groupId> 
+		<artifactId>org.eclipse.emf.common</artifactId> <version>2.5.0.v200906151043</version> 
+		</dependency> <dependency> <groupId>org.eclipse</groupId> <artifactId>org.eclipse.emf.edit</artifactId> 
+		<version>2.5.0.v200906151043</version> </dependency> <dependency> <groupId>org.eclipse</groupId> 
+		<artifactId>org.eclipse.emf.ecore.change</artifactId> <version>2.5.0.v200906151043</version> 
+		</dependency> </dependencies> <build> <plugins> <plugin> <groupId>org.apache.maven.plugins</groupId> 
+		<artifactId>maven-dependency-plugin</artifactId> <version>2.0-alpha-4</version> 
+		<inherited>false</inherited> <executions> <execution> <id>1-unpack-p2-agent-distribution</id> 
+		<phase>test</phase> <goals> <goal>unpack</goal> </goals> <configuration> 
+		<artifactItems> <artifactItem> <groupId>org.ant4eclipse</groupId> <artifactId>ant4eclipse</artifactId> 
+		<version>1.0.0.M4</version> <type>zip</type> <overWrite>true</overWrite> 
+		<outputDirectory>target/ant4eclipse</outputDirectory> </artifactItem> </artifactItems> 
+		</configuration> </execution> </executions> </plugin> <plugin> <groupId>org.apache.maven.plugins</groupId> 
+		<artifactId>maven-dependency-plugin</artifactId> <executions> <execution> 
+		<id>copy-dependencies</id> <phase>package</phase> <goals> <goal>copy-dependencies</goal> 
+		</goals> <configuration> <outputDirectory>${dependency.bundles.location}</outputDirectory> 
+		<overWriteReleases>false</overWriteReleases> <overWriteSnapshots>false</overWriteSnapshots> 
+		<overWriteIfNewer>true</overWriteIfNewer> </configuration> </execution> </executions> 
+		</plugin> <plugin> <artifactId>maven-clean-plugin</artifactId> <configuration> 
+		<failOnError>false</failOnError> </configuration> </plugin> <plugin> <groupId>org.apache.maven.plugins</groupId> 
+		<artifactId>maven-antrun-plugin</artifactId> <version>1.4</version> <executions> 
+		<execution> <id>axis2-jar</id> <phase>package</phase> <configuration> <tasks> 
+		<property name="eclipse.plugin.name" value="${artifactId}" /> <property name="target.dir" 
+		value="${project.build.directory}" /> <property name="eclipse.home" value="${ECLIPSE_HOME}" 
+		/> <property name="dependency.bundles" value="${dependency.bundles.location}"/> 
+		<ant antfile="${basedir}/build.xml" /> </tasks> </configuration> <goals> 
+		<goal>run</goal> </goals> </execution> </executions> <dependencies> <dependency> 
+		<groupId>org.ant4eclipse</groupId> <artifactId>org.ant4eclipse</artifactId> 
+		<version>1.0.0.M4</version> </dependency> <dependency> <groupId>org.apache.ant</groupId> 
+		<artifactId>ant-contrib</artifactId> <version>1.0b3</version> </dependency> 
+		<dependency> <groupId>org.eclipse.jdt</groupId> <artifactId>ecj</artifactId> 
+		<version>3.5.2</version> </dependency> <dependency> <groupId>org.eclipse.osgi</groupId> 
+		<artifactId>org.eclipse.osgi</artifactId> <version>3.5.2.R35x_v20100126</version> 
+		</dependency> </dependencies> </plugin> <plugin> <groupId>org.codehaus.mojo</groupId> 
+		<artifactId>build-helper-maven-plugin</artifactId> <executions> <execution> 
+		<id>axis2-jar-package</id> <phase>package</phase> <goals> <goal>attach-artifact</goal> 
+		</goals> <configuration> <artifacts> <artifact> <file>target/plugins/${artifactId}_${version}.jar</file> 
+		<type>jar</type> </artifact> </artifacts> </configuration> </execution> </executions> 
+		</plugin> </plugins> </build> <properties> <dependency.bundles.location>${project.build.directory}/dependencies</dependency.bundles.location> 
+		</properties -->
+</project>

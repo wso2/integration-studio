@@ -52,6 +52,7 @@ import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.jface.dialogs.ErrorDialog;
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
@@ -154,6 +155,7 @@ public class WSO2PluginProjectWizard extends AbstractWSO2ProjectCreationWizard {
 			}
 		}
 		if (WSO2PluginListSelectionPage.isUpdateFromGit) {
+			boolean isPluginsUptoDate = true;
 			String fileName = WSO2PluginListSelectionPage.tempCloneDir + File.separator;
 			List<String> pluginSampleExt =
 			                               addWizardElemsFromDownloadedPlugins(fileName +
@@ -161,6 +163,7 @@ public class WSO2PluginProjectWizard extends AbstractWSO2ProjectCreationWizard {
 			for (String pluginSampleId : pluginSampleExt) {
 				if (!availablePluginIds.containsKey(pluginSampleId)) {
 					WSO2PluginSampleExt newElem = generateWSO2PluginSampleExt(fileName, pluginSampleId);
+					isPluginsUptoDate = false;
 					if (newElem != null) {
 						elemList.addWSO2Plugin(generateWSO2PluginSampleExt(fileName, pluginSampleId));
 					} else {
@@ -168,6 +171,8 @@ public class WSO2PluginProjectWizard extends AbstractWSO2ProjectCreationWizard {
 					}
 				}
 
+			} if (isPluginsUptoDate){
+				MessageDialog.openInformation(this.getShell(), "Plugin Templates are up-to-date", "The plugin template list is up-to-date, no updates");
 			}
 		}
 		return elemList;
@@ -184,7 +189,15 @@ public class WSO2PluginProjectWizard extends AbstractWSO2ProjectCreationWizard {
 			wso2PluginSampleExt = gson.fromJson(br, WSO2PluginSampleExt.class);
 			wso2PluginSampleExt.setIsUpdatedFromGit("true");
 		} catch (JsonIOException | JsonSyntaxException | FileNotFoundException e) {
-			// TODO Auto-generated catch block
+			log.error("Could not load the plugin sample from the archive, error in the sample format " + e);
+			MultiStatus status =
+			                     MessageDialogUtils.createMultiStatus(e.getLocalizedMessage(), e,
+			                                                          WSO2PluginConstants.PACKAGE_ID);
+			// show error dialog
+			ErrorDialog.openError(this.getShell(),
+			                      WSO2PluginConstants.ERROR_DIALOG_TITLE,
+			                      "Could not load the plugin sample from the archive, error in the sample format ",
+			                      status);
 		}
 
 		return wso2PluginSampleExt;

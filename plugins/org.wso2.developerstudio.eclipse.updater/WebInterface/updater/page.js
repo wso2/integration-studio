@@ -158,7 +158,7 @@ var createUpdateItem = function(id, feature) {
 	$(item).append(img);
 	
 	var body = $.parseHTML(" <td style='max-width:700px;'></td>");
-	var heading = $.parseHTML("<h4></h4>");
+	var heading = $.parseHTML("<h5 style='font-weight: bold;color:#73AD21;'></h5>");
 	$(heading).text(feature.label);
 	
 	var version = $.parseHTML("&nbsp&nbsp<small></small>");
@@ -190,7 +190,7 @@ var createInstallItem = function(id, feature) {
 	$(item).append(img);
 	
 	var body = $.parseHTML(" <td style='max-width:700px;'></td>");
-	var heading = $.parseHTML("<h4></h4>");
+	var heading = $.parseHTML("<h5 style='font-weight: bold;color:#73AD21;'></h5>");
 	$(heading).text(feature.label);
 	
 	var version = $.parseHTML("&nbsp&nbsp<small></small>");

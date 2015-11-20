@@ -15,18 +15,29 @@
 <link href="style.css" rel="stylesheet">
 </head>
 <body
-	style="max-width: 800px; max-height: 700px; -moz-user-select: none; -webkit-user-select: none; -ms-user-select: none; user-select: none; -o-user-select: none;"
+	style="max-width: 800px; max-height: 807px; -moz-user-select: none; -webkit-user-select: none; -ms-user-select: none; user-select: none; -o-user-select: none;"
 	unselectable="on" onselectstart="return false;"
 	onmousedown="return false;">
 	<div class="window">
-		<div class="window-caption">
+		<div class="window-caption" style="background-color: #4E4B4B;">
 			<span class="window-caption-icon"><span
-				class="mif-folder-download"></span></span> <span
-				class="window-caption-title">Update Manager for Developer
+				class="mif-folder-download" style="color: #FFF;"></span></span> <span
+				class="window-caption-title" style="color: #FFF;">Update Manager for Developer
 				Studio</span> <span class="btn-min"></span> <span class="btn-max"></span> <span
 				class="btn-close" onclick="disposeWindowCallback()"></span>
 		</div>
 		<div class="window-content">
+			<table class="table" style="max-height:150px;">
+				<tr>
+					<td>
+						<h4>Developer Studio Updates Manager</h4>
+						<p>This wizard is for updating and installing Features provided by WSO2 Developer Studio.</p>
+					</td>
+					<td>
+						<div class='image-container rounded' style="max-height:100px;max-width:100px;"><div class='frame'><img src='' style=''></div></div>
+					</td>
+				</tr>
+			</table>
 			<div class="tabcontrol2" data-role="tabcontrol">
 				<ul class="tabs">
 					<li class="active"><a href="#updateTab">Updates</a></li>

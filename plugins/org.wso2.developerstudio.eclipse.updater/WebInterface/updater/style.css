@@ -2,11 +2,13 @@
 .update-icon
 {
     padding-left: 5px;
+    color:#000000;
 }
 
 .install-icon
 {
     padding-left: 5px;
+    color:#000000;
 }
 
 .selected
@@ -17,4 +19,5 @@
 
 .tabcontrol2 .tabs li.active a{
 	text-shadow: none;
+	border-top: 2px #ddd solid;
 }

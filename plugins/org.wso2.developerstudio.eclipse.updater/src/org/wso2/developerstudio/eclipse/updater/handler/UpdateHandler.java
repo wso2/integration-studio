@@ -18,6 +18,13 @@ package org.wso2.developerstudio.eclipse.updater.handler;
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
+import org.eclipse.core.runtime.FileLocator;
+import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Path;
+import org.eclipse.core.runtime.jobs.Job;
+import org.eclipse.swt.widgets.Display;
+import org.osgi.framework.FrameworkUtil;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.updater.UpdaterPlugin;
@@ -35,9 +42,13 @@ public class UpdateHandler extends AbstractHandler {
 			UpdateManager manager = new UpdateManager();
 			manager.checkForAvailableUpdates(null);
 			manager.checkForAvailableFeatures(null);
-			ProvisioningWindow provioningWindow = new ProvisioningWindow(manager);
+			// extract web interface file first.
+			FileLocator.toFileURL(FileLocator.find(
+					FrameworkUtil.getBundle(ProvisioningWindow.class),
+					new Path("WebInterface/updater"), null));
+			ProvisioningWindow provioningWindow = new ProvisioningWindow(
+					manager);
 			provioningWindow.open();
-			
 		} catch (Exception e) {
 			log.error("Error while opening update window.", e);
 		}

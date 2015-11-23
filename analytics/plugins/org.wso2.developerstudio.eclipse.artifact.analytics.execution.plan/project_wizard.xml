@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wizard>
+	<projectOptions title="Execution-plan Artifact Creation Options" 
+					description="Select how you would like to create your new Execution-plan artifact" 
+					error="Please select a method to create the Execution-plan  artifact">
+		<option id="new.execution_plan" default="true">Create New Execution-plan</option>
+		<option id="import.execution_plan">Import Execution-plan </option>
+	</projectOptions>
+	<projectOptionSettings>
+		<settings optionId="new.execution_plan" 
+				  title="Execution-plan Artifact" 
+				  description="Create a new Execution-plan Artifact" 
+				  error="Please give a name for the Execution-plan">
+				  
+			<data modelProperty="project.name" type="string" fieldController="org.wso2.developerstudio.eclipse.artifact.analytics.execution.plan.validators.ExecutionPlanFieldController">Execution-plan Name    </data>
+			<data modelProperty="selected.project" type="workspacefolder" fieldController="org.wso2.developerstudio.eclipse.artifact.analytics.execution.plan.validators.ExecutionPlanFieldController" controlData="filterClass=org.wso2.developerstudio.eclipse.artifact.analytics.execution.plan.validators.ExecutionPlanProjectFilter">Save Execution-plan in:</data>
+			<data modelProperty="create.analytics.project" type="link" fieldController="org.wso2.developerstudio.eclipse.artifact.analytics.execution.plan.validators.ExecutionPlanFieldController" controlData="align=right">&lt;a&gt;Create new Project...&lt;/a&gt;</data>
+		
+		</settings>
+		
+		<settings optionId="import.execution_plan" 
+				  title="Execution-plan Artifact" 
+				  description="Create a Execution-plan Artifact using a configuration file with Execution-plan defined" 
+				  error="Browse and select a Eventexecution_plan configuration file">
+			
+			<data modelProperty="import.file" type="file" filter="*.siddhiql" fieldController="org.wso2.developerstudio.eclipse.artifact.analytics.execution.plan.validators.ExecutionPlanFieldController">Execution-plan Configuration File</data>
+			<data modelProperty="selected.project" type="workspacefolder" fieldController="org.wso2.developerstudio.eclipse.artifact.analytics.execution.plan.validators.ExecutionPlanFieldController" controlData="filterClass=org.wso2.developerstudio.eclipse.artifact.analytics.execution.plan.validators.ExecutionPlanProjectFilter" >Save Execution-plan in: </data>
+			<data modelProperty="create.analytics.project" type="link" fieldController="org.wso2.developerstudio.eclipse.artifact.analytics.execution.plan.validators.ExecutionPlanFieldController" controlData="align=right" >&lt;a&gt;Create new Project...&lt;/a&gt;</data>
+			
+		</settings>
+	</projectOptionSettings>
+</wizard>

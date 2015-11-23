@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 
+
 package org.wso2.developerstudio.eclipse.artifact.dataservice.project.export;
 
 import org.apache.maven.model.Plugin;
@@ -34,7 +35,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DataServiceArtfactExportHandler extends ProjectArtifactHandler {
-	
+
+	private static final String ARTIFACT_XML = "artifact.xml";
 	private static final String DBS_FILE_EXTENSION = "dbs";
 	private static final String POM_FILE = "pom.xml";
 	private static final String GROUP_ID = "org.wso2.maven";
@@ -47,41 +49,91 @@ public class DataServiceArtfactExportHandler extends ProjectArtifactHandler {
 		List<IResource> exportResources = new ArrayList<IResource>();
 		clearTarget(project);
 		IFile pomFile = project.getFile(POM_FILE);
-
-		if (pomFile.exists()) {
-			MavenProject mavenProject = MavenUtils.getMavenProject(pomFile.getLocation().toFile());
-			List<Plugin> plugins = mavenProject.getBuild().getPlugins();
-			for (Plugin plugin : plugins) {
-				if (plugin.getArtifactId().equals(ARTIFACT_ID)
-						&& plugin.getGroupId().equals(GROUP_ID)) {
-					Xpp3Dom[] artifactNodes = ((Xpp3Dom) plugin.getConfiguration())
-							.getChildren(ARTIFACT_TAG);
-					for (Xpp3Dom artifactNode : artifactNodes) {
+		IFile artifactXMLFile = project.getFile(ARTIFACT_XML);
+		if (artifactXMLFile.exists()) {
+			if (pomFile.exists()) {
+				MavenProject mavenProject = MavenUtils.getMavenProject(pomFile
+						.getLocation().toFile());
+				List<Plugin> plugins = mavenProject.getBuild().getPlugins();
+				for (Plugin plugin : plugins) {
+					if (plugin.getArtifactId().equals(ARTIFACT_ID)
+							&& plugin.getGroupId().equals(GROUP_ID)) {
+						Xpp3Dom[] artifactNodes = ((Xpp3Dom) plugin
+								.getConfiguration()).getChildren(ARTIFACT_TAG);
+						for (Xpp3Dom artifactNode : artifactNodes) {
+							String dbsFile = artifactNode.getValue();
+							String[] pathArray = dbsFile.split("/");
+							IFile dbsFileRef = project
+									.getFolder(
+											DataServiceArtifactConstants.DS_PROJECT_DATASERVICE_FOLDER)
+									.getFile(pathArray[pathArray.length - 1]);
+							if (dbsFileRef.exists()) {
+								exportResources.add((IResource) dbsFileRef);
+							}
+						}
+					}
+				}
+			} else {
+				File[] dbsFiles = FileUtils.getAllMatchingFiles(project
+						.getLocation().toString(), null, DBS_FILE_EXTENSION,
+						new ArrayList<File>());
+				for (File dbsFile : dbsFiles) {
+					String filePath = dbsFile.toString();
+					// excluded any files inside target dir
+					if (!filePath.substring(projectPath.length()).startsWith(
+							File.separator + TARGET + File.separator)) {
+						IFile dbsFileRef = ResourcesPlugin
+								.getWorkspace()
+								.getRoot()
+								.getFileForLocation(
+										Path.fromOSString(dbsFile
+												.getAbsolutePath()));
+						exportResources.add((IResource) dbsFileRef);
+					}
+				}
+			}
+		} else {
+			if (pomFile.exists()) {
+				MavenProject mavenProject = MavenUtils.getMavenProject(pomFile
+						.getLocation().toFile());
+				List<Plugin> plugins = mavenProject.getBuild().getPlugins();
+				for (Plugin plugin : plugins) {
+					if (plugin.getArtifactId().equals(
+							"maven-dataservice-plugin")
+							&& plugin.getGroupId().equals("org.wso2.maven")) {
+						Xpp3Dom artifactNode = ((Xpp3Dom) plugin
+								.getConfiguration()).getChild("artifact");
 						String dbsFile = artifactNode.getValue();
 						String[] pathArray = dbsFile.split("/");
-						IFile dbsFileRef = project.getFolder(
-								DataServiceArtifactConstants.DS_PROJECT_DATASERVICE_FOLDER)
+						IFile dbsFileRef = project.getFolder("src")
+								.getFolder("main").getFolder("dataservice")
 								.getFile(pathArray[pathArray.length - 1]);
 						if (dbsFileRef.exists()) {
 							exportResources.add((IResource) dbsFileRef);
 						}
 					}
 				}
-			}
-		} else {
-			File[] dbsFiles = FileUtils.getAllMatchingFiles(project.getLocation().toString(), null,
-					DBS_FILE_EXTENSION, new ArrayList<File>());
-			for (File dbsFile : dbsFiles) {
-				String filePath = dbsFile.toString();
-				// excluded any files inside target dir
-				if (!filePath.substring(projectPath.length()).startsWith(
-						File.separator + TARGET + File.separator)) {
-					IFile dbsFileRef = ResourcesPlugin.getWorkspace().getRoot()
-							.getFileForLocation(Path.fromOSString(dbsFile.getAbsolutePath()));
-					exportResources.add((IResource) dbsFileRef);
+			} else {
+				File[] dbsFiles = FileUtils.getAllMatchingFiles(project
+						.getLocation().toString(), null, DBS_FILE_EXTENSION,
+						new ArrayList<File>());
+				for (File dbsFile : dbsFiles) {
+					String filePath = dbsFile.toString();
+					// excluded any files inside target dir
+					if (!filePath.substring(projectPath.length()).startsWith(
+							File.separator + "target" + File.separator)) {
+						IFile dbsFileRef = ResourcesPlugin
+								.getWorkspace()
+								.getRoot()
+								.getFileForLocation(
+										Path.fromOSString(dbsFile
+												.getAbsolutePath()));
+						exportResources.add((IResource) dbsFileRef);
+					}
 				}
 			}
 		}
 		return exportResources;
 	}
 }
+

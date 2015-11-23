@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+<!--Axis2 Service Skeleton-->
+	   <extension
+         point="org.eclipse.ui.newWizards">
+       <wizard
+            category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.eclipse.service.hosting/org.wso2.developerstudio.eclipse.service.hosting.project.types"
+            icon="icons/axis2.png"
+            project="true" 
+            id="org.wso2.developerstudio.eclipse.artifact.generation.axis2serviceclient"
+            name="Generate Axis2 Web Service Skeleton">
+            <description>Generate Axis2 Web Service Skeleton</description>
+                <class class="org.wso2.developerstudio.eclipse.artifact.axis2serviceclient.ui.wizard.Axis2ClientGenerationWizard">
+      <parameter name="type" value="1" />
+    </class>
+      </wizard>
+   </extension>
+   	   <extension
+		point="org.wso2.developerstudio.eclipse.platform.core.intro.ui.dashboard">
+	<wizardLink category="dashboard.category.AS"
+			id="dashboard.wizardLink.AS.axis2.clientProject"
+			wizard="org.wso2.developerstudio.eclipse.artifact.generation.axis2serviceclient"
+			priority="1">
+	</wizardLink>
+ </extension>
+   
+   <!--extension point="org.eclipse.ui.newWizards">
+		<category name="WSO2" id="org.wso2.developerstudio.eclipse.capp.project">
+		</category>
+		<category name="ApplicationServer" id="org.wso2.developerstudio.eclipse.service.hosting" 
+			parentCategory="org.wso2.developerstudio.eclipse.capp.project">
+		</category>
+   </extension-->
+   
+   <!--Axis2 Client-->
+   <extension
+         point="org.eclipse.ui.newWizards">
+       <wizard
+            category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.eclipse.service.hosting/org.wso2.developerstudio.eclipse.service.hosting.project.types"
+            icon="icons/axis2.png"
+            project="true"
+            id="org.wso2.developerstudio.eclipse.artifact.generation.axis2service"
+            name="Generate Axis2 Web Service Client">
+            <description>Generate Axis2 Web Service Client</description>
+                <class class="org.wso2.developerstudio.eclipse.artifact.axis2serviceclient.ui.wizard.Axis2ClientGenerationWizard">
+                      <parameter name="type" value="0" />
+    </class>
+      </wizard>
+   </extension>
+   <!--extension point="org.eclipse.ui.newWizards">
+		<category name="WSO2" id="org.wso2.developerstudio.eclipse.capp.project">
+		</category>
+		<category name="Application Server" id="org.wso2.developerstudio.eclipse.service.hosting" 
+			parentCategory="org.wso2.developerstudio.eclipse.capp.project">
+		</category>
+   </extension-->
+</plugin>

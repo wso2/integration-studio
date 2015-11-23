@@ -38,7 +38,6 @@
     <modules>
         <module>APIM</module>
         <module>server</module>    
-        <module>core</module> 
         <module>usermgt</module>                    
         <module>registry</module>
         <module>app-server</module>
@@ -48,7 +47,6 @@
         <module>data-services</module>
         <module>carbon</module>
         <module>connectors</module>
-	<module>capp</module>         
 	<module>distribution</module>
 	<module>library</module>
 	<module>gadgets</module>

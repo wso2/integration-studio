@@ -13,7 +13,6 @@
     <name>WSO2 Eclipse Connector Tools Plugins</name>
     <modules>
         <module>org.wso2.developerstudio.eclipse.bpel.connector</module>
-        <module>org.wso2.developerstudio.eclipse.registry.connector</module>
     </modules>
     <!--repositories>
     	<repository>

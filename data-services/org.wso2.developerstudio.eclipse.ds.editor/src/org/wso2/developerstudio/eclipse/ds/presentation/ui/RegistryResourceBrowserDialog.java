@@ -41,10 +41,10 @@ import org.wso2.developerstudio.eclipse.capp.core.model.RegistryConnection;
 import org.wso2.developerstudio.eclipse.ds.RegistryKeyProperty;
 import org.wso2.developerstudio.eclipse.general.project.dialogs.DeveloperStudioElementProviderDialog;
 import org.wso2.developerstudio.eclipse.general.project.dialogs.NewResourceTemplateDialog;
-import org.wso2.developerstudio.eclipse.greg.core.interfaces.IRegistryConnection;
-import org.wso2.developerstudio.eclipse.greg.core.interfaces.IRegistryData;
-import org.wso2.developerstudio.eclipse.greg.core.interfaces.IRegistryFile;
-import org.wso2.developerstudio.eclipse.greg.core.interfaces.IRegistryHandler;
+import org.wso2.developerstudio.eclipse.registry.core.interfaces.IRegistryConnection;
+import org.wso2.developerstudio.eclipse.registry.core.interfaces.IRegistryData;
+import org.wso2.developerstudio.eclipse.registry.core.interfaces.IRegistryFile;
+import org.wso2.developerstudio.eclipse.registry.core.interfaces.IRegistryHandler;
 
 /**
  * A SWT based editor dialog to be used for editing registry key properties.

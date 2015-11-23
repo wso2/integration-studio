@@ -59,4 +59,20 @@
             sampleProjectName="EmployeeDataService">
       </sample>
    </extension>
+    <extension point="org.wso2.developerstudio.eclipse.platform.core.intro.ui.dashboard">
+     <category id="odashboard.category.ds" showTitle="true"
+                  title="Data Services Server"
+                  priority="4">
+        </category>
+         <!-- data service -->
+        <wizardLink category="odashboard.category.ds" id="dashboard.wizardLink.ds.project"
+                    wizard="org.wso2.developerstudio.eclipse.artifact.newdsproject">
+        </wizardLink>
+        <wizardLink category="odashboard.category.ds" id="dashboard.wizardLink.ds.project"
+                    wizard="org.wso2.developerstudio.eclipse.artifact.newdsartifact">
+        </wizardLink>
+        <wizardLink category="odashboard.category.ds" id="dashboard.wizardLink.ds.validiator"
+                    wizard="org.wso2.developerstudio.eclipse.artifact.newvalidiatorartifact">
+        </wizardLink>
+    </extension>
 </plugin>

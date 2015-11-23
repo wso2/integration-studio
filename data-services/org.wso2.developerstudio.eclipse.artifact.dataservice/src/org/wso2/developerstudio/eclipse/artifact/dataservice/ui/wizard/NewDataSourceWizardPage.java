@@ -41,11 +41,11 @@ import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
-import org.wso2.developerstudio.eclipse.greg.base.ui.dialog.RegistryTreeBrowserDialog;
+import org.wso2.developerstudio.eclipse.registry.base.ui.dialog.RegistryTreeBrowserDialog;
 import org.wso2.developerstudio.eclipse.artifact.dataservice.model.DataServiceModel;
-import org.wso2.developerstudio.eclipse.greg.base.model.RegistryResourceNode;
-import org.wso2.developerstudio.eclipse.greg.base.persistent.RegistryURLInfo;
-import org.wso2.developerstudio.eclipse.greg.base.persistent.RegistryUrlStore;
+import org.wso2.developerstudio.eclipse.registry.base.model.RegistryResourceNode;
+import org.wso2.developerstudio.eclipse.registry.base.persistent.RegistryURLInfo;
+import org.wso2.developerstudio.eclipse.registry.base.persistent.RegistryUrlStore;
 import org.wso2.developerstudio.eclipse.platform.core.utils.ResourceManager;
 
 

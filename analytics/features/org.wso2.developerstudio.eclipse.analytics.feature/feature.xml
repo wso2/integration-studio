@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.wso2.developerstudio.eclipse.analytics.feature"
+      label="Analytics Feature"
+      version="4.0.0.qualifier"
+      provider-name="%providerName">
+
+   <description url="http://wso2.com">
+      This feature will install plugins related WSO2 Carbon Analytics Support.
+   </description>
+
+   <copyright url="%copyrightURL">
+      %copyright
+   </copyright>
+
+   <license url="%licenseURL">
+      %license
+   </license>
+   <plugin
+         id="org.wso2.developerstudio.eclipse.artifact.analytics"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.wso2.developerstudio.eclipse.artifact.analytics.execution.plan"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.wso2.developerstudio.eclipse.artifact.analytics.publisher"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.wso2.developerstudio.eclipse.artifact.analytics.receiver"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.wso2.developerstudio.eclipse.artifact.analytics.stream"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>

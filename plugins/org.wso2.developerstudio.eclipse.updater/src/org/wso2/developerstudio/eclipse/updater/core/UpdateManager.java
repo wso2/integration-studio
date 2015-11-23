@@ -152,7 +152,7 @@ public class UpdateManager {
 			monitor = new NullProgressMonitor();
 		}
 		SubMonitor progress = SubMonitor.convert(monitor,
-				"Checking for DevStudio features.", 5);
+				"Checking for DevStudio features.", 1);
 
 		String tmpRoot = System.getProperty("java.io.tmpdir") + File.separator
 				+ "DevSUpdaterTmp";
@@ -163,7 +163,7 @@ public class UpdateManager {
 		Map<String, DevStudioFeature> featureMetadataMap = new HashMap<>();
 
 		for (IInstallableUnit iu : wso2features) {
-			SubMonitor downloadProgress = SubMonitor.convert(monitor,
+			SubMonitor downloadProgress = SubMonitor.convert(progress,
 					"Downloading feature jars.", wso2features.size() * 2);
 			Collection<IArtifactKey> artifacts = iu.getArtifacts();
 			// ideally there should be only one artifact in feature.jar iu
@@ -191,6 +191,7 @@ public class UpdateManager {
 								fop, downloadProgress.newChild(1));
 						cachedFeatureDir.mkdirs();
 						extractJar(jarFile, cachedFeatureDir);
+						downloadProgress.worked(1);
 					} catch (IOException e) {
 						throw new IOException(
 								"Error while downloading feature jar.", e);
@@ -292,7 +293,6 @@ public class UpdateManager {
 			throw new OperationCanceledException();
 		}
 
-		progress.subTask("Preparing update operation.");
 		URI[] repos = new URI[] { getDevStudioUpdateSite() };
 		updateOperation = new UpdateOperation(session, installedWSO2Features);
 		updateOperation.getProvisioningContext().setArtifactRepositories(
@@ -335,7 +335,7 @@ public class UpdateManager {
 			monitor = new NullProgressMonitor();
 		}
 		SubMonitor progress = SubMonitor.convert(monitor,
-				"Checking for DevStudio updates.", 2);
+				"Checking for DevStudio updates.", 5);
 		
 		
         // get all available IUs in update repo
@@ -558,6 +558,7 @@ public class UpdateManager {
 	public void installSelectedUpdates(IProgressMonitor monitor) {
 		try {
 			URI[] repos = new URI[] { getDevStudioUpdateSite() };
+			session = new ProvisioningSession(p2Agent);
 			updateOperation = new UpdateOperation(session);
 			updateOperation.getProvisioningContext().setArtifactRepositories(
 					repos);
@@ -641,6 +642,7 @@ public class UpdateManager {
 				"Installing WSO2 features.", 2);
 
 		URI[] repos = new URI[] { getDevStudioReleaseSite() };
+		session = new ProvisioningSession(p2Agent);
 		installOperation = new InstallOperation(session, selectedFeatures);
 		installOperation.getProvisioningContext()
 				.setArtifactRepositories(repos);

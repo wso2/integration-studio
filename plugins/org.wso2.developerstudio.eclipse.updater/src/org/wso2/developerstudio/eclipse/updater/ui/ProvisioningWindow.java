@@ -35,7 +35,7 @@ public class ProvisioningWindow extends WebWindow {
 		super(FileLocator.toFileURL(FileLocator.find(FrameworkUtil
 				.getBundle(ProvisioningWindow.class), new Path(
 				"WebInterface/updater/index.html"), null)));
-		this.setSize(800, 807);
+		this.setSize(710, 812);
 		updateManager = manager;
 		new GetAvailableUpdatesFunction(this);
 		new SetSelectedUpdatesFunction(this);

@@ -154,10 +154,10 @@ var createUpdateItem = function(id, feature) {
 	$(item).data("feature", feature);
 	
 	var img = $.parseHTML("<td><div class='image-container rounded'><div class='frame'><img src='"
-					+ feature.iconURL + "' style='max-width:100px;max-height:80px;'></div></div></td>");
+					+ feature.iconURL + "' style='min-width:64px;min-height:64px;'></div></div></td>");
 	$(item).append(img);
 	
-	var body = $.parseHTML(" <td style='max-width:700px;'></td>");
+	var body = $.parseHTML(" <td style='max-width:680px;margin-top:0;'></td>");
 	var heading = $.parseHTML("<h5 style='font-weight: bold;color:#73AD21;'></h5>");
 	$(heading).text(feature.label);
 	
@@ -185,11 +185,11 @@ var createInstallItem = function(id, feature) {
 	$(item).attr("id", id);
 	$(item).data("feature", feature);
 	
-	var img = $.parseHTML("<td><div class='image-container rounded'><div class='frame'><img src='"
-					+ feature.iconURL + "' style='max-width:100px;max-height:80px;'></div></div></td>");
+	var img = $.parseHTML("<td ><div class='image-container rounded'><div class='frame'><img src='"
+					+ feature.iconURL + "' style='min-width:64px;min-height:64px;'></div></div></td>");
 	$(item).append(img);
 	
-	var body = $.parseHTML(" <td style='max-width:700px;'></td>");
+	var body = $.parseHTML(" <td style='max-width:680px;margin-top:0;'></td>");
 	var heading = $.parseHTML("<h5 style='font-weight: bold;color:#73AD21;'></h5>");
 	$(heading).text(feature.label);
 	

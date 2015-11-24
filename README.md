@@ -16,7 +16,7 @@ Developer Studio Kernel will provide comprehensive support for developing tools 
 
 ##How to Contribute
 * Please report issues at [WSO2 JIRA](https://wso2.org/jira/browse/TOOLS)
-* Send your pull requests to [developer-studio-kernel repository](https://github.com/wso2/developer-studio/tree/developer-studio-kernel-4.0.0)
+* Send your pull requests to [developer-studio-kernel repository](https://github.com/wso2/developer-studio/tree/master)
 
 ##Contact us
 WSO2 developers can be contacted via the mailing lists:

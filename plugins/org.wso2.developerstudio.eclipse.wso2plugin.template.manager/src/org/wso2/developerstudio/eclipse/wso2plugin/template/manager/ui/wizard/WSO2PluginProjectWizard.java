@@ -291,11 +291,11 @@ public class WSO2PluginProjectWizard extends AbstractWSO2ProjectCreationWizard {
 			ArchiveManipulator archiveManipulator = new ArchiveManipulator();
 			archiveManipulator.extract(resourceFile, tempDir);
 			File[] listFiles = tempDir.listFiles();
-			String[] extensionArray = { "java" };
+			String[] extensionArray = { "java" , "MF"};
 			Collection<File> listofFiles = org.apache.commons.io.FileUtils.listFiles(tempDir, extensionArray, true);
 			File[] fileArray = listofFiles.toArray(new File[listofFiles.size()]);
 			for (File javaFile : fileArray) {
-				if (javaFile.getName().contains("Activator.java")) {
+				if (javaFile.getName().contains("Activator.java") || javaFile.getName().contains("MANIFEST.MF")) {
 					// read the file and change the plugin ID
 					String content = IOUtils.toString(new FileInputStream(javaFile.getPath()), "UTF-8");
 					content = content.replaceAll("plugin_id_to_be_renamed", newProject.getName());

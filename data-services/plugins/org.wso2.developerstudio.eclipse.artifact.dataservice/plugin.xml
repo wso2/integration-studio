@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.newWizards">
+         <wizard name="Data Service" category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.eclipse.service.hosting/org.wso2.developerstudio.eclipse.service.hosting.project.types"
+			class="org.wso2.developerstudio.eclipse.artifact.dataservice.ui.wizard.DataServiceCreationWizard"
+			wizardManifest="project_wizard.xml"
+			id="org.wso2.developerstudio.eclipse.artifact.newdsartifact"
+			project="true"
+			icon="icons/ds-16x16.png">
+			<description>Data Service</description>
+		</wizard>
+   </extension>
+   <extension point="org.eclipse.core.resources.natures"
+		id="org.wso2.developerstudio.eclipse.ds.project.nature" name="Data Service Project Nature">
+		<runtime>
+			<run
+				class="org.wso2.developerstudio.eclipse.artifact.dataservice.project.nature.DataServiceNature">
+			</run>
+		</runtime>
+	</extension>
+	<extension point="org.eclipse.ui.ide.projectNatureImages">
+		<image id="org.wso2.developerstudio.eclipse.ds.project.natureImage"
+			natureId="org.wso2.developerstudio.eclipse.ds.project.nature" icon="icons/ds-12x12.png">
+		</image>
+	</extension>		
+    <extension point="org.eclipse.ui.navigator.navigatorContent">    
+            <commonWizard type="new"
+                menuGroupId="1org.wso2.developerstudio.eclipse.artifact.webservice"
+                wizardId="org.wso2.developerstudio.eclipse.artifact.newdsartifact">
+                <enablement>
+                    <or>
+                        <adapt type="org.eclipse.core.resources.IProject">
+                            <test property="org.eclipse.core.resources.projectNature"
+                                value="org.wso2.developerstudio.eclipse.ds.project.nature" />
+                                </adapt>
+                       <adapt type="org.eclipse.jdt.core.IPackageFragment">
+							<test property="org.wso2.developerstudio.projectNature"
+								value="org.wso2.developerstudio.eclipse.ds.project.nature" />
+						</adapt>
+                    </or>
+                </enablement>
+            </commonWizard>
+    </extension>
+  <extension
+       point="org.wso2.developerstudio.eclipse.project.export.handler">
+    <handler
+          class="org.wso2.developerstudio.eclipse.artifact.dataservice.project.export.DataServiceArtfactExportHandler"
+          id="org.wso2.developerstudio.eclipse.artifact.dataservice.project.export.handler"
+          type="service/dataservice">
+    </handler>
+ </extension>
+    <extension point="org.wso2.developerstudio.eclipse.samples">
+      <sample
+            class="org.wso2.developerstudio.eclipse.artifact.dataservice.sample.DataserviceSampleContributor"
+            id="org.wso2.developerstudio.eclipse.capp.artifact.dataservice.sample"
+            isCustomCreateSample="false"
+            sampleProjectName="EmployeeDataService">
+      </sample>
+   </extension>
+    <extension point="org.wso2.developerstudio.eclipse.platform.core.intro.ui.dashboard">
+     <category id="odashboard.category.ds" showTitle="true"
+                  title="Data Services Server"
+                  priority="4">
+        </category>
+         <!-- data service -->
+        <wizardLink category="odashboard.category.ds" id="dashboard.wizardLink.ds.project"
+                    wizard="org.wso2.developerstudio.eclipse.artifact.newdsproject">
+        </wizardLink>
+        <wizardLink category="odashboard.category.ds" id="dashboard.wizardLink.ds.project"
+                    wizard="org.wso2.developerstudio.eclipse.artifact.newdsartifact">
+        </wizardLink>
+        <wizardLink category="odashboard.category.ds" id="dashboard.wizardLink.ds.validiator"
+                    wizard="org.wso2.developerstudio.eclipse.artifact.newvalidiatorartifact">
+        </wizardLink>
+    </extension>
+</plugin>

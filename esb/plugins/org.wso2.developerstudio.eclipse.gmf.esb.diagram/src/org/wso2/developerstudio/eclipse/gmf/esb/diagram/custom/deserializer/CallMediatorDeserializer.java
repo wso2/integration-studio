@@ -74,7 +74,7 @@ public class CallMediatorDeserializer extends AbstractEsbNodeDeserializer<Abstra
 	private CallMediatorEndpointType getEndpointType(Endpoint endPoint) {
 		CallMediatorEndpointType endPointType = CallMediatorEndpointType.INLINE;
 		if (endPoint == null) {
-			endPointType = CallMediatorEndpointType.NONE;
+			//endPointType = CallMediatorEndpointType.NONE; //- Fixing TOOLS-3286
 		} else if (endPoint instanceof IndirectEndpoint) {
 			endPointType = CallMediatorEndpointType.REGISRTYKEY;
 		} else if (endPoint instanceof ResolvingEndpoint) {

@@ -180,6 +180,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
 	private double zoom = 1.0;
 	private String fileName;
 	private String validationMessage;
+	boolean initialPageLoad;
 
 	/**
      * Creates a multi-page editor
@@ -212,25 +213,37 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
 					ArtifactType artifactType = deserializer.getArtifactType(source);
 	            	editorInput = new EsbEditorInput(null,file,artifactType.getLiteral());
             		
-	            	Display.getDefault().asyncExec(new Runnable() {	            						
-            						@Override
-            						public void run() {
-            							try {	
-            								DeserializeStatus deserializeStatus = deserializer.isValidSynapseConfig(source);
-            								if (deserializeStatus.isValid()) {
-            									deserializer.updateDesign(source, graphicalEditor);
-            									doSave(new NullProgressMonitor());
-            								} else {
-            									setActivePage(SOURCE_VIEW_PAGE_INDEX);
-            									sourceEditor.getDocument().set(source);
-            									printHandleDesignViewActivatedEventErrorMessageSimple(deserializeStatus.getExecption(),deserializeStatus);
-            								}
-            								
-            							} catch (Exception e) {
-            								log.error("Error while generating diagram from source", e);
-            							}
-            						}
-            					});
+					Display.getDefault().asyncExec(new Runnable() {
+						@Override
+						public void run() {
+							try {
+								DeserializeStatus deserializeStatus = deserializer
+										.isValidSynapseConfig(source);
+								if (deserializeStatus.isValid()) {
+									deserializer.updateDesign(source,
+											graphicalEditor);
+									Display.getDefault().asyncExec(
+											new Runnable() {
+												@Override
+												public void run() {
+													doSave(new NullProgressMonitor());
+												}
+											});
+								} else {
+									setActivePage(SOURCE_VIEW_PAGE_INDEX);
+									sourceEditor.getDocument().set(source);
+									printHandleDesignViewActivatedEventErrorMessageSimple(
+											deserializeStatus.getExecption(),
+											deserializeStatus);
+								}
+
+							} catch (Exception e) {
+								log.error(
+										"Error while generating diagram from source",
+										e);
+							}
+						}
+					});
 	            	inputStream.close();
 				} catch (CoreException e1) {
 					log.error("Error while generating diagram from source", e1);
@@ -487,6 +500,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
      */
     protected void createPages() {
 
+    initialPageLoad = true;
 	 createPage0();
      EsbDiagram diagram = (EsbDiagram) graphicalEditor.getDiagram().getElement();
 		EsbServer server = diagram.getServer();	
@@ -548,7 +562,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
 					@Override
 					public void run() {
 						EditorUtils.setLockmode(graphicalEditor, true);
-						final boolean dirty = isDirty(); // save previous status
+						//final boolean dirty = isDirty(); // save previous status
 						/*
 						 * ElementDuplicator endPointDuplicator = new
 						 * ElementDuplicator(file.getProject(),getGraphicalEditor());
@@ -560,11 +574,18 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
 						 * only one node. This should be replaced with the better approach
 						 */
 						//AbstractEsbNodeDeserializer.relocateStartNodes();
-
+						/* commented because above line "AbstractEsbNodeDeserializer.relocateStartNodes()" is commented
 						if (!dirty && isDirty()) {
 							// remove any dirty status introduced by ElementDuplicator or relocateStartNodes();
 							getEditor(0).doSave(new NullProgressMonitor());
 							firePropertyChange(PROP_DIRTY);
+						}
+						*/
+						//save on initial page load, but not in other cases
+						if (initialPageLoad && isDirty()) {
+							getEditor(0).doSave(new NullProgressMonitor());
+							firePropertyChange(PROP_DIRTY);
+							initialPageLoad = false;
 						}
 
 						EditorUtils.setLockmode(graphicalEditor, false);

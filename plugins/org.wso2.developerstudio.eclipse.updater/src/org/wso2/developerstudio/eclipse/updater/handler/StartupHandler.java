@@ -16,10 +16,8 @@
 package org.wso2.developerstudio.eclipse.updater.handler;
 
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
-import org.eclipse.core.commands.AbstractHandler;
-import org.eclipse.core.commands.ExecutionEvent;
-import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
@@ -28,41 +26,79 @@ import org.eclipse.core.runtime.jobs.IJobChangeEvent;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.core.runtime.jobs.JobChangeAdapter;
 import org.eclipse.core.runtime.preferences.ConfigurationScope;
+import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.ui.IStartup;
 import org.osgi.service.prefs.Preferences;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
+import org.wso2.developerstudio.eclipse.platform.ui.preferences.UpdateCheckerPreferencePage;
 import org.wso2.developerstudio.eclipse.updater.UpdaterPlugin;
 import org.wso2.developerstudio.eclipse.updater.core.UpdateManager;
+import org.wso2.developerstudio.eclipse.updater.handler.UpdateHandler.UpdateJobCompletedHandler;
 import org.wso2.developerstudio.eclipse.updater.ui.ProvisioningWindow;
 
-public class UpdateHandler extends AbstractHandler {
-
+public class StartupHandler implements IStartup {
+	
 	protected static IDeveloperStudioLog log = Logger
 			.getLog(UpdaterPlugin.PLUGIN_ID);
-			
 	protected UpdateManager updateManager = new UpdateManager();
 
 	@Override
-	public Object execute(ExecutionEvent arg0) throws ExecutionException {	
-		Job updateJob = new Job("Updater checker") {
-			@Override
-			protected IStatus run(IProgressMonitor monitor) {
-				try {
-					SubMonitor progress = SubMonitor.convert(monitor,
-							"Searching for updates.", 2);
-					updateManager.checkForAvailableUpdates(progress.newChild(1));
-					updateManager.checkForAvailableFeatures(progress.newChild(1));
-				} catch (Exception e) {
-					log.error("Error while checking updates.", e);
+	public void earlyStartup() {
 
-				}
-				return Status.OK_STATUS;
+		IPreferenceStore prefPage = org.wso2.developerstudio.eclipse.platform.ui.Activator
+				.getDefault().getPreferenceStore();
+		boolean automaticUpdatesEnabled = prefPage
+				.getBoolean(UpdateCheckerPreferencePage.ENABLE_AUTOMATIC_UPDATES);
+		if (!automaticUpdatesEnabled) {
+			return;
+		}
+		String updateInterval = prefPage
+				.getString(UpdateCheckerPreferencePage.UPDATE_INTAVAL);
+
+		Preferences preferences = ConfigurationScope.INSTANCE
+				.getNode("org.wso2.developerstudio.eclipse.updater.handler");
+		Date today = new Date();
+		long lastPromptTime = preferences.getLong("lastPromptForUpdates",
+				today.getTime());
+
+		boolean checkUpdates = true;
+		if (lastPromptTime != today.getTime()) {
+			long dateDiff = getDateDiff(lastPromptTime, today.getTime(),
+					TimeUnit.DAYS);
+			if ((updateInterval.equals("Monthly") && dateDiff <= 30)
+					|| (updateInterval.equals("Weekly") && dateDiff <= 7)
+					|| (updateInterval.equals("Daily") && dateDiff <= 1)) {
+				checkUpdates = false;
 			}
-		};
-		updateJob.schedule();
-		updateJob.addJobChangeListener(new UpdateJobCompletedHandler());
-		return null;
+		}
+		if(checkUpdates){
+			
+			Job updateJob = new Job("Updater checker") {
+				@Override
+				protected IStatus run(IProgressMonitor monitor) {
+					try {
+						SubMonitor progress = SubMonitor.convert(monitor,
+								"Searching for updates.", 2);
+						updateManager.checkForAvailableUpdates(progress.newChild(1));
+						updateManager.checkForAvailableFeatures(progress.newChild(1));
+					} catch (Exception e) {
+						log.error("Error while checking updates.", e);
+
+					}
+					return Status.OK_STATUS;
+				}
+			};
+			updateJob.schedule();
+			updateJob.addJobChangeListener(new UpdateJobCompletedHandler());			
+		}
+
+	}
+
+	public static long getDateDiff(long date1, long date2, TimeUnit timeUnit) {
+		long diffInMillies = date2 - date1;
+		return timeUnit.convert(diffInMillies, TimeUnit.MILLISECONDS);
 	}
 	
 	class UpdateJobCompletedHandler extends JobChangeAdapter {
@@ -73,8 +109,12 @@ public class UpdateHandler extends AbstractHandler {
 				public void run() {
 					ProvisioningWindow provioningWindow;
 					try {
+						if(updateManager.getPossibleUpdates().length == 0){
+							log.info("No Updates are available.");
+							return;
+						}
 						provioningWindow = new ProvisioningWindow(updateManager);
-						// Set last check for Updates Timestamp
+						// Set last propmt for Updates Timestamp
 						Preferences preferences = ConfigurationScope.INSTANCE
 								.getNode("org.wso2.developerstudio.eclipse.updater.handler");
 						preferences.putLong("lastPromptForUpdates",

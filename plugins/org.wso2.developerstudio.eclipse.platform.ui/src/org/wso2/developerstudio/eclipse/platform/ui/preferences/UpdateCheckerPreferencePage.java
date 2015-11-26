@@ -14,6 +14,7 @@
  */
 package org.wso2.developerstudio.eclipse.platform.ui.preferences;
 
+import org.eclipse.jface.preference.BooleanFieldEditor;
 import org.eclipse.jface.preference.ComboFieldEditor;
 import org.eclipse.jface.preference.FieldEditorPreferencePage;
 import org.eclipse.jface.preference.IPreferenceStore;
@@ -26,6 +27,7 @@ public class UpdateCheckerPreferencePage extends FieldEditorPreferencePage
 implements IWorkbenchPreferencePage {
 	
 	public static final String UPDATE_INTAVAL = "UPDATE_INTAVAL";
+	public static final String ENABLE_AUTOMATIC_UPDATES = "ENABLE_AUTOMATIC_UPDATES";
 	public static final String RELESE_SITE_URL = "RELESE_SITE_URL";
 	public static final String UPDATE_SITE_URL = "UPDATE_SITE_URL";
 	public static final String PLUGIN_TEMPLATE_URL = "PLUGIN_TEMPLATE_URL";
@@ -43,9 +45,10 @@ implements IWorkbenchPreferencePage {
 	@Override
 	protected void createFieldEditors() {
 		addField(new StringFieldEditor(UPDATE_SITE_URL, "Update site:", getFieldEditorParent()));
-		addField(new StringFieldEditor(RELESE_SITE_URL, "Relase site:", getFieldEditorParent()));		
-		String[][] types = { { "never", "never" },{ "Daily", "Daily" }, { "Weekly", "Weekly" }};
-		ComboFieldEditor editor = new ComboFieldEditor(UPDATE_INTAVAL, "Check update", types,
+		addField(new StringFieldEditor(RELESE_SITE_URL, "Relase site:", getFieldEditorParent()));
+		addField(new BooleanFieldEditor(ENABLE_AUTOMATIC_UPDATES, "Check for updates Automatically", getFieldEditorParent()));
+		String[][] types = {{ "Daily", "Daily" }, { "Weekly", "Weekly" }, { "Monthly", "Monthly" }};
+		ComboFieldEditor editor = new ComboFieldEditor(UPDATE_INTAVAL, "Check for updates ", types,
 				getFieldEditorParent());
 		addField(editor);	
 		addField(new StringFieldEditor(PLUGIN_TEMPLATE_URL, "Plug-in template location:", getFieldEditorParent()));

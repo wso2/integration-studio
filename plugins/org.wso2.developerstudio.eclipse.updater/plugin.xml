@@ -21,4 +21,7 @@
             </command>
       </menuContribution>
    </extension>
+   <extension point="org.eclipse.ui.startup">
+     <startup class="org.wso2.developerstudio.eclipse.updater.handler.StartupHandler"/>
+   </extension>
 </plugin>

@@ -182,12 +182,13 @@ public class WSO2PluginProjectWizard extends AbstractWSO2ProjectCreationWizard {
 		Gson gson = new Gson();
 		WSO2PluginSampleExt wso2PluginSampleExt = null;
 		String fileToRead =
-		                    fileName + File.separator + pluginSamlpeId + File.separator +
+		                    fileName + pluginSamlpeId + File.separator +
 		                            WSO2PluginConstants.SAMPLE_DESCRIPTION_FILE;
 		try {
 			BufferedReader br = new BufferedReader(new FileReader(fileToRead));
 			wso2PluginSampleExt = gson.fromJson(br, WSO2PluginSampleExt.class);
 			wso2PluginSampleExt.setIsUpdatedFromGit("true");
+			wso2PluginSampleExt.setPluginArchive(fileName + pluginSamlpeId + File.separator + wso2PluginSampleExt.getPluginArchive());
 		} catch (JsonIOException | JsonSyntaxException | FileNotFoundException e) {
 			log.error("Could not load the plugin sample from the archive, error in the sample format " + e);
 			MultiStatus status =

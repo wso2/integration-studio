@@ -38,6 +38,8 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#getTemplateParameters <em>Template Parameters</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#isStatisticsEnabled <em>Statistics Enabled</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#isTraceEnabled <em>Trace Enabled</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#getInboundPolicy <em>Inbound Policy</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#getOutboundPolicy <em>Outbound Policy</em>}</li>
  * </ul>
  * </p>
  *
@@ -605,5 +607,57 @@ public interface AbstractEndPoint extends EndPoint {
 	 * @generated
 	 */
 	void setTraceEnabled(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Inbound Policy</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Inbound Policy</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Inbound Policy</em>' containment reference.
+	 * @see #setInboundPolicy(RegistryKeyProperty)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getAbstractEndPoint_InboundPolicy()
+	 * @model containment="true"
+	 * @generated
+	 */
+	RegistryKeyProperty getInboundPolicy();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#getInboundPolicy <em>Inbound Policy</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Inbound Policy</em>' containment reference.
+	 * @see #getInboundPolicy()
+	 * @generated
+	 */
+	void setInboundPolicy(RegistryKeyProperty value);
+
+	/**
+	 * Returns the value of the '<em><b>Outbound Policy</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Outbound Policy</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Outbound Policy</em>' containment reference.
+	 * @see #setOutboundPolicy(RegistryKeyProperty)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getAbstractEndPoint_OutboundPolicy()
+	 * @model containment="true"
+	 * @generated
+	 */
+	RegistryKeyProperty getOutboundPolicy();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#getOutboundPolicy <em>Outbound Policy</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Outbound Policy</em>' containment reference.
+	 * @see #getOutboundPolicy()
+	 * @generated
+	 */
+	void setOutboundPolicy(RegistryKeyProperty value);
 
 } // AbstractEndPoint

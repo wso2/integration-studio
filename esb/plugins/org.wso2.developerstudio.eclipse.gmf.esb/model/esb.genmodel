@@ -900,6 +900,8 @@
       <genFeatures children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//AbstractEndPoint/templateParameters"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//AbstractEndPoint/statisticsEnabled"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//AbstractEndPoint/traceEnabled"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//AbstractEndPoint/inboundPolicy"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//AbstractEndPoint/outboundPolicy"/>
     </genClasses>
     <genClasses ecoreClass="esb.ecore#//MessageMediator">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//MessageMediator/inputConnector"/>

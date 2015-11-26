@@ -136,15 +136,24 @@ public abstract class AbstractEndpointDeserializer extends AbstractEsbNodeDeseri
 		
 		if(endpoint.getDefinition().isSecurityOn()){
 			executeSetValueCommand(ABSTRACT_END_POINT__SECURITY_ENABLED, true);
-			
-			RegistryKeyProperty regkey = EsbFactory.eINSTANCE.createRegistryKeyProperty();
+
 			String wsSecPolicyKey = endpoint.getDefinition().getWsSecPolicyKey();
-			if(wsSecPolicyKey != null){
-				regkey.setKeyValue(wsSecPolicyKey);
-			}else{
-				regkey.setKeyValue("");
-			}			
-			executeSetValueCommand(ABSTRACT_END_POINT__SECURITY_POLICY, regkey);
+			if (StringUtils.isNotBlank(wsSecPolicyKey)) {
+				RegistryKeyProperty regkey = getRegistryKeyForPolicy(wsSecPolicyKey);
+				executeSetValueCommand(ABSTRACT_END_POINT__SECURITY_POLICY, regkey);
+			}
+			
+			String inboundPolicyKey = endpoint.getDefinition().getInboundWsSecPolicyKey();
+			if (StringUtils.isNotBlank(inboundPolicyKey)) {
+				RegistryKeyProperty regkey = getRegistryKeyForPolicy(inboundPolicyKey);
+				executeSetValueCommand(ABSTRACT_END_POINT__INBOUND_POLICY, regkey);
+			}
+			
+			String outoundPolicyKey = endpoint.getDefinition().getOutboundWsSecPolicyKey();
+			if (StringUtils.isNotBlank(outoundPolicyKey)) {
+				RegistryKeyProperty regkey = getRegistryKeyForPolicy(outoundPolicyKey);
+				executeSetValueCommand(ABSTRACT_END_POINT__OUTBOUND_POLICY, regkey);
+			}
 		}
 		
 		for (Iterator<MediatorProperty> i = endpoint.getProperties().iterator(); i.hasNext();) {
@@ -173,6 +182,16 @@ public abstract class AbstractEndpointDeserializer extends AbstractEsbNodeDeseri
 			executeAddValueCommand(visualEndpoint.getProperties(), property);
 		}
 		
+	}
+
+	private RegistryKeyProperty getRegistryKeyForPolicy(String wsSecPolicyKey) {
+		RegistryKeyProperty regkey = EsbFactory.eINSTANCE.createRegistryKeyProperty();
+		if(wsSecPolicyKey != null){
+			regkey.setKeyValue(wsSecPolicyKey);
+		}else{
+			regkey.setKeyValue("");
+		}
+		return regkey;
 	}
 	
 }

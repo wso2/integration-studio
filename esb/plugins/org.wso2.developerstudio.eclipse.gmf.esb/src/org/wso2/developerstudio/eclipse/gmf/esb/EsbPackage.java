@@ -2345,13 +2345,31 @@ public interface EsbPackage extends EPackage {
 	int ABSTRACT_END_POINT__TRACE_ENABLED = END_POINT_FEATURE_COUNT + 20;
 
 	/**
+	 * The feature id for the '<em><b>Inbound Policy</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_END_POINT__INBOUND_POLICY = END_POINT_FEATURE_COUNT + 21;
+
+	/**
+	 * The feature id for the '<em><b>Outbound Policy</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_END_POINT__OUTBOUND_POLICY = END_POINT_FEATURE_COUNT + 22;
+
+	/**
 	 * The number of structural features of the '<em>Abstract End Point</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_END_POINT_FEATURE_COUNT = END_POINT_FEATURE_COUNT + 21;
+	int ABSTRACT_END_POINT_FEATURE_COUNT = END_POINT_FEATURE_COUNT + 23;
 
 	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -2705,6 +2723,24 @@ public interface EsbPackage extends EPackage {
 	int DEFAULT_END_POINT__TRACE_ENABLED = ABSTRACT_END_POINT__TRACE_ENABLED;
 
 	/**
+	 * The feature id for the '<em><b>Inbound Policy</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEFAULT_END_POINT__INBOUND_POLICY = ABSTRACT_END_POINT__INBOUND_POLICY;
+
+	/**
+	 * The feature id for the '<em><b>Outbound Policy</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEFAULT_END_POINT__OUTBOUND_POLICY = ABSTRACT_END_POINT__OUTBOUND_POLICY;
+
+	/**
 	 * The feature id for the '<em><b>Input Connector</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3036,6 +3072,24 @@ public interface EsbPackage extends EPackage {
 	 * @ordered
 	 */
 	int ADDRESS_END_POINT__TRACE_ENABLED = ABSTRACT_END_POINT__TRACE_ENABLED;
+
+	/**
+	 * The feature id for the '<em><b>Inbound Policy</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ADDRESS_END_POINT__INBOUND_POLICY = ABSTRACT_END_POINT__INBOUND_POLICY;
+
+	/**
+	 * The feature id for the '<em><b>Outbound Policy</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ADDRESS_END_POINT__OUTBOUND_POLICY = ABSTRACT_END_POINT__OUTBOUND_POLICY;
 
 	/**
 	 * The feature id for the '<em><b>Input Connector</b></em>' containment reference.
@@ -3388,6 +3442,24 @@ public interface EsbPackage extends EPackage {
 	 * @ordered
 	 */
 	int TEMPLATE_ENDPOINT__TRACE_ENABLED = ABSTRACT_END_POINT__TRACE_ENABLED;
+
+	/**
+	 * The feature id for the '<em><b>Inbound Policy</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPLATE_ENDPOINT__INBOUND_POLICY = ABSTRACT_END_POINT__INBOUND_POLICY;
+
+	/**
+	 * The feature id for the '<em><b>Outbound Policy</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPLATE_ENDPOINT__OUTBOUND_POLICY = ABSTRACT_END_POINT__OUTBOUND_POLICY;
 
 	/**
 	 * The feature id for the '<em><b>Input Connector</b></em>' containment reference.
@@ -3824,6 +3896,24 @@ public interface EsbPackage extends EPackage {
 	 * @ordered
 	 */
 	int HTTP_ENDPOINT__TRACE_ENABLED = ABSTRACT_END_POINT__TRACE_ENABLED;
+
+	/**
+	 * The feature id for the '<em><b>Inbound Policy</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HTTP_ENDPOINT__INBOUND_POLICY = ABSTRACT_END_POINT__INBOUND_POLICY;
+
+	/**
+	 * The feature id for the '<em><b>Outbound Policy</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HTTP_ENDPOINT__OUTBOUND_POLICY = ABSTRACT_END_POINT__OUTBOUND_POLICY;
 
 	/**
 	 * The feature id for the '<em><b>Input Connector</b></em>' containment reference.
@@ -17612,6 +17702,24 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	int WSDL_END_POINT__TRACE_ENABLED = ABSTRACT_END_POINT__TRACE_ENABLED;
 
 	/**
+	 * The feature id for the '<em><b>Inbound Policy</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WSDL_END_POINT__INBOUND_POLICY = ABSTRACT_END_POINT__INBOUND_POLICY;
+
+	/**
+	 * The feature id for the '<em><b>Outbound Policy</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WSDL_END_POINT__OUTBOUND_POLICY = ABSTRACT_END_POINT__OUTBOUND_POLICY;
+
+	/**
 	 * The feature id for the '<em><b>Input Connector</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -19307,6 +19415,24 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	int NAMED_ENDPOINT__TRACE_ENABLED = ABSTRACT_END_POINT__TRACE_ENABLED;
 
 	/**
+	 * The feature id for the '<em><b>Inbound Policy</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NAMED_ENDPOINT__INBOUND_POLICY = ABSTRACT_END_POINT__INBOUND_POLICY;
+
+	/**
+	 * The feature id for the '<em><b>Outbound Policy</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NAMED_ENDPOINT__OUTBOUND_POLICY = ABSTRACT_END_POINT__OUTBOUND_POLICY;
+
+	/**
 	 * The feature id for the '<em><b>Input Connector</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -20519,6 +20645,24 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	int API_RESOURCE_ENDPOINT__TRACE_ENABLED = ABSTRACT_END_POINT__TRACE_ENABLED;
 
 	/**
+	 * The feature id for the '<em><b>Inbound Policy</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int API_RESOURCE_ENDPOINT__INBOUND_POLICY = ABSTRACT_END_POINT__INBOUND_POLICY;
+
+	/**
+	 * The feature id for the '<em><b>Outbound Policy</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int API_RESOURCE_ENDPOINT__OUTBOUND_POLICY = ABSTRACT_END_POINT__OUTBOUND_POLICY;
+
+	/**
 	 * The feature id for the '<em><b>Input Connector</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -20981,6 +21125,24 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @ordered
 	 */
 	int ADDRESSING_ENDPOINT__TRACE_ENABLED = ABSTRACT_END_POINT__TRACE_ENABLED;
+
+	/**
+	 * The feature id for the '<em><b>Inbound Policy</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ADDRESSING_ENDPOINT__INBOUND_POLICY = ABSTRACT_END_POINT__INBOUND_POLICY;
+
+	/**
+	 * The feature id for the '<em><b>Outbound Policy</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ADDRESSING_ENDPOINT__OUTBOUND_POLICY = ABSTRACT_END_POINT__OUTBOUND_POLICY;
 
 	/**
 	 * The feature id for the '<em><b>Input Connector</b></em>' containment reference.
@@ -27330,6 +27492,28 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 */
 	EAttribute getAbstractEndPoint_TraceEnabled();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#getInboundPolicy <em>Inbound Policy</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Inbound Policy</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#getInboundPolicy()
+	 * @see #getAbstractEndPoint()
+	 * @generated
+	 */
+	EReference getAbstractEndPoint_InboundPolicy();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#getOutboundPolicy <em>Outbound Policy</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Outbound Policy</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#getOutboundPolicy()
+	 * @see #getAbstractEndPoint()
+	 * @generated
+	 */
+	EReference getAbstractEndPoint_OutboundPolicy();
 
 	/**
 	 * Returns the meta object for class '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageMediator <em>Message Mediator</em>}'.
@@ -44176,6 +44360,22 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 		 * @generated
 		 */
 		EAttribute ABSTRACT_END_POINT__TRACE_ENABLED = eINSTANCE.getAbstractEndPoint_TraceEnabled();
+
+		/**
+		 * The meta object literal for the '<em><b>Inbound Policy</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ABSTRACT_END_POINT__INBOUND_POLICY = eINSTANCE.getAbstractEndPoint_InboundPolicy();
+
+		/**
+		 * The meta object literal for the '<em><b>Outbound Policy</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ABSTRACT_END_POINT__OUTBOUND_POLICY = eINSTANCE.getAbstractEndPoint_OutboundPolicy();
 
 		/**
 		 * The meta object literal for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageMediatorImpl <em>Message Mediator</em>}' class.

@@ -5239,6 +5239,24 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getAbstractEndPoint_InboundPolicy() {
+		return (EReference)abstractEndPointEClass.getEStructuralFeatures().get(21);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getAbstractEndPoint_OutboundPolicy() {
+		return (EReference)abstractEndPointEClass.getEStructuralFeatures().get(22);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getMessageMediator() {
 		return messageMediatorEClass;
 	}
@@ -18638,6 +18656,8 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		createEReference(abstractEndPointEClass, ABSTRACT_END_POINT__TEMPLATE_PARAMETERS);
 		createEAttribute(abstractEndPointEClass, ABSTRACT_END_POINT__STATISTICS_ENABLED);
 		createEAttribute(abstractEndPointEClass, ABSTRACT_END_POINT__TRACE_ENABLED);
+		createEReference(abstractEndPointEClass, ABSTRACT_END_POINT__INBOUND_POLICY);
+		createEReference(abstractEndPointEClass, ABSTRACT_END_POINT__OUTBOUND_POLICY);
 
 		messageMediatorEClass = createEClass(MESSAGE_MEDIATOR);
 		createEReference(messageMediatorEClass, MESSAGE_MEDIATOR__INPUT_CONNECTOR);
@@ -20983,6 +21003,8 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		initEReference(getAbstractEndPoint_TemplateParameters(), this.getTemplateParameter(), null, "templateParameters", null, 0, -1, AbstractEndPoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAbstractEndPoint_StatisticsEnabled(), ecorePackage.getEBoolean(), "statisticsEnabled", null, 0, 1, AbstractEndPoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAbstractEndPoint_TraceEnabled(), ecorePackage.getEBoolean(), "traceEnabled", null, 0, 1, AbstractEndPoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getAbstractEndPoint_InboundPolicy(), this.getRegistryKeyProperty(), null, "inboundPolicy", null, 0, 1, AbstractEndPoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getAbstractEndPoint_OutboundPolicy(), this.getRegistryKeyProperty(), null, "outboundPolicy", null, 0, 1, AbstractEndPoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(messageMediatorEClass, MessageMediator.class, "MessageMediator", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getMessageMediator_InputConnector(), this.getMessageInputConnector(), null, "inputConnector", null, 0, 1, MessageMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

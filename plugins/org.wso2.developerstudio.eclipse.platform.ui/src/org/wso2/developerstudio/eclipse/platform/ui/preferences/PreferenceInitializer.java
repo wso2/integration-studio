@@ -37,6 +37,8 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
 		    store.setDefault(UpdateCheckerPreferencePage.PLUGIN_TEMPLATE_URL, KERNEL_SAMPLES_GIT);
 		    store.setDefault(UpdateCheckerPreferencePage.RELESE_SITE_URL, RELEASE_SITE);
 		    store.setDefault(UpdateCheckerPreferencePage.UPDATE_SITE_URL, UPDATE_SITE);
+		    store.setDefault(UpdateCheckerPreferencePage.UPDATE_INTAVAL, "Weekly");
+		    store.setDefault(UpdateCheckerPreferencePage.ENABLE_AUTOMATIC_UPDATES, true);
 	}
 
 }

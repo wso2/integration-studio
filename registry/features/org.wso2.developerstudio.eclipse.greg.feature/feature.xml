@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="org.wso2.developerstudio.eclipse.greg.feature"
-      label="Goverance Registry Feature"
+      label="Governance Registry Feature"
       version="4.0.0.qualifier"
       provider-name="%providerName">
 

@@ -55,6 +55,8 @@ import org.wso2.developerstudio.eclipse.gmf.esb.TemplateParameter;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.AbstractEndPointImpl#getTemplateParameters <em>Template Parameters</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.AbstractEndPointImpl#isStatisticsEnabled <em>Statistics Enabled</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.AbstractEndPointImpl#isTraceEnabled <em>Trace Enabled</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.AbstractEndPointImpl#getInboundPolicy <em>Inbound Policy</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.AbstractEndPointImpl#getOutboundPolicy <em>Outbound Policy</em>}</li>
  * </ul>
  * </p>
  *
@@ -452,6 +454,26 @@ public abstract class AbstractEndPointImpl extends EndPointImpl implements Abstr
 	protected boolean traceEnabled = TRACE_ENABLED_EDEFAULT;
 
 	/**
+	 * The cached value of the '{@link #getInboundPolicy() <em>Inbound Policy</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInboundPolicy()
+	 * @generated
+	 * @ordered
+	 */
+	protected RegistryKeyProperty inboundPolicy;
+
+	/**
+	 * The cached value of the '{@link #getOutboundPolicy() <em>Outbound Policy</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOutboundPolicy()
+	 * @generated
+	 * @ordered
+	 */
+	protected RegistryKeyProperty outboundPolicy;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated NOT
@@ -468,8 +490,20 @@ public abstract class AbstractEndPointImpl extends EndPointImpl implements Abstr
 		RegistryKeyProperty securityPolicy=EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
 		securityPolicy.setKeyName("SecurityPolicy Key");
 		securityPolicy.setPrettyName("SecurityPolicy Key");
-		securityPolicy.setKeyValue("/default/key");
+		securityPolicy.setKeyValue("");
 		setSecurityPolicy(securityPolicy);
+		
+		RegistryKeyProperty inboundPolicy=EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
+		inboundPolicy.setKeyName("inboundPolicy Key");
+		inboundPolicy.setPrettyName("inboundPolicy Key");
+		inboundPolicy.setKeyValue("");
+		setInboundPolicy(inboundPolicy);
+		
+		RegistryKeyProperty outboundPolicy=EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
+		outboundPolicy.setKeyName("obPolicy Key");
+		outboundPolicy.setPrettyName("obPolicy Key");
+		outboundPolicy.setKeyValue("");
+		setOutboundPolicy(outboundPolicy);
 	}
 
 	/**
@@ -964,6 +998,92 @@ public abstract class AbstractEndPointImpl extends EndPointImpl implements Abstr
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public RegistryKeyProperty getInboundPolicy() {
+		return inboundPolicy;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetInboundPolicy(RegistryKeyProperty newInboundPolicy, NotificationChain msgs) {
+		RegistryKeyProperty oldInboundPolicy = inboundPolicy;
+		inboundPolicy = newInboundPolicy;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EsbPackage.ABSTRACT_END_POINT__INBOUND_POLICY, oldInboundPolicy, newInboundPolicy);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setInboundPolicy(RegistryKeyProperty newInboundPolicy) {
+		if (newInboundPolicy != inboundPolicy) {
+			NotificationChain msgs = null;
+			if (inboundPolicy != null)
+				msgs = ((InternalEObject)inboundPolicy).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EsbPackage.ABSTRACT_END_POINT__INBOUND_POLICY, null, msgs);
+			if (newInboundPolicy != null)
+				msgs = ((InternalEObject)newInboundPolicy).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EsbPackage.ABSTRACT_END_POINT__INBOUND_POLICY, null, msgs);
+			msgs = basicSetInboundPolicy(newInboundPolicy, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.ABSTRACT_END_POINT__INBOUND_POLICY, newInboundPolicy, newInboundPolicy));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public RegistryKeyProperty getOutboundPolicy() {
+		return outboundPolicy;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetOutboundPolicy(RegistryKeyProperty newOutboundPolicy, NotificationChain msgs) {
+		RegistryKeyProperty oldOutboundPolicy = outboundPolicy;
+		outboundPolicy = newOutboundPolicy;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EsbPackage.ABSTRACT_END_POINT__OUTBOUND_POLICY, oldOutboundPolicy, newOutboundPolicy);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setOutboundPolicy(RegistryKeyProperty newOutboundPolicy) {
+		if (newOutboundPolicy != outboundPolicy) {
+			NotificationChain msgs = null;
+			if (outboundPolicy != null)
+				msgs = ((InternalEObject)outboundPolicy).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EsbPackage.ABSTRACT_END_POINT__OUTBOUND_POLICY, null, msgs);
+			if (newOutboundPolicy != null)
+				msgs = ((InternalEObject)newOutboundPolicy).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EsbPackage.ABSTRACT_END_POINT__OUTBOUND_POLICY, null, msgs);
+			msgs = basicSetOutboundPolicy(newOutboundPolicy, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.ABSTRACT_END_POINT__OUTBOUND_POLICY, newOutboundPolicy, newOutboundPolicy));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -973,6 +1093,10 @@ public abstract class AbstractEndPointImpl extends EndPointImpl implements Abstr
 				return basicSetSecurityPolicy(null, msgs);
 			case EsbPackage.ABSTRACT_END_POINT__TEMPLATE_PARAMETERS:
 				return ((InternalEList<?>)getTemplateParameters()).basicRemove(otherEnd, msgs);
+			case EsbPackage.ABSTRACT_END_POINT__INBOUND_POLICY:
+				return basicSetInboundPolicy(null, msgs);
+			case EsbPackage.ABSTRACT_END_POINT__OUTBOUND_POLICY:
+				return basicSetOutboundPolicy(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -1028,6 +1152,10 @@ public abstract class AbstractEndPointImpl extends EndPointImpl implements Abstr
 				return isStatisticsEnabled();
 			case EsbPackage.ABSTRACT_END_POINT__TRACE_ENABLED:
 				return isTraceEnabled();
+			case EsbPackage.ABSTRACT_END_POINT__INBOUND_POLICY:
+				return getInboundPolicy();
+			case EsbPackage.ABSTRACT_END_POINT__OUTBOUND_POLICY:
+				return getOutboundPolicy();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -1106,6 +1234,12 @@ public abstract class AbstractEndPointImpl extends EndPointImpl implements Abstr
 			case EsbPackage.ABSTRACT_END_POINT__TRACE_ENABLED:
 				setTraceEnabled((Boolean)newValue);
 				return;
+			case EsbPackage.ABSTRACT_END_POINT__INBOUND_POLICY:
+				setInboundPolicy((RegistryKeyProperty)newValue);
+				return;
+			case EsbPackage.ABSTRACT_END_POINT__OUTBOUND_POLICY:
+				setOutboundPolicy((RegistryKeyProperty)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -1182,6 +1316,12 @@ public abstract class AbstractEndPointImpl extends EndPointImpl implements Abstr
 			case EsbPackage.ABSTRACT_END_POINT__TRACE_ENABLED:
 				setTraceEnabled(TRACE_ENABLED_EDEFAULT);
 				return;
+			case EsbPackage.ABSTRACT_END_POINT__INBOUND_POLICY:
+				setInboundPolicy((RegistryKeyProperty)null);
+				return;
+			case EsbPackage.ABSTRACT_END_POINT__OUTBOUND_POLICY:
+				setOutboundPolicy((RegistryKeyProperty)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -1237,6 +1377,10 @@ public abstract class AbstractEndPointImpl extends EndPointImpl implements Abstr
 				return statisticsEnabled != STATISTICS_ENABLED_EDEFAULT;
 			case EsbPackage.ABSTRACT_END_POINT__TRACE_ENABLED:
 				return traceEnabled != TRACE_ENABLED_EDEFAULT;
+			case EsbPackage.ABSTRACT_END_POINT__INBOUND_POLICY:
+				return inboundPolicy != null;
+			case EsbPackage.ABSTRACT_END_POINT__OUTBOUND_POLICY:
+				return outboundPolicy != null;
 		}
 		return super.eIsSet(featureID);
 	}

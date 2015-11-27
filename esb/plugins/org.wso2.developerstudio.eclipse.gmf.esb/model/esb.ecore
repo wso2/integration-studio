@@ -284,6 +284,10 @@
         eType="#//TemplateParameter" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="statisticsEnabled" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="traceEnabled" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="inboundPolicy" eType="#//RegistryKeyProperty"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="outboundPolicy" eType="#//RegistryKeyProperty"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="MessageMediator" eSuperTypes="#//EsbElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="inputConnector" eType="#//MessageInputConnector"

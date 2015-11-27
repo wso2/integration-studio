@@ -252,8 +252,11 @@ public class EsbPropertySource extends PropertySource {
 			return new CustomPropertyDescriptor(object, itemPropertyDescriptor);
 		}else if(pkg.getAbstractEndPoint_SecurityPolicy().equals(feature)){
 			return new CustomPropertyDescriptor(object, itemPropertyDescriptor);
-		}		
-		else if(pkg.getBeanMediator_ValueExpression().equals(feature)){
+		}else if(pkg.getAbstractEndPoint_InboundPolicy().equals(feature)){
+			return new CustomPropertyDescriptor(object, itemPropertyDescriptor);
+		}else if(pkg.getAbstractEndPoint_OutboundPolicy().equals(feature)){
+			return new CustomPropertyDescriptor(object, itemPropertyDescriptor);
+		}else if(pkg.getBeanMediator_ValueExpression().equals(feature)){
 			return new CustomPropertyDescriptor(object, itemPropertyDescriptor);
 		}else if(pkg.getBeanMediator_TargetExpression().equals(feature)){
 			return new CustomPropertyDescriptor(object, itemPropertyDescriptor);

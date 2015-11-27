@@ -35,7 +35,7 @@ public class TaskTransformer {
 		switch (visualTask.getTriggerType()) {
 		case SIMPLE:
 			taskDescription.setCount((int) visualTask.getCount());
-			taskDescription.setInterval(visualTask.getInterval()*1000);
+			taskDescription.setInterval(visualTask.getInterval());
 			break;
 
 		case CRON:

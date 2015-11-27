@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+	<extension point="org.eclipse.ui.perspectives">
+		<perspective
+        class="org.wso2.developerstudio.eclipse.registry.apim.perspective.ApimRegistryPerspectiveFactory"
+        fixed="true"
+        icon="icons/api-default.png"
+        id="org.wso2.developerstudio.registry.remote.registry.apim.pespective"
+        name="WSO2 APIManager"/>
+	</extension>
+	 <extension point="org.eclipse.ui.preferencePages">
+		<page id="org.wso2.developerstudio.eclipse.ui.developerstudio.preferences.appfactory" name="WSO2 APIManager" 
+		class="org.wso2.developerstudio.eclipse.registry.apim.preferance.ApimPreferencePage" 
+		category="org.wso2.developerstudio.eclipse.ui.developerstudio.preferences"></page>
+	</extension>
+		<extension point="org.eclipse.ui.views">
+		<view id="org.wso2.developerstudio.registry.remote.registry.api.view" name="WSO2 APIManager" icon="icons/api-default.png"
+			class="org.wso2.developerstudio.eclipse.registry.apim.views.RegistryBrowserAPIMView" />
+	</extension>
+</plugin>

@@ -78,6 +78,8 @@ public class AbstractEndPointItemProvider
 	        addSecurityEnabledPropertyDescriptor(object);
 	        if (endPoint.isSecurityEnabled()) {
 	        	addSecurityPolicyPropertyDescriptor(object);
+	        	addInboundSecurityPolicyPropertyDescriptor(object);
+	        	addOutboundSecurityPolicyPropertyDescriptor(object);
 	        }
 	        
 	        // Addressing.        
@@ -482,6 +484,50 @@ public class AbstractEndPointItemProvider
 				 "QoS",
 				 null));
 	}
+	
+	/**
+	 * This adds a property descriptor for the inbound Policy feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	protected void addInboundSecurityPolicyPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_AbstractEndPoint_inboundPolicy_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_AbstractEndPoint_inboundPolicy_feature", "_UI_AbstractEndPoint_type"),
+				 EsbPackage.Literals.ABSTRACT_END_POINT__INBOUND_POLICY,
+				 true,
+				 false,
+				 true,
+				 null,
+				 "QoS",
+				 null));
+	}
+	
+	/**
+	 * This adds a property descriptor for the outbound Policy feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	protected void addOutboundSecurityPolicyPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_AbstractEndPoint_outboundPolicy_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_AbstractEndPoint_outboundPolicy_feature", "_UI_AbstractEndPoint_type"),
+				 EsbPackage.Literals.ABSTRACT_END_POINT__OUTBOUND_POLICY,
+				 true,
+				 false,
+				 true,
+				 null,
+				 "QoS",
+				 null));
+	}
 
 	/**
 	 * This adds a property descriptor for the Format feature.
@@ -606,6 +652,8 @@ public class AbstractEndPointItemProvider
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(EsbPackage.Literals.ABSTRACT_END_POINT__TEMPLATE_PARAMETERS);
+			childrenFeatures.add(EsbPackage.Literals.ABSTRACT_END_POINT__INBOUND_POLICY);
+			childrenFeatures.add(EsbPackage.Literals.ABSTRACT_END_POINT__OUTBOUND_POLICY);
 		}
 		return childrenFeatures;
 	}
@@ -672,6 +720,8 @@ public class AbstractEndPointItemProvider
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case EsbPackage.ABSTRACT_END_POINT__TEMPLATE_PARAMETERS:
+			case EsbPackage.ABSTRACT_END_POINT__INBOUND_POLICY:
+			case EsbPackage.ABSTRACT_END_POINT__OUTBOUND_POLICY:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -694,6 +744,39 @@ public class AbstractEndPointItemProvider
 			(createChildParameter
 				(EsbPackage.Literals.ABSTRACT_END_POINT__TEMPLATE_PARAMETERS,
 				 EsbFactory.eINSTANCE.createTemplateParameter()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(EsbPackage.Literals.ABSTRACT_END_POINT__INBOUND_POLICY,
+				 EsbFactory.eINSTANCE.createRegistryKeyProperty()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(EsbPackage.Literals.ABSTRACT_END_POINT__OUTBOUND_POLICY,
+				 EsbFactory.eINSTANCE.createRegistryKeyProperty()));
+	}
+
+	/**
+	 * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String getCreateChildText(Object owner, Object feature, Object child, Collection<?> selection) {
+		Object childFeature = feature;
+		Object childObject = child;
+
+		boolean qualify =
+			childFeature == EsbPackage.Literals.ABSTRACT_END_POINT__INBOUND_POLICY ||
+			childFeature == EsbPackage.Literals.ABSTRACT_END_POINT__OUTBOUND_POLICY;
+
+		if (qualify) {
+			return getString
+				("_UI_CreateChild_text2",
+				 new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
+		}
+		return super.getCreateChildText(owner, feature, child, selection);
 	}
 
 }

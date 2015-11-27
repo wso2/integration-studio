@@ -114,16 +114,32 @@ public abstract class AbstractEndpointTransformer extends AbstractEsbNodeTransfo
 
 		if (visualEndPoint.isSecurityEnabled()) {
 			synapseEPDef.setSecurityOn(true);
-			String keyValue = visualEndPoint.getSecurityPolicy().getKeyValue();
-			if(keyValue !=null && !keyValue.isEmpty()){
-				synapseEPDef.setWsSecPolicyKey(visualEndPoint.getSecurityPolicy().getKeyValue());
+			if (visualEndPoint.getSecurityPolicy() != null) {
+				String policyValue = visualEndPoint.getSecurityPolicy().getKeyValue();
+				if(policyValue != null && !policyValue.isEmpty()){
+					synapseEPDef.setWsSecPolicyKey(policyValue);
+				}
+			}
+			
+			if (visualEndPoint.getInboundPolicy() != null) {
+				String inboundPolicyValue = visualEndPoint.getInboundPolicy().getKeyValue();
+				if(inboundPolicyValue != null && !inboundPolicyValue.isEmpty()){
+					synapseEPDef.setInboundWsSecPolicyKey(inboundPolicyValue);
+				}
+			}
+			
+			if (visualEndPoint.getOutboundPolicy() != null) {
+				String outboundPolicyValue = visualEndPoint.getOutboundPolicy().getKeyValue();
+				if(outboundPolicyValue !=null && !outboundPolicyValue.isEmpty()){
+					synapseEPDef.setOutboundWsSecPolicyKey(outboundPolicyValue);
+				}
 			}
 		}
 		
 		saveProperties(visualEndPoint, endpoint);
-		if(visualEndPoint.getDescription()!=null){
+		if(visualEndPoint.getDescription()!=null) {
 				endpoint.setDescription(visualEndPoint.getDescription());
-			}
+		}
 		endpoint.setDefinition(synapseEPDef);
 
 	}

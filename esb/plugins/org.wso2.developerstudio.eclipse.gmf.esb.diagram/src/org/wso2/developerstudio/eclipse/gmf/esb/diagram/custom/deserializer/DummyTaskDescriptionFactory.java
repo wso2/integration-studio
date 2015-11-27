@@ -140,9 +140,8 @@ public class DummyTaskDescriptionFactory {
                             "a simple trigger, but no interval specified");
                 } else if (repeatInterval != null && repeatInterval.getAttributeValue() != null) {
                     try {
-                        long repeatIntervalInSeconds = Long.parseLong(
+                        long repeatIntervalInMillis = Long.parseLong(
                                 repeatInterval.getAttributeValue());
-                        long repeatIntervalInMillis = repeatIntervalInSeconds * 1000;
                         taskDescription.setInterval(repeatIntervalInMillis);
                     } catch (Exception e) {
                         handleException("Failed to parse trigger interval as a long value", e);

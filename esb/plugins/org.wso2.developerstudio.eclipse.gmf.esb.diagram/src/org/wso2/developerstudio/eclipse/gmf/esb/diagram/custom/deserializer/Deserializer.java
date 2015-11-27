@@ -77,6 +77,7 @@ import org.apache.synapse.config.xml.MessageProcessorFactory;
 import org.apache.synapse.config.xml.SequenceMediatorFactory;
 import org.apache.synapse.config.xml.TemplateMediatorFactory;
 import org.apache.synapse.config.xml.endpoints.EndpointFactory;
+import org.apache.synapse.config.xml.endpoints.TemplateEndpointFactory;
 import org.apache.synapse.config.xml.endpoints.TemplateFactory;
 import org.apache.synapse.config.xml.endpoints.WSDLEndpointFactory;
 import org.apache.synapse.config.xml.inbound.InboundEndpointFactory;
@@ -376,6 +377,7 @@ public class Deserializer {
 	private void createEndpointTemplate(OMElement element, Properties properties, Map<String,Object> artifacts){
 		TemplateFactory templateFactory = new TemplateFactory();
 		Template template = templateFactory.createEndpointTemplate(element, properties);
+		TemplateEndpointFactory.getEndpointFromElement(template.getElement(), false, new Properties());
 		artifacts.put(template.getName(), template);
 	}
 

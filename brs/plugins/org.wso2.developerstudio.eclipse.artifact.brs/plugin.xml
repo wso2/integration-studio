@@ -67,6 +67,23 @@
       </handler>
       
    </extension>
+   
+   <extension point="org.wso2.developerstudio.eclipse.platform.core.intro.ui.dashboard">
+      <wizardCategory
+                category="org.wso2.developerstudio.eclipse.artifact.businessruleservice.category">
+        </wizardCategory>
+        <category
+                id="dashboard.category.brs"
+                showTitle="true"
+                priority="9"
+                title="Business Rules Server">
+        </category>
+        <wizardLink
+                category="dashboard.category.brs"
+                id="dashboard.wizardLink.brs"
+                wizard="org.wso2.developerstudio.eclipse.artifact.businessruleservice.wizard">
+        </wizardLink>
+      </extension>
 	 <!-- <extension point="org.eclipse.ui.navigator.navigatorContent">	
 	   <navigatorContent activeByDefault="true"
 			priority="high"

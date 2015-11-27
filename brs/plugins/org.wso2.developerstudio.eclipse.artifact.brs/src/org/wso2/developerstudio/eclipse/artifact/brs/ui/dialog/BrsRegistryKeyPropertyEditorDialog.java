@@ -39,14 +39,14 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.wso2.developerstudio.eclipse.capp.core.artifacts.manager.CAppEnvironment;
 import org.wso2.developerstudio.eclipse.capp.core.model.RegistryConnection;
-import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
-import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
-import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.provider.DeveloperStudioElementProviderDialog;
-import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.provider.NewResourceTemplateDialog;
-import org.wso2.developerstudio.eclipse.greg.core.interfaces.IRegistryConnection;
-import org.wso2.developerstudio.eclipse.greg.core.interfaces.IRegistryData;
-import org.wso2.developerstudio.eclipse.greg.core.interfaces.IRegistryFile;
-import org.wso2.developerstudio.eclipse.greg.core.interfaces.IRegistryHandler;
+import org.wso2.developerstudio.eclipse.gmf.brs.BrsFactory;
+import org.wso2.developerstudio.eclipse.artifact.brs.RegistryKeyProperty;
+import org.wso2.developerstudio.eclipse.gmf.brs.diagram.custom.provider.DeveloperStudioElementProviderDialog;
+import org.wso2.developerstudio.eclipse.gmf.brs.diagram.custom.provider.NewResourceTemplateDialog;
+import org.wso2.developerstudio.eclipse.registry.core.interfaces.IRegistryConnection;
+import org.wso2.developerstudio.eclipse.registry.core.interfaces.IRegistryData;
+import org.wso2.developerstudio.eclipse.registry.core.interfaces.IRegistryFile;
+import org.wso2.developerstudio.eclipse.registry.core.interfaces.IRegistryHandler;
 import org.wso2.developerstudio.eclipse.platform.core.mediatype.PlatformMediaTypeConstants;
 import org.wso2.developerstudio.eclipse.platform.core.utils.CSProviderConstants;
 import org.wso2.developerstudio.eclipse.platform.core.utils.DeveloperStudioProviderUtils;
@@ -69,7 +69,7 @@ public class BrsRegistryKeyPropertyEditorDialog extends Dialog{
 	private final RegistryKeyProperty brsKey;
 	private FormData rkTextFieldLayoutData;
 	private String registryValue;
-	private final EsbFactory esbFactory = EsbFactory.eINSTANCE;
+	private final BrsFactory esbFactory = BrsFactory.eINSTANCE;
 
 	public BrsRegistryKeyPropertyEditorDialog(Shell parent, int style) {
 
@@ -77,7 +77,7 @@ public class BrsRegistryKeyPropertyEditorDialog extends Dialog{
 		this.brsKey=getEsbFactory().createRegistryKeyProperty();
 	}
 
-	protected EsbFactory getEsbFactory() {
+	protected BrsFactory getEsbFactory() {
 		return this.esbFactory;
 	}
 

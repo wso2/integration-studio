@@ -25,7 +25,6 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Date;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -46,7 +45,6 @@ import org.eclipse.core.runtime.SubMonitor;
 import org.eclipse.core.runtime.SubProgressMonitor;
 import org.eclipse.core.runtime.jobs.IJobChangeEvent;
 import org.eclipse.core.runtime.jobs.IJobChangeListener;
-import org.eclipse.core.runtime.preferences.ConfigurationScope;
 import org.eclipse.e4.core.contexts.ContextInjectionFactory;
 import org.eclipse.e4.core.contexts.EclipseContextFactory;
 import org.eclipse.e4.core.contexts.IEclipseContext;
@@ -75,7 +73,6 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.PlatformUI;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.FrameworkUtil;
-import org.osgi.service.prefs.Preferences;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.platform.ui.preferences.UpdateCheckerPreferencePage;
@@ -88,22 +85,27 @@ public class UpdateManager {
 	protected IProvisioningAgentProvider agentProvider;
 	protected IProvisioningAgent p2Agent;
 	protected ProvisioningSession session;
+	
+	// Provisioning Operations
 	protected UpdateOperation updateOperation;
 	protected InstallOperation installOperation;
 	
+	// Repository Managers
 	protected IArtifactRepositoryManager artifactRepoManager;
 	protected IMetadataRepositoryManager metadataRepoManager;
 	
+	// Installed Features
 	protected Collection<IInstallableUnit> installedWSO2Features;
 	protected Map<String, IInstallableUnit> installedWSO2FeaturesMap;
 	
+	// maps related to Update Repo and updates
 	protected Collection<IInstallableUnit> availableIUsInUpdateRepo;
 	protected Map<String, DevStudioFeature> devsFeaturesInUpdateRepo;
 	protected Map<String, Update>	availableUpdates;
 	protected Update[] selectedUpdates; 
 	protected Map<String, DevStudioFeature> updatebleDevSFeatures;
 	
-	
+	// maps related to Release Repo and availabe Features
 	protected Collection<IInstallableUnit> availableIUsInReleaseRepo;
 	protected Map<String, DevStudioFeature> devsFeaturesInReleaseRepo;
 	protected Map<String, IInstallableUnit> availableNewFeatures;

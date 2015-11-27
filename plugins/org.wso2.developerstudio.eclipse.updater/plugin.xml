@@ -4,7 +4,7 @@
     <extension
          point="org.eclipse.ui.commands">
       <command
-            defaultHandler="org.wso2.developerstudio.eclipse.updater.handler.UpdateHandler"
+            defaultHandler="org.wso2.developerstudio.eclipse.updater.handler.UpdateCommandHandler"
             id="org.wso2.developerstudio.eclipse.updater.CheckUpdatesCmd"
             name="Check for updates">
       </command>

@@ -27,7 +27,7 @@
     <modelVersion>4.0.0</modelVersion>
 	<artifactId>org.wso2.developerstudio.appfactory.ui</artifactId>
 	<packaging>eclipse-plugin</packaging>
-	<name>Developer Studio AppFactory Tools</name>
+	<name>Developer Studio APP Factory UI</name>
 	<dependencies>
 		<dependency>
 		    <groupId>org.apache.maven.shared</groupId>

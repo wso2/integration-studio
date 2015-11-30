@@ -27,7 +27,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>org.wso2.developerstudio.appfactory.core</artifactId>
 	<packaging>eclipse-plugin</packaging>
-	<name>Developer Studio AppFactory Tools Core</name>
+	<name>Developer Studio APP Factory Core</name>
 	<dependencies>
 		<dependency>
 			<groupId>org.wso2.carbon</groupId>

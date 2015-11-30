@@ -58,13 +58,16 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.eclipse.esb.core.ESBMavenConstants;
-//import org.wso2.developerstudio.eclipse.capp.maven.utils.MavenConstants;
+import org.wso2.developerstudio.eclipse.capp.maven.utils.MavenConstants;
 import org.wso2.developerstudio.eclipse.esb.core.utils.EsbTemplateFormatter;
-//import org.wso2.developerstudio.eclipse.general.project.artifact.GeneralProjectArtifact;
-//import org.wso2.developerstudio.eclipse.general.project.artifact.RegistryArtifact;
-//import org.wso2.developerstudio.eclipse.general.project.artifact.bean.RegistryElement;
-//import org.wso2.developerstudio.eclipse.general.project.artifact.bean.RegistryItem;
-//import org.wso2.developerstudio.eclipse.general.project.utils.GeneralProjectUtils;
+import org.wso2.developerstudio.eclipse.general.project.artifact.GeneralProjectArtifact;
+import org.wso2.developerstudio.eclipse.general.project.artifact.RegistryArtifact;
+import org.wso2.developerstudio.eclipse.general.project.utils.GeneralProjectUtils;
+import org.wso2.developerstudio.eclipse.general.project.artifact.GeneralProjectArtifact;
+import org.wso2.developerstudio.eclipse.general.project.artifact.RegistryArtifact;
+import org.wso2.developerstudio.eclipse.general.project.artifact.bean.RegistryElement;
+import org.wso2.developerstudio.eclipse.general.project.artifact.bean.RegistryItem;
+import org.wso2.developerstudio.eclipse.general.project.utils.GeneralProjectUtils;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
@@ -144,8 +147,6 @@ public class NewResourceTemplateDialog extends Dialog {
 		      public void handleEvent(Event event) {
 		    	  Shell shell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
 		    	  
-		    	  //TODO susinda fix this and uncomment
-		  		  /*
 					IProject generalProject = GeneralProjectUtils.createGeneralProject(shell,null);
 					if(generalProject!=null){
 						cmbProject.add(generalProject.getName());
@@ -153,7 +154,6 @@ public class NewResourceTemplateDialog extends Dialog {
 							cmbProject.select(cmbProject.getItems().length -1);
 						}
 					}
-					*/
 		        }
 		      }); 
 		Label lblArtifactName = new Label(container, SWT.NONE);
@@ -433,8 +433,6 @@ public class NewResourceTemplateDialog extends Dialog {
 		RegistryResourceUtils.addRegistryResourceInfo(destFile, regResInfoDoc,
 				project.getLocation().toFile(), registryPath);
 
-		//TODO susinda fix this and uncomment
-		/*
 		GeneralProjectArtifact generalProjectArtifact = new GeneralProjectArtifact();
 		generalProjectArtifact.fromFile(project.getFile("artifact.xml")
 				.getLocation().toFile());
@@ -463,7 +461,6 @@ public class NewResourceTemplateDialog extends Dialog {
 		addGeneralProjectPlugin(project);
 		project.refreshLocal(IResource.DEPTH_INFINITE,
 				new NullProgressMonitor());
-		*/
 		return true;
 	}
 	

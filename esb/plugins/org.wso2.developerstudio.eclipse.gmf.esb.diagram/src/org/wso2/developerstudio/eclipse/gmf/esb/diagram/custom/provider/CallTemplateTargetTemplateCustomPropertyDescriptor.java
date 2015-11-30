@@ -52,10 +52,10 @@ import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IFileEditorInput;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBArtifact;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBProjectArtifact;
-//import org.wso2.developerstudio.eclipse.general.project.artifact.GeneralProjectArtifact;
-//import org.wso2.developerstudio.eclipse.general.project.artifact.RegistryArtifact;
-//import org.wso2.developerstudio.eclipse.general.project.artifact.bean.RegistryElement;
-//import org.wso2.developerstudio.eclipse.general.project.artifact.bean.RegistryItem;
+import org.wso2.developerstudio.eclipse.general.project.artifact.GeneralProjectArtifact;
+import org.wso2.developerstudio.eclipse.general.project.artifact.RegistryArtifact;
+import org.wso2.developerstudio.eclipse.general.project.artifact.bean.RegistryElement;
+import org.wso2.developerstudio.eclipse.general.project.artifact.bean.RegistryItem;
 import org.wso2.developerstudio.eclipse.gmf.esb.CallTemplateMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.CallTemplateParameter;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
@@ -192,8 +192,6 @@ public class CallTemplateTargetTemplateCustomPropertyDescriptor extends Property
 		Map<String, String> availableTemplatesMap = new HashMap<String, String>();
 		IProject[] projects = ResourcesPlugin.getWorkspace().getRoot().getProjects();
 		
-		//TODO susinda fix this and uncomment
-		/*
 		for (IProject workspaceProject : projects) {
 			if (workspaceProject.isOpen()
 					&& workspaceProject.hasNature("org.wso2.developerstudio.eclipse.general.project.nature")) {
@@ -231,7 +229,6 @@ public class CallTemplateTargetTemplateCustomPropertyDescriptor extends Property
 				}
 			}
 		}
-		*/
 		return availableTemplatesMap;
 	}
 }

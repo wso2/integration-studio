@@ -84,15 +84,15 @@ import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.FileEditorInput;
 import org.wso2.developerstudio.eclipse.artifact.sequence.validators.SequenceTemplate;
-//import org.wso2.developerstudio.eclipse.capp.maven.utils.MavenConstants;
+import org.wso2.developerstudio.eclipse.capp.maven.utils.MavenConstants;
 import org.wso2.developerstudio.eclipse.esb.core.ESBMavenConstants;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBArtifact;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBProjectArtifact;
 import org.wso2.developerstudio.eclipse.esb.project.utils.ESBProjectUtils;
-//import org.wso2.developerstudio.eclipse.general.project.artifact.GeneralProjectArtifact;
-//import org.wso2.developerstudio.eclipse.general.project.artifact.RegistryArtifact;
-//import org.wso2.developerstudio.eclipse.general.project.artifact.bean.RegistryElement;
-//import org.wso2.developerstudio.eclipse.general.project.artifact.bean.RegistryItem;
+import org.wso2.developerstudio.eclipse.general.project.artifact.GeneralProjectArtifact;
+import org.wso2.developerstudio.eclipse.general.project.artifact.RegistryArtifact;
+import org.wso2.developerstudio.eclipse.general.project.artifact.bean.RegistryElement;
+import org.wso2.developerstudio.eclipse.general.project.artifact.bean.RegistryItem;
 import org.wso2.developerstudio.eclipse.gmf.esb.ArtifactType;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 import org.wso2.developerstudio.eclipse.gmf.esb.KeyType;
@@ -802,8 +802,6 @@ public class SequenceEditPart extends FixedSizedAbstractMediator {
 	
 	private void addSequenceToRegistryArtifactXML(String sequenceName, IProject currentProject) {
 		
-		//TODO susinda fix this and uncomment
-		/*
 		GeneralProjectArtifact generalProjectArtifact = new GeneralProjectArtifact();
 		try {
 			generalProjectArtifact.fromFile(currentProject.getFile("artifact.xml").getLocation().toFile());
@@ -827,7 +825,6 @@ public class SequenceEditPart extends FixedSizedAbstractMediator {
 		} catch (Exception e) {
 			log.error("Error while updating Artifact.xml", e);
 		}
-		*/
 	}
 
 	/**

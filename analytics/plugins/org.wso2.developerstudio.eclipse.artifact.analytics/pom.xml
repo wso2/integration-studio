@@ -26,6 +26,6 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>org.wso2.developerstudio.eclipse.artifact.analytics</artifactId>
     <packaging>eclipse-plugin</packaging>
-    <name>Developer Studio Analytics Project</name>
+    <name>Developer Studio Analytics Artifact</name>
 
 </project>

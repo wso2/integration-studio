@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="org.wso2.developerstudio.eclipse.analytics.feature"
-      label="Analytics Feature"
+      label="WSO2 Analytics Tooling Feature"
       version="4.0.0.qualifier"
       provider-name="%providerName">
 
    <description url="http://wso2.com">
-      This feature will install plugins related WSO2 Carbon Analytics Support.
+      This feature will install plugins related WSO2 Analytics Tooling Support.
    </description>
 
    <copyright url="%copyrightURL">

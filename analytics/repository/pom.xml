@@ -21,6 +21,6 @@
     </parent>
     <artifactId>wso2-developer-studio-kernel-analytics-p2</artifactId>
     <packaging>eclipse-repository</packaging>
-    <name>WSO2 Developer Studio Kernel - App Server P2 Repository</name>
+    <name>WSO2 - Analytics Tooling P2 Repository</name>
     <url>http://wso2.org</url>
 </project>

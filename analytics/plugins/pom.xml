@@ -9,7 +9,7 @@
     </parent>
     <artifactId>wso2-developerstudio-analytics-plugins</artifactId>
     <packaging>pom</packaging>
-    <name>WSO2 Developer Studio Analytics Plugins</name>
+    <name>WSO2 Analytics Tooling Plugins</name>
     <modules>
  	<module>org.wso2.developerstudio.eclipse.artifact.analytics</module>
 	<module>org.wso2.developerstudio.eclipse.artifact.analytics.execution.plan</module>

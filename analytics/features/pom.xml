@@ -24,7 +24,7 @@
     </parent>
     <artifactId>wso2-developerstudio-analytics-feature</artifactId>
     <packaging>pom</packaging>
-    <name>WSO2 Developer Studio Analytics Feature</name>
+    <name>WSO2 Analytics Tooling Feature</name>
     <modules>
         <module>org.wso2.developerstudio.eclipse.analytics.feature</module>
     </modules>

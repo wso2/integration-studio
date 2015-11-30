@@ -11,7 +11,7 @@
     </parent>
     <artifactId>org.wso2.developerstudio.eclipse.esb.feature</artifactId>
     <packaging>eclipse-feature</packaging>
-    <name>WSO2 Developer Studio App Server Feature</name>
+    <name>WSO2 Developer Studio ESB Server Feature</name>
     <description>This feature contains the bundles for WSO2 ESB feature.</description>
     <build>
         <plugins>

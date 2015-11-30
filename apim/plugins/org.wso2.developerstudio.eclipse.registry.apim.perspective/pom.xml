@@ -27,5 +27,5 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>org.wso2.developerstudio.eclipse.registry.apim.perspective</artifactId>
     <packaging>eclipse-plugin</packaging>
-    <name>Developer Studio APIM Perspective</name>
+    <name>Developer Studio API Manager Perspective</name>
 </project>

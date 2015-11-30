@@ -9,7 +9,7 @@
     </parent>
     <artifactId>wso2-developerstudio-apim-plugins</artifactId>
     <packaging>pom</packaging>
-    <name>WSO2 Developer Studio API Manager Plugins</name>
+    <name>WSO2 API Manager Tooling Plugins</name>
     <modules>
         <module>org.wso2.developerstudio.eclipse.registry.apim.perspective</module>
     </modules>

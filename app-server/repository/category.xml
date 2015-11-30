@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-   <category-def name="org.wso2.developerstudio.eclipse.app.server.feature.category" label="App Server Category"/>
+   <category-def name="org.wso2.developerstudio.eclipse.app.server.feature.category" label="WSO2 APP Server Tools"/>
 <description>
 		This is the App Server Feature for the Developer Studio. This provides tooling support for WSO2 App Server Artifact creation and deployment with Developer Studio.
       </description>

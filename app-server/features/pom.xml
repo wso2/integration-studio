@@ -24,7 +24,7 @@
     </parent>
     <artifactId>wso2-developerstudio-appserver-feature</artifactId>
     <packaging>pom</packaging>
-    <name>WSO2 Developer Studio App Server Feature</name>
+    <name>WSO2 APP Server Tooling Feature</name>
     <modules>
         <module>org.wso2.developerstudio.eclipse.app.server.feature</module>
     </modules>

@@ -9,7 +9,7 @@
     </parent>
     <artifactId>wso2-developerstudio-appserver-plugins</artifactId>
     <packaging>pom</packaging>
-    <name>WSO2 Developer Studio App Server Plugins</name>
+    <name>WSO2 APP Server Tooling Plugins</name>
     <modules>
         <module>org.wso2.developerstudio.eclipse.artifact.axis2</module>
         <module>org.wso2.developerstudio.eclipse.artifact.axis2serviceclient</module>

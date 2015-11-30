@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-   <category-def name="org.wso2.developerstudio.eclipse.brs.feature.category" label="Business Rules Service"/>
+   <category-def name="org.wso2.developerstudio.eclipse.brs.feature.category" label="WSO2 Business Rules Service Tools"/>
 <description>
 		This is the Business Rules Service Feature for the Developer Studio. This provides tooling support for WSO2 Business Rules Service Artifact creation and deployment with Developer Studio.
       </description>

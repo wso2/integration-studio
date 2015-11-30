@@ -1,6 +1,0 @@
---TEST--
-Test This Variable
---FILE--
-<? class A { function foo() { $th| } } ?>
---EXPECT--
-field($this)

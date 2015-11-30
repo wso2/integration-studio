@@ -1,97 +1,252 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
-	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-
-
-
-	<parent>
-    	<groupId>org.wso2.eclipse</groupId>
-    	<artifactId>wso2-eclipse-parent</artifactId>
-    	<version>3.8.0</version>
-    	</parent>
-	<modelVersion>4.0.0</modelVersion>
-	<groupId>org.eclipse.php</groupId>
-	<artifactId>org.eclipse.pdt.releng</artifactId>
-	<version>2.1.0</version>
-	<packaging>pom</packaging>
-
-	<!-- this is the parent POM from which all modules inherit common settings -->
-	<properties>
-		
-		<antrun-version>1.7</antrun-version>
-		<maven.test.failure.ignore>true</maven.test.failure.ignore>
-	</properties>
-
-	<build>
-		<plugins>
-			<plugin>
-				<!-- enable tycho build extension -->
-				<groupId>org.eclipse.tycho</groupId>
-				<artifactId>tycho-maven-plugin</artifactId>
-				<version>${tycho-version}</version>
-				<extensions>true</extensions>
-			</plugin>
-			<plugin>
-				<groupId>org.eclipse.tycho</groupId>
-				<artifactId>tycho-source-plugin</artifactId>
-				<version>${tycho-version}</version>
-				<executions>
-					<execution>
-						<id>plugin-source</id>
-						<goals>
-							<goal>plugin-source</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-		</plugins>
-	</build>
-
-	<repositories>
-		<!--repository>
-			<id>dltk-tests</id>
-			<layout>p2</layout>
-			<url>https://hudson.eclipse.org/hudson/job/dltk-nightly/lastSuccessfulBuild/artifact/org.eclipse.dltk.releng/build/update.site/target/site/</url>
-		</repository -->
-		<repository>
-			<id>juno</id>
-			<layout>p2</layout>
-			<url>http://download.eclipse.org/releases/juno</url>
-		</repository>
-		<repository>
-			<id>eclipse-tests</id>
-			<layout>p2</layout>
-			<url>http://download.eclipse.org/eclipse/updates/4.2/R-4.2-201206081400</url>
-		</repository>
-	</repositories>
-
-	<pluginRepositories>
-		<pluginRepository>
-			<id>maven.eclipse.org</id>
-			<url>http://maven.eclipse.org/nexus/content/groups/public/</url>
-		</pluginRepository>
-	</pluginRepositories>
-
-	<modules>
-		<module>org.eclipse.php-feature</module>
-		<module>org.eclipse.php-repository</module>
-		<module>org.eclipse.php.core</module>
-		<module>org.eclipse.php.core.parser</module>
-		<!--module>org.eclipse.php.core.performance.tests</module-->
-		<!--module>org.eclipse.php.core.tests</module-->
-		<module>org.eclipse.php.debug.core</module>
-		<module>org.eclipse.php.debug.daemon</module>
-		<module>org.eclipse.php.debug.ui</module>
-		<module>org.eclipse.php.help</module>
-		<module>org.eclipse.php.mylyn-feature</module>
-		<module>org.eclipse.php.mylyn.ui</module>
-		<module>org.eclipse.php.server.core</module>
-		<module>org.eclipse.php.server.ui</module>
-		<module>org.eclipse.php.source-feature</module>
-		<!--module>org.eclipse.php.test-feature</module-->
-		<module>org.eclipse.php.ui</module>
-		<!--<module>org.eclipse.php.ui.tests</module>-->
-	</modules>
-
+<!--
+~ Copyright (c) WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+~
+~ Licensed under the Apache License, Version 2.0 (the "License");
+~ you may not use this file except in compliance with the License.
+~ You may obtain a copy of the License at
+~
+~      http://www.apache.org/licenses/LICENSE-2.0
+~
+~ Unless required by applicable law or agreed to in writing, software
+~ distributed under the License is distributed on an "AS IS" BASIS,
+~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+~ See the License for the specific language governing permissions and
+~ limitations under the License.
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.wso2.developerstudio</groupId>
+    <artifactId>wso2-developerstudio-jaggery-toolkit</artifactId>
+    <version>4.0.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <name>WSO2 Developer Studio Kernel Parent</name>
+    <modules>
+        <module>plugins</module>
+        <module>features</module>
+        <module>repository</module>
+    </modules>
+    <scm>
+        <connection>scm:git:https://github.com/wso2/developer-studio.git</connection>
+        <developerConnection>scm:git:https://github.com/wso2/developer-studio.git</developerConnection>
+        <url>https://github.com/wso2/developer-studio.git</url>
+    </scm>
+    <distributionManagement>
+        <repository>
+            <id>nexus-releases</id>
+            <name>WSO2 Release Distribution Repository</name>
+            <url>http://maven.wso2.org/nexus/service/local/staging/deploy/maven2/</url>
+        </repository>
+    </distributionManagement>
+    <properties>
+        <axis2.mr.tools.version>4.0.0-SNAPSHOT</axis2.mr.tools.version>
+        <carbon.tools.version>4.0.0-SNAPSHOT</carbon.tools.version>
+        <common.framework.feature.version>4.0.0-SNAPSHOT</common.framework.feature.version>
+        <!--********** bundle plugin versions **********-->
+        <common.libraries.version>4.0.0-SNAPSHOT</common.libraries.version>
+        <common.logging.version>4.0.0-SNAPSHOT</common.logging.version>
+        <common.maven.version>4.0.0-SNAPSHOT</common.maven.version>
+        <common.tools.version>4.0.0-SNAPSHOT</common.tools.version>
+        <common.ui.version>4.0.0-SNAPSHOT</common.ui.version>
+        <common.utils.version>4.0.0-SNAPSHOT</common.utils.version>
+        <core.plugins.version>4.0.0-SNAPSHOT</core.plugins.version>
+        <core.tools.version>4.0.0-SNAPSHOT</core.tools.version>
+        <embedded.tomcat.version>4.0.0-SNAPSHOT</embedded.tomcat.version>
+        <kernel.feature.version>4.0.0-SNAPSHOT</kernel.feature.version>
+        <kernel.samples.feature.version>4.0.0-SNAPSHOT</kernel.samples.feature.version>
+        <logging.tools.version>4.0.0-SNAPSHOT</logging.tools.version>
+        <osde.feature.version>4.0.0-SNAPSHOT</osde.feature.version>
+        <osde.tools.version>0.9.5</osde.tools.version>
+        <p2.manager.version>4.0.0-SNAPSHOT</p2.manager.version>
+        <p2.manager36.version>4.0.0-SNAPSHOT</p2.manager36.version>
+        <plugin.samples.feature.version>4.0.0-SNAPSHOT</plugin.samples.feature.version>
+        <plugin.samples.version>4.0.0-SNAPSHOT</plugin.samples.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.scm.id>my-scm-server</project.scm.id>
+        <tycho-version>0.23.0</tycho-version>
+        <version.mvn-resource-plugin>2.7</version.mvn-resource-plugin>
+        <version.sortpom.plugin>2.3.0</version.sortpom.plugin>
+        <webeditor.version>4.0.0-SNAPSHOT</webeditor.version>
+        <wso2.tomcat.version>7.0.59.wso2v3</wso2.tomcat.version>
+	<antrun-version>1.7</antrun-version>
+    </properties>
+    <repositories>
+        <repository>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>daily</updatePolicy>
+                <checksumPolicy>ignore</checksumPolicy>
+            </releases>
+            <id>Eclipse-p2-repo</id>
+            <url>http://download.eclipse.org/releases/luna/</url>
+            <layout>p2</layout>
+        </repository>
+        <repository>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>daily</updatePolicy>
+                <checksumPolicy>ignore</checksumPolicy>
+            </releases>
+            <id>WSO2-Nexus-Maven-Repository</id>
+            <url>http://maven.wso2.org/nexus/content/groups/wso2-public/</url>
+            <layout>default</layout>
+        </repository>
+        <repository>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>daily</updatePolicy>
+                <checksumPolicy>ignore</checksumPolicy>
+            </releases>
+            <id>DevS-Deps-p2-Repository</id>
+            <url>http://builder1.us1.wso2.org/~developerstudio/developer-studio-kernel/dependencies/p2/</url>
+            <layout>p2</layout>
+        </repository>
+	<repository>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>daily</updatePolicy>
+                <checksumPolicy>ignore</checksumPolicy>
+            </releases>
+            <id>DevS-Deps-p2-alpha-Repository</id>
+            <url>http://builder1.us1.wso2.org/~developerstudio/developer-studio-kernel/4.0.0/alpha/p2/</url>
+            <layout>p2</layout>
+        </repository>
+        <repository>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>daily</updatePolicy>
+                <checksumPolicy>ignore</checksumPolicy>
+            </releases>
+            <id>WSO2-p2-Repository</id>
+            <url>http://product-dist.wso2.com/p2/carbon/releases/wilkes/</url>
+            <layout>p2</layout>
+        </repository>
+        <repository>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>daily</updatePolicy>
+                <checksumPolicy>ignore</checksumPolicy>
+            </snapshots>
+            <id>WSO2-Nexus-Maven-SNAPSHOT-Repository</id>
+            <url>http://maven.wso2.org/nexus/content/repositories/wso2.maven2.snapshot/</url>
+            <layout>default</layout>
+        </repository>
+    </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>repository.dev.java.net-maven2</id>
+            <name>Java.net Repository for Maven</name>
+            <url>http://download.java.net/maven/2/</url>
+            <layout>default</layout>
+        </pluginRepository>
+        <pluginRepository>
+            <id>repository.org.eclipse.bpel</id>
+            <name>eclipse bpel Repository for Maven</name>
+            <url>http://download.eclipse.org/bpel/site/</url>
+            <layout>default</layout>
+        </pluginRepository>
+        <pluginRepository>
+            <id>wso2-maven2-repository</id>
+            <url>http://dist.wso2.org/maven2</url>
+        </pluginRepository>
+    </pluginRepositories>
+    <build>
+        <extensions>
+            <extension>
+                <groupId>org.apache.maven.wagon</groupId>
+                <artifactId>wagon-ssh</artifactId>
+                <version>2.1</version>
+            </extension>
+        </extensions>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>com.google.code.sortpom</groupId>
+                    <artifactId>maven-sortpom-plugin</artifactId>
+                    <version>${version.sortpom.plugin}</version>
+                    <configuration>
+                        <expandEmptyElements>false</expandEmptyElements>
+                        <nrOfIndentSpace>4</nrOfIndentSpace>
+                        <createBackupFile>false</createBackupFile>
+                        <sortProperties>true</sortProperties>
+                        <sortDependencies>groupId,artifactId,scope</sortDependencies>
+                        <verifyFail>Stop</verifyFail>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+        <plugins>
+            <plugin>
+                <groupId>com.google.code.sortpom</groupId>
+                <artifactId>maven-sortpom-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.eclipse.tycho</groupId>
+                <artifactId>tycho-maven-plugin</artifactId>
+                <version>${tycho-version}</version>
+                <extensions>true</extensions>
+            </plugin>
+            <plugin>
+                <groupId>org.eclipse.tycho</groupId>
+                <artifactId>tycho-source-plugin</artifactId>
+                <version>${tycho-version}</version>
+                <executions>
+                    <execution>
+                        <id>plugin-source</id>
+                        <goals>
+                            <goal>plugin-source</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.eclipse.tycho</groupId>
+                <artifactId>target-platform-configuration</artifactId>
+                <version>${tycho-version}</version>
+                <configuration>
+                    <resolver>p2</resolver>
+                    <environments>
+                        <environment>
+                            <os>linux</os>
+                            <ws>gtk</ws>
+                            <arch>x86</arch>
+                        </environment>
+                        <environment>
+                            <os>linux</os>
+                            <ws>gtk</ws>
+                            <arch>x86_64</arch>
+                        </environment>
+                        <environment>
+                            <os>win32</os>
+                            <ws>win32</ws>
+                            <arch>x86</arch>
+                        </environment>
+                        <environment>
+                            <os>win32</os>
+                            <ws>win32</ws>
+                            <arch>x86_64</arch>
+                        </environment>
+                        <environment>
+                            <os>macosx</os>
+                            <ws>cocoa</ws>
+                            <arch>x86</arch>
+                        </environment>
+                        <environment>
+                            <os>macosx</os>
+                            <ws>cocoa</ws>
+                            <arch>x86_64</arch>
+                        </environment>
+                    </environments>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <configuration>
+                    <preparationGoals>clean install</preparationGoals>
+                    <autoVersionSubmodules>false</autoVersionSubmodules>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>

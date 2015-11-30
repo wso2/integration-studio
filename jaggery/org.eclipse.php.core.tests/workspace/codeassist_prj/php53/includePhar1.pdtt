@@ -1,8 +1,0 @@
---TEST--
-Must complete no includes 
---FILE--
-<?php
-include "|";
-
-?>
---EXPECT--

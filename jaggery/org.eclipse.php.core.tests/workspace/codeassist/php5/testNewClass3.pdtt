@@ -1,6 +1,0 @@
---TEST--
-Test New Self
---FILE--
-<? class MyClass { function getInstance() { return new sel| ; } } ?> 
---EXPECT--
-method(self)

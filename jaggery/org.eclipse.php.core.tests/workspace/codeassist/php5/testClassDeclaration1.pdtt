@@ -1,7 +1,0 @@
---TEST--
-Test Class Declaration
---FILE--
-<? class A | ?>
---EXPECT--
-keyword(extends)
-keyword(implements)

@@ -2,7 +2,7 @@
 <site>
    <category-def name="org.wso2.developerstudio.eclipse.esb.feature.category" label="WSO2 Enterprise Service Bus"/>
 <description>
-		This is the App Server Feature for the Developer Studio. This provides tooling support for WSO2 ESB Artifact creation and deployment with Developer Studio.
+		This is the ESB Server Feature for the Developer Studio. This provides tooling support for WSO2 ESB Artifact creation and deployment with Developer Studio.
       </description>
  <feature id="org.wso2.developerstudio.eclipse.esb.feature" version="0.0.0">
       <category name="org.wso2.developerstudio.eclipse.esb.feature.category"/>

@@ -41,7 +41,7 @@
 	<module>org.wso2.developerstudio.carbon.server-44.feature</module>
 	<module>org.wso2.developerstudio.kernel.security.feature</module>
 	<module>org.wso2.developerstudio.library.artifact.feature</module>
-<module>org.wso2.developerstudio.kernel.wso2plugins.default.samples.feature</module>
+	<module>org.wso2.developerstudio.kernel.wso2plugins.default.samples.feature</module>
 
     </modules>
     <distributionManagement>

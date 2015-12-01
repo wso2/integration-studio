@@ -17,6 +17,9 @@
         <page id="org.wso2.developerstudio.eclipse.ui.developerstudio.preferences.parent.maven" name="Maven Information"
               class="org.wso2.developerstudio.eclipse.platform.ui.preferences.MavenInfoPreferencePage"
               category="org.wso2.developerstudio.eclipse.ui.developerstudio.preferences"/>
+         <page id="org.wso2.developerstudio.eclipse.ui.developerstudio.preferences.capp" name="Capp Preferences"
+              class="org.wso2.developerstudio.eclipse.platform.ui.preferences.CappPreferencesPage"
+              category="org.wso2.developerstudio.eclipse.ui.developerstudio.preferences"/>
               
         <page id="org.wso2.developerstudio.eclipse.ui.developerstudio.kernel.update preferences." name="Update checker"
               class="org.wso2.developerstudio.eclipse.platform.ui.preferences.UpdateCheckerPreferencePage"

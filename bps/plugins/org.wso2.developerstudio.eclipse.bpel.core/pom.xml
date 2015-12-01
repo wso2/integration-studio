@@ -27,5 +27,5 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>org.wso2.developerstudio.eclipse.bpel.core</artifactId>
     <packaging>eclipse-plugin</packaging>
-    <name>Developer Studio Carbon Application BPEL Core</name>
+    <name>Developer Studio BPEL Core</name>
 </project>

@@ -24,7 +24,7 @@
     </parent>
     <artifactId>wso2-developerstudio-data-service-feature</artifactId>
     <packaging>pom</packaging>
-    <name>WSO2 Developer Studio Data Service Feature</name>
+    <name>WSO2 Developer Studio Data Service Tooling Feature</name>
     <modules>
         <module>org.wso2.developerstudio.eclipse.data.service.feature</module>
     </modules>

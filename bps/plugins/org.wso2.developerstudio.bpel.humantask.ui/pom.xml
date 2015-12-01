@@ -27,5 +27,5 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>org.wso2.developerstudio.bpel.humantask.ui</artifactId>
     <packaging>eclipse-plugin</packaging>
-    <name>Humantask UI</name>
+    <name>Developer Studio Humantask UI</name>
 </project>

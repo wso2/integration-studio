@@ -24,7 +24,7 @@
     </parent>
     <artifactId>wso2-developerstudio-artifact-carbon-ui-feature</artifactId>
     <packaging>pom</packaging>
-    <name>WSO2 Developer Studio Artifact Carbon UI Feature</name>
+    <name>WSO2 Carbon Artifact UI Feature</name>
     <modules>
         <module>org.wso2.developerstudio.eclipse.artifact.carbon.ui.feature</module>
     </modules>

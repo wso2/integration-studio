@@ -9,7 +9,7 @@
     </parent>
     <artifactId>org.wso2.developerstudio.eclipse.jaggery.feature</artifactId>
     <packaging>eclipse-feature</packaging>
-    <name>WSO2 Developer Studio Jaggery Feature</name>
+    <name>WSO2 Developer Studio Jaggery Editor Feature</name>
     <description>This feature contains the bundles for WSO2 Jaggery feature.</description>
     <build>
         <plugins>

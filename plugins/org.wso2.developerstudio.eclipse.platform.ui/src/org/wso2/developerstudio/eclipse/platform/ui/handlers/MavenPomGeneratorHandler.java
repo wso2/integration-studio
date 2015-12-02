@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ * Copyright (c) 2010-2015, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -41,7 +41,8 @@ import org.wso2.developerstudio.eclipse.platform.ui.mvn.wizard.MvnMultiModuleWiz
 import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
 
 /**
- * This is the handler class for generating maven pom for any given project option.
+ * This is the handler class for generating maven pom for any given project
+ * option.
  * This is used to provide maven multi module support for Developer Studio.
  * 
  */
@@ -50,58 +51,55 @@ public class MavenPomGeneratorHandler extends AbstractHandler {
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
 	public Object execute(ExecutionEvent arg0) throws ExecutionException {
-		IStructuredSelection selection =
-		                                 (IStructuredSelection) HandlerUtil.getCurrentSelectionChecked(arg0);
+		IStructuredSelection selection = (IStructuredSelection) HandlerUtil.getCurrentSelectionChecked(arg0);
 		IProject selectedUIElement = (IProject) selection.getFirstElement();
 
 		IFile pomFile = null;
 		boolean openQuestion = false;
-		
+
 		if (selectedUIElement.isOpen()) {
 			pomFile = selectedUIElement.getFile("pom.xml");
 			if (pomFile.exists()) {
-//				Check for the packaging type
+				// Check for the packaging type
 				try {
-	                MavenProject mavenProject = MavenUtils.getMavenProject(pomFile.getLocation().toFile());
-	                String packagingType = mavenProject.getPackaging();
-	                if(!"pom".equalsIgnoreCase(packagingType)){
-//	                	If not pom ask user to confirm the pom overwrte operation
-	                	openQuestion =
-	                		MessageDialog.openQuestion(Display.getDefault().getActiveShell(),
-	                		                           "Generate POM for the Project",
-	                		"Are you sure you want to overwite the existing pom file?");
-	                	
-//	                	If confirms, back up the pom and create the aggregator pom
-	                	if(openQuestion){
-	                		IFolder backupFolder = selectedUIElement.getFolder("BACK_UP");
-	                		IFile backupFile = backupFolder.getFile("pom.xml");
-	                		FileUtils.copy(pomFile.getLocation().toFile(), backupFile.getLocation().toFile());
-	                		
-	                		selectedUIElement.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
-	                		
-//	                		Open the new wizard
-	                		openWizard(MAVEN_MUL_MODULE_WIZARD_ID,selectedUIElement);
-	                	}
-	                }else{
-//	                	If it is pom, extract the maven info and pop up the wizard with that data and preserve the current content and just add the new content
-	                	openWizard(MAVEN_MUL_MODULE_WIZARD_ID,selectedUIElement);
-	                }
-                } catch (Exception e) {
-	                log.error("Error occured while tying to access the maven project corresponding to pom file", e);
-                }
-			}else{
+					MavenProject mavenProject = MavenUtils.getMavenProject(pomFile.getLocation().toFile());
+					String packagingType = mavenProject.getPackaging();
+					if (!"pom".equalsIgnoreCase(packagingType)) {
+						// If not pom ask user to confirm the pom overwrte operation
+						openQuestion = MessageDialog.openQuestion(Display.getDefault().getActiveShell(),
+						                                          "Generate POM for the Project",
+						                                          "Are you sure you want to overwite the existing pom file?");
+
+						// If confirms, back up the pom and create the aggregator pom
+						if (openQuestion) {
+							IFolder backupFolder = selectedUIElement.getFolder("BACK_UP");
+							IFile backupFile = backupFolder.getFile("pom.xml");
+							FileUtils.copy(pomFile.getLocation().toFile(), backupFile.getLocation().toFile());
+
+							selectedUIElement.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
+
+							// Open the new wizard
+							openWizard(MAVEN_MUL_MODULE_WIZARD_ID, selectedUIElement);
+						}
+					} else {
+						// If it is pom, extract the maven info and pop up the
+						// wizard with that data and preserve the current
+						// content and just add the new content
+						openWizard(MAVEN_MUL_MODULE_WIZARD_ID, selectedUIElement);
+					}
+				} catch (Exception e) {
+					log.error("Error occured while tying to access the maven project corresponding to pom file", e);
+				}
+			} else {
 				openWizard(MAVEN_MUL_MODULE_WIZARD_ID, selectedUIElement);
 			}
 		}
 
 		return null;
 	}
-	
-	
+
 	private void openWizard(String id, IProject project) {
-		IWizardDescriptor descriptor =
-		                               PlatformUI.getWorkbench().getNewWizardRegistry()
-		                                         .findWizard(id);
+		IWizardDescriptor descriptor = PlatformUI.getWorkbench().getNewWizardRegistry().findWizard(id);
 		try {
 			if (null != descriptor) {
 				MvnMultiModuleWizard wizard = (MvnMultiModuleWizard) descriptor.createWizard();

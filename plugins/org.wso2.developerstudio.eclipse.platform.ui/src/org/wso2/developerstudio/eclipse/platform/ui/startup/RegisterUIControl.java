@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ * Copyright (c) 2010-2015, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,25 +16,23 @@
 
 package org.wso2.developerstudio.eclipse.platform.ui.startup;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import org.wso2.developerstudio.eclipse.platform.ui.interfaces.UIControl;
 
 public class RegisterUIControl {
-	
+
 	private static Map<String, UIControl> uiControlList;
-	
-	public void registerUIControls(String controlID, UIControl control){
-		if(getUiControlList() == null){
-			setUiControlList(new HashMap<String, UIControl>()); 
+
+	public void registerUIControls(String controlID, UIControl control) {
+		if (getUiControlList() == null) {
+			setUiControlList(new HashMap<String, UIControl>());
 		}
-		if(!getUiControlList().containsValue(control)){
+		if (!getUiControlList().containsValue(control)) {
 			getUiControlList().put(controlID, control);
 		}
-		
+
 	}
 
 	public static void setUiControlList(Map<String, UIControl> uiControlList) {

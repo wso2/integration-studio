@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ * Copyright (c) 2010-2015, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -39,76 +39,74 @@ import javax.xml.parsers.ParserConfigurationException;
 public class CommonFieldValidator {
 	private static final IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
-
-	public static void validateJavaClassNameField(Object value) throws FieldValidationException{
-	String className = value.toString();
-	if ("".equals(className)) {
-		throw new FieldValidationException("Class name cannot be empty");
-	} else {
-		if (!isJavaClassName(className)){
-			throw new FieldValidationException("Class name is invalid");
-		}
-	}	
-}
-
-public static void validateJavaFQN(Object value) throws FieldValidationException{
-	String className = value.toString();
-	if ("".equals(className)) {
-		throw new FieldValidationException("Class name cannot be empty");
-	} else {
-		if (!isJavaFQN(className)){
-			throw new FieldValidationException("Class name is invalid");
-		}
-	}	
-}
-
-public static boolean isJavaClassName(String name){
-	return name.matches("^[a-zA-Z_$][a-zA-Z\\d_$]*");
-}
-
-public static boolean isJavaFQN(String name){
-	return name.matches("^([a-zA-Z_$][a-zA-Z\\d_$]*\\.)*[a-zA-Z_$][a-zA-Z\\d_$]*");
-}
-
-public static boolean isJavaPackageName(String name){
-	return name.matches("([a-zA-Z_$][a-zA-Z\\d_$]*\\.)*[a-zA-Z_$][a-zA-Z\\d_$]*");
-}
-
-public static void validateJavaPackageNameField(Object value) throws FieldValidationException{
-	String packageName = value.toString();
-	if ("".equals(packageName)) {
-		throw new FieldValidationException("Package name cannot be empty");
-	}
-	else {
-		if (!isJavaPackageName(packageName)){
-			throw new FieldValidationException("Package name is invalid");
+	public static void validateJavaClassNameField(Object value) throws FieldValidationException {
+		String className = value.toString();
+		if ("".equals(className)) {
+			throw new FieldValidationException("Class name cannot be empty");
+		} else {
+			if (!isJavaClassName(className)) {
+				throw new FieldValidationException("Class name is invalid");
+			}
 		}
 	}
-}
 
-public static void validateProjectField(Object value) throws FieldValidationException{
-	if (value == null) {
-		throw new FieldValidationException("Project name cannot be empty");
-	}
-	String projectName = value.toString();
-	if (projectName.trim().equals("")) {
-		throw new FieldValidationException("Project name cannot be empty");
-	} else{
-		if(projectName.indexOf(0x20)!=-1){
-			throw new FieldValidationException("Project name cannot contain spaces");
-		} else{
-		    if(!isValidArtifactName(projectName)){
-		    	throw new FieldValidationException("Project name cannot contain invalid characters(^/ : ; * # $ ? \" <> + $)");	
-		    }
+	public static void validateJavaFQN(Object value) throws FieldValidationException {
+		String className = value.toString();
+		if ("".equals(className)) {
+			throw new FieldValidationException("Class name cannot be empty");
+		} else {
+			if (!isJavaFQN(className)) {
+				throw new FieldValidationException("Class name is invalid");
+			}
 		}
 	}
-	IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(projectName);
 
-	if (project.exists()) {
-		throw new FieldValidationException("Project with the name '" + projectName +
-		                                   "' already exists");
+	public static boolean isJavaClassName(String name) {
+		return name.matches("^[a-zA-Z_$][a-zA-Z\\d_$]*");
 	}
-}
+
+	public static boolean isJavaFQN(String name) {
+		return name.matches("^([a-zA-Z_$][a-zA-Z\\d_$]*\\.)*[a-zA-Z_$][a-zA-Z\\d_$]*");
+	}
+
+	public static boolean isJavaPackageName(String name) {
+		return name.matches("([a-zA-Z_$][a-zA-Z\\d_$]*\\.)*[a-zA-Z_$][a-zA-Z\\d_$]*");
+	}
+
+	public static void validateJavaPackageNameField(Object value) throws FieldValidationException {
+		String packageName = value.toString();
+		if ("".equals(packageName)) {
+			throw new FieldValidationException("Package name cannot be empty");
+		} else {
+			if (!isJavaPackageName(packageName)) {
+				throw new FieldValidationException("Package name is invalid");
+			}
+		}
+	}
+
+	public static void validateProjectField(Object value) throws FieldValidationException {
+		if (value == null) {
+			throw new FieldValidationException("Project name cannot be empty");
+		}
+		String projectName = value.toString();
+		if (projectName.trim().equals("")) {
+			throw new FieldValidationException("Project name cannot be empty");
+		} else {
+			if (projectName.indexOf(0x20) != -1) {
+				throw new FieldValidationException("Project name cannot contain spaces");
+			} else {
+				if (!isValidArtifactName(projectName)) {
+					throw new FieldValidationException(
+					                                   "Project name cannot contain invalid characters(^/ : ; * # $ ? \" <> + $)");
+				}
+			}
+		}
+		IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(projectName);
+
+		if (project.exists()) {
+			throw new FieldValidationException("Project with the name '" + projectName + "' already exists");
+		}
+	}
 
 	public static void isValidUrl(String url, String field) throws FieldValidationException {
 
@@ -119,45 +117,43 @@ public static void validateProjectField(Object value) throws FieldValidationExce
 		}
 	}
 
-private static boolean isParameter(String field,boolean partial){
-	Pattern pattern = Pattern.compile("\\$\\{(.*?)\\}");
-	Matcher matcher = pattern.matcher(field);
-	boolean find=false;
-	if(partial){
-		while(matcher.find())
-		{
-			find=true;
-			if(!isValidArtifactName(matcher.group(1).trim())){
-				return false;
-			}
-		}
-	} else{
-		if( matcher.matches()){
-			find= !matcher.group(1).trim().isEmpty();
-		} else{
-			int seq=0;
-			matcher.reset();
-			while(matcher.find())
-			{
-				find=true;
-				String parameter = matcher.group(1).trim();
-				if(!isValidArtifactName(parameter)){
+	private static boolean isParameter(String field, boolean partial) {
+		Pattern pattern = Pattern.compile("\\$\\{(.*?)\\}");
+		Matcher matcher = pattern.matcher(field);
+		boolean find = false;
+		if (partial) {
+			while (matcher.find()) {
+				find = true;
+				if (!isValidArtifactName(matcher.group(1).trim())) {
 					return false;
 				}
-				if(++seq==1){
-					if(!field.startsWith("${" + parameter + "}")){
+			}
+		} else {
+			if (matcher.matches()) {
+				find = !matcher.group(1).trim().isEmpty();
+			} else {
+				int seq = 0;
+				matcher.reset();
+				while (matcher.find()) {
+					find = true;
+					String parameter = matcher.group(1).trim();
+					if (!isValidArtifactName(parameter)) {
 						return false;
 					}
-				}
-				
-			}
-		}
-		
-	}
-	return find;
-}
+					if (++seq == 1) {
+						if (!field.startsWith("${" + parameter + "}")) {
+							return false;
+						}
+					}
 
-	public static boolean isValidArtifactName(String name){
+				}
+			}
+
+		}
+		return find;
+	}
+
+	public static boolean isValidArtifactName(String name) {
 		Pattern pattern = Pattern.compile("^[^/\\ \\\\:@%\\^+;,=\\[\\{\\]\\}*#\\$?\"<>|\\(\\)]+$");
 		Matcher matcher = pattern.matcher(name);
 		return matcher.matches();
@@ -166,7 +162,8 @@ private static boolean isParameter(String field,boolean partial){
 	/**
 	 * Method checks for given string is a valid XML
 	 *
-	 * @param xmlString a non empty xml string
+	 * @param xmlString
+	 *            a non empty xml string
 	 * @return boolean, true if valid, else false
 	 */
 	public static boolean isValidXML(String xmlString) {
@@ -194,44 +191,45 @@ private static boolean isParameter(String field,boolean partial){
 		return true;
 	}
 
-	public static void validateArtifactName(Object value) throws FieldValidationException{
+	public static void validateArtifactName(Object value) throws FieldValidationException {
 		if (value == null) {
 			throw new FieldValidationException("Artifact name cannot be empty");
 		}
 		String name = value.toString();
 		if (name.trim().equals("")) {
 			throw new FieldValidationException("Artifact name cannot be empty");
-		} else{
-			 if(!isValidArtifactName(name)){
-				 throw new FieldValidationException("Artifact name cannot contain invalid characters (/:@%\\^+;,=*#[{]}$?\"<> +)");	 
-			 }
+		} else {
+			if (!isValidArtifactName(name)) {
+				throw new FieldValidationException(
+				                                   "Artifact name cannot contain invalid characters (/:@%\\^+;,=*#[{]}$?\"<> +)");
+			}
 		}
 	}
-	
-	public static void validateRequiredField(Object value,String msg) throws FieldValidationException{
+
+	public static void validateRequiredField(Object value, String msg) throws FieldValidationException {
 		if (value == null) {
 			throw new FieldValidationException(msg);
 		}
 		String name = value.toString();
 		if (name.trim().equals("")) {
 			throw new FieldValidationException(msg);
-		} 
+		}
 	}
-	
-	public static void validateImportFile(Object value) throws FieldValidationException{
+
+	public static void validateImportFile(Object value) throws FieldValidationException {
 		if (value == null) {
 			throw new FieldValidationException("Specified configuration file location is invalid");
 		}
 		String name = value.toString();
 		if (name.trim().equals("")) {
 			throw new FieldValidationException("Specified configuration file location is invalid");
-		} else{
+		} else {
 			File proxyFile = (File) value;
 			if (!proxyFile.exists()) {
 				throw new FieldValidationException("Specified configuration file doesn't exist");
-			}	
+			}
 		}
-		 
+
 	}
-	
+
 }

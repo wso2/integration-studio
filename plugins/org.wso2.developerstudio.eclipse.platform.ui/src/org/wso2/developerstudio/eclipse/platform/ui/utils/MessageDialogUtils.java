@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ * Copyright (c) 2010-2015, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,7 +27,8 @@ import org.eclipse.swt.widgets.Shell;
 
 public class MessageDialogUtils {
 	private static final String COMMON_TITLE = "Developer Studio";
-	public static void info(Shell shell,String message){
+
+	public static void info(Shell shell, String message) {
 		info(shell, message, COMMON_TITLE);
 	}
 
@@ -38,44 +39,39 @@ public class MessageDialogUtils {
 	public static void error(Shell shell, Exception e) {
 		error(shell, e.getMessage(), e);
 	}
-	
+
 	public static void error(Shell shell, String message, Exception e) {
 		error(shell, message, COMMON_TITLE, e);
 	}
-	
+
 	public static void error(Shell shell, String message, String title, Exception e) {
 		MessageDialog.openError(shell, title, message);
 	}
-	
+
 	public static void error(Shell shell, String title, String message) {
 		MessageDialog.openError(shell, title, message);
 	}
-	
+
 	public static void error(Shell shell, String message) {
 		MessageDialog.openError(shell, COMMON_TITLE, message);
 	}
-	
+
 	public static boolean question(Shell shell, String message) {
-		 return MessageDialog.openQuestion(shell, COMMON_TITLE, message);
+		return MessageDialog.openQuestion(shell, COMMON_TITLE, message);
 	}
-	
+
 	public static MultiStatus createMultiStatus(String msg, Throwable t, String packageID) {
 
 		List<Status> childStatuses = new ArrayList<>();
-		StackTraceElement[] stackTraces = Thread.currentThread()
-				.getStackTrace();
+		StackTraceElement[] stackTraces = Thread.currentThread().getStackTrace();
 
 		for (StackTraceElement stackTrace : stackTraces) {
-			Status status = new Status(IStatus.ERROR,
-					packageID,
-					stackTrace.toString());
+			Status status = new Status(IStatus.ERROR, packageID, stackTrace.toString());
 			childStatuses.add(status);
 		}
 
-		MultiStatus ms = new MultiStatus(
-				packageID,
-				IStatus.ERROR, childStatuses.toArray(new Status[] {}),
-				t.toString(), t);
+		MultiStatus ms = new MultiStatus(packageID, IStatus.ERROR, childStatuses.toArray(new Status[] {}),
+		                                 t.toString(), t);
 		return ms;
 	}
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ * Copyright (c) 2010-2015, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,7 +23,9 @@ import org.wso2.developerstudio.eclipse.platform.ui.utils.UnrecogizedArtifactTyp
 
 public interface Openable {
 
-	IEditorPart editorOpen(String name,String type,String locatioin,String source)throws Exception;
-	IEditorPart editorOpen(String type,String source,IFile file)throws Exception;
-	Enumerator artifactTypeResolver(String source)throws UnrecogizedArtifactTypeException,Exception;
+	IEditorPart editorOpen(String name, String type, String locatioin, String source) throws Exception;
+
+	IEditorPart editorOpen(String type, String source, IFile file) throws Exception;
+
+	Enumerator artifactTypeResolver(String source) throws UnrecogizedArtifactTypeException, Exception;
 }

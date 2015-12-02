@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ * Copyright (c) 2010-2015, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -37,32 +37,35 @@ import org.wso2.developerstudio.eclipse.platform.ui.manager.EclipseSWTTrustManag
  *
  */
 public class SSLUtils {
-	
+
 	private static SSLContext sslCtx;
-	
+
 	/**
 	 * Set the custom trust manager as the ssl protocol handler for the stub
+	 * 
 	 * @param stub
 	 * @throws Exception
 	 */
-	public static void setSSLProtocolHandler(Stub stub) throws Exception{
+	public static void setSSLProtocolHandler(Stub stub) throws Exception {
 		init();
-		stub._getServiceClient().getOptions().setProperty(HTTPConstants.CUSTOM_PROTOCOL_HANDLER,
-		          new Protocol("https",(ProtocolSocketFactory)new CustomSSLProtocolSocketFactory(sslCtx),443));
+		stub._getServiceClient()
+		    .getOptions()
+		    .setProperty(HTTPConstants.CUSTOM_PROTOCOL_HANDLER,
+		                 new Protocol("https", (ProtocolSocketFactory) new CustomSSLProtocolSocketFactory(sslCtx), 443));
 	}
 
 	/**
-	 * Initialize the ssl context with the custom trust manager 
-	 *   1. setup https access to the created ssl context
-	 *   2. setup hostname verifier
+	 * Initialize the ssl context with the custom trust manager
+	 * 1. setup https access to the created ssl context
+	 * 2. setup hostname verifier
+	 * 
 	 * @throws NoSuchAlgorithmException
 	 * @throws KeyManagementException
 	 */
-	public static void init() throws NoSuchAlgorithmException,
-			KeyManagementException {
-		if (sslCtx==null) {
+	public static void init() throws NoSuchAlgorithmException, KeyManagementException {
+		if (sslCtx == null) {
 			sslCtx = SSLContext.getInstance("SSL");
-			sslCtx.init(null,new TrustManager[] { getCustomTrustManager() }, null);
+			sslCtx.init(null, new TrustManager[] { getCustomTrustManager() }, null);
 			HttpsURLConnection.setDefaultSSLSocketFactory(sslCtx.getSocketFactory());
 			HostnameVerifier allHostsValid = new HostnameVerifier() {
 				public boolean verify(String hostname, SSLSession session) {
@@ -75,6 +78,7 @@ public class SSLUtils {
 
 	/**
 	 * Return customized trust manager
+	 * 
 	 * @return
 	 */
 	private static TrustManager getCustomTrustManager() {

@@ -1,17 +1,19 @@
-/* Copyright (c) WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
- *
+/*
+ * Copyright (c) 2010-2015, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package org.wso2.developerstudio.eclipse.platform.ui.preferences;
 
 import org.eclipse.jface.preference.BooleanFieldEditor;
@@ -23,9 +25,8 @@ import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPreferencePage;
 import org.wso2.developerstudio.eclipse.platform.ui.Activator;
 
-public class UpdateCheckerPreferencePage extends FieldEditorPreferencePage
-implements IWorkbenchPreferencePage {
-	
+public class UpdateCheckerPreferencePage extends FieldEditorPreferencePage implements IWorkbenchPreferencePage {
+
 	public static final String UPDATE_INTAVAL = "UPDATE_INTAVAL";
 	public static final String ENABLE_AUTOMATIC_UPDATES = "ENABLE_AUTOMATIC_UPDATES";
 	public static final String RELESE_SITE_URL = "RELESE_SITE_URL";
@@ -33,13 +34,13 @@ implements IWorkbenchPreferencePage {
 	public static final String PLUGIN_TEMPLATE_URL = "PLUGIN_TEMPLATE_URL";
 
 	private IPreferenceStore preferenceStore;
-	
+
 	@Override
 	public void init(IWorkbench workbench) {
 		preferenceStore = Activator.getDefault().getPreferenceStore();
 		setPreferenceStore(preferenceStore);
 		setDescription("WSO2 Developer Studio UpdateChecker Preference");
-		
+
 	}
 
 	@Override
@@ -52,6 +53,6 @@ implements IWorkbenchPreferencePage {
 				getFieldEditorParent());
 		addField(editor);	
 		addField(new StringFieldEditor(PLUGIN_TEMPLATE_URL, "Plug-in template location:", getFieldEditorParent()));
-	}	
+	}
 
 }

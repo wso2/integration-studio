@@ -1,3 +1,19 @@
+/*
+ * Copyright (c) 2010-2015, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package org.wso2.developerstudio.eclipse.platform.ui.preferences;
 
 import org.eclipse.jface.preference.BooleanFieldEditor;
@@ -10,9 +26,8 @@ import org.eclipse.ui.IWorkbenchPreferencePage;
 import org.wso2.developerstudio.eclipse.platform.ui.Activator;
 import org.wso2.developerstudio.eclipse.platform.ui.preferences.controls.LabelFieldEditor;
 
-public class MavenInfoPreferencePage extends FieldEditorPreferencePage
-implements IWorkbenchPreferencePage {
-	
+public class MavenInfoPreferencePage extends FieldEditorPreferencePage implements IWorkbenchPreferencePage {
+
 	private static final String UPDATE_POLICY_LABEL = "Update Policy";
 	private static final String CHECKSUM_POLICY_LABEL = "Checksum Policy";
 	private static final String EXCLUDE_WSO2_REPOSITORY_LABEL = "Disable WSO2 Maven Repository";
@@ -31,8 +46,8 @@ implements IWorkbenchPreferencePage {
 	private static final String GLOBAL_MAVEN_VERSION = "MAVEN_VERSION";
 	private static final String GLOBAL_MAVEN_GROUP_ID = "MAVEN_GROUPID";
 	private IPreferenceStore preferenceStore;
-	
-	public MavenInfoPreferencePage(){
+
+	public MavenInfoPreferencePage() {
 		super(GRID);
 	}
 
@@ -46,84 +61,62 @@ implements IWorkbenchPreferencePage {
 	@Override
 	protected void createFieldEditors() {
 		addEmptyField();
-		
+
 		addField(new LabelFieldEditor("Custom Maven Parent Information", getFieldEditorParent()));
-		
-		addField(new StringFieldEditor(GLOBAL_PARENT_MAVEN_GROUP_ID,
-				"Custom Parent GroupId", getFieldEditorParent()));
-		
-		addField(new StringFieldEditor(GLOBAL_PARENT_MAVEN_ARTIFACTID,
-				"Custom Parent ArtifactId", getFieldEditorParent()));
-		
-		addField(new StringFieldEditor(GLOBAL_PARENT_MAVEN_VERSION,
-				"Custom Parent Version", getFieldEditorParent()));
-		
+
+		addField(new StringFieldEditor(GLOBAL_PARENT_MAVEN_GROUP_ID, "Custom Parent GroupId", getFieldEditorParent()));
+
+		addField(new StringFieldEditor(GLOBAL_PARENT_MAVEN_ARTIFACTID, "Custom Parent ArtifactId",
+		                               getFieldEditorParent()));
+
+		addField(new StringFieldEditor(GLOBAL_PARENT_MAVEN_VERSION, "Custom Parent Version", getFieldEditorParent()));
+
 		addEmptyField();
-		
-		//Parent Project is done
-		
-		//Global GroupID and Version
-		
+
 		addField(new LabelFieldEditor("Custom Global Maven Information", getFieldEditorParent()));
-		
-		addField(new StringFieldEditor(GLOBAL_MAVEN_GROUP_ID,
-				"Custom GroupId", getFieldEditorParent()));
-		
-		addField(new StringFieldEditor(GLOBAL_MAVEN_VERSION,
-				"Custom Version", getFieldEditorParent()));
-		
+
+		addField(new StringFieldEditor(GLOBAL_MAVEN_GROUP_ID, "Custom GroupId", getFieldEditorParent()));
+
+		addField(new StringFieldEditor(GLOBAL_MAVEN_VERSION, "Custom Version", getFieldEditorParent()));
+
 		addEmptyField();
-		//Global GroupID and Version Done
-		
-		//Add Customized Repositories
+
 		addField(new LabelFieldEditor("Enable/Disable WSO2 Maven Repository", getFieldEditorParent()));
-		addField(new BooleanFieldEditor(
-				DISABLE_WSO2_REPOSITORY, EXCLUDE_WSO2_REPOSITORY_LABEL,
-				getFieldEditorParent()));
-		addEmptyField();
 		
+		addField(new BooleanFieldEditor(DISABLE_WSO2_REPOSITORY, EXCLUDE_WSO2_REPOSITORY_LABEL, getFieldEditorParent()));
+		
+		addEmptyField();
+
 		addField(new LabelFieldEditor("Custom Maven Repository Information", getFieldEditorParent()));
-		
-		addField(new StringFieldEditor(GLOBAL_REPOSITORY_URL,
-				"Custom Repository URL", getFieldEditorParent()));
-		
-		addField(new StringFieldEditor(GLOBAL_REPOSITORY_ID,
-				"Custom Repository ID", getFieldEditorParent()));
-		
+
+		addField(new StringFieldEditor(GLOBAL_REPOSITORY_URL, "Custom Repository URL", getFieldEditorParent()));
+
+		addField(new StringFieldEditor(GLOBAL_REPOSITORY_ID, "Custom Repository ID", getFieldEditorParent()));
+
 		addEmptyField();
+		
 		addField(new LabelFieldEditor("Releases", getFieldEditorParent()));
-		
-		addField(new BooleanFieldEditor(
-				RELEASES_ENABLED, "Enabled",
-				getFieldEditorParent()));
-		
-		String[][] a = { { "Ignore", "Ignore" },{ "fail", "fail" },{ "warn", "warn" } };
-		
-		addField(new ComboFieldEditor(RELEASES_CHECKSUM_POLICY, CHECKSUM_POLICY_LABEL, a,
-				getFieldEditorParent()));
-		
-		String[][] b = { { "always", "always" },{ "daily", "daily" },{ "never", "never" } };
-		
-		addField(new ComboFieldEditor(RELEASES_UPDATE_POLICY, UPDATE_POLICY_LABEL, b,
-				getFieldEditorParent()));
-		
+
+		addField(new BooleanFieldEditor(RELEASES_ENABLED, "Enabled", getFieldEditorParent()));
+
+		String[][] a = { { "Ignore", "Ignore" }, { "fail", "fail" }, { "warn", "warn" } };
+
+		addField(new ComboFieldEditor(RELEASES_CHECKSUM_POLICY, CHECKSUM_POLICY_LABEL, a, getFieldEditorParent()));
+
+		String[][] b = { { "always", "always" }, { "daily", "daily" }, { "never", "never" } };
+
+		addField(new ComboFieldEditor(RELEASES_UPDATE_POLICY, UPDATE_POLICY_LABEL, b, getFieldEditorParent()));
+
 		addEmptyField();
-				addField(new LabelFieldEditor("Snapshots", getFieldEditorParent()));
-				
-				addField(new BooleanFieldEditor(
-						SNAPSHOTS_ENABLED, "Enabled",
-						getFieldEditorParent()));
-				
-				
-				addField(new ComboFieldEditor(SNAPSHOTS_CHECKSUM_POLICY, CHECKSUM_POLICY_LABEL, a,
-						getFieldEditorParent()));
-				
-				
-				addField(new ComboFieldEditor(SNAPSHOTS_UPDATE_POLICY, UPDATE_POLICY_LABEL, b,
-						getFieldEditorParent()));
-				
 		
-		
+		addField(new LabelFieldEditor("Snapshots", getFieldEditorParent()));
+
+		addField(new BooleanFieldEditor(SNAPSHOTS_ENABLED, "Enabled", getFieldEditorParent()));
+
+		addField(new ComboFieldEditor(SNAPSHOTS_CHECKSUM_POLICY, CHECKSUM_POLICY_LABEL, a, getFieldEditorParent()));
+
+		addField(new ComboFieldEditor(SNAPSHOTS_UPDATE_POLICY, UPDATE_POLICY_LABEL, b, getFieldEditorParent()));
+
 	}
 
 	private void addEmptyField() {

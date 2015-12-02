@@ -1,12 +1,12 @@
 /*
- * Copyright (c) 2010, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
- *
+ * Copyright (c) 2010-2015, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -44,18 +44,18 @@ import org.wso2.developerstudio.eclipse.platform.ui.provider.internal.EmptyNavig
 
 public class ProjectContentProvider extends EmptyNavigatorContentProvider {
 
-    private Viewer viewer;
+	private Viewer viewer;
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
-    public Object[] getChildren(Object obj) {
-    	File location=null;
-    	if (obj instanceof IProject || obj instanceof IFolder){
-    		location=((IResource)obj).getLocation().toFile();
-    	
-    		List<File> locationList = Arrays.asList(location.listFiles());
-    		IProject[] projects = ResourcesPlugin.getWorkspace().getRoot().getProjects();
-    		List<IProject> projectsToAdd = new ArrayList<IProject>();
-    		if (locationList != null) {
+	public Object[] getChildren(Object obj) {
+		File location = null;
+		if (obj instanceof IProject || obj instanceof IFolder) {
+			location = ((IResource) obj).getLocation().toFile();
+
+			List<File> locationList = Arrays.asList(location.listFiles());
+			IProject[] projects = ResourcesPlugin.getWorkspace().getRoot().getProjects();
+			List<IProject> projectsToAdd = new ArrayList<IProject>();
+			if (locationList != null) {
 				for (IProject project : projects) {
 					if (locationList.contains(project.getLocation().toFile())) {
 						projectsToAdd.add(project);
@@ -63,23 +63,23 @@ public class ProjectContentProvider extends EmptyNavigatorContentProvider {
 				}
 			}
 			return projectsToAdd.toArray();
-    	}
-	    return new Object[]{};
-    }
+		}
+		return new Object[] {};
+	}
 
-    public boolean hasChildren(Object obj) {
-    	if (obj instanceof IProject){
-            return true;
-    	}
-    	return false;
-    }
+	public boolean hasChildren(Object obj) {
+		if (obj instanceof IProject) {
+			return true;
+		}
+		return false;
+	}
 
-    public void dispose() {
-    	ResourcesPlugin.getWorkspace().removeResourceChangeListener(this);
-    }
+	public void dispose() {
+		ResourcesPlugin.getWorkspace().removeResourceChangeListener(this);
+	}
 
-    public void inputChanged(Viewer viewer, Object arg1, Object arg2) {
-    	this.viewer = viewer;
+	public void inputChanged(Viewer viewer, Object arg1, Object arg2) {
+		this.viewer = viewer;
 	}
 
 	public void resourceChanged(IResourceChangeEvent event) {
@@ -89,9 +89,9 @@ public class ProjectContentProvider extends EmptyNavigatorContentProvider {
 					@Override
 					public boolean visit(IResourceDelta delta) throws CoreException {
 						IResource resource = delta.getResource();
-						if (((resource.getType() & IResource.PROJECT) != 0)
-								&& delta.getKind() == IResourceDelta.CHANGED
-								&& ((delta.getFlags() & IResourceDelta.OPEN) != 0)) {
+						if (((resource.getType() & IResource.PROJECT) != 0) &&
+						    delta.getKind() == IResourceDelta.CHANGED &&
+						    ((delta.getFlags() & IResourceDelta.OPEN) != 0)) {
 							IProject changedProject = (IProject) resource;
 							List<IProject> childProjects = getChildProjects(changedProject);
 
@@ -113,8 +113,8 @@ public class ProjectContentProvider extends EmptyNavigatorContentProvider {
 						for (IProject workspaceProject : workspaceProjects) {
 							IPath changedProjectPath = changedProject.getLocation();
 							IPath workspaceProjectPath = workspaceProject.getLocation();
-							IPath pathRelativeToChangedProject = workspaceProjectPath
-									.makeRelativeTo(changedProjectPath);
+							IPath pathRelativeToChangedProject =
+							                                     workspaceProjectPath.makeRelativeTo(changedProjectPath);
 							// checks if the changed project is the parent
 							if (pathRelativeToChangedProject.toString().equals(workspaceProject.getName())) {
 								childProjects.add(workspaceProject);
@@ -153,7 +153,7 @@ public class ProjectContentProvider extends EmptyNavigatorContentProvider {
 				log.error("Error occured while changing child projects", e);
 				IStatus changeStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage());
 				ErrorDialog.openError(Display.getCurrent().getActiveShell(),
-						"Error occured while changing child projects", e.getMessage(), changeStatus);
+				                      "Error occured while changing child projects", e.getMessage(), changeStatus);
 			}
 		}
 

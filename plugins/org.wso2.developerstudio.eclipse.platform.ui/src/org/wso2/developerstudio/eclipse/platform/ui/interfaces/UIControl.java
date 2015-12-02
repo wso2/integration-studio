@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ * Copyright (c) 2010-2015, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,7 +22,6 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.wso2.developerstudio.eclipse.platform.core.project.model.ProjectDataModel;
 
-
 public interface UIControl {
 
 	/**
@@ -37,27 +36,20 @@ public interface UIControl {
 	 * @param filter
 	 * @param fileButtonCaption
 	 * @param selectedOption
-	 * public static final int SELECTED_NONE = 1;
-	   public static final int SELECTED_REGISTRY = 2;
-	   public static final int SELECTED_REGISTRY_PATH = 4;
-	   public static final int SELECTED_REGISTRY_RESOURCE = 8;
+	 *            public static final int SELECTED_NONE = 1;
+	 *            public static final int SELECTED_REGISTRY = 2;
+	 *            public static final int SELECTED_REGISTRY_PATH = 4;
+	 *            public static final int SELECTED_REGISTRY_RESOURCE = 8;
 	 * @param model
 	 * @param pathBindingProperty
 	 * @return
 	 */
-	public IFieldControlData createUIField(String id,Composite container,int columns,Integer verticalIndent,
-								 Integer horizontalIndent,
-								 boolean isTextReadonly,
-								 final Shell shell,
-								 final String label, 
-								 String fileButtonCaption,
-								 int selectedOption,
-								 ProjectDataModel model,
-								 String pathBindingProperty);
-	
-	public IFieldControlData addRegistryBrowseButton(Composite container, Shell shell,
-	       String label, String buttonCaption, Text txtValue,
-	       int selectedOption,
-	       ProjectDataModel model,
-	       String pathBindingProperty);
+	public IFieldControlData createUIField(String id, Composite container, int columns, Integer verticalIndent,
+	                                       Integer horizontalIndent, boolean isTextReadonly, final Shell shell,
+	                                       final String label, String fileButtonCaption, int selectedOption,
+	                                       ProjectDataModel model, String pathBindingProperty);
+
+	public IFieldControlData addRegistryBrowseButton(Composite container, Shell shell, String label,
+	                                                 String buttonCaption, Text txtValue, int selectedOption,
+	                                                 ProjectDataModel model, String pathBindingProperty);
 }

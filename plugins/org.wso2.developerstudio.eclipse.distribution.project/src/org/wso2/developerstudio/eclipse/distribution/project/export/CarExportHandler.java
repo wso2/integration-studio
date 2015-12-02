@@ -129,8 +129,8 @@ public class CarExportHandler extends ProjectArtifactHandler {
 					                        dependencyData, parent, self);
 				} else if (parent == null && self != null) { // artifacts as
 					// single artifact archive
-					ArtifactExportHandler artifactExportHandler = new ArtifactExportHandler();
-					artifactExportHandler.exportArtifact(artifactList, null, null, dependencyData, parent, null);
+					DefaultArtifactExportHandler artifactExportHandler = new DefaultArtifactExportHandler();
+					artifactExportHandler.exportArtifact(artifactList, null, null, dependencyData, null, self);
 					isExecClassFound = true;
 				} else if (parent != null && self == null) { // these are
 					// registry resources may also have some other server role,

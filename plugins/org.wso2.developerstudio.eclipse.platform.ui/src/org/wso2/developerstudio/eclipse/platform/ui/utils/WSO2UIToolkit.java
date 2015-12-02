@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ * Copyright (c) 2010-2015, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -70,8 +70,8 @@ import java.util.Map.Entry;
 
 public class WSO2UIToolkit {
 
-	public static Button createOption(Composite container, String label, int columns,
-	        Integer verticalIndent, Integer horizontalIndent) {
+	public static Button createOption(Composite container, String label, int columns, Integer verticalIndent,
+	                                  Integer horizontalIndent) {
 		Button optButton = new Button(container, SWT.RADIO);
 		optButton.setText(label);
 		if (columns != -1) {
@@ -90,8 +90,8 @@ public class WSO2UIToolkit {
 		return optButton;
 	}
 
-	public static Button createChoice(Composite container, String label, int columns,
-	        Integer verticalIndent, Integer horizontalIndent) {
+	public static Button createChoice(Composite container, String label, int columns, Integer verticalIndent,
+	                                  Integer horizontalIndent) {
 		Button chkButton = new Button(container, SWT.CHECK);
 		chkButton.setText(label);
 		if (columns != -1) {
@@ -110,8 +110,8 @@ public class WSO2UIToolkit {
 		return chkButton;
 	}
 
-	public static Combo createCombo(Composite container, String label, int columns,
-	        boolean isEditable, Integer verticalIndent, Integer horizontalIndent) {
+	public static Combo createCombo(Composite container, String label, int columns, boolean isEditable,
+	                                Integer verticalIndent, Integer horizontalIndent) {
 		final Label lblCaption = new Label(container, SWT.None);
 		lblCaption.setText(label);
 		GridData gridData = new GridData();
@@ -122,8 +122,7 @@ public class WSO2UIToolkit {
 			gridData.horizontalIndent = horizontalIndent;
 		}
 		lblCaption.setLayoutData(gridData);
-		final Combo cmbValue =
-		        new Combo(container, isEditable ? SWT.BORDER : SWT.BORDER | SWT.READ_ONLY);
+		final Combo cmbValue = new Combo(container, isEditable ? SWT.BORDER : SWT.BORDER | SWT.READ_ONLY);
 		propagateControlStatus(cmbValue, lblCaption);
 		if (columns != -1) {
 			gridData = new GridData();
@@ -136,8 +135,9 @@ public class WSO2UIToolkit {
 	}
 
 	public static CheckboxTableViewer createList(Composite container, String label, int columns,
-	        Integer verticalIndent, Integer horizontalIndent,boolean isSelectAllbtn,
-	        final ProjectOptionsDataPage dataPage,final ProjectOptionData optionData) {
+	                                             Integer verticalIndent, Integer horizontalIndent,
+	                                             boolean isSelectAllbtn, final ProjectOptionsDataPage dataPage,
+	                                             final ProjectOptionData optionData) {
 		final Label lblCaption = new Label(container, SWT.None);
 		lblCaption.setText(label);
 		if (columns != -1) {
@@ -145,7 +145,7 @@ public class WSO2UIToolkit {
 			gridData.horizontalSpan = columns;
 			gridData.grabExcessHorizontalSpace = true;
 			gridData.horizontalAlignment = SWT.FILL;
-//			gridData.heightHint = 30;
+			// gridData.heightHint = 30;
 			if (verticalIndent != null) {
 				gridData.verticalIndent = verticalIndent;
 			}
@@ -154,12 +154,11 @@ public class WSO2UIToolkit {
 			}
 			lblCaption.setLayoutData(gridData);
 		}
-		
-		
 
 		final CheckboxTableViewer cmbValue =
-		        CheckboxTableViewer.newCheckList(container, SWT.BORDER | SWT.FULL_SELECTION);
-				
+		                                     CheckboxTableViewer.newCheckList(container, SWT.BORDER |
+		                                                                                 SWT.FULL_SELECTION);
+
 		if (columns != -1) {
 			GridData gridData = new GridData();
 			gridData.horizontalSpan = columns;
@@ -175,72 +174,72 @@ public class WSO2UIToolkit {
 			gridData.verticalAlignment = SWT.FILL;
 			cmbValue.getTable().setLayoutData(gridData);
 		}
-		
-		if(isSelectAllbtn){
-		
-		Label splabel= new Label(container, SWT.NONE);
-		GridData gd = new GridData(GridData.FILL_HORIZONTAL);
-		gd.horizontalSpan = columns-3;
-		splabel.setLayoutData(gd);
-		splabel.setText("");
-	
-        Button selectAllButton = new Button(container,SWT.NONE);
-        GridData gdb = new GridData(GridData.END);
-        gdb.horizontalSpan = 1;
-        selectAllButton.setLayoutData(gdb);
-		selectAllButton.setText("Select All");
-		selectAllButton.addListener(SWT.MouseDown, new Listener() {
-			public void handleEvent(Event evt) {
-				cmbValue.setAllChecked(true);
-				dataPage.updateListCheckBox(optionData, cmbValue.getCheckedElements());
-			}
-		});
-		Button unSelectAllButton = new Button(container,SWT.NONE);
-		unSelectAllButton.setText("Deselect All");
-		unSelectAllButton.addListener(SWT.MouseDown, new Listener() {
-			public void handleEvent(Event evt) {
-				cmbValue.setAllChecked(false);
-				dataPage.updateListCheckBox(optionData, cmbValue.getCheckedElements());
-			}
-		});
-		if (columns != -1) {
 
-			GridData gridData = new GridData(GridData.HORIZONTAL_ALIGN_BEGINNING);
-			gridData.horizontalSpan = 2;
-			gridData.grabExcessHorizontalSpace = false;
-			gridData.horizontalAlignment = SWT.RIGHT;
-			//gridData.verticalAlignment = SWT.columns
-			if (verticalIndent != null) {
-				gridData.verticalIndent = verticalIndent;
+		if (isSelectAllbtn) {
+
+			Label splabel = new Label(container, SWT.NONE);
+			GridData gd = new GridData(GridData.FILL_HORIZONTAL);
+			gd.horizontalSpan = columns - 3;
+			splabel.setLayoutData(gd);
+			splabel.setText("");
+
+			Button selectAllButton = new Button(container, SWT.NONE);
+			GridData gdb = new GridData(GridData.END);
+			gdb.horizontalSpan = 1;
+			selectAllButton.setLayoutData(gdb);
+			selectAllButton.setText("Select All");
+			selectAllButton.addListener(SWT.MouseDown, new Listener() {
+				public void handleEvent(Event evt) {
+					cmbValue.setAllChecked(true);
+					dataPage.updateListCheckBox(optionData, cmbValue.getCheckedElements());
+				}
+			});
+			Button unSelectAllButton = new Button(container, SWT.NONE);
+			unSelectAllButton.setText("Deselect All");
+			unSelectAllButton.addListener(SWT.MouseDown, new Listener() {
+				public void handleEvent(Event evt) {
+					cmbValue.setAllChecked(false);
+					dataPage.updateListCheckBox(optionData, cmbValue.getCheckedElements());
+				}
+			});
+			if (columns != -1) {
+
+				GridData gridData = new GridData(GridData.HORIZONTAL_ALIGN_BEGINNING);
+				gridData.horizontalSpan = 2;
+				gridData.grabExcessHorizontalSpace = false;
+				gridData.horizontalAlignment = SWT.RIGHT;
+				// gridData.verticalAlignment = SWT.columns
+				if (verticalIndent != null) {
+					gridData.verticalIndent = verticalIndent;
+				}
+				if (horizontalIndent != null) {
+					gridData.horizontalIndent = horizontalIndent;
+				}
+				selectAllButton.setLayoutData(gridData);
+
+				gridData = new GridData();
+				gridData.horizontalSpan = columns;
+				gridData.grabExcessHorizontalSpace = false;
+				gridData.horizontalAlignment = SWT.FILL;
+				// gridData.verticalAlignment = SWT.columns
+				if (verticalIndent != null) {
+					gridData.verticalIndent = verticalIndent;
+				}
+				if (horizontalIndent != null) {
+					gridData.horizontalIndent = horizontalIndent;
+				}
+				unSelectAllButton.setLayoutData(gdb);
 			}
-			if (horizontalIndent != null) {
-				gridData.horizontalIndent = horizontalIndent;
-			}
-			selectAllButton.setLayoutData(gridData);
-	
-			gridData = new GridData();
-			gridData.horizontalSpan = columns;
-			gridData.grabExcessHorizontalSpace = false;
-			gridData.horizontalAlignment = SWT.FILL;
-			//gridData.verticalAlignment = SWT.columns
-			if (verticalIndent != null) {
-				gridData.verticalIndent = verticalIndent;
-			}
-			if (horizontalIndent != null) {
-				gridData.horizontalIndent = horizontalIndent;
-			}		
-			unSelectAllButton.setLayoutData(gdb);
-		} 
-	   	propagateControlStatus(cmbValue.getTable(), lblCaption, selectAllButton,unSelectAllButton);
-		}else{
-			
+			propagateControlStatus(cmbValue.getTable(), lblCaption, selectAllButton, unSelectAllButton);
+		} else {
+
 			propagateControlStatus(cmbValue.getTable(), lblCaption);
 		}
 		return cmbValue;
 	}
 
-	public static Link createLink(Composite container, String label, int columns,
-	        int horizontalAlignment, Integer verticalIndent, Integer horizontalIndent) {
+	public static Link createLink(Composite container, String label, int columns, int horizontalAlignment,
+	                              Integer verticalIndent, Integer horizontalIndent) {
 		Link linkButton = new Link(container, SWT.CHECK);
 		linkButton.setText(label);
 		if (columns != -1) {
@@ -259,8 +258,8 @@ public class WSO2UIToolkit {
 		return linkButton;
 	}
 
-	public static Label createLabel(Composite container, String label, int columns,
-	        int horizontalAlignment, Integer verticalIndent, Integer horizontalIndent) {
+	public static Label createLabel(Composite container, String label, int columns, int horizontalAlignment,
+	                                Integer verticalIndent, Integer horizontalIndent) {
 		Label lbl = new Label(container, SWT.CHECK);
 		lbl.setText(label);
 		if (columns != -1) {
@@ -279,8 +278,8 @@ public class WSO2UIToolkit {
 		return lbl;
 	}
 
-	public static Label createTitleLabel(Composite container, String label, int columns,
-	        int horizontalAlignment, Integer verticalIndent, Integer horizontalIndent) {
+	public static Label createTitleLabel(Composite container, String label, int columns, int horizontalAlignment,
+	                                     Integer verticalIndent, Integer horizontalIndent) {
 		Label lblCaption = new Label(container, SWT.CHECK);
 		lblCaption.setText(label);
 		GridData gridData = new GridData();
@@ -309,38 +308,36 @@ public class WSO2UIToolkit {
 		propagateControlStatus(lbl, lblCaption);
 		return lbl;
 	}
-	
-	public static IFieldControlData createRegistryBrowserControl(String id,
-																 Composite container,
-																 int columns,
-																 Integer verticalIndent,
-																 Integer horizontalIndent,
-																 boolean isTextReadonly,
-																 final Shell shell,
-																 final String label, 
-																 String fileButtonCaption,
-																 int selectedOption,
-																 ProjectDataModel model,
-																 String pathBindingProperty) {
+
+	public static IFieldControlData createRegistryBrowserControl(String id, Composite container, int columns,
+	                                                             Integer verticalIndent, Integer horizontalIndent,
+	                                                             boolean isTextReadonly, final Shell shell,
+	                                                             final String label, String fileButtonCaption,
+	                                                             int selectedOption, ProjectDataModel model,
+	                                                             String pathBindingProperty) {
 		IFieldControlData fieldControl = null;
 		Map<String, UIControl> uiControlList = RegisterUIControl.getUiControlList();
 		for (Entry<String, UIControl> entry1 : uiControlList.entrySet()) {
-			
+
 			UIControl uiControl = entry1.getValue();
 			String uiID = entry1.getKey();
-			if (id.equals("registry.browser") && uiID.equals("RegistryBrowserUIControl")){
-				fieldControl = uiControl.createUIField(id, container, columns, verticalIndent, horizontalIndent, isTextReadonly, 
-						shell, label, fileButtonCaption, selectedOption,model,pathBindingProperty);
+			if (id.equals("registry.browser") && uiID.equals("RegistryBrowserUIControl")) {
+				fieldControl =
+				               uiControl.createUIField(id, container, columns, verticalIndent, horizontalIndent,
+				                                       isTextReadonly, shell, label, fileButtonCaption, selectedOption,
+				                                       model, pathBindingProperty);
 				break;
 			}
 		}
 		return fieldControl;
 	}
-	
-	public static IFieldControlData createResourceBrowserControl(String id, Composite container,
-			int columns, Integer verticalIndent, Integer horizontalIndent, boolean isTextReadonly,
-			final Shell shell, final String label, String fileButtonCaption, int selectedOption,
-			ProjectDataModel model, String pathBindingProperty) {
+
+	public static IFieldControlData createResourceBrowserControl(String id, Composite container, int columns,
+	                                                             Integer verticalIndent, Integer horizontalIndent,
+	                                                             boolean isTextReadonly, final Shell shell,
+	                                                             final String label, String fileButtonCaption,
+	                                                             int selectedOption, ProjectDataModel model,
+	                                                             String pathBindingProperty) {
 		IFieldControlData fieldControl = null;
 		Map<String, UIControl> uiControlList = RegisterUIControl.getUiControlList();
 		for (Entry<String, UIControl> entry1 : uiControlList.entrySet()) {
@@ -348,25 +345,23 @@ public class WSO2UIToolkit {
 			UIControl uiControl = entry1.getValue();
 			String uiID = entry1.getKey();
 			if (id.equals("resource.browser") && uiID.equals("ResourceBrowserUIStrip")) {
-				fieldControl = uiControl.createUIField(id, container, columns, verticalIndent,
-						horizontalIndent, isTextReadonly, shell, label, fileButtonCaption,
-						selectedOption, model, pathBindingProperty);
+				fieldControl =
+				               uiControl.createUIField(id, container, columns, verticalIndent, horizontalIndent,
+				                                       isTextReadonly, shell, label, fileButtonCaption, selectedOption,
+				                                       model, pathBindingProperty);
 				break;
 			}
 		}
 		return fieldControl;
 	}
-	
-	public static IFieldControlData createComposite(
-			Composite container,
-			int columns,
-			final ICompositeProvider iCompositeProvider,
-			ProjectDataModel model,
-			ProjectOptionData optionData,
-			WizardPage wizardPage) {
-		
-		AbstractComposite composite = iCompositeProvider.createComposite(container,model,optionData,wizardPage);
-		
+
+	public static IFieldControlData createComposite(Composite container, int columns,
+	                                                final ICompositeProvider iCompositeProvider,
+	                                                ProjectDataModel model, ProjectOptionData optionData,
+	                                                WizardPage wizardPage) {
+
+		AbstractComposite composite = iCompositeProvider.createComposite(container, model, optionData, wizardPage);
+
 		GridData gridData = new GridData();
 		if (null != optionData.getVerticalIndent()) {
 			gridData.verticalIndent = optionData.getVerticalIndent();
@@ -379,35 +374,36 @@ public class WSO2UIToolkit {
 			gridData.horizontalSpan = columns;
 			gridData.grabExcessHorizontalSpace = true;
 			gridData.horizontalAlignment = SWT.FILL;
-			gridData.heightHint= -1;
-			gridData.grabExcessVerticalSpace=true;
-			
+			gridData.heightHint = -1;
+			gridData.grabExcessVerticalSpace = true;
+
+		}
+		composite.setLayoutData(gridData);
+
+		FieldControlDataImpl fieldControl = new FieldControlDataImpl(composite) {
+
+			public Composite getControl() {
+				return (Composite) super.getControl();
 			}
-			composite.setLayoutData(gridData);
-		
-			FieldControlDataImpl fieldControl = new FieldControlDataImpl(composite) {
-	
-				public Composite getControl() {
-					return (Composite)super.getControl();	
-				}
-				
-				public void setData(Object data) {
+
+			public void setData(Object data) {
 				getControl().setData(data);
-				}
-			
-				public Object getData() {
+			}
+
+			public Object getData() {
 				return getControl().getData();
-				}
-				
+			}
+
 		};
-		propagateControlStatus(composite);	
+		propagateControlStatus(composite);
 		return fieldControl;
 	}
-	
-	public static IFieldControlData createText(Composite container, String label, int columns,
-	        boolean isTextReadonly, Integer verticalIndent, Integer horizontalIndent,boolean multiline
-	        ,boolean addlistner,final AbstractWSO2ProjectCreationWizard wizard, String toolTip) {
-		int flags = (multiline)?(SWT.BORDER|SWT.MULTI|SWT.WRAP):SWT.BORDER;
+
+	public static IFieldControlData createText(Composite container, String label, int columns, boolean isTextReadonly,
+	                                           Integer verticalIndent, Integer horizontalIndent, boolean multiline,
+	                                           boolean addlistner, final AbstractWSO2ProjectCreationWizard wizard,
+	                                           String toolTip) {
+		int flags = (multiline) ? (SWT.BORDER | SWT.MULTI | SWT.WRAP) : SWT.BORDER;
 		Label lblCaption = new Label(container, SWT.None);
 		lblCaption.setText(label);
 		GridData gridData = new GridData();
@@ -426,35 +422,33 @@ public class WSO2UIToolkit {
 			gridData.horizontalSpan = columns - 1;
 			gridData.grabExcessHorizontalSpace = true;
 			gridData.horizontalAlignment = SWT.FILL;
-			if(multiline){
-			gridData.heightHint= 65;
-			gridData.grabExcessVerticalSpace=true;
+			if (multiline) {
+				gridData.heightHint = 65;
+				gridData.grabExcessVerticalSpace = true;
 			}
 			txtValue.setLayoutData(gridData);
 		}
-		if (toolTip!=null) {
+		if (toolTip != null) {
 			txtValue.setToolTipText(toolTip);
 		}
-		if(addlistner){
-        	wizard.setMap(label.trim(), txtValue);	
-        }
+		if (addlistner) {
+			wizard.setMap(label.trim(), txtValue);
+		}
 		FieldControlDataImpl feildControl = createFieldControlForString(txtValue);
 		return feildControl;
 	}
 
 	private static FieldControlDataImpl createFieldControlForString(Text txtValue) {
 		FieldControlDataImpl feildControl = new FieldControlDataImpl(txtValue) {
-			
+
 			public Text getControl() {
 				return (Text) super.getControl();
 			}
 
-			
 			public Object getData() {
 				return getControl().getText();
 			}
 
-			
 			public void setData(Object data) {
 				if (data == null) {
 					data = "";
@@ -462,11 +456,10 @@ public class WSO2UIToolkit {
 				getControl().setText(data.toString());
 			}
 
-			
 			public void setOnAction(IOnAction action) {
 				super.setOnAction(action);
 				getControl().addModifyListener(new ModifyListener() {
-					
+
 					public void modifyText(ModifyEvent arg0) {
 						getOnAction().onModifyAction();
 
@@ -479,8 +472,7 @@ public class WSO2UIToolkit {
 		return feildControl;
 	}
 
-	public static void createLine(Composite container, int columns, Integer verticalIndent,
-	        Integer horizontalIndent) {
+	public static void createLine(Composite container, int columns, Integer verticalIndent, Integer horizontalIndent) {
 		Label label = new Label(container, SWT.SEPARATOR | SWT.HORIZONTAL);
 		if (columns != -1) {
 			GridData gridData = new GridData();
@@ -498,8 +490,8 @@ public class WSO2UIToolkit {
 	}
 
 	public static Composite createContainer(final Composite container, String label, int columns,
-	        boolean isCollapsible, boolean isExpanded, Integer verticalIndent,
-	        Integer horizontalIndent) {
+	                                        boolean isCollapsible, boolean isExpanded, Integer verticalIndent,
+	                                        Integer horizontalIndent) {
 		Composite composite;
 		if (label == null) {
 			createLine(container, columns, verticalIndent, horizontalIndent);
@@ -507,8 +499,7 @@ public class WSO2UIToolkit {
 			composite = new Composite(container, SWT.NONE);
 		} else {
 			if (isCollapsible) {
-				ExpandableComposite expandableComposite =
-				        new ExpandableComposite(container, SWT.BOLD);
+				ExpandableComposite expandableComposite = new ExpandableComposite(container, SWT.BOLD);
 				expandableComposite.setText(label);
 				expandableComposite.setFont(new Font(container.getDisplay(), "Sans", 8, SWT.BOLD));
 				expandableComposite.setExpanded(isExpanded);
@@ -524,7 +515,7 @@ public class WSO2UIToolkit {
 				composite = new Composite(expandableComposite, SWT.NONE);
 				expandableComposite.setClient(composite);
 				expandableComposite.addExpansionListener(new ExpansionAdapter() {
-					
+
 					public void expansionStateChanged(ExpansionEvent e) {
 						layout(container);
 					}
@@ -552,9 +543,10 @@ public class WSO2UIToolkit {
 	}
 
 	public static IFieldControlData createFileDirectoryBrowser(Composite container, final Shell shell,
-	        final String label, final String filter, boolean isTextReadonly,
-	        String fileButtonCaption, String dirButtonCaption, int columns, Integer verticalIndent,
-	        Integer horizontalIndent) {
+	                                                           final String label, final String filter,
+	                                                           boolean isTextReadonly, String fileButtonCaption,
+	                                                           String dirButtonCaption, int columns,
+	                                                           Integer verticalIndent, Integer horizontalIndent) {
 		Label lblCaption = new Label(container, SWT.None);
 		lblCaption.setText(label);
 		GridData gridData = new GridData();
@@ -574,57 +566,40 @@ public class WSO2UIToolkit {
 			gridData.horizontalAlignment = SWT.FILL;
 			txtValue.setLayoutData(gridData);
 		}
-		Button btnFileBrowse =
-		        addFileBrowseButton(container, shell, label, filter, fileButtonCaption, txtValue);
-		Button btnDirBrowse =
-		        addDirBrowseButton(container, shell, label, dirButtonCaption, txtValue);
+		Button btnFileBrowse = addFileBrowseButton(container, shell, label, filter, fileButtonCaption, txtValue);
+		Button btnDirBrowse = addDirBrowseButton(container, shell, label, dirButtonCaption, txtValue);
 		propagateControlStatus(txtValue, lblCaption, btnFileBrowse, btnDirBrowse);
 		FileldControlTextDataImple feildControl = createFileBrowserFieldController(txtValue);
 		return feildControl;
 	}
 
-	private static FileldControlTextDataImple createFileBrowserFieldController(
-			final Text txtValue) {
+	private static FileldControlTextDataImple createFileBrowserFieldController(final Text txtValue) {
 		FileldControlTextDataImple feildControl = new FileldControlTextDataImple(txtValue) {
-			
-//			
-//			public Text getControl() {
-//				return (Text)super.getControl();
-//			}
-			
-			
+
+			//
+			// public Text getControl() {
+			// return (Text)super.getControl();
+			// }
+
 			public void setData(Object data) {
-				if (data==null){
-					data="";
+				if (data == null) {
+					data = "";
 				}
 				getControl().setText(data.toString());
-				
+
 			}
-			
-			
+
 			public Object getData() {
 				return new File(getControl().getText());
 			}
-			
-//			
-//			public void setOnAction(IOnAction action) {
-//				super.setOnAction(action);
-//				getControl().addModifyListener(new ModifyListener() {
-//					
-//					public void modifyText(ModifyEvent arg0) {
-//						getOnAction().onModifyAction();
-//
-//					}
-//
-//				});
-//			}
 		};
 		return feildControl;
 	}
 
-	public static Text createWorkspaceFileBrowser(Composite container, final Shell shell,
-	        final String label, boolean isTextReadonly, String buttonCaption, int columns,
-	        final ViewerFilter viewerFilter, Integer verticalIndent, Integer horizontalIndent) {
+	public static Text createWorkspaceFileBrowser(Composite container, final Shell shell, final String label,
+	                                              boolean isTextReadonly, String buttonCaption, int columns,
+	                                              final ViewerFilter viewerFilter, Integer verticalIndent,
+	                                              Integer horizontalIndent) {
 		Label lblCaption = new Label(container, SWT.None);
 		lblCaption.setText(label);
 		GridData gridData = new GridData();
@@ -647,7 +622,7 @@ public class WSO2UIToolkit {
 		Button btnFileBrowse = new Button(container, SWT.None);
 		btnFileBrowse.setText(buttonCaption);
 		btnFileBrowse.addSelectionListener(new SelectionListener() {
-			
+
 			public void widgetDefaultSelected(SelectionEvent event) {
 				List<ViewerFilter> viewerFilters = null;
 				if (viewerFilter == null) {
@@ -656,16 +631,14 @@ public class WSO2UIToolkit {
 					viewerFilters = Arrays.asList(new ViewerFilter[] { viewerFilter });
 				}
 				IFile[] openFileSelection =
-				        WorkspaceResourceDialog.openFileSelection(shell, "Select file...", label,
-				                                                  false, new Object[] {},
-				                                                  viewerFilters);
+				                            WorkspaceResourceDialog.openFileSelection(shell, "Select file...", label,
+				                                                                      false, new Object[] {},
+				                                                                      viewerFilters);
 				if (openFileSelection != null) {
-					txtValue.setText(openFileSelection[0].getFullPath().toPortableString()
-					        .substring(1));
+					txtValue.setText(openFileSelection[0].getFullPath().toPortableString().substring(1));
 				}
 			}
 
-			
 			public void widgetSelected(SelectionEvent event) {
 				widgetDefaultSelected(event);
 			}
@@ -674,9 +647,10 @@ public class WSO2UIToolkit {
 		return txtValue;
 	}
 
-	public static Text createWorkspaceFolderBrowser(Composite container, final Shell shell,
-	        final String label, boolean isTextReadonly, String buttonCaption, int columns,
-	        final ViewerFilter viewerFilter, Integer verticalIndent, Integer horizontalIndent) {
+	public static Text createWorkspaceFolderBrowser(Composite container, final Shell shell, final String label,
+	                                                boolean isTextReadonly, String buttonCaption, int columns,
+	                                                final ViewerFilter viewerFilter, Integer verticalIndent,
+	                                                Integer horizontalIndent) {
 		Label lblCaption = new Label(container, SWT.None);
 		lblCaption.setText(label);
 		GridData gridData = new GridData();
@@ -699,7 +673,7 @@ public class WSO2UIToolkit {
 		Button btnFileBrowse = new Button(container, SWT.None);
 		btnFileBrowse.setText(buttonCaption);
 		btnFileBrowse.addSelectionListener(new SelectionListener() {
-			
+
 			public void widgetDefaultSelected(SelectionEvent event) {
 				List<ViewerFilter> viewerFilters = null;
 				if (viewerFilter == null) {
@@ -708,16 +682,16 @@ public class WSO2UIToolkit {
 					viewerFilters = Arrays.asList(new ViewerFilter[] { viewerFilter });
 				}
 				IContainer[] openFolderSelection =
-				        WorkspaceResourceDialog.openFolderSelection(shell, "Select folder...",
-				                                                    label, false, new Object[] {},
-				                                                    viewerFilters);
+				                                   WorkspaceResourceDialog.openFolderSelection(shell,
+				                                                                               "Select folder...",
+				                                                                               label, false,
+				                                                                               new Object[] {},
+				                                                                               viewerFilters);
 				if (openFolderSelection != null && openFolderSelection.length != 0) {
-					txtValue.setText(openFolderSelection[0].getFullPath().toPortableString()
-					        .substring(1));
+					txtValue.setText(openFolderSelection[0].getFullPath().toPortableString().substring(1));
 				}
 			}
 
-			
 			public void widgetSelected(SelectionEvent event) {
 				widgetDefaultSelected(event);
 			}
@@ -726,9 +700,10 @@ public class WSO2UIToolkit {
 		return txtValue;
 	}
 
-	public static Text createWorkspaceBrowser(Composite container, final Shell shell,
-	        final String label, boolean isTextReadonly, String buttonCaption, int columns,
-	        final ViewerFilter viewerFilter, Integer verticalIndent, Integer horizontalIndent) {
+	public static Text createWorkspaceBrowser(Composite container, final Shell shell, final String label,
+	                                          boolean isTextReadonly, String buttonCaption, int columns,
+	                                          final ViewerFilter viewerFilter, Integer verticalIndent,
+	                                          Integer horizontalIndent) {
 		Label lblCaption = new Label(container, SWT.None);
 		lblCaption.setText(label);
 		GridData gridData = new GridData();
@@ -751,12 +726,11 @@ public class WSO2UIToolkit {
 		Button btnFileBrowse = new Button(container, SWT.None);
 		btnFileBrowse.setText(buttonCaption);
 		btnFileBrowse.addSelectionListener(new SelectionListener() {
-			
+
 			public void widgetDefaultSelected(SelectionEvent event) {
 				// TODO
 			}
 
-			
 			public void widgetSelected(SelectionEvent event) {
 				widgetDefaultSelected(event);
 			}
@@ -765,9 +739,10 @@ public class WSO2UIToolkit {
 		return txtValue;
 	}
 
-	public static IFieldControlData createFileBrowser(Composite container, final Shell shell,
-	        final String label, final String filter, boolean isTextReadonly, String buttonCaption,
-	        int columns, Integer verticalIndent, Integer horizontalIndent) {
+	public static IFieldControlData createFileBrowser(Composite container, final Shell shell, final String label,
+	                                                  final String filter, boolean isTextReadonly,
+	                                                  String buttonCaption, int columns, Integer verticalIndent,
+	                                                  Integer horizontalIndent) {
 		Label lblCaption = new Label(container, SWT.None);
 		lblCaption.setText(label);
 		GridData gridData = new GridData();
@@ -787,33 +762,29 @@ public class WSO2UIToolkit {
 			gridData.horizontalAlignment = SWT.FILL;
 			txtValue.setLayoutData(gridData);
 		}
-		Button btnFileBrowse =
-		        addFileBrowseButton(container, shell, label, filter, buttonCaption, txtValue);
+		Button btnFileBrowse = addFileBrowseButton(container, shell, label, filter, buttonCaption, txtValue);
 		propagateControlStatus(txtValue, lblCaption, btnFileBrowse);
 		FieldControlDataImpl feildControl = createFileBrowserFieldController(txtValue);
 		return feildControl;
 	}
 
-	private static Button addFileBrowseButton(Composite container, final Shell shell,
-	        final String label, final String filter, String buttonCaption, final Text txtValue) {
+	private static Button addFileBrowseButton(Composite container, final Shell shell, final String label,
+	                                          final String filter, String buttonCaption, final Text txtValue) {
 		Button btnFileBrowse = new Button(container, SWT.None);
 		btnFileBrowse.setText(buttonCaption);
 		btnFileBrowse.addSelectionListener(new SelectionListener() {
-			
+
 			public void widgetDefaultSelected(SelectionEvent event) {
 				FileDialog fileDialog = new FileDialog(shell);
 				fileDialog.setFilterExtensions(filter.split(","));
 				// fileDialog.setFilterPath(txtValue.getText());
 				fileDialog.setText(label);
 				if (fileDialog.open() != null) {
-					String fileName =
-					        new File(fileDialog.getFilterPath(), fileDialog.getFileName())
-					                .toString();
+					String fileName = new File(fileDialog.getFilterPath(), fileDialog.getFileName()).toString();
 					txtValue.setText(fileName);
 				}
 			}
 
-			
 			public void widgetSelected(SelectionEvent event) {
 				widgetDefaultSelected(event);
 			}
@@ -821,9 +792,9 @@ public class WSO2UIToolkit {
 		return btnFileBrowse;
 	}
 
-	public static IFieldControlData createDirectoryBrowser(Composite container, final Shell shell,
-	        final String label, boolean isTextReadonly, String buttonCaption, int columns,
-	        Integer verticalIndent, Integer horizontalIndent) {
+	public static IFieldControlData createDirectoryBrowser(Composite container, final Shell shell, final String label,
+	                                                       boolean isTextReadonly, String buttonCaption, int columns,
+	                                                       Integer verticalIndent, Integer horizontalIndent) {
 		Label lblCaption = new Label(container, SWT.None);
 		lblCaption.setText(label);
 		GridData gridData = new GridData();
@@ -849,12 +820,12 @@ public class WSO2UIToolkit {
 		return feildControl;
 	}
 
-	private static Button addDirBrowseButton(Composite container, final Shell shell,
-	        final String label, String buttonCaption, final Text txtValue) {
+	private static Button addDirBrowseButton(Composite container, final Shell shell, final String label,
+	                                         String buttonCaption, final Text txtValue) {
 		Button btnDirBrowse = new Button(container, SWT.None);
 		btnDirBrowse.setText(buttonCaption);
 		btnDirBrowse.addSelectionListener(new SelectionListener() {
-			
+
 			public void widgetDefaultSelected(SelectionEvent event) {
 				DirectoryDialog dirDialog = new DirectoryDialog(shell);
 				// dirDialog.setFilterPath(txtValue.getText());
@@ -867,7 +838,6 @@ public class WSO2UIToolkit {
 				}
 			}
 
-			
 			public void widgetSelected(SelectionEvent event) {
 				widgetDefaultSelected(event);
 			}
@@ -882,7 +852,7 @@ public class WSO2UIToolkit {
 
 	private static void propagateEnability(final Control watchControl, final Control... controls) {
 		watchControl.addPaintListener(new PaintListener() {
-			
+
 			public void paintControl(PaintEvent event) {
 				for (Control control : controls) {
 					control.setEnabled(watchControl.getEnabled());
@@ -919,32 +889,11 @@ public class WSO2UIToolkit {
 	private static void propagateVisibility(final Control watchControl, final Control... controls) {
 		visibilityControls.put(watchControl, controls);
 		watchControl.addDisposeListener(new DisposeListener() {
-			
+
 			public void widgetDisposed(DisposeEvent arg0) {
 				visibilityControls.remove(watchControl);
 			}
 		});
-		// watchControl.getParent().addPaintListener(new PaintListener() {
-		// 
-		// public void paintControl(PaintEvent event) {
-		// if (watchControl.isDisposed()) {
-		// watchControl.getParent().removePaintListener(this);
-		// } else {
-		// boolean visibleField = watchControl.getVisible();
-		// for (Control control : controls) {
-		// Object layoutData = control.getLayoutData();
-		// if (layoutData == null) {
-		// layoutData = new GridData();
-		// }
-		// if (layoutData instanceof GridData) {
-		// ((GridData) layoutData).exclude = !visibleField;
-		// control.setLayoutData(layoutData);
-		// }
-		// control.setVisible(visibleField);
-		// }
-		// }
-		// }
-		// });
 	}
 
 	public static void layout(final Composite container) {
@@ -955,22 +904,20 @@ public class WSO2UIToolkit {
 		}
 	}
 
-	private static abstract class FileldControlTextDataImple extends FieldControlDataImpl{
+	private static abstract class FileldControlTextDataImple extends FieldControlDataImpl {
 
 		public FileldControlTextDataImple(Control control) {
 			super(control);
 		}
-		
-		
+
 		public Text getControl() {
-			return (Text)super.getControl();
+			return (Text) super.getControl();
 		}
-		
-		
+
 		public void setOnAction(IOnAction action) {
 			super.setOnAction(action);
 			getControl().addModifyListener(new ModifyListener() {
-				
+
 				public void modifyText(ModifyEvent arg0) {
 					getOnAction().onModifyAction();
 
@@ -978,14 +925,13 @@ public class WSO2UIToolkit {
 
 			});
 		}
-		
+
 	}
-	
+
 	private static abstract class FieldControlDataImpl implements IFieldControlData {
-		private Control control=null;
+		private Control control = null;
 		private IOnAction onAction;
 
-		
 		public void setOnAction(IOnAction action) {
 			this.onAction = action;
 		}
@@ -998,7 +944,6 @@ public class WSO2UIToolkit {
 			this.setControl(control);
 		}
 
-		
 		public Control getControl() {
 			return control;
 		}

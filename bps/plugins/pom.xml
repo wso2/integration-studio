@@ -9,7 +9,7 @@
     </parent>
     <artifactId>wso2-developerstudio-bps-plugins</artifactId>
     <packaging>pom</packaging>
-    <name>WSO2 Developer Studio Business Process Server Plugins</name>
+    <name>WSO2 BPS Tooling Plugins</name>
     <modules>
    	<module>org.eclipse.bpel.help</module>
 	<module>org.eclipse.bpel.apache.ode.deploy.model</module>

@@ -9,7 +9,7 @@
     </parent>
     <artifactId>wso2-developerstudio-appfactory-plugins</artifactId>
     <packaging>pom</packaging>
-    <name>WSO2 Developer Studio APP Factory Plugins</name>
+    <name>WSO2 APP Factory Tooling Plugins</name>
     <modules>
         <module>org.wso2.developerstudio.appfactory.core</module>
         <module>org.wso2.developerstudio.appfactory.ui</module>

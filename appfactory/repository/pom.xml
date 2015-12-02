@@ -21,6 +21,6 @@
     </parent>
     <artifactId>wso2-developer-studio-kernel-appfactory-p2</artifactId>
     <packaging>eclipse-repository</packaging>
-    <name>WSO2 Developer Studio Kernel - APP Factory P2 Repository</name>
+    <name>WSO2 - APP Factory Tooling P2 Repository</name>
     <url>http://wso2.org</url>
 </project>

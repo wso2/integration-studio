@@ -1,6 +1,0 @@
---TEST--
-Test New Own Class
---FILE--
-<? class MyClass { private function __construct() {} function getInstance() { return new MyCl| ; } } ?> 
---EXPECT--
-method(MyClass)

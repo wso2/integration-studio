@@ -9,7 +9,7 @@
     </parent>
     <artifactId>org.wso2.developerstudio.eclipse.brs.feature</artifactId>
     <packaging>eclipse-feature</packaging>
-    <name>WSO2 Developer Studio Business Rules Service Feature</name>
+    <name>WSO2 Developer Studio BRS Feature</name>
     <description>This feature contains the bundles for WSO2 Business Rules Service feature.</description>
     <build>
         <plugins>

@@ -20,7 +20,7 @@
     <artifactId>wso2-developerstudio-appfactory-toolkit</artifactId>
     <version>4.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
-    <name>WSO2 Developer Studio Kernel Parent</name>
+    <name>WSO2 APP Factory Tools</name>
     <modules>
         <module>plugins</module>
         <module>features</module>
@@ -98,6 +98,16 @@
             </releases>
             <id>DevS-Deps-p2-Repository</id>
             <url>http://builder1.us1.wso2.org/~developerstudio/developer-studio-kernel/dependencies/p2/</url>
+            <layout>p2</layout>
+        </repository>
+        <repository>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>daily</updatePolicy>
+                <checksumPolicy>ignore</checksumPolicy>
+            </releases>
+            <id>DevS-Kernel-p2-Repository</id>
+            <url>http://builder1.us1.wso2.org/~developerstudio/developer-studio-kernel/4.0.0/alpha/p2/</url>
             <layout>p2</layout>
         </repository>
         <repository>

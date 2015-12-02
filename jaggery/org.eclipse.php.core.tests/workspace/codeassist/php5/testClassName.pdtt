@@ -1,8 +1,0 @@
---TEST--
-Test Class Name
---FILE--
-<?
-class MyClass1 {} 	class MyClass2 {} 	MyClass| ?>
---EXPECT--
-type(MyClass1)
-type(MyClass2)

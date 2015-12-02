@@ -27,5 +27,5 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>org.wso2.wsf.ide.bpel.export</artifactId>
     <packaging>eclipse-plugin</packaging>
-    <name>Developer Studio Business Process Export</name>
+    <name>Developer Studio BPEL Export</name>
 </project>

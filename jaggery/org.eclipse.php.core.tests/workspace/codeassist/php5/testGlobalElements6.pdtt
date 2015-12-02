@@ -1,9 +1,0 @@
---TEST--
-Test Only Global
---FILE--
-<?
-function foo() { $int1 = ''; }
-class A { var $int2 = ''; }
-$int|
-?>
---EXPECT--

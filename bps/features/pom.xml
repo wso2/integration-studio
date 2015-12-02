@@ -24,7 +24,7 @@
     </parent>
     <artifactId>wso2-developerstudio-bps-feature</artifactId>
     <packaging>pom</packaging>
-    <name>WSO2 Developer Studio Business Process Server Feature</name>
+    <name>WSO2 BPS Tooling Feature</name>
     <modules>
         <module>org.wso2.developerstudio.eclipse.bps.feature</module>
     </modules>

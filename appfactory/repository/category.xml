@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-   <category-def name="org.wso2.developerstudio.eclipse.appfactory.feature.category" label="APP Factory"/>
+   <category-def name="org.wso2.developerstudio.eclipse.appfactory.feature.category" label="WSO2 APP Factory Tools"/>
 <description>
 		This is the APP Factory Feature for the Developer Studio. This provides tooling support for WSO2 APP Factory support with Developer Studio.
       </description>

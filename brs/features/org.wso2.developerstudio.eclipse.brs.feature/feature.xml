@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="org.wso2.developerstudio.eclipse.brs.feature"
-      label="Business Rules Service Feature"
+      label="WSO2 BRS Tooling Feature"
       version="4.0.0.qualifier"
       provider-name="%providerName">
 

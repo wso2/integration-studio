@@ -9,7 +9,7 @@
     </parent>
     <artifactId>org.wso2.developerstudio.eclipse.bps.feature</artifactId>
     <packaging>eclipse-feature</packaging>
-    <name>WSO2 Developer Studio Business Process Server Feature</name>
+    <name>WSO2 Developer Studio BPS Feature</name>
     <description>This feature contains the bundles for WSO2 Business Process Server feature.</description>
     <build>
         <plugins>

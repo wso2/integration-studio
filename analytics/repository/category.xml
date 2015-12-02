@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-   <category-def name="org.wso2.developerstudio.eclipse.analytics.feature.category" label="Analytics"/>
+   <category-def name="org.wso2.developerstudio.eclipse.analytics.feature.category" label="WSO2 Analytics Tools"/>
 <description>
-		This is the Analytics Feature for the Developer Studio. This provides tooling support for WSO2 Analytics Artifact creation and deployment with Developer Studio.
+		This is the Analytics Tooling Feature for the Developer Studio. This provides tooling support for WSO2 Analytics Artifact creation and deployment with Developer Studio.
       </description>
  <feature id="org.wso2.developerstudio.eclipse.analytics.feature" version="0.0.0">
       <category name="org.wso2.developerstudio.eclipse.analytics.feature.category"/>

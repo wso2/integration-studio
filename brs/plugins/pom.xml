@@ -9,7 +9,7 @@
     </parent>
     <artifactId>wso2-developerstudio-brs-plugins</artifactId>
     <packaging>pom</packaging>
-    <name>WSO2 Developer Studio Business Rules Service Plugins</name>
+    <name>WSO2 BRS Tooling Plugins</name>
     <modules>
 	<module>org.wso2.developerstudio.eclipse.artifact.brs</module>
     </modules>

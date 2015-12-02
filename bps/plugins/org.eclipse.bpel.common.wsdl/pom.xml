@@ -27,5 +27,5 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>org.eclipse.bpel.common.wsdl</artifactId> 
     <packaging>eclipse-plugin</packaging>
-    <name>Developer Studio Business Process Artifact</name>
+    <name>Developer Studio BPEL Common WSDL</name>
 </project>

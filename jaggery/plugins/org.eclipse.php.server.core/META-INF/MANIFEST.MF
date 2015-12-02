@@ -1,0 +1,20 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: PDT Server Core Plug-in
+Bundle-SymbolicName: org.eclipse.php.server.core;singleton:=true
+Bundle-Version: 4.0.0.qualifier
+Bundle-Activator: org.eclipse.php.internal.server.core.Activator
+Bundle-Vendor: Eclipse.org
+Bundle-Localization: plugin
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.debug.core,
+ org.eclipse.php.core,
+ com.jcraft.jsch;bundle-version="0.1.41",
+ org.eclipse.jsch.core;bundle-version="1.1.100"
+Bundle-ActivationPolicy: lazy
+Export-Package: org.eclipse.php.internal.server.core;x-internal:=true,
+ org.eclipse.php.internal.server.core.deploy;x-internal:=true,
+ org.eclipse.php.internal.server.core.manager;x-internal:=true,
+ org.eclipse.php.internal.server.core.preferences;x-internal:=true,
+ org.eclipse.php.internal.server.core.tunneling
+Bundle-RequiredExecutionEnvironment: J2SE-1.5

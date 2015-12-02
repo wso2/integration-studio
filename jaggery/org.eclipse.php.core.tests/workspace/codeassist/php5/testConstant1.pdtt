@@ -1,6 +1,0 @@
---TEST--
-Test Constant
---FILE--
-<? define('TEST1', 0); TEST| ?>
---EXPECT--
-field(TEST1)

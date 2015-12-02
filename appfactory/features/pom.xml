@@ -24,7 +24,7 @@
     </parent>
     <artifactId>wso2-developerstudio-appfactory-feature</artifactId>
     <packaging>pom</packaging>
-    <name>WSO2 Developer Studio APP Factory Feature</name>
+    <name>WSO2 APP Factory Tooling Feature</name>
     <modules>
         <module>org.wso2.developerstudio.eclipse.appfactory.feature</module>
     </modules>

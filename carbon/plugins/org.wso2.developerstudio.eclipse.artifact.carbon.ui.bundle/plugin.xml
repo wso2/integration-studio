@@ -11,6 +11,15 @@
 			<description>Carbon UI Bundle Project</description>
 		</wizard>
 	</extension>
+	   <extension point="org.wso2.developerstudio.eclipse.platform.core.intro.ui.dashboard">
+        	<category id="dashboard.category.carbon" showTitle="true"
+                  	title="Carbon"
+                  	priority="5">
+        	</category>
+		<wizardLink category="dashboard.category.carbon" id="dashboard.wizardLink.carbon.ui"
+                    wizard="org.wso2.developerstudio.eclipse.artifact.carbonUIartifact">
+        	</wizardLink>
+	</extension>
 	<extension point="org.eclipse.core.resources.natures"
 		id="org.wso2.developerstudio.eclipse.artifact.carbon.ui.bundle.project.nature" name="CarbonUI Project Nature">
 		<runtime>
@@ -24,15 +33,7 @@
 			natureId="org.wso2.developerstudio.eclipse.artifact.carbon.ui.bundle.project.nature" icon="icons/carbon-ui-bundle-12x12.png">
 		</image>
 	</extension>
-        <extension point="org.wso2.developerstudio.eclipse.platform.core.intro.ui.dashboard">
-        	<category id="dashboard.category.carbon" showTitle="true"
-                  	title="Carbon"
-                  	priority="5">
-        	</category>
-		<wizardLink category="dashboard.category.carbon" id="dashboard.wizardLink.carbon.ui"
-                    wizard="org.wso2.developerstudio.eclipse.artifact.carbonUIartifact">
-        	</wizardLink>
-	</extension>
+     
 	  <!--<extension point="org.eclipse.ui.navigator.navigatorContent">	
 	   <navigatorContent activeByDefault="true"
 			priority="high"

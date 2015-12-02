@@ -228,6 +228,7 @@
                             <arch>x86_64</arch>
                         </environment>
                     </environments>
+		<includePackedArtifacts>true</includePackedArtifacts>
                 </configuration>
             </plugin>
             <plugin>

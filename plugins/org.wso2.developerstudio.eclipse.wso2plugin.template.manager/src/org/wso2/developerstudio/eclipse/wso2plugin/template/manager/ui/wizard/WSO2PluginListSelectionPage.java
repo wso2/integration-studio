@@ -28,8 +28,10 @@ import org.eclipse.jface.action.Action;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.jface.viewers.IBaseLabelProvider;
+import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
+import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.wizard.IWizardNode;
 import org.eclipse.jface.wizard.WizardSelectionPage;
@@ -117,19 +119,7 @@ public class WSO2PluginListSelectionPage extends WizardSelectionPage {
 		wizardSelectionViewer = new TableViewer(sashForm, SWT.BORDER);
 		wizardSelectionViewer.setContentProvider(PluginContentProvider.getInstance());
 		wizardSelectionViewer.setLabelProvider(ListItemLabelProvider);
-		wizardSelectionViewer.getTable().addSelectionListener(new SelectionListener() {
-
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				isPluginProjectSelected = true;
-				pluginProjectSelectedAction.run();
-			}
-
-			@Override
-			public void widgetDefaultSelected(SelectionEvent e) {
-				// no implementation
-			}
-		});
+		
 		Button updateButton = new Button(container, SWT.PUSH);
 		updateButton.setText("update plugin templates");
 		GridData bGrid = new GridData();
@@ -194,7 +184,22 @@ public class WSO2PluginListSelectionPage extends WizardSelectionPage {
 		wizardSelectionViewer.setInput(wso2ElemList);
 		Dialog.applyDialogFont(container);
 		setControl(container);
+		
+		wizardSelectionViewer.getTable().addSelectionListener(new SelectionListener() {
+			
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				isPluginProjectSelected = true;
+				wso2PluginProjectWizard.setSelectedPlugin(wizardSelectionViewer.getSelection());
+				wso2PluginProjectWizard.setWizardSelected(isPluginProjectSelected);
+				pluginProjectSelectedAction.run();
+			}
 
+			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
+				// no implementation
+			}
+		});
 	}
 
 	public void createDescriptionIn(Composite composite) {

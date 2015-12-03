@@ -309,7 +309,7 @@ public class UpdaterDialog extends Dialog {
 					if (tabFolder.getSelection()[0].getText().equals(
 							ALL_FEATURES_TAB_TITLE)) {
 						updateManager.setSelectedFeaturesToInstall(selectedFeatures);
-						updateManager.installSelectedUpdates(new NullProgressMonitor());
+						updateManager.installSelectedFeatures(new NullProgressMonitor());
 					} else if (tabFolder.getSelection()[0].getText().equals(
 							UPDATES_TAB_TITLE)) {
 						updateManager.setSelectedUpdates(selectedUpdates);

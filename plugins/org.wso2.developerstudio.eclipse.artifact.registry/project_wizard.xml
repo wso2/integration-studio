@@ -17,7 +17,7 @@
 			<data modelProperty="artifact.name" type="string" fieldController="org.wso2.developerstudio.eclipse.artifact.registry.validators.RegistryArtifactFieldController">Artifact Name</data>
 			<data modelProperty="resource.type" type="list" fieldController="org.wso2.developerstudio.eclipse.artifact.registry.validators.RegistryArtifactFieldController"  controlData="select=single;modify=non-editable;class=org.wso2.developerstudio.eclipse.artifact.registry.validators.RegistryArtifactTemplateList">Template</data>
 			<data modelProperty="reg.partition" type="list" fieldController="org.wso2.developerstudio.eclipse.artifact.registry.validators.RegistryArtifactFieldController"  controlData="select=single;modify=non-editable;class=org.wso2.developerstudio.eclipse.artifact.registry.validators.RegistryPartitionList">Registry</data>
-			<data modelProperty="reg.location" type="string" fieldController="org.wso2.developerstudio.eclipse.artifact.registry.validators.RegistryArtifactFieldController">Registry path</data>
+			<data modelProperty="reg.location" type="workspacepathbrowser" fieldController="org.wso2.developerstudio.eclipse.artifact.registry.validators.RegistryArtifactFieldController">Registry path</data>
 			<data modelProperty="save.file" type="workspacefolder" fieldController="org.wso2.developerstudio.eclipse.artifact.registry.validators.RegistryArtifactFieldController" controlData="filterClass=org.wso2.developerstudio.eclipse.artifact.registry.validators.ProjectFilter">Save resource in</data>
 			<data modelProperty="create.prj" type="link" fieldController="org.wso2.developerstudio.eclipse.artifact.registry.validators.RegistryArtifactFieldController" controlData="align=right">&lt;a&gt;Create new Project...&lt;/a&gt;</data>
 
@@ -34,7 +34,7 @@
 			<data modelProperty="artifact.name" type="string" fieldController="org.wso2.developerstudio.eclipse.artifact.registry.validators.RegistryArtifactFieldController">Artifact Name</data>
 			<data modelProperty="copy.content" type="choice" fieldController="org.wso2.developerstudio.eclipse.artifact.registry.validators.RegistryArtifactFieldController">Copy content only</data>
 			<data modelProperty="reg.partition" type="list" fieldController="org.wso2.developerstudio.eclipse.artifact.registry.validators.RegistryArtifactFieldController"  controlData="select=single;modify=non-editable;class=org.wso2.developerstudio.eclipse.artifact.registry.validators.RegistryPartitionList">Registry</data>
-			<data modelProperty="reg.location" type="string" fieldController="org.wso2.developerstudio.eclipse.artifact.registry.validators.RegistryArtifactFieldController">Registry path to deploy</data>
+			<data modelProperty="reg.location" type="workspacepathbrowser" fieldController="org.wso2.developerstudio.eclipse.artifact.registry.validators.RegistryArtifactFieldController">Registry path to deploy</data>
 			<data modelProperty="save.file" type="workspacefolder" fieldController="org.wso2.developerstudio.eclipse.artifact.registry.validators.RegistryArtifactFieldController" controlData="filterClass=org.wso2.developerstudio.eclipse.artifact.registry.validators.ProjectFilter">Save resource in:</data>
 			<data modelProperty="create.prj" type="link" fieldController="org.wso2.developerstudio.eclipse.artifact.registry.validators.RegistryArtifactFieldController" controlData="align=right">&lt;a&gt;Create new Project...&lt;/a&gt;</data>
 			
@@ -50,7 +50,7 @@
 			<data modelProperty="import.file" type="file" filter="*.dump" fieldController="org.wso2.developerstudio.eclipse.artifact.registry.validators.RegistryArtifactFieldController">Registry Dump File</data>
 			<data modelProperty="artifact.name" type="string" fieldController="org.wso2.developerstudio.eclipse.artifact.registry.validators.RegistryArtifactFieldController">Artifact Name</data>
 			<data modelProperty="reg.partition" type="list" fieldController="org.wso2.developerstudio.eclipse.artifact.registry.validators.RegistryArtifactFieldController"  controlData="select=single;modify=non-editable;class=org.wso2.developerstudio.eclipse.artifact.registry.validators.RegistryPartitionList">Registry</data>
-			<data modelProperty="reg.location" type="string" fieldController="org.wso2.developerstudio.eclipse.artifact.registry.validators.RegistryArtifactFieldController">Registry path to deploy</data>
+			<data modelProperty="reg.location" type="workspacepathbrowser" fieldController="org.wso2.developerstudio.eclipse.artifact.registry.validators.RegistryArtifactFieldController">Registry path to deploy</data>
 			<data modelProperty="save.file" type="workspacefolder" fieldController="org.wso2.developerstudio.eclipse.artifact.registry.validators.RegistryArtifactFieldController" controlData="filterClass=org.wso2.developerstudio.eclipse.artifact.registry.validators.ProjectFilter">Save resource in:</data>
 			<data modelProperty="create.prj" type="link" fieldController="org.wso2.developerstudio.eclipse.artifact.registry.validators.RegistryArtifactFieldController" controlData="align=right">&lt;a&gt;Create new Project...&lt;/a&gt;</data>
 			
@@ -65,7 +65,7 @@
 			<data modelProperty="registry.browser" type="registry" fieldController="org.wso2.developerstudio.eclipse.artifact.registry.validators.RegistryArtifactFieldController"  controlData="select=single;modify=readonly;registry.selection.type=resource+collection">Path</data>
 			<data modelProperty="artifact.name" type="string" fieldController="org.wso2.developerstudio.eclipse.artifact.registry.validators.RegistryArtifactFieldController">Artifact Name</data>
 			<data modelProperty="reg.partition" type="list" fieldController="org.wso2.developerstudio.eclipse.artifact.registry.validators.RegistryArtifactFieldController"  controlData="select=single;modify=non-editable;class=org.wso2.developerstudio.eclipse.artifact.registry.validators.RegistryPartitionList">Registry</data>
-			<data modelProperty="reg.location" type="string" fieldController="org.wso2.developerstudio.eclipse.artifact.registry.validators.RegistryArtifactFieldController">Registry path to deploy</data>
+			<data modelProperty="reg.location" type="workspacepathbrowser" fieldController="org.wso2.developerstudio.eclipse.artifact.registry.validators.RegistryArtifactFieldController">Registry path to deploy</data>
 			<data modelProperty="save.file" type="workspacefolder" fieldController="org.wso2.developerstudio.eclipse.artifact.registry.validators.RegistryArtifactFieldController" controlData="filterClass=org.wso2.developerstudio.eclipse.artifact.registry.validators.ProjectFilter">Save resource in</data>
 			<data modelProperty="create.prj" type="link" fieldController="org.wso2.developerstudio.eclipse.artifact.registry.validators.RegistryArtifactFieldController" controlData="align=right">&lt;a&gt;Create new Project...&lt;/a&gt;</data>
 			<projectNatures>

@@ -49,6 +49,7 @@ import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.events.ExpansionAdapter;
 import org.eclipse.ui.forms.events.ExpansionEvent;
 import org.eclipse.ui.forms.widgets.ExpandableComposite;
+import org.wso2.developerstudio.eclipse.platform.core.interfaces.IDeveloperStudioElement;
 import org.wso2.developerstudio.eclipse.platform.core.model.AbstractComposite;
 import org.wso2.developerstudio.eclipse.platform.core.model.ICompositeProvider;
 import org.wso2.developerstudio.eclipse.platform.core.project.model.ProjectDataModel;
@@ -731,6 +732,68 @@ public class WSO2UIToolkit {
 				// TODO
 			}
 
+			public void widgetSelected(SelectionEvent event) {
+				widgetDefaultSelected(event);
+			}
+		});
+		propagateControlStatus(txtValue, lblCaption, btnFileBrowse);
+		return txtValue;
+	}
+	
+	public static Text createWorkspacePathBrowser(Composite container, final Shell shell,
+	        final String label, boolean isTextReadonly, String buttonCaption, int columns,
+	        final ViewerFilter viewerFilter, Integer verticalIndent, Integer horizontalIndent) {
+		
+		Label lblCaption = new Label(container, SWT.None);
+		lblCaption.setText(label);
+		GridData gridData = new GridData();
+		if (verticalIndent != null) {
+			gridData.verticalIndent = verticalIndent;
+		}
+		if (horizontalIndent != null) {
+			gridData.horizontalIndent = horizontalIndent;
+		}
+		lblCaption.setLayoutData(gridData);
+		final Text txtValue = new Text(container, SWT.BORDER);
+		txtValue.setEditable(!isTextReadonly);
+		if (columns != -1) {
+			gridData = new GridData();
+			gridData.horizontalSpan = columns - 2;
+			gridData.grabExcessHorizontalSpace = true;
+			gridData.horizontalAlignment = SWT.FILL;
+			txtValue.setLayoutData(gridData);
+		}
+		Button btnFileBrowse = new Button(container, SWT.None);
+		btnFileBrowse.setText(buttonCaption);
+		btnFileBrowse.addSelectionListener(new SelectionListener() {
+			
+			public void widgetDefaultSelected(SelectionEvent event) {
+				List<ViewerFilter> viewerFilters = null;
+				if (viewerFilter == null) {
+					viewerFilters = new ArrayList<ViewerFilter>();
+				} else {
+					viewerFilters = Arrays.asList(new ViewerFilter[] { viewerFilter });
+				}
+			
+				Map<String,List<String>> filters = new HashMap<String,List<String>>();
+				DeveloperStudioRegistryResourceProviderDialog dialog = new DeveloperStudioRegistryResourceProviderDialog(shell, new Class[]{IDeveloperStudioElement.class},filters);
+				dialog.create();
+				dialog.getShell().setText("Copy deploy path from existing resource");
+				dialog.open();
+				String selectedPath = dialog.getSelectedPath();
+              	if (selectedPath != null && !selectedPath.isEmpty()) {
+              		int lastIndexOfSlash = selectedPath.lastIndexOf("/");
+              		selectedPath = selectedPath.substring(0, lastIndexOfSlash);
+              		if(selectedPath.startsWith("/_system/governance/")) {
+              			selectedPath = selectedPath.substring("/_system/governance/".length());
+              		}
+              		else if(selectedPath.startsWith("/_system/config/")) {
+              			selectedPath = selectedPath.substring("/_system/config/".length());
+              		}
+					txtValue.setText(selectedPath);
+				}
+			}
+			
 			public void widgetSelected(SelectionEvent event) {
 				widgetDefaultSelected(event);
 			}

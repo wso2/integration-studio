@@ -18,7 +18,7 @@ package org.wso2.developerstudio.eclipse.embedded.tomcat;
 import org.eclipse.osgi.util.NLS;
 
 public class Messages extends NLS {
-	private static final String BUNDLE_NAME = "org.wso2.developerstudio.embedded.tomcat.messages"; //$NON-NLS-1$
+	private static final String BUNDLE_NAME = "org.wso2.developerstudio.eclipse.embedded.tomcat.Messages"; //$NON-NLS-1$
 
 	static {
 		NLS.initializeMessages(BUNDLE_NAME, Messages.class);

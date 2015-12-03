@@ -15,42 +15,31 @@
  */
 package org.wso2.developerstudio.eclipse.updater.handler;
 
-import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.Status;
-import org.eclipse.core.runtime.SubMonitor;
+import org.eclipse.core.commands.AbstractHandler;
+import org.eclipse.core.commands.ExecutionEvent;
+import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.runtime.jobs.Job;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.updater.UpdaterPlugin;
 import org.wso2.developerstudio.eclipse.updater.core.UpdateManager;
+import org.wso2.developerstudio.eclipse.updater.job.UpdateCheckerJob;
+import org.wso2.developerstudio.eclipse.updater.job.UpdateCheckerJobListener;
+import org.wso2.developerstudio.eclipse.updater.ui.UpdaterDialog.ActiveTab;
 
-public class UpdateCheckerJob extends Job {
+public class UpdateFeaturesCommandHandler extends AbstractHandler {
 
-	protected UpdateManager updateManager;
-	
 	protected static IDeveloperStudioLog log = Logger
 			.getLog(UpdaterPlugin.PLUGIN_ID);
-	
-	public UpdateCheckerJob(UpdateManager updateManager) {
-		super("Checking for Updates");
-		this.updateManager = updateManager;
-	}
+
+	protected UpdateManager updateManager = new UpdateManager();
 
 	@Override
-	protected IStatus run(IProgressMonitor monitor) {
-		try {
-			SubMonitor progress = SubMonitor.convert(monitor,
-					"Searching for updates.", 2);
-			updateManager
-					.checkForAvailableUpdates(progress.newChild(1));
-			updateManager.checkForAvailableFeatures(progress
-					.newChild(1));
-		} catch (Exception e) {
-			log.error("Error while checking updates.", e);
-
-		}
-		return Status.OK_STATUS;
+	public Object execute(ExecutionEvent arg0) throws ExecutionException {
+		Job updateJob = new UpdateCheckerJob(updateManager);
+		updateJob.schedule();
+		updateJob.addJobChangeListener(new UpdateCheckerJobListener(
+				updateManager, ActiveTab.UPDATE_FEATURES, false));
+		return null;
 	}
-
 }

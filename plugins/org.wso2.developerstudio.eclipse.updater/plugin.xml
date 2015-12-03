@@ -4,9 +4,17 @@
     <extension
          point="org.eclipse.ui.commands">
       <command
-            defaultHandler="org.wso2.developerstudio.eclipse.updater.handler.UpdateCommandHandler"
+            defaultHandler="org.wso2.developerstudio.eclipse.updater.handler.UpdateFeaturesCommandHandler"
             id="org.wso2.developerstudio.eclipse.updater.CheckUpdatesCmd"
             name="Check for updates">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            defaultHandler="org.wso2.developerstudio.eclipse.updater.handler.InstallFeaturesCommandHandler"
+            id="org.wso2.developerstudio.eclipse.updater.InstallFeaturesCmd"
+            name="Install Features">
       </command>
    </extension>
    <extension
@@ -21,7 +29,19 @@
             </command>
       </menuContribution>
    </extension>
+      <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            locationURI="menu:org.wso2.developerstudio.eclipse.platform.ui.main">
+            <command
+                  commandId="org.wso2.developerstudio.eclipse.updater.InstallFeaturesCmd"
+                  label="Install features"
+                  style="push"
+                  tooltip="Install additional features to Developer Studio">
+            </command>
+      </menuContribution>
+   </extension>
    <extension point="org.eclipse.ui.startup">
-     <startup class="org.wso2.developerstudio.eclipse.updater.handler.StartupHandler"/>
+     <startup class="org.wso2.developerstudio.eclipse.updater.handler.StartupUpdateHandler"/>
    </extension>
 </plugin>

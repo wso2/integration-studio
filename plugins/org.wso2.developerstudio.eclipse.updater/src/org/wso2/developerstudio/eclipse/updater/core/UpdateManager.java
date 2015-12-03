@@ -77,7 +77,7 @@ import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.platform.ui.preferences.UpdateCheckerPreferencePage;
 import org.wso2.developerstudio.eclipse.updater.UpdaterPlugin;
-import org.wso2.developerstudio.eclipse.updater.model.DevStudioFeature;
+import org.wso2.developerstudio.eclipse.updater.model.EnhancedFeature;
 
 public class UpdateManager {
 
@@ -100,16 +100,16 @@ public class UpdateManager {
 	
 	// maps related to Update Repo and updates
 	protected Collection<IInstallableUnit> availableIUsInUpdateRepo;
-	protected Map<String, DevStudioFeature> devsFeaturesInUpdateRepo;
+	protected Map<String, EnhancedFeature> devsFeaturesInUpdateRepo;
 	protected Map<String, Update>	availableUpdates;
 	protected Update[] selectedUpdates; 
-	protected Map<String, DevStudioFeature> updatebleDevSFeatures;
+	protected Map<String, EnhancedFeature> updatebleDevSFeatures;
 	
 	// maps related to Release Repo and availabe Features
 	protected Collection<IInstallableUnit> availableIUsInReleaseRepo;
-	protected Map<String, DevStudioFeature> devsFeaturesInReleaseRepo;
+	protected Map<String, EnhancedFeature> devsFeaturesInReleaseRepo;
 	protected Map<String, IInstallableUnit> availableNewFeatures;
-	protected Map<String, DevStudioFeature> availableDevFeaturesMap;
+	protected Map<String, EnhancedFeature> availableDevFeaturesMap;
 	protected Collection<IInstallableUnit> selectedFeatures;
 
 	protected static IDeveloperStudioLog log = Logger
@@ -150,7 +150,7 @@ public class UpdateManager {
 		}
 	}
 
-	protected Map<String, DevStudioFeature> readFeatureMetadataFromRepo(
+	protected Map<String, EnhancedFeature> readFeatureMetadataFromRepo(
 			IArtifactRepository artifactRepository, IQueryResult<IInstallableUnit> allAvailableIUs, IProgressMonitor monitor)
 			throws ProvisionException, URISyntaxException, IOException {
 		if (monitor == null) {
@@ -165,7 +165,7 @@ public class UpdateManager {
 		Collection<IInstallableUnit> wso2features = filterInstallableUnits(
 				"org.wso2", "feature.jar", allAvailableIUs, progress.newChild(1));
 
-		Map<String, DevStudioFeature> featureMetadataMap = new HashMap<>();
+		Map<String, EnhancedFeature> featureMetadataMap = new HashMap<>();
 
 		for (IInstallableUnit iu : wso2features) {
 			SubMonitor downloadProgress = SubMonitor.convert(progress,
@@ -202,7 +202,7 @@ public class UpdateManager {
 								"Error while downloading feature jar.", e);
 					}
 				}
-				DevStudioFeature feature = parseFeatureMetadata(iu,
+				EnhancedFeature feature = parseAdditionalFeatureMetadata(iu,
 						cachedFeatureDir);
 				featureMetadataMap.put(feature.getId(), feature);
 			}
@@ -210,9 +210,9 @@ public class UpdateManager {
 		return featureMetadataMap;
 	}
 
-	private DevStudioFeature parseFeatureMetadata(IInstallableUnit iu,
+	private EnhancedFeature parseAdditionalFeatureMetadata(IInstallableUnit iu,
 			File cachedFeatureDir) {
-		DevStudioFeature feature = new DevStudioFeature(iu);
+		EnhancedFeature feature = new EnhancedFeature(iu);
 		feature.setIconURL("file://" + cachedFeatureDir + File.separator + "icon.png");
 		try {
 			File updateProperties = new File(cachedFeatureDir,
@@ -222,8 +222,10 @@ public class UpdateManager {
 			prop.load(input);
 			feature.setWhatIsNew(prop.getProperty("whatIsNew"));
 			feature.setBugFixes(prop.getProperty("bugFixes"));
+			feature.setKernelFeature(Boolean.parseBoolean(prop
+					.getProperty("isKernelFeature")));
 		} catch (Exception e) {
-			// ignore
+			// ignore - Additional meta-data was not provided in feature.jar
 			// log.error(e);
 		}
 		return feature;
@@ -310,7 +312,7 @@ public class UpdateManager {
 			throw new OperationCanceledException();
 		}
 		if (status.getCode() == UpdateOperation.STATUS_NOTHING_TO_UPDATE) {
-			updatebleDevSFeatures = new HashMap<String, DevStudioFeature>();
+			updatebleDevSFeatures = new HashMap<String, EnhancedFeature>();
 			log.info("No updates are found.");
 		} else if (status.getSeverity() == IStatus.ERROR) {
 			log.info("Error while resolving updates.");
@@ -321,12 +323,12 @@ public class UpdateManager {
 
 	private void setPossibleUpdates(Update[] possibleUpdates) {
 		availableUpdates = new HashMap<String, Update>();
-		updatebleDevSFeatures = new HashMap<String, DevStudioFeature>();
+		updatebleDevSFeatures = new HashMap<String, EnhancedFeature>();
 		for (Update update : possibleUpdates) {
 			String id = update.replacement.getId();
 			String oldVersion = update.toUpdate.getVersion().toString();
 			String newVersion = update.replacement.getVersion().toString();
-			DevStudioFeature updatebleFeature = devsFeaturesInUpdateRepo.get(id);
+			EnhancedFeature updatebleFeature = devsFeaturesInUpdateRepo.get(id);
 			updatebleFeature.setCurrentVersion(oldVersion);
 			updatebleFeature.setVersion(newVersion);
 			availableUpdates.put(id, update);
@@ -362,7 +364,7 @@ public class UpdateManager {
 				"org.wso2", "feature.group", allIUQueryResult,
 				progress.newChild(1));
 		availableNewFeatures = new HashMap<String, IInstallableUnit>();
-		availableDevFeaturesMap = new HashMap<String, DevStudioFeature>();
+		availableDevFeaturesMap = new HashMap<String, EnhancedFeature>();
 		for (IInstallableUnit iInstallableUnit : filteredIUs) {
 			availableNewFeatures
 					.put(iInstallableUnit.getId(), iInstallableUnit);
@@ -471,7 +473,7 @@ public class UpdateManager {
 	 * 
 	 * @return an array of all possible updates
 	 */
-	public Map<String, DevStudioFeature> getAvailableFeaturesMap() throws IllegalStateException {
+	public Map<String, EnhancedFeature> getAvailableFeaturesMap() throws IllegalStateException {
 		if (availableDevFeaturesMap ==  null) {
 			throw new IllegalStateException(NOT_RESOLVED_ERROR);
 		}
@@ -542,18 +544,26 @@ public class UpdateManager {
 		return updateOperation.getResolutionResult();
 	}
 
-	public Map<String, DevStudioFeature> getPossibleUpdatesMap()
+	public Map<String, EnhancedFeature> getPossibleUpdatesMap()
 			throws IllegalStateException {
 		if (updatebleDevSFeatures == null) {
 			throw new IllegalStateException(NOT_RESOLVED_ERROR);
 		}
 		return updatebleDevSFeatures;
 	}
+	
+	public boolean hasPossibleUpdates()
+			throws IllegalStateException {
+		if (updatebleDevSFeatures == null) {
+			throw new IllegalStateException(NOT_RESOLVED_ERROR);
+		}
+		return (updatebleDevSFeatures.size() > 0) ? true : false;
+	}
 
-	public void setSelectedUpdates(List<DevStudioFeature> selectedFeaturesList) {
+	public void setSelectedUpdates(List<EnhancedFeature> selectedFeaturesList) {
 		selectedUpdates = new  Update[selectedFeaturesList.size()];
 		int count = 0;
-		for (DevStudioFeature selectedFeature: selectedFeaturesList) {
+		for (EnhancedFeature selectedFeature: selectedFeaturesList) {
 			selectedUpdates[count] = availableUpdates.get(selectedFeature.getId());
 			count++;
 		}
@@ -634,9 +644,9 @@ public class UpdateManager {
 	}
 
 	public void setSelectedFeaturesToInstall(
-			List<DevStudioFeature> selectedDevSFeatures) {
+			List<EnhancedFeature> selectedDevSFeatures) {
 		this.selectedFeatures = new ArrayList<IInstallableUnit>();
-		for (DevStudioFeature devStudioFeature : selectedDevSFeatures) {
+		for (EnhancedFeature devStudioFeature : selectedDevSFeatures) {
 			selectedFeatures.add(availableNewFeatures.get(devStudioFeature
 					.getId()));
 		}

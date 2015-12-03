@@ -13,15 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.developerstudio.eclipse.updater.ui.function;
+package org.wso2.developerstudio.eclipse.updater.ui.web.function;
 
 import org.wso2.developerstudio.eclipse.updater.core.UpdateManager;
-import org.wso2.developerstudio.eclipse.updater.ui.ProvisioningWindow;
+import org.wso2.developerstudio.eclipse.updater.ui.web.UpdaterWebUI;
 
 public class InstallSelectedUpdatesFunction extends
 		AbstractProvisioningWindowFunction {
 
-	public InstallSelectedUpdatesFunction(ProvisioningWindow provisioningWindow) {
+	public InstallSelectedUpdatesFunction(UpdaterWebUI provisioningWindow) {
 		super(provisioningWindow, FunctionNames.INSTALL_SELECTED_UPDATES);
 	}
 	

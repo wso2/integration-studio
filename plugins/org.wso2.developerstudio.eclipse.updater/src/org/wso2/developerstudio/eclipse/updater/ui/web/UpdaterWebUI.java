@@ -13,30 +13,33 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.developerstudio.eclipse.updater.ui;
+package org.wso2.developerstudio.eclipse.updater.ui.web;
 
 import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.Path;
 import org.osgi.framework.FrameworkUtil;
 import org.wso2.developerstudio.eclipse.updater.core.UpdateManager;
-import org.wso2.developerstudio.eclipse.updater.ui.function.GetAvailableFeaturesFunction;
-import org.wso2.developerstudio.eclipse.updater.ui.function.GetAvailableUpdatesFunction;
-import org.wso2.developerstudio.eclipse.updater.ui.function.InstallSelectedFeaturesFunction;
-import org.wso2.developerstudio.eclipse.updater.ui.function.InstallSelectedUpdatesFunction;
-import org.wso2.developerstudio.eclipse.updater.ui.function.SetSelectedFeaturesFunction;
-import org.wso2.developerstudio.eclipse.updater.ui.function.SetSelectedUpdatesFunction;
+import org.wso2.developerstudio.eclipse.updater.ui.UpdaterDialog.ActiveTab;
+import org.wso2.developerstudio.eclipse.updater.ui.web.function.GetAvailableFeaturesFunction;
+import org.wso2.developerstudio.eclipse.updater.ui.web.function.GetAvailableUpdatesFunction;
+import org.wso2.developerstudio.eclipse.updater.ui.web.function.InstallSelectedFeaturesFunction;
+import org.wso2.developerstudio.eclipse.updater.ui.web.function.InstallSelectedUpdatesFunction;
+import org.wso2.developerstudio.eclipse.updater.ui.web.function.SetSelectedFeaturesFunction;
+import org.wso2.developerstudio.eclipse.updater.ui.web.function.SetSelectedUpdatesFunction;
 import org.wso2.developerstudio.eclipse.webui.core.window.WebWindow;
 
-public class ProvisioningWindow extends WebWindow {
+public class UpdaterWebUI extends WebWindow {
 	
 	protected UpdateManager updateManager;
+	protected ActiveTab activeTab;
 
-	public ProvisioningWindow(UpdateManager manager) throws Exception {
+	public UpdaterWebUI(UpdateManager manager, ActiveTab activeTab) throws Exception {
 		super(FileLocator.toFileURL(FileLocator.find(FrameworkUtil
-				.getBundle(ProvisioningWindow.class), new Path(
+				.getBundle(UpdaterWebUI.class), new Path(
 				"WebInterface/updater/index.html"), null)));
 		this.setSize(710, 812);
-		updateManager = manager;
+		this.updateManager = manager;
+		this.activeTab = activeTab;
 		new GetAvailableUpdatesFunction(this);
 		new SetSelectedUpdatesFunction(this);
 		new InstallSelectedUpdatesFunction(this);

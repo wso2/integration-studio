@@ -13,15 +13,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.developerstudio.eclipse.updater.ui.function;
+package org.wso2.developerstudio.eclipse.updater.util;
 
-public class FunctionNames {
+import java.util.Collection;
+import java.util.Set;
 
-	public static final String GET_AVAILABLE_UPDATES_FUNCTION = "getAvailableUpdatesCallback";
-	public static final String SET_SELECTED_UPDATES = "setSelectedUpdatesCallback";
-	public static final String SET_SELECTED_FEATURES = "setSelectedFeaturesCallback";
-	public static final String INSTALL_SELECTED_UPDATES = "installSelectedUpdatesCallback";
-	public static final String GET_AVAILABLE_FEATURES_FUNCTION = "getAvailableFeaturesCallback";
-	public static final String INSTALL_SELECTED_FEATURES= "installSelectedFeaturesCallback";
+import org.eclipse.equinox.p2.metadata.IInstallableUnit;
+import org.eclipse.equinox.p2.operations.OperationFactory;
+
+public class UpdaterUtils {
+
+	public static Set<IInstallableUnit> getIUS() {
+		Collection<IInstallableUnit> queryResult2 = new OperationFactory()
+				.listInstalledElements(true, null).toSet();
+		for (IInstallableUnit iInstallableUnit : queryResult2) {
+		
+		}
+		return (Set<IInstallableUnit>) queryResult2;
+	}
 
 }

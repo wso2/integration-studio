@@ -23,8 +23,11 @@ import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.updater.UpdaterPlugin;
 import org.wso2.developerstudio.eclipse.updater.core.UpdateManager;
+import org.wso2.developerstudio.eclipse.updater.job.UpdateCheckerJob;
+import org.wso2.developerstudio.eclipse.updater.job.UpdateCheckerJobListener;
+import org.wso2.developerstudio.eclipse.updater.ui.UpdaterDialog.ActiveTab;
 
-public class UpdateCommandHandler extends AbstractHandler {
+public class InstallFeaturesCommandHandler extends AbstractHandler {
 
 	protected static IDeveloperStudioLog log = Logger
 			.getLog(UpdaterPlugin.PLUGIN_ID);
@@ -36,7 +39,7 @@ public class UpdateCommandHandler extends AbstractHandler {
 		Job updateJob = new UpdateCheckerJob(updateManager);
 		updateJob.schedule();
 		updateJob.addJobChangeListener(new UpdateCheckerJobListener(
-				updateManager));
+				updateManager, ActiveTab.ALL_FEATURES, false));
 		return null;
 	}
 }

@@ -224,6 +224,8 @@ public class ProjectList extends AbstractListDataProvider {
 						} catch (Exception ignored) {
 							// ignored
 						}
+					} else {
+						log.error("Unknown Project Nature, in project " + project.getName());
 					}
 				}
 			} catch (Exception e) {

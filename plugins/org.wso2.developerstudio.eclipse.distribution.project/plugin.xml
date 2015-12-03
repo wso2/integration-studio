@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <plugin>
-   <extension-point id="org.wso2.developerstudio.eclipse.capp.project.export.handler" name="Export Handler Extension" schema="schema/org.wso2.developerstudio.export.handler.extension.exsd"/>
    <extension-point id="org.wso2.developerstudio.register.server.role" name="Register New Server Roles" schema="schema/org.wso2.developerstudio.register.server.role.exsd"/>
    <extension-point id="org.wso2.developerstudio.register.artifact.priority.mapping" name="Artifact Priority Mapping" schema="schema/org.wso2.developerstudio.register.artifact.priority.mapping.exsd"/>
    <extension-point id="org.wso2.developerstudio.register.artifact.mapping" name="Register Artifact mapping" schema="schema/org.wso2.developerstudio.register.artifact.mapping.exsd"/>

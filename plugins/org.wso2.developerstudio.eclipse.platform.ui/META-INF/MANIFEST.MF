@@ -39,6 +39,8 @@ Import-Package: org.apache.axis2.client,
  org.wso2.developerstudio.eclipse.platform.core.utils;version="[4.0.0,4.1.0)",
  org.wso2.developerstudio.eclipse.platform.ui.startup;version="[4.0.0,4.1.0)",
  org.wso2.developerstudio.eclipse.platform.ui.utils;version="[4.0.0,4.1.0)",
+ org.wso2.developerstudio.eclipse.registry.core;version="[4.0.0,4.1.0)",
+ org.wso2.developerstudio.eclipse.registry.core.interfaces;version="[4.0.0,4.1.0)",
  org.wso2.developerstudio.eclipse.utils.file;version="[4.0.0,4.1.0)",
  org.wso2.developerstudio.eclipse.utils.project;version="[4.0.0,4.1.0)",
  org.wso2.developerstudio.eclipse.utils.ui;version="[4.0.0,4.1.0)"

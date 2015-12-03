@@ -1,9 +1,28 @@
+/*
+ * Copyright (c) 2015, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package org.wso2.developerstudio.eclipse.updater.ui;
 
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map.Entry;
 
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.jface.dialogs.Dialog;
+import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.ScrolledComposite;
 import org.eclipse.swt.custom.StyledText;
@@ -18,8 +37,11 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Listener;
+import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.TabFolder;
 import org.eclipse.swt.widgets.TabItem;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
@@ -30,8 +52,21 @@ import org.wso2.developerstudio.eclipse.updater.model.EnhancedFeature;
 
 public class UpdaterDialog extends Dialog {
 	
+	private static final String CANCEL_BTN_TXT = "cancel";
+	private static final String VERSION_LABEL = "Latest Version : ";
+	private static final String INSTALL_BTN_TXT = "install";
+	private static final String FILE_PROTOCOL = "file:";
+	private static final String TITLE = "Updates Manager for Developer Studio";
+	private static final String UPDATES_TAB_TITLE = "Updates";
+	private static final String ALL_FEATURES_TAB_TITLE = "All Features";
+	
 	private UpdateManager updateManager;
 	private ActiveTab activeTab;
+	protected List<EnhancedFeature> selectedFeatures;
+	protected List<EnhancedFeature> selectedUpdates;
+	private Button installBtn;
+	private Dialog dialog;
+	private TabFolder tabFolder;
 
 	protected static IDeveloperStudioLog log = Logger
 			.getLog(UpdaterPlugin.PLUGIN_ID);
@@ -42,15 +77,19 @@ public class UpdaterDialog extends Dialog {
 
 	public UpdaterDialog(UpdateManager updateManager, ActiveTab activeTab) {
 		super(Display.getDefault().getActiveShell());
+		this.dialog = this;
 		this.activeTab = activeTab;
 		this.updateManager = updateManager;
+		this.selectedFeatures = new ArrayList<>();
+		this.selectedUpdates = new ArrayList<>();
 	}
 
 	@Override
 	protected Control createDialogArea(Composite parent) {
 		final Composite topContainer = createTopContainer(parent);
 		Composite leftContainer = createSubColumnContainer(topContainer);
-		TabFolder tabFolder = createLeftContainerTabFolder(leftContainer);
+		tabFolder = createLeftContainerTabFolder(leftContainer);
+		
 		createFeatureItemsInTabFolder(tabFolder);
 		if (activeTab == ActiveTab.ALL_FEATURES) {
 			tabFolder.setSelection(0);
@@ -68,9 +107,12 @@ public class UpdaterDialog extends Dialog {
 
 	private void createFeatureListTab(TabFolder tabFolder,
 			ActiveTab type) {
-
 		TabItem tabItem = new TabItem(tabFolder, SWT.NULL);
-		tabItem.setText(type.toString());
+		if (type == ActiveTab.ALL_FEATURES) {
+			tabItem.setText(ALL_FEATURES_TAB_TITLE);
+		} else {
+			tabItem.setText(UPDATES_TAB_TITLE);
+		}
 		ScrolledComposite scroll = new ScrolledComposite(tabFolder,
 				SWT.V_SCROLL | SWT.H_SCROLL);
 		scroll.setLayout(new GridLayout());
@@ -97,8 +139,20 @@ public class UpdaterDialog extends Dialog {
 		tabGridData.heightHint = 750;
 		tabGridData.widthHint = 700;
 
-		TabFolder tabFolder = new TabFolder(leftContainer, SWT.CHECK
+		final TabFolder tabFolder = new TabFolder(leftContainer, SWT.CHECK
 				| SWT.BORDER | SWT.H_SCROLL);
+		tabFolder.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent event) {
+				if (tabFolder.getSelection()[0].getText().equals(
+						ALL_FEATURES_TAB_TITLE)) {
+					installBtn.setEnabled(!selectedFeatures.isEmpty());
+				} else if (tabFolder.getSelection()[0].getText().equals(
+						UPDATES_TAB_TITLE)) {
+					installBtn.setEnabled(!selectedUpdates.isEmpty());
+				}
+			}
+		});
 		tabFolder.setLayoutData(tabGridData);
 		tabFolder.setSize(400, 420);
 		return tabFolder;
@@ -127,31 +181,31 @@ public class UpdaterDialog extends Dialog {
 	private void listFeatures(Group group, ActiveTab type) {
 		Iterator<Entry<String, EnhancedFeature>> featureList;
 		if (type == ActiveTab.ALL_FEATURES) {
-			featureList = updateManager.getAvailableFeaturesMap().entrySet().iterator();
+			featureList = updateManager.getAvailableFeaturesMap().entrySet()
+					.iterator();
 		} else {
-			featureList = updateManager.getPossibleUpdatesMap().entrySet().iterator();;
+			featureList = updateManager.getPossibleUpdatesMap().entrySet()
+					.iterator();
 		}
 		while (featureList.hasNext()) {
-			
 			EnhancedFeature feature = featureList.next().getValue();
-
-//			FIXME - uncomment this when we need to remove kernel features
-//			if(feature.isKernelFeature()){
-//				continue;
-//			}
-
+			// set isKernelFeature=true in update.properties file in features to
+			// ignore them by updater
+			if (feature.isKernelFeature()) {
+				continue;
+			}
 			GridData gridData = new GridData(SWT.FILL, SWT.FILL, true, false);
 			final Group featureGroup = createFeatureRepresentationGroup(group,
 					gridData);
-			createCheckBoxInFeatureGroup(featureGroup);
-			
+			createCheckBoxInFeatureGroup(feature, featureGroup, type);
+
 			Label featureImageLabel = new Label(featureGroup, SWT.NONE);
 			try {
 				Image image = new Image(Display.getDefault(), feature
-						.getIconURL().replace("file:", ""));
+						.getIconURL().replace(FILE_PROTOCOL, ""));
 				featureImageLabel.setImage(image);
 			} catch (Exception ex) {
-				log.warn("Image Failed for feature:" + feature.getId(), ex);
+				log.warn("Retrieving image failed for feature:" + feature.getId(), ex);
 			}
 			final Group featureInfoGroup = createFeatureInfoRepresentationGroup(featureGroup);
 			StyledText featureName = createFeatureNameText(feature,
@@ -168,7 +222,7 @@ public class UpdaterDialog extends Dialog {
 			final Group featureInfoGroup) {
 		StyledText featureNewVersion = new StyledText(featureInfoGroup,
 				SWT.WRAP);
-		String featureVersionString = "Latest Version : "
+		String featureVersionString = VERSION_LABEL
 				+ feature.getVersion();
 		featureNewVersion.setText(featureVersionString);
 	}
@@ -193,15 +247,31 @@ public class UpdaterDialog extends Dialog {
 		return featureInfoGroup;
 	}
 
-	private void createCheckBoxInFeatureGroup(final Group featureGroup) {
-		final Button checkBox = new Button(featureGroup, SWT.CHECK);
-		checkBox.addSelectionListener(new SelectionAdapter() {
+	private void createCheckBoxInFeatureGroup(EnhancedFeature feature,
+			final Group featureGroup, final ActiveTab type) {
+		final SelectableFeatureButton btn = new SelectableFeatureButton(
+				featureGroup, SWT.CHECK);
+		btn.setFeature(feature);
+		btn.getCheckBox().addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				if (checkBox.getSelection()) {
-					System.out.println(true);
+				if (btn.getCheckBox().getSelection()) {
+					if (type == ActiveTab.ALL_FEATURES) {
+						selectedFeatures.add(btn.getFeature());
+					} else {
+						selectedUpdates.add(btn.getFeature());
+					}
 				} else {
-					System.out.println(false);
+					if (type == ActiveTab.ALL_FEATURES) {
+						selectedFeatures.remove(btn.getFeature());
+					} else {
+						selectedUpdates.remove(btn.getFeature());
+					}
+				}
+				if (type == ActiveTab.ALL_FEATURES) {
+					installBtn.setEnabled(!selectedFeatures.isEmpty());
+				} else {
+					installBtn.setEnabled(!selectedUpdates.isEmpty());
 				}
 			}
 		});
@@ -217,5 +287,47 @@ public class UpdaterDialog extends Dialog {
 		featureGroup.setLayoutData(gridData);
 		return featureGroup;
 	}
+	
+	protected void createButtonsForButtonBar(Composite parent)
+	{
+	  // Change parent layout data to fill the whole bar
+	  parent.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false));
 
+	  installBtn = createButton(parent, IDialogConstants.NO_ID, INSTALL_BTN_TXT, true);
+	  installBtn.setSize(125, 25);
+	  installBtn.setEnabled(false);
+	  installBtn.addListener(SWT.Selection, new Listener() {
+	      public void handleEvent(Event e) {
+	          switch (e.type) {
+				case SWT.Selection:
+					if (tabFolder.getSelection()[0].getText().equals(
+							ALL_FEATURES_TAB_TITLE)) {
+						updateManager.setSelectedFeaturesToInstall(selectedFeatures);
+						updateManager.installSelectedUpdates(new NullProgressMonitor());
+					} else if (tabFolder.getSelection()[0].getText().equals(
+							UPDATES_TAB_TITLE)) {
+						updateManager.setSelectedUpdates(selectedUpdates);
+						updateManager.installSelectedUpdates(new NullProgressMonitor());
+					}
+					dialog.close();
+					break;
+	          }
+	        }
+	  });
+
+	  // Create a spacer label
+	  Label spacer = new Label(parent, SWT.NONE);
+	  spacer.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false));
+
+	  // Update layout of the parent composite to count the spacer
+	  GridLayout layout = (GridLayout)parent.getLayout();
+	  layout.numColumns++;
+	  layout.makeColumnsEqualWidth = false;
+	  createButton(parent, IDialogConstants.CANCEL_ID, CANCEL_BTN_TXT , false);
+	}
+
+	protected void configureShell(Shell shell) {
+		super.configureShell(shell);
+		shell.setText(TITLE);
+	}
 }

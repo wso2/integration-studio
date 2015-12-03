@@ -48,9 +48,6 @@ public class DebuggerConfigTab extends AbstractLaunchConfigurationTab {
 	private Text commandPort;
 	private Text eventPort;
 
-	public DebuggerConfigTab() {
-	}
-
 	/**
 	 * Initializes the launch configuration with default values for the tab.
 	 * <p>

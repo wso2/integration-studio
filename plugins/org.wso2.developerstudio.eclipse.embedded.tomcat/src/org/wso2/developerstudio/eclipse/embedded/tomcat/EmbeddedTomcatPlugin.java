@@ -45,11 +45,11 @@ public class EmbeddedTomcatPlugin implements BundleActivator {
 			@Override
 			public void run() {
 				try {
-					log.info(Messages.INFO_STARTING_TOMCAT);
 					Thread.currentThread().setContextClassLoader(bundleCtxClassLoader);
 					tomcatServer = new EmbeddedTomcatServer();
 					tomcatServer.init();
 					if(tomcatServer.isStartupRequired()){
+						log.info(Messages.INFO_STARTING_TOMCAT);
 						tomcatServer.start();
 						Integer port = tomcatServer.getServerPort();
 						log.info(NLS.bind(Messages.INFO_TOMCAT_STARTED, port));

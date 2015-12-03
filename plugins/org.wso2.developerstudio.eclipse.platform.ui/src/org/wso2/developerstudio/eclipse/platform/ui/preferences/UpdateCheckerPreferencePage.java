@@ -51,7 +51,7 @@ public class UpdateCheckerPreferencePage extends FieldEditorPreferencePage imple
 	protected void createFieldEditors() {
 		addField(new StringFieldEditor(UPDATE_SITE_URL, "Update site:", getFieldEditorParent()));
 		addField(new StringFieldEditor(RELESE_SITE_URL, "Relase site:", getFieldEditorParent()));
-		addField(new BooleanFieldEditor(ENABLE_KERNEL_FEATURES, "Show Kernel Features", getFieldEditorParent()));
+		addField(new BooleanFieldEditor(ENABLE_KERNEL_FEATURES, "Show Kernel Features (For plugin developers)", getFieldEditorParent()));
 		addField(new BooleanFieldEditor(ENABLE_AUTOMATIC_UPDATES, "Check for updates Automatically", getFieldEditorParent()));
 		String[][] intervals = {{ "Daily", "Daily" }, { "Weekly", "Weekly" }, { "Monthly", "Monthly" }};
 		intervalEditor = new ComboFieldEditor(UPDATE_INTAVAL, "Check for updates ", intervals,

@@ -82,7 +82,8 @@ public class CarExportHandler extends ProjectArtifactHandler {
 	public List<IResource> exportArtifact(IProject project) throws Exception {
 		List<IResource> exportResources = new ArrayList<IResource>();
 		List<ArtifactData> artifactList = new ArrayList<ArtifactData>();
-		Map<IProject, Map<String, IResource>> resourceProjectList = new HashMap<IProject, Map<String, IResource>>();
+		Map<IProject, Map<String, IResource>> resourceProjectList =
+		                                                            new HashMap<IProject, Map<String, IResource>>();
 		Map<IProject, Map<String, IResource>> graphicalSynapseProjectList =
 		                                                                    new HashMap<IProject, Map<String, IResource>>();
 		IFile pomFileRes;
@@ -110,7 +111,8 @@ public class CarExportHandler extends ProjectArtifactHandler {
 		Map<String, String> serverRoleList = new HashMap<String, String>();
 		for (ListData data : projectListData) {
 			DependencyData dependencyData = (DependencyData) data.getData();
-			projectList.put(DistProjectUtils.getArtifactInfoAsString(dependencyData.getDependency()), dependencyData);
+			projectList.put(DistProjectUtils.getArtifactInfoAsString(dependencyData.getDependency()),
+			                dependencyData);
 		}
 
 		parentPrj = MavenUtils.getMavenProject(pomFile);
@@ -122,23 +124,23 @@ public class CarExportHandler extends ProjectArtifactHandler {
 				DependencyData dependencyData = projectList.get(dependencyKey);
 				Object parent = dependencyData.getParent();
 				Object self = dependencyData.getSelf();
-				String serverRole = serverRoleList.get(DistProjectUtils.getArtifactInfoAsString(dependency));
+				String serverRole =
+				                    serverRoleList.get(DistProjectUtils.getArtifactInfoAsString(dependency));
 				dependencyData.setServerRole(serverRole.replaceAll("^capp/", ""));
 				if (parent != null && self != null) { // multiple artifact
-					selectExporterExecCalss(serverRole, artifactList, graphicalSynapseProjectList, splitESBResources,
-					                        dependencyData, parent, self);
+					selectExporterExecCalss(serverRole, artifactList, graphicalSynapseProjectList,
+					                        splitESBResources, dependencyData, parent, self);
 				} else if (parent == null && self != null) { // artifacts as
 					// single artifact archive
 					ArtifactExportHandler artifactExportHandler = new ArtifactExportHandler();
-					artifactExportHandler.exportArtifact(artifactList, null, null, dependencyData, parent, null);
+					artifactExportHandler.exportArtifact(artifactList, null, null, dependencyData,
+					                                     null, self);
 					isExecClassFound = true;
 				} else if (parent != null && self == null) { // these are
-					// registry resources may also have some other server role,
-					// therefore to get the correct artifact exporter we need to
-					// set the
-					// server role here as GovernanceRegistry
-					selectExporterExecCalss(GOVERNANCE_REGISTRY_SERVER_ROLE, artifactList, resourceProjectList, null,
-					                        dependencyData, parent, null);
+															 // registry
+															 // resources
+					exportRegistryResourceArtifact(artifactList, resourceProjectList,
+					                               dependencyData, parent);
 				} else {
 					log.error("unidentified artifact structure, cannot be exported as a deployable artifact for server " +
 					          serverRole);
@@ -146,8 +148,8 @@ public class CarExportHandler extends ProjectArtifactHandler {
 				if (!isExecClassFound) {
 					log.error("No appropriate class found extending the extension point " +
 					          CAPP_PROJECT_EXPORT_HANDLER_EXTENSION_ID +
-					          "to perform the artifact export for server role " + serverRole + "for dependency " +
-					          dependency.getArtifactId());
+					          "to perform the artifact export for server role " + serverRole +
+					          "for dependency " + dependency.getArtifactId());
 				}
 			}
 		}
@@ -166,7 +168,8 @@ public class CarExportHandler extends ProjectArtifactHandler {
 			if (artifact.getResource() instanceof IFolder) {
 				FileUtils.copyDirectory(artifact.getResource().getLocation().toFile(), artifactDir);
 			} else if (artifact.getResource() instanceof IFile) {
-				FileUtils.copy(artifact.getResource().getLocation().toFile(), new File(artifactDir, artifact.getFile()));
+				FileUtils.copy(artifact.getResource().getLocation().toFile(),
+				               new File(artifactDir, artifact.getFile()));
 			}
 			artifactElt.addChild(createDependencyElement(factory, artifact));
 			createArtifactXML(artifactDir, artifact);
@@ -177,7 +180,8 @@ public class CarExportHandler extends ProjectArtifactHandler {
 		XMLUtil.prettify(artifactsDocRoot, new FileOutputStream(artifactsXml));
 
 		File tmpArchive =
-		                  new File(tempProject, project.getName().concat("_").concat(parentPrj.getVersion())
+		                  new File(tempProject, project.getName().concat("_")
+		                                               .concat(parentPrj.getVersion())
 		                                               .concat(".car"));
 		archiveManipulator.archiveDir(tmpArchive.toString(), carResources.toString());
 
@@ -190,6 +194,36 @@ public class CarExportHandler extends ProjectArtifactHandler {
 		return exportResources;
 	}
 
+	private void exportRegistryResourceArtifact(List<ArtifactData> artifactList,
+	                                            Map<IProject, Map<String, IResource>> resourceProjectList,
+	                                            DependencyData dependencyData, Object parent)
+	                                                                                         throws Exception {
+		IProject resProject = (IProject) parent;
+		if (!resourceProjectList.containsKey(resProject)) {
+			Map<String, IResource> artifacts = new HashMap<String, IResource>();
+			List<IResource> buildProject =
+			                               ExportUtil.buildProject(resProject,
+			                                                       dependencyData.getCApptype());
+			for (IResource res : buildProject) {
+				if (res instanceof IFolder) {
+					artifacts.put(res.getName(), res);
+				}
+			}
+			resourceProjectList.put(resProject, artifacts);
+		}
+		if (resourceProjectList.containsKey(resProject)) {
+			Map<String, IResource> artifacts = resourceProjectList.get(resProject);
+			if (artifacts.containsKey(getArtifactDir(dependencyData))) {
+				ArtifactData artifactData = new ArtifactData();
+				artifactData.setDependencyData(dependencyData);
+				artifactData.setFile("registry-info.xml");
+				artifactData.setResource(artifacts.get(getArtifactDir(dependencyData)));
+				artifactList.add(artifactData);
+			}
+
+		}
+	}
+
 	private String getArtifactDir(DependencyData dependencyData) {
 		String artifactDir =
 		                     String.format("%s_%s", dependencyData.getDependency().getArtifactId(),
@@ -200,8 +234,10 @@ public class CarExportHandler extends ProjectArtifactHandler {
 	private void createArtifactXML(File artifactDir, ArtifactData artifact) {
 		OMFactory factory = OMAbstractFactory.getOMFactory();
 		OMElement artifactElt = factory.createOMElement(new QName("artifact"));
-		artifactElt.addAttribute("name", artifact.getDependencyData().getDependency().getArtifactId(), null);
-		artifactElt.addAttribute("version", artifact.getDependencyData().getDependency().getVersion(), null);
+		artifactElt.addAttribute("name", artifact.getDependencyData().getDependency()
+		                                         .getArtifactId(), null);
+		artifactElt.addAttribute("version", artifact.getDependencyData().getDependency()
+		                                            .getVersion(), null);
 		artifactElt.addAttribute("type", artifact.getDependencyData().getCApptype(), null);
 		artifactElt.addAttribute("serverRole", artifact.getDependencyData().getServerRole(), null);
 		OMElement fileElt = factory.createOMElement(new QName("file"));
@@ -217,8 +253,10 @@ public class CarExportHandler extends ProjectArtifactHandler {
 
 	private OMElement createDependencyElement(OMFactory factory, ArtifactData artifact) {
 		OMElement dependencyElt = factory.createOMElement(new QName("dependency"));
-		dependencyElt.addAttribute("artifact", artifact.getDependencyData().getDependency().getArtifactId(), null);
-		dependencyElt.addAttribute("version", artifact.getDependencyData().getDependency().getVersion(), null);
+		dependencyElt.addAttribute("artifact", artifact.getDependencyData().getDependency()
+		                                               .getArtifactId(), null);
+		dependencyElt.addAttribute("version", artifact.getDependencyData().getDependency()
+		                                              .getVersion(), null);
 		dependencyElt.addAttribute("include", "true", null);
 		dependencyElt.addAttribute("serverRole", artifact.getDependencyData().getServerRole(), null);
 		return dependencyElt;
@@ -230,8 +268,8 @@ public class CarExportHandler extends ProjectArtifactHandler {
 	 */
 	private void selectExporterExecCalss(String serverRole, List<ArtifactData> artifactList,
 	                                     Map<IProject, Map<String, IResource>> synapseProjectList,
-	                                     IFolder splitESBResources, DependencyData dependencyData, Object parent,
-	                                     Object self) {
+	                                     IFolder splitESBResources, DependencyData dependencyData,
+	                                     Object parent, Object self) {
 		IConfigurationElement[] elements =
 		                                   devStudioUtils.getExtensionPointmembers(CAPP_PROJECT_EXPORT_HANDLER_EXTENSION_ID);
 		if (elements != null) {
@@ -244,8 +282,8 @@ public class CarExportHandler extends ProjectArtifactHandler {
 						execClassObject = config.createExecutableExtension(EXECUTIONCLASS);
 						if (execClassObject instanceof DefaultArtifactExportHandler) {
 							isExecClassFound = true;
-							executeExtension(execClassObject, artifactList, synapseProjectList, splitESBResources,
-							                 dependencyData, parent, self);
+							executeExtension(execClassObject, artifactList, synapseProjectList,
+							                 splitESBResources, dependencyData, parent, self);
 						}
 					} catch (InvalidRegistryObjectException e) {
 						log.error("Exception thrown in trying to export the car file, ", e);
@@ -255,26 +293,29 @@ public class CarExportHandler extends ProjectArtifactHandler {
 				}
 			}
 		} else {
-			log.info("No classes were found extending the extension point " + CAPP_PROJECT_EXPORT_HANDLER_EXTENSION_ID +
-			         "to perform the artifact export");
+			log.info("No classes were found extending the extension point " +
+			         CAPP_PROJECT_EXPORT_HANDLER_EXTENSION_ID + "to perform the artifact export");
 		}
 	}
 
 	private void executeExtension(final Object execClass, final List<ArtifactData> artifactList,
 	                              final Map<IProject, Map<String, IResource>> synapseProjectList,
-	                              final IFolder splitESBResources, final DependencyData dependencyData,
-	                              final Object parent, final Object self) {
+	                              final IFolder splitESBResources,
+	                              final DependencyData dependencyData, final Object parent,
+	                              final Object self) {
 		ISafeRunnable runnable = new ISafeRunnable() {
 			@Override
 			public void handleException(Throwable e) {
-				log.error("Exception thrown in trying to execute the class to export car file artifacts " + execClass,
-				          e);
+				log.error("Exception thrown in trying to execute the class to export car file artifacts " +
+				                  execClass, e);
 			}
 
 			@Override
 			public void run() throws Exception {
-				((DefaultArtifactExportHandler) execClass).exportArtifact(artifactList, synapseProjectList,
-				                                                          splitESBResources, dependencyData, parent,
+				((DefaultArtifactExportHandler) execClass).exportArtifact(artifactList,
+				                                                          synapseProjectList,
+				                                                          splitESBResources,
+				                                                          dependencyData, parent,
 				                                                          self);
 			}
 		};

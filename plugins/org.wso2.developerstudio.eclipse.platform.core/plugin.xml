@@ -562,5 +562,11 @@
             name="WS-Policy"
             mediaType="application/xml"
             extension="xml"></template>
+        <template
+            file="resources/templates/xsds/xsd_template.xsd"
+            id="org.wso2.developerstudio.eclipse.sample.xsd"
+            name="XSD File"
+            mediaType="application/xsd"
+            extension="xsd"></template>
     </extension>
 </plugin>

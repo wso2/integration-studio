@@ -85,6 +85,7 @@ public class RegistryArtifactModel extends ProjectDataModel {
 		registryPrefix.put("org.wso2.developerstudio.eclipse.esb.localentry", "localEntry/");
 		//Adding template for ws-policy
 		registryPrefix.put("org.wso2.developerstudio.eclipse.security.ws_policy", "ws-policy/");
+		registryPrefix.put("org.wso2.developerstudio.eclipse.sample.xsd", "xsds/");
 	}
 	
 	public RegistryArtifactModel() {

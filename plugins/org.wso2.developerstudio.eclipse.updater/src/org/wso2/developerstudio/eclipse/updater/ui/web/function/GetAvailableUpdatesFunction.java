@@ -13,15 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.developerstudio.eclipse.updater.ui.function;
+package org.wso2.developerstudio.eclipse.updater.ui.web.function;
 
-import org.wso2.developerstudio.eclipse.updater.ui.ProvisioningWindow;
+import org.wso2.developerstudio.eclipse.updater.ui.web.UpdaterWebUI;
 import org.wso2.developerstudio.eclipse.webui.core.util.ScriptFactory;
 
-public class GetAvailableFeaturesFunction extends AbstractProvisioningWindowFunction {
+public class GetAvailableUpdatesFunction extends AbstractProvisioningWindowFunction {
 	
-	public GetAvailableFeaturesFunction(ProvisioningWindow provisioningWindow) {
-		super(provisioningWindow, FunctionNames.GET_AVAILABLE_FEATURES_FUNCTION);
+	public GetAvailableUpdatesFunction(UpdaterWebUI provisioningWindow) {
+		super(provisioningWindow, FunctionNames.GET_AVAILABLE_UPDATES_FUNCTION);
 	}
 	
 	@Override
@@ -29,9 +29,9 @@ public class GetAvailableFeaturesFunction extends AbstractProvisioningWindowFunc
 		String updatesList = null;
 		try {
 			updatesList = ScriptFactory.pojoToJson(provisioningWindow.getUpdateManager()
-					.getAvailableFeaturesMap());
+					.getPossibleUpdatesMap());
 		} catch (IllegalStateException e) {
-			log.error("Error while fetching the list of available features.", e);
+			log.error("Error while fetching the list of updates.", e);
 			return Boolean.FALSE.toString();
 		}
 		return updatesList;

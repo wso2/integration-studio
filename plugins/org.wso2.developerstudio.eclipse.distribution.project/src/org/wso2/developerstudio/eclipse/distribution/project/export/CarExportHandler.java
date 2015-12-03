@@ -69,10 +69,7 @@ import org.wso2.developerstudio.eclipse.utils.file.TempFileUtils;
 
 public class CarExportHandler extends ProjectArtifactHandler {
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
-	private static final String EXECUTIONCLASS = "executionclass";
-	private static final String SERVER_ROLE = "server.role";
-	private static final String CAPP_PROJECT_EXPORT_HANDLER_EXTENSION_ID =
-	                                                                       "org.wso2.developerstudio.eclipse.capp.project.export.handler";
+	DistProjectUtils distProjectUtils = new DistProjectUtils();
 	private static final String POM_FILE = "pom.xml";
 	private static final String SPLIT_DIR_NAME = "split_esb_resources";
 	DeveloperStudioProviderUtils devStudioUtils = new DeveloperStudioProviderUtils();
@@ -83,8 +80,6 @@ public class CarExportHandler extends ProjectArtifactHandler {
 		List<ArtifactData> artifactList = new ArrayList<ArtifactData>();
 		Map<IProject, Map<String, IResource>> resourceProjectList =
 		                                                            new HashMap<IProject, Map<String, IResource>>();
-		Map<IProject, Map<String, IResource>> graphicalSynapseProjectList =
-		                                                                    new HashMap<IProject, Map<String, IResource>>();
 		IFile pomFileRes;
 		File pomFile;
 		MavenProject parentPrj;
@@ -96,7 +91,6 @@ public class CarExportHandler extends ProjectArtifactHandler {
 		File tempProject = createTempProject();
 
 		File carResources = createTempDir(tempProject, "car_resources");
-		IFolder splitESBResources = getTempDirInWorksapce(project.getName(), SPLIT_DIR_NAME);
 		pomFileRes = project.getFile(POM_FILE);
 		if (!pomFileRes.exists()) {
 			throw new Exception("not a valid carbon application project");
@@ -126,28 +120,31 @@ public class CarExportHandler extends ProjectArtifactHandler {
 				                    serverRoleList.get(DistProjectUtils.getArtifactInfoAsString(dependency));
 				dependencyData.setServerRole(serverRole.replaceAll("^capp/", ""));
 				if (parent != null && self != null) { // multiple artifact
-					selectExporterExecCalss(serverRole, artifactList, graphicalSynapseProjectList,
-					                        splitESBResources, dependencyData, parent, self);
+					if (parent instanceof IProject && self instanceof String) {
+						IFile file = ((IProject) parent).getFile((String) self);
+						if (file.exists()) {
+							ArtifactData artifactData = new ArtifactData();
+							artifactData.setDependencyData(dependencyData);
+							artifactData.setFile(distProjectUtils.getFileName(dependencyData));
+							artifactData.setResource((IResource) file);
+							artifactList.add(artifactData);
+						}
+					}
 				} else if (parent == null && self != null) { // artifacts as
 					// single artifact archive
-					DefaultArtifactExportHandler artifactExportHandler = new DefaultArtifactExportHandler();
-					artifactExportHandler.exportArtifact(artifactList, null, null, dependencyData, null, self);
+					DefaultArtifactExportHandler artifactExportHandler =
+					                                                     new DefaultArtifactExportHandler();
+					artifactExportHandler.exportArtifact(artifactList, null, null, dependencyData,
+					                                     null, self);
 
-					isExecClassFound = true;
 				} else if (parent != null && self == null) { // these are
-															 // registry
-															 // resources
+					                                         // registry
+					                                         // resources
 					exportRegistryResourceArtifact(artifactList, resourceProjectList,
 					                               dependencyData, parent);
 				} else {
 					log.error("unidentified artifact structure, cannot be exported as a deployable artifact for server " +
 					          serverRole);
-				}
-				if (!isExecClassFound) {
-					log.error("No appropriate class found extending the extension point " +
-					          CAPP_PROJECT_EXPORT_HANDLER_EXTENSION_ID +
-					          "to perform the artifact export for server role " + serverRole +
-					          "for dependency " + dependency.getArtifactId());
 				}
 			}
 		}
@@ -258,66 +255,6 @@ public class CarExportHandler extends ProjectArtifactHandler {
 		dependencyElt.addAttribute("include", "true", null);
 		dependencyElt.addAttribute("serverRole", artifact.getDependencyData().getServerRole(), null);
 		return dependencyElt;
-	}
-
-	/*
-	 * This method will recognize all the classes registered to execute artifact
-	 * export for capps
-	 */
-	private void selectExporterExecCalss(String serverRole, List<ArtifactData> artifactList,
-	                                     Map<IProject, Map<String, IResource>> synapseProjectList,
-	                                     IFolder splitESBResources, DependencyData dependencyData,
-	                                     Object parent, Object self) {
-		IConfigurationElement[] elements =
-		                                   devStudioUtils.getExtensionPointmembers(CAPP_PROJECT_EXPORT_HANDLER_EXTENSION_ID);
-		if (elements != null) {
-			for (int j = 0; j < elements.length; j++) {
-				IConfigurationElement config = elements[j];
-				String configServerRole = config.getAttribute(SERVER_ROLE);
-				if (configServerRole != null && configServerRole.equals(serverRole)) {
-					Object execClassObject;
-					try {
-						execClassObject = config.createExecutableExtension(EXECUTIONCLASS);
-						if (execClassObject instanceof DefaultArtifactExportHandler) {
-							isExecClassFound = true;
-							executeExtension(execClassObject, artifactList, synapseProjectList,
-							                 splitESBResources, dependencyData, parent, self);
-						}
-					} catch (InvalidRegistryObjectException e) {
-						log.error("Exception thrown in trying to export the car file, ", e);
-					} catch (CoreException e) {
-						log.error("Exception thrown in trying to export the car file, ", e);
-					}
-				}
-			}
-		} else {
-			log.info("No classes were found extending the extension point " +
-			         CAPP_PROJECT_EXPORT_HANDLER_EXTENSION_ID + "to perform the artifact export");
-		}
-	}
-
-	private void executeExtension(final Object execClass, final List<ArtifactData> artifactList,
-	                              final Map<IProject, Map<String, IResource>> synapseProjectList,
-	                              final IFolder splitESBResources,
-	                              final DependencyData dependencyData, final Object parent,
-	                              final Object self) {
-		ISafeRunnable runnable = new ISafeRunnable() {
-			@Override
-			public void handleException(Throwable e) {
-				log.error("Exception thrown in trying to execute the class to export car file artifacts " +
-				                  execClass, e);
-			}
-
-			@Override
-			public void run() throws Exception {
-				((DefaultArtifactExportHandler) execClass).exportArtifact(artifactList,
-				                                                          synapseProjectList,
-				                                                          splitESBResources,
-				                                                          dependencyData, parent,
-				                                                          self);
-			}
-		};
-		SafeRunner.run(runnable);
 	}
 
 }

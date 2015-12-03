@@ -75,6 +75,7 @@ public class EmbeddedTomcatServer{
 	protected String rootURL;
 	protected Map<String, String> appIDToURLMap;
 	protected Map<String, String> contextToAppIDMap;
+	private boolean isStartupRequired;
 
 	public EmbeddedTomcatServer() {
 		appIDToURLMap = new HashMap<>();
@@ -88,8 +89,6 @@ public class EmbeddedTomcatServer{
 	 */
 	public void start() throws EmbeddedTomcatException {
 		try {
-			initTomcat();
-			initWebAppExtensions();
 			tomcat.getHost();
 			tomcat.start();
 		} catch (LifecycleException e) {
@@ -193,6 +192,11 @@ public class EmbeddedTomcatServer{
 		IExtensionPoint webAppExtensionPoint = extentionRegistry
 				.getExtensionPoint(WEB_APP_EXT_POINT_ID);
 		IExtension[] webAppExtensions = webAppExtensionPoint.getExtensions();
+		
+		// if there are any apps only, server should be started.
+		if(webAppExtensions.length > 0){
+			isStartupRequired = true;
+		}
 
 		// Iterate over all web extensions and deploy web apps.
 		// IMPORTANT: Continue deploying other apps upon any failures.
@@ -286,7 +290,7 @@ public class EmbeddedTomcatServer{
 	 * 
 	 * @throws EmbeddedTomcatException
 	 */
-	private void initTomcat() throws EmbeddedTomcatException {
+	public void init() throws EmbeddedTomcatException {
 		tomcat = new Tomcat();
 		try {
 			port = getAvailablePort();
@@ -296,6 +300,7 @@ public class EmbeddedTomcatServer{
 			String hostName = InetAddress.getLocalHost().getHostName();
 			tomcat.getHost().setName(hostName);
 			rootURL = HTTP_PROTOCOL_PREFIX + hostName + ":" + port; //$NON-NLS-1$
+			initWebAppExtensions();
 		} catch (IOException e) {
 			throw new EmbeddedTomcatException(
 					Messages.ERROR_TOMCAT_INIT_ERROR, e);
@@ -345,6 +350,10 @@ public class EmbeddedTomcatServer{
 		} finally {
 			zipFile.close();
 		}
+	}
+
+	public boolean isStartupRequired() {
+		return isStartupRequired;
 	}
 
 }

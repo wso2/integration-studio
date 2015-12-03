@@ -48,9 +48,12 @@ public class EmbeddedTomcatPlugin implements BundleActivator {
 					log.info(Messages.INFO_STARTING_TOMCAT);
 					Thread.currentThread().setContextClassLoader(bundleCtxClassLoader);
 					tomcatServer = new EmbeddedTomcatServer();
-					tomcatServer.start();
-					Integer port = tomcatServer.getServerPort();
-					log.info(NLS.bind(Messages.INFO_TOMCAT_STARTED, port));
+					tomcatServer.init();
+					if(tomcatServer.isStartupRequired()){
+						tomcatServer.start();
+						Integer port = tomcatServer.getServerPort();
+						log.info(NLS.bind(Messages.INFO_TOMCAT_STARTED, port));
+					}
 				} catch (EmbeddedTomcatException ex) {
 					log.error(Messages.ERROR_TOMCAT_STARTUP_ERROR, ex);
 				}

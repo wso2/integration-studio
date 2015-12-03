@@ -21,6 +21,7 @@ import org.eclipse.jface.preference.ComboFieldEditor;
 import org.eclipse.jface.preference.FieldEditorPreferencePage;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.preference.StringFieldEditor;
+import org.eclipse.jface.util.PropertyChangeEvent;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPreferencePage;
 import org.wso2.developerstudio.eclipse.platform.ui.Activator;
@@ -28,6 +29,7 @@ import org.wso2.developerstudio.eclipse.platform.ui.Activator;
 public class UpdateCheckerPreferencePage extends FieldEditorPreferencePage implements IWorkbenchPreferencePage {
 
 	public static final String UPDATE_INTAVAL = "UPDATE_INTAVAL";
+	public static final String UPDATE_WINDOW_MODE = "UPDATE_WINDOW_MODE";
 	public static final String ENABLE_AUTOMATIC_UPDATES = "ENABLE_AUTOMATIC_UPDATES";
 	public static final String RELESE_SITE_URL = "RELESE_SITE_URL";
 	public static final String UPDATE_SITE_URL = "UPDATE_SITE_URL";
@@ -35,12 +37,13 @@ public class UpdateCheckerPreferencePage extends FieldEditorPreferencePage imple
 
 	private IPreferenceStore preferenceStore;
 
+	private ComboFieldEditor intervalEditor;
+
 	@Override
 	public void init(IWorkbench workbench) {
 		preferenceStore = Activator.getDefault().getPreferenceStore();
 		setPreferenceStore(preferenceStore);
 		setDescription("WSO2 Developer Studio UpdateChecker Preference");
-
 	}
 
 	@Override
@@ -48,11 +51,26 @@ public class UpdateCheckerPreferencePage extends FieldEditorPreferencePage imple
 		addField(new StringFieldEditor(UPDATE_SITE_URL, "Update site:", getFieldEditorParent()));
 		addField(new StringFieldEditor(RELESE_SITE_URL, "Relase site:", getFieldEditorParent()));
 		addField(new BooleanFieldEditor(ENABLE_AUTOMATIC_UPDATES, "Check for updates Automatically", getFieldEditorParent()));
-		String[][] types = {{ "Daily", "Daily" }, { "Weekly", "Weekly" }, { "Monthly", "Monthly" }};
-		ComboFieldEditor editor = new ComboFieldEditor(UPDATE_INTAVAL, "Check for updates ", types,
+		String[][] intervals = {{ "Daily", "Daily" }, { "Weekly", "Weekly" }, { "Monthly", "Monthly" }};
+		intervalEditor = new ComboFieldEditor(UPDATE_INTAVAL, "Check for updates ", intervals,
 				getFieldEditorParent());
-		addField(editor);	
+		addField(intervalEditor);
+		String[][] windowTypes = {{ "Eclipse Default", "SWT" }, { "WSO2 WebUI", "HTML" }};
+		ComboFieldEditor updateWindowTypeEditor = new ComboFieldEditor(UPDATE_WINDOW_MODE, "Window Mode ", windowTypes,
+				getFieldEditorParent());
+		addField(updateWindowTypeEditor);
 		addField(new StringFieldEditor(PLUGIN_TEMPLATE_URL, "Plug-in template location:", getFieldEditorParent()));
+
+	}	
+	
+	@Override
+	public void propertyChange(PropertyChangeEvent event) {
+		if (ENABLE_AUTOMATIC_UPDATES.equals(event.getProperty())) {
+			boolean isAutomaticUpdateEnabled = preferenceStore
+					.getBoolean(ENABLE_AUTOMATIC_UPDATES);
+			intervalEditor.setEnabled(isAutomaticUpdateEnabled, getFieldEditorParent());
+		}
+		super.propertyChange(event);
 	}
 
 }

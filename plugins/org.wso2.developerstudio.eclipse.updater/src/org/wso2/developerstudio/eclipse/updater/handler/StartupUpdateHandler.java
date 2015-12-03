@@ -29,8 +29,11 @@ import org.wso2.developerstudio.eclipse.platform.ui.preferences.UpdateCheckerPre
 import org.wso2.developerstudio.eclipse.updater.UpdaterPlugin;
 import org.wso2.developerstudio.eclipse.updater.core.Constants;
 import org.wso2.developerstudio.eclipse.updater.core.UpdateManager;
+import org.wso2.developerstudio.eclipse.updater.job.UpdateCheckerJob;
+import org.wso2.developerstudio.eclipse.updater.job.UpdateCheckerJobListener;
+import org.wso2.developerstudio.eclipse.updater.ui.UpdaterDialog.ActiveTab;
 
-public class StartupHandler implements IStartup {
+public class StartupUpdateHandler implements IStartup {
 
 	protected static final String DAILY = "Daily";
 	protected static final String WEEKLY = "Weekly";
@@ -46,10 +49,10 @@ public class StartupHandler implements IStartup {
 		// Read updater preferences
 		IPreferenceStore prefPage = org.wso2.developerstudio.eclipse.platform.ui.Activator
 				.getDefault().getPreferenceStore();
-		boolean automaticUpdatesEnabled = prefPage
+		boolean isAutomaticUpdatesEnabled = prefPage
 				.getBoolean(UpdateCheckerPreferencePage.ENABLE_AUTOMATIC_UPDATES);
 		// Do not continue if automatic updates are disabled
-		if (!automaticUpdatesEnabled) {
+		if (!isAutomaticUpdatesEnabled) {
 			return;
 		}
 		String updateInterval = prefPage
@@ -64,7 +67,7 @@ public class StartupHandler implements IStartup {
 		boolean checkUpdates = true;
 		// check duration since last check for updates
 		if (lastPromptTime != today.getTime()) {
-			long dateDiff = getDateDiff(lastPromptTime, today.getTime(),
+			long dateDiff = getTimeDiff(lastPromptTime, today.getTime(),
 					TimeUnit.DAYS);
 			if ((updateInterval.equals(MONTHLY) && dateDiff < 30)
 					|| (updateInterval.equals(WEEKLY) && dateDiff < 7)
@@ -76,11 +79,12 @@ public class StartupHandler implements IStartup {
 		if (checkUpdates) {
 			Job updateJob = new UpdateCheckerJob(updateManager);
 			updateJob.schedule();
-			updateJob.addJobChangeListener(new UpdateCheckerJobListener(updateManager));
+			updateJob.addJobChangeListener(new UpdateCheckerJobListener(
+					updateManager, ActiveTab.UPDATE_FEATURES, true));
 		}
 	}
 
-	protected static long getDateDiff(long date1, long date2, TimeUnit timeUnit) {
+	protected static long getTimeDiff(long date1, long date2, TimeUnit timeUnit) {
 		long diffInMillies = date2 - date1;
 		return timeUnit.convert(diffInMillies, TimeUnit.MILLISECONDS);
 	}

@@ -56,6 +56,7 @@
          </configurationType>
       </shortcut>
    </extension>
+   
    <extension
          point="org.eclipse.ui.perspectiveExtensions">
       <perspectiveExtension
@@ -67,6 +68,32 @@
    </extension>
    <extension
             point="org.eclipse.debug.core.sourceLocators">
+   </extension>
+   <extension
+       point="org.eclipse.debug.ui.debugModelPresentations">
+        <debugModelPresentation
+          class="org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.model.ESBDebugModelPresentation"
+          id="org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.model.esbDebugModelPresentation">
+    </debugModelPresentation>
+ </extension>
+    <extension
+          id="debugger.ESBDebugPointMarker"
+          point="org.eclipse.core.resources.markers">
+      <super
+            type="org.eclipse.debug.core.breakpointMarker">
+      </super>
+      <persistent
+            value="true">
+      </persistent>
+   </extension>
+   <extension
+         point="org.eclipse.debug.core.breakpoints">
+          <breakpoint
+            class="org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.debugpoint.impl.ESBDebugPoint"
+            id="org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.Breakpoint"
+            markerType="org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.ESBDebugPointMarker"
+            name="ESB Debugpoint">
+      </breakpoint>
    </extension>
    
    

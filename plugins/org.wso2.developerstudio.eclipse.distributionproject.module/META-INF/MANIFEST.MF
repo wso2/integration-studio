@@ -19,5 +19,5 @@ Import-Package: org.apache.maven.project,
  org.eclipse.wst.server.core,
  org.eclipse.wst.server.core.internal,
  org.eclipse.wst.server.core.model,
- org.wso2.developerstudio.eclipse.logging.core,
- org.wso2.developerstudio.eclipse.maven.util
+ org.wso2.developerstudio.eclipse.logging.core;version="[4.0.0,4.1.0)",
+ org.wso2.developerstudio.eclipse.maven.util;version="[4.0.0,4.1.0)"

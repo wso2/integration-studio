@@ -1572,7 +1572,7 @@ Export-Package: com.damnhandy.uri.template,
    org.apache.axis2.context,
    javax.servlet.http,
    javax.xml.namespace",
- org.wso2.developerstudio.eclipse.libraries.utils;
+ org.wso2.developerstudio.eclipse.libraries.utils;version="4.0.0";
   uses:="org.apache.woden.wsdl20,
    org.eclipse.jface.resource,
    org.wso2.developerstudio.eclipse.utils.ui,
@@ -1687,8 +1687,8 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.core.resources
 Bundle-Activator: org.wso2.developerstudio.eclipse.libraries.Activator
 Import-Package: org.eclipse.jdt.core,
- org.wso2.developerstudio.eclipse.logging.core,
- org.wso2.developerstudio.eclipse.utils.ide,
- org.wso2.developerstudio.eclipse.utils.jdt,
- org.wso2.developerstudio.eclipse.utils.ui
+ org.wso2.developerstudio.eclipse.logging.core;version="[4.0.0,4.1.0)",
+ org.wso2.developerstudio.eclipse.utils.ide;version="[4.0.0,4.1.0)",
+ org.wso2.developerstudio.eclipse.utils.jdt;version="[4.0.0,4.1.0)",
+ org.wso2.developerstudio.eclipse.utils.ui;version="[4.0.0,4.1.0)"
 

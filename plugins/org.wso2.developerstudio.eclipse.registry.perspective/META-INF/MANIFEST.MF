@@ -7,11 +7,11 @@ Bundle-Activator: org.wso2.developerstudio.eclipse.registry.perspective.Activato
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime
 Bundle-ActivationPolicy: lazy
-Import-Package: org.wso2.developerstudio.eclipse.registry.base,
- org.wso2.developerstudio.eclipse.registry.base.model,
- org.wso2.developerstudio.eclipse.registry.manager.remote,
- org.wso2.developerstudio.eclipse.registry.manager.remote.dialog,
- org.wso2.developerstudio.eclipse.registry.manager.remote.views,
- org.wso2.developerstudio.eclipse.logging.core,
- org.wso2.developerstudio.eclipse.platform.core.intro.ui,
- org.wso2.developerstudio.eclipse.platform.core.utils
+Import-Package: org.wso2.developerstudio.eclipse.logging.core;version="[4.0.0,4.1.0)",
+ org.wso2.developerstudio.eclipse.platform.core.intro.ui;version="[4.0.0,4.1.0)",
+ org.wso2.developerstudio.eclipse.platform.core.utils;version="[4.0.0,4.1.0)",
+ org.wso2.developerstudio.eclipse.registry.base;version="[4.0.0,4.1.0)",
+ org.wso2.developerstudio.eclipse.registry.base.model;version="[4.0.0,4.1.0)",
+ org.wso2.developerstudio.eclipse.registry.manager.remote;version="[4.0.0,4.1.0)",
+ org.wso2.developerstudio.eclipse.registry.manager.remote.dialog;version="[4.0.0,4.1.0)",
+ org.wso2.developerstudio.eclipse.registry.manager.remote.views;version="[4.0.0,4.1.0)"

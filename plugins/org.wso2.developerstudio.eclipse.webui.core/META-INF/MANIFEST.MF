@@ -19,12 +19,12 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
 Bundle-ClassPath: .,
  lib/gson-2.2.4.jar
-Export-Package: org.wso2.developerstudio.eclipse.webui.core.composite,
- org.wso2.developerstudio.eclipse.webui.core.editor,
- org.wso2.developerstudio.eclipse.webui.core.exception,
- org.wso2.developerstudio.eclipse.webui.core.util,
- org.wso2.developerstudio.eclipse.webui.core.window,
- org.wso2.developerstudio.eclipse.webui.core.window.function
-Import-Package: org.wso2.developerstudio.eclipse.embedded.tomcat.api,
- org.wso2.developerstudio.eclipse.embedded.tomcat.exception
+Export-Package: org.wso2.developerstudio.eclipse.webui.core.composite;version="4.0.0",
+ org.wso2.developerstudio.eclipse.webui.core.editor;version="4.0.0",
+ org.wso2.developerstudio.eclipse.webui.core.exception;version="4.0.0",
+ org.wso2.developerstudio.eclipse.webui.core.util;version="4.0.0",
+ org.wso2.developerstudio.eclipse.webui.core.window;version="4.0.0",
+ org.wso2.developerstudio.eclipse.webui.core.window.function;version="4.0.0"
+Import-Package: org.wso2.developerstudio.eclipse.embedded.tomcat.api;version="[4.0.0,4.1.0)",
+ org.wso2.developerstudio.eclipse.embedded.tomcat.exception;version="[4.0.0,4.1.0)"
 Service-Component: OSGI-INF/web-app-manager-consumer.xml

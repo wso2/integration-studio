@@ -23,6 +23,7 @@ import java.util.Map.Entry;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.dialogs.IDialogConstants;
+import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.ScrolledComposite;
 import org.eclipse.swt.custom.StyledText;
@@ -46,6 +47,7 @@ import org.eclipse.swt.widgets.TabFolder;
 import org.eclipse.swt.widgets.TabItem;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
+import org.wso2.developerstudio.eclipse.platform.ui.preferences.UpdateCheckerPreferencePage;
 import org.wso2.developerstudio.eclipse.updater.UpdaterPlugin;
 import org.wso2.developerstudio.eclipse.updater.core.UpdateManager;
 import org.wso2.developerstudio.eclipse.updater.model.EnhancedFeature;
@@ -136,7 +138,7 @@ public class UpdaterDialog extends Dialog {
 		tabGridData.horizontalSpan = 3;
 		tabGridData.verticalSpan = 7;
 		tabGridData.grabExcessVerticalSpace = true;
-		tabGridData.heightHint = 750;
+		tabGridData.heightHint = 600;
 		tabGridData.widthHint = 700;
 
 		final TabFolder tabFolder = new TabFolder(leftContainer, SWT.CHECK
@@ -169,7 +171,7 @@ public class UpdaterDialog extends Dialog {
 	private Composite createTopContainer(Composite parent) {
 		final Composite topContainer = new Composite(parent, SWT.NONE);
 		GridData topContainerGridData = new GridData(GridData.FILL_BOTH);
-		topContainerGridData.heightHint = 800;
+		topContainerGridData.heightHint = 600;
 		topContainer.setLayoutData(topContainerGridData);
 		GridLayout topContainerGridLayout = new GridLayout();
 		topContainerGridLayout.numColumns = 1;
@@ -178,9 +180,14 @@ public class UpdaterDialog extends Dialog {
 		return topContainer;
 	}
 
-	private void listFeatures(Group group, ActiveTab type) {
+	private void listFeatures(Group group, ActiveTab tab) {
+		IPreferenceStore prefPage = org.wso2.developerstudio.eclipse.platform.ui.Activator
+				.getDefault().getPreferenceStore();
+		boolean isKernelFeaturesEnabled = prefPage
+				.getBoolean(UpdateCheckerPreferencePage.ENABLE_KERNEL_FEATURES);
+		
 		Iterator<Entry<String, EnhancedFeature>> featureList;
-		if (type == ActiveTab.ALL_FEATURES) {
+		if (tab == ActiveTab.ALL_FEATURES) {
 			featureList = updateManager.getAvailableFeaturesMap().entrySet()
 					.iterator();
 		} else {
@@ -190,14 +197,14 @@ public class UpdaterDialog extends Dialog {
 		while (featureList.hasNext()) {
 			EnhancedFeature feature = featureList.next().getValue();
 			// set isKernelFeature=true in update.properties file in features to
-			// ignore them by updater
-			if (feature.isKernelFeature()) {
+			// ignore them in available Features tab
+			if (feature.isKernelFeature() && tab == ActiveTab.ALL_FEATURES && !isKernelFeaturesEnabled) {
 				continue;
 			}
 			GridData gridData = new GridData(SWT.FILL, SWT.FILL, true, false);
 			final Group featureGroup = createFeatureRepresentationGroup(group,
 					gridData);
-			createCheckBoxInFeatureGroup(feature, featureGroup, type);
+			createCheckBoxInFeatureGroup(feature, featureGroup, tab);
 
 			Label featureImageLabel = new Label(featureGroup, SWT.NONE);
 			try {
@@ -294,7 +301,6 @@ public class UpdaterDialog extends Dialog {
 	  parent.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false));
 
 	  installBtn = createButton(parent, IDialogConstants.NO_ID, INSTALL_BTN_TXT, true);
-	  installBtn.setSize(125, 25);
 	  installBtn.setEnabled(false);
 	  installBtn.addListener(SWT.Selection, new Listener() {
 	      public void handleEvent(Event e) {

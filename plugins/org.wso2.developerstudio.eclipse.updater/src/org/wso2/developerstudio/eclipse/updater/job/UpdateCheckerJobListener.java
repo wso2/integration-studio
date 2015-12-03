@@ -84,7 +84,7 @@ public class UpdateCheckerJobListener extends JobChangeAdapter {
 						try {
 							UpdaterWebUI provioningWindow = new UpdaterWebUI(updateManager, activeTab);
 							provioningWindow.open();
-						} catch (Exception e) {
+						} catch (Throwable e) {
 							log.error("Error opening HTML based update window.", e);
 							// failed to load window with WebUI Platform: Try
 							// again with SWT

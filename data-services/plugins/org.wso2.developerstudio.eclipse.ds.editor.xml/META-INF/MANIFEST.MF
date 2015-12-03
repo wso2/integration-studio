@@ -14,4 +14,4 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.core.filesystem,
  org.eclipse.core.resources
 Bundle-ActivationPolicy: lazy
-Import-Package: org.wso2.developerstudio.eclipse.logging.core
+Import-Package: org.wso2.developerstudio.eclipse.logging.core;version="[4.0.0,4.1.0)"

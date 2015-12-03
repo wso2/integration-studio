@@ -45,7 +45,7 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
 		store.setDefault(UpdateCheckerPreferencePage.UPDATE_SITE_URL,
 				DEFAULT_UPDATE_SITE);
 		store.setDefault(UpdateCheckerPreferencePage.UPDATE_INTAVAL, "Weekly");
-		store.setDefault(UpdateCheckerPreferencePage.UPDATE_WINDOW_MODE, "HTML");
+		store.setDefault(UpdateCheckerPreferencePage.UPDATE_WINDOW_MODE, "SWT");
 		store.setDefault(UpdateCheckerPreferencePage.ENABLE_AUTOMATIC_UPDATES,
 				true);
 	}

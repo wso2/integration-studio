@@ -29,6 +29,14 @@ public class Messages extends NLS {
 	public static String ESBDebugLaunchDelegate_DebuggerInterfaceSocketsCreationErrorDialogMessage;
 	public static String ESBDebugLaunchDelegate_HostIPAddressCouldNotFoundErrorDialogMessage;
 	public static String ESBDebugLaunchDelegate_LauncherArgumentInvalidErrorDialogMessage;
+	public static String ESBDebugProcess_ESBDebugProcessNameTag;
+	public static String ESBDebugThread_ESBDebugThreadTag;
+	public static String ESBStackFrame_Axis2ClientScopePropertyTag;
+	public static String ESBStackFrame_Axis2ScopePropertyTag;
+	public static String ESBStackFrame_ESBDebuggerStackFrameTag;
+	public static String ESBStackFrame_OperationScopePropertyTag;
+	public static String ESBStackFrame_SynapseScopePropertyTag;
+	public static String ESBStackFrame_TransportScopePropertyTag;
 	static {
 		// initialize resource bundle
 		NLS.initializeMessages(BUNDLE_NAME, Messages.class);

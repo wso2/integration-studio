@@ -1,11 +1,12 @@
- /* Copyright (c) 2012, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
- *
+/*
+ * Copyright (c) 2010-2015, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -33,52 +34,52 @@ import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.platform.core.Activator;
 
-public class OpenDashboardHandler  extends AbstractHandler {
-	
-	private static IDeveloperStudioLog log=Logger.getLog(Activator.PLUGIN_ID);
+public class OpenDashboardHandler extends AbstractHandler {
+
+	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 	static final String INTRO_VIEW_ID = "org.eclipse.ui.internal.introview";
 	static final String DASHBOARD_VIEW_ID = "org.wso2.developerstudio.eclipse.dashboard";
 	static final String J2EE_PERSPECTIVE_ID = "org.eclipse.jst.j2ee.J2EEPerspective";
-	
 
-    public Object execute(ExecutionEvent event) throws ExecutionException {
-		  IWorkbenchWindow window=PlatformUI.getWorkbench().getActiveWorkbenchWindow();
-	        IWorkbenchPage page = window.getActivePage();
-	        try {
-	        	hideIntroView();
-	        	hideDashboards();
-	        	PlatformUI.getWorkbench().showPerspective(J2EE_PERSPECTIVE_ID, window);
-				page.openEditor(new NullEditorInput(), DASHBOARD_VIEW_ID);
-			} catch (Exception e) {
-				log.error("Cannot open dashboard", e);
-			}
-	    return true;
-    }
-    
-    /**
-     * hide eclipse welcome page
-     */
-    private void hideIntroView(){
-    	try {
-    		 IWorkbenchWindow window=PlatformUI.getWorkbench().getActiveWorkbenchWindow();
-    		 IWorkbenchPage page = window.getActivePage();
-    		 IViewReference ref = page.findViewReference(INTRO_VIEW_ID);
-    		 page.hideView(ref);
+	public Object execute(ExecutionEvent event) throws ExecutionException {
+		IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
+		IWorkbenchPage page = window.getActivePage();
+		try {
+			hideIntroView();
+			hideDashboards();
+			PlatformUI.getWorkbench().showPerspective(J2EE_PERSPECTIVE_ID, window);
+			page.openEditor(new NullEditorInput(), DASHBOARD_VIEW_ID);
 		} catch (Exception e) {
-			/* safe to ignore */
+			log.error("Cannot open dashboard", e);
 		}
-    }
-    
-    /**
-     * hide open dashboards
-     */
-    private void hideDashboards(){
-    	try {
-    		IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
+		return true;
+	}
+
+	/**
+	 * hide eclipse welcome page
+	 */
+	private void hideIntroView() {
+		try {
+			IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
+			IWorkbenchPage page = window.getActivePage();
+			IViewReference ref = page.findViewReference(INTRO_VIEW_ID);
+			page.hideView(ref);
+		} catch (Exception e) {
+			log.error("Error occured while hiding the eclipse welcome page", e);
+		}
+	}
+
+	/**
+	 * hide open dashboards
+	 */
+	private void hideDashboards() {
+		try {
+			IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
 			IWorkbenchPage page = window.getActivePage();
 			List<IEditorReference> openEditors = new ArrayList<IEditorReference>();
-			IEditorReference[] editorReferences = PlatformUI.getWorkbench()
-					.getActiveWorkbenchWindow().getActivePage().getEditorReferences();
+			IEditorReference[] editorReferences =
+			                                      PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
+			                                                .getEditorReferences();
 			for (IEditorReference iEditorReference : editorReferences) {
 				if (DASHBOARD_VIEW_ID.equals(iEditorReference.getId())) {
 					openEditors.add(iEditorReference);
@@ -88,35 +89,35 @@ public class OpenDashboardHandler  extends AbstractHandler {
 				page.closeEditors(openEditors.toArray(new IEditorReference[] {}), false);
 			}
 		} catch (Exception e) {
-			/* safe to ignore */
+			log.error("Error occured while hiding the dashboards", e);
 		}
-    }
-	
+	}
+
 	class NullEditorInput implements IEditorInput {
 
 		public boolean exists() {
-		return true;
+			return true;
 		}
 
 		public ImageDescriptor getImageDescriptor() {
-		return ImageDescriptor.getMissingImageDescriptor();
+			return ImageDescriptor.getMissingImageDescriptor();
 		}
 
 		public String getName() {
-		return "Dashboard";
+			return "Dashboard";
 		}
 
 		public IPersistableElement getPersistable() {
-		return null;
+			return null;
 		}
 
 		public String getToolTipText() {
-		return "Developer Studio Dashboard";
+			return "Developer Studio Dashboard";
 		}
 
 		public Object getAdapter(Class adapter) {
-		return null;
+			return null;
 		}
-		} 
+	}
 
 }

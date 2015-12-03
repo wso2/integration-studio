@@ -1,19 +1,19 @@
-
 /*
- * Copyright (c) 2011, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
- *
+ * Copyright (c) 2010-2015, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package org.wso2.developerstudio.eclipse.platform.ui.handlers;
 
 import org.eclipse.jface.dialogs.Dialog;
@@ -35,39 +35,37 @@ import org.wso2.developerstudio.eclipse.platform.core.utils.ResourceManager;
 import org.wso2.developerstudio.eclipse.platform.core.utils.SWTResourceManager;
 import org.wso2.developerstudio.eclipse.platform.ui.Activator;
 
-
 public class AboutDialog extends Dialog {
 
-	 private static final String VERSION="3.0.0";
-	 private static final String LICENSED ="Licensed under the Apache License, Version 2.0";
-	 private static final String URL ="http://wso2.com/products/developer-studio";
-	 private int logoWidth;
-	 private int logoHeight;
+	private static final String VERSION = "3.0.0";
+	private static final String LICENSED = "Licensed under the Apache License, Version 2.0";
+	private static final String URL = "http://wso2.com/products/developer-studio";
+	private int logoWidth;
+	private int logoHeight;
 
 	public AboutDialog(Shell parentShell) {
 		super(parentShell);
-		setDefaultImage(ResourceManager.getPluginImage(
-				"org.wso2.developerstudio.eclipse.platform.ui",
-				"icons/carbon-studio-small-logo.gif"));
+		setDefaultImage(ResourceManager.getPluginImage("org.wso2.developerstudio.eclipse.platform.ui",
+		                                               "icons/carbon-studio-small-logo.gif"));
 	}
 
 	protected Point getInitialSize() {
 		return new Point(logoWidth + 40, logoHeight * 3);
 	}
-	
+
 	protected void configureShell(Shell newShell) {
 		super.configureShell(newShell);
 		newShell.setText("About Developer Studio");
 	}
-	
+
 	protected Control createDialogArea(Composite parent) {
-		
-		Image logoImage = ResourceManager.getPluginImage(
-				"org.wso2.developerstudio.eclipse.platform.ui",
-				"icons/carbon-studio-logo.png");
+
+		Image logoImage =
+		                  ResourceManager.getPluginImage("org.wso2.developerstudio.eclipse.platform.ui",
+		                                                 "icons/carbon-studio-logo.png");
 		logoWidth = logoImage.getImageData().width;
 		logoHeight = logoImage.getImageData().height;
-		
+
 		parent.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
 		Composite dialogArea = (Composite) super.createDialogArea(parent);
 		dialogArea.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
@@ -75,7 +73,7 @@ public class AboutDialog extends Dialog {
 		Composite composite = new Composite(dialogArea, SWT.BORDER);
 		composite.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
 		composite.setLayout(new GridLayout(1, false));
-		
+
 		GridData gd_composite = new GridData(SWT.CENTER, SWT.TOP, false, false, 1, 1);
 		gd_composite.widthHint = logoWidth + 10;
 		gd_composite.heightHint = logoHeight * 2 - 10;
@@ -88,16 +86,16 @@ public class AboutDialog extends Dialog {
 		gdDevsLogo.widthHint = logoWidth;
 		gdDevsLogo.heightHint = logoHeight;
 		lblDevsLogo.setLayoutData(gdDevsLogo);
-		
+
 		Label lblVersion = new Label(composite, SWT.NONE);
 		lblVersion.setForeground(SWTResourceManager.getColor(SWT.COLOR_WIDGET_BORDER));
 		lblVersion.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
 		lblVersion.setText("Version ".concat(getVersion()));
-		
+
 		Label lblLicense = new Label(composite, SWT.NONE);
 		lblLicense.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
 		lblLicense.setText(LICENSED);
-		
+
 		Link linkDevStudioUrl = new Link(composite, SWT.NONE);
 		linkDevStudioUrl.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
 		linkDevStudioUrl.setText("Visit :<a>" + URL + "</a>");
@@ -111,16 +109,14 @@ public class AboutDialog extends Dialog {
 
 	protected void createButtonsForButtonBar(Composite parent) {
 		parent.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
-		Button button = createButton(parent, IDialogConstants.OK_ID, IDialogConstants.OK_LABEL,
-				true);
+		Button button = createButton(parent, IDialogConstants.OK_ID, IDialogConstants.OK_LABEL, true);
 		button.setFocus();
 	}
-	
+
 	private String getVersion() {
 		String version = VERSION;
 		try {
-			version = (String) Activator.getDefault().getBundle().getHeaders()
-					.get("Bundle-Version");
+			version = (String) Activator.getDefault().getBundle().getHeaders().get("Bundle-Version");
 			version = version.replaceAll(".qualifier", "-SNAPSHOT");
 		} catch (Exception ignored) {
 		}

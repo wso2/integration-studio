@@ -1,12 +1,12 @@
 /*
- * Copyright (c) 2012, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
- *
+ * Copyright (c) 2010-2015, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -27,28 +27,26 @@ import org.wso2.developerstudio.eclipse.platform.ui.Activator;
 
 import java.util.List;
 
-public class MavenPropertyTester extends PropertyTester{
+public class MavenPropertyTester extends PropertyTester {
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
-	
-   public boolean test(Object arg0, String arg1, Object[] arg2, Object arg3) {
-		
-		if(arg0 instanceof IProject){
-			IProject project= (IProject)arg0;
-			if(project!=null && project.exists() && project.isOpen()){
- 
-					try {
-						if(project.hasNature(Constants.MAVEN_MULTI_MODULE_PROJECT_NATURE)){
-							return true;
-						}
-					} catch (CoreException e) {
-						log.error("Error while getting the nature in MavenPropertyTester", e);
+	public boolean test(Object arg0, String arg1, Object[] arg2, Object arg3) {
+
+		if (arg0 instanceof IProject) {
+			IProject project = (IProject) arg0;
+			if (project != null && project.exists() && project.isOpen()) {
+
+				try {
+					if (project.hasNature(Constants.MAVEN_MULTI_MODULE_PROJECT_NATURE)) {
+						return true;
 					}
+				} catch (CoreException e) {
+					log.error("Error while getting the nature in MavenPropertyTester", e);
+				}
 			}
 		}
-		
-	    return false;
-    }
 
+		return false;
+	}
 
 }

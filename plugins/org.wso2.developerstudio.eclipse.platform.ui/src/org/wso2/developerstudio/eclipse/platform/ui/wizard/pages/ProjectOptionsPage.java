@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ * Copyright (c) 2010-2015, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -37,7 +37,7 @@ import org.wso2.developerstudio.eclipse.platform.core.project.model.ProjectOptio
 import org.wso2.developerstudio.eclipse.platform.core.project.model.ProjectWizardSettings;
 
 public class ProjectOptionsPage extends WizardPage {
-	private static IDeveloperStudioLog log=Logger.getLog(Activator.PLUGIN_ID);
+	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 	private ProjectOption selectedProjectOption;
 	private ProjectDataModel dataModel;
 	private ProjectWizardSettings settings;
@@ -72,21 +72,16 @@ public class ProjectOptionsPage extends WizardPage {
 		gl_group.marginLeft = 20;
 		composite.setLayout(gl_group);
 
-		// Label lblNewLabel = new Label(group, SWT.NONE);
-		// lblNewLabel.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, true,
-		// true, 1, 1));
 		for (ProjectOption projectOption : getSettings().getProjectOptions()) {
 			Button btnRadioButton = new Button(composite, SWT.RADIO);
 			btnRadioButton.setText(projectOption.getLabel());
 			btnRadioButton.setData(projectOption);
 			btnRadioButton.addSelectionListener(new SelectionListener() {
-				
+
 				public void widgetDefaultSelected(SelectionEvent event) {
-					setSelectedProjectOption((ProjectOption) ((Control) event.getSource())
-					        .getData());
+					setSelectedProjectOption((ProjectOption) ((Control) event.getSource()).getData());
 				}
 
-				
 				public void widgetSelected(SelectionEvent event) {
 					widgetDefaultSelected(event);
 				}

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ * Copyright (c) 2010-2015, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -89,7 +89,8 @@ public abstract class AbstractWSO2ProjectCreationWizard extends Wizard implement
 	private boolean customPageRequired;
 	private WizardPage customPage;
 
-	protected final static String DIST_EDITOR_ID = "org.wso2.developerstudio.eclipse.distribution.project.editor.DistProjectEditor";
+	protected final static String DIST_EDITOR_ID =
+	                                               "org.wso2.developerstudio.eclipse.distribution.project.editor.DistProjectEditor";
 	protected final static String JDT_BUILD_COMMAND = "org.eclipse.jdt.core.javabuilder";
 	protected final static String JDT_PROJECT_NATURE = "org.eclipse.jdt.core.javanature";
 	private Map<String, Text> map = new HashMap<String, Text>();
@@ -114,7 +115,8 @@ public abstract class AbstractWSO2ProjectCreationWizard extends Wizard implement
 				addPage(new ProjectOptionsPage(settings, getModel()));
 			}
 			addPage(new ProjectOptionsDataPage(settings, getModel(), getCurrentSelection(),
-					isRequireProjectLocationSection(), isRequiredWorkingSet(), isRequiredWorkspaceLocation()));
+			                                   isRequireProjectLocationSection(), isRequiredWorkingSet(),
+			                                   isRequiredWorkspaceLocation()));
 			if (isCustomPageRequired()) {
 				addPage(getCustomPage());
 			}
@@ -130,31 +132,34 @@ public abstract class AbstractWSO2ProjectCreationWizard extends Wizard implement
 
 	protected Repository getGlobalRepositoryFromPreference() {
 
-		String repoURL = preferencesService.getString("org.wso2.developerstudio.eclipse.platform.ui",
-				GLOBAL_REPOSITORY_URL, null, null);
+		String repoURL =
+		                 preferencesService.getString("org.wso2.developerstudio.eclipse.platform.ui",
+		                                              GLOBAL_REPOSITORY_URL, null, null);
 		if (repoURL != null) {
 			Repository repo = new Repository();
 			repo.setUrl(repoURL);
 			repo.setId(preferencesService.getString("org.wso2.developerstudio.eclipse.platform.ui",
-					GLOBAL_REPOSITORY_ID, null, null));
+			                                        GLOBAL_REPOSITORY_ID, null, null));
 			RepositoryPolicy releasePolicy = new RepositoryPolicy();
-			String releaseEnabled = preferencesService.getString("org.wso2.developerstudio.eclipse.platform.ui",
-					RELEASES_ENABLED, null, null);
+			String releaseEnabled =
+			                        preferencesService.getString("org.wso2.developerstudio.eclipse.platform.ui",
+			                                                     RELEASES_ENABLED, null, null);
 			releasePolicy.setEnabled(releaseEnabled != null);
 			releasePolicy.setUpdatePolicy(preferencesService.getString("org.wso2.developerstudio.eclipse.platform.ui",
-					RELEASES_UPDATE_POLICY, null, null));
-			releasePolicy.setChecksumPolicy(preferencesService.getString(
-					"org.wso2.developerstudio.eclipse.platform.ui", RELEASES_CHECKSUM_POLICY, null, null));
+			                                                           RELEASES_UPDATE_POLICY, null, null));
+			releasePolicy.setChecksumPolicy(preferencesService.getString("org.wso2.developerstudio.eclipse.platform.ui",
+			                                                             RELEASES_CHECKSUM_POLICY, null, null));
 			repo.setReleases(releasePolicy);
 
 			RepositoryPolicy snapshotPolicy = new RepositoryPolicy();
-			String snapshotsEnabled = preferencesService.getString("org.wso2.developerstudio.eclipse.platform.ui",
-					SNAPSHOTS_ENABLED, null, null);
+			String snapshotsEnabled =
+			                          preferencesService.getString("org.wso2.developerstudio.eclipse.platform.ui",
+			                                                       SNAPSHOTS_ENABLED, null, null);
 			snapshotPolicy.setEnabled(snapshotsEnabled != null);
 			snapshotPolicy.setUpdatePolicy(preferencesService.getString("org.wso2.developerstudio.eclipse.platform.ui",
-					SNAPSHOTS_UPDATE_POLICY, null, null));
-			snapshotPolicy.setChecksumPolicy(preferencesService.getString(
-					"org.wso2.developerstudio.eclipse.platform.ui", SNAPSHOTS_CHECKSUM_POLICY, null, null));
+			                                                            SNAPSHOTS_UPDATE_POLICY, null, null));
+			snapshotPolicy.setChecksumPolicy(preferencesService.getString("org.wso2.developerstudio.eclipse.platform.ui",
+			                                                              SNAPSHOTS_CHECKSUM_POLICY, null, null));
 			repo.setSnapshots(snapshotPolicy);
 
 			return repo;
@@ -196,7 +201,7 @@ public abstract class AbstractWSO2ProjectCreationWizard extends Wizard implement
 	}
 
 	public void setInitializationData(IConfigurationElement configElement, String arg1, Object arg2)
-			throws CoreException {
+	                                                                                                throws CoreException {
 		this.configElement = configElement;
 
 	}
@@ -235,8 +240,9 @@ public abstract class AbstractWSO2ProjectCreationWizard extends Wizard implement
 		IProject project = null;
 		String name = getModel().getProjectName();
 		File location = getModel().getLocation();
-		String rootWorkspaceLocation = ResourcesPlugin.getWorkspace().getRoot().getLocation().toOSString()
-				+ File.separator + name;
+		String rootWorkspaceLocation =
+		                               ResourcesPlugin.getWorkspace().getRoot().getLocation().toOSString() +
+		                                       File.separator + name;
 
 		if (rootWorkspaceLocation.equals(location.getPath())) {
 			project = createProjectInDefaultWorkspace(name);
@@ -263,34 +269,38 @@ public abstract class AbstractWSO2ProjectCreationWizard extends Wizard implement
 		return project;
 	}
 
-	private IProject createProjectInSelectionSpace(String name, File location, String rootWorkspaceLocation) throws CoreException {
+	private IProject createProjectInSelectionSpace(String name, File location, String rootWorkspaceLocation)
+	                                                                                                        throws CoreException {
 
 		IWorkspaceRoot root = ResourcesPlugin.getWorkspace().getRoot();
 		IProject project = root.getProject(name);
 		boolean isParentMMM = true;
 		IProject parentProject = null;
-		
-		/*Parent project selection process may be failed due to some reason but still project creation process can be 
-		 proceed that's why this exception handled and logged*/
+
+		/*
+		 * Parent project selection process may be failed due to some reason but
+		 * still project creation process can be
+		 * proceed that's why this exception handled and logged
+		 */
 		try {
 
 			File parentFile = location.getParentFile();
 			String parentName = parentFile.getName();
 			parentProject = root.getProject(parentName);
-			
+
 			if (parentProject != null && !parentProject.hasNature(Constants.MAVEN_MULTI_MODULE_PROJECT_NATURE)) {
-				
+
 				String newlocation = parentFile.getParent() + File.separator + name;
 				location = new File(newlocation);
 				getModel().setLocation(location);
-			 	isParentMMM = false;
-			} 
-		} catch (CoreException e) {			
+				isParentMMM = false;
+			}
+		} catch (CoreException e) {
 			log.warn("Cannot create project in selected location ", e);
 			return createProjectInDefaultWorkspace(name);
-			
+
 		}
-		
+
 		IProjectDescription newProjectDescription = project.getWorkspace().newProjectDescription(name);
 		newProjectDescription.setLocationURI(location.toURI());
 		project.create(newProjectDescription, new NullProgressMonitor());
@@ -302,8 +312,8 @@ public abstract class AbstractWSO2ProjectCreationWizard extends Wizard implement
 			} catch (IOException e) {
 				log.error("Error occured while adding " + name + "  to  module list.", e);
 			} catch (XmlPullParserException e) {
-				log.error("Error occured while adding " + name
-						+ "  to  module list. due to parent pom file parser issue", e);
+				log.error("Error occured while adding " + name +
+				          "  to  module list. due to parent pom file parser issue", e);
 			}
 
 		} else {
@@ -317,8 +327,8 @@ public abstract class AbstractWSO2ProjectCreationWizard extends Wizard implement
 					} catch (IOException e) {
 						log.error("Error occured while adding " + name + "  to  module list.", e);
 					} catch (XmlPullParserException e) {
-						log.error("Error occured while adding " + name
-								+ "  to  module list. due to parent pom file parser issue", e);
+						log.error("Error occured while adding " + name +
+						          "  to  module list. due to parent pom file parser issue", e);
 					}
 					break;
 				}
@@ -326,7 +336,6 @@ public abstract class AbstractWSO2ProjectCreationWizard extends Wizard implement
 		}
 		return project;
 	}
-
 
 	private IProject createProjectInDefaultWorkspace(String name) throws CoreException {
 
@@ -351,7 +360,7 @@ public abstract class AbstractWSO2ProjectCreationWizard extends Wizard implement
 	 * @throws Exception
 	 */
 	private void updateMMMPModuleList(String name, IProject parentProject) throws CoreException, IOException,
-			XmlPullParserException {
+	                                                                      XmlPullParserException {
 		IFile pomFile = parentProject.getFile("pom.xml");
 		if (pomFile.exists()) {
 			MavenProject mavenProject = MavenUtils.getMavenProject(pomFile.getLocation().toFile());
@@ -379,10 +388,12 @@ public abstract class AbstractWSO2ProjectCreationWizard extends Wizard implement
 		}
 		projectList = sortProjects(projectList);
 		for (IProject iProject : projectList) {
-			if(iProject!=null && iProject.exists() && iProject.isOpen()){
-			String relativePath = FileUtils.getRelativePath(parentProject.getLocation().toFile(),
-					iProject.getLocation().toFile()).replaceAll(Pattern.quote(File.separator), "/");
-			sortedModuleList.add(relativePath);
+			if (iProject != null && iProject.exists() && iProject.isOpen()) {
+				String relativePath =
+				                      FileUtils.getRelativePath(parentProject.getLocation().toFile(),
+				                                                iProject.getLocation().toFile())
+				                               .replaceAll(Pattern.quote(File.separator), "/");
+				sortedModuleList.add(relativePath);
 			}
 		}
 		sortedModuleList.addAll(nonProjectModuleList);
@@ -399,19 +410,22 @@ public abstract class AbstractWSO2ProjectCreationWizard extends Wizard implement
 		MavenInfo mavenInfo = getModel().getMavenInfo();
 
 		String customGroupId = preferencesService.getString("org.wso2.developerstudio.eclipse.platform.ui",
-				GLOBAL_MAVEN_GROUP_ID, null, null);
+		                                                    GLOBAL_MAVEN_GROUP_ID, null, null);
 		String customVersion = preferencesService.getString("org.wso2.developerstudio.eclipse.platform.ui",
-				GLOBAL_MAVEN_VERSION, null, null);
+		                                                    GLOBAL_MAVEN_VERSION, null, null);
 
-		MavenProject mavenProject = MavenUtils.createMavenProject(
-				customGroupId != null ? customGroupId : mavenInfo.getGroupId(), mavenInfo.getArtifactId(),
-				customVersion != null ? customVersion : mavenInfo.getVersion(), mavenInfo.getPackageName());
+		MavenProject mavenProject = MavenUtils.createMavenProject(customGroupId != null ? customGroupId
+		                                                                               : mavenInfo.getGroupId(),
+		                                                          mavenInfo.getArtifactId(),
+		                                                          customVersion != null ? customVersion
+		                                                                               : mavenInfo.getVersion(),
+		                                                          mavenInfo.getPackageName());
 		Parent parentProject = getModel().getMavenInfo().getParentProject();
 		if (parentProject != null) {
 			mavenProject.getModel().setParent(parentProject);
 		}
 		String disableWSO2Repo = preferencesService.getString("org.wso2.developerstudio.eclipse.platform.ui",
-				DISABLE_WSO2_REPOSITORY, null, null);
+		                                                      DISABLE_WSO2_REPOSITORY, null, null);
 		if (disableWSO2Repo == null) {
 			MavenUtils.updateMavenRepo(mavenProject);
 		}
@@ -428,21 +442,27 @@ public abstract class AbstractWSO2ProjectCreationWizard extends Wizard implement
 	public void createPOM(File pomLocation, String packagingType) throws Exception {
 		MavenInfo mavenInfo = getModel().getMavenInfo();
 
-		String customGroupId = preferencesService.getString("org.wso2.developerstudio.eclipse.platform.ui",
-				GLOBAL_MAVEN_GROUP_ID, null, null);
-		String customVersion = preferencesService.getString("org.wso2.developerstudio.eclipse.platform.ui",
-				GLOBAL_MAVEN_VERSION, null, null);
+		String customGroupId =
+		                       preferencesService.getString("org.wso2.developerstudio.eclipse.platform.ui",
+		                                                    GLOBAL_MAVEN_GROUP_ID, null, null);
+		String customVersion =
+		                       preferencesService.getString("org.wso2.developerstudio.eclipse.platform.ui",
+		                                                    GLOBAL_MAVEN_VERSION, null, null);
 
-		MavenProject mavenProject = MavenUtils.createMavenProject(
-				customGroupId != null ? customGroupId : mavenInfo.getGroupId(), mavenInfo.getArtifactId(),
-				customVersion != null ? customVersion : mavenInfo.getVersion(), packagingType);
+		MavenProject mavenProject =
+		                            MavenUtils.createMavenProject(customGroupId != null ? customGroupId
+		                                                                               : mavenInfo.getGroupId(),
+		                                                          mavenInfo.getArtifactId(),
+		                                                          customVersion != null ? customVersion
+		                                                                               : mavenInfo.getVersion(),
+		                                                          packagingType);
 
 		Parent parentProject = getModel().getMavenInfo().getParentProject();
 		if (parentProject != null) {
 			mavenProject.getModel().setParent(parentProject);
 		}
 		String disableWSO2Repo = preferencesService.getString("org.wso2.developerstudio.eclipse.platform.ui",
-				DISABLE_WSO2_REPOSITORY, null, null);
+		                                                      DISABLE_WSO2_REPOSITORY, null, null);
 		if (disableWSO2Repo == null) {
 			MavenUtils.updateMavenRepo(mavenProject);
 		}
@@ -471,7 +491,7 @@ public abstract class AbstractWSO2ProjectCreationWizard extends Wizard implement
 	public void refreshDistProjects() {
 		try {
 			IEditorReference[] editorReferences = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
-					.getEditorReferences();
+			                                                .getEditorReferences();
 			for (IEditorReference reference : editorReferences) {
 				if (DIST_EDITOR_ID.equals(reference.getId())) {
 					IEditorPart editor = reference.getEditor(false);
@@ -492,7 +512,7 @@ public abstract class AbstractWSO2ProjectCreationWizard extends Wizard implement
 			try {
 				refreshDistProjects();
 				artifact = ResourcesPlugin.getWorkspace().getRoot()
-						.getFileForLocation(Path.fromOSString(file.getAbsolutePath()));
+				                          .getFileForLocation(Path.fromOSString(file.getAbsolutePath()));
 				IDE.openEditor(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage(), artifact);
 			} catch (Exception e) {
 				log.warn("Cannot open resource '" + file.getName() + "' in it's associated editor", e);

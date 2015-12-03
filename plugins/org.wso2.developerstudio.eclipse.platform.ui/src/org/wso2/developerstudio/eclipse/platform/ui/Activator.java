@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2010, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ * Copyright (c) 2010-2015, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,62 +25,32 @@ import java.util.Hashtable;
 
 import javax.net.ssl.TrustManager;
 
-/**
- * The activator class controls the plug-in life cycle
- */
 public class Activator extends AbstractUIPlugin {
 
-	// The plug-in ID
 	public static final String PLUGIN_ID = "org.wso2.developerstudio.eclipse.platform.ui";
 
-	// The shared instance
 	private static Activator plugin;
 
-	/**
-	 * The constructor
-	 */
 	public Activator() {
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * org.eclipse.ui.plugin.AbstractUIPlugin#start(org.osgi.framework.BundleContext
-	 * )
-	 */
-	
 	public void start(BundleContext context) throws Exception {
 		super.start(context);
 		plugin = this;
 		Initializer.start();
-		Hashtable properties = new Hashtable(7);
-		properties
-		        .put(org.osgi.framework.Constants.SERVICE_RANKING, new Integer(Integer.MAX_VALUE));
+		Hashtable<String, Integer> properties = new Hashtable<String, Integer>(7);
+		properties.put(org.osgi.framework.Constants.SERVICE_RANKING, new Integer(Integer.MAX_VALUE));
 		EclipseSWTTrustManager trustManager = new EclipseSWTTrustManager();
-		trustManager.initiate();
+		EclipseSWTTrustManager.initiate();
 		context.registerService(TrustManager.class.getName(), trustManager, properties);
 		System.setProperty("osgi.signedcontent.trust.engine", "CECKeyStoreTrustEngine");
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * org.eclipse.ui.plugin.AbstractUIPlugin#stop(org.osgi.framework.BundleContext
-	 * )
-	 */
-	
 	public void stop(BundleContext context) throws Exception {
 		plugin = null;
 		super.stop(context);
 	}
 
-	/**
-	 * Returns the shared instance
-	 * 
-	 * @return the shared instance
-	 */
 	public static Activator getDefault() {
 		return plugin;
 	}

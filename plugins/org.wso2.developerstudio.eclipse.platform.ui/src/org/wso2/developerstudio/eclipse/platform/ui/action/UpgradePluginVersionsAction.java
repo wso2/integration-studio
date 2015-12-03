@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ * Copyright (c) 2010-2015, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -35,9 +35,9 @@ import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
 import org.wso2.developerstudio.eclipse.platform.ui.Activator;
 
 /**
- * This action will be executed on selection of 
- * Maven-->'Upgrade Plugin Versions in pom.xml' context menu 
- * item of developer studio project. 
+ * This action will be executed on selection of
+ * Maven-->'Upgrade Plugin Versions in pom.xml' context menu
+ * item of developer studio project.
  *
  */
 public class UpgradePluginVersionsAction implements IObjectActionDelegate {
@@ -50,10 +50,8 @@ public class UpgradePluginVersionsAction implements IObjectActionDelegate {
 		MavenProject mavenProject;
 		try {
 			String message = "This will upgrade the WSO2 maven plugin versions in pom.xml. Do you want to continue?";
-			boolean okPressed = MessageDialog.open(MessageDialog.QUESTION,
-			                                       Display.getCurrent().getActiveShell(),
-			                                       "Upgrading Plugin Versions", message,
-			                                       SWT.NONE);
+			boolean okPressed = MessageDialog.open(MessageDialog.QUESTION, Display.getCurrent().getActiveShell(),
+			                                       "Upgrading Plugin Versions", message, SWT.NONE);
 			if (okPressed) {
 				mavenProject = MavenUtils.getMavenProject(mavenProjectFile.getLocation().toFile());
 				MavenUtils.upgradePluginVersions(project, mavenProject);

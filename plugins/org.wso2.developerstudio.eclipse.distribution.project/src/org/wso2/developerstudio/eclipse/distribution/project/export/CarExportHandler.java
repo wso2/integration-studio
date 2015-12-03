@@ -68,7 +68,6 @@ import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
 import org.wso2.developerstudio.eclipse.utils.file.TempFileUtils;
 
 public class CarExportHandler extends ProjectArtifactHandler {
-	private static final String GOVERNANCE_REGISTRY_SERVER_ROLE = "capp/GovernanceRegistry";
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 	private static final String EXECUTIONCLASS = "executionclass";
 	private static final String SERVER_ROLE = "server.role";
@@ -89,7 +88,6 @@ public class CarExportHandler extends ProjectArtifactHandler {
 		IFile pomFileRes;
 		File pomFile;
 		MavenProject parentPrj;
-		DistProjectUtils distProjectUtils = new DistProjectUtils();
 		ArchiveManipulator archiveManipulator = new ArchiveManipulator();
 
 		clearTarget(project);
@@ -132,9 +130,9 @@ public class CarExportHandler extends ProjectArtifactHandler {
 					                        splitESBResources, dependencyData, parent, self);
 				} else if (parent == null && self != null) { // artifacts as
 					// single artifact archive
-					ArtifactExportHandler artifactExportHandler = new ArtifactExportHandler();
-					artifactExportHandler.exportArtifact(artifactList, null, null, dependencyData,
-					                                     null, self);
+					DefaultArtifactExportHandler artifactExportHandler = new DefaultArtifactExportHandler();
+					artifactExportHandler.exportArtifact(artifactList, null, null, dependencyData, null, self);
+
 					isExecClassFound = true;
 				} else if (parent != null && self == null) { // these are
 															 // registry

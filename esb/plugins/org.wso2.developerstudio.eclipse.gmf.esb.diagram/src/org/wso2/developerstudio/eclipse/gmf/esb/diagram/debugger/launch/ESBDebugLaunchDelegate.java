@@ -24,7 +24,10 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.debug.core.ILaunch;
 import org.eclipse.debug.core.ILaunchConfiguration;
 import org.eclipse.debug.core.model.ILaunchConfigurationDelegate;
-import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebugerUtil;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.impl.ESBDebugger;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.internal.communication.events.DebuggerStartedEvent;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.model.ESBDebugTarget;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerUtil;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.Messages;
 
 import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.*;
@@ -84,17 +87,17 @@ public class ESBDebugLaunchDelegate implements ILaunchConfigurationDelegate {
 			esbDebugger.fireEvent(new DebuggerStartedEvent());
 
 		} catch (UnknownHostException e) {
-			ESBDebugerUtil
+			ESBDebuggerUtil
 					.popUpErrorDialogAndLogException(
 							e,
 							Messages.ESBDebugLaunchDelegate_HostIPAddressCouldNotFoundErrorDialogMessage);
 		} catch (IllegalArgumentException e) {
-			ESBDebugerUtil
+			ESBDebuggerUtil
 					.popUpErrorDialogAndLogException(
 							e,
 							Messages.ESBDebugLaunchDelegate_LauncherArgumentInvalidErrorDialogMessage);
 		} catch (IOException e) {
-			ESBDebugerUtil
+			ESBDebuggerUtil
 					.popUpErrorDialogAndLogException(
 							e,
 							Messages.ESBDebugLaunchDelegate_DebuggerInterfaceSocketsCreationErrorDialogMessage);

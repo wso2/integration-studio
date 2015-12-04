@@ -56,7 +56,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.Activator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EditorUtils;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EsbGroupingShape;
-import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.FilterMediatorGraphicalShape;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.FixedSizedAbstractMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.complexFiguredAbstractMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.debugpoint.builder.IESBDebugPointBuilder;
@@ -293,7 +292,7 @@ public class ESBDebuggerUtil {
 						.equalsIgnoreCase(entry.getKey())) {
 					return new ESBInboundEndpointDebugPointMessage(event,
 							recievedArtifactInfo);
-				} 
+				}
 			}
 		} else {
 			return new ESBSequenceDebugPointMessage(event, recievedArtifactInfo);
@@ -467,8 +466,10 @@ public class ESBDebuggerUtil {
 					.getPrimaryShape();
 			if (shape instanceof EsbGroupingShape) {
 				((EsbGroupingShape) shape).addBreakpointMark();
-			} else if (shape instanceof FilterMediatorGraphicalShape) {
-				// ((FilterMediatorGraphicalShape)shape).addBreakpointMark();
+			} else {
+				throw new IllegalArgumentException(
+						"Adding break point mark is not implemented for type "
+								+ part.getClass());
 			}
 		}
 		part.setBreakpointStatus(true);
@@ -488,8 +489,10 @@ public class ESBDebuggerUtil {
 					.getPrimaryShape();
 			if (shape instanceof EsbGroupingShape) {
 				((EsbGroupingShape) shape).addSkippointMark();
-			} else if (shape instanceof FilterMediatorGraphicalShape) {
-				// ((FilterMediatorGraphicalShape)shape).addBreakpointMark();
+			} else {
+				throw new IllegalArgumentException(
+						"Adding skip point mark is not implemented for type "
+								+ part.getClass());
 			}
 		}
 		part.setSkippointStatus(true);
@@ -504,8 +507,10 @@ public class ESBDebuggerUtil {
 					.getPrimaryShape();
 			if (shape instanceof EsbGroupingShape) {
 				((EsbGroupingShape) shape).removeBreakpointMark();
-			} else if (shape instanceof FilterMediatorGraphicalShape) {
-				// ((FilterMediatorGraphicalShape)shape).addBreakpointMark();
+			} else {
+				throw new IllegalArgumentException(
+						"Removing break point mark is not implemented for type "
+								+ part.getClass());
 			}
 		}
 		part.setBreakpointStatus(false);
@@ -520,8 +525,10 @@ public class ESBDebuggerUtil {
 					.getPrimaryShape();
 			if (shape instanceof EsbGroupingShape) {
 				((EsbGroupingShape) shape).removeSkippointMark();
-			} else if (shape instanceof FilterMediatorGraphicalShape) {
-				// ((FilterMediatorGraphicalShape)shape).addBreakpointMark();
+			} else {
+				throw new IllegalArgumentException(
+						"Removing skip point mark is not implemented for type "
+								+ part.getClass());
 			}
 		}
 		part.setSkippointStatus(false);
@@ -615,7 +622,6 @@ public class ESBDebuggerUtil {
 			if (breakpoint.equals(((ESBSuspendPoint) suspendPoint)
 					.getSuspendedPoint())) {
 				return true;
-
 			}
 		}
 		return false;

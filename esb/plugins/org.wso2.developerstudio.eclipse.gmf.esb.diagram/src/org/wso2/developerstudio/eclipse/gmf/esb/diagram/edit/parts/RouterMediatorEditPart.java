@@ -1,7 +1,27 @@
+/*
+ * Copyright (c) 2014, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts;
+
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.EditPartConstants.DEFAULT_PROPERTY_VALUE_TEXT;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.EditPartConstants.ROUTER_MEDIATOR_ICON_PATH;
 
 import java.util.ArrayList;
 
+import org.apache.commons.lang.StringUtils;
 import org.eclipse.draw2d.GridData;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.Label;
@@ -149,8 +169,6 @@ public class RouterMediatorEditPart extends complexFiguredAbstractMediator {
 	}
 
 	protected boolean addFixedChild(EditPart childEditPart) {
-		float outputCount = 0;
-		float outputPosition = 0;
 		if (childEditPart instanceof RouterMediatorInputConnectorEditPart) {
 			IFigure borderItemFigure = ((RouterMediatorInputConnectorEditPart) childEditPart).getFigure();
 			BorderItemLocator locator = new FixedBorderItemLocator(getMainFigure(), borderItemFigure,
@@ -339,7 +357,8 @@ public class RouterMediatorEditPart extends complexFiguredAbstractMediator {
 		private void createContents() {
 
 			fFigureRouterMediatorPropertyValue = new WrappingLabel();
-			fFigureRouterMediatorPropertyValue.setText("<...>");
+			fFigureRouterMediatorPropertyValue
+					.setText(DEFAULT_PROPERTY_VALUE_TEXT);
 
 		}
 
@@ -351,15 +370,19 @@ public class RouterMediatorEditPart extends complexFiguredAbstractMediator {
 		}
 
 		public String getIconPath() {
-			return "icons/ico20/router-mediator.gif";
+			return ROUTER_MEDIATOR_ICON_PATH;
 		}
 
 		public String getNodeName() {
-			return "Router";
+			return Messages.RouterMediatorEditPart_NodeName;
 		}
 
 		public IFigure getToolTip() {
-			return new Label("Route messages based on XPath filtering");
+			if (StringUtils.isEmpty(toolTipMessage)) {
+				return new Label(Messages.RouterMediatorEditPart_ToolTip);
+			} else {
+				return new Label(toolTipMessage);
+			}
 		}
 
 	}

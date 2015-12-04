@@ -1,8 +1,27 @@
+/*
+ * Copyright (c) 2014-2015, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts;
+
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.EditPartConstants.CLONE_MEDIATOR_ICON_PATH;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.EditPartConstants.DEFAULT_PROPERTY_VALUE_TEXT;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.lang.StringUtils;
 import org.eclipse.draw2d.GridData;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.Label;
@@ -14,8 +33,6 @@ import org.eclipse.draw2d.ToolbarLayout;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.edit.command.AddCommand;
-import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPolicy;
 import org.eclipse.gef.Request;
@@ -35,27 +52,14 @@ import org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel;
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
-import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
 import org.wso2.developerstudio.eclipse.gmf.esb.CloneMediator;
-import org.wso2.developerstudio.eclipse.gmf.esb.CloneMediatorTargetOutputConnector;
-import org.wso2.developerstudio.eclipse.gmf.esb.CloneTargetContainer;
-import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
-import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.developerstudio.eclipse.gmf.esb.SwitchCaseBranchOutputConnector;
-import org.wso2.developerstudio.eclipse.gmf.esb.SwitchCaseContainer;
-import org.wso2.developerstudio.eclipse.gmf.esb.SwitchMediator;
-import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractMediator;
-import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractMediatorOutputConnectorEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.CloneMediatorGraphicalShape;
-import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EsbGraphicalShape;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.FixedBorderItemLocator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.MultipleCompartmentComplexFiguredAbstractMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.ShowPropertyViewEditPolicy;
-import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.complexFiguredAbstractMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.editpolicy.FeedbackIndicateDragDropEditPolicy;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.utils.CloneMediatorUtils;
-import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.utils.SwitchMediatorUtils;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.policies.CloneMediatorCanonicalEditPolicy;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.policies.CloneMediatorItemSemanticEditPolicy;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbVisualIDRegistry;
@@ -79,8 +83,6 @@ public class CloneMediatorEditPart extends MultipleCompartmentComplexFiguredAbst
 
 	private List<IFigure> outputConnectors = new ArrayList<IFigure>();
 	private List<BorderItemLocator> outputLocators = new ArrayList<BorderItemLocator>();
-	private IFigure inputConnector;
-	private IFigure outputConnector;
 	private boolean reorderdOnUndo = false;
 
 	public ArrayList<IFigure> targetOutputConnectors = new ArrayList<IFigure>();
@@ -191,8 +193,6 @@ public class CloneMediatorEditPart extends MultipleCompartmentComplexFiguredAbst
 	 * @generated NOT
 	 */
 	protected boolean addFixedChild(EditPart childEditPart) {
-		float outputCount = 0;
-		float outputPosition = 0;
 		if (childEditPart instanceof CloneMediatorCloneIDEditPart) {
 			((CloneMediatorCloneIDEditPart) childEditPart).setLabel(getPrimaryShape()
 					.getFigureCloneMediatorPropertyValue());
@@ -488,11 +488,8 @@ public class CloneMediatorEditPart extends MultipleCompartmentComplexFiguredAbst
 		private void createContents() {
 
 			fFigureCloneMediatorPropertyValue = new WrappingLabel();
-			fFigureCloneMediatorPropertyValue.setText("<...>");
-			//fFigureCloneMediatorPropertyValue.setAlignment(SWT.CENTER);
-
-			//	this.getPropertyValueRectangle1().add(
-			//		fFigureCloneMediatorPropertyValue);
+			fFigureCloneMediatorPropertyValue
+					.setText(DEFAULT_PROPERTY_VALUE_TEXT);
 
 		}
 
@@ -504,15 +501,19 @@ public class CloneMediatorEditPart extends MultipleCompartmentComplexFiguredAbst
 		}
 
 		public String getIconPath() {
-			return "icons/ico20/clone-mediator.gif";
+			return CLONE_MEDIATOR_ICON_PATH;
 		}
 
 		public String getNodeName() {
-			return "Clone";
+			return Messages.CloneMediatorEditPart_NodeName;
 		}
 
 		public IFigure getToolTip() {
-			return new Label("Clones a message");
+			if (StringUtils.isEmpty(toolTipMessage)) {
+				return new Label(Messages.CloneMediatorEditPart_ToolTipMessage);
+			} else {
+				return new Label(toolTipMessage);
+			}
 		}
 	}
 

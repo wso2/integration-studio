@@ -1,10 +1,28 @@
+/*
+ * Copyright (c) 2014-2015, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts;
 
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.EditPartConstants.BEAN_MEDIATOR_ICON_PATH;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.EditPartConstants.DEFAULT_PROPERTY_VALUE_TEXT;
+
+import org.apache.commons.lang.StringUtils;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.Label;
 import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.Shape;
-import org.eclipse.draw2d.StackLayout;
 import org.eclipse.draw2d.ToolbarLayout;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPolicy;
@@ -13,7 +31,6 @@ import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.editpolicies.LayoutEditPolicy;
 import org.eclipse.gef.editpolicies.NonResizableEditPolicy;
 import org.eclipse.gef.requests.CreateRequest;
-import org.eclipse.gmf.runtime.diagram.ui.editparts.AbstractBorderedShapeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IBorderItemEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.BorderItemSelectionEditPolicy;
@@ -23,12 +40,10 @@ import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
 import org.eclipse.gmf.runtime.diagram.ui.figures.BorderItemLocator;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.ConstrainedToolbarLayout;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel;
-import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
-import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EsbGraphicalShape;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EsbGraphicalShapeWithLabel;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.FixedBorderItemLocator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.FixedSizedAbstractMediator;
@@ -301,10 +316,9 @@ public class BeanMediatorEditPart extends FixedSizedAbstractMediator {
 		private void createContents() {
 
 			WrappingLabel beanMediatorPropertyValueLabel0 = new WrappingLabel();
-			beanMediatorPropertyValueLabel0.setText("<...>");
+			beanMediatorPropertyValueLabel0
+					.setText(DEFAULT_PROPERTY_VALUE_TEXT);
 			beanMediatorPropertyValueLabel0.setAlignment(SWT.CENTER);
-			//this.getPropertyValueRectangle1().add(beanMediatorPropertyValueLabel0);
-
 			beanMediatorDescriptionLabel = getPropertyNameLabel();
 		}
 
@@ -313,15 +327,19 @@ public class BeanMediatorEditPart extends FixedSizedAbstractMediator {
 		}
 
 		public String getIconPath() {
-			return "icons/ico20/bean-mediator.gif";
+			return BEAN_MEDIATOR_ICON_PATH;
 		}
 
 		public String getNodeName() {
-			return "Bean";
+			return Messages.BeanMediatorEditPart_NodeName;
 		}
 
 		public IFigure getToolTip() {
-			return new Label("Bean");
+			if (StringUtils.isEmpty(toolTipMessage)) {
+				return new Label(Messages.BeanMediatorEditPart_ToolTipMessage);
+			} else {
+				return new Label(toolTipMessage);
+			}
 		}
 
 	}

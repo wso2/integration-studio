@@ -16,11 +16,9 @@
 
 package org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.EditPartConstants.DATAMAPPER_MEDIATOR_ICON_PATH;
 
+import org.apache.commons.lang.StringUtils;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.Path;
@@ -29,8 +27,6 @@ import org.eclipse.draw2d.Label;
 import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.Shape;
 import org.eclipse.draw2d.ToolbarLayout;
-import org.eclipse.emf.edit.command.SetCommand;
-import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPolicy;
 import org.eclipse.gef.Request;
@@ -48,19 +44,8 @@ import org.eclipse.gmf.runtime.draw2d.ui.figures.ConstrainedToolbarLayout;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
-import org.eclipse.gmf.runtime.notation.impl.NodeImpl;
 import org.eclipse.gmf.tooling.runtime.edit.policies.reparent.CreationEditPolicyWithCustomReparent;
-import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.swt.graphics.Color;
-import org.eclipse.swt.widgets.Display;
-import org.eclipse.swt.widgets.Shell;
-// import
-// org.wso2.developerstudio.datamapper.diagram.custom.util.DataMapperConfigurationDialog;
-// import
-// org.wso2.developerstudio.datamapper.diagram.custom.util.DialogDisplayUtils;
-import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
-import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EsbGraphicalShapeWithLabel;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.FixedBorderItemLocator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.FixedSizedAbstractMediator;
@@ -69,8 +54,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.policies.DataMapper
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.policies.DataMapperMediatorItemSemanticEditPolicy;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbVisualIDRegistry;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.DataMapperMediatorImpl;
-//import org.wso2.developerstudio.eclipse.greg.core.interfaces.IRegistryFile;
-import org.wso2.developerstudio.eclipse.platform.core.utils.CSProviderConstants;
 import org.wso2.developerstudio.eclipse.platform.ui.startup.DataMapperEditor;
 
 /**
@@ -78,14 +61,14 @@ import org.wso2.developerstudio.eclipse.platform.ui.startup.DataMapperEditor;
  */
 public class DataMapperMediatorEditPart extends FixedSizedAbstractMediator {
 
-	private static final String DATAMAPPER_FILTER_TYPE = "application/datamapper";
-	private static final String INPUT_AVROSCHEMA = "_inputSchema.avsc";
-	private static final String OUTPUT_AVROSCHEMA = "_outputSchema.avsc";
-	private static final String G_REG_PATH_PREFIX = "/_system/governance/";
-	private static final String C_REG_PATH_PREFIX = "/_system/config/";
-	private static final String G_REG_PREFIX = "gov:%s";
-	private static final String C_REG_PREFIX = "conf:%s";
-	private static final String DATAMAPPER_CONFIG_EXT = ".dmc";
+	private static final String DATAMAPPER_FILTER_TYPE = "application/datamapper"; //$NON-NLS-1$
+	private static final String INPUT_AVROSCHEMA = "_inputSchema.avsc"; //$NON-NLS-1$
+	private static final String OUTPUT_AVROSCHEMA = "_outputSchema.avsc"; //$NON-NLS-1$
+	private static final String G_REG_PATH_PREFIX = "/_system/governance/"; //$NON-NLS-1$
+	private static final String C_REG_PATH_PREFIX = "/_system/config/"; //$NON-NLS-1$
+	private static final String G_REG_PREFIX = "gov:%s"; //$NON-NLS-1$
+	private static final String C_REG_PREFIX = "conf:%s"; //$NON-NLS-1$
+	private static final String DATAMAPPER_CONFIG_EXT = ".dmc"; //$NON-NLS-1$
 
 	/**
 	 * @generated
@@ -346,15 +329,20 @@ public class DataMapperMediatorEditPart extends FixedSizedAbstractMediator {
 		}
 
 		public String getIconPath() {
-			return "icons/ico20/conditionalRouter-mediator.gif";
+			return DATAMAPPER_MEDIATOR_ICON_PATH;
 		}
 
 		public String getNodeName() {
-			return "DataMapper";
+			return Messages.DataMapperMediatorEditPart_NodeName;
 		}
 
 		public IFigure getToolTip() {
-			return new Label("Data Mapping");
+			if (StringUtils.isEmpty(toolTipMessage)) {
+				return new Label(
+						Messages.DataMapperMediatorEditPart_ToolTipMessage);
+			} else {
+				return new Label(toolTipMessage);
+			}
 		}
 
 	}

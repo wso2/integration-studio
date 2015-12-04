@@ -19,7 +19,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.net.InetAddress;
 import java.net.Socket;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.Activator;
@@ -57,10 +56,10 @@ public class ESBDebuggerInterface implements IESBDebuggerInterface {
 
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
-	public ESBDebuggerInterface(int commandPort, int eventPort)
+	public ESBDebuggerInterface(int commandPort, int eventPort, String hostName)
 			throws IOException {
-		setRequestSocket(commandPort);
-		setEventSocket(eventPort);
+		setRequestSocket(commandPort, hostName);
+		setEventSocket(eventPort, hostName);
 		setEventReader();
 		setRequestReader();
 		setRequestWriter();
@@ -77,55 +76,6 @@ public class ESBDebuggerInterface implements IESBDebuggerInterface {
 		responseDispatcher.start();
 
 		messageFactory = new JsonGsonMessageFactory();
-	}
-
-	@Override
-	public void setRequestSocket(int commandPort) throws IOException {
-		this.requestSocket = new Socket(InetAddress.getLocalHost()
-				.getHostName(), commandPort);
-	}
-
-	@Override
-	public void setRequestWriter() throws IOException {
-		this.requestWriter = new PrintWriter(requestSocket.getOutputStream());
-	}
-
-	@Override
-	public void setRequestReader() throws IOException {
-		this.requestReader = new BufferedReader(new InputStreamReader(
-				requestSocket.getInputStream()));
-	}
-
-	@Override
-	public void setEventSocket(int eventPort) throws IOException {
-		this.eventSocket = new Socket(InetAddress.getLocalHost().getHostName(),
-				eventPort);
-	}
-
-	@Override
-	public void setEventReader() throws IOException {
-		this.eventReader = new BufferedReader(new InputStreamReader(
-				eventSocket.getInputStream()));
-	}
-
-	@Override
-	public PrintWriter getRequestWriter() {
-		return requestWriter;
-	}
-
-	@Override
-	public BufferedReader getRequestReader() {
-		return requestReader;
-	}
-
-	@Override
-	public BufferedReader getEventReader() {
-		return eventReader;
-	}
-
-	@Override
-	public ChannelEventDispatcher getEventDispatcher() {
-		return eventDispatcher;
 	}
 
 	@Override
@@ -203,8 +153,7 @@ public class ESBDebuggerInterface implements IESBDebuggerInterface {
 	@Override
 	public void sendBreakpointCommand(AbstractESBDebugPointMessage debugPoint)
 			throws Exception {
-		System.out.println(messageFactory
-				.createBreakpointCommand(debugPoint));
+		System.out.println(messageFactory.createBreakpointCommand(debugPoint));
 		requestWriter.println(messageFactory
 				.createBreakpointCommand(debugPoint));
 		requestWriter.flush();
@@ -221,4 +170,54 @@ public class ESBDebuggerInterface implements IESBDebuggerInterface {
 		requestWriter.close();
 		eventReader.close();
 	}
+
+	@Override
+	public void setRequestSocket(int commandPort, String hostName)
+			throws IOException {
+		this.requestSocket = new Socket(hostName, commandPort);
+	}
+
+	@Override
+	public void setRequestWriter() throws IOException {
+		this.requestWriter = new PrintWriter(requestSocket.getOutputStream());
+	}
+
+	@Override
+	public void setRequestReader() throws IOException {
+		this.requestReader = new BufferedReader(new InputStreamReader(
+				requestSocket.getInputStream()));
+	}
+
+	@Override
+	public void setEventSocket(int eventPort, String hostName)
+			throws IOException {
+		this.eventSocket = new Socket(hostName, eventPort);
+	}
+
+	@Override
+	public void setEventReader() throws IOException {
+		this.eventReader = new BufferedReader(new InputStreamReader(
+				eventSocket.getInputStream()));
+	}
+
+	@Override
+	public PrintWriter getRequestWriter() {
+		return requestWriter;
+	}
+
+	@Override
+	public BufferedReader getRequestReader() {
+		return requestReader;
+	}
+
+	@Override
+	public BufferedReader getEventReader() {
+		return eventReader;
+	}
+
+	@Override
+	public ChannelEventDispatcher getEventDispatcher() {
+		return eventDispatcher;
+	}
+
 }

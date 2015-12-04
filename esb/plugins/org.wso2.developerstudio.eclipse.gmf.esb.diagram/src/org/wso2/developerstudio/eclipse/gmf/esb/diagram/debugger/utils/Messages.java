@@ -25,6 +25,7 @@ public class Messages extends NLS {
 	public static String DebuggerConfigTab_IntegerPortValueValidationErrorMessage;
 	public static String DebuggerConfigTab_MainMessage;
 	public static String DebuggerConfigTab_MainTitle;
+	public static String DebuggerConfigTab_ServerHostName;
 	public static String ESBDebugerUtil_ErrorDialogTitle;
 	public static String ESBDebugLaunchDelegate_DebuggerInterfaceSocketsCreationErrorDialogMessage;
 	public static String ESBDebugLaunchDelegate_HostIPAddressCouldNotFoundErrorDialogMessage;

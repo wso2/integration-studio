@@ -37,9 +37,11 @@ public interface IESBDebuggerInterface {
 	 * Command channel
 	 * 
 	 * @param commandPort
+	 * @param hostName
 	 * @throws IOException
 	 */
-	public void setRequestSocket(int commandPort) throws IOException;
+	public void setRequestSocket(int commandPort, String hostName)
+			throws IOException;
 
 	/**
 	 * This method sets {@link PrintWriter} to send messages to ESB Server
@@ -62,9 +64,11 @@ public interface IESBDebuggerInterface {
 	 * Event channel
 	 * 
 	 * @param eventPort
+	 * @param hostName
 	 * @throws IOException
 	 */
-	public void setEventSocket(int eventPort) throws IOException;
+	public void setEventSocket(int eventPort, String hostName)
+			throws IOException;
 
 	/**
 	 * This method sets {@link BufferedReader} to read messages to ESB Server

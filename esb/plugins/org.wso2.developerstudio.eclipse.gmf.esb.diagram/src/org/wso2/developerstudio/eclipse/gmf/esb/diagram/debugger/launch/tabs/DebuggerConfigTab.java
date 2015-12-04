@@ -16,6 +16,9 @@
 
 package org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.launch.tabs;
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+
 import org.apache.commons.lang.StringUtils;
 import org.eclipse.debug.core.ILaunchConfiguration;
 import org.eclipse.debug.core.ILaunchConfigurationWorkingCopy;
@@ -26,7 +29,10 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.Activator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.Messages;
+import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
+import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
 import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.*;
 
@@ -45,8 +51,13 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ES
  * 
  */
 public class DebuggerConfigTab extends AbstractLaunchConfigurationTab {
+	private static final String EMPTY_STRING = "";
 	private Text commandPort;
 	private Text eventPort;
+	private Text hostName;
+	String hostNameString;
+
+	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
 	/**
 	 * Initializes the launch configuration with default values for the tab.
@@ -56,11 +67,20 @@ public class DebuggerConfigTab extends AbstractLaunchConfigurationTab {
 	 */
 	@Override
 	public void setDefaults(ILaunchConfigurationWorkingCopy configuration) {
-		configuration.setAttribute(ESB_SERVER_LOCATION, ""); //$NON-NLS-1$
+
+		try {
+			hostNameString = InetAddress.getLocalHost().getHostName();
+		} catch (UnknownHostException e) {
+			log.error("Error while reading local host name", e);
+			hostNameString = DEFAULT_HOST_NAME;
+		}
+		configuration.setAttribute(ESB_SERVER_LOCATION, EMPTY_STRING);
 		configuration.setAttribute(Messages.DebuggerConfigTab_CommandPortLabel,
 				DEFAULT_COMMAND_PORT);
 		configuration.setAttribute(Messages.DebuggerConfigTab_EventPortLabel,
 				DEFAULT_EVENT_PORT);
+		configuration.setAttribute(Messages.DebuggerConfigTab_ServerHostName,
+				hostNameString);
 	}
 
 	/**
@@ -72,11 +92,20 @@ public class DebuggerConfigTab extends AbstractLaunchConfigurationTab {
 	 */
 	@Override
 	public void initializeFrom(ILaunchConfiguration launchConfig) {
+		try {
+			hostNameString = InetAddress.getLocalHost().getHostName();
+		} catch (UnknownHostException e) {
+			log.error("Error while reading local host name", e);
+			hostNameString = DEFAULT_HOST_NAME;
+		}
 		if (StringUtils.isEmpty(commandPort.getText())) {
 			commandPort.setText(DEFAULT_COMMAND_PORT);
 		}
 		if (StringUtils.isEmpty(eventPort.getText())) {
 			eventPort.setText(DEFAULT_EVENT_PORT);
+		}
+		if (StringUtils.isEmpty(hostName.getText())) {
+			hostName.setText(hostNameString);
 		}
 	}
 
@@ -90,6 +119,8 @@ public class DebuggerConfigTab extends AbstractLaunchConfigurationTab {
 				commandPort.getText().toString());
 		configuration.setAttribute(Messages.DebuggerConfigTab_EventPortLabel,
 				eventPort.getText().toString());
+		configuration.setAttribute(Messages.DebuggerConfigTab_ServerHostName,
+				hostName.getText().toString());
 	}
 
 	/**
@@ -104,16 +135,24 @@ public class DebuggerConfigTab extends AbstractLaunchConfigurationTab {
 	@Override
 	public boolean isValid(ILaunchConfiguration launchConfig) {
 
-		try {
-			Integer.parseInt(commandPort.getText());
-			Integer.parseInt(eventPort.getText());
-			setErrorMessage(null);
-			return true;
-		} catch (NumberFormatException e) {
-			setErrorMessage(Messages.DebuggerConfigTab_IntegerPortValueValidationErrorMessage);
+		if (isValidHostName(hostName.getText())) {
+			try {
+				Integer.parseInt(commandPort.getText());
+				Integer.parseInt(eventPort.getText());
+				setErrorMessage(null);
+				return true;
+			} catch (NumberFormatException e) {
+				setErrorMessage(Messages.DebuggerConfigTab_IntegerPortValueValidationErrorMessage);
+				return false;
+			}
+		} else {
+			setErrorMessage("Invalid host name address");
 			return false;
 		}
+	}
 
+	private boolean isValidHostName(String hostName) {
+		return true;
 	}
 
 	/**
@@ -154,24 +193,34 @@ public class DebuggerConfigTab extends AbstractLaunchConfigurationTab {
 		Composite topControl = new Composite(parent, SWT.NONE);
 		topControl.setLayout(new GridLayout(1, false));
 
-		Group mainGroup = new Group(topControl, SWT.NONE);
-		mainGroup.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false,
-				1, 1));
-		mainGroup.setText(Messages.DebuggerConfigTab_CommandPortLabel); //$NON-NLS-1$
-		mainGroup.setLayout(new GridLayout(2, false));
+		Group commandGroup = new Group(topControl, SWT.NONE);
+		commandGroup.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true,
+				false, 1, 1));
+		commandGroup.setText(Messages.DebuggerConfigTab_CommandPortLabel);
+		commandGroup.setLayout(new GridLayout(2, false));
 
-		commandPort = new Text(mainGroup, SWT.BORDER);
+		commandPort = new Text(commandGroup, SWT.BORDER);
 		commandPort.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true,
 				false, 1, 1));
 
-		Group groupLaunch = new Group(topControl, SWT.NONE);
-		groupLaunch.setLayout(new GridLayout(2, false));
-		groupLaunch.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true,
+		Group eventGroup = new Group(topControl, SWT.NONE);
+		eventGroup.setLayout(new GridLayout(2, false));
+		eventGroup.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true,
 				false, 1, 1));
-		groupLaunch.setText(Messages.DebuggerConfigTab_EventPortLabel); //$NON-NLS-1$
+		eventGroup.setText(Messages.DebuggerConfigTab_EventPortLabel);
 
-		eventPort = new Text(groupLaunch, SWT.BORDER);
+		eventPort = new Text(eventGroup, SWT.BORDER);
 		eventPort.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false,
+				1, 1));
+
+		Group hostGroup = new Group(topControl, SWT.NONE);
+		hostGroup.setLayout(new GridLayout(2, false));
+		hostGroup.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false,
+				1, 1));
+		hostGroup.setText(Messages.DebuggerConfigTab_ServerHostName);
+
+		hostName = new Text(hostGroup, SWT.BORDER);
+		hostName.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false,
 				1, 1));
 
 		setControl(topControl);

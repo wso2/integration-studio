@@ -33,6 +33,7 @@ public class ESBDebuggerConstants {
 	// ESB Debugger Communication Channel constants
 	public static final String DEFAULT_COMMAND_PORT = "6006";
 	public static final String DEFAULT_EVENT_PORT = "6007";
+	public static final String DEFAULT_HOST_NAME = "localhost";
 	public static final String ESB_SERVER_LOCATION = "server location path";
 
 	// ESB Debug Point related constants

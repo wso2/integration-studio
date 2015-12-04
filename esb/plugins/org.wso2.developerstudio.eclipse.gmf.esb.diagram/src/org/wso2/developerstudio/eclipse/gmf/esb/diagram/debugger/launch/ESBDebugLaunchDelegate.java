@@ -16,6 +16,9 @@
 
 package org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.launch;
 
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.DEFAULT_COMMAND_PORT;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.DEFAULT_HOST_NAME;
+
 import java.io.IOException;
 import java.net.UnknownHostException;
 
@@ -29,8 +32,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.internal.commun
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.model.ESBDebugTarget;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerUtil;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.Messages;
-
-import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.*;
 
 /**
  * This class performs launching of the ESB Mediation Debugger launch
@@ -72,6 +73,8 @@ public class ESBDebugLaunchDelegate implements ILaunchConfigurationDelegate {
 
 		int commandPort = 0;
 		int eventPort = 0;
+		String hostName = DEFAULT_HOST_NAME;
+
 		try {
 			commandPort = Integer.parseInt(configuration.getAttribute(
 					Messages.DebuggerConfigTab_CommandPortLabel,
@@ -79,8 +82,11 @@ public class ESBDebugLaunchDelegate implements ILaunchConfigurationDelegate {
 			eventPort = Integer.parseInt(configuration.getAttribute(
 					Messages.DebuggerConfigTab_EventPortLabel,
 					DEFAULT_COMMAND_PORT));
+			hostName = configuration.getAttribute(
+					Messages.DebuggerConfigTab_ServerHostName, hostName);
 
-			ESBDebugger esbDebugger = new ESBDebugger(commandPort, eventPort);
+			ESBDebugger esbDebugger = new ESBDebugger(commandPort, eventPort,
+					hostName);
 			ESBDebugTarget debugTarget = new ESBDebugTarget(launch);
 
 			launch.addDebugTarget(debugTarget);

@@ -16,6 +16,11 @@
    <license url="%licenseURL">
       %license
    </license>
+
+   <requires>
+      <import feature="org.wso2.developerstudio.eclipse.esb.feature" version="4.0.0" match="greaterOrEqual"/>
+   </requires>
+
    <plugin
          id="org.wso2.developerstudio.eclipse.registry.apim.perspective"
          download-size="0"

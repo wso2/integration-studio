@@ -44,7 +44,7 @@ import org.wso2.developerstudio.eclipse.platform.core.utils.Constants;
 public class DistProjectUtils {
 
 	public static MavenProject getMavenProject(IProject project) throws Exception {
-               IFile pomFile=project.getFile(Constants.POM_FILE_NAME + "." + Constants.POM_FILE_EXTENSION);
+           IFile pomFile = project.getFile(Constants.POM_FILE_NAME + "." + Constants.POM_FILE_EXTENSION);
 	       return MavenUtils.getMavenProject(pomFile.getLocation().toFile());
 	}
 	

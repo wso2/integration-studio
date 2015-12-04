@@ -4,6 +4,7 @@
    <extension-point id="org.wso2.developerstudio.register.server.role" name="Register New Server Roles" schema="schema/org.wso2.developerstudio.register.server.role.exsd"/>
    <extension-point id="org.wso2.developerstudio.register.artifact.priority.mapping" name="Artifact Priority Mapping" schema="schema/org.wso2.developerstudio.register.artifact.priority.mapping.exsd"/>
    <extension-point id="org.wso2.developerstudio.register.artifact.mapping" name="Register Artifact mapping" schema="schema/org.wso2.developerstudio.register.artifact.mapping.exsd"/>
+   <extension-point id="org.wso2.developerstudio.eclipse.capp.artifacts.provider" name="org.wso2.developerstudio.eclipse.capp.artifacts.provider" schema="schema/org.wso2.developerstudio.eclipse.capp.artifacts.provider.exsd"/>
 	<extension point="org.eclipse.ui.newWizards">
 		<wizard name="Composite Application Project" 
 			category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.eclipse.capp.distribution"

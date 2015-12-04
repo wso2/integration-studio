@@ -43,7 +43,7 @@
                 <checksumPolicy>ignore</checksumPolicy>
             </releases>
             <id>DevS-Deps-p2-alpha-Repository</id>
-            <url>http://builder1.us1.wso2.org/~developerstudio/developer-studio-kernel/4.0.0/alpha/p2/</url>
+            <url>http://builder1.us1.wso2.org/~developerstudio/devs-kernel/4.0.0/releases/beta/p2/</url>
             <layout>p2</layout>
         </repository>
     </repositories>
@@ -78,7 +78,7 @@
                                     <groupId>org.eclipse</groupId>
                                     <artifactId>eclipse-jee-luna-win32</artifactId>
                                     <version>4.4.2</version>
-                                    <type>tar.gz</type>
+                                    <type>zip</type>
                                     <overWrite>true</overWrite>
                                     <outputDirectory>target</outputDirectory>
                                 </artifactItem>

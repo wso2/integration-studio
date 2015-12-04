@@ -5,8 +5,7 @@ Bundle-SymbolicName: org.wso2.developerstudio.eclipse.artifact.jaxws;singleton:=
 Bundle-Version: 4.0.0.qualifier
 Bundle-Activator: org.wso2.developerstudio.eclipse.artifact.jaxws.Activator
 Require-Bundle: org.eclipse.ui,
- org.eclipse.core.runtime,
- org.wso2.developerstudio.eclipse.libraries
+ org.eclipse.core.runtime
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Import-Package: javax.wsdl;version="[1.6.2.wso2v1,1.7.0)",
@@ -25,22 +24,22 @@ Import-Package: javax.wsdl;version="[1.6.2.wso2v1,1.7.0)",
  org.eclipse.jdt.ui.wizards,
  org.eclipse.wst.command.internal.env.core.common,
  org.eclipse.wst.server.core,
- org.wso2.developerstudio.eclipse.capp.maven.utils,
- org.wso2.developerstudio.eclipse.logging.core,
- org.wso2.developerstudio.eclipse.maven.util,
- org.wso2.developerstudio.eclipse.platform.core.exception,
- org.wso2.developerstudio.eclipse.platform.core.manifest,
- org.wso2.developerstudio.eclipse.platform.core.model,
- org.wso2.developerstudio.eclipse.platform.core.nature,
- org.wso2.developerstudio.eclipse.platform.core.project.export,
- org.wso2.developerstudio.eclipse.platform.core.project.model,
- org.wso2.developerstudio.eclipse.platform.ui.validator,
- org.wso2.developerstudio.eclipse.platform.ui.wizard,
- org.wso2.developerstudio.eclipse.platform.ui.wizard.pages,
- org.wso2.developerstudio.eclipse.utils.archive,
- org.wso2.developerstudio.eclipse.utils.file,
- org.wso2.developerstudio.eclipse.utils.jdt,
- org.wso2.developerstudio.eclipse.utils.project,
- org.wso2.developerstudio.eclipse.utils.template,
- org.wso2.developerstudio.eclipse.utils.ui
+ org.wso2.developerstudio.eclipse.capp.maven.utils;version="[4.0.0,4.1.0)",
+ org.wso2.developerstudio.eclipse.logging.core;version="[4.0.0,4.1.0)",
+ org.wso2.developerstudio.eclipse.maven.util;version="[4.0.0,4.1.0)",
+ org.wso2.developerstudio.eclipse.platform.core.exception;version="[4.0.0,4.1.0)",
+ org.wso2.developerstudio.eclipse.platform.core.manifest;version="[4.0.0,4.1.0)",
+ org.wso2.developerstudio.eclipse.platform.core.model;version="[4.0.0,4.1.0)",
+ org.wso2.developerstudio.eclipse.platform.core.nature;version="[4.0.0,4.1.0)",
+ org.wso2.developerstudio.eclipse.platform.core.project.export;version="[4.0.0,4.1.0)",
+ org.wso2.developerstudio.eclipse.platform.core.project.model;version="[4.0.0,4.1.0)",
+ org.wso2.developerstudio.eclipse.platform.ui.validator;version="[4.0.0,4.1.0)",
+ org.wso2.developerstudio.eclipse.platform.ui.wizard;version="[4.0.0,4.1.0)",
+ org.wso2.developerstudio.eclipse.platform.ui.wizard.pages;version="[4.0.0,4.1.0)",
+ org.wso2.developerstudio.eclipse.utils.archive;version="[4.0.0,4.1.0)",
+ org.wso2.developerstudio.eclipse.utils.file;version="[4.0.0,4.1.0)",
+ org.wso2.developerstudio.eclipse.utils.jdt;version="[4.0.0,4.1.0)",
+ org.wso2.developerstudio.eclipse.utils.project;version="[4.0.0,4.1.0)",
+ org.wso2.developerstudio.eclipse.utils.template;version="[4.0.0,4.1.0)",
+ org.wso2.developerstudio.eclipse.utils.ui;version="[4.0.0,4.1.0)"
 Bundle-ClassPath: .

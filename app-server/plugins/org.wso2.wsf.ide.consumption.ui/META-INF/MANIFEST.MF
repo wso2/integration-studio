@@ -22,9 +22,7 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.wst.server.core,
  org.eclipse.wst.wsdl,
  org.eclipse.wst.common.frameworks,
- org.eclipse.wst.common.environment,
- org.wso2.wsf.ide.consumption.core,
- org.wso2.wsf.ide.core
+ org.eclipse.wst.common.environment
 Eclipse-LazyStart: true
 Bundle-Vendor: WSO2
 Export-Package: org.wso2.wsf.ide.consumption.ui.plugin,
@@ -33,4 +31,11 @@ Export-Package: org.wso2.wsf.ide.consumption.ui.plugin,
  org.wso2.wsf.ide.consumption.ui.wsrt
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Import-Package: org.apache.axis2.util,
- org.wso2.developerstudio.eclipse.logging.core
+ org.wso2.developerstudio.eclipse.logging.core;version="[4.0.0,4.1.0)",
+ org.wso2.wsf.ide.consumption.core.command,
+ org.wso2.wsf.ide.consumption.core.data,
+ org.wso2.wsf.ide.consumption.core.messages,
+ org.wso2.wsf.ide.consumption.core.utils,
+ org.wso2.wsf.ide.core.context,
+ org.wso2.wsf.ide.core.plugin,
+ org.wso2.wsf.ide.core.plugin.messages

@@ -9,13 +9,6 @@
 -->
 
 <plugin>
-<extension
-         point="org.wso2.developerstudio.eclipse.capp.project.export.handler">
-          <export.handler
-         id="general.artifact.export.handler"
-         executionclass="org.wso2.developerstudio.eclipse.ds.project.exporter.DSArtifactExportHandler"
-         server.role="capp/DataServicesServer"/>
-   </extension>
    <extension point="org.eclipse.emf.ecore.generated_package">
       <package
             uri="platform:/resource/org.wso2.developerstudio.eclipse.ds/model/ds.xsd"

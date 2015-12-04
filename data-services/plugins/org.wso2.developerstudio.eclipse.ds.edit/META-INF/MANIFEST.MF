@@ -13,7 +13,7 @@ Export-Package: org.wso2.developerstudio.eclipse.ds.provider,
 Require-Bundle: org.eclipse.core.runtime,
  org.wso2.developerstudio.eclipse.ds;visibility:=reexport,
  org.eclipse.emf.edit;visibility:=reexport,
- org.wso2.developerstudio.eclipse.libraries
+ org.wso2.developerstudio.eclipse.libraries;bundle-version="[4.0.0,4.1.0)"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 

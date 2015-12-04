@@ -6,12 +6,7 @@ Bundle-Version: 4.0.0.qualifier
 Bundle-Activator: org.wso2.developerstudio.eclipse.artifact.inboundendpoint.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
- org.eclipse.core.resources,
- org.wso2.developerstudio.eclipse.platform.core;bundle-version="4.0.0",
- org.wso2.developerstudio.eclipse.platform.ui;bundle-version="4.0.0",
- org.wso2.developerstudio.eclipse.logging;bundle-version="4.0.0",
- org.wso2.developerstudio.eclipse.maven;bundle-version="4.0.0",
- org.wso2.developerstudio.eclipse.utils;bundle-version="4.0.0"
+ org.eclipse.core.resources
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Import-Package: org.apache.axiom.om,
  org.apache.maven.model,
@@ -26,5 +21,23 @@ Import-Package: org.apache.axiom.om,
  org.wso2.developerstudio.eclipse.esb.core.utils,
  org.wso2.developerstudio.eclipse.esb.project.artifact,
  org.wso2.developerstudio.eclipse.esb.project.utils,
- org.wso2.developerstudio.eclipse.gmf.esb
+ org.wso2.developerstudio.eclipse.gmf.esb,
+ org.wso2.developerstudio.eclipse.logging.core;version="[4.0.0,4.1.0)",
+ org.wso2.developerstudio.eclipse.maven;version="[4.0.0,4.1.0)",
+ org.wso2.developerstudio.eclipse.maven.util;version="[4.0.0,4.1.0)",
+ org.wso2.developerstudio.eclipse.platform.core;version="[4.0.0,4.1.0)",
+ org.wso2.developerstudio.eclipse.platform.core.exception;version="[4.0.0,4.1.0)",
+ org.wso2.developerstudio.eclipse.platform.core.interfaces;version="[4.0.0,4.1.0)",
+ org.wso2.developerstudio.eclipse.platform.core.model;version="[4.0.0,4.1.0)",
+ org.wso2.developerstudio.eclipse.platform.core.project.model;version="[4.0.0,4.1.0)",
+ org.wso2.developerstudio.eclipse.platform.core.utils;version="[4.0.0,4.1.0)",
+ org.wso2.developerstudio.eclipse.platform.ui;version="[4.0.0,4.1.0)",
+ org.wso2.developerstudio.eclipse.platform.ui.editor;version="[4.0.0,4.1.0)",
+ org.wso2.developerstudio.eclipse.platform.ui.startup;version="[4.0.0,4.1.0)",
+ org.wso2.developerstudio.eclipse.platform.ui.validator;version="[4.0.0,4.1.0)",
+ org.wso2.developerstudio.eclipse.platform.ui.wizard;version="[4.0.0,4.1.0)",
+ org.wso2.developerstudio.eclipse.utils;version="[4.0.0,4.1.0)",
+ org.wso2.developerstudio.eclipse.utils.file;version="[4.0.0,4.1.0)",
+ org.wso2.developerstudio.eclipse.utils.template;version="[4.0.0,4.1.0)",
+ org.wso2.developerstudio.eclipse.utils.ui;version="[4.0.0,4.1.0)"
 Bundle-ActivationPolicy: lazy

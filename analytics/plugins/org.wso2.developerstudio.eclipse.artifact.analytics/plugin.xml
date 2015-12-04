@@ -18,14 +18,6 @@
          </category>
    </extension>  
    <extension
-         point="org.wso2.developerstudio.eclipse.capp.project.export.handler">
-          <export.handler
-         id="analytics.artifact.export.handler"
-         executionclass="org.wso2.developerstudio.eclipse.artifact.analytics.exporter.AnalyticsExportHandler"
-         server.role="capp/ComplexEventProcessor"/>
-   </extension>
-   
-   <extension
 		point="org.wso2.developerstudio.eclipse.platform.core.intro.ui.dashboard">
 		<wizardCategory category="org.wso2.developerstudio.eclipse.artifact.analytics.category"/>
     	<category id="dashboard.category.analytics" showTitle="true"

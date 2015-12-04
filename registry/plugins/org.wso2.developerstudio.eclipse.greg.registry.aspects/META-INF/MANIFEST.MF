@@ -6,8 +6,7 @@ Bundle-Version: 4.0.0.qualifier
 Bundle-Activator: org.wso2.developerstudio.eclipse.greg.registry.aspects.Activator
 Bundle-Vendor: WSO2
 Require-Bundle: org.eclipse.ui,
- org.eclipse.core.runtime,
- org.wso2.developerstudio.eclipse.registry.libraries
+ org.eclipse.core.runtime
 Bundle-ActivationPolicy: lazy
 Import-Package: org.apache.maven.model,
  org.apache.maven.project,
@@ -16,11 +15,12 @@ Import-Package: org.apache.maven.model,
  org.eclipse.jdt.ui.wizards,
  org.eclipse.ui.dialogs,
  org.eclipse.ui.ide,
- org.wso2.developerstudio.eclipse.libraries.utils,
- org.wso2.developerstudio.eclipse.logging.core,
- org.wso2.developerstudio.eclipse.maven.util,
- org.wso2.developerstudio.eclipse.utils.file,
- org.wso2.developerstudio.eclipse.utils.jdt,
- org.wso2.developerstudio.eclipse.utils.ui
+ org.wso2.developerstudio.eclipse.libraries.utils;version="[4.0.0,4.1.0)",
+ org.wso2.developerstudio.eclipse.logging.core;version="[4.0.0,4.1.0)",
+ org.wso2.developerstudio.eclipse.maven.util;version="[4.0.0,4.1.0)",
+ org.wso2.developerstudio.eclipse.registry.libraries.utils;version="[4.0.0,4.1.0)",
+ org.wso2.developerstudio.eclipse.utils.file;version="[4.0.0,4.1.0)",
+ org.wso2.developerstudio.eclipse.utils.jdt;version="[4.0.0,4.1.0)",
+ org.wso2.developerstudio.eclipse.utils.ui;version="[4.0.0,4.1.0)"
 Export-Package: org.wso2.developerstudio.eclipse.greg.registry.aspects.ui.wizard,
  org.wso2.developerstudio.eclipse.greg.registry.aspects.utils

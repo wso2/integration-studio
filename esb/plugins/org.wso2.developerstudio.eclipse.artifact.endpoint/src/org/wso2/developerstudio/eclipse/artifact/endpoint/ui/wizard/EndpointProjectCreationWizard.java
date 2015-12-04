@@ -63,15 +63,6 @@ import org.wso2.developerstudio.eclipse.general.project.artifact.GeneralProjectA
 import org.wso2.developerstudio.eclipse.general.project.artifact.RegistryArtifact;
 import org.wso2.developerstudio.eclipse.general.project.artifact.bean.RegistryElement;
 import org.wso2.developerstudio.eclipse.general.project.artifact.bean.RegistryItem;
-// TODO fix this
-// import
-// org.wso2.developerstudio.eclipse.general.project.artifact.GeneralProjectArtifact;
-// import
-// org.wso2.developerstudio.eclipse.general.project.artifact.RegistryArtifact;
-// import
-// org.wso2.developerstudio.eclipse.general.project.artifact.bean.RegistryElement;
-// import
-// org.wso2.developerstudio.eclipse.general.project.artifact.bean.RegistryItem;
 import org.wso2.developerstudio.eclipse.gmf.esb.ArtifactType;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;

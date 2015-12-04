@@ -1,13 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <plugin>
-<extension
-         point="org.wso2.developerstudio.eclipse.capp.project.export.handler">
-          <export.handler
-         id="esb.artifact.export.handler"
-         executionclass="org.wso2.developerstudio.eclipse.esb.project.exporter.ESBExportHandler"
-         server.role="capp/EnterpriseServiceBus"/>
-   </extension>
    <extension point="org.eclipse.core.resources.natures"
 		id="org.wso2.developerstudio.eclipse.esb.project.nature" name="ESB Project Nature">
 		<runtime>

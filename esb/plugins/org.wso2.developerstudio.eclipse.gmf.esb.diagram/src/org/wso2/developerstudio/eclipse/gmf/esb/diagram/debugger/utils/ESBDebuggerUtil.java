@@ -54,9 +54,13 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbDiagram;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbServer;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.Activator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractMediator;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.CloneMediatorGraphicalShape;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EditorUtils;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EntitlementMediatorGraphicalShape;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EsbGroupingShape;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.FilterMediatorGraphicalShape;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.FixedSizedAbstractMediator;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.SwitchMediatorGraphicalShape;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.complexFiguredAbstractMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.debugpoint.builder.IESBDebugPointBuilder;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.debugpoint.builder.impl.ESBDebugPointBuilderFactory;
@@ -101,47 +105,15 @@ public class ESBDebuggerUtil {
 	private static AbstractMediator deletedMediator;
 	private static boolean deleteOperationPerformed;
 
-	public static void setDeletedMediator(AbstractMediator editPart) {
-		deletedMediator = editPart;
-	}
-
-	public static AbstractMediator getDeletedMediator() {
-		return deletedMediator;
-	}
-
-	public static void setDeleteOperationPerformed(boolean status) {
-		deleteOperationPerformed = status;
-	}
-
-	public static boolean isDeleteOperationPerformed() {
-		return deleteOperationPerformed;
-	}
-
-	public static void setPageCreateOperationActivated(boolean status) {
-		pageCreateOperationActivated = status;
-	}
-
-	public static boolean isPageCreateOperationActivated() {
-		return pageCreateOperationActivated;
-	}
-
-	public static void setPageChangeOperationActivated(boolean status) {
-		pageChangeOperationActivated = status;
-	}
-
-	public static boolean isPageChangeOperationActivated() {
-		return pageChangeOperationActivated;
-	}
-
-	public static void setRecentlyAddedMediator(AbstractMediator addedMediator) {
-		recentlyAddedMediator = addedMediator;
-	}
-
-	public static AbstractMediator getRecentlyAddedMediator() {
-		return recentlyAddedMediator;
-	}
-
-	public static void modifyBreakpointsAfterMediatorAddition(
+	/**
+	 * This method modify debug points when a new mediator addition operation is
+	 * performed
+	 * 
+	 * @param abstractMediator
+	 * @throws CoreException
+	 * @throws ESBDebuggerException
+	 */
+	public static void modifyDebugPointsointsAfterMediatorAddition(
 			AbstractMediator abstractMediator) throws CoreException,
 			ESBDebuggerException {
 
@@ -170,6 +142,27 @@ public class ESBDebuggerUtil {
 		}
 	}
 
+	/**
+	 * This method updates, if there is any debug points needed to be modified
+	 */
+	public static void updateModifiedDebugPoints() {
+		try {
+			if (recentlyAddedMediator != null) {
+				modifyDebugPointsointsAfterMediatorAddition(recentlyAddedMediator);
+			}
+		} catch (CoreException | ESBDebuggerException e) {
+			log.error("Error while updating debug points : " + e.getMessage(),
+					e);
+		}
+	}
+
+	/**
+	 * This method modify debug points when a new mediator deletion operation is
+	 * performed
+	 * 
+	 * @throws CoreException
+	 * @throws ESBDebuggerException
+	 */
 	public static void modifyBreakpointsAfterMediatorDeletion()
 			throws CoreException, ESBDebuggerException {
 
@@ -200,22 +193,6 @@ public class ESBDebuggerUtil {
 				}
 			}
 		}
-	}
-
-	private static EsbServer getESBServerFromIEditorPart(
-			IEditorPart activeEditor) {
-		Diagram diagram = ((EsbMultiPageEditor) (activeEditor)).getDiagram();
-		EsbDiagram esbDiagram = (EsbDiagram) diagram.getElement();
-		EsbServer esbServer = esbDiagram.getServer();
-		return esbServer;
-	}
-
-	private static IResource getIResourceFromIEditorPart(
-			IEditorPart activeEditor) {
-		IFile file = ((FileEditorInput) (((EsbMultiPageEditor) activeEditor)
-				.getEditorInput())).getFile();
-		IResource resource = (IResource) file.getAdapter(IResource.class);
-		return resource;
 	}
 
 	/**
@@ -258,6 +235,15 @@ public class ESBDebuggerUtil {
 		return entry.getValue().getAsString();
 	}
 
+	/**
+	 * This method generate and returns relevant ESBDebugPointMessage from a
+	 * JsonElement
+	 * 
+	 * @param debugPointType
+	 * @param event
+	 * @param recievedArtifactInfo
+	 * @return
+	 */
 	public static AbstractESBDebugPointMessage getESBDebugPoint(
 			ArtifactType debugPointType, EventMessageType event,
 			JsonElement recievedArtifactInfo) {
@@ -272,39 +258,6 @@ public class ESBDebuggerUtil {
 							+ debugPointType);
 		}
 
-	}
-
-	private static AbstractESBDebugPointMessage getSequenceTypeDebugPoint(
-			EventMessageType event, JsonElement recievedArtifactInfo) {
-		Set<Entry<String, JsonElement>> entrySet = recievedArtifactInfo
-				.getAsJsonObject().entrySet();
-		if (entrySet.size() == NUM_OF_ENTRIES_IN_COMPLEX_SEQ_TYPE) {
-			for (Entry<String, JsonElement> entry : entrySet) {
-				if (ESBDebuggerConstants.PROXY_LABEL.equalsIgnoreCase(entry
-						.getKey())) {
-					return new ESBProxyDebugPointMessage(event,
-							recievedArtifactInfo);
-				} else if (ESBDebuggerConstants.API_LABEL
-						.equalsIgnoreCase(entry.getKey())) {
-					return new ESBAPIDebugPointMessage(event,
-							recievedArtifactInfo);
-				} else if (ESBDebuggerConstants.INBOUND_ENDPOINT_LABEL
-						.equalsIgnoreCase(entry.getKey())) {
-					return new ESBInboundEndpointDebugPointMessage(event,
-							recievedArtifactInfo);
-				}
-			}
-		} else {
-			return new ESBSequenceDebugPointMessage(event, recievedArtifactInfo);
-		}
-		throw new IllegalArgumentException(
-				"Illegal sequence artifact type recived.Artifact should be sequence, proxy inbound or api : "
-						+ recievedArtifactInfo.toString());
-	}
-
-	private static ESBTemplateDebugPointMessage getTemplateDebugPoint(
-			EventMessageType event, JsonElement recievedArtifactInfo) {
-		return new ESBTemplateDebugPointMessage(event, recievedArtifactInfo);
 	}
 
 	/**
@@ -422,34 +375,6 @@ public class ESBDebuggerUtil {
 	}
 
 	/**
-	 * This method returns EditPart map of the current active editor
-	 * 
-	 * @param editPartMap
-	 */
-	private static Map<EObject, ShapeNodeEditPart> getActiveEditorEditPartMap() {
-
-		Map<EObject, ShapeNodeEditPart> editPartMap = new HashMap<>();
-
-		EsbMultiPageEditor esbMultiPageEditor = (EsbMultiPageEditor) EditorUtils
-				.getActiveEditor();
-
-		@SuppressWarnings("rawtypes")
-		Map editPartRegistry = esbMultiPageEditor.getDiagramEditPart()
-				.getViewer().getEditPartRegistry();
-		for (Object object : editPartRegistry.keySet()) {
-			if (object instanceof Node) {
-				Node nodeImpl = (Node) object;
-				Object editPart = editPartRegistry.get(nodeImpl);
-				if (editPart instanceof ShapeNodeEditPart) {
-					editPartMap.put(nodeImpl.getElement(),
-							(ShapeNodeEditPart) editPart);
-				}
-			}
-		}
-		return editPartMap;
-	}
-
-	/**
 	 * This method add breakpoint mark to the selected edit part
 	 */
 	public static void addBreakpointMark(AbstractMediator part) {
@@ -466,6 +391,14 @@ public class ESBDebuggerUtil {
 					.getPrimaryShape();
 			if (shape instanceof EsbGroupingShape) {
 				((EsbGroupingShape) shape).addBreakpointMark();
+			} else if (shape instanceof SwitchMediatorGraphicalShape) {
+				((SwitchMediatorGraphicalShape) shape).addBreakpointMark();
+			} else if (shape instanceof FilterMediatorGraphicalShape) {
+				((FilterMediatorGraphicalShape) shape).addBreakpointMark();
+			} else if (shape instanceof CloneMediatorGraphicalShape) {
+				((CloneMediatorGraphicalShape) shape).addBreakpointMark();
+			} else if (shape instanceof EntitlementMediatorGraphicalShape) {
+				((EntitlementMediatorGraphicalShape) shape).addBreakpointMark();
 			} else {
 				throw new IllegalArgumentException(
 						"Adding break point mark is not implemented for type "
@@ -475,6 +408,9 @@ public class ESBDebuggerUtil {
 		part.setBreakpointStatus(true);
 	}
 
+	/**
+	 * This method add skip point mark to the selected edit part
+	 */
 	public static void addSkippointMark(AbstractMediator part) {
 		if (part instanceof FixedSizedAbstractMediator) {
 			if (part instanceof CloudConnectorOperationEditPart) {
@@ -489,6 +425,14 @@ public class ESBDebuggerUtil {
 					.getPrimaryShape();
 			if (shape instanceof EsbGroupingShape) {
 				((EsbGroupingShape) shape).addSkippointMark();
+			} else if (shape instanceof SwitchMediatorGraphicalShape) {
+				((SwitchMediatorGraphicalShape) shape).addSkippointMark();
+			} else if (shape instanceof FilterMediatorGraphicalShape) {
+				((FilterMediatorGraphicalShape) shape).addSkippointMark();
+			} else if (shape instanceof CloneMediatorGraphicalShape) {
+				((CloneMediatorGraphicalShape) shape).addSkippointMark();
+			} else if (shape instanceof EntitlementMediatorGraphicalShape) {
+				((EntitlementMediatorGraphicalShape) shape).addSkippointMark();
 			} else {
 				throw new IllegalArgumentException(
 						"Adding skip point mark is not implemented for type "
@@ -498,6 +442,9 @@ public class ESBDebuggerUtil {
 		part.setSkippointStatus(true);
 	}
 
+	/**
+	 * This method remove breakpoint mark from the selected edit part
+	 */
 	public static void removeBreakpointMark(AbstractMediator part) {
 		if (part instanceof FixedSizedAbstractMediator) {
 			((FixedSizedAbstractMediator) part).getPrimaryShape()
@@ -507,6 +454,15 @@ public class ESBDebuggerUtil {
 					.getPrimaryShape();
 			if (shape instanceof EsbGroupingShape) {
 				((EsbGroupingShape) shape).removeBreakpointMark();
+			} else if (shape instanceof SwitchMediatorGraphicalShape) {
+				((SwitchMediatorGraphicalShape) shape).removeBreakpointMark();
+			} else if (shape instanceof FilterMediatorGraphicalShape) {
+				((FilterMediatorGraphicalShape) shape).removeBreakpointMark();
+			} else if (shape instanceof CloneMediatorGraphicalShape) {
+				((CloneMediatorGraphicalShape) shape).removeBreakpointMark();
+			} else if (shape instanceof EntitlementMediatorGraphicalShape) {
+				((EntitlementMediatorGraphicalShape) shape)
+						.removeBreakpointMark();
 			} else {
 				throw new IllegalArgumentException(
 						"Removing break point mark is not implemented for type "
@@ -516,6 +472,9 @@ public class ESBDebuggerUtil {
 		part.setBreakpointStatus(false);
 	}
 
+	/**
+	 * This method remove skip point mark from the selected edit part
+	 */
 	public static void removeSkippointMark(AbstractMediator part) {
 		if (part instanceof FixedSizedAbstractMediator) {
 			((FixedSizedAbstractMediator) part).getPrimaryShape()
@@ -525,6 +484,15 @@ public class ESBDebuggerUtil {
 					.getPrimaryShape();
 			if (shape instanceof EsbGroupingShape) {
 				((EsbGroupingShape) shape).removeSkippointMark();
+			} else if (shape instanceof SwitchMediatorGraphicalShape) {
+				((SwitchMediatorGraphicalShape) shape).removeSkippointMark();
+			} else if (shape instanceof FilterMediatorGraphicalShape) {
+				((FilterMediatorGraphicalShape) shape).removeSkippointMark();
+			} else if (shape instanceof CloneMediatorGraphicalShape) {
+				((CloneMediatorGraphicalShape) shape).removeSkippointMark();
+			} else if (shape instanceof EntitlementMediatorGraphicalShape) {
+				((EntitlementMediatorGraphicalShape) shape)
+						.removeSkippointMark();
 			} else {
 				throw new IllegalArgumentException(
 						"Removing skip point mark is not implemented for type "
@@ -534,6 +502,20 @@ public class ESBDebuggerUtil {
 		part.setSkippointStatus(false);
 	}
 
+	/**
+	 * This method add debug points for registered debug point mediators in the
+	 * given ESBServer
+	 * 
+	 * It finds the related project type and get the relevant
+	 * {@link IMediatorLocator} implementation from
+	 * {@link MediatorLocatorFactory}
+	 * 
+	 * @param server
+	 * @param editorInput
+	 * @throws MediatorNotFoundException
+	 * @throws MissingAttributeException
+	 * @throws DebugPointMarkerNotFoundException
+	 */
 	public static void addDesignViewDebugPoints(EsbServer server,
 			IEditorInput editorInput) throws MediatorNotFoundException,
 			MissingAttributeException, DebugPointMarkerNotFoundException {
@@ -549,6 +531,50 @@ public class ESBDebuggerUtil {
 		}
 	}
 
+	private static AbstractESBDebugPointMessage getSequenceTypeDebugPoint(
+			EventMessageType event, JsonElement recievedArtifactInfo) {
+		Set<Entry<String, JsonElement>> entrySet = recievedArtifactInfo
+				.getAsJsonObject().entrySet();
+		if (entrySet.size() == NUM_OF_ENTRIES_IN_COMPLEX_SEQ_TYPE) {
+			for (Entry<String, JsonElement> entry : entrySet) {
+				if (ESBDebuggerConstants.PROXY_LABEL.equalsIgnoreCase(entry
+						.getKey())) {
+					return new ESBProxyDebugPointMessage(event,
+							recievedArtifactInfo);
+				} else if (ESBDebuggerConstants.API_LABEL
+						.equalsIgnoreCase(entry.getKey())) {
+					return new ESBAPIDebugPointMessage(event,
+							recievedArtifactInfo);
+				} else if (ESBDebuggerConstants.INBOUND_ENDPOINT_LABEL
+						.equalsIgnoreCase(entry.getKey())) {
+					return new ESBInboundEndpointDebugPointMessage(event,
+							recievedArtifactInfo);
+				}
+			}
+		} else {
+			return new ESBSequenceDebugPointMessage(event, recievedArtifactInfo);
+		}
+		throw new IllegalArgumentException(
+				"Illegal sequence artifact type recived.Artifact should be sequence, proxy inbound or api : "
+						+ recievedArtifactInfo.toString());
+	}
+
+	private static ESBTemplateDebugPointMessage getTemplateDebugPoint(
+			EventMessageType event, JsonElement recievedArtifactInfo) {
+		return new ESBTemplateDebugPointMessage(event, recievedArtifactInfo);
+	}
+
+	/**
+	 * This method add debug point mark and hit status mark for relevant
+	 * mediators
+	 * 
+	 * @param server
+	 * @param file
+	 * @param mediatorLocator
+	 * @throws MediatorNotFoundException
+	 * @throws MissingAttributeException
+	 * @throws DebugPointMarkerNotFoundException
+	 */
 	private static void addDebugPointMarkForExistingDebugPoints(
 			EsbServer server, IFile file, IMediatorLocator mediatorLocator)
 			throws MediatorNotFoundException, MissingAttributeException,
@@ -597,6 +623,42 @@ public class ESBDebuggerUtil {
 		}
 	}
 
+	/**
+	 * This method returns EditPart map of the current active editor
+	 * 
+	 * @param editPartMap
+	 */
+	private static Map<EObject, ShapeNodeEditPart> getActiveEditorEditPartMap() {
+
+		Map<EObject, ShapeNodeEditPart> editPartMap = new HashMap<>();
+
+		EsbMultiPageEditor esbMultiPageEditor = (EsbMultiPageEditor) EditorUtils
+				.getActiveEditor();
+
+		@SuppressWarnings("rawtypes")
+		Map editPartRegistry = esbMultiPageEditor.getDiagramEditPart()
+				.getViewer().getEditPartRegistry();
+		for (Object object : editPartRegistry.keySet()) {
+			if (object instanceof Node) {
+				Node nodeImpl = (Node) object;
+				Object editPart = editPartRegistry.get(nodeImpl);
+				if (editPart instanceof ShapeNodeEditPart) {
+					editPartMap.put(nodeImpl.getElement(),
+							(ShapeNodeEditPart) editPart);
+				}
+			}
+		}
+		return editPartMap;
+	}
+
+	/**
+	 * This method finds the registered debug points under resource file in the
+	 * Eclipse breakpointpoint manager
+	 * 
+	 * @param file
+	 * @return
+	 * @throws DebugPointMarkerNotFoundException
+	 */
 	private static IBreakpoint[] getDebugPointsInFile(IFile file)
 			throws DebugPointMarkerNotFoundException {
 		IBreakpoint[] debugPoints = DebugPlugin.getDefault()
@@ -613,13 +675,16 @@ public class ESBDebuggerUtil {
 	}
 
 	/**
+	 * This method checks whether targetBreakpoint in in the
+	 * suspendedBreakpoints list
+	 * 
 	 * @param suspendPoints
-	 * @param breakpoint
+	 * @param targetBreakpoint
 	 */
 	private static boolean isSuspendedBreakpoint(IBreakpoint[] suspendPoints,
-			IBreakpoint breakpoint) {
+			IBreakpoint targetBreakpoint) {
 		for (IBreakpoint suspendPoint : suspendPoints) {
-			if (breakpoint.equals(((ESBSuspendPoint) suspendPoint)
+			if (targetBreakpoint.equals(((ESBSuspendPoint) suspendPoint)
 					.getSuspendedPoint())) {
 				return true;
 			}
@@ -627,15 +692,60 @@ public class ESBDebuggerUtil {
 		return false;
 	}
 
-	public static void updateModifiedDebugPoints() {
-		try {
-			if (recentlyAddedMediator != null) {
-				modifyBreakpointsAfterMediatorAddition(recentlyAddedMediator);
-			}
-		} catch (CoreException | ESBDebuggerException e) {
-			log.error("Error while updating debug points : " + e.getMessage(),
-					e);
-		}
+	private static EsbServer getESBServerFromIEditorPart(
+			IEditorPart activeEditor) {
+		Diagram diagram = ((EsbMultiPageEditor) (activeEditor)).getDiagram();
+		EsbDiagram esbDiagram = (EsbDiagram) diagram.getElement();
+		EsbServer esbServer = esbDiagram.getServer();
+		return esbServer;
+	}
+
+	private static IResource getIResourceFromIEditorPart(
+			IEditorPart activeEditor) {
+		IFile file = ((FileEditorInput) (((EsbMultiPageEditor) activeEditor)
+				.getEditorInput())).getFile();
+		IResource resource = (IResource) file.getAdapter(IResource.class);
+		return resource;
+	}
+
+	public static void setDeletedMediator(AbstractMediator editPart) {
+		deletedMediator = editPart;
+	}
+
+	public static AbstractMediator getDeletedMediator() {
+		return deletedMediator;
+	}
+
+	public static void setDeleteOperationPerformed(boolean status) {
+		deleteOperationPerformed = status;
+	}
+
+	public static boolean isDeleteOperationPerformed() {
+		return deleteOperationPerformed;
+	}
+
+	public static void setPageCreateOperationActivated(boolean status) {
+		pageCreateOperationActivated = status;
+	}
+
+	public static boolean isPageCreateOperationActivated() {
+		return pageCreateOperationActivated;
+	}
+
+	public static void setPageChangeOperationActivated(boolean status) {
+		pageChangeOperationActivated = status;
+	}
+
+	public static boolean isPageChangeOperationActivated() {
+		return pageChangeOperationActivated;
+	}
+
+	public static void setRecentlyAddedMediator(AbstractMediator addedMediator) {
+		recentlyAddedMediator = addedMediator;
+	}
+
+	public static AbstractMediator getRecentlyAddedMediator() {
+		return recentlyAddedMediator;
 	}
 
 }

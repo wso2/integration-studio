@@ -192,8 +192,7 @@ public class ESBDebugPoint extends Breakpoint {
 			}
 		}
 		throw new DebugPointMarkerNotFoundException(
-				"Assoiciated IMarker value not found for ESB Debug Point : "
-						+ this);
+				"Assoiciated IMarker value not found for ESB Debug Point ");
 	}
 
 	/**
@@ -208,8 +207,7 @@ public class ESBDebugPoint extends Breakpoint {
 			return marker.getResource();
 		}
 		throw new DebugPointMarkerNotFoundException(
-				"Assoiciated IMarker value not found for ESB Debug Point : "
-						+ this);
+				"Assoiciated IMarker value not found for ESB Debug Point");
 	}
 
 	public boolean equals(ESBDebugPoint breakpoint)

@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.draw2d.Figure;
@@ -57,6 +58,8 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.Activator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.connections.ConnectionCalculator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.layout.XYRepossition;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.utils.MediatorFigureReverser;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.exception.ESBDebuggerException;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerUtil;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.APIResourceInputConnectorEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.APIResourceOutSequenceOutputConnectorEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.APIResourceOutputConnectorEditPart;
@@ -119,6 +122,8 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.ThrottleConta
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.ThrottleMediatorEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.ValidateMediatorEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.policies.MediatorFlowMediatorFlowCompartment21CanonicalEditPolicy;
+import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
+import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.eclipse.gef.GraphicalEditPart;
 import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.jface.dialogs.StatusDialog;
@@ -135,6 +140,10 @@ public abstract class AbstractMediator extends AbstractBorderedShapeEditPart imp
 	private AbstractOutputConnectorEditPart connectedOutputConnector;
 	private AbstractMediator instance=null;
 	
+	private boolean breakpointHitStatus = false;
+	private boolean isBreakpoint = false;
+	private boolean isSkippoint = false;
+	
 	public int x=0;
 	public int y=0;
 	
@@ -144,6 +153,7 @@ public abstract class AbstractMediator extends AbstractBorderedShapeEditPart imp
 	private String warningAddingMediatorsAlreadyAvailableEnd = " inside this mediator since there is a send/drop/respond/loopback mediator already presents in the mediator flow";
 	private String warningAddingMiddleOfAMediatorFlow = " is not allowed to add in the middle of the mediator flow.";
 	
+	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 	/*
 	 * activete method is called twice for a mediator.so that we use this
 	 * variable to avoid calling reverse method twice.
@@ -156,6 +166,47 @@ public abstract class AbstractMediator extends AbstractBorderedShapeEditPart imp
 		instance=this;
 	}
 
+	/**
+	 * 
+	 * @return the isBreakpoint
+	 */
+	public boolean isBreakpoint(){
+		return isBreakpoint;
+	}
+	
+	public boolean isSkippoint(){
+		return isSkippoint;
+	}
+	
+	/**
+	 * 
+	 * @param breakpointStatus
+	 */
+	public void setBreakpointStatus(boolean breakpointStatus) {
+		isBreakpoint = breakpointStatus;
+	}
+
+	public void setSkippointStatus(boolean skippointStatus) {
+		isSkippoint = skippointStatus;
+
+	}
+	
+	/**
+	 * 
+	 * @return the breakpointHitStatus
+	 */
+	public boolean isBreakpointHit(){
+		return breakpointHitStatus;
+	}
+	
+	/**
+	 * 
+	 * @param breakpointHitStatus
+	 */
+	public void setBreakpointHitStatus(boolean breakpointHitStatus){
+		this.breakpointHitStatus=breakpointHitStatus;
+	}
+	
 	protected NodeFigure createMainFigure() {
 		return null;
 	}
@@ -189,6 +240,31 @@ public abstract class AbstractMediator extends AbstractBorderedShapeEditPart imp
 		super.activate();
 		if (!reversed) {
 			reverse(this);
+		}
+		if (i == 0) {
+			if (ESBDebuggerUtil.getRecentlyAddedMediator() == null
+					&& (!ESBDebuggerUtil.isPageChangeOperationActivated() && !ESBDebuggerUtil
+							.isPageCreateOperationActivated())) {
+				ESBDebuggerUtil.setRecentlyAddedMediator(this);
+			} else {
+
+				try {
+					if (ESBDebuggerUtil.getRecentlyAddedMediator() != null) {
+						ESBDebuggerUtil
+								.modifyDebugPointsointsAfterMediatorAddition(ESBDebuggerUtil
+										.getRecentlyAddedMediator());
+						if (!ESBDebuggerUtil.isPageChangeOperationActivated()
+								&& !ESBDebuggerUtil
+										.isPageCreateOperationActivated()) {
+							ESBDebuggerUtil.setRecentlyAddedMediator(this);
+						}
+					}
+				} catch (CoreException | ESBDebuggerException e) {
+					log.error("Error while setting recently added mediator : "
+							+ e.getMessage(), e);
+				}
+			}
+
 		}
 		/*
 		 * activate method is being called twice. At the first time most of the

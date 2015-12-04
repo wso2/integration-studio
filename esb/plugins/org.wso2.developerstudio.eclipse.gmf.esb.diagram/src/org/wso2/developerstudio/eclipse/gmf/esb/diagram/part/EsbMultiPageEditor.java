@@ -118,6 +118,10 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.Dese
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.Deserializer.DeserializeStatus;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.MediatorFactoryUtils;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.utils.UpdateGMFPlugin;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.exception.ESBDebuggerException;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.exception.MediatorNotFoundException;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.exception.MissingAttributeException;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerUtil;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.SequenceEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.EsbModelTransformer;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.SequenceInfo;
@@ -216,6 +220,8 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
 					Display.getDefault().asyncExec(new Runnable() {
 						@Override
 						public void run() {
+							ESBDebuggerUtil
+							.setPageCreateOperationActivated(true);
 							try {
 								DeserializeStatus deserializeStatus = deserializer
 										.isValidSynapseConfig(source);
@@ -241,6 +247,9 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
 								log.error(
 										"Error while generating diagram from source",
 										e);
+							} finally {
+								ESBDebuggerUtil
+										.setPageCreateOperationActivated(false);
 							}
 						}
 					});
@@ -539,7 +548,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
 		// Invoke the appropriate handler method.
 		switch (pageIndex) {
 		case DESIGN_VIEW_PAGE_INDEX: {
-			
+			ESBDebuggerUtil.setPageChangeOperationActivated(true);
 			MediatorFactoryUtils.registerFactories();
 			String source = sourceEditor.getDocument().get();
 			
@@ -589,7 +598,18 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
 						}
 
 						EditorUtils.setLockmode(graphicalEditor, false);
-
+						try {
+							EsbDiagram diagram = (EsbDiagram) graphicalEditor
+									.getDiagram().getElement();
+							EsbServer server = diagram.getServer();
+							IEditorInput editorInput = getEditorInput();
+							ESBDebuggerUtil.addDesignViewDebugPoints(server,
+									editorInput);
+						} catch (ESBDebuggerException e) {
+							log.error(
+									"Error while adding debug points to design view when page loading : "
+											+ e.getMessage(), e);
+						}
 					}
 				});
 			} catch (Exception e) {
@@ -600,6 +620,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
 			} finally {
 				AbstractEsbNodeDeserializer.cleanupData();
 				firePropertyChange(PROP_DIRTY);
+				ESBDebuggerUtil.setPageChangeOperationActivated(false);
 			}
 		
 			break;
@@ -810,6 +831,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
      * Saves the multi-page editor's document.
      */
     public void doSave(IProgressMonitor monitor) {
+    	ESBDebuggerUtil.updateModifiedDebugPoints();
     	//Fixing TOOLS-2958
     	setContextClassLoader();
     	boolean isSaveAllow=true;

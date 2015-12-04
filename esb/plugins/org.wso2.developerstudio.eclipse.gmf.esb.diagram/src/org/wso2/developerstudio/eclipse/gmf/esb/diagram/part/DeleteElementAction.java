@@ -3,6 +3,7 @@ package org.wso2.developerstudio.eclipse.gmf.esb.diagram.part;
 import java.util.Iterator;
 import java.util.List;
 
+import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.EditPart;
@@ -30,19 +31,25 @@ import org.wso2.developerstudio.eclipse.gmf.esb.LocalEntry;
 import org.wso2.developerstudio.eclipse.gmf.esb.ProxyService;
 import org.wso2.developerstudio.eclipse.gmf.esb.Sequences;
 import org.wso2.developerstudio.eclipse.gmf.esb.Task;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.Activator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractInputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractInputConnectorEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractOutputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractOutputConnectorEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EditorUtils;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.exception.ESBDebuggerException;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerUtil;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.EsbLinkEditPart;
+import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
+import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
 /**
  * @generated
  */
 public class DeleteElementAction extends DefaultDeleteElementAction {
 
+	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 	/**
 	 * @generated
 	 */
@@ -80,6 +87,16 @@ public class DeleteElementAction extends DefaultDeleteElementAction {
 
 	private void updateConnectedConnectors(EditPart editPart) {
 		if (editPart instanceof AbstractMediator) {
+			if (ESBDebuggerUtil.isDeleteOperationPerformed()) {
+				ESBDebuggerUtil.setDeletedMediator((AbstractMediator) editPart);
+				try {
+					ESBDebuggerUtil.modifyBreakpointsAfterMediatorDeletion();
+				} catch (CoreException | ESBDebuggerException e) {
+					log.error(
+							"Error while modifing debug points after mediator deletion : "
+									+ e.getMessage(), e);
+				}
+			}
 			AbstractInputConnectorEditPart currentInputConnector = EditorUtils
 					.getInputConnector((ShapeNodeEditPart) editPart);
 			AbstractOutputConnectorEditPart currentOutputConnector = EditorUtils

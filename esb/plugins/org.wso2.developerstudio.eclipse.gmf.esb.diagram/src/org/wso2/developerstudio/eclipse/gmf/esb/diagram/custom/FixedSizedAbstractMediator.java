@@ -33,6 +33,8 @@ public abstract class FixedSizedAbstractMediator extends AbstractMediator {
 	protected IFigure primaryShape;
 	private boolean selected;
 	
+	public abstract EsbGraphicalShapeWithLabel getPrimaryShape();
+	
 	public FixedSizedAbstractMediator(View view) {
 		super(view);
 		this.setSelected(false);

@@ -17,20 +17,21 @@ package org.wso2.developerstudio.eclipse.updater.model;
 
 import org.eclipse.equinox.p2.metadata.IInstallableUnit;
 
-public class DevStudioFeature extends InstallableFeature {
+public class EnhancedFeature extends InstallableFeature {
 
 	protected String currentVersion;
 	protected String whatIsNew;
 	protected String bugFixes;
+	protected boolean isKernelFeature;
 	
-	public DevStudioFeature() {
+	public EnhancedFeature() {
 	}
 
-	public DevStudioFeature(IInstallableUnit iu) {
+	public EnhancedFeature(IInstallableUnit iu) {
 		super(iu);
 	}
 
-	public DevStudioFeature(String id, String label, String version) {
+	public EnhancedFeature(String id, String label, String version) {
 		super(id, label, version);
 	}
 
@@ -51,6 +52,12 @@ public class DevStudioFeature extends InstallableFeature {
 	}
 	public void setBugFixes(String bugFixes) {
 		this.bugFixes = bugFixes;
+	}
+	public boolean isKernelFeature(){
+		return isKernelFeature;
+	}
+	public void setKernelFeature(boolean isKernelFeature){
+		this.isKernelFeature = isKernelFeature;
 	}
 
 }

@@ -13,21 +13,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.developerstudio.eclipse.updater.ui.function;
+package org.wso2.developerstudio.eclipse.updater.ui.web.function;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.wso2.developerstudio.eclipse.updater.model.DevStudioFeature;
-import org.wso2.developerstudio.eclipse.updater.ui.ProvisioningWindow;
+import org.wso2.developerstudio.eclipse.updater.model.EnhancedFeature;
+import org.wso2.developerstudio.eclipse.updater.ui.web.UpdaterWebUI;
 import org.wso2.developerstudio.eclipse.webui.core.util.ScriptFactory;
 
 import com.google.gson.reflect.TypeToken;
 
 public class SetSelectedUpdatesFunction extends AbstractProvisioningWindowFunction {
 
-	public SetSelectedUpdatesFunction(ProvisioningWindow provisioningWindow) {
+	public SetSelectedUpdatesFunction(UpdaterWebUI provisioningWindow) {
 		super(provisioningWindow, FunctionNames.SET_SELECTED_UPDATES);
 	}
 	
@@ -35,9 +35,9 @@ public class SetSelectedUpdatesFunction extends AbstractProvisioningWindowFuncti
 	public Object function(Object[] arguments) {
 		
 		String featureListString = (String) arguments[0];
-		Type listType = new TypeToken<ArrayList<DevStudioFeature>>() {
+		Type listType = new TypeToken<ArrayList<EnhancedFeature>>() {
         }.getType();
-		List<DevStudioFeature> selectedFeatures = ScriptFactory.jsonToPojo(featureListString, listType);
+		List<EnhancedFeature> selectedFeatures = ScriptFactory.jsonToPojo(featureListString, listType);
 		provisioningWindow.getUpdateManager().setSelectedUpdates(selectedFeatures);
 		return Boolean.TRUE.toString();
 	}

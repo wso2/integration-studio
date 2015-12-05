@@ -13,22 +13,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.developerstudio.eclipse.updater.ui.function;
+package org.wso2.developerstudio.eclipse.updater.ui.web.function;
 
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.updater.UpdaterPlugin;
-import org.wso2.developerstudio.eclipse.updater.ui.ProvisioningWindow;
+import org.wso2.developerstudio.eclipse.updater.ui.web.UpdaterWebUI;
 import org.wso2.developerstudio.eclipse.webui.core.window.function.AbstractWebWindowFunction;
 
 public abstract class AbstractProvisioningWindowFunction extends AbstractWebWindowFunction {
 
-	protected ProvisioningWindow provisioningWindow;
+	protected UpdaterWebUI provisioningWindow;
 	
 	protected static IDeveloperStudioLog log = Logger
 			.getLog(UpdaterPlugin.PLUGIN_ID);
 	
-	public AbstractProvisioningWindowFunction(ProvisioningWindow provisioningWindow, String name) {
+	public AbstractProvisioningWindowFunction(UpdaterWebUI provisioningWindow, String name) {
 		super(provisioningWindow, name );
 		this.provisioningWindow = provisioningWindow;
 	}

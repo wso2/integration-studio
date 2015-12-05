@@ -20,7 +20,7 @@ import org.eclipse.core.runtime.Path;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.FrameworkUtil;
-import org.wso2.developerstudio.eclipse.updater.ui.ProvisioningWindow;
+import org.wso2.developerstudio.eclipse.updater.ui.web.UpdaterWebUI;
 
 /**
  * The activator class controls the plug-in life cycle
@@ -50,7 +50,7 @@ public class UpdaterPlugin extends AbstractUIPlugin {
 		plugin = this;
 		// extract web interface file first.
 		FileLocator.toFileURL(FileLocator.find(FrameworkUtil
-				.getBundle(ProvisioningWindow.class), new Path(
+				.getBundle(UpdaterWebUI.class), new Path(
 				"WebInterface/updater"), null));
 	}
 

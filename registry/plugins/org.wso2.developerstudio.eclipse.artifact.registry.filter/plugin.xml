@@ -13,7 +13,10 @@
 			<description>Registry Filter Project</description>
 		</wizard>
    </extension>
-   
+   <extension point="org.wso2.developerstudio.eclipse.capp.artifacts.provider">
+    	<provider class="org.wso2.developerstudio.eclipse.artifact.registry.filter.project.export.RegistryFilterArtifactProvider"
+          nature="org.wso2.developerstudio.eclipse.registry.filter.project.nature"></provider>
+   </extension>
    <extension point="org.eclipse.core.resources.natures"
 		id="org.wso2.developerstudio.eclipse.registry.filter.project.nature" name="Registry Filter Project Nature">
 		<runtime>
@@ -27,6 +30,10 @@
 			natureId="org.wso2.developerstudio.eclipse.registry.filter.project.nature" icon="icons/new-registry-filter-12x12.png">
 		</image>
 	</extension>
+	   <extension point="org.wso2.developerstudio.eclipse.capp.artifacts.provider">
+    	<provider class="org.wso2.developerstudio.eclipse.artifact.dataserviceProject.project.export.DataServiceArtifactsProvider"
+          nature="org.wso2.developerstudio.eclipse.ds.project.nature"></provider>
+   </extension>
 	
  <extension point="org.wso2.developerstudio.eclipse.platform.core.intro.ui.dashboard">
    <category id="dashboard.category.Greg" showTitle="true"

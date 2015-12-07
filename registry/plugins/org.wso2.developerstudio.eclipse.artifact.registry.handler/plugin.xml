@@ -13,6 +13,10 @@
 			<description>Registry Handler Project</description>
 		</wizard>
    </extension>
+   <extension point="org.wso2.developerstudio.eclipse.capp.artifacts.provider">
+    	<provider class="org.wso2.developerstudio.eclipse.artifact.registry.handler.project.export.RegistryHandlerArtifactProvider"
+          nature="org.wso2.developerstudio.eclipse.registry.handler.project.nature"></provider>
+   </extension>
    
    <extension point="org.eclipse.core.resources.natures"
 		id="org.wso2.developerstudio.eclipse.registry.handler.project.nature" name="Registry Handler Project Nature">

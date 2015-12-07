@@ -84,7 +84,7 @@
                                 </artifactItem>
                                 <artifactItem>
                                     <groupId>org.wso2.developerstudio</groupId>
-                                    <artifactId>wso2-developer-studio-kernel-carbon-ui-p2</artifactId>
+                                    <artifactId>wso2-developer-studio-kernel-artifact-carbon-ui-p2</artifactId>
 				    <version>4.0.0-SNAPSHOT</version>
                                     <type>zip</type>
                                     <overWrite>true</overWrite>
@@ -151,7 +151,7 @@
 						<arg value="-installIU" />
 						<arg value="org.wso2.developerstudio.kernel.updater.feature.feature.group"/>
 						<arg value="-installIU" />
-						<arg value="org.wso2.developerstudio.eclipse.carbon.ui.feature.feature.group"/>
+						<arg value="org.wso2.developerstudio.eclipse.artifact.carbon.ui.feature.feature.group"/>
 
 					</java>
 					</tasks>

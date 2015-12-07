@@ -364,4 +364,14 @@
         artifactType="synapse/lib"
         fileExtension="zip"/>
   </extension>
+  
+   <extension
+        point="org.wso2.developerstudio.eclipse.capp.artifacts.provider">
+     <provider
+           class="org.wso2.developerstudio.eclipse.artifact.esb.project.exporter.ESBArtifactsProvider"
+           nature="org.wso2.developerstudio.eclipse.esb.project.nature">
+     </provider>
+  </extension>
+  
+  
 </plugin>

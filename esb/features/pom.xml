@@ -28,7 +28,8 @@
     <packaging>pom</packaging>
     <name>WSO2 Developer Studio ESB Feature</name>
     <modules>
-        <module>org.wso2.developerstudio.eclipse.esb.feature</module>
+         <module>org.wso2.developerstudio.eclipse.esb.editor.feature</module>
+         <module>org.wso2.developerstudio.eclipse.esb.feature</module>
     </modules>
     <distributionManagement>
         <repository>

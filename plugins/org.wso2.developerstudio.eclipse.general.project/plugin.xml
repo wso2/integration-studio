@@ -194,4 +194,12 @@
 				</enablement>
 	          </objectContribution>     
 	 </extension>
+	 
+	  <extension
+        point="org.wso2.developerstudio.eclipse.capp.artifacts.provider">
+     <provider
+            class="org.wso2.developerstudio.eclipse.artifact.general.project.exporter.RegistryArtifactsProvider"
+           nature="org.wso2.developerstudio.eclipse.general.project.nature">
+     </provider>
+  </extension>
 </plugin>

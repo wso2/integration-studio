@@ -11,6 +11,10 @@
 			<description>Carbon UI Bundle Project</description>
 		</wizard>
 	</extension>
+   <extension point="org.wso2.developerstudio.eclipse.capp.artifacts.provider">
+    	<provider class="org.wso2.developerstudio.eclipse.artifact.carbon.ui.bundle.project.export.CarbonUIArtifactProvider"
+          nature="org.wso2.developerstudio.eclipse.artifact.carbon.ui.bundle.project.nature"></provider>
+   </extension>
 	   <extension point="org.wso2.developerstudio.eclipse.platform.core.intro.ui.dashboard">
         	<category id="dashboard.category.carbon" showTitle="true"
                   	title="Carbon"

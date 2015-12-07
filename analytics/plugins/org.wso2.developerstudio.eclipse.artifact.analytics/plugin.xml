@@ -118,5 +118,13 @@
   		</public> 
  	 	</catalogContribution> 	 
  	</extension>
+
+  <extension
+        point="org.wso2.developerstudio.eclipse.capp.artifacts.provider">
+     <provider
+           class="org.wso2.developerstudio.eclipse.artifact.analytics.exporter.AnalyticsArtifactsProvider"
+           nature="org.wso2.developerstudio.eclipse.artifact.analytics.project.nature">
+     </provider>
+  </extension>
  	  
 </plugin>

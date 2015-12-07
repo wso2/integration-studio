@@ -82,6 +82,20 @@ import org.wso2.developerstudio.eclipse.updater.model.EnhancedFeature;
 
 public class UpdateManager {
 
+	private static final String FEATURE_GROUP_IU_ID_SFX = "feature.group";
+	private static final String PROP_IS_HIDDEN = "isHidden";
+	private static final String PROP_IS_KERNEL_FEATURE = "isKernelFeature";
+	private static final String PROP_BUG_FIXES = "bugFixes";
+	private static final String PROP_WHAT_IS_NEW = "whatIsNew";
+	private static final String UPDATE_PROPERTIES_FILE = "update.properties";
+	private static final String ICON_FILE = "icon.png";
+	private static final String FILE_PROTOCOL = "file://";
+	private static final String FEATURE_JAR_EXTRCT_FOLDER = "extracted";
+	private static final String FEATURE_JAR_IU_ID_SFX = "feature.jar";
+	private static final String WSO2_FEATURE_PREFIX = "org.wso2";
+	private static final String DEVS_UPDATER_TMP = "DevSUpdaterTmp";
+	private static final String JAVA_IO_TMPDIR = "java.io.tmpdir";
+
 	@Inject
 	protected IProvisioningAgentProvider agentProvider;
 	protected IProvisioningAgent p2Agent;
@@ -160,11 +174,11 @@ public class UpdateManager {
 		SubMonitor progress = SubMonitor.convert(monitor,
 				"Checking for DevStudio features.", 1);
 
-		String tmpRoot = System.getProperty("java.io.tmpdir") + File.separator
-				+ "DevSUpdaterTmp";
+		String tmpRoot = System.getProperty(JAVA_IO_TMPDIR) + File.separator
+				+ DEVS_UPDATER_TMP;
 
 		Collection<IInstallableUnit> wso2features = filterInstallableUnits(
-				"org.wso2", "feature.jar", allAvailableIUs, progress.newChild(1));
+				WSO2_FEATURE_PREFIX, FEATURE_JAR_IU_ID_SFX, allAvailableIUs, progress.newChild(1));
 
 		Map<String, EnhancedFeature> featureMetadataMap = new HashMap<>();
 
@@ -178,7 +192,7 @@ public class UpdateManager {
 						.getArtifactDescriptors(iArtifactKey);
 				File cachedFeatureRoot = new File(tmpRoot, iu.getId()
 						+ File.separator + iu.getVersion().toString());
-				File cachedFeatureDir = new File(cachedFeatureRoot, "extracted");
+				File cachedFeatureDir = new File(cachedFeatureRoot, FEATURE_JAR_EXTRCT_FOLDER);
 
 				if (cachedFeatureDir.exists() && cachedFeatureDir.isDirectory()) {
 					downloadProgress.worked(2);
@@ -214,19 +228,20 @@ public class UpdateManager {
 	private EnhancedFeature parseAdditionalFeatureMetadata(IInstallableUnit iu,
 			File cachedFeatureDir) {
 		EnhancedFeature feature = new EnhancedFeature(iu);
-		feature.setIconURL("file://" + cachedFeatureDir + File.separator + "icon.png");
+		feature.setIconURL(FILE_PROTOCOL + cachedFeatureDir + File.separator + 
+				ICON_FILE);
 		try {
 			File updateProperties = new File(cachedFeatureDir,
-					"update.properties");
+					UPDATE_PROPERTIES_FILE);
 			Properties prop = new Properties();
 			InputStream input = new FileInputStream(updateProperties);
 			prop.load(input);
-			feature.setWhatIsNew(prop.getProperty("whatIsNew"));
-			feature.setBugFixes(prop.getProperty("bugFixes"));
+			feature.setWhatIsNew(prop.getProperty(PROP_WHAT_IS_NEW));
+			feature.setBugFixes(prop.getProperty(PROP_BUG_FIXES));
 			feature.setKernelFeature(Boolean.parseBoolean(prop
-					.getProperty("isKernelFeature")));
+					.getProperty(PROP_IS_KERNEL_FEATURE)));
 			feature.setHidden(Boolean.parseBoolean(prop
-					.getProperty("isHidden")));	
+					.getProperty(PROP_IS_HIDDEN)));	
 		} catch (Exception e) {
 			// ignore - Additional meta-data was not provided in feature.jar
 			// log.error(e);
@@ -276,20 +291,22 @@ public class UpdateManager {
 				"Checking for DevStudio updates.", 6);
 
         // get all available IUs in update repo
-		IMetadataRepository metadataRepository = metadataRepoManager.loadRepository(getDevStudioUpdateSite(),
-				progress.newChild(1));
+		IMetadataRepository metadataRepository = metadataRepoManager
+				.loadRepository(getDevStudioUpdateSite(), progress.newChild(1));
 		IQuery<IInstallableUnit> allIUQuery = QueryUtil.createIUAnyQuery();
 		IQueryResult<IInstallableUnit> allIUQueryResult = metadataRepository.query(allIUQuery,
 				progress.newChild(1));
 		availableIUsInUpdateRepo = allIUQueryResult.toSet();
 		
 		// load artifact repo for updates
-		IArtifactRepository updateArtifactRepository = artifactRepoManager.loadRepository(getDevStudioUpdateSite(),
-				progress.newChild(1));
+		IArtifactRepository updateArtifactRepository = artifactRepoManager
+				.loadRepository(getDevStudioUpdateSite(), progress.newChild(1));
 		
 		
 		// read metadata of all available features
-		devsFeaturesInUpdateRepo = readFeatureMetadataFromRepo(updateArtifactRepository, allIUQueryResult, progress.newChild(1));
+		devsFeaturesInUpdateRepo = readFeatureMetadataFromRepo(
+				updateArtifactRepository, allIUQueryResult,
+				progress.newChild(1));
 
 		// get all installed wso2 features
 		installedWSO2Features = getInstalledWSO2Features(progress.newChild(1));
@@ -346,34 +363,37 @@ public class UpdateManager {
 		}
 		SubMonitor progress = SubMonitor.convert(monitor,
 				"Checking for DevStudio updates.", 5);
-		
-		
-        // get all available IUs in update repo
-		IMetadataRepository metadataRepository = metadataRepoManager.loadRepository(getDevStudioReleaseSite(),
-				progress.newChild(1));
+
+		// get all available IUs in update repo
+		IMetadataRepository metadataRepository = metadataRepoManager
+				.loadRepository(getDevStudioReleaseSite(), progress.newChild(1));
 		IQuery<IInstallableUnit> allIUQuery = QueryUtil.createIUAnyQuery();
-		IQueryResult<IInstallableUnit> allIUQueryResult = metadataRepository.query(allIUQuery,
-				progress.newChild(1));
+		IQueryResult<IInstallableUnit> allIUQueryResult = metadataRepository
+				.query(allIUQuery, progress.newChild(1));
 		availableIUsInReleaseRepo = allIUQueryResult.toSet();
-		
+
 		// load artifact repo for updates
-		IArtifactRepository updateArtifactRepository = artifactRepoManager.loadRepository(getDevStudioReleaseSite(),
-				progress.newChild(1));
-		
+		IArtifactRepository updateArtifactRepository = artifactRepoManager
+				.loadRepository(getDevStudioReleaseSite(), progress.newChild(1));
+
 		// read metadata of all available features
-		devsFeaturesInReleaseRepo = readFeatureMetadataFromRepo(updateArtifactRepository, allIUQueryResult, progress.newChild(1));
-		
+		devsFeaturesInReleaseRepo = readFeatureMetadataFromRepo(
+				updateArtifactRepository, allIUQueryResult,
+				progress.newChild(1));
+
 		Collection<IInstallableUnit> filteredIUs = filterInstallableUnits(
-				"org.wso2", "feature.group", allIUQueryResult,
+				WSO2_FEATURE_PREFIX, FEATURE_GROUP_IU_ID_SFX, allIUQueryResult,
 				progress.newChild(1));
 		availableNewFeatures = new HashMap<String, IInstallableUnit>();
 		availableDevFeaturesMap = new HashMap<String, EnhancedFeature>();
 		for (IInstallableUnit iInstallableUnit : filteredIUs) {
 			availableNewFeatures
 					.put(iInstallableUnit.getId(), iInstallableUnit);
-			if(!installedWSO2FeaturesMap.containsKey(iInstallableUnit.getId()))
-			{
-				availableDevFeaturesMap.put(iInstallableUnit.getId(), devsFeaturesInReleaseRepo.get(iInstallableUnit.getId()));
+			if (!installedWSO2FeaturesMap.containsKey(iInstallableUnit.getId())) {
+				availableDevFeaturesMap
+						.put(iInstallableUnit.getId(),
+								devsFeaturesInReleaseRepo.get(iInstallableUnit
+										.getId()));
 			}
 		}
 	}
@@ -381,8 +401,10 @@ public class UpdateManager {
 	private URI getDevStudioUpdateSite() {
 		URI updateSite = null;
 		try {
-			IPreferenceStore preferenceStore = org.wso2.developerstudio.eclipse.platform.ui.Activator.getDefault().getPreferenceStore();
-			String url = preferenceStore.getString(UpdateCheckerPreferencePage.UPDATE_SITE_URL);
+			IPreferenceStore preferenceStore = org.wso2.developerstudio.eclipse.platform.ui.Activator
+					.getDefault().getPreferenceStore();
+			String url = preferenceStore
+					.getString(UpdateCheckerPreferencePage.UPDATE_SITE_URL);
 			updateSite = new URI(url);
 		} catch (URISyntaxException e) {
 			log.error(e);
@@ -393,8 +415,10 @@ public class UpdateManager {
 	private URI getDevStudioReleaseSite() {
 		URI releaseSite = null;
 		try {
-			IPreferenceStore preferenceStore = org.wso2.developerstudio.eclipse.platform.ui.Activator.getDefault().getPreferenceStore();
-			String url = preferenceStore.getString(UpdateCheckerPreferencePage.RELESE_SITE_URL);
+			IPreferenceStore preferenceStore = org.wso2.developerstudio.eclipse.platform.ui.Activator
+					.getDefault().getPreferenceStore();
+			String url = preferenceStore
+					.getString(UpdateCheckerPreferencePage.RELESE_SITE_URL);
 			releaseSite = new URI(url);
 		} catch (URISyntaxException e) {
 			log.error(e);
@@ -423,7 +447,7 @@ public class UpdateManager {
 		OperationFactory operationFactory = new OperationFactory();
 		IQueryResult<IInstallableUnit> queryResult = operationFactory
 				.listInstalledElements(true, progress.newChild(1));
-		return filterInstallableUnits("org.wso2", "feature.group", queryResult,
+		return filterInstallableUnits(WSO2_FEATURE_PREFIX, FEATURE_GROUP_IU_ID_SFX, queryResult,
 				progress.newChild(1));
 	}
 
@@ -563,6 +587,11 @@ public class UpdateManager {
 		return (updatebleDevSFeatures.size() > 0) ? true : false;
 	}
 
+	/**
+	 * Set selected updates to install.
+	 * 
+	 * @param selectedFeaturesList selected updates to install.
+	 */
 	public void setSelectedUpdates(List<EnhancedFeature> selectedFeaturesList) {
 		selectedUpdates = new  Update[selectedFeaturesList.size()];
 		int count = 0;
@@ -573,6 +602,13 @@ public class UpdateManager {
 	
 	}
 	
+	/**
+	 * Install selected updates in to developer studio.
+	 * Note: call {@link #setSelectedUpdates(List) setSelectedUpdates} 
+	 * first.
+	 *  
+	 * @param monitor
+	 */
 	public void installSelectedUpdates(IProgressMonitor monitor) {
 		SubMonitor progress = SubMonitor.convert(monitor,
 				"Installing WSO2 features.", 2);
@@ -620,6 +656,11 @@ public class UpdateManager {
 		}
 	}
 
+	/**
+	 * Set the selected new features to install.
+	 * 
+	 * @param selectedDevSFeatures Features to install.
+	 */
 	public void setSelectedFeaturesToInstall(
 			List<EnhancedFeature> selectedDevSFeatures) {
 		this.selectedFeatures = new ArrayList<IInstallableUnit>();
@@ -629,6 +670,13 @@ public class UpdateManager {
 		}
 	}
 
+	/**
+	 * Install selected features in to developer studio.
+	 * Note: call {@link #setSelectedFeaturesToInstall(List) setSelectedFeaturesToInstall} 
+	 * first.
+	 * 
+	 * @param monitor
+	 */
 	public void installSelectedFeatures(IProgressMonitor monitor) {
 		SubMonitor progress = SubMonitor.convert(monitor,
 				"Installing WSO2 features.", 2);

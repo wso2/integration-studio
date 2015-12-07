@@ -133,7 +133,7 @@ public class Feature {
 		this.imgURL = imgURL;
 	}
 
-	public IInstallableUnit getIU() {
+	public IInstallableUnit getIu() {
 		return iu;
 	}
 

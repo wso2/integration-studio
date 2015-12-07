@@ -53,7 +53,6 @@ import org.eclipse.equinox.p2.core.IProvisioningAgentProvider;
 import org.eclipse.equinox.p2.core.ProvisionException;
 import org.eclipse.equinox.p2.metadata.IArtifactKey;
 import org.eclipse.equinox.p2.metadata.IInstallableUnit;
-import org.eclipse.equinox.p2.metadata.IRequirement;
 import org.eclipse.equinox.p2.operations.InstallOperation;
 import org.eclipse.equinox.p2.operations.OperationFactory;
 import org.eclipse.equinox.p2.operations.ProvisioningJob;
@@ -82,10 +81,6 @@ import org.wso2.developerstudio.eclipse.updater.model.EnhancedFeature;
 
 public class UpdateManager {
 
-	private static final String FEATURE_GROUP_SFX = "feature.group";
-	private static final String FEATURE_PFX = "org.wso2";
-	private static final String SPACE_REGEX = "\\s+";
-	
 	@Inject
 	protected IProvisioningAgentProvider agentProvider;
 	protected IProvisioningAgent p2Agent;
@@ -167,8 +162,8 @@ public class UpdateManager {
 		String tmpRoot = System.getProperty("java.io.tmpdir") + File.separator
 				+ "DevSUpdaterTmp";
 
-		Collection<IInstallableUnit> wso2features = filterInstallableUnits(false,
-				FEATURE_PFX, "feature.jar", allAvailableIUs, progress.newChild(1));
+		Collection<IInstallableUnit> wso2features = filterInstallableUnits(
+				"org.wso2", "feature.jar", allAvailableIUs, progress.newChild(1));
 
 		Map<String, EnhancedFeature> featureMetadataMap = new HashMap<>();
 
@@ -365,8 +360,8 @@ public class UpdateManager {
 		// read metadata of all available features
 		devsFeaturesInReleaseRepo = readFeatureMetadataFromRepo(updateArtifactRepository, allIUQueryResult, progress.newChild(1));
 		
-		Collection<IInstallableUnit> filteredIUs = filterInstallableUnits(false,
-				FEATURE_PFX, FEATURE_GROUP_SFX, allIUQueryResult,
+		Collection<IInstallableUnit> filteredIUs = filterInstallableUnits(
+				"org.wso2", "feature.group", allIUQueryResult,
 				progress.newChild(1));
 		availableNewFeatures = new HashMap<String, IInstallableUnit>();
 		availableDevFeaturesMap = new HashMap<String, EnhancedFeature>();
@@ -425,12 +420,11 @@ public class UpdateManager {
 		OperationFactory operationFactory = new OperationFactory();
 		IQueryResult<IInstallableUnit> queryResult = operationFactory
 				.listInstalledElements(true, progress.newChild(1));
-		return filterInstallableUnits(true, FEATURE_PFX, FEATURE_GROUP_SFX, queryResult,
+		return filterInstallableUnits("org.wso2", "feature.group", queryResult,
 				progress.newChild(1));
 	}
 
 	protected Collection<IInstallableUnit> filterInstallableUnits(
-			boolean checkIncludedFeatures,
 			String idPrefix, String idSuffix,
 			IQueryResult<IInstallableUnit> queryResult, IProgressMonitor monitor)
 			throws OperationCanceledException {
@@ -452,27 +446,10 @@ public class UpdateManager {
 			if (versionedID != null && versionedID.startsWith(idPrefix)
 					&& versionedID.endsWith(idSuffix)) {
 					wso2IUs.add(iu);
-					if(checkIncludedFeatures){
-						addIncludedFeatures(iu, wso2IUs);
-					}
 			}
 			progress.worked(1);
 		}
 		return wso2IUs;
-	}
-
-	private void addIncludedFeatures(IInstallableUnit iu, Collection<IInstallableUnit> wso2iUs) {
-		Collection<IRequirement> requirements = iu.getRequirements();
-		for (IRequirement iRequirement : requirements) {
-			String reqName = iRequirement.toString();
-			String reqID = reqName.split(SPACE_REGEX)[0];
-			if( reqID != null && reqID.startsWith(FEATURE_PFX) && reqID.endsWith(FEATURE_GROUP_SFX)){
-				EnhancedFeature enhancedFeature = devsFeaturesInUpdateRepo.get(reqID);
-				if(enhancedFeature != null){
-					wso2iUs.add(enhancedFeature.getIU());
-				}
-			}
-		}
 	}
 
 	/**

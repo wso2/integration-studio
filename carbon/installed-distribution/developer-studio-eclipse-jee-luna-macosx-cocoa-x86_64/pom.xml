@@ -42,8 +42,8 @@
                 <updatePolicy>daily</updatePolicy>
                 <checksumPolicy>ignore</checksumPolicy>
             </releases>
-            <id>DevS-Deps-p2-alpha-Repository</id>
-            <url>http://builder1.us1.wso2.org/~developerstudio/developer-studio-kernel/4.0.0/alpha/p2/</url>
+            <id>DevS-Deps-p2-Repository</id>
+            <url>http://builder1.us1.wso2.org/~developerstudio/devs-kernel/4.0.0/releases/beta/p2/</url>
             <layout>p2</layout>
         </repository>
     </repositories>
@@ -84,7 +84,7 @@
                                 </artifactItem>
                                 <artifactItem>
                                     <groupId>org.wso2.developerstudio</groupId>
-                                    <artifactId>wso2-developer-studio-kernel-carbon-ui-p2</artifactId>
+                                    <artifactId>wso2-developer-studio-kernel-artifact-carbon-ui-p2</artifactId>
 				    <version>4.0.0-SNAPSHOT</version>
                                     <type>zip</type>
                                     <overWrite>true</overWrite>
@@ -115,7 +115,7 @@
 						<arg value="-application" />
 						<arg value="org.eclipse.equinox.p2.director" />
 						<arg value="-repository" />
-						<arg value="file:${project.basedir}/target/p2-repo,http://builder1.us1.wso2.org/~developerstudio/developer-studio-kernel/4.0.0/alpha/p2/" />
+						<arg value="file:${project.basedir}/target/p2-repo,http://builder1.us1.wso2.org/~developerstudio/devs-kernel/4.0.0/releases/beta/p2/" />
 						<arg value="-destination" />
 						<arg value="${project.basedir}/target/eclipse" />
 						<arg value="-installIU" />
@@ -151,7 +151,7 @@
 						<arg value="-installIU" />
 						<arg value="org.wso2.developerstudio.kernel.updater.feature.feature.group"/>
 						<arg value="-installIU" />
-						<arg value="org.wso2.developerstudio.eclipse.carbon.ui.feature.feature.group"/>
+						<arg value="org.wso2.developerstudio.eclipse.artifact.carbon.ui.feature.feature.group"/>
 
 					</java>
 					</tasks>

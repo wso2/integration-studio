@@ -54,11 +54,13 @@ public class ESBValue extends ESBDebugElement implements IValue {
 		if (!value.isJsonNull()) {
 			Set<Entry<String, JsonElement>> entrySet = value.getAsJsonObject()
 					.entrySet();
-			for (Entry<String, JsonElement> entry : entrySet) {
-				if (valueChildren != null) {
+			if (valueChildren != null) {
+				for (Entry<String, JsonElement> entry : entrySet) {
 					addValueToMatchingChildVariable(entry);
-				} else {
-					valueChildren = new ArrayList<>();
+				}
+			} else {
+				valueChildren = new ArrayList<>();
+				for (Entry<String, JsonElement> entry : entrySet) {
 					addNewChildVariable(entry);
 				}
 			}

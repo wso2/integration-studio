@@ -44,7 +44,6 @@ import org.eclipse.core.runtime.OperationCanceledException;
 import org.eclipse.core.runtime.SubMonitor;
 import org.eclipse.core.runtime.SubProgressMonitor;
 import org.eclipse.core.runtime.jobs.IJobChangeEvent;
-import org.eclipse.core.runtime.jobs.IJobChangeListener;
 import org.eclipse.core.runtime.jobs.JobChangeAdapter;
 import org.eclipse.e4.core.contexts.ContextInjectionFactory;
 import org.eclipse.e4.core.contexts.EclipseContextFactory;
@@ -71,7 +70,9 @@ import org.eclipse.equinox.p2.repository.metadata.IMetadataRepositoryManager;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.progress.IProgressConstants;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.FrameworkUtil;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
@@ -650,6 +651,17 @@ public class UpdateManager {
 					}
 				});
 				provisioningJob.schedule();
+				Display.getDefault().syncExec(new Runnable() {
+					@Override
+					public void run() {
+						try {
+							PlatformUI.getWorkbench().getActiveWorkbenchWindow()
+									.getActivePage().showView(IProgressConstants.PROGRESS_VIEW_ID);
+						} catch (PartInitException e) {
+							log.error(e);
+						}
+					}
+				});
 			} else {
 				log.error("Error while performing update installation.");
 			}
@@ -719,6 +731,17 @@ public class UpdateManager {
 					}
 				});
 				provisioningJob.schedule();
+				Display.getDefault().syncExec(new Runnable() {
+					@Override
+					public void run() {
+						try {
+							PlatformUI.getWorkbench().getActiveWorkbenchWindow()
+									.getActivePage().showView(IProgressConstants.PROGRESS_VIEW_ID);
+						} catch (PartInitException e) {
+							log.error(e);
+						}
+					}
+				});
 			} else {
 				log.error("Error while performing feature installation.");
 			}

@@ -183,8 +183,8 @@ public class UpdaterDialog extends Dialog {
 	private void listFeatures(Group group, ActiveTab tab) {
 		IPreferenceStore prefPage = org.wso2.developerstudio.eclipse.platform.ui.Activator
 				.getDefault().getPreferenceStore();
-		boolean isKernelFeaturesEnabled = prefPage
-				.getBoolean(UpdateCheckerPreferencePage.ENABLE_KERNEL_FEATURES);
+		boolean showHiddenFeatures = prefPage
+				.getBoolean(UpdateCheckerPreferencePage.SHOW_HIDDEN_FEATURES);
 		
 		Iterator<Entry<String, EnhancedFeature>> featureList;
 		if (tab == ActiveTab.ALL_FEATURES) {
@@ -196,10 +196,12 @@ public class UpdaterDialog extends Dialog {
 		}
 		while (featureList.hasNext()) {
 			EnhancedFeature feature = featureList.next().getValue();
-			// set isKernelFeature=true in update.properties file in features to
+			// set isKernelFeature=true or isHidden=true in update.properties file in features to
 			// ignore them in available Features tab
-			if (feature.isKernelFeature() && tab == ActiveTab.ALL_FEATURES && !isKernelFeaturesEnabled) {
-				continue;
+			if (tab == ActiveTab.ALL_FEATURES && !showHiddenFeatures) {
+				if (feature.isKernelFeature() || feature.isHidden()) {
+					continue;
+				} 
 			}
 			GridData gridData = new GridData(SWT.FILL, SWT.FILL, true, false);
 			final Group featureGroup = createFeatureRepresentationGroup(group,

@@ -23,6 +23,7 @@ public class EnhancedFeature extends InstallableFeature {
 	protected String whatIsNew;
 	protected String bugFixes;
 	protected boolean isKernelFeature;
+	protected boolean isHidden;
 	
 	public EnhancedFeature() {
 	}
@@ -58,6 +59,14 @@ public class EnhancedFeature extends InstallableFeature {
 	}
 	public void setKernelFeature(boolean isKernelFeature){
 		this.isKernelFeature = isKernelFeature;
+	}
+
+	public boolean isHidden() {
+		return isHidden;
+	}
+
+	public void setHidden(boolean isHidden) {
+		this.isHidden = isHidden;
 	}
 
 }

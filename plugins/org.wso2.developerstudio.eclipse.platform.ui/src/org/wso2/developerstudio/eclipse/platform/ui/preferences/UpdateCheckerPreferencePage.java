@@ -34,7 +34,7 @@ public class UpdateCheckerPreferencePage extends FieldEditorPreferencePage imple
 	public static final String RELESE_SITE_URL = "RELESE_SITE_URL";
 	public static final String UPDATE_SITE_URL = "UPDATE_SITE_URL";
 	public static final String PLUGIN_TEMPLATE_URL = "PLUGIN_TEMPLATE_URL";
-	public static final String ENABLE_KERNEL_FEATURES = "ENABLE_KERNEL_FEATURES";
+	public static final String SHOW_HIDDEN_FEATURES = "SHOW_HIDDEN_FEATURES";
 
 	private IPreferenceStore preferenceStore;
 
@@ -51,7 +51,7 @@ public class UpdateCheckerPreferencePage extends FieldEditorPreferencePage imple
 	protected void createFieldEditors() {
 		addField(new StringFieldEditor(UPDATE_SITE_URL, "Update site:", getFieldEditorParent()));
 		addField(new StringFieldEditor(RELESE_SITE_URL, "Relase site:", getFieldEditorParent()));
-		addField(new BooleanFieldEditor(ENABLE_KERNEL_FEATURES, "Show Kernel Features (For plugin developers)", getFieldEditorParent()));
+		addField(new BooleanFieldEditor(SHOW_HIDDEN_FEATURES, "Show Hidden Features (For plugin developers)", getFieldEditorParent()));
 		addField(new BooleanFieldEditor(ENABLE_AUTOMATIC_UPDATES, "Check for updates Automatically", getFieldEditorParent()));
 		String[][] intervals = {{ "Daily", "Daily" }, { "Weekly", "Weekly" }, { "Monthly", "Monthly" }};
 		intervalEditor = new ComboFieldEditor(UPDATE_INTAVAL, "Check for updates ", intervals,

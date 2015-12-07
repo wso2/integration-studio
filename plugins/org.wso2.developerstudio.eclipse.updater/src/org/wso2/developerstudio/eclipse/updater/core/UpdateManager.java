@@ -45,6 +45,7 @@ import org.eclipse.core.runtime.SubMonitor;
 import org.eclipse.core.runtime.SubProgressMonitor;
 import org.eclipse.core.runtime.jobs.IJobChangeEvent;
 import org.eclipse.core.runtime.jobs.IJobChangeListener;
+import org.eclipse.core.runtime.jobs.JobChangeAdapter;
 import org.eclipse.e4.core.contexts.ContextInjectionFactory;
 import org.eclipse.e4.core.contexts.EclipseContextFactory;
 import org.eclipse.e4.core.contexts.IEclipseContext;
@@ -224,6 +225,8 @@ public class UpdateManager {
 			feature.setBugFixes(prop.getProperty("bugFixes"));
 			feature.setKernelFeature(Boolean.parseBoolean(prop
 					.getProperty("isKernelFeature")));
+			feature.setHidden(Boolean.parseBoolean(prop
+					.getProperty("isHidden")));	
 		} catch (Exception e) {
 			// ignore - Additional meta-data was not provided in feature.jar
 			// log.error(e);
@@ -571,74 +574,48 @@ public class UpdateManager {
 	}
 	
 	public void installSelectedUpdates(IProgressMonitor monitor) {
-		try {
-			URI[] repos = new URI[] { getDevStudioUpdateSite() };
-			session = new ProvisioningSession(p2Agent);
-			updateOperation = new UpdateOperation(session);
-			updateOperation.getProvisioningContext().setArtifactRepositories(
-					repos);
-			updateOperation.getProvisioningContext().setMetadataRepositories(
-					repos);
+		SubMonitor progress = SubMonitor.convert(monitor,
+				"Installing WSO2 features.", 2);
+		URI[] repos = new URI[] { getDevStudioUpdateSite() };
+		session = new ProvisioningSession(p2Agent);
+		updateOperation = new UpdateOperation(session);
+		updateOperation.getProvisioningContext().setArtifactRepositories(repos);
+		updateOperation.getProvisioningContext().setMetadataRepositories(repos);
 
-			updateOperation.setSelectedUpdates(selectedUpdates);
-			updateOperation.resolveModal(monitor);
-		} catch (Exception ex) {
-			ex.printStackTrace();
-		}
-		final ProvisioningJob provisioningJob = updateOperation
-				.getProvisioningJob(null);
-		if (provisioningJob != null) {
-			Display.getDefault().syncExec(new Runnable() {
-
-				@Override
-				public void run() {
-					provisioningJob
-							.addJobChangeListener(new IJobChangeListener() {
-								@Override
-								public void sleeping(IJobChangeEvent arg0) {
-								}
-								@Override
-								public void scheduled(IJobChangeEvent arg0) {
-								}
-								@Override
-								public void running(IJobChangeEvent arg0) {
-								}
-								@Override
-								public void done(IJobChangeEvent arg0) {
-									Display.getDefault().syncExec(
-											new Runnable() {
-												@Override
-												public void run() {
-													boolean restart = MessageDialog
-															.openQuestion(
-																	Display.getDefault()
-																			.getActiveShell(),
-																	"Updates installed, restart?",
-																	"Updates for WSO2 Developer Studio"
-																	+ " have been installed successfully, do you want to restart?");
-													if (restart) {
-														PlatformUI
-																.getWorkbench()
-																.restart();
-													}
-												}
-											});
-								}
-								@Override
-								public void awake(IJobChangeEvent arg0) {
-								}
-								@Override
-								public void aboutToRun(IJobChangeEvent arg0) {
-								}
-							});
-					provisioningJob.schedule();
-				}
-			});
+		updateOperation.setSelectedUpdates(selectedUpdates);
+		IStatus status = updateOperation.resolveModal(progress.newChild(1));
+		if (status.getSeverity() == IStatus.CANCEL) {
+			throw new OperationCanceledException();
+		} else if (status.getSeverity() == IStatus.ERROR) {
+			String message = status.getChildren()[0].getMessage();
+			log.error("Error while resolving installation." + message);
 		} else {
-			if (updateOperation.hasResolved()) {
-				
+			final ProvisioningJob provisioningJob = updateOperation
+					.getProvisioningJob(progress.newChild(1));
+			if (provisioningJob != null) {
+				provisioningJob.addJobChangeListener(new JobChangeAdapter() {
+					@Override
+					public void done(IJobChangeEvent arg0) {
+						Display.getDefault().syncExec(new Runnable() {
+							@Override
+							public void run() {
+								boolean restart = MessageDialog
+										.openQuestion(
+												Display.getDefault()
+														.getActiveShell(),
+												"Updates installed, restart?",
+												"Updates for WSO2 Developer Studio"
+														+ " have been installed successfully, do you want to restart?");
+								if (restart) {
+									PlatformUI.getWorkbench().restart();
+								}
+							}
+						});
+					}
+				});
+				provisioningJob.schedule();
 			} else {
-			
+				log.error("Error while performing update installation.");
 			}
 		}
 	}
@@ -667,43 +644,36 @@ public class UpdateManager {
 		if (status.getSeverity() == IStatus.CANCEL || progress.isCanceled()) {
 			throw new OperationCanceledException();
 		} else if (status.getSeverity() == IStatus.ERROR) {
-			log.info("Error while resolving installation.");
-		}
-		ProvisioningJob provisioningJob = installOperation.getProvisioningJob(progress.newChild(1));
-		provisioningJob.schedule();
-		provisioningJob.addJobChangeListener(new IJobChangeListener() {
-			@Override
-			public void sleeping(IJobChangeEvent arg0) {
-			}	
-			@Override
-			public void scheduled(IJobChangeEvent arg0) {
-			}
-			@Override
-			public void running(IJobChangeEvent arg0) {
-			}
-			@Override
-			public void done(IJobChangeEvent arg0) {
-				Display.getDefault().syncExec(new Runnable() {
+			String message = status.getChildren()[0].getMessage();
+			log.error("Error while resolving installation." + message);
+		} else {
+			ProvisioningJob provisioningJob = installOperation
+					.getProvisioningJob(progress.newChild(1));
+			if (provisioningJob != null) {
+				provisioningJob.addJobChangeListener(new JobChangeAdapter() {
 					@Override
-					public void run() {
-						boolean restart = MessageDialog
-								.openQuestion(
-										Display.getDefault().getActiveShell(),
-										"New Features installed, restart?",
-										"New Features for WSO2 Developer Studio"
-												+ " have been installed successfully, do you want to restart?");
-						if (restart) {
-							PlatformUI.getWorkbench().restart();
-						}
+					public void done(IJobChangeEvent arg0) {
+						Display.getDefault().syncExec(new Runnable() {
+							@Override
+							public void run() {
+								boolean restart = MessageDialog
+										.openQuestion(
+												Display.getDefault()
+														.getActiveShell(),
+												"New Features installed, restart?",
+												"New Features for WSO2 Developer Studio"
+														+ " have been installed successfully, do you want to restart?");
+								if (restart) {
+									PlatformUI.getWorkbench().restart();
+								}
+							}
+						});
 					}
 				});
+				provisioningJob.schedule();
+			} else {
+				log.error("Error while performing feature installation.");
 			}
-			@Override
-			public void awake(IJobChangeEvent arg0) {
-			}	
-			@Override
-			public void aboutToRun(IJobChangeEvent arg0) {
-			}
-		});
+		}
 	}
 }

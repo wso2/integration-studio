@@ -48,7 +48,7 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
 		store.setDefault(UpdateCheckerPreferencePage.UPDATE_WINDOW_MODE, "SWT");
 		store.setDefault(UpdateCheckerPreferencePage.ENABLE_AUTOMATIC_UPDATES,
 				true);
-		store.setDefault(UpdateCheckerPreferencePage.ENABLE_KERNEL_FEATURES,
+		store.setDefault(UpdateCheckerPreferencePage.SHOW_HIDDEN_FEATURES,
 				false);
 	}
 

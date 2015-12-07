@@ -41,15 +41,14 @@ public class ProjectList extends AbstractListDataProvider {
 		
 		List<ListData> list = new ArrayList<ListData>();
 		//Earlier Implementation without extension
-		CappArtifactsListProvider artifactsListProvider =  new CappArtifactsListProvider();
-		try {
-			list =  artifactsListProvider.getArtifactsListForCappExport();
-		} catch (Exception e) {
-			log.error("Error executing CappArtifactsListProvider extension ", e);
-		}
+//		CappArtifactsListProvider artifactsListProvider =  new CappArtifactsListProvider();
+//		try {
+//			list =  artifactsListProvider.getArtifactsListForCappExport();
+//		} catch (Exception e) {
+//			log.error("Error executing CappArtifactsListProvider extension ", e);
+//		}
 
 		//New implementation with extension implementation
-		/*
 		IProject[] projects = ResourcesPlugin.getWorkspace().getRoot().getProjects();
 		final String EXTENSIONPOINT_ID = "org.wso2.developerstudio.eclipse.capp.artifacts.provider";
 		IConfigurationElement[] config = Platform.getExtensionRegistry().getConfigurationElementsFor(EXTENSIONPOINT_ID);
@@ -77,7 +76,6 @@ public class ProjectList extends AbstractListDataProvider {
 	    } catch (CoreException ex) {
 	        log.error("Error executing CappArtifactsListProvider extension ", ex);
 	    }
-	    */
 
 		return list;
 	}

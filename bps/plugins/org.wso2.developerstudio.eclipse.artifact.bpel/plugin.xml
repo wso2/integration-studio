@@ -13,6 +13,10 @@
 			<description>BPEL Workflow</description>
 		</wizard>
    </extension>
+   <extension point="org.wso2.developerstudio.eclipse.capp.artifacts.provider">
+    	<provider class="org.wso2.developerstudio.eclipse.artifact.bpel.project.export.BPELArtifactProvider"
+          nature="org.wso2.developerstudio.eclipse.bpel.project.nature"></provider>
+   </extension>
    <extension point="org.eclipse.ui.newWizards">
  		 <wizard name="Apply Security" category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.eclipse.business.processes"
  			class="org.wso2.developerstudio.eclipse.artifact.bpel.ui.wizard.BPELSecurityWizard"

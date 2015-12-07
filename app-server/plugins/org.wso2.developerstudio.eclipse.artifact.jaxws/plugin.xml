@@ -10,6 +10,10 @@
 			<description>JAX-WS Service Project</description>
 		</wizard>
 	 </extension>
+	 <extension point="org.wso2.developerstudio.eclipse.capp.artifacts.provider">
+    	<provider class="org.wso2.developerstudio.eclipse.artifact.jaxws.project.export.JaxwsArtifactsProvider"
+          nature="org.wso2.developerstudio.eclipse.jaxws.project.nature"></provider>
+     </extension>
 	 <extension point="org.eclipse.ui.newWizards">
 		<wizard name="JAX-WS Service Class" category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.eclipse.service.hosting/org.wso2.developerstudio.eclipse.service.hosting.features"
 			class="org.wso2.developerstudio.eclipse.artifact.jaxws.ui.wizard.JaxwsClassWizard"

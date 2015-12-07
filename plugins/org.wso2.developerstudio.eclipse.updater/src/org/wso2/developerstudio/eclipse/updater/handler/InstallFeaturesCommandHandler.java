@@ -19,6 +19,9 @@ import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.runtime.jobs.Job;
+import org.eclipse.ui.PartInitException;
+import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.progress.IProgressConstants;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.updater.UpdaterPlugin;
@@ -40,6 +43,12 @@ public class InstallFeaturesCommandHandler extends AbstractHandler {
 		updateJob.schedule();
 		updateJob.addJobChangeListener(new UpdateCheckerJobListener(
 				updateManager, ActiveTab.ALL_FEATURES, false));
+		try {
+			PlatformUI.getWorkbench().getActiveWorkbenchWindow()
+					.getActivePage().showView(IProgressConstants.PROGRESS_VIEW_ID);
+		} catch (PartInitException e) {
+			log.error(e);
+		}
 		return null;
 	}
 }

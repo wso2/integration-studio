@@ -13,7 +13,10 @@
 			<description>Axis2 Service Project</description>
 		</wizard>
 	</extension>
-	
+	   <extension point="org.wso2.developerstudio.eclipse.capp.artifacts.provider">
+    	<provider class="org.wso2.developerstudio.eclipse.artifact.axis2.project.export.Axis2ArtifactsProvider"
+          nature="org.wso2.developerstudio.eclipse.axis2.project.nature"></provider>
+   </extension>	
 	   <extension
 		point="org.wso2.developerstudio.eclipse.platform.core.intro.ui.dashboard">
    <category id="dashboard.category.AS" showTitle="true"

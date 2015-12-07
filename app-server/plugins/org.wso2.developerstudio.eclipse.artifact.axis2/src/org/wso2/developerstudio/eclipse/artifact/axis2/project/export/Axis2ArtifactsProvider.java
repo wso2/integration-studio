@@ -1,18 +1,17 @@
-package org.wso2.developerstudio.eclipse.artifact.dataserviceProject.project.export;
+package org.wso2.developerstudio.eclipse.artifact.axis2.project.export;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import org.wso2.developerstudio.eclipse.artifact.dataserviceProject.Activator;
+import org.wso2.developerstudio.eclipse.artifact.axis2.Activator;
 import org.wso2.developerstudio.eclipse.distribution.project.export.CappArtifactsListProvider;
 import org.eclipse.core.resources.IProject;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
-public class DataServiceArtifactsProvider extends CappArtifactsListProvider {
-	
-private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
-	
+public class Axis2ArtifactsProvider extends CappArtifactsListProvider {
+	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
+
 	@Override
 	public List<ListData> getArtifactsListForCappExport(IProject project) {
 
@@ -24,6 +23,5 @@ private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 		}
 		return list;
 	}
-
 
 }

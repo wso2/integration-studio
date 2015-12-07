@@ -14,6 +14,10 @@
 		</wizard>
 		
 	</extension>
+	   <extension point="org.wso2.developerstudio.eclipse.capp.artifacts.provider">
+    	<provider class="org.wso2.developerstudio.eclipse.artifact.webapp.project.export.WebAppArtifactsProvider"
+          nature="org.wso2.developerstudio.eclipse.webapp.project.nature"></provider>
+   </extension>
 	<extension point="org.eclipse.core.resources.natures"
 		id="org.wso2.developerstudio.eclipse.webapp.project.nature" name="Web App Project Nature">
 		<runtime>

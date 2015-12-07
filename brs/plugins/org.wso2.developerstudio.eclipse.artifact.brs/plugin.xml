@@ -21,6 +21,10 @@
          parentCategory="org.wso2.developerstudio.eclipse.capp.project">
    </category>
 </extension>
+<extension point="org.wso2.developerstudio.eclipse.capp.artifacts.provider">
+    	<provider class="org.wso2.developerstudio.eclipse.artifact.brs.export.BRSArtifactProvider"
+          nature="org.wso2.developerstudio.eclipse.artifact.businessruleservice.project.nature"></provider>
+</extension>
    <extension point="org.eclipse.core.resources.natures"
 		id="org.wso2.developerstudio.eclipse.artifact.businessruleservice.project.nature" name="Rule Service Project Nature">
 		<runtime>

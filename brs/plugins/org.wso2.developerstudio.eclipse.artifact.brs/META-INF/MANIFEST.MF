@@ -45,6 +45,7 @@ Import-Package:
  org.wso2.developerstudio.eclipse.capp.core.artifacts.manager;version="[4.0.0,4.1.0)",
  org.wso2.developerstudio.eclipse.capp.core.model;version="[4.0.0,4.1.0)",
  org.wso2.developerstudio.eclipse.capp.maven.utils;version="[4.0.0,4.1.0)",
+ org.wso2.developerstudio.eclipse.distribution.project.export;version="[4.0.0,4.1.0)",
  org.wso2.developerstudio.eclipse.logging.core;version="[4.0.0,4.1.0)",
  org.wso2.developerstudio.eclipse.maven.util;version="[4.0.0,4.1.0)",
  org.wso2.developerstudio.eclipse.platform.core.exception;version="[4.0.0,4.1.0)",

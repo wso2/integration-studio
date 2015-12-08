@@ -10,7 +10,11 @@
 			project="true" icon="icons/new-mediator-16x16.png">
 			<description>Connector Project</description>
 		</wizard>
-	</extension>	
+	</extension>
+	<extension point="org.wso2.developerstudio.eclipse.capp.artifacts.provider">
+    	<provider class="org.wso2.developerstudio.eclipse.artifact.connector.project.export.ConnectorArtifactProvider"
+          nature="org.wso2.developerstudio.eclipse.artifact.connector.project.nature"></provider>
+    </extension>
 	 <extension point="org.eclipse.ui.newWizards">
 		<wizard name="Add/Remove Connectors" 
 			category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.eclipse.extensions/org.wso2.developerstudio.eclipse.extensions.project.types"

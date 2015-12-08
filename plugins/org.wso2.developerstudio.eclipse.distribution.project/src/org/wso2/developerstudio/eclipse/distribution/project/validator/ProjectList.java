@@ -24,7 +24,6 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.Platform;
-import org.eclipse.core.runtime.QualifiedName;
 import org.wso2.developerstudio.eclipse.distribution.project.Activator;
 import org.wso2.developerstudio.eclipse.distribution.project.export.CappArtifactsListProvider;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
@@ -40,43 +39,38 @@ public class ProjectList extends AbstractListDataProvider {
 	public List<ListData> getListData(String modelProperty, ProjectDataModel model) {
 		
 		List<ListData> list = new ArrayList<ListData>();
-		//Earlier Implementation without extension
-//		CappArtifactsListProvider artifactsListProvider =  new CappArtifactsListProvider();
-//		try {
-//			list =  artifactsListProvider.getArtifactsListForCappExport();
-//		} catch (Exception e) {
-//			log.error("Error executing CappArtifactsListProvider extension ", e);
-//		}
 
-		//New implementation with extension implementation
 		IProject[] projects = ResourcesPlugin.getWorkspace().getRoot().getProjects();
 		final String EXTENSIONPOINT_ID = "org.wso2.developerstudio.eclipse.capp.artifacts.provider";
 		IConfigurationElement[] config = Platform.getExtensionRegistry().getConfigurationElementsFor(EXTENSIONPOINT_ID);
-	    try {
+	    
 	      for (IConfigurationElement element : config) {
-	        final Object obj = element.createExecutableExtension("class");
+	    	Object obj = null;
+			try {
+				 obj = element.createExecutableExtension("class");
+			} catch (CoreException ex) {
+				log.error("Error executing CappArtifactsListProvider extension ", ex);
+			}
+			
 	        if (obj instanceof CappArtifactsListProvider) {
 	        	
 	        	CappArtifactsListProvider provider = (CappArtifactsListProvider)obj;
 	        	String nature = element.getAttribute("nature");
 	        	for(IProject project : projects) {
-	        		if (project.isOpen() && project.hasNature(nature)){
-	        			List<ListData> listReceivedFromprovider = null;
-						try {
+					try {
+						if (project.isOpen() && project.hasNature(nature)) {
+							List<ListData> listReceivedFromprovider = null;
 							listReceivedFromprovider = provider.getArtifactsListForCappExport(project);
-						} catch (Exception e) {
-							log.error("Error getting artifacts from extension", e);
+							list.addAll(listReceivedFromprovider);
 						}
-	    	        	list.addAll(listReceivedFromprovider);
-	        		}
+					} catch (Exception e) {
+						log.error("Error getting artifacts from extension", e);
+					}
 	        	}
-	        	
 	        }
+	        
 	      }
-	    } catch (CoreException ex) {
-	        log.error("Error executing CappArtifactsListProvider extension ", ex);
-	    }
-
+	    
 		return list;
 	}
 	

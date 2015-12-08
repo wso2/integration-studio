@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="org.wso2.developerstudio.carbon.server-remote.feature"
-      label="Carbon Server Remote Tools"
+      label="Carbon Remote Server Tool"
       version="4.0.0.qualifier"
       provider-name="%providerName">
 

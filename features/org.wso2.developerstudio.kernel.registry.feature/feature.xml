@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="org.wso2.developerstudio.kernel.registry.feature"
-      label="Registry Resource Project and Browser Tools"
+      label="Registry Tool"
       version="4.0.0.qualifier"
       provider-name="%providerName">
 

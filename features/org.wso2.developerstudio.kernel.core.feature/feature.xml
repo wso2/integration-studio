@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="org.wso2.developerstudio.kernel.core.feature"
-      label="Core Plugins"
+      label="Kernel PDT Core"
       version="4.0.0.qualifier"
       provider-name="%providerName">
 
@@ -39,41 +39,13 @@
          unpack="false"/>
 
    <plugin
-         id="org.wso2.developerstudio.eclipse.platform.ui"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.wso2.developerstudio.eclipse.maven"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.wso2.developerstudio.eclipse.ui"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.wso2.developerstudio.eclipse.utils"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-         
-   <plugin
          id="org.wso2.developerstudio.eclipse.samples"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
 
-<plugin
+   <plugin
          id="org.wso2.developerstudio.eclipse.carbonfeatures"
          download-size="0"
          install-size="0"
@@ -96,6 +68,55 @@
 
   <plugin
          id="org.wso2.developerstudio.eclipse.carbon.server.model"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+ <plugin
+         id="org.wso2.developerstudio.eclipse.registry.core"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.wso2.developerstudio.eclipse.registry.manager.remote"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.wso2.developerstudio.eclipse.registry.libraries"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.wso2.developerstudio.eclipse.registry.base"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.wso2.developerstudio.eclipse.registry.resource.authorization"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.wso2.developerstudio.eclipse.registry.manager.local"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.wso2.developerstudio.eclipse.usermgt.remote"
          download-size="0"
          install-size="0"
          version="0.0.0"

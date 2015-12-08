@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature id="org.wso2.developerstudio.kernel.webui.tools.feature" version="0.0.0">
+      <category name="org.wso2.developerstudio.kernel.common"/>
+   </feature>
+   <feature id="org.wso2.developerstudio.capp.feature" version="0.0.0">
+      <category name="org.wso2.developerstudio.kernel.common"/>
+   </feature>
+   <feature id="org.wso2.developerstudio.carbon.server-40.feature" version="0.0.0">
+      <category name="org.wso2.developerstudio.kernel.common"/>
+   </feature>
+   <feature id="org.wso2.developerstudio.carbon.server-42.feature" version="0.0.0">
+      <category name="org.wso2.developerstudio.kernel.common"/>
+   </feature>
+   <feature id="org.wso2.developerstudio.carbon.server-44.feature" version="0.0.0">
+      <category name="org.wso2.developerstudio.kernel.common"/>
+   </feature>
+   <feature id="org.wso2.developerstudio.carbon.server-remote.feature" version="0.0.0">
+      <category name="org.wso2.developerstudio.kernel.common"/>
+   </feature>
+   <feature id="org.wso2.developerstudio.kernel.dependencies.feature" version="0.0.0">
+      <category name="org.wso2.developerstudio.kernel.dependencies"/>
+   </feature>
+   <feature id="org.wso2.developerstudio.kernel.registry.feature" version="0.0.0">
+      <category name="org.wso2.developerstudio.kernel.common"/>
+   </feature>
+   <feature id="org.wso2.developerstudio.kernel.security.feature" version="0.0.0">
+      <category name="org.wso2.developerstudio.kernel.common"/>
+   </feature>
+   <feature id="org.wso2.developerstudio.library.artifact.feature" version="0.0.0">
+      <category name="org.wso2.developerstudio.kernel.common"/>
+   </feature>
+   <feature id="org.wso2.developerstudio.kernel.wso2plugins.default.samples.feature" version="0.0.0">
+      <category name="org.wso2.developerstudio.kernel.common"/>
+   </feature>
+   <category-def name="org.wso2.developerstudio.kernel.common" label="WSO2 Developer Studio Kernel - Core Features">
+      <description>
+	  WSO2 Developer Studio Kernel comes  with set of core features which can be integrated across WSO2 carbon based products.
+      </description>
+   </category-def>
+   <category-def name="org.wso2.developerstudio.kernel.dependencies" label="WSO2 Developer Studio Kernel -- Dependencies">
+      <description>
+		This feature packs all the third party dependencies required by developerstudio studio. P2 will automtically resolve the required dependencies for the features you are installing. This feature is used for the distribution of third party dependencies via Kernel P2 and no need of installing this feature manually.
+      </description>
+   </category-def>
+</site>

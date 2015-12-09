@@ -43,15 +43,15 @@ public class UpdateCheckerPreferencePage extends FieldEditorPreferencePage imple
 	public void init(IWorkbench workbench) {
 		preferenceStore = Activator.getDefault().getPreferenceStore();
 		setPreferenceStore(preferenceStore);
-		setDescription("WSO2 Developer Studio UpdateChecker Preference");
+		setDescription("WSO2 Developer Studio Check for Updates Preferences");
 	}
 
 	@Override
 	protected void createFieldEditors() {
 		addField(new StringFieldEditor(UPDATE_SITE_URL, "Update site:", getFieldEditorParent()));
-		addField(new StringFieldEditor(RELESE_SITE_URL, "Relase site:", getFieldEditorParent()));
-		addField(new BooleanFieldEditor(SHOW_HIDDEN_FEATURES, "Show Hidden Features (For plugin developers)", getFieldEditorParent()));
-		addField(new BooleanFieldEditor(ENABLE_AUTOMATIC_UPDATES, "Check for updates Automatically", getFieldEditorParent()));
+		addField(new StringFieldEditor(RELESE_SITE_URL, "Release site:", getFieldEditorParent()));
+		addField(new BooleanFieldEditor(SHOW_HIDDEN_FEATURES, "Show hidden features (for plugin developers)", getFieldEditorParent()));
+		addField(new BooleanFieldEditor(ENABLE_AUTOMATIC_UPDATES, "Check for updates automatically", getFieldEditorParent()));
 		String[][] intervals = {{ "Daily", "Daily" }, { "Weekly", "Weekly" }, { "Monthly", "Monthly" }};
 		intervalEditor = new ComboFieldEditor(UPDATE_INTAVAL, "Check for updates ", intervals,
 				getFieldEditorParent());

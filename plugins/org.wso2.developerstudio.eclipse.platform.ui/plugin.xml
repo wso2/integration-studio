@@ -21,7 +21,7 @@
               class="org.wso2.developerstudio.eclipse.platform.ui.preferences.CappPreferencesPage"
               category="org.wso2.developerstudio.eclipse.ui.developerstudio.preferences"/>
               
-        <page id="org.wso2.developerstudio.eclipse.ui.developerstudio.kernel.update preferences." name="Update checker"
+        <page id="org.wso2.developerstudio.eclipse.ui.developerstudio.kernel.update preferences." name="Check for Updates"
               class="org.wso2.developerstudio.eclipse.platform.ui.preferences.UpdateCheckerPreferencePage"
               category="org.wso2.developerstudio.eclipse.ui.developerstudio.preferences"/>
     </extension>

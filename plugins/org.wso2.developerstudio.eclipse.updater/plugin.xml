@@ -6,7 +6,7 @@
       <command
             defaultHandler="org.wso2.developerstudio.eclipse.updater.handler.UpdateFeaturesCommandHandler"
             id="org.wso2.developerstudio.eclipse.updater.CheckUpdatesCmd"
-            name="Check for updates">
+            name="Check for Updates">
       </command>
    </extension>
    <extension
@@ -14,7 +14,7 @@
       <command
             defaultHandler="org.wso2.developerstudio.eclipse.updater.handler.InstallFeaturesCommandHandler"
             id="org.wso2.developerstudio.eclipse.updater.InstallFeaturesCmd"
-            name="Install Features">
+            name="Install WSO2 Tools">
       </command>
    </extension>
    <extension
@@ -23,7 +23,7 @@
             locationURI="menu:org.wso2.developerstudio.eclipse.platform.ui.main">
             <command
                   commandId="org.wso2.developerstudio.eclipse.updater.CheckUpdatesCmd"
-                  label="Check for updates"
+                  label="Check for Updates"
                   style="push"
                   tooltip="Check updates for Developer Studio">
             </command>
@@ -35,7 +35,7 @@
             locationURI="menu:org.wso2.developerstudio.eclipse.platform.ui.main">
             <command
                   commandId="org.wso2.developerstudio.eclipse.updater.InstallFeaturesCmd"
-                  label="Install features"
+                  label="Install WSO2 Tools"
                   style="push"
                   tooltip="Install additional features to Developer Studio">
             </command>

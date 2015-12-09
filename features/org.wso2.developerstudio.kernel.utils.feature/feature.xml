@@ -6,7 +6,7 @@
       provider-name="%providerName">
 
    <description url="http://wso2.com">
-      This feature will install plugins related to Update Checker.
+      Provides utilities for maven and eclipse workbench for WSO2 plugins.
    </description>
 
    <copyright url="%copyrightURL">

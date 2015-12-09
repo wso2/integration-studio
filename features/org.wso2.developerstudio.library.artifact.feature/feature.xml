@@ -6,7 +6,7 @@
       provider-name="%providerName">
 
    <description url="http://wso2.com">
-      This feature will install mandatory kernel plugins.
+      Adds capabilities to create OSGI bundles from third party jars.
    </description>
 
    <copyright url="%copyrightURL">

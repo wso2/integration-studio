@@ -6,7 +6,7 @@
       provider-name="%providerName">
 
    <description url="http://wso2.com">
-      Do not install this feature manually. WSO2 Developer Studio Kernel Dependencies Feature.
+      Do not install this feature manually. Provides third party bundles required for graphical editors.
    </description>
 
    <copyright url="%copyrightURL">

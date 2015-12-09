@@ -6,7 +6,7 @@
       provider-name="%providerName">
 
    <description url="http://wso2.com">
-      This feature will install plugins related to Web Based UI Components.
+      Provides a platform and a framework for creating web based UIs/editors.
    </description>
 
    <copyright url="%copyrightURL">

@@ -6,7 +6,7 @@
       provider-name="%providerName">
 
    <description url="http://wso2.com">
-      This feature will install mandatory kernel plugins.
+      Provides a core framework for WSO2 plugins.
    </description>
 
    <copyright url="%copyrightURL">

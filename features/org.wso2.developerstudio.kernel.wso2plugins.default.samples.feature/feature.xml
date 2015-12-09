@@ -6,7 +6,7 @@
       provider-name="%providerName">
 
    <description url="http://wso2.com">
-      This feature contains the template manager for WSO2 specific plugin templates in developer studio kernel.
+      Adds templates for several WSO2 tooling scenarios.
    </description>
 
    <copyright url="%copyrightURL">

@@ -6,7 +6,7 @@
       provider-name="%providerName">
 
    <description url="http://wso2.com">
-      This feature will install plugins related to Carbon Server Tools.
+      Enables remote connectivity for Carbon based servers for CAPP deployment.
    </description>
 
    <copyright url="%copyrightURL">

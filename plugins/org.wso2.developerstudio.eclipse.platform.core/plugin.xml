@@ -23,6 +23,7 @@
                      schema="schema/org.wso2.developerstudio.eclipse.project.export.exsd"/>
     <extension-point id="org.wso2.developerstudio.eclipse.platform.core.intro.ui.dashboard" name="Dashboard"
                      schema="schema/org.wso2.developerstudio.eclipse.platform.core.intro.ui.dashboard.exsd"/>
+    <extension-point id="org.wso2.developerstudio.create.dashbaord.section" name="Dashboard Section RHS" schema="schema/org.wso2.developerstudio.create.dashbaord.section.exsd"/>
     <extension point="org.eclipse.ui.intro.configExtension">
         <configExtension content="intro/welcome.xml"
                          configId="org.eclipse.ui.intro.universalConfig"></configExtension>

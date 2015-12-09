@@ -84,4 +84,14 @@
      </command>
   </menuContribution>
 </extension>
+   <extension
+          point="org.wso2.developerstudio.create.dashbaord.section">
+           <dashboard.section
+             id="org.eclipse.wst.server.ui"
+             nametag="AddServer"
+             name="Add Server"
+             bundleID="org.wso2.developerstudio.eclipse.carbonserver.base"
+             icon="icons/server.png">
+             </dashboard.section>
+    </extension>
 </plugin>

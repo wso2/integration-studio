@@ -26,9 +26,4 @@ Import-Package: com.google.gson.reflect;version="2.1.0",
  org.wso2.developerstudio.eclipse.platform.core.utils,
  org.wso2.developerstudio.eclipse.platform.ui,
  org.wso2.developerstudio.eclipse.platform.ui.preferences,
- org.wso2.developerstudio.eclipse.platform.ui.wizard,
- org.wso2.developerstudio.eclipse.webui.core.composite,
- org.wso2.developerstudio.eclipse.webui.core.exception,
- org.wso2.developerstudio.eclipse.webui.core.util,
- org.wso2.developerstudio.eclipse.webui.core.window,
- org.wso2.developerstudio.eclipse.webui.core.window.function
+ org.wso2.developerstudio.eclipse.platform.ui.wizard

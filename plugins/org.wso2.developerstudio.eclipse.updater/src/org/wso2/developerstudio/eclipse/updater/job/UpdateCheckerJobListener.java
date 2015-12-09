@@ -31,7 +31,6 @@ import org.wso2.developerstudio.eclipse.updater.core.Constants;
 import org.wso2.developerstudio.eclipse.updater.core.UpdateManager;
 import org.wso2.developerstudio.eclipse.updater.ui.UpdaterDialog;
 import org.wso2.developerstudio.eclipse.updater.ui.UpdaterDialog.ActiveTab;
-import org.wso2.developerstudio.eclipse.updater.ui.web.UpdaterWebUI;
 
 public class UpdateCheckerJobListener extends JobChangeAdapter {
 
@@ -68,33 +67,16 @@ public class UpdateCheckerJobListener extends JobChangeAdapter {
 					preferences.putLong(Constants.PREF_LAST_PROMPT_FOR_UPDATES,
 							new Date().getTime());
 					preferences.flush();
-
-					// read window mode pref from Eclipse pref page
-					IPreferenceStore prefPage = org.wso2.developerstudio.eclipse.platform.ui.Activator
-							.getDefault().getPreferenceStore();
-					String windowMode = prefPage
-							.getString(UpdateCheckerPreferencePage.UPDATE_WINDOW_MODE);
 					
 					if(isAutomaticUpdater && !updateManager.hasPossibleUpdates()){
 						// no updates - no need to open the window
 						return;
 					}
 
-					if (windowMode.equals(HTML)) {
-						try {
-							UpdaterWebUI provioningWindow = new UpdaterWebUI(updateManager, activeTab);
-							provioningWindow.open();
-						} catch (Throwable e) {
-							log.error("Error opening HTML based update window.", e);
-							// failed to load window with WebUI Platform: Try
-							// again with SWT
-							windowMode = SWT;
-						}
-					}
-					if (windowMode.equals(SWT)) {
-						UpdaterDialog dialog = new UpdaterDialog(updateManager, activeTab);
-						dialog.open();
-					}
+					UpdaterDialog dialog = new UpdaterDialog(updateManager,
+							activeTab);
+					dialog.open();
+
 				} catch (Exception e) {
 					log.error("Error while installing features/updates.", e);
 				}

@@ -33,7 +33,6 @@ Import-Package:
  org.eclipse.pde.ui,
  org.eclipse.ui.internal.wizards.datatransfer,
  org.wso2.developerstudio.eclipse.carbonserver.base.util;version="[4.0.0,4.1.0)",
- org.wso2.developerstudio.eclipse.distribution.project.ui.wizard;version="[4.0.0,4.1.0)",
  org.wso2.developerstudio.eclipse.platform.core.exception;version="[4.0.0,4.1.0)",
  org.wso2.developerstudio.eclipse.platform.core.model;version="[4.0.0,4.1.0)",
  org.wso2.developerstudio.eclipse.platform.core.project.model;version="[4.0.0,4.1.0)",

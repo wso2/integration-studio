@@ -24,6 +24,10 @@
                />
       </objectContribution>
    </extension>
+   <extension point="org.wso2.developerstudio.eclipse.capp.artifacts.provider">
+    	<provider class="org.wso2.developerstudio.eclipse.artifact.mediator.project.export.MediatorProvider"
+          nature="org.wso2.developerstudio.eclipse.artifact.mediator.project.nature"></provider>
+   </extension>
 	<extension point="org.eclipse.core.resources.natures"
 		id="org.wso2.developerstudio.eclipse.artifact.mediator.project.nature" name="Mediator Project Nature">
 		<runtime>

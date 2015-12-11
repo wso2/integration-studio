@@ -78,24 +78,25 @@ import org.osgi.framework.FrameworkUtil;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.platform.ui.preferences.UpdateCheckerPreferencePage;
+import org.wso2.developerstudio.eclipse.updater.Messages;
 import org.wso2.developerstudio.eclipse.updater.UpdaterPlugin;
 import org.wso2.developerstudio.eclipse.updater.model.EnhancedFeature;
 
 public class UpdateManager {
 
-	private static final String FEATURE_GROUP_IU_ID_SFX = "feature.group";
-	private static final String PROP_IS_HIDDEN = "isHidden";
-	private static final String PROP_IS_KERNEL_FEATURE = "isKernelFeature";
-	private static final String PROP_BUG_FIXES = "bugFixes";
-	private static final String PROP_WHAT_IS_NEW = "whatIsNew";
-	private static final String UPDATE_PROPERTIES_FILE = "update.properties";
-	private static final String ICON_FILE = "icon.png";
-	private static final String FILE_PROTOCOL = "file://";
-	private static final String FEATURE_JAR_EXTRCT_FOLDER = "extracted";
-	private static final String FEATURE_JAR_IU_ID_SFX = "feature.jar";
-	private static final String WSO2_FEATURE_PREFIX = "org.wso2";
-	private static final String DEVS_UPDATER_TMP = "DevSUpdaterTmp";
-	private static final String JAVA_IO_TMPDIR = "java.io.tmpdir";
+	private static final String FEATURE_GROUP_IU_ID_SFX = "feature.group"; //$NON-NLS-1$
+	private static final String PROP_IS_HIDDEN = "isHidden"; //$NON-NLS-1$
+	private static final String PROP_IS_KERNEL_FEATURE = "isKernelFeature"; //$NON-NLS-1$
+	private static final String PROP_BUG_FIXES = "bugFixes"; //$NON-NLS-1$
+	private static final String PROP_WHAT_IS_NEW = "whatIsNew"; //$NON-NLS-1$
+	private static final String UPDATE_PROPERTIES_FILE = "update.properties"; //$NON-NLS-1$
+	private static final String ICON_FILE = "icon.png"; //$NON-NLS-1$
+	private static final String FILE_PROTOCOL = "file://"; //$NON-NLS-1$
+	private static final String FEATURE_JAR_EXTRCT_FOLDER = "extracted"; //$NON-NLS-1$
+	private static final String FEATURE_JAR_IU_ID_SFX = "feature.jar"; //$NON-NLS-1$
+	private static final String WSO2_FEATURE_PREFIX = "org.wso2"; //$NON-NLS-1$
+	private static final String DEVS_UPDATER_TMP = "DevSUpdaterTmp"; //$NON-NLS-1$
+	private static final String JAVA_IO_TMPDIR = "java.io.tmpdir"; //$NON-NLS-1$
 
 	@Inject
 	protected IProvisioningAgentProvider agentProvider;
@@ -136,7 +137,7 @@ public class UpdateManager {
 	}
 
 	public static final int NO_UPDATES_FOUND = UpdateOperation.STATUS_NOTHING_TO_UPDATE;
-	private static final String NOT_RESOLVED_ERROR = "Invalid State: UpdateManager#checkForUpdates should be executed first.";
+	private static final String NOT_RESOLVED_ERROR = Messages.UpdateManager_13;
 
 	public UpdateManager() throws RuntimeException {
 		initProvisioningAgent();
@@ -162,7 +163,7 @@ public class UpdateManager {
 					.getService(IMetadataRepositoryManager.class.getName());
 
 		} catch (Exception e) {
-			throw new RuntimeException("Error while intializing p2 agent.", e);
+			throw new RuntimeException(Messages.UpdateManager_14, e);
 		}
 	}
 
@@ -173,7 +174,7 @@ public class UpdateManager {
 			monitor = new NullProgressMonitor();
 		}
 		SubMonitor progress = SubMonitor.convert(monitor,
-				"Checking for DevStudio features.", 1);
+				Messages.UpdateManager_15, 1);
 
 		String tmpRoot = System.getProperty(JAVA_IO_TMPDIR) + File.separator
 				+ DEVS_UPDATER_TMP;
@@ -185,7 +186,7 @@ public class UpdateManager {
 
 		for (IInstallableUnit iu : wso2features) {
 			SubMonitor downloadProgress = SubMonitor.convert(progress,
-					"Downloading feature jars.", wso2features.size() * 2);
+					Messages.UpdateManager_16, wso2features.size() * 2);
 			Collection<IArtifactKey> artifacts = iu.getArtifacts();
 			// ideally there should be only one artifact in feature.jar iu
 			for (IArtifactKey iArtifactKey : artifacts) {
@@ -215,7 +216,7 @@ public class UpdateManager {
 						downloadProgress.worked(1);
 					} catch (IOException e) {
 						throw new IOException(
-								"Error while downloading feature jar.", e);
+								Messages.UpdateManager_17, e);
 					}
 				}
 				EnhancedFeature feature = parseAdditionalFeatureMetadata(iu,
@@ -289,7 +290,7 @@ public class UpdateManager {
 			monitor = new NullProgressMonitor();
 		}
 		SubMonitor progress = SubMonitor.convert(monitor,
-				"Checking for DevStudio updates.", 6);
+				Messages.UpdateManager_18, 6);
 
         // get all available IUs in update repo
 		IMetadataRepository metadataRepository = metadataRepoManager
@@ -334,9 +335,9 @@ public class UpdateManager {
 		}
 		if (status.getCode() == UpdateOperation.STATUS_NOTHING_TO_UPDATE) {
 			updatebleDevSFeatures = new HashMap<String, EnhancedFeature>();
-			log.info("No updates are found.");
+			log.info(Messages.UpdateManager_19);
 		} else if (status.getSeverity() == IStatus.ERROR) {
-			log.info("Error while resolving updates.");
+			log.info(Messages.UpdateManager_20);
 		} else {
 			setPossibleUpdates(updateOperation.getPossibleUpdates());
 		}
@@ -363,7 +364,7 @@ public class UpdateManager {
 			monitor = new NullProgressMonitor();
 		}
 		SubMonitor progress = SubMonitor.convert(monitor,
-				"Checking for DevStudio updates.", 5);
+				Messages.UpdateManager_21, 5);
 
 		// get all available IUs in update repo
 		IMetadataRepository metadataRepository = metadataRepoManager
@@ -429,7 +430,7 @@ public class UpdateManager {
 
 	public IStatus update(IProgressMonitor monitor)
 			throws OperationCanceledException {
-		monitor.beginTask("Updating Developer Studio Features", 2);
+		monitor.beginTask(Messages.UpdateManager_22, 2);
 		ProvisioningJob job = updateOperation
 				.getProvisioningJob(new SubProgressMonitor(monitor, 1));
 		IStatus status = job.runModal(new SubProgressMonitor(monitor, 1));
@@ -443,7 +444,7 @@ public class UpdateManager {
 	public Collection<IInstallableUnit> getInstalledWSO2Features(
 			IProgressMonitor monitor) throws OperationCanceledException {
 		SubMonitor progress = SubMonitor.convert(monitor,
-				"Searching installed WSO2 features.", 2);
+				Messages.UpdateManager_23, 2);
 
 		OperationFactory operationFactory = new OperationFactory();
 		IQueryResult<IInstallableUnit> queryResult = operationFactory
@@ -461,7 +462,7 @@ public class UpdateManager {
 		}
 		Collection<IInstallableUnit> wso2IUs = new ArrayList<IInstallableUnit>();
 		Iterator<IInstallableUnit> iterator = queryResult.iterator();
-		SubMonitor progress = SubMonitor.convert(monitor, "Filtering IUs.",
+		SubMonitor progress = SubMonitor.convert(monitor, Messages.UpdateManager_24,
 				queryResult.toSet().size());
 		;
 		while (iterator.hasNext()) {
@@ -470,7 +471,7 @@ public class UpdateManager {
 			}
 			IInstallableUnit iu = iterator.next();
 			String versionedID = iu.getId();
-			progress.subTask("Analyzing feature: " + versionedID);
+			progress.subTask(Messages.UpdateManager_25 + versionedID);
 			if (versionedID != null && versionedID.startsWith(idPrefix)
 					&& versionedID.endsWith(idSuffix)) {
 					wso2IUs.add(iu);
@@ -612,7 +613,7 @@ public class UpdateManager {
 	 */
 	public void installSelectedUpdates(IProgressMonitor monitor) {
 		SubMonitor progress = SubMonitor.convert(monitor,
-				"Installing WSO2 features.", 2);
+				Messages.UpdateManager_26, 2);
 		URI[] repos = new URI[] { getDevStudioUpdateSite() };
 		session = new ProvisioningSession(p2Agent);
 		updateOperation = new UpdateOperation(session);
@@ -625,7 +626,7 @@ public class UpdateManager {
 			throw new OperationCanceledException();
 		} else if (status.getSeverity() == IStatus.ERROR) {
 			String message = status.getChildren()[0].getMessage();
-			log.error("Error while resolving installation." + message);
+			log.error(Messages.UpdateManager_27 + message);
 		} else {
 			final ProvisioningJob provisioningJob = updateOperation
 					.getProvisioningJob(progress.newChild(1));
@@ -640,9 +641,9 @@ public class UpdateManager {
 										.openQuestion(
 												Display.getDefault()
 														.getActiveShell(),
-												"Updates installed, restart?",
-												"Updates for WSO2 Developer Studio"
-														+ " have been installed successfully, do you want to restart?");
+												Messages.UpdateManager_28,
+												Messages.UpdateManager_29
+														+ Messages.UpdateManager_30);
 								if (restart) {
 									PlatformUI.getWorkbench().restart();
 								}
@@ -663,7 +664,7 @@ public class UpdateManager {
 					}
 				});
 			} else {
-				log.error("Error while performing update installation.");
+				log.error(Messages.UpdateManager_31);
 			}
 		}
 	}
@@ -691,7 +692,7 @@ public class UpdateManager {
 	 */
 	public void installSelectedFeatures(IProgressMonitor monitor) {
 		SubMonitor progress = SubMonitor.convert(monitor,
-				"Installing WSO2 features.", 2);
+				Messages.UpdateManager_32, 2);
 
 		URI[] repos = new URI[] { getDevStudioReleaseSite() };
 		session = new ProvisioningSession(p2Agent);
@@ -705,7 +706,7 @@ public class UpdateManager {
 			throw new OperationCanceledException();
 		} else if (status.getSeverity() == IStatus.ERROR) {
 			String message = status.getChildren()[0].getMessage();
-			log.error("Error while resolving installation." + message);
+			log.error(Messages.UpdateManager_33 + message);
 		} else {
 			ProvisioningJob provisioningJob = installOperation
 					.getProvisioningJob(progress.newChild(1));
@@ -720,9 +721,9 @@ public class UpdateManager {
 										.openQuestion(
 												Display.getDefault()
 														.getActiveShell(),
-												"New Features installed, restart?",
-												"New Features for WSO2 Developer Studio"
-														+ " have been installed successfully, do you want to restart?");
+												Messages.UpdateManager_34,
+												Messages.UpdateManager_35
+														+ Messages.UpdateManager_36);
 								if (restart) {
 									PlatformUI.getWorkbench().restart();
 								}
@@ -743,7 +744,7 @@ public class UpdateManager {
 					}
 				});
 			} else {
-				log.error("Error while performing feature installation.");
+				log.error(Messages.UpdateManager_37);
 			}
 		}
 	}

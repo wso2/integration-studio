@@ -20,12 +20,11 @@ import java.util.Date;
 import org.eclipse.core.runtime.jobs.IJobChangeEvent;
 import org.eclipse.core.runtime.jobs.JobChangeAdapter;
 import org.eclipse.core.runtime.preferences.ConfigurationScope;
-import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.swt.widgets.Display;
 import org.osgi.service.prefs.Preferences;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
-import org.wso2.developerstudio.eclipse.platform.ui.preferences.UpdateCheckerPreferencePage;
+import org.wso2.developerstudio.eclipse.updater.Messages;
 import org.wso2.developerstudio.eclipse.updater.UpdaterPlugin;
 import org.wso2.developerstudio.eclipse.updater.core.Constants;
 import org.wso2.developerstudio.eclipse.updater.core.UpdateManager;
@@ -33,9 +32,6 @@ import org.wso2.developerstudio.eclipse.updater.ui.UpdaterDialog;
 import org.wso2.developerstudio.eclipse.updater.ui.UpdaterDialog.ActiveTab;
 
 public class UpdateCheckerJobListener extends JobChangeAdapter {
-
-	private static final String SWT = "SWT";
-	private static final String HTML = "HTML";
 
 	protected static IDeveloperStudioLog log = Logger
 			.getLog(UpdaterPlugin.PLUGIN_ID);
@@ -78,7 +74,7 @@ public class UpdateCheckerJobListener extends JobChangeAdapter {
 					dialog.open();
 
 				} catch (Exception e) {
-					log.error("Error while installing features/updates.", e);
+					log.error(Messages.UpdateCheckerJobListener_0, e);
 				}
 			}
 		});

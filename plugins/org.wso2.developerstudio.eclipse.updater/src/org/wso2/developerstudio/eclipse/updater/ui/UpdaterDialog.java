@@ -54,13 +54,13 @@ import org.wso2.developerstudio.eclipse.updater.model.EnhancedFeature;
 
 public class UpdaterDialog extends Dialog {
 	
-	private static final String CANCEL_BTN_TXT = "cancel";
-	private static final String VERSION_LABEL = "Latest Version : ";
-	private static final String INSTALL_BTN_TXT = "install";
-	private static final String FILE_PROTOCOL = "file:";
-	private static final String TITLE = "Updates Manager for Developer Studio";
-	private static final String UPDATES_TAB_TITLE = "Updates";
-	private static final String ALL_FEATURES_TAB_TITLE = "All Features";
+	private static final String CANCEL_BTN_TXT = Messages.UpdaterDialog_0;
+	private static final String VERSION_LABEL = Messages.UpdaterDialog_1;
+	private static final String INSTALL_BTN_TXT = Messages.UpdaterDialog_2;
+	private static final String FILE_PROTOCOL = "file:"; //$NON-NLS-1$
+	private static final String TITLE = Messages.UpdaterDialog_4;
+	private static final String UPDATES_TAB_TITLE = Messages.UpdaterDialog_5;
+	private static final String ALL_FEATURES_TAB_TITLE = Messages.UpdaterDialog_6;
 	
 	private UpdateManager updateManager;
 	private ActiveTab activeTab;
@@ -211,10 +211,10 @@ public class UpdaterDialog extends Dialog {
 			Label featureImageLabel = new Label(featureGroup, SWT.NONE);
 			try {
 				Image image = new Image(Display.getDefault(), feature
-						.getIconURL().replace(FILE_PROTOCOL, ""));
+						.getIconURL().replace(FILE_PROTOCOL, "")); //$NON-NLS-1$
 				featureImageLabel.setImage(image);
 			} catch (Exception ex) {
-				log.warn("Retrieving image failed for feature:" + feature.getId(), ex);
+				log.warn(Messages.UpdaterDialog_8 + feature.getId(), ex);
 			}
 			final Group featureInfoGroup = createFeatureInfoRepresentationGroup(featureGroup);
 			StyledText featureName = createFeatureNameText(feature,

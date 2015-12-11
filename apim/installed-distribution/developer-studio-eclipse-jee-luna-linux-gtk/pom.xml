@@ -115,7 +115,7 @@
 						<arg value="-application" />
 						<arg value="org.eclipse.equinox.p2.director" />
 						<arg value="-repository" />
-						<arg value="file:${project.basedir}/target/p2-repo,http://builder1.us1.wso2.org/~developerstudio/developer-studio-kernel/4.0.0/kernel/releases/" />
+						<arg value="file:${project.basedir}/target/p2-repo,http://builder1.us1.wso2.org/~developerstudio/developer-studio-kernel/4.0.0/kernel/releases/,http://builder1.us1.wso2.org/~developerstudio/developer-studio-kernel/4.0.0/esb-tools/releases/p2/" />
 						<arg value="-destination" />
 						<arg value="${project.basedir}/target/eclipse" />
 						<arg value="-installIU" />						
@@ -148,6 +148,8 @@
 						<arg value="org.wso2.developerstudio.library.artifact.feature.feature.group"/>
 						<arg value="-installIU" />
 						<arg value="org.wso2.developerstudio.kernel.wso2plugins.default.samples.feature.feature.group"/>
+						<arg value="-installIU" />
+						<arg value="org.wso2.developerstudio.eclipse.esb.editor.feature.feature.group"/>
 						<arg value="-installIU" />
 						<arg value="org.wso2.developerstudio.eclipse.apim.feature.feature.group"/>
 

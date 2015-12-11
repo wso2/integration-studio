@@ -149,6 +149,8 @@
 						<arg value="-installIU" />
 						<arg value="org.wso2.developerstudio.kernel.wso2plugins.default.samples.feature.feature.group"/>
 						<arg value="-installIU" />
+						<arg value="org.wso2.developerstudio.eclipse.esb.editor.feature.feature.group"/>
+						<arg value="-installIU" />
 						<arg value="org.wso2.developerstudio.eclipse.apim.feature.feature.group"/>
 
 					</java>

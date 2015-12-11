@@ -25,7 +25,7 @@
         <module>plugins</module>
         <module>features</module>
         <module>repository</module>
-	<module>installed-distribution</module>
+	<!--module>installed-distribution</module-->
     </modules>
     <scm>
         <connection>scm:git:https://github.com/wso2/developer-studio.git</connection>
@@ -109,6 +109,16 @@
             </releases>
             <id>DevS-Kernel-p2-Repository</id>
             <url>http://builder1.us1.wso2.org/~developerstudio/developer-studio-kernel/4.0.0/kernel/releases/</url>
+            <layout>p2</layout>
+        </repository>
+	<repository>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>daily</updatePolicy>
+                <checksumPolicy>ignore</checksumPolicy>
+            </releases>
+            <id>ESB-p2-Repository</id>
+            <url>http://builder1.us1.wso2.org/~developerstudio/developer-studio-kernel/4.0.0/esb-tools/releases/p2/</url>
             <layout>p2</layout>
         </repository>
         <repository>

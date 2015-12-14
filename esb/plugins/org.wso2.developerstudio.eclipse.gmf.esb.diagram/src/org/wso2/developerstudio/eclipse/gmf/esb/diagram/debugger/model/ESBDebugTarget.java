@@ -53,6 +53,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.suspendpoint.ES
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.DebugPointEventAction;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerUtil;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerResumeType;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.Messages;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.OpenEditorUtil;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
@@ -110,7 +111,9 @@ public class ESBDebugTarget extends ESBDebugElement implements IDebugTarget,
 				try {
 					showDiagram((SuspendedEvent) event);
 				} catch (ESBDebuggerException | CoreException e) {
-					log.error(e.getMessage(), e);
+					log.error(
+							"Error while trying to show diagram : " //$NON-NLS-1$
+									+ e.getMessage(), e);
 				}
 				fireModelEvent(new FetchVariablesRequest());
 
@@ -126,7 +129,7 @@ public class ESBDebugTarget extends ESBDebugElement implements IDebugTarget,
 					getThreads()[0].getTopStackFrame().setVariables(
 							((PropertyRecievedEvent) event).getVariables());
 				} catch (DebugException e) {
-					log.error("Error while seting variable values", e);
+					log.error("Error while seting variable values", e); //$NON-NLS-1$
 				}
 
 			} else if (event instanceof TerminatedEvent) {
@@ -142,7 +145,7 @@ public class ESBDebugTarget extends ESBDebugElement implements IDebugTarget,
 				try {
 					deletePreviousSuspendPointsFromBreakpointManager();
 				} catch (CoreException e) {
-					log.error("Error while deleting previous suspend point : "
+					log.error("Error while deleting previous suspend point : " //$NON-NLS-1$
 							+ e.getMessage(), e);
 				}
 			}
@@ -211,14 +214,13 @@ public class ESBDebugTarget extends ESBDebugElement implements IDebugTarget,
 					return (ESBDebugPoint) breakpoint;
 				}
 			} catch (CoreException | DebugPointMarkerNotFoundException e) {
-				log.warn(
-						"Error while finding matching breakpoint "
-								+ e.getMessage(), e);
+				log.warn("Error while finding matching breakpoint " //$NON-NLS-1$
+						+ e.getMessage(), e);
 			}
 		}
 
 		throw new ESBDebuggerException(
-				"Matching Breakpoint not found in Breakpoint Manager with attributes");
+				"Matching Breakpoint not found in Breakpoint Manager with attributes"); //$NON-NLS-1$
 	}
 
 	@Override
@@ -244,7 +246,7 @@ public class ESBDebugTarget extends ESBDebugElement implements IDebugTarget,
 
 	@Override
 	public String getName() {
-		return "ESB DebugTarget";// TODO externalize
+		return Messages.ESBDebugTarget_ESBDebugTargetNameTag;
 	}
 
 	@Override
@@ -282,12 +284,13 @@ public class ESBDebugTarget extends ESBDebugElement implements IDebugTarget,
 			}
 		} catch (DebugPointMarkerNotFoundException e) {
 			log.error(
-					"Error while creating DebugPointRequest in debug point adding event : "
+					"Error while creating DebugPointRequest in debug point adding event : " //$NON-NLS-1$
 							+ e.getMessage(), e);
-			ESBDebuggerUtil.removeESBDebugPointFromBreakpointManager(breakpoint);
+			ESBDebuggerUtil
+					.removeESBDebugPointFromBreakpointManager(breakpoint);
 		} catch (CoreException e) {
 			log.error(
-					"Error while creating DebugPointRequest in debug point adding event  : "
+					"Error while creating DebugPointRequest in debug point adding event  : " //$NON-NLS-1$
 							+ e.getMessage(), e);
 		}
 
@@ -311,12 +314,13 @@ public class ESBDebugTarget extends ESBDebugElement implements IDebugTarget,
 			}
 		} catch (DebugPointMarkerNotFoundException e) {
 			log.error(
-					"Error while creating DebugPointRequest in debug point removing event : "
+					"Error while creating DebugPointRequest in debug point removing event : " //$NON-NLS-1$
 							+ e.getMessage(), e);
-			ESBDebuggerUtil.removeESBDebugPointFromBreakpointManager(breakpoint);
+			ESBDebuggerUtil
+					.removeESBDebugPointFromBreakpointManager(breakpoint);
 		} catch (CoreException e) {
 			log.error(
-					"Error while creating DebugPointRequest in debug point removing event : "
+					"Error while creating DebugPointRequest in debug point removing event : " //$NON-NLS-1$
 							+ e.getMessage(), e);
 		}
 	}
@@ -335,7 +339,7 @@ public class ESBDebugTarget extends ESBDebugElement implements IDebugTarget,
 	}
 
 	@Override
-	public IMemoryBlock getMemoryBlock(long arg0, long arg1) {
+	public IMemoryBlock getMemoryBlock(long startAddress, long length) {
 		// no implementation
 		return null;
 	}

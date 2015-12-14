@@ -16,8 +16,21 @@
 
 package org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.debugpoint.builder.impl;
 
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.ENTITLEMENT_ADVICE_CONTAINER_POSITION_VALUE;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.ENTITLEMENT_OBLIGATIONS_CONTAINER_POSITION_VALUE;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.ENTITLEMENT_ON_ACCEPT_CONTAINER_POSITION_VALUE;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.ENTITLEMENT_ON_REJECT_CONTAINER_POSITION_VALUE;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.FILTER_FAIL_CONTAINER_POSITION_VALUE;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.FILTER_PASS_CONTAINER_POSITION_VALUE;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.MEDIATOR_DELETE_ACTION;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.MEDIATOR_INSERT_ACTION;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.SWITCH_DEFAULT_CONTAINER_POSITION_VALUE;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.THROTTLE_ON_ACCEPT_CONTAINER_POSITION_VALUE;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.THROTTLE_ON_REJECT_CONTAINER_POSITION_VALUE;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
@@ -27,7 +40,61 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.notation.impl.NodeImpl;
-import org.wso2.developerstudio.eclipse.gmf.esb.*;
+import org.wso2.developerstudio.eclipse.gmf.esb.APIResource;
+import org.wso2.developerstudio.eclipse.gmf.esb.AggregateMediator;
+import org.wso2.developerstudio.eclipse.gmf.esb.BAMMediator;
+import org.wso2.developerstudio.eclipse.gmf.esb.BeanMediator;
+import org.wso2.developerstudio.eclipse.gmf.esb.BuilderMediator;
+import org.wso2.developerstudio.eclipse.gmf.esb.CacheMediator;
+import org.wso2.developerstudio.eclipse.gmf.esb.CallMediator;
+import org.wso2.developerstudio.eclipse.gmf.esb.CallTemplateMediator;
+import org.wso2.developerstudio.eclipse.gmf.esb.CalloutMediator;
+import org.wso2.developerstudio.eclipse.gmf.esb.ClassMediator;
+import org.wso2.developerstudio.eclipse.gmf.esb.CloneMediator;
+import org.wso2.developerstudio.eclipse.gmf.esb.CommandMediator;
+import org.wso2.developerstudio.eclipse.gmf.esb.ConditionalRouterMediator;
+import org.wso2.developerstudio.eclipse.gmf.esb.DBLookupMediator;
+import org.wso2.developerstudio.eclipse.gmf.esb.DBReportMediator;
+import org.wso2.developerstudio.eclipse.gmf.esb.DropMediator;
+import org.wso2.developerstudio.eclipse.gmf.esb.EJBMediator;
+import org.wso2.developerstudio.eclipse.gmf.esb.EnqueueMediator;
+import org.wso2.developerstudio.eclipse.gmf.esb.EnrichMediator;
+import org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediator;
+import org.wso2.developerstudio.eclipse.gmf.esb.EsbElement;
+import org.wso2.developerstudio.eclipse.gmf.esb.EsbLink;
+import org.wso2.developerstudio.eclipse.gmf.esb.EventMediator;
+import org.wso2.developerstudio.eclipse.gmf.esb.FastXSLTMediator;
+import org.wso2.developerstudio.eclipse.gmf.esb.FaultMediator;
+import org.wso2.developerstudio.eclipse.gmf.esb.FilterMediator;
+import org.wso2.developerstudio.eclipse.gmf.esb.ForEachMediator;
+import org.wso2.developerstudio.eclipse.gmf.esb.HeaderMediator;
+import org.wso2.developerstudio.eclipse.gmf.esb.InputConnector;
+import org.wso2.developerstudio.eclipse.gmf.esb.IterateMediator;
+import org.wso2.developerstudio.eclipse.gmf.esb.LogMediator;
+import org.wso2.developerstudio.eclipse.gmf.esb.LoopBackMediator;
+import org.wso2.developerstudio.eclipse.gmf.esb.Mediator;
+import org.wso2.developerstudio.eclipse.gmf.esb.OAuthMediator;
+import org.wso2.developerstudio.eclipse.gmf.esb.OutputConnector;
+import org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryMediator;
+import org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator;
+import org.wso2.developerstudio.eclipse.gmf.esb.PublishEventMediator;
+import org.wso2.developerstudio.eclipse.gmf.esb.RMSequenceMediator;
+import org.wso2.developerstudio.eclipse.gmf.esb.RespondMediator;
+import org.wso2.developerstudio.eclipse.gmf.esb.RuleMediator;
+import org.wso2.developerstudio.eclipse.gmf.esb.ScriptMediator;
+import org.wso2.developerstudio.eclipse.gmf.esb.SendMediator;
+import org.wso2.developerstudio.eclipse.gmf.esb.Sequence;
+import org.wso2.developerstudio.eclipse.gmf.esb.SmooksMediator;
+import org.wso2.developerstudio.eclipse.gmf.esb.SpringMediator;
+import org.wso2.developerstudio.eclipse.gmf.esb.StoreMediator;
+import org.wso2.developerstudio.eclipse.gmf.esb.SwitchCaseContainer;
+import org.wso2.developerstudio.eclipse.gmf.esb.SwitchMediator;
+import org.wso2.developerstudio.eclipse.gmf.esb.ThrottleMediator;
+import org.wso2.developerstudio.eclipse.gmf.esb.TransactionMediator;
+import org.wso2.developerstudio.eclipse.gmf.esb.URLRewriteMediator;
+import org.wso2.developerstudio.eclipse.gmf.esb.ValidateMediator;
+import org.wso2.developerstudio.eclipse.gmf.esb.XQueryMediator;
+import org.wso2.developerstudio.eclipse.gmf.esb.XSLTMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.Activator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.debugpoint.builder.IESBDebugPointBuilder;
@@ -40,15 +107,36 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.model.ESBDebugM
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerUtil;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.EsbServerEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.APIResourceImpl;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.AggregateMediatorImpl;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.CacheMediatorImpl;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.CloneMediatorImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.CloudConnectorOperationImpl;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.EntitlementAdviceContainerImpl;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.EntitlementMediatorImpl;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.EntitlementObligationsContainerImpl;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.EntitlementOnAcceptContainerImpl;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.EntitlementOnRejectContainerImpl;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.FilterFailContainerImpl;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.FilterMediatorImpl;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.FilterPassContainerImpl;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.ForEachMediatorImpl;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.IterateMediatorImpl;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.MediatorFlowImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.MediatorImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.ProxyServiceImpl;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.RuleMediatorImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.SequencesImpl;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.SwitchCaseContainerImpl;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.SwitchCaseParentContainerImpl;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.SwitchDefaultParentContainerImpl;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.SwitchMediatorImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.TemplateImpl;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.ThrottleMediatorImpl;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.ThrottleOnAcceptContainerImpl;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.ThrottleOnRejectContainerImpl;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.ValidateMediatorImpl;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
-
-import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.*;
 
 /**
  * All ESBBreakpoint builders should extend AbstractESBBreakpointBuilder class.
@@ -61,6 +149,9 @@ public abstract class AbstractESBDebugPointBuilder implements
 
 	protected static final String EMPTY_STRING = "";
 	protected static final int INDEX_OF_FIRST_ELEMENT = 0;
+	private EObject innerContainerInstance;
+	private EObject innerParentContainer;
+	private Integer switchCasePosition;
 
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
@@ -508,29 +599,291 @@ public abstract class AbstractESBDebugPointBuilder implements
 	protected List<Integer> getMediatorPosition(OutputConnector outConnector,
 			EObject selection) throws MediatorNotFoundException {
 		List<Integer> positionList = new ArrayList<>();
+		Stack<EObject> parentStack = getParentMediatorStack((MediatorImpl) selection);
+		parentStack.pop();// removing the Super Parent
+							// Container(Proxy,Sequence,...)
+		parentStack = removeTopObjectsUntilFirstMediator(parentStack);
+		EObject mediatorImpl = parentStack.pop();
 		OutputConnector tempConnector = outConnector;
-		int count = 0;
-		while (isValidConnectorToProceed(tempConnector)) {
-			EsbLink outgoingLink = tempConnector.getOutgoingLink();
-			if (outgoingLink != null && outgoingLink.getTarget() != null) {
-				EObject mediator = outgoingLink.getTarget().eContainer();
-				if (isMediatorChainEnded(mediator)) {
-					throw new MediatorNotFoundException(
-							"Selected Mediator is not found in a valid position");
-				} else if (mediator.equals(selection)) {
-					positionList.add(count);
-					return positionList;
+		do {
+			int count = 0;
+			while (isValidConnectorToProceed(tempConnector)) {
+				EsbLink outgoingLink = tempConnector.getOutgoingLink();
+				if (outgoingLink != null && outgoingLink.getTarget() != null) {
+					EObject mediator = outgoingLink.getTarget().eContainer();
+					if (isMediatorChainEnded(mediator)) {
+						throw new MediatorNotFoundException(
+								"Selected Mediator is not found in a valid position");
+					} else if (mediator.equals(mediatorImpl)) {
+						positionList.add(count);
+						if (parentStack.isEmpty()) {
+							return positionList;
+						}
+						if (isComplexListMediator(mediatorImpl)) {
+							positionList.add(getPositionOfInnerContainer(
+									parentStack, mediatorImpl));
+						}
+						if (isComplexMediatorType(mediatorImpl)) {
+							tempConnector = getNextMediatorOutputConnector(mediatorImpl);
+						} else {
+							tempConnector = getOutputConnector((Mediator) mediatorImpl);
+						}
+						mediatorImpl = getNextMediatorFromParentStack(parentStack);
+						break;
+					} else {
+						count++;
+						tempConnector = getOutputConnector((Mediator) mediator);
+					}
 				} else {
-					count++;
-					tempConnector = getOutputConnector((Mediator) mediator);
+					throw new MediatorNotFoundException(
+							"Mediation flow diagram error");
 				}
-			} else {
-				throw new MediatorNotFoundException(
-						"Mediation flow diagram error");
+			}
+
+		} while (mediatorImpl instanceof MediatorImpl);
+
+		throw new MediatorNotFoundException(
+				"Selected Mediator is not found in a valid position. Unknown Complex Mediator Type found : "
+						+ mediatorImpl.getClass());
+	}
+
+	private Stack<EObject> removeTopObjectsUntilFirstMediator(
+			Stack<EObject> parentStack) {
+		while (!(parentStack.peek() instanceof MediatorImpl)) {
+			parentStack.pop();
+			if (parentStack.empty()) {
+				throw new IllegalArgumentException(
+						"Valid MediatorImpl instance not found in the given parent instances stack ");
 			}
 		}
+		return parentStack;
+	}
+
+	private Integer getPositionOfInnerContainer(Stack<EObject> parentStack,
+			EObject mediatorImpl) {
+		if (mediatorImpl instanceof FilterMediatorImpl) {
+			parentStack.pop();
+			innerContainerInstance = parentStack.pop();
+			if (innerContainerInstance instanceof FilterPassContainerImpl) {
+				return FILTER_PASS_CONTAINER_POSITION_VALUE;
+			} else if (innerContainerInstance instanceof FilterFailContainerImpl) {
+				return FILTER_FAIL_CONTAINER_POSITION_VALUE;
+			} else {
+				throw new IllegalArgumentException(
+						"Unknown Filter Mediator Container type found : "
+								+ innerContainerInstance.getClass());
+			}
+		} else if (mediatorImpl instanceof SwitchMediatorImpl) {
+			parentStack.pop();
+			innerParentContainer = parentStack.pop();
+
+			if (innerParentContainer instanceof SwitchCaseParentContainerImpl) {
+				SwitchCaseContainerImpl switchCase = (SwitchCaseContainerImpl) parentStack
+						.pop();
+				EList<SwitchCaseContainer> switchCaseContainerList = ((SwitchCaseParentContainerImpl) innerParentContainer)
+						.getSwitchCaseContainer();
+				switchCasePosition = 1;
+				for (SwitchCaseContainer switchCaseContainerImpl : switchCaseContainerList) {
+					if (switchCaseContainerImpl.equals(switchCase)) {
+						innerContainerInstance = switchCase;
+						return switchCasePosition;
+					} else {
+						switchCasePosition++;
+					}
+				}
+			} else if (innerParentContainer instanceof SwitchDefaultParentContainerImpl) {
+				return SWITCH_DEFAULT_CONTAINER_POSITION_VALUE;
+			} else {
+				throw new IllegalArgumentException(
+						"Required SwitchCaseContainerImpl instance not found in switchCaseContainerList ");
+			}
+
+		} else if (mediatorImpl instanceof ThrottleMediatorImpl) {
+			parentStack.pop();
+			innerContainerInstance = parentStack.pop();
+			if (innerContainerInstance instanceof ThrottleOnAcceptContainerImpl) {
+				return THROTTLE_ON_ACCEPT_CONTAINER_POSITION_VALUE;
+			} else if (innerContainerInstance instanceof ThrottleOnRejectContainerImpl) {
+				return THROTTLE_ON_REJECT_CONTAINER_POSITION_VALUE;
+			} else {
+				throw new IllegalArgumentException(
+						"Unknown Throttle Mediator Container type found : "
+								+ innerContainerInstance.getClass());
+			}
+		} else if (mediatorImpl instanceof EntitlementMediatorImpl) {
+			parentStack.pop();
+			innerContainerInstance = parentStack.pop();
+			if (innerContainerInstance instanceof EntitlementOnRejectContainerImpl) {
+				return ENTITLEMENT_ON_REJECT_CONTAINER_POSITION_VALUE;
+			} else if (innerContainerInstance instanceof EntitlementOnAcceptContainerImpl) {
+				return ENTITLEMENT_ON_ACCEPT_CONTAINER_POSITION_VALUE;
+			} else if (innerContainerInstance instanceof EntitlementAdviceContainerImpl) {
+				return ENTITLEMENT_ADVICE_CONTAINER_POSITION_VALUE;
+			} else if (innerContainerInstance instanceof EntitlementObligationsContainerImpl) {
+				return ENTITLEMENT_OBLIGATIONS_CONTAINER_POSITION_VALUE;
+			} else {
+				throw new IllegalArgumentException(
+						"Unknown Throttle Mediator Container type found : "
+								+ innerContainerInstance.getClass());
+			}
+		}
+		throw new IllegalArgumentException(
+				"Unknown multiple inner sequence mediator found : "
+						+ mediatorImpl.getClass());
+
+	}
+
+	private EObject getNextMediatorFromParentStack(Stack<EObject> parentStack) {
+		EObject nextImpl = parentStack.pop();
+		while (!(nextImpl instanceof MediatorImpl)) {
+			if (parentStack.empty()) {
+				throw new IllegalArgumentException(
+						"Valid MediatorImpl instance not found in the given parent instances stack ");
+			}
+			nextImpl = parentStack.pop();
+		}
+		return nextImpl;
+	}
+
+	private OutputConnector getNextMediatorOutputConnector(EObject mediatorImpl) {
+		if (mediatorImpl instanceof FilterMediatorImpl) {
+			if (innerContainerInstance instanceof FilterPassContainerImpl) {
+				return ((FilterMediatorImpl) mediatorImpl)
+						.getPassOutputConnector();
+			} else if (innerContainerInstance instanceof FilterFailContainerImpl) {
+				return ((FilterMediatorImpl) mediatorImpl)
+						.getFailOutputConnector();
+			} else {
+				throw new IllegalArgumentException(
+						"Unknown Filter Mediator Container type found : "
+								+ innerContainerInstance.getClass());
+			}
+		} else if (mediatorImpl instanceof SwitchMediatorImpl) {
+			if (innerParentContainer instanceof SwitchCaseParentContainerImpl) {
+				return ((SwitchMediatorImpl) mediatorImpl).getCaseBranches()
+						.get(switchCasePosition - 1);
+
+			} else if (innerParentContainer instanceof SwitchDefaultParentContainerImpl) {
+				return ((SwitchMediatorImpl) mediatorImpl).getDefaultBranch();
+			} else {
+				throw new IllegalArgumentException(
+						"Unknown Switch Mediator Container type found : "
+								+ innerContainerInstance.getClass());
+			}
+		} else if (mediatorImpl instanceof ThrottleMediatorImpl) {
+			if (innerContainerInstance instanceof ThrottleOnAcceptContainerImpl) {
+				return ((ThrottleMediatorImpl) mediatorImpl)
+						.getOnAcceptOutputConnector();
+			} else if (innerContainerInstance instanceof ThrottleOnRejectContainerImpl) {
+				return ((ThrottleMediatorImpl) mediatorImpl)
+						.getOnRejectOutputConnector();
+			} else {
+				throw new IllegalArgumentException(
+						"Unknown Filter Mediator Container type found : "
+								+ innerContainerInstance.getClass());
+			}
+		} else if (mediatorImpl instanceof EntitlementMediatorImpl) {
+			if (innerContainerInstance instanceof EntitlementOnRejectContainerImpl) {
+				return ((EntitlementMediatorImpl) mediatorImpl)
+						.getOnRejectOutputConnector();
+			} else if (innerContainerInstance instanceof EntitlementOnAcceptContainerImpl) {
+				return ((EntitlementMediatorImpl) mediatorImpl)
+						.getOnAcceptOutputConnector();
+			} else if (innerContainerInstance instanceof EntitlementAdviceContainerImpl) {
+				return ((EntitlementMediatorImpl) mediatorImpl)
+						.getAdviceOutputConnector();
+			} else if (innerContainerInstance instanceof EntitlementObligationsContainerImpl) {
+				return ((EntitlementMediatorImpl) mediatorImpl)
+						.getObligationsOutputConnector();
+			} else {
+				throw new IllegalArgumentException(
+						"Unknown Entitlement Mediator Container type found : "
+								+ innerContainerInstance.getClass());
+			}
+		} else if (mediatorImpl instanceof CloneMediatorImpl) {
+			return ((CloneMediatorImpl) mediatorImpl)
+					.getTargetsOutputConnector().get(0);
+		} else if (mediatorImpl instanceof ValidateMediatorImpl) {
+			return ((ValidateMediatorImpl) mediatorImpl)
+					.getOnFailOutputConnector();
+		} else if (mediatorImpl instanceof CacheMediatorImpl) {
+			return ((CacheMediatorImpl) mediatorImpl).getOnHitOutputConnector();
+		} else if (mediatorImpl instanceof ForEachMediatorImpl) {
+			return ((ForEachMediatorImpl) mediatorImpl)
+					.getTargetOutputConnector();
+		} else if (mediatorImpl instanceof AggregateMediatorImpl) {
+			return ((AggregateMediatorImpl) mediatorImpl)
+					.getOnCompleteOutputConnector();
+		} else if (mediatorImpl instanceof RuleMediatorImpl) {
+			return ((RuleMediatorImpl) mediatorImpl)
+					.getChildMediatorsOutputConnector();
+		} else if (mediatorImpl instanceof IterateMediatorImpl) {
+			return ((IterateMediatorImpl) mediatorImpl)
+					.getTargetOutputConnector();
+		} else {
+			throw new IllegalArgumentException(
+					"Unknown Complex Mediator type found : "
+							+ mediatorImpl.getClass());
+		}
+	}
+
+	public static boolean isComplexMediatorType(EObject mediatorImpl) {
+		if (mediatorImpl instanceof FilterMediatorImpl
+				|| mediatorImpl instanceof SwitchMediatorImpl
+				|| mediatorImpl instanceof ThrottleMediatorImpl
+				|| mediatorImpl instanceof EntitlementMediatorImpl
+				|| mediatorImpl instanceof CloneMediatorImpl
+				|| mediatorImpl instanceof ValidateMediatorImpl
+				|| mediatorImpl instanceof CacheMediatorImpl
+				|| mediatorImpl instanceof AggregateMediatorImpl
+				|| mediatorImpl instanceof ForEachMediatorImpl
+				|| mediatorImpl instanceof RuleMediatorImpl
+				|| mediatorImpl instanceof IterateMediatorImpl) {
+			return true;
+		}
+		return false;
+	}
+
+	public static boolean isComplexListMediator(EObject mediatorImpl) {
+		if (mediatorImpl instanceof FilterMediatorImpl
+				|| mediatorImpl instanceof SwitchMediatorImpl
+				|| mediatorImpl instanceof ThrottleMediatorImpl
+				|| mediatorImpl instanceof EntitlementMediatorImpl) {
+			return true;
+		}
+		return false;
+	}
+
+	private Stack<EObject> getParentMediatorStack(MediatorImpl selection)
+			throws MediatorNotFoundException {
+		EObject parentMediator = selection;
+		Stack<EObject> parentStack = new Stack<EObject>();
+		parentStack.push(parentMediator);
+		while (!isMediatorChainEnded(parentMediator)) {
+			parentStack
+					.addAll(getParentMediatorImpl((MediatorImpl) parentMediator));
+			parentMediator = parentStack.peek();
+		}
+		return parentStack;
+	}
+
+	private Stack<EObject> getParentMediatorImpl(MediatorImpl childMediator)
+			throws MediatorNotFoundException {
+		MediatorFlowImpl parentMediationFlowImpl = (MediatorFlowImpl) (childMediator)
+				.eContainer();
+		Stack<EObject> mediatorStack = new Stack<EObject>();
+		EObject nextImpl = parentMediationFlowImpl;
+		do {
+			nextImpl = nextImpl.eContainer();
+			mediatorStack.push(nextImpl);
+			if (nextImpl instanceof MediatorImpl
+					|| isMediatorChainEnded(nextImpl)) {
+				return mediatorStack;
+			}
+		} while (!(nextImpl instanceof MediatorFlowImpl));
 		throw new MediatorNotFoundException(
-				"Selected Mediator is not found in a valid position");
+				"Valid parent mediator can not be found for : "
+						+ childMediator.toString());
 	}
 
 	/**

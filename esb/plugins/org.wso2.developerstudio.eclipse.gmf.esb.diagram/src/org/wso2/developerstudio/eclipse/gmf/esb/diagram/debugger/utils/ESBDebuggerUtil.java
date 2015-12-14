@@ -101,6 +101,7 @@ public class ESBDebuggerUtil {
 	private static AbstractMediator recentlyAddedMediator;
 	private static boolean pageChangeOperationActivated;
 	private static boolean pageCreateOperationActivated;
+	private static boolean pageSaveOperationActivated;
 
 	private static AbstractMediator deletedMediator;
 	private static boolean deleteOperationPerformed;
@@ -730,6 +731,14 @@ public class ESBDebuggerUtil {
 
 	public static boolean isPageCreateOperationActivated() {
 		return pageCreateOperationActivated;
+	}
+
+	public static void setPageSaveOperationActivated(boolean status) {
+		pageSaveOperationActivated = status;
+	}
+
+	public static boolean ispageSaveOperationActivated() {
+		return pageSaveOperationActivated;
 	}
 
 	public static void setPageChangeOperationActivated(boolean status) {

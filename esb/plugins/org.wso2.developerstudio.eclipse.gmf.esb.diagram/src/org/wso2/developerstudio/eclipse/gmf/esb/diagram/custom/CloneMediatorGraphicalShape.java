@@ -17,6 +17,7 @@ package org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom;
 
 import org.eclipse.draw2d.GridData;
 import org.eclipse.draw2d.GridLayout;
+import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.ImageFigure;
 import org.eclipse.draw2d.Layer;
 import org.eclipse.draw2d.LayeredPane;
@@ -39,6 +40,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbDiagramEditorPlu
 public class CloneMediatorGraphicalShape extends RoundedRectangle {
 
 	RectangleFigure propertyValueRectangle1;
+	ImageFigure figureImage;
 	RoundedRectangle leftRectangle;
 	RoundedRectangle containerInsideLeftRectangle;
 	private LayeredPane pane;
@@ -57,7 +59,7 @@ public class CloneMediatorGraphicalShape extends RoundedRectangle {
 		this.setBorder(new LineBorder(new Color(null, 224, 224, 224), 2, SWT.BORDER_DASH));
 		createContents();
 	}
-	
+
 	public void setToolTipMessage(String message) {
 		toolTipMessage = message;
 	}
@@ -79,11 +81,15 @@ public class CloneMediatorGraphicalShape extends RoundedRectangle {
 			breakpointImageRectangle.setCornerDimensions(new Dimension(2, 2));
 			breakpointImageRectangle.setOutline(false);
 			breakpointImageRectangle.setPreferredSize(new Dimension(10,
-					figureLayer.getSize().height));
+					containerInsideLeftRectangle.getSize().height));
 			breakpointImageRectangle.setAlpha(0);
 			breakpointImageRectangle.add(iconImageFigure);
-			iconImageFigure.translate(0, figureLayer.getSize().height / 2
-					- DiagramCustomConstants.DEBUGPOINT_IMAGE_OFFSET_VALUE);
+			iconImageFigure
+					.translate(
+							0,
+							containerInsideLeftRectangle.getSize().height
+									/ 2
+									- DiagramCustomConstants.DEBUGPOINT_IMAGE_OFFSET_VALUE);
 			breakpointLayer.add(breakpointImageRectangle,
 					constraintBreakpointImageRectangle);
 			containerInsideLeftRectangle.remove(pane);
@@ -113,11 +119,15 @@ public class CloneMediatorGraphicalShape extends RoundedRectangle {
 			skipPointImageRectangle.setCornerDimensions(new Dimension(2, 2));
 			skipPointImageRectangle.setOutline(false);
 			skipPointImageRectangle.setPreferredSize(new Dimension(10,
-					figureLayer.getSize().height));
+					containerInsideLeftRectangle.getSize().height));
 			skipPointImageRectangle.setAlpha(0);
 			skipPointImageRectangle.add(iconImageFigure);
-			iconImageFigure.translate(0, figureLayer.getSize().height / 2
-					- DiagramCustomConstants.DEBUGPOINT_IMAGE_OFFSET_VALUE);
+			iconImageFigure
+					.translate(
+							0,
+							containerInsideLeftRectangle.getSize().height
+									/ 2
+									- DiagramCustomConstants.DEBUGPOINT_IMAGE_OFFSET_VALUE);
 			skippointLayer.add(skipPointImageRectangle,
 					constraintSkipPointImageRectangle);
 			skippointLayer
@@ -179,9 +189,9 @@ public class CloneMediatorGraphicalShape extends RoundedRectangle {
 				image.getBounds().height, 0, 0, 30, 30);
 		gc.dispose();
 
-		ImageFigure img = new ImageFigure(image);
-		img.setSize(new Dimension(30, 30));
-
+		figureImage = new ImageFigure(image);
+		figureImage.setSize(new Dimension(30, 30));
+		IFigure test = figureImage.getParent();
 		GridData constraintImageRectangle = new GridData();
 		constraintImageRectangle.verticalAlignment = GridData.END;
 		constraintImageRectangle.horizontalAlignment = GridData.CENTER;
@@ -190,7 +200,7 @@ public class CloneMediatorGraphicalShape extends RoundedRectangle {
 		constraintImageRectangle.verticalSpan = 2;
 		constraintImageRectangle.grabExcessHorizontalSpace = true;
 		constraintImageRectangle.grabExcessVerticalSpace = true;
-		figureLayer.add(img, constraintImageRectangle);
+		figureLayer.add(figureImage, constraintImageRectangle);
 
 
 

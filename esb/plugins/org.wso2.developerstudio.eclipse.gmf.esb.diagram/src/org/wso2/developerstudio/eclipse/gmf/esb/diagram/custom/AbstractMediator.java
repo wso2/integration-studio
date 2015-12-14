@@ -243,8 +243,10 @@ public abstract class AbstractMediator extends AbstractBorderedShapeEditPart imp
 		}
 		if (i == 0) {
 			if (ESBDebuggerUtil.getRecentlyAddedMediator() == null
-					&& (!ESBDebuggerUtil.isPageChangeOperationActivated() && !ESBDebuggerUtil
-							.isPageCreateOperationActivated())) {
+					&& (!ESBDebuggerUtil.ispageSaveOperationActivated()
+							&& !ESBDebuggerUtil
+									.isPageChangeOperationActivated() && !ESBDebuggerUtil
+								.isPageCreateOperationActivated())) {
 				ESBDebuggerUtil.setRecentlyAddedMediator(this);
 			} else {
 
@@ -253,7 +255,9 @@ public abstract class AbstractMediator extends AbstractBorderedShapeEditPart imp
 						ESBDebuggerUtil
 								.modifyDebugPointsointsAfterMediatorAddition(ESBDebuggerUtil
 										.getRecentlyAddedMediator());
-						if (!ESBDebuggerUtil.isPageChangeOperationActivated()
+						if (!ESBDebuggerUtil.ispageSaveOperationActivated()
+								&& !ESBDebuggerUtil
+										.isPageChangeOperationActivated()
 								&& !ESBDebuggerUtil
 										.isPageCreateOperationActivated()) {
 							ESBDebuggerUtil.setRecentlyAddedMediator(this);

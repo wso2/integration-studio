@@ -25,6 +25,17 @@ public class ESBDebuggerConstants {
 	// Hash Code related constants
 	public static final int INITIAL_HASH_CODE_RESULT_VALUE = 17;
 	public static final int HASHCODE_MULTIPLIER_VALUE = 37;
+	
+	//Complex List Mediator Sequence Positions
+	public static final Integer FILTER_PASS_CONTAINER_POSITION_VALUE = 1;
+	public static final Integer FILTER_FAIL_CONTAINER_POSITION_VALUE = 0;
+	public static final Integer THROTTLE_ON_ACCEPT_CONTAINER_POSITION_VALUE = 1;
+	public static final Integer THROTTLE_ON_REJECT_CONTAINER_POSITION_VALUE = 0;
+	public static final Integer ENTITLEMENT_ON_REJECT_CONTAINER_POSITION_VALUE = 0;
+	public static final Integer ENTITLEMENT_ON_ACCEPT_CONTAINER_POSITION_VALUE = 1;
+	public static final Integer ENTITLEMENT_ADVICE_CONTAINER_POSITION_VALUE = 2;
+	public static final Integer ENTITLEMENT_OBLIGATIONS_CONTAINER_POSITION_VALUE = 3;
+	public static final Integer SWITCH_DEFAULT_CONTAINER_POSITION_VALUE = 0;
 
 	// Model ID's
 	public static final String SUSPEND_POINT_MODEL_ID = "org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.suspend.point";

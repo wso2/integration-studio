@@ -83,11 +83,15 @@ public class SwitchMediatorGraphicalShape extends RoundedRectangle {
 			breakpointImageRectangle.setCornerDimensions(new Dimension(2, 2));
 			breakpointImageRectangle.setOutline(false);
 			breakpointImageRectangle.setPreferredSize(new Dimension(10,
-					figureLayer.getSize().height));
+					containerInsideLeftRectangle.getSize().height));
 			breakpointImageRectangle.setAlpha(0);
 			breakpointImageRectangle.add(iconImageFigure);
-			iconImageFigure.translate(0, figureLayer.getSize().height / 2
-					- DiagramCustomConstants.DEBUGPOINT_IMAGE_OFFSET_VALUE);
+			iconImageFigure
+					.translate(
+							0,
+							containerInsideLeftRectangle.getSize().height
+									/ 2
+									- DiagramCustomConstants.DEBUGPOINT_IMAGE_OFFSET_VALUE);
 			breakpointLayer.add(breakpointImageRectangle,
 					constraintBreakpointImageRectangle);
 			containerInsideLeftRectangle.remove(pane);
@@ -117,11 +121,15 @@ public class SwitchMediatorGraphicalShape extends RoundedRectangle {
 			skipPointImageRectangle.setCornerDimensions(new Dimension(2, 2));
 			skipPointImageRectangle.setOutline(false);
 			skipPointImageRectangle.setPreferredSize(new Dimension(10,
-					figureLayer.getSize().height));
+					containerInsideLeftRectangle.getSize().height));
 			skipPointImageRectangle.setAlpha(0);
 			skipPointImageRectangle.add(iconImageFigure);
-			iconImageFigure.translate(0, figureLayer.getSize().height / 2
-					- DiagramCustomConstants.DEBUGPOINT_IMAGE_OFFSET_VALUE);
+			iconImageFigure
+					.translate(
+							0,
+							containerInsideLeftRectangle.getSize().height
+									/ 2
+									- DiagramCustomConstants.DEBUGPOINT_IMAGE_OFFSET_VALUE);
 			skippointLayer.add(skipPointImageRectangle,
 					constraintSkipPointImageRectangle);
 			skippointLayer

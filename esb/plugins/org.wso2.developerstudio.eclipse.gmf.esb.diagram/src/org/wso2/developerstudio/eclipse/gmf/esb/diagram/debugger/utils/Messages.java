@@ -31,6 +31,7 @@ public class Messages extends NLS {
 	public static String ESBDebugLaunchDelegate_HostIPAddressCouldNotFoundErrorDialogMessage;
 	public static String ESBDebugLaunchDelegate_LauncherArgumentInvalidErrorDialogMessage;
 	public static String ESBDebugProcess_ESBDebugProcessNameTag;
+	public static String ESBDebugTarget_ESBDebugTargetNameTag;
 	public static String ESBDebugThread_ESBDebugThreadTag;
 	public static String ESBStackFrame_Axis2ClientScopePropertyTag;
 	public static String ESBStackFrame_Axis2ScopePropertyTag;

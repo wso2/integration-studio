@@ -25,11 +25,35 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbElement;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbLink;
 import org.wso2.developerstudio.eclipse.gmf.esb.Mediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.OutputConnector;
+import org.wso2.developerstudio.eclipse.gmf.esb.SwitchCaseBranchOutputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.debugpoint.builder.impl.AbstractESBDebugPointBuilder;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.exception.MediatorNotFoundException;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.mediatorlocator.IMediatorLocator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerUtil;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.AggregateMediatorImpl;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.CacheMediatorImpl;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.CloneMediatorImpl;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.EntitlementAdviceContainerImpl;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.EntitlementMediatorImpl;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.EntitlementObligationsContainerImpl;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.EntitlementOnAcceptContainerImpl;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.EntitlementOnRejectContainerImpl;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.FilterFailContainerImpl;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.FilterMediatorImpl;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.FilterPassContainerImpl;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.ForEachMediatorImpl;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.IterateMediatorImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.ProxyServiceImpl;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.RuleMediatorImpl;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.SwitchCaseParentContainerImpl;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.SwitchDefaultParentContainerImpl;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.SwitchMediatorImpl;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.ThrottleMediatorImpl;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.ThrottleOnAcceptContainerImpl;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.ThrottleOnRejectContainerImpl;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.ValidateMediatorImpl;
+
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.*;
 
 /**
  * This class should be implemented by all Mediator locator class
@@ -54,7 +78,24 @@ public abstract class AbstractMediatorLocator implements IMediatorLocator {
 			if (outgoingLink != null && outgoingLink.getTarget() != null) {
 				EObject mediator = outgoingLink.getTarget().eContainer();
 				if (count == mediatorPosition.get(INDEX_OF_FIRST_ELEMENT)) {
-					return ESBDebuggerUtil.getActiveEditorEditpart(mediator);
+					mediatorPosition.remove(INDEX_OF_FIRST_ELEMENT);
+					if (AbstractESBDebugPointBuilder
+							.isComplexMediatorType(mediator)
+							&& mediatorPosition.size() > 0) {
+						count = 0;
+						if (AbstractESBDebugPointBuilder
+								.isComplexListMediator(mediator)) {
+							tempConnector = getInnerListOutputConnector(
+									mediator,
+									mediatorPosition
+											.remove(INDEX_OF_FIRST_ELEMENT));
+						} else {
+							tempConnector = getInnerOutputConnector((Mediator) mediator);
+						}
+					} else {
+						return ESBDebuggerUtil
+								.getActiveEditorEditpart(mediator);
+					}
 				} else {
 					count++;
 					if (mediator instanceof Mediator) {
@@ -69,6 +110,97 @@ public abstract class AbstractMediatorLocator implements IMediatorLocator {
 		}
 		throw new IllegalArgumentException(
 				"tempConnector argument can not be null");
+	}
+
+	private OutputConnector getInnerOutputConnector(Mediator mediatorImpl) {
+		if (mediatorImpl instanceof CloneMediatorImpl) {
+			return ((CloneMediatorImpl) mediatorImpl)
+					.getTargetsOutputConnector().get(0);
+		} else if (mediatorImpl instanceof ValidateMediatorImpl) {
+			return ((ValidateMediatorImpl) mediatorImpl)
+					.getOnFailOutputConnector();
+		} else if (mediatorImpl instanceof CacheMediatorImpl) {
+			return ((CacheMediatorImpl) mediatorImpl).getOnHitOutputConnector();
+		} else if (mediatorImpl instanceof ForEachMediatorImpl) {
+			return ((ForEachMediatorImpl) mediatorImpl)
+					.getTargetOutputConnector();
+		} else if (mediatorImpl instanceof AggregateMediatorImpl) {
+			return ((AggregateMediatorImpl) mediatorImpl)
+					.getOnCompleteOutputConnector();
+		} else if (mediatorImpl instanceof RuleMediatorImpl) {
+			return ((RuleMediatorImpl) mediatorImpl)
+					.getChildMediatorsOutputConnector();
+		} else if (mediatorImpl instanceof IterateMediatorImpl) {
+			return ((IterateMediatorImpl) mediatorImpl)
+					.getTargetOutputConnector();
+		} else {
+			throw new IllegalArgumentException(
+					"Unknown Complex Mediator type found : "
+							+ mediatorImpl.getClass());
+		}
+	}
+
+	private OutputConnector getInnerListOutputConnector(EObject mediatorImpl,
+			Integer position) {
+		if (mediatorImpl instanceof FilterMediatorImpl) {
+			if (position == FILTER_PASS_CONTAINER_POSITION_VALUE) {
+				return ((FilterMediatorImpl) mediatorImpl)
+						.getPassOutputConnector();
+			} else if (position == FILTER_FAIL_CONTAINER_POSITION_VALUE) {
+				return ((FilterMediatorImpl) mediatorImpl)
+						.getFailOutputConnector();
+			} else {
+				throw new IllegalArgumentException(
+						"Unknown Filter Mediator List position found : "
+								+ position);
+			}
+		} else if (mediatorImpl instanceof SwitchMediatorImpl) {
+			if (position == SWITCH_DEFAULT_CONTAINER_POSITION_VALUE) {
+				return ((SwitchMediatorImpl) mediatorImpl).getDefaultBranch();
+			} else {
+				EList<SwitchCaseBranchOutputConnector> caseBranches = ((SwitchMediatorImpl) mediatorImpl)
+						.getCaseBranches();
+				if (caseBranches.size() <= position) {
+					return caseBranches.get(position - 1);
+				} else {
+					throw new IllegalArgumentException(
+							"Unknown Filter Mediator List position found : "
+									+ position);
+				}
+			}
+		} else if (mediatorImpl instanceof ThrottleMediatorImpl) {
+			if (position == THROTTLE_ON_ACCEPT_CONTAINER_POSITION_VALUE) {
+				return ((ThrottleMediatorImpl) mediatorImpl)
+						.getOnAcceptOutputConnector();
+			} else if (position == THROTTLE_ON_REJECT_CONTAINER_POSITION_VALUE) {
+				return ((ThrottleMediatorImpl) mediatorImpl)
+						.getOnRejectOutputConnector();
+			} else {
+				throw new IllegalArgumentException(
+						"Unknown Filter Mediator List position found : "
+								+ position);
+			}
+		} else if (mediatorImpl instanceof EntitlementMediatorImpl) {
+			if (position == ENTITLEMENT_ON_REJECT_CONTAINER_POSITION_VALUE) {
+				return ((EntitlementMediatorImpl) mediatorImpl)
+						.getOnRejectOutputConnector();
+			} else if (position == ENTITLEMENT_ON_ACCEPT_CONTAINER_POSITION_VALUE) {
+				return ((EntitlementMediatorImpl) mediatorImpl)
+						.getOnAcceptOutputConnector();
+			} else if (position == ENTITLEMENT_ADVICE_CONTAINER_POSITION_VALUE) {
+				return ((EntitlementMediatorImpl) mediatorImpl)
+						.getAdviceOutputConnector();
+			} else if (position == ENTITLEMENT_OBLIGATIONS_CONTAINER_POSITION_VALUE) {
+				return ((EntitlementMediatorImpl) mediatorImpl)
+						.getObligationsOutputConnector();
+			} else {
+				throw new IllegalArgumentException(
+						"Unknown Filter Mediator List position found : "
+								+ position);
+			}
+		}
+		throw new IllegalArgumentException("Unknown Complex Mediator found : "
+				+ mediatorImpl.getClass());
 	}
 
 	protected EditPart getMediatorInFaultSeq(EList<EsbElement> children,

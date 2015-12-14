@@ -832,6 +832,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
      */
     public void doSave(IProgressMonitor monitor) {
     	ESBDebuggerUtil.updateModifiedDebugPoints();
+    	ESBDebuggerUtil.setPageSaveOperationActivated(true);
     	//Fixing TOOLS-2958
     	setContextClassLoader();
     	boolean isSaveAllow=true;
@@ -896,7 +897,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
         endPointDuplicator.updateAssociatedDiagrams(this);*/
         updateAssociatedDiagrams();
         getEditor(0).doSave(monitor);
-        
+        ESBDebuggerUtil.setPageSaveOperationActivated(false);
 		EditorUtils.setLockmode(graphicalEditor, false);
     }
     

@@ -37,7 +37,7 @@ import org.eclipse.swt.widgets.Display;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.utils.DiagramCustomConstants;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbDiagramEditorPlugin;
 
-public class EntitlementMediatorGraphicalShape extends RoundedRectangle{
+public class EntitlementMediatorGraphicalShape extends RoundedRectangle {
 
 	RectangleFigure propertyValueRectangle1;
 	RoundedRectangle leftRectangle;
@@ -56,14 +56,15 @@ public class EntitlementMediatorGraphicalShape extends RoundedRectangle{
 
 		this.setCornerDimensions(new Dimension(1, 1));
 		this.setOutline(false);
-		this.setBorder(new LineBorder(new Color(null, 224, 224, 224), 2, SWT.BORDER_DASH));
+		this.setBorder(new LineBorder(new Color(null, 224, 224, 224), 2,
+				SWT.BORDER_DASH));
 		createContents();
 	}
 
 	public void setToolTipMessage(String message) {
 		toolTipMessage = message;
 	}
-	
+
 	public void addBreakpointMark() {
 		if (breakpointLayer == null) {
 			breakpointLayer = new Layer();
@@ -81,11 +82,15 @@ public class EntitlementMediatorGraphicalShape extends RoundedRectangle{
 			breakpointImageRectangle.setCornerDimensions(new Dimension(2, 2));
 			breakpointImageRectangle.setOutline(false);
 			breakpointImageRectangle.setPreferredSize(new Dimension(10,
-					figureLayer.getSize().height));
+					containerInsideLeftRectangle.getSize().height));
 			breakpointImageRectangle.setAlpha(0);
 			breakpointImageRectangle.add(iconImageFigure);
-			iconImageFigure.translate(0, figureLayer.getSize().height / 2
-					- DiagramCustomConstants.DEBUGPOINT_IMAGE_OFFSET_VALUE);
+			iconImageFigure
+					.translate(
+							0,
+							containerInsideLeftRectangle.getSize().height
+									/ 2
+									- DiagramCustomConstants.DEBUGPOINT_IMAGE_OFFSET_VALUE);
 			breakpointLayer.add(breakpointImageRectangle,
 					constraintBreakpointImageRectangle);
 			containerInsideLeftRectangle.remove(pane);
@@ -115,11 +120,15 @@ public class EntitlementMediatorGraphicalShape extends RoundedRectangle{
 			skipPointImageRectangle.setCornerDimensions(new Dimension(2, 2));
 			skipPointImageRectangle.setOutline(false);
 			skipPointImageRectangle.setPreferredSize(new Dimension(10,
-					figureLayer.getSize().height));
+					containerInsideLeftRectangle.getSize().height));
 			skipPointImageRectangle.setAlpha(0);
 			skipPointImageRectangle.add(iconImageFigure);
-			iconImageFigure.translate(0, figureLayer.getSize().height / 2
-					- DiagramCustomConstants.DEBUGPOINT_IMAGE_OFFSET_VALUE);
+			iconImageFigure
+					.translate(
+							0,
+							containerInsideLeftRectangle.getSize().height
+									/ 2
+									- DiagramCustomConstants.DEBUGPOINT_IMAGE_OFFSET_VALUE);
 			skippointLayer.add(skipPointImageRectangle,
 					constraintSkipPointImageRectangle);
 			skippointLayer
@@ -143,14 +152,14 @@ public class EntitlementMediatorGraphicalShape extends RoundedRectangle{
 			skippointLayer = null;
 		}
 	}
-	
-	private void createContents() {		
-		
+
+	private void createContents() {
+
 		pane = new LayeredPane();
 		pane.setLayoutManager(new StackLayout());
 		figureLayer = new Layer();
 		figureLayer.setLayoutManager(new GridLayout());
-		
+
 		// Create left side rectangle.
 		leftRectangle = new RoundedRectangle();
 		leftRectangle.setCornerDimensions(new Dimension(1, 1));
@@ -167,21 +176,22 @@ public class EntitlementMediatorGraphicalShape extends RoundedRectangle{
 		GridLayout layoutGraphicalNodeContainer = new GridLayout();
 		layoutGraphicalNodeContainer.numColumns = 1;
 		leftRectangle.setLayoutManager(layoutGraphicalNodeContainer);
-		
+
 		// Create inner rectangle inside the left side rectangle.
 		containerInsideLeftRectangle = createInnerRectangle(leftRectangle);
 
-		ImageDescriptor imgDesc = EsbDiagramEditorPlugin.getBundledImageDescriptor(getIconPath());
-			
-		Image image =imgDesc.createImage();
+		ImageDescriptor imgDesc = EsbDiagramEditorPlugin
+				.getBundledImageDescriptor(getIconPath());
+
+		Image image = imgDesc.createImage();
 		Image scaled = new Image(Display.getDefault(), 23, 25);
-        GC gc = new GC(scaled);
-        gc.setAntialias(SWT.ON);
-        gc.setInterpolation(SWT.HIGH);
-        gc.drawImage(image, 0, 0, image.getBounds().width, image.getBounds().height, 0, 0, 23,
-                     25);
-        gc.dispose();		
-		
+		GC gc = new GC(scaled);
+		gc.setAntialias(SWT.ON);
+		gc.setInterpolation(SWT.HIGH);
+		gc.drawImage(image, 0, 0, image.getBounds().width,
+				image.getBounds().height, 0, 0, 23, 25);
+		gc.dispose();
+
 		ImageFigure img = new ImageFigure(image);
 		img.setSize(new Dimension(23, 25));
 
@@ -206,7 +216,8 @@ public class EntitlementMediatorGraphicalShape extends RoundedRectangle{
 		// Rectangle to contain the type name label.
 		RectangleFigure esbNodeTypeNameRectangle1 = new RectangleFigure();
 		esbNodeTypeNameRectangle1.setOutline(false);
-		esbNodeTypeNameRectangle1.setBackgroundColor(new Color(null, 233, 245, 215));
+		esbNodeTypeNameRectangle1.setBackgroundColor(new Color(null, 233, 245,
+				215));
 		esbNodeTypeNameRectangle1.setPreferredSize(new Dimension(45, 20));
 
 		GridData constraintEsbNodeTypeNameRectangle = new GridData();
@@ -248,8 +259,8 @@ public class EntitlementMediatorGraphicalShape extends RoundedRectangle{
 		innerRect.setCornerDimensions(new Dimension(1, 1));
 		innerRect.setOutline(false);
 		innerRect.setBackgroundColor(this.getBackgroundColor());
-		LineBorder innerRectBorder = new LineBorder(new Color(null, 90, 90, 90), 1,
-				SWT.BORDER_SOLID);
+		LineBorder innerRectBorder = new LineBorder(
+				new Color(null, 90, 90, 90), 1, SWT.BORDER_SOLID);
 		innerRect.setBorder(innerRectBorder);
 		innerRect.setPreferredSize(new Dimension(95, 25));
 		innerRect.setMinimumSize(new Dimension(80, 100));
@@ -271,7 +282,7 @@ public class EntitlementMediatorGraphicalShape extends RoundedRectangle{
 
 		return innerRect;
 	}
-	
+
 	public RectangleFigure getPropertyValueRectangle1() {
 		return propertyValueRectangle1;
 	}
@@ -288,12 +299,10 @@ public class EntitlementMediatorGraphicalShape extends RoundedRectangle{
 		return this.getBackgroundColor();
 	}
 
-
 	/**
 	 * @generated
 	 */
-	static final Color LABEL2_FORE = new Color(null, 50, 50,
-			50);
+	static final Color LABEL2_FORE = new Color(null, 50, 50, 50);
 
 	/**
 	 * @generated

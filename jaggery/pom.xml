@@ -108,8 +108,8 @@
                 <updatePolicy>daily</updatePolicy>
                 <checksumPolicy>ignore</checksumPolicy>
             </releases>
-            <id>DevS-Deps-p2-alpha-Repository</id>
-            <url>http://builder1.us1.wso2.org/~developerstudio/developer-studio-kernel/4.0.0/alpha/p2/</url>
+            <id>DevS-Kernel- P2 -Repository</id>
+            <url>http://builder1.us1.wso2.org/~developerstudio/developer-studio-kernel/4.0.0/kernel/releases/</url>
             <layout>p2</layout>
         </repository>
         <repository>

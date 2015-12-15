@@ -26,8 +26,8 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ES
 import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.MEDIATOR_POSITION_LABEL;
 import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.SEQUENCE_LABEL;
 import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.SEQUENCE_TYPE_LABEL;
-import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.URI_MAPPING_LABEL;
-import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.URL_TEMPLATE_LABEL;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.URL_MAPPING_LABEL;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.URI_TEMPLATE_LABEL;
 
 import java.util.List;
 import java.util.Map.Entry;
@@ -170,10 +170,10 @@ public class ESBAPIDebugPointMessage extends AbstractESBDebugPointMessage {
 				uriMapping = convertJsonElementValueToString(apiEntry
 						.getValue());
 				urlTemplate = uriMapping;
-			} else if (URI_MAPPING_LABEL.equals(apiEntry.getKey())) {
+			} else if (URL_MAPPING_LABEL.equals(apiEntry.getKey())) {
 				uriMapping = convertJsonElementValueToString(apiEntry
 						.getValue());
-			} else if (URL_TEMPLATE_LABEL.equals(apiEntry.getKey())) {
+			} else if (URI_TEMPLATE_LABEL.equals(apiEntry.getKey())) {
 				urlTemplate = convertJsonElementValueToString(apiEntry
 						.getValue());
 			}

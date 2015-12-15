@@ -52,7 +52,9 @@ public class ESBDebuggerConstants {
 	public static final String MEDIATOR_POSITION_LABEL = "mediator-position";
 	public static final String MAPPING_URL_TYPE_LABEL = "mapping";
 	public static final String URL_TEMPLATE_LABEL = "url-template";
+	public static final String URI_TEMPLATE_LABEL = "uri-template";
 	public static final String URI_MAPPING_LABEL = "uri-mapping";
+	public static final String URL_MAPPING_LABEL = "url-mapping";
 	public static final String API_RESOURCE_METHOD_LABEL = "method";
 	public static final String API_KEY_LABEL = "api-key";
 	public static final String API_RESOURCE_LABEL = "resource";

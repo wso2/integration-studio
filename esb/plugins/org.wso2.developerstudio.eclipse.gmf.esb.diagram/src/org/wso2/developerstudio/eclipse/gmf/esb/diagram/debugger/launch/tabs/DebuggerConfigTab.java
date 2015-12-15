@@ -24,6 +24,8 @@ import org.eclipse.debug.core.ILaunchConfiguration;
 import org.eclipse.debug.core.ILaunchConfigurationWorkingCopy;
 import org.eclipse.debug.ui.AbstractLaunchConfigurationTab;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.ModifyEvent;
+import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
@@ -202,6 +204,13 @@ public class DebuggerConfigTab extends AbstractLaunchConfigurationTab {
 		commandPort = new Text(commandGroup, SWT.BORDER);
 		commandPort.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true,
 				false, 1, 1));
+		commandPort.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent modifyEvent) {
+				setDirty(true);
+				updateLaunchConfigurationDialog();
+			}
+		});
 
 		Group eventGroup = new Group(topControl, SWT.NONE);
 		eventGroup.setLayout(new GridLayout(2, false));
@@ -212,6 +221,13 @@ public class DebuggerConfigTab extends AbstractLaunchConfigurationTab {
 		eventPort = new Text(eventGroup, SWT.BORDER);
 		eventPort.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false,
 				1, 1));
+		eventPort.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent modifyEvent) {
+				setDirty(true);
+				updateLaunchConfigurationDialog();
+			}
+		});
 
 		Group hostGroup = new Group(topControl, SWT.NONE);
 		hostGroup.setLayout(new GridLayout(2, false));
@@ -222,6 +238,13 @@ public class DebuggerConfigTab extends AbstractLaunchConfigurationTab {
 		hostName = new Text(hostGroup, SWT.BORDER);
 		hostName.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false,
 				1, 1));
+		hostName.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent modifyEvent) {
+				setDirty(true);
+				updateLaunchConfigurationDialog();
+			}
+		});
 
 		setControl(topControl);
 	}

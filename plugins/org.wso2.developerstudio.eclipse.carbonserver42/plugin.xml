@@ -17,7 +17,7 @@
          </moduleType>
           <moduleType
                types="jst.web"
-               versions="2.2, 2.3, 2.4">
+               versions="2.2, 2.3, 2.4, 2.5">
      	</moduleType>
       </runtimeType>
    </extension>
@@ -59,7 +59,7 @@
       <supported>
          <facet
                id="jst.web"
-               version="2.2, 2.3, 2.4">
+               version="2.2, 2.3, 2.4, 2.5">
          </facet>
          <facet
                id="org.wso2.developerstudio.eclipse.carbon.facetId"

@@ -139,8 +139,6 @@
 						<arg value="-installIU" />
 						<arg value="org.wso2.developerstudio.carbon.server-remote.feature.feature.group" />
 						<arg value="-installIU" />
-						<arg value="org.wso2.developerstudio.kernel.dependencies.feature.feature.group" />
-						<arg value="-installIU" />
 						<arg value="org.wso2.developerstudio.kernel.registry.feature.feature.group" />
 						<arg value="-installIU" />
 						<arg value="org.wso2.developerstudio.kernel.security.feature.feature.group"/>

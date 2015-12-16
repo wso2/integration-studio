@@ -18,47 +18,32 @@ import org.wso2.developerstudio.eclipse.gmf.esb.impl.ProxyServiceImpl;
  */
 public class MainSequenceMediatorLocator extends AbstractMediatorLocator {
 
-	private static final int IN_SEQUENCE_VALUE = 0;
-	private static final int OUT_SEQUENCE_VALUE = 1;
-	private static final int NO_OF_LIST_MEDIATORS = 2;
+    private static final int IN_SEQUENCE_VALUE = 0;
+    private static final int OUT_SEQUENCE_VALUE = 1;
 
-	/**
-	 * This method returns EditPart of a Main Sequence according to given
-	 * information Map
-	 * 
-	 * @throws MediatorNotFoundException
-	 * @throws MissingAttributeException
-	 * @throws CoreException
-	 * @throws DebugPointMarkerNotFoundException
-	 */
-	@Override
-	public EditPart getMediatorEditPart(EsbServer esbServer,
-			ESBDebugPoint debugPoint) throws MediatorNotFoundException,
-			MissingAttributeException, DebugPointMarkerNotFoundException,
-			CoreException {
-		ESBSequenceDebugPointMessage debugPointMessage = (ESBSequenceDebugPointMessage) debugPoint
-				.getLocation();
-		List<Integer> positionArray = debugPointMessage.getSequence()
-				.getMediatorPosition().getPosition();
-		if (positionArray.size() == NO_OF_LIST_MEDIATORS) {
-			ProxyServiceImpl mainSequence = (ProxyServiceImpl) esbServer
-					.eContents().get(INDEX_OF_FIRST_ELEMENT);
-			int sequenceNumber = positionArray.get(INDEX_OF_FIRST_ELEMENT);
-			if (sequenceNumber == IN_SEQUENCE_VALUE) {
-				return getMediatorFromMediationFlow(
-						mainSequence.getOutputConnector(), positionArray);
-			} else if (sequenceNumber == OUT_SEQUENCE_VALUE) {
-				return getMediatorFromMediationFlow(
-						mainSequence.getOutSequenceOutputConnector(),
-						positionArray);
-			} else {
-				throw new IllegalArgumentException(
-						"Invalid sequence number detected : " + sequenceNumber);
-			}
-		} else {
-			throw new IllegalArgumentException(
-					"Unsupported sequence debug point detected with list mediators count : "
-							+ positionArray.size());
-		}
-	}
+    /**
+     * This method returns EditPart of a Main Sequence according to given
+     * information Map
+     * 
+     * @throws MediatorNotFoundException
+     * @throws MissingAttributeException
+     * @throws CoreException
+     * @throws DebugPointMarkerNotFoundException
+     */
+    @Override
+    public EditPart getMediatorEditPart(EsbServer esbServer, ESBDebugPoint debugPoint)
+            throws MediatorNotFoundException, MissingAttributeException, DebugPointMarkerNotFoundException,
+            CoreException {
+        ESBSequenceDebugPointMessage debugPointMessage = (ESBSequenceDebugPointMessage) debugPoint.getLocation();
+        List<Integer> positionArray = debugPointMessage.getSequence().getMediatorPosition().getPosition();
+        ProxyServiceImpl mainSequence = (ProxyServiceImpl) esbServer.eContents().get(INDEX_OF_FIRST_ELEMENT);
+        int sequenceNumber = positionArray.remove(INDEX_OF_FIRST_ELEMENT);
+        if (sequenceNumber == IN_SEQUENCE_VALUE) {
+            return getMediatorFromMediationFlow(mainSequence.getOutputConnector(), positionArray);
+        } else if (sequenceNumber == OUT_SEQUENCE_VALUE) {
+            return getMediatorFromMediationFlow(mainSequence.getOutSequenceOutputConnector(), positionArray);
+        } else {
+            throw new IllegalArgumentException("Invalid sequence number detected : " + sequenceNumber);
+        }
+    }
 }

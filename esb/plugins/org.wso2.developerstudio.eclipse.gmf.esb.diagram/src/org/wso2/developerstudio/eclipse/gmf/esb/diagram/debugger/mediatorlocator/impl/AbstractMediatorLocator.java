@@ -15,6 +15,16 @@
  */
 package org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.mediatorlocator.impl;
 
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.ENTITLEMENT_ADVICE_CONTAINER_POSITION_VALUE;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.ENTITLEMENT_OBLIGATIONS_CONTAINER_POSITION_VALUE;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.ENTITLEMENT_ON_ACCEPT_CONTAINER_POSITION_VALUE;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.ENTITLEMENT_ON_REJECT_CONTAINER_POSITION_VALUE;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.FILTER_FAIL_CONTAINER_POSITION_VALUE;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.FILTER_PASS_CONTAINER_POSITION_VALUE;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.SWITCH_DEFAULT_CONTAINER_POSITION_VALUE;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.THROTTLE_ON_ACCEPT_CONTAINER_POSITION_VALUE;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.THROTTLE_ON_REJECT_CONTAINER_POSITION_VALUE;
+
 import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
@@ -33,27 +43,15 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebugg
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.AggregateMediatorImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.CacheMediatorImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.CloneMediatorImpl;
-import org.wso2.developerstudio.eclipse.gmf.esb.impl.EntitlementAdviceContainerImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.EntitlementMediatorImpl;
-import org.wso2.developerstudio.eclipse.gmf.esb.impl.EntitlementObligationsContainerImpl;
-import org.wso2.developerstudio.eclipse.gmf.esb.impl.EntitlementOnAcceptContainerImpl;
-import org.wso2.developerstudio.eclipse.gmf.esb.impl.EntitlementOnRejectContainerImpl;
-import org.wso2.developerstudio.eclipse.gmf.esb.impl.FilterFailContainerImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.FilterMediatorImpl;
-import org.wso2.developerstudio.eclipse.gmf.esb.impl.FilterPassContainerImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.ForEachMediatorImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.IterateMediatorImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.ProxyServiceImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.RuleMediatorImpl;
-import org.wso2.developerstudio.eclipse.gmf.esb.impl.SwitchCaseParentContainerImpl;
-import org.wso2.developerstudio.eclipse.gmf.esb.impl.SwitchDefaultParentContainerImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.SwitchMediatorImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.ThrottleMediatorImpl;
-import org.wso2.developerstudio.eclipse.gmf.esb.impl.ThrottleOnAcceptContainerImpl;
-import org.wso2.developerstudio.eclipse.gmf.esb.impl.ThrottleOnRejectContainerImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.ValidateMediatorImpl;
-
-import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.*;
 
 /**
  * This class should be implemented by all Mediator locator class

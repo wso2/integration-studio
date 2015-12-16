@@ -84,6 +84,7 @@ public class ESBDebuggerConstants {
 	public static final String API_OUTSEQ_LABEL = "api_outseq";
 
 	public static final String MAIN_SEQUENCE_LABEL = "main_sequence";
+	public static final String MAIN_SEQUENCE_RELATIVE_LOCATION = "sequences/main.xml";
 	public static final String TEMPLATE_LABEL = "template";
 	public static final String SEQUENCE_LABEL = "sequence";
 	public static final String PROXY_LABEL = "proxy";

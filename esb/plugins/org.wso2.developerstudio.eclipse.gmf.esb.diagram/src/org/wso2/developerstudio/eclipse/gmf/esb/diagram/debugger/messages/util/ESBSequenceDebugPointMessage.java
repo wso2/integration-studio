@@ -37,116 +37,104 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ES
  */
 public class ESBSequenceDebugPointMessage extends AbstractESBDebugPointMessage {
 
-	private ESBSequenceBean sequence;
+    private ESBSequenceBean sequence;
 
-	public ESBSequenceDebugPointMessage(String command, String commandArgument,
-			String mediationComponent, ESBSequenceBean sequence) {
-		super(command, commandArgument, mediationComponent);
-		this.sequence = sequence;
-	}
+    public ESBSequenceDebugPointMessage(String command, String commandArgument, String mediationComponent,
+            ESBSequenceBean sequence) {
+        super(command, commandArgument, mediationComponent);
+        this.sequence = sequence;
+    }
 
-	public ESBSequenceDebugPointMessage(EventMessageType event,
-			JsonElement recievedArtifactInfo) {
-		super(event.toString(), SEQUENCE_LABEL);
-		createSequenceFromJsonElement(recievedArtifactInfo);
-	}
+    public ESBSequenceDebugPointMessage(EventMessageType event, JsonElement recievedArtifactInfo) {
+        super(event.toString(), SEQUENCE_LABEL);
+        createSequenceFromJsonElement(recievedArtifactInfo);
+    }
 
-	/**
-	 * Checked whether Mediation Component and Sequence bean are equal or
-	 * not.But this method doesn't compare whether it's type is differ or not.
-	 * <p>
-	 * So though skip points and breakpoints are different debug point types,
-	 * this method return true if those are for the same mediator.
-	 */
-	public boolean equalsIgnoreType(
-			ESBSequenceDebugPointMessage debugPointMessage) {
-		if (mediationComponent
-				.equals(debugPointMessage.getMediationComponent())
-				&& sequence.equals(debugPointMessage.getSequence())) {
-			return true;
-		}
-		return false;
-	}
+    /**
+     * Checked whether Mediation Component and Sequence bean are equal or
+     * not.But this method doesn't compare whether it's type is differ or not.
+     * <p>
+     * So though skip points and breakpoints are different debug point types, this method return true if those are for
+     * the same mediator.
+     */
+    public boolean equalsIgnoreType(ESBSequenceDebugPointMessage debugPointMessage) {
+        if (mediationComponent.equals(debugPointMessage.getMediationComponent())
+                && sequence.equals(debugPointMessage.getSequence())) {
+            return true;
+        }
+        return false;
+    }
 
-	/**
-	 * Checked whether Mediation Component, Command Argument and Sequence bean
-	 * are equal or not.
-	 * <p>
-	 * Command value is not taken to compare because command attribute contains
-	 * values related to debug point action "set" or "clear".
-	 */
-	@Override
-	public boolean equals(Object debugPointMessage) {
-		if (debugPointMessage instanceof ESBSequenceDebugPointMessage) {
-			ESBSequenceDebugPointMessage debugPointMessageTemp = (ESBSequenceDebugPointMessage) debugPointMessage;
-			if (!(mediationComponent.equals((debugPointMessageTemp)
-					.getMediationComponent())
-					&& commandArgument.equals((debugPointMessageTemp)
-							.getCommandArgument()) && sequence
-						.equals(debugPointMessageTemp.getSequence()))) {
-				return false;
-			}
-			return true;
-		} else {
-			return false;
-		}
-	}
+    /**
+     * Checked whether Mediation Component, Command Argument and Sequence bean
+     * are equal or not.
+     * <p>
+     * Command value is not taken to compare because command attribute contains values related to debug point action
+     * "set" or "clear".
+     */
+    @Override
+    public boolean equals(Object debugPointMessage) {
+        if (debugPointMessage instanceof ESBSequenceDebugPointMessage) {
+            ESBSequenceDebugPointMessage debugPointMessageTemp = (ESBSequenceDebugPointMessage) debugPointMessage;
+            if (!(mediationComponent.equals((debugPointMessageTemp).getMediationComponent())
+                    && commandArgument.equals((debugPointMessageTemp).getCommandArgument()) && sequence
+                        .equals(debugPointMessageTemp.getSequence()))) {
+                return false;
+            }
+            return true;
+        } else {
+            return false;
+        }
+    }
 
-	@Override
-	public int hashCode() {
-		int result = INITIAL_HASH_CODE_RESULT_VALUE;
-		result = HASHCODE_MULTIPLIER_VALUE * result
-				+ mediationComponent.hashCode()
-				+ MEDIATION_COMPONENT_LABEL.hashCode();
-		result = HASHCODE_MULTIPLIER_VALUE * result
-				+ commandArgument.hashCode()
-				+ COMMAND_ARGUMENT_LABEL.hashCode();
-		result = HASHCODE_MULTIPLIER_VALUE * result + sequence.hashCode()
-				+ SEQUENCE_LABEL.hashCode();
-		return result;
-	}
+    @Override
+    public int hashCode() {
+        int result = INITIAL_HASH_CODE_RESULT_VALUE;
+        result = HASHCODE_MULTIPLIER_VALUE * result + mediationComponent.hashCode()
+                + MEDIATION_COMPONENT_LABEL.hashCode();
+        result = HASHCODE_MULTIPLIER_VALUE * result + commandArgument.hashCode() + COMMAND_ARGUMENT_LABEL.hashCode();
+        result = HASHCODE_MULTIPLIER_VALUE * result + sequence.hashCode() + SEQUENCE_LABEL.hashCode();
+        return result;
+    }
 
-	@Override
-	public ESBMediatorPosition getMediatorPosition() {
-		return sequence.getMediatorPosition();
-	}
+    @Override
+    public ESBMediatorPosition getMediatorPosition() {
+        return sequence.getMediatorPosition();
+    }
 
-	@Override
-	public void setMediatorPosition(List<Integer> positionList) {
-		sequence.setMediatorPosition(new ESBMediatorPosition(positionList));
-	}
+    @Override
+    public void setMediatorPosition(List<Integer> positionList) {
+        sequence.setMediatorPosition(new ESBMediatorPosition(positionList));
+    }
 
-	@Override
-	public String getSequenceType() {
-		return sequence.getSequenceType();
-	}
+    @Override
+    public String getSequenceType() {
+        return sequence.getSequenceType();
+    }
 
-	private void createSequenceFromJsonElement(JsonElement recievedArtifactInfo) {
-		Set<Entry<String, JsonElement>> entrySet = recievedArtifactInfo
-				.getAsJsonObject().entrySet();
-		String sequenceKey = null;
-		String sequenceType = null;
-		ESBMediatorPosition mediatorPosition = null;
-		for (Entry<String, JsonElement> entry : entrySet) {
-			if (SEQUENCE_KEY_LABEL.equalsIgnoreCase(entry.getKey())) {
-				sequenceKey = convertJsonElementValueToString(entry.getValue());
-			} else if (SEQUENCE_TYPE_LABEL.equalsIgnoreCase(entry.getKey())) {
-				sequenceType = convertJsonElementValueToString(entry.getValue());
-			} else if (MEDIATOR_POSITION_LABEL.equalsIgnoreCase(entry.getKey())) {
-				mediatorPosition = convertMediatorPositionStringToList(convertJsonElementValueToString(entry
-						.getValue()));
-			}
-		}
-		sequence = new ESBSequenceBean(sequenceType, sequenceKey,
-				mediatorPosition);
-	}
+    private void createSequenceFromJsonElement(JsonElement recievedArtifactInfo) {
+        Set<Entry<String, JsonElement>> entrySet = recievedArtifactInfo.getAsJsonObject().entrySet();
+        String sequenceKey = null;
+        String sequenceType = null;
+        ESBMediatorPosition mediatorPosition = null;
+        for (Entry<String, JsonElement> entry : entrySet) {
+            if (SEQUENCE_KEY_LABEL.equalsIgnoreCase(entry.getKey())) {
+                sequenceKey = convertJsonElementValueToString(entry.getValue());
+            } else if (SEQUENCE_TYPE_LABEL.equalsIgnoreCase(entry.getKey())) {
+                sequenceType = convertJsonElementValueToString(entry.getValue());
+            } else if (MEDIATOR_POSITION_LABEL.equalsIgnoreCase(entry.getKey())) {
+                mediatorPosition = convertMediatorPositionStringToList(convertJsonElementValueToString(entry.getValue()));
+            }
+        }
+        sequence = new ESBSequenceBean(sequenceType, sequenceKey, mediatorPosition);
+    }
 
-	public ESBSequenceBean getSequence() {
-		return sequence;
-	}
+    public ESBSequenceBean getSequence() {
+        return sequence;
+    }
 
-	public void setSequence(ESBSequenceBean sequence) {
-		this.sequence = sequence;
-	}
+    public void setSequence(ESBSequenceBean sequence) {
+        this.sequence = sequence;
+    }
 
 }

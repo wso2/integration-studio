@@ -35,39 +35,31 @@ import org.wso2.developerstudio.eclipse.gmf.esb.impl.TemplateImpl;
  */
 public class TemplateMediatorLocator extends AbstractMediatorLocator {
 
-	/**
-	 * This method returns EditPart of a Template Sequence according to given
-	 * information Map
-	 * 
-	 * @throws MediatorNotFoundException
-	 * @throws MissingAttributeException
-	 * @throws CoreException
-	 * @throws DebugPointMarkerNotFoundException
-	 */
-	@Override
-	public EditPart getMediatorEditPart(EsbServer esbServer,
-			ESBDebugPoint debugPoint) throws MediatorNotFoundException,
-			MissingAttributeException, DebugPointMarkerNotFoundException,
-			CoreException {
-		ESBTemplateDebugPointMessage debugPointMessage = (ESBTemplateDebugPointMessage) debugPoint
-				.getLocation();
+    /**
+     * This method returns EditPart of a Template Sequence according to given
+     * information Map
+     * 
+     * @throws MediatorNotFoundException
+     * @throws MissingAttributeException
+     * @throws CoreException
+     * @throws DebugPointMarkerNotFoundException
+     */
+    @Override
+    public EditPart getMediatorEditPart(EsbServer esbServer, ESBDebugPoint debugPoint)
+            throws MediatorNotFoundException, MissingAttributeException, DebugPointMarkerNotFoundException,
+            CoreException {
+        ESBTemplateDebugPointMessage debugPointMessage = (ESBTemplateDebugPointMessage) debugPoint.getLocation();
 
-		List<Integer> positionArray = debugPointMessage.getTemplate()
-				.getMediatorPosition().getPosition();
+        List<Integer> positionArray = debugPointMessage.getTemplate().getMediatorPosition().getPosition();
 
-		TemplateImpl template = (TemplateImpl) esbServer.eContents().get(
-				INDEX_OF_FIRST_ELEMENT);
+        TemplateImpl template = (TemplateImpl) esbServer.eContents().get(INDEX_OF_FIRST_ELEMENT);
 
-		if (template.getChild() instanceof SequencesImpl) {
-			EsbElement sequnce = template.getChild();
-			return getMediatorFromMediationFlow(
-					((SequencesImpl) sequnce).getOutputConnector(),
-					positionArray);
-		} else {
-			throw new UnsupportedOperationException(
-					"Breakpoint Integration not supported for "
-							+ template.getChild());
-		}
-	}
+        if (template.getChild() instanceof SequencesImpl) {
+            EsbElement sequnce = template.getChild();
+            return getMediatorFromMediationFlow(((SequencesImpl) sequnce).getOutputConnector(), positionArray);
+        } else {
+            throw new UnsupportedOperationException("Breakpoint Integration not supported for " + template.getChild());
+        }
+    }
 
 }

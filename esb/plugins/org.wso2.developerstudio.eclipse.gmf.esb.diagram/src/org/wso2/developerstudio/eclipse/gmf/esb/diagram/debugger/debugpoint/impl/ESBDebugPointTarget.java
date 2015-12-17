@@ -48,140 +48,123 @@ import org.wso2.developerstudio.eclipse.logging.core.Logger;
  */
 public class ESBDebugPointTarget {
 
-	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
+    private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
-	/**
-	 * This method checks whether selected line can be assign as a line
-	 * breakpoint.
-	 */
-	public static boolean canToggleLineDebugPoints(IWorkbenchPart part,
-			ISelection selection) {
-		// TODO This function should implement when source view breakpoints are
-		// adding to debugger
-		return false;
-	}
+    /**
+     * This method checks whether selected line can be assign as a line
+     * breakpoint.
+     */
+    public static boolean canToggleLineDebugPoints(IWorkbenchPart part, ISelection selection) {
+        // TODO This function should implement when source view breakpoints are
+        // adding to debugger
+        return false;
+    }
 
-	/**
-	 * This method checks whether selected part can be assign as a diagram
-	 * breakpoint.
-	 * 
-	 * @param part
-	 * @return
-	 */
-	public static boolean canToggleDiagramDebugpoints(EditPart part) {
-		return true;
-	}
+    /**
+     * This method checks whether selected part can be assign as a diagram
+     * breakpoint.
+     * 
+     * @param part
+     * @return
+     */
+    public static boolean canToggleDiagramDebugpoints(EditPart part) {
+        return true;
+    }
 
-	/**
-	 * This method performs the source view breakpoint insertion action
-	 */
-	public static void toggleLineDebugpoints(IWorkbenchPart part,
-			ISelection selection) {
-		// This method should be implement to support source view breakpoints
-		throw new UnsupportedOperationException(
-				"Line breakpoint are not supported");
-	}
+    /**
+     * This method performs the source view breakpoint insertion action
+     */
+    public static void toggleLineDebugpoints(IWorkbenchPart part, ISelection selection) {
+        // This method should be implement to support source view breakpoints
+        throw new UnsupportedOperationException("Line breakpoint are not supported");
+    }
 
-	/**
-	 * This method performs the graphical view breakpoint insertion action
-	 * 
-	 * @param part
-	 * @throws CoreException
-	 * @throws ESBDebuggerException
-	 */
-	public static void toggleDiagramDebugpoints(AbstractMediator part,
-			String commandArgument) throws CoreException, ESBDebuggerException {
+    /**
+     * This method performs the graphical view breakpoint insertion action
+     * 
+     * @param part
+     * @throws CoreException
+     * @throws ESBDebuggerException
+     */
+    public static void toggleDiagramDebugpoints(AbstractMediator part, String commandArgument) throws CoreException,
+            ESBDebuggerException {
 
-		IEditorPart activeEditor = EditorUtils.getActiveEditor();
+        IEditorPart activeEditor = EditorUtils.getActiveEditor();
 
-		if (activeEditor instanceof EsbMultiPageEditor) {
+        if (activeEditor instanceof EsbMultiPageEditor) {
 
-			EsbServer esbServer = getESBServerFromESBMultiPageEditor(activeEditor);
-			IESBDebugPointBuilder breakpointBuilder = ESBDebugPointBuilderFactory
-					.getBreakpointBuilder(esbServer.getType());
-			IResource resource = getFileIResourceFromESBMultiPageEditor(activeEditor);
-			ESBDebugPoint debugPoint = breakpointBuilder.getESBDebugPoint(
-					esbServer, resource, part, commandArgument);
-			ESBDebugPoint existingBreakpoint = getMatchingDebugPoint(debugPoint);
-			if (existingBreakpoint == null) {
-				DebugPlugin.getDefault().getBreakpointManager()
-						.addBreakpoint(debugPoint);
-				if (ESBDebuggerConstants.BREAKPOINT_LABEL
-						.equals(commandArgument)) {
-					ESBDebuggerUtil.addBreakpointMark(part);
-				} else {
-					ESBDebuggerUtil.addSkippointMark(part);
-				}
-			} else {
-				DebugPlugin.getDefault().getBreakpointManager()
-						.removeBreakpoint(existingBreakpoint, true);
-				if (ESBDebuggerConstants.BREAKPOINT_LABEL
-						.equals(commandArgument)) {
-					ESBDebuggerUtil.removeBreakpointMark(part);
-				} else {
-					ESBDebuggerUtil.removeSkippointMark(part);
-				}
-			}
-		}
-	}
+            EsbServer esbServer = getESBServerFromESBMultiPageEditor(activeEditor);
+            IESBDebugPointBuilder breakpointBuilder = ESBDebugPointBuilderFactory.getBreakpointBuilder(esbServer
+                    .getType());
+            IResource resource = getFileIResourceFromESBMultiPageEditor(activeEditor);
+            ESBDebugPoint debugPoint = breakpointBuilder.getESBDebugPoint(esbServer, resource, part, commandArgument);
+            ESBDebugPoint existingBreakpoint = getMatchingDebugPoint(debugPoint);
+            if (existingBreakpoint == null) {
+                DebugPlugin.getDefault().getBreakpointManager().addBreakpoint(debugPoint);
+                if (ESBDebuggerConstants.BREAKPOINT_LABEL.equals(commandArgument)) {
+                    ESBDebuggerUtil.addBreakpointMark(part);
+                } else {
+                    ESBDebuggerUtil.addSkippointMark(part);
+                }
+            } else {
+                DebugPlugin.getDefault().getBreakpointManager().removeBreakpoint(existingBreakpoint, true);
+                if (ESBDebuggerConstants.BREAKPOINT_LABEL.equals(commandArgument)) {
+                    ESBDebuggerUtil.removeBreakpointMark(part);
+                } else {
+                    ESBDebuggerUtil.removeSkippointMark(part);
+                }
+            }
+        }
+    }
 
-	/**
-	 * @param activeEditor
-	 * @return
-	 */
-	private static IResource getFileIResourceFromESBMultiPageEditor(
-			IEditorPart activeEditor) {
-		IFile file = ((FileEditorInput) (((EsbMultiPageEditor) activeEditor)
-				.getEditorInput())).getFile();
-		IResource resource = (IResource) file.getAdapter(IResource.class);
-		return resource;
-	}
+    /**
+     * @param activeEditor
+     * @return
+     */
+    private static IResource getFileIResourceFromESBMultiPageEditor(IEditorPart activeEditor) {
+        IFile file = ((FileEditorInput) (((EsbMultiPageEditor) activeEditor).getEditorInput())).getFile();
+        IResource resource = (IResource) file.getAdapter(IResource.class);
+        return resource;
+    }
 
-	/**
-	 * @param activeEditor
-	 * @return
-	 */
-	private static EsbServer getESBServerFromESBMultiPageEditor(
-			IEditorPart activeEditor) {
-		Diagram diagram = ((EsbMultiPageEditor) (activeEditor)).getDiagram();
-		EsbDiagram esbDiagram = (EsbDiagram) diagram.getElement();
-		EsbServer esbServer = esbDiagram.getServer();
-		return esbServer;
-	}
+    /**
+     * @param activeEditor
+     * @return
+     */
+    private static EsbServer getESBServerFromESBMultiPageEditor(IEditorPart activeEditor) {
+        Diagram diagram = ((EsbMultiPageEditor) (activeEditor)).getDiagram();
+        EsbDiagram esbDiagram = (EsbDiagram) diagram.getElement();
+        EsbServer esbServer = esbDiagram.getServer();
+        return esbServer;
+    }
 
-	/**
-	 * This method finds similar mediator registered as a breakpoint in the
-	 * BreakpointManager and returns.
-	 * 
-	 * @param targetBreakpoint
-	 * @return ESBBreakpoint if found or null
-	 */
-	private static ESBDebugPoint getMatchingDebugPoint(
-			ESBDebugPoint targetBreakpoint) {
-		IBreakpoint[] debugpoints = DebugPlugin.getDefault()
-				.getBreakpointManager()
-				.getBreakpoints(ESBDebugModelPresentation.ID);
-		for (IBreakpoint debugpoint : debugpoints) {
-			try {
-				ESBDebugPoint esbDebugpoint = (ESBDebugPoint) debugpoint;
-				if ((esbDebugpoint.getResource()).equals(targetBreakpoint
-						.getResource())) {
+    /**
+     * This method finds similar mediator registered as a breakpoint in the
+     * BreakpointManager and returns.
+     * 
+     * @param targetBreakpoint
+     * @return ESBBreakpoint if found or null
+     */
+    private static ESBDebugPoint getMatchingDebugPoint(ESBDebugPoint targetBreakpoint) {
+        IBreakpoint[] debugpoints = DebugPlugin.getDefault().getBreakpointManager()
+                .getBreakpoints(ESBDebugModelPresentation.ID);
+        for (IBreakpoint debugpoint : debugpoints) {
+            try {
+                ESBDebugPoint esbDebugpoint = (ESBDebugPoint) debugpoint;
+                if ((esbDebugpoint.getResource()).equals(targetBreakpoint.getResource())) {
 
-					if (esbDebugpoint.equals(targetBreakpoint)) {
-						return esbDebugpoint;
-					}
-				}
-			} catch (DebugPointMarkerNotFoundException e) {
-				log.error(
-						"Error while checking the maching debug point : "
-								+ e.getMessage(), e);
-				ESBDebuggerUtil
-						.removeESBDebugPointFromBreakpointManager(debugpoint);
-			} catch (CoreException e) {
-				log.error("Error while checking the maching debug point : ", e);
-			}
+                    if (esbDebugpoint.equals(targetBreakpoint)) {
+                        return esbDebugpoint;
+                    }
+                }
+            } catch (DebugPointMarkerNotFoundException e) {
+                log.error("Error while checking the maching debug point : " + e.getMessage(), e);
+                ESBDebuggerUtil.removeESBDebugPointFromBreakpointManager(debugpoint);
+            } catch (CoreException e) {
+                log.error("Error while checking the maching debug point : ", e);
+            }
 
-		}
-		return null;
-	}
+        }
+        return null;
+    }
 }

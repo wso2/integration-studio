@@ -33,29 +33,24 @@ import org.wso2.developerstudio.eclipse.gmf.esb.impl.SequencesImpl;
  */
 public class SequenceMediatorLocator extends AbstractMediatorLocator {
 
-	/**
-	 * This method returns EditPart of a Sequence according to given information
-	 * Map
-	 * 
-	 * @throws MediatorNotFoundException
-	 * @throws MissingAttributeException
-	 * @throws CoreException
-	 * @throws DebugPointMarkerNotFoundException
-	 */
-	@Override
-	public EditPart getMediatorEditPart(EsbServer esbServer,
-			ESBDebugPoint debugPoint) throws MediatorNotFoundException,
-			MissingAttributeException, DebugPointMarkerNotFoundException,
-			CoreException {
-		ESBSequenceDebugPointMessage debugPointMessage = (ESBSequenceDebugPointMessage) debugPoint
-				.getLocation();
+    /**
+     * This method returns EditPart of a Sequence according to given information
+     * Map
+     * 
+     * @throws MediatorNotFoundException
+     * @throws MissingAttributeException
+     * @throws CoreException
+     * @throws DebugPointMarkerNotFoundException
+     */
+    @Override
+    public EditPart getMediatorEditPart(EsbServer esbServer, ESBDebugPoint debugPoint)
+            throws MediatorNotFoundException, MissingAttributeException, DebugPointMarkerNotFoundException,
+            CoreException {
+        ESBSequenceDebugPointMessage debugPointMessage = (ESBSequenceDebugPointMessage) debugPoint.getLocation();
 
-		List<Integer> positionArray = debugPointMessage.getSequence()
-				.getMediatorPosition().getPosition();
-		SequencesImpl sequence = (SequencesImpl) esbServer.eContents().get(
-				INDEX_OF_FIRST_ELEMENT);
+        List<Integer> positionArray = debugPointMessage.getSequence().getMediatorPosition().getPosition();
+        SequencesImpl sequence = (SequencesImpl) esbServer.eContents().get(INDEX_OF_FIRST_ELEMENT);
 
-		return getMediatorFromMediationFlow(sequence.getOutputConnector(),
-				positionArray);
-	}
+        return getMediatorFromMediationFlow(sequence.getOutputConnector(), positionArray);
+    }
 }

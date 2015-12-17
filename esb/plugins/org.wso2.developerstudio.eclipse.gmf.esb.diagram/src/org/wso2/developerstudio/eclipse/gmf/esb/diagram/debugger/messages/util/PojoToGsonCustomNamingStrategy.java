@@ -29,19 +29,19 @@ import com.google.gson.FieldNamingStrategy;
  */
 public class PojoToGsonCustomNamingStrategy implements FieldNamingStrategy {
 
-	private static final String JSON_MESSAGE_COMMAND_NAME_SEPERATOR = "-";
+    private static final String JSON_MESSAGE_COMMAND_NAME_SEPERATOR = "-";
 
-	@Override
-	public String translateName(Field filedName) {
-		StringBuilder translation = new StringBuilder();
-		char[] nameArray = filedName.getName().toCharArray();
-		for (char character : nameArray) {
-			if (Character.isUpperCase(character) && translation.length() != 0) {
-				String separator = JSON_MESSAGE_COMMAND_NAME_SEPERATOR;
-				translation.append(separator);
-			}
-			translation.append(character);
-		}
-		return translation.toString().toLowerCase();
-	}
+    @Override
+    public String translateName(Field filedName) {
+        StringBuilder translation = new StringBuilder();
+        char[] nameArray = filedName.getName().toCharArray();
+        for (char character : nameArray) {
+            if (Character.isUpperCase(character) && translation.length() != 0) {
+                String separator = JSON_MESSAGE_COMMAND_NAME_SEPERATOR;
+                translation.append(separator);
+            }
+            translation.append(character);
+        }
+        return translation.toString().toLowerCase();
+    }
 }

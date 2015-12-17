@@ -44,154 +44,133 @@ import com.google.gson.JsonElement;
  */
 public class ESBAPIDebugPointMessage extends AbstractESBDebugPointMessage {
 
-	private ESBAPISequenceBean sequence;
+    private ESBAPISequenceBean sequence;
 
-	public ESBAPIDebugPointMessage(String command, String commandArgument,
-			ESBAPISequenceBean sequence) {
-		super(command, commandArgument, SEQUENCE_LABEL);
-		this.setSequence(sequence);
-	}
+    public ESBAPIDebugPointMessage(String command, String commandArgument, ESBAPISequenceBean sequence) {
+        super(command, commandArgument, SEQUENCE_LABEL);
+        this.setSequence(sequence);
+    }
 
-	public ESBAPIDebugPointMessage(EventMessageType event,
-			JsonElement recievedArtifactInfo) {
-		super(SEQUENCE_LABEL);
-		createApiSequenceFromJsonElement(event, recievedArtifactInfo);
-	}
+    public ESBAPIDebugPointMessage(EventMessageType event, JsonElement recievedArtifactInfo) {
+        super(SEQUENCE_LABEL);
+        createApiSequenceFromJsonElement(event, recievedArtifactInfo);
+    }
 
-	/**
-	 * Checked whether Mediation Component and API Sequence bean are equal or
-	 * not.But this method doesn't compare whether it's type is differ or not.
-	 * <p>
-	 * So though skip points and breakpoints are different debug point types,
-	 * this method return true if those are for the same mediator.
-	 */
-	public boolean equalsIgnoreType(ESBAPIDebugPointMessage debugPointMessage) {
-		if (mediationComponent
-				.equals(debugPointMessage.getMediationComponent())
-				&& sequence.equals(debugPointMessage.getSequence())) {
-			return true;
-		}
-		return false;
-	}
+    /**
+     * Checked whether Mediation Component and API Sequence bean are equal or
+     * not.But this method doesn't compare whether it's type is differ or not.
+     * <p>
+     * So though skip points and breakpoints are different debug point types, this method return true if those are for
+     * the same mediator.
+     */
+    public boolean equalsIgnoreType(ESBAPIDebugPointMessage debugPointMessage) {
+        if (mediationComponent.equals(debugPointMessage.getMediationComponent())
+                && sequence.equals(debugPointMessage.getSequence())) {
+            return true;
+        }
+        return false;
+    }
 
-	/**
-	 * Checked whether Mediation Component, Command Argument and API Sequence
-	 * bean are equal or not.
-	 * <p>
-	 * Command value is not taken to compare because command attribute contains
-	 * values related to debug point action "set" or "clear".
-	 */
-	@Override
-	public boolean equals(Object debugPointMessage) {
-		if (debugPointMessage instanceof ESBAPIDebugPointMessage) {
-			ESBAPIDebugPointMessage debugPointMessageTemp = (ESBAPIDebugPointMessage) debugPointMessage;
-			if (!(mediationComponent.equals((debugPointMessageTemp)
-					.getMediationComponent())
-					&& commandArgument.equals((debugPointMessageTemp)
-							.getCommandArgument()) && sequence
-						.equals(debugPointMessageTemp.getSequence()))) {
-				return false;
-			}
-			return true;
-		} else {
-			return false;
-		}
-	}
+    /**
+     * Checked whether Mediation Component, Command Argument and API Sequence
+     * bean are equal or not.
+     * <p>
+     * Command value is not taken to compare because command attribute contains values related to debug point action
+     * "set" or "clear".
+     */
+    @Override
+    public boolean equals(Object debugPointMessage) {
+        if (debugPointMessage instanceof ESBAPIDebugPointMessage) {
+            ESBAPIDebugPointMessage debugPointMessageTemp = (ESBAPIDebugPointMessage) debugPointMessage;
+            if (!(mediationComponent.equals((debugPointMessageTemp).getMediationComponent())
+                    && commandArgument.equals((debugPointMessageTemp).getCommandArgument()) && sequence
+                        .equals(debugPointMessageTemp.getSequence()))) {
+                return false;
+            }
+            return true;
+        } else {
+            return false;
+        }
+    }
 
-	@Override
-	public int hashCode() {
-		int result = INITIAL_HASH_CODE_RESULT_VALUE;
-		result = HASHCODE_MULTIPLIER_VALUE * result + sequence.hashCode()
-				+ SEQUENCE_LABEL.hashCode();
-		result = HASHCODE_MULTIPLIER_VALUE * result
-				+ commandArgument.hashCode()
-				+ COMMAND_ARGUMENT_LABEL.hashCode();
-		result = HASHCODE_MULTIPLIER_VALUE * result
-				+ MEDIATION_COMPONENT_LABEL.hashCode()
-				+ mediationComponent.hashCode();
-		return result;
-	}
+    @Override
+    public int hashCode() {
+        int result = INITIAL_HASH_CODE_RESULT_VALUE;
+        result = HASHCODE_MULTIPLIER_VALUE * result + sequence.hashCode() + SEQUENCE_LABEL.hashCode();
+        result = HASHCODE_MULTIPLIER_VALUE * result + commandArgument.hashCode() + COMMAND_ARGUMENT_LABEL.hashCode();
+        result = HASHCODE_MULTIPLIER_VALUE * result + MEDIATION_COMPONENT_LABEL.hashCode()
+                + mediationComponent.hashCode();
+        return result;
+    }
 
-	@Override
-	public ESBMediatorPosition getMediatorPosition() {
-		return sequence.getApi().getMediatorPosition();
-	}
+    @Override
+    public ESBMediatorPosition getMediatorPosition() {
+        return sequence.getApi().getMediatorPosition();
+    }
 
-	@Override
-	public void setMediatorPosition(List<Integer> position) {
-		sequence.getApi()
-				.setMediatorPosition(new ESBMediatorPosition(position));
-	}
+    @Override
+    public void setMediatorPosition(List<Integer> position) {
+        sequence.getApi().setMediatorPosition(new ESBMediatorPosition(position));
+    }
 
-	@Override
-	public String getSequenceType() {
-		return sequence.getApi().getSequenceType();
-	}
+    @Override
+    public String getSequenceType() {
+        return sequence.getApi().getSequenceType();
+    }
 
-	private void createApiSequenceFromJsonElement(EventMessageType event,
-			JsonElement recievedArtifactInfo) {
-		setCommandArgument(event.toString());
-		Set<Entry<String, JsonElement>> entrySet = recievedArtifactInfo
-				.getAsJsonObject().entrySet();
-		String method = null;
-		String urlTemplate = null;
-		String uriMapping = null;
-		String apiKey = null;
-		JsonElement resourceElement = null;
-		ESBMediatorPosition mediatorPosition = null;
-		String sequenceType = null;
-		for (Entry<String, JsonElement> apiEntry : entrySet) {
-			JsonElement apiArtifactInfo = apiEntry.getValue();
-			Set<Entry<String, JsonElement>> apiEntrySet = apiArtifactInfo
-					.getAsJsonObject().entrySet();
-			for (Entry<String, JsonElement> entry : apiEntrySet) {
-				if (API_KEY_LABEL.equalsIgnoreCase(entry.getKey())) {
-					apiKey = convertJsonElementValueToString(entry.getValue());
-				} else if (MEDIATOR_POSITION_LABEL.equalsIgnoreCase(entry
-						.getKey())) {
-					mediatorPosition = convertMediatorPositionStringToList(convertJsonElementValueToString(entry
-							.getValue()));
-				} else if (SEQUENCE_TYPE_LABEL.equalsIgnoreCase(entry.getKey())) {
-					sequenceType = convertJsonElementValueToString(entry
-							.getValue());
-				} else if (API_RESOURCE_LABEL.equalsIgnoreCase(entry.getKey())) {
-					resourceElement = entry.getValue();
-				}
-			}
+    private void createApiSequenceFromJsonElement(EventMessageType event, JsonElement recievedArtifactInfo) {
+        setCommandArgument(event.toString());
+        Set<Entry<String, JsonElement>> entrySet = recievedArtifactInfo.getAsJsonObject().entrySet();
+        String method = null;
+        String urlTemplate = null;
+        String uriMapping = null;
+        String apiKey = null;
+        JsonElement resourceElement = null;
+        ESBMediatorPosition mediatorPosition = null;
+        String sequenceType = null;
+        for (Entry<String, JsonElement> apiEntry : entrySet) {
+            JsonElement apiArtifactInfo = apiEntry.getValue();
+            Set<Entry<String, JsonElement>> apiEntrySet = apiArtifactInfo.getAsJsonObject().entrySet();
+            for (Entry<String, JsonElement> entry : apiEntrySet) {
+                if (API_KEY_LABEL.equalsIgnoreCase(entry.getKey())) {
+                    apiKey = convertJsonElementValueToString(entry.getValue());
+                } else if (MEDIATOR_POSITION_LABEL.equalsIgnoreCase(entry.getKey())) {
+                    mediatorPosition = convertMediatorPositionStringToList(convertJsonElementValueToString(entry
+                            .getValue()));
+                } else if (SEQUENCE_TYPE_LABEL.equalsIgnoreCase(entry.getKey())) {
+                    sequenceType = convertJsonElementValueToString(entry.getValue());
+                } else if (API_RESOURCE_LABEL.equalsIgnoreCase(entry.getKey())) {
+                    resourceElement = entry.getValue();
+                }
+            }
 
-		}
+        }
 
-		Set<Entry<String, JsonElement>> resourseEntrySet = resourceElement
-				.getAsJsonObject().entrySet();
-		for (Entry<String, JsonElement> apiEntry : resourseEntrySet) {
-			if (API_RESOURCE_METHOD_LABEL.equals(apiEntry.getKey())) {
-				method = convertJsonElementValueToString(apiEntry.getValue());
-			} else if (MAPPING_URL_TYPE.equals(apiEntry.getKey())) {
-				uriMapping = convertJsonElementValueToString(apiEntry
-						.getValue());
-				urlTemplate = uriMapping;
-			} else if (URL_MAPPING_LABEL.equals(apiEntry.getKey())) {
-				uriMapping = convertJsonElementValueToString(apiEntry
-						.getValue());
-			} else if (URI_TEMPLATE_LABEL.equals(apiEntry.getKey())) {
-				urlTemplate = convertJsonElementValueToString(apiEntry
-						.getValue());
-			}
-		}
+        Set<Entry<String, JsonElement>> resourseEntrySet = resourceElement.getAsJsonObject().entrySet();
+        for (Entry<String, JsonElement> apiEntry : resourseEntrySet) {
+            if (API_RESOURCE_METHOD_LABEL.equals(apiEntry.getKey())) {
+                method = convertJsonElementValueToString(apiEntry.getValue());
+            } else if (MAPPING_URL_TYPE.equals(apiEntry.getKey())) {
+                uriMapping = convertJsonElementValueToString(apiEntry.getValue());
+                urlTemplate = uriMapping;
+            } else if (URL_MAPPING_LABEL.equals(apiEntry.getKey())) {
+                uriMapping = convertJsonElementValueToString(apiEntry.getValue());
+            } else if (URI_TEMPLATE_LABEL.equals(apiEntry.getKey())) {
+                urlTemplate = convertJsonElementValueToString(apiEntry.getValue());
+            }
+        }
 
-		ESBAPIResourceBean resource = new ESBAPIResourceBean(method,
-				uriMapping, urlTemplate);
+        ESBAPIResourceBean resource = new ESBAPIResourceBean(method, uriMapping, urlTemplate);
 
-		ESBAPIBean api = new ESBAPIBean(apiKey, resource, sequenceType,
-				mediatorPosition);
-		sequence = new ESBAPISequenceBean(api);
-	}
+        ESBAPIBean api = new ESBAPIBean(apiKey, resource, sequenceType, mediatorPosition);
+        sequence = new ESBAPISequenceBean(api);
+    }
 
-	public ESBAPISequenceBean getSequence() {
-		return sequence;
-	}
+    public ESBAPISequenceBean getSequence() {
+        return sequence;
+    }
 
-	public void setSequence(ESBAPISequenceBean sequence) {
-		this.sequence = sequence;
-	}
+    public void setSequence(ESBAPISequenceBean sequence) {
+        this.sequence = sequence;
+    }
 }

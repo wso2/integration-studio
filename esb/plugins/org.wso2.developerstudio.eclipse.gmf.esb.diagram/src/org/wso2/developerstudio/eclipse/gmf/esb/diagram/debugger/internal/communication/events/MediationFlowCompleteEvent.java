@@ -19,11 +19,10 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.internal.commun
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.internal.communication.IESBDebuggerInternalEvent;
 
 /**
- * This class represent the request event from {@link ESBDebugger} to
- * {@link ESBDebugTarget} when {@link ESBDebugger} notify message processing of
+ * This class represent the request event from {@link ESBDebugger} to {@link ESBDebugTarget} when {@link ESBDebugger}
+ * notify message processing of
  * a mediation flow ending action from ESB Server
  */
-public class MediationFlowCompleteEvent implements IESBDebuggerInternalEvent,
-		IDebuggerEvent {
+public class MediationFlowCompleteEvent implements IESBDebuggerInternalEvent, IDebuggerEvent {
 
 }

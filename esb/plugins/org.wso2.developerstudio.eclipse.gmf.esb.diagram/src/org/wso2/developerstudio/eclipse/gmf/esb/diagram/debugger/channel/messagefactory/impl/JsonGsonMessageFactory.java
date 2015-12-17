@@ -50,174 +50,159 @@ import com.google.gson.JsonParser;
  */
 public class JsonGsonMessageFactory implements ICommunicationMessageFactory {
 
-	@Override
-	public String createCommand(CommandMessage command) {
-		Gson commandMessage = new Gson();
-		String message = commandMessage.toJson(command);
-		return message;
-	}
+    @Override
+    public String createCommand(CommandMessage command) {
+        Gson commandMessage = new Gson();
+        String message = commandMessage.toJson(command);
+        return message;
+    }
 
-	@Override
-	public String createGetPropertiesCommand(GetPropertyCommand command) {
+    @Override
+    public String createGetPropertiesCommand(GetPropertyCommand command) {
 
-		GsonBuilder builder = new GsonBuilder();
-		builder.setFieldNamingStrategy(new PojoToGsonCustomNamingStrategy());
-		Gson propertyCommandMessage = builder.create();
-		return propertyCommandMessage.toJson(command);
-	}
+        GsonBuilder builder = new GsonBuilder();
+        builder.setFieldNamingStrategy(new PojoToGsonCustomNamingStrategy());
+        Gson propertyCommandMessage = builder.create();
+        return propertyCommandMessage.toJson(command);
+    }
 
-	@Override
-	public IResponseMessage convertResponseToIResponseMessage(String response) {
-		JsonElement jsonElement = new JsonParser().parse(response);
-		Set<Entry<String, JsonElement>> entrySet = jsonElement
-				.getAsJsonObject().entrySet();
-		String commandResponse = null;
-		String failedReason = null;
-		String scope = null;
-		JsonElement propertyValues = null;
-		for (Entry<String, JsonElement> entry : entrySet) {
-			if (COMMAND_RESPONSE_LABEL.equals(entry.getKey())) {
-				commandResponse = entry.getValue().getAsString();
-			} else if (FAILED_REASON_LABEL.equals(entry.getKey())) {
-				failedReason = entry.getValue().getAsString();
-			} else {
-				scope = entry.getKey();
-				propertyValues = entry.getValue();
-			}
-		}
+    @Override
+    public IResponseMessage convertResponseToIResponseMessage(String response) {
+        JsonElement jsonElement = new JsonParser().parse(response);
+        Set<Entry<String, JsonElement>> entrySet = jsonElement.getAsJsonObject().entrySet();
+        String commandResponse = null;
+        String failedReason = null;
+        String scope = null;
+        JsonElement propertyValues = null;
+        for (Entry<String, JsonElement> entry : entrySet) {
+            if (COMMAND_RESPONSE_LABEL.equals(entry.getKey())) {
+                commandResponse = entry.getValue().getAsString();
+            } else if (FAILED_REASON_LABEL.equals(entry.getKey())) {
+                failedReason = entry.getValue().getAsString();
+            } else {
+                scope = entry.getKey();
+                propertyValues = entry.getValue();
+            }
+        }
 
-		if (StringUtils.isNotEmpty(commandResponse)) {
-			return new CommandResponseMessage(commandResponse, failedReason);
-		} else if (!propertyValues.isJsonNull()) {
-			return new PropertyRespondMessage(scope, propertyValues);
-		}
-		throw new IllegalArgumentException(
-				"Invalid Response message Recieved from ESB Server Debugger "
-						+ response);
-	}
+        if (StringUtils.isNotEmpty(commandResponse)) {
+            return new CommandResponseMessage(commandResponse, failedReason);
+        } else if (!propertyValues.isJsonNull()) {
+            return new PropertyRespondMessage(scope, propertyValues);
+        }
+        throw new IllegalArgumentException("Invalid Response message Recieved from ESB Server Debugger " + response);
+    }
 
-	@Override
-	public IEventMessage convertEventToIEventMessage(String eventMessage) {
+    @Override
+    public IEventMessage convertEventToIEventMessage(String eventMessage) {
 
-		JsonElement jsonElement = new JsonParser().parse(eventMessage);
-		Set<Entry<String, JsonElement>> entrySet = jsonElement
-				.getAsJsonObject().entrySet();
+        JsonElement jsonElement = new JsonParser().parse(eventMessage);
+        Set<Entry<String, JsonElement>> entrySet = jsonElement.getAsJsonObject().entrySet();
 
-		EventMessageType event = null;
-		String callbackReciever = null;
-		String messageReciever = null;
-		JsonElement recievedArtifactInfo = null;
-		ArtifactType debugPointType = null;
+        EventMessageType event = null;
+        String callbackReciever = null;
+        String messageReciever = null;
+        JsonElement recievedArtifactInfo = null;
+        ArtifactType debugPointType = null;
 
-		for (Entry<String, JsonElement> entry : entrySet) {
+        for (Entry<String, JsonElement> entry : entrySet) {
 
-			switch (entry.getKey()) {
-			case EVENT_LABEL:
-				event = getEventMessageType(entry.getValue().getAsString());
-				break;
-			case CALLBACK_RECIEVER_LABEL:
-				callbackReciever = entry.getValue().getAsString();
-				break;
-			case MESSAGE_RECIEVER_LABEL:
-				messageReciever = entry.getValue().getAsString();
-				break;
-			case SEQUENCE_LABEL:
-				recievedArtifactInfo = entry.getValue();
-				debugPointType = ArtifactType.SEQUENCE;
-				break;
-			case TEMPLATE_LABEL:
-				recievedArtifactInfo = entry.getValue();
-				debugPointType = ArtifactType.TEMPLATE;
-				break;
-			}
-		}
+            switch (entry.getKey()) {
+            case EVENT_LABEL:
+                event = getEventMessageType(entry.getValue().getAsString());
+                break;
+            case CALLBACK_RECIEVER_LABEL:
+                callbackReciever = entry.getValue().getAsString();
+                break;
+            case MESSAGE_RECIEVER_LABEL:
+                messageReciever = entry.getValue().getAsString();
+                break;
+            case SEQUENCE_LABEL:
+                recievedArtifactInfo = entry.getValue();
+                debugPointType = ArtifactType.SEQUENCE;
+                break;
+            case TEMPLATE_LABEL:
+                recievedArtifactInfo = entry.getValue();
+                debugPointType = ArtifactType.TEMPLATE;
+                break;
+            }
+        }
 
-		if (event != null) {
-			return getIEventMessage(eventMessage, event, callbackReciever,
-					messageReciever, recievedArtifactInfo, debugPointType);
-		} else {
-			throw new IllegalArgumentException(
-					"Invalid Message Recieved from ESB Server Debugger Which doesn't have an event tag : "
-							+ eventMessage);
-		}
+        if (event != null) {
+            return getIEventMessage(eventMessage, event, callbackReciever, messageReciever, recievedArtifactInfo,
+                    debugPointType);
+        } else {
+            throw new IllegalArgumentException(
+                    "Invalid Message Recieved from ESB Server Debugger Which doesn't have an event tag : "
+                            + eventMessage);
+        }
 
-	}
+    }
 
-	/**
-	 * This method check the parameters and returns the desired
-	 * {@link IEventMessage}
-	 * 
-	 * @param eventMessage
-	 * @param event
-	 * @param callbackReciever
-	 * @param messageReciever
-	 * @param recievedArtifactInfo
-	 * @param debugPointType
-	 * @return
-	 */
-	private IEventMessage getIEventMessage(String eventMessage,
-			EventMessageType event, String callbackReciever,
-			String messageReciever, JsonElement recievedArtifactInfo,
-			ArtifactType debugPointType) {
+    /**
+     * This method check the parameters and returns the desired {@link IEventMessage}
+     * 
+     * @param eventMessage
+     * @param event
+     * @param callbackReciever
+     * @param messageReciever
+     * @param recievedArtifactInfo
+     * @param debugPointType
+     * @return
+     */
+    private IEventMessage getIEventMessage(String eventMessage, EventMessageType event, String callbackReciever,
+            String messageReciever, JsonElement recievedArtifactInfo, ArtifactType debugPointType) {
 
-		switch (event) {
-		case RESUMED_CLIENT:
-			return new GeneralEventMessage(event);
-		case DEBUG_INFO_LOST:
-			return new GeneralEventMessage(event);
-		case STARTED:
-			return new SpecialCoordinationEventMessage(event, messageReciever,
-					callbackReciever);
-		case CALLBACK:
-			return new SpecialCoordinationEventMessage(event, messageReciever,
-					callbackReciever);
-		case TERMINATED:
-			return new SpecialCoordinationEventMessage(event, messageReciever,
-					callbackReciever);
-		case BREAKPOINT:
-		case SKIPPOINT:
-			return (IEventMessage) new DebugPointEventMessage(event,
-					ESBDebuggerUtil.getESBDebugPoint(debugPointType, event,
-							recievedArtifactInfo));
-		default:
-			throw new IllegalArgumentException(
-					"Invalid Event Message Recieved from ESB Server Debugger : "
-							+ eventMessage);
-		}
-	}
+        switch (event) {
+        case RESUMED_CLIENT:
+            return new GeneralEventMessage(event);
+        case DEBUG_INFO_LOST:
+            return new GeneralEventMessage(event);
+        case STARTED:
+            return new SpecialCoordinationEventMessage(event, messageReciever, callbackReciever);
+        case CALLBACK:
+            return new SpecialCoordinationEventMessage(event, messageReciever, callbackReciever);
+        case TERMINATED:
+            return new SpecialCoordinationEventMessage(event, messageReciever, callbackReciever);
+        case BREAKPOINT:
+        case SKIPPOINT:
+            return (IEventMessage) new DebugPointEventMessage(event, ESBDebuggerUtil.getESBDebugPoint(debugPointType,
+                    event, recievedArtifactInfo));
+        default:
+            throw new IllegalArgumentException("Invalid Event Message Recieved from ESB Server Debugger : "
+                    + eventMessage);
+        }
+    }
 
-	private EventMessageType getEventMessageType(String event) {
-		switch (event) {
-		case BREAKPOINT_LABEL:
-			return EventMessageType.BREAKPOINT;
-		case SKIP_POINT_LABEL:
-			return EventMessageType.SKIPPOINT;
-		case STARTED_EVENT_TYPE:
-			return EventMessageType.STARTED;
-		case TERMINATED_EVENT_TYPE:
-			return EventMessageType.TERMINATED;
-		case CALLBACK_EVENT_TYPE:
-			return EventMessageType.CALLBACK;
-		case RESUMED_CLIENT_EVENT_TYPE:
-			return EventMessageType.RESUMED_CLIENT;
-		case DEBUG_INFO_LOST_EVENT:
-			return EventMessageType.DEBUG_INFO_LOST;
-		default:
-			throw new IllegalArgumentException("Invalid Event Message Type : "
-					+ event);
-		}
+    private EventMessageType getEventMessageType(String event) {
+        switch (event) {
+        case BREAKPOINT_LABEL:
+            return EventMessageType.BREAKPOINT;
+        case SKIP_POINT_LABEL:
+            return EventMessageType.SKIPPOINT;
+        case STARTED_EVENT_TYPE:
+            return EventMessageType.STARTED;
+        case TERMINATED_EVENT_TYPE:
+            return EventMessageType.TERMINATED;
+        case CALLBACK_EVENT_TYPE:
+            return EventMessageType.CALLBACK;
+        case RESUMED_CLIENT_EVENT_TYPE:
+            return EventMessageType.RESUMED_CLIENT;
+        case DEBUG_INFO_LOST_EVENT:
+            return EventMessageType.DEBUG_INFO_LOST;
+        default:
+            throw new IllegalArgumentException("Invalid Event Message Type : " + event);
+        }
 
-	}
+    }
 
-	@Override
-	public String createBreakpointCommand(
-			AbstractESBDebugPointMessage debugPoint) throws Exception {
-		GsonBuilder builder = new GsonBuilder();
-		builder.registerTypeAdapter(ESBMediatorPosition.class,
-				new MediatorPositionGsonSerializer());
-		builder.setFieldNamingStrategy(new PojoToGsonCustomNamingStrategy());
-		Gson debugPointMessage = builder.create();
-		return debugPointMessage.toJson(debugPoint);
-	}
+    @Override
+    public String createBreakpointCommand(AbstractESBDebugPointMessage debugPoint) throws Exception {
+        GsonBuilder builder = new GsonBuilder();
+        builder.registerTypeAdapter(ESBMediatorPosition.class, new MediatorPositionGsonSerializer());
+        builder.setFieldNamingStrategy(new PojoToGsonCustomNamingStrategy());
+        Gson debugPointMessage = builder.create();
+        return debugPointMessage.toJson(debugPoint);
+    }
 
 }

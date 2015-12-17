@@ -23,18 +23,18 @@ package org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.exception;
  */
 public class MissingAttributeException extends ESBDebuggerException {
 
-	private static final long serialVersionUID = -2030445246856097971L;
+    private static final long serialVersionUID = -2030445246856097971L;
 
-	public MissingAttributeException(String message) {
-		super(message);
-	}
+    public MissingAttributeException(String message) {
+        super(message);
+    }
 
-	public MissingAttributeException(Throwable cause) {
-		super(cause);
-	}
+    public MissingAttributeException(Throwable cause) {
+        super(cause);
+    }
 
-	public MissingAttributeException(String message, Throwable cause) {
-		super(message, cause);
-	}
+    public MissingAttributeException(String message, Throwable cause) {
+        super(message, cause);
+    }
 
 }

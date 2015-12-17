@@ -23,35 +23,34 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ES
  * Mediation Debugger Tool via JSON Channel
  */
 public enum ESBDebuggerCommands {
-	/*
-	 * This command represent register debug point command
-	 */
-	SET_BREAKPOINT_SKIPPOINT(SET_COMMAND),
-	/*
-	 * This command represent unregister debug point command
-	 */
-	CLEAR_BREAKPOINT_SKIPPOINT(CLEAR_COMMAND),
-	/*
-	 * This command represent get values from ESb Server Mediation Debugger
-	 */
-	GET_COMMAND(GET_COMMAND_VALUE),
-	/*
-	 * This command represent resume ESB Server Mediation Debugger
-	 */
-	RESUME_COMMAND(RESUME_COMMAND_VALUE);
+    /*
+     * This command represent register debug point command
+     */
+    SET_BREAKPOINT_SKIPPOINT(SET_COMMAND),
+    /*
+     * This command represent unregister debug point command
+     */
+    CLEAR_BREAKPOINT_SKIPPOINT(CLEAR_COMMAND),
+    /*
+     * This command represent get values from ESb Server Mediation Debugger
+     */
+    GET_COMMAND(GET_COMMAND_VALUE),
+    /*
+     * This command represent resume ESB Server Mediation Debugger
+     */
+    RESUME_COMMAND(RESUME_COMMAND_VALUE);
 
-	private final String command;
+    private final String command;
 
-	private ESBDebuggerCommands(String commandValue) {
-		command = commandValue;
-	}
+    private ESBDebuggerCommands(String commandValue) {
+        command = commandValue;
+    }
 
-	public boolean equalsName(String comapreCommand) {
-		return (comapreCommand == null) ? false : command
-				.equals(comapreCommand);
-	}
+    public boolean equalsName(String comapreCommand) {
+        return (comapreCommand == null) ? false : command.equals(comapreCommand);
+    }
 
-	public String toString() {
-		return this.command;
-	}
+    public String toString() {
+        return this.command;
+    }
 }

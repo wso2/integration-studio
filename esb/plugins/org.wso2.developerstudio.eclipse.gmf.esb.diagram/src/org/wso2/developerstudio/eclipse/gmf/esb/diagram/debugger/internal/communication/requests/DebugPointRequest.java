@@ -24,47 +24,43 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.messages.util.A
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.DebugPointEventAction;
 
 /**
- * This class represent the request event from {@link ESBDebugTarget} to
- * {@link ESBDebugger} when a {@link ESBDebugPoint} adding or removing operation
+ * This class represent the request event from {@link ESBDebugTarget} to {@link ESBDebugger} when a
+ * {@link ESBDebugPoint} adding or removing operation
  * occurred by user
  *
  */
-public class DebugPointRequest implements IDebugTargetRequest,
-		IESBDebuggerInternalEvent {
+public class DebugPointRequest implements IDebugTargetRequest, IESBDebuggerInternalEvent {
 
-	private final DebugPointEventAction type;
-	private final int lineNumber;
-	private AbstractESBDebugPointMessage debugPoint;
+    private final DebugPointEventAction type;
+    private final int lineNumber;
+    private AbstractESBDebugPointMessage debugPoint;
 
-	public DebugPointRequest(ESBDebugPoint debugPoint,
-			DebugPointEventAction action)
-			throws DebugPointMarkerNotFoundException, CoreException {
-		type = action;
-		lineNumber = debugPoint.getLineNumber();
-		this.debugPoint = debugPoint.getLocation();
-	}
+    public DebugPointRequest(ESBDebugPoint debugPoint, DebugPointEventAction action)
+            throws DebugPointMarkerNotFoundException, CoreException {
+        type = action;
+        lineNumber = debugPoint.getLineNumber();
+        this.debugPoint = debugPoint.getLocation();
+    }
 
-	public DebugPointEventAction getType() {
-		return type;
-	}
+    public DebugPointEventAction getType() {
+        return type;
+    }
 
-	public int getLine() {
-		return lineNumber;
-	}
+    public int getLine() {
+        return lineNumber;
+    }
 
-	public AbstractESBDebugPointMessage getDebugPointAttributes() {
-		return debugPoint;
-	}
+    public AbstractESBDebugPointMessage getDebugPointAttributes() {
+        return debugPoint;
+    }
 
-	@Override
-	public String toString() {
-		return "BreakpointEvent: "
-				+ ((getType() == DebugPointEventAction.ADDED) ? "ADDED"
-						: "REMOVED") + ", line : " + getLine()
-				+ " , attributes : " + getDebugPointAttributes();
-	}
+    @Override
+    public String toString() {
+        return "BreakpointEvent: " + ((getType() == DebugPointEventAction.ADDED) ? "ADDED" : "REMOVED") + ", line : "
+                + getLine() + " , attributes : " + getDebugPointAttributes();
+    }
 
-	public AbstractESBDebugPointMessage getDebugPoint() {
-		return debugPoint;
-	}
+    public AbstractESBDebugPointMessage getDebugPoint() {
+        return debugPoint;
+    }
 }

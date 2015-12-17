@@ -23,30 +23,29 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.EventMess
  */
 public class SpecialCoordinationEventMessage extends GeneralEventMessage {
 
-	private String messageReciever;
-	private String callbackReciever;
+    private String messageReciever;
+    private String callbackReciever;
 
-	public SpecialCoordinationEventMessage(EventMessageType event,
-			String messageReciever, String callbackReciever) {
-		super(event);
-		this.messageReciever = messageReciever;
-		this.callbackReciever = callbackReciever;
-	}
+    public SpecialCoordinationEventMessage(EventMessageType event, String messageReciever, String callbackReciever) {
+        super(event);
+        this.messageReciever = messageReciever;
+        this.callbackReciever = callbackReciever;
+    }
 
-	public String getMessageReciever() {
-		return messageReciever;
-	}
+    public String getMessageReciever() {
+        return messageReciever;
+    }
 
-	public void setMessageReciever(String messageReciever) {
-		this.messageReciever = messageReciever;
-	}
+    public void setMessageReciever(String messageReciever) {
+        this.messageReciever = messageReciever;
+    }
 
-	public String getCallbackReciever() {
-		return callbackReciever;
-	}
+    public String getCallbackReciever() {
+        return callbackReciever;
+    }
 
-	public void setCallbackReciever(String callbackReciever) {
-		this.callbackReciever = callbackReciever;
-	}
+    public void setCallbackReciever(String callbackReciever) {
+        this.callbackReciever = callbackReciever;
+    }
 
 }

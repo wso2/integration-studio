@@ -22,18 +22,18 @@ package org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.exception;
  */
 public class MediatorNotFoundException extends ESBDebuggerException {
 
-	private static final long serialVersionUID = 1750498401067909542L;
+    private static final long serialVersionUID = 1750498401067909542L;
 
-	public MediatorNotFoundException(String message) {
-		super(message);
-	}
+    public MediatorNotFoundException(String message) {
+        super(message);
+    }
 
-	public MediatorNotFoundException(Throwable cause) {
-		super(cause);
-	}
+    public MediatorNotFoundException(Throwable cause) {
+        super(cause);
+    }
 
-	public MediatorNotFoundException(String message, Throwable cause) {
-		super(message, cause);
-	}
+    public MediatorNotFoundException(String message, Throwable cause) {
+        super(message, cause);
+    }
 
 }

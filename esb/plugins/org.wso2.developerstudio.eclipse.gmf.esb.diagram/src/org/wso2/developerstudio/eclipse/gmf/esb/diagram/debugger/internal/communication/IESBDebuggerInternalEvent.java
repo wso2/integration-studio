@@ -16,8 +16,8 @@
 package org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.internal.communication;
 
 /**
- * All internal debug events communicating between {@link ESBDebugger} to
- * {@link ESBDebugTarget} in ESB Mediation Debugger should implement this
+ * All internal debug events communicating between {@link ESBDebugger} to {@link ESBDebugTarget} in ESB Mediation
+ * Debugger should implement this
  * interface
  */
 public interface IESBDebuggerInternalEvent {

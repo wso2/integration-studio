@@ -22,39 +22,38 @@ package org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.messages.comma
  */
 public class GetPropertyCommand {
 
-	private String command;
-	private String commandArgument;
-	private String context;
+    private String command;
+    private String commandArgument;
+    private String context;
 
-	public GetPropertyCommand(String command, String commandArgument,
-			String context) {
-		this.command = command;
-		this.commandArgument = commandArgument;
-		this.context = context;
-	}
+    public GetPropertyCommand(String command, String commandArgument, String context) {
+        this.command = command;
+        this.commandArgument = commandArgument;
+        this.context = context;
+    }
 
-	public String getCommand() {
-		return command;
-	}
+    public String getCommand() {
+        return command;
+    }
 
-	public void setCommand(String command) {
-		this.command = command;
-	}
+    public void setCommand(String command) {
+        this.command = command;
+    }
 
-	public String getCommandArgument() {
-		return commandArgument;
-	}
+    public String getCommandArgument() {
+        return commandArgument;
+    }
 
-	public void setCommandArgument(String commandArgument) {
-		this.commandArgument = commandArgument;
-	}
+    public void setCommandArgument(String commandArgument) {
+        this.commandArgument = commandArgument;
+    }
 
-	public String getContext() {
-		return context;
-	}
+    public String getContext() {
+        return context;
+    }
 
-	public void setContext(String context) {
-		this.context = context;
-	}
+    public void setContext(String context) {
+        this.context = context;
+    }
 
 }

@@ -31,20 +31,19 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.exception.Missi
  */
 public interface IMediatorLocator {
 
-	/**
-	 * This method search through ESB mediation flow diagram and give the
-	 * editPart of the matching mediator with debugpoint
-	 * 
-	 * @param esbServer
-	 * @param breakpoint
-	 * @return
-	 * @throws MediatorNotFoundException
-	 * @throws MissingAttributeException
-	 * @throws CoreException
-	 * @throws DebugPointMarkerNotFoundException
-	 */
-	EditPart getMediatorEditPart(EsbServer esbServer, ESBDebugPoint breakpoint)
-			throws MediatorNotFoundException, MissingAttributeException,
-			DebugPointMarkerNotFoundException, CoreException;
+    /**
+     * This method search through ESB mediation flow diagram and give the
+     * editPart of the matching mediator with debugpoint
+     * 
+     * @param esbServer
+     * @param breakpoint
+     * @return
+     * @throws MediatorNotFoundException
+     * @throws MissingAttributeException
+     * @throws CoreException
+     * @throws DebugPointMarkerNotFoundException
+     */
+    EditPart getMediatorEditPart(EsbServer esbServer, ESBDebugPoint breakpoint) throws MediatorNotFoundException,
+            MissingAttributeException, DebugPointMarkerNotFoundException, CoreException;
 
 }

@@ -21,20 +21,19 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.messages.event.
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.messages.util.AbstractESBDebugPointMessage;
 
 /**
- * This class represent the request event from {@link ESBDebugger} to
- * {@link ESBDebugTarget} when {@link ESBDebugger} notify suspend action from
+ * This class represent the request event from {@link ESBDebugger} to {@link ESBDebugTarget} when {@link ESBDebugger}
+ * notify suspend action from
  * ESB Server
  */
-public class SuspendedEvent implements IESBDebuggerInternalEvent,
-		IDebuggerEvent {
+public class SuspendedEvent implements IESBDebuggerInternalEvent, IDebuggerEvent {
 
-	private AbstractESBDebugPointMessage debugPoint;
+    private AbstractESBDebugPointMessage debugPoint;
 
-	public SuspendedEvent(DebugPointEventMessage event) {
-		debugPoint = event.getDebugPoint();
-	}
+    public SuspendedEvent(DebugPointEventMessage event) {
+        debugPoint = event.getDebugPoint();
+    }
 
-	public AbstractESBDebugPointMessage getDetail() {
-		return debugPoint;
-	}
+    public AbstractESBDebugPointMessage getDetail() {
+        return debugPoint;
+    }
 }

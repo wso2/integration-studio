@@ -32,18 +32,18 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.EventMess
  */
 public class GeneralEventMessage implements IEventMessage {
 
-	private EventMessageType event;
+    private EventMessageType event;
 
-	public GeneralEventMessage(EventMessageType event) {
-		this.event = event;
-	}
+    public GeneralEventMessage(EventMessageType event) {
+        this.event = event;
+    }
 
-	public EventMessageType getEvent() {
-		return event;
-	}
+    public EventMessageType getEvent() {
+        return event;
+    }
 
-	public void setEvent(EventMessageType event) {
-		this.event = event;
-	}
+    public void setEvent(EventMessageType event) {
+        this.event = event;
+    }
 
 }

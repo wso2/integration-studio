@@ -26,39 +26,38 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ES
  */
 public class ESBProxySequenceBean {
 
-	private ESBProxyBean proxy;
+    private ESBProxyBean proxy;
 
-	public ESBProxySequenceBean(ESBProxyBean proxy) {
-		this.proxy = proxy;
-	}
+    public ESBProxySequenceBean(ESBProxyBean proxy) {
+        this.proxy = proxy;
+    }
 
-	@Override
-	public boolean equals(Object proxySeqBean) {
-		if (proxySeqBean instanceof ESBProxySequenceBean) {
-			if (proxy.equals(((ESBProxySequenceBean) proxySeqBean).getProxy())) {
-				return true;
-			}
-			return false;
-		} else {
-			return false;
-		}
-	}
+    @Override
+    public boolean equals(Object proxySeqBean) {
+        if (proxySeqBean instanceof ESBProxySequenceBean) {
+            if (proxy.equals(((ESBProxySequenceBean) proxySeqBean).getProxy())) {
+                return true;
+            }
+            return false;
+        } else {
+            return false;
+        }
+    }
 
-	@Override
-	public int hashCode() {
-		int result = INITIAL_HASH_CODE_RESULT_VALUE;
-		result = HASHCODE_MULTIPLIER_VALUE * result + proxy.hashCode()
-				+ PROXY_LABEL.hashCode();
+    @Override
+    public int hashCode() {
+        int result = INITIAL_HASH_CODE_RESULT_VALUE;
+        result = HASHCODE_MULTIPLIER_VALUE * result + proxy.hashCode() + PROXY_LABEL.hashCode();
 
-		return result;
-	}
+        return result;
+    }
 
-	public ESBProxyBean getProxy() {
-		return proxy;
-	}
+    public ESBProxyBean getProxy() {
+        return proxy;
+    }
 
-	public void setProxy(ESBProxyBean proxy) {
-		this.proxy = proxy;
-	}
+    public void setProxy(ESBProxyBean proxy) {
+        this.proxy = proxy;
+    }
 
 }

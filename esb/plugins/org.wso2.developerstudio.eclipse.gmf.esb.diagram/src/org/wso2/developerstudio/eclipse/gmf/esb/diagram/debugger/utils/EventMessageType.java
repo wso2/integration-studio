@@ -24,47 +24,47 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ES
  *
  */
 public enum EventMessageType {
-	/*
-	 * This event type represent a breakpoint event
-	 */
-	BREAKPOINT(BREAKPOINT_EVENT_TYPE),
-	/*
-	 * This event type represent a skip point event
-	 */
-	SKIPPOINT(SKIP_POINT_LABEL),
-	/*
-	 * This event type represent a message mediation started
-	 */
-	STARTED(STARTED_EVENT_TYPE),
-	/*
-	 * This event type represent a call back event
-	 */
-	CALLBACK(CALLBACK_EVENT_TYPE),
-	/*
-	 * This event type represent a message mediation terminated
-	 */
-	TERMINATED(TERMINATED_EVENT_TYPE),
-	/*
-	 * This event type represent a client resumed event
-	 */
-	RESUMED_CLIENT(RESUMED_CLIENT_EVENT_TYPE),
-	/*
-	 * This event type represent a debug points and other debugger related info
-	 * lost event
-	 */
-	DEBUG_INFO_LOST(DEBUG_INFO_LOST_EVENT);
+    /*
+     * This event type represent a breakpoint event
+     */
+    BREAKPOINT(BREAKPOINT_EVENT_TYPE),
+    /*
+     * This event type represent a skip point event
+     */
+    SKIPPOINT(SKIP_POINT_LABEL),
+    /*
+     * This event type represent a message mediation started
+     */
+    STARTED(STARTED_EVENT_TYPE),
+    /*
+     * This event type represent a call back event
+     */
+    CALLBACK(CALLBACK_EVENT_TYPE),
+    /*
+     * This event type represent a message mediation terminated
+     */
+    TERMINATED(TERMINATED_EVENT_TYPE),
+    /*
+     * This event type represent a client resumed event
+     */
+    RESUMED_CLIENT(RESUMED_CLIENT_EVENT_TYPE),
+    /*
+     * This event type represent a debug points and other debugger related info
+     * lost event
+     */
+    DEBUG_INFO_LOST(DEBUG_INFO_LOST_EVENT);
 
-	private final String event;
+    private final String event;
 
-	private EventMessageType(String eventValue) {
-		event = eventValue;
-	}
+    private EventMessageType(String eventValue) {
+        event = eventValue;
+    }
 
-	public boolean equalsName(String comapreEvent) {
-		return (comapreEvent == null) ? false : event.equals(comapreEvent);
-	}
+    public boolean equalsName(String comapreEvent) {
+        return (comapreEvent == null) ? false : event.equals(comapreEvent);
+    }
 
-	public String toString() {
-		return this.event;
-	}
+    public String toString() {
+        return this.event;
+    }
 }

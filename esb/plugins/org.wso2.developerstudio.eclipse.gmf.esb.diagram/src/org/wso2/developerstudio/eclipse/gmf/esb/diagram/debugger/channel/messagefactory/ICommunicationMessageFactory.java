@@ -28,54 +28,51 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.messages.util.A
  */
 public interface ICommunicationMessageFactory {
 
-	/**
-	 * This method creates the specified command message to send to ESB Server
-	 * 
-	 * @param command
-	 * @return
-	 * @throws JSONException
-	 */
-	String createCommand(CommandMessage command) throws Exception;
+    /**
+     * This method creates the specified command message to send to ESB Server
+     * 
+     * @param command
+     * @return
+     * @throws JSONException
+     */
+    String createCommand(CommandMessage command) throws Exception;
 
-	/**
-	 * This method creates the specified breakpoint command message to send to
-	 * ESB Server
-	 * 
-	 * @param debugPoint
-	 * @return
-	 * @throws JSONException
-	 */
-	String createBreakpointCommand(AbstractESBDebugPointMessage debugPoint)
-			throws Exception;
+    /**
+     * This method creates the specified breakpoint command message to send to
+     * ESB Server
+     * 
+     * @param debugPoint
+     * @return
+     * @throws JSONException
+     */
+    String createBreakpointCommand(AbstractESBDebugPointMessage debugPoint) throws Exception;
 
-	/**
-	 * This method creates the specified get properties command message to send
-	 * to ESB Server
-	 * 
-	 * @param getPropertyCommand
-	 * @return
-	 * @throws JSONException
-	 */
-	String createGetPropertiesCommand(GetPropertyCommand getPropertyCommand)
-			throws Exception;
+    /**
+     * This method creates the specified get properties command message to send
+     * to ESB Server
+     * 
+     * @param getPropertyCommand
+     * @return
+     * @throws JSONException
+     */
+    String createGetPropertiesCommand(GetPropertyCommand getPropertyCommand) throws Exception;
 
-	/**
-	 * This method converts response message for Map<String,Object>
-	 * 
-	 * @param response
-	 * @return
-	 * @throws JSONException
-	 */
-	IResponseMessage convertResponseToIResponseMessage(String response)
-			throws Exception;
+    /**
+     * This method converts response message for Map<String,Object>
+     * 
+     * @param response
+     * @return
+     * @throws JSONException
+     */
+    IResponseMessage convertResponseToIResponseMessage(String response) throws Exception;
 
-	/**
-	 * This method converts event message for Map<String,Object>
-	 * 
-	 * @param buffer
-	 * @return
-	 * @throws JSONException
-	 */
-	IEventMessage convertEventToIEventMessage(String buffer) throws Exception;
+    /**
+     * This method converts event message for Map<String,Object>
+     * 
+     * @param buffer
+     * @return
+     * @throws JSONException
+     */
+    IEventMessage convertEventToIEventMessage(String buffer) throws Exception;
 
 }

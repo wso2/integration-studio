@@ -27,51 +27,50 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.messages.event.
  */
 public interface IESBDebugger {
 
-	/**
-	 * This method gets and handle Event messages from
-	 * {@link IESBDebuggerInterface} came from ESB Server Debugger
-	 * 
-	 * @param iEventMessage
-	 */
-	public void notifyEvent(IEventMessage iEventMessage);
+    /**
+     * This method gets and handle Event messages from {@link IESBDebuggerInterface} came from ESB Server Debugger
+     * 
+     * @param iEventMessage
+     */
+    public void notifyEvent(IEventMessage iEventMessage);
 
-	/**
-	 * This method gets and handle command response messages from
-	 * {@link IESBDebuggerInterface} came from ESB Server Debugger
-	 * 
-	 * @param iResponseMessage
-	 */
-	public void notifyResponce(IResponseMessage iResponseMessage);
+    /**
+     * This method gets and handle command response messages from {@link IESBDebuggerInterface} came from ESB Server
+     * Debugger
+     * 
+     * @param iResponseMessage
+     */
+    public void notifyResponce(IResponseMessage iResponseMessage);
 
-	/**
-	 * This method send event for {@link IESBDebugTarget} informing ESB Server
-	 * Started for Debugging
-	 */
-	public void fireLoadedEvent();
+    /**
+     * This method send event for {@link IESBDebugTarget} informing ESB Server
+     * Started for Debugging
+     */
+    public void fireLoadedEvent();
 
-	/**
-	 * This method send event for {@link IESBDebugTarget} informing ESB Server
-	 * Terminated
-	 * 
-	 * @throws IOException
-	 * @throws Exception
-	 */
-	public void fireTerminatedEvent() throws IOException, Exception;
+    /**
+     * This method send event for {@link IESBDebugTarget} informing ESB Server
+     * Terminated
+     * 
+     * @throws IOException
+     * @throws Exception
+     */
+    public void fireTerminatedEvent() throws IOException, Exception;
 
-	/**
-	 * This method send event for {@link IESBDebugTarget} informing ESB Server
-	 * Resumed
-	 */
-	public void fireResumedEvent();
+    /**
+     * This method send event for {@link IESBDebugTarget} informing ESB Server
+     * Resumed
+     */
+    public void fireResumedEvent();
 
-	public IESBDebuggerInterface getESBDebuggerInterface();
+    public IESBDebuggerInterface getESBDebuggerInterface();
 
-	/**
-	 * This method send event for {@link IESBDebugTarget} informing ESB Server
-	 * Suspended
-	 * 
-	 * @param event
-	 */
-	public void fireSuspendedEvent(DebugPointEventMessage event);
+    /**
+     * This method send event for {@link IESBDebugTarget} informing ESB Server
+     * Suspended
+     * 
+     * @param event
+     */
+    public void fireSuspendedEvent(DebugPointEventMessage event);
 
 }

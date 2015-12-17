@@ -19,11 +19,10 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.internal.commun
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.internal.communication.IESBDebuggerInternalEvent;
 
 /**
- * This class represent the request event from {@link ESBDebugTarget} to
- * {@link ESBDebugger} when property variables are required from suspended ESB
+ * This class represent the request event from {@link ESBDebugTarget} to {@link ESBDebugger} when property variables are
+ * required from suspended ESB
  * Server.
  *
  */
-public class FetchVariablesRequest implements IDebugTargetRequest,
-		IESBDebuggerInternalEvent {
+public class FetchVariablesRequest implements IDebugTargetRequest, IESBDebuggerInternalEvent {
 }

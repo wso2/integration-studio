@@ -26,40 +26,38 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.exception.ESBDe
 /**
  * This interface should be implemented by all Debug Point builder classes.
  * <p>
- * Debug Point builders should be able to create {@link ESBDebugPoint}'s of
- * selected mediators and update existing debug points when editing the design.
+ * Debug Point builders should be able to create {@link ESBDebugPoint}'s of selected mediators and update existing debug
+ * points when editing the design.
  * 
  */
 
 public interface IESBDebugPointBuilder {
-	/**
-	 * This method returns a {@link ESBDebugPoint} of mediatorPart which is in
-	 * file resource and esbServer.
-	 * 
-	 * @param esbServer
-	 * @param resource
-	 * @param mediatorPart
-	 * @param commandArguement
-	 * @return
-	 * @throws CoreException
-	 * @throws ESBDebuggerException
-	 */
-	ESBDebugPoint getESBDebugPoint(EsbServer esbServer, IResource resource,
-			AbstractMediator mediatorPart, String commandArguement)
-			throws CoreException, ESBDebuggerException;
+    /**
+     * This method returns a {@link ESBDebugPoint} of mediatorPart which is in
+     * file resource and esbServer.
+     * 
+     * @param esbServer
+     * @param resource
+     * @param mediatorPart
+     * @param commandArguement
+     * @return
+     * @throws CoreException
+     * @throws ESBDebuggerException
+     */
+    ESBDebugPoint getESBDebugPoint(EsbServer esbServer, IResource resource, AbstractMediator mediatorPart,
+            String commandArguement) throws CoreException, ESBDebuggerException;
 
-	/**
-	 * This method update {@link ESBDebugPoint}'s already registered in
-	 * Breakpoint Manager which is affected by action of inserting or deleting
-	 * mentioned mediator.
-	 * 
-	 * @param resource
-	 * @param abstractMediator
-	 * @param esbServer
-	 * @param action
-	 * @throws ESBDebuggerException
-	 */
-	void updateExistingDebugPoints(IResource resource,
-			AbstractMediator abstractMediator, EsbServer esbServer,
-			String action) throws ESBDebuggerException;
+    /**
+     * This method update {@link ESBDebugPoint}'s already registered in
+     * Breakpoint Manager which is affected by action of inserting or deleting
+     * mentioned mediator.
+     * 
+     * @param resource
+     * @param abstractMediator
+     * @param esbServer
+     * @param action
+     * @throws ESBDebuggerException
+     */
+    void updateExistingDebugPoints(IResource resource, AbstractMediator abstractMediator, EsbServer esbServer,
+            String action) throws ESBDebuggerException;
 }

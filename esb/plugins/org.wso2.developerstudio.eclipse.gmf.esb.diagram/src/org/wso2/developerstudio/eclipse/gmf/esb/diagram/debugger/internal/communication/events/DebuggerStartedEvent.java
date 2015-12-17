@@ -19,10 +19,9 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.internal.commun
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.internal.communication.IESBDebuggerInternalEvent;
 
 /**
- * This class represent the request event from {@link ESBDebugger} to
- * {@link ESBDebugTarget} when {@link ESBDebugger} notify esb server started in
+ * This class represent the request event from {@link ESBDebugger} to {@link ESBDebugTarget} when {@link ESBDebugger}
+ * notify esb server started in
  * debug mode
  */
-public class DebuggerStartedEvent implements IESBDebuggerInternalEvent,
-		IDebuggerEvent {
+public class DebuggerStartedEvent implements IESBDebuggerInternalEvent, IDebuggerEvent {
 }

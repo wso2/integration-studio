@@ -36,120 +36,113 @@ import com.google.gson.JsonElement;
  */
 public class ESBValue extends ESBDebugElement implements IValue {
 
-	private static final String ENVELOPE_PROPERTY_KEY = "envelope";
+    private static final String ENVELOPE_PROPERTY_KEY = "envelope";
 
-	private final String variableValue;
-	private List<IVariable> valueChildren;
+    private final String variableValue;
+    private List<IVariable> valueChildren;
 
-	public ESBValue(ESBDebugTarget debugTarget, String value) {
-		super(debugTarget);
-		variableValue = value;
-	}
+    public ESBValue(ESBDebugTarget debugTarget, String value) {
+        super(debugTarget);
+        variableValue = value;
+    }
 
-	public ESBValue(IDebugTarget target, JsonElement value)
-			throws DebugException {
-		super(target);
+    public ESBValue(IDebugTarget target, JsonElement value) throws DebugException {
+        super(target);
 
-		variableValue = value.toString();
-		if (!value.isJsonNull()) {
-			Set<Entry<String, JsonElement>> entrySet = value.getAsJsonObject()
-					.entrySet();
-			if (valueChildren != null) {
-				for (Entry<String, JsonElement> entry : entrySet) {
-					addValueToMatchingChildVariable(entry);
-				}
-			} else {
-				valueChildren = new ArrayList<>();
-				for (Entry<String, JsonElement> entry : entrySet) {
-					addNewChildVariable(entry);
-				}
-			}
-		}
-	}
+        variableValue = value.toString();
+        if (!value.isJsonNull()) {
+            Set<Entry<String, JsonElement>> entrySet = value.getAsJsonObject().entrySet();
+            if (valueChildren != null) {
+                for (Entry<String, JsonElement> entry : entrySet) {
+                    addValueToMatchingChildVariable(entry);
+                }
+            } else {
+                valueChildren = new ArrayList<>();
+                for (Entry<String, JsonElement> entry : entrySet) {
+                    addNewChildVariable(entry);
+                }
+            }
+        }
+    }
 
-	/**
-	 * @param entry
-	 * @throws DebugException
-	 */
-	private void addNewChildVariable(Entry<String, JsonElement> entry)
-			throws DebugException {
-		ESBVariable esbVariable = new ESBVariable(getDebugTarget(),
-				entry.getKey(), entry.getValue().getAsString());
-		valueChildren.add(esbVariable);
-		if (ENVELOPE_PROPERTY_KEY.equalsIgnoreCase(entry.getKey())) {
-			OpenEditorUtil.setToolTipMessageOnMediator(entry.getValue()
-					.getAsString());
-		}
-		esbVariable.fireCreationEvent();
-	}
+    /**
+     * @param entry
+     * @throws DebugException
+     */
+    private void addNewChildVariable(Entry<String, JsonElement> entry) throws DebugException {
+        ESBVariable esbVariable = new ESBVariable(getDebugTarget(), entry.getKey(), entry.getValue().getAsString());
+        valueChildren.add(esbVariable);
+        if (ENVELOPE_PROPERTY_KEY.equalsIgnoreCase(entry.getKey())) {
+            OpenEditorUtil.setToolTipMessageOnMediator(entry.getValue().getAsString());
+        }
+        esbVariable.fireCreationEvent();
+    }
 
-	/**
-	 * @param entry
-	 * @throws DebugException
-	 */
-	private void addValueToMatchingChildVariable(
-			Entry<String, JsonElement> entry) throws DebugException {
-		for (IVariable variable : valueChildren) {
-			if (variable.getName().equals(entry.getKey())) {
-				variable.setValue(entry.getValue().getAsString());
-				((ESBVariable) variable).fireChangeEvent(DebugEvent.CONTENT);
-				if (variable.getName().equalsIgnoreCase(ENVELOPE_PROPERTY_KEY)) {
-					OpenEditorUtil.setToolTipMessageOnMediator(entry.getValue()
-							.getAsString());
-				}
-				break;
-			}
-		}
-	}
+    /**
+     * @param entry
+     * @throws DebugException
+     */
+    private void addValueToMatchingChildVariable(Entry<String, JsonElement> entry) throws DebugException {
+        for (IVariable variable : valueChildren) {
+            if (variable.getName().equals(entry.getKey())) {
+                variable.setValue(entry.getValue().getAsString());
+                ((ESBVariable) variable).fireChangeEvent(DebugEvent.CONTENT);
+                if (variable.getName().equalsIgnoreCase(ENVELOPE_PROPERTY_KEY)) {
+                    OpenEditorUtil.setToolTipMessageOnMediator(entry.getValue().getAsString());
+                }
+                break;
+            }
+        }
+    }
 
-	@Override
-	public String getReferenceTypeName() throws DebugException {
-		return ESBDebuggerConstants.VARIABLE_TYPE;
-	}
+    @Override
+    public String getReferenceTypeName() throws DebugException {
+        return ESBDebuggerConstants.VARIABLE_TYPE;
+    }
 
-	/**
-	 * This method returns the value contains in this ESBValue object.
-	 */
-	@Override
-	public String getValueString() throws DebugException {
-		return variableValue;
-	}
+    /**
+     * This method returns the value contains in this ESBValue object.
+     */
+    @Override
+    public String getValueString() throws DebugException {
+        return variableValue;
+    }
 
-	/**
-	 * This should return false if the ESBValue is Garbage Collected.
-	 */
-	@Override
-	public boolean isAllocated() throws DebugException {
-		return true;
-	}
+    /**
+     * This should return false if the ESBValue is Garbage Collected.
+     */
+    @Override
+    public boolean isAllocated() throws DebugException {
+        return true;
+    }
 
-	/**
-	 * This method returns Array of child variables contain in this ESBValue.
-	 */
-	@Override
-	public IVariable[] getVariables() throws DebugException {
-		return valueChildren.toArray(new IVariable[valueChildren.size()]);
-	}
+    /**
+     * This method returns Array of child variables contain in this ESBValue.
+     */
+    @Override
+    public IVariable[] getVariables() throws DebugException {
+        return valueChildren.toArray(new IVariable[valueChildren.size()]);
+    }
 
-	/**
-	 * This method returns true if this ESBValue has child variables
-	 */
-	@Override
-	public boolean hasVariables() throws DebugException {
-		return !(valueChildren == null || valueChildren.isEmpty());
-	}
+    /**
+     * This method returns true if this ESBValue has child variables
+     */
+    @Override
+    public boolean hasVariables() throws DebugException {
+        return !(valueChildren == null || valueChildren.isEmpty());
+    }
 
-	public List<IVariable> getVariableList() {
-		return valueChildren;
-	}
+    public List<IVariable> getVariableList() {
+        return valueChildren;
+    }
 
-	public void addChildVariable(IVariable child) {
-		if (valueChildren == null) {
-			valueChildren = new ArrayList<IVariable>();
-			valueChildren.add(child);
-		} else {
-			valueChildren.add(child);
-		}
+    public void addChildVariable(IVariable child) {
+        if (valueChildren == null) {
+            valueChildren = new ArrayList<IVariable>();
+            valueChildren.add(child);
+        } else {
+            valueChildren.add(child);
+        }
 
-	}
+    }
 }

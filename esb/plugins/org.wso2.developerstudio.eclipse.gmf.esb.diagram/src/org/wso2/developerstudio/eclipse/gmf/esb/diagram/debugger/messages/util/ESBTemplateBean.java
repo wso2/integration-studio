@@ -27,54 +27,50 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ES
  */
 public class ESBTemplateBean {
 
-	private String templateKey;
-	private ESBMediatorPosition mediatorPosition;
+    private String templateKey;
+    private ESBMediatorPosition mediatorPosition;
 
-	public ESBTemplateBean(String sequenceKey,
-			ESBMediatorPosition mediatorPosition) {
-		this.templateKey = sequenceKey;
-		this.mediatorPosition = mediatorPosition;
-	}
+    public ESBTemplateBean(String sequenceKey, ESBMediatorPosition mediatorPosition) {
+        this.templateKey = sequenceKey;
+        this.mediatorPosition = mediatorPosition;
+    }
 
-	@Override
-	public boolean equals(Object templateBean) {
-		if (templateBean instanceof ESBTemplateBean) {
-			ESBTemplateBean templateBeanTemp = (ESBTemplateBean) templateBean;
-			if (!(templateKey.equals((templateBeanTemp).getTemplateKey()) && mediatorPosition
-					.equals(templateBeanTemp.getMediatorPosition()))) {
-				return false;
-			}
-			return true;
-		} else {
-			return false;
-		}
-	}
+    @Override
+    public boolean equals(Object templateBean) {
+        if (templateBean instanceof ESBTemplateBean) {
+            ESBTemplateBean templateBeanTemp = (ESBTemplateBean) templateBean;
+            if (!(templateKey.equals((templateBeanTemp).getTemplateKey()) && mediatorPosition.equals(templateBeanTemp
+                    .getMediatorPosition()))) {
+                return false;
+            }
+            return true;
+        } else {
+            return false;
+        }
+    }
 
-	@Override
-	public int hashCode() {
-		int result = INITIAL_HASH_CODE_RESULT_VALUE;
-		result = HASHCODE_MULTIPLIER_VALUE * result + templateKey.hashCode()
-				+ TEMPLATE_KEY_LABEL.hashCode();
-		result = HASHCODE_MULTIPLIER_VALUE * result
-				+ mediatorPosition.hashCode()
-				+ MEDIATOR_POSITION_LABEL.hashCode();
-		return result;
-	}
+    @Override
+    public int hashCode() {
+        int result = INITIAL_HASH_CODE_RESULT_VALUE;
+        result = HASHCODE_MULTIPLIER_VALUE * result + templateKey.hashCode() + TEMPLATE_KEY_LABEL.hashCode();
+        result = HASHCODE_MULTIPLIER_VALUE * result + mediatorPosition.hashCode() + MEDIATOR_POSITION_LABEL.hashCode();
+        return result;
+    }
 
-	public String getTemplateKey() {
-		return templateKey;
-	}
+    public String getTemplateKey() {
+        return templateKey;
+    }
 
-	public void setTemplateKey(String sequenceKey) {
-		this.templateKey = sequenceKey;
-	}
+    public void setTemplateKey(String sequenceKey) {
+        this.templateKey = sequenceKey;
+    }
 
-	public ESBMediatorPosition getMediatorPosition() {
-		return mediatorPosition;
-	}
+    public ESBMediatorPosition getMediatorPosition() {
+        return mediatorPosition;
+    }
 
-	public void setMediatorPosition(ESBMediatorPosition mediatorPosition) {
-		this.mediatorPosition = mediatorPosition;
-	}
+    public void setMediatorPosition(ESBMediatorPosition mediatorPosition) {
+        this.mediatorPosition = mediatorPosition;
+    }
 
 }

@@ -20,19 +20,19 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.internal.commun
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerResumeType;
 
 /**
- * This class represent the request event from {@link ESBDebugger} to
- * {@link ESBDebugTarget} when {@link ESBDebugger} notify resumed action from
+ * This class represent the request event from {@link ESBDebugger} to {@link ESBDebugTarget} when {@link ESBDebugger}
+ * notify resumed action from
  * ESB Server
  */
 public class ResumedEvent implements IESBDebuggerInternalEvent, IDebuggerEvent {
 
-	private final ESBDebuggerResumeType type;
+    private final ESBDebuggerResumeType type;
 
-	public ResumedEvent(ESBDebuggerResumeType type) {
-		this.type = type;
-	}
+    public ResumedEvent(ESBDebuggerResumeType type) {
+        this.type = type;
+    }
 
-	public ESBDebuggerResumeType getType() {
-		return type;
-	}
+    public ESBDebuggerResumeType getType() {
+        return type;
+    }
 }

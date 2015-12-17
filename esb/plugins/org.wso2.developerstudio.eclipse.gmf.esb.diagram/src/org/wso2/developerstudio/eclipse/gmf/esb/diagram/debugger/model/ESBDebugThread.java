@@ -31,47 +31,46 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.Messages;
  */
 public class ESBDebugThread extends ESBDebugElement implements IThread {
 
-	private final List<ESBStackFrame> stackFrames = new ArrayList<>();
+    private final List<ESBStackFrame> stackFrames = new ArrayList<>();
 
-	public ESBDebugThread(final ESBDebugTarget debugTarget) {
-		super(debugTarget);
-	}
+    public ESBDebugThread(final ESBDebugTarget debugTarget) {
+        super(debugTarget);
+    }
 
-	public void addStackFrame(ESBStackFrame stackFrame) {
-		stackFrames.add(0, stackFrame);
-	}
+    public void addStackFrame(ESBStackFrame stackFrame) {
+        stackFrames.add(0, stackFrame);
+    }
 
-	@Override
-	public ESBStackFrame[] getStackFrames() {
-		return stackFrames.toArray(new ESBStackFrame[stackFrames.size()]);
-	}
+    @Override
+    public ESBStackFrame[] getStackFrames() {
+        return stackFrames.toArray(new ESBStackFrame[stackFrames.size()]);
+    }
 
-	@Override
-	public boolean hasStackFrames() {
-		return getStackFrames().length > 0;
-	}
+    @Override
+    public boolean hasStackFrames() {
+        return getStackFrames().length > 0;
+    }
 
-	@Override
-	public int getPriority() {
-		return 0;
-	}
+    @Override
+    public int getPriority() {
+        return 0;
+    }
 
-	@Override
-	public ESBStackFrame getTopStackFrame() {
-		if (!stackFrames.isEmpty())
-			return stackFrames.get(0);
+    @Override
+    public ESBStackFrame getTopStackFrame() {
+        if (!stackFrames.isEmpty())
+            return stackFrames.get(0);
 
-		return null;
-	}
+        return null;
+    }
 
-	@Override
-	public String getName() {
-		return Messages.ESBDebugThread_ESBDebugThreadTag;
-	}
+    @Override
+    public String getName() {
+        return Messages.ESBDebugThread_ESBDebugThreadTag;
+    }
 
-	@Override
-	public IBreakpoint[] getBreakpoints() {
-		return DebugPlugin.getDefault().getBreakpointManager()
-				.getBreakpoints(getModelIdentifier());
-	}
+    @Override
+    public IBreakpoint[] getBreakpoints() {
+        return DebugPlugin.getDefault().getBreakpointManager().getBreakpoints(getModelIdentifier());
+    }
 }

@@ -29,152 +29,141 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ES
  */
 public abstract class AbstractESBDebugPointMessage {
 
-	protected static final String EMPTY_STRING = "";
-	protected static final String SPACE_STRING = " ";
+    protected static final String EMPTY_STRING = "";
+    protected static final String SPACE_STRING = " ";
 
-	protected String command;
-	protected String commandArgument;
-	protected String mediationComponent;
+    protected String command;
+    protected String commandArgument;
+    protected String mediationComponent;
 
-	public AbstractESBDebugPointMessage(String commandArgument,
-			String mediationComponent) {
-		this.commandArgument = commandArgument;
-		this.mediationComponent = mediationComponent;
-	}
+    public AbstractESBDebugPointMessage(String commandArgument, String mediationComponent) {
+        this.commandArgument = commandArgument;
+        this.mediationComponent = mediationComponent;
+    }
 
-	public AbstractESBDebugPointMessage(String command, String commandArgument,
-			String mediationComponent) {
-		this.command = command;
-		this.commandArgument = commandArgument;
-		this.mediationComponent = mediationComponent;
-	}
+    public AbstractESBDebugPointMessage(String command, String commandArgument, String mediationComponent) {
+        this.command = command;
+        this.commandArgument = commandArgument;
+        this.mediationComponent = mediationComponent;
+    }
 
-	public AbstractESBDebugPointMessage(String mediationComponent) {
-		this.mediationComponent = mediationComponent;
-	}
+    public AbstractESBDebugPointMessage(String mediationComponent) {
+        this.mediationComponent = mediationComponent;
+    }
 
-	public String getCommand() {
-		return command;
-	}
+    public String getCommand() {
+        return command;
+    }
 
-	public void setCommand(String command) {
-		this.command = command;
-	}
+    public void setCommand(String command) {
+        this.command = command;
+    }
 
-	public String getCommandArgument() {
-		return commandArgument;
-	}
+    public String getCommandArgument() {
+        return commandArgument;
+    }
 
-	public void setCommandArgument(String commandArgument) {
-		this.commandArgument = commandArgument;
-	}
+    public void setCommandArgument(String commandArgument) {
+        this.commandArgument = commandArgument;
+    }
 
-	public String getMediationComponent() {
-		return mediationComponent;
-	}
+    public String getMediationComponent() {
+        return mediationComponent;
+    }
 
-	public void setMediationComponent(String mediationComponent) {
-		this.mediationComponent = mediationComponent;
-	}
+    public void setMediationComponent(String mediationComponent) {
+        this.mediationComponent = mediationComponent;
+    }
 
-	/**
-	 * This method doesn't compare whether it's type is differ or not. Only
-	 * compare mediation component.
-	 * 
-	 * @param debugPointMessage
-	 * @return
-	 */
-	public boolean equalsIgnoreType(
-			AbstractESBDebugPointMessage debugPointMessage) {
-		if (mediationComponent
-				.equals(debugPointMessage.getMediationComponent())) {
-			return true;
-		}
-		return false;
-	}
+    /**
+     * This method doesn't compare whether it's type is differ or not. Only
+     * compare mediation component.
+     * 
+     * @param debugPointMessage
+     * @return
+     */
+    public boolean equalsIgnoreType(AbstractESBDebugPointMessage debugPointMessage) {
+        if (mediationComponent.equals(debugPointMessage.getMediationComponent())) {
+            return true;
+        }
+        return false;
+    }
 
-	/**
-	 * Checked whether Mediation Component and Command Argument are equal or
-	 * not.
-	 * <p>
-	 * Command value is not taken to compare because command attribute contains
-	 * values related to debug point action "set" or "clear".
-	 */
-	@Override
-	public boolean equals(Object debugPointMessage) {
-		if (debugPointMessage instanceof AbstractESBDebugPointMessage) {
-			AbstractESBDebugPointMessage debugPointMessageTemp = (AbstractESBDebugPointMessage) debugPointMessage;
-			if (!(mediationComponent.equals((debugPointMessageTemp)
-					.getMediationComponent()) && commandArgument
-					.equals((debugPointMessageTemp).getCommandArgument()))) {
-				return false;
-			}
-			return true;
-		} else {
-			return false;
-		}
-	}
+    /**
+     * Checked whether Mediation Component and Command Argument are equal or
+     * not.
+     * <p>
+     * Command value is not taken to compare because command attribute contains values related to debug point action
+     * "set" or "clear".
+     */
+    @Override
+    public boolean equals(Object debugPointMessage) {
+        if (debugPointMessage instanceof AbstractESBDebugPointMessage) {
+            AbstractESBDebugPointMessage debugPointMessageTemp = (AbstractESBDebugPointMessage) debugPointMessage;
+            if (!(mediationComponent.equals((debugPointMessageTemp).getMediationComponent()) && commandArgument
+                    .equals((debugPointMessageTemp).getCommandArgument()))) {
+                return false;
+            }
+            return true;
+        } else {
+            return false;
+        }
+    }
 
-	@Override
-	public int hashCode() {
-		int result = INITIAL_HASH_CODE_RESULT_VALUE;
-		result = HASHCODE_MULTIPLIER_VALUE * result
-				+ mediationComponent.hashCode()
-				+ MEDIATION_COMPONENT_LABEL.hashCode();
-		result = HASHCODE_MULTIPLIER_VALUE * result
-				+ commandArgument.hashCode()
-				+ COMMAND_ARGUMENT_LABEL.hashCode();
-		return result;
-	}
+    @Override
+    public int hashCode() {
+        int result = INITIAL_HASH_CODE_RESULT_VALUE;
+        result = HASHCODE_MULTIPLIER_VALUE * result + mediationComponent.hashCode()
+                + MEDIATION_COMPONENT_LABEL.hashCode();
+        result = HASHCODE_MULTIPLIER_VALUE * result + commandArgument.hashCode() + COMMAND_ARGUMENT_LABEL.hashCode();
+        return result;
+    }
 
-	/**
-	 * @return {@link ESBMediatorPosition} which has the mediator position of
-	 *         the Debug Point
-	 */
-	public abstract ESBMediatorPosition getMediatorPosition();
+    /**
+     * @return {@link ESBMediatorPosition} which has the mediator position of
+     *         the Debug Point
+     */
+    public abstract ESBMediatorPosition getMediatorPosition();
 
-	/**
-	 * This method set mediator position in the debug point message
-	 */
-	public abstract void setMediatorPosition(List<Integer> position);
+    /**
+     * This method set mediator position in the debug point message
+     */
+    public abstract void setMediatorPosition(List<Integer> position);
 
-	/**
-	 * @return Sequence Type of the Debug Point message
-	 */
-	public abstract String getSequenceType();
+    /**
+     * @return Sequence Type of the Debug Point message
+     */
+    public abstract String getSequenceType();
 
-	/**
-	 * This method convert <code>JsonElement</code> value to <code>String</code>
-	 * and remove quotation marks of the converted <code>String</code>
-	 * 
-	 * @param value
-	 * @return
-	 */
-	protected String convertJsonElementValueToString(JsonElement value) {
-		return value.getAsString();
+    /**
+     * This method convert <code>JsonElement</code> value to <code>String</code> and remove quotation marks of the
+     * converted <code>String</code>
+     * 
+     * @param value
+     * @return
+     */
+    protected String convertJsonElementValueToString(JsonElement value) {
+        return value.getAsString();
 
-	}
+    }
 
-	/**
-	 * This method convert Mediator Position <code>String</code> formatted value
-	 * to a <code>List<<code>Integer</code>></code> format
-	 * <p>
-	 * Eg: <code>String</code> format for mediator position is : i {space} j
-	 * {space} k ...
-	 * <p>
-	 * It will be converted to a List of Integers {i,j,k,...}
-	 * 
-	 * @param position
-	 * @return
-	 */
-	protected ESBMediatorPosition convertMediatorPositionStringToList(
-			String position) {
-		List<Integer> positionList = new ArrayList<>();
-		String[] positionArray = position.replaceAll("\\s+", SPACE_STRING)
-				.split(SPACE_STRING);
-		for (String positionValue : positionArray) {
-			positionList.add(Integer.parseInt(positionValue));
-		}
-		return new ESBMediatorPosition(positionList);
-	}
+    /**
+     * This method convert Mediator Position <code>String</code> formatted value
+     * to a <code>List<<code>Integer</code>></code> format
+     * <p>
+     * Eg: <code>String</code> format for mediator position is : i {space} j {space} k ...
+     * <p>
+     * It will be converted to a List of Integers {i,j,k,...}
+     * 
+     * @param position
+     * @return
+     */
+    protected ESBMediatorPosition convertMediatorPositionStringToList(String position) {
+        List<Integer> positionList = new ArrayList<>();
+        String[] positionArray = position.replaceAll("\\s+", SPACE_STRING).split(SPACE_STRING);
+        for (String positionValue : positionArray) {
+            positionList.add(Integer.parseInt(positionValue));
+        }
+        return new ESBMediatorPosition(positionList);
+    }
 }

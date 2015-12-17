@@ -25,20 +25,19 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.EventMess
  */
 public class DebugPointEventMessage extends GeneralEventMessage {
 
-	private AbstractESBDebugPointMessage debugPoint;
+    private AbstractESBDebugPointMessage debugPoint;
 
-	public DebugPointEventMessage(EventMessageType event,
-			AbstractESBDebugPointMessage debugPoint) {
-		super(event);
-		this.debugPoint = debugPoint;
-	}
+    public DebugPointEventMessage(EventMessageType event, AbstractESBDebugPointMessage debugPoint) {
+        super(event);
+        this.debugPoint = debugPoint;
+    }
 
-	public AbstractESBDebugPointMessage getDebugPoint() {
-		return debugPoint;
-	}
+    public AbstractESBDebugPointMessage getDebugPoint() {
+        return debugPoint;
+    }
 
-	public void setDebugPoint(AbstractESBDebugPointMessage debugPoint) {
-		this.debugPoint = debugPoint;
-	}
+    public void setDebugPoint(AbstractESBDebugPointMessage debugPoint) {
+        this.debugPoint = debugPoint;
+    }
 
 }

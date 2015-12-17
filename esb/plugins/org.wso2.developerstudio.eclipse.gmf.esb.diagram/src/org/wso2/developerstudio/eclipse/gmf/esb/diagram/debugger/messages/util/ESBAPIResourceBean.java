@@ -30,60 +30,58 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ES
  */
 public class ESBAPIResourceBean {
 
-	private String method;
-	private String urlMapping;
-	private String uriTemplate;
+    private String method;
+    private String urlMapping;
+    private String uriTemplate;
 
-	public ESBAPIResourceBean(String method, String uriMapping,
-			String uriTemplate) {
-		this.method = method;
-		this.urlMapping = uriMapping;
-		this.uriTemplate = uriTemplate;
-	}
+    public ESBAPIResourceBean(String method, String uriMapping, String uriTemplate) {
+        this.method = method;
+        this.urlMapping = uriMapping;
+        this.uriTemplate = uriTemplate;
+    }
 
-	@Override
-	public boolean equals(Object apiBean) {
-		if (apiBean instanceof ESBAPIResourceBean) {
-			ESBAPIResourceBean apiBeanTemp = (ESBAPIResourceBean) apiBean;
-			if (!(method.equals((apiBeanTemp).getMethod()))) {
-				return false;
-			}
-			return true;
-		} else {
-			return false;
-		}
-	}
+    @Override
+    public boolean equals(Object apiBean) {
+        if (apiBean instanceof ESBAPIResourceBean) {
+            ESBAPIResourceBean apiBeanTemp = (ESBAPIResourceBean) apiBean;
+            if (!(method.equals((apiBeanTemp).getMethod()))) {
+                return false;
+            }
+            return true;
+        } else {
+            return false;
+        }
+    }
 
-	@Override
-	public int hashCode() {
-		int result = INITIAL_HASH_CODE_RESULT_VALUE;
-		result = HASHCODE_MULTIPLIER_VALUE * result + method.hashCode()
-				+ API_RESOURCE_METHOD_LABEL.hashCode();
-		return result;
-	}
+    @Override
+    public int hashCode() {
+        int result = INITIAL_HASH_CODE_RESULT_VALUE;
+        result = HASHCODE_MULTIPLIER_VALUE * result + method.hashCode() + API_RESOURCE_METHOD_LABEL.hashCode();
+        return result;
+    }
 
-	public String getMethod() {
-		return method;
-	}
+    public String getMethod() {
+        return method;
+    }
 
-	public void setMethod(String method) {
-		this.method = method;
-	}
+    public void setMethod(String method) {
+        this.method = method;
+    }
 
-	public String getUrlMapping() {
-		return urlMapping;
-	}
+    public String getUrlMapping() {
+        return urlMapping;
+    }
 
-	public void setUrlMapping(String uriMapping) {
-		this.urlMapping = uriMapping;
-	}
+    public void setUrlMapping(String uriMapping) {
+        this.urlMapping = uriMapping;
+    }
 
-	public String getUriTemplate() {
-		return uriTemplate;
-	}
+    public String getUriTemplate() {
+        return uriTemplate;
+    }
 
-	public void setUriTemplate(String uriTemplate) {
-		this.uriTemplate = uriTemplate;
-	}
+    public void setUriTemplate(String uriTemplate) {
+        this.uriTemplate = uriTemplate;
+    }
 
 }

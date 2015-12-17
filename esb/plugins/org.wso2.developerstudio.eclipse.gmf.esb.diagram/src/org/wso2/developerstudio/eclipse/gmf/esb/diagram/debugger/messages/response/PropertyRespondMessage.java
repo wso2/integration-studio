@@ -25,28 +25,28 @@ import com.google.gson.JsonElement;
  */
 public class PropertyRespondMessage implements IResponseMessage {
 
-	private String scope;
-	private JsonElement propertyValues;
+    private String scope;
+    private JsonElement propertyValues;
 
-	public PropertyRespondMessage(String scope, JsonElement propertyValues) {
-		this.setScope(scope);
-		this.setPropertyValues(propertyValues);
-	}
+    public PropertyRespondMessage(String scope, JsonElement propertyValues) {
+        this.setScope(scope);
+        this.setPropertyValues(propertyValues);
+    }
 
-	public String getScope() {
-		return scope;
-	}
+    public String getScope() {
+        return scope;
+    }
 
-	public void setScope(String scope) {
-		this.scope = scope;
-	}
+    public void setScope(String scope) {
+        this.scope = scope;
+    }
 
-	public JsonElement getPropertyValues() {
-		return propertyValues;
-	}
+    public JsonElement getPropertyValues() {
+        return propertyValues;
+    }
 
-	public void setPropertyValues(JsonElement propertyValues) {
-		this.propertyValues = propertyValues;
-	}
+    public void setPropertyValues(JsonElement propertyValues) {
+        this.propertyValues = propertyValues;
+    }
 
 }

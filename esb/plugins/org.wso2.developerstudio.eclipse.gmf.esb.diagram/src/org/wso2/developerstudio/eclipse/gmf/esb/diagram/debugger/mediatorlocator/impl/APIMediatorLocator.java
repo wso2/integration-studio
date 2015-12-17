@@ -24,94 +24,75 @@ import org.wso2.developerstudio.eclipse.gmf.esb.impl.SynapseAPIImpl;
  */
 public class APIMediatorLocator extends AbstractMediatorLocator {
 
-	/**
-	 * This method returns EditPart of a API according to given information Map
-	 * 
-	 * @throws MediatorNotFoundException
-	 * @throws MissingAttributeException
-	 * @throws CoreException
-	 * @throws DebugPointMarkerNotFoundException
-	 */
-	@Override
-	public EditPart getMediatorEditPart(EsbServer esbServer,
-			ESBDebugPoint breakpoint) throws MediatorNotFoundException,
-			MissingAttributeException, DebugPointMarkerNotFoundException,
-			CoreException {
-		ESBAPIDebugPointMessage debugPointMessage = (ESBAPIDebugPointMessage) breakpoint
-				.getLocation();
-		List<Integer> positionArray = debugPointMessage.getSequence().getApi()
-				.getMediatorPosition().getPosition();
-		String sequenceType = debugPointMessage.getSequence().getApi()
-				.getSequenceType();
-		SynapseAPIImpl api = (SynapseAPIImpl) esbServer.eContents().get(
-				INDEX_OF_FIRST_ELEMENT);
-		APIResource apiResource = getMatchingAPIResource(api, debugPointMessage);
-		if (sequenceType == null
-				|| sequenceType.equals(getFaultSequenceName(apiResource))) {
-			return getMediatorInFaultSeq(apiResource.getContainer()
-					.getFaultContainer().getMediatorFlow().getChildren(),
-					positionArray);
-		} else if (sequenceType.equals(ESBDebuggerConstants.API_INSEQ_LABEL)) {
+    /**
+     * This method returns EditPart of a API according to given information Map
+     * 
+     * @throws MediatorNotFoundException
+     * @throws MissingAttributeException
+     * @throws CoreException
+     * @throws DebugPointMarkerNotFoundException
+     */
+    @Override
+    public EditPart getMediatorEditPart(EsbServer esbServer, ESBDebugPoint breakpoint)
+            throws MediatorNotFoundException, MissingAttributeException, DebugPointMarkerNotFoundException,
+            CoreException {
+        ESBAPIDebugPointMessage debugPointMessage = (ESBAPIDebugPointMessage) breakpoint.getLocation();
+        List<Integer> positionArray = debugPointMessage.getSequence().getApi().getMediatorPosition().getPosition();
+        String sequenceType = debugPointMessage.getSequence().getApi().getSequenceType();
+        SynapseAPIImpl api = (SynapseAPIImpl) esbServer.eContents().get(INDEX_OF_FIRST_ELEMENT);
+        APIResource apiResource = getMatchingAPIResource(api, debugPointMessage);
+        if (sequenceType == null || sequenceType.equals(getFaultSequenceName(apiResource))) {
+            return getMediatorInFaultSeq(
+                    apiResource.getContainer().getFaultContainer().getMediatorFlow().getChildren(), positionArray);
+        } else if (sequenceType.equals(ESBDebuggerConstants.API_INSEQ_LABEL)) {
 
-			return getMediatorFromMediationFlow(
-					apiResource.getOutputConnector(), positionArray);
+            return getMediatorFromMediationFlow(apiResource.getOutputConnector(), positionArray);
 
-		} else if (sequenceType.equals(ESBDebuggerConstants.API_OUTSEQ_LABEL)) {
+        } else if (sequenceType.equals(ESBDebuggerConstants.API_OUTSEQ_LABEL)) {
 
-			return getMediatorFromMediationFlow(
-					apiResource.getOutSequenceOutputConnector(), positionArray);
-		} else {
-			throw new IllegalArgumentException(
-					"Unknown sequence type for api resource detected : "
-							+ sequenceType);
-		}
-	}
+            return getMediatorFromMediationFlow(apiResource.getOutSequenceOutputConnector(), positionArray);
+        } else {
+            throw new IllegalArgumentException("Unknown sequence type for api resource detected : " + sequenceType);
+        }
+    }
 
-	private APIResource getMatchingAPIResource(SynapseAPIImpl api,
-			ESBAPIDebugPointMessage debugPointMessage)
-			throws MediatorNotFoundException {
-		EList<APIResource> apiResources = api.getResources();
-		for (APIResource apiResource : apiResources) {
-			String urlValue = "";
-			String urlValueOfMessage = "";
-			if (isMethodEqual(apiResource, debugPointMessage.getSequence()
-					.getApi().getResourse().getMethod())) {
-				switch (apiResource.getUrlStyle().getValue()) {
-				case ApiResourceUrlStyle.URI_TEMPLATE_VALUE:
-					urlValue = apiResource.getUriTemplate();
-					urlValueOfMessage = debugPointMessage.getSequence()
-							.getApi().getResourse().getUriTemplate();
-					break;
-				case ApiResourceUrlStyle.URL_MAPPING_VALUE:
-					urlValue = apiResource.getUrlMapping();
-					urlValueOfMessage = debugPointMessage.getSequence()
-							.getApi().getResourse().getUrlMapping();
-					break;
-				default:
-					break;
-				}
-				if (urlValueOfMessage != null
-						&& urlValueOfMessage.endsWith(urlValue)) {
-					return apiResource;
-				}
-			}
-		}
-		throw new MediatorNotFoundException(
-				"Matching API Resource not found for the specific location of mediator: ");
-	}
+    private APIResource getMatchingAPIResource(SynapseAPIImpl api, ESBAPIDebugPointMessage debugPointMessage)
+            throws MediatorNotFoundException {
+        EList<APIResource> apiResources = api.getResources();
+        for (APIResource apiResource : apiResources) {
+            String urlValue = "";
+            String urlValueOfMessage = "";
+            if (isMethodEqual(apiResource, debugPointMessage.getSequence().getApi().getResourse().getMethod())) {
+                switch (apiResource.getUrlStyle().getValue()) {
+                case ApiResourceUrlStyle.URI_TEMPLATE_VALUE:
+                    urlValue = apiResource.getUriTemplate();
+                    urlValueOfMessage = debugPointMessage.getSequence().getApi().getResourse().getUriTemplate();
+                    break;
+                case ApiResourceUrlStyle.URL_MAPPING_VALUE:
+                    urlValue = apiResource.getUrlMapping();
+                    urlValueOfMessage = debugPointMessage.getSequence().getApi().getResourse().getUrlMapping();
+                    break;
+                default:
+                    break;
+                }
+                if (urlValueOfMessage != null && urlValueOfMessage.endsWith(urlValue)) {
+                    return apiResource;
+                }
+            }
+        }
+        throw new MediatorNotFoundException("Matching API Resource not found for the specific location of mediator: ");
+    }
 
-	private boolean isMethodEqual(APIResource apiResource, String methodValue) {
+    private boolean isMethodEqual(APIResource apiResource, String methodValue) {
 
-		if (methodValue == null) {
-			if (StringUtils.isEmpty(ESBDebuggerUtil
-					.getMethodValuesFromResource(apiResource))) {
-				return true;
-			}
-		} else if (methodValue.equalsIgnoreCase(ESBDebuggerUtil
-				.getMethodValuesFromResource(apiResource))) {
-			return true;
-		}
-		return false;
-	}
+        if (methodValue == null) {
+            if (StringUtils.isEmpty(ESBDebuggerUtil.getMethodValuesFromResource(apiResource))) {
+                return true;
+            }
+        } else if (methodValue.equalsIgnoreCase(ESBDebuggerUtil.getMethodValuesFromResource(apiResource))) {
+            return true;
+        }
+        return false;
+    }
 
 }

@@ -44,113 +44,101 @@ import com.google.gson.JsonElement;
  */
 public class ESBTemplateDebugPointMessage extends AbstractESBDebugPointMessage {
 
-	private ESBTemplateBean template;
+    private ESBTemplateBean template;
 
-	public ESBTemplateDebugPointMessage(String command,
-			String commandArguement, String mediationComponent,
-			ESBTemplateBean template) {
-		super(command, commandArguement, mediationComponent);
-		this.setTemplate(template);
-	}
+    public ESBTemplateDebugPointMessage(String command, String commandArguement, String mediationComponent,
+            ESBTemplateBean template) {
+        super(command, commandArguement, mediationComponent);
+        this.setTemplate(template);
+    }
 
-	public ESBTemplateDebugPointMessage(EventMessageType event,
-			JsonElement recievedArtifactInfo) {
-		super(event.toString(), TEMPLATE_LABEL);
-		createTemplateFromJsonElement(recievedArtifactInfo);
-	}
+    public ESBTemplateDebugPointMessage(EventMessageType event, JsonElement recievedArtifactInfo) {
+        super(event.toString(), TEMPLATE_LABEL);
+        createTemplateFromJsonElement(recievedArtifactInfo);
+    }
 
-	/**
-	 * Checked whether Mediation Component and template bean are equal or
-	 * not.But this method doesn't compare whether it's type is differ or not.
-	 * <p>
-	 * So though skip points and breakpoints are different debug point types,
-	 * this method return true if those are for the same mediator.
-	 */
-	public boolean equalsIgnoreType(
-			ESBTemplateDebugPointMessage debugPointMessage) {
-		if (mediationComponent
-				.equals(debugPointMessage.getMediationComponent())
-				&& template.equals(debugPointMessage.getTemplate())) {
-			return true;
-		}
-		return false;
-	}
+    /**
+     * Checked whether Mediation Component and template bean are equal or
+     * not.But this method doesn't compare whether it's type is differ or not.
+     * <p>
+     * So though skip points and breakpoints are different debug point types, this method return true if those are for
+     * the same mediator.
+     */
+    public boolean equalsIgnoreType(ESBTemplateDebugPointMessage debugPointMessage) {
+        if (mediationComponent.equals(debugPointMessage.getMediationComponent())
+                && template.equals(debugPointMessage.getTemplate())) {
+            return true;
+        }
+        return false;
+    }
 
-	/**
-	 * Checked whether Mediation Component, Command Argument and template bean
-	 * are equal or not.
-	 * <p>
-	 * Command value is not taken to compare because command attribute contains
-	 * values related to debug point action "set" or "clear".
-	 */
-	@Override
-	public boolean equals(Object debugPointMessage) {
-		if (debugPointMessage instanceof ESBTemplateDebugPointMessage) {
-			ESBTemplateDebugPointMessage debugPointMessageTemp = (ESBTemplateDebugPointMessage) debugPointMessage;
-			if (!(mediationComponent.equals((debugPointMessageTemp)
-					.getMediationComponent())
-					&& commandArgument.equals((debugPointMessageTemp)
-							.getCommandArgument()) && template
-						.equals(debugPointMessageTemp.getTemplate()))) {
-				return false;
-			}
-			return true;
-		} else {
-			return false;
-		}
-	}
+    /**
+     * Checked whether Mediation Component, Command Argument and template bean
+     * are equal or not.
+     * <p>
+     * Command value is not taken to compare because command attribute contains values related to debug point action
+     * "set" or "clear".
+     */
+    @Override
+    public boolean equals(Object debugPointMessage) {
+        if (debugPointMessage instanceof ESBTemplateDebugPointMessage) {
+            ESBTemplateDebugPointMessage debugPointMessageTemp = (ESBTemplateDebugPointMessage) debugPointMessage;
+            if (!(mediationComponent.equals((debugPointMessageTemp).getMediationComponent())
+                    && commandArgument.equals((debugPointMessageTemp).getCommandArgument()) && template
+                        .equals(debugPointMessageTemp.getTemplate()))) {
+                return false;
+            }
+            return true;
+        } else {
+            return false;
+        }
+    }
 
-	@Override
-	public int hashCode() {
-		int result = INITIAL_HASH_CODE_RESULT_VALUE;
-		result = HASHCODE_MULTIPLIER_VALUE * result
-				+ mediationComponent.hashCode()
-				+ MEDIATION_COMPONENT_LABEL.hashCode();
-		result = HASHCODE_MULTIPLIER_VALUE * result
-				+ commandArgument.hashCode()
-				+ COMMAND_ARGUMENT_LABEL.hashCode();
-		result = HASHCODE_MULTIPLIER_VALUE * result + template.hashCode()
-				+ TEMPLATE_LABEL.hashCode();
-		return result;
-	}
+    @Override
+    public int hashCode() {
+        int result = INITIAL_HASH_CODE_RESULT_VALUE;
+        result = HASHCODE_MULTIPLIER_VALUE * result + mediationComponent.hashCode()
+                + MEDIATION_COMPONENT_LABEL.hashCode();
+        result = HASHCODE_MULTIPLIER_VALUE * result + commandArgument.hashCode() + COMMAND_ARGUMENT_LABEL.hashCode();
+        result = HASHCODE_MULTIPLIER_VALUE * result + template.hashCode() + TEMPLATE_LABEL.hashCode();
+        return result;
+    }
 
-	@Override
-	public ESBMediatorPosition getMediatorPosition() {
-		return template.getMediatorPosition();
-	}
+    @Override
+    public ESBMediatorPosition getMediatorPosition() {
+        return template.getMediatorPosition();
+    }
 
-	@Override
-	public void setMediatorPosition(List<Integer> positionList) {
-		template.setMediatorPosition(new ESBMediatorPosition(positionList));
-	}
+    @Override
+    public void setMediatorPosition(List<Integer> positionList) {
+        template.setMediatorPosition(new ESBMediatorPosition(positionList));
+    }
 
-	@Override
-	public String getSequenceType() {
-		return TEMPLATE_SEQUENCE;
-	}
+    @Override
+    public String getSequenceType() {
+        return TEMPLATE_SEQUENCE;
+    }
 
-	private void createTemplateFromJsonElement(JsonElement recievedArtifactInfo) {
-		Set<Entry<String, JsonElement>> entrySet = recievedArtifactInfo
-				.getAsJsonObject().entrySet();
-		String templateKey = null;
-		ESBMediatorPosition mediatorPosition = null;
-		for (Entry<String, JsonElement> entry : entrySet) {
-			if (TEMPLATE_KEY_LABEL.equalsIgnoreCase(entry.getKey())) {
-				templateKey = convertJsonElementValueToString(entry.getValue());
-			} else if (MEDIATOR_POSITION_LABEL.equalsIgnoreCase(entry.getKey())) {
-				mediatorPosition = convertMediatorPositionStringToList(convertJsonElementValueToString(entry
-						.getValue()));
-			}
-		}
-		template = new ESBTemplateBean(templateKey, mediatorPosition);
-	}
+    private void createTemplateFromJsonElement(JsonElement recievedArtifactInfo) {
+        Set<Entry<String, JsonElement>> entrySet = recievedArtifactInfo.getAsJsonObject().entrySet();
+        String templateKey = null;
+        ESBMediatorPosition mediatorPosition = null;
+        for (Entry<String, JsonElement> entry : entrySet) {
+            if (TEMPLATE_KEY_LABEL.equalsIgnoreCase(entry.getKey())) {
+                templateKey = convertJsonElementValueToString(entry.getValue());
+            } else if (MEDIATOR_POSITION_LABEL.equalsIgnoreCase(entry.getKey())) {
+                mediatorPosition = convertMediatorPositionStringToList(convertJsonElementValueToString(entry.getValue()));
+            }
+        }
+        template = new ESBTemplateBean(templateKey, mediatorPosition);
+    }
 
-	public ESBTemplateBean getTemplate() {
-		return template;
-	}
+    public ESBTemplateBean getTemplate() {
+        return template;
+    }
 
-	public void setTemplate(ESBTemplateBean template) {
-		this.template = template;
-	}
+    public void setTemplate(ESBTemplateBean template) {
+        this.template = template;
+    }
 
 }

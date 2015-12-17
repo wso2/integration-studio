@@ -19,5 +19,5 @@ package org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils;
  * This enum type represent the Resume types used by ESB Medition Debugger
  */
 public enum ESBDebuggerResumeType {
-	STEP_OVER, CONTINUE
+    STEP_OVER, CONTINUE
 }

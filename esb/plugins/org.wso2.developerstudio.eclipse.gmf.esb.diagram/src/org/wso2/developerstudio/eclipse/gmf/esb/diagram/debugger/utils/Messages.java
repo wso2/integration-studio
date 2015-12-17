@@ -19,31 +19,31 @@ package org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils;
 import org.eclipse.osgi.util.NLS;
 
 public class Messages extends NLS {
-	private static final String BUNDLE_NAME = "org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.messages"; //$NON-NLS-1$
-	public static String DebuggerConfigTab_CommandPortLabel;
-	public static String DebuggerConfigTab_EventPortLabel;
-	public static String DebuggerConfigTab_IntegerPortValueValidationErrorMessage;
-	public static String DebuggerConfigTab_MainMessage;
-	public static String DebuggerConfigTab_MainTitle;
-	public static String DebuggerConfigTab_ServerHostName;
-	public static String ESBDebugerUtil_ErrorDialogTitle;
-	public static String ESBDebugLaunchDelegate_DebuggerInterfaceSocketsCreationErrorDialogMessage;
-	public static String ESBDebugLaunchDelegate_HostIPAddressCouldNotFoundErrorDialogMessage;
-	public static String ESBDebugLaunchDelegate_LauncherArgumentInvalidErrorDialogMessage;
-	public static String ESBDebugProcess_ESBDebugProcessNameTag;
-	public static String ESBDebugTarget_ESBDebugTargetNameTag;
-	public static String ESBDebugThread_ESBDebugThreadTag;
-	public static String ESBStackFrame_Axis2ClientScopePropertyTag;
-	public static String ESBStackFrame_Axis2ScopePropertyTag;
-	public static String ESBStackFrame_ESBDebuggerStackFrameTag;
-	public static String ESBStackFrame_OperationScopePropertyTag;
-	public static String ESBStackFrame_SynapseScopePropertyTag;
-	public static String ESBStackFrame_TransportScopePropertyTag;
-	static {
-		// initialize resource bundle
-		NLS.initializeMessages(BUNDLE_NAME, Messages.class);
-	}
+    private static final String BUNDLE_NAME = "org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.messages"; //$NON-NLS-1$
+    public static String DebuggerConfigTab_CommandPortLabel;
+    public static String DebuggerConfigTab_EventPortLabel;
+    public static String DebuggerConfigTab_IntegerPortValueValidationErrorMessage;
+    public static String DebuggerConfigTab_MainMessage;
+    public static String DebuggerConfigTab_MainTitle;
+    public static String DebuggerConfigTab_ServerHostName;
+    public static String ESBDebugerUtil_ErrorDialogTitle;
+    public static String ESBDebugLaunchDelegate_DebuggerInterfaceSocketsCreationErrorDialogMessage;
+    public static String ESBDebugLaunchDelegate_HostIPAddressCouldNotFoundErrorDialogMessage;
+    public static String ESBDebugLaunchDelegate_LauncherArgumentInvalidErrorDialogMessage;
+    public static String ESBDebugProcess_ESBDebugProcessNameTag;
+    public static String ESBDebugTarget_ESBDebugTargetNameTag;
+    public static String ESBDebugThread_ESBDebugThreadTag;
+    public static String ESBStackFrame_Axis2ClientScopePropertyTag;
+    public static String ESBStackFrame_Axis2ScopePropertyTag;
+    public static String ESBStackFrame_ESBDebuggerStackFrameTag;
+    public static String ESBStackFrame_OperationScopePropertyTag;
+    public static String ESBStackFrame_SynapseScopePropertyTag;
+    public static String ESBStackFrame_TransportScopePropertyTag;
+    static {
+        // initialize resource bundle
+        NLS.initializeMessages(BUNDLE_NAME, Messages.class);
+    }
 
-	private Messages() {
-	}
+    private Messages() {
+    }
 }

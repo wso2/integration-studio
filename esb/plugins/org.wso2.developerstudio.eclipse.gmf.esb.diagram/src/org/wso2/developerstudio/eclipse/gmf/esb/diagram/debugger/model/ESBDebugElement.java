@@ -35,135 +35,129 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.OpenEdito
  * This class is implementation of common function for debug elements
  *
  */
-public abstract class ESBDebugElement extends DebugElement implements
-		ISuspendResume, IDisconnect, ITerminate, IStep {
+public abstract class ESBDebugElement extends DebugElement implements ISuspendResume, IDisconnect, ITerminate, IStep {
 
-	public ESBDebugElement(IDebugTarget target) {
-		super(target);
-	}
+    public ESBDebugElement(IDebugTarget target) {
+        super(target);
+    }
 
-	public enum ESBDebuggerState {
-		NOT_STARTED, SUSPENDED, RESUMED, TERMINATED, STEPPING
-	}
+    public enum ESBDebuggerState {
+        NOT_STARTED, SUSPENDED, RESUMED, TERMINATED, STEPPING
+    }
 
-	protected ESBDebuggerState esbDebuggerState = ESBDebuggerState.NOT_STARTED;
+    protected ESBDebuggerState esbDebuggerState = ESBDebuggerState.NOT_STARTED;
 
-	@Override
-	public String getModelIdentifier() {
-		return ESBDebugModelPresentation.ID;
-	}
+    @Override
+    public String getModelIdentifier() {
+        return ESBDebugModelPresentation.ID;
+    }
 
-	protected void setState(ESBDebuggerState state) {
-		getDebugTarget().esbDebuggerState = state;
-	}
+    protected void setState(ESBDebuggerState state) {
+        getDebugTarget().esbDebuggerState = state;
+    }
 
-	protected ESBDebuggerState getState() {
-		return getDebugTarget().esbDebuggerState;
-	}
+    protected ESBDebuggerState getState() {
+        return getDebugTarget().esbDebuggerState;
+    }
 
-	@Override
-	public ESBDebugTarget getDebugTarget() {
-		return (ESBDebugTarget) super.getDebugTarget();
-	}
+    @Override
+    public ESBDebugTarget getDebugTarget() {
+        return (ESBDebugTarget) super.getDebugTarget();
+    }
 
-	@Override
-	public boolean canResume() {
-		return isSuspended();
-	}
+    @Override
+    public boolean canResume() {
+        return isSuspended();
+    }
 
-	@Override
-	public boolean canSuspend() {
-		return false;
-	}
+    @Override
+    public boolean canSuspend() {
+        return false;
+    }
 
-	@Override
-	public boolean isSuspended() {
-		return getState() == ESBDebuggerState.SUSPENDED;
-	}
+    @Override
+    public boolean isSuspended() {
+        return getState() == ESBDebuggerState.SUSPENDED;
+    }
 
-	@Override
-	public void resume() {
-		getDebugTarget().fireModelEvent(
-				new ResumeRequest(ESBDebuggerResumeType.CONTINUE));
-		OpenEditorUtil.removeBreakpointHitStatus();
-	}
+    @Override
+    public void resume() {
+        getDebugTarget().fireModelEvent(new ResumeRequest(ESBDebuggerResumeType.CONTINUE));
+        OpenEditorUtil.removeBreakpointHitStatus();
+    }
 
-	@Override
-	public void suspend() throws DebugException {
-		throw new DebugException(new Status(IStatus.ERROR,
-				ESBDebuggerConstants.ESB_MEDIATION_DEBUGGER_NAME,
-				"suspend() not supported"));
-	}
+    @Override
+    public void suspend() throws DebugException {
+        throw new DebugException(new Status(IStatus.ERROR, ESBDebuggerConstants.ESB_MEDIATION_DEBUGGER_NAME,
+                "suspend() not supported"));
+    }
 
-	@Override
-	public boolean canDisconnect() {
-		return false;
-	}
+    @Override
+    public boolean canDisconnect() {
+        return false;
+    }
 
-	@Override
-	public void disconnect() {
-		getDebugTarget().fireModelEvent(new DisconnectRequest());
-	}
+    @Override
+    public void disconnect() {
+        getDebugTarget().fireModelEvent(new DisconnectRequest());
+    }
 
-	@Override
-	public boolean isDisconnected() {
-		return isTerminated();
-	}
+    @Override
+    public boolean isDisconnected() {
+        return isTerminated();
+    }
 
-	@Override
-	public boolean canTerminate() {
-		return !isTerminated();
-	}
+    @Override
+    public boolean canTerminate() {
+        return !isTerminated();
+    }
 
-	@Override
-	public boolean isTerminated() {
-		return getState() == ESBDebuggerState.TERMINATED;
-	}
+    @Override
+    public boolean isTerminated() {
+        return getState() == ESBDebuggerState.TERMINATED;
+    }
 
-	@Override
-	public void terminate() {
-		getDebugTarget().fireModelEvent(new TerminateRequest());
-		OpenEditorUtil.removeBreakpointHitStatus();
-	}
+    @Override
+    public void terminate() {
+        getDebugTarget().fireModelEvent(new TerminateRequest());
+        OpenEditorUtil.removeBreakpointHitStatus();
+    }
 
-	@Override
-	public boolean canStepInto() {
-		return false;
-	}
+    @Override
+    public boolean canStepInto() {
+        return false;
+    }
 
-	@Override
-	public boolean canStepOver() {
-		return isSuspended();
-	}
+    @Override
+    public boolean canStepOver() {
+        return isSuspended();
+    }
 
-	@Override
-	public boolean canStepReturn() {
-		return false;
-	}
+    @Override
+    public boolean canStepReturn() {
+        return false;
+    }
 
-	@Override
-	public boolean isStepping() {
-		return getState() == ESBDebuggerState.STEPPING;
-	}
+    @Override
+    public boolean isStepping() {
+        return getState() == ESBDebuggerState.STEPPING;
+    }
 
-	@Override
-	public void stepInto() throws DebugException {
-		throw new DebugException(new Status(IStatus.ERROR,
-				ESBDebuggerConstants.ESB_MEDIATION_DEBUGGER_NAME,
-				"stepInto() not supported"));
-	}
+    @Override
+    public void stepInto() throws DebugException {
+        throw new DebugException(new Status(IStatus.ERROR, ESBDebuggerConstants.ESB_MEDIATION_DEBUGGER_NAME,
+                "stepInto() not supported"));
+    }
 
-	@Override
-	public void stepOver() {
-		getDebugTarget().fireModelEvent(
-				new ResumeRequest(ESBDebuggerResumeType.STEP_OVER));
-	}
+    @Override
+    public void stepOver() {
+        getDebugTarget().fireModelEvent(new ResumeRequest(ESBDebuggerResumeType.STEP_OVER));
+    }
 
-	@Override
-	public void stepReturn() throws DebugException {
-		throw new DebugException(new Status(IStatus.ERROR,
-				ESBDebuggerConstants.ESB_MEDIATION_DEBUGGER_NAME,
-				"stepReturn() not supported"));
-	}
+    @Override
+    public void stepReturn() throws DebugException {
+        throw new DebugException(new Status(IStatus.ERROR, ESBDebuggerConstants.ESB_MEDIATION_DEBUGGER_NAME,
+                "stepReturn() not supported"));
+    }
 
 }

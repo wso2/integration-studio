@@ -63,285 +63,255 @@ import org.wso2.developerstudio.eclipse.logging.core.Logger;
  * supports terminate, suspend , resume, breakpoint, skip points
  *
  */
-public class ESBDebugTarget extends ESBDebugElement implements IDebugTarget,
-		EventHandler {
+public class ESBDebugTarget extends ESBDebugElement implements IDebugTarget, EventHandler {
 
-	private IEventBroker debugTargetEventBroker;
-	private final ESBDebugProcess esbDebugProcess;
-	private final List<ESBDebugThread> esbDebugThreads = new ArrayList<ESBDebugThread>();
-	private final ILaunch esbDebugerLaunch;
+    private IEventBroker debugTargetEventBroker;
+    private final ESBDebugProcess esbDebugProcess;
+    private final List<ESBDebugThread> esbDebugThreads = new ArrayList<ESBDebugThread>();
+    private final ILaunch esbDebugerLaunch;
 
-	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
+    private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
-	public ESBDebugTarget(final ILaunch launch) {
-		super(null);
-		debugTargetEventBroker = (IEventBroker) PlatformUI.getWorkbench()
-				.getService(IEventBroker.class);
-		debugTargetEventBroker.subscribe(ESBDEBUGGER_EVENT_TOPIC, this);
-		esbDebugerLaunch = launch;
-		fireCreationEvent();
-		esbDebugProcess = new ESBDebugProcess(this);
-		esbDebugProcess.fireCreationEvent();
-	}
+    public ESBDebugTarget(final ILaunch launch) {
+        super(null);
+        debugTargetEventBroker = (IEventBroker) PlatformUI.getWorkbench().getService(IEventBroker.class);
+        debugTargetEventBroker.subscribe(ESBDEBUGGER_EVENT_TOPIC, this);
+        esbDebugerLaunch = launch;
+        fireCreationEvent();
+        esbDebugProcess = new ESBDebugProcess(this);
+        esbDebugProcess.fireCreationEvent();
+    }
 
-	@Override
-	public void handleEvent(Event eventFromBroker) {
-		if (!isDisconnected()) {
-			IESBDebuggerInternalEvent event = (IESBDebuggerInternalEvent) eventFromBroker
-					.getProperty(ESB_DEBUGGER_EVENT_BROKER_DATA_NAME);
-			if (event instanceof DebuggerStartedEvent) {
-				ESBDebugThread thread = new ESBDebugThread(this);
-				esbDebugThreads.add(thread);
-				thread.fireCreationEvent();
+    @Override
+    public void handleEvent(Event eventFromBroker) {
+        if (!isDisconnected()) {
+            IESBDebuggerInternalEvent event = (IESBDebuggerInternalEvent) eventFromBroker
+                    .getProperty(ESB_DEBUGGER_EVENT_BROKER_DATA_NAME);
+            if (event instanceof DebuggerStartedEvent) {
+                ESBDebugThread thread = new ESBDebugThread(this);
+                esbDebugThreads.add(thread);
+                thread.fireCreationEvent();
 
-				ESBStackFrame stackFrame = new ESBStackFrame(this, thread);
-				thread.addStackFrame(stackFrame);
-				stackFrame.fireCreationEvent();
+                ESBStackFrame stackFrame = new ESBStackFrame(this, thread);
+                thread.addStackFrame(stackFrame);
+                stackFrame.fireCreationEvent();
 
-				DebugPlugin.getDefault().getBreakpointManager()
-						.addBreakpointListener(this);
+                DebugPlugin.getDefault().getBreakpointManager().addBreakpointListener(this);
 
-				resume();
+                resume();
 
-			} else if (event instanceof SuspendedEvent) {
-				// this get called when ESB came to a breakpoint
-				setState(ESBDebuggerState.SUSPENDED);
-				fireSuspendEvent(0);
-				getThreads()[0].fireSuspendEvent(DebugEvent.BREAKPOINT);
-				try {
-					showDiagram((SuspendedEvent) event);
-				} catch (ESBDebuggerException | CoreException e) {
-					log.error(
-							"Error while trying to show diagram : " //$NON-NLS-1$
-									+ e.getMessage(), e);
-				}
-				fireModelEvent(new FetchVariablesRequest());
+            } else if (event instanceof SuspendedEvent) {
+                // this get called when ESB came to a breakpoint
+                setState(ESBDebuggerState.SUSPENDED);
+                fireSuspendEvent(0);
+                getThreads()[0].fireSuspendEvent(DebugEvent.BREAKPOINT);
+                try {
+                    showDiagram((SuspendedEvent) event);
+                } catch (ESBDebuggerException | CoreException e) {
+                    log.error("Error while trying to show diagram : " //$NON-NLS-1$
+                            + e.getMessage(), e);
+                }
+                fireModelEvent(new FetchVariablesRequest());
 
-			} else if (event instanceof ResumedEvent) {
-				if (((ResumedEvent) event).getType() == ESBDebuggerResumeType.CONTINUE) {
-					setState(ESBDebuggerState.RESUMED);
-					getThreads()[0].fireResumeEvent(DebugEvent.UNSPECIFIED);
-				}
+            } else if (event instanceof ResumedEvent) {
+                if (((ResumedEvent) event).getType() == ESBDebuggerResumeType.CONTINUE) {
+                    setState(ESBDebuggerState.RESUMED);
+                    getThreads()[0].fireResumeEvent(DebugEvent.UNSPECIFIED);
+                }
 
-			} else if (event instanceof PropertyRecievedEvent) {
+            } else if (event instanceof PropertyRecievedEvent) {
 
-				try {
-					getThreads()[0].getTopStackFrame().setVariables(
-							((PropertyRecievedEvent) event).getVariables());
-				} catch (DebugException e) {
-					log.error("Error while seting variable values", e); //$NON-NLS-1$
-				}
+                try {
+                    getThreads()[0].getTopStackFrame().setVariables(((PropertyRecievedEvent) event).getVariables());
+                } catch (DebugException e) {
+                    log.error("Error while seting variable values", e); //$NON-NLS-1$
+                }
 
-			} else if (event instanceof TerminatedEvent) {
-				setState(ESBDebuggerState.TERMINATED);
+            } else if (event instanceof TerminatedEvent) {
+                setState(ESBDebuggerState.TERMINATED);
 
-				DebugPlugin.getDefault().getBreakpointManager()
-						.removeBreakpointListener(this);
-				debugTargetEventBroker.unsubscribe(this);
-				this.fireTerminateEvent();
-			} else if (event instanceof MediationFlowCompleteEvent) {
-				setState(ESBDebuggerState.RESUMED);
-				OpenEditorUtil.removeBreakpointHitStatus();
-				try {
-					deletePreviousSuspendPointsFromBreakpointManager();
-				} catch (CoreException e) {
-					log.error("Error while deleting previous suspend point : " //$NON-NLS-1$
-							+ e.getMessage(), e);
-				}
-			}
-		}
+                DebugPlugin.getDefault().getBreakpointManager().removeBreakpointListener(this);
+                debugTargetEventBroker.unsubscribe(this);
+                this.fireTerminateEvent();
+            } else if (event instanceof MediationFlowCompleteEvent) {
+                setState(ESBDebuggerState.RESUMED);
+                OpenEditorUtil.removeBreakpointHitStatus();
+                try {
+                    deletePreviousSuspendPointsFromBreakpointManager();
+                } catch (CoreException e) {
+                    log.error("Error while deleting previous suspend point : " //$NON-NLS-1$
+                            + e.getMessage(), e);
+                }
+            }
+        }
 
-	}
+    }
 
-	/**
-	 * Pass an event to the {@link InternalEventDispatcher} where it is handled
-	 * asynchronously.
-	 * 
-	 * @param event
-	 *            event to handle
-	 */
-	void fireModelEvent(final IESBDebuggerInternalEvent event) {
-		debugTargetEventBroker.send(ESB_DEBUG_TARGET_EVENT_TOPIC, event);
-	}
+    /**
+     * Pass an event to the {@link InternalEventDispatcher} where it is handled
+     * asynchronously.
+     * 
+     * @param event
+     *            event to handle
+     */
+    void fireModelEvent(final IESBDebuggerInternalEvent event) {
+        debugTargetEventBroker.send(ESB_DEBUG_TARGET_EVENT_TOPIC, event);
+    }
 
-	/**
-	 * This method finds the breakpoint registered in Breakpoint Manager which
-	 * suspended the ESB Server and call a method to open the source file and
-	 * show the associated mediator
-	 * 
-	 * @param event
-	 * @throws ESBDebuggerException
-	 * @throws CoreException
-	 */
-	private void showDiagram(SuspendedEvent event) throws ESBDebuggerException,
-			CoreException {
+    /**
+     * This method finds the breakpoint registered in Breakpoint Manager which
+     * suspended the ESB Server and call a method to open the source file and
+     * show the associated mediator
+     * 
+     * @param event
+     * @throws ESBDebuggerException
+     * @throws CoreException
+     */
+    private void showDiagram(SuspendedEvent event) throws ESBDebuggerException, CoreException {
 
-		AbstractESBDebugPointMessage info = event.getDetail();
-		ESBDebugPoint breakpoint = getMatchingBreakpoint(info);
-		IFile file = (IFile) breakpoint.getResource();
-		deletePreviousSuspendPointsFromBreakpointManager();
-		ESBSuspendPoint suspendPoint = new ESBSuspendPoint(file,
-				breakpoint.getLineNumber(), breakpoint);
-		DebugPlugin.getDefault().getBreakpointManager()
-				.addBreakpoint(suspendPoint);
-		if (file.exists()) {
-			OpenEditorUtil.openSeparateEditor(file, breakpoint);
-		}
-	}
+        AbstractESBDebugPointMessage info = event.getDetail();
+        ESBDebugPoint breakpoint = getMatchingBreakpoint(info);
+        IFile file = (IFile) breakpoint.getResource();
+        deletePreviousSuspendPointsFromBreakpointManager();
+        ESBSuspendPoint suspendPoint = new ESBSuspendPoint(file, breakpoint.getLineNumber(), breakpoint);
+        DebugPlugin.getDefault().getBreakpointManager().addBreakpoint(suspendPoint);
+        if (file.exists()) {
+            OpenEditorUtil.openSeparateEditor(file, breakpoint);
+        }
+    }
 
-	/**
-	 * @throws CoreException
-	 */
-	private void deletePreviousSuspendPointsFromBreakpointManager()
-			throws CoreException {
-		IBreakpoint[] suspendPoints = DebugPlugin.getDefault()
-				.getBreakpointManager().getBreakpoints(SUSPEND_POINT_MODEL_ID);
-		for (IBreakpoint suspendPoint : suspendPoints) {
-			DebugPlugin.getDefault().getBreakpointManager()
-					.removeBreakpoint(suspendPoint, false);
-		}
-	}
+    /**
+     * @throws CoreException
+     */
+    private void deletePreviousSuspendPointsFromBreakpointManager() throws CoreException {
+        IBreakpoint[] suspendPoints = DebugPlugin.getDefault().getBreakpointManager()
+                .getBreakpoints(SUSPEND_POINT_MODEL_ID);
+        for (IBreakpoint suspendPoint : suspendPoints) {
+            DebugPlugin.getDefault().getBreakpointManager().removeBreakpoint(suspendPoint, false);
+        }
+    }
 
-	private ESBDebugPoint getMatchingBreakpoint(
-			AbstractESBDebugPointMessage info) throws ESBDebuggerException {
+    private ESBDebugPoint getMatchingBreakpoint(AbstractESBDebugPointMessage info) throws ESBDebuggerException {
 
-		IBreakpoint[] breakpoints = DebugPlugin.getDefault()
-				.getBreakpointManager().getBreakpoints(getModelIdentifier());
-		for (IBreakpoint breakpoint : breakpoints) {
-			try {
-				if (((ESBDebugPoint) breakpoint).isMatchedWithDebugPoint(info,
-						true)) {
-					return (ESBDebugPoint) breakpoint;
-				}
-			} catch (CoreException | DebugPointMarkerNotFoundException e) {
-				log.warn("Error while finding matching breakpoint " //$NON-NLS-1$
-						+ e.getMessage(), e);
-			}
-		}
+        IBreakpoint[] breakpoints = DebugPlugin.getDefault().getBreakpointManager()
+                .getBreakpoints(getModelIdentifier());
+        for (IBreakpoint breakpoint : breakpoints) {
+            try {
+                if (((ESBDebugPoint) breakpoint).isMatchedWithDebugPoint(info, true)) {
+                    return (ESBDebugPoint) breakpoint;
+                }
+            } catch (CoreException | DebugPointMarkerNotFoundException e) {
+                log.warn("Error while finding matching breakpoint " //$NON-NLS-1$
+                        + e.getMessage(), e);
+            }
+        }
 
-		throw new ESBDebuggerException(
-				"Matching Breakpoint not found in Breakpoint Manager with attributes"); //$NON-NLS-1$
-	}
+        throw new ESBDebuggerException("Matching Breakpoint not found in Breakpoint Manager with attributes"); //$NON-NLS-1$
+    }
 
-	@Override
-	public ILaunch getLaunch() {
-		return esbDebugerLaunch;
-	}
+    @Override
+    public ILaunch getLaunch() {
+        return esbDebugerLaunch;
+    }
 
-	@Override
-	public IProcess getProcess() {
-		return esbDebugProcess;
-	}
+    @Override
+    public IProcess getProcess() {
+        return esbDebugProcess;
+    }
 
-	@Override
-	public ESBDebugThread[] getThreads() {
-		return esbDebugThreads.toArray(new ESBDebugThread[esbDebugThreads
-				.size()]);
-	}
+    @Override
+    public ESBDebugThread[] getThreads() {
+        return esbDebugThreads.toArray(new ESBDebugThread[esbDebugThreads.size()]);
+    }
 
-	@Override
-	public boolean hasThreads() {
-		return !esbDebugThreads.isEmpty();
-	}
+    @Override
+    public boolean hasThreads() {
+        return !esbDebugThreads.isEmpty();
+    }
 
-	@Override
-	public String getName() {
-		return Messages.ESBDebugTarget_ESBDebugTargetNameTag;
-	}
+    @Override
+    public String getName() {
+        return Messages.ESBDebugTarget_ESBDebugTargetNameTag;
+    }
 
-	@Override
-	public boolean supportsBreakpoint(final IBreakpoint breakpoint) {
-		if (breakpoint instanceof ESBDebugPoint) {
-			return true;
-		}
-		return false;
-	}
+    @Override
+    public boolean supportsBreakpoint(final IBreakpoint breakpoint) {
+        if (breakpoint instanceof ESBDebugPoint) {
+            return true;
+        }
+        return false;
+    }
 
-	@Override
-	public ESBDebugTarget getDebugTarget() {
-		return this;
-	}
+    @Override
+    public ESBDebugTarget getDebugTarget() {
+        return this;
+    }
 
-	private boolean isEnabledBreakpoint(IBreakpoint breakpoint)
-			throws CoreException {
-		return breakpoint.isEnabled()
-				&& (DebugPlugin.getDefault().getBreakpointManager().isEnabled());
-	}
+    private boolean isEnabledBreakpoint(IBreakpoint breakpoint) throws CoreException {
+        return breakpoint.isEnabled() && (DebugPlugin.getDefault().getBreakpointManager().isEnabled());
+    }
 
-	/**
-	 * This method get called when Breakpoint Manager got any new breakpoint
-	 * Registered.
-	 */
-	@Override
-	public void breakpointAdded(final IBreakpoint breakpoint) {
-		try {
-			if (breakpoint instanceof ESBDebugPoint
-					&& supportsBreakpoint(breakpoint)
-					&& isEnabledBreakpoint(breakpoint)) {
+    /**
+     * This method get called when Breakpoint Manager got any new breakpoint
+     * Registered.
+     */
+    @Override
+    public void breakpointAdded(final IBreakpoint breakpoint) {
+        try {
+            if (breakpoint instanceof ESBDebugPoint && supportsBreakpoint(breakpoint)
+                    && isEnabledBreakpoint(breakpoint)) {
 
-				fireModelEvent(new DebugPointRequest(
-						(ESBDebugPoint) breakpoint, DebugPointEventAction.ADDED));
-			}
-		} catch (DebugPointMarkerNotFoundException e) {
-			log.error(
-					"Error while creating DebugPointRequest in debug point adding event : " //$NON-NLS-1$
-							+ e.getMessage(), e);
-			ESBDebuggerUtil
-					.removeESBDebugPointFromBreakpointManager(breakpoint);
-		} catch (CoreException e) {
-			log.error(
-					"Error while creating DebugPointRequest in debug point adding event  : " //$NON-NLS-1$
-							+ e.getMessage(), e);
-		}
+                fireModelEvent(new DebugPointRequest((ESBDebugPoint) breakpoint, DebugPointEventAction.ADDED));
+            }
+        } catch (DebugPointMarkerNotFoundException e) {
+            log.error("Error while creating DebugPointRequest in debug point adding event : " //$NON-NLS-1$
+                    + e.getMessage(), e);
+            ESBDebuggerUtil.removeESBDebugPointFromBreakpointManager(breakpoint);
+        } catch (CoreException e) {
+            log.error("Error while creating DebugPointRequest in debug point adding event  : " //$NON-NLS-1$
+                    + e.getMessage(), e);
+        }
 
-	}
+    }
 
-	/**
-	 * This method get called when any breakpoint is removed from the Breakpoint
-	 * Manager.
-	 */
-	@Override
-	public void breakpointRemoved(final IBreakpoint breakpoint,
-			final IMarkerDelta delta) {
-		try {
-			if (breakpoint instanceof ESBDebugPoint
-					&& supportsBreakpoint(breakpoint)
-					&& isEnabledBreakpoint(breakpoint)) {
+    /**
+     * This method get called when any breakpoint is removed from the Breakpoint
+     * Manager.
+     */
+    @Override
+    public void breakpointRemoved(final IBreakpoint breakpoint, final IMarkerDelta delta) {
+        try {
+            if (breakpoint instanceof ESBDebugPoint && supportsBreakpoint(breakpoint)
+                    && isEnabledBreakpoint(breakpoint)) {
 
-				fireModelEvent(new DebugPointRequest(
-						(ESBDebugPoint) breakpoint,
-						DebugPointEventAction.REMOVED));
-			}
-		} catch (DebugPointMarkerNotFoundException e) {
-			log.error(
-					"Error while creating DebugPointRequest in debug point removing event : " //$NON-NLS-1$
-							+ e.getMessage(), e);
-			ESBDebuggerUtil
-					.removeESBDebugPointFromBreakpointManager(breakpoint);
-		} catch (CoreException e) {
-			log.error(
-					"Error while creating DebugPointRequest in debug point removing event : " //$NON-NLS-1$
-							+ e.getMessage(), e);
-		}
-	}
+                fireModelEvent(new DebugPointRequest((ESBDebugPoint) breakpoint, DebugPointEventAction.REMOVED));
+            }
+        } catch (DebugPointMarkerNotFoundException e) {
+            log.error("Error while creating DebugPointRequest in debug point removing event : " //$NON-NLS-1$
+                    + e.getMessage(), e);
+            ESBDebuggerUtil.removeESBDebugPointFromBreakpointManager(breakpoint);
+        } catch (CoreException e) {
+            log.error("Error while creating DebugPointRequest in debug point removing event : " //$NON-NLS-1$
+                    + e.getMessage(), e);
+        }
+    }
 
-	@Override
-	public void breakpointChanged(final IBreakpoint breakpoint,
-			final IMarkerDelta delta) {
-		breakpointRemoved(breakpoint, delta);
-		breakpointAdded(breakpoint);
-	}
+    @Override
+    public void breakpointChanged(final IBreakpoint breakpoint, final IMarkerDelta delta) {
+        breakpointRemoved(breakpoint, delta);
+        breakpointAdded(breakpoint);
+    }
 
-	@Override
-	public boolean supportsStorageRetrieval() {
-		// no implementation
-		return false;
-	}
+    @Override
+    public boolean supportsStorageRetrieval() {
+        // no implementation
+        return false;
+    }
 
-	@Override
-	public IMemoryBlock getMemoryBlock(long startAddress, long length) {
-		// no implementation
-		return null;
-	}
+    @Override
+    public IMemoryBlock getMemoryBlock(long startAddress, long length) {
+        // no implementation
+        return null;
+    }
 
 }

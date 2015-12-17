@@ -26,37 +26,36 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ES
  */
 public class ESBAPISequenceBean {
 
-	private ESBAPIBean api;
+    private ESBAPIBean api;
 
-	public ESBAPISequenceBean(ESBAPIBean api) {
-		this.setApi(api);
-	}
+    public ESBAPISequenceBean(ESBAPIBean api) {
+        this.setApi(api);
+    }
 
-	@Override
-	public boolean equals(Object apiSeqBean) {
-		if (apiSeqBean instanceof ESBAPISequenceBean) {
-			if (api.equals(((ESBAPISequenceBean) apiSeqBean).getApi())) {
-				return true;
-			}
-			return false;
-		} else {
-			return false;
-		}
-	}
+    @Override
+    public boolean equals(Object apiSeqBean) {
+        if (apiSeqBean instanceof ESBAPISequenceBean) {
+            if (api.equals(((ESBAPISequenceBean) apiSeqBean).getApi())) {
+                return true;
+            }
+            return false;
+        } else {
+            return false;
+        }
+    }
 
-	@Override
-	public int hashCode() {
-		int result = INITIAL_HASH_CODE_RESULT_VALUE;
-		result = HASHCODE_MULTIPLIER_VALUE * result + api.hashCode()
-				+ API_LABEL.hashCode();
-		return result;
-	}
+    @Override
+    public int hashCode() {
+        int result = INITIAL_HASH_CODE_RESULT_VALUE;
+        result = HASHCODE_MULTIPLIER_VALUE * result + api.hashCode() + API_LABEL.hashCode();
+        return result;
+    }
 
-	public ESBAPIBean getApi() {
-		return api;
-	}
+    public ESBAPIBean getApi() {
+        return api;
+    }
 
-	public void setApi(ESBAPIBean api) {
-		this.api = api;
-	}
+    public void setApi(ESBAPIBean api) {
+        this.api = api;
+    }
 }

@@ -20,31 +20,30 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.internal.commun
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerResumeType;
 
 /**
- * This class represent the request event from {@link ESBDebugTarget} to
- * {@link ESBDebugger} when {@link ESBDebugTarget} asks ESB Server for resume.
+ * This class represent the request event from {@link ESBDebugTarget} to {@link ESBDebugger} when {@link ESBDebugTarget}
+ * asks ESB Server for resume.
  *
  */
-public class ResumeRequest implements IDebugTargetRequest,
-		IESBDebuggerInternalEvent {
+public class ResumeRequest implements IDebugTargetRequest, IESBDebuggerInternalEvent {
 
-	private final ESBDebuggerResumeType type;
-	private int lineNumber;
+    private final ESBDebuggerResumeType type;
+    private int lineNumber;
 
-	public ResumeRequest(ESBDebuggerResumeType type) {
-		this.type = type;
-		lineNumber = -1;
-	}
+    public ResumeRequest(ESBDebuggerResumeType type) {
+        this.type = type;
+        lineNumber = -1;
+    }
 
-	public ResumeRequest(ESBDebuggerResumeType type, int lineNumber) {
-		this(type);
-		this.lineNumber = lineNumber;
-	}
+    public ResumeRequest(ESBDebuggerResumeType type, int lineNumber) {
+        this(type);
+        this.lineNumber = lineNumber;
+    }
 
-	public ESBDebuggerResumeType getType() {
-		return type;
-	}
+    public ESBDebuggerResumeType getType() {
+        return type;
+    }
 
-	public int getLineNumber() {
-		return lineNumber;
-	}
+    public int getLineNumber() {
+        return lineNumber;
+    }
 }

@@ -23,28 +23,28 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.messages.IRespo
  */
 public class CommandResponseMessage implements IResponseMessage {
 
-	private String commandResponse;
-	private String failedReason;
+    private String commandResponse;
+    private String failedReason;
 
-	public CommandResponseMessage(String commandResponse, String failedReason) {
-		this.commandResponse = commandResponse;
-		this.failedReason = failedReason;
-	}
+    public CommandResponseMessage(String commandResponse, String failedReason) {
+        this.commandResponse = commandResponse;
+        this.failedReason = failedReason;
+    }
 
-	public String getCommandResponse() {
-		return commandResponse;
-	}
+    public String getCommandResponse() {
+        return commandResponse;
+    }
 
-	public void setCommandResponse(String commandResponse) {
-		this.commandResponse = commandResponse;
-	}
+    public void setCommandResponse(String commandResponse) {
+        this.commandResponse = commandResponse;
+    }
 
-	public String getFailedReason() {
-		return failedReason;
-	}
+    public String getFailedReason() {
+        return failedReason;
+    }
 
-	public void setFailedReason(String failedReason) {
-		this.failedReason = failedReason;
-	}
+    public void setFailedReason(String failedReason) {
+        this.failedReason = failedReason;
+    }
 
 }

@@ -29,84 +29,83 @@ import com.google.gson.JsonElement;
  */
 public class ESBVariable extends ESBDebugElement implements IVariable {
 
-	private final String variableName;
-	private ESBValue variableValue;
+    private final String variableName;
+    private ESBValue variableValue;
 
-	protected ESBVariable(IDebugTarget target, String name, String value)
-			throws DebugException {
-		super(target);
-		variableName = name;
-		setValue(value);
-	}
+    protected ESBVariable(IDebugTarget target, String name, String value) throws DebugException {
+        super(target);
+        variableName = name;
+        setValue(value);
+    }
 
-	/**
-	 * Sets value of the variable when given as a String object.
-	 * 
-	 * @throws DebugException
-	 */
-	public void setValue(JsonElement expression) throws DebugException {
-		variableValue = new ESBValue(getDebugTarget(), expression);
-	}
+    /**
+     * Sets value of the variable when given as a String object.
+     * 
+     * @throws DebugException
+     */
+    public void setValue(JsonElement expression) throws DebugException {
+        variableValue = new ESBValue(getDebugTarget(), expression);
+    }
 
-	@Override
-	public void setValue(String expression) throws DebugException {
-		variableValue = new ESBValue(getDebugTarget(), expression);
-	}
+    @Override
+    public void setValue(String expression) throws DebugException {
+        variableValue = new ESBValue(getDebugTarget(), expression);
+    }
 
-	/**
-	 * Sets value of the variable when given as a IValue object.
-	 */
-	@Override
-	public void setValue(IValue value) {
-		variableValue = (ESBValue) value;
-	}
+    /**
+     * Sets value of the variable when given as a IValue object.
+     */
+    @Override
+    public void setValue(IValue value) {
+        variableValue = (ESBValue) value;
+    }
 
-	/**
-	 * Returns whether this variable supports value modification.
-	 */
-	@Override
-	public boolean supportsValueModification() {
-		return false;
-	}
+    /**
+     * Returns whether this variable supports value modification.
+     */
+    @Override
+    public boolean supportsValueModification() {
+        return false;
+    }
 
-	@Override
-	public boolean verifyValue(String expression) throws DebugException {
-		return false;
-	}
+    @Override
+    public boolean verifyValue(String expression) throws DebugException {
+        return false;
+    }
 
-	@Override
-	public boolean verifyValue(IValue value) throws DebugException {
-		return false;
-	}
+    @Override
+    public boolean verifyValue(IValue value) throws DebugException {
+        return false;
+    }
 
-	/**
-	 * Returns the value of this variable.
-	 */
-	@Override
-	public IValue getValue() {
-		return variableValue;
-	}
+    /**
+     * Returns the value of this variable.
+     */
+    @Override
+    public IValue getValue() {
+        return variableValue;
+    }
 
-	/**
-	 * Returns the name of this variable.
-	 */
-	@Override
-	public String getName() {
-		return variableName;
-	}
+    /**
+     * Returns the name of this variable.
+     */
+    @Override
+    public String getName() {
+        return variableName;
+    }
 
-	/**
-	 * Returns a description of the type of data this variable is declared to
-	 * reference.
-	 */
-	@Override
-	public String getReferenceTypeName() throws DebugException {
-		return ESBDebuggerConstants.VARIABLE_TYPE;
-	}
+    /**
+     * Returns a description of the type of data this variable is declared to
+     * reference.
+     */
+    @Override
+    public String getReferenceTypeName() throws DebugException {
+        return ESBDebuggerConstants.VARIABLE_TYPE;
+    }
 
-	@Override
-	public boolean hasValueChanged() throws DebugException {
-		return false;
-	}
+    @Override
+    public boolean hasValueChanged() throws DebugException {
+        return false;
+    }
 
 }

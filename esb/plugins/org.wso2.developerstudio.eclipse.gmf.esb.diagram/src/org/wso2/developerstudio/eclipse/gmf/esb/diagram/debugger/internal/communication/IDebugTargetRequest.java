@@ -16,8 +16,7 @@
 package org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.internal.communication;
 
 /**
- * This interface should be implemented by Requests sending from
- * {@link ESBDebugTarget} to {@link ESBDebugger}
+ * This interface should be implemented by Requests sending from {@link ESBDebugTarget} to {@link ESBDebugger}
  *
  */
 public interface IDebugTargetRequest {

@@ -24,51 +24,47 @@ import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
 /**
- * This class manages the event communication between {@link ESBDebugger} and
- * {@link ESBDebuggerInterface}
+ * This class manages the event communication between {@link ESBDebugger} and {@link ESBDebuggerInterface}
  *
  */
 public class ChannelEventDispatcher implements Runnable {
 
-	private BufferedReader eventReader;
-	private ESBDebuggerInterface esbDebuggerInterface;
-	private volatile Thread eventDispatcherThread;
-	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
+    private BufferedReader eventReader;
+    private ESBDebuggerInterface esbDebuggerInterface;
+    private volatile Thread eventDispatcherThread;
+    private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
-	public ChannelEventDispatcher(BufferedReader eventReader,
-			ESBDebuggerInterface esbDebuggerInterface) {
-		this.eventReader = eventReader;
-		this.esbDebuggerInterface = esbDebuggerInterface;
-	}
+    public ChannelEventDispatcher(BufferedReader eventReader, ESBDebuggerInterface esbDebuggerInterface) {
+        this.eventReader = eventReader;
+        this.esbDebuggerInterface = esbDebuggerInterface;
+    }
 
-	@Override
-	public void run() {
-		Thread currentThread = Thread.currentThread();
-		try {
-			while (currentThread == eventDispatcherThread) {
-				String buffer = null;
-				synchronized (eventReader) {
-					buffer = eventReader.readLine();
-				}
-				esbDebuggerInterface.notifyEvent(buffer);
-			}
-		} catch (IOException ex) {
-			log.error(
-					"Error occured during reading event message sent from ESB Server Debugger",
-					ex);
-		}
-	}
+    @Override
+    public void run() {
+        Thread currentThread = Thread.currentThread();
+        try {
+            while (currentThread == eventDispatcherThread) {
+                String buffer = null;
+                synchronized (eventReader) {
+                    buffer = eventReader.readLine();
+                }
+                esbDebuggerInterface.notifyEvent(buffer);
+            }
+        } catch (IOException ex) {
+            log.error("Error occured during reading event message sent from ESB Server Debugger", ex);
+        }
+    }
 
-	public void start() {
-		eventDispatcherThread = new Thread(this);
-		eventDispatcherThread.start();
-	}
+    public void start() {
+        eventDispatcherThread = new Thread(this);
+        eventDispatcherThread.start();
+    }
 
-	public void stop() {
-		eventDispatcherThread = null;
-		synchronized (this) {
-			notifyAll();
-		}
-	}
+    public void stop() {
+        eventDispatcherThread = null;
+        synchronized (this) {
+            notifyAll();
+        }
+    }
 
 }

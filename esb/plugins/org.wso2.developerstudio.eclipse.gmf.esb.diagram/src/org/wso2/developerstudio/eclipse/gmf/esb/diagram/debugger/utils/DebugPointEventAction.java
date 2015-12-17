@@ -24,19 +24,19 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ES
  *
  */
 public enum DebugPointEventAction {
-	ADDED(SET_COMMAND), REMOVED(CLEAR_COMMAND);
+    ADDED(SET_COMMAND), REMOVED(CLEAR_COMMAND);
 
-	private final String action;
+    private final String action;
 
-	private DebugPointEventAction(String actionValue) {
-		action = actionValue;
-	}
+    private DebugPointEventAction(String actionValue) {
+        action = actionValue;
+    }
 
-	public boolean equalsName(String comapreAction) {
-		return (comapreAction == null) ? false : action.equals(comapreAction);
-	}
+    public boolean equalsName(String comapreAction) {
+        return (comapreAction == null) ? false : action.equals(comapreAction);
+    }
 
-	public String toString() {
-		return this.action;
-	}
+    public String toString() {
+        return this.action;
+    }
 }

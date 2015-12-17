@@ -20,20 +20,19 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.internal.commun
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.messages.response.PropertyRespondMessage;
 
 /**
- * This class represent the request event from {@link ESBDebugger} to
- * {@link ESBDebugTarget} when {@link ESBDebugger} notify new property variables
+ * This class represent the request event from {@link ESBDebugger} to {@link ESBDebugTarget} when {@link ESBDebugger}
+ * notify new property variables
  * are received from ESB Server
  */
-public class PropertyRecievedEvent implements IESBDebuggerInternalEvent,
-		IDebuggerEvent {
+public class PropertyRecievedEvent implements IESBDebuggerInternalEvent, IDebuggerEvent {
 
-	private final PropertyRespondMessage scopeProperties;
+    private final PropertyRespondMessage scopeProperties;
 
-	public PropertyRecievedEvent(PropertyRespondMessage variables) {
-		this.scopeProperties = variables;
-	}
+    public PropertyRecievedEvent(PropertyRespondMessage variables) {
+        this.scopeProperties = variables;
+    }
 
-	public PropertyRespondMessage getVariables() {
-		return scopeProperties;
-	}
+    public PropertyRespondMessage getVariables() {
+        return scopeProperties;
+    }
 }

@@ -19,11 +19,10 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.internal.commun
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.internal.communication.IESBDebuggerInternalEvent;
 
 /**
- * This class represent the request event from {@link ESBDebugTarget} to
- * {@link ESBDebugger} when ESB Mediation Debugger tool disconnect from ESB
+ * This class represent the request event from {@link ESBDebugTarget} to {@link ESBDebugger} when ESB Mediation Debugger
+ * tool disconnect from ESB
  * Server Mediation Debugger.
  *
  */
-public class DisconnectRequest implements IDebugTargetRequest,
-		IESBDebuggerInternalEvent {
+public class DisconnectRequest implements IDebugTargetRequest, IESBDebuggerInternalEvent {
 }

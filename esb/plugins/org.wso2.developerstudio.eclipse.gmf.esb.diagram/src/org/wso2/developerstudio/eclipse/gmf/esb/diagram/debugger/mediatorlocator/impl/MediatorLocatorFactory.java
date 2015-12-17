@@ -25,28 +25,28 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.mediatorlocator
  */
 public class MediatorLocatorFactory {
 
-	/**
-	 * This method takes project type as a input and returns specific Mediator
-	 * Locator
-	 * 
-	 * @param type
-	 * @return
-	 */
-	public static IMediatorLocator getMediatorLocator(ArtifactType type) {
+    /**
+     * This method takes project type as a input and returns specific Mediator
+     * Locator
+     * 
+     * @param type
+     * @return
+     */
+    public static IMediatorLocator getMediatorLocator(ArtifactType type) {
 
-		switch (type) {
-		case PROXY:
-			return new ProxyMediatorLocator();
-		case SEQUENCE:
-			return new SequenceMediatorLocator();
-		case TEMPLATE_SEQUENCE:
-			return new TemplateMediatorLocator();
-		case API:
-			return new APIMediatorLocator();
-		case MAIN_SEQUENCE:
-			return new MainSequenceMediatorLocator();
-		default:
-			return null;
-		}
-	}
+        switch (type) {
+        case PROXY:
+            return new ProxyMediatorLocator();
+        case SEQUENCE:
+            return new SequenceMediatorLocator();
+        case TEMPLATE_SEQUENCE:
+            return new TemplateMediatorLocator();
+        case API:
+            return new APIMediatorLocator();
+        case MAIN_SEQUENCE:
+            return new MainSequenceMediatorLocator();
+        default:
+            return null;
+        }
+    }
 }

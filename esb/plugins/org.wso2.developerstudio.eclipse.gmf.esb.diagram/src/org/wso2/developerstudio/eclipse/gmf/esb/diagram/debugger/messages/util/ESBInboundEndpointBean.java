@@ -31,68 +31,61 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ES
  * <li>Mediator Position</li><u1>
  */
 public class ESBInboundEndpointBean {
-	private String inboundKey;
-	private String sequenceType;
-	private ESBMediatorPosition mediatorPosition;
+    private String inboundKey;
+    private String sequenceType;
+    private ESBMediatorPosition mediatorPosition;
 
-	public ESBInboundEndpointBean(String inboundKey, String sequenceType,
-			ESBMediatorPosition mediatorPosition) {
-		this.inboundKey = inboundKey;
-		this.sequenceType = sequenceType;
-		this.mediatorPosition = mediatorPosition;
-	}
+    public ESBInboundEndpointBean(String inboundKey, String sequenceType, ESBMediatorPosition mediatorPosition) {
+        this.inboundKey = inboundKey;
+        this.sequenceType = sequenceType;
+        this.mediatorPosition = mediatorPosition;
+    }
 
-	@Override
-	public boolean equals(Object inboundEndpointBean) {
-		if (inboundEndpointBean instanceof ESBInboundEndpointBean) {
-			ESBInboundEndpointBean inboundEndpointBeanTemp = (ESBInboundEndpointBean) inboundEndpointBean;
-			if (!(inboundKey.equals((inboundEndpointBeanTemp)
-					.getInboundEndpointKey())
-					&& sequenceType.equals((inboundEndpointBeanTemp)
-							.getSequenceType()) && mediatorPosition
-						.equals(inboundEndpointBeanTemp.getMediatorPosition()))) {
-				return false;
-			}
-			return true;
-		} else {
-			return false;
-		}
-	}
+    @Override
+    public boolean equals(Object inboundEndpointBean) {
+        if (inboundEndpointBean instanceof ESBInboundEndpointBean) {
+            ESBInboundEndpointBean inboundEndpointBeanTemp = (ESBInboundEndpointBean) inboundEndpointBean;
+            if (!(inboundKey.equals((inboundEndpointBeanTemp).getInboundEndpointKey())
+                    && sequenceType.equals((inboundEndpointBeanTemp).getSequenceType()) && mediatorPosition
+                        .equals(inboundEndpointBeanTemp.getMediatorPosition()))) {
+                return false;
+            }
+            return true;
+        } else {
+            return false;
+        }
+    }
 
-	@Override
-	public int hashCode() {
-		int result = INITIAL_HASH_CODE_RESULT_VALUE;
-		result = HASHCODE_MULTIPLIER_VALUE * result + inboundKey.hashCode()
-				+ INBOUND_ENDPOINT_KEY_LABEL.hashCode();
-		result = HASHCODE_MULTIPLIER_VALUE * result + sequenceType.hashCode()
-				+ SEQUENCE_TYPE_LABEL.hashCode();
-		result = HASHCODE_MULTIPLIER_VALUE * result
-				+ mediatorPosition.hashCode()
-				+ MEDIATOR_POSITION_LABEL.hashCode();
-		return result;
-	}
+    @Override
+    public int hashCode() {
+        int result = INITIAL_HASH_CODE_RESULT_VALUE;
+        result = HASHCODE_MULTIPLIER_VALUE * result + inboundKey.hashCode() + INBOUND_ENDPOINT_KEY_LABEL.hashCode();
+        result = HASHCODE_MULTIPLIER_VALUE * result + sequenceType.hashCode() + SEQUENCE_TYPE_LABEL.hashCode();
+        result = HASHCODE_MULTIPLIER_VALUE * result + mediatorPosition.hashCode() + MEDIATOR_POSITION_LABEL.hashCode();
+        return result;
+    }
 
-	public String getInboundEndpointKey() {
-		return inboundKey;
-	}
+    public String getInboundEndpointKey() {
+        return inboundKey;
+    }
 
-	public void setInboundEndpointKey(String inboundKey) {
-		this.inboundKey = inboundKey;
-	}
+    public void setInboundEndpointKey(String inboundKey) {
+        this.inboundKey = inboundKey;
+    }
 
-	public String getSequenceType() {
-		return sequenceType;
-	}
+    public String getSequenceType() {
+        return sequenceType;
+    }
 
-	public void setSequenceType(String sequenceType) {
-		this.sequenceType = sequenceType;
-	}
+    public void setSequenceType(String sequenceType) {
+        this.sequenceType = sequenceType;
+    }
 
-	public ESBMediatorPosition getMediatorPosition() {
-		return mediatorPosition;
-	}
+    public ESBMediatorPosition getMediatorPosition() {
+        return mediatorPosition;
+    }
 
-	public void setMediatorPosition(ESBMediatorPosition mediatorPosition) {
-		this.mediatorPosition = mediatorPosition;
-	}
+    public void setMediatorPosition(ESBMediatorPosition mediatorPosition) {
+        this.mediatorPosition = mediatorPosition;
+    }
 }

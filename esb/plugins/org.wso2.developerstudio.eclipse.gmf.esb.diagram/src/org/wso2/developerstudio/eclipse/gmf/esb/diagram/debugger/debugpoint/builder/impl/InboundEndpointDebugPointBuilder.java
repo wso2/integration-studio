@@ -41,54 +41,46 @@ import org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl;
 /**
  * This class builds ESB breakpoints related to Inbound Endpoint Services.
  */
-public class InboundEndpointDebugPointBuilder extends
-		AbstractESBDebugPointBuilder {
+public class InboundEndpointDebugPointBuilder extends AbstractESBDebugPointBuilder {
 
-	/**
-	 * This method returns the ESBDebugPoint object for the selection
-	 * 
-	 * @throws ESBDebuggerException
-	 * @throws CoreException
-	 */
-	@Override
-	public ESBDebugPoint getESBDebugPoint(EsbServer esbServer,
-			IResource resource, AbstractMediator part, String commandArgument)
-			throws ESBDebuggerException, CoreException {
+    /**
+     * This method returns the ESBDebugPoint object for the selection
+     * 
+     * @throws ESBDebuggerException
+     * @throws CoreException
+     */
+    @Override
+    public ESBDebugPoint getESBDebugPoint(EsbServer esbServer, IResource resource, AbstractMediator part,
+            String commandArgument) throws ESBDebuggerException, CoreException {
 
-		int lineNumber = -1;
-		InboundEndpointImpl inboundEndpoint = (InboundEndpointImpl) esbServer
-				.eContents().get(INDEX_OF_FIRST_ELEMENT);
-		List<Integer> position = new ArrayList<>();
-		String sequenceType = EMPTY_STRING;
-		EditPart container = getContainerFromEditPart(part,
-				InboundEndpointContainerEditPart.class);
-		if (container instanceof InboundEndpointSequenceContainerEditPart) {
-			position.add(0);
-			sequenceType = INBOUND_SEQ_LABEL;
-		} else if (container instanceof InboundEndpointOnErrorSequenceContainerEditPart) {
-			position.add(0);
-			sequenceType = INBOUND_FAULT_SEQ_LABEL;
-		} else {
-			throw new IllegalArgumentException(
-					"Selected Metdiator Edit Part is in a unknown position : "
-							+ container.toString());
-		}
+        int lineNumber = -1;
+        InboundEndpointImpl inboundEndpoint = (InboundEndpointImpl) esbServer.eContents().get(INDEX_OF_FIRST_ELEMENT);
+        List<Integer> position = new ArrayList<>();
+        String sequenceType = EMPTY_STRING;
+        EditPart container = getContainerFromEditPart(part, InboundEndpointContainerEditPart.class);
+        if (container instanceof InboundEndpointSequenceContainerEditPart) {
+            position.add(0);
+            sequenceType = INBOUND_SEQ_LABEL;
+        } else if (container instanceof InboundEndpointOnErrorSequenceContainerEditPart) {
+            position.add(0);
+            sequenceType = INBOUND_FAULT_SEQ_LABEL;
+        } else {
+            throw new IllegalArgumentException("Selected Metdiator Edit Part is in a unknown position : "
+                    + container.toString());
+        }
 
-		ESBInboundEndpointBean inboundBean = new ESBInboundEndpointBean(
-				inboundEndpoint.getName(), sequenceType,
-				new ESBMediatorPosition(position));
-		ESBInboundEndpointDebugPointMessage inboundDebugPoint = new ESBInboundEndpointDebugPointMessage(
-				null, commandArgument, new ESBInboundEndpointSequenceBean(
-						inboundBean));
-		return new ESBDebugPoint(resource, lineNumber, inboundDebugPoint);
-	}
+        ESBInboundEndpointBean inboundBean = new ESBInboundEndpointBean(inboundEndpoint.getName(), sequenceType,
+                new ESBMediatorPosition(position));
+        ESBInboundEndpointDebugPointMessage inboundDebugPoint = new ESBInboundEndpointDebugPointMessage(null,
+                commandArgument, new ESBInboundEndpointSequenceBean(inboundBean));
+        return new ESBDebugPoint(resource, lineNumber, inboundDebugPoint);
+    }
 
-	@Override
-	public void updateExistingDebugPoints(IResource resource,
-			AbstractMediator abstractMediator, EsbServer esbServer,
-			String action) throws MediatorNotFoundException {
-		// no implementation because Inbound endpoint can only have one sequence
-		// on both "onErrorSequence" and "sequence"
-	}
+    @Override
+    public void updateExistingDebugPoints(IResource resource, AbstractMediator abstractMediator, EsbServer esbServer,
+            String action) throws MediatorNotFoundException {
+        // no implementation because Inbound endpoint can only have one sequence
+        // on both "onErrorSequence" and "sequence"
+    }
 
 }

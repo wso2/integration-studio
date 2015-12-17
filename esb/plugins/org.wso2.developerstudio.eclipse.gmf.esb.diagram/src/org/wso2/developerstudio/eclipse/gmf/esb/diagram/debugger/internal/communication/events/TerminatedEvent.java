@@ -19,12 +19,11 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.internal.commun
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.internal.communication.IESBDebuggerInternalEvent;
 
 /**
- * This class represent the request event from {@link ESBDebugger} to
- * {@link ESBDebugTarget} when {@link ESBDebugger} notify Terminated action from
+ * This class represent the request event from {@link ESBDebugger} to {@link ESBDebugTarget} when {@link ESBDebugger}
+ * notify Terminated action from
  * ESB Server
  */
 
-public class TerminatedEvent implements IESBDebuggerInternalEvent,
-		IDebuggerEvent {
+public class TerminatedEvent implements IESBDebuggerInternalEvent, IDebuggerEvent {
 
 }

@@ -29,44 +29,44 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.Messages;
  */
 public class ESBDebugProcess extends ESBDebugElement implements IProcess {
 
-	private Map<String, String> processAttributes;
+    private Map<String, String> processAttributes;
 
-	public ESBDebugProcess(final ESBDebugTarget debugTarget) {
-		super(debugTarget);
-		processAttributes = new HashMap<>();
-	}
+    public ESBDebugProcess(final ESBDebugTarget debugTarget) {
+        super(debugTarget);
+        processAttributes = new HashMap<>();
+    }
 
-	@Override
-	public String getLabel() {
-		return Messages.ESBDebugProcess_ESBDebugProcessNameTag;
-	}
+    @Override
+    public String getLabel() {
+        return Messages.ESBDebugProcess_ESBDebugProcessNameTag;
+    }
 
-	@Override
-	public IStreamsProxy getStreamsProxy() {
-		return null;
-	}
+    @Override
+    public IStreamsProxy getStreamsProxy() {
+        return null;
+    }
 
-	@Override
-	public void setAttribute(final String key, final String value) {
-		processAttributes.put(key, value);
-	}
+    @Override
+    public void setAttribute(final String key, final String value) {
+        processAttributes.put(key, value);
+    }
 
-	@Override
-	public String getAttribute(final String key) {
-		if (processAttributes.containsKey(key)) {
-			return processAttributes.get(key);
-		} else {
-			return null;
-		}
-	}
+    @Override
+    public String getAttribute(final String key) {
+        if (processAttributes.containsKey(key)) {
+            return processAttributes.get(key);
+        } else {
+            return null;
+        }
+    }
 
-	@Override
-	public int getExitValue() throws DebugException {
-		return 0;
-	}
+    @Override
+    public int getExitValue() throws DebugException {
+        return 0;
+    }
 
-	@Override
-	public String getModelIdentifier() {
-		return this.getDebugTarget().getModelIdentifier();
-	}
+    @Override
+    public String getModelIdentifier() {
+        return this.getDebugTarget().getModelIdentifier();
+    }
 }

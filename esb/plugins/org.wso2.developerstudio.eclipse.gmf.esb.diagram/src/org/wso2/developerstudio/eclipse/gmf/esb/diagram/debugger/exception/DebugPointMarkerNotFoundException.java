@@ -23,18 +23,18 @@ package org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.exception;
  */
 public class DebugPointMarkerNotFoundException extends ESBDebuggerException {
 
-	private static final long serialVersionUID = 5397554519725405607L;
+    private static final long serialVersionUID = 5397554519725405607L;
 
-	public DebugPointMarkerNotFoundException(String message) {
-		super(message);
-	}
+    public DebugPointMarkerNotFoundException(String message) {
+        super(message);
+    }
 
-	public DebugPointMarkerNotFoundException(Throwable cause) {
-		super(cause);
-	}
+    public DebugPointMarkerNotFoundException(Throwable cause) {
+        super(cause);
+    }
 
-	public DebugPointMarkerNotFoundException(String message, Throwable cause) {
-		super(message, cause);
-	}
+    public DebugPointMarkerNotFoundException(String message, Throwable cause) {
+        super(message, cause);
+    }
 
 }

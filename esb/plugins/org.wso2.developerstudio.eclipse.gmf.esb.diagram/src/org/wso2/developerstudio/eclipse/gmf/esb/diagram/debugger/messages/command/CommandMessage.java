@@ -24,18 +24,18 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebugg
  */
 public class CommandMessage {
 
-	private String command;
+    private String command;
 
-	public CommandMessage(ESBDebuggerCommands command) {
-		this.command = command.toString();
-	}
+    public CommandMessage(ESBDebuggerCommands command) {
+        this.command = command.toString();
+    }
 
-	public String getCommand() {
-		return command;
-	}
+    public String getCommand() {
+        return command;
+    }
 
-	public void setCommand(ESBDebuggerCommands command) {
-		this.command = command.toString();
-	}
+    public void setCommand(ESBDebuggerCommands command) {
+        this.command = command.toString();
+    }
 
 }

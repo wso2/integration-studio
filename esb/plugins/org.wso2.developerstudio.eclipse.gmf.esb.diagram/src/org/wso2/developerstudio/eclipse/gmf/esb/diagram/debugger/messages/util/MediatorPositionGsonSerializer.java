@@ -23,30 +23,26 @@ import com.google.gson.JsonSerializationContext;
 import com.google.gson.JsonSerializer;
 
 /**
- * This class implements the Gson Json serializer for
- * {@link ESBMediatorPosition}
+ * This class implements the Gson Json serializer for {@link ESBMediatorPosition}
  * 
  * @see <a
  *      href="https://sites.google.com/site/gson/gson-user-guide#TOC-Serializing-and-Deserializing-Collection-with-Objects-of-Arbitrary-Types">GOSN
  *      Serializing</a>
  *
  */
-public class MediatorPositionGsonSerializer implements
-		JsonSerializer<ESBMediatorPosition> {
+public class MediatorPositionGsonSerializer implements JsonSerializer<ESBMediatorPosition> {
 
-	private static final String ARRAY_VALUE_SEPERATOR = ",";
-	private static final String STRING_SPACE_VALUE = " ";
-	private static final String ARRAY_ENDING_BRACKET = "]";
-	private static final String EMPTY_STRING_VALUE = "";
+    private static final String ARRAY_VALUE_SEPERATOR = ",";
+    private static final String STRING_SPACE_VALUE = " ";
+    private static final String ARRAY_ENDING_BRACKET = "]";
+    private static final String EMPTY_STRING_VALUE = "";
 
-	@Override
-	public JsonElement serialize(ESBMediatorPosition position,
-			Type typeOfPosition, JsonSerializationContext context) {
-		String positionString = position.getPosition().toString().trim();
-		return new JsonPrimitive(positionString
-				.substring(1, positionString.lastIndexOf(ARRAY_ENDING_BRACKET))
-				.replaceAll(STRING_SPACE_VALUE, EMPTY_STRING_VALUE)
-				.replaceAll(ARRAY_VALUE_SEPERATOR, STRING_SPACE_VALUE));
-	}
+    @Override
+    public JsonElement serialize(ESBMediatorPosition position, Type typeOfPosition, JsonSerializationContext context) {
+        String positionString = position.getPosition().toString().trim();
+        return new JsonPrimitive(positionString.substring(1, positionString.lastIndexOf(ARRAY_ENDING_BRACKET))
+                .replaceAll(STRING_SPACE_VALUE, EMPTY_STRING_VALUE)
+                .replaceAll(ARRAY_VALUE_SEPERATOR, STRING_SPACE_VALUE));
+    }
 
 }

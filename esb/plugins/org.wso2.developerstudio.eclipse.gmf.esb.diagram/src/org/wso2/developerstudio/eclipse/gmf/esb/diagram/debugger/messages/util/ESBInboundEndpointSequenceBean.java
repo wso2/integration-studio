@@ -29,40 +29,37 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ES
  */
 public class ESBInboundEndpointSequenceBean {
 
-	private ESBInboundEndpointBean inbound;
+    private ESBInboundEndpointBean inbound;
 
-	public ESBInboundEndpointSequenceBean(ESBInboundEndpointBean inbound) {
-		this.inbound = inbound;
-	}
+    public ESBInboundEndpointSequenceBean(ESBInboundEndpointBean inbound) {
+        this.inbound = inbound;
+    }
 
-	@Override
-	public boolean equals(Object inboundSeqBean) {
-		if (inboundSeqBean instanceof ESBInboundEndpointSequenceBean) {
-			if (inbound
-					.equals(((ESBInboundEndpointSequenceBean) inboundSeqBean)
-							.getInboundEndpoint())) {
-				return true;
-			}
-			return false;
-		} else {
-			return false;
-		}
-	}
+    @Override
+    public boolean equals(Object inboundSeqBean) {
+        if (inboundSeqBean instanceof ESBInboundEndpointSequenceBean) {
+            if (inbound.equals(((ESBInboundEndpointSequenceBean) inboundSeqBean).getInboundEndpoint())) {
+                return true;
+            }
+            return false;
+        } else {
+            return false;
+        }
+    }
 
-	@Override
-	public int hashCode() {
-		int result = INITIAL_HASH_CODE_RESULT_VALUE;
-		result = HASHCODE_MULTIPLIER_VALUE * result + inbound.hashCode()
-				+ INBOUND_ENDPOINT_LABEL.hashCode();
+    @Override
+    public int hashCode() {
+        int result = INITIAL_HASH_CODE_RESULT_VALUE;
+        result = HASHCODE_MULTIPLIER_VALUE * result + inbound.hashCode() + INBOUND_ENDPOINT_LABEL.hashCode();
 
-		return result;
-	}
+        return result;
+    }
 
-	public ESBInboundEndpointBean getInboundEndpoint() {
-		return inbound;
-	}
+    public ESBInboundEndpointBean getInboundEndpoint() {
+        return inbound;
+    }
 
-	public void setInboundEndpoint(ESBInboundEndpointBean inbound) {
-		this.inbound = inbound;
-	}
+    public void setInboundEndpoint(ESBInboundEndpointBean inbound) {
+        this.inbound = inbound;
+    }
 }

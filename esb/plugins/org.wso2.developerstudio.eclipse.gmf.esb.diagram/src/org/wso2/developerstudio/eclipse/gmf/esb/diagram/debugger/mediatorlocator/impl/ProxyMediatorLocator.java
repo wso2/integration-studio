@@ -36,46 +36,35 @@ import org.wso2.developerstudio.eclipse.gmf.esb.impl.ProxyServiceImpl;
  */
 public class ProxyMediatorLocator extends AbstractMediatorLocator {
 
-	/**
-	 * This method returns EditPart of a Proxy Service according to given
-	 * information Map
-	 * 
-	 * @throws MediatorNotFoundException
-	 * @throws MissingAttributeException
-	 * @throws CoreException
-	 * @throws DebugPointMarkerNotFoundException
-	 */
-	@Override
-	public EditPart getMediatorEditPart(EsbServer esbServer,
-			ESBDebugPoint debugPoint) throws MediatorNotFoundException,
-			MissingAttributeException, DebugPointMarkerNotFoundException,
-			CoreException {
-		ESBProxyDebugPointMessage debugPointMessage = (ESBProxyDebugPointMessage) debugPoint
-				.getLocation();
-		List<Integer> positionArray = debugPointMessage.getSequence()
-				.getProxy().getMediatorPosition().getPosition();
-		String sequenceType = debugPointMessage.getSequence().getProxy()
-				.getSequenceType();
-		ProxyServiceImpl proxy = (ProxyServiceImpl) esbServer.eContents().get(
-				INDEX_OF_FIRST_ELEMENT);
-		if (sequenceType == null
-				|| sequenceType.equals(getFaultSequenceName(proxy))) {
-			return getMediatorInFaultSeq(proxy.getContainer()
-					.getFaultContainer().getMediatorFlow().getChildren(),
-					positionArray);
-		} else if (sequenceType.equals(PROXY_INSEQ_LABEL)) {
+    /**
+     * This method returns EditPart of a Proxy Service according to given
+     * information Map
+     * 
+     * @throws MediatorNotFoundException
+     * @throws MissingAttributeException
+     * @throws CoreException
+     * @throws DebugPointMarkerNotFoundException
+     */
+    @Override
+    public EditPart getMediatorEditPart(EsbServer esbServer, ESBDebugPoint debugPoint)
+            throws MediatorNotFoundException, MissingAttributeException, DebugPointMarkerNotFoundException,
+            CoreException {
+        ESBProxyDebugPointMessage debugPointMessage = (ESBProxyDebugPointMessage) debugPoint.getLocation();
+        List<Integer> positionArray = debugPointMessage.getSequence().getProxy().getMediatorPosition().getPosition();
+        String sequenceType = debugPointMessage.getSequence().getProxy().getSequenceType();
+        ProxyServiceImpl proxy = (ProxyServiceImpl) esbServer.eContents().get(INDEX_OF_FIRST_ELEMENT);
+        if (sequenceType == null || sequenceType.equals(getFaultSequenceName(proxy))) {
+            return getMediatorInFaultSeq(proxy.getContainer().getFaultContainer().getMediatorFlow().getChildren(),
+                    positionArray);
+        } else if (sequenceType.equals(PROXY_INSEQ_LABEL)) {
 
-			return getMediatorFromMediationFlow(proxy.getOutputConnector(),
-					positionArray);
+            return getMediatorFromMediationFlow(proxy.getOutputConnector(), positionArray);
 
-		} else if (sequenceType.equals(PROXY_OUTSEQ_LABEL)) {
+        } else if (sequenceType.equals(PROXY_OUTSEQ_LABEL)) {
 
-			return getMediatorFromMediationFlow(
-					proxy.getOutSequenceOutputConnector(), positionArray);
-		} else {
-			throw new IllegalArgumentException(
-					"Unknown sequence type for proxy service detected : "
-							+ sequenceType);
-		}
-	}
+            return getMediatorFromMediationFlow(proxy.getOutSequenceOutputConnector(), positionArray);
+        } else {
+            throw new IllegalArgumentException("Unknown sequence type for proxy service detected : " + sequenceType);
+        }
+    }
 }

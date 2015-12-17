@@ -76,9 +76,9 @@ public class SequenceDebugPointBuilder extends AbstractESBDebugPointBuilder {
         List<ESBDebugPoint> breakpontList = getDebugPointsRelatedToModification(resource, position, EMPTY_STRING,
                 action);
         if (MEDIATOR_INSERT_ACTION.equalsIgnoreCase(action)) {
-            increaseBreakpointPosition(breakpontList,position);
+            increaseBreakpointPosition(breakpontList, position);
         } else {
-            decreaseBreakpointPosition(breakpontList,position);
+            decreaseBreakpointPosition(breakpontList, position);
         }
     }
 }

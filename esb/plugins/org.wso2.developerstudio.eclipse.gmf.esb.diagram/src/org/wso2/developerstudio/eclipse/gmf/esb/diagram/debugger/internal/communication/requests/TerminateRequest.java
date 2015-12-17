@@ -19,11 +19,10 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.internal.commun
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.internal.communication.IESBDebuggerInternalEvent;
 
 /**
- * This class represent the request event from {@link ESBDebugTarget} to
- * {@link ESBDebugger} when {@link ESBDebugTarget} asks ESB Server for
+ * This class represent the request event from {@link ESBDebugTarget} to {@link ESBDebugger} when {@link ESBDebugTarget}
+ * asks ESB Server for
  * terminate.
  *
  */
-public class TerminateRequest implements IDebugTargetRequest,
-		IESBDebuggerInternalEvent {
+public class TerminateRequest implements IDebugTargetRequest, IESBDebuggerInternalEvent {
 }

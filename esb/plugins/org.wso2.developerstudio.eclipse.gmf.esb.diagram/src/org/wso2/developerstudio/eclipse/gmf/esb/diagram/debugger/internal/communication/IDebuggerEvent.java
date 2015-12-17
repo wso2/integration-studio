@@ -16,8 +16,7 @@
 package org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.internal.communication;
 
 /**
- * All debug events sent from {@link ESBDebugger} to {@link ESBDebugTarget}
- * should implement this interface.
+ * All debug events sent from {@link ESBDebugger} to {@link ESBDebugTarget} should implement this interface.
  */
 public interface IDebuggerEvent {
 

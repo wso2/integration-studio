@@ -21,52 +21,48 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ES
 import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.HASHCODE_MULTIPLIER_VALUE;
 
 /**
- * This class holds the mediator position in a ESB Artifact in the form of
- * <code>List<<code>Interger<code>></code>.
+ * This class holds the mediator position in a ESB Artifact in the form of <code>List<<code>Interger<code>></code>.
  * <p>
  * Eg: {i,j,k,...}
  * <p>
  * <u1>
  * <li>i'th child mediator position with respect to artifact's bottom sequence</li>
  * <li>j'th child mediator position with respect to his parent</li>
- * <li>k'th child mediator position with respect to his parent ... so on</li>
- * <u1>
+ * <li>k'th child mediator position with respect to his parent ... so on</li> <u1>
  */
 public class ESBMediatorPosition {
 
-	private List<Integer> position;
+    private List<Integer> position;
 
-	public ESBMediatorPosition(List<Integer> position) {
-		this.position = position;
-	}
+    public ESBMediatorPosition(List<Integer> position) {
+        this.position = position;
+    }
 
-	@Override
-	public boolean equals(Object mediatorPosition) {
-		if (mediatorPosition instanceof ESBMediatorPosition) {
-			if (position.equals(((ESBMediatorPosition) mediatorPosition)
-					.getPosition())) {
-				return true;
-			}
-			return false;
-		} else {
-			return false;
-		}
-	}
+    @Override
+    public boolean equals(Object mediatorPosition) {
+        if (mediatorPosition instanceof ESBMediatorPosition) {
+            if (position.equals(((ESBMediatorPosition) mediatorPosition).getPosition())) {
+                return true;
+            }
+            return false;
+        } else {
+            return false;
+        }
+    }
 
-	@Override
-	public int hashCode() {
-		int result = INITIAL_HASH_CODE_RESULT_VALUE;
-		result = HASHCODE_MULTIPLIER_VALUE * result + position.hashCode()
-				+ MEDIATOR_POSITION_LABEL.hashCode();
-		return result;
-	}
+    @Override
+    public int hashCode() {
+        int result = INITIAL_HASH_CODE_RESULT_VALUE;
+        result = HASHCODE_MULTIPLIER_VALUE * result + position.hashCode() + MEDIATOR_POSITION_LABEL.hashCode();
+        return result;
+    }
 
-	public List<Integer> getPosition() {
-		return position;
-	}
+    public List<Integer> getPosition() {
+        return position;
+    }
 
-	public void setPosition(List<Integer> position) {
-		this.position = position;
-	}
+    public void setPosition(List<Integer> position) {
+        this.position = position;
+    }
 
 }

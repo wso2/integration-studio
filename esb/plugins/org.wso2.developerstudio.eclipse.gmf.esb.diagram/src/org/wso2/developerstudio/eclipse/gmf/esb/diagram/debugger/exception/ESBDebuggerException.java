@@ -24,18 +24,18 @@ package org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.exception;
  */
 public class ESBDebuggerException extends Exception {
 
-	private static final long serialVersionUID = 2357432589598218092L;
+    private static final long serialVersionUID = 2357432589598218092L;
 
-	public ESBDebuggerException(String message) {
-		super(message);
-	}
+    public ESBDebuggerException(String message) {
+        super(message);
+    }
 
-	public ESBDebuggerException(Throwable cause) {
-		super(cause);
-	}
+    public ESBDebuggerException(Throwable cause) {
+        super(cause);
+    }
 
-	public ESBDebuggerException(String message, Throwable cause) {
-		super(message, cause);
-	}
+    public ESBDebuggerException(String message, Throwable cause) {
+        super(message, cause);
+    }
 
 }

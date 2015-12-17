@@ -24,52 +24,47 @@ import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
 /**
- * This class manages the responses communication between {@link ESBDebugger}
- * and {@link ESBDebuggerInterface}
+ * This class manages the responses communication between {@link ESBDebugger} and {@link ESBDebuggerInterface}
  *
  */
 public class ChannelResponseDispatcher implements Runnable {
 
-	private BufferedReader requestReader;
-	private ESBDebuggerInterface esbDebuggerInterface;
-	private volatile Thread responseDispatcherThread;
+    private BufferedReader requestReader;
+    private ESBDebuggerInterface esbDebuggerInterface;
+    private volatile Thread responseDispatcherThread;
 
-	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
+    private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
-	public ChannelResponseDispatcher(BufferedReader requestReader,
-			ESBDebuggerInterface esbDebuggerInterface) {
-		this.requestReader = requestReader;
-		this.esbDebuggerInterface = esbDebuggerInterface;
-	}
+    public ChannelResponseDispatcher(BufferedReader requestReader, ESBDebuggerInterface esbDebuggerInterface) {
+        this.requestReader = requestReader;
+        this.esbDebuggerInterface = esbDebuggerInterface;
+    }
 
-	@Override
-	public void run() {
-		Thread currentThread = Thread.currentThread();
-		try {
-			while (currentThread == responseDispatcherThread) {
-				String buffer = null;
-				synchronized (requestReader) {
-					buffer = requestReader.readLine();
-					;
-				}
-				esbDebuggerInterface.notifyResponce(buffer);
-			}
-		} catch (IOException ex) {
-			log.error(
-					"Error occured during reading response message sent from ESB Server Debugger",
-					ex);
-		}
-	}
+    @Override
+    public void run() {
+        Thread currentThread = Thread.currentThread();
+        try {
+            while (currentThread == responseDispatcherThread) {
+                String buffer = null;
+                synchronized (requestReader) {
+                    buffer = requestReader.readLine();;
+                }
+                esbDebuggerInterface.notifyResponce(buffer);
+            }
+        } catch (IOException ex) {
+            log.error("Error occured during reading response message sent from ESB Server Debugger", ex);
+        }
+    }
 
-	public void start() {
-		responseDispatcherThread = new Thread(this);
-		responseDispatcherThread.start();
-	}
+    public void start() {
+        responseDispatcherThread = new Thread(this);
+        responseDispatcherThread.start();
+    }
 
-	public void stop() {
-		responseDispatcherThread = null;
-		synchronized (this) {
-			notifyAll();
-		}
-	}
+    public void stop() {
+        responseDispatcherThread = null;
+        synchronized (this) {
+            notifyAll();
+        }
+    }
 }

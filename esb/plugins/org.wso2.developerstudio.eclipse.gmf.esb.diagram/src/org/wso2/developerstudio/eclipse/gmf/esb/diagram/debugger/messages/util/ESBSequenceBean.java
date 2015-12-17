@@ -28,67 +28,62 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ES
  */
 public class ESBSequenceBean {
 
-	private String sequenceType;
-	private String sequenceKey;
-	private ESBMediatorPosition mediatorPosition;
+    private String sequenceType;
+    private String sequenceKey;
+    private ESBMediatorPosition mediatorPosition;
 
-	public ESBSequenceBean(String sequenceType, String sequenceKey,
-			ESBMediatorPosition mediatorPosition) {
-		this.sequenceType = sequenceType;
-		this.sequenceKey = sequenceKey;
-		this.mediatorPosition = mediatorPosition;
-	}
+    public ESBSequenceBean(String sequenceType, String sequenceKey, ESBMediatorPosition mediatorPosition) {
+        this.sequenceType = sequenceType;
+        this.sequenceKey = sequenceKey;
+        this.mediatorPosition = mediatorPosition;
+    }
 
-	@Override
-	public boolean equals(Object sequenceBean) {
-		if (sequenceBean instanceof ESBSequenceBean) {
-			ESBSequenceBean seqBeanTemp = (ESBSequenceBean) sequenceBean;
-			if (!(sequenceKey.equals((seqBeanTemp).getSequenceKey())
-					&& sequenceType.equals((seqBeanTemp).getSequenceType()) && mediatorPosition
-						.equals(seqBeanTemp.getMediatorPosition()))) {
-				return false;
-			}
-			return true;
-		} else {
-			return false;
-		}
-	}
+    @Override
+    public boolean equals(Object sequenceBean) {
+        if (sequenceBean instanceof ESBSequenceBean) {
+            ESBSequenceBean seqBeanTemp = (ESBSequenceBean) sequenceBean;
+            if (!(sequenceKey.equals((seqBeanTemp).getSequenceKey())
+                    && sequenceType.equals((seqBeanTemp).getSequenceType()) && mediatorPosition.equals(seqBeanTemp
+                    .getMediatorPosition()))) {
+                return false;
+            }
+            return true;
+        } else {
+            return false;
+        }
+    }
 
-	@Override
-	public int hashCode() {
-		int result = INITIAL_HASH_CODE_RESULT_VALUE;
-		result = HASHCODE_MULTIPLIER_VALUE * result + sequenceKey.hashCode()
-				+ SEQUENCE_KEY_LABEL.hashCode();
-		result = HASHCODE_MULTIPLIER_VALUE * result + sequenceType.hashCode()
-				+ SEQUENCE_TYPE_LABEL.hashCode();
-		result = HASHCODE_MULTIPLIER_VALUE * result
-				+ mediatorPosition.hashCode()
-				+ MEDIATOR_POSITION_LABEL.hashCode();
-		return result;
-	}
+    @Override
+    public int hashCode() {
+        int result = INITIAL_HASH_CODE_RESULT_VALUE;
+        result = HASHCODE_MULTIPLIER_VALUE * result + sequenceKey.hashCode() + SEQUENCE_KEY_LABEL.hashCode();
+        result = HASHCODE_MULTIPLIER_VALUE * result + sequenceType.hashCode() + SEQUENCE_TYPE_LABEL.hashCode();
+        result = HASHCODE_MULTIPLIER_VALUE * result + mediatorPosition.hashCode() + MEDIATOR_POSITION_LABEL.hashCode();
+        return result;
+    }
 
-	public String getSequenceType() {
-		return sequenceType;
-	}
+    public String getSequenceType() {
+        return sequenceType;
+    }
 
-	public void setSequenceType(String sequenceType) {
-		this.sequenceType = sequenceType;
-	}
+    public void setSequenceType(String sequenceType) {
+        this.sequenceType = sequenceType;
+    }
 
-	public String getSequenceKey() {
-		return sequenceKey;
-	}
+    public String getSequenceKey() {
+        return sequenceKey;
+    }
 
-	public void setSequenceKey(String sequenceKey) {
-		this.sequenceKey = sequenceKey;
-	}
+    public void setSequenceKey(String sequenceKey) {
+        this.sequenceKey = sequenceKey;
+    }
 
-	public ESBMediatorPosition getMediatorPosition() {
-		return mediatorPosition;
-	}
+    public ESBMediatorPosition getMediatorPosition() {
+        return mediatorPosition;
+    }
 
-	public void setMediatorPosition(ESBMediatorPosition mediatorPosition) {
-		this.mediatorPosition = mediatorPosition;
-	}
+    public void setMediatorPosition(ESBMediatorPosition mediatorPosition) {
+        this.mediatorPosition = mediatorPosition;
+    }
 
 }

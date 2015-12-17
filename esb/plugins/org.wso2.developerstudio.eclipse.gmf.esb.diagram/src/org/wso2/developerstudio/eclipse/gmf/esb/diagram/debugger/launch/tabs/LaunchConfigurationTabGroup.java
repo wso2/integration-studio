@@ -27,9 +27,8 @@ import org.eclipse.debug.ui.ILaunchConfigurationTabGroup;
  * edit/view attributes of ESB Mediation Debugger launch configuration.
  * 
  * <p>
- * Launch configurations are presented in a Debug Configuration dialog with a
- * tab folder. Each tab manipulates one or more attributes of the launch
- * configuration.
+ * Launch configurations are presented in a Debug Configuration dialog with a tab folder. Each tab manipulates one or
+ * more attributes of the launch configuration.
  * 
  * <p>
  * Launch configuration group extension is defined in plugin.xml of the plug-in.
@@ -55,31 +54,28 @@ import org.eclipse.debug.ui.ILaunchConfigurationTabGroup;
  * <p>
  * <u1>
  * <li>id :A unique identifier for this launch configuration tab group.</li>
- * <li>type :Launch configuration type that this tab group is applicable to
- * (corresponds to the id of a launch configuration type extension).</li>
- * <li>class :specifies a fully qualified name of a Java class that implements
- * ILaunchConfigurationTabGroup.</li> </u1> </u1>
+ * <li>type :Launch configuration type that this tab group is applicable to (corresponds to the id of a launch
+ * configuration type extension).</li>
+ * <li>class :specifies a fully qualified name of a Java class that implements ILaunchConfigurationTabGroup.</li> </u1>
+ * </u1>
  */
-public class LaunchConfigurationTabGroup extends
-		AbstractLaunchConfigurationTabGroup {
+public class LaunchConfigurationTabGroup extends AbstractLaunchConfigurationTabGroup {
 
-	/**
-	 * This method creates the tabs contained in ESB Mediaton Debugger launch
-	 * mode. {@link DebuggerConfigTab} and {@link CommonTab} are created by this
-	 * method.
-	 * 
-	 * <p>
-	 * The tabs control's are not created. This is the fist method called in the
-	 * life-cycle of a tab group.
-	 * 
-	 * @param dialog
-	 *            the launch configuration dialog this tab group is contained in
-	 * @param mode
-	 *            the mode the launch configuration dialog was opened in
-	 */
-	@Override
-	public void createTabs(ILaunchConfigurationDialog dialog, String mode) {
-		setTabs(new ILaunchConfigurationTab[] { new DebuggerConfigTab(),
-				new CommonTab() });
-	}
+    /**
+     * This method creates the tabs contained in ESB Mediaton Debugger launch
+     * mode. {@link DebuggerConfigTab} and {@link CommonTab} are created by this
+     * method.
+     * 
+     * <p>
+     * The tabs control's are not created. This is the fist method called in the life-cycle of a tab group.
+     * 
+     * @param dialog
+     *            the launch configuration dialog this tab group is contained in
+     * @param mode
+     *            the mode the launch configuration dialog was opened in
+     */
+    @Override
+    public void createTabs(ILaunchConfigurationDialog dialog, String mode) {
+        setTabs(new ILaunchConfigurationTab[] { new DebuggerConfigTab(), new CommonTab() });
+    }
 }

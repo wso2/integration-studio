@@ -35,189 +35,180 @@ import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
 /**
- * This class handles the communication between ESB Server and
- * {@link ESBDebugger}
+ * This class handles the communication between ESB Server and {@link ESBDebugger}
  *
  */
 public class ESBDebuggerInterface implements IESBDebuggerInterface {
 
-	private Socket requestSocket;
-	private PrintWriter requestWriter;
-	private BufferedReader requestReader;
+    private Socket requestSocket;
+    private PrintWriter requestWriter;
+    private BufferedReader requestReader;
 
-	private Socket eventSocket;
-	private BufferedReader eventReader;
+    private Socket eventSocket;
+    private BufferedReader eventReader;
 
-	private ChannelEventDispatcher eventDispatcher;
-	private ChannelResponseDispatcher responseDispatcher;
+    private ChannelEventDispatcher eventDispatcher;
+    private ChannelResponseDispatcher responseDispatcher;
 
-	private ICommunicationMessageFactory messageFactory;
-	private IESBDebugger esbDebugger;
+    private ICommunicationMessageFactory messageFactory;
+    private IESBDebugger esbDebugger;
 
-	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
+    private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
-	public ESBDebuggerInterface(int commandPort, int eventPort, String hostName)
-			throws IOException {
-		setRequestSocket(commandPort, hostName);
-		setEventSocket(eventPort, hostName);
-		setEventReader();
-		setRequestReader();
-		setRequestWriter();
-		intializeDispatchers();
-	}
+    public ESBDebuggerInterface(int commandPort, int eventPort, String hostName) throws IOException {
+        setRequestSocket(commandPort, hostName);
+        setEventSocket(eventPort, hostName);
+        setEventReader();
+        setRequestReader();
+        setRequestWriter();
+        intializeDispatchers();
+    }
 
-	private void intializeDispatchers() {
+    private void intializeDispatchers() {
 
-		eventDispatcher = new ChannelEventDispatcher(getEventReader(), this);
-		eventDispatcher.start();
+        eventDispatcher = new ChannelEventDispatcher(getEventReader(), this);
+        eventDispatcher.start();
 
-		responseDispatcher = new ChannelResponseDispatcher(getRequestReader(),
-				this);
-		responseDispatcher.start();
+        responseDispatcher = new ChannelResponseDispatcher(getRequestReader(), this);
+        responseDispatcher.start();
 
-		messageFactory = new JsonGsonMessageFactory();
-	}
+        messageFactory = new JsonGsonMessageFactory();
+    }
 
-	@Override
-	public void setEventDispatcher(ChannelEventDispatcher eventDispatcher) {
-		this.eventDispatcher = eventDispatcher;
-	}
+    @Override
+    public void setEventDispatcher(ChannelEventDispatcher eventDispatcher) {
+        this.eventDispatcher = eventDispatcher;
+    }
 
-	@Override
-	public ChannelResponseDispatcher getResponseDispatcher() {
-		return responseDispatcher;
-	}
+    @Override
+    public ChannelResponseDispatcher getResponseDispatcher() {
+        return responseDispatcher;
+    }
 
-	@Override
-	public void setResponseDispatcher(
-			ChannelResponseDispatcher responceDispatcher) {
-		this.responseDispatcher = responceDispatcher;
-	}
+    @Override
+    public void setResponseDispatcher(ChannelResponseDispatcher responceDispatcher) {
+        this.responseDispatcher = responceDispatcher;
+    }
 
-	@Override
-	public void sendCommand(CommandMessage command) throws Exception {
-		requestWriter.println(messageFactory.createCommand(command));
-		requestWriter.flush();
-	}
+    @Override
+    public void sendCommand(CommandMessage command) throws Exception {
+        requestWriter.println(messageFactory.createCommand(command));
+        requestWriter.flush();
+    }
 
-	/**
-	 * This method notify ESB Debugger about the event message got from ESB
-	 * Server
-	 * 
-	 * @param eventMessage
-	 */
-	public void notifyEvent(String eventMessage) {
-		try {
-			esbDebugger.notifyEvent(messageFactory
-					.convertEventToIEventMessage(eventMessage));
-			System.out.println(eventMessage);
-		} catch (Exception e) {
-			log.error(
-					"Error while converting Event message from ESB Server to IEventMessage : "
-							+ e.getMessage(), e);
-		}
-	}
+    /**
+     * This method notify ESB Debugger about the event message got from ESB
+     * Server
+     * 
+     * @param eventMessage
+     */
+    public void notifyEvent(String eventMessage) {
+        try {
+            if (eventMessage == null) {
+                log.info("NULL value read from ChannelResponceDispatcher. ESB Server shutting down.Terminating ESB Mediation Debugger.");
+                esbDebugger.fireTerminatedEvent();
+            } else {
+                esbDebugger.notifyEvent(messageFactory.convertEventToIEventMessage(eventMessage));
+            }
+        } catch (Exception e) {
+            log.error("Error while converting Event message from ESB Server to IEventMessage : " + e.getMessage(), e);
+        }
+    }
 
-	@Override
-	public void attachDebugger(IESBDebugger esbDebugger) {
-		this.esbDebugger = esbDebugger;
-	}
+    @Override
+    public void attachDebugger(IESBDebugger esbDebugger) {
+        this.esbDebugger = esbDebugger;
+    }
 
-	/**
-	 * This method notify ESB Debugger about the response message got from ESB
-	 * Server
-	 * 
-	 * @param responseMessage
-	 */
-	public void notifyResponce(String responseMessage) {
-		try {
-			esbDebugger.notifyResponce(messageFactory
-					.convertResponseToIResponseMessage(responseMessage));
-			System.out.println(responseMessage);
-		} catch (Exception e) {
-			log.error(
-					"Error while converting Response message from ESB Server to IResponseMessage : "
-							+ e.getMessage(), e);
-		}
+    /**
+     * This method notify ESB Debugger about the response message got from ESB
+     * Server
+     * 
+     * @param responseMessage
+     */
+    public void notifyResponce(String responseMessage) {
+        try {
+            if (responseMessage == null) {
+                log.info("NULL value read from ChannelEventDispatcher. ESB Server shutting down.Terminating ESB Mediation Debugger.");
+                esbDebugger.fireTerminatedEvent();
+            } else {
+                esbDebugger.notifyResponce(messageFactory.convertResponseToIResponseMessage(responseMessage));
+            }
+        } catch (Exception e) {
+            log.error(
+                    "Error while converting Response message from ESB Server to IResponseMessage : " + e.getMessage(),
+                    e);
+        }
 
-	}
+    }
 
-	@Override
-	public void sendGetPropertiesCommand(GetPropertyCommand getPropertyCommand)
-			throws Exception {
-		requestWriter.println(messageFactory
-				.createGetPropertiesCommand(getPropertyCommand));
-		requestWriter.flush();
-	}
+    @Override
+    public void sendGetPropertiesCommand(GetPropertyCommand getPropertyCommand) throws Exception {
+        requestWriter.println(messageFactory.createGetPropertiesCommand(getPropertyCommand));
+        requestWriter.flush();
+    }
 
-	@Override
-	public void sendBreakpointCommand(AbstractESBDebugPointMessage debugPoint)
-			throws Exception {
-		System.out.println(messageFactory.createBreakpointCommand(debugPoint));
-		requestWriter.println(messageFactory
-				.createBreakpointCommand(debugPoint));
-		requestWriter.flush();
+    @Override
+    public void sendBreakpointCommand(AbstractESBDebugPointMessage debugPoint) throws Exception {
+        requestWriter.println(messageFactory.createBreakpointCommand(debugPoint));
+        requestWriter.flush();
 
-	}
+    }
 
-	@Override
-	public void terminate() throws IOException {
-		eventDispatcher.stop();
-		responseDispatcher.stop();
-		requestSocket.close();
-		eventSocket.close();
-		requestReader.close();
-		requestWriter.close();
-		eventReader.close();
-	}
+    @Override
+    public void terminate() throws IOException {
+        eventDispatcher.stop();
+        responseDispatcher.stop();
+        requestSocket.close();
+        eventSocket.close();
+        requestReader.close();
+        requestWriter.close();
+        eventReader.close();
+    }
 
-	@Override
-	public void setRequestSocket(int commandPort, String hostName)
-			throws IOException {
-		this.requestSocket = new Socket(hostName, commandPort);
-	}
+    @Override
+    public void setRequestSocket(int commandPort, String hostName) throws IOException {
+        this.requestSocket = new Socket(hostName, commandPort);
+    }
 
-	@Override
-	public void setRequestWriter() throws IOException {
-		this.requestWriter = new PrintWriter(requestSocket.getOutputStream());
-	}
+    @Override
+    public void setRequestWriter() throws IOException {
+        this.requestWriter = new PrintWriter(requestSocket.getOutputStream());
+    }
 
-	@Override
-	public void setRequestReader() throws IOException {
-		this.requestReader = new BufferedReader(new InputStreamReader(
-				requestSocket.getInputStream()));
-	}
+    @Override
+    public void setRequestReader() throws IOException {
+        this.requestReader = new BufferedReader(new InputStreamReader(requestSocket.getInputStream()));
+    }
 
-	@Override
-	public void setEventSocket(int eventPort, String hostName)
-			throws IOException {
-		this.eventSocket = new Socket(hostName, eventPort);
-	}
+    @Override
+    public void setEventSocket(int eventPort, String hostName) throws IOException {
+        this.eventSocket = new Socket(hostName, eventPort);
+    }
 
-	@Override
-	public void setEventReader() throws IOException {
-		this.eventReader = new BufferedReader(new InputStreamReader(
-				eventSocket.getInputStream()));
-	}
+    @Override
+    public void setEventReader() throws IOException {
+        this.eventReader = new BufferedReader(new InputStreamReader(eventSocket.getInputStream()));
+    }
 
-	@Override
-	public PrintWriter getRequestWriter() {
-		return requestWriter;
-	}
+    @Override
+    public PrintWriter getRequestWriter() {
+        return requestWriter;
+    }
 
-	@Override
-	public BufferedReader getRequestReader() {
-		return requestReader;
-	}
+    @Override
+    public BufferedReader getRequestReader() {
+        return requestReader;
+    }
 
-	@Override
-	public BufferedReader getEventReader() {
-		return eventReader;
-	}
+    @Override
+    public BufferedReader getEventReader() {
+        return eventReader;
+    }
 
-	@Override
-	public ChannelEventDispatcher getEventDispatcher() {
-		return eventDispatcher;
-	}
+    @Override
+    public ChannelEventDispatcher getEventDispatcher() {
+        return eventDispatcher;
+    }
 
 }

@@ -26,6 +26,7 @@
     <fileSet>
       <directory>${project.build.directory}/eclipse</directory>
       <outputDirectory>eclipse</outputDirectory>
+      <finalName>${project.artifactId}</finalName>
       <fileMode>0777</fileMode>
       <directoryMode>0777</directoryMode>
     </fileSet>

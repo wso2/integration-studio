@@ -52,11 +52,11 @@
         </dependencies>
     </dependencyManagement>    
     <modules>
-        <module>developer-studio-eclipse-jee-luna-linux-gtk</module>
-        <module>developer-studio-eclipse-jee-luna-linux-gtk-x86_64</module>
-        <module>developer-studio-eclipse-jee-luna-macosx-cocoa</module>
-        <module>developer-studio-eclipse-jee-luna-macosx-cocoa-x86_64</module>
-        <module>developer-studio-eclipse-jee-luna-win32</module>
-        <module>developer-studio-eclipse-jee-luna-win64-x86_64</module>
+        <module>developer-studio-esb-eclipse-jee-luna-linux-gtk</module>
+        <module>developer-studio-esb-eclipse-jee-luna-linux-gtk-x86_64</module>
+        <module>developer-studio-esb-eclipse-jee-luna-macosx-cocoa</module>
+        <module>developer-studio-esb-eclipse-jee-luna-macosx-cocoa-x86_64</module>
+        <module>developer-studio-esb-eclipse-jee-luna-win32</module>
+        <module>developer-studio-esb-eclipse-jee-luna-win64-x86_64</module>
     </modules>        
 </project>

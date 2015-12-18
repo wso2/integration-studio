@@ -70,4 +70,15 @@
 		This feature packs all the third party dependencies required by developerstudio studio. P2 will automtically resolve the required dependencies for the features you are installing. This feature is used for the distribution of third party dependencies via Kernel P2 and no need of installing this feature manually.
       </description>
    </category-def>
+
+
+  <!-- ESB features -->
+   <feature id="org.wso2.developerstudio.eclipse.esb.editor.feature" version="0.0.0">
+      <category name="org.wso2.developerstudio.eclipse.esb.feature.category"/>
+   </feature>
+   <category-def name="org.wso2.developerstudio.eclipse.esb.feature.category" label="WSO2 ESB Tools">
+      <description>
+	This is the ESB Editor Feature for the Developer Studio. This provides an editor to edit synapse artifacts.
+      </description>
+   </category-def>
 </site>

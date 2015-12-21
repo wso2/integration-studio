@@ -16,10 +16,15 @@
 
 package org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.launch.tabs;
 
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.DEFAULT_COMMAND_PORT;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.DEFAULT_EVENT_PORT;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.DEFAULT_HOST_NAME;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.ESB_SERVER_LOCATION;
+
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 
-import org.apache.commons.lang.StringUtils;
+import org.eclipse.core.runtime.CoreException;
 import org.eclipse.debug.core.ILaunchConfiguration;
 import org.eclipse.debug.core.ILaunchConfigurationWorkingCopy;
 import org.eclipse.debug.ui.AbstractLaunchConfigurationTab;
@@ -35,8 +40,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.Activator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.Messages;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
-
-import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.*;
 
 /**
  * This class is extended from {@link AbstractLaunchConfigurationTab} and used
@@ -97,15 +100,13 @@ public class DebuggerConfigTab extends AbstractLaunchConfigurationTab {
             log.error("Error while reading local host name", e);
             hostNameString = DEFAULT_HOST_NAME;
         }
-        if (StringUtils.isEmpty(commandPort.getText())) {
-            commandPort.setText(DEFAULT_COMMAND_PORT);
-        }
-        if (StringUtils.isEmpty(eventPort.getText())) {
-            eventPort.setText(DEFAULT_EVENT_PORT);
-        }
-        if (StringUtils.isEmpty(hostName.getText())) {
-            hostName.setText(hostNameString);
-        }
+        String tempConfigValue = getAttribute(launchConfig, Messages.DebuggerConfigTab_CommandPortLabel,
+                DEFAULT_COMMAND_PORT);
+        commandPort.setText(tempConfigValue);
+        tempConfigValue = getAttribute(launchConfig, Messages.DebuggerConfigTab_EventPortLabel, DEFAULT_EVENT_PORT);
+        eventPort.setText(tempConfigValue);
+        tempConfigValue = getAttribute(launchConfig, Messages.DebuggerConfigTab_ServerHostName, hostNameString);
+        hostName.setText(tempConfigValue);
     }
 
     /**
@@ -233,5 +234,15 @@ public class DebuggerConfigTab extends AbstractLaunchConfigurationTab {
         });
 
         setControl(topControl);
+    }
+
+    private String getAttribute(ILaunchConfiguration configuration, String name, String defaultValue) {
+        try {
+            return configuration.getAttribute(name, defaultValue);
+        } catch (CoreException ex) {
+            log.error("Error while reading the attribute " + name + " from launch configuration : " + ex.getMessage(),
+                    ex);
+        }
+        return defaultValue;
     }
 }

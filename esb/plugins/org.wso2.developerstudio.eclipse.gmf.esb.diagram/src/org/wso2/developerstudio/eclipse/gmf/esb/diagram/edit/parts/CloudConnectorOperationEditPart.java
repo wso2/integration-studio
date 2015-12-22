@@ -549,24 +549,24 @@ public class CloudConnectorOperationEditPart extends FixedSizedAbstractMediator 
 
 		}
 
-		public void setCloudConnectorImage() {
-			GridData constraintMainImageRectangle = new GridData();
-			constraintMainImageRectangle.verticalAlignment = GridData.BEGINNING;
-			constraintMainImageRectangle.horizontalAlignment = GridData.CENTER;
-			constraintMainImageRectangle.verticalSpan = 1;
+        public void setCloudConnectorImage() {
+            GridData constraintMainImageRectangle = new GridData();
+            constraintMainImageRectangle.verticalAlignment = GridData.BEGINNING;
+            constraintMainImageRectangle.horizontalAlignment = GridData.CENTER;
+            constraintMainImageRectangle.verticalSpan = 1;
 
-			ImageFigure iconImageFigure = EditPartDrawingHelper.getIconImageFigure(iconPath, Image_PreferredWidth,
-					Image_PreferredHeight);
+            ImageFigure iconImageFigure = EditPartDrawingHelper.getIconImageFigure(iconPath, Image_PreferredWidth,
+                    Image_PreferredHeight);
 
-			RoundedRectangle mainImageRectangle = new RoundedRectangle();
-			mainImageRectangle.setCornerDimensions(new Dimension(8, 8));
-			mainImageRectangle.setOutline(false);
-			mainImageRectangle.setPreferredSize(new Dimension(Image_PreferredWidth, Image_PreferredHeight));
-			mainImageRectangle.add(iconImageFigure);
-			this.removeAll();
-			this.add(mainImageRectangle, constraintMainImageRectangle);
-			this.add(tempPropertyValueRectangle1, tempConstraintPropertyValueRectangle);
-		}
+            mainImageRectangle = new RoundedRectangle();
+            mainImageRectangle.setCornerDimensions(new Dimension(8, 8));
+            mainImageRectangle.setOutline(false);
+            mainImageRectangle.setPreferredSize(new Dimension(Image_PreferredWidth, Image_PreferredHeight));
+            mainImageRectangle.add(iconImageFigure);
+            figureLayer.removeAll();
+            figureLayer.add(mainImageRectangle, constraintMainImageRectangle);
+            figureLayer.add(tempPropertyValueRectangle1, tempConstraintPropertyValueRectangle);
+        }
 
 		/**
 		 * @generated

@@ -37,6 +37,7 @@
    </feature>
    <feature id="org.wso2.developerstudio.carbon.server-remote.feature" version="0.0.0">
       <category name="org.wso2.developerstudio.eclipse.bps.feature.category"/>
+   </feature>
    <feature id="org.wso2.developerstudio.kernel.registry.feature" version="0.0.0">
       <category name="org.wso2.developerstudio.eclipse.bps.feature.category"/>
    </feature>

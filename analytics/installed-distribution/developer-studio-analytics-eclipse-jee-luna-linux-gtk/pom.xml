@@ -106,8 +106,7 @@
 					</goals>
 					<configuration>
 					<tasks>
-						<tasks>
-						<java classname="org.eclipse.equinox.launcher.Main" fork="true"
+					<java classname="org.eclipse.equinox.launcher.Main" fork="true"
 							spawn="false" failonerror="true" maxmemory="1024m">
 						<classpath>
 							<fileset dir="${project.basedir}/target/eclipse/plugins" includes="org.eclipse.equinox.launcher*.jar" />

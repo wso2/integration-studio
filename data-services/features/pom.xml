@@ -22,11 +22,12 @@
         <version>4.0.0-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
-    <artifactId>wso2-developerstudio-data-service-feature</artifactId>
+    <artifactId>wso2-developerstudio-data-service-feature-parent</artifactId>
     <packaging>pom</packaging>
-    <name>WSO2 Developer Studio Data Service Tooling Feature</name>
+    <name>WSO2 Developer Studio Data Service Tooling Feature Parent</name>
     <modules>
         <module>org.wso2.developerstudio.eclipse.data.service.feature</module>
+        <module>org.wso2.developerstudio.eclipse.dss.dependencies.feature</module>
     </modules>
     <distributionManagement>
         <repository>

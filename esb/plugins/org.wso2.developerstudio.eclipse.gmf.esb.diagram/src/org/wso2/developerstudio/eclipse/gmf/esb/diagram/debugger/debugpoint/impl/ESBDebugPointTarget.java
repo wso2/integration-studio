@@ -107,7 +107,8 @@ public class ESBDebugPointTarget {
                     ESBDebuggerUtil.addSkippointMark(part);
                 }
             } else {
-                DebugPlugin.getDefault().getBreakpointManager().removeBreakpoint(existingBreakpoint, true);
+                debugPoint.getMarker().delete();
+                ESBDebuggerUtil.removeESBDebugPointFromBreakpointManager(existingBreakpoint);
                 if (ESBDebuggerConstants.BREAKPOINT_LABEL.equals(commandArgument)) {
                     ESBDebuggerUtil.removeBreakpointMark(part);
                 } else {

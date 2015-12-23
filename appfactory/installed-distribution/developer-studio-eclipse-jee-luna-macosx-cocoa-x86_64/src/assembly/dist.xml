@@ -21,6 +21,7 @@
   <formats>
     <format>zip</format>
   </formats>
+ <finalName>${project.artifactId}</finalName>
   <includeBaseDirectory>false</includeBaseDirectory>
   <fileSets>
     <fileSet>

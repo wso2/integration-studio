@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="org.wso2.developerstudio.eclipse.jaggery.feature"
-      label="Jaggery Feature"
+      label="WSO2 Jaggery Feature"
       version="4.0.0.qualifier"
       provider-name="%providerName">
 

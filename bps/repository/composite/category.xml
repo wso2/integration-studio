@@ -10,64 +10,38 @@
 
    <!-- Kernel Features and category-->	
  <feature id="org.wso2.developerstudio.kernel.core.feature" version="0.0.0">
-      <category name="org.wso2.developerstudio.kernel"/>
+      <category name="org.wso2.developerstudio.eclipse.bps.feature.category"/>
    </feature>
    <feature id="org.wso2.developerstudio.kernel.core.ui.feature" version="0.0.0">
-      <category name="org.wso2.developerstudio.kernel"/>
+      <category name="org.wso2.developerstudio.eclipse.bps.feature.category"/>
    </feature>
    <feature id="org.wso2.developerstudio.kernel.tools.feature" version="0.0.0">
-      <category name="org.wso2.developerstudio.kernel"/>
+      <category name="org.wso2.developerstudio.eclipse.bps.feature.category"/>
    </feature>
    <feature id="org.wso2.developerstudio.kernel.utils.feature" version="0.0.0">
-      <category name="org.wso2.developerstudio.kernel"/>
+      <category name="org.wso2.developerstudio.eclipse.bps.feature.category"/>
    </feature>
-   <category-def name="org.wso2.developerstudio.kernel" label="WSO2 Developer Studio Kernel">
-      <description>
-		WSO2 Developer Studio Kernel provides a set of core plugins which can be used to develop Eclipse plugins for the WSO2 products which are based on award wining WSO2 carbon platform. After a major architecture revamping with version 4.0.0, WSO2 Developer Studio is moved in to a kernel based model. All the product specific plugins will use the Developer Studio Kernel as the base for their implementation.
-      </description>
-   </category-def>
+
    <!-- Kernel core Features and category-->	
-   <feature id="org.wso2.developerstudio.kernel.webui.tools.feature" version="0.0.0">
-      <category name="org.wso2.developerstudio.kernel.common"/>
-   </feature>
    <feature id="org.wso2.developerstudio.capp.feature" version="0.0.0">
-      <category name="org.wso2.developerstudio.kernel.common"/>
+      <category name="org.wso2.developerstudio.eclipse.bps.feature.category"/>
    </feature>
    <feature id="org.wso2.developerstudio.carbon.server-40.feature" version="0.0.0">
-      <category name="org.wso2.developerstudio.kernel.common"/>
+      <category name="org.wso2.developerstudio.eclipse.bps.feature.category"/>
    </feature>
    <feature id="org.wso2.developerstudio.carbon.server-42.feature" version="0.0.0">
-      <category name="org.wso2.developerstudio.kernel.common"/>
+      <category name="org.wso2.developerstudio.eclipse.bps.feature.category"/>
    </feature>
    <feature id="org.wso2.developerstudio.carbon.server-44.feature" version="0.0.0">
-      <category name="org.wso2.developerstudio.kernel.common"/>
+      <category name="org.wso2.developerstudio.eclipse.bps.feature.category"/>
    </feature>
    <feature id="org.wso2.developerstudio.carbon.server-remote.feature" version="0.0.0">
-      <category name="org.wso2.developerstudio.kernel.common"/>
-   </feature>
-   <feature id="org.wso2.developerstudio.kernel.dependencies.feature" version="0.0.0">
-      <category name="org.wso2.developerstudio.kernel.dependencies"/>
+      <category name="org.wso2.developerstudio.eclipse.bps.feature.category"/>
    </feature>
    <feature id="org.wso2.developerstudio.kernel.registry.feature" version="0.0.0">
-      <category name="org.wso2.developerstudio.kernel.common"/>
+      <category name="org.wso2.developerstudio.eclipse.bps.feature.category"/>
    </feature>
    <feature id="org.wso2.developerstudio.kernel.security.feature" version="0.0.0">
-      <category name="org.wso2.developerstudio.kernel.common"/>
+      <category name="org.wso2.developerstudio.eclipse.bps.feature.category"/>
    </feature>
-   <feature id="org.wso2.developerstudio.library.artifact.feature" version="0.0.0">
-      <category name="org.wso2.developerstudio.kernel.common"/>
-   </feature>
-   <feature id="org.wso2.developerstudio.kernel.wso2plugins.default.samples.feature" version="0.0.0">
-      <category name="org.wso2.developerstudio.kernel.common"/>
-   </feature>
-   <category-def name="org.wso2.developerstudio.kernel.common" label="WSO2 Developer Studio Kernel - Core Features">
-      <description>
-	  WSO2 Developer Studio Kernel comes  with set of core features which can be integrated across WSO2 carbon based products.
-      </description>
-   </category-def>
-   <category-def name="org.wso2.developerstudio.kernel.dependencies" label="WSO2 Developer Studio Kernel -- Dependencies">
-      <description>
-		This feature packs all the third party dependencies required by developerstudio studio. P2 will automtically resolve the required dependencies for the features you are installing. This feature is used for the distribution of third party dependencies via Kernel P2 and no need of installing this feature manually.
-      </description>
-   </category-def>
 </site>

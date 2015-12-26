@@ -6,7 +6,8 @@ Bundle-Version: 4.0.0.qualifier
 Bundle-Activator: org.wso2.developerstudio.eclipse.updater.UpdaterPlugin
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
- org.eclipse.equinox.p2.ui
+ org.eclipse.equinox.p2.ui,
+ javax.inject
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
 Import-Package: com.google.gson.reflect;version="2.1.0",

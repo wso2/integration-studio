@@ -1,3 +1,4 @@
+/*
 package org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.factory;
 
 import java.io.File;
@@ -6,10 +7,11 @@ import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.NullProgressMonitor;
-import org.wso2.developerstudio.eclipse.artifact.sequence.model.SequenceModel;
-import org.wso2.developerstudio.eclipse.artifact.sequence.ui.wizard.SequenceProjectCreationWizard;
+//import org.wso2.developerstudio.eclipse.artifact.sequence.model.SequenceModel;
+//import org.wso2.developerstudio.eclipse.artifact.sequence.ui.wizard.SequenceProjectCreationWizard;
 import org.wso2.developerstudio.eclipse.platform.core.project.model.ProjectDataModel;
 import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
+
 
 public class SequenceFileCreator implements IFileCreator{
 	private SequenceModel seqModel;
@@ -40,3 +42,4 @@ public class SequenceFileCreator implements IFileCreator{
 		project.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
 	}
 }
+*/

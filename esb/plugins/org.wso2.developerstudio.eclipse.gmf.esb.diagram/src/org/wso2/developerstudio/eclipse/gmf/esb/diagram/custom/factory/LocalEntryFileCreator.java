@@ -17,7 +17,6 @@
 package org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.factory;
 
 import java.io.File;
-
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
@@ -27,27 +26,30 @@ import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
 import org.wso2.developerstudio.eclipse.artifact.localentry.ui.wizard.LocalEntryProjectCreationWizard;
 
 public class LocalEntryFileCreator implements IFileCreator{
-	private LocalEntryModel localEntryModel;
-	public LocalEntryFileCreator (LocalEntryModel localEntryModel){
-		this.localEntryModel=localEntryModel;
+	
+	public LocalEntryFileCreator (){
 	}
 	
-	public void createLocalEntryFile(String content) throws Exception{
-		LocalEntryProjectCreationWizard localEntryProjectCreationWizard = new LocalEntryProjectCreationWizard();
-		IProject project = localEntryModel.getLocalEntrySaveLocation().getProject();
-		localEntryProjectCreationWizard.setProject(project);
+	public void createLocalEntryFile(String content, IContainer artifactLocation, String configName) throws Exception{	
+		
+		LocalEntryModel localEntryModel = new LocalEntryModel();
+		localEntryModel.setLocalEntrySaveLocation(artifactLocation);
+		localEntryModel.setLocalENtryName(configName);
 		localEntryModel.setSelectedOption("");
 		localEntryModel.setSelectedLocalEntryType("");
+				
+		IProject project = localEntryModel.getLocalEntrySaveLocation().getProject();
+		LocalEntryProjectCreationWizard localEntryProjectCreationWizard = new LocalEntryProjectCreationWizard();
+		localEntryProjectCreationWizard.setProject(project);
 		localEntryProjectCreationWizard.setModel(localEntryModel);
 
-			if(localEntryProjectCreationWizard.createLocalEntryArtifact(localEntryModel)){
-		        IContainer location = project.getFolder("src" + File.separator + "main"
-						+ File.separator + "synapse-config" + File.separator
-						+ "local-entries");
-		        File destFile = new File(location.getLocation().toFile(),
-		        		localEntryModel.getLocalENtryName() + ".xml");
-		       FileUtils.writeContent(destFile,content);
-			}		
+		if(localEntryProjectCreationWizard.createLocalEntryArtifact(localEntryModel)){
+	        IContainer location = project.getFolder("src" + File.separator + "main"	+ File.separator + "synapse-config" + File.separator + "local-entries");
+	        File destFile = new File(location.getLocation().toFile(), localEntryModel.getLocalENtryName() + ".xml");
+	        FileUtils.writeContent(destFile, content);
+		}		
 		project.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
 	}
+
+	
 }

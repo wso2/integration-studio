@@ -22,6 +22,9 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EditorUtil
 import java.io.IOException;
 import java.text.MessageFormat;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang.StringUtils;
@@ -45,8 +48,9 @@ import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.FileEditorInput;
-import org.wso2.developerstudio.eclipse.artifact.endpoint.validators.EndPointTemplateList;
-import org.wso2.developerstudio.eclipse.artifact.sequence.validators.SequenceTemplate;
+//import org.wso2.developerstudio.eclipse.artifact.endpoint.validators.EndPointTemplateList;
+//import org.wso2.developerstudio.eclipse.artifact.sequence.validators.SequenceTemplate;
+import org.wso2.developerstudio.eclipse.esb.core.utils.ESBMediaTypeConstants;
 import org.wso2.developerstudio.eclipse.gmf.esb.ArtifactType;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 import org.wso2.developerstudio.eclipse.gmf.esb.FailoverEndPoint;
@@ -58,6 +62,9 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbEditorInput;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.platform.core.templates.ArtifactTemplate;
+import org.wso2.developerstudio.eclipse.platform.core.templates.ArtifactTemplateHandler;
+import org.wso2.developerstudio.eclipse.platform.core.utils.CSProviderConstants;
+import org.wso2.developerstudio.eclipse.platform.core.utils.DeveloperStudioProviderUtils;
 import org.wso2.developerstudio.eclipse.platform.ui.editor.Openable;
 import org.wso2.developerstudio.eclipse.platform.ui.startup.ESBGraphicalEditor;
 
@@ -142,12 +149,13 @@ public class ComplexFiguredAbstractEndpoint extends AbstractEndpoint{
 			} else {
 				String path = fileTobeOpened.getParent().getFullPath() + "/";
 				ArtifactTemplate complexEndpointArtifactTemplate = null; 
+				ArtifactTemplate[] endpointTemplates = getEndpointTemplates();
 				if(endpoint instanceof FailoverEndPoint){
-					complexEndpointArtifactTemplate = EndPointTemplateList.getArtifactTemplates()[4];
+					complexEndpointArtifactTemplate = endpointTemplates[4];
 				}else if(endpoint instanceof LoadBalanceEndPoint){
-					complexEndpointArtifactTemplate = EndPointTemplateList.getArtifactTemplates()[5];
+					complexEndpointArtifactTemplate = endpointTemplates[5];
 				}else if(endpoint instanceof  RecipientListEndPoint){
-					complexEndpointArtifactTemplate = EndPointTemplateList.getArtifactTemplates()[6];
+					complexEndpointArtifactTemplate = endpointTemplates[6];
 				}				
 				fileTobeOpened.create(complexEndpointArtifactTemplate.getTemplateDataStream(), true,
 						new NullProgressMonitor());
@@ -203,6 +211,13 @@ public class ComplexFiguredAbstractEndpoint extends AbstractEndpoint{
 		}*/
 	}
 	
+	private ArtifactTemplate[] getEndpointTemplates() {
+		Map<String,List<String>> filters=new HashMap<String,List<String>> ();
+		DeveloperStudioProviderUtils.addFilter(filters,CSProviderConstants.FILTER_MEDIA_TYPE,
+				ESBMediaTypeConstants.MEDIA_TYPE_ENDPOINT);
+		return ArtifactTemplateHandler.getArtifactTemplates(filters);
+	}
+
 	private IProject getActiveProject() {
 		IEditorPart editorPart = null;
 		IProject activeProject = null;

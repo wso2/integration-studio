@@ -28,7 +28,9 @@ import java.io.IOException;
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.commons.lang.RandomStringUtils;
 import org.apache.commons.lang.StringUtils;
@@ -100,8 +102,9 @@ import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.FileEditorInput;
-import org.wso2.developerstudio.eclipse.artifact.sequence.validators.SequenceTemplate;
+//import org.wso2.developerstudio.eclipse.artifact.sequence.validators.SequenceTemplate;
 import org.wso2.developerstudio.eclipse.esb.core.ESBMavenConstants;
+import org.wso2.developerstudio.eclipse.esb.core.utils.ESBMediaTypeConstants;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBArtifact;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBProjectArtifact;
 import org.wso2.developerstudio.eclipse.esb.project.utils.ESBProjectUtils;
@@ -115,6 +118,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.KeyType;
 import org.wso2.developerstudio.eclipse.gmf.esb.ProxyService;
 import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.Sequence;
+import org.eclipse.ui.part.FileEditorInput;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractMediatorInputConnectorEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractMediatorOutputConnectorEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EditorUtils;
@@ -136,6 +140,9 @@ import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
 import org.wso2.developerstudio.eclipse.platform.core.templates.ArtifactTemplate;
+import org.wso2.developerstudio.eclipse.platform.core.templates.ArtifactTemplateHandler;
+import org.wso2.developerstudio.eclipse.platform.core.utils.CSProviderConstants;
+import org.wso2.developerstudio.eclipse.platform.core.utils.DeveloperStudioProviderUtils;
 import org.wso2.developerstudio.eclipse.platform.ui.editor.Openable;
 import org.wso2.developerstudio.eclipse.platform.ui.startup.ESBGraphicalEditor;
 import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
@@ -596,7 +603,7 @@ public class SequenceEditPart extends FixedSizedAbstractMediator {
 				}
 				
 				String path = fileTobeOpened.getParent().getFullPath() + "/"; //$NON-NLS-1$
-				ArtifactTemplate sequenceArtifactTemplate = SequenceTemplate.getArtifactTemplates()[0];
+				ArtifactTemplate sequenceArtifactTemplate = getSequenceTemplates()[0];
 				String source = FileUtils.getContentAsString(sequenceArtifactTemplate.getTemplateDataStream());
 				source = MessageFormat.format(source, name);
 				fileTobeOpened
@@ -1125,6 +1132,12 @@ public class SequenceEditPart extends FixedSizedAbstractMediator {
 		public boolean isRecieveSequence() {
 			return recieveSequence;
 		}
+	}
+	
+	private ArtifactTemplate[] getSequenceTemplates() {
+		Map<String,List<String>> filters=new HashMap<String,List<String>> ();
+		DeveloperStudioProviderUtils.addFilter(filters,CSProviderConstants.FILTER_MEDIA_TYPE, ESBMediaTypeConstants.MEDIA_TYPE_SEQUENCE);
+		return ArtifactTemplateHandler.getArtifactTemplates(filters);
 	}
 
 }

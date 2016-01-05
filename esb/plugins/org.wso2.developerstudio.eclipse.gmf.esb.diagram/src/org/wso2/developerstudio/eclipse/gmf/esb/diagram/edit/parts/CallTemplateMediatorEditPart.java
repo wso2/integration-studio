@@ -25,6 +25,9 @@ import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
 import java.text.MessageFormat;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import org.apache.commons.lang.RandomStringUtils;
 import org.apache.commons.lang.StringUtils;
@@ -78,8 +81,9 @@ import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.FileEditorInput;
-import org.wso2.developerstudio.eclipse.artifact.template.validators.TemplateList;
+//import org.wso2.developerstudio.eclipse.artifact.template.validators.TemplateList;
 import org.wso2.developerstudio.eclipse.esb.core.ESBMavenConstants;
+import org.wso2.developerstudio.eclipse.esb.core.utils.ESBMediaTypeConstants;
 //import org.wso2.developerstudio.eclipse.capp.maven.utils.MavenConstants;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBArtifact;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBProjectArtifact;
@@ -101,6 +105,9 @@ import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
 import org.wso2.developerstudio.eclipse.platform.core.templates.ArtifactTemplate;
+import org.wso2.developerstudio.eclipse.platform.core.templates.ArtifactTemplateHandler;
+import org.wso2.developerstudio.eclipse.platform.core.utils.CSProviderConstants;
+import org.wso2.developerstudio.eclipse.platform.core.utils.DeveloperStudioProviderUtils;
 import org.wso2.developerstudio.eclipse.platform.ui.editor.Openable;
 import org.wso2.developerstudio.eclipse.platform.ui.startup.ESBGraphicalEditor;
 import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
@@ -388,7 +395,7 @@ public class CallTemplateMediatorEditPart extends FixedSizedAbstractMediator {
 					updatePom();
 					addSequenceToArtifactXML(name);
 					String path = fileTobeOpened.getParent().getFullPath() + "/";
-					ArtifactTemplate sequenceArtifactTemplate = TemplateList.getArtifactTemplates()[0];
+					ArtifactTemplate sequenceArtifactTemplate = getTemplateArtifactTemplates()[0];
 					String source = FileUtils.getContentAsString(sequenceArtifactTemplate.getTemplateDataStream());
 					source = MessageFormat.format(source, name);
 					fileTobeOpened.create(new ByteArrayInputStream(source.getBytes()), true,
@@ -414,6 +421,15 @@ public class CallTemplateMediatorEditPart extends FixedSizedAbstractMediator {
 			}
 			return true;
 		}
+	}
+
+	private ArtifactTemplate[] getTemplateArtifactTemplates() {
+		Map<String,List<String>> filters=new HashMap<String,List<String>> ();
+		DeveloperStudioProviderUtils.addFilter(filters,CSProviderConstants.FILTER_MEDIA_TYPE,
+				ESBMediaTypeConstants.MEDIA_TYPE_SEQ_TEMPLATE);
+		DeveloperStudioProviderUtils.addFilter(filters,CSProviderConstants.FILTER_MEDIA_TYPE,
+				ESBMediaTypeConstants.MEDIA_TYPE_ENDPOINT_TEMPLATE);
+		return ArtifactTemplateHandler.getArtifactTemplates(filters);
 	}
 
 	public void updatePom() throws IOException, XmlPullParserException {
@@ -594,6 +610,8 @@ public class CallTemplateMediatorEditPart extends FixedSizedAbstractMediator {
 		}
 
 	}
+	
+	
 
 	/**
 	 * @generated

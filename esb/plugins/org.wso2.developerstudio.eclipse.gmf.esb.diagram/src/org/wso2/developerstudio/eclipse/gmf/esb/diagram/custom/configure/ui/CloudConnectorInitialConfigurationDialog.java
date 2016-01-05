@@ -68,7 +68,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbMultiPageEditor;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbPaletteFactory;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
-import org.wso2.developerstudio.eclipse.artifact.localentry.model.LocalEntryModel;
+//import org.wso2.developerstudio.eclipse.artifact.localentry.model.LocalEntryModel;
 
 public class CloudConnectorInitialConfigurationDialog extends TitleAreaDialog {
 	
@@ -406,19 +406,15 @@ public class CloudConnectorInitialConfigurationDialog extends TitleAreaDialog {
         IContainer location = EditorUtils.getActiveProject().getFolder("src" + File.separator + "main"
 				+ File.separator + "synapse-config" + File.separator
 				+ "local-entries");		
-		
-		LocalEntryModel localEntryModel = new LocalEntryModel();
-		localEntryModel.setLocalEntrySaveLocation(location);
-		localEntryModel.setLocalENtryName(configName);
 			
 		try {
-			localEntryModel.setSelectedOption("");
-			LocalEntryFileCreator localEntryFileCreator=new LocalEntryFileCreator(localEntryModel);
+			
+			LocalEntryFileCreator localEntryFileCreator = new LocalEntryFileCreator();
 			String content="<?xml version=\"1.0\" encoding=\"UTF-8\"?><localEntry xmlns=\"http://ws.apache.org/ns/synapse\" key=\""+configName+"\"/>";
 			
 			OMElement payload = AXIOMUtil.stringToOM(content); 
 			serializeParams(payload);			
-			localEntryFileCreator.createLocalEntryFile(payload.toString());
+			localEntryFileCreator.createLocalEntryFile(payload.toString(), location, configName);
 		} catch (Exception e) {
 			log.error("Error occured while creating the Local entry file", e);
 		}

@@ -13,7 +13,9 @@ import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.maven.model.Plugin;
@@ -86,9 +88,9 @@ import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.FileEditorInput;
-import org.wso2.developerstudio.eclipse.artifact.endpoint.validators.EndPointTemplateList;
 import org.wso2.developerstudio.eclipse.capp.maven.utils.MavenConstants;
 import org.wso2.developerstudio.eclipse.esb.core.ESBMavenConstants;
+import org.wso2.developerstudio.eclipse.esb.core.utils.ESBMediaTypeConstants;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBArtifact;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBProjectArtifact;
 import org.wso2.developerstudio.eclipse.general.project.artifact.GeneralProjectArtifact;
@@ -116,6 +118,9 @@ import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
 import org.wso2.developerstudio.eclipse.platform.core.templates.ArtifactTemplate;
+import org.wso2.developerstudio.eclipse.platform.core.templates.ArtifactTemplateHandler;
+import org.wso2.developerstudio.eclipse.platform.core.utils.CSProviderConstants;
+import org.wso2.developerstudio.eclipse.platform.core.utils.DeveloperStudioProviderUtils;
 import org.wso2.developerstudio.eclipse.platform.ui.editor.Openable;
 import org.wso2.developerstudio.eclipse.platform.ui.startup.ESBGraphicalEditor;
 import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
@@ -623,7 +628,7 @@ public class NamedEndpointEditPart extends ComplexFiguredAbstractEndpoint {
 						}
 					
 					String path = fileTobeOpened.getParent().getFullPath() + "/";
-					ArtifactTemplate endpointArtifactTemplate = EndPointTemplateList.getArtifactTemplates()[0];
+					ArtifactTemplate endpointArtifactTemplate = getEndpointTemplates()[0];
 
 					String source = FileUtils.getContentAsString(endpointArtifactTemplate.getTemplateDataStream());
 					source = source.replaceAll("\\{", "<").replaceAll("\\}", ">");
@@ -651,6 +656,13 @@ public class NamedEndpointEditPart extends ComplexFiguredAbstractEndpoint {
 			}
 			return true;
 		}
+	}
+
+	private ArtifactTemplate[] getEndpointTemplates() {
+		Map<String,List<String>> filters=new HashMap<String,List<String>> ();
+		DeveloperStudioProviderUtils.addFilter(filters,CSProviderConstants.FILTER_MEDIA_TYPE,
+				ESBMediaTypeConstants.MEDIA_TYPE_ENDPOINT);
+		return ArtifactTemplateHandler.getArtifactTemplates(filters);
 	}
 
 	public void updatePom() throws IOException, XmlPullParserException {

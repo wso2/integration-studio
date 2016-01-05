@@ -49,7 +49,7 @@ import org.wso2.developerstudio.eclipse.artifact.localentry.utils.LocalEntryTemp
 import org.wso2.developerstudio.eclipse.esb.core.ESBMavenConstants;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBArtifact;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBProjectArtifact;
-import org.wso2.developerstudio.eclipse.gmf.esb.ArtifactType;
+//import org.wso2.developerstudio.eclipse.gmf.esb.ArtifactType;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
@@ -88,9 +88,22 @@ public class LocalEntryProjectCreationWizard extends AbstractWSO2ProjectCreation
 		return false;
 	}
 	
+	public boolean createArtifact(String content, IContainer artifactLocation, String configName) throws Exception{	
+		LocalEntryModel localEntryModel = new LocalEntryModel();
+		localEntryModel.setLocalEntrySaveLocation(artifactLocation);
+		localEntryModel.setLocalENtryName(configName);
+		localEntryModel.setSelectedOption("");
+		localEntryModel.setSelectedLocalEntryType("");
+		
+		this.setProject(artifactLocation.getProject());
+		this.setModel(localEntryModel);
+        return createLocalEntryArtifact(localEntryModel);
+	}
+	
+	
 	public boolean createLocalEntryArtifact(LocalEntryModel localEntryModel) throws Exception {
 		leModel=localEntryModel;
-		boolean isNewArtifact =true;
+		boolean isNewArtifact = true;
 		IContainer location = esbProject.getFolder("src" + File.separator + "main" + File.separator
 				+ "synapse-config" + File.separator + "local-entries");
 		
@@ -294,7 +307,8 @@ public class LocalEntryProjectCreationWizard extends AbstractWSO2ProjectCreation
 		String path = dbsFile.getParent().getFullPath()+"/";
 		String source = FileUtils.getContentAsString(file);
 		Openable openable = ESBGraphicalEditor.getOpenable();
-		openable.editorOpen(file.getName(),ArtifactType.LOCAL_ENTRY.getLiteral(),path, source);
+		//openable.editorOpen(file.getName(), ArtifactType.LOCAL_ENTRY.getLiteral(),path, source);
+		openable.editorOpen(file.getName(), "LOCAL_ENTRY", path, source);
 		}catch(Exception e){
 			log.error("Cannot open the editor", e);
 		}

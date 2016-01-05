@@ -16,4 +16,11 @@
    <license url="%licenseURL">
       %license
    </license>
+
+   <plugin
+         id="com.eviware.soapui.eclipse"
+         download-size="0"
+         install-size="0"
+         version="4.0.1.wso2v1"
+         unpack="false"/>
 </feature>

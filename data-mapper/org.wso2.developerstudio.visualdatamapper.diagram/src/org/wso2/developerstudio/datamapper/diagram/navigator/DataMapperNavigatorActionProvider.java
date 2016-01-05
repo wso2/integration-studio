@@ -1,13 +1,9 @@
 package org.wso2.developerstudio.datamapper.diagram.navigator;
 
 import java.io.File;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 import java.util.regex.Pattern;
 
 import org.eclipse.core.resources.IFile;
-import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.Path;
@@ -29,7 +25,6 @@ import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchWindow;
-import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.ide.IDE;
 import org.eclipse.ui.navigator.CommonActionProvider;
@@ -39,15 +34,17 @@ import org.eclipse.ui.navigator.ICommonViewerWorkbenchSite;
 import org.eclipse.ui.part.FileEditorInput;
 import org.wso2.developerstudio.datamapper.diagram.Activator;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.DataMapperRootEditPart;
-import org.wso2.developerstudio.datamapper.diagram.part.DataMapperDiagramEditor;
-import org.wso2.developerstudio.datamapper.diagram.part.DataMapperDiagramEditorPlugin;
 import org.wso2.developerstudio.datamapper.diagram.part.DataMapperVisualIDRegistry;
 import org.wso2.developerstudio.datamapper.diagram.part.Messages;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
+//import org.wso2.developerstudio.eclipse.logging.core.Logger;
+//import org.wso2.developerstudio.eclipse.platform.ui.editor.Openable;
+//import org.wso2.developerstudio.eclipse.platform.ui.startup.DataMapperEditor;
+//import org.wso2.developerstudio.eclipse.platform.ui.startup.ESBGraphicalEditor;
+//import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.platform.ui.editor.Openable;
 import org.wso2.developerstudio.eclipse.platform.ui.startup.DataMapperEditor;
-import org.wso2.developerstudio.eclipse.platform.ui.startup.ESBGraphicalEditor;
 import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
 
 /**

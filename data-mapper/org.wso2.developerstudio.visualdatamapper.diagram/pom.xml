@@ -20,13 +20,15 @@
     <parent>
     	<groupId>org.wso2.developerstudio</groupId>
     	<artifactId>datamapper-tool-parent</artifactId>
-    	<version>2.0.0</version>
+    	<version>3.8.0</version>
     </parent>     
     <modelVersion>4.0.0</modelVersion>
     <artifactId>org.wso2.developerstudio.visualdatamapper.diagram</artifactId>
   	<packaging>eclipse-plugin</packaging>
   	<version>2.0.0</version>
-    <name>Developer Studio Visual Datamapper</name>
+    <name>Developer Studio Visual DataMapper Diagram</name>
+    
+    
     <!--dependencies>
         <dependency>
             <groupId>org.wso2.eclipse</groupId>

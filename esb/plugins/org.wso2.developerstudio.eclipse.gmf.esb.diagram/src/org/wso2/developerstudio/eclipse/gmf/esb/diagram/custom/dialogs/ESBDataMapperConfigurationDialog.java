@@ -1,20 +1,4 @@
-/*
- * Copyright (c) 2014, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
- * 
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- * 
- * http://www.apache.org/licenses/LICENSE-2.0
- * 
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-package org.wso2.developerstudio.datamapper.diagram.custom.util;
+package org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.dialogs;
 
 import java.io.File;
 import java.io.IOException;
@@ -57,8 +41,6 @@ import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.PlatformUI;
-import org.wso2.developerstudio.datamapper.diagram.Activator;
-import org.wso2.developerstudio.datamapper.diagram.custom.action.Messages;
 import org.wso2.developerstudio.eclipse.capp.maven.utils.MavenConstants;
 import org.wso2.developerstudio.eclipse.esb.core.utils.EsbTemplateFormatter;
 import org.wso2.developerstudio.eclipse.general.project.artifact.GeneralProjectArtifact;
@@ -66,9 +48,10 @@ import org.wso2.developerstudio.eclipse.general.project.artifact.RegistryArtifac
 import org.wso2.developerstudio.eclipse.general.project.artifact.bean.RegistryElement;
 import org.wso2.developerstudio.eclipse.general.project.artifact.bean.RegistryItem;
 import org.wso2.developerstudio.eclipse.general.project.utils.GeneralProjectUtils;
-import org.wso2.developerstudio.eclipse.greg.core.RegistryManager;
-import org.wso2.developerstudio.eclipse.greg.core.interfaces.IRegistryFile;
-import org.wso2.developerstudio.eclipse.greg.core.interfaces.RegistryFileImpl;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.Activator;
+import org.wso2.developerstudio.eclipse.registry.core.RegistryManager;
+import org.wso2.developerstudio.eclipse.registry.core.interfaces.IRegistryFile;
+import org.wso2.developerstudio.eclipse.registry.core.interfaces.RegistryFileImpl;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
@@ -83,7 +66,7 @@ import org.wso2.developerstudio.eclipse.platform.core.templates.ArtifactTemplate
 import org.wso2.developerstudio.eclipse.utils.data.ITemporaryFileTag;
 import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
 
-public class DataMapperConfigurationDialog extends Dialog {
+public class ESBDataMapperConfigurationDialog extends Dialog {
 
 	private Text textConfigName;
 	private Composite compositeNewConfig;
@@ -151,7 +134,7 @@ public class DataMapperConfigurationDialog extends Dialog {
 	 * 
 	 * @param parentShell
 	 */
-	public DataMapperConfigurationDialog(Shell parentShell, Class<?>[] type,
+	public ESBDataMapperConfigurationDialog(Shell parentShell, Class<?>[] type,
 			Map<String, java.util.List<String>> filters) {
 		super(parentShell);
 		setShellStyle(SWT.CLOSE | SWT.TITLE | SWT.BORDER | SWT.OK | SWT.APPLICATION_MODAL);
@@ -225,7 +208,7 @@ public class DataMapperConfigurationDialog extends Dialog {
 		link.addListener(SWT.Selection, new Listener() {
 			public void handleEvent(Event event) {
 				Shell shell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
-				IProject generalProject = GeneralProjectUtils.createGeneralProject(shell);
+				IProject generalProject = GeneralProjectUtils.createGeneralProject(shell, null);
 				if (generalProject != null) {
 					comboProject.add(generalProject.getName());
 					if (comboProject.getItems().length > 0) {

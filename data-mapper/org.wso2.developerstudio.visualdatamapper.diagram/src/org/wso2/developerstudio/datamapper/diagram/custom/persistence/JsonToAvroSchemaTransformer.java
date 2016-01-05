@@ -34,9 +34,9 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.swt.widgets.Display;
+import org.wso2.developerstudio.datamapper.diagram.Activator;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
-import org.wso2.developerstudio.datamapper.diagram.Activator;
 
 /**
  * Transform utils to convert json to avro schema
@@ -44,6 +44,7 @@ import org.wso2.developerstudio.datamapper.diagram.Activator;
 public class JsonToAvroSchemaTransformer {
 
 	private static final String ANONYMOUS_ROOT_ID = "AnonymousRootNode";
+//	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 	private static final String ERROR_PARSING_JSON_INPUT = Messages.JsonToAvroSchemaTransformer_errorParsingJsonInput;
 

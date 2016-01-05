@@ -9,7 +9,6 @@
 	<groupId>org.wso2.developerstudio</groupId>
 	<artifactId>datamapper-tool-parent</artifactId>
     <modelVersion>4.0.0</modelVersion>
-	<version>2.0.0</version>
     <packaging>pom</packaging>
     <name>WSO2 Datamapper Tool Parent</name>
     <modules>
@@ -21,4 +20,3 @@
     </modules>
 
 </project>
-

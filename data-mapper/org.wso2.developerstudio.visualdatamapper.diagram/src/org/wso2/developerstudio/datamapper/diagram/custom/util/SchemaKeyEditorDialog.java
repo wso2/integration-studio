@@ -27,7 +27,6 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.gef.EditPart;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.dialogs.ErrorDialog;
-import org.eclipse.jface.window.Window;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
@@ -53,16 +52,12 @@ import org.wso2.developerstudio.datamapper.diagram.edit.parts.OutputEditPart;
 import org.wso2.developerstudio.datamapper.diagram.part.DataMapperSchemaEditorUtil;
 import org.wso2.developerstudio.eclipse.capp.core.artifacts.manager.CAppEnvironment;
 import org.wso2.developerstudio.eclipse.capp.core.model.RegistryConnection;
-import org.wso2.developerstudio.eclipse.esb.core.interfaces.IEsbEndpoint;
-import org.wso2.developerstudio.eclipse.esb.core.interfaces.IEsbLocalEntry;
-import org.wso2.developerstudio.eclipse.esb.core.interfaces.IEsbSequence;
-import org.wso2.developerstudio.eclipse.esb.presentation.ui.DeveloperStudioElementProviderDialog;
-import org.wso2.developerstudio.eclipse.esb.presentation.ui.EmbeddedEntriesDialog;
-import org.wso2.developerstudio.eclipse.esb.presentation.ui.NewResourceTemplateDialog;
-import org.wso2.developerstudio.eclipse.greg.core.interfaces.IRegistryConnection;
-import org.wso2.developerstudio.eclipse.greg.core.interfaces.IRegistryData;
-import org.wso2.developerstudio.eclipse.greg.core.interfaces.IRegistryFile;
-import org.wso2.developerstudio.eclipse.greg.core.interfaces.IRegistryHandler;
+//import org.wso2.developerstudio.eclipse.esb.presentation.ui.DeveloperStudioElementProviderDialog;
+//import org.wso2.developerstudio.eclipse.esb.presentation.ui.EmbeddedEntriesDialog;
+//import org.wso2.developerstudio.eclipse.esb.presentation.ui.NewResourceTemplateDialog;
+import org.wso2.developerstudio.eclipse.registry.core.interfaces.IRegistryConnection;
+import org.wso2.developerstudio.eclipse.registry.core.interfaces.IRegistryData;
+import org.wso2.developerstudio.eclipse.registry.core.interfaces.IRegistryHandler;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
@@ -184,9 +179,9 @@ public class SchemaKeyEditorDialog extends Dialog {
 				} else if (REGISTRY.equals(selectedCommand)) {
 					openRegistryBrowser();
 				} else if (WORKSPACE.equals(selectedCommand)) {
-					openRegistryResourceProviderDialog();
+					//commented by susinda openRegistryResourceProviderDialog();
 				} else if (LOCAL_ENTRIES.equals(selectedCommand)) {
-					openEmbeddedEntryBrowser();
+					//commented by susinda  openEmbeddedEntryBrowser();
 				}
 			}
 		});
@@ -236,6 +231,7 @@ public class SchemaKeyEditorDialog extends Dialog {
 	/**
 	 * browser for in-workspace local-entries
 	 */
+	/* Commented by susinda
 	protected void openEmbeddedEntryBrowser() {
 		hide();
 		try {
@@ -251,10 +247,12 @@ public class SchemaKeyEditorDialog extends Dialog {
 			show();
 		}
 	}
+	*/
 
 	/**
 	 * Create new resource dialog
 	 */
+	/* Commented by susinda
 	protected void openNewResourceTemplateDialog() {
 		hide();
 		try {
@@ -270,6 +268,7 @@ public class SchemaKeyEditorDialog extends Dialog {
 			show();
 		}
 	}
+	*/
 
 	/**
 	 * Open Registry browser
@@ -345,6 +344,7 @@ public class SchemaKeyEditorDialog extends Dialog {
 	/**
 	 * Import schema from projects in workspace
 	 */
+	/*
 	private void openRegistryResourceProviderDialog() {
 		hide();
 		try {
@@ -361,6 +361,7 @@ public class SchemaKeyEditorDialog extends Dialog {
 			show();
 		}
 	}
+	*/
 
 	/**
 	 * Open file browser

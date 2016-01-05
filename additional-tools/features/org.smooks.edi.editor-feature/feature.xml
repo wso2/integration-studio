@@ -16,4 +16,18 @@
    <license url="%licenseURL">
       %license
    </license>
+
+   <plugin
+         id="org.smooks.edi.editor.model"
+         download-size="0"
+         install-size="0"
+         version="1.0.1.201105031731"
+         unpack="false"/>
+
+   <plugin
+         id="org.smooks.edi.editor"
+         download-size="0"
+         install-size="0"
+         version="1.0.1.201105031731"
+         unpack="false"/>
 </feature>

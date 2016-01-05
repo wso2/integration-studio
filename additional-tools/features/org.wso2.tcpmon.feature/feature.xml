@@ -16,4 +16,11 @@
    <license url="%licenseURL">
       %license
    </license>
+
+   <plugin
+         id="tcpmonitor"
+         download-size="0"
+         install-size="0"
+         version="1.0.0"
+         unpack="false"/>
 </feature>

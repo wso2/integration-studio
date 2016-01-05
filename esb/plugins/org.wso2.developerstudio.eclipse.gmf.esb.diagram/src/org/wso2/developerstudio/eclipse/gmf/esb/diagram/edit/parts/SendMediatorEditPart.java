@@ -1,8 +1,27 @@
+/*
+ * Copyright (c) 2014-2015, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts;
+
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.END_POINT__IN_LINE;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.EditPartConstants.DEFAULT_PROPERTY_VALUE_TEXT;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.EditPartConstants.SEND_MEDIATOR_ICON_PATH;
 
 import java.util.Iterator;
 
-import org.eclipse.core.resources.IFile;
+import org.apache.commons.lang.StringUtils;
 import org.eclipse.draw2d.GridData;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.Label;
@@ -14,7 +33,6 @@ import org.eclipse.draw2d.ToolbarLayout;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EAttribute;
-import org.eclipse.emf.ecore.EReference;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPolicy;
 import org.eclipse.gef.Request;
@@ -39,29 +57,16 @@ import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
-import org.eclipse.ui.IEditorPart;
-import org.eclipse.ui.IFileEditorInput;
-import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractEndpoint;
-import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractMediator;
-import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EsbGraphicalShape;
-import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EsbGraphicalShapeWithLabel;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EsbGroupingShape;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.FixedBorderItemLocator;
-import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.FixedSizedAbstractMediator;
-import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.SendMediatorGraphicalShape;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.ShowPropertyViewEditPolicy;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.SingleCompartmentComplexFiguredAbstractMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.editpolicy.FeedbackIndicateDragDropEditPolicy;
-import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.utils.ElementDuplicator;
-import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.utils.MediatorFigureReverser;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.policies.SendMediatorCanonicalEditPolicy;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.policies.SendMediatorItemSemanticEditPolicy;
-import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbMultiPageEditor;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbVisualIDRegistry;
-import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.END_POINT__IN_LINE;
 
 /**
  * @generated NOT
@@ -454,11 +459,9 @@ public class SendMediatorEditPart extends SingleCompartmentComplexFiguredAbstrac
 		private void createContents() {
 
 			fFigureSendMediatorPropertyValue = new WrappingLabel();
-			fFigureSendMediatorPropertyValue.setText("<...>");
+			fFigureSendMediatorPropertyValue
+					.setText(DEFAULT_PROPERTY_VALUE_TEXT);
 			fFigureSendMediatorPropertyValue.setAlignment(SWT.CENTER);
-			//this.getPropertyValueRectangle1().add(fFigureSendMediatorPropertyValue);
-
-			//sendMediatorDescriptionLabel = getPropertyNameLabel();
 		}
 
 		/**
@@ -473,15 +476,19 @@ public class SendMediatorEditPart extends SingleCompartmentComplexFiguredAbstrac
 		}
 
 		public String getIconPath() {
-			return "icons/ico20/send-mediator.gif";
+			return SEND_MEDIATOR_ICON_PATH;
 		}
 
 		public String getNodeName() {
-			return "Send";
+			return Messages.SendMediatorEditPart_NodeName;
 		}
 
 		public IFigure getToolTip() {
-			return new Label("Send a message out");
+			if (StringUtils.isEmpty(toolTipMessage)) {
+				return new Label(Messages.SendMediatorEditPart_ToolTipMessage);
+			} else {
+				return new Label(toolTipMessage);
+			}
 		}
 
 	}

@@ -1,7 +1,103 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.0"?>
 <plugin>
-
+   <extension
+         point="org.eclipse.debug.core.launchConfigurationTypes">
+      <launchConfigurationType
+            delegate="org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.launch.ESBDebugLaunchDelegate"
+            id="org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.launch"
+            modes="debug"
+            name="ESB Mediation Debugger">
+      </launchConfigurationType>
+   </extension>
+   <extension
+         point="org.eclipse.debug.ui.launchConfigurationTypeImages">
+      <launchConfigurationTypeImage
+            configTypeID="org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.launch"
+            icon="icons/debugger/DebuggerLauncherIcon.gif"
+            id="org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.launch.image">
+      </launchConfigurationTypeImage>
+   </extension>
+   <extension
+         point="org.eclipse.debug.ui.launchConfigurationTabGroups">
+      <launchConfigurationTabGroup
+            class="org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.launch.tabs.LaunchConfigurationTabGroup"
+            id="org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.launch.tabgroup"
+            type="org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.launch">
+         <launchMode
+               mode="debug">
+         </launchMode>
+      </launchConfigurationTabGroup>
+   </extension>
+   <extension
+         point="org.eclipse.debug.ui.launchShortcuts">
+      <shortcut
+            class="org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.launch.ESBDebugLaunchDelegate"
+            description="Run ESB Mediation Debugger"
+            icon="icons/debugger/DebuggerLauncherIcon.gif"
+            id="org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.launchShortcut"
+            label="ESB Mediation Debugger"
+            modes="debug">
+         <contextualLaunch>
+            <enablement>
+               <count
+                     value="1">
+               </count>
+               <iterate>
+                  <test
+                        property="org.eclipse.debug.ui.matchesPattern"
+                        value="txt">
+                  </test>
+               </iterate>
+            </enablement>
+         </contextualLaunch>
+         <configurationType
+               id="org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.launch">
+         </configurationType>
+      </shortcut>
+   </extension>
+   
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension
+            targetID="*">
+         <actionSet
+               id="org.eclipse.debug.ui.launchActionSet">
+         </actionSet>
+      </perspectiveExtension>
+   </extension>
+   <extension
+            point="org.eclipse.debug.core.sourceLocators">
+   </extension>
+   <extension
+       point="org.eclipse.debug.ui.debugModelPresentations">
+        <debugModelPresentation
+          class="org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.model.ESBDebugModelPresentation"
+          id="org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.model.esbDebugModelPresentation">
+    </debugModelPresentation>
+ </extension>
+    <extension
+          id="debugger.ESBDebugPointMarker"
+          point="org.eclipse.core.resources.markers">
+      <super
+            type="org.eclipse.debug.core.breakpointMarker">
+      </super>
+      <persistent
+            value="true">
+      </persistent>
+   </extension>
+   <extension
+         point="org.eclipse.debug.core.breakpoints">
+          <breakpoint
+            class="org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.debugpoint.impl.ESBDebugPoint"
+            id="org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.Breakpoint"
+            markerType="org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.ESBDebugPointMarker"
+            name="ESB Debugpoint">
+      </breakpoint>
+   </extension>
+   
+   
+   
    <extension point="org.eclipse.team.core.fileTypes" id="repo-ftype">
       <?gmfgen generated="true"?>
       <fileTypes type="text" extension="esb_diagram"/>

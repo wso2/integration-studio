@@ -1,3 +1,18 @@
+/*
+ * Copyright (c) 2014-2015, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts;
 
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.REGISTRY_KEY_PROPERTY__KEY_VALUE;
@@ -5,6 +20,7 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.SEQUE
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.SEQUENCE__REFERRING_SEQUENCE_TYPE;
 import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EditorUtils.SEQUENCE_RESOURCE_DIR;
 import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EditorUtils.SYNAPSE_CONFIG_DIR;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.EditPartConstants.SEQUENCE_MEDIATOR_ICON_PATH;
 
 import java.io.ByteArrayInputStream;
 import java.io.File;
@@ -15,6 +31,7 @@ import java.util.Collections;
 import java.util.List;
 
 import org.apache.commons.lang.RandomStringUtils;
+import org.apache.commons.lang.StringUtils;
 import org.apache.maven.model.Plugin;
 import org.apache.maven.model.PluginExecution;
 import org.apache.maven.project.MavenProject;
@@ -22,10 +39,10 @@ import org.codehaus.plexus.util.xml.Xpp3Dom;
 import org.codehaus.plexus.util.xml.pull.XmlPullParserException;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
-import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.draw2d.Figure;
 import org.eclipse.draw2d.IFigure;
+import org.eclipse.draw2d.Label;
 import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.Shape;
 import org.eclipse.draw2d.ToolbarLayout;
@@ -84,7 +101,6 @@ import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.FileEditorInput;
 import org.wso2.developerstudio.eclipse.artifact.sequence.validators.SequenceTemplate;
-import org.wso2.developerstudio.eclipse.capp.maven.utils.MavenConstants;
 import org.wso2.developerstudio.eclipse.esb.core.ESBMavenConstants;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBArtifact;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBProjectArtifact;
@@ -129,7 +145,7 @@ import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
  */
 public class SequenceEditPart extends FixedSizedAbstractMediator {
 
-	private static IDeveloperStudioLog log = Logger.getLog("org.wso2.developerstudio.eclipse.gmf.esb.diagram");
+	private static IDeveloperStudioLog log = Logger.getLog("org.wso2.developerstudio.eclipse.gmf.esb.diagram"); //$NON-NLS-1$
 
 	private EsbDiagramEditor mainDiagramEditorRef;
 
@@ -225,27 +241,27 @@ public class SequenceEditPart extends FixedSizedAbstractMediator {
 		Object notifier = ((ENotificationImpl) notification).getNotifier();
 		if (notifier instanceof Sequence) {
 			if (notification.getFeature() instanceof EReference) {
-				if ("staticReferenceKey".equals(((EReference) notification.getFeature()).getName())) {
+				if ("staticReferenceKey".equals(((EReference) notification.getFeature()).getName())) { //$NON-NLS-1$
 					String keyValue = ((RegistryKeyProperty) notification.getNewValue()).getKeyValue();
 					setValue((Sequence) notifier, SEQUENCE__NAME, keyValue);
 				}
 			} else if (notification.getFeature() instanceof EAttribute) {
-				if ("name".equals(((EAttribute) notification.getFeature()).getName())) {
+				if ("name".equals(((EAttribute) notification.getFeature()).getName())) { //$NON-NLS-1$
 					String name = (String) notification.getNewValue();
-					if ("{XPath}".equals(name)) {
+					if ("{XPath}".equals(name)) { //$NON-NLS-1$
 						setValue((Sequence) notifier, SEQUENCE__REFERRING_SEQUENCE_TYPE, KeyType.DYNAMIC);
 					} else {
 						setValue((Sequence) notifier, SEQUENCE__REFERRING_SEQUENCE_TYPE, KeyType.STATIC);
 						RegistryKeyProperty registryKeyProperty = ((Sequence) notifier).getStaticReferenceKey();
 						setValue(registryKeyProperty, REGISTRY_KEY_PROPERTY__KEY_VALUE, name);
 					}
-				} else if ("referringSequenceType".equals(((EAttribute) notification.getFeature()).getName())) {
+				} else if ("referringSequenceType".equals(((EAttribute) notification.getFeature()).getName())) { //$NON-NLS-1$
 					KeyType type = (KeyType) notification.getNewValue();
 					if (KeyType.DYNAMIC == type) {
-						setValue((Sequence) notifier, SEQUENCE__NAME, "{XPath}");
+						setValue((Sequence) notifier, SEQUENCE__NAME, "{XPath}"); //$NON-NLS-1$
 					} else {
-						if ("{XPath}".equals(((Sequence) notifier).getName())) {
-							setValue((Sequence) notifier, SEQUENCE__NAME, "");
+						if ("{XPath}".equals(((Sequence) notifier).getName())) { //$NON-NLS-1$
+							setValue((Sequence) notifier, SEQUENCE__NAME, ""); //$NON-NLS-1$
 						}
 					}
 				}
@@ -496,10 +512,10 @@ public class SequenceEditPart extends FixedSizedAbstractMediator {
 	}
 
 	private String getMavenGroupID(IProject project) {
-		String groupID = "com.example";
+		String groupID = "com.example"; //$NON-NLS-1$
 		try {
-			MavenProject mavenProject = MavenUtils.getMavenProject(project.getFile("pom.xml").getLocation().toFile());
-			groupID = mavenProject.getGroupId() + ".sequence";
+			MavenProject mavenProject = MavenUtils.getMavenProject(project.getFile("pom.xml").getLocation().toFile()); //$NON-NLS-1$
+			groupID = mavenProject.getGroupId() + ".sequence"; //$NON-NLS-1$
 		} catch (Exception e) {
 			//ignore. Then group id would be default. 
 		}
@@ -512,7 +528,7 @@ public class SequenceEditPart extends FixedSizedAbstractMediator {
 		artifact.setName(name);
 		artifact.setVersion(version);
 		artifact.setType(type);
-		artifact.setServerRole("EnterpriseServiceBus");
+		artifact.setServerRole("EnterpriseServiceBus"); //$NON-NLS-1$
 		artifact.setGroupId(groupId);
 		artifact.setFile(path);
 		return artifact;
@@ -523,7 +539,7 @@ public class SequenceEditPart extends FixedSizedAbstractMediator {
 
 		String name = ((Sequence) ((org.eclipse.gmf.runtime.notation.impl.NodeImpl) getModel()).getElement()).getName();
 		//if (sequenceStorage.sequences.get(name) == null) {
-		if (!name.equals("")) {
+		if (!name.equals("")) { //$NON-NLS-1$
 
 			/*
 			 * Tool group creations in the Tool pallete.
@@ -545,13 +561,13 @@ public class SequenceEditPart extends FixedSizedAbstractMediator {
 		/*
 		 * File creations.
 		 */
-		createAndOpenFile(name, "sequence_" + name + ".esb_diagram", "sequence_" + name + ".esb", activeProject);
+		createAndOpenFile(name, "sequence_" + name + ".esb_diagram", "sequence_" + name + ".esb", activeProject); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
 		//EditorUtils.updateToolpalette();
 
 	}
 
 	public boolean createAndOpenFile(String name, String fileURI1, String fileURI2, IProject currentProject) throws Exception {
-		IFile file = currentProject.getFile(SEQUENCE_RESOURCE_DIR + "/" + fileURI1);
+		IFile file = currentProject.getFile(SEQUENCE_RESOURCE_DIR + "/" + fileURI1); //$NON-NLS-1$
 
 		if (((Sequence) ((Node) sequenceEditPart.getModel()).getElement()).isReceiveSequence()) {
 			info.setRecieveSequence(true);
@@ -561,11 +577,11 @@ public class SequenceEditPart extends FixedSizedAbstractMediator {
 		if (!file.exists()) {
 			IFile fileTobeOpened = null;
 			boolean registryProject = false;
-			if(currentProject.hasNature("org.wso2.developerstudio.eclipse.general.project.nature")){
-			     fileTobeOpened = currentProject.getFile(name + ".xml");
+			if(currentProject.hasNature("org.wso2.developerstudio.eclipse.general.project.nature")){ //$NON-NLS-1$
+			     fileTobeOpened = currentProject.getFile(name + ".xml"); //$NON-NLS-1$
 			     registryProject = true;
 			}else{
-				 fileTobeOpened = currentProject.getFile(SYNAPSE_CONFIG_DIR + "/sequences/" + name + ".xml");
+				 fileTobeOpened = currentProject.getFile(SYNAPSE_CONFIG_DIR + "/sequences/" + name + ".xml"); //$NON-NLS-1$ //$NON-NLS-2$
 			}
 			
 			if (fileTobeOpened.exists()) {
@@ -579,7 +595,7 @@ public class SequenceEditPart extends FixedSizedAbstractMediator {
 					updatePom();
 				}
 				
-				String path = fileTobeOpened.getParent().getFullPath() + "/";
+				String path = fileTobeOpened.getParent().getFullPath() + "/"; //$NON-NLS-1$
 				ArtifactTemplate sequenceArtifactTemplate = SequenceTemplate.getArtifactTemplates()[0];
 				String source = FileUtils.getContentAsString(sequenceArtifactTemplate.getTemplateDataStream());
 				source = MessageFormat.format(source, name);
@@ -597,40 +613,40 @@ public class SequenceEditPart extends FixedSizedAbstractMediator {
 			try {
 				page.openEditor(new FileEditorInput(file), desc.getId());
 			} catch (PartInitException e) {
-				log.error("Cannot init editor", e);
+				log.error("Cannot init editor", e); //$NON-NLS-1$
 			}
 			return true;
 		}
 	}
 	
 	private void updatePom() throws IOException, XmlPullParserException {
-		File mavenProjectPomLocation = getActiveProject().getFile("pom.xml").getLocation().toFile();
+		File mavenProjectPomLocation = getActiveProject().getFile("pom.xml").getLocation().toFile(); //$NON-NLS-1$
 		MavenProject mavenProject = MavenUtils.getMavenProject(mavenProjectPomLocation);
 
 		// Skip changing the pom file if group ID and artifact ID are matched
-		if (MavenUtils.checkOldPluginEntry(mavenProject, "org.wso2.maven", "wso2-esb-sequence-plugin")) {
+		if (MavenUtils.checkOldPluginEntry(mavenProject, "org.wso2.maven", "wso2-esb-sequence-plugin")) { //$NON-NLS-1$ //$NON-NLS-2$
 			return;
 		}
 
-		Plugin plugin = MavenUtils.createPluginEntry(mavenProject, "org.wso2.maven", "wso2-esb-sequence-plugin",
+		Plugin plugin = MavenUtils.createPluginEntry(mavenProject, "org.wso2.maven", "wso2-esb-sequence-plugin", //$NON-NLS-1$ //$NON-NLS-2$
 				ESBMavenConstants.WSO2_ESB_SEQUENCE_VERSION, true);
 		PluginExecution pluginExecution = new PluginExecution();
-		pluginExecution.addGoal("pom-gen");
-		pluginExecution.setPhase("process-resources");
-		pluginExecution.setId("sequence");
+		pluginExecution.addGoal("pom-gen"); //$NON-NLS-1$
+		pluginExecution.setPhase("process-resources"); //$NON-NLS-1$
+		pluginExecution.setId("sequence"); //$NON-NLS-1$
 
 		Xpp3Dom configurationNode = MavenUtils.createMainConfigurationNode();
-		Xpp3Dom artifactLocationNode = MavenUtils.createXpp3Node(configurationNode, "artifactLocation");
-		artifactLocationNode.setValue(".");
-		Xpp3Dom typeListNode = MavenUtils.createXpp3Node(configurationNode, "typeList");
-		typeListNode.setValue("${artifact.types}");
+		Xpp3Dom artifactLocationNode = MavenUtils.createXpp3Node(configurationNode, "artifactLocation"); //$NON-NLS-1$
+		artifactLocationNode.setValue("."); //$NON-NLS-1$
+		Xpp3Dom typeListNode = MavenUtils.createXpp3Node(configurationNode, "typeList"); //$NON-NLS-1$
+		typeListNode.setValue("${artifact.types}"); //$NON-NLS-1$
 		pluginExecution.setConfiguration(configurationNode);
 		plugin.addExecution(pluginExecution);
 		MavenUtils.saveMavenProject(mavenProject, mavenProjectPomLocation);
 	}
 
 	private PaletteContainer createSequenceGroup() {
-		PaletteDrawer paletteContainer = new PaletteDrawer("Sequences");
+		PaletteDrawer paletteContainer = new PaletteDrawer("Sequences"); //$NON-NLS-1$
 		paletteContainer.setId("Sequences"); //$NON-NLS-1$
 
 		return paletteContainer;
@@ -642,7 +658,7 @@ public class SequenceEditPart extends FixedSizedAbstractMediator {
 		/*types.add(EsbElementTypes.Sequence_3187);
 		types.add(EsbElementTypes.Sequence_3254);
 		types.add(EsbElementTypes.Sequence_3375);*/
-		NodeToolEntry entry = new NodeToolEntry(name, Messages.Sequence4CreationTool_desc, types);
+		NodeToolEntry entry = new NodeToolEntry(name, "", types); //$NON-NLS-1$
 		entry.setId("createSequence4CreationTool"); //$NON-NLS-1$
 		entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.Sequence_3503));
 		entry.setLargeIcon(entry.getSmallIcon());
@@ -658,14 +674,14 @@ public class SequenceEditPart extends FixedSizedAbstractMediator {
 		final EObject sequence = (Sequence) ((org.eclipse.gmf.runtime.notation.impl.NodeImpl) getModel()).getElement();
 
 		// For validation: user should not enter "" value for name.
-		if (((Sequence) sequence).getName().trim().equals("")) {
+		if (((Sequence) sequence).getName().trim().equals("")) { //$NON-NLS-1$
 			IInputValidator validator = new IInputValidator() {
 
 				public String isValid(String str) {
 					if (str.trim().isEmpty()) {
-						return "Sequence name cannot be empty";
+						return "Sequence name cannot be empty"; //$NON-NLS-1$
 					} else if (str.indexOf(0x20) != -1) {
-						return "Sequence name cannot contain spaces";
+						return "Sequence name cannot contain spaces"; //$NON-NLS-1$
 					}
 					return null;
 				}
@@ -673,7 +689,7 @@ public class SequenceEditPart extends FixedSizedAbstractMediator {
 			};
 			//String defaultName = "Sequence_" + (((EsbDiagram) diagram).getTest() + 1);
 			String defaultName = calculateDefaultName();
-			final InputDialog sequenceNameInput = new InputDialog(new Shell(), "Enter Sequence Name", "Sequence Name",
+			final InputDialog sequenceNameInput = new InputDialog(new Shell(), "Enter Sequence Name", "Sequence Name", //$NON-NLS-1$ //$NON-NLS-2$
 					defaultName, validator) {
 				protected Control createDialogArea(Composite parent) {
 					Composite composite = (Composite) super.createDialogArea(parent);
@@ -758,8 +774,8 @@ public class SequenceEditPart extends FixedSizedAbstractMediator {
 						try {
 							openWithSeparateEditor();
 						} catch (Exception e) {
-							log.error("Cannot open sequence file ", e);
-							MessageDialog.openError(Display.getCurrent().getActiveShell(), "Cannot open sequence file ",
+							log.error("Cannot open sequence file ", e); //$NON-NLS-1$
+							MessageDialog.openError(Display.getCurrent().getActiveShell(), "Cannot open sequence file ", //$NON-NLS-1$
 									e.getLocalizedMessage());
 						}
 					}
@@ -772,17 +788,17 @@ public class SequenceEditPart extends FixedSizedAbstractMediator {
 
 	public String calculateDefaultName() {
 		IProject activeProject = getActiveProject();
-		String finalName = "Sequence_1";
+		String finalName = "Sequence_1"; //$NON-NLS-1$
 		int i = 1;
 
 		try {
 			while (ESBProjectUtils.artifactExists(activeProject, finalName)) {
-				finalName = finalName.replaceAll("\\d+$", "");
+				finalName = finalName.replaceAll("\\d+$", ""); //$NON-NLS-1$ //$NON-NLS-2$
 				i++;
-				finalName = finalName.concat(i + "");
+				finalName = finalName.concat(i + ""); //$NON-NLS-1$
 			}
 		} catch (Exception e) {
-			finalName = finalName.concat("_").concat(RandomStringUtils.randomAlphabetic(5)).concat("_" + i);
+			finalName = finalName.concat("_").concat(RandomStringUtils.randomAlphabetic(5)).concat("_" + i); //$NON-NLS-1$ //$NON-NLS-2$
 		}
 		return finalName;
 	}
@@ -791,12 +807,12 @@ public class SequenceEditPart extends FixedSizedAbstractMediator {
 		IProject activeProject = getActiveProject();
 		ESBProjectArtifact esbProjectArtifact = new ESBProjectArtifact();
 		try {
-			esbProjectArtifact.fromFile(activeProject.getFile("artifact.xml").getLocation().toFile());
-			esbProjectArtifact.addESBArtifact(createArtifact(sequenceName, getMavenGroupID(activeProject), "1.0.0",
-					"src/main/synapse-config/sequences/" + sequenceName + ".xml", "synapse/sequence"));
+			esbProjectArtifact.fromFile(activeProject.getFile("artifact.xml").getLocation().toFile()); //$NON-NLS-1$
+			esbProjectArtifact.addESBArtifact(createArtifact(sequenceName, getMavenGroupID(activeProject), "1.0.0", //$NON-NLS-1$
+					"src/main/synapse-config/sequences/" + sequenceName + ".xml", "synapse/sequence")); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 			esbProjectArtifact.toFile();
 		} catch (Exception e) {
-			log.error("Error while updating Artifact.xml",e);
+			log.error("Error while updating Artifact.xml",e); //$NON-NLS-1$
 		}
 	}
 	
@@ -804,26 +820,26 @@ public class SequenceEditPart extends FixedSizedAbstractMediator {
 		
 		GeneralProjectArtifact generalProjectArtifact = new GeneralProjectArtifact();
 		try {
-			generalProjectArtifact.fromFile(currentProject.getFile("artifact.xml").getLocation().toFile());
-			File pomLocation = currentProject.getFile("pom.xml").getLocation().toFile();
+			generalProjectArtifact.fromFile(currentProject.getFile("artifact.xml").getLocation().toFile()); //$NON-NLS-1$
+			File pomLocation = currentProject.getFile("pom.xml").getLocation().toFile(); //$NON-NLS-1$
 			MavenProject mavenProject = MavenUtils.getMavenProject(pomLocation);
 			RegistryArtifact artifact = new RegistryArtifact();
 			artifact.setName(sequenceName);
 			artifact.setVersion(mavenProject.getVersion());
-			artifact.setType("registry/resource");
-			artifact.setServerRole("GovernanceRegistry");
-			artifact.setGroupId(mavenProject.getGroupId()+".resource");
+			artifact.setType("registry/resource"); //$NON-NLS-1$
+			artifact.setServerRole("GovernanceRegistry"); //$NON-NLS-1$
+			artifact.setGroupId(mavenProject.getGroupId()+".resource"); //$NON-NLS-1$
 
 			RegistryElement item = new RegistryItem();
-			((RegistryItem) item).setFile(sequenceName + ".xml");
-			((RegistryItem) item).setPath("/_system/governance/sequences");
-			((RegistryItem) item).setMediaType("application/vnd.wso2.sequence");
+			((RegistryItem) item).setFile(sequenceName + ".xml"); //$NON-NLS-1$
+			((RegistryItem) item).setPath("/_system/governance/sequences"); //$NON-NLS-1$
+			((RegistryItem) item).setMediaType("application/vnd.wso2.sequence"); //$NON-NLS-1$
 			artifact.addRegistryElement(item);
 			generalProjectArtifact.addArtifact(artifact);
 			generalProjectArtifact.toFile();
 
 		} catch (Exception e) {
-			log.error("Error while updating Artifact.xml", e);
+			log.error("Error while updating Artifact.xml", e); //$NON-NLS-1$
 		}
 	}
 
@@ -956,14 +972,14 @@ public class SequenceEditPart extends FixedSizedAbstractMediator {
 		}
 
 		private PaletteContainer createSequenceGroup() {
-			PaletteDrawer paletteContainer = new PaletteDrawer("Sequences");
+			PaletteDrawer paletteContainer = new PaletteDrawer("Sequences"); //$NON-NLS-1$
 			paletteContainer.setId("Sequences"); //$NON-NLS-1$
 
 			return paletteContainer;
 		}
 
 		private ToolEntry createSequence4CreationTool(String name) {
-			NodeToolEntry entry = new NodeToolEntry(name, Messages.Sequence4CreationTool_desc,
+			NodeToolEntry entry = new NodeToolEntry(name, "", //$NON-NLS-1$
 					Collections.singletonList(EsbElementTypes.Sequence_3503));
 			entry.setId("createSequence4CreationTool"); //$NON-NLS-1$
 			entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.Sequence_3503));
@@ -1008,11 +1024,19 @@ public class SequenceEditPart extends FixedSizedAbstractMediator {
 		}
 
 		public String getIconPath() {
-			return "icons/ico20/sequence-mediator.gif";
+			return SEQUENCE_MEDIATOR_ICON_PATH;
 		}
 
 		public String getNodeName() {
-			return "Sequence";
+			return Messages.SequenceEditPart_NodeName;
+		}
+
+		public IFigure getToolTip() {
+			if (StringUtils.isEmpty(toolTipMessage)) {
+				return new Label(Messages.SequenceEditPart_ToolTip);
+			} else {
+				return new Label(toolTipMessage);
+			}
 		}
 
 	}

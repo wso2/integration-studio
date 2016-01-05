@@ -16,6 +16,7 @@
 
 package org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts;
 
+import org.apache.commons.lang.StringUtils;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.Label;
 import org.eclipse.draw2d.PositionConstants;
@@ -328,7 +329,11 @@ public class FastXSLTMediatorEditPart extends FixedSizedAbstractMediator {
 		}
 
 		public IFigure getToolTip() {
-			return new Label(TOOL_TIP);
+			if (StringUtils.isEmpty(toolTipMessage)) {
+				return new Label(TOOL_TIP);
+			} else {
+				return new Label(toolTipMessage);
+			}
 		}
 
 	}

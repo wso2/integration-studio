@@ -305,10 +305,15 @@ public class Messages extends NLS {
 	 */
 	public static String Sequence4CreationTool_title;
 
+
 	/**
 	 * @generated
 	 */
 	public static String Sequence4CreationTool_desc;
+	
+	public static String SequenceEditPart_NodeName;
+
+	public static String SequenceEditPart_ToolTip;
 
 	/**
 	 * @generated

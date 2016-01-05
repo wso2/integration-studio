@@ -105,12 +105,17 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.direction.Directi
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.direction.DirectionXQueryMediatorAction;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.direction.DirectionXSLTMediatorAction;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.export.EsbModelExportAction;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.debugpoint.impl.ESBBreakpointAction;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.debugpoint.impl.ESBBreakpointDeleteAllAction;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.debugpoint.impl.ESBBreakpointRePopulateAction;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.debugpoint.impl.ESBSkipPointAction;
 
 /**
  * @generated
  */
 public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider {
 
+	private static final String ESB_DEBUGGER_ACTIONS_MENU_GROUP = "navigateGroup";
 	/**
 	 * @generated
 	 */
@@ -316,6 +321,20 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
 									contextAction = contextActions.get(contextObj.eClass().getInstanceClass());
 									addBranchContextAction = addBranchContextActions.get(contextObj.eClass()
 											.getInstanceClass());
+									menu.appendToGroup(
+											ESB_DEBUGGER_ACTIONS_MENU_GROUP,
+											new ESBBreakpointAction(part));
+									menu.appendToGroup(
+											ESB_DEBUGGER_ACTIONS_MENU_GROUP,
+											new ESBSkipPointAction(part));
+									menu.appendToGroup(
+											ESB_DEBUGGER_ACTIONS_MENU_GROUP,
+											new ESBBreakpointRePopulateAction(
+													part));
+									menu.appendToGroup(
+											ESB_DEBUGGER_ACTIONS_MENU_GROUP,
+											new ESBBreakpointDeleteAllAction(
+													part));
 								}
 
 								if (null != contextAction) {

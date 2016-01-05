@@ -12,6 +12,7 @@ import org.eclipse.swt.events.HelpListener;
 import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.ui.IWorkbenchPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerUtil;
 
 public class CustomDiagramGraphicalViewerKeyHandler extends DiagramGraphicalViewerKeyHandler{	
 	private DeleteElementAction deleteAction;
@@ -32,6 +33,7 @@ public class CustomDiagramGraphicalViewerKeyHandler extends DiagramGraphicalView
 		
 		switch (event.keyCode) {
 		case SWT.DEL :
+			ESBDebuggerUtil.setDeleteOperationPerformed(true);
 			deleteAction.run(null);		
 			return true; 			
 		}	

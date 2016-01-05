@@ -1,5 +1,24 @@
+/*
+ * Copyright (c) 2014-2015, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts;
 
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.EditPartConstants.DEFAULT_PROPERTY_VALUE_TEXT;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.EditPartConstants.ENTITLEMENT_MEDIATOR_ICON_PATH;
+
+import org.apache.commons.lang.StringUtils;
 import org.eclipse.draw2d.GridData;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.Label;
@@ -31,10 +50,7 @@ import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EntitlementMediatorGraphicalShape;
-import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EsbGraphicalShape;
-import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EsbGraphicalShapeWithLabel;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.FixedBorderItemLocator;
-import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.FixedSizedAbstractMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.MultipleCompartmentComplexFiguredAbstractMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.ShowPropertyViewEditPolicy;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.editpolicy.FeedbackIndicateDragDropEditPolicy;
@@ -389,11 +405,9 @@ public class EntitlementMediatorEditPart extends MultipleCompartmentComplexFigur
 		private void createContents() {
 
 			fFigureEntitlementMediatorPropertyValue = new WrappingLabel();
-			fFigureEntitlementMediatorPropertyValue.setText("<...>");
+			fFigureEntitlementMediatorPropertyValue
+					.setText(DEFAULT_PROPERTY_VALUE_TEXT);
 			fFigureEntitlementMediatorPropertyValue.setAlignment(SWT.CENTER);
-			//this.getPropertyValueRectangle1().add(fFigureEntitlementMediatorPropertyValue);
-
-			//entitlementMediatorDescriptionLabel = getPropertyNameLabel();
 		}
 
 		/**
@@ -408,15 +422,20 @@ public class EntitlementMediatorEditPart extends MultipleCompartmentComplexFigur
 		}
 
 		public String getIconPath() {
-			return "icons/ico20/entitlement-mediator.gif";
+			return ENTITLEMENT_MEDIATOR_ICON_PATH;
 		}
 
 		public String getNodeName() {
-			return "Entitlement";
+			return Messages.EntitlementMediatorEditPart_NodeName;
 		}
 
 		public IFigure getToolTip() {
-			return new Label("Fine grain authorization");
+			if (StringUtils.isEmpty(toolTipMessage)) {
+				return new Label(
+						Messages.EntitlementMediatorEditPart_ToolTipMessage);
+			} else {
+				return new Label(toolTipMessage);
+			}
 		}
 
 	}

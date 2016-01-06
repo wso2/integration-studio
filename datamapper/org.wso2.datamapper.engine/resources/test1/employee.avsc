@@ -1,0 +1,30 @@
+{
+  "type" : "record",
+  "name" : "employee",
+  "namespace" : "org.wso2.avroSchemaGen",
+  "doc" : "Schema for org.wso2.avroSchemaGen.Employee",
+  "fields" : [ {
+    "name" : "address",
+    "type" : [ "null", {
+      "type" : "record",
+      "name" : "address",
+      "doc" : "Schema for org.wso2.avroSchemaGen.Address",
+      "fields" : [ {
+        "name" : "city",
+        "type" : [ "null", "string" ]
+      }, {
+        "name" : "no",
+        "type" : [ "null", "string" ]
+      }, {
+        "name" : "road",
+        "type" : [ "null", "string" ]
+      } ]
+    } ]
+  }, {
+    "name" : "firstname",
+    "type" : [ "null", "string" ]
+  }, {
+    "name" : "lastname",
+    "type" : [ "null", "string" ]
+  } ]
+}

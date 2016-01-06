@@ -14,32 +14,22 @@ import org.wso2.datamapper.engine.inputAdapters.InputDataReaderAdapter;
 import org.wso2.datamapper.engine.inputAdapters.ReaderRegistry;
 import org.wso2.datamapper.engine.outputAdapters.DummyEncoder;
 import org.wso2.datamapper.engine.outputAdapters.WriterRegistry;
-import org.wso2.avroSchemaGen.AvroSchemaBuilder;
 
-/**
- * This is a Test class will be removed in the future
- *
- */
 public class MapperMain {
 
 	public static void main(String[] args) throws Exception {
 
-		InputStream inStream = new FileInputStream(new File("./resources/input2.xml"));
-		InputStream config = new FileInputStream(new File("./resources/MappingConfig2.js"));
-		/*InputStream inputSchema = new FileInputStream(new File("./resources/inputSchema2.avsc"));
-		InputStream outputSchema = new FileInputStream(new File("./resources/outputSchema2.avsc"));*/
-		
-		AvroSchemaBuilder avroSchemaBuilder = new AvroSchemaBuilder();
-		
-		InputStream inputSchemaStream = avroSchemaBuilder.getAvroSchema("org.wso2.avroSchemaGen.Employee");
-	    InputStream outputSchemaStream = avroSchemaBuilder.getAvroSchema("org.wso2.avroSchemaGen.Engineer");
+		InputStream inStream = new FileInputStream(new File("./resources/test1/employeePayload.xml"));
+		InputStream inputSchema = new FileInputStream(new File("./resources/test1/employee.avsc"));
+		InputStream outputSchema = new FileInputStream(new File("./resources/test1/engineer.avsc"));
+		InputStream config = new FileInputStream(new File("./resources/test1/employeeToEngineer.js"));
 		
 		//Contexts are anti-pattern and no need getters/setters for access static class, just used for code readability 
 		MappingContext context = new MappingContext();
 		context.setInputStream(inStream);
 		context.setConfig(config);
-		context.setInputSchema(inputSchemaStream);
-		context.setOutputSchema(outputSchemaStream);
+		context.setInputSchema(inputSchema);
+		context.setOutputSchema(outputSchema);
 		
 		//CSV : text/csv
 		//XML : application/xml	

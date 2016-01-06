@@ -2,12 +2,12 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>org.wso2</groupId>
-	<artifactId>datamapper</artifactId>
+	<groupId>org.wso2.datamapper</groupId>
+	<artifactId>org.wso2.datamapper.engine</artifactId>
 	<version>0.0.1</version>
 	<packaging>bundle</packaging>
 
-	<name>datamapper</name>
+	<name>org.wso2.datamapper.engine</name>
 	<url>http://maven.apache.org</url>
 
 	<properties>

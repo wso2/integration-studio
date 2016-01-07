@@ -119,6 +119,16 @@
                 <updatePolicy>daily</updatePolicy>
                 <checksumPolicy>ignore</checksumPolicy>
             </releases>
+            <id>Additional-Tools-p2-Repository</id>
+            <url>http://builder1.us1.wso2.org/~developerstudio/developer-studio-kernel/4.0.0/additional-tools/releases/p2/</url>
+            <layout>p2</layout>
+        </repository>
+        <repository>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>daily</updatePolicy>
+                <checksumPolicy>ignore</checksumPolicy>
+            </releases>
             <id>WSO2-p2-Repository</id>
             <url>http://product-dist.wso2.com/p2/carbon/releases/wilkes/</url>
             <layout>p2</layout>

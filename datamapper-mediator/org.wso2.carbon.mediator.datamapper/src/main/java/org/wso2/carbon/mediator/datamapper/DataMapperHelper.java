@@ -84,7 +84,7 @@ public class DataMapperHelper {
 			mappingResourceLoader = CacheResources.getCachedResources(context,
 					configkey, inSchemaKey, outSchemaKey, uuid);
 
-			inputMessage = context.getEnvelope();
+			inputMessage = context.getEnvelope().getBody().getFirstElement();
 			// FIXME include DatumReaders
 			InputDataReaderAdapter inputReader = convertInputMessage(inputType);
 			

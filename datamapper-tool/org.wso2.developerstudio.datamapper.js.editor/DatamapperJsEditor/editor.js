@@ -49,6 +49,11 @@ function saveFile() {
 	//var updatedContent = document.getElementById("editor").value;
 	//Save content to file.
 	var jsonString = JSON.stringify(graph);
+	
+	var cell = graph.getCell('inputBox');
+	var outboundLinks = graph.getConnectedLinks(cell, { outbound: true })
+	var target = outboundLinks[0].getTargetElement();
+	console.log(JSON.stringify(target));
 	console.log(jsonString);
     IDESaveContent(jsonString);
 }

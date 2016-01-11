@@ -47,65 +47,51 @@ $(document).ready(function () {
 
     var paper = new joint.dia.Paper({
         el: $('#jsPlumbContainer'),
-        width: 600,
-        height: 200,
+        width: 1200,
         model: graph,
         gridSize: 1
     });
-
-    var rect = new joint.shapes.basic.Rect({
-        position: { x: 100, y: 30 },
-        size: { width: 100, height: 30 },
-        attrs: { rect: { fill: 'green' }, text: { text: 'my box1', fill: 'red' } }
+    
+    paper.on('cell:pointerdown', function(cellView) {
+        selected = cellView.model;
+        //alert(selected);
     });
+    
+    var mInput = new joint.shapes.devs.Model({
+    	id:'inputBox',
+	    position: { x: 50, y: 50 },
+	    size: { width: 150, height: 400 },
+	    outPorts: ['out'],
+	    attrs: {
+	        '.label': { text: 'Input Type', 'ref-x': .4, 'ref-y': .2 },
+	        rect: { fill: 'gray' },
+	        '.outPorts circle': { fill: '#E74C3C' }
+	    }
+	});
+	graph.addCell(mInput);
+	
+	var mOutput = new joint.shapes.devs.Model({
+    	id:'outputBox',
+	    position: { x: 1050, y: 50 },
+	    size: { width: 150, height: 400 },
+	    inPorts: ['in'],
+	    attrs: {
+	        '.label': { text: 'Output Type', 'ref-x': .4, 'ref-y': .2 },
+	        rect: { fill: 'gray' },
+	        '.inPorts circle': { fill: '#E74C3C' }
+	    }
+	});
+	graph.addCell(mOutput);
 
-    var rect2 = rect.clone();
-    rect2.translate(300);
-
-    var link = new joint.dia.Link({
-        source: { id: rect.id },
-        target: { id: rect2.id }
-    });
-
-    //graph.addCells([rect, rect2, link]);
-    //graph.fromJSON('{"cells":[{"type":"basic.Rect","position":{"x":100,"y":30},"size":{"width":100,"height":30},"angle":0,"id":"7a7fa8bd-de0a-4804-b727-d398af62f99c","z":1,"attrs":{"rect":{"fill":"green"},"text":{"fill":"red","text":"my box1"}}},{"type":"basic.Rect","position":{"x":400,"y":30},"size":{"width":100,"height":30},"angle":0,"id":"2cab9c72-3493-4c55-abee-70cf07c8e00b","embeds":"","z":2,"attrs":{"rect":{"fill":"green"},"text":{"fill":"red","text":"my box1"}}},{"type":"link","source":{"id":"7a7fa8bd-de0a-4804-b727-d398af62f99c"},"target":{"id":"2cab9c72-3493-4c55-abee-70cf07c8e00b"},"id":"b9c986a2-37af-4053-9068-643ae858dce0","z":3,"attrs":{}},{"type":"devs.Model","size":{"width":90,"height":90},"inPorts":["in1","in2"],"outPorts":["out"],"position":{"x":211,"y":96},"angle":0,"id":"cf3991a9-b06a-41ce-a7ed-571033038a85","z":4,"attrs":{".label":{"ref-x":0.4,"ref-y":0.2},"rect":{"fill":"#2ECC71"},".inPorts circle":{"fill":"#16A085"},".outPorts circle":{"fill":"#E74C3C"},".inPorts>.port0>.port-label":{"text":"in1"},".inPorts>.port0>.port-body":{"port":{"id":"in1","type":"in"}},".inPorts>.port0":{"ref":".body","ref-y":0.25},".inPorts>.port1>.port-label":{"text":"in2"},".inPorts>.port1>.port-body":{"port":{"id":"in2","type":"in"}},".inPorts>.port1":{"ref":".body","ref-y":0.75},".outPorts>.port0>.port-label":{"text":"out"},".outPorts>.port0>.port-body":{"port":{"id":"out","type":"out"}},".outPorts>.port0":{"ref":".body","ref-y":0.5,"ref-dx":0}}},{"type":"link","source":{"id":"cf3991a9-b06a-41ce-a7ed-571033038a85","selector":"g:nth-child(1) > g:nth-child(4) > g:nth-child(1) > circle:nth-child(1)","port":"out"},"target":{"id":"2cab9c72-3493-4c55-abee-70cf07c8e00b"},"id":"e45038bc-4a06-4751-b6b5-13a248bc14e6","embeds":"","z":5,"attrs":{}},{"type":"link","source":{"id":"cf3991a9-b06a-41ce-a7ed-571033038a85","selector":"g:nth-child(1) > g:nth-child(3) > g:nth-child(1) > circle:nth-child(1)","port":"in1"},"target":{"id":"7a7fa8bd-de0a-4804-b727-d398af62f99c"},"id":"6d3ea87c-6f83-4aff-a6d4-e8805b7e2d58","embeds":"","z":6,"attrs":{}}]}');
-      graph.fromJSON(JSON.parse('{"cells":[{"type":"basic.Rect","position":{"x":100,"y":30},"size":{"width":100,"height":30},"angle":0,"id":"4713e533-6d0f-48e3-8098-2fee3364d023","z":1,"attrs":{"rect":{"fill":"green"},"text":{"fill":"red","text":"my box1"}}},{"type":"basic.Rect","position":{"x":238,"y":107},"size":{"width":100,"height":30},"angle":0,"id":"426e4cea-bb7e-46db-b6a2-75331764385b","embeds":"","z":2,"attrs":{"rect":{"fill":"green"},"text":{"fill":"red","text":"my box1"}}},{"type":"link","source":{"id":"4713e533-6d0f-48e3-8098-2fee3364d023"},"target":{"id":"426e4cea-bb7e-46db-b6a2-75331764385b"},"id":"e32c2313-2f15-477d-804d-fd1c327b5944","z":3,"attrs":{}}]}'));
+    //graph.fromJSON(JSON.parse('{"cells":[{"type":"basic.Rect","position":{"x":100,"y":30},"size":{"width":100,"height":30},"angle":0,"id":"4713e533-6d0f-48e3-8098-2fee3364d023","z":1,"attrs":{"rect":{"fill":"green"},"text":{"fill":"red","text":"my box1"}}},{"type":"basic.Rect","position":{"x":238,"y":107},"size":{"width":100,"height":30},"angle":0,"id":"426e4cea-bb7e-46db-b6a2-75331764385b","embeds":"","z":2,"attrs":{"rect":{"fill":"green"},"text":{"fill":"red","text":"my box1"}}},{"type":"link","source":{"id":"4713e533-6d0f-48e3-8098-2fee3364d023"},"target":{"id":"426e4cea-bb7e-46db-b6a2-75331764385b"},"id":"e32c2313-2f15-477d-804d-fd1c327b5944","z":3,"attrs":{}}]}'));
 });
 
-
-function initJsPlumb(container) {
-    jsPlumb.setContainer(container);
+function registerJsPlumbBind() {
+    jsPlumb.bind("ready", function () {
+    	jsPlumb.setContainer("#jsPlumbContainer");
+    });
 }
 
-
-function setUpdatedDataCallBack(obj) {
-    var strID = CurElement.attr('id');
-    var divMediator = document.getElementById(strID);
-    $(divMediator).data('jsonConfig', obj);
-    currentPopup.dialog("close");
-}
-
-
-function openMediatorConfigDialog(path, title) {
-
-    if (popupCount == 0) {
-        $(document.body).append('<div id="logMpopup"></div>');
-        $("#logMpopup").attr('id', "logMpopup");
-        $("#logMpopup").load(path);
-        $("#logMpopup").dialog({ autoOpen: false,
-            bgiframe: true,
-            height: 400,
-            width: 600,
-            modal: false,
-            draggable: true,
-            resizable: true,
-            position: 'center' });
-        $("#logMpopup").dialog('option', 'title', title);
-        currentPopup = $("#logMpopup");
-        ++popupCount;
-    }
-    currentPopup.dialog("open");
-}
 
 
 function registerMouseAndKeyEvents() {
@@ -146,11 +132,7 @@ function registerTabChangeEvent() {
     });
 }
 
-function registerJsPlumbBind() {
-    jsPlumb.bind("ready", function () {
-        initJsPlumb($("#jsPlumbContainer"));
-    });
-}
+
 
 
 function activateSourceView() {

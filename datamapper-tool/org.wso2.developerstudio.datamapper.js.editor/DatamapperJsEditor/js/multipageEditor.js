@@ -58,7 +58,6 @@ $(document).ready(function () {
         size: { width: 100, height: 30 },
         attrs: { rect: { fill: 'green' }, text: { text: 'my box1', fill: 'red' } }
     });
- 
 
     var rect2 = rect.clone();
     rect2.translate(300);
@@ -68,13 +67,9 @@ $(document).ready(function () {
         target: { id: rect2.id }
     });
 
-    graph.addCells([rect, rect2, link]);
-
-  
-var jsonString = JSON.stringify(graph);
-console.log(jsonString);
-
-
+    //graph.addCells([rect, rect2, link]);
+    //graph.fromJSON('{"cells":[{"type":"basic.Rect","position":{"x":100,"y":30},"size":{"width":100,"height":30},"angle":0,"id":"7a7fa8bd-de0a-4804-b727-d398af62f99c","z":1,"attrs":{"rect":{"fill":"green"},"text":{"fill":"red","text":"my box1"}}},{"type":"basic.Rect","position":{"x":400,"y":30},"size":{"width":100,"height":30},"angle":0,"id":"2cab9c72-3493-4c55-abee-70cf07c8e00b","embeds":"","z":2,"attrs":{"rect":{"fill":"green"},"text":{"fill":"red","text":"my box1"}}},{"type":"link","source":{"id":"7a7fa8bd-de0a-4804-b727-d398af62f99c"},"target":{"id":"2cab9c72-3493-4c55-abee-70cf07c8e00b"},"id":"b9c986a2-37af-4053-9068-643ae858dce0","z":3,"attrs":{}},{"type":"devs.Model","size":{"width":90,"height":90},"inPorts":["in1","in2"],"outPorts":["out"],"position":{"x":211,"y":96},"angle":0,"id":"cf3991a9-b06a-41ce-a7ed-571033038a85","z":4,"attrs":{".label":{"ref-x":0.4,"ref-y":0.2},"rect":{"fill":"#2ECC71"},".inPorts circle":{"fill":"#16A085"},".outPorts circle":{"fill":"#E74C3C"},".inPorts>.port0>.port-label":{"text":"in1"},".inPorts>.port0>.port-body":{"port":{"id":"in1","type":"in"}},".inPorts>.port0":{"ref":".body","ref-y":0.25},".inPorts>.port1>.port-label":{"text":"in2"},".inPorts>.port1>.port-body":{"port":{"id":"in2","type":"in"}},".inPorts>.port1":{"ref":".body","ref-y":0.75},".outPorts>.port0>.port-label":{"text":"out"},".outPorts>.port0>.port-body":{"port":{"id":"out","type":"out"}},".outPorts>.port0":{"ref":".body","ref-y":0.5,"ref-dx":0}}},{"type":"link","source":{"id":"cf3991a9-b06a-41ce-a7ed-571033038a85","selector":"g:nth-child(1) > g:nth-child(4) > g:nth-child(1) > circle:nth-child(1)","port":"out"},"target":{"id":"2cab9c72-3493-4c55-abee-70cf07c8e00b"},"id":"e45038bc-4a06-4751-b6b5-13a248bc14e6","embeds":"","z":5,"attrs":{}},{"type":"link","source":{"id":"cf3991a9-b06a-41ce-a7ed-571033038a85","selector":"g:nth-child(1) > g:nth-child(3) > g:nth-child(1) > circle:nth-child(1)","port":"in1"},"target":{"id":"7a7fa8bd-de0a-4804-b727-d398af62f99c"},"id":"6d3ea87c-6f83-4aff-a6d4-e8805b7e2d58","embeds":"","z":6,"attrs":{}}]}');
+      graph.fromJSON(JSON.parse('{"cells":[{"type":"basic.Rect","position":{"x":100,"y":30},"size":{"width":100,"height":30},"angle":0,"id":"4713e533-6d0f-48e3-8098-2fee3364d023","z":1,"attrs":{"rect":{"fill":"green"},"text":{"fill":"red","text":"my box1"}}},{"type":"basic.Rect","position":{"x":238,"y":107},"size":{"width":100,"height":30},"angle":0,"id":"426e4cea-bb7e-46db-b6a2-75331764385b","embeds":"","z":2,"attrs":{"rect":{"fill":"green"},"text":{"fill":"red","text":"my box1"}}},{"type":"link","source":{"id":"4713e533-6d0f-48e3-8098-2fee3364d023"},"target":{"id":"426e4cea-bb7e-46db-b6a2-75331764385b"},"id":"e32c2313-2f15-477d-804d-fd1c327b5944","z":3,"attrs":{}}]}'));
 });
 
 

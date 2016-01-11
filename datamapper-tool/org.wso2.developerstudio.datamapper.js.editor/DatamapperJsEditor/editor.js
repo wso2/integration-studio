@@ -24,7 +24,8 @@
 function loadFileContent() {
 	// Read contents of the file.
 	var fileContent = IDEGetFileContent();
-    document.getElementById("editor").value = fileContent;
+    //document.getElementById("editor").value = fileContent;
+	graph.fromJSON(JSON.parse(fileContent));
 }
 
 /**
@@ -45,9 +46,11 @@ function loadFileContent() {
  *  	}
  */
 function saveFile() {
-	var updatedContent = document.getElementById("editor").value;
-	// Save content to file.
-    IDESaveContent(updatedContent);
+	//var updatedContent = document.getElementById("editor").value;
+	//Save content to file.
+	var jsonString = JSON.stringify(graph);
+	console.log(jsonString);
+    IDESaveContent(jsonString);
 }
 
 

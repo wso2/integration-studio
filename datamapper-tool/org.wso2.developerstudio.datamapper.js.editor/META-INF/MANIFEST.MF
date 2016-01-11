@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Samplewebeditor
+Bundle-SymbolicName: plugin_id_to_be_renamed;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: org.wso2.developerstudio.samplewebeditor.Activator
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.jface.text,
+ org.eclipse.core.resources,
+ org.eclipse.ui.editors,
+ org.eclipse.ui.ide,
+ org.eclipse.osgi
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-ActivationPolicy: lazy
+Bundle-ClassPath: .
+Import-Package: org.wso2.developerstudio.eclipse.webui.core.editor

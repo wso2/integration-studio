@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="joint.min.css" />
+    <script src="jquery.min.js"></script>
+    <script src="lodash.min.js"></script>
+    <script src="backbone-min.js"></script>
+    <script src="joint.min.js"></script>
+</head>
+<body>
+  <div id="myholder"></div>
+  <script type="text/javascript">
+
+    var graph = new joint.dia.Graph;
+
+    var paper = new joint.dia.Paper({
+        el: $('#myholder'),
+        width: 600,
+        height: 200,
+        model: graph,
+        gridSize: 1
+    });
+
+    var jsonString = {"cells":[{"type":"basic.Rect","position":{"x":100,"y":30},"size":{"width":100,"height":30},"angle":0,"id":"e9a75b28-fa93-4619-9e29-d612f93ca790","z":1,"attrs":{"rect":{"fill":"green"},"text":{"fill":"red","text":"my box1"}}},{"type":"basic.Rect","position":{"x":400,"y":30},"size":{"width":100,"height":30},"angle":0,"id":"d2c5e595-bfdd-4f6e-a980-8c4d38ba2488","embeds":"","z":2,"attrs":{"rect":{"fill":"green"},"text":{"fill":"red","text":"my box1"}}},{"type":"link","source":{"id":"e9a75b28-fa93-4619-9e29-d612f93ca790"},"target":{"id":"d2c5e595-bfdd-4f6e-a980-8c4d38ba2488"},"id":"09de6879-6d03-482f-9dcb-1bbe6dcd1ed3","z":3,"attrs":{}}]};
+
+graph.fromJSON(JSON.parse(jsonString))
+
+
+  </script>
+</body>
+</html>
+        

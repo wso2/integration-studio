@@ -1,0 +1,119 @@
+<html>
+
+<head>
+    <script src="js/logMediator/logMediatorForm.js"></script>
+</head>
+
+<body>
+
+<div id = "popingUp" width="100%">
+<table class="normal" width="100%">
+<tbody>
+<tr>
+    <td>
+        <table class="normal">
+            <tbody><tr>
+                <td>Log Category</td>
+                <td>
+                    <select id="mediator_log_category" name="mediator.log.category">
+                        
+                        <option value="TRACE">TRACE</option>
+                        <option value="DEBUG">DEBUG</option>
+                        <option value="INFO" selected="true">INFO</option>
+                        <option value="WARN">WARN</option>
+                        <option value="ERROR">ERROR</option>
+                        <option value="FATAL">FATAL</option>
+                        
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Log level</td>
+                <td>
+                    <select id="mediator_log_log_level" name="mediator.log.log_level">
+                        
+                        <option value="Full">Full</option>
+                        <option value="Simple" selected="true">Simple</option>
+                        <option value="Headers">Headers</option>
+                        <option value="Custom">Custom</option>
+                        
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Log Separator</td>
+                <td>
+                    <input type="text" id="mediator_log_log_separator" name="mediator.log.log_separator" />
+                </td>
+            </tr>
+        </tbody></table>
+    </td>
+</tr>
+<tr>
+    <td>
+        <h4 class="mediator">
+            Properties of the Log mediator</h4>
+
+        <div style="margin-top:0px;">
+
+            <table id="propertytable" class="styledInner"  width="100%">
+                <thead>
+                    <tr>
+                        <th>Property Name</th>
+                        <th>Property Value</th>
+                        <th>Value/Expression</th>
+                        <th>Name Space Editor</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead><tbody id="propertytbody">
+                        
+                    <input type="hidden" name="propertyCount" id="propertyCount" value="1">
+                    <tr id="propertyRaw0">
+			<td><input type="text" name="propertyName0" id="propertyName0"></td>
+			<td><select name="propertyTypeSelection0" id="propertyTypeSelection0">
+			<option value="literal">Value</option><option value="expression">Expression</option>
+			</select>
+			</td>
+			<td><input type="text" name="propertyValue0" id="propertyValue0" class="esb-edit small_textbox"></td>
+			<td id="nsEditorButtonTD0" style="display: none;"></td>
+			<td><a href="#" class="delete-icon-link" onclick="deleteproperty(0);return false;">Delete</a></td>
+			</tr></tbody>
+                
+            </table>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td>
+        <div style="margin-top:10px;">
+            <a name="addNameLink"></a>
+            <a class="add-icon-link" href="#addNameLink" onclick="addproperty('NameSpaces','Name of a property is empty. Cannot add further properties','Value of a property is empty.Cannot add further properties')">Add Property</a>
+        </div>
+    </td>
+</tr>
+</tbody></table>
+<a name="nsEditorLink"></a>
+
+<div id="nsEditor" style="display:none;"></div>
+</div>
+
+        
+        
+<table class="styledLeft" cellspacing="0" style="margin-left: 0px !important;">
+<tbody><tr class="buttonRow" style="border-top: solid 1px #ccc;">
+<td>
+    <input type="hidden" id="mediatorID" name="mediatorID" value="mediator-0">
+    <input type="hidden" id="updatePage" name="updatePage" value="../log-mediator/update-mediator.jsp">
+    <input type="hidden" name="random" value="0.5531785185108096">
+    <input type="button" id = "mybutton" class="button" onclick="" value="Update">
+</td>
+
+
+</tr>
+</tbody>
+</table>
+</body>
+</html>
+
+
+

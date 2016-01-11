@@ -3,26 +3,23 @@
 <head lang="en">
 <meta charset="UTF-8">
 <title>Sample Web Based Editor</title>
-<link rel="stylesheet" href="joint.min.css" />
-<script src="jquery.min.js"></script>
-<script src="lodash.min.js"></script>
-<script src="backbone-min.js"></script>
-<script src="joint.min.js"></script>
 
+<script src="js/libs/jointjs/jquery.min.js"></script>
+<script src="js/libs/jointjs/jquery-ui.js"></script>
+<script src="js/libs/jointjs/bootstrap.min.js"></script>
+<script src="js/libs/jointjs/lodash.min.js"></script>
+<script src="js/libs/jointjs/backbone-min.js"></script>
+<script src="js/libs/jointjs/joint.min.js"></script>
+
+<link   href="js/libs/jointjs/joint.min.css"  rel="stylesheet" />
 <link rel="stylesheet" href="css/bootstrap.css">
 <link rel="stylesheet" href="css/styles.css">
 <link rel="stylesheet" href="css/jquery-ui.css">
 
-<script src="js/libs/jquery.min.js"></script>
-<script src="js/libs/jquery.ui.min.js"></script>
-<script src="js/libs/jquery.jsPlumb-1.6.2-min..js"></script>
-<script src="js/libs/bootstrap.min.js"></script>
-<script src="js/libs/jquery-ui.js"></script>
-<script src="js/libs/x2jsLibrary.js"></script>
-
 <script src="js/multipageEditor.js"></script>
 <script src="js/designEditor.js"></script>
-<script src="editor.js"></script>
+<script src="js/editor.js"></script>
+
 </head>
 <body>
 
@@ -39,9 +36,9 @@
 				<div class="tab-pane fade in active" id="designID">
 					<div class="row">
 						<div class="col-xs-10 col-lg-10 col-md-10">
-							<div class="well-lg" id="jsPlumbContainerWrapper"
+							<div class="well-lg" id="dmEditorContainerWrapper"
 								style="height: 800px; background: #ffffff;">
-								<div id="jsPlumbContainer" style="position: relative; width: 100%; height: 100%;"></div>
+								<div id="dmEditorContainer" style="position: relative; width: 100%; height: 100%;"></div>
 							</div>
 						</div>
 						<div class="col-xs-2 col-lg-2 col-md-2">
@@ -59,7 +56,7 @@
 											<ul class="list-group">
 												<li class="list-group-item"><img
 													src="icons/Concat.gif" id="callMediator"
-													class="draggableIcon" > Concat </li>
+													class="#makeMeDraggable" > Concat </li>
 												<li class="list-group-item"><img
 													src="icons/Concat.gif"
 													id="callTemplateMediator" class="draggableIcon"> Split </li>

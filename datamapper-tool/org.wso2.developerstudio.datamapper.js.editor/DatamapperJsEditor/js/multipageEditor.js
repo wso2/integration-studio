@@ -1,51 +1,24 @@
-var editorItemCounter = 0;
-var currentId = null;
-var count = 0;
-var counter = 0;
-var lastItem = null;
-var lastItemInSwitch = null;
-var dataString = null;
-var CurElement = null;
-var id = null;
-var over = "false";
-var CurElementisSource = null;
-var CurElementisTarget = null;
-var x = 170;
-var topLocation = 170;
-var CurXLoc = null;
-var divwidth = 200;
-var newElemXLoc = 60;
-var topLoc = 120;
-var elemSourceLocList = [];
-var elemTargetLocList = [];
-var elemSourceId = [];
-var elemTargetId = [];
-var elemSourceLocListIn = [];
-var elemTargetLocListIn = [];
-var elemSourceId1 = [];
-var elemTargetId1 = [];
-var elemSource = null;
-var elemTarget = null;
-var xSpace = 0;
-var popupCount = 0;
-var currentPopup = null;
-var x2js = null;
-var elemIsMiddle = false;
-var graph =  null;
-
+var graph = null;
+var paper = null;
 
 $(document).ready(function () {
-
-    x2js = new X2JS();
+    
     registerTabChangeEvent();
     registerMouseAndKeyEvents();
+    //load following functions from designEditor.js
     registerJsPlumbBind();
     jsplumbHandleDraggable();
     jsplumbHandleDropable();
     
+    initJointJSGraph();
+
+});
+
+
+function initJointJSGraph() {
     graph = new joint.dia.Graph;
 
-    var paper = new joint.dia.Paper({
+    paper = new joint.dia.Paper({
         el: $('#jsPlumbContainer'),
         width: 1200,
         model: graph,
@@ -54,7 +27,7 @@ $(document).ready(function () {
     
     paper.on('cell:pointerdown', function(cellView) {
         selected = cellView.model;
-        //alert(selected);
+        console.log("selected = " + selected);
     });
     
     var mInput = new joint.shapes.devs.Model({
@@ -68,8 +41,7 @@ $(document).ready(function () {
 	        '.outPorts circle': { fill: '#E74C3C' }
 	    }
 	});
-	graph.addCell(mInput);
-	
+
 	var mOutput = new joint.shapes.devs.Model({
     	id:'outputBox',
 	    position: { x: 1050, y: 50 },
@@ -81,40 +53,33 @@ $(document).ready(function () {
 	        '.inPorts circle': { fill: '#E74C3C' }
 	    }
 	});
+	
+	graph.addCell(mInput);
 	graph.addCell(mOutput);
-
+	
     //graph.fromJSON(JSON.parse('{"cells":[{"type":"basic.Rect","position":{"x":100,"y":30},"size":{"width":100,"height":30},"angle":0,"id":"4713e533-6d0f-48e3-8098-2fee3364d023","z":1,"attrs":{"rect":{"fill":"green"},"text":{"fill":"red","text":"my box1"}}},{"type":"basic.Rect","position":{"x":238,"y":107},"size":{"width":100,"height":30},"angle":0,"id":"426e4cea-bb7e-46db-b6a2-75331764385b","embeds":"","z":2,"attrs":{"rect":{"fill":"green"},"text":{"fill":"red","text":"my box1"}}},{"type":"link","source":{"id":"4713e533-6d0f-48e3-8098-2fee3364d023"},"target":{"id":"426e4cea-bb7e-46db-b6a2-75331764385b"},"id":"e32c2313-2f15-477d-804d-fd1c327b5944","z":3,"attrs":{}}]}'));
-});
 
-function registerJsPlumbBind() {
-    jsPlumb.bind("ready", function () {
-    	jsPlumb.setContainer("#jsPlumbContainer");
-    });
 }
-
-
 
 function registerMouseAndKeyEvents() {
 
     $(document).on('mouseenter', '#jsPlumbContainerWrapper11', function () {
-        currentId = $(this).attr('id'); //alert(currentId);
-        over = "true";
-        console.log(over);
+        console.log("mouseenter = ");
 
     });
 
     $(document).on('mouseleave', '#jsPlumbContainerWrapper11', function () {
-        over = "false";
-        console.log(over);
+        console.log("mouseleave = ");
 
     });
 
     $(document).mousemove(function (e) {// to get the cursor point to drop an icon
-        CurXLoc = e.pageX;
+        console.log("mousemove = " +e.pageX);
     });
 
     $(document).keydown(function (e) {
-        designViewKeyDown(e);
+    	console.log("keydown = " +e);
+        //designViewKeyDown(e);
     });
 
 }
@@ -133,73 +98,36 @@ function registerTabChangeEvent() {
 }
 
 
-
-
 function activateSourceView() {
-
     console.log('activateSourceView');
-    var prevElement = null;
-    var nextElement = null;
-    var connectionList = jsPlumb.getAllConnections();
-    var jObj = null;
-    var xmlElement = nul;
-    var currentText = null;
     var sourceEditorTBox = $('#sourceEditorTextBox');
-
     sourceEditorTBox.val('<sequence name="sample_sequence">');
-
-    for (var connection in connectionList) {
-        if (connectionList.hasOwnProperty(connection)) {
-            if (connectionList[connection].sourceId != null) {
-                prevElement = document.getElementById(connectionList[connection].sourceId);
-            }
-            if (connectionList[connection].targetId != null) {
-                nextElement = document.getElementById(connectionList[connection].targetId);
-            }
-        }
-
-        jObj = $(prevElement).data('jsonConfig');
-        console.log(prevElement);
-        console.log('serializing ' + jObj);
-        console.log(jObj);
-        xmlElement = '\n' + x2js.json2xml_str(jObj);
-        currentText = sourceEditorTBox.val();
-        sourceEditorTBox.val(currentText + xmlElement);
-    }
-
-    jObj = $(nextElement).data('jsonConfig');
-    console.log('serializing ' + jObj);
-    console.log(jObj);
-    xmlElement = '\n' + x2js.json2xml_str(jObj);
-    currentText = sourceEditorTBox.val();
-    sourceEditorTBox.val(currentText + xmlElement + '\n</sequence>');
 }
 
 
 function activateDesignView() {
+	console.log('activateDesignView');
     var sourceEditorTextBox = $('#sourceEditorTextBox');
-    var jsPlumbCont = $("#jsPlumbContainer");
-
-    console.log('activateDesignView');
-    var sequenceObj = x2js.xml_str2json(sourceEditorTextBox.val());
-    var sequence = sequenceObj.sequence;
-    var logArray = sequence.log;
-    console.log(logArray);
-
-    jsPlumbCont.empty();
-    var prevDivElement = null;
-    for (var i = 0; i < logArray.length; i++) {
-        console.log(logArray[i]);
-        var currentDiv = AddDiv(logArray[i]);
-        if (prevDivElement != null) {
-            connectDivs(prevDivElement, currentDiv);
-        }
-        prevDivElement = currentDiv;
-    }
-
+    console.log(sequenceObj);
 }
 
 
+function createDiv(objName, image, type) {
+	
+	var m1 = new joint.shapes.devs.Model({
+	    position: { x: 50, y: 50 },
+	    size: { width: 90, height: 90 },
+	    inPorts: ['in1','in2'],
+	    outPorts: ['out'],
+	    attrs: {
+	        '.label': { text: objName, 'ref-x': .4, 'ref-y': .2 },
+	        rect: { fill: '#2ECC71' },
+	        '.inPorts circle': { fill: '#16A085' },
+	        '.outPorts circle': { fill: '#E74C3C' }
+	    }
+	});
+	graph.addCell(m1);
+}
 
 
 

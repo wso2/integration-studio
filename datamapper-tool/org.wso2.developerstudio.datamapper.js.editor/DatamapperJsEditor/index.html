@@ -22,7 +22,7 @@
 
 <script src="js/multipageEditor.js"></script>
 <script src="js/designEditor.js"></script>
-<script src="js/abstractMediator.js"></script>
+<script src="editor.js"></script>
 </head>
 <body>
 
@@ -41,8 +41,7 @@
 						<div class="col-xs-10 col-lg-10 col-md-10">
 							<div class="well-lg" id="jsPlumbContainerWrapper"
 								style="height: 800px; background: #ffffff;">
-								<div id="jsPlumbContainer"
-									style="position: relative; width: 100%; height: 100%;"></div>
+								<div id="jsPlumbContainer" style="position: relative; width: 100%; height: 100%;"></div>
 							</div>
 						</div>
 						<div class="col-xs-2 col-lg-2 col-md-2">
@@ -60,7 +59,7 @@
 											<ul class="list-group">
 												<li class="list-group-item"><img
 													src="icons/Concat.gif" id="callMediator"
-													class="draggableIcon"> Concat </li>
+													class="draggableIcon" > Concat </li>
 												<li class="list-group-item"><img
 													src="icons/Concat.gif"
 													id="callTemplateMediator" class="draggableIcon"> Split </li>
@@ -112,14 +111,12 @@
 
 
 	</div>
-	<!--  div id="myholder"></div-->
 	<textarea id="editor" style="display: block;" rows="1" cols="100"></textarea>
 	<button onclick="saveFile()" type="button">Save To File</button>
 	<button onclick="makeDirty()" type="button">Make editor dirty</button>
 	<button onclick="loadFileContent()" type="button">Read File</button>
 	<button onclick="setFocus()" type="button">set Focus To Editor</button>
-	<button onclick="execUndoableOperation()" type="button">Execute
-		Undoable Operation</button>
-	<script src="editor.js"></script>
+	<button onclick="execUndoableOperation()" type="button">Execute	Undoable Operation</button>
+	
 </body>
 </html>

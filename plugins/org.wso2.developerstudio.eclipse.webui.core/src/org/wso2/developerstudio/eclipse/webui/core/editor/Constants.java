@@ -65,6 +65,25 @@ public class Constants {
 	public static final String APP_SAVE_FILE_FUNCTION = "saveFile";
 	
 	/**
+	 * Scope:Required
+	 * 
+	 * Signature: function saveFile(){...}
+	 * 
+	 * This function will be called by framework each time save command is executed 
+	 * in IDE. Implement any finalizing logic for content and finally execute 
+	 * IDESaveContent callback function provided by the framework to save the content back
+	 * to file.
+	 * 
+	 *  eg:	function saveFile(){
+	 *  		...
+	 *  		var updatedContent = ...;
+	 *  		...//logic to finalize content
+	 *  		IDESaveContent(updatedContent);
+	 *  	}
+	 */
+	public static final String APP_SAVE_FILE_WITH_EXTNTION_FUNCTION = "saveFileWithExtention";
+	
+	/**
 	 * Scope:Optional:Only if you need Eclipse Undo/Redo support to your editor.
 	 * 
 	 * Signature: function undoOperation(uniqueOperationID){...}
@@ -161,6 +180,7 @@ public class Constants {
 	public static final String IDE_SAVE_CONTENT_FUNCTION = "IDESaveContent";
 	public static final String IDE_SET_DIRTY_FUNCTION = "IDESetDirty";
 	public static final String IDE_SET_FOCUS_TO_EDITOR_FUNCTION = "IDESetFocusToEditorPart";
+	public static final String IDE_SAVE_FILE_CONTENT_FUNCTION_WITH_EXTNTION = "IDESaveContentWithExtention";
 	
 	/** Only needed if you are implementing a multi-page Editor */
 	public static final String IDE_SET_DIRTY_CONTENT_FUNCTION = "IDESetDirtyContent";

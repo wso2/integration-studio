@@ -31,6 +31,7 @@ public class ScriptFactory {
 	public static final BrowserScript INVOKE_FN_SAVE_FILE;
 	public static final BrowserScript INVOKE_FN_SET_IDE_DIRTY_CONTENT;
 	public static final BrowserScript INVOKE_FN_LOAD_IDE_DIRTY_CONTENT;
+	public static final BrowserScript INVOKE_FN_SAVE_FILE_CONTENT_FUNCTION_WITH_EXTNTION;
 
 	static {
 		gson = new Gson();
@@ -38,6 +39,7 @@ public class ScriptFactory {
 		INVOKE_FN_SAVE_FILE = createFunctionCallScript(APP_SAVE_FILE_FUNCTION);
 		INVOKE_FN_SET_IDE_DIRTY_CONTENT = createFunctionCallScript(APP_SET_DIRTY_CONTENT_FUNCTION);
 		INVOKE_FN_LOAD_IDE_DIRTY_CONTENT = createFunctionCallScript(APP_GET_DIRTY_CONTENT_FUNCTION);
+		INVOKE_FN_SAVE_FILE_CONTENT_FUNCTION_WITH_EXTNTION = createFunctionCallScript(APP_SAVE_FILE_WITH_EXTNTION_FUNCTION);
 	}
 
 	public static BrowserScript createScript(String scriptName, String script) {

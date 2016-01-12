@@ -47,6 +47,7 @@ import org.wso2.developerstudio.eclipse.webui.core.editor.function.ExecuteUndoab
 import org.wso2.developerstudio.eclipse.webui.core.editor.function.GetDirtyContentFunction;
 import org.wso2.developerstudio.eclipse.webui.core.editor.function.GetFileContentFunction;
 import org.wso2.developerstudio.eclipse.webui.core.editor.function.SaveContentFunction;
+import org.wso2.developerstudio.eclipse.webui.core.editor.function.SaveContentToFileWithExetention;
 import org.wso2.developerstudio.eclipse.webui.core.editor.function.SetDirtyContentFunction;
 import org.wso2.developerstudio.eclipse.webui.core.editor.function.SetDirtyFunction;
 import org.wso2.developerstudio.eclipse.webui.core.editor.function.SetFocusToEditorPartFunction;
@@ -190,6 +191,7 @@ public abstract class AbstractWebBasedEditor extends EditorPart {
 			new SetFocusToEditorPartFunction(editorInstance);
 			new GetDirtyContentFunction(editorInstance);
 			new SetDirtyContentFunction(editorInstance);
+			new SaveContentToFileWithExetention(editorInstance);
 		} else {
 			throw new IllegalStateException("Browser is not yet instantiated.");
 		}

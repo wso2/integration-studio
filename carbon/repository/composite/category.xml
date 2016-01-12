@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-   <category-def name="org.wso2.developerstudio.eclipse.artifact.carbon.ui.feature.category" label="WSO2 Carbon Artifact Tools"/>
-   <description>
+   <category-def name="org.wso2.developerstudio.eclipse.artifact.carbon.ui.feature.category" label="WSO2 Carbon Artifact Tools">
+	   <description>
 		This is the Carbon Artifact UI Feature for the Developer Studio. This provides tooling support for WSO2 Carbon Artifact UI with Developer Studio.
-   </description>
+	   </description>
+   </category-def>
    <feature id="org.wso2.developerstudio.eclipse.artifact.carbon.ui.feature" version="0.0.0">
       <category name="org.wso2.developerstudio.eclipse.artifact.carbon.ui.feature.category"/>
    </feature>

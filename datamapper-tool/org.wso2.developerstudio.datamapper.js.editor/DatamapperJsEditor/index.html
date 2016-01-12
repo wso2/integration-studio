@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<meta charset="UTF-8">
+<title>Sample Web Based Editor</title>
+
+<script src="js/libs/jointjs/jquery.min.js"></script>
+<script src="js/libs/jointjs/jquery-ui.js"></script>
+<script src="js/libs/jointjs/bootstrap.min.js"></script>
+<script src="js/libs/jointjs/lodash.min.js"></script>
+<script src="js/libs/jointjs/backbone-min.js"></script>
+<script src="js/libs/jointjs/joint.min.js"></script>
+
+<link   href="js/libs/jointjs/joint.min.css"  rel="stylesheet" />
+<link rel="stylesheet" href="css/bootstrap.css">
+<link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="css/jquery-ui.css">
+
+<script src="js/multipageEditor.js"></script>
+<script src="js/designEditor.js"></script>
+<script src="js/editor.js"></script>
+
+</head>
+<body>
+
+	<div class="container-fluid">
+		<div class="tabbable tabs-below">
+			<ul class="nav nav-tabs" id="bottom-tabs">
+				<li class="active"><a href="#designID" data-toggle="tab">Design</a></li>
+				<li><a href="#sourceID" data-toggle="tab">Source</a></li>
+			</ul>
+		</div>
+		<br />
+		<div class="bs-example bs-example-tabs">
+			<div id="myTabContent" class="tab-content">
+				<div class="tab-pane fade in active" id="designID">
+					<div class="row">
+						<div class="col-xs-10 col-lg-10 col-md-10">
+							<div class="well-lg" id="dmEditorContainerWrapper"
+								style="height: 800px; background: #ffffff;">
+								<div id="dmEditorContainer" style="position: relative; width: 100%; height: 100%;"></div>
+							</div>
+						</div>
+						<div class="col-xs-2 col-lg-2 col-md-2">
+							<div class="panel-group" id="accordion">
+								<div class="panel panel-default">
+									<div class="panel-heading">
+										<h4 class="panel-title">
+											<a data-toggle="collapse" data-parent="#accordion"
+												href="#collapseOne"> Operations </a>
+										</h4>
+									</div>
+									<div id="collapseOne"
+										class="panel-collapse collapse scrollable-collapse in">
+										<div class="panel-body">
+											<ul class="list-group">
+												<li class="list-group-item"><img
+													src="icons/Concat.gif" id="callMediator"
+													class="#makeMeDraggable" > Concat </li>
+												<li class="list-group-item"><img
+													src="icons/Concat.gif"
+													id="callTemplateMediator" class="draggableIcon"> Split </li>
+												<li class="list-group-item"><img
+													src="icons/Concat.gif" id="dropMediator"
+													class="draggableIcon"> ToUpper </li>
+												<li class="list-group-item"><img
+													src="icons/Concat.gif" id="logMediator"
+													class="draggableIcon"> ToLower </li>
+												<li class="list-group-item"><img
+													src="icons/Concat.gif" id="loopBackMediator"
+													class="draggableIcon"> ToString </li>
+
+											</ul>
+											<ul class="list-group">
+												<li class="list-group-item"><img
+													src="icons/Concat.gif"
+													id="ConditionalRouterMediator" class="draggableIcon">
+													Conditional Router</li>
+												<li class="list-group-item"><img
+													src="icons/Concat.gif" id="FilterMediator"
+													class="draggableIcon"> Filter</li>
+												<li class="list-group-item"><img
+													src="icons/Concat.gif" id="SwitchMediator"
+													class="draggableIcon"> Switch</li>
+												<li class="list-group-item"><img
+													src="icons/Concat.gif" id="ValidateMediator"
+													class="draggableIcon"> Validate</li>
+											</ul>
+
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="tab-pane fade" id="sourceID">
+					<div class="well-lg" id="sourceEditor"
+						style="height: 800px; background: #ffffff;">
+						<textarea class="textareaCode" id="sourceEditorTextBox"
+							wrap="logical" rows="30" cols="50">
+                            </textarea>
+					</div>
+				</div>
+			</div>
+		</div>
+		<br />
+
+
+	</div>
+	<textarea id="editor" style="display: block;" rows="1" cols="100"></textarea>
+	<button onclick="saveFile()" type="button">Save To File</button>
+	<button onclick="makeDirty()" type="button">Make editor dirty</button>
+	<button onclick="loadFileContent()" type="button">Read File</button>
+	<button onclick="setFocus()" type="button">set Focus To Editor</button>
+	<button onclick="execUndoableOperation()" type="button">Execute	Undoable Operation</button>
+	
+</body>
+</html>

@@ -18,6 +18,11 @@ package org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts;
 
 import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.EditPartConstants.DATAMAPPER_MEDIATOR_ICON_PATH;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.apache.commons.lang.StringUtils;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.ResourcesPlugin;
@@ -27,6 +32,8 @@ import org.eclipse.draw2d.Label;
 import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.Shape;
 import org.eclipse.draw2d.ToolbarLayout;
+import org.eclipse.emf.edit.command.SetCommand;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPolicy;
 import org.eclipse.gef.Request;
@@ -44,17 +51,27 @@ import org.eclipse.gmf.runtime.draw2d.ui.figures.ConstrainedToolbarLayout;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.gmf.runtime.notation.impl.NodeImpl;
 import org.eclipse.gmf.tooling.runtime.edit.policies.reparent.CreationEditPolicyWithCustomReparent;
+import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.swt.graphics.Color;
+import org.eclipse.swt.widgets.Display;
+import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
+import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
+import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EsbGraphicalShapeWithLabel;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.FixedBorderItemLocator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.FixedSizedAbstractMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.OpenSeparatelyEditPolicy;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.dialogs.DialogDisplayUtils;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.dialogs.ESBDataMapperConfigurationDialog;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.policies.DataMapperMediatorCanonicalEditPolicy;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.policies.DataMapperMediatorItemSemanticEditPolicy;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbVisualIDRegistry;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.DataMapperMediatorImpl;
+import org.wso2.developerstudio.eclipse.platform.core.utils.CSProviderConstants;
 import org.wso2.developerstudio.eclipse.platform.ui.startup.DataMapperEditor;
+import org.wso2.developerstudio.eclipse.registry.core.interfaces.IRegistryFile;
 
 /**
  * @generated NOT
@@ -354,7 +371,7 @@ public class DataMapperMediatorEditPart extends FixedSizedAbstractMediator {
 
 	public void openDataMapperDiagram() {
 		//FIXME have to revisit this, think on seperation
-		/* Commented Enable when we start development on datamaper
+		
 		NodeImpl eobject = ((NodeImpl)this.getModel());
 		final DataMapperMediatorImpl datamapper = (DataMapperMediatorImpl)eobject.getElement();
 
@@ -369,7 +386,7 @@ public class DataMapperMediatorEditPart extends FixedSizedAbstractMediator {
 			filters.put(mediaTypeKey, types);
 			
 			// IRegistryFile class is only required for datamapper related filtering 
-			final DataMapperConfigurationDialog dataMapperConfigurationDialog = new DataMapperConfigurationDialog(Display.getCurrent().getActiveShell(), new Class[]{IRegistryFile.class}, filters); 
+			final ESBDataMapperConfigurationDialog dataMapperConfigurationDialog = new ESBDataMapperConfigurationDialog(Display.getCurrent().getActiveShell(), new Class[]{IRegistryFile.class}, filters); 
 			dataMapperConfigurationDialog.create();
 
 			DialogDisplayUtils.setPositionInCenter(dataMapperConfigurationDialog.getShell());
@@ -464,7 +481,6 @@ public class DataMapperMediatorEditPart extends FixedSizedAbstractMediator {
 			openDataMapperEditor(datamapper);
 		}
 		
-		 */
 	}
 
 	private String formatRegistryPath(String selectedPath) {

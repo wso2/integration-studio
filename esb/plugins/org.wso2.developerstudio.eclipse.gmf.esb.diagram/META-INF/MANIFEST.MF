@@ -51,7 +51,8 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.gmf.tooling.runtime;visibility:=reexport,
  org.eclipse.debug.core;bundle-version="3.9.1",
  org.eclipse.debug.ui;bundle-version="3.10.2",
- org.eclipse.osgi.services;bundle-version="3.4.0"
+ org.eclipse.osgi.services;bundle-version="3.4.0",
+ org.wso2.developerstudio.eclipse.libraries
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Eclipse-LazyStart: true

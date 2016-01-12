@@ -1,2 +1,0 @@
-#Engineer.fullname=concat(employee.firstname, employee.lastname)
-#Engineer.temp=concat(employee.address, employee.dob)

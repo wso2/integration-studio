@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <!-- Add a web app (.war or just a folder with static content) to embedded tomcat. 
+   		appID should be a unique one - will throw DuplicateAppIDException otherwise
+   		context should also be unique 
+   		relativePath:to war file or web app folder relative to the bundle root.
+   -->
+   <extension point="org.wso2.developerstudio.embedded.webapp">
+         <webapp
+               appID="DatamapperEditorApp"
+               context="/DatamapperJsEditor"
+               relativePath="DatamapperJsEditor/">
+         </webapp>
+   </extension>
+   
+   <!-- Add newly created web based editor as an editor to eclipse.
+   		Associate it with .webeditor files
+   -->
+   <extension
+         point="org.eclipse.ui.editors">
+      <editor
+            name="Web Based Editor"
+            extensions="webeditor"
+            icon="icons/icon.png"
+            class="org.wso2.developerstudio.samplewebeditor.editor.SampleTextAreaWebEditor"
+            id="org.wso2.developerstudio.samplewebeditor.editor.SampleTextAreaWebEditor">
+      </editor>
+   </extension>
+</plugin>

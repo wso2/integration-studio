@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<employee>
+	<firstname>Susinda</firstname>
+	<lastname>Perera</lastname>
+	<address>
+		    <no>No.123</no>
+		    <road>Main Street</road>
+		    <city>Negombo</city>
+	</address>
+</employee>

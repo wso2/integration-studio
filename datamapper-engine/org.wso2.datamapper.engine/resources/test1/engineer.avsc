@@ -1,0 +1,16 @@
+{
+  "type" : "record",
+  "name" : "engineer",
+  "namespace" : "org.wso2.avroSchemaGen",
+  "doc" : "Schema for org.wso2.avroSchemaGen.Engineer",
+  "fields" : [ {
+ 			"name" : "address",
+    				"type" : [ "null", "string" ]
+  		},
+
+ 		{
+    			"name" : "fullname",
+    				"type" : [ "null", "string" ]
+  		}
+	     ]
+}

@@ -67,18 +67,19 @@ public class Constants {
 	/**
 	 * Scope:Required
 	 * 
-	 * Signature: function saveFile(){...}
+	 * Signature: function saveFileWithExtention(){...}
 	 * 
-	 * This function will be called by framework each time save command is executed 
-	 * in IDE. Implement any finalizing logic for content and finally execute 
-	 * IDESaveContent callback function provided by the framework to save the content back
+	 * This function will be called by framework each time when try to save a file 
+	 * with a specific extension 
+	 * Implement any finalizing logic for content and finally execute 
+	 * IDESaveContentWithExtention callback function provided by the framework to save the content back
 	 * to file.
 	 * 
-	 *  eg:	function saveFile(){
+	 *  eg:	function saveTempFile(){
 	 *  		...
 	 *  		var updatedContent = ...;
 	 *  		...//logic to finalize content
-	 *  		IDESaveContent(updatedContent);
+	 *  		IDESaveContentWithExtention(updatedContent,"mappinConfig","config","dmc");
 	 *  	}
 	 */
 	public static final String APP_SAVE_FILE_WITH_EXTNTION_FUNCTION = "saveFileWithExtention";

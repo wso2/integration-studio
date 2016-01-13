@@ -544,6 +544,8 @@ Export-Package: com.damnhandy.uri.template,
    javax.xml.transform,
    org.w3c.dom,
    javax.wsdl",
+ org.apache.catalina,
+ org.apache.catalina.startup,
  org.apache.commons.httpclient;version="3.1.0.wso2v1";
   uses:="org.apache.commons.httpclient.protocol,
    org.apache.commons.httpclient.auth,
@@ -1678,13 +1680,16 @@ Bundle-ClassPath: .,
  lib/xercesImpl-2.8.1.jar,
  lib/xml-apis-1.4.01.jar,
  lib/xml-resolver-1.2.jar,
+ lib/tomcat-7.0.59.wso2v3.jar,
  lib/xmlbeans_2.3.0.wso2v1.jar,
  lib/XmlSchema_1.4.7.wso2v3.jar,
  lib/zip4j_1.3.1.jar
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.jdt.ui,
- org.eclipse.core.resources
+ org.eclipse.core.resources,
+ javax.servlet;bundle-version="3.0.0",
+ javax.servlet.jsp;bundle-version="2.2.0"
 Bundle-Activator: org.wso2.developerstudio.eclipse.libraries.Activator
 Import-Package: org.eclipse.jdt.core,
  org.wso2.developerstudio.eclipse.logging.core;version="[4.0.0,4.1.0)",

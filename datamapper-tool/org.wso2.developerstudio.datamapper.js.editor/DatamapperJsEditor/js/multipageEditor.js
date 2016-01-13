@@ -28,7 +28,9 @@ function registerMouseAndKeyEvents() {
 
     $(document).keydown(function (e) {
     	//console.log("keydown = " +e);
-        //designViewKeyDown(e);
+    	   	if(e.keyCode==46){//delete key pressed
+    	   		if (selected) selected.remove();
+    	   	}
     });
 
 }

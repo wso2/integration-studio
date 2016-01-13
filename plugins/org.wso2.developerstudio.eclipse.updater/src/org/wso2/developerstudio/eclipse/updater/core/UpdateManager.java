@@ -52,6 +52,7 @@ import org.eclipse.equinox.p2.core.IProvisioningAgentProvider;
 import org.eclipse.equinox.p2.core.ProvisionException;
 import org.eclipse.equinox.p2.metadata.IArtifactKey;
 import org.eclipse.equinox.p2.metadata.IInstallableUnit;
+import org.eclipse.equinox.p2.metadata.Version;
 import org.eclipse.equinox.p2.operations.InstallOperation;
 import org.eclipse.equinox.p2.operations.OperationFactory;
 import org.eclipse.equinox.p2.operations.ProvisioningJob;
@@ -269,6 +270,16 @@ public class UpdateManager {
 						.put(iInstallableUnit.getId(),
 								allFeaturesInReleaseRepo.get(iInstallableUnit
 										.getId()));
+			} else { 
+				Version versionInstalled = installedWSO2FeaturesMap.get(iInstallableUnit.getId()).getVersion(); 
+				// if the version we have is greater than the installed version view it in the available feature list
+				if (versionInstalled != null && (iInstallableUnit.getVersion().compareTo(versionInstalled) == 1)) {
+						availableNewFeatures
+						.put(iInstallableUnit.getId(),
+								allFeaturesInReleaseRepo.get(iInstallableUnit
+										.getId()));
+						
+				}
 			}
 		}
 	}

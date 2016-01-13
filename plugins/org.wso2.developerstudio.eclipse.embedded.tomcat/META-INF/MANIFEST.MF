@@ -7,7 +7,6 @@ Bundle-Vendor: WSO2
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.ui,
  org.wso2.developerstudio.eclipse.logging,
- tomcat;bundle-version="7.0.59.wso2v3",
  org.eclipse.equinox.http.servlet;bundle-version="1.1.500",
  javax.servlet;bundle-version="3.0.0",
  org.eclipse.equinox.registry
@@ -17,7 +16,9 @@ Export-Package: org.wso2.developerstudio.eclipse.embedded.tomcat;version="4.0.0"
 Export-Package: org.wso2.developerstudio.eclipse.embedded.tomcat.api;version="4.0.0",
  org.wso2.developerstudio.eclipse.embedded.tomcat.exception;version="4.0.0"
 Bundle-Activator: org.wso2.developerstudio.eclipse.embedded.tomcat.EmbeddedTomcatPlugin
-Import-Package: org.apache.commons.io;version="2.0.0.wso2v1",
+Import-Package: org.apache.catalina,
+ org.apache.catalina.startup,
+ org.apache.commons.io;version="2.0.0.wso2v1",
  org.apache.commons.lang;version="2.6.0",
  org.osgi.framework
 Bundle-ActivationPolicy: lazy

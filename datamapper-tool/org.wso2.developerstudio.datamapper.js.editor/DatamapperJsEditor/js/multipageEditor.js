@@ -1,11 +1,9 @@
 var graph = null;
 var paper = null;
-var dialog;
-var form;
-var inputSchema;
+var mInput = null;
+var mOutput= null;
 
 $(document).ready(function () {
-    
     registerTabChangeEvent();
     registerMouseAndKeyEvents();
     initDraggable();
@@ -64,6 +62,37 @@ function activateDesignView() {
     console.log(sequenceObj);
 }
 
+
+function initDraggable() {
+	$(".draggableIcon").draggable({
+		helper : 'clone',
+		containment : 'dmEditorContainer',
+		cursor : 'move',
+		stop : handleDragStopEvent
+	});
+}
+
+function initDropable() {
+	$("#dmEditorContainer").droppable({
+		drop : handleDropEvent,
+		tolerance : "pointer"
+	});
+}
+
+function handleDragStopEvent(event, ui) {
+
+}
+
+function handleDropEvent(event, ui) {
+	if ($(ui.draggable).attr('id').search(/dragged/) == -1) {
+		var newDraggedElem = $(ui.draggable).clone();
+		newDraggedElem.removeClass("draggableIcon");
+		newDraggedElem.removeClass("ui-draggable");
+		var type = newDraggedElem.attr('id');
+		createDiv("Concat", newDraggedElem, type);
+	}
+}
+
 function openInputDialog() {
 	$('#myInput').bind("change", handleInputFileSelect);
 	$('#myInput').click();
@@ -74,9 +103,9 @@ function openOutputDialog() {
 	$('#myOutput').click();
 }
 
-function handleInputFileSelect(evt) {
-	alert('handleInputFileSelect');
-    var f = evt.target.files[0]; 
+
+function handleFileSelect(evt, box, isOutput) {
+	var f = evt.target.files[0]; 
     if (f) {
 	      var reader = new FileReader();
 	      reader.readAsText(f);
@@ -84,28 +113,19 @@ function handleInputFileSelect(evt) {
 		      var contents = e.target.result;
 		      console.log(contents);
 		  	  var obj = JSON.parse(contents);
-			  traverseObject(obj, 1, mInput, true);
-			  resizeHeightAtTheEnd(mInput);
+			  traverseObject(obj, 1, box, isOutput);
+			  resizeHeightAtTheEnd(box);
 	      }
     } else { 
     	  alert("Failed to load file");
     }
 }
 
+function handleInputFileSelect(evt) {
+    handleFileSelect(evt, mInput, true);
+}
+
 function handleOutputFileSelect(evt) {
-    var f = evt.target.files[0]; 
-    if (f) {
-	      var reader = new FileReader();
-	      reader.readAsText(f);
-	      reader.onload = function(e) { 
-		      var contents = e.target.result;
-		      console.log(contents);
-		  	  var obj = JSON.parse(contents);
-			  traverseObject(obj, 1, mOutput, false);
-			  resizeHeightAtTheEnd(mOutput);
-	      }
-    } else { 
-    	  alert("Failed to load file");
-    }
+    handleFileSelect(evt, mOutput, false);
 }
 

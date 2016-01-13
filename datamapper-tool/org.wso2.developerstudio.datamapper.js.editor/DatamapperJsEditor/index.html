@@ -18,7 +18,9 @@
 
 <script src="js/multipageEditor.js"></script>
 <script src="js/designEditor.js"></script>
+<script src="js/dialog.js"></script>
 <script src="js/editor.js"></script>
+
 
 </head>
 <body>
@@ -114,6 +116,9 @@
 	<button onclick="loadFileContent()" type="button">Read File</button>
 	<button onclick="setFocus()" type="button">set Focus To Editor</button>
 	<button onclick="execUndoableOperation()" type="button">Execute	Undoable Operation</button>
-	
+	<input id="myInput" type="file" style="visibility:hidden" />
+    <input type="button" value="Add Input Schema" onclick="openInputDialog()" />
+    <input id="myOutput" type="file" style="visibility:hidden" />
+    <input type="button" value="Add Output Schema" onclick="openOutputDialog()" />
 </body>
 </html>

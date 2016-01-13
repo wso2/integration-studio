@@ -1,11 +1,13 @@
 var graph = null;
 var paper = null;
+var dialog;
+var form;
+var inputSchema;
 
 $(document).ready(function () {
     
     registerTabChangeEvent();
     registerMouseAndKeyEvents();
-    //load following functions from designEditor.js
     initDraggable();
     initDropable();
     initJointJSGraph();
@@ -60,5 +62,50 @@ function activateDesignView() {
 	console.log('activateDesignView');
     var sourceEditorTextBox = $('#sourceEditorTextBox');
     console.log(sequenceObj);
+}
+
+function openInputDialog() {
+	$('#myInput').bind("change", handleInputFileSelect);
+	$('#myInput').click();
+}
+
+function openOutputDialog() {
+	$('#myOutput').bind("change", handleOutputFileSelect);
+	$('#myOutput').click();
+}
+
+function handleInputFileSelect(evt) {
+	alert('handleInputFileSelect');
+    var f = evt.target.files[0]; 
+    if (f) {
+	      var reader = new FileReader();
+	      reader.readAsText(f);
+	      reader.onload = function(e) { 
+		      var contents = e.target.result;
+		      console.log(contents);
+		  	  var obj = JSON.parse(contents);
+			  traverseObject(obj, 1, mInput, true);
+			  resizeHeightAtTheEnd(mInput);
+	      }
+    } else { 
+    	  alert("Failed to load file");
+    }
+}
+
+function handleOutputFileSelect(evt) {
+    var f = evt.target.files[0]; 
+    if (f) {
+	      var reader = new FileReader();
+	      reader.readAsText(f);
+	      reader.onload = function(e) { 
+		      var contents = e.target.result;
+		      console.log(contents);
+		  	  var obj = JSON.parse(contents);
+			  traverseObject(obj, 1, mOutput, false);
+			  resizeHeightAtTheEnd(mOutput);
+	      }
+    } else { 
+    	  alert("Failed to load file");
+    }
 }
 

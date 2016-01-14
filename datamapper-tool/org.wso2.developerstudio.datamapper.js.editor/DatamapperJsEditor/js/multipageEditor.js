@@ -3,6 +3,8 @@ var paper = null;
 var mInput = null;
 var mOutput= null;
 
+var operatorSize = {width : 90,	height : 90};
+
 $(document).ready(function () {
     registerTabChangeEvent();
     registerMouseAndKeyEvents();
@@ -84,40 +86,62 @@ function handleDragStopEvent(event, ui) {
 function handleDropEvent(event, ui) {
 	if ($(ui.draggable).attr('id').search(/dragged/) == -1) {
 		var newDraggedElem = $(ui.draggable).clone();
-		newDraggedElem.removeClass("draggableIcon");
-		newDraggedElem.removeClass("ui-draggable");
 		var type = newDraggedElem.attr('id');
-		createDiv("Concat", newDraggedElem, type);
+		createDiv(type, newDraggedElem, type);
 	}
 }
 
 function createDiv(objName, image, type) {
-
-	var m1 = new joint.shapes.devs.Model({
-		size : {
-			width : 90,
-			height : 90
-		},
-		inPorts : [ 'in1', 'in2' ],
-		outPorts : [ 'out' ],
-		attrs : {
-			'.label' : {
-				text : objName,
-				'ref-x' : .4,
-				'ref-y' : .2
-			},
-			rect : {
-				fill : '#2ECC71'
-			},
-			'.inPorts circle' : {
-				fill : '#16A085'
-			},
-			'.outPorts circle' : {
-				fill : '#E74C3C'
+	var operator = null;
+	if (objName=="Concat"){
+		operator = new joint.shapes.devs.Model({
+			size : operatorSize,
+			inPorts : [ 'in1', 'in2' ],
+			outPorts : [ 'out' ],
+			attrs : {
+				'.label' : {
+					text : objName,
+					'ref-x' : .4,
+					'ref-y' : .2
+				},
+				rect : {
+					fill : '#2ECC71'
+				},
+				circle: { r: 6 },
+				'.inPorts circle' : {
+					fill : '#16A085'
+				},
+				'.outPorts circle' : {
+					fill : '#E74C3C'
+				}
 			}
-		}
-	});
-	graph.addCell(m1);
+		});
+    } else if (objName=="Split") {
+    	operator = new joint.shapes.devs.Model({
+			size : operatorSize,
+			inPorts : [ 'in1' ],
+			outPorts : [ 'out1' , 'out2'],
+			attrs : {
+				'.label' : {
+					text : objName,
+					'ref-x' : .4,
+					'ref-y' : .2
+				},
+				rect : {
+					fill : '#2ECC71'
+				},
+				circle: { r: 6},
+				'.inPorts circle' : {
+					fill : '#16A085'
+				},
+				'.outPorts circle' : {
+					fill : '#E74C3C'
+				}
+			}
+		});
+    }
+	
+	graph.addCell(operator);
 }
 
 

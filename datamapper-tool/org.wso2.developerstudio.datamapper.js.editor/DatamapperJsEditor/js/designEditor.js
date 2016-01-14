@@ -179,6 +179,7 @@ function addLeaf(parent, leafName, level, isOutput) {
 			attrs : {
 				'.label' : childText,
 				rect : childRect,
+				circle: { r: 6},
 				'.outPorts circle' : circleTemplate
 			}
 		});
@@ -191,6 +192,7 @@ function addLeaf(parent, leafName, level, isOutput) {
 			attrs : {
 				'.label' : childText,
 				rect : childRect,
+				circle: { r: 6},
 				'.inPorts circle' : circleTemplate
 			}
 		});

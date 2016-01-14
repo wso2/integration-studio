@@ -1,14 +1,41 @@
 var selectedCell = null;
 var leafHeight = 30;
-
-var rectangleTemplate = {fill : '#d3d3d3'};
-var circleTemplate = {fill : '#E74C3C'};
+var xOffset = 20;
+var yOffset = 30;
 var rootWidth = 300;
 var rootHeight = 400;
+var paperWidth = 1200;
+
+var rectangleTemplate = {fill : '#d3d3d3', stroke : 'none'};
+var circleTemplate = {fill : '#E74C3C'};
 var initialSize = {width : rootWidth, height : rootHeight};
-var childSize = {width : 100, height : leafHeight};
 var inputPosition = {x : 50, y : 50};
 var outputPosition = {x : 1050, y : 50};
+
+function getColorFromParent(parent) {
+	var color = parent.attr('rect/fill');
+	var colorCode = color.substring(1, 7);
+	var step = '60606';
+	var newColor = parseInt(colorCode, 16) + parseInt(step, 16);
+	newColor = '#' + newColor.toString(16);
+	return newColor;
+}
+
+function getChildRect(parent) {
+	var newColor = getColorFromParent(parent);
+	var childRect = {};
+	childRect.fill = newColor;
+	childRect.stroke = 'none';
+	return childRect;
+}
+
+
+function getLabelText(labelText) {
+	var labelText = {text : labelText, 'text-anchor' : 'start', "ref-y":5,"ref-x":5, "font-size": 24, "font-family": "Arial"};
+	return labelText;
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 function initJointJSGraph() {
@@ -16,7 +43,7 @@ function initJointJSGraph() {
 	graph = new joint.dia.Graph;
 	paper = new joint.dia.Paper({
 		el : $('#dmEditorContainer'),
-		width : 1200,
+		width : paperWidth,
 		model : graph,
 		gridSize : 1,
 		interactive : function(cellView, methodName) {
@@ -59,7 +86,7 @@ function initJointJSGraph() {
 		}
 	});
 
-	var outputLabel = getLabelText("Output Type");
+	var outputLabel = getLabelText("Input Type");
 	mOutput = new joint.shapes.devs.Model({
 		id : 'outputBox',
 		position : outputPosition,
@@ -84,50 +111,42 @@ function getTotalHeightOfChidlren(parent){
 	return totalHeight;
 }
 
-function getPositionRelativeToParent(parent, totalHeight) {
-	var parentPosition = parent.get('position');
-	var childX = parentPosition.x + 20;
-	var childY = parentPosition.y + leafHeight + totalHeight;
-	var childPosition = {};
-	childPosition.x = childX;
-	childPosition.y = childY;
-	return childPosition;
-}
-
-function getChildRect(parent) {
-	var newColor = getColorFromParent(parent);
-	var childRect = {};
-	childRect.fill = newColor;
-	childRect.stroke = 'none';
-	return childRect;
-}
-
-function getChildText(childName) {
-	var childText = {text : childName, 'text-anchor' : 'start', "ref-y":5,"ref-x":5, "font-size": 24, "font-family": "Arial"};
-	return childText;
-}
-
-function getLabelText(labelText) {
-	var labelText = {text : labelText, 'text-anchor' : 'start', "ref-y":5,"ref-x":5, "font-size": 24, "font-family": "Arial"};
-	return labelText;
-}
-
-function relocateElement(element, parentHeight) {
+function relocateElement(element) {
 	var ownPosition = element.get('position');
+	var ownSize = element.get('size');
+	var siblingsHeight = getTotalHeightOfChidlren(element);
+	var finalHeight = siblingsHeight + 2*leafHeight;
 	element.set({
 		position : ownPosition,
 		size : {
-			width : 400,
-			height : parentHeight
+			width : ownSize.width,
+			height : finalHeight 
 		}
 	});
 }
 
-function addChildRectangle(parent, childName) {
-	var totalHeight = getTotalHeightOfChidlren(parent);
-	var childPosition = getPositionRelativeToParent(parent, totalHeight);
+function getChildSize(parent){
+	var parentSize = parent.get('size');
+	var childWidth = parentSize.width - xOffset;
+	var childHeight = leafHeight;
+	var childSize = {width : childWidth, height : childHeight};
+	return childSize;
+}
+
+function getChildPosition(parent){
+	var parentPosition = parent.get('position');
+	var childX = parentPosition.x + xOffset;
+	var siblingsHeight = getTotalHeightOfChidlren(parent);
+	var childY = parentPosition.y + siblingsHeight + yOffset;
+	var childSize = {x : childX, y : childY};
+	return childSize;
+}
+
+function addNode(parent, childName, level) {
 	var childRect = getChildRect(parent);
-	var childText = getChildText(childName);
+	var childText = getLabelText(childName);
+	var childPosition = getChildPosition(parent);
+	var childSize =  getChildSize(parent);
 	
 	var child = new joint.shapes.devs.Model({
 		isInteractive : false,
@@ -139,18 +158,16 @@ function addChildRectangle(parent, childName) {
 		}
 	});
 
-	var parentHeight = 30 + leafHeight + totalHeight;
-	relocateElement(parent, parentHeight);
 	parent.embed(child);
 	graph.addCell(child);
 	return child;
 }
 
-function addLeaf(parent, leafName, isOutput) {
-	var totalHeight = getTotalHeightOfChidlren(parent);
-	var childPosition = getPositionRelativeToParent(parent, totalHeight);
+function addLeaf(parent, leafName, level, isOutput) {
 	var childRect = getChildRect(parent);
 	var childText = getLabelText(leafName);
+	var childPosition = getChildPosition(parent);
+	var childSize =  getChildSize(parent);
 	
 	var leaf = null;
 	if (isOutput) {
@@ -179,55 +196,10 @@ function addLeaf(parent, leafName, isOutput) {
 		});
 	}
 
-	var parentHeight = 30 + leafHeight + totalHeight;
-	relocateElement(parent, parentHeight);
 	parent.embed(leaf);
 	graph.addCell(leaf);
 }
 
-function resizeHeightAtTheEnd(element) {
-	var totalHeight =getTotalHeightOfChidlren(element);
-	var parentHeight = 30 + totalHeight;
-	relocateElement(element, parentHeight);
-}
-
-function getColorFromParent(parent) {
-	var color = parent.attr('rect/fill');
-	var colorCode = color.substring(1, 7);
-	var step = '60606';
-	var newColor = parseInt(colorCode, 16) + parseInt(step, 16);
-	newColor = '#' + newColor.toString(16);
-	return newColor;
-}
-
-function createDiv(objName, image, type) {
-
-	var m1 = new joint.shapes.devs.Model({
-		size : {
-			width : 90,
-			height : 90
-		},
-		inPorts : [ 'in1', 'in2' ],
-		outPorts : [ 'out' ],
-		attrs : {
-			'.label' : {
-				text : objName,
-				'ref-x' : .4,
-				'ref-y' : .2
-			},
-			rect : {
-				fill : '#2ECC71'
-			},
-			'.inPorts circle' : {
-				fill : '#16A085'
-			},
-			'.outPorts circle' : {
-				fill : '#E74C3C'
-			}
-		}
-	});
-	graph.addCell(m1);
-}
 
 function traverse(x, level, parent, isOutput) {
 	if (isArray(x)) {
@@ -237,6 +209,7 @@ function traverse(x, level, parent, isOutput) {
 	} else {
 		console.log(level + x);
 	}
+	relocateElement(parent);
 }
 
 function isArray(o) {
@@ -244,24 +217,23 @@ function isArray(o) {
 }
 
 function traverseArray(arr, level, parent, isOutput) {
-	console.log(level + "<array>");
+	//console.log(level + "<array>");
 	arr.forEach(function(x) {
-		traverse(x, level + "  ", parent, isOutput);
+		traverse(x, level + 1, parent, isOutput);
 	});
 }
 
 function traverseObject(obj, level, parent, isOutput) {
-	console.log(level + "<object>");
+	//console.log(level + "<object>");
 	if (isArray(obj.fields)) {
-		parent = addChildRectangle(parent, obj.name);
+		parent = addNode(parent, obj.name, level+1);
 	} else {
-		addLeaf(parent, obj.name, isOutput);
+		addLeaf(parent, obj.name, level+1, isOutput);
 	}
 	for (var key in obj) {
 		if (obj.hasOwnProperty(key)) {
-			console.log(level + " xxx " + key + ":");
-			traverse(obj[key], level + "    ", parent, isOutput);
+			//console.log(" level " + level + " key " + key);
+			traverse(obj[key], level + 1, parent, isOutput);
 		}
 	}
-	resizeHeightAtTheEnd(parent);
 }

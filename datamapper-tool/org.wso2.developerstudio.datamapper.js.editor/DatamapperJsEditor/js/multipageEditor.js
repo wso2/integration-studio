@@ -32,7 +32,6 @@ function registerMouseAndKeyEvents() {
     	   		if (selected) selected.remove();
     	   	}
     });
-
 }
 
 
@@ -47,7 +46,6 @@ function registerTabChangeEvent() {
         }
     });
 }
-
 
 function activateSourceView() {
     console.log('activateSourceView');
@@ -93,6 +91,36 @@ function handleDropEvent(event, ui) {
 	}
 }
 
+function createDiv(objName, image, type) {
+
+	var m1 = new joint.shapes.devs.Model({
+		size : {
+			width : 90,
+			height : 90
+		},
+		inPorts : [ 'in1', 'in2' ],
+		outPorts : [ 'out' ],
+		attrs : {
+			'.label' : {
+				text : objName,
+				'ref-x' : .4,
+				'ref-y' : .2
+			},
+			rect : {
+				fill : '#2ECC71'
+			},
+			'.inPorts circle' : {
+				fill : '#16A085'
+			},
+			'.outPorts circle' : {
+				fill : '#E74C3C'
+			}
+		}
+	});
+	graph.addCell(m1);
+}
+
+
 function openInputDialog() {
 	$('#myInput').bind("change", handleInputFileSelect);
 	$('#myInput').click();
@@ -114,7 +142,7 @@ function handleFileSelect(evt, box, isOutput) {
 		      console.log(contents);
 		  	  var obj = JSON.parse(contents);
 			  traverseObject(obj, 1, box, isOutput);
-			  resizeHeightAtTheEnd(box);
+			  relocateElement(box);
 	      }
     } else { 
     	  alert("Failed to load file");

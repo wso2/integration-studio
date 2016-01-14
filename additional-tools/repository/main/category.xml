@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-   <category-def name="org.wso2.developerstudio.eclipse.additional.tools.feature.category" label="WSO2 Additional Tools"/>
+   <category-def name="org.wso2.developerstudio.eclipse.additional.tools.feature.category" label="WSO2 Additional Tools">
 <description>
 		This is the Additional Tooling Feature for the Developer Studio. This provides tooling support for Smooks Editor, Soap UI and TCP Monitor with Developer Studio.
       </description>
+	 </category-def>
  <feature id="org.smooks.edi.editor-feature" version="0.0.0">
       <category name="org.wso2.developerstudio.eclipse.additional.tools.feature.category"/>
    </feature>

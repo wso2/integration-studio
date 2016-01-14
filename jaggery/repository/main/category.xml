@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-   <category-def name="org.wso2.developerstudio.eclipse.jaggery.feature.category" label="WSO2 Jaggery"/>
+   <category-def name="org.wso2.developerstudio.eclipse.jaggery.feature.category" label="WSO2 Jaggery">
 <description>
 		This is the Jaggery Feature for the Developer Studio. This provides tooling support for WSO2 Jaggery Artifact creation and deployment with Developer Studio.
       </description>
+	 </category-def>
  <feature id="org.wso2.developerstudio.eclipse.jaggery.feature" version="0.0.0">
       <category name="org.wso2.developerstudio.eclipse.jaggery.feature.category"/>
    </feature>

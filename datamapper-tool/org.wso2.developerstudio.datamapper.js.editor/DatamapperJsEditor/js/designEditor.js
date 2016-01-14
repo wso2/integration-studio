@@ -103,12 +103,12 @@ function getChildRect(parent) {
 }
 
 function getChildText(childName) {
-	var childText = {text : childName, 'text-anchor' : 'start', 'ref-x' : .1, 'ref-y' : .1};
+	var childText = {text : childName, 'text-anchor' : 'start', "ref-y":5,"ref-x":5, "font-size": 24, "font-family": "Arial"};
 	return childText;
 }
 
 function getLabelText(labelText) {
-	var labelText = {text : labelText, 'text-anchor' : 'start', 'ref-x' : .1, 'ref-y' : .1};
+	var labelText = {text : labelText, 'text-anchor' : 'start', "ref-y":5,"ref-x":5, "font-size": 24, "font-family": "Arial"};
 	return labelText;
 }
 
@@ -117,7 +117,7 @@ function relocateElement(element, parentHeight) {
 	element.set({
 		position : ownPosition,
 		size : {
-			width : 100,
+			width : 400,
 			height : parentHeight
 		}
 	});
@@ -129,13 +129,13 @@ function addChildRectangle(parent, childName) {
 	var childRect = getChildRect(parent);
 	var childText = getChildText(childName);
 	
-	var child = new joint.shapes.basic.Rect({
+	var child = new joint.shapes.devs.Model({
 		isInteractive : false,
-		position : childPosition,
 		size : childSize,
+		position : childPosition,
 		attrs : {
-			rect : childRect,
-			text : childText
+			'.label' : childText,
+			rect : childRect
 		}
 	});
 
@@ -162,7 +162,7 @@ function addLeaf(parent, leafName, isOutput) {
 			attrs : {
 				'.label' : childText,
 				rect : childRect,
-				'.outPorts circle' :circleTemplate
+				'.outPorts circle' : circleTemplate
 			}
 		});
 	} else {
@@ -174,7 +174,7 @@ function addLeaf(parent, leafName, isOutput) {
 			attrs : {
 				'.label' : childText,
 				rect : childRect,
-				'.inPorts circle' :circleTemplate
+				'.inPorts circle' : circleTemplate
 			}
 		});
 	}

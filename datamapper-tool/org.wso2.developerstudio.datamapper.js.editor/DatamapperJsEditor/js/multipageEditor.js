@@ -122,6 +122,10 @@ function handleFileSelect(evt, box, isOutput) {
 }
 
 function handleInputFileSelect(evt) {
+	var firstChild = mInput.getEmbeddedCells()[0];
+	if (firstChild) {
+		firstChild.remove();
+	}
     handleFileSelect(evt, mInput, true);
 }
 

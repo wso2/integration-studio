@@ -1,5 +1,9 @@
 package org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.mediatorlocator.impl;
 
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.API_INSEQ_LABEL;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.API_OUTSEQ_LABEL;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.API_FAULTSEQ_LABEL;
+
 import java.util.List;
 
 import org.apache.commons.lang.StringUtils;
@@ -15,7 +19,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.exception.Media
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.exception.MissingAttributeException;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.messages.util.ESBAPIDebugPointMessage;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerUtil;
-import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.SynapseAPIImpl;
 
 /**
@@ -41,15 +44,12 @@ public class APIMediatorLocator extends AbstractMediatorLocator {
         String sequenceType = debugPointMessage.getSequence().getApi().getSequenceType();
         SynapseAPIImpl api = (SynapseAPIImpl) esbServer.eContents().get(INDEX_OF_FIRST_ELEMENT);
         APIResource apiResource = getMatchingAPIResource(api, debugPointMessage);
-        if (sequenceType == null || sequenceType.equals(getFaultSequenceName(apiResource))) {
+        if (sequenceType.equals(API_FAULTSEQ_LABEL)) {
             return getMediatorInFaultSeq(
                     apiResource.getContainer().getFaultContainer().getMediatorFlow().getChildren(), positionArray);
-        } else if (sequenceType.equals(ESBDebuggerConstants.API_INSEQ_LABEL)) {
-
+        } else if (sequenceType.equals(API_INSEQ_LABEL)) {
             return getMediatorFromMediationFlow(apiResource.getOutputConnector(), positionArray);
-
-        } else if (sequenceType.equals(ESBDebuggerConstants.API_OUTSEQ_LABEL)) {
-
+        } else if (sequenceType.equals(API_OUTSEQ_LABEL)) {
             return getMediatorFromMediationFlow(apiResource.getOutSequenceOutputConnector(), positionArray);
         } else {
             throw new IllegalArgumentException("Unknown sequence type for api resource detected : " + sequenceType);

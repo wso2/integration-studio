@@ -47,6 +47,8 @@ import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorPart;
+import org.eclipse.ui.IEditorReference;
+import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.FileEditorInput;
 import org.wso2.developerstudio.eclipse.gmf.esb.APIResource;
 import org.wso2.developerstudio.eclipse.gmf.esb.ArtifactType;
@@ -62,6 +64,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.FilterMediatorGra
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.FixedSizedAbstractMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.SwitchMediatorGraphicalShape;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.complexFiguredAbstractMediator;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.IESBDebuggerInterface;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.debugpoint.builder.IESBDebugPointBuilder;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.debugpoint.builder.impl.ESBDebugPointBuilderFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.debugpoint.impl.ESBDebugPoint;
@@ -105,6 +108,16 @@ public class ESBDebuggerUtil {
 
     private static AbstractMediator deletedMediator;
     private static boolean deleteOperationPerformed;
+
+    public static void removeDebugPointsFromESBServer(IESBDebuggerInterface debuggerInterface) throws Exception {
+        IBreakpoint[] breakpoints = DebugPlugin.getDefault().getBreakpointManager()
+                .getBreakpoints(ESBDebugModelPresentation.ID);
+        for (IBreakpoint debugPoint : breakpoints) {
+            AbstractESBDebugPointMessage debugPointMessage = ((ESBDebugPoint) debugPoint).getLocation();
+            debugPointMessage.setCommand(DebugPointEventAction.REMOVED.toString());
+            debuggerInterface.sendBreakpointCommand(debugPointMessage);
+        }
+    }
 
     /**
      * This method modify debug points when a new mediator addition operation is
@@ -329,7 +342,39 @@ public class ESBDebuggerUtil {
         IBreakpoint[] breakpoints = DebugPlugin.getDefault().getBreakpointManager()
                 .getBreakpoints(ESBDebugModelPresentation.ID);
         for (IBreakpoint breakpoint : breakpoints) {
-            removeESBDebugPointFromBreakpointManager(breakpoint);
+            try {
+                IResource resource = ((ESBDebugPoint) breakpoint).getResource();
+                IEditorReference[] references = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
+                        .getEditorReferences();
+                ArtifactType type = null;
+                EsbServer esbServer = null;
+                for (IEditorReference iEditorReference : references) {
+                    if (((FileEditorInput) iEditorReference.getEditorInput()).getFile().equals(resource)) {
+                        IEditorPart multipageEditor = iEditorReference.getEditor(true);
+                        if (multipageEditor != null) {
+                            Diagram diagram = ((EsbMultiPageEditor) (multipageEditor)).getDiagram();
+                            EsbDiagram esbDiagram = (EsbDiagram) diagram.getElement();
+                            esbServer = esbDiagram.getServer();
+                            type = esbServer.getType();
+                            break;
+                        }
+                    }
+                }
+                if (type != null) {
+                    IMediatorLocator mediatorLocator = MediatorLocatorFactory.getMediatorLocator(type);
+                    EditPart editPart = mediatorLocator.getMediatorEditPart(esbServer, (ESBDebugPoint) breakpoint);
+                    String commandArgument = ((ESBDebugPoint) breakpoint).getLocation().getCommandArgument();
+                    if (ESBDebuggerConstants.BREAKPOINT_LABEL.equals(commandArgument)) {
+                        ESBDebuggerUtil.removeBreakpointMark((AbstractMediator) editPart);
+                    } else {
+                        ESBDebuggerUtil.removeSkippointMark((AbstractMediator) editPart);
+                    }
+                }
+                removeESBDebugPointFromBreakpointManager(breakpoint);
+            } catch (DebugPointMarkerNotFoundException | MediatorNotFoundException | MissingAttributeException
+                    | CoreException e) {
+                log.error("Error occured while removing ESB Debugpoints From Breakpoint Manager " + e.getMessage(), e);
+            }
         }
     }
 
@@ -341,8 +386,8 @@ public class ESBDebuggerUtil {
      * @param editPartMap
      * @return
      */
-    public static EditPart getActiveEditorEditpart(EObject node) {
-        Map<EObject, ShapeNodeEditPart> editPartMap = getActiveEditorEditPartMap();
+    public static EditPart getEditorEditpart(EObject node) {
+        Map<EObject, ShapeNodeEditPart> editPartMap = getEditorEditPartMap();
         if (editPartMap.containsKey(node)) {
             return editPartMap.get(node);
         }
@@ -568,20 +613,25 @@ public class ESBDebuggerUtil {
      * 
      * @param editPartMap
      */
-    private static Map<EObject, ShapeNodeEditPart> getActiveEditorEditPartMap() {
+    private static Map<EObject, ShapeNodeEditPart> getEditorEditPartMap() {
 
         Map<EObject, ShapeNodeEditPart> editPartMap = new HashMap<>();
-
-        EsbMultiPageEditor esbMultiPageEditor = (EsbMultiPageEditor) EditorUtils.getActiveEditor();
-
-        @SuppressWarnings("rawtypes")
-        Map editPartRegistry = esbMultiPageEditor.getDiagramEditPart().getViewer().getEditPartRegistry();
-        for (Object object : editPartRegistry.keySet()) {
-            if (object instanceof Node) {
-                Node nodeImpl = (Node) object;
-                Object editPart = editPartRegistry.get(nodeImpl);
-                if (editPart instanceof ShapeNodeEditPart) {
-                    editPartMap.put(nodeImpl.getElement(), (ShapeNodeEditPart) editPart);
+        IEditorReference[] references = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
+                .getEditorReferences();
+        for (IEditorReference iEditorReference : references) {
+            IEditorPart editorReference = iEditorReference.getEditor(true);
+            if ( editorReference instanceof EsbMultiPageEditor) {
+                EsbMultiPageEditor esbMultiPageEditor = (EsbMultiPageEditor) iEditorReference.getEditor(true);
+                @SuppressWarnings("rawtypes")
+                Map editPartRegistry = esbMultiPageEditor.getDiagramEditPart().getViewer().getEditPartRegistry();
+                for (Object object : editPartRegistry.keySet()) {
+                    if (object instanceof Node) {
+                        Node nodeImpl = (Node) object;
+                        Object editPart = editPartRegistry.get(nodeImpl);
+                        if (editPart instanceof ShapeNodeEditPart) {
+                            editPartMap.put(nodeImpl.getElement(), (ShapeNodeEditPart) editPart);
+                        }
+                    }
                 }
             }
         }

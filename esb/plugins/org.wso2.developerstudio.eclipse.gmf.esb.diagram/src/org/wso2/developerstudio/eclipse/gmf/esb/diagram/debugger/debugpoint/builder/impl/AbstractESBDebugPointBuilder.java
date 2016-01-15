@@ -51,6 +51,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.CallTemplateMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.CalloutMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.ClassMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.CloneMediator;
+import org.wso2.developerstudio.eclipse.gmf.esb.CloneTargetContainer;
 import org.wso2.developerstudio.eclipse.gmf.esb.CommandMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.ConditionalRouterMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.DBLookupMediator;
@@ -109,7 +110,9 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.EsbServerEdit
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.APIResourceImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.AggregateMediatorImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.CacheMediatorImpl;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.CloneMediatorContainerImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.CloneMediatorImpl;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.CloneTargetContainerImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.CloudConnectorOperationImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.EntitlementAdviceContainerImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.EntitlementMediatorImpl;
@@ -151,6 +154,7 @@ public abstract class AbstractESBDebugPointBuilder implements IESBDebugPointBuil
     private EObject innerContainerInstance;
     private EObject innerParentContainer;
     private Integer switchCasePosition;
+    private Integer cloneTargetPosition;
 
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
@@ -658,6 +662,27 @@ public abstract class AbstractESBDebugPointBuilder implements IESBDebugPointBuil
                 throw new IllegalArgumentException("Unknown Throttle Mediator Container type found : "
                         + innerContainerInstance.getClass());
             }
+        } else if (mediatorImpl instanceof CloneMediatorImpl) {
+            innerParentContainer = parentStack.pop();
+            if (innerParentContainer instanceof CloneMediatorContainerImpl) {
+                CloneTargetContainerImpl cloneTarget = (CloneTargetContainerImpl) parentStack.pop();
+                EList<CloneTargetContainer> cloneTargetContainerList = ((CloneMediatorContainerImpl) innerParentContainer)
+                        .getCloneTargetContainer();
+                cloneTargetPosition = 0;
+                for (CloneTargetContainer switchCaseContainerImpl : cloneTargetContainerList) {
+                    if (switchCaseContainerImpl.equals(cloneTarget)) {
+                        innerContainerInstance = cloneTarget;
+                        return cloneTargetPosition;
+                    } else {
+                        cloneTargetPosition++;
+                    }
+                }
+            } else if (innerParentContainer instanceof SwitchDefaultParentContainerImpl) {
+                return SWITCH_DEFAULT_CONTAINER_POSITION_VALUE;
+            } else {
+                throw new IllegalArgumentException(
+                        "Required SwitchCaseContainerImpl instance not found in switchCaseContainerList ");
+            }
         }
         throw new IllegalArgumentException("Unknown multiple inner sequence mediator found : "
                 + mediatorImpl.getClass());
@@ -719,7 +744,12 @@ public abstract class AbstractESBDebugPointBuilder implements IESBDebugPointBuil
                         + innerContainerInstance.getClass());
             }
         } else if (mediatorImpl instanceof CloneMediatorImpl) {
-            return ((CloneMediatorImpl) mediatorImpl).getTargetsOutputConnector().get(0);
+            if (innerParentContainer instanceof CloneMediatorContainerImpl) {
+                return ((CloneMediatorImpl) mediatorImpl).getTargetsOutputConnector().get(cloneTargetPosition);
+            } else {
+                throw new IllegalArgumentException("Unknown Clone Mediator Container type found : "
+                        + innerContainerInstance.getClass());
+            }
         } else if (mediatorImpl instanceof ValidateMediatorImpl) {
             return ((ValidateMediatorImpl) mediatorImpl).getOnFailOutputConnector();
         } else if (mediatorImpl instanceof CacheMediatorImpl) {
@@ -751,7 +781,8 @@ public abstract class AbstractESBDebugPointBuilder implements IESBDebugPointBuil
 
     public static boolean isComplexListMediator(EObject mediatorImpl) {
         if (mediatorImpl instanceof FilterMediatorImpl || mediatorImpl instanceof SwitchMediatorImpl
-                || mediatorImpl instanceof ThrottleMediatorImpl || mediatorImpl instanceof EntitlementMediatorImpl) {
+                || mediatorImpl instanceof ThrottleMediatorImpl || mediatorImpl instanceof EntitlementMediatorImpl
+                || mediatorImpl instanceof CloneMediatorImpl) {
             return true;
         }
         return false;
@@ -792,18 +823,28 @@ public abstract class AbstractESBDebugPointBuilder implements IESBDebugPointBuil
      */
     protected List<Integer> getMediatorPositionInFaultSeq(EList<EsbElement> eList, AbstractMediator selection)
             throws MediatorNotFoundException {
-        int count = 0;
         MediatorImpl selectionImpl = (MediatorImpl) ((NodeImpl) selection.getModel()).getElement();
-        List<Integer> positionList = new ArrayList<>();
-        for (EsbElement mediator : eList) {
-            if (selectionImpl.equals(mediator)) {
-                positionList.add(count);
-                return positionList;
-            } else {
-                count++;
+        if (eList.contains(selectionImpl)) {
+            eList = restructureMediatorList(eList, selectionImpl);
+        }
+        return getMediatorPositionInFaultSeq(eList, selectionImpl);
+    }
+
+    private EList<EsbElement> restructureMediatorList(EList<EsbElement> eList, MediatorImpl selectionImpl) {
+        int eListSize = eList.size();
+        for (int index = 0; index < eListSize; index++) {
+            Mediator esbElement = (Mediator) eList.get(index);
+            OutputConnector tempConnector = getOutputConnector((Mediator) esbElement);
+            EsbLink outgoingLink = tempConnector.getOutgoingLink();
+            if (outgoingLink != null && outgoingLink.getTarget() != null) {
+                EObject mediator = outgoingLink.getTarget().eContainer();
+                if (mediator.equals(selectionImpl)) {
+                    eList.move(index, selectionImpl);
+                    break;
+                }
             }
         }
-        throw new MediatorNotFoundException(selection + " Mediator not found in Fault Sequence");
+        return eList;
     }
 
     /**
@@ -816,16 +857,68 @@ public abstract class AbstractESBDebugPointBuilder implements IESBDebugPointBuil
      */
     protected List<Integer> getMediatorPositionInFaultSeq(EList<EsbElement> eList, EObject selection)
             throws MediatorNotFoundException {
-        int count = 0;
+        int count = 1;
+        Stack<EObject> parentStack = getParentMediatorStack((MediatorImpl) selection);
+        parentStack.pop();// removing the Super Parent
+                          // Container(Proxy,Sequence,...)
+        parentStack = removeTopObjectsUntilFirstMediator(parentStack);
+        EObject mediatorImpl = parentStack.pop();
         List<Integer> positionList = new ArrayList<>();
         for (EsbElement mediator : eList) {
-            if (mediator.equals(selection)) {
-                positionList.add(count);
-                return positionList;
+            if (mediator.equals(mediatorImpl)) {
+                positionList.add(eList.size() - count);
+                if (parentStack.isEmpty()) {
+                    return positionList;
+                }
+                break;
             } else {
                 count++;
             }
         }
+        OutputConnector tempConnector;
+        if (isComplexListMediator(mediatorImpl)) {
+            positionList.add(getPositionOfInnerContainer(parentStack, mediatorImpl));
+        }
+        if (isComplexMediatorType(mediatorImpl)) {
+            tempConnector = getNextMediatorOutputConnector(mediatorImpl);
+        } else {
+            tempConnector = getOutputConnector((Mediator) mediatorImpl);
+        }
+        mediatorImpl = getNextMediatorFromParentStack(parentStack);
+        do {
+            count = 0;
+            while (isValidConnectorToProceed(tempConnector)) {
+                EsbLink outgoingLink = tempConnector.getOutgoingLink();
+                if (outgoingLink != null && outgoingLink.getTarget() != null) {
+                    EObject mediator = outgoingLink.getTarget().eContainer();
+                    if (isMediatorChainEnded(mediator)) {
+                        throw new MediatorNotFoundException("Selected Mediator is not found in a valid position");
+                    } else if (mediator.equals(mediatorImpl)) {
+                        positionList.add(count);
+                        if (parentStack.isEmpty()) {
+                            return positionList;
+                        }
+                        if (isComplexListMediator(mediatorImpl)) {
+                            positionList.add(getPositionOfInnerContainer(parentStack, mediatorImpl));
+                        }
+                        if (isComplexMediatorType(mediatorImpl)) {
+                            tempConnector = getNextMediatorOutputConnector(mediatorImpl);
+                        } else {
+                            tempConnector = getOutputConnector((Mediator) mediatorImpl);
+                        }
+                        mediatorImpl = getNextMediatorFromParentStack(parentStack);
+                        break;
+                    } else {
+                        count++;
+                        tempConnector = getOutputConnector((Mediator) mediator);
+                    }
+                } else {
+                    throw new MediatorNotFoundException("Mediation flow diagram error");
+                }
+            }
+
+        } while (mediatorImpl instanceof MediatorImpl);
+
         throw new MediatorNotFoundException(selection + " Mediator not found in Fault Sequence");
     }
 

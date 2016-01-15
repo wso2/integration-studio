@@ -16,18 +16,23 @@
 
 package org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.debugpoint.builder.impl;
 
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.MEDIATOR_INSERT_ACTION;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.PROXY_FAULTSEQ_LABEL;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.PROXY_INSEQ_LABEL;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.PROXY_OUTSEQ_LABEL;
+
+import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.gef.EditPart;
-import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.gef.EditPart;
+import org.eclipse.gmf.runtime.notation.View;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbServer;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.debugpoint.impl.ESBDebugPoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.exception.ESBDebuggerException;
-import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.exception.MediatorNotFoundException;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.messages.util.ESBMediatorPosition;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.messages.util.ESBProxyBean;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.messages.util.ESBProxyDebugPointMessage;
@@ -36,8 +41,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.ProxyServiceC
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.ProxyServiceFaultContainerEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.ProxyServiceSequenceAndEndpointContainerEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.ProxyServiceImpl;
-
-import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.*;
 
 /**
  * This class builds ESB breakpoints related to Proxy Services.
@@ -71,7 +74,7 @@ public class ProxyDebugPointBuilder extends AbstractESBDebugPointBuilder {
         } else if (container instanceof ProxyServiceFaultContainerEditPart) {
             position = getMediatorPositionInFaultSeq(proxy.getContainer().getFaultContainer().getMediatorFlow()
                     .getChildren(), selection);
-            sequenceType = getFaultSequenceName(proxy);
+            sequenceType = PROXY_FAULTSEQ_LABEL;
         } else {
             throw new IllegalArgumentException("Selected Metdiator Edit Part is in a unknown position : "
                     + container.toString());
@@ -88,30 +91,38 @@ public class ProxyDebugPointBuilder extends AbstractESBDebugPointBuilder {
      * deletion action of specified by action parameter and mediator object
      * specified by abstractMediator parameter.
      * 
-     * @throws MediatorNotFoundException
+     * @throws ESBDebuggerException
      */
     @Override
     public void updateExistingDebugPoints(IResource resource, AbstractMediator abstractMediator, EsbServer esbServer,
-            String action) throws MediatorNotFoundException {
+            String action) throws ESBDebuggerException {
         ProxyServiceImpl proxy = (ProxyServiceImpl) esbServer.eContents().get(INDEX_OF_FIRST_ELEMENT);
+        List<Integer> position = new ArrayList<>();
+        List<ESBDebugPoint> breakpontList = new ArrayList<>();
+        EditPart container = getContainerFromEditPart(abstractMediator, ProxyServiceContainerEditPart.class);
         if (abstractMediator.reversed) {
-            List<Integer> position = getMediatorPosition(proxy.getOutSequenceOutputConnector(), abstractMediator);
-            List<ESBDebugPoint> breakpontList = getDebugPointsRelatedToModification(resource, position,
-                    PROXY_OUTSEQ_LABEL, action);
-            if (MEDIATOR_INSERT_ACTION.equalsIgnoreCase(action)) {
-                increaseBreakpointPosition(breakpontList, position);
+            if (container instanceof ProxyServiceSequenceAndEndpointContainerEditPart) {
+                position = getMediatorPosition(proxy.getOutSequenceOutputConnector(), abstractMediator);
+                breakpontList = getDebugPointsRelatedToModification(resource, position, PROXY_OUTSEQ_LABEL, action);
+            } else if (container instanceof ProxyServiceFaultContainerEditPart) {
+                position = getMediatorPositionInFaultSeq(proxy.getContainer().getFaultContainer().getMediatorFlow()
+                        .getChildren(), abstractMediator);
+                breakpontList = getDebugPointsRelatedToModification(resource, position, PROXY_FAULTSEQ_LABEL, action);
             } else {
-                decreaseBreakpointPosition(breakpontList, position);
+                throw new IllegalArgumentException("Selected Metdiator Edit Part is in a unknown position : "
+                        + container.toString());
             }
+        } else if (container instanceof ProxyServiceSequenceAndEndpointContainerEditPart) {
+            position = getMediatorPosition(proxy.getOutputConnector(), abstractMediator);
+            breakpontList = getDebugPointsRelatedToModification(resource, position, PROXY_INSEQ_LABEL, action);
         } else {
-            List<Integer> position = getMediatorPosition(proxy.getOutputConnector(), abstractMediator);
-            List<ESBDebugPoint> breakpontList = getDebugPointsRelatedToModification(resource, position,
-                    PROXY_INSEQ_LABEL, action);
-            if (MEDIATOR_INSERT_ACTION.equalsIgnoreCase(action)) {
-                increaseBreakpointPosition(breakpontList, position);
-            } else {
-                decreaseBreakpointPosition(breakpontList, position);
-            }
+            throw new IllegalArgumentException("Selected Metdiator Edit Part is in a unknown position : "
+                    + container.toString());
+        }
+        if (MEDIATOR_INSERT_ACTION.equalsIgnoreCase(action)) {
+            increaseBreakpointPosition(breakpontList, position);
+        } else {
+            decreaseBreakpointPosition(breakpontList, position);
         }
 
     }

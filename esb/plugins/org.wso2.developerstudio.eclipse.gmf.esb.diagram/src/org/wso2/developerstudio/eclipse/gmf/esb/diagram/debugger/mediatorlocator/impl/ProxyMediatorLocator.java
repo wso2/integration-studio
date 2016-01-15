@@ -17,6 +17,7 @@ package org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.mediatorlocato
 
 import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.PROXY_INSEQ_LABEL;
 import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.PROXY_OUTSEQ_LABEL;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.PROXY_FAULTSEQ_LABEL;
 
 import java.util.List;
 
@@ -53,7 +54,7 @@ public class ProxyMediatorLocator extends AbstractMediatorLocator {
         List<Integer> positionArray = debugPointMessage.getSequence().getProxy().getMediatorPosition().getPosition();
         String sequenceType = debugPointMessage.getSequence().getProxy().getSequenceType();
         ProxyServiceImpl proxy = (ProxyServiceImpl) esbServer.eContents().get(INDEX_OF_FIRST_ELEMENT);
-        if (sequenceType == null || sequenceType.equals(getFaultSequenceName(proxy))) {
+        if (sequenceType.equals(PROXY_FAULTSEQ_LABEL)) {
             return getMediatorInFaultSeq(proxy.getContainer().getFaultContainer().getMediatorFlow().getChildren(),
                     positionArray);
         } else if (sequenceType.equals(PROXY_INSEQ_LABEL)) {

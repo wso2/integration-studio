@@ -31,6 +31,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.EditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.APIResource;
+import org.wso2.developerstudio.eclipse.gmf.esb.CloneMediatorTargetOutputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbElement;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbLink;
 import org.wso2.developerstudio.eclipse.gmf.esb.Mediator;
@@ -85,7 +86,7 @@ public abstract class AbstractMediatorLocator implements IMediatorLocator {
                             tempConnector = getInnerOutputConnector((Mediator) mediator);
                         }
                     } else {
-                        return ESBDebuggerUtil.getActiveEditorEditpart(mediator);
+                        return ESBDebuggerUtil.getEditorEditpart(mediator);
                     }
                 } else {
                     count++;
@@ -97,7 +98,7 @@ public abstract class AbstractMediatorLocator implements IMediatorLocator {
                 throw new MediatorNotFoundException("Mediation flow diagram error");
             }
         }
-        throw new IllegalArgumentException("tempConnector argument can not be null");
+        throw new IllegalArgumentException("tempConnector argument is null");
     }
 
     private OutputConnector getInnerOutputConnector(Mediator mediatorImpl) {
@@ -135,10 +136,10 @@ public abstract class AbstractMediatorLocator implements IMediatorLocator {
             } else {
                 EList<SwitchCaseBranchOutputConnector> caseBranches = ((SwitchMediatorImpl) mediatorImpl)
                         .getCaseBranches();
-                if (caseBranches.size() <= position) {
+                if (caseBranches.size() >= position) {
                     return caseBranches.get(position - 1);
                 } else {
-                    throw new IllegalArgumentException("Unknown Filter Mediator List position found : " + position);
+                    throw new IllegalArgumentException("Unknown Switch Mediator List position found : " + position);
                 }
             }
         } else if (mediatorImpl instanceof ThrottleMediatorImpl) {
@@ -147,7 +148,7 @@ public abstract class AbstractMediatorLocator implements IMediatorLocator {
             } else if (position == THROTTLE_ON_REJECT_CONTAINER_POSITION_VALUE) {
                 return ((ThrottleMediatorImpl) mediatorImpl).getOnRejectOutputConnector();
             } else {
-                throw new IllegalArgumentException("Unknown Filter Mediator List position found : " + position);
+                throw new IllegalArgumentException("Unknown Throttle Mediator List position found : " + position);
             }
         } else if (mediatorImpl instanceof EntitlementMediatorImpl) {
             if (position == ENTITLEMENT_ON_REJECT_CONTAINER_POSITION_VALUE) {
@@ -159,7 +160,15 @@ public abstract class AbstractMediatorLocator implements IMediatorLocator {
             } else if (position == ENTITLEMENT_OBLIGATIONS_CONTAINER_POSITION_VALUE) {
                 return ((EntitlementMediatorImpl) mediatorImpl).getObligationsOutputConnector();
             } else {
-                throw new IllegalArgumentException("Unknown Filter Mediator List position found : " + position);
+                throw new IllegalArgumentException("Unknown Entitlement Mediator List position found : " + position);
+            }
+        } else if (mediatorImpl instanceof CloneMediatorImpl) {
+            EList<CloneMediatorTargetOutputConnector> targetBranches = ((CloneMediatorImpl) mediatorImpl)
+                    .getTargetsOutputConnector();
+            if (targetBranches.size() >= position) {
+                return targetBranches.get(position);
+            } else {
+                throw new IllegalArgumentException("Unknown Clone Mediator List position found : " + position);
             }
         }
         throw new IllegalArgumentException("Unknown Complex Mediator found : " + mediatorImpl.getClass());
@@ -168,16 +177,65 @@ public abstract class AbstractMediatorLocator implements IMediatorLocator {
     protected EditPart getMediatorInFaultSeq(EList<EsbElement> children, List<Integer> positionList)
             throws MediatorNotFoundException {
         int count = 0;
-        int position = positionList.get(INDEX_OF_FIRST_ELEMENT);
+        EsbElement mediatorElement = null;
+        EditPart mediatorImpl = null;
+        int position = positionList.remove(INDEX_OF_FIRST_ELEMENT);
         for (EsbElement mediator : children) {
-            if (count == position) {
-                return ESBDebuggerUtil.getActiveEditorEditpart(mediator);
+            if ((children.size() - count - 1) == position) {
+                mediatorImpl = ESBDebuggerUtil.getEditorEditpart(mediator);
+                mediatorElement = mediator;
+                break;
             } else {
                 count++;
             }
         }
-        throw new MediatorNotFoundException("Breakpoint position value is invalid : " + "position expected - "
-                + position + " , Last Index in flow : " + (count - 1));
+
+        if (mediatorImpl == null) {
+            throw new MediatorNotFoundException("Breakpoint position value is invalid : " + "position expected - "
+                    + position + " , Last Index in flow : " + (count - 1));
+        }
+        OutputConnector tempConnector;
+        if (AbstractESBDebugPointBuilder.isComplexMediatorType(mediatorElement) && positionList.size() > 0) {
+            count = 0;
+            if (AbstractESBDebugPointBuilder.isComplexListMediator(mediatorElement)) {
+                tempConnector = getInnerListOutputConnector(mediatorElement,
+                        positionList.remove(INDEX_OF_FIRST_ELEMENT));
+            } else {
+                tempConnector = getInnerOutputConnector((Mediator) mediatorImpl);
+            }
+        } else {
+            return mediatorImpl;
+        }
+        count = 0;
+        while (tempConnector != null) {
+            EsbLink outgoingLink = tempConnector.getOutgoingLink();
+            if (outgoingLink != null && outgoingLink.getTarget() != null) {
+                EObject mediator = outgoingLink.getTarget().eContainer();
+                if (count == positionList.get(INDEX_OF_FIRST_ELEMENT)) {
+                    positionList.remove(INDEX_OF_FIRST_ELEMENT);
+                    if (AbstractESBDebugPointBuilder.isComplexMediatorType(mediator) && positionList.size() > 0) {
+                        count = 0;
+                        if (AbstractESBDebugPointBuilder.isComplexListMediator(mediator)) {
+                            tempConnector = getInnerListOutputConnector(mediator,
+                                    positionList.remove(INDEX_OF_FIRST_ELEMENT));
+                        } else {
+                            tempConnector = getInnerOutputConnector((Mediator) mediator);
+                        }
+                    } else {
+                        return ESBDebuggerUtil.getEditorEditpart(mediator);
+                    }
+                } else {
+                    count++;
+                    if (mediator instanceof Mediator) {
+                        tempConnector = AbstractESBDebugPointBuilder.getOutputConnector((Mediator) mediator);
+                    }
+                }
+            } else {
+                throw new MediatorNotFoundException("Mediation flow diagram error");
+            }
+        }
+        throw new IllegalArgumentException("tempConnector argument is null");
+
     }
 
     protected String getFaultSequenceName(EObject element) {

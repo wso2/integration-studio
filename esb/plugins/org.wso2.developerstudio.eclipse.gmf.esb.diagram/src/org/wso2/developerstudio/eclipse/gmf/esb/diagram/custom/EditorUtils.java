@@ -1005,34 +1005,30 @@ public class EditorUtils {
 	 * @return
 	 * @throws CoreException
 	 */
-	public static IProject getActiveProjectSafemode() throws CoreException {
+    public static IProject getActiveProjectSafemode() throws CoreException {
 
-		IEditorPart editorPart = null;
-		IProject activeProject = null;
-		IEditorReference[] editorReferences = PlatformUI.getWorkbench()
-				.getActiveWorkbenchWindow().getActivePage()
-				.getEditorReferences();
-		IFile file = null;
-		for (IEditorReference editorReference : editorReferences) {
-			IEditorPart editor = editorReference.getEditor(false);
-			if (editor != null) {
-				editorPart = editor.getSite().getWorkbenchWindow()
-						.getActivePage().getActiveEditor();
-			}
-			if (editorPart != null) {
-				EsbEditorInput input = (EsbEditorInput) editorPart
-						.getEditorInput();
-				file = input.getXmlResource();
-				activeProject = file.getProject();
-			}
-
-		}
-		if (!(activeProject.hasNature(Constants.ESB_PROJECT_NATURE) || activeProject
-				.hasNature(Constants.GENERAL_PROJECT_NATURE))) {
-			activeProject = getParentESBProject(file);
-		}
-		return activeProject;
-	}
+        IEditorPart editorPart = null;
+        IProject activeProject = null;
+        IEditorReference[] editorReferences = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
+                .getEditorReferences();
+        IFile file = null;
+        for (IEditorReference editorReference : editorReferences) {
+            IEditorPart editor = editorReference.getEditor(false);
+            if (editor != null) {
+                editorPart = editor.getSite().getWorkbenchWindow().getActivePage().getActiveEditor();
+                if (editorPart != null) {
+                    EsbEditorInput input = (EsbEditorInput) editorPart.getEditorInput();
+                    file = input.getXmlResource();
+                    activeProject = file.getProject();
+                }
+            }
+        }
+        if (!(activeProject.hasNature(Constants.ESB_PROJECT_NATURE) || activeProject
+                .hasNature(Constants.GENERAL_PROJECT_NATURE))) {
+            activeProject = getParentESBProject(file);
+        }
+        return activeProject;
+    }
 
 	private static IProject getParentESBProject(IFile file) {
 		IPath path = file.getFullPath();

@@ -33,6 +33,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ESBMetaDataFileDeleteChange extends TextFileChange {
+	
+	private static final String ARTIFACT_XML_FILE = "artifact.xml";
+	private static final String LINE_SEPERATOR_PROPERTY ="line.separator";
 	IDeveloperStudioLog log= Logger.getLog(Activator.PLUGIN_ID);
 	
 	private IFile metaDataFile;
@@ -64,7 +67,7 @@ public class ESBMetaDataFileDeleteChange extends TextFileChange {
 	}
 
 	private void addTextEdits() {
-		if ("artifact.xml".equalsIgnoreCase(metaDataFile.getName())) {
+		if (ARTIFACT_XML_FILE.equalsIgnoreCase(metaDataFile.getName())) {
 			try {
 				identifyReplaces();
 			} catch (IOException e) {
@@ -160,8 +163,8 @@ public class ESBMetaDataFileDeleteChange extends TextFileChange {
 
 	private int charsOnTheLine(String line) {
 		// Here we need to add one to represent the newline character
-		String lineModified = line;
-		lineModified += System.getProperty("line.separator");
+		String lineModified = line
+				+ System.getProperty(LINE_SEPERATOR_PROPERTY);
 		return lineModified.length();
 	}
 

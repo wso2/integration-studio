@@ -58,15 +58,15 @@ public class ESBStackFrame extends ESBDebugElement implements IStackFrame, Event
     private int lineNumber = 1;
     private List<IVariable> variables = new ArrayList<>();
     private boolean variablesDirty = true;
-    private IEventBroker propertyChangeCommandEventBroker;
-    
+    private IEventBroker propertyChangeCommandEB;
+
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
     public ESBStackFrame(IDebugTarget target, IThread thread) {
         super(target);
         this.thread = thread;
-        propertyChangeCommandEventBroker = (IEventBroker) PlatformUI.getWorkbench().getService(IEventBroker.class);
-        propertyChangeCommandEventBroker.subscribe(ESB_STACK_FRAME_PROPERTY_CHANGE_EVENT, this);
+        propertyChangeCommandEB = (IEventBroker) PlatformUI.getWorkbench().getService(IEventBroker.class);
+        propertyChangeCommandEB.subscribe(ESB_STACK_FRAME_PROPERTY_CHANGE_EVENT, this);
     }
 
     @Override
@@ -155,13 +155,13 @@ public class ESBStackFrame extends ESBDebugElement implements IStackFrame, Event
         case ESBDebuggerConstants.AXIS2_PROPERTIES_KEY:
             return Messages.ESBStackFrame_Axis2ScopePropertyTag;
         case ESBDebuggerConstants.AXIS2_CLIENT_PROPERTIES_KEY:
-            return Messages.ESBStackFrame_OperationScopePropertyTag;
-        case ESBDebuggerConstants.SYNAPSE_PROPERTIES_KEY:
             return Messages.ESBStackFrame_Axis2ClientScopePropertyTag;
+        case ESBDebuggerConstants.SYNAPSE_PROPERTIES_KEY:
+            return Messages.ESBStackFrame_SynapseScopePropertyTag;
         case ESBDebuggerConstants.TRANSPORT_PROPERTIES_KEY:
             return Messages.ESBStackFrame_TransportScopePropertyTag;
         case ESBDebuggerConstants.OPERATION_PROPERTIES_KEY:
-            return Messages.ESBStackFrame_SynapseScopePropertyTag;
+            return Messages.ESBStackFrame_OperationScopePropertyTag;
         }
         return name;
     }
@@ -173,16 +173,16 @@ public class ESBStackFrame extends ESBDebugElement implements IStackFrame, Event
             PropertyChangeCommand propertyCommand = (PropertyChangeCommand) eventObject;
             PropertyChangeRequest propertyChangeRequest = new PropertyChangeRequest(propertyCommand);
             getDebugTarget().fireModelEvent(propertyChangeRequest);
-        }else if(eventObject instanceof FetchVariablesRequest){
-            propertyChangeCommandEventBroker.send(PROPERTY_CHANGE_COMMAND_HANDLER_EVENT_TOPIC, variables);
-        }else{
-            log.warn("Unhandled Event type recived for ESBStackFrame : "+eventObject.toString());
+        } else if (eventObject instanceof FetchVariablesRequest) {
+            propertyChangeCommandEB.send(PROPERTY_CHANGE_COMMAND_HANDLER_EVENT_TOPIC, variables);
+        } else {
+            log.warn("Unhandled Event type recived for ESBStackFrame : " + eventObject.toString());
         }
     }
-    
+
     @Override
     public void terminate() {
-        propertyChangeCommandEventBroker.unsubscribe(this);
+        propertyChangeCommandEB.unsubscribe(this);
         getDebugTarget().fireModelEvent(new TerminateRequest());
         OpenEditorUtil.removeBreakpointHitStatus();
     }

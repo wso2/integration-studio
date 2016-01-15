@@ -103,10 +103,10 @@ public class ESBVariable extends ESBDebugElement implements IVariable {
     }
 
     @Override
-    public boolean verifyValue(String expression) {
-        PropertyValueBean property = new PropertyValueBean(variableName, expression);
+    public boolean verifyValue(String modifiedValue) {
+        PropertyValueBean property = new PropertyValueBean(variableName, modifiedValue);
         PropertyChangeCommand propertyCommand = new PropertyChangeCommand(SET_COMMAND, PROPERTY_VALUE,
-                getESBContextNameFromUITableVariableName(variableContext), property);
+                getPropertyContextNameOfUIPropertyName(variableContext), property);
         PropertyChangeRequest propertyChangeRequest = new PropertyChangeRequest(propertyCommand);
         getDebugTarget().fireModelEvent(propertyChangeRequest);
         return true;
@@ -147,7 +147,7 @@ public class ESBVariable extends ESBDebugElement implements IVariable {
         return false;
     }
 
-    private String getESBContextNameFromUITableVariableName(String name) {
+    private String getPropertyContextNameOfUIPropertyName(String name) {
         switch (name) {
         case AXIS2_PROPERTIES_TAG:
             return AXIS2_PROPERTIES_KEY;

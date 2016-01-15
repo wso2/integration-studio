@@ -15,7 +15,16 @@
  */
 package org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.impl;
 
-import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.*;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.AXIS2_CLIENT_PROPERTY_TAG;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.AXIS2_PROPERTY_TAG;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.ESBDEBUGGER_EVENT_TOPIC;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.ESB_DEBUGGER_EVENT_BROKER_DATA_NAME;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.ESB_DEBUG_TARGET_EVENT_TOPIC;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.GET_COMMAND_VALUE;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.OPERATION_PROPERTY_TAG;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.PROPERTIES_VALUE;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.SYANPSE_PROPERTY_TAG;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.TRANSPORT_PROPERTY_TAG;
 
 import java.io.IOException;
 
@@ -43,16 +52,15 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.messages.IEvent
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.messages.IResponseMessage;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.messages.command.CommandMessage;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.messages.command.GetPropertyCommand;
-import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.messages.command.PropertyChangeCommand;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.messages.event.DebugPointEventMessage;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.messages.event.GeneralEventMessage;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.messages.event.SpecialCoordinationEventMessage;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.messages.response.CommandResponseMessage;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.messages.response.PropertyRespondMessage;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.messages.util.AbstractESBDebugPointMessage;
-import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerUtil;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerCommands;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerResumeType;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerUtil;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.EventMessageType;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
@@ -94,7 +102,7 @@ public class ESBDebugger implements IESBDebugger, EventHandler {
                 getPropertiesFromESB();
             } else if (event instanceof TerminateRequest) {
                 fireTerminatedEvent();
-            } else if (event instanceof PropertyChangeRequest){
+            } else if (event instanceof PropertyChangeRequest) {
                 debuggerInterface.sendChangePropertyCommand(((PropertyChangeRequest) event).getPropertyCommand());
             }
         } catch (IOException e) {
@@ -210,16 +218,11 @@ public class ESBDebugger implements IESBDebugger, EventHandler {
         debuggerInterface.sendGetPropertiesCommand(new GetPropertyCommand(GET_COMMAND_VALUE, PROPERTIES_VALUE,
                 SYANPSE_PROPERTY_TAG));
     }
-    
+
     private void sendDebugPointForServer(DebugPointRequest event) throws Exception {
         AbstractESBDebugPointMessage debugPoint = event.getDebugPointAttributes();
         debugPoint.setCommand(event.getType().toString());
         debuggerInterface.sendBreakpointCommand(debugPoint);
-    }
-    
-    private void sendPropertyChangeForServer(PropertyChangeRequest event) throws Exception {
-        PropertyChangeCommand propertyChangeCommand = event.getPropertyCommand();
-        debuggerInterface.sendChangePropertyCommand(propertyChangeCommand);
     }
 
 }

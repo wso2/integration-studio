@@ -164,7 +164,7 @@ public class ESBDebuggerInterface implements IESBDebuggerInterface {
         requestWriter.flush();
         log.info("Breakpoint command sent : " + breakpointCommandString);
     }
-    
+
     @Override
     public void sendChangePropertyCommand(PropertyChangeCommand propertyChangeCommand) throws Exception {
         String propertyChangeCommandString = messageFactory.createPropertyChangeCommand(propertyChangeCommand);

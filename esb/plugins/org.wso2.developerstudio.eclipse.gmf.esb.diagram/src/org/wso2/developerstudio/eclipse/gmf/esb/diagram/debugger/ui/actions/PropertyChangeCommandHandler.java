@@ -59,7 +59,7 @@ import org.wso2.developerstudio.eclipse.logging.core.Logger;
  */
 public class PropertyChangeCommandHandler extends AbstractHandler implements EventHandler {
 
-    private IEventBroker propertyChangeCommandEventBroker;
+    private IEventBroker propertyChangeCommandEB;
     List<IVariable> variables;
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
@@ -82,24 +82,16 @@ public class PropertyChangeCommandHandler extends AbstractHandler implements Eve
             InjectPropertyDialog dialog = new InjectPropertyDialog(shell);
             PropertyChangeCommand propertyCommandMessage = dialog.open();
             if (propertyCommandMessage.getContext() != null) {
-                propertyChangeCommandEventBroker.send(ESB_STACK_FRAME_PROPERTY_CHANGE_EVENT, propertyCommandMessage);
+                propertyChangeCommandEB.send(ESB_STACK_FRAME_PROPERTY_CHANGE_EVENT, propertyCommandMessage);
             }
+            disposeEventBroker();
         } else if (ESB_MESSAGE_MEDIATION_PROPERTY_CLEAR_COMMAND_ID.equals(commandId)) {
-            propertyChangeCommandEventBroker.send(ESB_STACK_FRAME_PROPERTY_CHANGE_EVENT, new FetchVariablesRequest());
+            propertyChangeCommandEB.send(ESB_STACK_FRAME_PROPERTY_CHANGE_EVENT, new FetchVariablesRequest());
         } else {
             log.warn("Unhandled Command Id recieved for PropertyChangeCommandHandler : " + commandId);
+            disposeEventBroker();
         }
-        disposeEvetBroker();
         return null;
-    }
-
-    private void disposeEvetBroker() {
-        propertyChangeCommandEventBroker = null;
-    }
-
-    private void initializeHandler() {
-        propertyChangeCommandEventBroker = (IEventBroker) PlatformUI.getWorkbench().getService(IEventBroker.class);
-        propertyChangeCommandEventBroker.subscribe(PROPERTY_CHANGE_COMMAND_HANDLER_EVENT_TOPIC, this);
     }
 
     /**
@@ -123,11 +115,22 @@ public class PropertyChangeCommandHandler extends AbstractHandler implements Eve
             }
             PropertyChangeCommand propertyCommandMessage = dialog.open();
             if (propertyCommandMessage.getContext() != null) {
-                propertyChangeCommandEventBroker.send(ESB_STACK_FRAME_PROPERTY_CHANGE_EVENT, propertyCommandMessage);
+                propertyChangeCommandEB.send(ESB_STACK_FRAME_PROPERTY_CHANGE_EVENT, propertyCommandMessage);
             }
         } else {
             log.warn("Unhandled Event type recived for ESBStackFrame : " + eventObject.toString());
         }
+        disposeEventBroker();
+    }
+
+    private void disposeEventBroker() {
+        propertyChangeCommandEB.unsubscribe(this);
+        propertyChangeCommandEB = null;
+    }
+
+    private void initializeHandler() {
+        propertyChangeCommandEB = (IEventBroker) PlatformUI.getWorkbench().getService(IEventBroker.class);
+        propertyChangeCommandEB.subscribe(PROPERTY_CHANGE_COMMAND_HANDLER_EVENT_TOPIC, this);
     }
 
 }

@@ -34,9 +34,8 @@ public interface ICommunicationMessageFactory {
      * 
      * @param command
      * @return
-     * @throws JSONException
      */
-    String createCommand(CommandMessage command) throws Exception;
+    String createCommand(CommandMessage command);
 
     /**
      * This method creates the specified breakpoint command message to send to
@@ -44,9 +43,8 @@ public interface ICommunicationMessageFactory {
      * 
      * @param debugPoint
      * @return
-     * @throws JSONException
      */
-    String createBreakpointCommand(AbstractESBDebugPointMessage debugPoint) throws Exception;
+    String createBreakpointCommand(AbstractESBDebugPointMessage debugPoint);
 
     /**
      * This method creates the specified get properties command message to send
@@ -54,27 +52,24 @@ public interface ICommunicationMessageFactory {
      * 
      * @param getPropertyCommand
      * @return
-     * @throws JSONException
      */
-    String createGetPropertiesCommand(GetPropertyCommand getPropertyCommand) throws Exception;
+    String createGetPropertiesCommand(GetPropertyCommand getPropertyCommand);
 
     /**
      * This method converts response message for Map<String,Object>
      * 
      * @param response
      * @return
-     * @throws JSONException
      */
-    IResponseMessage convertResponseToIResponseMessage(String response) throws Exception;
+    IResponseMessage convertResponseToIResponseMessage(String response);
 
     /**
      * This method converts event message for Map<String,Object>
      * 
      * @param buffer
      * @return
-     * @throws JSONException
      */
-    IEventMessage convertEventToIEventMessage(String buffer) throws Exception;
+    IEventMessage convertEventToIEventMessage(String buffer);
 
     /**
      * This method creates the specified change properties command message to send
@@ -82,8 +77,7 @@ public interface ICommunicationMessageFactory {
      * 
      * @param propertyChangeCommand
      * @return
-     * @throws Exception
      */
-    String createPropertyChangeCommand(PropertyChangeCommand propertyChangeCommand) throws Exception;
+    String createPropertyChangeCommand(PropertyChangeCommand propertyChangeCommand);
 
 }

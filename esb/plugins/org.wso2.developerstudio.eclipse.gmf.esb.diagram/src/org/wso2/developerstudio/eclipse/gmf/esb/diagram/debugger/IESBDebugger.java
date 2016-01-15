@@ -17,6 +17,8 @@ package org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger;
 
 import java.io.IOException;
 
+import org.eclipse.core.runtime.CoreException;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.exception.DebugPointMarkerNotFoundException;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.messages.IEventMessage;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.messages.IResponseMessage;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.messages.event.DebugPointEventMessage;
@@ -53,9 +55,11 @@ public interface IESBDebugger {
      * Terminated
      * 
      * @throws IOException
+     * @throws CoreException 
+     * @throws DebugPointMarkerNotFoundException 
      * @throws Exception
      */
-    public void fireTerminatedEvent() throws IOException, Exception;
+    public void fireTerminatedEvent() throws IOException, DebugPointMarkerNotFoundException, CoreException;
 
     /**
      * This method send event for {@link IESBDebugTarget} informing ESB Server

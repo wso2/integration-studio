@@ -94,7 +94,7 @@ public class ESBDebuggerInterface implements IESBDebuggerInterface {
     }
 
     @Override
-    public void sendCommand(CommandMessage command) throws Exception {
+    public void sendCommand(CommandMessage command) {
         String commandString = messageFactory.createCommand(command);
         requestWriter.println(commandString);
         requestWriter.flush();
@@ -150,7 +150,7 @@ public class ESBDebuggerInterface implements IESBDebuggerInterface {
     }
 
     @Override
-    public void sendGetPropertiesCommand(GetPropertyCommand getPropertyCommand) throws Exception {
+    public void sendGetPropertiesCommand(GetPropertyCommand getPropertyCommand) {
         String getPropertyCommandString = messageFactory.createGetPropertiesCommand(getPropertyCommand);
         requestWriter.println(getPropertyCommandString);
         requestWriter.flush();
@@ -158,7 +158,7 @@ public class ESBDebuggerInterface implements IESBDebuggerInterface {
     }
 
     @Override
-    public void sendBreakpointCommand(AbstractESBDebugPointMessage debugPoint) throws Exception {
+    public void sendBreakpointCommand(AbstractESBDebugPointMessage debugPoint) {
         String breakpointCommandString = messageFactory.createBreakpointCommand(debugPoint);
         requestWriter.println(breakpointCommandString);
         requestWriter.flush();
@@ -166,7 +166,7 @@ public class ESBDebuggerInterface implements IESBDebuggerInterface {
     }
 
     @Override
-    public void sendChangePropertyCommand(PropertyChangeCommand propertyChangeCommand) throws Exception {
+    public void sendChangePropertyCommand(PropertyChangeCommand propertyChangeCommand) {
         String propertyChangeCommandString = messageFactory.createPropertyChangeCommand(propertyChangeCommand);
         requestWriter.println(propertyChangeCommandString);
         requestWriter.flush();

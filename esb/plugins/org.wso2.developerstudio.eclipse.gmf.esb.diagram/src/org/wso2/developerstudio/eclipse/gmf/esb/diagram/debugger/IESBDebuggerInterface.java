@@ -97,9 +97,8 @@ public interface IESBDebuggerInterface {
      * This method sends command message to ESB Server.
      * 
      * @param esbDebuggerCommandMessage
-     * @throws Exception
      */
-    public void sendCommand(CommandMessage esbDebuggerCommandMessage) throws Exception;
+    public void sendCommand(CommandMessage esbDebuggerCommandMessage);
 
     /**
      * This method sends breakpoint message to ESB Server to register
@@ -108,9 +107,8 @@ public interface IESBDebuggerInterface {
      * @param operation
      * @param type
      * @param debugPoint
-     * @throws Exception
      */
-    public void sendBreakpointCommand(AbstractESBDebugPointMessage debugPoint) throws Exception;
+    public void sendBreakpointCommand(AbstractESBDebugPointMessage debugPoint);
 
     /**
      * Assign a {@link IESBDebugger} for the object
@@ -123,9 +121,8 @@ public interface IESBDebuggerInterface {
      * This method sends command message to ESB Server to get properties.
      * 
      * @param getPropertyCommand
-     * @throws Exception
      */
-    public void sendGetPropertiesCommand(GetPropertyCommand getPropertyCommand) throws Exception;
+    public void sendGetPropertiesCommand(GetPropertyCommand getPropertyCommand);
 
     /**
      * Terminate Event Dispatchers attached.
@@ -138,9 +135,8 @@ public interface IESBDebuggerInterface {
      * This method sends command message to change property value of ESB Server
      * 
      * @param propertyChangeCommand
-     * @throws Exception
      */
-    public void sendChangePropertyCommand(PropertyChangeCommand propertyChangeCommand) throws Exception;
+    public void sendChangePropertyCommand(PropertyChangeCommand propertyChangeCommand);
 
     public PrintWriter getRequestWriter();
 

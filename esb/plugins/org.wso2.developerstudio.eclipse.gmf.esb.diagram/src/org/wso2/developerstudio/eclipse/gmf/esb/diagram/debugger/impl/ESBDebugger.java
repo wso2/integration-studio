@@ -29,6 +29,7 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ES
 import java.io.IOException;
 
 import org.apache.commons.lang.StringUtils;
+import org.eclipse.core.runtime.CoreException;
 import org.eclipse.e4.core.services.events.IEventBroker;
 import org.eclipse.ui.PlatformUI;
 import org.osgi.service.event.Event;
@@ -36,6 +37,7 @@ import org.osgi.service.event.EventHandler;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.Activator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.IESBDebugger;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.IESBDebuggerInterface;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.exception.DebugPointMarkerNotFoundException;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.internal.communication.IESBDebuggerInternalEvent;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.internal.communication.events.DebuggerStartedEvent;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.internal.communication.events.MediationFlowCompleteEvent;
@@ -129,7 +131,7 @@ public class ESBDebugger implements IESBDebugger, EventHandler {
     }
 
     @Override
-    public void fireTerminatedEvent() throws Exception {
+    public void fireTerminatedEvent() throws IOException, DebugPointMarkerNotFoundException, CoreException {
         ESBDebuggerUtil.removeDebugPointsFromESBServer(debuggerInterface);
         debuggerInterface.sendCommand(new CommandMessage(ESBDebuggerCommands.RESUME_COMMAND));
         fireEvent(new TerminatedEvent());

@@ -109,7 +109,7 @@ public class ESBDebuggerUtil {
     private static AbstractMediator deletedMediator;
     private static boolean deleteOperationPerformed;
 
-    public static void removeDebugPointsFromESBServer(IESBDebuggerInterface debuggerInterface) throws Exception {
+    public static void removeDebugPointsFromESBServer(IESBDebuggerInterface debuggerInterface) throws DebugPointMarkerNotFoundException, CoreException {
         IBreakpoint[] breakpoints = DebugPlugin.getDefault().getBreakpointManager()
                 .getBreakpoints(ESBDebugModelPresentation.ID);
         for (IBreakpoint debugPoint : breakpoints) {
@@ -620,7 +620,7 @@ public class ESBDebuggerUtil {
                 .getEditorReferences();
         for (IEditorReference iEditorReference : references) {
             IEditorPart editorReference = iEditorReference.getEditor(true);
-            if ( editorReference instanceof EsbMultiPageEditor) {
+            if (editorReference instanceof EsbMultiPageEditor) {
                 EsbMultiPageEditor esbMultiPageEditor = (EsbMultiPageEditor) iEditorReference.getEditor(true);
                 @SuppressWarnings("rawtypes")
                 Map editPartRegistry = esbMultiPageEditor.getDiagramEditPart().getViewer().getEditPartRegistry();

@@ -31,6 +31,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException
 
 public class BAMMediatorTransformer extends AbstractEsbNodeTransformer{
 
+    @Override
 	public void transform(TransformationInfo information, EsbNode subject) throws TransformerException {
 		information.getParentSequence().addChild(
 				createBAMMediator(subject, information));
@@ -39,10 +40,12 @@ public class BAMMediatorTransformer extends AbstractEsbNodeTransformer{
 				((BAMMediator) subject).getOutputConnector());	
 	}
 
+	@Override
 	public void createSynapseObject(TransformationInfo info, EObject subject,
 			List<Endpoint> endPoints) {	
 	}
 
+	@Override
 	public void transformWithinSequence(TransformationInfo information, EsbNode subject,
 			SequenceMediator sequence) throws TransformerException {
 		sequence.addChild(createBAMMediator(subject, information));

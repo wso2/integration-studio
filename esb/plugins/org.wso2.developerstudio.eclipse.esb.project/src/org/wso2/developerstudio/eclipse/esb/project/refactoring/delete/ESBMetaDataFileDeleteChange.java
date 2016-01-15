@@ -34,8 +34,8 @@ import java.util.List;
 
 public class ESBMetaDataFileDeleteChange extends TextFileChange {
 	
-	private static final String ARTIFACT_XML_FILE = "artifact.xml";
-	private static final String LINE_SEPERATOR_PROPERTY ="line.separator";
+    private static final String ARTIFACT_XML_FILE = "artifact.xml";
+    private static final String LINE_SEPERATOR_PROPERTY = "line.separator";
 	IDeveloperStudioLog log= Logger.getLog(Activator.PLUGIN_ID);
 	
 	private IFile metaDataFile;

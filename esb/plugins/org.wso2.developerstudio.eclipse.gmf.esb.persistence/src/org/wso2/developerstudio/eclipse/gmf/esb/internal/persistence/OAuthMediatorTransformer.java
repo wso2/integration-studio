@@ -14,9 +14,9 @@ import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException
 
 public class OAuthMediatorTransformer extends AbstractEsbNodeTransformer  {
 
+    @Override
 	public void transform(TransformationInfo information, EsbNode subject)
 			throws TransformerException {
-		// TODO Auto-generated method stub
 		information.getParentSequence().addChild(createOAuthMediator(subject));
 		// Transform the OAuth mediator output data flow path.
 		doTransform(information,
@@ -24,15 +24,14 @@ public class OAuthMediatorTransformer extends AbstractEsbNodeTransformer  {
 		
 	}
 
+    @Override
 	public void createSynapseObject(TransformationInfo info, EObject subject,
 			List<Endpoint> endPoints) {
-		// TODO Auto-generated method stub
-		
 	}
 
+    @Override
 	public void transformWithinSequence(TransformationInfo information,
 			EsbNode subject, SequenceMediator sequence) throws TransformerException {
-		// TODO Auto-generated method stub
 		sequence.addChild(createOAuthMediator(subject));
 		doTransformWithinSequence(information,((OAuthMediator) subject).getOutputConnector().getOutgoingLink(),sequence);
 		

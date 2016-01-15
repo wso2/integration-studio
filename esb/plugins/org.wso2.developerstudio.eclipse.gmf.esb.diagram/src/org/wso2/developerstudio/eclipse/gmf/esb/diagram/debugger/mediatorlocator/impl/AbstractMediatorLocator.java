@@ -37,6 +37,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbLink;
 import org.wso2.developerstudio.eclipse.gmf.esb.Mediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.OutputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.SwitchCaseBranchOutputConnector;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EditorUtils;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.debugpoint.builder.impl.AbstractESBDebugPointBuilder;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.exception.MediatorNotFoundException;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.mediatorlocator.IMediatorLocator;
@@ -91,7 +92,7 @@ public abstract class AbstractMediatorLocator implements IMediatorLocator {
                 } else {
                     count++;
                     if (mediator instanceof Mediator) {
-                        tempConnector = AbstractESBDebugPointBuilder.getOutputConnector((Mediator) mediator);
+                        tempConnector = EditorUtils.getOutputConnectorFromMediator((Mediator) mediator);
                     }
                 }
             } else {
@@ -227,7 +228,7 @@ public abstract class AbstractMediatorLocator implements IMediatorLocator {
                 } else {
                     count++;
                     if (mediator instanceof Mediator) {
-                        tempConnector = AbstractESBDebugPointBuilder.getOutputConnector((Mediator) mediator);
+                        tempConnector = EditorUtils.getOutputConnectorFromMediator((Mediator) mediator);
                     }
                 }
             } else {

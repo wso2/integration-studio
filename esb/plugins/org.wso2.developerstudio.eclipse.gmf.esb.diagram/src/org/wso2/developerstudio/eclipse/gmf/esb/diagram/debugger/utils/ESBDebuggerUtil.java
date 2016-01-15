@@ -109,7 +109,21 @@ public class ESBDebuggerUtil {
     private static AbstractMediator deletedMediator;
     private static boolean deleteOperationPerformed;
 
-    public static void removeDebugPointsFromESBServer(IESBDebuggerInterface debuggerInterface) throws DebugPointMarkerNotFoundException, CoreException {
+    /**
+     * This private constructor is to hide the implicit public constructor
+     */
+    private ESBDebuggerUtil() {
+    }
+
+    /**
+     * This method removes all registered ESBDebugPoints from ESB Server
+     * 
+     * @param debuggerInterface
+     * @throws DebugPointMarkerNotFoundException
+     * @throws CoreException
+     */
+    public static void removeDebugPointsFromESBServer(IESBDebuggerInterface debuggerInterface)
+            throws DebugPointMarkerNotFoundException, CoreException {
         IBreakpoint[] breakpoints = DebugPlugin.getDefault().getBreakpointManager()
                 .getBreakpoints(ESBDebugModelPresentation.ID);
         for (IBreakpoint debugPoint : breakpoints) {
@@ -337,8 +351,10 @@ public class ESBDebuggerUtil {
 
     /**
      * This method remove all ESBDebugPoints saved in breakpoint manager
+     * 
+     * @throws ESBDebuggerException
      */
-    public static void removeAllESBBreakpointsFromBreakpointManager() {
+    public static void removeAllESBDebugPointsFromDebugPointManager() throws ESBDebuggerException {
         IBreakpoint[] breakpoints = DebugPlugin.getDefault().getBreakpointManager()
                 .getBreakpoints(ESBDebugModelPresentation.ID);
         for (IBreakpoint breakpoint : breakpoints) {
@@ -515,10 +531,9 @@ public class ESBDebuggerUtil {
      * 
      * @param server
      * @param editorInput
-     * @throws ESBDebuggerException 
+     * @throws ESBDebuggerException
      */
-    public static void addDesignViewDebugPoints(EsbServer server, IEditorInput editorInput)
-            throws ESBDebuggerException {
+    public static void addDesignViewDebugPoints(EsbServer server, IEditorInput editorInput) throws ESBDebuggerException {
 
         if (editorInput instanceof FileEditorInput) {
             IFile file = ((FileEditorInput) editorInput).getFile();
@@ -574,7 +589,7 @@ public class ESBDebuggerUtil {
         IBreakpoint[] breakpoints = getDebugPointsInFile(file);
         for (IBreakpoint breakpoint : breakpoints) {
             try {
-                EditPart editPart = mediatorLocator.getMediatorEditPart(server, ((ESBDebugPoint) breakpoint));
+                EditPart editPart = mediatorLocator.getMediatorEditPart(server, (ESBDebugPoint) breakpoint);
                 if (editPart instanceof AbstractMediator) {
 
                     if (((ESBDebugPoint) breakpoint).isBreakpoint()) {
@@ -591,12 +606,12 @@ public class ESBDebuggerUtil {
                         }
                         ((AbstractMediator) editPart).setBreakpointHitStatus(true);
                         while (true) {
-                            if (((AbstractMediator) editPart).isBreakpointHit() == true) {
+                            if (((AbstractMediator) editPart).isBreakpointHit()) {
                                 break;
                             }
                         }
                         editPart.setSelected(EditPart.SELECTED);
-                        OpenEditorUtil.setPreviousHitEditPart(((AbstractMediator) editPart));
+                        OpenEditorUtil.setPreviousHitEditPart((AbstractMediator) editPart);
                         OpenEditorUtil.setToolTipMessageOnMediator();
                     }
                 }
@@ -675,14 +690,12 @@ public class ESBDebuggerUtil {
     private static EsbServer getESBServerFromIEditorPart(IEditorPart activeEditor) {
         Diagram diagram = ((EsbMultiPageEditor) (activeEditor)).getDiagram();
         EsbDiagram esbDiagram = (EsbDiagram) diagram.getElement();
-        EsbServer esbServer = esbDiagram.getServer();
-        return esbServer;
+        return esbDiagram.getServer();
     }
 
     private static IResource getIResourceFromIEditorPart(IEditorPart activeEditor) {
         IFile file = ((FileEditorInput) (((EsbMultiPageEditor) activeEditor).getEditorInput())).getFile();
-        IResource resource = (IResource) file.getAdapter(IResource.class);
-        return resource;
+        return (IResource) file.getAdapter(IResource.class);
     }
 
     public static void setDeletedMediator(AbstractMediator editPart) {

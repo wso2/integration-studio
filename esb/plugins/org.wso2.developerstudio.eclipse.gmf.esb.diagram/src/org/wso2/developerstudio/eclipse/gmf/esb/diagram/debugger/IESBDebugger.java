@@ -55,9 +55,8 @@ public interface IESBDebugger {
      * Terminated
      * 
      * @throws IOException
-     * @throws CoreException 
-     * @throws DebugPointMarkerNotFoundException 
-     * @throws Exception
+     * @throws CoreException
+     * @throws DebugPointMarkerNotFoundException
      */
     public void fireTerminatedEvent() throws IOException, DebugPointMarkerNotFoundException, CoreException;
 

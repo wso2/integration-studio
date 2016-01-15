@@ -22,6 +22,12 @@ package org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils;
  */
 public class ESBDebuggerConstants {
 
+    /**
+     * This private constructor hides the implicit public constructor
+     */
+    private ESBDebuggerConstants() {
+    }
+
     // Hash Code related constants
     public static final int INITIAL_HASH_CODE_RESULT_VALUE = 17;
     public static final int HASHCODE_MULTIPLIER_VALUE = 37;

@@ -61,8 +61,8 @@ public class ESBInboundEndpointDebugPointMessage extends AbstractESBDebugPointMe
      * the same mediator.
      */
     public boolean equalsIgnoreType(ESBInboundEndpointDebugPointMessage debugPointMessage) {
-        if (mediationComponent.equals(debugPointMessage.getMediationComponent())
-                && sequence.equals(debugPointMessage.getSequence())) {
+        if (getMediationComponent().equals(debugPointMessage.getMediationComponent())
+                && getSequence().equals(debugPointMessage.getSequence())) {
             return true;
         }
         return false;
@@ -79,9 +79,9 @@ public class ESBInboundEndpointDebugPointMessage extends AbstractESBDebugPointMe
     public boolean equals(Object debugPointMessage) {
         if (debugPointMessage instanceof ESBInboundEndpointDebugPointMessage) {
             ESBInboundEndpointDebugPointMessage debugPointMessageTemp = (ESBInboundEndpointDebugPointMessage) debugPointMessage;
-            if (!(mediationComponent.equals((debugPointMessageTemp).getMediationComponent())
-                    && commandArgument.equals((debugPointMessageTemp).getCommandArgument()) && sequence
-                        .equals(debugPointMessageTemp.getSequence()))) {
+            if (!(getMediationComponent().equals((debugPointMessageTemp).getMediationComponent())
+                    && getCommandArgument().equals((debugPointMessageTemp).getCommandArgument()) && getSequence()
+                    .equals(debugPointMessageTemp.getSequence()))) {
                 return false;
             }
             return true;
@@ -93,26 +93,27 @@ public class ESBInboundEndpointDebugPointMessage extends AbstractESBDebugPointMe
     @Override
     public int hashCode() {
         int result = INITIAL_HASH_CODE_RESULT_VALUE;
-        result = HASHCODE_MULTIPLIER_VALUE * result + mediationComponent.hashCode()
+        result = HASHCODE_MULTIPLIER_VALUE * result + getMediationComponent().hashCode()
                 + MEDIATION_COMPONENT_LABEL.hashCode();
-        result = HASHCODE_MULTIPLIER_VALUE * result + commandArgument.hashCode() + COMMAND_ARGUMENT_LABEL.hashCode();
-        result = HASHCODE_MULTIPLIER_VALUE * result + sequence.hashCode() + SEQUENCE_LABEL.hashCode();
+        result = HASHCODE_MULTIPLIER_VALUE * result + getCommandArgument().hashCode()
+                + COMMAND_ARGUMENT_LABEL.hashCode();
+        result = HASHCODE_MULTIPLIER_VALUE * result + getSequence().hashCode() + SEQUENCE_LABEL.hashCode();
         return result;
     }
 
     @Override
     public ESBMediatorPosition getMediatorPosition() {
-        return sequence.getInboundEndpoint().getMediatorPosition();
+        return getSequence().getInboundEndpoint().getMediatorPosition();
     }
 
     @Override
     public void setMediatorPosition(List<Integer> positionList) {
-        sequence.getInboundEndpoint().setMediatorPosition(new ESBMediatorPosition(positionList));
+        getSequence().getInboundEndpoint().setMediatorPosition(new ESBMediatorPosition(positionList));
     }
 
     @Override
     public String getSequenceType() {
-        return sequence.getInboundEndpoint().getSequenceType();
+        return getSequence().getInboundEndpoint().getSequenceType();
     }
 
     private void createInboundSequenceFromJsonElement(JsonElement recievedArtifactInfo) {
@@ -136,7 +137,7 @@ public class ESBInboundEndpointDebugPointMessage extends AbstractESBDebugPointMe
 
         }
         ESBInboundEndpointBean inbound = new ESBInboundEndpointBean(inboundKey, sequenceType, mediatorPosition);
-        sequence = new ESBInboundEndpointSequenceBean(inbound);
+        setSeqeunce(new ESBInboundEndpointSequenceBean(inbound));
     }
 
     public ESBInboundEndpointSequenceBean getSequence() {

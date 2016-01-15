@@ -42,9 +42,9 @@ public class ESBSequenceBean {
     public boolean equals(Object sequenceBean) {
         if (sequenceBean instanceof ESBSequenceBean) {
             ESBSequenceBean seqBeanTemp = (ESBSequenceBean) sequenceBean;
-            if (!(sequenceKey.equals((seqBeanTemp).getSequenceKey())
-                    && sequenceType.equals((seqBeanTemp).getSequenceType()) && mediatorPosition.equals(seqBeanTemp
-                    .getMediatorPosition()))) {
+            if (!(getSequenceKey().equals((seqBeanTemp).getSequenceKey())
+                    && getSequenceType().equals((seqBeanTemp).getSequenceType()) && getMediatorPosition().equals(
+                    seqBeanTemp.getMediatorPosition()))) {
                 return false;
             }
             return true;
@@ -56,9 +56,10 @@ public class ESBSequenceBean {
     @Override
     public int hashCode() {
         int result = INITIAL_HASH_CODE_RESULT_VALUE;
-        result = HASHCODE_MULTIPLIER_VALUE * result + sequenceKey.hashCode() + SEQUENCE_KEY_LABEL.hashCode();
-        result = HASHCODE_MULTIPLIER_VALUE * result + sequenceType.hashCode() + SEQUENCE_TYPE_LABEL.hashCode();
-        result = HASHCODE_MULTIPLIER_VALUE * result + mediatorPosition.hashCode() + MEDIATOR_POSITION_LABEL.hashCode();
+        result = HASHCODE_MULTIPLIER_VALUE * result + getSequenceKey().hashCode() + SEQUENCE_KEY_LABEL.hashCode();
+        result = HASHCODE_MULTIPLIER_VALUE * result + getSequenceType().hashCode() + SEQUENCE_TYPE_LABEL.hashCode();
+        result = HASHCODE_MULTIPLIER_VALUE * result + getMediatorPosition().hashCode()
+                + MEDIATOR_POSITION_LABEL.hashCode();
         return result;
     }
 

@@ -50,6 +50,7 @@ public enum ESBDebuggerCommands {
         return (comapreCommand == null) ? false : command.equals(comapreCommand);
     }
 
+    @Override
     public String toString() {
         return this.command;
     }

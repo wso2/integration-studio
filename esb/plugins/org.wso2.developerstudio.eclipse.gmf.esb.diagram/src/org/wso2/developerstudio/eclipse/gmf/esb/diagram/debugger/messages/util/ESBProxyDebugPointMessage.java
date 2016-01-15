@@ -59,8 +59,8 @@ public class ESBProxyDebugPointMessage extends AbstractESBDebugPointMessage {
      * the same mediator.
      */
     public boolean equalsIgnoreType(ESBProxyDebugPointMessage debugPointMessage) {
-        if (mediationComponent.equals(debugPointMessage.getMediationComponent())
-                && sequence.equals(debugPointMessage.getSequence())) {
+        if (getMediationComponent().equals(debugPointMessage.getMediationComponent())
+                && getSequence().equals(debugPointMessage.getSequence())) {
             return true;
         }
         return false;
@@ -77,9 +77,9 @@ public class ESBProxyDebugPointMessage extends AbstractESBDebugPointMessage {
     public boolean equals(Object debugPointMessage) {
         if (debugPointMessage instanceof ESBProxyDebugPointMessage) {
             ESBProxyDebugPointMessage debugPointMessageTemp = (ESBProxyDebugPointMessage) debugPointMessage;
-            if (!(mediationComponent.equals((debugPointMessageTemp).getMediationComponent())
-                    && commandArgument.equals((debugPointMessageTemp).getCommandArgument()) && sequence
-                        .equals(debugPointMessageTemp.getSequence()))) {
+            if (!(getMediationComponent().equals((debugPointMessageTemp).getMediationComponent())
+                    && getCommandArgument().equals((debugPointMessageTemp).getCommandArgument()) && getSequence()
+                    .equals(debugPointMessageTemp.getSequence()))) {
                 return false;
             }
             return true;
@@ -91,26 +91,27 @@ public class ESBProxyDebugPointMessage extends AbstractESBDebugPointMessage {
     @Override
     public int hashCode() {
         int result = INITIAL_HASH_CODE_RESULT_VALUE;
-        result = HASHCODE_MULTIPLIER_VALUE * result + mediationComponent.hashCode()
+        result = HASHCODE_MULTIPLIER_VALUE * result + getMediationComponent().hashCode()
                 + MEDIATION_COMPONENT_LABEL.hashCode();
-        result = HASHCODE_MULTIPLIER_VALUE * result + commandArgument.hashCode() + COMMAND_ARGUMENT_LABEL.hashCode();
-        result = HASHCODE_MULTIPLIER_VALUE * result + sequence.hashCode() + SEQUENCE_LABEL.hashCode();
+        result = HASHCODE_MULTIPLIER_VALUE * result + getCommandArgument().hashCode()
+                + COMMAND_ARGUMENT_LABEL.hashCode();
+        result = HASHCODE_MULTIPLIER_VALUE * result + getSequence().hashCode() + SEQUENCE_LABEL.hashCode();
         return result;
     }
 
     @Override
     public ESBMediatorPosition getMediatorPosition() {
-        return sequence.getProxy().getMediatorPosition();
+        return getSequence().getProxy().getMediatorPosition();
     }
 
     @Override
     public void setMediatorPosition(List<Integer> positionList) {
-        sequence.getProxy().setMediatorPosition(new ESBMediatorPosition(positionList));
+        getSequence().getProxy().setMediatorPosition(new ESBMediatorPosition(positionList));
     }
 
     @Override
     public String getSequenceType() {
-        return sequence.getProxy().getSequenceType();
+        return getSequence().getProxy().getSequenceType();
     }
 
     private void createProxySequenceFromJsonElement(JsonElement recievedArtifactInfo) {
@@ -134,7 +135,7 @@ public class ESBProxyDebugPointMessage extends AbstractESBDebugPointMessage {
 
         }
         ESBProxyBean proxy = new ESBProxyBean(proxyKey, sequenceType, mediatorPosition);
-        sequence = new ESBProxySequenceBean(proxy);
+        setSeqeunce(new ESBProxySequenceBean(proxy));
     }
 
     public ESBProxySequenceBean getSequence() {

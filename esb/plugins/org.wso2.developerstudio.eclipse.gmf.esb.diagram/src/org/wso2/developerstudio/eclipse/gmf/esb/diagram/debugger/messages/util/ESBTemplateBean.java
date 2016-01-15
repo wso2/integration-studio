@@ -39,8 +39,8 @@ public class ESBTemplateBean {
     public boolean equals(Object templateBean) {
         if (templateBean instanceof ESBTemplateBean) {
             ESBTemplateBean templateBeanTemp = (ESBTemplateBean) templateBean;
-            if (!(templateKey.equals((templateBeanTemp).getTemplateKey()) && mediatorPosition.equals(templateBeanTemp
-                    .getMediatorPosition()))) {
+            if (!(getTemplateKey().equals((templateBeanTemp).getTemplateKey()) && getMediatorPosition().equals(
+                    templateBeanTemp.getMediatorPosition()))) {
                 return false;
             }
             return true;
@@ -52,8 +52,9 @@ public class ESBTemplateBean {
     @Override
     public int hashCode() {
         int result = INITIAL_HASH_CODE_RESULT_VALUE;
-        result = HASHCODE_MULTIPLIER_VALUE * result + templateKey.hashCode() + TEMPLATE_KEY_LABEL.hashCode();
-        result = HASHCODE_MULTIPLIER_VALUE * result + mediatorPosition.hashCode() + MEDIATOR_POSITION_LABEL.hashCode();
+        result = HASHCODE_MULTIPLIER_VALUE * result + getTemplateKey().hashCode() + TEMPLATE_KEY_LABEL.hashCode();
+        result = HASHCODE_MULTIPLIER_VALUE * result + getMediatorPosition().hashCode()
+                + MEDIATOR_POSITION_LABEL.hashCode();
         return result;
     }
 

@@ -46,9 +46,9 @@ public class ESBAPIBean {
     public boolean equals(Object apiBean) {
         if (apiBean instanceof ESBAPIBean) {
             ESBAPIBean apiBeanTemp = (ESBAPIBean) apiBean;
-            if (!(apiKey.equals((apiBeanTemp).getApiKey()) && resource.equals((apiBeanTemp).getResourse())
-                    && sequenceType.equals((apiBeanTemp).getSequenceType()) && mediatorPosition.equals(apiBeanTemp
-                    .getMediatorPosition()))) {
+            if (!(getApiKey().equals((apiBeanTemp).getApiKey()) && getResourse().equals((apiBeanTemp).getResourse())
+                    && getSequenceType().equals((apiBeanTemp).getSequenceType()) && getMediatorPosition().equals(
+                    apiBeanTemp.getMediatorPosition()))) {
                 return false;
             }
             return true;
@@ -60,10 +60,11 @@ public class ESBAPIBean {
     @Override
     public int hashCode() {
         int result = INITIAL_HASH_CODE_RESULT_VALUE;
-        result = HASHCODE_MULTIPLIER_VALUE * result + apiKey.hashCode() + API_KEY_LABEL.hashCode();
-        result = HASHCODE_MULTIPLIER_VALUE * result + resource.hashCode() + API_RESOURCE_LABEL.hashCode();
-        result = HASHCODE_MULTIPLIER_VALUE * result + mediatorPosition.hashCode() + MEDIATOR_POSITION_LABEL.hashCode();
-        result = HASHCODE_MULTIPLIER_VALUE * result + sequenceType.hashCode() + SEQUENCE_TYPE_LABEL.hashCode();
+        result = HASHCODE_MULTIPLIER_VALUE * result + getApiKey().hashCode() + API_KEY_LABEL.hashCode();
+        result = HASHCODE_MULTIPLIER_VALUE * result + getResourse().hashCode() + API_RESOURCE_LABEL.hashCode();
+        result = HASHCODE_MULTIPLIER_VALUE * result + getMediatorPosition().hashCode()
+                + MEDIATOR_POSITION_LABEL.hashCode();
+        result = HASHCODE_MULTIPLIER_VALUE * result + getSequenceType().hashCode() + SEQUENCE_TYPE_LABEL.hashCode();
         return result;
 
     }

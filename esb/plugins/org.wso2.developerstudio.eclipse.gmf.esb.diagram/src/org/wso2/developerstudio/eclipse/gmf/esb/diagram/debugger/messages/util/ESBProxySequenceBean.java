@@ -35,7 +35,7 @@ public class ESBProxySequenceBean {
     @Override
     public boolean equals(Object proxySeqBean) {
         if (proxySeqBean instanceof ESBProxySequenceBean) {
-            if (proxy.equals(((ESBProxySequenceBean) proxySeqBean).getProxy())) {
+            if (getProxy().equals(((ESBProxySequenceBean) proxySeqBean).getProxy())) {
                 return true;
             }
             return false;
@@ -47,7 +47,7 @@ public class ESBProxySequenceBean {
     @Override
     public int hashCode() {
         int result = INITIAL_HASH_CODE_RESULT_VALUE;
-        result = HASHCODE_MULTIPLIER_VALUE * result + proxy.hashCode() + PROXY_LABEL.hashCode();
+        result = HASHCODE_MULTIPLIER_VALUE * result + getProxy().hashCode() + PROXY_LABEL.hashCode();
 
         return result;
     }

@@ -19,6 +19,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.messages.IEvent
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.messages.IResponseMessage;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.messages.command.CommandMessage;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.messages.command.GetPropertyCommand;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.messages.command.PropertyChangeCommand;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.messages.util.AbstractESBDebugPointMessage;
 
 /**
@@ -74,5 +75,15 @@ public interface ICommunicationMessageFactory {
      * @throws JSONException
      */
     IEventMessage convertEventToIEventMessage(String buffer) throws Exception;
+
+    /**
+     * This method creates the specified change properties command message to send
+     * to ESB Server
+     * 
+     * @param propertyChangeCommand
+     * @return
+     * @throws Exception
+     */
+    String createPropertyChangeCommand(PropertyChangeCommand propertyChangeCommand) throws Exception;
 
 }

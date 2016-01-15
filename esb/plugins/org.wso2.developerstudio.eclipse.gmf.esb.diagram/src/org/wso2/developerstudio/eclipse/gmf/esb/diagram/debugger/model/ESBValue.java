@@ -40,16 +40,19 @@ public class ESBValue extends ESBDebugElement implements IValue {
 
     private final String variableValue;
     private List<IVariable> valueChildren;
+    private final String variableParent;
 
-    public ESBValue(ESBDebugTarget debugTarget, String value) {
+    public ESBValue(IDebugTarget debugTarget, String value, String variableContext) {
         super(debugTarget);
         variableValue = value;
+        variableParent = variableContext;
     }
 
-    public ESBValue(IDebugTarget target, JsonElement value) throws DebugException {
+    public ESBValue(IDebugTarget target, JsonElement value, String variableContext) throws DebugException {
         super(target);
 
         variableValue = value.toString();
+        variableParent = variableContext;
         if (!value.isJsonNull()) {
             Set<Entry<String, JsonElement>> entrySet = value.getAsJsonObject().entrySet();
             if (valueChildren != null) {
@@ -70,7 +73,14 @@ public class ESBValue extends ESBDebugElement implements IValue {
      * @throws DebugException
      */
     private void addNewChildVariable(Entry<String, JsonElement> entry) throws DebugException {
-        ESBVariable esbVariable = new ESBVariable(getDebugTarget(), entry.getKey(), entry.getValue().getAsString());
+        String valueString = "";
+        ESBVariable esbVariable;
+        if (entry.getValue().isJsonPrimitive()) {
+            valueString = entry.getValue().getAsString();
+            esbVariable = new ESBVariable(getDebugTarget(), entry.getKey(), valueString, variableParent);
+        } else {
+            esbVariable = new ESBVariable(getDebugTarget(), entry.getKey(), entry.getValue(), variableParent);
+        }
         valueChildren.add(esbVariable);
         if (ENVELOPE_PROPERTY_KEY.equalsIgnoreCase(entry.getKey())) {
             OpenEditorUtil.setToolTipMessageOnMediator(entry.getValue().getAsString());

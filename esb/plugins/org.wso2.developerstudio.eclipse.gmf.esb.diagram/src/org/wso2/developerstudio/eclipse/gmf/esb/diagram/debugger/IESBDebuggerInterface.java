@@ -23,6 +23,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.channel.dispatc
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.channel.dispatcher.ChannelResponseDispatcher;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.messages.command.CommandMessage;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.messages.command.GetPropertyCommand;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.messages.command.PropertyChangeCommand;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.messages.util.AbstractESBDebugPointMessage;
 
 /**
@@ -132,6 +133,14 @@ public interface IESBDebuggerInterface {
      * @throws IOException
      */
     public void terminate() throws IOException;
+
+    /**
+     * This method sends command message to change property value of ESB Server
+     * 
+     * @param propertyChangeCommand
+     * @throws Exception
+     */
+    public void sendChangePropertyCommand(PropertyChangeCommand propertyChangeCommand) throws Exception;
 
     public PrintWriter getRequestWriter();
 

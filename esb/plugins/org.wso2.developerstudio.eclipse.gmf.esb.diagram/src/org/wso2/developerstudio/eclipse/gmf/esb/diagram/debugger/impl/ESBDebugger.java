@@ -36,12 +36,14 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.internal.commun
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.internal.communication.events.TerminatedEvent;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.internal.communication.requests.DebugPointRequest;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.internal.communication.requests.FetchVariablesRequest;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.internal.communication.requests.PropertyChangeRequest;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.internal.communication.requests.ResumeRequest;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.internal.communication.requests.TerminateRequest;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.messages.IEventMessage;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.messages.IResponseMessage;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.messages.command.CommandMessage;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.messages.command.GetPropertyCommand;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.messages.command.PropertyChangeCommand;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.messages.event.DebugPointEventMessage;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.messages.event.GeneralEventMessage;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.messages.event.SpecialCoordinationEventMessage;
@@ -87,11 +89,13 @@ public class ESBDebugger implements IESBDebugger, EventHandler {
                 stepping = (((ResumeRequest) event).getType().equals(ESBDebuggerResumeType.STEP_OVER));
                 debuggerInterface.sendCommand(new CommandMessage(ESBDebuggerCommands.RESUME_COMMAND));
             } else if (event instanceof DebugPointRequest) {
-                sendBreakpointForServer((DebugPointRequest) event);
+                sendDebugPointForServer((DebugPointRequest) event);
             } else if (event instanceof FetchVariablesRequest) {
                 getPropertiesFromESB();
             } else if (event instanceof TerminateRequest) {
                 fireTerminatedEvent();
+            } else if (event instanceof PropertyChangeRequest){
+                debuggerInterface.sendChangePropertyCommand(((PropertyChangeRequest) event).getPropertyCommand());
             }
         } catch (IOException e) {
             log.error("Termination Operation Failed", e);
@@ -118,19 +122,12 @@ public class ESBDebugger implements IESBDebugger, EventHandler {
 
     @Override
     public void fireTerminatedEvent() throws Exception {
-        ESBDebuggerUtil.removeAllESBBreakpointsFromBreakpointManager();
+        ESBDebuggerUtil.removeDebugPointsFromESBServer(debuggerInterface);
         debuggerInterface.sendCommand(new CommandMessage(ESBDebuggerCommands.RESUME_COMMAND));
         fireEvent(new TerminatedEvent());
+        log.info("Sending terminate request to debug target");
         debuggerInterface.terminate();
         debuggerEventBroker.unsubscribe(this);
-    }
-
-    private void sendBreakpointForServer(DebugPointRequest event) throws Exception {
-
-        AbstractESBDebugPointMessage debugPoint = event.getDebugPointAttributes();
-        debugPoint.setCommand(event.getType().toString());
-        debuggerInterface.sendBreakpointCommand(debugPoint);
-
     }
 
     /**
@@ -212,6 +209,17 @@ public class ESBDebugger implements IESBDebugger, EventHandler {
                 OPERATION_PROPERTY_TAG));
         debuggerInterface.sendGetPropertiesCommand(new GetPropertyCommand(GET_COMMAND_VALUE, PROPERTIES_VALUE,
                 SYANPSE_PROPERTY_TAG));
+    }
+    
+    private void sendDebugPointForServer(DebugPointRequest event) throws Exception {
+        AbstractESBDebugPointMessage debugPoint = event.getDebugPointAttributes();
+        debugPoint.setCommand(event.getType().toString());
+        debuggerInterface.sendBreakpointCommand(debugPoint);
+    }
+    
+    private void sendPropertyChangeForServer(PropertyChangeRequest event) throws Exception {
+        PropertyChangeCommand propertyChangeCommand = event.getPropertyCommand();
+        debuggerInterface.sendChangePropertyCommand(propertyChangeCommand);
     }
 
 }

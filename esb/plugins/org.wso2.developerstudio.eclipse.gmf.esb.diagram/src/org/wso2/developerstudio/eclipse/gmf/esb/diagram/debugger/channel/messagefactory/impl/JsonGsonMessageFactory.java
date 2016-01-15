@@ -27,6 +27,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.messages.IEvent
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.messages.IResponseMessage;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.messages.command.CommandMessage;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.messages.command.GetPropertyCommand;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.messages.command.PropertyChangeCommand;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.messages.event.DebugPointEventMessage;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.messages.event.GeneralEventMessage;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.messages.event.SpecialCoordinationEventMessage;
@@ -203,6 +204,14 @@ public class JsonGsonMessageFactory implements ICommunicationMessageFactory {
         builder.setFieldNamingStrategy(new PojoToGsonCustomNamingStrategy());
         Gson debugPointMessage = builder.create();
         return debugPointMessage.toJson(debugPoint);
+    }
+
+    @Override
+    public String createPropertyChangeCommand(PropertyChangeCommand propertyChangeCommand) throws Exception {
+        GsonBuilder builder = new GsonBuilder();
+        builder.setFieldNamingStrategy(new PojoToGsonCustomNamingStrategy());
+        Gson propertyChangeMessage = builder.create();
+        return propertyChangeMessage.toJson(propertyChangeCommand);
     }
 
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2015, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ * Copyright (c) 2015-2016, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,11 +15,28 @@
  */
 package org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.model;
 
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.AXIS2_CLIENT_PROPERTIES_KEY;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.AXIS2_CLIENT_PROPERTIES_TAG;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.AXIS2_PROPERTIES_KEY;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.AXIS2_PROPERTIES_TAG;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.OPERATION_PROPERTIES_KEY;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.OPERATION_PROPERTIES_TAG;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.SYNAPSE_PROPERTIES_KEY;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.SYNAPSE_PROPERTIES_TAG;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.TRANSPORT_PROPERTIES_KEY;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.*;
+
 import org.eclipse.debug.core.DebugException;
 import org.eclipse.debug.core.model.IDebugTarget;
 import org.eclipse.debug.core.model.IValue;
 import org.eclipse.debug.core.model.IVariable;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.Activator;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.internal.communication.requests.PropertyChangeRequest;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.messages.command.PropertyChangeCommand;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.messages.util.PropertyValueBean;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants;
+import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
+import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
 import com.google.gson.JsonElement;
 
@@ -31,10 +48,21 @@ public class ESBVariable extends ESBDebugElement implements IVariable {
 
     private final String variableName;
     private ESBValue variableValue;
+    private final String variableContext;
 
-    protected ESBVariable(IDebugTarget target, String name, String value) throws DebugException {
+    private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
+
+    protected ESBVariable(IDebugTarget target, String name, String value, String context) throws DebugException {
         super(target);
         variableName = name;
+        variableContext = context;
+        setValue(value);
+    }
+
+    public ESBVariable(IDebugTarget target, String name, JsonElement value, String context) throws DebugException {
+        super(target);
+        variableName = name;
+        variableContext = context;
         setValue(value);
     }
 
@@ -44,12 +72,12 @@ public class ESBVariable extends ESBDebugElement implements IVariable {
      * @throws DebugException
      */
     public void setValue(JsonElement expression) throws DebugException {
-        variableValue = new ESBValue(getDebugTarget(), expression);
+        variableValue = new ESBValue(getDebugTarget(), expression, variableName);
     }
 
     @Override
     public void setValue(String expression) throws DebugException {
-        variableValue = new ESBValue(getDebugTarget(), expression);
+        variableValue = new ESBValue(getDebugTarget(), expression, variableName);
     }
 
     /**
@@ -65,12 +93,23 @@ public class ESBVariable extends ESBDebugElement implements IVariable {
      */
     @Override
     public boolean supportsValueModification() {
+        try {
+            return !variableValue.hasVariables();
+        } catch (DebugException e) {
+            log.error("Error while trying to check whether variable " + variableValue.toString()
+                    + " has child variables", e);
+        }
         return false;
     }
 
     @Override
-    public boolean verifyValue(String expression) throws DebugException {
-        return false;
+    public boolean verifyValue(String expression) {
+        PropertyValueBean property = new PropertyValueBean(variableName, expression);
+        PropertyChangeCommand propertyCommand = new PropertyChangeCommand(SET_COMMAND, PROPERTY_VALUE,
+                getESBContextNameFromUITableVariableName(variableContext), property);
+        PropertyChangeRequest propertyChangeRequest = new PropertyChangeRequest(propertyCommand);
+        getDebugTarget().fireModelEvent(propertyChangeRequest);
+        return true;
     }
 
     @Override
@@ -106,6 +145,22 @@ public class ESBVariable extends ESBDebugElement implements IVariable {
     @Override
     public boolean hasValueChanged() throws DebugException {
         return false;
+    }
+
+    private String getESBContextNameFromUITableVariableName(String name) {
+        switch (name) {
+        case AXIS2_PROPERTIES_TAG:
+            return AXIS2_PROPERTIES_KEY;
+        case AXIS2_CLIENT_PROPERTIES_TAG:
+            return AXIS2_CLIENT_PROPERTIES_KEY;
+        case SYNAPSE_PROPERTIES_TAG:
+            return SYNAPSE_PROPERTIES_KEY;
+        case TRANSPORT_PROPERTIES_TAG:
+            return TRANSPORT_PROPERTIES_KEY;
+        case OPERATION_PROPERTIES_TAG:
+            return OPERATION_PROPERTIES_KEY;
+        }
+        return name;
     }
 
 }

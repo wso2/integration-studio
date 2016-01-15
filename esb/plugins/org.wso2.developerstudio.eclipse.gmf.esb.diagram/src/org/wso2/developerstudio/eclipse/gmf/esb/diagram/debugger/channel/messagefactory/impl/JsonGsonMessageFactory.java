@@ -67,8 +67,7 @@ public class JsonGsonMessageFactory implements ICommunicationMessageFactory {
     @Override
     public String createCommand(CommandMessage command) {
         Gson commandMessage = new Gson();
-        String message = commandMessage.toJson(command);
-        return message;
+        return commandMessage.toJson(command);
     }
 
     @Override
@@ -180,8 +179,8 @@ public class JsonGsonMessageFactory implements ICommunicationMessageFactory {
             return new SpecialCoordinationEventMessage(event, messageReciever, callbackReciever);
         case BREAKPOINT:
         case SKIPPOINT:
-            return (IEventMessage) new DebugPointEventMessage(event, ESBDebuggerUtil.getESBDebugPoint(debugPointType,
-                    event, recievedArtifactInfo));
+            return new DebugPointEventMessage(event, ESBDebuggerUtil.getESBDebugPoint(debugPointType, event,
+                    recievedArtifactInfo));
         default:
             throw new IllegalArgumentException("Invalid Event Message Recieved from ESB Server Debugger : "
                     + eventMessage);

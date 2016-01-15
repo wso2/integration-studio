@@ -28,6 +28,13 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.exception.ESBDe
 public class ESBDebugPointBuilderFactory {
 
     /**
+     * This private constructor added to hide the implicit public constructor
+     */
+    private ESBDebugPointBuilderFactory() {
+
+    }
+
+    /**
      * This method takes project type as a input and returns specific Debug
      * point Builder
      * 

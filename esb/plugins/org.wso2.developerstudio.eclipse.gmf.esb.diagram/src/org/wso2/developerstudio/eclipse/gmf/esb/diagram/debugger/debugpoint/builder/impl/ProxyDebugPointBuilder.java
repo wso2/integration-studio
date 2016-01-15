@@ -20,6 +20,7 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ES
 import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.PROXY_FAULTSEQ_LABEL;
 import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.PROXY_INSEQ_LABEL;
 import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.PROXY_OUTSEQ_LABEL;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.MEDIATOR_IN_A_UNKNOWN_POSITION_LOG_MESSAGE;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -76,8 +77,7 @@ public class ProxyDebugPointBuilder extends AbstractESBDebugPointBuilder {
                     .getChildren(), selection);
             sequenceType = PROXY_FAULTSEQ_LABEL;
         } else {
-            throw new IllegalArgumentException("Selected Metdiator Edit Part is in a unknown position : "
-                    + container.toString());
+            throw new IllegalArgumentException(MEDIATOR_IN_A_UNKNOWN_POSITION_LOG_MESSAGE + container.toString());
         }
 
         ESBProxyBean proxyBean = new ESBProxyBean(proxy.getName(), sequenceType, new ESBMediatorPosition(position));
@@ -109,15 +109,13 @@ public class ProxyDebugPointBuilder extends AbstractESBDebugPointBuilder {
                         .getChildren(), abstractMediator);
                 breakpontList = getDebugPointsRelatedToModification(resource, position, PROXY_FAULTSEQ_LABEL, action);
             } else {
-                throw new IllegalArgumentException("Selected Metdiator Edit Part is in a unknown position : "
-                        + container.toString());
+                throw new IllegalArgumentException(MEDIATOR_IN_A_UNKNOWN_POSITION_LOG_MESSAGE + container.toString());
             }
         } else if (container instanceof ProxyServiceSequenceAndEndpointContainerEditPart) {
             position = getMediatorPosition(proxy.getOutputConnector(), abstractMediator);
             breakpontList = getDebugPointsRelatedToModification(resource, position, PROXY_INSEQ_LABEL, action);
         } else {
-            throw new IllegalArgumentException("Selected Metdiator Edit Part is in a unknown position : "
-                    + container.toString());
+            throw new IllegalArgumentException(MEDIATOR_IN_A_UNKNOWN_POSITION_LOG_MESSAGE + container.toString());
         }
         if (MEDIATOR_INSERT_ACTION.equalsIgnoreCase(action)) {
             increaseBreakpointPosition(breakpontList, position);

@@ -571,25 +571,6 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
 					@Override
 					public void run() {
 						EditorUtils.setLockmode(graphicalEditor, true);
-						//final boolean dirty = isDirty(); // save previous status
-						/*
-						 * ElementDuplicator endPointDuplicator = new
-						 * ElementDuplicator(file.getProject(),getGraphicalEditor());
-						 * endPointDuplicator.updateAssociatedDiagrams(currentEditor);
-						 */
-
-						/**
-						 * This is to avoid RJS0007E Semantic refresh failed issue appears in compartments, which has
-						 * only one node. This should be replaced with the better approach
-						 */
-						//AbstractEsbNodeDeserializer.relocateStartNodes();
-						/* commented because above line "AbstractEsbNodeDeserializer.relocateStartNodes()" is commented
-						if (!dirty && isDirty()) {
-							// remove any dirty status introduced by ElementDuplicator or relocateStartNodes();
-							getEditor(0).doSave(new NullProgressMonitor());
-							firePropertyChange(PROP_DIRTY);
-						}
-						*/
 						//save on initial page load, but not in other cases
 						if (initialPageLoad && isDirty()) {
 							getEditor(0).doSave(new NullProgressMonitor());
@@ -653,9 +634,6 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
 	 */
 	private void handleDesignViewActivatedEvent() throws Exception {
 
-//		if (null != sourceEditor.getObject()) {
-//			rebuildModelObject(objectSourceEditor.getObject());
-//		}
 		if (sourceEditor != null) {
 			String xmlSource = sourceEditor.getDocument().get();
 			if (xmlSource != null && sourceDirty) {

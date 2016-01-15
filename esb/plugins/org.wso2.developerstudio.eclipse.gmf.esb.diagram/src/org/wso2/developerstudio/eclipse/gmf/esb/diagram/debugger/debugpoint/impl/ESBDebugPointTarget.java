@@ -51,6 +51,12 @@ public class ESBDebugPointTarget {
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
     /**
+     * This private constructor is for hide the implicit public constructor
+     */
+    private ESBDebugPointTarget() {
+    }
+
+    /**
      * This method checks whether selected line can be assign as a line
      * breakpoint.
      */
@@ -124,8 +130,7 @@ public class ESBDebugPointTarget {
      */
     private static IResource getFileIResourceFromESBMultiPageEditor(IEditorPart activeEditor) {
         IFile file = ((FileEditorInput) (((EsbMultiPageEditor) activeEditor).getEditorInput())).getFile();
-        IResource resource = (IResource) file.getAdapter(IResource.class);
-        return resource;
+        return (IResource) file.getAdapter(IResource.class);
     }
 
     /**
@@ -135,8 +140,7 @@ public class ESBDebugPointTarget {
     private static EsbServer getESBServerFromESBMultiPageEditor(IEditorPart activeEditor) {
         Diagram diagram = ((EsbMultiPageEditor) (activeEditor)).getDiagram();
         EsbDiagram esbDiagram = (EsbDiagram) diagram.getElement();
-        EsbServer esbServer = esbDiagram.getServer();
-        return esbServer;
+        return esbDiagram.getServer();
     }
 
     /**
@@ -152,17 +156,13 @@ public class ESBDebugPointTarget {
         for (IBreakpoint debugpoint : debugpoints) {
             try {
                 ESBDebugPoint esbDebugpoint = (ESBDebugPoint) debugpoint;
-                if ((esbDebugpoint.getResource()).equals(targetBreakpoint.getResource())) {
-
-                    if (esbDebugpoint.equals(targetBreakpoint)) {
-                        return esbDebugpoint;
-                    }
+                if ((esbDebugpoint.getResource()).equals(targetBreakpoint.getResource())
+                        && esbDebugpoint.equals(targetBreakpoint)) {
+                    return esbDebugpoint;
                 }
             } catch (DebugPointMarkerNotFoundException e) {
                 log.error("Error while checking the maching debug point : " + e.getMessage(), e);
                 ESBDebuggerUtil.removeESBDebugPointFromBreakpointManager(debugpoint);
-            } catch (CoreException e) {
-                log.error("Error while checking the maching debug point : ", e);
             }
 
         }

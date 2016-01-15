@@ -77,7 +77,7 @@ public abstract class AbstractMediatorLocator implements IMediatorLocator {
                 EObject mediator = outgoingLink.getTarget().eContainer();
                 if (count == mediatorPosition.get(INDEX_OF_FIRST_ELEMENT)) {
                     mediatorPosition.remove(INDEX_OF_FIRST_ELEMENT);
-                    if (AbstractESBDebugPointBuilder.isComplexMediatorType(mediator) && mediatorPosition.size() > 0) {
+                    if (AbstractESBDebugPointBuilder.isComplexMediatorType(mediator) && !mediatorPosition.isEmpty()) {
                         count = 0;
                         if (AbstractESBDebugPointBuilder.isComplexListMediator(mediator)) {
                             tempConnector = getInnerListOutputConnector(mediator,
@@ -195,7 +195,7 @@ public abstract class AbstractMediatorLocator implements IMediatorLocator {
                     + position + " , Last Index in flow : " + (count - 1));
         }
         OutputConnector tempConnector;
-        if (AbstractESBDebugPointBuilder.isComplexMediatorType(mediatorElement) && positionList.size() > 0) {
+        if (AbstractESBDebugPointBuilder.isComplexMediatorType(mediatorElement) && !positionList.isEmpty()) {
             count = 0;
             if (AbstractESBDebugPointBuilder.isComplexListMediator(mediatorElement)) {
                 tempConnector = getInnerListOutputConnector(mediatorElement,
@@ -213,7 +213,7 @@ public abstract class AbstractMediatorLocator implements IMediatorLocator {
                 EObject mediator = outgoingLink.getTarget().eContainer();
                 if (count == positionList.get(INDEX_OF_FIRST_ELEMENT)) {
                     positionList.remove(INDEX_OF_FIRST_ELEMENT);
-                    if (AbstractESBDebugPointBuilder.isComplexMediatorType(mediator) && positionList.size() > 0) {
+                    if (AbstractESBDebugPointBuilder.isComplexMediatorType(mediator) && !positionList.isEmpty()) {
                         count = 0;
                         if (AbstractESBDebugPointBuilder.isComplexListMediator(mediator)) {
                             tempConnector = getInnerListOutputConnector(mediator,

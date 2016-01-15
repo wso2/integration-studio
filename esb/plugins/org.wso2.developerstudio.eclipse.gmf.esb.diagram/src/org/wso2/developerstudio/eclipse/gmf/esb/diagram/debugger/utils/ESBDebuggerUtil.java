@@ -515,12 +515,10 @@ public class ESBDebuggerUtil {
      * 
      * @param server
      * @param editorInput
-     * @throws MediatorNotFoundException
-     * @throws MissingAttributeException
-     * @throws DebugPointMarkerNotFoundException
+     * @throws ESBDebuggerException 
      */
     public static void addDesignViewDebugPoints(EsbServer server, IEditorInput editorInput)
-            throws MediatorNotFoundException, MissingAttributeException, DebugPointMarkerNotFoundException {
+            throws ESBDebuggerException {
 
         if (editorInput instanceof FileEditorInput) {
             IFile file = ((FileEditorInput) editorInput).getFile();

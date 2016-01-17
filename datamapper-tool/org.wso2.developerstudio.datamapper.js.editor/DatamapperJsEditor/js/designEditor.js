@@ -99,6 +99,7 @@ function initJointJSGraph() {
 	});
 
 	graph.addCells([mInput, mOutput]);
+	setLanguageGenerator(graph, paper, mOutput, mInput);
 }
 
 function getTotalHeightOfChidlren(parent){
@@ -178,6 +179,9 @@ function addLeaf(parent, leafName, level, isOutput) {
 			outPorts : [ '' ],
 			attrs : {
 				'.label' : childText,
+				'graphProperties': {
+					index : -1
+				},
 				rect : childRect,
 				circle: { r: 6},
 				'.outPorts circle' : circleTemplate
@@ -191,6 +195,9 @@ function addLeaf(parent, leafName, level, isOutput) {
 			inPorts : [ '' ],
 			attrs : {
 				'.label' : childText,
+				'graphProperties': {
+					index : -1
+				},
 				rect : childRect,
 				circle: { r: 6},
 				'.inPorts circle' : circleTemplate

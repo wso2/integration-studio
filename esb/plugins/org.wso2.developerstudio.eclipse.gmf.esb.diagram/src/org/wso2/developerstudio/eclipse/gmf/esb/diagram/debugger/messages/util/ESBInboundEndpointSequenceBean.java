@@ -38,7 +38,7 @@ public class ESBInboundEndpointSequenceBean {
     @Override
     public boolean equals(Object inboundSeqBean) {
         if (inboundSeqBean instanceof ESBInboundEndpointSequenceBean) {
-            if (inbound.equals(((ESBInboundEndpointSequenceBean) inboundSeqBean).getInboundEndpoint())) {
+            if (getInboundEndpoint().equals(((ESBInboundEndpointSequenceBean) inboundSeqBean).getInboundEndpoint())) {
                 return true;
             }
             return false;
@@ -50,7 +50,8 @@ public class ESBInboundEndpointSequenceBean {
     @Override
     public int hashCode() {
         int result = INITIAL_HASH_CODE_RESULT_VALUE;
-        result = HASHCODE_MULTIPLIER_VALUE * result + inbound.hashCode() + INBOUND_ENDPOINT_LABEL.hashCode();
+        result = HASHCODE_MULTIPLIER_VALUE * result + getInboundEndpoint().hashCode()
+                + INBOUND_ENDPOINT_LABEL.hashCode();
 
         return result;
     }

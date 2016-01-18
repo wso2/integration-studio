@@ -106,13 +106,11 @@ public class ESBSkipPointAction extends ConfigureEsbNodeAction {
     @Override
     protected void doRun(IProgressMonitor progressMonitor) {
         EditPart selectedEP = getSelectedEditPart();
-        if (selectedEP instanceof AbstractMediator) {
-            if (ESBDebugPointTarget.canToggleDiagramDebugpoints(selectedEP)) {
-                try {
-                    ESBDebugPointTarget.toggleDiagramDebugpoints((AbstractMediator) selectedEP, SKIP_POINT_LABEL);
-                } catch (CoreException | ESBDebuggerException e) {
-                    log.error("Error while registering the skip point" + e.getMessage(), e);
-                }
+        if (selectedEP instanceof AbstractMediator && ESBDebugPointTarget.canToggleDiagramDebugpoints(selectedEP)) {
+            try {
+                ESBDebugPointTarget.toggleDiagramDebugpoints((AbstractMediator) selectedEP, SKIP_POINT_LABEL);
+            } catch (CoreException | ESBDebuggerException e) {
+                log.error("Error while registering the skip point" + e.getMessage(), e);
             }
         }
 

@@ -107,6 +107,7 @@ public class RecipientListEndPointTransformer extends AbstractEndpointTransforme
 
 	}
 
+	@Override
 	public void createSynapseObject(TransformationInfo info, EObject subject, List<Endpoint> endPoints)
 			throws TransformerException {
 		Assert.isTrue(subject instanceof RecipientListEndPoint, "Invalid subject.");
@@ -118,6 +119,7 @@ public class RecipientListEndPointTransformer extends AbstractEndpointTransforme
 		}
 	}
 
+	@Override
 	public void transformWithinSequence(TransformationInfo information,
 			EsbNode subject, SequenceMediator sequence)
 			throws TransformerException {

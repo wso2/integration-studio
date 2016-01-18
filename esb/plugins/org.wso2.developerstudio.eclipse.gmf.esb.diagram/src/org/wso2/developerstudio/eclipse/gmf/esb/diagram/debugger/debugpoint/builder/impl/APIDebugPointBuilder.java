@@ -16,6 +16,12 @@
 
 package org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.debugpoint.builder.impl;
 
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.API_FAULTSEQ_LABEL;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.API_INSEQ_LABEL;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.API_OUTSEQ_LABEL;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.MEDIATOR_INSERT_ACTION;
+
+import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.core.resources.IResource;
@@ -42,8 +48,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.ProxyServiceS
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.SynapseAPIAPICompartmentEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.APIResourceImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.SynapseAPIImpl;
-
-import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.*;
 
 /**
  * This class builds ESB breakpoints related to API Resources.
@@ -79,7 +83,7 @@ public class APIDebugPointBuilder extends AbstractESBDebugPointBuilder {
         } else {
             position = getMediatorPositionInFaultSeq(apiResource.getContainer().getFaultContainer().getMediatorFlow()
                     .getChildren(), selection);
-            sequenceType = getFaultSequenceName(apiResource);
+            sequenceType = API_FAULTSEQ_LABEL;
         }
         ESBAPIResourceBean resourse = new ESBAPIResourceBean(ESBDebuggerUtil.getMethodValuesFromResource(apiResource),
                 apiResource.getUrlMapping(), apiResource.getUriTemplate());
@@ -128,40 +132,28 @@ public class APIDebugPointBuilder extends AbstractESBDebugPointBuilder {
         EditPart apiContainer = getContainerFromEditPart(proxyContainer, SynapseAPIAPICompartmentEditPart.class);
         EList<APIResource> apiResources = api.getResources();
         APIResource apiResource = getAPIResourceFromAPIEditPart(apiResources, apiContainer);
+        List<Integer> position = new ArrayList<>();
+        List<ESBDebugPoint> breakpontList = new ArrayList<>();
         if (proxyContainer instanceof ProxyServiceSequenceAndEndpointContainerEditPart) {
             if (abstractMediator.reversed) {
-                List<Integer> position = getMediatorPosition(apiResource.getOutSequenceOutputConnector(),
-                        abstractMediator);
-                List<ESBDebugPoint> breakpontList = getDebugPointsRelatedToModification(resource, position,
-                        API_OUTSEQ_LABEL, action);
-                if (MEDIATOR_INSERT_ACTION.equalsIgnoreCase(action)) {
-                    increaseBreakpointPosition(breakpontList, position);
-                } else {
-                    decreaseBreakpointPosition(breakpontList, position);
-                }
+                position = getMediatorPosition(apiResource.getOutSequenceOutputConnector(), abstractMediator);
+                breakpontList = getDebugPointsRelatedToModification(resource, position, API_OUTSEQ_LABEL, action);
             } else {
-                List<Integer> position = getMediatorPosition(apiResource.getOutputConnector(), abstractMediator);
-                List<ESBDebugPoint> breakpontList = getDebugPointsRelatedToModification(resource, position,
-                        API_INSEQ_LABEL, action);
-                if (MEDIATOR_INSERT_ACTION.equalsIgnoreCase(action)) {
-                    increaseBreakpointPosition(breakpontList, position);
-                } else {
-                    decreaseBreakpointPosition(breakpontList, position);
-                }
+                position = getMediatorPosition(apiResource.getOutputConnector(), abstractMediator);
+                breakpontList = getDebugPointsRelatedToModification(resource, position, API_INSEQ_LABEL, action);
             }
         } else if (proxyContainer instanceof ProxyServiceFaultContainerEditPart) {
-            List<Integer> position = getMediatorPositionInFaultSeq(apiResource.getContainer().getFaultContainer()
-                    .getMediatorFlow().getChildren(), abstractMediator);
-            List<ESBDebugPoint> breakpontList = getDebugPointsRelatedToModification(resource, position,
-                    getFaultSequenceName(apiResource), action);
-            if (MEDIATOR_INSERT_ACTION.equalsIgnoreCase(action)) {
-                increaseBreakpointPosition(breakpontList, position);
-            } else {
-                decreaseBreakpointPosition(breakpontList, position);
-            }
+            position = getMediatorPositionInFaultSeq(apiResource.getContainer().getFaultContainer().getMediatorFlow()
+                    .getChildren(), abstractMediator);
+            breakpontList = getDebugPointsRelatedToModification(resource, position, API_FAULTSEQ_LABEL, action);
         } else {
             throw new IllegalArgumentException("Selected Metdiator Edit Part is in a unknown position : "
                     + proxyContainer.toString());
+        }
+        if (MEDIATOR_INSERT_ACTION.equalsIgnoreCase(action)) {
+            increaseBreakpointPosition(breakpontList, position);
+        } else {
+            decreaseBreakpointPosition(breakpontList, position);
         }
     }
 }

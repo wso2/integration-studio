@@ -30,6 +30,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.channel.message
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.channel.messagefactory.impl.JsonGsonMessageFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.messages.command.CommandMessage;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.messages.command.GetPropertyCommand;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.messages.command.PropertyChangeCommand;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.messages.util.AbstractESBDebugPointMessage;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
@@ -57,7 +58,9 @@ public class ESBDebuggerInterface implements IESBDebuggerInterface {
 
     public ESBDebuggerInterface(int commandPort, int eventPort, String hostName) throws IOException {
         setRequestSocket(commandPort, hostName);
+        log.info("Socket created for command channel : " + hostName + ":" + commandPort);
         setEventSocket(eventPort, hostName);
+        log.info("Socket created for event channel : " + hostName + ":" + eventPort);
         setEventReader();
         setRequestReader();
         setRequestWriter();
@@ -68,10 +71,10 @@ public class ESBDebuggerInterface implements IESBDebuggerInterface {
 
         eventDispatcher = new ChannelEventDispatcher(getEventReader(), this);
         eventDispatcher.start();
-
+        log.info("Event Dispatcher Started");
         responseDispatcher = new ChannelResponseDispatcher(getRequestReader(), this);
         responseDispatcher.start();
-
+        log.info("Response Dispatcher Started");
         messageFactory = new JsonGsonMessageFactory();
     }
 
@@ -91,9 +94,11 @@ public class ESBDebuggerInterface implements IESBDebuggerInterface {
     }
 
     @Override
-    public void sendCommand(CommandMessage command) throws Exception {
-        requestWriter.println(messageFactory.createCommand(command));
+    public void sendCommand(CommandMessage command) {
+        String commandString = messageFactory.createCommand(command);
+        requestWriter.println(commandString);
         requestWriter.flush();
+        log.info("Sent command : " + commandString);
     }
 
     /**
@@ -105,9 +110,10 @@ public class ESBDebuggerInterface implements IESBDebuggerInterface {
     public void notifyEvent(String eventMessage) {
         try {
             if (eventMessage == null) {
-                log.info("NULL value read from ChannelResponceDispatcher. ESB Server shutting down.Terminating ESB Mediation Debugger.");
+                log.info("NULL value read from ChannelResponceDispatcher.ESB Server shutting down.");
                 esbDebugger.fireTerminatedEvent();
             } else {
+                log.info("Event message recieved : " + eventMessage);
                 esbDebugger.notifyEvent(messageFactory.convertEventToIEventMessage(eventMessage));
             }
         } catch (Exception e) {
@@ -129,9 +135,10 @@ public class ESBDebuggerInterface implements IESBDebuggerInterface {
     public void notifyResponce(String responseMessage) {
         try {
             if (responseMessage == null) {
-                log.info("NULL value read from ChannelEventDispatcher. ESB Server shutting down.Terminating ESB Mediation Debugger.");
+                log.info("NULL value read from ChannelEventDispatcher.ESB Server shutting down.");
                 esbDebugger.fireTerminatedEvent();
             } else {
+                log.info("Response message recieved : " + responseMessage);
                 esbDebugger.notifyResponce(messageFactory.convertResponseToIResponseMessage(responseMessage));
             }
         } catch (Exception e) {
@@ -143,24 +150,39 @@ public class ESBDebuggerInterface implements IESBDebuggerInterface {
     }
 
     @Override
-    public void sendGetPropertiesCommand(GetPropertyCommand getPropertyCommand) throws Exception {
-        requestWriter.println(messageFactory.createGetPropertiesCommand(getPropertyCommand));
+    public void sendGetPropertiesCommand(GetPropertyCommand getPropertyCommand) {
+        String getPropertyCommandString = messageFactory.createGetPropertiesCommand(getPropertyCommand);
+        requestWriter.println(getPropertyCommandString);
         requestWriter.flush();
+        log.info("Get properties command sent : " + getPropertyCommandString);
     }
 
     @Override
-    public void sendBreakpointCommand(AbstractESBDebugPointMessage debugPoint) throws Exception {
-        requestWriter.println(messageFactory.createBreakpointCommand(debugPoint));
+    public void sendBreakpointCommand(AbstractESBDebugPointMessage debugPoint) {
+        String breakpointCommandString = messageFactory.createBreakpointCommand(debugPoint);
+        requestWriter.println(breakpointCommandString);
         requestWriter.flush();
+        log.info("Breakpoint command sent : " + breakpointCommandString);
+    }
 
+    @Override
+    public void sendChangePropertyCommand(PropertyChangeCommand propertyChangeCommand) {
+        String propertyChangeCommandString = messageFactory.createPropertyChangeCommand(propertyChangeCommand);
+        requestWriter.println(propertyChangeCommandString);
+        requestWriter.flush();
+        log.info("Property Change command sent : " + propertyChangeCommandString);
     }
 
     @Override
     public void terminate() throws IOException {
         eventDispatcher.stop();
+        log.info("Event dispatcher stopped");
         responseDispatcher.stop();
+        log.info("Response dispatcher stopped");
         requestSocket.close();
+        log.info("Request socket closed");
         eventSocket.close();
+        log.info("Event socket closed");
         requestReader.close();
         requestWriter.close();
         eventReader.close();

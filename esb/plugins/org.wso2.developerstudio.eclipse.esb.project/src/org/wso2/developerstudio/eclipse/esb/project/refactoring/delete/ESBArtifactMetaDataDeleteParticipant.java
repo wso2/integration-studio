@@ -31,14 +31,14 @@ import org.eclipse.ltk.core.refactoring.CompositeChange;
 import org.eclipse.ltk.core.refactoring.RefactoringStatus;
 import org.eclipse.ltk.core.refactoring.participants.CheckConditionsContext;
 import org.eclipse.ltk.core.refactoring.participants.DeleteParticipant;
-import org.wso2.developerstudio.eclipse.esb.project.Activator;
-import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
-import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
 public class ESBArtifactMetaDataDeleteParticipant extends DeleteParticipant {
 	
-	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 	
+	private static final String UPDATE_ESB_META_DATA_MODEL_STATUS_MESSAGE = "Update ESB meta-data model";
+	private static final String ARTIFACT_XML_FILE = "artifact.xml";
+	private static final String ESB_APRTIFACT_DELETE_CHANGE_OBJECT_NAME = "ESB Artifact Delete";
+	private static final String UPDATE_ARTIFACT_XML_CHANGE_OBJECT_NAME = "Update arifact.xml";
 	private IFile originalFile;
 	private static int numOfFiles;
 	private static int currentFileNum;
@@ -46,21 +46,25 @@ public class ESBArtifactMetaDataDeleteParticipant extends DeleteParticipant {
 	private static List<IProject> projectList;
 
 	@Override
-	public RefactoringStatus checkConditions(IProgressMonitor arg0, CheckConditionsContext arg1)
-			throws OperationCanceledException {
-		String msg ="Update ESB meta-data model";
-		return RefactoringStatus.createInfoStatus(msg);
+	public RefactoringStatus checkConditions(IProgressMonitor progressMonitor,
+			CheckConditionsContext context) throws OperationCanceledException {
+		return RefactoringStatus
+				.createInfoStatus(UPDATE_ESB_META_DATA_MODEL_STATUS_MESSAGE);
 	}
 
 	@Override
-	public Change createChange(IProgressMonitor arg0) throws CoreException, OperationCanceledException {
-		CompositeChange emptychange = new CompositeChange("ESB Artifact Delete");
+	public Change createChange(IProgressMonitor progressMonitor)
+			throws CoreException, OperationCanceledException {
+		CompositeChange emptychange = new CompositeChange(
+				ESB_APRTIFACT_DELETE_CHANGE_OBJECT_NAME);
 		currentFileNum++;
 		if (numOfFiles == currentFileNum) {
-			CompositeChange change = new CompositeChange("Update arifact.xml");
+			CompositeChange change = new CompositeChange(
+					UPDATE_ARTIFACT_XML_CHANGE_OBJECT_NAME);
 			for (IProject project : projectList) {
 				List<IFile> fileList = changeFileList.get(project);
-				change.add(new ESBMetaDataFileDeleteChange(project.getName(), project.getFile("artifact.xml"), fileList));
+				change.add(new ESBMetaDataFileDeleteChange(project.getName(),
+						project.getFile(ARTIFACT_XML_FILE), fileList));
 			}
 			resetStaticVariables();
 			return change;
@@ -81,10 +85,10 @@ public class ESBArtifactMetaDataDeleteParticipant extends DeleteParticipant {
 	}
 
 	@Override
-	protected boolean initialize(Object arg0) {
-		if (arg0 instanceof IFile) {
+	protected boolean initialize(Object file) {
+		if (file instanceof IFile) {
 			numOfFiles++;
-			originalFile = (IFile) arg0;
+			originalFile = (IFile) file;
 			if (numOfFiles == 1) {
 				List<IFile> fileList = new ArrayList<>();
 				projectList = new ArrayList<>();
@@ -94,7 +98,8 @@ public class ESBArtifactMetaDataDeleteParticipant extends DeleteParticipant {
 				changeFileList.put(originalFile.getProject(), fileList);
 			} else {
 				if (changeFileList.containsKey(originalFile.getProject())) {
-					changeFileList.get(originalFile.getProject()).add(originalFile);
+					changeFileList.get(originalFile.getProject()).add(
+							originalFile);
 				} else {
 					List<IFile> fileList = new ArrayList<>();
 					fileList.add(originalFile);

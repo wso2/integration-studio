@@ -15,7 +15,10 @@
  */
 package org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.model;
 
-import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.*;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.ESBDEBUGGER_EVENT_TOPIC;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.ESB_DEBUGGER_EVENT_BROKER_DATA_NAME;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.ESB_DEBUG_TARGET_EVENT_TOPIC;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.SUSPEND_POINT_MODEL_ID;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +27,6 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IMarkerDelta;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.debug.core.DebugEvent;
-import org.eclipse.debug.core.DebugException;
 import org.eclipse.debug.core.DebugPlugin;
 import org.eclipse.debug.core.ILaunch;
 import org.eclipse.debug.core.model.IBreakpoint;
@@ -48,11 +50,12 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.internal.commun
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.internal.communication.events.TerminatedEvent;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.internal.communication.requests.DebugPointRequest;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.internal.communication.requests.FetchVariablesRequest;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.messages.response.PropertyRespondMessage;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.messages.util.AbstractESBDebugPointMessage;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.suspendpoint.ESBSuspendPoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.DebugPointEventAction;
-import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerUtil;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerResumeType;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerUtil;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.Messages;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.OpenEditorUtil;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
@@ -85,66 +88,71 @@ public class ESBDebugTarget extends ESBDebugElement implements IDebugTarget, Eve
     @Override
     public void handleEvent(Event eventFromBroker) {
         if (!isDisconnected()) {
-            IESBDebuggerInternalEvent event = (IESBDebuggerInternalEvent) eventFromBroker
-                    .getProperty(ESB_DEBUGGER_EVENT_BROKER_DATA_NAME);
-            if (event instanceof DebuggerStartedEvent) {
-                ESBDebugThread thread = new ESBDebugThread(this);
-                esbDebugThreads.add(thread);
-                thread.fireCreationEvent();
+            Object eventObject = eventFromBroker.getProperty(ESB_DEBUGGER_EVENT_BROKER_DATA_NAME);
+            if (eventObject instanceof IESBDebuggerInternalEvent) {
+                IESBDebuggerInternalEvent event = (IESBDebuggerInternalEvent) eventObject;
+                if (event instanceof DebuggerStartedEvent) {
+                    ESBDebugThread thread = new ESBDebugThread(this);
+                    esbDebugThreads.add(thread);
+                    thread.fireCreationEvent();
 
-                ESBStackFrame stackFrame = new ESBStackFrame(this, thread);
-                thread.addStackFrame(stackFrame);
-                stackFrame.fireCreationEvent();
+                    ESBStackFrame stackFrame = new ESBStackFrame(this, thread);
+                    thread.addStackFrame(stackFrame);
+                    stackFrame.fireCreationEvent();
 
-                DebugPlugin.getDefault().getBreakpointManager().addBreakpointListener(this);
+                    DebugPlugin.getDefault().getBreakpointManager().addBreakpointListener(this);
 
-                resume();
+                    resume();
 
-            } else if (event instanceof SuspendedEvent) {
-                // this get called when ESB came to a breakpoint
-                setState(ESBDebuggerState.SUSPENDED);
-                fireSuspendEvent(0);
-                getThreads()[0].fireSuspendEvent(DebugEvent.BREAKPOINT);
-                try {
-                    showDiagram((SuspendedEvent) event);
-                } catch (ESBDebuggerException | CoreException e) {
-                    log.error("Error while trying to show diagram : " //$NON-NLS-1$
-                            + e.getMessage(), e);
-                }
-                fireModelEvent(new FetchVariablesRequest());
+                } else if (event instanceof SuspendedEvent) {
+                    // this get called when ESB came to a breakpoint
+                    setState(ESBDebuggerState.SUSPENDED);
+                    fireSuspendEvent(0);
+                    getThreads()[0].fireSuspendEvent(DebugEvent.BREAKPOINT);
+                    try {
+                        showDiagram((SuspendedEvent) event);
+                    } catch (ESBDebuggerException | CoreException e) {
+                        log.error("Error while trying to show diagram : " //$NON-NLS-1$
+                                + e.getMessage(), e);
+                    }
+                    fireModelEvent(new FetchVariablesRequest());
 
-            } else if (event instanceof ResumedEvent) {
-                if (((ResumedEvent) event).getType() == ESBDebuggerResumeType.CONTINUE) {
+                } else if (event instanceof ResumedEvent) {
+                    if (((ResumedEvent) event).getType() == ESBDebuggerResumeType.CONTINUE) {
+                        setState(ESBDebuggerState.RESUMED);
+                        getThreads()[0].fireResumeEvent(DebugEvent.UNSPECIFIED);
+                    }
+
+                } else if (event instanceof PropertyRecievedEvent) {
+
+                    try {
+                        ESBStackFrame stackFrame = getThreads()[0].getTopStackFrame();
+                        PropertyRespondMessage propertyMessage = ((PropertyRecievedEvent) event).getVariables();
+                        stackFrame.setVariables(propertyMessage);
+                    } catch (Exception e) {
+                        log.error("Error while seting variable values", e); //$NON-NLS-1$
+                    }
+
+                } else if (event instanceof TerminatedEvent) {
+                    setState(ESBDebuggerState.TERMINATED);
+
+                    DebugPlugin.getDefault().getBreakpointManager().removeBreakpointListener(this);
+                    debugTargetEventBroker.unsubscribe(this);
+                    this.fireTerminateEvent();
+                } else if (event instanceof MediationFlowCompleteEvent) {
                     setState(ESBDebuggerState.RESUMED);
-                    getThreads()[0].fireResumeEvent(DebugEvent.UNSPECIFIED);
+                    OpenEditorUtil.removeBreakpointHitStatus();
+                    try {
+                        deletePreviousSuspendPointsFromBreakpointManager();
+                    } catch (CoreException e) {
+                        log.error("Error while deleting previous suspend point : " //$NON-NLS-1$
+                                + e.getMessage(), e);
+                    }
                 }
-
-            } else if (event instanceof PropertyRecievedEvent) {
-
-                try {
-                    getThreads()[0].getTopStackFrame().setVariables(((PropertyRecievedEvent) event).getVariables());
-                } catch (DebugException e) {
-                    log.error("Error while seting variable values", e); //$NON-NLS-1$
-                }
-
-            } else if (event instanceof TerminatedEvent) {
-                setState(ESBDebuggerState.TERMINATED);
-
-                DebugPlugin.getDefault().getBreakpointManager().removeBreakpointListener(this);
-                debugTargetEventBroker.unsubscribe(this);
-                this.fireTerminateEvent();
-            } else if (event instanceof MediationFlowCompleteEvent) {
-                setState(ESBDebuggerState.RESUMED);
-                OpenEditorUtil.removeBreakpointHitStatus();
-                try {
-                    deletePreviousSuspendPointsFromBreakpointManager();
-                } catch (CoreException e) {
-                    log.error("Error while deleting previous suspend point : " //$NON-NLS-1$
-                            + e.getMessage(), e);
-                }
+            } else {
+                log.warn("Unhandled event type detected for Event Broker Topic : " + ESBDEBUGGER_EVENT_TOPIC);
             }
         }
-
     }
 
     /**

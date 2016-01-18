@@ -104,6 +104,12 @@ function createDiv(objName, image, type) {
 					'ref-x' : .4,
 					'ref-y' : .2
 				},
+				'graphProperties': {
+					marked :0,
+					visited:0,
+					index : -1,
+					portVariableIndex:[-1]
+				},
 				rect : {
 					fill : '#2ECC71'
 				},
@@ -126,6 +132,12 @@ function createDiv(objName, image, type) {
 					text : objName,
 					'ref-x' : .4,
 					'ref-y' : .2
+				},
+				'graphProperties': {
+					marked : 0,
+					visited: 0,
+					index : -1,
+					portVariableIndex:[-1,-1]
 				},
 				rect : {
 					fill : '#2ECC71'

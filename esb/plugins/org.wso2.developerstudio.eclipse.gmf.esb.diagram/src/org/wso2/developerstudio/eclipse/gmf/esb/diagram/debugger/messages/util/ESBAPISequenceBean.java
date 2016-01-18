@@ -35,7 +35,7 @@ public class ESBAPISequenceBean {
     @Override
     public boolean equals(Object apiSeqBean) {
         if (apiSeqBean instanceof ESBAPISequenceBean) {
-            if (api.equals(((ESBAPISequenceBean) apiSeqBean).getApi())) {
+            if (getApi().equals(((ESBAPISequenceBean) apiSeqBean).getApi())) {
                 return true;
             }
             return false;
@@ -47,7 +47,7 @@ public class ESBAPISequenceBean {
     @Override
     public int hashCode() {
         int result = INITIAL_HASH_CODE_RESULT_VALUE;
-        result = HASHCODE_MULTIPLIER_VALUE * result + api.hashCode() + API_LABEL.hashCode();
+        result = HASHCODE_MULTIPLIER_VALUE * result + getApi().hashCode() + API_LABEL.hashCode();
         return result;
     }
 

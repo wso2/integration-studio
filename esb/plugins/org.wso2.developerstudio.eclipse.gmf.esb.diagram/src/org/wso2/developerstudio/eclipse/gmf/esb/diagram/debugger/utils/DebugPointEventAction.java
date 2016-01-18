@@ -36,6 +36,7 @@ public enum DebugPointEventAction {
         return (comapreAction == null) ? false : action.equals(comapreAction);
     }
 
+    @Override
     public String toString() {
         return this.action;
     }

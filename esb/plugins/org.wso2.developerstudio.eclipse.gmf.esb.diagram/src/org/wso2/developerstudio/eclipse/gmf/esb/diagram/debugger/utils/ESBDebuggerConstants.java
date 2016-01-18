@@ -22,6 +22,12 @@ package org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils;
  */
 public class ESBDebuggerConstants {
 
+    /**
+     * This private constructor hides the implicit public constructor
+     */
+    private ESBDebuggerConstants() {
+    }
+
     // Hash Code related constants
     public static final int INITIAL_HASH_CODE_RESULT_VALUE = 17;
     public static final int HASHCODE_MULTIPLIER_VALUE = 37;
@@ -42,8 +48,8 @@ public class ESBDebuggerConstants {
     public static final String ESB_DEBUG_MODEL_PRESENTATION_ID = "org.wso2.developerstudio.eclipse.esb.debugger.model.esbDebugModelPresentation";
 
     // ESB Debugger Communication Channel constants
-    public static final String DEFAULT_COMMAND_PORT = "6006";
-    public static final String DEFAULT_EVENT_PORT = "6007";
+    public static final String DEFAULT_COMMAND_PORT = "9005";
+    public static final String DEFAULT_EVENT_PORT = "9006";
     public static final String DEFAULT_HOST_NAME = "localhost";
     public static final String ESB_SERVER_LOCATION = "server location path";
 
@@ -77,10 +83,12 @@ public class ESBDebuggerConstants {
     public static final String MEDIATOR_INSERT_ACTION = "mediatorinsert";
 
     public static final String PROXY_INSEQ_LABEL = "proxy_inseq";
+    public static final String PROXY_FAULTSEQ_LABEL = "proxy_faultseq";
     public static final String PROXY_OUTSEQ_LABEL = "proxy_outseq";
     public static final String INBOUND_SEQ_LABEL = "inbound_seq";
     public static final String INBOUND_FAULT_SEQ_LABEL = "inbound_faultseq";
     public static final String API_INSEQ_LABEL = "api_inseq";
+    public static final String API_FAULTSEQ_LABEL = "api_faultseq";
     public static final String API_OUTSEQ_LABEL = "api_outseq";
 
     public static final String MAIN_SEQUENCE_LABEL = "main_sequence";
@@ -108,6 +116,7 @@ public class ESBDebuggerConstants {
     public static final String GET_COMMAND_VALUE = "get";
     public static final String RESUME_COMMAND_VALUE = "resume";
     public static final String PROPERTIES_VALUE = "properties";
+    public static final String PROPERTY_VALUE = "property";
 
     // ESB Mediation Debugger Message models related constants
     public static final String COMMAND_RESPONSE_LABEL = "command-response";
@@ -125,7 +134,9 @@ public class ESBDebuggerConstants {
     // Internal event broker constants
     public static final String ESB_DEBUGGER_EVENT_BROKER_DATA_NAME = "org.eclipse.e4.data";
     public static final String ESB_DEBUG_TARGET_EVENT_TOPIC = "ESBDebugTarget_Events";
+    public static final String ESB_STACK_FRAME_PROPERTY_CHANGE_EVENT = "ESBStackFrame_Events";
     public static final String ESBDEBUGGER_EVENT_TOPIC = "ESBDebugger_Events";
+    public static final String PROPERTY_CHANGE_COMMAND_HANDLER_EVENT_TOPIC = "PropertyChangeCommandHandler_Events";
 
     // Message Property scopes
     public static final String AXIS2_PROPERTY_TAG = "axis2";
@@ -140,6 +151,12 @@ public class ESBDebuggerConstants {
     public static final String OPERATION_PROPERTIES_KEY = "axis2Operation-properties";
     public static final String AXIS2_CLIENT_PROPERTIES_KEY = "axis2Client-properties";
     public static final String TRANSPORT_PROPERTIES_KEY = "axis2Transport-properties";
+
+    public static final String AXIS2_CLIENT_PROPERTIES_TAG = "Axis2-Client Scope Properties";
+    public static final String AXIS2_PROPERTIES_TAG = "Axis2 Scope Properties";
+    public static final String OPERATION_PROPERTIES_TAG = "Operation Scope Properties";
+    public static final String SYNAPSE_PROPERTIES_TAG = "Synapse Scope Properties";
+    public static final String TRANSPORT_PROPERTIES_TAG = "Transport Scope Properties";
 
     // Message Property scopes UI Value
     public static final String AXIS2_PROPERTY_UI_NAME = "Axis2 Scope Properties";
@@ -165,4 +182,10 @@ public class ESBDebuggerConstants {
     public static final String ESB_SKIPPOINT_COMMAND_LABEL = "Toggle Skip Point";
     public static final String ESB_SKIPPOINT_ACTION_ID = "org.wos2.developerstudio.eclipse.esb.debugger.skippoint.action";
     public static final String ESB_SKIPPOINT_COMMAND_TOOL_TIP = "Set skip point for this mediator";
+
+    // Property Value Change command ID's
+    public static final String ESB_MESSAGE_MEDIATION_PROPERTY_INJECT_COMMAND_ID = "org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.ui.commands.InjectNewProperty";
+    public static final String ESB_MESSAGE_MEDIATION_PROPERTY_CLEAR_COMMAND_ID = "org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.ui.commands.ClearProperty";
+
+    public static final String MEDIATOR_IN_A_UNKNOWN_POSITION_LOG_MESSAGE = "Selected Metdiator Edit Part is in a unknown position : ";
 }

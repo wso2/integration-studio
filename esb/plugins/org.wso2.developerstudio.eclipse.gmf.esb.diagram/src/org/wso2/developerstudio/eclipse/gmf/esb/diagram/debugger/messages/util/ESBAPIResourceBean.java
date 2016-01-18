@@ -44,7 +44,7 @@ public class ESBAPIResourceBean {
     public boolean equals(Object apiBean) {
         if (apiBean instanceof ESBAPIResourceBean) {
             ESBAPIResourceBean apiBeanTemp = (ESBAPIResourceBean) apiBean;
-            if (!(method.equals((apiBeanTemp).getMethod()))) {
+            if (!(getMethod().equals((apiBeanTemp).getMethod()))) {
                 return false;
             }
             return true;
@@ -56,7 +56,7 @@ public class ESBAPIResourceBean {
     @Override
     public int hashCode() {
         int result = INITIAL_HASH_CODE_RESULT_VALUE;
-        result = HASHCODE_MULTIPLIER_VALUE * result + method.hashCode() + API_RESOURCE_METHOD_LABEL.hashCode();
+        result = HASHCODE_MULTIPLIER_VALUE * result + getMethod().hashCode() + API_RESOURCE_METHOD_LABEL.hashCode();
         return result;
     }
 

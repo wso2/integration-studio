@@ -49,7 +49,8 @@ public class Axis2ImportWizard extends Wizard implements INewWizard{
 		this.selection = selection;
 		this.dataModel = new DataModel();
 		setWindowTitle(PROJECT_WIZARD_WINDOW_TITLE);
-		setDefaultPageImageDescriptor(Axis2ImageUtils.getInstance().getImageDescriptor("axis2-wizard.png"));
+        setDefaultPageImageDescriptor(Axis2ImageUtils.getInstance().getImageDescriptor(
+                Axis2ParametersUtils.AXIS2_WIZARD_IMAGE));
 	}
 	
 	public void addPages() {

@@ -35,7 +35,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.SingleCompartment
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.AbstractEsbNodeDeserializer;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.Deserializer;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.debugpoint.impl.ESBDebugPoint;
-import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.exception.DebugPointMarkerNotFoundException;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.exception.ESBDebuggerException;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.exception.MediatorNotFoundException;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.exception.MissingAttributeException;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.mediatorlocator.IMediatorLocator;
@@ -52,7 +52,8 @@ import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
 /**
- * 
+ * This class contains methods related to opening ESB Editors and updating debug point activities recived fron ESB
+ * Server on artifacts
  *
  */
 public class OpenEditorUtil {
@@ -65,6 +66,12 @@ public class OpenEditorUtil {
     private static final String NEW_LINE_STRING_OPERATOR = "\n";
     private static final String XML_ATTRIBUTE_START_TAG = "<";
     private static final String XML_ATTRIBUTE_CLOSE_TAG = ">";
+
+    /**
+     * This private constructor is to hide the implicit public constructor
+     */
+    private OpenEditorUtil() {
+    }
 
     public static void removeBreakpointHitStatus() {
         if (previousHitPoint != null) {
@@ -107,29 +114,9 @@ public class OpenEditorUtil {
 
     public static void setToolTipMessageOnMediator() {
         if (toolTipMessage != null) {
-            String message = toolTipMessage;
-            AbstractMediator mediator = getPreviousHitEditPart();
-            if (mediator instanceof FixedSizedAbstractMediator) {
-                ((FixedSizedAbstractMediator) mediator).getPrimaryShape().setToolTipMessage(
-                        formatMessageEnvelope(message));
-            } else if (mediator instanceof SingleCompartmentComplexFiguredAbstractMediator) {
-
-                ((SingleCompartmentComplexFiguredAbstractMediator) mediator).getPrimaryShape().setToolTipMessage(
-                        formatMessageEnvelope(message));
-
-            } else if (mediator instanceof CloneMediatorEditPart) {
-                ((CloneMediatorEditPart) mediator).getPrimaryShape().setToolTipMessage(formatMessageEnvelope(message));
-            } else if (mediator instanceof EntitlementMediatorEditPart) {
-                ((EntitlementMediatorEditPart) mediator).getPrimaryShape().setToolTipMessage(
-                        formatMessageEnvelope(message));
-            } else if (mediator instanceof FilterMediatorEditPart) {
-                ((FilterMediatorEditPart) mediator).getPrimaryShape().setToolTipMessage(formatMessageEnvelope(message));
-            } else if (mediator instanceof SwitchMediatorEditPart) {
-                ((SwitchMediatorEditPart) mediator).getPrimaryShape().setToolTipMessage(formatMessageEnvelope(message));
-            } else if (mediator instanceof ThrottleMediatorEditPart) {
-                ((ThrottleMediatorEditPart) mediator).getPrimaryShape().setToolTipMessage(
-                        formatMessageEnvelope(message));
-            }
+            setToolTipMessageOnMediator(toolTipMessage);
+        } else {
+            log.warn("Valid tooltip message is not yet registered");
         }
     }
 
@@ -160,6 +147,11 @@ public class OpenEditorUtil {
             PlatformUI.getWorkbench().getDisplay().asyncExec(new Runnable() {
                 @Override
                 public void run() {
+                    openFileOnEditor(fileTobeOpened, breakpoint, source, deserializer);
+                }
+
+                private void openFileOnEditor(final IFile fileTobeOpened, final ESBDebugPoint breakpoint,
+                        final String source, final Deserializer deserializer) {
                     try {
                         ArtifactType artifactType = deserializer.getArtifactType(source);
 
@@ -167,7 +159,7 @@ public class OpenEditorUtil {
                                 .getActivePage();
                         IEditorPart openEditor = activePage.openEditor(new EsbEditorInput(null, fileTobeOpened,
                                 artifactType.getLiteral()), EsbDiagramEditor.ID, true, IWorkbenchPage.MATCH_INPUT);
-                        EsbMultiPageEditor multipageEitor = ((EsbMultiPageEditor) openEditor);
+                        EsbMultiPageEditor multipageEitor = (EsbMultiPageEditor) openEditor;
 
                         drawSuspendedBreakpointMark(breakpoint, multipageEitor);
 
@@ -189,14 +181,11 @@ public class OpenEditorUtil {
      * 
      * @param breakpoint
      * @param multipageEitor
-     * @throws MediatorNotFoundException
-     * @throws MissingAttributeException
-     * @throws DebugPointMarkerNotFoundException
      * @throws CoreException
+     * @throws ESBDebuggerException
      */
     private static void drawSuspendedBreakpointMark(final ESBDebugPoint breakpoint, EsbMultiPageEditor multipageEitor)
-            throws MediatorNotFoundException, MissingAttributeException, DebugPointMarkerNotFoundException,
-            CoreException {
+            throws CoreException, ESBDebuggerException {
 
         Diagram diagram = multipageEitor.getDiagram();
         EsbDiagram esbDiagram = (EsbDiagram) diagram.getElement();
@@ -213,7 +202,7 @@ public class OpenEditorUtil {
             if (editPart instanceof AbstractMediator) {
                 ((AbstractMediator) editPart).setBreakpointHitStatus(true);
                 while (true) {
-                    if (((AbstractMediator) editPart).isBreakpointHit() == true) {
+                    if (((AbstractMediator) editPart).isBreakpointHit()) {
                         break;
                     }
                 }

@@ -23,6 +23,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.channel.dispatc
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.channel.dispatcher.ChannelResponseDispatcher;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.messages.command.CommandMessage;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.messages.command.GetPropertyCommand;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.messages.command.PropertyChangeCommand;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.messages.util.AbstractESBDebugPointMessage;
 
 /**
@@ -96,9 +97,8 @@ public interface IESBDebuggerInterface {
      * This method sends command message to ESB Server.
      * 
      * @param esbDebuggerCommandMessage
-     * @throws Exception
      */
-    public void sendCommand(CommandMessage esbDebuggerCommandMessage) throws Exception;
+    public void sendCommand(CommandMessage esbDebuggerCommandMessage);
 
     /**
      * This method sends breakpoint message to ESB Server to register
@@ -107,9 +107,8 @@ public interface IESBDebuggerInterface {
      * @param operation
      * @param type
      * @param debugPoint
-     * @throws Exception
      */
-    public void sendBreakpointCommand(AbstractESBDebugPointMessage debugPoint) throws Exception;
+    public void sendBreakpointCommand(AbstractESBDebugPointMessage debugPoint);
 
     /**
      * Assign a {@link IESBDebugger} for the object
@@ -122,9 +121,8 @@ public interface IESBDebuggerInterface {
      * This method sends command message to ESB Server to get properties.
      * 
      * @param getPropertyCommand
-     * @throws Exception
      */
-    public void sendGetPropertiesCommand(GetPropertyCommand getPropertyCommand) throws Exception;
+    public void sendGetPropertiesCommand(GetPropertyCommand getPropertyCommand);
 
     /**
      * Terminate Event Dispatchers attached.
@@ -132,6 +130,13 @@ public interface IESBDebuggerInterface {
      * @throws IOException
      */
     public void terminate() throws IOException;
+
+    /**
+     * This method sends command message to change property value of ESB Server
+     * 
+     * @param propertyChangeCommand
+     */
+    public void sendChangePropertyCommand(PropertyChangeCommand propertyChangeCommand);
 
     public PrintWriter getRequestWriter();
 

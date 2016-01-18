@@ -83,7 +83,7 @@ public abstract class AbstractESBDebugPointMessage {
      * @return
      */
     public boolean equalsIgnoreType(AbstractESBDebugPointMessage debugPointMessage) {
-        if (mediationComponent.equals(debugPointMessage.getMediationComponent())) {
+        if (getMediationComponent().equals(debugPointMessage.getMediationComponent())) {
             return true;
         }
         return false;
@@ -100,7 +100,7 @@ public abstract class AbstractESBDebugPointMessage {
     public boolean equals(Object debugPointMessage) {
         if (debugPointMessage instanceof AbstractESBDebugPointMessage) {
             AbstractESBDebugPointMessage debugPointMessageTemp = (AbstractESBDebugPointMessage) debugPointMessage;
-            if (!(mediationComponent.equals((debugPointMessageTemp).getMediationComponent()) && commandArgument
+            if (!(getMediationComponent().equals((debugPointMessageTemp).getMediationComponent()) && getCommandArgument()
                     .equals((debugPointMessageTemp).getCommandArgument()))) {
                 return false;
             }
@@ -113,9 +113,10 @@ public abstract class AbstractESBDebugPointMessage {
     @Override
     public int hashCode() {
         int result = INITIAL_HASH_CODE_RESULT_VALUE;
-        result = HASHCODE_MULTIPLIER_VALUE * result + mediationComponent.hashCode()
+        result = HASHCODE_MULTIPLIER_VALUE * result + getMediationComponent().hashCode()
                 + MEDIATION_COMPONENT_LABEL.hashCode();
-        result = HASHCODE_MULTIPLIER_VALUE * result + commandArgument.hashCode() + COMMAND_ARGUMENT_LABEL.hashCode();
+        result = HASHCODE_MULTIPLIER_VALUE * result + getCommandArgument().hashCode()
+                + COMMAND_ARGUMENT_LABEL.hashCode();
         return result;
     }
 

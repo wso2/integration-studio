@@ -22,11 +22,11 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ES
 import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.ENTITLEMENT_ON_REJECT_CONTAINER_POSITION_VALUE;
 import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.FILTER_FAIL_CONTAINER_POSITION_VALUE;
 import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.FILTER_PASS_CONTAINER_POSITION_VALUE;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.MAIN_SEQUENCE_RELATIVE_LOCATION;
 import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.MEDIATOR_DELETE_ACTION;
 import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.SWITCH_DEFAULT_CONTAINER_POSITION_VALUE;
 import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.THROTTLE_ON_ACCEPT_CONTAINER_POSITION_VALUE;
 import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.THROTTLE_ON_REJECT_CONTAINER_POSITION_VALUE;
-import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.MAIN_SEQUENCE_RELATIVE_LOCATION;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,62 +41,15 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.notation.impl.NodeImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.APIResource;
-import org.wso2.developerstudio.eclipse.gmf.esb.AggregateMediator;
-import org.wso2.developerstudio.eclipse.gmf.esb.BAMMediator;
-import org.wso2.developerstudio.eclipse.gmf.esb.BeanMediator;
-import org.wso2.developerstudio.eclipse.gmf.esb.BuilderMediator;
-import org.wso2.developerstudio.eclipse.gmf.esb.CacheMediator;
-import org.wso2.developerstudio.eclipse.gmf.esb.CallMediator;
-import org.wso2.developerstudio.eclipse.gmf.esb.CallTemplateMediator;
-import org.wso2.developerstudio.eclipse.gmf.esb.CalloutMediator;
-import org.wso2.developerstudio.eclipse.gmf.esb.ClassMediator;
-import org.wso2.developerstudio.eclipse.gmf.esb.CloneMediator;
-import org.wso2.developerstudio.eclipse.gmf.esb.CommandMediator;
-import org.wso2.developerstudio.eclipse.gmf.esb.ConditionalRouterMediator;
-import org.wso2.developerstudio.eclipse.gmf.esb.DBLookupMediator;
-import org.wso2.developerstudio.eclipse.gmf.esb.DBReportMediator;
-import org.wso2.developerstudio.eclipse.gmf.esb.DropMediator;
-import org.wso2.developerstudio.eclipse.gmf.esb.EJBMediator;
-import org.wso2.developerstudio.eclipse.gmf.esb.EnqueueMediator;
-import org.wso2.developerstudio.eclipse.gmf.esb.EnrichMediator;
-import org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediator;
+import org.wso2.developerstudio.eclipse.gmf.esb.CloneTargetContainer;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbElement;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbLink;
-import org.wso2.developerstudio.eclipse.gmf.esb.EventMediator;
-import org.wso2.developerstudio.eclipse.gmf.esb.FastXSLTMediator;
-import org.wso2.developerstudio.eclipse.gmf.esb.FaultMediator;
-import org.wso2.developerstudio.eclipse.gmf.esb.FilterMediator;
-import org.wso2.developerstudio.eclipse.gmf.esb.ForEachMediator;
-import org.wso2.developerstudio.eclipse.gmf.esb.HeaderMediator;
-import org.wso2.developerstudio.eclipse.gmf.esb.InputConnector;
-import org.wso2.developerstudio.eclipse.gmf.esb.IterateMediator;
-import org.wso2.developerstudio.eclipse.gmf.esb.LogMediator;
-import org.wso2.developerstudio.eclipse.gmf.esb.LoopBackMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.Mediator;
-import org.wso2.developerstudio.eclipse.gmf.esb.OAuthMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.OutputConnector;
-import org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryMediator;
-import org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator;
-import org.wso2.developerstudio.eclipse.gmf.esb.PublishEventMediator;
-import org.wso2.developerstudio.eclipse.gmf.esb.RMSequenceMediator;
-import org.wso2.developerstudio.eclipse.gmf.esb.RespondMediator;
-import org.wso2.developerstudio.eclipse.gmf.esb.RuleMediator;
-import org.wso2.developerstudio.eclipse.gmf.esb.ScriptMediator;
-import org.wso2.developerstudio.eclipse.gmf.esb.SendMediator;
-import org.wso2.developerstudio.eclipse.gmf.esb.Sequence;
-import org.wso2.developerstudio.eclipse.gmf.esb.SmooksMediator;
-import org.wso2.developerstudio.eclipse.gmf.esb.SpringMediator;
-import org.wso2.developerstudio.eclipse.gmf.esb.StoreMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.SwitchCaseContainer;
-import org.wso2.developerstudio.eclipse.gmf.esb.SwitchMediator;
-import org.wso2.developerstudio.eclipse.gmf.esb.ThrottleMediator;
-import org.wso2.developerstudio.eclipse.gmf.esb.TransactionMediator;
-import org.wso2.developerstudio.eclipse.gmf.esb.URLRewriteMediator;
-import org.wso2.developerstudio.eclipse.gmf.esb.ValidateMediator;
-import org.wso2.developerstudio.eclipse.gmf.esb.XQueryMediator;
-import org.wso2.developerstudio.eclipse.gmf.esb.XSLTMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.Activator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractMediator;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EditorUtils;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.debugpoint.builder.IESBDebugPointBuilder;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.debugpoint.impl.ESBDebugPoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.exception.DebugPointMarkerNotFoundException;
@@ -109,8 +62,9 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.EsbServerEdit
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.APIResourceImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.AggregateMediatorImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.CacheMediatorImpl;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.CloneMediatorContainerImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.CloneMediatorImpl;
-import org.wso2.developerstudio.eclipse.gmf.esb.impl.CloudConnectorOperationImpl;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.CloneTargetContainerImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.EntitlementAdviceContainerImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.EntitlementMediatorImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.EntitlementObligationsContainerImpl;
@@ -151,226 +105,9 @@ public abstract class AbstractESBDebugPointBuilder implements IESBDebugPointBuil
     private EObject innerContainerInstance;
     private EObject innerParentContainer;
     private Integer switchCasePosition;
+    private Integer cloneTargetPosition;
 
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
-
-    /**
-     * This method returns the InputConnector of the given mediator.
-     * 
-     * @param mediator
-     * @return
-     */
-    public static InputConnector getInputConnector(Mediator mediator) {
-
-        if (mediator instanceof AggregateMediator) {
-            return ((AggregateMediator) mediator).getInputConnector();
-        } else if (mediator instanceof CacheMediator) {
-            return ((CacheMediator) mediator).getInputConnector();
-        } else if (mediator instanceof CalloutMediator) {
-            return ((CalloutMediator) mediator).getInputConnector();
-        } else if (mediator instanceof CallTemplateMediator) {
-            return ((CallTemplateMediator) mediator).getInputConnector();
-        } else if (mediator instanceof ClassMediator) {
-            return ((ClassMediator) mediator).getInputConnector();
-        } else if (mediator instanceof CloneMediator) {
-            return ((CloneMediator) mediator).getInputConnector();
-        } else if (mediator instanceof CommandMediator) {
-            return ((CommandMediator) mediator).getInputConnector();
-        } else if (mediator instanceof DBLookupMediator) {
-            return ((DBLookupMediator) mediator).getInputConnector();
-        } else if (mediator instanceof DBReportMediator) {
-            return ((DBReportMediator) mediator).getInputConnector();
-        } else if (mediator instanceof DropMediator) {
-            return ((DropMediator) mediator).getInputConnector();
-        } else if (mediator instanceof EnqueueMediator) {
-            return ((EnqueueMediator) mediator).getInputConnector();
-        } else if (mediator instanceof EnrichMediator) {
-            return ((EnrichMediator) mediator).getInputConnector();
-        } else if (mediator instanceof EntitlementMediator) {
-            return ((EntitlementMediator) mediator).getInputConnector();
-        } else if (mediator instanceof EventMediator) {
-            return ((EventMediator) mediator).getInputConnector();
-        } else if (mediator instanceof FaultMediator) {
-            return ((FaultMediator) mediator).getInputConnector();
-        } else if (mediator instanceof FilterMediator) {
-            return ((FilterMediator) mediator).getInputConnector();
-        } else if (mediator instanceof HeaderMediator) {
-            return ((HeaderMediator) mediator).getInputConnector();
-        } else if (mediator instanceof IterateMediator) {
-            return ((IterateMediator) mediator).getInputConnector();
-        } else if (mediator instanceof LogMediator) {
-            return ((LogMediator) mediator).getInputConnector();
-        } else if (mediator instanceof OAuthMediator) {
-            return ((OAuthMediator) mediator).getInputConnector();
-        } else if (mediator instanceof PayloadFactoryMediator) {
-            return ((PayloadFactoryMediator) mediator).getInputConnector();
-        } else if (mediator instanceof PropertyMediator) {
-            return ((PropertyMediator) mediator).getInputConnector();
-        } else if (mediator instanceof RMSequenceMediator) {
-            return ((RMSequenceMediator) mediator).getInputConnector();
-        } else if (mediator instanceof RuleMediator) {
-            return ((RuleMediator) mediator).getInputConnector();
-        } else if (mediator instanceof ScriptMediator) {
-            return ((ScriptMediator) mediator).getInputConnector();
-        } else if (mediator instanceof SendMediator) {
-            return ((SendMediator) mediator).getInputConnector();
-        } else if (mediator instanceof SmooksMediator) {
-            return ((SmooksMediator) mediator).getInputConnector();
-        } else if (mediator instanceof SpringMediator) {
-            return ((SpringMediator) mediator).getInputConnector();
-        } else if (mediator instanceof StoreMediator) {
-            return ((StoreMediator) mediator).getInputConnector();
-        } else if (mediator instanceof SwitchMediator) {
-            return ((SwitchMediator) mediator).getInputConnector();
-        } else if (mediator instanceof ThrottleMediator) {
-            return ((ThrottleMediator) mediator).getInputConnector();
-        } else if (mediator instanceof XQueryMediator) {
-            return ((XQueryMediator) mediator).getInputConnector();
-        } else if (mediator instanceof XSLTMediator) {
-            return ((XSLTMediator) mediator).getInputConnector();
-        } else if (mediator instanceof FastXSLTMediator) {
-            return ((FastXSLTMediator) mediator).getInputConnector();
-        } else if (mediator instanceof BAMMediator) {
-            return ((BAMMediator) mediator).getInputConnector();
-        } else if (mediator instanceof Sequence) {
-            return ((Sequence) mediator).getInputConnector();
-        } else if (mediator instanceof CallMediator) {
-            return ((CallMediator) mediator).getInputConnector();
-        } else if (mediator instanceof LoopBackMediator) {
-            return ((LoopBackMediator) mediator).getInputConnector();
-        } else if (mediator instanceof RespondMediator) {
-            return ((RespondMediator) mediator).getInputConnector();
-        } else if (mediator instanceof ConditionalRouterMediator) {
-            return ((ConditionalRouterMediator) mediator).getInputConnector();
-        } else if (mediator instanceof ValidateMediator) {
-            return ((ValidateMediator) mediator).getInputConnector();
-        } else if (mediator instanceof BeanMediator) {
-            return ((BeanMediator) mediator).getInputConnector();
-        } else if (mediator instanceof EJBMediator) {
-            return ((EJBMediator) mediator).getInputConnector();
-        } else if (mediator instanceof URLRewriteMediator) {
-            return ((URLRewriteMediator) mediator).getInputConnector();
-        } else if (mediator instanceof TransactionMediator) {
-            return ((TransactionMediator) mediator).getInputConnector();
-        } else if (mediator instanceof ForEachMediator) {
-            return ((ForEachMediator) mediator).getInputConnector();
-        } else if (mediator instanceof BuilderMediator) {
-            return ((BuilderMediator) mediator).getInputConnector();
-        } else if (mediator instanceof PublishEventMediator) {
-            return ((PublishEventMediator) mediator).getInputConnector();
-        } else if (mediator instanceof CloudConnectorOperationImpl) {
-            return ((CloudConnectorOperationImpl) mediator).getInputConnector();
-        }
-        throw new IllegalArgumentException("Invalid/Unknown Mediator type found : " + mediator.toString());
-    }
-
-    /**
-     * This method returns the OutputConnector of the given mediator.
-     * 
-     * @param mediator
-     * @return
-     */
-    public static OutputConnector getOutputConnector(Mediator mediator) {
-
-        if (mediator instanceof AggregateMediator) {
-            return ((AggregateMediator) mediator).getOutputConnector();
-        } else if (mediator instanceof CacheMediator) {
-            return ((CacheMediator) mediator).getOutputConnector();
-        } else if (mediator instanceof CalloutMediator) {
-            return ((CalloutMediator) mediator).getOutputConnector();
-        } else if (mediator instanceof CallTemplateMediator) {
-            return ((CallTemplateMediator) mediator).getOutputConnector();
-        } else if (mediator instanceof ClassMediator) {
-            return ((ClassMediator) mediator).getOutputConnector();
-        } else if (mediator instanceof CloneMediator) {
-            return ((CloneMediator) mediator).getOutputConnector();
-        } else if (mediator instanceof CommandMediator) {
-            return ((CommandMediator) mediator).getOutputConnector();
-        } else if (mediator instanceof DBLookupMediator) {
-            return ((DBLookupMediator) mediator).getOutputConnector();
-        } else if (mediator instanceof DBReportMediator) {
-            return ((DBReportMediator) mediator).getOutputConnector();
-        } else if (mediator instanceof EnqueueMediator) {
-            return ((EnqueueMediator) mediator).getOutputConnector();
-        } else if (mediator instanceof EnrichMediator) {
-            return ((EnrichMediator) mediator).getOutputConnector();
-        } else if (mediator instanceof Sequence) {
-            return ((Sequence) mediator).getOutputConnector().get(0);
-        } else if (mediator instanceof EntitlementMediator) {
-            return ((EntitlementMediator) mediator).getOutputConnector();
-        } else if (mediator instanceof EventMediator) {
-            return ((EventMediator) mediator).getOutputConnector();
-        } else if (mediator instanceof FaultMediator) {
-            return ((FaultMediator) mediator).getOutputConnector();
-        } else if (mediator instanceof FilterMediator) {
-            return ((FilterMediator) mediator).getOutputConnector();
-        } else if (mediator instanceof HeaderMediator) {
-            return ((HeaderMediator) mediator).getOutputConnector();
-        } else if (mediator instanceof IterateMediator) {
-            return ((IterateMediator) mediator).getOutputConnector();
-        } else if (mediator instanceof LogMediator) {
-            return ((LogMediator) mediator).getOutputConnector();
-        } else if (mediator instanceof OAuthMediator) {
-            return ((OAuthMediator) mediator).getOutputConnector();
-        } else if (mediator instanceof PayloadFactoryMediator) {
-            return ((PayloadFactoryMediator) mediator).getOutputConnector();
-        } else if (mediator instanceof PropertyMediator) {
-            return ((PropertyMediator) mediator).getOutputConnector();
-        } else if (mediator instanceof RMSequenceMediator) {
-            return ((RMSequenceMediator) mediator).getOutputConnector();
-        } else if (mediator instanceof RuleMediator) {
-            return ((RuleMediator) mediator).getOutputConnector();
-        } else if (mediator instanceof ScriptMediator) {
-            return ((ScriptMediator) mediator).getOutputConnector();
-        } else if (mediator instanceof SendMediator) {
-            return ((SendMediator) mediator).getOutputConnector();
-        } else if (mediator instanceof SmooksMediator) {
-            return ((SmooksMediator) mediator).getOutputConnector();
-        } else if (mediator instanceof SpringMediator) {
-            return ((SpringMediator) mediator).getOutputConnector();
-        } else if (mediator instanceof StoreMediator) {
-            return ((StoreMediator) mediator).getOutputConnector();
-        } else if (mediator instanceof SwitchMediator) {
-            return ((SwitchMediator) mediator).getOutputConnector();
-        } else if (mediator instanceof ThrottleMediator) {
-            return ((ThrottleMediator) mediator).getOutputConnector();
-        } else if (mediator instanceof XQueryMediator) {
-            return ((XQueryMediator) mediator).getOutputConnector();
-        } else if (mediator instanceof XSLTMediator) {
-            return ((XSLTMediator) mediator).getOutputConnector();
-        } else if (mediator instanceof FastXSLTMediator) {
-            return ((FastXSLTMediator) mediator).getOutputConnector();
-        } else if (mediator instanceof BAMMediator) {
-            return ((BAMMediator) mediator).getOutputConnector();
-        } else if (mediator instanceof CallMediator) {
-            return ((CallMediator) mediator).getOutputConnector();
-        } else if (mediator instanceof LoopBackMediator) {
-            return ((LoopBackMediator) mediator).getOutputConnector();
-        } else if (mediator instanceof RespondMediator) {
-            return ((RespondMediator) mediator).getOutputConnector();
-        } else if (mediator instanceof ConditionalRouterMediator) {
-            return ((ConditionalRouterMediator) mediator).getOutputConnector();
-        } else if (mediator instanceof ValidateMediator) {
-            return ((ValidateMediator) mediator).getOutputConnector();
-        } else if (mediator instanceof BeanMediator) {
-            return ((BeanMediator) mediator).getOutputConnector();
-        } else if (mediator instanceof EJBMediator) {
-            return ((EJBMediator) mediator).getOutputConnector();
-        } else if (mediator instanceof URLRewriteMediator) {
-            return ((URLRewriteMediator) mediator).getOutputConnector();
-        } else if (mediator instanceof TransactionMediator) {
-            return ((TransactionMediator) mediator).getOutputConnector();
-        } else if (mediator instanceof ForEachMediator) {
-            return ((ForEachMediator) mediator).getOutputConnector();
-        } else if (mediator instanceof BuilderMediator) {
-            return ((BuilderMediator) mediator).getOutputConnector();
-        } else if (mediator instanceof PublishEventMediator) {
-            return ((PublishEventMediator) mediator).getOutputconnector();
-        } else if (mediator instanceof CloudConnectorOperationImpl) {
-            return ((CloudConnectorOperationImpl) mediator).getOutputConnector();
-        }
-        throw new IllegalArgumentException("Invalid/Unknown Mediator type found : " + mediator.toString());
-    }
 
     /**
      * This method takes mediator editpart and find and returns the immediate
@@ -565,13 +302,13 @@ public abstract class AbstractESBDebugPointBuilder implements IESBDebugPointBuil
                         if (isComplexMediatorType(mediatorImpl)) {
                             tempConnector = getNextMediatorOutputConnector(mediatorImpl);
                         } else {
-                            tempConnector = getOutputConnector((Mediator) mediatorImpl);
+                            tempConnector = EditorUtils.getOutputConnectorFromMediator((Mediator) mediatorImpl);
                         }
                         mediatorImpl = getNextMediatorFromParentStack(parentStack);
                         break;
                     } else {
                         count++;
-                        tempConnector = getOutputConnector((Mediator) mediator);
+                        tempConnector = EditorUtils.getOutputConnectorFromMediator((Mediator) mediator);
                     }
                 } else {
                     throw new MediatorNotFoundException("Mediation flow diagram error");
@@ -588,7 +325,7 @@ public abstract class AbstractESBDebugPointBuilder implements IESBDebugPointBuil
     private Stack<EObject> removeTopObjectsUntilFirstMediator(Stack<EObject> parentStack) {
         while (!(parentStack.peek() instanceof MediatorImpl)) {
             parentStack.pop();
-            if (parentStack.empty()) {
+            if (parentStack.isEmpty()) {
                 throw new IllegalArgumentException(
                         "Valid MediatorImpl instance not found in the given parent instances stack ");
             }
@@ -658,6 +395,27 @@ public abstract class AbstractESBDebugPointBuilder implements IESBDebugPointBuil
                 throw new IllegalArgumentException("Unknown Throttle Mediator Container type found : "
                         + innerContainerInstance.getClass());
             }
+        } else if (mediatorImpl instanceof CloneMediatorImpl) {
+            innerParentContainer = parentStack.pop();
+            if (innerParentContainer instanceof CloneMediatorContainerImpl) {
+                CloneTargetContainerImpl cloneTarget = (CloneTargetContainerImpl) parentStack.pop();
+                EList<CloneTargetContainer> cloneTargetContainerList = ((CloneMediatorContainerImpl) innerParentContainer)
+                        .getCloneTargetContainer();
+                cloneTargetPosition = 0;
+                for (CloneTargetContainer switchCaseContainerImpl : cloneTargetContainerList) {
+                    if (switchCaseContainerImpl.equals(cloneTarget)) {
+                        innerContainerInstance = cloneTarget;
+                        return cloneTargetPosition;
+                    } else {
+                        cloneTargetPosition++;
+                    }
+                }
+            } else if (innerParentContainer instanceof SwitchDefaultParentContainerImpl) {
+                return SWITCH_DEFAULT_CONTAINER_POSITION_VALUE;
+            } else {
+                throw new IllegalArgumentException(
+                        "Required SwitchCaseContainerImpl instance not found in switchCaseContainerList ");
+            }
         }
         throw new IllegalArgumentException("Unknown multiple inner sequence mediator found : "
                 + mediatorImpl.getClass());
@@ -667,7 +425,7 @@ public abstract class AbstractESBDebugPointBuilder implements IESBDebugPointBuil
     private EObject getNextMediatorFromParentStack(Stack<EObject> parentStack) {
         EObject nextImpl = parentStack.pop();
         while (!(nextImpl instanceof MediatorImpl)) {
-            if (parentStack.empty()) {
+            if (parentStack.isEmpty()) {
                 throw new IllegalArgumentException(
                         "Valid MediatorImpl instance not found in the given parent instances stack ");
             }
@@ -719,7 +477,12 @@ public abstract class AbstractESBDebugPointBuilder implements IESBDebugPointBuil
                         + innerContainerInstance.getClass());
             }
         } else if (mediatorImpl instanceof CloneMediatorImpl) {
-            return ((CloneMediatorImpl) mediatorImpl).getTargetsOutputConnector().get(0);
+            if (innerParentContainer instanceof CloneMediatorContainerImpl) {
+                return ((CloneMediatorImpl) mediatorImpl).getTargetsOutputConnector().get(cloneTargetPosition);
+            } else {
+                throw new IllegalArgumentException("Unknown Clone Mediator Container type found : "
+                        + innerContainerInstance.getClass());
+            }
         } else if (mediatorImpl instanceof ValidateMediatorImpl) {
             return ((ValidateMediatorImpl) mediatorImpl).getOnFailOutputConnector();
         } else if (mediatorImpl instanceof CacheMediatorImpl) {
@@ -751,7 +514,8 @@ public abstract class AbstractESBDebugPointBuilder implements IESBDebugPointBuil
 
     public static boolean isComplexListMediator(EObject mediatorImpl) {
         if (mediatorImpl instanceof FilterMediatorImpl || mediatorImpl instanceof SwitchMediatorImpl
-                || mediatorImpl instanceof ThrottleMediatorImpl || mediatorImpl instanceof EntitlementMediatorImpl) {
+                || mediatorImpl instanceof ThrottleMediatorImpl || mediatorImpl instanceof EntitlementMediatorImpl
+                || mediatorImpl instanceof CloneMediatorImpl) {
             return true;
         }
         return false;
@@ -759,7 +523,7 @@ public abstract class AbstractESBDebugPointBuilder implements IESBDebugPointBuil
 
     private Stack<EObject> getParentMediatorStack(MediatorImpl selection) throws MediatorNotFoundException {
         EObject parentMediator = selection;
-        Stack<EObject> parentStack = new Stack<EObject>();
+        Stack<EObject> parentStack = new Stack<>();
         parentStack.push(parentMediator);
         while (!isMediatorChainEnded(parentMediator)) {
             parentStack.addAll(getParentMediatorImpl((MediatorImpl) parentMediator));
@@ -770,7 +534,7 @@ public abstract class AbstractESBDebugPointBuilder implements IESBDebugPointBuil
 
     private Stack<EObject> getParentMediatorImpl(MediatorImpl childMediator) throws MediatorNotFoundException {
         MediatorFlowImpl parentMediationFlowImpl = (MediatorFlowImpl) (childMediator).eContainer();
-        Stack<EObject> mediatorStack = new Stack<EObject>();
+        Stack<EObject> mediatorStack = new Stack<>();
         EObject nextImpl = parentMediationFlowImpl;
         do {
             nextImpl = nextImpl.eContainer();
@@ -785,25 +549,36 @@ public abstract class AbstractESBDebugPointBuilder implements IESBDebugPointBuil
     /**
      * This method returns mediator position in fault sequence.
      * 
-     * @param eList
+     * @param elementList
      * @param AbstractMediator
      * @return
      * @throws MediatorNotFoundException
      */
-    protected List<Integer> getMediatorPositionInFaultSeq(EList<EsbElement> eList, AbstractMediator selection)
+    protected List<Integer> getMediatorPositionInFaultSeq(EList<EsbElement> elementList, AbstractMediator selection)
             throws MediatorNotFoundException {
-        int count = 0;
         MediatorImpl selectionImpl = (MediatorImpl) ((NodeImpl) selection.getModel()).getElement();
-        List<Integer> positionList = new ArrayList<>();
-        for (EsbElement mediator : eList) {
-            if (selectionImpl.equals(mediator)) {
-                positionList.add(count);
-                return positionList;
-            } else {
-                count++;
+        EList<EsbElement> restructuredElementList = null;
+        if (elementList.contains(selectionImpl)) {
+            restructuredElementList = restructureMediatorList(elementList, selectionImpl);
+        }
+        return getMediatorPositionInFaultSeq(restructuredElementList, selectionImpl);
+    }
+
+    private EList<EsbElement> restructureMediatorList(EList<EsbElement> eList, MediatorImpl selectionImpl) {
+        int eListSize = eList.size();
+        for (int index = 0; index < eListSize; index++) {
+            Mediator esbElement = (Mediator) eList.get(index);
+            OutputConnector tempConnector = EditorUtils.getOutputConnectorFromMediator((Mediator) esbElement);
+            EsbLink outgoingLink = tempConnector.getOutgoingLink();
+            if (outgoingLink != null && outgoingLink.getTarget() != null) {
+                EObject mediator = outgoingLink.getTarget().eContainer();
+                if (mediator.equals(selectionImpl)) {
+                    eList.move(index, selectionImpl);
+                    break;
+                }
             }
         }
-        throw new MediatorNotFoundException(selection + " Mediator not found in Fault Sequence");
+        return eList;
     }
 
     /**
@@ -816,16 +591,68 @@ public abstract class AbstractESBDebugPointBuilder implements IESBDebugPointBuil
      */
     protected List<Integer> getMediatorPositionInFaultSeq(EList<EsbElement> eList, EObject selection)
             throws MediatorNotFoundException {
-        int count = 0;
+        int count = 1;
+        Stack<EObject> parentStack = getParentMediatorStack((MediatorImpl) selection);
+        parentStack.pop();// removing the Super Parent
+                          // Container(Proxy,Sequence,...)
+        parentStack = removeTopObjectsUntilFirstMediator(parentStack);
+        EObject mediatorImpl = parentStack.pop();
         List<Integer> positionList = new ArrayList<>();
         for (EsbElement mediator : eList) {
-            if (mediator.equals(selection)) {
-                positionList.add(count);
-                return positionList;
+            if (mediator.equals(mediatorImpl)) {
+                positionList.add(eList.size() - count);
+                if (parentStack.isEmpty()) {
+                    return positionList;
+                }
+                break;
             } else {
                 count++;
             }
         }
+        OutputConnector tempConnector;
+        if (isComplexListMediator(mediatorImpl)) {
+            positionList.add(getPositionOfInnerContainer(parentStack, mediatorImpl));
+        }
+        if (isComplexMediatorType(mediatorImpl)) {
+            tempConnector = getNextMediatorOutputConnector(mediatorImpl);
+        } else {
+            tempConnector = EditorUtils.getOutputConnectorFromMediator((Mediator) mediatorImpl);
+        }
+        mediatorImpl = getNextMediatorFromParentStack(parentStack);
+        do {
+            count = 0;
+            while (isValidConnectorToProceed(tempConnector)) {
+                EsbLink outgoingLink = tempConnector.getOutgoingLink();
+                if (outgoingLink != null && outgoingLink.getTarget() != null) {
+                    EObject mediator = outgoingLink.getTarget().eContainer();
+                    if (isMediatorChainEnded(mediator)) {
+                        throw new MediatorNotFoundException("Selected Mediator is not found in a valid position");
+                    } else if (mediator.equals(mediatorImpl)) {
+                        positionList.add(count);
+                        if (parentStack.isEmpty()) {
+                            return positionList;
+                        }
+                        if (isComplexListMediator(mediatorImpl)) {
+                            positionList.add(getPositionOfInnerContainer(parentStack, mediatorImpl));
+                        }
+                        if (isComplexMediatorType(mediatorImpl)) {
+                            tempConnector = getNextMediatorOutputConnector(mediatorImpl);
+                        } else {
+                            tempConnector = EditorUtils.getOutputConnectorFromMediator((Mediator) mediatorImpl);
+                        }
+                        mediatorImpl = getNextMediatorFromParentStack(parentStack);
+                        break;
+                    } else {
+                        count++;
+                        tempConnector = EditorUtils.getOutputConnectorFromMediator((Mediator) mediator);
+                    }
+                } else {
+                    throw new MediatorNotFoundException("Mediation flow diagram error");
+                }
+            }
+
+        } while (mediatorImpl instanceof MediatorImpl);
+
         throw new MediatorNotFoundException(selection + " Mediator not found in Fault Sequence");
     }
 

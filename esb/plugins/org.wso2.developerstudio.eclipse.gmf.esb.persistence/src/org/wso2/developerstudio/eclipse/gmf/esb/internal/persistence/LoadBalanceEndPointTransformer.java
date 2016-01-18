@@ -107,6 +107,7 @@ public class LoadBalanceEndPointTransformer extends AbstractEndpointTransformer 
 
 	}
 
+	@Override
 	public void createSynapseObject(TransformationInfo info, EObject subject,
 			List<Endpoint> endPoints) throws TransformerException {
 
@@ -116,6 +117,7 @@ public class LoadBalanceEndPointTransformer extends AbstractEndpointTransformer 
 
 	}
 
+	@Override
 	public void transformWithinSequence(TransformationInfo information,
 			EsbNode subject, SequenceMediator sequence)
 			throws TransformerException {

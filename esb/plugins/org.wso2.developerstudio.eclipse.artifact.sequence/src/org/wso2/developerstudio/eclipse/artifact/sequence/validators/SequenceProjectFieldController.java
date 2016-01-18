@@ -76,8 +76,9 @@ public class SequenceProjectFieldController extends AbstractFieldController {
 		} else if(modelProperty.equals("reg.browse")){
 			SequenceModel seqModel = (SequenceModel) model; 
 			if(seqModel.isSaveAsDynamic()){
-				if(null==value || value.toString().trim().isEmpty()){
-					throw new FieldValidationException(REGISTRY_PATH_EMPTY_ERROR);
+				if (null == value || value.toString().trim().isEmpty()) {
+					throw new FieldValidationException(
+							REGISTRY_PATH_EMPTY_ERROR);
 				}
 			}
 			

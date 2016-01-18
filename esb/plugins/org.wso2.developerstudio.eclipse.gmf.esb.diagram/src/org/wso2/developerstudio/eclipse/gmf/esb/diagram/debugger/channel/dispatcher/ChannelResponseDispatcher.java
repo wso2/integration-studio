@@ -47,7 +47,7 @@ public class ChannelResponseDispatcher implements Runnable {
             while (currentThread == responseDispatcherThread) {
                 String buffer = null;
                 synchronized (requestReader) {
-                    buffer = requestReader.readLine();;
+                    buffer = requestReader.readLine();
                 }
                 esbDebuggerInterface.notifyResponce(buffer);
             }

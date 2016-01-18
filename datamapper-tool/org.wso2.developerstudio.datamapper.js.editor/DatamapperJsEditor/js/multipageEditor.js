@@ -5,6 +5,7 @@ var mOutput= null;
 
 var operatorSize = {width : 90,	height : 90};
 
+//TODO module design pattern
 $(document).ready(function () {
     registerTabChangeEvent();
     registerMouseAndKeyEvents();
@@ -30,9 +31,11 @@ function registerMouseAndKeyEvents() {
 
     $(document).keydown(function (e) {
     	//console.log("keydown = " +e);
-    	   	if(e.keyCode==46){//delete key pressed
+    	//e.preventdefault(); //prevents dthe default behaviour of the event   	
+    	if(e.keyCode==46){//delete key pressed
     	   		if (selected) selected.remove();
     	   	}
+    	   	
     });
 }
 
@@ -52,16 +55,16 @@ function registerTabChangeEvent() {
 function activateSourceView() {
     console.log('activateSourceView');
     var sourceEditorTBox = $('#sourceEditorTextBox');
-    sourceEditorTBox.val('<sequence name="sample_sequence">');
+    var sourceScript = generateLanguage();
+    sourceEditorTBox.val(sourceScript);
 }
 
 
 function activateDesignView() {
 	console.log('activateDesignView');
     var sourceEditorTextBox = $('#sourceEditorTextBox');
-    console.log(sequenceObj);
+    //console.log(sequenceObj);
 }
-
 
 function initDraggable() {
 	$(".draggableIcon").draggable({
@@ -87,46 +90,21 @@ function handleDropEvent(event, ui) {
 	if ($(ui.draggable).attr('id').search(/dragged/) == -1) {
 		var newDraggedElem = $(ui.draggable).clone();
 		var type = newDraggedElem.attr('id');
-		createDiv(type, newDraggedElem, type);
+		var position = {}
+		position.x  = ui.offset.left - $(this).offset().left;
+		position.y   = ui.offset.top - $(this).offset().top;
+		createDiv(type, position, type);
 	}
 }
 
-function createDiv(objName, image, type) {
+function createDiv(objName, position, type) {
 	var operator = null;
 	if (objName=="Concat"){
 		operator = new joint.shapes.devs.Model({
 			size : operatorSize,
+			position : position,
 			inPorts : [ 'in1', 'in2' ],
 			outPorts : [ 'out' ],
-			attrs : {
-				'.label' : {
-					text : objName,
-					'ref-x' : .4,
-					'ref-y' : .2
-				},
-				'graphProperties': {
-					marked :0,
-					visited:0,
-					index : -1,
-					portVariableIndex:[-1]
-				},
-				rect : {
-					fill : '#2ECC71'
-				},
-				circle: { r: 6 },
-				'.inPorts circle' : {
-					fill : '#16A085'
-				},
-				'.outPorts circle' : {
-					fill : '#E74C3C'
-				}
-			}
-		});
-    } else if (objName=="Split") {
-    	operator = new joint.shapes.devs.Model({
-			size : operatorSize,
-			inPorts : [ 'in1' ],
-			outPorts : [ 'out1' , 'out2'],
 			attrs : {
 				'.label' : {
 					text : objName,
@@ -137,17 +115,43 @@ function createDiv(objName, image, type) {
 					marked : 0,
 					visited: 0,
 					index : -1,
-					portVariableIndex:[-1,-1]
-				},
-				rect : {
-					fill : '#2ECC71'
-				},
-				circle: { r: 6},
+					portVariableIndex:[-1]
+		        },
+		        rect : { fill: '#F0F0F0', rx: 8, ry: 8, 'stroke-width': 2, stroke: 'blue' },
+				circle: { r: 6 },
 				'.inPorts circle' : {
-					fill : '#16A085'
+					fill : '#6495ED'
 				},
 				'.outPorts circle' : {
-					fill : '#E74C3C'
+					fill : '#6495ED'
+				}
+			}
+		});
+    } else if (objName=="Split") {
+    	operator = new joint.shapes.devs.Model({
+			size : operatorSize,
+			position : position,
+			inPorts : [ 'in1' ],
+			outPorts : [ 'out1' , 'out2'],
+			attrs : {
+				'.label' : {
+					text : objName,
+					'ref-x' : .4,
+					'ref-y' : .2
+				},
+				'graphProperties': {
+							marked : 0,
+							visited: 0,
+							index : -1,
+							portVariableIndex:[-1,-1]
+				},
+				rect : { fill: '#F0F0F0', rx: 8, ry: 8, 'stroke-width': 2, stroke: 'blue' },
+				circle: { r: 6},
+				'.inPorts circle' : {
+					fill : '#6495ED'
+				},
+				'.outPorts circle' : {
+					fill : '#6495ED'
 				}
 			}
 		});
@@ -167,6 +171,14 @@ function openOutputDialog() {
 	$('#myOutput').click();
 }
 
+function Undo() {
+  commandManager.undo(); 
+}
+function Redo() {
+  commandManager.redo();
+}
+
+
 
 function handleFileSelect(evt, box, isOutput) {
 	var f = evt.target.files[0]; 
@@ -179,6 +191,7 @@ function handleFileSelect(evt, box, isOutput) {
 		  	  var obj = JSON.parse(contents);
 			  traverseObject(obj, 1, box, isOutput);
 			  relocateElement(box);
+			  commandManager.reset();
 	      }
     } else { 
     	  alert("Failed to load file");

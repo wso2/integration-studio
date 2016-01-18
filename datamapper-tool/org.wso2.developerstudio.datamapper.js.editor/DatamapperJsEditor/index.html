@@ -10,21 +10,22 @@
 <script src="js/libs/jointjs/lodash.min.js"></script>
 <script src="js/libs/jointjs/backbone-min.js"></script>
 <script src="js/libs/jointjs/joint.min.js"></script>
+<script src="js/libs/jointjs/joint.dia.CommandManager.js"></script>
 
 <link   href="js/libs/jointjs/joint.min.css"  rel="stylesheet" />
 <link rel="stylesheet" href="css/bootstrap.css">
 <link rel="stylesheet" href="css/styles.css">
 <link rel="stylesheet" href="css/jquery-ui.css">
 
+<script src="js/langGenerator.js"></script>
 <script src="js/multipageEditor.js"></script>
 <script src="js/designEditor.js"></script>
 <script src="js/editor.js"></script>
-<script src="js/languageGen.js"></script>
+
 
 
 </head>
 <body>
-
 	<div class="container-fluid">
 		<div class="tabbable tabs-below">
 			<ul class="nav nav-tabs" id="bottom-tabs">
@@ -106,15 +107,13 @@
 
 
 	</div>
-	<textarea id="editor" style="display: block;" rows="1" cols="100"></textarea>
-	<button onclick="saveFile()" type="button">Save To File</button>
-	<button onclick="makeDirty()" type="button">Make editor dirty</button>
-	<button onclick="loadFileContent()" type="button">Read File</button>
-	<button onclick="setFocus()" type="button">set Focus To Editor</button>
-	<button onclick="execUndoableOperation()" type="button">Execute	Undoable Operation</button>
-	<input id="myInput" type="file" style="visibility:hidden" />
+	<button onclick="saveFile()" type="button">Save</button>
+	<button onclick="loadFileContent()" type="button">Load</button>
+	<button id="undo-button" onclick="Undo()" type="button">Undo</button>
+	<button id="redo-button" onclick="Redo()" type="button">Redo</button>
     <input type="button" value="Add Input Schema" onclick="openInputDialog()" />
-    <input id="myOutput" type="file" style="visibility:hidden" />
     <input type="button" value="Add Output Schema" onclick="openOutputDialog()" />
+    <input id="myOutput" type="file" style="visibility:hidden" />
+    <input id="myInput" type="file" style="visibility:hidden" />
 </body>
 </html>

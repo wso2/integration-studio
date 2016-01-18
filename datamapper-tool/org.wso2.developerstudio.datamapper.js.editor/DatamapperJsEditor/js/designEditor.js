@@ -5,9 +5,10 @@ var yOffset = 30;
 var rootWidth = 300;
 var rootHeight = 400;
 var paperWidth = 1200;
+var commandManager = null;
 
 var rectangleTemplate = {fill : '#d3d3d3', stroke : 'none'};
-var circleTemplate = {fill : '#E74C3C'};
+var circleTemplate = {fill : '#6495ED'};
 var initialSize = {width : rootWidth, height : rootHeight};
 var inputPosition = {x : 50, y : 50};
 var outputPosition = {x : 1050, y : 50};
@@ -18,7 +19,7 @@ function getColorFromParent(parent) {
 	var step = '60606';
 	var newColor = parseInt(colorCode, 16) + parseInt(step, 16);
 	newColor = '#' + newColor.toString(16);
-	return newColor;
+	return 'white';
 }
 
 function getChildRect(parent) {
@@ -35,12 +36,18 @@ function getLabelText(labelText) {
 	return labelText;
 }
 
+function getOutputLabelText(labelText) {
+	var labelText = {text : labelText, 'text-anchor' : 'start', "ref-y":5,"ref-x":15, "font-size": 24, "font-family": "Arial"};
+	return labelText;
+}
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 function initJointJSGraph() {
 
 	graph = new joint.dia.Graph;
+	
 	paper = new joint.dia.Paper({
 		el : $('#dmEditorContainer'),
 		width : paperWidth,
@@ -81,7 +88,7 @@ function initJointJSGraph() {
 		size : initialSize,
 		attrs : {
 			'.label' : inputLabel,
-			rect : rectangleTemplate,
+			rect :  {fill : '#6495ED', stroke : 'black'},
 			'.outPorts circle' : circleTemplate
 		}
 	});
@@ -93,13 +100,13 @@ function initJointJSGraph() {
 		size : initialSize,
 		attrs : {
 			'.label' : outputLabel,
-			rect : rectangleTemplate,
+			rect :  {fill : '#6495ED', stroke : 'black'},
 			'.inPorts circle' : circleTemplate
 		}
 	});
 
 	graph.addCells([mInput, mOutput]);
-	setLanguageGenerator(graph, paper, mOutput, mInput);
+	commandManager = new joint.dia.CommandManager({ graph: graph });
 }
 
 function getTotalHeightOfChidlren(parent){
@@ -116,7 +123,7 @@ function relocateElement(element) {
 	var ownPosition = element.get('position');
 	var ownSize = element.get('size');
 	var siblingsHeight = getTotalHeightOfChidlren(element);
-	var finalHeight = siblingsHeight + 2*leafHeight;
+	var finalHeight = siblingsHeight + leafHeight;
 	element.set({
 		position : ownPosition,
 		size : {
@@ -134,6 +141,14 @@ function getChildSize(parent){
 	return childSize;
 }
 
+function getFirstChildSize(parent){
+	var parentSize = parent.get('size');
+	var childWidth = parentSize.width;
+	var childHeight = leafHeight;
+	var childSize = {width : childWidth, height : childHeight};
+	return childSize;
+}
+
 function getChildPosition(parent){
 	var parentPosition = parent.get('position');
 	var childX = parentPosition.x + xOffset;
@@ -143,11 +158,28 @@ function getChildPosition(parent){
 	return childSize;
 }
 
+function getFirstChildPosition(parent){
+	var parentPosition = parent.get('position');
+	var childX = parentPosition.x;
+	var siblingsHeight = getTotalHeightOfChidlren(parent);
+	var childY = parentPosition.y + siblingsHeight + yOffset;
+	var childSize = {x : childX, y : childY};
+	return childSize;
+}
+
 function addNode(parent, childName, level) {
 	var childRect = getChildRect(parent);
 	var childText = getLabelText(childName);
-	var childPosition = getChildPosition(parent);
-	var childSize =  getChildSize(parent);
+	var childPosition;
+	var childSize;
+	if (level===2) {
+	  childPosition = getFirstChildPosition(parent);
+	  childSize =  getFirstChildSize(parent);
+	} else{
+	  childPosition = getChildPosition(parent);
+	  childSize =  getChildSize(parent);
+	}
+	
 	
 	var child = new joint.shapes.devs.Model({
 		isInteractive : false,
@@ -179,15 +211,14 @@ function addLeaf(parent, leafName, level, isOutput) {
 			outPorts : [ '' ],
 			attrs : {
 				'.label' : childText,
-				'graphProperties': {
-					index : -1
-				},
+				'graphProperties': { index : -1	},
 				rect : childRect,
 				circle: { r: 6},
 				'.outPorts circle' : circleTemplate
 			}
 		});
 	} else {
+		childText = getOutputLabelText(leafName);
 		leaf = new joint.shapes.devs.Model({
 			isInteractive : false,
 			size : childSize,
@@ -195,9 +226,7 @@ function addLeaf(parent, leafName, level, isOutput) {
 			inPorts : [ '' ],
 			attrs : {
 				'.label' : childText,
-				'graphProperties': {
-					index : -1
-				},
+				'graphProperties': { index : -1	},
 				rect : childRect,
 				circle: { r: 6},
 				'.inPorts circle' : circleTemplate

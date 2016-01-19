@@ -1141,13 +1141,22 @@ public interface EsbPackage extends EPackage {
 	int PROXY_SERVICE__WSDL_KEY = ESB_ELEMENT_FEATURE_COUNT + 36;
 
 	/**
+	 * The feature id for the '<em><b>Wsdl Endpoint</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROXY_SERVICE__WSDL_ENDPOINT = ESB_ELEMENT_FEATURE_COUNT + 37;
+
+	/**
 	 * The feature id for the '<em><b>Wsdl Resources</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PROXY_SERVICE__WSDL_RESOURCES = ESB_ELEMENT_FEATURE_COUNT + 37;
+	int PROXY_SERVICE__WSDL_RESOURCES = ESB_ELEMENT_FEATURE_COUNT + 38;
 
 	/**
 	 * The feature id for the '<em><b>On Error</b></em>' containment reference.
@@ -1156,7 +1165,7 @@ public interface EsbPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PROXY_SERVICE__ON_ERROR = ESB_ELEMENT_FEATURE_COUNT + 38;
+	int PROXY_SERVICE__ON_ERROR = ESB_ELEMENT_FEATURE_COUNT + 39;
 
 	/**
 	 * The number of structural features of the '<em>Proxy Service</em>' class.
@@ -1165,7 +1174,7 @@ public interface EsbPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PROXY_SERVICE_FEATURE_COUNT = ESB_ELEMENT_FEATURE_COUNT + 39;
+	int PROXY_SERVICE_FEATURE_COUNT = ESB_ELEMENT_FEATURE_COUNT + 40;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ProxyOutputConnectorImpl <em>Proxy Output Connector</em>}' class.
@@ -27002,6 +27011,17 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	EReference getProxyService_WsdlKey();
 
 	/**
+	 * Returns the meta object for the containment reference '{@link org.wso2.developerstudio.eclipse.gmf.esb.ProxyService#getWsdlEndpoint <em>Wsdl Endpoint</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Wsdl Endpoint</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.ProxyService#getWsdlEndpoint()
+	 * @see #getProxyService()
+	 * @generated
+	 */
+	EReference getProxyService_WsdlEndpoint();
+
+	/**
 	 * Returns the meta object for the containment reference list '{@link org.wso2.developerstudio.eclipse.gmf.esb.ProxyService#getWsdlResources <em>Wsdl Resources</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -43964,6 +43984,14 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 		 * @generated
 		 */
 		EReference PROXY_SERVICE__WSDL_KEY = eINSTANCE.getProxyService_WsdlKey();
+
+		/**
+		 * The meta object literal for the '<em><b>Wsdl Endpoint</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PROXY_SERVICE__WSDL_ENDPOINT = eINSTANCE.getProxyService_WsdlEndpoint();
 
 		/**
 		 * The meta object literal for the '<em><b>Wsdl Resources</b></em>' containment reference list feature.

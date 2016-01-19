@@ -50,6 +50,7 @@
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//ProxyWsdlType/INLINE"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//ProxyWsdlType/SOURCE_URL"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//ProxyWsdlType/REGISTRY_KEY"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//ProxyWsdlType/ENDPOINT"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//HttpMethodType">
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//HttpMethodType/GET"/>
@@ -845,6 +846,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//ProxyService/wsdlXML"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//ProxyService/wsdlURL"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//ProxyService/wsdlKey"/>
+      <genFeatures children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//ProxyService/wsdlEndpoint"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference esb.ecore#//ProxyService/wsdlResources"/>
       <genFeatures children="true" createChild="true" propertyCategory="Basic" propertyDescription="On Error Sequence"
           ecoreFeature="ecore:EReference esb.ecore#//ProxyService/OnError"/>

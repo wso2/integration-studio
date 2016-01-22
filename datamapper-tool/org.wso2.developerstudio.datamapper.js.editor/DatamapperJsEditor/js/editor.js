@@ -47,7 +47,10 @@ function loadFileContent() {
 function saveFile() {
 	var jsonString = JSON.stringify(graph);
     IDESaveContent(jsonString);
-    IDESaveContentWithExtention(jsonString,"","config","dmc");
+    var sourceScript = generateLanguage();
+    IDESaveContentWithExtention(sourceScript,"","config","dmc");
+    IDESaveContentWithExtention(inputSchema,"","_inputSchema","avsc");
+    IDESaveContentWithExtention(outputSchema,"","_outputSchema","avsc");
 }
 
 

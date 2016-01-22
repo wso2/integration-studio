@@ -5,11 +5,9 @@ var mOutput = null;
 var zoomHandler = null;
 var undoRedoHandler = null;
 var operatorFactory = null;
+var inputSchema = null;
+var outputSchema = null;
 
-var operatorSize = {
-	width : 90,
-	height : 90
-};
 
 //TODO try module design pattern
 $(document).ready(function() {
@@ -31,7 +29,19 @@ function registerMouseAndKeyEvents() {
 	paper.on('blank:pointerdown', function(e, x, y) {
 		zoomHandler.startPanning(e);
 	});
-
+	
+	graph.on('change', function(cell) { 
+		makeDirty();
+	})
+	
+	graph.on('add', function(cell) { 
+		makeDirty();
+	})
+	
+	graph.on('remove', function(cell) { 
+		makeDirty();
+	})
+	
 	$(document).mousedown(function(e) {
 
 	});
@@ -112,11 +122,18 @@ function handleDropEvent(event, ui) {
 		position.x = ui.offset.left - $(this).offset().left;
 		position.y = ui.offset.top - $(this).offset().top;
 		var paperPoint = paper.clientToLocalPoint(position);
-		operatorFactory.addOperator(type, paperPoint);
+		operatorFactory.addOperator(type, paperPoint, type);
 	}
 }
 
 
+function Undo() {
+	undoRedoHandler.undo();
+}
+
+function Redo() {
+	undoRedoHandler.redo();
+}
 
 function openInputDialog() {
 	$('#myInput').bind("change", handleInputFileSelect);
@@ -128,14 +145,6 @@ function openOutputDialog() {
 	$('#myOutput').click();
 }
 
-function Undo() {
-	undoRedoHandler.undo();
-}
-
-function Redo() {
-	undoRedoHandler.redo();
-}
-
 function handleFileSelect(evt, box, isOutput) {
 	var f = evt.target.files[0];
 	if (f) {
@@ -144,10 +153,16 @@ function handleFileSelect(evt, box, isOutput) {
 		reader.onload = function(e) {
 			var contents = e.target.result;
 			console.log(contents);
+			if (isOutput) {
+				inputSchema = contents;
+			} else {
+				outputSchema = contents;
+			}
 			var obj = JSON.parse(contents);
 			traverseObject(obj, 1, box, isOutput);
 			relocateElement(box);
 			undoRedoHandler.reset();
+			makeDirty();
 		}
 	} else {
 		alert("Failed to load file");

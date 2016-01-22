@@ -6,7 +6,6 @@ var rootWidth = 300;
 var rootHeight = 400;
 var paperWidth = 1200;
 
-
 var rectangleTemplate = {fill : '#d3d3d3', stroke : 'none'};
 var circleTemplate = {fill : '#6495ED'};
 var initialSize = {width : rootWidth, height : rootHeight};
@@ -29,7 +28,6 @@ function getChildRect(parent) {
 	childRect.stroke = 'none';
 	return childRect;
 }
-
 
 function getLabelText(labelText) {
 	var labelText = {text : labelText, 'text-anchor' : 'start', "ref-y":5,"ref-x":5, "font-size": 24, "font-family": "Arial"};

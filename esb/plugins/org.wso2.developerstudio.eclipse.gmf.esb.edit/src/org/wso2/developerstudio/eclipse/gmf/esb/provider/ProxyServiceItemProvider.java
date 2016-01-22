@@ -91,9 +91,14 @@ public class ProxyServiceItemProvider
 			case REGISTRY_KEY: {
 				addWsdlKeyPropertyDescriptor(object);
 				break;
+				
+			}
+			case ENDPOINT:{
+			    addWsdlEndpointPropertyDescriptor(object);
+				break;
 			}
 			}
-			if (proxy.getWsdlType() != ProxyWsdlType.NONE) {
+			if (proxy.getWsdlType() != ProxyWsdlType.NONE && proxy.getWsdlType() != ProxyWsdlType.ENDPOINT) {
 				addWsdlResourcesPropertyDescriptor(object);
 			}
 			addInSequenceTypePropertyDescriptor(object);
@@ -159,6 +164,28 @@ public class ProxyServiceItemProvider
 		
 		return itemPropertyDescriptors;
 	}
+	
+	/**
+ 	 * This adds a property descriptor for the Wsdl Endpoint feature.
+ 	 * <!-- begin-user-doc -->
+ 	 * <!-- end-user-doc -->
+ 	 * @generated NOT
+ 	 *//*
+ 	protected void addWsdlEndpointPropertyDescriptor(Object object) {
+ 		itemPropertyDescriptors.add
+ 			(createItemPropertyDescriptor
+ 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+ 				 getResourceLocator(),
+ 				 getString("_UI_ProxyService_wsdlEndpoint_feature"),
+ 				 getString("_UI_PropertyDescriptor_description", "_UI_ProxyService_wsdlEndpoint_feature", "_UI_ProxyService_type"),
+ 				 EsbPackage.Literals.PROXY_SERVICE__WSDL_ENDPOINT,
+ 				 true,
+ 				 false,
+ 				 false,
+ 				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+ 				 "WSDL",
+ 				 null));
+ 	}*/
 
 	/**
 	 * This adds a property descriptor for the Name feature.
@@ -468,6 +495,28 @@ public class ProxyServiceItemProvider
 				 null));
 	}	
 	
+	/**
+	 * This adds a property descriptor for the Wsdl Endpoint feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	protected void addWsdlEndpointPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_ProxyService_wsdlEndpoint_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ProxyService_wsdlEndpoint_feature", "_UI_ProxyService_type"),
+				 EsbPackage.Literals.PROXY_SERVICE__WSDL_ENDPOINT,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+ 				 "WSDL",
+ 				 null));
+	}
+
 	/**
 	 * This adds a property descriptor for the Wsdl Resources feature.
 	 * <!-- begin-user-doc -->
@@ -909,6 +958,7 @@ public class ProxyServiceItemProvider
 			childrenFeatures.add(EsbPackage.Literals.PROXY_SERVICE__FAULT_SEQUENCE_ON_ERROR);
 			childrenFeatures.add(EsbPackage.Literals.PROXY_SERVICE__ENDPOINT_KEY);
 			childrenFeatures.add(EsbPackage.Literals.PROXY_SERVICE__WSDL_KEY);
+			childrenFeatures.add(EsbPackage.Literals.PROXY_SERVICE__WSDL_ENDPOINT);
 			childrenFeatures.add(EsbPackage.Literals.PROXY_SERVICE__ON_ERROR);
 		}
 		return childrenFeatures;
@@ -1007,6 +1057,7 @@ public class ProxyServiceItemProvider
 			case EsbPackage.PROXY_SERVICE__FAULT_SEQUENCE_ON_ERROR:
 			case EsbPackage.PROXY_SERVICE__ENDPOINT_KEY:
 			case EsbPackage.PROXY_SERVICE__WSDL_KEY:
+			case EsbPackage.PROXY_SERVICE__WSDL_ENDPOINT:
 			case EsbPackage.PROXY_SERVICE__ON_ERROR:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
@@ -1108,6 +1159,11 @@ public class ProxyServiceItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
+				(EsbPackage.Literals.PROXY_SERVICE__WSDL_ENDPOINT,
+				 EsbFactory.eINSTANCE.createRegistryKeyProperty()));
+
+		newChildDescriptors.add
+			(createChildParameter
 				(EsbPackage.Literals.PROXY_SERVICE__ON_ERROR,
 				 EsbFactory.eINSTANCE.createRegistryKeyProperty()));
 	}
@@ -1132,6 +1188,7 @@ public class ProxyServiceItemProvider
 			childFeature == EsbPackage.Literals.PROXY_SERVICE__FAULT_SEQUENCE_ON_ERROR ||
 			childFeature == EsbPackage.Literals.PROXY_SERVICE__ENDPOINT_KEY ||
 			childFeature == EsbPackage.Literals.PROXY_SERVICE__WSDL_KEY ||
+			childFeature == EsbPackage.Literals.PROXY_SERVICE__WSDL_ENDPOINT ||
 			childFeature == EsbPackage.Literals.PROXY_SERVICE__ON_ERROR;
 
 		if (qualify) {

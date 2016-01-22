@@ -32,6 +32,7 @@ function registerMouseAndKeyEvents() {
 	
 	graph.on('change', function(cell) { 
 		makeDirty();
+		execUndoableOperation();
 	})
 	
 	graph.on('add', function(cell) { 
@@ -126,14 +127,6 @@ function handleDropEvent(event, ui) {
 	}
 }
 
-
-function Undo() {
-	undoRedoHandler.undo();
-}
-
-function Redo() {
-	undoRedoHandler.redo();
-}
 
 function openInputDialog() {
 	$('#myInput').bind("change", handleInputFileSelect);

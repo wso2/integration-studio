@@ -114,8 +114,8 @@
 	</div>
 	<button onclick="saveFile()" type="button">Save</button>
 	<button onclick="loadFileContent()" type="button">Load</button>
-	<button id="undo-button" onclick="Undo()" type="button">Undo</button>
-	<button id="redo-button" onclick="Redo()" type="button">Redo</button>
+	<button id="undo-button" onclick="undoOperation()" type="button">Undo</button>
+	<button id="redo-button" onclick="redoOperation()" type="button">Redo</button>
     <input type="button" value="Add Input Schema" onclick="openInputDialog()" />
     <input type="button" value="Add Output Schema" onclick="openOutputDialog()" />
     <input id="myOutput" type="file" style="visibility:hidden" />

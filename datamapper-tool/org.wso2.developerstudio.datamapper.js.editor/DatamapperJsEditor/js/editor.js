@@ -136,15 +136,18 @@ function execUndoableOperation(){
 	var uniqueID = "OperationID"+undoOpCount;
 	
 	IDEExecUndoableOperation(label, uniqueID);
-	document.getElementById("editor").value += "\nDoing " + uniqueID;
+	//document.getElementById("editor").value += "\nDoing " + uniqueID;
 }
 
 function undoOperation(uniqueID){
-	document.getElementById("editor").value += "\nUndoing " + uniqueID;
+	//document.getElementById("editor").value += "\nUndoing " + uniqueID;
+	undoRedoHandler.undo();
+	
 }
 
 function redoOperation(uniqueID){
-	 document.getElementById("editor").value += "\nRedoing " + uniqueID;
+	 //document.getElementById("editor").value += "\nRedoing " + uniqueID;
+	undoRedoHandler.redo();
 }
 
 

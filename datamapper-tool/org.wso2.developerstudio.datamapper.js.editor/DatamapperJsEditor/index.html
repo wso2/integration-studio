@@ -10,6 +10,8 @@
 <script src="js/libs/jointjs/lodash.min.js"></script>
 <script src="js/libs/jointjs/backbone-min.js"></script>
 <script src="js/libs/jointjs/joint.min.js"></script>
+<script src="js/libs/jquery.contextmenu.js"></script>
+
 
 
 
@@ -32,17 +34,17 @@
 </head>
 <body>
 	<div class="container-fluid">
-		<div class="bs-example bs-example-tabs">
+	<div class="tabbable tabs-below">
 			<div id="myTabContent" class="tab-content">
 				<div class="tab-pane fade in active" id="designID">
 					<div class="row">
-						<div class="col-xs-10 col-lg-10 col-md-10">
-							<div class="well-lg" id="dmEditorContainerWrapper"
+						<div class="col-xs-10 col-lg-10 col-md-10 ui-resizable">
+							<div class="well-lg cmenu1" id="dmEditorContainerWrapper"
 								style="height: 800px; background: #ffffff;">
 								<div id="dmEditorContainer" style="position: relative; width: 100%; height: 100%;"></div>
 							</div>
 						</div>
-						<div class="col-xs-2 col-lg-2 col-md-2">
+						<div class="col-xs-2 col-lg-2 col-md-2 ui-resizable">
 							<div class="panel-group" id="accordion">
 								<div class="panel panel-default">
 									<div class="panel-heading">
@@ -99,17 +101,16 @@
                             </textarea>
 					</div>
 				</div>
-			</div>
 		</div>
-		<br />
-		<div class="tabbable tabs-below">
 			<ul class="nav nav-tabs" id="bottom-tabs">
 				<li class="active"><a href="#designID" data-toggle="tab">Design</a></li>
 				<li><a href="#sourceID" data-toggle="tab">Source</a></li>
 			</ul>
 		</div>
-
+		
+		
 	</div>
+	<div style="visibility:hidden">
 	<button onclick="saveFile()" type="button">Save</button>
 	<button onclick="loadFileContent()" type="button">Load</button>
 	<button id="undo-button" onclick="undoOperation()" type="button">Undo</button>
@@ -118,5 +119,6 @@
     <input type="button" value="Add Output Schema" onclick="openOutputDialog()" />
     <input id="myOutput" type="file" style="visibility:hidden" />
     <input id="myInput" type="file" style="visibility:hidden" />
+    </div>
 </body>
 </html>

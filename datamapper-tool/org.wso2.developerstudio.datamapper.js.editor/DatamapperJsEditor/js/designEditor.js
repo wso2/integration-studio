@@ -48,7 +48,8 @@ function initJointJSGraph() {
 	
 	paper = new joint.dia.Paper({
 		el : $('#dmEditorContainer'),
-		width : paperWidth,
+		width : $('#dmEditorContainer').width(),
+		height : $('#dmEditorContainer').height(),
 		model : graph,
 		gridSize : 1,
 		interactive : function(cellView, methodName) {

@@ -7,7 +7,7 @@ var undoRedoHandler = null;
 var operatorFactory = null;
 var inputSchema = null;
 var outputSchema = null;
-
+var menu1;
 
 //TODO try module design pattern
 $(document).ready(function() {
@@ -19,6 +19,13 @@ $(document).ready(function() {
 	zoomHandler = new ZoomHandler(paper);
 	operatorFactory = new OperatorFactory(graph);
 	undoRedoHandler = new UndoRedoHandler({ graph: graph });
+	
+	menu1 = [
+	             {'Add Input Schema':function(menuItem,menu) { openInputDialog(); } },
+	             $.contextMenu.separator,
+	             {'Add Output Schema':function(menuItem,menu) { openOutputDialog(); } }
+	           ];
+	
 });
 
 function registerMouseAndKeyEvents() {
@@ -30,6 +37,10 @@ function registerMouseAndKeyEvents() {
 		zoomHandler.startPanning(e);
 	});
 	
+	paper.on('blank:contextmenu', function(e, x, y) {
+		$('.cmenu1').contextMenu(menu1,{theme:'vista'});
+	});
+
 	graph.on('change', function(cell) { 
 		makeDirty();
 		execUndoableOperation();

@@ -5,7 +5,7 @@ var yOffset = 30;
 var rootWidth = 300;
 var rootHeight = 400;
 var paperWidth = 1200;
-var commandManager = null;
+var undoRedoHandler = null;
 
 var rectangleTemplate = {fill : '#d3d3d3', stroke : 'none'};
 var circleTemplate = {fill : '#6495ED'};
@@ -106,7 +106,7 @@ function initJointJSGraph() {
 	});
 
 	graph.addCells([mInput, mOutput]);
-	commandManager = new joint.dia.CommandManager({ graph: graph });
+	undoRedoHandler = new UndoRedoHandler({ graph: graph });
 }
 
 function getTotalHeightOfChidlren(parent){

@@ -2,40 +2,53 @@ var graph = null;
 var paper = null;
 var mInput = null;
 var mOutput= null;
-
+var zoomHandler = null;
 var operatorSize = {width : 90,	height : 90};
 
-//TODO module design pattern
+//TODO try module design pattern
 $(document).ready(function () {
     registerTabChangeEvent();
-    registerMouseAndKeyEvents();
     initDraggable();
     initDropable();
     initJointJSGraph();
+    registerMouseAndKeyEvents();
+    zoomHandler = new ZoomHandler(paper);
 });
 
 
 function registerMouseAndKeyEvents() {
+	$(document).mouseup(function (e) {
+		zoomHandler.updateLastMouseCoords(e);
+	});
+	
+	paper.on('blank:pointerdown', function(e, x, y) { 
+		zoomHandler.setStartMouseCoords(e);
+	});
 
-    $(document).on('mouseenter', '#dmEditorContainerContainerWrapper11', function () {
-        //console.log("mouseenter = ");
+	$(document).mousedown(function (e) {
+		
+	});
+  
+	$(document).mouseenter(function (e) {
+	
+	});
+
+    $(document).mouseleave(function (e) {
+
     });
 
-    $(document).on('mouseleave', '#dmEditorContainerContainerWrapper11', function () {
-       // console.log("mouseleave = ");
+    $(document).mousemove(function (e) { 
+    	zoomHandler.changeCenter(e);
+    });
+    
+    $(document).bind('mousewheel', function(e) {
+    	zoomHandler.changeZoom(e, $(this).offset());
     });
 
-    $(document).mousemove(function (e) {// to get the cursor point to drop an icon
-        //console.log("mousemove = " +e.pageX);
-    });
-
-    $(document).keydown(function (e) {
-    	//console.log("keydown = " +e);
-    	//e.preventdefault(); //prevents dthe default behaviour of the event   	
+    $(document).keydown(function (e) {  	
     	if(e.keyCode==46){//delete key pressed
     	   		if (selected) selected.remove();
-    	   	}
-    	   	
+    	}
     });
 }
 
@@ -63,7 +76,6 @@ function activateSourceView() {
 function activateDesignView() {
 	console.log('activateDesignView');
     var sourceEditorTextBox = $('#sourceEditorTextBox');
-    //console.log(sequenceObj);
 }
 
 function initDraggable() {
@@ -93,7 +105,8 @@ function handleDropEvent(event, ui) {
 		var position = {}
 		position.x  = ui.offset.left - $(this).offset().left;
 		position.y   = ui.offset.top - $(this).offset().top;
-		createDiv(type, position, type);
+		var paperPoint = paper.clientToLocalPoint(position);
+		createDiv(type, paperPoint, type);
 	}
 }
 
@@ -172,12 +185,12 @@ function openOutputDialog() {
 }
 
 function Undo() {
-  commandManager.undo(); 
-}
-function Redo() {
-  commandManager.redo();
+	undoRedoHandler.undo(); 
 }
 
+function Redo() {
+	undoRedoHandler.redo();
+}
 
 
 function handleFileSelect(evt, box, isOutput) {
@@ -191,7 +204,7 @@ function handleFileSelect(evt, box, isOutput) {
 		  	  var obj = JSON.parse(contents);
 			  traverseObject(obj, 1, box, isOutput);
 			  relocateElement(box);
-			  commandManager.reset();
+			  undoRedoHandler.reset();
 	      }
     } else { 
     	  alert("Failed to load file");
@@ -207,6 +220,10 @@ function handleInputFileSelect(evt) {
 }
 
 function handleOutputFileSelect(evt) {
+	var firstChild = mOutput.getEmbeddedCells()[0];
+	if (firstChild) {
+		firstChild.remove();
+	}
     handleFileSelect(evt, mOutput, false);
 }
 

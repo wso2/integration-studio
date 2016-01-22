@@ -9,7 +9,7 @@ file, You can obtain one at http://jointjs.com/license/jointjs_plus_v1.txt
 
 // Command manager implements undo/redo functionality.
 
-joint.dia.CommandManager = Backbone.Model.extend({
+UndoRedoHandler = Backbone.Model.extend({
 
     defaults: {
 	cmdBeforeAdd: null,

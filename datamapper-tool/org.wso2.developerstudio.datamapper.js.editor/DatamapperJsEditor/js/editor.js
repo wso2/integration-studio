@@ -22,11 +22,9 @@
  * 
 */
 function loadFileContent() {
-	// Read contents of the file.
 	var fileContent = IDEGetFileContent();
-    //document.getElementById("editor").value = fileContent;
 	graph.fromJSON(JSON.parse(fileContent));
-	commandManager.reset();
+	undoRedoHandler.reset();
 }
 
 /**
@@ -47,10 +45,7 @@ function loadFileContent() {
  *  	}
  */
 function saveFile() {
-	//var updatedContent = document.getElementById("editor").value;
-	//Save content to file.
 	var jsonString = JSON.stringify(graph);
-	
     IDESaveContent(jsonString);
     IDESaveContentWithExtention(jsonString,"","config","dmc");
 }

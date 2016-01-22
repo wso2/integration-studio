@@ -3,6 +3,9 @@ var paper = null;
 var mInput = null;
 var mOutput = null;
 var zoomHandler = null;
+var undoRedoHandler = null;
+var operatorFactory = null;
+
 var operatorSize = {
 	width : 90,
 	height : 90
@@ -16,6 +19,8 @@ $(document).ready(function() {
 	initJointJSGraph();
 	registerMouseAndKeyEvents();
 	zoomHandler = new ZoomHandler(paper);
+	operatorFactory = new OperatorFactory(graph);
+	undoRedoHandler = new UndoRedoHandler({ graph: graph });
 });
 
 function registerMouseAndKeyEvents() {
@@ -107,88 +112,11 @@ function handleDropEvent(event, ui) {
 		position.x = ui.offset.left - $(this).offset().left;
 		position.y = ui.offset.top - $(this).offset().top;
 		var paperPoint = paper.clientToLocalPoint(position);
-		createDiv(type, paperPoint, type);
+		operatorFactory.addOperator(type, paperPoint);
 	}
 }
 
-function createDiv(objName, position, type) {
-	var operator = null;
-	if (objName == "Concat") {
-		operator = new joint.shapes.devs.Model({
-			size : operatorSize,
-			position : position,
-			inPorts : [ 'in1', 'in2' ],
-			outPorts : [ 'out' ],
-			attrs : {
-				'.label' : {
-					text : objName,
-					'ref-x' : .4,
-					'ref-y' : .2
-				},
-				'graphProperties' : {
-					marked : 0,
-					visited : 0,
-					index : -1,
-					portVariableIndex : [ -1 ]
-				},
-				rect : {
-					fill : '#F0F0F0',
-					rx : 8,
-					ry : 8,
-					'stroke-width' : 2,
-					stroke : 'blue'
-				},
-				circle : {
-					r : 6
-				},
-				'.inPorts circle' : {
-					fill : '#6495ED'
-				},
-				'.outPorts circle' : {
-					fill : '#6495ED'
-				}
-			}
-		});
-	} else if (objName == "Split") {
-		operator = new joint.shapes.devs.Model({
-			size : operatorSize,
-			position : position,
-			inPorts : [ 'in1' ],
-			outPorts : [ 'out1', 'out2' ],
-			attrs : {
-				'.label' : {
-					text : objName,
-					'ref-x' : .4,
-					'ref-y' : .2
-				},
-				'graphProperties' : {
-					marked : 0,
-					visited : 0,
-					index : -1,
-					portVariableIndex : [ -1, -1 ]
-				},
-				rect : {
-					fill : '#F0F0F0',
-					rx : 8,
-					ry : 8,
-					'stroke-width' : 2,
-					stroke : 'blue'
-				},
-				circle : {
-					r : 6
-				},
-				'.inPorts circle' : {
-					fill : '#6495ED'
-				},
-				'.outPorts circle' : {
-					fill : '#6495ED'
-				}
-			}
-		});
-	}
 
-	graph.addCell(operator);
-}
 
 function openInputDialog() {
 	$('#myInput').bind("change", handleInputFileSelect);

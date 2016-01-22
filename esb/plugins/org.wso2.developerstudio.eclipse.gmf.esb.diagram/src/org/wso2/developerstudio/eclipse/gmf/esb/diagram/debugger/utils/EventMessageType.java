@@ -64,6 +64,7 @@ public enum EventMessageType {
         return (comapreEvent == null) ? false : event.equals(comapreEvent);
     }
 
+    @Override
     public String toString() {
         return this.event;
     }

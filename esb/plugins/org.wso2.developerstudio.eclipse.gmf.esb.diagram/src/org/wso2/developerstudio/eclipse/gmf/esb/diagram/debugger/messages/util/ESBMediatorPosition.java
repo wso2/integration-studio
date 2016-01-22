@@ -41,7 +41,7 @@ public class ESBMediatorPosition {
     @Override
     public boolean equals(Object mediatorPosition) {
         if (mediatorPosition instanceof ESBMediatorPosition) {
-            if (position.equals(((ESBMediatorPosition) mediatorPosition).getPosition())) {
+            if (getPosition().equals(((ESBMediatorPosition) mediatorPosition).getPosition())) {
                 return true;
             }
             return false;
@@ -53,7 +53,7 @@ public class ESBMediatorPosition {
     @Override
     public int hashCode() {
         int result = INITIAL_HASH_CODE_RESULT_VALUE;
-        result = HASHCODE_MULTIPLIER_VALUE * result + position.hashCode() + MEDIATOR_POSITION_LABEL.hashCode();
+        result = HASHCODE_MULTIPLIER_VALUE * result + getPosition().hashCode() + MEDIATOR_POSITION_LABEL.hashCode();
         return result;
     }
 

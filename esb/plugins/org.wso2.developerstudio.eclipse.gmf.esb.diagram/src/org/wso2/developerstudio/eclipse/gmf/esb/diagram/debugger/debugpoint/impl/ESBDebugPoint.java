@@ -196,15 +196,6 @@ public class ESBDebugPoint extends Breakpoint {
         throw new DebugPointMarkerNotFoundException("Assoiciated IMarker value not found for ESB Debug Point");
     }
 
-    public boolean equals(ESBDebugPoint breakpoint) throws DebugPointMarkerNotFoundException, CoreException {
-        if (breakpoint != null) {
-            AbstractESBDebugPointMessage debugPointMessage = breakpoint.getLocation();
-            return isMatchedWithDebugPoint(debugPointMessage, true);
-        }
-        return false;
-
-    }
-
     /**
      * This method checks whether given debugPoint matches with this debug point
      * with out considering the attribute debug point type
@@ -342,5 +333,14 @@ public class ESBDebugPoint extends Breakpoint {
         default:
             throw new IllegalArgumentException("Invalid Debug Point Type : " + debuPointType);
         }
+    }
+
+    private boolean equals(ESBDebugPoint breakpoint) throws DebugPointMarkerNotFoundException, CoreException {
+        if (breakpoint != null) {
+            AbstractESBDebugPointMessage debugPointMessage = breakpoint.getLocation();
+            return isMatchedWithDebugPoint(debugPointMessage, true);
+        }
+        return false;
+
     }
 }

@@ -26,6 +26,7 @@ function loadFileContent() {
 	var fileContent = IDEGetFileContent();
     //document.getElementById("editor").value = fileContent;
 	graph.fromJSON(JSON.parse(fileContent));
+	commandManager.reset();
 }
 
 /**

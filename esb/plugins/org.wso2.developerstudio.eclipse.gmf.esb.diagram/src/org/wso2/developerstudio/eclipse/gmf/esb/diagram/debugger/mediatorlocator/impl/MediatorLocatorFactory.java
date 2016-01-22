@@ -16,6 +16,7 @@
 package org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.mediatorlocator.impl;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.ArtifactType;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.exception.ESBDebuggerException;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.mediatorlocator.IMediatorLocator;
 
 /**
@@ -26,13 +27,20 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.mediatorlocator
 public class MediatorLocatorFactory {
 
     /**
+     * This private constructor is to hide the implicit public constructor
+     */
+    private MediatorLocatorFactory() {
+    }
+
+    /**
      * This method takes project type as a input and returns specific Mediator
      * Locator
      * 
      * @param type
      * @return
+     * @throws ESBDebuggerException
      */
-    public static IMediatorLocator getMediatorLocator(ArtifactType type) {
+    public static IMediatorLocator getMediatorLocator(ArtifactType type) throws ESBDebuggerException {
 
         switch (type) {
         case PROXY:
@@ -46,7 +54,7 @@ public class MediatorLocatorFactory {
         case MAIN_SEQUENCE:
             return new MainSequenceMediatorLocator();
         default:
-            return null;
+            throw new ESBDebuggerException("Unsupported Project Type for Debugging Requested from Mediator Locator");
         }
     }
 }

@@ -65,8 +65,8 @@ public class ESBTemplateDebugPointMessage extends AbstractESBDebugPointMessage {
      * the same mediator.
      */
     public boolean equalsIgnoreType(ESBTemplateDebugPointMessage debugPointMessage) {
-        if (mediationComponent.equals(debugPointMessage.getMediationComponent())
-                && template.equals(debugPointMessage.getTemplate())) {
+        if (getMediationComponent().equals(debugPointMessage.getMediationComponent())
+                && getTemplate().equals(debugPointMessage.getTemplate())) {
             return true;
         }
         return false;
@@ -83,9 +83,9 @@ public class ESBTemplateDebugPointMessage extends AbstractESBDebugPointMessage {
     public boolean equals(Object debugPointMessage) {
         if (debugPointMessage instanceof ESBTemplateDebugPointMessage) {
             ESBTemplateDebugPointMessage debugPointMessageTemp = (ESBTemplateDebugPointMessage) debugPointMessage;
-            if (!(mediationComponent.equals((debugPointMessageTemp).getMediationComponent())
-                    && commandArgument.equals((debugPointMessageTemp).getCommandArgument()) && template
-                        .equals(debugPointMessageTemp.getTemplate()))) {
+            if (!(getMediationComponent().equals((debugPointMessageTemp).getMediationComponent())
+                    && getCommandArgument().equals((debugPointMessageTemp).getCommandArgument()) && getTemplate()
+                    .equals(debugPointMessageTemp.getTemplate()))) {
                 return false;
             }
             return true;
@@ -97,21 +97,22 @@ public class ESBTemplateDebugPointMessage extends AbstractESBDebugPointMessage {
     @Override
     public int hashCode() {
         int result = INITIAL_HASH_CODE_RESULT_VALUE;
-        result = HASHCODE_MULTIPLIER_VALUE * result + mediationComponent.hashCode()
+        result = HASHCODE_MULTIPLIER_VALUE * result + getMediationComponent().hashCode()
                 + MEDIATION_COMPONENT_LABEL.hashCode();
-        result = HASHCODE_MULTIPLIER_VALUE * result + commandArgument.hashCode() + COMMAND_ARGUMENT_LABEL.hashCode();
-        result = HASHCODE_MULTIPLIER_VALUE * result + template.hashCode() + TEMPLATE_LABEL.hashCode();
+        result = HASHCODE_MULTIPLIER_VALUE * result + getCommandArgument().hashCode()
+                + COMMAND_ARGUMENT_LABEL.hashCode();
+        result = HASHCODE_MULTIPLIER_VALUE * result + getTemplate().hashCode() + TEMPLATE_LABEL.hashCode();
         return result;
     }
 
     @Override
     public ESBMediatorPosition getMediatorPosition() {
-        return template.getMediatorPosition();
+        return getTemplate().getMediatorPosition();
     }
 
     @Override
     public void setMediatorPosition(List<Integer> positionList) {
-        template.setMediatorPosition(new ESBMediatorPosition(positionList));
+        getTemplate().setMediatorPosition(new ESBMediatorPosition(positionList));
     }
 
     @Override
@@ -130,7 +131,7 @@ public class ESBTemplateDebugPointMessage extends AbstractESBDebugPointMessage {
                 mediatorPosition = convertMediatorPositionStringToList(convertJsonElementValueToString(entry.getValue()));
             }
         }
-        template = new ESBTemplateBean(templateKey, mediatorPosition);
+        setTemplate(new ESBTemplateBean(templateKey, mediatorPosition));
     }
 
     public ESBTemplateBean getTemplate() {

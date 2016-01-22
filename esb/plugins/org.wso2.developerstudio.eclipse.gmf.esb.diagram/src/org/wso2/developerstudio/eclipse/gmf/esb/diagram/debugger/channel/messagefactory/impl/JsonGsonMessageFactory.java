@@ -15,7 +15,20 @@
  */
 package org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.channel.messagefactory.impl;
 
-import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.*;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.BREAKPOINT_LABEL;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.CALLBACK_EVENT_TYPE;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.CALLBACK_RECIEVER_LABEL;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.COMMAND_RESPONSE_LABEL;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.DEBUG_INFO_LOST_EVENT;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.EVENT_LABEL;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.FAILED_REASON_LABEL;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.MESSAGE_RECIEVER_LABEL;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.RESUMED_CLIENT_EVENT_TYPE;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.SEQUENCE_LABEL;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.SKIP_POINT_LABEL;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.STARTED_EVENT_TYPE;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.TEMPLATE_LABEL;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.TERMINATED_EVENT_TYPE;
 
 import java.util.Map.Entry;
 import java.util.Set;
@@ -27,6 +40,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.messages.IEvent
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.messages.IResponseMessage;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.messages.command.CommandMessage;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.messages.command.GetPropertyCommand;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.messages.command.PropertyChangeCommand;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.messages.event.DebugPointEventMessage;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.messages.event.GeneralEventMessage;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.messages.event.SpecialCoordinationEventMessage;
@@ -53,8 +67,7 @@ public class JsonGsonMessageFactory implements ICommunicationMessageFactory {
     @Override
     public String createCommand(CommandMessage command) {
         Gson commandMessage = new Gson();
-        String message = commandMessage.toJson(command);
-        return message;
+        return commandMessage.toJson(command);
     }
 
     @Override
@@ -166,8 +179,8 @@ public class JsonGsonMessageFactory implements ICommunicationMessageFactory {
             return new SpecialCoordinationEventMessage(event, messageReciever, callbackReciever);
         case BREAKPOINT:
         case SKIPPOINT:
-            return (IEventMessage) new DebugPointEventMessage(event, ESBDebuggerUtil.getESBDebugPoint(debugPointType,
-                    event, recievedArtifactInfo));
+            return new DebugPointEventMessage(event, ESBDebuggerUtil.getESBDebugPoint(debugPointType, event,
+                    recievedArtifactInfo));
         default:
             throw new IllegalArgumentException("Invalid Event Message Recieved from ESB Server Debugger : "
                     + eventMessage);
@@ -197,12 +210,20 @@ public class JsonGsonMessageFactory implements ICommunicationMessageFactory {
     }
 
     @Override
-    public String createBreakpointCommand(AbstractESBDebugPointMessage debugPoint) throws Exception {
+    public String createBreakpointCommand(AbstractESBDebugPointMessage debugPoint) {
         GsonBuilder builder = new GsonBuilder();
         builder.registerTypeAdapter(ESBMediatorPosition.class, new MediatorPositionGsonSerializer());
         builder.setFieldNamingStrategy(new PojoToGsonCustomNamingStrategy());
         Gson debugPointMessage = builder.create();
         return debugPointMessage.toJson(debugPoint);
+    }
+
+    @Override
+    public String createPropertyChangeCommand(PropertyChangeCommand propertyChangeCommand) {
+        GsonBuilder builder = new GsonBuilder();
+        builder.setFieldNamingStrategy(new PojoToGsonCustomNamingStrategy());
+        Gson propertyChangeMessage = builder.create();
+        return propertyChangeMessage.toJson(propertyChangeCommand);
     }
 
 }

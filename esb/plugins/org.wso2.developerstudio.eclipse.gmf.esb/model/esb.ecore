@@ -192,6 +192,8 @@
         defaultValueLiteral="http://default/wsdl/url"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="wsdlKey" eType="#//RegistryKeyProperty"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="wsdlEndpoint" eType="#//RegistryKeyProperty"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="wsdlResources" upperBound="-1"
         eType="#//ProxyWSDLResource" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="OnError" eType="#//RegistryKeyProperty"
@@ -207,6 +209,7 @@
     <eLiterals name="INLINE" value="1"/>
     <eLiterals name="SOURCE_URL" value="2"/>
     <eLiterals name="REGISTRY_KEY" value="3"/>
+    <eLiterals name="ENDPOINT" value="4" literal="ENDPOINT"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ProxyOutputConnector" eSuperTypes="#//OutputConnector"/>
   <eClassifiers xsi:type="ecore:EClass" name="ProxyInputConnector" eSuperTypes="#//InputConnector"/>

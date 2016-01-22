@@ -6,6 +6,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+
 import javax.xml.stream.XMLOutputFactory;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamWriter;
@@ -25,6 +26,7 @@ import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.ui.INewWizard;
 import org.eclipse.ui.IWorkbench;
 import org.wso2.developerstudio.eclipse.artifact.axis2.utils.Axis2ImageUtils;
+import org.wso2.developerstudio.eclipse.artifact.axis2.utils.Axis2ParametersUtils;
 import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
 
 
@@ -40,7 +42,8 @@ public class Axis2ClassWizard  extends Wizard implements INewWizard{
 		this.workbench = workbench;
 		this.selection = selection;
 		setWindowTitle(PROJECT_WIZARD_WINDOW_TITLE);
-		setDefaultPageImageDescriptor(Axis2ImageUtils.getInstance().getImageDescriptor("axis2-wizard.png"));
+        setDefaultPageImageDescriptor(Axis2ImageUtils.getInstance().getImageDescriptor(
+                Axis2ParametersUtils.AXIS2_WIZARD_IMAGE));
 	}
 	
 	public void addPages() {

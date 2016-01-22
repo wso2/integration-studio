@@ -108,6 +108,8 @@ public abstract class Axis2ParametersUtils {
 
 	/** The Constant GENERATE_SERVER_SIDE_CODE. */
 	public static final String GENERATE_SERVER_SIDE_CODE = "-ss";
+	
+    public static final String AXIS2_WIZARD_IMAGE = "axis2-wizard.png";
 
 
 	/**

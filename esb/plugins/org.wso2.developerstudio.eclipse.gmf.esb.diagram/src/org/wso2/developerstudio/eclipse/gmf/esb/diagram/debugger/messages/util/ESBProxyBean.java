@@ -42,9 +42,9 @@ public class ESBProxyBean {
     public boolean equals(Object proxyBean) {
         if (proxyBean instanceof ESBProxyBean) {
             ESBProxyBean proxyBeanTemp = (ESBProxyBean) proxyBean;
-            if (!(proxyKey.equals((proxyBeanTemp).getProxyKey())
-                    && sequenceType.equals((proxyBeanTemp).getSequenceType()) && mediatorPosition.equals(proxyBeanTemp
-                    .getMediatorPosition()))) {
+            if (!(getProxyKey().equals((proxyBeanTemp).getProxyKey())
+                    && getSequenceType().equals((proxyBeanTemp).getSequenceType()) && getMediatorPosition().equals(
+                    proxyBeanTemp.getMediatorPosition()))) {
                 return false;
             }
             return true;
@@ -56,9 +56,10 @@ public class ESBProxyBean {
     @Override
     public int hashCode() {
         int result = INITIAL_HASH_CODE_RESULT_VALUE;
-        result = HASHCODE_MULTIPLIER_VALUE * result + proxyKey.hashCode() + PROXY_KEY_LABEL.hashCode();
-        result = HASHCODE_MULTIPLIER_VALUE * result + sequenceType.hashCode() + SEQUENCE_TYPE_LABEL.hashCode();
-        result = HASHCODE_MULTIPLIER_VALUE * result + mediatorPosition.hashCode() + MEDIATOR_POSITION_LABEL.hashCode();
+        result = HASHCODE_MULTIPLIER_VALUE * result + getProxyKey().hashCode() + PROXY_KEY_LABEL.hashCode();
+        result = HASHCODE_MULTIPLIER_VALUE * result + getSequenceType().hashCode() + SEQUENCE_TYPE_LABEL.hashCode();
+        result = HASHCODE_MULTIPLIER_VALUE * result + getMediatorPosition().hashCode()
+                + MEDIATOR_POSITION_LABEL.hashCode();
         return result;
     }
 

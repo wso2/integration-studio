@@ -56,19 +56,35 @@
          </configurationType>
       </shortcut>
    </extension>
-   
-   <extension
-         point="org.eclipse.ui.perspectiveExtensions">
-      <perspectiveExtension
-            targetID="*">
-         <actionSet
-               id="org.eclipse.debug.ui.launchActionSet">
-         </actionSet>
-      </perspectiveExtension>
-   </extension>
-   <extension
-            point="org.eclipse.debug.core.sourceLocators">
-   </extension>
+ <extension point="org.eclipse.ui.handlers">
+ 	<handler
+            commandId="org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.ui.commands.InjectNewProperty"
+            class="org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.ui.actions.PropertyChangeCommandHandler"/>
+    <handler
+            commandId="org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.ui.commands.ClearProperty"
+            class="org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.ui.actions.PropertyChangeCommandHandler"/>
+ </extension>
+<extension point="org.eclipse.ui.menus">
+    <menuContribution
+            locationURI="popup:org.eclipse.debug.ui.VariableView">
+         <menu
+               id="org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.ui.property.manage.menu"
+               label="Inject/Clear Property">
+            <command
+                  commandId="org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.ui.commands.InjectNewProperty"
+                  label="Inject Property"
+                  style="push"
+                  tooltip="Inject new property to esb server">
+            </command>
+            <command
+                  commandId="org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.ui.commands.ClearProperty"
+                  label="Clear Property"
+                  style="push"
+                  tooltip="Clear property value">
+            </command>
+         </menu>
+      </menuContribution>
+ </extension>
    <extension
        point="org.eclipse.debug.ui.debugModelPresentations">
         <debugModelPresentation
@@ -95,9 +111,6 @@
             name="ESB Debugpoint">
       </breakpoint>
    </extension>
-   
-   
-   
    <extension point="org.eclipse.team.core.fileTypes" id="repo-ftype">
       <?gmfgen generated="true"?>
       <fileTypes type="text" extension="esb_diagram"/>

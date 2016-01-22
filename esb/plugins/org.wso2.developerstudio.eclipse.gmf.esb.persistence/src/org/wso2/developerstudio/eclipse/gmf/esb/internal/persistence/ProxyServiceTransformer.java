@@ -394,11 +394,13 @@ public class ProxyServiceTransformer extends AbstractEsbNodeTransformer {
 			case REGISTRY_KEY:
 				proxyService.setWSDLKey(visualService.getWsdlKey().getKeyValue());
 				break;
+			case ENDPOINT:
+				 proxyService.setPublishWSDLEndpoint(visualService.getWsdlEndpoint().getKeyValue());
 			case NONE:
 				break;
 			}
 			
-			if (visualService.getWsdlType()!=ProxyWsdlType.NONE) {
+			if (visualService.getWsdlType()!=ProxyWsdlType.NONE && visualService.getWsdlType() != ProxyWsdlType.ENDPOINT) {
 				proxyService.setResourceMap(new ResourceMap());
 				for (ProxyWSDLResource wsdlResource : visualService.getWsdlResources()) {
 					proxyService.getResourceMap().addResource(wsdlResource.getLocation(),wsdlResource.getKey().getKeyValue());

@@ -65,8 +65,15 @@ function registerMouseAndKeyEvents() {
 
 	$(document).keydown(function(e) {
 		if (e.keyCode == 46) {//delete key pressed
-			if (selected)
+			if (selected){
 				selected.remove();
+			}
+		}
+		else if (e.keyCode == 90 && e.ctrlKey) {
+			undoOperation();
+		}
+		else if (e.keyCode == 89 && e.ctrlKey) {
+			redoOperation();
 		}
 	});
 }

@@ -24,7 +24,16 @@ public class EnhancedFeature extends InstallableFeature {
 	protected String bugFixes;
 	protected boolean isKernelFeature;
 	protected boolean isHidden;
+	protected String[] children;
 	
+	public String[] getChildFeatures() {
+		return children;
+	}
+
+	public void setChildFeatures(String[] childFeatures) {
+		this.children = childFeatures;
+	}
+
 	public EnhancedFeature() {
 	}
 

@@ -88,6 +88,7 @@ public class UpdateManager {
 	private static final String PROP_IS_HIDDEN = "isHidden"; //$NON-NLS-1$
 	private static final String PROP_IS_KERNEL_FEATURE = "isKernelFeature"; //$NON-NLS-1$
 	private static final String PROP_BUG_FIXES = "bugFixes"; //$NON-NLS-1$
+	private static final String CHILD_FEATURES = "children"; //$NON-NLS-1$
 	private static final String PROP_WHAT_IS_NEW = "whatIsNew"; //$NON-NLS-1$
 	private static final String UPDATE_PROPERTIES_FILE = "update.properties"; //$NON-NLS-1$
 	private static final String ICON_FILE = "icon.png"; //$NON-NLS-1$
@@ -98,6 +99,7 @@ public class UpdateManager {
 	private static final String DEVS_UPDATER_TMP = "DevSUpdaterTmp"; //$NON-NLS-1$
 	private static final String JAVA_IO_TMPDIR = "java.io.tmpdir"; //$NON-NLS-1$
 	private static final String NOT_RESOLVED_ERROR = Messages.UpdateManager_13;
+	
 
 	@Inject
 	protected IProvisioningAgentProvider agentProvider;
@@ -379,6 +381,13 @@ public class UpdateManager {
 		for (EnhancedFeature devStudioFeature : selectedDevSFeatures) {
 			selectedFeatures.add(allAvailableFeatures.get(devStudioFeature
 					.getId()));
+			if (devStudioFeature.getChildFeatures() != null && devStudioFeature.getChildFeatures().length != 0) {
+				String[] childFeaturesToInstall = devStudioFeature.getChildFeatures();
+				for (String childFeature : childFeaturesToInstall) {//set all children of selected features
+					String featureID = childFeature + ".feature.group";
+					selectedFeatures.add(allAvailableFeatures.get(featureID));
+				}
+			}
 		}
 	}
 
@@ -553,6 +562,8 @@ public class UpdateManager {
 					.getProperty(PROP_IS_KERNEL_FEATURE)));
 			feature.setHidden(Boolean.parseBoolean(prop
 					.getProperty(PROP_IS_HIDDEN)));
+			String childrenStr = prop.getProperty(CHILD_FEATURES);
+			feature.setChildFeatures(childrenStr.split(","));
 		} catch (Exception e) {
 			// ignore - Additional meta-data was not provided in feature.jar
 			// log.error(e);

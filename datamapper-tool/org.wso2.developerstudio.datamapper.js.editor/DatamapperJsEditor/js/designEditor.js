@@ -81,7 +81,7 @@ function initJointJSGraph() {
 	});
 
 	
-	var inputLabel = getLabelText("Output Type");
+	var inputLabel = getLabelText("Input Type");
 	mInput = new joint.shapes.devs.Model({
 		id : 'inputBox',
 		position : inputPosition,
@@ -93,7 +93,7 @@ function initJointJSGraph() {
 		}
 	});
 
-	var outputLabel = getLabelText("Input Type");
+	var outputLabel = getLabelText("Output Type");
 	mOutput = new joint.shapes.devs.Model({
 		id : 'outputBox',
 		position : outputPosition,

@@ -21,6 +21,9 @@
  * 	   }
  * 
 */
+
+var withEclipse = false;
+
 function loadFileContent() {
 	var fileContent = IDEGetFileContent();
 	graph.fromJSON(JSON.parse(fileContent));
@@ -58,7 +61,9 @@ function makeDirty() {
 	// Set editor status to dirty upon modifications to content.
 	// call this IDE callback when you detect changes to content
 	// within your editor.
-    IDESetDirty(true);
+	if (withEclipse) {
+		IDESetDirty(true);
+	}
 }
 
 
@@ -135,8 +140,10 @@ function execUndoableOperation(){
 	var label = "Operation " + undoOpCount;
 	var uniqueID = "OperationID"+undoOpCount;
 	
-	IDEExecUndoableOperation(label, uniqueID);
+	if (withEclipse) {
+		IDEExecUndoableOperation(label, uniqueID);
 	//document.getElementById("editor").value += "\nDoing " + uniqueID;
+	}
 }
 
 function undoOperation(uniqueID){

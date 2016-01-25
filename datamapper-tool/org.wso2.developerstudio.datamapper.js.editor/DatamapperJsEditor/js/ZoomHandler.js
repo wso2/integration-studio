@@ -8,7 +8,8 @@ var ZoomHandler = function(paper) {
 ZoomHandler.prototype.changeZoom = function(e) {
 	e.preventDefault();
 	e = e.originalEvent;
-	var delta = Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail))) / 50;
+	//console.log('changeZoom');
+	var delta = Math.max(-1, Math.min(1, (e.deltaY || -e.deltaFactor))) / 50;
 	var offsetX = (e.offsetX || e.clientX - $(e.target).offset().left); // offsetX is not defined in FF
 	var offsetY = (e.offsetY || e.clientY - $(e.target).offset().top); // offsetY is not defined in FF
 	var p = offsetToLocalPoint(this.paper, offsetX, offsetY);
@@ -31,6 +32,7 @@ function offsetToLocalPoint(paper, x, y) {
 }
 
 ZoomHandler.prototype.startPanning = function(e) {
+	//console.log('start-pan');
 	this.mouseState = 'pan';
 	var offsetX = (e.offsetX || e.clientX - $(e.target).offset().left);
 	var offsetY = (e.offsetY || e.clientY - $(e.target).offset().top);
@@ -38,6 +40,7 @@ ZoomHandler.prototype.startPanning = function(e) {
 }
 
 ZoomHandler.prototype.stopPanning = function(e) {
+	console.log('stop-pan');
 	this.mouseState = '';
 	var offsetX = (e.offsetX || e.clientX - $(e.target).offset().left);
 	var offsetY = (e.offsetY || e.clientY - $(e.target).offset().top);
@@ -46,7 +49,9 @@ ZoomHandler.prototype.stopPanning = function(e) {
 }
 
 ZoomHandler.prototype.doPanning = function(e) {
+	//console.log('do-pan');
 	if (this.mouseState == 'pan') {
+		//console.log('do-pan mouseState=pan');
 		var offsetX = (e.offsetX || e.clientX - $(e.target).offset().left);
 		var offsetY = (e.offsetY || e.clientY - $(e.target).offset().top);
 		var x = offsetX;

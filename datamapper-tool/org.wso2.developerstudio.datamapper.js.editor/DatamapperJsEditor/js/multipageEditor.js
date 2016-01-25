@@ -69,8 +69,8 @@ function registerMouseAndKeyEvents() {
 	$(document).mousemove(function(e) {
 		zoomHandler.doPanning(e);
 	});
-
-	$(document).bind('mousewheel', function(e) {
+	
+	$('#dmEditorContainer').on('mousewheel', function(e) {
 		zoomHandler.changeZoom(e);
 	});
 

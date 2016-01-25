@@ -12,6 +12,11 @@ body {
     padding-top: 20px;
 }
 
+div#dmEditorContainer {
+  font-size: 20px;
+  font-weight: normal;
+}
+
 .scrollable-collapse{
     max-height: 500px;
     overflow-y: scroll;

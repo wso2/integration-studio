@@ -22,20 +22,28 @@ function getColorFromParent(parent) {
 }
 
 function getChildRect(parent) {
-	var newColor = getColorFromParent(parent);
+	//var newColor = getColorFromParent(parent);
 	var childRect = {};
-	childRect.fill = newColor;
+	childRect.fill = 'white';
 	childRect.stroke = 'none';
 	return childRect;
 }
 
+function getChildRectL1(parent) {
+	var childRect = {};
+	childRect.fill = 'white';
+	childRect.stroke = 'black';
+	return childRect;
+}
+
+//text: { text: 'my box', fill: 'white' }
 function getLabelText(labelText) {
-	var labelText = {text : labelText, 'text-anchor' : 'start', "ref-y":5,"ref-x":5, "font-size": 24, "font-family": "Arial"};
+	var labelText = {text : labelText, 'text-anchor' : 'start', "ref-y":5,"ref-x":5, "font-size": "14", "font-family": "Arial"};
 	return labelText;
 }
 
 function getOutputLabelText(labelText) {
-	var labelText = {text : labelText, 'text-anchor' : 'start', "ref-y":5,"ref-x":15, "font-size": 24, "font-family": "Arial"};
+	var labelText = {text : labelText, 'text-anchor' : 'start', "ref-y":5,"ref-x":15, "font-size": "14", "font-family": "Arial"};
 	return labelText;
 }
 
@@ -53,8 +61,9 @@ function initJointJSGraph() {
 		model : graph,
 		gridSize : 1,
 		interactive : function(cellView, methodName) {
-			if (cellView.model.get('isInteractive') === false)
+			if (cellView.model.get('isInteractive') === false){
 				return false;
+			}
 			return true;
 		}
 	});
@@ -62,6 +71,10 @@ function initJointJSGraph() {
 	paper.on('cell:pointerdown', function(cellView) {
 		selected = cellView.model;
 		if (cellView.model instanceof joint.dia.Link){
+			return;
+		}
+		var parentId = selected.get('parent');
+		if (parentId || selected == inputBox || selected == outputBox) {
 			return;
 		}
 		if (selectedCell) {
@@ -78,34 +91,63 @@ function initJointJSGraph() {
 		}
 		selectedCell = null;
 	});
-
 	
 	var inputLabel = getLabelText("Input Type");
-	mInput = new joint.shapes.devs.Model({
+	inputBox = new joint.shapes.devs.Model({
 		id : 'inputBox',
 		position : inputPosition,
 		size : initialSize,
 		attrs : {
 			'.label' : inputLabel,
 			rect :  {fill : '#6495ED', stroke : 'black'},
-			'.outPorts circle' : circleTemplate
 		}
 	});
 
 	var outputLabel = getLabelText("Output Type");
-	mOutput = new joint.shapes.devs.Model({
+	outputBox = new joint.shapes.devs.Model({
 		id : 'outputBox',
 		position : outputPosition,
 		size : initialSize,
 		attrs : {
 			'.label' : outputLabel,
 			rect :  {fill : '#6495ED', stroke : 'black'},
-			'.inPorts circle' : circleTemplate
 		}
 	});
-
-	graph.addCells([mInput, mOutput]);
 	
+	graph.addCells([inputBox, outputBox]);
+	
+	var childText = getLabelText("");
+	var childPosition = getFirstChildPosition(inputBox);
+	var parentSize = inputBox.get('size');
+	var childSize = {width : parentSize.width-1, height : parentSize.height - yOffset-1};
+	var childRect = getChildRectL1(inputBox);
+	mInput = new joint.shapes.devs.Model({
+		isInteractive : false,
+		size : childSize,
+		position : childPosition,
+		attrs : {
+			'.label' : childText,
+			rect : childRect
+		}
+	});
+	
+	var childPosition = getFirstChildPosition(outputBox);
+	var parentSize = outputBox.get('size');
+	var childSize = {width : parentSize.width-2, height : parentSize.height - yOffset-2};
+	var childRect = getChildRectL1(outputBox);
+	mOutput = new joint.shapes.devs.Model({
+		isInteractive : false,
+		size : childSize,
+		position : childPosition,
+		attrs : {
+			'.label' : childText,
+			rect : childRect
+		}
+	});
+ 
+	outputBox.embed(mOutput);
+	inputBox.embed(mInput);
+	graph.addCells([mInput, mOutput]);
 }
 
 function getTotalHeightOfChidlren(parent){
@@ -119,6 +161,9 @@ function getTotalHeightOfChidlren(parent){
 }
 
 function relocateElement(element) {
+	if (element==mInput || element==mOutput) {
+		return;
+	}
 	var ownPosition = element.get('position');
 	var ownSize = element.get('size');
 	var siblingsHeight = getTotalHeightOfChidlren(element);
@@ -140,6 +185,7 @@ function getChildSize(parent){
 	return childSize;
 }
 
+
 function getFirstChildSize(parent){
 	var parentSize = parent.get('size');
 	var childWidth = parentSize.width;
@@ -159,9 +205,8 @@ function getChildPosition(parent){
 
 function getFirstChildPosition(parent){
 	var parentPosition = parent.get('position');
-	var childX = parentPosition.x;
-	var siblingsHeight = getTotalHeightOfChidlren(parent);
-	var childY = parentPosition.y + siblingsHeight + yOffset;
+	var childX = parentPosition.x + 0.5;
+	var childY = parentPosition.y + yOffset + 0.5;
 	var childSize = {x : childX, y : childY};
 	return childSize;
 }
@@ -169,16 +214,17 @@ function getFirstChildPosition(parent){
 function addNode(parent, childName, level) {
 	var childRect = getChildRect(parent);
 	var childText = getLabelText(childName);
-	var childPosition;
-	var childSize;
-	if (level===2) {
+	var childPosition = getChildPosition(parent);
+	var childSize =  getChildSize(parent);
+	if (level<=2) {
 	  childPosition = getFirstChildPosition(parent);
 	  childSize =  getFirstChildSize(parent);
-	} else{
-	  childPosition = getChildPosition(parent);
-	  childSize =  getChildSize(parent);
+	  childRect = getChildRectL1(parent);
+	} 
+	if (level===2) {
+		childPosition = parent.get('position');
+		childRect = getChildRect(parent);
 	}
-	
 	
 	var child = new joint.shapes.devs.Model({
 		isInteractive : false,

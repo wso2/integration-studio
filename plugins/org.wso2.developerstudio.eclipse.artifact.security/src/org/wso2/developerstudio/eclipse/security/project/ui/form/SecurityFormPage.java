@@ -536,12 +536,10 @@ public class SecurityFormPage extends FormPage {
      * @param scenarioNumber
      */
     private void showPolicyUseCase(int scenarioNumber) {
-
         String shellTitle = SecurityFormConstants.SHELL_WINDOW_TITLE_PREFIX + scenarioNumber;
         Shell existingShell = getExistingUseCaseShell(shellTitle);
 
         if (existingShell == null) {
-
             String fileName = SecurityFormConstants.IMAGE_PREFIX + scenarioNumber + SecurityFormConstants.IMAGE_POSTFIX;
             String relativeFilePath = SecurityFormConstants.RELATIVE_FOLDER_PATH + fileName;
             String securityScenarioTitle = getSecurityScenarioTitle(scenarioNumber);

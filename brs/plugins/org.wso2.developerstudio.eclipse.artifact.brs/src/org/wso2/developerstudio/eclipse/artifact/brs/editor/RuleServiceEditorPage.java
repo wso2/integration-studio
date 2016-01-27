@@ -196,13 +196,10 @@ public class RuleServiceEditorPage extends FormPage {
 		managedform.getToolkit().createLabel(managedform.getForm().getBody(),
 				"Scope", SWT.NONE);
 		comboScope = new Combo(managedform.getForm().getBody(), SWT.READ_ONLY);
-		comboScope
-				.setItems(new String[] { REQUEST_SCOPE,
-						TRANSPORT_SESSION_SCOPE, SOAP_SESSION_SCOPE,
-						APPLICATION_SCOPE });
+        comboScope.setItems(new String[] { REQUEST_SCOPE, TRANSPORT_SESSION_SCOPE, SOAP_SESSION_SCOPE,
+                APPLICATION_SCOPE });
 
-		GridData gd_txtScope = new GridData(SWT.LEFT, SWT.CENTER, true, false,
-				3, 1);
+        GridData gd_txtScope = new GridData(SWT.LEFT, SWT.CENTER, true, false, 3, 1);
 		gd_txtScope.widthHint = 465;
 		comboScope.setLayoutData(gd_txtScope);
 
@@ -213,8 +210,7 @@ public class RuleServiceEditorPage extends FormPage {
 			@Override
 			public void widgetSelected(SelectionEvent event) {
 				setPageDirty(true);
-				setScope(comboScope.getText().toLowerCase()
-						.replaceAll(SPACE_CHARACTOR, EMPTY_STRING));
+                setScope(comboScope.getText().toLowerCase().replaceAll(SPACE_CHARACTOR, EMPTY_STRING));
 				updateDirtyState();
 			}
 

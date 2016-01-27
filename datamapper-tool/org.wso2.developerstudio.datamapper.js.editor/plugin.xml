@@ -21,7 +21,7 @@
          point="org.eclipse.ui.editors">
       <editor
             name="Web Based Editor"
-            extensions="webeditor"
+            extensions="mc"
             icon="icons/icon.png"
             class="org.wso2.developerstudio.samplewebeditor.editor.SampleTextAreaWebEditor"
             id="org.wso2.developerstudio.samplewebeditor.editor.SampleTextAreaWebEditor">

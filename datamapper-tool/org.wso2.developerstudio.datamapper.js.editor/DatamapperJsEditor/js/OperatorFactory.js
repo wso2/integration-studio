@@ -2,7 +2,7 @@ var OperatorFactory = function(paper) {
 	this.graph = graph;
 	this.operatorSize = {width : 90, height : 90};
 	this.operatorRect = {
-			fill : '#F0F0F0',
+			fill : '#81D0DA',
 			rx : 8,
 			ry : 8,
 			'stroke-width' : 2,

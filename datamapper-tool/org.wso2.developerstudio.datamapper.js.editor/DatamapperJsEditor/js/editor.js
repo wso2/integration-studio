@@ -22,11 +22,13 @@
  * 
 */
 
-var withEclipse = false;
+var withEclipse = true;
 
 function loadFileContent() {
 	var fileContent = IDEGetFileContent();
+	//alert('load file');
 	graph.fromJSON(JSON.parse(fileContent));
+	graph.resetCells([graph.getElements(), graph.getLinks()]);
 	undoRedoHandler.reset();
 }
 
@@ -51,9 +53,11 @@ function saveFile() {
 	var jsonString = JSON.stringify(graph);
     IDESaveContent(jsonString);
     var sourceScript = generateLanguage();
-    IDESaveContentWithExtention(sourceScript,"","config","dmc");
-    IDESaveContentWithExtention(inputSchema,"","_inputSchema","avsc");
-    IDESaveContentWithExtention(outputSchema,"","_outputSchema","avsc");
+    var editorName = IDEGetInformation("EditorName");
+    editorName = editorName.slice(0, -3); 
+    IDESaveContentWithExtention(sourceScript, "", editorName + "_config","dmc");
+    IDESaveContentWithExtention(inputSchema,  "", editorName + "_inputSchema","avsc");
+    IDESaveContentWithExtention(outputSchema, "", editorName + "_outputSchema","avsc");
 }
 
 

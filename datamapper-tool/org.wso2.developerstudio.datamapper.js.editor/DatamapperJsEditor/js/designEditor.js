@@ -56,8 +56,8 @@ function initJointJSGraph() {
 	
 	paper = new joint.dia.Paper({
 		el : $('#dmEditorContainer'),
-		width : $('#dmEditorContainer').width(),
-		height : $('#dmEditorContainer').height(),
+		width : 1200,
+		height : 800,
 		model : graph,
 		gridSize : 1,
 		interactive : function(cellView, methodName) {
@@ -99,6 +99,7 @@ function initJointJSGraph() {
 		size : initialSize,
 		attrs : {
 			'.label' : inputLabel,
+			z:1000,
 			rect :  {fill : '#6495ED', stroke : 'black'},
 		}
 	});
@@ -110,6 +111,7 @@ function initJointJSGraph() {
 		size : initialSize,
 		attrs : {
 			'.label' : outputLabel,
+			z:1000,
 			rect :  {fill : '#6495ED', stroke : 'black'},
 		}
 	});
@@ -127,6 +129,7 @@ function initJointJSGraph() {
 		position : childPosition,
 		attrs : {
 			'.label' : childText,
+			z:1000,
 			rect : childRect
 		}
 	});
@@ -141,6 +144,7 @@ function initJointJSGraph() {
 		position : childPosition,
 		attrs : {
 			'.label' : childText,
+			z:1000,
 			rect : childRect
 		}
 	});
@@ -232,6 +236,7 @@ function addNode(parent, childName, level) {
 		position : childPosition,
 		attrs : {
 			'.label' : childText,
+			z:1000,
 			rect : childRect
 		}
 	});
@@ -245,7 +250,9 @@ function addLeaf(parent, leafName, level, isOutput) {
 	var childRect = getChildRect(parent);
 	var childText = getLabelText(leafName);
 	var childPosition = getChildPosition(parent);
-	var childSize =  getChildSize(parent);
+	
+	var childSize = {width : leafName.length * 10 + 16, height : leafHeight};
+	//var childSize =  getChildSize(parent);
 	
 	var leaf = null;
 	if (isOutput) {
@@ -258,6 +265,7 @@ function addLeaf(parent, leafName, level, isOutput) {
 				'.label' : childText,
 				'graphProperties': { index : -1	},
 				rect : childRect,
+				z:1000,
 				circle: { r: 6},
 				'.outPorts circle' : circleTemplate
 			}

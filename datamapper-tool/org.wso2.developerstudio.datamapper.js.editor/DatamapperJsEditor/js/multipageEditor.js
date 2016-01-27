@@ -11,6 +11,7 @@ var menu1;
 
 //TODO try module design pattern
 $(document).ready(function() {
+	
 	registerTabChangeEvent();
 	initDraggable();
 	initDropable();

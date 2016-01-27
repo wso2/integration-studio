@@ -615,13 +615,10 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
 				String simpleMessage = ExceptionMessageMapper.getNonTechnicalMessage(e.getMessage());
 				IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, simpleMessage);
 				setActivePage(DESIGN_VIEW_PAGE_INDEX);
-				ErrorDialog
-						.openError(
-								getActiveEditor().getSite().getShell(),
-								"Error",
-								"Cannot update source view. The following error(s) have been detected. Please see the error log for more details ",
-								editorStatus);
-			}
+                ErrorDialog.openError(getActiveEditor().getSite().getShell(), "Error",
+                        "Cannot update source view. The following error(s) have been detected."
+                                + " Please see the error log for more details ", editorStatus);
+            }
 			break;
 		}
 		}

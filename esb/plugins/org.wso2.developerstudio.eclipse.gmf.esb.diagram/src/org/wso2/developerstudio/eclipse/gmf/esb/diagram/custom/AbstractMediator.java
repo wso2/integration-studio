@@ -140,9 +140,9 @@ public abstract class AbstractMediator extends AbstractBorderedShapeEditPart imp
 	private AbstractOutputConnectorEditPart connectedOutputConnector;
 	private AbstractMediator instance=null;
 	
-	private boolean breakpointHitStatus = false;
-	private boolean isBreakpoint = false;
-	private boolean isSkippoint = false;
+    private boolean breakpointHitStatus;
+    private boolean isBreakpoint;
+    private boolean isSkippoint;
 	
 	public int x=0;
 	public int y=0;
@@ -166,46 +166,30 @@ public abstract class AbstractMediator extends AbstractBorderedShapeEditPart imp
 		instance=this;
 	}
 
-	/**
-	 * 
-	 * @return the isBreakpoint
-	 */
-	public boolean isBreakpoint(){
-		return isBreakpoint;
-	}
-	
-	public boolean isSkippoint(){
-		return isSkippoint;
-	}
-	
-	/**
-	 * 
-	 * @param breakpointStatus
-	 */
-	public void setBreakpointStatus(boolean breakpointStatus) {
-		isBreakpoint = breakpointStatus;
-	}
+    public boolean isBreakpoint() {
+        return isBreakpoint;
+    }
 
-	public void setSkippointStatus(boolean skippointStatus) {
-		isSkippoint = skippointStatus;
+    public boolean isSkippoint() {
+        return isSkippoint;
+    }
 
-	}
-	
-	/**
-	 * 
-	 * @return the breakpointHitStatus
-	 */
-	public boolean isBreakpointHit(){
-		return breakpointHitStatus;
-	}
-	
-	/**
-	 * 
-	 * @param breakpointHitStatus
-	 */
-	public void setBreakpointHitStatus(boolean breakpointHitStatus){
-		this.breakpointHitStatus=breakpointHitStatus;
-	}
+    public void setBreakpointStatus(boolean breakpointStatus) {
+        isBreakpoint = breakpointStatus;
+    }
+
+    public void setSkippointStatus(boolean skippointStatus) {
+        isSkippoint = skippointStatus;
+
+    }
+
+    public boolean isBreakpointHit() {
+        return breakpointHitStatus;
+    }
+
+    public void setBreakpointHitStatus(boolean breakpointHitStatus) {
+        this.breakpointHitStatus = breakpointHitStatus;
+    }
 	
 	protected NodeFigure createMainFigure() {
 		return null;
@@ -241,33 +225,28 @@ public abstract class AbstractMediator extends AbstractBorderedShapeEditPart imp
 		if (!reversed) {
 			reverse(this);
 		}
-		if (i == 0) {
-			if (ESBDebuggerUtil.getRecentlyAddedMediator() == null
-					&& (!ESBDebuggerUtil.ispageSaveOperationActivated()
-							&& !ESBDebuggerUtil
-									.isPageChangeOperationActivated() && !ESBDebuggerUtil
-								.isPageCreateOperationActivated())) {
-				ESBDebuggerUtil.setRecentlyAddedMediator(this);
-			} else {
+        if (i == 0) {
+            if (ESBDebuggerUtil.getRecentlyAddedMediator() == null
+                    && (!ESBDebuggerUtil.isPageSaveOperationActivated()
+                            && !ESBDebuggerUtil.isPageChangeOperationActivated() && !ESBDebuggerUtil
+                                .isPageCreateOperationActivated())) {
+                ESBDebuggerUtil.setRecentlyAddedMediator(this);
+            } else {
 
-				try {
-					if (ESBDebuggerUtil.getRecentlyAddedMediator() != null) {
-						ESBDebuggerUtil
-								.modifyDebugPointsointsAfterMediatorAddition(ESBDebuggerUtil
-										.getRecentlyAddedMediator());
-						if (!ESBDebuggerUtil.ispageSaveOperationActivated()
-								&& !ESBDebuggerUtil
-										.isPageChangeOperationActivated()
-								&& !ESBDebuggerUtil
-										.isPageCreateOperationActivated()) {
-							ESBDebuggerUtil.setRecentlyAddedMediator(this);
-						}
-					}
-				} catch (CoreException | ESBDebuggerException e) {
-					log.error("Error while setting recently added mediator : "
-							+ e.getMessage(), e);
-				}
-			}
+                try {
+                    if (ESBDebuggerUtil.getRecentlyAddedMediator() != null) {
+                        ESBDebuggerUtil.modifyDebugPointsointsAfterMediatorAddition(ESBDebuggerUtil
+                                .getRecentlyAddedMediator());
+                        if (!ESBDebuggerUtil.isPageSaveOperationActivated()
+                                && !ESBDebuggerUtil.isPageChangeOperationActivated()
+                                && !ESBDebuggerUtil.isPageCreateOperationActivated()) {
+                            ESBDebuggerUtil.setRecentlyAddedMediator(this);
+                        }
+                    }
+                } catch (CoreException | ESBDebuggerException e) {
+                    log.error("Error while setting recently added mediator : " + e.getMessage(), e);
+                }
+            }
 
 		}
 		/*

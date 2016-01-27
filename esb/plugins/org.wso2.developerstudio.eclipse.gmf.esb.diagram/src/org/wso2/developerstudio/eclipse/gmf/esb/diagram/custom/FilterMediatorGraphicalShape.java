@@ -43,7 +43,7 @@ public class FilterMediatorGraphicalShape extends RoundedRectangle {
 	private LayeredPane pane;
 	private Layer figureLayer;
 	private Layer breakpointLayer;
-	private Layer skippointLayer;
+	private Layer skipPointLayer;
 	protected String toolTipMessage;
 	
 	public FilterMediatorGraphicalShape() {
@@ -61,79 +61,62 @@ public class FilterMediatorGraphicalShape extends RoundedRectangle {
 		toolTipMessage = message;
 	}
 	
-	public void addBreakpointMark() {
-		if (breakpointLayer == null) {
-			breakpointLayer = new Layer();
-			breakpointLayer.setLayoutManager(new StackLayout());
-			GridData constraintBreakpointImageRectangle = new GridData();
-			constraintBreakpointImageRectangle.verticalAlignment = GridData.BEGINNING;
-			constraintBreakpointImageRectangle.horizontalAlignment = GridData.BEGINNING;
-			constraintBreakpointImageRectangle.verticalSpan = 1;
-			ImageFigure iconImageFigure = EditPartDrawingHelper
-					.getIconImageFigure(
-							DiagramCustomConstants.BREAKPOINT_IMAGE_LOCATION,
-							16, 16);
+    public void addBreakpointMark() {
+        if (breakpointLayer == null) {
+            breakpointLayer = new Layer();
+            breakpointLayer.setLayoutManager(new StackLayout());
+            GridData constraintBreakpointImageRectangle = new GridData();
+            constraintBreakpointImageRectangle.verticalAlignment = GridData.BEGINNING;
+            constraintBreakpointImageRectangle.horizontalAlignment = GridData.BEGINNING;
+            constraintBreakpointImageRectangle.verticalSpan = 1;
+            ImageFigure iconImageFigure = EditPartDrawingHelper.getIconImageFigure(
+                    DiagramCustomConstants.BREAKPOINT_IMAGE_LOCATION, 16, 16);
 
-			RoundedRectangle breakpointImageRectangle = new RoundedRectangle();
-			breakpointImageRectangle.setCornerDimensions(new Dimension(2, 2));
-			breakpointImageRectangle.setOutline(false);
-			breakpointImageRectangle.setPreferredSize(new Dimension(10,
-					containerInsideLeftRectangle.getSize().height));
-			breakpointImageRectangle.setAlpha(0);
-			breakpointImageRectangle.add(iconImageFigure);
-			iconImageFigure
-					.translate(
-							0,
-							containerInsideLeftRectangle.getSize().height
-									/ 2
-									- DiagramCustomConstants.DEBUGPOINT_IMAGE_OFFSET_VALUE);
-			breakpointLayer.add(breakpointImageRectangle,
-					constraintBreakpointImageRectangle);
-			containerInsideLeftRectangle.remove(pane);
-			pane.add(breakpointLayer);
-			containerInsideLeftRectangle.add(pane);
-		}
-	}
+            RoundedRectangle breakpointImageRectangle = new RoundedRectangle();
+            breakpointImageRectangle.setCornerDimensions(new Dimension(2, 2));
+            breakpointImageRectangle.setOutline(false);
+            breakpointImageRectangle.setPreferredSize(new Dimension(10, containerInsideLeftRectangle.getSize().height));
+            breakpointImageRectangle.setAlpha(0);
+            breakpointImageRectangle.add(iconImageFigure);
+            iconImageFigure.translate(0, containerInsideLeftRectangle.getSize().height / 2
+                    - DiagramCustomConstants.DEBUGPOINT_IMAGE_OFFSET_VALUE);
+            breakpointLayer.add(breakpointImageRectangle, constraintBreakpointImageRectangle);
+            containerInsideLeftRectangle.remove(pane);
+            pane.add(breakpointLayer);
+            containerInsideLeftRectangle.add(pane);
+        }
+    }
 
-	public void addSkippointMark() {
-		if (skippointLayer == null) {
-			skippointLayer = new Layer();
-			skippointLayer.setLayoutManager(new StackLayout());
-			GridData constraintSkipPointImageRectangle = new GridData();
-			constraintSkipPointImageRectangle.verticalAlignment = GridData.END;
-			constraintSkipPointImageRectangle.horizontalAlignment = GridData.CENTER;
-			constraintSkipPointImageRectangle.horizontalIndent = 0;
-			constraintSkipPointImageRectangle.horizontalSpan = 1;
-			constraintSkipPointImageRectangle.verticalSpan = 2;
-			constraintSkipPointImageRectangle.grabExcessHorizontalSpace = true;
-			constraintSkipPointImageRectangle.grabExcessVerticalSpace = true;
-			ImageFigure iconImageFigure = EditPartDrawingHelper
-					.getIconImageFigure(
-							DiagramCustomConstants.SKIP_POINT_IMAGE_LOCATION,
-							56, 56);
+    public void addSkipPointMark() {
+        if (skipPointLayer == null) {
+            skipPointLayer = new Layer();
+            skipPointLayer.setLayoutManager(new StackLayout());
+            GridData constraintSkipPointImageRectangle = new GridData();
+            constraintSkipPointImageRectangle.verticalAlignment = GridData.END;
+            constraintSkipPointImageRectangle.horizontalAlignment = GridData.CENTER;
+            constraintSkipPointImageRectangle.horizontalIndent = 0;
+            constraintSkipPointImageRectangle.horizontalSpan = 1;
+            constraintSkipPointImageRectangle.verticalSpan = 2;
+            constraintSkipPointImageRectangle.grabExcessHorizontalSpace = true;
+            constraintSkipPointImageRectangle.grabExcessVerticalSpace = true;
+            ImageFigure iconImageFigure = EditPartDrawingHelper.getIconImageFigure(
+                    DiagramCustomConstants.SKIP_POINT_IMAGE_LOCATION, 56, 56);
 
-			RoundedRectangle skipPointImageRectangle = new RoundedRectangle();
-			skipPointImageRectangle.setCornerDimensions(new Dimension(2, 2));
-			skipPointImageRectangle.setOutline(false);
-			skipPointImageRectangle.setPreferredSize(new Dimension(10,
-					containerInsideLeftRectangle.getSize().height));
-			skipPointImageRectangle.setAlpha(0);
-			skipPointImageRectangle.add(iconImageFigure);
-			iconImageFigure
-					.translate(
-							0,
-							containerInsideLeftRectangle.getSize().height
-									/ 2
-									- DiagramCustomConstants.DEBUGPOINT_IMAGE_OFFSET_VALUE);
-			skippointLayer.add(skipPointImageRectangle,
-					constraintSkipPointImageRectangle);
-			skippointLayer
-					.setBackgroundColor(EditPartDrawingHelper.FigureNormalColor);
-			containerInsideLeftRectangle.remove(pane);
-			pane.add(skippointLayer);
-			containerInsideLeftRectangle.add(pane);
-		}
-	}
+            RoundedRectangle skipPointImageRectangle = new RoundedRectangle();
+            skipPointImageRectangle.setCornerDimensions(new Dimension(2, 2));
+            skipPointImageRectangle.setOutline(false);
+            skipPointImageRectangle.setPreferredSize(new Dimension(10, containerInsideLeftRectangle.getSize().height));
+            skipPointImageRectangle.setAlpha(0);
+            skipPointImageRectangle.add(iconImageFigure);
+            iconImageFigure.translate(0, containerInsideLeftRectangle.getSize().height / 2
+                    - DiagramCustomConstants.DEBUGPOINT_IMAGE_OFFSET_VALUE);
+            skipPointLayer.add(skipPointImageRectangle, constraintSkipPointImageRectangle);
+            skipPointLayer.setBackgroundColor(EditPartDrawingHelper.FigureNormalColor);
+            containerInsideLeftRectangle.remove(pane);
+            pane.add(skipPointLayer);
+            containerInsideLeftRectangle.add(pane);
+        }
+    }
 
 	public void removeBreakpointMark() {
 		if (breakpointLayer != null) {
@@ -142,10 +125,10 @@ public class FilterMediatorGraphicalShape extends RoundedRectangle {
 		}
 	}
 
-	public void removeSkippointMark() {
-		if (skippointLayer != null) {
-			pane.remove(skippointLayer);
-			skippointLayer = null;
+	public void removeSkipPointMark() {
+		if (skipPointLayer != null) {
+			pane.remove(skipPointLayer);
+			skipPointLayer = null;
 		}
 	}
 

@@ -49,7 +49,7 @@ public class EsbGraphicalShapeWithLabel extends RoundedRectangle {
 	private LayeredPane pane;
 	protected Layer figureLayer;
 	private Layer breakpointLayer;
-	private Layer skippointLayer;
+	private Layer skipPointLayer;
 	protected String toolTipMessage;
 
 	public EsbGraphicalShapeWithLabel() {
@@ -129,9 +129,9 @@ public class EsbGraphicalShapeWithLabel extends RoundedRectangle {
 	/**
 	 * This method adds layer with skip point mark to the figure pane
 	 */
-	public void addSkippointMark() {
-		skippointLayer = new Layer();
-		skippointLayer.setLayoutManager(new StackLayout());
+	public void addSkipPointMark() {
+		skipPointLayer = new Layer();
+		skipPointLayer.setLayoutManager(new StackLayout());
 		GridData constraintBreakpointImageRectangle = new GridData();
 		constraintBreakpointImageRectangle.verticalAlignment = GridData.BEGINNING;
 		constraintBreakpointImageRectangle.horizontalAlignment = GridData.BEGINNING;
@@ -146,18 +146,18 @@ public class EsbGraphicalShapeWithLabel extends RoundedRectangle {
 		skipPointImageRectangle.setAlpha(0);
 		skipPointImageRectangle.add(iconImageFigure);
 
-		skippointLayer.add(skipPointImageRectangle,
+		skipPointLayer.add(skipPointImageRectangle,
 				constraintBreakpointImageRectangle);
-		pane.add(skippointLayer);
+		pane.add(skipPointLayer);
 	}
 
 	/**
 	 * This method remove skip point layer
 	 */
-	public void removeSkippointMark() {
-		if (skippointLayer != null) {
-			pane.remove(skippointLayer);
-			skippointLayer = null;
+	public void removeSkipPointMark() {
+		if (skipPointLayer != null) {
+			pane.remove(skipPointLayer);
+			skipPointLayer = null;
 		}
 	}
 

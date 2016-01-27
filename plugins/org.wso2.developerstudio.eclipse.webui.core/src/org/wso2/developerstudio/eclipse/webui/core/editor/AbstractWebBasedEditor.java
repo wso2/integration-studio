@@ -46,6 +46,7 @@ import org.wso2.developerstudio.eclipse.webui.core.WebUICorePlugin;
 import org.wso2.developerstudio.eclipse.webui.core.editor.function.ExecuteUndoableTaskFunction;
 import org.wso2.developerstudio.eclipse.webui.core.editor.function.GetDirtyContentFunction;
 import org.wso2.developerstudio.eclipse.webui.core.editor.function.GetFileContentFunction;
+import org.wso2.developerstudio.eclipse.webui.core.editor.function.GetIDEInformationFunction;
 import org.wso2.developerstudio.eclipse.webui.core.editor.function.SaveContentFunction;
 import org.wso2.developerstudio.eclipse.webui.core.editor.function.SaveContentToFileWithExetention;
 import org.wso2.developerstudio.eclipse.webui.core.editor.function.SetDirtyContentFunction;
@@ -161,7 +162,7 @@ public abstract class AbstractWebBasedEditor extends EditorPart {
 				}
 			});
 			injectCustomJSFunctions();
-			setPartName(getEditorName());
+			setPartName(editorInput.getName());
 		} catch (WebUIException e) {
 			log.error("Error instantiating Web Editor.", e);
 		}	
@@ -192,6 +193,7 @@ public abstract class AbstractWebBasedEditor extends EditorPart {
 			new GetDirtyContentFunction(editorInstance);
 			new SetDirtyContentFunction(editorInstance);
 			new SaveContentToFileWithExetention(editorInstance);
+			new GetIDEInformationFunction(editorInstance);
 		} else {
 			throw new IllegalStateException("Browser is not yet instantiated.");
 		}

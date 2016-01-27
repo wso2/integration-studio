@@ -187,4 +187,5 @@ public class Constants {
 	public static final String IDE_SET_DIRTY_CONTENT_FUNCTION = "IDESetDirtyContent";
 	public static final String IDE_GET_DIRTY_CONTENT_FUNCTION = "IDEGetDirtyContent";
 
+	public static final String IDE_GET_INFORMATION_FUNCTION = "IDEGetInformation";
 }

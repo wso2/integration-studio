@@ -16,15 +16,7 @@
 
 			<data modelProperty="save.file" type="workspacefolder" fieldController="org.wso2.developerstudio.eclipse.artifact.inboundendpoint.validators.InboundEndpointProjectFieldController" controlData="filterClass=org.wso2.developerstudio.eclipse.artifact.inboundendpoint.validators.ESBProjectFilter">Save Inbound Endpoint in:</data>
 			<data modelProperty="create.esb.prj" type="link" fieldController="org.wso2.developerstudio.eclipse.artifact.inboundendpoint.validators.InboundEndpointProjectFieldController" controlData="align=right">&lt;a&gt;Create new ESB Project...&lt;/a&gt;</data>
- 
-			<!-- Import source URL -->
-			<!-- data group="group1" modelProperty="import.url" type="file" filter="*" fieldController="org.wso2.developerstudio.eclipse.artifact.inboundendpoint.validators.InboundEndpointProjectFieldController">Source URL</data>-->
-			
-			<!-- class -->
 			<data group="group1" modelProperty="class" type="string" fieldController="org.wso2.developerstudio.eclipse.artifact.inboundendpoint.validators.InboundEndpointProjectFieldController">Class</data>
-					
-			<!-- group id="group1" title="Advanced Configuration" controlData="type=collapsible;state=expanded"></group-->
-
 		</settings>
 		<settings optionId="import.inboundendpoint"
 				  title="Inbound Endpoint Artifact"

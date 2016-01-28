@@ -38,6 +38,9 @@ import javax.xml.parsers.ParserConfigurationException;
 
 public class CommonFieldValidator {
 	private static final IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
+    private static final String URL_VALIDATION_PATTERN = "^\\w\\w+:/.*|file:.*|mailto:.*|vfs:.*";
+    private static final String SINGLE_QUOTATION_MARK_STRING = "\'";
+    private static final String DOUBLE_QUOTATION_MARK_STRING = "\"";
 
 	public static void validateJavaClassNameField(Object value) throws FieldValidationException {
 		String className = value.toString();
@@ -108,14 +111,14 @@ public class CommonFieldValidator {
 		}
 	}
 
-	public static void isValidUrl(String url, String field) throws FieldValidationException {
-
-		Pattern pattern = Pattern.compile("^\\w\\w+:/.*|file:.*|mailto:.*|vfs:.*");
-		Matcher matcher = pattern.matcher(url);
-		if (url.contains("\'") || url.contains("\"") || !(matcher.matches())) {
-			throw new FieldValidationException(field + ": Invalid URL provided");
-		}
-	}
+    public static void isValidUrl(String url, String field) throws FieldValidationException {
+        Pattern pattern = Pattern.compile(URL_VALIDATION_PATTERN);
+        Matcher matcher = pattern.matcher(url);
+        if (url.contains(SINGLE_QUOTATION_MARK_STRING) || url.contains(DOUBLE_QUOTATION_MARK_STRING)
+                || !(matcher.matches())) {
+            throw new FieldValidationException(field + ": Invalid URL provided");
+        }
+    }
 
 	private static boolean isParameter(String field, boolean partial) {
 		Pattern pattern = Pattern.compile("\\$\\{(.*?)\\}");

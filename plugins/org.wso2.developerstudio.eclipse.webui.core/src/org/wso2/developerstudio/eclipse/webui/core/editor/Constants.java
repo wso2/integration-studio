@@ -188,4 +188,5 @@ public class Constants {
 	public static final String IDE_GET_DIRTY_CONTENT_FUNCTION = "IDEGetDirtyContent";
 
 	public static final String IDE_GET_INFORMATION_FUNCTION = "IDEGetInformation";
+	public static final String CUSTOM_EDITOR_FUNCTION = "ExecuteCustomFunction";
 }

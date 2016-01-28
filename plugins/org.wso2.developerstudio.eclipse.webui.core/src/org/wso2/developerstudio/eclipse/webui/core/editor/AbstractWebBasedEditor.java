@@ -43,6 +43,7 @@ import org.wso2.developerstudio.eclipse.embedded.tomcat.exception.EmbeddedTomcat
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.webui.core.WebUICorePlugin;
+import org.wso2.developerstudio.eclipse.webui.core.editor.function.CustomEditorFunction;
 import org.wso2.developerstudio.eclipse.webui.core.editor.function.ExecuteUndoableTaskFunction;
 import org.wso2.developerstudio.eclipse.webui.core.editor.function.GetDirtyContentFunction;
 import org.wso2.developerstudio.eclipse.webui.core.editor.function.GetFileContentFunction;
@@ -62,6 +63,7 @@ public abstract class AbstractWebBasedEditor extends EditorPart {
 	protected ObjectUndoContext editorUndoContext;
 	protected FileEditorInput editorInput;
 	protected AbstractWebBasedEditor editorInstance;
+	protected AbstractEditorFunctionExecutor functionExecutor;
 	protected String dirtyContent;
 	protected MultiPageEditorPart parentEditor;
 	protected boolean isDirty;
@@ -72,6 +74,7 @@ public abstract class AbstractWebBasedEditor extends EditorPart {
 	public AbstractWebBasedEditor() {
 		this.editorInstance = this;
 		this.editorUndoContext = new ObjectUndoContext(this);
+		setEditorFunctionExecutor(null);
 	}
 
 	public AbstractWebBasedEditor(MultiPageEditorPart parent) {
@@ -96,6 +99,14 @@ public abstract class AbstractWebBasedEditor extends EditorPart {
 
 	@Override
 	public void doSaveAs() {
+	}
+	
+	public void setEditorFunctionExecutor(AbstractEditorFunctionExecutor executor) {
+		functionExecutor = executor;
+	}
+	
+	public AbstractEditorFunctionExecutor getEditorFunctionExecutor() {
+		return functionExecutor;
 	}
 
 	@Override
@@ -194,6 +205,7 @@ public abstract class AbstractWebBasedEditor extends EditorPart {
 			new SetDirtyContentFunction(editorInstance);
 			new SaveContentToFileWithExetention(editorInstance);
 			new GetIDEInformationFunction(editorInstance);
+			new CustomEditorFunction(editorInstance);
 		} else {
 			throw new IllegalStateException("Browser is not yet instantiated.");
 		}

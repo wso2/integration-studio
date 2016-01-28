@@ -533,7 +533,7 @@ public class SecurityFormPage extends FormPage {
      * This method opens a shell window which shows the description of mentioned security scenario given in the
      * parameter list.
      *
-     * @param scenarioNumber
+     * @param scenarioNumber :Id of the security scenario
      */
     private void showPolicyUseCase(int scenarioNumber) {
         String shellTitle = SecurityFormConstants.SHELL_WINDOW_TITLE_PREFIX + scenarioNumber;

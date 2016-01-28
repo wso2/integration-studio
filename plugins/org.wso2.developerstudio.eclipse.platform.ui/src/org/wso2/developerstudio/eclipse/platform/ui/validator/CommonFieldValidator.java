@@ -111,6 +111,13 @@ public class CommonFieldValidator {
 		}
 	}
 
+    /**
+     * Checks whether given url of the given field is valid or invalid.
+     * 
+     * @param url
+     * @param field
+     * @throws FieldValidationException will throw if url is invalid
+     */
     public static void isValidUrl(String url, String field) throws FieldValidationException {
         Pattern pattern = Pattern.compile(URL_VALIDATION_PATTERN);
         Matcher matcher = pattern.matcher(url);

@@ -335,10 +335,10 @@ function generateLanguage() {
 	function getVariablePrefixValue(variablePrefix, tempElement) {
 		var ancestorArray = tempElement.getAncestors();
 		var parentsLength = ancestorArray.length;
-		if (parentsLength > 1) {
+		if (parentsLength > 2) {
 			var tempPrefix = "";
 			tempPrefix = ancestorArray[0].get("attrs")['.label'].text;
-			for (var index = 1; index < parentsLength - 1; ++index) {
+			for (var index = 2; index < parentsLength - 1; ++index) {
 				tempPrefix = ancestorArray[index].get("attrs")['.label'].text
 						+ "." + tempPrefix;
 			}

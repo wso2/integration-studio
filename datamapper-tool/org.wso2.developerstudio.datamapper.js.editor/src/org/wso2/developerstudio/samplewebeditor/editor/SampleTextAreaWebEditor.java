@@ -17,12 +17,14 @@ package org.wso2.developerstudio.samplewebeditor.editor;
 
 import org.eclipse.ui.part.MultiPageEditorPart;
 import org.wso2.developerstudio.eclipse.webui.core.editor.AbstractWebBasedEditor;
+import org.wso2.developerstudio.eclipse.webui.core.editor.AbstractEditorFunctionExecutor;
 
 public class SampleTextAreaWebEditor extends AbstractWebBasedEditor{
 
 	public SampleTextAreaWebEditor() {
 		super();
 	}
+	
 	public SampleTextAreaWebEditor(MultiPageEditorPart multiPageEditor) {
 		super(multiPageEditor);
 	}
@@ -50,5 +52,12 @@ public class SampleTextAreaWebEditor extends AbstractWebBasedEditor{
 	public String getEditorTitleToolTip() {
 		return "Datamapper Editor";
 	}
+	
+	@Override
+	public void setEditorFunctionExecutor(AbstractEditorFunctionExecutor executor) {
+		DataMapperFunctionExecutor dmfExecutor = new DataMapperFunctionExecutor();
+		super.setEditorFunctionExecutor(dmfExecutor);
+	}
+	
 
 }

@@ -160,11 +160,11 @@ public abstract class AbstractMediator extends AbstractBorderedShapeEditPart imp
 	 */
 	public boolean reversed = false;
 
-	public AbstractMediator(View view) {
-		super(view);
-		setIsForward(!((Mediator) view.getElement()).isReverse());
-		instance=this;
-	}
+    public AbstractMediator(View view) {
+        super(view);
+        setIsForward(!((Mediator) view.getElement()).isReverse());
+        instance = this;
+    }
 
     public boolean isBreakpoint() {
         return isBreakpoint;

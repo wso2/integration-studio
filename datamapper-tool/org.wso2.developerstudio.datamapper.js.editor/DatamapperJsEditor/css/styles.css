@@ -7,8 +7,6 @@
 body {
     font-family:arial, sans-serif;
     font-weight:normal;
-    font-size:12px;
-    background:#3f4348;
     padding-top: 20px;
 }
 
@@ -195,3 +193,5 @@ background-repeat: no-repeat;
     opacity:0.6;
 	filter:alpha(opacity=60);
 }
+
+.btn { cursor: pointer;}

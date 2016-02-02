@@ -119,8 +119,22 @@ public class DetailSectionUiUtil {
 
 		if (input != null && metaObject != null) {
 
-			if (displayValues.length > 0) {
-				setStringAttribute(input, metaObject, displayValues[0]);
+			//Fixing TOOLS-3336
+			if (displayValues.length > 0) {		
+				if (initialValue != null && !initialValue.equals("")) {
+					for (int j = 0; j < displayValues.length; j++) {
+						if (displayValues[j] != null) {
+							//Sets the attribute value to the user selected value
+							if (initialValue.equals(displayValues[j])) {
+								setStringAttribute(input, metaObject, initialValue);
+								break;
+							}
+						}
+					}
+				}else{
+					//Sets the attribute value to default value at the initial opening
+					setStringAttribute(input, metaObject, displayValues[0]);
+				}		
 			}
 			addModifyListnerForCustomComboFields(combo, input, metaObject);
 

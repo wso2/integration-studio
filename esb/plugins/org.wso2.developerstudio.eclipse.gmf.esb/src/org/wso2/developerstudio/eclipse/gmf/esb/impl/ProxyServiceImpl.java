@@ -92,6 +92,7 @@ import org.wso2.developerstudio.eclipse.platform.core.utils.DeveloperStudioProvi
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ProxyServiceImpl#getWsdlXML <em>Wsdl XML</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ProxyServiceImpl#getWsdlURL <em>Wsdl URL</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ProxyServiceImpl#getWsdlKey <em>Wsdl Key</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ProxyServiceImpl#getWsdlEndpoint <em>Wsdl Endpoint</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ProxyServiceImpl#getWsdlResources <em>Wsdl Resources</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ProxyServiceImpl#getOnError <em>On Error</em>}</li>
  * </ul>
@@ -681,6 +682,16 @@ public class ProxyServiceImpl extends EsbElementImpl implements ProxyService {
 	protected RegistryKeyProperty wsdlKey;
 
 	/**
+	 * The cached value of the '{@link #getWsdlEndpoint() <em>Wsdl Endpoint</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getWsdlEndpoint()
+	 * @generated
+	 * @ordered
+	 */
+	protected RegistryKeyProperty wsdlEndpoint;
+
+	/**
 	 * The cached value of the '{@link #getWsdlResources() <em>Wsdl Resources</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -716,6 +727,16 @@ public class ProxyServiceImpl extends EsbElementImpl implements ProxyService {
 		wsdlKey.setKeyName("key");
 		wsdlKey.setKeyValue(DEFAULT_REGISTRY_KEY);
 		setWsdlKey(wsdlKey);
+		
+		
+		//WSDL Endpoint Key
+ 		RegistryKeyProperty wsdlEndpointKey = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
+ 	    DeveloperStudioProviderUtils.addFilter((Map<String, List<String>>)wsdlEndpointKey.getFilters(), CSProviderConstants.FILTER_MEDIA_TYPE, PlatformMediaTypeConstants.MEDIA_TYPE_WSDL);
+ 
+ 		wsdlEndpointKey.setPrettyName("WSDL Endpoint");
+ 		wsdlEndpointKey.setKeyName("endpoint");
+ 		wsdlEndpointKey.setKeyValue(DEFAULT_REGISTRY_KEY);
+ 		setWsdlEndpoint(wsdlEndpointKey);
 		
 		RegistryKeyProperty inSequenceKey = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
 		inSequenceKey.setPrettyName("In Sequence Reference");
@@ -1822,6 +1843,49 @@ public class ProxyServiceImpl extends EsbElementImpl implements ProxyService {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public RegistryKeyProperty getWsdlEndpoint() {
+		return wsdlEndpoint;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetWsdlEndpoint(RegistryKeyProperty newWsdlEndpoint, NotificationChain msgs) {
+		RegistryKeyProperty oldWsdlEndpoint = wsdlEndpoint;
+		wsdlEndpoint = newWsdlEndpoint;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EsbPackage.PROXY_SERVICE__WSDL_ENDPOINT, oldWsdlEndpoint, newWsdlEndpoint);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setWsdlEndpoint(RegistryKeyProperty newWsdlEndpoint) {
+		if (newWsdlEndpoint != wsdlEndpoint) {
+			NotificationChain msgs = null;
+			if (wsdlEndpoint != null)
+				msgs = ((InternalEObject)wsdlEndpoint).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EsbPackage.PROXY_SERVICE__WSDL_ENDPOINT, null, msgs);
+			if (newWsdlEndpoint != null)
+				msgs = ((InternalEObject)newWsdlEndpoint).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EsbPackage.PROXY_SERVICE__WSDL_ENDPOINT, null, msgs);
+			msgs = basicSetWsdlEndpoint(newWsdlEndpoint, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.PROXY_SERVICE__WSDL_ENDPOINT, newWsdlEndpoint, newWsdlEndpoint));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EList<ProxyWSDLResource> getWsdlResources() {
 		if (wsdlResources == null) {
 			wsdlResources = new EObjectContainmentEList<ProxyWSDLResource>(ProxyWSDLResource.class, this, EsbPackage.PROXY_SERVICE__WSDL_RESOURCES);
@@ -1913,6 +1977,8 @@ public class ProxyServiceImpl extends EsbElementImpl implements ProxyService {
 				return basicSetEndpointKey(null, msgs);
 			case EsbPackage.PROXY_SERVICE__WSDL_KEY:
 				return basicSetWsdlKey(null, msgs);
+			case EsbPackage.PROXY_SERVICE__WSDL_ENDPOINT:
+				return basicSetWsdlEndpoint(null, msgs);
 			case EsbPackage.PROXY_SERVICE__WSDL_RESOURCES:
 				return ((InternalEList<?>)getWsdlResources()).basicRemove(otherEnd, msgs);
 			case EsbPackage.PROXY_SERVICE__ON_ERROR:
@@ -2004,6 +2070,8 @@ public class ProxyServiceImpl extends EsbElementImpl implements ProxyService {
 				return getWsdlURL();
 			case EsbPackage.PROXY_SERVICE__WSDL_KEY:
 				return getWsdlKey();
+			case EsbPackage.PROXY_SERVICE__WSDL_ENDPOINT:
+				return getWsdlEndpoint();
 			case EsbPackage.PROXY_SERVICE__WSDL_RESOURCES:
 				return getWsdlResources();
 			case EsbPackage.PROXY_SERVICE__ON_ERROR:
@@ -2136,6 +2204,9 @@ public class ProxyServiceImpl extends EsbElementImpl implements ProxyService {
 			case EsbPackage.PROXY_SERVICE__WSDL_KEY:
 				setWsdlKey((RegistryKeyProperty)newValue);
 				return;
+			case EsbPackage.PROXY_SERVICE__WSDL_ENDPOINT:
+				setWsdlEndpoint((RegistryKeyProperty)newValue);
+				return;
 			case EsbPackage.PROXY_SERVICE__WSDL_RESOURCES:
 				getWsdlResources().clear();
 				getWsdlResources().addAll((Collection<? extends ProxyWSDLResource>)newValue);
@@ -2267,6 +2338,9 @@ public class ProxyServiceImpl extends EsbElementImpl implements ProxyService {
 			case EsbPackage.PROXY_SERVICE__WSDL_KEY:
 				setWsdlKey((RegistryKeyProperty)null);
 				return;
+			case EsbPackage.PROXY_SERVICE__WSDL_ENDPOINT:
+				setWsdlEndpoint((RegistryKeyProperty)null);
+				return;
 			case EsbPackage.PROXY_SERVICE__WSDL_RESOURCES:
 				getWsdlResources().clear();
 				return;
@@ -2360,6 +2434,8 @@ public class ProxyServiceImpl extends EsbElementImpl implements ProxyService {
 				return WSDL_URL_EDEFAULT == null ? wsdlURL != null : !WSDL_URL_EDEFAULT.equals(wsdlURL);
 			case EsbPackage.PROXY_SERVICE__WSDL_KEY:
 				return wsdlKey != null;
+			case EsbPackage.PROXY_SERVICE__WSDL_ENDPOINT:
+				return wsdlEndpoint != null;
 			case EsbPackage.PROXY_SERVICE__WSDL_RESOURCES:
 				return wsdlResources != null && !wsdlResources.isEmpty();
 			case EsbPackage.PROXY_SERVICE__ON_ERROR:

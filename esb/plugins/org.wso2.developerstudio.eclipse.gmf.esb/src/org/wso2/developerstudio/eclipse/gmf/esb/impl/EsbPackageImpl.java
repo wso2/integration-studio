@@ -4825,7 +4825,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getProxyService_WsdlResources() {
+	public EReference getProxyService_WsdlEndpoint() {
 		return (EReference)proxyServiceEClass.getEStructuralFeatures().get(37);
 	}
 
@@ -4834,8 +4834,17 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getProxyService_OnError() {
+	public EReference getProxyService_WsdlResources() {
 		return (EReference)proxyServiceEClass.getEStructuralFeatures().get(38);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getProxyService_OnError() {
+		return (EReference)proxyServiceEClass.getEStructuralFeatures().get(39);
 	}
 
 	/**
@@ -18596,6 +18605,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		createEAttribute(proxyServiceEClass, PROXY_SERVICE__WSDL_XML);
 		createEAttribute(proxyServiceEClass, PROXY_SERVICE__WSDL_URL);
 		createEReference(proxyServiceEClass, PROXY_SERVICE__WSDL_KEY);
+		createEReference(proxyServiceEClass, PROXY_SERVICE__WSDL_ENDPOINT);
 		createEReference(proxyServiceEClass, PROXY_SERVICE__WSDL_RESOURCES);
 		createEReference(proxyServiceEClass, PROXY_SERVICE__ON_ERROR);
 
@@ -20943,6 +20953,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		initEAttribute(getProxyService_WsdlXML(), ecorePackage.getEString(), "wsdlXML", "<definitions/>", 0, 1, ProxyService.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getProxyService_WsdlURL(), ecorePackage.getEString(), "wsdlURL", "http://default/wsdl/url", 0, 1, ProxyService.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getProxyService_WsdlKey(), this.getRegistryKeyProperty(), null, "wsdlKey", null, 0, 1, ProxyService.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getProxyService_WsdlEndpoint(), this.getRegistryKeyProperty(), null, "wsdlEndpoint", null, 0, 1, ProxyService.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getProxyService_WsdlResources(), this.getProxyWSDLResource(), null, "wsdlResources", null, 0, -1, ProxyService.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getProxyService_OnError(), this.getRegistryKeyProperty(), null, "OnError", null, 0, 1, ProxyService.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -22733,6 +22744,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		addEEnumLiteral(proxyWsdlTypeEEnum, ProxyWsdlType.INLINE);
 		addEEnumLiteral(proxyWsdlTypeEEnum, ProxyWsdlType.SOURCE_URL);
 		addEEnumLiteral(proxyWsdlTypeEEnum, ProxyWsdlType.REGISTRY_KEY);
+		addEEnumLiteral(proxyWsdlTypeEEnum, ProxyWsdlType.ENDPOINT);
 
 		initEEnum(httpMethodTypeEEnum, HttpMethodType.class, "HttpMethodType");
 		addEEnumLiteral(httpMethodTypeEEnum, HttpMethodType.GET);

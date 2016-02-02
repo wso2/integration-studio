@@ -60,7 +60,15 @@ public enum ProxyWsdlType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	REGISTRY_KEY(3, "REGISTRY_KEY", "REGISTRY_KEY");
+	REGISTRY_KEY(3, "REGISTRY_KEY", "REGISTRY_KEY"), /**
+	 * The '<em><b>ENDPOINT</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #ENDPOINT_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	ENDPOINT(4, "ENDPOINT", "ENDPOINT");
 
 	/**
 	 * The '<em><b>NONE</b></em>' literal value.
@@ -123,6 +131,21 @@ public enum ProxyWsdlType implements Enumerator {
 	public static final int REGISTRY_KEY_VALUE = 3;
 
 	/**
+	 * The '<em><b>ENDPOINT</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>ENDPOINT</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #ENDPOINT
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int ENDPOINT_VALUE = 4;
+
+	/**
 	 * An array of all the '<em><b>Proxy Wsdl Type</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -134,6 +157,7 @@ public enum ProxyWsdlType implements Enumerator {
 			INLINE,
 			SOURCE_URL,
 			REGISTRY_KEY,
+			ENDPOINT,
 		};
 
 	/**
@@ -188,6 +212,7 @@ public enum ProxyWsdlType implements Enumerator {
 			case INLINE_VALUE: return INLINE;
 			case SOURCE_URL_VALUE: return SOURCE_URL;
 			case REGISTRY_KEY_VALUE: return REGISTRY_KEY;
+			case ENDPOINT_VALUE: return ENDPOINT;
 		}
 		return null;
 	}

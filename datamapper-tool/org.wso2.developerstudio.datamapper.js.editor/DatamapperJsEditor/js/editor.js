@@ -21,12 +21,15 @@
  * 	   }
  * 
 */
+
+var withEclipse = true;
+
 function loadFileContent() {
-	// Read contents of the file.
 	var fileContent = IDEGetFileContent();
-    //document.getElementById("editor").value = fileContent;
+	//alert('load file');
 	graph.fromJSON(JSON.parse(fileContent));
-	commandManager.reset();
+	graph.resetCells([graph.getElements(), graph.getLinks()]);
+	undoRedoHandler.reset();
 }
 
 /**
@@ -47,12 +50,14 @@ function loadFileContent() {
  *  	}
  */
 function saveFile() {
-	//var updatedContent = document.getElementById("editor").value;
-	//Save content to file.
 	var jsonString = JSON.stringify(graph);
-	
     IDESaveContent(jsonString);
-    IDESaveContentWithExtention(jsonString,"","config","dmc");
+    var sourceScript = generateLanguage();
+    var editorName = IDEGetInformation("EditorName");
+    editorName = editorName.slice(0, -3); 
+    IDESaveContentWithExtention(sourceScript, "", editorName + "_config","dmc");
+    IDESaveContentWithExtention(inputSchema,  "", editorName + "_inputSchema","avsc");
+    IDESaveContentWithExtention(outputSchema, "", editorName + "_outputSchema","avsc");
 }
 
 
@@ -60,7 +65,9 @@ function makeDirty() {
 	// Set editor status to dirty upon modifications to content.
 	// call this IDE callback when you detect changes to content
 	// within your editor.
-    IDESetDirty(true);
+	if (withEclipse) {
+		IDESetDirty(true);
+	}
 }
 
 
@@ -137,16 +144,21 @@ function execUndoableOperation(){
 	var label = "Operation " + undoOpCount;
 	var uniqueID = "OperationID"+undoOpCount;
 	
-	IDEExecUndoableOperation(label, uniqueID);
-	document.getElementById("editor").value += "\nDoing " + uniqueID;
+	if (withEclipse) {
+		IDEExecUndoableOperation(label, uniqueID);
+	//document.getElementById("editor").value += "\nDoing " + uniqueID;
+	}
 }
 
 function undoOperation(uniqueID){
-	document.getElementById("editor").value += "\nUndoing " + uniqueID;
+	//document.getElementById("editor").value += "\nUndoing " + uniqueID;
+	undoRedoHandler.undo();
+	
 }
 
 function redoOperation(uniqueID){
-	 document.getElementById("editor").value += "\nRedoing " + uniqueID;
+	 //document.getElementById("editor").value += "\nRedoing " + uniqueID;
+	undoRedoHandler.redo();
 }
 
 

@@ -112,11 +112,13 @@ public class EsbPropertySource extends PropertySource {
 			return new CustomPropertyDescriptor(object, itemPropertyDescriptor);
 		} else if(pkg.getProxyService_WsdlKey().equals(feature)){
 			return new CustomPropertyDescriptor(object, itemPropertyDescriptor);
-		} else if(pkg.getPropertyMediator_ValueExpression().equals(feature)){
+		} else if(pkg.getProxyService_WsdlEndpoint().equals(feature)){
+ 		    return new CustomPropertyDescriptor(object, itemPropertyDescriptor);
+ 	    } else if(pkg.getPropertyMediator_ValueExpression().equals(feature)){
 			return new CustomPropertyDescriptor(object, itemPropertyDescriptor);
 		}  else if(pkg.getPropertyMediator_OM().equals(feature)){
 			return new PropertyMediatorOMPropertyDescriptor(object, itemPropertyDescriptor);
-		}else if(pkg.getEventMediator_DynamicTopic().equals(feature)){
+		} else if(pkg.getEventMediator_DynamicTopic().equals(feature)){
 			return new CustomPropertyDescriptor(object, itemPropertyDescriptor);
 		} else if(pkg.getEventMediator_EventExpression().equals(feature)){
 			return new CustomPropertyDescriptor(object, itemPropertyDescriptor);

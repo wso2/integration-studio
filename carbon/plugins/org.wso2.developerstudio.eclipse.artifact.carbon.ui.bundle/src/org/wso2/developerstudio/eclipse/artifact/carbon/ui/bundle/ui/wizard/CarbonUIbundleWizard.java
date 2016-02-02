@@ -69,13 +69,13 @@ public class CarbonUIbundleWizard extends AbstractWSO2ProjectCreationWizard {
 	private static IDeveloperStudioLog log=Logger.getLog(Activator.PLUGIN_ID);
 	private String projectName="";
 	
-	public CarbonUIbundleWizard() {
-		setUibundleModel(new CarbonUiModel());
-		setModel(uibundleModel);
-		setWindowTitle(PROJECT_WIZARD_WINDOW_TITLE);
+    public CarbonUIbundleWizard() {
+        setUibundleModel(new CarbonUiModel());
+        setModel(uibundleModel);
+        setWindowTitle(PROJECT_WIZARD_WINDOW_TITLE);
         setDefaultPageImageDescriptor(CarbonUIImageUtils.getInstance()
                 .getImageDescriptor(CARBON_UI_BUNDLE_WIZARD_IMAGE));
-	}
+    }
        
     public void executeListener(){	
     	try{

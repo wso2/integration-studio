@@ -54,6 +54,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ProxyService#getWsdlXML <em>Wsdl XML</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ProxyService#getWsdlURL <em>Wsdl URL</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ProxyService#getWsdlKey <em>Wsdl Key</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ProxyService#getWsdlEndpoint <em>Wsdl Endpoint</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ProxyService#getWsdlResources <em>Wsdl Resources</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ProxyService#getOnError <em>On Error</em>}</li>
  * </ul>
@@ -1017,6 +1018,32 @@ public interface ProxyService extends EsbElement {
 	 * @generated
 	 */
 	void setWsdlKey(RegistryKeyProperty value);
+
+	/**
+	 * Returns the value of the '<em><b>Wsdl Endpoint</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Wsdl Endpoint</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Wsdl Endpoint</em>' containment reference.
+	 * @see #setWsdlEndpoint(RegistryKeyProperty)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getProxyService_WsdlEndpoint()
+	 * @model containment="true"
+	 * @generated
+	 */
+	RegistryKeyProperty getWsdlEndpoint();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.ProxyService#getWsdlEndpoint <em>Wsdl Endpoint</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Wsdl Endpoint</em>' containment reference.
+	 * @see #getWsdlEndpoint()
+	 * @generated
+	 */
+	void setWsdlEndpoint(RegistryKeyProperty value);
 
 	/**
 	 * Returns the value of the '<em><b>Wsdl Resources</b></em>' containment reference list.

@@ -533,15 +533,13 @@ public class SecurityFormPage extends FormPage {
      * This method opens a shell window which shows the description of mentioned security scenario given in the
      * parameter list.
      *
-     * @param scenarioNumber
+     * @param scenarioNumber :Id of the security scenario
      */
     private void showPolicyUseCase(int scenarioNumber) {
-
         String shellTitle = SecurityFormConstants.SHELL_WINDOW_TITLE_PREFIX + scenarioNumber;
         Shell existingShell = getExistingUseCaseShell(shellTitle);
 
         if (existingShell == null) {
-
             String fileName = SecurityFormConstants.IMAGE_PREFIX + scenarioNumber + SecurityFormConstants.IMAGE_POSTFIX;
             String relativeFilePath = SecurityFormConstants.RELATIVE_FOLDER_PATH + fileName;
             String securityScenarioTitle = getSecurityScenarioTitle(scenarioNumber);

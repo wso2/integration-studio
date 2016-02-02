@@ -7,9 +7,20 @@ function generateLanguage() {
 					+ "<%})%>"
 					+ "return <%=output%>;" + "\n" + "<%=utilityFunctions%>}");
 	var MappingOperation = _
-			.template("<%=output%> = resolveMapping(<%=input%> , <%=output%> , <%=mapperOperation%>)");
+			.template("<% if (output.search('output') == 0) { %> <%=output%><% }else{ %>var <%=output%><%}%> = resolveMapping(<%=input%> , <%=output%> , <%=mapperOperation%>)");
 
-	var utilityFunctions = "function resolveMapping(input, output, mapperOperation) {if(mapperOperation === 'directmapping'){return input;}}";
+	var utilityFunctions = "function resolveMapping(input, output, mapperOperation) {if (mapperOperation === 'directmapping') {	return input[0];"
+			+ "} else if (mapperOperation == 'Concat') {return input[0] + ' ' + input[1];	}else if (mapperOperation === 'Split'){	return input[0].split(' ');	}}"
+	/*
+	 * +"function getVariableArrayFromMap(input, variable)
+	 * {tempObj.push(input);var tempChildArray = [];var variableArray = [];var
+	 * variableParentArray = variable.split('.');"+ "var parentNum =
+	 * variableParentArray.length;for (var i = 1; i < parentNum-1; ++i) { var
+	 * arraySize = tempObj.length;"+ "for (var j = 0; j < arraySize; ++j) {var
+	 * obj = tempObj.shift()[variableParentArray[i]];for ( var element in obj)
+	 * {"+ "tempChildArray.push(obj[element]); }} tempObj =
+	 * tempChildArray;tempChildArray = [];}return tempObj;}";
+	 */
 
 	function VariableElement(name, id, value) {
 		this.name = name;
@@ -87,22 +98,37 @@ function generateLanguage() {
 		}
 		var operationString = "";
 		var opNumber = -1;
+		var inputArray = "";
+		var outputArray = "";
 		for (var index = 0; executionSeq.length > index; ++index) {
-			operationString = "[ ";
+			operationString = "";
 			opNumber = executionSeq[index];
 			var varList = outputAdjList[opNumber]
 			for (var i = 0; i < varList.length; ++i) {
-				operationString += varList[i].name + " ";
+				operationString += varList[i].name;
+				if (i < varList.length - 1) {
+					operationString += ",";
+				}
 			}
-			operationString += " ] = ";
-			operationString += operationsArray[opNumber].name + " [ ";
+			operationString += "";
+			outputArray = operationString;
+			operationString = "[";
 			varList = inputAdjList[opNumber]
 			for (var i = 0; i < varList.length; ++i) {
-				operationString += inputVariablesArray[varList[i]].name + " ";
+				operationString += inputVariablesArray[varList[i]].name;
+				if (i < varList.length - 1) {
+					operationString += ",";
+				}
 			}
-			operationString += " ]";
+			operationString += "]";
+			inputArray = operationString;
 			console.log(operationString);
 			directMappingOutput += operationString + "\n";
+			mappings.push(MappingOperation({
+				input : inputArray,
+				output : outputArray,
+				mapperOperation : "'" + operationsArray[opNumber].name + "'"
+			}));
 		}
 
 		return MainFunctionTemplate({
@@ -338,7 +364,7 @@ function generateLanguage() {
 		if (parentsLength > 2) {
 			var tempPrefix = "";
 			tempPrefix = ancestorArray[0].get("attrs")['.label'].text;
-			for (var index = 2; index < parentsLength - 1; ++index) {
+			for (var index = 1; index < parentsLength - 2; ++index) {
 				tempPrefix = ancestorArray[index].get("attrs")['.label'].text
 						+ "." + tempPrefix;
 			}

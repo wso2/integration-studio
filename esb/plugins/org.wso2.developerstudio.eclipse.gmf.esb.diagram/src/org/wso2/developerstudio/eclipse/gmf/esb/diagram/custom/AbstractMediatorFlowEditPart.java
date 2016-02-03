@@ -22,6 +22,7 @@ import java.util.List;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeNodeEditPart;
 import org.eclipse.gmf.runtime.notation.View;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.SwitchDefaultBranchOutputConnectorEditPart;
 
 public abstract class AbstractMediatorFlowEditPart extends ShapeNodeEditPart {
 
@@ -51,27 +52,27 @@ public abstract class AbstractMediatorFlowEditPart extends ShapeNodeEditPart {
 	 */
 	protected AdditionalOutputConnector getAddtionalOutputConnector(ShapeNodeEditPart ContainerEditPart,
 			complexFiguredAbstractMediator complexFiguredAbstractMediator) {
-		List<AdditionalOutputConnector> targetOutputConnectorList = new ArrayList<AdditionalOutputConnector>();
 		List<EditPart> children = complexFiguredAbstractMediator.getChildren();
 		List<EditPart> targetlist = ContainerEditPart.getChildren();
-		int targetIndex = 0;
-		for (int x = 0; x < targetlist.size(); ++x) {
-			if (targetlist.get(x).equals(this.getParent())) {
-				targetIndex = x;
-			}
-		}
-		for (int i = 0; i < children.size(); ++i) {
-			if (children.get(i) instanceof AdditionalOutputConnector) {
-				// Include all the target output connectors to a list
-				AdditionalOutputConnector cloneMediatorTargetOutputConnectorEditPart = (AdditionalOutputConnector) children
-						.get(i);
-				targetOutputConnectorList.add(cloneMediatorTargetOutputConnectorEditPart);
-			}
-		}
-		// Gets the relevant target output connector which matches with the
-		// target container
-		AdditionalOutputConnector relevantTargetOutputConnector = targetOutputConnectorList.get(targetIndex);
-		return relevantTargetOutputConnector;
-	}
+        int targetIndex = 0;
+        for (EditPart containerEditPart : targetlist) {
+            if (containerEditPart.equals(this.getParent())) {
+                targetIndex = targetlist.indexOf(containerEditPart);
+            }
+        }
+        int tempTargetIndexCount = 0;
+        for (EditPart outputConnectorEditPart : children) {
+            if (outputConnectorEditPart instanceof AdditionalOutputConnector
+                    && !(outputConnectorEditPart instanceof SwitchDefaultBranchOutputConnectorEditPart)) {
+                // Include all the target output connectors to a list
+                if (tempTargetIndexCount == targetIndex) {
+                    return (AdditionalOutputConnector) outputConnectorEditPart;
+                }
+                tempTargetIndexCount++;
+            }
+        }
+        throw new IllegalArgumentException("Matching AdditionalOutputConnector is not found for given container : "
+                + this.getParent().toString());
+    }
 
 }

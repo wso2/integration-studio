@@ -30,6 +30,7 @@ import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.debug.core.DebugException;
 import org.eclipse.debug.core.model.IVariable;
 import org.eclipse.e4.core.services.events.IEventBroker;
+import org.eclipse.jface.window.Window;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
 import org.osgi.service.event.Event;
@@ -79,10 +80,14 @@ public class PropertyChangeCommandHandler extends AbstractHandler implements Eve
         String commandId = handlerEvent.getCommand().getId();
         if (ESB_MESSAGE_MEDIATION_PROPERTY_INJECT_COMMAND_ID.equals(commandId)) {
             Shell shell = new Shell();
-            InjectPropertyDialog dialog = new InjectPropertyDialog(shell);
-            PropertyChangeCommand propertyCommandMessage = dialog.open();
-            if (propertyCommandMessage.getContext() != null) {
-                propertyChangeCommandEB.send(ESB_STACK_FRAME_PROPERTY_CHANGE_EVENT, propertyCommandMessage);
+            InjectPropertyDialog injectPropertyDialog = new InjectPropertyDialog(shell);
+            injectPropertyDialog.create();
+            PropertyChangeCommand propertyCommandMessage = null;
+            if (injectPropertyDialog.open() == Window.OK) {
+                propertyCommandMessage = injectPropertyDialog.getCommandMessage();
+                if (propertyCommandMessage.getContext() != null) {
+                    propertyChangeCommandEB.send(ESB_STACK_FRAME_PROPERTY_CHANGE_EVENT, propertyCommandMessage);
+                }
             }
             disposeEventBroker();
         } else if (ESB_MESSAGE_MEDIATION_PROPERTY_CLEAR_COMMAND_ID.equals(commandId)) {
@@ -107,16 +112,21 @@ public class PropertyChangeCommandHandler extends AbstractHandler implements Eve
         if (eventObject instanceof List) {
             variables = (List<IVariable>) eventObject;
             Shell shell = new Shell();
-            ClearPropertyDialog dialog = null;
+            ClearPropertyDialog clearPropertyDialog = null;
             try {
-                dialog = new ClearPropertyDialog(shell, variables);
+                clearPropertyDialog = new ClearPropertyDialog(shell, variables);
+                clearPropertyDialog.create();
             } catch (DebugException e) {
                 log.error("Error while opening Property clear window : " + e.getMessage(), e);
             }
-            PropertyChangeCommand propertyCommandMessage = dialog.open();
-            if (propertyCommandMessage.getContext() != null) {
-                propertyChangeCommandEB.send(ESB_STACK_FRAME_PROPERTY_CHANGE_EVENT, propertyCommandMessage);
+            PropertyChangeCommand propertyCommandMessage = null;
+            if (clearPropertyDialog.open() == Window.OK) {
+                propertyCommandMessage = clearPropertyDialog.getCommandMessage();
+                if (propertyCommandMessage.getContext() != null) {
+                    propertyChangeCommandEB.send(ESB_STACK_FRAME_PROPERTY_CHANGE_EVENT, propertyCommandMessage);
+                }
             }
+
         } else {
             log.warn("Unhandled Event type recived for ESBStackFrame : " + eventObject.toString());
         }

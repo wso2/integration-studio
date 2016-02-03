@@ -15,17 +15,9 @@
  */
 package org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.model;
 
-import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.AXIS2_CLIENT_PROPERTIES_KEY;
-import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.AXIS2_CLIENT_PROPERTIES_TAG;
-import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.AXIS2_PROPERTIES_KEY;
-import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.AXIS2_PROPERTIES_TAG;
-import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.OPERATION_PROPERTIES_KEY;
-import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.OPERATION_PROPERTIES_TAG;
-import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.SYNAPSE_PROPERTIES_KEY;
-import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.SYNAPSE_PROPERTIES_TAG;
-import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.TRANSPORT_PROPERTIES_KEY;
 import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.*;
 
+import org.eclipse.debug.core.DebugEvent;
 import org.eclipse.debug.core.DebugException;
 import org.eclipse.debug.core.model.IDebugTarget;
 import org.eclipse.debug.core.model.IValue;
@@ -109,6 +101,12 @@ public class ESBVariable extends ESBDebugElement implements IVariable {
                 getPropertyContextNameOfUIPropertyName(variableContext), property);
         PropertyChangeRequest propertyChangeRequest = new PropertyChangeRequest(propertyCommand);
         getDebugTarget().fireModelEvent(propertyChangeRequest);
+        try {
+            setValue(modifiedValue);
+            this.fireChangeEvent(DebugEvent.CONTENT);
+        } catch (DebugException e) {
+            log.error("Error while updating modified variable value in variable table", e);
+        }
         return true;
     }
 
@@ -150,15 +148,15 @@ public class ESBVariable extends ESBDebugElement implements IVariable {
     private String getPropertyContextNameOfUIPropertyName(String name) {
         switch (name) {
         case AXIS2_PROPERTIES_TAG:
-            return AXIS2_PROPERTIES_KEY;
+            return AXIS2_PROPERTY_TAG;
         case AXIS2_CLIENT_PROPERTIES_TAG:
-            return AXIS2_CLIENT_PROPERTIES_KEY;
+            return AXIS2_CLIENT_PROPERTY_TAG;
         case SYNAPSE_PROPERTIES_TAG:
-            return SYNAPSE_PROPERTIES_KEY;
+            return SYANPSE_PROPERTY_TAG;
         case TRANSPORT_PROPERTIES_TAG:
-            return TRANSPORT_PROPERTIES_KEY;
+            return TRANSPORT_PROPERTY_TAG;
         case OPERATION_PROPERTIES_TAG:
-            return OPERATION_PROPERTIES_KEY;
+            return OPERATION_PROPERTY_TAG;
         }
         return name;
     }

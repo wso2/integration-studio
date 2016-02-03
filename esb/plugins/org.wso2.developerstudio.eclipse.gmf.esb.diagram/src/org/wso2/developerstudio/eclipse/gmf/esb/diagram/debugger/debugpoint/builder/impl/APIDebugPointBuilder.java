@@ -133,27 +133,27 @@ public class APIDebugPointBuilder extends AbstractESBDebugPointBuilder {
         EList<APIResource> apiResources = api.getResources();
         APIResource apiResource = getAPIResourceFromAPIEditPart(apiResources, apiContainer);
         List<Integer> position = new ArrayList<>();
-        List<ESBDebugPoint> breakpontList = new ArrayList<>();
+        List<ESBDebugPoint> breakpointList = new ArrayList<>();
         if (proxyContainer instanceof ProxyServiceSequenceAndEndpointContainerEditPart) {
             if (abstractMediator.reversed) {
                 position = getMediatorPosition(apiResource.getOutSequenceOutputConnector(), abstractMediator);
-                breakpontList = getDebugPointsRelatedToModification(resource, position, API_OUTSEQ_LABEL, action);
+                breakpointList = getDebugPointsRelatedToModification(resource, position, API_OUTSEQ_LABEL, action);
             } else {
                 position = getMediatorPosition(apiResource.getOutputConnector(), abstractMediator);
-                breakpontList = getDebugPointsRelatedToModification(resource, position, API_INSEQ_LABEL, action);
+                breakpointList = getDebugPointsRelatedToModification(resource, position, API_INSEQ_LABEL, action);
             }
         } else if (proxyContainer instanceof ProxyServiceFaultContainerEditPart) {
             position = getMediatorPositionInFaultSeq(apiResource.getContainer().getFaultContainer().getMediatorFlow()
                     .getChildren(), abstractMediator);
-            breakpontList = getDebugPointsRelatedToModification(resource, position, API_FAULTSEQ_LABEL, action);
+            breakpointList = getDebugPointsRelatedToModification(resource, position, API_FAULTSEQ_LABEL, action);
         } else {
             throw new IllegalArgumentException("Selected Metdiator Edit Part is in a unknown position : "
                     + proxyContainer.toString());
         }
         if (MEDIATOR_INSERT_ACTION.equalsIgnoreCase(action)) {
-            increaseBreakpointPosition(breakpontList, position);
+            increaseBreakpointPosition(breakpointList, position);
         } else {
-            decreaseBreakpointPosition(breakpontList, position);
+            decreaseBreakpointPosition(breakpointList, position);
         }
     }
 }

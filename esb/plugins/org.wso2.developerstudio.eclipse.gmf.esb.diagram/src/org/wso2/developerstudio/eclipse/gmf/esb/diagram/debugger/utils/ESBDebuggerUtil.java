@@ -267,7 +267,7 @@ public class ESBDebuggerUtil {
         case SEQUENCE:
             return getSequenceTypeDebugPoint(event, recievedArtifactInfo);
         default:
-            throw new IllegalArgumentException("Illegal Artifacr type for create debug point " + debugPointType);
+            throw new IllegalArgumentException("Illegal Artifact type for create debug point " + debugPointType);
         }
 
     }
@@ -365,7 +365,8 @@ public class ESBDebuggerUtil {
                 ArtifactType type = null;
                 EsbServer esbServer = null;
                 for (IEditorReference iEditorReference : references) {
-                    if (((FileEditorInput) iEditorReference.getEditorInput()).getFile().equals(resource)) {
+                    if (iEditorReference.getEditorInput() instanceof FileEditorInput
+                            && ((FileEditorInput) iEditorReference.getEditorInput()).getFile().equals(resource)) {
                         IEditorPart multipageEditor = iEditorReference.getEditor(true);
                         if (multipageEditor != null) {
                             Diagram diagram = ((EsbMultiPageEditor) (multipageEditor)).getDiagram();

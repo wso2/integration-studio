@@ -35,6 +35,7 @@ import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.events.TraverseEvent;
 import org.eclipse.swt.events.TraverseListener;
 import org.eclipse.swt.layout.GridData;
@@ -63,6 +64,7 @@ public class DetailSectionUiUtil {
 	EditingDomain editingDomain;
 	private String existingRoleVal;
 	private String existingPolicyKey;
+	private String SELECT_VALUE = "Select a Value";
 
 	public DetailSectionUiUtil(DataService dataService,
 			EditingDomain editingDomain) {
@@ -93,11 +95,13 @@ public class DetailSectionUiUtil {
 		addFocusListner(combo);
 
 		toolkit.adapt(combo, true, true);
+		
+		if (displayValues.length > 1) {
+			for (int i = 0; i < displayValues.length; i++) {
 
-		for (int i = 0; i < displayValues.length; i++) {
-
-			if (displayValues[i] != null)
-				combo.add(displayValues[i], i);
+				if (displayValues[i] != null)
+					combo.add(displayValues[i], i);
+			}
 		}
 		if (initialValue != null && !initialValue.equals("")) {
 
@@ -118,26 +122,7 @@ public class DetailSectionUiUtil {
 		}
 
 		if (input != null && metaObject != null) {
-
-			//Fixing TOOLS-3336
-			if (displayValues.length > 0) {		
-				if (initialValue != null && !initialValue.equals("")) {
-					for (int j = 0; j < displayValues.length; j++) {
-						if (displayValues[j] != null) {
-							//Sets the attribute value to the user selected value
-							if (initialValue.equals(displayValues[j])) {
-								setStringAttribute(input, metaObject, initialValue);
-								break;
-							}
-						}
-					}
-				}else{
-					//Sets the attribute value to default value at the initial opening
-					setStringAttribute(input, metaObject, displayValues[0]);
-				}		
-			}
-			addModifyListnerForCustomComboFields(combo, input, metaObject);
-
+			addSelectionListnerForCustomComboFields(combo, input, metaObject);
 		}
 
 		return combo;
@@ -652,17 +637,27 @@ public class DetailSectionUiUtil {
 			}
 		});
 	}
+	
+	
+	
 
-	private void addModifyListnerForCustomComboFields(final Combo combo,
+	public void addSelectionListnerForCustomComboFields(final Combo combo,
 			final Object input, final EAttribute metaObject) {
-
-		combo.addModifyListener(new ModifyListener() {
-
-			public void modifyText(ModifyEvent e) {
-
+		
+		combo.addSelectionListener(new SelectionListener() {
+			
+			@Override
+			public void widgetSelected(SelectionEvent arg0) {
 				setStringAttribute(input, metaObject,
 						combo.getItem(combo.getSelectionIndex()));
-
+				
+			}
+			
+			@Override
+			public void widgetDefaultSelected(SelectionEvent arg0) {
+				setStringAttribute(input, metaObject,
+						combo.getItem(combo.getSelectionIndex()));
+				
 			}
 		});
 
@@ -810,7 +805,7 @@ public class DetailSectionUiUtil {
 		/*
 		 * Fixing TOOLS-2068
 		 */
-		if ("".equals(text)) {
+		if ("".equals(text) || text.equals(SELECT_VALUE)) {
 			text = null;
 			// FIXME remove parameter from the model when the value is null
 			RemoveCommand rootRemCmd = new RemoveCommand(editingDomain,

@@ -1,0 +1,14 @@
+
+/* Adjust the height of section */
+#profileForm .content {
+    min-height: 100px;
+}
+#profileForm .content > .body {
+    width: 100%;
+    height: auto;
+    padding: 15px;
+    position: relative;
+}
+#profileForm .steps .number{
+	display: none;
+}

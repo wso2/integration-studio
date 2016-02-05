@@ -16,7 +16,13 @@ Bundle-ActivationPolicy: lazy
 Bundle-ClassPath: .
 Import-Package: org.apache.avro.generic,
  org.apache.avro.io,
+ org.codehaus.jettison.json,
  org.wso2.datamapper.engine.core,
  org.wso2.datamapper.engine.inputAdapters,
  org.wso2.datamapper.engine.outputAdapters,
+ org.wso2.developerstudio.eclipse.artifact.analytics.ui.wizard,
+ org.wso2.developerstudio.eclipse.platform.core.exception;version="4.0.0",
+ org.wso2.developerstudio.eclipse.platform.core.model;version="4.0.0",
+ org.wso2.developerstudio.eclipse.platform.core.project.model;version="4.0.0",
+ org.wso2.developerstudio.eclipse.platform.ui.wizard;version="4.0.0",
  org.wso2.developerstudio.eclipse.webui.core.editor;version="4.0.0"

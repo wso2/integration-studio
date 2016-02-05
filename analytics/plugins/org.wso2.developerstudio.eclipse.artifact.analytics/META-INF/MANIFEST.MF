@@ -34,4 +34,5 @@ Import-Package: org.apache.axiom.om,
  org.wso2.developerstudio.eclipse.utils.project;version="[4.0.0,4.1.0)",
  org.wso2.developerstudio.eclipse.utils.template;version="[4.0.0,4.1.0)",
  org.wso2.developerstudio.eclipse.utils.ui;version="[4.0.0,4.1.0)"
-Export-Package: org.wso2.developerstudio.eclipse.artifact.analytics.utils
+Export-Package: org.wso2.developerstudio.eclipse.artifact.analytics.ui.wizard,
+ org.wso2.developerstudio.eclipse.artifact.analytics.utils

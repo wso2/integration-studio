@@ -1,0 +1,156 @@
+<html>
+<head lang="en">
+<meta charset="UTF-8">
+<title>Dash Board</title>
+<script src="js/libs/jointjs/jquery.min.js"></script>
+<script src="js/libs/jointjs/bootstrap.min.js"></script>
+<script src="js/libs/jquery.steps.min.js"></script>
+<script src="js/dialog.js"></script>
+<link rel="stylesheet" href="css/jquery.steps.css">
+<link rel="stylesheet" href="css/dialog.css">
+<link rel="stylesheet" href="css/bootstrap.css">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+
+
+<body>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-8">
+				<div class="well">WSO2 Developer Studio</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4">
+			<div class="well">
+					Analytics
+					<ul style="list-style-type: none">
+						<li><a href="javascript:createNewProject()">Data Analytics Project</a> </li>
+					</ul>
+				</div>
+				<div class="well">
+					Application Server
+					<ul style="list-style-type: none">
+						<li><a href="http://www.google.com">Axis2 Service Project</a></li>
+						<li><a href="http://www.google.com">Web Application</a></li>
+						<li><a href="http://www.google.com">JAX-WS Service
+								Project</a></li>
+						<li><a href="http://www.google.com">JAX-RS Service
+								Project</a></li>
+					</ul>
+				</div>
+				<div class="well">
+					Enterprice Service Bus
+					<ul style="list-style-type: none">
+						<li><a href="http://www.google.com">ESB Config Project</a></li>
+						<li><a href="http://www.google.com">Proxy Service</a></li>
+						<li><a href="http://www.google.com">REST API</a></li>
+						<li><a href="http://www.google.com">Local Entry</a></li>
+						<li><a href="http://www.google.com">Sequence</a></li>
+						<li><a href="http://www.google.com">Endpoint</a></li>
+						<li><a href="http://www.google.com">Mediator Project</a></li>
+						<li><a href="http://www.google.com">Message Store</a></li>
+						<li><a href="http://www.google.com">Message Processor</a></li>
+						<li><a href="http://www.google.com">Task</a></li>
+					</ul>
+				</div>
+				<div class="well">
+					Governance Registry
+					<ul style="list-style-type: none">
+						<li><a href="http://www.google.com">Registry Resources
+								Project</a></li>
+						<li><a href="http://www.google.com">Registry Filter
+								Project</a></li>
+						<li><a href="http://www.google.com">Registry Resource</a></li>
+						<li><a href="http://www.google.com">Registry Handler
+								Project</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="row">
+					<div class="well">
+						Distribution
+						<ul style="list-style-type: none">
+							<li><a href="http://www.google.com">Composite
+									Application Project</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="row">
+					<div class="well">
+						Samples
+						<ul style="list-style-type: none">
+							<li><a href="http://www.google.com">Axis2 Service
+									Project</a></li>
+							<li><a href="http://www.google.com">Proxy Service</a></li>
+							<li><a href="http://www.google.com">ESB Project</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+			<div class="modal fade" id="welcomeModal" tabindex="-1" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<h4 class="modal-title">Create New Project</h4>
+					</div>
+					<div class="modal-body">
+						<div id="formDiv" class="modal-body">
+							<form id="profileForm" method="post" class="form-horizontal">
+								<h2>Project Information</h2>
+								<section data-step="0">
+									<div class="form-group">
+										<label class="col-xs-3 control-label">Project Name</label>
+										<div class="col-xs-5">
+											<input type="text" class="form-control" name="projectName" />
+										</div>
+									</div>
+
+									<div class="form-group">
+										<label class="col-xs-3 control-label">Location</label>
+										<div class="col-xs-5">
+											<input type="text" class="form-control" name="location" />
+										</div>
+									</div>
+								</section>
+
+								<h2>Maven Information</h2>
+								<section data-step="1">
+									<div class="form-group">
+										<label class="col-xs-3 control-label">Group ID</label>
+										<div class="col-xs-5">
+											<input type="text" class="form-control" name="groupID" />
+										</div>
+									</div>
+
+									<div class="form-group">
+										<label class="col-xs-3 control-label">Artifact ID</label>
+										<div class="col-xs-5">
+											<input type="text" class="form-control" name="artifactID" />
+										</div>
+									</div>
+
+									<div class="form-group">
+										<label class="col-xs-3 control-label">Version</label>
+										<div class="col-xs-5">
+											<input type="text" class="form-control" name="version" />
+										</div>
+									</div>
+								</section>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	
+</body>
+</html>

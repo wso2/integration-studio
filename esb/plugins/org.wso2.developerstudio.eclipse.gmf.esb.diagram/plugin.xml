@@ -111,6 +111,19 @@
             name="ESB Debugpoint">
       </breakpoint>
    </extension>
+   <extension 
+   point="org.eclipse.ui.views">
+      <category
+            id="org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.envelope"
+            name="%debugger.envelope.view.category">
+      </category>
+      <view
+            category="org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.envelope"
+            class="org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.ui.views.EnvelopeView"
+            id="org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.envelope.view"
+            name="%debugger.envelope.view.name">
+      </view>
+</extension>
    <extension point="org.eclipse.team.core.fileTypes" id="repo-ftype">
       <?gmfgen generated="true"?>
       <fileTypes type="text" extension="esb_diagram"/>

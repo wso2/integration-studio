@@ -188,4 +188,7 @@ public class ESBDebuggerConstants {
     public static final String ESB_MESSAGE_MEDIATION_PROPERTY_CLEAR_COMMAND_ID = "org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.ui.commands.ClearProperty";
 
     public static final String MEDIATOR_IN_A_UNKNOWN_POSITION_LOG_MESSAGE = "Selected Metdiator Edit Part is in a unknown position : ";
+
+    public static final String MESSAGE_ENVELOPE_VIEW_PRIMARY_ID = "org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.envelope.view";
+    public static final String MESSAGE_ENVELOPE_VIEW_SECONDARY_ID = "org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.envelope.view.secondary";
 }

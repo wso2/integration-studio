@@ -21,11 +21,13 @@ import org.eclipse.osgi.util.NLS;
 public class Messages extends NLS {
     private static final String BUNDLE_NAME = "org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.messages"; //$NON-NLS-1$
     public static String ClearPropertyDialog_CancelButtonText;
+    public static String ClearPropertyDialog_Description;
     public static String ClearPropertyDialog_MessageMediationPropertyClearShellTitle;
     public static String ClearPropertyDialog_OkButtonText;
     public static String ClearPropertyDialog_PropertContextLabel;
     public static String ClearPropertyDialog_PropertyKeyDefaultMessage;
     public static String ClearPropertyDialog_PropertyNameLabel;
+    public static String ClearPropertyDialog_ShellTitle;
     public static String DebuggerConfigTab_CommandPortLabel;
     public static String DebuggerConfigTab_EventPortLabel;
     public static String DebuggerConfigTab_IntegerPortValueValidationErrorMessage;
@@ -46,6 +48,7 @@ public class Messages extends NLS {
     public static String ESBStackFrame_SynapseScopePropertyTag;
     public static String ESBStackFrame_TransportScopePropertyTag;
     public static String InjectPropertyDialog_CancelButtonLabel;
+    public static String InjectPropertyDialog_Description;
     public static String InjectPropertyDialog_OkButtonLabel;
     public static String InjectPropertyDialog_PropertNameLabel;
     public static String InjectPropertyDialog_PropertyContextLabel;

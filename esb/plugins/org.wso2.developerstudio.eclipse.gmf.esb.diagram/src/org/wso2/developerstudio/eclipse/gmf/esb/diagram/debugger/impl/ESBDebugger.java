@@ -158,7 +158,6 @@ public class ESBDebugger implements IESBDebugger, EventHandler {
 
     @Override
     public void notifyResponce(IResponseMessage responseMessage) {
-
         if (responseMessage instanceof CommandResponseMessage) {
             CommandResponseMessage response = (CommandResponseMessage) responseMessage;
             if (StringUtils.isNotEmpty(response.getFailedReason())) {
@@ -167,17 +166,14 @@ public class ESBDebugger implements IESBDebugger, EventHandler {
         } else if (responseMessage instanceof PropertyRespondMessage) {
             fireEvent(new PropertyRecievedEvent((PropertyRespondMessage) responseMessage));
         }
-
     }
 
     @Override
     public void notifyEvent(IEventMessage event) {
-
         if (event instanceof DebugPointEventMessage) {
             if (((DebugPointEventMessage) event).getEvent() == EventMessageType.BREAKPOINT) {
                 fireSuspendedEvent((DebugPointEventMessage) event);
             }
-
         } else if (event instanceof SpecialCoordinationEventMessage) {
             SpecialCoordinationEventMessage cordinationMessage = (SpecialCoordinationEventMessage) event;
             log.info("Event : " + cordinationMessage.getEvent().toString() + " , Message-Reciever : "

@@ -80,7 +80,6 @@ public class ESBStackFrame extends ESBDebugElement implements IStackFrame, Event
             variablesDirty = false;
             getDebugTarget().fireModelEvent(new FetchVariablesRequest());
         }
-
         return variables.toArray(new IVariable[variables.size()]);
     }
 
@@ -119,7 +118,6 @@ public class ESBStackFrame extends ESBDebugElement implements IStackFrame, Event
     }
 
     public void setVariables(PropertyRespondMessage propertyRespondMessage) throws DebugException {
-
         String name = propertyRespondMessage.getScope();
         boolean processed = false;
         for (IVariable variable : variables) {

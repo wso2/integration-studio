@@ -90,6 +90,7 @@ public class DetailSection {
 	private DetailSectionUiUtil sectionUtil;
 	private EditingDomain editingDomain;
 	private DataService dataService;
+	private String SELECT_VALUE = "Select a Value";
 
 	private Combo paramTypeCombo = null;
 	private Label queryParamLabel = null;
@@ -426,13 +427,12 @@ public class DetailSection {
 
 			final Query[] q = queryList.toArray(new Query[0]);
 
-			String[] displayValues = new String[q.length];
-
-			for (int i = 0; i < q.length; i++) {
-
-				displayValues[i] = q[i].getId();
+			// Adds a select value to the combo box
+			String[] displayValues = new String[q.length + 1];
+			displayValues[0] = SELECT_VALUE;
+			for (int j = 1; j < displayValues.length; j++) {
+					displayValues[j] = q[j - 1].getId();
 			}
-
 			voidMaker();
 			voidMaker();
 
@@ -932,12 +932,11 @@ public class DetailSection {
 					DataSourceConfiguration[] confArr = configList
 							.toArray(new DataSourceConfiguration[0]);
 
-					String[] displayValues = new String[confArr.length];
-
-					for (int j = 0; j < confArr.length; j++) {
-
-						displayValues[j] = confArr[j].getId();
-
+					// Adds a select value to the combo box
+					String[] displayValues = new String[confArr.length + 1];
+					displayValues[0] = SELECT_VALUE;
+					for (int j = 1; j < displayValues.length; j++) {
+							displayValues[j] = confArr[j - 1].getId();
 					}
 
 					labelMaker(displayName);
@@ -961,13 +960,12 @@ public class DetailSection {
 					EventTrigger[] eventArr = eventList
 							.toArray(new EventTrigger[0]);
 
-					String[] displayValues = new String[eventArr.length];
-
-					for (int j = 0; j < eventArr.length; j++) {
-
-						displayValues[j] = eventArr[j].getId();
+					// Adds a select value to the combo box
+					String[] displayValues = new String[eventArr.length + 1];
+					displayValues[0] = SELECT_VALUE;
+					for (int j = 1; j < displayValues.length; j++) {
+							displayValues[j] = eventArr[j - 1].getId();
 					}
-
 					labelMaker(displayName);
 
 					sectionUtil.getCustomComboField(detailsclient, toolkit,
@@ -987,11 +985,11 @@ public class DetailSection {
 					EventTrigger[] eventArr = eventList
 							.toArray(new EventTrigger[0]);
 
-					String[] displayValues = new String[eventArr.length];
-
-					for (int j = 0; j < eventArr.length; j++) {
-
-						displayValues[j] = eventArr[j].getId();
+					// Adds a select value to the combo box
+					String[] displayValues = new String[eventArr.length + 1];
+					displayValues[0] = SELECT_VALUE;
+					for (int j = 1; j < displayValues.length; j++) {
+							displayValues[j] = eventArr[j - 1].getId();
 					}
 
 					labelMaker(displayName);
@@ -1228,7 +1226,7 @@ public class DetailSection {
 		// ///////////////////////////////////////////////////
 		if (!makeItComplex) {
 			String initialVal = "";
-			String[] typeCombodisplayValues = {
+			String[] typeCombodisplayValues = {SELECT_VALUE,
 					DetailSectionCustomUiConstants.PARAM_MAPPING_COMBO_VAL_0,
 					DetailSectionCustomUiConstants.PARAM_MAPPING_COMBO_VAL_1 };
 
@@ -1412,7 +1410,7 @@ public class DetailSection {
 					.equals(DetailSectionCustomUiConstants.ELEMENT_MAPPING_EXPORT_TYPE)) {
 				if (!makeItComplex) {
 					labelMaker(DetailSectionCustomUiConstants.ELEMENT_MAPPING_EXPORT_TYPE);
-					String[] displayValues = { "SCALAR", "ARRAY" };
+					String[] displayValues = { SELECT_VALUE,"SCALAR", "ARRAY" };
 					sectionUtil.getCustomComboField(detailsclient, toolkit,
 							element, element.getExportType(),
 							DsPackage.eINSTANCE.getElementMapping_ExportType(),
@@ -1425,7 +1423,7 @@ public class DetailSection {
 			if (displayName
 					.equals(DetailSectionCustomUiConstants.ELEMENT_MAPPING_SCHEMA_TYPE)) {
 				if (!makeItComplex) {
-					String[] displayValues = { "xs:string", "xs:integer",
+					String[] displayValues = { SELECT_VALUE,"xs:string", "xs:integer",
 							"xs:boolean", "xs:float", "xs:double",
 							"xs:decimal", "xs:dateTime", "xs:time", "xs:date",
 							"xs:long", "xs:base64Binary" };
@@ -1578,7 +1576,7 @@ public class DetailSection {
 			if (displayName
 					.equals(DetailSectionCustomUiConstants.ELEMENT_MAPPING_SCHEMA_TYPE)) {
 
-				String[] displayValues = { "xs:string", "xs:integer",
+				String[] displayValues = { SELECT_VALUE,"xs:string", "xs:integer",
 						"xs:boolean", "xs:float", "xs:double", "xs:decimal",
 						"xs:dateTime", "xs:time", "xs:date", "xs:long",
 						"xs:base64Binary" };
@@ -1675,7 +1673,7 @@ public class DetailSection {
 					.equals(DetailSectionCustomUiConstants.QUERY_PARAM_TYPE)) {
 
 				labelMaker(DetailSectionCustomUiConstants.QUERY_PARAM_TYPE);
-				String[] displayValues = { "SCALAR", "ARRAY" };
+				String[] displayValues = { SELECT_VALUE,"SCALAR", "ARRAY" };
 				Combo paramTypeCombo = sectionUtil.getCustomComboField(
 						detailsclient, toolkit, queryParam,
 						queryParam.getParamType(),
@@ -1689,7 +1687,7 @@ public class DetailSection {
 			if (displayName
 					.equals(DetailSectionCustomUiConstants.QUERY_PARAM_SQL_TYPE)) {
 
-				String[] displayValues = { "STRING", "INTEGER", "REAL",
+				String[] displayValues = { SELECT_VALUE, "STRING", "INTEGER", "REAL",
 						"DOUBLE", "NUMERIC", "TINYINT", "SMALLINT", "BIGINT",
 						"DATE", "TIME", "TIMESTAMP", "BIT",
 						"ORACLE_REF_CURSOR", "BINARY" };
@@ -1720,7 +1718,7 @@ public class DetailSection {
 			if (displayName
 					.equals(DetailSectionCustomUiConstants.QUERY_PARAM_IN_OUT)) {
 
-				String[] displayValues = { "IN", "OUT" };
+				String[] displayValues = { SELECT_VALUE,"IN", "OUT" };
 				labelMaker(DetailSectionCustomUiConstants.QUERY_PARAM_IN_OUT);
 				String intialValue = queryParam.getType();
 
@@ -1967,7 +1965,7 @@ public class DetailSection {
 		voidMaker();
 
 		String initialVal = "";
-		String[] displayValues = {
+		String[] displayValues = {SELECT_VALUE,
 				DetailSectionCustomUiConstants.PARAM_MAPPING_COMBO_VAL_0,
 				DetailSectionCustomUiConstants.PARAM_MAPPING_COMBO_VAL_1 };
 
@@ -2141,7 +2139,7 @@ public class DetailSection {
 				if (displayName
 						.equals(DetailSectionCustomUiConstants.RESOURCE_METHOD)) {
 
-					String[] displayValues = { "GET", "PUT", "POST", "DELETE" };
+					String[] displayValues = { SELECT_VALUE,"GET", "PUT", "POST", "DELETE" };
 					labelMaker(DetailSectionCustomUiConstants.RESOURCE_METHOD);
 					sectionUtil.getCustomComboField(detailsclient, toolkit,
 							resource, resource.getMethod(),

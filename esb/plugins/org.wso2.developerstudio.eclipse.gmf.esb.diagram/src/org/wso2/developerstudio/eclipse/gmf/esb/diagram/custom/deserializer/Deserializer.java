@@ -80,7 +80,6 @@ import org.apache.synapse.config.xml.endpoints.EndpointFactory;
 import org.apache.synapse.config.xml.endpoints.TemplateEndpointFactory;
 import org.apache.synapse.config.xml.endpoints.TemplateFactory;
 import org.apache.synapse.config.xml.endpoints.WSDLEndpointFactory;
-import org.apache.synapse.config.xml.inbound.InboundEndpointFactory;
 import org.apache.synapse.task.TaskDescription;
 import org.apache.synapse.task.TaskDescriptionFactory;
 import org.apache.synapse.config.xml.MessageStoreFactory;
@@ -364,7 +363,7 @@ public class Deserializer {
 			artifacts.put(messageProcessor.getName(), messageProcessor);
 			break;
 		case INBOUND_ENDPOINT:
-			InboundEndpoint inboundEndpoint= InboundEndpointFactory.createInboundEndpoint(element,null);
+			InboundEndpoint inboundEndpoint= InboundEndpointExtFactory.createInboundEndpointDev(element);
 			artifacts.put(inboundEndpoint.getName(), inboundEndpoint);
 			break;
 		default:

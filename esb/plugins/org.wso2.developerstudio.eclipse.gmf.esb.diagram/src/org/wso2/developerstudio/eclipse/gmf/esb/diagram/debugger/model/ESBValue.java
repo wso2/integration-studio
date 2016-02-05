@@ -15,6 +15,10 @@
  */
 package org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.model;
 
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.MESSAGE_ENVELOPE_VIEW_PRIMARY_ID;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.MESSAGE_ENVELOPE_VIEW_SECONDARY_ID;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.VARIABLE_TYPE;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map.Entry;
@@ -25,8 +29,15 @@ import org.eclipse.debug.core.DebugException;
 import org.eclipse.debug.core.model.IDebugTarget;
 import org.eclipse.debug.core.model.IValue;
 import org.eclipse.debug.core.model.IVariable;
-import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants;
+import org.eclipse.ui.IViewPart;
+import org.eclipse.ui.IWorkbenchPage;
+import org.eclipse.ui.PartInitException;
+import org.eclipse.ui.PlatformUI;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.Activator;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.ui.views.ContentAcceptHandler;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.OpenEditorUtil;
+import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
+import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
 import com.google.gson.JsonElement;
 
@@ -35,7 +46,7 @@ import com.google.gson.JsonElement;
  *
  */
 public class ESBValue extends ESBDebugElement implements IValue {
-
+    private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
     private static final String ENVELOPE_PROPERTY_KEY = "envelope";
 
     private final String variableValue;
@@ -83,7 +94,21 @@ public class ESBValue extends ESBDebugElement implements IValue {
         }
         valueChildren.add(esbVariable);
         if (ENVELOPE_PROPERTY_KEY.equalsIgnoreCase(entry.getKey())) {
-            OpenEditorUtil.setToolTipMessageOnMediator(entry.getValue().getAsString());
+            String envelopeMessage = entry.getValue().getAsString();
+            OpenEditorUtil.setToolTipMessageOnMediator(envelopeMessage);
+            try {
+                IViewPart envelopeView = PlatformUI
+                        .getWorkbench()
+                        .getActiveWorkbenchWindow()
+                        .getActivePage()
+                        .showView(MESSAGE_ENVELOPE_VIEW_PRIMARY_ID, MESSAGE_ENVELOPE_VIEW_SECONDARY_ID,
+                                IWorkbenchPage.VIEW_VISIBLE);
+                if (envelopeView instanceof ContentAcceptHandler) {
+                    ((ContentAcceptHandler) envelopeView).acceptContent(envelopeMessage);
+                }
+            } catch (PartInitException e) {
+                log.error("Error while updating the Envelope View with new message envelope", e);;
+            }
         }
         esbVariable.fireCreationEvent();
     }
@@ -107,7 +132,7 @@ public class ESBValue extends ESBDebugElement implements IValue {
 
     @Override
     public String getReferenceTypeName() throws DebugException {
-        return ESBDebuggerConstants.VARIABLE_TYPE;
+        return VARIABLE_TYPE;
     }
 
     /**

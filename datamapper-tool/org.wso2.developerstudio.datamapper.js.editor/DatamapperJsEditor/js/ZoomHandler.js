@@ -1,4 +1,7 @@
-var ZoomHandler = function(paper) {
+var ZoomHandler;
+
+(function () {
+ZoomHandler = function(paper) {
 	this.paper = paper;
 	this.mouseState = '';
 	this.startCoords = [];
@@ -26,8 +29,7 @@ function offsetToLocalPoint(paper, x, y) {
 	svgPoint.x = x;
 	svgPoint.y = y;
 	// Transform point into the viewport coordinate system.
-	var pointTransformed = svgPoint.matrixTransform(paper.viewport.getCTM()
-			.inverse());
+	var pointTransformed = svgPoint.matrixTransform(paper.viewport.getCTM().inverse());
 	return pointTransformed;
 }
 
@@ -59,3 +61,4 @@ ZoomHandler.prototype.doPanning = function(e) {
 		paper.setOrigin(x - this.startCoords[0], y - this.startCoords[1]);
 	}
 };
+})();

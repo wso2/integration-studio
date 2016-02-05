@@ -75,6 +75,7 @@ public class DataMapperFunctionExecutor implements AbstractEditorFunctionExecuto
 			ProjectDataModel analyticsProjectModel = ((AbstractWSO2ProjectCreationWizard)wizard).getModel();
 			
 			try {
+				analyticsProjectModel.setSelectedOption("new.analyticsProject");
 				analyticsProjectModel.setProjectName((String)projectObj.get("name"));
 				analyticsProjectModel.setLocation(new File((String)projectObj.get("location")));
 				JSONObject mavenObj = (JSONObject) projectObj.get("mavenInfo");

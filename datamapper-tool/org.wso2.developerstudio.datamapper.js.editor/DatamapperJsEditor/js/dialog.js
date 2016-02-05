@@ -37,8 +37,8 @@ $(document).ready(function() {
                 // Uncomment the following line to submit the form using the defaultSubmit() method
                 // $('#profileForm').formValidation('defaultSubmit');
                 var project = {};
-                project.name = "myproject3";
-                project.location = "/home/susinda/runtime-EclipseApplication/myproject3";
+                project.name = $('#projectName').val(); //"myproject3";
+                project.location = "/home/susinda/runtime-EclipseApplication/" + project.name;
                 var mavenInfo = {};
                 mavenInfo.artifactId = "test.project";
                 mavenInfo.groupId = "org.wso2";
@@ -46,6 +46,7 @@ $(document).ready(function() {
                 project.mavenInfo = mavenInfo;
                 var projectString = JSON.stringify(project);
                 var result = ExecuteCustomFunction("newAnalyticsProject", projectString);
+                $('#welcomeModal').modal('hide');
             }
         })
 

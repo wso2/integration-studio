@@ -16,7 +16,12 @@
 package org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils;
 
 import java.io.IOException;
+import java.io.StringReader;
 
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+
+import org.w3c.dom.bootstrap.DOMImplementationRegistry;
 import org.apache.commons.io.FileUtils;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.CoreException;
@@ -25,6 +30,9 @@ import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PlatformUI;
+import org.w3c.dom.Node;
+import org.w3c.dom.ls.DOMImplementationLS;
+import org.w3c.dom.ls.LSSerializer;
 import org.wso2.developerstudio.eclipse.gmf.esb.ArtifactType;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbDiagram;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbServer;
@@ -50,6 +58,8 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbEditorInput;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbMultiPageEditor;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
+import org.xml.sax.InputSource;
+import org.xml.sax.SAXException;
 
 /**
  * This class contains methods related to opening ESB Editors and updating debug point activities recived fron ESB
@@ -61,11 +71,7 @@ public class OpenEditorUtil {
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
     private static AbstractMediator previousHitPoint;
     private static String toolTipMessage;
-    private static final String XML_ATTRIBUTE_SEPERATOR = "><";
-    private static final String EMPTY_STRING = "";
-    private static final String NEW_LINE_STRING_OPERATOR = "\n";
-    private static final String XML_ATTRIBUTE_START_TAG = "<";
-    private static final String XML_ATTRIBUTE_CLOSE_TAG = ">";
+    private static final String XML_STARTING_TAG = "<?xml";
 
     /**
      * This private constructor is to hide the implicit public constructor
@@ -120,18 +126,29 @@ public class OpenEditorUtil {
         }
     }
 
-    private static String formatMessageEnvelope(String string) {
-        String[] envelopeAttributes = string.split(XML_ATTRIBUTE_SEPERATOR);
-        String message = EMPTY_STRING;
-        for (String attribute : envelopeAttributes) {
-            if (attribute.startsWith(XML_ATTRIBUTE_START_TAG)) {
-                message = message + attribute + XML_ATTRIBUTE_CLOSE_TAG + NEW_LINE_STRING_OPERATOR;
-            } else {
-                message = message + XML_ATTRIBUTE_START_TAG + attribute + XML_ATTRIBUTE_CLOSE_TAG
-                        + NEW_LINE_STRING_OPERATOR;
-            }
+    /**
+     * This method format a unformatted xml document string
+     * 
+     * @param xmlString string
+     * @return
+     */
+    public static String formatMessageEnvelope(String xmlString) {
+        final InputSource inputSource = new InputSource(new StringReader(xmlString));
+        try {
+            final Node document = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(inputSource)
+                    .getDocumentElement();
+            final DOMImplementationRegistry registry = DOMImplementationRegistry.newInstance();
+            final Boolean keepDeclaration = Boolean.valueOf(xmlString.startsWith(XML_STARTING_TAG));
+            final DOMImplementationLS impl = (DOMImplementationLS) registry.getDOMImplementation("LS");
+            final LSSerializer writer = impl.createLSSerializer();
+            writer.getDomConfig().setParameter("format-pretty-print", Boolean.TRUE);
+            writer.getDomConfig().setParameter("xml-declaration", keepDeclaration);
+            return writer.writeToString(document);
+        } catch (SAXException | IOException | ParserConfigurationException | ClassNotFoundException
+                | InstantiationException | IllegalAccessException | ClassCastException e) {
+            log.warn("Error while parsing the xml string", e);
         }
-        return message;
+        return xmlString;
     }
 
     /**

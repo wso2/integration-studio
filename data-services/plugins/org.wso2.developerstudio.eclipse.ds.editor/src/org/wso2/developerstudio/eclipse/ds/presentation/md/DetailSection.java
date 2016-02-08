@@ -80,9 +80,8 @@ import org.wso2.developerstudio.eclipse.ds.WorkSheetNumber;
 import org.wso2.developerstudio.eclipse.ds.actions.DSActionConstants;
 import org.wso2.developerstudio.eclipse.ds.presentation.DsEditor;
 
-
 public class DetailSection {
-	
+
 	private FormToolkit toolkit;
 	private AdapterFactoryItemDelegator adapterFactoryItemDelegator;
 	private Composite detailsclient;
@@ -431,7 +430,7 @@ public class DetailSection {
 			String[] displayValues = new String[q.length + 1];
 			displayValues[0] = SELECT_VALUE;
 			for (int j = 1; j < displayValues.length; j++) {
-					displayValues[j] = q[j - 1].getId();
+				displayValues[j] = q[j - 1].getId();
 			}
 			voidMaker();
 			voidMaker();
@@ -458,27 +457,30 @@ public class DetailSection {
 
 					int selectionIndex = queryCombo.getSelectionIndex();
 
-					if (q[selectionIndex] != null
-							&& !q[selectionIndex].getId().equals("")) {
+					if (selectionIndex >= 1) {
+						if (q[selectionIndex - 1] != null
+								&& !q[selectionIndex - 1].getId().equals("")) {
 
-						if (q[selectionIndex].getParam() != null) {
+							if (q[selectionIndex - 1].getParam() != null) {
 
-							EList<QueryParameter> queryParams = q[selectionIndex]
-									.getParam();
+								EList<QueryParameter> queryParams = q[selectionIndex - 1]
+										.getParam();
 
-							if (!queryParams.isEmpty()) {
+								if (!queryParams.isEmpty()) {
 
-								for (QueryParameter param : queryParams) {
+									for (QueryParameter param : queryParams) {
 
-									String paramName = param.getName();
+										String paramName = param.getName();
 
-									ParameterMapping parammapping = DsFactory.eINSTANCE
-											.createParameterMapping();
-									parammapping.setName(paramName);
-									parammapping.setQueryParam(paramName);
+										ParameterMapping parammapping = DsFactory.eINSTANCE
+												.createParameterMapping();
+										parammapping.setName(paramName);
+										parammapping.setQueryParam(paramName);
 
-									callQuery.getWithParam().add(parammapping);
+										callQuery.getWithParam().add(
+												parammapping);
 
+									}
 								}
 							}
 						}
@@ -644,16 +646,18 @@ public class DetailSection {
 					voidMaker();
 					voidMaker();
 
-					/*labelMaker(DetailSectionCustomUiConstants.DATA_SERVICE_PARAMETER_ALLOW_ROLES);
-					sectionUtil.getUserRoleField(detailsclient, toolkit);
-					voidMaker();
-					voidMaker();*/
-					
-				    labelMaker(DetailSectionCustomUiConstants.DATA_SERVICE_POLICY);
+					/*
+					 * labelMaker(DetailSectionCustomUiConstants.
+					 * DATA_SERVICE_PARAMETER_ALLOW_ROLES);
+					 * sectionUtil.getUserRoleField(detailsclient, toolkit);
+					 * voidMaker(); voidMaker();
+					 */
+
+					labelMaker(DetailSectionCustomUiConstants.DATA_SERVICE_POLICY);
 					sectionUtil.getPolicyField(detailsclient, toolkit);
 					voidMaker();
 					voidMaker();
-					
+
 				}
 			}
 		}
@@ -936,7 +940,7 @@ public class DetailSection {
 					String[] displayValues = new String[confArr.length + 1];
 					displayValues[0] = SELECT_VALUE;
 					for (int j = 1; j < displayValues.length; j++) {
-							displayValues[j] = confArr[j - 1].getId();
+						displayValues[j] = confArr[j - 1].getId();
 					}
 
 					labelMaker(displayName);
@@ -964,7 +968,7 @@ public class DetailSection {
 					String[] displayValues = new String[eventArr.length + 1];
 					displayValues[0] = SELECT_VALUE;
 					for (int j = 1; j < displayValues.length; j++) {
-							displayValues[j] = eventArr[j - 1].getId();
+						displayValues[j] = eventArr[j - 1].getId();
 					}
 					labelMaker(displayName);
 
@@ -989,7 +993,7 @@ public class DetailSection {
 					String[] displayValues = new String[eventArr.length + 1];
 					displayValues[0] = SELECT_VALUE;
 					for (int j = 1; j < displayValues.length; j++) {
-							displayValues[j] = eventArr[j - 1].getId();
+						displayValues[j] = eventArr[j - 1].getId();
 					}
 
 					labelMaker(displayName);
@@ -1201,18 +1205,18 @@ public class DetailSection {
 					voidMaker();
 					voidMaker();
 				}
-				
-				if (displayName
-                        .equals(DetailSectionCustomUiConstants.RESULT_OUTPUT_TYPE)) {
 
-				    labelMaker(DetailSectionCustomUiConstants.RESULT_OUTPUT_TYPE_LABEL);
-				    sectionUtil.getAttributeField(detailsclient, toolkit,
-                            result, result.getOutputType(),
-                            DsPackage.eINSTANCE.getResultMapping_OutputType(),
-                            DetailSectionCustomUiConstants.STRING);
-                    voidMaker();
-                    voidMaker();
-                }
+				if (displayName
+						.equals(DetailSectionCustomUiConstants.RESULT_OUTPUT_TYPE)) {
+
+					labelMaker(DetailSectionCustomUiConstants.RESULT_OUTPUT_TYPE_LABEL);
+					sectionUtil.getAttributeField(detailsclient, toolkit,
+							result, result.getOutputType(),
+							DsPackage.eINSTANCE.getResultMapping_OutputType(),
+							DetailSectionCustomUiConstants.STRING);
+					voidMaker();
+					voidMaker();
+				}
 
 			}
 		}
@@ -1226,7 +1230,7 @@ public class DetailSection {
 		// ///////////////////////////////////////////////////
 		if (!makeItComplex) {
 			String initialVal = "";
-			String[] typeCombodisplayValues = {SELECT_VALUE,
+			String[] typeCombodisplayValues = { SELECT_VALUE,
 					DetailSectionCustomUiConstants.PARAM_MAPPING_COMBO_VAL_0,
 					DetailSectionCustomUiConstants.PARAM_MAPPING_COMBO_VAL_1 };
 
@@ -1250,7 +1254,7 @@ public class DetailSection {
 				@Override
 				public void widgetSelected(SelectionEvent event) {
 
-					if (paramTypeCombo.getSelectionIndex() == 0) {
+					if (paramTypeCombo.getSelectionIndex() == 1) {
 
 						queryParamLabel.setEnabled(false);
 						queryParamText.setEnabled(false);
@@ -1275,7 +1279,7 @@ public class DetailSection {
 
 						}
 
-					} else if (paramTypeCombo.getSelectionIndex() == 1) {
+					} else if (paramTypeCombo.getSelectionIndex() == 2) {
 
 						columnLabel.setEnabled(false);
 						columnTxt.setEnabled(false);
@@ -1410,7 +1414,7 @@ public class DetailSection {
 					.equals(DetailSectionCustomUiConstants.ELEMENT_MAPPING_EXPORT_TYPE)) {
 				if (!makeItComplex) {
 					labelMaker(DetailSectionCustomUiConstants.ELEMENT_MAPPING_EXPORT_TYPE);
-					String[] displayValues = { SELECT_VALUE,"SCALAR", "ARRAY" };
+					String[] displayValues = { SELECT_VALUE, "SCALAR", "ARRAY" };
 					sectionUtil.getCustomComboField(detailsclient, toolkit,
 							element, element.getExportType(),
 							DsPackage.eINSTANCE.getElementMapping_ExportType(),
@@ -1423,10 +1427,10 @@ public class DetailSection {
 			if (displayName
 					.equals(DetailSectionCustomUiConstants.ELEMENT_MAPPING_SCHEMA_TYPE)) {
 				if (!makeItComplex) {
-					String[] displayValues = { SELECT_VALUE,"xs:string", "xs:integer",
-							"xs:boolean", "xs:float", "xs:double",
-							"xs:decimal", "xs:dateTime", "xs:time", "xs:date",
-							"xs:long", "xs:base64Binary" };
+					String[] displayValues = { SELECT_VALUE, "xs:string",
+							"xs:integer", "xs:boolean", "xs:float",
+							"xs:double", "xs:decimal", "xs:dateTime",
+							"xs:time", "xs:date", "xs:long", "xs:base64Binary" };
 					labelMaker(DetailSectionCustomUiConstants.ELEMENT_MAPPING_SCHEMA_TYPE);
 					sectionUtil.getCustomComboField(detailsclient, toolkit,
 							element, element.getXsdType(),
@@ -1576,10 +1580,10 @@ public class DetailSection {
 			if (displayName
 					.equals(DetailSectionCustomUiConstants.ELEMENT_MAPPING_SCHEMA_TYPE)) {
 
-				String[] displayValues = { SELECT_VALUE,"xs:string", "xs:integer",
-						"xs:boolean", "xs:float", "xs:double", "xs:decimal",
-						"xs:dateTime", "xs:time", "xs:date", "xs:long",
-						"xs:base64Binary" };
+				String[] displayValues = { SELECT_VALUE, "xs:string",
+						"xs:integer", "xs:boolean", "xs:float", "xs:double",
+						"xs:decimal", "xs:dateTime", "xs:time", "xs:date",
+						"xs:long", "xs:base64Binary" };
 				labelMaker(DetailSectionCustomUiConstants.ELEMENT_MAPPING_SCHEMA_TYPE);
 				sectionUtil.getCustomComboField(detailsclient, toolkit,
 						attributeMapping, attributeMapping.getXsdType(),
@@ -1673,7 +1677,7 @@ public class DetailSection {
 					.equals(DetailSectionCustomUiConstants.QUERY_PARAM_TYPE)) {
 
 				labelMaker(DetailSectionCustomUiConstants.QUERY_PARAM_TYPE);
-				String[] displayValues = { SELECT_VALUE,"SCALAR", "ARRAY" };
+				String[] displayValues = { SELECT_VALUE, "SCALAR", "ARRAY" };
 				Combo paramTypeCombo = sectionUtil.getCustomComboField(
 						detailsclient, toolkit, queryParam,
 						queryParam.getParamType(),
@@ -1687,9 +1691,9 @@ public class DetailSection {
 			if (displayName
 					.equals(DetailSectionCustomUiConstants.QUERY_PARAM_SQL_TYPE)) {
 
-				String[] displayValues = { SELECT_VALUE, "STRING", "INTEGER", "REAL",
-						"DOUBLE", "NUMERIC", "TINYINT", "SMALLINT", "BIGINT",
-						"DATE", "TIME", "TIMESTAMP", "BIT",
+				String[] displayValues = { SELECT_VALUE, "STRING", "INTEGER",
+						"REAL", "DOUBLE", "NUMERIC", "TINYINT", "SMALLINT",
+						"BIGINT", "DATE", "TIME", "TIMESTAMP", "BIT",
 						"ORACLE_REF_CURSOR", "BINARY" };
 				labelMaker(DetailSectionCustomUiConstants.QUERY_PARAM_SQL_TYPE);
 				Combo sqlTypeCombo = sectionUtil.getCustomComboField(
@@ -1718,7 +1722,7 @@ public class DetailSection {
 			if (displayName
 					.equals(DetailSectionCustomUiConstants.QUERY_PARAM_IN_OUT)) {
 
-				String[] displayValues = { SELECT_VALUE,"IN", "OUT" };
+				String[] displayValues = { SELECT_VALUE, "IN", "OUT" };
 				labelMaker(DetailSectionCustomUiConstants.QUERY_PARAM_IN_OUT);
 				String intialValue = queryParam.getType();
 
@@ -1965,7 +1969,7 @@ public class DetailSection {
 		voidMaker();
 
 		String initialVal = "";
-		String[] displayValues = {SELECT_VALUE,
+		String[] displayValues = { SELECT_VALUE,
 				DetailSectionCustomUiConstants.PARAM_MAPPING_COMBO_VAL_0,
 				DetailSectionCustomUiConstants.PARAM_MAPPING_COMBO_VAL_1 };
 
@@ -1989,7 +1993,7 @@ public class DetailSection {
 			@Override
 			public void widgetSelected(SelectionEvent event) {
 
-				if (paramTypeCombo.getSelectionIndex() == 0) {
+				if (paramTypeCombo.getSelectionIndex() == 1) {
 
 					queryParamLabel.setEnabled(false);
 					queryParamText.setEnabled(false);
@@ -2014,7 +2018,7 @@ public class DetailSection {
 
 					}
 
-				} else if (paramTypeCombo.getSelectionIndex() == 1) {
+				} else if (paramTypeCombo.getSelectionIndex() == 2) {
 
 					columnLabel.setEnabled(false);
 					columnTxt.setEnabled(false);
@@ -2139,7 +2143,8 @@ public class DetailSection {
 				if (displayName
 						.equals(DetailSectionCustomUiConstants.RESOURCE_METHOD)) {
 
-					String[] displayValues = { SELECT_VALUE,"GET", "PUT", "POST", "DELETE" };
+					String[] displayValues = { SELECT_VALUE, "GET", "PUT",
+							"POST", "DELETE" };
 					labelMaker(DetailSectionCustomUiConstants.RESOURCE_METHOD);
 					sectionUtil.getCustomComboField(detailsclient, toolkit,
 							resource, resource.getMethod(),

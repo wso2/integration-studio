@@ -2,7 +2,6 @@ package org.wso2.developerstudio.samplewebeditor.editor;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
@@ -10,19 +9,12 @@ import java.nio.charset.StandardCharsets;
 import org.apache.avro.generic.GenericRecord;
 import org.apache.avro.io.DatumWriter;
 import org.apache.avro.io.Encoder;
-import org.codehaus.jettison.json.JSONException;
-import org.codehaus.jettison.json.JSONObject;
 import org.wso2.datamapper.engine.core.MappingHandler;
 import org.wso2.datamapper.engine.core.MappingResourceLoader;
 import org.wso2.datamapper.engine.inputAdapters.InputDataReaderAdapter;
 import org.wso2.datamapper.engine.inputAdapters.ReaderRegistry;
 import org.wso2.datamapper.engine.outputAdapters.DummyEncoder;
 import org.wso2.datamapper.engine.outputAdapters.WriterRegistry;
-import org.wso2.developerstudio.eclipse.artifact.analytics.ui.wizard.AnalyticsProjectCreationWizard;
-import org.wso2.developerstudio.eclipse.platform.core.exception.ObserverFailedException;
-import org.wso2.developerstudio.eclipse.platform.core.model.MavenInfo;
-import org.wso2.developerstudio.eclipse.platform.core.project.model.ProjectDataModel;
-import org.wso2.developerstudio.eclipse.platform.ui.wizard.AbstractWSO2ProjectCreationWizard;
 import org.wso2.developerstudio.eclipse.webui.core.editor.AbstractEditorFunctionExecutor;
 
 public class DataMapperFunctionExecutor implements AbstractEditorFunctionExecutor {
@@ -63,33 +55,7 @@ public class DataMapperFunctionExecutor implements AbstractEditorFunctionExecuto
 			}
 
 		    return output;
-		} else if (functionName.equals("newAnalyticsProject")) {
-			AnalyticsProjectCreationWizard wizard = new AnalyticsProjectCreationWizard();
-			JSONObject projectObj = null;
-			try {
-				projectObj = new JSONObject((String)args[1]);
-			} catch (JSONException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-			ProjectDataModel analyticsProjectModel = ((AbstractWSO2ProjectCreationWizard)wizard).getModel();
-			
-			try {
-				analyticsProjectModel.setSelectedOption("new.analyticsProject");
-				analyticsProjectModel.setProjectName((String)projectObj.get("name"));
-				analyticsProjectModel.setLocation(new File((String)projectObj.get("location")));
-				JSONObject mavenObj = (JSONObject) projectObj.get("mavenInfo");
-				MavenInfo mavenInfo = new MavenInfo((String)mavenObj.getString("groupId"),
-													(String)mavenObj.getString("artifactId"), 
-													(String)mavenObj.getString("version"));
-				analyticsProjectModel.setMavenInfo(mavenInfo);
-				
-			} catch (ObserverFailedException | JSONException e) {
-				e.printStackTrace();
-			}
-			
-			return wizard.performFinish();
-		}
+		} 
 		return null;
 	}
 	

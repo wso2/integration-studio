@@ -1,156 +1,137 @@
+<!DOCTYPE html>
 <html>
 <head lang="en">
 <meta charset="UTF-8">
-<title>Dash Board</title>
+<title>Sample Web Based Editor</title>
+
 <script src="js/libs/jointjs/jquery.min.js"></script>
+<script src="js/libs/jointjs/lodash.min.js"></script>
+<script src="js/libs/jointjs/backbone-min.js"></script>
+<script src="js/libs/jointjs/joint.min.js"></script>
+<link type="text/css"  href="js/libs/jointjs/joint.min.css"  rel="stylesheet" />
+
+<script src="js/libs/jointjs/jquery-ui.js"></script>
+<link rel="stylesheet" href="css/jquery-ui.css">
+
+<script src="js/libs/jquery.contextmenu.js"></script>
+<link rel="stylesheet" href="css/jquery.contextmenu.css">
+
+<script src="js/libs/jquery.mousewheel.js"></script>
+
 <script src="js/libs/jointjs/bootstrap.min.js"></script>
-<script src="js/libs/jquery.steps.min.js"></script>
-<script src="js/dialog.js"></script>
-<link rel="stylesheet" href="css/jquery.steps.css">
-<link rel="stylesheet" href="css/dialog.css">
 <link rel="stylesheet" href="css/bootstrap.css">
+
 <link rel="stylesheet" href="css/styles.css">
+
+<script src="js/UndoRedoHandler.js"></script>
+<script src="js/ZoomHandler.js"></script>
+<script src="js/OperatorFactory.js"></script>
+<script src="js/langGenerator.js"></script>
+<script src="js/multipageEditor.js"></script>
+<script src="js/designEditor.js"></script>
+<script src="js/SourceEditor.js"></script>
+<script src="js/editor.js"></script>
+
+
+
 </head>
-
-
 <body>
 	<div class="container-fluid">
-		<div class="row">
-			<div class="col-md-8">
-				<div class="well">WSO2 Developer Studio</div>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-md-4">
-			<div class="well">
-					Analytics
-					<ul style="list-style-type: none">
-						<li><a href="javascript:createNewProject()">Data Analytics Project</a> </li>
-					</ul>
-				</div>
-				<div class="well">
-					Application Server
-					<ul style="list-style-type: none">
-						<li><a href="http://www.google.com">Axis2 Service Project</a></li>
-						<li><a href="http://www.google.com">Web Application</a></li>
-						<li><a href="http://www.google.com">JAX-WS Service
-								Project</a></li>
-						<li><a href="http://www.google.com">JAX-RS Service
-								Project</a></li>
-					</ul>
-				</div>
-				<div class="well">
-					Enterprice Service Bus
-					<ul style="list-style-type: none">
-						<li><a href="http://www.google.com">ESB Config Project</a></li>
-						<li><a href="http://www.google.com">Proxy Service</a></li>
-						<li><a href="http://www.google.com">REST API</a></li>
-						<li><a href="http://www.google.com">Local Entry</a></li>
-						<li><a href="http://www.google.com">Sequence</a></li>
-						<li><a href="http://www.google.com">Endpoint</a></li>
-						<li><a href="http://www.google.com">Mediator Project</a></li>
-						<li><a href="http://www.google.com">Message Store</a></li>
-						<li><a href="http://www.google.com">Message Processor</a></li>
-						<li><a href="http://www.google.com">Task</a></li>
-					</ul>
-				</div>
-				<div class="well">
-					Governance Registry
-					<ul style="list-style-type: none">
-						<li><a href="http://www.google.com">Registry Resources
-								Project</a></li>
-						<li><a href="http://www.google.com">Registry Filter
-								Project</a></li>
-						<li><a href="http://www.google.com">Registry Resource</a></li>
-						<li><a href="http://www.google.com">Registry Handler
-								Project</a></li>
-					</ul>
-				</div>
-			</div>
-			<div class="col-md-4">
-				<div class="row">
-					<div class="well">
-						Distribution
-						<ul style="list-style-type: none">
-							<li><a href="http://www.google.com">Composite
-									Application Project</a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="row">
-					<div class="well">
-						Samples
-						<ul style="list-style-type: none">
-							<li><a href="http://www.google.com">Axis2 Service
-									Project</a></li>
-							<li><a href="http://www.google.com">Proxy Service</a></li>
-							<li><a href="http://www.google.com">ESB Project</a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	
-			<div class="modal fade" id="welcomeModal" tabindex="-1" role="dialog">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal"
-							aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-						<h4 class="modal-title">Create New Project</h4>
-					</div>
-					<div class="modal-body">
-						<div id="formDiv" class="modal-body">
-							<form id="profileForm" method="post" class="form-horizontal">
-								<h2>Project Information</h2>
-								<section data-step="0">
-									<div class="form-group">
-										<label class="col-xs-3 control-label">Project Name</label>
-										<div class="col-xs-5">
-											<input type="text" class="form-control" id="projectName" />
-										</div>
+	<div class="tabbable tabs-below">
+			<div id="myTabContent" class="tab-content">
+				<div class="tab-pane fade in active" id="designID">
+					<div class="row">
+						<div class="col-xs-10 col-lg-10 col-md-10 ui-resizable">
+							<div class="well-lg cmenu1" id="dmEditorContainerWrapper"
+								style="height: 800px; background: #edf4f6;">
+								<div id="dmEditorContainer" style="position: relative; width: 100%; height: 100%;"></div>
+							</div>
+						</div>
+						<div class="col-xs-2 col-lg-2 col-md-2 ui-resizable">
+							<div class="panel-group" id="accordion">
+								<div class="panel panel-default">
+									<div class="panel-heading">
+										<h4 class="panel-title">
+											<a data-toggle="collapse" data-parent="#accordion"
+												href="#collapseOne"> Operations </a>
+										</h4>
 									</div>
+									<div id="collapseOne"
+										class="panel-collapse collapse scrollable-collapse in">
+										<div class="panel-body">
+											<ul class="list-group">
+												<li class="list-group-item"><img src="icons/Concat.gif" id="Concat" class="draggableIcon" > Concat </li>
+												<li class="list-group-item"><img src="icons/Concat.gif"	id="Split" class="draggableIcon"> Split </li>
+												<li class="list-group-item"><img
+													src="icons/Concat.gif" id="dropMediator"
+													class="draggableIcon"> ToUpper </li>
+												<li class="list-group-item"><img
+													src="icons/Concat.gif" id="logMediator"
+													class="draggableIcon"> ToLower </li>
+												<li class="list-group-item"><img
+													src="icons/Concat.gif" id="loopBackMediator"
+													class="draggableIcon"> ToString </li>
 
-									<div class="form-group">
-										<label class="col-xs-3 control-label">Location</label>
-										<div class="col-xs-5">
-											<input type="text" class="form-control" name="location" />
-										</div>
-									</div>
-								</section>
+											</ul>
+											<ul class="list-group">
+												<li class="list-group-item"><img
+													src="icons/Concat.gif"
+													id="ConditionalRouterMediator" class="draggableIcon">
+													Conditional Router</li>
+												<li class="list-group-item"><img
+													src="icons/Concat.gif" id="FilterMediator"
+													class="draggableIcon"> Filter</li>
+												<li class="list-group-item"><img
+													src="icons/Concat.gif" id="SwitchMediator"
+													class="draggableIcon"> Switch</li>
+												<li class="list-group-item"><img
+													src="icons/Concat.gif" id="ValidateMediator"
+													class="draggableIcon"> Validate</li>
+											</ul>
 
-								<h2>Maven Information</h2>
-								<section data-step="1">
-									<div class="form-group">
-										<label class="col-xs-3 control-label">Group ID</label>
-										<div class="col-xs-5">
-											<input type="text" class="form-control" name="groupID" />
 										</div>
 									</div>
-
-									<div class="form-group">
-										<label class="col-xs-3 control-label">Artifact ID</label>
-										<div class="col-xs-5">
-											<input type="text" class="form-control" name="artifactID" />
-										</div>
-									</div>
-
-									<div class="form-group">
-										<label class="col-xs-3 control-label">Version</label>
-										<div class="col-xs-5">
-											<input type="text" class="form-control" name="version" />
-										</div>
-									</div>
-								</section>
-							</form>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
+				<div class="tab-pane fade" id="sourceID">
+					<div class="well-lg" id="sourceEditor"
+						style="height: 800px; background: #ffffff;">
+						<div class="row">
+						<div class="col-xs-4 col-lg-4 col-md-4">
+						     <b>Input Payload</b>
+						     <textarea class="textareaCode" id="inputPayload" wrap="logical" rows="10" cols="50"> </textarea>
+						</div>
+						<div class="col-xs-4 col-lg-4 col-md-4">
+						     <b>Mapping Function</b>
+                             <textarea class="textareaCode" id="sourceEditorTextBox" wrap="logical" rows="10" cols="50"> </textarea>
+                        </div>
+						<div class="col-xs-4 col-lg-4 col-md-4">
+						      <button id="btnMap" onclick="generateOutput()" type="button">Generate Output(Map)</button>
+                             <textarea class="textareaCode" id="outputPayload" wrap="logical" rows="10" cols="50"> </textarea>
+                        </div>
+					</div>
+				</div>
 		</div>
-	
+			<ul class="nav nav-tabs" id="bottom-tabs">
+				<li class="active"><a href="#designID" data-toggle="tab">Design</a></li>
+				<li><a href="#sourceID" data-toggle="tab">Source</a></li>
+			</ul>
+		</div>
+		
+		
+	</div>
+	<div style="visibility:hidden">
+	<button onclick="saveFile()" type="button">Save</button>
+	<button onclick="loadFileContent()" type="button">Load</button>
+	<button id="undo-button" onclick="undoOperation()" type="button">Undo</button>
+	<button id="redo-button" onclick="redoOperation()" type="button">Redo</button>
+    <input type="button" value="Add Input Schema" onclick="openInputDialog()" />
+    <input type="button" value="Add Output Schema" onclick="openOutputDialog()" />
+    <input id="myOutput" type="file" style="visibility:hidden" />
+    <input id="myInput" type="file" style="visibility:hidden" />
+    </div>
 </body>
 </html>

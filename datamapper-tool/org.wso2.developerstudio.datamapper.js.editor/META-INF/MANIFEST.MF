@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Samplewebeditor
-Bundle-SymbolicName: plugin_id_to_be_renamed;singleton:=true
+Bundle-SymbolicName: org.wso2.developerstudio.datamapper.js.editor;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: org.wso2.developerstudio.samplewebeditor.Activator
 Require-Bundle: org.eclipse.ui,
@@ -20,9 +20,4 @@ Import-Package: org.apache.avro.generic,
  org.wso2.datamapper.engine.core,
  org.wso2.datamapper.engine.inputAdapters,
  org.wso2.datamapper.engine.outputAdapters,
- org.wso2.developerstudio.eclipse.artifact.analytics.ui.wizard,
- org.wso2.developerstudio.eclipse.platform.core.exception;version="4.0.0",
- org.wso2.developerstudio.eclipse.platform.core.model;version="4.0.0",
- org.wso2.developerstudio.eclipse.platform.core.project.model;version="4.0.0",
- org.wso2.developerstudio.eclipse.platform.ui.wizard;version="4.0.0",
  org.wso2.developerstudio.eclipse.webui.core.editor;version="4.0.0"

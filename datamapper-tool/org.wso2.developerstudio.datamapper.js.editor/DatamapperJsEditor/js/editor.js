@@ -26,9 +26,10 @@ var withEclipse = true;
 
 function loadFileContent() {
 	var fileContent = IDEGetFileContent();
-	//alert('load file');
-	graph.fromJSON(JSON.parse(fileContent));
-	graph.resetCells([graph.getElements(), graph.getLinks()]);
+	if (fileContent) {
+		graph.fromJSON(JSON.parse(fileContent));
+		graph.resetCells([graph.getElements(), graph.getLinks()]);
+	}
 	undoRedoHandler.reset();
 }
 

@@ -114,7 +114,9 @@ public abstract class AbstractWebBasedEditor extends EditorPart {
 			throws PartInitException {
 		setSite(site);
 		setInput(input);
-		editorInput = (FileEditorInput) input;
+		if (input instanceof FileEditorInput) {
+			editorInput = (FileEditorInput) input;
+		}
 		initActionHandlers();
 	}
 
@@ -173,7 +175,11 @@ public abstract class AbstractWebBasedEditor extends EditorPart {
 				}
 			});
 			injectCustomJSFunctions();
-			setPartName(editorInput.getName());
+			if (editorInput != null) {
+				setPartName(editorInput.getName());
+			} else {
+				setPartName(getEditorName());
+			}
 		} catch (WebUIException e) {
 			log.error("Error instantiating Web Editor.", e);
 		}	

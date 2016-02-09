@@ -126,7 +126,6 @@ public class PropertyChangeCommandHandler extends AbstractHandler implements Eve
                     propertyChangeCommandEB.send(ESB_STACK_FRAME_PROPERTY_CHANGE_EVENT, propertyCommandMessage);
                 }
             }
-
         } else {
             log.warn("Unhandled Event type recived for ESBStackFrame : " + eventObject.toString());
         }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ * Copyright (c) 2015-2016, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,15 +16,21 @@
 package org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.ui.views;
 
 /**
- * This interface is for accept any important information for the implemented class
+ * This enum holds default property values loaded to ESB Debugger Envelope view property table
  *
  */
-public interface ContentAcceptHandler {
+public enum DefaultPropertyValues {
 
-    /**
-     * This method get information from invoked location to process in the class.
-     * 
-     * @param content
-     */
-    void acceptContent(Object content, AcceptedContentAction action);
+    TO("To"), FROM("From"), CONTENT_LENGTH("Content-Length"), ACCEPT_ENCODING("Accept-Encoding"), CONNECTION(
+            "Connection"), CONTENT_TYPE("Content-Type"), HOST("Host"), SOAP_ACTION("SOAPAction"), USER_AGENT(
+            "User-Agent");
+    private String propertyName;
+
+    DefaultPropertyValues(String name) {
+        propertyName = name;
+    }
+
+    public String getPropertyName() {
+        return propertyName;
+    }
 }

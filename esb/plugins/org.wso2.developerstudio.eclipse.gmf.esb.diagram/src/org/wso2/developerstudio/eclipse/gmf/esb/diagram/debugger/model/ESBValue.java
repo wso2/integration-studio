@@ -34,6 +34,7 @@ import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.Activator;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.ui.views.AcceptedContentAction;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.ui.views.ContentAcceptHandler;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.OpenEditorUtil;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
@@ -52,18 +53,22 @@ public class ESBValue extends ESBDebugElement implements IValue {
     private final String variableValue;
     private List<IVariable> valueChildren;
     private final String variableParent;
+    private final Set<String> tablePropertySet;
 
-    public ESBValue(IDebugTarget debugTarget, String value, String variableContext) {
+    public ESBValue(IDebugTarget debugTarget, String value, String variableContext, Set<String> tablePropertySet) {
         super(debugTarget);
         variableValue = value;
         variableParent = variableContext;
+        this.tablePropertySet = tablePropertySet;
     }
 
-    public ESBValue(IDebugTarget target, JsonElement value, String variableContext) throws DebugException {
+    public ESBValue(IDebugTarget target, JsonElement value, String variableContext, Set<String> tablePropertySet)
+            throws DebugException {
         super(target);
 
         variableValue = value.toString();
         variableParent = variableContext;
+        this.tablePropertySet = tablePropertySet;
         if (!value.isJsonNull()) {
             Set<Entry<String, JsonElement>> entrySet = value.getAsJsonObject().entrySet();
             if (valueChildren != null) {
@@ -75,57 +80,6 @@ public class ESBValue extends ESBDebugElement implements IValue {
                 for (Entry<String, JsonElement> entry : entrySet) {
                     addNewChildVariable(entry);
                 }
-            }
-        }
-    }
-
-    /**
-     * @param entry
-     * @throws DebugException
-     */
-    private void addNewChildVariable(Entry<String, JsonElement> entry) throws DebugException {
-        String valueString = "";
-        ESBVariable esbVariable;
-        if (entry.getValue().isJsonPrimitive()) {
-            valueString = entry.getValue().getAsString();
-            esbVariable = new ESBVariable(getDebugTarget(), entry.getKey(), valueString, variableParent);
-        } else {
-            esbVariable = new ESBVariable(getDebugTarget(), entry.getKey(), entry.getValue(), variableParent);
-        }
-        valueChildren.add(esbVariable);
-        if (ENVELOPE_PROPERTY_KEY.equalsIgnoreCase(entry.getKey())) {
-            String envelopeMessage = entry.getValue().getAsString();
-            OpenEditorUtil.setToolTipMessageOnMediator(envelopeMessage);
-            try {
-                IViewPart envelopeView = PlatformUI
-                        .getWorkbench()
-                        .getActiveWorkbenchWindow()
-                        .getActivePage()
-                        .showView(MESSAGE_ENVELOPE_VIEW_PRIMARY_ID, MESSAGE_ENVELOPE_VIEW_SECONDARY_ID,
-                                IWorkbenchPage.VIEW_VISIBLE);
-                if (envelopeView instanceof ContentAcceptHandler) {
-                    ((ContentAcceptHandler) envelopeView).acceptContent(envelopeMessage);
-                }
-            } catch (PartInitException e) {
-                log.error("Error while updating the Envelope View with new message envelope", e);;
-            }
-        }
-        esbVariable.fireCreationEvent();
-    }
-
-    /**
-     * @param entry
-     * @throws DebugException
-     */
-    private void addValueToMatchingChildVariable(Entry<String, JsonElement> entry) throws DebugException {
-        for (IVariable variable : valueChildren) {
-            if (variable.getName().equals(entry.getKey())) {
-                variable.setValue(entry.getValue().getAsString());
-                ((ESBVariable) variable).fireChangeEvent(DebugEvent.CONTENT);
-                if (variable.getName().equalsIgnoreCase(ENVELOPE_PROPERTY_KEY)) {
-                    OpenEditorUtil.setToolTipMessageOnMediator(entry.getValue().getAsString());
-                }
-                break;
             }
         }
     }
@@ -179,5 +133,81 @@ public class ESBValue extends ESBDebugElement implements IValue {
             valueChildren.add(child);
         }
 
+    }
+
+    /**
+     * @param entry
+     * @throws DebugException
+     */
+    private void addValueToMatchingChildVariable(Entry<String, JsonElement> entry) throws DebugException {
+        for (IVariable variable : valueChildren) {
+            if (variable.getName().equals(entry.getKey())) {
+                variable.setValue(entry.getValue().getAsString());
+                ((ESBVariable) variable).fireChangeEvent(DebugEvent.CONTENT);
+                if (variable.getName().equalsIgnoreCase(ENVELOPE_PROPERTY_KEY)) {
+                    OpenEditorUtil.setToolTipMessageOnMediator(entry.getValue().getAsString());
+                }
+                break;
+            }
+        }
+    }
+
+    /**
+     * @param entry
+     * @throws DebugException
+     */
+    private void addNewChildVariable(Entry<String, JsonElement> entry) throws DebugException {
+        String valueString = "";
+        ESBVariable esbVariable;
+        if (entry.getValue().isJsonPrimitive()) {
+            valueString = entry.getValue().getAsString();
+            esbVariable = new ESBVariable(getDebugTarget(), entry.getKey(), valueString, variableParent,
+                    tablePropertySet);
+        } else {
+            esbVariable = new ESBVariable(getDebugTarget(), entry.getKey(), entry.getValue(), variableParent,
+                    tablePropertySet);
+        }
+        valueChildren.add(esbVariable);
+        if (ENVELOPE_PROPERTY_KEY.equalsIgnoreCase(entry.getKey())) {
+            String envelopeMessage = entry.getValue().getAsString();
+            OpenEditorUtil.setToolTipMessageOnMediator(envelopeMessage);
+            try {
+                IViewPart envelopeView = PlatformUI
+                        .getWorkbench()
+                        .getActiveWorkbenchWindow()
+                        .getActivePage()
+                        .showView(MESSAGE_ENVELOPE_VIEW_PRIMARY_ID, MESSAGE_ENVELOPE_VIEW_SECONDARY_ID,
+                                IWorkbenchPage.VIEW_VISIBLE);
+                if (envelopeView instanceof ContentAcceptHandler) {
+                    ((ContentAcceptHandler) envelopeView).acceptContent(envelopeMessage, AcceptedContentAction.ADD);
+                }
+            } catch (PartInitException e) {
+                log.error("Error while updating the Envelope View with new message envelope", e);;
+            }
+        } else if (isSpecialProperty(entry.getKey())) {
+            try {
+                IViewPart envelopeView = PlatformUI
+                        .getWorkbench()
+                        .getActiveWorkbenchWindow()
+                        .getActivePage()
+                        .showView(MESSAGE_ENVELOPE_VIEW_PRIMARY_ID, MESSAGE_ENVELOPE_VIEW_SECONDARY_ID,
+                                IWorkbenchPage.VIEW_VISIBLE);
+                if (envelopeView instanceof ContentAcceptHandler) {
+                    ((ContentAcceptHandler) envelopeView).acceptContent(new String[] { entry.getKey(),
+                            entry.getValue().getAsString() }, AcceptedContentAction.ADD);
+                }
+            } catch (PartInitException e) {
+                log.error("Error while updating the Envelope View with new message envelope", e);
+            }
+        }
+        esbVariable.fireCreationEvent();
+    }
+
+    private boolean isSpecialProperty(String propertyKey) {
+        if (tablePropertySet.contains(propertyKey)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

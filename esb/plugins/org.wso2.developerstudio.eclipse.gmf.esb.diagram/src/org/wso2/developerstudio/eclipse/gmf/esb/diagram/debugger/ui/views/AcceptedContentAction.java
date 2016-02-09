@@ -16,15 +16,9 @@
 package org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.ui.views;
 
 /**
- * This interface is for accept any important information for the implemented class
+ * This enum contains different actions could done on content passed with this type
  *
  */
-public interface ContentAcceptHandler {
-
-    /**
-     * This method get information from invoked location to process in the class.
-     * 
-     * @param content
-     */
-    void acceptContent(Object content, AcceptedContentAction action);
+public enum AcceptedContentAction {
+    ADD, REMOVE
 }

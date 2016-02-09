@@ -22,6 +22,16 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ES
 import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.API_METHOD_PATCH;
 import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.API_METHOD_POST;
 import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.API_METHOD_PUT;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.AXIS2_CLIENT_PROPERTIES_TAG;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.AXIS2_CLIENT_PROPERTY_TAG;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.AXIS2_PROPERTIES_TAG;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.AXIS2_PROPERTY_TAG;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.OPERATION_PROPERTIES_TAG;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.OPERATION_PROPERTY_TAG;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.SYANPSE_PROPERTY_TAG;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.SYNAPSE_PROPERTIES_TAG;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.TRANSPORT_PROPERTIES_TAG;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.TRANSPORT_PROPERTY_TAG;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -543,6 +553,28 @@ public class ESBDebuggerUtil {
                 addDebugPointMarkForExistingDebugPoints(server, file, mediatorLocator);
             }
         }
+    }
+
+    /**
+     * This method give the ESB Mediation property context name from the UI representation of the scope name
+     * 
+     * @param name
+     * @return
+     */
+    public static String getPropertyContextNameOfUIPropertyName(String name) {
+        switch (name) {
+        case AXIS2_PROPERTIES_TAG:
+            return AXIS2_PROPERTY_TAG;
+        case AXIS2_CLIENT_PROPERTIES_TAG:
+            return AXIS2_CLIENT_PROPERTY_TAG;
+        case SYNAPSE_PROPERTIES_TAG:
+            return SYANPSE_PROPERTY_TAG;
+        case TRANSPORT_PROPERTIES_TAG:
+            return TRANSPORT_PROPERTY_TAG;
+        case OPERATION_PROPERTIES_TAG:
+            return OPERATION_PROPERTY_TAG;
+        }
+        return name;
     }
 
     private static AbstractESBDebugPointMessage getSequenceTypeDebugPoint(EventMessageType event,

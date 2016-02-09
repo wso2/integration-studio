@@ -20,6 +20,9 @@ import org.eclipse.osgi.util.NLS;
 
 public class Messages extends NLS {
     private static final String BUNDLE_NAME = "org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.messages"; //$NON-NLS-1$
+    public static String AddPropertyToTableDialog_DialogDescription;
+    public static String AddPropertyToTableDialog_DialogTitle;
+    public static String AddPropertyToTableDialog_ShellTitle;
     public static String ClearPropertyDialog_CancelButtonText;
     public static String ClearPropertyDialog_Description;
     public static String ClearPropertyDialog_MessageMediationPropertyClearShellTitle;
@@ -34,6 +37,10 @@ public class Messages extends NLS {
     public static String DebuggerConfigTab_MainMessage;
     public static String DebuggerConfigTab_MainTitle;
     public static String DebuggerConfigTab_ServerHostName;
+    public static String EnvelopeView_AddPropertyButtonLabel;
+    public static String EnvelopeView_ClearPropertyButtonLabel;
+    public static String EnvelopeView_PropertyKeyLabel;
+    public static String EnvelopeView_PropertyValueLabel;
     public static String ESBDebugerUtil_ErrorDialogTitle;
     public static String ESBDebugLaunchDelegate_DebuggerInterfaceSocketsCreationErrorDialogMessage;
     public static String ESBDebugLaunchDelegate_HostIPAddressCouldNotFoundErrorDialogMessage;
@@ -54,6 +61,9 @@ public class Messages extends NLS {
     public static String InjectPropertyDialog_PropertyContextLabel;
     public static String InjectPropertyDialog_PropertyInjectShellTitle;
     public static String InjectPropertyDialog_PropertyValueLabel;
+    public static String RemovePropertyFromTableDialog_DialogDescription;
+    public static String RemovePropertyFromTableDialog_DialogTitle;
+    public static String RemovePropertyFromTableDialog_ShellTitle;
     static {
         // initialize resource bundle
         NLS.initializeMessages(BUNDLE_NAME, Messages.class);

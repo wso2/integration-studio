@@ -13,18 +13,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.ui.views;
+package org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.internal.communication.requests;
+
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.model.ESBStackFrame;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.ui.views.EnvelopeView;
 
 /**
- * This interface is for accept any important information for the implemented class
+ * This class represent the request event from {@link EnvelopeView} to {@link ESBStackFrame} when property value is
+ * needed to add to the table in the separate view.
  *
  */
-public interface ContentAcceptHandler {
+public class AddPropertyToTableDialogRequest {
 
-    /**
-     * This method get information from invoked location to process in the class.
-     * 
-     * @param content
-     */
-    void acceptContent(Object content, AcceptedContentAction action);
 }

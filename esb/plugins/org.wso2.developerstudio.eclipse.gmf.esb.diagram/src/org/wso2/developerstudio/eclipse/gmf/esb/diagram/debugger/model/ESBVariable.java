@@ -17,6 +17,8 @@ package org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.model;
 
 import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.*;
 
+import java.util.Set;
+
 import org.eclipse.debug.core.DebugEvent;
 import org.eclipse.debug.core.DebugException;
 import org.eclipse.debug.core.model.IDebugTarget;
@@ -27,6 +29,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.internal.commun
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.messages.command.PropertyChangeCommand;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.messages.util.PropertyValueBean;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerUtil;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
@@ -41,20 +44,25 @@ public class ESBVariable extends ESBDebugElement implements IVariable {
     private final String variableName;
     private ESBValue variableValue;
     private final String variableContext;
+    private final Set<String> tablePropertySet;
 
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
-    protected ESBVariable(IDebugTarget target, String name, String value, String context) throws DebugException {
+    protected ESBVariable(IDebugTarget target, String name, String value, String context, Set<String> tablePropertySet)
+            throws DebugException {
         super(target);
         variableName = name;
         variableContext = context;
+        this.tablePropertySet = tablePropertySet;
         setValue(value);
     }
 
-    public ESBVariable(IDebugTarget target, String name, JsonElement value, String context) throws DebugException {
+    public ESBVariable(IDebugTarget target, String name, JsonElement value, String context, Set<String> tablePropertySet)
+            throws DebugException {
         super(target);
         variableName = name;
         variableContext = context;
+        this.tablePropertySet = tablePropertySet;
         setValue(value);
     }
 
@@ -64,12 +72,12 @@ public class ESBVariable extends ESBDebugElement implements IVariable {
      * @throws DebugException
      */
     public void setValue(JsonElement expression) throws DebugException {
-        variableValue = new ESBValue(getDebugTarget(), expression, variableName);
+        variableValue = new ESBValue(getDebugTarget(), expression, variableName, tablePropertySet);
     }
 
     @Override
     public void setValue(String expression) throws DebugException {
-        variableValue = new ESBValue(getDebugTarget(), expression, variableName);
+        variableValue = new ESBValue(getDebugTarget(), expression, variableName, tablePropertySet);
     }
 
     /**
@@ -98,7 +106,7 @@ public class ESBVariable extends ESBDebugElement implements IVariable {
     public boolean verifyValue(String modifiedValue) {
         PropertyValueBean property = new PropertyValueBean(variableName, modifiedValue);
         PropertyChangeCommand propertyCommand = new PropertyChangeCommand(SET_COMMAND, PROPERTY_VALUE,
-                getPropertyContextNameOfUIPropertyName(variableContext), property);
+                ESBDebuggerUtil.getPropertyContextNameOfUIPropertyName(variableContext), property);
         PropertyChangeRequest propertyChangeRequest = new PropertyChangeRequest(propertyCommand);
         getDebugTarget().fireModelEvent(propertyChangeRequest);
         try {
@@ -143,22 +151,6 @@ public class ESBVariable extends ESBDebugElement implements IVariable {
     @Override
     public boolean hasValueChanged() throws DebugException {
         return false;
-    }
-
-    private String getPropertyContextNameOfUIPropertyName(String name) {
-        switch (name) {
-        case AXIS2_PROPERTIES_TAG:
-            return AXIS2_PROPERTY_TAG;
-        case AXIS2_CLIENT_PROPERTIES_TAG:
-            return AXIS2_CLIENT_PROPERTY_TAG;
-        case SYNAPSE_PROPERTIES_TAG:
-            return SYANPSE_PROPERTY_TAG;
-        case TRANSPORT_PROPERTIES_TAG:
-            return TRANSPORT_PROPERTY_TAG;
-        case OPERATION_PROPERTIES_TAG:
-            return OPERATION_PROPERTY_TAG;
-        }
-        return name;
     }
 
 }

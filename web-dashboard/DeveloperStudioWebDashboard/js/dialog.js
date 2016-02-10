@@ -1,4 +1,6 @@
 
+var projectFunction = "";
+
 $(document).ready(function() {
    
     // IMPORTANT: You must call .steps() before calling .formValidation()
@@ -45,7 +47,7 @@ $(document).ready(function() {
                 mavenInfo.version = $('#version').val();
                 project.mavenInfo = mavenInfo;
                 var projectString = JSON.stringify(project);
-                var result = ExecuteCustomFunction("newAnalyticsProject", projectString);
+                var result = ExecuteCustomFunction(projectFunction, projectString);
                 $('#projectCreationWizardModal').modal('hide');
             }
         })
@@ -59,5 +61,17 @@ function createNewProject() {
 	$('#artifactID').val("analytics.sample");
 	$('#groupID').val("org.wso2.test");
 	$('#version').val("1.0.0");
+	projectFunction = "newAnalyticsProject";
+	$('#projectCreationWizardModal').modal();
+}
+
+function createNewRegistryProject(){
+	var workspace = ExecuteCustomFunction("getWorkspaceLocation");
+	$('#projectName').val("");
+	$('#location').val(workspace + "/");
+	$('#artifactID').val("registry.sample");
+	$('#groupID').val("org.wso2.test");
+	$('#version').val("1.0.0");
+	projectFunction = "newGeneralProject";
 	$('#projectCreationWizardModal').modal();
 }

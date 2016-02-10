@@ -22,6 +22,7 @@ import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.wso2.developerstudio.eclipse.artifact.analytics.ui.wizard.AnalyticsProjectCreationWizard;
+import org.wso2.developerstudio.eclipse.general.project.ui.wizard.GeneralProjectWizard;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.platform.core.exception.ObserverFailedException;
@@ -62,11 +63,37 @@ public class DashboardFunctionExecutor implements AbstractEditorFunctionExecutor
 				log.error("Invalid (JSON)configuration", e);
 				return e.getMessage();
 			}
-			
 			return wizard.performFinish();
 		} if (functionName.equals("getWorkspaceLocation")) {
 			String location = ResourcesPlugin.getWorkspace().getRoot().getLocation().toString();
 			return location;
+		}if (functionName.equals("newGeneralProject")) {
+			GeneralProjectWizard wizard = new GeneralProjectWizard();
+			JSONObject projectObj = null;
+			try {
+				projectObj = new JSONObject((String)args[1]);
+			} catch (JSONException jsonException) {
+				log.error("Received invalid (JSON)configuration for the project", jsonException);
+				return jsonException.getMessage();
+			}
+			
+			ProjectDataModel generalProjectModel = ((AbstractWSO2ProjectCreationWizard)wizard).getModel();
+			try {
+				//generalProjectModel.setSelectedOption("new.analyticsProject");
+				generalProjectModel.setProjectName((String)projectObj.get("name"));
+				generalProjectModel.setLocation(new File((String)projectObj.get("location")));
+				JSONObject mavenObj = (JSONObject) projectObj.get("mavenInfo");
+				MavenInfo mavenInfo = new MavenInfo((String)mavenObj.getString("groupId"),
+													(String)mavenObj.getString("artifactId"), 
+													(String)mavenObj.getString("version"));
+				generalProjectModel.setMavenInfo(mavenInfo);
+				
+			} catch (ObserverFailedException | JSONException e) {
+				log.error("Invalid (JSON)configuration", e);
+				return e.getMessage();
+			}
+			
+			return wizard.performFinish();
 		}
 		return false;
 	}

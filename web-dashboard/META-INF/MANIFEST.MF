@@ -16,6 +16,7 @@ Bundle-ActivationPolicy: lazy
 Bundle-ClassPath: .
 Import-Package: org.codehaus.jettison.json,
  org.wso2.developerstudio.eclipse.artifact.analytics.ui.wizard,
+ org.wso2.developerstudio.eclipse.general.project.ui.wizard;version="4.0.0",
  org.wso2.developerstudio.eclipse.logging.core;version="4.0.0",
  org.wso2.developerstudio.eclipse.platform.core.exception;version="4.0.0",
  org.wso2.developerstudio.eclipse.platform.core.model;version="4.0.0",

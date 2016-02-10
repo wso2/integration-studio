@@ -32,16 +32,14 @@ import org.eclipse.emf.common.util.Enumerator;
  */
 public enum Protocol implements Enumerator {
 	/**
-	 * The '<em><b>Http</b></em>' literal object.
+	 * The '<em><b>Http https</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #HTTP_VALUE
+	 * @see #HTTP_HTTPS_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	HTTP(0, "http", "http"),
-
-	/**
+	HTTP_HTTPS(0, "http_https", "http_https"), /**
 	 * The '<em><b>Https</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -49,22 +47,30 @@ public enum Protocol implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	HTTPS(1, "https", "https");
-
-	/**
-	 * The '<em><b>Http</b></em>' literal value.
+	HTTPS(2, "https", "https"), /**
+	 * The '<em><b>Http</b></em>' literal object.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Http</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #HTTP
-	 * @model name="http"
+	 * @see #HTTP_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	public static final int HTTP_VALUE = 0;
+	HTTP(1, "http", "http");
+
+	/**
+	 * The '<em><b>Http https</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>Http https</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #HTTP_HTTPS
+	 * @model name="http_https"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int HTTP_HTTPS_VALUE = 0;
 
 	/**
 	 * The '<em><b>Https</b></em>' literal value.
@@ -79,7 +85,22 @@ public enum Protocol implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int HTTPS_VALUE = 1;
+	public static final int HTTPS_VALUE = 2;
+
+	/**
+	 * The '<em><b>Http</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>Http</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #HTTP
+	 * @model name="http"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int HTTP_VALUE = 1;
 
 	/**
 	 * An array of all the '<em><b>Protocol</b></em>' enumerators.
@@ -89,8 +110,9 @@ public enum Protocol implements Enumerator {
 	 */
 	private static final Protocol[] VALUES_ARRAY =
 		new Protocol[] {
-			HTTP,
+			HTTP_HTTPS,
 			HTTPS,
+			HTTP,
 		};
 
 	/**
@@ -141,8 +163,9 @@ public enum Protocol implements Enumerator {
 	 */
 	public static Protocol get(int value) {
 		switch (value) {
-			case HTTP_VALUE: return HTTP;
+			case HTTP_HTTPS_VALUE: return HTTP_HTTPS;
 			case HTTPS_VALUE: return HTTPS;
+			case HTTP_VALUE: return HTTP;
 		}
 		return null;
 	}

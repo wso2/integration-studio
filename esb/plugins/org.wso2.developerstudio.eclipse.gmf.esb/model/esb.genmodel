@@ -638,8 +638,9 @@
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//DataMapperMediatorDataTypes/JSON"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//Protocol">
-      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//Protocol/http"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//Protocol/http_https"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//Protocol/https"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//Protocol/http"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//InboundEndpointType">
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//InboundEndpointType/http"/>

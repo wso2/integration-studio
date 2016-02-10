@@ -495,9 +495,9 @@ public class DefaultEsbModelExporter implements EsbModelTransformer {
             final Document document = parseXmlFile(unformattedXml);
 
             OutputFormat format = new OutputFormat(document);
-            format.setLineWidth(65);
             format.setIndenting(true);
-            format.setIndent(2);
+            format.setIndent(4);
+            format.setLineWidth(-1);
             Writer out = new StringWriter();
             XMLSerializer serializer = new XMLSerializer(out, format);
             serializer.serialize(document);

@@ -115,8 +115,11 @@ public class APIDeserializer extends AbstractEsbNodeDeserializer<API, SynapseAPI
 			int protocol = resources[i].getProtocol();
 			if (protocol == 2) {
 				executeSetValueCommand(API_RESOURCE__PROTOCOL, Protocol.HTTPS);
-			} else {
+			} else if (protocol == 1) {
 				executeSetValueCommand(API_RESOURCE__PROTOCOL, Protocol.HTTP);
+			} else {
+				executeSetValueCommand(API_RESOURCE__PROTOCOL,
+						Protocol.HTTP_HTTPS);
 			}
 			
 			SequenceMediator inSequence = resources[i].getInSequence();

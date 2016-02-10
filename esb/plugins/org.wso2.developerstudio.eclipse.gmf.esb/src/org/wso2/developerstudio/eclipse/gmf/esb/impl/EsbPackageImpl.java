@@ -23332,8 +23332,9 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		addEEnumLiteral(dataMapperMediatorDataTypesEEnum, DataMapperMediatorDataTypes.JSON);
 
 		initEEnum(protocolEEnum, Protocol.class, "Protocol");
-		addEEnumLiteral(protocolEEnum, Protocol.HTTP);
+		addEEnumLiteral(protocolEEnum, Protocol.HTTP_HTTPS);
 		addEEnumLiteral(protocolEEnum, Protocol.HTTPS);
+		addEEnumLiteral(protocolEEnum, Protocol.HTTP);
 
 		initEEnum(inboundEndpointTypeEEnum, InboundEndpointType.class, "InboundEndpointType");
 		addEEnumLiteral(inboundEndpointTypeEEnum, InboundEndpointType.HTTP);

@@ -122,8 +122,7 @@ public class APIResourceTransformer extends AbstractEsbNodeTransformer {
 			if (visualResource.isAllowPatch()) {
 				resource.addMethod("PATCH");
 			}
-			resource.setProtocol(visualResource.getProtocol().getValue() + 1);// mapping of protocol in synapse and gmf
-																				// model
+			resource.setProtocol(visualResource.getProtocol().getValue());
 
 			information.getCurrentAPI().addResource(resource);
 

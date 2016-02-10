@@ -488,7 +488,7 @@ public class APIResourceImpl extends EsbNodeImpl implements APIResource {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final Protocol PROTOCOL_EDEFAULT = Protocol.HTTP;
+	protected static final Protocol PROTOCOL_EDEFAULT = Protocol.HTTP_HTTPS;
 
 	/**
 	 * The cached value of the '{@link #getProtocol() <em>Protocol</em>}' attribute.

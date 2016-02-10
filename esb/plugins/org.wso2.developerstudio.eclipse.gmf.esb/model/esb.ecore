@@ -2801,8 +2801,9 @@
   <eClassifiers xsi:type="ecore:EClass" name="FastXSLTMediatorInputConnector" eSuperTypes="#//InputConnector"/>
   <eClassifiers xsi:type="ecore:EClass" name="FastXSLTMediatorOutputConnector" eSuperTypes="#//OutputConnector"/>
   <eClassifiers xsi:type="ecore:EEnum" name="Protocol">
-    <eLiterals name="http" literal="http"/>
-    <eLiterals name="https" value="1" literal="https"/>
+    <eLiterals name="http_https" literal="http_https"/>
+    <eLiterals name="https" value="2" literal="https"/>
+    <eLiterals name="http" value="1"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="InboundEndpoint" eSuperTypes="#//EsbElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="sequenceInputConnector"

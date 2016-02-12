@@ -44,6 +44,7 @@ import org.wso2.developerstudio.datamapper.DataMapperPackage;
 import org.wso2.developerstudio.datamapper.Element;
 import org.wso2.developerstudio.datamapper.SchemaDataType;
 import org.wso2.developerstudio.datamapper.TreeNode;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.custom.CustomNonResizableEditPolicyEx;
 import org.wso2.developerstudio.datamapper.diagram.tree.generator.TreeFromAVSC;
 import org.wso2.developerstudio.datamapper.diagram.tree.model.Tree;
 import org.wso2.developerstudio.datamapper.impl.InputImpl;
@@ -393,6 +394,7 @@ public class InputEditPart extends ShapeNodeEditPart {
 				new org.wso2.developerstudio.datamapper.diagram.edit.policies.InputCanonicalEditPolicy());
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
 		removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.POPUPBAR_ROLE);
+		installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE, new CustomNonResizableEditPolicyEx());
 	}
 
 	/**

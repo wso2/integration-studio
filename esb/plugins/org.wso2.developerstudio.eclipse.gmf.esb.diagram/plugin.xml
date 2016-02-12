@@ -6540,7 +6540,16 @@
             schemeId="org.eclipse.ui.defaultAcceleratorConfiguration">
       </key>
    </extension>
- <!--key board shortcuts-->
+    <!--key board shortcuts-->
+   <extension
+          point="org.wso2.developerstudio.eclipse.platform.core.artifacttemplates">
+   <template
+            file="resources/templates/datamapper/datamapper.dmc"
+            id="org.wso2.developerstudio.eclipse.esb.template.datamapper"
+            name="Data Mapper"
+            mediaType="application/datamapper"
+            extension="dmc"></template>
+ </extension>
   </plugin>
 
 

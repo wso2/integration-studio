@@ -49,9 +49,6 @@ import org.wso2.developerstudio.eclipse.general.project.artifact.bean.RegistryEl
 import org.wso2.developerstudio.eclipse.general.project.artifact.bean.RegistryItem;
 import org.wso2.developerstudio.eclipse.general.project.utils.GeneralProjectUtils;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.Activator;
-import org.wso2.developerstudio.eclipse.registry.core.RegistryManager;
-import org.wso2.developerstudio.eclipse.registry.core.interfaces.IRegistryFile;
-import org.wso2.developerstudio.eclipse.registry.core.interfaces.RegistryFileImpl;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
@@ -63,6 +60,9 @@ import org.wso2.developerstudio.eclipse.platform.core.registry.util.RegistryReso
 import org.wso2.developerstudio.eclipse.platform.core.registry.util.RegistryResourceUtils;
 import org.wso2.developerstudio.eclipse.platform.core.templates.ArtifactTemplate;
 import org.wso2.developerstudio.eclipse.platform.core.templates.ArtifactTemplateHandler;
+import org.wso2.developerstudio.eclipse.registry.core.RegistryManager;
+import org.wso2.developerstudio.eclipse.registry.core.interfaces.IRegistryFile;
+import org.wso2.developerstudio.eclipse.registry.core.interfaces.RegistryFileImpl;
 import org.wso2.developerstudio.eclipse.utils.data.ITemporaryFileTag;
 import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
 
@@ -85,7 +85,6 @@ public class ESBDataMapperConfigurationDialog extends Dialog {
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
 	private static final String DATAMAPPER_REGISTRY_PATH = "/_system/governance/datamapper"; //$NON-NLS-1$
-	private static final String DATA_MAPPER_TEMPLATE_STRING = "/* WSO2 Data Mapper Config */"; //$NON-NLS-1$
 	private static final String REPO_ID_1 = "wso2-nexus-maven2-repository-1"; //$NON-NLS-1$
 	private static final String REPO_URL_1 = "http://maven.wso2.org/nexus/content/groups/wso2-public/"; //$NON-NLS-1$
 	private static final String REPO_ID = "wso2-maven2-repository-1"; //$NON-NLS-1$
@@ -303,11 +302,10 @@ public class ESBDataMapperConfigurationDialog extends Dialog {
 		if (getSelectedOption() == CREATE_NEW_CONFIGURATION_OPTION) {
 			/* Create new configuration case */
 			try {
-				String templateString;
-				templateString = DATA_MAPPER_TEMPLATE_STRING;
-
+			
 				String name;
 				String selectedTemplateExtension = getSelectedTemplateExtension();
+				String templateString = getSelectedTemplateContent();
 				if (selectedTemplateExtension == null) {
 					name = textConfigName.getText();
 				} else {
@@ -628,6 +626,11 @@ public class ESBDataMapperConfigurationDialog extends Dialog {
 
 	private String getSelectedTemplateExtension() {
 		return artifactTemplates[0].getDefaultExtension();
+	}
+	
+	private String getSelectedTemplateContent() throws IOException{
+		return FileUtils.getContentAsString(artifactTemplates[0].getTemplateDataStream());
+		
 	}
 
 	private void loadTemplateList() {

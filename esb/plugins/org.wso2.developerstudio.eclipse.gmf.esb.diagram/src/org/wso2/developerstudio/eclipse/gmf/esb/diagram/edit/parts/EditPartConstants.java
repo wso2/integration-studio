@@ -43,7 +43,7 @@ public class EditPartConstants {
 	public static final String COMMAND_MEDIATOR_ICON_PATH = "icons/ico20/command-mediator.gif";
 	public static final String CONDITIONALROUTER_MEDIATOR_ICON_PATH = "icons/ico20/conditionalRouter-mediator.gif";
 	public static final String CLASS_MEDIATOR_ICON_PATH = "icons/ico20/class-mediator.gif";
-	public static final String DATAMAPPER_MEDIATOR_ICON_PATH = "icons/ico20/conditionalRouter-mediator.gif";
+	public static final String DATAMAPPER_MEDIATOR_ICON_PATH = "icons/ico20/datamapper-mediator.gif";
 	public static final String DBLOOKUP_MEDIATOR_ICON_PATH = "icons/ico20/dblookup-mediator.gif";
 	public static final String DBREPORT_MEDIATOR_ICON_PATH = "icons/ico20/dbreport-mediator.gif";
 	public static final String EJB_MEDIATOR_ICON_PATH = "icons/ico20/ejb-mediator.gif";

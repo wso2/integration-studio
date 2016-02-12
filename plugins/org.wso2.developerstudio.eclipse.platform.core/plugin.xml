@@ -569,11 +569,5 @@
             name="XSD File"
             mediaType="application/xsd"
             extension="xsd"></template>
-        <template
-            file="resources/templates/datamapper/datamapper.dmc"
-            id="org.wso2.developerstudio.eclipse.esb.template.datamapper"
-            name="Data Mapper"
-            mediaType="application/datamapper"
-            extension="dmc"></template>
     </extension>
 </plugin>

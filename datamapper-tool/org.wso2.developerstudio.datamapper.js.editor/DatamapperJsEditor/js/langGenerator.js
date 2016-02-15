@@ -328,6 +328,7 @@ function generateLanguage() {
 		return element.get("inPorts").length == 0
 				|| element.get("outPorts").length == 0;
 	}
+	
 	function isElementanOperation(element) {
 		return element.get("inPorts").length > 0
 				|| element.get("outPorts").length > 0;

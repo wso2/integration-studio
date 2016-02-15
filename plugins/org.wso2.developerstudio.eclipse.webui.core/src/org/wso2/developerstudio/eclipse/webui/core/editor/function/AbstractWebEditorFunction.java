@@ -32,7 +32,9 @@ public abstract class AbstractWebEditorFunction extends BrowserFunction {
 	public AbstractWebEditorFunction(AbstractWebBasedEditor editor, String name) {
 		this(editor.getBrowser(), name);
 		this.editor = editor;
-		this.editorInput = (FileEditorInput) editor.getEditorInput();
+		if (editor.getEditorInput() instanceof FileEditorInput) {
+			this.editorInput = (FileEditorInput) editor.getEditorInput();
+		}
 	}
 
 	public AbstractWebEditorFunction(Browser browser, String name) {

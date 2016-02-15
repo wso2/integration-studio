@@ -80,9 +80,9 @@ public class ProjectImportWizard extends ExternalProjectImportWizard {
 			} else if (project.hasNature(Constants.GENERAL_PROJECT_NATURE)) {
 				deleteGraphicalSynapseConfigFiles(project);
 			}
-		} catch (CoreException e) {
-			log.error("Error while deleting graphical-synapse-config directory in " + project);
-		}
+        } catch (CoreException e) {
+            log.error("Error while deleting graphical-synapse-config directory in " + project + e);
+        }
 	}
 
 	private void deleteGraphicalSynapseConfigDir(IProject project) throws CoreException {

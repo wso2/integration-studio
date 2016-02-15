@@ -491,12 +491,11 @@ public class CarbonServer44Utils implements CarbonServerXUtils {
 				XPath xPath = factory.newXPath();
 				XPath catelinaXPath = factory.newXPath();
 				xPath.setNamespaceContext(cntx);
-				Node httpNode =
-				                (Node) catelinaXPath.evaluate("/Server/Service/Connector[1]/@port", catelinaDocument,
-				                                              XPathConstants.NODE);
-				Node httpsNode =
-				                 (Node) catelinaXPath.evaluate(CarbonServerCommonConstants.getCatalinaXpathExpressionForSslEnabledPort(Activator.PLUGIN_ID),
-				                                               catelinaDocument, XPathConstants.NODE);
+                Node httpNode = (Node) catelinaXPath.evaluate("/Server/Service/Connector[1]/@port", catelinaDocument,
+                        XPathConstants.NODE);
+                Node httpsNode = (Node) catelinaXPath.evaluate(
+                        CarbonServerCommonConstants.getCatalinaXpathExpressionForSslEnabledPort(Activator.PLUGIN_ID),
+                        catelinaDocument, XPathConstants.NODE);
 				Node offSet = (Node) xPath.evaluate("/Server/Ports/Offset", document, XPathConstants.NODE);
 				for (ServerPort serverPort : serverPorts) {
 					ServerPort port = serverPort;

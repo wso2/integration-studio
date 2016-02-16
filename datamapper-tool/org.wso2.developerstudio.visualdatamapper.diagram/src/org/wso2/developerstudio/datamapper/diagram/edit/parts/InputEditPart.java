@@ -87,6 +87,11 @@ public class InputEditPart extends ShapeNodeEditPart {
 	public void activate() {
 		super.activate();
 	}
+	
+	@Override
+	public boolean canAttachNote() {
+		return false;
+	}
 
 	public void resetInputTreeFromFile(String filePath) {
 		EObject parentContainer = ((org.eclipse.gmf.runtime.notation.impl.NodeImpl) (this)
@@ -495,7 +500,7 @@ public class InputEditPart extends ShapeNodeEditPart {
 			layoutThis.setSpacing(0);
 			layoutThis.setVertical(true);
 			this.setLayoutManager(layoutThis);
-			this.setPreferredSize(new Dimension(getMapMode().DPtoLP(250), getMapMode().DPtoLP(100)));
+			this.setPreferredSize(new Dimension(getMapMode().DPtoLP(250), getMapMode().DPtoLP(200)));
 			this.setOutline(true);
 
 			TitleBarBorder titleBarBorder = new TitleBarBorder("Input");

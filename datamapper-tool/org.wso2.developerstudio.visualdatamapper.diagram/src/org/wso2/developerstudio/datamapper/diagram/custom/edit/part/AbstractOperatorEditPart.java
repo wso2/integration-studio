@@ -9,5 +9,13 @@ public abstract class AbstractOperatorEditPart extends ShapeNodeEditPart{
 		super(view);
 		// TODO Auto-generated constructor stub
 	}
+	
+	/**
+	 * @generated NOT
+	 */
+	@Override
+	public boolean canAttachNote() {
+		return false;
+	}
 
 }

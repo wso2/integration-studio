@@ -80,6 +80,9 @@ public class OutputEditPart extends ShapeNodeEditPart {
 		super(view);
 	}
 	
+	/**
+	 * @generated NOT
+	 */
 	@Override
 	public boolean canAttachNote() {
 		return false;

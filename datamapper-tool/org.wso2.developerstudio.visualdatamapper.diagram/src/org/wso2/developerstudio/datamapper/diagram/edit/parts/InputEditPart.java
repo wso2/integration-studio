@@ -88,6 +88,9 @@ public class InputEditPart extends ShapeNodeEditPart {
 		super.activate();
 	}
 	
+	/**
+	 * @generated NOT
+	 */
 	@Override
 	public boolean canAttachNote() {
 		return false;

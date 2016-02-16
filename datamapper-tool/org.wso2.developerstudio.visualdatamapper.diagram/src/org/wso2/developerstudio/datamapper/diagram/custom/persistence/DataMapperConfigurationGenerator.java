@@ -23,12 +23,14 @@ public class DataMapperConfigurationGenerator {
     	
     	List<JsFunction> dmcFunctions = new ArrayList<JsFunction>();
     	
+    	/* TODO Need to find alternative for this
     	DataMapperRoot rootDiagram =  (DataMapperRoot)DataMapperDiagramEditor.getInstance().getDiagram().getElement();
     	TreeNode inputTreeNode = rootDiagram.getInput().getTreeNode().get(0);
     	TreeNode outputTreeNode = rootDiagram.getOutput().getTreeNode().get(0);
 
     	String input = inputTreeNode.getName();
 		String output = outputTreeNode.getName();
+		
 		
 		String functionStart = "function map_S_"+input+"_S_"+output+"(" + input + ", " + output + "){\n";
 		String functionReturn = "return " + output + ";\n";
@@ -40,7 +42,8 @@ public class DataMapperConfigurationGenerator {
 		
 		List<JsFunction> innerFunctions = getFunctionForTheTreeNode(rootDiagram.getInput().getTreeNode(), dmcFunctions, 0, null);
 		mainFunction.getFunctions().addAll(innerFunctions);
-		
+		*/
+    	
 		String documentString = "";
 		for (JsFunction func : dmcFunctions) {
 			documentString += func.toString() + "\n\n";

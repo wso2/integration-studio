@@ -23,7 +23,7 @@
          icon="icons/obj16/DataMapperDiagramFile.gif"
          extensions="datamapper_diagram"
          default="true"
-         class="org.wso2.developerstudio.datamapper.diagram.part.DataMapperMultiPageEditor"
+         class="org.wso2.developerstudio.datamapper.diagram.part.DataMapperDiagramEditor"
          matchingStrategy="org.wso2.developerstudio.datamapper.diagram.part.DataMapperMatchingStrategy"
          contributorClass="org.wso2.developerstudio.datamapper.diagram.part.DataMapperDiagramActionBarContributor">
       </editor>

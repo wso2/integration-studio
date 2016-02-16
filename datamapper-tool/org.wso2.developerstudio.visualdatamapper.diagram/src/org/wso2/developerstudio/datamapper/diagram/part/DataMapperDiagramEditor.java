@@ -296,7 +296,7 @@ public class DataMapperDiagramEditor extends DiagramDocumentEditor implements IG
 
 		//This enables the property view to be informed of selection changes in our graphical view, 
 		//when our view is the active workbench part.
-		dataMapperEditor.getSite().setSelectionProvider(viewer);
+		this.getSite().setSelectionProvider(viewer);
 
 		org.wso2.developerstudio.datamapper.diagram.part.DiagramEditorContextMenuProvider provider = new org.wso2.developerstudio.datamapper.diagram.part.DiagramEditorContextMenuProvider(
 				this, getDiagramGraphicalViewer());

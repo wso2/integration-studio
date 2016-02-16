@@ -182,6 +182,9 @@ public class AvroSchemaTransformer {
 		case SchemaDataType.NULL_VALUE:
 			fieldDatatype = Type.NULL;
 			break;
+		case SchemaDataType.UNION_VALUE:
+			fieldDatatype = Type.STRING; //TODO fix this, may need to revisit how this types is assinged and used
+			break;
 		// Following types are not supported yet : ENUM, FIXED, MAP, UNION
 		default:
 			break;

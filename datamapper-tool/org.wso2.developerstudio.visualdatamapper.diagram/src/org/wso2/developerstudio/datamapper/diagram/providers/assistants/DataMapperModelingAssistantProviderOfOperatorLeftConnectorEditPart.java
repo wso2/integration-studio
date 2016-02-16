@@ -15,7 +15,7 @@ public class DataMapperModelingAssistantProviderOfOperatorLeftConnectorEditPart 
 		DataMapperModelingAssistantProvider {
 
 	/**
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	public List<IElementType> getTypesForPopupBar(IAdaptable host) {

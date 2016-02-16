@@ -295,6 +295,10 @@ public class SchemaKeyEditorDialog extends Dialog {
 			IRegistryData selectedPathData = CAppEnvironment.getRegistryHandler()
 					.selectRegistryPath(registryConnections, REGISTRY_BROWSER,
 							SELECT_REGISTRY_RESOURCE, IRegistryHandler.SELECTED_REGISTRY_RESOURCE);
+			
+			if (selectedPathData == null) {
+				return;
+			}
 
 			DataMapperSchemaEditorUtil schemaEditorUtil = new DataMapperSchemaEditorUtil(inputFile);
 			String schemaFilePath = schemaEditorUtil.createDiagram(selectedPathData, schemaType);
@@ -375,6 +379,10 @@ public class SchemaKeyEditorDialog extends Dialog {
 			fid.setFilterExtensions(new String[] { FILTER_EXTENSION_AVSC, FILTER_EXTENSION_TXT });
 			fid.setText(INPUT_SCHEMA_FILE);
 			String filePath = fid.open();
+			
+			if (filePath == null) {
+				return;
+			}
 
 			DataMapperSchemaEditorUtil schemaEditorUtil = new DataMapperSchemaEditorUtil(inputFile);
 			String schemaFilePath = schemaEditorUtil.createDiagram(

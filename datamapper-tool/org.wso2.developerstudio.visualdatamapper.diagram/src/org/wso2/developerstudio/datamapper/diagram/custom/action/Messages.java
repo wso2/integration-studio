@@ -80,6 +80,8 @@ public class Messages extends NLS {
 	public static String AddNewRootRecordAction_addNewRoot;
 	public static String AddNewRootRecordAction_errorAddChild;
 	public static String AddNewRootRecordAction_errorHeader;
+	public static String AddNewRootRecordAction_addMultipleRootElements;
+	public static String AddNewRootRecordAction_addMultipleRootElementsTitle;
 	public static String Configure_Concat_Operator;
 	
 	public static String ExportSchemaAction_errorSavingFile;

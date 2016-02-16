@@ -22,7 +22,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.command.AddCommand;
 import org.eclipse.emf.edit.command.RemoveCommand;
 import org.eclipse.gef.EditPart;
-import org.eclipse.gef.RootEditPart;
 import org.eclipse.gmf.runtime.common.ui.action.AbstractActionHandler;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart;
 import org.eclipse.gmf.runtime.notation.Node;
@@ -42,7 +41,6 @@ import org.wso2.developerstudio.datamapper.diagram.Activator;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.DataMapperRootEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.InputEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.OutputEditPart;
-import org.wso2.developerstudio.datamapper.diagram.part.DataMapperDiagramEditor;
 import org.wso2.developerstudio.datamapper.impl.TreeNodeImpl;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
@@ -55,6 +53,8 @@ public class AddNewRootRecordAction extends AbstractActionHandler {
 	private static final String ADD_NEW_ROOT_RECORD_ACTION_ID = "add-new-root-record-action-id"; //$NON-NLS-1$
 	private static final String NEW_ROOT_RECORD_ID = "NewRootType"; //$NON-NLS-1$
 	private static final String ADD_NEW_ROOT_RECORD = Messages.AddNewRootRecordAction_addNewRoot;
+	private static final String ERROR_ADDING_MULTIPLE_ROOT_ELEMENTS = Messages.AddNewRootRecordAction_addMultipleRootElements;
+	private static final String ERROR_ADDING_MULTIPLE_ROOT_ELEMENTS_TITLE = Messages.AddNewRootRecordAction_addMultipleRootElementsTitle;
 	private static final String ERROR = Messages.AddNewRootRecordAction_errorHeader;
 	private static final String ERROR_ADDING_NEW_CHILD = Messages.AddNewRootRecordAction_errorAddChild;
 
@@ -75,108 +75,111 @@ public class AddNewRootRecordAction extends AbstractActionHandler {
 		selectedEP = getSelectedEditPart();
 
 		if (null != selectedEP) {
-			// FIXME Handle if a root node is already added
+			// Not allow to add multiple root elements
+			if (!selectedEP.getChildren().isEmpty() && selectedEP instanceof InputEditPart) {
+				MessageDialog.openWarning(Display.getCurrent().getActiveShell(), ERROR_ADDING_MULTIPLE_ROOT_ELEMENTS_TITLE, ERROR_ADDING_MULTIPLE_ROOT_ELEMENTS);
+			} else {
+				// FIXME Handle if a root node is already added
+				// Returns the TreeNodeImpl object respective to selectedEP
+				EObject object = ((Node) selectedEP.getModel()).getElement();
 
-			// Returns the TreeNodeImpl object respective to selectedEP
-			EObject object = ((Node) selectedEP.getModel()).getElement();
+				// Configure the new tree node by setting default values
+				TreeNode treeNodeNew = DataMapperFactory.eINSTANCE.createTreeNode();
+				treeNodeNew.setName(NEW_ROOT_RECORD_ID);
+				treeNodeNew.setLevel(1);
+				treeNodeNew.setSchemaDataType(SchemaDataType.RECORD);
 
-			// Configure the new tree node by setting default values
-			TreeNode treeNodeNew = DataMapperFactory.eINSTANCE.createTreeNode();
-			treeNodeNew.setName(NEW_ROOT_RECORD_ID);
-			treeNodeNew.setLevel(1);
-			treeNodeNew.setSchemaDataType(SchemaDataType.RECORD);
-
-			String selectedInputOutputEditPart = getSelectedInputOutputEditPart();
-			if (null != selectedInputOutputEditPart) {
-				AddCommand addCmd;
-				if (INPUT_EDITPART.equals(selectedInputOutputEditPart)) {
-					/*
-					 * add command is changed to input tree node type when input
-					 * editpart is selected. index 0 to add as the first child
-					 */
-					addCmd = new AddCommand(((GraphicalEditPart) selectedEP).getEditingDomain(),
-							object, DataMapperPackage.Literals.INPUT__TREE_NODE, treeNodeNew, 0);
-				} else {
-					/*
-					 * add command is changed to output tree node type when
-					 * output editpart is selected. index 0 to add as the first
-					 * child
-					 */
-					addCmd = new AddCommand(((GraphicalEditPart) selectedEP).getEditingDomain(),
-							object, DataMapperPackage.Literals.OUTPUT__TREE_NODE, treeNodeNew, 0);
-				}
-
-				if (addCmd.canExecute()) {
-					((GraphicalEditPart) selectedEP).getEditingDomain().getCommandStack()
-							.execute(addCmd);
-				}
-
-				// FIXME force refresh root
+				String selectedInputOutputEditPart = getSelectedInputOutputEditPart();
 				if (null != selectedInputOutputEditPart) {
-					if(selectedEP instanceof InputEditPart){
-						DataMapperRootEditPart rep = (DataMapperRootEditPart) selectedEP.getParent();
-						DataMapperRoot rootDiagram = (DataMapperRoot)((DiagramImpl)rep.getModel()).getElement();
-						if (INPUT_EDITPART.equals(selectedInputOutputEditPart)) {
-							EList<TreeNode> inputTreeNodesList = rootDiagram.getInput().getTreeNode();
-							if (null != inputTreeNodesList && !inputTreeNodesList.isEmpty()) {
-								// keep a temp reference
-								TreeNodeImpl inputTreeNode = (TreeNodeImpl) inputTreeNodesList.get(0);
-								// remove and add to rectify placing
-								RemoveCommand rootRemCmd = new RemoveCommand(
-										((GraphicalEditPart) selectedEP).getEditingDomain(),
-										rootDiagram.getInput(),
-										DataMapperPackage.Literals.INPUT__TREE_NODE, inputTreeNode);
-								if (rootRemCmd.canExecute()) {
-									((GraphicalEditPart) selectedEP).getEditingDomain()
-											.getCommandStack().execute(rootRemCmd);
-								}
+					AddCommand addCmd;
+					if (INPUT_EDITPART.equals(selectedInputOutputEditPart)) {
+						/*
+						 * add command is changed to input tree node type when
+						 * input editpart is selected. index 0 to add as the
+						 * first child
+						 */
+						addCmd = new AddCommand(((GraphicalEditPart) selectedEP).getEditingDomain(), object,
+								DataMapperPackage.Literals.INPUT__TREE_NODE, treeNodeNew, 0);
+					} else {
+						/*
+						 * add command is changed to output tree node type when
+						 * output editpart is selected. index 0 to add as the
+						 * first child
+						 */
+						addCmd = new AddCommand(((GraphicalEditPart) selectedEP).getEditingDomain(), object,
+								DataMapperPackage.Literals.OUTPUT__TREE_NODE, treeNodeNew, 0);
+					}
 
-								AddCommand rootAddCmd = new AddCommand(
-										((GraphicalEditPart) selectedEP).getEditingDomain(),
-										rootDiagram.getInput(),
-										DataMapperPackage.Literals.INPUT__TREE_NODE, inputTreeNode, 0);
-								if (rootAddCmd.canExecute()) {
-									((GraphicalEditPart) selectedEP).getEditingDomain()
-											.getCommandStack().execute(rootAddCmd);
-								}
-							}
-						} else {
-							EList<TreeNode> outputTreeNodesList = rootDiagram.getOutput().getTreeNode();
-							if (null != outputTreeNodesList && !outputTreeNodesList.isEmpty()) {
-								// keep a temp reference
-								TreeNodeImpl outputTreeNode = (TreeNodeImpl) outputTreeNodesList.get(0);
-								// remove and add to rectify placing
-								RemoveCommand rootRemCmd = new RemoveCommand(
-										((GraphicalEditPart) selectedEP).getEditingDomain(),
-										rootDiagram.getOutput(),
-										DataMapperPackage.Literals.OUTPUT__TREE_NODE, outputTreeNode);
-								if (rootRemCmd.canExecute()) {
-									((GraphicalEditPart) selectedEP).getEditingDomain()
-											.getCommandStack().execute(rootRemCmd);
-								}
+					if (addCmd.canExecute()) {
+						((GraphicalEditPart) selectedEP).getEditingDomain().getCommandStack().execute(addCmd);
+					}
 
-								AddCommand rootAddCmd = new AddCommand(
-										((GraphicalEditPart) selectedEP).getEditingDomain(),
-										rootDiagram.getOutput(),
-										DataMapperPackage.Literals.OUTPUT__TREE_NODE, outputTreeNode, 0);
-								if (rootAddCmd.canExecute()) {
-									((GraphicalEditPart) selectedEP).getEditingDomain()
-											.getCommandStack().execute(rootAddCmd);
-								}
+					// FIXME force refresh root
+					if (null != selectedInputOutputEditPart) {
+						if (selectedEP instanceof InputEditPart) {
+							DataMapperRootEditPart rep = (DataMapperRootEditPart) selectedEP.getParent();
+							DataMapperRoot rootDiagram = (DataMapperRoot) ((DiagramImpl) rep.getModel()).getElement();
+							if (INPUT_EDITPART.equals(selectedInputOutputEditPart)) {
+								EList<TreeNode> inputTreeNodesList = rootDiagram.getInput().getTreeNode();
+								if (null != inputTreeNodesList && !inputTreeNodesList.isEmpty()) {
+									// keep a temp reference
+									TreeNodeImpl inputTreeNode = (TreeNodeImpl) inputTreeNodesList.get(0);
+									// remove and add to rectify placing
+									RemoveCommand rootRemCmd = new RemoveCommand(
+											((GraphicalEditPart) selectedEP).getEditingDomain(),
+											rootDiagram.getInput(), DataMapperPackage.Literals.INPUT__TREE_NODE,
+											inputTreeNode);
+									if (rootRemCmd.canExecute()) {
+										((GraphicalEditPart) selectedEP).getEditingDomain().getCommandStack()
+												.execute(rootRemCmd);
+									}
 
+									AddCommand rootAddCmd = new AddCommand(
+											((GraphicalEditPart) selectedEP).getEditingDomain(),
+											rootDiagram.getInput(), DataMapperPackage.Literals.INPUT__TREE_NODE,
+											inputTreeNode, 0);
+									if (rootAddCmd.canExecute()) {
+										((GraphicalEditPart) selectedEP).getEditingDomain().getCommandStack()
+												.execute(rootAddCmd);
+									}
+								}
+							} else {
+								EList<TreeNode> outputTreeNodesList = rootDiagram.getOutput().getTreeNode();
+								if (null != outputTreeNodesList && !outputTreeNodesList.isEmpty()) {
+									// keep a temp reference
+									TreeNodeImpl outputTreeNode = (TreeNodeImpl) outputTreeNodesList.get(0);
+									// remove and add to rectify placing
+									RemoveCommand rootRemCmd = new RemoveCommand(
+											((GraphicalEditPart) selectedEP).getEditingDomain(),
+											rootDiagram.getOutput(), DataMapperPackage.Literals.OUTPUT__TREE_NODE,
+											outputTreeNode);
+									if (rootRemCmd.canExecute()) {
+										((GraphicalEditPart) selectedEP).getEditingDomain().getCommandStack()
+												.execute(rootRemCmd);
+									}
+
+									AddCommand rootAddCmd = new AddCommand(
+											((GraphicalEditPart) selectedEP).getEditingDomain(),
+											rootDiagram.getOutput(), DataMapperPackage.Literals.OUTPUT__TREE_NODE,
+											outputTreeNode, 0);
+									if (rootAddCmd.canExecute()) {
+										((GraphicalEditPart) selectedEP).getEditingDomain().getCommandStack()
+												.execute(rootAddCmd);
+									}
+
+								}
 							}
 						}
+
 					}
-				
 
+				} else {
+					log.error(ERROR_ADDING_NEW_CHILD);
+					MessageDialog.openError(Display.getCurrent().getActiveShell(), ERROR, ERROR_ADDING_NEW_CHILD);
+					return;
 				}
-
-			} else {
-				log.error(ERROR_ADDING_NEW_CHILD);
-				MessageDialog.openError(Display.getCurrent().getActiveShell(), ERROR,
-						ERROR_ADDING_NEW_CHILD);
-				return;
 			}
+
 		}
 	}
 

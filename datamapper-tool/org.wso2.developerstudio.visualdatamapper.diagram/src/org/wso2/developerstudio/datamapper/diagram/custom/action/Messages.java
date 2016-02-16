@@ -87,6 +87,8 @@ public class Messages extends NLS {
 	public static String ExportSchemaAction_fileDialogHeader;
 	public static String ExportSchemaAction_menuTitle;
 	public static String ExportSchemaAction_warnNotSavedToFile;
+	public static String ExportSchemaAction_warnNoSchematoExport;
+	public static String ExportSchemaAction_warnTitle;
 
 	static {
 		// initialize resource bundle

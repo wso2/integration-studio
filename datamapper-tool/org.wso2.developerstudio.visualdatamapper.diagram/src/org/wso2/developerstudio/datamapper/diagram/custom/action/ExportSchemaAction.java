@@ -29,6 +29,7 @@ import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.common.ui.action.AbstractActionHandler;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.jface.dialogs.ErrorDialog;
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Display;
@@ -60,6 +61,8 @@ public class ExportSchemaAction extends AbstractActionHandler {
 	private static final String ERROR_SAVING_FILE = Messages.ExportSchemaAction_errorSavingFile;
 	private static final String FILE_DIALOG_HEADER = Messages.ExportSchemaAction_fileDialogHeader;
 	private static final String WARN_NOT_SAVED_TO_FILE = Messages.ExportSchemaAction_warnNotSavedToFile;
+	private static final String WARN_NO_SCHEMA = Messages.ExportSchemaAction_warnNoSchematoExport;
+	private static final String WARN_TITLE = Messages.ExportSchemaAction_warnTitle;
 
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
@@ -80,55 +83,64 @@ public class ExportSchemaAction extends AbstractActionHandler {
 		// selectedEP can be null when wrong editpart is selected
 		if (null != selectedEP) {
 
-			EObject treeNode;
+			EObject treeNode = null;
 			String selectedInputOutputEditPart = getSelectedInputOutputEditPart();
-			if (INPUT_EDITPART.equals(selectedInputOutputEditPart)) {
-				// First child is always a TreeNodeEditPart
-				TreeNodeEditPart inputChildNode = (TreeNodeEditPart) selectedEP.getChildren()
-						.get(0);
-				// Returns the TreeNodeImpl object respective to inputChildNode
-				treeNode = ((Node) inputChildNode.getModel()).getElement();
-			} else {
-				// First child is always a TreeNode3EditPart
-				TreeNode3EditPart outputChildNode = (TreeNode3EditPart) selectedEP.getChildren()
-						.get(0);
-				// Returns the TreeNodeImpl object respective to outputChildNode
-				treeNode = ((Node) outputChildNode.getModel()).getElement();
+			if (!selectedEP.getChildren().isEmpty()) {
+				if (INPUT_EDITPART.equals(selectedInputOutputEditPart)) {
+
+					// First child is always a TreeNodeEditPart
+					TreeNodeEditPart inputChildNode = (TreeNodeEditPart) selectedEP.getChildren().get(0);
+					// Returns the TreeNodeImpl object respective to
+					// inputChildNode
+					treeNode = ((Node) inputChildNode.getModel()).getElement();
+
+				} else {
+					// First child is always a TreeNode3EditPart
+					TreeNode3EditPart outputChildNode = (TreeNode3EditPart) selectedEP.getChildren().get(0);
+					// Returns the TreeNodeImpl object respective to
+					// outputChildNode
+					treeNode = ((Node) outputChildNode.getModel()).getElement();
+				}
 			}
 
 			AvroSchemaTransformer avroSchemaTransformer = new AvroSchemaTransformer();
 			// Get respective schema using treenode model
-			Schema schema = avroSchemaTransformer.transform((TreeNodeImpl) treeNode);
-			String exportContent = schema.toString(true);
-
-			Display display = Display.getDefault();
-			Shell shell = new Shell(display);
-			FileDialog dialog = new FileDialog(shell, SWT.SAVE);
-			dialog.setFilterExtensions(new String[] { FILTER_EXTENSION_AVSC, FILTER_EXTENSION_TXT });
-			dialog.setText(FILE_DIALOG_HEADER);
-			String filePath = dialog.open();
-
-			if (null != filePath) {
-				try {
-					FileUtils.writeStringToFile(new File(filePath), exportContent);
-				} catch (IOException e) {
-					log.error(ERROR_SAVING_FILE + filePath, e);
-					IStatus status = new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage()); //$NON-NLS-1$
-					ErrorDialog.openError(Display.getCurrent().getActiveShell(), ERROR_SAVING_FILE
-							+ filePath, null, status);
+			String exportContent = null;
+			if (treeNode != null) {
+				Schema schema = avroSchemaTransformer.transform((TreeNodeImpl) treeNode);
+				exportContent = schema.toString(true);
+				Display display = Display.getDefault();
+				Shell shell = new Shell(display);
+				FileDialog dialog = new FileDialog(shell, SWT.SAVE);
+				dialog.setFilterExtensions(new String[] { FILTER_EXTENSION_AVSC, FILTER_EXTENSION_TXT });
+				dialog.setText(FILE_DIALOG_HEADER);
+				String filePath = dialog.open();
+				if (null != filePath) {
+					try {
+						if (exportContent != null) {
+							FileUtils.writeStringToFile(new File(filePath), exportContent);
+						}
+					} catch (IOException e) {
+						log.error(ERROR_SAVING_FILE + filePath, e);
+						IStatus status = new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage()); //$NON-NLS-1$
+						ErrorDialog.openError(Display.getCurrent().getActiveShell(), ERROR_SAVING_FILE + filePath,
+								null, status);
+						return;
+					}
+				} else {
+					// filePath can be null when dialog is closed or an error
+					// occurred
+					log.warn(WARN_NOT_SAVED_TO_FILE);
 					return;
 				}
-			} else {
-				// filePath can be null when dialog is closed or an error
-				// occurred
-				log.warn(WARN_NOT_SAVED_TO_FILE);
-				return;
+			}else{
+				MessageDialog.openInformation(Display.getCurrent().getActiveShell(), WARN_TITLE, WARN_NO_SCHEMA);
 			}
+
 		} else {
 			log.error(ERROR_WRONG_EDITPART);
 			IStatus status = new Status(IStatus.ERROR, Activator.PLUGIN_ID, ""); //$NON-NLS-1$
-			ErrorDialog.openError(Display.getCurrent().getActiveShell(), ERROR_WRONG_EDITPART,
-					null, status);
+			ErrorDialog.openError(Display.getCurrent().getActiveShell(), ERROR_WRONG_EDITPART, null, status);
 			return;
 		}
 

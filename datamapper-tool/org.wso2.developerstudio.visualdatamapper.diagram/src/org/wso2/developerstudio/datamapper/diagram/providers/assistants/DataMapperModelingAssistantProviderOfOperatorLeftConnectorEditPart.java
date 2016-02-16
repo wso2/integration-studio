@@ -20,7 +20,7 @@ public class DataMapperModelingAssistantProviderOfOperatorLeftConnectorEditPart 
 	@Override
 	public List<IElementType> getTypesForPopupBar(IAdaptable host) {
 		List<IElementType> types = new ArrayList<IElementType>(1);
-		types.add(DataMapperElementTypes.InNode_3015);
+		//types.add(DataMapperElementTypes.InNode_3015);
 		return types;
 	}
 

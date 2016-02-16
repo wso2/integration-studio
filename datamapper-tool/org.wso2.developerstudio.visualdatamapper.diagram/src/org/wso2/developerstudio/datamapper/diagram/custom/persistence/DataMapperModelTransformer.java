@@ -17,45 +17,48 @@ package org.wso2.developerstudio.datamapper.diagram.custom.persistence;
 
 import org.wso2.developerstudio.datamapper.DataMapperRoot;
 import org.wso2.developerstudio.datamapper.diagram.custom.configuration.function.Function;
+import org.wso2.developerstudio.datamapper.diagram.custom.model.DataMapperDiagramModel;
 
 /**
- * Transform mapping model into mapping 
- * configuration. 
+ * Transform mapping model into mapping
+ * configuration.
  *
  */
 public class DataMapperModelTransformer {
-	
-	private static DataMapperModelTransformer instance;
-	
-	private DataMapperModelTransformer(){
-		
-	}
-	
-	public static DataMapperModelTransformer getInstance() {
-		if (instance == null) {
-			instance = new DataMapperModelTransformer();
-		}
-		return instance;
-	}
 
-	/**
-	 * traverse in datamapper map model and generate DataMapperConfigurtion config  
-	 * @param rootDiagram datamapper graphical model root
-	 * @return complete configuration of mapping
-	 */
-	public String transform(DataMapperRoot rootDiagram) {
-		DataMapperConfiguration mappingConfig = new DataMapperConfiguration();
-		MappingModelTraverser.getInstance().traverse(rootDiagram, mappingConfig);
+    private static DataMapperModelTransformer instance;
 
-		StringBuilder result = new StringBuilder();
-		if(mappingConfig.getFunctionList().get(0) != null){
-			
-			for(Function function : mappingConfig.getFunctionList()){
-				result.append(function.toString());
-			}
-			return result.toString();
-		}
+    private DataMapperModelTransformer() {
 
-		return result.toString();
-		}
+    }
+
+    public static DataMapperModelTransformer getInstance() {
+        if (instance == null) {
+            instance = new DataMapperModelTransformer();
+        }
+        return instance;
+    }
+
+    /**
+     * traverse in datamapper map model and generate DataMapperConfigurtion config
+     * 
+     * @param rootDiagram datamapper graphical model root
+     * @return complete configuration of mapping
+     */
+    public String transform(DataMapperRoot rootDiagram) {
+        DataMapperDiagramModel mappingModel = new DataMapperDiagramModel(rootDiagram);
+        DataMapperConfiguration mappingConfig = new DataMapperConfiguration();
+        MappingModelTraverser.getInstance().traverse(rootDiagram, mappingConfig);
+
+        StringBuilder result = new StringBuilder();
+        if (mappingConfig.getFunctionList().get(0) != null) {
+
+            for (Function function : mappingConfig.getFunctionList()) {
+                result.append(function.toString());
+            }
+            return result.toString();
+        }
+
+        return result.toString();
+    }
 }

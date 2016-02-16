@@ -2,6 +2,9 @@
  */
 package org.wso2.developerstudio.datamapper.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
@@ -141,7 +144,54 @@ public class ElementImpl extends EObjectImpl implements Element {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ElementImpl() {
+    
+    private int index=-1;
+    
+    /**
+     * This node has been visited by the graph traversal algorithm
+     */
+    private boolean visited;
+    
+    /**
+     * This node has been added to the list of nodes in the graph traversal algorithm
+     */
+    private boolean marked;
+    
+    private List<Integer> portVariableIndex=new ArrayList<Integer>();
+    
+	public int getIndex() {
+        return index;
+    }
+
+    public void setIndex(int index) {
+        this.index = index;
+    }
+
+    public boolean isVisited() {
+        return visited;
+    }
+
+    public void setVisited(boolean visited) {
+        this.visited = visited;
+    }
+
+    public boolean isMarked() {
+        return marked;
+    }
+
+    public void setMarked(boolean marked) {
+        this.marked = marked;
+    }
+
+    public List<Integer> getPortVariableIndex() {
+        return portVariableIndex;
+    }
+
+    public void setPortVariableIndex(List<Integer> portVariableIndex) {
+        this.portVariableIndex = portVariableIndex;
+    }
+
+    protected ElementImpl() {
 		super();
 	}
 

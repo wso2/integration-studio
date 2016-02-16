@@ -23,7 +23,6 @@ public class DMVariable {
 
     private String name;
     private String id;
-    private String value;
     private int index = -1;
     private boolean visited;
     private DMVariableType type;
@@ -53,14 +52,6 @@ public class DMVariable {
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    public String getValue() {
-        return value;
-    }
-
-    public void setValue(String value) {
-        this.value = value;
     }
 
     public int getIndex() {

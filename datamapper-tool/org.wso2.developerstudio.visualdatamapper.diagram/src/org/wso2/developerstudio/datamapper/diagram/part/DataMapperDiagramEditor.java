@@ -1,5 +1,13 @@
 package org.wso2.developerstudio.datamapper.diagram.part;
 
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+
+import org.apache.avro.Schema;
+import org.apache.avro.SchemaParseException;
+import org.apache.commons.io.FileUtils;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.resources.IWorkspaceRoot;
@@ -9,13 +17,15 @@ import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.core.runtime.Path;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.ui.URIEditorInput;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.workspace.util.WorkspaceSynchronizer;
 import org.eclipse.gef.KeyHandler;
-import org.eclipse.gef.KeyStroke;
 import org.eclipse.gef.palette.PaletteRoot;
-import org.eclipse.gef.ui.palette.PaletteViewer;
 import org.eclipse.gmf.runtime.common.ui.services.marker.MarkerNavigationService;
 import org.eclipse.gmf.runtime.diagram.core.preferences.PreferencesHint;
 import org.eclipse.gmf.runtime.diagram.ui.actions.ActionIds;
@@ -33,29 +43,59 @@ import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.window.Window;
 import org.eclipse.osgi.util.NLS;
-import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorMatchingStrategy;
 import org.eclipse.ui.IEditorReference;
 import org.eclipse.ui.IFileEditorInput;
+import org.eclipse.ui.IWorkbench;
+import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.WorkbenchException;
 import org.eclipse.ui.dialogs.SaveAsDialog;
 import org.eclipse.ui.ide.IGotoMarker;
 import org.eclipse.ui.navigator.resources.ProjectExplorer;
 import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.ui.part.IShowInTargetList;
 import org.eclipse.ui.part.ShowInContext;
+import org.wso2.developerstudio.datamapper.DataMapperRoot;
+import org.wso2.developerstudio.datamapper.TreeNode;
+import org.wso2.developerstudio.datamapper.diagram.Activator;
 import org.wso2.developerstudio.datamapper.diagram.custom.part.CustomDiagramGraphicalViewerKeyHandler;
+import org.wso2.developerstudio.datamapper.diagram.custom.persistence.AvroSchemaTransformer;
+import org.wso2.developerstudio.datamapper.diagram.custom.persistence.DataMapperModelTransformer;
+import org.wso2.developerstudio.datamapper.diagram.custom.util.EditorUtils;
 import org.wso2.developerstudio.datamapper.diagram.navigator.DataMapperNavigatorItem;
+import org.wso2.developerstudio.datamapper.impl.DataMapperRootImpl;
+import org.wso2.developerstudio.datamapper.impl.TreeNodeImpl;
+import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
+import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
 /**
  * @generated
  */
 public class DataMapperDiagramEditor extends DiagramDocumentEditor implements IGotoMarker {
 
-	private DataMapperMultiPageEditor dataMapperEditor;
+	/**
+	 * @generated NOT
+	 */
+    private static final String INPUT_SCHEMA_ID = "Input-Schema"; //$NON-NLS-1$
 
+	/**
+	 * @generated NOT
+	 */
+	private static final String OUTPUT_SCHEMA_ID = "Output-Schema"; //$NON-NLS-1$
+	
+	/**
+	 * @generated NOT
+	 */
+	private static final String ERROR_WRITING_SCHEMA_FILE = Messages.DataMapperMultiPageEditor_errorWritingSchemaFile;
+
+	/**
+	 * @generated NOT
+	 */
+	private static final String ERROR_PARSING_THE_SCHEMA = "Error parsing the schema";
+	
 	/**
 	 * @generated
 	 */
@@ -67,19 +107,28 @@ public class DataMapperDiagramEditor extends DiagramDocumentEditor implements IG
 	public static final String CONTEXT_ID = "org.wso2.developerstudio.datamapper.diagram.ui.diagramContext"; //$NON-NLS-1$
 
 	/**
-	 * @generated 
-	 */
-	public DataMapperDiagramEditor() {
-		super(true);
-	}
-
-	/**
 	 * @generated NOT
 	 */
-	public DataMapperDiagramEditor(DataMapperMultiPageEditor dataMapperEditor) {
+	
+	public DataMapperDiagramEditor() {
 		super(true);
-		this.dataMapperEditor = dataMapperEditor;
+		IWorkbench workbench = PlatformUI.getWorkbench();
+		IWorkbenchWindow window = workbench.getActiveWorkbenchWindow();
+		try {
+			workbench.showPerspective("org.wso2.developerstudio.datamapper.diagram.custom.perspective", window); //$NON-NLS-1$
+		} catch (WorkbenchException e) {
+		}
 	}
+
+	//TODO we need to remove this singleton implementation, This need to be fixed
+	//Committing temporary till menu actions are fixed
+	private static DataMapperDiagramEditor instance = new DataMapperDiagramEditor();
+	public static DataMapperDiagramEditor getInstance(){
+	      return instance;
+    }
+
+	
+	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
 	/**
 	 * @generated
@@ -167,17 +216,16 @@ public class DataMapperDiagramEditor extends DiagramDocumentEditor implements IG
 	}
 
 	/**
-	 * @generated
+	 * @generated NOT
 	 */
 	public boolean isSaveAsAllowed() {
-		return true;
+		return false;
 	}
 
 	/**
-	 * @generated
+	 * @generated NOT
 	 */
 	public void doSaveAs() {
-		performSaveAs(new NullProgressMonitor());
 	}
 
 	/**
@@ -302,7 +350,162 @@ public class DataMapperDiagramEditor extends DiagramDocumentEditor implements IG
 				this, getDiagramGraphicalViewer());
 		getDiagramGraphicalViewer().setContextMenu(provider);
 		getSite().registerContextMenu(ActionIds.DIAGRAM_EDITOR_CONTEXT_MENU, provider,
-				getDiagramGraphicalViewer());
+				getDiagramGraphicalViewer()); 
+		
+	}
+	
+	@Override
+	public void init(org.eclipse.ui.IEditorSite site, IEditorInput input) throws org.eclipse.ui.PartInitException {
+		super.init(site, input);
+		setTitleOfDataMapperDiagramConfiguration(input.getName());
+	}
+	
+	private void setTitleOfDataMapperDiagramConfiguration(String name) {
+		String title = name.replace("datamapper_diagram","dmc"); //$NON-NLS-1$ //$NON-NLS-2$
+		setTitle(title);
+	} 
+	
+	@Override
+	public void doSave(IProgressMonitor monitor) {
+		updateAvroSchema();
+		updateAssociatedConfigFile(monitor);
+		super.doSave(monitor);
+	}
+	
+	public void updateSourceEditor() {
+		DataMapperRoot rootDiagram = (DataMapperRoot)this.getDiagram().getElement();
+		String source = DataMapperModelTransformer.getInstance().transform(rootDiagram);
+		firePropertyChange(PROP_DIRTY);
+	}
+	
+	private void updateAvroSchema() {
+		// Get model root of the active DataMapperDiagramEditor
+		EObject modelRoot = this.getDiagram().getElement();
+		DataMapperRootImpl datamapperRoot = (DataMapperRootImpl) modelRoot;
+
+		// Model root of input schema tree
+		EList<TreeNode> inputTreeNodesList = ((DataMapperRoot) datamapperRoot).getInput()
+				.getTreeNode();
+		// If a tree node is found, continue saving
+		if (null != inputTreeNodesList && !inputTreeNodesList.isEmpty()) {
+			TreeNodeImpl inputTreeNode = (TreeNodeImpl) inputTreeNodesList.get(0);
+			// This traverses input tree view and returns the updated avro
+			// schema
+			AvroSchemaTransformer avroSchemaTransformer = new AvroSchemaTransformer();
+			Schema inputAvroSchema = avroSchemaTransformer.transform(inputTreeNode);
+			updateSchemaFile(INPUT_SCHEMA_ID, inputAvroSchema);
+		}
+		// Empty tree node, clear the file
+		else {
+			updateSchemaFile(INPUT_SCHEMA_ID, null);
+		}
+
+		// Model root of output schema tree
+		EList<TreeNode> outputTreeNodesList = ((DataMapperRoot) datamapperRoot).getOutput()
+				.getTreeNode();
+		// If a tree node is found, continue saving
+		if (null != outputTreeNodesList && !outputTreeNodesList.isEmpty()) {
+			TreeNodeImpl outputTreeNode = (TreeNodeImpl) outputTreeNodesList.get(0);
+			// This traverses output tree view and returns the updated avro
+			// schema
+			AvroSchemaTransformer avroSchemaTransformer = new AvroSchemaTransformer();
+			Schema outputAvroSchema = avroSchemaTransformer.transform(outputTreeNode);
+			updateSchemaFile(OUTPUT_SCHEMA_ID, outputAvroSchema);
+		}
+		// Empty tree node, clear the file
+		else {
+			updateSchemaFile(OUTPUT_SCHEMA_ID, null);
+		}
+
+	}
+	
+	
+	private void updateAssociatedConfigFile(IProgressMonitor monitor) {
+		IEditorInput editorInput = this.getEditorInput();
+		
+		if (editorInput instanceof IFileEditorInput) {
+			IFile diagramFile = ((FileEditorInput) editorInput).getFile();
+			String configFilePath = diagramFile.getFullPath().toString();
+			configFilePath = configFilePath
+					.replaceAll(".datamapper_diagram$", ".dmc"); //$NON-NLS-1$ //$NON-NLS-2$
+			IFile configFile = diagramFile.getWorkspace().getRoot().getFile(new Path(configFilePath));
+			InputStream is = null;
+			try {
+				DataMapperRoot rootDiagram = (DataMapperRoot) this.getDiagram().getElement();
+				String source = DataMapperModelTransformer.getInstance().transform(rootDiagram);
+				if (source == null) {
+					log.warn("Could get source"); //$NON-NLS-1$
+					return;
+				}
+				is = new ByteArrayInputStream(source.getBytes());
+				if (configFile.exists()) {
+					configFile.setContents(is, true, true, monitor);
+				} else {
+					configFile.create(is, true, monitor);
+				}
+
+			} catch (Exception e) {
+				log.warn("Could not save file " + configFile); //$NON-NLS-1$
+			} finally {
+				if(is != null) {
+					try {
+						is.close();
+					} catch (IOException e) {
+						// ignore.
+					}
+				}
+			}
+		}
+	}	
+	
+	private void updateSchemaFile(String schemaType, Schema schema) {
+		// Schema file location is identified using editor input
+		IFile graphicalFile = ((IFileEditorInput) getEditorInput()).getFile();
+		String configName = graphicalFile.getName().substring(0,
+				graphicalFile.getName().indexOf(EditorUtils.DIAGRAM_FILE_EXTENSION));
+
+		String graphicalFileDirPath = graphicalFile.getParent().getProjectRelativePath().toString();
+		if (graphicalFileDirPath != null && !"".equals(graphicalFileDirPath)) { //$NON-NLS-1$
+			graphicalFileDirPath += File.separator;
+		}
+
+		String newFilePath;
+		IFile newSchemaIFile;
+		// Schema type can only be either input or output
+		if (INPUT_SCHEMA_ID.equals(schemaType)) {
+			newFilePath = graphicalFileDirPath + configName + EditorUtils.INPUT_SCHEMA_FILE_SUFFIX
+					+ EditorUtils.AVRO_SCHEMA_FILE_EXTENSION;
+			newSchemaIFile = graphicalFile.getProject().getFile(newFilePath);
+		} else {
+			newFilePath = graphicalFileDirPath + configName + EditorUtils.OUTPUT_SCHEMA_FILE_SUFFIX
+					+ EditorUtils.AVRO_SCHEMA_FILE_EXTENSION;
+			newSchemaIFile = graphicalFile.getProject().getFile(newFilePath);
+		}
+		File newSchemaFile = newSchemaIFile.getRawLocation().makeAbsolute().toFile();
+
+		String fileContent = "";
+		// Becomes null when tree is cleared. Write empty string
+		if (null != schema) {
+			try {
+				fileContent = schema.toString(true);
+			} catch (SchemaParseException e) {
+				log.error(ERROR_PARSING_THE_SCHEMA, e);
+				IStatus status = new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage());
+				ErrorDialog.openError(getSite().getShell(), ERROR_PARSING_THE_SCHEMA, null, status);
+				return;
+			}
+		}
+
+		try {
+			FileUtils.writeStringToFile(newSchemaFile, fileContent);
+		} catch (IOException e) {
+			log.error(ERROR_WRITING_SCHEMA_FILE + newSchemaIFile.getName(), e);
+			IStatus status = new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage());
+			ErrorDialog.openError(getSite().getShell(),
+					ERROR_WRITING_SCHEMA_FILE + newSchemaIFile.getName(), null, status);
+			return;
+		}
+
 	}
 
 }

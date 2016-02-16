@@ -39,7 +39,7 @@ import org.wso2.developerstudio.datamapper.TreeNode;
 import org.wso2.developerstudio.datamapper.diagram.Activator;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.InputEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.OutputEditPart;
-import org.wso2.developerstudio.datamapper.diagram.part.DataMapperMultiPageEditor;
+import org.wso2.developerstudio.datamapper.diagram.part.DataMapperDiagramEditor;
 import org.wso2.developerstudio.datamapper.impl.TreeNodeImpl;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
@@ -110,8 +110,7 @@ public class AddNewRootRecordAction extends AbstractActionHandler {
 
 				// FIXME force refresh root
 				if (null != selectedInputOutputEditPart) {
-					DataMapperRoot rootDiagram = (DataMapperRoot) DataMapperMultiPageEditor
-							.getGraphicalEditor().getDiagram().getElement();
+					DataMapperRoot rootDiagram = (DataMapperRoot) DataMapperDiagramEditor.getInstance().getDiagram().getElement();
 					if (INPUT_EDITPART.equals(selectedInputOutputEditPart)) {
 						EList<TreeNode> inputTreeNodesList = rootDiagram.getInput().getTreeNode();
 						if (null != inputTreeNodesList && !inputTreeNodesList.isEmpty()) {

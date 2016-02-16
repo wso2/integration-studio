@@ -14,7 +14,7 @@ import org.wso2.developerstudio.datamapper.Equal;
 import org.wso2.developerstudio.datamapper.OperatorLeftConnector;
 import org.wso2.developerstudio.datamapper.SchemaDataType;
 import org.wso2.developerstudio.datamapper.TreeNode;
-import org.wso2.developerstudio.datamapper.diagram.part.DataMapperMultiPageEditor;
+import org.wso2.developerstudio.datamapper.diagram.part.DataMapperDiagramEditor;
 
 public class DataMapperConfigurationGenerator {
 	
@@ -23,7 +23,7 @@ public class DataMapperConfigurationGenerator {
     	
     	List<JsFunction> dmcFunctions = new ArrayList<JsFunction>();
     	
-    	DataMapperRoot rootDiagram =  (DataMapperRoot) DataMapperMultiPageEditor.getGraphicalEditor().getDiagram().getElement();
+    	DataMapperRoot rootDiagram =  (DataMapperRoot)DataMapperDiagramEditor.getInstance().getDiagram().getElement();
     	TreeNode inputTreeNode = rootDiagram.getInput().getTreeNode().get(0);
     	TreeNode outputTreeNode = rootDiagram.getOutput().getTreeNode().get(0);
 

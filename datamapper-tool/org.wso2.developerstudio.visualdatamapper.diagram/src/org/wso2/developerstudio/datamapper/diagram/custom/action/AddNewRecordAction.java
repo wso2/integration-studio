@@ -36,7 +36,7 @@ import org.wso2.developerstudio.datamapper.SchemaDataType;
 import org.wso2.developerstudio.datamapper.TreeNode;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.InputEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.OutputEditPart;
-import org.wso2.developerstudio.datamapper.diagram.part.DataMapperMultiPageEditor;
+import org.wso2.developerstudio.datamapper.diagram.part.DataMapperDiagramEditor;
 import org.wso2.developerstudio.datamapper.impl.TreeNodeImpl;
 
 public class AddNewRecordAction extends AbstractActionHandler {
@@ -88,8 +88,7 @@ public class AddNewRecordAction extends AbstractActionHandler {
 			// FIXME force refresh root
 			String selectedInputOutputEditPart = getSelectedInputOutputEditPart();
 			if (null != selectedInputOutputEditPart) {
-				DataMapperRoot rootDiagram = (DataMapperRoot) DataMapperMultiPageEditor
-						.getGraphicalEditor().getDiagram().getElement();
+				DataMapperRoot rootDiagram = (DataMapperRoot) DataMapperDiagramEditor.getInstance().getDiagram().getElement();
 				if (INPUT_EDITPART.equals(selectedInputOutputEditPart)) {
 					EList<TreeNode> inputTreeNodesList = rootDiagram.getInput().getTreeNode();
 					if (null != inputTreeNodesList && !inputTreeNodesList.isEmpty()) {

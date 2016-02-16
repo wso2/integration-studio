@@ -23,6 +23,7 @@ import java.util.List;
 import java.util.Map.Entry;
 
 import org.apache.avro.Schema;
+import org.apache.avro.SchemaParseException;
 import org.apache.avro.Schema.Field;
 import org.apache.avro.Schema.Type;
 import org.codehaus.jackson.JsonFactory;
@@ -99,13 +100,19 @@ public class JsonToAvroSchemaTransformer {
 			if (null != subNode) {
 				if (subNode.isObject()) {
 					// handles if child is a record
+					if(createRecord(subNode, jsonFieldKey) != null){
 					fields.add(createRecord(subNode, jsonFieldKey));
+					}
 				} else if (subNode.isArray()) {
 					// handles if child is an array
+					if(createArray(subNode, jsonFieldKey) != null){
 					fields.add(createArray(subNode, jsonFieldKey));
+					}
 				} else {
 					// handles primitive types
+					if(createField(subNode, jsonFieldKey) != null){
 					fields.add(createField(subNode, jsonFieldKey));
+					}
 				}
 
 			}
@@ -115,15 +122,17 @@ public class JsonToAvroSchemaTransformer {
 		 * setFields() is locked after first assignment of fields. Call only
 		 * once per schema
 		 */
+		if(!fields.isEmpty()){
 		schema.setFields(fields);
+		}
 
 		return schema;
 	}
 
 	private Field createRecord(JsonNode node, String nodeFieldKey) {
 		// Schema for field
-		Schema schema1 = Schema.createRecord(nodeFieldKey, null, null, false);
-		List<Field> fields1 = new ArrayList<Field>();
+		Schema fieldSchema = Schema.createRecord(nodeFieldKey, null, null, false);
+		List<Field> recordFields = new ArrayList<Field>();
 
 		Iterator<Entry<String, JsonNode>> jsonFields = node.getFields();
 		while (jsonFields.hasNext()) {
@@ -138,20 +147,30 @@ public class JsonToAvroSchemaTransformer {
 			if (null != subNode) {
 				if (subNode.isObject()) {
 					// handles if child is a record
-					fields1.add(createRecord(subNode, jsonFieldKey));
+					if(createRecord(subNode, jsonFieldKey) != null){
+					recordFields.add(createRecord(subNode, jsonFieldKey));
+					}
 				} else if (subNode.isArray()) {
 					// handles if child is an array
-					fields1.add(createArray(subNode, jsonFieldKey));
+					if(createArray(subNode, jsonFieldKey) != null){
+					recordFields.add(createArray(subNode, jsonFieldKey));
+					}
 				} else {
 					// handles primitive types
-					fields1.add(createField(subNode, jsonFieldKey));
+					if(createField(subNode, jsonFieldKey) != null){
+						recordFields.add(createField(subNode, jsonFieldKey));
+					}
+					
 				}
 			}
 		}
-		schema1.setFields(fields1);
+		    if(!recordFields.isEmpty()){
+			fieldSchema.setFields(recordFields);
+		    }
+		
 
 		// This is added as a field for the parent RECORD
-		Field field = new Field(nodeFieldKey, schema1, null, null);
+		Field field = new Field(nodeFieldKey, fieldSchema, null, null);
 		return field;
 	}
 
@@ -184,13 +203,19 @@ public class JsonToAvroSchemaTransformer {
 				if (null != subNode) {
 					if (subNode.isObject()) {
 						// handles if child is a record
+						if(createRecord(subNode, jsonFieldKey) != null){
 						fieldsForRecord.add(createRecord(subNode, jsonFieldKey));
+						}
 					} else if (subNode.isArray()) {
 						// handles if child is an array
+						if(createArray(subNode, jsonFieldKey) != null){
 						fieldsForRecord.add(createArray(subNode, jsonFieldKey));
+						}
 					} else {
 						// handles primitive types
+						if(createField(subNode, jsonFieldKey) != null){
 						fieldsForRecord.add(createField(subNode, jsonFieldKey));
+						}
 					}
 				}
 
@@ -200,7 +225,9 @@ public class JsonToAvroSchemaTransformer {
 			Schema nullArraySchema = Schema.createArray(nullSchema);
 			return new Field(nodeFieldKey, nullArraySchema, null, null);
 		}
+		if(!fieldsForRecord.isEmpty()){
 		recordSchema.setFields(fieldsForRecord);
+		}
 
 		// Schema for ARRAY type
 		Schema arraySchema = Schema.createArray(recordSchema);
@@ -235,9 +262,13 @@ public class JsonToAvroSchemaTransformer {
 		}
 
 		if (null != fieldDatatype) {
-			// Schema for type:field
-			Schema schema1 = Schema.create(fieldDatatype);
-			Field field = new Field(nodeFieldKey, schema1, null, null);
+			    Field field = null;
+			try{
+				Schema schema1 = Schema.create(fieldDatatype);
+				field = new Field(nodeFieldKey, schema1, null, null);
+			}catch(SchemaParseException spe){
+				log.error(ERROR_PARSING_JSON_INPUT, spe);
+			}
 			return field;
 		} else {
 			return null;

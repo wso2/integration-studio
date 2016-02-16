@@ -36,8 +36,8 @@ public class ConfigurationExportWizard extends Wizard {
 	public boolean performFinish() {
 
 		// create file, run configuration generation , put it to file
-
-		DataMapperRoot rootDiagram = (DataMapperRoot) DataMapperDiagramEditor.getInstance().getDiagram().getElement();
+		/*Cannot call static/singleton methods of Editor, need to find an alternative option
+		//DataMapperRoot rootDiagram = (DataMapperRoot) DataMapperDiagramEditor.getInstance().getDiagram().getElement();
 		String input = DataMapperModelTransformer.getInstance().transform(rootDiagram);
 
 		File config = new File(page.getConfigExportrPath(), (page.getConfigurationFileName() + ".js"));
@@ -50,6 +50,7 @@ public class ConfigurationExportWizard extends Wizard {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		*/
 
 		return true;
 	}

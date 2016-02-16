@@ -22,9 +22,11 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.command.AddCommand;
 import org.eclipse.emf.edit.command.RemoveCommand;
 import org.eclipse.gef.EditPart;
+import org.eclipse.gef.RootEditPart;
 import org.eclipse.gmf.runtime.common.ui.action.AbstractActionHandler;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart;
 import org.eclipse.gmf.runtime.notation.Node;
+import org.eclipse.gmf.runtime.notation.impl.DiagramImpl;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.swt.widgets.Display;
@@ -37,6 +39,7 @@ import org.wso2.developerstudio.datamapper.DataMapperRoot;
 import org.wso2.developerstudio.datamapper.SchemaDataType;
 import org.wso2.developerstudio.datamapper.TreeNode;
 import org.wso2.developerstudio.datamapper.diagram.Activator;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.DataMapperRootEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.InputEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.OutputEditPart;
 import org.wso2.developerstudio.datamapper.diagram.part.DataMapperDiagramEditor;
@@ -110,7 +113,8 @@ public class AddNewRootRecordAction extends AbstractActionHandler {
 
 				// FIXME force refresh root
 				if (null != selectedInputOutputEditPart) {
-					DataMapperRoot rootDiagram = (DataMapperRoot) DataMapperDiagramEditor.getInstance().getDiagram().getElement();
+					DataMapperRootEditPart rep = (DataMapperRootEditPart) selectedEP.getParent();
+					DataMapperRoot rootDiagram = (DataMapperRoot)((DiagramImpl)rep.getModel()).getElement();
 					if (INPUT_EDITPART.equals(selectedInputOutputEditPart)) {
 						EList<TreeNode> inputTreeNodesList = rootDiagram.getInput().getTreeNode();
 						if (null != inputTreeNodesList && !inputTreeNodesList.isEmpty()) {

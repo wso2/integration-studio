@@ -119,14 +119,6 @@ public class DataMapperDiagramEditor extends DiagramDocumentEditor implements IG
 		} catch (WorkbenchException e) {
 		}
 	}
-
-	//TODO we need to remove this singleton implementation, This need to be fixed
-	//Committing temporary till menu actions are fixed
-	private static DataMapperDiagramEditor instance = new DataMapperDiagramEditor();
-	public static DataMapperDiagramEditor getInstance(){
-	      return instance;
-    }
-
 	
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
@@ -370,12 +362,6 @@ public class DataMapperDiagramEditor extends DiagramDocumentEditor implements IG
 		updateAvroSchema();
 		updateAssociatedConfigFile(monitor);
 		super.doSave(monitor);
-	}
-	
-	public void updateSourceEditor() {
-		DataMapperRoot rootDiagram = (DataMapperRoot)this.getDiagram().getElement();
-		String source = DataMapperModelTransformer.getInstance().transform(rootDiagram);
-		firePropertyChange(PROP_DIRTY);
 	}
 	
 	private void updateAvroSchema() {

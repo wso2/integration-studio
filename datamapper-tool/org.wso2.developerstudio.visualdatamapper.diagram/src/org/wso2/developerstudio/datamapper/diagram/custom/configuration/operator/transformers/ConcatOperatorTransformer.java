@@ -29,7 +29,7 @@ public class ConcatOperatorTransformer implements DMOperatorTransformer {
     @Override
     public String generateScriptForOperation(MappingConfigGenerator generator, List<DMVariable> inputVariables) {
         StringBuilder operationBuilder = new StringBuilder();
-        if (generator instanceof SameLevelRecordMappingConfigGenerator) {
+        //if (generator instanceof SameLevelRecordMappingConfigGenerator) {
             if (inputVariables.size() >= 2) {
                 operationBuilder.append(inputVariables.get(0).getName() + ".concat(" + inputVariables.get(1).getName()
                         + ");");
@@ -38,9 +38,9 @@ public class ConcatOperatorTransformer implements DMOperatorTransformer {
             } else {
                 operationBuilder.append("'';");
             }
-        } else {
-            throw new IllegalArgumentException("Unknown MappingConfigGenerator type found : " + generator);
-        }
+        //} else {
+        //    throw new IllegalArgumentException("Unknown MappingConfigGenerator type found : " + generator);
+        //}
         return operationBuilder.toString();
     }
 

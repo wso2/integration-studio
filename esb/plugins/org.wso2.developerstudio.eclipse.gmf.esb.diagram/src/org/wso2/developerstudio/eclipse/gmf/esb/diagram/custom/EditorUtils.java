@@ -60,6 +60,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.CommandMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.ConditionalRouterMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.DBLookupMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.DBReportMediator;
+import org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.DropMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.EJBMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.EnqueueMediator;
@@ -316,6 +317,8 @@ public class EditorUtils {
             return ((PublishEventMediator) mediator).getInputConnector();
         } else if (mediator instanceof CloudConnectorOperationImpl) {
             return ((CloudConnectorOperationImpl) mediator).getInputConnector();
+        } else if (mediator instanceof DataMapperMediator) {
+            return ((DataMapperMediator) mediator).getInputConnector();
         }
         throw new IllegalArgumentException("Invalid/Unknown Mediator type found : " + mediator.toString());
     }
@@ -424,6 +427,8 @@ public class EditorUtils {
             return ((PublishEventMediator) mediator).getOutputconnector();
         } else if (mediator instanceof CloudConnectorOperationImpl) {
             return ((CloudConnectorOperationImpl) mediator).getOutputConnector();
+        } else if (mediator instanceof DataMapperMediator) {
+            return ((DataMapperMediator) mediator).getOutputConnector();
         }
         throw new IllegalArgumentException("Invalid/Unknown Mediator type found : " + mediator.toString());
     }

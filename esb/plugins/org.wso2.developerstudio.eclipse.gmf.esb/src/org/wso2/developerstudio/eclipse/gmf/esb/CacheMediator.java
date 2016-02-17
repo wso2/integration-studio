@@ -124,7 +124,8 @@ public interface CacheMediator extends Mediator {
 
 	/**
 	 * Returns the value of the '<em><b>Hash Generator</b></em>' attribute.
-	 * The default value is <code>"org.wso2.caching.digest.DOMHashGenerator"</code>.
+	 * The default value is <code>"CARBON_MEDIATOR_CACHE_DIGEST_DOMHASH_GENERATOR"</code>.
+	 * The literals are from the enumeration {@link org.wso2.developerstudio.eclipse.gmf.esb.HashGenerator}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Hash Generator</em>' attribute isn't clear,
@@ -132,22 +133,24 @@ public interface CacheMediator extends Mediator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Hash Generator</em>' attribute.
-	 * @see #setHashGenerator(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.HashGenerator
+	 * @see #setHashGenerator(HashGenerator)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getCacheMediator_HashGenerator()
-	 * @model default="org.wso2.caching.digest.DOMHashGenerator"
+	 * @model default="CARBON_MEDIATOR_CACHE_DIGEST_DOMHASH_GENERATOR"
 	 * @generated
 	 */
-	String getHashGenerator();
+	HashGenerator getHashGenerator();
 
 	/**
 	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.CacheMediator#getHashGenerator <em>Hash Generator</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Hash Generator</em>' attribute.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.HashGenerator
 	 * @see #getHashGenerator()
 	 * @generated
 	 */
-	void setHashGenerator(String value);
+	void setHashGenerator(HashGenerator value);
 
 	/**
 	 * Returns the value of the '<em><b>Cache Timeout</b></em>' attribute.

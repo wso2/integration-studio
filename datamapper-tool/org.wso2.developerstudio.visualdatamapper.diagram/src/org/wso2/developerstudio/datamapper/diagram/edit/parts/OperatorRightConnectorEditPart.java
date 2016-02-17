@@ -1,6 +1,8 @@
 package org.wso2.developerstudio.datamapper.diagram.edit.parts;
 
+import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.IFigure;
+import org.eclipse.draw2d.LineBorder;
 import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.RectangleFigure;
 import org.eclipse.draw2d.Shape;
@@ -160,9 +162,7 @@ public class OperatorRightConnectorEditPart extends AbstractBorderedShapeEditPar
 	protected IFigure createNodeShape() {
 
 		RectangleFigure primaryShape = new RectangleFigure();
-		//RoundedRectangleBorder border = new RoundedRectangleBorder(8, 8);
-		//border.setColor(new Color(null, 0, 255, 0));
-		//primaryShape.setBorder(border ); //FIXME just for identification, remove once we done
+		primaryShape.setBorder(new LineBorder(new Color(null, 90, 148, 219), 1, Graphics.LINE_SOLID));
 		return primaryShape;
 	}
 

@@ -1,7 +1,10 @@
 package org.wso2.developerstudio.datamapper.diagram.edit.parts;
 
+import org.eclipse.draw2d.CompoundBorder;
+import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.Label;
+import org.eclipse.draw2d.LineBorder;
 import org.eclipse.draw2d.RectangleFigure;
 import org.eclipse.draw2d.RoundedRectangle;
 import org.eclipse.draw2d.Shape;
@@ -211,14 +214,13 @@ public class SplitEditPart extends AbstractOperatorEditPart {
 			this.setBackgroundColor(THIS_BACK);
 
 			TitleBarBorder titleBarBorder = new TitleBarBorder("Split");
-			titleBarBorder.setBackgroundColor(new Color(null, 96, 148, 219));
+			titleBarBorder.setBackgroundColor(new Color(null, 90, 148, 219));
 			titleBarBorder.setTextColor(new Color(null, 0, 0, 0));
-			titleBarBorder.setFont(new Font(null, "Arial", 10, SWT.NORMAL));
-			this.setBorder(titleBarBorder);
-
-			/*			RoundedRectangleBorder border = new RoundedRectangleBorder(8, 8);
-			 border.setColor(new Color(null, 255, 0, 0));*/
-			this.setBorder(titleBarBorder);
+			titleBarBorder.setFont(new Font(null, "Arial", 10, SWT.BOLD));
+			CompoundBorder compoundBorder = new CompoundBorder(
+					titleBarBorder, 
+					new LineBorder(new Color(null, 90, 148, 219), 1, Graphics.LINE_SOLID));
+			this.setBorder(compoundBorder);
 		}
 
 		public String getIconPath() {

@@ -681,6 +681,8 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
 				return createFeedTypeFromString(eDataType, initialValue);
 			case EsbPackage.ENABLE_DISABLE_STATE:
 				return createEnableDisableStateFromString(eDataType, initialValue);
+			case EsbPackage.HASH_GENERATOR:
+				return createHashGeneratorFromString(eDataType, initialValue);
 			case EsbPackage.MAP:
 				return createMapFromString(eDataType, initialValue);
 			default:
@@ -949,6 +951,8 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
 				return convertFeedTypeToString(eDataType, instanceValue);
 			case EsbPackage.ENABLE_DISABLE_STATE:
 				return convertEnableDisableStateToString(eDataType, instanceValue);
+			case EsbPackage.HASH_GENERATOR:
+				return convertHashGeneratorToString(eDataType, instanceValue);
 			case EsbPackage.MAP:
 				return convertMapToString(eDataType, instanceValue);
 			default:
@@ -7235,6 +7239,26 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
 	 * @generated
 	 */
 	public String convertEnableDisableStateToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public HashGenerator createHashGeneratorFromString(EDataType eDataType, String initialValue) {
+		HashGenerator result = HashGenerator.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertHashGeneratorToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

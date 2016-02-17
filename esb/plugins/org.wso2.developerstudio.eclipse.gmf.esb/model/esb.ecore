@@ -1383,8 +1383,8 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="cacheScope" eType="#//CacheScope"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="cacheAction" eType="#//CacheAction"
         defaultValueLiteral="FINDER"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="hashGenerator" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
-        defaultValueLiteral="org.wso2.caching.digest.DOMHashGenerator"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="hashGenerator" eType="#//HashGenerator"
+        defaultValueLiteral="CARBON_MEDIATOR_CACHE_DIGEST_DOMHASH_GENERATOR"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="cacheTimeout" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
         defaultValueLiteral="120"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="maxMessageSize" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
@@ -3237,5 +3237,9 @@
   <eClassifiers xsi:type="ecore:EEnum" name="EnableDisableState">
     <eLiterals name="Disabled" literal="Disabled"/>
     <eLiterals name="Enabled" value="1" literal="Enabled"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="HashGenerator">
+    <eLiterals name="CARBON_MEDIATOR_CACHE_DIGEST_DOMHASH_GENERATOR" literal="CARBON_MEDIATOR_CACHE_DIGEST_DOMHASH_GENERATOR"/>
+    <eLiterals name="CACHING_DIGEST_DOMHASH_GENERATOR" value="1" literal="CACHING_DIGEST_DOMHASH_GENERATOR"/>
   </eClassifiers>
 </ecore:EPackage>

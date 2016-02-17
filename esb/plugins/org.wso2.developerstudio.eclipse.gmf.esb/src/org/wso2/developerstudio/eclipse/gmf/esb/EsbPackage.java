@@ -26049,6 +26049,16 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	int ENABLE_DISABLE_STATE = 488;
 
 	/**
+	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.HashGenerator <em>Hash Generator</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.HashGenerator
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getHashGenerator()
+	 * @generated
+	 */
+	int HASH_GENERATOR = 489;
+
+	/**
 	 * The meta object id for the '<em>Map</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -26056,7 +26066,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getMap()
 	 * @generated
 	 */
-	int MAP = 489;
+	int MAP = 490;
 
 
 	/**
@@ -43215,6 +43225,16 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	EEnum getEnableDisableState();
 
 	/**
+	 * Returns the meta object for enum '{@link org.wso2.developerstudio.eclipse.gmf.esb.HashGenerator <em>Hash Generator</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Hash Generator</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.HashGenerator
+	 * @generated
+	 */
+	EEnum getHashGenerator();
+
+	/**
 	 * Returns the meta object for data type '{@link java.util.Map <em>Map</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -57056,6 +57076,16 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 		 * @generated
 		 */
 		EEnum ENABLE_DISABLE_STATE = eINSTANCE.getEnableDisableState();
+
+		/**
+		 * The meta object literal for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.HashGenerator <em>Hash Generator</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.wso2.developerstudio.eclipse.gmf.esb.HashGenerator
+		 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getHashGenerator()
+		 * @generated
+		 */
+		EEnum HASH_GENERATOR = eINSTANCE.getHashGenerator();
 
 		/**
 		 * The meta object literal for the '<em>Map</em>' data type.

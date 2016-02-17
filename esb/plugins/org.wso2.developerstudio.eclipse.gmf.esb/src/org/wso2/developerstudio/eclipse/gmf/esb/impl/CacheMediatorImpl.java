@@ -27,6 +27,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.CacheOnHitBranch;
 import org.wso2.developerstudio.eclipse.gmf.esb.CacheScope;
 import org.wso2.developerstudio.eclipse.gmf.esb.CacheSequenceType;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
+import org.wso2.developerstudio.eclipse.gmf.esb.HashGenerator;
 import org.wso2.developerstudio.eclipse.gmf.esb.MediatorFlow;
 import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 import org.wso2.developerstudio.eclipse.platform.core.mediatype.PlatformMediaTypeConstants;
@@ -128,7 +129,7 @@ public class CacheMediatorImpl extends MediatorImpl implements CacheMediator {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String HASH_GENERATOR_EDEFAULT = "org.wso2.caching.digest.DOMHashGenerator";
+	protected static final HashGenerator HASH_GENERATOR_EDEFAULT = HashGenerator.CARBON_MEDIATOR_CACHE_DIGEST_DOMHASH_GENERATOR;
 
 	/**
 	 * The cached value of the '{@link #getHashGenerator() <em>Hash Generator</em>}' attribute.
@@ -138,7 +139,7 @@ public class CacheMediatorImpl extends MediatorImpl implements CacheMediator {
 	 * @generated
 	 * @ordered
 	 */
-	protected String hashGenerator = HASH_GENERATOR_EDEFAULT;
+	protected HashGenerator hashGenerator = HASH_GENERATOR_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getCacheTimeout() <em>Cache Timeout</em>}' attribute.
@@ -385,7 +386,7 @@ public class CacheMediatorImpl extends MediatorImpl implements CacheMediator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getHashGenerator() {
+	public HashGenerator getHashGenerator() {
 		return hashGenerator;
 	}
 
@@ -394,9 +395,9 @@ public class CacheMediatorImpl extends MediatorImpl implements CacheMediator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setHashGenerator(String newHashGenerator) {
-		String oldHashGenerator = hashGenerator;
-		hashGenerator = newHashGenerator;
+	public void setHashGenerator(HashGenerator newHashGenerator) {
+		HashGenerator oldHashGenerator = hashGenerator;
+		hashGenerator = newHashGenerator == null ? HASH_GENERATOR_EDEFAULT : newHashGenerator;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.CACHE_MEDIATOR__HASH_GENERATOR, oldHashGenerator, hashGenerator));
 	}
@@ -804,7 +805,7 @@ public class CacheMediatorImpl extends MediatorImpl implements CacheMediator {
 				setCacheAction((CacheAction)newValue);
 				return;
 			case EsbPackage.CACHE_MEDIATOR__HASH_GENERATOR:
-				setHashGenerator((String)newValue);
+				setHashGenerator((HashGenerator)newValue);
 				return;
 			case EsbPackage.CACHE_MEDIATOR__CACHE_TIMEOUT:
 				setCacheTimeout((Integer)newValue);
@@ -911,7 +912,7 @@ public class CacheMediatorImpl extends MediatorImpl implements CacheMediator {
 			case EsbPackage.CACHE_MEDIATOR__CACHE_ACTION:
 				return cacheAction != CACHE_ACTION_EDEFAULT;
 			case EsbPackage.CACHE_MEDIATOR__HASH_GENERATOR:
-				return HASH_GENERATOR_EDEFAULT == null ? hashGenerator != null : !HASH_GENERATOR_EDEFAULT.equals(hashGenerator);
+				return hashGenerator != HASH_GENERATOR_EDEFAULT;
 			case EsbPackage.CACHE_MEDIATOR__CACHE_TIMEOUT:
 				return cacheTimeout != CACHE_TIMEOUT_EDEFAULT;
 			case EsbPackage.CACHE_MEDIATOR__MAX_MESSAGE_SIZE:

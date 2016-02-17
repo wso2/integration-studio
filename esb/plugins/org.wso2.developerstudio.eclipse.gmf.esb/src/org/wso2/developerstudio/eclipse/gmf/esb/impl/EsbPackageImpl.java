@@ -240,6 +240,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.ForEachTarget;
 import org.wso2.developerstudio.eclipse.gmf.esb.HTTPEndPointInputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.HTTPEndPointOutputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.HTTPEndpoint;
+import org.wso2.developerstudio.eclipse.gmf.esb.HashGenerator;
 import org.wso2.developerstudio.eclipse.gmf.esb.HeaderAction;
 import org.wso2.developerstudio.eclipse.gmf.esb.HeaderMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.HeaderMediatorInputConnector;
@@ -3959,6 +3960,13 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * @generated
 	 */
 	private EEnum enableDisableStateEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum hashGeneratorEEnum = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -18469,6 +18477,15 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EEnum getHashGenerator() {
+		return hashGeneratorEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EDataType getMap() {
 		return mapEDataType;
 	}
@@ -20469,6 +20486,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		mqttSubscriptionQOSEEnum = createEEnum(MQTT_SUBSCRIPTION_QOS);
 		feedTypeEEnum = createEEnum(FEED_TYPE);
 		enableDisableStateEEnum = createEEnum(ENABLE_DISABLE_STATE);
+		hashGeneratorEEnum = createEEnum(HASH_GENERATOR);
 
 		// Create data types
 		mapEDataType = createEDataType(MAP);
@@ -21674,7 +21692,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		initEAttribute(getCacheMediator_CacheId(), ecorePackage.getEString(), "cacheId", null, 0, 1, CacheMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCacheMediator_CacheScope(), this.getCacheScope(), "cacheScope", null, 0, 1, CacheMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCacheMediator_CacheAction(), this.getCacheAction(), "cacheAction", "FINDER", 0, 1, CacheMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getCacheMediator_HashGenerator(), ecorePackage.getEString(), "hashGenerator", "org.wso2.caching.digest.DOMHashGenerator", 0, 1, CacheMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getCacheMediator_HashGenerator(), this.getHashGenerator(), "hashGenerator", "CARBON_MEDIATOR_CACHE_DIGEST_DOMHASH_GENERATOR", 0, 1, CacheMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCacheMediator_CacheTimeout(), ecorePackage.getEInt(), "cacheTimeout", "120", 0, 1, CacheMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCacheMediator_MaxMessageSize(), ecorePackage.getEInt(), "maxMessageSize", "2000", 0, 1, CacheMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCacheMediator_ImplementationType(), this.getCacheImplementationType(), "implementationType", null, 0, 1, CacheMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -23422,6 +23440,10 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		initEEnum(enableDisableStateEEnum, EnableDisableState.class, "EnableDisableState");
 		addEEnumLiteral(enableDisableStateEEnum, EnableDisableState.DISABLED);
 		addEEnumLiteral(enableDisableStateEEnum, EnableDisableState.ENABLED);
+
+		initEEnum(hashGeneratorEEnum, HashGenerator.class, "HashGenerator");
+		addEEnumLiteral(hashGeneratorEEnum, HashGenerator.CARBON_MEDIATOR_CACHE_DIGEST_DOMHASH_GENERATOR);
+		addEEnumLiteral(hashGeneratorEEnum, HashGenerator.CACHING_DIGEST_DOMHASH_GENERATOR);
 
 		// Initialize data types
 		initEDataType(mapEDataType, Map.class, "Map", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);

@@ -34,54 +34,134 @@ public class CacheMediatorDeserializer extends
 		AbstractEsbNodeDeserializer<AbstractMediator, CacheMediator> {
 
 	@Override
-	public CacheMediator createNode(IGraphicalEditPart part, AbstractMediator object) {
-		Assert.isTrue(object instanceof org.apache.synapse.mediators.builtin.CacheMediator,
+	public CacheMediator createNode(IGraphicalEditPart part,
+			AbstractMediator object) {
+		Assert.isTrue(
+				object instanceof org.apache.synapse.mediators.builtin.CacheMediator
+						|| object instanceof org.wso2.carbon.mediator.cache.CacheMediator,
 				"Unsupported mediator passed in for deserialization");
+		CacheMediator mediatorModel = (CacheMediator) DeserializerUtils
+				.createNode(part, EsbElementTypes.CacheMediator_3518);
+		if (object instanceof org.wso2.carbon.mediator.cache.CacheMediator) {
+			org.wso2.carbon.mediator.cache.CacheMediator mediator = (org.wso2.carbon.mediator.cache.CacheMediator) object;
 
-		org.apache.synapse.mediators.builtin.CacheMediator mediator = (org.apache.synapse.mediators.builtin.CacheMediator) object;
-		CacheMediator mediatorModel = (CacheMediator) DeserializerUtils.createNode(part,
-				EsbElementTypes.CacheMediator_3518);
-		setElementToEdit(mediatorModel);
-		setCommonProperties(mediator, mediatorModel);
-		
-		if (StringUtils.isNotBlank(mediator.getId())) {
-			executeSetValueCommand(CACHE_MEDIATOR__CACHE_ID, mediator.getId());
-		}
-		
-		if("per-mediator".equals(mediator.getScope())){
-			executeSetValueCommand(CACHE_MEDIATOR__CACHE_SCOPE, CacheScope.PER_MEDIATOR);
-		} else if ("per-host".equals(mediator.getScope())){
-			executeSetValueCommand(CACHE_MEDIATOR__CACHE_SCOPE, CacheScope.PER_HOST);
-		}	
-		
-		if (mediator.isCollector()) {
-			executeSetValueCommand(CACHE_MEDIATOR__CACHE_ACTION, CacheAction.COLLECTOR);
-		} else {
-			executeSetValueCommand(CACHE_MEDIATOR__CACHE_ACTION, CacheAction.FINDER);
-			executeSetValueCommand(CACHE_MEDIATOR__CACHE_TIMEOUT, (int) mediator.getTimeout());
-			executeSetValueCommand(CACHE_MEDIATOR__MAX_MESSAGE_SIZE, (int) mediator.getMaxMessageSize());
-			executeSetValueCommand(CACHE_MEDIATOR__MAX_ENTRY_COUNT, (int) mediator.getInMemoryCacheSize());
+			setElementToEdit(mediatorModel);
+			setCommonProperties(mediator, mediatorModel);
 
-			if(mediator.getDigestGenerator()!=null){
-				executeSetValueCommand(CACHE_MEDIATOR__HASH_GENERATOR, mediator.getDigestGenerator().getClass().getName());
+			if (StringUtils.isNotBlank(mediator.getId())) {
+				executeSetValueCommand(CACHE_MEDIATOR__CACHE_ID,
+						mediator.getId());
 			}
-			
-			String onCacheHitRef = mediator.getOnCacheHitRef();
-			SequenceMediator onCacheHitSequence = mediator.getOnCacheHitSequence();
-			
-			if(onCacheHitSequence!= null){
-				executeSetValueCommand(CACHE_MEDIATOR__SEQUENCE_TYPE, CacheSequenceType.ANONYMOUS);
-				refreshEditPartMap();
-				IGraphicalEditPart compartment = (IGraphicalEditPart) getEditpart(mediatorModel.getMediatorFlow()).getChildren().get(0);
-				deserializeSequence(compartment, onCacheHitSequence, mediatorModel.getOnHitOutputConnector());
-			} else if(onCacheHitRef != null && !onCacheHitRef.equals("")){
-					executeSetValueCommand(CACHE_MEDIATOR__SEQUENCE_TYPE, CacheSequenceType.REGISTRY_REFERENCE);
-					RegistryKeyProperty regkey = EsbFactory.eINSTANCE.createRegistryKeyProperty();
+
+			if ("per-mediator".equals(mediator.getScope())) {
+				executeSetValueCommand(CACHE_MEDIATOR__CACHE_SCOPE,
+						CacheScope.PER_MEDIATOR);
+			} else if ("per-host".equals(mediator.getScope())) {
+				executeSetValueCommand(CACHE_MEDIATOR__CACHE_SCOPE,
+						CacheScope.PER_HOST);
+			}
+
+			if (mediator.isCollector()) {
+				executeSetValueCommand(CACHE_MEDIATOR__CACHE_ACTION,
+						CacheAction.COLLECTOR);
+			} else {
+				executeSetValueCommand(CACHE_MEDIATOR__CACHE_ACTION,
+						CacheAction.FINDER);
+				executeSetValueCommand(CACHE_MEDIATOR__CACHE_TIMEOUT,
+						(int) mediator.getTimeout());
+				executeSetValueCommand(CACHE_MEDIATOR__MAX_MESSAGE_SIZE,
+						(int) mediator.getMaxMessageSize());
+				executeSetValueCommand(CACHE_MEDIATOR__MAX_ENTRY_COUNT,
+						(int) mediator.getInMemoryCacheSize());
+
+				if (mediator.getDigestGenerator() != null) {
+					executeSetValueCommand(CACHE_MEDIATOR__HASH_GENERATOR,
+							mediator.getDigestGenerator().getClass().getName());
+				}
+
+				String onCacheHitRef = mediator.getOnCacheHitRef();
+				SequenceMediator onCacheHitSequence = mediator
+						.getOnCacheHitSequence();
+
+				if (onCacheHitSequence != null) {
+					executeSetValueCommand(CACHE_MEDIATOR__SEQUENCE_TYPE,
+							CacheSequenceType.ANONYMOUS);
+					refreshEditPartMap();
+					IGraphicalEditPart compartment = (IGraphicalEditPart) getEditpart(
+							mediatorModel.getMediatorFlow()).getChildren().get(
+							0);
+					deserializeSequence(compartment, onCacheHitSequence,
+							mediatorModel.getOnHitOutputConnector());
+				} else if (onCacheHitRef != null && !onCacheHitRef.equals("")) {
+					executeSetValueCommand(CACHE_MEDIATOR__SEQUENCE_TYPE,
+							CacheSequenceType.REGISTRY_REFERENCE);
+					RegistryKeyProperty regkey = EsbFactory.eINSTANCE
+							.createRegistryKeyProperty();
 					regkey.setKeyValue(onCacheHitRef);
 					executeSetValueCommand(CACHE_MEDIATOR__SEQUENCE_KEY, regkey);
+				}
+			}
+		} else if (object instanceof org.apache.synapse.mediators.builtin.CacheMediator) {
+			org.apache.synapse.mediators.builtin.CacheMediator mediator = (org.apache.synapse.mediators.builtin.CacheMediator) object;
+
+			setElementToEdit(mediatorModel);
+			setCommonProperties(mediator, mediatorModel);
+
+			if (StringUtils.isNotBlank(mediator.getId())) {
+				executeSetValueCommand(CACHE_MEDIATOR__CACHE_ID,
+						mediator.getId());
+			}
+
+			if ("per-mediator".equals(mediator.getScope())) {
+				executeSetValueCommand(CACHE_MEDIATOR__CACHE_SCOPE,
+						CacheScope.PER_MEDIATOR);
+			} else if ("per-host".equals(mediator.getScope())) {
+				executeSetValueCommand(CACHE_MEDIATOR__CACHE_SCOPE,
+						CacheScope.PER_HOST);
+			}
+
+			if (mediator.isCollector()) {
+				executeSetValueCommand(CACHE_MEDIATOR__CACHE_ACTION,
+						CacheAction.COLLECTOR);
+			} else {
+				executeSetValueCommand(CACHE_MEDIATOR__CACHE_ACTION,
+						CacheAction.FINDER);
+				executeSetValueCommand(CACHE_MEDIATOR__CACHE_TIMEOUT,
+						(int) mediator.getTimeout());
+				executeSetValueCommand(CACHE_MEDIATOR__MAX_MESSAGE_SIZE,
+						(int) mediator.getMaxMessageSize());
+				executeSetValueCommand(CACHE_MEDIATOR__MAX_ENTRY_COUNT,
+						(int) mediator.getInMemoryCacheSize());
+
+				if (mediator.getDigestGenerator() != null) {
+					executeSetValueCommand(CACHE_MEDIATOR__HASH_GENERATOR,
+							mediator.getDigestGenerator().getClass().getName());
+				}
+
+				String onCacheHitRef = mediator.getOnCacheHitRef();
+				SequenceMediator onCacheHitSequence = mediator
+						.getOnCacheHitSequence();
+
+				if (onCacheHitSequence != null) {
+					executeSetValueCommand(CACHE_MEDIATOR__SEQUENCE_TYPE,
+							CacheSequenceType.ANONYMOUS);
+					refreshEditPartMap();
+					IGraphicalEditPart compartment = (IGraphicalEditPart) getEditpart(
+							mediatorModel.getMediatorFlow()).getChildren().get(
+							0);
+					deserializeSequence(compartment, onCacheHitSequence,
+							mediatorModel.getOnHitOutputConnector());
+				} else if (onCacheHitRef != null && !onCacheHitRef.equals("")) {
+					executeSetValueCommand(CACHE_MEDIATOR__SEQUENCE_TYPE,
+							CacheSequenceType.REGISTRY_REFERENCE);
+					RegistryKeyProperty regkey = EsbFactory.eINSTANCE
+							.createRegistryKeyProperty();
+					regkey.setKeyValue(onCacheHitRef);
+					executeSetValueCommand(CACHE_MEDIATOR__SEQUENCE_KEY, regkey);
+				}
 			}
 		}
-		
+
 		return mediatorModel;
 	}
 

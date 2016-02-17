@@ -571,16 +571,17 @@ public class OutputEditPart extends ShapeNodeEditPart {
 			ToolbarLayout layoutThis = new ToolbarLayout();
 			layoutThis.setStretchMinorAxis(true);
 			layoutThis.setMinorAlignment(ToolbarLayout.ALIGN_TOPLEFT);
-			layoutThis.setSpacing(0);
+			layoutThis.setSpacing(1);
 			layoutThis.setVertical(true);
 			this.setLayoutManager(layoutThis);
 			this.setPreferredSize(new Dimension(getMapMode().DPtoLP(250), getMapMode().DPtoLP(200)));
 			this.setOutline(true);
 
 			TitleBarBorder titleBarBorder = new TitleBarBorder("Output");
-			titleBarBorder.setBackgroundColor(new Color(null, 96, 148, 219));
+			titleBarBorder.setPadding(4);
+			titleBarBorder.setBackgroundColor(new Color(null, 90, 148, 219));
 			titleBarBorder.setTextColor(new Color(null, 0, 0, 0));
-			titleBarBorder.setFont(new Font(null, "Arial", 10, SWT.NORMAL));
+			titleBarBorder.setFont(new Font(null, "Arial", 10, SWT.BOLD));
 			this.setBorder(titleBarBorder);
 
 		}

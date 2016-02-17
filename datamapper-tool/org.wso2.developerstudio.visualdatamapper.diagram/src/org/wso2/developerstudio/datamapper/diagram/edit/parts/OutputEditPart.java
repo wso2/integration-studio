@@ -1,8 +1,11 @@
 package org.wso2.developerstudio.datamapper.diagram.edit.parts;
 
 import org.apache.avro.Schema;
+import org.eclipse.draw2d.CompoundBorder;
 import org.eclipse.draw2d.FigureCanvas;
+import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.IFigure;
+import org.eclipse.draw2d.LineBorder;
 import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.RectangleFigure;
 import org.eclipse.draw2d.Shape;
@@ -582,7 +585,10 @@ public class OutputEditPart extends ShapeNodeEditPart {
 			titleBarBorder.setBackgroundColor(new Color(null, 90, 148, 219));
 			titleBarBorder.setTextColor(new Color(null, 0, 0, 0));
 			titleBarBorder.setFont(new Font(null, "Arial", 10, SWT.BOLD));
-			this.setBorder(titleBarBorder);
+			CompoundBorder compoundBorder = new CompoundBorder(
+					titleBarBorder, 
+					new LineBorder(new Color(null, 90, 148, 219), 2, Graphics.LINE_SOLID));
+			this.setBorder(compoundBorder);
 
 		}
 

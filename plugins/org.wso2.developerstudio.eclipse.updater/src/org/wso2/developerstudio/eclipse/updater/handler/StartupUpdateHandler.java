@@ -78,6 +78,9 @@ public class StartupUpdateHandler implements IStartup {
 		}
 		// Do not continue if user set automatic updates to false
 		if (defaultVal.equals(NO) || defaultVal.equals(SELECT)) {
+			prefPage.setValue(
+					UpdateCheckerPreferencePage.SET_AUTOMATIC_UPDATE_PREF,
+					defaultVal);
 			return;
 		}
 		String updateInterval = prefPage

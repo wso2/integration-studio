@@ -553,7 +553,7 @@ public class ElementEditPart extends AbstractBorderedShapeEditPart {
 		public ElementFigure() {
 
 			ToolbarLayout layoutThis = new ToolbarLayout();
-			layoutThis.setStretchMinorAxis(true);
+			layoutThis.setStretchMinorAxis(false);
 			layoutThis.setMinorAlignment(ToolbarLayout.ALIGN_TOPLEFT);
 			//layoutThis.setSpacing(5);
 			layoutThis.setVertical(false);
@@ -620,7 +620,7 @@ public class ElementEditPart extends AbstractBorderedShapeEditPart {
 			RectangleFigure mainImageRectangle = new RectangleFigure();
 
 			mainImageRectangle.setBackgroundColor(new Color(null, 255, 255, 255));
-			mainImageRectangle.setPreferredSize(new Dimension(20, 8));
+			mainImageRectangle.setPreferredSize(new Dimension(20, 5));
 			mainImageRectangle.add(mainImg);
 
 			fFigureElementNameFigure = new WrappingLabel(); // element nme holding rectangle
@@ -630,11 +630,13 @@ public class ElementEditPart extends AbstractBorderedShapeEditPart {
 			String name = (((Element) ((View) getModel()).getElement()).getName());
 			int tabCount = ((Element) ((View) getModel()).getElement()).getLevel();
 
-			figure.setPreferredSize((tabCount - 1) * 30, 100);
+			figure.setPreferredSize((tabCount - 1) * 30, 5);
 
 			fFigureElementNameFigure.setText(name);
 			fFigureElementNameFigure.setForegroundColor(ColorConstants.black);
 			fFigureElementNameFigure.setFont(new Font(null, "Arial", 10, SWT.BOLD));
+			fFigureElementNameFigure.setMaximumSize(new Dimension(100,5));
+			fFigureElementNameFigure.setMinimumSize(new Dimension(100,1));
 
 			figure.setOutline(false);
 			mainImageRectangle.setOutline(false);
@@ -645,7 +647,8 @@ public class ElementEditPart extends AbstractBorderedShapeEditPart {
 			this.add(figure);
 			this.add(mainImageRectangle);
 			this.add(fFigureElementNameFigure);
-			//this.setMinimumSize(new Dimension(100, 20));
+			this.setMaximumSize(new Dimension(100, 5));
+			this.setMaximumSize(new Dimension(100, 1));
 
 		}
 

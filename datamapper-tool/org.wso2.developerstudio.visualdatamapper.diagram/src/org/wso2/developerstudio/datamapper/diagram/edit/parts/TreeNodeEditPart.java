@@ -390,7 +390,7 @@ public class TreeNodeEditPart extends ShapeNodeEditPart {
 			ImageDescriptor mainImgDescCollapse = AbstractUIPlugin.imageDescriptorFromPlugin(
 					"org.wso2.developerstudio.visualdatamapper.diagram", "icons/gmf/plus.gif");
 			ImageDescriptor mainImgDescExpand = AbstractUIPlugin.imageDescriptorFromPlugin(
-					"org.wso2.developerstudio.visualdatamapper.diagram", "icons/gmf/minus.gif");
+					"org.wso2.developerstudio.visualdatamapper.diagram", "icons/gmf/symbol_element_of.gif");//minus.gif
 
 			final ImageFigure mainImg = new ImageFigure(mainImgDescCollapse.createImage());
 			final ImageFigure mainExpand = new ImageFigure(mainImgDescExpand.createImage());
@@ -416,7 +416,7 @@ public class TreeNodeEditPart extends ShapeNodeEditPart {
 			clickNode.setEnabled(true);
 			clickNode.setPreferredSize(20, 8);
 
-			clickNode.addActionListener(new ActionListener() {
+			/*clickNode.addActionListener(new ActionListener() {
 
 				public void actionPerformed(ActionEvent event) {
 					if (!isExpanded) {
@@ -427,8 +427,9 @@ public class TreeNodeEditPart extends ShapeNodeEditPart {
 				}
 
 			});
-
+*/
 			figure2.setPreferredSize((count - 1) * 30, 1);
+			//figure2.setPreferredSize(1, 1);
 
 			figure.setOutline(false);
 			figure2.setOutline(false);

@@ -388,9 +388,9 @@ public class TreeNode3EditPart extends ShapeNodeEditPart {
 			figure2.setOpaque(true);
 
 			ImageDescriptor mainImgDescCollapse = AbstractUIPlugin.imageDescriptorFromPlugin(
-					"org.wso2.developerstudio.visualdatamapper.diagram", "icons/gmf/plus.gif");
+					"org.wso2.developerstudio.visualdatamapper.diagram", "icons/gmf/symbol_element_of.gif");//plus.gif
 			ImageDescriptor mainImgDescExpand = AbstractUIPlugin.imageDescriptorFromPlugin(
-					"org.wso2.developerstudio.visualdatamapper.diagram", "icons/gmf/minus.gif");
+					"org.wso2.developerstudio.visualdatamapper.diagram", "icons/gmf/symbol_element_of.gif");//minus.gif
 
 			final ImageFigure mainImg = new ImageFigure(mainImgDescCollapse.createImage());
 			final ImageFigure mainExpand = new ImageFigure(mainImgDescExpand.createImage());
@@ -416,7 +416,7 @@ public class TreeNode3EditPart extends ShapeNodeEditPart {
 			clickNode.setEnabled(true);
 			clickNode.setPreferredSize(20, 8);
 
-			clickNode.addActionListener(new ActionListener() {
+			/*clickNode.addActionListener(new ActionListener() {
 
 				public void actionPerformed(ActionEvent event) {
 					if (!isExpanded) {
@@ -428,7 +428,7 @@ public class TreeNode3EditPart extends ShapeNodeEditPart {
 					}
 				}
 
-			});
+			});*/
 
 			figure2.setPreferredSize((count - 1) * 30, 1);
 

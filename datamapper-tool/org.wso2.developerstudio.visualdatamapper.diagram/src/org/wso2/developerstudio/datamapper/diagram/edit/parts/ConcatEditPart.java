@@ -10,6 +10,7 @@ import org.eclipse.draw2d.RoundedRectangle;
 import org.eclipse.draw2d.Shape;
 import org.eclipse.draw2d.StackLayout;
 import org.eclipse.draw2d.TitleBarBorder;
+import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPolicy;
 import org.eclipse.gef.Request;
@@ -20,6 +21,7 @@ import org.eclipse.gef.requests.CreateRequest;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.DragDropEditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.ConstrainedToolbarLayout;
+import org.eclipse.gmf.runtime.draw2d.ui.figures.RoundedRectangleBorder;
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
@@ -205,20 +207,11 @@ public class ConcatEditPart extends AbstractOperatorEditPart {
 		}
 	}
 
-	public class ConcatFigure extends RoundedRectangle {
+	public class ConcatFigure extends OperatorRectangle {
 
 		public ConcatFigure() {
+			super("Concat");
 			this.setBackgroundColor(THIS_BACK);
-
-			TitleBarBorder titleBarBorder = new TitleBarBorder("Concat");
-			titleBarBorder.setBackgroundColor(new Color(null, 90, 148, 219));
-			titleBarBorder.setTextColor(new Color(null, 0, 0, 0));
-			titleBarBorder.setFont(new Font(null, "Arial", 10, SWT.BOLD));
-			this.setBorder(titleBarBorder);
-			CompoundBorder compoundBorder = new CompoundBorder(
-					titleBarBorder, 
-					new LineBorder(new Color(null, 90, 148, 219), 1, Graphics.LINE_SOLID));
-			this.setBorder(compoundBorder);
 		}
 
 		public String getIconPath() {

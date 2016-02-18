@@ -205,19 +205,11 @@ public class ContainsEditPart extends AbstractOperatorEditPart {
 		}
 	}
 
-	public class ContainsFigure extends RoundedRectangle {
+	public class ContainsFigure extends OperatorRectangle {
 
 		public ContainsFigure() {
+			super("Contains");
 			this.setBackgroundColor(THIS_BACK);
-
-			TitleBarBorder titleBarBorder = new TitleBarBorder("Contains");
-			titleBarBorder.setBackgroundColor(new Color(null, 90, 148, 219));
-			titleBarBorder.setTextColor(new Color(null, 0, 0, 0));
-			titleBarBorder.setFont(new Font(null, "Arial", 10, SWT.BOLD));
-			CompoundBorder compoundBorder = new CompoundBorder(
-					titleBarBorder, 
-					new LineBorder(new Color(null, 90, 148, 219), 1, Graphics.LINE_SOLID));
-			this.setBorder(compoundBorder);
 		}
 
 		public String getIconPath() {

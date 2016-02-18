@@ -204,19 +204,11 @@ public class LowerCaseEditPart extends AbstractOperatorEditPart {
 		}
 	}
 
-	public class LowerCaseFigure extends RoundedRectangle {
+	public class LowerCaseFigure extends OperatorRectangle {
 
 		public LowerCaseFigure() {
+			super("Lower Case");
 			this.setBackgroundColor(THIS_BACK);
-
-			TitleBarBorder titleBarBorder = new TitleBarBorder("To Lower Case");
-			titleBarBorder.setBackgroundColor(new Color(null, 90, 148, 219));
-			titleBarBorder.setTextColor(new Color(null, 0, 0, 0));
-			titleBarBorder.setFont(new Font(null, "Arial", 10, SWT.BOLD));
-			CompoundBorder compoundBorder = new CompoundBorder(
-					titleBarBorder, 
-					new LineBorder(new Color(null, 90, 148, 219), 1, Graphics.LINE_SOLID));
-			this.setBorder(compoundBorder);
 		}
 
 		public String getIconPath() {

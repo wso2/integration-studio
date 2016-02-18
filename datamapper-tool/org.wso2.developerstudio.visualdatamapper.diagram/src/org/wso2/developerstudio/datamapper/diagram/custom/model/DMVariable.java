@@ -15,6 +15,8 @@
  */
 package org.wso2.developerstudio.datamapper.diagram.custom.model;
 
+import org.wso2.developerstudio.datamapper.SchemaDataType;
+
 /**
  * This class should represent variable elements of data-mapper
  *
@@ -26,12 +28,26 @@ public class DMVariable {
     private int index = -1;
     private boolean visited;
     private DMVariableType type;
+    private SchemaDataType schemaVariableType;
+    private int parentVariable;
 
-    public DMVariable(String name, String id, DMVariableType type, int index) {
+    public DMVariable(String name, String id, DMVariableType type, SchemaDataType schemaVariableType, int index) {
         this.name = name;
         this.id = id;
+        this.schemaVariableType = schemaVariableType;
         this.type = type;
         this.index = index;
+        parentVariable = -1;
+    }
+
+    public DMVariable(String name, String id, DMVariableType type, SchemaDataType schemaVariableType, int index,
+            int parentVariableIndex) {
+        this.name = name;
+        this.id = id;
+        this.schemaVariableType = schemaVariableType;
+        this.type = type;
+        this.index = index;
+        parentVariable = parentVariableIndex;
     }
 
     public String toString() {
@@ -76,5 +92,21 @@ public class DMVariable {
 
     public void setType(DMVariableType type) {
         this.type = type;
+    }
+
+    public SchemaDataType getSchemaVariableType() {
+        return schemaVariableType;
+    }
+
+    public void setSchemaVariableType(SchemaDataType schemaVariableType) {
+        this.schemaVariableType = schemaVariableType;
+    }
+
+    public int getParentVariable() {
+        return parentVariable;
+    }
+
+    public void setParentVariable(int parentVariable) {
+        this.parentVariable = parentVariable;
     }
 }

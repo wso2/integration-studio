@@ -52,6 +52,7 @@ public class SchemaFromJsonAction extends AbstractActionHandler {
 	private static final String FILTER_EXTENSION_JSON = "*.json"; //$NON-NLS-1$
 	private static final String SAMPLE_JSON_FILE = Messages.SchemaFromJsonAction_sampleJsonFile;
 	private static final String ERROR_READING_JSON_FROM_FILE = Messages.SchemaFromJsonAction_errorReadingJsonFromFile;
+	private static final String ERROR_TITLE = Messages.SchemaFromJsonAction_errorTitle;
 	private static final String MENU_TITLE = Messages.SchemaFromJsonAction_menuTitle;
 
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
@@ -111,12 +112,14 @@ public class SchemaFromJsonAction extends AbstractActionHandler {
 		String filePath = fid.open();
 
 		try {
+			if(filePath != null){
 			return FileUtils.readFileToString(new File(filePath));
+			}
 		} catch (IOException e) {
 			log.error(ERROR_READING_JSON_FROM_FILE, e);
 			IStatus status = new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage());
 			ErrorDialog.openError(Display.getCurrent().getActiveShell(),
-					ERROR_READING_JSON_FROM_FILE, null, status);
+					ERROR_TITLE, ERROR_READING_JSON_FROM_FILE, status);
 		}
 		return null;
 	}

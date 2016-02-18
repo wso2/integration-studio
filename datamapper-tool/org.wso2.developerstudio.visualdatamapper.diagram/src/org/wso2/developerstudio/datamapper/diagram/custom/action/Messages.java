@@ -52,6 +52,7 @@ public class Messages extends NLS {
 	public static String LoadOutputSchemaAction_OutputSchemaDialog;
 	public static String LoadOutputSchemaAction_SchemaTypeOutput;
 	public static String SchemaFromJsonAction_errorReadingJsonFromFile;
+	public static String SchemaFromJsonAction_errorTitle;
 	public static String SchemaFromJsonAction_menuTitle;
 	public static String SchemaFromJsonAction_sampleJsonFile;
 	public static String SchemaKeyEditorDialog_EmbeddedResources;
@@ -80,6 +81,8 @@ public class Messages extends NLS {
 	public static String AddNewRootRecordAction_addNewRoot;
 	public static String AddNewRootRecordAction_errorAddChild;
 	public static String AddNewRootRecordAction_errorHeader;
+	public static String AddNewRootRecordAction_addMultipleRootElements;
+	public static String AddNewRootRecordAction_addMultipleRootElementsTitle;
 	public static String Configure_Concat_Operator;
 	
 	public static String ExportSchemaAction_errorSavingFile;
@@ -87,6 +90,8 @@ public class Messages extends NLS {
 	public static String ExportSchemaAction_fileDialogHeader;
 	public static String ExportSchemaAction_menuTitle;
 	public static String ExportSchemaAction_warnNotSavedToFile;
+	public static String ExportSchemaAction_warnNoSchematoExport;
+	public static String ExportSchemaAction_warnTitle;
 
 	static {
 		// initialize resource bundle

@@ -15,12 +15,12 @@ public class DataMapperModelingAssistantProviderOfOperatorRightConnectorEditPart
 		DataMapperModelingAssistantProvider {
 
 	/**
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	public List<IElementType> getTypesForPopupBar(IAdaptable host) {
 		List<IElementType> types = new ArrayList<IElementType>(1);
-		types.add(DataMapperElementTypes.OutNode_3018);
+		//types.add(DataMapperElementTypes.OutNode_3018);
 		return types;
 	}
 

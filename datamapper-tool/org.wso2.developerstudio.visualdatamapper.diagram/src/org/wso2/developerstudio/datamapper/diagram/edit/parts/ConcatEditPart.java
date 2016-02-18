@@ -1,7 +1,10 @@
 package org.wso2.developerstudio.datamapper.diagram.edit.parts;
 
+import org.eclipse.draw2d.CompoundBorder;
+import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.Label;
+import org.eclipse.draw2d.LineBorder;
 import org.eclipse.draw2d.RectangleFigure;
 import org.eclipse.draw2d.RoundedRectangle;
 import org.eclipse.draw2d.Shape;
@@ -14,7 +17,6 @@ import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.editpolicies.LayoutEditPolicy;
 import org.eclipse.gef.editpolicies.NonResizableEditPolicy;
 import org.eclipse.gef.requests.CreateRequest;
-import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeNodeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.DragDropEditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.ConstrainedToolbarLayout;
@@ -68,6 +70,7 @@ public class ConcatEditPart extends AbstractOperatorEditPart {
 				EditPolicyRoles.SEMANTIC_ROLE,
 				new org.wso2.developerstudio.datamapper.diagram.edit.policies.ConcatItemSemanticEditPolicy());
 		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE, new DragDropEditPolicy());
+		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE, new DMCustomDragDropEditPolicy());
 		installEditPolicy(
 				EditPolicyRoles.CANONICAL_ROLE,
 				new org.wso2.developerstudio.datamapper.diagram.edit.policies.ConcatCanonicalEditPolicy());
@@ -208,14 +211,14 @@ public class ConcatEditPart extends AbstractOperatorEditPart {
 			this.setBackgroundColor(THIS_BACK);
 
 			TitleBarBorder titleBarBorder = new TitleBarBorder("Concat");
-			titleBarBorder.setBackgroundColor(new Color(null, 96, 148, 219));
+			titleBarBorder.setBackgroundColor(new Color(null, 90, 148, 219));
 			titleBarBorder.setTextColor(new Color(null, 0, 0, 0));
-			titleBarBorder.setFont(new Font(null, "Arial", 10, SWT.NORMAL));
+			titleBarBorder.setFont(new Font(null, "Arial", 10, SWT.BOLD));
 			this.setBorder(titleBarBorder);
-
-			/*			RoundedRectangleBorder border = new RoundedRectangleBorder(8, 8);
-			 border.setColor(new Color(null, 255, 0, 0));*/
-			this.setBorder(titleBarBorder);
+			CompoundBorder compoundBorder = new CompoundBorder(
+					titleBarBorder, 
+					new LineBorder(new Color(null, 90, 148, 219), 1, Graphics.LINE_SOLID));
+			this.setBorder(compoundBorder);
 		}
 
 		public String getIconPath() {

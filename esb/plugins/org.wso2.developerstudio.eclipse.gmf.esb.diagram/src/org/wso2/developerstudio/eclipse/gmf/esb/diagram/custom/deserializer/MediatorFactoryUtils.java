@@ -44,7 +44,8 @@ public class MediatorFactoryUtils {
 		BamMediatorExtFactory.class,
 		CalloutMediatorExtFactory.class,
 		EntitlementMediatorExtFactory.class,
-		CloudConnectorOperationExtFactory.class
+		CloudConnectorOperationExtFactory.class,
+		CacheMediatorExtFactory.class
 	};
 	
 	public static synchronized void registerFactories() {

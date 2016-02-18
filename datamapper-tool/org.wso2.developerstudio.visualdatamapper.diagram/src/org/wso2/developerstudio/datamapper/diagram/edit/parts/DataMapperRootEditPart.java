@@ -42,7 +42,7 @@ public class DataMapperRootEditPart extends DiagramEditPart {
 				DataMapperVisualIDRegistry.TYPED_INSTANCE));
 		removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.POPUPBAR_ROLE);
 		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE, new DragDropEditPolicy());
-		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE, new DMCustomDragDropEditPolicy());
+		//installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE, new DMCustomDragDropEditPolicy());
 	}
 
 }

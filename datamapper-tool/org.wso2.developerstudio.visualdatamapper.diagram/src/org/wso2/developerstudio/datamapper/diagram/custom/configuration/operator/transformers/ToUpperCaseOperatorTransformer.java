@@ -17,23 +17,22 @@ package org.wso2.developerstudio.datamapper.diagram.custom.configuration.operato
 
 import java.util.List;
 
-import org.wso2.developerstudio.datamapper.diagram.custom.generator.MappingConfigGenerator;
 import org.wso2.developerstudio.datamapper.diagram.custom.generator.SameLevelRecordMappingConfigGenerator;
 import org.wso2.developerstudio.datamapper.diagram.custom.model.DMVariable;
 
 public class ToUpperCaseOperatorTransformer implements DMOperatorTransformer {
 
     @Override
-    public String generateScriptForOperation(MappingConfigGenerator generator, List<DMVariable> inputVariables) {
+    public String generateScriptForOperation(Class<?> generatorClass, List<DMVariable> inputVariables) {
         StringBuilder operationBuilder = new StringBuilder();
-        if (generator instanceof SameLevelRecordMappingConfigGenerator) {
+        if (SameLevelRecordMappingConfigGenerator.class.equals(generatorClass)) {
             if (inputVariables.size() >= 1) {
                 operationBuilder.append(inputVariables.get(0).getName() + ".toUpperCase();");
             } else {
                 operationBuilder.append("'';");
             }
         } else {
-            throw new IllegalArgumentException("Unknown MappingConfigGenerator type found : " + generator);
+            throw new IllegalArgumentException("Unknown MappingConfigGenerator type found : " + generatorClass);
         }
         return operationBuilder.toString();
     }

@@ -86,7 +86,8 @@ public class SameLevelRecordMappingConfigGenerator implements MappingConfigGener
         operationBuilder.append(" = ");
         DMOperatorTransformer operatorTransformer = DMOperatorTransformerFactory
                 .getDMOperatorTransformer(mappingOperation.getOperation().getOperatorType());
-        operationBuilder.append(operatorTransformer.generateScriptForOperation(this, mappingOperation.getInputVariables()));
+        operationBuilder.append(operatorTransformer.generateScriptForOperation(
+                SameLevelRecordMappingConfigGenerator.class, mappingOperation.getInputVariables()));
         operationBuilder.append("\n");
         return operationBuilder.toString();
     }

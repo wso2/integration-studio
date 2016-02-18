@@ -78,6 +78,7 @@ public class OperatorLeftContainerEditPart extends ShapeNodeEditPart {
 			public void run() {
 
 				if (getParent().getParent() instanceof SplitEditPart
+						|| getParent().getParent() instanceof ConstantEditPart
 						|| getParent().getParent() instanceof LowerCaseEditPart
 						|| getParent().getParent() instanceof UpperCaseEditPart) {
 					EObject parentContainer = ((org.eclipse.gmf.runtime.notation.impl.NodeImpl) getModel())

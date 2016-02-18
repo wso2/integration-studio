@@ -32,6 +32,7 @@ import org.eclipse.swt.graphics.Font;
 import org.wso2.developerstudio.datamapper.diagram.custom.edit.part.AbstractOperatorEditPart;
 import org.wso2.developerstudio.datamapper.diagram.custom.figure.EditPartDrawingHelper;
 import org.wso2.developerstudio.datamapper.diagram.custom.figure.OperatorFigure;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.custom.CustomNonResizableEditPolicyEx;
 
 /**
  * @generated NOT
@@ -59,6 +60,14 @@ public class EqualEditPart extends AbstractOperatorEditPart {
 	public EqualEditPart(View view) {
 		super(view);
 	}
+	
+	/**
+	 * @generated NOT
+	 */
+	@Override
+	public boolean canAttachNote() {
+		return false;
+	}
 
 	/**
 	 * @generated
@@ -77,6 +86,7 @@ public class EqualEditPart extends AbstractOperatorEditPart {
 				EditPolicyRoles.CANONICAL_ROLE,
 				new org.wso2.developerstudio.datamapper.diagram.edit.policies.EqualCanonicalEditPolicy());
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
+		installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE, new CustomNonResizableEditPolicyEx());
 		// XXX need an SCR to runtime to have another abstract superclass that would let children add reasonable editpolicies
 		// removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
 	}

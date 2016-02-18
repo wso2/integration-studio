@@ -573,7 +573,7 @@ public class OutputEditPart extends ShapeNodeEditPart {
 			layoutThis.setMinorAlignment(ToolbarLayout.ALIGN_TOPLEFT);
 			layoutThis.setSpacing(0);
 			layoutThis.setVertical(true);
-			this.setLayoutManager(layoutThis);
+			this.setLayoutManager(layoutThis);layoutThis.setSpacing(10);
 			this.setPreferredSize(new Dimension(getMapMode().DPtoLP(250), getMapMode().DPtoLP(200)));
 			this.setOutline(true);
 

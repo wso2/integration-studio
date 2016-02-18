@@ -134,6 +134,15 @@ public class TreeNodeImpl extends EObjectImpl implements TreeNode {
 	 */
     protected int level = LEVEL_EDEFAULT;
 
+    private int index;
+
+    public int getIndex() {
+        return index;
+    }
+
+    public void setIndex(int index) {
+        this.index = index;
+    }
     /**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

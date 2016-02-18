@@ -17,7 +17,6 @@ package org.wso2.developerstudio.datamapper.diagram.custom.configuration.operato
 
 import java.util.List;
 
-import org.wso2.developerstudio.datamapper.diagram.custom.generator.MappingConfigGenerator;
 import org.wso2.developerstudio.datamapper.diagram.custom.model.DMVariable;
 
 /**
@@ -34,5 +33,6 @@ public interface DMOperatorTransformer {
      * @param inputVariables
      * @return script for operation
      */
-    String generateScriptForOperation(MappingConfigGenerator generator, List<DMVariable> inputVariables);
+    String generateScriptForOperation(Class<?> generatorClass, List<DMVariable> inputVariables);
+
 }

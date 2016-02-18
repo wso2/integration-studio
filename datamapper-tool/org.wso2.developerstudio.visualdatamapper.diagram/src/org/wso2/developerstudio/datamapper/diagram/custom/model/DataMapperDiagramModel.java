@@ -57,6 +57,7 @@ public class DataMapperDiagramModel {
     private List<ArrayList<Integer>> inputAdjList = new ArrayList<>();
     private List<ArrayList<Integer>> outputAdjList = new ArrayList<>();
     private List<Integer> executionSeq = new ArrayList<>();
+    private Map<String, SchemaDataType> variableTypeMap = new HashMap<>();
     private String inputRootName;
     private String outputRootName;
 
@@ -109,9 +110,9 @@ public class DataMapperDiagramModel {
         ArrayList<Integer> outputVariables = outputAdjList.get(index);
         for (Integer operationOutputVariable : outputVariables) {
             if (outputVariablesArray.indexOf(operationOutputVariable) >= 0) {
-                resolvedOutputVariableArray.add(operationOutputVariable);
+                getResolvedOutputVariableArray().add(operationOutputVariable);
             } else {
-                resolvedVariableArray.add(operationOutputVariable);
+                getResolvedVariableArray().add(operationOutputVariable);
             }
         }
     }
@@ -126,7 +127,8 @@ public class DataMapperDiagramModel {
     private boolean operationIsExecutable(Integer index) {
         ArrayList<Integer> inputVariables = inputAdjList.get(index);
         for (Integer inputVariableIndex : inputVariables) {
-            if (resolvedVariableArray.indexOf(inputVariableIndex) < 0 && resolvedOutputVariableArray.indexOf(inputVariableIndex) < 0) {
+            if (getResolvedVariableArray().indexOf(inputVariableIndex) < 0
+                    && getResolvedOutputVariableArray().indexOf(inputVariableIndex) < 0) {
                 return false;
             }
         }
@@ -134,13 +136,14 @@ public class DataMapperDiagramModel {
     }
 
     private void resetDiagramTraversalProperties() {
+        List<OperatorImpl> graphOperationElements = getGraphOperationElements();
         for (OperatorImpl operation : graphOperationElements) {
             operation.setVisited(false);
             operation.setMarked(false);
             operation.setIndex(-1);
             operation.setPortVariableIndex(new ArrayList<Integer>());
         }
-        graphOperationElements = new ArrayList<>();
+        setGraphOperationElements(new ArrayList<OperatorImpl>());
     }
 
     private void populateInputVariables(Input input) {
@@ -160,25 +163,44 @@ public class DataMapperDiagramModel {
                             + element.getLevel() + " , parents level- " + parentVariableStack.size());
                 }
                 int index = variablesArray.size();
-                variablesArray.add(new DMVariable(getVariableName(DMVariableType.INPUT, parentVariableStack,
-                        ((ElementImpl) objectElement).getName()), getUniqueId(objectElement), DMVariableType.INPUT,
-                        index));
+                String variableName = getVariableName(DMVariableType.INPUT, parentVariableStack, element.getName());
+                int parentVariableIndex = -1;
+                if (!parentVariableStack.isEmpty()) {
+                    TreeNodeImpl parent = (TreeNodeImpl) parentVariableStack.peek();
+                    parentVariableIndex = parent.getIndex();
+                }
+                variablesArray.add(new DMVariable(variableName, getUniqueId(objectElement), DMVariableType.INPUT,
+                        element.getSchemaDataType(), index, parentVariableIndex));
+                addVariableTypeToMap(variableName, SchemaDataType.STRING);
                 ((ElementImpl) objectElement).setIndex(index);
-                resolvedVariableArray.add(index);
+                getResolvedVariableArray().add(index);
                 inputVariablesArray.add(index);
                 tempNodeArray.add(element);
             } else if (objectElement instanceof TreeNodeImpl) {
-                TreeNodeImpl element = (TreeNodeImpl) objectElement;
-                if (element.getLevel() == parentVariableStack.size()) {
+                TreeNodeImpl treeNode = (TreeNodeImpl) objectElement;
+                String variableName = getVariableName(DMVariableType.INPUT, parentVariableStack, treeNode.getName());
+                SchemaDataType variableType = treeNode.getSchemaDataType();
+                int parentVariableIndex = -1;
+                if (!parentVariableStack.isEmpty()) {
+                    TreeNodeImpl parent = (TreeNodeImpl) parentVariableStack.peek();
+                    parentVariableIndex = parent.getIndex();
+                }
+                int index = variablesArray.size();
+                variablesArray.add(new DMVariable(variableName, objectElement.toString(), DMVariableType.OUTPUT,
+                        treeNode.getSchemaDataType(), index, parentVariableIndex));
+                outputVariablesArray.add(index);
+                treeNode.setIndex(index);
+                addVariableTypeToMap(variableName, variableType);
+                if (treeNode.getLevel() == parentVariableStack.size()) {
                     parentVariableStack.pop();
-                    parentVariableStack.push(element);
-                } else if (element.getLevel() > parentVariableStack.size()) {
-                    parentVariableStack.push(element);
+                    parentVariableStack.push(treeNode);
+                } else if (treeNode.getLevel() > parentVariableStack.size()) {
+                    parentVariableStack.push(treeNode);
                 } else {
-                    while (parentVariableStack.size() >= element.getLevel()) {
+                    while (parentVariableStack.size() >= treeNode.getLevel()) {
                         parentVariableStack.pop();
                     }
-                    parentVariableStack.push(element);
+                    parentVariableStack.push(treeNode);
                 }
             }
         }
@@ -246,7 +268,9 @@ public class DataMapperDiagramModel {
                             if (operatorElement.getPortVariableIndex().size() <= indexOfConnector) {
                                 int variableIndex = variablesArray.size();
                                 DMVariable tempVar = new DMVariable(variablePrefix, getUniqueDirectId(operatorElement,
-                                        indexOfConnector), DMVariableType.INTERMEDIATE, variableIndex);
+                                        indexOfConnector), DMVariableType.INTERMEDIATE, SchemaDataType.STRING,
+                                        variableIndex);
+                                addVariableTypeToMap(tempVar.getName(), SchemaDataType.STRING);
                                 variablesArray.add(tempVar);
                                 operatorElement.getPortVariableIndex().add(variableIndex);
                                 outputAdjList.get(operator.getIndex()).add(variableIndex);
@@ -391,23 +415,42 @@ public class DataMapperDiagramModel {
                             + element.getLevel() + " , parents level- " + parentVariableStack.size());
                 }
                 int index = variablesArray.size();
-                variablesArray.add(new DMVariable(getVariableName(DMVariableType.OUTPUT, parentVariableStack,
-                        ((ElementImpl) objectElement).getName()), objectElement.toString(), DMVariableType.OUTPUT,
-                        index));
+                String variableName = getVariableName(DMVariableType.OUTPUT, parentVariableStack, element.getName());
+                int parentVariableIndex = -1;
+                if (!parentVariableStack.isEmpty()) {
+                    TreeNodeImpl parent = (TreeNodeImpl) parentVariableStack.peek();
+                    parentVariableIndex = parent.getIndex();
+                }
+                variablesArray.add(new DMVariable(variableName, objectElement.toString(), DMVariableType.OUTPUT,
+                        element.getSchemaDataType(), index,parentVariableIndex));
                 outputVariablesArray.add(index);
-                ((ElementImpl) objectElement).setIndex(index);
+                element.setIndex(index);
+                addVariableTypeToMap(variableName, element.getSchemaDataType());
             } else if (objectElement instanceof TreeNodeImpl) {
-                TreeNodeImpl element = (TreeNodeImpl) objectElement;
-                if (element.getLevel() == parentVariableStack.size()) {
+                TreeNodeImpl treeNode = (TreeNodeImpl) objectElement;
+                String variableName = getVariableName(DMVariableType.OUTPUT, parentVariableStack, treeNode.getName());
+                SchemaDataType variableType = treeNode.getSchemaDataType();
+                int parentVariableIndex = -1;
+                if (!parentVariableStack.isEmpty()) {
+                    TreeNodeImpl parent = (TreeNodeImpl) parentVariableStack.peek();
+                    parentVariableIndex = parent.getIndex();
+                }
+                int index = variablesArray.size();
+                variablesArray.add(new DMVariable(variableName, objectElement.toString(), DMVariableType.OUTPUT,
+                        treeNode.getSchemaDataType(), index, parentVariableIndex));
+                outputVariablesArray.add(index);
+                treeNode.setIndex(index);
+                addVariableTypeToMap(variableName, variableType);
+                if (treeNode.getLevel() == parentVariableStack.size()) {
                     parentVariableStack.pop();
-                    parentVariableStack.push(element);
-                } else if (element.getLevel() > parentVariableStack.size()) {
-                    parentVariableStack.push(element);
+                    parentVariableStack.push(treeNode);
+                } else if (treeNode.getLevel() > parentVariableStack.size()) {
+                    parentVariableStack.push(treeNode);
                 } else {
-                    while (parentVariableStack.size() >= element.getLevel()) {
+                    while (parentVariableStack.size() >= treeNode.getLevel()) {
                         parentVariableStack.pop();
                     }
-                    parentVariableStack.push(element);
+                    parentVariableStack.push(treeNode);
                 }
             }
         }
@@ -461,20 +504,12 @@ public class DataMapperDiagramModel {
         this.operationsList = operationsArray;
     }
 
-    public List<Integer> getResolvedVariableArray() {
+    private List<Integer> getResolvedVariableArray() {
         return resolvedVariableArray;
     }
 
-    public void setResolvedVariableArray(List<Integer> resolvedVariableArray) {
-        this.resolvedVariableArray = resolvedVariableArray;
-    }
-
-    public List<Integer> getResolvedOutputVariableArray() {
+    private List<Integer> getResolvedOutputVariableArray() {
         return resolvedOutputVariableArray;
-    }
-
-    public void setResolvedOutputVariableArray(List<Integer> resolvedOutputVariableArray) {
-        this.resolvedOutputVariableArray = resolvedOutputVariableArray;
     }
 
     public List<ArrayList<Integer>> getInputAdjList() {
@@ -493,8 +528,12 @@ public class DataMapperDiagramModel {
         this.outputAdjList = outputAdjList;
     }
 
-    public List<OperatorImpl> getGraphOperationElements() {
+    private List<OperatorImpl> getGraphOperationElements() {
         return graphOperationElements;
+    }
+
+    private void setGraphOperationElements(List<OperatorImpl> graphOperationElements) {
+        this.graphOperationElements = graphOperationElements;
     }
 
     public List<Integer> getExecutionSequence() {
@@ -515,6 +554,18 @@ public class DataMapperDiagramModel {
 
     public void setOperationsList(List<DMOperation> operationsList) {
         this.operationsList = operationsList;
+    }
+
+    public Map<String, SchemaDataType> getVariableTypeMap() {
+        return variableTypeMap;
+    }
+
+    public void setVariableTypeMap(Map<String, SchemaDataType> variableTypeMap) {
+        this.variableTypeMap = variableTypeMap;
+    }
+
+    private void addVariableTypeToMap(String variableName, SchemaDataType type) {
+        getVariableTypeMap().put(variableName, type);
     }
 
 }

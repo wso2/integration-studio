@@ -139,11 +139,6 @@ public class ElementImpl extends EObjectImpl implements Element {
 	 */
     protected int level = LEVEL_EDEFAULT;
 
-    /**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
     
     private int index=-1;
     
@@ -159,7 +154,7 @@ public class ElementImpl extends EObjectImpl implements Element {
     
     private List<Integer> portVariableIndex=new ArrayList<Integer>();
     
-	public int getIndex() {
+    public int getIndex() {
         return index;
     }
 
@@ -190,7 +185,12 @@ public class ElementImpl extends EObjectImpl implements Element {
     public void setPortVariableIndex(List<Integer> portVariableIndex) {
         this.portVariableIndex = portVariableIndex;
     }
-
+    
+    /**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
     protected ElementImpl() {
 		super();
 	}

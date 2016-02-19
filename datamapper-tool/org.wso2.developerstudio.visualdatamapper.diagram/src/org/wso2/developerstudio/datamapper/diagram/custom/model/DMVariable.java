@@ -29,7 +29,7 @@ public class DMVariable {
     private boolean visited;
     private DMVariableType type;
     private SchemaDataType schemaVariableType;
-    private int parentVariable;
+    private int parentVariableOrOperationIndex;
 
     public DMVariable(String name, String id, DMVariableType type, SchemaDataType schemaVariableType, int index) {
         this.name = name;
@@ -37,7 +37,7 @@ public class DMVariable {
         this.schemaVariableType = schemaVariableType;
         this.type = type;
         this.index = index;
-        parentVariable = -1;
+        parentVariableOrOperationIndex = -1;
     }
 
     public DMVariable(String name, String id, DMVariableType type, SchemaDataType schemaVariableType, int index,
@@ -47,7 +47,7 @@ public class DMVariable {
         this.schemaVariableType = schemaVariableType;
         this.type = type;
         this.index = index;
-        parentVariable = parentVariableIndex;
+        parentVariableOrOperationIndex = parentVariableIndex;
     }
 
     public String toString() {
@@ -102,11 +102,17 @@ public class DMVariable {
         this.schemaVariableType = schemaVariableType;
     }
 
-    public int getParentVariable() {
-        return parentVariable;
+    /**
+     * This method will return it's parent variable index if it is an input type or output type variable.
+     * It will return operation index if it is an intermediate variable
+     * 
+     * @return
+     */
+    public int getparentVariableOrOperationIndex() {
+        return parentVariableOrOperationIndex;
     }
 
-    public void setParentVariable(int parentVariable) {
-        this.parentVariable = parentVariable;
+    public void setparentVariableOrOperationIndex(int parentVariable) {
+        this.parentVariableOrOperationIndex = parentVariable;
     }
 }

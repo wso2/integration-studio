@@ -269,7 +269,7 @@ public class DataMapperDiagramModel {
                                 int variableIndex = variablesArray.size();
                                 DMVariable tempVar = new DMVariable(variablePrefix, getUniqueDirectId(operatorElement,
                                         indexOfConnector), DMVariableType.INTERMEDIATE, SchemaDataType.STRING,
-                                        variableIndex);
+                                        variableIndex, index);
                                 addVariableTypeToMap(tempVar.getName(), SchemaDataType.STRING);
                                 variablesArray.add(tempVar);
                                 operatorElement.getPortVariableIndex().add(variableIndex);

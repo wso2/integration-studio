@@ -50,7 +50,7 @@ public class DataMapperModelTransformer {
      */
     public String transform(DataMapperRoot rootDiagram) throws DataMapperException {
         DataMapperDiagramModel mappingModel = new DataMapperDiagramModel(rootDiagram);
-        SameLevelRecordMappingConfigGenerator configGenerator = new SameLevelRecordMappingConfigGenerator();
+        SameLevelArrayMappingConfigGenerator configGenerator = new SameLevelArrayMappingConfigGenerator();
         String functionList = configGenerator.generateMappingConfig(mappingModel);
         return functionList;
     }

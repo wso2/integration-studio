@@ -60,6 +60,9 @@ public class OutputEditPart extends ShapeNodeEditPart {
 	private static final int X = 800;
 
 	private static final int Y = 200;
+	
+	int height = 400;
+	int i = 0;
 
 	/**
 	 * @generated
@@ -422,6 +425,7 @@ public class OutputEditPart extends ShapeNodeEditPart {
 				FigureCanvas canvas = (FigureCanvas) getViewer().getControl();
 				canvas.getViewport().repaint();
 			}
+			
 		}
 	}
 
@@ -578,7 +582,8 @@ public class OutputEditPart extends ShapeNodeEditPart {
 			layoutThis.setVertical(true);
 			layoutThis.setSpacing(10);
 			this.setLayoutManager(layoutThis);
-			this.setPreferredSize(new Dimension(getMapMode().DPtoLP(250), getMapMode().DPtoLP(400)));
+			
+			this.setPreferredSize(new Dimension(getMapMode().DPtoLP(250), getMapMode().DPtoLP(height)));
 			this.setOutline(true);
 
 			TitleBarBorder titleBarBorder = new TitleBarBorder("Output");
@@ -607,6 +612,7 @@ public class OutputEditPart extends ShapeNodeEditPart {
 			this.add(fFigureTargetNameFigure);
 
 		}
+		
 
 	}
 

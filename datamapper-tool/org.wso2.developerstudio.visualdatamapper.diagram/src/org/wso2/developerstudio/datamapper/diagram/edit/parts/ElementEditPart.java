@@ -5,6 +5,7 @@ import org.eclipse.draw2d.ColorConstants;
 import org.eclipse.draw2d.Figure;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.ImageFigure;
+import org.eclipse.draw2d.Label;
 import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.RectangleFigure;
 import org.eclipse.draw2d.Shape;
@@ -35,6 +36,8 @@ import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Font;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.wso2.developerstudio.datamapper.Element;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.custom.FixedBorderItemLocator;
@@ -150,7 +153,7 @@ public class ElementEditPart extends AbstractBorderedShapeEditPart {
 	 */
 	@Override
 	public boolean isSelectable() {
-		return true;
+		return false;
 	}
 
 	/*
@@ -617,38 +620,49 @@ public class ElementEditPart extends AbstractBorderedShapeEditPart {
 			ImageFigure mainImg = new ImageFigure(mainImgDesc.createImage()); //elemet symbole figure 
 			mainImg.setSize(new Dimension(20, 8));
 
-			RectangleFigure mainImageRectangle = new RectangleFigure();
+		/*	RectangleFigure mainImageRectangle = new RectangleFigure();
+			
 
 			mainImageRectangle.setBackgroundColor(new Color(null, 255, 255, 255));
 			mainImageRectangle.setPreferredSize(new Dimension(20, 5));
 			mainImageRectangle.add(mainImg);
-
+*/
 			fFigureElementNameFigure = new WrappingLabel(); // element nme holding rectangle
 			/*String name = (((Element) ((View) getModel()).getElement()).getName()).split(",")[1];
 			int tabCount = Integer
 					.parseInt((((Element) ((View) getModel()).getElement()).getName()).split(",")[0]);*/
 			String name = (((Element) ((View) getModel()).getElement()).getName());
 			int tabCount = ((Element) ((View) getModel()).getElement()).getLevel();
-
-			figure.setPreferredSize((tabCount - 1) * 30, 5);
+			figure.setPreferredSize((tabCount - 1) * 30, 3);
+			figure.setMaximumSize(new Dimension(100,3));
+			figure.setMinimumSize(new Dimension(0,3));
 
 			fFigureElementNameFigure.setText(name);
 			fFigureElementNameFigure.setForegroundColor(ColorConstants.black);
 			fFigureElementNameFigure.setFont(new Font(null, "Arial", 10, SWT.BOLD));
-			fFigureElementNameFigure.setMaximumSize(new Dimension(100,5));
-			fFigureElementNameFigure.setMinimumSize(new Dimension(100,1));
+			fFigureElementNameFigure.setMaximumSize(new Dimension(100,3));
+			fFigureElementNameFigure.setMinimumSize(new Dimension(100,3));
 
+			Label elemLabel = new Label();
+			elemLabel.setIcon(mainImg.getImage());
+			//Text textElem = new Text(elemLabel, 0);
+			Display display = Display.getCurrent();
+			Color black = display.getSystemColor(SWT.COLOR_BLACK);
+			elemLabel.setForegroundColor(black);
+			elemLabel.setText(name);
+			elemLabel.setSize(new Dimension(100,3));
 			figure.setOutline(false);
-			mainImageRectangle.setOutline(false);
-			mainImageRectangle.setFill(false);
+			//mainImageRectangle.setOutline(false);
+			//mainImageRectangle.setFill(false);
 			figure.setFill(false);
 			this.setOutline(false);
 			this.setFill(false);
 			this.add(figure);
-			this.add(mainImageRectangle);
-			this.add(fFigureElementNameFigure);
-			this.setMaximumSize(new Dimension(100, 5));
-			this.setMaximumSize(new Dimension(100, 1));
+			//this.add(mainImageRectangle);
+			//this.add(fFigureElementNameFigure);
+			this.setMaximumSize(new Dimension(100, 3));
+			this.setMinimumSize(new Dimension(100, 3));
+			this.add(elemLabel);
 
 		}
 
@@ -658,7 +672,14 @@ public class ElementEditPart extends AbstractBorderedShapeEditPart {
 		public WrappingLabel getFigureElementNameFigure() {
 			return fFigureElementNameFigure;
 		}
+		
+		
+	
 
 	}
+	
+	
+	
+	
 
 }

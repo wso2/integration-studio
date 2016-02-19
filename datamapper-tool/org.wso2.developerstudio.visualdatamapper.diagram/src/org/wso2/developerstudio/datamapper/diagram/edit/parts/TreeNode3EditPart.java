@@ -11,6 +11,7 @@ import org.eclipse.draw2d.Figure;
 import org.eclipse.draw2d.FlowLayout;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.ImageFigure;
+import org.eclipse.draw2d.Label;
 import org.eclipse.draw2d.MarginBorder;
 import org.eclipse.draw2d.RectangleFigure;
 import org.eclipse.draw2d.Shape;
@@ -39,6 +40,7 @@ import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Font;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.wso2.developerstudio.datamapper.TreeNode;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.custom.CustomNonResizableEditPolicyEx;
@@ -378,7 +380,7 @@ public class TreeNode3EditPart extends ShapeNodeEditPart {
 			ToolbarLayout l = new ToolbarLayout();
 			l.setVertical(false);
 			figure.setLayoutManager(l);
-			//figure.setPreferredSize(10, 10);
+			figure.setPreferredSize(100, 3);
 			figure.setBorder(null);
 
 			figure.setOpaque(true);
@@ -388,9 +390,9 @@ public class TreeNode3EditPart extends ShapeNodeEditPart {
 			figure2.setOpaque(true);
 
 			ImageDescriptor mainImgDescCollapse = AbstractUIPlugin.imageDescriptorFromPlugin(
-					"org.wso2.developerstudio.visualdatamapper.diagram", "icons/gmf/symbol_element_of.gif");//plus.gif
+					"org.wso2.developerstudio.visualdatamapper.diagram", "icons/gmf/parent.gif");//plus.gif
 			ImageDescriptor mainImgDescExpand = AbstractUIPlugin.imageDescriptorFromPlugin(
-					"org.wso2.developerstudio.visualdatamapper.diagram", "icons/gmf/symbol_element_of.gif");//minus.gif
+					"org.wso2.developerstudio.visualdatamapper.diagram", "icons/gmf/parent.gif");//minus.gif
 
 			final ImageFigure mainImg = new ImageFigure(mainImgDescCollapse.createImage());
 			final ImageFigure mainExpand = new ImageFigure(mainImgDescExpand.createImage());
@@ -431,7 +433,14 @@ public class TreeNode3EditPart extends ShapeNodeEditPart {
 			});*/
 
 			figure2.setPreferredSize((count - 1) * 30, 1);
-
+			Label nodeLabel = new Label();
+			nodeLabel.setIcon(mainImg.getImage());
+			//Text textElem = new Text(elemLabel, 0);
+			Display display = Display.getCurrent();
+			Color black = display.getSystemColor(SWT.COLOR_BLACK);
+			nodeLabel.setForegroundColor(black);
+			nodeLabel.setText(name);
+			nodeLabel.setSize(new Dimension(100,5));
 			figure.setOutline(false);
 			figure2.setOutline(false);
 			figure.setFill(false);
@@ -442,8 +451,8 @@ public class TreeNode3EditPart extends ShapeNodeEditPart {
 
 			this.setOutline(false);
 			figure.add(figure2);
-			figure.add(clickNode);
-			figure.add(fFigureTreeNodeNameFigure);
+		//	figure.add(clickNode);
+			figure.add(nodeLabel);
 
 			this.add(figure);
 

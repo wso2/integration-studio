@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 
 // import jfb.examples.gmf.filesystem.Attribute;
 
+
 import org.eclipse.draw2d.Border;
 import org.eclipse.draw2d.BorderLayout;
 import org.eclipse.draw2d.Figure;
@@ -85,6 +86,8 @@ public class AttributeEditPart extends AbstractBorderedShapeEditPart {
 		// TODO Auto-generated method stub
 		super.addChild(child, index);
 	}
+	
+	
 
 	/**
 	 * @generated NOT
@@ -267,7 +270,7 @@ public class AttributeEditPart extends AbstractBorderedShapeEditPart {
 	 */
 	@Override
 	public boolean isSelectable() {
-		return false;
+		return true;
 	}
 
 	/**
@@ -369,7 +372,7 @@ public class AttributeEditPart extends AbstractBorderedShapeEditPart {
 		public AttributeFigure() {
 
 			ToolbarLayout layoutThis = new ToolbarLayout();
-			layoutThis.setStretchMinorAxis(true);
+			layoutThis.setStretchMinorAxis(false);
 			layoutThis.setMinorAlignment(ToolbarLayout.ALIGN_TOPLEFT);
 			layoutThis.setSpacing(0);
 			layoutThis.setVertical(false);
@@ -454,7 +457,7 @@ public class AttributeEditPart extends AbstractBorderedShapeEditPart {
 			int tabCount = Integer.parseInt((((Attribute) ((View) getModel()).getElement())
 					.getName()).split(",")[0]);
 
-			figure.setPreferredSize((tabCount - 1) * 30, 100);
+			figure.setPreferredSize((tabCount - 1) * 30, 3);
 
 			fFigureFileNameFigure.setText(name);
 			fFigureFileNameFigure.setForegroundColor(org.eclipse.draw2d.ColorConstants.black);
@@ -469,7 +472,8 @@ public class AttributeEditPart extends AbstractBorderedShapeEditPart {
 			this.add(figure);
 			this.add(mainImageRectangle);
 			this.add(fFigureFileNameFigure);
-			this.setMinimumSize(new Dimension(100, 20));
+			this.setMinimumSize(new Dimension(100, 3));
+			this.setMaximumSize(new Dimension(100, 3));
 
 		}
 

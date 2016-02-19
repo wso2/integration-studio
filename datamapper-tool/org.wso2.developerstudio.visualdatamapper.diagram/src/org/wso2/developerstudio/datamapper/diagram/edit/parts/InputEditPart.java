@@ -509,6 +509,7 @@ public class InputEditPart extends ShapeNodeEditPart {
 			this.setLayoutManager(layoutThis);
 			this.setPreferredSize(new Dimension(getMapMode().DPtoLP(250), getMapMode().DPtoLP(400)));
 			this.setOutline(true);
+			this.setMinimumSize(new Dimension(getMapMode().DPtoLP(250), getMapMode().DPtoLP(400)));
 
 			TitleBarBorder titleBarBorder = new TitleBarBorder("Input");
 			titleBarBorder.setPadding(6);

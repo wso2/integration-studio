@@ -13,7 +13,7 @@ import org.eclipse.swt.graphics.Font;
 public class OperatorRectangle extends RoundedRectangle{
  
 	public OperatorRectangle (String title) {
-		Color blueColor = new Color(null, 90, 148, 219);
+		Color blueColor = new Color(null,  0, 125, 133);
 		RoundedRectangleBorder border = new RoundedRectangleBorder(8, 8);
 		border.setColor(blueColor);
 		this.setBorder(border);

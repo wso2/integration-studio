@@ -610,12 +610,12 @@ public class OutputEditPart extends ShapeNodeEditPart {
 
 			TitleBarBorder titleBarBorder = new TitleBarBorder("Output");
 			titleBarBorder.setPadding(6);
-			titleBarBorder.setBackgroundColor(new Color(null, 90, 148, 219));
+			titleBarBorder.setBackgroundColor(new Color(null, 0, 125, 133));
 			titleBarBorder.setTextColor(new Color(null, 0, 0, 0));
 			titleBarBorder.setFont(new Font(null, "Arial", 10, SWT.BOLD));
 			CompoundBorder compoundBorder = new CompoundBorder(
 					titleBarBorder, 
-					new LineBorder(new Color(null, 90, 148, 219), 2, Graphics.LINE_SOLID));
+					new LineBorder(new Color(null, 0, 125, 133), 2, Graphics.LINE_SOLID));
 			this.setBorder(compoundBorder);
 			
 

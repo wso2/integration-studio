@@ -30,9 +30,10 @@ public interface MappingConfigGenerator {
      * 
      * @param model
      * @return
-     * @throws DataMapperException 
+     * @throws DataMapperException
      */
-    String generateMappingConfig(DataMapperDiagramModel model) throws DataMapperException;
+    String generateMappingConfig(DataMapperDiagramModel model)
+            throws DataMapperException;
 
     /**
      * This method checks whether the mapping model is valid to be solved by the mapping configuration generating

@@ -16,7 +16,9 @@
 package org.wso2.developerstudio.datamapper.diagram.custom.generator;
 
 import java.util.List;
+import java.util.Map;
 
+import org.wso2.developerstudio.datamapper.SchemaDataType;
 import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.DMOperatorTransformerFactory;
 import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.DMOperatorTransformer;
 import org.wso2.developerstudio.datamapper.diagram.custom.exception.DataMapperException;
@@ -49,13 +51,13 @@ public class SameLevelRecordMappingConfigGenerator extends AbstractMappingConfig
         StringBuilder functionBuilder = new StringBuilder();
         functionBuilder.append(getMainFunctionDefinition(inRoot, outRoot));
         for (MappingOperation mappingOperation : mappingOperationList) {
-            functionBuilder.append(getJSCommandForOperation(mappingOperation));
+            functionBuilder.append(getJSCommandForOperation(mappingOperation, model.getVariableTypeMap()));
         }
         functionBuilder.append(getFunctionReturnString(outRoot));
         return functionBuilder.toString();
     }
 
-    private String getJSCommandForOperation(MappingOperation mappingOperation) {
+    private String getJSCommandForOperation(MappingOperation mappingOperation, Map<String, SchemaDataType> variableMap) {
         StringBuilder operationBuilder = new StringBuilder();
         List<DMVariable> outputVariables = mappingOperation.getOutputVariables();
         if (outputVariables.size() > 1) {
@@ -75,7 +77,7 @@ public class SameLevelRecordMappingConfigGenerator extends AbstractMappingConfig
         DMOperatorTransformer operatorTransformer = DMOperatorTransformerFactory
                 .getDMOperatorTransformer(mappingOperation.getOperation().getOperatorType());
         operationBuilder.append(operatorTransformer.generateScriptForOperation(
-                SameLevelRecordMappingConfigGenerator.class, mappingOperation.getInputVariables()));
+                SameLevelRecordMappingConfigGenerator.class, mappingOperation.getInputVariables(), variableMap, null));
         operationBuilder.append("\n");
         return operationBuilder.toString();
     }

@@ -60,6 +60,8 @@ public class InputEditPart extends ShapeNodeEditPart {
 	private static final int X = 150;
 
 	private static final int Y = 200;
+	TreeNode inputRootTreeNode;
+	int LEAF_HEIGHT = 20;
 
 	/**
 	 * @generated
@@ -109,13 +111,13 @@ public class InputEditPart extends ShapeNodeEditPart {
 			getEditingDomain().getCommandStack().execute(deleteComand);
 		}
 
-		TreeNode treeNode = DataMapperFactory.eINSTANCE.createTreeNode();
+		inputRootTreeNode = DataMapperFactory.eINSTANCE.createTreeNode();
 		Tree tree = TreeFromAVSC.generateInputTreeFromFile(filePath);
 		// funcFillTree(tree, element);
-		convertTree(tree, treeNode);
+		convertTree(tree, inputRootTreeNode);
 
 		AddCommand addTreeNodeCmd2 = new AddCommand(getEditingDomain(), parentContainer,
-				DataMapperPackage.Literals.INPUT__TREE_NODE, treeNode);
+				DataMapperPackage.Literals.INPUT__TREE_NODE, inputRootTreeNode);
 		if (addTreeNodeCmd2.canExecute()) {
 			getEditingDomain().getCommandStack().execute(addTreeNodeCmd2);
 		}
@@ -137,17 +139,17 @@ public class InputEditPart extends ShapeNodeEditPart {
 			getEditingDomain().getCommandStack().execute(deleteComand);
 		}
 
-		TreeNode treeNode = DataMapperFactory.eINSTANCE.createTreeNode();
+		inputRootTreeNode = DataMapperFactory.eINSTANCE.createTreeNode();
 		Tree tree = TreeFromAVSC.generateInputTreeFromSchema(schema);
-		convertTree(tree, treeNode);
+		convertTree(tree, inputRootTreeNode);
 
 		AddCommand addTreeNodeCmd2 = new AddCommand(getEditingDomain(), parentContainer,
-				DataMapperPackage.Literals.INPUT__TREE_NODE, treeNode);
+				DataMapperPackage.Literals.INPUT__TREE_NODE, inputRootTreeNode);
 		if (addTreeNodeCmd2.canExecute()) {
 			getEditingDomain().getCommandStack().execute(addTreeNodeCmd2);
 		}
 		getPrimaryShape().setPreferredSize(250, 15);
-
+		reposition();
 	}
 
 	/**
@@ -447,11 +449,30 @@ public class InputEditPart extends ShapeNodeEditPart {
 				reposition(((BoundsImpl) notification.getNotifier()).getX(),
 						((BoundsImpl) notification.getNotifier()).getY(),
 						((BoundsImpl) notification.getNotifier()).getWidth(),
-						((BoundsImpl) notification.getNotifier()).getHeight());
+						getTreeHeight());
 				FigureCanvas canvas = (FigureCanvas) getViewer().getControl();
 				canvas.getViewport().repaint();
 			}
 		}
+	}
+	
+	private int getTreeHeight() {
+ 		int h = getTreeHeight(inputRootTreeNode);
+ 		if (h < 100) {
+ 			return 100;
+ 		}
+ 		else return h * LEAF_HEIGHT;
+ 	}
+ 	
+	private int getTreeHeight(TreeNode tree) {
+		if (tree != null) {
+			int height = (tree.getElement().size() + tree.getAttribute().size());
+			for (TreeNode childTree : tree.getNode()) {
+				height += 1 + getTreeHeight(childTree);
+			}
+			return height;
+		}
+		return 0;
 	}
 
 	private void reposition(int x, int y, int width, int height) {
@@ -467,7 +488,7 @@ public class InputEditPart extends ShapeNodeEditPart {
 
 	private void reposition() {
 		reposition(getFigure().getBounds().x, getFigure().getBounds().y,
-				getFigure().getBounds().width, getFigure().getBounds().height);
+				getFigure().getBounds().width, getTreeHeight());
 	}
 
 	/**

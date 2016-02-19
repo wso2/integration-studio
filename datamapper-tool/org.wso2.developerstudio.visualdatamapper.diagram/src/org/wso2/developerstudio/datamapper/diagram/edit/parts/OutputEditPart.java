@@ -60,6 +60,8 @@ public class OutputEditPart extends ShapeNodeEditPart {
 	private static final int X = 800;
 
 	private static final int Y = 200;
+	TreeNode outputRootTreeNode;
+	int LEAF_HEIGHT = 20;
 	
 	int height = 400;
 	int i = 0;
@@ -108,12 +110,12 @@ public class OutputEditPart extends ShapeNodeEditPart {
 			getEditingDomain().getCommandStack().execute(deleteComand);
 		}
 
-		TreeNode treeNode = DataMapperFactory.eINSTANCE.createTreeNode();
+		outputRootTreeNode = DataMapperFactory.eINSTANCE.createTreeNode();
 		Tree tree = TreeFromAVSC.generateInputTreeFromFile(filePath);
-		convertTree(tree, treeNode);
+		convertTree(tree, outputRootTreeNode);
 
 		AddCommand addTreeNodeCmd2 = new AddCommand(getEditingDomain(), parentContainer,
-				DataMapperPackage.Literals.OUTPUT__TREE_NODE, treeNode);
+				DataMapperPackage.Literals.OUTPUT__TREE_NODE, outputRootTreeNode);
 		if (addTreeNodeCmd2.canExecute()) {
 			getEditingDomain().getCommandStack().execute(addTreeNodeCmd2);
 		}
@@ -135,12 +137,12 @@ public class OutputEditPart extends ShapeNodeEditPart {
 			getEditingDomain().getCommandStack().execute(deleteComand);
 		}
 
-		TreeNode treeNode = DataMapperFactory.eINSTANCE.createTreeNode();
+		outputRootTreeNode = DataMapperFactory.eINSTANCE.createTreeNode();
 		Tree tree = TreeFromAVSC.generateInputTreeFromSchema(schema);
-		convertTree(tree, treeNode);
+		convertTree(tree, outputRootTreeNode);
 
 		AddCommand addTreeNodeCmd2 = new AddCommand(getEditingDomain(), parentContainer,
-				DataMapperPackage.Literals.OUTPUT__TREE_NODE, treeNode);
+				DataMapperPackage.Literals.OUTPUT__TREE_NODE, outputRootTreeNode);
 		if (addTreeNodeCmd2.canExecute()) {
 			getEditingDomain().getCommandStack().execute(addTreeNodeCmd2);
 		}
@@ -428,6 +430,25 @@ public class OutputEditPart extends ShapeNodeEditPart {
 			
 		}
 	}
+	
+	private int getTreeHeight() {
+		 		int h = getTreeHeight(outputRootTreeNode);
+		 		if (h < 100) {
+		 			return 100;
+		 		}
+		 		else return h * LEAF_HEIGHT;
+		 	}
+		 	
+ 	private int getTreeHeight(TreeNode tree) {
+ 		if (tree != null) {
+ 			int height = (tree.getElement().size() + tree.getAttribute().size());
+ 			for (TreeNode childTree : tree.getNode()) {
+ 				height += 1 + getTreeHeight(childTree);
+ 			}
+ 			return height;
+ 		}
+ 		return 0;
+ 	}
 
 	private void reposition(int x, int y, int width, int height) {
 		if (y == 0) {

@@ -107,5 +107,17 @@ public class Tree {
 			return "";
 		}
 	}
+	
+	public int getHeight() {
+		return getTreeHeight(this);
+	}
+	
+	private int getTreeHeight(Tree tree) {
+		int height = (tree.getElements().size() + tree.getAttributes().size());
+		for (Tree childTree : tree.getTrees()) {
+			height += 1 + getTreeHeight(childTree);
+		}
+		return height;
+	}
 
 }

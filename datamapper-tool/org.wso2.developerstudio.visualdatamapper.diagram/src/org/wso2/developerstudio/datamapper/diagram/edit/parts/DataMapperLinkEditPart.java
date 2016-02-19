@@ -62,37 +62,15 @@ public class DataMapperLinkEditPart extends ConnectionNodeEditPart implements IT
 	 * @generated NOT
 	 */
 	protected Connection createConnectionFigure() {
-		return new PolylineConnectionEx();
-		/*		PolylineConnectionEx figure = new PolylineConnectionEx();
-		 PolygonDecoration decoration = new PolygonDecoration();
-		 decoration.setScale(12, 4);
-		 decoration.setAlpha(250);
-		 decoration.setBackgroundColor(new Color(null, 50, 50, 50));
-		 decoration.setOutline(false);
-		 figure.setTargetDecoration(decoration);
-		 figure.setAlpha(150);
-		 figure.setLineWidthFloat(0.5f);
+		PolylineConnectionEx figure = new PolylineConnectionEx();
+		PolygonDecoration decoration = new PolygonDecoration();
+		decoration.setScale(12, 4);
+		decoration.setAlpha(250);
+		decoration.setBackgroundColor(new Color(null, 50, 50, 50));
+		decoration.setOutline(false);
+		figure.setTargetDecoration(decoration);
+		return figure;
 
-		 // Need to execute this operation as a command.
-		 AbstractEMFOperation command = new AbstractEMFOperation(getEditingDomain(),
-		 "change-esb-link-routing-style") {
-		 protected IStatus doExecute(IProgressMonitor monitor, IAdaptable info)
-		 throws ExecutionException {
-		 RoutingStyle style = (RoutingStyle) ((View) getModel())
-		 .getStyle(NotationPackage.Literals.ROUTING_STYLE);
-		 style.setRouting(Routing.RECTILINEAR_LITERAL);
-		 style.setRoundedBendpointsRadius(5);
-		 return Status.OK_STATUS;
-		 }
-		 };
-
-		 try {
-		 OperationHistoryFactory.getOperationHistory().execute(command, null, null);
-		 } catch (ExecutionException ex) {
-		 // Ignore.
-		 }
-
-		 return figure;*/
 	}
 
 	/**

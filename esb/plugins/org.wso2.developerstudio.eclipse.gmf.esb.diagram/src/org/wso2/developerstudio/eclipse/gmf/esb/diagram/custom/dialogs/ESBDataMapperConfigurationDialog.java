@@ -2,8 +2,6 @@ package org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.dialogs;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -60,8 +58,6 @@ import org.wso2.developerstudio.eclipse.platform.core.registry.util.RegistryReso
 import org.wso2.developerstudio.eclipse.platform.core.registry.util.RegistryResourceUtils;
 import org.wso2.developerstudio.eclipse.platform.core.templates.ArtifactTemplate;
 import org.wso2.developerstudio.eclipse.platform.core.templates.ArtifactTemplateHandler;
-import org.wso2.developerstudio.eclipse.registry.core.RegistryManager;
-import org.wso2.developerstudio.eclipse.registry.core.interfaces.IRegistryFile;
 import org.wso2.developerstudio.eclipse.registry.core.interfaces.RegistryFileImpl;
 import org.wso2.developerstudio.eclipse.utils.data.ITemporaryFileTag;
 import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
@@ -272,7 +268,7 @@ public class ESBDataMapperConfigurationDialog extends Dialog {
 		validate();
 
 		/* Get projects that provide datamapper configurations */
-		IDeveloperStudioProviderData[] providerProjectsList = loadProviderProjectsList();
+		IDeveloperStudioProviderData[] providerProjectsList = RegistryResourcesUtils.loadProviderProjectsList(type);
 		setImportConfigurationsList(providerProjectsList);
 
 		return container;
@@ -563,28 +559,17 @@ public class ESBDataMapperConfigurationDialog extends Dialog {
 		}
 	}
 
-	private IDeveloperStudioProviderData[] loadProviderProjectsList() {
-		List<Object> list = new ArrayList<Object>();
-		List<Class<?>> typesList = Arrays.asList(type);
-
-		if (typesList.contains(IRegistryFile.class)) {
-			list.addAll(Arrays.asList(RegistryManager.getResourceProviders(true)));
-		}
-
-		return list.toArray(new IDeveloperStudioProviderData[] {});
-	}
 
 	private void setImportConfigurationsList(IDeveloperStudioProviderData[] providerProjectsList) {
 
 		for (IDeveloperStudioProviderData data : providerProjectsList) {
 			IDeveloperStudioProvider provider = data.getProvider();
 
-			List<IDeveloperStudioProvider> registryProjectsList = getRegistryProjectsList(provider);
+			List<IDeveloperStudioProvider> registryProjectsList = RegistryResourcesUtils.getRegistryProjectsList(provider, filters);
 			importListMap = new HashMap<String, IDeveloperStudioElement>();
 
 			for (IDeveloperStudioProvider registryProject : registryProjectsList) {
-				List<IDeveloperStudioProvider> childrenList = getChildrenList(registryProject);
-
+				List<IDeveloperStudioProvider> childrenList = RegistryResourcesUtils.getChildrenList(registryProject, filters);
 				for (IDeveloperStudioProvider child : childrenList) {
 					IDeveloperStudioElement childElement = child.getElements(getFilters())[0];
 					String configName = childElement.getName().substring(0,
@@ -600,28 +585,6 @@ public class ESBDataMapperConfigurationDialog extends Dialog {
 			comboConfiguration.select(0);
 		}
 
-	}
-
-	private List<IDeveloperStudioProvider> getRegistryProjectsList(IDeveloperStudioProvider provider) {
-		List<IDeveloperStudioProvider> list = new ArrayList<IDeveloperStudioProvider>();
-		IDeveloperStudioProvider[] categories = provider.getCategories(getFilters());
-		if (categories != null) {
-			list.addAll(Arrays.asList(categories));
-		}
-
-		return list;
-	}
-
-	private List<IDeveloperStudioProvider> getChildrenList(IDeveloperStudioProvider provider) {
-		List<IDeveloperStudioProvider> list = new ArrayList<IDeveloperStudioProvider>();
-
-		/* Get sub categories of registry project */
-		IDeveloperStudioProvider[] resources = provider.getCategories(getFilters());
-		if (resources != null) {
-			list.addAll(Arrays.asList(resources));
-		}
-
-		return list;
 	}
 
 	private String getSelectedTemplateExtension() {

@@ -16,6 +16,8 @@
 package org.wso2.developerstudio.datamapper.diagram.custom.persistence;
 
 import org.wso2.developerstudio.datamapper.DataMapperRoot;
+import org.wso2.developerstudio.datamapper.diagram.custom.exception.DataMapperException;
+import org.wso2.developerstudio.datamapper.diagram.custom.generator.SameLevelArrayMappingConfigGenerator;
 import org.wso2.developerstudio.datamapper.diagram.custom.generator.SameLevelRecordMappingConfigGenerator;
 import org.wso2.developerstudio.datamapper.diagram.custom.model.DataMapperDiagramModel;
 
@@ -44,8 +46,9 @@ public class DataMapperModelTransformer {
      * 
      * @param rootDiagram datamapper graphical model root
      * @return complete configuration of mapping
+     * @throws DataMapperException 
      */
-    public String transform(DataMapperRoot rootDiagram) {
+    public String transform(DataMapperRoot rootDiagram) throws DataMapperException {
         DataMapperDiagramModel mappingModel = new DataMapperDiagramModel(rootDiagram);
         SameLevelRecordMappingConfigGenerator configGenerator = new SameLevelRecordMappingConfigGenerator();
         String functionList = configGenerator.generateMappingConfig(mappingModel);

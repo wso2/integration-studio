@@ -120,7 +120,7 @@ public class OutputEditPart extends ShapeNodeEditPart {
 			getEditingDomain().getCommandStack().execute(addTreeNodeCmd2);
 		}
 		getPrimaryShape().setPreferredSize(250, 15);
-
+		reposition();
 	}
 
 	/**
@@ -147,6 +147,7 @@ public class OutputEditPart extends ShapeNodeEditPart {
 			getEditingDomain().getCommandStack().execute(addTreeNodeCmd2);
 		}
 		getPrimaryShape().setPreferredSize(250, 15);
+		reposition();
 	}
 
 	private void convertTree(Tree tree, TreeNode treeNode) {
@@ -423,7 +424,7 @@ public class OutputEditPart extends ShapeNodeEditPart {
 				reposition(((BoundsImpl) notification.getNotifier()).getX(),
 						((BoundsImpl) notification.getNotifier()).getY(),
 						((BoundsImpl) notification.getNotifier()).getWidth(),
-						((BoundsImpl) notification.getNotifier()).getHeight());
+						getTreeHeight());
 				FigureCanvas canvas = (FigureCanvas) getViewer().getControl();
 				canvas.getViewport().repaint();
 			}
@@ -432,12 +433,12 @@ public class OutputEditPart extends ShapeNodeEditPart {
 	}
 	
 	private int getTreeHeight() {
-		 		int h = getTreeHeight(outputRootTreeNode);
-		 		if (h < 100) {
-		 			return 100;
-		 		}
-		 		else return h * LEAF_HEIGHT;
-		 	}
+ 		int h = getTreeHeight(outputRootTreeNode);
+ 		if (h < 4) {
+ 			return 100;
+ 		}
+ 		else return h * LEAF_HEIGHT;
+	}
 		 	
  	private int getTreeHeight(TreeNode tree) {
  		if (tree != null) {
@@ -463,7 +464,7 @@ public class OutputEditPart extends ShapeNodeEditPart {
 
 	private void reposition() {
 		reposition(getFigure().getBounds().x, getFigure().getBounds().y,
-				getFigure().getBounds().width, getFigure().getBounds().height);
+				getFigure().getBounds().width, getTreeHeight());
 	}
 
 	/**

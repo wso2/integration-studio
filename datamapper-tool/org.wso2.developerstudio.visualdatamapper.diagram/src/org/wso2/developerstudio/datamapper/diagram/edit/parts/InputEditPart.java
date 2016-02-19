@@ -122,7 +122,7 @@ public class InputEditPart extends ShapeNodeEditPart {
 			getEditingDomain().getCommandStack().execute(addTreeNodeCmd2);
 		}
 		getPrimaryShape().setPreferredSize(250, 15);
-
+		reposition();
 	}
 
 	/**
@@ -458,7 +458,7 @@ public class InputEditPart extends ShapeNodeEditPart {
 	
 	private int getTreeHeight() {
  		int h = getTreeHeight(inputRootTreeNode);
- 		if (h < 100) {
+ 		if (h < 4) {
  			return 100;
  		}
  		else return h * LEAF_HEIGHT;

@@ -15,6 +15,7 @@
  */
 package org.wso2.developerstudio.datamapper.diagram.custom.generator;
 
+import org.wso2.developerstudio.datamapper.diagram.custom.exception.DataMapperException;
 import org.wso2.developerstudio.datamapper.diagram.custom.model.DataMapperDiagramModel;
 
 /**
@@ -29,8 +30,9 @@ public interface MappingConfigGenerator {
      * 
      * @param model
      * @return
+     * @throws DataMapperException 
      */
-    String generateMappingConfig(DataMapperDiagramModel model);
+    String generateMappingConfig(DataMapperDiagramModel model) throws DataMapperException;
 
     /**
      * This method checks whether the mapping model is valid to be solved by the mapping configuration generating

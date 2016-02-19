@@ -507,11 +507,11 @@ public class InputEditPart extends ShapeNodeEditPart {
 			layoutThis.setSpacing(1);
 			layoutThis.setVertical(true);
 			this.setLayoutManager(layoutThis);
-			this.setPreferredSize(new Dimension(getMapMode().DPtoLP(250), getMapMode().DPtoLP(200)));
+			this.setPreferredSize(new Dimension(getMapMode().DPtoLP(250), getMapMode().DPtoLP(400)));
 			this.setOutline(true);
 
 			TitleBarBorder titleBarBorder = new TitleBarBorder("Input");
-			titleBarBorder.setPadding(4);
+			titleBarBorder.setPadding(6);
 			titleBarBorder.setBackgroundColor(new Color(null, 90, 148, 219));
 			titleBarBorder.setTextColor(new Color(null, 0, 0, 0));
 			titleBarBorder.setFont(new Font(null, "Arial", 10, SWT.BOLD));

@@ -94,8 +94,8 @@ public class DataMapperMediatorEditPart extends FixedSizedAbstractMediator {
 	private static final String C_REG_PREFIX = "conf:%s"; //$NON-NLS-1$
 	private static final String DATAMAPPER_CONFIG_EXT = ".dmc"; //$NON-NLS-1$
 	private static final String WARNING_TITLE = "Warning";
-	private static final String WARNING_MESSAGE_1 = "There is no configuration as ";
-	private static final String WARNING_MESSAGE_2 = " in the workspace. Please create a new configuration or use an existing configuration ";
+	private static final String WARNING_MESSAGE_1 = "The resource ";
+	private static final String WARNING_MESSAGE_2 = " could not be found in the workspace. Do you like to create a new configuration?";
 	private Class<?>[] type;
 	private Map<String, IDeveloperStudioElement> importListMap;
 	
@@ -399,7 +399,7 @@ public class DataMapperMediatorEditPart extends FixedSizedAbstractMediator {
 
 		if (datamapper.getConfiguration().getKeyValue().isEmpty()) {
 			
-			getCreateConfigurationDialog(datamapper, filters);
+			getCreateConfigurationDialog(datamapper, filters, null);
 
 		} else {
 			//Open the DataMapper Editor while double clicking on the DataMapperMediator	
@@ -410,8 +410,8 @@ public class DataMapperMediatorEditPart extends FixedSizedAbstractMediator {
 			if(StringUtils.isNotEmpty(configLocalPath)){
 				openDataMapperEditor(configLocalPath);
 			}else{
-				MessageDialog.openWarning(Display.getCurrent().getActiveShell(), WARNING_TITLE, WARNING_MESSAGE_1 + "\"" + configName + "\"" + WARNING_MESSAGE_2);
-				getCreateConfigurationDialog(datamapper, filters);		
+				MessageDialog.openInformation(Display.getCurrent().getActiveShell(), WARNING_TITLE, WARNING_MESSAGE_1 + "\"" + configName + "\"" + WARNING_MESSAGE_2);
+				getCreateConfigurationDialog(datamapper, filters, configName);		
 			}
 			
 		}
@@ -423,12 +423,13 @@ public class DataMapperMediatorEditPart extends FixedSizedAbstractMediator {
      * Gets the create configuration dialog
      * @param datamapper Datamapper Mediator
      * @param filters filter
+     * @param configName 
      */
 	private void getCreateConfigurationDialog(
 			final DataMapperMediatorImpl datamapper,
-			Map<String, List<String>> filters) {
+			Map<String, List<String>> filters, String configName) {
 		// IRegistryFile class is only required for datamapper related filtering 
-		final ESBDataMapperConfigurationDialog dataMapperConfigurationDialog = new ESBDataMapperConfigurationDialog(Display.getCurrent().getActiveShell(), new Class[]{IRegistryFile.class}, filters); 
+		final ESBDataMapperConfigurationDialog dataMapperConfigurationDialog = new ESBDataMapperConfigurationDialog(Display.getCurrent().getActiveShell(), new Class[]{IRegistryFile.class}, filters, configName); 
 		dataMapperConfigurationDialog.create();
 
 		DialogDisplayUtils.setPositionInCenter(dataMapperConfigurationDialog.getShell());

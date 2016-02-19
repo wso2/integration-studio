@@ -77,6 +77,7 @@ public class ESBDataMapperConfigurationDialog extends Dialog {
 	private Map<String, IDeveloperStudioElement> importListMap;
 	private String selectedPath;
 	private String ipathOfSelection;
+	private String configName;
 
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
@@ -128,13 +129,15 @@ public class ESBDataMapperConfigurationDialog extends Dialog {
 	 * Create the dialog.
 	 * 
 	 * @param parentShell
+	 * @param configName 
 	 */
 	public ESBDataMapperConfigurationDialog(Shell parentShell, Class<?>[] type,
-			Map<String, java.util.List<String>> filters) {
+			Map<String, java.util.List<String>> filters, String configName) {
 		super(parentShell);
 		setShellStyle(SWT.CLOSE | SWT.TITLE | SWT.BORDER | SWT.OK | SWT.APPLICATION_MODAL);
 		setType(type);
 		setFilters(filters);
+		setConfigName(configName);
 	}
 
 	/**
@@ -174,6 +177,11 @@ public class ESBDataMapperConfigurationDialog extends Dialog {
 
 		textConfigName = new Text(compositeNewConfig, SWT.BORDER);
 		textConfigName.setText(DEFAULT_CONFIG_NAME);
+		if(configName != null){
+			textConfigName.setText(configName.substring(0, configName.lastIndexOf('.')));
+		}else{
+			textConfigName.setText(DEFAULT_CONFIG_NAME);
+		}
 		textConfigName.addModifyListener(new ModifyListener() {
 			public void modifyText(ModifyEvent arg0) {
 				validate();
@@ -640,4 +648,10 @@ public class ESBDataMapperConfigurationDialog extends Dialog {
 		return ipathOfSelection;
 	}
 
+	public void setConfigName(String configName){
+		this.configName= configName;
+	}
+	public String getConfigName(){
+		return configName;
+	}
 }

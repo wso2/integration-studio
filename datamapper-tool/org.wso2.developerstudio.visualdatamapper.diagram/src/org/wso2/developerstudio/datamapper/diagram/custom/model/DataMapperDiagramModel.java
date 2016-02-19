@@ -422,7 +422,7 @@ public class DataMapperDiagramModel {
                     parentVariableIndex = parent.getIndex();
                 }
                 variablesArray.add(new DMVariable(variableName, objectElement.toString(), DMVariableType.OUTPUT,
-                        element.getSchemaDataType(), index,parentVariableIndex));
+                        element.getSchemaDataType(), index, parentVariableIndex));
                 outputVariablesArray.add(index);
                 element.setIndex(index);
                 addVariableTypeToMap(variableName, element.getSchemaDataType());
@@ -460,9 +460,7 @@ public class DataMapperDiagramModel {
         String variableName = prefix.toString().toLowerCase();
         for (EObject eObject : parentVariableStack) {
             if (eObject instanceof TreeNodeImpl) {
-                if (!((TreeNodeImpl) eObject).getSchemaDataType().equals(SchemaDataType.ARRAY)) {
-                    variableName = variableName + ((TreeNodeImpl) eObject).getName() + ".";
-                }
+                variableName = variableName + ((TreeNodeImpl) eObject).getName() + ".";
             } else if (eObject instanceof ElementImpl) {
                 variableName = variableName + ((ElementImpl) eObject).getName() + ".";
             } else {

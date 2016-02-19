@@ -15,25 +15,23 @@
  */
 package org.wso2.developerstudio.datamapper.diagram.custom.generator;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.DMOperatorTransformerFactory;
 import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.DMOperatorTransformer;
-import org.wso2.developerstudio.datamapper.diagram.custom.model.DMOperation;
+import org.wso2.developerstudio.datamapper.diagram.custom.exception.DataMapperException;
 import org.wso2.developerstudio.datamapper.diagram.custom.model.DMVariable;
-import org.wso2.developerstudio.datamapper.diagram.custom.model.DMVariableType;
 import org.wso2.developerstudio.datamapper.diagram.custom.model.DataMapperDiagramModel;
 
 /**
- * This class implements interface {@link MappingConfigGenerator} and generates mapping configuration from a
- * {@link DataMapperDiagramModel} for simple same level record type schemas
+ * This class extends absrtract class {@link AbstractMappingConfigGenerator} and generates mapping configuration from a
+ * {@link DataMapperDiagramModel} for simple same level record type schema's
  *
  */
-public class SameLevelRecordMappingConfigGenerator implements MappingConfigGenerator {
+public class SameLevelRecordMappingConfigGenerator extends AbstractMappingConfigGenerator {
 
     @Override
-    public String generateMappingConfig(DataMapperDiagramModel model) {
+    public String generateMappingConfig(DataMapperDiagramModel model) throws DataMapperException {
         List<MappingOperation> mappingOperationList = populateOperationListFromModel(model);
         String mainFunction = generateMainFunction(mappingOperationList, model);
         return mainFunction;
@@ -49,21 +47,11 @@ public class SameLevelRecordMappingConfigGenerator implements MappingConfigGener
         String inRoot = model.getInputRootName();
         String outRoot = model.getOutputRootName();
         StringBuilder functionBuilder = new StringBuilder();
-        functionBuilder.append("function map_S_");
-        functionBuilder.append(inRoot);
-        functionBuilder.append("_S_");
-        functionBuilder.append(outRoot);
-        functionBuilder.append("( input" + inRoot + ", output" + outRoot + ")");
-        functionBuilder.append("{ ");
-        functionBuilder.append("\n");
+        functionBuilder.append(getMainFunctionDefinition(inRoot, outRoot));
         for (MappingOperation mappingOperation : mappingOperationList) {
             functionBuilder.append(getJSCommandForOperation(mappingOperation));
         }
-        functionBuilder.append("\n");
-        functionBuilder.append("return output" + outRoot);
-        functionBuilder.append(";");
-        functionBuilder.append("\n");
-        functionBuilder.append("}");
+        functionBuilder.append(getFunctionReturnString(outRoot));
         return functionBuilder.toString();
     }
 
@@ -90,34 +78,5 @@ public class SameLevelRecordMappingConfigGenerator implements MappingConfigGener
                 SameLevelRecordMappingConfigGenerator.class, mappingOperation.getInputVariables()));
         operationBuilder.append("\n");
         return operationBuilder.toString();
-    }
-
-    private List<MappingOperation> populateOperationListFromModel(DataMapperDiagramModel model) {
-        ArrayList<MappingOperation> mappingOperationList = new ArrayList<>();
-        List<Integer> executionSeq = model.getExecutionSequence();
-        for (Integer operationIndex : executionSeq) {
-            List<DMVariable> inputVariables = getVariablesFromModel(model, operationIndex, DMVariableType.INPUT);
-            List<DMVariable> outputVariables = getVariablesFromModel(model, operationIndex, DMVariableType.OUTPUT);;
-            DMOperation operation = model.getOperationsList().get(operationIndex);
-            mappingOperationList.add(new MappingOperation(inputVariables, outputVariables, operation));
-        }
-        return mappingOperationList;
-    }
-
-    private List<DMVariable> getVariablesFromModel(DataMapperDiagramModel model, Integer operationIndex,
-            DMVariableType type) {
-        ArrayList<Integer> variableReferenceList;
-        if (DMVariableType.INPUT.equals(type)) {
-            variableReferenceList = model.getInputAdjList().get(operationIndex);
-        } else if (DMVariableType.OUTPUT.equals(type)) {
-            variableReferenceList = model.getOutputAdjList().get(operationIndex);
-        } else {
-            throw new IllegalArgumentException("Illegal Variable type for this operation : " + type);
-        }
-        List<DMVariable> variableList = new ArrayList<>();
-        for (Integer variableIndex : variableReferenceList) {
-            variableList.add(model.getVariablesArray().get(variableIndex));
-        }
-        return variableList;
     }
 }

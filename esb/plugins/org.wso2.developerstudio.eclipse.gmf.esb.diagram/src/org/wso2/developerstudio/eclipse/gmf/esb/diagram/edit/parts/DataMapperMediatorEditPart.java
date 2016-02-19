@@ -24,8 +24,10 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.lang.StringUtils;
+import org.eclipse.core.internal.resources.File;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.Label;
@@ -65,10 +67,14 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.FixedSizedAbstrac
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.OpenSeparatelyEditPolicy;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.dialogs.DialogDisplayUtils;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.dialogs.ESBDataMapperConfigurationDialog;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.dialogs.RegistryResourcesUtils;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.policies.DataMapperMediatorCanonicalEditPolicy;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.policies.DataMapperMediatorItemSemanticEditPolicy;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbVisualIDRegistry;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.DataMapperMediatorImpl;
+import org.wso2.developerstudio.eclipse.platform.core.interfaces.IDeveloperStudioElement;
+import org.wso2.developerstudio.eclipse.platform.core.interfaces.IDeveloperStudioProvider;
+import org.wso2.developerstudio.eclipse.platform.core.interfaces.IDeveloperStudioProviderData;
 import org.wso2.developerstudio.eclipse.platform.core.utils.CSProviderConstants;
 import org.wso2.developerstudio.eclipse.platform.ui.startup.DataMapperEditor;
 import org.wso2.developerstudio.eclipse.registry.core.interfaces.IRegistryFile;
@@ -86,7 +92,9 @@ public class DataMapperMediatorEditPart extends FixedSizedAbstractMediator {
 	private static final String G_REG_PREFIX = "gov:%s"; //$NON-NLS-1$
 	private static final String C_REG_PREFIX = "conf:%s"; //$NON-NLS-1$
 	private static final String DATAMAPPER_CONFIG_EXT = ".dmc"; //$NON-NLS-1$
-
+	private Class<?>[] type;
+	private Map<String, IDeveloperStudioElement> importListMap;
+	
 	/**
 	 * @generated
 	 */
@@ -102,7 +110,10 @@ public class DataMapperMediatorEditPart extends FixedSizedAbstractMediator {
 	 */
 	public DataMapperMediatorEditPart(View view) {
 		super(view);
+		
 	}
+	
+	
 
 	/**
 	 * @generated NOT
@@ -375,15 +386,14 @@ public class DataMapperMediatorEditPart extends FixedSizedAbstractMediator {
 		NodeImpl eobject = ((NodeImpl)this.getModel());
 		final DataMapperMediatorImpl datamapper = (DataMapperMediatorImpl)eobject.getElement();
 
+		Map<String, List<String>> filters = new HashMap<String, List<String>>();
+		String mediaTypeKey = CSProviderConstants.FILTER_MEDIA_TYPE;
+		List<String> types = new ArrayList<String>();
+		types.add(DATAMAPPER_FILTER_TYPE); //FIXME we need to give this our mediatype like vnd.wso2.esb.datamapper
+		filters.put(mediaTypeKey, types);
+	
 
 		if (datamapper.getConfiguration().getKeyValue().isEmpty()) {
-			
-			Map<String, List<String>> filters = new HashMap<String, List<String>>();
-			
-			String mediaTypeKey = CSProviderConstants.FILTER_MEDIA_TYPE;
-			List<String> types = new ArrayList<String>();
-			types.add(DATAMAPPER_FILTER_TYPE); //FIXME we need to give this our mediatype like vnd.wso2.esb.datamapper
-			filters.put(mediaTypeKey, types);
 			
 			// IRegistryFile class is only required for datamapper related filtering 
 			final ESBDataMapperConfigurationDialog dataMapperConfigurationDialog = new ESBDataMapperConfigurationDialog(Display.getCurrent().getActiveShell(), new Class[]{IRegistryFile.class}, filters); 
@@ -418,7 +428,9 @@ public class DataMapperMediatorEditPart extends FixedSizedAbstractMediator {
 						setInputSchemaKey(datamapper, inputSchemaKeyProperty, inputSchemaLocalPath, editingDomain);
 						setOutputSchemaKey(datamapper, outputSchemaKeyProperty, outputSchemaLocalPath, editingDomain);
 						
-						openDataMapperEditor(datamapper);
+						if (StringUtils.isNotEmpty(datamapper.getConfigurationLocalPath())) {
+						openDataMapperEditor(datamapper.getConfigurationLocalPath());
+						}
 
 					}
 
@@ -478,11 +490,76 @@ public class DataMapperMediatorEditPart extends FixedSizedAbstractMediator {
 			}
 
 		} else {
-			openDataMapperEditor(datamapper);
+			//Open the DataMapper Editor while double clicking on the DataMapperMediator	
+			String configName = getconfigName(datamapper);
+			setType(new Class[]{IRegistryFile.class});
+			IDeveloperStudioProviderData[] providerProjectsList = RegistryResourcesUtils.loadProviderProjectsList(type);
+			String configLocalPath =  getConfigurationLocalPath(providerProjectsList,filters,configName);
+			if(StringUtils.isNotEmpty(configLocalPath)){
+				openDataMapperEditor(configLocalPath);
+			}
+			
 		}
 		
 	}
+	
+	/**
+	 * Gets the configuration name of the datamapper config
+	 * @param datamapper DataMapper Mediator object
+	 * @return configuration name
+	 */
+	private String getconfigName(DataMapperMediatorImpl datamapper) {
+		String configName= null;
+		String regPath = datamapper.getConfiguration().getKeyValue();
+		if(StringUtils.isNotEmpty(regPath)){
+			configName = regPath.substring(regPath.lastIndexOf("/") + 1, regPath.length());
+		}
+		return configName;
+	}
 
+	/**
+	 * Gets the configuration local path
+	 * @param providerProjectsList Provider Project list
+	 * @param filters filters
+	 * @param configName configuration name
+	 * @return configuration local path
+	 */
+	private String getConfigurationLocalPath(IDeveloperStudioProviderData[] providerProjectsList, Map<String, List<String>> filters, String configName) {
+		
+		String configPath = null;
+		
+		for (IDeveloperStudioProviderData data : providerProjectsList) {
+			IDeveloperStudioProvider provider = data.getProvider();
+
+			List<IDeveloperStudioProvider> registryProjectsList = RegistryResourcesUtils.getRegistryProjectsList(provider, filters);
+			importListMap = new HashMap<String, IDeveloperStudioElement>();
+
+			for (IDeveloperStudioProvider registryProject : registryProjectsList) {
+				List<IDeveloperStudioProvider> childrenList = RegistryResourcesUtils.getChildrenList(registryProject,filters);
+
+				for (IDeveloperStudioProvider child : childrenList) {
+					IDeveloperStudioElement childElement = child.getElements(filters)[0];
+					if(childElement.getName().equals(configName)){
+						IPath fullPath = ((File)childElement.getSource()).getFullPath();
+						configPath = fullPath.toString();
+					}
+				
+				}
+			}
+		}
+		return configPath;
+
+	}
+	
+	public Class<?>[] getType() {
+		return type;
+	}
+
+	public void setType(Class<?>[] type) {
+		this.type = type;
+	}
+	
+	
 	private String formatRegistryPath(String selectedPath) {
 		String formattedPath = selectedPath;
 		if (selectedPath.startsWith(G_REG_PATH_PREFIX)) {
@@ -493,16 +570,14 @@ public class DataMapperMediatorEditPart extends FixedSizedAbstractMediator {
 		return formattedPath;
 	}
 
-	private void openDataMapperEditor(final DataMapperMediatorImpl datamapper) {
-		if (!datamapper.getConfiguration().getKeyValue().isEmpty()) {
-
-			String localPath = datamapper.getConfigurationLocalPath();
-			if (localPath != null && !localPath.isEmpty()) {
+	/**
+	 * Opens the data mapper editor
+	 * @param localPath local path of the configuration
+	 */
+	private void openDataMapperEditor(final String localPath) {
 				Path path = new Path(localPath);
 				IFile file = ResourcesPlugin.getWorkspace().getRoot().getFile(path);
 				DataMapperEditor.open(file);
-			}
-		}
 	}
-
+	
 }

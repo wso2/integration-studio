@@ -16,17 +16,24 @@
 package org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Stack;
 
+import org.wso2.developerstudio.datamapper.SchemaDataType;
+import org.wso2.developerstudio.datamapper.diagram.custom.generator.ForLoopBean;
+import org.wso2.developerstudio.datamapper.diagram.custom.generator.SameLevelArrayMappingConfigGenerator;
 import org.wso2.developerstudio.datamapper.diagram.custom.generator.SameLevelRecordMappingConfigGenerator;
 import org.wso2.developerstudio.datamapper.diagram.custom.model.DMVariable;
 
 /**
- * This class implements the {@link DMOperatorTransformer} interface and generate script for concat operation
+ * This class extended from the {@link AbstractDMOperatorTransformer} abstract class and generate script for concat
+ * operation
  */
-public class ConcatOperatorTransformer implements DMOperatorTransformer {
+public class ConcatOperatorTransformer extends AbstractDMOperatorTransformer {
 
     @Override
-    public String generateScriptForOperation(Class<?> generatorClass, List<DMVariable> inputVariables) {
+    public String generateScriptForOperation(Class<?> generatorClass, List<DMVariable> inputVariables,
+            Map<String, SchemaDataType> variableTypeMap, Stack<ForLoopBean> parentForLoopBeanStack) {
         StringBuilder operationBuilder = new StringBuilder();
         if (SameLevelRecordMappingConfigGenerator.class.equals(generatorClass)) {
             if (inputVariables.size() >= 2) {
@@ -37,10 +44,19 @@ public class ConcatOperatorTransformer implements DMOperatorTransformer {
             } else {
                 operationBuilder.append("'';");
             }
+        } else if (SameLevelArrayMappingConfigGenerator.class.equals(generatorClass)) {
+            if (inputVariables.size() >= 1) {
+                operationBuilder.append(getPrettyVariableNameInForOperation(inputVariables.get(0), variableTypeMap,
+                        parentForLoopBeanStack)
+                        + ".concat("
+                        + getPrettyVariableNameInForOperation(inputVariables.get(1), variableTypeMap,
+                                parentForLoopBeanStack) + ");");
+            } else {
+                operationBuilder.append("'';");
+            }
         } else {
             throw new IllegalArgumentException("Unknown MappingConfigGenerator type found : " + generatorClass);
         }
         return operationBuilder.toString();
     }
-
 }

@@ -93,7 +93,7 @@ public class DataMapperMediatorEditPart extends FixedSizedAbstractMediator {
 	private static final String G_REG_PREFIX = "gov:%s"; //$NON-NLS-1$
 	private static final String C_REG_PREFIX = "conf:%s"; //$NON-NLS-1$
 	private static final String DATAMAPPER_CONFIG_EXT = ".dmc"; //$NON-NLS-1$
-	private static final String WARNING_TITLE = "Warning";
+	private static final String WARNING_TITLE = "Information";
 	private static final String WARNING_MESSAGE_1 = "The resource ";
 	private static final String WARNING_MESSAGE_2 = " could not be found in the workspace. Do you like to create a new configuration?";
 	private Class<?>[] type;

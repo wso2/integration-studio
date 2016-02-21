@@ -54,7 +54,6 @@ public class RenameNodeAction extends AbstractActionHandler{
 			TreeNode selectedNode = (TreeNode) object;
 			
 			String newName = openRenameDialog();
-			//System.out.println("selected Node **************** : " + selectedNode + "   , new Name  *********** " + newName + "Node ; " + object.getClass().getName() );
 			if (newName != null && newName != "") {
 				selectedNode.setName(newName);
 			}

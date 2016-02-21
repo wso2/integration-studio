@@ -57,7 +57,6 @@ public class RenameFieldAction extends AbstractActionHandler{
 			Element selectedElem = (Element) object;
 			
 			String newName = openRenameDialog();
-			//System.out.println("selected Elem **************** : " + selectedNode + "   , new Name  *********** " + newName + "rootElem ; " + object.getClass().getName() );
 			if (newName != null && newName != "") {
 				selectedElem.setName(newName);
 			}

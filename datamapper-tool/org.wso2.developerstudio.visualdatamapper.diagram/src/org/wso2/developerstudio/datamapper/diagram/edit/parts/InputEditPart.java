@@ -372,6 +372,7 @@ public class InputEditPart extends ShapeNodeEditPart {
 			for (Tree treeNew : treeN.getTrees()) {
 				createTree(treeNew, treeNodeNew);
 			}
+			reposition();
 		}
 
 		if (!(treeN.getElements().isEmpty())) {
@@ -453,7 +454,7 @@ public class InputEditPart extends ShapeNodeEditPart {
 				FigureCanvas canvas = (FigureCanvas) getViewer().getControl();
 				canvas.getViewport().repaint();
 			}
-		}
+		} 
 	}
 	
 	private int getTreeHeight() {
@@ -525,12 +526,11 @@ public class InputEditPart extends ShapeNodeEditPart {
 			ToolbarLayout layoutThis = new ToolbarLayout();
 			layoutThis.setStretchMinorAxis(true);
 			layoutThis.setMinorAlignment(ToolbarLayout.ALIGN_TOPLEFT);
-			layoutThis.setSpacing(1);
+			layoutThis.setSpacing(10);
 			layoutThis.setVertical(true);
 			this.setLayoutManager(layoutThis);
 			this.setPreferredSize(new Dimension(getMapMode().DPtoLP(250), getMapMode().DPtoLP(400)));
 			this.setOutline(true);
-			this.setMinimumSize(new Dimension(getMapMode().DPtoLP(250), getMapMode().DPtoLP(400)));
 
 			TitleBarBorder titleBarBorder = new TitleBarBorder("Input");
 			titleBarBorder.setPadding(6);

@@ -64,7 +64,6 @@ public class OutputEditPart extends ShapeNodeEditPart {
 	int LEAF_HEIGHT = 20;
 	
 	int height = 400;
-	int i = 0;
 
 	/**
 	 * @generated
@@ -430,6 +429,7 @@ public class OutputEditPart extends ShapeNodeEditPart {
 			}
 			
 		}
+		
 	}
 	
 	private int getTreeHeight() {
@@ -600,7 +600,6 @@ public class OutputEditPart extends ShapeNodeEditPart {
 			ToolbarLayout layoutThis = new ToolbarLayout();
 			layoutThis.setStretchMinorAxis(true);
 			layoutThis.setMinorAlignment(ToolbarLayout.ALIGN_TOPLEFT);
-			layoutThis.setSpacing(1);
 			layoutThis.setVertical(true);
 			layoutThis.setSpacing(10);
 			this.setLayoutManager(layoutThis);
@@ -617,7 +616,6 @@ public class OutputEditPart extends ShapeNodeEditPart {
 					titleBarBorder, 
 					new LineBorder(new Color(null, 0, 125, 133), 2, Graphics.LINE_SOLID));
 			this.setBorder(compoundBorder);
-			
 
 		}
 

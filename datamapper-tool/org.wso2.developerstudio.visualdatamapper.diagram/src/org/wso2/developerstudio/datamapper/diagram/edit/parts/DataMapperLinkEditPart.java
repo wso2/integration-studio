@@ -62,15 +62,7 @@ public class DataMapperLinkEditPart extends ConnectionNodeEditPart implements IT
 	 * @generated NOT
 	 */
 	protected Connection createConnectionFigure() {
-		PolylineConnectionEx figure = new PolylineConnectionEx();
-		PolygonDecoration decoration = new PolygonDecoration();
-		decoration.setScale(12, 4);
-		decoration.setAlpha(250);
-		decoration.setBackgroundColor(new Color(null, 50, 50, 50));
-		decoration.setOutline(false);
-		figure.setTargetDecoration(decoration);
-		return figure;
-
+		return new PolylineConnectionEx();
 	}
 
 	/**

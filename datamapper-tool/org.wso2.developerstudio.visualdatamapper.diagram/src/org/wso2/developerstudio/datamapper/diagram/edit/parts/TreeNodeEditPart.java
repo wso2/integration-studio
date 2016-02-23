@@ -108,6 +108,14 @@ public class TreeNodeEditPart extends ShapeNodeEditPart {
 
 		}
 	}
+	
+	/**
+	 * @generated NOT
+	 */
+	@Override
+	public boolean canAttachNote() {
+		return false;
+	}
 
 	protected void addChild(EditPart child, int index) {
 		super.addChild(child, index);

@@ -27,7 +27,7 @@ import org.wso2.developerstudio.datamapper.diagram.edit.parts.InputEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.OutputEditPart;
 import org.wso2.developerstudio.datamapper.Element;
 import org.wso2.developerstudio.datamapper.impl.TreeNodeImpl;
-import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
+
 
 public class RenameFieldAction extends AbstractActionHandler{
 	

@@ -64,7 +64,8 @@ public class OutputEditPart extends ShapeNodeEditPart {
 
 	private static final int Y = 200;
 	TreeNode outputRootTreeNode;
-	int LEAF_HEIGHT = 20;
+	private static final int LEAF_HEIGHT = 20;
+	private static final int OUTPUT_BOX_WIDTH = 250;
 	
 	int height = 400;
 
@@ -121,7 +122,7 @@ public class OutputEditPart extends ShapeNodeEditPart {
 		if (addTreeNodeCmd2.canExecute()) {
 			getEditingDomain().getCommandStack().execute(addTreeNodeCmd2);
 		}
-		getPrimaryShape().setPreferredSize(250, 15);
+		getPrimaryShape().setPreferredSize(OUTPUT_BOX_WIDTH, 15);
 		reposition();
 	}
 
@@ -148,7 +149,7 @@ public class OutputEditPart extends ShapeNodeEditPart {
 		if (addTreeNodeCmd2.canExecute()) {
 			getEditingDomain().getCommandStack().execute(addTreeNodeCmd2);
 		}
-		getPrimaryShape().setPreferredSize(250, 15);
+		getPrimaryShape().setPreferredSize(OUTPUT_BOX_WIDTH, 15);
 		reposition();
 	}
 
@@ -425,7 +426,7 @@ public class OutputEditPart extends ShapeNodeEditPart {
 			if (notification.getNotifier() instanceof BoundsImpl) {
 				reposition(((BoundsImpl) notification.getNotifier()).getX(),
 						((BoundsImpl) notification.getNotifier()).getY(),
-						((BoundsImpl) notification.getNotifier()).getWidth(),
+						OUTPUT_BOX_WIDTH,
 						TreeNodeUtils.getTreeHeight(outputRootTreeNode, LEAF_HEIGHT));
 				FigureCanvas canvas = (FigureCanvas) getViewer().getControl();
 				canvas.getViewport().repaint();
@@ -461,7 +462,7 @@ public class OutputEditPart extends ShapeNodeEditPart {
 
 	private void reposition() {
 		reposition(getFigure().getBounds().x, getFigure().getBounds().y,
-				getFigure().getBounds().width, TreeNodeUtils.getTreeHeight(outputRootTreeNode, LEAF_HEIGHT));
+				OUTPUT_BOX_WIDTH, TreeNodeUtils.getTreeHeight(outputRootTreeNode, LEAF_HEIGHT));
 	}
 
 	/**

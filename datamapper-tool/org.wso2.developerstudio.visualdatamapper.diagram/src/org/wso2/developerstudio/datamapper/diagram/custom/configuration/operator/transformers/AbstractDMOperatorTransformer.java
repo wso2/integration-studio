@@ -48,8 +48,12 @@ public abstract class AbstractDMOperatorTransformer implements DMOperatorTransfo
                 if (variableTypeMap.containsKey(variableName)) {
                     SchemaDataType variableType = variableTypeMap.get(variableName);
                     if (SchemaDataType.ARRAY.equals(variableType)) {
-                        prettyVariableName += "." + nextName.substring(0, nextName.indexOf("Record")) + "[i_"
-                                + nextName + "]";
+                        if (nextName.contains("Record")) {
+                            prettyVariableName += "." + nextName.substring(0, nextName.indexOf("Record")) + "[i_"
+                                    + nextName + "]";
+                        } else {
+                            prettyVariableName += "." + nextName + "[i_" + nextName + "]";
+                        }
                     } else {
                         prettyVariableName += "." + nextName;
                     }

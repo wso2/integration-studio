@@ -46,7 +46,8 @@ Require-Bundle: org.eclipse.core.runtime,
  org.wso2.developerstudio.eclipse.platform.ui,
  org.wso2.developerstudio.eclipse.platform.core,
  org.wso2.developerstudio.eclipse.maven,
- org.wso2.developerstudio.eclipse.utils
+ org.wso2.developerstudio.eclipse.utils,
+ org.wso2.developerstudio.eclipse.gmf.esb
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Import-Package: org.apache.avro,
@@ -102,6 +103,7 @@ Import-Package: org.apache.avro,
  org.wso2.developerstudio.eclipse.general.project.artifact.bean,
  org.wso2.developerstudio.eclipse.general.project.dialogs,
  org.wso2.developerstudio.eclipse.general.project.utils,
+ org.wso2.developerstudio.eclipse.gmf.esb,
  org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.provider,
  org.wso2.developerstudio.eclipse.logging.core,
  org.wso2.developerstudio.eclipse.maven.util,

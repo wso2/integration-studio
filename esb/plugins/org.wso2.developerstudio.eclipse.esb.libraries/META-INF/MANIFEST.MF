@@ -1,0 +1,25 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Libraries
+Bundle-SymbolicName: org.wso2.developerstudio.eclipse.esb.libraries;singleton:=true
+Bundle-Version: 4.0.0.qualifier
+Bundle-Vendor: WSO2
+Bundle-ActivationPolicy: lazy
+Export-Package: org.wso2.carbon.mediator.cache,
+ org.wso2.carbon.mediator.cache.digest
+Bundle-ClassPath: .,
+ lib/org.wso2.carbon.mediator.cache_4.4.10.jar
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.jdt.ui,
+ org.eclipse.core.resources,
+ javax.servlet;bundle-version="3.0.0",
+ javax.servlet.jsp;bundle-version="2.2.0",
+ org.wso2.developerstudio.eclipse.libraries
+Bundle-Activator: org.wso2.developerstudio.eclipse.esb.libraries.Activator
+Import-Package: org.eclipse.jdt.core,
+ org.wso2.developerstudio.eclipse.logging.core;version="[4.0.0,4.1.0)",
+ org.wso2.developerstudio.eclipse.utils.ide;version="[4.0.0,4.1.0)",
+ org.wso2.developerstudio.eclipse.utils.jdt;version="[4.0.0,4.1.0)",
+ org.wso2.developerstudio.eclipse.utils.ui;version="[4.0.0,4.1.0)"
+

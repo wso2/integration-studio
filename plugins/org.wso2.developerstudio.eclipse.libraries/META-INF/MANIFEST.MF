@@ -1375,6 +1375,8 @@ Export-Package: com.damnhandy.uri.template,
    org.apache.synapse.mediators",
  org.wso2.carbon.mediator.bam.config;uses:="org.wso2.carbon.registry.common.services,org.wso2.carbon.mediator.bam.config.stream,org.apache.axiom.om",
  org.wso2.carbon.mediator.bam.config.stream,
+ org.wso2.carbon.mediator.cache,
+ org.wso2.carbon.mediator.cache.digest,
  org.wso2.carbon.mediator.datamapper;
   uses:="org.apache.synapse,
    org.apache.synapse.core,
@@ -1689,6 +1691,7 @@ Bundle-ClassPath: .,
  lib/XmlSchema_1.4.7.wso2v3.jar,
  lib/zip4j_1.3.1.jar,
  lib/org.wso2.datamapper.engine-0.0.1.jar
+ lib/org.wso2.carbon.mediator.cache_4.4.10.jar
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.jdt.ui,

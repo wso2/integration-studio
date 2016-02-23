@@ -38,7 +38,7 @@ import javax.xml.parsers.ParserConfigurationException;
 
 public class CommonFieldValidator {
 	private static final IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
-    private static final String URL_VALIDATION_PATTERN = "^\\w\\w+:/.*|file:.*|mailto:.*|vfs:.*";
+    private static final String URL_VALIDATION_PATTERN = "^\\w\\w+:/.*|file:.*|mailto:.*|vfs:.*|jdbc:.*"; 
     private static final String SINGLE_QUOTATION_MARK_STRING = "\'";
     private static final String DOUBLE_QUOTATION_MARK_STRING = "\"";
 

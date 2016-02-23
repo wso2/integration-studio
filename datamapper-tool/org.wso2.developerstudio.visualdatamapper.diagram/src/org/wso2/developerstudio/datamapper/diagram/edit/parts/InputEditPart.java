@@ -37,6 +37,7 @@ import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.gmf.runtime.notation.impl.BoundsImpl;
+import org.eclipse.gmf.runtime.notation.impl.DiagramImpl;
 import org.eclipse.gmf.tooling.runtime.edit.policies.reparent.CreationEditPolicyWithCustomReparent;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
@@ -44,9 +45,11 @@ import org.eclipse.swt.graphics.Font;
 import org.wso2.developerstudio.datamapper.Attribute;
 import org.wso2.developerstudio.datamapper.DataMapperFactory;
 import org.wso2.developerstudio.datamapper.DataMapperPackage;
+import org.wso2.developerstudio.datamapper.DataMapperRoot;
 import org.wso2.developerstudio.datamapper.Element;
 import org.wso2.developerstudio.datamapper.SchemaDataType;
 import org.wso2.developerstudio.datamapper.TreeNode;
+import org.wso2.developerstudio.datamapper.diagram.custom.util.TreeNodeUtils;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.custom.CustomNonResizableEditPolicyEx;
 import org.wso2.developerstudio.datamapper.diagram.tree.generator.TreeFromAVSC;
 import org.wso2.developerstudio.datamapper.diagram.tree.model.Tree;
@@ -450,30 +453,24 @@ public class InputEditPart extends ShapeNodeEditPart {
 				reposition(((BoundsImpl) notification.getNotifier()).getX(),
 						((BoundsImpl) notification.getNotifier()).getY(),
 						((BoundsImpl) notification.getNotifier()).getWidth(),
-						getTreeHeight());
+						TreeNodeUtils.getTreeHeight(inputRootTreeNode, LEAF_HEIGHT));
 				FigureCanvas canvas = (FigureCanvas) getViewer().getControl();
 				canvas.getViewport().repaint();
 			}
 		} 
 	}
 	
-	private int getTreeHeight() {
- 		int h = getTreeHeight(inputRootTreeNode);
- 		if (h < 4) {
- 			return 100;
- 		}
- 		else return h * LEAF_HEIGHT;
- 	}
- 	
-	private int getTreeHeight(TreeNode tree) {
-		if (tree != null) {
-			int height = (tree.getElement().size() + tree.getAttribute().size());
-			for (TreeNode childTree : tree.getNode()) {
-				height += 1 + getTreeHeight(childTree);
-			}
-			return height;
+	@Override
+	protected void addChildVisual(EditPart childEditPart, int index) {
+		super.addChildVisual(childEditPart, index);
+			
+	 	if (childEditPart.getParent() instanceof InputEditPart) {
+	 		InputEditPart iep = (InputEditPart)childEditPart.getParent();
+			DataMapperRootEditPart rep = (DataMapperRootEditPart) iep.getParent();
+			DataMapperRoot rootDiagram = (DataMapperRoot)((DiagramImpl)rep.getModel()).getElement();
+			inputRootTreeNode = rootDiagram.getInput().getTreeNode().get(0);
+			reposition();
 		}
-		return 0;
 	}
 
 	private void reposition(int x, int y, int width, int height) {
@@ -489,7 +486,7 @@ public class InputEditPart extends ShapeNodeEditPart {
 
 	private void reposition() {
 		reposition(getFigure().getBounds().x, getFigure().getBounds().y,
-				getFigure().getBounds().width, getTreeHeight());
+				getFigure().getBounds().width, TreeNodeUtils.getTreeHeight(inputRootTreeNode, LEAF_HEIGHT));
 	}
 
 	/**

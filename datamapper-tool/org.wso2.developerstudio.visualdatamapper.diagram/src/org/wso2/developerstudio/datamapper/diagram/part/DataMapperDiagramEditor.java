@@ -425,7 +425,8 @@ public class DataMapperDiagramEditor extends DiagramDocumentEditor implements IG
             } catch (DataMapperException e) {
                 log.warn(e.getMessage(), e);
             } catch (Exception e) {
-                log.warn("Could not save file " + configFile + e); //$NON-NLS-1$
+                log.warn("Could not save file " + configFile +" : "+e); //$NON-NLS-1$
+                e.printStackTrace();
             } finally {
                 if (is != null) {
                     try {

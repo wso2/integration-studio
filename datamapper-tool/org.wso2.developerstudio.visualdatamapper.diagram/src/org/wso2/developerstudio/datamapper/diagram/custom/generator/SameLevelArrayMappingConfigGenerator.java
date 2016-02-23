@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Queue;
 import java.util.Stack;
 
 import org.apache.commons.lang.StringUtils;
@@ -160,6 +161,7 @@ public class SameLevelArrayMappingConfigGenerator extends AbstractMappingConfigG
     private String transformForLoopBeansToJS(ForLoopBean forLoopBean, List<MappingOperation> mappingOperationList,
             Map<String, SchemaDataType> variableTypeMap) {
         StringBuilder functionBuilder = new StringBuilder();
+        functionBuilder.append("\n");
         if (!"root".equals(forLoopBean.getVariableName())) {
             functionBuilder.append("for(" + forLoopBean.getIterativeName() + " in "
                     + getPrettyVariableNameInForLoop(forLoopBean.getVariableName()) + "){");
@@ -248,14 +250,19 @@ public class SameLevelArrayMappingConfigGenerator extends AbstractMappingConfigG
                 prettyVariableName = variable.getName();
             }
         } else {
+            Stack<ForLoopBean> parentVariableBottomUpStack = getReversedStack(parentForLoopBeanStack);
             String[] variableNameArray = variable.getName().split("\\.");
             for (String nextName : variableNameArray) {
                 variableName += nextName;
                 if (variableTypeMap.containsKey(variableName)) {
                     SchemaDataType variableType = variableTypeMap.get(variableName);
                     if (SchemaDataType.ARRAY.equals(variableType)) {
-                        prettyVariableName += "." + nextName.substring(0, nextName.indexOf("Record")) + "[i_"
-                                + nextName + "]";
+                        if (nextName.contains("Record")) {
+                            prettyVariableName += "." + nextName.substring(0, nextName.indexOf("Record"))
+                                    + "["+parentVariableBottomUpStack.pop().getIterativeName() + "]";
+                        } else {
+                            prettyVariableName += "." + nextName + "[i_" + nextName + "]";
+                        }
                     } else {
                         prettyVariableName += "." + nextName;
                     }
@@ -268,6 +275,14 @@ public class SameLevelArrayMappingConfigGenerator extends AbstractMappingConfigG
             prettyVariableName = prettyVariableName.substring(1);
         }
         return prettyVariableName;
+    }
+
+    private Stack<ForLoopBean> getReversedStack(Stack<ForLoopBean> parentForLoopBeanStack) {
+        Stack<ForLoopBean> reversedParentForLoopBeanStack = new Stack<>();
+        for (ForLoopBean forLoopBean : parentForLoopBeanStack) {
+            reversedParentForLoopBeanStack.push(forLoopBean);
+        }
+        return reversedParentForLoopBeanStack;
     }
 
     private String getForLoopIteratorNames(Stack<ForLoopBean> parentForLoopBeanStack) {

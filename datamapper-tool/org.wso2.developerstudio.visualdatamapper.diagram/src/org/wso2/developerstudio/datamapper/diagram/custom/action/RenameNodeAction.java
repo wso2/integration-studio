@@ -5,6 +5,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.command.AddCommand;
 import org.eclipse.emf.edit.command.RemoveCommand;
+import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.common.ui.action.AbstractActionHandler;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart;
@@ -52,74 +53,16 @@ public class RenameNodeAction extends AbstractActionHandler{
 			EObject object = ((Node) selectedEP.getModel()).getElement();
 			// Used to identify the selected resource of the model
 			TreeNode selectedNode = (TreeNode) object;
-			
 			String newName = openRenameDialog();
 			if (newName != null && newName != "") {
-				selectedNode.setName(newName);
-			}
-			// FIXME force refresh root
-			String selectedInputOutputEditPart = getSelectedInputOutputEditPart();
-			if (null != selectedInputOutputEditPart) {
-				if(selectedEP.getParent().getParent().getParent() instanceof InputEditPart){
-					InputEditPart iep = (InputEditPart)selectedEP.getParent().getParent().getParent();
-					DataMapperRootEditPart rep = (DataMapperRootEditPart)iep.getParent();
-					DataMapperRoot rootDiagram = (DataMapperRoot)((DiagramImpl)rep.getModel()).getElement();
-					if (INPUT_EDITPART.equals(selectedInputOutputEditPart)) {
-						EList<TreeNode> inputTreeNodesList = rootDiagram.getInput().getTreeNode();
-						if (null != inputTreeNodesList && !inputTreeNodesList.isEmpty()) {
-							// keep a temp reference
-							TreeNodeImpl inputTreeNode = (TreeNodeImpl) inputTreeNodesList.get(0);
-							// remove and add to rectify placing
-							RemoveCommand rootRemCmd = new RemoveCommand(
-									((GraphicalEditPart) selectedEP).getEditingDomain(),
-									rootDiagram.getInput(),
-									DataMapperPackage.Literals.INPUT__TREE_NODE, inputTreeNode);
-							if (rootRemCmd.canExecute()) {
-								((GraphicalEditPart) selectedEP).getEditingDomain().getCommandStack()
-										.execute(rootRemCmd);
-							}
-
-							AddCommand rootAddCmd = new AddCommand(
-									((GraphicalEditPart) selectedEP).getEditingDomain(),
-									rootDiagram.getInput(),
-									DataMapperPackage.Literals.INPUT__TREE_NODE, inputTreeNode, 0);
-							if (rootAddCmd.canExecute()) {
-								((GraphicalEditPart) selectedEP).getEditingDomain().getCommandStack()
-										.execute(rootAddCmd);
-							}
-						}
-					} else {
-						EList<TreeNode> outputTreeNodesList = rootDiagram.getOutput().getTreeNode();
-						if (null != outputTreeNodesList && !outputTreeNodesList.isEmpty()) {
-							// keep a temp reference
-							TreeNodeImpl outputTreeNode = (TreeNodeImpl) outputTreeNodesList.get(0);
-							// remove and add to rectify placing
-							RemoveCommand rootRemCmd = new RemoveCommand(
-									((GraphicalEditPart) selectedEP).getEditingDomain(),
-									rootDiagram.getOutput(),
-									DataMapperPackage.Literals.OUTPUT__TREE_NODE, outputTreeNode);
-							if (rootRemCmd.canExecute()) {
-								((GraphicalEditPart) selectedEP).getEditingDomain().getCommandStack()
-										.execute(rootRemCmd);
-							}
-
-							AddCommand rootAddCmd = new AddCommand(
-									((GraphicalEditPart) selectedEP).getEditingDomain(),
-									rootDiagram.getOutput(),
-									DataMapperPackage.Literals.OUTPUT__TREE_NODE, outputTreeNode, 0);
-							if (rootAddCmd.canExecute()) {
-								((GraphicalEditPart) selectedEP).getEditingDomain().getCommandStack()
-										.execute(rootAddCmd);
-							}
-
-						}
-					}
-
+				SetCommand renameComd = new SetCommand(((GraphicalEditPart) selectedEP).getEditingDomain(), selectedNode, DataMapperPackage.Literals.TREE_NODE__NAME, newName);
+				if (renameComd.canExecute()) {
+					((GraphicalEditPart) selectedEP).getEditingDomain().getCommandStack().execute(renameComd);
+					((GraphicalEditPart) selectedEP).getParent().getParent().getParent().refresh();
+					getSelectedEditPart().refresh();
 				}
-				
 			}
 		}
-		
 	}
 	
 

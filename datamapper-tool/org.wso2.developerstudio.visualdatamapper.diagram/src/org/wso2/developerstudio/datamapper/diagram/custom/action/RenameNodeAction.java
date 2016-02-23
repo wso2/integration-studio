@@ -21,8 +21,10 @@ import org.wso2.developerstudio.datamapper.DataMapperPackage;
 import org.wso2.developerstudio.datamapper.DataMapperRoot;
 import org.wso2.developerstudio.datamapper.TreeNode;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.DataMapperRootEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.ElementEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.InputEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.OutputEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.TreeNodeEditPart;
 import org.wso2.developerstudio.datamapper.impl.TreeNodeImpl;
 
 public class RenameNodeAction extends AbstractActionHandler{
@@ -58,8 +60,7 @@ public class RenameNodeAction extends AbstractActionHandler{
 				SetCommand renameComd = new SetCommand(((GraphicalEditPart) selectedEP).getEditingDomain(), selectedNode, DataMapperPackage.Literals.TREE_NODE__NAME, newName);
 				if (renameComd.canExecute()) {
 					((GraphicalEditPart) selectedEP).getEditingDomain().getCommandStack().execute(renameComd);
-					((GraphicalEditPart) selectedEP).getParent().getParent().getParent().refresh();
-					getSelectedEditPart().refresh();
+					((TreeNodeEditPart) getSelectedEditPart()).renameElementItem(newName);
 				}
 			}
 		}

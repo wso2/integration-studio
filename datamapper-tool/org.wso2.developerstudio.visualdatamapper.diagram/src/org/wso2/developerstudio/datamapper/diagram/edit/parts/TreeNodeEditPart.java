@@ -340,6 +340,8 @@ public class TreeNodeEditPart extends ShapeNodeEditPart {
 	 * @generated NOT
 	 */
 	public class TreeNodeFigure extends RectangleFigure {
+		private static final String PARENT_ICON = "icons/gmf/parent.gif";
+		private static final String ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM = "org.wso2.developerstudio.visualdatamapper.diagram";
 		/**
 		 * @generated
 		 */
@@ -390,12 +392,9 @@ public class TreeNodeEditPart extends ShapeNodeEditPart {
 			figure2.setOpaque(false);
 
 			ImageDescriptor mainImgDescCollapse = AbstractUIPlugin.imageDescriptorFromPlugin(
-					"org.wso2.developerstudio.visualdatamapper.diagram", "icons/gmf/parent.gif");
-			ImageDescriptor mainImgDescExpand = AbstractUIPlugin.imageDescriptorFromPlugin(
-					"org.wso2.developerstudio.visualdatamapper.diagram", "icons/gmf/parent.gif");//minus.gif
+					ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM, PARENT_ICON);
 
 			final ImageFigure mainImg = new ImageFigure(mainImgDescCollapse.createImage());
-			final ImageFigure mainExpand = new ImageFigure(mainImgDescExpand.createImage());
 			mainImg.setSize(new Dimension(10, 8));
 			RectangleFigure mainImageRectangle = new RectangleFigure();
 
@@ -414,27 +413,9 @@ public class TreeNodeEditPart extends ShapeNodeEditPart {
 			fFigureTreeNodeNameFigure.setForegroundColor(ColorConstants.black);
 
 			fFigureTreeNodeNameFigure.setFont(new Font(null, "Arial", 10, SWT.BOLD));
-			clickNode = new ClickNode(mainExpand);
-			clickNode.setEnabled(true);
-			clickNode.setPreferredSize(20, 8);
-
-			/*clickNode.addActionListener(new ActionListener() {
-
-				public void actionPerformed(ActionEvent event) {
-					if (!isExpanded) {
-						repaint(isExpanded, mainExpand);
-					} else {
-						repaint(isExpanded, mainImg);
-					}
-				}
-
-			});
-*/
 			figure2.setPreferredSize((count - 1) * 30, 1);
-			//figure2.setPreferredSize(1, 1);
 			Label nodeLabel = new Label();
 			nodeLabel.setIcon(mainImg.getImage());
-			//Text textElem = new Text(elemLabel, 0);
 			Display display = Display.getCurrent();
 			Color black = display.getSystemColor(SWT.COLOR_BLACK);
 			nodeLabel.setForegroundColor(black);
@@ -443,17 +424,13 @@ public class TreeNodeEditPart extends ShapeNodeEditPart {
 			figure.setOutline(false);
 			figure2.setOutline(false);
 			figure.add(figure2);
-			//figure.add(clickNode);
 			figure.add(nodeLabel);
 			figure.setFill(false);
 			figure2.setFill(false);
-			//mainImageRectangle.setFill(false);
-			//mainImageRectangle.setOutline(false);
 			this.setFill(false);
 			this.setOutline(false);
 
 			
-			//this.getParent().getChildren();
 			this.add(figure);
 		}
 
@@ -497,7 +474,30 @@ public class TreeNodeEditPart extends ShapeNodeEditPart {
 				super.setContents(contents);
 			}
 		}
+		
+		public void renameElement(String newName) {
+			ImageDescriptor mainImgDesc = AbstractUIPlugin.imageDescriptorFromPlugin(
+					ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM, PARENT_ICON);
 
+			final ImageFigure mainImg = new ImageFigure(mainImgDesc.createImage());
+			mainImg.setSize(new Dimension(10, 8));
+			
+			Label nodeLabel = new Label();
+			nodeLabel.setIcon(mainImg.getImage());
+			Display display = Display.getCurrent();
+			Color black = display.getSystemColor(SWT.COLOR_BLACK);
+			nodeLabel.setForegroundColor(black);
+			nodeLabel.setText(newName);
+			nodeLabel.setSize(new Dimension(100,5));
+			RectangleFigure rectFigure = (RectangleFigure) this.getChildren().get(0);
+			List<Figure> childrenList = rectFigure.getChildren();
+			rectFigure.remove(childrenList.get(1));
+			rectFigure.add(nodeLabel);
+		}
+	}
+	
+	public void renameElementItem(String newName) { 
+		getPrimaryShape().renameElement(newName);
 	}
 
 }

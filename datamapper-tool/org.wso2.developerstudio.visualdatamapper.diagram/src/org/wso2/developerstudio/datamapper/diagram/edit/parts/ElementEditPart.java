@@ -1,5 +1,7 @@
 package org.wso2.developerstudio.datamapper.diagram.edit.parts;
 
+import java.util.List;
+
 import org.eclipse.draw2d.BorderLayout;
 import org.eclipse.draw2d.ColorConstants;
 import org.eclipse.draw2d.Figure;
@@ -449,38 +451,7 @@ public class ElementEditPart extends AbstractBorderedShapeEditPart {
 			this.setFill(false);
 			this.setBorder(null);
 
-			/*this.addMouseMotionListener(new MouseMotionListener() {
-
-				@Override
-				public void mouseDragged(MouseEvent me) {
-				}
-
-				@Override
-				public void mouseEntered(MouseEvent me) {
-					getEditDomain().getPaletteViewer().setActiveTool(
-							(ToolEntry) (((PaletteContainer) getEditDomain().getPaletteViewer()
-									.getPaletteRoot().getChildren().get(1)).getChildren().get(1)));
-					setOutline(true);
-				}
-
-				@Override
-				public void mouseExited(MouseEvent me) {
-					getEditDomain().getPaletteViewer().setActiveTool(null);
-					setOutline(false);
-				}
-
-				@Override
-				public void mouseHover(MouseEvent me) {
-				}
-
-				@Override
-				public void mouseMoved(MouseEvent me) {
-				}
-
-			});*/
-
 			createContents();
-
 		}
 
 		/**
@@ -535,13 +506,31 @@ public class ElementEditPart extends AbstractBorderedShapeEditPart {
 			return fFigureElementNameFigure;
 		}
 		
-		
-	
+		public void renameElement(String newName) {
+			ImageDescriptor mainImgDesc = AbstractUIPlugin.imageDescriptorFromPlugin(
+					ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM,
+					ICONS_ELEMENT);
+
+			ImageFigure mainImg = new ImageFigure(mainImgDesc.createImage()); //elemet symbole figure 
+			mainImg.setSize(new Dimension(20, 8));
+			
+			Label elemLabel = new Label();
+			elemLabel.setIcon(mainImg.getImage());
+			Display display = Display.getCurrent();
+			Color black = display.getSystemColor(SWT.COLOR_BLACK);
+			elemLabel.setForegroundColor(black);
+			elemLabel.setText(newName);
+			elemLabel.setSize(new Dimension(100,3));
+			List<Figure> childrenList = this.getChildren();
+			this.remove(childrenList.get(1));
+			
+			this.add(elemLabel);
+		}
 
 	}
 	
-	
-	
-	
+	public void renameElementItem(String newName) { 
+		getPrimaryShape().renameElement(newName);
+	}
 
 }

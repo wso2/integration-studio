@@ -355,7 +355,7 @@ public class DataMapperDiagramEditor extends DiagramDocumentEditor implements IG
 
     @Override
     public void doSave(IProgressMonitor monitor) {
-        updateAvroSchema();
+        //updateAvroSchema();
         updateAssociatedConfigFile(monitor);
         super.doSave(monitor);
     }

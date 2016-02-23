@@ -452,8 +452,6 @@ public class DataMapperDiagramModel {
                     }
                     parentVariableStack.push(treeNode);
                 }
-            } else {
-                System.out.println("Unknown element node type found : " + objectElement);
             }
         }
     }

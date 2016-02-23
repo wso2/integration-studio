@@ -12,6 +12,7 @@
     <name>WSO2 Developer Studio ESB Plugins</name>
 
     <modules>
+	<module>org.wso2.developerstudio.eclipse.esb.libraries</module>
 	<module>org.wso2.developerstudio.eclipse.esb.core</module>
         <module>org.wso2.developerstudio.eclipse.gmf.esb</module>
         <module>org.wso2.developerstudio.eclipse.gmf.esb.edit</module>

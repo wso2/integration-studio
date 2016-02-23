@@ -39,7 +39,7 @@ public enum DataMapperMediatorDataTypes implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	XML(0, "XML", "application/xml"),
+	XML(0, "XML", "XML"),
 
 	/**
 	 * The '<em><b>CSV</b></em>' literal object.
@@ -49,7 +49,7 @@ public enum DataMapperMediatorDataTypes implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	CSV(1, "CSV", "text/csv"),
+	CSV(1, "CSV", "CSV"),
 
 	/**
 	 * The '<em><b>JSON</b></em>' literal object.
@@ -59,7 +59,7 @@ public enum DataMapperMediatorDataTypes implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	JSON(2, "JSON", "application/json");
+	JSON(2, "JSON", "JSON");
 
 	/**
 	 * The '<em><b>XML</b></em>' literal value.
@@ -70,7 +70,7 @@ public enum DataMapperMediatorDataTypes implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #XML
-	 * @model literal="application/xml"
+	 * @model
 	 * @generated
 	 * @ordered
 	 */
@@ -85,7 +85,7 @@ public enum DataMapperMediatorDataTypes implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #CSV
-	 * @model literal="text/csv"
+	 * @model
 	 * @generated
 	 * @ordered
 	 */
@@ -100,7 +100,7 @@ public enum DataMapperMediatorDataTypes implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #JSON
-	 * @model literal="application/json"
+	 * @model
 	 * @generated
 	 * @ordered
 	 */

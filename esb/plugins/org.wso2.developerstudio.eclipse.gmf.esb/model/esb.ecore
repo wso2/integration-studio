@@ -2780,9 +2780,9 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="outputType" eType="#//DataMapperMediatorDataTypes"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="DataMapperMediatorDataTypes">
-    <eLiterals name="XML" literal="application/xml"/>
-    <eLiterals name="CSV" value="1" literal="text/csv"/>
-    <eLiterals name="JSON" value="2" literal="application/json"/>
+    <eLiterals name="XML" literal="XML"/>
+    <eLiterals name="CSV" value="1" literal="CSV"/>
+    <eLiterals name="JSON" value="2" literal="JSON"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DataMapperMediatorInputConnector" eSuperTypes="#//InputConnector"/>
   <eClassifiers xsi:type="ecore:EClass" name="DataMapperMediatorOutputConnector" eSuperTypes="#//OutputConnector"/>

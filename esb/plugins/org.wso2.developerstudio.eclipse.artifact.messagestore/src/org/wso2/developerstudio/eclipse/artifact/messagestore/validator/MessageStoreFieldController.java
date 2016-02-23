@@ -90,7 +90,8 @@ public class MessageStoreFieldController  extends AbstractFieldController  {
 			}
 		} else if (key.equals(FIELD_JDBC_URL)) {
 			if (jdbc && !isCarbonDataSource) {
-				CommonFieldValidator.isValidUrl(value.toString(), "JDBC URL cannot be empty");
+				CommonFieldValidator.validateRequiredField(value, "JDBC URL cannot be empty");
+				CommonFieldValidator.isValidUrl(value.toString(), "JDBC");
 			}
 		} else if (key.equals(FIELD_JDBC_USER)) {
 			if (jdbc && !isCarbonDataSource) {

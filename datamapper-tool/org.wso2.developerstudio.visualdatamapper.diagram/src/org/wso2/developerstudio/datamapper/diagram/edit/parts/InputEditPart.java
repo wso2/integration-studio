@@ -64,7 +64,8 @@ public class InputEditPart extends ShapeNodeEditPart {
 
 	private static final int Y = 200;
 	TreeNode inputRootTreeNode;
-	int LEAF_HEIGHT = 20;
+	private static final int LEAF_HEIGHT = 20;
+	private static final int INPUT_BOX_WIDTH = 250;
 
 	/**
 	 * @generated
@@ -124,7 +125,7 @@ public class InputEditPart extends ShapeNodeEditPart {
 		if (addTreeNodeCmd2.canExecute()) {
 			getEditingDomain().getCommandStack().execute(addTreeNodeCmd2);
 		}
-		getPrimaryShape().setPreferredSize(250, 15);
+		getPrimaryShape().setPreferredSize(INPUT_BOX_WIDTH, 15);
 		reposition();
 	}
 
@@ -151,7 +152,7 @@ public class InputEditPart extends ShapeNodeEditPart {
 		if (addTreeNodeCmd2.canExecute()) {
 			getEditingDomain().getCommandStack().execute(addTreeNodeCmd2);
 		}
-		getPrimaryShape().setPreferredSize(250, 15);
+		getPrimaryShape().setPreferredSize(INPUT_BOX_WIDTH, 15);
 		reposition();
 	}
 
@@ -452,7 +453,7 @@ public class InputEditPart extends ShapeNodeEditPart {
 			if (notification.getNotifier() instanceof BoundsImpl) {
 				reposition(((BoundsImpl) notification.getNotifier()).getX(),
 						((BoundsImpl) notification.getNotifier()).getY(),
-						((BoundsImpl) notification.getNotifier()).getWidth(),
+						INPUT_BOX_WIDTH,
 						TreeNodeUtils.getTreeHeight(inputRootTreeNode, LEAF_HEIGHT));
 				FigureCanvas canvas = (FigureCanvas) getViewer().getControl();
 				canvas.getViewport().repaint();
@@ -486,7 +487,7 @@ public class InputEditPart extends ShapeNodeEditPart {
 
 	private void reposition() {
 		reposition(getFigure().getBounds().x, getFigure().getBounds().y,
-				getFigure().getBounds().width, TreeNodeUtils.getTreeHeight(inputRootTreeNode, LEAF_HEIGHT));
+				INPUT_BOX_WIDTH, TreeNodeUtils.getTreeHeight(inputRootTreeNode, LEAF_HEIGHT));
 	}
 
 	/**
@@ -509,6 +510,7 @@ public class InputEditPart extends ShapeNodeEditPart {
 	 */
 	public class InputFigure extends RectangleFigure {
 
+		
 		/**
 		 * @generated NOT
 		 */
@@ -526,7 +528,7 @@ public class InputEditPart extends ShapeNodeEditPart {
 			layoutThis.setSpacing(10);
 			layoutThis.setVertical(true);
 			this.setLayoutManager(layoutThis);
-			this.setPreferredSize(new Dimension(getMapMode().DPtoLP(250), getMapMode().DPtoLP(400)));
+			this.setPreferredSize(new Dimension(getMapMode().DPtoLP(INPUT_BOX_WIDTH), getMapMode().DPtoLP(400)));
 			this.setOutline(true);
 
 			TitleBarBorder titleBarBorder = new TitleBarBorder("Input");

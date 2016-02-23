@@ -101,8 +101,17 @@ public class ElementEditPart extends AbstractBorderedShapeEditPart {
 
 		/* remove balloon */
 		installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE, new CustomNonResizableEditPolicyEx());
+		removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.POPUPBAR_ROLE);
 	}
-
+	
+	/**
+	 * @generated NOT
+	 */
+	@Override
+	public boolean canAttachNote() {
+		return false;
+	}
+	
 	/**
 	 * @generated NOT
 	 */

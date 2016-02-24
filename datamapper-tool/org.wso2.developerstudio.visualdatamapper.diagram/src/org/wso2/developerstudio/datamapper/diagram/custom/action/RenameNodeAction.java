@@ -24,6 +24,8 @@ import org.wso2.developerstudio.datamapper.diagram.edit.parts.DataMapperRootEdit
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.ElementEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.InputEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.OutputEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.TreeNode2EditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.TreeNode3EditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.TreeNodeEditPart;
 import org.wso2.developerstudio.datamapper.impl.TreeNodeImpl;
 
@@ -60,7 +62,14 @@ public class RenameNodeAction extends AbstractActionHandler{
 				SetCommand renameComd = new SetCommand(((GraphicalEditPart) selectedEP).getEditingDomain(), selectedNode, DataMapperPackage.Literals.TREE_NODE__NAME, newName);
 				if (renameComd.canExecute()) {
 					((GraphicalEditPart) selectedEP).getEditingDomain().getCommandStack().execute(renameComd);
-					((TreeNodeEditPart) getSelectedEditPart()).renameElementItem(newName);
+					if(getSelectedEditPart() instanceof TreeNodeEditPart){
+						((TreeNodeEditPart) getSelectedEditPart()).renameElementItem(newName);
+					}else if(getSelectedEditPart() instanceof TreeNode2EditPart){
+						((TreeNode2EditPart) getSelectedEditPart()).renameElementItem(newName);
+					}else if(getSelectedEditPart() instanceof TreeNode3EditPart){
+						((TreeNode3EditPart) getSelectedEditPart()).renameElementItem(newName);
+					}
+					
 				}
 			}
 		}

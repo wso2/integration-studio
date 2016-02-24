@@ -52,6 +52,9 @@ import org.wso2.developerstudio.datamapper.diagram.part.DataMapperVisualIDRegist
  * @generated
  */
 public class TreeNode2EditPart extends ShapeNodeEditPart {
+	
+	private static final String PARENT_ICON = "icons/gmf/parent.gif";
+	private static final String ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM = "org.wso2.developerstudio.visualdatamapper.diagram";
 	/**
 	 * @generated NOT
 	 */
@@ -501,6 +504,32 @@ public class TreeNode2EditPart extends ShapeNodeEditPart {
 				super.setContents(contents);
 			}
 		}
+
+		public void renameElement(String newName) {
+			ImageDescriptor mainImgDesc = AbstractUIPlugin.imageDescriptorFromPlugin(
+					ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM, PARENT_ICON);
+
+			final ImageFigure mainImg = new ImageFigure(mainImgDesc.createImage());
+			mainImg.setSize(new Dimension(10, 8));
+			
+			Label nodeLabel = new Label();
+			nodeLabel.setIcon(mainImg.getImage());
+			Display display = Display.getCurrent();
+			Color black = display.getSystemColor(SWT.COLOR_BLACK);
+			nodeLabel.setForegroundColor(black);
+			nodeLabel.setText(newName);
+			nodeLabel.setSize(new Dimension(100,5));
+			RectangleFigure rectFigure = (RectangleFigure) this.getChildren().get(0);
+			List<Figure> childrenList = rectFigure.getChildren();
+			rectFigure.remove(childrenList.get(1));
+			rectFigure.add(nodeLabel);
+			
+		}
+		
+	}
+	
+	public void renameElementItem(String newName) { 
+		getPrimaryShape().renameElement(newName);
 	}
 
 }

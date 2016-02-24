@@ -37,6 +37,7 @@ import org.wso2.developerstudio.datamapper.OutNode;
 import org.wso2.developerstudio.datamapper.diagram.part.DataMapperDiagramEditorPlugin;
 import org.wso2.developerstudio.datamapper.diagram.part.DataMapperVisualIDRegistry;
 import org.wso2.developerstudio.datamapper.diagram.providers.DataMapperElementTypes;
+import org.wso2.developerstudio.datamapper.impl.InNodeImpl;
 
 /**
  * @generated
@@ -318,10 +319,16 @@ public class DataMapperBaseItemSemanticEditPolicy extends SemanticEditPolicy {
 		}
 
 		/**
-		 * @generated
+		 * @generated NOT
 		 */
 		public boolean canExistDataMapperLink_4001(OutNode container, DataMapperLink linkInstance,
 				OutNode source, InNode target) {
+			if (target instanceof InNodeImpl) {
+				int existingLinks = ((InNodeImpl)target).getIncomingLink().size();
+				if (existingLinks > 0 ) {
+					return false;
+				}
+			}
 			return true;
 		}
 	}

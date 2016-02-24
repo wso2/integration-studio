@@ -444,7 +444,7 @@ public class OutputEditPart extends ShapeNodeEditPart {
 	 		OutputEditPart oep = (OutputEditPart)childEditPart.getParent();
 			DataMapperRootEditPart rep = (DataMapperRootEditPart) oep.getParent();
 			DataMapperRoot rootDiagram = (DataMapperRoot)((DiagramImpl)rep.getModel()).getElement();
-			outputRootTreeNode = rootDiagram.getInput().getTreeNode().get(0);
+			outputRootTreeNode = rootDiagram.getOutput().getTreeNode().get(0);
 			reposition();
 		}
 	}

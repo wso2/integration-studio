@@ -25,7 +25,7 @@ public class TreeNodeUtils {
  		if (h < 4) {
  			return 100;
  		}
- 		else return h * leafHeight;
+ 		else return (h+1) * leafHeight;
  	}
  	
 	private static int getTreeHeight(TreeNode tree) {

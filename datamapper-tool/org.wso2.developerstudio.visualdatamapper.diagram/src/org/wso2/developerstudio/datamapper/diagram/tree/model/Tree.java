@@ -1,7 +1,9 @@
 package org.wso2.developerstudio.datamapper.diagram.tree.model;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.apache.avro.Schema.Type;
 import org.apache.commons.lang.StringUtils;
@@ -17,7 +19,7 @@ public class Tree {
 	private Type schemaType;
 	private String namespace;
 	private String doc;
-	//private String aliases;
+	private Set<String> aliases;
 
 	public Tree() {
 		this.count = 1;
@@ -61,6 +63,13 @@ public class Tree {
 		}
 		return this.trees;
 	}
+	
+	public Set<String> getAliases() {
+		if (aliases == null) {
+			aliases = new HashSet<String>();
+		}
+		return this.aliases;
+	}
 
 	public String getName() {
 		if (name == null) {
@@ -82,13 +91,6 @@ public class Tree {
 		}
 		return this.doc;
 	}
-	
-	/*public String getAliases() {
-		if (aliases == null) {
-			aliases = "";
-		}
-		return this.aliases;
-	}*/
 
 	public void setAttributes(List<Attribute> attributes) {
 		this.attributes = attributes;
@@ -114,9 +116,9 @@ public class Tree {
 		this.doc = doc;
 	}
 	
-	/*public void setAliases(String aliases){
+	public void setAliases(Set<String> aliases) {
 		this.aliases = aliases;
-	}*/
+	}
 
 	/**
 	 * @return the schemaType

@@ -179,6 +179,28 @@ public class TreeNodeItemProvider
 	}
 
 				/**
+	 * This adds a property descriptor for the Aliases feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addAliasesPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_TreeNode_aliases_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_TreeNode_aliases_feature", "_UI_TreeNode_type"),
+				 DataMapperPackage.Literals.TREE_NODE__ALIASES,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+				/**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -252,6 +274,7 @@ public class TreeNodeItemProvider
 			case DataMapperPackage.TREE_NODE__LEVEL:
 			case DataMapperPackage.TREE_NODE__NAMESPACE:
 			case DataMapperPackage.TREE_NODE__DOC:
+			case DataMapperPackage.TREE_NODE__ALIASES:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case DataMapperPackage.TREE_NODE__NODE:

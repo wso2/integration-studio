@@ -166,6 +166,7 @@ public class InputEditPart extends ShapeNodeEditPart {
 		treeNode.setLevel(tree.getCount());
 		treeNode.setNamespace(tree.getNamespace());
 		treeNode.setDoc(tree.getDoc());
+		treeNode.getAliases().addAll(tree.getAliases());
 		if (tree.getSchemaType() != null) {
 			switch (tree.getSchemaType()) {
 			case ARRAY:
@@ -328,6 +329,7 @@ public class InputEditPart extends ShapeNodeEditPart {
 		treeNodeNew.setLevel(treeN.getCount());
 		treeNodeNew.setNamespace(treeN.getNamespace());
 		treeNodeNew.setDoc(treeN.getDoc());
+		treeNodeNew.getAliases().addAll(treeN.getAliases());
 		if (treeN.getSchemaType() != null) {
 			switch (treeN.getSchemaType()) {
 			case ARRAY:

@@ -66,6 +66,7 @@ public class TreeFromAVSC {
 			root.setSchemaType(schm.getType());
 			root.setNamespace(schm.getNamespace());
 			root.setDoc(schm.getDoc());
+			root.setAliases(schm.getAliases());
 			
 			List<Field> fieldsList = schm.getFields();
 
@@ -92,6 +93,7 @@ public class TreeFromAVSC {
 		root.setSchemaType(schema.getType());
 		root.setNamespace(schema.getNamespace());
 		root.setDoc(schema.getDoc());
+		root.setAliases(schema.getAliases());
 		
 		List<Field> fieldsList = schema.getFields();
 
@@ -110,6 +112,7 @@ public class TreeFromAVSC {
 			child.setSchemaType(fieldType);
 			child.setNamespace(field.schema().getNamespace());
 			child.setDoc(field.schema().getDoc());
+			child.setAliases(field.aliases());
 
 			List<Field> list = field.schema().getFields();
 
@@ -130,6 +133,7 @@ public class TreeFromAVSC {
 				childParent.setSchemaType(fieldType);
 				childParent.setNamespace(field.schema().getNamespace());
 				childParent.setDoc(field.schema().getDoc());
+				childParent.setAliases(field.aliases());
 				parent.getTrees().add(childParent);
 			} else {
 
@@ -138,6 +142,7 @@ public class TreeFromAVSC {
 				childParent.setSchemaType(fieldType);
 				childParent.setNamespace(arraySchema.getNamespace());
 				childParent.setDoc(arraySchema.getDoc());
+				childParent.setAliases(arraySchema.getAliases());
 				multipleChunk.add(arraySchema.getName());
 
 				for (Field fieldOfField : fieldList)
@@ -191,6 +196,7 @@ public class TreeFromAVSC {
 				childParent.setSchemaType(fieldType);
 				childParent.setNamespace(field.schema().getNamespace());
 				childParent.setDoc(field.schema().getDoc());
+				childParent.setAliases(field.aliases());
 				parent.getTrees().add(childParent);
 			} else {
 
@@ -199,6 +205,7 @@ public class TreeFromAVSC {
 				childParent.setSchemaType(fieldType);
 				childParent.setNamespace(arraySchema.getNamespace());
 				childParent.setDoc(arraySchema.getDoc());
+				childParent.setAliases(arraySchema.getAliases());
 				multipleChunk.add(arraySchema.getName());
 
 				for (Field fieldOfField : fieldList)
@@ -236,6 +243,7 @@ public class TreeFromAVSC {
 			root.setName(schm.getName());
 			root.setNamespace(schm.getNamespace());
 			root.setDoc(schm.getDoc());
+			root.setAliases(schm.getAliases());
 
 			List<Field> fieldList = schm.getFields();
 			//

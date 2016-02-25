@@ -25,6 +25,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.wso2.developerstudio.datamapper.TreeNode#getLevel <em>Level</em>}</li>
  *   <li>{@link org.wso2.developerstudio.datamapper.TreeNode#getNamespace <em>Namespace</em>}</li>
  *   <li>{@link org.wso2.developerstudio.datamapper.TreeNode#getDoc <em>Doc</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.datamapper.TreeNode#getAliases <em>Aliases</em>}</li>
  * </ul>
  * </p>
  *
@@ -303,5 +304,21 @@ public interface TreeNode extends EObject {
 	 * @generated
 	 */
 	void setDoc(String value);
+
+				/**
+	 * Returns the value of the '<em><b>Aliases</b></em>' attribute list.
+	 * The list contents are of type {@link java.lang.String}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Aliases</em>' attribute list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Aliases</em>' attribute list.
+	 * @see org.wso2.developerstudio.datamapper.DataMapperPackage#getTreeNode_Aliases()
+	 * @model
+	 * @generated
+	 */
+	EList<String> getAliases();
 
 } // TreeNode

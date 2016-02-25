@@ -657,13 +657,22 @@ public interface DataMapperPackage extends EPackage {
 	int TREE_NODE__DOC = 10;
 
 				/**
+	 * The feature id for the '<em><b>Aliases</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TREE_NODE__ALIASES = 11;
+
+				/**
 	 * The number of structural features of the '<em>Tree Node</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TREE_NODE_FEATURE_COUNT = 11;
+	int TREE_NODE_FEATURE_COUNT = 12;
 
 
 	/**
@@ -1671,6 +1680,17 @@ public interface DataMapperPackage extends EPackage {
 	EAttribute getTreeNode_Doc();
 
 				/**
+	 * Returns the meta object for the attribute list '{@link org.wso2.developerstudio.datamapper.TreeNode#getAliases <em>Aliases</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute list '<em>Aliases</em>'.
+	 * @see org.wso2.developerstudio.datamapper.TreeNode#getAliases()
+	 * @see #getTreeNode()
+	 * @generated
+	 */
+	EAttribute getTreeNode_Aliases();
+
+				/**
 	 * Returns the meta object for class '{@link org.wso2.developerstudio.datamapper.InNode <em>In Node</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2388,6 +2408,14 @@ public interface DataMapperPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute TREE_NODE__DOC = eINSTANCE.getTreeNode_Doc();
+
+								/**
+		 * The meta object literal for the '<em><b>Aliases</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TREE_NODE__ALIASES = eINSTANCE.getTreeNode_Aliases();
 
 								/**
 		 * The meta object literal for the '{@link org.wso2.developerstudio.datamapper.impl.InNodeImpl <em>In Node</em>}' class.

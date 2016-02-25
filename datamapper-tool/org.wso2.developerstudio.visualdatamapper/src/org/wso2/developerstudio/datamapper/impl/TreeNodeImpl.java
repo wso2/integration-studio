@@ -11,6 +11,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -40,6 +41,7 @@ import org.wso2.developerstudio.datamapper.TreeNode;
  *   <li>{@link org.wso2.developerstudio.datamapper.impl.TreeNodeImpl#getLevel <em>Level</em>}</li>
  *   <li>{@link org.wso2.developerstudio.datamapper.impl.TreeNodeImpl#getNamespace <em>Namespace</em>}</li>
  *   <li>{@link org.wso2.developerstudio.datamapper.impl.TreeNodeImpl#getDoc <em>Doc</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.datamapper.impl.TreeNodeImpl#getAliases <em>Aliases</em>}</li>
  * </ul>
  * </p>
  *
@@ -175,6 +177,16 @@ public class TreeNodeImpl extends EObjectImpl implements TreeNode {
 	 * @ordered
 	 */
 	protected String doc = DOC_EDEFAULT;
+
+				/**
+	 * The cached value of the '{@link #getAliases() <em>Aliases</em>}' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAliases()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<String> aliases;
 
 				private int index;
 
@@ -473,6 +485,18 @@ public class TreeNodeImpl extends EObjectImpl implements TreeNode {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<String> getAliases() {
+		if (aliases == null) {
+			aliases = new EDataTypeUniqueEList<String>(String.class, this, DataMapperPackage.TREE_NODE__ALIASES);
+		}
+		return aliases;
+	}
+
+				/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
@@ -571,6 +595,8 @@ public class TreeNodeImpl extends EObjectImpl implements TreeNode {
 				return getNamespace();
 			case DataMapperPackage.TREE_NODE__DOC:
 				return getDoc();
+			case DataMapperPackage.TREE_NODE__ALIASES:
+				return getAliases();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -620,6 +646,10 @@ public class TreeNodeImpl extends EObjectImpl implements TreeNode {
 			case DataMapperPackage.TREE_NODE__DOC:
 				setDoc((String)newValue);
 				return;
+			case DataMapperPackage.TREE_NODE__ALIASES:
+				getAliases().clear();
+				getAliases().addAll((Collection<? extends String>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -665,6 +695,9 @@ public class TreeNodeImpl extends EObjectImpl implements TreeNode {
 			case DataMapperPackage.TREE_NODE__DOC:
 				setDoc(DOC_EDEFAULT);
 				return;
+			case DataMapperPackage.TREE_NODE__ALIASES:
+				getAliases().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -699,6 +732,8 @@ public class TreeNodeImpl extends EObjectImpl implements TreeNode {
 				return NAMESPACE_EDEFAULT == null ? namespace != null : !NAMESPACE_EDEFAULT.equals(namespace);
 			case DataMapperPackage.TREE_NODE__DOC:
 				return DOC_EDEFAULT == null ? doc != null : !DOC_EDEFAULT.equals(doc);
+			case DataMapperPackage.TREE_NODE__ALIASES:
+				return aliases != null && !aliases.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -723,6 +758,8 @@ public class TreeNodeImpl extends EObjectImpl implements TreeNode {
 		result.append(namespace);
 		result.append(", doc: ");
 		result.append(doc);
+		result.append(", aliases: ");
+		result.append(aliases);
 		result.append(')');
 		return result.toString();
 	}

@@ -45,7 +45,6 @@ public class AvroSchemaTransformer {
 		for(String aliase : treeNodeModel.getAliases()){
 			schema.addAlias(aliase);
 		}
-		//schema.getAliases().addAll(treeNodeModel.getAliases());
 		List<Field> fields = new ArrayList<Field>();
 
 		if (!treeNodeModel.getNode().isEmpty()) {

@@ -61,6 +61,8 @@ public class TreeNodeItemProvider
 
 			addNamePropertyDescriptor(object);
 			addSchemaDataTypePropertyDescriptor(object);
+			addNamespacePropertyDescriptor(object);
+			addDocPropertyDescriptor(object);
 			//addLevelPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;

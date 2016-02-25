@@ -62,6 +62,7 @@ public class ElementItemProvider
 			addNamePropertyDescriptor(object);
 			//addValuePropertyDescriptor(object);
 			addSchemaDataTypePropertyDescriptor(object);
+			addDocPropertyDescriptor(object);
 			//addLevelPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;

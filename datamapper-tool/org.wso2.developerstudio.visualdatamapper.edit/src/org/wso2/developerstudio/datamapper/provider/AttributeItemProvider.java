@@ -61,6 +61,7 @@ public class AttributeItemProvider
 
 			addNamePropertyDescriptor(object);
 			addValuePropertyDescriptor(object);
+			addDocPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}

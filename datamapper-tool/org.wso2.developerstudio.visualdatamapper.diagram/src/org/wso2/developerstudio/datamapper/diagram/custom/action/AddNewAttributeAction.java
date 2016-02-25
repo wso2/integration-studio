@@ -16,7 +16,6 @@
 
 package org.wso2.developerstudio.datamapper.diagram.custom.action;
 
-import org.apache.commons.lang.StringUtils;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
@@ -35,29 +34,30 @@ import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.datamapper.DataMapperFactory;
 import org.wso2.developerstudio.datamapper.DataMapperPackage;
 import org.wso2.developerstudio.datamapper.DataMapperRoot;
+import org.wso2.developerstudio.datamapper.Element;
 import org.wso2.developerstudio.datamapper.SchemaDataType;
 import org.wso2.developerstudio.datamapper.TreeNode;
-import org.wso2.developerstudio.datamapper.diagram.custom.util.AddNewRecordListDialog;
+import org.wso2.developerstudio.datamapper.diagram.custom.util.AddNewAttributeDialog;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.DataMapperRootEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.InputEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.OutputEditPart;
 import org.wso2.developerstudio.datamapper.impl.TreeNodeImpl;
 import org.wso2.developerstudio.eclipse.registry.core.interfaces.IRegistryFile;
 
-public class AddNewRecordsListAction extends AbstractActionHandler {
+public class AddNewAttributeAction extends AbstractActionHandler {
 
 	private EditPart selectedEP;
 	private static final String OUTPUT_EDITPART = "Output"; //$NON-NLS-1$
 	private static final String INPUT_EDITPART = "Input"; //$NON-NLS-1$
-	private static final String ADD_NEW_RECORDS_LIST_ACTION_ID = "add-new-records-list-action-id"; //$NON-NLS-1$
-	private static final String ADD_NEW_RECORDS_LIST = Messages.AddNewRecordsListAction_addNewRecordsList;
+	private static final String ADD_NEW_FIELD_ACTION_ID = "add-new-field-action-id"; //$NON-NLS-1$
+	private static final String ADD_NEW_FIELD = Messages.AddNewFieldAction_addNewField;
 
-	public AddNewRecordsListAction(IWorkbenchPart workbenchPart) {
+	public AddNewAttributeAction(IWorkbenchPart workbenchPart) {
 		super(workbenchPart);
 
-		setId(ADD_NEW_RECORDS_LIST_ACTION_ID);
-		setText(ADD_NEW_RECORDS_LIST);
-		setToolTipText(ADD_NEW_RECORDS_LIST);
+		setId(ADD_NEW_FIELD_ACTION_ID);
+		setText(ADD_NEW_FIELD);
+		setToolTipText(ADD_NEW_FIELD);
 		ISharedImages workbenchImages = PlatformUI.getWorkbench().getSharedImages();
 		setImageDescriptor(workbenchImages.getImageDescriptor(ISharedImages.IMG_TOOL_NEW_WIZARD));
 	}
@@ -66,78 +66,77 @@ public class AddNewRecordsListAction extends AbstractActionHandler {
 	protected void doRun(IProgressMonitor progressMonitor) {
 		selectedEP = getSelectedEditPart();
 
-		AddNewRecordListDialog recordListDialog = new AddNewRecordListDialog(Display.getCurrent().getActiveShell(),
+		AddNewAttributeDialog attributeDialog = new AddNewAttributeDialog(Display.getCurrent().getActiveShell(),
 				new Class[] { IRegistryFile.class });
-		recordListDialog.create();
-		recordListDialog.open();
+		attributeDialog.create();
+		attributeDialog.open();
 
-		if (recordListDialog.getName() != null && recordListDialog.getSchemaType() != null) {
+		if (attributeDialog.getName() != null && attributeDialog.getSchemaType() != null) {
+
 			if (null != selectedEP) {
 				// Returns the TreeNodeImpl object respective to selectedEP
 				EObject object = ((Node) selectedEP.getModel()).getElement();
 				// Used to identify the selected resource of the model
 				TreeNode selectedNode = (TreeNode) object;
 
-				// Configure the new tree node by setting default values
-				TreeNode treeNodeNew = DataMapperFactory.eINSTANCE.createTreeNode();
-				treeNodeNew.setName(recordListDialog.getName());
-				treeNodeNew.setLevel(selectedNode.getLevel() + 1);
-				switch (recordListDialog.getSchemaType()) {
+				// Configure the new element by setting default values
+				Element elementNew = DataMapperFactory.eINSTANCE.createElement();
+				elementNew.setName(attributeDialog.getName());
+				elementNew.setLevel(selectedNode.getLevel() + 1);
+				
+				switch (attributeDialog.getSchemaType()) {
 				case "ARRAY":
-					treeNodeNew.setSchemaDataType(SchemaDataType.ARRAY);
+					elementNew.setSchemaDataType(SchemaDataType.ARRAY);
 					break;
 				case "BOOLEAN":
-					treeNodeNew.setSchemaDataType(SchemaDataType.BOOLEAN);
+					elementNew.setSchemaDataType(SchemaDataType.BOOLEAN);
 					break;
 				case "BYTES":
-					treeNodeNew.setSchemaDataType(SchemaDataType.BYTES);
+					elementNew.setSchemaDataType(SchemaDataType.BYTES);
 					break;
 				case "DOUBLE":
-					treeNodeNew.setSchemaDataType(SchemaDataType.DOUBLE);
+					elementNew.setSchemaDataType(SchemaDataType.DOUBLE);
 					break;
 				case "ENUM":
-					treeNodeNew.setSchemaDataType(SchemaDataType.ENUM);
+					elementNew.setSchemaDataType(SchemaDataType.ENUM);
 					break;
 				case "FIXED":
-					treeNodeNew.setSchemaDataType(SchemaDataType.FIXED);
+					elementNew.setSchemaDataType(SchemaDataType.FIXED);
 					break;
 				case "FLOAT":
-					treeNodeNew.setSchemaDataType(SchemaDataType.FLOAT);
+					elementNew.setSchemaDataType(SchemaDataType.FLOAT);
 					break;
 				case "INT":
-					treeNodeNew.setSchemaDataType(SchemaDataType.INT);
+					elementNew.setSchemaDataType(SchemaDataType.INT);
 					break;
 				case "LONG":
-					treeNodeNew.setSchemaDataType(SchemaDataType.LONG);
+					elementNew.setSchemaDataType(SchemaDataType.LONG);
 					break;
 				case "MAP":
-					treeNodeNew.setSchemaDataType(SchemaDataType.MAP);
+					elementNew.setSchemaDataType(SchemaDataType.MAP);
 					break;
 				case "NULL":
-					treeNodeNew.setSchemaDataType(SchemaDataType.NULL);
+					elementNew.setSchemaDataType(SchemaDataType.NULL);
 					break;
 				case "RECORD":
-					treeNodeNew.setSchemaDataType(SchemaDataType.RECORD);
+					elementNew.setSchemaDataType(SchemaDataType.RECORD);
 					break;
 				case "STRING":
-					treeNodeNew.setSchemaDataType(SchemaDataType.STRING);
+					elementNew.setSchemaDataType(SchemaDataType.STRING);
 					break;
 				case "UNION":
-					treeNodeNew.setSchemaDataType(SchemaDataType.UNION);
+					elementNew.setSchemaDataType(SchemaDataType.UNION);
 					break;
 				default:
 					break;
 				}
-				if (StringUtils.isNotEmpty(recordListDialog.getDoc())) {
-					treeNodeNew.setDoc(recordListDialog.getDoc());
-				}
-
+				
 				/*
 				 * AddCommand is used to avoid concurrent updating. index 0 to
 				 * add as the first child
 				 */
 				AddCommand addCmd = new AddCommand(((GraphicalEditPart) selectedEP).getEditingDomain(), selectedNode,
-						DataMapperPackage.Literals.TREE_NODE__NODE, treeNodeNew, 0);
+						DataMapperPackage.Literals.TREE_NODE__ELEMENT, elementNew, 0);
 				if (addCmd.canExecute()) {
 					((GraphicalEditPart) selectedEP).getEditingDomain().getCommandStack().execute(addCmd);
 				}
@@ -145,8 +144,8 @@ public class AddNewRecordsListAction extends AbstractActionHandler {
 				// FIXME force refresh root
 				String selectedInputOutputEditPart = getSelectedInputOutputEditPart();
 				if (null != selectedInputOutputEditPart) {
-					if (selectedEP.getParent().getParent() instanceof InputEditPart) {
-						InputEditPart iep = (InputEditPart) selectedEP.getParent().getParent();
+					if (selectedEP.getParent().getParent().getParent() instanceof InputEditPart) {
+						InputEditPart iep = (InputEditPart) selectedEP.getParent().getParent().getParent();
 						DataMapperRootEditPart rep = (DataMapperRootEditPart) iep.getParent();
 						DataMapperRoot rootDiagram = (DataMapperRoot) ((DiagramImpl) rep.getModel()).getElement();
 						if (INPUT_EDITPART.equals(selectedInputOutputEditPart)) {
@@ -201,7 +200,6 @@ public class AddNewRecordsListAction extends AbstractActionHandler {
 				}
 			}
 		}
-
 	}
 
 	private String getSelectedInputOutputEditPart() {

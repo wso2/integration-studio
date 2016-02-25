@@ -21,9 +21,10 @@ import java.util.Stack;
 
 import org.wso2.developerstudio.datamapper.SchemaDataType;
 import org.wso2.developerstudio.datamapper.diagram.custom.generator.ForLoopBean;
-import org.wso2.developerstudio.datamapper.diagram.custom.generator.SameLevelArrayMappingConfigGenerator;
+import org.wso2.developerstudio.datamapper.diagram.custom.generator.DifferentLevelArrayMappingConfigGenerator;
 import org.wso2.developerstudio.datamapper.diagram.custom.generator.SameLevelRecordMappingConfigGenerator;
 import org.wso2.developerstudio.datamapper.diagram.custom.model.DMVariable;
+import org.wso2.developerstudio.datamapper.diagram.custom.util.ScriptGenerationUtil;
 
 /**
  * This class extended from the {@link AbstractDMOperatorTransformer} abstract class and generate script for toLowerCase
@@ -41,10 +42,10 @@ public class ToLowerCaseOperatorTransformer extends AbstractDMOperatorTransforme
             } else {
                 operationBuilder.append("'';");
             }
-        } else if (SameLevelArrayMappingConfigGenerator.class.equals(generatorClass)) {
+        } else if (DifferentLevelArrayMappingConfigGenerator.class.equals(generatorClass)) {
             if (inputVariables.size() >= 1) {
-                operationBuilder.append(getPrettyVariableNameInForOperation(inputVariables.get(0), variableTypeMap,
-                        parentForLoopBeanStack) + ".toLowerCase();");
+                operationBuilder.append(ScriptGenerationUtil.getPrettyVariableNameInForOperation(inputVariables.get(0),
+                        variableTypeMap, parentForLoopBeanStack) + ".toLowerCase();");
             } else {
                 operationBuilder.append("'';");
             }

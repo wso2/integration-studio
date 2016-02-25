@@ -21,9 +21,10 @@ import java.util.Stack;
 
 import org.wso2.developerstudio.datamapper.SchemaDataType;
 import org.wso2.developerstudio.datamapper.diagram.custom.generator.ForLoopBean;
-import org.wso2.developerstudio.datamapper.diagram.custom.generator.SameLevelArrayMappingConfigGenerator;
+import org.wso2.developerstudio.datamapper.diagram.custom.generator.DifferentLevelArrayMappingConfigGenerator;
 import org.wso2.developerstudio.datamapper.diagram.custom.generator.SameLevelRecordMappingConfigGenerator;
 import org.wso2.developerstudio.datamapper.diagram.custom.model.DMVariable;
+import org.wso2.developerstudio.datamapper.diagram.custom.util.ScriptGenerationUtil;
 
 /**
  * This class extended from the {@link AbstractDMOperatorTransformer} abstract class and generate script for concat
@@ -34,23 +35,27 @@ public class ConcatOperatorTransformer extends AbstractDMOperatorTransformer {
     @Override
     public String generateScriptForOperation(Class<?> generatorClass, List<DMVariable> inputVariables,
             Map<String, SchemaDataType> variableTypeMap, Stack<ForLoopBean> parentForLoopBeanStack) {
+        String concatOperator = " ";
         StringBuilder operationBuilder = new StringBuilder();
         if (SameLevelRecordMappingConfigGenerator.class.equals(generatorClass)) {
             if (inputVariables.size() >= 2) {
-                operationBuilder.append(inputVariables.get(0).getName() + ".concat(" + inputVariables.get(1).getName()
-                        + ");");
+                operationBuilder.append(inputVariables.get(0).getName() + ".concat('" + concatOperator + "').concat("
+                        + inputVariables.get(1).getName() + ");");
             } else if (inputVariables.size() == 1) {
                 operationBuilder.append(inputVariables.get(0).getName() + ";");
             } else {
                 operationBuilder.append("'';");
             }
-        } else if (SameLevelArrayMappingConfigGenerator.class.equals(generatorClass)) {
+        } else if (DifferentLevelArrayMappingConfigGenerator.class.equals(generatorClass)) {
             if (inputVariables.size() >= 1) {
-                operationBuilder.append(getPrettyVariableNameInForOperation(inputVariables.get(0), variableTypeMap,
-                        parentForLoopBeanStack)
-                        + ".concat("
-                        + getPrettyVariableNameInForOperation(inputVariables.get(1), variableTypeMap,
-                                parentForLoopBeanStack) + ");");
+                operationBuilder.append(ScriptGenerationUtil.getPrettyVariableNameInForOperation(inputVariables.get(0),
+                        variableTypeMap, parentForLoopBeanStack)
+                        + ".concat('"
+                        + concatOperator
+                        + "').concat("
+                        + concatOperator
+                        + ScriptGenerationUtil.getPrettyVariableNameInForOperation(inputVariables.get(1),
+                                variableTypeMap, parentForLoopBeanStack) + ");");
             } else {
                 operationBuilder.append("'';");
             }

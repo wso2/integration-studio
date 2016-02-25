@@ -26,14 +26,7 @@ import org.wso2.developerstudio.datamapper.Split;
  * <!-- end-user-doc -->
  * @generated
  */
-public class SplitItemProvider
-	extends OperatorItemProvider
-	implements
-		IEditingDomainItemProvider,
-		IStructuredItemContentProvider,
-		ITreeItemContentProvider,
-		IItemLabelProvider,
-		IItemPropertySource {
+public class SplitItemProvider extends OperatorItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->

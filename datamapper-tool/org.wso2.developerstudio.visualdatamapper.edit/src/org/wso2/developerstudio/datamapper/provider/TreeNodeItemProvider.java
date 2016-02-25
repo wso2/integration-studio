@@ -133,6 +133,50 @@ public class TreeNodeItemProvider
 	}
 
     /**
+	 * This adds a property descriptor for the Namespace feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addNamespacePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_TreeNode_namespace_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_TreeNode_namespace_feature", "_UI_TreeNode_type"),
+				 DataMapperPackage.Literals.TREE_NODE__NAMESPACE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+				/**
+	 * This adds a property descriptor for the Doc feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addDocPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_TreeNode_doc_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_TreeNode_doc_feature", "_UI_TreeNode_type"),
+				 DataMapperPackage.Literals.TREE_NODE__DOC,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+				/**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -204,6 +248,8 @@ public class TreeNodeItemProvider
 			case DataMapperPackage.TREE_NODE__NAME:
 			case DataMapperPackage.TREE_NODE__SCHEMA_DATA_TYPE:
 			case DataMapperPackage.TREE_NODE__LEVEL:
+			case DataMapperPackage.TREE_NODE__NAMESPACE:
+			case DataMapperPackage.TREE_NODE__DOC:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case DataMapperPackage.TREE_NODE__NODE:

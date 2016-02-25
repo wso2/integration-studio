@@ -64,7 +64,9 @@ public class TreeFromAVSC {
 
 			root.setName(schm.getName());
 			root.setSchemaType(schm.getType());
-
+			root.setNamespace(schm.getNamespace());
+			root.setDoc(schm.getDoc());
+			
 			List<Field> fieldsList = schm.getFields();
 
 			for (Field field : fieldsList)
@@ -88,7 +90,9 @@ public class TreeFromAVSC {
 		Tree root = new Tree();
 		root.setName(schema.getName());
 		root.setSchemaType(schema.getType());
-
+		root.setNamespace(schema.getNamespace());
+		root.setDoc(schema.getDoc());
+		
 		List<Field> fieldsList = schema.getFields();
 
 		for (Field field : fieldsList)
@@ -104,6 +108,8 @@ public class TreeFromAVSC {
 			Tree child = new Tree(parent);
 			child.setName(field.name());
 			child.setSchemaType(fieldType);
+			child.setNamespace(field.schema().getNamespace());
+			child.setDoc(field.schema().getDoc());
 
 			List<Field> list = field.schema().getFields();
 
@@ -122,12 +128,16 @@ public class TreeFromAVSC {
 			if (arraySchema.getType().getName().equalsIgnoreCase("null")) {
 				childParent.setName(field.name()); // employee
 				childParent.setSchemaType(fieldType);
+				childParent.setNamespace(field.schema().getNamespace());
+				childParent.setDoc(field.schema().getDoc());
 				parent.getTrees().add(childParent);
 			} else {
 
 				List<Field> fieldList = arraySchema.getFields();
 				childParent.setName(arraySchema.getName()); // employee
 				childParent.setSchemaType(fieldType);
+				childParent.setNamespace(arraySchema.getNamespace());
+				childParent.setDoc(arraySchema.getDoc());
 				multipleChunk.add(arraySchema.getName());
 
 				for (Field fieldOfField : fieldList)
@@ -141,6 +151,7 @@ public class TreeFromAVSC {
 			Element elementNew = new Element(parent);
 			elementNew.setName(field.name());
 			elementNew.setSchemaType(fieldType);
+			elementNew.setDoc(field.doc());
 			parent.getElements().add(elementNew);
 		}
 
@@ -178,12 +189,16 @@ public class TreeFromAVSC {
 			if (arraySchema.getType().getName().equalsIgnoreCase("null")) {
 				childParent.setName(field.name()); // employee
 				childParent.setSchemaType(fieldType);
+				childParent.setNamespace(field.schema().getNamespace());
+				childParent.setDoc(field.schema().getDoc());
 				parent.getTrees().add(childParent);
 			} else {
 
 				List<Field> fieldList = arraySchema.getFields();
 				childParent.setName(arraySchema.getName()); // employee
 				childParent.setSchemaType(fieldType);
+				childParent.setNamespace(arraySchema.getNamespace());
+				childParent.setDoc(arraySchema.getDoc());
 				multipleChunk.add(arraySchema.getName());
 
 				for (Field fieldOfField : fieldList)
@@ -198,6 +213,7 @@ public class TreeFromAVSC {
 		else {
 			Element elementNew = new Element(parent);
 			elementNew.setName(field.name());
+			elementNew.setDoc(field.doc());
 			parent.getElements().add(elementNew);
 		}
 
@@ -218,6 +234,8 @@ public class TreeFromAVSC {
 
 			Schema schm = Schema.parse(entireFileText);
 			root.setName(schm.getName());
+			root.setNamespace(schm.getNamespace());
+			root.setDoc(schm.getDoc());
 
 			List<Field> fieldList = schm.getFields();
 			//

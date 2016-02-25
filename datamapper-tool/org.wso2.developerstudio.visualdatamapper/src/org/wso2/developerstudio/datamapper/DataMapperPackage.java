@@ -457,13 +457,22 @@ public interface DataMapperPackage extends EPackage {
     int ELEMENT__LEVEL = 6;
 
     /**
+	 * The feature id for the '<em><b>Doc</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ELEMENT__DOC = 7;
+
+				/**
 	 * The number of structural features of the '<em>Element</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ELEMENT_FEATURE_COUNT = 7;
+	int ELEMENT_FEATURE_COUNT = 8;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.datamapper.impl.AttributeImpl <em>Attribute</em>}' class.
@@ -521,13 +530,22 @@ public interface DataMapperPackage extends EPackage {
 	int ATTRIBUTE__FIELD_PARENT = 4;
 
 	/**
+	 * The feature id for the '<em><b>Doc</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ATTRIBUTE__DOC = 5;
+
+	/**
 	 * The number of structural features of the '<em>Attribute</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ATTRIBUTE_FEATURE_COUNT = 5;
+	int ATTRIBUTE_FEATURE_COUNT = 6;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.datamapper.impl.TreeNodeImpl <em>Tree Node</em>}' class.
@@ -621,13 +639,31 @@ public interface DataMapperPackage extends EPackage {
     int TREE_NODE__LEVEL = 8;
 
     /**
+	 * The feature id for the '<em><b>Namespace</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TREE_NODE__NAMESPACE = 9;
+
+				/**
+	 * The feature id for the '<em><b>Doc</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TREE_NODE__DOC = 10;
+
+				/**
 	 * The number of structural features of the '<em>Tree Node</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TREE_NODE_FEATURE_COUNT = 9;
+	int TREE_NODE_FEATURE_COUNT = 11;
 
 
 	/**
@@ -1417,6 +1453,17 @@ public interface DataMapperPackage extends EPackage {
     EAttribute getElement_Level();
 
     /**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.datamapper.Element#getDoc <em>Doc</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Doc</em>'.
+	 * @see org.wso2.developerstudio.datamapper.Element#getDoc()
+	 * @see #getElement()
+	 * @generated
+	 */
+	EAttribute getElement_Doc();
+
+				/**
 	 * Returns the meta object for class '{@link org.wso2.developerstudio.datamapper.Attribute <em>Attribute</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1480,6 +1527,17 @@ public interface DataMapperPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getAttribute_FieldParent();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.datamapper.Attribute#getDoc <em>Doc</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Doc</em>'.
+	 * @see org.wso2.developerstudio.datamapper.Attribute#getDoc()
+	 * @see #getAttribute()
+	 * @generated
+	 */
+	EAttribute getAttribute_Doc();
 
 	/**
 	 * Returns the meta object for class '{@link org.wso2.developerstudio.datamapper.TreeNode <em>Tree Node</em>}'.
@@ -1591,6 +1649,28 @@ public interface DataMapperPackage extends EPackage {
     EAttribute getTreeNode_Level();
 
     /**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.datamapper.TreeNode#getNamespace <em>Namespace</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Namespace</em>'.
+	 * @see org.wso2.developerstudio.datamapper.TreeNode#getNamespace()
+	 * @see #getTreeNode()
+	 * @generated
+	 */
+	EAttribute getTreeNode_Namespace();
+
+				/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.datamapper.TreeNode#getDoc <em>Doc</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Doc</em>'.
+	 * @see org.wso2.developerstudio.datamapper.TreeNode#getDoc()
+	 * @see #getTreeNode()
+	 * @generated
+	 */
+	EAttribute getTreeNode_Doc();
+
+				/**
 	 * Returns the meta object for class '{@link org.wso2.developerstudio.datamapper.InNode <em>In Node</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2146,6 +2226,14 @@ public interface DataMapperPackage extends EPackage {
         EAttribute ELEMENT__LEVEL = eINSTANCE.getElement_Level();
 
         /**
+		 * The meta object literal for the '<em><b>Doc</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ELEMENT__DOC = eINSTANCE.getElement_Doc();
+
+								/**
 		 * The meta object literal for the '{@link org.wso2.developerstudio.datamapper.impl.AttributeImpl <em>Attribute</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2194,6 +2282,14 @@ public interface DataMapperPackage extends EPackage {
 		 * @generated
 		 */
 		EReference ATTRIBUTE__FIELD_PARENT = eINSTANCE.getAttribute_FieldParent();
+
+		/**
+		 * The meta object literal for the '<em><b>Doc</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ATTRIBUTE__DOC = eINSTANCE.getAttribute_Doc();
 
 		/**
 		 * The meta object literal for the '{@link org.wso2.developerstudio.datamapper.impl.TreeNodeImpl <em>Tree Node</em>}' class.
@@ -2278,6 +2374,22 @@ public interface DataMapperPackage extends EPackage {
         EAttribute TREE_NODE__LEVEL = eINSTANCE.getTreeNode_Level();
 
         /**
+		 * The meta object literal for the '<em><b>Namespace</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TREE_NODE__NAMESPACE = eINSTANCE.getTreeNode_Namespace();
+
+								/**
+		 * The meta object literal for the '<em><b>Doc</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TREE_NODE__DOC = eINSTANCE.getTreeNode_Doc();
+
+								/**
 		 * The meta object literal for the '{@link org.wso2.developerstudio.datamapper.impl.InNodeImpl <em>In Node</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->

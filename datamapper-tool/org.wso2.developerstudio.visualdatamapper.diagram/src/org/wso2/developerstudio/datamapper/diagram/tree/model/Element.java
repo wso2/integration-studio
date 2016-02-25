@@ -14,6 +14,7 @@ public class Element {
 	private Tree parent;
 	private int count;
 	private Type schemaType;
+	private String doc;
 	
 	public  Element(Tree parent) {
 		this.parent=parent;
@@ -36,6 +37,11 @@ public class Element {
 		return this.name;
 	}
 	
+	public String getDoc(){
+		return this.doc;
+	}
+	
+	
 	public String getValue(){
 		return this.value;
 	}
@@ -47,6 +53,12 @@ public class Element {
 	public void setValue(String value) {
 		this.value=value;
 	}
+	
+	
+	public void setDoc(String doc) {
+		this.doc=doc;
+	}
+	
 	
 	public void setAttribute(List<Attribute> attr){
 		this.attributes=attr;

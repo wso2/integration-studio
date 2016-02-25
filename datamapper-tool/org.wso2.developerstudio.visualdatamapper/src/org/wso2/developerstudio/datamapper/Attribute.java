@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.wso2.developerstudio.datamapper.Attribute#getOutNode <em>Out Node</em>}</li>
  *   <li>{@link org.wso2.developerstudio.datamapper.Attribute#getInNode <em>In Node</em>}</li>
  *   <li>{@link org.wso2.developerstudio.datamapper.Attribute#getFieldParent <em>Field Parent</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.datamapper.Attribute#getDoc <em>Doc</em>}</li>
  * </ul>
  * </p>
  *
@@ -159,5 +160,31 @@ public interface Attribute extends EObject {
 	 * @generated
 	 */
 	void setFieldParent(TreeNode value);
+
+	/**
+	 * Returns the value of the '<em><b>Doc</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Doc</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Doc</em>' attribute.
+	 * @see #setDoc(String)
+	 * @see org.wso2.developerstudio.datamapper.DataMapperPackage#getAttribute_Doc()
+	 * @model
+	 * @generated
+	 */
+	String getDoc();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.datamapper.Attribute#getDoc <em>Doc</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Doc</em>' attribute.
+	 * @see #getDoc()
+	 * @generated
+	 */
+	void setDoc(String value);
 
 } // Attribute

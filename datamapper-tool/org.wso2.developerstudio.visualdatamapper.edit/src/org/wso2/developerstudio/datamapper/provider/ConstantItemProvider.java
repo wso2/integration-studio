@@ -26,14 +26,7 @@ import org.wso2.developerstudio.datamapper.DataMapperPackage;
  * <!-- end-user-doc -->
  * @generated
  */
-public class ConstantItemProvider
-	extends OperatorItemProvider
-	implements
-		IEditingDomainItemProvider,
-		IStructuredItemContentProvider,
-		ITreeItemContentProvider,
-		IItemLabelProvider,
-		IItemPropertySource {
+public class ConstantItemProvider extends OperatorItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->

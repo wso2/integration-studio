@@ -2,7 +2,6 @@
  */
 package org.wso2.developerstudio.datamapper.provider;
 
-
 import java.util.Collection;
 import java.util.List;
 
@@ -25,23 +24,17 @@ import org.wso2.developerstudio.datamapper.DataMapperFactory;
 import org.wso2.developerstudio.datamapper.DataMapperPackage;
 
 /**
- * This is the item provider adapter for a {@link org.wso2.developerstudio.datamapper.Concat} object.
- * <!-- begin-user-doc -->
- * <!-- end-user-doc -->
- * @generated
+ * This is the item provider adapter for a
+ * {@link org.wso2.developerstudio.datamapper.Concat} object. <!--
+ * begin-user-doc --> <!-- end-user-doc -->
+ * 
+ * @generated 
  */
-public class ConcatItemProvider
-	extends OperatorItemProvider
-	implements
-		IEditingDomainItemProvider,
-		IStructuredItemContentProvider,
-		ITreeItemContentProvider,
-		IItemLabelProvider,
-		IItemPropertySource {
+public class ConcatItemProvider extends OperatorItemProvider {
 	/**
-	 * This constructs an instance from a factory and a notifier.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * This constructs an instance from a factory and a notifier. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ConcatItemProvider(AdapterFactory adapterFactory) {
@@ -49,9 +42,9 @@ public class ConcatItemProvider
 	}
 
 	/**
-	 * This returns the property descriptors for the adapted class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * This returns the property descriptors for the adapted class. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -65,9 +58,9 @@ public class ConcatItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Delimiter feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * This adds a property descriptor for the Delimiter feature. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected void addDelimiterPropertyDescriptor(Object object) {
@@ -88,8 +81,7 @@ public class ConcatItemProvider
 
 	/**
 	 * This returns Concat.gif.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -99,8 +91,8 @@ public class ConcatItemProvider
 
 	/**
 	 * This returns the label text for the adapted class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -112,8 +104,8 @@ public class ConcatItemProvider
 	/**
 	 * This handles model notifications by calling {@link #updateChildren} to update any cached
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -129,10 +121,10 @@ public class ConcatItemProvider
 	}
 
 	/**
-	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
-	 * that can be created under this object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
+	 * describing the children that can be created under this object. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override

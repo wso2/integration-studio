@@ -27,6 +27,7 @@ import org.wso2.developerstudio.datamapper.TreeNode;
  *   <li>{@link org.wso2.developerstudio.datamapper.impl.AttributeImpl#getOutNode <em>Out Node</em>}</li>
  *   <li>{@link org.wso2.developerstudio.datamapper.impl.AttributeImpl#getInNode <em>In Node</em>}</li>
  *   <li>{@link org.wso2.developerstudio.datamapper.impl.AttributeImpl#getFieldParent <em>Field Parent</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.datamapper.impl.AttributeImpl#getDoc <em>Doc</em>}</li>
  * </ul>
  * </p>
  *
@@ -92,6 +93,26 @@ public class AttributeImpl extends EObjectImpl implements Attribute {
 	 * @ordered
 	 */
 	protected InNode inNode;
+
+	/**
+	 * The default value of the '{@link #getDoc() <em>Doc</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDoc()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String DOC_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getDoc() <em>Doc</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDoc()
+	 * @generated
+	 * @ordered
+	 */
+	protected String doc = DOC_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -286,6 +307,27 @@ public class AttributeImpl extends EObjectImpl implements Attribute {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getDoc() {
+		return doc;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setDoc(String newDoc) {
+		String oldDoc = doc;
+		doc = newDoc;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DataMapperPackage.ATTRIBUTE__DOC, oldDoc, doc));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -351,6 +393,8 @@ public class AttributeImpl extends EObjectImpl implements Attribute {
 				return getInNode();
 			case DataMapperPackage.ATTRIBUTE__FIELD_PARENT:
 				return getFieldParent();
+			case DataMapperPackage.ATTRIBUTE__DOC:
+				return getDoc();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -377,6 +421,9 @@ public class AttributeImpl extends EObjectImpl implements Attribute {
 				return;
 			case DataMapperPackage.ATTRIBUTE__FIELD_PARENT:
 				setFieldParent((TreeNode)newValue);
+				return;
+			case DataMapperPackage.ATTRIBUTE__DOC:
+				setDoc((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -405,6 +452,9 @@ public class AttributeImpl extends EObjectImpl implements Attribute {
 			case DataMapperPackage.ATTRIBUTE__FIELD_PARENT:
 				setFieldParent((TreeNode)null);
 				return;
+			case DataMapperPackage.ATTRIBUTE__DOC:
+				setDoc(DOC_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -427,6 +477,8 @@ public class AttributeImpl extends EObjectImpl implements Attribute {
 				return inNode != null;
 			case DataMapperPackage.ATTRIBUTE__FIELD_PARENT:
 				return getFieldParent() != null;
+			case DataMapperPackage.ATTRIBUTE__DOC:
+				return DOC_EDEFAULT == null ? doc != null : !DOC_EDEFAULT.equals(doc);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -445,6 +497,8 @@ public class AttributeImpl extends EObjectImpl implements Attribute {
 		result.append(name);
 		result.append(", value: ");
 		result.append(value);
+		result.append(", doc: ");
+		result.append(doc);
 		result.append(')');
 		return result.toString();
 	}

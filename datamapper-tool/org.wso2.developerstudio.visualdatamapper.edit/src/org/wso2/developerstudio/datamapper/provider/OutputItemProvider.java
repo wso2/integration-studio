@@ -27,14 +27,7 @@ import org.wso2.developerstudio.datamapper.Output;
  * <!-- end-user-doc -->
  * @generated
  */
-public class OutputItemProvider
-	extends DataMapperNodeItemProvider
-	implements
-		IEditingDomainItemProvider,
-		IStructuredItemContentProvider,
-		ITreeItemContentProvider,
-		IItemLabelProvider,
-		IItemPropertySource {
+public class OutputItemProvider extends DataMapperNodeItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->

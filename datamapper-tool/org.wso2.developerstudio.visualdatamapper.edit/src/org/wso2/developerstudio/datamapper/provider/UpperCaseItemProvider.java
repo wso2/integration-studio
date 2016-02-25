@@ -21,16 +21,10 @@ import org.wso2.developerstudio.datamapper.UpperCase;
  * This is the item provider adapter for a {@link org.wso2.developerstudio.datamapper.UpperCase} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * @generated
+ * @generated NOT
  */
-public class UpperCaseItemProvider
-	extends OperatorItemProvider
-	implements
-		IEditingDomainItemProvider,
-		IStructuredItemContentProvider,
-		ITreeItemContentProvider,
-		IItemLabelProvider,
-		IItemPropertySource {
+public class UpperCaseItemProvider extends OperatorItemProvider implements IEditingDomainItemProvider,
+IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->

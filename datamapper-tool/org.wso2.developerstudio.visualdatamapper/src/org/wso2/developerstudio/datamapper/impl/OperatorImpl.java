@@ -65,14 +65,14 @@ public class OperatorImpl extends DataMapperNodeImpl implements Operator {
 	protected boolean serialized = SERIALIZED_EDEFAULT;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	
-    private int index=-1;
-    
-    /**
+	*<!-- begin-user-doc -->
+	* <!-- end-user-doc -->
+	* @generated NOT
+	*/
+     
+	private int index=-1;
+
+	/**
      * This node has been visited by the graph traversal algorithm
      */
     private boolean visited;

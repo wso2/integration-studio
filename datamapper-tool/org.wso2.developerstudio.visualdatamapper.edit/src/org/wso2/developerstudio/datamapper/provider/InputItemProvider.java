@@ -27,14 +27,7 @@ import org.wso2.developerstudio.datamapper.Input;
  * <!-- end-user-doc -->
  * @generated
  */
-public class InputItemProvider
-	extends DataMapperNodeItemProvider
-	implements
-		IEditingDomainItemProvider,
-		IStructuredItemContentProvider,
-		ITreeItemContentProvider,
-		IItemLabelProvider,
-		IItemPropertySource {
+public class InputItemProvider extends DataMapperNodeItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->

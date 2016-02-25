@@ -158,6 +158,8 @@ public class OutputEditPart extends ShapeNodeEditPart {
 		//treeNode.setName(tree.getCount() + "," + tree.getName());
 		treeNode.setName(tree.getName());
 		treeNode.setLevel(tree.getCount());
+		treeNode.setNamespace(tree.getNamespace());
+		treeNode.setDoc(tree.getDoc());
 		if (tree.getSchemaType() != null) {
 			switch (tree.getSchemaType()) {
 			case ARRAY:
@@ -233,6 +235,7 @@ public class OutputEditPart extends ShapeNodeEditPart {
 		Element ele = DataMapperFactory.eINSTANCE.createElement();
 		//ele.setName(element.getCount() + "," + element.getName());
 		ele.setName(element.getName());
+		ele.setDoc(element.getDoc());
 		ele.setLevel(element.getCount());
 		if (element.getSchemaType() != null) {
 			switch (element.getSchemaType()) {
@@ -296,6 +299,7 @@ public class OutputEditPart extends ShapeNodeEditPart {
 			TreeNode treeNode) {
 		Attribute attr = DataMapperFactory.eINSTANCE.createAttribute();
 		attr.setName(attribute.getCount() + "," + attribute.getName());
+		attr.setDoc(attribute.getDoc());
 		treeNode.getAttribute().add(attr);
 	}
 
@@ -303,6 +307,7 @@ public class OutputEditPart extends ShapeNodeEditPart {
 		TreeNode treeNodeNew = DataMapperFactory.eINSTANCE.createTreeNode();
 		//treeNodeNew.setName(treeN.getCount() + "," + treeN.getName());
 		treeNodeNew.setName(treeN.getName());
+		treeNodeNew.setDoc(treeN.getDoc());
 		treeNodeNew.setLevel(treeN.getCount());
 		if (treeN.getSchemaType() != null) {
 			switch (treeN.getSchemaType()) {

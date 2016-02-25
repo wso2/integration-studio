@@ -15,6 +15,9 @@ public class Tree {
 	private Tree parent;
 	private int count;
 	private Type schemaType;
+	private String namespace;
+	private String doc;
+	//private String aliases;
 
 	public Tree() {
 		this.count = 1;
@@ -65,6 +68,27 @@ public class Tree {
 		}
 		return this.name;
 	}
+	
+	public String getNamespace() {
+		if (namespace == null) {
+			namespace = "";
+		}
+		return this.namespace;
+	}
+	
+	public String getDoc() {
+		if (doc == null) {
+			doc = "";
+		}
+		return this.doc;
+	}
+	
+	/*public String getAliases() {
+		if (aliases == null) {
+			aliases = "";
+		}
+		return this.aliases;
+	}*/
 
 	public void setAttributes(List<Attribute> attributes) {
 		this.attributes = attributes;
@@ -81,6 +105,18 @@ public class Tree {
 	public void setName(String name) {
 		this.name = name;
 	}
+	
+	public void setNamespace(String namespace) {
+		this.namespace = namespace;
+	}
+	
+	public void setDoc(String doc) {
+		this.doc = doc;
+	}
+	
+	/*public void setAliases(String aliases){
+		this.aliases = aliases;
+	}*/
 
 	/**
 	 * @return the schemaType

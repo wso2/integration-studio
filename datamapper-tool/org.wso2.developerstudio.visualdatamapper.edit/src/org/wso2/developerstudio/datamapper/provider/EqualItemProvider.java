@@ -23,14 +23,7 @@ import org.wso2.developerstudio.datamapper.Equal;
  * <!-- end-user-doc -->
  * @generated
  */
-public class EqualItemProvider
-	extends OperatorItemProvider
-	implements
-		IEditingDomainItemProvider,
-		IStructuredItemContentProvider,
-		ITreeItemContentProvider,
-		IItemLabelProvider,
-		IItemPropertySource {
+public class EqualItemProvider extends OperatorItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->

@@ -33,6 +33,7 @@ import org.wso2.developerstudio.datamapper.TreeNode;
  *   <li>{@link org.wso2.developerstudio.datamapper.impl.ElementImpl#getFieldParent <em>Field Parent</em>}</li>
  *   <li>{@link org.wso2.developerstudio.datamapper.impl.ElementImpl#getSchemaDataType <em>Schema Data Type</em>}</li>
  *   <li>{@link org.wso2.developerstudio.datamapper.impl.ElementImpl#getLevel <em>Level</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.datamapper.impl.ElementImpl#getDoc <em>Doc</em>}</li>
  * </ul>
  * </p>
  *
@@ -140,7 +141,27 @@ public class ElementImpl extends EObjectImpl implements Element {
     protected int level = LEVEL_EDEFAULT;
 
     
-    private int index=-1;
+    /**
+	 * The default value of the '{@link #getDoc() <em>Doc</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDoc()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String DOC_EDEFAULT = null;
+
+				/**
+	 * The cached value of the '{@link #getDoc() <em>Doc</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDoc()
+	 * @generated
+	 * @ordered
+	 */
+	protected String doc = DOC_EDEFAULT;
+
+				private int index=-1;
     
     /**
      * This node has been visited by the graph traversal algorithm
@@ -421,6 +442,27 @@ public class ElementImpl extends EObjectImpl implements Element {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getDoc() {
+		return doc;
+	}
+
+				/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setDoc(String newDoc) {
+		String oldDoc = doc;
+		doc = newDoc;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DataMapperPackage.ELEMENT__DOC, oldDoc, doc));
+	}
+
+				/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -494,6 +536,8 @@ public class ElementImpl extends EObjectImpl implements Element {
 				return getSchemaDataType();
 			case DataMapperPackage.ELEMENT__LEVEL:
 				return getLevel();
+			case DataMapperPackage.ELEMENT__DOC:
+				return getDoc();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -526,6 +570,9 @@ public class ElementImpl extends EObjectImpl implements Element {
 				return;
 			case DataMapperPackage.ELEMENT__LEVEL:
 				setLevel((Integer)newValue);
+				return;
+			case DataMapperPackage.ELEMENT__DOC:
+				setDoc((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -560,6 +607,9 @@ public class ElementImpl extends EObjectImpl implements Element {
 			case DataMapperPackage.ELEMENT__LEVEL:
 				setLevel(LEVEL_EDEFAULT);
 				return;
+			case DataMapperPackage.ELEMENT__DOC:
+				setDoc(DOC_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -586,6 +636,8 @@ public class ElementImpl extends EObjectImpl implements Element {
 				return schemaDataType != SCHEMA_DATA_TYPE_EDEFAULT;
 			case DataMapperPackage.ELEMENT__LEVEL:
 				return level != LEVEL_EDEFAULT;
+			case DataMapperPackage.ELEMENT__DOC:
+				return DOC_EDEFAULT == null ? doc != null : !DOC_EDEFAULT.equals(doc);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -608,6 +660,8 @@ public class ElementImpl extends EObjectImpl implements Element {
 		result.append(schemaDataType);
 		result.append(", level: ");
 		result.append(level);
+		result.append(", doc: ");
+		result.append(doc);
 		result.append(')');
 		return result.toString();
 	}

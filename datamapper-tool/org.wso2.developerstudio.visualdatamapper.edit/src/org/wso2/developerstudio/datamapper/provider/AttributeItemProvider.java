@@ -110,6 +110,28 @@ public class AttributeItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Doc feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addDocPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Attribute_doc_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Attribute_doc_feature", "_UI_Attribute_type"),
+				 DataMapperPackage.Literals.ATTRIBUTE__DOC,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -179,6 +201,7 @@ public class AttributeItemProvider
 		switch (notification.getFeatureID(Attribute.class)) {
 			case DataMapperPackage.ATTRIBUTE__NAME:
 			case DataMapperPackage.ATTRIBUTE__VALUE:
+			case DataMapperPackage.ATTRIBUTE__DOC:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case DataMapperPackage.ATTRIBUTE__OUT_NODE:

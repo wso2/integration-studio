@@ -575,6 +575,15 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getElement_Doc() {
+		return (EAttribute)elementEClass.getEStructuralFeatures().get(7);
+	}
+
+				/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getAttribute() {
 		return attributeEClass;
 	}
@@ -622,6 +631,15 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 	 */
 	public EReference getAttribute_FieldParent() {
 		return (EReference)attributeEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getAttribute_Doc() {
+		return (EAttribute)attributeEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -715,6 +733,24 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 	}
 
     /**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getTreeNode_Namespace() {
+		return (EAttribute)treeNodeEClass.getEStructuralFeatures().get(9);
+	}
+
+				/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getTreeNode_Doc() {
+		return (EAttribute)treeNodeEClass.getEStructuralFeatures().get(10);
+	}
+
+				/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1001,6 +1037,7 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 		createEReference(elementEClass, ELEMENT__FIELD_PARENT);
 		createEAttribute(elementEClass, ELEMENT__SCHEMA_DATA_TYPE);
 		createEAttribute(elementEClass, ELEMENT__LEVEL);
+		createEAttribute(elementEClass, ELEMENT__DOC);
 
 		attributeEClass = createEClass(ATTRIBUTE);
 		createEAttribute(attributeEClass, ATTRIBUTE__NAME);
@@ -1008,6 +1045,7 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 		createEReference(attributeEClass, ATTRIBUTE__OUT_NODE);
 		createEReference(attributeEClass, ATTRIBUTE__IN_NODE);
 		createEReference(attributeEClass, ATTRIBUTE__FIELD_PARENT);
+		createEAttribute(attributeEClass, ATTRIBUTE__DOC);
 
 		treeNodeEClass = createEClass(TREE_NODE);
 		createEAttribute(treeNodeEClass, TREE_NODE__NAME);
@@ -1019,6 +1057,8 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 		createEReference(treeNodeEClass, TREE_NODE__INPUT_PARENT);
 		createEAttribute(treeNodeEClass, TREE_NODE__SCHEMA_DATA_TYPE);
 		createEAttribute(treeNodeEClass, TREE_NODE__LEVEL);
+		createEAttribute(treeNodeEClass, TREE_NODE__NAMESPACE);
+		createEAttribute(treeNodeEClass, TREE_NODE__DOC);
 
 		inNodeEClass = createEClass(IN_NODE);
 		createEReference(inNodeEClass, IN_NODE__INCOMING_LINK);
@@ -1141,6 +1181,7 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 		initEReference(getElement_FieldParent(), this.getTreeNode(), this.getTreeNode_Element(), "fieldParent", null, 0, 1, Element.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getElement_SchemaDataType(), this.getSchemaDataType(), "schemaDataType", null, 0, 1, Element.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getElement_Level(), ecorePackage.getEInt(), "level", null, 0, 1, Element.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getElement_Doc(), ecorePackage.getEString(), "doc", null, 0, 1, Element.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(attributeEClass, Attribute.class, "Attribute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getAttribute_Name(), ecorePackage.getEString(), "name", null, 0, 1, Attribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1148,6 +1189,7 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 		initEReference(getAttribute_OutNode(), this.getOutNode(), null, "outNode", null, 0, 1, Attribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getAttribute_InNode(), this.getInNode(), this.getInNode_AttributeParent(), "inNode", null, 0, 1, Attribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getAttribute_FieldParent(), this.getTreeNode(), this.getTreeNode_Attribute(), "fieldParent", null, 0, 1, Attribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAttribute_Doc(), ecorePackage.getEString(), "doc", null, 0, 1, Attribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(treeNodeEClass, TreeNode.class, "TreeNode", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getTreeNode_Name(), ecorePackage.getEString(), "name", null, 0, 1, TreeNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1159,6 +1201,8 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 		initEReference(getTreeNode_InputParent(), this.getInput(), this.getInput_TreeNode(), "inputParent", null, 0, 1, TreeNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTreeNode_SchemaDataType(), this.getSchemaDataType(), "schemaDataType", null, 0, 1, TreeNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTreeNode_Level(), ecorePackage.getEInt(), "level", null, 0, 1, TreeNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTreeNode_Namespace(), ecorePackage.getEString(), "namespace", null, 0, 1, TreeNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTreeNode_Doc(), ecorePackage.getEString(), "doc", null, 0, 1, TreeNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(inNodeEClass, InNode.class, "InNode", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getInNode_IncomingLink(), this.getDataMapperLink(), this.getDataMapperLink_InNode(), "incomingLink", null, 0, -1, InNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

@@ -7,6 +7,7 @@ public class Attribute {
 	private Tree parent;
 	private int count;
 	private Element parentEle;
+	private String doc;
 	
 	public  Attribute(Tree parent) {
 		this.parent=parent;
@@ -34,6 +35,10 @@ public class Attribute {
 		return this.name;
 	}
 	
+	public String getDoc(){
+		return this.doc;
+	}
+	
 	public String getValue(){
 		return this.value;
 	}
@@ -45,6 +50,12 @@ public class Attribute {
 	public void setValue(String value) {
 		this.value=value;
 	}
+	
+	public void setDoc(String doc) {
+		this.doc=doc;
+	}
+	
+	
 	
 
 }

@@ -41,7 +41,7 @@ public class AvroSchemaTransformer {
 	 */
 	public Schema transform(TreeNodeImpl treeNodeModel) {
 		// Schema of the root element
-		Schema schema = Schema.createRecord(treeNodeModel.getName(), null, null, false);
+		Schema schema = Schema.createRecord(treeNodeModel.getName(), treeNodeModel.getDoc(), treeNodeModel.getNamespace(), false);
 		List<Field> fields = new ArrayList<Field>();
 
 		if (!treeNodeModel.getNode().isEmpty()) {
@@ -74,7 +74,7 @@ public class AvroSchemaTransformer {
 
 	private Field createRecord(TreeNode node) {
 		// Schema for the field
-		Schema schema1 = Schema.createRecord(node.getName(), null, null, false);
+		Schema schema1 = Schema.createRecord(node.getName(), node.getDoc(), node.getNamespace(), false);
 		List<Field> fields1 = new ArrayList<Field>();
 
 		if (!node.getNode().isEmpty()) {
@@ -109,7 +109,7 @@ public class AvroSchemaTransformer {
 		 * is set as the default element type for ARRAY. Schema for the RECORD
 		 * under ARRAY
 		 */
-		Schema recordSchema = Schema.createRecord(node.getName(), null, null, false);
+		Schema recordSchema = Schema.createRecord(node.getName(), node.getDoc(), node.getNamespace(), false);
 		/*
 		 * FIXME Appends the suffix "Item" to identify as the RECORD under ARRAY
 		 * Schema recordSchema = Schema.createRecord(node.getName() +
@@ -192,7 +192,7 @@ public class AvroSchemaTransformer {
 		}
 		// Schema for type:field
 		Schema schema1 = Schema.create(fieldDatatype);
-		Field field = new Field(element.getName(), schema1, null, null);
+		Field field = new Field(element.getName(), schema1, element.getDoc() , null);
 		return field;
 	}
 }

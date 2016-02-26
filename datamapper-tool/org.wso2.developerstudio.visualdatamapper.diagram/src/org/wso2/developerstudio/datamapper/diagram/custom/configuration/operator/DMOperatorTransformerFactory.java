@@ -18,6 +18,7 @@ package org.wso2.developerstudio.datamapper.diagram.custom.configuration.operato
 import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.ConcatOperatorTransformer;
 import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.DMOperatorTransformer;
 import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.DirectOperatorTransformer;
+import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.SplitOperatorTransformer;
 import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.ToLowerCaseOperatorTransformer;
 import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.ToUpperCaseOperatorTransformer;
 import org.wso2.developerstudio.datamapper.diagram.custom.model.DMOperatorType;
@@ -52,7 +53,7 @@ public class DMOperatorTransformerFactory {
         case LOWERCASE:
             return new ToLowerCaseOperatorTransformer();
         case SPLIT:
-            return new ConcatOperatorTransformer();
+            return new SplitOperatorTransformer();
         default:
             throw new IllegalArgumentException("Unknown operator type found for tranform : " + type);
         }

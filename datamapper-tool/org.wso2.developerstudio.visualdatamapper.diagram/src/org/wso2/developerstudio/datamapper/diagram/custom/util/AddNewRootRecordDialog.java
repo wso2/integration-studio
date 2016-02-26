@@ -35,7 +35,7 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 
-public class AddNewRootElementDialog extends Dialog {
+public class AddNewRootRecordDialog extends Dialog {
 
 	private Text textRootName;
 	private Combo schemaTypeCombo;
@@ -50,8 +50,10 @@ public class AddNewRootElementDialog extends Dialog {
 	private String doc;
 	private Set<String> aliases;
 	
-	private String[] DATA_TYPES = {"RECORD","STRING", "INT", "ARRAY","BOOLEAN","BYTES","DOUBLE","ENUM","FIXED","FLOAT","INT","LONG","MAP","NULL","UNION"};
+	//private String[] DATA_TYPES = {"RECORD","STRING", "INT", "ARRAY","BOOLEAN","BYTES","DOUBLE","ENUM","FIXED","FLOAT","INT","LONG","MAP","NULL","UNION"};
 
+	//FIXME only RECORD is allowed as the root element
+	private String[] DATA_TYPES = {"RECORD"};
 
 	private static final String DIALOG_TITLE = "Add new Root Element";
 	private static final String LABEL_NAME = "Name :";
@@ -66,7 +68,7 @@ public class AddNewRootElementDialog extends Dialog {
 	 * 
 	 * @param parentShell
 	 */
-	public AddNewRootElementDialog(Shell parentShell, Class<?>[] type) {
+	public AddNewRootRecordDialog(Shell parentShell, Class<?>[] type) {
 		super(parentShell);
 		setShellStyle(SWT.CLOSE | SWT.TITLE | SWT.BORDER | SWT.OK | SWT.APPLICATION_MODAL);
 	}

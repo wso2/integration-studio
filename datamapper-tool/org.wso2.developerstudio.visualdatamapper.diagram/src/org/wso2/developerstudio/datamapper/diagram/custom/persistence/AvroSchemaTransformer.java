@@ -202,20 +202,26 @@ public class AvroSchemaTransformer {
 		// Schema for type:field
 		Schema schema1 = Schema.create(fieldDatatype);
 		Field field = null ;
-		ObjectMapper mapper = new ObjectMapper();
-        String defaultValue = element.getDefault();
-        JsonNode defaultValueNode = null;
-        Order orderValue = null;
-		try {
-			if(StringUtils.isNotEmpty(defaultValue)){
-				defaultValueNode = mapper.readTree(defaultValue);
+		
+		if(element.getDefault() == null && element.getOrder() == null){
+			field = new Field(element.getName(), schema1, element.getDoc() , null);
+		}
+		else{
+			ObjectMapper mapper = new ObjectMapper();
+	        String defaultValue = element.getDefault();
+	        JsonNode defaultValueNode = null;
+	        Order orderValue = null;
+			try {	
+				if(StringUtils.isNotEmpty(defaultValue)){
+					defaultValueNode = mapper.readTree(defaultValue);
+				}
+				if(StringUtils.isNotEmpty(element.getOrder())){
+					orderValue = Order.valueOf(element.getOrder());
+				}
+				field = new Field(element.getName(), schema1, element.getDoc() ,defaultValueNode, orderValue);
+			} catch (IOException e) {
+				e.printStackTrace();
 			}
-			if(StringUtils.isNotEmpty(element.getOrder())){
-				orderValue = Order.valueOf(element.getOrder());
-			}
-			field = new Field(element.getName(), schema1, element.getDoc() ,defaultValueNode, orderValue);
-		} catch (IOException e) {
-			e.printStackTrace();
 		}
 		
 		for(String aliase : element.getAliases()){

@@ -16,7 +16,6 @@
 
 package org.wso2.developerstudio.datamapper.diagram.custom.action;
 
-import org.apache.commons.lang.StringUtils;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
@@ -37,14 +36,14 @@ import org.wso2.developerstudio.datamapper.DataMapperPackage;
 import org.wso2.developerstudio.datamapper.DataMapperRoot;
 import org.wso2.developerstudio.datamapper.SchemaDataType;
 import org.wso2.developerstudio.datamapper.TreeNode;
-import org.wso2.developerstudio.datamapper.diagram.custom.util.AddNewRecordListDialog;
+import org.wso2.developerstudio.datamapper.diagram.custom.util.AddNewListDialog;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.DataMapperRootEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.InputEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.OutputEditPart;
 import org.wso2.developerstudio.datamapper.impl.TreeNodeImpl;
 import org.wso2.developerstudio.eclipse.registry.core.interfaces.IRegistryFile;
 
-public class AddNewRecordsListAction extends AbstractActionHandler {
+public class AddNewListAction extends AbstractActionHandler {
 
 	private EditPart selectedEP;
 	private static final String OUTPUT_EDITPART = "Output"; //$NON-NLS-1$
@@ -52,7 +51,7 @@ public class AddNewRecordsListAction extends AbstractActionHandler {
 	private static final String ADD_NEW_RECORDS_LIST_ACTION_ID = "add-new-records-list-action-id"; //$NON-NLS-1$
 	private static final String ADD_NEW_RECORDS_LIST = Messages.AddNewRecordsListAction_addNewRecordsList;
 
-	public AddNewRecordsListAction(IWorkbenchPart workbenchPart) {
+	public AddNewListAction(IWorkbenchPart workbenchPart) {
 		super(workbenchPart);
 
 		setId(ADD_NEW_RECORDS_LIST_ACTION_ID);
@@ -66,7 +65,7 @@ public class AddNewRecordsListAction extends AbstractActionHandler {
 	protected void doRun(IProgressMonitor progressMonitor) {
 		selectedEP = getSelectedEditPart();
 
-		AddNewRecordListDialog recordListDialog = new AddNewRecordListDialog(Display.getCurrent().getActiveShell(),
+		AddNewListDialog recordListDialog = new AddNewListDialog(Display.getCurrent().getActiveShell(),
 				new Class[] { IRegistryFile.class });
 		recordListDialog.create();
 		recordListDialog.open();
@@ -128,10 +127,6 @@ public class AddNewRecordsListAction extends AbstractActionHandler {
 				default:
 					break;
 				}
-				if (StringUtils.isNotEmpty(recordListDialog.getDoc())) {
-					treeNodeNew.setDoc(recordListDialog.getDoc());
-				}
-
 				/*
 				 * AddCommand is used to avoid concurrent updating. index 0 to
 				 * add as the first child

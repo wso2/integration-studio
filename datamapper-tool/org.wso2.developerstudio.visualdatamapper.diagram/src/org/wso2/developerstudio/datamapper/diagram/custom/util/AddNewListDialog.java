@@ -30,22 +30,22 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 
-public class AddNewRecordListDialog extends Dialog {
+public class AddNewListDialog extends Dialog {
 
 	private Text textRootName;
 	private Combo schemaTypeCombo;
-	private Text textDoc;
 	private Composite compositeRecordList;
 	
 	private String name;
 	private String schemaType;
-	private String doc;
 	
-	private String[] DATA_TYPES = { "ARRAY","STRING", "INT","BOOLEAN","BYTES","DOUBLE","ENUM","FIXED","FLOAT","INT","LONG","MAP","NULL","RECORD","UNION"};
+	//private String[] DATA_TYPES = { "ARRAY","STRING", "INT","BOOLEAN","BYTES","DOUBLE","ENUM","FIXED","FLOAT","INT","LONG","MAP","NULL","RECORD","UNION"};
+
+	//FIXME only ARRAY is allowed when adding the list
+	private String[] DATA_TYPES = { "ARRAY"};
 	private static final String DIALOG_TITLE = "Add new Record List";
 	private static final String LABEL_NAME = "Name :";
 	private static final String LABEL_SCHEMATYPE = "Schema Data Type :";
-	private static final String LABEL_DOC = "Doc :";
 	private static final String NEW_ROOT_RECORD_ID = "NewList";
 
 	/**
@@ -53,7 +53,7 @@ public class AddNewRecordListDialog extends Dialog {
 	 * 
 	 * @param parentShell
 	 */
-	public AddNewRecordListDialog(Shell parentShell, Class<?>[] type) {
+	public AddNewListDialog(Shell parentShell, Class<?>[] type) {
 		super(parentShell);
 		setShellStyle(SWT.CLOSE | SWT.TITLE | SWT.BORDER | SWT.OK | SWT.APPLICATION_MODAL);
 	}
@@ -108,21 +108,6 @@ public class AddNewRecordListDialog extends Dialog {
 		schemaTypeCombo.select(0);
 		schemaTypeCombo.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
 		
-		Label lbldocLabel = new Label(compositeRecordList, SWT.NONE);
-		lbldocLabel.setText(LABEL_DOC);
-		new Label(compositeRecordList, SWT.NONE);
-		new Label(compositeRecordList, SWT.NONE);
-		new Label(compositeRecordList, SWT.NONE);
-		
-		textDoc = new Text(compositeRecordList, SWT.BORDER);
-		textDoc.setText("");
-		
-		textDoc.addModifyListener(new ModifyListener() {
-			public void modifyText(ModifyEvent arg0) {
-			}
-		});
-		
-		textDoc.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
 		return container;
 	}
 
@@ -142,14 +127,13 @@ public class AddNewRecordListDialog extends Dialog {
 	 */
 	@Override
 	protected Point getInitialSize() {
-		return new Point(620, 210);
+		return new Point(620, 190);
 	}
 
 	@Override
 	protected void okPressed() {
 		setName(textRootName.getText());
 		setSchemaType(schemaTypeCombo.getText());
-		setDoc(textDoc.getText());
 		super.okPressed();
 	}
 	
@@ -161,10 +145,6 @@ public class AddNewRecordListDialog extends Dialog {
 		this.schemaType= schemaType;
 	}
 	
-	public void setDoc(String doc){
-		this.doc= doc;
-	}
-	
 	public String getName(){
 		return name;
 	}
@@ -172,10 +152,6 @@ public class AddNewRecordListDialog extends Dialog {
 	public String getSchemaType(){
 		return schemaType;
 	}
-	
-	public String getDoc(){
-		return doc;
-	}
-	
+
 }
 

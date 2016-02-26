@@ -16,12 +16,17 @@
 
 package org.wso2.developerstudio.datamapper.diagram.custom.persistence;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.avro.Schema;
 import org.apache.avro.Schema.Field;
+import org.apache.avro.Schema.Field.Order;
 import org.apache.avro.Schema.Type;
+import org.apache.commons.lang.StringUtils;
+import org.codehaus.jackson.JsonNode;
+import org.codehaus.jackson.map.ObjectMapper;
 import org.wso2.developerstudio.datamapper.Element;
 import org.wso2.developerstudio.datamapper.SchemaDataType;
 import org.wso2.developerstudio.datamapper.TreeNode;
@@ -31,6 +36,7 @@ import org.wso2.developerstudio.datamapper.impl.TreeNodeImpl;
  * Transform utils for Avro schema
  */
 public class AvroSchemaTransformer {
+	
 
 	/**
 	 * Transforms the modified TreeNodeImpl model to avro schema
@@ -195,7 +201,26 @@ public class AvroSchemaTransformer {
 		}
 		// Schema for type:field
 		Schema schema1 = Schema.create(fieldDatatype);
-		Field field = new Field(element.getName(), schema1, element.getDoc() , null);
+		Field field = null ;
+		ObjectMapper mapper = new ObjectMapper();
+        String defaultValue = element.getDefault();
+        JsonNode defaultValueNode = null;
+        Order orderValue = null;
+		try {
+			if(StringUtils.isNotEmpty(defaultValue)){
+				defaultValueNode = mapper.readTree(defaultValue);
+			}
+			if(StringUtils.isNotEmpty(element.getOrder())){
+				orderValue = Order.valueOf(element.getOrder());
+			}
+			field = new Field(element.getName(), schema1, element.getDoc() ,defaultValueNode, orderValue);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		for(String aliase : element.getAliases()){
+			field.addAlias(aliase);
+		}
 		return field;
 	}
 }

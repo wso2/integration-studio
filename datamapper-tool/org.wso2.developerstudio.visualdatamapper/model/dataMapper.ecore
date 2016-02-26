@@ -60,6 +60,10 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="schemaDataType" eType="#//SchemaDataType"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="level" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="doc" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="default" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="aliases" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="order" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Attribute">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -148,4 +152,5 @@
   <eClassifiers xsi:type="ecore:EClass" name="LowerCase" eSuperTypes="#//Operator"/>
   <eClassifiers xsi:type="ecore:EClass" name="Contains" eSuperTypes="#//Operator"/>
   <eClassifiers xsi:type="ecore:EClass" name="UpperCase" eSuperTypes="#//Operator"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Order"/>
 </ecore:EPackage>

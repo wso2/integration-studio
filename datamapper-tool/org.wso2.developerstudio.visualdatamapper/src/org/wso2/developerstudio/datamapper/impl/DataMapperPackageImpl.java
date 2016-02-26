@@ -32,6 +32,7 @@ import org.wso2.developerstudio.datamapper.OperatorLeftContainer;
 import org.wso2.developerstudio.datamapper.OperatorRightConnector;
 import org.wso2.developerstudio.datamapper.OperatorRightContainer;
 import org.wso2.developerstudio.datamapper.Operators;
+import org.wso2.developerstudio.datamapper.Order;
 import org.wso2.developerstudio.datamapper.OutNode;
 import org.wso2.developerstudio.datamapper.Output;
 import org.wso2.developerstudio.datamapper.SchemaDataType;
@@ -213,6 +214,13 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 	 * @generated
 	 */
 	private EClass upperCaseEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass orderEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -577,6 +585,33 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 	 */
 	public EAttribute getElement_Doc() {
 		return (EAttribute)elementEClass.getEStructuralFeatures().get(7);
+	}
+
+				/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getElement_Default() {
+		return (EAttribute)elementEClass.getEStructuralFeatures().get(8);
+	}
+
+				/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getElement_Aliases() {
+		return (EAttribute)elementEClass.getEStructuralFeatures().get(9);
+	}
+
+				/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getElement_Order() {
+		return (EAttribute)elementEClass.getEStructuralFeatures().get(10);
 	}
 
 				/**
@@ -968,6 +1003,15 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 
 	/**
 	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getOrder() {
+		return orderEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -1047,6 +1091,9 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 		createEAttribute(elementEClass, ELEMENT__SCHEMA_DATA_TYPE);
 		createEAttribute(elementEClass, ELEMENT__LEVEL);
 		createEAttribute(elementEClass, ELEMENT__DOC);
+		createEAttribute(elementEClass, ELEMENT__DEFAULT);
+		createEAttribute(elementEClass, ELEMENT__ALIASES);
+		createEAttribute(elementEClass, ELEMENT__ORDER);
 
 		attributeEClass = createEClass(ATTRIBUTE);
 		createEAttribute(attributeEClass, ATTRIBUTE__NAME);
@@ -1102,6 +1149,8 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 		containsEClass = createEClass(CONTAINS);
 
 		upperCaseEClass = createEClass(UPPER_CASE);
+
+		orderEClass = createEClass(ORDER);
 
 		// Create enums
 		schemaDataTypeEEnum = createEEnum(SCHEMA_DATA_TYPE);
@@ -1192,6 +1241,9 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 		initEAttribute(getElement_SchemaDataType(), this.getSchemaDataType(), "schemaDataType", null, 0, 1, Element.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getElement_Level(), ecorePackage.getEInt(), "level", null, 0, 1, Element.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getElement_Doc(), ecorePackage.getEString(), "doc", null, 0, 1, Element.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getElement_Default(), ecorePackage.getEString(), "default", null, 0, 1, Element.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getElement_Aliases(), ecorePackage.getEString(), "aliases", null, 0, -1, Element.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getElement_Order(), ecorePackage.getEString(), "order", null, 0, 1, Element.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(attributeEClass, Attribute.class, "Attribute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getAttribute_Name(), ecorePackage.getEString(), "name", null, 0, 1, Attribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1247,6 +1299,8 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 		initEClass(containsEClass, Contains.class, "Contains", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(upperCaseEClass, UpperCase.class, "UpperCase", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(orderEClass, Order.class, "Order", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		// Initialize enums and add enum literals
 		initEEnum(schemaDataTypeEEnum, SchemaDataType.class, "SchemaDataType");

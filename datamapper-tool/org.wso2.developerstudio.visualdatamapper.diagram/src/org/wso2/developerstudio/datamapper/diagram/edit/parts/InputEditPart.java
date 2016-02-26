@@ -248,6 +248,13 @@ public class InputEditPart extends ShapeNodeEditPart {
 		//ele.setName(element.getCount() + "," + element.getName());
 		ele.setName(element.getName());
 		ele.setDoc(element.getDoc());
+		if(element.getOrder() != null){
+			 ele.setOrder(element.getOrder().toString());
+		}
+	    if(element.getDefault() != null){
+			ele.setDefault(element.getDefault().toString()); 	
+	    }
+		ele.getAliases().addAll(element.getAliases());
 		ele.setLevel(element.getCount());
 		if (element.getSchemaType() != null) {
 			switch (element.getSchemaType()) {

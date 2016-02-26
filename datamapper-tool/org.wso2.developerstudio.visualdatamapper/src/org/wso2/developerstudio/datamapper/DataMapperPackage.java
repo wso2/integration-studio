@@ -466,13 +466,40 @@ public interface DataMapperPackage extends EPackage {
 	int ELEMENT__DOC = 7;
 
 				/**
+	 * The feature id for the '<em><b>Default</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ELEMENT__DEFAULT = 8;
+
+				/**
+	 * The feature id for the '<em><b>Aliases</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ELEMENT__ALIASES = 9;
+
+				/**
+	 * The feature id for the '<em><b>Order</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ELEMENT__ORDER = 10;
+
+				/**
 	 * The number of structural features of the '<em>Element</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ELEMENT_FEATURE_COUNT = 8;
+	int ELEMENT_FEATURE_COUNT = 11;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.datamapper.impl.AttributeImpl <em>Attribute</em>}' class.
@@ -1112,6 +1139,25 @@ public interface DataMapperPackage extends EPackage {
 	int UPPER_CASE_FEATURE_COUNT = OPERATOR_FEATURE_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link org.wso2.developerstudio.datamapper.impl.OrderImpl <em>Order</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.wso2.developerstudio.datamapper.impl.OrderImpl
+	 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getOrder()
+	 * @generated
+	 */
+	int ORDER = 24;
+
+	/**
+	 * The number of structural features of the '<em>Order</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORDER_FEATURE_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.datamapper.SchemaDataType <em>Schema Data Type</em>}' enum.
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1119,7 +1165,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getSchemaDataType()
 	 * @generated
 	 */
-    int SCHEMA_DATA_TYPE = 24;
+    int SCHEMA_DATA_TYPE = 25;
 
     /**
 	 * Returns the meta object for class '{@link org.wso2.developerstudio.datamapper.DataMapperNode <em>Node</em>}'.
@@ -1471,6 +1517,39 @@ public interface DataMapperPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getElement_Doc();
+
+				/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.datamapper.Element#getDefault <em>Default</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Default</em>'.
+	 * @see org.wso2.developerstudio.datamapper.Element#getDefault()
+	 * @see #getElement()
+	 * @generated
+	 */
+	EAttribute getElement_Default();
+
+				/**
+	 * Returns the meta object for the attribute list '{@link org.wso2.developerstudio.datamapper.Element#getAliases <em>Aliases</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute list '<em>Aliases</em>'.
+	 * @see org.wso2.developerstudio.datamapper.Element#getAliases()
+	 * @see #getElement()
+	 * @generated
+	 */
+	EAttribute getElement_Aliases();
+
+				/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.datamapper.Element#getOrder <em>Order</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Order</em>'.
+	 * @see org.wso2.developerstudio.datamapper.Element#getOrder()
+	 * @see #getElement()
+	 * @generated
+	 */
+	EAttribute getElement_Order();
 
 				/**
 	 * Returns the meta object for class '{@link org.wso2.developerstudio.datamapper.Attribute <em>Attribute</em>}'.
@@ -1934,6 +2013,16 @@ public interface DataMapperPackage extends EPackage {
 	EClass getUpperCase();
 
 	/**
+	 * Returns the meta object for class '{@link org.wso2.developerstudio.datamapper.Order <em>Order</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Order</em>'.
+	 * @see org.wso2.developerstudio.datamapper.Order
+	 * @generated
+	 */
+	EClass getOrder();
+
+	/**
 	 * Returns the meta object for enum '{@link org.wso2.developerstudio.datamapper.SchemaDataType <em>Schema Data Type</em>}'.
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -2252,6 +2341,30 @@ public interface DataMapperPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute ELEMENT__DOC = eINSTANCE.getElement_Doc();
+
+								/**
+		 * The meta object literal for the '<em><b>Default</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ELEMENT__DEFAULT = eINSTANCE.getElement_Default();
+
+								/**
+		 * The meta object literal for the '<em><b>Aliases</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ELEMENT__ALIASES = eINSTANCE.getElement_Aliases();
+
+								/**
+		 * The meta object literal for the '<em><b>Order</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ELEMENT__ORDER = eINSTANCE.getElement_Order();
 
 								/**
 		 * The meta object literal for the '{@link org.wso2.developerstudio.datamapper.impl.AttributeImpl <em>Attribute</em>}' class.
@@ -2620,6 +2733,16 @@ public interface DataMapperPackage extends EPackage {
 		 * @generated
 		 */
 		EClass UPPER_CASE = eINSTANCE.getUpperCase();
+
+								/**
+		 * The meta object literal for the '{@link org.wso2.developerstudio.datamapper.impl.OrderImpl <em>Order</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.wso2.developerstudio.datamapper.impl.OrderImpl
+		 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getOrder()
+		 * @generated
+		 */
+		EClass ORDER = eINSTANCE.getOrder();
 
 								/**
 		 * The meta object literal for the '{@link org.wso2.developerstudio.datamapper.SchemaDataType <em>Schema Data Type</em>}' enum.

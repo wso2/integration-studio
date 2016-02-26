@@ -238,6 +238,15 @@ public interface DataMapperFactory extends EFactory {
 	UpperCase createUpperCase();
 
 	/**
+	 * Returns a new object of class '<em>Order</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Order</em>'.
+	 * @generated
+	 */
+	Order createOrder();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

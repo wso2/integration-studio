@@ -622,6 +622,29 @@ public class DataMapperItemProviderAdapterFactory extends DataMapperAdapterFacto
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.wso2.developerstudio.datamapper.Order} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected OrderItemProvider orderItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.wso2.developerstudio.datamapper.Order}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createOrderAdapter() {
+		if (orderItemProvider == null) {
+			orderItemProvider = new OrderItemProvider(this);
+		}
+
+		return orderItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -744,6 +767,7 @@ public class DataMapperItemProviderAdapterFactory extends DataMapperAdapterFacto
 		if (lowerCaseItemProvider != null) lowerCaseItemProvider.dispose();
 		if (containsItemProvider != null) containsItemProvider.dispose();
 		if (upperCaseItemProvider != null) upperCaseItemProvider.dispose();
+		if (orderItemProvider != null) orderItemProvider.dispose();
 	}
 
 }

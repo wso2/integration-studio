@@ -104,6 +104,7 @@ public class TreeFromAVSC {
 	}
 
 	private static void fetchToTree(Field field, Tree parent, List<String> multipleChunk) {
+		
 		Type fieldType = field.schema().getType();
 		if (fieldType.toString().equalsIgnoreCase("RECORD")) {
 
@@ -157,6 +158,9 @@ public class TreeFromAVSC {
 			elementNew.setName(field.name());
 			elementNew.setSchemaType(fieldType);
 			elementNew.setDoc(field.doc());
+			elementNew.setOrder(field.order());
+			elementNew.setDefault(field.defaultValue());
+			elementNew.setAliases(field.aliases());
 			parent.getElements().add(elementNew);
 		}
 
@@ -221,6 +225,9 @@ public class TreeFromAVSC {
 			Element elementNew = new Element(parent);
 			elementNew.setName(field.name());
 			elementNew.setDoc(field.doc());
+			elementNew.setDefault(field.defaultValue());
+			elementNew.setOrder(field.order());
+			elementNew.setAliases(field.aliases());
 			parent.getElements().add(elementNew);
 		}
 

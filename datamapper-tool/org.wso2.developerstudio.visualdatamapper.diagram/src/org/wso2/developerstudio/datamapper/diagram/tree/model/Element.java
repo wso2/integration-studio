@@ -1,10 +1,14 @@
 package org.wso2.developerstudio.datamapper.diagram.tree.model;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
+import org.apache.avro.Schema.Field.Order;
 import org.apache.avro.Schema.Type;
 import org.apache.commons.lang.StringUtils;
+import org.codehaus.jackson.JsonNode;
 
 public class Element {
 
@@ -15,6 +19,10 @@ public class Element {
 	private int count;
 	private Type schemaType;
 	private String doc;
+	private Set<String> aliases;
+	private Order order;
+	private JsonNode defaultValue;
+
 	
 	public  Element(Tree parent) {
 		this.parent=parent;
@@ -33,12 +41,28 @@ public class Element {
 		this.count=value;
 	}
 	
+	public void setOrder(Order order){
+		this.order = order;
+	}
+
+	public void setDefault(JsonNode jsonNode){
+		this.defaultValue = jsonNode;
+	}
+	
 	public String getName(){
 		return this.name;
 	}
 	
 	public String getDoc(){
 		return this.doc;
+	}
+	
+	public Order getOrder() {
+		return this.order;
+	}
+	
+	public JsonNode getDefault() {
+		return this.defaultValue;
 	}
 	
 	
@@ -71,6 +95,12 @@ public class Element {
 		return this.attributes;
 	}
 	
+	public Set<String> getAliases() {
+		if (aliases == null) {
+			aliases = new HashSet<String>();
+		}
+		return this.aliases;
+	}
 	/**
 	 * @return the schemaType
 	 */
@@ -83,6 +113,10 @@ public class Element {
 	 */
 	public void setSchemaType(Type schemaType) {
 		this.schemaType = schemaType;
+	}
+	
+	public void setAliases(Set<String> aliases) {
+		this.aliases = aliases;
 	}
 	
 	public String toString() {

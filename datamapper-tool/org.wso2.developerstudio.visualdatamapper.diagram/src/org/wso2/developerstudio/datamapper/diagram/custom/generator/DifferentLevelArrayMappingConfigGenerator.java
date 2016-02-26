@@ -75,10 +75,17 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
             throws DataMapperException {
         Map<String, SchemaDataType> variableMap = model.getVariableTypeMap();
         int mappingOperationIndex = 0;
+        StringBuilder functionBuilder = new StringBuilder();
         for (MappingOperation mappingOperation : mappingOperationList) {
             List<DMVariable> inputVariables = mappingOperation.getInputVariables();
             List<Integer> operationForLoopBeansList = new ArrayList<>();
             List<String> operationElementsParentList = new ArrayList<>();
+            for (DMVariable outputVariable : mappingOperation.getOutputVariables()) {
+                if (DMVariableType.INTERMEDIATE.equals(outputVariable.getType())) {
+                    functionBuilder.append("var " + outputVariable.getName() + " = [];");
+                    functionBuilder.append("\n");
+                }
+            }
             for (DMVariable dmVariable : inputVariables) {
                 String mostChildVariableName = "";
                 if (DMVariableType.INTERMEDIATE.equals(dmVariable.getType())) {
@@ -146,9 +153,9 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
         }
         // All operations are now assign to ForLoopBean map. Transform
         // forLoopBean map for JS script.
-        String scriptSegmentForOperations = transformForLoopBeansToJS(getRootBean(), mappingOperationList,
-                model.getVariableTypeMap());
-        return scriptSegmentForOperations;
+        functionBuilder.append(transformForLoopBeansToJS(getRootBean(), mappingOperationList,
+                model.getVariableTypeMap()));
+        return functionBuilder.toString();
     }
 
     private String getMostChildAssociatedVariable(ArrayList<Integer> inputVariableList, List<DMVariable> variableList) {
@@ -166,16 +173,6 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
             Map<String, SchemaDataType> variableTypeMap) {
         StringBuilder functionBuilder = new StringBuilder();
         functionBuilder.append("\n");
-        // define array type intermediate variables
-        for (Integer mappingOperationIndex : forLoopBean.getOperationList()) {
-            MappingOperation mappingOperation = mappingOperationList.get(mappingOperationIndex);
-            for (DMVariable outputVariable : mappingOperation.getOutputVariables()) {
-                if (DMVariableType.INTERMEDIATE.equals(outputVariable.getType())) {
-                    functionBuilder.append("var " + outputVariable.getName() + " = [];");
-                    functionBuilder.append("\n");
-                }
-            }
-        }
         if (!"root".equals(forLoopBean.getVariableName())) {
             functionBuilder.append("for(" + forLoopBean.getIterativeName() + " in "
                     + getPrettyVariableNameInForLoop(forLoopBean.getVariableName()) + "){");
@@ -242,18 +239,6 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
             parentForLoopStack.push(forLoopBean);
             return parentForLoopStack;
         }
-    }
-
-    private String getForLoopIteratorNames(Stack<ForLoopBean> parentForLoopBeanStack) {
-        int stackSize = parentForLoopBeanStack.size();
-        String iterateNameList = "";
-        for (int i = 0; i < stackSize; i++) {
-            iterateNameList += parentForLoopBeanStack.pop().getIterativeName();
-            if (i < stackSize - 1) {
-                iterateNameList += "+";
-            }
-        }
-        return iterateNameList;
     }
 
     private String getPrettyVariableNameInForLoop(String variableName) {

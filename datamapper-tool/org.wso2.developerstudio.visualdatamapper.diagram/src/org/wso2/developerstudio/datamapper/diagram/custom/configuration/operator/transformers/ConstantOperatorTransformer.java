@@ -29,7 +29,7 @@ import org.wso2.developerstudio.datamapper.diagram.custom.model.DMVariable;
  * This class extended from the {@link AbstractDMOperatorTransformer} abstract class and generate script for constant
  * operation
  */
-public class ConstantOperationTransformer extends AbstractDMOperatorTransformer {
+public class ConstantOperatorTransformer extends AbstractDMOperatorTransformer {
 
     @Override
     public String generateScriptForOperation(Class<?> generatorClass, List<DMVariable> inputVariables,

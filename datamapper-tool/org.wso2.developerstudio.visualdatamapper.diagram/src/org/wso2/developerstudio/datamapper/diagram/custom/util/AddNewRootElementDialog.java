@@ -16,6 +16,10 @@
 
 package org.wso2.developerstudio.datamapper.diagram.custom.util;
 
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.swt.SWT;
@@ -37,12 +41,14 @@ public class AddNewRootElementDialog extends Dialog {
 	private Combo schemaTypeCombo;
 	private Text textNamespace;
 	private Text textDoc;
+	private Text textAliases;
 	private Composite compositeRootElement;
 	
 	private String name;
 	private String schemaType;
 	private String namespace;
 	private String doc;
+	private Set<String> aliases;
 	
 	private String[] DATA_TYPES = {"RECORD","STRING", "INT", "ARRAY","BOOLEAN","BYTES","DOUBLE","ENUM","FIXED","FLOAT","INT","LONG","MAP","NULL","UNION"};
 
@@ -52,6 +58,7 @@ public class AddNewRootElementDialog extends Dialog {
 	private static final String LABEL_SCHEMATYPE = "Schema Data Type :";
 	private static final String LABEL_NAMESPACE = "Namespace :";
 	private static final String LABEL_DOC = "Doc :";
+	private static final String LABEL_ALIASES = "Aliases :";
 	private static final String NEW_ROOT_RECORD_ID = "NewRootType";
 
 	/**
@@ -145,6 +152,23 @@ public class AddNewRootElementDialog extends Dialog {
 		});
 		
 		textDoc.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
+	
+		
+		Label lblaliasesLabel = new Label(compositeRootElement, SWT.NONE);
+		lblaliasesLabel.setText(LABEL_ALIASES);
+		new Label(compositeRootElement, SWT.NONE);
+		new Label(compositeRootElement, SWT.NONE);
+		new Label(compositeRootElement, SWT.NONE);
+		
+		textAliases = new Text(compositeRootElement, SWT.BORDER);
+		textAliases.setText("");
+		
+		textAliases.addModifyListener(new ModifyListener() {
+			public void modifyText(ModifyEvent arg0) {
+			}
+		});
+		
+		textAliases.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
 		return container;
 	}
 
@@ -164,7 +188,7 @@ public class AddNewRootElementDialog extends Dialog {
 	 */
 	@Override
 	protected Point getInitialSize() {
-		return new Point(620, 250);
+		return new Point(620, 280);
 	}
 
 	@Override
@@ -173,7 +197,20 @@ public class AddNewRootElementDialog extends Dialog {
 		setSchemaType(schemaTypeCombo.getText());
 		setNamespace(textNamespace.getText());
 		setDoc(textDoc.getText());
+		Set<String> aliasesSet = getAliasesSet();
+		setAliases(aliasesSet);
 		super.okPressed();
+	}
+
+	/**
+	 * Gets the Aliases as a set
+	 * @return
+	 */
+	private Set<String> getAliasesSet() {
+		String aliases = textAliases.getText();
+		String[] aliasesArray= aliases.split(",");
+		Set<String> aliasesSet = new HashSet<String>(Arrays.asList(aliasesArray));
+		return aliasesSet;
 	}
 	
 	public void setName(String name){
@@ -191,6 +228,10 @@ public class AddNewRootElementDialog extends Dialog {
 		this.doc= doc;
 	}
 	
+	public void setAliases(Set<String> aliases) {
+		this.aliases = aliases;
+	}
+	
 	public String getName(){
 		return name;
 	}
@@ -205,6 +246,13 @@ public class AddNewRootElementDialog extends Dialog {
 	
 	public String getDoc(){
 		return doc;
+	}
+	
+	public Set<String> getAliases() {
+		if (aliases == null) {
+			aliases = new HashSet<String>();
+		}
+		return aliases;
 	}
 	
 }

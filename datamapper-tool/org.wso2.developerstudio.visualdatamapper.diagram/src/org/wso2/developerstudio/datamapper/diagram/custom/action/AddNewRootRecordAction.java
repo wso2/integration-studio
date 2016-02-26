@@ -54,7 +54,6 @@ public class AddNewRootRecordAction extends AbstractActionHandler {
 	private static final String OUTPUT_EDITPART = "Output"; //$NON-NLS-1$
 	private static final String INPUT_EDITPART = "Input"; //$NON-NLS-1$
 	private static final String ADD_NEW_ROOT_RECORD_ACTION_ID = "add-new-root-record-action-id"; //$NON-NLS-1$
-	private static final String RECORD = "RECORD"; //$NON-NLS-1$
 	private static final String ADD_NEW_ROOT_RECORD = Messages.AddNewRootRecordAction_addNewRoot;
 	private static final String ERROR_ADDING_MULTIPLE_ROOT_ELEMENTS = Messages.AddNewRootRecordAction_addMultipleRootElements;
 	private static final String ERROR_ADDING_MULTIPLE_ROOT_ELEMENTS_TITLE = Messages.AddNewRootRecordAction_addMultipleRootElementsTitle;
@@ -149,6 +148,9 @@ public class AddNewRootRecordAction extends AbstractActionHandler {
                     }
                     if(StringUtils.isNotEmpty(rootElementDialog.getDoc())){
                     	treeNodeNew.setDoc(rootElementDialog.getDoc());
+                    }
+                    if(rootElementDialog.getAliases() != null){
+                        treeNodeNew.getAliases().addAll(rootElementDialog.getAliases());
                     }
 					String selectedInputOutputEditPart = getSelectedInputOutputEditPart();
 					if (null != selectedInputOutputEditPart) {

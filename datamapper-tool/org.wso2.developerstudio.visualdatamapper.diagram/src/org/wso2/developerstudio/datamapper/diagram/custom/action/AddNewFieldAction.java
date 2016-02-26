@@ -37,14 +37,14 @@ import org.wso2.developerstudio.datamapper.DataMapperRoot;
 import org.wso2.developerstudio.datamapper.Element;
 import org.wso2.developerstudio.datamapper.SchemaDataType;
 import org.wso2.developerstudio.datamapper.TreeNode;
-import org.wso2.developerstudio.datamapper.diagram.custom.util.AddNewAttributeDialog;
+import org.wso2.developerstudio.datamapper.diagram.custom.util.AddNewFieldDialog;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.DataMapperRootEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.InputEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.OutputEditPart;
 import org.wso2.developerstudio.datamapper.impl.TreeNodeImpl;
 import org.wso2.developerstudio.eclipse.registry.core.interfaces.IRegistryFile;
 
-public class AddNewAttributeAction extends AbstractActionHandler {
+public class AddNewFieldAction extends AbstractActionHandler {
 
 	private EditPart selectedEP;
 	private static final String OUTPUT_EDITPART = "Output"; //$NON-NLS-1$
@@ -52,7 +52,7 @@ public class AddNewAttributeAction extends AbstractActionHandler {
 	private static final String ADD_NEW_FIELD_ACTION_ID = "add-new-field-action-id"; //$NON-NLS-1$
 	private static final String ADD_NEW_FIELD = Messages.AddNewFieldAction_addNewField;
 
-	public AddNewAttributeAction(IWorkbenchPart workbenchPart) {
+	public AddNewFieldAction(IWorkbenchPart workbenchPart) {
 		super(workbenchPart);
 
 		setId(ADD_NEW_FIELD_ACTION_ID);
@@ -66,12 +66,12 @@ public class AddNewAttributeAction extends AbstractActionHandler {
 	protected void doRun(IProgressMonitor progressMonitor) {
 		selectedEP = getSelectedEditPart();
 
-		AddNewAttributeDialog attributeDialog = new AddNewAttributeDialog(Display.getCurrent().getActiveShell(),
+		AddNewFieldDialog fieldDialog = new AddNewFieldDialog(Display.getCurrent().getActiveShell(),
 				new Class[] { IRegistryFile.class });
-		attributeDialog.create();
-		attributeDialog.open();
+		fieldDialog.create();
+		fieldDialog.open();
 
-		if (attributeDialog.getName() != null && attributeDialog.getSchemaType() != null) {
+		if (fieldDialog.getName() != null && fieldDialog.getSchemaType() != null) {
 
 			if (null != selectedEP) {
 				// Returns the TreeNodeImpl object respective to selectedEP
@@ -81,10 +81,10 @@ public class AddNewAttributeAction extends AbstractActionHandler {
 
 				// Configure the new element by setting default values
 				Element elementNew = DataMapperFactory.eINSTANCE.createElement();
-				elementNew.setName(attributeDialog.getName());
+				elementNew.setName(fieldDialog.getName());
 				elementNew.setLevel(selectedNode.getLevel() + 1);
 				
-				switch (attributeDialog.getSchemaType()) {
+				switch (fieldDialog.getSchemaType()) {
 				case "ARRAY":
 					elementNew.setSchemaDataType(SchemaDataType.ARRAY);
 					break;

@@ -30,11 +30,11 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 
-public class AddNewAttributeDialog extends Dialog {
+public class AddNewFieldDialog extends Dialog {
 
 	private Text textRootName;
 	private Combo schemaTypeCombo;
-	private Composite compositeAttribute;
+	private Composite compositeField;
 	
 	private String name;
 	private String schemaType;
@@ -50,7 +50,7 @@ public class AddNewAttributeDialog extends Dialog {
 	 * 
 	 * @param parentShell
 	 */
-	public AddNewAttributeDialog(Shell parentShell, Class<?>[] type) {
+	public AddNewFieldDialog(Shell parentShell, Class<?>[] type) {
 		super(parentShell);
 		setShellStyle(SWT.CLOSE | SWT.TITLE | SWT.BORDER | SWT.OK | SWT.APPLICATION_MODAL);
 	}
@@ -67,19 +67,19 @@ public class AddNewAttributeDialog extends Dialog {
 		getShell().setText(DIALOG_TITLE);
 
 
-		compositeAttribute = new Composite(container, SWT.NONE);
+		compositeField = new Composite(container, SWT.NONE);
 		GridData gd_composite_2 = new GridData(SWT.LEFT, SWT.CENTER, false, false, 1, 1);
 		gd_composite_2.widthHint = 575;
-		compositeAttribute.setLayoutData(gd_composite_2);
-		compositeAttribute.setLayout(new GridLayout(5, false));
+		compositeField.setLayoutData(gd_composite_2);
+		compositeField.setLayout(new GridLayout(5, false));
 
-		Label lblRootNameLabel = new Label(compositeAttribute, SWT.NONE);
+		Label lblRootNameLabel = new Label(compositeField, SWT.NONE);
 		lblRootNameLabel.setText(LABEL_NAME);
-		new Label(compositeAttribute, SWT.NONE);
-		new Label(compositeAttribute, SWT.NONE);
-		new Label(compositeAttribute, SWT.NONE);
+		new Label(compositeField, SWT.NONE);
+		new Label(compositeField, SWT.NONE);
+		new Label(compositeField, SWT.NONE);
 
-		textRootName = new Text(compositeAttribute, SWT.BORDER);
+		textRootName = new Text(compositeField, SWT.BORDER);
 		textRootName.setText(NEW_ROOT_RECORD_ID);
 		
 		textRootName.addModifyListener(new ModifyListener() {
@@ -89,13 +89,13 @@ public class AddNewAttributeDialog extends Dialog {
 		});
 		textRootName.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
 
-		Label lblSchemaTypeLabel = new Label(compositeAttribute, SWT.NONE);
+		Label lblSchemaTypeLabel = new Label(compositeField, SWT.NONE);
 		lblSchemaTypeLabel.setText(LABEL_SCHEMATYPE);
-		new Label(compositeAttribute, SWT.NONE);
-		new Label(compositeAttribute, SWT.NONE);
-		new Label(compositeAttribute, SWT.NONE);
+		new Label(compositeField, SWT.NONE);
+		new Label(compositeField, SWT.NONE);
+		new Label(compositeField, SWT.NONE);
 		
-		schemaTypeCombo = new Combo(compositeAttribute, SWT.DROP_DOWN | SWT.READ_ONLY);
+		schemaTypeCombo = new Combo(compositeField, SWT.DROP_DOWN | SWT.READ_ONLY);
 		schemaTypeCombo.addModifyListener(new ModifyListener() {
 			public void modifyText(ModifyEvent arg0) {
 			}

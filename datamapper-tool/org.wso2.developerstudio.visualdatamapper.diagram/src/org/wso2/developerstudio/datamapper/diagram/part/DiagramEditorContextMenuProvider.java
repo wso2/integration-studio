@@ -18,7 +18,7 @@ import org.eclipse.gmf.runtime.diagram.ui.providers.DiagramContextMenuProvider;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.ui.IWorkbenchPart;
-import org.wso2.developerstudio.datamapper.diagram.custom.action.AddNewAttributeAction;
+import org.wso2.developerstudio.datamapper.diagram.custom.action.AddNewFieldAction;
 import org.wso2.developerstudio.datamapper.diagram.custom.action.AddNewTypeAction;
 import org.wso2.developerstudio.datamapper.diagram.custom.action.AddNewRecordsListAction;
 import org.wso2.developerstudio.datamapper.diagram.custom.action.AddNewRootRecordAction;
@@ -125,9 +125,9 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
 		// Initialize new field context sensitive actions.
 		addNewFieldContextActions = new HashMap<Class<? extends ShapeNodeEditPart>, AbstractActionHandler>();
 		// New field actions are added to treenode editparts
-		addNewFieldContextActions.put(TreeNodeEditPart.class, new AddNewAttributeAction(part));
-		addNewFieldContextActions.put(TreeNode2EditPart.class, new AddNewAttributeAction(part));
-		addNewFieldContextActions.put(TreeNode3EditPart.class, new AddNewAttributeAction(part));
+		addNewFieldContextActions.put(TreeNodeEditPart.class, new AddNewFieldAction(part));
+		addNewFieldContextActions.put(TreeNode2EditPart.class, new AddNewFieldAction(part));
+		addNewFieldContextActions.put(TreeNode3EditPart.class, new AddNewFieldAction(part));
 
 		//Initialize renaming action
 		// Initialize new field context sensitive actions.

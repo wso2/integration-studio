@@ -47,6 +47,8 @@ public class ConcatOperatorTransformer extends AbstractDMOperatorTransformer {
                 operationBuilder.append("'';");
             }
         } else if (DifferentLevelArrayMappingConfigGenerator.class.equals(generatorClass)) {
+            @SuppressWarnings("unchecked")
+            Stack<ForLoopBean> tempParentForLoopBeanStack = (Stack<ForLoopBean>) parentForLoopBeanStack.clone();
             if (inputVariables.size() >= 1) {
                 operationBuilder.append(ScriptGenerationUtil.getPrettyVariableNameInForOperation(inputVariables.get(0),
                         variableTypeMap, parentForLoopBeanStack)
@@ -55,7 +57,7 @@ public class ConcatOperatorTransformer extends AbstractDMOperatorTransformer {
                         + "',"
                         + concatOperator
                         + ScriptGenerationUtil.getPrettyVariableNameInForOperation(inputVariables.get(1),
-                                variableTypeMap, parentForLoopBeanStack) + ");");
+                                variableTypeMap, tempParentForLoopBeanStack) + ");");
             } else {
                 operationBuilder.append("'';");
             }

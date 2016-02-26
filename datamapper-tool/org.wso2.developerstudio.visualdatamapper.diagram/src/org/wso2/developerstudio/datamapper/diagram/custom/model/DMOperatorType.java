@@ -19,5 +19,5 @@ package org.wso2.developerstudio.datamapper.diagram.custom.model;
  * This enum type represent the operator types of Data Mapper diagram
  */
 public enum DMOperatorType {
-    CONCAT, DIRECT, SPLIT, UPPERCASE, LOWERCASE
+    CONCAT, DIRECT, SPLIT, UPPERCASE, LOWERCASE, CONSTANT
 }

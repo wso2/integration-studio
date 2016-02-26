@@ -33,6 +33,7 @@ import org.wso2.developerstudio.datamapper.OperatorRightConnector;
 import org.wso2.developerstudio.datamapper.Output;
 import org.wso2.developerstudio.datamapper.SchemaDataType;
 import org.wso2.developerstudio.datamapper.impl.ConcatImpl;
+import org.wso2.developerstudio.datamapper.impl.ConstantImpl;
 import org.wso2.developerstudio.datamapper.impl.ElementImpl;
 import org.wso2.developerstudio.datamapper.impl.LowerCaseImpl;
 import org.wso2.developerstudio.datamapper.impl.OperatorImpl;
@@ -376,6 +377,8 @@ public class DataMapperDiagramModel {
             return DMOperatorType.UPPERCASE;
         } else if (nextElement instanceof LowerCaseImpl) {
             return DMOperatorType.LOWERCASE;
+        } else if (nextElement instanceof ConstantImpl) {
+            return DMOperatorType.CONSTANT;
         } else {
             throw new IllegalArgumentException("Unknown operator detected : " + nextElement.toString());
         }
@@ -428,6 +431,14 @@ public class DataMapperDiagramModel {
                 addVariableTypeToMap(variableName, element.getSchemaDataType());
             } else if (objectElement instanceof TreeNodeImpl) {
                 TreeNodeImpl treeNode = (TreeNodeImpl) objectElement;
+                if (treeNode.getLevel() <= parentVariableStack.size()) {
+                    while (parentVariableStack.size() >= treeNode.getLevel()) {
+                        parentVariableStack.pop();
+                    }
+                } else if (treeNode.getLevel() > (parentVariableStack.size() + 1)) {
+                    throw new IllegalArgumentException("Illegal element level detected : element level- "
+                            + treeNode.getLevel() + " , parents level- " + parentVariableStack.size());
+                }
                 String variableName = getVariableName(DMVariableType.OUTPUT, parentVariableStack, treeNode.getName());
                 SchemaDataType variableType = treeNode.getSchemaDataType();
                 int parentVariableIndex = -1;

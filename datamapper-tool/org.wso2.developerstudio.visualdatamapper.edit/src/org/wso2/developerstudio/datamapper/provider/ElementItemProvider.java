@@ -238,7 +238,7 @@ public class ElementItemProvider
 				 DataMapperPackage.Literals.ELEMENT__ORDER,
 				 true,
 				 false,
-				 true,
+				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
 				 null));
@@ -319,6 +319,7 @@ public class ElementItemProvider
 			case DataMapperPackage.ELEMENT__DOC:
 			case DataMapperPackage.ELEMENT__DEFAULT:
 			case DataMapperPackage.ELEMENT__ALIASES:
+			case DataMapperPackage.ELEMENT__ORDER:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case DataMapperPackage.ELEMENT__OUT_NODE:

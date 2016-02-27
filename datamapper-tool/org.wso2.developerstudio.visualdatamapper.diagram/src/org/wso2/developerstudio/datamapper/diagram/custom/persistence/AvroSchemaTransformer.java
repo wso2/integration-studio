@@ -274,7 +274,13 @@ public class AvroSchemaTransformer {
 			orderValue = Order.valueOf(order);
 		}
 		
-		field = new Field(element.getName(), schemaForField, docValue,defaultValueNode, orderValue);
+		//Fixing the NullPointer Exception in Schema
+		if(docValue == null && defaultValue == null){
+			field = new Field(element.getName(),schemaForField, null, null);
+
+		}else{
+			field = new Field(element.getName(), schemaForField, docValue,defaultValueNode, orderValue);
+		}
 		
 		for(String aliase : element.getAliases()){
 			field.addAlias(aliase);

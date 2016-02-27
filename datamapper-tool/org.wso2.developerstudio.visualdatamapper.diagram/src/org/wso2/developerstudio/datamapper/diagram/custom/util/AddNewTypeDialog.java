@@ -192,7 +192,7 @@ public class AddNewTypeDialog extends Dialog {
 	 */
 	@Override
 	protected Point getInitialSize() {
-		return new Point(620, 300);
+		return new Point(620, 280);
 	}
 
 	@Override

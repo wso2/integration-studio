@@ -47,19 +47,29 @@ public class AvroSchemaTransformer {
 	 */
 	public Schema transform(TreeNodeImpl treeNodeModel) {
 		// Schema of the root element
-		Schema schema = Schema.createRecord(treeNodeModel.getName(), treeNodeModel.getDoc(), treeNodeModel.getNamespace(), false);
+		String doc = null;
+		String namespace = null;
+		if(StringUtils.isNotEmpty(treeNodeModel.getDoc())){
+			doc = treeNodeModel.getDoc();
+		}
+		if(StringUtils.isNotEmpty(treeNodeModel.getNamespace())){
+			namespace = treeNodeModel.getNamespace();
+		}
+        
+		Schema schema = Schema.createRecord(treeNodeModel.getName(), doc, namespace, false);
+		
 		for(String aliase : treeNodeModel.getAliases()){
 			schema.addAlias(aliase);
 		}
 		List<Field> fields = new ArrayList<Field>();
 
 		if (!treeNodeModel.getNode().isEmpty()) {
-			for (TreeNode node : treeNodeModel.getNode()) {
-				if (node.getSchemaDataType().equals(SchemaDataType.RECORD)) {
-					fields.add(createRecord(node));
+			for (TreeNode nodeInRoot : treeNodeModel.getNode()) {
+				if (nodeInRoot.getSchemaDataType().equals(SchemaDataType.RECORD)) {
+					fields.add(createRecord(nodeInRoot));
 				} else {
 					// handles the case of schemaDataType.ARRAY
-					fields.add(createArray(node));
+					fields.add(createArray(nodeInRoot));
 				}
 			}
 		}
@@ -82,33 +92,56 @@ public class AvroSchemaTransformer {
 	}
 
 	private Field createRecord(TreeNode node) {
+		JsonNode defaultValue = null;
+		String docValue = null;
+		Order order = null;
+		String doc = null;
+		String namespace = null;
+		
+		if(StringUtils.isNotEmpty(node.getDoc())){
+			doc = node.getDoc();
+		}
+		if(StringUtils.isNotEmpty(node.getNamespace())){
+			namespace = node.getNamespace();
+		}
+		
 		// Schema for the field
-		Schema schema1 = Schema.createRecord(node.getName(), node.getDoc(), node.getNamespace(), false);
-		List<Field> fields1 = new ArrayList<Field>();
+		Schema schemaForRecord = Schema.createRecord(node.getName(), doc, namespace, false);
+		
+		for(String aliase : node.getAliases()){
+			schemaForRecord.addAlias(aliase);
+		}
+		List<Field> fieldsforRecord = new ArrayList<Field>();
 
 		if (!node.getNode().isEmpty()) {
-			for (TreeNode node1 : node.getNode()) {
-				if (node1.getSchemaDataType().equals(SchemaDataType.RECORD)) {
-					fields1.add(createRecord(node1));
+			for (TreeNode nodeInRecord : node.getNode()) {
+				if (nodeInRecord.getSchemaDataType().equals(SchemaDataType.RECORD)) {
+					fieldsforRecord.add(createRecord(nodeInRecord));
 				} else {
 					// handles the case of schemaDataType.ARRAY
-					fields1.add(createArray(node1));
+					fieldsforRecord.add(createArray(nodeInRecord));
 				}
 			}
 		}
 		if (!node.getElement().isEmpty()) {
 			for (Element element : node.getElement()) {
-				/*
-				 * SchemaDataType can be either BOOLEAN, BYTES, DOUBLE, FLOAT,
-				 * INT, LONG, STRING
-				 */
-				fields1.add(createField(element));
+		
+				Field createdField = createField(element);
+				if(createdField.defaultValue() != null ){
+					defaultValue = createdField.defaultValue();
+				}
+				if(StringUtils.isNotEmpty(createdField.doc())){
+					docValue = createdField.doc();
+				}
+				if(createdField.order() != null){
+					order = createdField.order();
+				}
+				fieldsforRecord.add(createdField);	
 			}
 		}
-		schema1.setFields(fields1);
-
+		schemaForRecord.setFields(fieldsforRecord);
 		// This is added as a field for the parent RECORD
-		Field field = new Field(node.getName(), schema1, null, null);
+		Field field = new Field(node.getName(), schemaForRecord, docValue, defaultValue, order);
 		return field;
 	}
 
@@ -118,23 +151,38 @@ public class AvroSchemaTransformer {
 		 * is set as the default element type for ARRAY. Schema for the RECORD
 		 * under ARRAY
 		 */
-		Schema recordSchema = Schema.createRecord(node.getName(), node.getDoc(), node.getNamespace(), false);
+		
+		String doc = null;
+		String namespace = null;
+		
+		if(StringUtils.isNotEmpty(node.getDoc())){
+			doc = node.getDoc();
+		}
+		if(StringUtils.isNotEmpty(node.getNamespace())){
+			namespace = node.getNamespace();
+		}
+		
+		Schema schemaForArray = Schema.createRecord(node.getName(), doc, namespace, false);
+		
+		for(String aliase : node.getAliases()){
+			schemaForArray.addAlias(aliase);
+		}
 		/*
 		 * FIXME Appends the suffix "Item" to identify as the RECORD under ARRAY
 		 * Schema recordSchema = Schema.createRecord(node.getName() +
 		 * EditorUtils.AVRO_ARRAY_ITEM_SUFFIX, null, null, false);
 		 */
-		List<Field> fieldsForRecord = new ArrayList<Field>();
+		List<Field> fieldsForArray = new ArrayList<Field>();
 
 		// check whether any records or fields exist as children
 		if (!node.getNode().isEmpty() || !node.getElement().isEmpty()) {
 			if (!node.getNode().isEmpty()) {
-				for (TreeNode node1 : node.getNode()) {
-					if (node1.getSchemaDataType().equals(SchemaDataType.RECORD)) {
-						fieldsForRecord.add(createRecord(node1));
+				for (TreeNode nodeInArray : node.getNode()) {
+					if (nodeInArray.getSchemaDataType().equals(SchemaDataType.RECORD)) {
+						fieldsForArray.add(createRecord(nodeInArray));
 					} else {
 						// handles the case of schemaDataType.ARRAY
-						fieldsForRecord.add(createArray(node1));
+						fieldsForArray.add(createArray(nodeInArray));
 					}
 				}
 			}
@@ -144,7 +192,7 @@ public class AvroSchemaTransformer {
 					 * SchemaDataType can be either BOOLEAN, BYTES, DOUBLE,
 					 * FLOAT, INT, LONG, STRING
 					 */
-					fieldsForRecord.add(createField(element));
+					fieldsForArray.add(createField(element));
 				}
 			}
 		} else { // create a null array
@@ -153,10 +201,10 @@ public class AvroSchemaTransformer {
 			return new Field(node.getName(), nullArraySchema, null, null);
 		}
 
-		recordSchema.setFields(fieldsForRecord);
+		schemaForArray.setFields(fieldsForArray);
 
 		// Schema for ARRAY type
-		Schema arraySchema = Schema.createArray(recordSchema);
+		Schema arraySchema = Schema.createArray(schemaForArray);
 		// New field including ARRAY type schema
 		Field field = new Field(node.getName(), arraySchema, null, null);
 		return field;
@@ -200,29 +248,33 @@ public class AvroSchemaTransformer {
 
 		}
 		// Schema for type:field
-		Schema schema1 = Schema.create(fieldDatatype);
+		Schema schemaForField = Schema.create(fieldDatatype);
 		Field field = null ;
+		ObjectMapper mapper = new ObjectMapper();
+		String defaultValue = null;
+		String order = null;
+		JsonNode defaultValueNode = null;
+        Order orderValue = null;
+        String docValue = null;
+        
+        if(StringUtils.isNotEmpty(element.getDoc())){
+        	docValue = element.getDoc();
+        }
 		
-		if(element.getDefault() == null && element.getOrder() == null){
-			field = new Field(element.getName(), schema1, element.getDoc() , null);
-		}
-		else{
-			ObjectMapper mapper = new ObjectMapper();
-	        String defaultValue = element.getDefault();
-	        JsonNode defaultValueNode = null;
-	        Order orderValue = null;
-			try {	
-				if(StringUtils.isNotEmpty(defaultValue)){
-					defaultValueNode = mapper.readTree(defaultValue);
-				}
-				if(StringUtils.isNotEmpty(element.getOrder())){
-					orderValue = Order.valueOf(element.getOrder());
-				}
-				field = new Field(element.getName(), schema1, element.getDoc() ,defaultValueNode, orderValue);
+		if(StringUtils.isNotEmpty(element.getDefault())){
+			defaultValue = element.getDefault();
+			try {
+				defaultValueNode = mapper.readTree(defaultValue);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 		}
+		if(StringUtils.isNotEmpty(element.getOrder())){
+			order = element.getOrder();
+			orderValue = Order.valueOf(order);
+		}
+		
+		field = new Field(element.getName(), schemaForField, docValue,defaultValueNode, orderValue);
 		
 		for(String aliase : element.getAliases()){
 			field.addAlias(aliase);

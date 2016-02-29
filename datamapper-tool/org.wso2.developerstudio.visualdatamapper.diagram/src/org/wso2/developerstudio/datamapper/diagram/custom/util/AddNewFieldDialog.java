@@ -15,13 +15,19 @@
  */
 package org.wso2.developerstudio.datamapper.diagram.custom.util;
 
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
 import org.apache.commons.lang.StringUtils;
+import org.codehaus.jackson.JsonNode;
+import org.codehaus.jackson.map.ObjectMapper;
+import org.codehaus.jettison.json.JSONException;
+import org.codehaus.jettison.json.JSONObject;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.dialogs.IDialogConstants;
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
@@ -41,7 +47,6 @@ public class AddNewFieldDialog extends Dialog {
 	private Combo schemaTypeCombo;
 	private Text textDoc;
 	private Text textAliases;
-	//private Combo defaultCombo;
 	private Text textDefault;
 	private Combo orderCombo;
 	private Composite compositeField;
@@ -50,13 +55,12 @@ public class AddNewFieldDialog extends Dialog {
 	private String doc;
 	private String order;
 	private Set<String> aliases;
-	private String defaultValue;
+	private JsonNode defaultValue;
 	private String schemaType;
 
 	private String[] DATA_TYPES = { "STRING", "INT", "ARRAY", "BOOLEAN", "BYTES", "DOUBLE", "ENUM", "FIXED", "FLOAT",
 			"INT", "LONG", "MAP", "NULL", "RECORD", "UNION" };
 	private String[] ORDER_TYPES = { "ASCENDING", "DESCENDING", "IGNORE" };
-	//private String[] DEFAULT_VALUES = {"null","number", "String", "array", "object", "true", "false", "integer"};
 	
 	private static final String DIALOG_TITLE = "Add new Attribute";
 	private static final String LABEL_NAME = "Name :";
@@ -66,6 +70,7 @@ public class AddNewFieldDialog extends Dialog {
 	private static final String LABEL_DEFAULT = "Default :";
 	private static final String LABEL_ORDER = "Order :";
 	private static final String NEW_ROOT_RECORD_ID = "NewAttribute";
+	private static final String DEFAULT = "default";
 
 	/**
 	 * Create the dialog.
@@ -164,18 +169,6 @@ public class AddNewFieldDialog extends Dialog {
 		new Label(compositeField, SWT.NONE);
 		new Label(compositeField, SWT.NONE);
 
-		/*defaultCombo = new Combo(compositeField, SWT.DROP_DOWN | SWT.READ_ONLY);
-		defaultCombo.addModifyListener(new ModifyListener() {
-			public void modifyText(ModifyEvent arg0) {
-			}
-		});
-
-		defaultCombo.setItems(DEFAULT_VALUES);
-		defaultCombo.select(0);
-		defaultCombo.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
-
-		defaultCombo.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));*/
-
 		textDefault = new Text(compositeField, SWT.BORDER);
 		textDefault.setText("");
 
@@ -221,7 +214,7 @@ public class AddNewFieldDialog extends Dialog {
 	 */
 	@Override
 	protected Point getInitialSize() {
-		return new Point(620, 280);
+		return new Point(620, 300);
 	}
 
 	@Override
@@ -229,7 +222,16 @@ public class AddNewFieldDialog extends Dialog {
 		setName(textRootName.getText());
 		setSchemaType(schemaTypeCombo.getText());
 		setDoc(textDoc.getText());
-		setDefault(textDefault.getText());
+		JsonNode defValue;
+		try {
+			defValue = getDefaultValue(textDefault.getText());
+			setDefault(defValue);
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}catch (NumberFormatException nfe) {
+		MessageDialog.openError(getShell(), "Error", "Invalid value for type " + schemaTypeCombo.getText());
+		return;
+		}
 		setOrder(orderCombo.getText());
 		Set<String> aliasesSet = getAliasesSet();
 		setAliases(aliasesSet);
@@ -237,7 +239,79 @@ public class AddNewFieldDialog extends Dialog {
 	}
 
 	/**
-	 * Gets the Aliases as a set
+	 * @throws JSONException 
+	 * Use to get the default value
+	 * @param defaultValue 
+	 * @throws  
+	 */
+	private JsonNode getDefaultValue(String defaultValue) throws JSONException, NumberFormatException {
+		JsonNode defaultValueNode = null;
+		if (StringUtils.isNotEmpty(defaultValue)) {
+			defaultValueNode = getJsonNode(defaultValue);
+		}
+		return defaultValueNode;
+	}
+
+	/**
+	 * Gets the Json Object based on the data type
+	 * @param defaultValue
+	 * @param jsonObj
+	 * @param mapper 
+	 * @throws JSONException
+	 */
+	private JsonNode getJsonNode(String defaultValue) throws JSONException {
+		ObjectMapper mapper = new ObjectMapper();
+		JSONObject jsonObj = new JSONObject();
+		JsonNode defNode= null;
+		
+		switch (schemaTypeCombo.getText()) {
+
+		case "BOOLEAN":
+			jsonObj.append(DEFAULT, Boolean.parseBoolean(defaultValue));
+			break;
+		case "BYTES":
+			jsonObj.append(DEFAULT, defaultValue);
+			break;
+		case "DOUBLE":
+			jsonObj.append(DEFAULT, Double.parseDouble(defaultValue));
+			break;
+		case "FLOAT":
+			jsonObj.append(DEFAULT, Float.parseFloat(defaultValue));
+			break;
+		case "INT":
+			jsonObj.append(DEFAULT, Integer.parseInt(defaultValue));
+			break;
+		case "LONG":
+			jsonObj.append(DEFAULT, Long.parseLong(defaultValue));
+			break;
+		case "STRING":
+			jsonObj.append(DEFAULT, defaultValue);
+			break;
+		case "NULL":
+			break;
+		case "UNION":
+			break;
+		default:
+			break;
+
+		}
+		
+		JsonNode arrNode = null;
+		try {
+			arrNode = mapper.readTree(jsonObj.toString()).get(DEFAULT);
+			if (arrNode.isArray()) {
+			    for (final JsonNode objNode : arrNode) {
+			        defNode = objNode;
+			    }
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return defNode;
+	}
+
+	/**
+	 * Use to get the Aliases as a set
 	 * 
 	 * @return
 	 */
@@ -272,10 +346,10 @@ public class AddNewFieldDialog extends Dialog {
 		this.aliases = aliases;
 	}
 
-	public void setDefault(String defaultValue) {
+	public void setDefault(JsonNode defaultValue){
 		this.defaultValue = defaultValue;
 	}
-
+	
 	public void setOrder(String order) {
 		this.order = order;
 	}
@@ -288,10 +362,10 @@ public class AddNewFieldDialog extends Dialog {
 		return doc;
 	}
 
-	public String getDefault() {
-		return defaultValue;
+	public JsonNode getDefault() {
+		return this.defaultValue;
 	}
-
+	
 	public String getOrder() {
 		return order;
 	}

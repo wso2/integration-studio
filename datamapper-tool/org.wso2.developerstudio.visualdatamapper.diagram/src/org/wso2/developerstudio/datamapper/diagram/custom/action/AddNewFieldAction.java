@@ -135,8 +135,8 @@ public class AddNewFieldAction extends AbstractActionHandler {
 				if (StringUtils.isNotEmpty(fieldDialog.getDoc())) {
 					elementNew.setDoc(fieldDialog.getDoc());
 				}
-				if (StringUtils.isNotEmpty(fieldDialog.getDoc())) {
-					elementNew.setDefault(fieldDialog.getDefault());
+				if (fieldDialog.getDefault() != null) {
+					elementNew.setDefault(fieldDialog.getDefault().toString());
 				}
 				if (fieldDialog.getAliases() != null) {
 					elementNew.getAliases().addAll(fieldDialog.getAliases());

@@ -145,7 +145,12 @@ public class AvroSchemaTransformer {
 		//Fixing the NullPointer Exception in Schema
 		if(docValue == null && defaultValue == null){
 			field = new Field(node.getName(),schemaForRecord, null, null);
-
+		}
+		else if(docValue == null && defaultValue != null){
+			field = new Field(node.getName(),schemaForRecord, null, defaultValue);
+		}
+		else if(defaultValue == null && docValue != null){
+			field = new Field(node.getName(),schemaForRecord, docValue, null);
 		}else{
 			field = new Field(node.getName(), schemaForRecord, docValue,defaultValue, order);
 		}
@@ -219,6 +224,12 @@ public class AvroSchemaTransformer {
 
 	private Field createField(Element element) {
 		Type fieldDatatype = null;
+		Field field = null ;
+		JsonNode defaultValueObject = null;
+		ObjectMapper mapper = new ObjectMapper();
+		String order = null;
+        Order orderValue = null;
+        String docValue = null;
 
 		switch (element.getSchemaDataType().getValue()) {
 
@@ -241,7 +252,7 @@ public class AvroSchemaTransformer {
 			fieldDatatype = Type.LONG;
 			break;
 		case SchemaDataType.STRING_VALUE:
-			fieldDatatype = Type.STRING;
+			fieldDatatype = Type.STRING;	
 			break;
 		case SchemaDataType.NULL_VALUE:
 			fieldDatatype = Type.NULL;
@@ -256,42 +267,50 @@ public class AvroSchemaTransformer {
 		}
 		// Schema for type:field
 		Schema schemaForField = Schema.create(fieldDatatype);
-		Field field = null ;
-		ObjectMapper mapper = new ObjectMapper();
-		String defaultValue = null;
-		String order = null;
-		JsonNode defaultValueNode = null;
-        Order orderValue = null;
-        String docValue = null;
         
         if(StringUtils.isNotEmpty(element.getDoc())){
         	docValue = element.getDoc();
         }
-		
-		if(StringUtils.isNotEmpty(element.getDefault())){
-			defaultValue = element.getDefault();
-			try {
-				defaultValueNode = mapper.readTree(defaultValue);
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
+        
 		if(StringUtils.isNotEmpty(element.getOrder())){
 			order = element.getOrder();
 			orderValue = Order.valueOf(order);
 		}
+	
+		defaultValueObject = getDefaultValue(element.getDefault(), mapper);
 		
-		//Fixing the NullPointer Exception in Schema
-		if(docValue == null && defaultValue == null){
-			field = new Field(element.getName(),schemaForField, null, null);
-
-		}else{
-			field = new Field(element.getName(), schemaForField, docValue,defaultValueNode, orderValue);
+		// Fixing the NullPointer Exception in Schema
+		if (docValue == null && defaultValueObject == null) {
+			field = new Field(element.getName(), schemaForField, null, null);
+		} else if (docValue == null && defaultValueObject != null) {
+			field = new Field(element.getName(), schemaForField, null, defaultValueObject);
+		} else if (defaultValueObject == null && docValue != null) {
+			field = new Field(element.getName(), schemaForField, docValue, null);
+		} else {	
+		    field = new Field(element.getName(), schemaForField, docValue,defaultValueObject, orderValue);
 		}
 		
 		for(String aliase : element.getAliases()){
 			field.addAlias(aliase);
 		}
 		return field;
+	}
+	
+	/**
+	 * Gets the default Value
+	 * @param defaultValue
+	 * @param mapper
+	 * @return
+	 */
+	private JsonNode getDefaultValue(String defaultValue, ObjectMapper mapper){
+		JsonNode defaultValueNode = null;
+		try {
+			if(StringUtils.isNotEmpty(defaultValue)){
+			defaultValueNode = mapper.readTree(defaultValue);
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return defaultValueNode;
 	}
 }

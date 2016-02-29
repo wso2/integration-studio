@@ -97,6 +97,7 @@ public class AvroSchemaTransformer {
 		Order order = null;
 		String doc = null;
 		String namespace = null;
+		Field field = null;
 		
 		if(StringUtils.isNotEmpty(node.getDoc())){
 			doc = node.getDoc();
@@ -140,8 +141,14 @@ public class AvroSchemaTransformer {
 			}
 		}
 		schemaForRecord.setFields(fieldsforRecord);
-		// This is added as a field for the parent RECORD
-		Field field = new Field(node.getName(), schemaForRecord, docValue, defaultValue, order);
+		
+		//Fixing the NullPointer Exception in Schema
+		if(docValue == null && defaultValue == null){
+			field = new Field(node.getName(),schemaForRecord, null, null);
+
+		}else{
+			field = new Field(node.getName(), schemaForRecord, docValue,defaultValue, order);
+		}
 		return field;
 	}
 

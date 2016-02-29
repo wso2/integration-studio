@@ -1,7 +1,6 @@
 package org.wso2.developerstudio.datamapper.diagram.tree.model;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -65,9 +64,6 @@ public class Tree {
 	}
 	
 	public Set<String> getAliases() {
-		if (aliases == null) {
-			aliases = new HashSet<String>();
-		}
 		return this.aliases;
 	}
 

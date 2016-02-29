@@ -20,6 +20,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.apache.commons.lang.StringUtils;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.swt.SWT;
@@ -209,9 +210,13 @@ public class AddNewRootRecordDialog extends Dialog {
 	 * @return
 	 */
 	private Set<String> getAliasesSet() {
+		Set<String> aliasesSet = null;
 		String aliases = textAliases.getText();
-		String[] aliasesArray= aliases.split(",");
-		Set<String> aliasesSet = new HashSet<String>(Arrays.asList(aliasesArray));
+		if(StringUtils.isNotEmpty(aliases)){
+			String[] aliasesArray = aliases.split(",");
+			aliasesSet = new HashSet<String>(Arrays.asList(aliasesArray));
+		}
+		
 		return aliasesSet;
 	}
 	
@@ -251,9 +256,6 @@ public class AddNewRootRecordDialog extends Dialog {
 	}
 	
 	public Set<String> getAliases() {
-		if (aliases == null) {
-			aliases = new HashSet<String>();
-		}
 		return aliases;
 	}
 	

@@ -16,11 +16,10 @@
 
 package org.wso2.developerstudio.datamapper.diagram.custom.util;
 
-import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import org.apache.commons.io.FileUtils;
+import org.apache.avro.Schema;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
@@ -28,17 +27,20 @@ import org.eclipse.gef.EditPart;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.ModifyEvent;
+import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.FormAttachment;
 import org.eclipse.swt.layout.FormData;
 import org.eclipse.swt.layout.FormLayout;
+import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Display;
-import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.swt.widgets.Group;
+import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Link;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
@@ -50,6 +52,7 @@ import org.wso2.developerstudio.datamapper.diagram.custom.action.Messages;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.InputEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.OutputEditPart;
 import org.wso2.developerstudio.datamapper.diagram.part.DataMapperSchemaEditorUtil;
+import org.wso2.developerstudio.datamapper.diagram.schemagen.util.AvroSchemaGeneratorHelper;
 import org.wso2.developerstudio.eclipse.capp.core.artifacts.manager.CAppEnvironment;
 import org.wso2.developerstudio.eclipse.capp.core.model.RegistryConnection;
 //import org.wso2.developerstudio.eclipse.esb.presentation.ui.DeveloperStudioElementProviderDialog;
@@ -60,11 +63,14 @@ import org.wso2.developerstudio.eclipse.registry.core.interfaces.IRegistryData;
 import org.wso2.developerstudio.eclipse.registry.core.interfaces.IRegistryHandler;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
+import org.wso2.developerstudio.datamapper.diagram.schemagen.util.*;
 
 public class SchemaKeyEditorDialog extends Dialog {
 
+	
 	private Text schemaKeyTextField;
-	private FormData schemaKeyTextFieldLayoutData;
+	private Label lblSchemaTypeLabel;
+	private Combo schemaTypeCombo;
 	private EditPart selectedEP;
 	private IFile inputFile;
 	private String schemaType;
@@ -104,6 +110,7 @@ public class SchemaKeyEditorDialog extends Dialog {
 	private static final String REASON_REGISTRY_BROWSER = Messages.SchemaKeyEditorDialog_ReasonRegistryBrowser;
 	private static final String ERROR_REGISTRY_URL = Messages.SchemaKeyEditorDialog_ErrorRegistryURL;
 	private static final String REASON_REGISTRY_URL = Messages.SchemaKeyEditorDialog_ReasonRegistryURL;
+	private static final String SELECT_SCHEMA_SOURCE = Messages.SchemaKeyEditorDialog_SelecSchemaSource;;
 	private static final String ERROR_DIALOG_VISIBILITY = "Error occured while changing dialog visibility"; //$NON-NLS-1$
 
 	public SchemaKeyEditorDialog(Shell parent, EditPart selectedEP, IWorkbenchPart workbenchPart,
@@ -153,23 +160,36 @@ public class SchemaKeyEditorDialog extends Dialog {
 		fl_grpPropertyKey.marginHeight = 10;
 		fl_grpPropertyKey.marginWidth = 10;
 		grpPropertyKey.setLayout(fl_grpPropertyKey);
-
-		// Selected schema key to be appeared here OR typed
-		schemaKeyTextField = new Text(grpPropertyKey, SWT.BORDER);
-		schemaKeyTextField.addSelectionListener(new SelectionAdapter() {
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				saveConfiguration();
+		
+		FormData lableLayoutData  = new FormData();
+		lblSchemaTypeLabel = new Label(grpPropertyKey, SWT.NORMAL);
+		lblSchemaTypeLabel.setText(SELECT_SCHEMA_SOURCE);
+		lblSchemaTypeLabel.setLayoutData(lableLayoutData);
+				
+		
+        FormData comboLayoutData = new FormData();
+        comboLayoutData.left = new FormAttachment(lblSchemaTypeLabel, 10);
+		schemaTypeCombo = new Combo(grpPropertyKey, SWT.DROP_DOWN | SWT.READ_ONLY);
+		schemaTypeCombo.addModifyListener(new ModifyListener() {
+			public void modifyText(ModifyEvent arg0) {
 			}
 		});
-		{
-			schemaKeyTextFieldLayoutData = new FormData();
-			schemaKeyTextFieldLayoutData.right = new FormAttachment(100, -8);
-			schemaKeyTextField.setLayoutData(schemaKeyTextFieldLayoutData);
+		int optionsLenght = SchemaImportOptions.values().length;
+		String[] optoins = new String[optionsLenght];
+		for (int i = 0; i < optionsLenght; i++) {
+			optoins[i] = SchemaImportOptions.values()[i].name();
 		}
-
-		// Link-click actions
+		schemaTypeCombo.setItems(optoins);
+		schemaTypeCombo.select(0);
+		schemaTypeCombo.setLayoutData(comboLayoutData);
+		
+	
+		FormData fd_link = new FormData();
+		fd_link.top = new FormAttachment(lblSchemaTypeLabel, 20);
 		Link link = new Link(grpPropertyKey, SWT.NONE);
+		link.setLayoutData(fd_link);
+		link.setText(SCHEMA_KEY_EDITOR_DIALOG_TEXT);
+		
 		link.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
@@ -185,19 +205,22 @@ public class SchemaKeyEditorDialog extends Dialog {
 				}
 			}
 		});
-		schemaKeyTextFieldLayoutData.top = new FormAttachment(link, 7);
-		schemaKeyTextFieldLayoutData.left = new FormAttachment(link, 0, SWT.LEFT);
-		FormData fd_link = new FormData();
-		fd_link.right = new FormAttachment(100, -4);
-		fd_link.left = new FormAttachment(0);
-		fd_link.top = new FormAttachment(0, -2);
-		fd_link.bottom = new FormAttachment(0, 15);
-		link.setLayoutData(fd_link);
 
-		// Set user enabled options
-		link.setText(SCHEMA_KEY_EDITOR_DIALOG_TEXT);
-
-		// TODO Create new schema option
+		// Selected schema key to be appeared here OR typed
+		schemaKeyTextField = new Text(grpPropertyKey, SWT.BORDER);
+		schemaKeyTextField.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				saveConfiguration();
+			}
+		});
+		{
+			FormData schemaKeyTextFieldLayoutData = new FormData();
+			schemaKeyTextFieldLayoutData.top = new FormAttachment(lblSchemaTypeLabel, 50);
+			schemaKeyTextFieldLayoutData.left = new FormAttachment(0, 5);
+			schemaKeyTextFieldLayoutData.right = new FormAttachment(100, -5);
+			schemaKeyTextField.setLayoutData(schemaKeyTextFieldLayoutData);
+		}
 
 		loadConfiguration();
 		return container;
@@ -373,20 +396,10 @@ public class SchemaKeyEditorDialog extends Dialog {
 	private void openFileBrowser() {
 		hide();
 		try {
-			Display display = Display.getDefault();
-			Shell shell = new Shell(display);
-			FileDialog fid = new FileDialog(shell);
-			fid.setFilterExtensions(new String[] { FILTER_EXTENSION_AVSC, FILTER_EXTENSION_TXT });
-			fid.setText(INPUT_SCHEMA_FILE);
-			String filePath = fid.open();
 			
-			if (filePath == null) {
-				return;
-			}
-
 			DataMapperSchemaEditorUtil schemaEditorUtil = new DataMapperSchemaEditorUtil(inputFile);
-			String schemaFilePath = schemaEditorUtil.createDiagram(
-					FileUtils.readFileToString(new File(filePath)), schemaType);
+			Schema schema = AvroSchemaGeneratorHelper.getAvroSchema(SchemaImportOptions.values()[schemaTypeCombo.getSelectionIndex()]);
+			String schemaFilePath = schemaEditorUtil.createDiagram(schema.toString(), schemaType);
 
 			if (!schemaFilePath.isEmpty()) {
 				setSelectedPath(schemaFilePath);

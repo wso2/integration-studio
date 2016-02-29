@@ -55,6 +55,7 @@ public class Messages extends NLS {
 	public static String SchemaFromJsonAction_errorTitle;
 	public static String SchemaFromJsonAction_menuTitle;
 	public static String SchemaFromJsonAction_sampleJsonFile;
+	public static String SchemaKeyEditorDialog_SelecSchemaSource;
 	public static String SchemaKeyEditorDialog_EmbeddedResources;
 	public static String SchemaKeyEditorDialog_ErrorMsgHeader;
 	public static String SchemaKeyEditorDialog_ErrorOpeningFile;

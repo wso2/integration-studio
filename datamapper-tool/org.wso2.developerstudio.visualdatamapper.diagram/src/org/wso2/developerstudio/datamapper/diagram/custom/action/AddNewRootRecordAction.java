@@ -39,7 +39,7 @@ import org.wso2.developerstudio.datamapper.DataMapperRoot;
 import org.wso2.developerstudio.datamapper.SchemaDataType;
 import org.wso2.developerstudio.datamapper.TreeNode;
 import org.wso2.developerstudio.datamapper.diagram.Activator;
-import org.wso2.developerstudio.datamapper.diagram.custom.util.AddNewRootElementDialog;
+import org.wso2.developerstudio.datamapper.diagram.custom.util.AddNewRootRecordDialog;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.DataMapperRootEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.InputEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.OutputEditPart;
@@ -82,7 +82,7 @@ public class AddNewRootRecordAction extends AbstractActionHandler {
 				MessageDialog.openWarning(Display.getCurrent().getActiveShell(), ERROR_ADDING_MULTIPLE_ROOT_ELEMENTS_TITLE, ERROR_ADDING_MULTIPLE_ROOT_ELEMENTS);
 			} else {
 				
-				AddNewRootElementDialog rootElementDialog = new AddNewRootElementDialog(Display.getCurrent().getActiveShell(), new Class[]{IRegistryFile.class});
+				AddNewRootRecordDialog rootElementDialog = new AddNewRootRecordDialog(Display.getCurrent().getActiveShell(), new Class[]{IRegistryFile.class});
 				rootElementDialog.create();
 				rootElementDialog.open();
 				

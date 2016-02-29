@@ -119,6 +119,5 @@
     <genClasses ecoreClass="dataMapper.ecore#//LowerCase"/>
     <genClasses ecoreClass="dataMapper.ecore#//Contains"/>
     <genClasses ecoreClass="dataMapper.ecore#//UpperCase"/>
-    <genClasses ecoreClass="dataMapper.ecore#//Order"/>
   </genPackages>
 </genmodel:GenModel>

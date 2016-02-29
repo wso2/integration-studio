@@ -20,7 +20,7 @@ import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.ui.IWorkbenchPart;
 import org.wso2.developerstudio.datamapper.diagram.custom.action.AddNewFieldAction;
 import org.wso2.developerstudio.datamapper.diagram.custom.action.AddNewTypeAction;
-import org.wso2.developerstudio.datamapper.diagram.custom.action.AddNewRecordsListAction;
+import org.wso2.developerstudio.datamapper.diagram.custom.action.AddNewListAction;
 import org.wso2.developerstudio.datamapper.diagram.custom.action.AddNewRootRecordAction;
 import org.wso2.developerstudio.datamapper.diagram.custom.action.ConcatManyAction;
 import org.wso2.developerstudio.datamapper.diagram.custom.action.ExportSchemaAction;
@@ -112,14 +112,14 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
 		// Initialize new records list context sensitive actions.
 		addNewRecordsListContextActions = new HashMap<Class<? extends ShapeNodeEditPart>, AbstractActionHandler>();
 		// New records list actions are added to treenode editparts
-		addNewRecordsListContextActions.put(TreeNodeEditPart.class, new AddNewRecordsListAction(
+		addNewRecordsListContextActions.put(TreeNodeEditPart.class, new AddNewListAction(
 				part));
-		addNewRecordsListContextActions.put(TreeNode2EditPart.class, new AddNewRecordsListAction(
+		addNewRecordsListContextActions.put(TreeNode2EditPart.class, new AddNewListAction(
 				part));
-		addNewRecordsListContextActions.put(TreeNode3EditPart.class, new AddNewRecordsListAction(
+		addNewRecordsListContextActions.put(TreeNode3EditPart.class, new AddNewListAction(
 				part));
 		
-		addNewRecordsListContextActions.put(ElementEditPart.class, new AddNewRecordsListAction(
+		addNewRecordsListContextActions.put(ElementEditPart.class, new AddNewListAction(
 				part));
 
 		// Initialize new field context sensitive actions.

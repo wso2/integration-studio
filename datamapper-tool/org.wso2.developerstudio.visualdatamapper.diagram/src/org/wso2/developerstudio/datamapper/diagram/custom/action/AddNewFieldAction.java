@@ -16,6 +16,7 @@
 
 package org.wso2.developerstudio.datamapper.diagram.custom.action;
 
+import org.apache.commons.lang.StringUtils;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
@@ -83,7 +84,7 @@ public class AddNewFieldAction extends AbstractActionHandler {
 				Element elementNew = DataMapperFactory.eINSTANCE.createElement();
 				elementNew.setName(fieldDialog.getName());
 				elementNew.setLevel(selectedNode.getLevel() + 1);
-				
+
 				switch (fieldDialog.getSchemaType()) {
 				case "ARRAY":
 					elementNew.setSchemaDataType(SchemaDataType.ARRAY);
@@ -130,7 +131,20 @@ public class AddNewFieldAction extends AbstractActionHandler {
 				default:
 					break;
 				}
-				
+
+				if (StringUtils.isNotEmpty(fieldDialog.getDoc())) {
+					elementNew.setDoc(fieldDialog.getDoc());
+				}
+				if (StringUtils.isNotEmpty(fieldDialog.getDoc())) {
+					elementNew.setDefault(fieldDialog.getDefault());
+				}
+				if (fieldDialog.getAliases() != null) {
+					elementNew.getAliases().addAll(fieldDialog.getAliases());
+				}
+				if (fieldDialog.getOrder() != null) {
+					elementNew.setOrder(fieldDialog.getOrder());
+				}
+
 				/*
 				 * AddCommand is used to avoid concurrent updating. index 0 to
 				 * add as the first child

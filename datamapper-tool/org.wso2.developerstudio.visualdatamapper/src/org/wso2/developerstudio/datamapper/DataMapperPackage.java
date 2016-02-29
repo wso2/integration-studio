@@ -1139,25 +1139,6 @@ public interface DataMapperPackage extends EPackage {
 	int UPPER_CASE_FEATURE_COUNT = OPERATOR_FEATURE_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.wso2.developerstudio.datamapper.impl.OrderImpl <em>Order</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.wso2.developerstudio.datamapper.impl.OrderImpl
-	 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getOrder()
-	 * @generated
-	 */
-	int ORDER = 24;
-
-	/**
-	 * The number of structural features of the '<em>Order</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ORDER_FEATURE_COUNT = 0;
-
-	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.datamapper.SchemaDataType <em>Schema Data Type</em>}' enum.
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1165,7 +1146,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getSchemaDataType()
 	 * @generated
 	 */
-    int SCHEMA_DATA_TYPE = 25;
+    int SCHEMA_DATA_TYPE = 24;
 
     /**
 	 * Returns the meta object for class '{@link org.wso2.developerstudio.datamapper.DataMapperNode <em>Node</em>}'.
@@ -2013,16 +1994,6 @@ public interface DataMapperPackage extends EPackage {
 	EClass getUpperCase();
 
 	/**
-	 * Returns the meta object for class '{@link org.wso2.developerstudio.datamapper.Order <em>Order</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Order</em>'.
-	 * @see org.wso2.developerstudio.datamapper.Order
-	 * @generated
-	 */
-	EClass getOrder();
-
-	/**
 	 * Returns the meta object for enum '{@link org.wso2.developerstudio.datamapper.SchemaDataType <em>Schema Data Type</em>}'.
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -2733,16 +2704,6 @@ public interface DataMapperPackage extends EPackage {
 		 * @generated
 		 */
 		EClass UPPER_CASE = eINSTANCE.getUpperCase();
-
-								/**
-		 * The meta object literal for the '{@link org.wso2.developerstudio.datamapper.impl.OrderImpl <em>Order</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.wso2.developerstudio.datamapper.impl.OrderImpl
-		 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getOrder()
-		 * @generated
-		 */
-		EClass ORDER = eINSTANCE.getOrder();
 
 								/**
 		 * The meta object literal for the '{@link org.wso2.developerstudio.datamapper.SchemaDataType <em>Schema Data Type</em>}' enum.

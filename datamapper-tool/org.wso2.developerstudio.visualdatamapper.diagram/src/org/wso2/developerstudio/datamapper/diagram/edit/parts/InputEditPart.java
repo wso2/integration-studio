@@ -331,16 +331,13 @@ public class InputEditPart extends ShapeNodeEditPart {
 
 	private void createTree(Tree treeN, TreeNode treeNode) {
 		TreeNode treeNodeNew = DataMapperFactory.eINSTANCE.createTreeNode();
-		//treeNodeNew.setName(treeN.getCount() + "," + treeN.getName());
-		treeNodeNew.setName(treeN.getName());
-		treeNodeNew.setLevel(treeN.getCount());
-		treeNodeNew.setNamespace(treeN.getNamespace());
-		treeNodeNew.setDoc(treeN.getDoc());
-		treeNodeNew.getAliases().addAll(treeN.getAliases());
+		
 		if (treeN.getSchemaType() != null) {
 			switch (treeN.getSchemaType()) {
 			case ARRAY:
 				treeNodeNew.setSchemaDataType(SchemaDataType.ARRAY);
+				treeNodeNew.setName(treeN.getName());
+				treeNodeNew.setLevel(treeN.getCount());
 				break;
 			case BOOLEAN:
 				treeNodeNew.setSchemaDataType(SchemaDataType.BOOLEAN);
@@ -374,6 +371,11 @@ public class InputEditPart extends ShapeNodeEditPart {
 				break;
 			case RECORD:
 				treeNodeNew.setSchemaDataType(SchemaDataType.RECORD);
+				treeNodeNew.setName(treeN.getName());
+				treeNodeNew.setLevel(treeN.getCount());
+				treeNodeNew.setNamespace(treeN.getNamespace());
+				treeNodeNew.setDoc(treeN.getDoc());
+				treeNodeNew.getAliases().addAll(treeN.getAliases());
 				break;
 			case STRING:
 				treeNodeNew.setSchemaDataType(SchemaDataType.STRING);

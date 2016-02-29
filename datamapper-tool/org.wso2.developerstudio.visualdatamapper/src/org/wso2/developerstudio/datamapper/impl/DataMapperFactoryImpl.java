@@ -88,7 +88,6 @@ public class DataMapperFactoryImpl extends EFactoryImpl implements DataMapperFac
 			case DataMapperPackage.LOWER_CASE: return createLowerCase();
 			case DataMapperPackage.CONTAINS: return createContains();
 			case DataMapperPackage.UPPER_CASE: return createUpperCase();
-			case DataMapperPackage.ORDER: return createOrder();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -386,16 +385,6 @@ public class DataMapperFactoryImpl extends EFactoryImpl implements DataMapperFac
 		UpperCaseImpl upperCase = new UpperCaseImpl();
 		upperCase.setBasicContainer(createOperatorBasicContainer());
 		return upperCase;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Order createOrder() {
-		OrderImpl order = new OrderImpl();
-		return order;
 	}
 
 	/**

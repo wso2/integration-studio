@@ -113,7 +113,7 @@ public class TreeFromAVSC {
 			child.setSchemaType(fieldType);
 			child.setNamespace(field.schema().getNamespace());
 			child.setDoc(field.schema().getDoc());
-			child.setAliases(field.aliases());
+			child.setAliases(field.schema().getAliases());
 
 			List<Field> list = field.schema().getFields();
 
@@ -132,18 +132,11 @@ public class TreeFromAVSC {
 			if (arraySchema.getType().getName().equalsIgnoreCase("null")) {
 				childParent.setName(field.name()); // employee
 				childParent.setSchemaType(fieldType);
-				childParent.setNamespace(field.schema().getNamespace());
-				childParent.setDoc(field.schema().getDoc());
-				childParent.setAliases(field.aliases());
 				parent.getTrees().add(childParent);
 			} else {
-
 				List<Field> fieldList = arraySchema.getFields();
 				childParent.setName(arraySchema.getName()); // employee
 				childParent.setSchemaType(fieldType);
-				childParent.setNamespace(arraySchema.getNamespace());
-				childParent.setDoc(arraySchema.getDoc());
-				childParent.setAliases(arraySchema.getAliases());
 				multipleChunk.add(arraySchema.getName());
 
 				for (Field fieldOfField : fieldList)

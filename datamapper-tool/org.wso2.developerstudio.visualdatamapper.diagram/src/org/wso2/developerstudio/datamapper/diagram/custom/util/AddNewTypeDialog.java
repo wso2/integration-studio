@@ -16,6 +16,11 @@
 
 package org.wso2.developerstudio.datamapper.diagram.custom.util;
 
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+
+import org.apache.commons.lang.StringUtils;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.swt.SWT;
@@ -35,18 +40,29 @@ public class AddNewTypeDialog extends Dialog {
 
 	private Text textRootName;
 	private Combo schemaTypeCombo;
+	private Text textNamespace;
 	private Text textDoc;
+	private Text textAliases;
 	private Composite compositeType;
 	
 	private String name;
 	private String schemaType;
+	private String namespace;
 	private String doc;
+	private Set<String> aliases;
+	
 
-	private String[] DATA_TYPES = { "RECORD","ARRAY","STRING", "INT","BOOLEAN","BYTES","DOUBLE","ENUM","FIXED","FLOAT","INT","LONG","MAP","RECORD","UNION"};
+	//private String[] DATA_TYPES = { "RECORD","ARRAY","STRING", "INT","BOOLEAN","BYTES","DOUBLE","ENUM","FIXED","FLOAT","INT","LONG","MAP","RECORD","UNION"};
+	
+	//FIXME only ARRAY is allowed when adding the list
+	private String[] DATA_TYPES = { "RECORD"};
+	
 	private static final String DIALOG_TITLE = "Add new Type";
 	private static final String LABEL_NAME = "Name :";
 	private static final String LABEL_SCHEMATYPE = "Schema Data Type :";
+	private static final String LABEL_NAMESPACE = "Namespace :";
 	private static final String LABEL_DOC = "Doc :";
+	private static final String LABEL_ALIASES = "Aliases :";
 	private static final String NEW_ROOT_RECORD_ID = "NewType";
 
 	/**
@@ -109,6 +125,23 @@ public class AddNewTypeDialog extends Dialog {
 		schemaTypeCombo.select(0);
 		schemaTypeCombo.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
 		
+		Label lblNamespaceLabel = new Label(compositeType, SWT.NONE);
+		lblNamespaceLabel.setText(LABEL_NAMESPACE);
+		new Label(compositeType, SWT.NONE);
+		new Label(compositeType, SWT.NONE);
+		new Label(compositeType, SWT.NONE);
+		
+		textNamespace = new Text(compositeType, SWT.BORDER);
+		textNamespace.setText("");
+		
+		textNamespace.addModifyListener(new ModifyListener() {
+			public void modifyText(ModifyEvent arg0) {
+				
+			}
+		});
+		
+		textNamespace.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
+
 		Label lbldocLabel = new Label(compositeType, SWT.NONE);
 		lbldocLabel.setText(LABEL_DOC);
 		new Label(compositeType, SWT.NONE);
@@ -124,6 +157,23 @@ public class AddNewTypeDialog extends Dialog {
 		});
 		
 		textDoc.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
+		
+		Label lblAliasesLabel = new Label(compositeType, SWT.NONE);
+		lblAliasesLabel.setText(LABEL_ALIASES);
+		new Label(compositeType, SWT.NONE);
+		new Label(compositeType, SWT.NONE);
+		new Label(compositeType, SWT.NONE);
+
+		textAliases = new Text(compositeType, SWT.BORDER);
+		textAliases.setText("");
+		
+		textAliases.addModifyListener(new ModifyListener() {
+			public void modifyText(ModifyEvent arg0) {
+			}
+		});
+		
+		textAliases.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
+	
 		return container;
 	}
 
@@ -143,15 +193,34 @@ public class AddNewTypeDialog extends Dialog {
 	 */
 	@Override
 	protected Point getInitialSize() {
-		return new Point(620, 210);
+		return new Point(620, 280);
 	}
 
 	@Override
 	protected void okPressed() {
+		
 		setName(textRootName.getText());
 		setSchemaType(schemaTypeCombo.getText());
+		setNamespace(textNamespace.getText());
 		setDoc(textDoc.getText());
+		Set<String> aliasesSet = getAliasesSet();
+		setAliases(aliasesSet);
 		super.okPressed();
+	}
+	
+	/**
+	 * Gets the Aliases as a set
+	 * @return
+	 */
+	private Set<String> getAliasesSet() {
+		Set<String> aliasesSet = null;
+		String aliases = textAliases.getText();
+		if(StringUtils.isNotEmpty(aliases)){
+			String[] aliasesArray = aliases.split(",");
+			aliasesSet = new HashSet<String>(Arrays.asList(aliasesArray));
+		}
+		
+		return aliasesSet;
 	}
 	
 	public void setName(String name){
@@ -166,8 +235,16 @@ public class AddNewTypeDialog extends Dialog {
 		this.doc= doc;
 	}
 	
+	public void setNamespace(String namespace){
+		this.namespace= namespace;
+	}
+	
 	public String getName(){
 		return name;
+	}
+	
+	public void setAliases(Set<String> aliases) {
+		this.aliases = aliases;
 	}
 	
 	public String getSchemaType(){
@@ -178,6 +255,12 @@ public class AddNewTypeDialog extends Dialog {
 		return doc;
 	}
 	
+	public String getNamespace(){
+		return namespace;
+	}
+	public Set<String> getAliases() {
+		return aliases;
+	}
 }
 
 

@@ -128,9 +128,16 @@ public class AddNewTypeAction extends AbstractActionHandler {
 				default:
 					break;
 				}
-				if (StringUtils.isNotEmpty(typeDialog.getDoc())) {
-					treeNodeNew.setDoc(typeDialog.getDoc());
-				}
+				
+				 if(StringUtils.isNotEmpty(typeDialog.getNamespace())){
+                 	treeNodeNew.setNamespace(typeDialog.getNamespace());
+                 }
+                 if(StringUtils.isNotEmpty(typeDialog.getDoc())){
+                 	treeNodeNew.setDoc(typeDialog.getDoc());
+                 }
+                 if(typeDialog.getAliases() != null){
+                     treeNodeNew.getAliases().addAll(typeDialog.getAliases());
+                 }
 
 				/*
 				 * AddCommand is used to avoid concurrent updating. index 0 to

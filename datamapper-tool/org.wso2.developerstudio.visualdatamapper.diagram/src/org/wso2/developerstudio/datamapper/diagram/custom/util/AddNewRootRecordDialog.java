@@ -20,6 +20,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.apache.commons.lang.StringUtils;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.swt.SWT;
@@ -35,7 +36,7 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 
-public class AddNewRootElementDialog extends Dialog {
+public class AddNewRootRecordDialog extends Dialog {
 
 	private Text textRootName;
 	private Combo schemaTypeCombo;
@@ -50,8 +51,10 @@ public class AddNewRootElementDialog extends Dialog {
 	private String doc;
 	private Set<String> aliases;
 	
-	private String[] DATA_TYPES = {"RECORD","STRING", "INT", "ARRAY","BOOLEAN","BYTES","DOUBLE","ENUM","FIXED","FLOAT","INT","LONG","MAP","NULL","UNION"};
+	//private String[] DATA_TYPES = {"RECORD","STRING", "INT", "ARRAY","BOOLEAN","BYTES","DOUBLE","ENUM","FIXED","FLOAT","INT","LONG","MAP","NULL","UNION"};
 
+	//FIXME only RECORD is allowed as the root element
+	private String[] DATA_TYPES = {"RECORD"};
 
 	private static final String DIALOG_TITLE = "Add new Root Element";
 	private static final String LABEL_NAME = "Name :";
@@ -66,7 +69,7 @@ public class AddNewRootElementDialog extends Dialog {
 	 * 
 	 * @param parentShell
 	 */
-	public AddNewRootElementDialog(Shell parentShell, Class<?>[] type) {
+	public AddNewRootRecordDialog(Shell parentShell, Class<?>[] type) {
 		super(parentShell);
 		setShellStyle(SWT.CLOSE | SWT.TITLE | SWT.BORDER | SWT.OK | SWT.APPLICATION_MODAL);
 	}
@@ -207,9 +210,13 @@ public class AddNewRootElementDialog extends Dialog {
 	 * @return
 	 */
 	private Set<String> getAliasesSet() {
+		Set<String> aliasesSet = null;
 		String aliases = textAliases.getText();
-		String[] aliasesArray= aliases.split(",");
-		Set<String> aliasesSet = new HashSet<String>(Arrays.asList(aliasesArray));
+		if(StringUtils.isNotEmpty(aliases)){
+			String[] aliasesArray = aliases.split(",");
+			aliasesSet = new HashSet<String>(Arrays.asList(aliasesArray));
+		}
+		
 		return aliasesSet;
 	}
 	
@@ -249,9 +256,6 @@ public class AddNewRootElementDialog extends Dialog {
 	}
 	
 	public Set<String> getAliases() {
-		if (aliases == null) {
-			aliases = new HashSet<String>();
-		}
 		return aliases;
 	}
 	

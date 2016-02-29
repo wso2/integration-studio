@@ -8,12 +8,7 @@ Bundle-Activator: org.wso2.developerstudio.eclipse.maven.Activator
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Import-Package: junit.framework,
- org.apache.maven.model,
- org.apache.maven.model.io.xpp3,
- org.apache.maven.project,
  org.apache.maven.shared.invoker,
- org.codehaus.plexus.util.xml,
- org.codehaus.plexus.util.xml.pull,
  org.eclipse.core.commands,
  org.eclipse.core.expressions,
  org.eclipse.core.resources,
@@ -34,5 +29,6 @@ Export-Package: org.wso2.developerstudio.eclipse.maven;version="4.0.0",
  org.wso2.developerstudio.eclipse.maven.types;version="4.0.0",
  org.wso2.developerstudio.eclipse.maven.util;version="4.0.0"
 Require-Bundle: org.eclipse.equinox.registry,
- org.eclipse.core.runtime
+ org.eclipse.core.runtime,
+ org.eclipse.m2e.maven.runtime;bundle-version="1.6.2"
 

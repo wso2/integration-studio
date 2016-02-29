@@ -1,6 +1,5 @@
 package org.wso2.developerstudio.eclipse.registry.core.interfaces;
 
-import java.io.FileNotFoundException;
 import java.io.InputStream;
 
 public interface IRegistryFile extends IRegistryResource {

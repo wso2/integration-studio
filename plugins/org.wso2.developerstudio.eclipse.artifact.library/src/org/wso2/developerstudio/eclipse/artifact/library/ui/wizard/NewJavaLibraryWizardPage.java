@@ -20,7 +20,6 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.codehaus.plexus.util.xml.Xpp3Dom;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
@@ -55,7 +54,6 @@ import org.eclipse.ui.model.WorkbenchContentProvider;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.wso2.developerstudio.eclipse.artifact.library.Activator;
 import org.wso2.developerstudio.eclipse.artifact.library.model.LibraryArtifactModel;
-import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
 
 
 public class NewJavaLibraryWizardPage extends WizardPage {

@@ -20,8 +20,6 @@ import java.util.List;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.events.SelectionEvent;
-import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
@@ -30,7 +28,6 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 import org.wso2.developerstudio.eclipse.registry.core.interfaces.IRegistryConnection;
-import org.wso2.developerstudio.eclipse.registry.core.interfaces.IRegistryHandler;
 
 public class FromRegistry extends Composite{
 

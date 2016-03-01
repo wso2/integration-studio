@@ -17,7 +17,7 @@
 package org.wso2.developerstudio.datamapper.diagram.schemagen.util;
 
 public enum SchemaImportOptions {
-	AVRO_SCHEMA,
+	AVRO,
 	XSD,
 	XML,
 	JSON

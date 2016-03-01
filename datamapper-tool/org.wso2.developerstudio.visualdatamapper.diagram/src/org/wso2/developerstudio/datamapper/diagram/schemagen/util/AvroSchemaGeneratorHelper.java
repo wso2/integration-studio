@@ -42,7 +42,7 @@ public class AvroSchemaGeneratorHelper {
 		String title = INPUT_SCHEMA_FILE;
 		AvroSchemaGenerator generator = null;
 		switch (option) {
-		case AVRO_SCHEMA:
+		case AVRO:
 			filter = AVSC;
 			title = INPUT_SCHEMA_FILE;
 			generator = new AvroSchemaGenerator();

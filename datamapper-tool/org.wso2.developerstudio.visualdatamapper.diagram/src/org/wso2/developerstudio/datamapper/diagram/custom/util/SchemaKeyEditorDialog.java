@@ -399,19 +399,23 @@ public class SchemaKeyEditorDialog extends Dialog {
 			
 			DataMapperSchemaEditorUtil schemaEditorUtil = new DataMapperSchemaEditorUtil(inputFile);
 			Schema schema = AvroSchemaGeneratorHelper.getAvroSchema(SchemaImportOptions.values()[schemaTypeCombo.getSelectionIndex()]);
-			String schemaFilePath = schemaEditorUtil.createDiagram(schema.toString(), schemaType);
+			if(schema != null){
+				String schemaFilePath = schemaEditorUtil.createDiagram(schema.toString(), schemaType);
+			  if (!schemaFilePath.isEmpty()) {
+					setSelectedPath(schemaFilePath);
 
-			if (!schemaFilePath.isEmpty()) {
-				setSelectedPath(schemaFilePath);
-
-				if (Messages.LoadInputSchemaAction_SchemaTypeInput.equals(schemaType)) {
-					InputEditPart iep = (InputEditPart) selectedEP;
-					iep.resetInputTreeFromFile(schemaFilePath);
-				} else if (Messages.LoadOutputSchemaAction_SchemaTypeOutput.equals(schemaType)) {
-					OutputEditPart iep = (OutputEditPart) selectedEP;
-					iep.resetOutputTreeFromFile(schemaFilePath);
+					if (Messages.LoadInputSchemaAction_SchemaTypeInput.equals(schemaType)) {
+						InputEditPart iep = (InputEditPart) selectedEP;
+						iep.resetInputTreeFromFile(schemaFilePath);
+					} else if (Messages.LoadOutputSchemaAction_SchemaTypeOutput.equals(schemaType)) {
+						OutputEditPart iep = (OutputEditPart) selectedEP;
+						iep.resetOutputTreeFromFile(schemaFilePath);
+					}
 				}
 			}
+			
+
+			
 		} catch (Exception e) {
 			log.error(ERROR_OPENING_FILE, e);
 

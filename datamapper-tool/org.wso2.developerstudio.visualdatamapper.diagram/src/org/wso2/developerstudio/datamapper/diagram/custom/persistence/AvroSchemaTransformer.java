@@ -142,18 +142,8 @@ public class AvroSchemaTransformer {
 		}
 		schemaForRecord.setFields(fieldsforRecord);
 		
-		//Fixing the NullPointer Exception in Schema
-		if(docValue == null && defaultValue == null){
-			field = new Field(node.getName(),schemaForRecord, null, null);
-		}
-		else if(docValue == null && defaultValue != null){
-			field = new Field(node.getName(),schemaForRecord, null, defaultValue);
-		}
-		else if(defaultValue == null && docValue != null){
-			field = new Field(node.getName(),schemaForRecord, docValue, null);
-		}else{
-			field = new Field(node.getName(), schemaForRecord, docValue,defaultValue, order);
-		}
+		field = new Field(node.getName(),schemaForRecord, null, null);
+	
 		return field;
 	}
 

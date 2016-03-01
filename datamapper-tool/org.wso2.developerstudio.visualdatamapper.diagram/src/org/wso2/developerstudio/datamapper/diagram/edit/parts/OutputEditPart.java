@@ -356,6 +356,7 @@ public class OutputEditPart extends ShapeNodeEditPart {
 				treeNodeNew.setSchemaDataType(SchemaDataType.RECORD);
 				treeNodeNew.setName(treeN.getName());
 				treeNodeNew.setDoc(treeN.getDoc());
+				treeNodeNew.setNamespace(treeN.getNamespace());
 				treeNodeNew.setLevel(treeN.getCount());
 				treeNodeNew.getAliases().addAll(treeN.getAliases());
 				break;

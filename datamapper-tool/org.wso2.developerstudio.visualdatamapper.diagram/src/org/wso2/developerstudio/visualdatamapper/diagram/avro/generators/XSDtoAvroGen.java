@@ -75,7 +75,6 @@ public class XSDtoAvroGen {
 				log.error("Preventing the Driver executing system exit on finish" + ex);
 				
 			} finally {
-				System.out.println("exiting via system exit :(");
 				System.setSecurityManager(oldSecurityManager);
 			}
 

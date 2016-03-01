@@ -19,16 +19,21 @@ package org.wso2.developerstudio.datamapper.diagram.schemagen.util;
 import java.io.IOException;
 
 import org.apache.avro.Schema;
+import org.wso2.developerstudio.datamapper.diagram.Activator;
+import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
+import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.visualdatamapper.diagram.avro.generators.XSDtoAvroGen;
 
 public class AvroSchemaGeneratorForXSD extends AvroSchemaGenerator {
-
+	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 	
 	@Override
 	public Schema getAvroSchemaContent(String filePath) throws IOException {
 		XSDtoAvroGen convertXSDtoAvro = new XSDtoAvroGen();
 		String avroContent = convertXSDtoAvro.generateAVRO(filePath);
-		System.out.print("****************** Avro Content : " + avroContent);
+		if (avroContent == null || avroContent.isEmpty()) {
+			log.error("Error Generating Avro content from the fgiven XSD file.");
+		}
 		return super.getAvroSchemaContent(avroContent);
 		
 	}

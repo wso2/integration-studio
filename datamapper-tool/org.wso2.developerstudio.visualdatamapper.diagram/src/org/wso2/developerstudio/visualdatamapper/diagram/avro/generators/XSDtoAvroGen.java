@@ -26,6 +26,8 @@ import org.wso2.developerstudio.datamapper.diagram.Activator;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
+import java.security.Permission;
+
 import com.sun.tools.xjc.Driver;
 
 public class XSDtoAvroGen {
@@ -56,19 +58,18 @@ public class XSDtoAvroGen {
 		packageName = "generated.avro";
 		schemaFiles = xsdFileLoc;
 		outputDirectory = new File(outputDirectoryString);
-
 		if (!outputDirectory.exists()) {
 			outputDirectory.mkdir();
 		}
 
 		String args[] = buildArguments();
-
 		try {
 			// XJC blindly calls System.exit when it is finished.
 			// This creates a work-around.
 			SecurityManager oldSecurityManager = System.getSecurityManager();
-			System.setSecurityManager(new DelegatingNoExitSecurityManager(
-					oldSecurityManager));
+			//System.setSecurityManager(new DelegatingNoExitSecurityManager(
+				//	oldSecurityManager));
+			 forbidSystemExitCall() ;
 			try {
 				Driver.main(args);
 			} catch (DelegatingNoExitSecurityManager.NormalExitException ex) {
@@ -99,6 +100,10 @@ public class XSDtoAvroGen {
 		}
 
 		return changedOutput;
+	}
+
+	private void forbidSystemExitCall() {
+		ExitTrappedException.forbidSystemExitCall();
 	}
 
 	private static String[] buildArguments() {
@@ -139,6 +144,28 @@ public class XSDtoAvroGen {
 			return filePath.substring(curPath.length() + 1);
 		} else {
 			return filePath;
+		}
+	}
+	
+	
+	private static class ExitTrappedException extends SecurityException {
+
+		private static final String EXIT_VM_COMMAND = "exitVM";
+		private static final String SYSTEM_EXIT_COMMAND = "exitVM.-1";
+
+		private static void forbidSystemExitCall() {
+		  final SecurityManager securityManager = new SecurityManager() {
+		    public void checkPermission( Permission permission ) {
+		      if( SYSTEM_EXIT_COMMAND.equals( permission.getName()) || permission.getName().contains(EXIT_VM_COMMAND)) {
+		        throw new ExitTrappedException() ;
+		      } 
+		    }
+		  } ;
+		  System.setSecurityManager( securityManager ) ;
+		}
+
+		private static void enableSystemExitCall() {
+		  System.setSecurityManager( null ) ;
 		}
 	}
 

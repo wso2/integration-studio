@@ -29,9 +29,4 @@ public class AvroSchemaGenerator {
 		Schema schema = Schema.parse(entireFileText);
 		return schema;
 	}
-	
-	public Schema getAvroSchemaContent(String fileText) throws IOException {
-		Schema schema = Schema.parse(fileText);
-		return schema;
-	}
 }

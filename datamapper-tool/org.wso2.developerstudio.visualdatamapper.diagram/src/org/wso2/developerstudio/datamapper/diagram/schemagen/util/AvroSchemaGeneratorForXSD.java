@@ -16,20 +16,20 @@
 
 package org.wso2.developerstudio.datamapper.diagram.schemagen.util;
 
+import java.io.File;
 import java.io.IOException;
 
 import org.apache.avro.Schema;
-import org.wso2.developerstudio.visualdatamapper.diagram.avro.generators.XSDtoAvroGen;
 
 public class AvroSchemaGeneratorForXSD extends AvroSchemaGenerator {
 
-	
 	@Override
-	public Schema getAvroSchemaContent(String filePath) throws IOException {
-		XSDtoAvroGen convertXSDtoAvro = new XSDtoAvroGen();
-		String avroContent = convertXSDtoAvro.generateAVRO(filePath);
-		return super.getAvroSchemaContent(avroContent);
-		
+	public Schema getAvroSchema(String filePath) throws IOException {
+		File avscFile = generateAvscFromXSD(filePath);
+		return super.getAvroSchema(avscFile.getAbsolutePath());
 	}
 
+	private File generateAvscFromXSD(String filePath) {
+		return new File(filePath);
+	}
 }

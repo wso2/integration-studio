@@ -175,11 +175,11 @@ public class SchemaKeyEditorDialog extends Dialog {
 			}
 		});
 		int optionsLenght = SchemaImportOptions.values().length;
-		String[] options = new String[optionsLenght];
+		String[] optoins = new String[optionsLenght];
 		for (int i = 0; i < optionsLenght; i++) {
-			options[i] = SchemaImportOptions.values()[i].name();
+			optoins[i] = SchemaImportOptions.values()[i].name();
 		}
-		schemaTypeCombo.setItems(options);
+		schemaTypeCombo.setItems(optoins);
 		schemaTypeCombo.select(0);
 		schemaTypeCombo.setLayoutData(comboLayoutData);
 		

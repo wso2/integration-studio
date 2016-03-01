@@ -25,8 +25,6 @@ import java.util.Set;
  * Class which represents an Avro fixed type.
  * http://avro.apache.org/docs/current/spec.html#Fixed
  *
- * @author Ben Fagin (Nokia)
- * @version 01-12-2012
  */
 public class AvroFixed extends AvroType {
 	@JsonProperty

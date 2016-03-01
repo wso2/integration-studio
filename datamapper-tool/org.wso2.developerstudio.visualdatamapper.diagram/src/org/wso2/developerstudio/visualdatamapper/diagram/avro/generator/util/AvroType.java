@@ -21,8 +21,6 @@ import java.util.Set;
 /**
  * Base type for all Avro schema types.
  *
- * @author Ben Fagin (Nokia)
- * @version 01-12-2012
  */
 public abstract class AvroType {
 	protected String defaultValue;

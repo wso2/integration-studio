@@ -46,8 +46,6 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
 /**
- * @author Ben Fagin (Nokia)
- * @version 01-16-2012
  *
  *          XJC plugin which walks the generated code model and creates a
  *          parallel Avro schema. Running the plugin requires making sure that

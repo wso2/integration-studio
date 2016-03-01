@@ -21,8 +21,6 @@ import java.net.InetAddress;
 import java.security.Permission;
 
 /**
- * @author Ben Fagin (Nokia)
- * @version 02-03-2012
  *
  * Allows for the capture of calls to System.exit(0).
  * The call is 'converted' to a known Exception type which can be caught and dealt with.

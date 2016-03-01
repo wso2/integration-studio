@@ -31,8 +31,6 @@ import java.math.BigInteger;
 import java.util.*;
 
 /**
- * @author Ben Fagin (Nokia)
- * @version 10-31-2012
  */
 public class SchemagenHelper {
 	private static final String PARENT_FIELD = "_parent";    // name of parent field for type hierarchies

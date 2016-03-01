@@ -26,8 +26,6 @@ import java.util.Set;
 
 
 /**
- * @author Ben Fagin (Nokia)
- * @version 02-01-2012
  * 
  * A special type used to denote a JAXB reference, which is generally in the form of a String.
  */

@@ -24,8 +24,6 @@ import java.util.Set;
  * Class which represents an Avro primitive type.
  * http://avro.apache.org/docs/current/spec.html#schema_primitive
  *
- * @author Ben Fagin (Nokia)
- * @version 01-12-2012
  */
 public class AvroPrimitive extends AvroType {
 	public static final AvroPrimitive NULL_TYPE = PrimitiveType.NULL.newInstance();

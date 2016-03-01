@@ -25,8 +25,6 @@ import java.util.Set;
  * Exposes its type as a string. Therefore, when set as the type of another
  * object, the JSON value will simply be the string as originally set.
  *
- * @author Ben Fagin (Nokia)
- * @version 01-26-2012
  */
 public class DummyAvroType extends AvroType {
 	public final String type;

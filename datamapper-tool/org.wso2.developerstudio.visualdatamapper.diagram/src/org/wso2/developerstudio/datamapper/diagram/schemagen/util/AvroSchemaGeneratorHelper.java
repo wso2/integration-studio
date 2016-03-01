@@ -75,11 +75,20 @@ public class AvroSchemaGeneratorHelper {
 		}
 
 		Schema avroSchema = null;
-		try {
-			avroSchema = generator.getAvroSchema(filePath);
-		} catch (IOException e) {
-			log.error("Error while generating avro schema", e);
+		if (generator instanceof AvroSchemaGeneratorForXSD) {
+			try {
+				avroSchema = generator.getAvroSchemaContent(filePath);
+			} catch (IOException e) {
+				log.error("Error while generating avro schema", e);
+			}
+		} else {
+			try {
+				avroSchema = generator.getAvroSchema(filePath);
+			} catch (IOException e) {
+				log.error("Error while generating avro schema", e);
+			}
 		}
+		
 		return avroSchema;
 	}
 }

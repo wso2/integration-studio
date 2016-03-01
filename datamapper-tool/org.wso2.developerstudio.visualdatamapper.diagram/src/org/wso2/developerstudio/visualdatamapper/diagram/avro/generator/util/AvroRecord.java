@@ -29,8 +29,6 @@ import java.util.Set;
  *
  * To add individual fields, use the {@link #addField(String, AvroType, String)} method.
  *
- * @author Ben Fagin (Nokia)
- * @version 01-12-2012
  */
 @SuppressWarnings("unchecked")
 public class AvroRecord extends NamedAvroType {

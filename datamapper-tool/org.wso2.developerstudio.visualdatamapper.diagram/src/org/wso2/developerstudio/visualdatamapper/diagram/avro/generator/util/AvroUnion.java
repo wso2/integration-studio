@@ -26,8 +26,6 @@ import java.util.Set;
  * Class which represents an Avro union type.
  * http://avro.apache.org/docs/current/spec.html#Unions
  *
- * @author Ben Fagin (Nokia)
- * @version 01-12-2012
  */
 public class AvroUnion extends AvroType {
 	public final AvroType[] types;

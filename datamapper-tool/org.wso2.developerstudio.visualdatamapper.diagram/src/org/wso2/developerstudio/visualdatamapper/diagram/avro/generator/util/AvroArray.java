@@ -24,8 +24,6 @@ import java.util.Set;
  * Class which represents an Avro array type.
  * http://avro.apache.org/docs/current/spec.html#Arrays
  *
- * @author Ben Fagin (Nokia)
- * @version 01-12-2012
  */
 public class AvroArray extends AvroType {
 	@JsonProperty

@@ -28,6 +28,7 @@ public class AvroSchemaGeneratorForXSD extends AvroSchemaGenerator {
 	public Schema getAvroSchemaContent(String filePath) throws IOException {
 		XSDtoAvroGen convertXSDtoAvro = new XSDtoAvroGen();
 		String avroContent = convertXSDtoAvro.generateAVRO(filePath);
+		System.out.print("****************** Avro Content : " + avroContent);
 		return super.getAvroSchemaContent(avroContent);
 		
 	}

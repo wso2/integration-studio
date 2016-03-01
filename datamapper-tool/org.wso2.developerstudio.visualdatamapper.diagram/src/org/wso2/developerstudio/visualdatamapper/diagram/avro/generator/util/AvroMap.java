@@ -24,8 +24,6 @@ import java.util.Set;
  * Class which represents an Avro map type.
  * http://avro.apache.org/docs/current/spec.html#Maps
  *
- * @author Ben Fagin (Nokia)
- * @version 01-12-2012
  */
 public class AvroMap extends AvroType {
 	@JsonProperty

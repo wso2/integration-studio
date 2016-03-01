@@ -25,8 +25,6 @@ import java.util.Collections;
 import java.util.Set;
 
 /**
- * @author Ben Fagin (Nokia)
- * @version 02-03-2012
  * 
  * A special type supporting dates.
  * The dates are intended to be stored as long values, as milliseconds in UTC time.

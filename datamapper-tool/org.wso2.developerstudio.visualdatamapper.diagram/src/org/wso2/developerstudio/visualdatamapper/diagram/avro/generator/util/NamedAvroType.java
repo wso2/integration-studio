@@ -22,8 +22,6 @@ import org.codehaus.jackson.map.annotate.JsonSerialize;
  * Parent for Avro types which can have names.
  * http://avro.apache.org/docs/current/spec.html#Names
  *
- * @author Ben Fagin (Nokia)
- * @version 01-31-2012
  * @see AvroRecord
  * @see AvroEnum
  */

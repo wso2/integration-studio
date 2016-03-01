@@ -27,8 +27,6 @@ import java.util.Set;
  * Class which represents an Avro enumerated type.
  * http://avro.apache.org/docs/current/spec.html#Enums
  *
- * @author Ben Fagin (Nokia)
- * @version 01-12-2012
  */
 public class AvroEnum extends NamedAvroType {
 	public static final String UNSET = "UNSET";     // added to every enumeration, supporting the default value

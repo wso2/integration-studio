@@ -9,12 +9,12 @@ import java.nio.charset.StandardCharsets;
 import org.apache.avro.generic.GenericRecord;
 import org.apache.avro.io.DatumWriter;
 import org.apache.avro.io.Encoder;
-import org.wso2.datamapper.engine.core.MappingHandler;
+/*import org.wso2.datamapper.engine.core.MappingHandler;
 import org.wso2.datamapper.engine.core.MappingResourceLoader;
 import org.wso2.datamapper.engine.inputAdapters.InputDataReaderAdapter;
 import org.wso2.datamapper.engine.inputAdapters.ReaderRegistry;
 import org.wso2.datamapper.engine.outputAdapters.DummyEncoder;
-import org.wso2.datamapper.engine.outputAdapters.WriterRegistry;
+import org.wso2.datamapper.engine.outputAdapters.WriterRegistry;*/
 import org.wso2.developerstudio.eclipse.webui.core.editor.AbstractEditorFunctionExecutor;
 
 public class DataMapperFunctionExecutor implements AbstractEditorFunctionExecutor {
@@ -61,7 +61,7 @@ public class DataMapperFunctionExecutor implements AbstractEditorFunctionExecuto
 	
 	private static String map(MappingContext c) throws Exception {
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
-		Encoder encoder = new DummyEncoder(baos);
+		/*Encoder encoder = new DummyEncoder(baos);
 
 		MappingResourceLoader configModel = new MappingResourceLoader(c.getInputSchema(), c.getOutputSchema(),
 				c.getConfig());
@@ -73,7 +73,7 @@ public class DataMapperFunctionExecutor implements AbstractEditorFunctionExecuto
 		writer.setSchema(result.getSchema());
 
 		writer.write(result, encoder);
-		encoder.flush();
+		encoder.flush();*/
 
 		return baos.toString();
 	} 

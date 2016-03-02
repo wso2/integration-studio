@@ -30,9 +30,9 @@
 	<!--module>installed-distribution</module-->
     </modules>
     <scm>
-        <connection>scm:git:https://github.com/wso2/developer-studio.git</connection>
-        <developerConnection>scm:git:https://github.com/wso2/developer-studio.git</developerConnection>
-        <url>https://github.com/wso2/developer-studio.git</url>
+        <connection>scm:git:https://github.com/wso2/devstudio-tooling-esb.git</connection>
+        <developerConnection>scm:https://github.com/wso2/devstudio-tooling-esb.git</developerConnection>
+        <url>https://github.com/wso2/devstudio-tooling-esb.git</url>
     </scm>
     <distributionManagement>
         <repository>

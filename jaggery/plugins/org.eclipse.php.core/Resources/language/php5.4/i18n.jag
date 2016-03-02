@@ -1,9 +1,0 @@
-<%
-namespace i18n;
-
-function init(){}
-function localize(){}
-
-
-
-%>

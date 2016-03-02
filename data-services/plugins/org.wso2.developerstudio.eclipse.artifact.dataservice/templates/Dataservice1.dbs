@@ -1,6 +1,0 @@
-<data name="{service.name}" serviceNamespace="{service.NS}" serviceGroup="{service.group}">
-   <description>{service.description}</description>
-   <config id="{config.id}">
-   		{config.properties}
-   </config>
-</data>

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmi:id="_hZ3YEAZjEeOT2rDMRuvz3g" type="Ecore" measurementUnit="Pixel">
+  <styles xmi:type="notation:DiagramStyle" xmi:id="_hZ3YEQZjEeOT2rDMRuvz3g"/>
+  <element xmi:type="ecore:EPackage" href="dataMapper.ecore#/"/>
+</notation:Diagram>

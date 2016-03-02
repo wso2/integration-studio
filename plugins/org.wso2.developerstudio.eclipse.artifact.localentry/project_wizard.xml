@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wizard>
+	<projectOptions title="Local Entry Artifact Creation Options"
+					description="Select how you would like to create your new local entry"
+					error="Please select a method to create the local entry">
+		<option id="new.localentry" default="true">Create A New Local Entry</option>
+		<option id="import.localentry">Import Local Entry</option>
+	</projectOptions>
+	<projectOptionSettings>
+		<settings optionId="new.localentry"
+				  title="Local Entry"
+				  description="Create a new Local Entry"
+				  error="Please give a name for the local entry">
+			<data modelProperty="le.name" type="string" fieldController="org.wso2.developerstudio.eclipse.artifact.localentry.validators.LocalEntryProjectFieldController">Local Entry Name</data>
+			<data modelProperty="le.type" type="list" fieldController="org.wso2.developerstudio.eclipse.artifact.localentry.validators.LocalEntryProjectFieldController"  controlData="select=single;modify=non-editable;class=org.wso2.developerstudio.eclipse.artifact.localentry.validators.LocalEntryCreationTypes">Local Entry Creation Type</data>
+
+			<data modelProperty="save.file" type="workspacefolder" fieldController="org.wso2.developerstudio.eclipse.artifact.localentry.validators.LocalEntryProjectFieldController" controlData="filterClass=org.wso2.developerstudio.eclipse.artifact.localentry.validators.ESBProjectFilter">Save local entry in:</data>
+			<data modelProperty="create.esb.prj" type="link" fieldController="org.wso2.developerstudio.eclipse.artifact.localentry.validators.LocalEntryProjectFieldController" controlData="align=right">&lt;a&gt;Create new ESB Project...&lt;/a&gt;</data>
+ 
+			<!-- In-Lined text -->
+			<data group="group1" modelProperty="inline.text.value" type="string" fieldController="org.wso2.developerstudio.eclipse.artifact.localentry.validators.LocalEntryProjectFieldController" controlData="multiline=true">Value</data>
+			
+			<!-- In-Lined xml -->
+			<data group="group1" modelProperty="inline.xml.value" type="string" fieldController="org.wso2.developerstudio.eclipse.artifact.localentry.validators.LocalEntryProjectFieldController" controlData="multiline=true">Value</data>
+			
+			<!-- Import source URL -->
+			<data group="group1" modelProperty="import.url" type="file" filter="*" fieldController="org.wso2.developerstudio.eclipse.artifact.localentry.validators.LocalEntryProjectFieldController">Source URL</data>
+			
+			<group id="group1" title="Advanced Configuration" controlData="type=collapsible;state=expanded"></group>
+
+		</settings>
+		<settings optionId="import.localentry"
+				  title="Local Entry"
+				  description="Create a Local Entry using a configuration file with Local Entry defined"
+				  error="Browse and select a Local Entry configuration file">
+			<data modelProperty="import.file" type="file" filter="*.xml" fieldController="org.wso2.developerstudio.eclipse.artifact.localentry.validators.LocalEntryProjectFieldController">Local Entry Configuration File</data>
+
+			<data modelProperty="save.file" type="workspacefolder" fieldController="org.wso2.developerstudio.eclipse.artifact.localentry.validators.LocalEntryProjectFieldController" controlData="filterClass=org.wso2.developerstudio.eclipse.artifact.localentry.validators.ESBProjectFilter">Save Local Entry in:</data>
+			<data modelProperty="create.esb.prj" type="link" fieldController="org.wso2.developerstudio.eclipse.artifact.localentry.validators.LocalEntryProjectFieldController" controlData="align=right">&lt;a&gt;Create new ESB Project...&lt;/a&gt;</data>
+			<data modelProperty="available.les" type="list" fieldController="org.wso2.developerstudio.eclipse.artifact.localentry.validators.LocalEntryProjectFieldController"  controlData="select=multiple;modify=non-editable;class=org.wso2.developerstudio.eclipse.artifact.localentry.validators.LocalEntriesList">Available Local Entries</data>
+			
+		</settings>
+	</projectOptionSettings>
+</wizard>

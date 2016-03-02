@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.newWizards">
+         <wizard name="Sequence" 
+         	category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.eclipse.message.mediation/org.wso2.developerstudio.eclipse.message.mediation.features"
+			class="org.wso2.developerstudio.eclipse.artifact.sequence.ui.wizard.SequenceProjectCreationWizard"
+			wizardManifest="project_wizard.xml"
+			id="org.wso2.developerstudio.eclipse.artifact.newsequenceartifact"
+			icon="icons/sequence-normal.png">
+			<description>Sequence</description>
+		</wizard>
+   </extension>
+    <!--<extension point="org.eclipse.ui.navigator.navigatorContent">	
+	   <navigatorContent activeByDefault="true"
+			priority="high"
+			id="org.eclipse.ui.navigator.resourceContent"
+			name="test">
+				<commonWizard 
+					menuGroupId="2org.wso2.developerstudio.eclipse.artifact.esb"
+			  	 	type="new"
+					wizardId="org.wso2.developerstudio.eclipse.artifact.newsequenceartifact">
+					<enablement>
+						<or>
+							<adapt type="org.eclipse.core.resources.IProject"/>
+							<adapt type="org.eclipse.core.resources.IFolder"/>
+						</or>
+					</enablement>
+				</commonWizard>
+				<triggerPoints>
+				           <or>         
+				              <instanceof 
+				                    value="org.eclipse.core.resources.IWorkspaceRoot" /> 
+				              <instanceof
+				                    value="org.eclipse.core.resources.IProject" />  
+				              <instanceof  
+				                     value="org.eclipse.core.resources.IFolder" /> 
+				           </or>
+				  </triggerPoints>
+		</navigatorContent>
+	  </extension>-->
+	 <extension point="org.eclipse.ui.navigator.navigatorContent">    
+            <commonWizard type="new"
+                menuGroupId="2org.wso2.developerstudio.eclipse.artifact.esb"
+                wizardId="org.wso2.developerstudio.eclipse.artifact.newsequenceartifact">
+                <enablement>
+                    <or>
+                        <adapt type="org.eclipse.core.resources.IProject">
+                            <test property="org.eclipse.core.resources.projectNature"
+                                value="org.wso2.developerstudio.eclipse.esb.project.nature" />
+                                </adapt>
+                       <adapt type="org.eclipse.jdt.core.IPackageFragment">
+							<test property="org.wso2.developerstudio.projectNature"
+								value="org.wso2.developerstudio.eclipse.esb.project.nature" />
+						</adapt>
+						<adapt type="org.eclipse.core.resources.IFolder">  
+						   <test
+                       forcePluginActivation="true"
+                       property="org.eclipse.core.resources.name"
+                       value="sequences">
+                     </test>                        
+						</adapt>
+                    </or>
+                </enablement>
+            </commonWizard>
+    </extension>
+   <!--extension point="org.eclipse.ui.popupMenus">
+		<objectContribution objectClass="org.eclipse.core.resources.IFile"
+			id="org.wso2.developerstudio.eclipse.artifact.sequence"
+			nameFilter="*.xml">
+			<filter
+           	 	name="projectNature"
+            	value="org.wso2.developerstudio.eclipse.esb.project.nature">
+         	</filter>
+			<menu id="org.wso2.developerstudio.eclipse.artifact.sequence"
+				label="Generate" path="additions">
+				<separator name="group1" />
+			</menu>
+			<action
+				id="org.wso2.developerstudio.eclipse.artifact.generate.proxy"
+				label="Proxy Service"
+				menubarPath="org.wso2.developerstudio.eclipse.artifact.sequence/group1"
+				class="org.wso2.developerstudio.eclipse.artifact.sequence.actions.ProxyServiceGenerateAction"
+				enablesFor="1">
+			</action>
+		</objectContribution>
+	</extension-->
+	
+	
+	<extension point="org.eclipse.core.expressions.propertyTesters">
+      <propertyTester
+            class="org.wso2.developerstudio.eclipse.artifact.sequence.property.SequencePropertyTester"
+            id="org.wso2.developerstudio.eclipse.server.propertytester"
+            namespace="org.wso2.developerstudio.eclipse"
+            properties="createproxy"
+            type="org.eclipse.core.resources.IFile">
+      </propertyTester>
+	</extension>
+	<!--Command-->
+	<extension point="org.eclipse.ui.commands">
+  		<command
+        description="Generate Proxy Service"
+        id="org.wso2.developerstudio.eclipse.artifact.seqence.create.proxy"
+        name="Generate Proxy">
+  		</command>
+	</extension>
+	<!--Handler-->
+	<extension point="org.eclipse.ui.handlers">
+  		<handler
+        class="org.wso2.developerstudio.eclipse.artifact.sequence.actions.SequenceHandler"
+        commandId="org.wso2.developerstudio.eclipse.artifact.seqence.create.proxy">
+     <!--enabledWhen>
+        <with variable="selection">
+           <iterate
+                 ifEmpty="false"
+                 operator="and">
+              <test
+                    property="org.wso2.developerstudio.eclipse.serverModuleEnablement"
+                    value="org.eclipse.wst.server.ui.IServerModule">
+              </test>
+           </iterate>
+        </with>
+     		</enabledWhen-->
+  		</handler>
+	</extension>
+	<!-- Menu-->
+	<!--<extension point="org.eclipse.ui.menus">
+    <menuContribution locationURI="popup:org.eclipse.ui.popup.any?after=additions">
+     <command
+           commandId="org.wso2.developerstudio.eclipse.artifact.seqence.create.proxy"
+           style="push">
+        <visibleWhen checkEnabled="false">
+            <with variable="activeMenuSelection">
+               <iterate ifEmpty="false" operator="and">
+                  <instanceof
+                     value="org.eclipse.core.resources.IFile">
+                  </instanceof>
+                  <and>
+                  <test
+                    property="org.wso2.developerstudio.eclipse.createproxy"
+                    value="org.eclipse.core.resources.IFile">
+              </test>                 
+                  </and>
+               </iterate>
+           </with>
+        </visibleWhen>
+     </command>
+  </menuContribution>
+</extension>-->
+<extension point="org.eclipse.ui.navigator.navigatorContent">    
+            <commonWizard type="new"
+                menuGroupId="2org.wso2.developerstudio.eclipse.artifact.esb"
+                wizardId="org.wso2.developerstudio.eclipse.artifact.synapse.api.wizard">
+                <enablement>
+                    <or>
+                        <adapt type="org.eclipse.core.resources.IProject">
+                            <test property="org.eclipse.core.resources.projectNature"
+                                value="org.wso2.developerstudio.eclipse.esb.project.nature" />
+                                </adapt>
+                       <adapt type="org.eclipse.jdt.core.IPackageFragment">
+							<test property="org.wso2.developerstudio.projectNature"
+								value="org.wso2.developerstudio.eclipse.esb.project.nature" />
+						</adapt>
+                    </or>
+                </enablement>
+            </commonWizard>
+    </extension>
+  <!--extension point="org.eclipse.core.resources.natures"
+		id="org.wso2.developerstudio.eclipse.sequence.project.nature" name="Sequence Project Nature">
+		<runtime>
+			<run
+				class="org.wso2.developerstudio.eclipse.artifact.sequence.project.nature.SequenceProjectNature">
+			</run>
+		</runtime>
+	</extension-->
+ <extension
+         point="org.wso2.developerstudio.eclipse.esb.configurationProvider">
+      <sequence
+            class="org.wso2.developerstudio.eclipse.artifact.sequence.provider.SequenceProvider"
+            id="org.wso2.developerstudio.eclipse.artifact.sequence"
+            name="Carbon Application Sequences">
+      </sequence>
+   </extension>
+   
+   <extension point="org.wso2.developerstudio.eclipse.platform.core.intro.ui.dashboard">
+	   <wizardLink category="dashboard.category.esb" id="6dashboard.wizardLink.esb.sequence"
+		wizard="org.wso2.developerstudio.eclipse.artifact.newsequenceartifact"
+		priority="6">
+		</wizardLink>
+   </extension>
+
+</plugin>

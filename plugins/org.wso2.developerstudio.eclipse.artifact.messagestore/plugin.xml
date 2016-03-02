@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+  Copyright (c) WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+  
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+  
+  http://www.apache.org/licenses/LICENSE-2.0
+  
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+
+-->
+<?eclipse version="3.4"?>
+<plugin>
+<extension point="org.eclipse.ui.newWizards">
+		<wizard name="Message Store" 
+			category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.eclipse.message.mediation/org.wso2.developerstudio.eclipse.message.mediation.features"
+			class="org.wso2.developerstudio.eclipse.artifact.messagestore.ui.wizard.MessageStoreCreationWizard"
+			wizardManifest="project_wizard.xml"
+			id="org.wso2.developerstudio.eclipse.artifact.messagestore.wizard"
+			icon="icons/message-store-small.png">
+			<description>Message Store</description>
+		</wizard>
+	</extension>
+	  <!--<extension point="org.eclipse.ui.navigator.navigatorContent">	
+	   <navigatorContent activeByDefault="true"
+			priority="high"
+			id="org.eclipse.ui.navigator.resourceContent"
+			name="test">
+				<commonWizard 
+					menuGroupId="2org.wso2.developerstudio.eclipse.artifact.esb"
+			  	 	type="new"
+					wizardId="org.wso2.developerstudio.eclipse.artifact.messagestore.wizard">
+					<enablement>
+						<or>
+							<adapt type="org.eclipse.core.resources.IProject"/>
+							<adapt type="org.eclipse.core.resources.IFolder"/>
+						</or>
+					</enablement>
+				</commonWizard>
+				<triggerPoints>
+				           <or>         
+				              <instanceof 
+				                    value="org.eclipse.core.resources.IWorkspaceRoot" /> 
+				              <instanceof
+				                    value="org.eclipse.core.resources.IProject" />  
+				              <instanceof  
+				                     value="org.eclipse.core.resources.IFolder" /> 
+				           </or>
+				  </triggerPoints>
+		</navigatorContent>
+	</extension>-->
+			<extension point="org.eclipse.ui.navigator.navigatorContent">    
+            <commonWizard type="new"
+                menuGroupId="2org.wso2.developerstudio.eclipse.artifact.esb"
+                wizardId="org.wso2.developerstudio.eclipse.artifact.messagestore.wizard">
+                <enablement>
+                    <or>
+                        <adapt type="org.eclipse.core.resources.IProject">
+                            <test property="org.eclipse.core.resources.projectNature"
+                                value="org.wso2.developerstudio.eclipse.esb.project.nature" />
+                                </adapt>
+                       <adapt type="org.eclipse.jdt.core.IPackageFragment">
+							<test property="org.wso2.developerstudio.projectNature"
+								value="org.wso2.developerstudio.eclipse.esb.project.nature" />
+						</adapt>
+						<adapt type="org.eclipse.core.resources.IFolder">  
+						   <test
+                       forcePluginActivation="true"
+                       property="org.eclipse.core.resources.name"
+                       value="message-stores">
+                     </test>                        
+						</adapt>
+                    </or>
+                </enablement>
+            </commonWizard>
+    </extension>
+   
+   	<extension
+		point="org.wso2.developerstudio.eclipse.platform.core.intro.ui.dashboard">	
+	<wizardLink category="dashboard.category.esb" id="91dashboard.wizardLink.esb.messagestore"
+			wizard="org.wso2.developerstudio.eclipse.artifact.messagestore.wizard" priority="10">
+		</wizardLink>
+	</extension>
+
+</plugin>

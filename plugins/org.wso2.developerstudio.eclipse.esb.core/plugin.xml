@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension-point id="org.wso2.developerstudio.eclipse.esb.configurationProvider" name="ESB Configuration Provider Contribution Extension" schema="schema/org.wso2.developerstudio.eclipse.esb.configurationProvider.exsd"/>
+	<extension point="org.eclipse.ui.preferencePages">
+		<page id="org.wso2.developerstudio.eclipse.esb.preferences" name="ESB"
+			class="org.wso2.developerstudio.eclipse.esb.core.preferences.ui.ESBPreferencePage" category="org.wso2.developerstudio.eclipse.ui.developerstudio.preferences">
+		</page>
+	</extension>
+	<extension point="org.eclipse.core.runtime.preferences">
+		<initializer
+			class="org.wso2.developerstudio.eclipse.esb.core.preferences.ui.PreferenceInitializer">
+		</initializer>
+	</extension>
+ <extension
+       point="org.wso2.developerstudio.eclipse.platform.core.mediatype">
+    <resolver
+          class="org.wso2.developerstudio.eclipse.esb.core.internal.impl.EndpointMediaTypeResolver"
+          extensions="xml"
+          id="org.wso2.developerstudio.eclipse.esb.core.resolver.endpoint"
+          mediaType="application/vnd.wso2.esb.endpoint"
+          name="Endpoint Media type"
+          priority="20">
+    </resolver>
+    <resolver
+          class="org.wso2.developerstudio.eclipse.esb.core.internal.impl.TemplateMediaTypeResolver"
+          extensions="xml"
+          id="org.wso2.developerstudio.eclipse.esb.core.resolver.template"
+          mediaType="application/vnd.wso2.template"
+          name="Template Media type"
+          priority="20">
+    </resolver>
+    <resolver
+          class="org.wso2.developerstudio.eclipse.esb.core.internal.impl.TemplateEndpointMediaTypeResolver"
+          extensions="xml"
+          id="org.wso2.developerstudio.eclipse.esb.core.resolver.template.endpoint"
+          mediaType="application/vnd.wso2.template.endpoint"
+          name="Template Endpoint Media type"
+          priority="30">
+    </resolver>
+    <resolver
+          class="org.wso2.developerstudio.eclipse.esb.core.internal.impl.SequenceMediaTypeResolver"
+          extensions="xml"
+          id="org.wso2.developerstudio.eclipse.esb.core.resolver.sequence"
+          mediaType="application/vnd.wso2.sequence"
+          name="Sequence Media type"
+          priority="10">
+    </resolver>
+    <resolver
+          class="org.wso2.developerstudio.eclipse.esb.core.internal.impl.LocalEntryMediaTypeResolver"
+          extensions="xml"
+          id="org.wso2.developerstudio.eclipse.esb.core.resolver.localEntry"
+          mediaType="application/vnd.wso2.esb.localentry"
+          name="Sequence Media type"
+          priority="10">
+    </resolver>
+    <resolver
+          class="org.wso2.developerstudio.eclipse.esb.core.internal.impl.SmooksMediaTypeResolver"
+          extensions="xml"
+          id="org.wso2.developerstudio.eclipse.esb.core.resolver.smooks"
+          mediaType="application/vnd+wso2.smooks"
+          name="Smooks Media type"
+          priority="10">
+    </resolver>
+    <resolver
+          class="org.wso2.developerstudio.eclipse.esb.core.internal.impl.ProxyMediaTypeResolver"
+          extensions="xml"
+          id="org.wso2.developerstudio.eclipse.esb.core.resolver.proxyservice"
+          mediaType="application/vnd+wso2.proxyservice"
+          name="Proxy Service Media type"
+          priority="20">
+    </resolver>
+ </extension>
+	
+</plugin>

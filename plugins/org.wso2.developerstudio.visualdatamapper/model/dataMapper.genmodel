@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.wso2.developerstudio.visualdatamapper/src"
+    modelPluginID="org.wso2.developerstudio.visualdatamapper" modelName="DataMapper"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="7.0" copyrightFields="false">
+  <foreignModel>dataMapper.ecore</foreignModel>
+  <genPackages prefix="DataMapper" basePackage="org.wso2.developerstudio" disposableProviderFactory="true"
+      ecorePackage="dataMapper.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="dataMapper.ecore#//SchemaDataType">
+      <genEnumLiterals ecoreEnumLiteral="dataMapper.ecore#//SchemaDataType/ARRAY"/>
+      <genEnumLiterals ecoreEnumLiteral="dataMapper.ecore#//SchemaDataType/BOOLEAN"/>
+      <genEnumLiterals ecoreEnumLiteral="dataMapper.ecore#//SchemaDataType/BYTES"/>
+      <genEnumLiterals ecoreEnumLiteral="dataMapper.ecore#//SchemaDataType/DOUBLE"/>
+      <genEnumLiterals ecoreEnumLiteral="dataMapper.ecore#//SchemaDataType/ENUM"/>
+      <genEnumLiterals ecoreEnumLiteral="dataMapper.ecore#//SchemaDataType/FIXED"/>
+      <genEnumLiterals ecoreEnumLiteral="dataMapper.ecore#//SchemaDataType/FLOAT"/>
+      <genEnumLiterals ecoreEnumLiteral="dataMapper.ecore#//SchemaDataType/INT"/>
+      <genEnumLiterals ecoreEnumLiteral="dataMapper.ecore#//SchemaDataType/LONG"/>
+      <genEnumLiterals ecoreEnumLiteral="dataMapper.ecore#//SchemaDataType/MAP"/>
+      <genEnumLiterals ecoreEnumLiteral="dataMapper.ecore#//SchemaDataType/NULL"/>
+      <genEnumLiterals ecoreEnumLiteral="dataMapper.ecore#//SchemaDataType/RECORD"/>
+      <genEnumLiterals ecoreEnumLiteral="dataMapper.ecore#//SchemaDataType/STRING"/>
+      <genEnumLiterals ecoreEnumLiteral="dataMapper.ecore#//SchemaDataType/UNION"/>
+    </genEnums>
+    <genClasses ecoreClass="dataMapper.ecore#//DataMapperNode"/>
+    <genClasses ecoreClass="dataMapper.ecore#//DataMapperDiagram"/>
+    <genClasses ecoreClass="dataMapper.ecore#//DataMapperRoot">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dataMapper.ecore#//DataMapperRoot/input"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dataMapper.ecore#//DataMapperRoot/output"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dataMapper.ecore#//DataMapperRoot/operators"/>
+    </genClasses>
+    <genClasses ecoreClass="dataMapper.ecore#//Input">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dataMapper.ecore#//Input/treeNode"/>
+    </genClasses>
+    <genClasses ecoreClass="dataMapper.ecore#//Output">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dataMapper.ecore#//Output/treeNode"/>
+    </genClasses>
+    <genClasses ecoreClass="dataMapper.ecore#//Operator">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dataMapper.ecore#//Operator/basicContainer"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataMapper.ecore#//Operator/serialized"/>
+    </genClasses>
+    <genClasses ecoreClass="dataMapper.ecore#//OperatorBasicContainer">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dataMapper.ecore#//OperatorBasicContainer/leftContainer"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dataMapper.ecore#//OperatorBasicContainer/rightContainer"/>
+    </genClasses>
+    <genClasses ecoreClass="dataMapper.ecore#//OperatorLeftContainer">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dataMapper.ecore#//OperatorLeftContainer/leftConnectors"/>
+    </genClasses>
+    <genClasses ecoreClass="dataMapper.ecore#//OperatorLeftConnector">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dataMapper.ecore#//OperatorLeftConnector/inNode"/>
+    </genClasses>
+    <genClasses ecoreClass="dataMapper.ecore#//OperatorRightContainer">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dataMapper.ecore#//OperatorRightContainer/rightConnectors"/>
+    </genClasses>
+    <genClasses ecoreClass="dataMapper.ecore#//OperatorRightConnector">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dataMapper.ecore#//OperatorRightConnector/outNode"/>
+    </genClasses>
+    <genClasses ecoreClass="dataMapper.ecore#//Element">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataMapper.ecore#//Element/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataMapper.ecore#//Element/value"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dataMapper.ecore#//Element/outNode"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dataMapper.ecore#//Element/inNode"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference dataMapper.ecore#//Element/fieldParent"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataMapper.ecore#//Element/schemaDataType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataMapper.ecore#//Element/level"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataMapper.ecore#//Element/doc"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataMapper.ecore#//Element/default"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataMapper.ecore#//Element/aliases"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataMapper.ecore#//Element/order"/>
+    </genClasses>
+    <genClasses ecoreClass="dataMapper.ecore#//Attribute">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataMapper.ecore#//Attribute/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataMapper.ecore#//Attribute/value"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dataMapper.ecore#//Attribute/outNode"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dataMapper.ecore#//Attribute/inNode"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference dataMapper.ecore#//Attribute/fieldParent"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataMapper.ecore#//Attribute/doc"/>
+    </genClasses>
+    <genClasses ecoreClass="dataMapper.ecore#//TreeNode">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataMapper.ecore#//TreeNode/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dataMapper.ecore#//TreeNode/node"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dataMapper.ecore#//TreeNode/attribute"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dataMapper.ecore#//TreeNode/element"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference dataMapper.ecore#//TreeNode/fieldParent"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference dataMapper.ecore#//TreeNode/outputParent"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference dataMapper.ecore#//TreeNode/inputParent"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataMapper.ecore#//TreeNode/schemaDataType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataMapper.ecore#//TreeNode/level"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataMapper.ecore#//TreeNode/namespace"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataMapper.ecore#//TreeNode/doc"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataMapper.ecore#//TreeNode/aliases"/>
+    </genClasses>
+    <genClasses ecoreClass="dataMapper.ecore#//InNode">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dataMapper.ecore#//InNode/incomingLink"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference dataMapper.ecore#//InNode/elementParent"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference dataMapper.ecore#//InNode/attributeParent"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference dataMapper.ecore#//InNode/concatParent"/>
+    </genClasses>
+    <genClasses ecoreClass="dataMapper.ecore#//OutNode">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dataMapper.ecore#//OutNode/outgoingLink"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference dataMapper.ecore#//OutNode/elementParent"/>
+    </genClasses>
+    <genClasses ecoreClass="dataMapper.ecore#//DataMapperLink">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dataMapper.ecore#//DataMapperLink/inNode"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference dataMapper.ecore#//DataMapperLink/outNode"/>
+    </genClasses>
+    <genClasses ecoreClass="dataMapper.ecore#//Concat">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataMapper.ecore#//Concat/delimiter"/>
+    </genClasses>
+    <genClasses ecoreClass="dataMapper.ecore#//Equal"/>
+    <genClasses ecoreClass="dataMapper.ecore#//Constant">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataMapper.ecore#//Constant/constantValue"/>
+    </genClasses>
+    <genClasses ecoreClass="dataMapper.ecore#//Split">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataMapper.ecore#//Split/delimiter"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataMapper.ecore#//Split/arrayOutput"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataMapper.ecore#//Split/arrayOutputResultOmitingIndices"/>
+    </genClasses>
+    <genClasses ecoreClass="dataMapper.ecore#//LowerCase"/>
+    <genClasses ecoreClass="dataMapper.ecore#//Contains"/>
+    <genClasses ecoreClass="dataMapper.ecore#//UpperCase"/>
+  </genPackages>
+</genmodel:GenModel>

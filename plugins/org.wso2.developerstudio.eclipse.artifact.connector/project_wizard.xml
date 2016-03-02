@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wizard>
+ <projectOptions title="Connector Exporter Project Creation Wizard "
+ 				 description="Select how you would like to create your new project"
+ 				 error="Please select a method to create the project">
+ 	<option id="library.artifact" default="true">Create New Connector Project</option>
+ </projectOptions>
+ <projectOptionSettings>
+ 	<settings optionId="library.artifact"
+ 			  		title="Connector Exporter Project"
+ 			  		description="Create a new connector exporter project to export connector as a CApp"
+ 			  		error="Please give a name to create the connector exporter project">
+ 		<data modelProperty="project.name"
+ 					type="string" 
+ 					fieldController="org.wso2.developerstudio.eclipse.artifact.connector.validator.ConnectorFieldsController">Project Name</data>
+ 		
+ 		<projectNatures>
+			<nature>org.eclipse.jdt.core.javanature</nature>
+		</projectNatures>
+		
+ 	</settings>
+ </projectOptionSettings>
+</wizard>

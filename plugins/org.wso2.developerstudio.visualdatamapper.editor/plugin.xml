@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="dataMapper.presentation.DataMapperModelWizardID"
+            name="%_UI_DataMapperModelWizard_label"
+            class="org.wso2.developerstudio.datamapper.presentation.DataMapperModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/DataMapperModelFile.gif">
+         <description>%_UI_DataMapperModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated dataMapper -->
+      <editor
+            id="org.wso2.developerstudio.datamapper.presentation.DataMapperEditorID"
+            name="%_UI_DataMapperEditor_label"
+            icon="icons/full/obj16/DataMapperModelFile.gif"
+            extensions="datamapper"
+            class="org.wso2.developerstudio.datamapper.presentation.DataMapperEditor"
+            contributorClass="org.wso2.developerstudio.datamapper.presentation.DataMapperActionBarContributor">
+      </editor>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <editor
+            id="dataMapper.presentation.DataMapperEditorID"
+            name="%_UI_DataMapperEditor_label"
+            icon="icons/full/obj16/DataMapperModelFile.gif"
+            extensions="datamapper"
+            class="org.wso2.developerstudio.datamapper.presentation.DataMapperEditor"
+            contributorClass="org.wso2.developerstudio.datamapper.presentation.DataMapperActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>

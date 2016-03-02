@@ -1,0 +1,23 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: ESB Core
+Bundle-SymbolicName: org.wso2.developerstudio.eclipse.esb.core;singleton:=true
+Bundle-Version: 4.0.0.qualifier
+Bundle-Activator: org.wso2.developerstudio.eclipse.esb.core.Activator
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime
+Bundle-ActivationPolicy: lazy
+Export-Package: org.wso2.developerstudio.eclipse.esb.core;uses:="org.eclipse.ui.plugin,org.osgi.framework",
+ org.wso2.developerstudio.eclipse.esb.core.configuration.impl;uses:="org.eclipse.jface.resource,org.wso2.developerstudio.eclipse.esb.core.interfaces",
+ org.wso2.developerstudio.eclipse.esb.core.interfaces;uses:="org.eclipse.ui,org.eclipse.core.resources,org.wso2.developerstudio.eclipse.platform.core.interfaces",
+ org.wso2.developerstudio.eclipse.esb.core.preferences.ui;uses:="org.eclipse.jface.preference,org.eclipse.ui,org.eclipse.core.runtime.preferences",
+ org.wso2.developerstudio.eclipse.esb.core.utils
+Import-Package: javax.xml.stream;version="1.0.1.wso2v1",
+ org.apache.axiom.om,
+ org.apache.axiom.om.impl.builder,
+ org.apache.commons.lang,
+ org.eclipse.core.resources,
+ org.wso2.developerstudio.eclipse.logging.core;version="[4.0.0,4.1.0)",
+ org.wso2.developerstudio.eclipse.platform.core.interfaces;version="[4.0.0,4.1.0)",
+ org.wso2.developerstudio.eclipse.platform.core.manifest;version="[4.0.0,4.1.0)",
+ org.wso2.developerstudio.eclipse.platform.core.mediatype;version="[4.0.0,4.1.0)"

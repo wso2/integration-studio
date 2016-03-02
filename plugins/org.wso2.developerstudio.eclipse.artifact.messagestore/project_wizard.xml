@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	Copyright WSO2, Inc. (http://wso2.com)
+	
+	Licensed under the Apache License, Version 2.0 (the "License"); 
+	you may not use this file except in compliance with the License.
+	You may obtain a copy of the License at 
+	
+	http://www.apache.org/licenses/LICENSE-2.0 
+	
+	Unless required	by applicable law or agreed to in writing, software
+	distributed under the License is distributed on an "AS IS" BASIS,
+	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	See the License for	the specific language governing permissions and
+	limitations under the License.
+-->
+<wizard>
+	<projectOptions title="Message Store Artifact Creation Options"
+		description="Select how you would like to create your message-store artifact"
+		error="Please select a method to create the task">
+		<option id="create.store" default="true">Create a new message-store artifact</option>
+		<option id="import.store">Import a message-store artifact</option>
+	</projectOptions>
+	<projectOptionSettings>
+		<settings optionId="create.store" title="Message Store Artifact"
+			description="Create a new Message Store Artifact" error="Please give a name for the message-store">
+			
+			<data modelProperty="store.name" type="string"
+				fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController">Message Store Name*</data>
+			<data modelProperty="store.type" 
+				type="list" 
+				fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController"  
+				controlData="select=single;modify=non-editable;class=org.wso2.developerstudio.eclipse.artifact.messagestore.provider.MessageStoreTypeList">Message Store type*</data>
+					
+			<!-- JMS : begin-->
+			<data modelProperty="jms.context-factory" type="string"
+				fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController">Initial Context Factory*</data>
+			<data modelProperty="jms.provider-url" type="string"
+				fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController">Provider URL*</data>
+			<data modelProperty="jms.queue-name" type="string"
+				fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController">JNDI Queue Name</data>
+			<data modelProperty="jms.connection-factory" type="string"
+				fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController">Connection factory</data>
+			<data modelProperty="jms.user-name" type="string"
+				fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController">User Name</data>
+			<data modelProperty="jms.password" type="string"
+				fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController">Password</data>
+			<data modelProperty="jms.api-version" type="list"
+				fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController"
+				controlData="select=single;modify=non-editable;class=org.wso2.developerstudio.eclipse.artifact.messagestore.provider.SpecVersionList">JMS API specification Version</data>
+	        <data modelProperty="jms.enable.producer.guaranteed.delivery" type="list"
+                fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController"
+                controlData="select=single;modify=non-editable;class=org.wso2.developerstudio.eclipse.artifact.messagestore.provider.GuaranteedDeliveryEnableDisableList">Enable Producer Guaranteed Delivery</data>
+            <data modelProperty="jms.failover.message.store" type="list"
+                fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController"
+                controlData="select=single;modify=non-editable;class=org.wso2.developerstudio.eclipse.artifact.messagestore.provider.AvailableMessageStoreList">Failover Message Store</data>
+      		<!-- JMS : end -->		
+			
+			<!-- Custom : begin -->
+			<data modelProperty="custom.provider-class" type="string"
+				fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController">Provider class*</data>
+			<data modelProperty="custom.parameters" type="composite"  
+			fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController" 
+			controlData="class=org.wso2.developerstudio.eclipse.artifact.messagestore.provider.ParametersCompositeProvider">Parameters</data>
+			<!-- Custom : end -->
+			
+			<!-- RabbitMQ : begin -->
+			<data modelProperty="rabbitmq.server-host-name" type="string"
+				fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController">RabbitMQ Server Host Name*</data>
+			<data modelProperty="rabbitmq.server-host-port" type="string"
+				fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController">RabbitMQ Server Host Port*</data>
+			<data modelProperty="rabbitmq.queue-name" type="string"
+				fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController">RabbitMQ Queue Name</data>
+			<data modelProperty="rabbitmq.exchange-name" type="string"
+				fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController">RabbitMQ Exchange Name</data>
+			<data modelProperty="rabbitmq.routing-key" type="string"
+				fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController">Routing Key</data>
+			<data modelProperty="rabbitmq.user-name" type="string"
+				fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController">User Name</data>
+			<data modelProperty="rabbitmq.password" type="string"
+				fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController">Password</data>
+			<data modelProperty="rabbitmq.virtual-host" type="string"
+				fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController">Virtual Host</data>
+            <data modelProperty="rabbitmq.enable.producer.guaranteed.delivery" type="list"
+                fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController"
+                controlData="select=single;modify=non-editable;class=org.wso2.developerstudio.eclipse.artifact.messagestore.provider.GuaranteedDeliveryEnableDisableList">Enable Producer Guaranteed Delivery</data>
+            <data modelProperty="rabbitmq.failover.message.store" type="list"
+                fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController"
+                controlData="select=single;modify=non-editable;class=org.wso2.developerstudio.eclipse.artifact.messagestore.provider.AvailableMessageStoreList">Failover Message Store</data>
+			<!-- RabbitMQ : end -->
+
+			<!-- JDBC : begin -->
+			<data modelProperty="jdbc.database-table" type="string"
+				fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController">Database Table*</data>
+			<data modelProperty="jdbc.connection-information" type="list"
+				fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController"
+				controlData="select=single;modify=non-editable;class=org.wso2.developerstudio.eclipse.artifact.messagestore.provider.JDBCConnectionInformationList">Connection Information*</data>
+			<data modelProperty="jdbc.driver" type="string"
+				fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController">Driver*</data>
+			<data modelProperty="jdbc.url" type="string"
+				fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController">URL*</data>
+			<data modelProperty="jdbc.user" type="string"
+				fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController">User*</data>
+			<data modelProperty="jdbc.password" type="string"
+				fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController">Password</data>
+			<data modelProperty="jdbc.datasource-name" type="string"
+				fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController">Datasource Name</data>
+            <data modelProperty="jdbc.enable.producer.guaranteed.delivery" type="list"
+                fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController"
+                controlData="select=single;modify=non-editable;class=org.wso2.developerstudio.eclipse.artifact.messagestore.provider.GuaranteedDeliveryEnableDisableList">Enable Producer Guaranteed Delivery</data>
+            <data modelProperty="jdbc.failover.message.store" type="list"
+                fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController"
+                controlData="select=single;modify=non-editable;class=org.wso2.developerstudio.eclipse.artifact.messagestore.provider.AvailableMessageStoreList">Failover Message Store</data>
+			<!-- JDBC : end -->      
+
+			<group id ="location"/>	
+			<data modelProperty="save.location" type="workspacefolder"
+				fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController"
+				group="location"
+				controlData="filterClass=org.wso2.developerstudio.eclipse.artifact.messagestore.filter.ESBProjectFilter">Save location:</data>
+			<data modelProperty="create.esb.prj" type="link"
+				fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController"
+				group="location"
+				controlData="align=right">&lt;a&gt;Create a new ESB project...&lt;/a&gt;</data>
+				
+		</settings>
+		<settings optionId="import.store" 
+				  title="Message Store Artifact" 
+				  description="Create a Message Store Artifact using a configuration file with message-store defined" 
+				  error="Browse and select a message-store configuration file">
+				 
+			<data modelProperty="import.file" type="file" filter="*.xml" fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController">Message-store configuration file</data>
+			<data modelProperty="save.location" type="workspacefolder" fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController" 
+			controlData="filterClass=org.wso2.developerstudio.eclipse.artifact.messagestore.filter.ESBProjectFilter" >Save in: </data>
+			<data modelProperty="create.esb.prj" type="link" fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController" 
+			controlData="align=right" >&lt;a&gt;Create new Project...&lt;/a&gt;</data>
+		    <data modelProperty="available.stores" type="list" fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController" 
+			controlData="select=multiple;selectAllbtn=true;modify=non-editable;class=org.wso2.developerstudio.eclipse.artifact.messagestore.provider.MessageStoreList">Available Message-Stores</data>
+		</settings>
+	</projectOptionSettings>
+</wizard>

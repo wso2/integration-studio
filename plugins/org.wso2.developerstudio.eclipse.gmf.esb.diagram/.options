@@ -1,0 +1,7 @@
+# Tracing options for the org.wso2.developerstudio.eclipse.gmf.esb.diagram plug-in
+
+# Common issues
+org.wso2.developerstudio.eclipse.gmf.esb.diagram/debug=false
+
+# Visual IDs
+org.wso2.developerstudio.eclipse.gmf.esb.diagram/debug/visualID=false

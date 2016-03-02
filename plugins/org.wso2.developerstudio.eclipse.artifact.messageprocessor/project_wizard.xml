@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright WSO2, Inc. (http://wso2.com) Licensed under the Apache License, 
+	Version 2.0 (the "License"); you may not use this file except in compliance 
+	with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 
+	Unless required by applicable law or agreed to in writing, software distributed 
+	under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES 
+	OR CONDITIONS OF ANY KIND, either express or implied. See the License for 
+	the specific language governing permissions and limitations under the License. -->
+<wizard>
+	<projectOptions title="Message processor Artifact Creation Options"
+		description="Select how you would like to create your message-processor artifact"
+		error="Please select a method to create the message-processor">
+		<option id="create.processor" default="true">Create a new message-processor artifact</option>
+		<option id="import.processor">Import a message-processor artifact</option>
+	</projectOptions>
+	<projectOptionSettings>
+		<settings optionId="create.processor" title="Message Processor Artifact"
+			description="Create a new Message Processor Artifact" error="Please give a name for the message-processor">
+
+			<data modelProperty="processor.type" type="list"
+				fieldController="org.wso2.developerstudio.eclipse.artifact.messageprocessor.validator.MessageProcessorFieldController"
+				controlData="select=single;modify=non-editable;class=org.wso2.developerstudio.eclipse.artifact.messageprocessor.provider.MessageProcessorTypeList">Message processor type *</data>
+			<data modelProperty="processor.name" type="string"
+				fieldController="org.wso2.developerstudio.eclipse.artifact.messageprocessor.validator.MessageProcessorFieldController">Message processor Name *</data>
+
+            <!-- Forwarding_Processor & Sampling_Processor & Custom_Processor : begin -->
+			<data modelProperty="FSC_processor.store" type="list"
+				fieldController="org.wso2.developerstudio.eclipse.artifact.messageprocessor.validator.MessageProcessorFieldController"
+				controlData="select=single;modify=non-editable;class=org.wso2.developerstudio.eclipse.artifact.messageprocessor.provider.MessageStoreList">Message Store *</data>
+			<!-- Forwarding_Processor & Sampling_Processor & Custom_Processor : end -->
+			
+			<!-- Scheduled_Failover_Processor : begin -->
+			<data modelProperty="Scheduled_Failover_processor.source_store" type="list"
+				fieldController="org.wso2.developerstudio.eclipse.artifact.messageprocessor.validator.MessageProcessorFieldController"
+				controlData="select=single;modify=non-editable;class=org.wso2.developerstudio.eclipse.artifact.messageprocessor.provider.MessageStoreList">Source Message Store *</data>
+			<data modelProperty="Scheduled_Failover_processor.target_store" type="list"
+				fieldController="org.wso2.developerstudio.eclipse.artifact.messageprocessor.validator.MessageProcessorFieldController"
+				controlData="select=single;modify=non-editable;class=org.wso2.developerstudio.eclipse.artifact.messageprocessor.provider.MessageStoreList">Target Message Store *</data>	
+			<!-- Scheduled_Failover_Processor : end -->
+
+			<!-- Forwarding_Processor & Sampling_Processor & Scheduled_Failover_Processor : begin -->
+			<data modelProperty="FSS_processor.processor_state" type="list"
+				fieldController="org.wso2.developerstudio.eclipse.artifact.messageprocessor.validator.MessageProcessorFieldController"
+				controlData="select=single;modify=non-editable;class=org.wso2.developerstudio.eclipse.artifact.messageprocessor.provider.ProcessorStateList">Processor state *</data>
+			<data modelProperty="FSS_processor.configuration_file_path" type="string"
+				fieldController="org.wso2.developerstudio.eclipse.artifact.messageprocessor.validator.MessageProcessorFieldController">Quartz configuration file path</data>
+			<data modelProperty="FSS_processor.cron_expression" type="string"
+				fieldController="org.wso2.developerstudio.eclipse.artifact.messageprocessor.validator.MessageProcessorFieldController">Cron Expression</data>
+			<!-- Forwarding_Processor & Sampling_Processor & Scheduled_Failover_Processor : end -->
+
+            <!-- Forwarding_Processor & Scheduled_Failover_Processor : begin -->
+            <data modelProperty="FS_processor.forwarding_interval"
+				type="string"
+				fieldController="org.wso2.developerstudio.eclipse.artifact.messageprocessor.validator.MessageProcessorFieldController">Forwarding interval (Millis)</data>
+			<data modelProperty="FS_processor.retry_interval" type="string"
+				fieldController="org.wso2.developerstudio.eclipse.artifact.messageprocessor.validator.MessageProcessorFieldController">Retry interval (Millis)</data>
+			<data modelProperty="FS_processor.delivery_attempts"
+				type="string"
+				fieldController="org.wso2.developerstudio.eclipse.artifact.messageprocessor.validator.MessageProcessorFieldController">Maximum delivery attempts</data>
+			<data
+				modelProperty="FS_processor.drop_message_after_maximum_delivery_attempts"
+				type="list"
+				fieldController="org.wso2.developerstudio.eclipse.artifact.messageprocessor.validator.MessageProcessorFieldController"
+				controlData="select=single;modify=non-editable;class=org.wso2.developerstudio.eclipse.artifact.messageprocessor.provider.EnableDisableDataList">Drop message after maximum delivery attempts</data>
+			<data modelProperty="FS_processor.Fault_sequence_name"
+				type="resource+text"
+				fieldController="org.wso2.developerstudio.eclipse.artifact.messageprocessor.validator.MessageProcessorFieldController"
+				controlData="select=single;modify=readonly;registry.selection.type=resource">Fault sequence name</data>
+		    <data modelProperty="FS_processor.Deactivate_sequence_name"
+				type="resource+text"
+				fieldController="org.wso2.developerstudio.eclipse.artifact.messageprocessor.validator.MessageProcessorFieldController"
+				controlData="select=single;modify=readonly;registry.selection.type=resource">Deactivate sequence name</data>
+			<data modelProperty="FS_processor.task_count"
+				type="string"
+				fieldController="org.wso2.developerstudio.eclipse.artifact.messageprocessor.validator.MessageProcessorFieldController">Task Count (Cluster Mode)</data>			
+			<!-- Forwarding_Processor & Scheduled_Failover_Processor : end -->
+			
+			<!-- Forwarding_Processor : begin -->
+			<data modelProperty="Forwarding_processor.non_retry_http_status_codes"
+				type="string"
+				fieldController="org.wso2.developerstudio.eclipse.artifact.messageprocessor.validator.MessageProcessorFieldController">Non retry http status codes (eg - 304, 305)</data>
+			<data modelProperty="Forwarding_processor.client_repository"
+				type="string"
+				fieldController="org.wso2.developerstudio.eclipse.artifact.messageprocessor.validator.MessageProcessorFieldController">Axis2 Client repository</data>
+			<data modelProperty="Forwarding_processor.axis2_configuration"
+				type="string"
+				fieldController="org.wso2.developerstudio.eclipse.artifact.messageprocessor.validator.MessageProcessorFieldController">Axis2 Configuration</data>
+			<data modelProperty="Forwarding_processor.endpoint_name" type="resource+text"
+				fieldController="org.wso2.developerstudio.eclipse.artifact.messageprocessor.validator.MessageProcessorFieldController"
+				controlData="select=single;modify=readonly;registry.selection.type=resource">Endpoint name *</data>
+			<data modelProperty="Forwarding_processor.Reply_sequence_name"
+				type="resource+text"
+				fieldController="org.wso2.developerstudio.eclipse.artifact.messageprocessor.validator.MessageProcessorFieldController"
+				controlData="select=single;modify=readonly;registry.selection.type=resource">Reply sequence name</data>
+			<!-- Forwarding_Processor : end -->
+
+
+			<!-- Sampling_Processor : begin -->
+			<data modelProperty="sampling_processor.sequence" type="resource+text"
+				fieldController="org.wso2.developerstudio.eclipse.artifact.messageprocessor.validator.MessageProcessorFieldController"
+				controlData="select=single;modify=readonly;registry.selection.type=resource">Sequence *</data>
+			<data modelProperty="sampling_processor.sampling_interval" type="string"
+				fieldController="org.wso2.developerstudio.eclipse.artifact.messageprocessor.validator.MessageProcessorFieldController">Sampling interval (Millis)</data>
+			<data modelProperty="sampling_processor.sampling_concurrency"
+				type="string"
+				fieldController="org.wso2.developerstudio.eclipse.artifact.messageprocessor.validator.MessageProcessorFieldController">Sampling concurrency</data>
+			<!-- Sampling_Processor : end -->
+
+			<!-- Custom_Processor : begin -->
+			<data modelProperty="custom_processor.class_FQN" type="string"
+				fieldController="org.wso2.developerstudio.eclipse.artifact.messageprocessor.validator.MessageProcessorFieldController">Message Processor Provider Class FQN *</data>
+			<data modelProperty="custom_processor.parameters" type="composite"
+				fieldController="org.wso2.developerstudio.eclipse.artifact.messageprocessor.validator.MessageProcessorFieldController"
+				controlData="class=org.wso2.developerstudio.eclipse.artifact.messageprocessor.provider.ParametersCompositeProvider">Parameters</data>
+			<!-- Custom_Processor : end -->
+
+			<group id="location" />
+			<data modelProperty="save.location" type="workspacefolder"
+				fieldController="org.wso2.developerstudio.eclipse.artifact.messageprocessor.validator.MessageProcessorFieldController"
+				group="location"
+				controlData="filterClass=org.wso2.developerstudio.eclipse.artifact.messageprocessor.filter.ESBProjectFilter">Save location:</data>
+			<data modelProperty="create.esb.prj" type="link"
+				fieldController="org.wso2.developerstudio.eclipse.artifact.messageprocessor.validator.MessageProcessorFieldController"
+				group="location" controlData="align=right">&lt;a&gt;Create a new ESB
+				project...&lt;/a&gt;</data>
+		</settings>
+
+
+		<settings optionId="import.processor" title="Message Processor Artifact"
+			description="Create a Message Processor Artifact using a configuration file with message-processor defined"
+			error="Browse and select a message-processor configuration file">
+
+			<data modelProperty="import.file" type="file" filter="*.xml"
+				fieldController="org.wso2.developerstudio.eclipse.artifact.messageprocessor.validator.MessageProcessorFieldController">Message-Processor configuration file</data>
+			<data modelProperty="save.location" type="workspacefolder"
+				fieldController="org.wso2.developerstudio.eclipse.artifact.messageprocessor.validator.MessageProcessorFieldController"
+				controlData="filterClass=org.wso2.developerstudio.eclipse.artifact.messageprocessor.filter.ESBProjectFilter">
+				Save in:
+			</data>
+			<data modelProperty="create.esb.prj" type="link"
+				fieldController="org.wso2.developerstudio.eclipse.artifact.messageprocessor.validator.MessageProcessorFieldController"
+				controlData="align=right">&lt;a&gt;Create new Project...&lt;/a&gt; </data>
+			<data modelProperty="available.processors" type="list"
+				fieldController="org.wso2.developerstudio.eclipse.artifact.messageprocessor.validator.MessageProcessorFieldController"
+				controlData="select=multiple;selectAllbtn=true;modify=non-editable;class=org.wso2.developerstudio.eclipse.artifact.messageprocessor.provider.MessageProcessorList">Available Message-Processors</data>
+
+		</settings>
+	</projectOptionSettings>
+</wizard>

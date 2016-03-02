@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wizard>
+	<projectOptions title="Endpoint Artifact Creation Options" 
+					description="Select how you would like to create your new endpoint artifact" 
+					error="Please select a method to create the endpoint artifact">
+		<option id="new.endpoint" default="true">Create A New Endpoint</option>
+		<option id="import.endpoint">Import Endpoint</option>
+	</projectOptions>
+	<projectOptionSettings>
+		<settings optionId="new.endpoint" 
+				  title="Endpoint Artifact" 
+				  description="Create a new Endpoint Artifact" 
+				  error="Please give a name for the endpoint">			  
+			<data modelProperty="ep.name" type="string" fieldController="org.wso2.developerstudio.eclipse.artifact.endpoint.validators.EndpointProjectFieldController">Endpoint Name</data>
+			<data modelProperty="ep.type" type="list" fieldController="org.wso2.developerstudio.eclipse.artifact.endpoint.validators.EndpointProjectFieldController"  controlData="select=single;modify=non-editable;class=org.wso2.developerstudio.eclipse.artifact.endpoint.validators.EndPointTemplateList">Endpoint Type</data>
+						
+			<!-- Address EP -->
+			<data group="group1" modelProperty="templ.address.ep.uri" type="string" fieldController="org.wso2.developerstudio.eclipse.artifact.endpoint.validators.EndpointProjectFieldController">Address</data>		
+			
+			<!-- WSDL EP -->
+			<data group="group1" modelProperty="templ.wsdl.ep.uri" type="string" fieldController="org.wso2.developerstudio.eclipse.artifact.endpoint.validators.EndpointProjectFieldController">WSDL URI</data>
+			<data group="group1" modelProperty="templ.wsdl.ep.service" type="string" fieldController="org.wso2.developerstudio.eclipse.artifact.endpoint.validators.EndpointProjectFieldController">Service</data>
+			<data group="group1" modelProperty="templ.wsdl.ep.port" type="string" fieldController="org.wso2.developerstudio.eclipse.artifact.endpoint.validators.EndpointProjectFieldController">Port</data>
+			
+			<!-- Template EP -->			
+			<data group="group1" modelProperty="templ.template.ep.uri" type="string" fieldController="org.wso2.developerstudio.eclipse.artifact.endpoint.validators.EndpointProjectFieldController">URI</data>
+			<data group="group1" modelProperty="templ.target.template" type="string" fieldController="org.wso2.developerstudio.eclipse.artifact.endpoint.validators.EndpointProjectFieldController">Target Template</data>
+			<data group="group1" modelProperty="templ.target.availabletemplates" type="list" fieldController="org.wso2.developerstudio.eclipse.artifact.endpoint.validators.EndpointProjectFieldController" controlData="select=single;modify=non-editable;class=org.wso2.developerstudio.eclipse.artifact.endpoint.validators.AvailableTemplateList" >Available Template</data>
+			
+			<!-- Http EP -->			
+			<data group="group1" modelProperty="templ.http.ep.uritemplate" type="string" fieldController="org.wso2.developerstudio.eclipse.artifact.endpoint.validators.EndpointProjectFieldController">URI Template</data>
+			<data group="group1" modelProperty="templ.http.ep.method" type="list" fieldController="org.wso2.developerstudio.eclipse.artifact.endpoint.validators.EndpointProjectFieldController" controlData="select=single;modify=non-editable;class=org.wso2.developerstudio.eclipse.artifact.endpoint.validators.HttpMethodList">Method</data>
+			
+			<group id="group1" title="Endpoint Configuration" controlData="type=collapsible;state=expanded"></group>		
+			<data modelProperty="static.ep" type="option"  fieldController="org.wso2.developerstudio.eclipse.artifact.endpoint.validators.EndpointProjectFieldController" group ="group1"> Static Endpoint (Save in an ESB Project)</data>
+			<data modelProperty="dynamic.ep" type="option" fieldController="org.wso2.developerstudio.eclipse.artifact.endpoint.validators.EndpointProjectFieldController" group ="group1"> Dynamic Endpoint (Save in a Registry Resources Project)</data>
+			<data modelProperty="save.file" type="workspacefolder" fieldController="org.wso2.developerstudio.eclipse.artifact.endpoint.validators.EndpointProjectFieldController" controlData="filterClass=org.wso2.developerstudio.eclipse.artifact.endpoint.validators.ProjectFilter" group ="group1">Save endpoint in:</data>
+			<data modelProperty="create.esb.prj" type="link" fieldController="org.wso2.developerstudio.eclipse.artifact.endpoint.validators.EndpointProjectFieldController" controlData="align=right" group ="group1">&lt;a&gt;Create new Project...&lt;/a&gt;</data>
+		    <data modelProperty="reg.path" type="list" fieldController="org.wso2.developerstudio.eclipse.artifact.endpoint.validators.EndpointProjectFieldController" controlData="select=single;modify=non-editable;class=org.wso2.developerstudio.eclipse.artifact.endpoint.validators.RegOptionsList" group ="group1">     Registry</data>
+			<data modelProperty="registry.browser" type="registry+text" fieldController="org.wso2.developerstudio.eclipse.artifact.endpoint.validators.EndpointProjectFieldController" controlData="registry.selection.type=collection;path.binding.property=reg.path" group ="group1">     Registry Path</data>
+		   
+		</settings>
+		<settings optionId="import.endpoint" 
+				  title="Endpoint Artifact" 
+				  description="Create a Endpoint Artifact using a configuration file with Endpoints defined" 
+				  error="Browse and select a Endpoint configuration file">
+			<data modelProperty="import.file" type="file" filter="*.xml" fieldController="org.wso2.developerstudio.eclipse.artifact.endpoint.validators.EndpointProjectFieldController">Endpoint Configuration File</data>
+			<data modelProperty="save.file" type="workspacefolder" fieldController="org.wso2.developerstudio.eclipse.artifact.endpoint.validators.EndpointProjectFieldController" controlData="filterClass=org.wso2.developerstudio.eclipse.artifact.endpoint.validators.ProjectFilter">Save endpoint in:</data>
+			<data modelProperty="create.esb.prj" type="link" fieldController="org.wso2.developerstudio.eclipse.artifact.endpoint.validators.EndpointProjectFieldController" controlData="align=right">&lt;a&gt;Create new Project...&lt;/a&gt;</data>
+			<data modelProperty="available.eps" type="list" fieldController="org.wso2.developerstudio.eclipse.artifact.endpoint.validators.EndpointProjectFieldController"  controlData="select=multiple;modify=non-editable;class=org.wso2.developerstudio.eclipse.artifact.endpoint.validators.EndPointsList">Available Endpoints</data>
+
+			<!--data modelProperty="dynamic.ep" type="choice" fieldController="org.wso2.developerstudio.eclipse.artifact.endpoint.validators.EndpointProjectFieldController" group="group2">Make this as Dynamic Endpoint</data>
+			<data modelProperty="reg.path" type="list" fieldController="org.wso2.developerstudio.eclipse.artifact.endpoint.validators.EndpointProjectFieldController" group="group2" controlData="select=single;modify=editable;class=org.wso2.developerstudio.eclipse.artifact.endpoint.validators.RegOptionsList">     Registry path</data-->
+			
+			<group id="group2" title="Advanced Configuration" controlData="type=collapsible;state=expanded"></group>
+		</settings>
+	</projectOptionSettings>
+</wizard>

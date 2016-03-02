@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wizard>
+ <projectOptions title="Synapse Configuration Artifact Creation Wizard "
+ 				 description="Select how you would like to create your new project"
+ 				 error="Please select a method to create the project">
+	  	<option id="import.synapse.config">Import Synapse Configuration from File System</option>
+ </projectOptions>
+ <projectOptionSettings>
+		<settings optionId="import.synapse.config"
+				      title="Synapse Configuration" 
+				      description="Import a synapse configuration from file system"
+				      error="Browse and select a Synapse Configuration from file system">
+			<data modelProperty="import.file" type="file" filter="*.xml" fieldController="org.wso2.developerstudio.eclipse.artifact.synapse.validators.SynapseFieldsController">Synapse Configuration</data>
+			<data modelProperty="save.file" type="workspacefolder" fieldController="org.wso2.developerstudio.eclipse.artifact.synapse.validators.SynapseFieldsController" controlData="filterClass=org.wso2.developerstudio.eclipse.artifact.synapse.validators.ESBProjectFilter">Save Synapse Configuration in:</data>
+			<data modelProperty="create.esb.prj" type="link" fieldController="org.wso2.developerstudio.eclipse.artifact.synapse.validators.SynapseFieldsController" controlData="align=right">&lt;a&gt;Create new ESB Project...&lt;/a&gt;</data>
+			<!-- data modelProperty="create.esb.af" type="choice" fieldController="org.wso2.developerstudio.eclipse.artifact.synapse.validators.SynapseFieldsController">Create ESB Artifacts</data> -->	
+			<data modelProperty="available.af" type="list" fieldController="org.wso2.developerstudio.eclipse.artifact.synapse.validators.SynapseFieldsController"  controlData="select=multiple;selectAllbtn=true;modify=non-editable;class=org.wso2.developerstudio.eclipse.artifact.synapse.validators.EsbArtifactList">Available ESB Artifact</data>
+		</settings>
+ </projectOptionSettings>
+</wizard>

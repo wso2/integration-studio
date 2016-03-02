@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="datamapper" nsURI="http:///org/wso2/developerstudio/eclipse/gmf/datamapper"
+    nsPrefix="datamapper">
+  <eClassifiers xsi:type="ecore:EClass" name="DataMapperNode"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DataMapperDiagram" eSuperTypes="#//DataMapperNode"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DataMapperRoot">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="input" eType="#//Input"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="output" eType="#//Output"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="operators" upperBound="-1"
+        eType="#//Operator" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Input" eSuperTypes="#//DataMapperNode">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="treeNode" upperBound="-1"
+        eType="#//TreeNode" containment="true" eOpposite="#//TreeNode/inputParent"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Output" eSuperTypes="#//DataMapperNode">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="treeNode" upperBound="-1"
+        eType="#//TreeNode" containment="true" eOpposite="#//TreeNode/outputParent"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Operator" eSuperTypes="#//DataMapperNode">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="basicContainer" eType="#//OperatorBasicContainer"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="serialized" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="false"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="OperatorBasicContainer">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="leftContainer" eType="#//OperatorLeftContainer"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rightContainer" eType="#//OperatorRightContainer"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="OperatorLeftContainer">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="leftConnectors" upperBound="-1"
+        eType="#//OperatorLeftConnector" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="OperatorLeftConnector">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="inNode" eType="#//InNode"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="OperatorRightContainer">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rightConnectors" upperBound="-1"
+        eType="#//OperatorRightConnector" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="OperatorRightConnector">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="outNode" eType="#//OutNode"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Element">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="outNode" eType="#//OutNode"
+        containment="true" eOpposite="#//OutNode/elementParent"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="inNode" eType="#//InNode"
+        containment="true" eOpposite="#//InNode/elementParent"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="fieldParent" eType="#//TreeNode"
+        eOpposite="#//TreeNode/element"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="schemaDataType" eType="#//SchemaDataType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="level" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="doc" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="default" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="aliases" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="order" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Attribute">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral=""/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="outNode" eType="#//OutNode"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="inNode" eType="#//InNode"
+        containment="true" eOpposite="#//InNode/attributeParent"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="fieldParent" eType="#//TreeNode"
+        eOpposite="#//TreeNode/attribute"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="doc" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TreeNode">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="node" upperBound="-1" eType="#//TreeNode"
+        containment="true" eOpposite="#//TreeNode/fieldParent"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="attribute" upperBound="-1"
+        eType="#//Attribute" containment="true" eOpposite="#//Attribute/fieldParent"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="element" upperBound="-1"
+        eType="#//Element" containment="true" eOpposite="#//Element/fieldParent"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="fieldParent" eType="#//TreeNode"
+        eOpposite="#//TreeNode/node"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="outputParent" eType="#//Output"
+        eOpposite="#//Output/treeNode"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="inputParent" eType="#//Input"
+        eOpposite="#//Input/treeNode"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="schemaDataType" eType="#//SchemaDataType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="level" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="namespace" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="doc" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="aliases" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="InNode">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="incomingLink" upperBound="-1"
+        eType="#//DataMapperLink" eOpposite="#//DataMapperLink/inNode"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="elementParent" eType="#//Element"
+        eOpposite="#//Element/inNode"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="attributeParent" eType="#//Attribute"
+        eOpposite="#//Attribute/inNode"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="concatParent" eType="#//Concat"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="OutNode">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="outgoingLink" upperBound="-1"
+        eType="#//DataMapperLink" containment="true" eOpposite="#//DataMapperLink/outNode"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="elementParent" eType="#//Element"
+        eOpposite="#//Element/outNode"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DataMapperLink">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="inNode" eType="#//InNode"
+        eOpposite="#//InNode/incomingLink"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="outNode" eType="#//OutNode"
+        eOpposite="#//OutNode/outgoingLink"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Concat" eSuperTypes="#//Operator">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="delimiter" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Equal" eSuperTypes="#//Operator"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Constant" eSuperTypes="#//Operator">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="constantValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Split" eSuperTypes="#//Operator">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="delimiter" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="arrayOutput" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+        defaultValueLiteral="-1"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="arrayOutputResultOmitingIndices"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="SchemaDataType">
+    <eLiterals name="ARRAY"/>
+    <eLiterals name="BOOLEAN" value="1"/>
+    <eLiterals name="BYTES" value="2"/>
+    <eLiterals name="DOUBLE" value="3"/>
+    <eLiterals name="ENUM" value="4"/>
+    <eLiterals name="FIXED" value="5"/>
+    <eLiterals name="FLOAT" value="6"/>
+    <eLiterals name="INT" value="7"/>
+    <eLiterals name="LONG" value="8"/>
+    <eLiterals name="MAP" value="9"/>
+    <eLiterals name="NULL" value="10"/>
+    <eLiterals name="RECORD" value="11"/>
+    <eLiterals name="STRING" value="12"/>
+    <eLiterals name="UNION" value="13"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LowerCase" eSuperTypes="#//Operator"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Contains" eSuperTypes="#//Operator"/>
+  <eClassifiers xsi:type="ecore:EClass" name="UpperCase" eSuperTypes="#//Operator"/>
+</ecore:EPackage>

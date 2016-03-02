@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wizard>
+	<projectOptions title="Proxy Service Artifact Creation Options"
+					description="Select how you would like to create your new proxy service"
+					error="Please select a method to create the proxy service">
+		<option id="new.proxyservice" default="true">Create A New Proxy Service</option>
+		<option id="import.proxyservice">Import Proxy Service</option>
+	</projectOptions>
+	<projectOptionSettings>
+		<settings optionId="new.proxyservice"
+				  title="Proxy Service"
+				  description="Create a new Proxy Service"
+				  error="Please give a name for the proxy service">
+			<data modelProperty="ps.name" type="string" fieldController="org.wso2.developerstudio.eclipse.artifact.proxyservice.validators.ProxyServiceProjectFieldController">Proxy Service Name</data>
+			<data modelProperty="ps.type" type="list" fieldController="org.wso2.developerstudio.eclipse.artifact.proxyservice.validators.ProxyServiceProjectFieldController"  controlData="select=single;modify=non-editable;class=org.wso2.developerstudio.eclipse.artifact.proxyservice.validators.ProxyServiceTemplateList">Proxy Service Type</data>
+
+			<data modelProperty="save.file" type="workspacefolder" fieldController="org.wso2.developerstudio.eclipse.artifact.proxyservice.validators.ProxyServiceProjectFieldController" controlData="filterClass=org.wso2.developerstudio.eclipse.artifact.proxyservice.validators.ESBProjectFilter">Save proxy service in:</data>
+			<data modelProperty="create.esb.prj" type="link" fieldController="org.wso2.developerstudio.eclipse.artifact.proxyservice.validators.ProxyServiceProjectFieldController" controlData="align=right">&lt;a&gt;Create new ESB Project...&lt;/a&gt;</data>
+ 
+			<data group="group1" modelProperty="proxy.AdvancedConfig" type="composite"  fieldController="org.wso2.developerstudio.eclipse.artifact.proxyservice.validators.ProxyServiceProjectFieldController" controlData="class=org.wso2.developerstudio.eclipse.artifact.proxyservice.helper.AdvancedConfigProvider">Configuration</data>
+			<group id="group1" title="Advanced Configuration" controlData="type=collapsible;state=expanded"></group>
+
+		</settings>
+		<settings optionId="import.proxyservice"
+				  title="Proxy Service"
+				  description="Create a Proxy Service using a configuration file with Proxy Service defined"
+				  error="Browse and select a Proxy Service configuration file">
+			<data modelProperty="import.file" type="file" filter="*.xml" fieldController="org.wso2.developerstudio.eclipse.artifact.proxyservice.validators.ProxyServiceProjectFieldController">Proxy Service Configuration File</data>
+			<data modelProperty="save.file" type="workspacefolder" fieldController="org.wso2.developerstudio.eclipse.artifact.proxyservice.validators.ProxyServiceProjectFieldController" controlData="filterClass=org.wso2.developerstudio.eclipse.artifact.proxyservice.validators.ESBProjectFilter">Save proxy service in:</data>
+			<data modelProperty="create.esb.prj" type="link" fieldController="org.wso2.developerstudio.eclipse.artifact.proxyservice.validators.ProxyServiceProjectFieldController" controlData="align=right">&lt;a&gt;Create new ESB Project...&lt;/a&gt;</data>
+			<data modelProperty="available.ps" type="list" fieldController="org.wso2.developerstudio.eclipse.artifact.proxyservice.validators.ProxyServiceProjectFieldController"  controlData="select=multiple;modify=non-editable;class=org.wso2.developerstudio.eclipse.artifact.proxyservice.validators.ProxyServiceList">Available Proxy Services</data>
+			
+		</settings>
+	</projectOptionSettings>
+</wizard>

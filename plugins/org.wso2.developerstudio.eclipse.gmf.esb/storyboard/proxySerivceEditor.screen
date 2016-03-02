@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore">
+  <widgets xsi:type="model:Window" x="24" y="64" width="505" height="460" text="Proxy Service Editor" measuredWidth="505" measuredHeight="460"/>
+  <widgets xsi:type="model:Rectangle" x="106" y="120" width="375" height="297" measuredWidth="375" measuredHeight="297">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Button" x="56" y="232" width="79" height="81" text="Proxy Service" measuredWidth="79" measuredHeight="81">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Button" x="464" y="224" height="89" text="End Point" measuredWidth="73" measuredHeight="89">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Button" x="230" y="312" width="89" height="73" text="Sequence B" measuredWidth="89" measuredHeight="73">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Button" x="214" y="152" width="89" height="73" text="Sequence A" measuredWidth="89" measuredHeight="73">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:HLine" x="134" y="248" width="38" measuredWidth="38" measuredHeight="6"/>
+  <widgets xsi:type="model:HLine" x="161" y="346" width="70" measuredWidth="70" measuredHeight="6"/>
+  <widgets xsi:type="model:HLine" x="414" y="243" width="57" measuredWidth="57" measuredHeight="6"/>
+  <widgets xsi:type="model:HLine" x="166" y="184" width="49" measuredWidth="49" measuredHeight="6"/>
+  <widgets xsi:type="model:HLine" x="318" y="346" width="94" measuredWidth="94" measuredHeight="6"/>
+  <widgets xsi:type="model:HLine" x="302" y="184" width="118" measuredWidth="118" measuredHeight="6"/>
+  <widgets xsi:type="model:HLine" x="134" y="280" width="33" measuredWidth="33" measuredHeight="6"/>
+  <widgets xsi:type="model:VLine" x="166" y="184" height="70" measuredWidth="6" measuredHeight="70"/>
+  <widgets xsi:type="model:VLine" x="161" y="285" height="67" measuredWidth="6" measuredHeight="67"/>
+  <widgets xsi:type="model:VLine" x="414" y="189" height="60" measuredWidth="6" measuredHeight="60"/>
+  <widgets xsi:type="model:VLine" x="406" y="285" height="67" measuredWidth="6" measuredHeight="67"/>
+  <widgets xsi:type="model:HLine" x="406" y="280" width="65" measuredWidth="65" measuredHeight="6"/>
+  <hRuler/>
+  <vRuler/>
+  <font/>
+</model:Screen>

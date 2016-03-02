@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+~ Copyright (c) WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+~
+~ Licensed under the Apache License, Version 2.0 (the "License");
+~ you may not use this file except in compliance with the License.
+~ You may obtain a copy of the License at
+~
+~      http://www.apache.org/licenses/LICENSE-2.0
+~
+~ Unless required by applicable law or agreed to in writing, software
+~ distributed under the License is distributed on an "AS IS" BASIS,
+~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+~ See the License for the specific language governing permissions and
+~ limitations under the License.
+-->
+<project
+    xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.wso2.developerstudio</groupId>
+    <artifactId>wso2-developerstudio-esb-updates-publisher</artifactId>
+    <version>4.0.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <name>WSO2 Developer Studio Updates Publisher</name>
+   
+ 
+    <repositories>
+    </repositories>
+    <pluginRepositories>
+       
+    </pluginRepositories>
+
+<build>
+    <plugins>
+
+	<!-- template>
+	   java -jar <targetProductFolder>/plugins/org.eclipse.equinox.launcher_*.jar
+	   -application org.eclipse.equinox.p2.publisher.FeaturesAndBundlesPublisher
+	   -metadataRepository file:/<some location>/repository
+	   -artifactRepository file:/<some location>/repository
+	   -source /<location with a plugin and feature directory>
+	   -configs gtk.linux.x86
+	   -compress
+	   -publishArtifacts
+	<-->
+
+<!-- template>
+	   java -jar /home/susinda/eclipseIDEs/kernelTest/pureEclipse/eclipse/plugins/org.eclipse.equinox.launcher_1.3.0.v20140415-2008.jar -application org.eclipse.equinox.p2.publisher.FeaturesAndBundlesPublisher -metadataRepository file:///home/susinda/Projects/wso2Git/wso2-devstudio/developer-studio/esb/publisher/newp2 -artifactRepository file:///home/susinda/Projects/wso2Git/wso2-devstudio/developer-studio/esb/publisher/newp2 -source ./p2/ -configs gtk.linux.x86 -compress -publishArtifacts
+	<-->
+
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <version>1.4.0</version>
+        <executions>
+         
+          <execution>
+ 	    <phase>test</phase>
+            <goals>
+              <goal>exec</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+        <executable>/home/susinda/eclipseIDEs/kernelTest/pureEclipse/eclipse/plugins/org.eclipse.equinox.launcher_1.3.0.v20140415-2008.jar</executable>
+<!--workingDirectory>/home/susinda/eclipseIDEs/kernelTest/pureEclipse/eclipse/plugins/</workingDirectory-->
+        <arguments>
+            <argument>-application</argument>
+	    <argument>org.eclipse.equinox.p2.publisher.FeaturesAndBundlesPublisher</argument>
+            <argument>-metadataRepository</argument>
+	    <argument>file:///home/susinda/Projects/wso2Git/wso2-devstudio/developer-studio/esb/publisher/newp2</argument>
+ 	    <argument>-artifactRepository</argument>
+	    <argument>file:///home/susinda/Projects/wso2Git/wso2-devstudio/developer-studio/esb/publisher/newp2</argument>
+ 	    <argument>-source</argument>
+	    <argument>./p2/</argument>
+	    <argument>-configs</argument>
+	    <argument>gtk.linux.x86</argument>
+	    <argument>-compress</argument>
+	    <argument>-publishArtifacts</argument>
+          </arguments>
+          <!--systemProperties>
+            <systemProperty>
+              <key>myproperty</key>
+              <value>myvalue</value>
+            </systemProperty>
+          </systemProperties-->
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>    
+
+</project>

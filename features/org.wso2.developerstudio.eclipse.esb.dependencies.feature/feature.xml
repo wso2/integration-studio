@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.wso2.developerstudio.eclipse.esb.dependencies.feature"
+      label="ESB Tool Dependencies"
+      version="4.0.0.qualifier"
+      provider-name="%providerName">
+
+   <description url="http://wso2.com">
+      This feature will provide dependencies related WSO2 Carbon ESB Tools.
+   </description>
+
+   <copyright url="%copyrightURL">
+      %copyright
+   </copyright>
+
+   <license url="%licenseURL">
+      %license
+   </license>
+
+   <plugin
+         id="org.eclipse.emf.validation"
+         download-size="0"
+         install-size="0"
+         version="1.8.0.201405281429"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.emf.query"
+         download-size="0"
+         install-size="0"
+         version="1.7.0.201405281426"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.emf.transaction"
+         download-size="0"
+         install-size="0"
+         version="1.8.0.201405281451"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.emf.workspace"
+         download-size="0"
+         install-size="0"
+         version="1.5.1.201405281451"
+         unpack="false"/>
+
+<plugin
+         id="lpg.runtime.java"
+         download-size="0"
+         install-size="0"
+         version="2.0.17.v201004271640"
+         unpack="false"/>
+<plugin
+         id="org.apache.batik.bridge"
+         download-size="0"
+         install-size="0"
+         version="1.6.0.v201011041432"
+         unpack="false"/>
+<plugin
+         id="org.apache.batik.css"
+         download-size="0"
+         install-size="0"
+         version="1.6.0.v201011041432"
+         unpack="false"/>
+<plugin
+         id="org.apache.batik.dom.svg"
+         download-size="0"
+         install-size="0"
+         version="1.6.0.v201011041432"
+         unpack="false"/>
+<plugin
+         id="org.apache.batik.dom"
+         download-size="0"
+         install-size="0"
+         version="1.6.0.v201011041432"
+         unpack="false"/>
+<plugin
+         id="org.apache.batik.ext.awt"
+         download-size="0"
+         install-size="0"
+         version="1.6.0.v201011041432"
+         unpack="false"/>
+<plugin
+         id="org.apache.batik.parser"
+         download-size="0"
+         install-size="0"
+         version="1.6.0.v201011041432"
+         unpack="false"/>
+<plugin
+         id="org.apache.batik.pdf"
+         download-size="0"
+         install-size="0"
+         version="1.6.0.v201105071520"
+         unpack="false"/>
+<plugin
+         id="org.apache.batik.svggen"
+         download-size="0"
+         install-size="0"
+         version="1.6.0.v201011041432"
+         unpack="false"/>
+<plugin
+         id="org.apache.batik.transcoder"
+         download-size="0"
+         install-size="0"
+         version="1.6.0.v201011041432"
+         unpack="false"/>
+<plugin
+         id="org.apache.batik.util.gui"
+         download-size="0"
+         install-size="0"
+         version="1.6.0.v201011041432"
+         unpack="false"/>
+<plugin
+         id="org.apache.batik.util"
+         download-size="0"
+         install-size="0"
+         version="1.6.0.v201011041432"
+         unpack="false"/>
+<plugin
+         id="org.apache.batik.xml"
+         download-size="0"
+         install-size="0"
+         version="1.6.0.v201011041432"
+         unpack="false"/>
+<plugin
+         id="org.eclipse.gmf.tooling.runtime"
+         download-size="0"
+         install-size="0"
+         version="3.2.0.201502182128"
+         unpack="false"/>
+<plugin
+         id="org.eclipse.gmf.runtime.common.core"
+         download-size="0"
+         install-size="0"
+         version="1.7.0.201408201453"
+         unpack="false"/>
+<plugin
+         id="org.eclipse.gmf.runtime.common.ui"
+         download-size="0"
+         install-size="0"
+         version="1.8.1.201408201453"
+         unpack="false"/>
+<plugin
+         id="org.eclipse.gmf.runtime.common.ui.action"
+         download-size="0"
+         install-size="0"
+         version="1.7.0.201408201453"
+         unpack="false"/>
+<plugin
+         id="org.eclipse.gmf.runtime.common.ui.action.ide"
+         download-size="0"
+         install-size="0"
+         version="1.7.0.201408201453"
+         unpack="false"/>
+<plugin
+         id="org.eclipse.gmf.runtime.common.ui.printing"
+         download-size="0"
+         install-size="0"
+         version="1.7.0.201408201453"
+         unpack="false"/>
+<plugin
+         id="org.eclipse.gmf.runtime.common.ui.services.action"
+         download-size="0"
+         install-size="0"
+         version="1.7.0.201408201453"
+         unpack="false"/>
+<plugin
+         id="org.eclipse.gmf.runtime.common.ui.services.properties"
+         download-size="0"
+         install-size="0"
+         version="1.7.0.201408201453"
+         unpack="false"/>
+<plugin
+         id="org.eclipse.gmf.runtime.common.ui.services"
+         download-size="0"
+         install-size="0"
+         version="1.7.0.201408201453"
+         unpack="false"/>
+<plugin
+         id="org.eclipse.gmf.runtime.diagram.core"
+         download-size="0"
+         install-size="0"
+         version="1.7.0.201408201453"
+         unpack="false"/>
+<plugin
+         id="org.eclipse.gmf.runtime.diagram.ui.actions"
+         download-size="0"
+         install-size="0"
+         version="1.7.0.201408201453"
+         unpack="false"/>
+<plugin
+         id="org.eclipse.gmf.runtime.diagram.ui.printing.render"
+         download-size="0"
+         install-size="0"
+         version="1.8.0.201408201453"
+         unpack="false"/>
+<plugin
+         id="org.eclipse.gmf.runtime.diagram.ui.printing"
+         download-size="0"
+         install-size="0"
+         version="1.7.0.201408201453"
+         unpack="false"/>
+<plugin
+         id="org.eclipse.gmf.runtime.diagram.ui.properties"
+         download-size="0"
+         install-size="0"
+         version="1.7.0.201408201453"
+         unpack="false"/>
+<plugin
+         id="org.eclipse.gmf.runtime.diagram.ui.providers.ide"
+         download-size="0"
+         install-size="0"
+         version="1.7.0.201408201453"
+         unpack="false"/>
+<plugin
+         id="org.eclipse.gmf.runtime.diagram.ui.providers"
+         download-size="0"
+         install-size="0"
+         version="1.7.0.201408201453"
+         unpack="false"/>
+<plugin
+         id="org.eclipse.gmf.runtime.diagram.ui.render"
+         download-size="0"
+         install-size="0"
+         version="1.7.0.201408201453"
+         unpack="false"/>
+<plugin
+         id="org.eclipse.gmf.runtime.diagram.ui.resources.editor.ide"
+         download-size="0"
+         install-size="0"
+         version="1.7.0.201408201453"
+         unpack="false"/>
+<plugin
+         id="org.eclipse.gmf.runtime.diagram.ui.resources.editor"
+         download-size="0"
+         install-size="0"
+         version="1.7.0.201408201453"
+         unpack="false"/>
+<plugin
+         id="org.eclipse.gmf.runtime.diagram.ui"
+         download-size="0"
+         install-size="0"
+         version="1.8.0.201408201453"
+         unpack="false"/>
+<plugin
+         id="org.eclipse.gmf.runtime.draw2d.ui.render.awt"
+         download-size="0"
+         install-size="0"
+         version="1.8.0.201408201453"
+         unpack="false"/>
+<plugin
+         id="org.eclipse.gmf.runtime.draw2d.ui.render"
+         download-size="0"
+         install-size="0"
+         version="1.7.0.201408201453"
+         unpack="false"/>
+<plugin
+         id="org.eclipse.gmf.runtime.draw2d.ui"
+         download-size="0"
+         install-size="0"
+         version="1.8.0.201408201453"
+         unpack="false"/>
+<plugin
+         id="org.eclipse.gmf.runtime.emf.commands.core"
+         download-size="0"
+         install-size="0"
+         version="1.7.0.201408201453"
+         unpack="false"/>
+         
+         <plugin
+         id="org.eclipse.gmf.runtime.emf.core"
+         download-size="0"
+         install-size="0"
+         version="1.7.0.201408201453"
+         unpack="false"/>
+<plugin
+         id="org.eclipse.gmf.runtime.emf.type.core"
+         download-size="0"
+         install-size="0"
+         version="1.7.0.201408201453"
+         unpack="false"/>
+<plugin
+         id="org.eclipse.gmf.runtime.emf.ui.properties"
+         download-size="0"
+         install-size="0"
+         version="1.7.0.201408201453"
+         unpack="false"/>
+<plugin
+         id="org.eclipse.gmf.runtime.emf.ui"
+         download-size="0"
+         install-size="0"
+         version="1.7.0.201408201453"
+         unpack="false"/>
+<plugin
+         id="org.eclipse.gmf.runtime.gef.ui"
+         download-size="0"
+         install-size="0"
+         version="1.7.0.201408201453"
+         unpack="false"/>
+<plugin
+         id="org.eclipse.gmf.runtime.notation"
+         download-size="0"
+         install-size="0"
+         version="1.8.0.201405281433"
+         unpack="false"/>
+<plugin
+         id="org.eclipse.ocl.ecore"
+         download-size="0"
+         install-size="0"
+         version="3.3.100.v20140610-0641"
+         unpack="false"/>
+<plugin
+         id="org.eclipse.ocl"
+         download-size="0"
+         install-size="0"
+         version="3.4.2.v20140725-2242"
+         unpack="false"/>
+<plugin
+         id="org.eclipse.ocl.common"
+         download-size="0"
+         install-size="0"
+         version="1.2.0.v20140610-0641"
+         unpack="false"/>
+
+<plugin
+         id="org.eclipse.gmf.runtime.common.ui.printing.win32"
+         download-size="0"
+         install-size="0"
+         version="1.7.0.201408201453"
+         unpack="false"/>
+<plugin
+         id="org.eclipse.gmf.runtime.emf.clipboard.core"
+         download-size="0"
+         install-size="0"
+         version="1.7.0.201408201453"
+         unpack="false"/>
+<plugin
+         id="org.junit4"
+         download-size="0"
+         install-size="0"
+         version="4.8.1.v20120523-1257-wso2v1"
+         unpack="false"/>
+
+</feature>

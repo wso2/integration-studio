@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore">
+  <widgets xsi:type="model:Window" x="24" y="76" width="457" height="405" text="Sequence Editor" measuredWidth="457" measuredHeight="405"/>
+  <widgets xsi:type="model:Button" x="34" y="224" width="57" height="89" text="Input" measuredWidth="57" measuredHeight="89">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Button" x="392" y="224" width="57" height="89" text="Output" measuredWidth="57" measuredHeight="89">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Button" x="272" y="232" width="89" height="73" text="Mediator 1" measuredWidth="89" measuredHeight="73">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Button" x="112" y="232" width="89" height="73" text="Mediator 2" measuredWidth="89" measuredHeight="73">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:HLine" x="90" y="266" width="23" measuredWidth="23" measuredHeight="6"/>
+  <widgets xsi:type="model:HLine" x="200" y="266" width="73" measuredWidth="73" measuredHeight="6"/>
+  <widgets xsi:type="model:HLine" x="360" y="266" width="41" measuredWidth="41" measuredHeight="6"/>
+  <hRuler/>
+  <vRuler/>
+  <font/>
+</model:Screen>

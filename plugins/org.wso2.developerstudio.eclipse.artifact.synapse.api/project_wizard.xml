@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	Copyright 2012 WSO2, Inc. (http://wso2.com)
+	
+	Licensed under the Apache License, Version 2.0 (the "License"); 
+	you may not use this file except in compliance with the License.
+	You may obtain a copy of the License at 
+	
+	http://www.apache.org/licenses/LICENSE-2.0 
+	
+	Unless required	by applicable law or agreed to in writing, software
+	distributed under the License is distributed on an "AS IS" BASIS,
+	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	See the License for	the specific language governing permissions and
+	limitations under the License.
+-->
+<wizard>
+	<projectOptions title="API Artifact Creation Options"
+		description="Select how you would like to create your API artifact"
+		error="Please select a method to create the proxy service">
+		<option id="create.api" default="true">Create A New API Artifact</option>
+		<option id="import.api">Import API Artifact</option>
+	</projectOptions>
+	<projectOptionSettings>
+		<settings optionId="create.api" title="Synapse API Artifact"
+			description="Create a new Synapse API Artifact" error="Please give a name and a context for the API">
+			<data modelProperty="api.name" type="string"
+				fieldController="org.wso2.developerstudio.eclipse.artifact.synapse.api.validator.ProjectFieldController">Name*</data>
+			<data modelProperty="api.context" type="string"
+				fieldController="org.wso2.developerstudio.eclipse.artifact.synapse.api.validator.ProjectFieldController">Context*</data>
+			<data modelProperty="api.hostname" type="string"
+				fieldController="org.wso2.developerstudio.eclipse.artifact.synapse.api.validator.ProjectFieldController">Hostname</data>
+			<data modelProperty="api.port" type="string"
+				fieldController="org.wso2.developerstudio.eclipse.artifact.synapse.api.validator.ProjectFieldController">Port</data>
+			<group id ="location"/>	
+			<data modelProperty="save.location" type="workspacefolder"
+				fieldController="org.wso2.developerstudio.eclipse.artifact.synapse.api.validator.ProjectFieldController"
+				group="location"
+				controlData="filterClass=org.wso2.developerstudio.eclipse.artifact.synapse.api.validator.ESBProjectFilter">Save location:</data>
+			<data modelProperty="create.esb.prj" type="link"
+				fieldController="org.wso2.developerstudio.eclipse.artifact.synapse.api.validator.ProjectFieldController"
+				group="location"
+				controlData="align=right">&lt;a&gt;Create a new ESB project...&lt;/a&gt;</data>
+		</settings>
+		<settings optionId="import.api" 
+				  title="Synapse API Artifact" 
+				  description="Create a Synapse API Artifact using a configuration file with API defined" 
+				  error="Browse and select a API configuration file">
+			<data modelProperty="import.file" type="file" filter="*.xml" fieldController="org.wso2.developerstudio.eclipse.artifact.synapse.api.validator.ProjectFieldController">API Configuration File</data>
+			<data modelProperty="save.location" type="workspacefolder" fieldController="org.wso2.developerstudio.eclipse.artifact.synapse.api.validator.ProjectFieldController" 
+			controlData="filterClass=org.wso2.developerstudio.eclipse.artifact.synapse.api.validator.ESBProjectFilter" >Save API in: </data>
+			<data modelProperty="create.esb.prj" type="link" fieldController="org.wso2.developerstudio.eclipse.artifact.synapse.api.validator.ProjectFieldController" 
+			controlData="align=right" >&lt;a&gt;Create new Project...&lt;/a&gt;</data>
+			<data modelProperty="available.apis" type="list" fieldController="org.wso2.developerstudio.eclipse.artifact.synapse.api.validator.ProjectFieldController" 
+			controlData="select=multiple;selectAllbtn=true;modify=non-editable;class=org.wso2.developerstudio.eclipse.artifact.synapse.api.validator.APIsList">Available APIs</data>
+		</settings>
+	</projectOptionSettings>
+</wizard>

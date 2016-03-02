@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wizard>
+	<projectOptions title="New ESB Project" 
+					description="Create new ESB Project" 
+					error="Please select a method to create the endpoint artifact">
+		<option id="new.esb" default="true">New ESB Config Project</option>
+		<option id="new.esb.synapseConfig" default="false">Point To Existing Synapse-configs Folder</option>
+	</projectOptions>
+	<projectOptionSettings>
+		<settings optionId="new.esb" 
+				  title="New ESB Config Project" 
+				  description="Create new ESB Config Project" 
+				  error="Please give a name for the ESB Config Project">
+			<data modelProperty="project.name" type="string" fieldController="org.wso2.developerstudio.eclipse.esb.project.controller.ESBProjectFieldController">Project Name</data>
+			<projectNatures>
+				<nature>org.eclipse.jdt.core.javanature</nature>
+			</projectNatures>
+		</settings>
+		<settings optionId="new.esb.synapseConfig" 
+				  title="New ESB Config Project" 
+				  description="Create new ESB Config Project using existing synapse-configs" 
+				  error="Please locate a synapse-configs folder">
+			<data modelProperty="project.name" type="string" fieldController="org.wso2.developerstudio.eclipse.esb.project.controller.ESBProjectFieldController">Project Name</data>
+			<data modelProperty="synapseConfig.location" type="dir" filter="synapse-configs" fieldController="org.wso2.developerstudio.eclipse.esb.project.controller.ESBProjectFieldController">Synapse-configs Location</data>
+			<projectNatures>
+				<nature>org.eclipse.jdt.core.javanature</nature>
+			</projectNatures>
+		</settings>
+	</projectOptionSettings>
+</wizard>

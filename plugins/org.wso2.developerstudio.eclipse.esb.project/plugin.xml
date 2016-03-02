@@ -1,0 +1,377 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension point="org.eclipse.core.resources.natures"
+		id="org.wso2.developerstudio.eclipse.esb.project.nature" name="ESB Project Nature">
+		<runtime>
+			<run
+				class="org.wso2.developerstudio.eclipse.esb.project.nature.ESBProjectNature">
+			</run>
+		</runtime>
+	</extension>
+	<extension point="org.eclipse.ui.ide.projectNatureImages">
+		<image id="org.wso2.developerstudio.eclipse.esb.project.natureImage"
+			natureId="org.wso2.developerstudio.eclipse.esb.project.nature" icon="icons/esb-project-12.png">
+		</image>
+	</extension>
+	
+	<extension
+         point="org.eclipse.ui.newWizards">
+         <wizard name="ESB Config Project"
+			category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.eclipse.message.mediation/org.wso2.developerstudio.eclipse.message.mediation.project.types"
+			class="org.wso2.developerstudio.eclipse.esb.project.ui.wizard.ESBProjectWizard"
+			id="org.wso2.developerstudio.eclipse.artifact.newesbproject"
+			wizardManifest="project_wizard.xml"
+			icon="icons/esb-project-12.png"
+			project="true">
+			<description>ESB Config Project</description>
+		</wizard>
+   </extension>
+   
+	<extension point="org.eclipse.ui.newWizards">
+         <wizard name="Add Connector to workspace"
+			category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.eclipse.extensions/org.wso2.developerstudio.eclipse.extensions.project.types"
+			class="org.wso2.developerstudio.eclipse.esb.project.ui.wizard.CloudConnectorImportWizard"
+			id="org.wso2.developerstudio.eclipse.artifact.addconnectortoworkspace"
+			icon="icons/new-mediator-16x16.png">
+			<description>Add Connector to workspace</description>
+		</wizard>
+   </extension>
+   
+    <!--<extension point="org.eclipse.ui.navigator.navigatorContent">	
+	   <navigatorContent activeByDefault="true" priority="high" id="org.eclipse.ui.navigator.resourceContent" name="test">
+				<commonWizard 
+					menuGroupId="2org.wso2.developerstudio.eclipse.artifact.esb"
+			  	 	type="new"
+					wizardId="org.wso2.developerstudio.eclipse.artifact.newesbproject">
+					<enablement>
+						<or>
+							<adapt type="org.eclipse.core.resources.IProject"/>
+							<adapt type="org.eclipse.core.resources.IFolder"/>
+						</or>
+					</enablement>
+				</commonWizard>
+				<triggerPoints>
+				           <or>         
+				              <instanceof 
+				                    value="org.eclipse.core.resources.IWorkspaceRoot" /> 
+				              <instanceof
+				                    value="org.eclipse.core.resources.IProject" />  
+				              <instanceof  
+				                     value="org.eclipse.core.resources.IFolder" /> 
+				           </or>
+				  </triggerPoints>
+		</navigatorContent>
+	</extension>-->
+		<extension point="org.eclipse.ui.navigator.navigatorContent">    
+            <commonWizard type="new"
+                menuGroupId="1org.wso2.developerstudio.eclipse.artifact.webservice"
+                wizardId="org.wso2.developerstudio.eclipse.artifact.newesbproject">
+                <enablement>
+                    <or>
+                        <adapt type="org.eclipse.core.resources.IProject">
+                            <test property="org.eclipse.core.resources.projectNature"
+                                value="org.wso2.developerstudio.eclipse.mavenmultimodule.project.nature" />
+                                </adapt>
+                       <adapt type="org.eclipse.jdt.core.IPackageFragment">
+							<test property="org.wso2.developerstudio.projectNature"
+								value="org.wso2.developerstudio.eclipse.mavenmultimodule.project.nature" />
+						</adapt>
+                    </or>
+                </enablement>
+            </commonWizard>
+    </extension>
+   <extension
+       point="org.eclipse.ltk.core.refactoring.renameParticipants">
+       <renameParticipant
+			class="org.wso2.developerstudio.eclipse.esb.project.refactoring.rename.ESBArtifactRenameParticipant"
+			id="ESBArtifactRenameParticipant"
+			name="ESBArtifactRename">
+				<enablement>
+					<and>
+							<instanceof
+								value="org.eclipse.core.resources.IFile">
+							</instanceof>
+						<adapt type="org.eclipse.core.resources.IResource">
+             				<test
+                   				property="org.eclipse.core.resources.projectNature"
+                   				value="org.wso2.developerstudio.eclipse.esb.project.nature">
+             				</test>
+         				</adapt>
+					</and>
+				</enablement>
+		</renameParticipant>
+ </extension>
+  <extension
+         point="org.eclipse.ltk.core.refactoring.deleteParticipants">
+       <deleteParticipant
+			class="org.wso2.developerstudio.eclipse.esb.project.refactoring.delete.ESBArtifactMetaDataDeleteParticipant"
+			id="ESBArtifactMetaDataDeleteParticipant"
+			name="ESBArtifactMetaDataDeleteParticipantRefactor">
+				<enablement>
+					<and>
+							<instanceof
+								value="org.eclipse.core.resources.IFile">
+							</instanceof>
+						<adapt type="org.eclipse.core.resources.IResource">
+             				<test
+                   				property="org.eclipse.core.resources.projectNature"
+                   				value="org.wso2.developerstudio.eclipse.esb.project.nature">
+             				</test>
+         				</adapt>
+					</and>
+				</enablement>
+		</deleteParticipant>
+   </extension>
+   
+   <extension point="org.wso2.developerstudio.eclipse.platform.core.intro.ui.dashboard">
+	
+	<category id="dashboard.category.esb" showTitle="true" title="Enterprise Service Bus" priority="2" />
+	
+	<wizardLink category="dashboard.category.esb" id="1dashboard.wizardLink.esb.project"
+		wizard="org.wso2.developerstudio.eclipse.artifact.newesbproject"
+	priority="1">
+	</wizardLink>
+
+  </extension>
+
+	<extension
+			point="org.eclipse.ui.navigator.viewer">
+		<viewerContentBinding viewerId="org.eclipse.ui.navigator.ProjectExplorer">
+			<includes>
+				<contentExtension pattern="org.wso2.ui.navigator.linkHelper.EsbExplorer"/>	
+			</includes>
+		</viewerContentBinding>
+		<viewerContentBinding viewerId="org.eclipse.ui.navigator.PackageExplorer">
+			<includes>
+				<contentExtension pattern="org.wso2.ui.navigator.linkHelper.EsbExplorer"/>	
+			</includes>
+		</viewerContentBinding>
+	</extension>
+	
+	<extension point="org.eclipse.ui.navigator.viewer" id="esb-navigator-viewbinding">
+      	<viewerActionBinding viewerId="org.eclipse.ui.navigator.ProjectExplorer">
+         	<includes>
+            	<actionExtension pattern="org.wso2.developerstudio.eclipse.esb.project.navigatorActionProvider"/>
+         	</includes>
+      	</viewerActionBinding>
+      	<viewerActionBinding viewerId="org.eclipse.ui.navigator.PackageExplorer">
+         	<includes>
+            	<actionExtension pattern="org.wso2.developerstudio.eclipse.esb.project.navigatorActionProvider"/>
+         	</includes>
+      	</viewerActionBinding>
+	</extension>
+
+
+	<extension point="org.eclipse.ui.navigator.navigatorContent">  
+        <actionProvider
+             class="org.wso2.developerstudio.eclipse.esb.project.provider.NavigatorActionProvider"
+             id="org.wso2.developerstudio.eclipse.esb.project.navigatorActionProvider"> 
+			<enablement>
+     			<adapt type="org.eclipse.core.resources.IFile" /> 
+          	</enablement>
+  		</actionProvider>
+	</extension>
+	
+	 <extension point="org.eclipse.ui.popupMenus">
+	        <objectContribution objectClass="org.eclipse.core.resources.IProject" id="org.wso2.developerstudio.eclipse.esb.project.popup.importCloudConnector">
+	               <action
+	                        label="Add or Remove Connector"
+	                        icon="icons/car.png"
+	                   class="org.wso2.developerstudio.eclipse.esb.project.ui.action.ImportCloudConnectorAction"
+	                        id="org.wso2.developerstudio.eclipse.esb.project.ui.action.cloudConnectorImport">
+	               </action>
+	               <enablement>
+						<adapt type="org.eclipse.core.resources.IProject">
+						 <or>
+							<test property="org.eclipse.core.resources.projectNature"
+								value="org.wso2.developerstudio.eclipse.esb.project.nature" />
+		 				</or>
+						</adapt>
+				</enablement>
+	          </objectContribution>     
+	 </extension>
+	 
+	 <extension point="org.eclipse.ui.navigator.linkHelper">
+       	<linkHelper
+             class="org.wso2.developerstudio.eclipse.esb.project.esblinkhelper.ESBExplorerLinkHelper"
+             id="org.wso2.ui.navigator.linkHelper.EsbExplorer">
+      			<selectionEnablement>
+     				<adapt type="org.eclipse.core.resources.IResource">
+             				<test
+                   				property="org.eclipse.core.resources.projectNature"
+                   				value="org.wso2.developerstudio.eclipse.esb.project.nature">
+             				</test>
+         			</adapt>
+      			</selectionEnablement>
+      			<editorInputEnablement>
+        				<adapt type="org.eclipse.core.resources.IResource">
+             				<test
+                   				property="org.eclipse.core.resources.projectNature"
+                   				value="org.wso2.developerstudio.eclipse.esb.project.nature">
+             				</test>
+         				</adapt>
+      			</editorInputEnablement>
+   		</linkHelper>
+    </extension>
+    <extension
+  point="org.wso2.developerstudio.register.artifact.priority.mapping">
+ 		<artifact.priority
+      artifactType="synapse/local-entry"
+      priority="2"/>
+		<!--Message stores get fourth priority.-->
+		 <artifact.priority
+      artifactType="synapse/message-store"
+      priority="4"/>
+		<!--equal priority for artifacts-->
+		 <artifact.priority
+      artifactType="jaggery/app"
+      priority="5"/>
+		 <artifact.priority
+      artifactType="bpel/workflow"
+      priority="5"/>		
+		 <artifact.priority
+      artifactType="webapp/jaxws"
+      priority="5"/>		
+		 <artifact.priority
+      artifactType="service/dataservice"
+      priority="5"/>
+		 <artifact.priority
+      artifactType="cep/bucket"
+      priority="5"/>
+		 <artifact.priority
+      artifactType="carbon/application"
+      priority="5"/>
+		 <artifact.priority
+      artifactType="synapse/endpoint"
+      priority="5"/>
+		 <artifact.priority
+      artifactType="web/application"
+      priority="5"/>	
+		 <artifact.priority
+      artifactType="service/axis2"
+      priority="5"/>
+		 <artifact.priority
+      artifactType="synapse/sequence"
+      priority="5"/>
+		 <artifact.priority
+      artifactType="synapse/configuration"
+      priority="5"/>
+		 <artifact.priority
+      artifactType="synapse/api"
+      priority="5"/>
+		 <artifact.priority
+      artifactType="synapse/template"
+      priority="5"/>
+		 <artifact.priority
+      artifactType="synapse/sequenceTemplate"
+      priority="5"/>
+		 <artifact.priority
+      artifactType="synapse/endpointTemplate"
+      priority="5"/>
+		 <artifact.priority
+      artifactType="synapse/event-source"
+      priority="5"/>
+		 <artifact.priority
+      artifactType="synapse/message-processors"
+      priority="5"/>
+		 <artifact.priority
+      artifactType="synapse/priority-executor"
+      priority="5"/>
+		 <artifact.priority
+      artifactType="wso2/gadget"
+      priority="5"/>
+		 <artifact.priority
+      artifactType="service/rule"
+      priority="5"/>
+		 <artifact.priority
+      artifactType="synapse/proxy-service"
+      priority="6"/>
+		<!--Tasks get least priority.-->
+		 <artifact.priority
+      artifactType="synapse/task"
+      priority="7"/>
+		 <artifact.priority
+      artifactType="synapse/inbound-endpoint"
+      priority="7"/>
+  </extension>
+  <extension
+        point="org.wso2.developerstudio.register.artifact.mapping">
+		 <artifact.mapping
+        artifactType="lib/library/bundle"
+        fileExtension="jar"/>
+		 <artifact.mapping
+        artifactType="synapse/local-entry"
+        fileExtension="xml"/>
+		 <artifact.mapping
+        artifactType="synapse/proxy-service"
+        fileExtension="xml"/>
+		 <artifact.mapping
+        artifactType="carbon/application"
+        fileExtension="car"/>
+		 <artifact.mapping
+        artifactType="synapse/endpoint"
+        fileExtension="xml"/>
+		 <artifact.mapping
+        artifactType="lib/carbon/ui"
+        fileExtension="jar"/>
+		 <artifact.mapping
+        artifactType="service/axis2"
+        fileExtension="aar"/>
+		 <artifact.mapping
+        artifactType="synapse/sequence"
+        fileExtension="xml"/>
+		 <artifact.mapping
+        artifactType="synapse/configuration"
+        fileExtension="xml"/>
+		 <artifact.mapping
+        artifactType="synapse/task"
+        fileExtension="xml"/>
+		 <artifact.mapping
+        artifactType="synapse/api"
+        fileExtension="xml"/>
+		 <artifact.mapping
+        artifactType="synapse/template"
+        fileExtension="xml"/>
+		 <artifact.mapping
+        artifactType="synapse/sequenceTemplate"
+        fileExtension="xml"/>
+		 <artifact.mapping
+        artifactType="synapse/endpointTemplate"
+        fileExtension="xml"/>
+		 <artifact.mapping
+        artifactType="synapse/message-store"
+        fileExtension="xml"/>
+		 <artifact.mapping
+        artifactType="synapse/event-source"
+        fileExtension="xml"/>
+		 <artifact.mapping
+        artifactType="synapse/message-processors"
+        fileExtension="xml"/>
+		 <artifact.mapping
+        artifactType="synapse/priority-executor"
+        fileExtension="xml"/>
+		 <artifact.mapping
+        artifactType="lib/synapse/mediator"
+        fileExtension="jar"/>
+		 <artifact.mapping
+        artifactType="service/meta"
+        fileExtension="xml"/>
+		 <artifact.mapping
+        artifactType="synapse/inbound-endpoint"
+        fileExtension="xml"/>
+		 <artifact.mapping
+        artifactType="synapse/lib"
+        fileExtension="zip"/>
+  </extension>
+  
+   <extension
+        point="org.wso2.developerstudio.eclipse.capp.artifacts.provider">
+     <provider
+           class="org.wso2.developerstudio.eclipse.artifact.esb.project.exporter.ESBArtifactsProvider"
+           nature="org.wso2.developerstudio.eclipse.esb.project.nature">
+     </provider>
+  </extension>
+  
+  
+</plugin>

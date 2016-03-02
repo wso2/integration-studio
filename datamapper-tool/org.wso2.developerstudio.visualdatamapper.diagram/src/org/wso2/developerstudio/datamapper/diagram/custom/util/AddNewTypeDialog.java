@@ -88,11 +88,18 @@ public class AddNewTypeDialog extends Dialog {
 	}
 	
 	public void setValues(String name, String namespace, String schemaType, String doc, String aliases){
-		textName.setText(name);
-		textPrefix.setText(namespace);
-        textSchemaType.setText(schemaType);		
-		textNamespace.setText(doc);
-        textAliases.setText(aliases);
+		if(StringUtils.isNotEmpty(name)){
+			textName.setText(name);
+		}if(StringUtils.isNotEmpty(namespace)){
+			textPrefix.setText(namespace);
+		}if(StringUtils.isNotEmpty(schemaType)){
+			textSchemaType.setText(schemaType);
+		}if(StringUtils.isNotEmpty(doc)){
+			textNamespace.setText(doc);
+		}if(StringUtils.isNotEmpty(aliases)){
+			textAliases.setText(aliases);
+		}
+
 	}
 	
 	/**

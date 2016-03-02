@@ -78,7 +78,7 @@ public class Messages extends NLS {
 	public static String Add_Remove_Concat_Branches;
 	public static String AddNewFieldAction_addNewField;
 	public static String RenameActions_renameField;
-	public static String RenameActions_renameNode;
+	public static String EditActions_editNode;
 	public static String AddNewRecordAction_addNewRecord;
 	public static String AddNewRecordsListAction_addNewRecordsList;
 	public static String AddNewRootRecordAction_addNewRoot;

@@ -27,7 +27,7 @@ import org.wso2.developerstudio.datamapper.diagram.custom.action.ExportSchemaAct
 import org.wso2.developerstudio.datamapper.diagram.custom.action.LoadInputSchemaAction;
 import org.wso2.developerstudio.datamapper.diagram.custom.action.LoadOutputSchemaAction;
 import org.wso2.developerstudio.datamapper.diagram.custom.action.RenameFieldAction;
-import org.wso2.developerstudio.datamapper.diagram.custom.action.RenameNodeAction;
+import org.wso2.developerstudio.datamapper.diagram.custom.action.EditRecordAction;
 import org.wso2.developerstudio.datamapper.diagram.custom.action.SchemaFromJsonAction;
 import org.wso2.developerstudio.datamapper.diagram.custom.action.SplitManyAction;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.ConcatEditPart;
@@ -71,7 +71,7 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
 	// Actions for adding a new field
 	Map<Class<? extends ShapeNodeEditPart>, AbstractActionHandler> addNewFieldContextActions;
 	// Actions for Renaming a new field
-	Map<Class<? extends ShapeNodeEditPart>, AbstractActionHandler> addRenamingNodedActions;
+	Map<Class<? extends ShapeNodeEditPart>, AbstractActionHandler> addEditNodedActions;
 	// Actions for Renaming a new field
 	Map<Class<? extends AbstractBorderedShapeEditPart>, AbstractActionHandler> addRenamingFieldActions;
 	
@@ -131,11 +131,11 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
 
 		//Initialize renaming action
 		// Initialize new field context sensitive actions.
-		addRenamingNodedActions = new HashMap<Class<? extends ShapeNodeEditPart>, AbstractActionHandler>();
+		addEditNodedActions = new HashMap<Class<? extends ShapeNodeEditPart>, AbstractActionHandler>();
 		// New field actions are added to treenode editparts
-		addRenamingNodedActions.put(TreeNodeEditPart.class, new RenameNodeAction(part));
-		addRenamingNodedActions.put(TreeNode2EditPart.class, new RenameNodeAction(part));
-		addRenamingNodedActions.put(TreeNode3EditPart.class, new RenameNodeAction(part));
+		addEditNodedActions.put(TreeNodeEditPart.class, new EditRecordAction(part));
+		addEditNodedActions.put(TreeNode2EditPart.class, new EditRecordAction(part));
+		addEditNodedActions.put(TreeNode3EditPart.class, new EditRecordAction(part));
 		
 		//Initialize renaming field action
 		// Initialize new field context sensitive actions.
@@ -228,7 +228,7 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
 									}
 									
 									// Append new field item to menu
-									AbstractActionHandler addRenameNodedAction = addRenamingNodedActions
+									AbstractActionHandler addRenameNodedAction = addEditNodedActions
 											.get(selectedEditorPart.getClass());
 									if (null != addRenameNodedAction) {
 										menu.appendToGroup(EDIT_GROUP_ID, addRenameNodedAction);

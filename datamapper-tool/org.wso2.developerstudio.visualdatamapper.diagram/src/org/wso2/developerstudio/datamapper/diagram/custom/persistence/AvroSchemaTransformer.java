@@ -47,8 +47,22 @@ public class AvroSchemaTransformer {
 	 */
 	public Schema transform(TreeNodeImpl treeNodeModel) {
 		// Schema of the root element
+		String name = null;
 		String doc = null;
 		String namespace = null;
+		
+		if(StringUtils.isNotEmpty(treeNodeModel.getName())){
+			if(treeNodeModel.getName().contains (":")){
+				String[] fullName = treeNodeModel.getName().split(":");
+				name = fullName[1];
+				namespace = fullName[0];
+			    
+			}else{
+				name = treeNodeModel.getName();
+			}
+			
+		}
+	
 		if(StringUtils.isNotEmpty(treeNodeModel.getDoc())){
 			doc = treeNodeModel.getDoc();
 		}
@@ -56,13 +70,13 @@ public class AvroSchemaTransformer {
 			namespace = treeNodeModel.getNamespace();
 		}
         
-		Schema schema = Schema.createRecord(treeNodeModel.getName(), doc, namespace, false);
+		Schema schema = Schema.createRecord(name, doc, namespace, false);
 		
 		for(String aliase : treeNodeModel.getAliases()){
 			schema.addAlias(aliase);
 		}
 		List<Field> fields = new ArrayList<Field>();
-
+		
 		if (!treeNodeModel.getNode().isEmpty()) {
 			for (TreeNode nodeInRoot : treeNodeModel.getNode()) {
 				if (nodeInRoot.getSchemaDataType().equals(SchemaDataType.RECORD)) {
@@ -91,23 +105,31 @@ public class AvroSchemaTransformer {
 		return schema;
 	}
 
+
 	private Field createRecord(TreeNode node) {
-		JsonNode defaultValue = null;
-		String docValue = null;
-		Order order = null;
+	
+		String name = null;
 		String doc = null;
 		String namespace = null;
 		Field field = null;
 		
+		if(StringUtils.isNotEmpty(node.getName())){
+			if(node.getName().contains (":")){
+				String[] fullName = node.getName().split(":");
+				name = fullName[1];
+				namespace = fullName[0];
+			    
+			}else{
+				name = node.getName();
+			}			
+		}
+	
 		if(StringUtils.isNotEmpty(node.getDoc())){
 			doc = node.getDoc();
 		}
-		if(StringUtils.isNotEmpty(node.getNamespace())){
-			namespace = node.getNamespace();
-		}
-		
-		// Schema for the field
-		Schema schemaForRecord = Schema.createRecord(node.getName(), doc, namespace, false);
+	
+		// FIXME "namespace" : "" is added when the namespace is null
+		Schema schemaForRecord = Schema.createRecord(name, doc, namespace, false);
 		
 		for(String aliase : node.getAliases()){
 			schemaForRecord.addAlias(aliase);
@@ -126,23 +148,12 @@ public class AvroSchemaTransformer {
 		}
 		if (!node.getElement().isEmpty()) {
 			for (Element element : node.getElement()) {
-		
-				Field createdField = createField(element);
-				if(createdField.defaultValue() != null ){
-					defaultValue = createdField.defaultValue();
-				}
-				if(StringUtils.isNotEmpty(createdField.doc())){
-					docValue = createdField.doc();
-				}
-				if(createdField.order() != null){
-					order = createdField.order();
-				}
-				fieldsforRecord.add(createdField);	
+				fieldsforRecord.add(createField(element));
 			}
 		}
 		schemaForRecord.setFields(fieldsforRecord);
 		
-		field = new Field(node.getName(),schemaForRecord, null, null);
+		field = new Field(name,schemaForRecord, null, null);
 	
 		return field;
 	}

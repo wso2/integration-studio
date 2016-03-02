@@ -39,7 +39,7 @@ import org.wso2.developerstudio.datamapper.DataMapperRoot;
 import org.wso2.developerstudio.datamapper.SchemaDataType;
 import org.wso2.developerstudio.datamapper.TreeNode;
 import org.wso2.developerstudio.datamapper.diagram.Activator;
-import org.wso2.developerstudio.datamapper.diagram.custom.util.AddNewRootRecordDialog;
+import org.wso2.developerstudio.datamapper.diagram.custom.util.AddNewTypeDialog;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.DataMapperRootEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.InputEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.OutputEditPart;
@@ -59,6 +59,7 @@ public class AddNewRootRecordAction extends AbstractActionHandler {
 	private static final String ERROR_ADDING_MULTIPLE_ROOT_ELEMENTS_TITLE = Messages.AddNewRootRecordAction_addMultipleRootElementsTitle;
 	private static final String ERROR = Messages.AddNewRootRecordAction_errorHeader;
 	private static final String ERROR_ADDING_NEW_CHILD = Messages.AddNewRootRecordAction_errorAddChild;
+	private static final String DIALOG_TITLE = "Add new Root Element";
 
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
@@ -82,8 +83,10 @@ public class AddNewRootRecordAction extends AbstractActionHandler {
 				MessageDialog.openWarning(Display.getCurrent().getActiveShell(), ERROR_ADDING_MULTIPLE_ROOT_ELEMENTS_TITLE, ERROR_ADDING_MULTIPLE_ROOT_ELEMENTS);
 			} else {
 				
-				AddNewRootRecordDialog rootElementDialog = new AddNewRootRecordDialog(Display.getCurrent().getActiveShell(), new Class[]{IRegistryFile.class});
+				
+				AddNewTypeDialog rootElementDialog = new AddNewTypeDialog(Display.getCurrent().getActiveShell(), new Class[]{IRegistryFile.class});
 				rootElementDialog.create();
+				rootElementDialog.setTtile(DIALOG_TITLE);
 				rootElementDialog.open();
 				
 				if(rootElementDialog.getName()!= null && rootElementDialog.getSchemaType() != null){
@@ -146,6 +149,8 @@ public class AddNewRootRecordAction extends AbstractActionHandler {
                     if(StringUtils.isNotEmpty(rootElementDialog.getNamespace())){
                     	treeNodeNew.setNamespace(rootElementDialog.getNamespace());
                     }
+                    
+                    //Sets the xml namespace as the doc value in avro
                     if(StringUtils.isNotEmpty(rootElementDialog.getDoc())){
                     	treeNodeNew.setDoc(rootElementDialog.getDoc());
                     }

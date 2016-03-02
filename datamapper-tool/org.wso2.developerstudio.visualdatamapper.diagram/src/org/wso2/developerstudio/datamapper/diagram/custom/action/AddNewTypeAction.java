@@ -51,6 +51,7 @@ public class AddNewTypeAction extends AbstractActionHandler {
 	private static final String INPUT_EDITPART = "Input"; //$NON-NLS-1$
 	private static final String ADD_NEW_RECORD_ACTION_ID = "add-new-record-action-id"; //$NON-NLS-1$
 	private static final String ADD_NEW_RECORD = Messages.AddNewRecordAction_addNewRecord;
+	private static final String DIALOG_TITLE = "Add new Type";
 
 	public AddNewTypeAction(IWorkbenchPart workbenchPart) {
 		super(workbenchPart);
@@ -69,6 +70,7 @@ public class AddNewTypeAction extends AbstractActionHandler {
 		AddNewTypeDialog typeDialog = new AddNewTypeDialog(Display.getCurrent().getActiveShell(),
 				new Class[] { IRegistryFile.class });
 		typeDialog.create();
+		typeDialog.setTtile(DIALOG_TITLE);
 		typeDialog.open();
 
 		if (typeDialog.getName() != null && typeDialog.getSchemaType() != null) {
@@ -129,7 +131,7 @@ public class AddNewTypeAction extends AbstractActionHandler {
 					break;
 				}
 				
-				 if(StringUtils.isNotEmpty(typeDialog.getNamespace())){
+				if(StringUtils.isNotEmpty(typeDialog.getNamespace())){ 
                  	treeNodeNew.setNamespace(typeDialog.getNamespace());
                  }
                  if(StringUtils.isNotEmpty(typeDialog.getDoc())){

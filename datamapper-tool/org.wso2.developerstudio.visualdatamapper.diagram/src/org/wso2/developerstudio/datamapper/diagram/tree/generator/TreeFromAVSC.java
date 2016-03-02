@@ -9,6 +9,7 @@ import java.util.Scanner;
 import org.apache.avro.Schema;
 import org.apache.avro.Schema.Field;
 import org.apache.avro.Schema.Type;
+import org.apache.commons.lang.StringUtils;
 import org.wso2.developerstudio.datamapper.diagram.part.DataMapperCreationWizardPage;
 import org.wso2.developerstudio.datamapper.diagram.tree.model.Element;
 import org.wso2.developerstudio.datamapper.diagram.tree.model.Tree;
@@ -62,9 +63,12 @@ public class TreeFromAVSC {
 
 			Schema schm = Schema.parse(entireFileText);
 
-			root.setName(schm.getName());
+			if(StringUtils.isNotEmpty(schm.getNamespace())){
+				root.setName(schm.getNamespace()+":"+schm.getName());
+			}else{
+				root.setName(schm.getName());
+			}	
 			root.setSchemaType(schm.getType());
-			root.setNamespace(schm.getNamespace());
 			root.setDoc(schm.getDoc());
 			root.setAliases(schm.getAliases());
 			
@@ -89,9 +93,13 @@ public class TreeFromAVSC {
 
 		// root node for Tree data structure
 		Tree root = new Tree();
-		root.setName(schema.getName());
+		
+		if(StringUtils.isNotEmpty(schema.getNamespace())){
+			root.setName(schema.getNamespace()+":"+schema.getName());
+		}else{
+			root.setName(schema.getName());
+		}	
 		root.setSchemaType(schema.getType());
-		root.setNamespace(schema.getNamespace());
 		root.setDoc(schema.getDoc());
 		root.setAliases(schema.getAliases());
 		
@@ -109,12 +117,16 @@ public class TreeFromAVSC {
 		if (fieldType.toString().equalsIgnoreCase("RECORD")) {
 
 			Tree child = new Tree(parent);
-			child.setName(field.name());
+			
+			if(StringUtils.isNotEmpty(field.schema().getNamespace())){
+				child.setName(field.schema().getNamespace()+":"+field.name());
+			}else{
+				child.setName(field.name());
+			}	
 			child.setSchemaType(fieldType);
-			child.setNamespace(field.schema().getNamespace());
 			child.setDoc(field.schema().getDoc());
 			child.setAliases(field.schema().getAliases());
-
+			
 			List<Field> list = field.schema().getFields();
 
 			for (Field it : list) {

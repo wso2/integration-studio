@@ -5,8 +5,8 @@ Bundle-SymbolicName: org.wso2.developerstudio.eclipse.esb.libraries;singleton:=t
 Bundle-Version: 4.0.0.qualifier
 Bundle-Vendor: WSO2
 Bundle-ActivationPolicy: lazy
-Export-Package: org.wso2.carbon.mediator.cache,
- org.wso2.carbon.mediator.cache.digest
+Export-Package: org.wso2.carbon.mediator.cache;version="4.4.10",
+ org.wso2.carbon.mediator.cache.digest;version="4.4.10"
 Bundle-ClassPath: .,
  lib/org.wso2.carbon.mediator.cache_4.4.10.jar
 Require-Bundle: org.eclipse.ui,

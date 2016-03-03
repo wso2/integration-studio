@@ -392,7 +392,6 @@ public class TreeNodeEditPart extends ShapeNodeEditPart {
 			figure.setPreferredSize(100, 3);
 
 			figure.setBorder(null);
-
 			figure.setOpaque(false);
 
 			RectangleFigure figure2 = new RectangleFigure();
@@ -419,9 +418,9 @@ public class TreeNodeEditPart extends ShapeNodeEditPart {
 			int count = ((TreeNode) ((View) getModel()).getElement()).getLevel();
 			fFigureTreeNodeNameFigure.setText(name);
 			fFigureTreeNodeNameFigure.setForegroundColor(ColorConstants.black);
-
 			fFigureTreeNodeNameFigure.setFont(new Font(null, "Arial", 10, SWT.BOLD));
-			figure2.setPreferredSize((count - 1) * 30, 1);
+			
+			figure2.setPreferredSize((count - 1) * 30, 3);
 			Label nodeLabel = new Label();
 			nodeLabel.setIcon(mainImg.getImage());
 			Display display = Display.getCurrent();
@@ -437,7 +436,6 @@ public class TreeNodeEditPart extends ShapeNodeEditPart {
 			figure2.setFill(false);
 			this.setFill(false);
 			this.setOutline(false);
-
 			
 			this.add(figure);
 		}

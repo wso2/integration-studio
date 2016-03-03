@@ -1,4 +1,7 @@
 *.class
+# ignore target and bin folders from status
+target/
+bin/
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/

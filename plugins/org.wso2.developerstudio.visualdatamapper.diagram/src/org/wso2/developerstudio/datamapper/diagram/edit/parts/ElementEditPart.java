@@ -535,8 +535,6 @@ public class ElementEditPart extends AbstractBorderedShapeEditPart {
 			this.setOutline(false);
 			this.setFill(false);
 			this.add(figure);
-			this.setMaximumSize(new Dimension(100, 3));
-			this.setMinimumSize(new Dimension(100, 3));
 			this.add(elemLabel);
 
 		}

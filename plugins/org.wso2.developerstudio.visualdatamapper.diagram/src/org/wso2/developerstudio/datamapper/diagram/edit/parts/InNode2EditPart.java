@@ -38,7 +38,13 @@ import org.wso2.developerstudio.datamapper.diagram.edit.policies.InNode2ItemSema
  * @generated
  */
 public class InNode2EditPart extends AbstractBorderItemEditPart {
-
+	/**
+	 * @generated NOT
+	 */
+	@Override
+	public boolean canAttachNote() {
+		return false;
+	}
 	/**
 	 * @generated
 	 */

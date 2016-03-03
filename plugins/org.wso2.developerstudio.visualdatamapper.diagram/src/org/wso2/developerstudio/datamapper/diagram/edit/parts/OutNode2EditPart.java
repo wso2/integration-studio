@@ -43,7 +43,13 @@ import org.wso2.developerstudio.datamapper.diagram.edit.policies.OutNode2ItemSem
  * @generated
  */
 public class OutNode2EditPart extends AbstractBorderItemEditPart {
-
+	/**
+	 * @generated NOT
+	 */
+	@Override
+	public boolean canAttachNote() {
+		return false;
+	}
 	/**
 	 * @generated
 	 */

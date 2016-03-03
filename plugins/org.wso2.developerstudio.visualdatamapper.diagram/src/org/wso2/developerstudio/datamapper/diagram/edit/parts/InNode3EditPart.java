@@ -27,7 +27,13 @@ import org.eclipse.ui.plugin.AbstractUIPlugin;
  * @generated NOT
  */
 public class InNode3EditPart extends AbstractBorderItemEditPart {
-
+	/**
+	 * @generated NOT
+	 */
+	@Override
+	public boolean canAttachNote() {
+		return false;
+	}
 	/**
 	 * @generated
 	 */

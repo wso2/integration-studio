@@ -22,6 +22,7 @@ import org.wso2.developerstudio.datamapper.diagram.custom.model.DMOperation;
 import org.wso2.developerstudio.datamapper.diagram.custom.model.DMVariable;
 import org.wso2.developerstudio.datamapper.diagram.custom.model.DMVariableType;
 import org.wso2.developerstudio.datamapper.diagram.custom.model.DataMapperDiagramModel;
+import org.wso2.developerstudio.datamapper.diagram.custom.util.ScriptGenerationUtil;
 
 /**
  * This abstract class implements the common of functions and logic to generate
@@ -47,10 +48,11 @@ public abstract class AbstractMappingConfigGenerator implements MappingConfigGen
     protected String getMainFunctionDefinition(String inRoot, String outRoot) {
         StringBuilder mainFunctionBuilder = new StringBuilder();
         mainFunctionBuilder.append("function map_S_");
-        mainFunctionBuilder.append(inRoot);
+        mainFunctionBuilder.append(ScriptGenerationUtil.removeNameSpaceFromName(inRoot));
         mainFunctionBuilder.append("_S_");
-        mainFunctionBuilder.append(outRoot);
-        mainFunctionBuilder.append("( input" + inRoot + ", output" + outRoot + ")");
+        mainFunctionBuilder.append(ScriptGenerationUtil.removeNameSpaceFromName(outRoot));
+        mainFunctionBuilder.append("( input" + ScriptGenerationUtil.removeNameSpaceFromName(inRoot) + ", output"
+                + ScriptGenerationUtil.removeNameSpaceFromName(outRoot) + ")");
         mainFunctionBuilder.append("{ ");
         mainFunctionBuilder.append("\n");
         return mainFunctionBuilder.toString();

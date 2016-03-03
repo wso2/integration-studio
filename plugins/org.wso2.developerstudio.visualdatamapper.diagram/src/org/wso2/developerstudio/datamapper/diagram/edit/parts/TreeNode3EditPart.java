@@ -110,7 +110,7 @@ public class TreeNode3EditPart extends ShapeNodeEditPart {
 			for (int i = 0; i < count; i++) {
 				getPrimaryShape().getChildren().add(figures.get(i));
 			}
-			((Figure) (getPrimaryShape().getChildren().get(0))).setPreferredSize(100, 20);
+			((Figure) (getPrimaryShape().getChildren().get(0))).setPreferredSize(100, 40);
 			childrenIFigure.remove(childrenIFigure.size() - 1);
 			isActivated = true;
 		}

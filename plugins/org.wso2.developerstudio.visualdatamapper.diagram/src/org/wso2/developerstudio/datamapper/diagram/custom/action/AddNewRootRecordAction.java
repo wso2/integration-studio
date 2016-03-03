@@ -86,7 +86,7 @@ public class AddNewRootRecordAction extends AbstractActionHandler {
 				
 				AddNewTypeDialog rootElementDialog = new AddNewTypeDialog(Display.getCurrent().getActiveShell(), new Class[]{IRegistryFile.class});
 				rootElementDialog.create();
-				rootElementDialog.setTtile(DIALOG_TITLE);
+				rootElementDialog.setTitle(DIALOG_TITLE);
 				rootElementDialog.open();
 				
 				if(rootElementDialog.getName()!= null && rootElementDialog.getSchemaType() != null){

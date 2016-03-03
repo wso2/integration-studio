@@ -127,6 +127,10 @@ public class AvroSchemaTransformer {
 		if(StringUtils.isNotEmpty(node.getDoc())){
 			doc = node.getDoc();
 		}
+		
+		if(StringUtils.isNotEmpty(node.getNamespace())){
+			namespace = node.getNamespace();
+		}
 	
 		// FIXME "namespace" : "" is added when the namespace is null
 		Schema schemaForRecord = Schema.createRecord(name, doc, namespace, false);
@@ -280,7 +284,8 @@ public class AvroSchemaTransformer {
 	
 		defaultValueObject = getDefaultValue(element.getDefault(), mapper);
 		
-		// Fixing the NullPointer Exception in Schema
+		// Fixing the NullPointer Exception in Schema. 
+		//FIXME handle this when order is present
 		if (docValue == null && defaultValueObject == null) {
 			field = new Field(element.getName(), schemaForField, null, null);
 		} else if (docValue == null && defaultValueObject != null) {
@@ -288,7 +293,7 @@ public class AvroSchemaTransformer {
 		} else if (defaultValueObject == null && docValue != null) {
 			field = new Field(element.getName(), schemaForField, docValue, null);
 		} else {	
-		    field = new Field(element.getName(), schemaForField, docValue,defaultValueObject, orderValue);
+		    field = new Field(element.getName(), schemaForField, docValue,defaultValueObject);
 		}
 		
 		for(String aliase : element.getAliases()){

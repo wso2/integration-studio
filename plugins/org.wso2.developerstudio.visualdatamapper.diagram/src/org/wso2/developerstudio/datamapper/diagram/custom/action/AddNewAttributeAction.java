@@ -1,19 +1,3 @@
-/*
- * Copyright (c) 2014, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
- * 
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- * 
- * http://www.apache.org/licenses/LICENSE-2.0
- * 
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package org.wso2.developerstudio.datamapper.diagram.custom.action;
 
 import org.apache.commons.lang.StringUtils;
@@ -35,118 +19,130 @@ import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.datamapper.DataMapperFactory;
 import org.wso2.developerstudio.datamapper.DataMapperPackage;
 import org.wso2.developerstudio.datamapper.DataMapperRoot;
+import org.wso2.developerstudio.datamapper.Element;
 import org.wso2.developerstudio.datamapper.SchemaDataType;
 import org.wso2.developerstudio.datamapper.TreeNode;
-import org.wso2.developerstudio.datamapper.diagram.custom.util.AddNewTypeDialog;
+import org.wso2.developerstudio.datamapper.diagram.custom.util.AddNewFieldDialog;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.DataMapperRootEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.InputEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.OutputEditPart;
 import org.wso2.developerstudio.datamapper.impl.TreeNodeImpl;
 import org.wso2.developerstudio.eclipse.registry.core.interfaces.IRegistryFile;
 
-public class AddNewTypeAction extends AbstractActionHandler {
-
+public class AddNewAttributeAction extends AbstractActionHandler{
 	private EditPart selectedEP;
 	private static final String OUTPUT_EDITPART = "Output"; //$NON-NLS-1$
 	private static final String INPUT_EDITPART = "Input"; //$NON-NLS-1$
-	private static final String ADD_NEW_RECORD_ACTION_ID = "add-new-record-action-id"; //$NON-NLS-1$
-	private static final String ADD_NEW_RECORD = Messages.AddNewRecordAction_addNewRecord;
-	private static final String DIALOG_TITLE = "Add new Type";
+	private static final String ADD_NEW_ATTRIBUTE_ACTION_ID = "add-new-attribute-action-id"; //$NON-NLS-1$
+	private static final String ADD_NEW_ATTRIBUTE = Messages.AddNewAttributeAction_addNewField;
+	private static final String DIALOG_TITLE = "Add new Attribute";
+	private static final String PREFIX = "attr_";
 
-	public AddNewTypeAction(IWorkbenchPart workbenchPart) {
+	public AddNewAttributeAction(IWorkbenchPart workbenchPart) {
 		super(workbenchPart);
 
-		setId(ADD_NEW_RECORD_ACTION_ID);
-		setText(ADD_NEW_RECORD);
-		setToolTipText(ADD_NEW_RECORD);
+		setId(ADD_NEW_ATTRIBUTE_ACTION_ID);
+		setText(ADD_NEW_ATTRIBUTE);
+		setToolTipText(ADD_NEW_ATTRIBUTE);
 		ISharedImages workbenchImages = PlatformUI.getWorkbench().getSharedImages();
 		setImageDescriptor(workbenchImages.getImageDescriptor(ISharedImages.IMG_TOOL_NEW_WIZARD));
 	}
-
+	
 	@Override
 	protected void doRun(IProgressMonitor progressMonitor) {
 		selectedEP = getSelectedEditPart();
 
-		AddNewTypeDialog typeDialog = new AddNewTypeDialog(Display.getCurrent().getActiveShell(),
+		AddNewFieldDialog fieldDialog = new AddNewFieldDialog(Display.getCurrent().getActiveShell(),
 				new Class[] { IRegistryFile.class });
-		typeDialog.create();
-		typeDialog.setTitle(DIALOG_TITLE);
-		typeDialog.open();
+		fieldDialog.create();
+		fieldDialog.setTitle(DIALOG_TITLE);
+		fieldDialog.open();
 
-		if (typeDialog.getName() != null && typeDialog.getSchemaType() != null) {
+		if (fieldDialog.getName() != null && fieldDialog.getSchemaType() != null) {
+
 			if (null != selectedEP) {
 				// Returns the TreeNodeImpl object respective to selectedEP
 				EObject object = ((Node) selectedEP.getModel()).getElement();
 				// Used to identify the selected resource of the model
 				TreeNode selectedNode = (TreeNode) object;
 
-				// Configure the new tree node by setting default values
-				TreeNode treeNodeNew = DataMapperFactory.eINSTANCE.createTreeNode();
-				treeNodeNew.setName(typeDialog.getName());
-				treeNodeNew.setLevel(selectedNode.getLevel() + 1);
-				switch (typeDialog.getSchemaType()) {
+				// Configure the new element by setting default values
+				Element elementNew = DataMapperFactory.eINSTANCE.createElement();
+				if(fieldDialog.getName().startsWith(PREFIX)){
+					elementNew.setName(fieldDialog.getName());		
+				}else{
+					String newName = PREFIX + fieldDialog.getName();
+					elementNew.setName(newName);
+				}
+				
+				elementNew.setLevel(selectedNode.getLevel() + 1);
+
+				switch (fieldDialog.getSchemaType()) {
 				case "ARRAY":
-					treeNodeNew.setSchemaDataType(SchemaDataType.ARRAY);
+					elementNew.setSchemaDataType(SchemaDataType.ARRAY);
 					break;
 				case "BOOLEAN":
-					treeNodeNew.setSchemaDataType(SchemaDataType.BOOLEAN);
+					elementNew.setSchemaDataType(SchemaDataType.BOOLEAN);
 					break;
 				case "BYTES":
-					treeNodeNew.setSchemaDataType(SchemaDataType.BYTES);
+					elementNew.setSchemaDataType(SchemaDataType.BYTES);
 					break;
 				case "DOUBLE":
-					treeNodeNew.setSchemaDataType(SchemaDataType.DOUBLE);
+					elementNew.setSchemaDataType(SchemaDataType.DOUBLE);
 					break;
 				case "ENUM":
-					treeNodeNew.setSchemaDataType(SchemaDataType.ENUM);
+					elementNew.setSchemaDataType(SchemaDataType.ENUM);
 					break;
 				case "FIXED":
-					treeNodeNew.setSchemaDataType(SchemaDataType.FIXED);
+					elementNew.setSchemaDataType(SchemaDataType.FIXED);
 					break;
 				case "FLOAT":
-					treeNodeNew.setSchemaDataType(SchemaDataType.FLOAT);
+					elementNew.setSchemaDataType(SchemaDataType.FLOAT);
 					break;
 				case "INT":
-					treeNodeNew.setSchemaDataType(SchemaDataType.INT);
+					elementNew.setSchemaDataType(SchemaDataType.INT);
 					break;
 				case "LONG":
-					treeNodeNew.setSchemaDataType(SchemaDataType.LONG);
+					elementNew.setSchemaDataType(SchemaDataType.LONG);
 					break;
 				case "MAP":
-					treeNodeNew.setSchemaDataType(SchemaDataType.MAP);
+					elementNew.setSchemaDataType(SchemaDataType.MAP);
 					break;
 				case "NULL":
-					treeNodeNew.setSchemaDataType(SchemaDataType.NULL);
+					elementNew.setSchemaDataType(SchemaDataType.NULL);
 					break;
 				case "RECORD":
-					treeNodeNew.setSchemaDataType(SchemaDataType.RECORD);
+					elementNew.setSchemaDataType(SchemaDataType.RECORD);
 					break;
 				case "STRING":
-					treeNodeNew.setSchemaDataType(SchemaDataType.STRING);
+					elementNew.setSchemaDataType(SchemaDataType.STRING);
 					break;
 				case "UNION":
-					treeNodeNew.setSchemaDataType(SchemaDataType.UNION);
+					elementNew.setSchemaDataType(SchemaDataType.UNION);
 					break;
 				default:
 					break;
 				}
-				
-				if(StringUtils.isNotEmpty(typeDialog.getNamespace())){ 
-                 	treeNodeNew.setNamespace(typeDialog.getNamespace());
-                 }
-                 if(StringUtils.isNotEmpty(typeDialog.getDoc())){
-                 	treeNodeNew.setDoc(typeDialog.getDoc());
-                 }
-                 if(typeDialog.getAliases() != null){
-                     treeNodeNew.getAliases().addAll(typeDialog.getAliases());
-                 }
+
+				if (StringUtils.isNotEmpty(fieldDialog.getDoc())) {
+					elementNew.setDoc(fieldDialog.getDoc());
+				}
+				if (fieldDialog.getDefault() != null) {
+					elementNew.setDefault(fieldDialog.getDefault().toString());
+				}
+				if (fieldDialog.getAliases() != null) {
+					elementNew.getAliases().addAll(fieldDialog.getAliases());
+				}
+				if (fieldDialog.getOrder() != null) {
+					elementNew.setOrder(fieldDialog.getOrder());
+				}
 
 				/*
 				 * AddCommand is used to avoid concurrent updating. index 0 to
 				 * add as the first child
 				 */
 				AddCommand addCmd = new AddCommand(((GraphicalEditPart) selectedEP).getEditingDomain(), selectedNode,
-						DataMapperPackage.Literals.TREE_NODE__NODE, treeNodeNew, 0);
+						DataMapperPackage.Literals.TREE_NODE__ELEMENT, elementNew, 0);
 				if (addCmd.canExecute()) {
 					((GraphicalEditPart) selectedEP).getEditingDomain().getCommandStack().execute(addCmd);
 				}
@@ -154,9 +150,8 @@ public class AddNewTypeAction extends AbstractActionHandler {
 				// FIXME force refresh root
 				String selectedInputOutputEditPart = getSelectedInputOutputEditPart();
 				if (null != selectedInputOutputEditPart) {
-
-					if (selectedEP.getParent() instanceof InputEditPart) {
-						InputEditPart iep = (InputEditPart) selectedEP.getParent();
+					if (selectedEP.getParent().getParent().getParent() instanceof InputEditPart) {
+						InputEditPart iep = (InputEditPart) selectedEP.getParent().getParent().getParent();
 						DataMapperRootEditPart rep = (DataMapperRootEditPart) iep.getParent();
 						DataMapperRoot rootDiagram = (DataMapperRoot) ((DiagramImpl) rep.getModel()).getElement();
 						if (INPUT_EDITPART.equals(selectedInputOutputEditPart)) {
@@ -205,6 +200,7 @@ public class AddNewTypeAction extends AbstractActionHandler {
 
 							}
 						}
+
 					}
 
 				}
@@ -245,3 +241,4 @@ public class AddNewTypeAction extends AbstractActionHandler {
 		// refresh action. Does not do anything
 	}
 }
+

@@ -18,15 +18,17 @@ import org.eclipse.gmf.runtime.diagram.ui.providers.DiagramContextMenuProvider;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.ui.IWorkbenchPart;
+import org.wso2.developerstudio.datamapper.diagram.custom.action.AddNewAttributeAction;
 import org.wso2.developerstudio.datamapper.diagram.custom.action.AddNewFieldAction;
 import org.wso2.developerstudio.datamapper.diagram.custom.action.AddNewTypeAction;
 import org.wso2.developerstudio.datamapper.diagram.custom.action.AddNewListAction;
 import org.wso2.developerstudio.datamapper.diagram.custom.action.AddNewRootRecordAction;
 import org.wso2.developerstudio.datamapper.diagram.custom.action.ConcatManyAction;
+import org.wso2.developerstudio.datamapper.diagram.custom.action.EditAttributeAction;
 import org.wso2.developerstudio.datamapper.diagram.custom.action.ExportSchemaAction;
 import org.wso2.developerstudio.datamapper.diagram.custom.action.LoadInputSchemaAction;
 import org.wso2.developerstudio.datamapper.diagram.custom.action.LoadOutputSchemaAction;
-import org.wso2.developerstudio.datamapper.diagram.custom.action.RenameFieldAction;
+import org.wso2.developerstudio.datamapper.diagram.custom.action.EditFieldAction;
 import org.wso2.developerstudio.datamapper.diagram.custom.action.EditRecordAction;
 import org.wso2.developerstudio.datamapper.diagram.custom.action.SchemaFromJsonAction;
 import org.wso2.developerstudio.datamapper.diagram.custom.action.SplitManyAction;
@@ -70,10 +72,14 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
 	Map<Class<? extends ShapeNodeEditPart>, AbstractActionHandler> addNewRecordsListContextActions;
 	// Actions for adding a new field
 	Map<Class<? extends ShapeNodeEditPart>, AbstractActionHandler> addNewFieldContextActions;
-	// Actions for Renaming a new field
+	// Actions for adding a new attribute
+	Map<Class<? extends ShapeNodeEditPart>, AbstractActionHandler> addNewAttributeContextActions;
+	// Actions for Editing a new record
 	Map<Class<? extends ShapeNodeEditPart>, AbstractActionHandler> addEditNodedActions;
-	// Actions for Renaming a new field
-	Map<Class<? extends AbstractBorderedShapeEditPart>, AbstractActionHandler> addRenamingFieldActions;
+	// Actions for Editin a new field
+	Map<Class<? extends AbstractBorderedShapeEditPart>, AbstractActionHandler> addEditFieldActions;
+	// Actions for Editin a new field
+	Map<Class<? extends AbstractBorderedShapeEditPart>, AbstractActionHandler> addEditAttributeActions;
 	
 	// Actions for getting schema from data-set
 	Map<Class<? extends ShapeNodeEditPart>, AbstractActionHandler> schemaFromDatasetActions;
@@ -118,9 +124,6 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
 				part));
 		addNewRecordsListContextActions.put(TreeNode3EditPart.class, new AddNewListAction(
 				part));
-		
-		addNewRecordsListContextActions.put(ElementEditPart.class, new AddNewListAction(
-				part));
 
 		// Initialize new field context sensitive actions.
 		addNewFieldContextActions = new HashMap<Class<? extends ShapeNodeEditPart>, AbstractActionHandler>();
@@ -128,6 +131,13 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
 		addNewFieldContextActions.put(TreeNodeEditPart.class, new AddNewFieldAction(part));
 		addNewFieldContextActions.put(TreeNode2EditPart.class, new AddNewFieldAction(part));
 		addNewFieldContextActions.put(TreeNode3EditPart.class, new AddNewFieldAction(part));
+		
+		// Initialize new field context sensitive actions.
+		addNewAttributeContextActions = new HashMap<Class<? extends ShapeNodeEditPart>, AbstractActionHandler>();
+		// New attribute actions are added to treenode editparts
+		addNewAttributeContextActions.put(TreeNodeEditPart.class, new AddNewAttributeAction(part));
+		addNewAttributeContextActions.put(TreeNode2EditPart.class, new AddNewAttributeAction(part));
+		addNewAttributeContextActions.put(TreeNode3EditPart.class, new AddNewAttributeAction(part));
 
 		//Initialize renaming action
 		// Initialize new field context sensitive actions.
@@ -139,9 +149,16 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
 		
 		//Initialize renaming field action
 		// Initialize new field context sensitive actions.
-		addRenamingFieldActions = new HashMap<Class<? extends AbstractBorderedShapeEditPart>, AbstractActionHandler>();
+		addEditFieldActions = new HashMap<Class<? extends AbstractBorderedShapeEditPart>, AbstractActionHandler>();
 		// New field actions are added to treenode editparts
-		addRenamingFieldActions.put(ElementEditPart.class, new RenameFieldAction(part));
+		addEditFieldActions.put(ElementEditPart.class, new EditFieldAction(part));
+		
+		
+		//Initialize renaming field action
+		// Initialize new field context sensitive actions.
+		addEditAttributeActions = new HashMap<Class<? extends AbstractBorderedShapeEditPart>, AbstractActionHandler>();
+		// New field actions are added to treenode editparts
+		addEditAttributeActions.put(ElementEditPart.class, new EditAttributeAction(part));
 
 		// Initialize schema from dataset actions.
 		schemaFromDatasetActions = new HashMap<Class<? extends ShapeNodeEditPart>, AbstractActionHandler>();
@@ -227,18 +244,33 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
 										menu.appendToGroup(EDIT_GROUP_ID, addNewFieldContextAction);
 									}
 									
-									// Append new field item to menu
-									AbstractActionHandler addRenameNodedAction = addEditNodedActions
+									// Append new attribute item to menu
+									AbstractActionHandler addNewAttributeContextAction = addNewAttributeContextActions
 											.get(selectedEditorPart.getClass());
-									if (null != addRenameNodedAction) {
-										menu.appendToGroup(EDIT_GROUP_ID, addRenameNodedAction);
+									if (null != addNewAttributeContextAction) {
+										menu.appendToGroup(EDIT_GROUP_ID, addNewAttributeContextAction);
 									}
 									
-									// Append new field item to menu
-									AbstractActionHandler addRenameFieldAction = addRenamingFieldActions
+									// Append edit node item to menu
+									AbstractActionHandler addEditNodedAction = addEditNodedActions
 											.get(selectedEditorPart.getClass());
-									if (null != addRenameFieldAction) {
-										menu.appendToGroup(EDIT_GROUP_ID, addRenameFieldAction);
+									if (null != addEditNodedAction) {
+										menu.appendToGroup(EDIT_GROUP_ID, addEditNodedAction);
+									}
+									
+								
+									// Append edit field item to menu
+									AbstractActionHandler addEditFieldAction = addEditFieldActions
+											.get(selectedEditorPart.getClass());
+									if (null != addEditFieldAction) {
+										menu.appendToGroup(EDIT_GROUP_ID, addEditFieldAction);
+									}
+									
+									// Append edit attribute item to menu
+									AbstractActionHandler addEditAttributeAction = addEditAttributeActions
+											.get(selectedEditorPart.getClass());
+									if (null != addEditAttributeAction) {
+										menu.appendToGroup(EDIT_GROUP_ID, addEditAttributeAction);
 									}
 
 									// Append Schema from dataset item to menu

@@ -23,7 +23,6 @@ import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
-import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Label;
@@ -33,7 +32,7 @@ import org.eclipse.swt.widgets.Text;
 public class AddNewListDialog extends Dialog {
 
 	private Text textRootName;
-	private Combo schemaTypeCombo;
+	private Text textSchemaType;
 	private Composite compositeRecordList;
 	
 	private String name;
@@ -42,7 +41,7 @@ public class AddNewListDialog extends Dialog {
 	//private String[] DATA_TYPES = { "ARRAY","STRING", "INT","BOOLEAN","BYTES","DOUBLE","ENUM","FIXED","FLOAT","INT","LONG","MAP","NULL","RECORD","UNION"};
 
 	//FIXME only ARRAY is allowed when adding the list
-	private String[] DATA_TYPES = { "ARRAY"};
+	private String DATA_TYPE = "ARRAY";
 	private static final String DIALOG_TITLE = "Add new Record List";
 	private static final String LABEL_NAME = "Name :";
 	private static final String LABEL_SCHEMATYPE = "Schema Data Type :";
@@ -98,15 +97,14 @@ public class AddNewListDialog extends Dialog {
 		new Label(compositeRecordList, SWT.NONE);
 		new Label(compositeRecordList, SWT.NONE);
 		
-		schemaTypeCombo = new Combo(compositeRecordList, SWT.DROP_DOWN | SWT.READ_ONLY);
-		schemaTypeCombo.addModifyListener(new ModifyListener() {
+		textSchemaType = new Text(compositeRecordList, SWT.READ_ONLY | SWT.BORDER);
+		textSchemaType.setText(DATA_TYPE);
+		textSchemaType.addModifyListener(new ModifyListener() {
 			public void modifyText(ModifyEvent arg0) {
 			}
 		});
 		
-		schemaTypeCombo.setItems(DATA_TYPES);
-		schemaTypeCombo.select(0);
-		schemaTypeCombo.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
+		textSchemaType.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
 		
 		return container;
 	}
@@ -133,7 +131,7 @@ public class AddNewListDialog extends Dialog {
 	@Override
 	protected void okPressed() {
 		setName(textRootName.getText());
-		setSchemaType(schemaTypeCombo.getText());
+		setSchemaType(textSchemaType.getText());
 		super.okPressed();
 	}
 	

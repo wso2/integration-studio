@@ -11,6 +11,7 @@ import org.eclipse.gef.palette.PaletteDrawer;
 import org.eclipse.gef.palette.PaletteGroup;
 import org.eclipse.gef.palette.PaletteRoot;
 import org.eclipse.gef.palette.ToolEntry;
+import org.eclipse.gmf.runtime.diagram.ui.internal.services.palette.PaletteToolEntry;
 import org.eclipse.gmf.runtime.diagram.ui.tools.UnspecifiedTypeConnectionTool;
 import org.eclipse.gmf.runtime.diagram.ui.tools.UnspecifiedTypeCreationTool;
 import org.eclipse.gmf.runtime.emf.type.core.IElementType;
@@ -179,9 +180,9 @@ public class DataMapperPaletteFactory {
 	}
 
 	/**
-	 * @generated
+	 * @generated NOT
 	 */
-	private static class NodeToolEntry extends ToolEntry {
+	private static class NodeToolEntry extends PaletteToolEntry {
 
 		/**
 		 * @generated
@@ -192,7 +193,8 @@ public class DataMapperPaletteFactory {
 		 * @generated
 		 */
 		private NodeToolEntry(String title, String description, List<IElementType> elementTypes) {
-			super(title, description, null, null);
+			super(null, title, null);
+			this.setDescription(description);
 			this.elementTypes = elementTypes;
 		}
 

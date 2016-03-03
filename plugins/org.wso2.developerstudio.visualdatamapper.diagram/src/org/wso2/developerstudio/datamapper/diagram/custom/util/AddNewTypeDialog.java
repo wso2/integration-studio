@@ -77,7 +77,11 @@ public class AddNewTypeDialog extends Dialog {
 		setShellStyle(SWT.CLOSE | SWT.TITLE | SWT.BORDER | SWT.OK | SWT.APPLICATION_MODAL);
 	}
 	
-	public void setTtile(String title){
+	/**
+	 * Sets the title
+	 * @param title
+	 */
+	public void setTitle(String title){
 		getShell().setText(title);
 		//Sets the default value based on the Title
 		if(title.equals(DIALOG_TITLE_ROOT)){
@@ -87,6 +91,14 @@ public class AddNewTypeDialog extends Dialog {
 		}
 	}
 	
+	/**
+	 * Sets values to be used in edit dialog
+	 * @param name
+	 * @param namespace
+	 * @param schemaType
+	 * @param doc
+	 * @param aliases
+	 */
 	public void setValues(String name, String namespace, String schemaType, String doc, String aliases){
 		if(StringUtils.isNotEmpty(name)){
 			textName.setText(name);
@@ -278,6 +290,7 @@ public class AddNewTypeDialog extends Dialog {
 	public Set<String> getAliases() {
 		return aliases;
 	}
+	
 }
 
 

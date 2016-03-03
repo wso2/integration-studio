@@ -16,8 +16,6 @@
 package org.wso2.developerstudio.datamapper.diagram.custom.util;
 
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.HashSet;
 import java.util.Set;
 
 import org.apache.commons.lang.StringUtils;
@@ -43,12 +41,12 @@ import org.eclipse.swt.widgets.Text;
 
 public class AddNewFieldDialog extends Dialog {
 
-	private Text textRootName;
+	private Text textName;
 	private Combo schemaTypeCombo;
-	private Text textDoc;
-	private Text textAliases;
+	private Text textNamespace;;
+	//private Text textAliases;
 	private Text textDefault;
-	private Combo orderCombo;
+	//private Combo orderCombo;
 	private Composite compositeField;
 
 	private String name;
@@ -58,19 +56,21 @@ public class AddNewFieldDialog extends Dialog {
 	private JsonNode defaultValue;
 	private String schemaType;
 
-	private String[] DATA_TYPES = { "STRING", "INT", "ARRAY", "BOOLEAN", "BYTES", "DOUBLE", "ENUM", "FIXED", "FLOAT",
-			"INT", "LONG", "MAP", "NULL", "RECORD", "UNION" };
+	private String[] DATA_TYPES = { "STRING", "INT", "ARRAY", "BOOLEAN", "BYTES", "DOUBLE", "ENUM", "FIXED", "FLOAT", "LONG", "MAP","RECORD", "UNION","NULL" };
 	private String[] ORDER_TYPES = { "ASCENDING", "DESCENDING", "IGNORE" };
 	
-	private static final String DIALOG_TITLE = "Add new Attribute";
+	private static final String DIALOG_TITLE_FIELD = "Add new Field";
+	private static final String DIALOG_TITLE_ATTRIBUTE = "Add new Attribute";
 	private static final String LABEL_NAME = "Name :";
 	private static final String LABEL_SCHEMATYPE = "Schema Data Type :";
-	private static final String LABEL_DOC = "Doc :";
+	private static final String LABEL_NAMESPACE = "Namespace :";
 	private static final String LABEL_ALIASES = "Aliases :";
-	private static final String LABEL_DEFAULT = "Default :";
+	private static final String LABEL_DEFAULT = "Default (Optional) :";
 	private static final String LABEL_ORDER = "Order :";
-	private static final String NEW_ROOT_RECORD_ID = "NewAttribute";
+	private static final String NEW_FIELD_ID = "NewField";
+	private static final String NEW_ATTRIBUTE_ID = "attr_NewAttribute";
 	private static final String DEFAULT = "default";
+
 
 	/**
 	 * Create the dialog.
@@ -83,6 +83,86 @@ public class AddNewFieldDialog extends Dialog {
 	}
 
 	/**
+	 * Sets the title
+	 * @param title
+	 */
+	public void setTitle(String title){
+		getShell().setText(title);
+		//Sets the default value based on the Title
+		if(title.equals(DIALOG_TITLE_FIELD)){
+			textName.setText(NEW_FIELD_ID);
+		}else if(title.equals(DIALOG_TITLE_ATTRIBUTE)){
+			textName.setText(NEW_ATTRIBUTE_ID);
+		}
+	}
+
+	/**
+	 * Sets values to be used in edit dialog
+	 * @param name
+	 * @param namespace
+	 * @param schemaType
+	 * @param doc
+	 */
+	public void setValues(String name, String schemaType, String namesapce, String defaultValue){
+		if(StringUtils.isNotEmpty(name)){
+			textName.setText(name);
+		}if(StringUtils.isNotEmpty(schemaType)){
+			switch (schemaType) {
+			case "STRING":
+				schemaTypeCombo.select(0);
+				break;
+			case "INT":
+				schemaTypeCombo.select(1);
+				break;
+			case "ARRAY":
+				schemaTypeCombo.select(2);
+				break;
+			case "BOOLEAN":
+				schemaTypeCombo.select(3);
+				break;
+			case "BYTES":
+				schemaTypeCombo.select(4);
+				break;
+			case "DOUBLE":
+				schemaTypeCombo.select(5);
+				break;
+			case "ENUM":
+				schemaTypeCombo.select(6);
+				break;
+			case "FIXED":
+				schemaTypeCombo.select(7);
+				break;
+			case "FLOAT":
+				schemaTypeCombo.select(8);
+				break;
+			case "LONG":
+				schemaTypeCombo.select(9);
+				break;
+			case "MAP":
+				schemaTypeCombo.select(10);
+				break;
+			case "RECORD":
+				schemaTypeCombo.select(11);
+				break;
+			case "UNION":
+				schemaTypeCombo.select(12);
+				break;
+			case "NULL":
+				schemaTypeCombo.select(13);
+				break;
+			default:
+				break;
+
+			}
+		}if(StringUtils.isNotEmpty(namesapce)){
+			textNamespace.setText(namesapce);
+		}if(StringUtils.isNotEmpty(defaultValue)){
+			textDefault.setText(defaultValue);
+		}
+
+	}
+	
+	/**
 	 * Create contents of the dialog.
 	 * 
 	 * @param parent
@@ -90,8 +170,6 @@ public class AddNewFieldDialog extends Dialog {
 	@Override
 	protected Control createDialogArea(Composite parent) {
 		Composite container = (Composite) super.createDialogArea(parent);
-
-		getShell().setText(DIALOG_TITLE);
 
 		compositeField = new Composite(container, SWT.NONE);
 		GridData gd_composite_2 = new GridData(SWT.LEFT, SWT.CENTER, false, false, 1, 1);
@@ -105,15 +183,15 @@ public class AddNewFieldDialog extends Dialog {
 		new Label(compositeField, SWT.NONE);
 		new Label(compositeField, SWT.NONE);
 
-		textRootName = new Text(compositeField, SWT.BORDER);
-		textRootName.setText(NEW_ROOT_RECORD_ID);
+		textName = new Text(compositeField, SWT.BORDER);
+		textName.setText(NEW_FIELD_ID);
 
-		textRootName.addModifyListener(new ModifyListener() {
+		textName.addModifyListener(new ModifyListener() {
 			public void modifyText(ModifyEvent arg0) {
 
 			}
 		});
-		textRootName.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
+		textName.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
 
 		Label lblSchemaTypeLabel = new Label(compositeField, SWT.NONE);
 		lblSchemaTypeLabel.setText(LABEL_SCHEMATYPE);
@@ -132,22 +210,22 @@ public class AddNewFieldDialog extends Dialog {
 		schemaTypeCombo.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
 
 		Label lbldocLabel = new Label(compositeField, SWT.NONE);
-		lbldocLabel.setText(LABEL_DOC);
+		lbldocLabel.setText(LABEL_NAMESPACE);
 		new Label(compositeField, SWT.NONE);
 		new Label(compositeField, SWT.NONE);
 		new Label(compositeField, SWT.NONE);
 
-		textDoc = new Text(compositeField, SWT.BORDER);
-		textDoc.setText("");
+		textNamespace = new Text(compositeField, SWT.BORDER);
+		textNamespace.setText("");
 
-		textDoc.addModifyListener(new ModifyListener() {
+		textNamespace.addModifyListener(new ModifyListener() {
 			public void modifyText(ModifyEvent arg0) {
 			}
 		});
 
-		textDoc.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
+		textNamespace.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
 
-		Label lblAliasesLabel = new Label(compositeField, SWT.NONE);
+		/*Label lblAliasesLabel = new Label(compositeField, SWT.NONE);
 		lblAliasesLabel.setText(LABEL_ALIASES);
 		new Label(compositeField, SWT.NONE);
 		new Label(compositeField, SWT.NONE);
@@ -161,7 +239,7 @@ public class AddNewFieldDialog extends Dialog {
 			}
 		});
 
-		textAliases.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
+		textAliases.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));*/
 
 		Label lbldefaultLabel = new Label(compositeField, SWT.NONE);
 		lbldefaultLabel.setText(LABEL_DEFAULT);
@@ -179,7 +257,7 @@ public class AddNewFieldDialog extends Dialog {
 
 		textDefault.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
 		
-		Label lblOrderLabel = new Label(compositeField, SWT.NONE);
+		/*Label lblOrderLabel = new Label(compositeField, SWT.NONE);
 		lblOrderLabel.setText(LABEL_ORDER);
 		new Label(compositeField, SWT.NONE);
 		new Label(compositeField, SWT.NONE);
@@ -193,7 +271,7 @@ public class AddNewFieldDialog extends Dialog {
 
 		orderCombo.setItems(ORDER_TYPES);
 		orderCombo.select(0);
-		orderCombo.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
+		orderCombo.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));*/
 
 		return container;
 	}
@@ -214,14 +292,14 @@ public class AddNewFieldDialog extends Dialog {
 	 */
 	@Override
 	protected Point getInitialSize() {
-		return new Point(620, 300);
+		return new Point(620, 250);
 	}
 
 	@Override
-	protected void okPressed() {
-		setName(textRootName.getText());
+	public void okPressed() {
+		setName(textName.getText());
 		setSchemaType(schemaTypeCombo.getText());
-		setDoc(textDoc.getText());
+		setDoc(textNamespace.getText());
 		JsonNode defValue;
 		try {
 			defValue = getDefaultValue(textDefault.getText());
@@ -232,13 +310,14 @@ public class AddNewFieldDialog extends Dialog {
 		MessageDialog.openError(getShell(), "Error", "Invalid value for type " + schemaTypeCombo.getText());
 		return;
 		}
-		setOrder(orderCombo.getText());
-		Set<String> aliasesSet = getAliasesSet();
-		setAliases(aliasesSet);
+		//setOrder(orderCombo.getText());
+		//Set<String> aliasesSet = getAliasesSet();
+		//setAliases(aliasesSet);
 		super.okPressed();
 	}
 
 	/**
+	 * @param string 
 	 * @throws JSONException 
 	 * Use to get the default value
 	 * @param defaultValue 
@@ -255,6 +334,7 @@ public class AddNewFieldDialog extends Dialog {
 	/**
 	 * Gets the Json Object based on the data type
 	 * @param defaultValue
+	 * @param schemaType2 
 	 * @param jsonObj
 	 * @param mapper 
 	 * @throws JSONException
@@ -315,7 +395,7 @@ public class AddNewFieldDialog extends Dialog {
 	 * 
 	 * @return
 	 */
-	private Set<String> getAliasesSet() {
+	/*private Set<String> getAliasesSet() {
 		Set<String> aliasesSet = null;
 		String aliases = textAliases.getText();
 		if(StringUtils.isNotEmpty(aliases)){
@@ -325,7 +405,7 @@ public class AddNewFieldDialog extends Dialog {
 		
 		return aliasesSet;
 	}
-
+*/
 	public void setName(String name) {
 		this.name = name;
 	}

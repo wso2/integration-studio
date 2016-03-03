@@ -64,15 +64,7 @@ public abstract class AbstractOperatorEditPart extends ShapeNodeEditPart{
 				new CreationEditPolicyWithCustomReparent(
 						org.wso2.developerstudio.datamapper.diagram.part.DataMapperVisualIDRegistry.TYPED_INSTANCE));
 		super.createDefaultEditPolicies();
-		installEditPolicy(
-				EditPolicyRoles.SEMANTIC_ROLE,
-				new org.wso2.developerstudio.datamapper.diagram.edit.policies.OutputItemSemanticEditPolicy());
 		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE, new DragDropEditPolicy());
-		installEditPolicy(
-				EditPolicyRoles.CANONICAL_ROLE,
-				new org.wso2.developerstudio.datamapper.diagram.edit.policies.OutputCanonicalEditPolicy());
-		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
-
 		removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.POPUPBAR_ROLE);
 		installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE, new CustomNonResizableEditPolicyEx());
 	}
@@ -109,7 +101,6 @@ public abstract class AbstractOperatorEditPart extends ShapeNodeEditPart{
 				FigureCanvas canvas = (FigureCanvas) getViewer().getControl();
 				canvas.getViewport().repaint();
 			}
-			
 		}
 		
 	}

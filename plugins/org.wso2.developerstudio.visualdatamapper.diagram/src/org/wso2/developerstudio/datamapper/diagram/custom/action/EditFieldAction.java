@@ -76,29 +76,33 @@ public class EditFieldAction extends AbstractActionHandler {
 			}
 
 			HashMap<String, String> map = openEditFieldDialog(name, schemaType, namespace, value);
-			executeCommand(selectedElem, DataMapperPackage.Literals.ELEMENT__NAME, map.get(NAME));
-			executeCommand(selectedElem, DataMapperPackage.Literals.ELEMENT__DOC, map.get(DOC));
-			executeCommand(selectedElem, DataMapperPackage.Literals.ELEMENT__DEFAULT, map.get(DEFAULT_VALUE));
+			if (map.get(NAME) != null && map.get(DOC) != null && map.get(SCHEMATYPE) != null
+					&& map.get(DEFAULT_VALUE) != null) {
+				executeCommand(selectedElem, DataMapperPackage.Literals.ELEMENT__NAME, map.get(NAME));
+				executeCommand(selectedElem, DataMapperPackage.Literals.ELEMENT__DOC, map.get(DOC));
+				executeCommand(selectedElem, DataMapperPackage.Literals.ELEMENT__DEFAULT, map.get(DEFAULT_VALUE));
 
-			SchemaDataType schmaType = getSchemaType(map.get(SCHEMATYPE));
-			/**
-			 * Serialize the schema type
-			 */
-			SetCommand renameComd = new SetCommand(((GraphicalEditPart) selectedEP).getEditingDomain(), selectedElem,
-					DataMapperPackage.Literals.ELEMENT__SCHEMA_DATA_TYPE, schmaType);
-			if (renameComd.canExecute()) {
-				((GraphicalEditPart) selectedEP).getEditingDomain().getCommandStack().execute(renameComd);
-			}
+				SchemaDataType schmaType = getSchemaType(map.get(SCHEMATYPE));
+				/**
+				 * Serialize the schema type
+				 */
+				SetCommand renameComd = new SetCommand(((GraphicalEditPart) selectedEP).getEditingDomain(),
+						selectedElem, DataMapperPackage.Literals.ELEMENT__SCHEMA_DATA_TYPE, schmaType);
+				if (renameComd.canExecute()) {
+					((GraphicalEditPart) selectedEP).getEditingDomain().getCommandStack().execute(renameComd);
+				}
 
-			// Sets the name with prefix in the tree view
-			if (getSelectedEditPart() instanceof ElementEditPart) {
-				((ElementEditPart) getSelectedEditPart()).renameElementItem(map.get(NAME));
+				// Sets the name with prefix in the tree view
+				if (getSelectedEditPart() instanceof ElementEditPart) {
+					((ElementEditPart) getSelectedEditPart()).renameElementItem(map.get(NAME));
+				}
 			}
 		}
 	}
 
 	/**
 	 * Gets the schema type
+	 * 
 	 * @param schema
 	 * @return
 	 */

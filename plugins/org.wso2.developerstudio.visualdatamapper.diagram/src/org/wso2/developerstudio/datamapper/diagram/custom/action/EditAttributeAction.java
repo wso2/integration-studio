@@ -26,18 +26,18 @@ import org.wso2.developerstudio.datamapper.diagram.edit.parts.InputEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.OutputEditPart;
 import org.wso2.developerstudio.eclipse.registry.core.interfaces.IRegistryFile;
 
-public class EditAttributeAction extends AbstractActionHandler{
+public class EditAttributeAction extends AbstractActionHandler {
 	private EditPart selectedEP;
 	private static final String OUTPUT_EDITPART = "Output"; //$NON-NLS-1$
 	private static final String INPUT_EDITPART = "Input"; //$NON-NLS-1$
 	private static final String RENAME_ACTION_ID = "rename-field-action-id"; //$NON-NLS-1$
 	private static final String RENAME_FIELD = Messages.EditActions_editAttribute;
-	
+
 	private String name;
 	private String schemaType;
 	private String defaultValue;
 	private String namespace;
-	
+
 	private static final String NAME = "name";
 	private static final String DOC = "doc";
 	private static final String DEFAULT_VALUE = "defaultValue";
@@ -56,7 +56,7 @@ public class EditAttributeAction extends AbstractActionHandler{
 
 	@Override
 	protected void doRun(IProgressMonitor progressMonitor) {
-		
+
 		selectedEP = getSelectedEditPart();
 
 		if (null != selectedEP) {
@@ -64,40 +64,43 @@ public class EditAttributeAction extends AbstractActionHandler{
 			EObject object = ((Node) selectedEP.getModel()).getElement();
 			// Used to identify the selected resource of the model
 			Element selectedElem = (Element) object;
-			
+
 			String value = null;
 			name = selectedElem.getName();
 			schemaType = selectedElem.getSchemaDataType().toString();
 			namespace = selectedElem.getDoc();
 			defaultValue = selectedElem.getDefault();
-			if(StringUtils.isNotEmpty(defaultValue)){
+			if (StringUtils.isNotEmpty(defaultValue)) {
 				value = defaultValue.replace("\"", "");
 			}
-			
-			HashMap<String, String> map = openEditFieldDialog(name,schemaType,namespace,value);
-			executeCommand(selectedElem, DataMapperPackage.Literals.ELEMENT__NAME, map.get(NAME));
-			executeCommand(selectedElem, DataMapperPackage.Literals.ELEMENT__SCHEMA_DATA_TYPE, map.get(SCHEMATYPE));
-			executeCommand(selectedElem, DataMapperPackage.Literals.ELEMENT__DOC, map.get(DOC));
-			
-			SchemaDataType schmaType = getSchemaType(map.get(SCHEMATYPE));
-			/**
-			 * Serialize the schema type
-			 */
-			SetCommand renameComd = new SetCommand(((GraphicalEditPart) selectedEP).getEditingDomain(), selectedElem,
-					DataMapperPackage.Literals.ELEMENT__SCHEMA_DATA_TYPE, schmaType);
-			if (renameComd.canExecute()) {
-				((GraphicalEditPart) selectedEP).getEditingDomain().getCommandStack().execute(renameComd);
-			}
-			
-			//Sets the name with prefix in the tree view
-			if(getSelectedEditPart() instanceof ElementEditPart){
-				((ElementEditPart) getSelectedEditPart()).renameElementItem(map.get(NAME));
-			}
+
+			HashMap<String, String> map = openEditFieldDialog(name, schemaType, namespace, value);
+			if (map.get(NAME) != null && map.get(DOC) != null && map.get(SCHEMATYPE) != null && map.get(DEFAULT_VALUE) != null) {
+				executeCommand(selectedElem, DataMapperPackage.Literals.ELEMENT__NAME, map.get(NAME));
+				executeCommand(selectedElem, DataMapperPackage.Literals.ELEMENT__DOC, map.get(DOC));
+				executeCommand(selectedElem, DataMapperPackage.Literals.ELEMENT__DEFAULT, map.get(DEFAULT_VALUE));
+
+				SchemaDataType schmaType = getSchemaType(map.get(SCHEMATYPE));
+				/**
+				 * Serialize the schema type
+				 */
+				SetCommand renameComd = new SetCommand(((GraphicalEditPart) selectedEP).getEditingDomain(),
+						selectedElem, DataMapperPackage.Literals.ELEMENT__SCHEMA_DATA_TYPE, schmaType);
+				if (renameComd.canExecute()) {
+					((GraphicalEditPart) selectedEP).getEditingDomain().getCommandStack().execute(renameComd);
+				}
+
+				// Sets the name with prefix in the tree view
+				if (getSelectedEditPart() instanceof ElementEditPart) {
+					((ElementEditPart) getSelectedEditPart()).renameElementItem(map.get(NAME));
+				}
 			}
 		}
-	
+	}
+
 	/**
 	 * Gets the schema type
+	 * 
 	 * @param schema
 	 * @return
 	 */
@@ -159,62 +162,70 @@ public class EditAttributeAction extends AbstractActionHandler{
 
 	/**
 	 * Save edited values into the model
+	 * 
 	 * @param selectedElem
 	 * @param feature
 	 * @param value
 	 */
-	private void executeCommand(Element selectedElem,EStructuralFeature feature,String value) {
-		if(StringUtils.isNotEmpty(value)){
-		SetCommand renameComd = new SetCommand(((GraphicalEditPart) selectedEP).getEditingDomain(), selectedElem, feature, value);
-		if (renameComd.canExecute()) {
-			((GraphicalEditPart) selectedEP).getEditingDomain().getCommandStack().execute(renameComd);
+	private void executeCommand(Element selectedElem, EStructuralFeature feature, String value) {
+		if (StringUtils.isNotEmpty(value)) {
+			SetCommand renameComd = new SetCommand(((GraphicalEditPart) selectedEP).getEditingDomain(), selectedElem,
+					feature, value);
+			if (renameComd.canExecute()) {
+				((GraphicalEditPart) selectedEP).getEditingDomain().getCommandStack().execute(renameComd);
+			}
 		}
-		}
-		
+
 	}
-	
-	
+
 	/**
 	 * Opens the dialog
-	 * @param editFieldDialog 
-	 * @param name name
-	 * @param prefix prefix
-	 * @param schemaType schemaType
-	 * @param namespace namespace
-	 * @param aliases aliases
+	 * 
+	 * @param editFieldDialog
+	 * @param name
+	 *            name
+	 * @param prefix
+	 *            prefix
+	 * @param schemaType
+	 *            schemaType
+	 * @param namespace
+	 *            namespace
+	 * @param aliases
+	 *            aliases
 	 * @return map
 	 */
-	private HashMap<String, String> openEditFieldDialog(String name,String schemaType, String namespace, String defaultValue) {
-		
+	private HashMap<String, String> openEditFieldDialog(String name, String schemaType, String namespace,
+			String defaultValue) {
+
 		Display display = Display.getDefault();
 		Shell shell = new Shell(display);
 		AddNewFieldDialog editFieldDialog = new AddNewFieldDialog(shell, new Class[] { IRegistryFile.class });
-		
+
 		editFieldDialog.create();
 		editFieldDialog.setValues(name, schemaType, namespace, defaultValue);
 		editFieldDialog.open();
-	
-			HashMap<String, String> valueMap = new HashMap<String, String>();
-			
-			if(StringUtils.isNotEmpty(editFieldDialog.getName())){
-				    if(editFieldDialog.getName().startsWith(PREFIX)){
-				    	valueMap.put(NAME, editFieldDialog.getName());
-				    }else{
-				    	valueMap.put(NAME, PREFIX+editFieldDialog.getName());
-				    }
-					
-			}
-			valueMap.put(SCHEMATYPE, editFieldDialog.getSchemaType());
-			if(StringUtils.isNotEmpty(editFieldDialog.getDoc())){
-			valueMap.put(DOC, editFieldDialog.getDoc());
-			}
-			if(editFieldDialog.getDefault() != null){
-				valueMap.put(DEFAULT_VALUE, editFieldDialog.getDefault().toString().replace("\"", ""));
+
+		HashMap<String, String> valueMap = new HashMap<String, String>();
+
+		if (StringUtils.isNotEmpty(editFieldDialog.getName())) {
+			if (editFieldDialog.getName().startsWith(PREFIX)) {
+				valueMap.put(NAME, editFieldDialog.getName());
+			} else {
+				valueMap.put(NAME, PREFIX + editFieldDialog.getName());
 			}
 
-			return valueMap;
-			
 		}
+		valueMap.put(SCHEMATYPE, editFieldDialog.getSchemaType());
+		if (StringUtils.isNotEmpty(editFieldDialog.getDoc())) {
+			valueMap.put(DOC, editFieldDialog.getDoc());
+		}
+		if (editFieldDialog.getDefault() != null) {
+			valueMap.put(DEFAULT_VALUE, editFieldDialog.getDefault().toString().replace("\"", ""));
+		}
+
+		return valueMap;
+
+	}
 
 	private String getSelectedInputOutputEditPart() {
 		EditPart tempEP = selectedEP;

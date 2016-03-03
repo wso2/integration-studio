@@ -46,26 +46,25 @@ import org.wso2.developerstudio.datamapper.diagram.edit.parts.TreeNode3EditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.TreeNodeEditPart;
 import org.wso2.developerstudio.eclipse.registry.core.interfaces.IRegistryFile;
 
-public class EditRecordAction extends AbstractActionHandler{
-	
+public class EditRecordAction extends AbstractActionHandler {
+
 	private EditPart selectedEP;
 	private static final String OUTPUT_EDITPART = "Output"; //$NON-NLS-1$
 	private static final String INPUT_EDITPART = "Input"; //$NON-NLS-1$
 	private static final String RENAME_ACTION_ID = "rename-node-action-id"; //$NON-NLS-1$
 	private static final String RENAME_FIELD = Messages.EditActions_editNode;
-	
+
 	private static final String NAME = "name";
 	private static final String PREFIX = "prefix";
 	private static final String DOC = "doc";
 	private static final String ALAISES = "aliased";
 	private static final String SCHEMATYPE = "schemaType";
-	
+
 	private String name;
 	private String schemaType;
 	private String aliases;
 	private String prefix;
 	private String namespace;
-	
 
 	public EditRecordAction(IWorkbenchPart workbenchPart) {
 		super(workbenchPart);
@@ -86,121 +85,143 @@ public class EditRecordAction extends AbstractActionHandler{
 			EObject object = ((Node) selectedEP.getModel()).getElement();
 			// Used to identify the selected resource of the model
 			TreeNode selectedNode = (TreeNode) object;
-			
+
 			name = selectedNode.getName();
 			schemaType = selectedNode.getSchemaDataType().toString();
-			if(selectedNode.getAliases().isEmpty()){
-				aliases = null; 
-			}else{
+			if (selectedNode.getAliases().isEmpty()) {
+				aliases = null;
+			} else {
 				aliases = selectedNode.getAliases().toString().replace("[", "").replace("]", "");
 			}
 			prefix = selectedNode.getNamespace();
 			namespace = selectedNode.getDoc();
-			HashMap<String, String> map = openEditRecordDialog(name,prefix,schemaType,namespace, aliases);
-			
-			Set<String> aliasesMap = getAliasesValue(map);
-			
-			//Serialize the values
-			executeCommand(selectedNode,DataMapperPackage.Literals.TREE_NODE__NAME, map.get(NAME));
-			executeCommand(selectedNode,DataMapperPackage.Literals.TREE_NODE__NAMESPACE, map.get(PREFIX));
-			executeCommand(selectedNode,DataMapperPackage.Literals.TREE_NODE__SCHEMA_DATA_TYPE,map.get(SCHEMATYPE));
-			executeCommand(selectedNode,DataMapperPackage.Literals.TREE_NODE__DOC, map.get(DOC));
-			
-			//Serialize the aliases
-		    SetCommand renameComd = new SetCommand(((GraphicalEditPart) selectedEP).getEditingDomain(), selectedNode, DataMapperPackage.Literals.TREE_NODE__ALIASES,aliasesMap);
-			if (renameComd.canExecute()) {
-				((GraphicalEditPart) selectedEP).getEditingDomain().getCommandStack().execute(renameComd);
-					
-			}
+			HashMap<String, String> map = openEditRecordDialog(name, prefix, schemaType, namespace, aliases);
 
-			//Sets the name with prefix in the tree view
-			if(getSelectedEditPart() instanceof TreeNode2EditPart){
-				((TreeNode2EditPart) getSelectedEditPart()).renameElementItem(map.get(PREFIX)+":"+map.get(NAME));
-			}else if(getSelectedEditPart() instanceof TreeNode2EditPart){
-				((TreeNode2EditPart) getSelectedEditPart()).renameElementItem(map.get(PREFIX)+":"+map.get(NAME));
-			}else if(getSelectedEditPart() instanceof TreeNode3EditPart){
-				((TreeNode3EditPart) getSelectedEditPart()).renameElementItem(map.get(PREFIX)+":"+map.get(NAME));
+			Set<String> aliasesMap = getAliasesValue(map);
+
+			if (map.get(NAME) != null && map.get(DOC) != null && map.get(SCHEMATYPE) != null && map.get(PREFIX) != null && map.get(ALAISES) != null) {
+				// Serialize the values
+				executeCommand(selectedNode, DataMapperPackage.Literals.TREE_NODE__NAME, map.get(NAME));
+				executeCommand(selectedNode, DataMapperPackage.Literals.TREE_NODE__NAMESPACE, map.get(PREFIX));
+				executeCommand(selectedNode, DataMapperPackage.Literals.TREE_NODE__SCHEMA_DATA_TYPE,
+						map.get(SCHEMATYPE));
+				executeCommand(selectedNode, DataMapperPackage.Literals.TREE_NODE__DOC, map.get(DOC));
+
+				// Serialize the aliases
+				SetCommand renameComd = new SetCommand(((GraphicalEditPart) selectedEP).getEditingDomain(),
+						selectedNode, DataMapperPackage.Literals.TREE_NODE__ALIASES, aliasesMap);
+				if (renameComd.canExecute()) {
+					((GraphicalEditPart) selectedEP).getEditingDomain().getCommandStack().execute(renameComd);
+
+				}
+
+				// Sets the name with prefix in the tree view
+				if (getSelectedEditPart() instanceof TreeNode2EditPart) {
+					((TreeNode2EditPart) getSelectedEditPart())
+							.renameElementItem(map.get(PREFIX) + ":" + map.get(NAME));
+				} else if (getSelectedEditPart() instanceof TreeNode2EditPart) {
+					((TreeNode2EditPart) getSelectedEditPart())
+							.renameElementItem(map.get(PREFIX) + ":" + map.get(NAME));
+				} else if (getSelectedEditPart() instanceof TreeNode3EditPart) {
+					((TreeNode3EditPart) getSelectedEditPart())
+							.renameElementItem(map.get(PREFIX) + ":" + map.get(NAME));
+				}
 			}
 		}
 	}
 
 	/**
-	 * Gets the aliases values as a Set 
-	 * @param map value map
+	 * Gets the aliases values as a Set
+	 * 
+	 * @param map
+	 *            value map
 	 * @return Set
 	 */
 	private Set<String> getAliasesValue(HashMap<String, String> map) {
-		String values = map.get(ALAISES);
-		Set<String> aliasesMap  = new HashSet<String>(Arrays.asList(values.split("\\s*,\\s*")));
+		Set<String> aliasesMap = null;
+		if (map.get(ALAISES) != null) {
+			String values = map.get(ALAISES);
+			aliasesMap = new HashSet<String>(Arrays.asList(values.split("\\s*,\\s*")));
+		}
 		return aliasesMap;
 	}
 
 	/**
 	 * Save edited values into the model
-	 * @param selectedNode node
-	 * @param String value
+	 * 
+	 * @param selectedNode
+	 *            node
+	 * @param String
+	 *            value
 	 */
 	private void executeCommand(TreeNode selectedNode, EStructuralFeature feature, String value) {
 		if (StringUtils.isNotEmpty(value)) {
-			SetCommand editComd = new SetCommand(((GraphicalEditPart) selectedEP).getEditingDomain(), selectedNode, feature,value);
+			SetCommand editComd = new SetCommand(((GraphicalEditPart) selectedEP).getEditingDomain(), selectedNode,
+					feature, value);
 			if (editComd.canExecute()) {
-				((GraphicalEditPart) selectedEP).getEditingDomain().getCommandStack().execute(editComd);		
+				((GraphicalEditPart) selectedEP).getEditingDomain().getCommandStack().execute(editComd);
 			}
 		}
 	}
-	
 
 	/**
 	 * Opens the dialog
-	 * @param name name
-	 * @param prefix prefix
-	 * @param schemaType schemaType
-	 * @param namespace namespace
-	 * @param aliases aliases
+	 * 
+	 * @param name
+	 *            name
+	 * @param prefix
+	 *            prefix
+	 * @param schemaType
+	 *            schemaType
+	 * @param namespace
+	 *            namespace
+	 * @param aliases
+	 *            aliases
 	 * @return map
 	 */
-	private HashMap<String, String> openEditRecordDialog(String name, String prefix, String schemaType, String namespace, String aliases) {
+	private HashMap<String, String> openEditRecordDialog(String name, String prefix, String schemaType,
+			String namespace, String aliases) {
 		String newName = null;
 		String newPrefix = null;
 		Display display = Display.getDefault();
 		Shell shell = new Shell(display);
 		AddNewTypeDialog editTypeDialog = new AddNewTypeDialog(shell, new Class[] { IRegistryFile.class });
 		editTypeDialog.create();
-		if(StringUtils.isNotEmpty(name)){
-			if(name.contains(":")){
+		if (StringUtils.isNotEmpty(name)) {
+			if (name.contains(":")) {
 				String[] fullName = name.split(":");
 				newName = fullName[1];
 				newPrefix = fullName[0];
-			}else{
+			} else {
 				newName = name;
 				newPrefix = prefix;
 			}
 		}
-		
+
 		editTypeDialog.setValues(newName, newPrefix, schemaType, namespace, aliases);
 		editTypeDialog.open();
-		
+
 		HashMap<String, String> valueMap = new HashMap<String, String>();
-	
-		if(StringUtils.isNotEmpty(editTypeDialog.getName())){
-			if(editTypeDialog.getName().contains(":")){
+
+		if (StringUtils.isNotEmpty(editTypeDialog.getName())) {
+			if (editTypeDialog.getName().contains(":")) {
 				String[] fullName = editTypeDialog.getName().split(":");
 				valueMap.put(NAME, fullName[1]);
 				valueMap.put(PREFIX, fullName[0]);
-			}else{
+			} else {
 				valueMap.put(NAME, editTypeDialog.getName());
 				valueMap.put(PREFIX, null);
 			}
 		}
 		valueMap.put(SCHEMATYPE, editTypeDialog.getSchemaType());
-		if(StringUtils.isNotEmpty(editTypeDialog.getDoc())){
-		valueMap.put(DOC, editTypeDialog.getDoc());
+		if (StringUtils.isNotEmpty(editTypeDialog.getDoc())) {
+			valueMap.put(DOC, editTypeDialog.getDoc());
 		}
-		if(editTypeDialog.getAliases() != null){
+		if (editTypeDialog.getAliases() != null) {
 			valueMap.put(ALAISES, editTypeDialog.getAliases().toString().replace("[", "").replace("]", ""));
 		}
 		return valueMap;
-		
+
 	}
 
 	private String getSelectedInputOutputEditPart() {
@@ -237,4 +258,3 @@ public class EditRecordAction extends AbstractActionHandler{
 	}
 
 }
-

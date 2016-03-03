@@ -261,15 +261,6 @@ public class OutNode3EditPart extends AbstractBorderItemEditPart {
 		 */
 		private void createContents() {
 
-			/*
-			 * ImageDescriptor mainImgDesc = new ImageDescriptor() {
-			 * 
-			 * @Override public ImageData getImageData() { ImageData idata =
-			 * null; try { idata = new ImageData( new FileInputStream(
-			 * "/home/lali/workspaceWork/org.wso2.developerstudio.datamapper.diagram/icons/gmf/black.jpg"
-			 * )); } catch (FileNotFoundException e) { e.printStackTrace(); }
-			 * return idata; } };
-			 */
 
 			ImageDescriptor mainImgDesc = AbstractUIPlugin.imageDescriptorFromPlugin(
 					"org.wso2.developerstudio.visualdatamapper.diagram", "icons/gmf/black.jpg");

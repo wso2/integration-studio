@@ -24,8 +24,8 @@ import org.wso2.developerstudio.datamapper.diagram.custom.model.DMVariableType;
 import org.wso2.developerstudio.datamapper.diagram.custom.model.DataMapperDiagramModel;
 
 /**
- * This abstract class implements the common of functions and logic to generate JS mapping
- * configuration from {@link DataMapperDiagramModel}
+ * This abstract class implements the common of functions and logic to generate
+ * JS mapping configuration from {@link DataMapperDiagramModel}
  *
  */
 public abstract class AbstractMappingConfigGenerator implements MappingConfigGenerator {
@@ -37,7 +37,9 @@ public abstract class AbstractMappingConfigGenerator implements MappingConfigGen
             List<DMVariable> inputVariables = getVariablesFromModel(model, operationIndex, DMVariableType.INPUT);
             List<DMVariable> outputVariables = getVariablesFromModel(model, operationIndex, DMVariableType.OUTPUT);;
             DMOperation operation = model.getOperationsList().get(operationIndex);
-            mappingOperationList.add(new MappingOperation(inputVariables, outputVariables, operation));
+            if (!outputVariables.isEmpty()) {
+                mappingOperationList.add(new MappingOperation(inputVariables, outputVariables, operation));
+            }
         }
         return mappingOperationList;
     }

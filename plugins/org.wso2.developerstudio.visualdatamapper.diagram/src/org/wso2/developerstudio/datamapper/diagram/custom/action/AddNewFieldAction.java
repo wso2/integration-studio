@@ -52,6 +52,7 @@ public class AddNewFieldAction extends AbstractActionHandler {
 	private static final String INPUT_EDITPART = "Input"; //$NON-NLS-1$
 	private static final String ADD_NEW_FIELD_ACTION_ID = "add-new-field-action-id"; //$NON-NLS-1$
 	private static final String ADD_NEW_FIELD = Messages.AddNewFieldAction_addNewField;
+	private static final String DIALOG_TITLE = "Add new Field";
 
 	public AddNewFieldAction(IWorkbenchPart workbenchPart) {
 		super(workbenchPart);
@@ -70,6 +71,7 @@ public class AddNewFieldAction extends AbstractActionHandler {
 		AddNewFieldDialog fieldDialog = new AddNewFieldDialog(Display.getCurrent().getActiveShell(),
 				new Class[] { IRegistryFile.class });
 		fieldDialog.create();
+		fieldDialog.setTitle(DIALOG_TITLE);
 		fieldDialog.open();
 
 		if (fieldDialog.getName() != null && fieldDialog.getSchemaType() != null) {

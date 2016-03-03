@@ -1,7 +1,24 @@
+/*
+ * Copyright (c) 2014-2016, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package org.wso2.developerstudio.datamapper.diagram.edit.parts;
 
 import java.util.List;
 
+import org.apache.commons.lang.StringUtils;
 import org.eclipse.draw2d.BorderLayout;
 import org.eclipse.draw2d.ColorConstants;
 import org.eclipse.draw2d.Figure;
@@ -22,6 +39,7 @@ import org.eclipse.gef.editpolicies.LayoutEditPolicy;
 import org.eclipse.gef.editpolicies.NonResizableEditPolicy;
 import org.eclipse.gef.editpolicies.ResizableEditPolicy;
 import org.eclipse.gef.requests.CreateRequest;
+import org.eclipse.gmf.runtime.common.core.util.StringUtil;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.AbstractBorderedShapeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IBorderItemEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
@@ -437,7 +455,9 @@ public class ElementEditPart extends AbstractBorderedShapeEditPart {
 	public class ElementFigure extends RectangleFigure {
 
 		private static final String ICONS_ELEMENT = "icons/gmf/symbol_element_of.gif";
+		private static final String ICONS_ATTRIBUTE = "icons/gmf/AttributeIcon.png";
 		private static final String ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM = "org.wso2.developerstudio.visualdatamapper.diagram";
+		private static final String PREFIX = "attr_";
 		/**
 		 * @generated
 		 */
@@ -478,9 +498,16 @@ public class ElementEditPart extends AbstractBorderedShapeEditPart {
 			ImageDescriptor mainImgDesc = AbstractUIPlugin.imageDescriptorFromPlugin(
 					ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM,
 					ICONS_ELEMENT);
+			ImageDescriptor attributeImgDesc = AbstractUIPlugin.imageDescriptorFromPlugin(
+					ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM,
+					ICONS_ATTRIBUTE);
+			
 
 			ImageFigure mainImg = new ImageFigure(mainImgDesc.createImage()); //elemet symbole figure 
 			mainImg.setSize(new Dimension(20, 8));
+			
+			ImageFigure attributeImg = new ImageFigure(attributeImgDesc.createImage()); //attribute symbole figure 
+			attributeImg.setSize(new Dimension(20, 8));
 
 			fFigureElementNameFigure = new WrappingLabel(); // element nme holding rectangle
 			String name = (((Element) ((View) getModel()).getElement()).getName());
@@ -488,10 +515,16 @@ public class ElementEditPart extends AbstractBorderedShapeEditPart {
 			figure.setPreferredSize((tabCount - 1) * 30, 3);
 			figure.setMaximumSize(new Dimension(100,3));
 			figure.setMinimumSize(new Dimension(0,3));
-
-
+			
 			Label elemLabel = new Label();
-			elemLabel.setIcon(mainImg.getImage());
+			if(StringUtils.isNotEmpty(name)){
+				if(name.startsWith(PREFIX)){
+					elemLabel.setIcon(attributeImg.getImage());
+				}else{
+					elemLabel.setIcon(mainImg.getImage());
+				}
+			}
+				
 			Display display = Display.getCurrent();
 			Color black = display.getSystemColor(SWT.COLOR_BLACK);
 			elemLabel.setForegroundColor(black);
@@ -516,15 +549,29 @@ public class ElementEditPart extends AbstractBorderedShapeEditPart {
 		}
 		
 		public void renameElement(String newName) {
+			
 			ImageDescriptor mainImgDesc = AbstractUIPlugin.imageDescriptorFromPlugin(
 					ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM,
 					ICONS_ELEMENT);
+			ImageDescriptor attributeImgDesc = AbstractUIPlugin.imageDescriptorFromPlugin(
+					ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM,
+					ICONS_ATTRIBUTE);
 
 			ImageFigure mainImg = new ImageFigure(mainImgDesc.createImage()); //elemet symbole figure 
 			mainImg.setSize(new Dimension(20, 8));
 			
+			ImageFigure attributeImg = new ImageFigure(attributeImgDesc.createImage()); //attribute symbole figure 
+			attributeImg.setSize(new Dimension(20, 8));
+			
 			Label elemLabel = new Label();
-			elemLabel.setIcon(mainImg.getImage());
+			if(StringUtils.isNotEmpty(newName)){
+				if(newName.startsWith(PREFIX)){
+					elemLabel.setIcon(attributeImg.getImage());
+				}else{
+					elemLabel.setIcon(mainImg.getImage());
+				}
+			}
+			
 			Display display = Display.getCurrent();
 			Color black = display.getSystemColor(SWT.COLOR_BLACK);
 			elemLabel.setForegroundColor(black);

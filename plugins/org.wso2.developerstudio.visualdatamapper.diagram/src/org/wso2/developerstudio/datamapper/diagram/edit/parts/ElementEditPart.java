@@ -581,11 +581,13 @@ public class ElementEditPart extends AbstractBorderedShapeEditPart {
 			Color black = display.getSystemColor(SWT.COLOR_BLACK);
 			elemLabel.setForegroundColor(black);
 			String name = null;
+			if(StringUtils.isNotEmpty(newName)){
 			if (newName.startsWith(PREFIX)) {
 				String[] fullName = newName.split(PREFIX);
 				name = fullName[1];
 			} else{
 				name = newName;
+			}
 			}
 			elemLabel.setText(name);
 			elemLabel.setSize(new Dimension(100,3));

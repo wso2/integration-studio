@@ -84,11 +84,11 @@ public class EditAttributeAction extends AbstractActionHandler {
 			String value = null;
 			name = selectedElem.getName();
 			String newName = null;
-			if(name.startsWith(PREFIX)){
+			if (name.startsWith(PREFIX)) {
 				String[] fullName = name.split(PREFIX);
 				newName = fullName[1];
-			}else{
-				newName= name;
+			} else {
+				newName = name;
 			}
 			schemaType = selectedElem.getSchemaDataType().toString();
 			namespace = selectedElem.getDoc();
@@ -97,24 +97,34 @@ public class EditAttributeAction extends AbstractActionHandler {
 				value = defaultValue.replace("\"", "");
 			}
 
-			HashMap<String, String> map = openEditFieldDialog(newName, schemaType, namespace, value);
+			openEditFieldDialog(selectedElem,newName, schemaType, namespace, value);
+		}
+	}
 
-			executeCommand(selectedElem, DataMapperPackage.Literals.ELEMENT__NAME, map.get(NAME));
+	/**
+	 * Reflects the changes in the tree view
+	 * @param selectedElem
+	 * @param map
+	 */
+	private void reflectChanges(Element selectedElem, HashMap<String, String> map) {
+		executeCommand(selectedElem, DataMapperPackage.Literals.ELEMENT__NAME, map.get(NAME));
+
+		if (StringUtils.isNotEmpty(map.get(NAME))) {
 			// Sets the name with prefix in the tree view
 			if (getSelectedEditPart() instanceof ElementEditPart) {
 				((ElementEditPart) getSelectedEditPart()).renameElementItem(map.get(NAME));
 			}
-			executeCommand(selectedElem, DataMapperPackage.Literals.ELEMENT__DOC, map.get(DOC));
-			executeCommand(selectedElem, DataMapperPackage.Literals.ELEMENT__DEFAULT, map.get(DEFAULT_VALUE));
-			SchemaDataType schmaType = getSchemaType(map.get(SCHEMATYPE));
-			/**
-			 * Serialize the schema type
-			 */
-			SetCommand renameComd = new SetCommand(((GraphicalEditPart) selectedEP).getEditingDomain(), selectedElem,
-					DataMapperPackage.Literals.ELEMENT__SCHEMA_DATA_TYPE, schmaType);
-			if (renameComd.canExecute()) {
-				((GraphicalEditPart) selectedEP).getEditingDomain().getCommandStack().execute(renameComd);
-			}
+		}
+		executeCommand(selectedElem, DataMapperPackage.Literals.ELEMENT__DOC, map.get(DOC));
+		executeCommand(selectedElem, DataMapperPackage.Literals.ELEMENT__DEFAULT, map.get(DEFAULT_VALUE));
+		SchemaDataType schmaType = getSchemaType(map.get(SCHEMATYPE));
+		/**
+		 * Serialize the schema type
+		 */
+		SetCommand renameComd = new SetCommand(((GraphicalEditPart) selectedEP).getEditingDomain(), selectedElem,
+				DataMapperPackage.Literals.ELEMENT__SCHEMA_DATA_TYPE, schmaType);
+		if (renameComd.canExecute()) {
+			((GraphicalEditPart) selectedEP).getEditingDomain().getCommandStack().execute(renameComd);
 		}
 	}
 
@@ -188,15 +198,16 @@ public class EditAttributeAction extends AbstractActionHandler {
 	 * @param value
 	 */
 	private void executeCommand(Element selectedElem, EStructuralFeature feature, String value) {
-			SetCommand renameComd = new SetCommand(((GraphicalEditPart) selectedEP).getEditingDomain(), selectedElem,
-					feature, value);
-			if (renameComd.canExecute()) {
-				((GraphicalEditPart) selectedEP).getEditingDomain().getCommandStack().execute(renameComd);
-			}
+		SetCommand renameComd = new SetCommand(((GraphicalEditPart) selectedEP).getEditingDomain(), selectedElem,
+				feature, value);
+		if (renameComd.canExecute()) {
+			((GraphicalEditPart) selectedEP).getEditingDomain().getCommandStack().execute(renameComd);
+		}
 	}
 
 	/**
 	 * Opens the dialog
+	 * @param selectedElem 
 	 * 
 	 * @param editFieldDialog
 	 * @param name
@@ -211,7 +222,7 @@ public class EditAttributeAction extends AbstractActionHandler {
 	 *            aliases
 	 * @return map
 	 */
-	private HashMap<String, String> openEditFieldDialog(String name, String schemaType, String namespace,
+	private void openEditFieldDialog(Element selectedElem, String name, String schemaType, String namespace,
 			String defaultValue) {
 
 		Display display = Display.getDefault();
@@ -221,9 +232,9 @@ public class EditAttributeAction extends AbstractActionHandler {
 		editFieldDialog.create();
 		editFieldDialog.setValues(name, schemaType, namespace, defaultValue);
 		editFieldDialog.open();
-
+		
+		if(editFieldDialog.getOkValue()){
 		HashMap<String, String> valueMap = new HashMap<String, String>();
-
 		if (StringUtils.isNotEmpty(editFieldDialog.getName())) {
 			if (editFieldDialog.getName().startsWith(PREFIX)) {
 				valueMap.put(NAME, editFieldDialog.getName());
@@ -237,9 +248,9 @@ public class EditAttributeAction extends AbstractActionHandler {
 		if (editFieldDialog.getDefault() != null) {
 			valueMap.put(DEFAULT_VALUE, editFieldDialog.getDefault().toString().replace("\"", ""));
 		}
-
-		return valueMap;
-
+		
+		reflectChanges(selectedElem, valueMap);
+		}
 	}
 
 	private String getSelectedInputOutputEditPart() {

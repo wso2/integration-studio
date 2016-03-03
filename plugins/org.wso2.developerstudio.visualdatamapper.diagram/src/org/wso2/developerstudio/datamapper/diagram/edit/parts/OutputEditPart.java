@@ -66,8 +66,6 @@ public class OutputEditPart extends ShapeNodeEditPart {
 	TreeNode outputRootTreeNode;
 	private static final int LEAF_HEIGHT = 20;
 	private static final int OUTPUT_BOX_WIDTH = 250;
-	
-	int height = 400;
 
 	/**
 	 * @generated
@@ -620,7 +618,7 @@ public class OutputEditPart extends ShapeNodeEditPart {
 			layoutThis.setSpacing(10);
 			this.setLayoutManager(layoutThis);
 			
-			this.setPreferredSize(new Dimension(getMapMode().DPtoLP(250), getMapMode().DPtoLP(height)));
+			this.setPreferredSize(new Dimension(getMapMode().DPtoLP(250), getMapMode().DPtoLP(400)));
 			this.setOutline(true);
 
 			TitleBarBorder titleBarBorder = new TitleBarBorder("Output");

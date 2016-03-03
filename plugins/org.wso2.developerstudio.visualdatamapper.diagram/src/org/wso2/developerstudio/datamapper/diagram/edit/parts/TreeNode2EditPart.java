@@ -385,9 +385,9 @@ public class TreeNode2EditPart extends ShapeNodeEditPart {
 			ToolbarLayout l = new ToolbarLayout();
 			l.setVertical(false);
 			figure.setLayoutManager(l);
-			//figure.setPreferredSize(10, 10);
-			figure.setBorder(null);
+			figure.setPreferredSize(100, 3);
 
+			figure.setBorder(null);
 			figure.setOpaque(false);
 
 			RectangleFigure figure2 = new RectangleFigure();
@@ -396,16 +396,13 @@ public class TreeNode2EditPart extends ShapeNodeEditPart {
 
 			ImageDescriptor mainImgDescCollapse = AbstractUIPlugin.imageDescriptorFromPlugin(
 					"org.wso2.developerstudio.visualdatamapper.diagram", "icons/gmf/parent.gif");//plus 
-			ImageDescriptor mainImgDescExpand = AbstractUIPlugin.imageDescriptorFromPlugin(
-					"org.wso2.developerstudio.visualdatamapper.diagram", "icons/gmf/parent.gif");
 
 			final ImageFigure mainImg = new ImageFigure(mainImgDescCollapse.createImage());
-			final ImageFigure mainExpand = new ImageFigure(mainImgDescExpand.createImage());
 			mainImg.setSize(new Dimension(10, 8));
 			RectangleFigure mainImageRectangle = new RectangleFigure();
 
 			mainImageRectangle.setBackgroundColor(new Color(null, 255, 255, 255));
-			mainImageRectangle.setPreferredSize(new Dimension(10, 5));
+			mainImageRectangle.setPreferredSize(new Dimension(10, 7));
 			mainImageRectangle.add(mainImg);
 			mainImageRectangle.setBorder(new MarginBorder(1, 1, 1, 1));
 
@@ -418,31 +415,11 @@ public class TreeNode2EditPart extends ShapeNodeEditPart {
 			int count = ((TreeNode) ((View) getModel()).getElement()).getLevel();
 			fFigureTreeNodeNameFigure.setText(name);
 			fFigureTreeNodeNameFigure.setForegroundColor(ColorConstants.black);
-
 			fFigureTreeNodeNameFigure.setFont(new Font(null, "Arial", 10, SWT.BOLD));
 
-			clickNode = new ClickNode(mainExpand);
-			clickNode.setEnabled(true);
-			clickNode.setPreferredSize(20, 8);
-
-	/*		clickNode.addActionListener(new ActionListener() {
-
-				public void actionPerformed(ActionEvent event) {
-					if (!isExpanded) {
-						repaint(isExpanded, mainExpand);
-
-					} else {
-						repaint(isExpanded, mainImg);
-
-					}
-				}
-
-			});*/
-
-			figure2.setPreferredSize((count - 1) * 30, 1);
+			figure2.setPreferredSize((count - 1) * 30, 3);
 			Label nodeLabel = new Label();
 			nodeLabel.setIcon(mainImg.getImage());
-			//Text textElem = new Text(elemLabel, 0);
 			Display display = Display.getCurrent();
 			Color black = display.getSystemColor(SWT.COLOR_BLACK);
 			nodeLabel.setForegroundColor(black);
@@ -451,14 +428,11 @@ public class TreeNode2EditPart extends ShapeNodeEditPart {
 			figure.setOutline(false);
 			figure2.setOutline(false);
 			figure.add(figure2);
-			//figure.add(clickNode);
 			figure.add(nodeLabel);
-			mainImageRectangle.setOutline(false);
-			mainImageRectangle.setFill(false);
 			figure.setFill(false);
 			figure2.setFill(false);
-			this.setOutline(false);
 			this.setFill(false);
+			this.setOutline(false);
 
 			this.add(figure);
 

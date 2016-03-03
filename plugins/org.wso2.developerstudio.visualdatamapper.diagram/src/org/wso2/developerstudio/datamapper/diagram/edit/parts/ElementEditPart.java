@@ -486,8 +486,6 @@ public class ElementEditPart extends AbstractBorderedShapeEditPart {
 			String name = (((Element) ((View) getModel()).getElement()).getName());
 			int tabCount = ((Element) ((View) getModel()).getElement()).getLevel();
 			figure.setPreferredSize((tabCount - 1) * 30, 3);
-			figure.setMaximumSize(new Dimension(100,3));
-			figure.setMinimumSize(new Dimension(0,3));
 
 
 			Label elemLabel = new Label();
@@ -502,8 +500,6 @@ public class ElementEditPart extends AbstractBorderedShapeEditPart {
 			this.setOutline(false);
 			this.setFill(false);
 			this.add(figure);
-			this.setMaximumSize(new Dimension(100, 3));
-			this.setMinimumSize(new Dimension(100, 3));
 			this.add(elemLabel);
 
 		}

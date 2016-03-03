@@ -21,7 +21,7 @@ Require-Bundle: org.wso2.developerstudio.eclipse.gmf.esb,
  org.eclipse.emf.edit,
  org.eclipse.ui.workbench,
  org.eclipse.gmf.runtime.notation;bundle-version="1.8.0",
- org.wso2.developerstudio.eclipse.esb.libraries
+ org.wso2.developerstudio.eclipse.esb.libraries;bundle-version="4.0.0"
 Export-Package: org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom,
  org.wso2.developerstudio.eclipse.gmf.esb.persistence
 Import-Package: com.damnhandy.uri.template,
@@ -118,6 +118,8 @@ Import-Package: com.damnhandy.uri.template,
  org.wso2.carbon.mediator.bam,
  org.wso2.carbon.mediator.bam.config,
  org.wso2.carbon.mediator.bam.config.stream,
+ org.wso2.carbon.mediator.cache;version="4.4.10",
+ org.wso2.carbon.mediator.cache.digest;version="4.4.10",
  org.wso2.carbon.mediator.datamapper,
  org.wso2.carbon.mediator.event,
  org.wso2.carbon.mediator.fastXSLT,

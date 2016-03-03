@@ -96,8 +96,12 @@ public class ScriptGenerationUtil {
         return prettyVariableName;
     }
 
-    public static String removeNameSpaceFromName(String inRoot) {
-        return inRoot.substring(inRoot.indexOf(":"));
+    public static String removeNameSpaceFromName(String variableName) {
+        if (variableName.contains(":")) {
+            return variableName.substring(variableName.indexOf(":") + 1);
+        } else {
+            return variableName;
+        }
     }
 
     private static String getAccumulatedIterativeVariableString(Stack<ForLoopBean> parentForLoopBeanStack) {

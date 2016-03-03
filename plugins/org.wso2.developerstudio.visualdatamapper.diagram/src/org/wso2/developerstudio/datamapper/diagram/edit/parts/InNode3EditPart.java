@@ -38,11 +38,12 @@ import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.custom.AbstractInNodeEditPart;
 
 /** 
  * @generated NOT
  */
-public class InNode3EditPart extends AbstractBorderItemEditPart {
+public class InNode3EditPart extends AbstractInNodeEditPart {
 	/**
 	 * @generated NOT
 	 */

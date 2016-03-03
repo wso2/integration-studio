@@ -47,13 +47,14 @@ import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.ImageData;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.custom.AbstractInNodeEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.custom.CustomNonResizableEditPolicyEx;
 import org.wso2.developerstudio.datamapper.diagram.edit.policies.InNode2ItemSemanticEditPolicy;
 
 /**
- * @generated
+ * @generated NOT
  */
-public class InNode2EditPart extends AbstractBorderItemEditPart {
+public class InNode2EditPart extends AbstractInNodeEditPart {
 	/**
 	 * @generated NOT
 	 */

@@ -91,26 +91,23 @@ public class EditFieldAction extends AbstractActionHandler {
 			}
 
 			HashMap<String, String> map = openEditFieldDialog(name, schemaType, namespace, value);
-			if (map.get(NAME) != null && map.get(DOC) != null && map.get(SCHEMATYPE) != null
-					&& map.get(DEFAULT_VALUE) != null) {
-				executeCommand(selectedElem, DataMapperPackage.Literals.ELEMENT__NAME, map.get(NAME));
-				executeCommand(selectedElem, DataMapperPackage.Literals.ELEMENT__DOC, map.get(DOC));
-				executeCommand(selectedElem, DataMapperPackage.Literals.ELEMENT__DEFAULT, map.get(DEFAULT_VALUE));
 
-				SchemaDataType schmaType = getSchemaType(map.get(SCHEMATYPE));
-				/**
-				 * Serialize the schema type
-				 */
-				SetCommand renameComd = new SetCommand(((GraphicalEditPart) selectedEP).getEditingDomain(),
-						selectedElem, DataMapperPackage.Literals.ELEMENT__SCHEMA_DATA_TYPE, schmaType);
-				if (renameComd.canExecute()) {
-					((GraphicalEditPart) selectedEP).getEditingDomain().getCommandStack().execute(renameComd);
-				}
+			executeCommand(selectedElem, DataMapperPackage.Literals.ELEMENT__NAME, map.get(NAME));
+			// Sets the name with prefix in the tree view
+			if (getSelectedEditPart() instanceof ElementEditPart) {
+				((ElementEditPart) getSelectedEditPart()).renameElementItem(map.get(NAME));
+			}
+			executeCommand(selectedElem, DataMapperPackage.Literals.ELEMENT__DOC, map.get(DOC));
+			executeCommand(selectedElem, DataMapperPackage.Literals.ELEMENT__DEFAULT, map.get(DEFAULT_VALUE));
 
-				// Sets the name with prefix in the tree view
-				if (getSelectedEditPart() instanceof ElementEditPart) {
-					((ElementEditPart) getSelectedEditPart()).renameElementItem(map.get(NAME));
-				}
+			SchemaDataType schmaType = getSchemaType(map.get(SCHEMATYPE));
+			/**
+			 * Serialize the schema type
+			 */
+			SetCommand renameComd = new SetCommand(((GraphicalEditPart) selectedEP).getEditingDomain(), selectedElem,
+					DataMapperPackage.Literals.ELEMENT__SCHEMA_DATA_TYPE, schmaType);
+			if (renameComd.canExecute()) {
+				((GraphicalEditPart) selectedEP).getEditingDomain().getCommandStack().execute(renameComd);
 			}
 		}
 	}
@@ -185,13 +182,11 @@ public class EditFieldAction extends AbstractActionHandler {
 	 * @param value
 	 */
 	private void executeCommand(Element selectedElem, EStructuralFeature feature, String value) {
-		if (StringUtils.isNotEmpty(value)) {
 			SetCommand renameComd = new SetCommand(((GraphicalEditPart) selectedEP).getEditingDomain(), selectedElem,
 					feature, value);
 			if (renameComd.canExecute()) {
 				((GraphicalEditPart) selectedEP).getEditingDomain().getCommandStack().execute(renameComd);
 			}
-		}
 
 	}
 
@@ -225,13 +220,9 @@ public class EditFieldAction extends AbstractActionHandler {
 
 		HashMap<String, String> valueMap = new HashMap<String, String>();
 
-		if (StringUtils.isNotEmpty(editFieldDialog.getName())) {
-			valueMap.put(NAME, editFieldDialog.getName());
-		}
+		valueMap.put(NAME, editFieldDialog.getName());
 		valueMap.put(SCHEMATYPE, editFieldDialog.getSchemaType());
-		if (StringUtils.isNotEmpty(editFieldDialog.getDoc())) {
-			valueMap.put(DOC, editFieldDialog.getDoc());
-		}
+		valueMap.put(DOC, editFieldDialog.getDoc());
 		if (editFieldDialog.getDefault() != null) {
 			valueMap.put(DEFAULT_VALUE, editFieldDialog.getDefault().toString().replace("\"", ""));
 		}

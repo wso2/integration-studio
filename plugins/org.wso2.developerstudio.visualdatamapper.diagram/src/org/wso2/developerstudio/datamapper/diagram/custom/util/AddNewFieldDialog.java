@@ -68,7 +68,7 @@ public class AddNewFieldDialog extends Dialog {
 	private static final String LABEL_DEFAULT = "Default (Optional) :";
 	private static final String LABEL_ORDER = "Order :";
 	private static final String NEW_FIELD_ID = "NewField";
-	private static final String NEW_ATTRIBUTE_ID = "attr_NewAttribute";
+	private static final String NEW_ATTRIBUTE_ID = "NewAttribute";
 	private static final String DEFAULT = "default";
 
 

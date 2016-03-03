@@ -60,7 +60,7 @@ public abstract class AbstractMappingConfigGenerator implements MappingConfigGen
 
     protected String getFunctionReturnString(String outRoot) {
         StringBuilder functionBuilder = new StringBuilder();
-        functionBuilder.append("return output" + outRoot);
+        functionBuilder.append("return output" + ScriptGenerationUtil.removeNameSpaceFromName(outRoot));
         functionBuilder.append(";");
         functionBuilder.append("\n");
         functionBuilder.append("}");

@@ -52,11 +52,19 @@ public class ScriptGenerationUtil {
                     SchemaDataType variableType = variableTypeMap.get(variableName);
                     if (SchemaDataType.ARRAY.equals(variableType)) {
                         if (nextName.contains("Record")) {
-                            prettyVariableName += "." + nextName.substring(0, nextName.indexOf("Record")) + "["
-                                    + getAccumulatedIterativeVariableString(parentForLoopBeanStack) + "]";
+                            if (parentForLoopBeanStack.size() > 0) {
+                                prettyVariableName += "." + nextName.substring(0, nextName.indexOf("Record")) + "["
+                                        + getAccumulatedIterativeVariableString(parentForLoopBeanStack) + "]";
+                            } else {
+                                prettyVariableName += "." + nextName.substring(0, nextName.indexOf("Record")) + "[0]";
+                            }
                         } else {
-                            prettyVariableName += "." + nextName + "["
-                                    + getAccumulatedIterativeVariableString(parentForLoopBeanStack) + "]";
+                            if (parentForLoopBeanStack.size() > 0) {
+                                prettyVariableName += "." + nextName + "["
+                                        + getAccumulatedIterativeVariableString(parentForLoopBeanStack) + "]";
+                            } else {
+                                prettyVariableName += "." + nextName + "[0]";
+                            }
                         }
                     } else {
                         prettyVariableName += "." + nextName;

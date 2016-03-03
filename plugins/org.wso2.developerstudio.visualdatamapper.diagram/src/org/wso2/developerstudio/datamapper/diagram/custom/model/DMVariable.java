@@ -16,6 +16,7 @@
 package org.wso2.developerstudio.datamapper.diagram.custom.model;
 
 import org.wso2.developerstudio.datamapper.SchemaDataType;
+import org.wso2.developerstudio.datamapper.diagram.custom.util.ScriptGenerationUtil;
 
 /**
  * This class should represent variable elements of data-mapper
@@ -55,7 +56,7 @@ public class DMVariable {
     }
 
     public String getName() {
-        return name;
+        return ScriptGenerationUtil.removeNameSpaceFromName(name);
     }
 
     public void setName(String name) {

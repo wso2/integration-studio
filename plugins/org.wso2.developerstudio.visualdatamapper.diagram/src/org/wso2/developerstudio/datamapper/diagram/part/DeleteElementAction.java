@@ -1,5 +1,6 @@
 package org.wso2.developerstudio.datamapper.diagram.part;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -41,5 +42,39 @@ public class DeleteElementAction extends DefaultDeleteElementAction {
 		setImageDescriptor(workbenchImages.getImageDescriptor(ISharedImages.IMG_TOOL_DELETE));
 		setDisabledImageDescriptor(workbenchImages
 				.getImageDescriptor(ISharedImages.IMG_TOOL_DELETE_DISABLED));
+	}
+	
+	/*
+	 * We have overridden this method in this class because we need to add all the
+	 * child editparts into the OperationSet once we select a root editpart. For
+	 * an example when we select and remove one operation(Concat operation) from 
+	 * the diagram all the child elements should be selected and removed. 
+	 * 
+	 * (non-Javadoc)
+	 * @see org.eclipse.gmf.runtime.diagram.ui.actions.DiagramAction#createOperationSet()
+	 */
+	@Override
+	protected List createOperationSet() {
+		List list = super.createOperationSet();
+		ArrayList tempList = new ArrayList(list);
+		Iterator iterator = tempList.iterator();
+		while (iterator.hasNext()) {
+			EditPart parent = (EditPart) iterator.next();
+			addChildren(list, parent);
+		}
+		return list;
+	}
+	
+	/*
+	 * Recursive method for adding children to the list
+	 */
+	private void addChildren(List list, EditPart parent){
+		List children = parent.getChildren();
+		Iterator iterator = children.iterator();
+		while(iterator.hasNext()){
+			EditPart child  = (EditPart) iterator.next();
+			addChildren(list, child);
+			list.add(child);
+		}		
 	}
 }

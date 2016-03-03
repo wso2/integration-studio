@@ -52,11 +52,19 @@ public class ScriptGenerationUtil {
                     SchemaDataType variableType = variableTypeMap.get(variableName);
                     if (SchemaDataType.ARRAY.equals(variableType)) {
                         if (nextName.contains("Record")) {
-                            prettyVariableName += "." + nextName.substring(0, nextName.indexOf("Record")) + "["
-                                    + getAccumulatedIterativeVariableString(parentForLoopBeanStack) + "]";
+                            if (parentForLoopBeanStack.size() > 0) {
+                                prettyVariableName += "." + nextName.substring(0, nextName.indexOf("Record")) + "["
+                                        + getAccumulatedIterativeVariableString(parentForLoopBeanStack) + "]";
+                            } else {
+                                prettyVariableName += "." + nextName.substring(0, nextName.indexOf("Record")) + "[0]";
+                            }
                         } else {
-                            prettyVariableName += "." + nextName + "["
-                                    + getAccumulatedIterativeVariableString(parentForLoopBeanStack) + "]";
+                            if (parentForLoopBeanStack.size() > 0) {
+                                prettyVariableName += "." + nextName + "["
+                                        + getAccumulatedIterativeVariableString(parentForLoopBeanStack) + "]";
+                            } else {
+                                prettyVariableName += "." + nextName + "[0]";
+                            }
                         }
                     } else {
                         prettyVariableName += "." + nextName;
@@ -94,6 +102,14 @@ public class ScriptGenerationUtil {
             prettyVariableName = prettyVariableName.substring(1);
         }
         return prettyVariableName;
+    }
+
+    public static String removeNameSpaceFromName(String variableName) {
+        if (variableName.contains(":")) {
+            return variableName.substring(variableName.indexOf(":") + 1);
+        } else {
+            return variableName;
+        }
     }
 
     private static String getAccumulatedIterativeVariableString(Stack<ForLoopBean> parentForLoopBeanStack) {

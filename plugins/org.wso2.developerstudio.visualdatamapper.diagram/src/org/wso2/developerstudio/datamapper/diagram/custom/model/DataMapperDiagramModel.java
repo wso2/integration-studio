@@ -32,6 +32,7 @@ import org.wso2.developerstudio.datamapper.OperatorLeftConnector;
 import org.wso2.developerstudio.datamapper.OperatorRightConnector;
 import org.wso2.developerstudio.datamapper.Output;
 import org.wso2.developerstudio.datamapper.SchemaDataType;
+import org.wso2.developerstudio.datamapper.diagram.custom.util.ScriptGenerationUtil;
 import org.wso2.developerstudio.datamapper.impl.ConcatImpl;
 import org.wso2.developerstudio.datamapper.impl.ConstantImpl;
 import org.wso2.developerstudio.datamapper.impl.ElementImpl;
@@ -170,9 +171,10 @@ public class DataMapperDiagramModel {
                     TreeNodeImpl parent = (TreeNodeImpl) parentVariableStack.peek();
                     parentVariableIndex = parent.getIndex();
                 }
-                variablesArray.add(new DMVariable(variableName, getUniqueId(objectElement), DMVariableType.INPUT,
-                        element.getSchemaDataType(), index, parentVariableIndex));
-                addVariableTypeToMap(variableName, SchemaDataType.STRING);
+                DMVariable addedVariable = new DMVariable(variableName, getUniqueId(objectElement),
+                        DMVariableType.INPUT, element.getSchemaDataType(), index, parentVariableIndex);
+                variablesArray.add(addedVariable);
+                addVariableTypeToMap(addedVariable.getName(), SchemaDataType.STRING);
                 ((ElementImpl) objectElement).setIndex(index);
                 getResolvedVariableArray().add(index);
                 inputVariablesArray.add(index);
@@ -187,11 +189,12 @@ public class DataMapperDiagramModel {
                     parentVariableIndex = parent.getIndex();
                 }
                 int index = variablesArray.size();
-                variablesArray.add(new DMVariable(variableName, objectElement.toString(), DMVariableType.OUTPUT,
-                        treeNode.getSchemaDataType(), index, parentVariableIndex));
+                DMVariable addedVariable = new DMVariable(variableName, objectElement.toString(),
+                        DMVariableType.OUTPUT, treeNode.getSchemaDataType(), index, parentVariableIndex);
+                variablesArray.add(addedVariable);
                 outputVariablesArray.add(index);
                 treeNode.setIndex(index);
-                addVariableTypeToMap(variableName, variableType);
+                addVariableTypeToMap(addedVariable.getName(), variableType);
                 if (treeNode.getLevel() == parentVariableStack.size()) {
                     parentVariableStack.pop();
                     parentVariableStack.push(treeNode);
@@ -424,11 +427,12 @@ public class DataMapperDiagramModel {
                     TreeNodeImpl parent = (TreeNodeImpl) parentVariableStack.peek();
                     parentVariableIndex = parent.getIndex();
                 }
-                variablesArray.add(new DMVariable(variableName, objectElement.toString(), DMVariableType.OUTPUT,
-                        element.getSchemaDataType(), index, parentVariableIndex));
+                DMVariable addedVariable = new DMVariable(variableName, objectElement.toString(),
+                        DMVariableType.OUTPUT, element.getSchemaDataType(), index, parentVariableIndex);
+                variablesArray.add(addedVariable);
                 outputVariablesArray.add(index);
                 element.setIndex(index);
-                addVariableTypeToMap(variableName, element.getSchemaDataType());
+                addVariableTypeToMap(addedVariable.getName(), element.getSchemaDataType());
             } else if (objectElement instanceof TreeNodeImpl) {
                 TreeNodeImpl treeNode = (TreeNodeImpl) objectElement;
                 if (treeNode.getLevel() <= parentVariableStack.size()) {
@@ -471,14 +475,16 @@ public class DataMapperDiagramModel {
         String variableName = prefix.toString().toLowerCase();
         for (EObject eObject : parentVariableStack) {
             if (eObject instanceof TreeNodeImpl) {
-                variableName = variableName + ((TreeNodeImpl) eObject).getName() + ".";
+                variableName = variableName
+                        + ScriptGenerationUtil.removeNameSpaceFromName(((TreeNodeImpl) eObject).getName()) + ".";
             } else if (eObject instanceof ElementImpl) {
-                variableName = variableName + ((ElementImpl) eObject).getName() + ".";
+                variableName = variableName
+                        + ScriptGenerationUtil.removeNameSpaceFromName(((ElementImpl) eObject).getName()) + ".";
             } else {
                 throw new IllegalArgumentException("Illegal element type found : " + eObject.toString());
             }
         }
-        return variableName + name;
+        return variableName + ScriptGenerationUtil.removeNameSpaceFromName(name);
     }
 
     public List<Integer> getInputVariablesArray() {

@@ -82,7 +82,6 @@ public class XSDtoAvroGen {
 		} catch (Exception ex) {
 			log.error("Error in generating the JAXB java classes from the given XSD file, please recheck the generated XSD, "
 					+ ex);
-			return "";
 		}
 		String changedOutput = AvroSchemagenPlugin.replaceNamespace(args[1], args[5]);
 

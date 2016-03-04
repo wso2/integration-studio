@@ -512,7 +512,7 @@ public class ElementEditPart extends AbstractBorderedShapeEditPart {
 			fFigureElementNameFigure = new WrappingLabel(); // element nme holding rectangle
 			String name = (((Element) ((View) getModel()).getElement()).getName());
 			int tabCount = ((Element) ((View) getModel()).getElement()).getLevel();
-			figure.setPreferredSize((tabCount - 1) * 30, 3);
+			figure.setPreferredSize((tabCount - 1) * 22, 3);
 			figure.setMaximumSize(new Dimension(100,3));
 			figure.setMinimumSize(new Dimension(0,3));
 			
@@ -528,7 +528,14 @@ public class ElementEditPart extends AbstractBorderedShapeEditPart {
 			Display display = Display.getCurrent();
 			Color black = display.getSystemColor(SWT.COLOR_BLACK);
 			elemLabel.setForegroundColor(black);
-			elemLabel.setText(name);
+			String newName = null;
+			if (name.startsWith(PREFIX)) {
+				String[] fullName = name.split(PREFIX);
+				newName = fullName[1];
+			} else{
+				newName = name;
+			}
+			elemLabel.setText(newName);
 			elemLabel.setSize(new Dimension(100,3));
 			figure.setOutline(false);
 			figure.setFill(false);
@@ -573,7 +580,16 @@ public class ElementEditPart extends AbstractBorderedShapeEditPart {
 			Display display = Display.getCurrent();
 			Color black = display.getSystemColor(SWT.COLOR_BLACK);
 			elemLabel.setForegroundColor(black);
-			elemLabel.setText(newName);
+			String name = null;
+			if(StringUtils.isNotEmpty(newName)){
+			if (newName.startsWith(PREFIX)) {
+				String[] fullName = newName.split(PREFIX);
+				name = fullName[1];
+			} else{
+				name = newName;
+			}
+			}
+			elemLabel.setText(name);
 			elemLabel.setSize(new Dimension(100,3));
 			List<Figure> childrenList = this.getChildren();
 			this.remove(childrenList.get(1));

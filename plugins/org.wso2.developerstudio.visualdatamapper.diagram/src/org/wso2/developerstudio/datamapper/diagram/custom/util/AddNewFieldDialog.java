@@ -55,6 +55,8 @@ public class AddNewFieldDialog extends Dialog {
 	private Set<String> aliases;
 	private JsonNode defaultValue;
 	private String schemaType;
+	
+	private boolean okPressed = false;
 
 	private String[] DATA_TYPES = { "STRING", "INT", "ARRAY", "BOOLEAN", "BYTES", "DOUBLE", "ENUM", "FIXED", "FLOAT", "LONG", "MAP","RECORD", "UNION","NULL" };
 	private String[] ORDER_TYPES = { "ASCENDING", "DESCENDING", "IGNORE" };
@@ -68,7 +70,7 @@ public class AddNewFieldDialog extends Dialog {
 	private static final String LABEL_DEFAULT = "Default (Optional) :";
 	private static final String LABEL_ORDER = "Order :";
 	private static final String NEW_FIELD_ID = "NewField";
-	private static final String NEW_ATTRIBUTE_ID = "attr_NewAttribute";
+	private static final String NEW_ATTRIBUTE_ID = "NewAttribute";
 	private static final String DEFAULT = "default";
 
 
@@ -297,6 +299,7 @@ public class AddNewFieldDialog extends Dialog {
 
 	@Override
 	public void okPressed() {
+		setOkValue(true);
 		setName(textName.getText());
 		setSchemaType(schemaTypeCombo.getText());
 		setDoc(textNamespace.getText());
@@ -310,6 +313,8 @@ public class AddNewFieldDialog extends Dialog {
 		MessageDialog.openError(getShell(), "Error", "Invalid value for type " + schemaTypeCombo.getText());
 		return;
 		}
+		
+		
 		//setOrder(orderCombo.getText());
 		//Set<String> aliasesSet = getAliasesSet();
 		//setAliases(aliasesSet);
@@ -421,6 +426,10 @@ public class AddNewFieldDialog extends Dialog {
 	public void setDoc(String doc) {
 		this.doc = doc;
 	}
+	
+	public void setOkValue(boolean okPressed) {
+		this.okPressed = okPressed;
+	}
 
 	public void setAliases(Set<String> aliases) {
 		this.aliases = aliases;
@@ -452,5 +461,10 @@ public class AddNewFieldDialog extends Dialog {
 
 	public Set<String> getAliases() {
 		return aliases;
+	}
+	
+	public  boolean getOkValue(){
+		return okPressed;
+		
 	}
 }

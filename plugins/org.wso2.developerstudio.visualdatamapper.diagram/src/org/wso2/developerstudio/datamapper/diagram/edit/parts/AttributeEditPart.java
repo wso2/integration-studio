@@ -457,7 +457,7 @@ public class AttributeEditPart extends AbstractBorderedShapeEditPart {
 			int tabCount = Integer.parseInt((((Attribute) ((View) getModel()).getElement())
 					.getName()).split(",")[0]);
 
-			figure.setPreferredSize((tabCount - 1) * 30, 3);
+			figure.setPreferredSize((tabCount - 1) * 22, 3);
 
 			fFigureFileNameFigure.setText(name);
 			fFigureFileNameFigure.setForegroundColor(org.eclipse.draw2d.ColorConstants.black);

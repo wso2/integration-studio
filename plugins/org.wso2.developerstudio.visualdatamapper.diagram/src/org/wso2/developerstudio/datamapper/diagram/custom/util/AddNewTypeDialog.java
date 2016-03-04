@@ -66,6 +66,8 @@ public class AddNewTypeDialog extends Dialog {
 	private static final String LABEL_ALIASES = "Aliases :";
 	private static final String NEW_ROOT_RECORD_ID = "NewRootType";
 	private static final String NEW_RECORD_ID = "NewType";
+	
+	private boolean okPressed = false;
 
 	/** 
 	 * Create the dialog.
@@ -221,6 +223,7 @@ public class AddNewTypeDialog extends Dialog {
 
 	@Override
 	protected void okPressed() {
+		setOkValue(true);
 		//Append a prefix to the name
 		if(StringUtils.isNotEmpty(textPrefix.getText())){
 			setName(textPrefix.getText() + ":" + textName.getText());
@@ -267,6 +270,10 @@ public class AddNewTypeDialog extends Dialog {
 		this.namespace= namespace;
 	}
 	
+	public void setOkValue(boolean okPressed) {
+		this.okPressed = okPressed;
+	}
+	
 	public String getName(){
 		return name;
 	}
@@ -290,6 +297,11 @@ public class AddNewTypeDialog extends Dialog {
 	public Set<String> getAliases() {
 		return aliases;
 	}
+	
+	public  boolean getOkValue(){
+		return okPressed;
+    }
+
 	
 }
 

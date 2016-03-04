@@ -417,7 +417,7 @@ public class TreeNode2EditPart extends ShapeNodeEditPart {
 			fFigureTreeNodeNameFigure.setForegroundColor(ColorConstants.black);
 			fFigureTreeNodeNameFigure.setFont(new Font(null, "Arial", 10, SWT.BOLD));
 
-			figure2.setPreferredSize((count - 1) * 30, 3);
+			figure2.setPreferredSize((count - 1) * 22, 3);
 			Label nodeLabel = new Label();
 			nodeLabel.setIcon(mainImg.getImage());
 			Display display = Display.getCurrent();

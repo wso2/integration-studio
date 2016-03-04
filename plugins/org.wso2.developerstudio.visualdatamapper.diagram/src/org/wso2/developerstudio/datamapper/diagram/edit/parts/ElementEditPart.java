@@ -512,7 +512,7 @@ public class ElementEditPart extends AbstractBorderedShapeEditPart {
 			fFigureElementNameFigure = new WrappingLabel(); // element nme holding rectangle
 			String name = (((Element) ((View) getModel()).getElement()).getName());
 			int tabCount = ((Element) ((View) getModel()).getElement()).getLevel();
-			figure.setPreferredSize((tabCount - 1) * 30, 3);
+			figure.setPreferredSize((tabCount - 1) * 22, 3);
 			figure.setMaximumSize(new Dimension(100,3));
 			figure.setMinimumSize(new Dimension(0,3));
 			

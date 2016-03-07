@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="ClaimApproval" targetNamespace="http://www.example.com/claims/"
+	xmlns:tns="http://www.example.com/claims/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tschema="http://www.example.com/claims/schema"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype">
+	<wsdl:documentation>
+		Example for WS-HumanTask 1.1 - WS-HumanTask Task Interface Definition
+	</wsdl:documentation>
+	<wsdl:types>
+		<xsd:schema targetNamespace="http://www.example.com/claims/schema"
+			xmlns:tns="http://www.example.com/claims/schema" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+			elementFormDefault="qualified">
+		</xsd:schema>
+    </wsdl:types>
+</wsdl:definitions>

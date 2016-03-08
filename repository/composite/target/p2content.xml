@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<units size='1'>
+  <unit id='201603080950.org.wso2.developerstudio.eclipse.bps.feature.category' version='1.0.0.9t--cKQsDl9tRBKnuW4plyn'>
+    <properties size='2'>
+      <property name='org.eclipse.equinox.p2.name' value='WSO2 BPS Tools'/>
+      <property name='org.eclipse.equinox.p2.type.category' value='true'/>
+    </properties>
+    <provides size='1'>
+      <provided namespace='org.eclipse.equinox.p2.iu' name='201603080950.org.wso2.developerstudio.eclipse.bps.feature.category' version='1.0.0.9t--cKQsDl9tRBKnuW4plyn'/>
+    </provides>
+    <requires size='23'>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.wso2.developerstudio.kernel.registry.feature.feature.group' range='[4.0.0.201602281207,4.0.0.201602281207]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.wso2.developerstudio.capp.feature.feature.group' range='[4.0.0.201602281207,4.0.0.201602281207]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.wso2.developerstudio.carbon.server-44.feature.feature.group' range='[4.0.0.201602281207,4.0.0.201602281207]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.wso2.developerstudio.carbon.server-44.feature.feature.group' range='[4.0.0.201512150710,4.0.0.201512150710]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.wso2.developerstudio.carbon.server-42.feature.feature.group' range='[4.0.0.201512150710,4.0.0.201512150710]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.wso2.developerstudio.kernel.registry.feature.feature.group' range='[4.0.0.201512150710,4.0.0.201512150710]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.wso2.developerstudio.eclipse.bps.feature.feature.group' range='[4.0.0.201603080950,4.0.0.201603080950]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.wso2.developerstudio.kernel.utils.feature.feature.group' range='[4.0.0.201512150710,4.0.0.201512150710]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.wso2.developerstudio.carbon.server-42.feature.feature.group' range='[4.0.0.201602281207,4.0.0.201602281207]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.wso2.developerstudio.carbon.server-40.feature.feature.group' range='[4.0.0.201602281207,4.0.0.201602281207]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.wso2.developerstudio.carbon.server-remote.feature.feature.group' range='[4.0.0.201512150710,4.0.0.201512150710]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.wso2.developerstudio.kernel.security.feature.feature.group' range='[4.0.0.201512150710,4.0.0.201512150710]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.wso2.developerstudio.kernel.tools.feature.feature.group' range='[4.0.0.201602281207,4.0.0.201602281207]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.wso2.developerstudio.kernel.core.ui.feature.feature.group' range='[4.0.0.201512150710,4.0.0.201512150710]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.wso2.developerstudio.kernel.core.ui.feature.feature.group' range='[4.0.0.201602281207,4.0.0.201602281207]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.wso2.developerstudio.kernel.security.feature.feature.group' range='[4.0.0.201602281207,4.0.0.201602281207]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.wso2.developerstudio.kernel.tools.feature.feature.group' range='[4.0.0.201512150710,4.0.0.201512150710]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.wso2.developerstudio.kernel.core.feature.feature.group' range='[4.0.0.201512150710,4.0.0.201512150710]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.wso2.developerstudio.kernel.utils.feature.feature.group' range='[4.0.0.201602281207,4.0.0.201602281207]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.wso2.developerstudio.carbon.server-40.feature.feature.group' range='[4.0.0.201512150710,4.0.0.201512150710]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.wso2.developerstudio.carbon.server-remote.feature.feature.group' range='[4.0.0.201602281207,4.0.0.201602281207]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.wso2.developerstudio.capp.feature.feature.group' range='[4.0.0.201512150710,4.0.0.201512150710]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.wso2.developerstudio.kernel.core.feature.feature.group' range='[4.0.0.201602281207,4.0.0.201602281207]'/>
+    </requires>
+    <touchpoint id='null' version='0.0.0'/>
+  </unit>
+</units>

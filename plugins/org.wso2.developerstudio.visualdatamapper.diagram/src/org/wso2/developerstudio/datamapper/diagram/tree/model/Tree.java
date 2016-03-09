@@ -9,7 +9,7 @@ import org.apache.commons.lang.StringUtils;
 
 public class Tree {
 
-	private List<Attribute> attributes;
+	//private List<Attribute> attributes;
 	private List<Element> elements;
 	private List<Tree> trees;
 	private String name;
@@ -42,12 +42,12 @@ public class Tree {
 		return this.parent;
 	}
 
-	public List<Attribute> getAttributes() {
-		if (attributes == null) {
-			attributes = new ArrayList<Attribute>();
-		}
-		return this.attributes;
-	}
+//	public List<Attribute> getAttributes() {
+//		if (attributes == null) {
+//			attributes = new ArrayList<Attribute>();
+//		}
+//		return this.attributes;
+//	}
 
 	public List<Element> getElements() {
 		if (elements == null) {
@@ -88,9 +88,9 @@ public class Tree {
 		return this.doc;
 	}
 
-	public void setAttributes(List<Attribute> attributes) {
-		this.attributes = attributes;
-	}
+//	public void setAttributes(List<Attribute> attributes) {
+//		this.attributes = attributes;
+//	}
 
 	public void setElements(List<Element> elements) {
 		this.elements = elements;
@@ -147,7 +147,7 @@ public class Tree {
 	}
 	
 	private int getTreeHeight(Tree tree) {
-		int height = (tree.getElements().size() + tree.getAttributes().size());
+		int height = (tree.getElements().size());
 		for (Tree childTree : tree.getTrees()) {
 			height += 1 + getTreeHeight(childTree);
 		}

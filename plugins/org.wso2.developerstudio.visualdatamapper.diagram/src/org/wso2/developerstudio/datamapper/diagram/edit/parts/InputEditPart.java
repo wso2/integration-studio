@@ -42,7 +42,6 @@ import org.eclipse.gmf.tooling.runtime.edit.policies.reparent.CreationEditPolicy
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Font;
-import org.wso2.developerstudio.datamapper.Attribute;
 import org.wso2.developerstudio.datamapper.DataMapperFactory;
 import org.wso2.developerstudio.datamapper.DataMapperPackage;
 import org.wso2.developerstudio.datamapper.DataMapperRoot;
@@ -222,13 +221,6 @@ public class InputEditPart extends ShapeNodeEditPart {
 			}
 		}
 
-		if (!(tree.getAttributes().isEmpty())) {
-			for (org.wso2.developerstudio.datamapper.diagram.tree.model.Attribute attribute : tree
-					.getAttributes()) {
-				createAttribute(attribute, treeNode);
-			}
-		}
-
 		if (!(tree.getElements().isEmpty())) {
 			for (org.wso2.developerstudio.datamapper.diagram.tree.model.Element element : tree
 					.getElements()) {
@@ -306,25 +298,8 @@ public class InputEditPart extends ShapeNodeEditPart {
 			}
 		}
 		treeNode.getElement().add(ele);
-		if (!(element.getAttribute().isEmpty())) {
-			for (org.wso2.developerstudio.datamapper.diagram.tree.model.Attribute attribute : element
-					.getAttribute()) {
-				createAttribute(attribute, treeNode);
-			}
-		}
 	}
 
-	/**
-	 * @generated NOT
-	 */
-	private void createAttribute(
-			org.wso2.developerstudio.datamapper.diagram.tree.model.Attribute attribute,
-			TreeNode treeNode) {
-		Element attr = DataMapperFactory.eINSTANCE.createElement();
-		attr.setName(attribute.getCount() + "," + attribute.getName());
-		//TODO fix this2016 attr.setDoc(attribute.getDoc());
-		treeNode.getElement().add(attr);
-	}
 
 	/**
 	 * @generated NOT
@@ -401,12 +376,6 @@ public class InputEditPart extends ShapeNodeEditPart {
 			for (org.wso2.developerstudio.datamapper.diagram.tree.model.Element element : treeN
 					.getElements()) {
 				createElement(element, treeNodeNew);
-			}
-		}
-		if (!(treeN.getAttributes().isEmpty())) {
-			for (org.wso2.developerstudio.datamapper.diagram.tree.model.Attribute attribute : treeN
-					.getAttributes()) {
-				createAttribute(attribute, treeNodeNew);
 			}
 		}
 

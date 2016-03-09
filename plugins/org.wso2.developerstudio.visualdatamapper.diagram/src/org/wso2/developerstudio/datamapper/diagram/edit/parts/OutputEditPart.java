@@ -42,7 +42,6 @@ import org.eclipse.gmf.tooling.runtime.edit.policies.reparent.CreationEditPolicy
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Font;
-import org.wso2.developerstudio.datamapper.Attribute;
 import org.wso2.developerstudio.datamapper.DataMapperFactory;
 import org.wso2.developerstudio.datamapper.DataMapperPackage;
 import org.wso2.developerstudio.datamapper.DataMapperRoot;
@@ -214,12 +213,6 @@ public class OutputEditPart extends ShapeNodeEditPart {
 				createElement(element, treeNode);
 			}
 		}
-		if (!(tree.getAttributes().isEmpty())) {
-			for (org.wso2.developerstudio.datamapper.diagram.tree.model.Attribute attribute : tree
-					.getAttributes()) {
-				createAttribute(attribute, treeNode);
-			}
-		}
 		if (!(tree.getTrees().isEmpty())) {
 			for (Tree treeN : tree.getTrees()) {
 				createTree(treeN, treeNode);
@@ -292,22 +285,8 @@ public class OutputEditPart extends ShapeNodeEditPart {
 			}
 		}
 		treeNode.getElement().add(ele);
-		if (!(element.getAttribute().isEmpty())) {
-			for (org.wso2.developerstudio.datamapper.diagram.tree.model.Attribute attribute : element
-					.getAttribute()) {
-				createAttribute(attribute, treeNode);
-			}
-		}
 	}
 
-	private void createAttribute(
-			org.wso2.developerstudio.datamapper.diagram.tree.model.Attribute attribute,
-			TreeNode treeNode) {
-		Element attr = DataMapperFactory.eINSTANCE.createElement();
-		attr.setName(attribute.getCount() + "," + attribute.getName());
-		//TODO fix this2016 attr.setDoc(attribute.getDoc());
-		treeNode.getElement().add(attr);
-	}
 
 	private void createTree(Tree treeN, TreeNode treeNode) {
 		TreeNode treeNodeNew = DataMapperFactory.eINSTANCE.createTreeNode();
@@ -374,12 +353,6 @@ public class OutputEditPart extends ShapeNodeEditPart {
 			for (org.wso2.developerstudio.datamapper.diagram.tree.model.Element element : treeN
 					.getElements()) {
 				createElement(element, treeNodeNew);
-			}
-		}
-		if (!(treeN.getAttributes().isEmpty())) {
-			for (org.wso2.developerstudio.datamapper.diagram.tree.model.Attribute attribute : treeN
-					.getAttributes()) {
-				createAttribute(attribute, treeNodeNew);
 			}
 		}
 		if (!(treeN.getTrees().isEmpty())) {

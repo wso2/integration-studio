@@ -15,7 +15,6 @@ import org.eclipse.swt.graphics.Image;
 import org.eclipse.ui.IMemento;
 import org.eclipse.ui.navigator.ICommonContentExtensionSite;
 import org.eclipse.ui.navigator.ICommonLabelProvider;
-import org.wso2.developerstudio.datamapper.Attribute;
 import org.wso2.developerstudio.datamapper.Concat;
 import org.wso2.developerstudio.datamapper.Constant;
 import org.wso2.developerstudio.datamapper.Contains;
@@ -426,19 +425,6 @@ public class DataMapperNavigatorLabelProvider extends LabelProvider implements
 		return ""; //$NON-NLS-1$
 	}
 
-	/**
-	 * @generated
-	 */
-	private String getAttribute_3004Text(View view) {
-		Attribute domainModelElement = (Attribute) view.getElement();
-		if (domainModelElement != null) {
-			return domainModelElement.getName();
-		} else {
-			DataMapperDiagramEditorPlugin.getInstance().logError(
-					"No domain element for view with visualID = " + 3004); //$NON-NLS-1$
-			return ""; //$NON-NLS-1$
-		}
-	}
 
 	/**
 	 * @generated

@@ -11,7 +11,6 @@ import org.eclipse.gmf.runtime.emf.type.core.commands.EditElementCommand;
 import org.eclipse.gmf.runtime.emf.type.core.requests.ConfigureRequest;
 import org.eclipse.gmf.runtime.emf.type.core.requests.CreateElementRequest;
 import org.eclipse.gmf.runtime.notation.View;
-import org.wso2.developerstudio.datamapper.Attribute;
 import org.wso2.developerstudio.datamapper.DataMapperFactory;
 import org.wso2.developerstudio.datamapper.OutNode;
 
@@ -39,18 +38,7 @@ public class OutNodeCreateCommand extends EditElementCommand {
 		return container;
 	}
 
-	/**
-	 * @generated
-	 */
-	public boolean canExecute() {
-		Attribute container = (Attribute) getElementToEdit();
-		if (container.getOutNode() != null) {
-			return false;
-		}
-		return true;
-
-	}
-
+	
 	/**
 	 * @generated
 	 */
@@ -58,8 +46,8 @@ public class OutNodeCreateCommand extends EditElementCommand {
 			throws ExecutionException {
 		OutNode newElement = DataMapperFactory.eINSTANCE.createOutNode();
 
-		Attribute owner = (Attribute) getElementToEdit();
-		owner.setOutNode(newElement);
+//		Attribute owner = (Attribute) getElementToEdit();
+//		owner.setOutNode(newElement);
 
 		doConfigure(newElement, monitor, info);
 

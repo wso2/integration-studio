@@ -12,7 +12,6 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.gmf.tooling.runtime.update.DiagramUpdater;
-import org.wso2.developerstudio.datamapper.Attribute;
 import org.wso2.developerstudio.datamapper.Concat;
 import org.wso2.developerstudio.datamapper.Constant;
 import org.wso2.developerstudio.datamapper.Contains;
@@ -402,31 +401,6 @@ public class DataMapperDiagramUpdater {
 		return result;
 	}
 
-	/**
-	 * @generated
-	 */
-	public static List<DataMapperNodeDescriptor> getAttribute_3004SemanticChildren(View view) {
-		if (!view.isSetElement()) {
-			return Collections.emptyList();
-		}
-		Attribute modelElement = (Attribute) view.getElement();
-		LinkedList<DataMapperNodeDescriptor> result = new LinkedList<DataMapperNodeDescriptor>();
-		{
-			InNode childElement = modelElement.getInNode();
-			int visualID = DataMapperVisualIDRegistry.getNodeVisualID(view, childElement);
-			if (visualID == InNodeEditPart.VISUAL_ID) {
-				result.add(new DataMapperNodeDescriptor(childElement, visualID));
-			}
-		}
-		{
-			OutNode childElement = modelElement.getOutNode();
-			int visualID = DataMapperVisualIDRegistry.getNodeVisualID(view, childElement);
-			if (visualID == OutNodeEditPart.VISUAL_ID) {
-				result.add(new DataMapperNodeDescriptor(childElement, visualID));
-			}
-		}
-		return result;
-	}
 
 	/**
 	 * @generated

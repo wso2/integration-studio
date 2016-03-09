@@ -13,7 +13,7 @@ public class Element {
 
 	private String name;
 	private String value;
-	private List<Attribute> attributes;
+	//private List<Attribute> attributes;
 	private Tree parent;
 	private int count;
 	private Type schemaType;
@@ -83,16 +83,16 @@ public class Element {
 	}
 	
 	
-	public void setAttribute(List<Attribute> attr){
-		this.attributes=attr;
-	}
-	
-	public List<Attribute> getAttribute(){
-		if(attributes == null){
-			attributes = new ArrayList<Attribute>();
-		}
-		return this.attributes;
-	}
+//	public void setAttribute(List<Attribute> attr){
+//		this.attributes=attr;
+//	}
+//	
+//	public List<Attribute> getAttribute(){
+//		if(attributes == null){
+//			attributes = new ArrayList<Attribute>();
+//		}
+//		return this.attributes;
+//	}
 	
 	public Set<String> getAliases() {
 		return this.aliases;

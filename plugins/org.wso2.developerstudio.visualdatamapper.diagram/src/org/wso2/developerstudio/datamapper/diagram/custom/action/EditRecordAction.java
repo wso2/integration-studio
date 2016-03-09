@@ -88,13 +88,14 @@ public class EditRecordAction extends AbstractActionHandler {
 
 			name = selectedNode.getName();
 			schemaType = selectedNode.getSchemaDataType().toString();
-			if (selectedNode.getAliases().isEmpty()) {
+			if (!selectedNode.getProperties().containsKey("aliases")) {
 				aliases = null;
 			} else {
-				aliases = selectedNode.getAliases().toString().replace("[", "").replace("]", "");
+				aliases = selectedNode.getProperties().get("aliases").toString().replace("[", "").replace("]", "");
 			}
-			prefix = selectedNode.getNamespace();
-			namespace = selectedNode.getDoc();
+		
+			prefix = selectedNode.getProperties().get("namespace");
+			namespace = selectedNode.getProperties().get("doc");
 
 			openEditRecordDialog(selectedNode, name, prefix, schemaType, namespace, aliases);
 
@@ -110,18 +111,19 @@ public class EditRecordAction extends AbstractActionHandler {
 	private void reflectChanges(TreeNode selectedNode, HashMap<String, String> map) {
 		// Serialize the values
 		executeCommand(selectedNode, DataMapperPackage.Literals.TREE_NODE__NAME, map.get(NAME));
-		executeCommand(selectedNode, DataMapperPackage.Literals.TREE_NODE__NAMESPACE, map.get(PREFIX));
+		//TODO fix this 2016executeCommand(selectedNode, DataMapperPackage.Literals.TREE_NODE__NAMESPACE, map.get(PREFIX));
 		executeCommand(selectedNode, DataMapperPackage.Literals.TREE_NODE__SCHEMA_DATA_TYPE, map.get(SCHEMATYPE));
-		executeCommand(selectedNode, DataMapperPackage.Literals.TREE_NODE__DOC, map.get(DOC));
+		//TODO fix this 2016 executeCommand(selectedNode, DataMapperPackage.Literals.TREE_NODE__DOC, map.get(DOC));
 
 		Set<String> aliasesMap = getAliasesValue(map.get(ALAISES));
 		// Serialize the aliases
-		SetCommand renameComd = new SetCommand(((GraphicalEditPart) selectedEP).getEditingDomain(), selectedNode,
-				DataMapperPackage.Literals.TREE_NODE__ALIASES, aliasesMap);
-		if (renameComd.canExecute()) {
-			((GraphicalEditPart) selectedEP).getEditingDomain().getCommandStack().execute(renameComd);
-
-		}
+		//TODO fix this 2016
+//		SetCommand renameComd = new SetCommand(((GraphicalEditPart) selectedEP).getEditingDomain(), selectedNode,
+//				DataMapperPackage.Literals.TREE_NODE__ALIASES, aliasesMap);
+//		if (renameComd.canExecute()) {
+//			((GraphicalEditPart) selectedEP).getEditingDomain().getCommandStack().execute(renameComd);
+//
+//		}
 		if (map.get(NAME) != null && map.get(PREFIX) != null) {
 			if (getSelectedEditPart() instanceof TreeNodeEditPart) {
 				((TreeNodeEditPart) getSelectedEditPart()).renameElementItem(map.get(PREFIX) + ":" + map.get(NAME));

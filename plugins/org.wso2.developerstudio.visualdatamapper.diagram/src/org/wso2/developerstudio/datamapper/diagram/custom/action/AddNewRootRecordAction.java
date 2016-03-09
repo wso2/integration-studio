@@ -147,15 +147,15 @@ public class AddNewRootRecordAction extends AbstractActionHandler {
 					}
 					
                     if(StringUtils.isNotEmpty(rootElementDialog.getNamespace())){
-                    	treeNodeNew.setNamespace(rootElementDialog.getNamespace());
+                    	treeNodeNew.getProperties().put("namespace",rootElementDialog.getNamespace());
                     }
                     
                     //Sets the xml namespace as the doc value in avro
                     if(StringUtils.isNotEmpty(rootElementDialog.getDoc())){
-                    	treeNodeNew.setDoc(rootElementDialog.getDoc());
+                    	treeNodeNew.getProperties().put("doc",rootElementDialog.getDoc());
                     }
                     if(rootElementDialog.getAliases() != null){
-                        treeNodeNew.getAliases().addAll(rootElementDialog.getAliases());
+                    	treeNodeNew.getProperties().put("aliases",rootElementDialog.getAliases().toString());
                     }
 					String selectedInputOutputEditPart = getSelectedInputOutputEditPart();
 					if (null != selectedInputOutputEditPart) {

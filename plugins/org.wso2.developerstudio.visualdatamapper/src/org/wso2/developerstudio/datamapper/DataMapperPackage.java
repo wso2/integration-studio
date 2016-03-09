@@ -538,31 +538,13 @@ public interface DataMapperPackage extends EPackage {
     int TREE_NODE__LEVEL = 7;
 
     /**
-	 * The feature id for the '<em><b>Namespace</b></em>' attribute.
+	 * The feature id for the '<em><b>Properties</b></em>' map.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TREE_NODE__NAMESPACE = 8;
-
-				/**
-	 * The feature id for the '<em><b>Doc</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TREE_NODE__DOC = 9;
-
-				/**
-	 * The feature id for the '<em><b>Aliases</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TREE_NODE__ALIASES = 10;
+	int TREE_NODE__PROPERTIES = 8;
 
 				/**
 	 * The number of structural features of the '<em>Tree Node</em>' class.
@@ -571,7 +553,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TREE_NODE_FEATURE_COUNT = 11;
+	int TREE_NODE_FEATURE_COUNT = 9;
 
 
 	/**
@@ -1479,37 +1461,15 @@ public interface DataMapperPackage extends EPackage {
     EAttribute getTreeNode_Level();
 
     /**
-	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.datamapper.TreeNode#getNamespace <em>Namespace</em>}'.
+	 * Returns the meta object for the map '{@link org.wso2.developerstudio.datamapper.TreeNode#getProperties <em>Properties</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Namespace</em>'.
-	 * @see org.wso2.developerstudio.datamapper.TreeNode#getNamespace()
+	 * @return the meta object for the map '<em>Properties</em>'.
+	 * @see org.wso2.developerstudio.datamapper.TreeNode#getProperties()
 	 * @see #getTreeNode()
 	 * @generated
 	 */
-	EAttribute getTreeNode_Namespace();
-
-				/**
-	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.datamapper.TreeNode#getDoc <em>Doc</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Doc</em>'.
-	 * @see org.wso2.developerstudio.datamapper.TreeNode#getDoc()
-	 * @see #getTreeNode()
-	 * @generated
-	 */
-	EAttribute getTreeNode_Doc();
-
-				/**
-	 * Returns the meta object for the attribute list '{@link org.wso2.developerstudio.datamapper.TreeNode#getAliases <em>Aliases</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute list '<em>Aliases</em>'.
-	 * @see org.wso2.developerstudio.datamapper.TreeNode#getAliases()
-	 * @see #getTreeNode()
-	 * @generated
-	 */
-	EAttribute getTreeNode_Aliases();
+	EReference getTreeNode_Properties();
 
 				/**
 	 * Returns the meta object for class '{@link org.wso2.developerstudio.datamapper.InNode <em>In Node</em>}'.
@@ -2151,28 +2111,12 @@ public interface DataMapperPackage extends EPackage {
         EAttribute TREE_NODE__LEVEL = eINSTANCE.getTreeNode_Level();
 
         /**
-		 * The meta object literal for the '<em><b>Namespace</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Properties</b></em>' map feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute TREE_NODE__NAMESPACE = eINSTANCE.getTreeNode_Namespace();
-
-								/**
-		 * The meta object literal for the '<em><b>Doc</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute TREE_NODE__DOC = eINSTANCE.getTreeNode_Doc();
-
-								/**
-		 * The meta object literal for the '<em><b>Aliases</b></em>' attribute list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute TREE_NODE__ALIASES = eINSTANCE.getTreeNode_Aliases();
+		EReference TREE_NODE__PROPERTIES = eINSTANCE.getTreeNode_Properties();
 
 								/**
 		 * The meta object literal for the '{@link org.wso2.developerstudio.datamapper.impl.InNodeImpl <em>In Node</em>}' class.

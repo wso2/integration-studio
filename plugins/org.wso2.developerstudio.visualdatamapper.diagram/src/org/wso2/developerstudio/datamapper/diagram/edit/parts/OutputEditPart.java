@@ -155,9 +155,9 @@ public class OutputEditPart extends ShapeNodeEditPart {
 		//treeNode.setName(tree.getCount() + "," + tree.getName());
 		treeNode.setName(tree.getName());
 		treeNode.setLevel(tree.getCount());
-		treeNode.setNamespace(tree.getNamespace());
-		treeNode.setDoc(tree.getDoc());
-		treeNode.getAliases().addAll(tree.getAliases());
+		treeNode.getProperties().put("doc", tree.getDoc());
+		treeNode.getProperties().put("namesapce",tree.getNamespace());
+		treeNode.getProperties().put("aliases", tree.getAliases().toString());
 		if (tree.getSchemaType() != null) {
 			switch (tree.getSchemaType()) {
 			case ARRAY:
@@ -332,10 +332,10 @@ public class OutputEditPart extends ShapeNodeEditPart {
 			case RECORD:
 				treeNodeNew.setSchemaDataType(SchemaDataType.RECORD);
 				treeNodeNew.setName(treeN.getName());
-				treeNodeNew.setDoc(treeN.getDoc());
-				treeNodeNew.setNamespace(treeN.getNamespace());
+				treeNodeNew.getProperties().put("doc", treeN.getDoc());
+				treeNodeNew.getProperties().put("namesapce",treeN.getNamespace());
 				treeNodeNew.setLevel(treeN.getCount());
-				treeNodeNew.getAliases().addAll(treeN.getAliases());
+				treeNodeNew.getProperties().put("aliases", treeN.getAliases().toString());
 				break;
 			case STRING:
 				treeNodeNew.setSchemaDataType(SchemaDataType.STRING);

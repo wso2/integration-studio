@@ -4,6 +4,7 @@ package org.wso2.developerstudio.datamapper;
 
 import org.eclipse.emf.common.util.EList;
 
+import org.eclipse.emf.common.util.EMap;
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -22,9 +23,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.wso2.developerstudio.datamapper.TreeNode#getInputParent <em>Input Parent</em>}</li>
  *   <li>{@link org.wso2.developerstudio.datamapper.TreeNode#getSchemaDataType <em>Schema Data Type</em>}</li>
  *   <li>{@link org.wso2.developerstudio.datamapper.TreeNode#getLevel <em>Level</em>}</li>
- *   <li>{@link org.wso2.developerstudio.datamapper.TreeNode#getNamespace <em>Namespace</em>}</li>
- *   <li>{@link org.wso2.developerstudio.datamapper.TreeNode#getDoc <em>Doc</em>}</li>
- *   <li>{@link org.wso2.developerstudio.datamapper.TreeNode#getAliases <em>Aliases</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.datamapper.TreeNode#getProperties <em>Properties</em>}</li>
  * </ul>
  * </p>
  *
@@ -235,71 +234,20 @@ public interface TreeNode extends EObject {
     void setLevel(int value);
 
 				/**
-	 * Returns the value of the '<em><b>Namespace</b></em>' attribute.
+	 * Returns the value of the '<em><b>Properties</b></em>' map.
+	 * The key is of type {@link java.lang.String},
+	 * and the value is of type {@link java.lang.String},
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Namespace</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Properties</em>' map isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Namespace</em>' attribute.
-	 * @see #setNamespace(String)
-	 * @see org.wso2.developerstudio.datamapper.DataMapperPackage#getTreeNode_Namespace()
-	 * @model
+	 * @return the value of the '<em>Properties</em>' map.
+	 * @see org.wso2.developerstudio.datamapper.DataMapperPackage#getTreeNode_Properties()
+	 * @model mapType="org.wso2.developerstudio.datamapper.PropertyKeyValuePair<org.eclipse.emf.ecore.EString, org.eclipse.emf.ecore.EString>"
 	 * @generated
 	 */
-	String getNamespace();
-
-				/**
-	 * Sets the value of the '{@link org.wso2.developerstudio.datamapper.TreeNode#getNamespace <em>Namespace</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Namespace</em>' attribute.
-	 * @see #getNamespace()
-	 * @generated
-	 */
-	void setNamespace(String value);
-
-				/**
-	 * Returns the value of the '<em><b>Doc</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Doc</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Doc</em>' attribute.
-	 * @see #setDoc(String)
-	 * @see org.wso2.developerstudio.datamapper.DataMapperPackage#getTreeNode_Doc()
-	 * @model
-	 * @generated
-	 */
-	String getDoc();
-
-				/**
-	 * Sets the value of the '{@link org.wso2.developerstudio.datamapper.TreeNode#getDoc <em>Doc</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Doc</em>' attribute.
-	 * @see #getDoc()
-	 * @generated
-	 */
-	void setDoc(String value);
-
-				/**
-	 * Returns the value of the '<em><b>Aliases</b></em>' attribute list.
-	 * The list contents are of type {@link java.lang.String}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Aliases</em>' attribute list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Aliases</em>' attribute list.
-	 * @see org.wso2.developerstudio.datamapper.DataMapperPackage#getTreeNode_Aliases()
-	 * @model
-	 * @generated
-	 */
-	EList<String> getAliases();
+	EMap<String, String> getProperties();
 
 } // TreeNode

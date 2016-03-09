@@ -63,18 +63,18 @@ public class AvroSchemaTransformer {
 			
 		}
 	
-		if(StringUtils.isNotEmpty(treeNodeModel.getDoc())){
-			doc = treeNodeModel.getDoc();
+		if(treeNodeModel.getProperties().containsKey("doc")){
+			doc = treeNodeModel.getProperties().get("doc");
 		}
-		if(StringUtils.isNotEmpty(treeNodeModel.getNamespace())){
-			namespace = treeNodeModel.getNamespace();
+		if(treeNodeModel.getProperties().containsKey("namespace")){
+			namespace = treeNodeModel.getProperties().get("namespace");
 		}
-        
+		        
 		Schema schema = Schema.createRecord(name, doc, namespace, false);
 		
-		for(String aliase : treeNodeModel.getAliases()){
-			schema.addAlias(aliase);
-		}
+//		for(String aliase : treeNodeModel.getAliases()){
+//			schema.addAlias(aliase);
+//		}
 		List<Field> fields = new ArrayList<Field>();
 		
 		if (!treeNodeModel.getNode().isEmpty()) {
@@ -124,20 +124,21 @@ public class AvroSchemaTransformer {
 			}			
 		}
 	
-		if(StringUtils.isNotEmpty(node.getDoc())){
-			doc = node.getDoc();
+		if(node.getProperties().containsKey("doc")){
+			doc = node.getProperties().get("doc");
+		}
+		if(node.getProperties().containsKey("namespace")){
+			namespace = node.getProperties().get("namespace");
 		}
 		
-		if(StringUtils.isNotEmpty(node.getNamespace())){
-			namespace = node.getNamespace();
-		}
-	
-		// FIXME "namespace" : "" is added when the namespace is null
 		Schema schemaForRecord = Schema.createRecord(name, doc, namespace, false);
 		
-		for(String aliase : node.getAliases()){
-			schemaForRecord.addAlias(aliase);
-		}
+//TODO fix this 2016
+//		for(String aliase : node.getAliases()){
+//			schemaForRecord.addAlias(aliase);
+//		}
+		
+		// FIXME "namespace" : "" is added when the namespace is null
 		List<Field> fieldsforRecord = new ArrayList<Field>();
 
 		if (!node.getNode().isEmpty()) {
@@ -172,18 +173,21 @@ public class AvroSchemaTransformer {
 		String doc = null;
 		String namespace = null;
 		
-		if(StringUtils.isNotEmpty(node.getDoc())){
-			doc = node.getDoc();
+		if(node.getProperties().containsKey("doc")){
+			doc = node.getProperties().get("doc");
 		}
-		if(StringUtils.isNotEmpty(node.getNamespace())){
-			namespace = node.getNamespace();
+		if(node.getProperties().containsKey("namespace")){
+			namespace = node.getProperties().get("namespace");
 		}
 		
 		Schema schemaForArray = Schema.createRecord(node.getName(), doc, namespace, false);
-		
-		for(String aliase : node.getAliases()){
-			schemaForArray.addAlias(aliase);
+		if(node.getProperties().containsKey("aliases")){
+			schemaForArray.addAlias(node.getProperties().get("aliases"));
 		}
+//		for(String aliase : node.getAliases()){
+//			schemaForArray.addAlias(aliase);
+//		}
+		
 		/*
 		 * FIXME Appends the suffix "Item" to identify as the RECORD under ARRAY
 		 * Schema recordSchema = Schema.createRecord(node.getName() +

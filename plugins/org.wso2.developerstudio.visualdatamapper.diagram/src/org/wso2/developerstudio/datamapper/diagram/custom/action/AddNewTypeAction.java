@@ -131,15 +131,17 @@ public class AddNewTypeAction extends AbstractActionHandler {
 					break;
 				}
 				
-				if(StringUtils.isNotEmpty(typeDialog.getNamespace())){ 
-                 	treeNodeNew.setNamespace(typeDialog.getNamespace());
-                 }
-                 if(StringUtils.isNotEmpty(typeDialog.getDoc())){
-                 	treeNodeNew.setDoc(typeDialog.getDoc());
-                 }
-                 if(typeDialog.getAliases() != null){
-                     treeNodeNew.getAliases().addAll(typeDialog.getAliases());
-                 }
+				if(StringUtils.isNotEmpty(typeDialog.getNamespace())){
+                	treeNodeNew.getProperties().put("namespace",typeDialog.getNamespace());
+                }
+                
+                //Sets the xml namespace as the doc value in avro
+                if(StringUtils.isNotEmpty(typeDialog.getDoc())){
+                	treeNodeNew.getProperties().put("doc",typeDialog.getDoc());
+                }
+                if(typeDialog.getAliases() != null){
+                	treeNodeNew.getProperties().put("aliases",typeDialog.getAliases().toString());
+                }
 
 				/*
 				 * AddCommand is used to avoid concurrent updating. index 0 to

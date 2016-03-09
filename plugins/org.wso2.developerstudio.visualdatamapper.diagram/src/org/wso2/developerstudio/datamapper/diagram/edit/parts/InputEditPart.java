@@ -247,14 +247,15 @@ public class InputEditPart extends ShapeNodeEditPart {
 		Element ele = DataMapperFactory.eINSTANCE.createElement();
 		//ele.setName(element.getCount() + "," + element.getName());
 		ele.setName(element.getName());
-		ele.setDoc(element.getDoc());
+		ele.getProperties().put("doc", element.getDoc());
 		if(element.getOrder() != null){
-			 ele.setOrder(element.getOrder().toString());
+			 ele.getProperties().put("order", element.getOrder().toString());
 		}
 	    if(element.getDefault() != null){
-			ele.setDefault(element.getDefault().toString()); 	
+			ele.getProperties().put("default", element.getDefault().toString());
 	    }
-		ele.getAliases().addAll(element.getAliases());
+	    ele.getProperties().put("aliases", element.getAliases().toString());
+		
 		ele.setLevel(element.getCount());
 		if (element.getSchemaType() != null) {
 			switch (element.getSchemaType()) {
@@ -321,7 +322,7 @@ public class InputEditPart extends ShapeNodeEditPart {
 			TreeNode treeNode) {
 		Attribute attr = DataMapperFactory.eINSTANCE.createAttribute();
 		attr.setName(attribute.getCount() + "," + attribute.getName());
-		attr.setDoc(attribute.getDoc());
+		//TODO fix this2016 attr.setDoc(attribute.getDoc());
 		treeNode.getAttribute().add(attr);
 	}
 

@@ -2,6 +2,7 @@
  */
 package org.wso2.developerstudio.datamapper.util;
 
+import java.util.Map;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
@@ -159,6 +160,10 @@ public class DataMapperAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseUpperCase(UpperCase object) {
 				return createUpperCaseAdapter();
+			}
+			@Override
+			public Adapter casePropertyKeyValuePair(Map.Entry<String, String> object) {
+				return createPropertyKeyValuePairAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -513,6 +518,20 @@ public class DataMapperAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createUpperCaseAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link java.util.Map.Entry <em>Property Key Value Pair</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see java.util.Map.Entry
+	 * @generated
+	 */
+	public Adapter createPropertyKeyValuePairAdapter() {
 		return null;
 	}
 

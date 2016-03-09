@@ -63,10 +63,7 @@
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference dataMapper.ecore#//Element/fieldParent"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataMapper.ecore#//Element/schemaDataType"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataMapper.ecore#//Element/level"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataMapper.ecore#//Element/doc"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataMapper.ecore#//Element/default"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataMapper.ecore#//Element/aliases"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataMapper.ecore#//Element/order"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dataMapper.ecore#//Element/properties"/>
     </genClasses>
     <genClasses ecoreClass="dataMapper.ecore#//Attribute">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataMapper.ecore#//Attribute/name"/>
@@ -74,7 +71,6 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dataMapper.ecore#//Attribute/outNode"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dataMapper.ecore#//Attribute/inNode"/>
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference dataMapper.ecore#//Attribute/fieldParent"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataMapper.ecore#//Attribute/doc"/>
     </genClasses>
     <genClasses ecoreClass="dataMapper.ecore#//TreeNode">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataMapper.ecore#//TreeNode/name"/>
@@ -119,5 +115,9 @@
     <genClasses ecoreClass="dataMapper.ecore#//LowerCase"/>
     <genClasses ecoreClass="dataMapper.ecore#//Contains"/>
     <genClasses ecoreClass="dataMapper.ecore#//UpperCase"/>
+    <genClasses ecoreClass="dataMapper.ecore#//PropertyKeyValuePair">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataMapper.ecore#//PropertyKeyValuePair/key"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataMapper.ecore#//PropertyKeyValuePair/value"/>
+    </genClasses>
   </genPackages>
 </genmodel:GenModel>

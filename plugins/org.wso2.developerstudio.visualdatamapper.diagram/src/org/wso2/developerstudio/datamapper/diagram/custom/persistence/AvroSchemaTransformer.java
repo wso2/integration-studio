@@ -273,16 +273,17 @@ public class AvroSchemaTransformer {
 		// Schema for type:field
 		Schema schemaForField = Schema.create(fieldDatatype);
         
-        if(StringUtils.isNotEmpty(element.getDoc())){
-        	docValue = element.getDoc();
+        if(element.getProperties().containsKey("doc")){
+        	docValue = element.getProperties().get("doc");
         }
         
-		if(StringUtils.isNotEmpty(element.getOrder())){
-			order = element.getOrder();
-			orderValue = Order.valueOf(order);
-		}
+        if(element.getProperties().containsKey("order")){
+        	order = element.getProperties().get("order");
+        	orderValue = Order.valueOf(order);
+        }
+        
 	
-		defaultValueObject = getDefaultValue(element.getDefault(), mapper);
+		defaultValueObject = getDefaultValue(element.getProperties().get("default"), mapper);
 		
 		// Fixing the NullPointer Exception in Schema. 
 		//FIXME handle this when order is present
@@ -296,9 +297,10 @@ public class AvroSchemaTransformer {
 		    field = new Field(element.getName(), schemaForField, docValue,defaultValueObject);
 		}
 		
-		for(String aliase : element.getAliases()){
-			field.addAlias(aliase);
-		}
+		//TODO fix this 2016 
+		//for(String aliase : element.getProperties().get("aliases")()){
+			field.addAlias(element.getProperties().get("aliases"));
+		//}
 		return field;
 	}
 	

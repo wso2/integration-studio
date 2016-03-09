@@ -4,6 +4,7 @@ package org.wso2.developerstudio.datamapper.impl;
 
 import java.lang.reflect.InvocationTargetException;
 
+import java.util.Map;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.EList;
@@ -88,6 +89,7 @@ public class DataMapperFactoryImpl extends EFactoryImpl implements DataMapperFac
 			case DataMapperPackage.LOWER_CASE: return createLowerCase();
 			case DataMapperPackage.CONTAINS: return createContains();
 			case DataMapperPackage.UPPER_CASE: return createUpperCase();
+			case DataMapperPackage.PROPERTY_KEY_VALUE_PAIR: return (EObject)createPropertyKeyValuePair();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -385,6 +387,16 @@ public class DataMapperFactoryImpl extends EFactoryImpl implements DataMapperFac
 		UpperCaseImpl upperCase = new UpperCaseImpl();
 		upperCase.setBasicContainer(createOperatorBasicContainer());
 		return upperCase;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Map.Entry<String, String> createPropertyKeyValuePair() {
+		PropertyKeyValuePairImpl propertyKeyValuePair = new PropertyKeyValuePairImpl();
+		return propertyKeyValuePair;
 	}
 
 	/**

@@ -622,6 +622,29 @@ public class DataMapperItemProviderAdapterFactory extends DataMapperAdapterFacto
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link java.util.Map.Entry} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected PropertyKeyValuePairItemProvider propertyKeyValuePairItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link java.util.Map.Entry}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createPropertyKeyValuePairAdapter() {
+		if (propertyKeyValuePairItemProvider == null) {
+			propertyKeyValuePairItemProvider = new PropertyKeyValuePairItemProvider(this);
+		}
+
+		return propertyKeyValuePairItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -744,6 +767,7 @@ public class DataMapperItemProviderAdapterFactory extends DataMapperAdapterFacto
 		if (lowerCaseItemProvider != null) lowerCaseItemProvider.dispose();
 		if (containsItemProvider != null) containsItemProvider.dispose();
 		if (upperCaseItemProvider != null) upperCaseItemProvider.dispose();
+		if (propertyKeyValuePairItemProvider != null) propertyKeyValuePairItemProvider.dispose();
 	}
 
 }

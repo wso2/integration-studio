@@ -3,6 +3,7 @@
 package org.wso2.developerstudio.datamapper;
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.EMap;
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -20,10 +21,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.wso2.developerstudio.datamapper.Element#getFieldParent <em>Field Parent</em>}</li>
  *   <li>{@link org.wso2.developerstudio.datamapper.Element#getSchemaDataType <em>Schema Data Type</em>}</li>
  *   <li>{@link org.wso2.developerstudio.datamapper.Element#getLevel <em>Level</em>}</li>
- *   <li>{@link org.wso2.developerstudio.datamapper.Element#getDoc <em>Doc</em>}</li>
- *   <li>{@link org.wso2.developerstudio.datamapper.Element#getDefault <em>Default</em>}</li>
- *   <li>{@link org.wso2.developerstudio.datamapper.Element#getAliases <em>Aliases</em>}</li>
- *   <li>{@link org.wso2.developerstudio.datamapper.Element#getOrder <em>Order</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.datamapper.Element#getProperties <em>Properties</em>}</li>
  * </ul>
  * </p>
  *
@@ -224,97 +222,20 @@ public interface Element extends EObject {
     void setLevel(int value);
 
 				/**
-	 * Returns the value of the '<em><b>Doc</b></em>' attribute.
+	 * Returns the value of the '<em><b>Properties</b></em>' map.
+	 * The key is of type {@link java.lang.String},
+	 * and the value is of type {@link java.lang.String},
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Doc</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Properties</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Doc</em>' attribute.
-	 * @see #setDoc(String)
-	 * @see org.wso2.developerstudio.datamapper.DataMapperPackage#getElement_Doc()
-	 * @model
+	 * @return the value of the '<em>Properties</em>' map.
+	 * @see org.wso2.developerstudio.datamapper.DataMapperPackage#getElement_Properties()
+	 * @model mapType="org.wso2.developerstudio.datamapper.PropertyKeyValuePair<org.eclipse.emf.ecore.EString, org.eclipse.emf.ecore.EString>"
 	 * @generated
 	 */
-	String getDoc();
-
-				/**
-	 * Sets the value of the '{@link org.wso2.developerstudio.datamapper.Element#getDoc <em>Doc</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Doc</em>' attribute.
-	 * @see #getDoc()
-	 * @generated
-	 */
-	void setDoc(String value);
-
-				/**
-	 * Returns the value of the '<em><b>Default</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Default</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Default</em>' attribute.
-	 * @see #setDefault(String)
-	 * @see org.wso2.developerstudio.datamapper.DataMapperPackage#getElement_Default()
-	 * @model
-	 * @generated
-	 */
-	String getDefault();
-
-				/**
-	 * Sets the value of the '{@link org.wso2.developerstudio.datamapper.Element#getDefault <em>Default</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Default</em>' attribute.
-	 * @see #getDefault()
-	 * @generated
-	 */
-	void setDefault(String value);
-
-				/**
-	 * Returns the value of the '<em><b>Aliases</b></em>' attribute list.
-	 * The list contents are of type {@link java.lang.String}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Aliases</em>' attribute list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Aliases</em>' attribute list.
-	 * @see org.wso2.developerstudio.datamapper.DataMapperPackage#getElement_Aliases()
-	 * @model
-	 * @generated
-	 */
-	EList<String> getAliases();
-
-				/**
-	 * Returns the value of the '<em><b>Order</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Order</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Order</em>' attribute.
-	 * @see #setOrder(String)
-	 * @see org.wso2.developerstudio.datamapper.DataMapperPackage#getElement_Order()
-	 * @model
-	 * @generated
-	 */
-	String getOrder();
-
-				/**
-	 * Sets the value of the '{@link org.wso2.developerstudio.datamapper.Element#getOrder <em>Order</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Order</em>' attribute.
-	 * @see #getOrder()
-	 * @generated
-	 */
-	void setOrder(String value);
+	EMap<String, String> getProperties();
 
 } // Element

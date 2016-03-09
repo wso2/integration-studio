@@ -9,17 +9,23 @@ import java.util.List;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.EMap;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EcoreEMap;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.ecore.util.InternalEList;
 import org.wso2.developerstudio.datamapper.DataMapperPackage;
 import org.wso2.developerstudio.datamapper.Element;
 import org.wso2.developerstudio.datamapper.InNode;
 import org.wso2.developerstudio.datamapper.Order;
 import org.wso2.developerstudio.datamapper.OutNode;
+import org.wso2.developerstudio.datamapper.PropertyKeyValuePair;
 import org.wso2.developerstudio.datamapper.SchemaDataType;
 import org.wso2.developerstudio.datamapper.TreeNode;
 
@@ -37,10 +43,7 @@ import org.wso2.developerstudio.datamapper.TreeNode;
  *   <li>{@link org.wso2.developerstudio.datamapper.impl.ElementImpl#getFieldParent <em>Field Parent</em>}</li>
  *   <li>{@link org.wso2.developerstudio.datamapper.impl.ElementImpl#getSchemaDataType <em>Schema Data Type</em>}</li>
  *   <li>{@link org.wso2.developerstudio.datamapper.impl.ElementImpl#getLevel <em>Level</em>}</li>
- *   <li>{@link org.wso2.developerstudio.datamapper.impl.ElementImpl#getDoc <em>Doc</em>}</li>
- *   <li>{@link org.wso2.developerstudio.datamapper.impl.ElementImpl#getDefault <em>Default</em>}</li>
- *   <li>{@link org.wso2.developerstudio.datamapper.impl.ElementImpl#getAliases <em>Aliases</em>}</li>
- *   <li>{@link org.wso2.developerstudio.datamapper.impl.ElementImpl#getOrder <em>Order</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.datamapper.impl.ElementImpl#getProperties <em>Properties</em>}</li>
  * </ul>
  * </p>
  *
@@ -149,74 +152,14 @@ public class ElementImpl extends EObjectImpl implements Element {
 
     
     /**
-	 * The default value of the '{@link #getDoc() <em>Doc</em>}' attribute.
+	 * The cached value of the '{@link #getProperties() <em>Properties</em>}' map.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getDoc()
+	 * @see #getProperties()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String DOC_EDEFAULT = null;
-
-				/**
-	 * The cached value of the '{@link #getDoc() <em>Doc</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getDoc()
-	 * @generated
-	 * @ordered
-	 */
-	protected String doc = DOC_EDEFAULT;
-
-				/**
-	 * The default value of the '{@link #getDefault() <em>Default</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getDefault()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String DEFAULT_EDEFAULT = null;
-
-				/**
-	 * The cached value of the '{@link #getDefault() <em>Default</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getDefault()
-	 * @generated
-	 * @ordered
-	 */
-	protected String default_ = DEFAULT_EDEFAULT;
-
-				/**
-	 * The cached value of the '{@link #getAliases() <em>Aliases</em>}' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getAliases()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<String> aliases;
-
-				/**
-	 * The default value of the '{@link #getOrder() <em>Order</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOrder()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String ORDER_EDEFAULT = null;
-
-				/**
-	 * The cached value of the '{@link #getOrder() <em>Order</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOrder()
-	 * @generated
-	 * @ordered
-	 */
-	protected String order = ORDER_EDEFAULT;
+	protected EMap<String, String> properties;
 
 				private int index=-1;
     
@@ -499,74 +442,11 @@ public class ElementImpl extends EObjectImpl implements Element {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getDoc() {
-		return doc;
-	}
-
-				/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setDoc(String newDoc) {
-		String oldDoc = doc;
-		doc = newDoc;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, DataMapperPackage.ELEMENT__DOC, oldDoc, doc));
-	}
-
-				/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String getDefault() {
-		return default_;
-	}
-
-				/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setDefault(String newDefault) {
-		String oldDefault = default_;
-		default_ = newDefault;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, DataMapperPackage.ELEMENT__DEFAULT, oldDefault, default_));
-	}
-
-				/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList<String> getAliases() {
-		if (aliases == null) {
-			aliases = new EDataTypeUniqueEList<String>(String.class, this, DataMapperPackage.ELEMENT__ALIASES);
+	public EMap<String, String> getProperties() {
+		if (properties == null) {
+			properties = new EcoreEMap<String,String>(DataMapperPackage.Literals.PROPERTY_KEY_VALUE_PAIR, PropertyKeyValuePairImpl.class, this, DataMapperPackage.ELEMENT__PROPERTIES);
 		}
-		return aliases;
-	}
-
-				/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String getOrder() {
-		return order;
-	}
-
-				/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setOrder(String newOrder) {
-		String oldOrder = order;
-		order = newOrder;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, DataMapperPackage.ELEMENT__ORDER, oldOrder, order));
+		return properties;
 	}
 
 				/**
@@ -607,6 +487,8 @@ public class ElementImpl extends EObjectImpl implements Element {
 				return basicSetInNode(null, msgs);
 			case DataMapperPackage.ELEMENT__FIELD_PARENT:
 				return basicSetFieldParent(null, msgs);
+			case DataMapperPackage.ELEMENT__PROPERTIES:
+				return ((InternalEList<?>)getProperties()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -647,14 +529,9 @@ public class ElementImpl extends EObjectImpl implements Element {
 				return getSchemaDataType();
 			case DataMapperPackage.ELEMENT__LEVEL:
 				return getLevel();
-			case DataMapperPackage.ELEMENT__DOC:
-				return getDoc();
-			case DataMapperPackage.ELEMENT__DEFAULT:
-				return getDefault();
-			case DataMapperPackage.ELEMENT__ALIASES:
-				return getAliases();
-			case DataMapperPackage.ELEMENT__ORDER:
-				return getOrder();
+			case DataMapperPackage.ELEMENT__PROPERTIES:
+				if (coreType) return getProperties();
+				else return getProperties().map();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -689,18 +566,8 @@ public class ElementImpl extends EObjectImpl implements Element {
 			case DataMapperPackage.ELEMENT__LEVEL:
 				setLevel((Integer)newValue);
 				return;
-			case DataMapperPackage.ELEMENT__DOC:
-				setDoc((String)newValue);
-				return;
-			case DataMapperPackage.ELEMENT__DEFAULT:
-				setDefault((String)newValue);
-				return;
-			case DataMapperPackage.ELEMENT__ALIASES:
-				getAliases().clear();
-				getAliases().addAll((Collection<? extends String>)newValue);
-				return;
-			case DataMapperPackage.ELEMENT__ORDER:
-				setOrder((String)newValue);
+			case DataMapperPackage.ELEMENT__PROPERTIES:
+				((EStructuralFeature.Setting)getProperties()).set(newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -735,17 +602,8 @@ public class ElementImpl extends EObjectImpl implements Element {
 			case DataMapperPackage.ELEMENT__LEVEL:
 				setLevel(LEVEL_EDEFAULT);
 				return;
-			case DataMapperPackage.ELEMENT__DOC:
-				setDoc(DOC_EDEFAULT);
-				return;
-			case DataMapperPackage.ELEMENT__DEFAULT:
-				setDefault(DEFAULT_EDEFAULT);
-				return;
-			case DataMapperPackage.ELEMENT__ALIASES:
-				getAliases().clear();
-				return;
-			case DataMapperPackage.ELEMENT__ORDER:
-				setOrder(ORDER_EDEFAULT);
+			case DataMapperPackage.ELEMENT__PROPERTIES:
+				getProperties().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -773,14 +631,8 @@ public class ElementImpl extends EObjectImpl implements Element {
 				return schemaDataType != SCHEMA_DATA_TYPE_EDEFAULT;
 			case DataMapperPackage.ELEMENT__LEVEL:
 				return level != LEVEL_EDEFAULT;
-			case DataMapperPackage.ELEMENT__DOC:
-				return DOC_EDEFAULT == null ? doc != null : !DOC_EDEFAULT.equals(doc);
-			case DataMapperPackage.ELEMENT__DEFAULT:
-				return DEFAULT_EDEFAULT == null ? default_ != null : !DEFAULT_EDEFAULT.equals(default_);
-			case DataMapperPackage.ELEMENT__ALIASES:
-				return aliases != null && !aliases.isEmpty();
-			case DataMapperPackage.ELEMENT__ORDER:
-				return ORDER_EDEFAULT == null ? order != null : !ORDER_EDEFAULT.equals(order);
+			case DataMapperPackage.ELEMENT__PROPERTIES:
+				return properties != null && !properties.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -803,14 +655,6 @@ public class ElementImpl extends EObjectImpl implements Element {
 		result.append(schemaDataType);
 		result.append(", level: ");
 		result.append(level);
-		result.append(", doc: ");
-		result.append(doc);
-		result.append(", default: ");
-		result.append(default_);
-		result.append(", aliases: ");
-		result.append(aliases);
-		result.append(", order: ");
-		result.append(order);
 		result.append(')');
 		return result.toString();
 	}

@@ -457,40 +457,13 @@ public interface DataMapperPackage extends EPackage {
     int ELEMENT__LEVEL = 6;
 
     /**
-	 * The feature id for the '<em><b>Doc</b></em>' attribute.
+	 * The feature id for the '<em><b>Properties</b></em>' map.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ELEMENT__DOC = 7;
-
-				/**
-	 * The feature id for the '<em><b>Default</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ELEMENT__DEFAULT = 8;
-
-				/**
-	 * The feature id for the '<em><b>Aliases</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ELEMENT__ALIASES = 9;
-
-				/**
-	 * The feature id for the '<em><b>Order</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ELEMENT__ORDER = 10;
+	int ELEMENT__PROPERTIES = 7;
 
 				/**
 	 * The number of structural features of the '<em>Element</em>' class.
@@ -499,7 +472,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ELEMENT_FEATURE_COUNT = 11;
+	int ELEMENT_FEATURE_COUNT = 8;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.datamapper.impl.AttributeImpl <em>Attribute</em>}' class.
@@ -557,22 +530,13 @@ public interface DataMapperPackage extends EPackage {
 	int ATTRIBUTE__FIELD_PARENT = 4;
 
 	/**
-	 * The feature id for the '<em><b>Doc</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ATTRIBUTE__DOC = 5;
-
-	/**
 	 * The number of structural features of the '<em>Attribute</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ATTRIBUTE_FEATURE_COUNT = 6;
+	int ATTRIBUTE_FEATURE_COUNT = 5;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.datamapper.impl.TreeNodeImpl <em>Tree Node</em>}' class.
@@ -1139,6 +1103,43 @@ public interface DataMapperPackage extends EPackage {
 	int UPPER_CASE_FEATURE_COUNT = OPERATOR_FEATURE_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link org.wso2.developerstudio.datamapper.impl.PropertyKeyValuePairImpl <em>Property Key Value Pair</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.wso2.developerstudio.datamapper.impl.PropertyKeyValuePairImpl
+	 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getPropertyKeyValuePair()
+	 * @generated
+	 */
+	int PROPERTY_KEY_VALUE_PAIR = 24;
+
+	/**
+	 * The feature id for the '<em><b>Key</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROPERTY_KEY_VALUE_PAIR__KEY = 0;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROPERTY_KEY_VALUE_PAIR__VALUE = 1;
+
+	/**
+	 * The number of structural features of the '<em>Property Key Value Pair</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROPERTY_KEY_VALUE_PAIR_FEATURE_COUNT = 2;
+
+	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.datamapper.SchemaDataType <em>Schema Data Type</em>}' enum.
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1146,7 +1147,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getSchemaDataType()
 	 * @generated
 	 */
-    int SCHEMA_DATA_TYPE = 24;
+    int SCHEMA_DATA_TYPE = 25;
 
     /**
 	 * Returns the meta object for class '{@link org.wso2.developerstudio.datamapper.DataMapperNode <em>Node</em>}'.
@@ -1489,48 +1490,15 @@ public interface DataMapperPackage extends EPackage {
     EAttribute getElement_Level();
 
     /**
-	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.datamapper.Element#getDoc <em>Doc</em>}'.
+	 * Returns the meta object for the map '{@link org.wso2.developerstudio.datamapper.Element#getProperties <em>Properties</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Doc</em>'.
-	 * @see org.wso2.developerstudio.datamapper.Element#getDoc()
+	 * @return the meta object for the map '<em>Properties</em>'.
+	 * @see org.wso2.developerstudio.datamapper.Element#getProperties()
 	 * @see #getElement()
 	 * @generated
 	 */
-	EAttribute getElement_Doc();
-
-				/**
-	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.datamapper.Element#getDefault <em>Default</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Default</em>'.
-	 * @see org.wso2.developerstudio.datamapper.Element#getDefault()
-	 * @see #getElement()
-	 * @generated
-	 */
-	EAttribute getElement_Default();
-
-				/**
-	 * Returns the meta object for the attribute list '{@link org.wso2.developerstudio.datamapper.Element#getAliases <em>Aliases</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute list '<em>Aliases</em>'.
-	 * @see org.wso2.developerstudio.datamapper.Element#getAliases()
-	 * @see #getElement()
-	 * @generated
-	 */
-	EAttribute getElement_Aliases();
-
-				/**
-	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.datamapper.Element#getOrder <em>Order</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Order</em>'.
-	 * @see org.wso2.developerstudio.datamapper.Element#getOrder()
-	 * @see #getElement()
-	 * @generated
-	 */
-	EAttribute getElement_Order();
+	EReference getElement_Properties();
 
 				/**
 	 * Returns the meta object for class '{@link org.wso2.developerstudio.datamapper.Attribute <em>Attribute</em>}'.
@@ -1596,17 +1564,6 @@ public interface DataMapperPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getAttribute_FieldParent();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.datamapper.Attribute#getDoc <em>Doc</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Doc</em>'.
-	 * @see org.wso2.developerstudio.datamapper.Attribute#getDoc()
-	 * @see #getAttribute()
-	 * @generated
-	 */
-	EAttribute getAttribute_Doc();
 
 	/**
 	 * Returns the meta object for class '{@link org.wso2.developerstudio.datamapper.TreeNode <em>Tree Node</em>}'.
@@ -1994,6 +1951,40 @@ public interface DataMapperPackage extends EPackage {
 	EClass getUpperCase();
 
 	/**
+	 * Returns the meta object for class '{@link java.util.Map.Entry <em>Property Key Value Pair</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Property Key Value Pair</em>'.
+	 * @see java.util.Map.Entry
+	 * @model keyDataType="org.eclipse.emf.ecore.EString" keyRequired="true"
+	 *        valueDefault="" valueDataType="org.eclipse.emf.ecore.EString" valueRequired="true"
+	 * @generated
+	 */
+	EClass getPropertyKeyValuePair();
+
+	/**
+	 * Returns the meta object for the attribute '{@link java.util.Map.Entry <em>Key</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Key</em>'.
+	 * @see java.util.Map.Entry
+	 * @see #getPropertyKeyValuePair()
+	 * @generated
+	 */
+	EAttribute getPropertyKeyValuePair_Key();
+
+	/**
+	 * Returns the meta object for the attribute '{@link java.util.Map.Entry <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Value</em>'.
+	 * @see java.util.Map.Entry
+	 * @see #getPropertyKeyValuePair()
+	 * @generated
+	 */
+	EAttribute getPropertyKeyValuePair_Value();
+
+	/**
 	 * Returns the meta object for enum '{@link org.wso2.developerstudio.datamapper.SchemaDataType <em>Schema Data Type</em>}'.
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -2306,36 +2297,12 @@ public interface DataMapperPackage extends EPackage {
         EAttribute ELEMENT__LEVEL = eINSTANCE.getElement_Level();
 
         /**
-		 * The meta object literal for the '<em><b>Doc</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Properties</b></em>' map feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute ELEMENT__DOC = eINSTANCE.getElement_Doc();
-
-								/**
-		 * The meta object literal for the '<em><b>Default</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute ELEMENT__DEFAULT = eINSTANCE.getElement_Default();
-
-								/**
-		 * The meta object literal for the '<em><b>Aliases</b></em>' attribute list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute ELEMENT__ALIASES = eINSTANCE.getElement_Aliases();
-
-								/**
-		 * The meta object literal for the '<em><b>Order</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute ELEMENT__ORDER = eINSTANCE.getElement_Order();
+		EReference ELEMENT__PROPERTIES = eINSTANCE.getElement_Properties();
 
 								/**
 		 * The meta object literal for the '{@link org.wso2.developerstudio.datamapper.impl.AttributeImpl <em>Attribute</em>}' class.
@@ -2386,14 +2353,6 @@ public interface DataMapperPackage extends EPackage {
 		 * @generated
 		 */
 		EReference ATTRIBUTE__FIELD_PARENT = eINSTANCE.getAttribute_FieldParent();
-
-		/**
-		 * The meta object literal for the '<em><b>Doc</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute ATTRIBUTE__DOC = eINSTANCE.getAttribute_Doc();
 
 		/**
 		 * The meta object literal for the '{@link org.wso2.developerstudio.datamapper.impl.TreeNodeImpl <em>Tree Node</em>}' class.
@@ -2704,6 +2663,32 @@ public interface DataMapperPackage extends EPackage {
 		 * @generated
 		 */
 		EClass UPPER_CASE = eINSTANCE.getUpperCase();
+
+								/**
+		 * The meta object literal for the '{@link org.wso2.developerstudio.datamapper.impl.PropertyKeyValuePairImpl <em>Property Key Value Pair</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.wso2.developerstudio.datamapper.impl.PropertyKeyValuePairImpl
+		 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getPropertyKeyValuePair()
+		 * @generated
+		 */
+		EClass PROPERTY_KEY_VALUE_PAIR = eINSTANCE.getPropertyKeyValuePair();
+
+								/**
+		 * The meta object literal for the '<em><b>Key</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PROPERTY_KEY_VALUE_PAIR__KEY = eINSTANCE.getPropertyKeyValuePair_Key();
+
+								/**
+		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PROPERTY_KEY_VALUE_PAIR__VALUE = eINSTANCE.getPropertyKeyValuePair_Value();
 
 								/**
 		 * The meta object literal for the '{@link org.wso2.developerstudio.datamapper.SchemaDataType <em>Schema Data Type</em>}' enum.

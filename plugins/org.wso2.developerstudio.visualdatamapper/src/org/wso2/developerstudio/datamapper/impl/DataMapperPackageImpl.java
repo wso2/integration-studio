@@ -2,6 +2,7 @@
  */
 package org.wso2.developerstudio.datamapper.impl;
 
+import java.util.Map;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
@@ -35,6 +36,7 @@ import org.wso2.developerstudio.datamapper.Operators;
 import org.wso2.developerstudio.datamapper.Order;
 import org.wso2.developerstudio.datamapper.OutNode;
 import org.wso2.developerstudio.datamapper.Output;
+import org.wso2.developerstudio.datamapper.PropertyKeyValuePair;
 import org.wso2.developerstudio.datamapper.SchemaDataType;
 import org.wso2.developerstudio.datamapper.Split;
 import org.wso2.developerstudio.datamapper.TreeNode;
@@ -214,6 +216,13 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 	 * @generated
 	 */
 	private EClass upperCaseEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass propertyKeyValuePairEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -576,35 +585,8 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getElement_Doc() {
-		return (EAttribute)elementEClass.getEStructuralFeatures().get(7);
-	}
-
-				/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getElement_Default() {
-		return (EAttribute)elementEClass.getEStructuralFeatures().get(8);
-	}
-
-				/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getElement_Aliases() {
-		return (EAttribute)elementEClass.getEStructuralFeatures().get(9);
-	}
-
-				/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getElement_Order() {
-		return (EAttribute)elementEClass.getEStructuralFeatures().get(10);
+	public EReference getElement_Properties() {
+		return (EReference)elementEClass.getEStructuralFeatures().get(7);
 	}
 
 				/**
@@ -659,15 +641,6 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 	 */
 	public EReference getAttribute_FieldParent() {
 		return (EReference)attributeEClass.getEStructuralFeatures().get(4);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getAttribute_Doc() {
-		return (EAttribute)attributeEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -996,6 +969,33 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 
 	/**
 	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getPropertyKeyValuePair() {
+		return propertyKeyValuePairEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getPropertyKeyValuePair_Key() {
+		return (EAttribute)propertyKeyValuePairEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getPropertyKeyValuePair_Value() {
+		return (EAttribute)propertyKeyValuePairEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -1074,10 +1074,7 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 		createEReference(elementEClass, ELEMENT__FIELD_PARENT);
 		createEAttribute(elementEClass, ELEMENT__SCHEMA_DATA_TYPE);
 		createEAttribute(elementEClass, ELEMENT__LEVEL);
-		createEAttribute(elementEClass, ELEMENT__DOC);
-		createEAttribute(elementEClass, ELEMENT__DEFAULT);
-		createEAttribute(elementEClass, ELEMENT__ALIASES);
-		createEAttribute(elementEClass, ELEMENT__ORDER);
+		createEReference(elementEClass, ELEMENT__PROPERTIES);
 
 		attributeEClass = createEClass(ATTRIBUTE);
 		createEAttribute(attributeEClass, ATTRIBUTE__NAME);
@@ -1085,7 +1082,6 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 		createEReference(attributeEClass, ATTRIBUTE__OUT_NODE);
 		createEReference(attributeEClass, ATTRIBUTE__IN_NODE);
 		createEReference(attributeEClass, ATTRIBUTE__FIELD_PARENT);
-		createEAttribute(attributeEClass, ATTRIBUTE__DOC);
 
 		treeNodeEClass = createEClass(TREE_NODE);
 		createEAttribute(treeNodeEClass, TREE_NODE__NAME);
@@ -1133,6 +1129,10 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 		containsEClass = createEClass(CONTAINS);
 
 		upperCaseEClass = createEClass(UPPER_CASE);
+
+		propertyKeyValuePairEClass = createEClass(PROPERTY_KEY_VALUE_PAIR);
+		createEAttribute(propertyKeyValuePairEClass, PROPERTY_KEY_VALUE_PAIR__KEY);
+		createEAttribute(propertyKeyValuePairEClass, PROPERTY_KEY_VALUE_PAIR__VALUE);
 
 		// Create enums
 		schemaDataTypeEEnum = createEEnum(SCHEMA_DATA_TYPE);
@@ -1222,10 +1222,7 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 		initEReference(getElement_FieldParent(), this.getTreeNode(), this.getTreeNode_Element(), "fieldParent", null, 0, 1, Element.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getElement_SchemaDataType(), this.getSchemaDataType(), "schemaDataType", null, 0, 1, Element.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getElement_Level(), ecorePackage.getEInt(), "level", null, 0, 1, Element.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getElement_Doc(), ecorePackage.getEString(), "doc", null, 0, 1, Element.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getElement_Default(), ecorePackage.getEString(), "default", null, 0, 1, Element.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getElement_Aliases(), ecorePackage.getEString(), "aliases", null, 0, -1, Element.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getElement_Order(), ecorePackage.getEString(), "order", null, 0, 1, Element.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getElement_Properties(), this.getPropertyKeyValuePair(), null, "properties", null, 1, -1, Element.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(attributeEClass, Attribute.class, "Attribute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getAttribute_Name(), ecorePackage.getEString(), "name", null, 0, 1, Attribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1233,7 +1230,6 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 		initEReference(getAttribute_OutNode(), this.getOutNode(), null, "outNode", null, 0, 1, Attribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getAttribute_InNode(), this.getInNode(), this.getInNode_AttributeParent(), "inNode", null, 0, 1, Attribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getAttribute_FieldParent(), this.getTreeNode(), this.getTreeNode_Attribute(), "fieldParent", null, 0, 1, Attribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getAttribute_Doc(), ecorePackage.getEString(), "doc", null, 0, 1, Attribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(treeNodeEClass, TreeNode.class, "TreeNode", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getTreeNode_Name(), ecorePackage.getEString(), "name", null, 0, 1, TreeNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1281,6 +1277,10 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 		initEClass(containsEClass, Contains.class, "Contains", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(upperCaseEClass, UpperCase.class, "UpperCase", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(propertyKeyValuePairEClass, Map.Entry.class, "PropertyKeyValuePair", !IS_ABSTRACT, !IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getPropertyKeyValuePair_Key(), ecorePackage.getEString(), "key", null, 1, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPropertyKeyValuePair_Value(), ecorePackage.getEString(), "value", "", 1, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(schemaDataTypeEEnum, SchemaDataType.class, "SchemaDataType");

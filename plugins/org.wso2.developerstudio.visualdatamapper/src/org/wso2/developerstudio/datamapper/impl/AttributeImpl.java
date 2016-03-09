@@ -230,9 +230,9 @@ public class AttributeImpl extends EObjectImpl implements Attribute {
 		if (newInNode != inNode) {
 			NotificationChain msgs = null;
 			if (inNode != null)
-				msgs = ((InternalEObject)inNode).eInverseRemove(this, DataMapperPackage.IN_NODE__ATTRIBUTE_PARENT, InNode.class, msgs);
+				msgs = ((InternalEObject)inNode).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DataMapperPackage.ATTRIBUTE__IN_NODE, null, msgs);
 			if (newInNode != null)
-				msgs = ((InternalEObject)newInNode).eInverseAdd(this, DataMapperPackage.IN_NODE__ATTRIBUTE_PARENT, InNode.class, msgs);
+				msgs = ((InternalEObject)newInNode).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DataMapperPackage.ATTRIBUTE__IN_NODE, null, msgs);
 			msgs = basicSetInNode(newInNode, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
@@ -289,10 +289,6 @@ public class AttributeImpl extends EObjectImpl implements Attribute {
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case DataMapperPackage.ATTRIBUTE__IN_NODE:
-				if (inNode != null)
-					msgs = ((InternalEObject)inNode).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DataMapperPackage.ATTRIBUTE__IN_NODE, null, msgs);
-				return basicSetInNode((InNode)otherEnd, msgs);
 			case DataMapperPackage.ATTRIBUTE__FIELD_PARENT:
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);

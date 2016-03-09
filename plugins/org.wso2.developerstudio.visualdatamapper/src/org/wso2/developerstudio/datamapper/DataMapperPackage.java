@@ -676,31 +676,13 @@ public interface DataMapperPackage extends EPackage {
 	int IN_NODE__ELEMENT_PARENT = 1;
 
 	/**
-	 * The feature id for the '<em><b>Attribute Parent</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int IN_NODE__ATTRIBUTE_PARENT = 2;
-
-	/**
-	 * The feature id for the '<em><b>Concat Parent</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int IN_NODE__CONCAT_PARENT = 3;
-
-	/**
 	 * The number of structural features of the '<em>In Node</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int IN_NODE_FEATURE_COUNT = 4;
+	int IN_NODE_FEATURE_COUNT = 2;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.datamapper.impl.OutNodeImpl <em>Out Node</em>}' class.
@@ -1711,28 +1693,6 @@ public interface DataMapperPackage extends EPackage {
 	EReference getInNode_ElementParent();
 
 	/**
-	 * Returns the meta object for the container reference '{@link org.wso2.developerstudio.datamapper.InNode#getAttributeParent <em>Attribute Parent</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the container reference '<em>Attribute Parent</em>'.
-	 * @see org.wso2.developerstudio.datamapper.InNode#getAttributeParent()
-	 * @see #getInNode()
-	 * @generated
-	 */
-	EReference getInNode_AttributeParent();
-
-	/**
-	 * Returns the meta object for the reference '{@link org.wso2.developerstudio.datamapper.InNode#getConcatParent <em>Concat Parent</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Concat Parent</em>'.
-	 * @see org.wso2.developerstudio.datamapper.InNode#getConcatParent()
-	 * @see #getInNode()
-	 * @generated
-	 */
-	EReference getInNode_ConcatParent();
-
-	/**
 	 * Returns the meta object for class '{@link org.wso2.developerstudio.datamapper.OutNode <em>Out Node</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2446,22 +2406,6 @@ public interface DataMapperPackage extends EPackage {
 		 * @generated
 		 */
 		EReference IN_NODE__ELEMENT_PARENT = eINSTANCE.getInNode_ElementParent();
-
-		/**
-		 * The meta object literal for the '<em><b>Attribute Parent</b></em>' container reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference IN_NODE__ATTRIBUTE_PARENT = eINSTANCE.getInNode_AttributeParent();
-
-		/**
-		 * The meta object literal for the '<em><b>Concat Parent</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference IN_NODE__CONCAT_PARENT = eINSTANCE.getInNode_ConcatParent();
 
 		/**
 		 * The meta object literal for the '{@link org.wso2.developerstudio.datamapper.impl.OutNodeImpl <em>Out Node</em>}' class.

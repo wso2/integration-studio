@@ -106,7 +106,6 @@ public interface Attribute extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>In Node</b></em>' containment reference.
-	 * It is bidirectional and its opposite is '{@link org.wso2.developerstudio.datamapper.InNode#getAttributeParent <em>Attribute Parent</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>In Node</em>' reference isn't clear,
@@ -116,8 +115,7 @@ public interface Attribute extends EObject {
 	 * @return the value of the '<em>In Node</em>' containment reference.
 	 * @see #setInNode(InNode)
 	 * @see org.wso2.developerstudio.datamapper.DataMapperPackage#getAttribute_InNode()
-	 * @see org.wso2.developerstudio.datamapper.InNode#getAttributeParent
-	 * @model opposite="attributeParent" containment="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	InNode getInNode();

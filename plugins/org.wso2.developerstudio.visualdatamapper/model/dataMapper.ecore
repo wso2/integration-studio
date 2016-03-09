@@ -68,7 +68,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="outNode" eType="#//OutNode"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="inNode" eType="#//InNode"
-        containment="true" eOpposite="#//InNode/attributeParent"/>
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="fieldParent" eType="#//TreeNode"
         eOpposite="#//TreeNode/attribute"/>
   </eClassifiers>
@@ -98,9 +98,6 @@
         eType="#//DataMapperLink" eOpposite="#//DataMapperLink/inNode"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="elementParent" eType="#//Element"
         eOpposite="#//Element/inNode"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="attributeParent" eType="#//Attribute"
-        eOpposite="#//Attribute/inNode"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="concatParent" eType="#//Concat"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="OutNode">
     <eStructuralFeatures xsi:type="ecore:EReference" name="outgoingLink" upperBound="-1"

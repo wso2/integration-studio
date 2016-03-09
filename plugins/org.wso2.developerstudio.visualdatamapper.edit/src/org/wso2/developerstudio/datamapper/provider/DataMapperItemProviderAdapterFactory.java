@@ -323,29 +323,6 @@ public class DataMapperItemProviderAdapterFactory extends DataMapperAdapterFacto
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.wso2.developerstudio.datamapper.Attribute} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected AttributeItemProvider attributeItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.wso2.developerstudio.datamapper.Attribute}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createAttributeAdapter() {
-		if (attributeItemProvider == null) {
-			attributeItemProvider = new AttributeItemProvider(this);
-		}
-
-		return attributeItemProvider;
-	}
-
-	/**
 	 * This keeps track of the one adapter used for all {@link org.wso2.developerstudio.datamapper.TreeNode} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -731,7 +708,6 @@ public class DataMapperItemProviderAdapterFactory extends DataMapperAdapterFacto
 		if (operatorRightContainerItemProvider != null) operatorRightContainerItemProvider.dispose();
 		if (operatorRightConnectorItemProvider != null) operatorRightConnectorItemProvider.dispose();
 		if (elementItemProvider != null) elementItemProvider.dispose();
-		if (attributeItemProvider != null) attributeItemProvider.dispose();
 		if (treeNodeItemProvider != null) treeNodeItemProvider.dispose();
 		if (inNodeItemProvider != null) inNodeItemProvider.dispose();
 		if (outNodeItemProvider != null) outNodeItemProvider.dispose();

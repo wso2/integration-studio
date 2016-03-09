@@ -31,7 +31,6 @@ import org.eclipse.gmf.runtime.diagram.ui.internal.services.palette.PaletteToolE
 import org.eclipse.gmf.runtime.diagram.ui.tools.UnspecifiedTypeConnectionTool;
 import org.eclipse.gmf.runtime.diagram.ui.tools.UnspecifiedTypeCreationTool;
 import org.eclipse.gmf.runtime.emf.type.core.IElementType;
-import org.wso2.developerstudio.datamapper.diagram.edit.parts.AttributeEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.DataMapperRootEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.ElementEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.InNode2EditPart;
@@ -334,46 +333,7 @@ public class DataMapperPaletteFactory {
 						}// for
 					}// for leftconnector mouse enter
 
-					/*
-					 * for attribute
-					 */
-					else if (getTargetEditPart() instanceof AttributeEditPart) {
-						for (int i = 0; i < ((AttributeEditPart) getTargetEditPart()).getChildren()
-								.size(); ++i) {
-
-							if (getRoot(getTargetEditPart()) instanceof OutputEditPart) {
-								if (((AttributeEditPart) getTargetEditPart()).getChildren().get(i) instanceof InNodeEditPart) {
-									return ((InNodeEditPart) ((AttributeEditPart) getTargetEditPart())
-											.getChildren().get(i)).getCommand(getTargetRequest());
-
-								}
-
-								else if (((AttributeEditPart) getTargetEditPart()).getChildren()
-										.get(i) instanceof InNode2EditPart) {
-									return ((InNode2EditPart) ((AttributeEditPart) getTargetEditPart())
-											.getChildren().get(i)).getCommand(getTargetRequest());
-
-								}
-							}
-
-							else if (getRoot(getTargetEditPart()) instanceof InputEditPart) {
-								if (((AttributeEditPart) getTargetEditPart()).getChildren().get(i) instanceof OutNodeEditPart) {
-									return ((OutNodeEditPart) ((AttributeEditPart) getTargetEditPart())
-											.getChildren().get(i)).getCommand(getTargetRequest());
-
-								}
-
-								else if (((AttributeEditPart) getTargetEditPart()).getChildren()
-										.get(i) instanceof OutNode2EditPart) {
-									return ((OutNode2EditPart) ((AttributeEditPart) getTargetEditPart())
-											.getChildren().get(i)).getCommand(getTargetRequest());
-
-								}
-							}
-
-						}// for
-					}// for attribute mouse enter
-
+					
 					return super.getCommand();
 				}// get command
 			}; // UnspecifiedTypeConnectionTool

@@ -61,23 +61,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="properties" lowerBound="1"
         upperBound="-1" eType="#//PropertyKeyValuePair" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Attribute">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
-        defaultValueLiteral=""/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="outNode" eType="#//OutNode"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="inNode" eType="#//InNode"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="fieldParent" eType="#//TreeNode"
-        eOpposite="#//TreeNode/attribute"/>
-  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TreeNode">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="node" upperBound="-1" eType="#//TreeNode"
         containment="true" eOpposite="#//TreeNode/fieldParent"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="attribute" upperBound="-1"
-        eType="#//Attribute" containment="true" eOpposite="#//Attribute/fieldParent"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="element" upperBound="-1"
         eType="#//Element" containment="true" eOpposite="#//Element/fieldParent"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="fieldParent" eType="#//TreeNode"

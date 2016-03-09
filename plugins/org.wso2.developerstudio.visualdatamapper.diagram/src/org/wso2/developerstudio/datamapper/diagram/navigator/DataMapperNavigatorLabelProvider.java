@@ -25,7 +25,6 @@ import org.wso2.developerstudio.datamapper.LowerCase;
 import org.wso2.developerstudio.datamapper.Split;
 import org.wso2.developerstudio.datamapper.TreeNode;
 import org.wso2.developerstudio.datamapper.UpperCase;
-import org.wso2.developerstudio.datamapper.diagram.edit.parts.AttributeEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.ConcatEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.ConstantEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.ContainsEditPart;
@@ -151,9 +150,6 @@ public class DataMapperNavigatorLabelProvider extends LabelProvider implements
 		case TreeNode2EditPart.VISUAL_ID:
 			return getImage(
 					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/datamapper?TreeNode", DataMapperElementTypes.TreeNode_3003); //$NON-NLS-1$
-		case AttributeEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/datamapper?Attribute", DataMapperElementTypes.Attribute_3004); //$NON-NLS-1$
 		case InNodeEditPart.VISUAL_ID:
 			return getImage(
 					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/datamapper?InNode", DataMapperElementTypes.InNode_3005); //$NON-NLS-1$
@@ -272,8 +268,6 @@ public class DataMapperNavigatorLabelProvider extends LabelProvider implements
 			return getTreeNode_3002Text(view);
 		case TreeNode2EditPart.VISUAL_ID:
 			return getTreeNode_3003Text(view);
-		case AttributeEditPart.VISUAL_ID:
-			return getAttribute_3004Text(view);
 		case InNodeEditPart.VISUAL_ID:
 			return getInNode_3005Text(view);
 		case OutNodeEditPart.VISUAL_ID:

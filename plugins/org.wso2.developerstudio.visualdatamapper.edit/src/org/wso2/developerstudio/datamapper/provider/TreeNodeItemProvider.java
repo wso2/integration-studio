@@ -213,7 +213,6 @@ public class TreeNodeItemProvider
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(DataMapperPackage.Literals.TREE_NODE__NODE);
-			childrenFeatures.add(DataMapperPackage.Literals.TREE_NODE__ATTRIBUTE);
 			childrenFeatures.add(DataMapperPackage.Literals.TREE_NODE__ELEMENT);
 		}
 		return childrenFeatures;
@@ -278,7 +277,6 @@ public class TreeNodeItemProvider
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case DataMapperPackage.TREE_NODE__NODE:
-			case DataMapperPackage.TREE_NODE__ATTRIBUTE:
 			case DataMapperPackage.TREE_NODE__ELEMENT:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
@@ -301,11 +299,6 @@ public class TreeNodeItemProvider
 			(createChildParameter
 				(DataMapperPackage.Literals.TREE_NODE__NODE,
 				 DataMapperFactory.eINSTANCE.createTreeNode()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(DataMapperPackage.Literals.TREE_NODE__ATTRIBUTE,
-				 DataMapperFactory.eINSTANCE.createAttribute()));
 
 		newChildDescriptors.add
 			(createChildParameter

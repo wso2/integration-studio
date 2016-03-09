@@ -320,10 +320,10 @@ public class InputEditPart extends ShapeNodeEditPart {
 	private void createAttribute(
 			org.wso2.developerstudio.datamapper.diagram.tree.model.Attribute attribute,
 			TreeNode treeNode) {
-		Attribute attr = DataMapperFactory.eINSTANCE.createAttribute();
+		Element attr = DataMapperFactory.eINSTANCE.createElement();
 		attr.setName(attribute.getCount() + "," + attribute.getName());
 		//TODO fix this2016 attr.setDoc(attribute.getDoc());
-		treeNode.getAttribute().add(attr);
+		treeNode.getElement().add(attr);
 	}
 
 	/**

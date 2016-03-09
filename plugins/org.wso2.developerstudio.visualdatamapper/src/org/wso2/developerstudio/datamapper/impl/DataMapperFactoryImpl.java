@@ -76,7 +76,6 @@ public class DataMapperFactoryImpl extends EFactoryImpl implements DataMapperFac
 			case DataMapperPackage.OPERATOR_RIGHT_CONTAINER: return createOperatorRightContainer();
 			case DataMapperPackage.OPERATOR_RIGHT_CONNECTOR: return createOperatorRightConnector();
 			case DataMapperPackage.ELEMENT: return createElement();
-			case DataMapperPackage.ATTRIBUTE: return createAttribute();
 			case DataMapperPackage.TREE_NODE: return createTreeNode();
 			case DataMapperPackage.IN_NODE: return createInNode();
 			case DataMapperPackage.OUT_NODE: return createOutNode();
@@ -249,18 +248,7 @@ public class DataMapperFactoryImpl extends EFactoryImpl implements DataMapperFac
 		return element;
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	public Attribute createAttribute() {
-		AttributeImpl attribute = new AttributeImpl();		
-		//attribute.setInNode(createInNode());
-		//attribute.setOutNode(createOutNode());
-		return attribute;
-	}
-
+	
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

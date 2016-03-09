@@ -12,10 +12,8 @@ import org.eclipse.gmf.runtime.emf.type.core.requests.CreateElementRequest;
 import org.eclipse.gmf.runtime.emf.type.core.requests.DestroyElementRequest;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.View;
-import org.wso2.developerstudio.datamapper.diagram.edit.commands.AttributeCreateCommand;
 import org.wso2.developerstudio.datamapper.diagram.edit.commands.ElementCreateCommand;
 import org.wso2.developerstudio.datamapper.diagram.edit.commands.TreeNode2CreateCommand;
-import org.wso2.developerstudio.datamapper.diagram.edit.parts.AttributeEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.ElementEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.TreeNode2EditPart;
 import org.wso2.developerstudio.datamapper.diagram.part.DataMapperVisualIDRegistry;
@@ -39,9 +37,6 @@ public class TreeNodeItemSemanticEditPolicy extends DataMapperBaseItemSemanticEd
 	protected Command getCreateCommand(CreateElementRequest req) {
 		if (DataMapperElementTypes.TreeNode_3003 == req.getElementType()) {
 			return getGEFWrapper(new TreeNode2CreateCommand(req));
-		}
-		if (DataMapperElementTypes.Attribute_3004 == req.getElementType()) {
-			return getGEFWrapper(new AttributeCreateCommand(req));
 		}
 		if (DataMapperElementTypes.Element_3007 == req.getElementType()) {
 			return getGEFWrapper(new ElementCreateCommand(req));
@@ -79,12 +74,6 @@ public class TreeNodeItemSemanticEditPolicy extends DataMapperBaseItemSemanticEd
 			Node node = (Node) nit.next();
 			switch (DataMapperVisualIDRegistry.getVisualID(node)) {
 			case TreeNode2EditPart.VISUAL_ID:
-				cmd.add(new DestroyElementCommand(new DestroyElementRequest(getEditingDomain(),
-						node.getElement(), false))); // directlyOwned: true
-				// don't need explicit deletion of node as parent's view deletion would clean child views as well 
-				// cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(), node));
-				break;
-			case AttributeEditPart.VISUAL_ID:
 				cmd.add(new DestroyElementCommand(new DestroyElementRequest(getEditingDomain(),
 						node.getElement(), false))); // directlyOwned: true
 				// don't need explicit deletion of node as parent's view deletion would clean child views as well 

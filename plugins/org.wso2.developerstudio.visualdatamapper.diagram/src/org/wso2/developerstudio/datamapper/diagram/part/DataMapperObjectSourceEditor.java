@@ -175,10 +175,6 @@ public class DataMapperObjectSourceEditor {
 			printHierarchy( (EList<TreeNode>) ((TreeNode) treeNode).getNode().get(i));
 		}
 		
-		for(int j=0; j<((TreeNode) treeNode).getAttribute().size();j++){
-			System.out.println("<" +((Attribute) ((TreeNode) treeNode).getAttribute()).getName()+">"+ "\n");
-		}
-		
 		for(int k=0; k<((TreeNode) treeNode).getElement().size();k++){
 			System.out.println("<" +((Element) ((TreeNode) treeNode).getElement()).getName()+">"+ "\n");
 		}

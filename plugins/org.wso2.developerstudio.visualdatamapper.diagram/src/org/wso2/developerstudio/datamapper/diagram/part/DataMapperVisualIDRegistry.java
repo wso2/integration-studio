@@ -8,7 +8,6 @@ import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.gmf.tooling.runtime.structure.DiagramStructure;
 import org.wso2.developerstudio.datamapper.DataMapperPackage;
 import org.wso2.developerstudio.datamapper.DataMapperRoot;
-import org.wso2.developerstudio.datamapper.diagram.edit.parts.AttributeEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.ConcatEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.ConstantEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.ContainsEditPart;
@@ -229,9 +228,6 @@ public class DataMapperVisualIDRegistry {
 			if (DataMapperPackage.eINSTANCE.getTreeNode().isSuperTypeOf(domainElement.eClass())) {
 				return TreeNode2EditPart.VISUAL_ID;
 			}
-			if (DataMapperPackage.eINSTANCE.getAttribute().isSuperTypeOf(domainElement.eClass())) {
-				return AttributeEditPart.VISUAL_ID;
-			}
 			if (DataMapperPackage.eINSTANCE.getElement().isSuperTypeOf(domainElement.eClass())) {
 				return ElementEditPart.VISUAL_ID;
 			}
@@ -240,19 +236,8 @@ public class DataMapperVisualIDRegistry {
 			if (DataMapperPackage.eINSTANCE.getTreeNode().isSuperTypeOf(domainElement.eClass())) {
 				return TreeNode2EditPart.VISUAL_ID;
 			}
-			if (DataMapperPackage.eINSTANCE.getAttribute().isSuperTypeOf(domainElement.eClass())) {
-				return AttributeEditPart.VISUAL_ID;
-			}
 			if (DataMapperPackage.eINSTANCE.getElement().isSuperTypeOf(domainElement.eClass())) {
 				return ElementEditPart.VISUAL_ID;
-			}
-			break;
-		case AttributeEditPart.VISUAL_ID:
-			if (DataMapperPackage.eINSTANCE.getInNode().isSuperTypeOf(domainElement.eClass())) {
-				return InNodeEditPart.VISUAL_ID;
-			}
-			if (DataMapperPackage.eINSTANCE.getOutNode().isSuperTypeOf(domainElement.eClass())) {
-				return OutNodeEditPart.VISUAL_ID;
 			}
 			break;
 		case ElementEditPart.VISUAL_ID:
@@ -266,9 +251,6 @@ public class DataMapperVisualIDRegistry {
 		case TreeNode3EditPart.VISUAL_ID:
 			if (DataMapperPackage.eINSTANCE.getTreeNode().isSuperTypeOf(domainElement.eClass())) {
 				return TreeNode2EditPart.VISUAL_ID;
-			}
-			if (DataMapperPackage.eINSTANCE.getAttribute().isSuperTypeOf(domainElement.eClass())) {
-				return AttributeEditPart.VISUAL_ID;
 			}
 			if (DataMapperPackage.eINSTANCE.getElement().isSuperTypeOf(domainElement.eClass())) {
 				return ElementEditPart.VISUAL_ID;
@@ -412,9 +394,6 @@ public class DataMapperVisualIDRegistry {
 			if (TreeNode2EditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
-			if (AttributeEditPart.VISUAL_ID == nodeVisualID) {
-				return true;
-			}
 			if (ElementEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
@@ -426,18 +405,7 @@ public class DataMapperVisualIDRegistry {
 			if (TreeNode2EditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
-			if (AttributeEditPart.VISUAL_ID == nodeVisualID) {
-				return true;
-			}
 			if (ElementEditPart.VISUAL_ID == nodeVisualID) {
-				return true;
-			}
-			break;
-		case AttributeEditPart.VISUAL_ID:
-			if (InNodeEditPart.VISUAL_ID == nodeVisualID) {
-				return true;
-			}
-			if (OutNodeEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
 			break;
@@ -457,9 +425,6 @@ public class DataMapperVisualIDRegistry {
 				return true;
 			}
 			if (TreeNode2EditPart.VISUAL_ID == nodeVisualID) {
-				return true;
-			}
-			if (AttributeEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
 			if (ElementEditPart.VISUAL_ID == nodeVisualID) {

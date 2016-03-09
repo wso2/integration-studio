@@ -16,7 +16,6 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link org.wso2.developerstudio.datamapper.TreeNode#getName <em>Name</em>}</li>
  *   <li>{@link org.wso2.developerstudio.datamapper.TreeNode#getNode <em>Node</em>}</li>
- *   <li>{@link org.wso2.developerstudio.datamapper.TreeNode#getAttribute <em>Attribute</em>}</li>
  *   <li>{@link org.wso2.developerstudio.datamapper.TreeNode#getElement <em>Element</em>}</li>
  *   <li>{@link org.wso2.developerstudio.datamapper.TreeNode#getFieldParent <em>Field Parent</em>}</li>
  *   <li>{@link org.wso2.developerstudio.datamapper.TreeNode#getOutputParent <em>Output Parent</em>}</li>
@@ -77,24 +76,6 @@ public interface TreeNode extends EObject {
 	 * @generated
 	 */
 	EList<TreeNode> getNode();
-
-	/**
-	 * Returns the value of the '<em><b>Attribute</b></em>' containment reference list.
-	 * The list contents are of type {@link org.wso2.developerstudio.datamapper.Attribute}.
-	 * It is bidirectional and its opposite is '{@link org.wso2.developerstudio.datamapper.Attribute#getFieldParent <em>Field Parent</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Attribute</em>' reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Attribute</em>' containment reference list.
-	 * @see org.wso2.developerstudio.datamapper.DataMapperPackage#getTreeNode_Attribute()
-	 * @see org.wso2.developerstudio.datamapper.Attribute#getFieldParent
-	 * @model opposite="fieldParent" containment="true"
-	 * @generated
-	 */
-	EList<Attribute> getAttribute();
 
 	/**
 	 * Returns the value of the '<em><b>Element</b></em>' containment reference list.

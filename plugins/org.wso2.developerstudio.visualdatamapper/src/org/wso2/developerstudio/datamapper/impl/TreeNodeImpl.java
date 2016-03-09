@@ -32,7 +32,6 @@ import org.wso2.developerstudio.datamapper.TreeNode;
  * <ul>
  *   <li>{@link org.wso2.developerstudio.datamapper.impl.TreeNodeImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.wso2.developerstudio.datamapper.impl.TreeNodeImpl#getNode <em>Node</em>}</li>
- *   <li>{@link org.wso2.developerstudio.datamapper.impl.TreeNodeImpl#getAttribute <em>Attribute</em>}</li>
  *   <li>{@link org.wso2.developerstudio.datamapper.impl.TreeNodeImpl#getElement <em>Element</em>}</li>
  *   <li>{@link org.wso2.developerstudio.datamapper.impl.TreeNodeImpl#getFieldParent <em>Field Parent</em>}</li>
  *   <li>{@link org.wso2.developerstudio.datamapper.impl.TreeNodeImpl#getOutputParent <em>Output Parent</em>}</li>
@@ -77,16 +76,6 @@ public class TreeNodeImpl extends EObjectImpl implements TreeNode {
 	 * @ordered
 	 */
 	protected EList<TreeNode> node;
-
-	/**
-	 * The cached value of the '{@link #getAttribute() <em>Attribute</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getAttribute()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Attribute> attribute;
 
 	/**
 	 * The cached value of the '{@link #getElement() <em>Element</em>}' containment reference list.
@@ -247,18 +236,6 @@ public class TreeNodeImpl extends EObjectImpl implements TreeNode {
 			node = new EObjectContainmentWithInverseEList<TreeNode>(TreeNode.class, this, DataMapperPackage.TREE_NODE__NODE, DataMapperPackage.TREE_NODE__FIELD_PARENT);
 		}
 		return node;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList<Attribute> getAttribute() {
-		if (attribute == null) {
-			attribute = new EObjectContainmentWithInverseEList<Attribute>(Attribute.class, this, DataMapperPackage.TREE_NODE__ATTRIBUTE, DataMapperPackage.ATTRIBUTE__FIELD_PARENT);
-		}
-		return attribute;
 	}
 
 	/**
@@ -503,8 +480,6 @@ public class TreeNodeImpl extends EObjectImpl implements TreeNode {
 		switch (featureID) {
 			case DataMapperPackage.TREE_NODE__NODE:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getNode()).basicAdd(otherEnd, msgs);
-			case DataMapperPackage.TREE_NODE__ATTRIBUTE:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getAttribute()).basicAdd(otherEnd, msgs);
 			case DataMapperPackage.TREE_NODE__ELEMENT:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getElement()).basicAdd(otherEnd, msgs);
 			case DataMapperPackage.TREE_NODE__FIELD_PARENT:
@@ -533,8 +508,6 @@ public class TreeNodeImpl extends EObjectImpl implements TreeNode {
 		switch (featureID) {
 			case DataMapperPackage.TREE_NODE__NODE:
 				return ((InternalEList<?>)getNode()).basicRemove(otherEnd, msgs);
-			case DataMapperPackage.TREE_NODE__ATTRIBUTE:
-				return ((InternalEList<?>)getAttribute()).basicRemove(otherEnd, msgs);
 			case DataMapperPackage.TREE_NODE__ELEMENT:
 				return ((InternalEList<?>)getElement()).basicRemove(otherEnd, msgs);
 			case DataMapperPackage.TREE_NODE__FIELD_PARENT:
@@ -577,8 +550,6 @@ public class TreeNodeImpl extends EObjectImpl implements TreeNode {
 				return getName();
 			case DataMapperPackage.TREE_NODE__NODE:
 				return getNode();
-			case DataMapperPackage.TREE_NODE__ATTRIBUTE:
-				return getAttribute();
 			case DataMapperPackage.TREE_NODE__ELEMENT:
 				return getElement();
 			case DataMapperPackage.TREE_NODE__FIELD_PARENT:
@@ -616,10 +587,6 @@ public class TreeNodeImpl extends EObjectImpl implements TreeNode {
 			case DataMapperPackage.TREE_NODE__NODE:
 				getNode().clear();
 				getNode().addAll((Collection<? extends TreeNode>)newValue);
-				return;
-			case DataMapperPackage.TREE_NODE__ATTRIBUTE:
-				getAttribute().clear();
-				getAttribute().addAll((Collection<? extends Attribute>)newValue);
 				return;
 			case DataMapperPackage.TREE_NODE__ELEMENT:
 				getElement().clear();
@@ -668,9 +635,6 @@ public class TreeNodeImpl extends EObjectImpl implements TreeNode {
 			case DataMapperPackage.TREE_NODE__NODE:
 				getNode().clear();
 				return;
-			case DataMapperPackage.TREE_NODE__ATTRIBUTE:
-				getAttribute().clear();
-				return;
 			case DataMapperPackage.TREE_NODE__ELEMENT:
 				getElement().clear();
 				return;
@@ -714,8 +678,6 @@ public class TreeNodeImpl extends EObjectImpl implements TreeNode {
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case DataMapperPackage.TREE_NODE__NODE:
 				return node != null && !node.isEmpty();
-			case DataMapperPackage.TREE_NODE__ATTRIBUTE:
-				return attribute != null && !attribute.isEmpty();
 			case DataMapperPackage.TREE_NODE__ELEMENT:
 				return element != null && !element.isEmpty();
 			case DataMapperPackage.TREE_NODE__FIELD_PARENT:

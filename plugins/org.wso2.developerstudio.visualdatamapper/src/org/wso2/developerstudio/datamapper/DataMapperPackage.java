@@ -456,70 +456,6 @@ public interface DataMapperPackage extends EPackage {
 	int ELEMENT_FEATURE_COUNT = 8;
 
 	/**
-	 * The meta object id for the '{@link org.wso2.developerstudio.datamapper.impl.AttributeImpl <em>Attribute</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.wso2.developerstudio.datamapper.impl.AttributeImpl
-	 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getAttribute()
-	 * @generated
-	 */
-	int ATTRIBUTE = 11;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ATTRIBUTE__NAME = 0;
-
-	/**
-	 * The feature id for the '<em><b>Value</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ATTRIBUTE__VALUE = 1;
-
-	/**
-	 * The feature id for the '<em><b>Out Node</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ATTRIBUTE__OUT_NODE = 2;
-
-	/**
-	 * The feature id for the '<em><b>In Node</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ATTRIBUTE__IN_NODE = 3;
-
-	/**
-	 * The feature id for the '<em><b>Field Parent</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ATTRIBUTE__FIELD_PARENT = 4;
-
-	/**
-	 * The number of structural features of the '<em>Attribute</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ATTRIBUTE_FEATURE_COUNT = 5;
-
-	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.datamapper.impl.TreeNodeImpl <em>Tree Node</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -527,7 +463,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getTreeNode()
 	 * @generated
 	 */
-	int TREE_NODE = 12;
+	int TREE_NODE = 11;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -548,22 +484,13 @@ public interface DataMapperPackage extends EPackage {
 	int TREE_NODE__NODE = 1;
 
 	/**
-	 * The feature id for the '<em><b>Attribute</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TREE_NODE__ATTRIBUTE = 2;
-
-	/**
 	 * The feature id for the '<em><b>Element</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TREE_NODE__ELEMENT = 3;
+	int TREE_NODE__ELEMENT = 2;
 
 	/**
 	 * The feature id for the '<em><b>Field Parent</b></em>' container reference.
@@ -572,7 +499,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TREE_NODE__FIELD_PARENT = 4;
+	int TREE_NODE__FIELD_PARENT = 3;
 
 	/**
 	 * The feature id for the '<em><b>Output Parent</b></em>' container reference.
@@ -581,7 +508,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TREE_NODE__OUTPUT_PARENT = 5;
+	int TREE_NODE__OUTPUT_PARENT = 4;
 
 	/**
 	 * The feature id for the '<em><b>Input Parent</b></em>' container reference.
@@ -590,7 +517,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TREE_NODE__INPUT_PARENT = 6;
+	int TREE_NODE__INPUT_PARENT = 5;
 
 	/**
 	 * The feature id for the '<em><b>Schema Data Type</b></em>' attribute.
@@ -599,7 +526,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int TREE_NODE__SCHEMA_DATA_TYPE = 7;
+    int TREE_NODE__SCHEMA_DATA_TYPE = 6;
 
     /**
 	 * The feature id for the '<em><b>Level</b></em>' attribute.
@@ -608,7 +535,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int TREE_NODE__LEVEL = 8;
+    int TREE_NODE__LEVEL = 7;
 
     /**
 	 * The feature id for the '<em><b>Namespace</b></em>' attribute.
@@ -617,7 +544,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TREE_NODE__NAMESPACE = 9;
+	int TREE_NODE__NAMESPACE = 8;
 
 				/**
 	 * The feature id for the '<em><b>Doc</b></em>' attribute.
@@ -626,7 +553,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TREE_NODE__DOC = 10;
+	int TREE_NODE__DOC = 9;
 
 				/**
 	 * The feature id for the '<em><b>Aliases</b></em>' attribute list.
@@ -635,7 +562,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TREE_NODE__ALIASES = 11;
+	int TREE_NODE__ALIASES = 10;
 
 				/**
 	 * The number of structural features of the '<em>Tree Node</em>' class.
@@ -644,7 +571,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TREE_NODE_FEATURE_COUNT = 12;
+	int TREE_NODE_FEATURE_COUNT = 11;
 
 
 	/**
@@ -655,7 +582,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getInNode()
 	 * @generated
 	 */
-	int IN_NODE = 13;
+	int IN_NODE = 12;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Link</b></em>' reference list.
@@ -692,7 +619,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getOutNode()
 	 * @generated
 	 */
-	int OUT_NODE = 14;
+	int OUT_NODE = 13;
 
 	/**
 	 * The feature id for the '<em><b>Outgoing Link</b></em>' containment reference list.
@@ -730,7 +657,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getDataMapperLink()
 	 * @generated
 	 */
-	int DATA_MAPPER_LINK = 15;
+	int DATA_MAPPER_LINK = 14;
 
 	/**
 	 * The feature id for the '<em><b>In Node</b></em>' reference.
@@ -768,7 +695,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getConcat()
 	 * @generated
 	 */
-	int CONCAT = 16;
+	int CONCAT = 15;
 
 	/**
 	 * The feature id for the '<em><b>Basic Container</b></em>' containment reference.
@@ -815,7 +742,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getEqual()
 	 * @generated
 	 */
-	int EQUAL = 17;
+	int EQUAL = 16;
 
 	/**
 	 * The feature id for the '<em><b>Basic Container</b></em>' containment reference.
@@ -852,7 +779,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getConstant()
 	 * @generated
 	 */
-	int CONSTANT = 18;
+	int CONSTANT = 17;
 
 	/**
 	 * The feature id for the '<em><b>Basic Container</b></em>' containment reference.
@@ -898,7 +825,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getSplit()
 	 * @generated
 	 */
-	int SPLIT = 19;
+	int SPLIT = 18;
 
 	/**
 	 * The feature id for the '<em><b>Basic Container</b></em>' containment reference.
@@ -962,7 +889,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getLowerCase()
 	 * @generated
 	 */
-	int LOWER_CASE = 20;
+	int LOWER_CASE = 19;
 
 	/**
 	 * The feature id for the '<em><b>Basic Container</b></em>' containment reference.
@@ -999,7 +926,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getContains()
 	 * @generated
 	 */
-	int CONTAINS = 21;
+	int CONTAINS = 20;
 
 	/**
 	 * The feature id for the '<em><b>Basic Container</b></em>' containment reference.
@@ -1036,7 +963,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getUpperCase()
 	 * @generated
 	 */
-	int UPPER_CASE = 22;
+	int UPPER_CASE = 21;
 
 	/**
 	 * The feature id for the '<em><b>Basic Container</b></em>' containment reference.
@@ -1073,7 +1000,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getPropertyKeyValuePair()
 	 * @generated
 	 */
-	int PROPERTY_KEY_VALUE_PAIR = 23;
+	int PROPERTY_KEY_VALUE_PAIR = 22;
 
 	/**
 	 * The feature id for the '<em><b>Key</b></em>' attribute.
@@ -1110,7 +1037,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getSchemaDataType()
 	 * @generated
 	 */
-    int SCHEMA_DATA_TYPE = 24;
+    int SCHEMA_DATA_TYPE = 23;
 
     /**
 	 * Returns the meta object for class '{@link org.wso2.developerstudio.datamapper.DataMapperNode <em>Node</em>}'.
@@ -1454,71 +1381,6 @@ public interface DataMapperPackage extends EPackage {
 	EReference getElement_Properties();
 
 				/**
-	 * Returns the meta object for class '{@link org.wso2.developerstudio.datamapper.Attribute <em>Attribute</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Attribute</em>'.
-	 * @see org.wso2.developerstudio.datamapper.Attribute
-	 * @generated
-	 */
-	EClass getAttribute();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.datamapper.Attribute#getName <em>Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see org.wso2.developerstudio.datamapper.Attribute#getName()
-	 * @see #getAttribute()
-	 * @generated
-	 */
-	EAttribute getAttribute_Name();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.datamapper.Attribute#getValue <em>Value</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Value</em>'.
-	 * @see org.wso2.developerstudio.datamapper.Attribute#getValue()
-	 * @see #getAttribute()
-	 * @generated
-	 */
-	EAttribute getAttribute_Value();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link org.wso2.developerstudio.datamapper.Attribute#getOutNode <em>Out Node</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Out Node</em>'.
-	 * @see org.wso2.developerstudio.datamapper.Attribute#getOutNode()
-	 * @see #getAttribute()
-	 * @generated
-	 */
-	EReference getAttribute_OutNode();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link org.wso2.developerstudio.datamapper.Attribute#getInNode <em>In Node</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>In Node</em>'.
-	 * @see org.wso2.developerstudio.datamapper.Attribute#getInNode()
-	 * @see #getAttribute()
-	 * @generated
-	 */
-	EReference getAttribute_InNode();
-
-	/**
-	 * Returns the meta object for the container reference '{@link org.wso2.developerstudio.datamapper.Attribute#getFieldParent <em>Field Parent</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the container reference '<em>Field Parent</em>'.
-	 * @see org.wso2.developerstudio.datamapper.Attribute#getFieldParent()
-	 * @see #getAttribute()
-	 * @generated
-	 */
-	EReference getAttribute_FieldParent();
-
-	/**
 	 * Returns the meta object for class '{@link org.wso2.developerstudio.datamapper.TreeNode <em>Tree Node</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1549,17 +1411,6 @@ public interface DataMapperPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getTreeNode_Node();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link org.wso2.developerstudio.datamapper.TreeNode#getAttribute <em>Attribute</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Attribute</em>'.
-	 * @see org.wso2.developerstudio.datamapper.TreeNode#getAttribute()
-	 * @see #getTreeNode()
-	 * @generated
-	 */
-	EReference getTreeNode_Attribute();
 
 	/**
 	 * Returns the meta object for the containment reference list '{@link org.wso2.developerstudio.datamapper.TreeNode#getElement <em>Element</em>}'.
@@ -2226,56 +2077,6 @@ public interface DataMapperPackage extends EPackage {
 		EReference ELEMENT__PROPERTIES = eINSTANCE.getElement_Properties();
 
 								/**
-		 * The meta object literal for the '{@link org.wso2.developerstudio.datamapper.impl.AttributeImpl <em>Attribute</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.wso2.developerstudio.datamapper.impl.AttributeImpl
-		 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getAttribute()
-		 * @generated
-		 */
-		EClass ATTRIBUTE = eINSTANCE.getAttribute();
-
-		/**
-		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute ATTRIBUTE__NAME = eINSTANCE.getAttribute_Name();
-
-		/**
-		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute ATTRIBUTE__VALUE = eINSTANCE.getAttribute_Value();
-
-		/**
-		 * The meta object literal for the '<em><b>Out Node</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference ATTRIBUTE__OUT_NODE = eINSTANCE.getAttribute_OutNode();
-
-		/**
-		 * The meta object literal for the '<em><b>In Node</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference ATTRIBUTE__IN_NODE = eINSTANCE.getAttribute_InNode();
-
-		/**
-		 * The meta object literal for the '<em><b>Field Parent</b></em>' container reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference ATTRIBUTE__FIELD_PARENT = eINSTANCE.getAttribute_FieldParent();
-
-		/**
 		 * The meta object literal for the '{@link org.wso2.developerstudio.datamapper.impl.TreeNodeImpl <em>Tree Node</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2300,14 +2101,6 @@ public interface DataMapperPackage extends EPackage {
 		 * @generated
 		 */
 		EReference TREE_NODE__NODE = eINSTANCE.getTreeNode_Node();
-
-		/**
-		 * The meta object literal for the '<em><b>Attribute</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference TREE_NODE__ATTRIBUTE = eINSTANCE.getTreeNode_Attribute();
 
 		/**
 		 * The meta object literal for the '<em><b>Element</b></em>' containment reference list feature.

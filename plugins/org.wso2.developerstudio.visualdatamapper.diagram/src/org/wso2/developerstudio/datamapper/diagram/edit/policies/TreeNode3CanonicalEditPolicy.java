@@ -23,7 +23,6 @@ import org.eclipse.gmf.runtime.emf.core.util.EObjectAdapter;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.View;
 import org.wso2.developerstudio.datamapper.DataMapperPackage;
-import org.wso2.developerstudio.datamapper.diagram.edit.parts.AttributeEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.ElementEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.TreeNode2EditPart;
 import org.wso2.developerstudio.datamapper.diagram.part.DataMapperDiagramUpdater;
@@ -59,7 +58,6 @@ public class TreeNode3CanonicalEditPolicy extends CanonicalEditPolicy {
 		if (myFeaturesToSynchronize == null) {
 			myFeaturesToSynchronize = new HashSet<EStructuralFeature>();
 			myFeaturesToSynchronize.add(DataMapperPackage.eINSTANCE.getTreeNode_Node());
-			myFeaturesToSynchronize.add(DataMapperPackage.eINSTANCE.getTreeNode_Attribute());
 			myFeaturesToSynchronize.add(DataMapperPackage.eINSTANCE.getTreeNode_Element());
 		}
 		return myFeaturesToSynchronize;
@@ -92,8 +90,7 @@ public class TreeNode3CanonicalEditPolicy extends CanonicalEditPolicy {
 	 */
 	private boolean isMyDiagramElement(View view) {
 		int visualID = DataMapperVisualIDRegistry.getVisualID(view);
-		return visualID == TreeNode2EditPart.VISUAL_ID || visualID == AttributeEditPart.VISUAL_ID
-				|| visualID == ElementEditPart.VISUAL_ID;
+		return visualID == TreeNode2EditPart.VISUAL_ID || visualID == ElementEditPart.VISUAL_ID;
 	}
 
 	/**

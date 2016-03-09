@@ -64,17 +64,9 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataMapper.ecore#//Element/level"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dataMapper.ecore#//Element/properties"/>
     </genClasses>
-    <genClasses ecoreClass="dataMapper.ecore#//Attribute">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataMapper.ecore#//Attribute/name"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataMapper.ecore#//Attribute/value"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dataMapper.ecore#//Attribute/outNode"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dataMapper.ecore#//Attribute/inNode"/>
-      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference dataMapper.ecore#//Attribute/fieldParent"/>
-    </genClasses>
     <genClasses ecoreClass="dataMapper.ecore#//TreeNode">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataMapper.ecore#//TreeNode/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dataMapper.ecore#//TreeNode/node"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dataMapper.ecore#//TreeNode/attribute"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dataMapper.ecore#//TreeNode/element"/>
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference dataMapper.ecore#//TreeNode/fieldParent"/>
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference dataMapper.ecore#//TreeNode/outputParent"/>

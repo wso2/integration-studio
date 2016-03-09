@@ -66,7 +66,6 @@ public class DataMapperFactoryImpl extends EFactoryImpl implements DataMapperFac
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case DataMapperPackage.DATA_MAPPER_NODE: return createDataMapperNode();
-			case DataMapperPackage.DATA_MAPPER_DIAGRAM: return createDataMapperDiagram();
 			case DataMapperPackage.DATA_MAPPER_ROOT: return createDataMapperRoot();
 			case DataMapperPackage.INPUT: return createInput();
 			case DataMapperPackage.OUTPUT: return createOutput();
@@ -135,16 +134,6 @@ public class DataMapperFactoryImpl extends EFactoryImpl implements DataMapperFac
 		return dataMapperNode;
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	public DataMapperDiagram createDataMapperDiagram() {
-		DataMapperDiagramImpl dataMapperDiagram = new DataMapperDiagramImpl();
-
-		return dataMapperDiagram;
-	}
 
 	/**
 	 * <!-- begin-user-doc -->

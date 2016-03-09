@@ -21,6 +21,22 @@
       </wizard>
    </extension>
 
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated dataMapper -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="org.wso2.developerstudio.datamapper.presentation.DataMapperModelWizardID"
+            name="%_UI_DataMapperModelWizard_label"
+            class="org.wso2.developerstudio.datamapper.presentation.DataMapperModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/DataMapperModelFile.gif">
+         <description>%_UI_DataMapperModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
    <extension point="org.eclipse.ui.editors">
       <!-- @generated dataMapper -->
       <editor

@@ -13,7 +13,6 @@ import org.wso2.developerstudio.datamapper.Attribute;
 import org.wso2.developerstudio.datamapper.Concat;
 import org.wso2.developerstudio.datamapper.Constant;
 import org.wso2.developerstudio.datamapper.Contains;
-import org.wso2.developerstudio.datamapper.DataMapperDiagram;
 import org.wso2.developerstudio.datamapper.DataMapperFactory;
 import org.wso2.developerstudio.datamapper.DataMapperLink;
 import org.wso2.developerstudio.datamapper.DataMapperNode;
@@ -55,13 +54,6 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 	 * @generated
 	 */
 	private EClass dataMapperNodeEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass dataMapperDiagramEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -299,15 +291,6 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 	 */
 	public EClass getDataMapperNode() {
 		return dataMapperNodeEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getDataMapperDiagram() {
-		return dataMapperDiagramEClass;
 	}
 
 	/**
@@ -1033,8 +1016,6 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 		// Create classes and their features
 		dataMapperNodeEClass = createEClass(DATA_MAPPER_NODE);
 
-		dataMapperDiagramEClass = createEClass(DATA_MAPPER_DIAGRAM);
-
 		dataMapperRootEClass = createEClass(DATA_MAPPER_ROOT);
 		createEReference(dataMapperRootEClass, DATA_MAPPER_ROOT__INPUT);
 		createEReference(dataMapperRootEClass, DATA_MAPPER_ROOT__OUTPUT);
@@ -1166,7 +1147,6 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
-		dataMapperDiagramEClass.getESuperTypes().add(this.getDataMapperNode());
 		inputEClass.getESuperTypes().add(this.getDataMapperNode());
 		outputEClass.getESuperTypes().add(this.getDataMapperNode());
 		operatorEClass.getESuperTypes().add(this.getDataMapperNode());
@@ -1180,8 +1160,6 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(dataMapperNodeEClass, DataMapperNode.class, "DataMapperNode", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(dataMapperDiagramEClass, DataMapperDiagram.class, "DataMapperDiagram", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(dataMapperRootEClass, DataMapperRoot.class, "DataMapperRoot", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getDataMapperRoot_Input(), this.getInput(), null, "input", null, 0, 1, DataMapperRoot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

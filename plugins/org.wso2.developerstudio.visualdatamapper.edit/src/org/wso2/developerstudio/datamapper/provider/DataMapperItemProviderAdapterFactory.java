@@ -93,29 +93,6 @@ public class DataMapperItemProviderAdapterFactory extends DataMapperAdapterFacto
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.wso2.developerstudio.datamapper.DataMapperDiagram} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected DataMapperDiagramItemProvider dataMapperDiagramItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.wso2.developerstudio.datamapper.DataMapperDiagram}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createDataMapperDiagramAdapter() {
-		if (dataMapperDiagramItemProvider == null) {
-			dataMapperDiagramItemProvider = new DataMapperDiagramItemProvider(this);
-		}
-
-		return dataMapperDiagramItemProvider;
-	}
-
-	/**
 	 * This keeps track of the one adapter used for all {@link org.wso2.developerstudio.datamapper.DataMapperRoot} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -744,7 +721,6 @@ public class DataMapperItemProviderAdapterFactory extends DataMapperAdapterFacto
 	 */
 	public void dispose() {
 		if (dataMapperNodeItemProvider != null) dataMapperNodeItemProvider.dispose();
-		if (dataMapperDiagramItemProvider != null) dataMapperDiagramItemProvider.dispose();
 		if (dataMapperRootItemProvider != null) dataMapperRootItemProvider.dispose();
 		if (inputItemProvider != null) inputItemProvider.dispose();
 		if (outputItemProvider != null) outputItemProvider.dispose();

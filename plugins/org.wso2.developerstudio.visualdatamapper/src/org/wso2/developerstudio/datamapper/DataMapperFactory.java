@@ -31,15 +31,6 @@ public interface DataMapperFactory extends EFactory {
 	DataMapperNode createDataMapperNode();
 
 	/**
-	 * Returns a new object of class '<em>Diagram</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Diagram</em>'.
-	 * @generated
-	 */
-	DataMapperDiagram createDataMapperDiagram();
-
-	/**
 	 * Returns a new object of class '<em>Root</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

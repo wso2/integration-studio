@@ -23,7 +23,6 @@
       <genEnumLiterals ecoreEnumLiteral="dataMapper.ecore#//SchemaDataType/UNION"/>
     </genEnums>
     <genClasses ecoreClass="dataMapper.ecore#//DataMapperNode"/>
-    <genClasses ecoreClass="dataMapper.ecore#//DataMapperDiagram"/>
     <genClasses ecoreClass="dataMapper.ecore#//DataMapperRoot">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dataMapper.ecore#//DataMapperRoot/input"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dataMapper.ecore#//DataMapperRoot/output"/>

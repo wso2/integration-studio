@@ -70,10 +70,6 @@ public class DataMapperAdapterFactory extends AdapterFactoryImpl {
 				return createDataMapperNodeAdapter();
 			}
 			@Override
-			public Adapter caseDataMapperDiagram(DataMapperDiagram object) {
-				return createDataMapperDiagramAdapter();
-			}
-			@Override
 			public Adapter caseDataMapperRoot(DataMapperRoot object) {
 				return createDataMapperRootAdapter();
 			}
@@ -196,20 +192,6 @@ public class DataMapperAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createDataMapperNodeAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.wso2.developerstudio.datamapper.DataMapperDiagram <em>Diagram</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.wso2.developerstudio.datamapper.DataMapperDiagram
-	 * @generated
-	 */
-	public Adapter createDataMapperDiagramAdapter() {
 		return null;
 	}
 

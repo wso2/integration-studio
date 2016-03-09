@@ -13,12 +13,9 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-import org.wso2.developerstudio.datamapper.DataMapperDiagram;
 import org.wso2.developerstudio.datamapper.DataMapperPackage;
 import org.wso2.developerstudio.datamapper.DataMapperRoot;
 import org.wso2.developerstudio.datamapper.Input;
-import org.wso2.developerstudio.datamapper.Operation;
-import org.wso2.developerstudio.datamapper.Operations;
 import org.wso2.developerstudio.datamapper.Operator;
 import org.wso2.developerstudio.datamapper.Output;
 

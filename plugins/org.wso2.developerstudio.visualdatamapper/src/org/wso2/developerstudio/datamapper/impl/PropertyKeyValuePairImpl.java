@@ -75,7 +75,7 @@ public class PropertyKeyValuePairImpl extends EObjectImpl implements BasicEMap.E
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public PropertyKeyValuePairImpl() {
+	protected PropertyKeyValuePairImpl() {
 		super();
 	}
 

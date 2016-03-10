@@ -62,7 +62,6 @@ public class ElementItemProvider
 			addNamePropertyDescriptor(object);
 			//addValuePropertyDescriptor(object);
 			addSchemaDataTypePropertyDescriptor(object);
-			addDocPropertyDescriptor(object);
 			//addLevelPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
@@ -157,94 +156,6 @@ public class ElementItemProvider
 	}
 
     /**
-	 * This adds a property descriptor for the Doc feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addDocPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Element_doc_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Element_doc_feature", "_UI_Element_type"),
-				 DataMapperPackage.Literals.ELEMENT__DOC,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-				/**
-	 * This adds a property descriptor for the Default feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addDefaultPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Element_default_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Element_default_feature", "_UI_Element_type"),
-				 DataMapperPackage.Literals.ELEMENT__DEFAULT,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-				/**
-	 * This adds a property descriptor for the Aliases feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addAliasesPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Element_aliases_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Element_aliases_feature", "_UI_Element_type"),
-				 DataMapperPackage.Literals.ELEMENT__ALIASES,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-				/**
-	 * This adds a property descriptor for the Order feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addOrderPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Element_order_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Element_order_feature", "_UI_Element_type"),
-				 DataMapperPackage.Literals.ELEMENT__ORDER,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-				/**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -258,6 +169,7 @@ public class ElementItemProvider
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(DataMapperPackage.Literals.ELEMENT__OUT_NODE);
 			childrenFeatures.add(DataMapperPackage.Literals.ELEMENT__IN_NODE);
+			childrenFeatures.add(DataMapperPackage.Literals.ELEMENT__PROPERTIES);
 		}
 		return childrenFeatures;
 	}
@@ -316,14 +228,11 @@ public class ElementItemProvider
 			case DataMapperPackage.ELEMENT__VALUE:
 			case DataMapperPackage.ELEMENT__SCHEMA_DATA_TYPE:
 			case DataMapperPackage.ELEMENT__LEVEL:
-			case DataMapperPackage.ELEMENT__DOC:
-			case DataMapperPackage.ELEMENT__DEFAULT:
-			case DataMapperPackage.ELEMENT__ALIASES:
-			case DataMapperPackage.ELEMENT__ORDER:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case DataMapperPackage.ELEMENT__OUT_NODE:
 			case DataMapperPackage.ELEMENT__IN_NODE:
+			case DataMapperPackage.ELEMENT__PROPERTIES:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -350,6 +259,11 @@ public class ElementItemProvider
 			(createChildParameter
 				(DataMapperPackage.Literals.ELEMENT__IN_NODE,
 				 DataMapperFactory.eINSTANCE.createInNode()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(DataMapperPackage.Literals.ELEMENT__PROPERTIES,
+				 DataMapperFactory.eINSTANCE.create(DataMapperPackage.Literals.PROPERTY_KEY_VALUE_PAIR)));
 	}
 
 	/**

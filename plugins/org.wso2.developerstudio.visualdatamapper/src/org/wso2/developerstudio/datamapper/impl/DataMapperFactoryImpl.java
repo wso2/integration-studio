@@ -4,6 +4,7 @@ package org.wso2.developerstudio.datamapper.impl;
 
 import java.lang.reflect.InvocationTargetException;
 
+import java.util.Map;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.EList;
@@ -65,7 +66,6 @@ public class DataMapperFactoryImpl extends EFactoryImpl implements DataMapperFac
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case DataMapperPackage.DATA_MAPPER_NODE: return createDataMapperNode();
-			case DataMapperPackage.DATA_MAPPER_DIAGRAM: return createDataMapperDiagram();
 			case DataMapperPackage.DATA_MAPPER_ROOT: return createDataMapperRoot();
 			case DataMapperPackage.INPUT: return createInput();
 			case DataMapperPackage.OUTPUT: return createOutput();
@@ -76,7 +76,6 @@ public class DataMapperFactoryImpl extends EFactoryImpl implements DataMapperFac
 			case DataMapperPackage.OPERATOR_RIGHT_CONTAINER: return createOperatorRightContainer();
 			case DataMapperPackage.OPERATOR_RIGHT_CONNECTOR: return createOperatorRightConnector();
 			case DataMapperPackage.ELEMENT: return createElement();
-			case DataMapperPackage.ATTRIBUTE: return createAttribute();
 			case DataMapperPackage.TREE_NODE: return createTreeNode();
 			case DataMapperPackage.IN_NODE: return createInNode();
 			case DataMapperPackage.OUT_NODE: return createOutNode();
@@ -88,6 +87,7 @@ public class DataMapperFactoryImpl extends EFactoryImpl implements DataMapperFac
 			case DataMapperPackage.LOWER_CASE: return createLowerCase();
 			case DataMapperPackage.CONTAINS: return createContains();
 			case DataMapperPackage.UPPER_CASE: return createUpperCase();
+			case DataMapperPackage.PROPERTY_KEY_VALUE_PAIR: return (EObject)createPropertyKeyValuePair();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -133,16 +133,6 @@ public class DataMapperFactoryImpl extends EFactoryImpl implements DataMapperFac
 		return dataMapperNode;
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	public DataMapperDiagram createDataMapperDiagram() {
-		DataMapperDiagramImpl dataMapperDiagram = new DataMapperDiagramImpl();
-
-		return dataMapperDiagram;
-	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -258,18 +248,7 @@ public class DataMapperFactoryImpl extends EFactoryImpl implements DataMapperFac
 		return element;
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	public Attribute createAttribute() {
-		AttributeImpl attribute = new AttributeImpl();		
-		//attribute.setInNode(createInNode());
-		//attribute.setOutNode(createOutNode());
-		return attribute;
-	}
-
+	
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -385,6 +364,16 @@ public class DataMapperFactoryImpl extends EFactoryImpl implements DataMapperFac
 		UpperCaseImpl upperCase = new UpperCaseImpl();
 		upperCase.setBasicContainer(createOperatorBasicContainer());
 		return upperCase;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Map.Entry<String, String> createPropertyKeyValuePair() {
+		PropertyKeyValuePairImpl propertyKeyValuePair = new PropertyKeyValuePairImpl();
+		return propertyKeyValuePair;
 	}
 
 	/**

@@ -135,17 +135,18 @@ public class AddNewFieldAction extends AbstractActionHandler {
 				}
 
 				if (StringUtils.isNotEmpty(fieldDialog.getDoc())) {
-					elementNew.setDoc(fieldDialog.getDoc());
+					elementNew.getProperties().put("doc", fieldDialog.getDoc());
 				}
 				if (fieldDialog.getDefault() != null) {
-					elementNew.setDefault(fieldDialog.getDefault().toString());
+					elementNew.getProperties().put("default", fieldDialog.getDefault().toString());
 				}
 				if (fieldDialog.getAliases() != null) {
-					elementNew.getAliases().addAll(fieldDialog.getAliases());
+					elementNew.getProperties().put("aliases", fieldDialog.getAliases().toString());
 				}
 				if (fieldDialog.getOrder() != null) {
-					elementNew.setOrder(fieldDialog.getOrder());
+					elementNew.getProperties().put("order", fieldDialog.getOrder());
 				}
+				
 
 				/*
 				 * AddCommand is used to avoid concurrent updating. index 0 to

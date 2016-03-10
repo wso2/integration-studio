@@ -6,10 +6,12 @@ package org.wso2.developerstudio.datamapper.provider;
 import java.util.Collection;
 import java.util.List;
 
+import java.util.Map;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.common.util.ResourceLocator;
-import org.eclipse.emf.ecore.EStructuralFeature;
+
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -20,17 +22,17 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-import org.wso2.developerstudio.datamapper.Attribute;
-import org.wso2.developerstudio.datamapper.DataMapperFactory;
+
 import org.wso2.developerstudio.datamapper.DataMapperPackage;
+import org.wso2.developerstudio.datamapper.PropertyKeyValuePair;
 
 /**
- * This is the item provider adapter for a {@link org.wso2.developerstudio.datamapper.Attribute} object.
+ * This is the item provider adapter for a {@link java.util.Map.Entry} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class AttributeItemProvider
+public class PropertyKeyValuePairItemProvider 
 	extends ItemProviderAdapter
 	implements
 		IEditingDomainItemProvider,
@@ -44,7 +46,7 @@ public class AttributeItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public AttributeItemProvider(AdapterFactory adapterFactory) {
+	public PropertyKeyValuePairItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -59,27 +61,26 @@ public class AttributeItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addNamePropertyDescriptor(object);
+			addKeyPropertyDescriptor(object);
 			addValuePropertyDescriptor(object);
-			addDocPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Name feature.
+	 * This adds a property descriptor for the Key feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addNamePropertyDescriptor(Object object) {
+	protected void addKeyPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Attribute_name_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Attribute_name_feature", "_UI_Attribute_type"),
-				 DataMapperPackage.Literals.ATTRIBUTE__NAME,
+				 getString("_UI_PropertyKeyValuePair_key_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_PropertyKeyValuePair_key_feature", "_UI_PropertyKeyValuePair_type"),
+				 DataMapperPackage.Literals.PROPERTY_KEY_VALUE_PAIR__KEY,
 				 true,
 				 false,
 				 false,
@@ -99,9 +100,9 @@ public class AttributeItemProvider
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Attribute_value_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Attribute_value_feature", "_UI_Attribute_type"),
-				 DataMapperPackage.Literals.ATTRIBUTE__VALUE,
+				 getString("_UI_PropertyKeyValuePair_value_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_PropertyKeyValuePair_value_feature", "_UI_PropertyKeyValuePair_type"),
+				 DataMapperPackage.Literals.PROPERTY_KEY_VALUE_PAIR__VALUE,
 				 true,
 				 false,
 				 false,
@@ -111,67 +112,14 @@ public class AttributeItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Doc feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addDocPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Attribute_doc_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Attribute_doc_feature", "_UI_Attribute_type"),
-				 DataMapperPackage.Literals.ATTRIBUTE__DOC,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
-	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
-	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
-		if (childrenFeatures == null) {
-			super.getChildrenFeatures(object);
-			childrenFeatures.add(DataMapperPackage.Literals.ATTRIBUTE__OUT_NODE);
-			childrenFeatures.add(DataMapperPackage.Literals.ATTRIBUTE__IN_NODE);
-		}
-		return childrenFeatures;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected EStructuralFeature getChildFeature(Object object, Object child) {
-		// Check the type of the specified child object and return the proper feature to use for
-		// adding (see {@link AddCommand}) it as a child.
-
-		return super.getChildFeature(object, child);
-	}
-
-	/**
-	 * This returns Attribute.gif.
+	 * This returns PropertyKeyValuePair.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/Attribute"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/PropertyKeyValuePair"));
 	}
 
 	/**
@@ -182,11 +130,10 @@ public class AttributeItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Attribute)object).getName();
-		return label == null || label.length() == 0 ?
-			getString("_UI_Attribute_type") :
-			getString("_UI_Attribute_type") + " " + label;
+		Map.Entry<?, ?> propertyKeyValuePair = (Map.Entry<?, ?>)object;
+		return "" + propertyKeyValuePair.getKey() + " -> " + propertyKeyValuePair.getValue();
 	}
+	
 
 	/**
 	 * This handles model notifications by calling {@link #updateChildren} to update any cached
@@ -199,15 +146,10 @@ public class AttributeItemProvider
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(Attribute.class)) {
-			case DataMapperPackage.ATTRIBUTE__NAME:
-			case DataMapperPackage.ATTRIBUTE__VALUE:
-			case DataMapperPackage.ATTRIBUTE__DOC:
+		switch (notification.getFeatureID(Map.Entry.class)) {
+			case DataMapperPackage.PROPERTY_KEY_VALUE_PAIR__KEY:
+			case DataMapperPackage.PROPERTY_KEY_VALUE_PAIR__VALUE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
-			case DataMapperPackage.ATTRIBUTE__OUT_NODE:
-			case DataMapperPackage.ATTRIBUTE__IN_NODE:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
 		super.notifyChanged(notification);
@@ -223,16 +165,6 @@ public class AttributeItemProvider
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
-
-		newChildDescriptors.add
-			(createChildParameter
-				(DataMapperPackage.Literals.ATTRIBUTE__OUT_NODE,
-				 DataMapperFactory.eINSTANCE.createOutNode()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(DataMapperPackage.Literals.ATTRIBUTE__IN_NODE,
-				 DataMapperFactory.eINSTANCE.createInNode()));
 	}
 
 	/**

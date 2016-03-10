@@ -2,6 +2,7 @@
  */
 package org.wso2.developerstudio.datamapper.util;
 
+import java.util.Map;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.Switch;
@@ -70,13 +71,6 @@ public class DataMapperSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case DataMapperPackage.DATA_MAPPER_DIAGRAM: {
-				DataMapperDiagram dataMapperDiagram = (DataMapperDiagram)theEObject;
-				T result = caseDataMapperDiagram(dataMapperDiagram);
-				if (result == null) result = caseDataMapperNode(dataMapperDiagram);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case DataMapperPackage.DATA_MAPPER_ROOT: {
 				DataMapperRoot dataMapperRoot = (DataMapperRoot)theEObject;
 				T result = caseDataMapperRoot(dataMapperRoot);
@@ -137,12 +131,6 @@ public class DataMapperSwitch<T> extends Switch<T> {
 			case DataMapperPackage.ELEMENT: {
 				Element element = (Element)theEObject;
 				T result = caseElement(element);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case DataMapperPackage.ATTRIBUTE: {
-				Attribute attribute = (Attribute)theEObject;
-				T result = caseAttribute(attribute);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -226,6 +214,12 @@ public class DataMapperSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case DataMapperPackage.PROPERTY_KEY_VALUE_PAIR: {
+				@SuppressWarnings("unchecked") Map.Entry<String, String> propertyKeyValuePair = (Map.Entry<String, String>)theEObject;
+				T result = casePropertyKeyValuePair(propertyKeyValuePair);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -242,21 +236,6 @@ public class DataMapperSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseDataMapperNode(DataMapperNode object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Diagram</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Diagram</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseDataMapperDiagram(DataMapperDiagram object) {
 		return null;
 	}
 
@@ -407,21 +386,6 @@ public class DataMapperSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseElement(Element object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Attribute</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Attribute</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseAttribute(Attribute object) {
 		return null;
 	}
 
@@ -587,6 +551,21 @@ public class DataMapperSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseUpperCase(UpperCase object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Property Key Value Pair</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Property Key Value Pair</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T casePropertyKeyValuePair(Map.Entry<String, String> object) {
 		return null;
 	}
 

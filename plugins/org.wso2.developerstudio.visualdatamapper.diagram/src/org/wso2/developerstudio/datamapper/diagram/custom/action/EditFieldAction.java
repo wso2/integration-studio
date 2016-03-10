@@ -20,6 +20,7 @@ import java.util.HashMap;
 import org.apache.avro.Schema.Type;
 import org.apache.commons.lang.StringUtils;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.emf.common.util.EMap;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.command.SetCommand;
@@ -84,8 +85,8 @@ public class EditFieldAction extends AbstractActionHandler {
 			String value = null;
 			name = selectedElem.getName();
 			schemaType = selectedElem.getSchemaDataType().toString();
-			namespace = selectedElem.getDoc();
-			defaultValue = selectedElem.getDefault();
+			namespace = selectedElem.getProperties().get("doc");
+			defaultValue = selectedElem.getProperties().get("Default");
 			if (StringUtils.isNotEmpty(defaultValue)) {
 				value = defaultValue.replace("\"", "");
 			}
@@ -109,8 +110,10 @@ public class EditFieldAction extends AbstractActionHandler {
 				((ElementEditPart) getSelectedEditPart()).renameElementItem(map.get(NAME));
 			}
 		}
-		executeCommand(selectedElem, DataMapperPackage.Literals.ELEMENT__DOC, map.get(DOC));
-		executeCommand(selectedElem, DataMapperPackage.Literals.ELEMENT__DEFAULT, map.get(DEFAULT_VALUE));
+		
+		EMap<String, String> pmap = selectedElem.getProperties();
+		//executeCommand(pmap, DataMapperPackage.Literals.PROPERTY_KEY_VALUE_PAIR__VALUE, map.get(DOC));
+		//executeCommand(pmap, DataMapperPackage.Literals.PROPERTY_KEY_VALUE_PAIR__VALUE, map.get(DEFAULT_VALUE));
 
 		SchemaDataType schmaType = getSchemaType(map.get(SCHEMATYPE));
 		/**

@@ -30,7 +30,7 @@ public class TreeNodeUtils {
  	
 	private static int getTreeHeight(TreeNode tree) {
 		if (tree != null) {
-			int height = (tree.getElement().size() + tree.getAttribute().size());
+			int height = (tree.getElement().size());
 			for (TreeNode childTree : tree.getNode()) {
 				height += 1 + getTreeHeight(childTree);
 			}

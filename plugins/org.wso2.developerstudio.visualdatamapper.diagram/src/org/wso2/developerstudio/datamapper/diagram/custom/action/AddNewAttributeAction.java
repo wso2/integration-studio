@@ -16,9 +16,12 @@
 
 package org.wso2.developerstudio.datamapper.diagram.custom.action;
 
+import java.util.HashMap;
+
 import org.apache.commons.lang.StringUtils;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.EMap;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.command.AddCommand;
 import org.eclipse.emf.edit.command.RemoveCommand;
@@ -36,6 +39,7 @@ import org.wso2.developerstudio.datamapper.DataMapperFactory;
 import org.wso2.developerstudio.datamapper.DataMapperPackage;
 import org.wso2.developerstudio.datamapper.DataMapperRoot;
 import org.wso2.developerstudio.datamapper.Element;
+import org.wso2.developerstudio.datamapper.PropertyKeyValuePair;
 import org.wso2.developerstudio.datamapper.SchemaDataType;
 import org.wso2.developerstudio.datamapper.TreeNode;
 import org.wso2.developerstudio.datamapper.diagram.custom.util.AddNewFieldDialog;
@@ -91,6 +95,7 @@ public class AddNewAttributeAction extends AbstractActionHandler{
 					elementNew.setName(newName);
 				}
 				
+							
 				elementNew.setLevel(selectedNode.getLevel() + 1);
 
 				switch (fieldDialog.getSchemaType()) {
@@ -141,16 +146,16 @@ public class AddNewAttributeAction extends AbstractActionHandler{
 				}
 
 				if (StringUtils.isNotEmpty(fieldDialog.getDoc())) {
-					elementNew.setDoc(fieldDialog.getDoc());
+					elementNew.getProperties().put("doc", fieldDialog.getDoc());
 				}
 				if (fieldDialog.getDefault() != null) {
-					elementNew.setDefault(fieldDialog.getDefault().toString());
+					elementNew.getProperties().put("default", fieldDialog.getDefault().toString());
 				}
 				if (fieldDialog.getAliases() != null) {
-					elementNew.getAliases().addAll(fieldDialog.getAliases());
+					elementNew.getProperties().put("aliases", fieldDialog.getAliases().toString());
 				}
 				if (fieldDialog.getOrder() != null) {
-					elementNew.setOrder(fieldDialog.getOrder());
+					elementNew.getProperties().put("order", fieldDialog.getOrder());
 				}
 
 				/*

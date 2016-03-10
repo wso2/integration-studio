@@ -7,15 +7,17 @@ import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.EMap;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
+import org.eclipse.emf.ecore.util.EcoreEMap;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
-import org.wso2.developerstudio.datamapper.Attribute;
 import org.wso2.developerstudio.datamapper.DataMapperPackage;
 import org.wso2.developerstudio.datamapper.Element;
 import org.wso2.developerstudio.datamapper.Input;
@@ -32,16 +34,13 @@ import org.wso2.developerstudio.datamapper.TreeNode;
  * <ul>
  *   <li>{@link org.wso2.developerstudio.datamapper.impl.TreeNodeImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.wso2.developerstudio.datamapper.impl.TreeNodeImpl#getNode <em>Node</em>}</li>
- *   <li>{@link org.wso2.developerstudio.datamapper.impl.TreeNodeImpl#getAttribute <em>Attribute</em>}</li>
  *   <li>{@link org.wso2.developerstudio.datamapper.impl.TreeNodeImpl#getElement <em>Element</em>}</li>
  *   <li>{@link org.wso2.developerstudio.datamapper.impl.TreeNodeImpl#getFieldParent <em>Field Parent</em>}</li>
  *   <li>{@link org.wso2.developerstudio.datamapper.impl.TreeNodeImpl#getOutputParent <em>Output Parent</em>}</li>
  *   <li>{@link org.wso2.developerstudio.datamapper.impl.TreeNodeImpl#getInputParent <em>Input Parent</em>}</li>
  *   <li>{@link org.wso2.developerstudio.datamapper.impl.TreeNodeImpl#getSchemaDataType <em>Schema Data Type</em>}</li>
  *   <li>{@link org.wso2.developerstudio.datamapper.impl.TreeNodeImpl#getLevel <em>Level</em>}</li>
- *   <li>{@link org.wso2.developerstudio.datamapper.impl.TreeNodeImpl#getNamespace <em>Namespace</em>}</li>
- *   <li>{@link org.wso2.developerstudio.datamapper.impl.TreeNodeImpl#getDoc <em>Doc</em>}</li>
- *   <li>{@link org.wso2.developerstudio.datamapper.impl.TreeNodeImpl#getAliases <em>Aliases</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.datamapper.impl.TreeNodeImpl#getProperties <em>Properties</em>}</li>
  * </ul>
  * </p>
  *
@@ -77,16 +76,6 @@ public class TreeNodeImpl extends EObjectImpl implements TreeNode {
 	 * @ordered
 	 */
 	protected EList<TreeNode> node;
-
-	/**
-	 * The cached value of the '{@link #getAttribute() <em>Attribute</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getAttribute()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Attribute> attribute;
 
 	/**
 	 * The cached value of the '{@link #getElement() <em>Element</em>}' containment reference list.
@@ -139,54 +128,14 @@ public class TreeNodeImpl extends EObjectImpl implements TreeNode {
     protected int level = LEVEL_EDEFAULT;
 
     /**
-	 * The default value of the '{@link #getNamespace() <em>Namespace</em>}' attribute.
+	 * The cached value of the '{@link #getProperties() <em>Properties</em>}' map.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getNamespace()
+	 * @see #getProperties()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String NAMESPACE_EDEFAULT = null;
-
-				/**
-	 * The cached value of the '{@link #getNamespace() <em>Namespace</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getNamespace()
-	 * @generated
-	 * @ordered
-	 */
-	protected String namespace = NAMESPACE_EDEFAULT;
-
-				/**
-	 * The default value of the '{@link #getDoc() <em>Doc</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getDoc()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String DOC_EDEFAULT = null;
-
-				/**
-	 * The cached value of the '{@link #getDoc() <em>Doc</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getDoc()
-	 * @generated
-	 * @ordered
-	 */
-	protected String doc = DOC_EDEFAULT;
-
-				/**
-	 * The cached value of the '{@link #getAliases() <em>Aliases</em>}' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getAliases()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<String> aliases;
+	protected EMap<String, String> properties;
 
 				private int index;
 
@@ -247,18 +196,6 @@ public class TreeNodeImpl extends EObjectImpl implements TreeNode {
 			node = new EObjectContainmentWithInverseEList<TreeNode>(TreeNode.class, this, DataMapperPackage.TREE_NODE__NODE, DataMapperPackage.TREE_NODE__FIELD_PARENT);
 		}
 		return node;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList<Attribute> getAttribute() {
-		if (attribute == null) {
-			attribute = new EObjectContainmentWithInverseEList<Attribute>(Attribute.class, this, DataMapperPackage.TREE_NODE__ATTRIBUTE, DataMapperPackage.ATTRIBUTE__FIELD_PARENT);
-		}
-		return attribute;
 	}
 
 	/**
@@ -443,53 +380,11 @@ public class TreeNodeImpl extends EObjectImpl implements TreeNode {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getNamespace() {
-		return namespace;
-	}
-
-				/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setNamespace(String newNamespace) {
-		String oldNamespace = namespace;
-		namespace = newNamespace;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, DataMapperPackage.TREE_NODE__NAMESPACE, oldNamespace, namespace));
-	}
-
-				/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String getDoc() {
-		return doc;
-	}
-
-				/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setDoc(String newDoc) {
-		String oldDoc = doc;
-		doc = newDoc;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, DataMapperPackage.TREE_NODE__DOC, oldDoc, doc));
-	}
-
-				/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList<String> getAliases() {
-		if (aliases == null) {
-			aliases = new EDataTypeUniqueEList<String>(String.class, this, DataMapperPackage.TREE_NODE__ALIASES);
+	public EMap<String, String> getProperties() {
+		if (properties == null) {
+			properties = new EcoreEMap<String,String>(DataMapperPackage.Literals.PROPERTY_KEY_VALUE_PAIR, PropertyKeyValuePairImpl.class, this, DataMapperPackage.TREE_NODE__PROPERTIES);
 		}
-		return aliases;
+		return properties;
 	}
 
 				/**
@@ -503,8 +398,6 @@ public class TreeNodeImpl extends EObjectImpl implements TreeNode {
 		switch (featureID) {
 			case DataMapperPackage.TREE_NODE__NODE:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getNode()).basicAdd(otherEnd, msgs);
-			case DataMapperPackage.TREE_NODE__ATTRIBUTE:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getAttribute()).basicAdd(otherEnd, msgs);
 			case DataMapperPackage.TREE_NODE__ELEMENT:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getElement()).basicAdd(otherEnd, msgs);
 			case DataMapperPackage.TREE_NODE__FIELD_PARENT:
@@ -533,8 +426,6 @@ public class TreeNodeImpl extends EObjectImpl implements TreeNode {
 		switch (featureID) {
 			case DataMapperPackage.TREE_NODE__NODE:
 				return ((InternalEList<?>)getNode()).basicRemove(otherEnd, msgs);
-			case DataMapperPackage.TREE_NODE__ATTRIBUTE:
-				return ((InternalEList<?>)getAttribute()).basicRemove(otherEnd, msgs);
 			case DataMapperPackage.TREE_NODE__ELEMENT:
 				return ((InternalEList<?>)getElement()).basicRemove(otherEnd, msgs);
 			case DataMapperPackage.TREE_NODE__FIELD_PARENT:
@@ -543,6 +434,8 @@ public class TreeNodeImpl extends EObjectImpl implements TreeNode {
 				return basicSetOutputParent(null, msgs);
 			case DataMapperPackage.TREE_NODE__INPUT_PARENT:
 				return basicSetInputParent(null, msgs);
+			case DataMapperPackage.TREE_NODE__PROPERTIES:
+				return ((InternalEList<?>)getProperties()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -577,8 +470,6 @@ public class TreeNodeImpl extends EObjectImpl implements TreeNode {
 				return getName();
 			case DataMapperPackage.TREE_NODE__NODE:
 				return getNode();
-			case DataMapperPackage.TREE_NODE__ATTRIBUTE:
-				return getAttribute();
 			case DataMapperPackage.TREE_NODE__ELEMENT:
 				return getElement();
 			case DataMapperPackage.TREE_NODE__FIELD_PARENT:
@@ -591,12 +482,9 @@ public class TreeNodeImpl extends EObjectImpl implements TreeNode {
 				return getSchemaDataType();
 			case DataMapperPackage.TREE_NODE__LEVEL:
 				return getLevel();
-			case DataMapperPackage.TREE_NODE__NAMESPACE:
-				return getNamespace();
-			case DataMapperPackage.TREE_NODE__DOC:
-				return getDoc();
-			case DataMapperPackage.TREE_NODE__ALIASES:
-				return getAliases();
+			case DataMapperPackage.TREE_NODE__PROPERTIES:
+				if (coreType) return getProperties();
+				else return getProperties().map();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -617,10 +505,6 @@ public class TreeNodeImpl extends EObjectImpl implements TreeNode {
 				getNode().clear();
 				getNode().addAll((Collection<? extends TreeNode>)newValue);
 				return;
-			case DataMapperPackage.TREE_NODE__ATTRIBUTE:
-				getAttribute().clear();
-				getAttribute().addAll((Collection<? extends Attribute>)newValue);
-				return;
 			case DataMapperPackage.TREE_NODE__ELEMENT:
 				getElement().clear();
 				getElement().addAll((Collection<? extends Element>)newValue);
@@ -640,15 +524,8 @@ public class TreeNodeImpl extends EObjectImpl implements TreeNode {
 			case DataMapperPackage.TREE_NODE__LEVEL:
 				setLevel((Integer)newValue);
 				return;
-			case DataMapperPackage.TREE_NODE__NAMESPACE:
-				setNamespace((String)newValue);
-				return;
-			case DataMapperPackage.TREE_NODE__DOC:
-				setDoc((String)newValue);
-				return;
-			case DataMapperPackage.TREE_NODE__ALIASES:
-				getAliases().clear();
-				getAliases().addAll((Collection<? extends String>)newValue);
+			case DataMapperPackage.TREE_NODE__PROPERTIES:
+				((EStructuralFeature.Setting)getProperties()).set(newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -668,9 +545,6 @@ public class TreeNodeImpl extends EObjectImpl implements TreeNode {
 			case DataMapperPackage.TREE_NODE__NODE:
 				getNode().clear();
 				return;
-			case DataMapperPackage.TREE_NODE__ATTRIBUTE:
-				getAttribute().clear();
-				return;
 			case DataMapperPackage.TREE_NODE__ELEMENT:
 				getElement().clear();
 				return;
@@ -689,14 +563,8 @@ public class TreeNodeImpl extends EObjectImpl implements TreeNode {
 			case DataMapperPackage.TREE_NODE__LEVEL:
 				setLevel(LEVEL_EDEFAULT);
 				return;
-			case DataMapperPackage.TREE_NODE__NAMESPACE:
-				setNamespace(NAMESPACE_EDEFAULT);
-				return;
-			case DataMapperPackage.TREE_NODE__DOC:
-				setDoc(DOC_EDEFAULT);
-				return;
-			case DataMapperPackage.TREE_NODE__ALIASES:
-				getAliases().clear();
+			case DataMapperPackage.TREE_NODE__PROPERTIES:
+				getProperties().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -714,8 +582,6 @@ public class TreeNodeImpl extends EObjectImpl implements TreeNode {
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case DataMapperPackage.TREE_NODE__NODE:
 				return node != null && !node.isEmpty();
-			case DataMapperPackage.TREE_NODE__ATTRIBUTE:
-				return attribute != null && !attribute.isEmpty();
 			case DataMapperPackage.TREE_NODE__ELEMENT:
 				return element != null && !element.isEmpty();
 			case DataMapperPackage.TREE_NODE__FIELD_PARENT:
@@ -728,12 +594,8 @@ public class TreeNodeImpl extends EObjectImpl implements TreeNode {
 				return schemaDataType != SCHEMA_DATA_TYPE_EDEFAULT;
 			case DataMapperPackage.TREE_NODE__LEVEL:
 				return level != LEVEL_EDEFAULT;
-			case DataMapperPackage.TREE_NODE__NAMESPACE:
-				return NAMESPACE_EDEFAULT == null ? namespace != null : !NAMESPACE_EDEFAULT.equals(namespace);
-			case DataMapperPackage.TREE_NODE__DOC:
-				return DOC_EDEFAULT == null ? doc != null : !DOC_EDEFAULT.equals(doc);
-			case DataMapperPackage.TREE_NODE__ALIASES:
-				return aliases != null && !aliases.isEmpty();
+			case DataMapperPackage.TREE_NODE__PROPERTIES:
+				return properties != null && !properties.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -754,12 +616,6 @@ public class TreeNodeImpl extends EObjectImpl implements TreeNode {
 		result.append(schemaDataType);
 		result.append(", level: ");
 		result.append(level);
-		result.append(", namespace: ");
-		result.append(namespace);
-		result.append(", doc: ");
-		result.append(doc);
-		result.append(", aliases: ");
-		result.append(aliases);
 		result.append(')');
 		return result.toString();
 	}

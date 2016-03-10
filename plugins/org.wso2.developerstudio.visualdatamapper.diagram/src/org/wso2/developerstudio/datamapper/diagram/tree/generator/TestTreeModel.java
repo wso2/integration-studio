@@ -1,6 +1,5 @@
 package org.wso2.developerstudio.datamapper.diagram.tree.generator;
 
-import org.wso2.developerstudio.datamapper.diagram.tree.model.Attribute;
 import org.wso2.developerstudio.datamapper.diagram.tree.model.Element;
 import org.wso2.developerstudio.datamapper.diagram.tree.model.Tree;
 
@@ -111,9 +110,6 @@ public class TestTreeModel {
 		attrEL.setName("name");
 		innerTree.getElements().add(attrEL);
 
-		Attribute attr2 = new Attribute(innerTree);
-		attr2.setName("ID");
-		innerTree.getAttributes().add(attr2);
 		//
 		// Element ele=new Element(innerTree);
 		// ele.setName("courses");

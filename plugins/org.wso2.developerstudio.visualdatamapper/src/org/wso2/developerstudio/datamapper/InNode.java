@@ -15,8 +15,6 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link org.wso2.developerstudio.datamapper.InNode#getIncomingLink <em>Incoming Link</em>}</li>
  *   <li>{@link org.wso2.developerstudio.datamapper.InNode#getElementParent <em>Element Parent</em>}</li>
- *   <li>{@link org.wso2.developerstudio.datamapper.InNode#getAttributeParent <em>Attribute Parent</em>}</li>
- *   <li>{@link org.wso2.developerstudio.datamapper.InNode#getConcatParent <em>Concat Parent</em>}</li>
  * </ul>
  * </p>
  *
@@ -71,58 +69,4 @@ public interface InNode extends EObject {
 	 * @generated
 	 */
 	void setElementParent(Element value);
-
-	/**
-	 * Returns the value of the '<em><b>Attribute Parent</b></em>' container reference.
-	 * It is bidirectional and its opposite is '{@link org.wso2.developerstudio.datamapper.Attribute#getInNode <em>In Node</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Attribute Parent</em>' container reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Attribute Parent</em>' container reference.
-	 * @see #setAttributeParent(Attribute)
-	 * @see org.wso2.developerstudio.datamapper.DataMapperPackage#getInNode_AttributeParent()
-	 * @see org.wso2.developerstudio.datamapper.Attribute#getInNode
-	 * @model opposite="inNode" transient="false"
-	 * @generated
-	 */
-	Attribute getAttributeParent();
-
-	/**
-	 * Sets the value of the '{@link org.wso2.developerstudio.datamapper.InNode#getAttributeParent <em>Attribute Parent</em>}' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Attribute Parent</em>' container reference.
-	 * @see #getAttributeParent()
-	 * @generated
-	 */
-	void setAttributeParent(Attribute value);
-
-	/**
-	 * Returns the value of the '<em><b>Concat Parent</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Concat Parent</em>' container reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Concat Parent</em>' reference.
-	 * @see #setConcatParent(Concat)
-	 * @see org.wso2.developerstudio.datamapper.DataMapperPackage#getInNode_ConcatParent()
-	 * @model
-	 * @generated
-	 */
-	Concat getConcatParent();
-
-	/**
-	 * Sets the value of the '{@link org.wso2.developerstudio.datamapper.InNode#getConcatParent <em>Concat Parent</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Concat Parent</em>' reference.
-	 * @see #getConcatParent()
-	 * @generated
-	 */
-	void setConcatParent(Concat value);
 } // InNode

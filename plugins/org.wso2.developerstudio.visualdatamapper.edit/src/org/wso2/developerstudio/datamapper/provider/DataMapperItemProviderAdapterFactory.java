@@ -93,29 +93,6 @@ public class DataMapperItemProviderAdapterFactory extends DataMapperAdapterFacto
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.wso2.developerstudio.datamapper.DataMapperDiagram} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected DataMapperDiagramItemProvider dataMapperDiagramItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.wso2.developerstudio.datamapper.DataMapperDiagram}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createDataMapperDiagramAdapter() {
-		if (dataMapperDiagramItemProvider == null) {
-			dataMapperDiagramItemProvider = new DataMapperDiagramItemProvider(this);
-		}
-
-		return dataMapperDiagramItemProvider;
-	}
-
-	/**
 	 * This keeps track of the one adapter used for all {@link org.wso2.developerstudio.datamapper.DataMapperRoot} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -343,29 +320,6 @@ public class DataMapperItemProviderAdapterFactory extends DataMapperAdapterFacto
 		}
 
 		return elementItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link org.wso2.developerstudio.datamapper.Attribute} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected AttributeItemProvider attributeItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.wso2.developerstudio.datamapper.Attribute}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createAttributeAdapter() {
-		if (attributeItemProvider == null) {
-			attributeItemProvider = new AttributeItemProvider(this);
-		}
-
-		return attributeItemProvider;
 	}
 
 	/**
@@ -622,6 +576,29 @@ public class DataMapperItemProviderAdapterFactory extends DataMapperAdapterFacto
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link java.util.Map.Entry} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected PropertyKeyValuePairItemProvider propertyKeyValuePairItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link java.util.Map.Entry}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createPropertyKeyValuePairAdapter() {
+		if (propertyKeyValuePairItemProvider == null) {
+			propertyKeyValuePairItemProvider = new PropertyKeyValuePairItemProvider(this);
+		}
+
+		return propertyKeyValuePairItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -721,7 +698,6 @@ public class DataMapperItemProviderAdapterFactory extends DataMapperAdapterFacto
 	 */
 	public void dispose() {
 		if (dataMapperNodeItemProvider != null) dataMapperNodeItemProvider.dispose();
-		if (dataMapperDiagramItemProvider != null) dataMapperDiagramItemProvider.dispose();
 		if (dataMapperRootItemProvider != null) dataMapperRootItemProvider.dispose();
 		if (inputItemProvider != null) inputItemProvider.dispose();
 		if (outputItemProvider != null) outputItemProvider.dispose();
@@ -732,7 +708,6 @@ public class DataMapperItemProviderAdapterFactory extends DataMapperAdapterFacto
 		if (operatorRightContainerItemProvider != null) operatorRightContainerItemProvider.dispose();
 		if (operatorRightConnectorItemProvider != null) operatorRightConnectorItemProvider.dispose();
 		if (elementItemProvider != null) elementItemProvider.dispose();
-		if (attributeItemProvider != null) attributeItemProvider.dispose();
 		if (treeNodeItemProvider != null) treeNodeItemProvider.dispose();
 		if (inNodeItemProvider != null) inNodeItemProvider.dispose();
 		if (outNodeItemProvider != null) outNodeItemProvider.dispose();
@@ -744,6 +719,7 @@ public class DataMapperItemProviderAdapterFactory extends DataMapperAdapterFacto
 		if (lowerCaseItemProvider != null) lowerCaseItemProvider.dispose();
 		if (containsItemProvider != null) containsItemProvider.dispose();
 		if (upperCaseItemProvider != null) upperCaseItemProvider.dispose();
+		if (propertyKeyValuePairItemProvider != null) propertyKeyValuePairItemProvider.dispose();
 	}
 
 }

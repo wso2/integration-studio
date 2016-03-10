@@ -6,19 +6,14 @@ import java.util.Map;
 import java.util.Set;
 
 import org.eclipse.core.runtime.IAdaptable;
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.ENamedElement;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.gmf.runtime.emf.type.core.ElementTypeRegistry;
 import org.eclipse.gmf.runtime.emf.type.core.IElementType;
 import org.eclipse.gmf.tooling.runtime.providers.DiagramElementTypeImages;
 import org.eclipse.gmf.tooling.runtime.providers.DiagramElementTypes;
 import org.eclipse.jface.resource.ImageDescriptor;
-import org.eclipse.jface.resource.ImageRegistry;
 import org.eclipse.swt.graphics.Image;
 import org.wso2.developerstudio.datamapper.DataMapperPackage;
-import org.wso2.developerstudio.datamapper.diagram.edit.parts.AttributeEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.ConcatEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.ConstantEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.ContainsEditPart;
@@ -270,8 +265,6 @@ public class DataMapperElementTypes {
 
 			elements.put(TreeNode_3003, DataMapperPackage.eINSTANCE.getTreeNode());
 
-			elements.put(Attribute_3004, DataMapperPackage.eINSTANCE.getAttribute());
-
 			elements.put(InNode_3005, DataMapperPackage.eINSTANCE.getInNode());
 
 			elements.put(OutNode_3006, DataMapperPackage.eINSTANCE.getOutNode());
@@ -381,8 +374,6 @@ public class DataMapperElementTypes {
 			return TreeNode_3002;
 		case TreeNode2EditPart.VISUAL_ID:
 			return TreeNode_3003;
-		case AttributeEditPart.VISUAL_ID:
-			return Attribute_3004;
 		case InNodeEditPart.VISUAL_ID:
 			return InNode_3005;
 		case OutNodeEditPart.VISUAL_ID:

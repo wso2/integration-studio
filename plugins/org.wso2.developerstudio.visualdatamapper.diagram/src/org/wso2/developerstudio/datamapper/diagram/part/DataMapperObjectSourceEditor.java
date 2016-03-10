@@ -31,7 +31,6 @@ import org.eclipse.wst.sse.core.internal.text.rules.StructuredTextPartitioner;
 import org.eclipse.wst.sse.ui.StructuredTextEditor;
 import org.eclipse.wst.sse.ui.StructuredTextEditor;
 import org.wso2.developerstudio.datamapper.*;
-import org.wso2.developerstudio.datamapper.diagram.tree.model.Attribute;
 
 
 
@@ -173,10 +172,6 @@ public class DataMapperObjectSourceEditor {
 		for(int i =0;  i< (((TreeNode) (treeNode)).getNode()).size();i++){
 			
 			printHierarchy( (EList<TreeNode>) ((TreeNode) treeNode).getNode().get(i));
-		}
-		
-		for(int j=0; j<((TreeNode) treeNode).getAttribute().size();j++){
-			System.out.println("<" +((Attribute) ((TreeNode) treeNode).getAttribute()).getName()+">"+ "\n");
 		}
 		
 		for(int k=0; k<((TreeNode) treeNode).getElement().size();k++){

@@ -2,6 +2,7 @@
  */
 package org.wso2.developerstudio.datamapper.util;
 
+import java.util.Map;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
@@ -69,10 +70,6 @@ public class DataMapperAdapterFactory extends AdapterFactoryImpl {
 				return createDataMapperNodeAdapter();
 			}
 			@Override
-			public Adapter caseDataMapperDiagram(DataMapperDiagram object) {
-				return createDataMapperDiagramAdapter();
-			}
-			@Override
 			public Adapter caseDataMapperRoot(DataMapperRoot object) {
 				return createDataMapperRootAdapter();
 			}
@@ -111,10 +108,6 @@ public class DataMapperAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseElement(Element object) {
 				return createElementAdapter();
-			}
-			@Override
-			public Adapter caseAttribute(Attribute object) {
-				return createAttributeAdapter();
 			}
 			@Override
 			public Adapter caseTreeNode(TreeNode object) {
@@ -161,6 +154,10 @@ public class DataMapperAdapterFactory extends AdapterFactoryImpl {
 				return createUpperCaseAdapter();
 			}
 			@Override
+			public Adapter casePropertyKeyValuePair(Map.Entry<String, String> object) {
+				return createPropertyKeyValuePairAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -191,20 +188,6 @@ public class DataMapperAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createDataMapperNodeAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.wso2.developerstudio.datamapper.DataMapperDiagram <em>Diagram</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.wso2.developerstudio.datamapper.DataMapperDiagram
-	 * @generated
-	 */
-	public Adapter createDataMapperDiagramAdapter() {
 		return null;
 	}
 
@@ -345,20 +328,6 @@ public class DataMapperAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createElementAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.wso2.developerstudio.datamapper.Attribute <em>Attribute</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.wso2.developerstudio.datamapper.Attribute
-	 * @generated
-	 */
-	public Adapter createAttributeAdapter() {
 		return null;
 	}
 
@@ -513,6 +482,20 @@ public class DataMapperAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createUpperCaseAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link java.util.Map.Entry <em>Property Key Value Pair</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see java.util.Map.Entry
+	 * @generated
+	 */
+	public Adapter createPropertyKeyValuePairAdapter() {
 		return null;
 	}
 

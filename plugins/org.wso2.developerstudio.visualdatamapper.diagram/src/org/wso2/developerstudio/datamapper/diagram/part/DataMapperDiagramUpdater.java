@@ -12,7 +12,6 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.gmf.tooling.runtime.update.DiagramUpdater;
-import org.wso2.developerstudio.datamapper.Attribute;
 import org.wso2.developerstudio.datamapper.Concat;
 import org.wso2.developerstudio.datamapper.Constant;
 import org.wso2.developerstudio.datamapper.Contains;
@@ -35,7 +34,6 @@ import org.wso2.developerstudio.datamapper.Output;
 import org.wso2.developerstudio.datamapper.Split;
 import org.wso2.developerstudio.datamapper.TreeNode;
 import org.wso2.developerstudio.datamapper.UpperCase;
-import org.wso2.developerstudio.datamapper.diagram.edit.parts.AttributeEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.ConcatEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.ConstantEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.ContainsEditPart;
@@ -98,8 +96,6 @@ public class DataMapperDiagramUpdater {
 			return getTreeNode_3002SemanticChildren(view);
 		case TreeNode2EditPart.VISUAL_ID:
 			return getTreeNode_3003SemanticChildren(view);
-		case AttributeEditPart.VISUAL_ID:
-			return getAttribute_3004SemanticChildren(view);
 		case ElementEditPart.VISUAL_ID:
 			return getElement_3007SemanticChildren(view);
 		case TreeNode3EditPart.VISUAL_ID:
@@ -366,14 +362,6 @@ public class DataMapperDiagramUpdater {
 				continue;
 			}
 		}
-		for (Iterator<?> it = modelElement.getAttribute().iterator(); it.hasNext();) {
-			Attribute childElement = (Attribute) it.next();
-			int visualID = DataMapperVisualIDRegistry.getNodeVisualID(view, childElement);
-			if (visualID == AttributeEditPart.VISUAL_ID) {
-				result.add(new DataMapperNodeDescriptor(childElement, visualID));
-				continue;
-			}
-		}
 		for (Iterator<?> it = modelElement.getElement().iterator(); it.hasNext();) {
 			Element childElement = (Element) it.next();
 			int visualID = DataMapperVisualIDRegistry.getNodeVisualID(view, childElement);
@@ -402,14 +390,6 @@ public class DataMapperDiagramUpdater {
 				continue;
 			}
 		}
-		for (Iterator<?> it = modelElement.getAttribute().iterator(); it.hasNext();) {
-			Attribute childElement = (Attribute) it.next();
-			int visualID = DataMapperVisualIDRegistry.getNodeVisualID(view, childElement);
-			if (visualID == AttributeEditPart.VISUAL_ID) {
-				result.add(new DataMapperNodeDescriptor(childElement, visualID));
-				continue;
-			}
-		}
 		for (Iterator<?> it = modelElement.getElement().iterator(); it.hasNext();) {
 			Element childElement = (Element) it.next();
 			int visualID = DataMapperVisualIDRegistry.getNodeVisualID(view, childElement);
@@ -421,31 +401,6 @@ public class DataMapperDiagramUpdater {
 		return result;
 	}
 
-	/**
-	 * @generated
-	 */
-	public static List<DataMapperNodeDescriptor> getAttribute_3004SemanticChildren(View view) {
-		if (!view.isSetElement()) {
-			return Collections.emptyList();
-		}
-		Attribute modelElement = (Attribute) view.getElement();
-		LinkedList<DataMapperNodeDescriptor> result = new LinkedList<DataMapperNodeDescriptor>();
-		{
-			InNode childElement = modelElement.getInNode();
-			int visualID = DataMapperVisualIDRegistry.getNodeVisualID(view, childElement);
-			if (visualID == InNodeEditPart.VISUAL_ID) {
-				result.add(new DataMapperNodeDescriptor(childElement, visualID));
-			}
-		}
-		{
-			OutNode childElement = modelElement.getOutNode();
-			int visualID = DataMapperVisualIDRegistry.getNodeVisualID(view, childElement);
-			if (visualID == OutNodeEditPart.VISUAL_ID) {
-				result.add(new DataMapperNodeDescriptor(childElement, visualID));
-			}
-		}
-		return result;
-	}
 
 	/**
 	 * @generated
@@ -486,14 +441,6 @@ public class DataMapperDiagramUpdater {
 			TreeNode childElement = (TreeNode) it.next();
 			int visualID = DataMapperVisualIDRegistry.getNodeVisualID(view, childElement);
 			if (visualID == TreeNode2EditPart.VISUAL_ID) {
-				result.add(new DataMapperNodeDescriptor(childElement, visualID));
-				continue;
-			}
-		}
-		for (Iterator<?> it = modelElement.getAttribute().iterator(); it.hasNext();) {
-			Attribute childElement = (Attribute) it.next();
-			int visualID = DataMapperVisualIDRegistry.getNodeVisualID(view, childElement);
-			if (visualID == AttributeEditPart.VISUAL_ID) {
 				result.add(new DataMapperNodeDescriptor(childElement, visualID));
 				continue;
 			}
@@ -647,8 +594,6 @@ public class DataMapperDiagramUpdater {
 			return getTreeNode_3002ContainedLinks(view);
 		case TreeNode2EditPart.VISUAL_ID:
 			return getTreeNode_3003ContainedLinks(view);
-		case AttributeEditPart.VISUAL_ID:
-			return getAttribute_3004ContainedLinks(view);
 		case InNodeEditPart.VISUAL_ID:
 			return getInNode_3005ContainedLinks(view);
 		case OutNodeEditPart.VISUAL_ID:
@@ -708,8 +653,6 @@ public class DataMapperDiagramUpdater {
 			return getTreeNode_3002IncomingLinks(view);
 		case TreeNode2EditPart.VISUAL_ID:
 			return getTreeNode_3003IncomingLinks(view);
-		case AttributeEditPart.VISUAL_ID:
-			return getAttribute_3004IncomingLinks(view);
 		case InNodeEditPart.VISUAL_ID:
 			return getInNode_3005IncomingLinks(view);
 		case OutNodeEditPart.VISUAL_ID:
@@ -769,8 +712,6 @@ public class DataMapperDiagramUpdater {
 			return getTreeNode_3002OutgoingLinks(view);
 		case TreeNode2EditPart.VISUAL_ID:
 			return getTreeNode_3003OutgoingLinks(view);
-		case AttributeEditPart.VISUAL_ID:
-			return getAttribute_3004OutgoingLinks(view);
 		case InNodeEditPart.VISUAL_ID:
 			return getInNode_3005OutgoingLinks(view);
 		case OutNodeEditPart.VISUAL_ID:

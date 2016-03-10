@@ -79,7 +79,7 @@ public class SchemaGeneratorFromRegResourceHelper {
 			CAppEnvironment.getRegistryHandler().importRegistryResourceToFileSystem(
 					(IRegistryData) selectedPathData, outputFile);
 		}catch (Exception e) {
-			// TODO Auto-generated catch block
+			log.error("Error while retrieving the registry resource from remote registry", e);
 		} finally {
 			//do nothing
 		}	

@@ -25,6 +25,9 @@ import org.eclipse.draw2d.Figure;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.ImageFigure;
 import org.eclipse.draw2d.Label;
+import org.eclipse.draw2d.MouseEvent;
+import org.eclipse.draw2d.MouseListener;
+import org.eclipse.draw2d.MouseMotionListener;
 import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.RectangleFigure;
 import org.eclipse.draw2d.Shape;
@@ -63,6 +66,7 @@ import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.wso2.developerstudio.datamapper.Element;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.custom.CustomNonResizableEditPolicyEx;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.custom.CustomSelectionEditPolicy;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.custom.FixedBorderItemLocator;
 import org.wso2.developerstudio.datamapper.diagram.part.DataMapperVisualIDRegistry;
 
@@ -120,6 +124,7 @@ public class ElementEditPart extends AbstractBorderedShapeEditPart {
 		/* remove balloon */
 		installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE, new CustomNonResizableEditPolicyEx());
 		removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.POPUPBAR_ROLE);
+//		installEditPolicy(EditPolicy.SELECTION_FEEDBACK_ROLE,new CustomSelectionEditPolicy());
 	}
 	
 	/**
@@ -516,7 +521,7 @@ public class ElementEditPart extends AbstractBorderedShapeEditPart {
 			figure.setMaximumSize(new Dimension(100,3));
 			figure.setMinimumSize(new Dimension(0,3));
 			
-			Label elemLabel = new Label();
+			final Label elemLabel = new Label();
 			if(StringUtils.isNotEmpty(name)){
 				if(name.startsWith(PREFIX)){
 					elemLabel.setIcon(attributeImg.getImage());
@@ -526,8 +531,59 @@ public class ElementEditPart extends AbstractBorderedShapeEditPart {
 			}
 				
 			Display display = Display.getCurrent();
-			Color black = display.getSystemColor(SWT.COLOR_BLACK);
+			final Color black = display.getSystemColor(SWT.COLOR_BLACK);
 			elemLabel.setForegroundColor(black);
+			this.addMouseMotionListener(new MouseMotionListener(){
+
+				@Override
+				public void mouseDragged(MouseEvent me) {
+					highlightElementOnSelection();
+					
+				}
+
+				@Override
+				public void mouseEntered(MouseEvent me) {
+					highlightElementOnSelection();
+					
+				}
+
+				@Override
+				public void mouseExited(MouseEvent me) {
+					removeHighlight();
+					
+				}
+
+				@Override
+				public void mouseHover(MouseEvent me) {
+					highlightElementOnSelection();
+					
+				}
+
+				@Override
+				public void mouseMoved(MouseEvent me) {
+				}
+				
+			});
+			this.addMouseListener(new MouseListener() {
+				
+				@Override
+				public void mouseReleased(MouseEvent me) {
+					removeHighlight();
+					
+				}
+				
+				@Override
+				public void mousePressed(MouseEvent me) {
+					highlightElementOnSelection();
+					
+				}
+				
+				@Override
+				public void mouseDoubleClicked(MouseEvent me) {
+					highlightElementOnSelection();
+					
+				}
+			});
 			String newName = null;
 			if (name.startsWith(PREFIX)) {
 				String[] fullName = name.split(PREFIX);
@@ -596,11 +652,41 @@ public class ElementEditPart extends AbstractBorderedShapeEditPart {
 			
 			this.add(elemLabel);
 		}
+		
+		public void highlightElementOnSelection() {
+			List<Figure> childrenList = this.getChildren();
+			Display display = Display.getCurrent();
+			Color bckGrndColor = new Color(null, 0, 125, 133);
+			Label newLabel= 	(Label) childrenList.get(1);
+			newLabel.setForegroundColor(bckGrndColor);
+			this.remove(childrenList.get(1));
+			this.add(newLabel);
+		}
+		
+		public void removeHighlight() {
+			List<Figure> childrenList = this.getChildren();
+			Display display = Display.getCurrent();
+			Color bckGrndColor = display.getSystemColor(SWT.COLOR_BLACK);
+			Label newLabel= 	(Label) childrenList.get(1);
+			newLabel.setForegroundColor(bckGrndColor);
+			this.remove(childrenList.get(1));
+			this.add(newLabel);
+		}
 
 	}
 	
 	public void renameElementItem(String newName) { 
 		getPrimaryShape().renameElement(newName);
 	}
+	
+	public void removeHighlightOnElem() { 
+		getPrimaryShape().removeHighlight();
+	}
+	
+	public void highlightElementItem() { 
+		getPrimaryShape().highlightElementOnSelection();
+	}
+	
+	
 
 }

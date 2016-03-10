@@ -24,6 +24,8 @@ import java.util.List;
 
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.ImageFigure;
+import org.eclipse.draw2d.MouseEvent;
+import org.eclipse.draw2d.MouseMotionListener;
 import org.eclipse.draw2d.RectangleFigure;
 import org.eclipse.draw2d.Shape;
 import org.eclipse.draw2d.StackLayout;
@@ -35,6 +37,8 @@ import org.eclipse.gef.Request;
 import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.editpolicies.LayoutEditPolicy;
 import org.eclipse.gef.editpolicies.NonResizableEditPolicy;
+import org.eclipse.gef.palette.PaletteContainer;
+import org.eclipse.gef.palette.ToolEntry;
 import org.eclipse.gef.requests.CreateRequest;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.AbstractBorderItemEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeNodeEditPart;

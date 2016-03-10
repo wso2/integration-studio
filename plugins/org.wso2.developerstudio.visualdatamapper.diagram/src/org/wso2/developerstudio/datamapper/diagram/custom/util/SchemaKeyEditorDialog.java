@@ -52,15 +52,6 @@ import org.wso2.developerstudio.datamapper.diagram.custom.action.Messages;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.InputEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.OutputEditPart;
 import org.wso2.developerstudio.datamapper.diagram.part.DataMapperSchemaEditorUtil;
-import org.wso2.developerstudio.datamapper.diagram.schemagen.util.AvroSchemaGeneratorHelper;
-import org.wso2.developerstudio.eclipse.capp.core.artifacts.manager.CAppEnvironment;
-import org.wso2.developerstudio.eclipse.capp.core.model.RegistryConnection;
-//import org.wso2.developerstudio.eclipse.esb.presentation.ui.DeveloperStudioElementProviderDialog;
-//import org.wso2.developerstudio.eclipse.esb.presentation.ui.EmbeddedEntriesDialog;
-//import org.wso2.developerstudio.eclipse.esb.presentation.ui.NewResourceTemplateDialog;
-import org.wso2.developerstudio.eclipse.registry.core.interfaces.IRegistryConnection;
-import org.wso2.developerstudio.eclipse.registry.core.interfaces.IRegistryData;
-import org.wso2.developerstudio.eclipse.registry.core.interfaces.IRegistryHandler;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.datamapper.diagram.schemagen.util.*;
@@ -80,8 +71,6 @@ public class SchemaKeyEditorDialog extends Dialog {
 	private static final String DEFAULT_REGISTRY_URL = "https://localhost:9443/registry"; //$NON-NLS-1$
 	private static final String G_REG_PATH_PREFIX = "/_system/governance/"; //$NON-NLS-1$
 	private static final String C_REG_PATH_PREFIX = "/_system/config/"; //$NON-NLS-1$
-	private static final String FILTER_EXTENSION_TXT = "*.txt"; //$NON-NLS-1$
-	private static final String FILTER_EXTENSION_AVSC = "*.avsc"; //$NON-NLS-1$
 	private static final String C_REG_PREFIX = "conf:%s"; //$NON-NLS-1$
 	private static final String G_REG_PREFIX = "gov:%s"; //$NON-NLS-1$
 
@@ -93,10 +82,6 @@ public class SchemaKeyEditorDialog extends Dialog {
 	private static final String ERROR_MSG_HEADER = Messages.SchemaKeyEditorDialog_ErrorMsgHeader;
 	private static final String REGISTRY_BROWSER = Messages.SchemaKeyEditorDialog_RegistryBrowser;
 	private static final String RESOURCE_KEY = Messages.SchemaKeyEditorDialog_ResourceKey;
-	private static final String NEW_RESOURCE = Messages.SchemaKeyEditorDialog_NewResource;
-	private static final String EMBEDDED_RESOURCES = Messages.SchemaKeyEditorDialog_EmbeddedResources;
-	private static final String INPUT_SCHEMA_FILE = Messages.SchemaKeyEditorDialog_InputSchemaFile;
-	private static final String WORKSPACE_ELEMENT_PROVIDERS = Messages.SchemaKeyEditorDialog_WorkspaceElementProviders;
 	private static final String SELECT_REGISTRY_RESOURCE = Messages.SchemaKeyEditorDialog_SelectRegistryResource;
 	private static final String SCHEMA_KEY_EDITOR_DIALOG_TEXT = Messages.SchemaKeyEditorDialog_SchemaKeyEditorDialogMessage
 			+ FILE_SYSTEM + "</a> or <a>" + REGISTRY + "</a>"; //$NON-NLS-1$ //$NON-NLS-2$
@@ -174,10 +159,10 @@ public class SchemaKeyEditorDialog extends Dialog {
 			public void modifyText(ModifyEvent arg0) {
 			}
 		});
-		int optionsLenght = SchemaImportOptions.values().length;
+		int optionsLenght = FileType.values().length;
 		String[] options = new String[optionsLenght];
 		for (int i = 0; i < optionsLenght; i++) {
-			options[i] = SchemaImportOptions.values()[i].name();
+			options[i] = FileType.values()[i].name();
 		}
 		schemaTypeCombo.setItems(options);
 		schemaTypeCombo.select(0);
@@ -296,35 +281,14 @@ public class SchemaKeyEditorDialog extends Dialog {
 	/**
 	 * Open Registry browser
 	 */
+	//TODO refactor using the introduced factory method
 	private void openRegistryBrowser() {
 		hide();
-		try {
-			IRegistryConnection[] registryConnections = CAppEnvironment.getRegistryHandler()
-					.getRegistryConnections();
-			if (registryConnections.length == 0) {
-				RegistryConnection registryConnection = new RegistryConnection();
-				try {
-					registryConnection.setURL(new URL(DEFAULT_REGISTRY_URL));
-				} catch (MalformedURLException e) {
-					log.error(ERROR_REGISTRY_URL, e);
-
-					IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, REASON_REGISTRY_URL);
-					ErrorDialog.openError(Display.getCurrent().getActiveShell(), ERROR_MSG_HEADER,
-							ERROR_REGISTRY_URL, editorStatus);
-				}
-				registryConnection.setPath(C_REG_PATH_PREFIX);
-			}
-
-			IRegistryData selectedPathData = CAppEnvironment.getRegistryHandler()
-					.selectRegistryPath(registryConnections, REGISTRY_BROWSER,
-							SELECT_REGISTRY_RESOURCE, IRegistryHandler.SELECTED_REGISTRY_RESOURCE);
-			
-			if (selectedPathData == null) {
-				return;
-			}
-
+try {
 			DataMapperSchemaEditorUtil schemaEditorUtil = new DataMapperSchemaEditorUtil(inputFile);
-			String schemaFilePath = schemaEditorUtil.createDiagram(selectedPathData, schemaType);
+			String schema = SchemaGeneratorFromRegResourceHelper.getSchemaContent(FileType.values()[schemaTypeCombo.getSelectionIndex()]);
+			
+			String schemaFilePath = schemaEditorUtil.createDiagram(schema, schemaType);
 
 			if (!schemaFilePath.isEmpty()) {
 
@@ -369,28 +333,6 @@ public class SchemaKeyEditorDialog extends Dialog {
 	}
 
 	/**
-	 * Import schema from projects in workspace
-	 */
-	/*
-	private void openRegistryResourceProviderDialog() {
-		hide();
-		try {
-			DeveloperStudioElementProviderDialog registryResourceProviderSelector = new DeveloperStudioElementProviderDialog(
-					getParentShell(), new Class[] { IRegistryFile.class, IEsbEndpoint.class,
-							IEsbSequence.class, IEsbLocalEntry.class }, null);
-			registryResourceProviderSelector.create();
-			registryResourceProviderSelector.getShell().setText(WORKSPACE_ELEMENT_PROVIDERS);
-			registryResourceProviderSelector.open();
-			if (registryResourceProviderSelector.getReturnCode() == Window.OK) {
-				setSelectedPath(registryResourceProviderSelector.getSelectedPath());
-			}
-		} finally {
-			show();
-		}
-	}
-	*/
-
-	/**
 	 * Open file browser
 	 */
 	private void openFileBrowser() {
@@ -398,9 +340,9 @@ public class SchemaKeyEditorDialog extends Dialog {
 		try {
 			
 			DataMapperSchemaEditorUtil schemaEditorUtil = new DataMapperSchemaEditorUtil(inputFile);
-			Schema schema = AvroSchemaGeneratorHelper.getAvroSchema(SchemaImportOptions.values()[schemaTypeCombo.getSelectionIndex()]);
+			String schema = SchemaGeneratorFromFileSystemHelper.getSchemaContent(FileType.values()[schemaTypeCombo.getSelectionIndex()]);
 			if(schema != null){
-				String schemaFilePath = schemaEditorUtil.createDiagram(schema.toString(), schemaType);
+				String schemaFilePath = schemaEditorUtil.createDiagram(schema, schemaType);
 			  if (!schemaFilePath.isEmpty()) {
 					setSelectedPath(schemaFilePath);
 

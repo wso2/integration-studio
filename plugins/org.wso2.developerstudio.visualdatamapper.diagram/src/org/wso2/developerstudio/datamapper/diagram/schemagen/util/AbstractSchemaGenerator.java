@@ -17,20 +17,30 @@
 package org.wso2.developerstudio.datamapper.diagram.schemagen.util;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 
 import org.apache.avro.Schema;
+import org.apache.commons.io.FileUtils;
 
-public class AvroSchemaGenerator {
+public class AbstractSchemaGenerator implements ISchemaGenerator {
 
-	public Schema getAvroSchemaContent(String fileText) throws IOException {
-		Schema schema = null;
-		if (new File(fileText).exists()) {
-			schema = new Schema.Parser().parse(new FileInputStream(fileText));
-		} else {
-			schema = new Schema.Parser().parse(fileText);
-		}
-		return schema;
+	/* (non-Javadoc)
+	 * @see org.wso2.developerstudio.datamapper.diagram.schemagen.util.ISchemaGenerator#getAvroSchema(java.lang.String)
+	 */
+	@Override
+	public String getSchemaResourcePath(String filePath) throws IOException {
+
+		String entireFileText = FileUtils.readFileToString(new File(filePath));
+		Schema schema = Schema.parse(entireFileText);
+		return schema.toString();
+	}
+	
+	/* (non-Javadoc)
+	 * @see org.wso2.developerstudio.datamapper.diagram.schemagen.util.ISchemaGenerator#getAvroSchemaContent(java.lang.String)
+	 */
+	@Override
+	public String getSchemaContent(String fileText) throws IOException {
+		Schema schema = Schema.parse(fileText);
+		return schema.toString();
 	}
 }

@@ -27,59 +27,56 @@ import org.wso2.developerstudio.datamapper.diagram.custom.action.Messages;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
-public class AvroSchemaGeneratorHelper {
+public class SchemaGeneratorFromFileSystemHelper {
 
-	private static final String AVSC = "*.avsc";
-	private static final String XSD = "*.xsd";
-	private static final String XML = "*.xml";
-	private static final String JSON = "*.json";
 	private static final String INPUT_SCHEMA_FILE = Messages.SchemaKeyEditorDialog_InputSchemaFile;
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
-	
-	public static Schema getAvroSchema(SchemaImportOptions option) {
+	//TODO add a hashmap with file extensions for the 
+	public static String getSchemaContent(FileType option) {
 
-		String filter = AVSC;
 		String title = INPUT_SCHEMA_FILE;
-		AvroSchemaGenerator generator = null;
-		switch (option) {
-		case AVRO:
-			filter = AVSC;
-			title = INPUT_SCHEMA_FILE;
-			generator = new AvroSchemaGenerator();
-			break;
-		case XSD:
-			filter = XSD;
-			title = INPUT_SCHEMA_FILE;
-			generator = new AvroSchemaGeneratorForXSD();
-			break;
-		case XML:
-			filter = XML;
-			title = INPUT_SCHEMA_FILE;
-			generator = new AvroSchemaGeneratorForXML();
-			break;
-		case JSON:
-			filter = JSON;
-			title = INPUT_SCHEMA_FILE;
-			generator = new AvroSchemaGenerator();
-			break;
-		}
-
+		SchemaGeneratorFactory schemaGenFactory = new SchemaGeneratorFactory();
+		ISchemaGenerator schemaGenerator = schemaGenFactory.getSchemaGenerator(option);
 		Display display = Display.getDefault();
 		Shell shell = new Shell(display);
 		FileDialog fid = new FileDialog(shell);
-		fid.setFilterExtensions(new String[] { filter });
+		fid.setFilterExtensions(new String[] {fileExtensionForFileType(option)});
 		fid.setText(title);
 		String filePath = fid.open();
 		if (filePath == null) {
 			return null;
 		}
-
-		Schema avroSchema = null;
-		try {
-			avroSchema = generator.getAvroSchemaContent(filePath);
-		} catch (IOException e) {
-			log.error("Error while generating avro schema", e);
+		String schemaContent = null;
+		if (schemaGenerator instanceof SchemaGeneratorForXSD) {
+			try {
+				schemaContent = schemaGenerator.getSchemaContent(filePath);
+			} catch (IOException e) {
+				log.error("Error while generating avro schema", e);
+			}
+		} else {
+			try {
+				schemaContent = schemaGenerator.getSchemaResourcePath(filePath);
+			} catch (IOException e) {
+				log.error("Error while generating avro schema", e);
+			}
 		}
-		return avroSchema;
+		
+		return schemaContent;
+	}
+	
+	private static String fileExtensionForFileType(FileType fileType){
+		switch(fileType) {
+		case AVRO:
+			return "*.avsc";
+		case XSD:
+			return "*.xsd";
+		case XML:
+			return "*.xml";
+		case JSON:
+			return "*.json";
+		
+	}
+		return "";
+		
 	}
 }

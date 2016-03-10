@@ -13,6 +13,9 @@ import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.ImageFigure;
 import org.eclipse.draw2d.Label;
 import org.eclipse.draw2d.MarginBorder;
+import org.eclipse.draw2d.MouseEvent;
+import org.eclipse.draw2d.MouseListener;
+import org.eclipse.draw2d.MouseMotionListener;
 import org.eclipse.draw2d.RectangleFigure;
 import org.eclipse.draw2d.Shape;
 import org.eclipse.draw2d.StackLayout;
@@ -414,13 +417,64 @@ public class TreeNode3EditPart extends ShapeNodeEditPart {
 			fFigureTreeNodeNameFigure.setFont(new Font(null, "Arial", 10, SWT.BOLD));
 
 			figure2.setPreferredSize((count - 1) * 22, 3);
-			Label nodeLabel = new Label();
+			final Label nodeLabel = new Label();
 			nodeLabel.setIcon(mainImg.getImage());
 			Display display = Display.getCurrent();
-			Color black = display.getSystemColor(SWT.COLOR_BLACK);
+			final Color black = display.getSystemColor(SWT.COLOR_BLACK);
 			nodeLabel.setForegroundColor(black);
 			nodeLabel.setText(name);
 			nodeLabel.setSize(new Dimension(100,5));
+			this.addMouseMotionListener(new MouseMotionListener(){
+
+				@Override
+				public void mouseDragged(MouseEvent me) {
+					highlightElementOnSelection();
+					
+				}
+
+				@Override
+				public void mouseEntered(MouseEvent me) {
+					highlightElementOnSelection();
+					
+				}
+
+				@Override
+				public void mouseExited(MouseEvent me) {
+					removeHighlight();
+					
+				}
+
+				@Override
+				public void mouseHover(MouseEvent me) {
+					highlightElementOnSelection();
+					
+				}
+
+				@Override
+				public void mouseMoved(MouseEvent me) {
+				}
+				
+			});
+			this.addMouseListener(new MouseListener() {
+				
+				@Override
+				public void mouseReleased(MouseEvent me) {
+					removeHighlight();
+					
+				}
+				
+				@Override
+				public void mousePressed(MouseEvent me) {
+					highlightElementOnSelection();
+					
+				}
+				
+				@Override
+				public void mouseDoubleClicked(MouseEvent me) {
+					highlightElementOnSelection();
+					
+				}
+			});
 			figure.setOutline(false);
 			figure2.setOutline(false);
 			figure.add(figure2);
@@ -495,10 +549,39 @@ public class TreeNode3EditPart extends ShapeNodeEditPart {
 			rectFigure.add(nodeLabel);
 			
 		}
+		public void highlightElementOnSelection() {
+			RectangleFigure rectFigure = (RectangleFigure) this.getChildren().get(0);
+			List<Figure> childrenList = rectFigure.getChildren();
+			Display display = Display.getCurrent();
+			Color bckGrndColor = new Color(null, 0, 125, 133);
+			Label newLabel= 	(Label) childrenList.get(1);
+			newLabel.setForegroundColor(bckGrndColor);
+			rectFigure.remove(childrenList.get(1));
+			rectFigure.add(newLabel);
+		}
+		
+		public void removeHighlight() {
+			RectangleFigure rectFigure = (RectangleFigure) this.getChildren().get(0);
+			List<Figure> childrenList = rectFigure.getChildren();
+			Display display = Display.getCurrent();
+			Color bckGrndColor = display.getSystemColor(SWT.COLOR_BLACK);
+			Label newLabel= 	(Label) childrenList.get(1);
+			newLabel.setForegroundColor(bckGrndColor);
+			rectFigure.remove(childrenList.get(1));
+			rectFigure.add(newLabel);
+		}
 	}
 	
 	public void renameElementItem(String newName) { 
 		getPrimaryShape().renameElement(newName);
+	}
+	
+	public void removeHighlightOnElem() { 
+		getPrimaryShape().removeHighlight();
+	}
+	
+	public void highlightElementItem() { 
+		getPrimaryShape().highlightElementOnSelection();
 	}
 
 }

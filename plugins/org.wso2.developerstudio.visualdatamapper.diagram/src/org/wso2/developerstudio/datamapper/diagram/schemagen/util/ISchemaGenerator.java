@@ -2,7 +2,6 @@ package org.wso2.developerstudio.datamapper.diagram.schemagen.util;
 
 import java.io.IOException;
 
-import org.apache.avro.Schema;
 
 public interface ISchemaGenerator {
 

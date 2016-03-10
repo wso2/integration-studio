@@ -60,15 +60,19 @@ import org.eclipse.swt.graphics.Font;
 import org.wso2.developerstudio.datamapper.DataMapperFactory;
 import org.wso2.developerstudio.datamapper.DataMapperPackage;
 import org.wso2.developerstudio.datamapper.DataMapperRoot;
+import org.wso2.developerstudio.datamapper.SchemaDataType;
 import org.wso2.developerstudio.datamapper.TreeNode;
 import org.wso2.developerstudio.datamapper.diagram.Activator;
 import org.wso2.developerstudio.datamapper.diagram.custom.util.TreeNodeUtils;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.custom.CustomNonResizableEditPolicyEx;
 import org.wso2.developerstudio.datamapper.diagram.tree.generator.ISchemaTransformer;
+import org.wso2.developerstudio.datamapper.diagram.tree.generator.SchemaTransformer;
 import org.wso2.developerstudio.datamapper.diagram.tree.generator.SchemaTransformerRegistry;
 import org.wso2.developerstudio.datamapper.impl.InputImpl;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
+import org.wso2.developerstudio.datamapper.diagram.tree.model.Tree;
+import org.wso2.developerstudio.datamapper.Element;
 
 /**
  * @generated
@@ -135,8 +139,15 @@ public class InputEditPart extends ShapeNodeEditPart {
 		ISchemaTransformer schemaTransformer;
 		try {
 			schemaTransformer = SchemaTransformerRegistry.getInstance().getSchemaTransformer().newInstance();
-			String content = schemaTransformer.getSchemaContentFromFile(filePath);
-			generateTree(content, inputRootTreeNode);
+			if (schemaTransformer instanceof SchemaTransformer) {
+				String content = schemaTransformer.getSchemaContentFromFile(filePath);
+				schemaTransformer.setPropertyValues(content);
+				generateTree(schemaTransformer, inputRootTreeNode);
+			} else {
+				Tree tree = schemaTransformer.generateTreeFromFile(filePath);
+				convertTree(tree, inputRootTreeNode);
+			}
+
 		} catch (InstantiationException | IllegalAccessException e) {
 			log.error(e);
 		}
@@ -151,13 +162,266 @@ public class InputEditPart extends ShapeNodeEditPart {
 	}
 
 	/**
+	 * @generated NOT
+	 */
+	private void convertTree(Tree tree, TreeNode treeNode) {
+
+		// treeNode.setName(tree.getCount() + "," + tree.getName());
+		treeNode.setName(tree.getName());
+		treeNode.setLevel(tree.getCount());
+		/*
+		 * treeNode.setNamespace(tree.getNamespace());
+		 * treeNode.setDoc(tree.getDoc());
+		 * treeNode.getAliases().addAll(tree.getAliases());
+		 */
+		if (tree.getSchemaType() != null) {
+			switch (tree.getSchemaType()) {
+			case ARRAY:
+				treeNode.setSchemaDataType(SchemaDataType.ARRAY);
+				break;
+			case BOOLEAN:
+				treeNode.setSchemaDataType(SchemaDataType.BOOLEAN);
+				break;
+			case BYTES:
+				treeNode.setSchemaDataType(SchemaDataType.BYTES);
+				break;
+			case DOUBLE:
+				treeNode.setSchemaDataType(SchemaDataType.DOUBLE);
+				break;
+			case ENUM:
+				treeNode.setSchemaDataType(SchemaDataType.ENUM);
+				break;
+			case FIXED:
+				treeNode.setSchemaDataType(SchemaDataType.FIXED);
+				break;
+			case FLOAT:
+				treeNode.setSchemaDataType(SchemaDataType.FLOAT);
+				break;
+			case INT:
+				treeNode.setSchemaDataType(SchemaDataType.INT);
+				break;
+			case LONG:
+				treeNode.setSchemaDataType(SchemaDataType.LONG);
+				break;
+			case MAP:
+				treeNode.setSchemaDataType(SchemaDataType.MAP);
+				break;
+			case NULL:
+				treeNode.setSchemaDataType(SchemaDataType.NULL);
+				break;
+			case RECORD:
+				treeNode.setSchemaDataType(SchemaDataType.RECORD);
+				break;
+			case STRING:
+				treeNode.setSchemaDataType(SchemaDataType.STRING);
+				break;
+			case UNION:
+				treeNode.setSchemaDataType(SchemaDataType.UNION);
+				break;
+			default:
+				break;
+			}
+		}
+
+		if (!(tree.getTrees().isEmpty())) {
+			for (Tree treeN : tree.getTrees()) {
+				createTree(treeN, treeNode);
+			}
+		}
+
+		/*
+		 * if (!(tree.getAttributes().isEmpty())) { for
+		 * (org.wso2.developerstudio.datamapper.diagram.tree.model.Attribute
+		 * attribute : tree .getAttributes()) { createAttribute(attribute,
+		 * treeNode); } }
+		 */
+
+		if (!(tree.getElements().isEmpty())) {
+			for (org.wso2.developerstudio.datamapper.diagram.tree.model.Element element : tree.getElements()) {
+				createElement(element, treeNode);
+			}
+		}
+
+	}
+
+	/**
+	 * @generated NOT
+	 */
+	private void createElement(org.wso2.developerstudio.datamapper.diagram.tree.model.Element element, TreeNode treeNode) {
+		Element ele = DataMapperFactory.eINSTANCE.createElement();
+		// ele.setName(element.getCount() + "," + element.getName());
+		ele.setName(element.getName());
+		// ele.setDoc(element.getDoc());
+		/*
+		 * if(element.getOrder() != null){
+		 * ele.setOrder(element.getOrder().toString()); }
+		 * if(element.getDefault() != null){
+		 * ele.setDefault(element.getDefault().toString()); }
+		 * ele.getAliases().addAll(element.getAliases());
+		 */
+		ele.setLevel(element.getCount());
+		if (element.getSchemaType() != null) {
+			switch (element.getSchemaType()) {
+			case ARRAY:
+				ele.setSchemaDataType(SchemaDataType.ARRAY);
+				break;
+			case BOOLEAN:
+				ele.setSchemaDataType(SchemaDataType.BOOLEAN);
+				break;
+			case BYTES:
+				ele.setSchemaDataType(SchemaDataType.BYTES);
+				break;
+			case DOUBLE:
+				ele.setSchemaDataType(SchemaDataType.DOUBLE);
+				break;
+			case ENUM:
+				ele.setSchemaDataType(SchemaDataType.ENUM);
+				break;
+			case FIXED:
+				ele.setSchemaDataType(SchemaDataType.FIXED);
+				break;
+			case FLOAT:
+				ele.setSchemaDataType(SchemaDataType.FLOAT);
+				break;
+			case INT:
+				ele.setSchemaDataType(SchemaDataType.INT);
+				break;
+			case LONG:
+				ele.setSchemaDataType(SchemaDataType.LONG);
+				break;
+			case MAP:
+				ele.setSchemaDataType(SchemaDataType.MAP);
+				break;
+			case NULL:
+				ele.setSchemaDataType(SchemaDataType.NULL);
+				break;
+			case RECORD:
+				ele.setSchemaDataType(SchemaDataType.RECORD);
+				break;
+			case STRING:
+				ele.setSchemaDataType(SchemaDataType.STRING);
+				break;
+			case UNION:
+				ele.setSchemaDataType(SchemaDataType.UNION);
+				break;
+			default:
+				break;
+			}
+		}
+		treeNode.getElement().add(ele);
+		/*
+		 * if (!(element.getAttribute().isEmpty())) { for
+		 * (org.wso2.developerstudio.datamapper.diagram.tree.model.Attribute
+		 * attribute : element .getAttribute()) { createAttribute(attribute,
+		 * treeNode); } }
+		 */
+	}
+
+	/**
+	 * @generated NOT
+	 */
+	/*
+	 * private void createAttribute(
+	 * org.wso2.developerstudio.datamapper.diagram.tree.model.Attribute
+	 * attribute, TreeNode treeNode) { Attribute attr =
+	 * DataMapperFactory.eINSTANCE.createAttribute();
+	 * attr.setName(attribute.getCount() + "," + attribute.getName());
+	 * attr.setDoc(attribute.getDoc()); treeNode.getAttribute().add(attr); }
+	 */
+
+	private void createTree(Tree treeN, TreeNode treeNode) {
+		TreeNode treeNodeNew = DataMapperFactory.eINSTANCE.createTreeNode();
+
+		if (treeN.getSchemaType() != null) {
+			switch (treeN.getSchemaType()) {
+			case ARRAY:
+				treeNodeNew.setSchemaDataType(SchemaDataType.ARRAY);
+				treeNodeNew.setName(treeN.getName());
+				treeNodeNew.setLevel(treeN.getCount());
+				break;
+			case BOOLEAN:
+				treeNodeNew.setSchemaDataType(SchemaDataType.BOOLEAN);
+				break;
+			case BYTES:
+				treeNodeNew.setSchemaDataType(SchemaDataType.BYTES);
+				break;
+			case DOUBLE:
+				treeNodeNew.setSchemaDataType(SchemaDataType.DOUBLE);
+				break;
+			case ENUM:
+				treeNodeNew.setSchemaDataType(SchemaDataType.ENUM);
+				break;
+			case FIXED:
+				treeNodeNew.setSchemaDataType(SchemaDataType.FIXED);
+				break;
+			case FLOAT:
+				treeNodeNew.setSchemaDataType(SchemaDataType.FLOAT);
+				break;
+			case INT:
+				treeNodeNew.setSchemaDataType(SchemaDataType.INT);
+				break;
+			case LONG:
+				treeNodeNew.setSchemaDataType(SchemaDataType.LONG);
+				break;
+			case MAP:
+				treeNodeNew.setSchemaDataType(SchemaDataType.MAP);
+				break;
+			case NULL:
+				treeNodeNew.setSchemaDataType(SchemaDataType.NULL);
+				break;
+			case RECORD:
+				treeNodeNew.setSchemaDataType(SchemaDataType.RECORD);
+				treeNodeNew.setName(treeN.getName());
+				treeNodeNew.setLevel(treeN.getCount());
+				/*
+				 * treeNodeNew.setNamespace(treeN.getNamespace());
+				 * treeNodeNew.setDoc(treeN.getDoc());
+				 * treeNodeNew.getAliases().addAll(treeN.getAliases());
+				 */
+				break;
+			case STRING:
+				treeNodeNew.setSchemaDataType(SchemaDataType.STRING);
+				break;
+			case UNION:
+				treeNodeNew.setSchemaDataType(SchemaDataType.UNION);
+				break;
+			default:
+				break;
+			}
+		}
+		treeNode.getNode().add(treeNodeNew);
+
+		if (!(treeN.getTrees().isEmpty())) {
+			for (Tree treeNew : treeN.getTrees()) {
+				createTree(treeNew, treeNodeNew);
+			}
+			reposition();
+		}
+
+		if (!(treeN.getElements().isEmpty())) {
+			for (org.wso2.developerstudio.datamapper.diagram.tree.model.Element element : treeN.getElements()) {
+				createElement(element, treeNodeNew);
+			}
+		}
+		/*
+		 * if (!(treeN.getAttributes().isEmpty())) { for
+		 * (org.wso2.developerstudio.datamapper.diagram.tree.model.Attribute
+		 * attribute : treeN .getAttributes()) { createAttribute(attribute,
+		 * treeNodeNew); } }
+		 */
+
+	}
+
+	/**
 	 * Update GMF tree
+	 * 
+	 * @param schemaTransformer
 	 * 
 	 * @param content
 	 * @param inputRootTreeNode
 	 */
-	private void generateTree(String content, TreeNode inputRootTreeNode) {
-		inputRootTreeNode.setName(content);
+	private void generateTree(ISchemaTransformer schemaTransformer, TreeNode inputRootTreeNode) {
+		inputRootTreeNode.setName(schemaTransformer.getName());
 	}
 
 	/**

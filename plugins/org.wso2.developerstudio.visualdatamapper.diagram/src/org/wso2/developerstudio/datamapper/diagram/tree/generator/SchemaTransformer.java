@@ -23,16 +23,17 @@ import java.util.Scanner;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang.StringUtils;
+import org.wso2.developerstudio.datamapper.diagram.Activator;
+import org.wso2.developerstudio.datamapper.diagram.tree.model.Tree;
+import org.wso2.developerstudio.datamapper.impl.TreeNodeImpl;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
-import org.wso2.developerstudio.datamapper.diagram.Activator;
-import org.wso2.developerstudio.datamapper.impl.TreeNodeImpl;
 
 public class SchemaTransformer implements ISchemaTransformer {
 
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 	private static String ERROR_TEXT = "File cannot be found ";
-	private static final String ERROR_WRITING_SCHEMA_FILE = "Error writing to schema file";
+	private static String ERROR_WRITING_SCHEMA_FILE = "Error writing to schema file";
 
 	private String name;
 	
@@ -48,7 +49,7 @@ public class SchemaTransformer implements ISchemaTransformer {
 	
 	@Override
 	public void setPropertyValues(String content) {
-        setName(content);
+		 setName(content);
 	}
 
 	@Override
@@ -87,6 +88,12 @@ public class SchemaTransformer implements ISchemaTransformer {
 			log.error(ERROR_WRITING_SCHEMA_FILE + file.getName(), e);
 			return;
 		}
+	}
+
+	@Override
+	public Tree generateTreeFromFile(String path) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

@@ -31,8 +31,9 @@ public class AbstractSchemaGenerator implements ISchemaGenerator {
 	public String getSchemaResourcePath(String filePath) throws IOException {
 
 		String entireFileText = FileUtils.readFileToString(new File(filePath));
-		Schema schema = Schema.parse(entireFileText);
-		return schema.toString();
+		//Schema schema = Schema.parse(entireFileText);
+		//return schema.toString();
+		return entireFileText;
 	}
 	
 	/* (non-Javadoc)

@@ -24,6 +24,7 @@ import java.util.Map;
 public class SchemaTransformerRegistry {
 
 	private static final String AVRO = "avro";
+	private static final String JSON = "json";
 
 	/**
 	 * Singleton instance.
@@ -38,7 +39,8 @@ public class SchemaTransformerRegistry {
 	private SchemaTransformerRegistry() {
 
 		schemaMap = new HashMap<String, Class<? extends ISchemaTransformer>>();
-		schemaMap.put(AVRO, SchemaTransformer.class);
+		schemaMap.put(AVRO, AvroSchemaTransformer.class);
+		schemaMap.put(JSON, SchemaTransformer.class);
 
 	}
 

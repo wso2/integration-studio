@@ -19,6 +19,7 @@ package org.wso2.developerstudio.datamapper.diagram.tree.generator;
 import java.io.File;
 
 import org.wso2.developerstudio.datamapper.impl.TreeNodeImpl;
+import org.wso2.developerstudio.datamapper.diagram.tree.model.Tree;
 
 public interface ISchemaTransformer {
 
@@ -65,6 +66,8 @@ public interface ISchemaTransformer {
 	 *            file
 	 */
 	public void updateSchemaFile(String content, File file);
+	
+	public Tree generateTreeFromFile(String path);
 
 	public void setName(String name);
 	

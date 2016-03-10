@@ -36,17 +36,16 @@ import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.ui.IWorkbenchPart;
 import org.wso2.developerstudio.datamapper.diagram.custom.action.AddNewAttributeAction;
 import org.wso2.developerstudio.datamapper.diagram.custom.action.AddNewFieldAction;
-import org.wso2.developerstudio.datamapper.diagram.custom.action.AddNewTypeAction;
 import org.wso2.developerstudio.datamapper.diagram.custom.action.AddNewListAction;
 import org.wso2.developerstudio.datamapper.diagram.custom.action.AddNewRootRecordAction;
+import org.wso2.developerstudio.datamapper.diagram.custom.action.AddNewTypeAction;
 import org.wso2.developerstudio.datamapper.diagram.custom.action.ConcatManyAction;
 import org.wso2.developerstudio.datamapper.diagram.custom.action.EditAttributeAction;
+import org.wso2.developerstudio.datamapper.diagram.custom.action.EditFieldAction;
+import org.wso2.developerstudio.datamapper.diagram.custom.action.EditRecordAction;
 import org.wso2.developerstudio.datamapper.diagram.custom.action.ExportSchemaAction;
 import org.wso2.developerstudio.datamapper.diagram.custom.action.LoadInputSchemaAction;
 import org.wso2.developerstudio.datamapper.diagram.custom.action.LoadOutputSchemaAction;
-import org.wso2.developerstudio.datamapper.diagram.custom.action.EditFieldAction;
-import org.wso2.developerstudio.datamapper.diagram.custom.action.EditRecordAction;
-import org.wso2.developerstudio.datamapper.diagram.custom.action.SchemaFromJsonAction;
 import org.wso2.developerstudio.datamapper.diagram.custom.action.SplitManyAction;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.ConcatEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.ElementEditPart;
@@ -96,9 +95,6 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
 	Map<Class<? extends AbstractBorderedShapeEditPart>, AbstractActionHandler> addEditFieldActions;
 	// Actions for Editin a new field
 	Map<Class<? extends AbstractBorderedShapeEditPart>, AbstractActionHandler> addEditAttributeActions;
-	
-	// Actions for getting schema from data-set
-	Map<Class<? extends ShapeNodeEditPart>, AbstractActionHandler> schemaFromDatasetActions;
 	// Actions for exporting schema
 	Map<Class<? extends ShapeNodeEditPart>, AbstractActionHandler> exportSchemaActions;
 
@@ -175,11 +171,6 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
 		addEditAttributeActions = new HashMap<Class<? extends AbstractBorderedShapeEditPart>, AbstractActionHandler>();
 		// New field actions are added to treenode editparts
 		addEditAttributeActions.put(ElementEditPart.class, new EditAttributeAction(part));
-
-		// Initialize schema from dataset actions.
-		schemaFromDatasetActions = new HashMap<Class<? extends ShapeNodeEditPart>, AbstractActionHandler>();
-		schemaFromDatasetActions.put(InputEditPart.class, new SchemaFromJsonAction(part));
-		schemaFromDatasetActions.put(OutputEditPart.class, new SchemaFromJsonAction(part));
 
 		// Initialize export schema actions.
 		exportSchemaActions = new HashMap<Class<? extends ShapeNodeEditPart>, AbstractActionHandler>();
@@ -287,14 +278,6 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
 											.get(selectedEditorPart.getClass());
 									if (null != addEditAttributeAction) {
 										menu.appendToGroup(EDIT_GROUP_ID, addEditAttributeAction);
-									}
-
-									// Append Schema from dataset item to menu
-									AbstractActionHandler schemaFromDatasetAction = schemaFromDatasetActions
-											.get(selectedEditorPart.getClass());
-									if (null != schemaFromDatasetAction) {
-										menu.appendToGroup(NAVIGATE_GROUP_ID,
-												schemaFromDatasetAction);
 									}
 
 									// Append load from file item to menu

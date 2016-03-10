@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ * Copyright (c) 2014-2016, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,7 +19,6 @@ package org.wso2.developerstudio.datamapper.diagram.custom.action;
 import java.io.File;
 import java.io.IOException;
 
-import org.apache.avro.Schema;
 import org.apache.commons.io.FileUtils;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
@@ -39,11 +38,12 @@ import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.datamapper.diagram.Activator;
-import org.wso2.developerstudio.datamapper.diagram.custom.persistence.AvroSchemaTransformer;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.InputEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.OutputEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.TreeNode3EditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.TreeNodeEditPart;
+import org.wso2.developerstudio.datamapper.diagram.tree.generator.ISchemaTransformer;
+import org.wso2.developerstudio.datamapper.diagram.tree.generator.SchemaTransformerRegistry;
 import org.wso2.developerstudio.datamapper.impl.TreeNodeImpl;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
@@ -103,37 +103,42 @@ public class ExportSchemaAction extends AbstractActionHandler {
 				}
 			}
 
-			AvroSchemaTransformer avroSchemaTransformer = new AvroSchemaTransformer();
 			// Get respective schema using treenode model
 			String exportContent = null;
 			if (treeNode != null) {
-				Schema schema = avroSchemaTransformer.transform((TreeNodeImpl) treeNode);
-				exportContent = schema.toString(true);
-				Display display = Display.getDefault();
-				Shell shell = new Shell(display);
-				FileDialog dialog = new FileDialog(shell, SWT.SAVE);
-				dialog.setFilterExtensions(new String[] { FILTER_EXTENSION_AVSC, FILTER_EXTENSION_TXT });
-				dialog.setText(FILE_DIALOG_HEADER);
-				String filePath = dialog.open();
-				if (null != filePath) {
-					try {
-						if (exportContent != null) {
-							FileUtils.writeStringToFile(new File(filePath), exportContent);
+				try {
+					ISchemaTransformer schemaTransformer = SchemaTransformerRegistry.getInstance()
+							.getSchemaTransformer().newInstance();
+					exportContent = schemaTransformer.getSchemaContentFromModel((TreeNodeImpl) treeNode);
+					Display display = Display.getDefault();
+					Shell shell = new Shell(display);
+					FileDialog dialog = new FileDialog(shell, SWT.SAVE);
+					dialog.setFilterExtensions(new String[] { FILTER_EXTENSION_AVSC, FILTER_EXTENSION_TXT });
+					dialog.setText(FILE_DIALOG_HEADER);
+					String filePath = dialog.open();
+					if (null != filePath) {
+						try {
+							if (exportContent != null) {
+								FileUtils.writeStringToFile(new File(filePath), exportContent);
+							}
+						} catch (IOException e) {
+							log.error(ERROR_SAVING_FILE + filePath, e);
+							IStatus status = new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage()); //$NON-NLS-1$
+							ErrorDialog.openError(Display.getCurrent().getActiveShell(), ERROR_SAVING_FILE + filePath,
+									null, status);
+							return;
 						}
-					} catch (IOException e) {
-						log.error(ERROR_SAVING_FILE + filePath, e);
-						IStatus status = new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage()); //$NON-NLS-1$
-						ErrorDialog.openError(Display.getCurrent().getActiveShell(), ERROR_SAVING_FILE + filePath,
-								null, status);
+					} else {
+						// filePath can be null when dialog is closed or an
+						// error
+						// occurred
+						log.warn(WARN_NOT_SAVED_TO_FILE);
 						return;
 					}
-				} else {
-					// filePath can be null when dialog is closed or an error
-					// occurred
-					log.warn(WARN_NOT_SAVED_TO_FILE);
-					return;
+				} catch (IllegalAccessException | InstantiationException ie) {
+					log.error(ie);
 				}
-			}else{
+			} else {
 				MessageDialog.openInformation(Display.getCurrent().getActiveShell(), WARN_TITLE, WARN_NO_SCHEMA);
 			}
 

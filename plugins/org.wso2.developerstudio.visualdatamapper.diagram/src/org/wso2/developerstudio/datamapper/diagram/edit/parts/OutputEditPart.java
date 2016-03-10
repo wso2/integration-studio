@@ -1,6 +1,21 @@
+/*
+ * Copyright (c) 2014-2016, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package org.wso2.developerstudio.datamapper.diagram.edit.parts;
 
-import org.apache.avro.Schema;
 import org.eclipse.draw2d.CompoundBorder;
 import org.eclipse.draw2d.FigureCanvas;
 import org.eclipse.draw2d.Graphics;
@@ -45,19 +60,22 @@ import org.eclipse.swt.graphics.Font;
 import org.wso2.developerstudio.datamapper.DataMapperFactory;
 import org.wso2.developerstudio.datamapper.DataMapperPackage;
 import org.wso2.developerstudio.datamapper.DataMapperRoot;
-import org.wso2.developerstudio.datamapper.Element;
 import org.wso2.developerstudio.datamapper.Output;
-import org.wso2.developerstudio.datamapper.SchemaDataType;
 import org.wso2.developerstudio.datamapper.TreeNode;
+import org.wso2.developerstudio.datamapper.diagram.Activator;
 import org.wso2.developerstudio.datamapper.diagram.custom.util.TreeNodeUtils;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.custom.CustomNonResizableEditPolicyEx;
-import org.wso2.developerstudio.datamapper.diagram.tree.generator.TreeFromAVSC;
-import org.wso2.developerstudio.datamapper.diagram.tree.model.Tree;
+import org.wso2.developerstudio.datamapper.diagram.tree.generator.ISchemaTransformer;
+import org.wso2.developerstudio.datamapper.diagram.tree.generator.SchemaTransformerRegistry;
+import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
+import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
 /**
  * @generated
  */
 public class OutputEditPart extends ShapeNodeEditPart {
+
+	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
 	private static final int X = 800;
 
@@ -87,7 +105,7 @@ public class OutputEditPart extends ShapeNodeEditPart {
 	public OutputEditPart(View view) {
 		super(view);
 	}
-	
+
 	/**
 	 * @generated NOT
 	 */
@@ -101,8 +119,7 @@ public class OutputEditPart extends ShapeNodeEditPart {
 	}
 
 	public void resetOutputTreeFromFile(String filePath) {
-		EObject parentContainer = ((org.eclipse.gmf.runtime.notation.impl.NodeImpl) (this)
-				.getModel()).getElement();
+		EObject parentContainer = ((org.eclipse.gmf.runtime.notation.impl.NodeImpl) (this).getModel()).getElement();
 		Output iip = (Output) parentContainer;
 
 		DeleteCommand deleteComand = new DeleteCommand(getEditingDomain(), iip.getTreeNode());
@@ -111,8 +128,14 @@ public class OutputEditPart extends ShapeNodeEditPart {
 		}
 
 		outputRootTreeNode = DataMapperFactory.eINSTANCE.createTreeNode();
-		Tree tree = TreeFromAVSC.generateInputTreeFromFile(filePath);
-		convertTree(tree, outputRootTreeNode);
+		ISchemaTransformer schemaTransformer;
+		try {
+			schemaTransformer = SchemaTransformerRegistry.getInstance().getSchemaTransformer().newInstance();
+			String content = schemaTransformer.getSchemaContentFromFile(filePath);
+			generateTree(content, outputRootTreeNode);
+		} catch (InstantiationException | IllegalAccessException e) {
+			log.error(e);
+		}
 
 		AddCommand addTreeNodeCmd2 = new AddCommand(getEditingDomain(), parentContainer,
 				DataMapperPackage.Literals.OUTPUT__TREE_NODE, outputRootTreeNode);
@@ -124,259 +147,26 @@ public class OutputEditPart extends ShapeNodeEditPart {
 	}
 
 	/**
-	 * @param schema
-	 *            Avro schema that is used to parse to tree
+	 * Update GMF tree
+	 * 
+	 * @param content
+	 * @param inputRootTreeNode
 	 */
-	public void resetOutputTreeFromSchema(Schema schema) {
-		EObject parentContainer = ((org.eclipse.gmf.runtime.notation.impl.NodeImpl) (this)
-				.getModel()).getElement();
-		Output iip = (Output) parentContainer;
-
-		DeleteCommand deleteComand = new DeleteCommand(getEditingDomain(), iip.getTreeNode());
-		if (deleteComand.canExecute()) {
-			getEditingDomain().getCommandStack().execute(deleteComand);
-		}
-
-		outputRootTreeNode = DataMapperFactory.eINSTANCE.createTreeNode();
-		Tree tree = TreeFromAVSC.generateInputTreeFromSchema(schema);
-		convertTree(tree, outputRootTreeNode);
-
-		AddCommand addTreeNodeCmd2 = new AddCommand(getEditingDomain(), parentContainer,
-				DataMapperPackage.Literals.OUTPUT__TREE_NODE, outputRootTreeNode);
-		if (addTreeNodeCmd2.canExecute()) {
-			getEditingDomain().getCommandStack().execute(addTreeNodeCmd2);
-		}
-		getPrimaryShape().setPreferredSize(OUTPUT_BOX_WIDTH, 15);
-		reposition();
-	}
-
-	private void convertTree(Tree tree, TreeNode treeNode) {
-
-		//treeNode.setName(tree.getCount() + "," + tree.getName());
-		treeNode.setName(tree.getName());
-		treeNode.setLevel(tree.getCount());
-		treeNode.getProperties().put("doc", tree.getDoc());
-		treeNode.getProperties().put("namesapce",tree.getNamespace());
-		treeNode.getProperties().put("aliases", tree.getAliases().toString());
-		if (tree.getSchemaType() != null) {
-			switch (tree.getSchemaType()) {
-			case ARRAY:
-				treeNode.setSchemaDataType(SchemaDataType.ARRAY);
-				break;
-			case BOOLEAN:
-				treeNode.setSchemaDataType(SchemaDataType.BOOLEAN);
-				break;
-			case BYTES:
-				treeNode.setSchemaDataType(SchemaDataType.BYTES);
-				break;
-			case DOUBLE:
-				treeNode.setSchemaDataType(SchemaDataType.DOUBLE);
-				break;
-			case ENUM:
-				treeNode.setSchemaDataType(SchemaDataType.ENUM);
-				break;
-			case FIXED:
-				treeNode.setSchemaDataType(SchemaDataType.FIXED);
-				break;
-			case FLOAT:
-				treeNode.setSchemaDataType(SchemaDataType.FLOAT);
-				break;
-			case INT:
-				treeNode.setSchemaDataType(SchemaDataType.INT);
-				break;
-			case LONG:
-				treeNode.setSchemaDataType(SchemaDataType.LONG);
-				break;
-			case MAP:
-				treeNode.setSchemaDataType(SchemaDataType.MAP);
-				break;
-			case NULL:
-				treeNode.setSchemaDataType(SchemaDataType.NULL);
-				break;
-			case RECORD:
-				treeNode.setSchemaDataType(SchemaDataType.RECORD);
-				break;
-			case STRING:
-				treeNode.setSchemaDataType(SchemaDataType.STRING);
-				break;
-			case UNION:
-				treeNode.setSchemaDataType(SchemaDataType.UNION);
-				break;
-			default:
-				break;
-			}
-		}
-
-		if (!(tree.getElements().isEmpty())) {
-			for (org.wso2.developerstudio.datamapper.diagram.tree.model.Element element : tree
-					.getElements()) {
-				createElement(element, treeNode);
-			}
-		}
-		if (!(tree.getTrees().isEmpty())) {
-			for (Tree treeN : tree.getTrees()) {
-				createTree(treeN, treeNode);
-			}
-		}
-
-	}
-
-	private void createElement(
-			org.wso2.developerstudio.datamapper.diagram.tree.model.Element element,
-			TreeNode treeNode) {
-		Element ele = DataMapperFactory.eINSTANCE.createElement();
-		//ele.setName(element.getCount() + "," + element.getName());
-		ele.setName(element.getName());
-		ele.getProperties().put("doc", element.getDoc());
-		if(element.getOrder() != null){
-			 ele.getProperties().put("order", element.getOrder().toString());
-		}
-	    if(element.getDefault() != null){
-			ele.getProperties().put("default", element.getDefault().toString());
-	    }
-	    ele.getProperties().put("aliases", element.getAliases().toString());
-		ele.setLevel(element.getCount());
-		if (element.getSchemaType() != null) {
-			switch (element.getSchemaType()) {
-			case ARRAY:
-				ele.setSchemaDataType(SchemaDataType.ARRAY);
-				break;
-			case BOOLEAN:
-				ele.setSchemaDataType(SchemaDataType.BOOLEAN);
-				break;
-			case BYTES:
-				ele.setSchemaDataType(SchemaDataType.BYTES);
-				break;
-			case DOUBLE:
-				ele.setSchemaDataType(SchemaDataType.DOUBLE);
-				break;
-			case ENUM:
-				ele.setSchemaDataType(SchemaDataType.ENUM);
-				break;
-			case FIXED:
-				ele.setSchemaDataType(SchemaDataType.FIXED);
-				break;
-			case FLOAT:
-				ele.setSchemaDataType(SchemaDataType.FLOAT);
-				break;
-			case INT:
-				ele.setSchemaDataType(SchemaDataType.INT);
-				break;
-			case LONG:
-				ele.setSchemaDataType(SchemaDataType.LONG);
-				break;
-			case MAP:
-				ele.setSchemaDataType(SchemaDataType.MAP);
-				break;
-			case NULL:
-				ele.setSchemaDataType(SchemaDataType.NULL);
-				break;
-			case RECORD:
-				ele.setSchemaDataType(SchemaDataType.RECORD);
-				break;
-			case STRING:
-				ele.setSchemaDataType(SchemaDataType.STRING);
-				break;
-			case UNION:
-				ele.setSchemaDataType(SchemaDataType.UNION);
-				break;
-			default:
-				break;
-			}
-		}
-		treeNode.getElement().add(ele);
-	}
-
-
-	private void createTree(Tree treeN, TreeNode treeNode) {
-		TreeNode treeNodeNew = DataMapperFactory.eINSTANCE.createTreeNode();
-		
-		if (treeN.getSchemaType() != null) {
-			switch (treeN.getSchemaType()) {
-			case ARRAY:
-				treeNodeNew.setSchemaDataType(SchemaDataType.ARRAY);
-				treeNodeNew.setSchemaDataType(SchemaDataType.ARRAY);
-				treeNodeNew.setName(treeN.getName());
-				treeNodeNew.setLevel(treeN.getCount());
-				break;
-			case BOOLEAN:
-				treeNodeNew.setSchemaDataType(SchemaDataType.BOOLEAN);
-				break;
-			case BYTES:
-				treeNodeNew.setSchemaDataType(SchemaDataType.BYTES);
-				break;
-			case DOUBLE:
-				treeNodeNew.setSchemaDataType(SchemaDataType.DOUBLE);
-				break;
-			case ENUM:
-				treeNodeNew.setSchemaDataType(SchemaDataType.ENUM);
-				break;
-			case FIXED:
-				treeNodeNew.setSchemaDataType(SchemaDataType.FIXED);
-				break;
-			case FLOAT:
-				treeNodeNew.setSchemaDataType(SchemaDataType.FLOAT);
-				break;
-			case INT:
-				treeNodeNew.setSchemaDataType(SchemaDataType.INT);
-				break;
-			case LONG:
-				treeNodeNew.setSchemaDataType(SchemaDataType.LONG);
-				break;
-			case MAP:
-				treeNodeNew.setSchemaDataType(SchemaDataType.MAP);
-				break;
-			case NULL:
-				treeNodeNew.setSchemaDataType(SchemaDataType.NULL);
-				break;
-			case RECORD:
-				treeNodeNew.setSchemaDataType(SchemaDataType.RECORD);
-				treeNodeNew.setName(treeN.getName());
-				treeNodeNew.getProperties().put("doc", treeN.getDoc());
-				treeNodeNew.getProperties().put("namesapce",treeN.getNamespace());
-				treeNodeNew.setLevel(treeN.getCount());
-				treeNodeNew.getProperties().put("aliases", treeN.getAliases().toString());
-				break;
-			case STRING:
-				treeNodeNew.setSchemaDataType(SchemaDataType.STRING);
-				break;
-			case UNION:
-				treeNodeNew.setSchemaDataType(SchemaDataType.UNION);
-				break;
-			default:
-				break;
-			}
-		}
-		treeNode.getNode().add(treeNodeNew);
-
-		if (!(treeN.getElements().isEmpty())) {
-			for (org.wso2.developerstudio.datamapper.diagram.tree.model.Element element : treeN
-					.getElements()) {
-				createElement(element, treeNodeNew);
-			}
-		}
-		if (!(treeN.getTrees().isEmpty())) {
-			for (Tree treeNew : treeN.getTrees()) {
-				createTree(treeNew, treeNodeNew);
-			}
-		}
+	private void generateTree(String content, TreeNode outputRootTreeNode) {
+		outputRootTreeNode.setName(content);
 	}
 
 	/**
 	 * @generated NOT
 	 */
 	protected void createDefaultEditPolicies() {
-		installEditPolicy(
-				EditPolicyRoles.CREATION_ROLE,
-				new CreationEditPolicyWithCustomReparent(
-						org.wso2.developerstudio.datamapper.diagram.part.DataMapperVisualIDRegistry.TYPED_INSTANCE));
+		installEditPolicy(EditPolicyRoles.CREATION_ROLE, new CreationEditPolicyWithCustomReparent(
+				org.wso2.developerstudio.datamapper.diagram.part.DataMapperVisualIDRegistry.TYPED_INSTANCE));
 		super.createDefaultEditPolicies();
-		installEditPolicy(
-				EditPolicyRoles.SEMANTIC_ROLE,
+		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE,
 				new org.wso2.developerstudio.datamapper.diagram.edit.policies.OutputItemSemanticEditPolicy());
 		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE, new DragDropEditPolicy());
-		installEditPolicy(
-				EditPolicyRoles.CANONICAL_ROLE,
+		installEditPolicy(EditPolicyRoles.CANONICAL_ROLE,
 				new org.wso2.developerstudio.datamapper.diagram.edit.policies.OutputCanonicalEditPolicy());
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
 
@@ -414,25 +204,24 @@ public class OutputEditPart extends ShapeNodeEditPart {
 		if (notification.getFeature() instanceof EAttributeImpl) {
 			if (notification.getNotifier() instanceof BoundsImpl) {
 				reposition(((BoundsImpl) notification.getNotifier()).getX(),
-						((BoundsImpl) notification.getNotifier()).getY(),
-						OUTPUT_BOX_WIDTH,
+						((BoundsImpl) notification.getNotifier()).getY(), OUTPUT_BOX_WIDTH,
 						TreeNodeUtils.getTreeHeight(outputRootTreeNode, LEAF_HEIGHT));
 				FigureCanvas canvas = (FigureCanvas) getViewer().getControl();
 				canvas.getViewport().repaint();
 			}
-			
+
 		}
-		
+
 	}
-	
+
 	@Override
 	protected void addChildVisual(EditPart childEditPart, int index) {
 		super.addChildVisual(childEditPart, index);
-			
-	 	if (childEditPart.getParent() instanceof OutputEditPart) {
-	 		OutputEditPart oep = (OutputEditPart)childEditPart.getParent();
+
+		if (childEditPart.getParent() instanceof OutputEditPart) {
+			OutputEditPart oep = (OutputEditPart) childEditPart.getParent();
 			DataMapperRootEditPart rep = (DataMapperRootEditPart) oep.getParent();
-			DataMapperRoot rootDiagram = (DataMapperRoot)((DiagramImpl)rep.getModel()).getElement();
+			DataMapperRoot rootDiagram = (DataMapperRoot) ((DiagramImpl) rep.getModel()).getElement();
 			outputRootTreeNode = rootDiagram.getOutput().getTreeNode().get(0);
 			reposition();
 		}
@@ -450,8 +239,8 @@ public class OutputEditPart extends ShapeNodeEditPart {
 	}
 
 	private void reposition() {
-		reposition(getFigure().getBounds().x, getFigure().getBounds().y,
-				OUTPUT_BOX_WIDTH, TreeNodeUtils.getTreeHeight(outputRootTreeNode, LEAF_HEIGHT));
+		reposition(getFigure().getBounds().x, getFigure().getBounds().y, OUTPUT_BOX_WIDTH,
+				TreeNodeUtils.getTreeHeight(outputRootTreeNode, LEAF_HEIGHT));
 	}
 
 	/**
@@ -496,8 +285,8 @@ public class OutputEditPart extends ShapeNodeEditPart {
 	/**
 	 * Creates figure for this edit part.
 	 * 
-	 * Body of this method does not depend on settings in generation model
-	 * so you may safely remove <i>generated</i> tag and modify it.
+	 * Body of this method does not depend on settings in generation model so
+	 * you may safely remove <i>generated</i> tag and modify it.
 	 * 
 	 * @generated
 	 */
@@ -511,9 +300,11 @@ public class OutputEditPart extends ShapeNodeEditPart {
 	}
 
 	/**
-	 * Default implementation treats passed figure as content pane.
-	 * Respects layout one may have set for generated figure.
-	 * @param nodeShape instance of generated figure class
+	 * Default implementation treats passed figure as content pane. Respects
+	 * layout one may have set for generated figure.
+	 * 
+	 * @param nodeShape
+	 *            instance of generated figure class
 	 * @generated
 	 */
 	protected IFigure setupContentPane(IFigure nodeShape) {
@@ -590,7 +381,7 @@ public class OutputEditPart extends ShapeNodeEditPart {
 			layoutThis.setVertical(true);
 			layoutThis.setSpacing(10);
 			this.setLayoutManager(layoutThis);
-			
+
 			this.setPreferredSize(new Dimension(getMapMode().DPtoLP(250), getMapMode().DPtoLP(400)));
 			this.setOutline(true);
 
@@ -599,9 +390,8 @@ public class OutputEditPart extends ShapeNodeEditPart {
 			titleBarBorder.setBackgroundColor(new Color(null, 0, 125, 133));
 			titleBarBorder.setTextColor(new Color(null, 0, 0, 0));
 			titleBarBorder.setFont(new Font(null, "Arial", 10, SWT.BOLD));
-			CompoundBorder compoundBorder = new CompoundBorder(
-					titleBarBorder, 
-					new LineBorder(new Color(null, 0, 125, 133), 2, Graphics.LINE_SOLID));
+			CompoundBorder compoundBorder = new CompoundBorder(titleBarBorder, new LineBorder(new Color(null, 0, 125,
+					133), 2, Graphics.LINE_SOLID));
 			this.setBorder(compoundBorder);
 
 		}
@@ -619,7 +409,6 @@ public class OutputEditPart extends ShapeNodeEditPart {
 			this.add(fFigureTargetNameFigure);
 
 		}
-		
 
 	}
 

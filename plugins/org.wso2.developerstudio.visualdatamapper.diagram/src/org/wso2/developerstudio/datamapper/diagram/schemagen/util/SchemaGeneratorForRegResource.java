@@ -35,7 +35,7 @@ import org.wso2.developerstudio.eclipse.registry.core.interfaces.IRegistryConnec
 import org.wso2.developerstudio.eclipse.registry.core.interfaces.IRegistryData;
 import org.wso2.developerstudio.eclipse.registry.core.interfaces.IRegistryHandler;
 
-public class SchemaGeneratorFromRegResourceHelper {
+public class SchemaGeneratorForRegResource {
 	private static final String FILE_NAME_VALUE = "tempSchemaContnt";
 	private static final String DEFAULT_REGISTRY_URL = "https://localhost:9443/registry"; //$NON-NLS-1$
 	private static final String C_REG_PATH_PREFIX = "/_system/config/"; //$NON-NLS-1$

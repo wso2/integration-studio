@@ -16,10 +16,6 @@
 
 package org.wso2.developerstudio.datamapper.diagram.custom.util;
 
-import java.net.MalformedURLException;
-import java.net.URL;
-
-import org.apache.avro.Schema;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
@@ -286,7 +282,7 @@ public class SchemaKeyEditorDialog extends Dialog {
 		hide();
 try {
 			DataMapperSchemaEditorUtil schemaEditorUtil = new DataMapperSchemaEditorUtil(inputFile);
-			String schema = SchemaGeneratorFromRegResourceHelper.getSchemaContent(FileType.values()[schemaTypeCombo.getSelectionIndex()]);
+			String schema = SchemaGeneratorForRegResource.getSchemaContent(FileType.values()[schemaTypeCombo.getSelectionIndex()]);
 			
 			String schemaFilePath = schemaEditorUtil.createDiagram(schema, schemaType);
 
@@ -340,7 +336,7 @@ try {
 		try {
 			
 			DataMapperSchemaEditorUtil schemaEditorUtil = new DataMapperSchemaEditorUtil(inputFile);
-			String schema = SchemaGeneratorFromFileSystemHelper.getSchemaContent(FileType.values()[schemaTypeCombo.getSelectionIndex()]);
+			String schema = SchemaGeneratorForFile.getSchemaContent(FileType.values()[schemaTypeCombo.getSelectionIndex()]);
 			if(schema != null){
 				String schemaFilePath = schemaEditorUtil.createDiagram(schema, schemaType);
 			  if (!schemaFilePath.isEmpty()) {

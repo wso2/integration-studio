@@ -26,7 +26,7 @@ import org.wso2.developerstudio.datamapper.diagram.custom.action.Messages;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
-public class SchemaGeneratorFromFileSystemHelper {
+public class SchemaGeneratorForFile {
 
 	private static final String INPUT_SCHEMA_FILE = Messages.SchemaKeyEditorDialog_InputSchemaFile;
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);

@@ -16,6 +16,8 @@
 
 package org.wso2.developerstudio.datamapper.diagram.edit.parts;
 
+import java.io.IOException;
+
 import org.eclipse.draw2d.CompoundBorder;
 import org.eclipse.draw2d.FigureCanvas;
 import org.eclipse.draw2d.Graphics;
@@ -141,14 +143,13 @@ public class InputEditPart extends ShapeNodeEditPart {
 			schemaTransformer = SchemaTransformerRegistry.getInstance().getSchemaTransformer().newInstance();
 			if (schemaTransformer instanceof SchemaTransformer) {
 				String content = schemaTransformer.getSchemaContentFromFile(filePath);
-				schemaTransformer.setPropertyValues(content);
-				generateTree(schemaTransformer, inputRootTreeNode);
+				schemaTransformer.generateTree(content,inputRootTreeNode);
 			} else {
 				Tree tree = schemaTransformer.generateTreeFromFile(filePath);
 				convertTree(tree, inputRootTreeNode);
 			}
 
-		} catch (InstantiationException | IllegalAccessException e) {
+		} catch (InstantiationException | IllegalAccessException | IOException e) {
 			log.error(e);
 		}
 
@@ -410,18 +411,6 @@ public class InputEditPart extends ShapeNodeEditPart {
 		 * treeNodeNew); } }
 		 */
 
-	}
-
-	/**
-	 * Update GMF tree
-	 * 
-	 * @param schemaTransformer
-	 * 
-	 * @param content
-	 * @param inputRootTreeNode
-	 */
-	private void generateTree(ISchemaTransformer schemaTransformer, TreeNode inputRootTreeNode) {
-		inputRootTreeNode.setName(schemaTransformer.getName());
 	}
 
 	/**

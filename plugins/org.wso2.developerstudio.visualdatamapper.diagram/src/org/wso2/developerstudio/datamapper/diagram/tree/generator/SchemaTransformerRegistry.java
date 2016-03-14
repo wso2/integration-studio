@@ -57,10 +57,10 @@ public class SchemaTransformerRegistry {
 	@SuppressWarnings("unchecked")
 	public Class<ISchemaTransformer> getSchemaTransformer() {
 		Class<ISchemaTransformer> reader = null;
-		if (schemaMap.containsKey(AVRO)) {
-			reader = (Class<ISchemaTransformer>) schemaMap.get(AVRO);
+		if (schemaMap.containsKey(JSON)) {
+			reader = (Class<ISchemaTransformer>) schemaMap.get(JSON);
 		} else {
-			throw new RuntimeException("No schema transformer found for " + AVRO);
+			throw new RuntimeException("No schema transformer found for " + JSON);
 		}
 		return reader;
 	}

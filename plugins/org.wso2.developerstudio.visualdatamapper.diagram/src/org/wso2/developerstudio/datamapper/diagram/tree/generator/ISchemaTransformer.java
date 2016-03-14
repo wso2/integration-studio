@@ -17,26 +17,22 @@
 package org.wso2.developerstudio.datamapper.diagram.tree.generator;
 
 import java.io.File;
+import java.io.IOException;
 
+import org.wso2.developerstudio.datamapper.TreeNode;
 import org.wso2.developerstudio.datamapper.impl.TreeNodeImpl;
 import org.wso2.developerstudio.datamapper.diagram.tree.model.Tree;
 
 public interface ISchemaTransformer {
 
 	/**
-	 * Sets property values
-	 * 
-	 * @param content
-	 *            fileContent
-	 */
-	public void setPropertyValues(String content);
-
-	/**
-	 * Gets the property values
+	 * Generate the tree
+	 * @param inputRootTreeNode 
+	 * @param content 
 	 * 
 	 * @return
 	 */
-	public String getPropertyValues();
+	public TreeNode generateTree(String content, TreeNode treeNode) throws IOException,IllegalArgumentException;
 
 	/**
 	 * Gets the schema content from the file
@@ -45,7 +41,7 @@ public interface ISchemaTransformer {
 	 *            file path
 	 * @return schema content as a String
 	 */
-	public String getSchemaContentFromFile(String path);
+	public String getSchemaContentFromFile(String path) ;
 
 	/**
 	 * Gets the content to the file
@@ -69,7 +65,5 @@ public interface ISchemaTransformer {
 	
 	public Tree generateTreeFromFile(String path);
 
-	public void setName(String name);
-	
-	public String getName();
+
 }

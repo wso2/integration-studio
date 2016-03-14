@@ -14,7 +14,10 @@ Bundle-ClassPath: .,
  lib/opencsv-2.3.jar,
  lib/rhino-1.7R4.jar,
  lib/xmlbeans-2.3.0.jar,
- lib/staxon-1.2.jar
+ lib/staxon-1.2.jar,
+ lib/jackson-annotations-2.7.0.jar,
+ lib/jackson-core-2.7.0.jar,
+ lib/jackson-databind-2.7.0.jar
 Bundle-Activator: org.wso2.developerstudio.datamapper.diagram.part.DataMapperDiagramEditorPlugin
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin

@@ -43,17 +43,6 @@ public class AvroSchemaTransformer implements ISchemaTransformer {
 	private static String ERROR_WRITING_SCHEMA_FILE = "Error writing to schema file";
 	public static List<String> multipleChunk;
 
-	@Override
-	public void setPropertyValues(String content) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public String getPropertyValues() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public String getSchemaContentFromFile(String path) {
@@ -336,19 +325,7 @@ public class AvroSchemaTransformer implements ISchemaTransformer {
 		}
 
 	}
-
-	@Override
-	public void setName(String name) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public String getName() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+	
 	@Override
 	public Tree generateTreeFromFile(String path) {
 		multipleChunk = new ArrayList<String>();
@@ -443,4 +420,11 @@ public class AvroSchemaTransformer implements ISchemaTransformer {
 
 	}
 
+	@Override
+	public TreeNode generateTree(String content, TreeNode treeNode) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
 }

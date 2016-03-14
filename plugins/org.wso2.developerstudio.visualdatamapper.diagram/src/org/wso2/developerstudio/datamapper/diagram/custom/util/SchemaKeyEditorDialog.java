@@ -16,12 +16,23 @@
 
 package org.wso2.developerstudio.datamapper.diagram.custom.util;
 
+import java.io.File;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
 import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.IWorkspace;
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.gef.EditPart;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.dialogs.ErrorDialog;
+import org.eclipse.jface.window.Window;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
@@ -35,6 +46,7 @@ import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Link;
@@ -48,23 +60,49 @@ import org.wso2.developerstudio.datamapper.diagram.custom.action.Messages;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.InputEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.OutputEditPart;
 import org.wso2.developerstudio.datamapper.diagram.part.DataMapperSchemaEditorUtil;
+import org.wso2.developerstudio.eclipse.capp.core.artifacts.manager.CAppEnvironment;
+import org.wso2.developerstudio.eclipse.capp.core.model.RegistryConnection;
+import org.wso2.developerstudio.eclipse.esb.core.interfaces.IEsbEndpoint;
+import org.wso2.developerstudio.eclipse.esb.core.interfaces.IEsbLocalEntry;
+import org.wso2.developerstudio.eclipse.esb.core.interfaces.IEsbSequence;
+import org.wso2.developerstudio.eclipse.general.project.dialogs.NewResourceTemplateDialog;
+import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
+import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.provider.DeveloperStudioElementProviderDialog;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.provider.EmbeddedEntriesDialog;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
+import org.wso2.developerstudio.eclipse.platform.core.utils.Constants;
+import org.wso2.developerstudio.eclipse.registry.core.interfaces.IRegistryConnection;
+import org.wso2.developerstudio.eclipse.registry.core.interfaces.IRegistryData;
+import org.wso2.developerstudio.eclipse.registry.core.interfaces.IRegistryFile;
+import org.wso2.developerstudio.eclipse.registry.core.interfaces.IRegistryHandler;
 import org.wso2.developerstudio.datamapper.diagram.schemagen.util.*;
 
 public class SchemaKeyEditorDialog extends Dialog {
 
-	
+	private static final String NO_SUCH_RESOURCE_EXISTS = Messages.SchemaKeyEditorFialog_NoSuchResource;
+	private static final String RESGISTRY_RESOURCE_RETRIVING_ERROR = Messages.SchemaKeyEditorDialog_ErrorRetreivingResource;
+	private static final String FILE_DIALOG_TITLE = "Select File";
 	private Text schemaKeyTextField;
 	private Label lblSchemaTypeLabel;
 	private Combo schemaTypeCombo;
 	private EditPart selectedEP;
 	private IFile inputFile;
 	private String schemaType;
-
+	private SchemaGeneratorHelper schemaGeneratorHelper;
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
-
+	private static final String FILE_NAME_VALUE = "tempSchemaContnt";
 	private static final String DEFAULT_REGISTRY_URL = "https://localhost:9443/registry"; //$NON-NLS-1$
+	private static final String REGISTRY_BROWSER = Messages.SchemaKeyEditorDialog_RegistryBrowser;
+	private static final String SELECT_REGISTRY_RESOURCE = Messages.SchemaKeyEditorDialog_SelectRegistryResource;
+	private static final String TEMP_REG_RESOURCE_LOC = "tempRegRrsourceGenLocation";
+	private static final String JAVA_IO_TMPDIR = "java.io.tmpdir";
+	private static final String tempOutput = System.getProperty(JAVA_IO_TMPDIR) + File.separator
+			+ TEMP_REG_RESOURCE_LOC;
+	private static final String NEW_RESOURCE = Messages.SchemaKeyEditorDialog_NewResource;
+	private static final String WORKSPACE_ELEMENT_PROVIDERS = Messages.SchemaKeyEditorDialog_WorkspaceElementProviders;
+	private static final String EMBEDDED_RESOURCES = Messages.SchemaKeyEditorDialog_EmbeddedResources;
 	private static final String G_REG_PATH_PREFIX = "/_system/governance/"; //$NON-NLS-1$
 	private static final String C_REG_PATH_PREFIX = "/_system/config/"; //$NON-NLS-1$
 	private static final String C_REG_PREFIX = "conf:%s"; //$NON-NLS-1$
@@ -76,14 +114,9 @@ public class SchemaKeyEditorDialog extends Dialog {
 	private static final String FILE_SYSTEM = "file system"; //$NON-NLS-1$
 
 	private static final String ERROR_MSG_HEADER = Messages.SchemaKeyEditorDialog_ErrorMsgHeader;
-	private static final String REGISTRY_BROWSER = Messages.SchemaKeyEditorDialog_RegistryBrowser;
 	private static final String RESOURCE_KEY = Messages.SchemaKeyEditorDialog_ResourceKey;
-	private static final String SELECT_REGISTRY_RESOURCE = Messages.SchemaKeyEditorDialog_SelectRegistryResource;
 	private static final String SCHEMA_KEY_EDITOR_DIALOG_TEXT = Messages.SchemaKeyEditorDialog_SchemaKeyEditorDialogMessage
-			+ FILE_SYSTEM + "</a> or <a>" + REGISTRY + "</a>"; //$NON-NLS-1$ //$NON-NLS-2$
-	// private static final String SCHEMA_KEY_EDITOR_DIALOG_TEXT =
-	// "Type the key or specify from <a>" + FILE_SYSTEM + "</a>, <a>" + REGISTRY
-	// + "</a>, <a>" + WORKSPACE + "</a> or <a>" + LOCAL_ENTRIES + "</a>";
+			+ FILE_SYSTEM + "</a> or <a>" + REGISTRY + "</a> or <a>" + WORKSPACE + "</a>"; //$NON-NLS-1$ //$NON-NLS-2$
 
 	private static final String ERROR_OPENING_FILE = Messages.SchemaKeyEditorDialog_ErrorOpeningFile;
 	private static final String REASON_OPENING_FILE = Messages.SchemaKeyEditorDialog_ReasonOpeningFile;
@@ -91,17 +124,15 @@ public class SchemaKeyEditorDialog extends Dialog {
 	private static final String REASON_REGISTRY_BROWSER = Messages.SchemaKeyEditorDialog_ReasonRegistryBrowser;
 	private static final String ERROR_REGISTRY_URL = Messages.SchemaKeyEditorDialog_ErrorRegistryURL;
 	private static final String REASON_REGISTRY_URL = Messages.SchemaKeyEditorDialog_ReasonRegistryURL;
-	private static final String SELECT_SCHEMA_SOURCE = Messages.SchemaKeyEditorDialog_SelecSchemaSource;;
-	private static final String ERROR_DIALOG_VISIBILITY = "Error occured while changing dialog visibility"; //$NON-NLS-1$
+	private static final String SELECT_SCHEMA_SOURCE = Messages.SchemaKeyEditorDialog_SelecSchemaSource;
+	private static final String ERROR_DIALOG_VISIBILITY = Messages.SchemaKeyEditorFialog_VisibilityError; //$NON-NLS-1$
 
-	public SchemaKeyEditorDialog(Shell parent, EditPart selectedEP, IWorkbenchPart workbenchPart,
-			String schemaType) {
+	public SchemaKeyEditorDialog(Shell parent, EditPart selectedEP, IWorkbenchPart workbenchPart, String schemaType) {
 		super(parent);
 		this.selectedEP = selectedEP;
 		this.schemaType = schemaType;
-
-		IEditorPart editorPart = workbenchPart.getSite().getWorkbenchWindow().getActivePage()
-				.getActiveEditor();
+		schemaGeneratorHelper = new SchemaGeneratorHelper();
+		IEditorPart editorPart = workbenchPart.getSite().getWorkbenchWindow().getActivePage().getActiveEditor();
 		if (editorPart != null) {
 			IFileEditorInput input = (IFileEditorInput) editorPart.getEditorInput();
 			inputFile = input.getFile();
@@ -118,7 +149,7 @@ public class SchemaKeyEditorDialog extends Dialog {
 
 	private void changeVisibility(boolean visible) {
 		try {
-			if(this.getShell() != null) {
+			if (this.getShell() != null) {
 				this.getShell().setVisible(visible);
 			}
 		} catch (Exception e) {
@@ -141,15 +172,14 @@ public class SchemaKeyEditorDialog extends Dialog {
 		fl_grpPropertyKey.marginHeight = 10;
 		fl_grpPropertyKey.marginWidth = 10;
 		grpPropertyKey.setLayout(fl_grpPropertyKey);
-		
-		FormData lableLayoutData  = new FormData();
+
+		FormData lableLayoutData = new FormData();
 		lblSchemaTypeLabel = new Label(grpPropertyKey, SWT.NORMAL);
 		lblSchemaTypeLabel.setText(SELECT_SCHEMA_SOURCE);
 		lblSchemaTypeLabel.setLayoutData(lableLayoutData);
-				
-		
-        FormData comboLayoutData = new FormData();
-        comboLayoutData.left = new FormAttachment(lblSchemaTypeLabel, 10);
+
+		FormData comboLayoutData = new FormData();
+		comboLayoutData.left = new FormAttachment(lblSchemaTypeLabel, 10);
 		schemaTypeCombo = new Combo(grpPropertyKey, SWT.DROP_DOWN | SWT.READ_ONLY);
 		schemaTypeCombo.addModifyListener(new ModifyListener() {
 			public void modifyText(ModifyEvent arg0) {
@@ -163,14 +193,13 @@ public class SchemaKeyEditorDialog extends Dialog {
 		schemaTypeCombo.setItems(options);
 		schemaTypeCombo.select(0);
 		schemaTypeCombo.setLayoutData(comboLayoutData);
-		
-	
+
 		FormData fd_link = new FormData();
 		fd_link.top = new FormAttachment(lblSchemaTypeLabel, 20);
 		Link link = new Link(grpPropertyKey, SWT.NONE);
 		link.setLayoutData(fd_link);
 		link.setText(SCHEMA_KEY_EDITOR_DIALOG_TEXT);
-		
+
 		link.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
@@ -180,9 +209,7 @@ public class SchemaKeyEditorDialog extends Dialog {
 				} else if (REGISTRY.equals(selectedCommand)) {
 					openRegistryBrowser();
 				} else if (WORKSPACE.equals(selectedCommand)) {
-					//commented by susinda openRegistryResourceProviderDialog();
-				} else if (LOCAL_ENTRIES.equals(selectedCommand)) {
-					//commented by susinda  openEmbeddedEntryBrowser();
+					openRegistryResourceProviderDialog();
 				}
 			}
 		});
@@ -228,19 +255,15 @@ public class SchemaKeyEditorDialog extends Dialog {
 	 * Write from design to model
 	 */
 	private void saveConfiguration() {
-		// TODO Get schema key value from text field and write to model
-		/* schemaProperty.setKeyValue(schemaKeyTextField.getText()); */
 	}
 
 	/**
 	 * browser for in-workspace local-entries
 	 */
-	/* Commented by susinda
 	protected void openEmbeddedEntryBrowser() {
 		hide();
 		try {
-			EmbeddedEntriesDialog embeddedEntriesDialog = new EmbeddedEntriesDialog(
-					getParentShell(), null);
+			EmbeddedEntriesDialog embeddedEntriesDialog = new EmbeddedEntriesDialog(getParentShell(), null);
 			embeddedEntriesDialog.create();
 			embeddedEntriesDialog.getShell().setText(EMBEDDED_RESOURCES);
 			embeddedEntriesDialog.open();
@@ -251,17 +274,14 @@ public class SchemaKeyEditorDialog extends Dialog {
 			show();
 		}
 	}
-	*/
 
 	/**
 	 * Create new resource dialog
 	 */
-	/* Commented by susinda
 	protected void openNewResourceTemplateDialog() {
 		hide();
 		try {
-			NewResourceTemplateDialog newResourceTemplateDialog = new NewResourceTemplateDialog(
-					getParentShell(), null);
+			NewResourceTemplateDialog newResourceTemplateDialog = new NewResourceTemplateDialog(getParentShell(), null);
 			newResourceTemplateDialog.create();
 			newResourceTemplateDialog.getShell().setText(NEW_RESOURCE);
 			newResourceTemplateDialog.open();
@@ -272,24 +292,149 @@ public class SchemaKeyEditorDialog extends Dialog {
 			show();
 		}
 	}
-	*/
+
+	/**
+	 * Import schema from projects in workspace
+	 */
+	private void openRegistryResourceProviderDialog() {
+		hide();
+		try {
+			DataMapperSchemaEditorUtil schemaEditorUtil = new DataMapperSchemaEditorUtil(inputFile);
+			RegistryKeyProperty registryPropertyKey = EsbFactory.eINSTANCE.createRegistryKeyProperty();
+			@SuppressWarnings("unchecked")
+			DeveloperStudioElementProviderDialog registryResourceProviderSelector = new DeveloperStudioElementProviderDialog(
+					getParentShell(), new Class[] { IRegistryFile.class },
+					(Map<String, List<String>>) registryPropertyKey.getFilters());
+			registryResourceProviderSelector.create();
+			registryResourceProviderSelector.getShell().setText(WORKSPACE_ELEMENT_PROVIDERS);
+			registryResourceProviderSelector.open();
+			if (registryResourceProviderSelector.getReturnCode() == Window.OK) {
+				FileType fileType = extractFileTypeFromFileExtension(registryResourceProviderSelector.getSelectedPath());
+				if (fileType == null) {
+					// throw a user message saying not an accepted file type
+					return;
+				}
+
+				String[] getFileName = registryResourceProviderSelector.getSelectedPath().split(File.separator);
+				String resourceFile = retrieveWorkSpaceFileLoc(getFileName[getFileName.length - 1]);
+
+				String schema = schemaGeneratorHelper.getSchemaContent(fileType, resourceFile);
+				String schemaFilePath = null;
+				try {
+					schemaFilePath = schemaEditorUtil.createDiagram(schema, schemaType);
+				} catch (Exception e) {
+					// log the error
+				}
+
+				if (!schemaFilePath.isEmpty()) {
+					setSelectedPath(schemaFilePath);
+					if (Messages.LoadInputSchemaAction_SchemaTypeInput.equals(schemaType)) {
+						InputEditPart iep = (InputEditPart) selectedEP;
+						iep.resetInputTreeFromFile(schemaFilePath);
+					} else if (Messages.LoadOutputSchemaAction_SchemaTypeOutput.equals(schemaType)) {
+						OutputEditPart iep = (OutputEditPart) selectedEP;
+						iep.resetOutputTreeFromFile(schemaFilePath);
+					}
+				}
+
+			} else {
+				return;
+			}
+		} finally {
+			show();
+		}
+	}
+
+	/**
+	 * retrieve the local path of th eregistry resource user selected from the workspace,
+	 * iterate through all the registry resource projects check if the resource exist in some project,
+	 * if so return the local file path to that resource
+	 * @param fileName
+	 * @return
+	 */
+	private String retrieveWorkSpaceFileLoc(String fileName) {
+		ArrayList<String> regResourceProjects = loadRegistryResourceProjects();
+		boolean fileExists = false;
+		IWorkspace workspace = ResourcesPlugin.getWorkspace();
+		String folder = workspace.getRoot().getLocation().toFile().getPath().toString();
+		String resourceFilePath = null;
+		for (String regResourceProject : regResourceProjects) {
+			resourceFilePath = folder + File.separator + regResourceProject + File.separator + fileName;
+			File resourceFile = new File(resourceFilePath);
+			if (resourceFile.exists()) {
+				fileExists = true;
+				break;
+			}
+		}
+		if (!fileExists) {
+			displayUserError(RESGISTRY_RESOURCE_RETRIVING_ERROR, NO_SUCH_RESOURCE_EXISTS);
+		}
+		return resourceFilePath;
+	}
+
+	private FileType extractFileTypeFromFileExtension(String selectedPath) {
+		if (selectedPath.endsWith(".xsd")) {
+			return FileType.XSD;
+		} else if (selectedPath.endsWith(".xml")) {
+			return FileType.XML;
+		} else if (selectedPath.endsWith(".jschema")) {
+			return FileType.JSCHEMA;
+		} else {
+			return null;
+		}
+	}
 
 	/**
 	 * Open Registry browser
 	 */
-	//TODO refactor using the introduced factory method
 	private void openRegistryBrowser() {
 		hide();
-try {
+		try {
 			DataMapperSchemaEditorUtil schemaEditorUtil = new DataMapperSchemaEditorUtil(inputFile);
-			String schema = SchemaGeneratorForRegResource.getSchemaContent(FileType.values()[schemaTypeCombo.getSelectionIndex()]);
-			
+			IRegistryConnection[] registryConnections = CAppEnvironment.getRegistryHandler().getRegistryConnections();
+			if (registryConnections.length == 0) {
+				RegistryConnection registryConnection = new RegistryConnection();
+				try {
+					registryConnection.setURL(new URL(DEFAULT_REGISTRY_URL));
+				} catch (MalformedURLException e) {
+					log.error(ERROR_REGISTRY_URL, e);
+
+					displayUserError(REASON_REGISTRY_URL, ERROR_REGISTRY_URL);
+				}
+				registryConnection.setPath(C_REG_PATH_PREFIX);
+			}
+			IRegistryData selectedPathData = CAppEnvironment.getRegistryHandler().selectRegistryPath(
+					registryConnections, REGISTRY_BROWSER, SELECT_REGISTRY_RESOURCE,
+					IRegistryHandler.SELECTED_REGISTRY_RESOURCE);
+			if (selectedPathData == null) {
+				return;
+			}
+			// String mediaType = selectedPathData.getMediaType();
+			String mediaType = "xml"; // TODO need to replace this with the
+										// above commented out line when the new
+										// kernel version is available
+			FileType fileType = extractFileTypeFromRegistryResource(mediaType);
+
+			String fileName = FILE_NAME_VALUE + "." + fileType.toString().toLowerCase();
+			File outputDirectory = new File(tempOutput);
+			if (!outputDirectory.exists()) {
+				outputDirectory.mkdir();
+			}
+			File outputFile = new File(tempOutput + File.separator + fileName);
+			if (outputFile.exists()) {
+				outputFile.delete();
+				outputFile.createNewFile();
+			}
+			CAppEnvironment.getRegistryHandler().importRegistryResourceToFileSystem((IRegistryData) selectedPathData,
+					outputFile);
+
+			String schema = schemaGeneratorHelper.getSchemaContent(
+					FileType.values()[schemaTypeCombo.getSelectionIndex()], outputFile.getAbsolutePath());
+			outputDirectory.deleteOnExit();
 			String schemaFilePath = schemaEditorUtil.createDiagram(schema, schemaType);
 
 			if (!schemaFilePath.isEmpty()) {
-
 				setSelectedPath(schemaFilePath);
-
 				if (Messages.LoadInputSchemaAction_SchemaTypeInput.equals(schemaType)) {
 					InputEditPart iep = (InputEditPart) selectedEP;
 					iep.resetInputTreeFromFile(schemaFilePath);
@@ -297,17 +442,21 @@ try {
 					OutputEditPart iep = (OutputEditPart) selectedEP;
 					iep.resetOutputTreeFromFile(schemaFilePath);
 				}
-
 			}
+
 		} catch (Exception e) {
 			log.error(ERROR_REGISTRY_BROWSER, e);
 
-			IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, REASON_REGISTRY_BROWSER);
-			ErrorDialog.openError(Display.getCurrent().getActiveShell(), ERROR_MSG_HEADER,
-					ERROR_REGISTRY_BROWSER, editorStatus);
+			displayUserError(REASON_REGISTRY_BROWSER, ERROR_REGISTRY_BROWSER);
 		} finally {
 			show();
 		}
+	}
+
+	private void displayUserError(String reason, String message) {
+		IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, reason);
+		ErrorDialog.openError(Display.getCurrent().getActiveShell(), ERROR_MSG_HEADER, message ,
+				editorStatus);
 	}
 
 	/**
@@ -315,11 +464,9 @@ try {
 	 */
 	private void setSelectedPath(String selectedPath) {
 		if (selectedPath.startsWith(G_REG_PATH_PREFIX)) {
-			selectedPath = String.format(G_REG_PREFIX,
-					selectedPath.substring(G_REG_PATH_PREFIX.length()));
+			selectedPath = String.format(G_REG_PREFIX, selectedPath.substring(G_REG_PATH_PREFIX.length()));
 		} else if (selectedPath.startsWith(C_REG_PATH_PREFIX)) {
-			selectedPath = String.format(C_REG_PREFIX,
-					selectedPath.substring(C_REG_PATH_PREFIX.length()));
+			selectedPath = String.format(C_REG_PREFIX, selectedPath.substring(C_REG_PATH_PREFIX.length()));
 		}
 
 		schemaKeyTextField.setText(selectedPath);
@@ -334,12 +481,22 @@ try {
 	private void openFileBrowser() {
 		hide();
 		try {
-			
 			DataMapperSchemaEditorUtil schemaEditorUtil = new DataMapperSchemaEditorUtil(inputFile);
-			String schema = SchemaGeneratorForFile.getSchemaContent(FileType.values()[schemaTypeCombo.getSelectionIndex()]);
-			if(schema != null){
+			FileType option = FileType.values()[schemaTypeCombo.getSelectionIndex()];
+			Display display = Display.getDefault();
+			Shell shell = new Shell(display);
+			FileDialog fid = new FileDialog(shell);
+			fid.setFilterExtensions(new String[] { fileExtensionForFileType(option) });
+			fid.setText(FILE_DIALOG_TITLE);
+			String filePath = fid.open();
+			if (filePath == null) {
+				return;
+			}
+			String schema = schemaGeneratorHelper.getSchemaContent(
+					FileType.values()[schemaTypeCombo.getSelectionIndex()], filePath);
+			if (schema != null) {
 				String schemaFilePath = schemaEditorUtil.createDiagram(schema, schemaType);
-			  if (!schemaFilePath.isEmpty()) {
+				if (!schemaFilePath.isEmpty()) {
 					setSelectedPath(schemaFilePath);
 
 					if (Messages.LoadInputSchemaAction_SchemaTypeInput.equals(schemaType)) {
@@ -351,19 +508,56 @@ try {
 					}
 				}
 			}
-			
 
-			
 		} catch (Exception e) {
 			log.error(ERROR_OPENING_FILE, e);
 
-			IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, REASON_OPENING_FILE);
-			ErrorDialog.openError(Display.getCurrent().getActiveShell(), ERROR_MSG_HEADER,
-					ERROR_OPENING_FILE, editorStatus);
+			displayUserError(REASON_OPENING_FILE, ERROR_OPENING_FILE);
 		} finally {
 			show();
 		}
 
+	}
+
+	private String fileExtensionForFileType(FileType option) {
+		switch (option) {
+		case XSD:
+			return "*.xsd";
+		case XML:
+			return "*.xml";
+		case JSON:
+			return "*.json";
+		default:
+			return "*.jschema";
+
+		}
+	}
+
+	private static FileType extractFileTypeFromRegistryResource(String mediaType) {
+		if (mediaType.contains("xml")) {
+			return FileType.XML;
+		} else if (mediaType.contains("xsd")) {
+			return FileType.XSD;
+		} else if (mediaType.contains("json")) {
+			return FileType.JSON;
+		} else {
+			return FileType.XML;
+		}
+	}
+
+	private ArrayList<String> loadRegistryResourceProjects() {
+		IProject[] projects = ResourcesPlugin.getWorkspace().getRoot().getProjects();
+		ArrayList<String> registryProjectList = new ArrayList<String>();
+		for (IProject project : projects) {
+			try {
+				if (project.hasNature(Constants.GENERAL_PROJECT_NATURE)) {
+					registryProjectList.add(project.getName());
+				}
+			} catch (Exception e) {
+				/* ignore */
+			}
+		}
+		return registryProjectList;
 	}
 
 }

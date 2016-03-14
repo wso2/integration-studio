@@ -41,7 +41,7 @@ public class AbstractSchemaGenerator implements ISchemaGenerator {
 	 */
 	@Override
 	public String getSchemaContent(String fileText) throws IOException {
-		Schema schema = Schema.parse(fileText);
+		Schema schema = Schema.parse(fileText);//TODO remove the deprecated method usage
 		return schema.toString();
 	}
 }

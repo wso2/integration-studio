@@ -18,64 +18,49 @@ package org.wso2.developerstudio.datamapper.diagram.schemagen.util;
 
 import java.io.IOException;
 
-import org.eclipse.swt.widgets.Display;
-import org.eclipse.swt.widgets.FileDialog;
-import org.eclipse.swt.widgets.Shell;
 import org.wso2.developerstudio.datamapper.diagram.Activator;
-import org.wso2.developerstudio.datamapper.diagram.custom.action.Messages;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
-public class SchemaGeneratorForFile {
+/**
+ * TODO
+ *
+ */
+public class SchemaGeneratorHelper {
 
-	private static final String INPUT_SCHEMA_FILE = Messages.SchemaKeyEditorDialog_InputSchemaFile;
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
-	//TODO add a hashmap with file extensions for the 
-	public static String getSchemaContent(FileType option) {
 
-		String title = INPUT_SCHEMA_FILE;
+	// Implement loading the schema from the workspace.
+	/**
+	 * This method returns the generated schema as a string. It will load the
+	 * schema generator class depending on the file type of the file and pass
+	 * the file to the schema generator class which would generate the schema.
+	 * 
+	 * @param option
+	 * @param filePath
+	 * @return
+	 */
+	public String getSchemaContent(FileType option, String filePath) {
+
 		SchemaGeneratorFactory schemaGenFactory = new SchemaGeneratorFactory();
 		ISchemaGenerator schemaGenerator = schemaGenFactory.getSchemaGenerator(option);
-		Display display = Display.getDefault();
-		Shell shell = new Shell(display);
-		FileDialog fid = new FileDialog(shell);
-		fid.setFilterExtensions(new String[] {fileExtensionForFileType(option)});
-		fid.setText(title);
-		String filePath = fid.open();
-		if (filePath == null) {
-			return null;
-		}
-		String schemaContent = null;
+
 		if (schemaGenerator instanceof SchemaGeneratorForXSD) {
 			try {
-				schemaContent = schemaGenerator.getSchemaContent(filePath);
+				return schemaGenerator.getSchemaContent(filePath);
 			} catch (IOException e) {
-				log.error("Error while generating avro schema", e);
+				log.error("Error while generating schema", e);
 			}
 		} else {
 			try {
-				schemaContent = schemaGenerator.getSchemaResourcePath(filePath);
+				return schemaGenerator.getSchemaResourcePath(filePath);
 			} catch (IOException e) {
-				log.error("Error while generating avro schema", e);
+				log.error("Error while generating schema", e);
 			}
 		}
 		
-		return schemaContent;
+		return null;
+
 	}
-	
-	private static String fileExtensionForFileType(FileType fileType){
-		switch(fileType) {
-		case AVRO:
-			return "*.avsc";
-		case XSD:
-			return "*.xsd";
-		case XML:
-			return "*.xml";
-		case JSON:
-			return "*.json";
-		
-	}
-		return "";
-		
-	}
+
 }

@@ -22,10 +22,14 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
 
+import javax.xml.stream.XMLStreamException;
+import javax.xml.transform.TransformerException;
+
 import org.apache.xmlbeans.XmlException;
 import org.apache.xmlbeans.XmlOptions;
 import org.apache.xmlbeans.impl.inst2xsd.Inst2XsdOptions;
 import org.apache.xmlbeans.impl.xb.xsdschema.SchemaDocument;
+import org.wso2.developerstudio.visualdatamapper.diagram.jsonschema.generator.JSONSchemaGeneratorforXSD;
 
 public class SchemaGeneratorForXML extends SchemaGeneratorForXSD implements ISchemaGenerator {
 	private static final String TEMP_AVRO_GEN_LOCATION = "tempXSDGenLocation";

@@ -15,12 +15,12 @@
  */
 
 package org.wso2.developerstudio.datamapper.diagram.schemagen.util;
-
+//TODO add a default case and remove the unreachable null return
 public class SchemaGeneratorFactory {
 	
 	public ISchemaGenerator getSchemaGenerator(FileType fileType) {
 		switch(fileType) {
-		case AVRO:
+		case JSCHEMA:
 			return new AbstractSchemaGenerator();
 		case XSD:
 			return new SchemaGeneratorForXSD();

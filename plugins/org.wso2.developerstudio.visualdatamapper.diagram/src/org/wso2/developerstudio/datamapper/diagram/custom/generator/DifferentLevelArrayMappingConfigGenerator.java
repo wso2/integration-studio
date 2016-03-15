@@ -203,11 +203,15 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
             Map<String, SchemaDataType> variableTypeMap) {
         StringBuilder functionBuilder = new StringBuilder();
         functionBuilder.append("\n");
-        if (!"root".equals(forLoopBean.getVariableName())) {
+        List<String> arrayTypeVariableList = getArrayTypeVariablesList(forLoopBean, mappingOperationList,
+                variableTypeMap);
+        functionBuilder.append(getJSInitializationForArrayTypeVariables(arrayTypeVariableList));
+        if (!ROOT_TAG.equals(forLoopBean.getVariableName())) {
             functionBuilder.append("for(" + forLoopBean.getIterativeName() + " in "
                     + getPrettyVariableNameInForLoop(forLoopBean.getVariableName()) + "){");
             functionBuilder.append("\n");
         }
+        functionBuilder.append(getJSInitializationForArrayVariableObjects(arrayTypeVariableList));
         // call operations and nested for loops
         List<Integer> operationsInForLoopList = forLoopBean.getOperationList();
         for (Integer operationIndex : operationsInForLoopList) {
@@ -220,12 +224,76 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
                     mappingOperationList, variableTypeMap));
         }
 
-        if (!"root".equals(forLoopBean.getVariableName())) {
+        if (!ROOT_TAG.equals(forLoopBean.getVariableName())) {
             functionBuilder.append("\n");
             functionBuilder.append("}");
             functionBuilder.append("\n");
         }
         return functionBuilder.toString();
+    }
+
+    private String getJSInitializationForArrayVariableObjects(List<String> arrayTypeVariableList) {
+        StringBuilder functionBuilder = new StringBuilder();
+        functionBuilder.append("\n");
+        for (String variableName : arrayTypeVariableList) {
+            functionBuilder.append(variableName + " = {};");
+            functionBuilder.append("\n");
+        }
+        return functionBuilder.toString();
+    }
+
+    private String getJSInitializationForArrayTypeVariables(List<String> arrayTypeVariableList) {
+        StringBuilder functionBuilder = new StringBuilder();
+        functionBuilder.append("\n");
+        for (String variableName : arrayTypeVariableList) {
+            if (variableName.contains("[")) {
+                int lastElementIndex = variableName.lastIndexOf("[");
+                variableName = variableName.substring(0, lastElementIndex);
+            }
+            functionBuilder.append("var " + variableName + " = [];");
+            functionBuilder.append("\n");
+        }
+        return functionBuilder.toString();
+    }
+
+    @SuppressWarnings("unchecked")
+    private List<String> getArrayTypeVariablesList(ForLoopBean forLoopBean,
+            List<MappingOperation> mappingOperationList, Map<String, SchemaDataType> variableTypeMap) {
+        List<String> initializedVariableList = new ArrayList<>();
+        Stack<ForLoopBean> forLoopBeanParentStack = getParentForLoopBeanStack(forLoopBean);
+        Stack<ForLoopBean> tempForLoopBeanParentStack = new Stack<ForLoopBean>();
+        tempForLoopBeanParentStack = (Stack<ForLoopBean>) forLoopBeanParentStack.clone();
+        for ( int operationIndex: forLoopBean.getOperationList()) {
+            MappingOperation mappingOperation = mappingOperationList.get(operationIndex);
+            for (DMVariable outputVariable : mappingOperation.getOutputVariables()) {
+                tempForLoopBeanParentStack = (Stack<ForLoopBean>) forLoopBeanParentStack.clone();
+                if (DMVariableType.OUTPUT.equals(outputVariable.getType())) {
+                    String variableName = removeLastElementNameFromVariable(outputVariable.getName());
+                    if (variableTypeMap.containsKey(variableName)) {
+                        if (SchemaDataType.ARRAY.equals(variableTypeMap.get(variableName))) {
+                            String variableString = ScriptGenerationUtil.getPrettyVariableNameInForOperation(
+                                    outputVariable, variableTypeMap, tempForLoopBeanParentStack);
+                            variableString = removeLastElementNameFromVariable(variableString);
+                            if (!initializedVariableList.contains(variableString)) {
+                                initializedVariableList.add(variableString);
+                            }
+                        }
+                    } else {
+                        throw new IllegalArgumentException("Illegal variable name found" + outputVariable.getName());
+                    }
+                }
+            }
+        }
+        return initializedVariableList;
+    }
+
+    private String removeLastElementNameFromVariable(String variableString) {
+        String targetVariable = variableString;
+        if (variableString.contains(".")) {
+            int lastElementIndex = variableString.lastIndexOf(".");
+            targetVariable = variableString.substring(0, lastElementIndex);
+        }
+        return targetVariable;
     }
 
     @SuppressWarnings("unchecked")

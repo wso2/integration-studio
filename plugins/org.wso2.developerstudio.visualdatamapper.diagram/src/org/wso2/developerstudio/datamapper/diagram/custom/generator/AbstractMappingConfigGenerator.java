@@ -55,6 +55,7 @@ public abstract class AbstractMappingConfigGenerator implements MappingConfigGen
                 + ScriptGenerationUtil.removeNameSpaceFromName(outRoot) + ")");
         mainFunctionBuilder.append("{ ");
         mainFunctionBuilder.append("\n");
+        mainFunctionBuilder.append("var output"+ScriptGenerationUtil.removeNameSpaceFromName(outRoot)+"={};");
         return mainFunctionBuilder.toString();
     }
 

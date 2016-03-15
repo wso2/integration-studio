@@ -109,7 +109,7 @@ public class ExportSchemaAction extends AbstractActionHandler {
 				try {
 					ISchemaTransformer schemaTransformer = SchemaTransformerRegistry.getInstance()
 							.getSchemaTransformer().newInstance();
-					exportContent = schemaTransformer.getSchemaContentFromModel((TreeNodeImpl) treeNode);
+					exportContent = schemaTransformer.getSchemaContentFromModel((TreeNodeImpl) treeNode, null);
 					Display display = Display.getDefault();
 					Shell shell = new Shell(display);
 					FileDialog dialog = new FileDialog(shell, SWT.SAVE);

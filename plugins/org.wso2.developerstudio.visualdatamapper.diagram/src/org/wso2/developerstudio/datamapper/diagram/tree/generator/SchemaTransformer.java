@@ -21,6 +21,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.Scanner;
@@ -47,6 +48,7 @@ import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 
 public class SchemaTransformer implements ISchemaTransformer {
 
@@ -65,13 +67,12 @@ public class SchemaTransformer implements ISchemaTransformer {
 	private static String ERROR_TEXT = "File cannot be found ";
 	private static String ERROR_WRITING_SCHEMA_FILE = "Error writing to schema file";
 
-	 Map<String, Object> jsonSchemaMap;
-	
+	Map<String, Object> jsonSchemaMap;
+
 	@SuppressWarnings("unchecked")
 	@Override
 	public TreeNode generateTree(String content, TreeNode inputRootTreeNode) throws NullPointerException,
 	IllegalArgumentException, IOException {
-		
 		InputStream schema = new ByteArrayInputStream(content.getBytes());
 		ObjectMapper objectMapper = new ObjectMapper();
 		try {
@@ -85,15 +86,17 @@ public class SchemaTransformer implements ISchemaTransformer {
 		}
 		// Creates the root element
 		int count = 1;
-		inputRootTreeNode = createTreeNode(inputRootTreeNode, count, getName(jsonSchemaMap), jsonSchemaMap,
+		inputRootTreeNode = createTreeNode(inputRootTreeNode, count,
+				getName(jsonSchemaMap), jsonSchemaMap,
 				getSchemaType(jsonSchemaMap));
 		// Creates the tree by adding tree node and elements
-		inputRootTreeNode = setProperties(jsonSchemaMap, inputRootTreeNode, count);
+		inputRootTreeNode = setProperties(jsonSchemaMap, inputRootTreeNode,
+				count);
 
 		return inputRootTreeNode;
-		 
+
 	}
-	
+
 	/**
 	 * Gets the schema name
 	 * 
@@ -107,7 +110,8 @@ public class SchemaTransformer implements ISchemaTransformer {
 			return schemaName;
 		} else {
 			log.error("Invalid input schema, schema name not found.");
-			throw new NullPointerException("Invalid input schema, schema name not found.");
+			throw new NullPointerException(
+					"Invalid input schema, schema name not found.");
 		}
 	}
 
@@ -125,12 +129,15 @@ public class SchemaTransformer implements ISchemaTransformer {
 				return (String) type;
 			} else {
 				log.error("Invalid input schema, invalid schema type found");
-				throw new IllegalArgumentException("Illegal format " + type.getClass() + " value found under key : "
+				throw new IllegalArgumentException("Illegal format "
+						+ type.getClass() + " value found under key : "
 						+ JSON_SCHEMA_TYPE);
 			}
 		} else {
 			log.error("Invalid input schema, schema type not found.");
-			throw new IllegalArgumentException("Given schema does not contain value under key : " + JSON_SCHEMA_TYPE);
+			throw new IllegalArgumentException(
+					"Given schema does not contain value under key : "
+							+ JSON_SCHEMA_TYPE);
 		}
 	}
 
@@ -148,7 +155,8 @@ public class SchemaTransformer implements ISchemaTransformer {
 				return (String) type;
 			} else {
 				log.error("Invalid input schema, invalid schema value found");
-				throw new IllegalArgumentException("Illegal format " + type.getClass() + " value found under key : "
+				throw new IllegalArgumentException("Illegal format "
+						+ type.getClass() + " value found under key : "
 						+ JSON_SCHEMA_SCHEMA_VALUE);
 			}
 		}
@@ -169,7 +177,8 @@ public class SchemaTransformer implements ISchemaTransformer {
 				return (String) type;
 			} else {
 				log.error("Invalid input schema, invalid ID value found");
-				throw new IllegalArgumentException("Illegal format " + type.getClass() + " value found under key : "
+				throw new IllegalArgumentException("Illegal format "
+						+ type.getClass() + " value found under key : "
 						+ JSON_SCHEMA_ID);
 			}
 		}
@@ -192,7 +201,8 @@ public class SchemaTransformer implements ISchemaTransformer {
 				return "[" + value + "]";
 			} else {
 				log.error("Invalid input schema, invalid required value found");
-				throw new IllegalArgumentException("Illegal format " + type.getClass() + " value found under key : "
+				throw new IllegalArgumentException("Illegal format "
+						+ type.getClass() + " value found under key : "
 						+ JSON_SCHEMA_REQUIRED);
 			}
 		}
@@ -207,12 +217,16 @@ public class SchemaTransformer implements ISchemaTransformer {
 	 * @return property map
 	 */
 	@SuppressWarnings("unchecked")
-	private Map<String, Object> getSchemaProperties(Map<String, Object> jsonSchemaMap) {
+	private Map<String, Object> getSchemaProperties(
+			Map<String, Object> jsonSchemaMap) {
 		if (jsonSchemaMap.containsKey(JSON_SCHEMA_PROPERTIES)) {
-			return (Map<String, Object>) jsonSchemaMap.get(JSON_SCHEMA_PROPERTIES);
+			return (Map<String, Object>) jsonSchemaMap
+					.get(JSON_SCHEMA_PROPERTIES);
 		} else {
 			log.error("Invalid input schema, property value not found");
-			throw new IllegalArgumentException("Given schema does not contain value under key : " + JSON_SCHEMA_PROPERTIES);
+			throw new IllegalArgumentException(
+					"Given schema does not contain value under key : "
+							+ JSON_SCHEMA_PROPERTIES);
 		}
 	}
 
@@ -229,11 +243,14 @@ public class SchemaTransformer implements ISchemaTransformer {
 			return (Map<String, Object>) jsonSchemaMap.get(JSON_SCHEMA_ITEMS);
 		} else {
 			log.error("Invalid input schema, items value not found");
-			throw new IllegalArgumentException("Given schema does not contain value under key : " + JSON_SCHEMA_ITEMS);
+			throw new IllegalArgumentException(
+					"Given schema does not contain value under key : "
+							+ JSON_SCHEMA_ITEMS);
 		}
 	}
 
-	private TreeNode setProperties(Map<String, Object> jsonSchemaMap, TreeNode inputRootTreeNode, int count) {
+	private TreeNode setProperties(Map<String, Object> jsonSchemaMap,
+			TreeNode inputRootTreeNode, int count) {
 		// Gets the schema properties
 		Map<String, Object> propertyMap = getSchemaProperties(jsonSchemaMap);
 		Set<String> elementKeys = propertyMap.keySet();
@@ -242,24 +259,28 @@ public class SchemaTransformer implements ISchemaTransformer {
 		count++;
 		for (String elementKey : elementKeys) {
 			@SuppressWarnings("unchecked")
-			Map<String, Object> subSchema = (Map<String, Object>) propertyMap.get(elementKey);
+			Map<String, Object> subSchema = (Map<String, Object>) propertyMap
+					.get(elementKey);
 			// Gets the schema type of the sub schema
 			String schemaType = getSchemaType(subSchema);
 			if (JSON_SCHEMA_OBJECT.equals(schemaType)) {
 				// Creates the tree node
-				treeNode = createTreeNode(null, count, elementKey, subSchema, schemaType);
+				treeNode = createTreeNode(null, count, elementKey, subSchema,
+						schemaType);
 				// Adds sub tree node to the root tree
 				inputRootTreeNode.getNode().add(treeNode);
 				setProperties(subSchema, treeNode, count);
 			} else if (JSON_SCHEMA_ARRAY.equals(schemaType)) {
 				// Creates the tree node
-				treeNode = createTreeNode(null, count, elementKey, subSchema, schemaType);
+				treeNode = createTreeNode(null, count, elementKey, subSchema,
+						schemaType);
 				// Adds sub tree node to the root tree
 				inputRootTreeNode.getNode().add(treeNode);
 				setProperties(getSchemaItems(subSchema), treeNode, count);
 			} else {
 				// Creates an element when type is String, int etc
-				element = createElement(count, elementKey, subSchema, schemaType);
+				element = createElement(count, elementKey, subSchema,
+						schemaType);
 				// Adds the element to the tree node
 				inputRootTreeNode.getElement().add(element);
 			}
@@ -283,7 +304,8 @@ public class SchemaTransformer implements ISchemaTransformer {
 	 *            schema type
 	 * @return element
 	 */
-	private Element createElement(int count, String elementKey, Map<String, Object> subSchema, String schemaType) {
+	private Element createElement(int count, String elementKey,
+			Map<String, Object> subSchema, String schemaType) {
 		org.wso2.developerstudio.datamapper.Element element;
 		element = DataMapperFactory.eINSTANCE.createElement();
 		element.setName(elementKey);
@@ -291,7 +313,8 @@ public class SchemaTransformer implements ISchemaTransformer {
 		element.getProperties().put(JSON_SCHEMA_TYPE, schemaType);
 		// Sets the id value if available
 		if (getIDValue(subSchema) != null) {
-			element.getProperties().put(JSON_SCHEMA_ID, getSchemaValue(subSchema));
+			element.getProperties().put(JSON_SCHEMA_ID,
+					getSchemaValue(subSchema));
 		}
 		return element;
 	}
@@ -312,8 +335,8 @@ public class SchemaTransformer implements ISchemaTransformer {
 	 *            schema type
 	 * @return tree node
 	 */
-	private TreeNode createTreeNode(TreeNode inputRootTreeNode, int count, String elementKey,
-			Map<String, Object> subSchema, String schemaType) {
+	private TreeNode createTreeNode(TreeNode inputRootTreeNode, int count,
+			String elementKey, Map<String, Object> subSchema, String schemaType) {
 		TreeNode treeNode;
 		if (inputRootTreeNode == null) {
 			treeNode = DataMapperFactory.eINSTANCE.createTreeNode();
@@ -325,19 +348,21 @@ public class SchemaTransformer implements ISchemaTransformer {
 		treeNode.getProperties().put(JSON_SCHEMA_TYPE, schemaType);
 		// Sets the schema key if available
 		if (getSchemaValue(subSchema) != null) {
-			treeNode.getProperties().put(JSON_SCHEMA_SCHEMA_VALUE, getSchemaValue(subSchema));
+			treeNode.getProperties().put(JSON_SCHEMA_SCHEMA_VALUE,
+					getSchemaValue(subSchema));
 		}
 		// Sets the id value if available
 		if (getIDValue(subSchema) != null) {
-			treeNode.getProperties().put(JSON_SCHEMA_ID, getSchemaValue(subSchema));
+			treeNode.getProperties().put(JSON_SCHEMA_ID,
+					getSchemaValue(subSchema));
 		}
 		// Sets the required value
 		if (getRequiredValue(subSchema) != null) {
-			treeNode.getProperties().put(JSON_SCHEMA_REQUIRED, getRequiredValue(subSchema));
+			treeNode.getProperties().put(JSON_SCHEMA_REQUIRED,
+					getRequiredValue(subSchema));
 		}
 		return treeNode;
 	}
-
 
 	@Override
 	public String getSchemaContentFromFile(String path) {
@@ -352,18 +377,23 @@ public class SchemaTransformer implements ISchemaTransformer {
 	}
 
 	@Override
-	public String getSchemaContentFromModel(TreeNodeImpl treeNodeModel) {
-		String name = null;
+	public String getSchemaContentFromModel(TreeNodeImpl treeNodeModel,
+			File writeToFile) {
 		JsonFactory jscksonFactory = new JsonFactory();
+		
+		StringWriter out = new StringWriter();
 		try {
-			JsonGenerator jGenerator = jscksonFactory.createGenerator(new File("data/output.json"), JsonEncoding.UTF8);
+			JsonGenerator jGenerator = jscksonFactory.createGenerator(out);
+			/*		
+					createGenerator(
+					System.out, JsonEncoding.UTF8);*/
 			if (StringUtils.isNotEmpty(treeNodeModel.getName())) {
 				recursiveTreeGenerator(treeNodeModel, jGenerator);
 			}
 		} catch (IOException | XMLStreamException e) {
-			//log error
+			// log error
 		}
-		return name;
+		return writeToFile.getName();
 	}
 
 	private void recursiveTreeGenerator(TreeNodeImpl treeNodeModel,
@@ -371,25 +401,31 @@ public class SchemaTransformer implements ISchemaTransformer {
 		EMap<String, String> propertyMap = treeNodeModel.getProperties();
 		EList<Element> elemList = treeNodeModel.getElement();
 		EList<TreeNode> nodeList = treeNodeModel.getNode();
-		JsonFactory factory = new JsonFactory();
-//		jGenerator.close();
-		
-		if (!propertyMap.get(JSON_SCHEMA_TITLE).isEmpty()
-				&& propertyMap.get(JSON_SCHEMA_TITLE) != null)
-			jGenerator.writeStringField(JSON_SCHEMA_TITLE, propertyMap.get(JSON_SCHEMA_TITLE)); // "name" : "mkyong"
-		jGenerator.writeStringField(JSON_SCHEMA_ID, propertyMap.get(JSON_SCHEMA_ID)); // "name" : "mkyong"
+		// jGenerator.close();
+		if (propertyMap.get(JSON_SCHEMA_TYPE) != null
+				&& propertyMap.get(JSON_SCHEMA_TYPE).isEmpty())
+			jGenerator.writeStringField(JSON_SCHEMA_TITLE,
+					treeNodeModel.getName()); // "title" : "employee"
+		jGenerator.writeStringField(JSON_SCHEMA_ID,
+				propertyMap.get(JSON_SCHEMA_ID)); // "name" : "mkyong"
 		String schemaValType = propertyMap.get(JSON_SCHEMA_TYPE);
 		// if type is Object
 		if (schemaValType != null && schemaValType.equals(JSON_SCHEMA_OBJECT)) {
 			for (Element elem : elemList) {
-				jGenerator.writeStringField(JSON_SCHEMA_TYPE,schemaValType);
+				jGenerator.writeStringField(JSON_SCHEMA_TYPE, schemaValType);
 				jGenerator.writeFieldName(JSON_SCHEMA_PROPERTIES);
 				jGenerator.writeFieldName(JSON_SCHEMA_NAME);
 				generateElement(jGenerator, elem);
 			}
+			for (TreeNode node : nodeList) {
+				jGenerator.writeStringField(JSON_SCHEMA_TYPE, schemaValType);
+				jGenerator.writeFieldName(JSON_SCHEMA_PROPERTIES);
+				jGenerator.writeFieldName(node.getName());
+				recursiveTreeGenerator((TreeNodeImpl) node, jGenerator);
+			}
 		} else if (schemaValType != null
 				&& schemaValType.equals(JSON_SCHEMA_ARRAY)) {
-			jGenerator.writeStringField(JSON_SCHEMA_TYPE,schemaValType);
+			jGenerator.writeStringField(JSON_SCHEMA_TYPE, schemaValType);
 			jGenerator.writeFieldName(JSON_SCHEMA_ITEMS);
 			schemaValType = propertyMap.get(JSON_SCHEMA_TYPE);
 			for (TreeNode node : nodeList) {
@@ -397,25 +433,25 @@ public class SchemaTransformer implements ISchemaTransformer {
 			}
 		} else if (schemaValType != null
 				&& schemaValType.equals(JSON_SCHEMA_STRING)) {
-			jGenerator.writeStringField(JSON_SCHEMA_TYPE,schemaValType);
+			jGenerator.writeStringField(JSON_SCHEMA_TYPE, schemaValType);
 			jGenerator.writeEndObject();
 		}
 	}
 
-	private void generateElement(JsonGenerator jGenerator,
-			Element elem)
+	private void generateElement(JsonGenerator jGenerator, Element elem)
 			throws XMLStreamException {
-		if (elem.getValue() != null && elem.getValue().equals(JSON_SCHEMA_STRING)) {
-			
+		if (elem.getValue() != null
+				&& elem.getValue().equals(JSON_SCHEMA_STRING)) {
+
 			try {
-				jGenerator.writeStringField(JSON_SCHEMA_ID,elem.getName());
-				jGenerator.writeStringField(JSON_SCHEMA_TYPE,elem.getValue());
+				jGenerator.writeStringField(JSON_SCHEMA_ID, elem.getName());
+				jGenerator.writeStringField(JSON_SCHEMA_TYPE, elem.getValue());
 				jGenerator.writeEndObject();
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
-				//log
+				// log
 			}
-			
+
 		}
 	}
 

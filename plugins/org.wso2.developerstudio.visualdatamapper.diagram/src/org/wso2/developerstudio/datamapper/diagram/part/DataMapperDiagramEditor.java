@@ -385,7 +385,7 @@ public class DataMapperDiagramEditor extends DiagramDocumentEditor implements IG
 			// This traverses input tree view and returns the updated avro
 			// schema
 			schemaFile = createSchemaFile(INPUT_SCHEMA_ID);
-			content = schemaTransformer.getSchemaContentFromModel(inputTreeNode);
+			content = schemaTransformer.getSchemaContentFromModel(inputTreeNode, schemaFile);
 		}
 		// Empty tree node, clear the file
 		else {
@@ -403,7 +403,7 @@ public class DataMapperDiagramEditor extends DiagramDocumentEditor implements IG
 			// This traverses output tree view and returns the updated avro
 			// schema
 			schemaFile = createSchemaFile(OUTPUT_SCHEMA_ID);
-			content = schemaTransformer.getSchemaContentFromModel(outputTreeNode);
+			content = schemaTransformer.getSchemaContentFromModel(outputTreeNode, schemaFile);
 		}
 		// Empty tree node, clear the file
 		else {

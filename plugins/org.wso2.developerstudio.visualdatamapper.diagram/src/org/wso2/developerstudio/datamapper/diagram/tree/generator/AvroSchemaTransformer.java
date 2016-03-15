@@ -57,7 +57,7 @@ public class AvroSchemaTransformer implements ISchemaTransformer {
 	}
 
 	@Override
-	public String getSchemaContentFromModel(TreeNodeImpl treeNodeModel) {
+	public String getSchemaContentFromModel(TreeNodeImpl treeNodeModel, File file) {
 		// Schema of the root element
 				String name = null;
 				String doc = null;

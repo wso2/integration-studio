@@ -34,7 +34,10 @@ import org.wso2.developerstudio.datamapper.impl.TreeNodeImpl;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
 
 public class SchemaTransformer implements ISchemaTransformer {
 
@@ -55,11 +58,10 @@ public class SchemaTransformer implements ISchemaTransformer {
 	
 	@SuppressWarnings("unchecked")
 	@Override
-	public TreeNode generateTree(String content, TreeNode inputRootTreeNode) throws IOException,IllegalArgumentException{
+	public TreeNode generateTree(String content, TreeNode inputRootTreeNode) throws JsonParseException, JsonMappingException, IOException  {
 		
 		InputStream schema = new ByteArrayInputStream(content.getBytes());
 		ObjectMapper objectMapper = new ObjectMapper();
-		 try {
 	            jsonSchemaMap = objectMapper.readValue(schema, Map.class);
 	            //Sets the name of the root
 	            inputRootTreeNode.setName(getName(jsonSchemaMap));
@@ -74,9 +76,6 @@ public class SchemaTransformer implements ISchemaTransformer {
 	            int count =1;
 	            inputRootTreeNode = setProperties(jsonSchemaMap,inputRootTreeNode,count);
 	            
-	        } catch (IOException e) {
-	            log.error("Error while reading input stream");
-	        }
 		return inputRootTreeNode;
 		 
 	}

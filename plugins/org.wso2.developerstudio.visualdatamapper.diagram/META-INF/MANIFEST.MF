@@ -17,11 +17,12 @@ Bundle-ClassPath: .,
  lib/staxon-1.2.jar,
  lib/jackson-annotations-2.7.0.jar,
  lib/jackson-databind-2.7.2.jar,
- lib/jackson-core-2.7.2.jar
+ lib/jackson-core-2.7.2.jar,
+ lib/jackson-annotations-2.7.2.jar
 Bundle-Activator: org.wso2.developerstudio.datamapper.diagram.part.DataMapperDiagramEditorPlugin
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Export-Package: com.fasterxml.jackson.annotation,
+Export-Package: com.fasterxml.jackson.annotation;version="2.7.2",
  com.fasterxml.jackson.core;version="2.7.2",
  com.fasterxml.jackson.core.base;version="2.7.2",
  com.fasterxml.jackson.core.filter;version="2.7.2",
@@ -225,10 +226,11 @@ Require-Bundle: org.eclipse.core.runtime,
  org.wso2.developerstudio.eclipse.maven,
  org.wso2.developerstudio.eclipse.utils,
  org.wso2.developerstudio.eclipse.gmf.esb,
- org.eclipse.equinox.registry
+ org.eclipse.equinox.registry,
+ org.wso2.developerstudio.eclipse.libraries
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
-Import-Package: com.fasterxml.jackson.annotation,
+Import-Package: com.fasterxml.jackson.annotation;version="2.7.2",
  com.fasterxml.jackson.core;version="2.7.2",
  com.fasterxml.jackson.core.base;version="2.7.2",
  com.fasterxml.jackson.core.filter;version="2.7.2",

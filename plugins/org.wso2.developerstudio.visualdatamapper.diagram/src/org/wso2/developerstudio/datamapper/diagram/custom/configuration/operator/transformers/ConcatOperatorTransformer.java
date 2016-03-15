@@ -49,15 +49,17 @@ public class ConcatOperatorTransformer extends AbstractDMOperatorTransformer {
         } else if (DifferentLevelArrayMappingConfigGenerator.class.equals(generatorClass)) {
             @SuppressWarnings("unchecked")
             Stack<ForLoopBean> tempParentForLoopBeanStack = (Stack<ForLoopBean>) parentForLoopBeanStack.clone();
-            if (inputVariables.size() >= 1) {
+            if (inputVariables.size() > 1) {
                 operationBuilder.append(ScriptGenerationUtil.getPrettyVariableNameInForOperation(inputVariables.get(0),
                         variableTypeMap, parentForLoopBeanStack)
                         + ".concat('"
                         + concatOperator
                         + "',"
-                        + concatOperator
                         + ScriptGenerationUtil.getPrettyVariableNameInForOperation(inputVariables.get(1),
                                 variableTypeMap, tempParentForLoopBeanStack) + ");");
+            } else if (inputVariables.size() == 1) {
+                operationBuilder.append(ScriptGenerationUtil.getPrettyVariableNameInForOperation(inputVariables.get(0),
+                        variableTypeMap, parentForLoopBeanStack) + ".concat('" + concatOperator + "');");
             } else {
                 operationBuilder.append("'';");
             }

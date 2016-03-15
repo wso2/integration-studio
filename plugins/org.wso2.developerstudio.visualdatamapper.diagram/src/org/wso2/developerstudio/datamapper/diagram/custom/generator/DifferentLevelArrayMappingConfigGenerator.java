@@ -39,8 +39,22 @@ import org.wso2.developerstudio.datamapper.diagram.custom.util.ScriptGenerationU
  */
 public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingConfigGenerator {
 
+    private static final String ROOT_TAG = "root";
+
+    /**
+     * 
+     */
     private Map<String, Integer> forLoopBeanMap;
+
+    /**
+     * forLoopBeanList contains the list of forLoopBeans in the generated script
+     */
     private List<ForLoopBean> forLoopBeanList;
+
+    /**
+     * This is the root/parent bean and it will not be under a for loop in the generated script. Every operation and for
+     * loops should be under this rootBean
+     */
     private ForLoopBean rootBean;
 
     @Override
@@ -54,10 +68,10 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
     private void initializeAlgorithmFields() {
         forLoopBeanMap = new HashMap<>();
         forLoopBeanList = new ArrayList<>();
-        rootBean = new ForLoopBean("root", "root");
+        rootBean = new ForLoopBean(ROOT_TAG, ROOT_TAG);
         rootBean.setParentIndex(-1);
         getForLoopBeanList().add(rootBean);
-        getForLoopBeanMap().put("root", 0);
+        getForLoopBeanMap().put(ROOT_TAG, 0);
     }
 
     private String generateMainFunction(List<MappingOperation> mappingOperationList, DataMapperDiagramModel model)
@@ -88,10 +102,13 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
             }
             for (DMVariable dmVariable : inputVariables) {
                 String mostChildVariableName = "";
-                if (DMVariableType.INTERMEDIATE.equals(dmVariable.getType())) {
-                    mostChildVariableName = getMostChildAssociatedVariable(
-                            model.getInputAdjList().get(dmVariable.getparentVariableOrOperationIndex()),
-                            model.getVariablesArray());
+                if (DMVariableType.INTERMEDIATE.equals(dmVariable.getType())
+                        || DMVariableType.OUTPUT.equals(dmVariable.getType())) {
+                    List<DMVariable> variableArray = model.getVariablesArray();
+                    int mostChildVariableIndex = getMostChildAssociatedVariableIndex(
+                            model.getInputAdjList().get(dmVariable.getparentVariableOrOperationIndex()), variableArray);
+                    mostChildVariableName = variableArray.get(mostChildVariableIndex).getName();
+                    dmVariable.setMostChildVariableIndex(mostChildVariableIndex);
                 } else {
                     mostChildVariableName = dmVariable.getName();
                 }
@@ -158,15 +175,28 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
         return functionBuilder.toString();
     }
 
-    private String getMostChildAssociatedVariable(ArrayList<Integer> inputVariableList, List<DMVariable> variableList) {
+    private int getMostChildAssociatedVariableIndex(ArrayList<Integer> inputVariableIndexList,
+            List<DMVariable> variableList) {
         String mostChildVariableName = "";
-        for (Integer variableIndex : inputVariableList) {
-            String variableName = variableList.get(variableIndex).getName();
-            if (mostChildVariableName.split("\\.").length < variableName.split("\\.").length) {
-                mostChildVariableName = variableName;
+        int mostChildVariableIndex = -1;
+        for (Integer variableIndex : inputVariableIndexList) {
+            DMVariable variable = variableList.get(variableIndex);
+            String variableName = "";
+            if (DMVariableType.INTERMEDIATE.equals(variable.getType())) {
+                variableName = variableList.get(variable.getMostChildVariableIndex()).getName();
+                if (mostChildVariableName.split("\\.").length < variableName.split("\\.").length) {
+                    mostChildVariableName = variableName;
+                    mostChildVariableIndex = variable.getMostChildVariableIndex();
+                }
+            } else {
+                variableName = variableList.get(variableIndex).getName();
+                if (mostChildVariableName.split("\\.").length < variableName.split("\\.").length) {
+                    mostChildVariableName = variableName;
+                    mostChildVariableIndex = variableIndex;
+                }
             }
         }
-        return mostChildVariableName;
+        return mostChildVariableIndex;
     }
 
     private String transformForLoopBeansToJS(ForLoopBean forLoopBean, List<MappingOperation> mappingOperationList,
@@ -309,8 +339,7 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
 
     @Override
     public boolean validate(DataMapperDiagramModel model) {
-        // TODO Auto-generated method stub
-        return false;
+        return true;
     }
 
     public Map<String, Integer> getForLoopBeanMap() {

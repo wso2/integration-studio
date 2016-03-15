@@ -41,12 +41,15 @@ import org.wso2.developerstudio.datamapper.diagram.tree.model.Tree;
 import org.wso2.developerstudio.datamapper.impl.TreeNodeImpl;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
+import org.json.simple.JSONObject;
 
+import com.fasterxml.jackson.core.JsonEncoding;
 import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 
 public class SchemaTransformer implements ISchemaTransformer {
 
@@ -57,7 +60,6 @@ public class SchemaTransformer implements ISchemaTransformer {
 	private static final String JSON_SCHEMA_REQUIRED = "required";
 	private static final String JSON_SCHEMA_SCHEMA_VALUE = "$schema";
 	private static final String JSON_SCHEMA_ID = "id";
-	private static final String JSON_SCHEMA_NAME = "name";
 	private static final String JSON_SCHEMA_PROPERTIES = "properties";
 	private static final String JSON_SCHEMA_TYPE = "type";
 	private static final String JSON_SCHEMA_OBJECT = "object";
@@ -350,80 +352,78 @@ public class SchemaTransformer implements ISchemaTransformer {
 		return entireFileText;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public String getSchemaContentFromModel(TreeNodeImpl treeNodeModel, File writeToFile) {
-		JsonFactory jscksonFactory = new JsonFactory();
 
-		StringWriter out = new StringWriter();
-		try {
-			JsonGenerator jGenerator = jscksonFactory.createGenerator(out);
-			/*
-			 * createGenerator( System.out, JsonEncoding.UTF8);
-			 */
-			if (StringUtils.isNotEmpty(treeNodeModel.getName())) {
-				recursiveTreeGenerator(treeNodeModel, jGenerator);
-			}
-		} catch (IOException | XMLStreamException e) {
-			// log error
+		JSONObject root = new JSONObject();
+		JSONObject propertiesObject = new JSONObject();
+		if (StringUtils.isNotEmpty(treeNodeModel.getName()) && treeNodeModel.getProperties() != null) {
+			insetIFTypeForJsonObject(treeNodeModel, root);
+			root.put(JSON_SCHEMA_TITLE, treeNodeModel.getName());// employees
+			root.put(JSON_SCHEMA_PROPERTIES, propertiesObject);
+			insertRequiredArray(root, treeNodeModel);
+			recursiveTreeGenerator(treeNodeModel, propertiesObject);
 		}
-		return writeToFile.getName();
+		System.out.print(root.toJSONString());
+		return root.toString();
 	}
 
-	private void recursiveTreeGenerator(TreeNodeImpl treeNodeModel, JsonGenerator jGenerator)
-			throws XMLStreamException, IOException {
-		EMap<String, String> propertyMap = treeNodeModel.getProperties();
-		EList<Element> elemList = treeNodeModel.getElement();
-		EList<TreeNode> nodeList = treeNodeModel.getNode();
-		// jGenerator.close();
-		if (propertyMap.get(JSON_SCHEMA_TYPE) != null && propertyMap.get(JSON_SCHEMA_TYPE).isEmpty())
-			jGenerator.writeStringField(JSON_SCHEMA_TITLE, treeNodeModel.getName()); // "title"
-																						// :
-																						// "employee"
-		jGenerator.writeStringField(JSON_SCHEMA_ID, propertyMap.get(JSON_SCHEMA_ID)); // "name"
-																						// :
-																						// "mkyong"
-		String schemaValType = propertyMap.get(JSON_SCHEMA_TYPE);
-		// if type is Object
-		if (schemaValType != null && schemaValType.equals(JSON_SCHEMA_OBJECT)) {
+	@SuppressWarnings("unchecked")
+	private void recursiveTreeGenerator(TreeNodeImpl treeNodeModel, JSONObject parent) {
+		if (treeNodeModel != null) {
+			EList<Element> elemList = treeNodeModel.getElement();
+			EList<TreeNode> nodeList = treeNodeModel.getNode();
+			for (TreeNode node : nodeList) {
+				if (node.getProperties().get(JSON_SCHEMA_TYPE) != null
+						&& node.getProperties().get(JSON_SCHEMA_TYPE).equals(JSON_SCHEMA_OBJECT)) {
+
+					JSONObject nodeObject = new JSONObject();
+					JSONObject propertiesObject = new JSONObject();
+					insetIFTypeForJsonObject(node, nodeObject);
+					nodeObject.put(JSON_SCHEMA_PROPERTIES, propertiesObject);
+					parent.put(node.getName(), nodeObject);
+					insertRequiredArray(nodeObject, node);
+					recursiveTreeGenerator((TreeNodeImpl) node, propertiesObject);
+
+				} else if (node.getProperties().get(JSON_SCHEMA_TYPE) != null
+						&& node.getProperties().get(JSON_SCHEMA_TYPE).equals(JSON_SCHEMA_ARRAY)) {
+					JSONObject arrayObject = new JSONObject();
+					JSONObject itemsObject = new JSONObject();
+					JSONObject itemProperties = new JSONObject();
+					insetIFTypeForJsonObject(node, arrayObject);
+					arrayObject.put(JSON_SCHEMA_ITEMS, itemProperties);
+					insetIFTypeForJsonObject(node, itemsObject);
+					itemProperties.put(JSON_SCHEMA_PROPERTIES, itemsObject);
+					parent.put(node.getName(), arrayObject);
+					insertRequiredArray(arrayObject, node);
+					recursiveTreeGenerator((TreeNodeImpl) node, itemsObject);
+				}
+			}
 			for (Element elem : elemList) {
-				jGenerator.writeStringField(JSON_SCHEMA_TYPE, schemaValType);
-				jGenerator.writeFieldName(JSON_SCHEMA_PROPERTIES);
-				jGenerator.writeFieldName(JSON_SCHEMA_NAME);
-				generateElement(jGenerator, elem);
+				if (elem.getProperties().get(JSON_SCHEMA_TYPE) != null) {
+					JSONObject elemObject = new JSONObject();
+					elemObject.put(JSON_SCHEMA_ID, elem.getProperties().get(JSON_SCHEMA_ID).replace("\\", ""));
+					elemObject.put(JSON_SCHEMA_TYPE, elem.getProperties().get(JSON_SCHEMA_TYPE));
+				  parent.put(elem.getName(),elemObject);
+				}
 			}
-			for (TreeNode node : nodeList) {
-				jGenerator.writeStringField(JSON_SCHEMA_TYPE, schemaValType);
-				jGenerator.writeFieldName(JSON_SCHEMA_PROPERTIES);
-				jGenerator.writeFieldName(node.getName());
-				recursiveTreeGenerator((TreeNodeImpl) node, jGenerator);
-			}
-		} else if (schemaValType != null && schemaValType.equals(JSON_SCHEMA_ARRAY)) {
-			jGenerator.writeStringField(JSON_SCHEMA_TYPE, schemaValType);
-			jGenerator.writeFieldName(JSON_SCHEMA_ITEMS);
-			schemaValType = propertyMap.get(JSON_SCHEMA_TYPE);
-			for (TreeNode node : nodeList) {
-				recursiveTreeGenerator((TreeNodeImpl) node, jGenerator);
-			}
-		} else if (schemaValType != null && schemaValType.equals(JSON_SCHEMA_STRING)) {
-			jGenerator.writeStringField(JSON_SCHEMA_TYPE, schemaValType);
-			jGenerator.writeEndObject();
 		}
 	}
 
-	private void generateElement(JsonGenerator jGenerator, Element elem) throws XMLStreamException {
-		if (elem.getValue() != null && elem.getValue().equals(JSON_SCHEMA_STRING)) {
+	@SuppressWarnings("unchecked")
+	private void insetIFTypeForJsonObject(TreeNode node, JSONObject nodeObject) {
+		nodeObject.put(JSON_SCHEMA_ID, node.getProperties().get(JSON_SCHEMA_ID).replace("\\", ""));
+		nodeObject.put(JSON_SCHEMA_TYPE, node.getProperties().get(JSON_SCHEMA_TYPE));
+	}
 
-			try {
-				jGenerator.writeStringField(JSON_SCHEMA_ID, elem.getName());
-				jGenerator.writeStringField(JSON_SCHEMA_TYPE, elem.getValue());
-				jGenerator.writeEndObject();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				// log
-			}
-
+	@SuppressWarnings("unchecked")
+	private void insertRequiredArray(JSONObject parent, TreeNode node) {
+		if (node.getProperties().get(JSON_SCHEMA_REQUIRED) != null) {
+			parent.put(JSON_SCHEMA_REQUIRED, node.getProperties().get(JSON_SCHEMA_REQUIRED));
 		}
 	}
+
 
 	@Override
 	public void updateSchemaFile(String content, File file) {

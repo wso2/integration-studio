@@ -234,25 +234,25 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
 
     private String getJSInitializationForArrayVariableObjects(List<String> arrayTypeVariableList) {
         StringBuilder functionBuilder = new StringBuilder();
-        functionBuilder.append("\n");
         for (String variableName : arrayTypeVariableList) {
-            functionBuilder.append(variableName + " = {};");
             functionBuilder.append("\n");
+            functionBuilder.append(variableName + " = {};");
         }
+        functionBuilder.append("\n");
         return functionBuilder.toString();
     }
 
     private String getJSInitializationForArrayTypeVariables(List<String> arrayTypeVariableList) {
         StringBuilder functionBuilder = new StringBuilder();
-        functionBuilder.append("\n");
         for (String variableName : arrayTypeVariableList) {
             if (variableName.contains("[")) {
                 int lastElementIndex = variableName.lastIndexOf("[");
                 variableName = variableName.substring(0, lastElementIndex);
             }
-            functionBuilder.append("var " + variableName + " = [];");
             functionBuilder.append("\n");
+            functionBuilder.append(variableName + " = [];");
         }
+        functionBuilder.append("\n");
         return functionBuilder.toString();
     }
 
@@ -263,7 +263,7 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
         Stack<ForLoopBean> forLoopBeanParentStack = getParentForLoopBeanStack(forLoopBean);
         Stack<ForLoopBean> tempForLoopBeanParentStack = new Stack<ForLoopBean>();
         tempForLoopBeanParentStack = (Stack<ForLoopBean>) forLoopBeanParentStack.clone();
-        for ( int operationIndex: forLoopBean.getOperationList()) {
+        for (int operationIndex : forLoopBean.getOperationList()) {
             MappingOperation mappingOperation = mappingOperationList.get(operationIndex);
             for (DMVariable outputVariable : mappingOperation.getOutputVariables()) {
                 tempForLoopBeanParentStack = (Stack<ForLoopBean>) forLoopBeanParentStack.clone();

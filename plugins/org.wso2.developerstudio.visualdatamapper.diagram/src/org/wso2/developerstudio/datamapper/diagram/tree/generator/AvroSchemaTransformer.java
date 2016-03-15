@@ -421,7 +421,8 @@ public class AvroSchemaTransformer implements ISchemaTransformer {
 	}
 
 	@Override
-	public TreeNode generateTree(String content, TreeNode treeNode) {
+	public TreeNode generateTree(String content, TreeNode treeNode) throws NullPointerException,
+			IllegalArgumentException, IOException {
 		// TODO Auto-generated method stub
 		return null;
 	}

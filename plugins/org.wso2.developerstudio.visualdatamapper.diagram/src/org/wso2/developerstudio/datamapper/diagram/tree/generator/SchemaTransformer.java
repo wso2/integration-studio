@@ -21,19 +21,18 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.Set;
 
-import javax.xml.stream.XMLOutputFactory;
 import javax.xml.stream.XMLStreamException;
-import javax.xml.stream.XMLStreamWriter;
 
 import org.apache.commons.io.FileUtils;
-import org.wso2.developerstudio.datamapper.DataMapperFactory;
 import org.apache.commons.lang.StringUtils;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.EMap;
+import org.wso2.developerstudio.datamapper.DataMapperFactory;
 import org.wso2.developerstudio.datamapper.Element;
 import org.wso2.developerstudio.datamapper.TreeNode;
 import org.wso2.developerstudio.datamapper.diagram.Activator;
@@ -49,14 +48,14 @@ import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import de.odysseus.staxon.json.JsonXMLOutputFactory;
-
 public class SchemaTransformer implements ISchemaTransformer {
 
 	private static final String JSON_SCHEMA_TITLE = "title";
 	private static final String JSON_SCHEMA_ITEMS = "items";
 	private static final String JSON_SCHEMA_STRING = "string";
 	private static final String JSON_SCHEMA_ARRAY = "array";
+	private static final String JSON_SCHEMA_REQUIRED = "required";
+	private static final String JSON_SCHEMA_SCHEMA_VALUE = "$schema";
 	private static final String JSON_SCHEMA_ID = "id";
 	private static final String JSON_SCHEMA_NAME = "name";
 	private static final String JSON_SCHEMA_PROPERTIES = "properties";
@@ -67,14 +66,6 @@ public class SchemaTransformer implements ISchemaTransformer {
 	private static String ERROR_WRITING_SCHEMA_FILE = "Error writing to schema file";
 
 	 Map<String, Object> jsonSchemaMap;
-
-	private static final String PROPERTIES_KEY = "properties";
-	private static final String TYPE_KEY = "type";
-	private static final String TITLE_KEY = "title";
-	private static final String ITEMS_KEY = "items";
-	private static final String OBJECT_ELEMENT_TYPE = "object";
-	private static final String ARRAY_ELEMENT_TYPE = "array";
-	
 	
 	@SuppressWarnings("unchecked")
 	@Override
@@ -82,127 +73,269 @@ public class SchemaTransformer implements ISchemaTransformer {
 		
 		InputStream schema = new ByteArrayInputStream(content.getBytes());
 		ObjectMapper objectMapper = new ObjectMapper();
-        jsonSchemaMap = objectMapper.readValue(schema, Map.class);
-        //Sets the name of the root
-        inputRootTreeNode.setName(getName(jsonSchemaMap));
-        //Sets the level for the root
-        inputRootTreeNode.setLevel(1);
-        //Sets the type of the root
-        if (inputRootTreeNode.getProperties().containsKey(TYPE_KEY)){
-        	//treeNode.getProperties().get("type")
-        } else  {
-        	inputRootTreeNode.getProperties().put(TYPE_KEY, getSchemaType(jsonSchemaMap));
-        }
-        int count =1;
-        inputRootTreeNode = setProperties(jsonSchemaMap,inputRootTreeNode,count);
-	            
+		try {
+			jsonSchemaMap = objectMapper.readValue(schema, Map.class);
+		} catch (JsonParseException e) {
+			log.error("error in parsing the JSONSchema", e);
+		} catch (JsonMappingException e) {
+			log.error("error in mapping the JSONSchema", e);
+		} catch (IOException e) {
+			log.error("error in processing the JSONSchema", e);
+		}
+		// Creates the root element
+		int count = 1;
+		inputRootTreeNode = createTreeNode(inputRootTreeNode, count, getName(jsonSchemaMap), jsonSchemaMap,
+				getSchemaType(jsonSchemaMap));
+		// Creates the tree by adding tree node and elements
+		inputRootTreeNode = setProperties(jsonSchemaMap, inputRootTreeNode, count);
+
 		return inputRootTreeNode;
 		 
 	}
 	
 	/**
 	 * Gets the schema name
+	 * 
 	 * @param jsonSchemaMap
-	 * @return
+	 *            schema
+	 * @return name
 	 */
 	public String getName(Map<String, Object> jsonSchemaMap) {
-        String schemaName = (String) jsonSchemaMap.get(TITLE_KEY);
-        if (schemaName != null) {
-            return schemaName;
-        } else {
-            log.error("Invalid input schema, schema name not found.");
-            throw new NullPointerException("Invalid input schema, schema name not found.");
-        }
-    }
-	
+		String schemaName = (String) jsonSchemaMap.get(JSON_SCHEMA_TITLE);
+		if (schemaName != null) {
+			return schemaName;
+		} else {
+			log.error("Invalid input schema, schema name not found.");
+			throw new NullPointerException("Invalid input schema, schema name not found.");
+		}
+	}
+
 	/**
 	 * Gets the schema type
+	 * 
 	 * @param schema
-	 * @return
+	 *            schema
+	 * @return type
 	 */
-	 private String getSchemaType(Map<String, Object> jsonSchemaMap) {
-	        if (jsonSchemaMap.containsKey(TYPE_KEY)) {
-	            Object type = jsonSchemaMap.get(TYPE_KEY);
-	            if (type instanceof String) {
-	                return (String) type;
-	            } else {
-	                throw new IllegalArgumentException("Illegal format " + type.getClass() + " value found under key : " + TYPE_KEY);
-	            }
-	        } else {
-	            throw new IllegalArgumentException("Given schema does not contain value under key : " + TYPE_KEY);
-	        }
-	    }
-	 
-	 /**
-	  * Gets the schema properties
-	  * @param schema
-	  * @return
-	  */
-	 private Map<String, Object> getSchemaProperties(Map<String, Object> jsonSchemaMap) {
-	        if (jsonSchemaMap.containsKey(PROPERTIES_KEY)) {
-	            return (Map<String, Object>) jsonSchemaMap.get(PROPERTIES_KEY);
-	        } else {
-	        	throw new IllegalArgumentException("Given schema does not contain value under key : " + PROPERTIES_KEY);
-	        }
-	    }
-	 
-	 /**
-	  * Gets schema items
-	  * @param schema
-	  * @return
-	  */
-	 private Map<String, Object> getSchemaItems(Map<String, Object> jsonSchemaMap) {
-	        if (jsonSchemaMap.containsKey(ITEMS_KEY)) {
-	            return (Map<String, Object>) jsonSchemaMap.get(ITEMS_KEY);
-	        } else {
-	           throw new IllegalArgumentException("Given schema does not contain value under key : " + ITEMS_KEY);
-	        }
-	    }
-	 
-	 
+	private String getSchemaType(Map<String, Object> jsonSchemaMap) {
+		if (jsonSchemaMap.containsKey(JSON_SCHEMA_TYPE)) {
+			Object type = jsonSchemaMap.get(JSON_SCHEMA_TYPE);
+			if (type instanceof String) {
+				return (String) type;
+			} else {
+				log.error("Invalid input schema, invalid schema type found");
+				throw new IllegalArgumentException("Illegal format " + type.getClass() + " value found under key : "
+						+ JSON_SCHEMA_TYPE);
+			}
+		} else {
+			log.error("Invalid input schema, schema type not found.");
+			throw new IllegalArgumentException("Given schema does not contain value under key : " + JSON_SCHEMA_TYPE);
+		}
+	}
+
 	/**
-	 * Sets the properties
-	 * @param jsonSchemaMap
-	 * @param inputRootTreeNode
-	 * @param count
-	 * @return
+	 * Gets the schema key value
+	 * 
+	 * @param schema
+	 *            map
+	 * @return schema value
 	 */
-	 private TreeNode setProperties(Map<String, Object> jsonSchemaMap, TreeNode inputRootTreeNode, int count){
-			 Map<String, Object> propertyMap = getSchemaProperties(jsonSchemaMap);
-			 Set<String> elementKeys = propertyMap.keySet();
-			 TreeNode treeNode = null;
-			 count ++;
-	         for (String elementKey : elementKeys) {
-	             Map<String, Object> subSchema = (Map<String, Object>) propertyMap.get(elementKey);
-	             String schemaType = getSchemaType(subSchema);
-	             if (OBJECT_ELEMENT_TYPE.equals(schemaType)) {
-	            	treeNode = DataMapperFactory.eINSTANCE.createTreeNode();
-	            	treeNode.setName(elementKey);
-	            	treeNode.setLevel(count);
-	            	inputRootTreeNode.getNode().add(treeNode);
-	                setProperties(subSchema, treeNode,count);
-	             } else if (ARRAY_ELEMENT_TYPE.equals(schemaType)) {
-	            	treeNode = DataMapperFactory.eINSTANCE.createTreeNode();
-	            	treeNode.setName(elementKey);
-	            	treeNode.setLevel(count);
-	            	inputRootTreeNode.getNode().add(treeNode);
-	                setProperties(getSchemaItems(subSchema),treeNode,count);
-	             }else{
-	            	 //Creates an element when type is String, int etc
-	            	 org.wso2.developerstudio.datamapper.Element element = DataMapperFactory.eINSTANCE.createElement();
-	            	 element.setName(elementKey);
-					if (element.getProperties().containsKey(elementKey)) {
-						// treeNode.getProperties().get(property)
-					} else {
-						element.getProperties().put(TYPE_KEY, schemaType);
-						element.setLevel(count);
-						inputRootTreeNode.getElement().add(element);
-					}
-	             }
-	         }
-			return inputRootTreeNode;
-		 
-	 }
+	private String getSchemaValue(Map<String, Object> jsonSchemaMap) {
+		if (jsonSchemaMap.containsKey(JSON_SCHEMA_SCHEMA_VALUE)) {
+			Object type = jsonSchemaMap.get(JSON_SCHEMA_SCHEMA_VALUE);
+			if (type instanceof String) {
+				return (String) type;
+			} else {
+				log.error("Invalid input schema, invalid schema value found");
+				throw new IllegalArgumentException("Illegal format " + type.getClass() + " value found under key : "
+						+ JSON_SCHEMA_SCHEMA_VALUE);
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * Gets the schema id value
+	 * 
+	 * @param schema
+	 *            map
+	 * @return id value
+	 */
+	private String getIDValue(Map<String, Object> jsonSchemaMap) {
+		if (jsonSchemaMap.containsKey(JSON_SCHEMA_ID)) {
+			Object type = jsonSchemaMap.get(JSON_SCHEMA_ID);
+			if (type instanceof String) {
+				return (String) type;
+			} else {
+				log.error("Invalid input schema, invalid ID value found");
+				throw new IllegalArgumentException("Illegal format " + type.getClass() + " value found under key : "
+						+ JSON_SCHEMA_ID);
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * Gets the required value
+	 * 
+	 * @param jsonSchemaMap
+	 *            schema
+	 * @return value
+	 */
+	private String getRequiredValue(Map<String, Object> jsonSchemaMap) {
+		if (jsonSchemaMap.containsKey(JSON_SCHEMA_REQUIRED)) {
+			Object type = jsonSchemaMap.get(JSON_SCHEMA_REQUIRED);
+			if (type instanceof ArrayList) {
+				@SuppressWarnings("unchecked")
+				String value = String.join(",", (ArrayList<String>) type);
+				return "[" + value + "]";
+			} else {
+				log.error("Invalid input schema, invalid required value found");
+				throw new IllegalArgumentException("Illegal format " + type.getClass() + " value found under key : "
+						+ JSON_SCHEMA_REQUIRED);
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * Gets the schema properties
+	 * 
+	 * @param schema
+	 *            schema
+	 * @return property map
+	 */
+	@SuppressWarnings("unchecked")
+	private Map<String, Object> getSchemaProperties(Map<String, Object> jsonSchemaMap) {
+		if (jsonSchemaMap.containsKey(JSON_SCHEMA_PROPERTIES)) {
+			return (Map<String, Object>) jsonSchemaMap.get(JSON_SCHEMA_PROPERTIES);
+		} else {
+			log.error("Invalid input schema, property value not found");
+			throw new IllegalArgumentException("Given schema does not contain value under key : " + JSON_SCHEMA_PROPERTIES);
+		}
+	}
+
+	/**
+	 * Gets schema items
+	 * 
+	 * @param schema
+	 *            schema
+	 * @return item map
+	 */
+	@SuppressWarnings("unchecked")
+	private Map<String, Object> getSchemaItems(Map<String, Object> jsonSchemaMap) {
+		if (jsonSchemaMap.containsKey(JSON_SCHEMA_ITEMS)) {
+			return (Map<String, Object>) jsonSchemaMap.get(JSON_SCHEMA_ITEMS);
+		} else {
+			log.error("Invalid input schema, items value not found");
+			throw new IllegalArgumentException("Given schema does not contain value under key : " + JSON_SCHEMA_ITEMS);
+		}
+	}
+
+	private TreeNode setProperties(Map<String, Object> jsonSchemaMap, TreeNode inputRootTreeNode, int count) {
+		// Gets the schema properties
+		Map<String, Object> propertyMap = getSchemaProperties(jsonSchemaMap);
+		Set<String> elementKeys = propertyMap.keySet();
+		TreeNode treeNode = null;
+		org.wso2.developerstudio.datamapper.Element element = null;
+		count++;
+		for (String elementKey : elementKeys) {
+			@SuppressWarnings("unchecked")
+			Map<String, Object> subSchema = (Map<String, Object>) propertyMap.get(elementKey);
+			// Gets the schema type of the sub schema
+			String schemaType = getSchemaType(subSchema);
+			if (JSON_SCHEMA_OBJECT.equals(schemaType)) {
+				// Creates the tree node
+				treeNode = createTreeNode(null, count, elementKey, subSchema, schemaType);
+				// Adds sub tree node to the root tree
+				inputRootTreeNode.getNode().add(treeNode);
+				setProperties(subSchema, treeNode, count);
+			} else if (JSON_SCHEMA_ARRAY.equals(schemaType)) {
+				// Creates the tree node
+				treeNode = createTreeNode(null, count, elementKey, subSchema, schemaType);
+				// Adds sub tree node to the root tree
+				inputRootTreeNode.getNode().add(treeNode);
+				setProperties(getSchemaItems(subSchema), treeNode, count);
+			} else {
+				// Creates an element when type is String, int etc
+				element = createElement(count, elementKey, subSchema, schemaType);
+				// Adds the element to the tree node
+				inputRootTreeNode.getElement().add(element);
+			}
+		}
+		return inputRootTreeNode;
+
+	}
+
+	/**
+	 * Creates and element
+	 * 
+	 * @param inputRootTreeNode
+	 *            root tree node
+	 * @param count
+	 *            level
+	 * @param elementKey
+	 *            element key
+	 * @param subSchema
+	 *            sub schema
+	 * @param schemaType
+	 *            schema type
+	 * @return element
+	 */
+	private Element createElement(int count, String elementKey, Map<String, Object> subSchema, String schemaType) {
+		org.wso2.developerstudio.datamapper.Element element;
+		element = DataMapperFactory.eINSTANCE.createElement();
+		element.setName(elementKey);
+		element.setLevel(count);
+		element.getProperties().put(JSON_SCHEMA_TYPE, schemaType);
+		// Sets the id value if available
+		if (getIDValue(subSchema) != null) {
+			element.getProperties().put(JSON_SCHEMA_ID, getSchemaValue(subSchema));
+		}
+		return element;
+	}
+
+	/**
+	 * Creates the inner tree node
+	 * 
+	 * @param inputRootTreeNode
+	 * @param inputRootTreeNode
+	 *            root tree node
+	 * @param count
+	 *            level
+	 * @param elementKey
+	 *            element
+	 * @param subSchema
+	 *            sub schema
+	 * @param schemaType
+	 *            schema type
+	 * @return tree node
+	 */
+	private TreeNode createTreeNode(TreeNode inputRootTreeNode, int count, String elementKey,
+			Map<String, Object> subSchema, String schemaType) {
+		TreeNode treeNode;
+		if (inputRootTreeNode == null) {
+			treeNode = DataMapperFactory.eINSTANCE.createTreeNode();
+		} else {
+			treeNode = inputRootTreeNode;
+		}
+		treeNode.setName(elementKey);
+		treeNode.setLevel(count);
+		treeNode.getProperties().put(JSON_SCHEMA_TYPE, schemaType);
+		// Sets the schema key if available
+		if (getSchemaValue(subSchema) != null) {
+			treeNode.getProperties().put(JSON_SCHEMA_SCHEMA_VALUE, getSchemaValue(subSchema));
+		}
+		// Sets the id value if available
+		if (getIDValue(subSchema) != null) {
+			treeNode.getProperties().put(JSON_SCHEMA_ID, getSchemaValue(subSchema));
+		}
+		// Sets the required value
+		if (getRequiredValue(subSchema) != null) {
+			treeNode.getProperties().put(JSON_SCHEMA_REQUIRED, getRequiredValue(subSchema));
+		}
+		return treeNode;
+	}
 
 
 	@Override

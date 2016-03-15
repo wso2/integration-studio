@@ -145,8 +145,8 @@ public class OutputEditPart extends ShapeNodeEditPart {
 				convertTree(tree, outputRootTreeNode);
 			}
 
-		} catch (InstantiationException | IllegalAccessException | IOException e) {
-			log.error(e);
+		} catch (InstantiationException | IllegalAccessException |  NullPointerException | IllegalArgumentException| IOException e) {
+			log.error("Error in generating the tree",e);
 		}
 
 		AddCommand addTreeNodeCmd2 = new AddCommand(getEditingDomain(), parentContainer,

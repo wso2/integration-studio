@@ -27,12 +27,14 @@ public interface ISchemaTransformer {
 
 	/**
 	 * Generate the tree
-	 * @param inputRootTreeNode 
-	 * @param content 
+	 * 
+	 * @param inputRootTreeNode
+	 * @param content
 	 * 
 	 * @return
 	 */
-	public TreeNode generateTree(String content, TreeNode treeNode) throws IOException,IllegalArgumentException;
+	public TreeNode generateTree(String content, TreeNode treeNode) throws NullPointerException,
+			IllegalArgumentException, IOException;
 
 	/**
 	 * Gets the schema content from the file
@@ -41,7 +43,7 @@ public interface ISchemaTransformer {
 	 *            file path
 	 * @return schema content as a String
 	 */
-	public String getSchemaContentFromFile(String path) ;
+	public String getSchemaContentFromFile(String path);
 
 	/**
 	 * Gets the content to the file
@@ -62,8 +64,7 @@ public interface ISchemaTransformer {
 	 *            file
 	 */
 	public void updateSchemaFile(String content, File file);
-	
-	public Tree generateTreeFromFile(String path);
 
+	public Tree generateTreeFromFile(String path);
 
 }

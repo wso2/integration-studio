@@ -36,9 +36,8 @@ import org.wso2.developerstudio.datamapper.DataMapperFactory;
 import org.wso2.developerstudio.datamapper.DataMapperPackage;
 import org.wso2.developerstudio.datamapper.DataMapperRoot;
 import org.wso2.developerstudio.datamapper.Element;
-import org.wso2.developerstudio.datamapper.SchemaDataType;
 import org.wso2.developerstudio.datamapper.TreeNode;
-import org.wso2.developerstudio.datamapper.diagram.custom.util.AddNewFieldDialog;
+import org.wso2.developerstudio.datamapper.diagram.custom.util.AddNewObjectDialog;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.DataMapperRootEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.InputEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.OutputEditPart;
@@ -51,8 +50,11 @@ public class AddNewFieldAction extends AbstractActionHandler {
 	private static final String OUTPUT_EDITPART = "Output"; //$NON-NLS-1$
 	private static final String INPUT_EDITPART = "Input"; //$NON-NLS-1$
 	private static final String ADD_NEW_FIELD_ACTION_ID = "add-new-field-action-id"; //$NON-NLS-1$
-	private static final String ADD_NEW_FIELD = Messages.AddNewFieldAction_addNewField;
+	private static final String ADD_NEW_FIELD = Messages.AddNewElementAction_addNewElement;
 	private static final String DIALOG_TITLE = "Add new Field";
+	
+	private static final String JSON_SCHEMA_ID = "id";
+	private static final String JSON_SCHEMA_TYPE = "type";
 
 	public AddNewFieldAction(IWorkbenchPart workbenchPart) {
 		super(workbenchPart);
@@ -68,13 +70,15 @@ public class AddNewFieldAction extends AbstractActionHandler {
 	protected void doRun(IProgressMonitor progressMonitor) {
 		selectedEP = getSelectedEditPart();
 
-		AddNewFieldDialog fieldDialog = new AddNewFieldDialog(Display.getCurrent().getActiveShell(),
+		AddNewObjectDialog objectDialog = new AddNewObjectDialog(Display.getCurrent().getActiveShell(),
 				new Class[] { IRegistryFile.class });
-		fieldDialog.create();
-		fieldDialog.setTitle(DIALOG_TITLE);
-		fieldDialog.open();
-
-		if (fieldDialog.getName() != null && fieldDialog.getSchemaType() != null) {
+		objectDialog.create();
+		objectDialog.setTitle(DIALOG_TITLE);
+		objectDialog.setVisibility(DIALOG_TITLE);
+		objectDialog.setType(DIALOG_TITLE);
+		objectDialog.open();
+		
+		if (objectDialog.getTitle() != null && objectDialog.getSchemaType() != null) {
 
 			if (null != selectedEP) {
 				// Returns the TreeNodeImpl object respective to selectedEP
@@ -84,70 +88,17 @@ public class AddNewFieldAction extends AbstractActionHandler {
 
 				// Configure the new element by setting default values
 				Element elementNew = DataMapperFactory.eINSTANCE.createElement();
-				elementNew.setName(fieldDialog.getName());
+				if (StringUtils.isNotEmpty(objectDialog.getTitle())) {
+					elementNew.setName(objectDialog.getTitle());
+				}
 				elementNew.setLevel(selectedNode.getLevel() + 1);
-
-				switch (fieldDialog.getSchemaType()) {
-				case "ARRAY":
-					elementNew.setSchemaDataType(SchemaDataType.ARRAY);
-					break;
-				case "BOOLEAN":
-					elementNew.setSchemaDataType(SchemaDataType.BOOLEAN);
-					break;
-				case "BYTES":
-					elementNew.setSchemaDataType(SchemaDataType.BYTES);
-					break;
-				case "DOUBLE":
-					elementNew.setSchemaDataType(SchemaDataType.DOUBLE);
-					break;
-				case "ENUM":
-					elementNew.setSchemaDataType(SchemaDataType.ENUM);
-					break;
-				case "FIXED":
-					elementNew.setSchemaDataType(SchemaDataType.FIXED);
-					break;
-				case "FLOAT":
-					elementNew.setSchemaDataType(SchemaDataType.FLOAT);
-					break;
-				case "INT":
-					elementNew.setSchemaDataType(SchemaDataType.INT);
-					break;
-				case "LONG":
-					elementNew.setSchemaDataType(SchemaDataType.LONG);
-					break;
-				case "MAP":
-					elementNew.setSchemaDataType(SchemaDataType.MAP);
-					break;
-				case "NULL":
-					elementNew.setSchemaDataType(SchemaDataType.NULL);
-					break;
-				case "RECORD":
-					elementNew.setSchemaDataType(SchemaDataType.RECORD);
-					break;
-				case "STRING":
-					elementNew.setSchemaDataType(SchemaDataType.STRING);
-					break;
-				case "UNION":
-					elementNew.setSchemaDataType(SchemaDataType.UNION);
-					break;
-				default:
-					break;
+				if (StringUtils.isNotEmpty(objectDialog.getSchemaType())) {
+					elementNew.getProperties().put(JSON_SCHEMA_TYPE, objectDialog.getSchemaType());
 				}
-
-				if (StringUtils.isNotEmpty(fieldDialog.getDoc())) {
-					elementNew.getProperties().put("doc", fieldDialog.getDoc());
+				if (StringUtils.isNotEmpty(objectDialog.getID())) {
+					elementNew.getProperties().put(JSON_SCHEMA_ID, objectDialog.getID());
 				}
-				if (fieldDialog.getDefault() != null) {
-					elementNew.getProperties().put("default", fieldDialog.getDefault().toString());
-				}
-				if (fieldDialog.getAliases() != null) {
-					elementNew.getProperties().put("aliases", fieldDialog.getAliases().toString());
-				}
-				if (fieldDialog.getOrder() != null) {
-					elementNew.getProperties().put("order", fieldDialog.getOrder());
-				}
-				
-
+			
 				/*
 				 * AddCommand is used to avoid concurrent updating. index 0 to
 				 * add as the first child

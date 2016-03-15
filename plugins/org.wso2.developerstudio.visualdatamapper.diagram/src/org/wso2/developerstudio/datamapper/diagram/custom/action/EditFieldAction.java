@@ -37,7 +37,6 @@ import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.datamapper.DataMapperPackage;
 import org.wso2.developerstudio.datamapper.Element;
 import org.wso2.developerstudio.datamapper.SchemaDataType;
-import org.wso2.developerstudio.datamapper.diagram.custom.util.AddNewFieldDialog;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.ElementEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.InputEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.OutputEditPart;
@@ -49,7 +48,7 @@ public class EditFieldAction extends AbstractActionHandler {
 	private static final String OUTPUT_EDITPART = "Output"; //$NON-NLS-1$
 	private static final String INPUT_EDITPART = "Input"; //$NON-NLS-1$
 	private static final String RENAME_ACTION_ID = "rename-field-action-id"; //$NON-NLS-1$
-	private static final String RENAME_FIELD = Messages.EditActions_editField;
+	private static final String RENAME_FIELD = Messages.EditActions_editElement;
 
 	private String name;
 	private String schemaType;
@@ -91,7 +90,7 @@ public class EditFieldAction extends AbstractActionHandler {
 				value = defaultValue.replace("\"", "");
 			}
 
-			openEditFieldDialog(selectedElem, name, schemaType, namespace, value);
+			//openEditFieldDialog(selectedElem, name, schemaType, namespace, value);
 		}
 	}
 
@@ -222,7 +221,7 @@ public class EditFieldAction extends AbstractActionHandler {
 	 *            aliases
 	 * @return map
 	 */
-	private void openEditFieldDialog(Element selectedElem, String name, String schemaType, String namespace,
+	/*private void openEditFieldDialog(Element selectedElem, String name, String schemaType, String namespace,
 			String defaultValue) {
 
 		Display display = Display.getDefault();
@@ -245,7 +244,7 @@ public class EditFieldAction extends AbstractActionHandler {
 			reflectChanges(selectedElem, valueMap);
 		}
 
-	}
+	}*/
 
 	private String getSelectedInputOutputEditPart() {
 		EditPart tempEP = selectedEP;

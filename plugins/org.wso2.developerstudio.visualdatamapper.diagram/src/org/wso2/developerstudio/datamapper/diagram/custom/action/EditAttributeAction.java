@@ -21,7 +21,6 @@ import java.util.HashMap;
 import org.apache.commons.lang.StringUtils;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.util.EMap;
-import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.command.SetCommand;
@@ -30,20 +29,15 @@ import org.eclipse.gmf.runtime.common.ui.action.AbstractActionHandler;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.swt.widgets.Display;
-import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.datamapper.DataMapperPackage;
 import org.wso2.developerstudio.datamapper.Element;
 import org.wso2.developerstudio.datamapper.SchemaDataType;
-import org.wso2.developerstudio.datamapper.diagram.custom.util.AddNewFieldDialog;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.ElementEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.InputEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.OutputEditPart;
-import org.wso2.developerstudio.datamapper.impl.PropertyKeyValuePairImpl;
-import org.wso2.developerstudio.eclipse.registry.core.interfaces.IRegistryFile;
 
 public class EditAttributeAction extends AbstractActionHandler {
 	private EditPart selectedEP;
@@ -100,7 +94,7 @@ public class EditAttributeAction extends AbstractActionHandler {
 				value = defaultValue.replace("\"", "");
 			}
 
-			openEditFieldDialog(selectedElem,newName, schemaType, namespace, value);
+			//openEditFieldDialog(selectedElem,newName, schemaType, namespace, value);
 		}
 	}
 
@@ -227,7 +221,7 @@ public class EditAttributeAction extends AbstractActionHandler {
 	 *            aliases
 	 * @return map
 	 */
-	private void openEditFieldDialog(Element selectedElem, String name, String schemaType, String namespace,
+	/*private void openEditFieldDialog(Element selectedElem, String name, String schemaType, String namespace,
 			String defaultValue) {
 
 		Display display = Display.getDefault();
@@ -256,7 +250,7 @@ public class EditAttributeAction extends AbstractActionHandler {
 		
 		reflectChanges(selectedElem, valueMap);
 		}
-	}
+	}*/
 
 	private String getSelectedInputOutputEditPart() {
 		EditPart tempEP = selectedEP;

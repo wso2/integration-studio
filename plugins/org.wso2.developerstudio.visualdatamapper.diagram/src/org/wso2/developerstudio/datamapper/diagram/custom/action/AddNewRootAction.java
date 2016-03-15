@@ -36,10 +36,9 @@ import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.datamapper.DataMapperFactory;
 import org.wso2.developerstudio.datamapper.DataMapperPackage;
 import org.wso2.developerstudio.datamapper.DataMapperRoot;
-import org.wso2.developerstudio.datamapper.SchemaDataType;
 import org.wso2.developerstudio.datamapper.TreeNode;
 import org.wso2.developerstudio.datamapper.diagram.Activator;
-import org.wso2.developerstudio.datamapper.diagram.custom.util.AddNewTypeDialog;
+import org.wso2.developerstudio.datamapper.diagram.custom.util.AddNewObjectDialog;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.DataMapperRootEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.InputEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.OutputEditPart;
@@ -48,7 +47,7 @@ import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.registry.core.interfaces.IRegistryFile;
 
-public class AddNewRootRecordAction extends AbstractActionHandler {
+public class AddNewRootAction extends AbstractActionHandler {
 
 	private EditPart selectedEP;
 	private static final String OUTPUT_EDITPART = "Output"; //$NON-NLS-1$
@@ -61,9 +60,14 @@ public class AddNewRootRecordAction extends AbstractActionHandler {
 	private static final String ERROR_ADDING_NEW_CHILD = Messages.AddNewRootRecordAction_errorAddChild;
 	private static final String DIALOG_TITLE = "Add new Root Element";
 
+	private static final String JSON_SCHEMA_REQUIRED = "required";
+	private static final String JSON_SCHEMA_SCHEMA_VALUE = "$schema";
+	private static final String JSON_SCHEMA_ID = "id";
+	private static final String JSON_SCHEMA_TYPE = "type";
+
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
-	public AddNewRootRecordAction(IWorkbenchPart workbenchPart) {
+	public AddNewRootAction(IWorkbenchPart workbenchPart) {
 		super(workbenchPart);
 
 		setId(ADD_NEW_ROOT_RECORD_ACTION_ID);
@@ -80,99 +84,56 @@ public class AddNewRootRecordAction extends AbstractActionHandler {
 		if (null != selectedEP) {
 			// Not allow to add multiple root elements
 			if (!selectedEP.getChildren().isEmpty() && selectedEP instanceof InputEditPart) {
-				MessageDialog.openWarning(Display.getCurrent().getActiveShell(), ERROR_ADDING_MULTIPLE_ROOT_ELEMENTS_TITLE, ERROR_ADDING_MULTIPLE_ROOT_ELEMENTS);
+				MessageDialog.openWarning(Display.getCurrent().getActiveShell(),
+						ERROR_ADDING_MULTIPLE_ROOT_ELEMENTS_TITLE, ERROR_ADDING_MULTIPLE_ROOT_ELEMENTS);
 			} else {
-				
-				
-				AddNewTypeDialog rootElementDialog = new AddNewTypeDialog(Display.getCurrent().getActiveShell(), new Class[]{IRegistryFile.class});
+
+				AddNewObjectDialog rootElementDialog = new AddNewObjectDialog(Display.getCurrent().getActiveShell(),
+						new Class[] { IRegistryFile.class });
 				rootElementDialog.create();
 				rootElementDialog.setTitle(DIALOG_TITLE);
+				rootElementDialog.setVisibility(DIALOG_TITLE);
+				rootElementDialog.setType(DIALOG_TITLE);
 				rootElementDialog.open();
-				
-				if(rootElementDialog.getName()!= null && rootElementDialog.getSchemaType() != null){
-					// FIXME Handle if a root node is already added
+
+				if (rootElementDialog.getTitle() != null && rootElementDialog.getSchemaType() != null) {
 					// Returns the TreeNodeImpl object respective to selectedEP
 					EObject object = ((Node) selectedEP.getModel()).getElement();
 
-					// Configure the new tree node by setting default values
 					TreeNode treeNodeNew = DataMapperFactory.eINSTANCE.createTreeNode();
-					treeNodeNew.setName(rootElementDialog.getName());
-					treeNodeNew.setLevel(1);
-					
-					switch (rootElementDialog.getSchemaType()) {
-					case "ARRAY":
-						treeNodeNew.setSchemaDataType(SchemaDataType.ARRAY);
-						break;
-					case "BOOLEAN":
-						treeNodeNew.setSchemaDataType(SchemaDataType.BOOLEAN);
-						break;
-					case "BYTES":
-						treeNodeNew.setSchemaDataType(SchemaDataType.BYTES);
-						break;
-					case "DOUBLE":
-						treeNodeNew.setSchemaDataType(SchemaDataType.DOUBLE);
-						break;
-					case "ENUM":
-						treeNodeNew.setSchemaDataType(SchemaDataType.ENUM);
-						break;
-					case "FIXED":
-						treeNodeNew.setSchemaDataType(SchemaDataType.FIXED);
-						break;
-					case "FLOAT":
-						treeNodeNew.setSchemaDataType(SchemaDataType.FLOAT);
-						break;
-					case "INT":
-						treeNodeNew.setSchemaDataType(SchemaDataType.INT);
-						break;
-					case "LONG":
-						treeNodeNew.setSchemaDataType(SchemaDataType.LONG);
-						break;
-					case "MAP":
-						treeNodeNew.setSchemaDataType(SchemaDataType.MAP);
-						break;
-					case "NULL":
-						treeNodeNew.setSchemaDataType(SchemaDataType.NULL);
-						break;
-					case "RECORD":
-						treeNodeNew.setSchemaDataType(SchemaDataType.RECORD);
-						break;
-					case "STRING":
-						treeNodeNew.setSchemaDataType(SchemaDataType.STRING);
-						break;
-					case "UNION":
-						treeNodeNew.setSchemaDataType(SchemaDataType.UNION);
-						break;
-					default:
-						break;
+					if (StringUtils.isNotEmpty(rootElementDialog.getTitle())) {
+						treeNodeNew.setName(rootElementDialog.getTitle());
 					}
-					
-                    if(StringUtils.isNotEmpty(rootElementDialog.getNamespace())){
-                    	treeNodeNew.getProperties().put("namespace",rootElementDialog.getNamespace());
-                    }
-                    
-                    //Sets the xml namespace as the doc value in avro
-                    if(StringUtils.isNotEmpty(rootElementDialog.getDoc())){
-                    	treeNodeNew.getProperties().put("doc",rootElementDialog.getDoc());
-                    }
-                    if(rootElementDialog.getAliases() != null){
-                    	treeNodeNew.getProperties().put("aliases",rootElementDialog.getAliases().toString());
-                    }
+					treeNodeNew.setLevel(1);
+					if (StringUtils.isNotEmpty(rootElementDialog.getSchemaType())) {
+						treeNodeNew.getProperties().put(JSON_SCHEMA_TYPE, rootElementDialog.getSchemaType());
+					}
+					if (StringUtils.isNotEmpty(rootElementDialog.getSchemaValue())) {
+						treeNodeNew.getProperties().put(JSON_SCHEMA_SCHEMA_VALUE, rootElementDialog.getSchemaValue());
+					}
+					if (StringUtils.isNotEmpty(rootElementDialog.getID())) {
+						treeNodeNew.getProperties().put(JSON_SCHEMA_ID, rootElementDialog.getID());
+					}
+					if (StringUtils.isNotEmpty(rootElementDialog.getRequired())) {
+						String requiredValues = "[" + rootElementDialog.getRequired() + "]";
+						treeNodeNew.getProperties().put(JSON_SCHEMA_REQUIRED, requiredValues);
+					}
 					String selectedInputOutputEditPart = getSelectedInputOutputEditPart();
 					if (null != selectedInputOutputEditPart) {
 						AddCommand addCmd;
 						if (INPUT_EDITPART.equals(selectedInputOutputEditPart)) {
 							/*
-							 * add command is changed to input tree node type when
-							 * input editpart is selected. index 0 to add as the
-							 * first child
+							 * add command is changed to input tree node type
+							 * when input editpart is selected. index 0 to add
+							 * as the first child
 							 */
 							addCmd = new AddCommand(((GraphicalEditPart) selectedEP).getEditingDomain(), object,
 									DataMapperPackage.Literals.INPUT__TREE_NODE, treeNodeNew, 0);
 						} else {
 							/*
-							 * add command is changed to output tree node type when
-							 * output editpart is selected. index 0 to add as the
-							 * first child
+							 * add command is changed to output tree node type
+							 * when output editpart is selected. index 0 to add
+							 * as the first child
 							 */
 							addCmd = new AddCommand(((GraphicalEditPart) selectedEP).getEditingDomain(), object,
 									DataMapperPackage.Literals.OUTPUT__TREE_NODE, treeNodeNew, 0);
@@ -186,7 +147,8 @@ public class AddNewRootRecordAction extends AbstractActionHandler {
 						if (null != selectedInputOutputEditPart) {
 							if (selectedEP instanceof InputEditPart) {
 								DataMapperRootEditPart rep = (DataMapperRootEditPart) selectedEP.getParent();
-								DataMapperRoot rootDiagram = (DataMapperRoot) ((DiagramImpl) rep.getModel()).getElement();
+								DataMapperRoot rootDiagram = (DataMapperRoot) ((DiagramImpl) rep.getModel())
+										.getElement();
 								if (INPUT_EDITPART.equals(selectedInputOutputEditPart)) {
 									EList<TreeNode> inputTreeNodesList = rootDiagram.getInput().getTreeNode();
 									if (null != inputTreeNodesList && !inputTreeNodesList.isEmpty()) {

@@ -34,13 +34,11 @@ import org.eclipse.gmf.runtime.diagram.ui.providers.DiagramContextMenuProvider;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.ui.IWorkbenchPart;
-import org.wso2.developerstudio.datamapper.diagram.custom.action.AddNewAttributeAction;
+import org.wso2.developerstudio.datamapper.diagram.custom.action.AddNewArrayAction;
 import org.wso2.developerstudio.datamapper.diagram.custom.action.AddNewFieldAction;
-import org.wso2.developerstudio.datamapper.diagram.custom.action.AddNewListAction;
-import org.wso2.developerstudio.datamapper.diagram.custom.action.AddNewRootRecordAction;
-import org.wso2.developerstudio.datamapper.diagram.custom.action.AddNewTypeAction;
+import org.wso2.developerstudio.datamapper.diagram.custom.action.AddNewObjectAction;
+import org.wso2.developerstudio.datamapper.diagram.custom.action.AddNewRootAction;
 import org.wso2.developerstudio.datamapper.diagram.custom.action.ConcatManyAction;
-import org.wso2.developerstudio.datamapper.diagram.custom.action.EditAttributeAction;
 import org.wso2.developerstudio.datamapper.diagram.custom.action.EditFieldAction;
 import org.wso2.developerstudio.datamapper.diagram.custom.action.EditRecordAction;
 import org.wso2.developerstudio.datamapper.diagram.custom.action.ExportSchemaAction;
@@ -87,14 +85,10 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
 	Map<Class<? extends ShapeNodeEditPart>, AbstractActionHandler> addNewRecordsListContextActions;
 	// Actions for adding a new field
 	Map<Class<? extends ShapeNodeEditPart>, AbstractActionHandler> addNewFieldContextActions;
-	// Actions for adding a new attribute
-	Map<Class<? extends ShapeNodeEditPart>, AbstractActionHandler> addNewAttributeContextActions;
 	// Actions for Editing a new record
 	Map<Class<? extends ShapeNodeEditPart>, AbstractActionHandler> addEditNodedActions;
 	// Actions for Editin a new field
 	Map<Class<? extends AbstractBorderedShapeEditPart>, AbstractActionHandler> addEditFieldActions;
-	// Actions for Editin a new field
-	Map<Class<? extends AbstractBorderedShapeEditPart>, AbstractActionHandler> addEditAttributeActions;
 	// Actions for exporting schema
 	Map<Class<? extends ShapeNodeEditPart>, AbstractActionHandler> exportSchemaActions;
 
@@ -117,24 +111,24 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
 		// Initialize new root record context sensitive actions.
 		addNewRootRecordContextActions = new HashMap<Class<? extends ShapeNodeEditPart>, AbstractActionHandler>();
 		// New root record actions are added only to input and output editparts
-		addNewRootRecordContextActions.put(InputEditPart.class, new AddNewRootRecordAction(part));
-		addNewRootRecordContextActions.put(OutputEditPart.class, new AddNewRootRecordAction(part));
+		addNewRootRecordContextActions.put(InputEditPart.class, new AddNewRootAction(part));
+		addNewRootRecordContextActions.put(OutputEditPart.class, new AddNewRootAction(part));
 
 		// Initialize new record context sensitive actions.
 		addNewRecordContextActions = new HashMap<Class<? extends ShapeNodeEditPart>, AbstractActionHandler>();
 		// New record actions are added to treenode editparts
-		addNewRecordContextActions.put(TreeNodeEditPart.class, new AddNewTypeAction(part));
-		addNewRecordContextActions.put(TreeNode2EditPart.class, new AddNewTypeAction(part));
-		addNewRecordContextActions.put(TreeNode3EditPart.class, new AddNewTypeAction(part));
+		addNewRecordContextActions.put(TreeNodeEditPart.class, new AddNewObjectAction(part));
+		addNewRecordContextActions.put(TreeNode2EditPart.class, new AddNewObjectAction(part));
+		addNewRecordContextActions.put(TreeNode3EditPart.class, new AddNewObjectAction(part));
 
 		// Initialize new records list context sensitive actions.
 		addNewRecordsListContextActions = new HashMap<Class<? extends ShapeNodeEditPart>, AbstractActionHandler>();
 		// New records list actions are added to treenode editparts
-		addNewRecordsListContextActions.put(TreeNodeEditPart.class, new AddNewListAction(
+		addNewRecordsListContextActions.put(TreeNodeEditPart.class, new AddNewArrayAction(
 				part));
-		addNewRecordsListContextActions.put(TreeNode2EditPart.class, new AddNewListAction(
+		addNewRecordsListContextActions.put(TreeNode2EditPart.class, new AddNewArrayAction(
 				part));
-		addNewRecordsListContextActions.put(TreeNode3EditPart.class, new AddNewListAction(
+		addNewRecordsListContextActions.put(TreeNode3EditPart.class, new AddNewArrayAction(
 				part));
 
 		// Initialize new field context sensitive actions.
@@ -144,13 +138,6 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
 		addNewFieldContextActions.put(TreeNode2EditPart.class, new AddNewFieldAction(part));
 		addNewFieldContextActions.put(TreeNode3EditPart.class, new AddNewFieldAction(part));
 		
-		// Initialize new field context sensitive actions.
-		addNewAttributeContextActions = new HashMap<Class<? extends ShapeNodeEditPart>, AbstractActionHandler>();
-		// New attribute actions are added to treenode editparts
-		addNewAttributeContextActions.put(TreeNodeEditPart.class, new AddNewAttributeAction(part));
-		addNewAttributeContextActions.put(TreeNode2EditPart.class, new AddNewAttributeAction(part));
-		addNewAttributeContextActions.put(TreeNode3EditPart.class, new AddNewAttributeAction(part));
-
 		//Initialize renaming action
 		// Initialize new field context sensitive actions.
 		addEditNodedActions = new HashMap<Class<? extends ShapeNodeEditPart>, AbstractActionHandler>();
@@ -165,13 +152,6 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
 		// New field actions are added to treenode editparts
 		addEditFieldActions.put(ElementEditPart.class, new EditFieldAction(part));
 		
-		
-		//Initialize renaming field action
-		// Initialize new field context sensitive actions.
-		addEditAttributeActions = new HashMap<Class<? extends AbstractBorderedShapeEditPart>, AbstractActionHandler>();
-		// New field actions are added to treenode editparts
-		addEditAttributeActions.put(ElementEditPart.class, new EditAttributeAction(part));
-
 		// Initialize export schema actions.
 		exportSchemaActions = new HashMap<Class<? extends ShapeNodeEditPart>, AbstractActionHandler>();
 		exportSchemaActions.put(InputEditPart.class, new ExportSchemaAction(part));
@@ -251,13 +231,6 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
 										menu.appendToGroup(EDIT_GROUP_ID, addNewFieldContextAction);
 									}
 									
-									// Append new attribute item to menu
-									AbstractActionHandler addNewAttributeContextAction = addNewAttributeContextActions
-											.get(selectedEditorPart.getClass());
-									if (null != addNewAttributeContextAction) {
-										menu.appendToGroup(EDIT_GROUP_ID, addNewAttributeContextAction);
-									}
-									
 									// Append edit node item to menu
 									AbstractActionHandler addEditNodedAction = addEditNodedActions
 											.get(selectedEditorPart.getClass());
@@ -273,13 +246,6 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
 										menu.appendToGroup(EDIT_GROUP_ID, addEditFieldAction);
 									}
 									
-									// Append edit attribute item to menu
-									AbstractActionHandler addEditAttributeAction = addEditAttributeActions
-											.get(selectedEditorPart.getClass());
-									if (null != addEditAttributeAction) {
-										menu.appendToGroup(EDIT_GROUP_ID, addEditAttributeAction);
-									}
-
 									// Append load from file item to menu
 									AbstractActionHandler contextAction = contextActions
 											.get(selectedEditorPart.getClass());

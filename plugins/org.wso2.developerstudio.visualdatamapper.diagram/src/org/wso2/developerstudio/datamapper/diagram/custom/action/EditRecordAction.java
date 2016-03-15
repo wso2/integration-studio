@@ -38,7 +38,7 @@ import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.datamapper.DataMapperPackage;
 import org.wso2.developerstudio.datamapper.TreeNode;
-import org.wso2.developerstudio.datamapper.diagram.custom.util.AddNewTypeDialog;
+import org.wso2.developerstudio.datamapper.diagram.custom.util.AddNewObjectDialog;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.InputEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.OutputEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.TreeNode2EditPart;
@@ -52,7 +52,7 @@ public class EditRecordAction extends AbstractActionHandler {
 	private static final String OUTPUT_EDITPART = "Output"; //$NON-NLS-1$
 	private static final String INPUT_EDITPART = "Input"; //$NON-NLS-1$
 	private static final String RENAME_ACTION_ID = "rename-node-action-id"; //$NON-NLS-1$
-	private static final String RENAME_FIELD = Messages.EditActions_editNode;
+	private static final String RENAME_FIELD = Messages.EditActions_editObject;
 
 	private static final String NAME = "name";
 	private static final String PREFIX = "prefix";
@@ -197,7 +197,7 @@ public class EditRecordAction extends AbstractActionHandler {
 		String newPrefix = null;
 		Display display = Display.getDefault();
 		Shell shell = new Shell(display);
-		AddNewTypeDialog editTypeDialog = new AddNewTypeDialog(shell, new Class[] { IRegistryFile.class });
+		AddNewObjectDialog editTypeDialog = new AddNewObjectDialog(shell, new Class[] { IRegistryFile.class });
 		editTypeDialog.create();
 		if (StringUtils.isNotEmpty(name)) {
 			if (name.contains(":")) {
@@ -213,7 +213,7 @@ public class EditRecordAction extends AbstractActionHandler {
 		editTypeDialog.setValues(newName, newPrefix, schemaType, namespace, aliases);
 		editTypeDialog.open();
 
-		if (editTypeDialog.getOkValue()) {
+		/*if (editTypeDialog.getOkValue()) {
 			HashMap<String, String> valueMap = new HashMap<String, String>();
 
 			if (StringUtils.isNotEmpty(editTypeDialog.getName())) {
@@ -236,7 +236,7 @@ public class EditRecordAction extends AbstractActionHandler {
 			reflectChanges(selectedNode, valueMap);
 
 		}
-
+*/
 	}
 
 	private String getSelectedInputOutputEditPart() {

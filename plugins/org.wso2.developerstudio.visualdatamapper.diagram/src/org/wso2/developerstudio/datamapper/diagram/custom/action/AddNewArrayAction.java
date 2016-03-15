@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ * Copyright (c) 2014, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,12 +16,9 @@
 
 package org.wso2.developerstudio.datamapper.diagram.custom.action;
 
-import java.util.HashMap;
-
 import org.apache.commons.lang.StringUtils;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.common.util.EMap;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.command.AddCommand;
 import org.eclipse.emf.edit.command.RemoveCommand;
@@ -38,132 +35,77 @@ import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.datamapper.DataMapperFactory;
 import org.wso2.developerstudio.datamapper.DataMapperPackage;
 import org.wso2.developerstudio.datamapper.DataMapperRoot;
-import org.wso2.developerstudio.datamapper.Element;
-import org.wso2.developerstudio.datamapper.PropertyKeyValuePair;
-import org.wso2.developerstudio.datamapper.SchemaDataType;
 import org.wso2.developerstudio.datamapper.TreeNode;
-import org.wso2.developerstudio.datamapper.diagram.custom.util.AddNewFieldDialog;
+import org.wso2.developerstudio.datamapper.diagram.custom.util.AddNewObjectDialog;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.DataMapperRootEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.InputEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.OutputEditPart;
 import org.wso2.developerstudio.datamapper.impl.TreeNodeImpl;
 import org.wso2.developerstudio.eclipse.registry.core.interfaces.IRegistryFile;
 
-public class AddNewAttributeAction extends AbstractActionHandler{
+public class AddNewArrayAction extends AbstractActionHandler {
+
 	private EditPart selectedEP;
 	private static final String OUTPUT_EDITPART = "Output"; //$NON-NLS-1$
 	private static final String INPUT_EDITPART = "Input"; //$NON-NLS-1$
-	private static final String ADD_NEW_ATTRIBUTE_ACTION_ID = "add-new-attribute-action-id"; //$NON-NLS-1$
-	private static final String ADD_NEW_ATTRIBUTE = Messages.AddNewAttributeAction_addNewField;
-	private static final String DIALOG_TITLE = "Add new Attribute";
-	private static final String PREFIX = "attr_";
+	private static final String ADD_NEW_RECORDS_LIST_ACTION_ID = "add-new-records-list-action-id"; //$NON-NLS-1$
+	private static final String ADD_NEW_RECORDS_LIST = Messages.AddNewArrayAction_addNewArray;
+	private static final String DIALOG_TITLE = "Add new Array";
 
-	public AddNewAttributeAction(IWorkbenchPart workbenchPart) {
+	private static final String JSON_SCHEMA_REQUIRED = "required";
+	private static final String JSON_SCHEMA_ID = "id";
+	private static final String JSON_SCHEMA_TYPE = "type";
+
+	public AddNewArrayAction(IWorkbenchPart workbenchPart) {
 		super(workbenchPart);
 
-		setId(ADD_NEW_ATTRIBUTE_ACTION_ID);
-		setText(ADD_NEW_ATTRIBUTE);
-		setToolTipText(ADD_NEW_ATTRIBUTE);
+		setId(ADD_NEW_RECORDS_LIST_ACTION_ID);
+		setText(ADD_NEW_RECORDS_LIST);
+		setToolTipText(ADD_NEW_RECORDS_LIST);
 		ISharedImages workbenchImages = PlatformUI.getWorkbench().getSharedImages();
 		setImageDescriptor(workbenchImages.getImageDescriptor(ISharedImages.IMG_TOOL_NEW_WIZARD));
 	}
-	
+
 	@Override
 	protected void doRun(IProgressMonitor progressMonitor) {
 		selectedEP = getSelectedEditPart();
-
-		AddNewFieldDialog fieldDialog = new AddNewFieldDialog(Display.getCurrent().getActiveShell(),
+		AddNewObjectDialog objectDialog = new AddNewObjectDialog(Display.getCurrent().getActiveShell(),
 				new Class[] { IRegistryFile.class });
-		fieldDialog.create();
-		fieldDialog.setTitle(DIALOG_TITLE);
-		fieldDialog.open();
+		objectDialog.create();
+		objectDialog.setTitle(DIALOG_TITLE);
+		objectDialog.setVisibility(DIALOG_TITLE);
+		objectDialog.setType(DIALOG_TITLE);
+		objectDialog.open();
 
-		if (fieldDialog.getName() != null && fieldDialog.getSchemaType() != null) {
-
+		if (objectDialog.getTitle() != null && objectDialog.getSchemaType() != null) {
 			if (null != selectedEP) {
 				// Returns the TreeNodeImpl object respective to selectedEP
 				EObject object = ((Node) selectedEP.getModel()).getElement();
 				// Used to identify the selected resource of the model
 				TreeNode selectedNode = (TreeNode) object;
 
-				// Configure the new element by setting default values
-				Element elementNew = DataMapperFactory.eINSTANCE.createElement();
-				if(fieldDialog.getName().startsWith(PREFIX)){
-					elementNew.setName(fieldDialog.getName());		
-				}else{
-					String newName = PREFIX + fieldDialog.getName();
-					elementNew.setName(newName);
+				// Configure the new tree node by setting default values
+				TreeNode treeNodeNew = DataMapperFactory.eINSTANCE.createTreeNode();
+				if (StringUtils.isNotEmpty(objectDialog.getTitle())) {
+					treeNodeNew.setName(objectDialog.getTitle());
 				}
-				
-							
-				elementNew.setLevel(selectedNode.getLevel() + 1);
-
-				switch (fieldDialog.getSchemaType()) {
-				case "ARRAY":
-					elementNew.setSchemaDataType(SchemaDataType.ARRAY);
-					break;
-				case "BOOLEAN":
-					elementNew.setSchemaDataType(SchemaDataType.BOOLEAN);
-					break;
-				case "BYTES":
-					elementNew.setSchemaDataType(SchemaDataType.BYTES);
-					break;
-				case "DOUBLE":
-					elementNew.setSchemaDataType(SchemaDataType.DOUBLE);
-					break;
-				case "ENUM":
-					elementNew.setSchemaDataType(SchemaDataType.ENUM);
-					break;
-				case "FIXED":
-					elementNew.setSchemaDataType(SchemaDataType.FIXED);
-					break;
-				case "FLOAT":
-					elementNew.setSchemaDataType(SchemaDataType.FLOAT);
-					break;
-				case "INT":
-					elementNew.setSchemaDataType(SchemaDataType.INT);
-					break;
-				case "LONG":
-					elementNew.setSchemaDataType(SchemaDataType.LONG);
-					break;
-				case "MAP":
-					elementNew.setSchemaDataType(SchemaDataType.MAP);
-					break;
-				case "NULL":
-					elementNew.setSchemaDataType(SchemaDataType.NULL);
-					break;
-				case "RECORD":
-					elementNew.setSchemaDataType(SchemaDataType.RECORD);
-					break;
-				case "STRING":
-					elementNew.setSchemaDataType(SchemaDataType.STRING);
-					break;
-				case "UNION":
-					elementNew.setSchemaDataType(SchemaDataType.UNION);
-					break;
-				default:
-					break;
+				treeNodeNew.setLevel(selectedNode.getLevel() + 1);
+				if (StringUtils.isNotEmpty(objectDialog.getSchemaType())) {
+					treeNodeNew.getProperties().put(JSON_SCHEMA_TYPE, objectDialog.getSchemaType());
 				}
-
-				if (StringUtils.isNotEmpty(fieldDialog.getDoc())) {
-					elementNew.getProperties().put("doc", fieldDialog.getDoc());
+				if (StringUtils.isNotEmpty(objectDialog.getID())) {
+					treeNodeNew.getProperties().put(JSON_SCHEMA_ID, objectDialog.getID());
 				}
-				if (fieldDialog.getDefault() != null) {
-					elementNew.getProperties().put("default", fieldDialog.getDefault().toString());
+				if (StringUtils.isNotEmpty(objectDialog.getRequired())) {
+					String requiredValues = "[" + objectDialog.getRequired() + "]";
+					treeNodeNew.getProperties().put(JSON_SCHEMA_REQUIRED, requiredValues);
 				}
-				if (fieldDialog.getAliases() != null) {
-					elementNew.getProperties().put("aliases", fieldDialog.getAliases().toString());
-				}
-				if (fieldDialog.getOrder() != null) {
-					elementNew.getProperties().put("order", fieldDialog.getOrder());
-				}
-
 				/*
 				 * AddCommand is used to avoid concurrent updating. index 0 to
 				 * add as the first child
 				 */
 				AddCommand addCmd = new AddCommand(((GraphicalEditPart) selectedEP).getEditingDomain(), selectedNode,
-						DataMapperPackage.Literals.TREE_NODE__ELEMENT, elementNew, 0);
+						DataMapperPackage.Literals.TREE_NODE__NODE, treeNodeNew, 0);
 				if (addCmd.canExecute()) {
 					((GraphicalEditPart) selectedEP).getEditingDomain().getCommandStack().execute(addCmd);
 				}
@@ -171,8 +113,8 @@ public class AddNewAttributeAction extends AbstractActionHandler{
 				// FIXME force refresh root
 				String selectedInputOutputEditPart = getSelectedInputOutputEditPart();
 				if (null != selectedInputOutputEditPart) {
-					if (selectedEP.getParent().getParent().getParent() instanceof InputEditPart) {
-						InputEditPart iep = (InputEditPart) selectedEP.getParent().getParent().getParent();
+					if (selectedEP.getParent().getParent() instanceof InputEditPart) {
+						InputEditPart iep = (InputEditPart) selectedEP.getParent().getParent();
 						DataMapperRootEditPart rep = (DataMapperRootEditPart) iep.getParent();
 						DataMapperRoot rootDiagram = (DataMapperRoot) ((DiagramImpl) rep.getModel()).getElement();
 						if (INPUT_EDITPART.equals(selectedInputOutputEditPart)) {
@@ -227,6 +169,7 @@ public class AddNewAttributeAction extends AbstractActionHandler{
 				}
 			}
 		}
+
 	}
 
 	private String getSelectedInputOutputEditPart() {
@@ -262,4 +205,3 @@ public class AddNewAttributeAction extends AbstractActionHandler{
 		// refresh action. Does not do anything
 	}
 }
-

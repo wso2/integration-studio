@@ -30,6 +30,7 @@ import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Path;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.ui.URIEditorInput;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
@@ -54,6 +55,7 @@ import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.window.Window;
 import org.eclipse.osgi.util.NLS;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorMatchingStrategy;
@@ -467,7 +469,7 @@ public class DataMapperDiagramEditor extends DiagramDocumentEditor implements IG
 				log.warn(e.getMessage(), e);
 			} catch (Exception e) {
 				log.warn("Could not save file " + configFile + " : " + e); //$NON-NLS-1$
-				e.printStackTrace();
+				popupErrorDialogBox(e);
 			} finally {
 				if (is != null) {
 					try {
@@ -479,5 +481,17 @@ public class DataMapperDiagramEditor extends DiagramDocumentEditor implements IG
 			}
 		}
 	}
+	
+    private void popupErrorDialogBox(Exception e) {
+        final String simpleMessage = e.getMessage();
+        final IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, simpleMessage);
+        Display.getDefault().syncExec(new Runnable() {
+            @Override
+            public void run() {
+                ErrorDialog.openError(Display.getDefault().getActiveShell(), "Data Mapper Error Message", "",
+                        editorStatus);
+            }
+        });
+    }
 
 }

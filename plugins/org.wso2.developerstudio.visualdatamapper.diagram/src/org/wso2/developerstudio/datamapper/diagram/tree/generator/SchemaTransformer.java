@@ -365,7 +365,6 @@ public class SchemaTransformer implements ISchemaTransformer {
 			insertRequiredArray(root, treeNodeModel);
 			recursiveTreeGenerator(treeNodeModel, propertiesObject);
 		}
-		System.out.print(root.toJSONString());
 		return root.toString();
 	}
 

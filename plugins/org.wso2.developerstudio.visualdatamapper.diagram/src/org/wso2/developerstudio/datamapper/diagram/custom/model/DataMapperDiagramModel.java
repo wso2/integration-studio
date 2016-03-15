@@ -32,6 +32,7 @@ import org.wso2.developerstudio.datamapper.OperatorLeftConnector;
 import org.wso2.developerstudio.datamapper.OperatorRightConnector;
 import org.wso2.developerstudio.datamapper.Output;
 import org.wso2.developerstudio.datamapper.SchemaDataType;
+import org.wso2.developerstudio.datamapper.diagram.custom.exception.DataMapperException;
 import org.wso2.developerstudio.datamapper.diagram.custom.util.ScriptGenerationUtil;
 import org.wso2.developerstudio.datamapper.impl.ConcatImpl;
 import org.wso2.developerstudio.datamapper.impl.ConstantImpl;
@@ -63,7 +64,7 @@ public class DataMapperDiagramModel {
     private String inputRootName;
     private String outputRootName;
 
-    public DataMapperDiagramModel(DataMapperRoot rootDiagram) {
+    public DataMapperDiagramModel(DataMapperRoot rootDiagram) throws DataMapperException {
         setInputAndOutputRootNames(rootDiagram);
         populateOutputVariables(rootDiagram.getOutput());
         populateInputVariables(rootDiagram.getInput());
@@ -87,21 +88,27 @@ public class DataMapperDiagramModel {
 
     }
 
-    private void updateExecutionSequence() {
+    private void updateExecutionSequence() throws DataMapperException {
         List<Integer> unexecutedOperationList = new ArrayList<>();
         List<Integer> tempUnexecutedOperationList = new ArrayList<>();
         int numberOfOperations = operationsList.size();
         for (int i = 0; i < numberOfOperations; i++) {
             unexecutedOperationList.add(i);
         }
+        boolean seqUpdated = false;
         while (executionSeq.size() < numberOfOperations) {
+            seqUpdated =false;
             for (int index = 0; unexecutedOperationList.size() > index; ++index) {
                 if (operationIsExecutable(unexecutedOperationList.get(index))) {
                     executionSeq.add(unexecutedOperationList.get(index));
                     addOutputsToResolvedVariables(unexecutedOperationList.get(index));
+                    seqUpdated = true;
                 } else {
                     tempUnexecutedOperationList.add(unexecutedOperationList.get(index));
                 }
+            }
+            if(!seqUpdated && !tempUnexecutedOperationList.isEmpty()){
+                throw new DataMapperException("Unresolvable Mapping config detected");
             }
             unexecutedOperationList = tempUnexecutedOperationList;
             tempUnexecutedOperationList = new ArrayList<>();

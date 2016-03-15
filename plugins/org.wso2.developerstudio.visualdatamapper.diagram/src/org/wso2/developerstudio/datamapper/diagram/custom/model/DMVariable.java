@@ -31,6 +31,7 @@ public class DMVariable {
     private DMVariableType type;
     private SchemaDataType schemaVariableType;
     private int parentVariableOrOperationIndex;
+    private int mostChildVariableIndex;
 
     public DMVariable(String name, String id, DMVariableType type, SchemaDataType schemaVariableType, int index) {
         this.name = name;
@@ -115,5 +116,13 @@ public class DMVariable {
 
     public void setparentVariableOrOperationIndex(int parentVariable) {
         this.parentVariableOrOperationIndex = parentVariable;
+    }
+    
+    public int getMostChildVariableIndex() {
+        return mostChildVariableIndex;
+    }
+
+    public void setMostChildVariableIndex(int mostChildVariableIndex) {
+        this.mostChildVariableIndex = mostChildVariableIndex;
     }
 }

@@ -69,7 +69,8 @@ public class SchemaTransformer implements ISchemaTransformer {
 	
 	@SuppressWarnings("unchecked")
 	@Override
-	public TreeNode generateTree(String content, TreeNode inputRootTreeNode) throws JsonParseException, JsonMappingException, IOException  {
+	public TreeNode generateTree(String content, TreeNode inputRootTreeNode) throws NullPointerException,
+	IllegalArgumentException, IOException {
 		
 		InputStream schema = new ByteArrayInputStream(content.getBytes());
 		ObjectMapper objectMapper = new ObjectMapper();

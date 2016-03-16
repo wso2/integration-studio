@@ -186,7 +186,7 @@ public class SchemaTransformer implements ISchemaTransformer {
 			if (type instanceof ArrayList) {
 				@SuppressWarnings("unchecked")
 				String value = String.join(",", (ArrayList<String>) type);
-				return "[" + value + "]";
+				return value;
 			} else {
 				log.error("Invalid input schema, invalid required value found");
 				throw new IllegalArgumentException("Illegal format " + type.getClass() + " value found under key : "
@@ -340,7 +340,7 @@ public class SchemaTransformer implements ISchemaTransformer {
 			Map<String, Object> itemsSchema = (Map<String, Object>) subSchema.get(JSON_SCHEMA_ITEMS);
 			treeNode.getProperties().put(JSON_SCHEMA_ARRAY_ITEMS_ID, itemsSchema.get(JSON_SCHEMA_ID).toString());
 			treeNode.getProperties().put(JSON_SCHEMA_ARRAY_ITEMS_TYPE, itemsSchema.get(JSON_SCHEMA_TYPE).toString());
-			treeNode.getProperties().put(JSON_SCHEMA_ARRAY_ITEMS_REQUIRED, itemsSchema.get(JSON_SCHEMA_REQUIRED).toString());
+			treeNode.getProperties().put(JSON_SCHEMA_ARRAY_ITEMS_REQUIRED, getRequiredValue(itemsSchema));
 			}
 		}
 		return treeNode;

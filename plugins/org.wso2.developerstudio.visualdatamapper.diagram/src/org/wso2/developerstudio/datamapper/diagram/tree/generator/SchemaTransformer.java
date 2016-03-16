@@ -495,7 +495,6 @@ public class SchemaTransformer implements ISchemaTransformer {
 		JSONArray requiredArray = new JSONArray();
 		if (node.getProperties().get(JSON_SCHEMA_REQUIRED) != null) {
 			requiredString = node.getProperties().get(JSON_SCHEMA_REQUIRED);
-
 		}
 		if (node.getProperties().get(JSON_SCHEMA_ARRAY_ITEMS_REQUIRED) != null && isItems) {
 			requiredString = node.getProperties().get(JSON_SCHEMA_ARRAY_ITEMS_REQUIRED);

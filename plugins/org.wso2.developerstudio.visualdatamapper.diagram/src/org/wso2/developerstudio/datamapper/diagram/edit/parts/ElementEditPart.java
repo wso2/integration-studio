@@ -522,14 +522,7 @@ public class ElementEditPart extends AbstractBorderedShapeEditPart {
 			figure.setMinimumSize(new Dimension(0,3));
 			
 			final Label elemLabel = new Label();
-			if(StringUtils.isNotEmpty(name)){
-				if(name.startsWith(PREFIX)){
-					elemLabel.setIcon(attributeImg.getImage());
-				}else{
-					elemLabel.setIcon(mainImg.getImage());
-				}
-			}
-				
+			elemLabel.setIcon(mainImg.getImage());
 			Display display = Display.getCurrent();
 			final Color black = display.getSystemColor(SWT.COLOR_BLACK);
 			elemLabel.setForegroundColor(black);

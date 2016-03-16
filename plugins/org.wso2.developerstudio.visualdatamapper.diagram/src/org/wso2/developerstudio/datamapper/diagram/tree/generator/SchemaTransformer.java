@@ -22,6 +22,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.Set;
@@ -54,11 +56,12 @@ public class SchemaTransformer implements ISchemaTransformer {
 	private static final String JSON_SCHEMA_PROPERTIES = "properties";
 	private static final String JSON_SCHEMA_TYPE = "type";
 	private static final String JSON_SCHEMA_OBJECT = "object";
-	private static final String JSON_SCHEMA_ARRAY_ITEMS_ID = "id";
-	private static final String JSON_SCHEMA_ARRAY_ITEMS_TYPE = "type";
-	private static final String JSON_SCHEMA_ARRAY_ITEMS_REQUIRED = "required";
+	private static final String JSON_SCHEMA_ARRAY_ITEMS_ID = "items_id";
+	private static final String JSON_SCHEMA_ARRAY_ITEMS_TYPE = "items_type";
+	private static final String JSON_SCHEMA_ARRAY_ITEMS_REQUIRED = "items_required";
 
-	
+	private static final String PREFIX = "@";
+
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 	private static String ERROR_TEXT = "File cannot be found ";
 	private static String ERROR_WRITING_SCHEMA_FILE = "Error writing to schema file";
@@ -231,39 +234,86 @@ public class SchemaTransformer implements ISchemaTransformer {
 		}
 	}
 
+	/**
+	 * Sets the properties
+	 * 
+	 * @param jsonSchemaMap
+	 *            schema
+	 * @param inputRootTreeNode
+	 *            treenode
+	 * @param count
+	 *            leve;
+	 * @return tree node
+	 */
 	private TreeNode setProperties(Map<String, Object> jsonSchemaMap, TreeNode inputRootTreeNode, int count) {
 		// Gets the schema properties
 		Map<String, Object> propertyMap = getSchemaProperties(jsonSchemaMap);
-		Set<String> elementKeys = propertyMap.keySet();
+		Map<String, Object> attributeMap = new LinkedHashMap<String, Object>();
+		Map<String, Object> sortedMap = getAttributeMap(propertyMap, attributeMap);
+		//If there is an attribute, add the rest of the elements to the map after the attribute
+		if (sortedMap.size() > 0) {
+			sortedMap.putAll(propertyMap);
+		} else {
+			sortedMap = propertyMap;
+		}
+		Set<String> elementKeys = sortedMap.keySet();
+
 		TreeNode treeNode = null;
-		org.wso2.developerstudio.datamapper.Element element = null;
+		org.wso2.developerstudio.datamapper.Element element;
 		count++;
 		for (String elementKey : elementKeys) {
 			@SuppressWarnings("unchecked")
-			Map<String, Object> subSchema = (Map<String, Object>) propertyMap.get(elementKey);
+			Map<String, Object> subSchema = (Map<String, Object>) sortedMap.get(elementKey);
 			// Gets the schema type of the sub schema
 			String schemaType = getSchemaType(subSchema);
 			if (JSON_SCHEMA_OBJECT.equals(schemaType)) {
 				// Creates the tree node
 				treeNode = createTreeNode(null, count, elementKey, subSchema, schemaType);
-				// Adds sub tree node to the root tree
 				inputRootTreeNode.getNode().add(treeNode);
 				setProperties(subSchema, treeNode, count);
 			} else if (JSON_SCHEMA_ARRAY.equals(schemaType)) {
-				// Creates the tree node
 				treeNode = createTreeNode(null, count, elementKey, subSchema, schemaType);
-				// Adds sub tree node to the root tree
 				inputRootTreeNode.getNode().add(treeNode);
 				setProperties(getSchemaItems(subSchema), treeNode, count);
 			} else {
-				// Creates an element when type is String, int etc
-				element = createElement(count, elementKey, subSchema, schemaType);
-				// Adds the element to the tree node
-				inputRootTreeNode.getElement().add(element);
+				//When there is an attribute, add it as an element to the tree
+				if (elementKey.startsWith(PREFIX)) {
+					element = createElement(count, elementKey, subSchema, schemaType);
+					inputRootTreeNode.getElement().add(element);
+				} else {
+					treeNode = createTreeNode(null, count, elementKey, subSchema, schemaType);
+					inputRootTreeNode.getNode().add(treeNode);
+					//If an element contained properties eg: attribute 
+					if(subSchema.get(JSON_SCHEMA_PROPERTIES) != null){
+					 setProperties(subSchema, treeNode, count);
+					}
+				}
+
 			}
 		}
 		return inputRootTreeNode;
 
+	}
+
+	/**
+	 * Gets the attribute mape
+	 * 
+	 * @param propertyMap
+	 *            property map
+	 * @param sortedMap
+	 *            attribute map
+	 * @return attribute map
+	 */
+	private Map<String, Object> getAttributeMap(Map<String, Object> propertyMap, Map<String, Object> sortedMap) {
+		for (Iterator<Map.Entry<String, Object>> it = propertyMap.entrySet().iterator(); it.hasNext();) {
+			Map.Entry<String, Object> entry = it.next();
+			if (entry.getKey().startsWith(PREFIX)) {
+				//If there is an attribute, remove it from the property map and add it to the sorted map
+				it.remove();
+				sortedMap.put(entry.getKey(), entry.getValue());
+			}
+		}
+		return sortedMap;
 	}
 
 	/**
@@ -333,14 +383,15 @@ public class SchemaTransformer implements ISchemaTransformer {
 		if (getRequiredValue(subSchema) != null) {
 			treeNode.getProperties().put(JSON_SCHEMA_REQUIRED, getRequiredValue(subSchema));
 		}
-		
-		if(schemaType.equals(JSON_SCHEMA_ARRAY)){
-			if(subSchema.get(JSON_SCHEMA_ITEMS) != null){
-			@SuppressWarnings("unchecked")
-			Map<String, Object> itemsSchema = (Map<String, Object>) subSchema.get(JSON_SCHEMA_ITEMS);
-			treeNode.getProperties().put(JSON_SCHEMA_ARRAY_ITEMS_ID, itemsSchema.get(JSON_SCHEMA_ID).toString());
-			treeNode.getProperties().put(JSON_SCHEMA_ARRAY_ITEMS_TYPE, itemsSchema.get(JSON_SCHEMA_TYPE).toString());
-			treeNode.getProperties().put(JSON_SCHEMA_ARRAY_ITEMS_REQUIRED, getRequiredValue(itemsSchema));
+
+		if (schemaType.equals(JSON_SCHEMA_ARRAY)) {
+			if (subSchema.get(JSON_SCHEMA_ITEMS) != null) {
+				@SuppressWarnings("unchecked")
+				Map<String, Object> itemsSchema = (Map<String, Object>) subSchema.get(JSON_SCHEMA_ITEMS);
+				treeNode.getProperties().put(JSON_SCHEMA_ARRAY_ITEMS_ID, itemsSchema.get(JSON_SCHEMA_ID).toString());
+				treeNode.getProperties()
+						.put(JSON_SCHEMA_ARRAY_ITEMS_TYPE, itemsSchema.get(JSON_SCHEMA_TYPE).toString());
+				treeNode.getProperties().put(JSON_SCHEMA_ARRAY_ITEMS_REQUIRED, getRequiredValue(itemsSchema));
 			}
 		}
 		return treeNode;
@@ -348,10 +399,10 @@ public class SchemaTransformer implements ISchemaTransformer {
 
 	@Override
 	public String getSchemaContentFromFile(String path) {
-		File avsc = new File(path);
+		File jschema = new File(path);
 		String entireFileText = null;
 		try {
-			entireFileText = new Scanner(avsc).useDelimiter("\\A").next();
+			entireFileText = new Scanner(jschema).useDelimiter("\\A").next();
 		} catch (FileNotFoundException e) {
 			log.error(ERROR_TEXT, e);
 		}
@@ -366,7 +417,8 @@ public class SchemaTransformer implements ISchemaTransformer {
 		JSONObject propertiesObject = new JSONObject();
 		if (StringUtils.isNotEmpty(treeNodeModel.getName()) && treeNodeModel.getProperties() != null) {
 			insetIFTypeForJsonObject(treeNodeModel, root);
-			root.put(JSON_SCHEMA_TITLE, treeNodeModel.getName());// employees
+			root.put(JSON_SCHEMA_SCHEMA_VALUE, treeNodeModel.getProperties().get(JSON_SCHEMA_SCHEMA_VALUE));
+			root.put(JSON_SCHEMA_TITLE, treeNodeModel.getName());
 			root.put(JSON_SCHEMA_PROPERTIES, propertiesObject);
 			insertRequiredArray(root, treeNodeModel);
 			recursiveTreeGenerator(treeNodeModel, propertiesObject);

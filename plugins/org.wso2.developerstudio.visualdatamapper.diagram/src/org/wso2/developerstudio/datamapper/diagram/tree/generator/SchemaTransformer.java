@@ -371,7 +371,6 @@ public class SchemaTransformer implements ISchemaTransformer {
 			insertRequiredArray(root, treeNodeModel);
 			recursiveTreeGenerator(treeNodeModel, propertiesObject);
 		}
-		System.out.print(root.toJSONString());
 		return root.toString();
 	}
 
@@ -411,7 +410,7 @@ public class SchemaTransformer implements ISchemaTransformer {
 					JSONObject elemObject = new JSONObject();
 					elemObject.put(JSON_SCHEMA_ID, elem.getProperties().get(JSON_SCHEMA_ID).replace("\\", ""));
 					elemObject.put(JSON_SCHEMA_TYPE, elem.getProperties().get(JSON_SCHEMA_TYPE));
-				  parent.put(elem.getName(),elemObject);
+					parent.put(elem.getName(), elemObject);
 				}
 			}
 		}
@@ -430,11 +429,12 @@ public class SchemaTransformer implements ISchemaTransformer {
 		}
 	}
 
-
 	@Override
 	public void updateSchemaFile(String content, File file) {
 		try {
-			FileUtils.writeStringToFile(file, content);
+			ObjectMapper mapper = new ObjectMapper();
+			Object json = mapper.readValue(content, Object.class);
+			FileUtils.writeStringToFile(file, mapper.writerWithDefaultPrettyPrinter().writeValueAsString(json));
 		} catch (IOException e) {
 			log.error(ERROR_WRITING_SCHEMA_FILE + file.getName(), e);
 			return;

@@ -87,7 +87,7 @@ public class AddNewRootAction extends AbstractActionHandler {
 				MessageDialog.openWarning(Display.getCurrent().getActiveShell(),
 						ERROR_ADDING_MULTIPLE_ROOT_ELEMENTS_TITLE, ERROR_ADDING_MULTIPLE_ROOT_ELEMENTS);
 			} else {
-
+				
 				AddNewObjectDialog rootElementDialog = new AddNewObjectDialog(Display.getCurrent().getActiveShell(),
 						new Class[] { IRegistryFile.class });
 				rootElementDialog.create();
@@ -115,8 +115,7 @@ public class AddNewRootAction extends AbstractActionHandler {
 						treeNodeNew.getProperties().put(JSON_SCHEMA_ID, rootElementDialog.getID());
 					}
 					if (StringUtils.isNotEmpty(rootElementDialog.getRequired())) {
-						String requiredValues = "[" + rootElementDialog.getRequired() + "]";
-						treeNodeNew.getProperties().put(JSON_SCHEMA_REQUIRED, requiredValues);
+						treeNodeNew.getProperties().put(JSON_SCHEMA_REQUIRED, rootElementDialog.getRequired());
 					}
 					String selectedInputOutputEditPart = getSelectedInputOutputEditPart();
 					if (null != selectedInputOutputEditPart) {

@@ -35,7 +35,6 @@ import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.datamapper.DataMapperFactory;
 import org.wso2.developerstudio.datamapper.DataMapperPackage;
 import org.wso2.developerstudio.datamapper.DataMapperRoot;
-import org.wso2.developerstudio.datamapper.Element;
 import org.wso2.developerstudio.datamapper.TreeNode;
 import org.wso2.developerstudio.datamapper.diagram.custom.util.AddNewObjectDialog;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.DataMapperRootEditPart;
@@ -49,19 +48,20 @@ public class AddNewFieldAction extends AbstractActionHandler {
 	private EditPart selectedEP;
 	private static final String OUTPUT_EDITPART = "Output"; //$NON-NLS-1$
 	private static final String INPUT_EDITPART = "Input"; //$NON-NLS-1$
-	private static final String ADD_NEW_FIELD_ACTION_ID = "add-new-field-action-id"; //$NON-NLS-1$
-	private static final String ADD_NEW_FIELD = Messages.AddNewElementAction_addNewElement;
+	private static final String ADD_NEW_RECORDS_LIST_ACTION_ID = "add-new-records-list-action-id"; //$NON-NLS-1$
+	private static final String ADD_NEW_RECORDS_LIST = Messages.AddNewFieldAction_addNewField;
 	private static final String DIALOG_TITLE = "Add new Field";
-	
+
+	private static final String JSON_SCHEMA_REQUIRED = "required";
 	private static final String JSON_SCHEMA_ID = "id";
 	private static final String JSON_SCHEMA_TYPE = "type";
 
 	public AddNewFieldAction(IWorkbenchPart workbenchPart) {
 		super(workbenchPart);
 
-		setId(ADD_NEW_FIELD_ACTION_ID);
-		setText(ADD_NEW_FIELD);
-		setToolTipText(ADD_NEW_FIELD);
+		setId(ADD_NEW_RECORDS_LIST_ACTION_ID);
+		setText(ADD_NEW_RECORDS_LIST);
+		setToolTipText(ADD_NEW_RECORDS_LIST);
 		ISharedImages workbenchImages = PlatformUI.getWorkbench().getSharedImages();
 		setImageDescriptor(workbenchImages.getImageDescriptor(ISharedImages.IMG_TOOL_NEW_WIZARD));
 	}
@@ -69,7 +69,6 @@ public class AddNewFieldAction extends AbstractActionHandler {
 	@Override
 	protected void doRun(IProgressMonitor progressMonitor) {
 		selectedEP = getSelectedEditPart();
-
 		AddNewObjectDialog objectDialog = new AddNewObjectDialog(Display.getCurrent().getActiveShell(),
 				new Class[] { IRegistryFile.class });
 		objectDialog.create();
@@ -77,34 +76,35 @@ public class AddNewFieldAction extends AbstractActionHandler {
 		objectDialog.setVisibility(DIALOG_TITLE);
 		objectDialog.setType(DIALOG_TITLE);
 		objectDialog.open();
-		
-		if (objectDialog.getTitle() != null && objectDialog.getSchemaType() != null) {
 
+		if (objectDialog.getTitle() != null && objectDialog.getSchemaType() != null) {
 			if (null != selectedEP) {
 				// Returns the TreeNodeImpl object respective to selectedEP
 				EObject object = ((Node) selectedEP.getModel()).getElement();
 				// Used to identify the selected resource of the model
 				TreeNode selectedNode = (TreeNode) object;
 
-				// Configure the new element by setting default values
-				Element elementNew = DataMapperFactory.eINSTANCE.createElement();
+				// Configure the new tree node by setting default values
+				TreeNode treeNodeNew = DataMapperFactory.eINSTANCE.createTreeNode();
 				if (StringUtils.isNotEmpty(objectDialog.getTitle())) {
-					elementNew.setName(objectDialog.getTitle());
+					treeNodeNew.setName(objectDialog.getTitle());
 				}
-				elementNew.setLevel(selectedNode.getLevel() + 1);
+				treeNodeNew.setLevel(selectedNode.getLevel() + 1);
 				if (StringUtils.isNotEmpty(objectDialog.getSchemaType())) {
-					elementNew.getProperties().put(JSON_SCHEMA_TYPE, objectDialog.getSchemaType());
+					treeNodeNew.getProperties().put(JSON_SCHEMA_TYPE, objectDialog.getSchemaType());
 				}
 				if (StringUtils.isNotEmpty(objectDialog.getID())) {
-					elementNew.getProperties().put(JSON_SCHEMA_ID, objectDialog.getID());
+					treeNodeNew.getProperties().put(JSON_SCHEMA_ID, objectDialog.getID());
 				}
-			
+				if (StringUtils.isNotEmpty(objectDialog.getRequired())) {
+					treeNodeNew.getProperties().put(JSON_SCHEMA_REQUIRED, objectDialog.getRequired());
+				}
 				/*
 				 * AddCommand is used to avoid concurrent updating. index 0 to
 				 * add as the first child
 				 */
 				AddCommand addCmd = new AddCommand(((GraphicalEditPart) selectedEP).getEditingDomain(), selectedNode,
-						DataMapperPackage.Literals.TREE_NODE__ELEMENT, elementNew, 0);
+						DataMapperPackage.Literals.TREE_NODE__NODE, treeNodeNew, 0);
 				if (addCmd.canExecute()) {
 					((GraphicalEditPart) selectedEP).getEditingDomain().getCommandStack().execute(addCmd);
 				}
@@ -112,8 +112,8 @@ public class AddNewFieldAction extends AbstractActionHandler {
 				// FIXME force refresh root
 				String selectedInputOutputEditPart = getSelectedInputOutputEditPart();
 				if (null != selectedInputOutputEditPart) {
-					if (selectedEP.getParent().getParent().getParent() instanceof InputEditPart) {
-						InputEditPart iep = (InputEditPart) selectedEP.getParent().getParent().getParent();
+					if (selectedEP.getParent().getParent() instanceof InputEditPart) {
+						InputEditPart iep = (InputEditPart) selectedEP.getParent().getParent();
 						DataMapperRootEditPart rep = (DataMapperRootEditPart) iep.getParent();
 						DataMapperRoot rootDiagram = (DataMapperRoot) ((DiagramImpl) rep.getModel()).getElement();
 						if (INPUT_EDITPART.equals(selectedInputOutputEditPart)) {
@@ -168,6 +168,7 @@ public class AddNewFieldAction extends AbstractActionHandler {
 				}
 			}
 		}
+
 	}
 
 	private String getSelectedInputOutputEditPart() {

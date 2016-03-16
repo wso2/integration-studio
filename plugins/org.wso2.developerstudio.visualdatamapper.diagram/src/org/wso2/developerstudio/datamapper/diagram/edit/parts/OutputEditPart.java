@@ -638,6 +638,7 @@ public class OutputEditPart extends ShapeNodeEditPart {
 			this.setOutline(true);
 
 			TitleBarBorder titleBarBorder = new TitleBarBorder("Output");
+			titleBarBorder.setTextAlignment(PositionConstants.CENTER);
 			titleBarBorder.setPadding(6);
 			titleBarBorder.setBackgroundColor(new Color(null, 0, 125, 133));
 			titleBarBorder.setTextColor(new Color(null, 0, 0, 0));

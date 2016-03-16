@@ -79,8 +79,9 @@ public class DataMapperLinkEditPart extends ConnectionNodeEditPart implements IT
 			public void paintFigure(Graphics graphics) {
 				graphics.setAlpha(alpha);
 				graphics.setLineWidth(3);
-				graphics.setBackgroundColor(new Color(null, 0, 0, 0));
-				graphics.setForegroundColor(new Color(null, 0, 0, 0));
+				Color black = new Color(null, 0, 0, 0);
+				graphics.setBackgroundColor(black);
+				graphics.setForegroundColor(black);
 				super.paintFigure(graphics);
 			}
 

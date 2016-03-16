@@ -21,18 +21,15 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.Set;
 
-import javax.xml.stream.XMLStreamException;
-
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang.StringUtils;
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.common.util.EMap;
+import org.json.simple.JSONObject;
 import org.wso2.developerstudio.datamapper.DataMapperFactory;
 import org.wso2.developerstudio.datamapper.Element;
 import org.wso2.developerstudio.datamapper.TreeNode;
@@ -41,21 +38,15 @@ import org.wso2.developerstudio.datamapper.diagram.tree.model.Tree;
 import org.wso2.developerstudio.datamapper.impl.TreeNodeImpl;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
-import org.json.simple.JSONObject;
 
-import com.fasterxml.jackson.core.JsonEncoding;
-import com.fasterxml.jackson.core.JsonFactory;
-import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.node.ObjectNode;
 
 public class SchemaTransformer implements ISchemaTransformer {
 
 	private static final String JSON_SCHEMA_TITLE = "title";
 	private static final String JSON_SCHEMA_ITEMS = "items";
-	private static final String JSON_SCHEMA_STRING = "string";
 	private static final String JSON_SCHEMA_ARRAY = "array";
 	private static final String JSON_SCHEMA_REQUIRED = "required";
 	private static final String JSON_SCHEMA_SCHEMA_VALUE = "$schema";
@@ -63,6 +54,11 @@ public class SchemaTransformer implements ISchemaTransformer {
 	private static final String JSON_SCHEMA_PROPERTIES = "properties";
 	private static final String JSON_SCHEMA_TYPE = "type";
 	private static final String JSON_SCHEMA_OBJECT = "object";
+	private static final String JSON_SCHEMA_ARRAY_ITEMS_ID = "id";
+	private static final String JSON_SCHEMA_ARRAY_ITEMS_TYPE = "type";
+	private static final String JSON_SCHEMA_ARRAY_ITEMS_REQUIRED = "required";
+
+	
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 	private static String ERROR_TEXT = "File cannot be found ";
 	private static String ERROR_WRITING_SCHEMA_FILE = "Error writing to schema file";
@@ -336,6 +332,16 @@ public class SchemaTransformer implements ISchemaTransformer {
 		// Sets the required value
 		if (getRequiredValue(subSchema) != null) {
 			treeNode.getProperties().put(JSON_SCHEMA_REQUIRED, getRequiredValue(subSchema));
+		}
+		
+		if(schemaType.equals(JSON_SCHEMA_ARRAY)){
+			if(subSchema.get(JSON_SCHEMA_ITEMS) != null){
+			@SuppressWarnings("unchecked")
+			Map<String, Object> itemsSchema = (Map<String, Object>) subSchema.get(JSON_SCHEMA_ITEMS);
+			treeNode.getProperties().put(JSON_SCHEMA_ARRAY_ITEMS_ID, itemsSchema.get(JSON_SCHEMA_ID).toString());
+			treeNode.getProperties().put(JSON_SCHEMA_ARRAY_ITEMS_TYPE, itemsSchema.get(JSON_SCHEMA_TYPE).toString());
+			treeNode.getProperties().put(JSON_SCHEMA_ARRAY_ITEMS_REQUIRED, itemsSchema.get(JSON_SCHEMA_REQUIRED).toString());
+			}
 		}
 		return treeNode;
 	}

@@ -7,7 +7,13 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.draw2d.Connection;
+import org.eclipse.draw2d.ConnectionAnchor;
+import org.eclipse.draw2d.Graphics;
+import org.eclipse.draw2d.ManhattanConnectionRouter;
 import org.eclipse.draw2d.PolygonDecoration;
+import org.eclipse.draw2d.PolylineConnection;
+import org.eclipse.draw2d.geometry.Point;
+import org.eclipse.draw2d.geometry.PointList;
 import org.eclipse.emf.workspace.AbstractEMFOperation;
 import org.eclipse.gef.EditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionNodeEditPart;
@@ -31,6 +37,11 @@ public class DataMapperLinkEditPart extends ConnectionNodeEditPart implements IT
 	 * @generated
 	 */
 	public static final int VISUAL_ID = 4001;
+	
+	/**
+	 * @generated NOT
+	 */
+	protected int alpha = 255;
 
 	/**
 	 * @generated
@@ -62,9 +73,54 @@ public class DataMapperLinkEditPart extends ConnectionNodeEditPart implements IT
 	 * @generated NOT
 	 */
 	protected Connection createConnectionFigure() {
-		return new PolylineConnectionEx();
-	}
+		PolylineConnection connection = new PolylineConnection() {
 
+			@Override
+			public void paintFigure(Graphics graphics) {
+				graphics.setAlpha(alpha);
+				graphics.setLineWidth(3);
+				graphics.setBackgroundColor(new Color(null, 0, 0, 0));
+				graphics.setForegroundColor(new Color(null, 0, 0, 0));
+				super.paintFigure(graphics);
+			}
+
+			public PointList getPoints() {
+				
+				boolean startLeft = false;
+				boolean targetLeft = true;
+
+				PointList list = super.getPoints();
+				if (list.size() == 0)
+					return list;
+				Point start = getStart();
+				int slength = 20;
+				int tlength = 20;
+				if (startLeft) {
+					slength = (-slength);
+				}
+				if (targetLeft) {
+					tlength = (-tlength);
+				}
+
+				Point start2 = new Point(start.x + slength, start.y);
+				Point end = getEnd();
+				Point end2 = new Point(end.x + tlength, end.y);
+				list.removeAllPoints();
+				list.addPoint(start);
+				list.addPoint(start2);
+				list.addPoint(end2);///new Color(null, 0, 125, 133)
+				list.addPoint(end);
+				return list;
+			}
+			
+			
+		};
+//		connection.setBackgroundColor(new Color(null, 0, 0, 0));
+//		connection.setForegroundColor(new Color(null, 0, 125, 133));
+		connection.setConnectionRouter(new ManhattanConnectionRouter());
+		return connection;
+	}
+	
 	/**
 	 * @generated
 	 */

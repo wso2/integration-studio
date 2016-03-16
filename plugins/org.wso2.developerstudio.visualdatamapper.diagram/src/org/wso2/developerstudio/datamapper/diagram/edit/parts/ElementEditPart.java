@@ -462,7 +462,7 @@ public class ElementEditPart extends AbstractBorderedShapeEditPart {
 		private static final String ICONS_ELEMENT = "icons/gmf/symbol_element_of.gif";
 		private static final String ICONS_ATTRIBUTE = "icons/gmf/AttributeIcon.png";
 		private static final String ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM = "org.wso2.developerstudio.visualdatamapper.diagram";
-		private static final String PREFIX = "attr_";
+		private static final String PREFIX = "@";
 		/**
 		 * @generated
 		 */

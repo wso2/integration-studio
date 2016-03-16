@@ -50,6 +50,15 @@ public class DataMapperLinkEditPart extends ConnectionNodeEditPart implements IT
 	public DataMapperLinkEditPart(View view) {
 		super(view);
 	}
+	
+	/**
+	 * @generated NOT
+	 */
+	@Override
+	public boolean canAttachNote() {
+		return false;
+	}
+
 
 	/**
 	 * @generated NOT
@@ -60,7 +69,7 @@ public class DataMapperLinkEditPart extends ConnectionNodeEditPart implements IT
 				new org.wso2.developerstudio.datamapper.diagram.edit.policies.DataMapperLinkItemSemanticEditPolicy());
 
 		installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE, new CustomNonResizableEditPolicyEx()); // remove
-																								// selection
+		installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE, new CustomNonResizableEditPolicyEx());																						// selection
 
 		removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.POPUPBAR_ROLE);
 	}

@@ -31,6 +31,7 @@ import java.util.Set;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang.StringUtils;
 import org.eclipse.emf.common.util.EList;
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.wso2.developerstudio.datamapper.DataMapperFactory;
 import org.wso2.developerstudio.datamapper.Element;
@@ -59,7 +60,6 @@ public class SchemaTransformer implements ISchemaTransformer {
 	private static final String JSON_SCHEMA_ARRAY_ITEMS_ID = "items_id";
 	private static final String JSON_SCHEMA_ARRAY_ITEMS_TYPE = "items_type";
 	private static final String JSON_SCHEMA_ARRAY_ITEMS_REQUIRED = "items_required";
-
 	private static final String PREFIX = "@";
 
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
@@ -419,11 +419,13 @@ public class SchemaTransformer implements ISchemaTransformer {
 			insetIFTypeForJsonObject(treeNodeModel, root);
 			root.put(JSON_SCHEMA_SCHEMA_VALUE, treeNodeModel.getProperties().get(JSON_SCHEMA_SCHEMA_VALUE));
 			root.put(JSON_SCHEMA_TITLE, treeNodeModel.getName());
+			root.put(JSON_SCHEMA_SCHEMA_VALUE, treeNodeModel.getProperties().get(JSON_SCHEMA_SCHEMA_VALUE));
+			root.put(JSON_SCHEMA_TITLE, treeNodeModel.getName());
 			root.put(JSON_SCHEMA_PROPERTIES, propertiesObject);
-			insertRequiredArray(root, treeNodeModel);
+			insertRequiredArray(root, treeNodeModel, false);
 			recursiveTreeGenerator(treeNodeModel, propertiesObject);
 		}
-		return root.toString();
+		return root.toJSONString();
 	}
 
 	@SuppressWarnings("unchecked")
@@ -434,33 +436,42 @@ public class SchemaTransformer implements ISchemaTransformer {
 			for (TreeNode node : nodeList) {
 				if (node.getProperties().get(JSON_SCHEMA_TYPE) != null
 						&& node.getProperties().get(JSON_SCHEMA_TYPE).equals(JSON_SCHEMA_OBJECT)) {
-
 					JSONObject nodeObject = new JSONObject();
 					JSONObject propertiesObject = new JSONObject();
 					insetIFTypeForJsonObject(node, nodeObject);
 					nodeObject.put(JSON_SCHEMA_PROPERTIES, propertiesObject);
 					parent.put(node.getName(), nodeObject);
-					insertRequiredArray(nodeObject, node);
+					insertRequiredArray(nodeObject, node, false);
 					recursiveTreeGenerator((TreeNodeImpl) node, propertiesObject);
-
 				} else if (node.getProperties().get(JSON_SCHEMA_TYPE) != null
 						&& node.getProperties().get(JSON_SCHEMA_TYPE).equals(JSON_SCHEMA_ARRAY)) {
 					JSONObject arrayObject = new JSONObject();
 					JSONObject itemsObject = new JSONObject();
 					JSONObject itemProperties = new JSONObject();
 					insetIFTypeForJsonObject(node, arrayObject);
-					arrayObject.put(JSON_SCHEMA_ITEMS, itemProperties);
-					insetIFTypeForJsonObject(node, itemsObject);
-					itemProperties.put(JSON_SCHEMA_PROPERTIES, itemsObject);
+					if (node.getProperties().get(JSON_SCHEMA_ARRAY_ITEMS_ID) != null) {
+						itemProperties.put(JSON_SCHEMA_ID,
+								node.getProperties().get(JSON_SCHEMA_ARRAY_ITEMS_ID).replace("\\", ""));
+					} else {
+						itemProperties.put(JSON_SCHEMA_ID, "");
+					}
+					itemsObject.put(JSON_SCHEMA_TYPE, node.getProperties().get(JSON_SCHEMA_ARRAY_ITEMS_TYPE));
+					insertRequiredArray(arrayObject, node, false);
+					insertRequiredArray(itemProperties, node, true);
 					parent.put(node.getName(), arrayObject);
-					insertRequiredArray(arrayObject, node);
+					arrayObject.put(JSON_SCHEMA_ITEMS, itemProperties);
+					itemProperties.put(JSON_SCHEMA_PROPERTIES, itemsObject);
 					recursiveTreeGenerator((TreeNodeImpl) node, itemsObject);
 				}
 			}
 			for (Element elem : elemList) {
 				if (elem.getProperties().get(JSON_SCHEMA_TYPE) != null) {
 					JSONObject elemObject = new JSONObject();
+					if (elem.getProperties().get(JSON_SCHEMA_ID) != null) {
 					elemObject.put(JSON_SCHEMA_ID, elem.getProperties().get(JSON_SCHEMA_ID).replace("\\", ""));
+					} else {
+						elemObject.put(JSON_SCHEMA_ID, "");
+					}
 					elemObject.put(JSON_SCHEMA_TYPE, elem.getProperties().get(JSON_SCHEMA_TYPE));
 					parent.put(elem.getName(), elemObject);
 				}
@@ -470,23 +481,50 @@ public class SchemaTransformer implements ISchemaTransformer {
 
 	@SuppressWarnings("unchecked")
 	private void insetIFTypeForJsonObject(TreeNode node, JSONObject nodeObject) {
-		nodeObject.put(JSON_SCHEMA_ID, node.getProperties().get(JSON_SCHEMA_ID).replace("\\", ""));
+		if (node.getProperties().get(JSON_SCHEMA_ID) != null) {
+			nodeObject.put(JSON_SCHEMA_ID, node.getProperties().get(JSON_SCHEMA_ID).replace("\\", ""));
+		} else {
+			nodeObject.put(JSON_SCHEMA_ID, "");
+		}
 		nodeObject.put(JSON_SCHEMA_TYPE, node.getProperties().get(JSON_SCHEMA_TYPE));
 	}
 
-	@SuppressWarnings("unchecked")
-	private void insertRequiredArray(JSONObject parent, TreeNode node) {
+	@SuppressWarnings({ "unchecked" })
+	private void insertRequiredArray(JSONObject parent, TreeNode node, boolean isItems) {
+		String requiredString = null;
+		JSONArray requiredArray = new JSONArray();
 		if (node.getProperties().get(JSON_SCHEMA_REQUIRED) != null) {
-			parent.put(JSON_SCHEMA_REQUIRED, node.getProperties().get(JSON_SCHEMA_REQUIRED));
+			requiredString = node.getProperties().get(JSON_SCHEMA_REQUIRED);
+
+		}
+		if (node.getProperties().get(JSON_SCHEMA_ARRAY_ITEMS_REQUIRED) != null && isItems) {
+			requiredString = node.getProperties().get(JSON_SCHEMA_ARRAY_ITEMS_REQUIRED);
+		}
+		if (requiredString != null) {
+			if (requiredString.contains(",")) {
+				String[] requiredStringArr  = requiredString.split(",");
+				for (String retuiredItem : requiredStringArr) {
+					requiredArray.add(retuiredItem);
+				}
+			} else {
+				requiredArray.add(requiredString);
+			}
+			
+			parent.put(JSON_SCHEMA_REQUIRED, requiredArray);
 		}
 	}
 
 	@Override
 	public void updateSchemaFile(String content, File file) {
 		try {
+			// check of content is null to prevent object mapper throwing exceptions due to empty content
+			if (content != null && !content.isEmpty()) {
 			ObjectMapper mapper = new ObjectMapper();
 			Object json = mapper.readValue(content, Object.class);
 			FileUtils.writeStringToFile(file, mapper.writerWithDefaultPrettyPrinter().writeValueAsString(json));
+			} else {
+				FileUtils.writeStringToFile(file, "");
+			}
 		} catch (IOException e) {
 			log.error(ERROR_WRITING_SCHEMA_FILE + file.getName(), e);
 			return;

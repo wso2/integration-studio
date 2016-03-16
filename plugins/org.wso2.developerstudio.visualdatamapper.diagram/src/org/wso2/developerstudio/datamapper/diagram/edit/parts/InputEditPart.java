@@ -166,15 +166,8 @@ public class InputEditPart extends ShapeNodeEditPart {
 	 * @generated NOT
 	 */
 	private void convertTree(Tree tree, TreeNode treeNode) {
-
-		// treeNode.setName(tree.getCount() + "," + tree.getName());
 		treeNode.setName(tree.getName());
 		treeNode.setLevel(tree.getCount());
-		/*
-		 * treeNode.setNamespace(tree.getNamespace());
-		 * treeNode.setDoc(tree.getDoc());
-		 * treeNode.getAliases().addAll(tree.getAliases());
-		 */
 		if (tree.getSchemaType() != null) {
 			switch (tree.getSchemaType()) {
 			case ARRAY:
@@ -223,20 +216,11 @@ public class InputEditPart extends ShapeNodeEditPart {
 				break;
 			}
 		}
-
 		if (!(tree.getTrees().isEmpty())) {
 			for (Tree treeN : tree.getTrees()) {
 				createTree(treeN, treeNode);
 			}
 		}
-
-		/*
-		 * if (!(tree.getAttributes().isEmpty())) { for
-		 * (org.wso2.developerstudio.datamapper.diagram.tree.model.Attribute
-		 * attribute : tree .getAttributes()) { createAttribute(attribute,
-		 * treeNode); } }
-		 */
-
 		if (!(tree.getElements().isEmpty())) {
 			for (org.wso2.developerstudio.datamapper.diagram.tree.model.Element element : tree.getElements()) {
 				createElement(element, treeNode);
@@ -250,16 +234,7 @@ public class InputEditPart extends ShapeNodeEditPart {
 	 */
 	private void createElement(org.wso2.developerstudio.datamapper.diagram.tree.model.Element element, TreeNode treeNode) {
 		Element ele = DataMapperFactory.eINSTANCE.createElement();
-		// ele.setName(element.getCount() + "," + element.getName());
 		ele.setName(element.getName());
-		// ele.setDoc(element.getDoc());
-		/*
-		 * if(element.getOrder() != null){
-		 * ele.setOrder(element.getOrder().toString()); }
-		 * if(element.getDefault() != null){
-		 * ele.setDefault(element.getDefault().toString()); }
-		 * ele.getAliases().addAll(element.getAliases());
-		 */
 		ele.setLevel(element.getCount());
 		if (element.getSchemaType() != null) {
 			switch (element.getSchemaType()) {
@@ -310,26 +285,11 @@ public class InputEditPart extends ShapeNodeEditPart {
 			}
 		}
 		treeNode.getElement().add(ele);
-		/*
-		 * if (!(element.getAttribute().isEmpty())) { for
-		 * (org.wso2.developerstudio.datamapper.diagram.tree.model.Attribute
-		 * attribute : element .getAttribute()) { createAttribute(attribute,
-		 * treeNode); } }
-		 */
 	}
 
 	/**
 	 * @generated NOT
 	 */
-	/*
-	 * private void createAttribute(
-	 * org.wso2.developerstudio.datamapper.diagram.tree.model.Attribute
-	 * attribute, TreeNode treeNode) { Attribute attr =
-	 * DataMapperFactory.eINSTANCE.createAttribute();
-	 * attr.setName(attribute.getCount() + "," + attribute.getName());
-	 * attr.setDoc(attribute.getDoc()); treeNode.getAttribute().add(attr); }
-	 */
-
 	private void createTree(Tree treeN, TreeNode treeNode) {
 		TreeNode treeNodeNew = DataMapperFactory.eINSTANCE.createTreeNode();
 
@@ -404,13 +364,6 @@ public class InputEditPart extends ShapeNodeEditPart {
 				createElement(element, treeNodeNew);
 			}
 		}
-		/*
-		 * if (!(treeN.getAttributes().isEmpty())) { for
-		 * (org.wso2.developerstudio.datamapper.diagram.tree.model.Attribute
-		 * attribute : treeN .getAttributes()) { createAttribute(attribute,
-		 * treeNodeNew); } }
-		 */
-
 	}
 
 	/**

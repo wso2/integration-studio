@@ -19,6 +19,7 @@ package org.wso2.developerstudio.datamapper.diagram.edit.parts;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -31,6 +32,7 @@ import org.eclipse.draw2d.Shape;
 import org.eclipse.draw2d.StackLayout;
 import org.eclipse.draw2d.ToolbarLayout;
 import org.eclipse.draw2d.geometry.Dimension;
+import org.eclipse.draw2d.geometry.PrecisionPoint;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPolicy;
 import org.eclipse.gef.Request;
@@ -154,9 +156,13 @@ public class OutNode2EditPart extends AbstractBorderItemEditPart {
 	 * @generated NOT
 	 */
 	protected NodeFigure createNodePlate() {
-		DefaultSizeNodeFigure result = new DefaultSizeNodeFigure(10, 10);
+	/*	DefaultSizeNodeFigure result = new DefaultSizeNodeFigure(10, 10);
 
 		result.getBounds().setSize(result.getPreferredSize());
+		return result;*/
+		HashMap<String, PrecisionPoint> anchorLocations = new HashMap<String, PrecisionPoint>();
+		anchorLocations.put("CENTER", new PrecisionPoint(0.4d, 0.5d));
+		CenteredAnchors result = new CenteredAnchors(10, 10, anchorLocations); 
 		return result;
 	}
 

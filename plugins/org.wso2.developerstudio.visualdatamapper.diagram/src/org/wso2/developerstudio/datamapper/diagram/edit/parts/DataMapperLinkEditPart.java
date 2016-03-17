@@ -101,7 +101,7 @@ public class DataMapperLinkEditPart extends ConnectionNodeEditPart implements IT
 					return list;
 				}
 				Point start = getStart();
-				int difflength = 20;
+				int difflength = 30;
 				Point start2 = new Point(start.x + difflength, start.y);
 				Point end =  new Point(getEnd().x, getEnd().y);
 				Point end2 = new Point(end.x - difflength, end.y);

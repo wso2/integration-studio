@@ -19,6 +19,7 @@ package org.wso2.developerstudio.datamapper.diagram.edit.parts;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -31,6 +32,7 @@ import org.eclipse.draw2d.Shape;
 import org.eclipse.draw2d.StackLayout;
 import org.eclipse.draw2d.ToolbarLayout;
 import org.eclipse.draw2d.geometry.Dimension;
+import org.eclipse.draw2d.geometry.PrecisionPoint;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPolicy;
 import org.eclipse.gef.Request;
@@ -167,10 +169,16 @@ public class InNode2EditPart extends AbstractInNodeEditPart {
 	 * @generated NOT
 	 */
 	protected NodeFigure createNodePlate() {
-		DefaultSizeNodeFigure result = new DefaultSizeNodeFigure(10, 10);
+	/*	DefaultSizeNodeFigure result = new DefaultSizeNodeFigure(10, 10);
 
 		// FIXME: workaround for #154536
 		result.getBounds().setSize(result.getPreferredSize());
+		return result;*/
+		HashMap<String, PrecisionPoint> anchorLocations = new HashMap<String, PrecisionPoint>();
+		// The anchor's location is a little bit on the left in order to be sure
+		// that the edges will be horizontally oriented
+		anchorLocations.put("CENTER", new PrecisionPoint(0.4d, 0.5d));
+		CenteredAnchors result = new CenteredAnchors(10, 10, anchorLocations); 
 		return result;
 	}
 
@@ -284,15 +292,12 @@ public class InNode2EditPart extends AbstractInNodeEditPart {
 
 			ImageFigure mainImg = new ImageFigure(mainImgDesc.createImage());
 			mainImg.setSize(new Dimension(nodeDimension, nodeDimension));
-			RectangleFigure mainImageRectangle = new RectangleFigure();
+			ConnectionAnchorFigure mainImageRectangle = new ConnectionAnchorFigure();
 
+			
 			mainImageRectangle.setBackgroundColor(new Color(null, 255, 255, 255));
 			mainImageRectangle.setPreferredSize(new Dimension(nodeDimension, nodeDimension));
 			mainImageRectangle.add(mainImg);
-
-			mainImageRectangle.setFill(false);
-			mainImageRectangle.setOutline(false);
-			//
 			this.add(mainImageRectangle);
 			this.setOpaque(false);
 			this.setOutline(false);

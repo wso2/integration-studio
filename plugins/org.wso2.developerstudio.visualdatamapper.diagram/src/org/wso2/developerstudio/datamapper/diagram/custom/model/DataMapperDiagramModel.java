@@ -49,6 +49,7 @@ import org.wso2.developerstudio.datamapper.impl.UpperCaseImpl;
  */
 public class DataMapperDiagramModel {
 
+    private static final String TYPE = "type";
     private List<DMVariable> variablesArray = new ArrayList<>();
     private List<Integer> inputVariablesArray = new ArrayList<>();
     private List<Integer> outputVariablesArray = new ArrayList<>();
@@ -97,7 +98,7 @@ public class DataMapperDiagramModel {
         }
         boolean seqUpdated = false;
         while (executionSeq.size() < numberOfOperations) {
-            seqUpdated =false;
+            seqUpdated = false;
             for (int index = 0; unexecutedOperationList.size() > index; ++index) {
                 if (operationIsExecutable(unexecutedOperationList.get(index))) {
                     executionSeq.add(unexecutedOperationList.get(index));
@@ -107,7 +108,7 @@ public class DataMapperDiagramModel {
                     tempUnexecutedOperationList.add(unexecutedOperationList.get(index));
                 }
             }
-            if(!seqUpdated && !tempUnexecutedOperationList.isEmpty()){
+            if (!seqUpdated && !tempUnexecutedOperationList.isEmpty()) {
                 throw new DataMapperException("Unresolvable Mapping config detected");
             }
             unexecutedOperationList = tempUnexecutedOperationList;
@@ -179,7 +180,8 @@ public class DataMapperDiagramModel {
                     parentVariableIndex = parent.getIndex();
                 }
                 DMVariable addedVariable = new DMVariable(variableName, getUniqueId(objectElement),
-                        DMVariableType.INPUT, element.getSchemaDataType(), index, parentVariableIndex);
+                        DMVariableType.INPUT, getSchemaDataType(element.getProperties().get(TYPE)), index,
+                        parentVariableIndex);
                 variablesArray.add(addedVariable);
                 addVariableTypeToMap(addedVariable.getName(), SchemaDataType.STRING);
                 ((ElementImpl) objectElement).setIndex(index);
@@ -188,16 +190,24 @@ public class DataMapperDiagramModel {
                 tempNodeArray.add(element);
             } else if (objectElement instanceof TreeNodeImpl) {
                 TreeNodeImpl treeNode = (TreeNodeImpl) objectElement;
+                if (treeNode.getLevel() <= parentVariableStack.size()) {
+                    while (parentVariableStack.size() >= treeNode.getLevel()) {
+                        parentVariableStack.pop();
+                    }
+                } else if (treeNode.getLevel() > (parentVariableStack.size() + 1)) {
+                    throw new IllegalArgumentException("Illegal element level detected : element level- "
+                            + treeNode.getLevel() + " , parents level- " + parentVariableStack.size());
+                }
                 String variableName = getVariableName(DMVariableType.INPUT, parentVariableStack, treeNode.getName());
-                SchemaDataType variableType = treeNode.getSchemaDataType();
+                SchemaDataType variableType = getSchemaDataType(treeNode.getProperties().get(TYPE));
                 int parentVariableIndex = -1;
                 if (!parentVariableStack.isEmpty()) {
                     TreeNodeImpl parent = (TreeNodeImpl) parentVariableStack.peek();
                     parentVariableIndex = parent.getIndex();
                 }
                 int index = variablesArray.size();
-                DMVariable addedVariable = new DMVariable(variableName, objectElement.toString(),
-                        DMVariableType.OUTPUT, treeNode.getSchemaDataType(), index, parentVariableIndex);
+                DMVariable addedVariable = new DMVariable(variableName, objectElement.toString(), DMVariableType.INPUT,
+                        variableType, index, parentVariableIndex);
                 variablesArray.add(addedVariable);
                 outputVariablesArray.add(index);
                 treeNode.setIndex(index);
@@ -434,12 +444,13 @@ public class DataMapperDiagramModel {
                     TreeNodeImpl parent = (TreeNodeImpl) parentVariableStack.peek();
                     parentVariableIndex = parent.getIndex();
                 }
+                SchemaDataType variableType = getSchemaDataType(element.getProperties().get(TYPE));
                 DMVariable addedVariable = new DMVariable(variableName, objectElement.toString(),
-                        DMVariableType.OUTPUT, element.getSchemaDataType(), index, parentVariableIndex);
+                        DMVariableType.OUTPUT, variableType, index, parentVariableIndex);
                 variablesArray.add(addedVariable);
                 outputVariablesArray.add(index);
                 element.setIndex(index);
-                addVariableTypeToMap(addedVariable.getName(), element.getSchemaDataType());
+                addVariableTypeToMap(addedVariable.getName(), variableType);
             } else if (objectElement instanceof TreeNodeImpl) {
                 TreeNodeImpl treeNode = (TreeNodeImpl) objectElement;
                 if (treeNode.getLevel() <= parentVariableStack.size()) {
@@ -451,7 +462,7 @@ public class DataMapperDiagramModel {
                             + treeNode.getLevel() + " , parents level- " + parentVariableStack.size());
                 }
                 String variableName = getVariableName(DMVariableType.OUTPUT, parentVariableStack, treeNode.getName());
-                SchemaDataType variableType = treeNode.getSchemaDataType();
+                SchemaDataType variableType = getSchemaDataType(treeNode.getProperties().get(TYPE));
                 int parentVariableIndex = -1;
                 if (!parentVariableStack.isEmpty()) {
                     TreeNodeImpl parent = (TreeNodeImpl) parentVariableStack.peek();
@@ -459,7 +470,7 @@ public class DataMapperDiagramModel {
                 }
                 int index = variablesArray.size();
                 variablesArray.add(new DMVariable(variableName, objectElement.toString(), DMVariableType.OUTPUT,
-                        treeNode.getSchemaDataType(), index, parentVariableIndex));
+                        variableType, index, parentVariableIndex));
                 outputVariablesArray.add(index);
                 treeNode.setIndex(index);
                 addVariableTypeToMap(variableName, variableType);
@@ -476,6 +487,20 @@ public class DataMapperDiagramModel {
                 }
             }
         }
+    }
+
+    private SchemaDataType getSchemaDataType(String type) {
+        switch (type) {
+        case "string":
+            return SchemaDataType.STRING;
+        case "object":
+            return SchemaDataType.RECORD;
+        case "array":
+            return SchemaDataType.ARRAY;
+        default:
+            throw new IllegalArgumentException("Illegal schema data type found : " + type);
+        }
+
     }
 
     private String getVariableName(DMVariableType prefix, Stack<EObject> parentVariableStack, String name) {

@@ -55,6 +55,9 @@ public class DataMapperModelingAssistantProviderOfOutNode3EditPart extends DataM
 		if (targetEditPart instanceof InNode2EditPart) {
 			types.add(DataMapperElementTypes.DataMapperLink_4001);
 		}
+		if (targetEditPart instanceof InNodeEditPart) {
+			types.add(DataMapperElementTypes.DataMapperLink_4001);
+		}
 		if (targetEditPart instanceof InNode3EditPart) {
 			types.add(DataMapperElementTypes.DataMapperLink_4001);
 		}
@@ -77,6 +80,7 @@ public class DataMapperModelingAssistantProviderOfOutNode3EditPart extends DataM
 		List<IElementType> types = new ArrayList<IElementType>();
 		if (relationshipType == DataMapperElementTypes.DataMapperLink_4001) {
 			types.add(DataMapperElementTypes.InNode_3008);
+			types.add(DataMapperElementTypes.InNode_3020);
 			types.add(DataMapperElementTypes.InNode_3015);
 		}
 		return types;

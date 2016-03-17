@@ -547,13 +547,31 @@ public interface DataMapperPackage extends EPackage {
 	int TREE_NODE__PROPERTIES = 8;
 
 				/**
+	 * The feature id for the '<em><b>Out Node</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TREE_NODE__OUT_NODE = 9;
+
+				/**
+	 * The feature id for the '<em><b>In Node</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TREE_NODE__IN_NODE = 10;
+
+				/**
 	 * The number of structural features of the '<em>Tree Node</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TREE_NODE_FEATURE_COUNT = 9;
+	int TREE_NODE_FEATURE_COUNT = 11;
 
 
 	/**
@@ -1472,6 +1490,28 @@ public interface DataMapperPackage extends EPackage {
 	EReference getTreeNode_Properties();
 
 				/**
+	 * Returns the meta object for the containment reference '{@link org.wso2.developerstudio.datamapper.TreeNode#getOutNode <em>Out Node</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Out Node</em>'.
+	 * @see org.wso2.developerstudio.datamapper.TreeNode#getOutNode()
+	 * @see #getTreeNode()
+	 * @generated
+	 */
+	EReference getTreeNode_OutNode();
+
+				/**
+	 * Returns the meta object for the containment reference '{@link org.wso2.developerstudio.datamapper.TreeNode#getInNode <em>In Node</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>In Node</em>'.
+	 * @see org.wso2.developerstudio.datamapper.TreeNode#getInNode()
+	 * @see #getTreeNode()
+	 * @generated
+	 */
+	EReference getTreeNode_InNode();
+
+				/**
 	 * Returns the meta object for class '{@link org.wso2.developerstudio.datamapper.InNode <em>In Node</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2117,6 +2157,22 @@ public interface DataMapperPackage extends EPackage {
 		 * @generated
 		 */
 		EReference TREE_NODE__PROPERTIES = eINSTANCE.getTreeNode_Properties();
+
+								/**
+		 * The meta object literal for the '<em><b>Out Node</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TREE_NODE__OUT_NODE = eINSTANCE.getTreeNode_OutNode();
+
+								/**
+		 * The meta object literal for the '<em><b>In Node</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TREE_NODE__IN_NODE = eINSTANCE.getTreeNode_InNode();
 
 								/**
 		 * The meta object literal for the '{@link org.wso2.developerstudio.datamapper.impl.InNodeImpl <em>In Node</em>}' class.

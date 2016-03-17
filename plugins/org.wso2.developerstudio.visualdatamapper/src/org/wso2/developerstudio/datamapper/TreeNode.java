@@ -24,6 +24,8 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.wso2.developerstudio.datamapper.TreeNode#getSchemaDataType <em>Schema Data Type</em>}</li>
  *   <li>{@link org.wso2.developerstudio.datamapper.TreeNode#getLevel <em>Level</em>}</li>
  *   <li>{@link org.wso2.developerstudio.datamapper.TreeNode#getProperties <em>Properties</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.datamapper.TreeNode#getOutNode <em>Out Node</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.datamapper.TreeNode#getInNode <em>In Node</em>}</li>
  * </ul>
  * </p>
  *
@@ -249,5 +251,57 @@ public interface TreeNode extends EObject {
 	 * @generated
 	 */
 	EMap<String, String> getProperties();
+
+				/**
+	 * Returns the value of the '<em><b>Out Node</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Out Node</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Out Node</em>' containment reference.
+	 * @see #setOutNode(OutNode)
+	 * @see org.wso2.developerstudio.datamapper.DataMapperPackage#getTreeNode_OutNode()
+	 * @model containment="true"
+	 * @generated
+	 */
+	OutNode getOutNode();
+
+				/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.datamapper.TreeNode#getOutNode <em>Out Node</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Out Node</em>' containment reference.
+	 * @see #getOutNode()
+	 * @generated
+	 */
+	void setOutNode(OutNode value);
+
+				/**
+	 * Returns the value of the '<em><b>In Node</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>In Node</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>In Node</em>' containment reference.
+	 * @see #setInNode(InNode)
+	 * @see org.wso2.developerstudio.datamapper.DataMapperPackage#getTreeNode_InNode()
+	 * @model containment="true"
+	 * @generated
+	 */
+	InNode getInNode();
+
+				/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.datamapper.TreeNode#getInNode <em>In Node</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>In Node</em>' containment reference.
+	 * @see #getInNode()
+	 * @generated
+	 */
+	void setInNode(InNode value);
 
 } // TreeNode

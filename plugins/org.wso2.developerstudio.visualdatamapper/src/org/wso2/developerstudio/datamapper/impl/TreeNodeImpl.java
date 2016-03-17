@@ -20,7 +20,9 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.wso2.developerstudio.datamapper.DataMapperPackage;
 import org.wso2.developerstudio.datamapper.Element;
+import org.wso2.developerstudio.datamapper.InNode;
 import org.wso2.developerstudio.datamapper.Input;
+import org.wso2.developerstudio.datamapper.OutNode;
 import org.wso2.developerstudio.datamapper.Output;
 import org.wso2.developerstudio.datamapper.SchemaDataType;
 import org.wso2.developerstudio.datamapper.TreeNode;
@@ -41,6 +43,8 @@ import org.wso2.developerstudio.datamapper.TreeNode;
  *   <li>{@link org.wso2.developerstudio.datamapper.impl.TreeNodeImpl#getSchemaDataType <em>Schema Data Type</em>}</li>
  *   <li>{@link org.wso2.developerstudio.datamapper.impl.TreeNodeImpl#getLevel <em>Level</em>}</li>
  *   <li>{@link org.wso2.developerstudio.datamapper.impl.TreeNodeImpl#getProperties <em>Properties</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.datamapper.impl.TreeNodeImpl#getOutNode <em>Out Node</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.datamapper.impl.TreeNodeImpl#getInNode <em>In Node</em>}</li>
  * </ul>
  * </p>
  *
@@ -136,6 +140,26 @@ public class TreeNodeImpl extends EObjectImpl implements TreeNode {
 	 * @ordered
 	 */
 	protected EMap<String, String> properties;
+
+				/**
+	 * The cached value of the '{@link #getOutNode() <em>Out Node</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOutNode()
+	 * @generated
+	 * @ordered
+	 */
+	protected OutNode outNode;
+
+				/**
+	 * The cached value of the '{@link #getInNode() <em>In Node</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInNode()
+	 * @generated
+	 * @ordered
+	 */
+	protected InNode inNode;
 
 				private int index;
 
@@ -392,6 +416,92 @@ public class TreeNodeImpl extends EObjectImpl implements TreeNode {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public OutNode getOutNode() {
+		return outNode;
+	}
+
+				/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetOutNode(OutNode newOutNode, NotificationChain msgs) {
+		OutNode oldOutNode = outNode;
+		outNode = newOutNode;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DataMapperPackage.TREE_NODE__OUT_NODE, oldOutNode, newOutNode);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+				/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setOutNode(OutNode newOutNode) {
+		if (newOutNode != outNode) {
+			NotificationChain msgs = null;
+			if (outNode != null)
+				msgs = ((InternalEObject)outNode).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DataMapperPackage.TREE_NODE__OUT_NODE, null, msgs);
+			if (newOutNode != null)
+				msgs = ((InternalEObject)newOutNode).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DataMapperPackage.TREE_NODE__OUT_NODE, null, msgs);
+			msgs = basicSetOutNode(newOutNode, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DataMapperPackage.TREE_NODE__OUT_NODE, newOutNode, newOutNode));
+	}
+
+				/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public InNode getInNode() {
+		return inNode;
+	}
+
+				/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetInNode(InNode newInNode, NotificationChain msgs) {
+		InNode oldInNode = inNode;
+		inNode = newInNode;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DataMapperPackage.TREE_NODE__IN_NODE, oldInNode, newInNode);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+				/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setInNode(InNode newInNode) {
+		if (newInNode != inNode) {
+			NotificationChain msgs = null;
+			if (inNode != null)
+				msgs = ((InternalEObject)inNode).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DataMapperPackage.TREE_NODE__IN_NODE, null, msgs);
+			if (newInNode != null)
+				msgs = ((InternalEObject)newInNode).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DataMapperPackage.TREE_NODE__IN_NODE, null, msgs);
+			msgs = basicSetInNode(newInNode, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DataMapperPackage.TREE_NODE__IN_NODE, newInNode, newInNode));
+	}
+
+				/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
@@ -436,6 +546,10 @@ public class TreeNodeImpl extends EObjectImpl implements TreeNode {
 				return basicSetInputParent(null, msgs);
 			case DataMapperPackage.TREE_NODE__PROPERTIES:
 				return ((InternalEList<?>)getProperties()).basicRemove(otherEnd, msgs);
+			case DataMapperPackage.TREE_NODE__OUT_NODE:
+				return basicSetOutNode(null, msgs);
+			case DataMapperPackage.TREE_NODE__IN_NODE:
+				return basicSetInNode(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -485,6 +599,10 @@ public class TreeNodeImpl extends EObjectImpl implements TreeNode {
 			case DataMapperPackage.TREE_NODE__PROPERTIES:
 				if (coreType) return getProperties();
 				else return getProperties().map();
+			case DataMapperPackage.TREE_NODE__OUT_NODE:
+				return getOutNode();
+			case DataMapperPackage.TREE_NODE__IN_NODE:
+				return getInNode();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -527,6 +645,12 @@ public class TreeNodeImpl extends EObjectImpl implements TreeNode {
 			case DataMapperPackage.TREE_NODE__PROPERTIES:
 				((EStructuralFeature.Setting)getProperties()).set(newValue);
 				return;
+			case DataMapperPackage.TREE_NODE__OUT_NODE:
+				setOutNode((OutNode)newValue);
+				return;
+			case DataMapperPackage.TREE_NODE__IN_NODE:
+				setInNode((InNode)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -566,6 +690,12 @@ public class TreeNodeImpl extends EObjectImpl implements TreeNode {
 			case DataMapperPackage.TREE_NODE__PROPERTIES:
 				getProperties().clear();
 				return;
+			case DataMapperPackage.TREE_NODE__OUT_NODE:
+				setOutNode((OutNode)null);
+				return;
+			case DataMapperPackage.TREE_NODE__IN_NODE:
+				setInNode((InNode)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -596,6 +726,10 @@ public class TreeNodeImpl extends EObjectImpl implements TreeNode {
 				return level != LEVEL_EDEFAULT;
 			case DataMapperPackage.TREE_NODE__PROPERTIES:
 				return properties != null && !properties.isEmpty();
+			case DataMapperPackage.TREE_NODE__OUT_NODE:
+				return outNode != null;
+			case DataMapperPackage.TREE_NODE__IN_NODE:
+				return inNode != null;
 		}
 		return super.eIsSet(featureID);
 	}

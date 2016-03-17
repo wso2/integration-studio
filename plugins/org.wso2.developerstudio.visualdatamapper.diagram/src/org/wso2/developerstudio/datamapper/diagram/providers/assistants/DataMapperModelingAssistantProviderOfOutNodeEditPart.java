@@ -17,16 +17,14 @@ import org.wso2.developerstudio.datamapper.diagram.providers.DataMapperModelingA
 /**
  * @generated
  */
-public class DataMapperModelingAssistantProviderOfOutNodeEditPart extends
-		DataMapperModelingAssistantProvider {
+public class DataMapperModelingAssistantProviderOfOutNodeEditPart extends DataMapperModelingAssistantProvider {
 
 	/**
 	 * @generated
 	 */
 	@Override
 	public List<IElementType> getRelTypesOnSource(IAdaptable source) {
-		IGraphicalEditPart sourceEditPart = (IGraphicalEditPart) source
-				.getAdapter(IGraphicalEditPart.class);
+		IGraphicalEditPart sourceEditPart = (IGraphicalEditPart) source.getAdapter(IGraphicalEditPart.class);
 		return doGetRelTypesOnSource((OutNodeEditPart) sourceEditPart);
 	}
 
@@ -44,23 +42,20 @@ public class DataMapperModelingAssistantProviderOfOutNodeEditPart extends
 	 */
 	@Override
 	public List<IElementType> getRelTypesOnSourceAndTarget(IAdaptable source, IAdaptable target) {
-		IGraphicalEditPart sourceEditPart = (IGraphicalEditPart) source
-				.getAdapter(IGraphicalEditPart.class);
-		IGraphicalEditPart targetEditPart = (IGraphicalEditPart) target
-				.getAdapter(IGraphicalEditPart.class);
+		IGraphicalEditPart sourceEditPart = (IGraphicalEditPart) source.getAdapter(IGraphicalEditPart.class);
+		IGraphicalEditPart targetEditPart = (IGraphicalEditPart) target.getAdapter(IGraphicalEditPart.class);
 		return doGetRelTypesOnSourceAndTarget((OutNodeEditPart) sourceEditPart, targetEditPart);
 	}
 
 	/**
 	 * @generated
 	 */
-	public List<IElementType> doGetRelTypesOnSourceAndTarget(OutNodeEditPart source,
-			IGraphicalEditPart targetEditPart) {
+	public List<IElementType> doGetRelTypesOnSourceAndTarget(OutNodeEditPart source, IGraphicalEditPart targetEditPart) {
 		List<IElementType> types = new LinkedList<IElementType>();
-		if (targetEditPart instanceof InNodeEditPart) {
+		if (targetEditPart instanceof InNode2EditPart) {
 			types.add(DataMapperElementTypes.DataMapperLink_4001);
 		}
-		if (targetEditPart instanceof InNode2EditPart) {
+		if (targetEditPart instanceof InNodeEditPart) {
 			types.add(DataMapperElementTypes.DataMapperLink_4001);
 		}
 		if (targetEditPart instanceof InNode3EditPart) {
@@ -74,20 +69,18 @@ public class DataMapperModelingAssistantProviderOfOutNodeEditPart extends
 	 */
 	@Override
 	public List<IElementType> getTypesForTarget(IAdaptable source, IElementType relationshipType) {
-		IGraphicalEditPart sourceEditPart = (IGraphicalEditPart) source
-				.getAdapter(IGraphicalEditPart.class);
+		IGraphicalEditPart sourceEditPart = (IGraphicalEditPart) source.getAdapter(IGraphicalEditPart.class);
 		return doGetTypesForTarget((OutNodeEditPart) sourceEditPart, relationshipType);
 	}
 
 	/**
 	 * @generated
 	 */
-	public List<IElementType> doGetTypesForTarget(OutNodeEditPart source,
-			IElementType relationshipType) {
+	public List<IElementType> doGetTypesForTarget(OutNodeEditPart source, IElementType relationshipType) {
 		List<IElementType> types = new ArrayList<IElementType>();
 		if (relationshipType == DataMapperElementTypes.DataMapperLink_4001) {
 			types.add(DataMapperElementTypes.InNode_3008);
-			types.add(DataMapperElementTypes.InNode_3008);
+			types.add(DataMapperElementTypes.InNode_3020);
 			types.add(DataMapperElementTypes.InNode_3015);
 		}
 		return types;

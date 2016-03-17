@@ -149,6 +149,8 @@ public class TreeNodeItemProvider
 			childrenFeatures.add(DataMapperPackage.Literals.TREE_NODE__NODE);
 			childrenFeatures.add(DataMapperPackage.Literals.TREE_NODE__ELEMENT);
 			childrenFeatures.add(DataMapperPackage.Literals.TREE_NODE__PROPERTIES);
+			childrenFeatures.add(DataMapperPackage.Literals.TREE_NODE__OUT_NODE);
+			childrenFeatures.add(DataMapperPackage.Literals.TREE_NODE__IN_NODE);
 		}
 		return childrenFeatures;
 	}
@@ -211,6 +213,8 @@ public class TreeNodeItemProvider
 			case DataMapperPackage.TREE_NODE__NODE:
 			case DataMapperPackage.TREE_NODE__ELEMENT:
 			case DataMapperPackage.TREE_NODE__PROPERTIES:
+			case DataMapperPackage.TREE_NODE__OUT_NODE:
+			case DataMapperPackage.TREE_NODE__IN_NODE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -242,6 +246,16 @@ public class TreeNodeItemProvider
 			(createChildParameter
 				(DataMapperPackage.Literals.TREE_NODE__PROPERTIES,
 				 DataMapperFactory.eINSTANCE.create(DataMapperPackage.Literals.PROPERTY_KEY_VALUE_PAIR)));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(DataMapperPackage.Literals.TREE_NODE__OUT_NODE,
+				 DataMapperFactory.eINSTANCE.createOutNode()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(DataMapperPackage.Literals.TREE_NODE__IN_NODE,
+				 DataMapperFactory.eINSTANCE.createInNode()));
 	}
 
 	/**

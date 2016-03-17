@@ -68,10 +68,11 @@ public class OutNodeEditPart extends AbstractBorderItemEditPart {
 	public boolean canAttachNote() {
 		return false;
 	}
+
 	/**
 	 * @generated
 	 */
-	public static final int VISUAL_ID = 3006;
+	public static final int VISUAL_ID = 3019;
 
 	/**
 	 * @generated
@@ -102,8 +103,7 @@ public class OutNodeEditPart extends AbstractBorderItemEditPart {
 	protected void createDefaultEditPolicies() {
 		super.createDefaultEditPolicies();
 		installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE, getPrimaryDragEditPolicy());
-		installEditPolicy(
-				EditPolicyRoles.SEMANTIC_ROLE,
+		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE,
 				new org.wso2.developerstudio.datamapper.diagram.edit.policies.OutNodeItemSemanticEditPolicy());
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
 		// XXX need an SCR to runtime to have another abstract superclass that would let children add reasonable editpolicies
@@ -161,7 +161,7 @@ public class OutNodeEditPart extends AbstractBorderItemEditPart {
 		return result;*/
 		HashMap<String, PrecisionPoint> anchorLocations = new HashMap<String, PrecisionPoint>();
 		anchorLocations.put("CENTER", new PrecisionPoint(0.4d, 0.5d));
-		CenteredAnchors result = new CenteredAnchors(10, 10, anchorLocations); 
+		CenteredAnchors result = new CenteredAnchors(10, 10, anchorLocations);
 		return result;
 	}
 
@@ -291,8 +291,8 @@ public class OutNodeEditPart extends AbstractBorderItemEditPart {
 				public void mouseEntered(MouseEvent me) {
 
 					getEditDomain().getPaletteViewer().setActiveTool(
-							(ToolEntry) (((PaletteContainer) getEditDomain().getPaletteViewer()
-									.getPaletteRoot().getChildren().get(1)).getChildren().get(0)));
+							(ToolEntry) (((PaletteContainer) getEditDomain().getPaletteViewer().getPaletteRoot()
+									.getChildren().get(1)).getChildren().get(0)));
 				}
 
 				@Override
@@ -317,7 +317,7 @@ public class OutNodeEditPart extends AbstractBorderItemEditPart {
 			ImageDescriptor mainImgDesc = AbstractUIPlugin.imageDescriptorFromPlugin(
 					"org.wso2.developerstudio.visualdatamapper.diagram", "icons/gmf/black.jpg");
 
-			int nodeDimension = 4; // width for connection nodes
+			int nodeDimension = 10; // width for connection nodes
 
 			ImageFigure mainImg = new ImageFigure(mainImgDesc.createImage());
 			mainImg.setSize(new Dimension(nodeDimension, nodeDimension));

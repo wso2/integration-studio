@@ -69,6 +69,7 @@ public class InNodeEditPart extends AbstractInNodeEditPart {
 	public boolean canAttachNote() {
 		return false;
 	}
+
 	/**
 	 * @generated
 	 */
@@ -162,12 +163,12 @@ public class InNodeEditPart extends AbstractInNodeEditPart {
 	 * @generated NOT
 	 */
 	protected NodeFigure createNodePlate() {
-	/*	DefaultSizeNodeFigure result = new DefaultSizeNodeFigure(10, 10);
-		result.getBounds().setSize(result.getPreferredSize());
-		return result;*/
+		/*	DefaultSizeNodeFigure result = new DefaultSizeNodeFigure(10, 10);
+			result.getBounds().setSize(result.getPreferredSize());
+			return result;*/
 		HashMap<String, PrecisionPoint> anchorLocations = new HashMap<String, PrecisionPoint>();
 		anchorLocations.put("CENTER", new PrecisionPoint(0.4d, 0.5d));
-		CenteredAnchors result = new CenteredAnchors(10, 10, anchorLocations); 
+		CenteredAnchors result = new CenteredAnchors(10, 10, anchorLocations);
 		return result;
 	}
 
@@ -261,24 +262,24 @@ public class InNodeEditPart extends AbstractInNodeEditPart {
 			this.setFill(false);
 			this.setOutline(false);
 			this.addMouseListener(new MouseListener() {
-				
+
 				@Override
 				public void mouseReleased(MouseEvent me) {
 					getEditDomain().getPaletteViewer().setActiveTool(null);
 				}
-				
+
 				@Override
 				public void mousePressed(MouseEvent me) {
 					getEditDomain().getPaletteViewer().setActiveTool(
-							(ToolEntry) (((PaletteContainer) getEditDomain().getPaletteViewer()
-									.getPaletteRoot().getChildren().get(1)).getChildren().get(0)));
+							(ToolEntry) (((PaletteContainer) getEditDomain().getPaletteViewer().getPaletteRoot()
+									.getChildren().get(1)).getChildren().get(0)));
 				}
-				
+
 				@Override
 				public void mouseDoubleClicked(MouseEvent me) {
 					getEditDomain().getPaletteViewer().setActiveTool(
-							(ToolEntry) (((PaletteContainer) getEditDomain().getPaletteViewer()
-									.getPaletteRoot().getChildren().get(1)).getChildren().get(0)));
+							(ToolEntry) (((PaletteContainer) getEditDomain().getPaletteViewer().getPaletteRoot()
+									.getChildren().get(1)).getChildren().get(0)));
 				}
 			});
 			//setBorder(new SimpleRaisedBorder(3));

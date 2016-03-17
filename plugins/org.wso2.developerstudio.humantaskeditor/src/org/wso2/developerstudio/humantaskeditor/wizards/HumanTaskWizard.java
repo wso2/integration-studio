@@ -126,7 +126,10 @@ public class HumanTaskWizard extends Wizard implements INewWizard {
 			}
 			stream.close();
 		} catch (IOException e) {
-			e.printStackTrace();
+			logger.log(Level.FINE, "Error Creating Initial File", e);
+			IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage()); 
+			ErrorDialog.openError(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), "Error", "Error Creating Initial File", editorStatus);
+
 		}
 		monitor.worked(1);
 		monitor.setTaskName("Opening file for editing...");
@@ -137,6 +140,10 @@ public class HumanTaskWizard extends Wizard implements INewWizard {
 				try {
 					IDE.openEditor(page, file, true);
 				} catch (PartInitException e) {
+					logger.log(Level.FINE, "Error Opening the Editor", e);
+					IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage()); 
+					ErrorDialog.openError(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), "Error", "Error Opening the Editor", editorStatus);
+
 				}
 			}
 		});
@@ -170,7 +177,7 @@ public class HumanTaskWizard extends Wizard implements INewWizard {
 					inputStream));
 			String inputLine;
 			while ((inputLine = in.readLine()) != null) {
-				sb.append(inputLine);
+				sb.append(inputLine+"\n");
 			}
 
 			in.close();

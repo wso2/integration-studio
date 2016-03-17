@@ -146,19 +146,19 @@
                 <!-- Display Input Information to the User -->
                 <htd:rendering type="wso2:input">
                     <wso2:inputs>
-                        <wso2:element id="fname">
+                        <wso2:element id="fname" type="xsd:string">
                             <wso2:label>First Name</wso2:label>
                             <wso2:value>$firstname$</wso2:value>
                         </wso2:element>
-                        <wso2:element id="lname">
+                        <wso2:element id="lname" type="xsd:string">
                             <wso2:label>Last Name</wso2:label>
                             <wso2:value>$lastname$</wso2:value>
                         </wso2:element>
-                        <wso2:element id="amount">
+                        <wso2:element id="amount" type="xsd:string">
                             <wso2:label>Loan Amount</wso2:label>
                             <wso2:value>$euroAmount$</wso2:value>
                         </wso2:element>
-                        <wso2:element id="custId">
+                        <wso2:element id="custId" type="xsd:string">
                             <wso2:label>Customer Identifier</wso2:label>
                             <wso2:value>/test10:ClaimApprovalData/test10:cust/test10:id</wso2:value>
                         </wso2:element>
@@ -168,7 +168,7 @@
                 <!-- Display elements to the user workspace which implements output message -->
                 <htd:rendering type="wso2:output">
                     <wso2:outputs>
-                        <wso2:element id="approved">
+                        <wso2:element id="approved" type="xsd:string">
                             <wso2:label>Loan Approval Status</wso2:label>
                             <wso2:xpath>/test10:ClaimApprovalResponse/test10:approved</wso2:xpath>
                             <wso2:value type="boolean">Approved, Disapproved</wso2:value>

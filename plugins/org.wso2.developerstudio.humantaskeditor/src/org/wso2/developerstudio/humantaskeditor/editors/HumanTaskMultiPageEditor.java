@@ -16,14 +16,19 @@
 
 package org.wso2.developerstudio.humantaskeditor.editors;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
+
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.resources.IResourceChangeEvent;
 import org.eclipse.core.resources.IResourceChangeListener;
 import org.eclipse.core.resources.ResourcesPlugin;
-import org.eclipse.core.runtime.IPath;
+import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.Path;
 import org.eclipse.jface.dialogs.ErrorDialog;
+import org.eclipse.jface.text.BadLocationException;
+import org.eclipse.jface.text.IDocument;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorPart;
@@ -31,10 +36,14 @@ import org.eclipse.ui.IEditorSite;
 import org.eclipse.ui.IFileEditorInput;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PartInitException;
+import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.editors.text.TextEditor;
 import org.eclipse.ui.ide.IDE;
 import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.ui.part.MultiPageEditorPart;
+import org.eclipse.ui.texteditor.AbstractTextEditor;
+import org.eclipse.ui.texteditor.IDocumentProvider;
+import org.eclipse.ui.texteditor.ITextEditor;
 import org.eclipse.wst.sse.ui.StructuredTextEditor;
 
 /**
@@ -62,8 +71,8 @@ public class HumanTaskMultiPageEditor extends MultiPageEditorPart implements
 	}
 
 	/**
-	 * Creates page 0 of the multi-page editor, which contains human task GUI editor
-	 * font used in page 2.
+	 * Creates page 0 of the multi-page editor, which contains human task GUI
+	 * editor font used in page 2.
 	 */
 	void createPage0() {
 
@@ -73,12 +82,14 @@ public class HumanTaskMultiPageEditor extends MultiPageEditorPart implements
 		try {
 			index = addPage(humanTaskUIEditor, getEditorInput());
 			setPageText(index, "GUI Editor");
+			humanTaskUIEditor
+					.setEditorFunctionExecutor(new EditorContentFunction());
 		} catch (PartInitException e) {
 			ErrorDialog.openError(getSite().getShell(),
 					"Error creating UI editor", null, e.getStatus());
 		}
 	}
-	
+
 	/**
 	 * Creates page 1 of the multi-page editor, which contains a text editor.
 	 */
@@ -93,27 +104,10 @@ public class HumanTaskMultiPageEditor extends MultiPageEditorPart implements
 		}
 	}
 
-	
-
-	/**
-	 * Creates page 2 of the multi-page editor, which shows the sorted wsdl file.
-	 *//*
-	void createPage2() {
-		try {
-			IPath path = new Path(" getProjectRelativePath()");
-			// IFile file = project.getFile(path);
-			textEditor = new TextEditor();
-			int index = addPage(textEditor, new FileEditorInput(null));
-			setPageText(index, textEditor.getTitle());
-		} catch (PartInitException e) {
-			ErrorDialog.openError(getSite().getShell(),
-					"Error creating nested wsdl editor", null, e.getStatus());
-		}
-	}*/
-
 	/**
 	 * Creates the pages of the multi-page editor.
 	 */
+	@Override
 	protected void createPages() {
 
 		createPage0();
@@ -126,16 +120,29 @@ public class HumanTaskMultiPageEditor extends MultiPageEditorPart implements
 	 * <code>IWorkbenchPart</code> method disposes all nested editors.
 	 * Subclasses may extend.
 	 */
+	@Override
 	public void dispose() {
 		ResourcesPlugin.getWorkspace().removeResourceChangeListener(this);
 		super.dispose();
 	}
 
 	/**
-	 * Saves the multi-page editor's document.
+	 * Saves the multi-page editor's document. while calling js functions to save and sync
 	 */
+	@Override
 	public void doSave(IProgressMonitor monitor) {
 		getEditor(1).doSave(monitor);
+		if (getActivePage() == 0) {
+			humanTaskUIEditor.getBrowser().execute("makeUnDirty();");
+		} else if (getActivePage() == 1) {
+			humanTaskUIEditor.getBrowser().execute("loadModel();");
+			humanTaskUIEditor.getBrowser().execute("IDESetDirty(false);");
+		}
+		/*
+		 * ITextEditor editor = (ITextEditor)getEditor(1); IDocumentProvider dp
+		 * = editor.getDocumentProvider(); IDocument doc =
+		 * dp.getDocument(editor.getEditorInput()); doc.set("Testing One");
+		 */
 	}
 
 	/**
@@ -143,6 +150,7 @@ public class HumanTaskMultiPageEditor extends MultiPageEditorPart implements
 	 * text for page 0's tab, and updates this multi-page editor's input to
 	 * correspond to the nested editor's.
 	 */
+	@Override
 	public void doSaveAs() {
 		IEditorPart editor = getEditor(1);
 		editor.doSaveAs();
@@ -162,6 +170,7 @@ public class HumanTaskMultiPageEditor extends MultiPageEditorPart implements
 	 * The <code>MultiPageEditorExample</code> implementation of this method
 	 * checks that the input is an instance of <code>IFileEditorInput</code>.
 	 */
+	@Override
 	public void init(IEditorSite site, IEditorInput editorInput)
 			throws PartInitException {
 		if (!(editorInput instanceof IFileEditorInput))
@@ -173,6 +182,7 @@ public class HumanTaskMultiPageEditor extends MultiPageEditorPart implements
 	/*
 	 * (non-Javadoc) Method declared on IEditorPart.
 	 */
+	@Override
 	public boolean isSaveAsAllowed() {
 		return true;
 	}
@@ -180,11 +190,20 @@ public class HumanTaskMultiPageEditor extends MultiPageEditorPart implements
 	/**
 	 * calls respective JS methods when the pages are switched.
 	 */
+	@Override
 	protected void pageChange(int newPageIndex) {
 		super.pageChange(newPageIndex);
+		ITextEditor editor = (ITextEditor) getEditor(1);
+		IDocumentProvider dp = editor.getDocumentProvider();
+		IDocument doc = dp.getDocument(editor.getEditorInput());
 		if (newPageIndex == 1) {
 			humanTaskUIEditor.getBrowser().execute("saveSource();");
+			if (humanTaskUIEditor.isDirty()) {
+				doc.set(EditorContentFunction.getText());
+			}
 		} else if (newPageIndex == 0) {
+			EditorContentFunction.setText(doc.get());
+			humanTaskUIEditor.getBrowser().execute("loadModelWithText();");
 			humanTaskUIEditor.getBrowser().execute("process();");
 		}
 	}
@@ -192,9 +211,11 @@ public class HumanTaskMultiPageEditor extends MultiPageEditorPart implements
 	/**
 	 * Closes all project files on project close.
 	 */
+	@Override
 	public void resourceChanged(final IResourceChangeEvent event) {
 		if (event.getType() == IResourceChangeEvent.PRE_CLOSE) {
 			Display.getDefault().asyncExec(new Runnable() {
+				@Override
 				public void run() {
 					IWorkbenchPage[] pages = getSite().getWorkbenchWindow()
 							.getPages();

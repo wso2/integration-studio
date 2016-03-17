@@ -177,13 +177,13 @@ public class HumanTaskWizardPage extends WizardPage {
 			return;
 		}
 		int dotLoc = fileName.lastIndexOf('.');
-		/*if (dotLoc != -1) {
+		if (dotLoc != -1) {
 			String ext = fileName.substring(dotLoc + 1);
 			if (ext.equalsIgnoreCase("ht") == false) {
 				updateStatus("File extension must be \"ht\"");
 				return;
 			}
-		}*/
+		}
 		updateStatus(null);
 	}
 

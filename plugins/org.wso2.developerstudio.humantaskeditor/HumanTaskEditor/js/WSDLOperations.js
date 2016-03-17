@@ -9,33 +9,7 @@
  * 
  * 
  */
-function CreateFile(currentTaskName) { //createFile
 
-    // Create Task WSDL
-    $.get('resources/dummy.wsdl', function(data) {
-        try {
-            wsdlDom = marshalEditorTextContent(data);
-            generateInputWSDL(wsdlDom, currentTaskName);
-            SaveWSDL(wsdlDom, currentTaskName + "Task");
-
-        } catch (err) {
-            alert(err);
-        }
-
-    });
-    // Create Task Callback WSDL
-    $.get('resources/dummy.wsdl', function(data) {
-        try {
-            wsdlCBDom = marshalEditorTextContent(data);
-            generateOutputWSDL(wsdlCBDom, currentTaskName);
-            SaveWSDL(wsdlCBDom, currentTaskName + "CBTask");
-
-        } catch (err) {
-            alert(err);
-        }
-
-    });
-}
 
 /*
  * Signature: saveWSDL(inputWsdl, fileName) {...}

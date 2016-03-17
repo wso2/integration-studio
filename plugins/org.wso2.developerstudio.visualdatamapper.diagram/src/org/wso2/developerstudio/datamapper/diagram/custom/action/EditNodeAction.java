@@ -26,6 +26,7 @@ import org.eclipse.emf.common.util.EMap;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.edit.command.AddCommand;
 import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.common.ui.action.AbstractActionHandler;
@@ -38,31 +39,31 @@ import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.datamapper.DataMapperPackage;
-import org.wso2.developerstudio.datamapper.Element;
+import org.wso2.developerstudio.datamapper.TreeNode;
 import org.wso2.developerstudio.datamapper.diagram.custom.util.AddNewObjectDialog;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.TreeNode2EditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.TreeNode3EditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.TreeNodeEditPart;
 import org.wso2.developerstudio.eclipse.registry.core.interfaces.IRegistryFile;
 
-public class EditAttributeAction extends AbstractActionHandler {
+public class EditNodeAction extends AbstractActionHandler {
+
 	private EditPart selectedEP;
-	private static final String RENAME_ACTION_ID = "rename-field-action-id"; //$NON-NLS-1$
-	private static final String RENAME_FIELD = Messages.EditActions_editAttribute;
+	private static final String RENAME_ACTION_ID = "rename-node-action-id"; //$NON-NLS-1$
+	private static final String RENAME_FIELD = Messages.EditActions_editRootElement;
 
-
+	private static final String JSON_SCHEMA_REQUIRED = "required";
+	private static final String JSON_SCHEMA_SCHEMA_VALUE = "$schema";
 	private static final String JSON_SCHEMA_ID = "id";
 	private static final String JSON_SCHEMA_TYPE = "type";
 	private static final String JSON_SCHEMA_TITLE = "title";
-
 	private String title = null;
 	private String schemaType = null;
 	private String id = null;
 	private String schemaValue = null;
 	private String required = null;
 
-
-	public EditAttributeAction(IWorkbenchPart workbenchPart) {
+	public EditNodeAction(IWorkbenchPart workbenchPart) {
 		super(workbenchPart);
 
 		setId(RENAME_ACTION_ID);
@@ -74,31 +75,38 @@ public class EditAttributeAction extends AbstractActionHandler {
 
 	@Override
 	protected void doRun(IProgressMonitor progressMonitor) {
-
 		selectedEP = getSelectedEditPart();
 
 		if (null != selectedEP) {
 			// Returns the TreeNodeImpl object respective to selectedEP
 			EObject object = ((Node) selectedEP.getModel()).getElement();
 			// Used to identify the selected resource of the model
-			Element selectedElem = (Element) object;
+			TreeNode selectedNode = (TreeNode) object;
 
-			title = selectedElem.getName();
-			schemaType = selectedElem.getProperties().get(JSON_SCHEMA_TYPE);
-			if (selectedElem.getProperties().get(JSON_SCHEMA_ID) != null) {
-				id = selectedElem.getProperties().get(JSON_SCHEMA_ID);
+			title = selectedNode.getName();
+			schemaType = selectedNode.getProperties().get(JSON_SCHEMA_TYPE);
+			if (selectedNode.getProperties().get(JSON_SCHEMA_ID) != null) {
+				id = selectedNode.getProperties().get(JSON_SCHEMA_ID);
+			}
+			if (selectedNode.getProperties().get(JSON_SCHEMA_REQUIRED) != null) {
+				required = selectedNode.getProperties().get(JSON_SCHEMA_REQUIRED).toString();
+			}
+			if (selectedNode.getProperties().get(JSON_SCHEMA_SCHEMA_VALUE) != null) {
+				schemaValue = selectedNode.getProperties().get(JSON_SCHEMA_SCHEMA_VALUE);
 			}
 
-			openEditFieldDialog(selectedElem, title, schemaType, id, required, schemaValue);
+			openEditRecordDialog(selectedNode, title, schemaType, id, required, schemaValue);
+
 		}
 	}
 
 	/**
 	 * Reflects the changes in the tree view
+	 * 
 	 * @param selectedElem
 	 * @param map
 	 */
-	private void reflectChanges(Element selectedElem, HashMap<String, String> map) {
+	private void reflectChanges(TreeNode selectedNode, HashMap<String, String> map) {
 		
 		@SuppressWarnings("rawtypes")
 		Iterator entries = map.entrySet().iterator();
@@ -108,9 +116,9 @@ public class EditAttributeAction extends AbstractActionHandler {
 		  Object key = thisEntry.getKey();
 		  Object value = thisEntry.getValue();
 		  if(key.equals(JSON_SCHEMA_TITLE)){
-				executeCommand(selectedElem, DataMapperPackage.Literals.TREE_NODE__NAME, value.toString());  
+				executeCommand(selectedNode, DataMapperPackage.Literals.TREE_NODE__NAME, value.toString());  
 		  }else{
-			    EMap<String, String> propertyMap = selectedElem.getProperties();	   
+			    EMap<String, String> propertyMap = selectedNode.getProperties();	   
 			    executeAddCommand(propertyMap, DataMapperPackage.Literals.PROPERTY_KEY_VALUE_PAIR, value.toString());
 		  }
 		}
@@ -124,8 +132,8 @@ public class EditAttributeAction extends AbstractActionHandler {
 				((TreeNode3EditPart) getSelectedEditPart()).renameElementItem(map.get(JSON_SCHEMA_TITLE));
 			}
 		} 
-		
 	}
+
 	/**
 	 * Saves the edited values in the map
 	 * @param propertyMap map
@@ -133,49 +141,41 @@ public class EditAttributeAction extends AbstractActionHandler {
 	 * @param string value
 	 */
 	private void executeAddCommand(EMap<String, String> propertyMap, EClass propertyKeyValuePair, String string) {
-		SetCommand editComd = new SetCommand(((GraphicalEditPart) selectedEP).getEditingDomain(),
+		AddCommand editComd = new AddCommand(((GraphicalEditPart) selectedEP).getEditingDomain(),
 				propertyKeyValuePair, null, string);
 		if (editComd.canExecute()) {
 			((GraphicalEditPart) selectedEP).getEditingDomain().getCommandStack().execute(editComd);
-		}
-		
+		}	
 	}
 
 	/**
 	 * Save edited values into the model
 	 * 
-	 * @param selectedElem
-	 * @param feature
-	 * @param value
+	 * @param selectedNode
+	 *            node
+	 * @param String
+	 *            value
 	 */
-	private void executeCommand(Element selectedElem, EStructuralFeature feature, String value) {
-		SetCommand renameComd = new SetCommand(((GraphicalEditPart) selectedEP).getEditingDomain(), selectedElem,
+	private void executeCommand(TreeNode selectedNode, EStructuralFeature feature, String value) {
+		SetCommand editComd = new SetCommand(((GraphicalEditPart) selectedEP).getEditingDomain(), selectedNode,
 				feature, value);
-		if (renameComd.canExecute()) {
-			((GraphicalEditPart) selectedEP).getEditingDomain().getCommandStack().execute(renameComd);
+		if (editComd.canExecute()) {
+			((GraphicalEditPart) selectedEP).getEditingDomain().getCommandStack().execute(editComd);
 		}
 	}
-
+	
+	
 	/**
-	 * Opens the dialog
-	 * @param selectedElem 
-	 * 
-	 * @param editFieldDialog
-	 * @param name
-	 *            name
-	 * @param prefix
-	 *            prefix
-	 * @param schemaType
-	 *            schemaType
-	 * @param namespace
-	 *            namespace
-	 * @param aliases
-	 *            aliases
-	 * @return map
+	 * opens the dilaog
+	 * @param selectedNode node
+	 * @param title title
+	 * @param schemaType schematype
+	 * @param id id
+	 * @param required required
+	 * @param schemaValue schema value
 	 */
-	private void openEditFieldDialog(Element selectedElem, String title, String schemaType, String id,
+	private void openEditRecordDialog(TreeNode selectedNode, String title, String schemaType, String id,
 			String required, String schemaValue) {
-
 		Display display = Display.getDefault();
 		Shell shell = new Shell(display);
 		AddNewObjectDialog editTypeDialog = new AddNewObjectDialog(shell, new Class[] { IRegistryFile.class });
@@ -184,23 +184,30 @@ public class EditAttributeAction extends AbstractActionHandler {
 		editTypeDialog.setTypeWhenEditing(schemaType);
 		editTypeDialog.setValues(title, schemaType, id, required, schemaValue);
 		editTypeDialog.open();
-		
-		if(editTypeDialog.getOkValue()){
-		
-		HashMap<String, String> valueMap = new HashMap<String, String>();
-		
-		if (StringUtils.isNotEmpty(editTypeDialog.getTitle())) {
-			valueMap.put(JSON_SCHEMA_TITLE, editTypeDialog.getTitle());
-		}
-		valueMap.put(JSON_SCHEMA_TYPE, editTypeDialog.getSchemaType());
-		if (StringUtils.isNotEmpty(editTypeDialog.getID())) {
-			valueMap.put(JSON_SCHEMA_ID, editTypeDialog.getID());
-		}
-		
-		reflectChanges(selectedElem, valueMap);
-		}
-	}
 
+		
+		if (editTypeDialog.getOkValue()) {
+			HashMap<String, String> valueMap = new HashMap<String, String>();
+
+			if (StringUtils.isNotEmpty(editTypeDialog.getTitle())) {
+				valueMap.put(JSON_SCHEMA_TITLE, editTypeDialog.getTitle());
+			}
+			valueMap.put(JSON_SCHEMA_TYPE, editTypeDialog.getSchemaType());
+			if (StringUtils.isNotEmpty(editTypeDialog.getID())) {
+				valueMap.put(JSON_SCHEMA_ID, editTypeDialog.getID());
+			}
+			if (StringUtils.isNotEmpty(editTypeDialog.getSchemaValue())) {
+				valueMap.put(JSON_SCHEMA_SCHEMA_VALUE, editTypeDialog.getSchemaValue());
+			}
+			if (StringUtils.isNotEmpty(editTypeDialog.getRequired())) {
+				valueMap.put(JSON_SCHEMA_REQUIRED, editTypeDialog.getRequired());
+			}
+			reflectChanges(selectedNode, valueMap);
+
+		}
+		 
+	}
+	
 	private EditPart getSelectedEditPart() {
 		IStructuredSelection selection = getStructuredSelection();
 		if (selection.size() == 1) {

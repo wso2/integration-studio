@@ -97,8 +97,7 @@ public class AddNewArrayAction extends AbstractActionHandler {
 					treeNodeNew.getProperties().put(JSON_SCHEMA_ID, objectDialog.getID());
 				}
 				if (StringUtils.isNotEmpty(objectDialog.getRequired())) {
-					String requiredValues = "[" + objectDialog.getRequired() + "]";
-					treeNodeNew.getProperties().put(JSON_SCHEMA_REQUIRED, requiredValues);
+					treeNodeNew.getProperties().put(JSON_SCHEMA_REQUIRED, objectDialog.getRequired());
 				}
 				/*
 				 * AddCommand is used to avoid concurrent updating. index 0 to

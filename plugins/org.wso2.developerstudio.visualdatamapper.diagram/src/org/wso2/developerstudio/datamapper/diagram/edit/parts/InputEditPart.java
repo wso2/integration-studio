@@ -143,7 +143,7 @@ public class InputEditPart extends ShapeNodeEditPart {
 			schemaTransformer = SchemaTransformerRegistry.getInstance().getSchemaTransformer().newInstance();
 			if (schemaTransformer instanceof SchemaTransformer) {
 				String content = schemaTransformer.getSchemaContentFromFile(filePath);
-				schemaTransformer.generateTree(content,inputRootTreeNode);
+				inputRootTreeNode = schemaTransformer.generateTree(content,inputRootTreeNode);
 			} else {
 				Tree tree = schemaTransformer.generateTreeFromFile(filePath);
 				convertTree(tree, inputRootTreeNode);

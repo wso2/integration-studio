@@ -55,6 +55,7 @@ public class AddNewAttributeAction extends AbstractActionHandler {
 	
 	private static final String JSON_SCHEMA_ID = "id";
 	private static final String JSON_SCHEMA_TYPE = "type";
+	private static final String PREFIX = "@";
 
 	public AddNewAttributeAction(IWorkbenchPart workbenchPart) {
 		super(workbenchPart);
@@ -89,7 +90,7 @@ public class AddNewAttributeAction extends AbstractActionHandler {
 				// Configure the new element by setting default values
 				Element elementNew = DataMapperFactory.eINSTANCE.createElement();
 				if (StringUtils.isNotEmpty(objectDialog.getTitle())) {
-					elementNew.setName(objectDialog.getTitle());
+					elementNew.setName(PREFIX+objectDialog.getTitle());
 				}
 				elementNew.setLevel(selectedNode.getLevel() + 1);
 				if (StringUtils.isNotEmpty(objectDialog.getSchemaType())) {

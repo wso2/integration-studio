@@ -118,8 +118,7 @@ public class DataMapperCreationWizard extends Wizard implements INewWizard {
 			public void setVisible(boolean visible) {
 				if (visible) {
 					String fileName = diagramModelFilePage.getFileName();
-					fileName = fileName.substring(0,
-							fileName.length() - ".datamapper_diagram".length()); //$NON-NLS-1$
+					fileName = fileName.substring(0, fileName.length() - ".datamapper_diagram".length()); //$NON-NLS-1$
 					setFileName(org.wso2.developerstudio.datamapper.diagram.part.DataMapperDiagramEditorUtil
 							.getUniqueFileName(getContainerFullPath(), fileName, "datamapper")); //$NON-NLS-1$
 				}
@@ -140,8 +139,7 @@ public class DataMapperCreationWizard extends Wizard implements INewWizard {
 	public boolean performFinish() {
 		IRunnableWithProgress op = new WorkspaceModifyOperation(null) {
 
-			protected void execute(IProgressMonitor monitor) throws CoreException,
-					InterruptedException {
+			protected void execute(IProgressMonitor monitor) throws CoreException, InterruptedException {
 				diagram = DataMapperDiagramEditorUtil.createDiagram(diagramModelFilePage.getURI(),
 						domainModelFilePage.getURI(), monitor);
 				if (isOpenNewlyCreatedDiagramEditor() && diagram != null) {
@@ -149,8 +147,7 @@ public class DataMapperCreationWizard extends Wizard implements INewWizard {
 						DataMapperDiagramEditorUtil.openDiagram(diagram);
 					} catch (PartInitException e) {
 						ErrorDialog.openError(getContainer().getShell(),
-								Messages.DataMapperCreationWizardOpenEditorError, null,
-								e.getStatus());
+								Messages.DataMapperCreationWizardOpenEditorError, null, e.getStatus());
 					}
 				}
 			}
@@ -161,12 +158,10 @@ public class DataMapperCreationWizard extends Wizard implements INewWizard {
 			return false;
 		} catch (InvocationTargetException e) {
 			if (e.getTargetException() instanceof CoreException) {
-				ErrorDialog.openError(getContainer().getShell(),
-						Messages.DataMapperCreationWizardCreationError, null,
+				ErrorDialog.openError(getContainer().getShell(), Messages.DataMapperCreationWizardCreationError, null,
 						((CoreException) e.getTargetException()).getStatus());
 			} else {
-				DataMapperDiagramEditorPlugin.getInstance().logError(
-						"Error creating diagram", e.getTargetException()); //$NON-NLS-1$
+				DataMapperDiagramEditorPlugin.getInstance().logError("Error creating diagram", e.getTargetException()); //$NON-NLS-1$
 			}
 			return false;
 		}

@@ -25,6 +25,7 @@ import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchWindow;
+import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.ide.IDE;
 import org.eclipse.ui.navigator.CommonActionProvider;
@@ -34,6 +35,8 @@ import org.eclipse.ui.navigator.ICommonViewerWorkbenchSite;
 import org.eclipse.ui.part.FileEditorInput;
 import org.wso2.developerstudio.datamapper.diagram.Activator;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.DataMapperRootEditPart;
+import org.wso2.developerstudio.datamapper.diagram.part.DataMapperDiagramEditor;
+import org.wso2.developerstudio.datamapper.diagram.part.DataMapperDiagramEditorPlugin;
 import org.wso2.developerstudio.datamapper.diagram.part.DataMapperVisualIDRegistry;
 import org.wso2.developerstudio.datamapper.diagram.part.Messages;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
@@ -113,8 +116,7 @@ public class DataMapperNavigatorActionProvider extends CommonActionProvider {
 							if ("org.wso2.developerstudio.eclipse.datamapper.contenttype.datamapperconfig"
 									.equals(contentType.getId())) {
 								myOpenDiagramAction.setSelection(file);
-								actionBars.setGlobalActionHandler(ICommonActionConstants.OPEN,
-										myOpenDiagramAction);
+								actionBars.setGlobalActionHandler(ICommonActionConstants.OPEN, myOpenDiagramAction);
 							}
 						}
 					}
@@ -171,8 +173,7 @@ public class DataMapperNavigatorActionProvider extends CommonActionProvider {
 				}
 				if (selectedElement instanceof Diagram) {
 					Diagram diagram = (Diagram) selectedElement;
-					if (DataMapperRootEditPart.MODEL_ID.equals(DataMapperVisualIDRegistry
-							.getModelID(diagram))) {
+					if (DataMapperRootEditPart.MODEL_ID.equals(DataMapperVisualIDRegistry.getModelID(diagram))) {
 						myDiagram = diagram;
 					}
 				}
@@ -216,8 +217,7 @@ public class DataMapperNavigatorActionProvider extends CommonActionProvider {
 					String location = selection.getLocation().toOSString();
 					String source = FileUtils.getContentAsString(new File(location));
 					String name = selection.getName().split("\\.")[0];
-					String fullPath = selection.getFullPath().removeLastSegments(1).toOSString()
-							+ "/";
+					String fullPath = selection.getFullPath().removeLastSegments(1).toOSString() + "/";
 					Openable openable = DataMapperEditor.getOpenable();
 					openable.editorOpen(name, null, fullPath, source);
 				}
@@ -247,8 +247,7 @@ public class DataMapperNavigatorActionProvider extends CommonActionProvider {
 				}
 			}
 			URI uri = EcoreUtil.getURI(diagram);
-			String editorName = uri.lastSegment() + '#'
-					+ diagram.eResource().getContents().indexOf(diagram);
+			String editorName = uri.lastSegment() + '#' + diagram.eResource().getContents().indexOf(diagram);
 			IEditorInput editorInput = new URIEditorInput(uri, editorName);
 			return editorInput;
 		}

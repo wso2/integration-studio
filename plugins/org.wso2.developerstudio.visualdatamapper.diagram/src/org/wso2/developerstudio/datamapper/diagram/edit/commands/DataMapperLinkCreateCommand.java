@@ -40,8 +40,7 @@ public class DataMapperLinkCreateCommand extends EditElementCommand {
 	/**
 	 * @generated
 	 */
-	public DataMapperLinkCreateCommand(CreateRelationshipRequest request, EObject source,
-			EObject target) {
+	public DataMapperLinkCreateCommand(CreateRelationshipRequest request, EObject source, EObject target) {
 		super(request.getLabel(), null, request);
 		this.source = source;
 		this.target = target;
@@ -68,15 +67,14 @@ public class DataMapperLinkCreateCommand extends EditElementCommand {
 		if (getContainer() == null) {
 			return false;
 		}
-		return DataMapperBaseItemSemanticEditPolicy.getLinkConstraints()
-				.canCreateDataMapperLink_4001(getContainer(), getSource(), getTarget());
+		return DataMapperBaseItemSemanticEditPolicy.getLinkConstraints().canCreateDataMapperLink_4001(getContainer(),
+				getSource(), getTarget());
 	}
 
 	/**
 	 * @generated
 	 */
-	protected CommandResult doExecuteWithResult(IProgressMonitor monitor, IAdaptable info)
-			throws ExecutionException {
+	protected CommandResult doExecuteWithResult(IProgressMonitor monitor, IAdaptable info) throws ExecutionException {
 		if (!canExecute()) {
 			throw new ExecutionException("Invalid arguments in create link command"); //$NON-NLS-1$
 		}
@@ -97,8 +95,7 @@ public class DataMapperLinkCreateCommand extends EditElementCommand {
 	protected void doConfigure(DataMapperLink newElement, IProgressMonitor monitor, IAdaptable info)
 			throws ExecutionException {
 		IElementType elementType = ((CreateElementRequest) getRequest()).getElementType();
-		ConfigureRequest configureRequest = new ConfigureRequest(getEditingDomain(), newElement,
-				elementType);
+		ConfigureRequest configureRequest = new ConfigureRequest(getEditingDomain(), newElement, elementType);
 		configureRequest.setClientContext(((CreateElementRequest) getRequest()).getClientContext());
 		configureRequest.addParameters(getRequest().getParameters());
 		configureRequest.setParameter(CreateRelationshipRequest.SOURCE, getSource());

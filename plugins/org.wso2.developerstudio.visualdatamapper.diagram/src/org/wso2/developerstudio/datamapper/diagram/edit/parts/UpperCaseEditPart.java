@@ -62,11 +62,9 @@ public class UpperCaseEditPart extends AbstractOperatorEditPart {
 	 */
 	protected void createDefaultEditPolicies() {
 		super.createDefaultEditPolicies();
-		installEditPolicy(
-				EditPolicyRoles.SEMANTIC_ROLE,
+		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE,
 				new org.wso2.developerstudio.datamapper.diagram.edit.policies.UpperCaseItemSemanticEditPolicy());
-		installEditPolicy(
-				EditPolicyRoles.CANONICAL_ROLE,
+		installEditPolicy(EditPolicyRoles.CANONICAL_ROLE,
 				new org.wso2.developerstudio.datamapper.diagram.edit.policies.UpperCaseCanonicalEditPolicy());
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
 	}

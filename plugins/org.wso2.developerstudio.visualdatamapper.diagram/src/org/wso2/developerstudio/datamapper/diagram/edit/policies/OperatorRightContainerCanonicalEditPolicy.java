@@ -76,8 +76,7 @@ public class OperatorRightContainerCanonicalEditPolicy extends CanonicalEditPoli
 	 * @generated
 	 */
 	private boolean isMyDiagramElement(View view) {
-		return OperatorRightConnectorEditPart.VISUAL_ID == DataMapperVisualIDRegistry
-				.getVisualID(view);
+		return OperatorRightConnectorEditPart.VISUAL_ID == DataMapperVisualIDRegistry.getVisualID(view);
 	}
 
 	/**
@@ -134,9 +133,8 @@ public class OperatorRightContainerCanonicalEditPolicy extends CanonicalEditPoli
 		for (DataMapperNodeDescriptor next : childDescriptors) {
 			String hint = DataMapperVisualIDRegistry.getType(next.getVisualID());
 			IAdaptable elementAdapter = new CanonicalElementAdapter(next.getModelElement(), hint);
-			CreateViewRequest.ViewDescriptor descriptor = new CreateViewRequest.ViewDescriptor(
-					elementAdapter, Node.class, hint, ViewUtil.APPEND, false, host()
-							.getDiagramPreferencesHint());
+			CreateViewRequest.ViewDescriptor descriptor = new CreateViewRequest.ViewDescriptor(elementAdapter,
+					Node.class, hint, ViewUtil.APPEND, false, host().getDiagramPreferencesHint());
 			viewDescriptors.add(descriptor);
 		}
 
@@ -145,8 +143,7 @@ public class OperatorRightContainerCanonicalEditPolicy extends CanonicalEditPoli
 		CreateViewRequest request = getCreateViewRequest(viewDescriptors);
 		Command cmd = getCreateViewCommand(request);
 		if (cmd != null && cmd.canExecute()) {
-			SetViewMutabilityCommand.makeMutable(new EObjectAdapter(host().getNotationView()))
-					.execute();
+			SetViewMutabilityCommand.makeMutable(new EObjectAdapter(host().getNotationView())).execute();
 			executeCommand(cmd);
 			@SuppressWarnings("unchecked")
 			List<IAdaptable> nl = (List<IAdaptable>) request.getNewObject();
@@ -157,8 +154,7 @@ public class OperatorRightContainerCanonicalEditPolicy extends CanonicalEditPoli
 		}
 		if (createdViews.size() > 1) {
 			// perform a layout of the container
-			DeferredLayoutCommand layoutCmd = new DeferredLayoutCommand(host().getEditingDomain(),
-					createdViews, host());
+			DeferredLayoutCommand layoutCmd = new DeferredLayoutCommand(host().getEditingDomain(), createdViews, host());
 			executeCommand(new ICommandProxy(layoutCmd));
 		}
 

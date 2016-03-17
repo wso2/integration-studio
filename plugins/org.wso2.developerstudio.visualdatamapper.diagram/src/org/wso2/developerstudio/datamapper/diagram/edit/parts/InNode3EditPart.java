@@ -58,6 +58,7 @@ public class InNode3EditPart extends AbstractInNodeEditPart {
 	public boolean canAttachNote() {
 		return false;
 	}
+
 	/**
 	 * @generated
 	 */
@@ -86,8 +87,7 @@ public class InNode3EditPart extends AbstractInNodeEditPart {
 	protected void createDefaultEditPolicies() {
 		super.createDefaultEditPolicies();
 		installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE, getPrimaryDragEditPolicy());
-		installEditPolicy(
-				EditPolicyRoles.SEMANTIC_ROLE,
+		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE,
 				new org.wso2.developerstudio.datamapper.diagram.edit.policies.InNode3ItemSemanticEditPolicy());
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
 		// XXX need an SCR to runtime to have another abstract superclass that would let children add reasonable editpolicies
@@ -137,16 +137,16 @@ public class InNode3EditPart extends AbstractInNodeEditPart {
 	 * @generated NOT
 	 */
 	protected NodeFigure createNodePlate() {
-/*		DefaultSizeNodeFigure result = new DefaultSizeNodeFigure(10, 10);
+		/*		DefaultSizeNodeFigure result = new DefaultSizeNodeFigure(10, 10);
 
-		//FIXME: workaround for #154536
-		result.getBounds().setSize(result.getPreferredSize());
-//		return result;
-*/		HashMap<String, PrecisionPoint> anchorLocations = new HashMap<String, PrecisionPoint>();
+		 //FIXME: workaround for #154536
+		 result.getBounds().setSize(result.getPreferredSize());
+		 //		return result;
+		 */HashMap<String, PrecisionPoint> anchorLocations = new HashMap<String, PrecisionPoint>();
 		// The anchor's location is a little bit on the left in order to be sure
 		// that the edges will be horizontally oriented
 		anchorLocations.put("CENTER", new PrecisionPoint(0.4d, 0.5d));
-		CenteredAnchors result = new CenteredAnchors(10, 10, anchorLocations); 
+		CenteredAnchors result = new CenteredAnchors(10, 10, anchorLocations);
 		return result;
 	}
 
@@ -248,24 +248,24 @@ public class InNode3EditPart extends AbstractInNodeEditPart {
 			this.setFill(false);
 			this.setOutline(false);
 			this.addMouseListener(new MouseListener() {
-				
+
 				@Override
 				public void mouseReleased(MouseEvent me) {
 					getEditDomain().getPaletteViewer().setActiveTool(null);
 				}
-				
+
 				@Override
 				public void mousePressed(MouseEvent me) {
 					getEditDomain().getPaletteViewer().setActiveTool(
-							(ToolEntry) (((PaletteContainer) getEditDomain().getPaletteViewer()
-									.getPaletteRoot().getChildren().get(1)).getChildren().get(0)));
+							(ToolEntry) (((PaletteContainer) getEditDomain().getPaletteViewer().getPaletteRoot()
+									.getChildren().get(1)).getChildren().get(0)));
 				}
-				
+
 				@Override
 				public void mouseDoubleClicked(MouseEvent me) {
 					getEditDomain().getPaletteViewer().setActiveTool(
-							(ToolEntry) (((PaletteContainer) getEditDomain().getPaletteViewer()
-									.getPaletteRoot().getChildren().get(1)).getChildren().get(0)));
+							(ToolEntry) (((PaletteContainer) getEditDomain().getPaletteViewer().getPaletteRoot()
+									.getChildren().get(1)).getChildren().get(0)));
 				}
 			});
 			createContents();

@@ -53,7 +53,7 @@ public class OperatorRightConnectorEditPart extends AbstractBorderedShapeEditPar
 	public OperatorRightConnectorEditPart(View view) {
 		super(view);
 	}
-	
+
 	/**
 	 * @generated NOT
 	 */
@@ -66,10 +66,8 @@ public class OperatorRightConnectorEditPart extends AbstractBorderedShapeEditPar
 	 * @generated NOT
 	 */
 	protected void createDefaultEditPolicies() {
-		installEditPolicy(
-				EditPolicyRoles.CREATION_ROLE,
-				new CreationEditPolicyWithCustomReparent(
-						org.wso2.developerstudio.datamapper.diagram.part.DataMapperVisualIDRegistry.TYPED_INSTANCE));
+		installEditPolicy(EditPolicyRoles.CREATION_ROLE, new CreationEditPolicyWithCustomReparent(
+				org.wso2.developerstudio.datamapper.diagram.part.DataMapperVisualIDRegistry.TYPED_INSTANCE));
 		super.createDefaultEditPolicies();
 		installEditPolicy(
 				EditPolicyRoles.SEMANTIC_ROLE,
@@ -113,8 +111,8 @@ public class OperatorRightConnectorEditPart extends AbstractBorderedShapeEditPar
 
 		if (childEditPart instanceof OutNode3EditPart) {
 			IFigure borderItemFigure = ((OutNode3EditPart) childEditPart).getFigure();
-			BorderItemLocator locator = new FixedBorderItemLocator(getMainFigure(),
-					borderItemFigure, PositionConstants.EAST, 0.5);
+			BorderItemLocator locator = new FixedBorderItemLocator(getMainFigure(), borderItemFigure,
+					PositionConstants.EAST, 0.5);
 			getBorderedFigure().getBorderItemContainer().add(borderItemFigure, locator);
 			return true;
 		}
@@ -128,8 +126,7 @@ public class OperatorRightConnectorEditPart extends AbstractBorderedShapeEditPar
 	protected boolean removeFixedChild(EditPart childEditPart) {
 
 		if (childEditPart instanceof OutNode3EditPart) {
-			getBorderedFigure().getBorderItemContainer().remove(
-					((OutNode3EditPart) childEditPart).getFigure());
+			getBorderedFigure().getBorderItemContainer().remove(((OutNode3EditPart) childEditPart).getFigure());
 			return true;
 		}
 

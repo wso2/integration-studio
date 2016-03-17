@@ -57,26 +57,17 @@ import org.eclipse.ui.part.FileEditorInput;
 /**
  * @generated
  */
-public class DataMapperDocumentProvider extends AbstractDocumentProvider implements
-		IDiagramDocumentProvider {
+public class DataMapperDocumentProvider extends AbstractDocumentProvider implements IDiagramDocumentProvider {
 
 	/**
 	 * @generated
 	 */
 	protected ElementInfo createElementInfo(Object element) throws CoreException {
-		if (false == element instanceof FileEditorInput
-				&& false == element instanceof URIEditorInput) {
-			throw new CoreException(
-					new Status(
-							IStatus.ERROR,
-							DataMapperDiagramEditorPlugin.ID,
-							0,
-							NLS.bind(
-									Messages.DataMapperDocumentProvider_IncorrectInputError,
-									new Object[] {
-											element,
-											"org.eclipse.ui.part.FileEditorInput", "org.eclipse.emf.common.ui.URIEditorInput" }), //$NON-NLS-1$ //$NON-NLS-2$ 
-							null));
+		if (false == element instanceof FileEditorInput && false == element instanceof URIEditorInput) {
+			throw new CoreException(new Status(IStatus.ERROR, DataMapperDiagramEditorPlugin.ID, 0, NLS.bind(
+					Messages.DataMapperDocumentProvider_IncorrectInputError, new Object[] { element,
+							"org.eclipse.ui.part.FileEditorInput", "org.eclipse.emf.common.ui.URIEditorInput" }), //$NON-NLS-1$ //$NON-NLS-2$ 
+					null));
 		}
 		IEditorInput editorInput = (IEditorInput) element;
 		IDiagramDocument document = (IDiagramDocument) createDocument(editorInput);
@@ -91,19 +82,11 @@ public class DataMapperDocumentProvider extends AbstractDocumentProvider impleme
 	 * @generated
 	 */
 	protected IDocument createDocument(Object element) throws CoreException {
-		if (false == element instanceof FileEditorInput
-				&& false == element instanceof URIEditorInput) {
-			throw new CoreException(
-					new Status(
-							IStatus.ERROR,
-							DataMapperDiagramEditorPlugin.ID,
-							0,
-							NLS.bind(
-									Messages.DataMapperDocumentProvider_IncorrectInputError,
-									new Object[] {
-											element,
-											"org.eclipse.ui.part.FileEditorInput", "org.eclipse.emf.common.ui.URIEditorInput" }), //$NON-NLS-1$ //$NON-NLS-2$ 
-							null));
+		if (false == element instanceof FileEditorInput && false == element instanceof URIEditorInput) {
+			throw new CoreException(new Status(IStatus.ERROR, DataMapperDiagramEditorPlugin.ID, 0, NLS.bind(
+					Messages.DataMapperDocumentProvider_IncorrectInputError, new Object[] { element,
+							"org.eclipse.ui.part.FileEditorInput", "org.eclipse.emf.common.ui.URIEditorInput" }), //$NON-NLS-1$ //$NON-NLS-2$ 
+					null));
 		}
 		IDocument document = createEmptyDocument();
 		setDocumentContent(document, (IEditorInput) element);
@@ -156,14 +139,12 @@ public class DataMapperDocumentProvider extends AbstractDocumentProvider impleme
 	 * @generated
 	 */
 	private TransactionalEditingDomain createEditingDomain() {
-		TransactionalEditingDomain editingDomain = DiagramEditingDomainFactory.getInstance()
-				.createEditingDomain();
+		TransactionalEditingDomain editingDomain = DiagramEditingDomainFactory.getInstance().createEditingDomain();
 		editingDomain.setID("org.wso2.developerstudio.visualdatamapper.diagram.EditingDomain"); //$NON-NLS-1$
 		final NotificationFilter diagramResourceModifiedFilter = NotificationFilter
 				.createNotifierFilter(editingDomain.getResourceSet())
 				.and(NotificationFilter.createEventTypeFilter(Notification.ADD))
-				.and(NotificationFilter.createFeatureFilter(ResourceSet.class,
-						ResourceSet.RESOURCE_SET__RESOURCES));
+				.and(NotificationFilter.createFeatureFilter(ResourceSet.class, ResourceSet.RESOURCE_SET__RESOURCES));
 		editingDomain.getResourceSet().eAdapters().add(new Adapter() {
 
 			private Notifier myTarger;
@@ -197,8 +178,7 @@ public class DataMapperDocumentProvider extends AbstractDocumentProvider impleme
 	/**
 	 * @generated
 	 */
-	protected void setDocumentContent(IDocument document, IEditorInput element)
-			throws CoreException {
+	protected void setDocumentContent(IDocument document, IEditorInput element) throws CoreException {
 		IDiagramDocument diagramDocument = (IDiagramDocument) document;
 		TransactionalEditingDomain domain = diagramDocument.getEditingDomain();
 		if (element instanceof FileEditorInput) {
@@ -239,32 +219,23 @@ public class DataMapperDocumentProvider extends AbstractDocumentProvider impleme
 						}
 					}
 				}
-				throw new RuntimeException(
-						Messages.DataMapperDocumentProvider_NoDiagramInResourceError);
+				throw new RuntimeException(Messages.DataMapperDocumentProvider_NoDiagramInResourceError);
 			} catch (Exception e) {
 				CoreException thrownExcp = null;
 				if (e instanceof CoreException) {
 					thrownExcp = (CoreException) e;
 				} else {
 					String msg = e.getLocalizedMessage();
-					thrownExcp = new CoreException(new Status(IStatus.ERROR,
-							DataMapperDiagramEditorPlugin.ID, 0, msg != null ? msg
-									: Messages.DataMapperDocumentProvider_DiagramLoadingError, e));
+					thrownExcp = new CoreException(new Status(IStatus.ERROR, DataMapperDiagramEditorPlugin.ID, 0,
+							msg != null ? msg : Messages.DataMapperDocumentProvider_DiagramLoadingError, e));
 				}
 				throw thrownExcp;
 			}
 		} else {
-			throw new CoreException(
-					new Status(
-							IStatus.ERROR,
-							DataMapperDiagramEditorPlugin.ID,
-							0,
-							NLS.bind(
-									Messages.DataMapperDocumentProvider_IncorrectInputError,
-									new Object[] {
-											element,
-											"org.eclipse.ui.part.FileEditorInput", "org.eclipse.emf.common.ui.URIEditorInput" }), //$NON-NLS-1$ //$NON-NLS-2$ 
-							null));
+			throw new CoreException(new Status(IStatus.ERROR, DataMapperDiagramEditorPlugin.ID, 0, NLS.bind(
+					Messages.DataMapperDocumentProvider_IncorrectInputError, new Object[] { element,
+							"org.eclipse.ui.part.FileEditorInput", "org.eclipse.emf.common.ui.URIEditorInput" }), //$NON-NLS-1$ //$NON-NLS-2$ 
+					null));
 		}
 	}
 
@@ -288,8 +259,7 @@ public class DataMapperDocumentProvider extends AbstractDocumentProvider impleme
 			Resource diagramResource = document.getDiagram().eResource();
 			if (diagramResource != null) {
 				IFile file = WorkspaceSynchronizer.getFile(diagramResource);
-				return file == null || file.getLocation() == null
-						|| !file.getLocation().toFile().exists();
+				return file == null || file.getLocation() == null || !file.getLocation().toFile().exists();
 			}
 		}
 		return super.isDeleted(element);
@@ -328,8 +298,7 @@ public class DataMapperDocumentProvider extends AbstractDocumentProvider impleme
 				}
 			}
 			ResourcesPlugin.getWorkspace().validateEdit(
-					(IFile[]) files2Validate.toArray(new IFile[files2Validate.size()]),
-					computationContext);
+					(IFile[]) files2Validate.toArray(new IFile[files2Validate.size()]), computationContext);
 		}
 
 		super.doValidateState(element, computationContext);
@@ -437,8 +406,7 @@ public class DataMapperDocumentProvider extends AbstractDocumentProvider impleme
 					rules.add(ResourcesPlugin.getWorkspace().getRuleFactory().modifyRule(file));
 				}
 			}
-			return new MultiRule(
-					(ISchedulingRule[]) rules.toArray(new ISchedulingRule[rules.size()]));
+			return new MultiRule((ISchedulingRule[]) rules.toArray(new ISchedulingRule[rules.size()]));
 		}
 		return null;
 	}
@@ -457,8 +425,7 @@ public class DataMapperDocumentProvider extends AbstractDocumentProvider impleme
 					rules.add(computeSchedulingRule(file));
 				}
 			}
-			return new MultiRule(
-					(ISchedulingRule[]) rules.toArray(new ISchedulingRule[rules.size()]));
+			return new MultiRule((ISchedulingRule[]) rules.toArray(new ISchedulingRule[rules.size()]));
 		}
 		return null;
 	}
@@ -477,8 +444,7 @@ public class DataMapperDocumentProvider extends AbstractDocumentProvider impleme
 					rules.add(ResourcesPlugin.getWorkspace().getRuleFactory().refreshRule(file));
 				}
 			}
-			return new MultiRule(
-					(ISchedulingRule[]) rules.toArray(new ISchedulingRule[rules.size()]));
+			return new MultiRule((ISchedulingRule[]) rules.toArray(new ISchedulingRule[rules.size()]));
 		}
 		return null;
 	}
@@ -543,8 +509,8 @@ public class DataMapperDocumentProvider extends AbstractDocumentProvider impleme
 	/**
 	 * @generated
 	 */
-	protected void doSaveDocument(IProgressMonitor monitor, Object element, IDocument document,
-			boolean overwrite) throws CoreException {
+	protected void doSaveDocument(IProgressMonitor monitor, Object element, IDocument document, boolean overwrite)
+			throws CoreException {
 		ResourceSetInfo info = getResourceSetInfo(element);
 		if (info != null) {
 			if (!overwrite && !info.isSynchronized()) {
@@ -555,23 +521,19 @@ public class DataMapperDocumentProvider extends AbstractDocumentProvider impleme
 			info.stopResourceListening();
 			fireElementStateChanging(element);
 			try {
-				monitor.beginTask(Messages.DataMapperDocumentProvider_SaveDiagramTask, info
-						.getResourceSet().getResources().size() + 1); //"Saving diagram"
+				monitor.beginTask(Messages.DataMapperDocumentProvider_SaveDiagramTask, info.getResourceSet()
+						.getResources().size() + 1); //"Saving diagram"
 				for (Iterator<Resource> it = info.getLoadedResourcesIterator(); it.hasNext();) {
 					Resource nextResource = it.next();
-					monitor.setTaskName(NLS.bind(
-							Messages.DataMapperDocumentProvider_SaveNextResourceTask,
+					monitor.setTaskName(NLS.bind(Messages.DataMapperDocumentProvider_SaveNextResourceTask,
 							nextResource.getURI()));
-					if (nextResource.isLoaded()
-							&& !info.getEditingDomain().isReadOnly(nextResource)) {
+					if (nextResource.isLoaded() && !info.getEditingDomain().isReadOnly(nextResource)) {
 						try {
 							nextResource.save(DataMapperDiagramEditorUtil.getSaveOptions());
 						} catch (IOException e) {
 							fireElementStateChangeFailed(element);
-							throw new CoreException(new Status(IStatus.ERROR,
-									DataMapperDiagramEditorPlugin.ID,
-									EditorStatusCodes.RESOURCE_FAILURE, e.getLocalizedMessage(),
-									null));
+							throw new CoreException(new Status(IStatus.ERROR, DataMapperDiagramEditorPlugin.ID,
+									EditorStatusCodes.RESOURCE_FAILURE, e.getLocalizedMessage(), null));
 						}
 					}
 					monitor.worked(1);
@@ -590,23 +552,15 @@ public class DataMapperDocumentProvider extends AbstractDocumentProvider impleme
 			if (element instanceof FileEditorInput) {
 				IFile newFile = ((FileEditorInput) element).getFile();
 				affectedFiles = Collections.singletonList(newFile);
-				newResoruceURI = URI.createPlatformResourceURI(newFile.getFullPath().toString(),
-						true);
+				newResoruceURI = URI.createPlatformResourceURI(newFile.getFullPath().toString(), true);
 			} else if (element instanceof URIEditorInput) {
 				newResoruceURI = ((URIEditorInput) element).getURI();
 			} else {
 				fireElementStateChangeFailed(element);
-				throw new CoreException(
-						new Status(
-								IStatus.ERROR,
-								DataMapperDiagramEditorPlugin.ID,
-								0,
-								NLS.bind(
-										Messages.DataMapperDocumentProvider_IncorrectInputError,
-										new Object[] {
-												element,
-												"org.eclipse.ui.part.FileEditorInput", "org.eclipse.emf.common.ui.URIEditorInput" }), //$NON-NLS-1$ //$NON-NLS-2$ 
-								null));
+				throw new CoreException(new Status(IStatus.ERROR, DataMapperDiagramEditorPlugin.ID, 0, NLS.bind(
+						Messages.DataMapperDocumentProvider_IncorrectInputError, new Object[] { element,
+								"org.eclipse.ui.part.FileEditorInput", "org.eclipse.emf.common.ui.URIEditorInput" }), //$NON-NLS-1$ //$NON-NLS-2$ 
+						null));
 			}
 			if (false == document instanceof IDiagramDocument) {
 				fireElementStateChangeFailed(element);
@@ -622,11 +576,10 @@ public class DataMapperDocumentProvider extends AbstractDocumentProvider impleme
 					.createResource(newResoruceURI);
 			final Diagram diagramCopy = (Diagram) EcoreUtil.copy(diagramDocument.getDiagram());
 			try {
-				new AbstractTransactionalCommand(diagramDocument.getEditingDomain(),
-						NLS.bind(Messages.DataMapperDocumentProvider_SaveAsOperation,
-								diagramCopy.getName()), affectedFiles) {
-					protected CommandResult doExecuteWithResult(IProgressMonitor monitor,
-							IAdaptable info) throws ExecutionException {
+				new AbstractTransactionalCommand(diagramDocument.getEditingDomain(), NLS.bind(
+						Messages.DataMapperDocumentProvider_SaveAsOperation, diagramCopy.getName()), affectedFiles) {
+					protected CommandResult doExecuteWithResult(IProgressMonitor monitor, IAdaptable info)
+							throws ExecutionException {
 						newResource.getContents().add(diagramCopy);
 						return CommandResult.newOKCommandResult();
 					}
@@ -634,12 +587,12 @@ public class DataMapperDocumentProvider extends AbstractDocumentProvider impleme
 				newResource.save(DataMapperDiagramEditorUtil.getSaveOptions());
 			} catch (ExecutionException e) {
 				fireElementStateChangeFailed(element);
-				throw new CoreException(new Status(IStatus.ERROR, DataMapperDiagramEditorPlugin.ID,
-						0, e.getLocalizedMessage(), null));
+				throw new CoreException(new Status(IStatus.ERROR, DataMapperDiagramEditorPlugin.ID, 0,
+						e.getLocalizedMessage(), null));
 			} catch (IOException e) {
 				fireElementStateChangeFailed(element);
-				throw new CoreException(new Status(IStatus.ERROR, DataMapperDiagramEditorPlugin.ID,
-						0, e.getLocalizedMessage(), null));
+				throw new CoreException(new Status(IStatus.ERROR, DataMapperDiagramEditorPlugin.ID, 0,
+						e.getLocalizedMessage(), null));
 			}
 			newResource.unload();
 		}
@@ -648,8 +601,7 @@ public class DataMapperDocumentProvider extends AbstractDocumentProvider impleme
 	/**
 	 * @generated
 	 */
-	protected void handleElementChanged(ResourceSetInfo info, Resource changedResource,
-			IProgressMonitor monitor) {
+	protected void handleElementChanged(ResourceSetInfo info, Resource changedResource, IProgressMonitor monitor) {
 		IFile file = WorkspaceSynchronizer.getFile(changedResource);
 		if (file != null) {
 			try {
@@ -694,8 +646,7 @@ public class DataMapperDocumentProvider extends AbstractDocumentProvider impleme
 	/**
 	 * @generated
 	 */
-	public IEditorInput createInputWithEditingDomain(IEditorInput editorInput,
-			TransactionalEditingDomain domain) {
+	public IEditorInput createInputWithEditingDomain(IEditorInput editorInput, TransactionalEditingDomain domain) {
 		return editorInput;
 	}
 
@@ -867,8 +818,7 @@ public class DataMapperDocumentProvider extends AbstractDocumentProvider impleme
 		 * @generated
 		 */
 		public final void startResourceListening() {
-			mySynchronizer = new WorkspaceSynchronizer(getEditingDomain(),
-					new SynchronizerDelegate());
+			mySynchronizer = new WorkspaceSynchronizer(getEditingDomain(), new SynchronizerDelegate());
 		}
 
 		/**
@@ -1006,11 +956,9 @@ public class DataMapperDocumentProvider extends AbstractDocumentProvider impleme
 		 */
 		public ResourceSetModificationListener(ResourceSetInfo info) {
 			myInfo = info;
-			myModifiedFilter = NotificationFilter
-					.createEventTypeFilter(Notification.SET)
+			myModifiedFilter = NotificationFilter.createEventTypeFilter(Notification.SET)
 					.or(NotificationFilter.createEventTypeFilter(Notification.UNSET))
-					.and(NotificationFilter.createFeatureFilter(Resource.class,
-							Resource.RESOURCE__IS_MODIFIED));
+					.and(NotificationFilter.createFeatureFilter(Resource.class, Resource.RESOURCE__IS_MODIFIED));
 		}
 
 		/**

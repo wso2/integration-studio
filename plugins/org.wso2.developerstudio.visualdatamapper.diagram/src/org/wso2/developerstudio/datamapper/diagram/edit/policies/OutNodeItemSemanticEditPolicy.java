@@ -30,7 +30,7 @@ public class OutNodeItemSemanticEditPolicy extends DataMapperBaseItemSemanticEdi
 	 * @generated
 	 */
 	public OutNodeItemSemanticEditPolicy() {
-		super(DataMapperElementTypes.OutNode_3006);
+		super(DataMapperElementTypes.OutNode_3009);
 	}
 
 	/**

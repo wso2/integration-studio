@@ -30,7 +30,7 @@ public class InNodeItemSemanticEditPolicy extends DataMapperBaseItemSemanticEdit
 	 * @generated
 	 */
 	public InNodeItemSemanticEditPolicy() {
-		super(DataMapperElementTypes.InNode_3005);
+		super(DataMapperElementTypes.InNode_3008);
 	}
 
 	/**

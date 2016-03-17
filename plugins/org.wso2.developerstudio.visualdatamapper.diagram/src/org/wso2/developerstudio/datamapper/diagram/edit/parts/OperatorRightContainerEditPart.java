@@ -2,6 +2,7 @@ package org.wso2.developerstudio.datamapper.diagram.edit.parts;
 
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.Label;
+import org.eclipse.draw2d.RectangleFigure;
 import org.eclipse.draw2d.RoundedRectangle;
 import org.eclipse.draw2d.Shape;
 import org.eclipse.draw2d.StackLayout;
@@ -60,7 +61,7 @@ public class OperatorRightContainerEditPart extends ShapeNodeEditPart {
 	public OperatorRightContainerEditPart(View view) {
 		super(view);
 	}
-	
+
 	/**
 	 * @generated NOT
 	 */
@@ -84,20 +85,14 @@ public class OperatorRightContainerEditPart extends ShapeNodeEditPart {
 								.createOperatorRightConnector();
 						OperatorRightConnector rightConnector2 = DataMapperFactory.eINSTANCE
 								.createOperatorRightConnector();
-						AddCommand addCaseConnectorCmd = new AddCommand(
-								getEditingDomain(),
-								parentContainer,
-								DataMapperPackage.Literals.OPERATOR_RIGHT_CONTAINER__RIGHT_CONNECTORS,
-								rightConnector);
+						AddCommand addCaseConnectorCmd = new AddCommand(getEditingDomain(), parentContainer,
+								DataMapperPackage.Literals.OPERATOR_RIGHT_CONTAINER__RIGHT_CONNECTORS, rightConnector);
 						if (addCaseConnectorCmd.canExecute()) {
 							getEditingDomain().getCommandStack().execute(addCaseConnectorCmd);
 						}
 
-						AddCommand addCaseConnectorCmd2 = new AddCommand(
-								getEditingDomain(),
-								parentContainer,
-								DataMapperPackage.Literals.OPERATOR_RIGHT_CONTAINER__RIGHT_CONNECTORS,
-								rightConnector2);
+						AddCommand addCaseConnectorCmd2 = new AddCommand(getEditingDomain(), parentContainer,
+								DataMapperPackage.Literals.OPERATOR_RIGHT_CONTAINER__RIGHT_CONNECTORS, rightConnector2);
 						if (addCaseConnectorCmd2.canExecute()) {
 							getEditingDomain().getCommandStack().execute(addCaseConnectorCmd2);
 						}
@@ -117,11 +112,8 @@ public class OperatorRightContainerEditPart extends ShapeNodeEditPart {
 						OperatorRightConnector rightConnector = DataMapperFactory.eINSTANCE
 								.createOperatorRightConnector();
 
-						AddCommand addCaseConnectorCmd = new AddCommand(
-								getEditingDomain(),
-								parentContainer,
-								DataMapperPackage.Literals.OPERATOR_RIGHT_CONTAINER__RIGHT_CONNECTORS,
-								rightConnector);
+						AddCommand addCaseConnectorCmd = new AddCommand(getEditingDomain(), parentContainer,
+								DataMapperPackage.Literals.OPERATOR_RIGHT_CONTAINER__RIGHT_CONNECTORS, rightConnector);
 						if (addCaseConnectorCmd.canExecute()) {
 							getEditingDomain().getCommandStack().execute(addCaseConnectorCmd);
 						}
@@ -141,11 +133,9 @@ public class OperatorRightContainerEditPart extends ShapeNodeEditPart {
 		installEditPolicy(EditPolicyRoles.CREATION_ROLE, new CreationEditPolicyWithCustomReparent(
 				DataMapperVisualIDRegistry.TYPED_INSTANCE));
 		super.createDefaultEditPolicies();
-		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE,
-				new OperatorRightContainerItemSemanticEditPolicy());
+		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE, new OperatorRightContainerItemSemanticEditPolicy());
 		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE, new DragDropEditPolicy());
-		installEditPolicy(EditPolicyRoles.CANONICAL_ROLE,
-				new OperatorRightContainerCanonicalEditPolicy());
+		installEditPolicy(EditPolicyRoles.CANONICAL_ROLE, new OperatorRightContainerCanonicalEditPolicy());
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
 		installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE, new CustomNonResizableEditPolicyEx());
 		// XXX need an SCR to runtime to have another abstract superclass that would let children add reasonable editpolicies

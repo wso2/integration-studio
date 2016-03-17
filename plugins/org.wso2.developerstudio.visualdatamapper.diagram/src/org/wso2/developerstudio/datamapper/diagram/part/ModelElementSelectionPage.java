@@ -27,8 +27,7 @@ public class ModelElementSelectionPage extends DefaultModelElementSelectionPage 
 	 * @generated
 	 */
 	public ModelElementSelectionPage(String pageName) {
-		super(DataMapperDiagramEditorPlugin.getInstance().getItemProvidersAdapterFactory(),
-				pageName);
+		super(DataMapperDiagramEditorPlugin.getInstance().getItemProvidersAdapterFactory(), pageName);
 	}
 
 	/**

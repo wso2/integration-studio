@@ -22,6 +22,7 @@ import org.apache.commons.lang.StringUtils;
 import org.eclipse.draw2d.BorderLayout;
 import org.eclipse.draw2d.ColorConstants;
 import org.eclipse.draw2d.Figure;
+import org.eclipse.draw2d.FlowLayout;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.ImageFigure;
 import org.eclipse.draw2d.Label;
@@ -50,6 +51,7 @@ import org.eclipse.gmf.runtime.diagram.ui.editpolicies.BorderItemSelectionEditPo
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.CreationEditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.DragDropEditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
+import org.eclipse.gmf.runtime.diagram.ui.editpolicies.FlowLayoutEditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.figures.BorderItemLocator;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.ConstrainedToolbarLayout;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel;
@@ -68,6 +70,8 @@ import org.wso2.developerstudio.datamapper.Element;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.custom.CustomNonResizableEditPolicyEx;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.custom.CustomSelectionEditPolicy;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.custom.FixedBorderItemLocator;
+import org.wso2.developerstudio.datamapper.diagram.edit.policies.ElementCanonicalEditPolicy;
+import org.wso2.developerstudio.datamapper.diagram.edit.policies.ElementItemSemanticEditPolicy;
 import org.wso2.developerstudio.datamapper.diagram.part.DataMapperVisualIDRegistry;
 
 /**
@@ -107,11 +111,9 @@ public class ElementEditPart extends AbstractBorderedShapeEditPart {
 	protected void createDefaultEditPolicies() {
 		installEditPolicy(EditPolicyRoles.CREATION_ROLE, new CreationEditPolicy());
 		super.createDefaultEditPolicies();
-		installEditPolicy(
-				EditPolicyRoles.SEMANTIC_ROLE,
+		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE,
 				new org.wso2.developerstudio.datamapper.diagram.edit.policies.ElementItemSemanticEditPolicy());
-		installEditPolicy(
-				EditPolicyRoles.CANONICAL_ROLE,
+		installEditPolicy(EditPolicyRoles.CANONICAL_ROLE,
 				new org.wso2.developerstudio.datamapper.diagram.edit.policies.ElementCanonicalEditPolicy());
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
 		removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
@@ -124,9 +126,9 @@ public class ElementEditPart extends AbstractBorderedShapeEditPart {
 		/* remove balloon */
 		installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE, new CustomNonResizableEditPolicyEx());
 		removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.POPUPBAR_ROLE);
-//		installEditPolicy(EditPolicy.SELECTION_FEEDBACK_ROLE,new CustomSelectionEditPolicy());
+		//		installEditPolicy(EditPolicy.SELECTION_FEEDBACK_ROLE,new CustomSelectionEditPolicy());
 	}
-	
+
 	/**
 	 * @generated NOT
 	 */
@@ -134,7 +136,7 @@ public class ElementEditPart extends AbstractBorderedShapeEditPart {
 	public boolean canAttachNote() {
 		return false;
 	}
-	
+
 	/**
 	 * @generated NOT
 	 */
@@ -212,15 +214,13 @@ public class ElementEditPart extends AbstractBorderedShapeEditPart {
 				if (temp instanceof InputEditPart) {
 
 					if (childEditPart instanceof InNodeEditPart) {
-						NodeFigure figureInput = ((InNodeEditPart) childEditPart)
-								.getNodeFigureOutput();
+						NodeFigure figureInput = ((InNodeEditPart) childEditPart).getNodeFigureOutput();
 						figureInput.removeAll();
 						Figure emptyFigure = new Figure();
 						figureInput.add(emptyFigure);
 						break;
 					} else {
-						NodeFigure figureInput = (NodeFigure) ((InNode2EditPart) childEditPart)
-								.getFigure();
+						NodeFigure figureInput = (NodeFigure) ((InNode2EditPart) childEditPart).getFigure();
 						figureInput.removeAll();
 						Figure emptyFigure = new Figure();
 						figureInput.add(emptyFigure);
@@ -236,31 +236,29 @@ public class ElementEditPart extends AbstractBorderedShapeEditPart {
 
 			if (childEditPart instanceof InNode2EditPart) {
 				IFigure borderItemFigure = ((InNode2EditPart) childEditPart).getFigure();
-				BorderItemLocator locator = new FixedBorderItemLocator(getMainFigure(),
-						borderItemFigure, PositionConstants.WEST, 0.5);
+				BorderItemLocator locator = new FixedBorderItemLocator(getMainFigure(), borderItemFigure,
+						PositionConstants.WEST, 0.5);
 				getBorderedFigure().getBorderItemContainer().add(borderItemFigure, locator);
 				return true;
 			}
 
 			else {
 				IFigure borderItemFigure = ((InNodeEditPart) childEditPart).getFigure();
-				BorderItemLocator locator = new FixedBorderItemLocator(getMainFigure(),
-						borderItemFigure, PositionConstants.WEST, 0.5);
+				BorderItemLocator locator = new FixedBorderItemLocator(getMainFigure(), borderItemFigure,
+						PositionConstants.WEST, 0.5);
 				getBorderedFigure().getBorderItemContainer().add(borderItemFigure, locator);
 				return true;
 			}
 		}
 
-		else if (childEditPart instanceof OutNode2EditPart
-				|| childEditPart instanceof OutNodeEditPart) {
+		else if (childEditPart instanceof OutNode2EditPart || childEditPart instanceof OutNodeEditPart) {
 
 			EditPart temp = this.getParent();
 			while ((!(temp instanceof DataMapperRootEditPart)) && (temp != null)) {
 
 				if (temp instanceof OutputEditPart) {
 					if (childEditPart instanceof OutNodeEditPart) {
-						NodeFigure figureInput = ((OutNodeEditPart) childEditPart)
-								.getNodeFigureOutput();
+						NodeFigure figureInput = ((OutNodeEditPart) childEditPart).getNodeFigureOutput();
 						figureInput.removeAll();
 						Figure emptyFigure = new Figure();
 						figureInput.add(emptyFigure);
@@ -268,8 +266,7 @@ public class ElementEditPart extends AbstractBorderedShapeEditPart {
 					}
 
 					else {
-						NodeFigure figureInput = (NodeFigure) ((OutNode2EditPart) childEditPart)
-								.getFigure();
+						NodeFigure figureInput = (NodeFigure) ((OutNode2EditPart) childEditPart).getFigure();
 						figureInput.removeAll();
 						Figure emptyFigure = new Figure();
 						figureInput.add(emptyFigure);
@@ -283,8 +280,8 @@ public class ElementEditPart extends AbstractBorderedShapeEditPart {
 
 			if (childEditPart instanceof OutNodeEditPart) {
 				IFigure borderItemFigure = ((OutNodeEditPart) childEditPart).getFigure();
-				BorderItemLocator locator = new FixedBorderItemLocator(getMainFigure(),
-						borderItemFigure, PositionConstants.EAST, 0.5);
+				BorderItemLocator locator = new FixedBorderItemLocator(getMainFigure(), borderItemFigure,
+						PositionConstants.EAST, 0.5);
 				getBorderedFigure().getBorderItemContainer().add(borderItemFigure, locator);
 				return true;
 			}
@@ -292,8 +289,8 @@ public class ElementEditPart extends AbstractBorderedShapeEditPart {
 			else {
 
 				IFigure borderItemFigure = ((OutNode2EditPart) childEditPart).getFigure();
-				BorderItemLocator locator = new FixedBorderItemLocator(getMainFigure(),
-						borderItemFigure, PositionConstants.EAST, 0.5);
+				BorderItemLocator locator = new FixedBorderItemLocator(getMainFigure(), borderItemFigure,
+						PositionConstants.EAST, 0.5);
 				getBorderedFigure().getBorderItemContainer().add(borderItemFigure, locator);
 				return true;
 			}
@@ -310,13 +307,11 @@ public class ElementEditPart extends AbstractBorderedShapeEditPart {
 			return true;
 		}
 		if (childEditPart instanceof InNode2EditPart) {
-			getBorderedFigure().getBorderItemContainer().remove(
-					((InNode2EditPart) childEditPart).getFigure());
+			getBorderedFigure().getBorderItemContainer().remove(((InNode2EditPart) childEditPart).getFigure());
 			return true;
 		}
 		if (childEditPart instanceof OutNode2EditPart) {
-			getBorderedFigure().getBorderItemContainer().remove(
-					((OutNode2EditPart) childEditPart).getFigure());
+			getBorderedFigure().getBorderItemContainer().remove(((OutNode2EditPart) childEditPart).getFigure());
 			return true;
 		}
 		return false;
@@ -450,8 +445,7 @@ public class ElementEditPart extends AbstractBorderedShapeEditPart {
 	 * @generated
 	 */
 	public EditPart getPrimaryChildEditPart() {
-		return getChildBySemanticHint(DataMapperVisualIDRegistry
-				.getType(ElementNameEditPart.VISUAL_ID));
+		return getChildBySemanticHint(DataMapperVisualIDRegistry.getType(ElementNameEditPart.VISUAL_ID));
 	}
 
 	/**
@@ -501,16 +495,13 @@ public class ElementEditPart extends AbstractBorderedShapeEditPart {
 			figure.setFill(false);
 
 			ImageDescriptor mainImgDesc = AbstractUIPlugin.imageDescriptorFromPlugin(
-					ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM,
-					ICONS_ELEMENT);
+					ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM, ICONS_ELEMENT);
 			ImageDescriptor attributeImgDesc = AbstractUIPlugin.imageDescriptorFromPlugin(
-					ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM,
-					ICONS_ATTRIBUTE);
-			
+					ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM, ICONS_ATTRIBUTE);
 
 			ImageFigure mainImg = new ImageFigure(mainImgDesc.createImage()); //elemet symbole figure 
 			mainImg.setSize(new Dimension(20, 8));
-			
+
 			ImageFigure attributeImg = new ImageFigure(attributeImgDesc.createImage()); //attribute symbole figure 
 			attributeImg.setSize(new Dimension(20, 8));
 
@@ -518,74 +509,74 @@ public class ElementEditPart extends AbstractBorderedShapeEditPart {
 			String name = (((Element) ((View) getModel()).getElement()).getName());
 			int tabCount = ((Element) ((View) getModel()).getElement()).getLevel();
 			figure.setPreferredSize((tabCount - 1) * 22, 3);
-			figure.setMaximumSize(new Dimension(100,3));
-			figure.setMinimumSize(new Dimension(0,3));
-			
+			figure.setMaximumSize(new Dimension(100, 3));
+			figure.setMinimumSize(new Dimension(0, 3));
+
 			final Label elemLabel = new Label();
 			elemLabel.setIcon(mainImg.getImage());
 			Display display = Display.getCurrent();
 			final Color black = display.getSystemColor(SWT.COLOR_BLACK);
 			elemLabel.setForegroundColor(black);
-			this.addMouseMotionListener(new MouseMotionListener(){
+			this.addMouseMotionListener(new MouseMotionListener() {
 
 				@Override
 				public void mouseDragged(MouseEvent me) {
 					highlightElementOnSelection();
-					
+
 				}
 
 				@Override
 				public void mouseEntered(MouseEvent me) {
 					highlightElementOnSelection();
-					
+
 				}
 
 				@Override
 				public void mouseExited(MouseEvent me) {
 					removeHighlight();
-					
+
 				}
 
 				@Override
 				public void mouseHover(MouseEvent me) {
 					highlightElementOnSelection();
-					
+
 				}
 
 				@Override
 				public void mouseMoved(MouseEvent me) {
 				}
-				
+
 			});
 			this.addMouseListener(new MouseListener() {
-				
+
 				@Override
 				public void mouseReleased(MouseEvent me) {
 					removeHighlight();
-					
+
 				}
-				
+
 				@Override
 				public void mousePressed(MouseEvent me) {
 					highlightElementOnSelection();
-					
+
 				}
-				
+
 				@Override
 				public void mouseDoubleClicked(MouseEvent me) {
 					highlightElementOnSelection();
-					
+
 				}
 			});
 			String newName = null;
 			if (name.startsWith(PREFIX)) {
 				String[] fullName = name.split(PREFIX);
 				newName = fullName[1];
-			} else{
+			} else {
 				newName = name;
 			}
 			elemLabel.setText(newName);
-			elemLabel.setSize(new Dimension(100,3));
+			elemLabel.setSize(new Dimension(100, 3));
 			figure.setOutline(false);
 			figure.setFill(false);
 			this.setOutline(false);
@@ -601,85 +592,81 @@ public class ElementEditPart extends AbstractBorderedShapeEditPart {
 		public WrappingLabel getFigureElementNameFigure() {
 			return fFigureElementNameFigure;
 		}
-		
+
 		public void renameElement(String newName) {
-			
+
 			ImageDescriptor mainImgDesc = AbstractUIPlugin.imageDescriptorFromPlugin(
-					ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM,
-					ICONS_ELEMENT);
+					ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM, ICONS_ELEMENT);
 			ImageDescriptor attributeImgDesc = AbstractUIPlugin.imageDescriptorFromPlugin(
-					ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM,
-					ICONS_ATTRIBUTE);
+					ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM, ICONS_ATTRIBUTE);
 
 			ImageFigure mainImg = new ImageFigure(mainImgDesc.createImage()); //elemet symbole figure 
 			mainImg.setSize(new Dimension(20, 8));
-			
+
 			ImageFigure attributeImg = new ImageFigure(attributeImgDesc.createImage()); //attribute symbole figure 
 			attributeImg.setSize(new Dimension(20, 8));
-			
+
 			Label elemLabel = new Label();
-			if(StringUtils.isNotEmpty(newName)){
-				if(newName.startsWith(PREFIX)){
+			if (StringUtils.isNotEmpty(newName)) {
+				if (newName.startsWith(PREFIX)) {
 					elemLabel.setIcon(attributeImg.getImage());
-				}else{
+				} else {
 					elemLabel.setIcon(mainImg.getImage());
 				}
 			}
-			
+
 			Display display = Display.getCurrent();
 			Color black = display.getSystemColor(SWT.COLOR_BLACK);
 			elemLabel.setForegroundColor(black);
 			String name = null;
-			if(StringUtils.isNotEmpty(newName)){
-			if (newName.startsWith(PREFIX)) {
-				String[] fullName = newName.split(PREFIX);
-				name = fullName[1];
-			} else{
-				name = newName;
-			}
+			if (StringUtils.isNotEmpty(newName)) {
+				if (newName.startsWith(PREFIX)) {
+					String[] fullName = newName.split(PREFIX);
+					name = fullName[1];
+				} else {
+					name = newName;
+				}
 			}
 			elemLabel.setText(name);
-			elemLabel.setSize(new Dimension(100,3));
+			elemLabel.setSize(new Dimension(100, 3));
 			List<Figure> childrenList = this.getChildren();
 			this.remove(childrenList.get(1));
-			
+
 			this.add(elemLabel);
 		}
-		
+
 		public void highlightElementOnSelection() {
 			List<Figure> childrenList = this.getChildren();
 			Display display = Display.getCurrent();
 			Color bckGrndColor = new Color(null, 0, 125, 133);
-			Label newLabel= 	(Label) childrenList.get(1);
+			Label newLabel = (Label) childrenList.get(1);
 			newLabel.setForegroundColor(bckGrndColor);
 			this.remove(childrenList.get(1));
 			this.add(newLabel);
 		}
-		
+
 		public void removeHighlight() {
 			List<Figure> childrenList = this.getChildren();
 			Display display = Display.getCurrent();
 			Color bckGrndColor = display.getSystemColor(SWT.COLOR_BLACK);
-			Label newLabel= 	(Label) childrenList.get(1);
+			Label newLabel = (Label) childrenList.get(1);
 			newLabel.setForegroundColor(bckGrndColor);
 			this.remove(childrenList.get(1));
 			this.add(newLabel);
 		}
 
 	}
-	
-	public void renameElementItem(String newName) { 
+
+	public void renameElementItem(String newName) {
 		getPrimaryShape().renameElement(newName);
 	}
-	
-	public void removeHighlightOnElem() { 
+
+	public void removeHighlightOnElem() {
 		getPrimaryShape().removeHighlight();
 	}
-	
-	public void highlightElementItem() { 
+
+	public void highlightElementItem() {
 		getPrimaryShape().highlightElementOnSelection();
 	}
-	
-	
 
 }

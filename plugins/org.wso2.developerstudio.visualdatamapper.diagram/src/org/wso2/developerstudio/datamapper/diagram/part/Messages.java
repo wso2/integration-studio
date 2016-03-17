@@ -368,16 +368,6 @@ public class Messages extends NLS {
 	/**
 	 * @generated
 	 */
-	public static String NavigatorGroupName_InNode_3005_incominglinks;
-
-	/**
-	 * @generated
-	 */
-	public static String NavigatorGroupName_OutNode_3006_outgoinglinks;
-
-	/**
-	 * @generated
-	 */
 	public static String NavigatorActionProvider_OpenDiagramActionName;
 
 	/**

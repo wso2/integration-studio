@@ -35,14 +35,12 @@ public class OutNode3ItemSemanticEditPolicy extends DataMapperBaseItemSemanticEd
 	 */
 	protected Command getDestroyElementCommand(DestroyElementRequest req) {
 		View view = (View) getHost().getModel();
-		CompositeTransactionalCommand cmd = new CompositeTransactionalCommand(getEditingDomain(),
-				null);
+		CompositeTransactionalCommand cmd = new CompositeTransactionalCommand(getEditingDomain(), null);
 		cmd.setTransactionNestingEnabled(false);
 		for (Iterator<?> it = view.getSourceEdges().iterator(); it.hasNext();) {
 			Edge outgoingLink = (Edge) it.next();
 			if (DataMapperVisualIDRegistry.getVisualID(outgoingLink) == DataMapperLinkEditPart.VISUAL_ID) {
-				DestroyElementRequest r = new DestroyElementRequest(outgoingLink.getElement(),
-						false);
+				DestroyElementRequest r = new DestroyElementRequest(outgoingLink.getElement(), false);
 				cmd.add(new DestroyElementCommand(r));
 				cmd.add(new DeleteCommand(getEditingDomain(), outgoingLink));
 				continue;
@@ -74,8 +72,7 @@ public class OutNode3ItemSemanticEditPolicy extends DataMapperBaseItemSemanticEd
 	 */
 	protected Command getStartCreateRelationshipCommand(CreateRelationshipRequest req) {
 		if (DataMapperElementTypes.DataMapperLink_4001 == req.getElementType()) {
-			return getGEFWrapper(new DataMapperLinkCreateCommand(req, req.getSource(),
-					req.getTarget()));
+			return getGEFWrapper(new DataMapperLinkCreateCommand(req, req.getSource(), req.getTarget()));
 		}
 		return null;
 	}

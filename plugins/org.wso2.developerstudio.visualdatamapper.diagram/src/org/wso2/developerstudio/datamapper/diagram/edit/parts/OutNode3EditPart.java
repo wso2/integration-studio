@@ -57,6 +57,7 @@ public class OutNode3EditPart extends AbstractBorderItemEditPart {
 	public boolean canAttachNote() {
 		return false;
 	}
+
 	/**
 	 * @generated
 	 */
@@ -84,8 +85,7 @@ public class OutNode3EditPart extends AbstractBorderItemEditPart {
 	 */
 	protected void createDefaultEditPolicies() {
 		super.createDefaultEditPolicies();
-		installEditPolicy(
-				EditPolicyRoles.SEMANTIC_ROLE,
+		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE,
 				new org.wso2.developerstudio.datamapper.diagram.edit.policies.OutNode3ItemSemanticEditPolicy());
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
 		// XXX need an SCR to runtime to have another abstract superclass that would let children add reasonable editpolicies
@@ -135,14 +135,14 @@ public class OutNode3EditPart extends AbstractBorderItemEditPart {
 	 * @generated NOT
 	 */
 	protected NodeFigure createNodePlate() {
-	/*	DefaultSizeNodeFigure result = new DefaultSizeNodeFigure(10, 10);
+		/*	DefaultSizeNodeFigure result = new DefaultSizeNodeFigure(10, 10);
 
-		//FIXME: workaround for #154536
-		result.getBounds().setSize(result.getPreferredSize());
-		return result;*/
+			//FIXME: workaround for #154536
+			result.getBounds().setSize(result.getPreferredSize());
+			return result;*/
 		HashMap<String, PrecisionPoint> anchorLocations = new HashMap<String, PrecisionPoint>();
 		anchorLocations.put("CENTER", new PrecisionPoint(0.4d, 0.5d));
-		CenteredAnchors result = new CenteredAnchors(10, 10, anchorLocations); 
+		CenteredAnchors result = new CenteredAnchors(10, 10, anchorLocations);
 		return result;
 	}
 
@@ -266,8 +266,8 @@ public class OutNode3EditPart extends AbstractBorderItemEditPart {
 				public void mouseEntered(MouseEvent me) {
 
 					getEditDomain().getPaletteViewer().setActiveTool(
-							(ToolEntry) (((PaletteContainer) getEditDomain().getPaletteViewer()
-									.getPaletteRoot().getChildren().get(1)).getChildren().get(0)));
+							(ToolEntry) (((PaletteContainer) getEditDomain().getPaletteViewer().getPaletteRoot()
+									.getChildren().get(1)).getChildren().get(0)));
 
 				}
 
@@ -289,7 +289,6 @@ public class OutNode3EditPart extends AbstractBorderItemEditPart {
 		 * @generated NOT
 		 */
 		private void createContents() {
-
 
 			ImageDescriptor mainImgDesc = AbstractUIPlugin.imageDescriptorFromPlugin(
 					"org.wso2.developerstudio.visualdatamapper.diagram", "icons/gmf/black.jpg");

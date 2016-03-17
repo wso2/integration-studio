@@ -28,6 +28,7 @@ import org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.swt.graphics.Color;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.custom.CustomNonResizableEditPolicyEx;
+import org.wso2.developerstudio.datamapper.diagram.edit.policies.DataMapperLinkItemSemanticEditPolicy;
 
 /**
  * @generated
@@ -50,7 +51,7 @@ public class DataMapperLinkEditPart extends ConnectionNodeEditPart implements IT
 	public DataMapperLinkEditPart(View view) {
 		super(view);
 	}
-	
+
 	/**
 	 * @generated NOT
 	 */
@@ -58,7 +59,6 @@ public class DataMapperLinkEditPart extends ConnectionNodeEditPart implements IT
 	public boolean canAttachNote() {
 		return false;
 	}
-
 
 	/**
 	 * @generated NOT
@@ -69,7 +69,7 @@ public class DataMapperLinkEditPart extends ConnectionNodeEditPart implements IT
 				new org.wso2.developerstudio.datamapper.diagram.edit.policies.DataMapperLinkItemSemanticEditPolicy());
 
 		installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE, new CustomNonResizableEditPolicyEx()); // remove
-		installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE, new CustomNonResizableEditPolicyEx());																						// selection
+		installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE, new CustomNonResizableEditPolicyEx()); // selection
 
 		removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.POPUPBAR_ROLE);
 	}
@@ -103,7 +103,7 @@ public class DataMapperLinkEditPart extends ConnectionNodeEditPart implements IT
 				Point start = getStart();
 				int difflength = 30;
 				Point start2 = new Point(start.x + difflength, start.y);
-				Point end =  new Point(getEnd().x, getEnd().y);
+				Point end = new Point(getEnd().x, getEnd().y);
 				Point end2 = new Point(end.x - difflength, end.y);
 				list.removeAllPoints();
 				list.addPoint(start);

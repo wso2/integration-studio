@@ -23,8 +23,7 @@ import org.eclipse.ui.views.properties.IPropertySourceProvider;
 /**
  * @generated
  */
-public class DataMapperPropertySection extends DefaultPropertySection implements
-		IPropertySourceProvider {
+public class DataMapperPropertySection extends DefaultPropertySection implements IPropertySourceProvider {
 
 	/**
 	 * Modify/unwrap selection.

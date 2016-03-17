@@ -193,9 +193,8 @@ public class DataMapperRootCanonicalEditPolicy extends CanonicalEditPolicy {
 		for (DataMapperNodeDescriptor next : childDescriptors) {
 			String hint = DataMapperVisualIDRegistry.getType(next.getVisualID());
 			IAdaptable elementAdapter = new CanonicalElementAdapter(next.getModelElement(), hint);
-			CreateViewRequest.ViewDescriptor descriptor = new CreateViewRequest.ViewDescriptor(
-					elementAdapter, Node.class, hint, ViewUtil.APPEND, false, host()
-							.getDiagramPreferencesHint());
+			CreateViewRequest.ViewDescriptor descriptor = new CreateViewRequest.ViewDescriptor(elementAdapter,
+					Node.class, hint, ViewUtil.APPEND, false, host().getDiagramPreferencesHint());
 			viewDescriptors.add(descriptor);
 		}
 
@@ -204,8 +203,7 @@ public class DataMapperRootCanonicalEditPolicy extends CanonicalEditPolicy {
 		CreateViewRequest request = getCreateViewRequest(viewDescriptors);
 		Command cmd = getCreateViewCommand(request);
 		if (cmd != null && cmd.canExecute()) {
-			SetViewMutabilityCommand.makeMutable(new EObjectAdapter(host().getNotationView()))
-					.execute();
+			SetViewMutabilityCommand.makeMutable(new EObjectAdapter(host().getNotationView())).execute();
 			executeCommand(cmd);
 			@SuppressWarnings("unchecked")
 			List<IAdaptable> nl = (List<IAdaptable>) request.getNewObject();
@@ -219,8 +217,7 @@ public class DataMapperRootCanonicalEditPolicy extends CanonicalEditPolicy {
 
 		if (createdViews.size() > 1) {
 			// perform a layout of the container
-			DeferredLayoutCommand layoutCmd = new DeferredLayoutCommand(host().getEditingDomain(),
-					createdViews, host());
+			DeferredLayoutCommand layoutCmd = new DeferredLayoutCommand(host().getEditingDomain(), createdViews, host());
 			executeCommand(new ICommandProxy(layoutCmd));
 		}
 
@@ -234,8 +231,7 @@ public class DataMapperRootCanonicalEditPolicy extends CanonicalEditPolicy {
 	 */
 	private Collection<IAdaptable> refreshConnections() {
 		Domain2Notation domain2NotationMap = new Domain2Notation();
-		Collection<DataMapperLinkDescriptor> linkDescriptors = collectAllLinks(getDiagram(),
-				domain2NotationMap);
+		Collection<DataMapperLinkDescriptor> linkDescriptors = collectAllLinks(getDiagram(), domain2NotationMap);
 		Collection existingLinks = new LinkedList(getDiagram().getEdges());
 		for (Iterator linksIterator = existingLinks.iterator(); linksIterator.hasNext();) {
 			Edge nextDiagramLink = (Edge) linksIterator.next();
@@ -249,8 +245,8 @@ public class DataMapperRootCanonicalEditPolicy extends CanonicalEditPolicy {
 			EObject diagramLinkObject = nextDiagramLink.getElement();
 			EObject diagramLinkSrc = nextDiagramLink.getSource().getElement();
 			EObject diagramLinkDst = nextDiagramLink.getTarget().getElement();
-			for (Iterator<DataMapperLinkDescriptor> linkDescriptorsIterator = linkDescriptors
-					.iterator(); linkDescriptorsIterator.hasNext();) {
+			for (Iterator<DataMapperLinkDescriptor> linkDescriptorsIterator = linkDescriptors.iterator(); linkDescriptorsIterator
+					.hasNext();) {
 				DataMapperLinkDescriptor nextLinkDescriptor = linkDescriptorsIterator.next();
 				if (diagramLinkObject == nextLinkDescriptor.getModelElement()
 						&& diagramLinkSrc == nextLinkDescriptor.getSource()
@@ -269,8 +265,7 @@ public class DataMapperRootCanonicalEditPolicy extends CanonicalEditPolicy {
 	/**
 	 * @generated
 	 */
-	private Collection<DataMapperLinkDescriptor> collectAllLinks(View view,
-			Domain2Notation domain2NotationMap) {
+	private Collection<DataMapperLinkDescriptor> collectAllLinks(View view, Domain2Notation domain2NotationMap) {
 		if (!DataMapperRootEditPart.MODEL_ID.equals(DataMapperVisualIDRegistry.getModelID(view))) {
 			return Collections.emptyList();
 		}
@@ -353,27 +348,6 @@ public class DataMapperRootCanonicalEditPolicy extends CanonicalEditPolicy {
 			domain2NotationMap.putView(view.getElement(), view);
 			break;
 		}
-		case TreeNode2EditPart.VISUAL_ID: {
-			if (!domain2NotationMap.containsKey(view.getElement())) {
-				result.addAll(DataMapperDiagramUpdater.getTreeNode_3003ContainedLinks(view));
-			}
-			domain2NotationMap.putView(view.getElement(), view);
-			break;
-		}
-		case InNodeEditPart.VISUAL_ID: {
-			if (!domain2NotationMap.containsKey(view.getElement())) {
-				result.addAll(DataMapperDiagramUpdater.getInNode_3005ContainedLinks(view));
-			}
-			domain2NotationMap.putView(view.getElement(), view);
-			break;
-		}
-		case OutNodeEditPart.VISUAL_ID: {
-			if (!domain2NotationMap.containsKey(view.getElement())) {
-				result.addAll(DataMapperDiagramUpdater.getOutNode_3006ContainedLinks(view));
-			}
-			domain2NotationMap.putView(view.getElement(), view);
-			break;
-		}
 		case ElementEditPart.VISUAL_ID: {
 			if (!domain2NotationMap.containsKey(view.getElement())) {
 				result.addAll(DataMapperDiagramUpdater.getElement_3007ContainedLinks(view));
@@ -395,6 +369,13 @@ public class DataMapperRootCanonicalEditPolicy extends CanonicalEditPolicy {
 			domain2NotationMap.putView(view.getElement(), view);
 			break;
 		}
+		case TreeNode2EditPart.VISUAL_ID: {
+			if (!domain2NotationMap.containsKey(view.getElement())) {
+				result.addAll(DataMapperDiagramUpdater.getTreeNode_3003ContainedLinks(view));
+			}
+			domain2NotationMap.putView(view.getElement(), view);
+			break;
+		}
 		case TreeNode3EditPart.VISUAL_ID: {
 			if (!domain2NotationMap.containsKey(view.getElement())) {
 				result.addAll(DataMapperDiagramUpdater.getTreeNode_3011ContainedLinks(view));
@@ -404,24 +385,21 @@ public class DataMapperRootCanonicalEditPolicy extends CanonicalEditPolicy {
 		}
 		case OperatorBasicContainerEditPart.VISUAL_ID: {
 			if (!domain2NotationMap.containsKey(view.getElement())) {
-				result.addAll(DataMapperDiagramUpdater
-						.getOperatorBasicContainer_3012ContainedLinks(view));
+				result.addAll(DataMapperDiagramUpdater.getOperatorBasicContainer_3012ContainedLinks(view));
 			}
 			domain2NotationMap.putView(view.getElement(), view);
 			break;
 		}
 		case OperatorLeftContainerEditPart.VISUAL_ID: {
 			if (!domain2NotationMap.containsKey(view.getElement())) {
-				result.addAll(DataMapperDiagramUpdater
-						.getOperatorLeftContainer_3013ContainedLinks(view));
+				result.addAll(DataMapperDiagramUpdater.getOperatorLeftContainer_3013ContainedLinks(view));
 			}
 			domain2NotationMap.putView(view.getElement(), view);
 			break;
 		}
 		case OperatorLeftConnectorEditPart.VISUAL_ID: {
 			if (!domain2NotationMap.containsKey(view.getElement())) {
-				result.addAll(DataMapperDiagramUpdater
-						.getOperatorLeftConnector_3014ContainedLinks(view));
+				result.addAll(DataMapperDiagramUpdater.getOperatorLeftConnector_3014ContainedLinks(view));
 			}
 			domain2NotationMap.putView(view.getElement(), view);
 			break;
@@ -435,16 +413,14 @@ public class DataMapperRootCanonicalEditPolicy extends CanonicalEditPolicy {
 		}
 		case OperatorRightContainerEditPart.VISUAL_ID: {
 			if (!domain2NotationMap.containsKey(view.getElement())) {
-				result.addAll(DataMapperDiagramUpdater
-						.getOperatorRightContainer_3016ContainedLinks(view));
+				result.addAll(DataMapperDiagramUpdater.getOperatorRightContainer_3016ContainedLinks(view));
 			}
 			domain2NotationMap.putView(view.getElement(), view);
 			break;
 		}
 		case OperatorRightConnectorEditPart.VISUAL_ID: {
 			if (!domain2NotationMap.containsKey(view.getElement())) {
-				result.addAll(DataMapperDiagramUpdater
-						.getOperatorRightConnector_3017ContainedLinks(view));
+				result.addAll(DataMapperDiagramUpdater.getOperatorRightConnector_3017ContainedLinks(view));
 			}
 			domain2NotationMap.putView(view.getElement(), view);
 			break;
@@ -476,8 +452,8 @@ public class DataMapperRootCanonicalEditPolicy extends CanonicalEditPolicy {
 	/**
 	 * @generated
 	 */
-	private Collection<IAdaptable> createConnections(
-			Collection<DataMapperLinkDescriptor> linkDescriptors, Domain2Notation domain2NotationMap) {
+	private Collection<IAdaptable> createConnections(Collection<DataMapperLinkDescriptor> linkDescriptors,
+			Domain2Notation domain2NotationMap) {
 		LinkedList<IAdaptable> adapters = new LinkedList<IAdaptable>();
 		for (DataMapperLinkDescriptor nextLinkDescriptor : linkDescriptors) {
 			EditPart sourceEditPart = getSourceEditPart(nextLinkDescriptor, domain2NotationMap);
@@ -486,9 +462,8 @@ public class DataMapperRootCanonicalEditPolicy extends CanonicalEditPolicy {
 				continue;
 			}
 			CreateConnectionViewRequest.ConnectionViewDescriptor descriptor = new CreateConnectionViewRequest.ConnectionViewDescriptor(
-					nextLinkDescriptor.getSemanticAdapter(),
-					DataMapperVisualIDRegistry.getType(nextLinkDescriptor.getVisualID()),
-					ViewUtil.APPEND, false,
+					nextLinkDescriptor.getSemanticAdapter(), DataMapperVisualIDRegistry.getType(nextLinkDescriptor
+							.getVisualID()), ViewUtil.APPEND, false,
 					((IGraphicalEditPart) getHost()).getDiagramPreferencesHint());
 			CreateConnectionViewRequest ccr = new CreateConnectionViewRequest(descriptor);
 			ccr.setType(RequestConstants.REQ_CONNECTION_START);
@@ -529,24 +504,22 @@ public class DataMapperRootCanonicalEditPolicy extends CanonicalEditPolicy {
 	/**
 	 * @generated
 	 */
-	private EditPart getSourceEditPart(UpdaterLinkDescriptor descriptor,
-			Domain2Notation domain2NotationMap) {
+	private EditPart getSourceEditPart(UpdaterLinkDescriptor descriptor, Domain2Notation domain2NotationMap) {
 		return getEditPart(descriptor.getSource(), domain2NotationMap);
 	}
 
 	/**
 	 * @generated
 	 */
-	private EditPart getTargetEditPart(UpdaterLinkDescriptor descriptor,
-			Domain2Notation domain2NotationMap) {
+	private EditPart getTargetEditPart(UpdaterLinkDescriptor descriptor, Domain2Notation domain2NotationMap) {
 		return getEditPart(descriptor.getDestination(), domain2NotationMap);
 	}
 
 	/**
 	 * @generated
 	 */
-	protected final EditPart getHintedEditPart(EObject domainModelElement,
-			Domain2Notation domain2NotationMap, int hintVisualId) {
+	protected final EditPart getHintedEditPart(EObject domainModelElement, Domain2Notation domain2NotationMap,
+			int hintVisualId) {
 		View view = (View) domain2NotationMap.getHinted(domainModelElement,
 				DataMapperVisualIDRegistry.getType(hintVisualId));
 		if (view != null) {

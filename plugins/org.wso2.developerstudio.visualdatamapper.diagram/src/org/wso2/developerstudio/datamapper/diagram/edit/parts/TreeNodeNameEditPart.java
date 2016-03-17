@@ -97,8 +97,7 @@ public class TreeNodeNameEditPart extends CompartmentEditPart implements ITextAw
 	 */
 	protected void createDefaultEditPolicies() {
 		super.createDefaultEditPolicies();
-		installEditPolicy(EditPolicy.SELECTION_FEEDBACK_ROLE,
-				new DataMapperTextSelectionEditPolicy());
+		installEditPolicy(EditPolicy.SELECTION_FEEDBACK_ROLE, new DataMapperTextSelectionEditPolicy());
 		installEditPolicy(EditPolicy.DIRECT_EDIT_ROLE, new LabelDirectEditPolicy());
 		installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE, new DefaultNodeLabelDragPolicy());
 	}
@@ -205,8 +204,7 @@ public class TreeNodeNameEditPart extends CompartmentEditPart implements ITextAw
 		String text = null;
 		EObject parserElement = getParserElement();
 		if (parserElement != null && getParser() != null) {
-			text = getParser().getPrintString(new EObjectAdapter(parserElement),
-					getParserOptions().intValue());
+			text = getParser().getPrintString(new EObjectAdapter(parserElement), getParserOptions().intValue());
 		}
 		if (text == null || text.length() == 0) {
 			text = defaultText;
@@ -229,8 +227,7 @@ public class TreeNodeNameEditPart extends CompartmentEditPart implements ITextAw
 		if (getParserElement() == null || getParser() == null) {
 			return ""; //$NON-NLS-1$
 		}
-		return getParser().getEditString(new EObjectAdapter(getParserElement()),
-				getParserOptions().intValue());
+		return getParser().getEditString(new EObjectAdapter(getParserElement()), getParserOptions().intValue());
 	}
 
 	/**
@@ -251,16 +248,14 @@ public class TreeNodeNameEditPart extends CompartmentEditPart implements ITextAw
 					final EObject element = getParserElement();
 					final IParser parser = getParser();
 					try {
-						IParserEditStatus valid = (IParserEditStatus) getEditingDomain()
-								.runExclusive(new RunnableWithResult.Impl<IParserEditStatus>() {
+						IParserEditStatus valid = (IParserEditStatus) getEditingDomain().runExclusive(
+								new RunnableWithResult.Impl<IParserEditStatus>() {
 
 									public void run() {
-										setResult(parser.isValidEditString(new EObjectAdapter(
-												element), (String) value));
+										setResult(parser.isValidEditString(new EObjectAdapter(element), (String) value));
 									}
 								});
-						return valid.getCode() == ParserEditStatus.EDITABLE ? null : valid
-								.getMessage();
+						return valid.getCode() == ParserEditStatus.EDITABLE ? null : valid.getMessage();
 					} catch (InterruptedException ie) {
 						ie.printStackTrace();
 					}
@@ -309,8 +304,7 @@ public class TreeNodeNameEditPart extends CompartmentEditPart implements ITextAw
 	 */
 	protected DirectEditManager getManager() {
 		if (manager == null) {
-			setManager(new TextDirectEditManager2(this, null,
-					DataMapperEditPartFactory.getTextCellEditorLocator(this)));
+			setManager(new TextDirectEditManager(this, null, DataMapperEditPartFactory.getTextCellEditorLocator(this)));
 		}
 		return manager;
 	}
@@ -333,8 +327,8 @@ public class TreeNodeNameEditPart extends CompartmentEditPart implements ITextAw
 	 * @generated
 	 */
 	protected void performDirectEdit(Point eventLocation) {
-		if (getManager().getClass() == TextDirectEditManager2.class) {
-			((TextDirectEditManager2) getManager()).show(eventLocation.getSWTPoint());
+		if (getManager().getClass() == TextDirectEditManager.class) {
+			((TextDirectEditManager) getManager()).show(eventLocation.getSWTPoint());
 		}
 	}
 
@@ -344,9 +338,6 @@ public class TreeNodeNameEditPart extends CompartmentEditPart implements ITextAw
 	private void performDirectEdit(char initialCharacter) {
 		if (getManager() instanceof TextDirectEditManager) {
 			((TextDirectEditManager) getManager()).show(initialCharacter);
-		} else // 
-		if (getManager() instanceof TextDirectEditManager2) {
-			((TextDirectEditManager2) getManager()).show(initialCharacter);
 		} else //
 		{
 			performDirectEdit();
@@ -363,13 +354,11 @@ public class TreeNodeNameEditPart extends CompartmentEditPart implements ITextAw
 
 				public void run() {
 					if (isActive() && isEditable()) {
-						if (theRequest.getExtendedData().get(
-								RequestConstants.REQ_DIRECTEDIT_EXTENDEDDATA_INITIAL_CHAR) instanceof Character) {
+						if (theRequest.getExtendedData().get(RequestConstants.REQ_DIRECTEDIT_EXTENDEDDATA_INITIAL_CHAR) instanceof Character) {
 							Character initialChar = (Character) theRequest.getExtendedData().get(
 									RequestConstants.REQ_DIRECTEDIT_EXTENDEDDATA_INITIAL_CHAR);
 							performDirectEdit(initialChar.charValue());
-						} else if ((theRequest instanceof DirectEditRequest)
-								&& (getEditText().equals(getLabelText()))) {
+						} else if ((theRequest instanceof DirectEditRequest) && (getEditText().equals(getLabelText()))) {
 							DirectEditRequest editRequest = (DirectEditRequest) theRequest;
 							performDirectEdit(editRequest.getLocation());
 						} else {
@@ -408,8 +397,7 @@ public class TreeNodeNameEditPart extends CompartmentEditPart implements ITextAw
 	 * @generated
 	 */
 	protected void refreshUnderline() {
-		FontStyle style = (FontStyle) getFontStyleOwnerView().getStyle(
-				NotationPackage.eINSTANCE.getFontStyle());
+		FontStyle style = (FontStyle) getFontStyleOwnerView().getStyle(NotationPackage.eINSTANCE.getFontStyle());
 		if (style != null && getFigure() instanceof WrappingLabel) {
 			((WrappingLabel) getFigure()).setTextUnderline(style.isUnderline());
 		}
@@ -419,8 +407,7 @@ public class TreeNodeNameEditPart extends CompartmentEditPart implements ITextAw
 	 * @generated
 	 */
 	protected void refreshStrikeThrough() {
-		FontStyle style = (FontStyle) getFontStyleOwnerView().getStyle(
-				NotationPackage.eINSTANCE.getFontStyle());
+		FontStyle style = (FontStyle) getFontStyleOwnerView().getStyle(NotationPackage.eINSTANCE.getFontStyle());
 		if (style != null && getFigure() instanceof WrappingLabel) {
 			((WrappingLabel) getFigure()).setTextStrikeThrough(style.isStrikeThrough());
 		}
@@ -430,12 +417,10 @@ public class TreeNodeNameEditPart extends CompartmentEditPart implements ITextAw
 	 * @generated
 	 */
 	protected void refreshFont() {
-		FontStyle style = (FontStyle) getFontStyleOwnerView().getStyle(
-				NotationPackage.eINSTANCE.getFontStyle());
+		FontStyle style = (FontStyle) getFontStyleOwnerView().getStyle(NotationPackage.eINSTANCE.getFontStyle());
 		if (style != null) {
-			FontData fontData = new FontData(style.getFontName(), style.getFontHeight(),
-					(style.isBold() ? SWT.BOLD : SWT.NORMAL)
-							| (style.isItalic() ? SWT.ITALIC : SWT.NORMAL));
+			FontData fontData = new FontData(style.getFontName(), style.getFontHeight(), (style.isBold() ? SWT.BOLD
+					: SWT.NORMAL) | (style.isItalic() ? SWT.ITALIC : SWT.NORMAL));
 			setFont(fontData);
 		}
 	}
@@ -471,8 +456,7 @@ public class TreeNodeNameEditPart extends CompartmentEditPart implements ITextAw
 	protected void addSemanticListeners() {
 		if (getParser() instanceof ISemanticParser) {
 			EObject element = resolveSemanticElement();
-			parserElements = ((ISemanticParser) getParser())
-					.getSemanticElementsBeingParsed(element);
+			parserElements = ((ISemanticParser) getParser()).getSemanticElementsBeingParsed(element);
 			for (int i = 0; i < parserElements.size(); i++) {
 				addListenerFilter("SemanticModel" + i, this, (EObject) parserElements.get(i)); //$NON-NLS-1$
 			}
@@ -576,8 +560,7 @@ public class TreeNodeNameEditPart extends CompartmentEditPart implements ITextAw
 				|| NotationPackage.eINSTANCE.getFontStyle_Italic().equals(feature)) {
 			refreshFont();
 		} else {
-			if (getParser() != null
-					&& getParser().isAffectingEvent(event, getParserOptions().intValue())) {
+			if (getParser() != null && getParser().isAffectingEvent(event, getParserOptions().intValue())) {
 				refreshLabel();
 			}
 			if (getParser() instanceof ISemanticParser) {

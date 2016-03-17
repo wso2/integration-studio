@@ -35,8 +35,7 @@ public class DataMapperParserProvider extends AbstractProvider implements IParse
 	 */
 	private IParser getTreeNodeName_5002Parser() {
 		if (treeNodeName_5002Parser == null) {
-			EAttribute[] features = new EAttribute[] { DataMapperPackage.eINSTANCE
-					.getTreeNode_Name() };
+			EAttribute[] features = new EAttribute[] { DataMapperPackage.eINSTANCE.getTreeNode_Name() };
 			MessageFormatParser parser = new MessageFormatParser(features);
 			treeNodeName_5002Parser = parser;
 		}
@@ -53,8 +52,7 @@ public class DataMapperParserProvider extends AbstractProvider implements IParse
 	 */
 	private IParser getTreeNodeName_5001Parser() {
 		if (treeNodeName_5001Parser == null) {
-			EAttribute[] features = new EAttribute[] { DataMapperPackage.eINSTANCE
-					.getTreeNode_Name() };
+			EAttribute[] features = new EAttribute[] { DataMapperPackage.eINSTANCE.getTreeNode_Name() };
 			MessageFormatParser parser = new MessageFormatParser(features);
 			treeNodeName_5001Parser = parser;
 		}
@@ -71,8 +69,7 @@ public class DataMapperParserProvider extends AbstractProvider implements IParse
 	 */
 	private IParser getElementName_5004Parser() {
 		if (elementName_5004Parser == null) {
-			EAttribute[] features = new EAttribute[] { DataMapperPackage.eINSTANCE
-					.getElement_Name() };
+			EAttribute[] features = new EAttribute[] { DataMapperPackage.eINSTANCE.getElement_Name() };
 			MessageFormatParser parser = new MessageFormatParser(features);
 			elementName_5004Parser = parser;
 		}
@@ -89,8 +86,7 @@ public class DataMapperParserProvider extends AbstractProvider implements IParse
 	 */
 	private IParser getTreeNodeName_5003Parser() {
 		if (treeNodeName_5003Parser == null) {
-			EAttribute[] features = new EAttribute[] { DataMapperPackage.eINSTANCE
-					.getTreeNode_Name() };
+			EAttribute[] features = new EAttribute[] { DataMapperPackage.eINSTANCE.getTreeNode_Name() };
 			MessageFormatParser parser = new MessageFormatParser(features);
 			treeNodeName_5003Parser = parser;
 		}
@@ -104,10 +100,10 @@ public class DataMapperParserProvider extends AbstractProvider implements IParse
 		switch (visualID) {
 		case TreeNodeNameEditPart.VISUAL_ID:
 			return getTreeNodeName_5002Parser();
-		case TreeNodeName2EditPart.VISUAL_ID:
-			return getTreeNodeName_5001Parser();
 		case ElementNameEditPart.VISUAL_ID:
 			return getElementName_5004Parser();
+		case TreeNodeName2EditPart.VISUAL_ID:
+			return getTreeNodeName_5001Parser();
 		case TreeNodeName3EditPart.VISUAL_ID:
 			return getTreeNodeName_5003Parser();
 		}

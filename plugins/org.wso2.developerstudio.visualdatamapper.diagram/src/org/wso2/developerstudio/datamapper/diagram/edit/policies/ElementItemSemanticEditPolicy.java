@@ -52,8 +52,7 @@ public class ElementItemSemanticEditPolicy extends DataMapperBaseItemSemanticEdi
 	 */
 	protected Command getDestroyElementCommand(DestroyElementRequest req) {
 		View view = (View) getHost().getModel();
-		CompositeTransactionalCommand cmd = new CompositeTransactionalCommand(getEditingDomain(),
-				null);
+		CompositeTransactionalCommand cmd = new CompositeTransactionalCommand(getEditingDomain(), null);
 		cmd.setTransactionNestingEnabled(false);
 		EAnnotation annotation = view.getEAnnotation("Shortcut"); //$NON-NLS-1$
 		if (annotation == null) {
@@ -80,15 +79,14 @@ public class ElementItemSemanticEditPolicy extends DataMapperBaseItemSemanticEdi
 				for (Iterator<?> it = node.getTargetEdges().iterator(); it.hasNext();) {
 					Edge incomingLink = (Edge) it.next();
 					if (DataMapperVisualIDRegistry.getVisualID(incomingLink) == DataMapperLinkEditPart.VISUAL_ID) {
-						DestroyElementRequest r = new DestroyElementRequest(
-								incomingLink.getElement(), false);
+						DestroyElementRequest r = new DestroyElementRequest(incomingLink.getElement(), false);
 						cmd.add(new DestroyElementCommand(r));
 						cmd.add(new DeleteCommand(getEditingDomain(), incomingLink));
 						continue;
 					}
 				}
-				cmd.add(new DestroyElementCommand(new DestroyElementRequest(getEditingDomain(),
-						node.getElement(), false))); // directlyOwned: true
+				cmd.add(new DestroyElementCommand(new DestroyElementRequest(getEditingDomain(), node.getElement(),
+						false))); // directlyOwned: true
 				// don't need explicit deletion of node as parent's view deletion would clean child views as well 
 				// cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(), node));
 				break;
@@ -96,15 +94,14 @@ public class ElementItemSemanticEditPolicy extends DataMapperBaseItemSemanticEdi
 				for (Iterator<?> it = node.getSourceEdges().iterator(); it.hasNext();) {
 					Edge outgoingLink = (Edge) it.next();
 					if (DataMapperVisualIDRegistry.getVisualID(outgoingLink) == DataMapperLinkEditPart.VISUAL_ID) {
-						DestroyElementRequest r = new DestroyElementRequest(
-								outgoingLink.getElement(), false);
+						DestroyElementRequest r = new DestroyElementRequest(outgoingLink.getElement(), false);
 						cmd.add(new DestroyElementCommand(r));
 						cmd.add(new DeleteCommand(getEditingDomain(), outgoingLink));
 						continue;
 					}
 				}
-				cmd.add(new DestroyElementCommand(new DestroyElementRequest(getEditingDomain(),
-						node.getElement(), false))); // directlyOwned: true
+				cmd.add(new DestroyElementCommand(new DestroyElementRequest(getEditingDomain(), node.getElement(),
+						false))); // directlyOwned: true
 				// don't need explicit deletion of node as parent's view deletion would clean child views as well 
 				// cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(), node));
 				break;

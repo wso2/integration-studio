@@ -52,7 +52,7 @@ public class DataMapperModelingAssistantProviderOfInNodeEditPart extends
 			IElementType relationshipType) {
 		List<IElementType> types = new ArrayList<IElementType>();
 		if (relationshipType == DataMapperElementTypes.DataMapperLink_4001) {
-			types.add(DataMapperElementTypes.OutNode_3006);
+			types.add(DataMapperElementTypes.OutNode_3009);
 			types.add(DataMapperElementTypes.OutNode_3009);
 			types.add(DataMapperElementTypes.OutNode_3018);
 		}

@@ -100,8 +100,7 @@ public class DataMapperBaseItemSemanticEditPolicy extends SemanticEditPolicy {
 		semanticCommand = getEditHelperCommand(completedRequest, semanticCommand);
 		if (completedRequest instanceof DestroyRequest) {
 			DestroyRequest destroyRequest = (DestroyRequest) completedRequest;
-			return shouldProceed(destroyRequest) ? addDeleteViewCommand(semanticCommand,
-					destroyRequest) : null;
+			return shouldProceed(destroyRequest) ? addDeleteViewCommand(semanticCommand, destroyRequest) : null;
 		}
 		return semanticCommand;
 	}
@@ -110,8 +109,7 @@ public class DataMapperBaseItemSemanticEditPolicy extends SemanticEditPolicy {
 	 * @generated
 	 */
 	protected Command addDeleteViewCommand(Command mainCommand, DestroyRequest completedRequest) {
-		Command deleteViewCommand = getGEFWrapper(new DeleteCommand(getEditingDomain(),
-				(View) getHost().getModel()));
+		Command deleteViewCommand = getGEFWrapper(new DeleteCommand(getEditingDomain(), (View) getHost().getModel()));
 		return mainCommand == null ? deleteViewCommand : mainCommand.chain(deleteViewCommand);
 	}
 
@@ -125,15 +123,13 @@ public class DataMapperBaseItemSemanticEditPolicy extends SemanticEditPolicy {
 			request.setParameter(GeneratedEditHelperBase.EDIT_POLICY_COMMAND, command);
 		}
 		IElementType requestContextElementType = getContextElementType(request);
-		request.setParameter(GeneratedEditHelperBase.CONTEXT_ELEMENT_TYPE,
-				requestContextElementType);
+		request.setParameter(GeneratedEditHelperBase.CONTEXT_ELEMENT_TYPE, requestContextElementType);
 		ICommand command = requestContextElementType.getEditCommand(request);
 		request.setParameter(GeneratedEditHelperBase.EDIT_POLICY_COMMAND, null);
 		request.setParameter(GeneratedEditHelperBase.CONTEXT_ELEMENT_TYPE, null);
 		if (command != null) {
 			if (!(command instanceof CompositeTransactionalCommand)) {
-				command = new CompositeTransactionalCommand(getEditingDomain(), command.getLabel())
-						.compose(command);
+				command = new CompositeTransactionalCommand(getEditingDomain(), command.getLabel()).compose(command);
 			}
 			return new ICommandProxy(command);
 		}
@@ -144,8 +140,7 @@ public class DataMapperBaseItemSemanticEditPolicy extends SemanticEditPolicy {
 	 * @generated
 	 */
 	private IElementType getContextElementType(IEditCommandRequest request) {
-		IElementType requestContextElementType = DataMapperElementTypes
-				.getElementType(getVisualID(request));
+		IElementType requestContextElementType = DataMapperElementTypes.getElementType(getVisualID(request));
 		return requestContextElementType != null ? requestContextElementType : myElementType;
 	}
 
@@ -245,8 +240,7 @@ public class DataMapperBaseItemSemanticEditPolicy extends SemanticEditPolicy {
 	/**
 	 * @generated
 	 */
-	protected Command getReorientReferenceRelationshipCommand(
-			ReorientReferenceRelationshipRequest req) {
+	protected Command getReorientReferenceRelationshipCommand(ReorientReferenceRelationshipRequest req) {
 		return UnexecutableCommand.INSTANCE;
 	}
 
@@ -293,8 +287,7 @@ public class DataMapperBaseItemSemanticEditPolicy extends SemanticEditPolicy {
 	public static LinkConstraints getLinkConstraints() {
 		LinkConstraints cached = DataMapperDiagramEditorPlugin.getInstance().getLinkConstraints();
 		if (cached == null) {
-			DataMapperDiagramEditorPlugin.getInstance().setLinkConstraints(
-					cached = new LinkConstraints());
+			DataMapperDiagramEditorPlugin.getInstance().setLinkConstraints(cached = new LinkConstraints());
 		}
 		return cached;
 	}
@@ -321,11 +314,11 @@ public class DataMapperBaseItemSemanticEditPolicy extends SemanticEditPolicy {
 		/**
 		 * @generated NOT
 		 */
-		public boolean canExistDataMapperLink_4001(OutNode container, DataMapperLink linkInstance,
-				OutNode source, InNode target) {
+		public boolean canExistDataMapperLink_4001(OutNode container, DataMapperLink linkInstance, OutNode source,
+				InNode target) {
 			if (target instanceof InNodeImpl) {
-				int existingLinks = ((InNodeImpl)target).getIncomingLink().size();
-				if (existingLinks > 0 ) {
+				int existingLinks = ((InNodeImpl) target).getIncomingLink().size();
+				if (existingLinks > 0) {
 					return false;
 				}
 			}

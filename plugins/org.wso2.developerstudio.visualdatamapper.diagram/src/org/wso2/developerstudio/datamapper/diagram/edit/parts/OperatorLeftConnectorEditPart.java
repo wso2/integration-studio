@@ -57,7 +57,7 @@ public class OperatorLeftConnectorEditPart extends AbstractBorderedShapeEditPart
 	public OperatorLeftConnectorEditPart(View view) {
 		super(view);
 	}
-	
+
 	/**
 	 * @generated NOT
 	 */
@@ -73,11 +73,9 @@ public class OperatorLeftConnectorEditPart extends AbstractBorderedShapeEditPart
 		installEditPolicy(EditPolicyRoles.CREATION_ROLE, new CreationEditPolicyWithCustomReparent(
 				DataMapperVisualIDRegistry.TYPED_INSTANCE));
 		super.createDefaultEditPolicies();
-		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE,
-				new OperatorLeftConnectorItemSemanticEditPolicy());
+		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE, new OperatorLeftConnectorItemSemanticEditPolicy());
 		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE, new DragDropEditPolicy());
-		installEditPolicy(EditPolicyRoles.CANONICAL_ROLE,
-				new OperatorLeftConnectorCanonicalEditPolicy());
+		installEditPolicy(EditPolicyRoles.CANONICAL_ROLE, new OperatorLeftConnectorCanonicalEditPolicy());
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
 		installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE, new CustomNonResizableEditPolicyEx());
 		// XXX need an SCR to runtime to have another abstract superclass that would let children add reasonable editpolicies
@@ -118,8 +116,8 @@ public class OperatorLeftConnectorEditPart extends AbstractBorderedShapeEditPart
 
 		if (childEditPart instanceof InNode3EditPart) {
 			IFigure borderItemFigure = ((InNode3EditPart) childEditPart).getFigure();
-			BorderItemLocator locator = new FixedBorderItemLocator(getMainFigure(),
-					borderItemFigure, PositionConstants.WEST, 0.5);
+			BorderItemLocator locator = new FixedBorderItemLocator(getMainFigure(), borderItemFigure,
+					PositionConstants.WEST, 0.5);
 			getBorderedFigure().getBorderItemContainer().add(borderItemFigure, locator);
 			return true;
 		}

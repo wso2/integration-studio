@@ -111,7 +111,7 @@ public class TreeNodeEditPart extends ShapeNodeEditPart {
 
 		}
 	}
-	
+
 	/**
 	 * @generated NOT
 	 */
@@ -140,16 +140,12 @@ public class TreeNodeEditPart extends ShapeNodeEditPart {
 	 * @generated NOT
 	 */
 	protected void createDefaultEditPolicies() {
-		installEditPolicy(
-				EditPolicyRoles.CREATION_ROLE,
-				new CreationEditPolicyWithCustomReparent(
-						org.wso2.developerstudio.datamapper.diagram.part.DataMapperVisualIDRegistry.TYPED_INSTANCE));
+		installEditPolicy(EditPolicyRoles.CREATION_ROLE, new CreationEditPolicyWithCustomReparent(
+				org.wso2.developerstudio.datamapper.diagram.part.DataMapperVisualIDRegistry.TYPED_INSTANCE));
 		super.createDefaultEditPolicies();
-		installEditPolicy(
-				EditPolicyRoles.SEMANTIC_ROLE,
+		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE,
 				new org.wso2.developerstudio.datamapper.diagram.edit.policies.TreeNodeItemSemanticEditPolicy());
-		installEditPolicy(
-				EditPolicyRoles.CANONICAL_ROLE,
+		installEditPolicy(EditPolicyRoles.CANONICAL_ROLE,
 				new org.wso2.developerstudio.datamapper.diagram.edit.policies.TreeNodeCanonicalEditPolicy());
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
 		removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
@@ -207,8 +203,7 @@ public class TreeNodeEditPart extends ShapeNodeEditPart {
 	 */
 	protected boolean addFixedChild(EditPart childEditPart) {
 		if (childEditPart instanceof TreeNodeNameEditPart) {
-			((TreeNodeNameEditPart) childEditPart).setLabel(getPrimaryShape()
-					.getFigureTreeNodeNameFigure());
+			((TreeNodeNameEditPart) childEditPart).setLabel(getPrimaryShape().getFigureTreeNodeNameFigure());
 			return true;
 		}
 		return false;
@@ -343,8 +338,7 @@ public class TreeNodeEditPart extends ShapeNodeEditPart {
 	 * @generated
 	 */
 	public EditPart getPrimaryChildEditPart() {
-		return getChildBySemanticHint(DataMapperVisualIDRegistry
-				.getType(TreeNodeNameEditPart.VISUAL_ID));
+		return getChildBySemanticHint(DataMapperVisualIDRegistry.getType(TreeNodeNameEditPart.VISUAL_ID));
 	}
 
 	/**
@@ -422,55 +416,55 @@ public class TreeNodeEditPart extends ShapeNodeEditPart {
 			fFigureTreeNodeNameFigure.setText(name);
 			fFigureTreeNodeNameFigure.setForegroundColor(ColorConstants.black);
 			fFigureTreeNodeNameFigure.setFont(new Font(null, "Arial", 10, SWT.BOLD));
-			this.addMouseMotionListener(new MouseMotionListener(){
+			this.addMouseMotionListener(new MouseMotionListener() {
 
 				@Override
 				public void mouseDragged(MouseEvent me) {
 					highlightElementOnSelection();
-					
+
 				}
 
 				@Override
 				public void mouseEntered(MouseEvent me) {
 					highlightElementOnSelection();
-					
+
 				}
 
 				@Override
 				public void mouseExited(MouseEvent me) {
 					removeHighlight();
-					
+
 				}
 
 				@Override
 				public void mouseHover(MouseEvent me) {
 					highlightElementOnSelection();
-					
+
 				}
 
 				@Override
 				public void mouseMoved(MouseEvent me) {
 				}
-				
+
 			});
 			this.addMouseListener(new MouseListener() {
-				
+
 				@Override
 				public void mouseReleased(MouseEvent me) {
 					removeHighlight();
-					
+
 				}
-				
+
 				@Override
 				public void mousePressed(MouseEvent me) {
 					highlightElementOnSelection();
-					
+
 				}
-				
+
 				@Override
 				public void mouseDoubleClicked(MouseEvent me) {
 					highlightElementOnSelection();
-					
+
 				}
 			});
 			figure2.setPreferredSize((count - 1) * 22, 3);
@@ -480,7 +474,7 @@ public class TreeNodeEditPart extends ShapeNodeEditPart {
 			Color black = display.getSystemColor(SWT.COLOR_BLACK);
 			nodeLabel.setForegroundColor(black);
 			nodeLabel.setText(name);
-			nodeLabel.setSize(new Dimension(100,5));
+			nodeLabel.setSize(new Dimension(100, 5));
 			figure.setOutline(false);
 			figure2.setOutline(false);
 			figure.add(figure2);
@@ -489,7 +483,7 @@ public class TreeNodeEditPart extends ShapeNodeEditPart {
 			figure2.setFill(false);
 			this.setFill(false);
 			this.setOutline(false);
-			
+
 			this.add(figure);
 		}
 
@@ -533,59 +527,59 @@ public class TreeNodeEditPart extends ShapeNodeEditPart {
 				super.setContents(contents);
 			}
 		}
-		
+
 		public void renameElement(String newName) {
 			ImageDescriptor mainImgDesc = AbstractUIPlugin.imageDescriptorFromPlugin(
 					ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM, PARENT_ICON);
 
 			final ImageFigure mainImg = new ImageFigure(mainImgDesc.createImage());
 			mainImg.setSize(new Dimension(10, 8));
-			
+
 			Label nodeLabel = new Label();
 			nodeLabel.setIcon(mainImg.getImage());
 			Display display = Display.getCurrent();
 			Color black = display.getSystemColor(SWT.COLOR_BLACK);
 			nodeLabel.setForegroundColor(black);
 			nodeLabel.setText(newName);
-			nodeLabel.setSize(new Dimension(100,5));
+			nodeLabel.setSize(new Dimension(100, 5));
 			RectangleFigure rectFigure = (RectangleFigure) this.getChildren().get(0);
 			List<Figure> childrenList = rectFigure.getChildren();
 			rectFigure.remove(childrenList.get(1));
 			rectFigure.add(nodeLabel);
 		}
-		
+
 		public void highlightElementOnSelection() {
 			RectangleFigure rectFigure = (RectangleFigure) this.getChildren().get(0);
 			List<Figure> childrenList = rectFigure.getChildren();
 			Display display = Display.getCurrent();
 			Color bckGrndColor = new Color(null, 0, 125, 133);
-			Label newLabel= 	(Label) childrenList.get(1);
+			Label newLabel = (Label) childrenList.get(1);
 			newLabel.setForegroundColor(bckGrndColor);
 			rectFigure.remove(childrenList.get(1));
 			rectFigure.add(newLabel);
 		}
-		
+
 		public void removeHighlight() {
 			RectangleFigure rectFigure = (RectangleFigure) this.getChildren().get(0);
 			List<Figure> childrenList = rectFigure.getChildren();
 			Display display = Display.getCurrent();
 			Color bckGrndColor = display.getSystemColor(SWT.COLOR_BLACK);
-			Label newLabel= 	(Label) childrenList.get(1);
+			Label newLabel = (Label) childrenList.get(1);
 			newLabel.setForegroundColor(bckGrndColor);
 			rectFigure.remove(childrenList.get(1));
 			rectFigure.add(newLabel);
 		}
 	}
-	
-	public void renameElementItem(String newName) { 
+
+	public void renameElementItem(String newName) {
 		getPrimaryShape().renameElement(newName);
 	}
-	
-	public void removeHighlightOnElem() { 
+
+	public void removeHighlightOnElem() {
 		getPrimaryShape().removeHighlight();
 	}
-	
-	public void highlightElementItem() { 
+
+	public void highlightElementItem() {
 		getPrimaryShape().highlightElementOnSelection();
 	}
 

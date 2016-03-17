@@ -2,6 +2,7 @@ package org.wso2.developerstudio.datamapper.diagram.edit.parts;
 
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.Label;
+import org.eclipse.draw2d.RectangleFigure;
 import org.eclipse.draw2d.RoundedRectangle;
 import org.eclipse.draw2d.Shape;
 import org.eclipse.draw2d.StackLayout;
@@ -61,7 +62,7 @@ public class OperatorLeftContainerEditPart extends ShapeNodeEditPart {
 	public OperatorLeftContainerEditPart(View view) {
 		super(view);
 	}
-	
+
 	/**
 	 * @generated NOT
 	 */
@@ -86,9 +87,7 @@ public class OperatorLeftContainerEditPart extends ShapeNodeEditPart {
 					if (((OperatorLeftContainer) parentContainer).getLeftConnectors().size() == 0) {
 						OperatorLeftConnector peratorLeftConnector = DataMapperFactory.eINSTANCE
 								.createOperatorLeftConnector();
-						AddCommand addCaseConnectorCmd = new AddCommand(
-								getEditingDomain(),
-								parentContainer,
+						AddCommand addCaseConnectorCmd = new AddCommand(getEditingDomain(), parentContainer,
 								DataMapperPackage.Literals.OPERATOR_LEFT_CONTAINER__LEFT_CONNECTORS,
 								peratorLeftConnector);
 						if (addCaseConnectorCmd.canExecute()) {
@@ -108,20 +107,14 @@ public class OperatorLeftContainerEditPart extends ShapeNodeEditPart {
 								.createOperatorLeftConnector();
 						OperatorLeftConnector leftConnector2 = DataMapperFactory.eINSTANCE
 								.createOperatorLeftConnector();
-						AddCommand addCaseConnectorCmd1 = new AddCommand(
-								getEditingDomain(),
-								parentContainer,
-								DataMapperPackage.Literals.OPERATOR_LEFT_CONTAINER__LEFT_CONNECTORS,
-								leftConnector1);
+						AddCommand addCaseConnectorCmd1 = new AddCommand(getEditingDomain(), parentContainer,
+								DataMapperPackage.Literals.OPERATOR_LEFT_CONTAINER__LEFT_CONNECTORS, leftConnector1);
 						if (addCaseConnectorCmd1.canExecute()) {
 							getEditingDomain().getCommandStack().execute(addCaseConnectorCmd1);
 						}
 
-						AddCommand addCaseConnectorCmd2 = new AddCommand(
-								getEditingDomain(),
-								parentContainer,
-								DataMapperPackage.Literals.OPERATOR_LEFT_CONTAINER__LEFT_CONNECTORS,
-								leftConnector2);
+						AddCommand addCaseConnectorCmd2 = new AddCommand(getEditingDomain(), parentContainer,
+								DataMapperPackage.Literals.OPERATOR_LEFT_CONTAINER__LEFT_CONNECTORS, leftConnector2);
 						if (addCaseConnectorCmd2.canExecute()) {
 							getEditingDomain().getCommandStack().execute(addCaseConnectorCmd2);
 						}
@@ -142,11 +135,9 @@ public class OperatorLeftContainerEditPart extends ShapeNodeEditPart {
 		installEditPolicy(EditPolicyRoles.CREATION_ROLE, new CreationEditPolicyWithCustomReparent(
 				DataMapperVisualIDRegistry.TYPED_INSTANCE));
 		super.createDefaultEditPolicies();
-		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE,
-				new OperatorLeftContainerItemSemanticEditPolicy());
+		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE, new OperatorLeftContainerItemSemanticEditPolicy());
 		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE, new DragDropEditPolicy());
-		installEditPolicy(EditPolicyRoles.CANONICAL_ROLE,
-				new OperatorLeftContainerCanonicalEditPolicy());
+		installEditPolicy(EditPolicyRoles.CANONICAL_ROLE, new OperatorLeftContainerCanonicalEditPolicy());
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
 		installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE, new CustomNonResizableEditPolicyEx());
 		// XXX need an SCR to runtime to have another abstract superclass that would let children add reasonable editpolicies

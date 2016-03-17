@@ -67,6 +67,9 @@ import org.wso2.developerstudio.datamapper.TreeNode;
 import org.wso2.developerstudio.datamapper.diagram.Activator;
 import org.wso2.developerstudio.datamapper.diagram.custom.util.TreeNodeUtils;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.custom.CustomNonResizableEditPolicyEx;
+import org.wso2.developerstudio.datamapper.diagram.edit.policies.InputCanonicalEditPolicy;
+import org.wso2.developerstudio.datamapper.diagram.edit.policies.InputItemSemanticEditPolicy;
+import org.wso2.developerstudio.datamapper.diagram.part.DataMapperVisualIDRegistry;
 import org.wso2.developerstudio.datamapper.diagram.tree.generator.ISchemaTransformer;
 import org.wso2.developerstudio.datamapper.diagram.tree.generator.SchemaTransformer;
 import org.wso2.developerstudio.datamapper.diagram.tree.generator.SchemaTransformerRegistry;
@@ -143,14 +146,15 @@ public class InputEditPart extends ShapeNodeEditPart {
 			schemaTransformer = SchemaTransformerRegistry.getInstance().getSchemaTransformer().newInstance();
 			if (schemaTransformer instanceof SchemaTransformer) {
 				String content = schemaTransformer.getSchemaContentFromFile(filePath);
-				inputRootTreeNode = schemaTransformer.generateTree(content,inputRootTreeNode);
+				inputRootTreeNode = schemaTransformer.generateTree(content, inputRootTreeNode);
 			} else {
 				Tree tree = schemaTransformer.generateTreeFromFile(filePath);
 				convertTree(tree, inputRootTreeNode);
 			}
 
-		} catch (InstantiationException | IllegalAccessException |  NullPointerException | IllegalArgumentException| IOException e) {
-			log.error("Error in generating the tree",e);
+		} catch (InstantiationException | IllegalAccessException | NullPointerException | IllegalArgumentException
+				| IOException e) {
+			log.error("Error in generating the tree", e);
 		}
 
 		AddCommand addTreeNodeCmd2 = new AddCommand(getEditingDomain(), parentContainer,

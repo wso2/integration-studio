@@ -30,8 +30,7 @@ public class DataMapperDomainNavigatorLabelProvider implements ICommonLabelProvi
 	 */
 	public Image getImage(Object element) {
 		if (element instanceof DataMapperDomainNavigatorItem) {
-			return myAdapterFactoryLabelProvider.getImage(((DataMapperDomainNavigatorItem) element)
-					.getEObject());
+			return myAdapterFactoryLabelProvider.getImage(((DataMapperDomainNavigatorItem) element).getEObject());
 		}
 		return null;
 	}
@@ -41,8 +40,7 @@ public class DataMapperDomainNavigatorLabelProvider implements ICommonLabelProvi
 	 */
 	public String getText(Object element) {
 		if (element instanceof DataMapperDomainNavigatorItem) {
-			return myAdapterFactoryLabelProvider.getText(((DataMapperDomainNavigatorItem) element)
-					.getEObject());
+			return myAdapterFactoryLabelProvider.getText(((DataMapperDomainNavigatorItem) element).getEObject());
 		}
 		return null;
 	}

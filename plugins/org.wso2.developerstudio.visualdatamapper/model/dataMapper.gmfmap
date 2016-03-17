@@ -29,31 +29,6 @@
           </labelMappings>
           <diagramNode
               href="dataMapper.gmfgraph#TreeNode"/>
-          <children
-              referencedChild="//@nodes.0/@ownedChild/@children.0/@ownedChild">
-            <containmentFeature
-                href="dataMapper.ecore#//TreeNode/node"/>
-          </children>
-          <children>
-            <containmentFeature
-                href="dataMapper.ecore#//TreeNode/attribute"/>
-            <ownedChild>
-              <domainMetaElement
-                  href="dataMapper.ecore#//Attribute"/>
-              <diagramNode
-                  href="dataMapper.gmfgraph#Attribute"/>
-              <children
-                  referencedChild="//@nodes.0/@ownedChild/@children.0/@ownedChild/@children.2/@ownedChild/@children.0/@ownedChild">
-                <containmentFeature
-                    href="dataMapper.ecore#//Attribute/inNode"/>
-              </children>
-              <children
-                  referencedChild="//@nodes.0/@ownedChild/@children.0/@ownedChild/@children.2/@ownedChild/@children.1/@ownedChild">
-                <containmentFeature
-                    href="dataMapper.ecore#//Attribute/outNode"/>
-              </children>
-            </ownedChild>
-          </children>
           <children>
             <containmentFeature
                 href="dataMapper.ecore#//TreeNode/element"/>
@@ -90,6 +65,11 @@
                 </ownedChild>
               </children>
             </ownedChild>
+          </children>
+          <children
+              referencedChild="//@nodes.0/@ownedChild/@children.0/@ownedChild">
+            <containmentFeature
+                href="dataMapper.ecore#//TreeNode/node"/>
           </children>
         </ownedChild>
       </children>

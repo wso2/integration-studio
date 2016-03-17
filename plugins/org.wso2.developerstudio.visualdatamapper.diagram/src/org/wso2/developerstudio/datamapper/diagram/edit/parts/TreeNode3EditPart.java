@@ -124,16 +124,12 @@ public class TreeNode3EditPart extends ShapeNodeEditPart {
 	 * @generated NOT
 	 */
 	protected void createDefaultEditPolicies() {
-		installEditPolicy(
-				EditPolicyRoles.CREATION_ROLE,
-				new CreationEditPolicyWithCustomReparent(
-						org.wso2.developerstudio.datamapper.diagram.part.DataMapperVisualIDRegistry.TYPED_INSTANCE));
+		installEditPolicy(EditPolicyRoles.CREATION_ROLE, new CreationEditPolicyWithCustomReparent(
+				org.wso2.developerstudio.datamapper.diagram.part.DataMapperVisualIDRegistry.TYPED_INSTANCE));
 		super.createDefaultEditPolicies();
-		installEditPolicy(
-				EditPolicyRoles.SEMANTIC_ROLE,
+		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE,
 				new org.wso2.developerstudio.datamapper.diagram.edit.policies.TreeNode3ItemSemanticEditPolicy());
-		installEditPolicy(
-				EditPolicyRoles.CANONICAL_ROLE,
+		installEditPolicy(EditPolicyRoles.CANONICAL_ROLE,
 				new org.wso2.developerstudio.datamapper.diagram.edit.policies.TreeNode3CanonicalEditPolicy());
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
 		removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
@@ -201,8 +197,7 @@ public class TreeNode3EditPart extends ShapeNodeEditPart {
 	 */
 	protected boolean addFixedChild(EditPart childEditPart) {
 		if (childEditPart instanceof TreeNodeName3EditPart) {
-			((TreeNodeName3EditPart) childEditPart).setLabel(getPrimaryShape()
-					.getFigureTreeNodeNameFigure());
+			((TreeNodeName3EditPart) childEditPart).setLabel(getPrimaryShape().getFigureTreeNodeNameFigure());
 			return true;
 		}
 		return false;
@@ -335,8 +330,7 @@ public class TreeNode3EditPart extends ShapeNodeEditPart {
 	 * @generated
 	 */
 	public EditPart getPrimaryChildEditPart() {
-		return getChildBySemanticHint(DataMapperVisualIDRegistry
-				.getType(TreeNodeName3EditPart.VISUAL_ID));
+		return getChildBySemanticHint(DataMapperVisualIDRegistry.getType(TreeNodeName3EditPart.VISUAL_ID));
 	}
 
 	/**
@@ -386,7 +380,7 @@ public class TreeNode3EditPart extends ShapeNodeEditPart {
 			l.setVertical(false);
 			figure.setLayoutManager(l);
 			figure.setPreferredSize(100, 3);
-			
+
 			figure.setBorder(null);
 			figure.setOpaque(true);
 
@@ -399,7 +393,7 @@ public class TreeNode3EditPart extends ShapeNodeEditPart {
 			final ImageFigure mainImg = new ImageFigure(mainImgDescCollapse.createImage());
 			mainImg.setSize(new Dimension(10, 8));
 			RectangleFigure mainImageRectangle = new RectangleFigure();
-			
+
 			mainImageRectangle.setBackgroundColor(new Color(null, 255, 255, 255));
 			mainImageRectangle.setPreferredSize(new Dimension(10, 7));
 			mainImageRectangle.add(mainImg);
@@ -423,56 +417,56 @@ public class TreeNode3EditPart extends ShapeNodeEditPart {
 			final Color black = display.getSystemColor(SWT.COLOR_BLACK);
 			nodeLabel.setForegroundColor(black);
 			nodeLabel.setText(name);
-			nodeLabel.setSize(new Dimension(100,5));
-			this.addMouseMotionListener(new MouseMotionListener(){
+			nodeLabel.setSize(new Dimension(100, 5));
+			this.addMouseMotionListener(new MouseMotionListener() {
 
 				@Override
 				public void mouseDragged(MouseEvent me) {
 					highlightElementOnSelection();
-					
+
 				}
 
 				@Override
 				public void mouseEntered(MouseEvent me) {
 					highlightElementOnSelection();
-					
+
 				}
 
 				@Override
 				public void mouseExited(MouseEvent me) {
 					removeHighlight();
-					
+
 				}
 
 				@Override
 				public void mouseHover(MouseEvent me) {
 					highlightElementOnSelection();
-					
+
 				}
 
 				@Override
 				public void mouseMoved(MouseEvent me) {
 				}
-				
+
 			});
 			this.addMouseListener(new MouseListener() {
-				
+
 				@Override
 				public void mouseReleased(MouseEvent me) {
 					removeHighlight();
-					
+
 				}
-				
+
 				@Override
 				public void mousePressed(MouseEvent me) {
 					highlightElementOnSelection();
-					
+
 				}
-				
+
 				@Override
 				public void mouseDoubleClicked(MouseEvent me) {
 					highlightElementOnSelection();
-					
+
 				}
 			});
 			figure.setOutline(false);
@@ -535,52 +529,53 @@ public class TreeNode3EditPart extends ShapeNodeEditPart {
 
 			final ImageFigure mainImg = new ImageFigure(mainImgDesc.createImage());
 			mainImg.setSize(new Dimension(10, 8));
-			
+
 			Label nodeLabel = new Label();
 			nodeLabel.setIcon(mainImg.getImage());
 			Display display = Display.getCurrent();
 			Color black = display.getSystemColor(SWT.COLOR_BLACK);
 			nodeLabel.setForegroundColor(black);
 			nodeLabel.setText(newName);
-			nodeLabel.setSize(new Dimension(100,5));
+			nodeLabel.setSize(new Dimension(100, 5));
 			RectangleFigure rectFigure = (RectangleFigure) this.getChildren().get(0);
 			List<Figure> childrenList = rectFigure.getChildren();
 			rectFigure.remove(childrenList.get(1));
 			rectFigure.add(nodeLabel);
-			
+
 		}
+
 		public void highlightElementOnSelection() {
 			RectangleFigure rectFigure = (RectangleFigure) this.getChildren().get(0);
 			List<Figure> childrenList = rectFigure.getChildren();
 			Display display = Display.getCurrent();
 			Color bckGrndColor = new Color(null, 0, 125, 133);
-			Label newLabel= 	(Label) childrenList.get(1);
+			Label newLabel = (Label) childrenList.get(1);
 			newLabel.setForegroundColor(bckGrndColor);
 			rectFigure.remove(childrenList.get(1));
 			rectFigure.add(newLabel);
 		}
-		
+
 		public void removeHighlight() {
 			RectangleFigure rectFigure = (RectangleFigure) this.getChildren().get(0);
 			List<Figure> childrenList = rectFigure.getChildren();
 			Display display = Display.getCurrent();
 			Color bckGrndColor = display.getSystemColor(SWT.COLOR_BLACK);
-			Label newLabel= 	(Label) childrenList.get(1);
+			Label newLabel = (Label) childrenList.get(1);
 			newLabel.setForegroundColor(bckGrndColor);
 			rectFigure.remove(childrenList.get(1));
 			rectFigure.add(newLabel);
 		}
 	}
-	
-	public void renameElementItem(String newName) { 
+
+	public void renameElementItem(String newName) {
 		getPrimaryShape().renameElement(newName);
 	}
-	
-	public void removeHighlightOnElem() { 
+
+	public void removeHighlightOnElem() {
 		getPrimaryShape().removeHighlight();
 	}
-	
-	public void highlightElementItem() { 
+
+	public void highlightElementItem() {
 		getPrimaryShape().highlightElementOnSelection();
 	}
 

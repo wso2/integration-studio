@@ -15,11 +15,9 @@ public class ElementInitializers {
 	 * @generated
 	 */
 	public static ElementInitializers getInstance() {
-		ElementInitializers cached = DataMapperDiagramEditorPlugin.getInstance()
-				.getElementInitializers();
+		ElementInitializers cached = DataMapperDiagramEditorPlugin.getInstance().getElementInitializers();
 		if (cached == null) {
-			DataMapperDiagramEditorPlugin.getInstance().setElementInitializers(
-					cached = new ElementInitializers());
+			DataMapperDiagramEditorPlugin.getInstance().setElementInitializers(cached = new ElementInitializers());
 		}
 		return cached;
 	}

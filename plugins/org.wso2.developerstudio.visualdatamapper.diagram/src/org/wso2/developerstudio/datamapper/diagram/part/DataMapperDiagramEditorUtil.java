@@ -64,8 +64,7 @@ public class DataMapperDiagramEditorUtil {
 	public static Map<?, ?> getSaveOptions() {
 		HashMap<String, Object> saveOptions = new HashMap<String, Object>();
 		saveOptions.put(XMLResource.OPTION_ENCODING, "UTF-8"); //$NON-NLS-1$
-		saveOptions.put(Resource.OPTION_SAVE_ONLY_IF_CHANGED,
-				Resource.OPTION_SAVE_ONLY_IF_CHANGED_MEMORY_BUFFER);
+		saveOptions.put(Resource.OPTION_SAVE_ONLY_IF_CHANGED, Resource.OPTION_SAVE_ONLY_IF_CHANGED_MEMORY_BUFFER);
 		return saveOptions;
 	}
 
@@ -74,13 +73,10 @@ public class DataMapperDiagramEditorUtil {
 	 */
 	public static boolean openDiagram(Resource diagram) throws PartInitException {
 		String path = diagram.getURI().toPlatformString(true);
-		IResource workspaceResource = ResourcesPlugin.getWorkspace().getRoot()
-				.findMember(new Path(path));
+		IResource workspaceResource = ResourcesPlugin.getWorkspace().getRoot().findMember(new Path(path));
 		if (workspaceResource instanceof IFile) {
-			IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow()
-					.getActivePage();
-			return null != page.openEditor(new FileEditorInput((IFile) workspaceResource),
-					DataMapperDiagramEditor.ID);
+			IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
+			return null != page.openEditor(new FileEditorInput((IFile) workspaceResource), DataMapperDiagramEditor.ID);
 		}
 		return false;
 	}
@@ -103,8 +99,7 @@ public class DataMapperDiagramEditorUtil {
 	/**
 	 * @generated
 	 */
-	public static String getUniqueFileName(IPath containerFullPath, String fileName,
-			String extension) {
+	public static String getUniqueFileName(IPath containerFullPath, String fileName, String extension) {
 		return DefaultDiagramEditorUtil.getUniqueFileName(containerFullPath, fileName, extension,
 				DefaultDiagramEditorUtil.EXISTS_IN_WORKSPACE);
 	}
@@ -115,8 +110,7 @@ public class DataMapperDiagramEditorUtil {
 	 * @generated
 	 */
 	public static void runWizard(Shell shell, Wizard wizard, String settingsKey) {
-		IDialogSettings pluginDialogSettings = DataMapperDiagramEditorPlugin.getInstance()
-				.getDialogSettings();
+		IDialogSettings pluginDialogSettings = DataMapperDiagramEditorPlugin.getInstance().getDialogSettings();
 		IDialogSettings wizardDialogSettings = pluginDialogSettings.getSection(settingsKey);
 		if (wizardDialogSettings == null) {
 			wizardDialogSettings = pluginDialogSettings.addNewSection(settingsKey);
@@ -132,18 +126,14 @@ public class DataMapperDiagramEditorUtil {
 	 * This method should be called within a workspace modify operation since it creates resources.
 	 * @generated
 	 */
-	public static Resource createDiagram(URI diagramURI, URI modelURI,
-			IProgressMonitor progressMonitor) {
-		TransactionalEditingDomain editingDomain = GMFEditingDomainFactory.INSTANCE
-				.createEditingDomain();
-		progressMonitor
-				.beginTask(Messages.DataMapperDiagramEditorUtil_CreateDiagramProgressTask, 3);
+	public static Resource createDiagram(URI diagramURI, URI modelURI, IProgressMonitor progressMonitor) {
+		TransactionalEditingDomain editingDomain = GMFEditingDomainFactory.INSTANCE.createEditingDomain();
+		progressMonitor.beginTask(Messages.DataMapperDiagramEditorUtil_CreateDiagramProgressTask, 3);
 		final Resource diagramResource = editingDomain.getResourceSet().createResource(diagramURI);
 		final Resource modelResource = editingDomain.getResourceSet().createResource(modelURI);
 		final String diagramName = diagramURI.lastSegment();
 		AbstractTransactionalCommand command = new AbstractTransactionalCommand(editingDomain,
-				Messages.DataMapperDiagramEditorUtil_CreateDiagramCommandLabel,
-				Collections.EMPTY_LIST) {
+				Messages.DataMapperDiagramEditorUtil_CreateDiagramCommandLabel, Collections.EMPTY_LIST) {
 			protected CommandResult doExecuteWithResult(IProgressMonitor monitor, IAdaptable info)
 					throws ExecutionException {
 				DataMapperRoot model = createInitialModel();
@@ -158,12 +148,10 @@ public class DataMapperDiagramEditorUtil {
 				}
 
 				try {
-					modelResource
-							.save(org.wso2.developerstudio.datamapper.diagram.part.DataMapperDiagramEditorUtil
-									.getSaveOptions());
-					diagramResource
-							.save(org.wso2.developerstudio.datamapper.diagram.part.DataMapperDiagramEditorUtil
-									.getSaveOptions());
+					modelResource.save(org.wso2.developerstudio.datamapper.diagram.part.DataMapperDiagramEditorUtil
+							.getSaveOptions());
+					diagramResource.save(org.wso2.developerstudio.datamapper.diagram.part.DataMapperDiagramEditorUtil
+							.getSaveOptions());
 				} catch (IOException e) {
 
 					DataMapperDiagramEditorPlugin.getInstance().logError(
@@ -173,11 +161,10 @@ public class DataMapperDiagramEditorUtil {
 			}
 		};
 		try {
-			OperationHistoryFactory.getOperationHistory().execute(command,
-					new SubProgressMonitor(progressMonitor, 1), null);
+			OperationHistoryFactory.getOperationHistory().execute(command, new SubProgressMonitor(progressMonitor, 1),
+					null);
 		} catch (ExecutionException e) {
-			DataMapperDiagramEditorPlugin.getInstance().logError(
-					"Unable to create model and diagram", e); //$NON-NLS-1$
+			DataMapperDiagramEditorPlugin.getInstance().logError("Unable to create model and diagram", e); //$NON-NLS-1$
 		}
 		setCharset(WorkspaceSynchronizer.getFile(modelResource));
 		setCharset(WorkspaceSynchronizer.getFile(diagramResource));
@@ -207,8 +194,7 @@ public class DataMapperDiagramEditorUtil {
 	/**
 	 * @generated
 	 */
-	public static void selectElementsInDiagram(IDiagramWorkbenchPart diagramPart,
-			List<EditPart> editParts) {
+	public static void selectElementsInDiagram(IDiagramWorkbenchPart diagramPart, List<EditPart> editParts) {
 		diagramPart.getDiagramGraphicalViewer().deselectAll();
 
 		EditPart firstPrimary = null;
@@ -243,8 +229,7 @@ public class DataMapperDiagramEditorUtil {
 
 		String elementID = EMFCoreUtil.getProxyID(element);
 		@SuppressWarnings("unchecked")
-		List<EditPart> associatedParts = viewer.findEditPartsForElement(elementID,
-				IGraphicalEditPart.class);
+		List<EditPart> associatedParts = viewer.findEditPartsForElement(elementID, IGraphicalEditPart.class);
 		// perform the possible hierarchy disjoint -> take the top-most parts only
 		for (EditPart nextPart : associatedParts) {
 			EditPart parentPart = nextPart.getParent();
@@ -261,8 +246,7 @@ public class DataMapperDiagramEditorUtil {
 				editPartCollector.add(associatedParts.get(0));
 			} else {
 				if (element.eContainer() != null) {
-					return findElementsInDiagramByID(diagramPart, element.eContainer(),
-							editPartCollector);
+					return findElementsInDiagramByID(diagramPart, element.eContainer(), editPartCollector);
 				}
 			}
 		}
@@ -343,8 +327,8 @@ public class DataMapperDiagramEditorUtil {
 		/**
 		 * @generated
 		 */
-		private static boolean buildElement2ViewMap(View parentView,
-				Map<EObject, View> element2ViewMap, Set<? extends EObject> elements) {
+		private static boolean buildElement2ViewMap(View parentView, Map<EObject, View> element2ViewMap,
+				Set<? extends EObject> elements) {
 			if (elements.size() == element2ViewMap.size()) {
 				return true;
 			}

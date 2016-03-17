@@ -50,10 +50,8 @@ public class OperatorLeftConnectorCreateCommand extends EditElementCommand {
 	/**
 	 * @generated
 	 */
-	protected CommandResult doExecuteWithResult(IProgressMonitor monitor, IAdaptable info)
-			throws ExecutionException {
-		OperatorLeftConnector newElement = DataMapperFactory.eINSTANCE
-				.createOperatorLeftConnector();
+	protected CommandResult doExecuteWithResult(IProgressMonitor monitor, IAdaptable info) throws ExecutionException {
+		OperatorLeftConnector newElement = DataMapperFactory.eINSTANCE.createOperatorLeftConnector();
 
 		OperatorLeftContainer owner = (OperatorLeftContainer) getElementToEdit();
 		owner.getLeftConnectors().add(newElement);
@@ -67,11 +65,10 @@ public class OperatorLeftConnectorCreateCommand extends EditElementCommand {
 	/**
 	 * @generated
 	 */
-	protected void doConfigure(OperatorLeftConnector newElement, IProgressMonitor monitor,
-			IAdaptable info) throws ExecutionException {
+	protected void doConfigure(OperatorLeftConnector newElement, IProgressMonitor monitor, IAdaptable info)
+			throws ExecutionException {
 		IElementType elementType = ((CreateElementRequest) getRequest()).getElementType();
-		ConfigureRequest configureRequest = new ConfigureRequest(getEditingDomain(), newElement,
-				elementType);
+		ConfigureRequest configureRequest = new ConfigureRequest(getEditingDomain(), newElement, elementType);
 		configureRequest.setClientContext(((CreateElementRequest) getRequest()).getClientContext());
 		configureRequest.addParameters(getRequest().getParameters());
 		ICommand configureCommand = elementType.getEditCommand(configureRequest);

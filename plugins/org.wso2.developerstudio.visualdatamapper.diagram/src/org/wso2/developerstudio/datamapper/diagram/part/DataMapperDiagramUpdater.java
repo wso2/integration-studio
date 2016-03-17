@@ -94,10 +94,10 @@ public class DataMapperDiagramUpdater {
 			return getUpperCase_2011SemanticChildren(view);
 		case TreeNodeEditPart.VISUAL_ID:
 			return getTreeNode_3002SemanticChildren(view);
-		case TreeNode2EditPart.VISUAL_ID:
-			return getTreeNode_3003SemanticChildren(view);
 		case ElementEditPart.VISUAL_ID:
 			return getElement_3007SemanticChildren(view);
+		case TreeNode2EditPart.VISUAL_ID:
+			return getTreeNode_3003SemanticChildren(view);
 		case TreeNode3EditPart.VISUAL_ID:
 			return getTreeNode_3011SemanticChildren(view);
 		case OperatorBasicContainerEditPart.VISUAL_ID:
@@ -354,18 +354,18 @@ public class DataMapperDiagramUpdater {
 		}
 		TreeNode modelElement = (TreeNode) view.getElement();
 		LinkedList<DataMapperNodeDescriptor> result = new LinkedList<DataMapperNodeDescriptor>();
-		for (Iterator<?> it = modelElement.getNode().iterator(); it.hasNext();) {
-			TreeNode childElement = (TreeNode) it.next();
-			int visualID = DataMapperVisualIDRegistry.getNodeVisualID(view, childElement);
-			if (visualID == TreeNode2EditPart.VISUAL_ID) {
-				result.add(new DataMapperNodeDescriptor(childElement, visualID));
-				continue;
-			}
-		}
 		for (Iterator<?> it = modelElement.getElement().iterator(); it.hasNext();) {
 			Element childElement = (Element) it.next();
 			int visualID = DataMapperVisualIDRegistry.getNodeVisualID(view, childElement);
 			if (visualID == ElementEditPart.VISUAL_ID) {
+				result.add(new DataMapperNodeDescriptor(childElement, visualID));
+				continue;
+			}
+		}
+		for (Iterator<?> it = modelElement.getNode().iterator(); it.hasNext();) {
+			TreeNode childElement = (TreeNode) it.next();
+			int visualID = DataMapperVisualIDRegistry.getNodeVisualID(view, childElement);
+			if (visualID == TreeNode2EditPart.VISUAL_ID) {
 				result.add(new DataMapperNodeDescriptor(childElement, visualID));
 				continue;
 			}
@@ -382,14 +382,6 @@ public class DataMapperDiagramUpdater {
 		}
 		TreeNode modelElement = (TreeNode) view.getElement();
 		LinkedList<DataMapperNodeDescriptor> result = new LinkedList<DataMapperNodeDescriptor>();
-		for (Iterator<?> it = modelElement.getNode().iterator(); it.hasNext();) {
-			TreeNode childElement = (TreeNode) it.next();
-			int visualID = DataMapperVisualIDRegistry.getNodeVisualID(view, childElement);
-			if (visualID == TreeNode2EditPart.VISUAL_ID) {
-				result.add(new DataMapperNodeDescriptor(childElement, visualID));
-				continue;
-			}
-		}
 		for (Iterator<?> it = modelElement.getElement().iterator(); it.hasNext();) {
 			Element childElement = (Element) it.next();
 			int visualID = DataMapperVisualIDRegistry.getNodeVisualID(view, childElement);
@@ -398,9 +390,16 @@ public class DataMapperDiagramUpdater {
 				continue;
 			}
 		}
+		for (Iterator<?> it = modelElement.getNode().iterator(); it.hasNext();) {
+			TreeNode childElement = (TreeNode) it.next();
+			int visualID = DataMapperVisualIDRegistry.getNodeVisualID(view, childElement);
+			if (visualID == TreeNode2EditPart.VISUAL_ID) {
+				result.add(new DataMapperNodeDescriptor(childElement, visualID));
+				continue;
+			}
+		}
 		return result;
 	}
-
 
 	/**
 	 * @generated
@@ -437,18 +436,18 @@ public class DataMapperDiagramUpdater {
 		}
 		TreeNode modelElement = (TreeNode) view.getElement();
 		LinkedList<DataMapperNodeDescriptor> result = new LinkedList<DataMapperNodeDescriptor>();
-		for (Iterator<?> it = modelElement.getNode().iterator(); it.hasNext();) {
-			TreeNode childElement = (TreeNode) it.next();
-			int visualID = DataMapperVisualIDRegistry.getNodeVisualID(view, childElement);
-			if (visualID == TreeNode2EditPart.VISUAL_ID) {
-				result.add(new DataMapperNodeDescriptor(childElement, visualID));
-				continue;
-			}
-		}
 		for (Iterator<?> it = modelElement.getElement().iterator(); it.hasNext();) {
 			Element childElement = (Element) it.next();
 			int visualID = DataMapperVisualIDRegistry.getNodeVisualID(view, childElement);
 			if (visualID == ElementEditPart.VISUAL_ID) {
+				result.add(new DataMapperNodeDescriptor(childElement, visualID));
+				continue;
+			}
+		}
+		for (Iterator<?> it = modelElement.getNode().iterator(); it.hasNext();) {
+			TreeNode childElement = (TreeNode) it.next();
+			int visualID = DataMapperVisualIDRegistry.getNodeVisualID(view, childElement);
+			if (visualID == TreeNode2EditPart.VISUAL_ID) {
 				result.add(new DataMapperNodeDescriptor(childElement, visualID));
 				continue;
 			}
@@ -459,8 +458,7 @@ public class DataMapperDiagramUpdater {
 	/**
 	 * @generated
 	 */
-	public static List<DataMapperNodeDescriptor> getOperatorBasicContainer_3012SemanticChildren(
-			View view) {
+	public static List<DataMapperNodeDescriptor> getOperatorBasicContainer_3012SemanticChildren(View view) {
 		if (!view.isSetElement()) {
 			return Collections.emptyList();
 		}
@@ -486,8 +484,7 @@ public class DataMapperDiagramUpdater {
 	/**
 	 * @generated
 	 */
-	public static List<DataMapperNodeDescriptor> getOperatorLeftContainer_3013SemanticChildren(
-			View view) {
+	public static List<DataMapperNodeDescriptor> getOperatorLeftContainer_3013SemanticChildren(View view) {
 		if (!view.isSetElement()) {
 			return Collections.emptyList();
 		}
@@ -507,8 +504,7 @@ public class DataMapperDiagramUpdater {
 	/**
 	 * @generated
 	 */
-	public static List<DataMapperNodeDescriptor> getOperatorLeftConnector_3014SemanticChildren(
-			View view) {
+	public static List<DataMapperNodeDescriptor> getOperatorLeftConnector_3014SemanticChildren(View view) {
 		if (!view.isSetElement()) {
 			return Collections.emptyList();
 		}
@@ -527,8 +523,7 @@ public class DataMapperDiagramUpdater {
 	/**
 	 * @generated
 	 */
-	public static List<DataMapperNodeDescriptor> getOperatorRightContainer_3016SemanticChildren(
-			View view) {
+	public static List<DataMapperNodeDescriptor> getOperatorRightContainer_3016SemanticChildren(View view) {
 		if (!view.isSetElement()) {
 			return Collections.emptyList();
 		}
@@ -548,8 +543,7 @@ public class DataMapperDiagramUpdater {
 	/**
 	 * @generated
 	 */
-	public static List<DataMapperNodeDescriptor> getOperatorRightConnector_3017SemanticChildren(
-			View view) {
+	public static List<DataMapperNodeDescriptor> getOperatorRightConnector_3017SemanticChildren(View view) {
 		if (!view.isSetElement()) {
 			return Collections.emptyList();
 		}
@@ -592,18 +586,14 @@ public class DataMapperDiagramUpdater {
 			return getUpperCase_2011ContainedLinks(view);
 		case TreeNodeEditPart.VISUAL_ID:
 			return getTreeNode_3002ContainedLinks(view);
-		case TreeNode2EditPart.VISUAL_ID:
-			return getTreeNode_3003ContainedLinks(view);
-		case InNodeEditPart.VISUAL_ID:
-			return getInNode_3005ContainedLinks(view);
-		case OutNodeEditPart.VISUAL_ID:
-			return getOutNode_3006ContainedLinks(view);
 		case ElementEditPart.VISUAL_ID:
 			return getElement_3007ContainedLinks(view);
 		case InNode2EditPart.VISUAL_ID:
 			return getInNode_3008ContainedLinks(view);
 		case OutNode2EditPart.VISUAL_ID:
 			return getOutNode_3009ContainedLinks(view);
+		case TreeNode2EditPart.VISUAL_ID:
+			return getTreeNode_3003ContainedLinks(view);
 		case TreeNode3EditPart.VISUAL_ID:
 			return getTreeNode_3011ContainedLinks(view);
 		case OperatorBasicContainerEditPart.VISUAL_ID:
@@ -651,18 +641,14 @@ public class DataMapperDiagramUpdater {
 			return getUpperCase_2011IncomingLinks(view);
 		case TreeNodeEditPart.VISUAL_ID:
 			return getTreeNode_3002IncomingLinks(view);
-		case TreeNode2EditPart.VISUAL_ID:
-			return getTreeNode_3003IncomingLinks(view);
-		case InNodeEditPart.VISUAL_ID:
-			return getInNode_3005IncomingLinks(view);
-		case OutNodeEditPart.VISUAL_ID:
-			return getOutNode_3006IncomingLinks(view);
 		case ElementEditPart.VISUAL_ID:
 			return getElement_3007IncomingLinks(view);
 		case InNode2EditPart.VISUAL_ID:
 			return getInNode_3008IncomingLinks(view);
 		case OutNode2EditPart.VISUAL_ID:
 			return getOutNode_3009IncomingLinks(view);
+		case TreeNode2EditPart.VISUAL_ID:
+			return getTreeNode_3003IncomingLinks(view);
 		case TreeNode3EditPart.VISUAL_ID:
 			return getTreeNode_3011IncomingLinks(view);
 		case OperatorBasicContainerEditPart.VISUAL_ID:
@@ -710,18 +696,14 @@ public class DataMapperDiagramUpdater {
 			return getUpperCase_2011OutgoingLinks(view);
 		case TreeNodeEditPart.VISUAL_ID:
 			return getTreeNode_3002OutgoingLinks(view);
-		case TreeNode2EditPart.VISUAL_ID:
-			return getTreeNode_3003OutgoingLinks(view);
-		case InNodeEditPart.VISUAL_ID:
-			return getInNode_3005OutgoingLinks(view);
-		case OutNodeEditPart.VISUAL_ID:
-			return getOutNode_3006OutgoingLinks(view);
 		case ElementEditPart.VISUAL_ID:
 			return getElement_3007OutgoingLinks(view);
 		case InNode2EditPart.VISUAL_ID:
 			return getInNode_3008OutgoingLinks(view);
 		case OutNode2EditPart.VISUAL_ID:
 			return getOutNode_3009OutgoingLinks(view);
+		case TreeNode2EditPart.VISUAL_ID:
+			return getTreeNode_3003OutgoingLinks(view);
 		case TreeNode3EditPart.VISUAL_ID:
 			return getTreeNode_3011OutgoingLinks(view);
 		case OperatorBasicContainerEditPart.VISUAL_ID:
@@ -831,30 +813,6 @@ public class DataMapperDiagramUpdater {
 	/**
 	 * @generated
 	 */
-	public static List<DataMapperLinkDescriptor> getAttribute_3004ContainedLinks(View view) {
-		return Collections.emptyList();
-	}
-
-	/**
-	 * @generated
-	 */
-	public static List<DataMapperLinkDescriptor> getInNode_3005ContainedLinks(View view) {
-		return Collections.emptyList();
-	}
-
-	/**
-	 * @generated
-	 */
-	public static List<DataMapperLinkDescriptor> getOutNode_3006ContainedLinks(View view) {
-		OutNode modelElement = (OutNode) view.getElement();
-		LinkedList<DataMapperLinkDescriptor> result = new LinkedList<DataMapperLinkDescriptor>();
-		result.addAll(getContainedTypeModelFacetLinks_DataMapperLink_4001(modelElement));
-		return result;
-	}
-
-	/**
-	 * @generated
-	 */
 	public static List<DataMapperLinkDescriptor> getElement_3007ContainedLinks(View view) {
 		return Collections.emptyList();
 	}
@@ -886,24 +844,21 @@ public class DataMapperDiagramUpdater {
 	/**
 	 * @generated
 	 */
-	public static List<DataMapperLinkDescriptor> getOperatorBasicContainer_3012ContainedLinks(
-			View view) {
+	public static List<DataMapperLinkDescriptor> getOperatorBasicContainer_3012ContainedLinks(View view) {
 		return Collections.emptyList();
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List<DataMapperLinkDescriptor> getOperatorLeftContainer_3013ContainedLinks(
-			View view) {
+	public static List<DataMapperLinkDescriptor> getOperatorLeftContainer_3013ContainedLinks(View view) {
 		return Collections.emptyList();
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List<DataMapperLinkDescriptor> getOperatorLeftConnector_3014ContainedLinks(
-			View view) {
+	public static List<DataMapperLinkDescriptor> getOperatorLeftConnector_3014ContainedLinks(View view) {
 		return Collections.emptyList();
 	}
 
@@ -917,16 +872,14 @@ public class DataMapperDiagramUpdater {
 	/**
 	 * @generated
 	 */
-	public static List<DataMapperLinkDescriptor> getOperatorRightContainer_3016ContainedLinks(
-			View view) {
+	public static List<DataMapperLinkDescriptor> getOperatorRightContainer_3016ContainedLinks(View view) {
 		return Collections.emptyList();
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List<DataMapperLinkDescriptor> getOperatorRightConnector_3017ContainedLinks(
-			View view) {
+	public static List<DataMapperLinkDescriptor> getOperatorRightConnector_3017ContainedLinks(View view) {
 		return Collections.emptyList();
 	}
 
@@ -1027,33 +980,6 @@ public class DataMapperDiagramUpdater {
 	/**
 	 * @generated
 	 */
-	public static List<DataMapperLinkDescriptor> getAttribute_3004IncomingLinks(View view) {
-		return Collections.emptyList();
-	}
-
-	/**
-	 * @generated
-	 */
-	public static List<DataMapperLinkDescriptor> getInNode_3005IncomingLinks(View view) {
-		InNode modelElement = (InNode) view.getElement();
-		Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences = EcoreUtil.CrossReferencer
-				.find(view.eResource().getResourceSet().getResources());
-		LinkedList<DataMapperLinkDescriptor> result = new LinkedList<DataMapperLinkDescriptor>();
-		result.addAll(getIncomingTypeModelFacetLinks_DataMapperLink_4001(modelElement,
-				crossReferences));
-		return result;
-	}
-
-	/**
-	 * @generated
-	 */
-	public static List<DataMapperLinkDescriptor> getOutNode_3006IncomingLinks(View view) {
-		return Collections.emptyList();
-	}
-
-	/**
-	 * @generated
-	 */
 	public static List<DataMapperLinkDescriptor> getElement_3007IncomingLinks(View view) {
 		return Collections.emptyList();
 	}
@@ -1063,11 +989,10 @@ public class DataMapperDiagramUpdater {
 	 */
 	public static List<DataMapperLinkDescriptor> getInNode_3008IncomingLinks(View view) {
 		InNode modelElement = (InNode) view.getElement();
-		Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences = EcoreUtil.CrossReferencer
-				.find(view.eResource().getResourceSet().getResources());
+		Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences = EcoreUtil.CrossReferencer.find(view
+				.eResource().getResourceSet().getResources());
 		LinkedList<DataMapperLinkDescriptor> result = new LinkedList<DataMapperLinkDescriptor>();
-		result.addAll(getIncomingTypeModelFacetLinks_DataMapperLink_4001(modelElement,
-				crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_DataMapperLink_4001(modelElement, crossReferences));
 		return result;
 	}
 
@@ -1088,24 +1013,21 @@ public class DataMapperDiagramUpdater {
 	/**
 	 * @generated
 	 */
-	public static List<DataMapperLinkDescriptor> getOperatorBasicContainer_3012IncomingLinks(
-			View view) {
+	public static List<DataMapperLinkDescriptor> getOperatorBasicContainer_3012IncomingLinks(View view) {
 		return Collections.emptyList();
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List<DataMapperLinkDescriptor> getOperatorLeftContainer_3013IncomingLinks(
-			View view) {
+	public static List<DataMapperLinkDescriptor> getOperatorLeftContainer_3013IncomingLinks(View view) {
 		return Collections.emptyList();
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List<DataMapperLinkDescriptor> getOperatorLeftConnector_3014IncomingLinks(
-			View view) {
+	public static List<DataMapperLinkDescriptor> getOperatorLeftConnector_3014IncomingLinks(View view) {
 		return Collections.emptyList();
 	}
 
@@ -1114,27 +1036,24 @@ public class DataMapperDiagramUpdater {
 	 */
 	public static List<DataMapperLinkDescriptor> getInNode_3015IncomingLinks(View view) {
 		InNode modelElement = (InNode) view.getElement();
-		Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences = EcoreUtil.CrossReferencer
-				.find(view.eResource().getResourceSet().getResources());
+		Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences = EcoreUtil.CrossReferencer.find(view
+				.eResource().getResourceSet().getResources());
 		LinkedList<DataMapperLinkDescriptor> result = new LinkedList<DataMapperLinkDescriptor>();
-		result.addAll(getIncomingTypeModelFacetLinks_DataMapperLink_4001(modelElement,
-				crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_DataMapperLink_4001(modelElement, crossReferences));
 		return result;
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List<DataMapperLinkDescriptor> getOperatorRightContainer_3016IncomingLinks(
-			View view) {
+	public static List<DataMapperLinkDescriptor> getOperatorRightContainer_3016IncomingLinks(View view) {
 		return Collections.emptyList();
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List<DataMapperLinkDescriptor> getOperatorRightConnector_3017IncomingLinks(
-			View view) {
+	public static List<DataMapperLinkDescriptor> getOperatorRightConnector_3017IncomingLinks(View view) {
 		return Collections.emptyList();
 	}
 
@@ -1232,30 +1151,6 @@ public class DataMapperDiagramUpdater {
 	/**
 	 * @generated
 	 */
-	public static List<DataMapperLinkDescriptor> getAttribute_3004OutgoingLinks(View view) {
-		return Collections.emptyList();
-	}
-
-	/**
-	 * @generated
-	 */
-	public static List<DataMapperLinkDescriptor> getInNode_3005OutgoingLinks(View view) {
-		return Collections.emptyList();
-	}
-
-	/**
-	 * @generated
-	 */
-	public static List<DataMapperLinkDescriptor> getOutNode_3006OutgoingLinks(View view) {
-		OutNode modelElement = (OutNode) view.getElement();
-		LinkedList<DataMapperLinkDescriptor> result = new LinkedList<DataMapperLinkDescriptor>();
-		result.addAll(getOutgoingTypeModelFacetLinks_DataMapperLink_4001(modelElement));
-		return result;
-	}
-
-	/**
-	 * @generated
-	 */
 	public static List<DataMapperLinkDescriptor> getElement_3007OutgoingLinks(View view) {
 		return Collections.emptyList();
 	}
@@ -1287,24 +1182,21 @@ public class DataMapperDiagramUpdater {
 	/**
 	 * @generated
 	 */
-	public static List<DataMapperLinkDescriptor> getOperatorBasicContainer_3012OutgoingLinks(
-			View view) {
+	public static List<DataMapperLinkDescriptor> getOperatorBasicContainer_3012OutgoingLinks(View view) {
 		return Collections.emptyList();
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List<DataMapperLinkDescriptor> getOperatorLeftContainer_3013OutgoingLinks(
-			View view) {
+	public static List<DataMapperLinkDescriptor> getOperatorLeftContainer_3013OutgoingLinks(View view) {
 		return Collections.emptyList();
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List<DataMapperLinkDescriptor> getOperatorLeftConnector_3014OutgoingLinks(
-			View view) {
+	public static List<DataMapperLinkDescriptor> getOperatorLeftConnector_3014OutgoingLinks(View view) {
 		return Collections.emptyList();
 	}
 
@@ -1318,16 +1210,14 @@ public class DataMapperDiagramUpdater {
 	/**
 	 * @generated
 	 */
-	public static List<DataMapperLinkDescriptor> getOperatorRightContainer_3016OutgoingLinks(
-			View view) {
+	public static List<DataMapperLinkDescriptor> getOperatorRightContainer_3016OutgoingLinks(View view) {
 		return Collections.emptyList();
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List<DataMapperLinkDescriptor> getOperatorRightConnector_3017OutgoingLinks(
-			View view) {
+	public static List<DataMapperLinkDescriptor> getOperatorRightConnector_3017OutgoingLinks(View view) {
 		return Collections.emptyList();
 	}
 
@@ -1360,14 +1250,13 @@ public class DataMapperDiagramUpdater {
 				continue;
 			}
 			DataMapperLink link = (DataMapperLink) linkObject;
-			if (DataMapperLinkEditPart.VISUAL_ID != DataMapperVisualIDRegistry
-					.getLinkWithClassVisualID(link)) {
+			if (DataMapperLinkEditPart.VISUAL_ID != DataMapperVisualIDRegistry.getLinkWithClassVisualID(link)) {
 				continue;
 			}
 			InNode dst = link.getInNode();
 			OutNode src = link.getOutNode();
-			result.add(new DataMapperLinkDescriptor(src, dst, link,
-					DataMapperElementTypes.DataMapperLink_4001, DataMapperLinkEditPart.VISUAL_ID));
+			result.add(new DataMapperLinkDescriptor(src, dst, link, DataMapperElementTypes.DataMapperLink_4001,
+					DataMapperLinkEditPart.VISUAL_ID));
 		}
 		return result;
 	}
@@ -1380,19 +1269,17 @@ public class DataMapperDiagramUpdater {
 		LinkedList<DataMapperLinkDescriptor> result = new LinkedList<DataMapperLinkDescriptor>();
 		Collection<EStructuralFeature.Setting> settings = crossReferences.get(target);
 		for (EStructuralFeature.Setting setting : settings) {
-			if (setting.getEStructuralFeature() != DataMapperPackage.eINSTANCE
-					.getDataMapperLink_InNode()
+			if (setting.getEStructuralFeature() != DataMapperPackage.eINSTANCE.getDataMapperLink_InNode()
 					|| false == setting.getEObject() instanceof DataMapperLink) {
 				continue;
 			}
 			DataMapperLink link = (DataMapperLink) setting.getEObject();
-			if (DataMapperLinkEditPart.VISUAL_ID != DataMapperVisualIDRegistry
-					.getLinkWithClassVisualID(link)) {
+			if (DataMapperLinkEditPart.VISUAL_ID != DataMapperVisualIDRegistry.getLinkWithClassVisualID(link)) {
 				continue;
 			}
 			OutNode src = link.getOutNode();
-			result.add(new DataMapperLinkDescriptor(src, target, link,
-					DataMapperElementTypes.DataMapperLink_4001, DataMapperLinkEditPart.VISUAL_ID));
+			result.add(new DataMapperLinkDescriptor(src, target, link, DataMapperElementTypes.DataMapperLink_4001,
+					DataMapperLinkEditPart.VISUAL_ID));
 		}
 		return result;
 	}
@@ -1406,8 +1293,7 @@ public class DataMapperDiagramUpdater {
 		// Find container element for the link.
 		// Climb up by containment hierarchy starting from the source
 		// and return the first element that is instance of the container class.
-		for (EObject element = source; element != null && container == null; element = element
-				.eContainer()) {
+		for (EObject element = source; element != null && container == null; element = element.eContainer()) {
 			if (element instanceof OutNode) {
 				container = (OutNode) element;
 			}
@@ -1422,8 +1308,7 @@ public class DataMapperDiagramUpdater {
 				continue;
 			}
 			DataMapperLink link = (DataMapperLink) linkObject;
-			if (DataMapperLinkEditPart.VISUAL_ID != DataMapperVisualIDRegistry
-					.getLinkWithClassVisualID(link)) {
+			if (DataMapperLinkEditPart.VISUAL_ID != DataMapperVisualIDRegistry.getLinkWithClassVisualID(link)) {
 				continue;
 			}
 			InNode dst = link.getInNode();
@@ -1431,8 +1316,8 @@ public class DataMapperDiagramUpdater {
 			if (src != source) {
 				continue;
 			}
-			result.add(new DataMapperLinkDescriptor(src, dst, link,
-					DataMapperElementTypes.DataMapperLink_4001, DataMapperLinkEditPart.VISUAL_ID));
+			result.add(new DataMapperLinkDescriptor(src, dst, link, DataMapperElementTypes.DataMapperLink_4001,
+					DataMapperLinkEditPart.VISUAL_ID));
 		}
 		return result;
 	}

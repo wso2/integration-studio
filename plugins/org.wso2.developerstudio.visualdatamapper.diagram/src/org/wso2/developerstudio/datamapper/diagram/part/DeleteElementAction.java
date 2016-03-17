@@ -40,10 +40,9 @@ public class DeleteElementAction extends DefaultDeleteElementAction {
 		ISharedImages workbenchImages = PlatformUI.getWorkbench().getSharedImages();
 		setHoverImageDescriptor(workbenchImages.getImageDescriptor(ISharedImages.IMG_TOOL_DELETE));
 		setImageDescriptor(workbenchImages.getImageDescriptor(ISharedImages.IMG_TOOL_DELETE));
-		setDisabledImageDescriptor(workbenchImages
-				.getImageDescriptor(ISharedImages.IMG_TOOL_DELETE_DISABLED));
+		setDisabledImageDescriptor(workbenchImages.getImageDescriptor(ISharedImages.IMG_TOOL_DELETE_DISABLED));
 	}
-	
+
 	/*
 	 * We have overridden this method in this class because we need to add all the
 	 * child editparts into the OperationSet once we select a root editpart. For
@@ -64,17 +63,17 @@ public class DeleteElementAction extends DefaultDeleteElementAction {
 		}
 		return list;
 	}
-	
+
 	/*
 	 * Recursive method for adding children to the list
 	 */
-	private void addChildren(List list, EditPart parent){
+	private void addChildren(List list, EditPart parent) {
 		List children = parent.getChildren();
 		Iterator iterator = children.iterator();
-		while(iterator.hasNext()){
-			EditPart child  = (EditPart) iterator.next();
+		while (iterator.hasNext()) {
+			EditPart child = (EditPart) iterator.next();
 			addChildren(list, child);
 			list.add(child);
-		}		
+		}
 	}
 }

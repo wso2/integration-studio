@@ -69,6 +69,9 @@ import org.wso2.developerstudio.datamapper.TreeNode;
 import org.wso2.developerstudio.datamapper.diagram.Activator;
 import org.wso2.developerstudio.datamapper.diagram.custom.util.TreeNodeUtils;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.custom.CustomNonResizableEditPolicyEx;
+import org.wso2.developerstudio.datamapper.diagram.edit.policies.OutputCanonicalEditPolicy;
+import org.wso2.developerstudio.datamapper.diagram.edit.policies.OutputItemSemanticEditPolicy;
+import org.wso2.developerstudio.datamapper.diagram.part.DataMapperVisualIDRegistry;
 import org.wso2.developerstudio.datamapper.diagram.tree.generator.ISchemaTransformer;
 import org.wso2.developerstudio.datamapper.diagram.tree.generator.SchemaTransformer;
 import org.wso2.developerstudio.datamapper.diagram.tree.generator.SchemaTransformerRegistry;
@@ -145,8 +148,9 @@ public class OutputEditPart extends ShapeNodeEditPart {
 				convertTree(tree, outputRootTreeNode);
 			}
 
-		} catch (InstantiationException | IllegalAccessException |  NullPointerException | IllegalArgumentException| IOException e) {
-			log.error("Error in generating the tree",e);
+		} catch (InstantiationException | IllegalAccessException | NullPointerException | IllegalArgumentException
+				| IOException e) {
+			log.error("Error in generating the tree", e);
 		}
 
 		AddCommand addTreeNodeCmd2 = new AddCommand(getEditingDomain(), parentContainer,
@@ -157,7 +161,7 @@ public class OutputEditPart extends ShapeNodeEditPart {
 		getPrimaryShape().setPreferredSize(OUTPUT_BOX_WIDTH, 15);
 		reposition();
 	}
-	
+
 	/**
 	 * @generated NOT
 	 */
@@ -408,6 +412,7 @@ public class OutputEditPart extends ShapeNodeEditPart {
 		 */
 
 	}
+
 	/**
 	 * @generated NOT
 	 */

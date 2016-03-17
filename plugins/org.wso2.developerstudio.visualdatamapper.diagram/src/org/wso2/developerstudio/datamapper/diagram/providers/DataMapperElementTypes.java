@@ -131,21 +131,6 @@ public class DataMapperElementTypes {
 	/**
 	 * @generated
 	 */
-	public static final IElementType Attribute_3004 = getElementType("org.wso2.developerstudio.visualdatamapper.diagram.Attribute_3004"); //$NON-NLS-1$
-
-	/**
-	 * @generated
-	 */
-	public static final IElementType InNode_3005 = getElementType("org.wso2.developerstudio.visualdatamapper.diagram.InNode_3005"); //$NON-NLS-1$
-
-	/**
-	 * @generated
-	 */
-	public static final IElementType OutNode_3006 = getElementType("org.wso2.developerstudio.visualdatamapper.diagram.OutNode_3006"); //$NON-NLS-1$
-
-	/**
-	 * @generated
-	 */
 	public static final IElementType Element_3007 = getElementType("org.wso2.developerstudio.visualdatamapper.diagram.Element_3007"); //$NON-NLS-1$
 
 	/**
@@ -263,36 +248,27 @@ public class DataMapperElementTypes {
 
 			elements.put(TreeNode_3002, DataMapperPackage.eINSTANCE.getTreeNode());
 
-			elements.put(TreeNode_3003, DataMapperPackage.eINSTANCE.getTreeNode());
-
-			elements.put(InNode_3005, DataMapperPackage.eINSTANCE.getInNode());
-
-			elements.put(OutNode_3006, DataMapperPackage.eINSTANCE.getOutNode());
-
 			elements.put(Element_3007, DataMapperPackage.eINSTANCE.getElement());
 
 			elements.put(InNode_3008, DataMapperPackage.eINSTANCE.getInNode());
 
 			elements.put(OutNode_3009, DataMapperPackage.eINSTANCE.getOutNode());
 
+			elements.put(TreeNode_3003, DataMapperPackage.eINSTANCE.getTreeNode());
+
 			elements.put(TreeNode_3011, DataMapperPackage.eINSTANCE.getTreeNode());
 
-			elements.put(OperatorBasicContainer_3012,
-					DataMapperPackage.eINSTANCE.getOperatorBasicContainer());
+			elements.put(OperatorBasicContainer_3012, DataMapperPackage.eINSTANCE.getOperatorBasicContainer());
 
-			elements.put(OperatorLeftContainer_3013,
-					DataMapperPackage.eINSTANCE.getOperatorLeftContainer());
+			elements.put(OperatorLeftContainer_3013, DataMapperPackage.eINSTANCE.getOperatorLeftContainer());
 
-			elements.put(OperatorLeftConnector_3014,
-					DataMapperPackage.eINSTANCE.getOperatorLeftConnector());
+			elements.put(OperatorLeftConnector_3014, DataMapperPackage.eINSTANCE.getOperatorLeftConnector());
 
 			elements.put(InNode_3015, DataMapperPackage.eINSTANCE.getInNode());
 
-			elements.put(OperatorRightContainer_3016,
-					DataMapperPackage.eINSTANCE.getOperatorRightContainer());
+			elements.put(OperatorRightContainer_3016, DataMapperPackage.eINSTANCE.getOperatorRightContainer());
 
-			elements.put(OperatorRightConnector_3017,
-					DataMapperPackage.eINSTANCE.getOperatorRightConnector());
+			elements.put(OperatorRightConnector_3017, DataMapperPackage.eINSTANCE.getOperatorRightConnector());
 
 			elements.put(OutNode_3018, DataMapperPackage.eINSTANCE.getOutNode());
 
@@ -325,13 +301,10 @@ public class DataMapperElementTypes {
 			KNOWN_ELEMENT_TYPES.add(Contains_2010);
 			KNOWN_ELEMENT_TYPES.add(UpperCase_2011);
 			KNOWN_ELEMENT_TYPES.add(TreeNode_3002);
-			KNOWN_ELEMENT_TYPES.add(TreeNode_3003);
-			KNOWN_ELEMENT_TYPES.add(Attribute_3004);
-			KNOWN_ELEMENT_TYPES.add(InNode_3005);
-			KNOWN_ELEMENT_TYPES.add(OutNode_3006);
 			KNOWN_ELEMENT_TYPES.add(Element_3007);
 			KNOWN_ELEMENT_TYPES.add(InNode_3008);
 			KNOWN_ELEMENT_TYPES.add(OutNode_3009);
+			KNOWN_ELEMENT_TYPES.add(TreeNode_3003);
 			KNOWN_ELEMENT_TYPES.add(TreeNode_3011);
 			KNOWN_ELEMENT_TYPES.add(OperatorBasicContainer_3012);
 			KNOWN_ELEMENT_TYPES.add(OperatorLeftContainer_3013);
@@ -372,18 +345,14 @@ public class DataMapperElementTypes {
 			return UpperCase_2011;
 		case TreeNodeEditPart.VISUAL_ID:
 			return TreeNode_3002;
-		case TreeNode2EditPart.VISUAL_ID:
-			return TreeNode_3003;
-		case InNodeEditPart.VISUAL_ID:
-			return InNode_3005;
-		case OutNodeEditPart.VISUAL_ID:
-			return OutNode_3006;
 		case ElementEditPart.VISUAL_ID:
 			return Element_3007;
 		case InNode2EditPart.VISUAL_ID:
 			return InNode_3008;
 		case OutNode2EditPart.VISUAL_ID:
 			return OutNode_3009;
+		case TreeNode2EditPart.VISUAL_ID:
+			return TreeNode_3003;
 		case TreeNode3EditPart.VISUAL_ID:
 			return TreeNode_3011;
 		case OperatorBasicContainerEditPart.VISUAL_ID:
@@ -409,8 +378,7 @@ public class DataMapperElementTypes {
 	/**
 	 * @generated
 	 */
-	public static final DiagramElementTypes TYPED_INSTANCE = new DiagramElementTypes(
-			elementTypeImages) {
+	public static final DiagramElementTypes TYPED_INSTANCE = new DiagramElementTypes(elementTypeImages) {
 
 		/**
 		 * @generated

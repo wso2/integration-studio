@@ -101,8 +101,7 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
 	public DiagramEditorContextMenuProvider(IWorkbenchPart part, EditPartViewer viewer) {
 		super(part, viewer);
 		this.part = part;
-		deleteAction = new org.wso2.developerstudio.datamapper.diagram.part.DeleteElementAction(
-				part);
+		deleteAction = new org.wso2.developerstudio.datamapper.diagram.part.DeleteElementAction(part);
 		deleteAction.init();
 
 		contextActions = new HashMap<Class<? extends ShapeNodeEditPart>, AbstractActionHandler>();
@@ -127,12 +126,9 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
 		// Initialize new records list context sensitive actions.
 		addNewArrayContextActions = new HashMap<Class<? extends ShapeNodeEditPart>, AbstractActionHandler>();
 		// New records list actions are added to treenode editparts
-		addNewArrayContextActions.put(TreeNodeEditPart.class, new AddNewArrayAction(
-				part));
-		addNewArrayContextActions.put(TreeNode2EditPart.class, new AddNewArrayAction(
-				part));
-		addNewArrayContextActions.put(TreeNode3EditPart.class, new AddNewArrayAction(
-				part));
+		addNewArrayContextActions.put(TreeNodeEditPart.class, new AddNewArrayAction(part));
+		addNewArrayContextActions.put(TreeNode2EditPart.class, new AddNewArrayAction(part));
+		addNewArrayContextActions.put(TreeNode3EditPart.class, new AddNewArrayAction(part));
 
 		// Initialize new field context sensitive actions.
 		addNewFieldContextActions = new HashMap<Class<? extends ShapeNodeEditPart>, AbstractActionHandler>();
@@ -140,14 +136,14 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
 		addNewFieldContextActions.put(TreeNodeEditPart.class, new AddNewFieldAction(part));
 		addNewFieldContextActions.put(TreeNode2EditPart.class, new AddNewFieldAction(part));
 		addNewFieldContextActions.put(TreeNode3EditPart.class, new AddNewFieldAction(part));
-		
+
 		// Initialize new field context sensitive actions.
 		addNewFieldContextActions = new HashMap<Class<? extends ShapeNodeEditPart>, AbstractActionHandler>();
 		// New field actions are added to treenode editparts
 		addNewFieldContextActions.put(TreeNodeEditPart.class, new AddNewFieldAction(part));
 		addNewFieldContextActions.put(TreeNode2EditPart.class, new AddNewFieldAction(part));
 		addNewFieldContextActions.put(TreeNode3EditPart.class, new AddNewFieldAction(part));
-		
+
 		//Initialize renaming action
 		// Initialize new field context sensitive actions.
 		addNewAttributeContextActions = new HashMap<Class<? extends ShapeNodeEditPart>, AbstractActionHandler>();
@@ -155,7 +151,7 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
 		addNewAttributeContextActions.put(TreeNodeEditPart.class, new AddNewAttributeAction(part));
 		addNewAttributeContextActions.put(TreeNode2EditPart.class, new AddNewAttributeAction(part));
 		addNewAttributeContextActions.put(TreeNode3EditPart.class, new AddNewAttributeAction(part));
-		
+
 		// Initialize renaming action
 		// Initialize new field context sensitive actions.
 		addEditNodeActions = new HashMap<Class<? extends ShapeNodeEditPart>, AbstractActionHandler>();
@@ -163,13 +159,13 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
 		addEditNodeActions.put(TreeNodeEditPart.class, new EditNodeAction(part));
 		addEditNodeActions.put(TreeNode2EditPart.class, new EditNodeAction(part));
 		addEditNodeActions.put(TreeNode3EditPart.class, new EditNodeAction(part));
-		
+
 		//Initialize renaming field action
 		// Initialize new field context sensitive actions.
 		addEditAttributeActions = new HashMap<Class<? extends AbstractBorderedShapeEditPart>, AbstractActionHandler>();
 		// New field actions are added to treenode editparts
 		addEditAttributeActions.put(ElementEditPart.class, new EditAttributeAction(part));
-		
+
 		// Initialize export schema actions.
 		exportSchemaActions = new HashMap<Class<? extends ShapeNodeEditPart>, AbstractActionHandler>();
 		exportSchemaActions.put(InputEditPart.class, new ExportSchemaAction(part));
@@ -193,8 +189,8 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
 	public void buildContextMenu(final IMenuManager menu) {
 		getViewer().flush();
 		try {
-			TransactionUtil.getEditingDomain((EObject) getViewer().getContents().getModel())
-					.runExclusive(new Runnable() {
+			TransactionUtil.getEditingDomain((EObject) getViewer().getContents().getModel()).runExclusive(
+					new Runnable() {
 
 						public void run() {
 							ContributionItemService.getInstance().contributeToPopupMenu(
@@ -212,10 +208,8 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
 
 							List<?> selectedEPs = getViewer().getSelectedEditParts();
 							if (selectedEPs.size() == 1) {
-								EditPart selectedEditorPart = (IGraphicalEditPart) selectedEPs
-										.get(0);
-								EObject contextObj = ((View) selectedEditorPart.getModel())
-										.getElement();
+								EditPart selectedEditorPart = (IGraphicalEditPart) selectedEPs.get(0);
+								EObject contextObj = ((View) selectedEditorPart.getModel()).getElement();
 
 								if (contextObj instanceof EObject) {
 
@@ -223,8 +217,7 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
 									AbstractActionHandler addNewRootRecordContextAction = addNewRootElementContextActions
 											.get(selectedEditorPart.getClass());
 									if (null != addNewRootRecordContextAction) {
-										menu.appendToGroup(EDIT_GROUP_ID,
-												addNewRootRecordContextAction);
+										menu.appendToGroup(EDIT_GROUP_ID, addNewRootRecordContextAction);
 									}
 
 									// Append new record item to menu
@@ -238,8 +231,7 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
 									AbstractActionHandler addNewRecordsListContextAction = addNewArrayContextActions
 											.get(selectedEditorPart.getClass());
 									if (null != addNewRecordsListContextAction) {
-										menu.appendToGroup(EDIT_GROUP_ID,
-												addNewRecordsListContextAction);
+										menu.appendToGroup(EDIT_GROUP_ID, addNewRecordsListContextAction);
 									}
 
 									// Append new field item to menu
@@ -248,31 +240,31 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
 									if (null != addNewFieldContextAction) {
 										menu.appendToGroup(EDIT_GROUP_ID, addNewFieldContextAction);
 									}
-									
+
 									// Append new field item to menu
 									AbstractActionHandler addNewAttributeContextAction = addNewAttributeContextActions
 											.get(selectedEditorPart.getClass());
 									if (null != addNewAttributeContextAction) {
 										menu.appendToGroup(EDIT_GROUP_ID, addNewAttributeContextAction);
 									}
-										
+
 									// Append edit field item to menu
 									AbstractActionHandler addEditFieldAction = addEditNodeActions
 											.get(selectedEditorPart.getClass());
 									if (null != addEditFieldAction) {
 										menu.appendToGroup(EDIT_GROUP_ID, addEditFieldAction);
 									}
-									
+
 									// Append edit field item to menu
 									AbstractActionHandler addEditAttributeAction = addEditAttributeActions
 											.get(selectedEditorPart.getClass());
 									if (null != addEditAttributeAction) {
 										menu.appendToGroup(EDIT_GROUP_ID, addEditAttributeAction);
 									}
-									
+
 									// Append load from file item to menu
-									AbstractActionHandler contextAction = contextActions
-											.get(selectedEditorPart.getClass());
+									AbstractActionHandler contextAction = contextActions.get(selectedEditorPart
+											.getClass());
 									if (null != contextAction) {
 										menu.appendToGroup(NAVIGATE_GROUP_ID, contextAction);
 									}
@@ -291,8 +283,8 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
 						}
 					});
 		} catch (Exception e) {
-			org.wso2.developerstudio.datamapper.diagram.part.DataMapperDiagramEditorPlugin
-					.getInstance().logError(ERROR_BUILDING_CONTEXT_MENU, e);
+			org.wso2.developerstudio.datamapper.diagram.part.DataMapperDiagramEditorPlugin.getInstance().logError(
+					ERROR_BUILDING_CONTEXT_MENU, e);
 		}
 	}
 }

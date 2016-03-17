@@ -11,18 +11,16 @@ import org.wso2.developerstudio.datamapper.diagram.providers.DataMapperModelingA
 /**
  * @generated
  */
-public class DataMapperModelingAssistantProviderOfTreeNode3EditPart extends
-		DataMapperModelingAssistantProvider {
+public class DataMapperModelingAssistantProviderOfTreeNode3EditPart extends DataMapperModelingAssistantProvider {
 
 	/**
 	 * @generated
 	 */
 	@Override
 	public List<IElementType> getTypesForPopupBar(IAdaptable host) {
-		List<IElementType> types = new ArrayList<IElementType>(3);
-		types.add(DataMapperElementTypes.TreeNode_3003);
-		types.add(DataMapperElementTypes.Attribute_3004);
+		List<IElementType> types = new ArrayList<IElementType>(2);
 		types.add(DataMapperElementTypes.Element_3007);
+		types.add(DataMapperElementTypes.TreeNode_3003);
 		return types;
 	}
 

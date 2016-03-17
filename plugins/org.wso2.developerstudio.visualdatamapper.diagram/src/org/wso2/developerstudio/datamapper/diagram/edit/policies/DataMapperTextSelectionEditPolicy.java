@@ -15,8 +15,7 @@ import org.eclipse.gmf.tooling.runtime.edit.policies.labels.IRefreshableFeedback
 /**
  * @generated
  */
-public class DataMapperTextSelectionEditPolicy extends SelectionEditPolicy implements
-		IRefreshableFeedbackEditPolicy {
+public class DataMapperTextSelectionEditPolicy extends SelectionEditPolicy implements IRefreshableFeedbackEditPolicy {
 
 	/**
 	 * @generated

@@ -29,6 +29,7 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.ui.URIEditorInput;
@@ -328,23 +329,10 @@ public class DataMapperDiagramEditor extends DiagramDocumentEditor implements IG
 	 */
 	protected void configureGraphicalViewer() {
 		super.configureGraphicalViewer();
-
-		IDiagramGraphicalViewer viewer = getDiagramGraphicalViewer();
-		KeyHandler viewerKeyHandler = new CustomDiagramGraphicalViewerKeyHandler(this, viewer);
-
-		viewerKeyHandler.setParent(getKeyHandler());
-		viewer.setKeyHandler(new DirectEditKeyHandler(viewer).setParent(viewerKeyHandler));
-
-		// This enables the property view to be informed of selection changes in
-		// our graphical view,
-		// when our view is the active workbench part.
-		this.getSite().setSelectionProvider(viewer);
-
-		org.wso2.developerstudio.datamapper.diagram.part.DiagramEditorContextMenuProvider provider = new org.wso2.developerstudio.datamapper.diagram.part.DiagramEditorContextMenuProvider(
-				this, getDiagramGraphicalViewer());
+		DiagramEditorContextMenuProvider provider = new DiagramEditorContextMenuProvider(this,
+				getDiagramGraphicalViewer());
 		getDiagramGraphicalViewer().setContextMenu(provider);
 		getSite().registerContextMenu(ActionIds.DIAGRAM_EDITOR_CONTEXT_MENU, provider, getDiagramGraphicalViewer());
-
 	}
 
 	@Override
@@ -481,17 +469,17 @@ public class DataMapperDiagramEditor extends DiagramDocumentEditor implements IG
 			}
 		}
 	}
-	
-    private void popupErrorDialogBox(Exception e) {
-        final String simpleMessage = e.getMessage();
-        final IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, simpleMessage);
-        Display.getDefault().syncExec(new Runnable() {
-            @Override
-            public void run() {
-                ErrorDialog.openError(Display.getDefault().getActiveShell(), "Data Mapper Error Message", "",
-                        editorStatus);
-            }
-        });
-    }
+
+	private void popupErrorDialogBox(Exception e) {
+		final String simpleMessage = e.getMessage();
+		final IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, simpleMessage);
+		Display.getDefault().syncExec(new Runnable() {
+			@Override
+			public void run() {
+				ErrorDialog.openError(Display.getDefault().getActiveShell(), "Data Mapper Error Message", "",
+						editorStatus);
+			}
+		});
+	}
 
 }

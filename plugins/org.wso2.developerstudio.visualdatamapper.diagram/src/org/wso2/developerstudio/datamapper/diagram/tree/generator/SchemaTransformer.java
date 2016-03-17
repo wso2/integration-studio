@@ -402,6 +402,7 @@ public class SchemaTransformer implements ISchemaTransformer {
 
 		if (schemaType.equals(JSON_SCHEMA_ARRAY)) {
 			if (subSchema.get(JSON_SCHEMA_ITEMS) != null) {
+				//Handle id, type, and required fields in the items block
 				@SuppressWarnings("unchecked")
 				Map<String, Object> itemsSchema = (Map<String, Object>) subSchema.get(JSON_SCHEMA_ITEMS);
 				treeNode.getProperties().put(JSON_SCHEMA_ARRAY_ITEMS_ID, itemsSchema.get(JSON_SCHEMA_ID).toString());

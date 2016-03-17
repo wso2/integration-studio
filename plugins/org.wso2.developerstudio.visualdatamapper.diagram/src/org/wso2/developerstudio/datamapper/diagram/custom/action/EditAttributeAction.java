@@ -54,8 +54,9 @@ public class EditAttributeAction extends AbstractActionHandler {
 	private static final String JSON_SCHEMA_ID = "id";
 	private static final String JSON_SCHEMA_TYPE = "type";
 	private static final String JSON_SCHEMA_TITLE = "title";
-
+	private static final String PREFIX = "@";
 	private String title = null;
+	private String name = null;
 	private String schemaType = null;
 	private String id = null;
 	private String schemaValue = null;
@@ -84,12 +85,15 @@ public class EditAttributeAction extends AbstractActionHandler {
 			Element selectedElem = (Element) object;
 
 			title = selectedElem.getName();
+			if(title.startsWith(PREFIX)){
+				name = title.substring(1);
+			}
 			schemaType = selectedElem.getProperties().get(JSON_SCHEMA_TYPE);
 			if (selectedElem.getProperties().get(JSON_SCHEMA_ID) != null) {
 				id = selectedElem.getProperties().get(JSON_SCHEMA_ID);
 			}
 
-			openEditFieldDialog(selectedElem, title, schemaType, id, required, schemaValue);
+			openEditFieldDialog(selectedElem, name, schemaType, id, required, schemaValue);
 		}
 	}
 

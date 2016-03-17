@@ -22,6 +22,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -31,6 +32,8 @@ import java.util.Set;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang.StringUtils;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.swt.widgets.Display;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.wso2.developerstudio.datamapper.DataMapperFactory;
@@ -107,6 +110,7 @@ public class SchemaTransformer implements ISchemaTransformer {
 			return schemaName;
 		} else {
 			log.error("Invalid input schema, schema name not found.");
+			displayUserError("WARNING", "Invalid schema, schema title not found");
 			throw new NullPointerException("Invalid input schema, schema name not found.");
 		}
 	}
@@ -125,11 +129,14 @@ public class SchemaTransformer implements ISchemaTransformer {
 				return (String) type;
 			} else {
 				log.error("Invalid input schema, invalid schema type found");
+				displayUserError("WARNING", "Invalid schema, Illegal format " + type.getClass() + " value found under key : "
+						+ JSON_SCHEMA_TYPE);
 				throw new IllegalArgumentException("Illegal format " + type.getClass() + " value found under key : "
 						+ JSON_SCHEMA_TYPE);
 			}
 		} else {
 			log.error("Invalid input schema, schema type not found.");
+			displayUserError("WARNING", "Invalid schema, Given schema does not contain value under key : " + JSON_SCHEMA_TYPE);
 			throw new IllegalArgumentException("Given schema does not contain value under key : " + JSON_SCHEMA_TYPE);
 		}
 	}
@@ -148,6 +155,8 @@ public class SchemaTransformer implements ISchemaTransformer {
 				return (String) type;
 			} else {
 				log.error("Invalid input schema, invalid schema value found");
+				displayUserError("WARNING", "Invalid schema, Illegal format " + type.getClass() + " value found under key : "
+						+ JSON_SCHEMA_SCHEMA_VALUE);
 				throw new IllegalArgumentException("Illegal format " + type.getClass() + " value found under key : "
 						+ JSON_SCHEMA_SCHEMA_VALUE);
 			}
@@ -169,13 +178,15 @@ public class SchemaTransformer implements ISchemaTransformer {
 				return (String) type;
 			} else {
 				log.error("Invalid input schema, invalid ID value found");
+				displayUserError("WARNING", "Invalid schema, Illegal format " + type.getClass() + " value found under key : "
+						+ JSON_SCHEMA_ID);
 				throw new IllegalArgumentException("Illegal format " + type.getClass() + " value found under key : "
 						+ JSON_SCHEMA_ID);
 			}
 		}
 		return null;
 	}
-
+	
 	/**
 	 * Gets the required value
 	 * 
@@ -192,6 +203,8 @@ public class SchemaTransformer implements ISchemaTransformer {
 				return value;
 			} else {
 				log.error("Invalid input schema, invalid required value found");
+				displayUserError("WARNING", "Invalid schema, Illegal format " + type.getClass() + " value found under key : "
+						+ JSON_SCHEMA_REQUIRED);
 				throw new IllegalArgumentException("Illegal format " + type.getClass() + " value found under key : "
 						+ JSON_SCHEMA_REQUIRED);
 			}
@@ -212,6 +225,8 @@ public class SchemaTransformer implements ISchemaTransformer {
 			return (Map<String, Object>) jsonSchemaMap.get(JSON_SCHEMA_PROPERTIES);
 		} else {
 			log.error("Invalid input schema, property value not found");
+			displayUserError("WARNING", " Invalid schema,Given schema does not contain value under key : "
+					+ JSON_SCHEMA_PROPERTIES);
 			throw new IllegalArgumentException("Given schema does not contain value under key : "
 					+ JSON_SCHEMA_PROPERTIES);
 		}
@@ -224,12 +239,26 @@ public class SchemaTransformer implements ISchemaTransformer {
 	 *            schema
 	 * @return item map
 	 */
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	private Map<String, Object> getSchemaItems(Map<String, Object> jsonSchemaMap) {
-		if (jsonSchemaMap.containsKey(JSON_SCHEMA_ITEMS)) {
-			return (Map<String, Object>) jsonSchemaMap.get(JSON_SCHEMA_ITEMS);
+		if (jsonSchemaMap.containsKey(JSON_SCHEMA_ITEMS)) {	
+			Map<String, Object> itemsSchema = null;
+			//If items block starts with [{ and ends with }] then convert the arraylist into a Map and then use
+			if(jsonSchemaMap.get(JSON_SCHEMA_ITEMS) instanceof ArrayList){
+				itemsSchema = new HashMap<String, Object>();
+				ArrayList<Object> items = (ArrayList<Object>) jsonSchemaMap.get(JSON_SCHEMA_ITEMS);
+				for (Object item : items) {
+					itemsSchema.putAll((Map)item);
+				}
+			}else{
+				// If items block doesn't starts with [ and ends with ] then get the Map directly
+				itemsSchema = (Map<String, Object>) jsonSchemaMap.get(JSON_SCHEMA_ITEMS);
+			}
+			return itemsSchema;
 		} else {
 			log.error("Invalid input schema, items value not found");
+			displayUserError("WARNING", " Invalid schema,Given schema does not contain value under key : "
+					+ JSON_SCHEMA_ITEMS);
 			throw new IllegalArgumentException("Given schema does not contain value under key : " + JSON_SCHEMA_ITEMS);
 		}
 	}
@@ -360,6 +389,7 @@ public class SchemaTransformer implements ISchemaTransformer {
 	 *            schema type
 	 * @return tree node
 	 */
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	private TreeNode createTreeNode(TreeNode inputRootTreeNode, int count, String elementKey,
 			Map<String, Object> subSchema, String schemaType) {
 		TreeNode treeNode;
@@ -385,9 +415,20 @@ public class SchemaTransformer implements ISchemaTransformer {
 		}
 
 		if (schemaType.equals(JSON_SCHEMA_ARRAY)) {
+			//Handle id, type, and required fields in the items block
 			if (subSchema.get(JSON_SCHEMA_ITEMS) != null) {
-				@SuppressWarnings("unchecked")
-				Map<String, Object> itemsSchema = (Map<String, Object>) subSchema.get(JSON_SCHEMA_ITEMS);
+				Map<String, Object> itemsSchema = null;
+				//If items block starts with [{ and ends with }] then convert the arraylist into a Map and then use
+				if(subSchema.get(JSON_SCHEMA_ITEMS) instanceof ArrayList){
+					itemsSchema = new HashMap<String, Object>();
+					ArrayList<Object> items = (ArrayList<Object>) subSchema.get(JSON_SCHEMA_ITEMS);
+					for (Object item : items) {
+						itemsSchema.putAll((Map)item);
+					}
+				}else{
+					// If items block doesn't starts with [ and ends with ] then get the Map directly
+					itemsSchema = (Map<String, Object>) subSchema.get(JSON_SCHEMA_ITEMS);
+				}
 				treeNode.getProperties().put(JSON_SCHEMA_ARRAY_ITEMS_ID, itemsSchema.get(JSON_SCHEMA_ID).toString());
 				treeNode.getProperties()
 						.put(JSON_SCHEMA_ARRAY_ITEMS_TYPE, itemsSchema.get(JSON_SCHEMA_TYPE).toString());
@@ -547,6 +588,15 @@ public class SchemaTransformer implements ISchemaTransformer {
 	public Tree generateTreeFromFile(String path) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	/**
+	 * Warning Dialog
+	 * @param reason
+	 * @param message
+	 */
+	private void displayUserError(String reason, String message) {
+		MessageDialog.openWarning(Display.getCurrent().getActiveShell(), reason, message);
 	}
 
 }

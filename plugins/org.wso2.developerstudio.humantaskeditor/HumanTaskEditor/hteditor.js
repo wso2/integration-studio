@@ -326,7 +326,6 @@ function generateTaskDiv(taskNode) {
                 e.preventDefault();
                 var mappingNo = parseInt($('#' + taskNode.getAttribute("name") + "wrapper #taskMappingNo").val());
                 mapping = '<tr id="inputmapping' + mappingNo + '"><td width="25%"><input name="taskInputMappingid" type="hidden" id="taskInputMappingid" value="' + mappingNo + '"><input name="textfield6" type="text" id="taskInputMappingElementName' + mappingNo + '" value=""></td><td width="25%"><input name="textfield7" type="text" id="taskInputMappingDisplayName' + mappingNo + '" value=""></td><td width="10%"><input name="textfield8" type="text" id="taskInputMappingOrder' + mappingNo + '" value=""></td><td width="20%"><label><select id="taskInputMappingType' + mappingNo + '" name="select3"><option value="string" selected>string</option><option value="int">int</option><option value="double">double</option><option value="float">float</option><option value="boolean">boolean</option><option value="organizationalEntity">organizationalEntity</option></select></label></td><td><label><input type="button" class="inputDeleteButton" name="deleteButton' + mappingNo + '" id="deleteButton' + mappingNo + '" value="Delete"></label></td></tr>';
-                //  alert(mapping);
                 $(
                     "#" + taskNode.getAttribute("name") + "wrapper #inputmappingTable").append(
                     mapping);
@@ -389,8 +388,7 @@ function generateTaskDiv(taskNode) {
                     $(
                             "#" + taskNode.getAttribute("name") + "wrapper #outputmappingTable")
                         .append(outputmapping);
-                    // delete button click event
-
+                   
                     outputmappingNo++;
                     $(
                             '#' + taskNode.getAttribute("name") + "wrapper #taskOutputMappingNo")
@@ -490,11 +488,8 @@ function generateTaskDiv(taskNode) {
                             try {
                                 k = i;
                                 generateText(taskNode);
-                                // alert(inputNodes[k].getAttribute("id"));
                                 var deleteId = eo.target.id.replace(
                                     /[^\d.]/g, '');
-                                // $('#'+taskDivName+" #inputmapping"+
-                                // deleteId+"").html('');
                                 var deleteNodeId = 0;
                                 for (j = 0; j < outputNodes.length; j++) {
                                     if (outputNodes[j].nodeName != "#text") {
@@ -525,7 +520,6 @@ function generateTaskDiv(taskNode) {
     }
 
     // sync other fields
-    // $('#' + taskDivName + " #taskTitle").text(taskName.trim());
     $('#' + taskDivName + " #taskName").val(taskName.trim().replace(/ /g, ''));
     if (taskNode.getElementsByTagName("documentation").length != 0) {
         $('#' + taskDivName + " #taskDocumentation")
@@ -725,21 +719,10 @@ function generateText(taskNode) {
     taskNode.getElementsByTagName("presentationElements")[0]
         .getElementsByTagName("subject")[0].childNodes[0].nodeValue = $(
             '#' + taskDivName + " #presentationElementDisplaySubject").val();
-    /*if(taskNode.getElementsByTagName("presentationElements")[0]
-        .getElementsByTagName("description").length!=0 && $('#' + taskDivName + " #presentationElementDescription").val() !="")
-*/
     taskNode.getElementsByTagName("presentationElements")[0]
         .getElementsByTagName("description")[0].childNodes[0].nodeValue = $(
             '#' + taskDivName + " #presentationElementDescription").val();
-    /*else{
-       newElement = xmlDom.createElementNS("http://www.w3.org/2001/XMLSchema",
-       "xsd:description"); // scheme.appendchild()
-       newElement.setAttribute("xml:lang", "en-US");
-       newElement.setAttribute("contentType", "text/plain");
-       newElement.nodeValue = $('#' + taskDivName + " #presentationElementDescription").val();
-       taskNode.getElementsByTagName("presentationElements")[0].appendChild(newElement);
-    }*/
-
+   
     taskNode.getElementsByTagName("interface")[0].setAttribute("operation", $(
         '#' + taskDivName + " #taskOperation").val());
     taskNode.getElementsByTagName("interface")[0].getAttribute(
@@ -808,10 +791,6 @@ function generateText(taskNode) {
         }
     }
 
-    //create People Assignment Nodes
-    //var assignmentNames = ["potentialOwners","businessAdministrators","excludedOwners","taskInitiator","taskStakeholders"];
-
-
     // fill people assignments
     if (taskNode.getElementsByTagName("peopleAssignments")[0]
         .getElementsByTagName("potentialOwners").length != 0)
@@ -844,15 +823,6 @@ function generateText(taskNode) {
         .getElementsByTagName("argument")[0].childNodes[0].nodeValue = $(
             '#' + taskDivName + " #potentialOwnersRole").val();
 
-    // Set Literal Values
-    /*
-     * if($('#'+taskDivName+"
-     * input[name=potentialOwners]:checked").val()=="potentialOwnersLiteral"){
-     * taskNode.getElementsByTagName("peopleAssignments")[0].getElementsByTagName("potentialOwners")[0].getElementsByTagName("argument")[0].childNodes[0].nodeValue =
-     * $('#'+taskDivName+" #potentialOwnersExpression").val();
-     * taskNode.getElementsByTagName("peopleAssignments")[0].getElementsByTagName("potentialOwners")[0].getElementsByTagName("argument")[1].childNodes[0].nodeValue =
-     * $('#'+taskDivName+" #potentialOwnersExpression").val(); }
-     */
     if ($('#' + taskDivName + " input[name=potentialOwners" + taskDivName + "]:checked").val() == "potentialOwnersExpression")
         taskNode.getElementsByTagName("peopleAssignments")[0]
         .getElementsByTagName("potentialOwners")[0]
@@ -896,7 +866,7 @@ function generateText(taskNode) {
         .getElementsByTagName("businessAdministrators")[0]
         .getElementsByTagName("argument")[0].childNodes[0].nodeValue = $(
             '#' + taskDivName + " #businessAdministratorsRole").val();
-    // Set Literal Values
+    
     if ($('#' + taskDivName + " input[name=businessAdministrators" + taskDivName + "]:checked")
         .val() == "businessAdministratorsExpression")
         taskNode.getElementsByTagName("peopleAssignments")[0]
@@ -1027,28 +997,6 @@ function generateText(taskNode) {
             }
         }
     }
-    // if(toTitleCase($('#'+taskDivName+"
-    // input[name=businessAdministrators]:checked").val())=="Expression")taskNode.getElementsByTagName("peopleAssignments")[0].getElementsByTagName("potentialOwners")[0].getElementsByTagName("argument")[0].childNodes[0].nodeValue
-    // = $('#'+taskDivName+" #businessAdministratorsExpression").val();
-
-    /*
-     * if(toTitleCase($('#'+taskDivName+"
-     * #input[name=excludedOwners]:checked").val())=="Role")taskNode.getElementsByTagName("peopleAssignments")[0].getElementsByTagName("excludedOwners")[0].getElementsByTagName("argument")[0].setAttribute("name",$('#'+taskDivName+"
-     * #input[name=excludedOwners]:checked").val())
-     * taskNode.getElementsByTagName("peopleAssignments")[0].getElementsByTagName("excludedOwners")[0].getElementsByTagName("argument")[0].childNodes[0].nodeValue =
-     * $('#'+taskDivName+" #excludedOwnersRole").val();
-     * if(toTitleCase($('#'+taskDivName+"
-     * #input[name=taskInitiator]:checked").val())=="Role")taskNode.getElementsByTagName("peopleAssignments")[0].getElementsByTagName("taskInitiator")[0].getElementsByTagName("argument")[0].setAttribute("name",$('#'+taskDivName+"
-     * #input[name=taskInitiator]:checked").val())
-     * taskNode.getElementsByTagName("peopleAssignments")[0].getElementsByTagName("taskInitiator")[0].getElementsByTagName("argument")[0].childNodes[0].nodeValue =
-     * $('#'+taskDivName+" #taskInitiatorRole").val();
-     * if(toTitleCase($('#'+taskDivName+"
-     * #input[name=taskStakeholders]:checked").val())=="Role")taskNode.getElementsByTagName("peopleAssignments")[0].getElementsByTagName("taskStakeholders")[0].getElementsByTagName("argument")[0].setAttribute("name",$('#'+taskDivName+"
-     * #input[name=taskStakeholders]:checked").val())
-     * taskNode.getElementsByTagName("peopleAssignments")[0].getElementsByTagName("taskStakeholders")[0].getElementsByTagName("argument")[0].childNodes[0].nodeValue =
-     * $('#'+taskDivName+" #taskStakeholdersRole").val();
-     */
-
     createFile(taskName);
 }
 

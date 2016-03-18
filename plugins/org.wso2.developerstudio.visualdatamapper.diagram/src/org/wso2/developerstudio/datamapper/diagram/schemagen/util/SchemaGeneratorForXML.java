@@ -25,29 +25,32 @@ import java.io.Reader;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.transform.TransformerException;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.xmlbeans.XmlException;
 import org.apache.xmlbeans.XmlOptions;
 import org.apache.xmlbeans.impl.inst2xsd.Inst2XsdOptions;
 import org.apache.xmlbeans.impl.xb.xsdschema.SchemaDocument;
-import org.wso2.developerstudio.visualdatamapper.diagram.jsonschema.generator.JSONSchemaGeneratorforXSD;
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.json.XML;
 
-public class SchemaGeneratorForXML extends SchemaGeneratorForXSD implements ISchemaGenerator {
+public class SchemaGeneratorForXML extends SchemaGeneratorForJSON implements ISchemaGenerator {
 	private static final String TEMP_AVRO_GEN_LOCATION = "tempXSDGenLocation";
 	private static final String JAVA_IO_TMPDIR = "java.io.tmpdir";
 	private static final String TEMP_OUTPUT = System.getProperty(JAVA_IO_TMPDIR) + File.separator + TEMP_AVRO_GEN_LOCATION;
 	
 	@Override
-	public String getSchemaContent(String filePath) throws IOException {
-		File xsdFile = null;
+	public String getSchemaContent(String content) throws IOException {
+
+		JSONObject xmlJSONObj;
 		try {
-			xsdFile = generateXSDfromXML(filePath);
-		} catch (XmlException e) {
+			xmlJSONObj = XML.toJSONObject(content);
+		} catch (JSONException e) {
 			throw new IOException(e.getMessage());
 		}
-		 
-		return super.getSchemaContent(xsdFile.getAbsolutePath());
+		return super.getSchemaContent(xmlJSONObj.toString());
 	}
-
+	
 	private File generateXSDfromXML(String filePath) throws IOException, XmlException {
 		
 		File outputDirectory = new File(TEMP_OUTPUT);
@@ -75,7 +78,7 @@ public class SchemaGeneratorForXML extends SchemaGeneratorForXSD implements ISch
 
 	@Override
 	public String getSchemaResourcePath(String filePath) throws IOException {
-		// TODO Auto-generated method stub
-		return null;
+		String entireFileText = FileUtils.readFileToString(new File(filePath));
+		return getSchemaContent(entireFileText);
 	}
 }

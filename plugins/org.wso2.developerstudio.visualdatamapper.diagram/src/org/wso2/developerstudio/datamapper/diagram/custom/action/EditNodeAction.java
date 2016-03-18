@@ -18,6 +18,7 @@ package org.wso2.developerstudio.datamapper.diagram.custom.action;
 
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
 import java.util.Map.Entry;
 
 import org.apache.commons.lang.StringUtils;
@@ -38,12 +39,15 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PlatformUI;
+import org.wso2.developerstudio.datamapper.DataMapperFactory;
 import org.wso2.developerstudio.datamapper.DataMapperPackage;
+import org.wso2.developerstudio.datamapper.PropertyKeyValuePair;
 import org.wso2.developerstudio.datamapper.TreeNode;
 import org.wso2.developerstudio.datamapper.diagram.custom.util.AddNewObjectDialog;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.TreeNode2EditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.TreeNode3EditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.TreeNodeEditPart;
+import org.wso2.developerstudio.datamapper.impl.PropertyKeyValuePairImpl;
 import org.wso2.developerstudio.eclipse.registry.core.interfaces.IRegistryFile;
 
 public class EditNodeAction extends AbstractActionHandler {
@@ -118,8 +122,10 @@ public class EditNodeAction extends AbstractActionHandler {
 		  if(key.equals(JSON_SCHEMA_TITLE)){
 				executeCommand(selectedNode, DataMapperPackage.Literals.TREE_NODE__NAME, value.toString());  
 		  }else{
-			    EMap<String, String> propertyMap = selectedNode.getProperties();	   
-			    executeAddCommand(propertyMap, DataMapperPackage.Literals.PROPERTY_KEY_VALUE_PAIR, value.toString());
+			PropertyKeyValuePairImpl pkvPair = (PropertyKeyValuePairImpl)DataMapperFactory.eINSTANCE.create(DataMapperPackage.eINSTANCE.getPropertyKeyValuePair());
+		  	pkvPair.setKey("id");
+		  	pkvPair.setValue("susinda");
+		    executeAddCommand(pkvPair);
 		  }
 		}
 		
@@ -138,11 +144,13 @@ public class EditNodeAction extends AbstractActionHandler {
 	 * Saves the edited values in the map
 	 * @param propertyMap map
 	 * @param propertyKeyValuePair value
-	 * @param string value
+	 * @param pkvPair value
 	 */
-	private void executeAddCommand(EMap<String, String> propertyMap, EClass propertyKeyValuePair, String string) {
-		AddCommand editComd = new AddCommand(((GraphicalEditPart) selectedEP).getEditingDomain(),
-				propertyKeyValuePair, null, string);
+	private void executeAddCommand(PropertyKeyValuePairImpl pkvPair) {
+		EObject object = ((Node) selectedEP.getModel()).getElement();
+		TreeNode selectedNode = (TreeNode) object;
+		AddCommand editComd = new AddCommand(((GraphicalEditPart) selectedEP).getEditingDomain(), selectedNode,
+				DataMapperPackage.Literals.TREE_NODE__PROPERTIES, pkvPair);
 		if (editComd.canExecute()) {
 			((GraphicalEditPart) selectedEP).getEditingDomain().getCommandStack().execute(editComd);
 		}	
@@ -223,6 +231,33 @@ public class EditNodeAction extends AbstractActionHandler {
 	@Override
 	public void refresh() {
 		// refresh action. Does not do anything
+	}
+	
+	final class MyEntry<K, V> implements Map.Entry<K, V> {
+	    private final K key;
+	    private V value;
+
+	    public MyEntry(K key, V value) {
+	        this.key = key;
+	        this.value = value;
+	    }
+
+	    @Override
+	    public K getKey() {
+	        return key;
+	    }
+
+	    @Override
+	    public V getValue() {
+	        return value;
+	    }
+
+	    @Override
+	    public V setValue(V value) {
+	        V old = this.value;
+	        this.value = value;
+	        return old;
+	    }
 	}
 
 }

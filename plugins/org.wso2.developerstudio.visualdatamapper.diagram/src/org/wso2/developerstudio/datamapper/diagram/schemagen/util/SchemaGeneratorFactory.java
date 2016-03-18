@@ -27,7 +27,7 @@ public class SchemaGeneratorFactory {
 		case XML:
 			return new SchemaGeneratorForXML();
 		case JSON:
-			return new AbstractSchemaGenerator();
+			return new SchemaGeneratorForJSON();
 		
 	}
 		return null;

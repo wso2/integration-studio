@@ -75,6 +75,12 @@ public class DataMapperEditPartFactory implements EditPartFactory {
 			case TreeNodeName2EditPart.VISUAL_ID:
 				return new TreeNodeName2EditPart(view);
 
+			case InNodeEditPart.VISUAL_ID:
+				return new InNodeEditPart(view);
+
+			case OutNodeEditPart.VISUAL_ID:
+				return new OutNodeEditPart(view);
+
 			case TreeNode3EditPart.VISUAL_ID:
 				return new TreeNode3EditPart(view);
 

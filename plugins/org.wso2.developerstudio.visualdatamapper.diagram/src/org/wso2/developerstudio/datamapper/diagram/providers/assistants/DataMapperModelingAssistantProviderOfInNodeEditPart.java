@@ -13,16 +13,14 @@ import org.wso2.developerstudio.datamapper.diagram.providers.DataMapperModelingA
 /**
  * @generated
  */
-public class DataMapperModelingAssistantProviderOfInNodeEditPart extends
-		DataMapperModelingAssistantProvider {
+public class DataMapperModelingAssistantProviderOfInNodeEditPart extends DataMapperModelingAssistantProvider {
 
 	/**
 	 * @generated
 	 */
 	@Override
 	public List<IElementType> getRelTypesOnTarget(IAdaptable target) {
-		IGraphicalEditPart targetEditPart = (IGraphicalEditPart) target
-				.getAdapter(IGraphicalEditPart.class);
+		IGraphicalEditPart targetEditPart = (IGraphicalEditPart) target.getAdapter(IGraphicalEditPart.class);
 		return doGetRelTypesOnTarget((InNodeEditPart) targetEditPart);
 	}
 
@@ -40,20 +38,18 @@ public class DataMapperModelingAssistantProviderOfInNodeEditPart extends
 	 */
 	@Override
 	public List<IElementType> getTypesForSource(IAdaptable target, IElementType relationshipType) {
-		IGraphicalEditPart targetEditPart = (IGraphicalEditPart) target
-				.getAdapter(IGraphicalEditPart.class);
+		IGraphicalEditPart targetEditPart = (IGraphicalEditPart) target.getAdapter(IGraphicalEditPart.class);
 		return doGetTypesForSource((InNodeEditPart) targetEditPart, relationshipType);
 	}
 
 	/**
 	 * @generated
 	 */
-	public List<IElementType> doGetTypesForSource(InNodeEditPart target,
-			IElementType relationshipType) {
+	public List<IElementType> doGetTypesForSource(InNodeEditPart target, IElementType relationshipType) {
 		List<IElementType> types = new ArrayList<IElementType>();
 		if (relationshipType == DataMapperElementTypes.DataMapperLink_4001) {
 			types.add(DataMapperElementTypes.OutNode_3009);
-			types.add(DataMapperElementTypes.OutNode_3009);
+			types.add(DataMapperElementTypes.OutNode_3019);
 			types.add(DataMapperElementTypes.OutNode_3018);
 		}
 		return types;

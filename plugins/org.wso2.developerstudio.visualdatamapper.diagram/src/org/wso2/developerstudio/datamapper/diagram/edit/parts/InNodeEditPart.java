@@ -53,6 +53,7 @@ public class InNodeEditPart extends AbstractInNodeEditPart {
 	public boolean canAttachNote() {
 		return false;
 	}
+
 	/**
 	 * @generated
 	 */
@@ -146,7 +147,7 @@ public class InNodeEditPart extends AbstractInNodeEditPart {
 	protected NodeFigure createNodePlate() {
 		HashMap<String, PrecisionPoint> anchorLocations = new HashMap<String, PrecisionPoint>();
 		anchorLocations.put("CENTER", new PrecisionPoint(0.4d, 0.5d));
-		CenteredAnchors result = new CenteredAnchors(10, 10, anchorLocations); 
+		CenteredAnchors result = new CenteredAnchors(10, 10, anchorLocations);
 		return result;
 	}
 

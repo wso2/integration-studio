@@ -131,6 +131,16 @@ public class DataMapperElementTypes {
 	/**
 	 * @generated
 	 */
+	public static final IElementType InNode_3020 = getElementType("org.wso2.developerstudio.visualdatamapper.diagram.InNode_3020"); //$NON-NLS-1$
+
+	/**
+	 * @generated
+	 */
+	public static final IElementType OutNode_3019 = getElementType("org.wso2.developerstudio.visualdatamapper.diagram.OutNode_3019"); //$NON-NLS-1$
+
+	/**
+	 * @generated
+	 */
 	public static final IElementType Element_3007 = getElementType("org.wso2.developerstudio.visualdatamapper.diagram.Element_3007"); //$NON-NLS-1$
 
 	/**
@@ -256,6 +266,10 @@ public class DataMapperElementTypes {
 
 			elements.put(TreeNode_3003, DataMapperPackage.eINSTANCE.getTreeNode());
 
+			elements.put(InNode_3020, DataMapperPackage.eINSTANCE.getInNode());
+
+			elements.put(OutNode_3019, DataMapperPackage.eINSTANCE.getOutNode());
+
 			elements.put(TreeNode_3011, DataMapperPackage.eINSTANCE.getTreeNode());
 
 			elements.put(OperatorBasicContainer_3012, DataMapperPackage.eINSTANCE.getOperatorBasicContainer());
@@ -305,6 +319,8 @@ public class DataMapperElementTypes {
 			KNOWN_ELEMENT_TYPES.add(InNode_3008);
 			KNOWN_ELEMENT_TYPES.add(OutNode_3009);
 			KNOWN_ELEMENT_TYPES.add(TreeNode_3003);
+			KNOWN_ELEMENT_TYPES.add(InNode_3020);
+			KNOWN_ELEMENT_TYPES.add(OutNode_3019);
 			KNOWN_ELEMENT_TYPES.add(TreeNode_3011);
 			KNOWN_ELEMENT_TYPES.add(OperatorBasicContainer_3012);
 			KNOWN_ELEMENT_TYPES.add(OperatorLeftContainer_3013);
@@ -353,6 +369,10 @@ public class DataMapperElementTypes {
 			return OutNode_3009;
 		case TreeNode2EditPart.VISUAL_ID:
 			return TreeNode_3003;
+		case InNodeEditPart.VISUAL_ID:
+			return InNode_3020;
+		case OutNodeEditPart.VISUAL_ID:
+			return OutNode_3019;
 		case TreeNode3EditPart.VISUAL_ID:
 			return TreeNode_3011;
 		case OperatorBasicContainerEditPart.VISUAL_ID:

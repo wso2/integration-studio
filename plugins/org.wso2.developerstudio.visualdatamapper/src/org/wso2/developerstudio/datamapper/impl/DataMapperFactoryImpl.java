@@ -256,6 +256,8 @@ public class DataMapperFactoryImpl extends EFactoryImpl implements DataMapperFac
 	 */
 	public TreeNode createTreeNode() {
 		TreeNodeImpl treeNode = new TreeNodeImpl();
+		treeNode.setInNode(createInNode());
+		treeNode.setOutNode(createOutNode());
 		return treeNode;
 	}
 

@@ -370,6 +370,20 @@ public class DataMapperDiagramUpdater {
 				continue;
 			}
 		}
+		{
+			InNode childElement = modelElement.getInNode();
+			int visualID = DataMapperVisualIDRegistry.getNodeVisualID(view, childElement);
+			if (visualID == InNodeEditPart.VISUAL_ID) {
+				result.add(new DataMapperNodeDescriptor(childElement, visualID));
+			}
+		}
+		{
+			OutNode childElement = modelElement.getOutNode();
+			int visualID = DataMapperVisualIDRegistry.getNodeVisualID(view, childElement);
+			if (visualID == OutNodeEditPart.VISUAL_ID) {
+				result.add(new DataMapperNodeDescriptor(childElement, visualID));
+			}
+		}
 		return result;
 	}
 
@@ -396,6 +410,20 @@ public class DataMapperDiagramUpdater {
 			if (visualID == TreeNode2EditPart.VISUAL_ID) {
 				result.add(new DataMapperNodeDescriptor(childElement, visualID));
 				continue;
+			}
+		}
+		{
+			InNode childElement = modelElement.getInNode();
+			int visualID = DataMapperVisualIDRegistry.getNodeVisualID(view, childElement);
+			if (visualID == InNodeEditPart.VISUAL_ID) {
+				result.add(new DataMapperNodeDescriptor(childElement, visualID));
+			}
+		}
+		{
+			OutNode childElement = modelElement.getOutNode();
+			int visualID = DataMapperVisualIDRegistry.getNodeVisualID(view, childElement);
+			if (visualID == OutNodeEditPart.VISUAL_ID) {
+				result.add(new DataMapperNodeDescriptor(childElement, visualID));
 			}
 		}
 		return result;
@@ -450,6 +478,20 @@ public class DataMapperDiagramUpdater {
 			if (visualID == TreeNode2EditPart.VISUAL_ID) {
 				result.add(new DataMapperNodeDescriptor(childElement, visualID));
 				continue;
+			}
+		}
+		{
+			InNode childElement = modelElement.getInNode();
+			int visualID = DataMapperVisualIDRegistry.getNodeVisualID(view, childElement);
+			if (visualID == InNodeEditPart.VISUAL_ID) {
+				result.add(new DataMapperNodeDescriptor(childElement, visualID));
+			}
+		}
+		{
+			OutNode childElement = modelElement.getOutNode();
+			int visualID = DataMapperVisualIDRegistry.getNodeVisualID(view, childElement);
+			if (visualID == OutNodeEditPart.VISUAL_ID) {
+				result.add(new DataMapperNodeDescriptor(childElement, visualID));
 			}
 		}
 		return result;
@@ -594,6 +636,10 @@ public class DataMapperDiagramUpdater {
 			return getOutNode_3009ContainedLinks(view);
 		case TreeNode2EditPart.VISUAL_ID:
 			return getTreeNode_3003ContainedLinks(view);
+		case InNodeEditPart.VISUAL_ID:
+			return getInNode_3020ContainedLinks(view);
+		case OutNodeEditPart.VISUAL_ID:
+			return getOutNode_3019ContainedLinks(view);
 		case TreeNode3EditPart.VISUAL_ID:
 			return getTreeNode_3011ContainedLinks(view);
 		case OperatorBasicContainerEditPart.VISUAL_ID:
@@ -649,6 +695,10 @@ public class DataMapperDiagramUpdater {
 			return getOutNode_3009IncomingLinks(view);
 		case TreeNode2EditPart.VISUAL_ID:
 			return getTreeNode_3003IncomingLinks(view);
+		case InNodeEditPart.VISUAL_ID:
+			return getInNode_3020IncomingLinks(view);
+		case OutNodeEditPart.VISUAL_ID:
+			return getOutNode_3019IncomingLinks(view);
 		case TreeNode3EditPart.VISUAL_ID:
 			return getTreeNode_3011IncomingLinks(view);
 		case OperatorBasicContainerEditPart.VISUAL_ID:
@@ -704,6 +754,10 @@ public class DataMapperDiagramUpdater {
 			return getOutNode_3009OutgoingLinks(view);
 		case TreeNode2EditPart.VISUAL_ID:
 			return getTreeNode_3003OutgoingLinks(view);
+		case InNodeEditPart.VISUAL_ID:
+			return getInNode_3020OutgoingLinks(view);
+		case OutNodeEditPart.VISUAL_ID:
+			return getOutNode_3019OutgoingLinks(view);
 		case TreeNode3EditPart.VISUAL_ID:
 			return getTreeNode_3011OutgoingLinks(view);
 		case OperatorBasicContainerEditPart.VISUAL_ID:
@@ -808,6 +862,23 @@ public class DataMapperDiagramUpdater {
 	 */
 	public static List<DataMapperLinkDescriptor> getTreeNode_3003ContainedLinks(View view) {
 		return Collections.emptyList();
+	}
+
+	/**
+	 * @generated
+	 */
+	public static List<DataMapperLinkDescriptor> getInNode_3020ContainedLinks(View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	 * @generated
+	 */
+	public static List<DataMapperLinkDescriptor> getOutNode_3019ContainedLinks(View view) {
+		OutNode modelElement = (OutNode) view.getElement();
+		LinkedList<DataMapperLinkDescriptor> result = new LinkedList<DataMapperLinkDescriptor>();
+		result.addAll(getContainedTypeModelFacetLinks_DataMapperLink_4001(modelElement));
+		return result;
 	}
 
 	/**
@@ -980,6 +1051,25 @@ public class DataMapperDiagramUpdater {
 	/**
 	 * @generated
 	 */
+	public static List<DataMapperLinkDescriptor> getInNode_3020IncomingLinks(View view) {
+		InNode modelElement = (InNode) view.getElement();
+		Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences = EcoreUtil.CrossReferencer.find(view
+				.eResource().getResourceSet().getResources());
+		LinkedList<DataMapperLinkDescriptor> result = new LinkedList<DataMapperLinkDescriptor>();
+		result.addAll(getIncomingTypeModelFacetLinks_DataMapperLink_4001(modelElement, crossReferences));
+		return result;
+	}
+
+	/**
+	 * @generated
+	 */
+	public static List<DataMapperLinkDescriptor> getOutNode_3019IncomingLinks(View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	 * @generated
+	 */
 	public static List<DataMapperLinkDescriptor> getElement_3007IncomingLinks(View view) {
 		return Collections.emptyList();
 	}
@@ -1146,6 +1236,23 @@ public class DataMapperDiagramUpdater {
 	 */
 	public static List<DataMapperLinkDescriptor> getTreeNode_3003OutgoingLinks(View view) {
 		return Collections.emptyList();
+	}
+
+	/**
+	 * @generated
+	 */
+	public static List<DataMapperLinkDescriptor> getInNode_3020OutgoingLinks(View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	 * @generated
+	 */
+	public static List<DataMapperLinkDescriptor> getOutNode_3019OutgoingLinks(View view) {
+		OutNode modelElement = (OutNode) view.getElement();
+		LinkedList<DataMapperLinkDescriptor> result = new LinkedList<DataMapperLinkDescriptor>();
+		result.addAll(getOutgoingTypeModelFacetLinks_DataMapperLink_4001(modelElement));
+		return result;
 	}
 
 	/**

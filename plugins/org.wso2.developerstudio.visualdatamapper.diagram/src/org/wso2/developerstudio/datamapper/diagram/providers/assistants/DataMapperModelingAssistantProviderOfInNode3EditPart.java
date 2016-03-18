@@ -49,6 +49,7 @@ public class DataMapperModelingAssistantProviderOfInNode3EditPart extends DataMa
 		List<IElementType> types = new ArrayList<IElementType>();
 		if (relationshipType == DataMapperElementTypes.DataMapperLink_4001) {
 			types.add(DataMapperElementTypes.OutNode_3009);
+			types.add(DataMapperElementTypes.OutNode_3019);
 			types.add(DataMapperElementTypes.OutNode_3018);
 		}
 		return types;

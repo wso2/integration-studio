@@ -18,9 +18,11 @@ public class DataMapperModelingAssistantProviderOfTreeNode3EditPart extends Data
 	 */
 	@Override
 	public List<IElementType> getTypesForPopupBar(IAdaptable host) {
-		List<IElementType> types = new ArrayList<IElementType>(2);
+		List<IElementType> types = new ArrayList<IElementType>(4);
 		types.add(DataMapperElementTypes.Element_3007);
 		types.add(DataMapperElementTypes.TreeNode_3003);
+		types.add(DataMapperElementTypes.InNode_3020);
+		types.add(DataMapperElementTypes.OutNode_3019);
 		return types;
 	}
 

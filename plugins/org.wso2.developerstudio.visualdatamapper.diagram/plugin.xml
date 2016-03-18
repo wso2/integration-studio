@@ -227,7 +227,7 @@
       <viewProvider class="org.wso2.developerstudio.datamapper.diagram.providers.DataMapperViewProvider">
          <Priority name="Lowest"/>
          <context viewClass="org.eclipse.gmf.runtime.notation.Diagram" semanticHints="DataMapper"/>
-         <context viewClass="org.eclipse.gmf.runtime.notation.Node" semanticHints="2002,2003,2005,2006,2007,2008,2009,2010,2011,3002,3007,3008,3009,3003,3011,3012,3013,3014,3015,3016,3017,3018"/>
+         <context viewClass="org.eclipse.gmf.runtime.notation.Node" semanticHints="2002,2003,2005,2006,2007,2008,2009,2010,2011,3002,3007,3008,3009,3003,3020,3019,3011,3012,3013,3014,3015,3016,3017,3018"/>
          <context viewClass="org.eclipse.gmf.runtime.notation.Edge" semanticHints="4001"/>
       </viewProvider>
    </extension>
@@ -240,7 +240,7 @@
             <method name="getType()" value="DataMapper"/>
          </object>
          <object class="org.eclipse.gmf.runtime.notation.Node" id="generated-nodes">
-            <method name="getType()" value="2002,2003,2005,2006,2007,2008,2009,2010,2011,3002,3007,3008,3009,3003,3011,3012,3013,3014,3015,3016,3017,3018"/>
+            <method name="getType()" value="2002,2003,2005,2006,2007,2008,2009,2010,2011,3002,3007,3008,3009,3003,3020,3019,3011,3012,3013,3014,3015,3016,3017,3018"/>
          </object>
          <object class="org.eclipse.gmf.runtime.notation.Edge" id="generated-links">
             <method name="getType()" value="4001"/>
@@ -331,6 +331,16 @@
          <Priority name="Lowest"/>
          <object class="org.wso2.developerstudio.datamapper.diagram.edit.parts.TreeNode2EditPart" id="TreeNode_3003"/>
          <context elements="TreeNode_3003"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="org.wso2.developerstudio.datamapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfInNodeEditPart">
+         <Priority name="Lowest"/>
+         <object class="org.wso2.developerstudio.datamapper.diagram.edit.parts.InNodeEditPart" id="InNode_3020"/>
+         <context elements="InNode_3020"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="org.wso2.developerstudio.datamapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfOutNodeEditPart">
+         <Priority name="Lowest"/>
+         <object class="org.wso2.developerstudio.datamapper.diagram.edit.parts.OutNodeEditPart" id="OutNode_3019"/>
+         <context elements="OutNode_3019"/>
       </modelingAssistantProvider>
             <modelingAssistantProvider class="org.wso2.developerstudio.datamapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfTreeNode3EditPart">
          <Priority name="Lowest"/>
@@ -535,6 +545,24 @@
       </metamodel>
       <metamodel nsURI="http:///org/wso2/developerstudio/eclipse/gmf/datamapper">
          <specializationType
+               id="org.wso2.developerstudio.visualdatamapper.diagram.InNode_3020"
+               name="%metatype.name.InNode_3020"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+            <specializes id="org.wso2.developerstudio.visualdatamapper.diagram.InNode_3008"/>
+            <param name="semanticHint" value="3020"/>
+         </specializationType>
+      </metamodel>
+      <metamodel nsURI="http:///org/wso2/developerstudio/eclipse/gmf/datamapper">
+         <specializationType
+               id="org.wso2.developerstudio.visualdatamapper.diagram.OutNode_3019"
+               name="%metatype.name.OutNode_3019"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+            <specializes id="org.wso2.developerstudio.visualdatamapper.diagram.OutNode_3009"/>
+            <param name="semanticHint" value="3019"/>
+         </specializationType>
+      </metamodel>
+      <metamodel nsURI="http:///org/wso2/developerstudio/eclipse/gmf/datamapper">
+         <specializationType
                id="org.wso2.developerstudio.visualdatamapper.diagram.TreeNode_3011"
                name="%metatype.name.TreeNode_3011"
                kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
@@ -647,6 +675,8 @@
          <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.InNode_3008"/>
          <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.OutNode_3009"/>
          <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.TreeNode_3003"/>
+         <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.InNode_3020"/>
+         <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.OutNode_3019"/>
          <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.TreeNode_3011"/>
          <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.OperatorBasicContainer_3012"/>
          <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.OperatorLeftContainer_3013"/>

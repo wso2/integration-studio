@@ -71,6 +71,26 @@
             <containmentFeature
                 href="dataMapper.ecore#//TreeNode/node"/>
           </children>
+          <children>
+            <containmentFeature
+                href="dataMapper.ecore#//TreeNode/inNode"/>
+            <ownedChild>
+              <domainMetaElement
+                  href="dataMapper.ecore#//InNode"/>
+              <diagramNode
+                  href="dataMapper.gmfgraph#InNode"/>
+            </ownedChild>
+          </children>
+          <children>
+            <containmentFeature
+                href="dataMapper.ecore#//TreeNode/outNode"/>
+            <ownedChild>
+              <domainMetaElement
+                  href="dataMapper.ecore#//OutNode"/>
+              <diagramNode
+                  href="dataMapper.gmfgraph#OutNode"/>
+            </ownedChild>
+          </children>
         </ownedChild>
       </children>
     </ownedChild>

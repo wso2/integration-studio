@@ -77,6 +77,10 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="level" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="properties" lowerBound="1"
         upperBound="-1" eType="#//PropertyKeyValuePair" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="outNode" eType="#//OutNode"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="inNode" eType="#//InNode"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="InNode">
     <eStructuralFeatures xsi:type="ecore:EReference" name="incomingLink" upperBound="-1"

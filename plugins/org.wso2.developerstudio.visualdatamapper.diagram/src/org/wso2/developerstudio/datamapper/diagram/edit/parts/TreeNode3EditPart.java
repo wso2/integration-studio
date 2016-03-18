@@ -16,6 +16,7 @@ import org.eclipse.draw2d.MarginBorder;
 import org.eclipse.draw2d.MouseEvent;
 import org.eclipse.draw2d.MouseListener;
 import org.eclipse.draw2d.MouseMotionListener;
+import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.RectangleFigure;
 import org.eclipse.draw2d.Shape;
 import org.eclipse.draw2d.StackLayout;
@@ -28,11 +29,15 @@ import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.editpolicies.LayoutEditPolicy;
 import org.eclipse.gef.editpolicies.NonResizableEditPolicy;
 import org.eclipse.gef.requests.CreateRequest;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.AbstractBorderedShapeEditPart;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.IBorderItemEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeNodeEditPart;
+import org.eclipse.gmf.runtime.diagram.ui.editpolicies.BorderItemSelectionEditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.DragDropEditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.FlowLayoutEditPolicy;
+import org.eclipse.gmf.runtime.diagram.ui.figures.BorderItemLocator;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.ConstrainedToolbarLayout;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel;
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
@@ -54,7 +59,7 @@ import org.wso2.developerstudio.datamapper.diagram.part.DataMapperVisualIDRegist
 /**
  * @generated
  */
-public class TreeNode3EditPart extends ShapeNodeEditPart {
+public class TreeNode3EditPart extends AbstractBorderedShapeEditPart {
 
 	private static final String PARENT_ICON = "icons/gmf/parent.gif";
 	private static final String ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM = "org.wso2.developerstudio.visualdatamapper.diagram";
@@ -192,13 +197,49 @@ public class TreeNode3EditPart extends ShapeNodeEditPart {
 		return (TreeNodeFigure) primaryShape;
 	}
 
+	private EditPart getParentBox() {
+		EditPart temp = this.getParent();
+		while ((!(temp instanceof DataMapperRootEditPart)) && (temp != null)) {
+
+			if (temp instanceof InputEditPart || temp instanceof OutputEditPart) {
+				break;
+			}
+			temp = temp.getParent();
+		}
+		return temp;
+	}
+
+	
 	/**
 	 * @generated
 	 */
 	protected boolean addFixedChild(EditPart childEditPart) {
+		EditPart temp = this.getParentBox();
 		if (childEditPart instanceof TreeNodeName3EditPart) {
 			((TreeNodeName3EditPart) childEditPart).setLabel(getPrimaryShape().getFigureTreeNodeNameFigure());
 			return true;
+		}
+		
+		if (childEditPart instanceof InNodeEditPart) {
+			//DO not add in any case, add an empty figure instead, keep below 2 lines commented
+			//BorderItemLocator locator = new BorderItemLocator(getMainFigure(), PositionConstants.WEST);
+			//getBorderedFigure().getBorderItemContainer().add(((InNodeEditPart) childEditPart).getFigure(), locator);
+			NodeFigure figureInput = (NodeFigure) ((InNodeEditPart) childEditPart).getFigure();
+			figureInput.removeAll();
+			Figure emptyFigure = new Figure();
+			figureInput.add(emptyFigure);
+		}
+		if (childEditPart instanceof OutNodeEditPart) {
+			if (temp instanceof OutputEditPart) {
+				NodeFigure figureInput = (NodeFigure) ((OutNodeEditPart) childEditPart).getFigure();
+				figureInput.removeAll();
+				Figure emptyFigure = new Figure();
+				figureInput.add(emptyFigure);
+			} else {
+				BorderItemLocator locator = new BorderItemLocator(getMainFigure(), PositionConstants.EAST);
+				getBorderedFigure().getBorderItemContainer().add(((OutNodeEditPart) childEditPart).getFigure(), locator);
+				return true;
+			}
 		}
 		return false;
 	}
@@ -208,6 +249,14 @@ public class TreeNode3EditPart extends ShapeNodeEditPart {
 	 */
 	protected boolean removeFixedChild(EditPart childEditPart) {
 		if (childEditPart instanceof TreeNodeName3EditPart) {
+			return true;
+		}
+		if (childEditPart instanceof InNodeEditPart) {
+			getBorderedFigure().getBorderItemContainer().remove(((InNodeEditPart) childEditPart).getFigure());
+			return true;
+		}
+		if (childEditPart instanceof OutNodeEditPart) {
+			getBorderedFigure().getBorderItemContainer().remove(((OutNodeEditPart) childEditPart).getFigure());
 			return true;
 		}
 		return false;
@@ -237,6 +286,9 @@ public class TreeNode3EditPart extends ShapeNodeEditPart {
 	 * @generated
 	 */
 	protected IFigure getContentPaneFor(IGraphicalEditPart editPart) {
+		if (editPart instanceof IBorderItemEditPart) {
+			return getBorderedFigure().getBorderItemContainer();
+		}
 		return getContentPane();
 	}
 
@@ -256,7 +308,7 @@ public class TreeNode3EditPart extends ShapeNodeEditPart {
 	 * 
 	 * @generated
 	 */
-	protected NodeFigure createNodeFigure() {
+	protected NodeFigure createMainFigure() {
 		NodeFigure figure = createNodePlate();
 		figure.setLayoutManager(new StackLayout());
 		IFigure shape = createNodeShape();

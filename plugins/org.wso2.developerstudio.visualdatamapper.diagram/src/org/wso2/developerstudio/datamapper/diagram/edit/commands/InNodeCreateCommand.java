@@ -13,6 +13,7 @@ import org.eclipse.gmf.runtime.emf.type.core.requests.CreateElementRequest;
 import org.eclipse.gmf.runtime.notation.View;
 import org.wso2.developerstudio.datamapper.DataMapperFactory;
 import org.wso2.developerstudio.datamapper.InNode;
+import org.wso2.developerstudio.datamapper.TreeNode;
 
 /**
  * @generated
@@ -38,16 +39,26 @@ public class InNodeCreateCommand extends EditElementCommand {
 		return container;
 	}
 
+	/**
+	 * @generated
+	 */
+	public boolean canExecute() {
+		TreeNode container = (TreeNode) getElementToEdit();
+		if (container.getInNode() != null) {
+			return false;
+		}
+		return true;
+
+	}
 
 	/**
 	 * @generated
 	 */
-	protected CommandResult doExecuteWithResult(IProgressMonitor monitor, IAdaptable info)
-			throws ExecutionException {
+	protected CommandResult doExecuteWithResult(IProgressMonitor monitor, IAdaptable info) throws ExecutionException {
 		InNode newElement = DataMapperFactory.eINSTANCE.createInNode();
 
-//		Attribute owner = (Attribute) getElementToEdit();
-//		owner.setInNode(newElement);
+		TreeNode owner = (TreeNode) getElementToEdit();
+		owner.setInNode(newElement);
 
 		doConfigure(newElement, monitor, info);
 
@@ -58,11 +69,9 @@ public class InNodeCreateCommand extends EditElementCommand {
 	/**
 	 * @generated
 	 */
-	protected void doConfigure(InNode newElement, IProgressMonitor monitor, IAdaptable info)
-			throws ExecutionException {
+	protected void doConfigure(InNode newElement, IProgressMonitor monitor, IAdaptable info) throws ExecutionException {
 		IElementType elementType = ((CreateElementRequest) getRequest()).getElementType();
-		ConfigureRequest configureRequest = new ConfigureRequest(getEditingDomain(), newElement,
-				elementType);
+		ConfigureRequest configureRequest = new ConfigureRequest(getEditingDomain(), newElement, elementType);
 		configureRequest.setClientContext(((CreateElementRequest) getRequest()).getClientContext());
 		configureRequest.addParameters(getRequest().getParameters());
 		ICommand configureCommand = elementType.getEditCommand(configureRequest);

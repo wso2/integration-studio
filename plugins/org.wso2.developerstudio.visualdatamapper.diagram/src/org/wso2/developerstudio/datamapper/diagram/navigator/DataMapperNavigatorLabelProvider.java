@@ -181,6 +181,12 @@ public class DataMapperNavigatorLabelProvider extends LabelProvider implements I
 		case OutNode3EditPart.VISUAL_ID:
 			return getImage(
 					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/datamapper?OutNode", DataMapperElementTypes.OutNode_3018); //$NON-NLS-1$
+		case OutNodeEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/datamapper?OutNode", DataMapperElementTypes.OutNode_3019); //$NON-NLS-1$
+		case InNodeEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/datamapper?InNode", DataMapperElementTypes.InNode_3020); //$NON-NLS-1$
 		case DataMapperLinkEditPart.VISUAL_ID:
 			return getImage(
 					"Navigator?Link?http:///org/wso2/developerstudio/eclipse/gmf/datamapper?DataMapperLink", DataMapperElementTypes.DataMapperLink_4001); //$NON-NLS-1$
@@ -280,6 +286,10 @@ public class DataMapperNavigatorLabelProvider extends LabelProvider implements I
 			return getOperatorRightConnector_3017Text(view);
 		case OutNode3EditPart.VISUAL_ID:
 			return getOutNode_3018Text(view);
+		case OutNodeEditPart.VISUAL_ID:
+			return getOutNode_3019Text(view);
+		case InNodeEditPart.VISUAL_ID:
+			return getInNode_3020Text(view);
 		case DataMapperLinkEditPart.VISUAL_ID:
 			return getDataMapperLink_4001Text(view);
 		}
@@ -529,6 +539,20 @@ public class DataMapperNavigatorLabelProvider extends LabelProvider implements I
 	 * @generated
 	 */
 	private String getOutNode_3018Text(View view) {
+		return ""; //$NON-NLS-1$
+	}
+
+	/**
+	 * @generated
+	 */
+	private String getOutNode_3019Text(View view) {
+		return ""; //$NON-NLS-1$
+	}
+
+	/**
+	 * @generated
+	 */
+	private String getInNode_3020Text(View view) {
 		return ""; //$NON-NLS-1$
 	}
 

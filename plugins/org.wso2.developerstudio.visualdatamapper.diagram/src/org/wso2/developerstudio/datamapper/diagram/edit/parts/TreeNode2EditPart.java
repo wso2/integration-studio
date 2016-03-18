@@ -225,33 +225,31 @@ public class TreeNode2EditPart extends AbstractBorderedShapeEditPart {
 		}
 		if (childEditPart instanceof InNodeEditPart) {
 			if (temp instanceof InputEditPart) {
-				//NodeFigure figureInput = (NodeFigure) ((InNodeEditPart) childEditPart).getFigure();
-				//figureInput.removeAll();
-				//Figure emptyFigure = new Figure();
-				//figureInput.add(emptyFigure);
+				NodeFigure figureInput = (NodeFigure) ((InNodeEditPart) childEditPart).getFigure();
+				figureInput.removeAll();
+				Figure emptyFigure = new Figure();
+				figureInput.add(emptyFigure);
 			} else {
 				//BorderItemLocator locator = new BorderItemLocator(getMainFigure(), PositionConstants.WEST);
 				IFigure borderItemFigure = ((InNodeEditPart) childEditPart).getFigure();
-				BorderItemLocator locator = new FixedBorderItemLocator(getMainFigure(), borderItemFigure,
-						PositionConstants.WEST, 0.5);
+				BorderItemLocator locator = new FixedBorderItemLocator(getMainFigure(), borderItemFigure, PositionConstants.WEST, 0.5);
 				getBorderedFigure().getBorderItemContainer().add(((InNodeEditPart) childEditPart).getFigure(), locator);
+				return true;
 			}
-			return true;
 		}
 		if (childEditPart instanceof OutNodeEditPart) {
 			if (temp instanceof OutputEditPart) {
-				//NodeFigure figureInput = (NodeFigure) ((OutNodeEditPart) childEditPart).getFigure();
-				//figureInput.removeAll();
-				//Figure emptyFigure = new Figure();
-				//figureInput.add(emptyFigure);
+				NodeFigure figureInput = (NodeFigure) ((OutNodeEditPart) childEditPart).getFigure();
+				figureInput.removeAll();
+				Figure emptyFigure = new Figure();
+				figureInput.add(emptyFigure);
 			} else {
 				IFigure borderItemFigure = ((OutNodeEditPart) childEditPart).getFigure();
-				BorderItemLocator locator = new FixedBorderItemLocator(getMainFigure(), borderItemFigure,
-						PositionConstants.EAST, 0.5);
-				getBorderedFigure().getBorderItemContainer()
-						.add(((OutNodeEditPart) childEditPart).getFigure(), locator);
+				BorderItemLocator locator = new FixedBorderItemLocator(getMainFigure(), borderItemFigure, PositionConstants.EAST, 0.5);
+				getBorderedFigure().getBorderItemContainer().add(((OutNodeEditPart) childEditPart).getFigure(), locator);
+				return true;
 			}
-			return true;
+			
 		}
 		return false;
 	}

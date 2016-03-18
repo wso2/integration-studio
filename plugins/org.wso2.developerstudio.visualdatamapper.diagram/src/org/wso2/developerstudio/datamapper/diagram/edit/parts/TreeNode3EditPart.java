@@ -219,44 +219,28 @@ public class TreeNode3EditPart extends AbstractBorderedShapeEditPart {
 			((TreeNodeName3EditPart) childEditPart).setLabel(getPrimaryShape().getFigureTreeNodeNameFigure());
 			return true;
 		}
-//		if (childEditPart instanceof InNodeEditPart) {
-//			BorderItemLocator locator = new BorderItemLocator(getMainFigure(), PositionConstants.WEST);
-//			getBorderedFigure().getBorderItemContainer().add(((InNodeEditPart) childEditPart).getFigure(), locator);
-//			return true;
-//		}
-//		if (childEditPart instanceof OutNodeEditPart) {
-//			BorderItemLocator locator = new BorderItemLocator(getMainFigure(), PositionConstants.EAST);
-//			getBorderedFigure().getBorderItemContainer().add(((OutNodeEditPart) childEditPart).getFigure(), locator);
-//			return true;
-//		}
-		
 		
 		if (childEditPart instanceof InNodeEditPart) {
-			if (temp instanceof InputEditPart) {
-				//				NodeFigure figureInput = (NodeFigure) ((InNodeEditPart) childEditPart).getFigure();
-				//				figureInput.removeAll();
-				//				Figure emptyFigure = new Figure();
-				//				figureInput.add(emptyFigure);
-			} else {
-				BorderItemLocator locator = new BorderItemLocator(getMainFigure(), PositionConstants.WEST);
-				getBorderedFigure().getBorderItemContainer().add(((InNodeEditPart) childEditPart).getFigure(), locator);
-			}
-			return true;
+			//DO not add in any case, add an empty figure instead, keep below 2 lines commented
+			//BorderItemLocator locator = new BorderItemLocator(getMainFigure(), PositionConstants.WEST);
+			//getBorderedFigure().getBorderItemContainer().add(((InNodeEditPart) childEditPart).getFigure(), locator);
+			NodeFigure figureInput = (NodeFigure) ((InNodeEditPart) childEditPart).getFigure();
+			figureInput.removeAll();
+			Figure emptyFigure = new Figure();
+			figureInput.add(emptyFigure);
 		}
 		if (childEditPart instanceof OutNodeEditPart) {
 			if (temp instanceof OutputEditPart) {
-				//				NodeFigure figureInput = (NodeFigure) ((OutNodeEditPart) childEditPart).getFigure();
-				//				figureInput.removeAll();
-				//				Figure emptyFigure = new Figure();
-				//				figureInput.add(emptyFigure);
+				NodeFigure figureInput = (NodeFigure) ((OutNodeEditPart) childEditPart).getFigure();
+				figureInput.removeAll();
+				Figure emptyFigure = new Figure();
+				figureInput.add(emptyFigure);
 			} else {
-				//BorderItemLocator locator = new BorderItemLocator(getMainFigure(), PositionConstants.EAST);
-				//getBorderedFigure().getBorderItemContainer().add(((OutNodeEditPart) childEditPart).getFigure(), locator);
+				BorderItemLocator locator = new BorderItemLocator(getMainFigure(), PositionConstants.EAST);
+				getBorderedFigure().getBorderItemContainer().add(((OutNodeEditPart) childEditPart).getFigure(), locator);
+				return true;
 			}
-			return true;
 		}
-		
-		
 		return false;
 	}
 

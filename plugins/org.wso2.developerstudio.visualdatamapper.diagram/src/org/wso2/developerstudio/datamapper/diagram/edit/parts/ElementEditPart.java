@@ -20,9 +20,7 @@ import java.util.List;
 
 import org.apache.commons.lang.StringUtils;
 import org.eclipse.draw2d.BorderLayout;
-import org.eclipse.draw2d.ColorConstants;
 import org.eclipse.draw2d.Figure;
-import org.eclipse.draw2d.FlowLayout;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.ImageFigure;
 import org.eclipse.draw2d.Label;
@@ -42,6 +40,8 @@ import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.editpolicies.LayoutEditPolicy;
 import org.eclipse.gef.editpolicies.NonResizableEditPolicy;
 import org.eclipse.gef.editpolicies.ResizableEditPolicy;
+import org.eclipse.gef.palette.PaletteContainer;
+import org.eclipse.gef.palette.ToolEntry;
 import org.eclipse.gef.requests.CreateRequest;
 import org.eclipse.gmf.runtime.common.core.util.StringUtil;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.AbstractBorderedShapeEditPart;
@@ -119,7 +119,7 @@ public class ElementEditPart extends AbstractBorderedShapeEditPart {
 		removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
 
 		/* Disable dragging and resizing */
-		NonResizableEditPolicy selectionPolicy = new NonResizableEditPolicy();
+		NonResizableEditPolicy selectionPolicy = new CustomNonResizableEditPolicyEx();
 		selectionPolicy.setDragAllowed(false);
 		installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE, selectionPolicy);
 
@@ -431,7 +431,7 @@ public class ElementEditPart extends AbstractBorderedShapeEditPart {
 			((Shape) primaryShape).setLineWidth(width);
 		}
 	}
-
+	
 	/**
 	 * @generated
 	 */
@@ -522,18 +522,25 @@ public class ElementEditPart extends AbstractBorderedShapeEditPart {
 				@Override
 				public void mouseDragged(MouseEvent me) {
 					highlightElementOnSelection();
+					getEditDomain().getPaletteViewer().setActiveTool(
+							(ToolEntry) (((PaletteContainer) getEditDomain().getPaletteViewer()
+									.getPaletteRoot().getChildren().get(1)).getChildren().get(0)));
 
 				}
 
 				@Override
 				public void mouseEntered(MouseEvent me) {
 					highlightElementOnSelection();
-
+					getEditDomain().getPaletteViewer().setActiveTool(
+							(ToolEntry) (((PaletteContainer) getEditDomain().getPaletteViewer()
+									.getPaletteRoot().getChildren().get(1)).getChildren().get(0)));
+					
 				}
 
 				@Override
 				public void mouseExited(MouseEvent me) {
 					removeHighlight();
+					getEditDomain().getPaletteViewer().setActiveTool(null);
 
 				}
 
@@ -553,13 +560,15 @@ public class ElementEditPart extends AbstractBorderedShapeEditPart {
 				@Override
 				public void mouseReleased(MouseEvent me) {
 					removeHighlight();
-
 				}
 
 				@Override
 				public void mousePressed(MouseEvent me) {
 					highlightElementOnSelection();
 
+					getEditDomain().getPaletteViewer().setActiveTool(
+							(ToolEntry) (((PaletteContainer) getEditDomain().getPaletteViewer()
+									.getPaletteRoot().getChildren().get(1)).getChildren().get(0)));
 				}
 
 				@Override

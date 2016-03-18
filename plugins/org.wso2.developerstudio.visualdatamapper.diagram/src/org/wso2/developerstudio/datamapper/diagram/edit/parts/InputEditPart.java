@@ -18,6 +18,7 @@ package org.wso2.developerstudio.datamapper.diagram.edit.parts;
 
 import java.io.IOException;
 
+import org.eclipse.draw2d.ColorConstants;
 import org.eclipse.draw2d.CompoundBorder;
 import org.eclipse.draw2d.FigureCanvas;
 import org.eclipse.draw2d.Graphics;
@@ -27,9 +28,7 @@ import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.RectangleFigure;
 import org.eclipse.draw2d.Shape;
 import org.eclipse.draw2d.StackLayout;
-import org.eclipse.draw2d.TitleBarBorder;
 import org.eclipse.draw2d.ToolbarLayout;
-import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
@@ -494,23 +493,41 @@ public class InputEditPart extends ShapeNodeEditPart {
 			ToolbarLayout layoutThis = new ToolbarLayout();
 			layoutThis.setStretchMinorAxis(true);
 			layoutThis.setMinorAlignment(ToolbarLayout.ALIGN_TOPLEFT);
-			layoutThis.setSpacing(10);
 			layoutThis.setVertical(true);
+			layoutThis.setSpacing(10);
 			this.setLayoutManager(layoutThis);
-			this.setPreferredSize(new Dimension(getMapMode().DPtoLP(INPUT_BOX_WIDTH), getMapMode().DPtoLP(400)));
-			this.setOutline(true);
+			LineBorder border = new LineBorder(DataMapperColorConstants.borderColor, 1, Graphics.LINE_SOLID);
+			this.setBorder(border);
 
-			TitleBarBorder titleBarBorder = new TitleBarBorder("Input");
-			titleBarBorder.setPadding(6);
+			CustomTitleBarBorder titleBarBorder = new CustomTitleBarBorder("Input");
 			titleBarBorder.setTextAlignment(PositionConstants.CENTER);
-			titleBarBorder.setBackgroundColor(new Color(null, 0, 125, 133));
+			titleBarBorder.setPadding(6);
+			titleBarBorder.setBackgroundColor(DataMapperColorConstants.titleBarColor);
 			titleBarBorder.setTextColor(new Color(null, 0, 0, 0));
 			titleBarBorder.setFont(new Font(null, "Arial", 10, SWT.BOLD));
-			CompoundBorder compoundBorder = new CompoundBorder(titleBarBorder, new LineBorder(new Color(null, 0, 125,
-					133), 2, Graphics.LINE_SOLID));
-			this.setBorder(compoundBorder);
+			LineBorder lineBorder = new LineBorder(DataMapperColorConstants.borderColor, 1, Graphics.LINE_SOLID);
+			CompoundBorder compoundBorder = new CompoundBorder(titleBarBorder, lineBorder);
+			CompoundBorder compoundBorderTop = new CompoundBorder(border, compoundBorder);
+			this.setBorder(compoundBorderTop);
+			
 
 		}
+		
+		/**
+		 * @generated NOT
+		 */
+/*		protected void fillShape(Graphics graphics) {
+			// Backup the graphics colors
+			Color bgColor = graphics.getBackgroundColor();
+			Color fgColor = graphics.getForegroundColor();
+			// Set the graphics color
+			graphics.setBackgroundColor(new Color(null, 241,245,243));
+			graphics.setForegroundColor(ColorConstants.white);
+			// Restore the original colors
+			graphics.fillGradient(getBounds(), true);
+			graphics.setBackgroundColor(bgColor);
+			graphics.setForegroundColor(fgColor);
+		}*/
 
 		/**
 		 * @generated NOT

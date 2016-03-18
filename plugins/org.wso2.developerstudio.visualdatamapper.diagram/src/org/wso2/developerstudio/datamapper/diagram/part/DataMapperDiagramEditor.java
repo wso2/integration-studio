@@ -32,6 +32,7 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.emf.common.ui.URIEditorInput;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
@@ -134,6 +135,13 @@ public class DataMapperDiagramEditor extends DiagramDocumentEditor implements IG
 	protected String getContextID() {
 		return CONTEXT_ID;
 	}
+	
+	/**
+	 * @generated NOT
+	 */
+	 protected int getInitialDockLocation() {
+		 return PositionConstants.WEST;
+		 }
 
 	/**
 	 * @generated

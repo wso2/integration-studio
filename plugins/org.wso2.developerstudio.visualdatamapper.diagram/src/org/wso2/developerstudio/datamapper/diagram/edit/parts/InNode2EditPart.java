@@ -277,6 +277,7 @@ public class InNode2EditPart extends AbstractInNodeEditPart {
 			this.setOpaque(false);
 			this.setFill(false);
 			this.setOutline(false);
+
 			this.addMouseListener(new MouseListener() {
 
 				@Override
@@ -298,6 +299,7 @@ public class InNode2EditPart extends AbstractInNodeEditPart {
 									.getChildren().get(1)).getChildren().get(0)));
 				}
 			});
+
 			createContents();
 
 		}
@@ -314,10 +316,12 @@ public class InNode2EditPart extends AbstractInNodeEditPart {
 
 			ImageFigure mainImg = new ImageFigure(mainImgDesc.createImage());
 			mainImg.setSize(new Dimension(nodeDimension, nodeDimension));
-			ConnectionAnchorFigure mainImageRectangle = new ConnectionAnchorFigure();
+			RectangleFigure mainImageRectangle = new RectangleFigure();
 
 			mainImageRectangle.setBackgroundColor(new Color(null, 255, 255, 255));
 			mainImageRectangle.setPreferredSize(new Dimension(nodeDimension, nodeDimension));
+			mainImageRectangle.setBackgroundColor(new Color(null, 0, 0, 0));
+			mainImageRectangle.setOpaque(false);
 			mainImageRectangle.add(mainImg);
 			this.add(mainImageRectangle);
 			this.setOpaque(false);

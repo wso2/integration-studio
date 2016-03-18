@@ -16,20 +16,12 @@
 
 package org.wso2.developerstudio.datamapper.diagram.edit.parts;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
 
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.ImageFigure;
-import org.eclipse.draw2d.MouseEvent;
-import org.eclipse.draw2d.MouseListener;
 import org.eclipse.draw2d.RectangleFigure;
 import org.eclipse.draw2d.Shape;
-import org.eclipse.draw2d.SimpleRaisedBorder;
 import org.eclipse.draw2d.StackLayout;
 import org.eclipse.draw2d.ToolbarLayout;
 import org.eclipse.draw2d.geometry.Dimension;
@@ -40,22 +32,14 @@ import org.eclipse.gef.Request;
 import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.editpolicies.LayoutEditPolicy;
 import org.eclipse.gef.editpolicies.NonResizableEditPolicy;
-import org.eclipse.gef.palette.PaletteContainer;
-import org.eclipse.gef.palette.ToolEntry;
 import org.eclipse.gef.requests.CreateRequest;
-import org.eclipse.gmf.runtime.diagram.ui.editparts.AbstractBorderItemEditPart;
-import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeNodeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
-import org.eclipse.gmf.runtime.emf.type.core.IElementType;
-import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.graphics.Color;
-import org.eclipse.swt.graphics.ImageData;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.custom.AbstractInNodeEditPart;
-import org.wso2.developerstudio.datamapper.diagram.edit.parts.custom.CustomNonResizableEditPolicyEx;
 import org.wso2.developerstudio.datamapper.diagram.edit.policies.InNodeItemSemanticEditPolicy;
 
 /**
@@ -105,8 +89,6 @@ public class InNodeEditPart extends AbstractInNodeEditPart {
 		installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE, getPrimaryDragEditPolicy());
 		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE, new InNodeItemSemanticEditPolicy());
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
-		// XXX need an SCR to runtime to have another abstract superclass that would let children add reasonable editpolicies
-		// removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
 	}
 
 	/*
@@ -162,9 +144,6 @@ public class InNodeEditPart extends AbstractInNodeEditPart {
 	 * @generated NOT
 	 */
 	protected NodeFigure createNodePlate() {
-	/*	DefaultSizeNodeFigure result = new DefaultSizeNodeFigure(10, 10);
-		result.getBounds().setSize(result.getPreferredSize());
-		return result;*/
 		HashMap<String, PrecisionPoint> anchorLocations = new HashMap<String, PrecisionPoint>();
 		anchorLocations.put("CENTER", new PrecisionPoint(0.4d, 0.5d));
 		CenteredAnchors result = new CenteredAnchors(10, 10, anchorLocations); 
@@ -260,28 +239,6 @@ public class InNodeEditPart extends AbstractInNodeEditPart {
 			this.setOpaque(false);
 			this.setFill(false);
 			this.setOutline(false);
-			this.addMouseListener(new MouseListener() {
-				
-				@Override
-				public void mouseReleased(MouseEvent me) {
-					getEditDomain().getPaletteViewer().setActiveTool(null);
-				}
-				
-				@Override
-				public void mousePressed(MouseEvent me) {
-					getEditDomain().getPaletteViewer().setActiveTool(
-							(ToolEntry) (((PaletteContainer) getEditDomain().getPaletteViewer()
-									.getPaletteRoot().getChildren().get(1)).getChildren().get(0)));
-				}
-				
-				@Override
-				public void mouseDoubleClicked(MouseEvent me) {
-					getEditDomain().getPaletteViewer().setActiveTool(
-							(ToolEntry) (((PaletteContainer) getEditDomain().getPaletteViewer()
-									.getPaletteRoot().getChildren().get(1)).getChildren().get(0)));
-				}
-			});
-			//setBorder(new SimpleRaisedBorder(3));
 
 			createContents();
 
@@ -299,11 +256,13 @@ public class InNodeEditPart extends AbstractInNodeEditPart {
 
 			ImageFigure mainImg = new ImageFigure(mainImgDesc.createImage());
 			mainImg.setSize(new Dimension(nodeDimension, nodeDimension));
-			ConnectionAnchorFigure mainImageRectangle = new ConnectionAnchorFigure();
+			RectangleFigure mainImageRectangle = new RectangleFigure();
 
 			mainImageRectangle.setBackgroundColor(new Color(null, 255, 255, 255));
 			mainImageRectangle.setPreferredSize(new Dimension(nodeDimension, nodeDimension));
 			mainImageRectangle.add(mainImg);
+			mainImageRectangle.setBackgroundColor(new Color(null, 0, 0, 0));
+			mainImageRectangle.setOpaque(false);
 			this.add(mainImageRectangle);
 			this.setOpaque(false);
 			this.setFill(false);

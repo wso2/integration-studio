@@ -18,6 +18,7 @@ package org.wso2.developerstudio.datamapper.diagram.custom.action;
 
 import org.apache.commons.lang.StringUtils;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.command.AddCommand;
@@ -35,7 +36,7 @@ import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.datamapper.DataMapperFactory;
 import org.wso2.developerstudio.datamapper.DataMapperPackage;
 import org.wso2.developerstudio.datamapper.DataMapperRoot;
-import org.wso2.developerstudio.datamapper.Element;
+import org.wso2.developerstudio.datamapper.PropertyKeyValuePair;
 import org.wso2.developerstudio.datamapper.TreeNode;
 import org.wso2.developerstudio.datamapper.diagram.custom.util.AddNewObjectDialog;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.DataMapperRootEditPart;
@@ -52,7 +53,7 @@ public class AddNewAttributeAction extends AbstractActionHandler {
 	private static final String ADD_NEW_FIELD_ACTION_ID = "add-new-field-action-id"; //$NON-NLS-1$
 	private static final String ADD_NEW_FIELD = Messages.AddNewAttributeAction_addNewField;
 	private static final String DIALOG_TITLE = "Add new Attribute";
-	
+
 	private static final String JSON_SCHEMA_ID = "id";
 	private static final String JSON_SCHEMA_TYPE = "type";
 	private static final String PREFIX = "@";
@@ -78,7 +79,9 @@ public class AddNewAttributeAction extends AbstractActionHandler {
 		objectDialog.setVisibility(DIALOG_TITLE);
 		objectDialog.setType(DIALOG_TITLE);
 		objectDialog.open();
-		
+
+		EList<PropertyKeyValuePair> propertyValueList = new BasicEList<PropertyKeyValuePair>();
+
 		if (objectDialog.getTitle() != null && objectDialog.getSchemaType() != null) {
 
 			if (null != selectedEP) {
@@ -88,24 +91,28 @@ public class AddNewAttributeAction extends AbstractActionHandler {
 				TreeNode selectedNode = (TreeNode) object;
 
 				// Configure the new element by setting default values
-				Element elementNew = DataMapperFactory.eINSTANCE.createElement();
+				// Element elementNew =
+				// DataMapperFactory.eINSTANCE.createElement();
+				TreeNode treeNodeNew = DataMapperFactory.eINSTANCE.createTreeNode();
 				if (StringUtils.isNotEmpty(objectDialog.getTitle())) {
-					elementNew.setName(PREFIX+objectDialog.getTitle());
+					treeNodeNew.setName(PREFIX + objectDialog.getTitle());
 				}
-				elementNew.setLevel(selectedNode.getLevel() + 1);
+				treeNodeNew.setLevel(selectedNode.getLevel() + 1);
 				if (StringUtils.isNotEmpty(objectDialog.getSchemaType())) {
-					elementNew.getProperties().put(JSON_SCHEMA_TYPE, objectDialog.getSchemaType());
+					setPropertyKeyValuePairforTreeNodes(treeNodeNew, propertyValueList, JSON_SCHEMA_TYPE,
+							objectDialog.getSchemaType());
 				}
 				if (StringUtils.isNotEmpty(objectDialog.getID())) {
-					elementNew.getProperties().put(JSON_SCHEMA_ID, objectDialog.getID());
+					setPropertyKeyValuePairforTreeNodes(treeNodeNew, propertyValueList, JSON_SCHEMA_ID,
+							objectDialog.getID());
 				}
-			
+
 				/*
 				 * AddCommand is used to avoid concurrent updating. index 0 to
 				 * add as the first child
 				 */
 				AddCommand addCmd = new AddCommand(((GraphicalEditPart) selectedEP).getEditingDomain(), selectedNode,
-						DataMapperPackage.Literals.TREE_NODE__ELEMENT, elementNew, 0);
+						DataMapperPackage.Literals.TREE_NODE__NODE, treeNodeNew, 0);
 				if (addCmd.canExecute()) {
 					((GraphicalEditPart) selectedEP).getEditingDomain().getCommandStack().execute(addCmd);
 				}
@@ -113,8 +120,8 @@ public class AddNewAttributeAction extends AbstractActionHandler {
 				// FIXME force refresh root
 				String selectedInputOutputEditPart = getSelectedInputOutputEditPart();
 				if (null != selectedInputOutputEditPart) {
-					if (selectedEP.getParent().getParent().getParent() instanceof InputEditPart) {
-						InputEditPart iep = (InputEditPart) selectedEP.getParent().getParent().getParent();
+					if (selectedEP.getParent().getParent() instanceof InputEditPart) {
+						InputEditPart iep = (InputEditPart) selectedEP.getParent().getParent();
 						DataMapperRootEditPart rep = (DataMapperRootEditPart) iep.getParent();
 						DataMapperRoot rootDiagram = (DataMapperRoot) ((DiagramImpl) rep.getModel()).getElement();
 						if (INPUT_EDITPART.equals(selectedInputOutputEditPart)) {
@@ -169,6 +176,7 @@ public class AddNewAttributeAction extends AbstractActionHandler {
 				}
 			}
 		}
+
 	}
 
 	private String getSelectedInputOutputEditPart() {
@@ -202,5 +210,46 @@ public class AddNewAttributeAction extends AbstractActionHandler {
 	@Override
 	public void refresh() {
 		// refresh action. Does not do anything
+	}
+
+	/**
+	 * Sets the key value pair for tree nodes
+	 * 
+	 * @param treeNode
+	 *            tree node
+	 * @param propertyValueList
+	 *            list
+	 * @param key
+	 *            key
+	 * @param value
+	 *            value
+	 */
+	private void setPropertyKeyValuePairforTreeNodes(TreeNode treeNode, EList<PropertyKeyValuePair> propertyValueList,
+			String key, String value) {
+		PropertyKeyValuePair keyValuePair = DataMapperFactory.eINSTANCE.createPropertyKeyValuePair();
+		if (treeNode.getProperties().size() > 0) {
+			// If the key is already there add the new value
+			if (treeNode.getProperties().contains(key)) {
+				for (PropertyKeyValuePair keyValue : treeNode.getProperties()) {
+					if (keyValue.getKey().equals(key)) {
+						keyValue.setValue(value);
+						propertyValueList.add(keyValue);
+					}
+				}
+			} else {
+				// If the key is not there add a new key value
+				keyValuePair.setKey(key);
+				keyValuePair.setValue(value);
+				propertyValueList.add(keyValuePair);
+
+			}
+			treeNode.getProperties().addAll(propertyValueList);
+		} else {
+			// Initially if there are no properties add the initial property
+			keyValuePair.setKey(key);
+			keyValuePair.setValue(value);
+			propertyValueList.add(keyValuePair);
+			treeNode.getProperties().addAll(propertyValueList);
+		}
 	}
 }

@@ -236,21 +236,20 @@ public interface TreeNode extends EObject {
     void setLevel(int value);
 
 				/**
-	 * Returns the value of the '<em><b>Properties</b></em>' map.
-	 * The key is of type {@link java.lang.String},
-	 * and the value is of type {@link java.lang.String},
+	 * Returns the value of the '<em><b>Properties</b></em>' containment reference list.
+	 * The list contents are of type {@link org.wso2.developerstudio.datamapper.PropertyKeyValuePair}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Properties</em>' map isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Properties</em>' map.
+	 * @return the value of the '<em>Properties</em>' containment reference list.
 	 * @see org.wso2.developerstudio.datamapper.DataMapperPackage#getTreeNode_Properties()
-	 * @model mapType="org.wso2.developerstudio.datamapper.PropertyKeyValuePair<org.eclipse.emf.ecore.EString, org.eclipse.emf.ecore.EString>"
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
-	EMap<String, String> getProperties();
+	EList<PropertyKeyValuePair> getProperties();
 
 				/**
 	 * Returns the value of the '<em><b>Out Node</b></em>' containment reference.

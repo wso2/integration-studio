@@ -154,7 +154,7 @@ public class DataMapperAdapterFactory extends AdapterFactoryImpl {
 				return createUpperCaseAdapter();
 			}
 			@Override
-			public Adapter casePropertyKeyValuePair(Map.Entry<String, String> object) {
+			public Adapter casePropertyKeyValuePair(PropertyKeyValuePair object) {
 				return createPropertyKeyValuePairAdapter();
 			}
 			@Override
@@ -486,13 +486,13 @@ public class DataMapperAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link java.util.Map.Entry <em>Property Key Value Pair</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.wso2.developerstudio.datamapper.PropertyKeyValuePair <em>Property Key Value Pair</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see java.util.Map.Entry
+	 * @see org.wso2.developerstudio.datamapper.PropertyKeyValuePair
 	 * @generated
 	 */
 	public Adapter createPropertyKeyValuePairAdapter() {

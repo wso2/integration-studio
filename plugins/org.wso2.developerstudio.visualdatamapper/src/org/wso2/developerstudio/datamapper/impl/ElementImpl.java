@@ -152,14 +152,14 @@ public class ElementImpl extends EObjectImpl implements Element {
 
     
     /**
-	 * The cached value of the '{@link #getProperties() <em>Properties</em>}' map.
+	 * The cached value of the '{@link #getProperties() <em>Properties</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getProperties()
 	 * @generated
 	 * @ordered
 	 */
-	protected EMap<String, String> properties;
+	protected EList<PropertyKeyValuePair> properties;
 
 				private int index=-1;
     
@@ -442,9 +442,9 @@ public class ElementImpl extends EObjectImpl implements Element {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EMap<String, String> getProperties() {
+	public EList<PropertyKeyValuePair> getProperties() {
 		if (properties == null) {
-			properties = new EcoreEMap<String,String>(DataMapperPackage.Literals.PROPERTY_KEY_VALUE_PAIR, PropertyKeyValuePairImpl.class, this, DataMapperPackage.ELEMENT__PROPERTIES);
+			properties = new EObjectContainmentEList<PropertyKeyValuePair>(PropertyKeyValuePair.class, this, DataMapperPackage.ELEMENT__PROPERTIES);
 		}
 		return properties;
 	}
@@ -530,8 +530,7 @@ public class ElementImpl extends EObjectImpl implements Element {
 			case DataMapperPackage.ELEMENT__LEVEL:
 				return getLevel();
 			case DataMapperPackage.ELEMENT__PROPERTIES:
-				if (coreType) return getProperties();
-				else return getProperties().map();
+				return getProperties();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -567,7 +566,8 @@ public class ElementImpl extends EObjectImpl implements Element {
 				setLevel((Integer)newValue);
 				return;
 			case DataMapperPackage.ELEMENT__PROPERTIES:
-				((EStructuralFeature.Setting)getProperties()).set(newValue);
+				getProperties().clear();
+				getProperties().addAll((Collection<? extends PropertyKeyValuePair>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);

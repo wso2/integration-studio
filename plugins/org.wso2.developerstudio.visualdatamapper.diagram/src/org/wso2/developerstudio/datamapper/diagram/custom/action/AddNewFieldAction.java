@@ -18,6 +18,7 @@ package org.wso2.developerstudio.datamapper.diagram.custom.action;
 
 import org.apache.commons.lang.StringUtils;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.command.AddCommand;
@@ -35,6 +36,7 @@ import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.datamapper.DataMapperFactory;
 import org.wso2.developerstudio.datamapper.DataMapperPackage;
 import org.wso2.developerstudio.datamapper.DataMapperRoot;
+import org.wso2.developerstudio.datamapper.PropertyKeyValuePair;
 import org.wso2.developerstudio.datamapper.TreeNode;
 import org.wso2.developerstudio.datamapper.diagram.custom.util.AddNewObjectDialog;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.DataMapperRootEditPart;
@@ -77,6 +79,8 @@ public class AddNewFieldAction extends AbstractActionHandler {
 		objectDialog.setType(DIALOG_TITLE);
 		objectDialog.open();
 
+		EList<PropertyKeyValuePair> propertyValueList = new BasicEList<PropertyKeyValuePair>();
+
 		if (objectDialog.getTitle() != null && objectDialog.getSchemaType() != null) {
 			if (null != selectedEP) {
 				// Returns the TreeNodeImpl object respective to selectedEP
@@ -91,13 +95,16 @@ public class AddNewFieldAction extends AbstractActionHandler {
 				}
 				treeNodeNew.setLevel(selectedNode.getLevel() + 1);
 				if (StringUtils.isNotEmpty(objectDialog.getSchemaType())) {
-					treeNodeNew.getProperties().put(JSON_SCHEMA_TYPE, objectDialog.getSchemaType());
+					setPropertyKeyValuePairforTreeNodes(treeNodeNew, propertyValueList, JSON_SCHEMA_TYPE,
+							objectDialog.getSchemaType());
 				}
 				if (StringUtils.isNotEmpty(objectDialog.getID())) {
-					treeNodeNew.getProperties().put(JSON_SCHEMA_ID, objectDialog.getID());
+					setPropertyKeyValuePairforTreeNodes(treeNodeNew, propertyValueList, JSON_SCHEMA_ID,
+							objectDialog.getID());
 				}
 				if (StringUtils.isNotEmpty(objectDialog.getRequired())) {
-					treeNodeNew.getProperties().put(JSON_SCHEMA_REQUIRED, objectDialog.getRequired());
+					setPropertyKeyValuePairforTreeNodes(treeNodeNew, propertyValueList, JSON_SCHEMA_REQUIRED,
+							objectDialog.getRequired());
 				}
 				/*
 				 * AddCommand is used to avoid concurrent updating. index 0 to
@@ -202,5 +209,46 @@ public class AddNewFieldAction extends AbstractActionHandler {
 	@Override
 	public void refresh() {
 		// refresh action. Does not do anything
+	}
+
+	/**
+	 * Sets the key value pair for tree nodes
+	 * 
+	 * @param treeNode
+	 *            tree node
+	 * @param propertyValueList
+	 *            list
+	 * @param key
+	 *            key
+	 * @param value
+	 *            value
+	 */
+	private void setPropertyKeyValuePairforTreeNodes(TreeNode treeNode, EList<PropertyKeyValuePair> propertyValueList,
+			String key, String value) {
+		PropertyKeyValuePair keyValuePair = DataMapperFactory.eINSTANCE.createPropertyKeyValuePair();
+		if (treeNode.getProperties().size() > 0) {
+			// If the key is already there add the new value
+			if (treeNode.getProperties().contains(key)) {
+				for (PropertyKeyValuePair keyValue : treeNode.getProperties()) {
+					if (keyValue.getKey().equals(key)) {
+						keyValue.setValue(value);
+						propertyValueList.add(keyValue);
+					}
+				}
+			} else {
+				// If the key is not there add a new key value
+				keyValuePair.setKey(key);
+				keyValuePair.setValue(value);
+				propertyValueList.add(keyValuePair);
+
+			}
+			treeNode.getProperties().addAll(propertyValueList);
+		} else {
+			// Initially if there are no properties add the initial property
+			keyValuePair.setKey(key);
+			keyValuePair.setValue(value);
+			propertyValueList.add(keyValuePair);
+			treeNode.getProperties().addAll(propertyValueList);
+		}
 	}
 }

@@ -263,7 +263,7 @@ public class ElementItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(DataMapperPackage.Literals.ELEMENT__PROPERTIES,
-				 DataMapperFactory.eINSTANCE.create(DataMapperPackage.Literals.PROPERTY_KEY_VALUE_PAIR)));
+				 DataMapperFactory.eINSTANCE.createPropertyKeyValuePair()));
 	}
 
 	/**

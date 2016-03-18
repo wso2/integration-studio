@@ -22,11 +22,10 @@ import java.util.Map.Entry;
 
 import org.apache.commons.lang.StringUtils;
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.emf.common.util.EMap;
-import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.command.AddCommand;
+import org.eclipse.emf.edit.command.RemoveCommand;
 import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.common.ui.action.AbstractActionHandler;
@@ -38,7 +37,9 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PlatformUI;
+import org.wso2.developerstudio.datamapper.DataMapperFactory;
 import org.wso2.developerstudio.datamapper.DataMapperPackage;
+import org.wso2.developerstudio.datamapper.PropertyKeyValuePair;
 import org.wso2.developerstudio.datamapper.TreeNode;
 import org.wso2.developerstudio.datamapper.diagram.custom.util.AddNewObjectDialog;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.TreeNode2EditPart;
@@ -57,11 +58,15 @@ public class EditNodeAction extends AbstractActionHandler {
 	private static final String JSON_SCHEMA_ID = "id";
 	private static final String JSON_SCHEMA_TYPE = "type";
 	private static final String JSON_SCHEMA_TITLE = "title";
+	private static final String PREFIX = "@";
+
 	private String title = null;
 	private String schemaType = null;
 	private String id = null;
+	private String name = null;
 	private String schemaValue = null;
 	private String required = null;
+	private boolean isAttribute = false;
 
 	public EditNodeAction(IWorkbenchPart workbenchPart) {
 		super(workbenchPart);
@@ -84,20 +89,33 @@ public class EditNodeAction extends AbstractActionHandler {
 			TreeNode selectedNode = (TreeNode) object;
 
 			title = selectedNode.getName();
-			schemaType = selectedNode.getProperties().get(JSON_SCHEMA_TYPE);
-			if (selectedNode.getProperties().get(JSON_SCHEMA_ID) != null) {
-				id = selectedNode.getProperties().get(JSON_SCHEMA_ID);
-			}
-			if (selectedNode.getProperties().get(JSON_SCHEMA_REQUIRED) != null) {
-				required = selectedNode.getProperties().get(JSON_SCHEMA_REQUIRED).toString();
-			}
-			if (selectedNode.getProperties().get(JSON_SCHEMA_SCHEMA_VALUE) != null) {
-				schemaValue = selectedNode.getProperties().get(JSON_SCHEMA_SCHEMA_VALUE);
+			title = selectedNode.getName();
+			if (title.startsWith(PREFIX)) {
+				isAttribute = true;
+				name = title.substring(1);
+			} else {
+				name = title;
 			}
 
-			openEditRecordDialog(selectedNode, title, schemaType, id, required, schemaValue);
+			schemaType = setProerties(selectedNode, JSON_SCHEMA_TYPE);
+			id = setProerties(selectedNode, JSON_SCHEMA_ID);
+			required = setProerties(selectedNode, JSON_SCHEMA_REQUIRED);
+			schemaValue = setProerties(selectedNode, JSON_SCHEMA_SCHEMA_VALUE);
+
+			openEditRecordDialog(selectedNode, name, schemaType, id, required, schemaValue);
 
 		}
+	}
+
+	private String setProerties(TreeNode selectedNode, String key) {
+		String value = null;
+		for (PropertyKeyValuePair keyValue : selectedNode.getProperties()) {
+			if (keyValue.getKey().equals(key)) {
+				value = keyValue.getValue();
+				break;
+			}
+		}
+		return value;
 	}
 
 	/**
@@ -107,45 +125,71 @@ public class EditNodeAction extends AbstractActionHandler {
 	 * @param map
 	 */
 	private void reflectChanges(TreeNode selectedNode, HashMap<String, String> map) {
-		
+
 		@SuppressWarnings("rawtypes")
 		Iterator entries = map.entrySet().iterator();
+		executeRemoveCommand(selectedNode);
+		renameTitle(map);
+
 		while (entries.hasNext()) {
-		  @SuppressWarnings("rawtypes")
-		  Entry thisEntry = (Entry) entries.next();
-		  Object key = thisEntry.getKey();
-		  Object value = thisEntry.getValue();
-		  if(key.equals(JSON_SCHEMA_TITLE)){
-				executeCommand(selectedNode, DataMapperPackage.Literals.TREE_NODE__NAME, value.toString());  
-		  }else{
-			    EMap<String, String> propertyMap = selectedNode.getProperties();	   
-			    executeAddCommand(propertyMap, DataMapperPackage.Literals.PROPERTY_KEY_VALUE_PAIR, value.toString());
-		  }
+			@SuppressWarnings("rawtypes")
+			Entry thisEntry = (Entry) entries.next();
+			Object key = thisEntry.getKey();
+			Object value = thisEntry.getValue();
+			if (key.equals(JSON_SCHEMA_TITLE)) {
+				executeCommand(selectedNode, DataMapperPackage.Literals.TREE_NODE__NAME, title);
+			} else {
+				PropertyKeyValuePair pair = setPropertyKeyValuePairforTreeNodes(selectedNode, key.toString(),
+						value.toString());
+				executeAddCommand(selectedNode, pair);
+			}
 		}
 		
+	}
+
+	/**
+	 * Renames the title
+	 * @param map
+	 */
+	private void renameTitle(HashMap<String, String> map) {
 		if (map.get(JSON_SCHEMA_TITLE) != null) {
 			if (getSelectedEditPart() instanceof TreeNodeEditPart) {
 				((TreeNodeEditPart) getSelectedEditPart()).renameElementItem(map.get(JSON_SCHEMA_TITLE));
 			} else if (getSelectedEditPart() instanceof TreeNode2EditPart) {
-				((TreeNode2EditPart) getSelectedEditPart()).renameElementItem(map.get(JSON_SCHEMA_TITLE));
+					((TreeNode2EditPart) getSelectedEditPart()).renameElementItem(map.get(JSON_SCHEMA_TITLE));
 			} else if (getSelectedEditPart() instanceof TreeNode3EditPart) {
 				((TreeNode3EditPart) getSelectedEditPart()).renameElementItem(map.get(JSON_SCHEMA_TITLE));
 			}
-		} 
+		}
 	}
 
 	/**
-	 * Saves the edited values in the map
-	 * @param propertyMap map
-	 * @param propertyKeyValuePair value
-	 * @param string value
+	 * Removes the existing properties
+	 * 
+	 * @param selectedNode
+	 *            tree node
 	 */
-	private void executeAddCommand(EMap<String, String> propertyMap, EClass propertyKeyValuePair, String string) {
-		AddCommand editComd = new AddCommand(((GraphicalEditPart) selectedEP).getEditingDomain(),
-				propertyKeyValuePair, null, string);
-		if (editComd.canExecute()) {
-			((GraphicalEditPart) selectedEP).getEditingDomain().getCommandStack().execute(editComd);
-		}	
+	private void executeRemoveCommand(TreeNode selectedNode) {
+		RemoveCommand rootRemCmd = new RemoveCommand(((GraphicalEditPart) selectedEP).getEditingDomain(), selectedNode,
+				DataMapperPackage.Literals.TREE_NODE__PROPERTIES, selectedNode.getProperties());
+		if (rootRemCmd.canExecute()) {
+			((GraphicalEditPart) selectedEP).getEditingDomain().getCommandStack().execute(rootRemCmd);
+		}
+
+	}
+
+	/**
+	 * Saves the properties to tree
+	 * 
+	 * @param selectedNode
+	 * @param keyValPair
+	 */
+	private void executeAddCommand(TreeNode selectedNode, PropertyKeyValuePair keyValPair) {
+		AddCommand addCmd = new AddCommand(((GraphicalEditPart) selectedEP).getEditingDomain(), selectedNode,
+				DataMapperPackage.Literals.TREE_NODE__PROPERTIES, keyValPair);
+		if (addCmd.canExecute()) {
+			((GraphicalEditPart) selectedEP).getEditingDomain().getCommandStack().execute(addCmd);
+		}
 	}
 
 	/**
@@ -163,51 +207,70 @@ public class EditNodeAction extends AbstractActionHandler {
 			((GraphicalEditPart) selectedEP).getEditingDomain().getCommandStack().execute(editComd);
 		}
 	}
-	
-	
+
 	/**
 	 * opens the dilaog
-	 * @param selectedNode node
-	 * @param title title
-	 * @param schemaType schematype
-	 * @param id id
-	 * @param required required
-	 * @param schemaValue schema value
+	 * 
+	 * @param selectedNode
+	 *            node
+	 * @param title
+	 *            title
+	 * @param schemaType
+	 *            schematype
+	 * @param id
+	 *            id
+	 * @param required
+	 *            required
+	 * @param schemaValue
+	 *            schema value
 	 */
 	private void openEditRecordDialog(TreeNode selectedNode, String title, String schemaType, String id,
 			String required, String schemaValue) {
 		Display display = Display.getDefault();
 		Shell shell = new Shell(display);
 		AddNewObjectDialog editTypeDialog = new AddNewObjectDialog(shell, new Class[] { IRegistryFile.class });
-	
+
 		editTypeDialog.create();
 		editTypeDialog.setTypeWhenEditing(schemaType);
 		editTypeDialog.setValues(title, schemaType, id, required, schemaValue);
 		editTypeDialog.open();
 
-		
 		if (editTypeDialog.getOkValue()) {
 			HashMap<String, String> valueMap = new HashMap<String, String>();
 
 			if (StringUtils.isNotEmpty(editTypeDialog.getTitle())) {
-				valueMap.put(JSON_SCHEMA_TITLE, editTypeDialog.getTitle());
+				if(isAttribute){
+					//If it's an attribute 
+					if(editTypeDialog.getTitle().startsWith(PREFIX)){
+						valueMap.put(JSON_SCHEMA_TITLE,editTypeDialog.getTitle());
+					}else{
+					    //if user hasn't add @ then append @ before executing the command
+						valueMap.put(JSON_SCHEMA_TITLE, PREFIX+editTypeDialog.getTitle());
+					}	
+				}else{
+					valueMap.put(JSON_SCHEMA_TITLE, editTypeDialog.getTitle());
+				}
 			}
+
 			valueMap.put(JSON_SCHEMA_TYPE, editTypeDialog.getSchemaType());
+
 			if (StringUtils.isNotEmpty(editTypeDialog.getID())) {
 				valueMap.put(JSON_SCHEMA_ID, editTypeDialog.getID());
 			}
+
 			if (StringUtils.isNotEmpty(editTypeDialog.getSchemaValue())) {
 				valueMap.put(JSON_SCHEMA_SCHEMA_VALUE, editTypeDialog.getSchemaValue());
 			}
+
 			if (StringUtils.isNotEmpty(editTypeDialog.getRequired())) {
 				valueMap.put(JSON_SCHEMA_REQUIRED, editTypeDialog.getRequired());
 			}
 			reflectChanges(selectedNode, valueMap);
 
 		}
-		 
+
 	}
-	
+
 	private EditPart getSelectedEditPart() {
 		IStructuredSelection selection = getStructuredSelection();
 		if (selection.size() == 1) {
@@ -225,4 +288,18 @@ public class EditNodeAction extends AbstractActionHandler {
 		// refresh action. Does not do anything
 	}
 
+	/**
+	 * sets the property values
+	 * 
+	 * @param treeNode
+	 * @param key
+	 * @param value
+	 * @return
+	 */
+	private PropertyKeyValuePair setPropertyKeyValuePairforTreeNodes(TreeNode treeNode, String key, String value) {
+		PropertyKeyValuePair keyValuePair = DataMapperFactory.eINSTANCE.createPropertyKeyValuePair();
+		keyValuePair.setKey(key);
+		keyValuePair.setValue(value);
+		return keyValuePair;
+	}
 }

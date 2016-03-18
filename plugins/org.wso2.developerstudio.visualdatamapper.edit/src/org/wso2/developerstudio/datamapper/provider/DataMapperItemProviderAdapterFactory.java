@@ -576,7 +576,7 @@ public class DataMapperItemProviderAdapterFactory extends DataMapperAdapterFacto
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link java.util.Map.Entry} instances.
+	 * This keeps track of the one adapter used for all {@link org.wso2.developerstudio.datamapper.PropertyKeyValuePair} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -584,7 +584,7 @@ public class DataMapperItemProviderAdapterFactory extends DataMapperAdapterFacto
 	protected PropertyKeyValuePairItemProvider propertyKeyValuePairItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link java.util.Map.Entry}.
+	 * This creates an adapter for a {@link org.wso2.developerstudio.datamapper.PropertyKeyValuePair}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated

@@ -220,6 +220,15 @@ public interface DataMapperFactory extends EFactory {
 	UpperCase createUpperCase();
 
 	/**
+	 * Returns a new object of class '<em>Property Key Value Pair</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Property Key Value Pair</em>'.
+	 * @generated
+	 */
+	PropertyKeyValuePair createPropertyKeyValuePair();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

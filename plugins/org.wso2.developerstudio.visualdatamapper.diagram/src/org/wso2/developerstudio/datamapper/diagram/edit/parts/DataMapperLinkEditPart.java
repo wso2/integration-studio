@@ -18,6 +18,7 @@ import org.eclipse.draw2d.Connection;
 import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.ManhattanConnectionRouter;
 import org.eclipse.draw2d.PolylineConnection;
+import org.eclipse.draw2d.RectangleFigure;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.PointList;
 import org.eclipse.gef.EditPolicy;
@@ -28,6 +29,10 @@ import org.eclipse.gmf.runtime.diagram.ui.requests.CreateConnectionViewRequest;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.swt.graphics.Color;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.InNode2EditPart.InNode2Figure;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.InNode3EditPart.InNode3Figure;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.InNodeEditPart.InNodeFigure;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.OutNode2EditPart.OutNode2Figure;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.custom.CustomNonResizableEditPolicyEx;
 import org.wso2.developerstudio.datamapper.diagram.edit.policies.DataMapperLinkItemSemanticEditPolicy;
 
@@ -66,7 +71,7 @@ public class DataMapperLinkEditPart extends ConnectionNodeEditPart implements IT
 	 */
 	@Override
 	public boolean isSelectable() {
-		return true;
+		return false;
 	}
 
 	/**
@@ -93,6 +98,8 @@ public class DataMapperLinkEditPart extends ConnectionNodeEditPart implements IT
 	 */
 	protected Connection createConnectionFigure() {
 		PolylineConnection connection = new PolylineConnection() {
+			
+			
 
 			@Override
 			public void paintFigure(Graphics graphics) {
@@ -101,9 +108,20 @@ public class DataMapperLinkEditPart extends ConnectionNodeEditPart implements IT
 				graphics.setBackgroundColor(DataMapperColorConstants.connectorColor);
 				graphics.setForegroundColor(DataMapperColorConstants.connectorColor);
 				super.paintFigure(graphics);
+				
 			}
 
 			public PointList getPoints() {
+				
+				if (getTarget() instanceof InNode2Figure) {
+					((InNode2Figure) getTarget()).highlightElementOnSelection();
+				}else if (getTarget() instanceof InNode3Figure) {
+					((InNode3Figure) getTarget()).highlightElementOnSelection();
+				}else if (getTarget() instanceof InNodeFigure) {
+					((InNodeFigure) getTarget()).highlightElementOnSelection();
+				}
+				if (getSource() instanceof OutNode2Figure){
+				}
 				PointList list = super.getPoints();
 				if (list.size() == 0) {
 					return list;
@@ -120,13 +138,10 @@ public class DataMapperLinkEditPart extends ConnectionNodeEditPart implements IT
 				list.addPoint(end);
 				return list;
 			}
-			
-
 		};
 		connection.setConnectionRouter(new ManhattanConnectionRouter());
 		return connection;
 	}
-	
 
 	/**
 	 * @generated

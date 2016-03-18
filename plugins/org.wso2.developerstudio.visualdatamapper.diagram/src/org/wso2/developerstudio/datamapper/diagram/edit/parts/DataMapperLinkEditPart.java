@@ -71,7 +71,7 @@ public class DataMapperLinkEditPart extends ConnectionNodeEditPart implements IT
 	 */
 	@Override
 	public boolean isSelectable() {
-		return false;
+		return true;
 	}
 
 	/**

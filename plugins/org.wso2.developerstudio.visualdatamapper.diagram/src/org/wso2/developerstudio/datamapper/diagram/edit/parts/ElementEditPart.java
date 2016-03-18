@@ -20,9 +20,7 @@ import java.util.List;
 
 import org.apache.commons.lang.StringUtils;
 import org.eclipse.draw2d.BorderLayout;
-import org.eclipse.draw2d.ColorConstants;
 import org.eclipse.draw2d.Figure;
-import org.eclipse.draw2d.FlowLayout;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.ImageFigure;
 import org.eclipse.draw2d.Label;
@@ -42,16 +40,15 @@ import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.editpolicies.LayoutEditPolicy;
 import org.eclipse.gef.editpolicies.NonResizableEditPolicy;
 import org.eclipse.gef.editpolicies.ResizableEditPolicy;
+import org.eclipse.gef.palette.PaletteContainer;
+import org.eclipse.gef.palette.ToolEntry;
 import org.eclipse.gef.requests.CreateRequest;
-import org.eclipse.gmf.runtime.common.core.util.StringUtil;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.AbstractBorderedShapeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IBorderItemEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.BorderItemSelectionEditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.CreationEditPolicy;
-import org.eclipse.gmf.runtime.diagram.ui.editpolicies.DragDropEditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
-import org.eclipse.gmf.runtime.diagram.ui.editpolicies.FlowLayoutEditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.figures.BorderItemLocator;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.ConstrainedToolbarLayout;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel;
@@ -62,16 +59,11 @@ import org.eclipse.gmf.tooling.runtime.edit.policies.reparent.CreationEditPolicy
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
-import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.widgets.Display;
-import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.wso2.developerstudio.datamapper.Element;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.custom.CustomNonResizableEditPolicyEx;
-import org.wso2.developerstudio.datamapper.diagram.edit.parts.custom.CustomSelectionEditPolicy;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.custom.FixedBorderItemLocator;
-import org.wso2.developerstudio.datamapper.diagram.edit.policies.ElementCanonicalEditPolicy;
-import org.wso2.developerstudio.datamapper.diagram.edit.policies.ElementItemSemanticEditPolicy;
 import org.wso2.developerstudio.datamapper.diagram.part.DataMapperVisualIDRegistry;
 
 /**
@@ -109,7 +101,9 @@ public class ElementEditPart extends AbstractBorderedShapeEditPart {
 	 * @generated NOT
 	 */
 	protected void createDefaultEditPolicies() {
-		installEditPolicy(EditPolicyRoles.CREATION_ROLE, new CreationEditPolicy());
+//		installEditPolicy(EditPolicyRoles.CREATION_ROLE, new CreationEditPolicy());
+		installEditPolicy(EditPolicyRoles.CREATION_ROLE, new CreationEditPolicyWithCustomReparent(
+				org.wso2.developerstudio.datamapper.diagram.part.DataMapperVisualIDRegistry.TYPED_INSTANCE));
 		super.createDefaultEditPolicies();
 		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE,
 				new org.wso2.developerstudio.datamapper.diagram.edit.policies.ElementItemSemanticEditPolicy());
@@ -119,14 +113,12 @@ public class ElementEditPart extends AbstractBorderedShapeEditPart {
 		removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
 
 		/* Disable dragging and resizing */
-		NonResizableEditPolicy selectionPolicy = new NonResizableEditPolicy();
+		NonResizableEditPolicy selectionPolicy = new CustomNonResizableEditPolicyEx();
 		selectionPolicy.setDragAllowed(false);
 		installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE, selectionPolicy);
 
 		/* remove balloon */
-		installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE, new CustomNonResizableEditPolicyEx());
 		removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.POPUPBAR_ROLE);
-		//		installEditPolicy(EditPolicy.SELECTION_FEEDBACK_ROLE,new CustomSelectionEditPolicy());
 	}
 
 	/**
@@ -431,7 +423,7 @@ public class ElementEditPart extends AbstractBorderedShapeEditPart {
 			((Shape) primaryShape).setLineWidth(width);
 		}
 	}
-
+	
 	/**
 	 * @generated
 	 */
@@ -522,13 +514,11 @@ public class ElementEditPart extends AbstractBorderedShapeEditPart {
 				@Override
 				public void mouseDragged(MouseEvent me) {
 					highlightElementOnSelection();
-
 				}
 
 				@Override
 				public void mouseEntered(MouseEvent me) {
 					highlightElementOnSelection();
-
 				}
 
 				@Override
@@ -553,13 +543,11 @@ public class ElementEditPart extends AbstractBorderedShapeEditPart {
 				@Override
 				public void mouseReleased(MouseEvent me) {
 					removeHighlight();
-
 				}
 
 				@Override
 				public void mousePressed(MouseEvent me) {
 					highlightElementOnSelection();
-
 				}
 
 				@Override

@@ -18,6 +18,7 @@ package org.wso2.developerstudio.datamapper.diagram.edit.parts;
 
 import java.io.IOException;
 
+import org.eclipse.draw2d.ColorConstants;
 import org.eclipse.draw2d.CompoundBorder;
 import org.eclipse.draw2d.FigureCanvas;
 import org.eclipse.draw2d.Graphics;
@@ -638,19 +639,19 @@ public class OutputEditPart extends ShapeNodeEditPart {
 			layoutThis.setVertical(true);
 			layoutThis.setSpacing(10);
 			this.setLayoutManager(layoutThis);
+			LineBorder border = new LineBorder(DataMapperColorConstants.borderColor, 1, Graphics.LINE_SOLID);
+			this.setBorder(border);
 
-			this.setPreferredSize(new Dimension(getMapMode().DPtoLP(250), getMapMode().DPtoLP(400)));
-			this.setOutline(true);
-
-			TitleBarBorder titleBarBorder = new TitleBarBorder("Output");
+			CustomTitleBarBorder titleBarBorder = new CustomTitleBarBorder("Output");
 			titleBarBorder.setTextAlignment(PositionConstants.CENTER);
 			titleBarBorder.setPadding(6);
-			titleBarBorder.setBackgroundColor(new Color(null, 0, 125, 133));
+			titleBarBorder.setBackgroundColor(DataMapperColorConstants.titleBarColor);
 			titleBarBorder.setTextColor(new Color(null, 0, 0, 0));
 			titleBarBorder.setFont(new Font(null, "Arial", 10, SWT.BOLD));
-			CompoundBorder compoundBorder = new CompoundBorder(titleBarBorder, new LineBorder(new Color(null, 0, 125,
-					133), 2, Graphics.LINE_SOLID));
-			this.setBorder(compoundBorder);
+			LineBorder lineBorder = new LineBorder(DataMapperColorConstants.borderColor, 1, Graphics.LINE_SOLID);
+			CompoundBorder compoundBorder = new CompoundBorder(titleBarBorder, lineBorder);
+			CompoundBorder compoundBorderTop = new CompoundBorder(border, compoundBorder);
+			this.setBorder(compoundBorderTop);
 
 		}
 

@@ -22,6 +22,7 @@ import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.ImageFigure;
 import org.eclipse.draw2d.MouseEvent;
 import org.eclipse.draw2d.MouseListener;
+import org.eclipse.draw2d.MouseMotionListener;
 import org.eclipse.draw2d.RectangleFigure;
 import org.eclipse.draw2d.Shape;
 import org.eclipse.draw2d.StackLayout;
@@ -268,6 +269,7 @@ public class InNode3EditPart extends AbstractInNodeEditPart {
 									.getChildren().get(1)).getChildren().get(0)));
 				}
 			});
+
 			createContents();
 
 		}
@@ -284,11 +286,13 @@ public class InNode3EditPart extends AbstractInNodeEditPart {
 
 			ImageFigure mainImg = new ImageFigure(mainImgDesc.createImage());
 			mainImg.setSize(new Dimension(nodeDimension, nodeDimension));
-			ConnectionAnchorFigure mainImageRectangle = new ConnectionAnchorFigure();
+			RectangleFigure mainImageRectangle = new RectangleFigure();
 
 			mainImageRectangle.setBackgroundColor(new Color(null, 255, 255, 255));
 			mainImageRectangle.setPreferredSize(new Dimension(nodeDimension, nodeDimension));
 			mainImageRectangle.add(mainImg);
+			mainImageRectangle.setBackgroundColor(new Color(null, 0, 0, 0));
+			mainImageRectangle.setOpaque(false);
 			this.add(mainImageRectangle);
 			this.setOpaque(false);
 			this.setOutline(false);

@@ -131,7 +131,7 @@ public class OperatorLeftConnectorEditPart extends AbstractBorderedShapeEditPart
 	protected IFigure createNodeShape() {
 
 		RectangleFigure primaryShape = new RectangleFigure();
-		primaryShape.setBorder(new LineBorder(new Color(null, 90, 148, 219), 1, Graphics.LINE_SOLID));
+		primaryShape.setBorder(new LineBorder(DataMapperColorConstants.borderColor, 1, Graphics.LINE_SOLID));
 		return primaryShape;
 	}
 

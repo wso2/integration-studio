@@ -24,6 +24,7 @@ import org.eclipse.gef.EditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionNodeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ITreeBranchEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
+import org.eclipse.gmf.runtime.diagram.ui.requests.CreateConnectionViewRequest;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.swt.graphics.Color;
@@ -59,6 +60,14 @@ public class DataMapperLinkEditPart extends ConnectionNodeEditPart implements IT
 	public boolean canAttachNote() {
 		return false;
 	}
+	
+	/**
+	 * @generated NOT
+	 */
+	@Override
+	public boolean isSelectable() {
+		return true;
+	}
 
 	/**
 	 * @generated NOT
@@ -89,9 +98,8 @@ public class DataMapperLinkEditPart extends ConnectionNodeEditPart implements IT
 			public void paintFigure(Graphics graphics) {
 				graphics.setAlpha(alpha);
 				graphics.setLineWidth(3);
-				Color black = new Color(null, 0, 0, 0);
-				graphics.setBackgroundColor(black);
-				graphics.setForegroundColor(black);
+				graphics.setBackgroundColor(DataMapperColorConstants.connectorColor);
+				graphics.setForegroundColor(DataMapperColorConstants.connectorColor);
 				super.paintFigure(graphics);
 			}
 
@@ -112,11 +120,13 @@ public class DataMapperLinkEditPart extends ConnectionNodeEditPart implements IT
 				list.addPoint(end);
 				return list;
 			}
+			
 
 		};
 		connection.setConnectionRouter(new ManhattanConnectionRouter());
 		return connection;
 	}
+	
 
 	/**
 	 * @generated

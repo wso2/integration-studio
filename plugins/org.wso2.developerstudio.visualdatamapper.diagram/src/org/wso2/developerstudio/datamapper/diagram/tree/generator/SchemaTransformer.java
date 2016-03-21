@@ -28,6 +28,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang.StringUtils;
@@ -44,7 +45,6 @@ import org.wso2.developerstudio.datamapper.TreeNode;
 import org.wso2.developerstudio.datamapper.diagram.Activator;
 import org.wso2.developerstudio.datamapper.diagram.tree.model.Tree;
 import org.wso2.developerstudio.datamapper.impl.TreeNodeImpl;
-import org.wso2.developerstudio.eclipse.gmf.esb.LogProperty;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
@@ -58,6 +58,7 @@ public class SchemaTransformer implements ISchemaTransformer {
 	private static final String JSON_SCHEMA_ITEMS = "items";
 	private static final String JSON_SCHEMA_ARRAY = "array";
 	private static final String JSON_SCHEMA_REQUIRED = "required";
+	private static final String JSON_SCHEMA_NAMESPACES = "namespaces";
 	private static final String JSON_SCHEMA_SCHEMA_VALUE = "$schema";
 	private static final String JSON_SCHEMA_ID = "id";
 	private static final String JSON_SCHEMA_PROPERTIES = "properties";
@@ -67,6 +68,8 @@ public class SchemaTransformer implements ISchemaTransformer {
 	private static final String JSON_SCHEMA_ARRAY_ITEMS_TYPE = "items_type";
 	private static final String JSON_SCHEMA_ARRAY_ITEMS_REQUIRED = "items_required";
 	private static final String PREFIX = "@";
+	private static final String NAMESPACE_PREFIX = "prefix";
+	private static final String NAMESPACE_URL = "url";
 
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 	private static String ERROR_TEXT = "File cannot be found ";
@@ -91,10 +94,17 @@ public class SchemaTransformer implements ISchemaTransformer {
 		}
 		// Creates the root element
 		int count = 1;
+		HashMap<String, String> namespaceMap = null;
+		// Sets the namesapces value for root element
+		if (getNamespaces(jsonSchemaMap) != null) {
+			// creates the namespaces map
+			namespaceMap = createNamespacesMap(jsonSchemaMap);
+		}
+
 		inputRootTreeNode = createTreeNode(inputRootTreeNode, count, getName(jsonSchemaMap), jsonSchemaMap,
-				getSchemaType(jsonSchemaMap));
+				getSchemaType(jsonSchemaMap), namespaceMap);
 		// Creates the tree by adding tree node and elements
-		inputRootTreeNode = setProperties(jsonSchemaMap, inputRootTreeNode, count);
+		inputRootTreeNode = setProperties(jsonSchemaMap, inputRootTreeNode, count, namespaceMap);
 
 		return inputRootTreeNode;
 
@@ -132,14 +142,15 @@ public class SchemaTransformer implements ISchemaTransformer {
 				return (String) type;
 			} else {
 				log.error("Invalid input schema, invalid schema type found");
-				displayUserError("WARNING", "Invalid schema, Illegal format " + type.getClass() + " value found under key : "
-						+ JSON_SCHEMA_TYPE);
+				displayUserError("WARNING", "Invalid schema, Illegal format " + type.getClass()
+						+ " value found under key : " + JSON_SCHEMA_TYPE);
 				throw new IllegalArgumentException("Illegal format " + type.getClass() + " value found under key : "
 						+ JSON_SCHEMA_TYPE);
 			}
 		} else {
 			log.error("Invalid input schema, schema type not found.");
-			displayUserError("WARNING", "Invalid schema, Given schema does not contain value under key : " + JSON_SCHEMA_TYPE);
+			displayUserError("WARNING", "Invalid schema, Given schema does not contain value under key : "
+					+ JSON_SCHEMA_TYPE);
 			throw new IllegalArgumentException("Given schema does not contain value under key : " + JSON_SCHEMA_TYPE);
 		}
 	}
@@ -158,8 +169,8 @@ public class SchemaTransformer implements ISchemaTransformer {
 				return (String) type;
 			} else {
 				log.error("Invalid input schema, invalid schema value found");
-				displayUserError("WARNING", "Invalid schema, Illegal format " + type.getClass() + " value found under key : "
-						+ JSON_SCHEMA_SCHEMA_VALUE);
+				displayUserError("WARNING", "Invalid schema, Illegal format " + type.getClass()
+						+ " value found under key : " + JSON_SCHEMA_SCHEMA_VALUE);
 				throw new IllegalArgumentException("Illegal format " + type.getClass() + " value found under key : "
 						+ JSON_SCHEMA_SCHEMA_VALUE);
 			}
@@ -181,15 +192,58 @@ public class SchemaTransformer implements ISchemaTransformer {
 				return (String) type;
 			} else {
 				log.error("Invalid input schema, invalid ID value found");
-				displayUserError("WARNING", "Invalid schema, Illegal format " + type.getClass() + " value found under key : "
-						+ JSON_SCHEMA_ID);
+				displayUserError("WARNING", "Invalid schema, Illegal format " + type.getClass()
+						+ " value found under key : " + JSON_SCHEMA_ID);
 				throw new IllegalArgumentException("Illegal format " + type.getClass() + " value found under key : "
 						+ JSON_SCHEMA_ID);
 			}
 		}
 		return null;
 	}
-	
+
+	/**
+	 * Gets the namespaces value
+	 * 
+	 * @param jsonSchemaMap
+	 *            schema
+	 * @return value
+	 */
+	@SuppressWarnings("unchecked")
+	private String getNamespaces(Map<String, Object> jsonSchemaMap) {
+		if (jsonSchemaMap.containsKey(JSON_SCHEMA_NAMESPACES)) {
+			ArrayList<HashMap<String, String>> namespaces = (ArrayList<HashMap<String, String>>) jsonSchemaMap
+					.get(JSON_SCHEMA_NAMESPACES);
+			if (namespaces instanceof ArrayList) {
+				String value = namespaces.stream().map(i -> i.toString()).collect(Collectors.joining(", "));
+				return value;
+			} else {
+				log.error("Invalid input schema, invalid namespaces value found");
+				displayUserError("WARNING", "Invalid schema, Illegal format " + namespaces.getClass()
+						+ " value found under key : " + JSON_SCHEMA_NAMESPACES);
+				throw new IllegalArgumentException("Illegal format " + namespaces.getClass()
+						+ " value found under key : " + JSON_SCHEMA_NAMESPACES);
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * creates the namespaces map
+	 * 
+	 * @param type
+	 * @return
+	 */
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	private HashMap<String, String> createNamespacesMap(Map<String, Object> jsonSchemaMap) {
+		ArrayList<HashMap<String, String>> namespaces = (ArrayList<HashMap<String, String>>) jsonSchemaMap
+				.get(JSON_SCHEMA_NAMESPACES);
+		HashMap<String, String> namespaceMap = new HashMap<String, String>();
+		for (Map namespace : namespaces) {
+			namespaceMap.put(namespace.get(NAMESPACE_PREFIX).toString(), namespace.get(NAMESPACE_URL).toString());
+		}
+		return namespaceMap;
+	}
+
 	/**
 	 * Gets the required value
 	 * 
@@ -197,17 +251,18 @@ public class SchemaTransformer implements ISchemaTransformer {
 	 *            schema
 	 * @return value
 	 */
+	@SuppressWarnings("rawtypes")
 	private String getRequiredValue(Map<String, Object> jsonSchemaMap) {
 		if (jsonSchemaMap.containsKey(JSON_SCHEMA_REQUIRED)) {
-			Object type = jsonSchemaMap.get(JSON_SCHEMA_REQUIRED);
+			ArrayList type = (ArrayList) jsonSchemaMap.get(JSON_SCHEMA_REQUIRED);
 			if (type instanceof ArrayList) {
 				@SuppressWarnings("unchecked")
-				String value = String.join(",", (ArrayList<String>) type);
+				String value = (String) type.stream().map(i -> i.toString()).collect(Collectors.joining(", "));
 				return value;
 			} else {
 				log.error("Invalid input schema, invalid required value found");
-				displayUserError("WARNING", "Invalid schema, Illegal format " + type.getClass() + " value found under key : "
-						+ JSON_SCHEMA_REQUIRED);
+				displayUserError("WARNING", "Invalid schema, Illegal format " + type.getClass()
+						+ " value found under key : " + JSON_SCHEMA_REQUIRED);
 				throw new IllegalArgumentException("Illegal format " + type.getClass() + " value found under key : "
 						+ JSON_SCHEMA_REQUIRED);
 			}
@@ -244,17 +299,19 @@ public class SchemaTransformer implements ISchemaTransformer {
 	 */
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	private Map<String, Object> getSchemaItems(Map<String, Object> jsonSchemaMap) {
-		if (jsonSchemaMap.containsKey(JSON_SCHEMA_ITEMS)) {	
+		if (jsonSchemaMap.containsKey(JSON_SCHEMA_ITEMS)) {
 			Map<String, Object> itemsSchema = null;
-			//If items block starts with [{ and ends with }] then convert the arraylist into a Map and then use
-			if(jsonSchemaMap.get(JSON_SCHEMA_ITEMS) instanceof ArrayList){
+			// If items block starts with [{ and ends with }] then convert the
+			// arraylist into a Map and then use
+			if (jsonSchemaMap.get(JSON_SCHEMA_ITEMS) instanceof ArrayList) {
 				itemsSchema = new HashMap<String, Object>();
 				ArrayList<Object> items = (ArrayList<Object>) jsonSchemaMap.get(JSON_SCHEMA_ITEMS);
 				for (Object item : items) {
-					itemsSchema.putAll((Map)item);
+					itemsSchema.putAll((Map) item);
 				}
-			}else{
-				// If items block doesn't starts with [ and ends with ] then get the Map directly
+			} else {
+				// If items block doesn't starts with [ and ends with ] then get
+				// the Map directly
 				itemsSchema = (Map<String, Object>) jsonSchemaMap.get(JSON_SCHEMA_ITEMS);
 			}
 			return itemsSchema;
@@ -275,14 +332,17 @@ public class SchemaTransformer implements ISchemaTransformer {
 	 *            treenode
 	 * @param count
 	 *            leve;
+	 * @param namespaceMap
 	 * @return tree node
 	 */
-	private TreeNode setProperties(Map<String, Object> jsonSchemaMap, TreeNode inputRootTreeNode, int count) {
+	private TreeNode setProperties(Map<String, Object> jsonSchemaMap, TreeNode inputRootTreeNode, int count,
+			HashMap<String, String> namespaceMap) {
 		// Gets the schema properties
 		Map<String, Object> propertyMap = getSchemaProperties(jsonSchemaMap);
 		Map<String, Object> attributeMap = new LinkedHashMap<String, Object>();
 		Map<String, Object> sortedMap = getAttributeMap(propertyMap, attributeMap);
-		//If there is an attribute, add the rest of the elements to the map after the attribute
+		// If there is an attribute, add the rest of the elements to the map
+		// after the attribute
 		if (sortedMap.size() > 0) {
 			sortedMap.putAll(propertyMap);
 		} else {
@@ -291,7 +351,7 @@ public class SchemaTransformer implements ISchemaTransformer {
 		Set<String> elementKeys = sortedMap.keySet();
 
 		TreeNode treeNode = null;
-		//org.wso2.developerstudio.datamapper.Element element;
+		// org.wso2.developerstudio.datamapper.Element element;
 		count++;
 		for (String elementKey : elementKeys) {
 			@SuppressWarnings("unchecked")
@@ -300,26 +360,27 @@ public class SchemaTransformer implements ISchemaTransformer {
 			String schemaType = getSchemaType(subSchema);
 			if (JSON_SCHEMA_OBJECT.equals(schemaType)) {
 				// Creates the tree node
-				treeNode = createTreeNode(null, count, elementKey, subSchema, schemaType);
+				treeNode = createTreeNode(null, count, elementKey, subSchema, schemaType, namespaceMap);
 				inputRootTreeNode.getNode().add(treeNode);
-				setProperties(subSchema, treeNode, count);
+				setProperties(subSchema, treeNode, count, namespaceMap);
 			} else if (JSON_SCHEMA_ARRAY.equals(schemaType)) {
-				treeNode = createTreeNode(null, count, elementKey, subSchema, schemaType);
+				treeNode = createTreeNode(null, count, elementKey, subSchema, schemaType, namespaceMap);
 				inputRootTreeNode.getNode().add(treeNode);
-				setProperties(getSchemaItems(subSchema), treeNode, count);
+				setProperties(getSchemaItems(subSchema), treeNode, count, namespaceMap);
 			} else {
-				//When there is an attribute,
+				// When there is an attribute,
 				if (elementKey.startsWith(PREFIX)) {
-					treeNode = createTreeNode(null, count, elementKey, subSchema, schemaType);
+					treeNode = createTreeNode(null, count, elementKey, subSchema, schemaType, namespaceMap);
 					inputRootTreeNode.getNode().add(treeNode);
-					//element = createElement(count, elementKey, subSchema, schemaType);
-					//inputRootTreeNode.getElement().add(element);
+					// element = createElement(count, elementKey, subSchema,
+					// schemaType);
+					// inputRootTreeNode.getElement().add(element);
 				} else {
-					treeNode = createTreeNode(null, count, elementKey, subSchema, schemaType);
+					treeNode = createTreeNode(null, count, elementKey, subSchema, schemaType, namespaceMap);
 					inputRootTreeNode.getNode().add(treeNode);
-					//If an element contained properties eg: attribute 
-					if(subSchema.get(JSON_SCHEMA_PROPERTIES) != null){
-					 setProperties(subSchema, treeNode, count);
+					// If an element contained properties eg: attribute
+					if (subSchema.get(JSON_SCHEMA_PROPERTIES) != null) {
+						setProperties(subSchema, treeNode, count, namespaceMap);
 					}
 				}
 
@@ -342,42 +403,13 @@ public class SchemaTransformer implements ISchemaTransformer {
 		for (Iterator<Map.Entry<String, Object>> it = propertyMap.entrySet().iterator(); it.hasNext();) {
 			Map.Entry<String, Object> entry = it.next();
 			if (entry.getKey().startsWith(PREFIX)) {
-				//If there is an attribute, remove it from the property map and add it to the sorted map
+				// If there is an attribute, remove it from the property map and
+				// add it to the sorted map
 				it.remove();
 				sortedMap.put(entry.getKey(), entry.getValue());
 			}
 		}
 		return sortedMap;
-	}
-
-	/**
-	 * Creates and element
-	 * 
-	 * @param inputRootTreeNode
-	 *            root tree node
-	 * @param count
-	 *            level
-	 * @param elementKey
-	 *            element key
-	 * @param subSchema
-	 *            sub schema
-	 * @param schemaType
-	 *            schema type
-	 * @return element
-	 */
-	private Element createElement(int count, String elementKey, Map<String, Object> subSchema, String schemaType) {
-		org.wso2.developerstudio.datamapper.Element element;
-		element = DataMapperFactory.eINSTANCE.createElement();
-		EList<PropertyKeyValuePair> propertyValueList = new BasicEList<PropertyKeyValuePair>();
-		element.setName(elementKey);
-		element.setLevel(count);
-		setPropertyKeyValuePairforElements(element,propertyValueList,JSON_SCHEMA_TYPE, schemaType);
-		setPropertyKeyValuePairforElements(element,propertyValueList,JSON_SCHEMA_TYPE, schemaType);
-		// Sets the id value if available
-		if (getIDValue(subSchema) != null) {
-			setPropertyKeyValuePairforElements(element,propertyValueList,JSON_SCHEMA_ID, getIDValue(subSchema));
-		}
-		return element;
 	}
 
 	/**
@@ -394,11 +426,13 @@ public class SchemaTransformer implements ISchemaTransformer {
 	 *            sub schema
 	 * @param schemaType
 	 *            schema type
+	 * @param namespaceMap
+	 *            namespacemap
 	 * @return tree node
 	 */
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	private TreeNode createTreeNode(TreeNode inputRootTreeNode, int count, String elementKey,
-			Map<String, Object> subSchema, String schemaType) {
+			Map<String, Object> subSchema, String schemaType, HashMap<String, String> namespaceMap) {
 		TreeNode treeNode;
 		EList<PropertyKeyValuePair> propertyValueList = new BasicEList<PropertyKeyValuePair>();
 		if (inputRootTreeNode == null) {
@@ -406,53 +440,116 @@ public class SchemaTransformer implements ISchemaTransformer {
 		} else {
 			treeNode = inputRootTreeNode;
 		}
-		treeNode.setName(elementKey);
+		// If the node is a root element then sets the namesapces value
+		if (getNamespaces(subSchema) != null) {
+			setPropertyKeyValuePairforTreeNodes(treeNode, propertyValueList, JSON_SCHEMA_NAMESPACES,
+					getNamespaces(subSchema));
+		}
+		// checks the namespace prefix
+		if (namespaceMap != null && namespaceMap.size() > 0) {
+			// Iterates through the namespaces map and validates the prefix and
+			// sets the name
+			validatePrefix(elementKey, namespaceMap, treeNode);
+		} else {
+			// Sets the name if there are no namespaces
+			treeNode.setName(elementKey);
+		}
 		treeNode.setLevel(count);
-		
-        setPropertyKeyValuePairforTreeNodes(treeNode,propertyValueList,JSON_SCHEMA_TYPE, schemaType);
+
+		setPropertyKeyValuePairforTreeNodes(treeNode, propertyValueList, JSON_SCHEMA_TYPE, schemaType);
 		// Sets the schema key if available
 		if (getSchemaValue(subSchema) != null) {
-	        setPropertyKeyValuePairforTreeNodes(treeNode,propertyValueList,JSON_SCHEMA_SCHEMA_VALUE, getSchemaValue(subSchema));
+			setPropertyKeyValuePairforTreeNodes(treeNode, propertyValueList, JSON_SCHEMA_SCHEMA_VALUE,
+					getSchemaValue(subSchema));
 		}
 		// Sets the id value if available
 		if (getIDValue(subSchema) != null) {
-	        setPropertyKeyValuePairforTreeNodes(treeNode,propertyValueList,JSON_SCHEMA_ID, getIDValue(subSchema));
+			setPropertyKeyValuePairforTreeNodes(treeNode, propertyValueList, JSON_SCHEMA_ID, getIDValue(subSchema));
 		}
 		// Sets the required value
 		if (getRequiredValue(subSchema) != null) {
-			setPropertyKeyValuePairforTreeNodes(treeNode,propertyValueList,JSON_SCHEMA_REQUIRED, getRequiredValue(subSchema));
+			setPropertyKeyValuePairforTreeNodes(treeNode, propertyValueList, JSON_SCHEMA_REQUIRED,
+					getRequiredValue(subSchema));
 		}
-		
+		// Sets the namesapces value
+		if (getNamespaces(subSchema) != null) {
+			setPropertyKeyValuePairforTreeNodes(treeNode, propertyValueList, JSON_SCHEMA_NAMESPACES,
+					getNamespaces(subSchema));
+			// creates the namespaces map
+		}
+
 		if (schemaType.equals(JSON_SCHEMA_ARRAY)) {
-			//Handle id, type, and required fields in the items block
+			// Handle id, type, and required fields in the items block
 			if (subSchema.get(JSON_SCHEMA_ITEMS) != null) {
 				Map<String, Object> itemsSchema = null;
-				//If items block starts with [{ and ends with }] then convert the arraylist into a Map and then use
-				if(subSchema.get(JSON_SCHEMA_ITEMS) instanceof ArrayList){
+				// If items block starts with [{ and ends with }] then convert
+				// the arraylist into a Map and then use
+				if (subSchema.get(JSON_SCHEMA_ITEMS) instanceof ArrayList) {
 					itemsSchema = new HashMap<String, Object>();
 					ArrayList<Object> items = (ArrayList<Object>) subSchema.get(JSON_SCHEMA_ITEMS);
 					for (Object item : items) {
-						itemsSchema.putAll((Map)item);
+						itemsSchema.putAll((Map) item);
 					}
-				}else{
-					// If items block doesn't starts with [ and ends with ] then get the Map directly
+				} else {
+					// If items block doesn't starts with [ and ends with ] then
+					// get the Map directly
 					itemsSchema = (Map<String, Object>) subSchema.get(JSON_SCHEMA_ITEMS);
 				}
-				setPropertyKeyValuePairforTreeNodes(treeNode,propertyValueList,JSON_SCHEMA_ARRAY_ITEMS_ID, itemsSchema.get(JSON_SCHEMA_ID).toString());
-				setPropertyKeyValuePairforTreeNodes(treeNode,propertyValueList,JSON_SCHEMA_ARRAY_ITEMS_TYPE, itemsSchema.get(JSON_SCHEMA_TYPE).toString());
-				setPropertyKeyValuePairforTreeNodes(treeNode,propertyValueList,JSON_SCHEMA_ARRAY_ITEMS_REQUIRED, getRequiredValue(itemsSchema));
+				setPropertyKeyValuePairforTreeNodes(treeNode, propertyValueList, JSON_SCHEMA_ARRAY_ITEMS_ID,
+						itemsSchema.get(JSON_SCHEMA_ID).toString());
+				setPropertyKeyValuePairforTreeNodes(treeNode, propertyValueList, JSON_SCHEMA_ARRAY_ITEMS_TYPE,
+						itemsSchema.get(JSON_SCHEMA_TYPE).toString());
+				setPropertyKeyValuePairforTreeNodes(treeNode, propertyValueList, JSON_SCHEMA_ARRAY_ITEMS_REQUIRED,
+						getRequiredValue(itemsSchema));
 			}
 		}
 		return treeNode;
 	}
 
 	/**
-	 * Gets the key and value
+	 * Validates the prefix and sets the name
+	 * 
+	 * @param elementKey
+	 * @param namespaceMap
 	 * @param treeNode
-	 * @param keyValuePair 
-	 * @param propertyValueList 
+	 */
+	private void validatePrefix(String elementKey, HashMap<String, String> namespaceMap, TreeNode treeNode) {
+		String prefix = null;
+		boolean isValid = false;
+		if (elementKey.contains(":")) {
+			if (namespaceMap != null && namespaceMap.size() > 0) {
+				String[] split = elementKey.split(":");
+				prefix = split[0];
+				for (Map.Entry<String, String> entry : namespaceMap.entrySet()) {
+					if (entry.getKey().equals(prefix)) {
+						isValid = true;
+					}
+				}
+				if(isValid){
+					treeNode.setName(elementKey);
+				}else{
+					log.error("Invalid input schema, incorrect namespace prefix");
+					displayUserError("WARNING",
+							" Invalid schema,Given schema contains an invalid namespace prefix under : "
+									+ JSON_SCHEMA_TITLE);
+					throw new IllegalArgumentException("Given schema contains an incorrect value under key : "
+							+ JSON_SCHEMA_TITLE);
+				}
+			}
+		} else {
+			//sets the name if there are no prefixes
+			treeNode.setName(elementKey);
+		}
+	}
+
+	/**
+	 * Gets the key and value
+	 * 
+	 * @param treeNode
+	 * @param keyValuePair
+	 * @param propertyValueList
 	 * @param jsonSchemaType
-	 * @param schemaType 
+	 * @param schemaType
 	 */
 	private void setPropertyKeyValuePairforTreeNodes(TreeNode treeNode, EList<PropertyKeyValuePair> propertyValueList,
 			String key, String value) {
@@ -482,98 +579,67 @@ public class SchemaTransformer implements ISchemaTransformer {
 			treeNode.getProperties().addAll(propertyValueList);
 		}
 	}
-	
-	/**
-	 * Gets the key and value
-	 * @param treeNode
-	 * @param jsonSchemaType
-	 * @param schemaType 
-	 */
-	private void setPropertyKeyValuePairforElements(org.wso2.developerstudio.datamapper.Element element,EList<PropertyKeyValuePair> propertyValueList, String key, String value) {
-		PropertyKeyValuePair keyValuePair = DataMapperFactory.eINSTANCE.createPropertyKeyValuePair();
-		if (element.getProperties().size() > 0) {
-			// If the key is already there add the new value
-			if (element.getProperties().contains(key)) {
-				for (PropertyKeyValuePair keyValue : element.getProperties()) {
-					if (keyValue.getKey().equals(key)) {
-						keyValue.setValue(value);
-						propertyValueList.add(keyValue);
-					}
-				}
-			} else {
-				// If the key is not there add a new key value
-				keyValuePair.setKey(key);
-				keyValuePair.setValue(value);
-				propertyValueList.add(keyValuePair);
 
-			}
-			element.getProperties().addAll(propertyValueList);
-		} else {
-			// Initially if there are no properties add the initial property
-			keyValuePair.setKey(key);
-			keyValuePair.setValue(value);
-			propertyValueList.add(keyValuePair);
-			element.getProperties().addAll(propertyValueList);
-		}
-	}
-	
 	/**
 	 * Gets the property value for Treenodes
+	 * 
 	 * @param treeNodeModel
 	 * @param key
 	 * @return value
 	 */
-	private String getPropertyKeyValuePairforTreeNodeImpls(TreeNodeImpl treeNodeModel, String key){
+	private String getPropertyKeyValuePairforTreeNodeImpls(TreeNodeImpl treeNodeModel, String key) {
 		String value = null;
 		for (PropertyKeyValuePair keyValue : treeNodeModel.getProperties()) {
-			//If the key is already there add the new value
-			   if(keyValue.getKey().equals(key)){
-				   value = keyValue.getValue();
-				   break;
-			   }
+			// If the key is already there add the new value
+			if (keyValue.getKey().equals(key)) {
+				value = keyValue.getValue();
+				break;
+			}
 		}
 		return value;
-		
+
 	}
-	
+
 	/**
 	 * Gets the property value for Treenodes
+	 * 
 	 * @param treeNodeModel
 	 * @param key
 	 * @return value
 	 */
-	private String getPropertyKeyValuePairforTreeNode(TreeNode treeNode, String key){
+	private String getPropertyKeyValuePairforTreeNode(TreeNode treeNode, String key) {
 		String value = null;
 		for (PropertyKeyValuePair keyValue : treeNode.getProperties()) {
-			//If the key is already there add the new value
-			   if(keyValue.getKey().equals(key)){
-				   value = keyValue.getValue();
-				   break;
-			   }
+			// If the key is already there add the new value
+			if (keyValue.getKey().equals(key)) {
+				value = keyValue.getValue();
+				break;
+			}
 		}
 		return value;
-		
+
 	}
-	
+
 	/**
 	 * Gets the property value for elements
+	 * 
 	 * @param treeNodeModel
 	 * @param key
 	 * @return value
 	 */
-	private String getPropertyKeyValuePairforElements(Element element, String key){
+	private String getPropertyKeyValuePairforElements(Element element, String key) {
 		String value = null;
 		for (PropertyKeyValuePair keyValue : element.getProperties()) {
-			//If the key is already there add the new value
-			   if(keyValue.getKey().equals(key)){
-				   value = keyValue.getValue();
-				   break;
-			   }
+			// If the key is already there add the new value
+			if (keyValue.getKey().equals(key)) {
+				value = keyValue.getValue();
+				break;
+			}
 		}
 		return value;
-		
+
 	}
-	
+
 	@Override
 	public String getSchemaContentFromFile(String path) {
 		File jschema = new File(path);
@@ -593,12 +659,16 @@ public class SchemaTransformer implements ISchemaTransformer {
 		JSONObject root = new JSONObject();
 		JSONObject propertiesObject = new JSONObject();
 		if (StringUtils.isNotEmpty(treeNodeModel.getName()) && treeNodeModel.getProperties() != null) {
-	        
-			root.put(JSON_SCHEMA_SCHEMA_VALUE, getPropertyKeyValuePairforTreeNodeImpls(treeNodeModel,JSON_SCHEMA_SCHEMA_VALUE));
+
+			// Sets the namespaces value
+			root.put(JSON_SCHEMA_SCHEMA_VALUE,
+					getPropertyKeyValuePairforTreeNodeImpls(treeNodeModel, JSON_SCHEMA_SCHEMA_VALUE));
 			root.put(JSON_SCHEMA_TITLE, treeNodeModel.getName());
 			insetIFTypeForJsonObject(treeNodeModel, root);
 			root.put(JSON_SCHEMA_PROPERTIES, propertiesObject);
 			insertRequiredArray(root, treeNodeModel, false);
+			// Sets the namespaces value
+			insertNamespacesArray(root,treeNodeModel,false);
 			recursiveTreeGenerator(treeNodeModel, propertiesObject);
 		}
 		return root.toJSONString();
@@ -610,12 +680,11 @@ public class SchemaTransformer implements ISchemaTransformer {
 			EList<Element> elemList = treeNodeModel.getElement();
 			EList<TreeNode> nodeList = treeNodeModel.getNode();
 			for (TreeNode node : nodeList) {
-				String schemaType = getPropertyKeyValuePairforTreeNode(node,JSON_SCHEMA_TYPE);
-				String schemaArrayItemsID = getPropertyKeyValuePairforTreeNode(node,JSON_SCHEMA_ARRAY_ITEMS_ID);
-				String schemaArrayItemsType = getPropertyKeyValuePairforTreeNode(node,JSON_SCHEMA_ARRAY_ITEMS_TYPE);
-				String schemaID = getPropertyKeyValuePairforTreeNode(node,JSON_SCHEMA_ID);
-				if (schemaType != null
-						&& schemaType.equals(JSON_SCHEMA_OBJECT)) {
+				String schemaType = getPropertyKeyValuePairforTreeNode(node, JSON_SCHEMA_TYPE);
+				String schemaArrayItemsID = getPropertyKeyValuePairforTreeNode(node, JSON_SCHEMA_ARRAY_ITEMS_ID);
+				String schemaArrayItemsType = getPropertyKeyValuePairforTreeNode(node, JSON_SCHEMA_ARRAY_ITEMS_TYPE);
+				String schemaID = getPropertyKeyValuePairforTreeNode(node, JSON_SCHEMA_ID);
+				if (schemaType != null && schemaType.equals(JSON_SCHEMA_OBJECT)) {
 					JSONObject nodeObject = new JSONObject();
 					JSONObject propertiesObject = new JSONObject();
 					insetIFTypeForJsonObject(node, nodeObject);
@@ -623,20 +692,18 @@ public class SchemaTransformer implements ISchemaTransformer {
 					parent.put(node.getName(), nodeObject);
 					insertRequiredArray(nodeObject, node, false);
 					recursiveTreeGenerator((TreeNodeImpl) node, propertiesObject);
-				} else if (schemaType != null
-						&& schemaType.equals(JSON_SCHEMA_ARRAY)) {
+				} else if (schemaType != null && schemaType.equals(JSON_SCHEMA_ARRAY)) {
 					JSONObject arrayObject = new JSONObject();
 					JSONObject itemsObject = new JSONObject();
 					JSONArray arrayItemsObject = new JSONArray();
 					JSONObject itemProperties = new JSONObject();
 					insetIFTypeForJsonObject(node, arrayObject);
 					if (schemaArrayItemsID != null) {
-						itemProperties.put(JSON_SCHEMA_ID,
-								schemaArrayItemsID.replace("\\", ""));
+						itemProperties.put(JSON_SCHEMA_ID, schemaArrayItemsID.replace("\\", ""));
 					} else {
 						itemProperties.put(JSON_SCHEMA_ID, "");
 					}
-					itemsObject.put(JSON_SCHEMA_TYPE,schemaArrayItemsType);
+					itemsObject.put(JSON_SCHEMA_TYPE, schemaArrayItemsType);
 					insertRequiredArray(arrayObject, node, false);
 					insertRequiredArray(itemProperties, node, true);
 					parent.put(node.getName(), arrayObject);
@@ -647,28 +714,28 @@ public class SchemaTransformer implements ISchemaTransformer {
 				} else if (schemaType != null) {
 					JSONObject elemObject = new JSONObject();
 					if (schemaID != null) {
-					elemObject.put(JSON_SCHEMA_ID, schemaID.replace("\\", ""));
+						elemObject.put(JSON_SCHEMA_ID, schemaID.replace("\\", ""));
 					} else {
 						elemObject.put(JSON_SCHEMA_ID, "");
 					}
-					elemObject.put(JSON_SCHEMA_TYPE,schemaType);
+					elemObject.put(JSON_SCHEMA_TYPE, schemaType);
 					parent.put(node.getName(), elemObject);
 					if (node.getNode() != null) {
 						JSONObject propertiesObject = new JSONObject();
 						elemObject.put(JSON_SCHEMA_PROPERTIES, propertiesObject);
 						recursiveTreeGenerator((TreeNodeImpl) node, propertiesObject);
 					}
-					
+
 				}
 			}
 			for (Element elem : elemList) {
-				
-				String schemaType = getPropertyKeyValuePairforElements(elem,JSON_SCHEMA_TYPE);
-				String schemaID = getPropertyKeyValuePairforElements(elem,JSON_SCHEMA_ID);
+
+				String schemaType = getPropertyKeyValuePairforElements(elem, JSON_SCHEMA_TYPE);
+				String schemaID = getPropertyKeyValuePairforElements(elem, JSON_SCHEMA_ID);
 				if (schemaType != null) {
 					JSONObject elemObject = new JSONObject();
 					if (schemaID != null) {
-					elemObject.put(JSON_SCHEMA_ID, schemaID.replace("\\", ""));
+						elemObject.put(JSON_SCHEMA_ID, schemaID.replace("\\", ""));
 					} else {
 						elemObject.put(JSON_SCHEMA_ID, "");
 					}
@@ -681,9 +748,9 @@ public class SchemaTransformer implements ISchemaTransformer {
 
 	@SuppressWarnings("unchecked")
 	private void insetIFTypeForJsonObject(TreeNode node, JSONObject nodeObject) {
-		String schemaType = getPropertyKeyValuePairforTreeNode(node,JSON_SCHEMA_TYPE);
-		String schemaID = getPropertyKeyValuePairforTreeNode(node,JSON_SCHEMA_ID);
-		if (schemaID!= null) {
+		String schemaType = getPropertyKeyValuePairforTreeNode(node, JSON_SCHEMA_TYPE);
+		String schemaID = getPropertyKeyValuePairforTreeNode(node, JSON_SCHEMA_ID);
+		if (schemaID != null) {
 			nodeObject.put(JSON_SCHEMA_ID, schemaID.replace("\\", ""));
 		} else {
 			nodeObject.put(JSON_SCHEMA_ID, "");
@@ -692,11 +759,37 @@ public class SchemaTransformer implements ISchemaTransformer {
 	}
 
 	@SuppressWarnings({ "unchecked" })
+	private void insertNamespacesArray(JSONObject parent, TreeNode node, boolean isItems) {
+		String namespaceString = null;
+		JSONArray namespaceArray = new JSONArray();
+		String schemaNamespace = getPropertyKeyValuePairforTreeNode(node, JSON_SCHEMA_NAMESPACES);
+		if (schemaNamespace != null) {
+			namespaceString = schemaNamespace;
+		}
+		if (namespaceString != null) {
+			if (namespaceString.contains(",")) {
+				String[] namespaceStringArr = namespaceString.split(",");
+				for (String namespaceItem : namespaceStringArr) {
+					if(namespaceItem.contains("\\")){
+						namespaceArray.add(namespaceItem.replace("\\", ""));
+					}else{
+						namespaceArray.add(namespaceItem);
+					}	
+				}
+			} else {
+				namespaceArray.add(namespaceString);
+			}
+
+			parent.put(JSON_SCHEMA_NAMESPACES, namespaceArray);
+		}
+	}
+	
+	@SuppressWarnings({ "unchecked" })
 	private void insertRequiredArray(JSONObject parent, TreeNode node, boolean isItems) {
 		String requiredString = null;
 		JSONArray requiredArray = new JSONArray();
-		String schemaRequired = getPropertyKeyValuePairforTreeNode(node,JSON_SCHEMA_REQUIRED);
-		String schemaArrayItemsRequired = getPropertyKeyValuePairforTreeNode(node,JSON_SCHEMA_ARRAY_ITEMS_REQUIRED);
+		String schemaRequired = getPropertyKeyValuePairforTreeNode(node, JSON_SCHEMA_REQUIRED);
+		String schemaArrayItemsRequired = getPropertyKeyValuePairforTreeNode(node, JSON_SCHEMA_ARRAY_ITEMS_REQUIRED);
 		if (schemaRequired != null) {
 			requiredString = schemaRequired;
 		}
@@ -705,14 +798,14 @@ public class SchemaTransformer implements ISchemaTransformer {
 		}
 		if (requiredString != null) {
 			if (requiredString.contains(",")) {
-				String[] requiredStringArr  = requiredString.split(",");
+				String[] requiredStringArr = requiredString.split(",");
 				for (String retuiredItem : requiredStringArr) {
 					requiredArray.add(retuiredItem);
 				}
 			} else {
 				requiredArray.add(requiredString);
 			}
-			
+
 			parent.put(JSON_SCHEMA_REQUIRED, requiredArray);
 		}
 	}
@@ -720,11 +813,12 @@ public class SchemaTransformer implements ISchemaTransformer {
 	@Override
 	public void updateSchemaFile(String content, File file) {
 		try {
-			// check of content is null to prevent object mapper throwing exceptions due to empty content
+			// check of content is null to prevent object mapper throwing
+			// exceptions due to empty content
 			if (content != null && !content.isEmpty()) {
-			ObjectMapper mapper = new ObjectMapper();
-			Object json = mapper.readValue(content, Object.class);
-			FileUtils.writeStringToFile(file, mapper.writerWithDefaultPrettyPrinter().writeValueAsString(json));
+				ObjectMapper mapper = new ObjectMapper();
+				Object json = mapper.readValue(content, Object.class);
+				FileUtils.writeStringToFile(file, mapper.writerWithDefaultPrettyPrinter().writeValueAsString(json));
 			} else {
 				FileUtils.writeStringToFile(file, "");
 			}
@@ -739,9 +833,10 @@ public class SchemaTransformer implements ISchemaTransformer {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
+
 	/**
 	 * Warning Dialog
+	 * 
 	 * @param reason
 	 * @param message
 	 */

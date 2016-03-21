@@ -21,10 +21,20 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
+import java.util.Iterator;
 
 import javax.xml.stream.XMLStreamException;
 import javax.xml.transform.TransformerException;
 
+import org.apache.axiom.om.OMAbstractFactory;
+import org.apache.axiom.om.OMAttribute;
+import org.apache.axiom.om.OMElement;
+import org.apache.axiom.om.OMFactory;
+import org.apache.axiom.om.OMNamespace;
+import org.apache.axiom.om.OMNode;
+import org.apache.axiom.om.OMText;
+import org.apache.axiom.om.impl.llom.OMElementImpl;
+import org.apache.axiom.om.util.AXIOMUtil;
 import org.apache.commons.io.FileUtils;
 import org.apache.xmlbeans.XmlException;
 import org.apache.xmlbeans.XmlOptions;
@@ -79,6 +89,44 @@ public class SchemaGeneratorForXML extends SchemaGeneratorForJSON implements ISc
 	@Override
 	public String getSchemaResourcePath(String filePath) throws IOException {
 		String entireFileText = FileUtils.readFileToString(new File(filePath));
+		entireFileText = replaceAttributesWithElements(entireFileText);
 		return getSchemaContent(entireFileText);
+	}
+
+	private String replaceAttributesWithElements(String entireFileText) throws IOException {
+		try {
+			OMElement element = AXIOMUtil.stringToOM(entireFileText);
+			OMFactory factory = OMAbstractFactory.getOMFactory();
+			element = traverseChildrenAndReplaceAttributes(element, factory);
+			entireFileText = element.toString();
+		} catch (XMLStreamException e) {
+			throw new IOException(e);
+		}
+		return entireFileText;
+	}
+
+	private OMElement traverseChildrenAndReplaceAttributes(OMElement element, OMFactory factory) {
+
+		Iterator attributeIterator = element.getAllAttributes();
+		while (attributeIterator.hasNext()) {
+			OMAttribute atttrib = (OMAttribute) attributeIterator.next();
+			//remove attribute and instead add a element with @ infront
+			// eg <person age="30"></person> will be replaced by <person><@age>30</@age></person>
+			OMElement attributeElement = factory.createOMElement("@" + atttrib.getLocalName(), null);
+			OMText attributeValue = factory.createOMText(atttrib.getAttributeValue());
+			attributeElement.addChild(attributeValue);
+			element.addChild(attributeElement);
+			element.removeAttribute(atttrib);
+		}
+		
+		Iterator elementIterator = element.getChildren();
+		while (elementIterator.hasNext()) {
+			OMNode child = (OMNode) elementIterator.next();
+			if (child instanceof OMElement) {
+				traverseChildrenAndReplaceAttributes((OMElement) child, factory);
+			}
+		}
+		
+		return element;
 	}
 }

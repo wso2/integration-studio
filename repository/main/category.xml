@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <category-def name="org.wso2.developerstudio.eclipse.apim.feature.category" label="WSO2 API Manger Tools">
+<description>
+		This is the API Manager Feature for the Developer Studio. This provides tooling support for WSO2 API Manager Perspective.
+      </description>
+ </category-def>
+ <feature id="org.wso2.developerstudio.eclipse.apim.feature" version="0.0.0">
+      <category name="org.wso2.developerstudio.eclipse.apim.feature.category"/>
+   </feature>
+</site>

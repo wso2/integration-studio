@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <category-def name="org.wso2.developerstudio.eclipse.apim.feature.category" label="WSO2 API Manger Tools">
+   <description>
+		This is the API Manager Feature for the Developer Studio. This provides tooling support for WSO2 API Manager Perspective.
+      </description>
+     </category-def>
+   <feature id="org.wso2.developerstudio.eclipse.apim.feature" version="0.0.0">
+      <category name="org.wso2.developerstudio.eclipse.apim.feature.category"/>
+   </feature>
+
+   <!-- Kernel Features and category-->	
+   <feature id="org.wso2.developerstudio.kernel.core.feature" version="0.0.0">
+      <category name="org.wso2.developerstudio.eclipse.apim.feature.category"/>
+   </feature>
+   <feature id="org.wso2.developerstudio.kernel.core.ui.feature" version="0.0.0">
+      <category name="org.wso2.developerstudio.eclipse.apim.feature.category"/>
+   </feature>
+   <feature id="org.wso2.developerstudio.kernel.tools.feature" version="0.0.0">
+      <category name="org.wso2.developerstudio.eclipse.apim.feature.category"/>
+   </feature>
+   <feature id="org.wso2.developerstudio.kernel.utils.feature" version="0.0.0">
+      <category name="org.wso2.developerstudio.eclipse.apim.feature.category"/>
+   </feature>
+   <!-- Kernel core Features and category-->	
+   <feature id="org.wso2.developerstudio.kernel.webui.tools.feature" version="0.0.0">
+      <category name="org.wso2.developerstudio.eclipse.apim.feature.category"/>
+   </feature>
+   <feature id="org.wso2.developerstudio.capp.feature" version="0.0.0">
+      <category name="org.wso2.developerstudio.eclipse.apim.feature.category"/>
+   </feature>
+   <feature id="org.wso2.developerstudio.carbon.server-40.feature" version="0.0.0">
+      <category name="org.wso2.developerstudio.eclipse.apim.feature.category"/>
+   </feature>
+   <feature id="org.wso2.developerstudio.carbon.server-42.feature" version="0.0.0">
+      <category name="org.wso2.developerstudio.eclipse.apim.feature.category"/>
+   </feature>
+   <feature id="org.wso2.developerstudio.carbon.server-44.feature" version="0.0.0">
+      <category name="org.wso2.developerstudio.eclipse.apim.feature.category"/>
+   </feature>
+   <feature id="org.wso2.developerstudio.carbon.server-remote.feature" version="0.0.0">
+      <category name="org.wso2.developerstudio.eclipse.apim.feature.category"/>
+   </feature>
+   <feature id="org.wso2.developerstudio.kernel.dependencies.feature" version="0.0.0">
+      <category name="org.wso2.developerstudio.eclipse.apim.feature.category"/>
+   </feature>
+   <feature id="org.wso2.developerstudio.kernel.registry.feature" version="0.0.0">
+      <category name="org.wso2.developerstudio.eclipse.apim.feature.category"/>
+   </feature>
+   <feature id="org.wso2.developerstudio.kernel.security.feature" version="0.0.0">
+      <category name="org.wso2.developerstudio.eclipse.apim.feature.category"/>
+   </feature>
+   <feature id="org.wso2.developerstudio.library.artifact.feature" version="0.0.0">
+      <category name="org.wso2.developerstudio.eclipse.apim.feature.category"/>
+   </feature>
+   <feature id="org.wso2.developerstudio.kernel.wso2plugins.default.samples.feature" version="0.0.0">
+      <category name="org.wso2.developerstudio.eclipse.apim.feature.category"/>
+   </feature>
+  <!-- ESB features -->
+   <feature id="org.wso2.developerstudio.eclipse.esb.editor.feature" version="0.0.0">
+      <category name="org.wso2.developerstudio.eclipse.apim.feature.category"/>
+   </feature>
+   <feature id="org.wso2.developerstudio.eclipse.esb.feature" version="0.0.0">
+      <category name="org.wso2.developerstudio.eclipse.apim.feature.category"/>
+   </feature>
+</site>

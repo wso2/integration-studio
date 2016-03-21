@@ -110,9 +110,9 @@
                                                                     <p>
                                                                         Input Data mapping
                                                                         <input type="hidden" id="taskMappingNo" name="taskMappingNo" value="0">
-                                                                        <input type="button" name="button3" id="addInput" value="Add Input">
+                                                                        <input type="button" class="btn btn-primary" name="button3" id="addInput" value="Add Input">
                                                                     </p>
-                                                                    <table id="inputmappingTable" width="100%" border="1" cellspacing="5" cellpadding="5">
+                                                                    <table id="inputmappingTable" class="table table-hover" width="100%" border="0" cellspacing="5" cellpadding="5">
 
                                                                         <!-- <tr id="inputmapping1">
 																<td width="25%"><input name="textfield6" type="text" id="taskInputMappingElementName" value="ApproveClaimResult"></td><td width="25%"><input name="textfield7" type="text" id="taskInputMappingDisplayName" value="ApproveClaimResult"></td><td width="10%"><input name="textfield8" type="text" id="taskInputMappingOrder" value="ApproveClaimResult"></td><td width="20%"><label><select id="taskInputMappingType" name="select3" id="select3"><option value="string" selected>string</option><option value="int">int</option><option value="double">double</option><option value="float">float</option><option value="boolean">boolean</option><option value="organizationalEntity">organizationalEntity</option></select></label></td><td width="10%"><label><select name="taskInputMappingHide" id="select2"><option value="yes">yes</option><option value="no">no</option></select></label></td><td><label><input type="button" name="deleteButton" id="deleteButton" value="Delete"></label></td>
@@ -151,11 +151,11 @@
                                                                     <br>
                                                                     <p>
                                                                         Output Data mapping
-                                                                        <input type="submit" name="button" id="addOutput" value="Add Output">
+                                                                        <input type="submit" name="button" class="btn btn-primary" id="addOutput" value="Add Output">
                                                                         <input type="hidden" id="taskOutputMappingNo" name="taskOutputMappingNo" value="0">
                                                                         <br>
                                                                     </p>
-                                                                    <table id="outputmappingTable" width="100%" border="1" cellspacing="5" cellpadding="5">
+                                                                    <table id="outputmappingTable" class="table table-hover" width="100%" border="0" cellspacing="5" cellpadding="5">
                                                                         <!-- 	<td width="25%"><input name="textfield9" type="text" id="taskOutputMappingElementName" value="ApproveClaimResult"></td><td width="25%"><input name="taskOutputMappingDisplayName" type="text" id="textfield10" value="ApproveClaimResult"></td><td width="10%"><input name="textfield11" type="text" id="taskOutputMappingOrder" value="ApproveClaimResult"></td><td width="20%"><label><select name="select4" id="select4"><option value="string" selected>string</option><option value="int">int</option><option value="double">double</option><option value="float">float</option><option value="boolean">boolean</option><option value="list">list</option></select></label></td><td width="20%"><input name="textfield12" type="text" id="taskOutputMappingDefaultValues" value="ApproveClaimResult"></td><td><label><input type="submit" name="button2" id="button2" value="Delete"></label></td> -->
 
                                                                     </table>
@@ -203,7 +203,7 @@
                                                                 <hr>
                                                                 <div class="taskSection">
                                                                     <br>
-                                                                    <table width="100%" border="0" cellspacing="5" cellpadding="5">
+                                                                    <table width="100%" border="0" class="table" cellcellspacing="5" cellpadding="5">
                                                                         <tr class="header">
                                                                             <td width="23%">Potential Owners</td>
                                                                             <td width="77%">
@@ -236,8 +236,8 @@
                                                                                                 </label>
                                                                                             </td>
                                                                                             <td>
-                                                                                                Users (Comma Seprated):
-                                                                                                <input type="text" name="textfield15" id="potentialOwnersLiteralUsers">
+                                                                                                
+                                                                                                <input type="text" name="textfield15" id="potentialOwnersLiteralUsers" placeholder="Users (Comma Seprated)">
                                                                                                 <!-- <br> Groups (Comma Seprated):
                                                                                                 <input type="text" name="textfield16" id="potentialOwnersLiteralGroups"> -->
                                                                                             </td>
@@ -289,8 +289,7 @@
                                                                                                 </label>
                                                                                             </td>
                                                                                             <td>
-                                                                                                Users (Comma Seprated):
-                                                                                                <input type="text" name="textfield17" id="businessAdministratorsLiteralUsers">
+                                                                                                <input type="text" name="textfield17" id="businessAdministratorsLiteralUsers" placeholder="Users (Comma Seprated)">
                                                                                                 <!-- <br> Groups (Comma Seprated):
                                                                                                 <input type="text" name="textfield17" id="businessAdministratorsLiteralGroups"> -->
                                                                                             </td>
@@ -342,8 +341,7 @@
                                                                                                 </label>
                                                                                             </td>
                                                                                             <td>
-                                                                                                Users (Comma Seprated):
-                                                                                                <input type="text" name="textfield18" id="excludedOwnersLiteralUsers">
+                                                                                                <input type="text" name="textfield18" id="excludedOwnersLiteralUsers" placeholder="Users (Comma Seprated)">
                                                                                                 <!-- <br> Groups (Comma Seprated):
 
                                                                                                 <input type="text" name="textfield18" id="excludedOwnersLiteralGroups"> -->
@@ -396,8 +394,7 @@
                                                                                                 </label>
                                                                                             </td>
                                                                                             <td>
-                                                                                                Users (Comma Seprated):
-                                                                                                <input type="text" name="textfield19" id="taskInitiatorLiteralUsers">
+                                                                                               <input type="text" name="textfield19" id="taskInitiatorLiteralUsers" placeholder="Users (Comma Seprated)" >
                                                                                                 <!-- <br> Groups (Comma Seprated):
                                                                                                 <input type="text" name="textfield19" id="taskInitiatorLiteralGroups"> -->
                                                                                             </td>
@@ -449,8 +446,7 @@
                                                                                                 </label>
                                                                                             </td>
                                                                                             <td>
-                                                                                                Users (Comma Seprated):
-                                                                                                <input type="text" name="textfield20" id="taskStakeholdersLiteralUsers">
+                                                                                                <input type="text" name="textfield20" id="taskStakeholdersLiteralUsers" placeholder="Users (Comma Seprated)">
                                                                                                 <!-- <br> Groups (Comma Seprated):
                                                                                                 <input type="text" name="textfield20" id="taskStakeholdersLiteralGroups"> -->
                                                                                             </td>

@@ -71,15 +71,7 @@ function generateInputWSDL(wsdlDom, currentTask) {
                 "http://www.w3.org/2001/XMLSchema", "xsd:element");
             newSubElement.setAttribute("name", $(this).find(
                 "input#taskInputMappingElementName" + k).val()); // Data
-            // element
-            // (Input
-            // Data
-            // Mapping)
-            // name
-            // field
             newSubElement.setAttribute("type", type); // Data element (Input
-            // Data Mapping) type
-            // field
             newSequence.appendChild(newSubElement);
         }
     });

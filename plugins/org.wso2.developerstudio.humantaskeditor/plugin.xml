@@ -36,7 +36,7 @@
    <extension
          point="org.eclipse.ui.newWizards">
       <category
-            name="HumanTaskWizards"
+            name="Human Task"
             id="org.wso2.developerstudio.humantaskeditor">
       </category>
       <wizard
@@ -46,6 +46,21 @@
             class="org.wso2.developerstudio.humantaskeditor.wizards.HumanTaskWizard"
             id="org.wso2.developerstudio.humantaskeditor.wizards.HumanTaskWizard">
       </wizard>
+      <wizard
+            name="Human Task Project"
+            icon="icons/sample.gif"
+            category="org.wso2.developerstudio.humantaskeditor"
+            class="org.wso2.developerstudio.humantaskeditor.wizards.HumanTaskProjectWizard"
+            id="org.wso2.developerstudio.humantaskeditor.wizards.HumanTaskProjectWizard">
+      </wizard>
    </extension>
-
+	<extension
+      point="org.eclipse.core.resources.natures"
+      id="humantasknature"
+      name="Human Task Nature">
+      <runtime>
+         <run class="org.wso2.developerstudio.humantaskeditor.wizards.HumanTaskNature">
+         </run>
+      </runtime>
+   </extension>
 </plugin>

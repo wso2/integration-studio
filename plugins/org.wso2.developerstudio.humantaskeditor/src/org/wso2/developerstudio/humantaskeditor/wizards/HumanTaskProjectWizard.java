@@ -16,43 +16,53 @@
 
 package org.wso2.developerstudio.humantaskeditor.wizards;
 
-import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.jface.wizard.Wizard;
-import org.eclipse.ui.INewWizard;
-import org.eclipse.ui.IWorkbench;
-import org.eclipse.core.runtime.*;
-import org.eclipse.jface.operation.*;
-
+import java.io.BufferedReader;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.ObjectInputStream.GetField;
 import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import org.eclipse.core.resources.IContainer;
+import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.IProjectDescription;
+import org.eclipse.core.resources.IResource;
+import org.eclipse.core.resources.IWorkspaceRoot;
+import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Path;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.viewers.ISelection;
-import org.eclipse.core.resources.*;
-import org.eclipse.core.runtime.CoreException;
-
-import java.io.*;
-
-import org.eclipse.ui.*;
+import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.jface.wizard.Wizard;
+import org.eclipse.ui.INewWizard;
+import org.eclipse.ui.IWorkbench;
+import org.eclipse.ui.IWorkbenchPage;
+import org.eclipse.ui.IWorkbenchWizard;
+import org.eclipse.ui.PartInitException;
+import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.ide.IDE;
 import org.wso2.developerstudio.humantaskeditor.Activator;
 
-/**
- * This class contains the wizard for creating a new ht file
- */
-
-public class HumanTaskWizard extends Wizard implements INewWizard {
+public class HumanTaskProjectWizard extends Wizard implements INewWizard {
     private HumanTaskWizardPage page;
     private ISelection selection;
-    private final static Logger logger = Logger.getLogger(Activator.PLUGIN_ID);
+    private final static Logger logger=Logger.getLogger(Activator.PLUGIN_ID);
 
     /**
      * Constructor for HumanTaskWizard.
      */
-    public HumanTaskWizard() {
+    public HumanTaskProjectWizard() {
         super();
         setNeedsProgressMonitor(true);
     }
@@ -77,7 +87,8 @@ public class HumanTaskWizard extends Wizard implements INewWizard {
         final String fileName = page.getFileName();
         IRunnableWithProgress op = new IRunnableWithProgress() {
             @Override
-            public void run(IProgressMonitor monitor) throws InvocationTargetException {
+            public void run(IProgressMonitor monitor)
+                    throws InvocationTargetException {
                 try {
                     doFinish(containerName, fileName, monitor);
                 } catch (CoreException e) {
@@ -89,12 +100,12 @@ public class HumanTaskWizard extends Wizard implements INewWizard {
         };
         try {
             getContainer().run(true, false, op);
-
         } catch (InterruptedException e) {
             return false;
         } catch (InvocationTargetException e) {
             Throwable realException = e.getTargetException();
-            MessageDialog.openError(getShell(), "Error", realException.getMessage());
+            MessageDialog.openError(getShell(), "Error",
+                    realException.getMessage());
             return false;
         }
         return true;
@@ -106,17 +117,18 @@ public class HumanTaskWizard extends Wizard implements INewWizard {
      * file.
      */
 
-    private void doFinish(String containerName, String fileName, IProgressMonitor monitor) throws CoreException {
+    private void doFinish(String containerName, String fileName,
+            IProgressMonitor monitor) throws CoreException {
         monitor.beginTask("Creating " + fileName, 2);
         IWorkspaceRoot root = ResourcesPlugin.getWorkspace().getRoot();
         IResource resource = root.findMember(new Path(containerName));
         if (!resource.exists() || !(resource instanceof IContainer)) {
-            throwCoreException("Container \"" + containerName + "\" does not exist.");
+            throwCoreException("Container \"" + containerName
+                    + "\" does not exist.");
         }
         IContainer container = (IContainer) resource;
         final IFile file = container.getFile(new Path(fileName));
-        addNature(container.getProject());
-
+        addNature(file.getProject());
         try {
             InputStream stream = openContentStream();
             if (file.exists()) {
@@ -129,23 +141,22 @@ public class HumanTaskWizard extends Wizard implements INewWizard {
         } catch (IOException e) {
             logger.log(Level.FINE, "Error Creating Initial File", e);
             IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage());
-            ErrorDialog.openError(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), "Error",
-                    "Error Creating Initial File", editorStatus);
+            ErrorDialog.openError(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), "Error", "Error Creating Initial File", editorStatus);
 
         }
         monitor.worked(1);
-        monitor.setTaskName("Open file for editing...");
+        monitor.setTaskName("Opening file for editing...");
         getShell().getDisplay().asyncExec(new Runnable() {
             @Override
             public void run() {
-                IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
+                IWorkbenchPage page = PlatformUI.getWorkbench()
+                        .getActiveWorkbenchWindow().getActivePage();
                 try {
                     IDE.openEditor(page, file, true);
                 } catch (PartInitException e) {
                     logger.log(Level.FINE, "Error Opening the Editor", e);
                     IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage());
-                    ErrorDialog.openError(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), "Error",
-                            "Error Opening the Editor", editorStatus);
+                    ErrorDialog.openError(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), "Error", "Error Opening the Editor", editorStatus);
 
                 }
             }
@@ -176,10 +187,11 @@ public class HumanTaskWizard extends Wizard implements INewWizard {
             url = new URL(
                     "platform:/plugin/org.wso2.developerstudio.humantaskeditor/HumanTaskEditor/resources/dummy.ht");
             InputStream inputStream = url.openConnection().getInputStream();
-            BufferedReader in = new BufferedReader(new InputStreamReader(inputStream));
+            BufferedReader in = new BufferedReader(new InputStreamReader(
+                    inputStream));
             String inputLine;
             while ((inputLine = in.readLine()) != null) {
-                sb.append(inputLine + "\n");
+                sb.append(inputLine+"\n");
             }
 
             in.close();
@@ -187,28 +199,30 @@ public class HumanTaskWizard extends Wizard implements INewWizard {
         } catch (IOException e) {
             logger.log(Level.FINE, "Error reading from HT file", e);
             IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage());
-            ErrorDialog.openError(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), "Error",
-                    "Error reading from project", editorStatus);
+            ErrorDialog.openError(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), "Error", "Error reading from project", editorStatus);
         }
         return sb.toString();
     }
 
     private void throwCoreException(String message) throws CoreException {
-        IStatus status = new Status(IStatus.ERROR, "org.wso2.developerstudio.humantaskeditor", IStatus.OK, message,
-                null);
+        IStatus status = new Status(IStatus.ERROR,
+                "org.wso2.developerstudio.humantaskeditor", IStatus.OK,
+                message, null);
         throw new CoreException(status);
     }
-
+    
     private static void addNature(IProject project) throws CoreException {
-        IProjectDescription description = project.getDescription();
-        String[] prevNatures = description.getNatureIds();
-        String[] newNatures = new String[prevNatures.length + 1];
-        System.arraycopy(prevNatures, 0, newNatures, 0, prevNatures.length);
-        newNatures[prevNatures.length] = HumanTaskNature.NATURE_ID;
-        description.setNatureIds(newNatures);
-        IProgressMonitor monitor = null;
-        project.setDescription(description, monitor);
-
+       if (!project.hasNature(HumanTaskNature.NATURE_ID)) {
+            IProjectDescription description = project.getDescription();
+            String[] prevNatures = description.getNatureIds();
+            String[] newNatures = new String[prevNatures.length + 1];
+            System.arraycopy(prevNatures, 0, newNatures, 0, prevNatures.length);
+            newNatures[prevNatures.length] = HumanTaskNature.NATURE_ID;
+            description.setNatureIds(newNatures);
+ 
+            IProgressMonitor monitor = null;
+            project.setDescription(description, monitor);
+        }
     }
 
     /**

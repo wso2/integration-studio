@@ -110,4 +110,26 @@ public class JsonSchema {
 		itemsObj.add(obj.getAsJsonObject());
 	}
 	
+	public void addCustomArray(String name) {
+		schema.getAsJsonObject().add(name, new JsonArray());
+	}
+	
+	public void addCustomObject(String name) {
+		schema.getAsJsonObject().add(name, new JsonObject());
+	}
+
+	public JsonArray getCustomArray(String name) {
+		if (schema.get(name) != null) {
+			return schema.get(name).getAsJsonArray();
+		}
+		return null;
+	}
+	
+	public JsonObject getCustomObject(String name) {
+		if (schema.get(name) != null) {
+			return schema.get(name).getAsJsonObject();
+		}
+		return null;
+	}
+	
 }

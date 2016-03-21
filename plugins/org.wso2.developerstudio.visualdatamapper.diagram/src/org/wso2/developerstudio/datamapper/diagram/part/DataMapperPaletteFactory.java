@@ -24,17 +24,14 @@ import org.eclipse.gef.Tool;
 import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.palette.PaletteContainer;
 import org.eclipse.gef.palette.PaletteDrawer;
-import org.eclipse.gef.palette.PaletteGroup;
 import org.eclipse.gef.palette.PaletteRoot;
 import org.eclipse.gef.palette.ToolEntry;
+import org.eclipse.gef.requests.CreateConnectionRequest;
 import org.eclipse.gmf.runtime.diagram.ui.internal.services.palette.PaletteToolEntry;
 import org.eclipse.gmf.runtime.diagram.ui.tools.UnspecifiedTypeConnectionTool;
 import org.eclipse.gmf.runtime.diagram.ui.tools.UnspecifiedTypeCreationTool;
 import org.eclipse.gmf.runtime.emf.type.core.IElementType;
-import org.eclipse.gmf.tooling.runtime.part.DefaultLinkToolEntry;
-import org.eclipse.gmf.tooling.runtime.part.DefaultNodeToolEntry;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.DataMapperRootEditPart;
-import org.wso2.developerstudio.datamapper.diagram.edit.parts.ElementEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.InNode2EditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.InNode3EditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.InNodeEditPart;
@@ -43,11 +40,15 @@ import org.wso2.developerstudio.datamapper.diagram.edit.parts.OperatorLeftConnec
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.OutNode2EditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.OutNodeEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.OutputEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.TreeNode2EditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.TreeNode3EditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.TreeNodeEditPart;
 import org.wso2.developerstudio.datamapper.diagram.providers.DataMapperElementTypes;
 
 /**
  * @generated
  */
+@SuppressWarnings("restriction")
 public class DataMapperPaletteFactory {
 
 	public static final int INITIAL_STATE_OPEN = 0, INITIAL_STATE_CLOSED = 1, INITIAL_STATE_PINNED_OPEN = 2;
@@ -264,33 +265,43 @@ public class DataMapperPaletteFactory {
 
 				@Override
 				protected Command getCommand() {
-
+					/*highlight the source element on mouse hover on outnode edit part
+					if (getTargetEditPart().getParent() != null){
+						EditPart parentEditPart = getTargetEditPart().getParent();
+						if (getTargetEditPart().getParent() instanceof TreeNodeEditPart) {
+							((TreeNodeEditPart)parentEditPart).highlightElementItem();
+						}else if (getTargetEditPart().getParent() instanceof TreeNode2EditPart) {
+							((TreeNode2EditPart)parentEditPart).highlightElementItem();
+						}else if (getTargetEditPart().getParent() instanceof TreeNode3EditPart) {
+							((TreeNode3EditPart)parentEditPart).highlightElementItem();
+						}
+					}*/
+						
 					/*
 					 * for Element
 					 */
-					if (getTargetEditPart() instanceof ElementEditPart) {
-
-						for (int i = 0; i < ((ElementEditPart) getTargetEditPart()).getChildren().size(); ++i) {
-
+					if (getTargetEditPart() instanceof TreeNodeEditPart) {
+						for (int i = 0; i < ((TreeNodeEditPart) getTargetEditPart()).getChildren().size(); ++i) {
+							TreeNodeEditPart treeNodeEditPart = (TreeNodeEditPart) getTargetEditPart();
 							if (getRoot(getTargetEditPart()) instanceof OutputEditPart) {
 
-								if (((ElementEditPart) getTargetEditPart()).getChildren().get(i) instanceof InNodeEditPart) {
-									return ((EditPart) ((ElementEditPart) getTargetEditPart()).getChildren().get(i))
+								if (treeNodeEditPart.getChildren().get(i) instanceof InNodeEditPart) {
+									return ((EditPart) treeNodeEditPart.getChildren().get(i))
 											.getCommand(getTargetRequest());
 
-								} else if (((ElementEditPart) getTargetEditPart()).getChildren().get(i) instanceof InNode2EditPart) {
-									return ((InNode2EditPart) ((ElementEditPart) getTargetEditPart()).getChildren()
+								} else if (treeNodeEditPart.getChildren().get(i) instanceof InNode2EditPart) {
+									return ((InNode2EditPart) treeNodeEditPart.getChildren()
 											.get(i)).getCommand(getTargetRequest());
 
 								}
 							} else if (getRoot(getTargetEditPart()) instanceof InputEditPart) {
 
-								if (((ElementEditPart) getTargetEditPart()).getChildren().get(i) instanceof OutNodeEditPart) {
-									return ((OutNodeEditPart) ((ElementEditPart) getTargetEditPart()).getChildren()
+								if (treeNodeEditPart.getChildren().get(i) instanceof OutNodeEditPart) {
+									return ((OutNodeEditPart) treeNodeEditPart.getChildren()
 											.get(i)).getCommand(getTargetRequest());
 
-								} else if (((ElementEditPart) getTargetEditPart()).getChildren().get(i) instanceof OutNode2EditPart) {
-									return ((OutNode2EditPart) ((ElementEditPart) getTargetEditPart()).getChildren()
+								} else if (treeNodeEditPart.getChildren().get(i) instanceof OutNode2EditPart) {
+									return ((OutNode2EditPart) treeNodeEditPart.getChildren()
 											.get(i)).getCommand(getTargetRequest());
 
 								}
@@ -298,7 +309,65 @@ public class DataMapperPaletteFactory {
 							}
 
 						}// for
-					}// for element mouse enter
+					} else if (getTargetEditPart() instanceof TreeNode2EditPart) {
+						for (int i = 0; i < ((TreeNode2EditPart) getTargetEditPart()).getChildren().size(); ++i) {
+							TreeNode2EditPart treeNode2EditPart = (TreeNode2EditPart) getTargetEditPart();
+							if (getRoot(getTargetEditPart()) instanceof OutputEditPart) {
+
+								if (treeNode2EditPart.getChildren().get(i) instanceof InNodeEditPart) {
+									return ((EditPart) treeNode2EditPart.getChildren().get(i))
+											.getCommand(getTargetRequest());
+
+								} else if (treeNode2EditPart.getChildren().get(i) instanceof InNode2EditPart) {
+									return ((InNode2EditPart) treeNode2EditPart.getChildren()
+											.get(i)).getCommand(getTargetRequest());
+
+								}
+							} else if (getRoot(getTargetEditPart()) instanceof InputEditPart) {
+
+								if (((TreeNode2EditPart) getTargetEditPart()).getChildren().get(i) instanceof OutNodeEditPart) {
+									return ((OutNodeEditPart) ((TreeNode2EditPart) getTargetEditPart()).getChildren()
+											.get(i)).getCommand(getTargetRequest());
+
+								} else if (((TreeNode2EditPart) getTargetEditPart()).getChildren().get(i) instanceof OutNode2EditPart) {
+									return ((OutNode2EditPart) ((TreeNode2EditPart) getTargetEditPart()).getChildren()
+											.get(i)).getCommand(getTargetRequest());
+
+								}
+
+							}
+
+						}// for
+					} else if (getTargetEditPart() instanceof TreeNode3EditPart) {
+						for (int i = 0; i < ((TreeNode3EditPart) getTargetEditPart()).getChildren().size(); ++i) {
+							TreeNode3EditPart treeNode3EditPart = (TreeNode3EditPart) getTargetEditPart();
+							if (getRoot(getTargetEditPart()) instanceof OutputEditPart) {
+
+								if (treeNode3EditPart.getChildren().get(i) instanceof InNodeEditPart) {
+									return ((EditPart) treeNode3EditPart.getChildren().get(i))
+											.getCommand(getTargetRequest());
+
+								} else if (treeNode3EditPart.getChildren().get(i) instanceof InNode2EditPart) {
+									return ((InNode2EditPart) treeNode3EditPart.getChildren()
+											.get(i)).getCommand(getTargetRequest());
+
+								}
+							} else if (getRoot(getTargetEditPart()) instanceof InputEditPart) {
+								if (treeNode3EditPart.getChildren().get(i) instanceof OutNodeEditPart) {
+									return ((OutNodeEditPart)treeNode3EditPart.getChildren()
+											.get(i)).getCommand(getTargetRequest());
+
+								} else if (treeNode3EditPart.getChildren().get(i) instanceof OutNode2EditPart) {
+									return ((OutNode2EditPart) treeNode3EditPart.getChildren()
+											.get(i)).getCommand(getTargetRequest());
+
+								}
+
+							}
+
+						}// for
+					}
+					// for treenode mouse enter
 
 					/*
 					 * for leftconnector

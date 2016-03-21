@@ -15,7 +15,7 @@ public class SchemaGeneratorForJSON extends AbstractSchemaGenerator implements I
 
 	@Override
 	public String getSchemaContent(String fileText) throws IOException {
-		SchemaBuilder sb = new SchemaBuilder();
+		SchemaBuilderWithNamepaces sb = new SchemaBuilderWithNamepaces();
 		String jsonSchema = sb.createSchema(fileText);
 		return  jsonSchema;
 	}

@@ -12,13 +12,15 @@ import com.google.gson.JsonPrimitive;
 
 public class SchemaBuilder {
 
+	JsonSchema root;
+	
 	public SchemaBuilder() {
 	}
 
 	public String createSchema(String jsonString) {
 		JsonParser jsonParser = new JsonParser();
 		JsonObject jo = (JsonObject) jsonParser.parse(jsonString);
-		JsonSchema root = new JsonSchema();
+		root = new JsonSchema();
 		root.setDolarSchema("http://json-schema.org/draft-04/schema#");
 		root.setTitle(getTitle(jo));
 		root.setId("http://jsonschema.net");
@@ -52,7 +54,7 @@ public class SchemaBuilder {
 				JsonSchema schemaArray = addArrayToParent(parent, id);
 				createSchema4Array(element.getAsJsonArray(), schemaArray, id);
 			} else {
-				addPrimitiveToParent(parent, id, propertyValueType);
+				addPrimitiveToParent(parent, id, element.getAsString(), propertyValueType);
 			}
 		}
 	}
@@ -73,7 +75,7 @@ public class SchemaBuilder {
 	}
 
 
-	private JsonSchema addObjectToParent(JsonSchema parent, String id) {
+	protected JsonSchema addObjectToParent(JsonSchema parent, String id) {
 		JsonSchema schema = new JsonSchema();
 		schema.setId(parent.getId() + "/" + id);
 		schema.setType("object");
@@ -81,7 +83,7 @@ public class SchemaBuilder {
 		return schema;
 	}
 	
-	private JsonSchema addArrayToParent(JsonSchema parent, String id) {
+	protected JsonSchema addArrayToParent(JsonSchema parent, String id) {
 		JsonSchema schema = new JsonSchema();
 		schema.setId(parent.getId() + "/" + id);
 		schema.setType("array");
@@ -90,7 +92,7 @@ public class SchemaBuilder {
 	}
 	
 	
-	private void addPrimitiveToParent(JsonSchema parent, String id, TypeEnum propertyValueType) {
+	protected void addPrimitiveToParent(JsonSchema parent, String id, String value, TypeEnum propertyValueType) {
 		JsonSchema leaf = new JsonSchema();
 		leaf.setId(parent.getId() + "/" + id);
 		leaf.setType(propertyValueType.toString().toLowerCase());
@@ -98,7 +100,7 @@ public class SchemaBuilder {
 	}
 	
 
-	private JsonSchema addObjectToParentItemsArray(JsonSchema parent, String id) {
+	protected JsonSchema addObjectToParentItemsArray(JsonSchema parent, String id) {
 		JsonSchema schema = new JsonSchema();
 		schema.setId(parent.getId() + "/" + id);
 		schema.setType("object");
@@ -107,7 +109,7 @@ public class SchemaBuilder {
 	}
 
 
-	private JsonSchema addPrimitiveToParentItemsArray(JsonSchema parent, String id, TypeEnum propertyValueType) {
+	protected JsonSchema addPrimitiveToParentItemsArray(JsonSchema parent, String id, TypeEnum propertyValueType) {
 		JsonSchema schema = new JsonSchema();
 		schema.setId(parent.getId() + "/" + id);
 		schema.setType(propertyValueType.toString().toLowerCase());

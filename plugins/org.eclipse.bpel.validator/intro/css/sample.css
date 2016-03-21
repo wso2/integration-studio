@@ -1,0 +1,3 @@
+
+a#org.eclipse.bpel.validator-introLink img { background-image : url(graphics/sample.gif); }
+a#org.eclipse.bpel.validator-introLink:hover img { background-image : url(graphics/sample_hov.gif); }

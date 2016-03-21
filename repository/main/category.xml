@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <category-def name="org.wso2.developerstudio.eclipse.bps.feature.category" label="WSO2 BPS Tools">
+<description>
+		This is the App Server Feature for the Developer Studio. This provides tooling support for WSO2 BPS Artifact creation and deployment with Developer Studio.
+      </description>
+	 </category-def>
+ <feature id="org.wso2.developerstudio.eclipse.bps.feature" version="0.0.0">
+      <category name="org.wso2.developerstudio.eclipse.bps.feature.category"/>
+   </feature>
+</site>

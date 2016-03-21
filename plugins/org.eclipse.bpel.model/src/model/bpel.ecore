@@ -1,0 +1,616 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="model" nsURI="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+    nsPrefix="bpws">
+  <eClassifiers xsi:type="ecore:EClass" name="Process" eSuperTypes="#//BPELExtensibleElement">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Describes behavior based on interactions between the activities performed by partners through Web Service interfaces. Defines how individual or composite activities are coordinated to achieve a business goal, as well as the state and logic necessary for this coordination. Represents stateful, long-running interactions in which each interaction has a beginning, defined behavior during its lifetime, and an end.&#xD;&#xA;&#xD;&#xA;Abstract processes approach data handling in a way that reflects the level of abstraction required to describe the public aspects of the business protocol. Abstract processes handle only protocol-relevant data as defined by message properties.&#xD;&#xA;&#xD;&#xA;Processes and Partners are modeled as WSDL services."/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="targetNamespace" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="queryLanguage" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="expressionLanguage" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="suppressJoinFailure" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject"
+        defaultValueLiteral="false" unsettable="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Determines whether the joinFailure fault will be suppressed for all activities in the process. Default is false."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="variableAccessSerializable"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject"
+        defaultValueLiteral="false" unsettable="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Specifies the XML query language used for selection of nodes in assignment, property definitions, and other uses. The default is XPath 1.0."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="partnerLinks" eType="#//PartnerLinks"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="variables" eType="#//Variables"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="activity" lowerBound="1"
+        eType="#//Activity" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="faultHandlers" eType="#//FaultHandler"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eventHandlers" eType="#//EventHandler"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="correlationSets" eType="#//CorrelationSets"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="imports" upperBound="-1"
+        eType="#//Import" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="extensions" eType="#//Extensions"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="exitOnStandardFault" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EBooleanObject"
+        defaultValueLiteral="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="messageExchanges" eType="#//MessageExchanges"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="abstractProcessProfile"
+        eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"
+        unsettable="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PartnerLink" eSuperTypes="#//BPELExtensibleElement">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="The services with which a business process interacts are modeled as partners in the process. Partners both consume and provide services to a business Process. These services are characterized by a ServiceLinkType.&#xD;&#xA;&#xD;&#xA;Partners define the different parties that interact with the business process. A partner represents both a consumer of a service provided by the business process and a provider of a service to the business process.&#xD;&#xA;&#xD;&#xA;The role of the partner is always seen from the perspective of the process that contains it. For invoke activities, the partner plays a role to provide the invoked service. For receive activities, the partner plays a role to invoke the service, and the process plays the role of providing it.&#xD;&#xA;&#xD;&#xA;Each partner is characterized by a service link type and a role name that identifies the functionality that must be provided by the business process and by the partner for the relationship to succeed. That is, the portTypes that the process and partners need to implement.&#xD;&#xA;&#xD;&#xA;myRole represents the responsibilities or services produced and consumed by this process. For services provided by this process, myRole must specify a role of the serviceLinkType which which has a portType and operation that appears in a receive activity within this process. That is, for some receive activity in this process, its partner attribute must name a partner defined in the process having myRole specify a role of the partner's serviceLinkType whose portType matches the receive portType, that portType must contain the operation specified in the receive activity, and the container of that activity must refer to a container of the process whose messageType is the same as the input message of the operation.&#xD;&#xA;&#xD;&#xA;For consumed services, similar rules apply to the invoke activity. The partner attribute must name a partner defined in the process having partnerRole specify a role of the partner's serviceLinkType whose portType matches the invoke portType, that portType must contain the operation specified in the invoke activity, and the inputContainer of that activity  must refer to a container of the process whose messageType is same as the input message of the operation, and whose outputContainer refers to a container of the process whose messageType is the same as the output message of the operation.&#xD;&#xA;"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="myRole" eType="ecore:EClass partnerlinktype.ecore#//Role"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="partnerRole" eType="ecore:EClass partnerlinktype.ecore#//Role"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="PartnerLinkType" eType="ecore:EClass partnerlinktype.ecore#//PartnerLinkType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="initializePartnerRole"
+        eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EBooleanObject"
+        unsettable="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FaultHandler" eSuperTypes="#//BPELExtensibleElement">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Defines the activities that must be executed in response to faults resulting from the invocation of services in a process."/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="catch" upperBound="-1"
+        eType="#//Catch" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="catchAll" eType="#//CatchAll"
+        unsettable="true" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Activity" eSuperTypes="#//BPELExtensibleElement">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Represents a unit-of-work in a process. If the suppressJoinFailure is true, then the joinCondition determines if the activity is executed based on incoming links."/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="suppressJoinFailure" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject"
+        unsettable="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Suppresses the join failure for this activity and all nested activities (unless overridden by some nested activity)."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="targets" eType="#//Targets"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sources" eType="#//Sources"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CorrelationSet" eSuperTypes="#//BPELExtensibleElement">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="A named group of properties that, taken together, serve to define a way of identifying an application-level conversation within a business protocol instance.&#xD;&#xA;&#xD;&#xA;A given message can cary multiple correlation sets. After initialization, the values of the properties for a correlation set in a business process instance must be identical for all the messages in all the operations that carry the correlation set."/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="properties" upperBound="-1"
+        eType="ecore:EClass messageproperties.ecore#//Property"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Invoke" eSuperTypes="#//PartnerActivity">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Allows the business process to invoke a one-way asynchronous, or request-response synchronous operation on a portType offered by a partner playing a role in the business process as specified in a ServiceLinkType. Asyncrhosous invocations specify only an input container while synchronous invocations specify both an input and output container. Correlation sets are used to correlate the business process with a stateful service provided by the partner.&#xD;&#xA;"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="outputVariable" eType="#//Variable"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="inputVariable" eType="#//Variable"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="compensationHandler" eType="#//CompensationHandler"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="faultHandler" eType="#//FaultHandler"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="fromParts" eType="#//FromParts"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="toParts" eType="#//ToParts"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="failureHandling" eType="#//FailureHandling"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Link" eSuperTypes="#//BPELExtensibleElement">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Specifies the synchronization dependencies between activities in a flow. Each activity can be the source and/or target of any number of links. Links establish a predecessor/successor relationship between activities. Activities that are the source of a link are predecessors of activities that are targets of the same link. Parallel execution of activities in a flow is synchronized by requiring that all the source activities of an activity must complete before corresponding target activities of the same link can run. When an activity completes, all activities that are targets of links for which this activity is a source are now candidates for execution (assuming all their predecessor activities have completed)."/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sources" upperBound="-1"
+        eType="#//Source" eOpposite="#//Source/Link"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="targets" upperBound="-1"
+        eType="#//Target" eOpposite="#//Target/Link"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Catch" eSuperTypes="#//BPELExtensibleElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="faultName" eType="ecore:EDataType platform:/plugin/org.eclipse.wst.wsdl/model/WSDL.ecore#//QName"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="faultVariable" eType="#//Variable"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="activity" lowerBound="1"
+        eType="#//Activity" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="faultMessageType" eType="ecore:EClass platform:/plugin/org.eclipse.wst.wsdl/model/WSDL.ecore#//Message"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="faultElement" eType="ecore:EClass platform:/plugin/org.eclipse.xsd/model/XSD.ecore#//XSDElementDeclaration"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Reply" eSuperTypes="#//PartnerActivity #//Activity">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Allows a business process to send a message in reply to a message that was received through a Receive. The combination of a Receive and Reply forms a synchronous request-response operation on the WSDL portType for the process. The container for the replay activity provides the output message for the partner process invoke activity that invoked the corresponding receive activity.&#xD;&#xA;&#xD;&#xA;FaultName specifies the name of a fault and must match some Catch fault name in the Scope or Process's FaultHandler.&#xD;&#xA;&#xD;&#xA;A receive can have more than one corresponding reply, at most one without a faultName, and any mumber with different faults."/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="faultName" eType="ecore:EDataType platform:/plugin/org.eclipse.wst.wsdl/model/WSDL.ecore#//QName"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="variable" eType="#//Variable"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="toParts" eType="#//ToParts"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="messageExchange" lowerBound="1"
+        eType="#//MessageExchange"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PartnerActivity" eSuperTypes="#//Activity">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="partnerLink" lowerBound="1"
+        eType="#//PartnerLink"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="correlations" eType="#//Correlations"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="portType" lowerBound="1"
+        eType="ecore:EClass platform:/plugin/org.eclipse.wst.wsdl/model/WSDL.ecore#//PortType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="operation" lowerBound="1"
+        eType="ecore:EClass platform:/plugin/org.eclipse.wst.wsdl/model/WSDL.ecore#//Operation"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Receive" eSuperTypes="#//PartnerActivity">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Allows a business process to block and wait for a particular message to be invoked by a partner in another process. A Receive Activity has a corresponding WSDL portType and operation which other processes can use to invoke the service. The partner can only invoke operations specified by the role it is playing as defined in a ServiceLinkType.&#xD;&#xA;&#xD;&#xA;The container for the receive activity corresponds to the input message of its operation. The container messageType must be the input message.&#xD;&#xA;&#xD;&#xA;If the operation has an output message, it corresponds to a request-response WSDL message. There must be a corresponding Reply Activity in the process having a container whose messageType is the same as the output message. The Reply Activity is used to send a return message back to the invoking process ."/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="createInstance" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject"
+        defaultValueLiteral="false" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="variable" lowerBound="1"
+        eType="#//Variable"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="fromParts" eType="#//FromParts"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="messageExchange" lowerBound="1"
+        eType="#//MessageExchange"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Exit" eSuperTypes="#//Activity">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="When executed, immediately terminates the business process."/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Throw" eSuperTypes="#//Activity">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Generates a fault from inside the business process. The FaultHandler may be a proxy for an application or process-specific fault instead of a BPEL FaultHandler"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="faultName" eType="ecore:EDataType platform:/plugin/org.eclipse.wst.wsdl/model/WSDL.ecore#//QName"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="faultVariable" eType="#//Variable"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Wait" eSuperTypes="#//Activity">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Waits for a given time period or until a certain time is reached. Either expression for or until may be specified, but not both."/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="for" eType="#//Expression"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="until" eType="#//Expression"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Empty" eSuperTypes="#//Activity">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="A &quot;no-op&quot; instruction useful as the target for synchronization of parallel activities, for instance. Empty is also required in situations that require at least one Activity, but there is nothing to do. This may often occur in fault handlers.&#xD;&#xA;"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Sequence" eSuperTypes="#//Activity">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Defines the structure of the process. Activities in a sequence are executed in order."/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="activities" lowerBound="1"
+        upperBound="-1" eType="#//Activity" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="While" eSuperTypes="#//Activity">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Indicates an activity is to be repeated while a condition is met."/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="activity" lowerBound="1"
+        eType="#//Activity" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="condition" lowerBound="1"
+        eType="#//Condition" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Pick" eSuperTypes="#//Activity">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Blocks and waits for the occurrence of one of a set of messages to arrive or for a time-out to go off. When the pick trigger occurs, the associated activity is executed and the pick completes."/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="createInstance" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject"
+        defaultValueLiteral="false" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="messages" lowerBound="1"
+        upperBound="-1" eType="#//OnMessage" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="alarm" upperBound="-1"
+        eType="#//OnAlarm" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Flow" eSuperTypes="#//Activity">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Enables concurrent execution of its contained activities. Contrast with Sequence which executes its contained activities in order. Links can be used in a flow to define arbitrary predecessor and/or successor activities. A flow activity completes when all of its concurrent activities have  been completed."/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="activities" lowerBound="1"
+        upperBound="-1" eType="#//Activity" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="links" eType="#//Links"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="completionCondition" eType="#//CompletionCondition"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="OnAlarm" eSuperTypes="#//BPELExtensibleElement">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="When the alert fires, the activity is executed."/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="activity" lowerBound="1"
+        eType="#//Activity" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="for" eType="#//Expression"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="until" eType="#//Expression"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="repeatEvery" eType="#//Expression"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AssignE4X" eSuperTypes="#//Activity">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Validate" lowerBound="1"
+        eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EBooleanObject"
+        defaultValueLiteral=""/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="extensionAssignOperation"
+        lowerBound="1" upperBound="-1" eType="#//ExtensionAssignOperation" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ExtensionAssignOperation" eSuperTypes="#//BPELExtensibleElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="snippet" lowerBound="1"
+        eType="#//Snippet" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Snippet" eSuperTypes="#//BPELExtensibleElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="body" lowerBound="1" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EJavaObject"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Assign" eSuperTypes="#//Activity">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Used to update values of containers with new data. Assigns the Form r-value to the To l-value. An Assign is an atomic Activity. All copy elements succeed or none of them do. Exceptions are raised by incompatible types."/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="copy" lowerBound="1" upperBound="-1"
+        eType="#//Copy" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="validate" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EBooleanObject"
+        defaultValueLiteral="false"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Copy" eSuperTypes="#//BPELExtensibleElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="to" lowerBound="1" eType="#//To"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="from" lowerBound="1" eType="#//From"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="keepSrcElementName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject"
+        defaultValueLiteral="false" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ignoreMissingFromData"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject"
+        defaultValueLiteral="false" unsettable="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Extension" eSuperTypes="#//BPELExtensibleElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="namespace" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="mustUnderstand" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject"
+        defaultValueLiteral="false" unsettable="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Scope" eSuperTypes="#//Activity">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Defines a nested activity with its own associated fault and compensation handlers."/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isolated" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject"
+        defaultValueLiteral="false" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="faultHandlers" eType="#//FaultHandler"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="compensationHandler" eType="#//CompensationHandler"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="activity" lowerBound="1"
+        eType="#//Activity" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="variables" eType="#//Variables"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="correlationSets" eType="#//CorrelationSets"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eventHandlers" eType="#//EventHandler"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="partnerLinks" eType="#//PartnerLinks"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="terminationHandler" eType="#//TerminationHandler"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="messageExchanges" eType="#//MessageExchanges"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="exitOnStandardFault" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject"
+        defaultValueLiteral="false" unsettable="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CompensateScope" eSuperTypes="#//Activity">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Used to invoke compensation of an inner scope that has already completed its execution normally. This construct can  be invoked only from within a fault handler or the compensation handler of the scope that immediately encloses the scope for which compensation is to be performed."/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="target" eType="#//Activity">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Specifies the scope whose compensation handler is to be invoked."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CompensationHandler" eSuperTypes="#//BPELExtensibleElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="activity" lowerBound="1"
+        eType="#//Activity" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AbstractAssignBound" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="variable" eType="#//Variable"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="part" eType="ecore:EClass platform:/plugin/org.eclipse.wst.wsdl/model/WSDL.ecore#//Part"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="partnerLink" eType="#//PartnerLink"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="property" eType="ecore:EClass messageproperties.ecore#//Property"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="query" eType="#//Query"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="expression" eType="#//Expression"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="To" eSuperTypes="#//BPELExtensibleElement #//AbstractAssignBound">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Represents an l-value in an assignment activity. Can be used to query a node of a part of a container, a property of a container, or a service reference of a partner."/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="From" eSuperTypes="#//BPELExtensibleElement #//AbstractAssignBound">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="opaque" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject"
+        unsettable="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Signifies that an opaque value is to be assigned to a container property based on a non-deterministic choice. Must be used in abstract processes only. The XSD type of the To container property must be derived from xsd:string restricted by enumeration or any restricted XSD integral numeric type."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="endpointReference" eType="#//EndpointReferenceRole"
+        unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="literal" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="unsafeLiteral" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="serviceRef" eType="#//ServiceRef"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="ecore:EClass platform:/plugin/org.eclipse.xsd/model/XSD.ecore#//XSDTypeDefinition"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="OnMessage" eSuperTypes="#//BPELExtensibleElement">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Receipt of the corresponding message, the activity is executed."/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="variable" eType="#//Variable"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="activity" eType="#//Activity"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="portType" lowerBound="1"
+        eType="ecore:EClass platform:/plugin/org.eclipse.wst.wsdl/model/WSDL.ecore#//PortType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="partnerLink" lowerBound="1"
+        eType="#//PartnerLink"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="correlations" eType="#//Correlations"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="operation" lowerBound="1"
+        eType="ecore:EClass platform:/plugin/org.eclipse.wst.wsdl/model/WSDL.ecore#//Operation"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="fromParts" eType="#//FromParts"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="messageExchange" lowerBound="1"
+        eType="#//MessageExchange"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Expression" eSuperTypes="platform:/plugin/org.eclipse.wst.wsdl/model/WSDL.ecore#//ExtensibilityElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="body" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EJavaObject"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="expressionLanguage" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="opaque" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EBooleanObject"
+        unsettable="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BooleanExpression" eSuperTypes="#//Expression"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Correlation" eSuperTypes="#//BPELExtensibleElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="initiate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="no" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="pattern" eType="#//CorrelationPattern"
+        unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="set" lowerBound="1" eType="#//CorrelationSet"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="CorrelationPattern">
+    <eLiterals name="request"/>
+    <eLiterals name="response" value="1"/>
+    <eLiterals name="requestresponse" value="2" literal="request-response"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="EndpointReferenceRole">
+    <eLiterals name="myRole"/>
+    <eLiterals name="partnerRole" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MessageExchange" eSuperTypes="#//BPELExtensibleElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral=""/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EventHandler" eSuperTypes="#//BPELExtensibleElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="alarm" upperBound="-1"
+        eType="#//OnAlarm" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="events" upperBound="-1"
+        eType="#//OnEvent" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Source" eSuperTypes="#//BPELExtensibleElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="Link" lowerBound="1" eType="#//Link"
+        eOpposite="#//Link/sources"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="activity" lowerBound="1"
+        eType="#//Activity"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="transitionCondition" eType="#//Condition"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Target" eSuperTypes="#//BPELExtensibleElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="Link" lowerBound="1" eType="#//Link"
+        eOpposite="#//Link/targets"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="activity" lowerBound="1"
+        eType="#//Activity"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PartnerLinks" eSuperTypes="#//BPELExtensibleElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="children" upperBound="-1"
+        eType="#//PartnerLink" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MessageExchanges" eSuperTypes="#//BPELExtensibleElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="children" upperBound="-1"
+        eType="#//MessageExchange" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Variables" eSuperTypes="#//BPELExtensibleElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="children" upperBound="-1"
+        eType="#//Variable" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CorrelationSets" eSuperTypes="#//BPELExtensibleElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="children" upperBound="-1"
+        eType="#//CorrelationSet" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Links" eSuperTypes="#//BPELExtensibleElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="children" upperBound="-1"
+        eType="#//Link" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CatchAll" eSuperTypes="#//BPELExtensibleElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="activity" lowerBound="1"
+        eType="#//Activity" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Correlations" eSuperTypes="#//BPELExtensibleElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="children" upperBound="-1"
+        eType="#//Correlation" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Variable" eSuperTypes="#//BPELExtensibleElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="messageType" eType="ecore:EClass platform:/plugin/org.eclipse.wst.wsdl/model/WSDL.ecore#//Message"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="XSDElement" eType="ecore:EClass platform:/plugin/org.eclipse.xsd/model/XSD.ecore#//XSDElementDeclaration"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="ecore:EClass platform:/plugin/org.eclipse.xsd/model/XSD.ecore#//XSDTypeDefinition"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="from" eType="#//From" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="UnknownExtensibilityAttribute" eSuperTypes="platform:/plugin/org.eclipse.wst.wsdl/model/WSDL.ecore#//UnknownExtensibilityElement"/>
+  <eClassifiers xsi:type="ecore:EClass" name="OnEvent" eSuperTypes="#//BPELExtensibleElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="activity" eType="#//Activity"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="variable" eType="#//Variable"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="partnerLink" lowerBound="1"
+        eType="#//PartnerLink"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="correlations" eType="#//Correlations"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="operation" lowerBound="1"
+        eType="ecore:EClass platform:/plugin/org.eclipse.wst.wsdl/model/WSDL.ecore#//Operation"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="portType" lowerBound="1"
+        eType="ecore:EClass platform:/plugin/org.eclipse.wst.wsdl/model/WSDL.ecore#//PortType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="messageType" eType="ecore:EClass platform:/plugin/org.eclipse.wst.wsdl/model/WSDL.ecore#//Message"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="XSDElement" eType="ecore:EClass platform:/plugin/org.eclipse.xsd/model/XSD.ecore#//XSDElementDeclaration"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="correlationSets" eType="#//CorrelationSets"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="fromParts" eType="#//FromParts"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="messageExchange" lowerBound="1"
+        eType="#//MessageExchange"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Import" eSuperTypes="#//BPELExtensibleElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="namespace" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="location" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="importType" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Rethrow" eSuperTypes="#//Activity"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Condition" eSuperTypes="#//Expression"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Targets" eSuperTypes="#//BPELExtensibleElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="children" upperBound="-1"
+        eType="#//Target" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="joinCondition" eType="#//Condition"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Sources" eSuperTypes="#//BPELExtensibleElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="children" upperBound="-1"
+        eType="#//Source" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Query" eSuperTypes="platform:/plugin/org.eclipse.wst.wsdl/model/WSDL.ecore#//WSDLElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="queryLanguage" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ServiceRef" eSuperTypes="platform:/plugin/org.eclipse.wst.wsdl/model/WSDL.ecore#//ExtensibleElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="referenceScheme" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EJavaObject"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Extensions" eSuperTypes="#//BPELExtensibleElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="children" upperBound="-1"
+        eType="#//Extension" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ExtensionActivity" eSuperTypes="#//Activity"/>
+  <eClassifiers xsi:type="ecore:EClass" name="FromPart" eSuperTypes="#//BPELExtensibleElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="toVariable" eType="#//Variable"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="part" eType="ecore:EClass platform:/plugin/org.eclipse.wst.wsdl/model/WSDL.ecore#//Part"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ToPart" eSuperTypes="#//BPELExtensibleElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="fromVariable" eType="#//Variable"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="part" eType="ecore:EClass platform:/plugin/org.eclipse.wst.wsdl/model/WSDL.ecore#//Part"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="OpaqueActivity" eSuperTypes="#//Activity">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Hides detailed information of an existing executable activity. Using an Opaque Activity will turn the process into an abstract process."/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ForEach" eSuperTypes="#//Activity">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="startCounterValue" lowerBound="1"
+        eType="#//Expression" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="finalCounterValue" lowerBound="1"
+        eType="#//Expression" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="parallel" lowerBound="1"
+        eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EBooleanObject"
+        defaultValueLiteral="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="counterName" lowerBound="1"
+        eType="#//Variable" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="completionCondition" eType="#//CompletionCondition"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="activity" lowerBound="1"
+        eType="#//Activity" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RepeatUntil" eSuperTypes="#//Activity">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="activity" lowerBound="1"
+        eType="#//Activity" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="condition" lowerBound="1"
+        eType="#//Condition" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TerminationHandler" eSuperTypes="#//BPELExtensibleElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="activity" eType="#//Activity"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Validate" eSuperTypes="#//Activity">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="variables" upperBound="-1"
+        eType="#//Variable"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="If" eSuperTypes="#//Activity">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="condition" eType="#//Condition"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="elseIf" upperBound="-1"
+        eType="#//ElseIf" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="else" eType="#//Else" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="activity" lowerBound="1"
+        eType="#//Activity" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ElseIf" eSuperTypes="#//BPELExtensibleElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="condition" eType="#//Condition"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="activity" lowerBound="1"
+        eType="#//Activity" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Else" eSuperTypes="#//BPELExtensibleElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="activity" lowerBound="1"
+        eType="#//Activity" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CompletionCondition" eSuperTypes="#//BPELExtensibleElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="branches" eType="#//Branches"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Branches" eSuperTypes="#//Expression">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="countCompletedBranchesOnly"
+        eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EBooleanObject"
+        defaultValueLiteral="false" unsettable="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BPELExtensibleElement" eSuperTypes="platform:/plugin/org.eclipse.wst.wsdl/model/WSDL.ecore#//ExtensibleElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="documentation" eType="#//Documentation"
+        unsettable="true" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Documentation" eSuperTypes="#//BPELExtensibleElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="lang" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="source" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Compensate" eSuperTypes="#//Activity"/>
+  <eClassifiers xsi:type="ecore:EClass" name="FromParts" eSuperTypes="#//BPELExtensibleElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="children" upperBound="-1"
+        eType="#//FromPart" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ToParts" eSuperTypes="#//BPELExtensibleElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="children" upperBound="-1"
+        eType="#//ToPart" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FailureHandling" eSuperTypes="#//BPELExtensibleElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="faultOnFailure" eType="#//FaultOnFailure"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="retryFor" eType="#//RetryFor"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="retryDelay" eType="#//RetryDelay"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FaultOnFailure" eSuperTypes="#//BPELExtensibleElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RetryFor" eSuperTypes="#//BPELExtensibleElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RetryDelay" eSuperTypes="#//BPELExtensibleElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EInt"/>
+  </eClassifiers>
+</ecore:EPackage>

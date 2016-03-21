@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.newWizards">
+         <wizard name="BPEL Workflow" category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.eclipse.business.processes"
+			class="org.wso2.developerstudio.eclipse.artifact.bpel.ui.wizard.BPELProjectCreationWizard"
+			wizardManifest="project_wizard.xml"
+			id="org.wso2.developerstudio.eclipse.artifact.newbpelartifact"
+			icon="icons/bpel-16x16.png"
+			finalPerspective="org.eclipse.bpel.ui.perspective"
+			project="true">
+			<description>BPEL Workflow</description>
+		</wizard>
+   </extension>
+   <extension point="org.wso2.developerstudio.eclipse.capp.artifacts.provider">
+    	<provider class="org.wso2.developerstudio.eclipse.artifact.bpel.project.export.BPELArtifactProvider"
+          nature="org.wso2.developerstudio.eclipse.bpel.project.nature"></provider>
+   </extension>
+   <extension point="org.eclipse.ui.newWizards">
+ 		 <wizard name="Apply Security" category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.eclipse.business.processes"
+ 			class="org.wso2.developerstudio.eclipse.artifact.bpel.ui.wizard.BPELSecurityWizard"
+ 			wizardManifest="project_wizard.xml"
+ 			id="org.wso2.developerstudio.eclipse.artifact.applySecurity"
+ 			icon="icons/bpel-16x16.png"
+ 			finalPerspective="org.eclipse.bpel.ui.perspective"
+ 			project="true">
+ 			<description>Apply Security for BPEL Workflow</description>
+ 		</wizard>
+ 	</extension>
+   <!--extension point="org.eclipse.ui.newWizards"-->
+      <!--Manually added to categories-->
+		<!--category name="WSO2" id="org.wso2.developerstudio.eclipse.capp.project">
+		</category>
+		<category name="Artifacts" id="org.wso2.developerstudio.eclipse.artifacts" 
+			parentCategory="org.wso2.developerstudio.eclipse.capp.project">
+		</category>
+   </extension-->
+   <extension point="org.eclipse.core.resources.natures"
+		id="org.wso2.developerstudio.eclipse.bpel.project.nature" name="BPEL Project Nature">
+		<runtime>
+			<run
+				class="org.wso2.developerstudio.eclipse.artifact.bpel.project.nature.BPELProjectNature">
+			</run>
+		</runtime>
+	</extension>
+	<extension point="org.eclipse.ui.ide.projectNatureImages">
+		<image id="org.wso2.developerstudio.eclipse.bpel.project.natureImage"
+			natureId="org.wso2.developerstudio.eclipse.bpel.project.nature" icon="icons/bpel-12x12.png">
+		</image>
+	</extension>
+  <!--<extension point="org.eclipse.ui.navigator.navigatorContent">	
+	   <navigatorContent activeByDefault="true"
+			priority="high"
+			id="org.eclipse.ui.navigator.resourceContent"
+			name="test">
+				<commonWizard 
+					menuGroupId="4org.wso2.developerstudio.eclipse.artifact.newbpelartifact"
+			  	 	type="new"
+					wizardId="org.wso2.developerstudio.eclipse.artifact.newbpelartifact">
+					<enablement>
+						<or>
+							<adapt type="org.eclipse.core.resources.IProject"/>
+							<adapt type="org.eclipse.core.resources.IFolder"/>
+						</or>
+					</enablement>
+				</commonWizard>
+				<triggerPoints>
+				           <or>         
+				              <instanceof 
+				                    value="org.eclipse.core.resources.IWorkspaceRoot" /> 
+				              <instanceof
+				                    value="org.eclipse.core.resources.IProject" />  
+				              <instanceof  
+				                     value="org.eclipse.core.resources.IFolder" /> 
+				           </or>
+				  </triggerPoints>
+		</navigatorContent>
+	</extension>-->
+			<extension point="org.eclipse.ui.navigator.navigatorContent">    
+            <commonWizard type="new"
+                menuGroupId="1org.wso2.developerstudio.eclipse.artifact.webservice"
+                wizardId="org.wso2.developerstudio.eclipse.artifact.newbpelartifact">
+                <enablement>
+                    <or>
+                        <adapt type="org.eclipse.core.resources.IProject">
+                            <test property="org.eclipse.core.resources.projectNature"
+                                value="org.wso2.developerstudio.eclipse.mavenmultimodule.project.nature" />
+                                </adapt>
+                       <adapt type="org.eclipse.jdt.core.IPackageFragment">
+							<test property="org.wso2.developerstudio.projectNature"
+								value="org.wso2.developerstudio.eclipse.mavenmultimodule.project.nature" />
+						</adapt>
+                    </or>
+                </enablement>
+            </commonWizard>
+    </extension>
+     <extension
+        point="org.wso2.developerstudio.eclipse.project.export.handler">
+     <handler
+           class="org.wso2.developerstudio.eclipse.artifact.bpel.project.export.BPELArtfactExportHandler"
+           id="org.wso2.developerstudio.eclipse.artifact.bpel.project.export.handler"
+           type="bpel/workflow">
+     </handler>
+  </extension>
+ 	
+ 	<extension point="org.eclipse.ui.popupMenus">
+		<objectContribution
+				objectClass="org.eclipse.core.resources.IProject"
+				id="org.wso2.developerstudio.eclipse.artifact.bpel.popup.generate">
+			<action
+					label="Apply Security"
+					icon="icons/bpel-16x16.png"
+					class="org.wso2.developerstudio.eclipse.artifact.bpel.ui.wizard.BPELSecurityAction"
+					id="org.wso2.developerstudio.eclipse.artifact.applySecurity">
+			</action>
+			<enablement>
+				<adapt type="org.eclipse.core.resources.IProject">
+					<test property="org.eclipse.core.resources.projectNature"
+						  value="org.wso2.developerstudio.eclipse.bpel.project.nature"/>
+				</adapt>
+			</enablement>
+		</objectContribution>
+	</extension>
+	
+  <extension
+       point="org.wso2.developerstudio.eclipse.samples">
+    <sample
+          class="org.wso2.developerstudio.eclipse.artifact.bpel.sample.BPELSampleContributor"
+          id="org.wso2.developerstudio.eclipse.capp.artifact.bpel.sample"
+          isCustomCreateSample="false"
+          sampleProjectName="HelloWorldWorkFlow">
+    </sample>
+ </extension>
+
+<extension point="org.wso2.developerstudio.eclipse.platform.core.intro.ui.dashboard">
+     <category id="dashboard.category.bps" showTitle="true"
+                  title="Business Process Server"
+                  priority="6">
+     </category>
+     <wizardLink category="dashboard.category.bps" id="dashboard.wizardLink.bpel"
+                    wizard="org.wso2.developerstudio.eclipse.artifact.newbpelartifact">
+     </wizardLink>
+ </extension>
+</plugin>

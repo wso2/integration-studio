@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <category-def name="org.wso2.developerstudio.eclipse.bps.feature.category" label="WSO2 BPS Tools">
+   <description>
+		This is the App Server Feature for the Developer Studio. This provides tooling support for WSO2 BPS Artifact creation and deployment with Developer Studio.
+   </description>
+	 </category-def>
+   <feature id="org.wso2.developerstudio.eclipse.bps.feature" version="0.0.0">
+      <category name="org.wso2.developerstudio.eclipse.bps.feature.category"/>
+   </feature>
+
+   <!-- Kernel Features and category-->	
+ <feature id="org.wso2.developerstudio.kernel.core.feature" version="0.0.0">
+      <category name="org.wso2.developerstudio.eclipse.bps.feature.category"/>
+   </feature>
+   <feature id="org.wso2.developerstudio.kernel.core.ui.feature" version="0.0.0">
+      <category name="org.wso2.developerstudio.eclipse.bps.feature.category"/>
+   </feature>
+   <feature id="org.wso2.developerstudio.kernel.tools.feature" version="0.0.0">
+      <category name="org.wso2.developerstudio.eclipse.bps.feature.category"/>
+   </feature>
+   <feature id="org.wso2.developerstudio.kernel.utils.feature" version="0.0.0">
+      <category name="org.wso2.developerstudio.eclipse.bps.feature.category"/>
+   </feature>
+
+   <!-- Kernel core Features and category-->	
+   <feature id="org.wso2.developerstudio.capp.feature" version="0.0.0">
+      <category name="org.wso2.developerstudio.eclipse.bps.feature.category"/>
+   </feature>
+   <feature id="org.wso2.developerstudio.carbon.server-40.feature" version="0.0.0">
+      <category name="org.wso2.developerstudio.eclipse.bps.feature.category"/>
+   </feature>
+   <feature id="org.wso2.developerstudio.carbon.server-42.feature" version="0.0.0">
+      <category name="org.wso2.developerstudio.eclipse.bps.feature.category"/>
+   </feature>
+   <feature id="org.wso2.developerstudio.carbon.server-44.feature" version="0.0.0">
+      <category name="org.wso2.developerstudio.eclipse.bps.feature.category"/>
+   </feature>
+   <feature id="org.wso2.developerstudio.carbon.server-remote.feature" version="0.0.0">
+      <category name="org.wso2.developerstudio.eclipse.bps.feature.category"/>
+   </feature>
+   <feature id="org.wso2.developerstudio.kernel.registry.feature" version="0.0.0">
+      <category name="org.wso2.developerstudio.eclipse.bps.feature.category"/>
+   </feature>
+   <feature id="org.wso2.developerstudio.kernel.security.feature" version="0.0.0">
+      <category name="org.wso2.developerstudio.eclipse.bps.feature.category"/>
+   </feature>
+</site>

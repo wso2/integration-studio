@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wizard>
+	<projectOptions title="BPEL Workflow Creation Options" 
+					description="Select how you would like to create your new BPEL project" 
+					error="Please select a method to create the project">
+		<option id="new.bpelproject" default="true">Create New BPEL Workflow</option>
+		<option id="import.bpelproject">Import BPEL Workflow</option>
+	</projectOptions>
+	<projectOptionSettings>
+		<settings optionId="new.bpelproject" 
+				  title="BPEL Workflow" 
+				  description="Create a new BPEL Workflow" 
+				  error="Please give a name to the BPEL workflow">
+			<data modelProperty="project.name" type="string" fieldController="org.wso2.developerstudio.eclipse.artifact.bpel.validators.BPELProjectFieldController">Project Name*</data>
+			<data modelProperty="process.name" type="string" fieldController="org.wso2.developerstudio.eclipse.artifact.bpel.validators.BPELProjectFieldController">Process Name*</data>
+			<data modelProperty="process.ns" type="string" fieldController="org.wso2.developerstudio.eclipse.artifact.bpel.validators.BPELProjectFieldController">Process Namespace*</data>
+			<data modelProperty="process.template" type="list" fieldController="org.wso2.developerstudio.eclipse.artifact.bpel.validators.BPELProjectFieldController" controlData="select=single;modify=non-editable;class=org.wso2.developerstudio.eclipse.artifact.bpel.validators.BPELTemplateList">Template</data>
+			
+			<projectNatures>
+				<nature>org.eclipse.jdt.core.javanature</nature>
+			</projectNatures>
+		</settings>
+		<settings optionId="import.bpelproject" 
+				  title="BPEL Workflow" 
+				  description="Create a new BPEL Workflow using a BPEL Archive file" 
+				  error="Browse and select a BPEL Archive file">
+			<data modelProperty="import.file" type="file" filter="*.zip" fieldController="org.wso2.developerstudio.eclipse.artifact.bpel.validators.BPELProjectFieldController">BPEL Archive File*</data>
+			<projectNatures>
+				<nature>org.eclipse.jdt.core.javanature</nature>
+			</projectNatures>
+		</settings>
+	</projectOptionSettings>
+</wizard>

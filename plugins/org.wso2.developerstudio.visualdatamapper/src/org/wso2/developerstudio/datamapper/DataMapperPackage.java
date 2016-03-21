@@ -438,7 +438,7 @@ public interface DataMapperPackage extends EPackage {
     int ELEMENT__LEVEL = 6;
 
     /**
-	 * The feature id for the '<em><b>Properties</b></em>' map.
+	 * The feature id for the '<em><b>Properties</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -538,7 +538,7 @@ public interface DataMapperPackage extends EPackage {
     int TREE_NODE__LEVEL = 7;
 
     /**
-	 * The feature id for the '<em><b>Properties</b></em>' map.
+	 * The feature id for the '<em><b>Properties</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1370,10 +1370,10 @@ public interface DataMapperPackage extends EPackage {
     EAttribute getElement_Level();
 
     /**
-	 * Returns the meta object for the map '{@link org.wso2.developerstudio.datamapper.Element#getProperties <em>Properties</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.wso2.developerstudio.datamapper.Element#getProperties <em>Properties</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the map '<em>Properties</em>'.
+	 * @return the meta object for the containment reference list '<em>Properties</em>'.
 	 * @see org.wso2.developerstudio.datamapper.Element#getProperties()
 	 * @see #getElement()
 	 * @generated
@@ -1479,10 +1479,10 @@ public interface DataMapperPackage extends EPackage {
     EAttribute getTreeNode_Level();
 
     /**
-	 * Returns the meta object for the map '{@link org.wso2.developerstudio.datamapper.TreeNode#getProperties <em>Properties</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.wso2.developerstudio.datamapper.TreeNode#getProperties <em>Properties</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the map '<em>Properties</em>'.
+	 * @return the meta object for the containment reference list '<em>Properties</em>'.
 	 * @see org.wso2.developerstudio.datamapper.TreeNode#getProperties()
 	 * @see #getTreeNode()
 	 * @generated
@@ -1733,34 +1733,32 @@ public interface DataMapperPackage extends EPackage {
 	EClass getUpperCase();
 
 	/**
-	 * Returns the meta object for class '{@link java.util.Map.Entry <em>Property Key Value Pair</em>}'.
+	 * Returns the meta object for class '{@link org.wso2.developerstudio.datamapper.PropertyKeyValuePair <em>Property Key Value Pair</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Property Key Value Pair</em>'.
-	 * @see java.util.Map.Entry
-	 * @model keyDataType="org.eclipse.emf.ecore.EString" keyRequired="true"
-	 *        valueDefault="" valueDataType="org.eclipse.emf.ecore.EString" valueRequired="true"
+	 * @see org.wso2.developerstudio.datamapper.PropertyKeyValuePair
 	 * @generated
 	 */
 	EClass getPropertyKeyValuePair();
 
 	/**
-	 * Returns the meta object for the attribute '{@link java.util.Map.Entry <em>Key</em>}'.
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.datamapper.PropertyKeyValuePair#getKey <em>Key</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Key</em>'.
-	 * @see java.util.Map.Entry
+	 * @see org.wso2.developerstudio.datamapper.PropertyKeyValuePair#getKey()
 	 * @see #getPropertyKeyValuePair()
 	 * @generated
 	 */
 	EAttribute getPropertyKeyValuePair_Key();
 
 	/**
-	 * Returns the meta object for the attribute '{@link java.util.Map.Entry <em>Value</em>}'.
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.datamapper.PropertyKeyValuePair#getValue <em>Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Value</em>'.
-	 * @see java.util.Map.Entry
+	 * @see org.wso2.developerstudio.datamapper.PropertyKeyValuePair#getValue()
 	 * @see #getPropertyKeyValuePair()
 	 * @generated
 	 */
@@ -2069,7 +2067,7 @@ public interface DataMapperPackage extends EPackage {
         EAttribute ELEMENT__LEVEL = eINSTANCE.getElement_Level();
 
         /**
-		 * The meta object literal for the '<em><b>Properties</b></em>' map feature.
+		 * The meta object literal for the '<em><b>Properties</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -2151,7 +2149,7 @@ public interface DataMapperPackage extends EPackage {
         EAttribute TREE_NODE__LEVEL = eINSTANCE.getTreeNode_Level();
 
         /**
-		 * The meta object literal for the '<em><b>Properties</b></em>' map feature.
+		 * The meta object literal for the '<em><b>Properties</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated

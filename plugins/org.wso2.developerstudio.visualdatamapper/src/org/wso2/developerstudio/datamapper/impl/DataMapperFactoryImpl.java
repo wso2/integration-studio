@@ -87,7 +87,7 @@ public class DataMapperFactoryImpl extends EFactoryImpl implements DataMapperFac
 			case DataMapperPackage.LOWER_CASE: return createLowerCase();
 			case DataMapperPackage.CONTAINS: return createContains();
 			case DataMapperPackage.UPPER_CASE: return createUpperCase();
-			case DataMapperPackage.PROPERTY_KEY_VALUE_PAIR: return (EObject)createPropertyKeyValuePair();
+			case DataMapperPackage.PROPERTY_KEY_VALUE_PAIR: return createPropertyKeyValuePair();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -252,7 +252,7 @@ public class DataMapperFactoryImpl extends EFactoryImpl implements DataMapperFac
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public TreeNode createTreeNode() {
 		TreeNodeImpl treeNode = new TreeNodeImpl();
@@ -373,7 +373,7 @@ public class DataMapperFactoryImpl extends EFactoryImpl implements DataMapperFac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Map.Entry<String, String> createPropertyKeyValuePair() {
+	public PropertyKeyValuePair createPropertyKeyValuePair() {
 		PropertyKeyValuePairImpl propertyKeyValuePair = new PropertyKeyValuePairImpl();
 		return propertyKeyValuePair;
 	}

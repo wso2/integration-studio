@@ -88,11 +88,11 @@ public class EditAttributeAction extends AbstractActionHandler {
 			if(title.startsWith(PREFIX)){
 				name = title.substring(1);
 			}
-			schemaType = selectedElem.getProperties().get(JSON_SCHEMA_TYPE);
-			if (selectedElem.getProperties().get(JSON_SCHEMA_ID) != null) {
+			//schemaType = selectedElem.getProperties().get(JSON_SCHEMA_TYPE);
+			/*if (selectedElem.getProperties().get(JSON_SCHEMA_ID) != null) {
 				id = selectedElem.getProperties().get(JSON_SCHEMA_ID);
 			}
-
+*/
 			openEditFieldDialog(selectedElem, name, schemaType, id, required, schemaValue);
 		}
 	}
@@ -114,20 +114,11 @@ public class EditAttributeAction extends AbstractActionHandler {
 		  if(key.equals(JSON_SCHEMA_TITLE)){
 				executeCommand(selectedElem, DataMapperPackage.Literals.TREE_NODE__NAME, value.toString());  
 		  }else{
-			    EMap<String, String> propertyMap = selectedElem.getProperties();	   
-			    executeAddCommand(propertyMap, DataMapperPackage.Literals.PROPERTY_KEY_VALUE_PAIR, value.toString());
+			  //  EMap<String, String> propertyMap = selectedElem.getProperties();	   
+			  //  executeAddCommand(propertyMap, DataMapperPackage.Literals.PROPERTY_KEY_VALUE_PAIR, value.toString());
 		  }
 		}
-		
-		if (map.get(JSON_SCHEMA_TITLE) != null) {
-			if (getSelectedEditPart() instanceof TreeNodeEditPart) {
-				((TreeNodeEditPart) getSelectedEditPart()).renameElementItem(map.get(JSON_SCHEMA_TITLE));
-			} else if (getSelectedEditPart() instanceof TreeNode2EditPart) {
-				((TreeNode2EditPart) getSelectedEditPart()).renameElementItem(map.get(JSON_SCHEMA_TITLE));
-			} else if (getSelectedEditPart() instanceof TreeNode3EditPart) {
-				((TreeNode3EditPart) getSelectedEditPart()).renameElementItem(map.get(JSON_SCHEMA_TITLE));
-			}
-		} 
+
 		
 	}
 	/**

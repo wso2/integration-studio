@@ -245,7 +245,7 @@ public class TreeNodeItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(DataMapperPackage.Literals.TREE_NODE__PROPERTIES,
-				 DataMapperFactory.eINSTANCE.create(DataMapperPackage.Literals.PROPERTY_KEY_VALUE_PAIR)));
+				 DataMapperFactory.eINSTANCE.createPropertyKeyValuePair()));
 
 		newChildDescriptors.add
 			(createChildParameter

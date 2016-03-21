@@ -395,8 +395,12 @@ public class TreeNodeEditPart extends AbstractBorderedShapeEditPart {
 	 * @generated NOT
 	 */
 	public class TreeNodeFigure extends RectangleFigure {
-		private static final String PARENT_ICON = "icons/gmf/parent.gif";
+		//private static final String PARENT_ICON = "icons/gmf/parent.gif";
+		private static final String PARENT_ICON = "icons/gmf/symbol_element_of.gif";
+		private static final String ICONS_ATTRIBUTE = "icons/gmf/AttributeIcon.png";
 		private static final String ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM = "org.wso2.developerstudio.visualdatamapper.diagram";
+		
+		private static final String PREFIX = "@";
 		/**
 		 * @generated
 		 */
@@ -431,6 +435,8 @@ public class TreeNodeEditPart extends AbstractBorderedShapeEditPart {
 		 * @generated NOT
 		 */
 		private void createContents() {
+			
+			
 
 			RectangleFigure figure = new RectangleFigure();
 			ToolbarLayout l = new ToolbarLayout();
@@ -447,15 +453,29 @@ public class TreeNodeEditPart extends AbstractBorderedShapeEditPart {
 
 			ImageDescriptor mainImgDescCollapse = AbstractUIPlugin.imageDescriptorFromPlugin(
 					ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM, PARENT_ICON);
+			ImageDescriptor attributeImgDesc = AbstractUIPlugin.imageDescriptorFromPlugin(
+					ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM, ICONS_ATTRIBUTE);
+
 
 			final ImageFigure mainImg = new ImageFigure(mainImgDescCollapse.createImage());
 			mainImg.setSize(new Dimension(10, 8));
+			
+			ImageFigure attributeImg = new ImageFigure(attributeImgDesc.createImage()); //attribute symbole figure 
+			attributeImg.setSize(new Dimension(10, 8));
+			
 			RectangleFigure mainImageRectangle = new RectangleFigure();
 
 			mainImageRectangle.setBackgroundColor(new Color(null, 255, 255, 255));
 			mainImageRectangle.setPreferredSize(new Dimension(10, 7));
 			mainImageRectangle.add(mainImg);
 			mainImageRectangle.setBorder(null);
+			
+			RectangleFigure attributeImageRectangle = new RectangleFigure();
+
+			attributeImageRectangle.setBackgroundColor(new Color(null, 255, 255, 255));
+			attributeImageRectangle.setPreferredSize(new Dimension(10, 7));
+			attributeImageRectangle.add(attributeImg);
+			attributeImageRectangle.setBorder(null);
 
 			fFigureTreeNodeNameFigure = new WrappingLabel();
 			//String name = (((TreeNode) ((View) getModel()).getElement()).getName()).split(",")[1];
@@ -517,13 +537,25 @@ public class TreeNodeEditPart extends AbstractBorderedShapeEditPart {
 
 				}
 			});
+			
+			String newName = null;
+			if (name.startsWith(PREFIX)) {
+				String[] fullName = name.split(PREFIX);
+				newName = fullName[1];
+			} else {
+				newName = name;
+			}
 			figure2.setPreferredSize((count - 1) * 22, 3);
 			Label nodeLabel = new Label();
-			nodeLabel.setIcon(mainImg.getImage());
+			if (name.startsWith(PREFIX)) {
+				nodeLabel.setIcon(attributeImg.getImage());
+			}else{
+				nodeLabel.setIcon(mainImg.getImage());
+			}
 			Display display = Display.getCurrent();
 			Color black = display.getSystemColor(SWT.COLOR_BLACK);
 			nodeLabel.setForegroundColor(black);
-			nodeLabel.setText(name);
+			nodeLabel.setText(newName);
 			nodeLabel.setSize(new Dimension(100, 5));
 			figure.setOutline(false);
 			figure2.setOutline(false);

@@ -14,6 +14,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.EcoreEMap;
 import org.eclipse.emf.ecore.util.EcoreUtil;
@@ -24,6 +25,7 @@ import org.wso2.developerstudio.datamapper.InNode;
 import org.wso2.developerstudio.datamapper.Input;
 import org.wso2.developerstudio.datamapper.OutNode;
 import org.wso2.developerstudio.datamapper.Output;
+import org.wso2.developerstudio.datamapper.PropertyKeyValuePair;
 import org.wso2.developerstudio.datamapper.SchemaDataType;
 import org.wso2.developerstudio.datamapper.TreeNode;
 
@@ -132,14 +134,14 @@ public class TreeNodeImpl extends EObjectImpl implements TreeNode {
     protected int level = LEVEL_EDEFAULT;
 
     /**
-	 * The cached value of the '{@link #getProperties() <em>Properties</em>}' map.
+	 * The cached value of the '{@link #getProperties() <em>Properties</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getProperties()
 	 * @generated
 	 * @ordered
 	 */
-	protected EMap<String, String> properties;
+	protected EList<PropertyKeyValuePair> properties;
 
 				/**
 	 * The cached value of the '{@link #getOutNode() <em>Out Node</em>}' containment reference.
@@ -404,9 +406,9 @@ public class TreeNodeImpl extends EObjectImpl implements TreeNode {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EMap<String, String> getProperties() {
+	public EList<PropertyKeyValuePair> getProperties() {
 		if (properties == null) {
-			properties = new EcoreEMap<String,String>(DataMapperPackage.Literals.PROPERTY_KEY_VALUE_PAIR, PropertyKeyValuePairImpl.class, this, DataMapperPackage.TREE_NODE__PROPERTIES);
+			properties = new EObjectContainmentEList<PropertyKeyValuePair>(PropertyKeyValuePair.class, this, DataMapperPackage.TREE_NODE__PROPERTIES);
 		}
 		return properties;
 	}
@@ -597,8 +599,7 @@ public class TreeNodeImpl extends EObjectImpl implements TreeNode {
 			case DataMapperPackage.TREE_NODE__LEVEL:
 				return getLevel();
 			case DataMapperPackage.TREE_NODE__PROPERTIES:
-				if (coreType) return getProperties();
-				else return getProperties().map();
+				return getProperties();
 			case DataMapperPackage.TREE_NODE__OUT_NODE:
 				return getOutNode();
 			case DataMapperPackage.TREE_NODE__IN_NODE:
@@ -643,7 +644,8 @@ public class TreeNodeImpl extends EObjectImpl implements TreeNode {
 				setLevel((Integer)newValue);
 				return;
 			case DataMapperPackage.TREE_NODE__PROPERTIES:
-				((EStructuralFeature.Setting)getProperties()).set(newValue);
+				getProperties().clear();
+				getProperties().addAll((Collection<? extends PropertyKeyValuePair>)newValue);
 				return;
 			case DataMapperPackage.TREE_NODE__OUT_NODE:
 				setOutNode((OutNode)newValue);

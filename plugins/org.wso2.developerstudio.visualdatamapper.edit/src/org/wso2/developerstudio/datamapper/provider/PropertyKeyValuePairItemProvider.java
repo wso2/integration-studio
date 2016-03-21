@@ -27,7 +27,7 @@ import org.wso2.developerstudio.datamapper.DataMapperPackage;
 import org.wso2.developerstudio.datamapper.PropertyKeyValuePair;
 
 /**
- * This is the item provider adapter for a {@link java.util.Map.Entry} object.
+ * This is the item provider adapter for a {@link org.wso2.developerstudio.datamapper.PropertyKeyValuePair} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
@@ -130,8 +130,10 @@ public class PropertyKeyValuePairItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		Map.Entry<?, ?> propertyKeyValuePair = (Map.Entry<?, ?>)object;
-		return "" + propertyKeyValuePair.getKey() + " -> " + propertyKeyValuePair.getValue();
+		String label = ((PropertyKeyValuePair)object).getKey();
+		return label == null || label.length() == 0 ?
+			getString("_UI_PropertyKeyValuePair_type") :
+			getString("_UI_PropertyKeyValuePair_type") + " " + label;
 	}
 	
 
@@ -146,7 +148,7 @@ public class PropertyKeyValuePairItemProvider
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(Map.Entry.class)) {
+		switch (notification.getFeatureID(PropertyKeyValuePair.class)) {
 			case DataMapperPackage.PROPERTY_KEY_VALUE_PAIR__KEY:
 			case DataMapperPackage.PROPERTY_KEY_VALUE_PAIR__VALUE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));

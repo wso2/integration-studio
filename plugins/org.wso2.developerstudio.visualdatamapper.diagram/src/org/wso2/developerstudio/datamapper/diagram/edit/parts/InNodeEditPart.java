@@ -39,6 +39,7 @@ import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.InNode2EditPart.InNode2Figure;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.custom.AbstractInNodeEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.policies.InNodeItemSemanticEditPolicy;
 
@@ -270,6 +271,30 @@ public class InNodeEditPart extends AbstractInNodeEditPart {
 			this.setOutline(false);
 
 		}
+		public void highlightElementOnSelection() {
+			ImageDescriptor mainImgDesc = AbstractUIPlugin.imageDescriptorFromPlugin(
+					"org.wso2.developerstudio.visualdatamapper.diagram", "icons/gmf/black-coloured.jpg");
+
+			int nodeDimension = 10; // width for connection nodes
+
+			ImageFigure mainImg = new ImageFigure(mainImgDesc.createImage());
+			mainImg.setSize(new Dimension(nodeDimension, nodeDimension));
+			RectangleFigure mainImageRectangle = new RectangleFigure();
+
+			mainImageRectangle.setBackgroundColor(new Color(null, 255, 255, 255));
+			mainImageRectangle.setPreferredSize(new Dimension(nodeDimension, nodeDimension));
+			mainImageRectangle.setBackgroundColor(new Color(null, 0, 0, 0));
+			mainImageRectangle.setOpaque(false);
+			mainImageRectangle.add(mainImg);
+			this.add(mainImageRectangle);
+			this.setOpaque(false);
+			this.setOutline(false);
+			this.setFill(false);
+		}
+	}
+	
+	public void highlightElementItem() {
+		((InNode2Figure) getPrimaryShape()).highlightElementOnSelection();
 	}
 
 }

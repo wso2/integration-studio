@@ -215,7 +215,7 @@ public class DataMapperSwitch<T> extends Switch<T> {
 				return result;
 			}
 			case DataMapperPackage.PROPERTY_KEY_VALUE_PAIR: {
-				@SuppressWarnings("unchecked") Map.Entry<String, String> propertyKeyValuePair = (Map.Entry<String, String>)theEObject;
+				PropertyKeyValuePair propertyKeyValuePair = (PropertyKeyValuePair)theEObject;
 				T result = casePropertyKeyValuePair(propertyKeyValuePair);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -565,7 +565,7 @@ public class DataMapperSwitch<T> extends Switch<T> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T casePropertyKeyValuePair(Map.Entry<String, String> object) {
+	public T casePropertyKeyValuePair(PropertyKeyValuePair object) {
 		return null;
 	}
 

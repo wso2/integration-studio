@@ -21,7 +21,7 @@ import org.eclipse.swt.graphics.Color;
 
 public class DataMapperColorConstants {
 	
-	public static final Color titleBarColor =  new Color(null, 208,245,234);
+	public static final Color titleBarColor =  new Color(null, 0, 125, 133);
 	public static final Color borderColor = ColorConstants.black;
 	public static final Color connectorColor = ColorConstants.black;
 

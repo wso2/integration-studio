@@ -213,102 +213,40 @@ public class TreeNode2EditPart extends AbstractBorderedShapeEditPart {
 	 * @generated NOT
 	 */
 	protected boolean addFixedChild(EditPart childEditPart) {
-		if (childEditPart instanceof org.wso2.developerstudio.datamapper.diagram.edit.parts.TreeNodeName2EditPart) {
-			((org.wso2.developerstudio.datamapper.diagram.edit.parts.TreeNodeName2EditPart) childEditPart)
-					.setLabel(getPrimaryShape().getFigureTreeNodeNameFigure());
+
+		EditPart temp = getParentBox();
+		if (childEditPart instanceof TreeNodeName2EditPart) {
+			((TreeNodeName2EditPart) childEditPart).setLabel(getPrimaryShape().getFigureTreeNodeNameFigure());
 			return true;
 		}
-
-		if (childEditPart instanceof InNode3EditPart || childEditPart instanceof InNodeEditPart) {
-
-			EditPart temp = this.getParent();
-			while ((!(temp instanceof DataMapperRootEditPart)) && (temp != null)) {
-
-				if (temp instanceof InputEditPart) {
-
-					if (childEditPart instanceof InNodeEditPart) {
-						NodeFigure figureInput = ((InNodeEditPart) childEditPart).getNodeFigureOutput();
-						figureInput.removeAll();
-						Figure emptyFigure = new Figure();
-						figureInput.add(emptyFigure);
-						break;
-					} else {
-						NodeFigure figureInput = (NodeFigure) ((InNode3EditPart) childEditPart).getFigure();
-						figureInput.removeAll();
-						Figure emptyFigure = new Figure();
-						figureInput.add(emptyFigure);
-						break;
-					}
-				}
-
-				temp = temp.getParent();
-
-			}
-
-			// Innodes for Output elements
-
-			if (childEditPart instanceof InNode3EditPart) {
-				IFigure borderItemFigure = ((InNode3EditPart) childEditPart).getFigure();
-				BorderItemLocator locator = new FixedBorderItemLocator(getMainFigure(), borderItemFigure,
-						PositionConstants.WEST, 0.5);
-				getBorderedFigure().getBorderItemContainer().add(borderItemFigure, locator);
-				return true;
-			}
-
-			else {
+		if (childEditPart instanceof InNodeEditPart) {
+			if (temp instanceof InputEditPart) {
+				NodeFigure figureInput = (NodeFigure) ((InNodeEditPart) childEditPart).getFigure();
+				figureInput.removeAll();
+				Figure emptyFigure = new Figure();
+				figureInput.add(emptyFigure);
+			} else {
+				//BorderItemLocator locator = new BorderItemLocator(getMainFigure(), PositionConstants.WEST);
 				IFigure borderItemFigure = ((InNodeEditPart) childEditPart).getFigure();
-				BorderItemLocator locator = new FixedBorderItemLocator(getMainFigure(), borderItemFigure,
-						PositionConstants.WEST, 0.5);
-				getBorderedFigure().getBorderItemContainer().add(borderItemFigure, locator);
+				BorderItemLocator locator = new FixedBorderItemLocator(getMainFigure(), borderItemFigure, PositionConstants.WEST, 0.5);
+				getBorderedFigure().getBorderItemContainer().add(((InNodeEditPart) childEditPart).getFigure(), locator);
 				return true;
 			}
 		}
-
-		else if (childEditPart instanceof OutNode2EditPart || childEditPart instanceof OutNodeEditPart) {
-
-			EditPart temp = this.getParent();
-			while ((!(temp instanceof DataMapperRootEditPart)) && (temp != null)) {
-
-				if (temp instanceof OutputEditPart) {
-					if (childEditPart instanceof OutNodeEditPart) {
-						NodeFigure figureInput = ((OutNodeEditPart) childEditPart).getNodeFigureOutput();
-						figureInput.removeAll();
-						Figure emptyFigure = new Figure();
-						figureInput.add(emptyFigure);
-						break;
-					}
-
-					else {
-						NodeFigure figureInput = (NodeFigure) ((OutNode2EditPart) childEditPart).getFigure();
-						figureInput.removeAll();
-						Figure emptyFigure = new Figure();
-						figureInput.add(emptyFigure);
-						break;
-					}
-				}
-
-				temp = temp.getParent();
-
-			}
-
-			if (childEditPart instanceof OutNodeEditPart) {
+		if (childEditPart instanceof OutNodeEditPart) {
+			if (temp instanceof OutputEditPart) {
+				NodeFigure figureInput = (NodeFigure) ((OutNodeEditPart) childEditPart).getFigure();
+				figureInput.removeAll();
+				Figure emptyFigure = new Figure();
+				figureInput.add(emptyFigure);
+			} else {
 				IFigure borderItemFigure = ((OutNodeEditPart) childEditPart).getFigure();
-				BorderItemLocator locator = new FixedBorderItemLocator(getMainFigure(), borderItemFigure,
-						PositionConstants.EAST, 0.5);
-				getBorderedFigure().getBorderItemContainer().add(borderItemFigure, locator);
+				BorderItemLocator locator = new FixedBorderItemLocator(getMainFigure(), borderItemFigure, PositionConstants.EAST, 0.5);
+				getBorderedFigure().getBorderItemContainer().add(((OutNodeEditPart) childEditPart).getFigure(), locator);
 				return true;
 			}
-
-			else {
-
-				IFigure borderItemFigure = ((OutNode2EditPart) childEditPart).getFigure();
-				BorderItemLocator locator = new FixedBorderItemLocator(getMainFigure(), borderItemFigure,
-						PositionConstants.EAST, 0.5);
-				getBorderedFigure().getBorderItemContainer().add(borderItemFigure, locator);
-				return true;
-			}
+			
 		}
-
 		return false;
 	}
 

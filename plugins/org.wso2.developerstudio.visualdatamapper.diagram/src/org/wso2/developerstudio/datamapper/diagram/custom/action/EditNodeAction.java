@@ -18,6 +18,7 @@ package org.wso2.developerstudio.datamapper.diagram.custom.action;
 
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
 import java.util.Map.Entry;
 
 import org.apache.commons.lang.StringUtils;
@@ -45,6 +46,7 @@ import org.wso2.developerstudio.datamapper.diagram.custom.util.AddNewObjectDialo
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.TreeNode2EditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.TreeNode3EditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.TreeNodeEditPart;
+import org.wso2.developerstudio.datamapper.impl.PropertyKeyValuePairImpl;
 import org.wso2.developerstudio.eclipse.registry.core.interfaces.IRegistryFile;
 
 public class EditNodeAction extends AbstractActionHandler {
@@ -132,6 +134,7 @@ public class EditNodeAction extends AbstractActionHandler {
 		renameTitle(map);
 
 		while (entries.hasNext()) {
+
 			@SuppressWarnings("rawtypes")
 			Entry thisEntry = (Entry) entries.next();
 			Object key = thisEntry.getKey();
@@ -287,6 +290,7 @@ public class EditNodeAction extends AbstractActionHandler {
 	public void refresh() {
 		// refresh action. Does not do anything
 	}
+
 
 	/**
 	 * sets the property values

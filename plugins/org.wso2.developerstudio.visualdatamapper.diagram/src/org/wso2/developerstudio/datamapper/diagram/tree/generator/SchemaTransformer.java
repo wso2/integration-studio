@@ -610,10 +610,10 @@ public class SchemaTransformer implements ISchemaTransformer {
 			EList<Element> elemList = treeNodeModel.getElement();
 			EList<TreeNode> nodeList = treeNodeModel.getNode();
 			for (TreeNode node : nodeList) {
-				String schemaType = getPropertyKeyValuePairforTreeNodeImpls(treeNodeModel,JSON_SCHEMA_TYPE);
-				String schemaArrayItemsID = getPropertyKeyValuePairforTreeNodeImpls(treeNodeModel,JSON_SCHEMA_ARRAY_ITEMS_ID);
-				String schemaArrayItemsType = getPropertyKeyValuePairforTreeNodeImpls(treeNodeModel,JSON_SCHEMA_ARRAY_ITEMS_TYPE);
-				String schemaID = getPropertyKeyValuePairforTreeNodeImpls(treeNodeModel,JSON_SCHEMA_ID);
+				String schemaType = getPropertyKeyValuePairforTreeNode(node,JSON_SCHEMA_TYPE);
+				String schemaArrayItemsID = getPropertyKeyValuePairforTreeNode(node,JSON_SCHEMA_ARRAY_ITEMS_ID);
+				String schemaArrayItemsType = getPropertyKeyValuePairforTreeNode(node,JSON_SCHEMA_ARRAY_ITEMS_TYPE);
+				String schemaID = getPropertyKeyValuePairforTreeNode(node,JSON_SCHEMA_ID);
 				if (schemaType != null
 						&& schemaType.equals(JSON_SCHEMA_OBJECT)) {
 					JSONObject nodeObject = new JSONObject();

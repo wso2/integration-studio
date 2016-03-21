@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.eclipse.bpel.common.model/src"
+    modelPluginID="org.eclipse.bpel.common.model" runtimeJar="true" modelName="Fnmeta"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="5.0" copyrightFields="false">
+  <foreignModel>fnmeta.ecore</foreignModel>
+  <genPackages prefix="FM" basePackage="org.eclipse.bpel.fnmeta" resource="XML" disposableProviderFactory="true"
+      dataTypeConverters="true" ecorePackage="fnmeta.ecore#/">
+    <genClasses ecoreClass="fnmeta.ecore#//Registry">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference fnmeta.ecore#//Registry/functions"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference fnmeta.ecore#//Registry/assistants"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference fnmeta.ecore#//Registry/arguments"/>
+    </genClasses>
+    <genClasses ecoreClass="fnmeta.ecore#//Assistant">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference fnmeta.ecore#//Assistant/options"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute fnmeta.ecore#//Assistant/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute fnmeta.ecore#//Assistant/type"/>
+    </genClasses>
+    <genClasses ecoreClass="fnmeta.ecore#//Option">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute fnmeta.ecore#//Option/value"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute fnmeta.ecore#//Option/displayValue"/>
+    </genClasses>
+    <genClasses ecoreClass="fnmeta.ecore#//Argument">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute fnmeta.ecore#//Argument/defaultValue"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute fnmeta.ecore#//Argument/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute fnmeta.ecore#//Argument/optional"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute fnmeta.ecore#//Argument/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute fnmeta.ecore#//Argument/comment"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference fnmeta.ecore#//Argument/assistant"/>
+    </genClasses>
+    <genClasses ecoreClass="fnmeta.ecore#//Function">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute fnmeta.ecore#//Function/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute fnmeta.ecore#//Function/namespace"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute fnmeta.ecore#//Function/returnType"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference fnmeta.ecore#//Function/arguments"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute fnmeta.ecore#//Function/comment"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute fnmeta.ecore#//Function/help"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<inspection xmlns="http://schemas.xmlsoap.org/ws/2001/10/inspection/">
+  <link location="xmethodsBookmark.xml" referencedNamespace="http://schemas.xmlsoap.org/ws/2001/10/inspection/">
+    <abstract>Local XMethods Bookmarks</abstract>
+  </link>
+  <link location="xmethods.cached.wsil.xml" referencedNamespace="http://schemas.xmlsoap.org/ws/2001/10/inspection/">
+    <abstract>XMethods - Cached</abstract>
+  </link>
+  <link location="http://www.xmethods.net/inspection.wsil" referencedNamespace="http://schemas.xmlsoap.org/ws/2001/10/inspection/">
+    <abstract>XMethods - Live</abstract>
+  </link>
+  <link location="root.wsil.xml" referencedNamespace="http://schemas.xmlsoap.org/ws/2001/10/inspection/">
+    <abstract>Root pointer</abstract>
+  </link>
+  <link location="http://foobar.com/" referencedNamespace="http://schemas.xmlsoap.org/ws/2001/10/inspection/">
+    <abstract>Hello world</abstract>
+  </link>
+  <link location="http://boo.com" referencedNamespace="http://schemas.xmlsoap.org/ws/2001/10/inspection/">
+    <abstract>One More</abstract>
+  </link>
+</inspection>

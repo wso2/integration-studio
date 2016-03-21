@@ -1,0 +1,129 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- Schema file written by PDE -->
+<schema targetNamespace="org.eclipse.bpel.ui">
+<annotation>
+      <appInfo>
+         <meta.schema plugin="org.eclipse.bpel.ui" id="expressionEditors" name="Expression Language Editors"/>
+      </appInfo>
+      <documentation>
+         The BPEL Editor provides a mechanism to plugin expression editors for the various
+expression languages that may be used by a BPEL runtime. XPath 1.0 is the default
+standard expression language that is used by BPEL. However, implementations may choose
+to provide other expression language implementations (such as JavaScript).
+      </documentation>
+   </annotation>
+
+   <element name="extension">
+      <complexType>
+         <sequence>
+            <element ref="editor" minOccurs="1" maxOccurs="unbounded"/>
+         </sequence>
+      </complexType>
+   </element>
+
+   <element name="editor">
+      <annotation>
+         <appInfo>
+            <meta.element labelAttribute="label"/>
+         </appInfo>
+         <documentation>
+            The editor used for editing expression languages.
+         </documentation>
+      </annotation>
+      <complexType>
+         <attribute name="class" type="string" use="required">
+            <annotation>
+               <documentation>
+                  The class which must implement org.eclipse.bpel.ui.expressions.IExpressionEditor or 
+alternatively extend &lt;tt&gt;org.eclipse.bpel.ui.expressions.AbstractExpressionEditor.&lt;/tt&gt;
+               </documentation>
+               <appInfo>
+                  <meta.attribute kind="java" basedOn="org.eclipse.bpel.ui.expressions.IExpressionEditor"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+         <attribute name="expressionLanguage" type="string" use="required">
+            <annotation>
+               <documentation>
+                  The URI of the expression language that identifies this expression editor.
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="label" type="string" use="required">
+            <annotation>
+               <documentation>
+                  The user friendly lable describing this expression language.
+               </documentation>
+               <appInfo>
+                  <meta.attribute translatable="true"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="since"/>
+      </appInfo>
+      <documentation>
+         0.0.1
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="examples"/>
+      </appInfo>
+      <documentation>
+         The following example illustrates the XPath expression editor which is provided 
+within the &lt;tt&gt;org.eclipse.bpel.ui&lt;/tt&gt; plugin.
+&lt;p&gt;
+
+&lt;pre&gt;
+&lt;extension point=&quot;org.eclipse.bpel.ui.expressionEditors&quot;&gt;
+   &lt;editor
+         label=&quot;%XPATH_LABEL&quot;
+         class=&quot;org.eclipse.bpel.ui.expressions.XPathExpressionEditor&quot;
+         expressionLanguage=&quot;http://www.w3.org/TR/1999/REC-xpath-19991116&quot;&gt;
+   &lt;/editor&gt;
+&lt;/extension&gt;
+&lt;/pre&gt;
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="apiInfo"/>
+      </appInfo>
+      <documentation>
+         The value of the attribute class must represent a fully qualified name of a class
+which implements &lt;tt&gt;org.eclipse.bpel.ui.expressions.IExpressionEditor&lt;/tt&gt;.
+&lt;p&gt;
+Alternatively can be a class which extend &lt;tt&gt;org.eclipse.bpel.ui.expressions.AbstractExpressionEditor&lt;/tt&gt;.
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="implementation"/>
+      </appInfo>
+      <documentation>
+         The plugin &lt;tt&gt;org.eclipse.bpel.ui&lt;/tt&gt; provides the XPath 1.0 expression editor. It also
+provides a default expression editor for expressions for which the expression
+language (identified by the namespace URI) does not match any registered expression editors.
+&lt;p&gt;
+In such cases, a very simple opaque editor is provided.
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="copyright"/>
+      </appInfo>
+      <documentation>
+         
+      </documentation>
+   </annotation>
+
+</schema>

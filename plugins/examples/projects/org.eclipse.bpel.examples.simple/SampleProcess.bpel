@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpws:process xmlns:bpws="http://schemas.xmlsoap.org/ws/2004/03/business-process/" xmlns:ns="http://SampleProject/SampleProcessArtifacts" xmlns:ns0="http://SampleProject/SampleProcessInterface" expressionLanguage="http://www.w3.org/TR/1999/REC-xpath-19991116" name="SampleProcess" suppressJoinFailure="yes" targetNamespace="http://SampleProject">
+  <bpws:import importType="http://schemas.xmlsoap.org/wsdl/" location="SampleProcessArtifacts.wsdl" namespace="http://SampleProject/SampleProcessArtifacts"/>
+  <bpws:import importType="http://schemas.xmlsoap.org/wsdl/" location="SampleProcess.wsdl" namespace="http://SampleProject/SampleProcessInterface"/>
+  <bpws:partnerLinks>
+    <bpws:partnerLink myRole="ProcessRole" name="Client" partnerLinkType="ns:SampleProcessPartnerLinkType"/>
+  </bpws:partnerLinks>
+  <bpws:variables>
+    <bpws:variable messageType="ns0:operation1Request" name="Input"/>
+    <bpws:variable messageType="ns0:operation1Response" name="Output"/>
+  </bpws:variables>
+  <bpws:sequence name="Sequence">
+    <bpws:receive createInstance="yes" name="Receive" operation="operation1" partnerLink="Client" portType="ns0:SampleProcess" variable="Input"/>
+    <bpws:assign name="Assign">
+      <bpws:copy>
+        <bpws:from part="operation1Parameters" variable="Input">
+          <bpws:query><![CDATA[/input1]]></bpws:query>
+        </bpws:from>
+        <bpws:to part="operation1Result" variable="Output">
+          <bpws:query><![CDATA[/output1]]></bpws:query>
+        </bpws:to>
+      </bpws:copy>
+    </bpws:assign>
+    <bpws:reply name="Reply" operation="operation1" partnerLink="Client" portType="ns0:SampleProcess" variable="Output"/>
+  </bpws:sequence>
+</bpws:process>

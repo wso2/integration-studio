@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+   <extension
+         id="org.eclipse.bpel.common.ui.paletteAdditions"
+         name="Example Palette Extension"
+         point="org.eclipse.bpel.common.ui.paletteAdditions">
+      <additions targetEditor="org.eclipse.bpel.ui.bpeleditor">
+         <addition
+               category="Additions-1"
+               categoryId="user.additions.one"
+               categoryOrder="75"
+               class="org.eclipse.bpel.examples.extensionpoints.palette.ExitToolEntry"
+               default="false"/>
+         <addition
+               category="Additions-2"
+               categoryId="user.additions.two"
+               categoryOrder="74"
+               class="org.eclipse.bpel.examples.extensionpoints.palette.EmptyToolEntry"
+               default="false"/>
+      </additions>
+   </extension>
+   <extension
+         point="org.eclipse.bpel.common.model.functionRegistry">
+      <registry
+            namespace="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"
+            uri="platform:/plugin/org.eclipse.bpel.examples.extensionPoints/functions/functions.xml">
+      </registry>
+   </extension>
+   <extension
+         point="org.eclipse.bpel.ui.assignCategoryAdditions">
+      <assignSection
+            class="org.eclipse.bpel.examples.extensionpoints.assigncategory.SimpleTextAssignCategory"
+            name="simpleText">
+      </assignSection>
+   </extension>
+
+</plugin>

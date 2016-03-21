@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="CONTENT-TYPE" />
+<link rel="stylesheet" href="../../book.css" type="text/css" />
+<title>Basic Activities</title>
+</head>
+
+<body>
+	<h1>Basic Activities</h1>
+
+	<p>
+		Basic activities are represented on the drawing canvas as rounded
+		rectangles containing an icon and the user-defined name of the
+		activity. The <strong>Actions</strong> section of the <strong>Palette</strong>
+		contains all of the basic activities. For example: Assign, Invoke and
+		Receive.
+	</p>
+	
+	<p>
+		Most basic activities will require some additional configuration.
+	</p>
+						
+	<h5 >Start and End</h5>
+	<p>
+		Every BPEL process has implicit Start 
+		<img src="../../../images/reference/BPEL_Designer_04.png" /> and End
+		<img src="../../../images/reference/BPEL_Designer_05.png" /> activities. These
+		do not correspond to actual BPEL elements however, and are simply
+		placeholders for visualizing the beginning and end of the process
+		flow. 
+	</p>
+	
+	<h5>Assign</h5>
+	<p><img src="../../../images/reference/BPEL_Designer_06.png" alt="Assign activity" /></p>
+	<p><b>Assign activity</b></p>
+
+	<p>
+		The Assign activity allows you to manipulate variables and message
+		contents that are defined in the process.
+	</p>
+
+	<h5>Invoke</h5>
+	<p><img src="../../../images/reference/BPEL_Designer_07.png" alt="Invoke activity" /></p>
+	<p><b>Invoke activity</b></p>
+	<p>
+		The Invoke activity is used to send a message to an external service
+		(one-way invocation), and optionally wait for a response (request and
+		response). An Invoke can also define a compensation handler and a
+		fault handler to handle exception conditions.
+	</p>
+
+	<h5>Receive</h5>
+	<p><img src="../../../images/reference/BPEL_Designer_08.png" alt="Receive activity" /></p>
+	<p ><b>Receive activity</b></p>
+	<p>
+		The  Receive activity will wait for
+		a specific message type from a service client.
+	</p>
+
+	<h5>Reply</h5>
+	<p><img src="../../../images/reference/BPEL_Designer_09.png" alt="Reply activity" /></p>
+	<p ><b>Reply activity</b></p>
+	<p>
+		The  Reply activity is used to
+		respond to clients with a specific message type, or fault
+		message (if defined for the process interface).
+	</p>
+
+	<h5>Validate</h5>
+	<p><img src="../../../images/reference/BPEL_Designer_10.png" alt="Validate Input activity" /></p>
+	<p ><b>Validate Input activity</b></p>
+	<p>
+		The Validate activity is used to validate the values of
+		variables against their XML Schema and WSDL data definitions. This
+		includes the variable's data type as well as structure. If validation
+		fails, the BPEL standard fault invalidVariables is thrown.
+	</p>
+	<p>
+		Validation is typically performed just before sending messages
+		to a partner or client, or after receiving a message to ensure the
+		message contains all required data and that the data is as expected.
+	</p>
+	
+	<h5>Wait</h5>
+	<p><img src="../../../images/reference/BPEL_Designer_11.png" alt="Wait activity" /></p>
+	<p ><b>Wait activity</b></p>
+	<p>
+		A Wait activity will delay process execution for a certain
+		amount of time, or until a given date and time; this is typically used
+		to invoke an operation at a certain time. For example to update
+		process state hourly or daily, or to collect some information from
+		another service at a certain time of day.
+	</p>
+</body>
+</html>

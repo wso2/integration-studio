@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://schemas.xmlsoap.org/ws/2004/03/partner-link/"
+	targetNamespace="http://schemas.xmlsoap.org/ws/2004/03/partner-link/"
+	elementFormDefault="qualified">
+
+	<annotation>
+		<documentation>
+			Partner Link Type Schema
+			2004-03-24: YIU-OSS: Alex Yiu: Extracted from  wsbpel-specification-draft.doc (Rev 1.22 - Modified on 24 March, 2004)
+			2004-03-24: YIU-OSS: Alex Yiu: Updated targetNamespace with "2004/03"
+			2004-10-21: YIU-OSS: Alex Yiu: Applied Issue 129
+			2005-08-30: Rev 1.4: YIU-OSS: Alex Yiu: Applied Issue 192 
+		</documentation>
+	</annotation>
+
+	<import namespace="http://www.w3.org/XML/1998/namespace"  schemaLocation="http://www.w3.org/2001/xml.xsd" />
+	<element name="documentation" id="documentation">
+		<complexType mixed="true">
+			<sequence minOccurs="0" maxOccurs="unbounded">
+				<any processContents="lax"/>
+			</sequence>
+			<attribute name="source" type="anyURI"/>
+			<attribute ref="xml:lang"/>
+		</complexType>
+	</element>
+	<complexType name="tExtensibleElements">
+		<annotation>
+			<documentation>
+		This type is extended by other component types
+		to allow elements and attributes from
+		other namespaces to be added.
+	   </documentation>
+		</annotation>
+		<sequence>
+			<element ref="tns:documentation" minOccurs="0" maxOccurs="unbounded" />
+			<any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+		<anyAttribute namespace="##other" processContents="lax"/>
+	</complexType>
+
+	
+	<element name="partnerLinkType" type="tns:tPartnerLinkType"/>
+	
+	<complexType name="tPartnerLinkType">
+		<complexContent>
+			<extension base="tns:tExtensibleElements">
+				<sequence>
+					<element name="role" type="tns:tRole" minOccurs="1" maxOccurs="2"/>
+				</sequence>
+				<attribute name="name" type="NCName" use="required"/>
+			</extension> 
+		</complexContent> 
+	</complexType>
+	
+	<complexType name="tRole">
+		<complexContent>
+			<extension base="tns:tExtensibleElements">
+				<attribute name="name" type="NCName" use="required"/>
+				<attribute name="portType" type="QName" use="required" />
+			</extension>
+		</complexContent> 
+	</complexType>
+</schema>

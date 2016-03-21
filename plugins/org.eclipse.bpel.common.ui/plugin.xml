@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+   <extension-point id="embeddedEditors" name="Embedded Editors" schema="schema/embeddedEditors.exsd"/>
+   <extension-point id="paletteAdditions" name="Palette Additions" schema="schema/paletteAdditions.exsd"/>
+   <extension-point id="resourceSetProvider" name="Resource Set Provider" schema="schema/resourceSetProvider.exsd"/>
+   
+   <extension
+         id="uiModelMarker"
+         name="%MODEL_UI_MARKER_NAME"
+         point="org.eclipse.core.resources.markers">
+      <super
+            type="org.eclipse.bpel.common.model.modelMarker">
+      </super>
+      <attribute
+            name="org.eclipse.bpel.common.ui.priority">
+      </attribute>
+      <attribute
+            name="org.eclipse.bpel.common.ui.visible">
+      </attribute>
+      <!-- Bugzilla 330519 -->
+      <persistent value="true"/>
+   </extension>
+   <extension
+         id="graphicalMarker"
+         name="%GRAPHICAL_MARKER_NAME"
+         point="org.eclipse.core.resources.markers">
+      <super
+            type="org.eclipse.bpel.common.ui.uiModelMarker">
+      </super>
+      <attribute
+            name="org.eclipse.bpel.common.ui.anchorPoint">
+      </attribute>
+      <!-- Bugzilla 330519 -->
+      <persistent value="true"/>
+   </extension>
+   <extension
+         id="textMarker"
+         name="%TEXT_MARKER_NAME"
+         point="org.eclipse.core.resources.markers">
+      <super
+            type="org.eclipse.bpel.common.ui.uiModelMarker">
+      </super>
+      <super
+            type="org.eclipse.core.resources.textmarker">
+      </super>
+      <attribute
+            name="org.eclipse.bpel.common.ui.lineNumInObject">
+      </attribute>
+      <!-- Bugzilla 330519 -->
+      <persistent value="true"/>
+   </extension>
+   <extension
+         point="org.eclipse.core.contenttype.contentTypes">
+      <content-type
+            base-type="org.eclipse.core.runtime.xml"
+            default-charset="UTF-8"
+            file-extensions="bpel,bpel2"
+	        id="org.eclipse.bpel.contenttype"
+            name="%CONTENT_TYPE_NAME"
+            priority="normal"/>
+   </extension>
+
+   <!-- Bugzilla 330527 -->
+   <extension
+         point="org.eclipse.ui.decorators">
+      <decorator
+            adaptable="true"
+            location="BOTTOM_LEFT"
+            lightweight="true"
+            label="%BPEL_FILE_DECORATOR"
+            state="true"
+            class="org.eclipse.bpel.common.ui.ResourceMarkerDecorator"
+            id="org.eclipse.bpel.ui.decorators">
+         <enablement>
+            <and>
+               <objectClass name="org.eclipse.core.resources.IFile"/>
+               <objectState
+                  name="contentTypeId"
+                  value="org.eclipse.bpel.contenttype">
+               </objectState>
+               <not>
+                  <pluginState
+                        id="org.eclipse.jdt.ui"
+                        value="activated">
+                  </pluginState>
+               </not>
+            </and>
+         </enablement>
+         <description>
+            %BPEL_FILE_DECORATOR_DESCRIPTION
+         </description>
+      </decorator>
+    </extension>   
+</plugin>

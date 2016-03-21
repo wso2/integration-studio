@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="CONTENT-TYPE" />
+<link rel="stylesheet" href="../../book.css" type="text/css" />
+<title>Assign</title>
+</head>
+
+<body>
+	<h1>Assign</h1>
+
+	<p>
+		The  Assign section is probably one of the more complex pages in the BPEL Designer, due to the nature of the
+		BPEL  Assign activity. The figure below shows the detail tab of an empty  Assign activity with callouts describing each component:
+	</p>
+
+	<p><img src="../../../images/reference/Details_tab_08.png" alt="Assign" /></p>
+	<p><b>Assign</b></p>
+
+	<ol>
+		<li>List (initially empty) of assignment operations currently defined.</li>
+		<li><strong>From</strong>  combo box for selecting the source element category.</li>
+		<li><strong>To</strong>  combo box for selecting the target element category.</li>
+		<li>
+			Contents and order management buttons. The <strong>New</strong>
+			button adds a new assignment operation to the list. When clicked,
+			the  <strong>From</strong>  and <strong>To</strong>  combo boxes become
+			active and display  Variable. These allow you to select the source and categories for target items.
+		</li>
+		<li>
+			<strong>Validate checkbox</strong>:
+			when enabled will cause the BPEL engine to validate the data after
+			the assignment. If an error is detected it will cause a fault, which
+			can be caught by a fault handler in the BPEL process.
+		</li>
+		<li>
+			<strong>Ignore Missing Source Data checkbox</strong> ; When enabled, missing source data is not
+			considered an error (no fault will be generated).
+		</li>
+		<li>
+			<strong>Keep Source Element Name checkbox</strong>: when enabled, the complex target variable element
+			names will not be replaced by the source element names if they differ.
+		</li>
+	</ol>
+
+	<p>
+		The following figure shows the detail tab of an  Assign activity which has an XPath expression as the source (
+		<strong>From</strong> ) and a process variable element as the target (<strong>To</strong>):
+	</p>
+
+	<p><img src="../../../images/reference/Details_tab_08b.png" alt="Assign" /></p>
+	<p><b>Assign</b></p>
+
+	<p>
+		A requirement of the BPEL language is that all complex variables
+		must be initialized with valid XML before they are referenced either
+		as a target of an assignment, or in another BPEL activity. The BPEL
+		Designer understands this and, once you have selected the target of an
+		assignment operation, it will ask if you would like to have an XML
+		fragment generated for the target variable:
+	</p>
+	
+	<p><img src="../../../images/reference/Details_tab_08c-Initializer.png" alt="Assign" /></p>
+	<p><b>Assign</b></p>
+
+	<p>
+		Unless you are certain that the variable has been initialized during a
+		previous assignment operation or other activity, you should click
+		<strong>Yes</strong> . The figure below shows the
+		Assign details tab after the initializer has been generated:
+	</p>
+	
+	<p><img src="../../../images/reference/Details_tab_08d.png" alt="Assign" /></p>
+	<p><b>Assign</b></p>
+	
+	<h5>Assignment Operation Categories</h5>
+	<p>
+		Additional type selection or data entry widgets will appear below the
+		<strong>From</strong> and <strong>To</strong> combo boxes, depending
+		on the source and target item categories selected in the combo boxes.
+		Initially these will be controls for the selection of process
+		variables, since the default combo box selection is Variable. The
+		possible source and target categories are described in the following
+		table:
+	</p>
+	
+	
+	<p><b>Possible source and target categories</b></p>
+	<table summary="Possible source and target categories" border="1">
+		<colgroup>
+			<col align="left" />
+			<col align="left" />
+			<col align="left" />
+			<col align="left" />
+			<col align="left" />
+		</colgroup>
+		<thead>
+			<tr>
+				<th align="left">Category</th>
+				<th align="left">Control type</th>
+				<th align="left">Can be source?</th>
+				<th align="left">Can be target?</th>
+				<th align="left">Further information</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td align="left">Variable</td>
+				<td align="left">Tree</td>
+				<td align="left">Yes</td>
+				<td align="left">Yes</td>
+				<td align="left">Select an in-scope variable or any
+					portion if it is a complex variable. The target of the assignment
+					must have the same type (for simple variables) or structure (for
+					complex variables) as the source.
+				</td>
+			</tr>
+			<tr>
+				<td align="left">Expression</td>
+				<td align="left">XPath</td>
+				<td align="left">Yes</td>
+				<td align="left">Yes</td>
+				<td align="left">Enter a valid XPath expression with the XPath
+					editor. For targets, the expression must resolve to an L-Value;
+					that is, it must be a variable reference.
+				</td>
+			</tr>
+			<tr>
+				<td align="left">Fixed Value</td>
+				<td align="left">Text</td>
+				<td align="left">Yes</td>
+				<td align="left">No</td>
+				<td align="left">Enter a valid XML fragment that is compatible
+					in structure and data type with the target.
+				</td>
+			</tr>
+			<tr>
+				<td align="left">Property of a Variable</td>
+				<td align="left">List</td>
+				<td align="left">Yes</td>
+				<td align="left">Yes</td>
+				<td align="left">N/A</td>
+			</tr>
+			<tr>
+				<td align="left">Partner Link reference</td>
+				<td align="left">List</td>
+				<td align="left">Yes</td>
+				<td align="left">Yes</td>
+				<td align="left">N/A</td>
+			</tr>
+			<tr>
+				<td align="left">Endpoint reference</td>
+				<td align="left">List</td>
+				<td align="left">Yes</td>
+				<td align="left">No</td>
+				<td align="left">N/A</td>
+			</tr>
+			<tr>
+				<td align="left">Opaque</td>
+				<td align="left">None</td>
+				<td align="left">Yes</td>
+				<td align="left">No</td>
+				<td align="left">N/A</td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>

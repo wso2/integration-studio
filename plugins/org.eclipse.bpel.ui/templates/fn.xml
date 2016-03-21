@@ -1,0 +1,796 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--November 17, 2006--><bpel-xpath-functions>
+
+    <!-- Assistants and args repeated in the function defintions below -->
+
+    <assistant name="SimpleDateFormat" type="1">
+        <option value="&quot;yyyy.MM.dd G 'at' HH:mm:ss z&quot;">2001.07.04 AD at 12:08:56 PDT</option>
+        <option value="&quot;EEE, MMM d, ''yy&quot;">Wed, Jul 4, '01</option>
+        <option value="&quot;h:mm a&quot;">12:08 PM</option>
+        <option value="&quot;hh 'o''clock' a, zzzz&quot;">12 o'clock PM, Pacific Daylight Time</option>
+        <option value="&quot;K:mm a, z&quot;">0:08 PM, PDT</option>
+        <option value="&quot;yyyyy.MMMMM.dd GGG hh:mm aaa&quot;">02001.July.04 AD 12:08 PM</option>
+        <option value="&quot;EEE, d MMM yyyy HH:mm:ss Z&quot;">Wed, 4 Jul 2001 12:08:56 -0700</option>
+        <option value="&quot;yyMMddHHmmssZ&quot;">010704120856-0700</option>
+    </assistant>
+
+     <assistant name="LDAPScope">
+        <option value="'subtree'">Subtree Search (starting at the given Distinguished Name)</option>
+        <option value="'onelevel'">Onelevel Search (siblings of given Distinguished Name only)</option>
+        <option value="'object'">Object Search (given Distinguished Name only)</option>
+    </assistant>
+
+    <arg default="" name="dateFormat" optional="true" type="string">
+        <comment>Contains a string formatted according to java.text.SimpleDateFormat format.</comment>
+        <assistant ref="SimpleDateFormat"/>
+    </arg>
+
+    <arg default="" name="ldapfilter" type="string">
+        <comment>An LDAP filter. </comment>
+    </arg>
+
+    <arg default="'subtree'" name="ldapscope" optional="true" type="string">
+        <comment>An LDAP search scope. Values are object,onelevel,subtree.</comment>
+        <assistant ref="LDAPScope"/>
+    </arg>
+
+    <arg default="" name="password" type="string">
+        <comment>The user password.</comment>
+        <assistant ref="xpathPicker"/>
+
+    </arg>
+
+    <arg default="" name="fileName" type="string">
+        <comment>File name from the file system. Note that this file name is in the context of the Oracle BPEL Process Manager.</comment>
+        <assistant ref="filePicker"/>
+    </arg>
+
+    <arg default="" name="xpath" optional="true" type="string">
+        <comment>An XPath expression that resolves in an W3C XML DOM Element node</comment>
+    </arg>
+
+    <arg default="" name="templateURI" type="string">
+        <comment>A URI to the template. </comment>
+        <assistant ref="uriPicker"/>
+    </arg>
+
+    <arg default="" name="xsltInput" type="node">
+        <comment>A W3C XML DOM element. </comment>
+        <assistant ref="xpathPicker"/>
+    </arg>
+
+    <arg default="" name="xqueryContext" optional="true" type="node">
+        <comment>A W3C XML DOM element. </comment>
+        <assistant ref="xpathPicker"/>
+    </arg>
+
+    <arg default="'1'" name="item" type="number">
+        <comment>Item in array</comment>
+        <assistant ref="xpathPicker"/>
+    </arg>
+
+    <arg default="" name="properties" optional="true" type="node">
+        <comment>A W3C XML DOM element. </comment>
+        <assistant ref="xpathPicker"/>
+    </arg>
+
+    <arg default="" name="element1" type="node">
+        <comment>A W3C XML DOM element.  </comment>
+        <assistant ref="xpathPicker"/>
+
+    </arg>
+
+    <arg default="" name="element2" type="node">
+        <comment>A W3C XML DOM element.  </comment>
+        <assistant ref="xpathPicker"/>
+
+    </arg>
+
+
+    <arg default="" name="variableName" type="string">
+        <comment>The source variable for the data</comment>
+        <assistant ref="xpathPicker"/>
+
+    </arg>
+
+    <arg default="" name="partName" optional="true" type="string">
+        <comment>The part to select from the variable</comment>
+        <assistant ref="xpathPicker"/>
+
+    </arg>
+    <arg default="" name="locationPath" optional="true" type="string">
+        <comment>Provides an absolute location path (with '/' meaning the root of the document fragment representing the entire part) to identify the root of a subtree within the document fragment representing the part.</comment>
+    </arg>
+
+    <arg default="" name="index" optional="true" type="number">
+        <comment>Dynamic index value</comment>
+        <assistant ref="xpathPicker"/>
+
+    </arg>
+
+    <arg default="" name="aNode" type="node">
+        <comment>An XML DOM node. </comment>
+        <assistant ref="xpathPicker"/>
+    </arg>
+
+    <arg default="" name="xmlContentString" type="string">
+        <comment>XML Content formatted as a string. </comment>
+        <assistant ref="functions"/>
+    </arg>
+
+    <arg default="" name="nodeSet" type="node-set">
+        <comment>An XML DOM Node-Set </comment>
+        <assistant ref="xpathPicker"/>
+    </arg>
+
+    <arg default="" name="aNodeSet" optional="true" type="node-set">
+        <comment>An XML DOM Node-Set </comment>
+        <assistant ref="xpathPicker"/>
+    </arg>
+    <arg default="" name="object" type="object">
+        <comment>Any W3C XML DOM object or node-set.</comment>
+        <assistant ref="xpathPicker"/>
+    </arg>
+    <arg default="" name="aBoolean" type="boolean">
+        <comment>A boolean value expression or constant</comment>
+        <assistant ref="xpathPicker"/>
+    </arg>
+    
+    <!-- BPEL functions -->
+
+    <function id="getVariableProperty" returns="string">
+        <namespace prefix="bpel2">http://docs.oasis-open.org/wsbpel/2.0/process/executable</namespace>
+        <help>This function extracts global property values from variables.</help>
+        <comment>
+            <![CDATA[ This function extracts global property values from variables.]]>
+        </comment>
+        <arg default="" name="variableName" type="string">
+            <comment>Source variable for the data.</comment>
+        </arg>
+        <arg default="" name="propertyName" type="string">
+            <comment>Qualified name(QName) of the global property to select from that variable.</comment>
+        </arg>
+    </function>
+
+   <function id="doXslTransform" returns="object">
+        <namespace prefix="bpel2">http://docs.oasis-open.org/wsbpel/2.0/process/executable</namespace>
+        <help>Perform an XSLT transformation.</help>
+        <comment>
+            <![CDATA[ Perform an XSLT transformation. ]]>
+        </comment>
+        <arg ref="templateURI"/>
+        <arg ref="nodeSet"/>
+        <arg default="" name="xsltParam" type="string" optional="true">
+            <comment>An XPath string parameter providing the qualified name of an XSLT parameter.</comment>
+        </arg>
+         <arg default="" name="xsltParamValue" type="object" optional="true">
+            <comment>An XPath object parameter providing the value for the named XSLT parameter. 
+            It can be an XPath Expr.</comment>
+        </arg>        
+    </function>
+    
+    <function id="last" returns="number" visual="1">
+        <help>Returns a number equal to context size of the expression evaluation context.
+        </help>
+        <comment>
+            <![CDATA[ Returns a number equal to context size of the expression evaluation context. ]]>
+        </comment>
+    </function>
+
+    <function id="position" returns="number">
+        <help>Returns the index number of the node within the parent.
+            The position of the node is is 1-based, so the first node returns a position of 1. </help>
+        <comment>
+            <![CDATA[ Returns the position, or index number, of the node, relative to all the selected nodes in the node list.
+        The position of the node is is 1-based, so the first node returns a position of 1.]]>
+        </comment>
+    </function>
+
+    <function id="count" returns="number">
+        <help>This XPath 1.0 defined function returns the count of nodes
+            present in the supplied node-set</help>
+        <comment>
+            <![CDATA[ This XPath 1.0 defined function returns the count of nodes
+         present in the supplied node-set ]]>
+        </comment>
+        <arg ref="aNodeSet"/>
+    </function>
+
+
+    <function id="id" returns="node-set">
+        <help>Selects elements by their unique ID</help>
+        <comment>
+            <![CDATA[ Selects elements by their unique ID, <p>
+          When the argument is of type node-set, the result is the union of the
+          result of applying id() to the string value of each of the nodes in
+          the node-set argument.
+<p>
+When the argument is of any other type, it is converted to a string
+and then split into a white space separated list of tokens (white space is
+any sequence of characters matching the production); the result
+is a node-set containing the elements in the same document as the context
+node that have a unique ID equal to any of the tokens in the list. ]]>
+        </comment>
+
+        <arg default="" name="object" type="object">
+            <comment>The object or objects to apply the id function to.</comment>
+            <assistant ref="xpathPicker"/>
+        </arg>
+    </function>
+
+
+    <function id="local-name" returns="string">
+        <help>Returns the local part of the expanded name of the node in the node-set argument that is first in document order</help>
+        <comment>
+            <![CDATA[ Returns the local part of the expanded name of the node in the node-set
+        argument that is first in document order. <p>
+
+    ]]>
+        </comment>
+        <arg ref="nodeSet"/>
+    </function>
+
+
+    <function id="namespace-uri" returns="string">
+        <help>Returns the namespace Uniform Resource Identifier (URI) of the expanded name of the node
+            in the node-set argument that is first in document order.</help>
+        <comment>
+            <![CDATA[ Returns the namespace Uniform Resource Identifier
+        (URI) of the expanded name of the node in the node-set
+        argument that is first in document order.
+
+     ]]>
+        </comment>
+        <arg ref="nodeSet"/>
+    </function>
+
+
+    <function id="name" returns="string">
+        <help>Returns a string containing a QName representing the expanded
+            name of the node in the node-set argument that is first in document
+            order.
+        </help>
+        <comment>
+            <![CDATA[ Returns a string containing a QName representing
+        the expanded name of the node in the node-set argument
+        that is first in document order.
+     ]]>
+        </comment>
+        <arg ref="nodeSet"/>
+    </function>
+
+
+    <function id="string" returns="string" visual="1">
+        <help>Converts an object to a string.</help>
+        <comment>
+            <![CDATA[Converts an object to a string. ]]>
+        </comment>
+        <arg ref="object"/>
+    </function>
+
+    <function id="concat" returns="string">
+        <help>This XPath 1.0 defined function concatenates several strings together.</help>
+        <comment>
+            <![CDATA[ This XPath 1.0 defined function concatenates several strings together.]]>
+        </comment>
+
+        <arg default="" name="firstString" type="string">
+            <comment>First string to concatenate with</comment>
+            <assistant ref="xpathPicker"/>
+        </arg>
+        <arg default="" name="nextString" type="string">
+            <comment>Next string to concatenate with</comment>
+            <assistant ref="xpathPicker"/>
+        </arg>
+        <arg default="" name="oneMoreString" optional="*" type="string">
+            <comment>One more string. You can concatenate several strings at once.</comment>
+            <assistant ref="xpathPicker"/>
+        </arg>
+    </function>
+
+    <function id="contains" returns="string">
+        <help>Checks whether the first argument string contains
+            the second argument string.</help>
+        <comment>
+            <![CDATA[ Checks whether the first argument string
+        contains the second argument string. ]]>
+        </comment>
+
+        <arg default="" name="aString" type="string">
+            <comment>The string to inspect</comment>
+            <assistant ref="xpathPicker"/>
+        </arg>
+        <arg default="" name="searchString" type="string">
+            <comment>The search string </comment>
+            <assistant ref="xpathPicker"/>
+        </arg>
+    </function>
+
+
+    <function id="substring-before" returns="string">
+        <help>Returns the substring of the first argument string that
+            precedes the first occurrence of the second argument string
+            in the first argument string, or the empty string if
+            the first argument string does not contain the second argument
+            string.</help>
+        <comment>
+            <![CDATA[<div class="xpathHelp">
+  <H1 class=dtH1>substring-before Function</H1>
+  <P class=dtP>Returns the substring of the first argument string that precedes the first
+  occurrence of the second argument string in the first argument string, or the
+  empty string if the first argument string does not contain the second argument
+  string.</P><PRE class=syntax><I>string</I> substring-before(<I>string</I>, <I>string</I>)</PRE>
+  <H4 class=dtH4>Remarks</H4>
+  <P class=dtP>If an argument is not of type <I>string,</I> it is first converted to a
+  string and then evaluated.</P>
+  <P class=dtP>The following function call returns "1999":</P><PRE class=code>substring-before("1999/04/01","/")</PRE>
+  <P class=dtP>The following function call returns an empty string "":</P><PRE class=code>substring-before("1999/04/01","2")</PRE>
+  </div>
+
+        ]]>
+        </comment>
+
+        <arg default="" name="aString" type="string">
+            <comment>The string to search in</comment>
+            <assistant ref="xpathPicker"/>
+        </arg>
+        <arg default="" name="searchString" type="string">
+            <comment>The search string </comment>
+            <assistant ref="xpathPicker"/>
+        </arg>
+    </function>
+
+
+    <function id="substring-after" returns="string">
+        <help>Returns the substring of the first argument string that
+            follows the first occurrence of the second argument string
+            in the first argument string, or the empty string if
+            the first argument string does not contain the second argument
+            string.</help>
+        <comment>
+            <![CDATA[<div class="xpathHelp">
+
+  <H1 class=dtH1>substring-after Function</H1>
+  <P class=dtP>Returns the substring of the first argument string that follows the first
+  occurrence of the second argument string in the first argument string, or the
+  empty string if the first argument string does not contain the second argument
+  string.</P><PRE class=syntax><I>string</I> substring-after(<I>string</I>, <I>string</I>)</PRE>
+  <H4 class=dtH4>Remarks</H4>
+  <P class=dtP>If an argument is not of type <I>string,</I> it is first converted to a
+  string and then evaluated.</P>
+  <P class=dtP>The following function call returns "04/01":</P><PRE class=code>substring-after("1999/04/01","/")</PRE>
+  <P class=dtP>The following function call returns "99/04/01":</P><PRE class=code>substring-after("1999/04/01","19")</PRE>
+  <P class=dtP>The following function call returns an empty string "":</P><PRE class=code>substring-after("1999/04/01","2")</PRE>
+  </div>
+        ]]>
+        </comment>
+
+        <arg default="" name="aString" type="string">
+            <comment>The string to search in</comment>
+            <assistant ref="xpathPicker"/>
+        </arg>
+        <arg default="" name="searchString" type="string">
+            <comment>The search string </comment>
+            <assistant ref="xpathPicker"/>
+        </arg>
+    </function>
+
+    <function id="starts-with" returns="boolean">
+        <help>Returns true if the first argument string starts with
+            the second argument string; otherwise returns false.</help>
+        <comment>
+            <![CDATA[<div class="xpathHelp">
+  <H1 class=dtH1>starts-with Function</H1>
+  <P class=dtP>Returns true if the first argument string starts with the second argument
+  string; otherwise returns false.</P><PRE class=syntax><I>boolean</I> starts-with(<I>string</I>, <I>string</I>)</PRE>
+  <H4 class=dtH4>Remarks</H4>
+  <P class=dtP>If an argument is not of type <I>string,</I> it is first converted to a
+  string and then evaluated. The function is case-sensitive.</P>
+  </div>
+        ]]>
+        </comment>
+
+        <arg default="" name="aString" type="string">
+            <comment>The string to search in</comment>
+            <assistant ref="xpathPicker"/>
+        </arg>
+        <arg default="" name="searchString" type="string">
+            <comment>The search string </comment>
+            <assistant ref="xpathPicker"/>
+        </arg>
+    </function>
+
+
+    <function id="substring" returns="string">
+        <help>Returns the substring of the first argument
+            starting at the position specified in the second argument
+            and the length specified in the third argument.</help>
+        <comment>
+            <![CDATA[<div class="xpathHelp">
+  <H1 class=dtH1>substring Function</H1>
+  <P class=dtP>Returns the substring of the first argument starting at the position
+  specified in the second argument and the length specified in the third
+  argument.</P><PRE class=syntax><I>string</I> substring(<I>string</I>, <I>number</I>, <I>number</I>?)</PRE>
+  <H4 class=dtH4>Remarks</H4>
+  <P class=dtP>Each character in the string is considered to have a numeric position: the
+  position of the first character is 1, the position of the second character is 2,
+  and so on.</P>
+  <P class=dtP>If the third argument is not specified, it returns the substring starting at
+  the position specified in the second argument and continuing to the end of the
+  string.</P>
+  <P class=dtP>The following function call returns "234":</P><PRE class=code>substring("12345",2,3) </PRE>
+  <P class=dtP>The following function call returns "2345":</P><PRE class=code>substring("12345",2) </PRE>
+  <P class=dtP>The returned substring contains those characters for which the position of
+  the character is greater than or equal to the rounded value of the second
+  argument, and if the third argument is specified, less than the sum of the
+  rounded value of the second argument and the rounded value of the third
+  argument. The comparisons and addition used for the preceding follow the
+  standard IEEE 754 rules; rounding is done as if by a call to the <CODE
+  class=ce>round()</CODE> function.</P>
+  <P class=dtP>The following examples illustrate unusual cases.</P>
+  <BLOCKQUOTE class=dtBlock><CODE class=ce>substring("12345", 1.5, 2.6)</CODE>
+  returns "<CODE class=ce>234</CODE>"</BLOCKQUOTE>
+  <BLOCKQUOTE class=dtBlock><CODE class=ce>substring("12345", 0, 3)</CODE> returns
+  "<CODE class=ce>12</CODE>"</BLOCKQUOTE>
+  <BLOCKQUOTE class=dtBlock><CODE class=ce>substring("12345", 0 div 0, 3)</CODE>
+  returns <CODE class=ce>""</CODE></BLOCKQUOTE>
+  <BLOCKQUOTE class=dtBlock><CODE class=ce>substring("12345", 1, 0 div 0)</CODE>
+  returns <CODE class=ce>""</CODE></BLOCKQUOTE>
+  <BLOCKQUOTE class=dtBlock><CODE class=ce>substring("12345", -42, 1 div 0)</CODE>
+  returns <CODE class=ce>"12345"</CODE></BLOCKQUOTE>
+  <BLOCKQUOTE class=dtBlock><CODE class=ce>substring("12345", -1 div 0, 1 div 0)</CODE> returns <CODE class=ce>""</CODE></BLOCKQUOTE>
+  </div>
+        ]]>
+        </comment>
+
+        <arg default="" name="aString" type="string">
+            <comment>The string to compute substring on</comment>
+            <assistant ref="xpathPicker"/>
+        </arg>
+        <arg default="" name="startPosition" type="number">
+            <comment>Start Position (first position is index == 1)</comment>
+            <assistant ref="xpathPicker"/>
+        </arg>
+        <arg default="" name="length" optional="true" type="number">
+            <comment>Length of characters to extract</comment>
+            <assistant ref="xpathPicker"/>
+        </arg>
+
+    </function>
+
+
+    <function id="string-length" returns="number">
+        <help>Returns the number of characters in the string.</help>
+        <comment>
+            <![CDATA[<div class="xpathHelp">
+  <H1 class=dtH1>string-length Function</H1>
+  <P class=dtP>Returns the number of characters in the string.</P><PRE class=syntax><I>number</I> string-length(<I>string</I>)</PRE>
+  <H4 class=dtH4>Remarks</H4>
+  <P class=dtP>If the argument is omitted, it returns the number of characters in the
+  string-value of the context node.</P>
+  <P class=dtP>The following function call returns 4:</P><PRE class=code>string-length("abcd")</PRE>
+  <P class=dtP>The following function call returns 5:</P><PRE class=code>string-length("ab cd")</PRE>
+  <P class=dtP>If an argument is not of type <I>string,</I> it is first converted to a
+  string and then evaluated.</P>
+  </div>
+        ]]>
+        </comment>
+
+        <arg default="" name="aString" type="string">
+            <comment>The string to compute the length on</comment>
+            <assistant ref="xpathPicker"/>
+        </arg>
+
+    </function>
+
+
+    <function id="normalize-space" returns="string">
+        <help>Returns the argument string with the white space stripped.</help>
+        <comment>
+            <![CDATA[<div class="xpathHelp">
+  <H1 class=dtH1>normalize-space Function</H1>
+  <P class=dtP>Returns the argument string with the leading, trailing, and repeating white
+  spaces stripped.</P><PRE class=syntax><I>string</I> normalize-space(<I>string</I>)</PRE>
+  <H4 class=dtH4>Remarks</H4>
+  <P class=dtP>White space is normalized by stripping leading and trailing white space and
+  replacing sequences of white space characters with a single space. If the
+  argument is omitted, the string-value of the context node is normalized and
+  returned.</P>
+  <P class=dtP>The following function call returns "abc def":</P><PRE class=code>normalize-space("  abc    def  ")</PRE>
+  <P class=dtP>If an argument is not of the type string<I>,</I> it is first converted to a
+  string and then evaluated. See the example below.</P>
+
+  </div>
+        ]]>
+        </comment>
+
+        <arg default="" name="aString" type="string">
+            <comment>The string to normalize</comment>
+            <assistant ref="xpathPicker"/>
+        </arg>
+
+    </function>
+
+    <function id="translate" returns="string">
+        <help>Returns the first argument string with occurrences
+            of characters in the second argument string replaced by
+            the character at the corresponding position in the third
+            argument string.</help>
+        <comment>
+            <![CDATA[<div class="xpathHelp">
+  <H1 class=dtH1>translate Function</H1>
+  <P class=dtP>Returns the first argument string with occurrences of characters in the
+  second argument string replaced by the character at the corresponding position
+  in the third argument string.</P><PRE class=syntax><I>string</I> translate(<I>string</I>, <I>string</I>, <I>string</I>)</PRE>
+  <H4 class=dtH4>Remarks</H4>
+  <P class=dtP>This function provides a mapping of characters on the first argument. The
+  second and third arguments describes the scheme of the mapping. </P>
+  <P class=dtP>The following function call returns "BAr":</P><PRE class=code>translate("bar","abc","ABC")</PRE>
+  <P class=dtP>If there is a character in the second argument string with no character at a
+  corresponding position in the third argument string (because the second argument
+  string is longer than the third argument string), occurrences of that character
+  in the first argument string are removed.</P>
+  <P class=dtP>The following function call returns "AAA":</P><PRE class=code>translate("--aaa--","abc-","ABC")</PRE>
+  <P class=dtP>If a character occurs more than once in the second argument string, the first
+  occurrence determines the replacement character. If the third argument string is
+  longer than the second argument string, excess characters are ignored.</P>
+  <P class=dtP>If an argument is not of type <I>string,</I> it is first converted to a
+  string and then evaluated.</P>
+
+
+  </div>
+        ]]>
+        </comment>
+
+        <arg default="" name="aString" type="string">
+            <comment>The string to translate</comment>
+            <assistant ref="xpathPicker"/>
+        </arg>
+
+        <arg default="" name="strOccur" type="string">
+            <comment>The string to translate from</comment>
+            <assistant ref="xpathPicker"/>
+        </arg>
+
+        <arg default="" name="strRepl" type="string">
+            <comment>The string to translate to</comment>
+            <assistant ref="xpathPicker"/>
+        </arg>
+
+    </function>
+
+
+
+    <!-- Boolean functions -->
+
+
+    <function id="boolean" returns="boolean" visual="1">
+        <help>Converts the argument to a Boolean.</help>
+        <comment>
+            <![CDATA[<div class="xpathHelp">
+  <H1 class=dtH1>boolean Function</H1>
+  <P class=dtP>Converts the argument to a Boolean.</P><PRE class=syntax><I>boolean</I> boolean(<I>value</I>)</PRE>
+  <H4 class=dtH4>Remarks</H4>
+  <P class=dtP>Converts argument to a Boolean as follows.
+  <UL type=disc>
+  <LI>A negative or positive number is true<CODE class=ce> </CODE>and any value
+  that contains either zero or a NaN value
+  is false.
+  <LI>A node-set is false if empty and only true if it is nonempty.
+  <LI>A string is false if it is zero-length and only true<CODE class=ce>
+  </CODE>if its length is greater than zero.
+  <LI>An object of a type other than the four basic types is converted to a
+  Boolean in a way that is dependent on that type. </LI></UL>
+
+  </div>
+        ]]>
+        </comment>
+        <arg ref="object"/>
+    </function>
+
+
+    <function id="not" returns="boolean">
+        <help>Returns true if the argument is false; otherwise false.</help>
+        <comment>
+            <![CDATA[<div class="xpathHelp">
+  <H1 class=dtH1>not Function</H1>
+  <P class=dt>Returns true if the argument is false; otherwise false.</P><PRE class=syntax><I>boolean</I> not(boolean)</PRE>
+
+  </div>
+        ]]>
+        </comment>
+        <arg ref="aBoolean"/>
+    </function>
+
+
+    <function id="true" returns="boolean">
+        <help>Returns true.</help>
+        <comment>
+            <![CDATA[<div class="xpathHelp">
+  <H1 class=dtH1>true Function</H1>
+  <P class=dtP>Returns true.</P><PRE class=syntax><I>boolean</I> true()</PRE>
+
+  </div>
+        ]]>
+        </comment>
+    </function>
+
+
+    <function id="false" returns="boolean">
+        <help>Returns false.</help>
+        <comment>
+            <![CDATA[<div class="xpathHelp">
+  <H1 class=dtH1>false Function</H1>
+  <P class=dtP>Returns false.</P><PRE class=syntax><I>boolean</I> false()</PRE>
+
+  </div>
+        ]]>
+        </comment>
+    </function>
+
+
+    <function id="lang" returns="boolean">
+        <help>Returns true if the xml:lang attribute of the
+            context node is the same as the argument string.</help>
+        <comment>
+            <![CDATA[<div class="xpathHelp">
+  <H1 class=dtH1>lang Function</H1>
+  <P class=dtP>Returns true if the <CODE class=ce>xml:lang</CODE> attribute of the context
+  node is the same as a sublanguage of the language specified by the argument
+  string.</P>
+  <H4 class=dtH4>Syntax</H4><PRE class=syntax><I>boolean</I> lang(<I>string</I>)</PRE>
+  <H4 class=dtH4>Remarks</H4>
+  <P class=dtP>The language of the context node is determined by the value of the <CODE
+  class=ce>xml:lang</CODE> attribute on the context node, or if the context node
+  has no <CODE class=ce>xml:lang</CODE> attribute, by the value of the <CODE
+  class=ce>xml:lang</CODE> attribute on the nearest ancestor of the context node
+  that has an <CODE class=ce>xml:lang</CODE> attribute. If there is no such
+  attribute, <CODE class=ce>lang()</CODE> returns false. If there is such an
+  attribute, <CODE class=ce>lang()</CODE> returns true if the attribute value is
+  equal to the argument (ignoring case) or if there is a suffix starting with
+  "<CODE class=ce>-</CODE>", such that the attribute value is equal to the
+  argument, ignoring the suffix of the attribute value and ignoring case.</P>
+  <P class=dtP>Given the following XML elements:</P><PRE class=code>&lt;para xml:lang="en"/&gt;
+  &lt;div xml:lang="en"&gt;&lt;para/&gt;&lt;/div&gt;
+  &lt;para xml:lang="EN"/&gt;
+  &lt;para xml:lang="en-us"/&gt;</PRE>
+  <P class=dtP>The following function call returns true for all:</P><PRE class=code>lang("en")</PRE>
+
+  </div>
+        ]]>
+        </comment>
+
+        <arg ref="aString"/>
+    </function>
+
+
+    <!-- Number functions -->
+
+    <function id="number" returns="number" visual="1">
+        <help>Evaluates the argument expressions to obtain a numeric result.</help>
+        <comment>
+            <![CDATA[<div class="xpathHelp">
+  <H1 class=dtH1>number Function</H1>
+  <P class=dtP>Converts the argument to a number.</P><PRE class=syntax><I>number</I> number(<I>object</I>?)</PRE>
+  <H4 class=dtH4>Remarks</H4>
+  <P class=dtP>Converts its argument to a number as follows.
+  <UL type=disc>
+  <LI>A string that consists of optional white space followed by an optional minus
+  sign followed by a number followed by white space is converted to the IEEE 754
+  number that is nearest (according to the IEEE 754 round-to-nearest rule) to the
+  mathematical value represented by the string; any other string is converted to
+  NaN.
+  <LI>Boolean true is converted to 1; Boolean false is converted to 0.
+  <LI>A node-set is first converted to a string and then converted in the same way
+  as a string argument.
+  <LI>An object of a type other than the four basic types (node-set, Boolean,
+  number, or string) is converted to a number in a way that is dependent on that
+  type. </LI></UL>
+  <P class=dtP>If the argument is omitted, it defaults to a node-set with the context node
+  as its only member.</P>
+  <BLOCKQUOTE class=dtBlock><B class=le>Note&nbsp;&nbsp;&nbsp;</B>The <CODE
+  class=ce>number()</CODE> function should not be used for conversion of numeric
+  data occurring in an element in an XML document unless the element is of a type
+  that represents numeric data in a language-neutral format (that would typically
+  be transformed into a language-specific format for presentation to a user). In
+  addition, the <CODE class=ce>number()</CODE> function cannot be used unless the
+  language-neutral format used by the element is consistent with the XML Path
+  Language (XPath) syntax for a number.</BLOCKQUOTE>
+
+  </div>
+        ]]>
+        </comment>
+
+        <arg default="" name="object" optional="true" type="object">
+            <comment>Any W3C XML DOM object or node-set.</comment>
+            <assistant ref="xpathPicker"/>
+        </arg>
+    </function>
+
+    <function id="sum" returns="number">
+        <help>Returns the sum of all nodes in the node-set. Each node
+            is first converted to a number value before summing.</help>
+        <comment>
+            <![CDATA[<H1 class=dtH1>sum Function</H1>
+<P class=dtP>Returns the sum of all nodes in the node-set. Each node is first converted to
+a number value before summing.</P><PRE class=syntax><I>number</I> sum(<I>node-set</I>)</PRE>
+            ]]>
+        </comment>
+
+        <arg ref="nodeSet"/>&gt;
+
+    </function>
+
+
+    <function id="floor" returns="number">
+        <help>Returns the largest integer that is not greater
+            than the argument.</help>
+        <comment>
+            <![CDATA[<H1 class=dtH1>floor Function</H1>
+<P class=dtP>Returns the largest integer that is not
+greater than the argument.</P>
+<PRE class=syntax><I>number</I> floor(<I>number</I>)</PRE>
+  ]]>
+        </comment>
+
+        <arg default="" name="aNumber" type="number">
+            <comment>Number to compute the floor of</comment>
+            <assistant ref="xpathPicker"/>
+        </arg>
+
+    </function>
+
+
+    <function id="ceiling" returns="number">
+        <help>Returns the smallest integer that is not less than the argument.</help>
+        <comment>
+            <![CDATA[
+    <H1 class=dtH1>ceiling Function</H1>
+    <P class=dtP>Returns the smallest integer that is not
+    less than the argument.</P>
+    <PRE class=syntax><I>number</I> ceiling(<I>number</I>)</PRE>
+
+    ]]>
+        </comment>
+
+        <arg default="" name="aNumber" type="number">
+            <comment>Number to compute the ceiling of</comment>
+            <assistant ref="xpathPicker"/>
+        </arg>
+
+    </function>
+
+
+    <function id="round" returns="number">
+        <help>Returns an integer closest in value to the argument.</help>
+        <comment>
+            <![CDATA[
+    <H1 class=dtH1>round Function</H1>
+    <P class=dtP>Returns an integer closest in value to the argument.</P><PRE class=syntax><I>number</I> round(<I>number</I>)</PRE>
+    <H4 class=dtH4>Remarks</H4>
+    <P class=dtP>If there are two such numbers, the one that is closest to positive infinity
+    is returned.</P>
+    <P class=dtP>If the argument is NaN, NaN is returned.</P>
+    <P class=dtP>If the argument is positive infinity, positive infinity is returned.</P>
+    <P class=dtP>If the argument is negative infinity, negative infinity is returned.</P>
+    <P class=dtP>If the argument is positive zero, positive zero is returned.</P>
+    <P class=dtP>If the argument is negative zero, negative zero is returned.</P>
+    <P class=dtP>If the argument is less than zero but greater than or equal to -0.5, negative
+    zero is returned.</P>
+    <P class=dtP>For the last two cases, the result of calling the <CODE
+    class=ce>round()</CODE> function is not the same as the result of adding 0.5 and
+    then calling the <CODE class=ce>floor()</CODE> function because positive zero
+    will be returned in such cases.</P>
+
+    ]]>
+        </comment>
+
+        <arg default="" name="aNumber" type="number">
+            <comment>Number to round up</comment>
+            <assistant ref="xpathPicker"/>
+        </arg>
+
+    </function>
+
+
+</bpel-xpath-functions>

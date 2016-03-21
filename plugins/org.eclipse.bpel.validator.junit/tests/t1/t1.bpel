@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpws:process
+	xmlns:bpws="http://schemas.xmlsoap.org/ws/2004/03/business-process/"
+	xmlns:ns="http://eclipse.org/bpel/sampleArtifacts"
+	xmlns:tns="http://eclipse.org/bpel/sample" 
+	exitOnStandardFault="yes"
+	name="Simple" 
+	suppressJoinFailure="yes"
+	targetNamespace="http://eclipse.org/bpel/sample">
+	
+	<bpws:import importType="http://schemas.xmlsoap.org/wsdl/"
+		location="t1.wsdl" namespace="http://eclipse.org/bpel/sample" />
+	<bpws:import importType="http://schemas.xmlsoap.org/wsdl/"
+		namespace="http://eclipse.org/bpel/sampleArtifacts" />
+	<bpws:import importType="http://schemas.xmlsoap.org/wsdl/"
+		location="t1Artifacts.wsdl"
+		namespace="http://eclipse.org/bpel/sampleArtifacts" />
+		
+	<bpws:partnerLinks>
+		<bpws:partnerLink myRole="SimpleProvider" name="client"
+			partnerLinkType="tns:Simple" partnerRole="SimpleRequester"/>
+						
+		<bpws:partnerLink name="pl1" partnerLinkType="ns:pltTraffic"
+			partnerRole="trafficRequester" />
+		<bpws:partnerLink name="" partnerLinkType="ns:pltTraffic"
+			partnerRole="trafficRequester" />
+		<bpws:partnerLink name="badMyRole" 
+			partnerLinkType="ns:pltTraffic"
+			myRole="trafficRequester" />
+		<bpws:partnerLink name="noRole" partnerLinkType="ns:pltTraffic"/>
+		<bpws:partnerLink name="badPLT" partnerLinkType="ns:pltTraffic-xxx"/>
+		<bpws:partnerLink name="nothing"/>
+		
+	</bpws:partnerLinks>
+
+	<bpws:variables>
+		<bpws:variable messageType="tns:SimpleRequestMessage"
+			name="input" />
+		<bpws:variable messageType="tns:SimpleResponseMessage"
+			name="output"/>
+		<bpws:variable name="xxx."/>
+		<bpws:variable name="z01"/>
+		<bpws:variable name="x01" messageType="tns:BadType"/>
+		<bpws:variable name="x02" messageType="badprefix:BadType"/>
+		<bpws:variable name="y01" type="tns:BadType"/>
+		<bpws:variable name="y02" element="tns:BadElement"/>
+	</bpws:variables>
+	<bpws:sequence name="main">
+	    <bpws:empty name="x"/>
+   	    <bpws:empty name="y"/>
+   	    <bpws:pick createInstance="yes">
+   	       <bpws:onAlarm name="onAlarmBad"/>
+   	    </bpws:pick>
+   	    
+		<bpws:receive createInstance="yes" name="receiveInput"
+			operation="initiate" partnerLink="client" portType="tns:Simple-bad"
+			variable="output"/>
+
+		<bpws:receive name="receiveInput"
+			operation="initiate" partnerLink="client" portType="tns:Simple"
+			variable="input"/>			
+		<bpws:receive name="receiveInput"
+			operation="init-xxx" partnerLink="client"
+			variable="input"/>						
+		<bpws:while name="While">
+			<bpws:condition
+				expressionLanguage="http://www.w3.org/TR/1999/REC-xpath-19991116">
+				<![CDATA[$input.payload/tns:input > 1]]>
+			</bpws:condition>
+		</bpws:while>
+		
+		<bpws:repeatUntil>
+			<bpws:condition
+				expressionLanguage="http://www.w3.org/TR/1999/js">
+					true
+			</bpws:condition>
+		</bpws:repeatUntil>
+		
+		<bpws:invoke inputVariable="output" name="callbackClient"
+			operation="onResult" partnerLink="client"
+			portType="tns:SimpleCallback" />
+			
+		<bpws:scope>
+			<bpws:variables>
+				<bpws:variable messageType="tns:SimpleRequestMessage"
+					name="input" />		
+				<bpws:variable name="s_xxx" />				
+				<bpws:variable name="s_xxx" type="xsd:integer"/>				
+			</bpws:variables>
+		</bpws:scope>
+		
+		<bpws:compensateScope/>
+		<bpws:sequence/>
+		<bpws:pick/>
+		<bpws:rethrow/>
+		<bpws:wait/>
+		<bpws:exit/>
+		<bpws:throw/>
+		<bpws:assign/>		
+		<bpws:flow/>
+		
+		<bpws:if>
+		   <bpws:condition>1 + 3</bpws:condition>
+		</bpws:if>
+		
+		<bpws:if>
+		<bpws:elseif/>
+		</bpws:if>
+		
+		<bpws:if>
+		<bpws:elseif/>
+		<bpws:else/>
+		</bpws:if>
+		
+	</bpws:sequence>
+</bpws:process>

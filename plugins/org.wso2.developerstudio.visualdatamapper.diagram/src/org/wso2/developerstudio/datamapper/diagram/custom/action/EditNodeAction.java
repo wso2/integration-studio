@@ -18,7 +18,6 @@ package org.wso2.developerstudio.datamapper.diagram.custom.action;
 
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Map;
 import java.util.Map.Entry;
 
 import org.apache.commons.lang.StringUtils;
@@ -46,7 +45,6 @@ import org.wso2.developerstudio.datamapper.diagram.custom.util.AddNewObjectDialo
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.TreeNode2EditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.TreeNode3EditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.TreeNodeEditPart;
-import org.wso2.developerstudio.datamapper.impl.PropertyKeyValuePairImpl;
 import org.wso2.developerstudio.eclipse.registry.core.interfaces.IRegistryFile;
 
 public class EditNodeAction extends AbstractActionHandler {
@@ -60,6 +58,7 @@ public class EditNodeAction extends AbstractActionHandler {
 	private static final String JSON_SCHEMA_ID = "id";
 	private static final String JSON_SCHEMA_TYPE = "type";
 	private static final String JSON_SCHEMA_TITLE = "title";
+	private static final String JSON_SCHEMA_NAMESPACES = "namespaces";
 	private static final String PREFIX = "@";
 
 	private String title = null;
@@ -67,6 +66,7 @@ public class EditNodeAction extends AbstractActionHandler {
 	private String id = null;
 	private String name = null;
 	private String schemaValue = null;
+	private String namespaces = null;
 	private String required = null;
 	private boolean isAttribute = false;
 
@@ -103,8 +103,9 @@ public class EditNodeAction extends AbstractActionHandler {
 			id = setProerties(selectedNode, JSON_SCHEMA_ID);
 			required = setProerties(selectedNode, JSON_SCHEMA_REQUIRED);
 			schemaValue = setProerties(selectedNode, JSON_SCHEMA_SCHEMA_VALUE);
+			namespaces = setProerties(selectedNode, JSON_SCHEMA_NAMESPACES);
 
-			openEditRecordDialog(selectedNode, name, schemaType, id, required, schemaValue);
+			openEditRecordDialog(selectedNode, name, schemaType, id, required, schemaValue,namespaces);
 
 		}
 	}
@@ -228,14 +229,14 @@ public class EditNodeAction extends AbstractActionHandler {
 	 *            schema value
 	 */
 	private void openEditRecordDialog(TreeNode selectedNode, String title, String schemaType, String id,
-			String required, String schemaValue) {
+			String required, String schemaValue, String namespaces) {
 		Display display = Display.getDefault();
 		Shell shell = new Shell(display);
 		AddNewObjectDialog editTypeDialog = new AddNewObjectDialog(shell, new Class[] { IRegistryFile.class });
 
 		editTypeDialog.create();
 		editTypeDialog.setTypeWhenEditing(schemaType);
-		editTypeDialog.setValues(title, schemaType, id, required, schemaValue);
+		editTypeDialog.setValues(title, schemaType, id, required, schemaValue,namespaces);
 		editTypeDialog.open();
 
 		if (editTypeDialog.getOkValue()) {
@@ -267,6 +268,10 @@ public class EditNodeAction extends AbstractActionHandler {
 
 			if (StringUtils.isNotEmpty(editTypeDialog.getRequired())) {
 				valueMap.put(JSON_SCHEMA_REQUIRED, editTypeDialog.getRequired());
+			}
+			
+			if (StringUtils.isNotEmpty(editTypeDialog.getNamespaces())) {
+				valueMap.put(JSON_SCHEMA_NAMESPACES, editTypeDialog.getNamespaces());
 			}
 			reflectChanges(selectedNode, valueMap);
 

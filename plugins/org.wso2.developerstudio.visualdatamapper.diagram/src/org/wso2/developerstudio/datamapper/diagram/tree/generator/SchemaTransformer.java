@@ -337,10 +337,15 @@ public class SchemaTransformer implements ISchemaTransformer {
 	 */
 	private TreeNode setProperties(Map<String, Object> jsonSchemaMap, TreeNode inputRootTreeNode, int count,
 			HashMap<String, String> namespaceMap) {
+		Map<String, Object> propertyMap = null;
+		Map<String, Object> attributeMap = null ;
+		Map<String, Object> sortedMap = null;
+		if(jsonSchemaMap.size()>0){
 		// Gets the schema properties
-		Map<String, Object> propertyMap = getSchemaProperties(jsonSchemaMap);
-		Map<String, Object> attributeMap = new LinkedHashMap<String, Object>();
-		Map<String, Object> sortedMap = getAttributeMap(propertyMap, attributeMap);
+		propertyMap = getSchemaProperties(jsonSchemaMap);
+		attributeMap = new LinkedHashMap<String, Object>();
+		sortedMap = getAttributeMap(propertyMap, attributeMap);
+		}
 		// If there is an attribute, add the rest of the elements to the map
 		// after the attribute
 		if (sortedMap.size() > 0) {
@@ -366,7 +371,9 @@ public class SchemaTransformer implements ISchemaTransformer {
 			} else if (JSON_SCHEMA_ARRAY.equals(schemaType)) {
 				treeNode = createTreeNode(null, count, elementKey, subSchema, schemaType, namespaceMap);
 				inputRootTreeNode.getNode().add(treeNode);
+				if(getSchemaItems(subSchema).size()> 0){
 				setProperties(getSchemaItems(subSchema), treeNode, count, namespaceMap);
+				}
 			} else {
 				// When there is an attribute,
 				if (elementKey.startsWith(PREFIX)) {
@@ -495,12 +502,14 @@ public class SchemaTransformer implements ISchemaTransformer {
 					// get the Map directly
 					itemsSchema = (Map<String, Object>) subSchema.get(JSON_SCHEMA_ITEMS);
 				}
-				setPropertyKeyValuePairforTreeNodes(treeNode, propertyValueList, JSON_SCHEMA_ARRAY_ITEMS_ID,
-						itemsSchema.get(JSON_SCHEMA_ID).toString());
-				setPropertyKeyValuePairforTreeNodes(treeNode, propertyValueList, JSON_SCHEMA_ARRAY_ITEMS_TYPE,
-						itemsSchema.get(JSON_SCHEMA_TYPE).toString());
-				setPropertyKeyValuePairforTreeNodes(treeNode, propertyValueList, JSON_SCHEMA_ARRAY_ITEMS_REQUIRED,
-						getRequiredValue(itemsSchema));
+				if(itemsSchema.size()>0){
+					setPropertyKeyValuePairforTreeNodes(treeNode, propertyValueList, JSON_SCHEMA_ARRAY_ITEMS_ID,
+							itemsSchema.get(JSON_SCHEMA_ID).toString());
+					setPropertyKeyValuePairforTreeNodes(treeNode, propertyValueList, JSON_SCHEMA_ARRAY_ITEMS_TYPE,
+							itemsSchema.get(JSON_SCHEMA_TYPE).toString());
+					setPropertyKeyValuePairforTreeNodes(treeNode, propertyValueList, JSON_SCHEMA_ARRAY_ITEMS_REQUIRED,
+							getRequiredValue(itemsSchema));
+				}
 			}
 		}
 		return treeNode;
@@ -701,9 +710,13 @@ public class SchemaTransformer implements ISchemaTransformer {
 					if (schemaArrayItemsID != null) {
 						itemProperties.put(JSON_SCHEMA_ID, schemaArrayItemsID.replace("\\", ""));
 					} else {
-						itemProperties.put(JSON_SCHEMA_ID, "");
+						itemProperties.put(JSON_SCHEMA_ID, schemaID+"/0");
 					}
-					itemsObject.put(JSON_SCHEMA_TYPE, schemaArrayItemsType);
+					if (schemaArrayItemsType != null) {
+						itemProperties.put(JSON_SCHEMA_TYPE, schemaArrayItemsType);
+					} else {
+						itemProperties.put(JSON_SCHEMA_TYPE, null);
+					}
 					insertRequiredArray(arrayObject, node, false);
 					insertRequiredArray(itemProperties, node, true);
 					parent.put(node.getName(), arrayObject);
@@ -716,7 +729,7 @@ public class SchemaTransformer implements ISchemaTransformer {
 					if (schemaID != null) {
 						elemObject.put(JSON_SCHEMA_ID, schemaID.replace("\\", ""));
 					} else {
-						elemObject.put(JSON_SCHEMA_ID, "");
+						elemObject.put(JSON_SCHEMA_ID, schemaID+"/0");
 					}
 					elemObject.put(JSON_SCHEMA_TYPE, schemaType);
 					parent.put(node.getName(), elemObject);
@@ -737,7 +750,7 @@ public class SchemaTransformer implements ISchemaTransformer {
 					if (schemaID != null) {
 						elemObject.put(JSON_SCHEMA_ID, schemaID.replace("\\", ""));
 					} else {
-						elemObject.put(JSON_SCHEMA_ID, "");
+						elemObject.put(JSON_SCHEMA_ID, schemaID+"/0");
 					}
 					elemObject.put(JSON_SCHEMA_TYPE, schemaType);
 					parent.put(elem.getName(), elemObject);

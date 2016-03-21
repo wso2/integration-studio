@@ -53,10 +53,12 @@ public class AddNewArrayAction extends AbstractActionHandler {
 	private static final String ADD_NEW_RECORDS_LIST_ACTION_ID = "add-new-records-list-action-id"; //$NON-NLS-1$
 	private static final String ADD_NEW_RECORDS_LIST = Messages.AddNewArrayAction_addNewArray;
 	private static final String DIALOG_TITLE = "Add new Array";
+	private static final String JSON_SCHEMA_ARRAY_ITEMS_TYPE = "items_type";
 
 	private static final String JSON_SCHEMA_REQUIRED = "required";
 	private static final String JSON_SCHEMA_ID = "id";
 	private static final String JSON_SCHEMA_TYPE = "type";
+	private static final String JSON_SCHEMA_OBJECT = "object";
 
 	public AddNewArrayAction(IWorkbenchPart workbenchPart) {
 		super(workbenchPart);
@@ -106,6 +108,8 @@ public class AddNewArrayAction extends AbstractActionHandler {
 					setPropertyKeyValuePairforTreeNodes(treeNodeNew, propertyValueList, JSON_SCHEMA_REQUIRED,
 							objectDialog.getRequired());
 				}
+			
+				setPropertyKeyValuePairforTreeNodes(treeNodeNew, propertyValueList, JSON_SCHEMA_ARRAY_ITEMS_TYPE,JSON_SCHEMA_OBJECT);
 				/*
 				 * AddCommand is used to avoid concurrent updating. index 0 to
 				 * add as the first child

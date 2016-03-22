@@ -141,19 +141,14 @@ public class SchemaTransformer implements ISchemaTransformer {
 			Object type = jsonSchemaMap.get(JSON_SCHEMA_TYPE);
 			if (type instanceof String) {
 				return (String) type;
-			} else {
-				log.error("Invalid input schema, invalid schema type found");
-				displayUserError("WARNING", "Invalid schema, Illegal format " + type.getClass()
-						+ " value found under key : " + JSON_SCHEMA_TYPE);
-				throw new IllegalArgumentException("Illegal format " + type.getClass() + " value found under key : "
-						+ JSON_SCHEMA_TYPE);
-			}
+			} 
 		} else {
 			log.error("Invalid input schema, schema type not found.");
 			displayUserError("WARNING", "Invalid schema, Given schema does not contain value under key : "
 					+ JSON_SCHEMA_TYPE);
 			throw new IllegalArgumentException("Given schema does not contain value under key : " + JSON_SCHEMA_TYPE);
 		}
+		return null;
 	}
 
 	/**
@@ -168,13 +163,7 @@ public class SchemaTransformer implements ISchemaTransformer {
 			Object type = jsonSchemaMap.get(JSON_SCHEMA_SCHEMA_VALUE);
 			if (type instanceof String) {
 				return (String) type;
-			} else {
-				/*log.error("Invalid input schema, invalid schema value found");
-				displayUserError("WARNING", "Invalid schema, Illegal format " + type.getClass()
-						+ " value found under key : " + JSON_SCHEMA_SCHEMA_VALUE);
-				throw new IllegalArgumentException("Illegal format " + type.getClass() + " value found under key : "
-						+ JSON_SCHEMA_SCHEMA_VALUE);*/
-			}
+			} 
 		}
 		return null;
 	}
@@ -191,12 +180,6 @@ public class SchemaTransformer implements ISchemaTransformer {
 			Object type = jsonSchemaMap.get(JSON_SCHEMA_ID);
 			if (type instanceof String) {
 				return (String) type;
-			} else {
-				/*log.error("Invalid input schema, invalid ID value found");
-				displayUserError("WARNING", "Invalid schema, Illegal format " + type.getClass()
-						+ " value found under key : " + JSON_SCHEMA_ID);
-				throw new IllegalArgumentException("Illegal format " + type.getClass() + " value found under key : "
-						+ JSON_SCHEMA_ID);*/
 			}
 		}
 		return null;

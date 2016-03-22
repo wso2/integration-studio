@@ -3,6 +3,7 @@ package org.wso2.developerstudio.datamapper.diagram.edit.parts;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.lang.StringUtils;
 import org.eclipse.draw2d.ActionEvent;
 import org.eclipse.draw2d.ActionListener;
 import org.eclipse.draw2d.Clickable;
@@ -513,7 +514,7 @@ public class TreeNode3EditPart extends AbstractBorderedShapeEditPart {
 			fFigureTreeNodeNameFigure.setFont(new Font(null, "Arial", 10, SWT.BOLD));	
 
 			String newName = null;
-			if (name.startsWith(PREFIX)) {
+			if (StringUtils.isNotEmpty(name) && name.startsWith(PREFIX)) {
 				String[] fullName = name.split(PREFIX);
 				newName = fullName[1];
 			} else {
@@ -521,7 +522,7 @@ public class TreeNode3EditPart extends AbstractBorderedShapeEditPart {
 			}
 			figure2.setPreferredSize((count - 1) * 22, 3);
 			final Label nodeLabel = new Label();
-			if (name.startsWith(PREFIX)) {
+			if (StringUtils.isNotEmpty(name) && name.startsWith(PREFIX)) {
 				nodeLabel.setIcon(attributeImg.getImage());
 			}else if(type.equals(JSON_SCHEMA_ARRAY)){
 				nodeLabel.setIcon(arrayImg.getImage());

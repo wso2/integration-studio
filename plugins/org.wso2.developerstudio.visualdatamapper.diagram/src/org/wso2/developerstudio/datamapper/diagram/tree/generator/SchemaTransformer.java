@@ -28,7 +28,8 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.Set;
-import java.util.stream.Collectors;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang.StringUtils;
@@ -168,11 +169,11 @@ public class SchemaTransformer implements ISchemaTransformer {
 			if (type instanceof String) {
 				return (String) type;
 			} else {
-				log.error("Invalid input schema, invalid schema value found");
+				/*log.error("Invalid input schema, invalid schema value found");
 				displayUserError("WARNING", "Invalid schema, Illegal format " + type.getClass()
 						+ " value found under key : " + JSON_SCHEMA_SCHEMA_VALUE);
 				throw new IllegalArgumentException("Illegal format " + type.getClass() + " value found under key : "
-						+ JSON_SCHEMA_SCHEMA_VALUE);
+						+ JSON_SCHEMA_SCHEMA_VALUE);*/
 			}
 		}
 		return null;
@@ -191,11 +192,11 @@ public class SchemaTransformer implements ISchemaTransformer {
 			if (type instanceof String) {
 				return (String) type;
 			} else {
-				log.error("Invalid input schema, invalid ID value found");
+				/*log.error("Invalid input schema, invalid ID value found");
 				displayUserError("WARNING", "Invalid schema, Illegal format " + type.getClass()
 						+ " value found under key : " + JSON_SCHEMA_ID);
 				throw new IllegalArgumentException("Illegal format " + type.getClass() + " value found under key : "
-						+ JSON_SCHEMA_ID);
+						+ JSON_SCHEMA_ID);*/
 			}
 		}
 		return null;
@@ -214,7 +215,7 @@ public class SchemaTransformer implements ISchemaTransformer {
 			ArrayList<HashMap<String, String>> namespaces = (ArrayList<HashMap<String, String>>) jsonSchemaMap
 					.get(JSON_SCHEMA_NAMESPACES);
 			if (namespaces instanceof ArrayList) {
-				String value = namespaces.stream().map(i -> i.toString()).collect(Collectors.joining(", "));
+				String value = StringUtils.join(namespaces, ',');;
 				return value;
 			} else {
 				log.error("Invalid input schema, invalid namespaces value found");
@@ -233,14 +234,14 @@ public class SchemaTransformer implements ISchemaTransformer {
 	 * @param type
 	 * @return
 	 */
-	@SuppressWarnings({ "unchecked", "rawtypes" })
+	@SuppressWarnings({ "unchecked"})
 	private HashMap<String, String> createNamespacesMap(Map<String, Object> jsonSchemaMap) {
-		ArrayList<HashMap<String, String>> namespaces = (ArrayList<HashMap<String, String>>) jsonSchemaMap
+		ArrayList<LinkedHashMap<String, String>> namespaces = (ArrayList<LinkedHashMap<String, String>>) jsonSchemaMap
 				.get(JSON_SCHEMA_NAMESPACES);
 		HashMap<String, String> namespaceMap = new HashMap<String, String>();
-		for (Map namespace : namespaces) {
-			namespaceMap.put(namespace.get(NAMESPACE_PREFIX).toString(), namespace.get(NAMESPACE_URL).toString());
-		}
+		for (LinkedHashMap<String, String> namespace : namespaces) {
+			namespaceMap.put(namespace.get(NAMESPACE_PREFIX), namespace.get(NAMESPACE_URL));
+			}
 		return namespaceMap;
 	}
 
@@ -256,8 +257,7 @@ public class SchemaTransformer implements ISchemaTransformer {
 		if (jsonSchemaMap.containsKey(JSON_SCHEMA_REQUIRED)) {
 			ArrayList type = (ArrayList) jsonSchemaMap.get(JSON_SCHEMA_REQUIRED);
 			if (type instanceof ArrayList) {
-				@SuppressWarnings("unchecked")
-				String value = (String) type.stream().map(i -> i.toString()).collect(Collectors.joining(", "));
+				String value = StringUtils.join(type, ',');;
 				return value;
 			} else {
 				log.error("Invalid input schema, invalid required value found");
@@ -482,7 +482,6 @@ public class SchemaTransformer implements ISchemaTransformer {
 		if (getNamespaces(subSchema) != null) {
 			setPropertyKeyValuePairforTreeNodes(treeNode, propertyValueList, JSON_SCHEMA_NAMESPACES,
 					getNamespaces(subSchema));
-			// creates the namespaces map
 		}
 
 		if (schemaType.equals(JSON_SCHEMA_ARRAY)) {
@@ -771,28 +770,40 @@ public class SchemaTransformer implements ISchemaTransformer {
 		nodeObject.put(JSON_SCHEMA_TYPE, schemaType);
 	}
 
-	@SuppressWarnings({ "unchecked" })
+	/**
+	 * Inserts the namespace array
+	 * @param parent
+	 * @param node
+	 * @param isItems
+	 */
+	@SuppressWarnings("unchecked")
 	private void insertNamespacesArray(JSONObject parent, TreeNode node, boolean isItems) {
-		String namespaceString = null;
 		JSONArray namespaceArray = new JSONArray();
+		JSONObject namespaceObj = null;
 		String schemaNamespace = getPropertyKeyValuePairforTreeNode(node, JSON_SCHEMA_NAMESPACES);
 		if (schemaNamespace != null) {
-			namespaceString = schemaNamespace;
-		}
-		if (namespaceString != null) {
-			if (namespaceString.contains(",")) {
-				String[] namespaceStringArr = namespaceString.split(",");
-				for (String namespaceItem : namespaceStringArr) {
-					if(namespaceItem.contains("\\")){
-						namespaceArray.add(namespaceItem.replace("\\", ""));
-					}else{
-						namespaceArray.add(namespaceItem);
-					}	
+			Pattern logEntry = Pattern.compile("\\{(.*?)\\}");
+			Matcher matchPattern = logEntry.matcher(schemaNamespace);
+			while (matchPattern.find()) {
+				namespaceObj = new JSONObject();
+				String namespaceValue = matchPattern.group(1);
+				String[] namespaceStringArrs = namespaceValue.split(",");
+				for (String namespaceStringArr : namespaceStringArrs) {
+					if (namespaceStringArr.contains("=")) {
+						String[] namespacearr = namespaceStringArr.split("=");
+						String firstElement = namespacearr[0];
+						String secondElement = namespacearr[1];
+						if (firstElement.contains("//") || secondElement.contains("//")) {
+							String first = firstElement.replace("//","");
+							String second = secondElement.replace("//", "");
+							namespaceObj.put(first, second);
+						}else{
+							namespaceObj.put(firstElement, secondElement);
+						}
+					}
 				}
-			} else {
-				namespaceArray.add(namespaceString);
+				namespaceArray.add(namespaceObj);
 			}
-
 			parent.put(JSON_SCHEMA_NAMESPACES, namespaceArray);
 		}
 	}

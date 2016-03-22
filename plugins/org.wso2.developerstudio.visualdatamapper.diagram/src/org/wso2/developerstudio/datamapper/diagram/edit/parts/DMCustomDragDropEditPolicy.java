@@ -27,7 +27,6 @@ public class DMCustomDragDropEditPolicy extends org.eclipse.gmf.runtime.diagram.
 	
 	@Override
 	protected Command getDropCommand(ChangeBoundsRequest request) {
-		System.out.println("getDropCommand host" + getHost().toString());
 		if ((getHost() instanceof ShapeCompartmentEditPart)) {
 			/* avoiding drag and drop nodes between compartments. */
 			return null;
@@ -39,7 +38,6 @@ public class DMCustomDragDropEditPolicy extends org.eclipse.gmf.runtime.diagram.
 	public void showTargetFeedback(Request request) {
 		super.showTargetFeedback(request);
 		
-		System.out.println("showTargetFeedback " + request.toString());
 		//if (request instanceof CreateUnspecifiedTypeRequest) {
 			if (getHost() instanceof DataMapperRootEditPart) {
 				
@@ -63,7 +61,6 @@ public class DMCustomDragDropEditPolicy extends org.eclipse.gmf.runtime.diagram.
 	}
 	
 	public void eraseTargetFeedback(Request request) {
-		System.out.println("eraseTargetFeedback " + request.toString());
 		if (feedbackFigure != null) {
 			removeFeedback(feedbackFigure);
 			feedbackFigure = null;
@@ -100,7 +97,6 @@ public class DMCustomDragDropEditPolicy extends org.eclipse.gmf.runtime.diagram.
 	}
 	
 	public Command getCommand(Request request) {
-		System.out.println("getCommand " + request.toString());
 		return super.getCommand(request);
 	}
 

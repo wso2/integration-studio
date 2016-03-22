@@ -27,6 +27,8 @@ import org.eclipse.gef.Request;
 import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.editpolicies.LayoutEditPolicy;
 import org.eclipse.gef.editpolicies.NonResizableEditPolicy;
+import org.eclipse.gef.palette.PaletteContainer;
+import org.eclipse.gef.palette.ToolEntry;
 import org.eclipse.gef.requests.CreateRequest;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.AbstractBorderedShapeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IBorderItemEditPart;
@@ -497,12 +499,16 @@ public class TreeNodeEditPart extends AbstractBorderedShapeEditPart {
 				@Override
 				public void mouseEntered(MouseEvent me) {
 					highlightElementOnSelection();
+					getEditDomain().getPaletteViewer().setActiveTool(
+							(ToolEntry) (((PaletteContainer) getEditDomain().getPaletteViewer().getPaletteRoot()
+									.getChildren().get(1)).getChildren().get(0)));
 
 				}
 
 				@Override
 				public void mouseExited(MouseEvent me) {
 					removeHighlight();
+					getEditDomain().getPaletteViewer().setActiveTool(null);
 
 				}
 

@@ -66,6 +66,7 @@ public class AddNewRootAction extends AbstractActionHandler {
 	private static final String JSON_SCHEMA_SCHEMA_VALUE = "$schema";
 	private static final String JSON_SCHEMA_ID = "id";
 	private static final String JSON_SCHEMA_TYPE = "type";
+	private static final String JSON_SCHEMA_NAMESPACES = "namespaces";
 
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
@@ -124,6 +125,10 @@ public class AddNewRootAction extends AbstractActionHandler {
 					if (StringUtils.isNotEmpty(rootElementDialog.getRequired())) {
 						setPropertyKeyValuePairforTreeNodes(treeNodeNew, propertyValueList, JSON_SCHEMA_REQUIRED,
 								rootElementDialog.getRequired());
+					}
+					if (StringUtils.isNotEmpty(rootElementDialog.getNamespaces())) {
+						setPropertyKeyValuePairforTreeNodes(treeNodeNew, propertyValueList, JSON_SCHEMA_NAMESPACES,
+								rootElementDialog.getNamespaces());
 					}
 					String selectedInputOutputEditPart = getSelectedInputOutputEditPart();
 					if (null != selectedInputOutputEditPart) {

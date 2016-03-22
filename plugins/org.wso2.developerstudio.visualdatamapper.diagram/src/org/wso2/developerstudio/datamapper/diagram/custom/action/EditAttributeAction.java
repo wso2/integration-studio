@@ -177,7 +177,7 @@ public class EditAttributeAction extends AbstractActionHandler {
 	
 		editTypeDialog.create();
 		editTypeDialog.setTypeWhenEditing(schemaType);
-		editTypeDialog.setValues(title, schemaType, id, required, schemaValue);
+		//editTypeDialog.setValues(title, schemaType, id, required, schemaValue);
 		editTypeDialog.open();
 		
 		if(editTypeDialog.getOkValue()){

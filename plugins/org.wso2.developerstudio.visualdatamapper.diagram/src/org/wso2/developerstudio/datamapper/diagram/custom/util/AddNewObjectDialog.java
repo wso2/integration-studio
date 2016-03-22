@@ -31,7 +31,6 @@ import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
-import org.wso2.developerstudio.datamapper.A;
 
 public class AddNewObjectDialog extends Dialog {
 
@@ -40,6 +39,7 @@ public class AddNewObjectDialog extends Dialog {
 	private Text textSchemaValue;
 	private Text textID;
 	private Text textRequired;
+	private Text textNamespaces;
 	private Composite compositeType;
 
 	private Label lblTitleLabel;
@@ -47,12 +47,14 @@ public class AddNewObjectDialog extends Dialog {
 	private Label lblID;
 	private Label lblSchemaValue;
 	private Label lblRequired;
+	private Label lblNamespaces;
 
 	private String title;
 	private String schemaType;
 	private String schemaValue;
 	private String id;
 	private String required;
+	private String namespaces;
 
 	private String[] DATA_TYPES = { "string", "int", "boolean", "bytes", "double", "enum", "fixed", "float", "long",
 			"map", "union" };
@@ -67,13 +69,12 @@ public class AddNewObjectDialog extends Dialog {
 	private static final String DIALOG_TITLE_ARRAY = "Add new Array";
 	private static final String DIALOG_TITLE_FIELD = "Add new Field";
 	private static final String DIALOG_TITLE_ATTRIBUTE = "Add new Attribute";
-	private static final String DIALOG_TITLE_EDIT_OBJECT = "Edit Object";
-	private static final String DIALOG_TITLE_EDIT_ATTRIBUTE = "Edit Attribute";
 	private static final String LABEL_TITLE = "Name :";
 	private static final String LABEL_SCHEMATYPE = "Schema Type :";
 	private static final String LABEL_SCHEMA_VALUE = "Schema Value :";
 	private static final String LABEL_REQUIRED = "Required :";
 	private static final String LABEL_ID = "ID :";
+	private static final String LABEL_NAMESPACES = "Namespaces :";
 	private static final String NEW_ROOT_RECORD_ID = "NewRootType";
 	private static final String NEW_OBJECT_ID = "NewObject";
 	private static final String NEW_ARRAY_ID = "NewArray";
@@ -127,14 +128,20 @@ public class AddNewObjectDialog extends Dialog {
 		if (title.equals(DIALOG_TITLE_ROOT)) {
 			lblSchemaValue.setVisible(true);
 			textSchemaValue.setVisible(true);
+			lblNamespaces.setVisible(true);
+			textNamespaces.setVisible(true);
 		}
 		if (title.equals(DIALOG_TITLE_OBJECT) || title.equals(DIALOG_TITLE_ARRAY) || title.equals(DIALOG_TITLE_FIELD)
 				|| title.equals(DIALOG_TITLE_ATTRIBUTE)) {
 			lblSchemaValue.setVisible(false);
 			textSchemaValue.setVisible(false);
+			lblNamespaces.setVisible(false);
+			textNamespaces.setVisible(false);
 		} if (title.equals(DIALOG_TITLE_FIELD)|| title.equals(DIALOG_TITLE_ATTRIBUTE) ) {
 			lblRequired.setVisible(false);
 			textRequired.setVisible(false);
+			lblNamespaces.setVisible(false);
+			textNamespaces.setVisible(false);
 		}
 	}
 	
@@ -189,7 +196,7 @@ public class AddNewObjectDialog extends Dialog {
 	 * @param schemaValue
 	 *            schemaValue
 	 */
-	public void setValues(String title, String schemaType, String id, String required, String schemaValue) {
+	public void setValues(String title, String schemaType, String id, String required, String schemaValue, String namespaces) {
 		if (StringUtils.isNotEmpty(title)) {
 			textTitle.setText(title);
 		}
@@ -203,6 +210,8 @@ public class AddNewObjectDialog extends Dialog {
 				textRequired.setVisible(true);
 				lblSchemaValue.setVisible(true);
 				textSchemaValue.setVisible(true);
+				lblNamespaces.setVisible(true);
+				textNamespaces.setVisible(true);
 				break;
 			case "array":
 				comboSchemaType.select(0);
@@ -212,6 +221,8 @@ public class AddNewObjectDialog extends Dialog {
 				textRequired.setVisible(true);
 				lblSchemaValue.setVisible(false);
 				textSchemaValue.setVisible(false);
+				lblNamespaces.setVisible(false);
+				textNamespaces.setVisible(false);
 				break;
 			case "string":
 				comboSchemaType.select(0);
@@ -221,6 +232,8 @@ public class AddNewObjectDialog extends Dialog {
 				textRequired.setVisible(false);
 				lblSchemaValue.setVisible(false);
 				textSchemaValue.setVisible(false);
+				lblNamespaces.setVisible(false);
+				textNamespaces.setVisible(false);
 				break;
 			case "int":
 				comboSchemaType.select(1);
@@ -230,6 +243,8 @@ public class AddNewObjectDialog extends Dialog {
 				textRequired.setVisible(false);
 				lblSchemaValue.setVisible(false);
 				textSchemaValue.setVisible(false);
+				lblNamespaces.setVisible(false);
+				textNamespaces.setVisible(false);
 				break;
 			case "boolean":
 				comboSchemaType.select(2);
@@ -239,6 +254,8 @@ public class AddNewObjectDialog extends Dialog {
 				textRequired.setVisible(false);
 				lblSchemaValue.setVisible(false);
 				textSchemaValue.setVisible(false);
+				lblNamespaces.setVisible(false);
+				textNamespaces.setVisible(false);
 				break;
 			case "bytes":
 				comboSchemaType.select(3);
@@ -248,6 +265,8 @@ public class AddNewObjectDialog extends Dialog {
 				textRequired.setVisible(false);
 				lblSchemaValue.setVisible(false);
 				textSchemaValue.setVisible(false);
+				lblNamespaces.setVisible(false);
+				textNamespaces.setVisible(false);
 				break;
 			case "double":
 				comboSchemaType.select(4);
@@ -257,6 +276,8 @@ public class AddNewObjectDialog extends Dialog {
 				textRequired.setVisible(false);
 				lblSchemaValue.setVisible(false);
 				textSchemaValue.setVisible(false);
+				lblNamespaces.setVisible(false);
+				textNamespaces.setVisible(false);
 				break;
 			case "enum":
 				comboSchemaType.select(5);
@@ -266,6 +287,8 @@ public class AddNewObjectDialog extends Dialog {
 				textRequired.setVisible(false);
 				lblSchemaValue.setVisible(false);
 				textSchemaValue.setVisible(false);
+				lblNamespaces.setVisible(false);
+				textNamespaces.setVisible(false);
 				break;
 			case "fixed":
 				comboSchemaType.select(6);
@@ -275,6 +298,8 @@ public class AddNewObjectDialog extends Dialog {
 				textRequired.setVisible(false);
 				lblSchemaValue.setVisible(false);
 				textSchemaValue.setVisible(false);
+				lblNamespaces.setVisible(false);
+				textNamespaces.setVisible(false);
 				break;
 			case "float":
 				comboSchemaType.select(7);
@@ -284,6 +309,8 @@ public class AddNewObjectDialog extends Dialog {
 				textRequired.setVisible(false);
 				lblSchemaValue.setVisible(false);
 				textSchemaValue.setVisible(false);
+				lblNamespaces.setVisible(false);
+				textNamespaces.setVisible(false);
 				break;
 			case "long":
 				comboSchemaType.select(8);
@@ -293,6 +320,8 @@ public class AddNewObjectDialog extends Dialog {
 				textRequired.setVisible(false);
 				lblSchemaValue.setVisible(false);
 				textSchemaValue.setVisible(false);
+				lblNamespaces.setVisible(false);
+				textNamespaces.setVisible(false);
 				break;
 			case "map":
 				comboSchemaType.select(9);
@@ -302,6 +331,8 @@ public class AddNewObjectDialog extends Dialog {
 				textRequired.setVisible(false);
 				lblSchemaValue.setVisible(false);
 				textSchemaValue.setVisible(false);
+				lblNamespaces.setVisible(false);
+				textNamespaces.setVisible(false);
 				break;
 			case "union":
 				comboSchemaType.select(10);
@@ -311,6 +342,8 @@ public class AddNewObjectDialog extends Dialog {
 				textRequired.setVisible(false);
 				lblSchemaValue.setVisible(false);
 				textSchemaValue.setVisible(false);
+				lblNamespaces.setVisible(false);
+				textNamespaces.setVisible(false);
 				break;
 			default:
 				break;
@@ -325,6 +358,9 @@ public class AddNewObjectDialog extends Dialog {
 		}
 		if (StringUtils.isNotEmpty(schemaValue)) {
 			textSchemaValue.setText(schemaValue);
+		}
+		if (StringUtils.isNotEmpty(namespaces)) {
+			textNamespaces.setText(namespaces);
 		}
 	}
 
@@ -410,6 +446,20 @@ public class AddNewObjectDialog extends Dialog {
 		});
 
 		textSchemaValue.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 3, 1));
+		
+		lblNamespaces = new Label(compositeType, SWT.NONE);
+		lblNamespaces.setText(LABEL_NAMESPACES);
+
+		textNamespaces = new Text(compositeType, SWT.BORDER);
+		textNamespaces.setText("");
+
+		textNamespaces.addModifyListener(new ModifyListener() {
+			public void modifyText(ModifyEvent arg0) {
+
+			}
+		});
+
+		textNamespaces.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 3, 1));
 
 		return container;
 	}
@@ -430,7 +480,7 @@ public class AddNewObjectDialog extends Dialog {
 	 */
 	@Override
 	protected Point getInitialSize() {
-		return new Point(620, 280);
+		return new Point(620, 300);
 	}
 
 	@Override
@@ -441,6 +491,7 @@ public class AddNewObjectDialog extends Dialog {
 		setSchemaValue(textSchemaValue.getText());
 		setRequired(textRequired.getText());
 		setID(textID.getText());
+		setNamespaces(textNamespaces.getText());
 		super.okPressed();
 	}
 
@@ -463,6 +514,10 @@ public class AddNewObjectDialog extends Dialog {
 	public void setRequired(String required) {
 		this.required = required;
 	}
+	
+	public void setNamespaces(String namespaces) {
+		this.namespaces = namespaces;
+	}
 
 	public void setOkValue(boolean okPressed) {
 		this.okPressed = okPressed;
@@ -482,6 +537,10 @@ public class AddNewObjectDialog extends Dialog {
 
 	public String getSchemaValue() {
 		return schemaValue;
+	}
+	
+	public String getNamespaces() {
+		return namespaces;
 	}
 
 	public boolean getOkValue() {

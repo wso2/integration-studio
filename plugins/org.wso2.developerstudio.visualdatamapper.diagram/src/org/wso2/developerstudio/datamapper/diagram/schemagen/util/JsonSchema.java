@@ -15,6 +15,8 @@ public class JsonSchema {
 		schema = new JsonObject();
 	}
 	
+	
+	
 	//Will be only used by root schema object
 	public void setDolarSchema(String namespaceURl) {
 		schema.addProperty("$Schema", namespaceURl);
@@ -41,6 +43,13 @@ public class JsonSchema {
 		return "";
 	}
 	
+	public String getTitle(String title) {
+		if (schema.get("title") != null) {
+			return schema.get("title").getAsString();
+		}
+		return "";
+	}
+	
 	public String getId() {
 		if (schema.get("id") != null) {
 			return schema.get("id").getAsString();
@@ -55,21 +64,18 @@ public class JsonSchema {
 		return "";
 	}
 	
-	private void addPropertiesObject(){
-		schema.add("properties", new JsonObject());
-	}
-	
-	public void addRequiredObject(){
-		JsonArray requiredObject = new JsonArray();
-		schema.add("required", requiredObject);
-	}
-	
-	
 	public JsonObject getPropertiesObject(){
 		if (schema.get("properties") == null) {
-			addPropertiesObject();
+			schema.add("properties", new JsonObject());
 		} 
 		return schema.get("properties").getAsJsonObject();
+	}
+	
+	public JsonArray getRequiredObject(){
+		if (schema.get("required") == null) {
+			schema.add("required", new JsonArray());
+		}
+		return schema.get("required").getAsJsonArray();
 	}
 	
 	public JsonArray getItemsArrayObject(){
@@ -78,53 +84,52 @@ public class JsonSchema {
 		}
 		return schema.get("items").getAsJsonArray();
 	}
+
 	
-	public JsonObject getItemsObject(){
-		if (schema.get("items") == null) {
-			schema.add("items", new JsonObject());
-		}
-		return schema.get("items").getAsJsonObject();
+	public void addObject(String name, JsonSchema obj) {
+		JsonObject propertiesObj = this.getPropertiesObject();
+		propertiesObj.add(name, obj.getAsJsonObject());
 	}
 	
-	public JsonArray getRequiredObject(){
-		if (schema.get("required") != null) {
-			return schema.get("required").getAsJsonArray();
+	public void addArray(String name, JsonSchema obj) {
+		JsonObject propertiesObj = this.getPropertiesObject();
+		propertiesObj.getAsJsonObject().add(name, obj.getAsJsonObject());
+	}
+	
+	public void addPrimitive(String name, JsonSchema leaf) {
+		JsonObject propertiesObj = this.getPropertiesObject();
+		propertiesObj.add(name, leaf.getAsJsonObject());
+	}
+	
+	public void createItemsArray(){
+		getItemsArrayObject();
+	}
+	
+	public void addArrayItem(String name, JsonSchema obj) {
+		JsonArray itemsObj = this.getItemsArrayObject();
+		itemsObj.add(obj.getAsJsonObject());
+	}
+	
+	public void addCustomArray(String name) {
+		schema.getAsJsonObject().add(name, new JsonArray());
+	}
+	
+	public void addCustomObject(String name) {
+		schema.getAsJsonObject().add(name, new JsonObject());
+	}
+
+	public JsonArray getCustomArray(String name) {
+		if (schema.get(name) != null) {
+			return schema.get(name).getAsJsonArray();
 		}
 		return null;
 	}
 	
-	public void addProperty(String name, JsonObject obj) {
-		JsonObject propertiesObj = this.getPropertiesObject();
-		propertiesObj.add(name, obj);
-	}
-	
-	public void addLeafProperty(String name, String id, String type) {
-		JsonObject propertiesObj = this.getPropertiesObject();
-		JsonSchema leaf = new JsonSchema();
-		leaf.setId(id);
-		leaf.setType(type);
-		propertiesObj.add(name, leaf.getAsJsonObject());
-	}
-	
-	public void addToItemArray(String name, JsonObject obj) {
-		JsonArray itemsObj = this.getItemsArrayObject();
-		itemsObj.add(obj);
-	}
-	
-	public void addEmptyItemArray() {
-		this.getItemsArrayObject();
-	}
-	
-	public void addItem(JsonObject obj) {
-		schema.add("items", obj);
-	}
-	
-	public void addLeafItem(String id, String type) {
-		JsonArray itemsObj = this.getItemsArrayObject();
-		JsonSchema leaf = new JsonSchema();
-		leaf.setId(id);
-		leaf.setType(type);
-		itemsObj.add(leaf.getAsJsonObject());
+	public JsonObject getCustomObject(String name) {
+		if (schema.get(name) != null) {
+			return schema.get(name).getAsJsonObject();
+		}
+		return null;
 	}
 	
 }

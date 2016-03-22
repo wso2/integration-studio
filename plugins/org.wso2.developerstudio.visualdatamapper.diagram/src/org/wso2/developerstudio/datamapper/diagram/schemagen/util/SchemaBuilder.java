@@ -12,19 +12,20 @@ import com.google.gson.JsonPrimitive;
 
 public class SchemaBuilder {
 
+	JsonSchema root;
+	
 	public SchemaBuilder() {
 	}
 
 	public String createSchema(String jsonString) {
 		JsonParser jsonParser = new JsonParser();
 		JsonObject jo = (JsonObject) jsonParser.parse(jsonString);
-		JsonSchema root = new JsonSchema();
+		root = new JsonSchema();
 		root.setDolarSchema("http://json-schema.org/draft-04/schema#");
 		root.setTitle(getTitle(jo));
 		root.setId("http://jsonschema.net");
 		root.setType("object");
 		createSchema4Object(jo, root);
-		System.out.println(root.getAsJsonObject().toString());
 		return root.getAsJsonObject().toString();
 	}
 
@@ -53,85 +54,69 @@ public class SchemaBuilder {
 				JsonSchema schemaArray = addArrayToParent(parent, id);
 				createSchema4Array(element.getAsJsonArray(), schemaArray, id);
 			} else {
-				parent.addLeafProperty(id, parent.getId() + "/" + id, propertyValueType.toString().toLowerCase());
+				addPrimitiveToParent(parent, id, element.getAsString(), propertyValueType);
 			}
 		}
 	}
 
 	public void createSchema4Array(JsonArray aJsonArray, JsonSchema parent, String id) {
-		if (aJsonArray.size() == 0) {
-			parent.addEmptyItemArray();
-		} else if (aJsonArray.size() == 1) {
-			parent.setId(id);
-			JsonElement element = aJsonArray.get(0);
+		parent.createItemsArray();
+		Iterator<JsonElement> keys = aJsonArray.iterator();
+		while (keys.hasNext()) {
+			JsonElement element = keys.next();
 			TypeEnum propertyValueType = RealTypeOf(element);
 			if (propertyValueType == TypeEnum.OBJECT) {
-				JsonSchema schema = addObjectToParentItemsObject(parent, "0");
+				JsonSchema schema = addObjectToParentItemsArray(parent, "0");
 				createSchema4Object(element.getAsJsonObject(), schema);
 			} else {
-				addValueToParentItemsObject(parent, "0", propertyValueType);
-			}
-		} else if (aJsonArray.size() > 1) {
-			Iterator<JsonElement> keys = aJsonArray.iterator();
-			while (keys.hasNext()) {
-				JsonElement element = keys.next();
-				TypeEnum propertyValueType = RealTypeOf(element);
-				if (propertyValueType == TypeEnum.OBJECT) {
-					JsonSchema schema = addObjectToParentItemsArrayObject(parent, "0");
-					createSchema4Object(element.getAsJsonObject(), schema);
-				} else {
-					addValueToParentItemsArrayObject(parent, "0", propertyValueType);
-				}
+				addPrimitiveToParentItemsArray(parent, "0", propertyValueType);
 			}
 		}
 	}
 
-	private JsonSchema addObjectToParent(JsonSchema parent, String propertyKey) {
-		JsonSchema schema = new JsonSchema();
-		schema.setId(parent.getId() + "/" + propertyKey);
-		schema.setType("object");
-		parent.addProperty(propertyKey, schema.getAsJsonObject());
-		return schema;
-	}
 
-	private JsonSchema addObjectToParentItemsArrayObject(JsonSchema parent, String propertyKey) {
-		JsonSchema schema = new JsonSchema();
-		schema.setId(parent.getId() + "/" + propertyKey);
-		schema.setType("object");
-		parent.addToItemArray(propertyKey, schema.getAsJsonObject());
-		return schema;
-	}
-
-	private JsonSchema addObjectToParentItemsObject(JsonSchema parent, String propertyKey) {
-		JsonSchema schema = new JsonSchema();
-		schema.setId(parent.getId() + "/" + propertyKey);
-		schema.setType("object");
-		parent.addItem(schema.getAsJsonObject());
-		return schema;
-	}
-
-	private JsonSchema addValueToParentItemsArrayObject(JsonSchema parent, String id, TypeEnum propertyValueType) {
+	protected JsonSchema addObjectToParent(JsonSchema parent, String id) {
 		JsonSchema schema = new JsonSchema();
 		schema.setId(parent.getId() + "/" + id);
-		schema.setType(propertyValueType.toString().toLowerCase());
-		parent.addToItemArray(id, schema.getAsJsonObject());
+		schema.setType("object");
+		parent.addObject(id, schema);
 		return schema;
 	}
-
-	private void addValueToParentItemsObject(JsonSchema parent, String id, TypeEnum propertyValueType) {
+	
+	protected JsonSchema addArrayToParent(JsonSchema parent, String id) {
 		JsonSchema schema = new JsonSchema();
 		schema.setId(parent.getId() + "/" + id);
-		schema.setType(propertyValueType.toString().toLowerCase());
-		parent.addItem(schema.getAsJsonObject());
-	}
-
-	private JsonSchema addArrayToParent(JsonSchema parent, String propertyKey) {
-		JsonSchema schema = new JsonSchema();
-		schema.setId(parent.getId() + "/" + propertyKey);
 		schema.setType("array");
-		parent.getAsJsonObject().add(propertyKey, schema.getAsJsonObject());
+		parent.addArray(id, schema);
 		return schema;
 	}
+	
+	
+	protected void addPrimitiveToParent(JsonSchema parent, String id, String value, TypeEnum propertyValueType) {
+		JsonSchema leaf = new JsonSchema();
+		leaf.setId(parent.getId() + "/" + id);
+		leaf.setType(propertyValueType.toString().toLowerCase());
+		parent.addPrimitive(id, leaf);
+	}
+	
+
+	protected JsonSchema addObjectToParentItemsArray(JsonSchema parent, String id) {
+		JsonSchema schema = new JsonSchema();
+		schema.setId(parent.getId() + "/" + id);
+		schema.setType("object");
+		parent.addArrayItem(id, schema);
+		return schema;
+	}
+
+
+	protected JsonSchema addPrimitiveToParentItemsArray(JsonSchema parent, String id, TypeEnum propertyValueType) {
+		JsonSchema schema = new JsonSchema();
+		schema.setId(parent.getId() + "/" + id);
+		schema.setType(propertyValueType.toString().toLowerCase());
+		parent.addArrayItem(id, schema);
+		return schema;
+	}
+
 
 	private static TypeEnum RealTypeOf(JsonElement element) {
 		if (element == null || element.isJsonNull()) {

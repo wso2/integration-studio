@@ -79,6 +79,10 @@ public class OutNode3EditPart extends AbstractBorderItemEditPart {
 	public OutNode3EditPart(View view) {
 		super(view);
 	}
+	
+	public void notifyChanged(org.eclipse.emf.common.notify.Notification notification){
+		super.notifyChanged(notification);
+	}
 
 	/**
 	 * @generated

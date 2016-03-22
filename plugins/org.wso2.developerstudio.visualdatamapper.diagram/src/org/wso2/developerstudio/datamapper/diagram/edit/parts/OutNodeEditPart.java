@@ -20,6 +20,8 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
+import javax.management.Notification;
+
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.ImageFigure;
 import org.eclipse.draw2d.MouseEvent;
@@ -85,6 +87,10 @@ public class OutNodeEditPart extends AbstractBorderItemEditPart {
 
 	public NodeFigure getNodeFigureOutput() {
 		return figure_;
+	}
+	
+	public void notifyChanged(org.eclipse.emf.common.notify.Notification notification){
+		super.notifyChanged(notification);
 	}
 
 	/**

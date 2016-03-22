@@ -37,7 +37,9 @@ import org.wso2.developerstudio.datamapper.diagram.edit.parts.InNode3EditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.InNodeEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.InputEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.OperatorLeftConnectorEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.OperatorRightConnectorEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.OutNode2EditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.OutNode3EditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.OutNodeEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.OutputEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.TreeNode2EditPart;
@@ -265,20 +267,9 @@ public class DataMapperPaletteFactory {
 
 				@Override
 				protected Command getCommand() {
-					/*highlight the source element on mouse hover on outnode edit part
-					if (getTargetEditPart().getParent() != null){
-						EditPart parentEditPart = getTargetEditPart().getParent();
-						if (getTargetEditPart().getParent() instanceof TreeNodeEditPart) {
-							((TreeNodeEditPart)parentEditPart).highlightElementItem();
-						}else if (getTargetEditPart().getParent() instanceof TreeNode2EditPart) {
-							((TreeNode2EditPart)parentEditPart).highlightElementItem();
-						}else if (getTargetEditPart().getParent() instanceof TreeNode3EditPart) {
-							((TreeNode3EditPart)parentEditPart).highlightElementItem();
-						}
-					}*/
 						
 					/*
-					 * for Element
+					 * for Tree nodes
 					 */
 					if (getTargetEditPart() instanceof TreeNodeEditPart) {
 						for (int i = 0; i < ((TreeNodeEditPart) getTargetEditPart()).getChildren().size(); ++i) {
@@ -297,12 +288,12 @@ public class DataMapperPaletteFactory {
 							} else if (getRoot(getTargetEditPart()) instanceof InputEditPart) {
 
 								if (treeNodeEditPart.getChildren().get(i) instanceof OutNodeEditPart) {
-									return ((OutNodeEditPart) treeNodeEditPart.getChildren()
-											.get(i)).getCommand(getTargetRequest());
+									setTargetEditPart((OutNodeEditPart) treeNodeEditPart.getChildren().get(i));
+									return super.getCommand();
 
 								} else if (treeNodeEditPart.getChildren().get(i) instanceof OutNode2EditPart) {
-									return ((OutNode2EditPart) treeNodeEditPart.getChildren()
-											.get(i)).getCommand(getTargetRequest());
+									setTargetEditPart((OutNode2EditPart) treeNodeEditPart.getChildren().get(i));
+									return super.getCommand();
 
 								}
 
@@ -322,22 +313,31 @@ public class DataMapperPaletteFactory {
 									return ((InNode2EditPart) treeNode2EditPart.getChildren()
 											.get(i)).getCommand(getTargetRequest());
 
+								}else if (treeNode2EditPart.getChildren().get(i) instanceof InNode3EditPart) {
+									return ((InNode3EditPart) treeNode2EditPart.getChildren()
+											.get(i)).getCommand(getTargetRequest());
+
 								}
 							} else if (getRoot(getTargetEditPart()) instanceof InputEditPart) {
+								if (treeNode2EditPart.getChildren().get(i) instanceof OutNodeEditPart) {
+									setTargetEditPart((OutNodeEditPart) treeNode2EditPart.getChildren().get(i));
+									return super.getCommand();
 
-								if (((TreeNode2EditPart) getTargetEditPart()).getChildren().get(i) instanceof OutNodeEditPart) {
-									return ((OutNodeEditPart) ((TreeNode2EditPart) getTargetEditPart()).getChildren()
-											.get(i)).getCommand(getTargetRequest());
+								} else if (treeNode2EditPart.getChildren().get(i) instanceof OutNode2EditPart) {
+									setTargetEditPart((OutNode2EditPart) treeNode2EditPart.getChildren().get(i));
+									return super.getCommand();
 
-								} else if (((TreeNode2EditPart) getTargetEditPart()).getChildren().get(i) instanceof OutNode2EditPart) {
-									return ((OutNode2EditPart) ((TreeNode2EditPart) getTargetEditPart()).getChildren()
-											.get(i)).getCommand(getTargetRequest());
+								}  else if (treeNode2EditPart.getChildren().get(i) instanceof OutNode3EditPart) {
+									setTargetEditPart((OutNode3EditPart) treeNode2EditPart.getChildren().get(i));
+									return super.getCommand();
+
 
 								}
 
 							}
 
 						}// for
+						
 					} else if (getTargetEditPart() instanceof TreeNode3EditPart) {
 						for (int i = 0; i < ((TreeNode3EditPart) getTargetEditPart()).getChildren().size(); ++i) {
 							TreeNode3EditPart treeNode3EditPart = (TreeNode3EditPart) getTargetEditPart();
@@ -354,15 +354,14 @@ public class DataMapperPaletteFactory {
 								}
 							} else if (getRoot(getTargetEditPart()) instanceof InputEditPart) {
 								if (treeNode3EditPart.getChildren().get(i) instanceof OutNodeEditPart) {
-									return ((OutNodeEditPart)treeNode3EditPart.getChildren()
-											.get(i)).getCommand(getTargetRequest());
+									setTargetEditPart((OutNodeEditPart) treeNode3EditPart.getChildren().get(i));
+									return super.getCommand();
 
 								} else if (treeNode3EditPart.getChildren().get(i) instanceof OutNode2EditPart) {
-									return ((OutNode2EditPart) treeNode3EditPart.getChildren()
-											.get(i)).getCommand(getTargetRequest());
+									setTargetEditPart((OutNode2EditPart) treeNode3EditPart.getChildren().get(i));
+									return super.getCommand();
 
 								}
-
 							}
 
 						}// for
@@ -382,8 +381,18 @@ public class DataMapperPaletteFactory {
 							}
 
 						}// for
-					}// for leftconnector mouse enter
+					}else if (getTargetEditPart() instanceof OperatorRightConnectorEditPart) {
+						for (int i = 0; i < ((OperatorRightConnectorEditPart) getTargetEditPart()).getChildren().size(); ++i) {
 
+							if ((getTargetEditPart()).getChildren().get(i) instanceof OutNode3EditPart) {
+								setTargetEditPart((OutNode3EditPart) (EditPart) (getTargetEditPart()).getChildren().get(i));
+								return super.getCommand();
+
+
+							}
+
+						}// for
+					}// for leftconnector mouse enter
 					return super.getCommand();
 				}// get command
 			}; // UnspecifiedTypeConnectionTool

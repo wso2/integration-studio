@@ -96,6 +96,10 @@ public class OutNode2EditPart extends AbstractBorderItemEditPart {
 	public NodeFigure getNodeFigureOutput() {
 		return figure_;
 	}
+	
+	public void notifyChanged(org.eclipse.emf.common.notify.Notification notification){
+		super.notifyChanged(notification);
+	}
 
 	/**
 	 * @generated NOT

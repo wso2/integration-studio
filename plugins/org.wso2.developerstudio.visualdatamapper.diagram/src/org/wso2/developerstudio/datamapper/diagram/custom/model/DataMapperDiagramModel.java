@@ -31,6 +31,7 @@ import org.wso2.developerstudio.datamapper.Input;
 import org.wso2.developerstudio.datamapper.OperatorLeftConnector;
 import org.wso2.developerstudio.datamapper.OperatorRightConnector;
 import org.wso2.developerstudio.datamapper.Output;
+import org.wso2.developerstudio.datamapper.PropertyKeyValuePair;
 import org.wso2.developerstudio.datamapper.SchemaDataType;
 import org.wso2.developerstudio.datamapper.diagram.custom.exception.DataMapperException;
 import org.wso2.developerstudio.datamapper.diagram.custom.util.ScriptGenerationUtil;
@@ -50,6 +51,7 @@ import org.wso2.developerstudio.datamapper.impl.UpperCaseImpl;
 public class DataMapperDiagramModel {
 
     private static final String TYPE = "type";
+    private static final String NAMESPACE_SEPERATOR = ":";
     private List<DMVariable> variablesArray = new ArrayList<>();
     private List<Integer> inputVariablesArray = new ArrayList<>();
     private List<Integer> outputVariablesArray = new ArrayList<>();
@@ -67,10 +69,78 @@ public class DataMapperDiagramModel {
 
     public DataMapperDiagramModel(DataMapperRoot rootDiagram) throws DataMapperException {
         setInputAndOutputRootNames(rootDiagram);
-        populateOutputVariables(rootDiagram.getOutput());
-        populateInputVariables(rootDiagram.getInput());
+        populateOutputVariablesDepthFirst(rootDiagram.getOutput());
+        // populateOutputVariables(rootDiagram.getOutput());
+        populateInputVariablesDepthFirst(rootDiagram.getInput());
+        // populateInputVariables(rootDiagram.getInput());
         resetDiagramTraversalProperties();
         updateExecutionSequence();
+    }
+
+    private void populateInputVariablesDepthFirst(Input input) {
+        Stack<EObject> nodeStack = new Stack<>();
+        nodeStack.addAll(input.getTreeNode());
+        Stack<EObject> parentVariableStack = new Stack<EObject>();
+        List<EObject> tempNodeArray = new ArrayList<>();
+        while (!nodeStack.isEmpty()) {
+            EObject currentNode = nodeStack.pop();
+            if (currentNode instanceof TreeNodeImpl) {
+                TreeNodeImpl currentTreeNode = (TreeNodeImpl) currentNode;
+                if (currentTreeNode.getLevel() <= parentVariableStack.size()) {
+                    while (parentVariableStack.size() >= currentTreeNode.getLevel()) {
+                        parentVariableStack.pop();
+                    }
+                } else if (currentTreeNode.getLevel() > (parentVariableStack.size() + 1)) {
+                    throw new IllegalArgumentException("Illegal element level detected : element level- "
+                            + currentTreeNode.getLevel() + " , parents level- " + parentVariableStack.size());
+                }
+                String variableName = getVariableName(DMVariableType.INPUT, parentVariableStack,
+                        currentTreeNode.getName());
+                SchemaDataType variableType = getSchemaDataType(getTreeNodeType(currentTreeNode));
+                int parentVariableIndex = -1;
+                if (!parentVariableStack.isEmpty()) {
+                    TreeNodeImpl parent = (TreeNodeImpl) parentVariableStack.peek();
+                    parentVariableIndex = parent.getIndex();
+                }
+                int index = variablesArray.size();
+                DMVariable addedVariable = new DMVariable(variableName, currentTreeNode.toString(),
+                        DMVariableType.INPUT, variableType, index, parentVariableIndex);
+                variablesArray.add(addedVariable);
+                outputVariablesArray.add(index);
+                currentTreeNode.setIndex(index);
+                addVariableTypeToMap(addedVariable.getName(), variableType);
+                inputVariablesArray.add(index);
+                if (isCurrentTreeNodeALeafNode(variableType)) {
+                    getResolvedVariableArray().add(index);
+                    tempNodeArray.add(currentTreeNode);
+                }
+                if (currentTreeNode.getLevel() == parentVariableStack.size()) {
+                    parentVariableStack.pop();
+                    parentVariableStack.push(currentTreeNode);
+                } else if (currentTreeNode.getLevel() > parentVariableStack.size()) {
+                    parentVariableStack.push(currentTreeNode);
+                } else {
+                    while (parentVariableStack.size() >= currentTreeNode.getLevel()) {
+                        parentVariableStack.pop();
+                    }
+                    parentVariableStack.push(currentTreeNode);
+                }
+            }
+            nodeStack.addAll(((TreeNodeImpl) currentNode).getNode());
+        }
+        populateAdjacencyLists(tempNodeArray);
+    }
+
+    private boolean isCurrentTreeNodeALeafNode(SchemaDataType variableType) {
+        switch (variableType) {
+        case STRING:
+        case INT:
+        case DOUBLE:
+        case BOOLEAN:
+            return true;
+        default:
+            return false;
+        }
     }
 
     private void setInputAndOutputRootNames(DataMapperRoot rootDiagram) {
@@ -180,8 +250,8 @@ public class DataMapperDiagramModel {
                     parentVariableIndex = parent.getIndex();
                 }
                 DMVariable addedVariable = new DMVariable(variableName, getUniqueId(objectElement),
-                        DMVariableType.INPUT, getSchemaDataType(element.getProperties().get(TYPE)), index,
-                        parentVariableIndex);
+                        DMVariableType.INPUT, SchemaDataType.ARRAY// getSchemaDataType(element.getProperties().get(TYPE))
+                        , index, parentVariableIndex);
                 variablesArray.add(addedVariable);
                 addVariableTypeToMap(addedVariable.getName(), SchemaDataType.STRING);
                 ((ElementImpl) objectElement).setIndex(index);
@@ -199,7 +269,7 @@ public class DataMapperDiagramModel {
                             + treeNode.getLevel() + " , parents level- " + parentVariableStack.size());
                 }
                 String variableName = getVariableName(DMVariableType.INPUT, parentVariableStack, treeNode.getName());
-                SchemaDataType variableType = getSchemaDataType(treeNode.getProperties().get(TYPE));
+                SchemaDataType variableType = SchemaDataType.ARRAY;// getSchemaDataType(treeNode.getProperties().get(TYPE));
                 int parentVariableIndex = -1;
                 if (!parentVariableStack.isEmpty()) {
                     TreeNodeImpl parent = (TreeNodeImpl) parentVariableStack.peek();
@@ -230,31 +300,31 @@ public class DataMapperDiagramModel {
 
     private void populateAdjacencyLists(List<EObject> tempNodeArray) {
         while (tempNodeArray.size() > 0) {
-            EObject nextElement = tempNodeArray.remove(0);
-            if (nextElement instanceof ElementImpl) {
-                EList<DataMapperLink> outgoingLinks = ((ElementImpl) nextElement).getOutNode().getOutgoingLink();
+            EObject currentElement = tempNodeArray.remove(0);
+            if (currentElement instanceof TreeNodeImpl) {
+                EList<DataMapperLink> outgoingLinks = ((TreeNodeImpl) currentElement).getOutNode().getOutgoingLink();
                 for (DataMapperLink dataMapperLink : outgoingLinks) {
                     EObject linkedNode = getLinkedElement(dataMapperLink);
-                    if (linkedNode instanceof ElementImpl) {
+                    if (linkedNode instanceof TreeNodeImpl) {
                         operationsList.add(new DMOperation(DMOperatorType.DIRECT, getUniqueDirectId(linkedNode,
                                 operationsList.size()), operationsList.size()));
                         outputAdjList.add(new ArrayList<Integer>());
-                        outputAdjList.get(operationsList.size() - 1).add(((ElementImpl) linkedNode).getIndex());
+                        outputAdjList.get(operationsList.size() - 1).add(((TreeNodeImpl) linkedNode).getIndex());
                         inputAdjList.add(new ArrayList<Integer>());
-                        inputAdjList.get(operationsList.size() - 1).add(((ElementImpl) nextElement).getIndex());
+                        inputAdjList.get(operationsList.size() - 1).add(((TreeNodeImpl) currentElement).getIndex());
                     } else if (linkedNode instanceof OperatorImpl && !((OperatorImpl) linkedNode).isMarked()) {
                         ((OperatorImpl) linkedNode).setMarked(true);
                         tempNodeArray.add(linkedNode);
                     }
                 }
-            } else if (nextElement instanceof OperatorImpl && !((OperatorImpl) nextElement).isVisited()) {
+            } else if (currentElement instanceof OperatorImpl && !((OperatorImpl) currentElement).isVisited()) {
                 int index = operationsList.size();
-                OperatorImpl operatorElement = (OperatorImpl) nextElement;
+                OperatorImpl operatorElement = (OperatorImpl) currentElement;
                 DMOperation operator = new DMOperation(getOperatorType(operatorElement), getUniqueId(operatorElement),
                         index);
                 operationsList.add(operator);
                 graphOperationElements.add(operatorElement);
-                ((OperatorImpl) nextElement).setIndex(index);
+                ((OperatorImpl) currentElement).setIndex(index);
 
                 outputAdjList.add(new ArrayList<Integer>());
                 inputAdjList.add(new ArrayList<Integer>());
@@ -264,9 +334,9 @@ public class DataMapperDiagramModel {
                 Map<OperatorRightConnectorImpl, DMVariable> visitedConnectorVariableMap = new HashMap<>();
                 for (DataMapperLink dataMapperLink : outlinks) {
                     EObject linkedElement = getLinkedElement(dataMapperLink);
-                    if (linkedElement instanceof ElementImpl) {
+                    if (linkedElement instanceof TreeNodeImpl) {
                         OperatorRightConnectorImpl rightConnector = getRightConnectorFromDMLink(dataMapperLink);
-                        int variableIndex = ((ElementImpl) linkedElement).getIndex();
+                        int variableIndex = ((TreeNodeImpl) linkedElement).getIndex();
                         outputAdjList.get(operatorElement.getIndex()).add(variableIndex);
                         operatorElement.getPortVariableIndex().add(variableIndex);
                         visitedConnectorVariableMap.put(rightConnector, variablesArray.get(variableIndex));
@@ -307,8 +377,8 @@ public class DataMapperDiagramModel {
                 List<DataMapperLink> inlinks = getInLinksOfOperator(operatorElement);
                 for (DataMapperLink dataMapperLink : inlinks) {
                     EObject linkedElement = getPreviousLinkedElement(dataMapperLink);
-                    if (linkedElement instanceof ElementImpl) {
-                        inputAdjList.get(operatorElement.getIndex()).add(((ElementImpl) linkedElement).getIndex());
+                    if (linkedElement instanceof TreeNodeImpl) {
+                        inputAdjList.get(operatorElement.getIndex()).add(((TreeNodeImpl) linkedElement).getIndex());
                     } else if (linkedElement instanceof OperatorImpl) {
                         OperatorImpl sourceElement = (OperatorImpl) linkedElement;
                         if (!sourceElement.isMarked()) {
@@ -350,7 +420,7 @@ public class DataMapperDiagramModel {
 
     private EObject getPreviousLinkedElement(DataMapperLink dataMapperLink) {
         EObject element = dataMapperLink.eContainer().eContainer();
-        if (element instanceof ElementImpl) {
+        if (element instanceof TreeNodeImpl) {
             return element;
         } else {
             while (!(element instanceof OperatorImpl)) {
@@ -406,7 +476,7 @@ public class DataMapperDiagramModel {
 
     private EObject getLinkedElement(DataMapperLink dataMapperLink) {
         EObject element = dataMapperLink.getInNode().eContainer();
-        if (element instanceof ElementImpl) {
+        if (element instanceof TreeNodeImpl) {
             return element;
         } else {
             while (!(element instanceof OperatorImpl)) {
@@ -414,6 +484,62 @@ public class DataMapperDiagramModel {
             }
             return element;
         }
+    }
+
+    private void populateOutputVariablesDepthFirst(Output output) {
+        Stack<EObject> nodeStack = new Stack<>();
+        nodeStack.addAll(output.getTreeNode());
+        Stack<EObject> parentVariableStack = new Stack<EObject>();
+        while (!nodeStack.isEmpty()) {
+            EObject currentNode = nodeStack.pop();
+            if (currentNode instanceof TreeNodeImpl) {
+                TreeNodeImpl currentTreeNode = (TreeNodeImpl) currentNode;
+                if (currentTreeNode.getLevel() <= parentVariableStack.size()) {
+                    while (parentVariableStack.size() >= currentTreeNode.getLevel()) {
+                        parentVariableStack.pop();
+                    }
+                } else if (currentTreeNode.getLevel() > (parentVariableStack.size() + 1)) {
+                    throw new IllegalArgumentException("Illegal element level detected : element level- "
+                            + currentTreeNode.getLevel() + " , parents level- " + parentVariableStack.size());
+                }
+                int index = variablesArray.size();
+                String variableName = getVariableName(DMVariableType.OUTPUT, parentVariableStack,
+                        currentTreeNode.getName());
+                int parentVariableIndex = -1;
+                if (!parentVariableStack.isEmpty()) {
+                    TreeNodeImpl parent = (TreeNodeImpl) parentVariableStack.peek();
+                    parentVariableIndex = parent.getIndex();
+                }
+                SchemaDataType variableType = getSchemaDataType(getTreeNodeType(currentTreeNode));
+                variablesArray.add(new DMVariable(variableName, currentNode.toString(), DMVariableType.OUTPUT,
+                        variableType, index, parentVariableIndex));
+                outputVariablesArray.add(index);
+                currentTreeNode.setIndex(index);
+                addVariableTypeToMap(variableName, variableType);
+                if (currentTreeNode.getLevel() == parentVariableStack.size()) {
+                    parentVariableStack.pop();
+                    parentVariableStack.push(currentTreeNode);
+                } else if (currentTreeNode.getLevel() > parentVariableStack.size()) {
+                    parentVariableStack.push(currentTreeNode);
+                } else {
+                    while (parentVariableStack.size() >= currentTreeNode.getLevel()) {
+                        parentVariableStack.pop();
+                    }
+                    parentVariableStack.push(currentTreeNode);
+                }
+                nodeStack.addAll(((TreeNodeImpl) currentNode).getNode());
+            }
+        }
+    }
+
+    private String getTreeNodeType(TreeNodeImpl currentTreeNode) {
+        EList<PropertyKeyValuePair> propertyList = currentTreeNode.getProperties();
+        for (PropertyKeyValuePair propertyKeyValuePair : propertyList) {
+            if (TYPE.equals(propertyKeyValuePair.getKey())) {
+                return propertyKeyValuePair.getValue();
+            }
+        }
+        throw new IllegalArgumentException("Type field not found in treeNode");
     }
 
     /**
@@ -444,7 +570,7 @@ public class DataMapperDiagramModel {
                     TreeNodeImpl parent = (TreeNodeImpl) parentVariableStack.peek();
                     parentVariableIndex = parent.getIndex();
                 }
-                SchemaDataType variableType = getSchemaDataType(element.getProperties().get(TYPE));
+                SchemaDataType variableType = SchemaDataType.ARRAY;// getSchemaDataType(element.getProperties().get(TYPE));
                 DMVariable addedVariable = new DMVariable(variableName, objectElement.toString(),
                         DMVariableType.OUTPUT, variableType, index, parentVariableIndex);
                 variablesArray.add(addedVariable);
@@ -462,7 +588,7 @@ public class DataMapperDiagramModel {
                             + treeNode.getLevel() + " , parents level- " + parentVariableStack.size());
                 }
                 String variableName = getVariableName(DMVariableType.OUTPUT, parentVariableStack, treeNode.getName());
-                SchemaDataType variableType = getSchemaDataType(treeNode.getProperties().get(TYPE));
+                SchemaDataType variableType = SchemaDataType.ARRAY;// getSchemaDataType(treeNode.getProperties().get(TYPE));
                 int parentVariableIndex = -1;
                 if (!parentVariableStack.isEmpty()) {
                     TreeNodeImpl parent = (TreeNodeImpl) parentVariableStack.peek();
@@ -508,15 +634,15 @@ public class DataMapperDiagramModel {
         for (EObject eObject : parentVariableStack) {
             if (eObject instanceof TreeNodeImpl) {
                 variableName = variableName
-                        + ScriptGenerationUtil.removeNameSpaceFromName(((TreeNodeImpl) eObject).getName()) + ".";
+                        + ScriptGenerationUtil.modifyNameSpaceForName(((TreeNodeImpl) eObject).getName()) + ".";
             } else if (eObject instanceof ElementImpl) {
                 variableName = variableName
-                        + ScriptGenerationUtil.removeNameSpaceFromName(((ElementImpl) eObject).getName()) + ".";
+                        + ScriptGenerationUtil.modifyNameSpaceForName(((ElementImpl) eObject).getName()) + ".";
             } else {
                 throw new IllegalArgumentException("Illegal element type found : " + eObject.toString());
             }
         }
-        return variableName + ScriptGenerationUtil.removeNameSpaceFromName(name);
+        return variableName + ScriptGenerationUtil.modifyNameSpaceForName(name);
     }
 
     public List<Integer> getInputVariablesArray() {
@@ -532,7 +658,9 @@ public class DataMapperDiagramModel {
     }
 
     public void setInputRootName(String inputRootName) {
-        this.inputRootName = inputRootName;
+        // removing namespace prefix from the schema name and save it as root name
+        String[] rootNameArray = inputRootName.split(NAMESPACE_SEPERATOR);
+        this.inputRootName = rootNameArray[rootNameArray.length - 1];
     }
 
     public String getOutputRootName() {
@@ -540,7 +668,9 @@ public class DataMapperDiagramModel {
     }
 
     public void setOutputRootName(String outputRootName) {
-        this.outputRootName = outputRootName;
+        // removing namespace prefix from the schema name and save it as root name
+        String[] rootNameArray = outputRootName.split(NAMESPACE_SEPERATOR);
+        this.outputRootName = rootNameArray[rootNameArray.length - 1];
     }
 
     public List<DMOperation> getOperationsList() {

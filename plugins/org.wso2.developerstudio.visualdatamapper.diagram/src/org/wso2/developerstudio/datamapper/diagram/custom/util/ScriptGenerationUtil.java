@@ -46,6 +46,7 @@ public class ScriptGenerationUtil {
                 && getArrayElementCount(variable.getName(), variableTypeMap) == 1) {
             // implement list to single mapping
             String[] variableNameArray = variable.getName().split("\\.");
+            boolean isPerviousVariableTypeRecord = false;
             for (String nextName : variableNameArray) {
                 variableName += nextName;
                 if (variableTypeMap.containsKey(variableName)) {
@@ -66,8 +67,15 @@ public class ScriptGenerationUtil {
                                 prettyVariableName += "." + nextName + "[0]";
                             }
                         }
+                    } else if (nextName.contains("attr_") && isPerviousVariableTypeRecord) {
+                        prettyVariableName += "ATTR." + nextName;
                     } else {
                         prettyVariableName += "." + nextName;
+                    }
+                    if (SchemaDataType.RECORD.equals(variableType) || SchemaDataType.STRING.equals(variableType)) {
+                        isPerviousVariableTypeRecord = true;
+                    } else {
+                        isPerviousVariableTypeRecord = false;
                     }
                 } else {
                     throw new IllegalArgumentException("Unregistered Variable name found : " + variableName + " in - ["
@@ -79,6 +87,7 @@ public class ScriptGenerationUtil {
         } else {
             Stack<ForLoopBean> parentVariableBottomUpStack = getReversedStack(parentForLoopBeanStack);
             String[] variableNameArray = variable.getName().split("\\.");
+            boolean isPerviousVariableTypeRecord = false;
             for (String nextName : variableNameArray) {
                 variableName += nextName;
                 if (variableTypeMap.containsKey(variableName)) {
@@ -90,8 +99,15 @@ public class ScriptGenerationUtil {
                         } else {
                             prettyVariableName += "." + nextName + "[i_" + nextName + "]";
                         }
+                    } else if (nextName.contains("attr_") && isPerviousVariableTypeRecord) {
+                        prettyVariableName += "ATTR." + nextName;
                     } else {
                         prettyVariableName += "." + nextName;
+                    }
+                    if (SchemaDataType.RECORD.equals(variableType) || SchemaDataType.STRING.equals(variableType)) {
+                        isPerviousVariableTypeRecord = true;
+                    } else {
+                        isPerviousVariableTypeRecord = false;
                     }
                 } else {
                     throw new IllegalArgumentException("Unregistered Variable name found : " + variableName + " in - ["
@@ -104,12 +120,8 @@ public class ScriptGenerationUtil {
         return prettyVariableName;
     }
 
-    public static String removeNameSpaceFromName(String variableName) {
-        if (variableName.contains(":")) {
-            return variableName.substring(variableName.indexOf(":") + 1);
-        } else {
-            return variableName;
-        }
+    public static String modifyNameSpaceForName(String variableName) {
+        return variableName.replace(':', '_');
     }
 
     private static String getAccumulatedIterativeVariableString(Stack<ForLoopBean> parentForLoopBeanStack) {

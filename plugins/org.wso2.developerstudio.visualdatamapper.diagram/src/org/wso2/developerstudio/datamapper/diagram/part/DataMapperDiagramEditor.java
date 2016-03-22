@@ -356,12 +356,12 @@ public class DataMapperDiagramEditor extends DiagramDocumentEditor implements IG
 
 	@Override
 	public void doSave(IProgressMonitor monitor) {
-		updateAvroSchema();
+		updateSchema();
 		updateAssociatedConfigFile(monitor);
 		super.doSave(monitor);
 	}
 
-	private void updateAvroSchema() {
+	private void updateSchema() {
 		// Get model root of the active DataMapperDiagramEditor
 		EObject modelRoot = this.getDiagram().getElement();
 		DataMapperRootImpl datamapperRoot = (DataMapperRootImpl) modelRoot;

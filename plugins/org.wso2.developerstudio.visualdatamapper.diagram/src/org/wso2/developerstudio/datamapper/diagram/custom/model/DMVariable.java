@@ -57,7 +57,7 @@ public class DMVariable {
     }
 
     public String getName() {
-        return ScriptGenerationUtil.removeNameSpaceFromName(name);
+        return ScriptGenerationUtil.modifyNameSpaceForName(name);
     }
 
     public void setName(String name) {

@@ -18,7 +18,7 @@ package org.wso2.developerstudio.datamapper.diagram.schemagen.util;
 
 public enum FileType {
 	
-	JSCHEMA,
+	JSONSCHEMA,
 	XSD,
 	XML,
 	JSON

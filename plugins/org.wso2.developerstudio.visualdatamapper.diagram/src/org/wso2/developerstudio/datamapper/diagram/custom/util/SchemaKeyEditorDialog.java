@@ -346,9 +346,11 @@ public class SchemaKeyEditorDialog extends Dialog {
 	}
 
 	/**
-	 * retrieve the local path of th eregistry resource user selected from the workspace,
-	 * iterate through all the registry resource projects check if the resource exist in some project,
-	 * if so return the local file path to that resource
+	 * retrieve the local path of th eregistry resource user selected from the
+	 * workspace, iterate through all the registry resource projects check if
+	 * the resource exist in some project, if so return the local file path to
+	 * that resource
+	 * 
 	 * @param fileName
 	 * @return
 	 */
@@ -378,7 +380,7 @@ public class SchemaKeyEditorDialog extends Dialog {
 		} else if (selectedPath.endsWith(".xml")) {
 			return FileType.XML;
 		} else if (selectedPath.endsWith(".jschema")) {
-			return FileType.JSCHEMA;
+			return FileType.JSONSCHEMA;
 		} else {
 			return null;
 		}
@@ -455,8 +457,7 @@ public class SchemaKeyEditorDialog extends Dialog {
 
 	private void displayUserError(String reason, String message) {
 		IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, reason);
-		ErrorDialog.openError(Display.getCurrent().getActiveShell(), ERROR_MSG_HEADER, message ,
-				editorStatus);
+		ErrorDialog.openError(Display.getCurrent().getActiveShell(), ERROR_MSG_HEADER, message, editorStatus);
 	}
 
 	/**
@@ -486,7 +487,9 @@ public class SchemaKeyEditorDialog extends Dialog {
 			Display display = Display.getDefault();
 			Shell shell = new Shell(display);
 			FileDialog fid = new FileDialog(shell);
-			fid.setFilterExtensions(new String[] { fileExtensionForFileType(option) });
+			if (option != FileType.JSONSCHEMA) {
+				fid.setFilterExtensions(new String[] { fileExtensionForFileType(option) });
+			}
 			fid.setText(FILE_DIALOG_TITLE);
 			String filePath = fid.open();
 			if (filePath == null) {
@@ -528,7 +531,7 @@ public class SchemaKeyEditorDialog extends Dialog {
 		case JSON:
 			return "*.json";
 		default:
-			return "*.jschema";
+			return "*.jschema";// this is not used since we are not adding any filter to json schema files
 
 		}
 	}

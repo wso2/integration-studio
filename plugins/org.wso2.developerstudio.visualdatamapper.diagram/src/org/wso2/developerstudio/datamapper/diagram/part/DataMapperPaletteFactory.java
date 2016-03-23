@@ -90,12 +90,13 @@ public class DataMapperPaletteFactory {
 	 * @generated NOT
 	 */
 	private ToolEntry createDataMapperLink1CreationTool() {
-		LinkToolEntry entry = new LinkToolEntry(Messages.DataMapperLink1CreationTool_title,
-				Messages.DataMapperLink1CreationTool_desc,
+		//removing the datamapper link entry in the operator tool palette
+		LinkToolEntry entry = new LinkToolEntry("",
+				"",
 				Collections.singletonList(DataMapperElementTypes.DataMapperLink_4001));
 		entry.setId("createDataMapperLink1CreationTool"); //$NON-NLS-1$
-		entry.setSmallIcon(DataMapperElementTypes.getImageDescriptor(DataMapperElementTypes.DataMapperLink_4001));
-		entry.setLargeIcon(entry.getSmallIcon());
+//		entry.setSmallIcon(DataMapperElementTypes.getImageDescriptor(DataMapperElementTypes.DataMapperLink_4001));
+//		entry.setLargeIcon(entry.getSmallIcon());
 		return entry;
 	}
 

@@ -82,7 +82,7 @@ public class DataMapperPaletteFactory {
 		paletteContainer.add(createLowerCase6CreationTool());
 		//paletteContainer.add(createContains7CreationTool());
 		paletteContainer.add(createUpperCase8CreationTool());
-		paletteContainer.setInitialState(INITIAL_STATE_CLOSED);
+		paletteContainer.setInitialState(INITIAL_STATE_OPEN);
 		return paletteContainer;
 	}
 

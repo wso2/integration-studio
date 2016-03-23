@@ -59,8 +59,6 @@ import org.wso2.developerstudio.datamapper.diagram.part.DataMapperVisualIDRegist
  */
 public class TreeNode2EditPart extends AbstractBorderedShapeEditPart {
 
-	private static final String PARENT_ICON = "icons/gmf/parent.gif";
-	private static final String ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM = "org.wso2.developerstudio.visualdatamapper.diagram";
 	/**
 	 * @generated NOT
 	 */
@@ -218,11 +216,7 @@ public class TreeNode2EditPart extends AbstractBorderedShapeEditPart {
 	 * @generated NOT
 	 */
 	protected boolean addFixedChild(EditPart childEditPart) {
-		TreeNode2EditPart parentEditPart = null;
 		EditPart temp = getParentBox();
-		if (childEditPart.getParent() instanceof TreeNode2EditPart) {
-		parentEditPart = (TreeNode2EditPart) childEditPart.getParent();
-		}
 		if (childEditPart instanceof TreeNodeName2EditPart) {
 			((TreeNodeName2EditPart) childEditPart).setLabel(getPrimaryShape().getFigureTreeNodeNameFigure());
 			return true;

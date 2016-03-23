@@ -320,14 +320,17 @@ public class DataMapperPaletteFactory {
 								}
 							} else if (getRoot(getTargetEditPart()) instanceof InputEditPart) {
 								if (treeNode2EditPart.getChildren().get(i) instanceof OutNodeEditPart) {
+//									((OutNodeEditPart) treeNode2EditPart.getChildren().get(i)).highlightConnectedNode();
 									setTargetEditPart((OutNodeEditPart) treeNode2EditPart.getChildren().get(i));
 									return super.getCommand();
 
 								} else if (treeNode2EditPart.getChildren().get(i) instanceof OutNode2EditPart) {
+//									((OutNode2EditPart) treeNode2EditPart.getChildren().get(i)).highlightConnectedNode();
 									setTargetEditPart((OutNode2EditPart) treeNode2EditPart.getChildren().get(i));
 									return super.getCommand();
 
 								}  else if (treeNode2EditPart.getChildren().get(i) instanceof OutNode3EditPart) {
+//									((OutNode3EditPart) treeNode2EditPart.getChildren().get(i)).highlightConnectedNode();
 									setTargetEditPart((OutNode3EditPart) treeNode2EditPart.getChildren().get(i));
 									return super.getCommand();
 

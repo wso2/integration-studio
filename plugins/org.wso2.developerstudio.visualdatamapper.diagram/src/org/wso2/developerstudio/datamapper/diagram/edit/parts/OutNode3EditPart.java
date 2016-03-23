@@ -17,6 +17,7 @@
 package org.wso2.developerstudio.datamapper.diagram.edit.parts;
 
 import java.util.HashMap;
+import java.util.List;
 
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.ImageFigure;
@@ -316,7 +317,40 @@ public class OutNode3EditPart extends AbstractBorderItemEditPart {
 			this.setFill(false);
 
 		}
+		/**
+		 * @generated NOT
+		 */
+		private void highlightConnectorNode() {
+
+			ImageDescriptor mainImgDesc = AbstractUIPlugin.imageDescriptorFromPlugin(
+					"org.wso2.developerstudio.visualdatamapper.diagram", "icons/gmf/black-coloured.jpg");
+
+			int nodeDimension = 10; // width for connection nodes
+
+			ImageFigure mainImg = new ImageFigure(mainImgDesc.createImage());
+			mainImg.setSize(new Dimension(nodeDimension, nodeDimension));
+			RectangleFigure mainImageRectangle = new RectangleFigure();
+			mainImageRectangle.setOutline(false);
+			mainImageRectangle.setBackgroundColor(new Color(null, 255, 255, 255));
+			mainImageRectangle.setPreferredSize(new Dimension(nodeDimension, nodeDimension));
+			mainImageRectangle.add(mainImg);
+
+			mainImageRectangle.setFill(false);
+			mainImageRectangle.setOutline(false);
+			List<IFigure> childList = this.getChildren();
+			this.remove(childList.get(0));
+			this.add(mainImageRectangle);
+			this.setOpaque(false);
+			this.setOutline(false);
+			this.setFill(false);
+
+		}
 	}
+	
+	public void highlightConnectedNode (){
+		this.highlightConnectedNode();
+	}
+
 
 	static final Color THIS_BACK = new Color(null, 50, 50, 50);
 

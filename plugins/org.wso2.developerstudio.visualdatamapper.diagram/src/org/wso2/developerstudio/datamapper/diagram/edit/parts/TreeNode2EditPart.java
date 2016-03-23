@@ -224,33 +224,49 @@ public class TreeNode2EditPart extends AbstractBorderedShapeEditPart {
 		}
 		if (childEditPart instanceof InNodeEditPart) {
 			if (temp instanceof InputEditPart) {
-				NodeFigure figureInput = (NodeFigure) ((InNodeEditPart) childEditPart).getFigure();
-				figureInput.removeAll();
-				Figure emptyFigure = new Figure();
-				figureInput.add(emptyFigure);
+				createEmptyInNode(childEditPart);
 			} else {
 				//BorderItemLocator locator = new BorderItemLocator(getMainFigure(), PositionConstants.WEST);
-				IFigure borderItemFigure = ((InNodeEditPart) childEditPart).getFigure();
-				BorderItemLocator locator = new AbsoluteBorderedItemLocator(getMainFigure(), borderItemFigure, PositionConstants.WEST, 4);
-				getBorderedFigure().getBorderItemContainer().add(((InNodeEditPart) childEditPart).getFigure(), locator);
-				return true;
+				return createInNode(childEditPart);
 			}
 		}
 		if (childEditPart instanceof OutNodeEditPart) {
 			if (temp instanceof OutputEditPart) {
-				NodeFigure figureInput = (NodeFigure) ((OutNodeEditPart) childEditPart).getFigure();
-				figureInput.removeAll();
-				Figure emptyFigure = new Figure();
-				figureInput.add(emptyFigure);
+				createEmptyOutNode(childEditPart);
 			} else {
-				IFigure borderItemFigure = ((OutNodeEditPart) childEditPart).getFigure();
-				BorderItemLocator locator = new AbsoluteBorderedItemLocator(getMainFigure(), borderItemFigure, PositionConstants.EAST, 4);
-				getBorderedFigure().getBorderItemContainer().add(((OutNodeEditPart) childEditPart).getFigure(), locator);
-				return true;
+				return createOutNode(childEditPart);
 			}
 			
 		}
 		return false;
+	}
+
+	private boolean createOutNode(EditPart childEditPart) {
+		IFigure borderItemFigure = ((OutNodeEditPart) childEditPart).getFigure();
+		BorderItemLocator locator = new AbsoluteBorderedItemLocator(getMainFigure(), borderItemFigure, PositionConstants.EAST, 4);
+		getBorderedFigure().getBorderItemContainer().add(((OutNodeEditPart) childEditPart).getFigure(), locator);
+		return true;
+	}
+
+	private void createEmptyOutNode(EditPart childEditPart) {
+		NodeFigure figureInput = (NodeFigure) ((OutNodeEditPart) childEditPart).getFigure();
+		figureInput.removeAll();
+		Figure emptyFigure = new Figure();
+		figureInput.add(emptyFigure);
+	}
+
+	private boolean createInNode(EditPart childEditPart) {
+		IFigure borderItemFigure = ((InNodeEditPart) childEditPart).getFigure();
+		BorderItemLocator locator = new AbsoluteBorderedItemLocator(getMainFigure(), borderItemFigure, PositionConstants.WEST, 4);
+		getBorderedFigure().getBorderItemContainer().add(((InNodeEditPart) childEditPart).getFigure(), locator);
+		return true;
+	}
+
+	private void createEmptyInNode(EditPart childEditPart) {
+		NodeFigure figureInput = (NodeFigure) ((InNodeEditPart) childEditPart).getFigure();
+		figureInput.removeAll();
+		Figure emptyFigure = new Figure();
+		figureInput.add(emptyFigure);
 	}
 
 	/**

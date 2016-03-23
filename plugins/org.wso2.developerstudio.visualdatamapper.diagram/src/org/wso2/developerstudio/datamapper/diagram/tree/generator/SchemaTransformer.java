@@ -355,7 +355,9 @@ public class SchemaTransformer implements ISchemaTransformer {
 				treeNode = createTreeNode(null, count, elementKey, subSchema, schemaType, namespaceMap);
 				inputRootTreeNode.getNode().add(treeNode);
 				if(getSchemaItems(subSchema).size()> 0){
-				setProperties(getSchemaItems(subSchema), treeNode, count, namespaceMap);
+					if(getSchemaItems(subSchema).containsKey(JSON_SCHEMA_PROPERTIES)){
+						setProperties(getSchemaItems(subSchema), treeNode, count, namespaceMap);
+					}
 				}
 			} else {
 				// When there is an attribute,

@@ -226,11 +226,7 @@ public class TreeNode2EditPart extends AbstractBorderedShapeEditPart {
 			return true;
 		}
 	    String type = null;
-		for (PropertyKeyValuePair keyValue : (((TreeNode) ((View) getModel()).getElement()).getProperties())) {
-			if (keyValue.getKey().equals(JSON_SCHEMA_TYPE)) {
-				type = keyValue.getValue();
-			}
-		}
+		type = retrieveType(type);
 		if (childEditPart instanceof InNodeEditPart) {
 			if (temp instanceof InputEditPart) {
 				createEmptyInNode(childEditPart);
@@ -256,6 +252,16 @@ public class TreeNode2EditPart extends AbstractBorderedShapeEditPart {
 			
 		}
 		return false;
+	}
+
+	private String retrieveType(String type) {
+		for (PropertyKeyValuePair keyValue : (((TreeNode) ((View) getModel()).getElement()).getProperties())) {
+			if (keyValue.getKey().equals(JSON_SCHEMA_TYPE)) {
+				type = keyValue.getValue();
+				break;
+			}
+		}
+		return type;
 	}
 
 	private void removeChildNode(EditPart childEditPart) {

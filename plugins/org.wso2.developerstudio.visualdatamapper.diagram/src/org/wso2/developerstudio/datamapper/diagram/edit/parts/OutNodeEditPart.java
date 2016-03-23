@@ -332,7 +332,6 @@ public class OutNodeEditPart extends AbstractBorderItemEditPart {
 
 			mainImageRectangle.setFill(false);
 			mainImageRectangle.setOutline(false);
-
 			this.add(mainImageRectangle);
 			this.setOpaque(false);
 			this.setOutline(false);

@@ -78,7 +78,10 @@ public class OperatorRightConnectorEditPart extends AbstractBorderedShapeEditPar
 				EditPolicyRoles.CANONICAL_ROLE,
 				new org.wso2.developerstudio.datamapper.diagram.edit.policies.OperatorRightConnectorCanonicalEditPolicy());
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
-		installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE, new CustomNonResizableEditPolicyEx());
+		/* Disable dragging and resizing */
+		NonResizableEditPolicy selectionPolicy = new CustomNonResizableEditPolicyEx();
+		selectionPolicy.setDragAllowed(false);
+		installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE, selectionPolicy);
 		// XXX need an SCR to runtime to have another abstract superclass that would let children add reasonable editpolicies
 		// removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
 	}

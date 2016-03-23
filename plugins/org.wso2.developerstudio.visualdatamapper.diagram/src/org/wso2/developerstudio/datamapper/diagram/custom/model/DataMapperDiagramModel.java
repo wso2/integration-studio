@@ -17,13 +17,11 @@ package org.wso2.developerstudio.datamapper.diagram.custom.model;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Stack;
 
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.wso2.developerstudio.datamapper.DataMapperLink;
 import org.wso2.developerstudio.datamapper.DataMapperRoot;
@@ -70,9 +68,7 @@ public class DataMapperDiagramModel {
     public DataMapperDiagramModel(DataMapperRoot rootDiagram) throws DataMapperException {
         setInputAndOutputRootNames(rootDiagram);
         populateOutputVariablesDepthFirst(rootDiagram.getOutput());
-        // populateOutputVariables(rootDiagram.getOutput());
         populateInputVariablesDepthFirst(rootDiagram.getInput());
-        // populateInputVariables(rootDiagram.getInput());
         resetDiagramTraversalProperties();
         updateExecutionSequence();
     }
@@ -224,78 +220,6 @@ public class DataMapperDiagramModel {
             operation.setPortVariableIndex(new ArrayList<Integer>());
         }
         setGraphOperationElements(new ArrayList<OperatorImpl>());
-    }
-
-    private void populateInputVariables(Input input) {
-        TreeIterator<EObject> variableIterator = input.eAllContents();
-        Stack<EObject> parentVariableStack = new Stack<>();
-        List<EObject> tempNodeArray = new ArrayList<>();
-        for (Iterator<EObject> iterator = variableIterator; iterator.hasNext();) {
-            EObject objectElement = (EObject) iterator.next();
-            if (objectElement instanceof ElementImpl) {
-                ElementImpl element = (ElementImpl) objectElement;
-                if (element.getLevel() <= parentVariableStack.size()) {
-                    while (parentVariableStack.size() >= element.getLevel()) {
-                        parentVariableStack.pop();
-                    }
-                } else if (element.getLevel() > (parentVariableStack.size() + 1)) {
-                    throw new IllegalArgumentException("Illegal element level detected : element level- "
-                            + element.getLevel() + " , parents level- " + parentVariableStack.size());
-                }
-                int index = variablesArray.size();
-                String variableName = getVariableName(DMVariableType.INPUT, parentVariableStack, element.getName());
-                int parentVariableIndex = -1;
-                if (!parentVariableStack.isEmpty()) {
-                    TreeNodeImpl parent = (TreeNodeImpl) parentVariableStack.peek();
-                    parentVariableIndex = parent.getIndex();
-                }
-                DMVariable addedVariable = new DMVariable(variableName, getUniqueId(objectElement),
-                        DMVariableType.INPUT, SchemaDataType.ARRAY// getSchemaDataType(element.getProperties().get(TYPE))
-                        , index, parentVariableIndex);
-                variablesArray.add(addedVariable);
-                addVariableTypeToMap(addedVariable.getName(), SchemaDataType.STRING);
-                ((ElementImpl) objectElement).setIndex(index);
-                getResolvedVariableArray().add(index);
-                inputVariablesArray.add(index);
-                tempNodeArray.add(element);
-            } else if (objectElement instanceof TreeNodeImpl) {
-                TreeNodeImpl treeNode = (TreeNodeImpl) objectElement;
-                if (treeNode.getLevel() <= parentVariableStack.size()) {
-                    while (parentVariableStack.size() >= treeNode.getLevel()) {
-                        parentVariableStack.pop();
-                    }
-                } else if (treeNode.getLevel() > (parentVariableStack.size() + 1)) {
-                    throw new IllegalArgumentException("Illegal element level detected : element level- "
-                            + treeNode.getLevel() + " , parents level- " + parentVariableStack.size());
-                }
-                String variableName = getVariableName(DMVariableType.INPUT, parentVariableStack, treeNode.getName());
-                SchemaDataType variableType = SchemaDataType.ARRAY;// getSchemaDataType(treeNode.getProperties().get(TYPE));
-                int parentVariableIndex = -1;
-                if (!parentVariableStack.isEmpty()) {
-                    TreeNodeImpl parent = (TreeNodeImpl) parentVariableStack.peek();
-                    parentVariableIndex = parent.getIndex();
-                }
-                int index = variablesArray.size();
-                DMVariable addedVariable = new DMVariable(variableName, objectElement.toString(), DMVariableType.INPUT,
-                        variableType, index, parentVariableIndex);
-                variablesArray.add(addedVariable);
-                outputVariablesArray.add(index);
-                treeNode.setIndex(index);
-                addVariableTypeToMap(addedVariable.getName(), variableType);
-                if (treeNode.getLevel() == parentVariableStack.size()) {
-                    parentVariableStack.pop();
-                    parentVariableStack.push(treeNode);
-                } else if (treeNode.getLevel() > parentVariableStack.size()) {
-                    parentVariableStack.push(treeNode);
-                } else {
-                    while (parentVariableStack.size() >= treeNode.getLevel()) {
-                        parentVariableStack.pop();
-                    }
-                    parentVariableStack.push(treeNode);
-                }
-            }
-        }
-        populateAdjacencyLists(tempNodeArray);
     }
 
     private void populateAdjacencyLists(List<EObject> tempNodeArray) {
@@ -486,6 +410,12 @@ public class DataMapperDiagramModel {
         }
     }
 
+    /**
+     * This method will populate the outputVariables array field from diagram
+     * output tree
+     * 
+     * @param output
+     */
     private void populateOutputVariablesDepthFirst(Output output) {
         Stack<EObject> nodeStack = new Stack<>();
         nodeStack.addAll(output.getTreeNode());
@@ -542,79 +472,6 @@ public class DataMapperDiagramModel {
         throw new IllegalArgumentException("Type field not found in treeNode");
     }
 
-    /**
-     * This method will populate the outputVariables array field from diagram
-     * output tree
-     * 
-     * @param output
-     */
-    private void populateOutputVariables(Output output) {
-        TreeIterator<EObject> variableIterator = output.eAllContents();
-        Stack<EObject> parentVariableStack = new Stack<EObject>();
-        for (Iterator<EObject> iterator = variableIterator; iterator.hasNext();) {
-            EObject objectElement = (EObject) iterator.next();
-            if (objectElement instanceof ElementImpl) {
-                ElementImpl element = (ElementImpl) objectElement;
-                if (element.getLevel() <= parentVariableStack.size()) {
-                    while (parentVariableStack.size() >= element.getLevel()) {
-                        parentVariableStack.pop();
-                    }
-                } else if (element.getLevel() > (parentVariableStack.size() + 1)) {
-                    throw new IllegalArgumentException("Illegal element level detected : element level- "
-                            + element.getLevel() + " , parents level- " + parentVariableStack.size());
-                }
-                int index = variablesArray.size();
-                String variableName = getVariableName(DMVariableType.OUTPUT, parentVariableStack, element.getName());
-                int parentVariableIndex = -1;
-                if (!parentVariableStack.isEmpty()) {
-                    TreeNodeImpl parent = (TreeNodeImpl) parentVariableStack.peek();
-                    parentVariableIndex = parent.getIndex();
-                }
-                SchemaDataType variableType = SchemaDataType.ARRAY;// getSchemaDataType(element.getProperties().get(TYPE));
-                DMVariable addedVariable = new DMVariable(variableName, objectElement.toString(),
-                        DMVariableType.OUTPUT, variableType, index, parentVariableIndex);
-                variablesArray.add(addedVariable);
-                outputVariablesArray.add(index);
-                element.setIndex(index);
-                addVariableTypeToMap(addedVariable.getName(), variableType);
-            } else if (objectElement instanceof TreeNodeImpl) {
-                TreeNodeImpl treeNode = (TreeNodeImpl) objectElement;
-                if (treeNode.getLevel() <= parentVariableStack.size()) {
-                    while (parentVariableStack.size() >= treeNode.getLevel()) {
-                        parentVariableStack.pop();
-                    }
-                } else if (treeNode.getLevel() > (parentVariableStack.size() + 1)) {
-                    throw new IllegalArgumentException("Illegal element level detected : element level- "
-                            + treeNode.getLevel() + " , parents level- " + parentVariableStack.size());
-                }
-                String variableName = getVariableName(DMVariableType.OUTPUT, parentVariableStack, treeNode.getName());
-                SchemaDataType variableType = SchemaDataType.ARRAY;// getSchemaDataType(treeNode.getProperties().get(TYPE));
-                int parentVariableIndex = -1;
-                if (!parentVariableStack.isEmpty()) {
-                    TreeNodeImpl parent = (TreeNodeImpl) parentVariableStack.peek();
-                    parentVariableIndex = parent.getIndex();
-                }
-                int index = variablesArray.size();
-                variablesArray.add(new DMVariable(variableName, objectElement.toString(), DMVariableType.OUTPUT,
-                        variableType, index, parentVariableIndex));
-                outputVariablesArray.add(index);
-                treeNode.setIndex(index);
-                addVariableTypeToMap(variableName, variableType);
-                if (treeNode.getLevel() == parentVariableStack.size()) {
-                    parentVariableStack.pop();
-                    parentVariableStack.push(treeNode);
-                } else if (treeNode.getLevel() > parentVariableStack.size()) {
-                    parentVariableStack.push(treeNode);
-                } else {
-                    while (parentVariableStack.size() >= treeNode.getLevel()) {
-                        parentVariableStack.pop();
-                    }
-                    parentVariableStack.push(treeNode);
-                }
-            }
-        }
-    }
-
     private SchemaDataType getSchemaDataType(String type) {
         switch (type) {
         case "string":
@@ -623,10 +480,15 @@ public class DataMapperDiagramModel {
             return SchemaDataType.RECORD;
         case "array":
             return SchemaDataType.ARRAY;
+        case "boolean":
+            return SchemaDataType.BOOLEAN;
+        case "number":
+            return SchemaDataType.DOUBLE;
+        case "integer":
+            return SchemaDataType.INT;
         default:
             throw new IllegalArgumentException("Illegal schema data type found : " + type);
         }
-
     }
 
     private String getVariableName(DMVariableType prefix, Stack<EObject> parentVariableStack, String name) {
@@ -658,7 +520,7 @@ public class DataMapperDiagramModel {
     }
 
     public void setInputRootName(String inputRootName) {
-        // removing namespace prefix from the schema name and save it as root name
+        // removing name-space prefix from the schema name and save it as root name
         String[] rootNameArray = inputRootName.split(NAMESPACE_SEPERATOR);
         this.inputRootName = rootNameArray[rootNameArray.length - 1];
     }
@@ -668,7 +530,7 @@ public class DataMapperDiagramModel {
     }
 
     public void setOutputRootName(String outputRootName) {
-        // removing namespace prefix from the schema name and save it as root name
+        // removing name-space prefix from the schema name and save it as root name
         String[] rootNameArray = outputRootName.split(NAMESPACE_SEPERATOR);
         this.outputRootName = rootNameArray[rootNameArray.length - 1];
     }

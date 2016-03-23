@@ -133,7 +133,9 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
                             } else {
                                 parentArrayVariable = variableName;
                             }
-                        } else if (SchemaDataType.STRING.equals(variableType)) {
+                        } else if (SchemaDataType.STRING.equals(variableType)
+                                || SchemaDataType.INT.equals(variableType)
+                                || SchemaDataType.DOUBLE.equals(variableType)) {
                             // leaf variable element
                         } else if (SchemaDataType.RECORD.equals(variableType)) {
                             // record variable element

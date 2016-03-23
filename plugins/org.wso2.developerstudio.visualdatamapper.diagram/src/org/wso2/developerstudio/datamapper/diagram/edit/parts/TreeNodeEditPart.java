@@ -573,7 +573,7 @@ public class TreeNodeEditPart extends AbstractBorderedShapeEditPart {
 			this.setFill(false);
 			this.setOutline(false);
 
-			this.add(figure);
+			//this.add(figure);
 		}
 
 		/**

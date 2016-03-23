@@ -20,7 +20,7 @@ public class SchemaGeneratorFactory {
 	
 	public ISchemaGenerator getSchemaGenerator(FileType fileType) {
 		switch(fileType) {
-		case JSCHEMA:
+		case JSONSCHEMA:
 			return new AbstractSchemaGenerator();
 		case XSD:
 			return new SchemaGeneratorForXSD();

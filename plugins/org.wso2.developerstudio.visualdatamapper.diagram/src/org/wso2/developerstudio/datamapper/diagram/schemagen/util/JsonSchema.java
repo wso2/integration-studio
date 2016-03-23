@@ -111,11 +111,11 @@ public class JsonSchema {
 	}
 	
 	public void addCustomArray(String name) {
-		schema.getAsJsonObject().add(name, new JsonArray());
+		schema.add(name, new JsonArray());
 	}
 	
 	public void addCustomObject(String name) {
-		schema.getAsJsonObject().add(name, new JsonObject());
+		schema.add(name, new JsonObject());
 	}
 
 	public JsonArray getCustomArray(String name) {

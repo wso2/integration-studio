@@ -52,6 +52,7 @@ import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.wso2.developerstudio.datamapper.PropertyKeyValuePair;
 import org.wso2.developerstudio.datamapper.TreeNode;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.custom.CustomNonResizableEditPolicyEx;
 import org.wso2.developerstudio.datamapper.diagram.edit.policies.TreeNodeCanonicalEditPolicy;
@@ -398,10 +399,15 @@ public class TreeNodeEditPart extends AbstractBorderedShapeEditPart {
 	 * @generated NOT
 	 */
 	public class TreeNodeFigure extends RectangleFigure {
-		//private static final String PARENT_ICON = "icons/gmf/parent.gif";
-		private static final String PARENT_ICON = "icons/gmf/symbol_element_of.gif";
-		private static final String ICONS_ATTRIBUTE = "icons/gmf/AttributeIcon.png";
+		
+		private static final String ELEMENT_ICON = "icons/gmf/symbol_element_of.gif";
+		private static final String ATTRIBUTE_ICON = "icons/gmf/AttributeIcon.png";
+		private static final String ARRAY_ICON = "icons/gmf/arrays.jpg";
+		private static final String OBJECT_ICON = "icons/gmf/object.jpg";
 		private static final String ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM = "org.wso2.developerstudio.visualdatamapper.diagram";
+		private static final String JSON_SCHEMA_TYPE = "type";
+		private static final String JSON_SCHEMA_ARRAY = "array";
+		private static final String JSON_SCHEMA_OBJECT = "object";
 		
 		private static final String PREFIX = "@";
 		/**
@@ -455,15 +461,25 @@ public class TreeNodeEditPart extends AbstractBorderedShapeEditPart {
 			figure2.setOpaque(false);
 
 			ImageDescriptor mainImgDescCollapse = AbstractUIPlugin.imageDescriptorFromPlugin(
-					ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM, PARENT_ICON);
+					ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM, ELEMENT_ICON);
 			ImageDescriptor attributeImgDesc = AbstractUIPlugin.imageDescriptorFromPlugin(
-					ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM, ICONS_ATTRIBUTE);
+					ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM, ATTRIBUTE_ICON);
+			ImageDescriptor arrayImgDesc = AbstractUIPlugin.imageDescriptorFromPlugin(
+					ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM, ARRAY_ICON);
+			ImageDescriptor objectImgDesc = AbstractUIPlugin.imageDescriptorFromPlugin(
+					ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM, OBJECT_ICON);
 
 
 			final ImageFigure mainImg = new ImageFigure(mainImgDescCollapse.createImage());
 			mainImg.setSize(new Dimension(10, 8));
 			
 			ImageFigure attributeImg = new ImageFigure(attributeImgDesc.createImage()); //attribute symbole figure 
+			attributeImg.setSize(new Dimension(10, 8));
+			
+			ImageFigure arrayImg = new ImageFigure(arrayImgDesc.createImage()); //array symbole figure 
+			attributeImg.setSize(new Dimension(10, 8));
+			
+			ImageFigure objectImg = new ImageFigure(objectImgDesc.createImage()); //object symbole figure 
 			attributeImg.setSize(new Dimension(10, 8));
 			
 			RectangleFigure mainImageRectangle = new RectangleFigure();
@@ -479,12 +495,32 @@ public class TreeNodeEditPart extends AbstractBorderedShapeEditPart {
 			attributeImageRectangle.setPreferredSize(new Dimension(10, 7));
 			attributeImageRectangle.add(attributeImg);
 			attributeImageRectangle.setBorder(null);
+			
+			RectangleFigure arrayImageRectangle = new RectangleFigure();
+
+			arrayImageRectangle.setBackgroundColor(new Color(null, 255, 255, 255));
+			arrayImageRectangle.setPreferredSize(new Dimension(10, 7));
+			arrayImageRectangle.add(attributeImg);
+			arrayImageRectangle.setBorder(null);
+			
+			RectangleFigure objectImageRectangle = new RectangleFigure();
+
+			objectImageRectangle.setBackgroundColor(new Color(null, 255, 255, 255));
+			objectImageRectangle.setPreferredSize(new Dimension(10, 7));
+			objectImageRectangle.add(attributeImg);
+			objectImageRectangle.setBorder(null);
 
 			fFigureTreeNodeNameFigure = new WrappingLabel();
 			//String name = (((TreeNode) ((View) getModel()).getElement()).getName()).split(",")[1];
 			/*int count = Integer.parseInt((((TreeNode) ((View) getModel()).getElement()).getName())
 					.split(",")[0]);*/
 			String name = (((TreeNode) ((View) getModel()).getElement()).getName());
+			String type = null;
+			for (PropertyKeyValuePair keyValue : (((TreeNode) ((View) getModel()).getElement()).getProperties())) {
+				if (keyValue.getKey().equals(JSON_SCHEMA_TYPE)) {
+					type = keyValue.getValue();
+				}
+			}
 			int count = ((TreeNode) ((View) getModel()).getElement()).getLevel();
 			fFigureTreeNodeNameFigure.setText(name);
 			fFigureTreeNodeNameFigure.setForegroundColor(ColorConstants.black);
@@ -556,6 +592,10 @@ public class TreeNodeEditPart extends AbstractBorderedShapeEditPart {
 			Label nodeLabel = new Label();
 			if (StringUtils.isNotEmpty(name) && name.startsWith(PREFIX)) {
 				nodeLabel.setIcon(attributeImg.getImage());
+			}else if(type.equals(JSON_SCHEMA_ARRAY)){
+				nodeLabel.setIcon(arrayImg.getImage());
+			}else if(type.equals(JSON_SCHEMA_OBJECT)){
+				nodeLabel.setIcon(objectImg.getImage());
 			}else{
 				nodeLabel.setIcon(mainImg.getImage());
 			}
@@ -619,7 +659,7 @@ public class TreeNodeEditPart extends AbstractBorderedShapeEditPart {
 
 		public void renameElement(String newName) {
 			ImageDescriptor mainImgDesc = AbstractUIPlugin.imageDescriptorFromPlugin(
-					ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM, PARENT_ICON);
+					ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM, ELEMENT_ICON);
 
 			final ImageFigure mainImg = new ImageFigure(mainImgDesc.createImage());
 			mainImg.setSize(new Dimension(10, 8));

@@ -2,6 +2,8 @@ package org.wso2.developerstudio.datamapper.diagram.edit.parts;
 
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.Label;
+import org.eclipse.draw2d.MouseEvent;
+import org.eclipse.draw2d.MouseMotionListener;
 import org.eclipse.draw2d.RectangleFigure;
 import org.eclipse.draw2d.RoundedRectangle;
 import org.eclipse.draw2d.Shape;
@@ -15,6 +17,8 @@ import org.eclipse.gef.Request;
 import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.editpolicies.LayoutEditPolicy;
 import org.eclipse.gef.editpolicies.NonResizableEditPolicy;
+import org.eclipse.gef.palette.PaletteContainer;
+import org.eclipse.gef.palette.ToolEntry;
 import org.eclipse.gef.requests.CreateRequest;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeNodeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.DragDropEditPolicy;
@@ -289,6 +293,37 @@ public class OperatorRightContainerEditPart extends ShapeNodeEditPart {
 			layoutThis.setMatchWidth(true);
 
 			this.setLayoutManager(layoutThis);
+			this.addMouseMotionListener(new MouseMotionListener() {
+
+				@Override
+				public void mouseDragged(MouseEvent me) {
+
+				}
+
+				@Override
+				public void mouseEntered(MouseEvent me) {
+					getEditDomain().getPaletteViewer().setActiveTool(
+							(ToolEntry) (((PaletteContainer) getEditDomain().getPaletteViewer().getPaletteRoot()
+									.getChildren().get(1)).getChildren().get(0)));
+
+				}
+
+				@Override
+				public void mouseExited(MouseEvent me) {
+					getEditDomain().getPaletteViewer().setActiveTool(null);
+
+				}
+
+				@Override
+				public void mouseHover(MouseEvent me) {
+
+				}
+
+				@Override
+				public void mouseMoved(MouseEvent me) {
+				}
+
+			});
 
 		}
 

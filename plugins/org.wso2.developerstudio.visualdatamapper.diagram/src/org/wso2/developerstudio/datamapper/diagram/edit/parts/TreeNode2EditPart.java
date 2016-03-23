@@ -49,6 +49,7 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.wso2.developerstudio.datamapper.PropertyKeyValuePair;
 import org.wso2.developerstudio.datamapper.TreeNode;
+import org.wso2.developerstudio.datamapper.diagram.custom.util.AbsoluteBorderedItemLocator;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.custom.CustomNonResizableEditPolicyEx;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.custom.FixedBorderItemLocator;
 import org.wso2.developerstudio.datamapper.diagram.part.DataMapperVisualIDRegistry;
@@ -217,8 +218,11 @@ public class TreeNode2EditPart extends AbstractBorderedShapeEditPart {
 	 * @generated NOT
 	 */
 	protected boolean addFixedChild(EditPart childEditPart) {
-
+		TreeNode2EditPart parentEditPart = null;
 		EditPart temp = getParentBox();
+		if (childEditPart.getParent() instanceof TreeNode2EditPart) {
+		parentEditPart = (TreeNode2EditPart) childEditPart.getParent();
+		}
 		if (childEditPart instanceof TreeNodeName2EditPart) {
 			((TreeNodeName2EditPart) childEditPart).setLabel(getPrimaryShape().getFigureTreeNodeNameFigure());
 			return true;
@@ -232,7 +236,7 @@ public class TreeNode2EditPart extends AbstractBorderedShapeEditPart {
 			} else {
 				//BorderItemLocator locator = new BorderItemLocator(getMainFigure(), PositionConstants.WEST);
 				IFigure borderItemFigure = ((InNodeEditPart) childEditPart).getFigure();
-				BorderItemLocator locator = new FixedBorderItemLocator(getMainFigure(), borderItemFigure, PositionConstants.WEST, 0.5);
+				BorderItemLocator locator = new AbsoluteBorderedItemLocator(getMainFigure(), borderItemFigure, PositionConstants.WEST, 4);
 				getBorderedFigure().getBorderItemContainer().add(((InNodeEditPart) childEditPart).getFigure(), locator);
 				return true;
 			}
@@ -245,7 +249,7 @@ public class TreeNode2EditPart extends AbstractBorderedShapeEditPart {
 				figureInput.add(emptyFigure);
 			} else {
 				IFigure borderItemFigure = ((OutNodeEditPart) childEditPart).getFigure();
-				BorderItemLocator locator = new FixedBorderItemLocator(getMainFigure(), borderItemFigure, PositionConstants.EAST, 0.5);
+				BorderItemLocator locator = new AbsoluteBorderedItemLocator(getMainFigure(), borderItemFigure, PositionConstants.EAST, 4);
 				getBorderedFigure().getBorderItemContainer().add(((OutNodeEditPart) childEditPart).getFigure(), locator);
 				return true;
 			}

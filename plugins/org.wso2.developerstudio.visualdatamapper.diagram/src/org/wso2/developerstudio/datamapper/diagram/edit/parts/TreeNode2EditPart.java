@@ -84,6 +84,9 @@ public class TreeNode2EditPart extends AbstractBorderedShapeEditPart {
 	 * @generated NOT
 	 */
 	boolean isActivated = false;
+	private static final String JSON_SCHEMA_TYPE = "type";
+	private static final String JSON_SCHEMA_ARRAY = "array";
+	private static final String JSON_SCHEMA_OBJECT = "object";
 
 	/**
 	 * @generated
@@ -222,23 +225,42 @@ public class TreeNode2EditPart extends AbstractBorderedShapeEditPart {
 			((TreeNodeName2EditPart) childEditPart).setLabel(getPrimaryShape().getFigureTreeNodeNameFigure());
 			return true;
 		}
+	    String type = null;
+		for (PropertyKeyValuePair keyValue : (((TreeNode) ((View) getModel()).getElement()).getProperties())) {
+			if (keyValue.getKey().equals(JSON_SCHEMA_TYPE)) {
+				type = keyValue.getValue();
+			}
+		}
 		if (childEditPart instanceof InNodeEditPart) {
 			if (temp instanceof InputEditPart) {
 				createEmptyInNode(childEditPart);
 			} else {
 				//BorderItemLocator locator = new BorderItemLocator(getMainFigure(), PositionConstants.WEST);
-				return createInNode(childEditPart);
+				if (type!= null && (type.equals(JSON_SCHEMA_ARRAY) || type.equals(JSON_SCHEMA_OBJECT))) {
+					removeChildNode(childEditPart);
+					} else {
+						return createInNode(childEditPart);
+					}
 			}
 		}
 		if (childEditPart instanceof OutNodeEditPart) {
 			if (temp instanceof OutputEditPart) {
 				createEmptyOutNode(childEditPart);
 			} else {
-				return createOutNode(childEditPart);
+				if (type!= null && (type.equals(JSON_SCHEMA_ARRAY) || type.equals(JSON_SCHEMA_OBJECT))) {
+					removeChildNode(childEditPart);
+					} else {
+						return createOutNode(childEditPart);
+					}
 			}
 			
 		}
 		return false;
+	}
+
+	private void removeChildNode(EditPart childEditPart) {
+		TreeNode2EditPart treenode = (TreeNode2EditPart) childEditPart.getParent();
+		treenode.removeChild(childEditPart);
 	}
 
 	private boolean createOutNode(EditPart childEditPart) {

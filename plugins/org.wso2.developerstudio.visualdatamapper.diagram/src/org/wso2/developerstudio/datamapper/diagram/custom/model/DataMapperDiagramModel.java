@@ -480,10 +480,15 @@ public class DataMapperDiagramModel {
             return SchemaDataType.RECORD;
         case "array":
             return SchemaDataType.ARRAY;
+        case "boolean":
+            return SchemaDataType.BOOLEAN;
+        case "number":
+            return SchemaDataType.DOUBLE;
+        case "integer":
+            return SchemaDataType.INT;
         default:
             throw new IllegalArgumentException("Illegal schema data type found : " + type);
         }
-
     }
 
     private String getVariableName(DMVariableType prefix, Stack<EObject> parentVariableStack, String name) {
@@ -515,7 +520,7 @@ public class DataMapperDiagramModel {
     }
 
     public void setInputRootName(String inputRootName) {
-        // removing namespace prefix from the schema name and save it as root name
+        // removing name-space prefix from the schema name and save it as root name
         String[] rootNameArray = inputRootName.split(NAMESPACE_SEPERATOR);
         this.inputRootName = rootNameArray[rootNameArray.length - 1];
     }
@@ -525,7 +530,7 @@ public class DataMapperDiagramModel {
     }
 
     public void setOutputRootName(String outputRootName) {
-        // removing namespace prefix from the schema name and save it as root name
+        // removing name-space prefix from the schema name and save it as root name
         String[] rootNameArray = outputRootName.split(NAMESPACE_SEPERATOR);
         this.outputRootName = rootNameArray[rootNameArray.length - 1];
     }

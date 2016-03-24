@@ -29,12 +29,32 @@ public class ForLoopBean {
     private List<Integer> nestedForLoopList;
     private List<Integer> operationList;
     private int parentIndex;
+    private List<String> arrayVariableListToInstantiate;
+    private List<String> objectVariableListToInstantiate;
 
     public ForLoopBean(String iterativeName, String variableName) {
         nestedForLoopList = new ArrayList<>();
         operationList = new ArrayList<>();
+        arrayVariableListToInstantiate = new ArrayList<>();
+        objectVariableListToInstantiate = new ArrayList<>();
         this.iterativeName = iterativeName;
         this.variableName = variableName;
+    }
+
+    public List<String> getArrayVariableListToInstantiate() {
+        return arrayVariableListToInstantiate;
+    }
+
+    public void setArrayVariableListToInstantiate(List<String> arrayVariableListToInstantiate) {
+        this.arrayVariableListToInstantiate = arrayVariableListToInstantiate;
+    }
+
+    public List<String> getObjectVariableListToInstantiate() {
+        return objectVariableListToInstantiate;
+    }
+
+    public void setObjectVariableListToInstantiate(List<String> objectVariableListToInstantiate) {
+        this.objectVariableListToInstantiate = objectVariableListToInstantiate;
     }
 
     public String getIterativeName() {

@@ -40,7 +40,7 @@ public class ScriptGenerationUtil {
                 prettyVariableName = variable.getName() + "[";
                 prettyVariableName += (getForLoopIteratorNames(parentForLoopBeanStack)) + "]";
             } else {
-                prettyVariableName = variable.getName();
+                prettyVariableName = variable.getName()+"[0]";
             }
         } else if (DMVariableType.OUTPUT.equals(variable.getType())
                 && getArrayElementCount(variable.getName(), variableTypeMap) == 1) {
@@ -67,8 +67,8 @@ public class ScriptGenerationUtil {
                                 prettyVariableName += "." + nextName + "[0]";
                             }
                         }
-                    } else if (nextName.contains("attr_") && isPerviousVariableTypeRecord) {
-                        prettyVariableName += "ATTR." + nextName;
+                    } else if (nextName.contains("@") && isPerviousVariableTypeRecord) {
+                        prettyVariableName += "ATTR." + nextName.replaceFirst("@", "attr_");
                     } else {
                         prettyVariableName += "." + nextName;
                     }
@@ -87,7 +87,7 @@ public class ScriptGenerationUtil {
         } else {
             Stack<ForLoopBean> parentVariableBottomUpStack = getReversedStack(parentForLoopBeanStack);
             String[] variableNameArray = variable.getName().split("\\.");
-            boolean isPerviousVariableTypeRecord = false;
+            boolean isPerviousVariableTypePrimitive = false;
             for (String nextName : variableNameArray) {
                 variableName += nextName;
                 if (variableTypeMap.containsKey(variableName)) {
@@ -97,17 +97,20 @@ public class ScriptGenerationUtil {
                             prettyVariableName += "." + nextName.substring(0, nextName.indexOf("Record")) + "["
                                     + parentVariableBottomUpStack.pop().getIterativeName() + "]";
                         } else {
-                            prettyVariableName += "." + nextName + "[i_" + nextName + "]";
+                            prettyVariableName += "." + nextName + "["
+                                    + parentVariableBottomUpStack.pop().getIterativeName() + "]";
                         }
-                    } else if (nextName.contains("attr_") && isPerviousVariableTypeRecord) {
-                        prettyVariableName += "ATTR." + nextName;
+                    } else if (nextName.contains("@") && isPerviousVariableTypePrimitive) {
+                        prettyVariableName += "ATTR." + nextName.replaceFirst("@", "attr_");
                     } else {
-                        prettyVariableName += "." + nextName;
+                        prettyVariableName += "." + nextName.replaceFirst("@", "attr_");
                     }
-                    if (SchemaDataType.RECORD.equals(variableType) || SchemaDataType.STRING.equals(variableType)) {
-                        isPerviousVariableTypeRecord = true;
+                    if (SchemaDataType.DOUBLE.equals(variableType) || SchemaDataType.INT.equals(variableType)
+                            || SchemaDataType.BOOLEAN.equals(variableType)
+                            || SchemaDataType.STRING.equals(variableType)) {
+                        isPerviousVariableTypePrimitive = true;
                     } else {
-                        isPerviousVariableTypeRecord = false;
+                        isPerviousVariableTypePrimitive = false;
                     }
                 } else {
                     throw new IllegalArgumentException("Unregistered Variable name found : " + variableName + " in - ["
@@ -156,9 +159,11 @@ public class ScriptGenerationUtil {
     }
 
     private static Stack<ForLoopBean> getReversedStack(Stack<ForLoopBean> parentForLoopBeanStack) {
+        @SuppressWarnings("unchecked")
+        Stack<ForLoopBean> tempForLoopBean = (Stack<ForLoopBean>) parentForLoopBeanStack.clone();
         Stack<ForLoopBean> reversedParentForLoopBeanStack = new Stack<>();
-        for (ForLoopBean forLoopBean : parentForLoopBeanStack) {
-            reversedParentForLoopBeanStack.push(forLoopBean);
+        while (!tempForLoopBean.isEmpty()) {
+            reversedParentForLoopBeanStack.push(tempForLoopBean.pop());
         }
         return reversedParentForLoopBeanStack;
     }
@@ -173,5 +178,13 @@ public class ScriptGenerationUtil {
             }
         }
         return iterateNameList;
+    }
+
+    public static boolean isVariableTypePrimitive(SchemaDataType variableType) {
+        if (SchemaDataType.STRING.equals(variableType) || SchemaDataType.INT.equals(variableType)
+                || SchemaDataType.DOUBLE.equals(variableType) || SchemaDataType.BOOLEAN.equals(variableType)) {
+            return true;
+        }
+        return false;
     }
 }

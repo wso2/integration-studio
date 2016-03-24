@@ -128,15 +128,7 @@ public class DataMapperDiagramModel {
     }
 
     private boolean isCurrentTreeNodeALeafNode(SchemaDataType variableType) {
-        switch (variableType) {
-        case STRING:
-        case INT:
-        case DOUBLE:
-        case BOOLEAN:
-            return true;
-        default:
-            return false;
-        }
+        return ScriptGenerationUtil.isVariableTypePrimitive(variableType);
     }
 
     private void setInputAndOutputRootNames(DataMapperRoot rootDiagram) {
@@ -399,15 +391,18 @@ public class DataMapperDiagramModel {
     }
 
     private EObject getLinkedElement(DataMapperLink dataMapperLink) {
-        EObject element = dataMapperLink.getInNode().eContainer();
-        if (element instanceof TreeNodeImpl) {
-            return element;
-        } else {
-            while (!(element instanceof OperatorImpl)) {
-                element = element.eContainer();
+        if (dataMapperLink.getInNode() != null) {
+            EObject element = dataMapperLink.getInNode().eContainer();
+            if (element instanceof TreeNodeImpl) {
+                return element;
+            } else {
+                while (!(element instanceof OperatorImpl)) {
+                    element = element.eContainer();
+                }
+                return element;
             }
-            return element;
         }
+        return null;
     }
 
     /**

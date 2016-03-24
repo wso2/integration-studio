@@ -725,20 +725,20 @@ public class SchemaTransformer implements ISchemaTransformer {
 					insetIFTypeForJsonObject(node, arrayObject);
 					if (schemaArrayItemsID != null) {
 						itemProperties.put(JSON_SCHEMA_ID, schemaArrayItemsID.replace("\\", ""));
-					} else {
-						itemProperties.put(JSON_SCHEMA_ID, schemaID + "/0");
-					}
+					} 
 					if (schemaArrayItemsType != null) {
 						itemProperties.put(JSON_SCHEMA_TYPE, schemaArrayItemsType);
-					} else {
-						itemProperties.put(JSON_SCHEMA_TYPE, null);
-					}
+					} 
 					insertRequiredArray(arrayObject, node, false);
 					insertRequiredArray(itemProperties, node, true);
 					parent.put(node.getName(), arrayObject);
-					arrayItemsObject.add(itemProperties);
+					if(itemProperties.size()>0){
+						arrayItemsObject.add(itemProperties);
+					}
 					arrayObject.put(JSON_SCHEMA_ITEMS, arrayItemsObject);
+					if(((TreeNodeImpl) node).getNode().size() > 0){
 					itemProperties.put(JSON_SCHEMA_PROPERTIES, itemsObject);
+					}
 					recursiveTreeGenerator((TreeNodeImpl) node, itemsObject);
 				} else if (schemaType != null) {
 					JSONObject elemObject = new JSONObject();

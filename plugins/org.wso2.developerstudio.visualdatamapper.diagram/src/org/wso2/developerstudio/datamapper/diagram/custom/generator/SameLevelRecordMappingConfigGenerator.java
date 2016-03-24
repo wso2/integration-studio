@@ -32,6 +32,8 @@ import org.wso2.developerstudio.datamapper.diagram.custom.model.DataMapperDiagra
  */
 public class SameLevelRecordMappingConfigGenerator extends AbstractMappingConfigGenerator {
 
+    private static final int FIRST_ELEMENT_INDEX = 0;
+
     @Override
     public String generateMappingConfig(DataMapperDiagramModel model) throws DataMapperException {
         List<MappingOperation> mappingOperationList = populateOperationListFromModel(model);
@@ -49,11 +51,12 @@ public class SameLevelRecordMappingConfigGenerator extends AbstractMappingConfig
         String inRoot = model.getInputRootName();
         String outRoot = model.getOutputRootName();
         StringBuilder functionBuilder = new StringBuilder();
-        functionBuilder.append(getMainFunctionDefinition(inRoot, outRoot));
+        String ouputVariableRootName = model.getVariablesArray().get(FIRST_ELEMENT_INDEX).getName();
+        functionBuilder.append(getMainFunctionDefinition(inRoot, outRoot,ouputVariableRootName));
         for (MappingOperation mappingOperation : mappingOperationList) {
             functionBuilder.append(getJSCommandForOperation(mappingOperation, model.getVariableTypeMap()));
         }
-        functionBuilder.append(getFunctionReturnString(outRoot));
+        functionBuilder.append(getFunctionReturnString(ouputVariableRootName));
         return functionBuilder.toString();
     }
 

@@ -19,7 +19,7 @@ public class JsonSchema {
 	
 	//Will be only used by root schema object
 	public void setDolarSchema(String namespaceURl) {
-		schema.addProperty("$Schema", namespaceURl);
+		schema.addProperty("$schema", namespaceURl);
 	}
 	
 	//Will be only used by root schema object
@@ -37,8 +37,8 @@ public class JsonSchema {
 	
 	
 	public String getDolarSchema() {
-		if (schema.get("$Schema") != null) {
-			return schema.get("$Schema").getAsString();
+		if (schema.get("$schema") != null) {
+			return schema.get("$schema").getAsString();
 		}
 		return "";
 	}

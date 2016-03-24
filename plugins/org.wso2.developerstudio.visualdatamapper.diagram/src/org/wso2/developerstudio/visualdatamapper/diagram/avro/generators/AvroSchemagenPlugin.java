@@ -163,7 +163,7 @@ public class AvroSchemagenPlugin extends Plugin {
 		outputSchema(avroPackage, orderedTypes);
 
 		// output debug summary
-		JTextFile avroSchema = new JTextFile("avroSchemas.avsc");
+		JTextFile avroSchema = new JTextFile("avroSchemas.json");
 		StringBuilder sb = new StringBuilder();
 
 		int objectSize = orderedTypes.size();

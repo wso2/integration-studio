@@ -55,7 +55,7 @@ public class ExportSchemaAction extends AbstractActionHandler {
 	private static final String INPUT_EDITPART = "Input"; //$NON-NLS-1$
 	private static final String EXPORT_SCHEMA_ACTION_ID = "export-schema-action-id"; //$NON-NLS-1$
 	private static final String FILTER_EXTENSION_TXT = "*.txt"; //$NON-NLS-1$
-	private static final String FILTER_EXTENSION_AVSC = "*.avsc"; //$NON-NLS-1$
+	private static final String FILTER_EXTENSION_AVSC = "*.json"; //$NON-NLS-1$
 	private static final String MENU_TITLE = Messages.ExportSchemaAction_menuTitle;
 	private static final String ERROR_WRONG_EDITPART = Messages.ExportSchemaAction_errorWrongEdipart;
 	private static final String ERROR_SAVING_FILE = Messages.ExportSchemaAction_errorSavingFile;

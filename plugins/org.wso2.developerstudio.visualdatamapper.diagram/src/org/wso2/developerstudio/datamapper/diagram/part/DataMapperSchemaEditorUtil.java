@@ -37,7 +37,7 @@ public class DataMapperSchemaEditorUtil {
 	private File outputSchemaFile;
 	private IFile outputSchemaIFile;
 
-	private static final String SCHEMA_FILE_EXTENSION = ".avsc";
+	private static final String SCHEMA_FILE_EXTENSION = ".json";
 	private static final String INPUT_SCHEMA_FILE_SUFFIX = "_inputSchema";
 	private static final String OUTPUT_SCHEMA_FILE_SUFFIX = "_outputSchema";
 

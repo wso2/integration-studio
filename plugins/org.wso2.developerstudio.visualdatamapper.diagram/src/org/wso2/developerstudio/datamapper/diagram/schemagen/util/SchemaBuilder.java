@@ -12,6 +12,7 @@ import com.google.gson.JsonPrimitive;
 
 public class SchemaBuilder {
 
+	private static final String ROOT_TITLE = "root";
 	JsonSchema root;
 	
 	public SchemaBuilder() {
@@ -20,24 +21,32 @@ public class SchemaBuilder {
 	public String createSchema(String jsonString) {
 		JsonParser jsonParser = new JsonParser();
 		JsonObject jo = (JsonObject) jsonParser.parse(jsonString);
+		JsonObject firstObject = null;
+		String title = ROOT_TITLE;
+		
+		Set<Entry<String, JsonElement>> entrySet = jo.entrySet();
+		if (entrySet.size() == 1) {
+			for (Entry<String, JsonElement> entry : entrySet) {
+				title = entry.getKey();
+				JsonElement element = entry.getValue();
+				firstObject = element.getAsJsonObject();
+				break;
+			}
+		} else {
+			firstObject = jo;
+		}
+	
 		root = new JsonSchema();
 		root.setDolarSchema("http://json-schema.org/draft-04/schema#");
-		root.setTitle(getTitle(jo));
-		root.setId("http://jsonschema.net");
+		root.setTitle(title);
+		root.setId("http://wso2jsonschema.org");
 		root.setType("object");
-		createSchema4Object(jo, root);
+		createSchema4Object(firstObject, root);
+			
 		return root.getAsJsonObject().toString();
 	}
 
-	private String getTitle(JsonObject jo) {
-		Set<Entry<String, JsonElement>> entrySet = jo.entrySet();
-		String title = "";
-		for (Entry<String, JsonElement> entry : entrySet) {
-			title = entry.getKey();
-		}
-		return title;
-	}
-
+	
 	public void createSchema4Object(JsonObject jo, JsonSchema parent) {
 
 		Set<Entry<String, JsonElement>> entrySet = jo.entrySet();

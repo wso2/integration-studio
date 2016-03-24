@@ -567,6 +567,7 @@ public class TreeNode2EditPart extends AbstractBorderedShapeEditPart {
 			for (PropertyKeyValuePair keyValue : (((TreeNode) ((View) getModel()).getElement()).getProperties())) {
 				if (keyValue.getKey().equals(JSON_SCHEMA_TYPE)) {
 					type = keyValue.getValue();
+					break;
 				}
 			}
 

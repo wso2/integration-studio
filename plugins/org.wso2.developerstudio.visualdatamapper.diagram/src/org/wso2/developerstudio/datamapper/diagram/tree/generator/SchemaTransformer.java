@@ -814,9 +814,9 @@ public class SchemaTransformer implements ISchemaTransformer {
 						String[] namespacearr = namespaceStringArr.split("=");
 						String firstElement = namespacearr[0].trim();
 						String secondElement = namespacearr[1].trim();
-						if (firstElement.contains("//") || secondElement.contains("//")) {
-							String first = firstElement.replace("//", "");
-							String second = secondElement.replace("//", "");
+						if (firstElement.contains("\\") || secondElement.contains("\\")) {
+							String first = firstElement.replace("\\", "");
+							String second = secondElement.replace("\\", "");
 							namespaceObj.put(first, second);
 						} else {
 							namespaceObj.put(firstElement, secondElement);

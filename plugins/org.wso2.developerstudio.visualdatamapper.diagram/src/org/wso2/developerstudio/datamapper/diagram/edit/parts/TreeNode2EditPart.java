@@ -84,9 +84,9 @@ public class TreeNode2EditPart extends AbstractBorderedShapeEditPart {
 	 * @generated NOT
 	 */
 	boolean isActivated = false;
-	private static final String JSON_SCHEMA_TYPE = "type";
-	private static final String JSON_SCHEMA_ARRAY = "array";
-	private static final String JSON_SCHEMA_OBJECT = "object";
+	public static final String JSON_SCHEMA_TYPE = "type";
+	public static final String JSON_SCHEMA_ARRAY = "array";
+	public static final String JSON_SCHEMA_OBJECT = "object";
 
 	/**
 	 * @generated
@@ -225,15 +225,14 @@ public class TreeNode2EditPart extends AbstractBorderedShapeEditPart {
 			((TreeNodeName2EditPart) childEditPart).setLabel(getPrimaryShape().getFigureTreeNodeNameFigure());
 			return true;
 		}
-	    String type = null;
-		type = retrieveType(type);
+	    String type = getNodeType();
 		if (childEditPart instanceof InNodeEditPart) {
 			if (temp instanceof InputEditPart) {
 				createEmptyInNode(childEditPart);
 			} else {
 				//BorderItemLocator locator = new BorderItemLocator(getMainFigure(), PositionConstants.WEST);
 				if (type!= null && (type.equals(JSON_SCHEMA_ARRAY) || type.equals(JSON_SCHEMA_OBJECT))) {
-					removeChildNode(childEditPart);
+					createEmptyInNode(childEditPart);
 					} else {
 						return createInNode(childEditPart);
 					}
@@ -244,7 +243,7 @@ public class TreeNode2EditPart extends AbstractBorderedShapeEditPart {
 				createEmptyOutNode(childEditPart);
 			} else {
 				if (type!= null && (type.equals(JSON_SCHEMA_ARRAY) || type.equals(JSON_SCHEMA_OBJECT))) {
-					removeChildNode(childEditPart);
+					createEmptyOutNode(childEditPart);
 					} else {
 						return createOutNode(childEditPart);
 					}
@@ -253,8 +252,10 @@ public class TreeNode2EditPart extends AbstractBorderedShapeEditPart {
 		}
 		return false;
 	}
-
-	private String retrieveType(String type) {
+	
+	
+	public String getNodeType() {
+		String type = "";
 		for (PropertyKeyValuePair keyValue : (((TreeNode) ((View) getModel()).getElement()).getProperties())) {
 			if (keyValue.getKey().equals(JSON_SCHEMA_TYPE)) {
 				type = keyValue.getValue();
@@ -264,10 +265,12 @@ public class TreeNode2EditPart extends AbstractBorderedShapeEditPart {
 		return type;
 	}
 
+	/*
 	private void removeChildNode(EditPart childEditPart) {
 		TreeNode2EditPart treenode = (TreeNode2EditPart) childEditPart.getParent();
 		treenode.removeChild(childEditPart);
 	}
+	*/
 
 	private boolean createOutNode(EditPart childEditPart) {
 		IFigure borderItemFigure = ((OutNodeEditPart) childEditPart).getFigure();

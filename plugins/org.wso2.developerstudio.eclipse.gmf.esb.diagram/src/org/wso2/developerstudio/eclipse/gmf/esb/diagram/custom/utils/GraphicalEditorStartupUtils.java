@@ -20,9 +20,13 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.common.util.Enumerator;
+import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorPart;
+import org.eclipse.ui.IEditorRegistry;
+import org.eclipse.ui.IFileEditorMapping;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.part.FileEditorInput;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EditorUtils;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.Deserializer;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbDiagramEditor;
@@ -31,6 +35,8 @@ import org.wso2.developerstudio.eclipse.platform.ui.editor.Openable;
 import org.wso2.developerstudio.eclipse.platform.ui.utils.UnrecogizedArtifactTypeException;
 
 public class GraphicalEditorStartupUtils implements Openable {
+	private static final String XML_EXTENSION = "xml";
+	private static final String XML_EDITOR_ID =  "org.eclipse.wst.xml.ui.internal.tabletree.XMLMultiPageEditorPart";
 
 	@Override
 	public IEditorPart editorOpen(String name, String type, String locatioin, String source)
@@ -66,8 +72,30 @@ public class GraphicalEditorStartupUtils implements Openable {
 		}
 	 
 		IWorkbenchPage activePage = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
-		IEditorPart openEditor = activePage.openEditor(new EsbEditorInput(null, xmlFile, type), EsbDiagramEditor.ID, true, IWorkbenchPage.MATCH_INPUT);
+		//IEditorPart openEditor = activePage.openEditor(new EsbEditorInput(null, xmlFile, type), EsbDiagramEditor.ID, true, IWorkbenchPage.MATCH_INPUT);
 		
+	
+			String defaultEditorID = EsbDiagramEditor.ID;
+			IEditorRegistry editorReg = PlatformUI.getWorkbench().getEditorRegistry();
+			IFileEditorMapping[] mappings = editorReg.getFileEditorMappings();
+			for(IFileEditorMapping mapping : mappings){
+			        if (XML_EXTENSION.equals(mapping.getExtension())) {
+			        	String tmpDefaultEditorID = mapping.getDefaultEditor().getId();
+			        	if(XML_EDITOR_ID.equals(tmpDefaultEditorID)){
+			        		defaultEditorID = tmpDefaultEditorID;		        		
+			        	}	
+			        break;
+			        }
+			}
+		 		
+			IEditorInput editorInput;
+			if(EsbDiagramEditor.ID.equals(defaultEditorID)){
+			        editorInput = new EsbEditorInput(null, xmlFile, type);
+			}else{
+			        editorInput = new FileEditorInput(xmlFile);
+			}
+			IEditorPart openEditor = activePage.openEditor(editorInput, defaultEditorID, true, IWorkbenchPage.MATCH_INPUT);
+				
 		if("endpoint".equals(type)){
 			EditorUtils.updateToolpalette();
 		}else if("sequence".equals(type)){

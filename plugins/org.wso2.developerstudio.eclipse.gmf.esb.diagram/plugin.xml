@@ -157,7 +157,7 @@
 		<content-type base-type="org.eclipse.core.runtime.xml"
 			file-extensions="xml"
 			id="org.wso2.developerstudio.eclipse.esb.contenttype.esbconfxmlNew"
-			name="Esb Configuration File" priority="high">
+			name="Esb Configuration File" priority="normal">
 			<describer
 				class="org.eclipse.core.runtime.content.XMLRootElementContentDescriber2">
 				<parameter name="element" value="{http://ws.apache.org/ns/synapse}*" />				

@@ -21,7 +21,9 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 import javax.xml.stream.XMLStreamException;
 import javax.xml.transform.TransformerException;
@@ -108,6 +110,9 @@ public class SchemaGeneratorForXML extends SchemaGeneratorForJSON implements ISc
 	private OMElement traverseChildrenAndReplaceAttributes(OMElement element, OMFactory factory) {
 
 		Iterator attributeIterator = element.getAllAttributes();
+		List<OMAttribute> removeList = new ArrayList<OMAttribute>();
+		List<OMElement> addList = new ArrayList<OMElement>();
+		
 		while (attributeIterator.hasNext()) {
 			OMAttribute atttrib = (OMAttribute) attributeIterator.next();
 			//remove attribute and instead add a element with @ infront
@@ -115,8 +120,17 @@ public class SchemaGeneratorForXML extends SchemaGeneratorForJSON implements ISc
 			OMElement attributeElement = factory.createOMElement("@" + atttrib.getLocalName(), null);
 			OMText attributeValue = factory.createOMText(atttrib.getAttributeValue());
 			attributeElement.addChild(attributeValue);
-			element.addChild(attributeElement);
-			element.removeAttribute(atttrib);
+			// add to list and later remove
+			addList.add(attributeElement);
+			removeList.add(atttrib);
+		}
+		
+		for (OMAttribute arttribute : removeList ) {
+			element.removeAttribute(arttribute);
+		}
+		
+		for (OMElement attrElement: addList ) {
+			element.addChild(attrElement);
 		}
 		
 		Iterator elementIterator = element.getChildren();

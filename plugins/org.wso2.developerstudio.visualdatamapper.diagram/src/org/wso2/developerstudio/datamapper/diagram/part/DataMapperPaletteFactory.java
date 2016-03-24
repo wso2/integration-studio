@@ -24,6 +24,7 @@ import org.eclipse.gef.Tool;
 import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.palette.PaletteContainer;
 import org.eclipse.gef.palette.PaletteDrawer;
+import org.eclipse.gef.palette.PaletteEntry;
 import org.eclipse.gef.palette.PaletteRoot;
 import org.eclipse.gef.palette.ToolEntry;
 import org.eclipse.gef.requests.CreateConnectionRequest;
@@ -59,7 +60,19 @@ public class DataMapperPaletteFactory {
 	 * @generated NOT
 	 */
 	public void fillPalette(PaletteRoot paletteRoot) {
+		paletteRoot.add(createDataMapperLinkGroup());
 		paletteRoot.add(createDataMapper1Group());
+	}
+
+	private PaletteEntry createDataMapperLinkGroup() {
+		PaletteDrawer paletteContainer = new PaletteDrawer("Connectors");
+
+		/*		PaletteGroup paletteContainer = new PaletteGroup(
+		 org.wso2.developerstudio.datamapper.diagram.part.Messages.DataMapper1Group_title);*/
+		paletteContainer.setId("createDataMapper1Group"); //$NON-NLS-1$
+		paletteContainer.add(createDataMapperLink1CreationTool());
+		paletteContainer.setInitialState(INITIAL_STATE_CLOSED);
+		return paletteContainer;
 	}
 
 	/**
@@ -74,7 +87,7 @@ public class DataMapperPaletteFactory {
 		/*		PaletteGroup paletteContainer = new PaletteGroup(
 		 org.wso2.developerstudio.datamapper.diagram.part.Messages.DataMapper1Group_title);*/
 		paletteContainer.setId("createDataMapper1Group"); //$NON-NLS-1$
-		paletteContainer.add(createDataMapperLink1CreationTool());
+//		paletteContainer.add(createDataMapperLink1CreationTool());
 		//		paletteContainer.add(createEqual2CreationTool());
 		paletteContainer.add(createConcat3CreationTool());
 		paletteContainer.add(createSplit4CreationTool());
@@ -91,12 +104,12 @@ public class DataMapperPaletteFactory {
 	 */
 	private ToolEntry createDataMapperLink1CreationTool() {
 		//removing the datamapper link entry in the operator tool palette
-		LinkToolEntry entry = new LinkToolEntry("",
-				"",
+		LinkToolEntry entry = new LinkToolEntry("Data Mapper Link",
+				"Data Mapper Link",
 				Collections.singletonList(DataMapperElementTypes.DataMapperLink_4001));
 		entry.setId("createDataMapperLink1CreationTool"); //$NON-NLS-1$
-//		entry.setSmallIcon(DataMapperElementTypes.getImageDescriptor(DataMapperElementTypes.DataMapperLink_4001));
-//		entry.setLargeIcon(entry.getSmallIcon());
+		entry.setSmallIcon(DataMapperElementTypes.getImageDescriptor(DataMapperElementTypes.DataMapperLink_4001));
+		entry.setLargeIcon(entry.getSmallIcon());
 		return entry;
 	}
 

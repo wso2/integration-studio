@@ -45,7 +45,7 @@ public abstract class AbstractMappingConfigGenerator implements MappingConfigGen
         return mappingOperationList;
     }
 
-    protected String getMainFunctionDefinition(String inRoot, String outRoot) {
+    protected String getMainFunctionDefinition(String inRoot, String outRoot, String outputVariableRootName) {
         StringBuilder mainFunctionBuilder = new StringBuilder();
         mainFunctionBuilder.append("function map_S_");
         mainFunctionBuilder.append(ScriptGenerationUtil.modifyNameSpaceForName(inRoot));
@@ -54,7 +54,8 @@ public abstract class AbstractMappingConfigGenerator implements MappingConfigGen
         mainFunctionBuilder.append("( )");
         mainFunctionBuilder.append("{ ");
         mainFunctionBuilder.append("\n");
-        mainFunctionBuilder.append("var output" + ScriptGenerationUtil.modifyNameSpaceForName(outRoot) + "={};");
+        mainFunctionBuilder.append("var " + ScriptGenerationUtil.modifyNameSpaceForName(outputVariableRootName)
+                + "={};");
         mainFunctionBuilder.append("\n");
         return mainFunctionBuilder.toString();
     }

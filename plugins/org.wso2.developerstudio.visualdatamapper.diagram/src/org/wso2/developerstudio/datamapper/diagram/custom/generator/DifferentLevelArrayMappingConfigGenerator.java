@@ -40,6 +40,7 @@ import org.wso2.developerstudio.datamapper.diagram.custom.util.ScriptGenerationU
 public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingConfigGenerator {
 
     private static final String ROOT_TAG = "root";
+    private static final int FIRST_ELEMENT_INDEX = 0;
 
     private static final String SCHEMA_ATTRIBUTE_PREFIX = "@";
 
@@ -86,9 +87,10 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
         String inRoot = model.getInputRootName();
         String outRoot = model.getOutputRootName();
         StringBuilder functionBuilder = new StringBuilder();
-        functionBuilder.append(getMainFunctionDefinition(inRoot, outRoot));
+        String ouputVariableRootName = model.getVariablesArray().get(FIRST_ELEMENT_INDEX).getName();
+        functionBuilder.append(getMainFunctionDefinition(inRoot, outRoot, ouputVariableRootName));
         functionBuilder.append(getJSCommandsForOperations(mappingOperationList, model));
-        functionBuilder.append(getFunctionReturnString(outRoot));
+        functionBuilder.append(getFunctionReturnString(ouputVariableRootName));
         return functionBuilder.toString();
     }
 

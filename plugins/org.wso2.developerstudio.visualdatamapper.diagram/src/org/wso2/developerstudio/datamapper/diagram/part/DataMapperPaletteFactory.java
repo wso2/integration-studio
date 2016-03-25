@@ -325,11 +325,8 @@ public class DataMapperPaletteFactory {
 							//TreeNode2EditPart treeNode2EditPart = (TreeNode2EditPart) getTargetEditPart();
 							if (getRoot(getTargetEditPart()) instanceof OutputEditPart) {
 								if (treeNode2EditPart.getChildren().get(i) instanceof InNodeEditPart) {
-									if (nodeType!= null && (nodeType.equals(TreeNode2EditPart.JSON_SCHEMA_ARRAY) || nodeType.equals(TreeNode2EditPart.JSON_SCHEMA_OBJECT))) {
-										//Do not return command, as we do not want to make links ending on object or array
-									} else {
-										return ((EditPart) treeNode2EditPart.getChildren().get(i)).getCommand(getTargetRequest());
-									}
+									return ((InNodeEditPart) treeNode2EditPart.getChildren()
+											.get(i)).getCommand(getTargetRequest());
 								} else if (treeNode2EditPart.getChildren().get(i) instanceof InNode2EditPart) {
 									return ((InNode2EditPart) treeNode2EditPart.getChildren()
 											.get(i)).getCommand(getTargetRequest());
@@ -341,12 +338,8 @@ public class DataMapperPaletteFactory {
 								}
 							} else if (getRoot(getTargetEditPart()) instanceof InputEditPart) {
 								if (treeNode2EditPart.getChildren().get(i) instanceof OutNodeEditPart) {
-									if (nodeType!= null && (nodeType.equals(TreeNode2EditPart.JSON_SCHEMA_ARRAY) || nodeType.equals(TreeNode2EditPart.JSON_SCHEMA_OBJECT))) {
-										//Do not return command, as we do not want to make links starting from objects or array
-									} else {
 										setTargetEditPart((OutNodeEditPart) treeNode2EditPart.getChildren().get(i));
 										return super.getCommand();
-									}
 								} else if (treeNode2EditPart.getChildren().get(i) instanceof OutNode2EditPart) {
 //									((OutNode2EditPart) treeNode2EditPart.getChildren().get(i)).highlightConnectedNode();
 									setTargetEditPart((OutNode2EditPart) treeNode2EditPart.getChildren().get(i));

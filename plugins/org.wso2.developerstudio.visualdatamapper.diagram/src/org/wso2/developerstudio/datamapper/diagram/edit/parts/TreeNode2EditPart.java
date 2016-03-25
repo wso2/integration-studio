@@ -230,23 +230,14 @@ public class TreeNode2EditPart extends AbstractBorderedShapeEditPart {
 			if (temp instanceof InputEditPart) {
 				createEmptyInNode(childEditPart);
 			} else {
-				//BorderItemLocator locator = new BorderItemLocator(getMainFigure(), PositionConstants.WEST);
-				if (type!= null && (type.equals(JSON_SCHEMA_ARRAY) || type.equals(JSON_SCHEMA_OBJECT))) {
-					createEmptyInNode(childEditPart);
-					} else {
 						return createInNode(childEditPart);
-					}
 			}
 		}
 		if (childEditPart instanceof OutNodeEditPart) {
 			if (temp instanceof OutputEditPart) {
 				createEmptyOutNode(childEditPart);
 			} else {
-				if (type!= null && (type.equals(JSON_SCHEMA_ARRAY) || type.equals(JSON_SCHEMA_OBJECT))) {
-					createEmptyOutNode(childEditPart);
-					} else {
 						return createOutNode(childEditPart);
-					}
 			}
 			
 		}
@@ -263,6 +254,10 @@ public class TreeNode2EditPart extends AbstractBorderedShapeEditPart {
 			}
 		}
 		return type;
+	}
+	
+	public void getParentNodeChildren() {
+	//	 check if it has children, if so return the children node list
 	}
 
 	/*

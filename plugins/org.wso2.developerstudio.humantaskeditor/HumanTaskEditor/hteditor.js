@@ -37,10 +37,8 @@ function makeUnDirty() {
     var taskN = $('#taskName').val();
     $('#taskName').val(taskN.replace(/ /g, ''));
     generateTasks();
-    generateUI();
     IDESetDirty(false);
     IDESaveContent(new XMLSerializer().serializeToString((xmlDom)));
-
 }
 
 /*
@@ -55,16 +53,15 @@ function makeUnDirty() {
  * 
  */
 function createFile(currentTaskName) { //createFile
-
+    alert(currentTaskName);
     // Create Task WSDL
     $.get('resources/dummy.wsdl', function(data) {
         try {
             wsdlDom = marshalEditorTextContent(data);
             generateInputWSDL(wsdlDom, currentTaskName);
             saveWSDL(wsdlDom, currentTaskName + "Task");
-
         } catch (err) {
-            alert(err);
+            alert("wsdl"+err);
         }
 
     });
@@ -74,13 +71,37 @@ function createFile(currentTaskName) { //createFile
             wsdlCBDom = marshalEditorTextContent(data);
             generateOutputWSDL(wsdlCBDom, currentTaskName);
             saveWSDL(wsdlCBDom, currentTaskName + "CBTask");
+            // generateUI();
+           
+        } catch (err) {
+            alert("wsdlCBDomB"+err);
+        }
+
+    });
+
+    $.get('resources/dummyhtconfig.ht', function(data) {
+       
+        try {
+            htconfigDom = marshalEditorTextContent(data);
+            generateHTConfig(htconfigDom,xmlDom, currentTaskName);
+            saveHTConfig(htconfigDom);
 
         } catch (err) {
-            alert(err);
+            alert("config"+err);
         }
 
     });
 }
+
+function readCBWSDL(currentTaskName) { //createFile
+    try{
+    var cbWsdl = ExecuteCustomFunction("getWSDL", currentTaskName); 
+    }catch(err){
+        alert(cbWsdl);
+        alert('Error Reading CallBack WSDL');
+    }
+    return marshalEditorTextContent(cbWsdl);
+ }
 
 /*
  * Signature: addTask(){...}
@@ -95,13 +116,14 @@ function addTask() { //createFile
             taskPartDom = marshalEditorTextContent(data);
             tasks = xmlDom.getElementsByTagName("tasks")[0];
             i = parseInt($('#nooftasks').val());
+            createFile("newTask" + i);
             taskPartDom.getElementsByTagName("task")[0].setAttribute("name", "newTask" + i);
-
             xmlDom.getElementsByTagName("tasks")[0].appendChild(xmlDom.importNode(taskPartDom.getElementsByTagName("task")[0], true));
             IDESaveContent(new XMLSerializer().serializeToString((xmlDom)));
             generateUI();
+           
         } catch (err) {
-            alert(err);
+            alert("addTask"+err);
         }
 
     });
@@ -136,7 +158,7 @@ function addInitalTask() { //createFile
             $("#page-content-wrapper").tabs();
             $("#page-content-wrapper").tabs("refresh");
         } catch (err) {
-            alert(err);
+            alert("initial"+err);
         }
 
     });
@@ -188,7 +210,7 @@ function loadModel() {
         xmlDom = marshalEditorTextContent(IDEGetFileContent());
 
     } catch (err) {
-        alert(err);
+        alert("LoadModel"+err);
     }
 }
 
@@ -198,7 +220,7 @@ function loadModelWithText() {
         xmlDom = marshalEditorTextContent(contents);
 
     } catch (err) {
-        alert(err);
+        alert("loadmodelwithtext"+err);
     }
 }
 
@@ -216,6 +238,7 @@ function generateTasks() {
     nodes.forEach(function(taskNode) {
         generateText(taskNode);
     });
+    //removeUnwantedArtifacts();
 }
 
 /*
@@ -238,6 +261,7 @@ function generateUI() {
         nodes.forEach(function(taskNode) {
             taskName = taskNode.getAttribute("name");
             generateTaskDiv(taskNode); // create respective Div for each task
+
             $("#page-content-wrapper #tabNames").append("<li class='taskDivHolder' ><a href='#" + taskName + "wrapper'>" + taskName + "</a></li>");
         });
         $("#page-content-wrapper #tabNames li:contains('+')").remove();
@@ -287,6 +311,16 @@ function generateTaskDiv(taskNode) {
     $('#' + taskDivName).off();
     $('#' + taskDivName + " #taskMappingNo").val(0);
     $('#' + taskDivName + " #taskOutputMappingNo").val(0);
+    $('#' + taskDivName + " #taskName").val(taskName.trim().replace(/ /g, ''));
+    $('#' + taskDivName +' #taskName').change(function() {
+        
+        createFile($('#' + taskNode.getAttribute("name") + "wrapper #taskName").val());
+        makeDirty();
+        taskNode.setAttribute("name",$('#' + taskNode.getAttribute("name") + "wrapper #taskName").val());
+        generateUI();
+        //generateTasks();
+    });
+
     i = parseInt($('#nooftasks').val());
     //alert(i);
     i++;
@@ -297,6 +331,7 @@ function generateTaskDiv(taskNode) {
     });
     // Add input mapping row
     $('#' + taskDivName + " #addInput").off('click');
+
     $('#' + taskDivName + " #addInput")
         .off()
         .click(
@@ -403,11 +438,12 @@ function generateTaskDiv(taskNode) {
             });
 
     // sync rendering values into input mapping table
-    var inputNodes = taskNode.getElementsByTagName("renderings")[0]
+     var inputNodes = taskNode.getElementsByTagName("renderings")[0]
         .getElementsByTagName("inputs")[0].childNodes;
     $("#" + taskDivName + " #inputmappingTable")
         .html(
             '<tr><th width="25%" scope="col">Element Name</th><th width="25%" scope="col">Display Name</th><th width="10%" scope="col">Value</th><th width="20%" scope="col">Type</th></tr>');
+    
     for (i = 0; i < inputNodes.length; i++) {
         if (inputNodes[i].nodeName != "#text") {
             try {
@@ -416,7 +452,7 @@ function generateTaskDiv(taskNode) {
                 if ((inputNodes[i].getElementsByTagName("label")[0].childNodes.length != 0) && (inputNodes[i].getElementsByTagName("value")[0].childNodes.length != 0))
                     mapping = '<tr id="inputmapping' + mappingNo + '"><td width="25%"><input name="taskInputMappingid" type="hidden" id="taskInputMappingid" value="' + mappingNo + '"/><input name="textfield6" type="text" id="taskInputMappingElementName' + mappingNo + '" value="' + inputNodes[i].getAttribute("id") + '"/></td><td width="25%"><input name="textfield7" type="text" id="taskInputMappingDisplayName' + mappingNo + '" value="' + inputNodes[i].getElementsByTagName("label")[0].childNodes[0].nodeValue + '"/></td><td width="10%"><input name="textfield8" type="text" id="taskInputMappingOrder' + mappingNo + '" value="' + inputNodes[i].getElementsByTagName("value")[0].childNodes[0].nodeValue + '"/></td><td width="20%"><label><select id="taskInputMappingType' + mappingNo + '" name="select3"><option value="string" selected>string</option><option value="int">int</option><option value="double">double</option><option value="float">float</option><option value="boolean">boolean</option><option value="organizationalEntity">organizationalEntity</option></select></label></td><td><label><input type="button" class="inputDeleteButton btn btn-danger" name="deleteButton' + mappingNo + '" id="deleteButton' + mappingNo + '" value="Delete"></input></label></td></tr>';
                 else
-                    mapping = '<tr id="inputmapping' + mappingNo + '"><td width="25%"><input name="taskInputMappingid" type="hidden" id="taskInputMappingid" value="' + mappingNo + '"/><input name="textfield6" type="text" id="taskInputMappingElementName' + mappingNo + '" value="' + inputNodes[i].getAttribute("id") + '"/></td><td width="25%"><input name="textfield7" type="text" id="taskInputMappingDisplayName' + mappingNo + '" value=""/></td><td width="10%"><input name="textfield8" type="text" id="taskInputMappingOrder' + mappingNo + '" value=""/></td><td width="20%"><label><select id="taskInputMappingType' + mappingNo + '" name="select3"><option value="string" selected>string</option><option value="int">int</option><option value="double">double</option><option value="float">float</option><option value="boolean">boolean</option><option value="organizationalEntity">organizationalEntity</option></select></label></td><td><label><input type="button" class="inputDeleteButton" name="deleteButton' + mappingNo + '" id="deleteButton' + mappingNo + '" value="Delete"></label></td></tr>';
+                    mapping = '<tr id="inputmapping' + mappingNo + '"><td width="25%"><input name="taskInputMappingid" type="hidden" id="taskInputMappingid" value="' + mappingNo + '"/><input name="textfield6" type="text" id="taskInputMappingElementName' + mappingNo + '" value="' + inputNodes[i].getAttribute("id") + '"/></td><td width="25%"><input name="textfield7" type="text" id="taskInputMappingDisplayName' + mappingNo + '" value=""/></td><td width="10%"><input name="textfield8" type="text" id="taskInputMappingOrder' + mappingNo + '" value=""/></td><td width="20%"><label><select id="taskInputMappingType' + mappingNo + '" name="select3"><option value="string" selected>string</option><option value="int">int</option><option value="double">double</option><option value="float">float</option><option value="boolean">boolean</option><option value="organizationalEntity">organizationalEntity</option></select></label></td><td><label><input type="button" class="inputDeleteButton btn btn-danger" name="deleteButton' + mappingNo + '" id="deleteButton' + mappingNo + '" value="Delete"></label></td></tr>';
 
                 $("#" + taskDivName + " #inputmappingTable").append(mapping);
                 $('#' + taskDivName + ' #taskInputMappingType' + mappingNo).val(inputNodes[i].getAttribute("type").replace("xsd:", ""));
@@ -518,9 +554,8 @@ function generateTaskDiv(taskNode) {
             }
         }
     }
-
+ //alert($('#' +taskDivName + ' #taskCallbackServiceName').val());
     // sync other fields
-    $('#' + taskDivName + " #taskName").val(taskName.trim().replace(/ /g, ''));
     if (taskNode.getElementsByTagName("documentation").length != 0) {
         $('#' + taskDivName + " #taskDocumentation")
             .val(
@@ -585,8 +620,15 @@ function generateTaskDiv(taskNode) {
                     .val(
                         taskNode.getElementsByTagName("peopleAssignments")[0]
                         .getElementsByTagName("potentialOwners")[0]
-                        .getElementsByTagName("argument")[0].childNodes[0].nodeValue
+                        .getElementsByTagName("users")[0].childNodes[0].nodeValue
                         .trim());
+                        usersList = taskNode.getElementsByTagName("peopleAssignments")[0]
+                        .getElementsByTagName("potentialOwners")[0]
+                        .getElementsByTagName("users");
+                        for(var t=0;t<=usersList.length;t++){
+                            
+                        }
+
             }
         } else {
             $('#' + taskDivName + " input[name=potentialOwners" + taskDivName + "][value=na]").prop("checked", true);
@@ -691,11 +733,18 @@ function generateTaskDiv(taskNode) {
         alert("People Assignments Couldnt be synced \nCaused by : " + err);
     }
     $('#' + taskDivName + ' .taskDiv').show();
+    
     bindChangeEvents();
-    if(typeof wsdlCBDom !== 'undefined'){
-    $('#' + taskDivName + ' #taskCallbackServiceURL').val(wsdlCBDom.getElementsByTagName("definitions")[0].getElementsByTagName("address")[0].getAttribute("location"));
-    $('#' + taskDivName + ' #taskCallbackServiceName').val(wsdlCBDom.getElementsByTagName("definitions")[0].getElementsByTagName("service")[0].getAttribute("name"));
+    try{
+    wsdlRead = readCBWSDL(taskName);
+    }catch (err) {
+        alert("Error Reading WSDL");
     }
+    if(typeof wsdlRead != 'undefined' || wsdlRead != 'undefined'){
+        $('#' + taskDivName + ' #taskCallbackServiceURL').val(wsdlRead.getElementsByTagName("definitions")[0].getElementsByTagName("address")[0].getAttribute("location"));
+        $('#' + taskDivName + ' #taskCallbackServiceName').val(wsdlRead.getElementsByTagName("definitions")[0].getElementsByTagName("service")[0].getAttribute("name"));
+    }
+    
 }
 
 /*
@@ -708,15 +757,12 @@ function generateTaskDiv(taskNode) {
 function generateText(taskNode) {
     taskName = taskNode.getAttribute("name");
     taskDivName = taskName + "wrapper";
-
     // fill general details
     taskNode.setAttribute("name", $('#' + taskDivName + " #taskName").val().replace(/ /g, ''));
     taskNode.getElementsByTagName("documentation")[0].childNodes[0].nodeValue = $(
         '#' + taskDivName + " #taskDocumentation").val();
     taskNode.getElementsByTagName("priority")[0].childNodes[0].nodeValue = $(
         '#' + taskDivName + " #taskPriority").val();
-    taskNode.getElementsByTagName("interface")[0].setAttribute("operation", $(
-        '#' + taskDivName + " #taskOperation").val());
     taskNode.getElementsByTagName("presentationElements")[0]
         .getElementsByTagName("name")[0].childNodes[0].nodeValue = $(
             '#' + taskDivName + " #presentationElementDisplayName").val();
@@ -732,10 +778,10 @@ function generateText(taskNode) {
     taskNode.getElementsByTagName("interface")[0].setAttribute(
         "responseOperation", $(
             '#' + taskDivName + " #taskCallbackOperationName").val())
-    taskNode.getElementsByTagName("interface")[0].setAttribute("portType",
+    taskNode.getElementsByTagName("interface")[0].setAttribute("portType", "cl:"+
         taskName + "PT");
     taskNode.getElementsByTagName("interface")[0].setAttribute(
-            "responsePortType", taskName + "CBPT")
+            "responsePortType","cl:"+ taskName + "CBPT")
         // fill input mappings
     inputmappingNo = parseInt($('#' + taskDivName + " #taskMappingNo").val());
     inputNodes = taskNode.getElementsByTagName("renderings")[0]
@@ -833,12 +879,12 @@ function generateText(taskNode) {
         .getElementsByTagName("argument")[0].childNodes[0].nodeValue = $(
             '#' + taskDivName + " #potentialOwnersExpression").val();
 
-    if ($('#' + taskDivName + " input[name=potentialOwners" + taskDivName + "]:checked").val() == "potentialOwnersLiteral")
-        taskNode.getElementsByTagName("peopleAssignments")[0]
+    if ($('#' + taskDivName + " input[name=potentialOwners" + taskDivName + "]:checked").val() == "potentialOwnersLiteral"){
+        createNewLiteral(xmlDom,taskNode.getElementsByTagName("peopleAssignments")[0]
         .getElementsByTagName("potentialOwners")[0]
-        .getElementsByTagName("argument")[0].childNodes[0].nodeValue = $(
-            '#' + taskDivName + " #potentialOwnersLiteralUsers").val();
+        .getElementsByTagName("from")[0],$('#' + taskDivName + " #potentialOwnersLiteralUsers").val(),"user");
 
+    }
     if (taskNode.getElementsByTagName("peopleAssignments")[0]
         .getElementsByTagName("businessAdministrators").length != 0)
         taskNode.getElementsByTagName("peopleAssignments")[0]
@@ -1001,8 +1047,8 @@ function generateText(taskNode) {
             }
         }
     }
-    createFile(taskName);
 
+    createFile(taskName);
 }
 
 
@@ -1033,7 +1079,7 @@ function marshalEditorTextContent(textContent) {
         var parser = new DOMParser();
         var root = parser.parseFromString(textContent, "text/xml");
     } catch (err) {
-        alert(err);
+        alert("Marshalling Error"+err);
     }
     return root;
 }
@@ -1096,13 +1142,56 @@ $('.sectionHeader').click(function() {
 
 function bindChangeEvents() {
 
-    $('input').change(function() {
+   $('input').keyup(function() {
         makeDirty();
-        generateText();
+        //generateText();
     });
 
-    $('textarea').change(function() {
+    $('textarea').keyup(function() {
         makeDirty();
-        generateText();
+        //generateTasks();
     });
+
+    $('select').change(function() {
+        makeDirty();
+        //generateTasks();
+    });
+
+ }
+
+ function createNewLiteral(xmlDom,parent,text,type){
+    var splitList = text.split(",");
+    newLiteral = xmlDom.createElementNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803",
+    "htd:literal"); // scheme.appendchild()
+    newOrgEntity = xmlDom.createElementNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/types/200803",
+    "htt:organizationalEntity");
+    for(var i=0;i<=splitList.length;i++){
+        if(type=="user"){
+        newUser = xmlDom.createElementNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/types/200803",
+        "htt:user");
+        newUserText = xmlDom.createTextNode(splitList[i]);
+        newUser.appendChild(newUserText);
+        newLiteral.appendChild(newUser);
+        }else if(type=="group"){
+        newGroup = xmlDom.createElementNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/types/200803",
+        "htt:group");
+        newGroupText = xmlDom.createTextNode(splitList[i]);
+        newGroup.appendChild(newGroupText);
+        newLiteral.appendChild(newGroup);    
+        }
+    }
+    newLiteral.appendChild(newOrgEntity);
+    parent.appendChild(newLiteral);
+        
+ }
+
+function removeUnwantedArtifacts(){
+    var taskNames = ["removeWSDL"];
+    tasksList = xmlDom.getElementsByTagName("task");
+    nodes = Array.prototype.slice.call(tasksList, 0);
+    nodes.forEach(function(taskNode) {
+        taskNames.push(taskNode.getAttribute("name"));
+    });
+   
+    ExecuteCustomFunction.apply(this,taskNames);
 }

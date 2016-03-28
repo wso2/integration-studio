@@ -87,6 +87,7 @@ public class HumanTaskMultiPageEditor extends MultiPageEditorPart implements IRe
             textEditor = new StructuredTextEditor();
             int index = addPage(textEditor, getEditorInput());
             setPageText(index, textEditor.getTitle());
+            EditorContentFunction.setProjectName(((FileEditorInput)textEditor.getEditorInput()).getFile().getProject().getName());
         } catch (PartInitException e) {
             ErrorDialog.openError(getSite().getShell(), "Error creating nested text editor", null, e.getStatus());
         }

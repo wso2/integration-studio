@@ -55,7 +55,7 @@ import org.eclipse.ui.ide.IDE;
 import org.wso2.developerstudio.humantaskeditor.Activator;
 
 public class HumanTaskProjectWizard extends Wizard implements INewWizard {
-    private HumanTaskWizardPage page;
+    private HumanTaskProjectWizardPage page;
     private ISelection selection;
     private final static Logger logger=Logger.getLogger(Activator.PLUGIN_ID);
 
@@ -73,7 +73,7 @@ public class HumanTaskProjectWizard extends Wizard implements INewWizard {
 
     @Override
     public void addPages() {
-        page = new HumanTaskWizardPage(selection);
+        page = new HumanTaskProjectWizardPage(selection);
         addPage(page);
     }
 
@@ -121,6 +121,15 @@ public class HumanTaskProjectWizard extends Wizard implements INewWizard {
             IProgressMonitor monitor) throws CoreException {
         monitor.beginTask("Creating " + fileName, 2);
         IWorkspaceRoot root = ResourcesPlugin.getWorkspace().getRoot();
+        IProject project = root.getProject(containerName);
+        if(project.exists()){
+            IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, "Project Exists");
+            ErrorDialog.openError(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), "Error", "The project exists in the workspace", editorStatus);
+        }else{
+            project.create(null);
+            project.open(null);
+        }
+        
         IResource resource = root.findMember(new Path(containerName));
         if (!resource.exists() || !(resource instanceof IContainer)) {
             throwCoreException("Container \"" + containerName

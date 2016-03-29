@@ -24,8 +24,6 @@
     <name>WSO2 Developer Studio Kernel - P2 Repositories</name>
     <url>http://wso2.org</url>
     <modules>
-	<module>main</module>
-        <module>core-features</module>
-	<module>composite</module>
+	     <module>main</module>
     </modules>
 </project>

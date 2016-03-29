@@ -27,7 +27,6 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.platform.core.exception.FieldValidationException;
-import org.apache.commons.validator.routines.UrlValidator;
 import org.wso2.developerstudio.eclipse.platform.ui.Activator;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;

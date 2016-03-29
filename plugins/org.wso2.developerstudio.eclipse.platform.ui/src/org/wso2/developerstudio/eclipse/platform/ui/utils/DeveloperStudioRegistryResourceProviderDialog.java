@@ -22,6 +22,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.jface.viewers.ILabelProvider;
@@ -43,8 +44,8 @@ import org.eclipse.swt.widgets.Tree;
 import org.wso2.developerstudio.eclipse.platform.core.interfaces.IDeveloperStudioElement;
 import org.wso2.developerstudio.eclipse.platform.core.interfaces.IDeveloperStudioProvider;
 import org.wso2.developerstudio.eclipse.platform.core.interfaces.IDeveloperStudioProviderData;
-import org.wso2.developerstudio.eclipse.registry.core.RegistryManager;
-import org.wso2.developerstudio.eclipse.registry.core.interfaces.IRegistryResourceProviderData;
+
+ 
 
 public class DeveloperStudioRegistryResourceProviderDialog extends Dialog {
 	private Class<?>[] type;
@@ -214,7 +215,10 @@ public class DeveloperStudioRegistryResourceProviderDialog extends Dialog {
 		});
 
 		List<Object> list = new ArrayList<Object>();
-		List<IRegistryResourceProviderData> typesList = Arrays.asList(RegistryManager.getResourceProviders(true));
+		
+		EvaluateExtentionHandler extentionHandler = new EvaluateExtentionHandler();
+		extentionHandler.execute(Platform.getExtensionRegistry());		
+		List<IDeveloperStudioProviderData> typesList = Arrays.asList(extentionHandler.getType());
 		list.addAll(typesList);
 		treeViewer.setInput(list.toArray(new IDeveloperStudioProviderData[] {}));
 		return container;

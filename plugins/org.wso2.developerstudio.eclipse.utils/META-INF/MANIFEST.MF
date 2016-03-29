@@ -7,11 +7,10 @@ Bundle-Activator: org.wso2.developerstudio.eclipse.utils.Activator
 Bundle-Vendor: WSO2
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.jface,
- org.eclipse.m2e.maven.runtime;bundle-version="1.6.2"
+ org.eclipse.m2e.maven.runtime;bundle-version="1.6.2",
+ org.wso2.developerstudio.eclipse.kernel.libraries;bundle-version="4.0.0"
 Bundle-ActivationPolicy: lazy
-Export-Package: org.apache.commons.io,
- org.apache.maven.shared.invoker,
- org.wso2.developerstudio.eclipse.utils;version="4.0.0",
+Export-Package: org.wso2.developerstudio.eclipse.utils;version="4.0.0",
  org.wso2.developerstudio.eclipse.utils.archive;version="4.0.0",
  org.wso2.developerstudio.eclipse.utils.constants;version="4.0.0",
  org.wso2.developerstudio.eclipse.utils.data;version="4.0.0",
@@ -38,6 +37,4 @@ Import-Package: org.eclipse.core.internal.events,
  org.eclipse.ui.wizards.newresource,
  org.eclipse.wst.server.core,
  org.wso2.developerstudio.eclipse.logging.core;version="[4.0.0,4.1.0)"
-Bundle-ClassPath: .,
- lib/commons-io-2.0.0.wso2v1.jar,
- lib/maven-invoker-2.0.11.jar
+Bundle-ClassPath: .

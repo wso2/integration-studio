@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <plugin>
+   <extension-point id="org.wso2.developerstudio.platfom.ui.resourceManger" name="ResourceManager" schema="schema/org.wso2.developerstudio.platfom.ui.resourceManger.exsd"/>
 
     <extension point="org.eclipse.ui.startup">
         <startup class="org.wso2.developerstudio.eclipse.platform.ui.startup.PlatformStartup"/>
@@ -55,7 +56,7 @@
                 </command>
             </menu>
         </menuContribution>
-
+<!--
         <menuContribution locationURI="popup:org.eclipse.ui.popup.any?after=additions">
             <command
                     commandId="org.wso2.developerstudio.eclipse.maven.pom.generator"
@@ -77,6 +78,7 @@
                 </visibleWhen>
             </command>
         </menuContribution>
+        -->
     </extension>
 
     <extension
@@ -95,11 +97,13 @@
                 id="org.wso2.developerstudio.eclipse.platform.ui.commands.opendashboard"
                 name="Open Dashboard">
         </command>
+        <!--
         <command
                 description="Generate Maven Pom file for a Project"
                 id="org.wso2.developerstudio.eclipse.maven.pom.generator"
                 name="Generate POM...">
         </command>
+        -->
     </extension>
 
     <extension point="org.eclipse.ui.navigator.viewer">
@@ -135,9 +139,11 @@
                       visibleInUI="true"/>
     </extension>
 
+    
     <extension point="org.eclipse.ui.newWizards">
         <category name="WSO2" id="org.wso2.developerstudio.eclipse.capp.project">
         </category>
+     
         <category name="Service Hosting" id="org.wso2.developerstudio.eclipse.service.hosting"
                   parentCategory="org.wso2.developerstudio.eclipse.capp.project">
         </category>
@@ -147,9 +153,9 @@
         <category name="Message Mediation" id="org.wso2.developerstudio.eclipse.message.mediation"
                   parentCategory="org.wso2.developerstudio.eclipse.capp.project">
         </category>
-        <category name="Repository" id="org.wso2.developerstudio.eclipse.repository"
+        <!-- category name="Repository" id="org.wso2.developerstudio.eclipse.repository"
                   parentCategory="org.wso2.developerstudio.eclipse.capp.project">
-        </category>
+        </category>-->
         <category name="Business Processes" id="org.wso2.developerstudio.eclipse.business.processes"
                   parentCategory="org.wso2.developerstudio.eclipse.capp.project">
         </category>
@@ -182,13 +188,10 @@
         </category>
         <category name="Message Mediation Features" id="org.wso2.developerstudio.eclipse.message.mediation.features"
                   parentCategory="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.eclipse.message.mediation">
-        </category>
-        <category name="Maven Project" id="org.wso2.developerstudio.eclipse.maven.features"
-                  parentCategory="org.wso2.developerstudio.eclipse.capp.project">
-        </category>
+        </category>    
     </extension>
 
-    <extension
+     <extension
             point="org.eclipse.ui.handlers">
         <handler
                 class="org.wso2.developerstudio.eclipse.platform.ui.handlers.DeveloperStudioAboutPageHandler"
@@ -198,10 +201,14 @@
                 class="org.wso2.developerstudio.eclipse.platform.ui.handlers.OpenDashboardHandler"
                 commandId="org.wso2.developerstudio.eclipse.platform.ui.commands.opendashboard">
         </handler>
+       
+        <!--
         <handler
                 class="org.wso2.developerstudio.eclipse.platform.ui.handlers.MavenPomGeneratorHandler"
                 commandId="org.wso2.developerstudio.eclipse.maven.pom.generator">
         </handler>
+        -->
+        
     </extension>
 
     <extension
@@ -214,6 +221,7 @@
         </key>
     </extension>
 
+<!--
     <extension
             point="org.eclipse.core.expressions.propertyTesters">
         <propertyTester
@@ -234,7 +242,8 @@
                 type="org.eclipse.core.resources.IProject">
         </propertyTester>
     </extension>
-
+-->
+<!--
     <extension point="org.eclipse.ui.newWizards">
         <wizard name="Maven Multi Module Project"
                 category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.eclipse.maven.features"
@@ -293,5 +302,6 @@
             </enablement>
         </objectContribution>
     </extension>
+    -->
 
 </plugin>

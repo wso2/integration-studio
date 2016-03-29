@@ -17,14 +17,5 @@
 <?eclipse version="3.4"?>
 <plugin>
    <extension-point id="org.wso2.developerstudio.eclipse.maven.definitions" name="Maven ArcheType Definition Data" schema="schema/org.wso2.developerstudio.eclipse.maven.definitions.exsd"/>
-    <extension
-          point="org.wso2.developerstudio.create.dashbaord.section">
-           <dashboard.section
-             id="org.wso2.developerstudio.eclipse.maven.features"
-             nametag="Maven"
-             name="Maven"
-             bundleID="org.wso2.developerstudio.eclipse.maven"
-             icon="icons/maven-24x24.png">
-             </dashboard.section>
-    </extension>
+  
 </plugin>

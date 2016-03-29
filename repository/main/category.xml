@@ -1,15 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-   <feature id="org.wso2.developerstudio.kernel.core.feature" version="0.0.0">
-      <category name="org.wso2.developerstudio.kernel"/>
-   </feature>
-   <feature id="org.wso2.developerstudio.kernel.core.ui.feature" version="0.0.0">
-      <category name="org.wso2.developerstudio.kernel"/>
-   </feature>
-   <feature id="org.wso2.developerstudio.kernel.tools.feature" version="0.0.0">
-      <category name="org.wso2.developerstudio.kernel"/>
-   </feature>
-   <feature id="org.wso2.developerstudio.kernel.utils.feature" version="0.0.0">
+   <feature id="org.wso2.developerstudio.kernel.feature" version="0.0.0">
       <category name="org.wso2.developerstudio.kernel"/>
    </feature>
    <category-def name="org.wso2.developerstudio.kernel" label="WSO2 Developer Studio Kernel">

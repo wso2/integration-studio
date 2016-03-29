@@ -17,9 +17,6 @@
 package org.wso2.developerstudio.eclipse.wso2plugin.template.manager.ui.wizard;
 
 import org.eclipse.jface.viewers.ArrayContentProvider;
-import org.eclipse.jface.viewers.IContentProvider;
-import org.eclipse.jface.viewers.IStructuredContentProvider;
-import org.eclipse.jface.viewers.Viewer;
 import org.wso2.developerstudio.eclipse.wso2plugin.template.manager.ui.elements.WSO2PluginSampleExtList;
 
 public class PluginContentProvider extends ArrayContentProvider {

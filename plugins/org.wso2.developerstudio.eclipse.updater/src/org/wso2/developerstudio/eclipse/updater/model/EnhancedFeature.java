@@ -23,7 +23,17 @@ public class EnhancedFeature extends InstallableFeature {
 	protected String whatIsNew;
 	protected String bugFixes;
 	protected boolean isKernelFeature;
+	protected boolean isHidden;
+	protected String[] children;
 	
+	public String[] getChildFeatures() {
+		return children;
+	}
+
+	public void setChildFeatures(String[] childFeatures) {
+		this.children = childFeatures;
+	}
+
 	public EnhancedFeature() {
 	}
 
@@ -58,6 +68,14 @@ public class EnhancedFeature extends InstallableFeature {
 	}
 	public void setKernelFeature(boolean isKernelFeature){
 		this.isKernelFeature = isKernelFeature;
+	}
+
+	public boolean isHidden() {
+		return isHidden;
+	}
+
+	public void setHidden(boolean isHidden) {
+		this.isHidden = isHidden;
 	}
 
 }

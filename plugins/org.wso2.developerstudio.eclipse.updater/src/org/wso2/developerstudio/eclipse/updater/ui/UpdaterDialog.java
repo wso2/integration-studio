@@ -23,6 +23,7 @@ import java.util.Map.Entry;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.dialogs.IDialogConstants;
+import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.ScrolledComposite;
 import org.eclipse.swt.custom.StyledText;
@@ -46,19 +47,20 @@ import org.eclipse.swt.widgets.TabFolder;
 import org.eclipse.swt.widgets.TabItem;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
+import org.wso2.developerstudio.eclipse.platform.ui.preferences.UpdateCheckerPreferencePage;
 import org.wso2.developerstudio.eclipse.updater.UpdaterPlugin;
 import org.wso2.developerstudio.eclipse.updater.core.UpdateManager;
 import org.wso2.developerstudio.eclipse.updater.model.EnhancedFeature;
 
 public class UpdaterDialog extends Dialog {
 	
-	private static final String CANCEL_BTN_TXT = "cancel";
-	private static final String VERSION_LABEL = "Latest Version : ";
-	private static final String INSTALL_BTN_TXT = "install";
-	private static final String FILE_PROTOCOL = "file:";
-	private static final String TITLE = "Updates Manager for Developer Studio";
-	private static final String UPDATES_TAB_TITLE = "Updates";
-	private static final String ALL_FEATURES_TAB_TITLE = "All Features";
+	private static final String CANCEL_BTN_TXT = Messages.UpdaterDialog_0;
+	private static final String VERSION_LABEL = Messages.UpdaterDialog_1;
+	private static final String INSTALL_BTN_TXT = Messages.UpdaterDialog_2;
+	private static final String FILE_PROTOCOL = "file:"; //$NON-NLS-1$
+	private static final String TITLE = Messages.UpdaterDialog_4;
+	private static final String UPDATES_TAB_TITLE = Messages.UpdaterDialog_5;
+	private static final String ALL_FEATURES_TAB_TITLE = Messages.UpdaterDialog_6;
 	
 	private UpdateManager updateManager;
 	private ActiveTab activeTab;
@@ -136,7 +138,7 @@ public class UpdaterDialog extends Dialog {
 		tabGridData.horizontalSpan = 3;
 		tabGridData.verticalSpan = 7;
 		tabGridData.grabExcessVerticalSpace = true;
-		tabGridData.heightHint = 750;
+		tabGridData.heightHint = 600;
 		tabGridData.widthHint = 700;
 
 		final TabFolder tabFolder = new TabFolder(leftContainer, SWT.CHECK
@@ -169,7 +171,7 @@ public class UpdaterDialog extends Dialog {
 	private Composite createTopContainer(Composite parent) {
 		final Composite topContainer = new Composite(parent, SWT.NONE);
 		GridData topContainerGridData = new GridData(GridData.FILL_BOTH);
-		topContainerGridData.heightHint = 800;
+		topContainerGridData.heightHint = 600;
 		topContainer.setLayoutData(topContainerGridData);
 		GridLayout topContainerGridLayout = new GridLayout();
 		topContainerGridLayout.numColumns = 1;
@@ -178,9 +180,14 @@ public class UpdaterDialog extends Dialog {
 		return topContainer;
 	}
 
-	private void listFeatures(Group group, ActiveTab type) {
+	private void listFeatures(Group group, ActiveTab tab) {
+		IPreferenceStore prefPage = org.wso2.developerstudio.eclipse.platform.ui.Activator
+				.getDefault().getPreferenceStore();
+		boolean showHiddenFeatures = prefPage
+				.getBoolean(UpdateCheckerPreferencePage.SHOW_HIDDEN_FEATURES);
+		
 		Iterator<Entry<String, EnhancedFeature>> featureList;
-		if (type == ActiveTab.ALL_FEATURES) {
+		if (tab == ActiveTab.ALL_FEATURES) {
 			featureList = updateManager.getAvailableFeaturesMap().entrySet()
 					.iterator();
 		} else {
@@ -189,23 +196,25 @@ public class UpdaterDialog extends Dialog {
 		}
 		while (featureList.hasNext()) {
 			EnhancedFeature feature = featureList.next().getValue();
-			// set isKernelFeature=true in update.properties file in features to
-			// ignore them by updater
-			if (feature.isKernelFeature()) {
-				continue;
+			// set isKernelFeature=true or isHidden=true in update.properties file in features to
+			// ignore them in available Features tab
+			if (tab == ActiveTab.ALL_FEATURES && !showHiddenFeatures) {
+				if (feature.isKernelFeature() || feature.isHidden()) {
+					continue;
+				} 
 			}
 			GridData gridData = new GridData(SWT.FILL, SWT.FILL, true, false);
 			final Group featureGroup = createFeatureRepresentationGroup(group,
 					gridData);
-			createCheckBoxInFeatureGroup(feature, featureGroup, type);
+			createCheckBoxInFeatureGroup(feature, featureGroup, tab);
 
 			Label featureImageLabel = new Label(featureGroup, SWT.NONE);
 			try {
 				Image image = new Image(Display.getDefault(), feature
-						.getIconURL().replace(FILE_PROTOCOL, ""));
+						.getIconURL().replace(FILE_PROTOCOL, "")); //$NON-NLS-1$
 				featureImageLabel.setImage(image);
 			} catch (Exception ex) {
-				log.warn("Retrieving image failed for feature:" + feature.getId(), ex);
+				log.warn(Messages.UpdaterDialog_8 + feature.getId(), ex);
 			}
 			final Group featureInfoGroup = createFeatureInfoRepresentationGroup(featureGroup);
 			StyledText featureName = createFeatureNameText(feature,
@@ -294,7 +303,6 @@ public class UpdaterDialog extends Dialog {
 	  parent.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false));
 
 	  installBtn = createButton(parent, IDialogConstants.NO_ID, INSTALL_BTN_TXT, true);
-	  installBtn.setSize(125, 25);
 	  installBtn.setEnabled(false);
 	  installBtn.addListener(SWT.Selection, new Listener() {
 	      public void handleEvent(Event e) {
@@ -303,7 +311,7 @@ public class UpdaterDialog extends Dialog {
 					if (tabFolder.getSelection()[0].getText().equals(
 							ALL_FEATURES_TAB_TITLE)) {
 						updateManager.setSelectedFeaturesToInstall(selectedFeatures);
-						updateManager.installSelectedUpdates(new NullProgressMonitor());
+						updateManager.installSelectedFeatures(new NullProgressMonitor());
 					} else if (tabFolder.getSelection()[0].getText().equals(
 							UPDATES_TAB_TITLE)) {
 						updateManager.setSelectedUpdates(selectedUpdates);

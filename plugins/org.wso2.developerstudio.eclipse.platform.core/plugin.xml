@@ -21,12 +21,14 @@
                      schema="schema/org.wso2.developerstudio.eclipse.platform.core.mediatype.exsd"/>
     <extension-point id="org.wso2.developerstudio.eclipse.project.export.handler" name="Export Handler"
                      schema="schema/org.wso2.developerstudio.eclipse.project.export.exsd"/>
-    <extension-point id="org.wso2.developerstudio.eclipse.platform.core.intro.ui.dashboard" name="Dashboard"
-                     schema="schema/org.wso2.developerstudio.eclipse.platform.core.intro.ui.dashboard.exsd"/>
+
     <extension point="org.eclipse.ui.intro.configExtension">
+    
+    
         <configExtension content="intro/welcome.xml"
                          configId="org.eclipse.ui.intro.universalConfig"></configExtension>
     </extension>
+    
     <extension point="org.wso2.developerstudio.eclipse.platform.core.mediatype">
         <resolver
                 class="org.wso2.developerstudio.eclipse.platform.core.internal.impl.mediatypes.WSDLMediaTypeResolver"
@@ -304,12 +306,15 @@
                 mediaType="org.wso2.developerstudio.eclipse.platform.core.bulkFileNameExtensionResolver"
                 name="Bulk Media Type resolver"/>
     </extension>
+    <!--
     <extension point="org.eclipse.ui.editors">
         <editor
                 class="org.wso2.developerstudio.eclipse.platform.core.intro.ui.Dashboard"
                 id="org.wso2.developerstudio.eclipse.dashboard"
                 name="Developer Studio Dashboard"></editor>
     </extension>
+    -->
+    
     <extension point="org.eclipse.ltk.core.refactoring.renameParticipants">
         <renameParticipant
                 class="org.wso2.developerstudio.eclipse.platform.core.project.refactor.ArtifactProjectRenameRefactorParticipant"
@@ -362,7 +367,7 @@
                 properties="projectNature"
                 type="org.eclipse.jdt.core.IPackageFragment"></propertyTester>
     </extension>
-    <extension point="org.wso2.developerstudio.eclipse.platform.core.intro.ui.dashboard">
+<!--    <extension point="org.wso2.developerstudio.eclipse.platform.core.intro.ui.dashboard">
         <wizardCategory category="org.wso2.developerstudio.eclipse.web.apps"/>
         <wizardCategory category="org.wso2.developerstudio.eclipse.message.mediation"/>
         <wizardCategory category="org.wso2.developerstudio.eclipse.repository"/>
@@ -376,7 +381,7 @@
         <wizardCategory category="org.wso2.developerstudio.eclipse.extensions.features"/>
         <wizardCategory category="org.wso2.developerstudio.eclipse.message.mediation.project.types"/>
         <wizardCategory category="org.wso2.developerstudio.eclipse.message.mediation.features"/>
-    </extension>
+    </extension> -->
     <extension point="org.eclipse.ui.startup">
         <startup class="org.wso2.developerstudio.eclipse.platform.core.startup.alert.JavaVersionAlertHandler"/>
     </extension>
@@ -562,5 +567,11 @@
             name="WS-Policy"
             mediaType="application/xml"
             extension="xml"></template>
+        <template
+            file="resources/templates/xsds/xsd_template.xsd"
+            id="org.wso2.developerstudio.eclipse.sample.xsd"
+            name="XSD File"
+            mediaType="application/xsd"
+            extension="xsd"></template>
     </extension>
 </plugin>

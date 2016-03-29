@@ -313,6 +313,9 @@ public class ProjectOptionsDataPage extends WizardPage implements Observer {
 				case WORKSAPCE_FOLDER:
 					createTypeWorkspaceFolderField(container, noOfColumns, finalOptionData);
 					break;
+				case WORKSAPCE_PATH_BROWSER:
+					 createTypeWorkspacePathBrowserField(container, noOfColumns, finalOptionData);
+					 break;
 				case REGISTRY:
 					createRegistryBrowseField(container, noOfColumns + 1, finalOptionData);
 					break;
@@ -699,7 +702,98 @@ public class ProjectOptionsDataPage extends WizardPage implements Observer {
 			LOG.error("An unexpected error has occurred", e);
 		}
 	}
+	
+	private void createTypeWorkspacePathBrowserField(Composite container,
+				int noOfColumns, final ProjectOptionData optionData) {
+			boolean readonly = optionData.getFieldController() != null
+					&& optionData.getFieldController().isReadOnlyField(
+							optionData.getModelProperty(), getModel());
+			final Text txtFolder = WSO2UIToolkit.createWorkspacePathBrowser(
+					container, getControl().getParent().getShell(),
+					optionData.getCaption(), readonly, "Copy from ..", noOfColumns,
+					optionData.getWorkspaceFilter(),
+					optionData.getVerticalIndent(),
+					optionData.getHorizontalIndent());
+			FieldExecutor fieldExecutor = new CommonFieldExecutor(optionData, getModel(), txtFolder) {
 
+				public void validate() throws FieldValidationException {
+					if (optionData.getFieldController() != null) {
+						IContainer folder = null;
+						try {
+							String text = txtFolder.getText();
+							if (text.split("/").length == 1) {
+								folder = ResourcesPlugin.getWorkspace().getRoot().getProject(text);
+							} else {
+								folder = ResourcesPlugin.getWorkspace().getRoot().getFolder(new Path(text));
+							}
+						} catch (Exception e) {
+							/* ignore, this exception will handle by FieldController */
+						}
+						optionData.getFieldController().validate(optionData.getModelProperty(), folder, model);
+					}
+				}
+
+				public void setFieldValue(ProjectDataModel model) throws Exception {
+					String modelPropertyValue = "";
+					Object modelPropertyValueObj = getModelPropertyValue();
+					if (modelPropertyValueObj != null) {
+						if (modelPropertyValueObj instanceof String) {
+							modelPropertyValue = (String)modelPropertyValueObj;
+						} else {
+							modelPropertyValue = ((IContainer) modelPropertyValueObj)
+								.getFullPath().toPortableString().substring(1);
+						}
+					}
+					if (!modelPropertyValue.equals("")
+							&& modelPropertyValue != null) {
+						txtFolder.setText(modelPropertyValue);
+					} else {
+						txtFolder.setText("");
+					}
+
+				}
+
+			};
+			fieldControllers.put(optionData.getModelProperty(), fieldExecutor);
+			txtFolder.addModifyListener(new ModifyListener() {
+
+				public void modifyText(ModifyEvent arg0) {
+					try {
+						String modelProperty = optionData.getModelProperty();
+						IContainer folder;
+						if (txtFolder.getText().split("/").length == 1) {
+							folder = ResourcesPlugin.getWorkspace().getRoot().getProject(txtFolder.getText());
+						} else {
+							folder = ResourcesPlugin.getWorkspace().getRoot().getFolder(new Path(txtFolder.getText()));
+						}
+						String folderPath = folder.toString();
+						String modifiedPath = "";
+						if (folderPath.startsWith("P/")) {
+							modifiedPath = folderPath.substring("P/".length());
+						} else if (folderPath.startsWith("F/")) {
+							modifiedPath = folderPath.substring("F/".length());
+						} 
+						if (getModel().setModelPropertyValue(modelProperty, modifiedPath)) {
+							updateField(modelProperty);
+						}
+
+					} catch (IllegalArgumentException e) {
+						/* ignore, this exception will handle by FieldController */
+					} catch (ObserverFailedException e) {
+						LOG.error("ObserverFailed:", e);
+					} catch (Exception e) {
+						LOG.error("An unexpected error has occurred", e);
+					}
+					doPostFieldModificationAction(optionData);
+				}
+			});
+			try {
+				updateField(optionData.getModelProperty());
+			} catch (Exception e) {
+				LOG.error("An unexpected error has occurred", e);
+			}
+		}
+	
 	private void createTypeWorkspaceField(Composite container, int noOfColumns, ProjectOptionData optionData) {
 		// TODO
 		// Text txtWorkspace =

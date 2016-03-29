@@ -18,14 +18,11 @@ package org.wso2.developerstudio.eclipse.platform.ui.property.tester;
 
 import org.eclipse.core.expressions.PropertyTester;
 import org.eclipse.core.resources.IProject;
-import org.eclipse.core.resources.IProjectNature;
 import org.eclipse.core.runtime.CoreException;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.platform.core.utils.Constants;
 import org.wso2.developerstudio.eclipse.platform.ui.Activator;
-
-import java.util.List;
 
 public class MavenPropertyTester extends PropertyTester {
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);

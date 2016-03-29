@@ -29,7 +29,6 @@ import org.apache.axis2.client.Stub;
 import org.apache.axis2.transport.http.HTTPConstants;
 import org.apache.commons.httpclient.protocol.Protocol;
 import org.apache.commons.httpclient.protocol.ProtocolSocketFactory;
-import org.apache.commons.httpclient.protocol.SSLProtocolSocketFactory;
 import org.wso2.developerstudio.eclipse.platform.ui.manager.EclipseSWTTrustManager;
 
 /**

@@ -213,6 +213,7 @@ public class ProjectWizardSettings extends AbstractXMLDoc {
 						case WORKSPACE:
 						case WORKSPACE_FILE:
 						case WORKSAPCE_FOLDER:
+						case WORKSAPCE_PATH_BROWSER:
 							updateWithTypeWorkspaceInfo(dataElement, projectOptionData);
 							break;
 						case COMPOSITE:

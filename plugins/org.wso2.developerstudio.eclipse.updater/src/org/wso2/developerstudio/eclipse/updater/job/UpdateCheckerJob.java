@@ -22,6 +22,7 @@ import org.eclipse.core.runtime.SubMonitor;
 import org.eclipse.core.runtime.jobs.Job;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
+import org.wso2.developerstudio.eclipse.updater.Messages;
 import org.wso2.developerstudio.eclipse.updater.UpdaterPlugin;
 import org.wso2.developerstudio.eclipse.updater.core.UpdateManager;
 
@@ -33,7 +34,7 @@ public class UpdateCheckerJob extends Job {
 			.getLog(UpdaterPlugin.PLUGIN_ID);
 	
 	public UpdateCheckerJob(UpdateManager updateManager) {
-		super("Checking for Updates");
+		super(Messages.UpdateCheckerJob_0);
 		this.updateManager = updateManager;
 	}
 
@@ -41,13 +42,13 @@ public class UpdateCheckerJob extends Job {
 	protected IStatus run(IProgressMonitor monitor) {
 		try {
 			SubMonitor progress = SubMonitor.convert(monitor,
-					"Searching for updates.", 2);
+					Messages.UpdateCheckerJob_1, 2);
 			updateManager
 					.checkForAvailableUpdates(progress.newChild(1));
 			updateManager.checkForAvailableFeatures(progress
 					.newChild(1));
 		} catch (Exception e) {
-			log.error("Error while checking updates.", e);
+			log.error(Messages.UpdateCheckerJob_2, e);
 		}
 		return Status.OK_STATUS;
 	}

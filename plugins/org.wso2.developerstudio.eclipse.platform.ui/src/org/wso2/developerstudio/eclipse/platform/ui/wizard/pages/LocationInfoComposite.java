@@ -16,7 +16,6 @@
 
 package org.wso2.developerstudio.eclipse.platform.ui.wizard.pages;
 
-import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;

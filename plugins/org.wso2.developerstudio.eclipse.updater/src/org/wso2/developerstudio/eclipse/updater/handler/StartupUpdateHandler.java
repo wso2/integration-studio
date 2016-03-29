@@ -20,7 +20,10 @@ import java.util.concurrent.TimeUnit;
 
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.core.runtime.preferences.ConfigurationScope;
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.preference.IPreferenceStore;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IStartup;
 import org.osgi.service.prefs.Preferences;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
@@ -35,9 +38,16 @@ import org.wso2.developerstudio.eclipse.updater.ui.UpdaterDialog.ActiveTab;
 
 public class StartupUpdateHandler implements IStartup {
 
+	private static final String SET_LATER = "Set Later";
+	private static final String UPDATER_DIALOG_MESSAGE = "Do you want to run WSO2 updates on Developer Studio startup ? ";
+	private static final String TITLE = "Set Automatic Updates Preference";
 	protected static final String DAILY = "Daily";
 	protected static final String WEEKLY = "Weekly";
 	protected static final String MONTHLY = "Monthly";
+	protected static final String SELECT = "Select";
+	protected static final String YES = "Yes";
+	protected static final String NO = "No";
+	private static int userResult = 0;
 
 	protected UpdateManager updateManager = new UpdateManager();
 
@@ -49,10 +59,28 @@ public class StartupUpdateHandler implements IStartup {
 		// Read updater preferences
 		IPreferenceStore prefPage = org.wso2.developerstudio.eclipse.platform.ui.Activator
 				.getDefault().getPreferenceStore();
-		boolean isAutomaticUpdatesEnabled = prefPage
-				.getBoolean(UpdateCheckerPreferencePage.ENABLE_AUTOMATIC_UPDATES);
-		// Do not continue if automatic updates are disabled
-		if (!isAutomaticUpdatesEnabled) {
+		String isAutomaticUpdate = prefPage
+				.getString(UpdateCheckerPreferencePage.SET_AUTOMATIC_UPDATE_PREF);
+		String defaultVal = NO;
+		if (isAutomaticUpdate.equals(SELECT)) {
+			Display.getDefault().syncExec(new Runnable() {
+				@Override
+				public void run() {
+					getUserPreference();
+				}
+			});
+			// evaluate the user information dialog result
+			if (userResult == 0) {// yes = 0,
+				defaultVal = YES;
+			} else if (userResult == 2) {// no =1, set-later = 2
+				defaultVal = SELECT;
+			}
+		}
+		// Do not continue if user set automatic updates to false
+		if (defaultVal.equals(NO) || defaultVal.equals(SELECT)) {
+			prefPage.setValue(
+					UpdateCheckerPreferencePage.SET_AUTOMATIC_UPDATE_PREF,
+					defaultVal);
 			return;
 		}
 		String updateInterval = prefPage
@@ -82,6 +110,17 @@ public class StartupUpdateHandler implements IStartup {
 			updateJob.addJobChangeListener(new UpdateCheckerJobListener(
 					updateManager, ActiveTab.UPDATE_FEATURES, true));
 		}
+		prefPage.setValue(
+				UpdateCheckerPreferencePage.SET_AUTOMATIC_UPDATE_PREF,
+				defaultVal);
+	}
+
+	private void getUserPreference() {
+		Display activeDisplay = Display.getDefault();
+		MessageDialog dialog = new MessageDialog(new Shell(activeDisplay),
+				TITLE, null, UPDATER_DIALOG_MESSAGE, MessageDialog.INFORMATION,
+				new String[] { YES, NO, SET_LATER }, 0);
+		userResult = dialog.open();
 	}
 
 	protected static long getTimeDiff(long date1, long date2, TimeUnit timeUnit) {

@@ -36,7 +36,7 @@ public class CappPreferencesPage extends FieldEditorPreferencePage implements IW
 
        public void createFieldEditors() {
 
-               addField(new StringFieldEditor(CUSTOM_SERVER_ROLES, "Custom server role:", getFieldEditorParent()));
+               addField(new StringFieldEditor(CUSTOM_SERVER_ROLES, "Custom Server Roles:", getFieldEditorParent()));
        }
 
        /* (non-Javadoc)

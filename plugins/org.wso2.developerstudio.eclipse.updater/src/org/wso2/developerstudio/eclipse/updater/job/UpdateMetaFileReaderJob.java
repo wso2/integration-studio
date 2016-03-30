@@ -38,6 +38,8 @@ import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
+import org.wso2.developerstudio.eclipse.platform.ui.preferences.PreferenceInitializer;
+import org.wso2.developerstudio.eclipse.platform.ui.preferences.UpdateCheckerPreferencePage;
 import org.wso2.developerstudio.eclipse.updater.Messages;
 import org.wso2.developerstudio.eclipse.updater.UpdaterPlugin;
 import org.wso2.developerstudio.eclipse.updater.core.UpdateManager;
@@ -49,11 +51,12 @@ import org.wso2.developerstudio.eclipse.updater.core.UpdateManager;
  */
 public class UpdateMetaFileReaderJob extends Job {
 
+	private static final String UPDATES_TXT_FILE = "updates.txt";
 	private static final int TIME_OUT_MS = 1000;
 	protected UpdateManager updateManager;
 	public static final String JAVA_IO_TMPDIR = "java.io.tmpdir";
 	public static final String folderLoc = System.getProperty(JAVA_IO_TMPDIR) + File.separator + "DevStudioUpdater";
-	public static final String fileLoc = folderLoc + File.separator	+ "updates.txt";
+	public static final String fileLoc = folderLoc + File.separator	+ UPDATES_TXT_FILE;
 	protected static IDeveloperStudioLog log = Logger.getLog(UpdaterPlugin.PLUGIN_ID);
 
 	public UpdateMetaFileReaderJob(UpdateManager updateManager) {
@@ -89,7 +92,7 @@ public class UpdateMetaFileReaderJob extends Job {
 			log.error(Messages.UpdateCheckerJob_4, e);
 			return Status.OK_STATUS;// return OK since we need to run the default updater if the meta file is misconfigured
 		}
-		return Status.OK_STATUS;// if no exceptions and no updates to be installed return cancel
+		return Status.CANCEL_STATUS;// if no exceptions and no updates to be installed return cancel
 	}
 
 	/**
@@ -125,7 +128,10 @@ public class UpdateMetaFileReaderJob extends Job {
 		try {
 				File updateFile = new File(fileLoc);
 				IPreferenceStore preferenceStore = PlatformUI.getPreferenceStore();//needs to enable once the pref store values are up
-				String url = "http://builder1.us1.wso2.org/~developerstudio/developer-studio-kernel/4.0.0/updates/" + "updates.txt";//TODO replace
+				String url = preferenceStore.getString(UpdateCheckerPreferencePage.RELESE_SITE_URL) + UPDATES_TXT_FILE;//TODO replace
+				if (url == null || url.isEmpty()) {
+					url = PreferenceInitializer.DEFAULT_UPDATE_SITE + UPDATES_TXT_FILE;
+				}
 				URL link = new URL(url); // The file that you want to download
 				//apache commons file utils, creates the directory structure if not exist and write the content from the online file to the file system.
 				FileUtils.copyURLToFile(link,updateFile, TIME_OUT_MS, TIME_OUT_MS);

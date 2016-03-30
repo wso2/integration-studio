@@ -58,7 +58,6 @@ public class UpdateMetaFileReaderJobListener extends JobChangeAdapter {
 						if (getUserPreference(TITLE, UPDATER_DIALOG_MESSAGE) == 0) {
 							runUpdaterJob();
 						}
-
 					} catch (Exception e) {
 						log.error(Messages.UpdatemetaFileReaderJobListener_0, e);
 					}

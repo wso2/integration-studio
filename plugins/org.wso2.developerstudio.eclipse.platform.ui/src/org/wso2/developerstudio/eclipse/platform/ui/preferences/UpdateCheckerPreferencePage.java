@@ -41,7 +41,6 @@ public class UpdateCheckerPreferencePage extends FieldEditorPreferencePage imple
 	public static final String PLUGIN_TEMPLATE_URL = "PLUGIN_TEMPLATE_URL";
 	public static final String SHOW_HIDDEN_FEATURES = "SHOW_HIDDEN_FEATURES";
 	public static final String PREFERENCE_PLUGIN_ID = "org.wso2.developerstudio.eclipse.platform.ui";
-	public static final String SELECT_STATUS = "Select";
 
 	private static IPreferenceStore preferenceStore;
 
@@ -61,7 +60,7 @@ public class UpdateCheckerPreferencePage extends FieldEditorPreferencePage imple
 		addField(new StringFieldEditor(UPDATE_SITE_URL, "Update site:", getFieldEditorParent()));
 		addField(new StringFieldEditor(RELESE_SITE_URL, "Release site:", getFieldEditorParent()));
 		addField(new BooleanFieldEditor(SHOW_HIDDEN_FEATURES, "Show hidden features (for plugin developers)", getFieldEditorParent()));
-		String[][] updaterEnable = {{ YES, YES }, { SELECT_STATUS, SELECT_STATUS }, { NO, NO }};
+		String[][] updaterEnable = {{ YES, YES }, { NO, NO }};
 		String[][] intervals = {{ DAILY, DAILY }, { WEEKLY, WEEKLY }, { MONTHLY, MONTHLY }};
 		automaticUpdatePreference = new ComboFieldEditor(SET_AUTOMATIC_UPDATE_PREF, "Check for updates automatically", updaterEnable, getFieldEditorParent());
 		addField(automaticUpdatePreference);

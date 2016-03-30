@@ -46,7 +46,7 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
 				DEFAULT_UPDATE_SITE);
 		store.setDefault(UpdateCheckerPreferencePage.UPDATE_INTAVAL, UpdateCheckerPreferencePage.WEEKLY);
 		store.setDefault(UpdateCheckerPreferencePage.SET_AUTOMATIC_UPDATE_PREF,
-				UpdateCheckerPreferencePage.SELECT_STATUS);
+				UpdateCheckerPreferencePage.YES);
 		store.setDefault(UpdateCheckerPreferencePage.SHOW_HIDDEN_FEATURES,
 				false);
 	}

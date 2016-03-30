@@ -24,18 +24,17 @@ import java.io.Reader;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
+import java.util.Map.Entry;
 
 import javax.xml.stream.XMLStreamException;
-import javax.xml.transform.TransformerException;
 
 import org.apache.axiom.om.OMAbstractFactory;
 import org.apache.axiom.om.OMAttribute;
 import org.apache.axiom.om.OMElement;
 import org.apache.axiom.om.OMFactory;
-import org.apache.axiom.om.OMNamespace;
 import org.apache.axiom.om.OMNode;
 import org.apache.axiom.om.OMText;
-import org.apache.axiom.om.impl.llom.OMElementImpl;
 import org.apache.axiom.om.util.AXIOMUtil;
 import org.apache.commons.io.FileUtils;
 import org.apache.xmlbeans.XmlException;
@@ -45,6 +44,7 @@ import org.apache.xmlbeans.impl.xb.xsdschema.SchemaDocument;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.XML;
+
 
 public class SchemaGeneratorForXML extends SchemaGeneratorForJSON implements ISchemaGenerator {
 	private static final String TEMP_AVRO_GEN_LOCATION = "tempXSDGenLocation";
@@ -60,9 +60,12 @@ public class SchemaGeneratorForXML extends SchemaGeneratorForJSON implements ISc
 		} catch (JSONException e) {
 			throw new IOException(e.getMessage());
 		}
+
 		return super.getSchemaContent(xmlJSONObj.toString());
 	}
-	
+
+
+	/*
 	private File generateXSDfromXML(String filePath) throws IOException, XmlException {
 		
 		File outputDirectory = new File(TEMP_OUTPUT);
@@ -86,7 +89,7 @@ public class SchemaGeneratorForXML extends SchemaGeneratorForJSON implements ISc
 		 
 		return outputFile;
 	}
-	
+	*/
 
 	@Override
 	public String getSchemaResourcePath(String filePath) throws IOException {
@@ -117,7 +120,7 @@ public class SchemaGeneratorForXML extends SchemaGeneratorForJSON implements ISc
 			OMAttribute atttrib = (OMAttribute) attributeIterator.next();
 			//remove attribute and instead add a element with @ infront
 			// eg <person age="30"></person> will be replaced by <person><@age>30</@age></person>
-			OMElement attributeElement = factory.createOMElement("@" + atttrib.getLocalName(), null);
+			OMElement attributeElement = factory.createOMElement("@"+ atttrib.getLocalName(), null);
 			OMText attributeValue = factory.createOMText(atttrib.getAttributeValue());
 			attributeElement.addChild(attributeValue);
 			// add to list and later remove
@@ -128,10 +131,23 @@ public class SchemaGeneratorForXML extends SchemaGeneratorForJSON implements ISc
 		for (OMAttribute arttribute : removeList ) {
 			element.removeAttribute(arttribute);
 		}
-		
-		for (OMElement attrElement: addList ) {
-			element.addChild(attrElement);
+
+		if (addList.size() > 0) {
+			//remove the inner text and replace it with <#@content></#@content>
+			//eg <city listed="true">colombo</city> will be replaced by <city><@listed>true</@listed><#@content>colombo</#@content></city>
+			String elementText = element.getText();
+			if (!elementText.isEmpty()) {
+				element.setText("");
+				OMElement contentElement = factory.createOMElement("#@content", null);
+				OMText contentValue = factory.createOMText(elementText);
+				contentElement.addChild(contentValue);
+				element.addChild(contentElement);
+			}
+			for (OMElement attrElement: addList ) {
+				element.addChild(attrElement);
+			}
 		}
+		
 		
 		Iterator elementIterator = element.getChildren();
 		while (elementIterator.hasNext()) {

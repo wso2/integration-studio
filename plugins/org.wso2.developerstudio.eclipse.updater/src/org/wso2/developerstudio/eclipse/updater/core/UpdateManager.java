@@ -632,7 +632,7 @@ public class UpdateManager {
 		}
 	}
 
-	private Collection<IInstallableUnit> getInstalledWSO2Features(
+	public Collection<IInstallableUnit> getInstalledWSO2Features(
 			IProgressMonitor monitor) throws OperationCanceledException {
 		SubMonitor progress = SubMonitor.convert(monitor,
 				Messages.UpdateManager_23, 2);

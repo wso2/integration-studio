@@ -19,13 +19,13 @@ package org.wso2.developerstudio.eclipse.platform.ui.preferences;
 import org.eclipse.jface.preference.FieldEditorPreferencePage;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPreferencePage;
-import org.wso2.developerstudio.eclipse.platform.ui.Activator;
+import org.eclipse.ui.PlatformUI;
 
 public class DeveloperStudioPreferencePage extends FieldEditorPreferencePage implements IWorkbenchPreferencePage {
 
 	public DeveloperStudioPreferencePage() {
 		super(GRID);
-		setPreferenceStore(Activator.getDefault().getPreferenceStore());
+		setPreferenceStore(PlatformUI.getPreferenceStore());
 		setDescription("Developer Studio Settings");
 	}
 
@@ -33,6 +33,8 @@ public class DeveloperStudioPreferencePage extends FieldEditorPreferencePage imp
 	}
 
 	public void init(IWorkbench workbench) {
+		PreferenceInitializer preferenceInitializer = new PreferenceInitializer();
+		preferenceInitializer.initializeDefaultPreferences();
 	}
 
 }

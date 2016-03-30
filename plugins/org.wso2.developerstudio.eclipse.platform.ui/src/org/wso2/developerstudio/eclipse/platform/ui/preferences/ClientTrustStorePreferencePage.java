@@ -28,7 +28,6 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPreferencePage;
 import org.eclipse.ui.PlatformUI;
-import org.wso2.developerstudio.eclipse.platform.ui.Activator;
 
 public class ClientTrustStorePreferencePage extends FieldEditorPreferencePage implements IWorkbenchPreferencePage {
 	public static final String TRUST_STORE_PASSWORD = "TRUST_STORE_PASSWORD";
@@ -44,7 +43,7 @@ public class ClientTrustStorePreferencePage extends FieldEditorPreferencePage im
 
 	@Override
 	public void init(IWorkbench arg0) {
-		preferenceStore = Activator.getDefault().getPreferenceStore();
+		preferenceStore = PlatformUI.getPreferenceStore();
 		setPreferenceStore(preferenceStore);
 		setDescription("WSO2 Developer Studio Custom Client Trust Store Preference.");
 	}

@@ -18,7 +18,7 @@ package org.wso2.developerstudio.eclipse.platform.ui.preferences;
 
 import org.eclipse.core.runtime.preferences.AbstractPreferenceInitializer;
 import org.eclipse.jface.preference.IPreferenceStore;
-import org.wso2.developerstudio.eclipse.platform.ui.Activator;
+import org.eclipse.ui.PlatformUI;
 
 public class PreferenceInitializer extends AbstractPreferenceInitializer {
 
@@ -37,7 +37,7 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
 
 	public void initializeDefaultPreferences() {
 
-		IPreferenceStore store = Activator.getDefault().getPreferenceStore();
+		IPreferenceStore store = PlatformUI.getPreferenceStore();
 		store.setDefault(UpdateCheckerPreferencePage.PLUGIN_TEMPLATE_URL,
 				KERNEL_SAMPLES_GIT);
 		store.setDefault(UpdateCheckerPreferencePage.RELESE_SITE_URL,

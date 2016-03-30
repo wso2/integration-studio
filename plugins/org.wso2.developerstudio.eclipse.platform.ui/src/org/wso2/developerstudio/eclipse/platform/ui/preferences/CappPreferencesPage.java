@@ -21,7 +21,7 @@ import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.preference.StringFieldEditor;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPreferencePage;
-import org.wso2.developerstudio.eclipse.platform.ui.Activator;
+import org.eclipse.ui.PlatformUI;
 
 public class CappPreferencesPage extends FieldEditorPreferencePage implements IWorkbenchPreferencePage {
 
@@ -45,7 +45,7 @@ public class CappPreferencesPage extends FieldEditorPreferencePage implements IW
 
        @Override
        public void init(IWorkbench arg0) {
-               preferenceStore = Activator.getDefault().getPreferenceStore();
+               preferenceStore = PlatformUI.getPreferenceStore();
                setPreferenceStore(preferenceStore);
                setDescription("WSO2 Developer Studio Custom Capp Preference.");
        }

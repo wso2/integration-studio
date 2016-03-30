@@ -24,7 +24,7 @@ import org.eclipse.jface.preference.StringFieldEditor;
 import org.eclipse.jface.util.PropertyChangeEvent;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPreferencePage;
-import org.wso2.developerstudio.eclipse.platform.ui.Activator;
+import org.eclipse.ui.PlatformUI;
 
 public class UpdateCheckerPreferencePage extends FieldEditorPreferencePage implements IWorkbenchPreferencePage {
 
@@ -51,7 +51,7 @@ public class UpdateCheckerPreferencePage extends FieldEditorPreferencePage imple
 
 	@Override
 	public void init(IWorkbench workbench) {
-		preferenceStore = Activator.getDefault().getPreferenceStore();
+		preferenceStore = PlatformUI.getPreferenceStore();
 		setPreferenceStore(preferenceStore);
 		setDescription("WSO2 Developer Studio Check for Updates Preferences");
 	}

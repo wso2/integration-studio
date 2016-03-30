@@ -1,3 +1,20 @@
+/*
+ * Copyright (c) 2016, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+
 package org.wso2.developerstudio.datamapper.diagram.schemagen.util;
 
 import com.google.gson.JsonArray;
@@ -16,10 +33,9 @@ public class JsonSchema {
 	}
 	
 	
-	
 	//Will be only used by root schema object
 	public void setDolarSchema(String namespaceURl) {
-		schema.addProperty("$Schema", namespaceURl);
+		schema.addProperty("$schema", namespaceURl);
 	}
 	
 	//Will be only used by root schema object
@@ -71,6 +87,13 @@ public class JsonSchema {
 		return schema.get("properties").getAsJsonObject();
 	}
 	
+	public JsonObject getAttributesObject(){
+		if (schema.get("attributes") == null) {
+			schema.add("attributes", new JsonObject());
+		} 
+		return schema.get("attributes").getAsJsonObject();
+	}
+	
 	public JsonArray getRequiredObject(){
 		if (schema.get("required") == null) {
 			schema.add("required", new JsonArray());
@@ -91,6 +114,11 @@ public class JsonSchema {
 		propertiesObj.add(name, obj.getAsJsonObject());
 	}
 	
+	public void addAttribute(String name, JsonSchema obj) {
+		JsonObject attribObj = this.getAttributesObject();
+		attribObj.add(name, obj.getAsJsonObject());
+	}
+
 	public void addArray(String name, JsonSchema obj) {
 		JsonObject propertiesObj = this.getPropertiesObject();
 		propertiesObj.getAsJsonObject().add(name, obj.getAsJsonObject());
@@ -131,5 +159,4 @@ public class JsonSchema {
 		}
 		return null;
 	}
-	
 }

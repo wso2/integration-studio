@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Platform Core
 Bundle-SymbolicName: org.wso2.developerstudio.eclipse.platform.core;singleton:=true
-Bundle-Version: 4.0.0.qualifier
+Bundle-Version: 4.1.0.qualifier
 Bundle-Activator: org.wso2.developerstudio.eclipse.platform.core.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
@@ -11,21 +11,21 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.m2e.maven.runtime;bundle-version="1.6.2",
  org.eclipse.osgi.services;bundle-version="3.5.0",
  org.wso2.developerstudio.eclipse.kernel.libraries;bundle-version="4.0.0"
-Export-Package: org.wso2.developerstudio.eclipse.platform.core;version="4.0.0",
- org.wso2.developerstudio.eclipse.platform.core.bundle;version="4.0.0",
- org.wso2.developerstudio.eclipse.platform.core.event;version="4.0.0",
- org.wso2.developerstudio.eclipse.platform.core.exception;version="4.0.0",
- org.wso2.developerstudio.eclipse.platform.core.interfaces;version="4.0.0",
- org.wso2.developerstudio.eclipse.platform.core.manifest;version="4.0.0",
- org.wso2.developerstudio.eclipse.platform.core.mediatype;version="4.0.0",
- org.wso2.developerstudio.eclipse.platform.core.model;version="4.0.0",
- org.wso2.developerstudio.eclipse.platform.core.nature;version="4.0.0",
- org.wso2.developerstudio.eclipse.platform.core.project.export;version="4.0.0",
- org.wso2.developerstudio.eclipse.platform.core.project.export.util;version="4.0.0",
- org.wso2.developerstudio.eclipse.platform.core.project.model;version="4.0.0",
- org.wso2.developerstudio.eclipse.platform.core.templates;version="4.0.0",
- org.wso2.developerstudio.eclipse.platform.core.types;version="4.0.0",
- org.wso2.developerstudio.eclipse.platform.core.utils;version="4.0.0"
+Export-Package: org.wso2.developerstudio.eclipse.platform.core;version="4.1.0",
+ org.wso2.developerstudio.eclipse.platform.core.bundle;version="4.1.0",
+ org.wso2.developerstudio.eclipse.platform.core.event;version="4.1.0",
+ org.wso2.developerstudio.eclipse.platform.core.exception;version="4.1.0",
+ org.wso2.developerstudio.eclipse.platform.core.interfaces;version="4.1.0",
+ org.wso2.developerstudio.eclipse.platform.core.manifest;version="4.1.0",
+ org.wso2.developerstudio.eclipse.platform.core.mediatype;version="4.1.0",
+ org.wso2.developerstudio.eclipse.platform.core.model;version="4.1.0",
+ org.wso2.developerstudio.eclipse.platform.core.nature;version="4.1.0",
+ org.wso2.developerstudio.eclipse.platform.core.project.export;version="4.1.0",
+ org.wso2.developerstudio.eclipse.platform.core.project.export.util;version="4.1.0",
+ org.wso2.developerstudio.eclipse.platform.core.project.model;version="4.1.0",
+ org.wso2.developerstudio.eclipse.platform.core.templates;version="4.1.0",
+ org.wso2.developerstudio.eclipse.platform.core.types;version="4.1.0",
+ org.wso2.developerstudio.eclipse.platform.core.utils;version="4.1.0"
 Import-Package: org.eclipse.core.internal.propertytester,
  org.eclipse.core.resources,
  org.eclipse.e4.core.contexts,
@@ -41,13 +41,13 @@ Import-Package: org.eclipse.core.internal.propertytester,
  org.eclipse.ui.forms.widgets,
  org.eclipse.ui.intro.config,
  org.eclipse.ui.texteditor,
- org.wso2.developerstudio.eclipse.logging.core;version="[4.0.0,4.1.0)",
- org.wso2.developerstudio.eclipse.maven.util;version="[4.0.0,4.1.0)",
- org.wso2.developerstudio.eclipse.utils.data;version="[4.0.0,4.1.0)",
- org.wso2.developerstudio.eclipse.utils.file;version="[4.0.0,4.1.0)",
- org.wso2.developerstudio.eclipse.utils.jdt;version="[4.0.0,4.1.0)",
- org.wso2.developerstudio.eclipse.utils.mediatypes;version="[4.0.0,4.1.0)",
- org.wso2.developerstudio.eclipse.utils.project;version="[4.0.0,4.1.0)"
+ org.wso2.developerstudio.eclipse.logging.core;version="[4.0.0,5.0.0)",
+ org.wso2.developerstudio.eclipse.maven.util;version="[4.0.0,5.0.0)",
+ org.wso2.developerstudio.eclipse.utils.data;version="[4.0.0,5.0.0)",
+ org.wso2.developerstudio.eclipse.utils.file;version="[4.0.0,5.0.0)",
+ org.wso2.developerstudio.eclipse.utils.jdt;version="[4.0.0,5.0.0)",
+ org.wso2.developerstudio.eclipse.utils.mediatypes;version="[4.0.0,5.0.0)",
+ org.wso2.developerstudio.eclipse.utils.project;version="[4.0.0,5.0.0)"
 Bundle-Vendor: WSO2
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ClassPath: .

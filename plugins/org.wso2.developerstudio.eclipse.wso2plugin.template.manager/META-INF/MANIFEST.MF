@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Developer Studio WSO2 Plugin Sample
 Bundle-SymbolicName: org.wso2.developerstudio.eclipse.wso2plugin.template.manager;singleton:=true
-Bundle-Version: 4.0.0.qualifier
+Bundle-Version: 4.1.0.qualifier
 Bundle-Activator: org.wso2.developerstudio.eclipse.wso2plugin.template.manager.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
@@ -12,8 +12,8 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.ui.ide,
  org.eclipse.ui.forms,
  org.wso2.developerstudio.eclipse.kernel.libraries;bundle-version="4.0.0"
-Export-Package: org.wso2.developerstudio.eclipse.wso2plugin.template.manager;version="4.0.0",
- org.wso2.developerstudio.eclipse.wso2plugin.template.manager.ui.wizard;version="4.0.0"
+Export-Package: org.wso2.developerstudio.eclipse.wso2plugin.template.manager;version="4.1.0",
+ org.wso2.developerstudio.eclipse.wso2plugin.template.manager.ui.wizard;version="4.1.0"
 Import-Package: 
  org.eclipse.jgit.api;version="2.2.0",
  org.eclipse.jgit.api.errors;version="2.2.0",
@@ -26,15 +26,15 @@ Import-Package:
  org.eclipse.pde.internal.ui.wizards.plugin,
  org.eclipse.pde.ui,
  org.eclipse.ui.internal.wizards.datatransfer,
- org.wso2.developerstudio.eclipse.platform.core.exception;version="[4.0.0,4.1.0)",
- org.wso2.developerstudio.eclipse.platform.core.model;version="[4.0.0,4.1.0)",
- org.wso2.developerstudio.eclipse.platform.core.project.model;version="[4.0.0,4.1.0)",
- org.wso2.developerstudio.eclipse.platform.core.utils;version="[4.0.0,4.1.0)",
- org.wso2.developerstudio.eclipse.utils.archive;version="[4.0.0,4.1.0)",
- org.wso2.developerstudio.eclipse.utils.data;version="[4.0.0,4.1.0)",
- org.wso2.developerstudio.eclipse.utils.file;version="[4.0.0,4.1.0)",
- org.wso2.developerstudio.eclipse.utils.ui;version="[4.0.0,4.1.0)",
- org.wso2.developerstudio.eclipse.wso2plugin.template.manager.ui.wizard;version="[4.0.0,4.1.0)"
+ org.wso2.developerstudio.eclipse.platform.core.exception;version="[4.0.0,5.0.0)",
+ org.wso2.developerstudio.eclipse.platform.core.model;version="[4.0.0,5.0.0)",
+ org.wso2.developerstudio.eclipse.platform.core.project.model;version="[4.0.0,5.0.0)",
+ org.wso2.developerstudio.eclipse.platform.core.utils;version="[4.0.0,5.0.0)",
+ org.wso2.developerstudio.eclipse.utils.archive;version="[4.0.0,5.0.0)",
+ org.wso2.developerstudio.eclipse.utils.data;version="[4.0.0,5.0.0)",
+ org.wso2.developerstudio.eclipse.utils.file;version="[4.0.0,5.0.0)",
+ org.wso2.developerstudio.eclipse.utils.ui;version="[4.0.0,5.0.0)",
+ org.wso2.developerstudio.eclipse.wso2plugin.template.manager.ui.wizard;version="[4.0.0,5.0.0)"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
 Bundle-ClassPath: .,

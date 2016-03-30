@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Maven Invoker
 Bundle-SymbolicName: org.wso2.developerstudio.eclipse.maven;singleton:=true
-Bundle-Version: 4.0.0.qualifier
+Bundle-Version: 4.1.0.qualifier
 Bundle-Vendor: WSO2
 Bundle-Activator: org.wso2.developerstudio.eclipse.maven.Activator
 Bundle-ActivationPolicy: lazy
@@ -19,15 +19,15 @@ Import-Package: junit.framework,
  org.eclipse.ui.handlers,
  org.junit,
  org.osgi.framework;version="1.3.0",
- org.wso2.developerstudio.eclipse.logging.core;version="[4.0.0,4.1.0)",
- org.wso2.developerstudio.eclipse.utils.file;version="[4.0.0,4.1.0)",
- org.wso2.developerstudio.eclipse.utils.jdt;version="[4.0.0,4.1.0)",
- org.wso2.developerstudio.eclipse.utils.project;version="[4.0.0,4.1.0)"
+ org.wso2.developerstudio.eclipse.logging.core;version="[4.0.0,5.0.0)",
+ org.wso2.developerstudio.eclipse.utils.file;version="[4.0.0,5.0.0)",
+ org.wso2.developerstudio.eclipse.utils.jdt;version="[4.0.0,5.0.0)",
+ org.wso2.developerstudio.eclipse.utils.project;version="[4.0.0,5.0.0)"
 Bundle-ClassPath: .
-Export-Package: org.wso2.developerstudio.eclipse.maven;version="4.0.0",
- org.wso2.developerstudio.eclipse.maven.executor;version="4.0.0",
- org.wso2.developerstudio.eclipse.maven.types;version="4.0.0",
- org.wso2.developerstudio.eclipse.maven.util;version="4.0.0"
+Export-Package: org.wso2.developerstudio.eclipse.maven;version="4.1.0",
+ org.wso2.developerstudio.eclipse.maven.executor;version="4.1.0",
+ org.wso2.developerstudio.eclipse.maven.types;version="4.1.0",
+ org.wso2.developerstudio.eclipse.maven.util;version="4.1.0"
 Require-Bundle: org.eclipse.equinox.registry,
  org.eclipse.core.runtime,
  org.eclipse.m2e.maven.runtime;bundle-version="1.6.2"

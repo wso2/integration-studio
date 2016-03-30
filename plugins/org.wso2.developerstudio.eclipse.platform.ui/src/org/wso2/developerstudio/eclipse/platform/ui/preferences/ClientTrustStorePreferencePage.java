@@ -28,6 +28,8 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPreferencePage;
 import org.eclipse.ui.PlatformUI;
+import org.wso2.developerstudio.eclipse.platform.ui.Activator;
+import org.wso2.developerstudio.eclipse.platform.ui.WorkbenchToolkit;
 
 public class ClientTrustStorePreferencePage extends FieldEditorPreferencePage implements IWorkbenchPreferencePage {
 	public static final String TRUST_STORE_PASSWORD = "TRUST_STORE_PASSWORD";
@@ -43,26 +45,25 @@ public class ClientTrustStorePreferencePage extends FieldEditorPreferencePage im
 
 	@Override
 	public void init(IWorkbench arg0) {
-		preferenceStore = PlatformUI.getPreferenceStore();
+		preferenceStore = WorkbenchToolkit.getPrefernaceStore();
 		setPreferenceStore(preferenceStore);
 		setDescription("WSO2 Developer Studio Custom Client Trust Store Preference.");
+		
 	}
 
 	@Override
 	protected void createFieldEditors() {
 		addField(new FileFieldEditor(TRUST_STORE_LOCATION, "&Trust Store Location:", getFieldEditorParent()));
+		
 		String[][] types = { { "JKS", "JKS" }, { "JCEKS", "JCEKS" }, { "PKCS12", "PKCS12" } };
-		ComboFieldEditor editor =
-		                          new ComboFieldEditor(TRUST_STORE_TYPE, "Trust &Store Type", types,
-		                                               getFieldEditorParent());
+		ComboFieldEditor editor = new ComboFieldEditor(TRUST_STORE_TYPE, "Trust &Store Type", types,
+				getFieldEditorParent());
 
 		addField(editor);
 		stringField1 = new StringFieldEditor(TRUST_STORE_PASSWORD, "Trust Store &Password", getFieldEditorParent());
 		addField(stringField1);
-		BooleanFieldEditor booleanFieldEditor =
-		                                        new BooleanFieldEditor(SHOW_PLAIN_PASSWORD,
-		                                                               "S&how Password in Plain Text",
-		                                                               getFieldEditorParent());
+		BooleanFieldEditor booleanFieldEditor = new BooleanFieldEditor(SHOW_PLAIN_PASSWORD,
+				"S&how Password in Plain Text", getFieldEditorParent());
 		addField(booleanFieldEditor);
 		if (!preferenceStore.getBoolean(SHOW_PLAIN_PASSWORD)) {
 			stringField1.getTextControl(getFieldEditorParent()).setEchoChar('*');
@@ -97,8 +98,8 @@ public class ClientTrustStorePreferencePage extends FieldEditorPreferencePage im
 	@Override
 	public boolean performOk() {
 		boolean performOk = super.performOk();
-		String message = "You must restart eclipse to apply these changes, Restart Now ?";
-		if (MessageDialog.openQuestion(Display.getCurrent().getActiveShell(), "Developer Studio Info", message)) {
+		String message = "You must restart eclipse to apply these changes, Restart Now ?";		 
+		if (WorkbenchToolkit.showQuestionMessageDialog("Developer Studio Info", message)) {
 			PlatformUI.getWorkbench().restart();
 		}
 		return performOk;

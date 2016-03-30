@@ -30,11 +30,13 @@ public class DeveloperStudioPreferencePage extends FieldEditorPreferencePage imp
 	}
 
 	public void createFieldEditors() {
+		
 	}
 
+	
 	public void init(IWorkbench workbench) {
-		PreferenceInitializer preferenceInitializer = new PreferenceInitializer();
-		preferenceInitializer.initializeDefaultPreferences();
+		
 	}
+	
 
 }

@@ -25,6 +25,7 @@ import org.eclipse.jface.util.PropertyChangeEvent;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPreferencePage;
 import org.eclipse.ui.PlatformUI;
+import org.wso2.developerstudio.eclipse.platform.ui.WorkbenchToolkit;
 
 public class UpdateCheckerPreferencePage extends FieldEditorPreferencePage implements IWorkbenchPreferencePage {
 
@@ -50,9 +51,15 @@ public class UpdateCheckerPreferencePage extends FieldEditorPreferencePage imple
 
 	@Override
 	public void init(IWorkbench workbench) {
-		preferenceStore = PlatformUI.getPreferenceStore();
+		preferenceStore = WorkbenchToolkit.getPrefernaceStore();
 		setPreferenceStore(preferenceStore);
 		setDescription("WSO2 Developer Studio Check for Updates Preferences");
+		preferenceStore.setDefault(PLUGIN_TEMPLATE_URL, PreferenceInitializer.KERNEL_SAMPLES_GIT);
+		preferenceStore.setDefault(RELESE_SITE_URL, PreferenceInitializer.DEFAULT_RELEASE_SITE);
+		preferenceStore.setDefault(UPDATE_SITE_URL, PreferenceInitializer.DEFAULT_UPDATE_SITE);
+		preferenceStore.setDefault(UPDATE_INTAVAL, WEEKLY);
+		preferenceStore.setDefault(SET_AUTOMATIC_UPDATE_PREF, YES);
+		preferenceStore.setDefault(SHOW_HIDDEN_FEATURES, false);
 	}
 
 	@Override

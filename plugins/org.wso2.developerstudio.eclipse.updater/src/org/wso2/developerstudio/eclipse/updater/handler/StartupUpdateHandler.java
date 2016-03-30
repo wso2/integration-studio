@@ -54,6 +54,7 @@ public class StartupUpdateHandler implements IStartup {
 		// repository.
 		// UpdateMetaFileReaderJob
 		Job readMetaFileJob = new UpdateMetaFileReaderJob(updateManager);
+		readMetaFileJob.schedule();
 		readMetaFileJob.addJobChangeListener(
 				new UpdateMetaFileReaderJobListener(updateManager, ActiveTab.UPDATE_FEATURES, true));
 	}

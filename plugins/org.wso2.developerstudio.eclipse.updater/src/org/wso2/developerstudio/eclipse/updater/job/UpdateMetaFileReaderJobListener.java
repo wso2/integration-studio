@@ -55,7 +55,6 @@ public class UpdateMetaFileReaderJobListener extends JobChangeAdapter {
 			@Override
 			public void run() {
 				try {
-					
 						int userPref = getUserPreference(TITLE, UPDATER_DIALOG_MESSAGE);
 						if (userPref == 0) {
 							runUpdaterJob();
@@ -64,7 +63,6 @@ public class UpdateMetaFileReaderJobListener extends JobChangeAdapter {
 					log.error(Messages.UpdatemetaFileReaderJobListener_0, e);
 				}
 			}
-		
 
 			private void runUpdaterJob() {
 				Date today = new Date();

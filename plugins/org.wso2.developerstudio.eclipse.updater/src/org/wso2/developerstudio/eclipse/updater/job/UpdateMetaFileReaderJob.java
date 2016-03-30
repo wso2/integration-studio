@@ -124,9 +124,6 @@ public class UpdateMetaFileReaderJob extends Job {
 	private void downloadMetaFile() {
 		try {
 				File updateFile = new File(fileLoc);
-				if (updateFile.exists()) {
-					System.out.println("file created!!! ");
-				}
 				IPreferenceStore preferenceStore = PlatformUI.getPreferenceStore();//needs to enable once the pref store values are up
 				String url = "http://builder1.us1.wso2.org/~developerstudio/developer-studio-kernel/4.0.0/updates/" + "updates.txt";//TODO replace
 				URL link = new URL(url); // The file that you want to download

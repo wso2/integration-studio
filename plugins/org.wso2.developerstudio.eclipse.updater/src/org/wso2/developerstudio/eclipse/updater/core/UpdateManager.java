@@ -77,6 +77,7 @@ import org.osgi.framework.BundleContext;
 import org.osgi.framework.FrameworkUtil;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
+import org.wso2.developerstudio.eclipse.platform.ui.preferences.PreferenceInitializer;
 import org.wso2.developerstudio.eclipse.platform.ui.preferences.UpdateCheckerPreferencePage;
 import org.wso2.developerstudio.eclipse.updater.Messages;
 import org.wso2.developerstudio.eclipse.updater.UpdaterPlugin;
@@ -663,10 +664,12 @@ public class UpdateManager {
 	private URI getDevStudioUpdateSite() {
 		URI updateSite = null;
 		try {
-			IPreferenceStore preferenceStore = org.wso2.developerstudio.eclipse.platform.ui.Activator
-					.getDefault().getPreferenceStore();
+			IPreferenceStore preferenceStore = PlatformUI.getPreferenceStore();
 			String url = preferenceStore
 					.getString(UpdateCheckerPreferencePage.UPDATE_SITE_URL);
+			if (url == null || url.isEmpty()) {
+				url = PreferenceInitializer.DEFAULT_UPDATE_SITE;
+			}
 			updateSite = new URI(url);
 		} catch (URISyntaxException e) {
 			log.error(e);
@@ -677,8 +680,7 @@ public class UpdateManager {
 	private URI getDevStudioReleaseSite() {
 		URI releaseSite = null;
 		try {
-			IPreferenceStore preferenceStore = org.wso2.developerstudio.eclipse.platform.ui.Activator
-					.getDefault().getPreferenceStore();
+			IPreferenceStore preferenceStore = PlatformUI.getPreferenceStore();
 			String url = preferenceStore
 					.getString(UpdateCheckerPreferencePage.RELESE_SITE_URL);
 			releaseSite = new URI(url);

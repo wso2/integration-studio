@@ -100,7 +100,7 @@ public class UpdateMetaFileReaderJob extends Job {
 	 */
 	private Version generateVersionFromString(String versionString) {
 		String[] versionVal = versionString.split("-");
-		String[] minorMajorNumbers = versionVal[0].split(".");
+		String[] minorMajorNumbers = versionVal[0].split("\\."); // . is \\. in regex
 		Version availableVersion = Version.createOSGi(Integer.parseInt(minorMajorNumbers[0]),
 				Integer.parseInt(minorMajorNumbers[1]), Integer.parseInt(minorMajorNumbers[2]), versionVal[1]);
 		return availableVersion;
@@ -112,7 +112,7 @@ public class UpdateMetaFileReaderJob extends Job {
 			for (String line; (line = br.readLine()) != null;) {
 				if (line.contains(",")) {
 					String[] feature = line.split(",");
-					featureMap.put(feature[0], feature[0]);
+					featureMap.put(feature[0], feature[1]);
 				}
 			}
 		} catch (IOException e) {

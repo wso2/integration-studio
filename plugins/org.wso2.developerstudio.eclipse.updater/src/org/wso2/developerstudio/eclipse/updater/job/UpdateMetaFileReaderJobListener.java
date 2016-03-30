@@ -51,42 +51,41 @@ public class UpdateMetaFileReaderJobListener extends JobChangeAdapter {
 	@Override
 	public void done(IJobChangeEvent event) {
 		if (event.getResult().isOK()) {
-		Display.getDefault().syncExec(new Runnable() {
-			@Override
-			public void run() {
-				try {
-						int userPref = getUserPreference(TITLE, UPDATER_DIALOG_MESSAGE);
-						if (userPref == 0) {
+			Display.getDefault().syncExec(new Runnable() {
+				@Override
+				public void run() {
+					try {
+						if (getUserPreference(TITLE, UPDATER_DIALOG_MESSAGE) == 0) {
 							runUpdaterJob();
 						}
-				} catch (Exception e) {
-					log.error(Messages.UpdatemetaFileReaderJobListener_0, e);
-				}
-			}
 
-			private void runUpdaterJob() {
-				Date today = new Date();
-				IPreferenceStore prefPage = PlatformUI.getPreferenceStore();
-				String updateInterval = prefPage.getString(UpdateCheckerPreferencePage.UPDATE_INTAVAL);
-				Preferences bundlePrefs = ConfigurationScope.INSTANCE.getNode(Constants.NODE_UPDATE_HANDER);
-				long lastPromptTime = bundlePrefs.getLong(Constants.PREF_LAST_PROMPT_FOR_UPDATES,
-						today.getTime());
-				// check duration since last check for updates
-				if (lastPromptTime != today.getTime()) {
-					long dateDiff = getTimeDiff(lastPromptTime, today.getTime(), TimeUnit.DAYS);
-					if ((updateInterval.equals(MONTHLY) && dateDiff < 30)
-							|| (updateInterval.equals(WEEKLY) && dateDiff < 7)
-							|| (updateInterval.equals(DAILY) && dateDiff < 1)) {
-						// do not check updates
-					} else {
-						Job updateJob = new UpdateCheckerJob(updateManager);
-						updateJob.schedule();
-						updateJob.addJobChangeListener(new UpdateCheckerJobListener(updateManager,
-								ActiveTab.UPDATE_FEATURES, true));
+					} catch (Exception e) {
+						log.error(Messages.UpdatemetaFileReaderJobListener_0, e);
 					}
 				}
-			}
-		});
+
+				private void runUpdaterJob() {
+					Date today = new Date();
+					IPreferenceStore prefPage = PlatformUI.getPreferenceStore();
+					String updateInterval = prefPage.getString(UpdateCheckerPreferencePage.UPDATE_INTAVAL);
+					Preferences bundlePrefs = ConfigurationScope.INSTANCE.getNode(Constants.NODE_UPDATE_HANDER);
+					long lastPromptTime = bundlePrefs.getLong(Constants.PREF_LAST_PROMPT_FOR_UPDATES, today.getTime());
+					// check duration since last check for updates
+					if (lastPromptTime != today.getTime()) {
+						long dateDiff = getTimeDiff(lastPromptTime, today.getTime(), TimeUnit.DAYS);
+						if ((updateInterval.equals(MONTHLY) && dateDiff < 30)
+								|| (updateInterval.equals(WEEKLY) && dateDiff < 7)
+								|| (updateInterval.equals(DAILY) && dateDiff < 1)) {
+							// do not check updates
+						} else {
+							Job updateJob = new UpdateCheckerJob(updateManager);
+							updateJob.schedule();
+							updateJob.addJobChangeListener(
+									new UpdateCheckerJobListener(updateManager, ActiveTab.UPDATE_FEATURES, true));
+						}
+					}
+				}
+			});
 		}
 	}
 

@@ -663,8 +663,7 @@ public class UpdateManager {
 	private URI getDevStudioUpdateSite() {
 		URI updateSite = null;
 		try {
-			IPreferenceStore preferenceStore = org.wso2.developerstudio.eclipse.platform.ui.Activator
-					.getDefault().getPreferenceStore();
+			IPreferenceStore preferenceStore = PlatformUI.getPreferenceStore();
 			String url = preferenceStore
 					.getString(UpdateCheckerPreferencePage.UPDATE_SITE_URL);
 			updateSite = new URI(url);
@@ -677,8 +676,7 @@ public class UpdateManager {
 	private URI getDevStudioReleaseSite() {
 		URI releaseSite = null;
 		try {
-			IPreferenceStore preferenceStore = org.wso2.developerstudio.eclipse.platform.ui.Activator
-					.getDefault().getPreferenceStore();
+			IPreferenceStore preferenceStore = PlatformUI.getPreferenceStore();
 			String url = preferenceStore
 					.getString(UpdateCheckerPreferencePage.RELESE_SITE_URL);
 			releaseSite = new URI(url);

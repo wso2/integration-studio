@@ -45,6 +45,7 @@ import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.TabFolder;
 import org.eclipse.swt.widgets.TabItem;
+import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.platform.ui.preferences.UpdateCheckerPreferencePage;
@@ -181,8 +182,7 @@ public class UpdaterDialog extends Dialog {
 	}
 
 	private void listFeatures(Group group, ActiveTab tab) {
-		IPreferenceStore prefPage = org.wso2.developerstudio.eclipse.platform.ui.Activator
-				.getDefault().getPreferenceStore();
+		IPreferenceStore prefPage = PlatformUI.getPreferenceStore();
 		boolean showHiddenFeatures = prefPage
 				.getBoolean(UpdateCheckerPreferencePage.SHOW_HIDDEN_FEATURES);
 		

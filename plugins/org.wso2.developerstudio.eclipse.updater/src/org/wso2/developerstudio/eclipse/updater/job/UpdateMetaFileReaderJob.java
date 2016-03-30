@@ -89,7 +89,7 @@ public class UpdateMetaFileReaderJob extends Job {
 			log.error(Messages.UpdateCheckerJob_4, e);
 			return Status.OK_STATUS;// return OK since we need to run the default updater if the meta file is misconfigured
 		}
-		return Status.CANCEL_STATUS;// if no exceptions and no updates to be installed return cancel
+		return Status.OK_STATUS;// if no exceptions and no updates to be installed return cancel
 	}
 
 	/**

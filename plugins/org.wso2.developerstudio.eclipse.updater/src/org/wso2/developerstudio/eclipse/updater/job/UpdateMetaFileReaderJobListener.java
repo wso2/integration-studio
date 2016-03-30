@@ -26,8 +26,8 @@ import org.wso2.developerstudio.eclipse.updater.ui.UpdaterDialog.ActiveTab;
 public class UpdateMetaFileReaderJobListener extends JobChangeAdapter {
 
 	private static final String SET_LATER = "Not Now";
-	private static final String UPDATER_DIALOG_MESSAGE = "There are updates for developer studio features you have installed. It is recommended to install these updates";
-	private static final String TITLE = "Do you want to update now ?";
+	private static final String UPDATER_DIALOG_MESSAGE = "Do you want to update now ?";
+	private static final String TITLE = "There are updates for developer studio features you have installed. It is recommended to install these updates";
 	protected static final String SELECT = "Select";
 	protected static final String YES = "Yes";
 	protected static final String NO = "No";
@@ -78,20 +78,26 @@ public class UpdateMetaFileReaderJobListener extends JobChangeAdapter {
 								|| (updateInterval.equals(DAILY) && dateDiff < 1)) {
 							// do not check updates
 						} else {
-							Job updateJob = new UpdateCheckerJob(updateManager);
-							updateJob.schedule();
-							updateJob.addJobChangeListener(
-									new UpdateCheckerJobListener(updateManager, ActiveTab.UPDATE_FEATURES, true));
+							executeUpdateJob();
 						}
+					} else {
+						executeUpdateJob();
 					}
+				}
+
+				private void executeUpdateJob() {
+					Job updateJob = new UpdateCheckerJob(updateManager);
+					updateJob.schedule();
+					updateJob.addJobChangeListener(
+							new UpdateCheckerJobListener(updateManager, ActiveTab.UPDATE_FEATURES, true));
 				}
 			});
 		}
 	}
 
 	public static int getUserPreference(String message, String title) {
-		Display activeDisplay = Display.getDefault();
-		MessageDialog dialog = new MessageDialog(new Shell(activeDisplay), title, null, message,
+	//	Display activeDisplay = Display.getDefault();
+		MessageDialog dialog = new MessageDialog(Display.getDefault().getActiveShell(), title, null, message,
 				MessageDialog.INFORMATION, new String[] { YES, NO, SET_LATER }, 0);
 		return dialog.open();
 	}

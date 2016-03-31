@@ -33,6 +33,8 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeNodeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.providers.DiagramContextMenuProvider;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.action.IMenuManager;
+import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IWorkbenchPart;
 import org.wso2.developerstudio.datamapper.diagram.custom.action.AddNewArrayAction;
 import org.wso2.developerstudio.datamapper.diagram.custom.action.AddNewAttributeAction;
@@ -216,9 +218,13 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
 									// Append new root item to menu
 									AbstractActionHandler addNewRootRecordContextAction = addNewRootElementContextActions
 											.get(selectedEditorPart.getClass());
-									if (null != addNewRootRecordContextAction) {
-										menu.appendToGroup(EDIT_GROUP_ID, addNewRootRecordContextAction);
+									if (selectedEditorPart.getChildren().isEmpty()) {
+										if (null != addNewRootRecordContextAction) {
+											menu.appendToGroup(EDIT_GROUP_ID, addNewRootRecordContextAction);
+										}
 									}
+									
+									
 
 									// Append new record item to menu
 									AbstractActionHandler addNewRecordContextAction = addNewObjectContextActions

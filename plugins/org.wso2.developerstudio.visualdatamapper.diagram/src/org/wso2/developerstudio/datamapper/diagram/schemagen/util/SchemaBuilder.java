@@ -29,23 +29,25 @@ import com.google.gson.JsonPrimitive;
 
 public class SchemaBuilder {
 
+	private static final String HTTP_WSO2JSONSCHEMA_ORG = "http://wso2jsonschema.org";
+	private static final String HTTP_JSON_SCHEMA_ORG_DRAFT_04_SCHEMA = "http://json-schema.org/draft-04/schema#";
 	private static final String ARRAY = "array";
 	private static final String OBJECT = "object";
 	private static final String ROOT_TITLE = "root";
 	protected static final String AT_PREFIX = "@";
 	protected static final String HASHCONTENT = "#@content";
-	JsonSchema root;
+	protected JsonSchema root;
 	
 	public SchemaBuilder() {
 	}
 
 	public String createSchema(String jsonString) {
 		JsonParser jsonParser = new JsonParser();
-		JsonObject jo = (JsonObject) jsonParser.parse(jsonString);
+		JsonObject jsonObject = (JsonObject) jsonParser.parse(jsonString); //TODO  handle parsing exception
 		JsonObject firstObject = null;
 		String title = ROOT_TITLE;
 		
-		Set<Entry<String, JsonElement>> entrySet = jo.entrySet();
+		Set<Entry<String, JsonElement>> entrySet = jsonObject.entrySet();
 		if (entrySet.size() == 1) {
 			for (Entry<String, JsonElement> entry : entrySet) {
 				title = entry.getKey();
@@ -54,15 +56,15 @@ public class SchemaBuilder {
 				break;
 			}
 		} else {
-			firstObject = jo;
+			firstObject = jsonObject;
 		}
 	
 		root = new JsonSchema();
-		root.setDolarSchema("http://json-schema.org/draft-04/schema#");
+		root.setDolarSchema(HTTP_JSON_SCHEMA_ORG_DRAFT_04_SCHEMA);
 		root.setTitle(title);
-		root.setId("http://wso2jsonschema.org");
+		root.setId(HTTP_WSO2JSONSCHEMA_ORG);
 		root.setType(OBJECT);
-		createSchema4Object(firstObject, root);
+		createSchemaForObject(firstObject, root);
 			
 		return root.getAsJsonObject().toString();
 	}
@@ -81,9 +83,9 @@ public class SchemaBuilder {
 	}
 
 	
-	public void createSchema4Object(JsonObject jo, JsonSchema parent) {
+	public void createSchemaForObject(JsonObject jsonObject, JsonSchema parent) {
 
-		Set<Entry<String, JsonElement>> entrySet = jo.entrySet();
+		Set<Entry<String, JsonElement>> entrySet = jsonObject.entrySet();
 		for (Entry<String, JsonElement> entry : entrySet) {
 
 			String id = entry.getKey();
@@ -95,18 +97,18 @@ public class SchemaBuilder {
 					addAttributedPrimitiveToParent(parent, id, element);
 				} else {
 					JsonSchema schema = addObjectToParent(parent, id);
-					createSchema4Object(element.getAsJsonObject(), schema);
+					createSchemaForObject(element.getAsJsonObject(), schema);
 				}
 			} else if (propertyValueType == TypeEnum.ARRAY) {
 				JsonSchema schemaArray = addArrayToParent(parent, id);
-				createSchema4Array(element.getAsJsonArray(), schemaArray, id);
+				createSchemaForArray(element.getAsJsonArray(), schemaArray, id);
 			} else {
 				addPrimitiveToParent(parent, id, element.getAsString(), propertyValueType);
 			}
 		}
 	}
 
-	public void createSchema4Array(JsonArray jsonArray, JsonSchema parent, String id) {
+	public void createSchemaForArray(JsonArray jsonArray, JsonSchema parent, String id) {
 		parent.createItemsArray();
 		Iterator<JsonElement> keys = jsonArray.iterator();
 		while (keys.hasNext()) {
@@ -117,7 +119,7 @@ public class SchemaBuilder {
 					addAttributedPrimitiveToParentItemsArray(parent, id, element);
 				} else {
 					JsonSchema schema = addObjectToParentItemsArray(parent, "0");
-					createSchema4Object(element.getAsJsonObject(), schema);
+					createSchemaForObject(element.getAsJsonObject(), schema);
 				}
 			} else {
 				addPrimitiveToParentItemsArray(parent, "0", propertyValueType);

@@ -59,6 +59,7 @@ import org.wso2.developerstudio.eclipse.wso2plugin.template.manager.ui.elements.
 import org.wso2.developerstudio.eclipse.wso2plugin.template.manager.ui.elements.WSO2PluginSampleExtList;
 import org.wso2.developerstudio.eclipse.wso2plugin.template.manager.util.AbstractDefaultProjectTemplateManager;
 import org.wso2.developerstudio.eclipse.wso2plugin.template.manager.util.DefaultProjectTemplateManager;
+import org.wso2.developerstudio.eclipse.wso2plugin.template.manager.util.IProjectTemplateManager;
 import org.wso2.developerstudio.eclipse.wso2plugin.template.manager.util.WSO2PluginConstants;
 
 import com.google.gson.Gson;
@@ -246,10 +247,10 @@ public class WSO2PluginProjectWizard extends AbstractWSO2ProjectCreationWizard {
 		IStructuredSelection structSelection = (IStructuredSelection) iSelection;
 		WSO2PluginSampleExt element = (WSO2PluginSampleExt) structSelection.getFirstElement();
 		String projectName = wso2PluginProjectModel.getPluginProjectName();
-		AbstractDefaultProjectTemplateManager classInstance = element.getProjectTemplatemanager();
-		if (classInstance != null) {
-			executeExtension(classInstance, element, projectName);
-		}
+		Object classInstance = element.getProjectTemplatemanager();
+		if (classInstance != null && classInstance instanceof IProjectTemplateManager) {
+			return executeExtension(classInstance, element, projectName);
+		} 
 		return defaultProjectTemplateManager.executeSelectedProjectTemplate(element, projectName);
 
 	}
@@ -290,7 +291,7 @@ public class WSO2PluginProjectWizard extends AbstractWSO2ProjectCreationWizard {
 		return null;
 	}
 
-	public void executeExtension(final Object execClass, final WSO2PluginSampleExt element, final String projectName) {
+	public boolean executeExtension(final Object execClass, final WSO2PluginSampleExt element, final String projectName) {
 		ISafeRunnable runnable = new ISafeRunnable() {
 			@Override
 			public void handleException(Throwable e) {
@@ -299,11 +300,12 @@ public class WSO2PluginProjectWizard extends AbstractWSO2ProjectCreationWizard {
 
 			@Override
 			public void run() throws Exception {
-				((AbstractDefaultProjectTemplateManager) execClass).executeSelectedProjectTemplate(element,
+				((IProjectTemplateManager) execClass).executeSelectedProjectTemplate(element,
 						projectName);
 			}
 		};
 		SafeRunner.run(runnable);
+		return true;
 	}
 
 }

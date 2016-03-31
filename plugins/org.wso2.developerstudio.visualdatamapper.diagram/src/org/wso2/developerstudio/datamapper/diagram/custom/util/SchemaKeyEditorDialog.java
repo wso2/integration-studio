@@ -166,7 +166,7 @@ public class SchemaKeyEditorDialog extends Dialog {
 		container.setLayout(fl_container);
 
 		Group grpPropertyKey = new Group(container, SWT.None);
-		grpPropertyKey.setText(RESOURCE_KEY);
+		//grpPropertyKey.setText(RESOURCE_KEY);
 
 		FormLayout fl_grpPropertyKey = new FormLayout();
 		fl_grpPropertyKey.marginHeight = 10;

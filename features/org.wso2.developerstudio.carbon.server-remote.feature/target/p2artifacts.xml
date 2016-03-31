@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?artifactRepository version='1.1.0'?>
+<artifacts size='1'>
+  <artifact classifier='org.eclipse.update.feature' id='org.wso2.developerstudio.carbon.server-remote.feature' version='4.1.0.201603310914'>
+    <properties size='6'>
+      <property name='artifact.size' value='9406'/>
+      <property name='download.size' value='9406'/>
+      <property name='maven-groupId' value='org.wso2.developerstudio'/>
+      <property name='maven-artifactId' value='org.wso2.developerstudio.carbon.server-remote.feature'/>
+      <property name='maven-version' value='4.1.0-SNAPSHOT'/>
+      <property name='download.contentType' value='application/zip'/>
+    </properties>
+  </artifact>
+</artifacts>

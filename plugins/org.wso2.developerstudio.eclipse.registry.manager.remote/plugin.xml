@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension-point id="org.wso2.developerstudio.eclipse.greg.viewer.action" name="WSO2 Registry Viewer Action Contributor" 
+   schema="schema/org.wso2.developerstudio.eclipse.greg.viewer.action.exsd"/>
+   
+   	<extension
+       point="org.eclipse.ui.views">
+    <view
+          class="org.wso2.developerstudio.eclipse.registry.manager.remote.views.RegistryBrowserView"
+          icon="icons/registry.png"
+          id="org.wso2.developerstudio.registry.remote.registry.view"
+          name="WSO2 Registry Browser">
+    </view>
+ </extension>
+ 
+ 	<extension
+       point="org.eclipse.ui.views">
+    <view
+          class="org.wso2.developerstudio.eclipse.registry.manager.remote.views.RegistryPropertyViewer"
+          icon="icons/registryProperties.png"
+          id="org.wso2.developerstudio.eclipse.registry.properties"
+          name="Resource Metadata">
+    </view>
+ </extension>
+ 
+ 	<extension
+       point="org.eclipse.ui.views">
+    <view
+          class="org.wso2.developerstudio.eclipse.registry.manager.remote.views.ResourceInfoViewer"
+          icon="icons/registryProperties.png"
+          id="org.wso2.developerstudio.eclipse.registry.resource.info"
+          name="Resource Info">
+    </view>
+ </extension>
+	
+<extension
+       point="org.eclipse.ui.commands">
+       <!--WSO2 Registry Browser Category-->
+    <category
+          description="WSO2 Registry Browser Command Category"
+          id="org.wso2.developerstudio.registry.browser.keybindings.category"
+          name="WSO2 Registry Category">
+    </category>
+    <!--Delete Command-->
+    <command
+          categoryId="org.wso2.developerstudio.registry.browser.keybindings.category"
+          description="Delete Registry Element Command"
+          id="org.wso2.developerstudio.registry.browser.commands.delete"
+          name="Delete Registry Element">
+    </command>
+	<!--Refresh Command-->
+    <command
+          categoryId="org.wso2.developerstudio.registry.browser.keybindings.category"
+          description="Refresh Registry Tree Command"
+          id="org.wso2.developerstudio.registry.browser.commands.refresh"
+          name="Refresh Registry Tree">
+    </command>	
+    <!--Add Resource Command-->
+    <command
+          categoryId="org.wso2.developerstudio.registry.browser.keybindings.category"
+          description="Add Registry Resource Command"
+          id="org.wso2.developerstudio.registry.browser.commands.addresource"
+          name="Add Registry Resource">
+    </command>
+    <!--Rename Command-->
+    <command
+          categoryId="org.wso2.developerstudio.registry.browser.keybindings.category"
+          description="Rename Registry Element Command"
+          id="org.wso2.developerstudio.registry.browser.commands.rename"
+          name="Rename Registry Element">
+    </command>	
+    <!--Copy Command-->
+    <command
+          categoryId="org.wso2.developerstudio.registry.browser.keybindings.category"
+          description="Copy Registry Element Command"
+          id="org.wso2.developerstudio.registry.browser.commands.copy"
+          name="Copy Registry Element">
+    </command>
+    <!--Paste Command-->
+    <command
+          categoryId="org.wso2.developerstudio.registry.browser.keybindings.category"
+          description="Paste Registry Element Command"
+          id="org.wso2.developerstudio.registry.browser.commands.paste"
+          name="Paste Registry Element">
+    </command>	
+</extension>
+
+<!--WSO2 Registry Context-->
+<extension
+       point="org.eclipse.ui.contexts">
+    <context
+          description="WSO2 Registry Tool Context"
+          id="org.wso2.developerstudio.registry.browser.keybindings.context"
+          name="WSO2 Registry Context">
+    </context>
+</extension>
+
+<!--WSO2 Registry UI Key Bindings-->
+<extension point="org.eclipse.ui.bindings">
+		<!--Delete Key Binding-->
+		<key
+        commandId="org.wso2.developerstudio.registry.browser.commands.delete"
+        schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+        contextId="org.wso2.developerstudio.registry.browser.keybindings.context"
+        sequence="DELETE"/>
+        <!--Refresh Key Binding-->
+		<key
+        commandId="org.wso2.developerstudio.registry.browser.commands.refresh"
+        schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+        contextId="org.wso2.developerstudio.registry.browser.keybindings.context"
+        sequence="F5"/>
+        <!--Add Resource Key Binding-->
+		<key
+        commandId="org.wso2.developerstudio.registry.browser.commands.addresource"
+        schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+        contextId="org.wso2.developerstudio.registry.browser.keybindings.context"
+        sequence="Ctrl+Insert"/>
+        <!--Rename Key Binding-->
+		<key
+        commandId="org.wso2.developerstudio.registry.browser.commands.rename"
+        schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+        contextId="org.wso2.developerstudio.registry.browser.keybindings.context"
+        sequence="F2"/>
+        <!--Copy Key Binding-->
+		<key
+        commandId="org.wso2.developerstudio.registry.browser.commands.copy"
+        schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+        contextId="org.wso2.developerstudio.registry.browser.keybindings.context"
+        sequence="Ctrl+C"/>
+        <!--Paste Key Binding-->
+		<key
+        commandId="org.wso2.developerstudio.registry.browser.commands.paste"
+        schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+        contextId="org.wso2.developerstudio.registry.browser.keybindings.context"
+        sequence="Ctrl+V"/>
+	</extension>
+</plugin>

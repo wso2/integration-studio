@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<units size='2'>
+  <unit id='201603310914.Default' version='1.0.0.8N7K-cKR0808Mh2ihii0jk21'>
+    <properties size='3'>
+      <property name='org.eclipse.equinox.p2.name' value='Uncategorized'/>
+      <property name='org.eclipse.equinox.p2.description' value='Default category for otherwise uncategorized features'/>
+      <property name='org.eclipse.equinox.p2.type.category' value='true'/>
+    </properties>
+    <provides size='1'>
+      <provided namespace='org.eclipse.equinox.p2.iu' name='201603310914.Default' version='1.0.0.8N7K-cKR0808Mh2ihii0jk21'/>
+    </provides>
+    <requires size='11'>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.wso2.developerstudio.carbon.server-40.feature.feature.group' range='[4.1.0.201603310914,4.1.0.201603310914]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.wso2.developerstudio.capp.feature.feature.group' range='[4.1.0.201603310914,4.1.0.201603310914]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.wso2.developerstudio.kernel.utils.feature.feature.group' range='[4.1.0.201603310914,4.1.0.201603310914]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.wso2.developerstudio.kernel.registry.feature.feature.group' range='[4.1.0.201603310914,4.1.0.201603310914]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.wso2.developerstudio.carbon.server-42.feature.feature.group' range='[4.1.0.201603310914,4.1.0.201603310914]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.wso2.developerstudio.kernel.registry.core.feature.feature.group' range='[4.1.0.201603310914,4.1.0.201603310914]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.wso2.developerstudio.carbon.server-44.feature.feature.group' range='[4.1.0.201603310914,4.1.0.201603310914]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.wso2.developerstudio.kernel.tools.feature.feature.group' range='[4.1.0.201603310914,4.1.0.201603310914]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.wso2.developerstudio.carbon.server-remote.feature.feature.group' range='[4.1.0.201603310914,4.1.0.201603310914]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.wso2.developerstudio.kernel.security.feature.feature.group' range='[4.1.0.201603310914,4.1.0.201603310914]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.wso2.developerstudio.library.artifact.feature.feature.group' range='[4.1.0.201603310914,4.1.0.201603310914]'/>
+    </requires>
+    <touchpoint id='null' version='0.0.0'/>
+  </unit>
+  <unit id='201603310914.org.wso2.developerstudio.kernel.platform.bundles.' version='1.0.0.781-cKQvVb7735E39953K5A'>
+    <properties size='3'>
+      <property name='org.eclipse.equinox.p2.name' value='WSO2 Developer Studio Kernel Platform Bundles'/>
+      <property name='org.eclipse.equinox.p2.description' value='WSO2 Developer Studio Kernel provides a set of core plugins which can be used to develop Eclipse plugins for the WSO2 products which are based on award wining WSO2 carbon platform. After a major architecture revamping with version 4.0.0, WSO2 Developer Studio is moved in to a kernel based model. All the product specific plugins will use the Developer Studio Kernel as the base for their implementation.'/>
+      <property name='org.eclipse.equinox.p2.type.category' value='true'/>
+    </properties>
+    <provides size='1'>
+      <provided namespace='org.eclipse.equinox.p2.iu' name='201603310914.org.wso2.developerstudio.kernel.platform.bundles.' version='1.0.0.781-cKQvVb7735E39953K5A'/>
+    </provides>
+    <requires size='1'>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.wso2.developerstudio.kernel.wso2plugins.default.samples.feature.feature.group' range='[4.1.0.201603310914,4.1.0.201603310914]'/>
+    </requires>
+    <touchpoint id='null' version='0.0.0'/>
+  </unit>
+</units>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.wso2.developerstudio.kernel.registry.core.feature"
+      label="Registry Tool"
+      version="4.1.0.201603310914"
+      provider-name="%providerName">
+
+   <description url="http://wso2.com">
+      Provides tools for DevStudio integration with Carbon Registry.
+   </description>
+
+   <copyright url="%copyrightURL">
+      %copyright
+   </copyright>
+
+   <license url="%licenseURL">
+      %license
+   </license>
+
+   <plugin
+         id="org.wso2.developerstudio.eclipse.registry.perspective"
+         download-size="27"
+         install-size="33"
+         version="4.1.0.201603310520"
+         unpack="false"/>
+
+   <plugin
+         id="org.wso2.developerstudio.eclipse.registry.search"
+         download-size="34"
+         install-size="72"
+         version="4.1.0.201603310520"
+         unpack="false"/>
+</feature>

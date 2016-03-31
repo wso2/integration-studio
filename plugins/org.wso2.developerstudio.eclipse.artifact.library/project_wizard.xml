@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wizard>
+ <projectOptions title="Java Library Artifact Creation Wizard "
+ 				 description="Select how you would like to create your new project"
+ 				 error="Please select a method to create the project">
+ 	<option id="library.artifact" default="true">Create New Library Artifact</option>
+ </projectOptions>
+ <projectOptionSettings>
+ 	<settings optionId="library.artifact"
+ 			  		title="Library Artifact"
+ 			  		description="Create a new Library Artifact"
+ 			  		error="Please give a name to create the library artifact">
+ 		<data modelProperty="project.name"
+ 					type="string" 
+ 					fieldController="org.wso2.developerstudio.eclipse.artifact.library.validator.LibraryArtifactFieldsController">Project Name</data>
+ 		
+ 		<projectNatures>
+			<nature>org.eclipse.jdt.core.javanature</nature>
+		</projectNatures>
+		
+ 	</settings>
+ </projectOptionSettings>
+</wizard>

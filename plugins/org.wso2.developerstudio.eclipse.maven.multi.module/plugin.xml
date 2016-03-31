@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+  <extension point="org.eclipse.ui.menus">
+   <menuContribution locationURI="popup:org.eclipse.ui.popup.any?after=additions">
+            <command
+                    commandId="org.wso2.developerstudio.eclipse.maven.pom.generator"
+                    style="push">
+                <visibleWhen checkEnabled="false">
+                    <with variable="activeMenuSelection">
+                        <iterate ifEmpty="false" operator="and">
+                            <instanceof
+                                    value="org.eclipse.core.resources.IProject">
+                            </instanceof>
+                            <and>
+                                <test
+                                        property="org.wso2.developerstudio.eclipse.pomgenModuleVisibility"
+                                        value="org.eclipse.core.resources.IProject">
+                                </test>
+                            </and>
+                        </iterate>
+                    </with>
+                </visibleWhen>
+            </command>
+        </menuContribution>
+    </extension>
+    
+    <extension
+            point="org.eclipse.ui.handlers">
+        <handler
+                class="org.wso2.developerstudio.eclipse.maven.multi.module.handlers.MavenPomGeneratorHandler"
+                commandId="org.wso2.developerstudio.eclipse.maven.pom.generator">
+        </handler>
+    </extension>
+    
+    <extension
+            point="org.eclipse.ui.commands">
+        <command
+                description="Generate Maven Pom file for a Project"
+                id="org.wso2.developerstudio.eclipse.maven.pom.generator"
+                name="Generate POM...">
+        </command>
+    </extension>
+
+ <extension
+            point="org.eclipse.core.expressions.propertyTesters">
+        <propertyTester
+                class="org.wso2.developerstudio.eclipse.maven.multi.module.handlers.MavenPropertyTester"
+                id="org.wso2.developerstudio.eclipse.maven.propertytester"
+                namespace="org.wso2.developerstudio.eclipse"
+                properties="pomgenModuleVisibility"
+                type="org.eclipse.core.resources.IProject">
+        </propertyTester>
+    </extension>
+
+    <extension point="org.eclipse.core.expressions.propertyTesters">
+        <propertyTester
+                id="org.wso2.developerstudio.wso2ProjectNature.property.tester"
+                class="org.wso2.developerstudio.eclipse.maven.multi.module.handlers.WSO2ProjectNaturePropertyTester"
+                namespace="org.wso2.developerstudio.nature"
+                properties="isWSO2ProjectNature"
+                type="org.eclipse.core.resources.IProject">
+        </propertyTester>
+    </extension>
+
+    <extension point="org.eclipse.ui.newWizards">
+        <wizard name="Maven Multi Module Project"
+                category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.eclipse.maven.features"
+                class="org.wso2.developerstudio.eclipse.maven.multi.module.handlers.MvnMultiModuleWizard"
+                finalPerspective="org.eclipse.jst.j2ee.J2EEPerspective"
+                wizardManifest="project_wizard_mvn.xml"
+                id="org.wso2.developerstudio.eclipse.platform.ui.mvn.wizard.MvnMultiModuleWizard"
+                descriptionImage="mvn-wizard.png"
+                project="true" icon="icons/maven-16x16.png">
+            <description>Maven Multimodule Project</description>
+        </wizard>
+    </extension>
+    
+    org.wso2.developerstudio.eclipse.platform.ui.mvn.wizard.MvnMultiModuleWizard
+    
+    <extension point="org.eclipse.core.resources.natures"
+               id="org.wso2.developerstudio.eclipse.mavenmultimodule.project.nature"
+               name="Maven Multi Module Project Nature">
+        <runtime>
+            <run
+                  class="org.wso2.developerstudio.eclipse.maven.multi.module.handlers.MavenMultiModuleProjectNature">
+            </run>
+        </runtime>
+    </extension>
+
+    <extension point="org.eclipse.ui.ide.projectNatureImages">
+        <image id="org.wso2.developerstudio.eclipse.mavenmultimodule.project.natureImage"
+               natureId="org.wso2.developerstudio.eclipse.mavenmultimodule.project.nature" icon="icons/maven-12x12.png">
+        </image>
+    </extension>
+    <extension point="org.eclipse.ui.popupMenus">
+        <objectContribution objectClass="org.eclipse.core.resources.IProject"
+                            id="org.wso2.developerstudio.eclipse.maven.contribution">
+
+            <menu id="org.wso2.developerstudio.eclipse.maven.contribution"
+                  label="Maven" path="additions">
+                <separator name="group1"/>
+            </menu>
+            <enablement>
+                <adapt type="org.eclipse.core.resources.IProject">
+                    <test property="org.wso2.developerstudio.nature.isWSO2ProjectNature"/>
+                </adapt>
+            </enablement>
+        </objectContribution>
+    </extension>  
+    
+  <extension point="org.eclipse.ui.newWizards">
+       <category name="Maven Project" id="org.wso2.developerstudio.eclipse.maven.features"
+                  parentCategory="org.wso2.developerstudio.eclipse.capp.project">
+        </category>
+   </extension>
+   <extension
+          point="org.wso2.developerstudio.create.dashbaord.new.section">
+           <dashboard.section
+             id="org.wso2.developerstudio.eclipse.maven.features"
+             nametag="Maven"
+             name="Maven"
+             bundleID="org.wso2.developerstudio.eclipse.maven.multi.module"
+             icon="icons/maven-24x24.png">
+             </dashboard.section>
+    </extension>
+</plugin>

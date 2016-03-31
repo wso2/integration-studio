@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+	
+   <extension point="org.eclipse.search.searchPages">
+   	       <page id="test org.eclipse.search.ui.text.TextSearchPage22"
+	   	       label="WSO2 Registry Search"
+	   	       showScopeSection="false"
+	   	       icon="icons/registry-search.png"
+	   	       class="org.wso2.developerstudio.eclipse.registry.search.RegistrySearch">      
+   	       </page>    
+   </extension> 
+   <extension
+    	id="JavaSearchResultPage22"
+        point="org.eclipse.search.searchResultViewPages">
+		<viewPage
+			id="SearchResultPage222"
+			searchResultClass="org.wso2.developerstudio.eclipse.registry.search.SearchResult"
+			class="org.wso2.developerstudio.eclipse.registry.search.RegistrySearchResultPage">
+		</viewPage>
+   </extension>
+</plugin>

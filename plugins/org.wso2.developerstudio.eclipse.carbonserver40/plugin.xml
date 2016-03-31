@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.wst.server.core.runtimeTypes">
+      <runtimeType
+            class="org.eclipse.jst.server.generic.core.internal.GenericServerRuntime"
+            description="WSO2 Carbon 4.0 based server"
+            id="org.wso2.developerstudio.eclipse.carbon.runtime40"
+            name="WSO2 Carbon 4.0 based server"
+            vendor="WSO2"
+            vendorId="wso2"
+            version="4.0">
+         <moduleType
+               types="org.wso2.developerstudio.eclipse.carbon.module"
+               versions="1.0">
+         </moduleType>
+          <moduleType
+               types="jst.web"
+               versions="2.2, 2.3, 2.4">
+     	</moduleType>
+      </runtimeType>
+   </extension>
+   <extension point="org.eclipse.wst.server.core.serverTypes">
+      <serverType
+            behaviourClass="org.wso2.developerstudio.eclipse.carbonserver40.internal.CarbonServerBehavior40"
+            class="org.wso2.developerstudio.eclipse.carbonserver40.internal.CarbonServer40"
+            description="WSO2 Carbon 4.0 based server"
+            hasConfiguration="false"
+            id="org.wso2.developerstudio.eclipse.carbon.server40"
+            initialState="stopped"
+            launchConfigId="org.eclipse.jst.server.generic.core.launchConfigurationType"
+            launchModes="run, debug"
+            name="WSO2 Carbon 4.0 based server"
+            runtime="true"
+            runtimeTypeId="org.wso2.developerstudio.eclipse.carbon.runtime40"
+            startBeforePublish="true"
+            startTimeout="600000"
+            stopTimeout="15000"
+            supportsRemoteHosts="false">
+      </serverType>
+   </extension>
+   <extension point="org.eclipse.jst.server.core.runtimeClasspathProviders">
+      <runtimeClasspathProvider
+            class="org.eclipse.jst.server.generic.core.internal.GenericServerRuntimeTargetHandler"
+            id="org.wso2.developerstudio.eclipse.carbon.runtime40.runtimeClasspathProvider"
+            runtimeTypeIds="org.wso2.developerstudio.eclipse.carbon.*">
+      </runtimeClasspathProvider>
+   </extension>
+   <extension
+         point="org.eclipse.wst.common.project.facet.core.runtimes">
+      <runtime-component-type
+            id="org.wso2.wsf.ide.server.carbon.v40">
+      </runtime-component-type>
+      <runtime-component-version
+            type="org.wso2.wsf.ide.server.carbon.v40"
+            version="1.0">
+      </runtime-component-version>
+      <supported>
+         <facet
+               id="jst.web"
+               version="2.2, 2.3, 2.4">
+         </facet>
+         <facet
+               id="org.wso2.developerstudio.eclipse.carbon.facetId"
+               version="1.0">
+         </facet>         
+         <runtime-component
+               id="org.wso2.wsf.ide.server.carbon.v40"
+               version="1.0">
+         </runtime-component>
+      </supported>
+      <adapter>
+         <runtime-component
+               id="org.wso2.wsf.ide.server.carbon.v40">
+         </runtime-component>
+         <factory
+               class="org.eclipse.jst.server.core.internal.RuntimeClasspathProvider$Factory">
+         </factory>
+         <type
+               class="org.eclipse.jst.common.project.facet.core.IClasspathProvider">
+         </type>
+      </adapter>
+      <adapter>
+         <runtime-component
+               id="org.wso2.wsf.ide.server.carbon.v40">
+         </runtime-component>
+         <factory
+               class="org.eclipse.jst.server.ui.internal.RuntimeLabelProvider$Factory">
+         </factory>
+         <type
+               class="org.eclipse.wst.common.project.facet.ui.IRuntimeComponentLabelProvider">
+         </type>
+      </adapter>
+   </extension>
+   <extension
+         point="org.eclipse.jst.server.core.runtimeFacetMappings">
+      <runtimeFacetMapping
+            runtime-component="org.wso2.wsf.ide.server.carbon.v40"
+            runtimeTypeId="org.wso2.developerstudio.eclipse.carbon.runtime40"
+            version="1.0">
+      </runtimeFacetMapping>
+   </extension>
+   
+  <extension point="org.eclipse.wst.server.ui.wizardFragments">
+      <fragment
+            class="org.wso2.developerstudio.eclipse.carbonserver.base.internal.CarbonRuntimeWizardFragment"
+            id="org.eclipse.jst.server.generic.runtime"
+            typeIds="org.wso2.developerstudio.eclipse.carbon.runtime40">
+      </fragment>
+      <fragment
+            class="org.wso2.developerstudio.eclipse.carbonserver.base.internal.CarbonServerWizardFragment"
+            id="org.eclipse.jst.server.generic.server"
+            typeIds="org.wso2.developerstudio.eclipse.carbon.server40">
+      </fragment>
+   </extension>
+   <extension point="org.eclipse.wst.server.ui.serverImages">
+      <image
+            icon="icons/wsas.ico"
+            id="org.eclipse.jst.server.generic.image"
+            typeIds="org.wso2.developerstudio.eclipse.carbon.runtime40">
+      </image>
+      <image
+            icon="icons/wsas.ico"
+            id="org.eclipse.jst.server.generic.image"
+            typeIds="org.wso2.developerstudio.eclipse.carbon.server40">
+      </image>
+   </extension>
+   
+   <extension point="org.eclipse.wst.server.ui.serverImages">
+      <image
+            icon="icons/wsas.ico"
+            id="org.eclipse.jst.server.generic.image"
+            typeIds="org.wso2.developerstudio.eclipse.carbon.runtime40">
+      </image>
+      <image
+            icon="icons/wsas.ico"
+            id="org.eclipse.jst.server.generic.image"
+            typeIds="org.wso2.developerstudio.eclipse.carbon.server40">
+      </image>
+   </extension>
+  <extension point="org.eclipse.jst.server.generic.core.serverdefinition">
+      <serverdefinition
+            definitionfile="serverdefinition/carbon.definition.xml"
+            id="org.wso2.developerstudio.eclipse.carbon.runtime40">
+      </serverdefinition>
+   </extension>
+   
+	<extension
+         point="org.wso2.developerstudio.eclipse.carbonserver.base.register">
+         <server 
+            name="WSO2 Carbon 4.0"
+            id="org.wso2.developerstudio.eclipse.carbon.server40"
+            server-id="org.wso2.developerstudio.eclipse.carbon.server40"
+            class="org.wso2.developerstudio.eclipse.carbonserver40.operations.CarbonOperationsManager40" />
+   </extension>
+  <extension point="org.eclipse.wst.server.ui.editorPageSections">
+      <section
+         id="org.wso2.developerstudio.eclipse.server.carbon.v40.configuration.editor.port"
+         order="10"
+         insertionId="org.eclipse.wst.server.editor.overview.left"
+         typeIds="org.wso2.developerstudio.eclipse.carbon.server40"
+         class="org.wso2.developerstudio.eclipse.carbonserver40.configuration.ConfigurationPortEditorSection">
+      </section>
+      <section
+         id="org.wso2.developerstudio.eclipse.server.carbon.v40.configuration.editor.other"
+         order="10"
+         insertionId="org.eclipse.wst.server.editor.overview.right"
+         typeIds="org.wso2.developerstudio.eclipse.carbon.server40"
+         class="org.wso2.developerstudio.eclipse.carbonserver40.configuration.ConfigurationOtherEditorSection">
+      </section>
+      <!--section
+         id="org.wso2.developerstudio.eclipse.server.carbon.v40.configuration.editor.credentials"
+         order="10"
+         insertionId="org.eclipse.wst.server.editor.overview.right"
+         typeIds="org.wso2.developerstudio.eclipse.carbon.server40"
+         class="org.wso2.developerstudio.eclipse.carbonserver40.configuration.ConfigurationCredentialsEditorSection">
+  	</section-->
+   </extension>
+  <extension
+        point="org.wso2.developerstudio.eclipse.carbonserver.base.serverProperties">
+     <properties
+           class="org.wso2.developerstudio.eclipse.carbonserver40.ServerProperties"
+           serverId="org.wso2.developerstudio.eclipse.carbon.runtime40">
+     </properties>
+  </extension>
+</plugin>

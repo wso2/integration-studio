@@ -1,0 +1,75 @@
+<wsp:Policy wsu:Id="kerberossignandencrypt"
+	xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+	xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+	<wsp:ExactlyOne>
+		<wsp:All>
+			<sp:SymmetricBinding
+				xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+				<wsp:Policy>
+					<sp:ProtectionToken>
+						<wsp:Policy>
+							<sp:KerberosToken
+								sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/AlwaysToRecipient">
+								<wsp:Policy>
+
+									<sp:WssKerberosV5ApReqToken11 />
+								</wsp:Policy>
+							</sp:KerberosToken>
+						</wsp:Policy>
+					</sp:ProtectionToken>
+					<sp:AlgorithmSuite>
+						<wsp:Policy>
+							<sp:Basic256 />
+						</wsp:Policy>
+
+					</sp:AlgorithmSuite>
+					<sp:Layout>
+						<wsp:Policy>
+							<sp:Lax />
+						</wsp:Policy>
+					</sp:Layout>
+					<sp:IncludeTimestamp />
+					<sp:OnlySignEntireHeadersAndBody />
+				</wsp:Policy>
+
+			</sp:SymmetricBinding>
+			<sp:SignedParts
+				xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+				<sp:Body />
+			</sp:SignedParts>
+			<sp:Wss11 xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+				<sp:Policy>
+					<sp:MustSupportRefKeyIdentifier />
+					<sp:MustSupportRefIssuerSerial />
+					<sp:MustSupportRefThumbprint />
+
+					<sp:RequireSignatureConfirmation />
+				</sp:Policy>
+			</sp:Wss11>
+			<sp:Trust10 xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+				<wsp:Policy>
+					<sp:RequireClientEntropy />
+					<sp:RequireServerEntropy />
+					<sp:MustSupportIssuedTokens />
+				</wsp:Policy>
+			</sp:Trust10>
+		</wsp:All>
+	</wsp:ExactlyOne>
+	<rampart:RampartConfig xmlns:rampart="http://ws.apache.org/rampart/policy">
+		<rampart:timestampPrecisionInMilliseconds>true
+		</rampart:timestampPrecisionInMilliseconds>
+		<rampart:timestampTTL>300</rampart:timestampTTL>
+		<rampart:timestampMaxSkew>300</rampart:timestampMaxSkew>
+		<rampart:timestampStrict>false</rampart:timestampStrict>
+		<rampart:nonceLifeTime>300</rampart:nonceLifeTime>
+		<rampart:kerberosConfig>
+			<rampart:property name="service.principal.name"></rampart:property>
+		</rampart:kerberosConfig>
+	</rampart:RampartConfig>
+	<sec:CarbonSecConfig xmlns:sec="http://www.wso2.org/products/carbon/security">
+		<sec:Kerberos>
+			<sec:property name="service.principal.password"></sec:property>
+			<sec:property name="service.principal.name"></sec:property>
+		</sec:Kerberos>
+	</sec:CarbonSecConfig>
+</wsp:Policy>

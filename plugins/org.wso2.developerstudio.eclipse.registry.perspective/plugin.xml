@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+                     
+<extension point="org.wso2.developerstudio.eclipse.dashboad.link">        
+         <wizardLink category="dashboard.category.greg"
+                    id="dashboard.wizardLink.registry.pespective"
+                    wizard="org.wso2.developerstudio.registry.remote.registry.perspective.action"
+                    priority="1">
+        </wizardLink>
+        
+        <customAction
+                class="org.wso2.developerstudio.eclipse.registry.perspective.intro.action.ShowRegistryPerspective"
+                id="org.wso2.developerstudio.registry.remote.registry.perspective.action">
+        </customAction>
+    </extension>
+                     
+	<extension point="org.eclipse.ui.perspectives">
+		<perspective id="org.wso2.developerstudio.registry.remote.registry.pespective"
+			name="WSO2 Registry" icon="icons/registry.png"
+			class="org.wso2.developerstudio.eclipse.registry.perspective.RegistryPerspectiveFactory" />
+	</extension>
+	
+
+ 
+   
+   
+</plugin>

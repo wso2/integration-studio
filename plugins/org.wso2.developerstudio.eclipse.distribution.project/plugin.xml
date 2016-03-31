@@ -1,0 +1,507 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension-point id="org.wso2.developerstudio.register.server.role" name="Register New Server Roles" schema="schema/org.wso2.developerstudio.register.server.role.exsd"/>
+   <extension-point id="org.wso2.developerstudio.register.artifact.priority.mapping" name="Artifact Priority Mapping" schema="schema/org.wso2.developerstudio.register.artifact.priority.mapping.exsd"/>
+   <extension-point id="org.wso2.developerstudio.register.artifact.mapping" name="Register Artifact mapping" schema="schema/org.wso2.developerstudio.register.artifact.mapping.exsd"/>
+   <extension-point id="org.wso2.developerstudio.eclipse.capp.artifacts.provider" name="org.wso2.developerstudio.eclipse.capp.artifacts.provider" schema="schema/org.wso2.developerstudio.eclipse.capp.artifacts.provider.exsd"/>
+	<extension point="org.eclipse.ui.newWizards">
+		<wizard name="Composite Application Project" 
+			category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.eclipse.capp.distribution"
+			class="org.wso2.developerstudio.eclipse.distribution.project.ui.wizard.DistributionProjectWizard"
+            finalPerspective="org.eclipse.jst.j2ee.J2EEPerspective"
+			id="org.wso2.developerstudio.eclipse.distribution.project"
+			wizardManifest="project_wizard.xml"
+			icon="icons/distribution-project-12.png"
+			project="true">
+			<description>Composite Application Project</description>
+		</wizard>
+   </extension>
+   
+   <extension point="org.eclipse.ui.newWizards">
+		<primaryWizard id="org.wso2.developerstudio.eclipse.distribution.project" />
+	</extension>
+   	<extension point="org.eclipse.ui.perspectiveExtensions">
+		<perspectiveExtension targetID="*">
+      		<newWizardShortcut id="org.wso2.developerstudio.eclipse.distribution.project"/>
+		</perspectiveExtension>
+	</extension>	
+   
+   <extension point="org.eclipse.core.resources.natures"
+		id="org.wso2.developerstudio.eclipse.distribution.project.nature" name="Composite Application Project Nature">
+		<runtime>
+			<run
+				class="org.wso2.developerstudio.eclipse.distribution.project.nature.DistributionProjectNature">
+			</run>
+		</runtime>
+	</extension>
+	<extension point="org.eclipse.ui.ide.projectNatureImages">
+		<image id="org.wso2.developerstudio.eclipse.dist.project.natureImage"
+			natureId="org.wso2.developerstudio.eclipse.distribution.project.nature" icon="icons/distribution-project-12.png">
+		</image>
+	</extension>
+	   <extension
+         point="org.eclipse.ui.editors">
+      <editor
+            class="org.wso2.developerstudio.eclipse.distribution.project.editor.DistProjectEditor"
+            id="org.wso2.developerstudio.eclipse.distribution.project.editor.DistProjectEditor"
+            extensions="xml"
+            name="Composite Application Project POM Editor">
+            <contentTypeBinding
+				contentTypeId="org.wso2.developerstudio.eclipse.distribution.project.contenttype.pom">
+			</contentTypeBinding>
+      </editor>
+   </extension>
+   <extension point="org.eclipse.core.contenttype.contentTypes">
+		<content-type base-type="org.eclipse.core.runtime.xml"
+			id="org.wso2.developerstudio.eclipse.distribution.project.contenttype.pom"
+			name="C-App POM File" priority="high" file-names="pom.xml">
+			<describer
+				class="org.wso2.developerstudio.eclipse.distribution.project.util.POMDescriber">
+			</describer>
+		</content-type>
+	</extension>
+	
+	<extension point="org.eclipse.ui.navigator.viewer" id="capp-navigator-viewbinding">
+      	<viewerActionBinding viewerId="org.eclipse.ui.navigator.ProjectExplorer">
+         	<includes>
+            	<actionExtension pattern="org.wso2.developerstudio.eclipse.distribution.project.navigatorActionProvider"/>
+         	</includes>
+      	</viewerActionBinding>
+      	<viewerActionBinding viewerId="org.eclipse.ui.navigator.PackageExplorer">
+         	<includes>
+            	<actionExtension pattern="org.wso2.developerstudio.eclipse.distribution.project.navigatorActionProvider"/>
+         	</includes>
+      	</viewerActionBinding>
+	</extension>
+
+
+	<extension point="org.eclipse.ui.navigator.navigatorContent">  
+        <actionProvider
+             class="org.wso2.developerstudio.eclipse.distribution.project.provider.NavigatorActionProvider"
+             id="org.wso2.developerstudio.eclipse.distribution.project.navigatorActionProvider"> 
+			<enablement>
+     			<adapt type="org.eclipse.core.resources.IFile" /> 
+          	</enablement>
+  		</actionProvider>
+	</extension>
+	
+	
+	<extension point="org.eclipse.ui.exportWizards">
+		<category id="org.wso2.developerstudio.eclipse.distribution.export"
+			name="WSO2 Platform Distribution" />
+	</extension>
+		<extension point="org.eclipse.ui.exportWizards">
+		<wizard id="org.wso2.developerstudio.eclipse.distribution.exportAsCar" name="Composite Application Archive [CAR]"
+			class="org.wso2.developerstudio.eclipse.distribution.project.ui.wizard.DistributionProjectExportWizard" icon="icons/car.png"
+			category="org.wso2.developerstudio.eclipse.distribution.export">
+			<description>
+				Create a carbon application archive from a carbon application project 
+			</description>
+			<selection class="org.eclipse.core.resources.IProject" />
+		</wizard>
+	</extension>
+	
+	        <extension point="org.eclipse.ui.popupMenus">
+                <objectContribution
+              objectClass="org.eclipse.core.resources.IProject"
+                    id="org.wso2.developerstudio.eclipse.distribution.project.popup.export">
+               <action
+                        label="Export Composite Application Project"
+                        icon="icons/car.png"
+                   class="org.wso2.developerstudio.eclipse.distribution.project.ui.action.ExportDistributionAction"
+                        id="org.wso2.developerstudio.eclipse.distribution.project.ui.action.export">
+               </action>
+               <enablement>
+						<adapt type="org.eclipse.core.resources.IProject">
+							<test property="org.eclipse.core.resources.projectNature"
+								value="org.wso2.developerstudio.eclipse.distribution.project.nature" />
+						</adapt>
+				</enablement>
+               </objectContribution>
+        </extension>
+         <extension
+               point="org.wso2.developerstudio.eclipse.project.export.handler">
+            <handler
+                  class="org.wso2.developerstudio.eclipse.distribution.project.export.CarExportHandler"
+                  id="org.wso2.developerstudio.eclipse.distribution.project.export.handler"
+                  type="carbon/application">
+            </handler>
+         </extension>
+        
+		<extension point="org.eclipse.ui.exportWizards">
+		<wizard id="org.wso2.developerstudio.eclipse.distribution.exportAsArtifact" name="Deployable WSO2 Archive"
+			class="org.wso2.developerstudio.eclipse.distribution.project.ui.wizard.ProjectExportWizard" icon="icons/car.png"
+			category="org.wso2.developerstudio.eclipse.distribution.export">
+			<description>
+				Create a deployable archive from a artifact project 
+			</description>
+			<selection class="org.eclipse.core.resources.IProject" />
+		</wizard>
+	</extension>
+	
+	<extension point="org.eclipse.ui.importWizards">
+		<category id="org.wso2.developerstudio.eclipse.import"
+			name="WSO2" />
+	</extension>
+	
+	
+	<extension point="org.eclipse.ui.importWizards">
+		<wizard id="org.wso2.developerstudio.eclipse.distribution.exportAsArtifact" name="Existing WSO2 Projects into workspace"
+			class="org.wso2.developerstudio.eclipse.distribution.project.ui.wizard.ProjectImportWizard" icon="icons/car.png"
+			category="org.wso2.developerstudio.eclipse.import">
+			<description>
+				Existing WSO2 Projects into workspace
+			</description>
+			<selection class="org.eclipse.core.resources.IResource" />
+		</wizard>
+	</extension>
+	
+		        <extension point="org.eclipse.ui.popupMenus">
+                <objectContribution
+              objectClass="org.eclipse.core.resources.IProject"
+                    id="org.wso2.developerstudio.eclipse.distribution.project.popup.export">
+               <action
+                        label="Export Project as Deployable Archive"
+                        icon="icons/car.png"
+                   class="org.wso2.developerstudio.eclipse.distribution.project.ui.action.ExportProjectAction"
+                        id="org.wso2.developerstudio.eclipse.distribution.project.ui.action.artifactexport">
+               </action>
+               <enablement>
+						<adapt type="org.eclipse.core.resources.IProject">
+						 <or>
+							<test property="org.eclipse.core.resources.projectNature"
+								value="org.wso2.developerstudio.eclipse.axis2.project.nature" />
+							<test property="org.eclipse.core.resources.projectNature"
+								value="org.eclipse.php.core.JAGNature" />
+							<test property="org.eclipse.core.resources.projectNature"
+								value="org.wso2.developerstudio.eclipse.jaxws.project.nature" />
+							<test property="org.eclipse.core.resources.projectNature"
+								value="org.wso2.developerstudio.eclipse.bpel.project.nature" />
+							<test property="org.eclipse.core.resources.projectNature"
+								value="org.wso2.developerstudio.eclipse.artifact.ds.validator.project.nature" />
+							<test property="org.eclipse.core.resources.projectNature"
+								value="org.wso2.developerstudio.eclipse.webapp.project.nature" />
+							<!--test property="org.eclipse.core.resources.projectNature"
+								value="org.wso2.developerstudio.eclipse.esb.project.nature" /-->
+							<test property="org.eclipse.core.resources.projectNature"
+								value="org.wso2.developerstudio.eclipse.artifact.gadget.project.nature" />
+							<test property="org.eclipse.core.resources.projectNature"
+								value="org.wso2.developerstudio.eclipse.library.project.nature" />
+							<test property="org.eclipse.core.resources.projectNature"
+								value="org.wso2.developerstudio.eclipse.artifact.mediator.project.nature" />
+							<test property="org.eclipse.core.resources.projectNature"
+								value="org.wso2.developerstudio.eclipse.registry.filter.project.nature" />
+							<test property="org.eclipse.core.resources.projectNature"
+								value="org.wso2.developerstudio.eclipse.artifact.carbon.ui.bundle.project.nature" />
+							<test property="org.eclipse.core.resources.projectNature"
+								value="org.wso2.developerstudio.eclipse.registry.handler.project.nature" />
+							<test property="org.eclipse.core.resources.projectNature"
+								value="org.wso2.developerstudio.eclipse.jaxrs.project.nature" />
+						    <!-- <test property="org.eclipse.core.resources.projectNature"
+								value="org.wso2.developerstudio.eclipse.qos.project.nature" /> -->
+		 				</or>
+						</adapt>
+				</enablement>
+               </objectContribution>
+        </extension>
+         <!--<extension
+               point="org.wso2.developerstudio.eclipse.project.export.handler">
+            <handler
+                  class="org.wso2.developerstudio.eclipse.distribution.project.export.CarExportHandler"
+                  id="org.wso2.developerstudio.eclipse.distribution.project.export.handler"
+                  type="carbon/application">
+            </handler>
+         </extension>-->
+         
+          <extension
+       point="org.wso2.developerstudio.eclipse.carbonserver.publisher">
+    <publisher
+          class="org.wso2.developerstudio.eclipse.distribution.project.publisher.CAppProjectPublisher"
+          id="org.wso2.developerstudio.eclipse.capp.project.publisher30"
+          serverid="org.wso2.developerstudio.eclipse.carbon.server30">
+    </publisher>
+    <publisher
+          class="org.wso2.developerstudio.eclipse.distribution.project.publisher.CAppProjectPublisher"
+          id="org.wso2.developerstudio.eclipse.capp.project.publisher31"
+          serverid="org.wso2.developerstudio.eclipse.carbon.server31">
+    </publisher>
+    <publisher
+          class="org.wso2.developerstudio.eclipse.distribution.project.publisher.CAppProjectPublisher"
+          id="org.wso2.developerstudio.eclipse.capp.project.publisher32"
+          serverid="org.wso2.developerstudio.eclipse.carbon.server32">
+    </publisher>
+    <publisher
+          class="org.wso2.developerstudio.eclipse.distribution.project.publisher.CAppProjectPublisher"
+          id="org.wso2.developerstudio.eclipse.capp.project.publisher40"
+          serverid="org.wso2.developerstudio.eclipse.carbon.server40">
+    </publisher>
+    <publisher
+          class="org.wso2.developerstudio.eclipse.distribution.project.publisher.CAppProjectPublisher"
+          id="org.wso2.developerstudio.eclipse.capp.project.publisher42"
+          serverid="org.wso2.developerstudio.eclipse.carbon.server42">
+    </publisher>
+    <publisher
+          class="org.wso2.developerstudio.eclipse.distribution.project.publisher.CAppProjectPublisher"
+          id="org.wso2.developerstudio.eclipse.capp.project.publisher44"
+          serverid="org.wso2.developerstudio.eclipse.carbon.server44">
+    </publisher>
+	<publisher
+          class="org.wso2.developerstudio.eclipse.distribution.project.publisher.CAppProjectRemotePublisher"
+          id="org.wso2.developerstudio.eclipse.capp.project.publisher.remote"
+          serverid="org.wso2.developerstudio.eclipse.carbon.server.remote">          
+    </publisher>
+ </extension>
+ <extension
+       point="org.wso2.developerstudio.register.server.role">
+        <register.serverRole
+       artifactType="service/axis2"
+       serverRole="ApplicationServer"/>
+		 <register.serverRole
+       artifactType="webapp/jaxws"
+       serverRole="ApplicationServer"/>
+		 <register.serverRole
+       artifactType="service/dataservice"
+       serverRole="DataServicesServer"/>
+ 		<register.serverRole
+       artifactType="cep/bucket"
+       serverRole="ComplexEventProcessor"/>
+ 		<register.serverRole
+       artifactType="synapse/sequence"
+       serverRole="EnterpriseServiceBus"/>
+ 		<register.serverRole
+       artifactType="synapse/endpoint"
+       serverRole="EnterpriseServiceBus"/>
+ 		<register.serverRole
+       artifactType="synapse/proxy-service"
+       serverRole="EnterpriseServiceBus"/>
+ 		<register.serverRole
+       artifactType="synapse/configuration"
+       serverRole="EnterpriseServiceBus"/>
+ 		<register.serverRole
+       artifactType="registry/resource"
+       serverRole="GovernanceRegistry"/>
+		 <register.serverRole
+       artifactType="bpel/workflow"
+       serverRole="BusinessProcessServer"/>
+		 <register.serverRole
+       artifactType="wso2/gadget"
+       serverRole="GadgetServer"/>
+		 <register.serverRole
+       artifactType="web/application"
+       serverRole="ApplicationServer"/>
+		 <register.serverRole
+       artifactType="war"
+       serverRole="ApplicationServer"/>
+		 <register.serverRole
+       artifactType="jar"
+       serverRole="ApplicationServer"/>
+		 <register.serverRole
+       artifactType="lib/carbon/ui"
+       serverRole="ApplicationServer"/>
+		 <register.serverRole
+       artifactType="lib/synapse/mediator"
+       serverRole="EnterpriseServiceBus"/>
+		 <register.serverRole
+       artifactType="lib/dataservice/validator"
+       serverRole="DataServicesServer"/>
+		 <register.serverRole
+       artifactType="lib/registry/handlers"
+       serverRole="GovernanceRegistry"/>
+		 <register.serverRole
+       artifactType="lib/registry/filter"
+       serverRole="GovernanceRegistry"/>
+		 <register.serverRole
+       artifactType="lib/library/bundle"
+       serverRole="ApplicationServer"/>
+		 <register.serverRole
+       artifactType="synapse/local-entry"
+       serverRole="EnterpriseServiceBus"/>
+		 <register.serverRole
+       artifactType="synapse/event-source"
+       serverRole="EnterpriseServiceBus"/>
+		 <register.serverRole
+       artifactType="synapse/task"
+       serverRole="EnterpriseServiceBus"/>
+		 <register.serverRole
+       artifactType="synapse/api"
+       serverRole="EnterpriseServiceBus"/>
+		 <register.serverRole
+       artifactType="synapse/template"
+       serverRole="EnterpriseServiceBus"/>
+		 <register.serverRole
+       artifactType="synapse/message-store"
+       serverRole="EnterpriseServiceBus"/>
+		 <register.serverRole
+       artifactType="synapse/priority-executor"
+       serverRole="EnterpriseServiceBus"/>
+		 <register.serverRole
+       artifactType="synapse/message-processors"
+       serverRole="EnterpriseServiceBus"/>
+		 <register.serverRole
+       artifactType="service/rule"
+       serverRole="BusinessRulesServer"/>
+		 <register.serverRole
+       artifactType="service/meta"
+       serverRole="ApplicationServer"/>
+		 <register.serverRole
+       artifactType="jaggery/app"
+       serverRole="JaggeryServer"/>
+ </extension>
+ 
+ <extension
+  point="org.wso2.developerstudio.register.artifact.priority.mapping">
+      <!--lib type artifacts get third priority.-->
+ 		<artifact.priority
+      artifactType="lib/synapse/mediator"
+      priority="3"/>
+		 <artifact.priority
+      artifactType="synapse/lib"
+      priority="3"/>
+		 <artifact.priority
+      artifactType="lib/registry/filter"
+      priority="3"/>
+		 <artifact.priority
+      artifactType="lib/library/bundle"
+      priority="3"/>
+		 <artifact.priority
+      artifactType="lib/dataservice/validator"
+      priority="3"/>
+		 <artifact.priority
+      artifactType="lib/registry/handlers"
+      priority="3"/>
+		 <artifact.priority
+      artifactType="lib/carbon/ui"
+      priority="3"/>
+		<!--Service meta should deploy prior to the services. Service meta
+		  artifacts gets high priority over services (proxy-service,
+		  dataservice, axis2)-->
+		<artifact.priority
+      artifactType="service/meta"
+      priority="4"/>
+		<!--equal priority for artifacts-->
+		 <artifact.priority
+      artifactType="jaggery/app"
+      priority="5"/>
+		 <artifact.priority
+      artifactType="bpel/workflow"
+      priority="5"/>		
+		 <artifact.priority
+      artifactType="webapp/jaxws"
+      priority="5"/>		
+		 <artifact.priority
+      artifactType="service/dataservice"
+      priority="5"/>
+		 <artifact.priority
+      artifactType="cep/bucket"
+      priority="5"/>
+		 <artifact.priority
+      artifactType="carbon/application"
+      priority="5"/>
+		 <artifact.priority
+      artifactType="synapse/endpoint"
+      priority="5"/>
+		 <artifact.priority
+      artifactType="web/application"
+      priority="5"/>	
+		 <artifact.priority
+      artifactType="service/axis2"
+      priority="5"/>
+		 <artifact.priority
+      artifactType="synapse/sequence"
+      priority="5"/>
+		 <artifact.priority
+      artifactType="synapse/configuration"
+      priority="5"/>
+		 <artifact.priority
+      artifactType="synapse/event-source"
+      priority="5"/>
+		 <artifact.priority
+      artifactType="synapse/priority-executor"
+      priority="5"/>
+		 <artifact.priority
+      artifactType="wso2/gadget"
+      priority="5"/>
+		 <artifact.priority
+      artifactType="service/rule"
+      priority="5"/>
+		 <artifact.priority
+      artifactType="synapse/proxy-service"
+      priority="6"/>
+  </extension>
+  <extension
+        point="org.wso2.developerstudio.register.artifact.mapping">
+         <artifact.mapping
+        artifactType="jaggery/app"
+        fileExtension="zip"/>
+		 <artifact.mapping
+        artifactType="bpel/workflow"
+        fileExtension="zip"/>
+		 <artifact.mapping
+        artifactType="webapp/jaxws"
+        fileExtension="war"/>
+		 <artifact.mapping
+        artifactType="lib/library/bundle"
+        fileExtension="jar"/>
+		 <artifact.mapping
+        artifactType="service/dataservice"
+        fileExtension="dbs"/>
+		 <artifact.mapping
+        artifactType="event/stream"
+        fileExtension="json"/>
+		 <artifact.mapping
+        artifactType="event/publisher"
+        fileExtension="xml"/>
+		 <artifact.mapping
+        artifactType="event/receiver"
+        fileExtension="xml"/>
+		 <artifact.mapping
+        artifactType="event/execution-plan"
+        fileExtension="siddhiql"/>	
+		 <artifact.mapping
+        artifactType="carbon/application"
+        fileExtension="car"/>
+		 <artifact.mapping
+        artifactType="registry/resource"
+        fileExtension="zip"/>
+		 <artifact.mapping
+        artifactType="lib/dataservice/validator"
+        fileExtension="jar"/>
+		 <artifact.mapping
+        artifactType="synapse/endpoint"
+        fileExtension="xml"/>
+		 <artifact.mapping
+        artifactType="web/application"
+        fileExtension="war"/>
+		 <artifact.mapping
+        artifactType="lib/carbon/ui"
+        fileExtension="jar"/>
+		 <artifact.mapping
+        artifactType="service/axis2"
+        fileExtension="aar"/>
+		 <artifact.mapping
+        artifactType="synapse/event-source"
+        fileExtension="xml"/>
+		 <artifact.mapping
+        artifactType="synapse/priority-executor"
+        fileExtension="xml"/>
+		 <artifact.mapping
+        artifactType="wso2/gadget"
+        fileExtension="dar"/>
+		 <artifact.mapping
+        artifactType="lib/synapse/mediator"
+        fileExtension="jar"/>
+		 <artifact.mapping
+        artifactType="service/rule"
+        fileExtension="aar"/>
+		 <artifact.mapping
+        artifactType="service/meta"
+        fileExtension="xml"/>
+		 <artifact.mapping
+        artifactType="jaggery/app"
+        fileExtension="zip"/>
+		 <artifact.mapping
+        artifactType="synapse/lib"
+        fileExtension="zip"/>
+  </extension>
+</plugin>

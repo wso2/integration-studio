@@ -1,0 +1,144 @@
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ax215="http://common.core.carbon.wso2.org/xsd" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:ns="http://authentication.services.core.carbon.wso2.org" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://authentication.services.core.carbon.wso2.org">
+    <wsdl:documentation>AuthenticationAdmin</wsdl:documentation>
+    <wsdl:types>
+        <xs:schema xmlns:ax217="http://common.core.carbon.wso2.org/xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://authentication.services.core.carbon.wso2.org">
+            <xs:import namespace="http://common.core.carbon.wso2.org/xsd" />
+            <xs:complexType name="Exception">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="Exception" nillable="true" type="xs:anyType" />
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="AuthenticationException">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="AuthenticationException" nillable="true" type="ax217:AuthenticationException" />
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="login">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
+                        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+                        <xs:element minOccurs="0" name="remoteAddress" nillable="true" type="xs:string" />
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="loginResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" type="xs:boolean" />
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+        <xs:schema xmlns:ax216="http://authentication.services.core.carbon.wso2.org" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://common.core.carbon.wso2.org/xsd">
+            <xs:import namespace="http://authentication.services.core.carbon.wso2.org" />
+            <xs:complexType name="AuthenticationException">
+                <xs:complexContent>
+                    <xs:extension base="ax216:Exception">
+                        <xs:sequence />
+                    </xs:extension>
+                </xs:complexContent>
+            </xs:complexType>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="logoutRequest" />
+    <wsdl:message name="AuthenticationException">
+        <wsdl:part name="parameters" element="ns:AuthenticationException" />
+    </wsdl:message>
+    <wsdl:message name="loginRequest">
+        <wsdl:part name="parameters" element="ns:login" />
+    </wsdl:message>
+    <wsdl:message name="loginResponse">
+        <wsdl:part name="parameters" element="ns:loginResponse" />
+    </wsdl:message>
+    <wsdl:portType name="AuthenticationAdminPortType">
+        <wsdl:operation name="logout">
+            <wsdl:input message="ns:logoutRequest" wsaw:Action="urn:logout" />
+            <wsdl:fault message="ns:AuthenticationException" name="AuthenticationException" wsaw:Action="urn:logoutAuthenticationException" />
+        </wsdl:operation>
+        <wsdl:operation name="login">
+            <wsdl:input message="ns:loginRequest" wsaw:Action="urn:login" />
+            <wsdl:output message="ns:loginResponse" wsaw:Action="urn:loginResponse" />
+            <wsdl:fault message="ns:AuthenticationException" name="AuthenticationException" wsaw:Action="urn:loginAuthenticationException" />
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="AuthenticationAdminSoap11Binding" type="ns:AuthenticationAdminPortType">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+        <wsdl:operation name="logout">
+            <soap:operation soapAction="urn:logout" style="document" />
+            <wsdl:input>
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:fault name="AuthenticationException">
+                <soap:fault use="literal" name="AuthenticationException" />
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="login">
+            <soap:operation soapAction="urn:login" style="document" />
+            <wsdl:input>
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" />
+            </wsdl:output>
+            <wsdl:fault name="AuthenticationException">
+                <soap:fault use="literal" name="AuthenticationException" />
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="AuthenticationAdminSoap12Binding" type="ns:AuthenticationAdminPortType">
+        <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+        <wsdl:operation name="logout">
+            <soap12:operation soapAction="urn:logout" style="document" />
+            <wsdl:input>
+                <soap12:body use="literal" />
+            </wsdl:input>
+            <wsdl:fault name="AuthenticationException">
+                <soap12:fault use="literal" name="AuthenticationException" />
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="login">
+            <soap12:operation soapAction="urn:login" style="document" />
+            <wsdl:input>
+                <soap12:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal" />
+            </wsdl:output>
+            <wsdl:fault name="AuthenticationException">
+                <soap12:fault use="literal" name="AuthenticationException" />
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="AuthenticationAdminHttpBinding" type="ns:AuthenticationAdminPortType">
+        <http:binding verb="POST" />
+        <wsdl:operation name="logout">
+            <http:operation location="logout" />
+            <wsdl:input>
+                <mime:content type="text/xml" part="logout" />
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="login">
+            <http:operation location="login" />
+            <wsdl:input>
+                <mime:content type="text/xml" part="login" />
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="login" />
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="AuthenticationAdmin">
+        <wsdl:port name="AuthenticationAdminHttpsSoap11Endpoint" binding="ns:AuthenticationAdminSoap11Binding">
+            <soap:address location="https://10.100.1.227:9443/services/AuthenticationAdmin.AuthenticationAdminHttpsSoap11Endpoint/" />
+        </wsdl:port>
+        <wsdl:port name="AuthenticationAdminHttpsSoap12Endpoint" binding="ns:AuthenticationAdminSoap12Binding">
+            <soap12:address location="https://10.100.1.227:9443/services/AuthenticationAdmin.AuthenticationAdminHttpsSoap12Endpoint/" />
+        </wsdl:port>
+        <wsdl:port name="AuthenticationAdminHttpsEndpoint" binding="ns:AuthenticationAdminHttpBinding">
+            <http:address location="https://10.100.1.227:9443/services/AuthenticationAdmin.AuthenticationAdminHttpsEndpoint/" />
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

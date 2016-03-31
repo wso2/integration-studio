@@ -1,0 +1,125 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<units size='2'>
+  <unit id='org.wso2.developerstudio.eclipse.registry.manager.remote' version='4.1.0.201603310520'>
+    <update id='org.wso2.developerstudio.eclipse.registry.manager.remote' range='[0.0.0,4.1.0.201603310520)' severity='0'/>
+    <properties size='4'>
+      <property name='org.eclipse.equinox.p2.name' value='App'/>
+      <property name='maven-groupId' value='org.wso2.developerstudio'/>
+      <property name='maven-artifactId' value='org.wso2.developerstudio.eclipse.registry.manager.remote'/>
+      <property name='maven-version' value='4.1.0-SNAPSHOT'/>
+    </properties>
+    <provides size='7'>
+      <provided namespace='org.eclipse.equinox.p2.iu' name='org.wso2.developerstudio.eclipse.registry.manager.remote' version='4.1.0.201603310520'/>
+      <provided namespace='osgi.bundle' name='org.wso2.developerstudio.eclipse.registry.manager.remote' version='4.1.0.201603310520'/>
+      <provided namespace='java.package' name='org.wso2.developerstudio.eclipse.registry.manager.remote' version='4.1.0'/>
+      <provided namespace='java.package' name='org.wso2.developerstudio.eclipse.registry.manager.remote.dialog' version='4.1.0'/>
+      <provided namespace='java.package' name='org.wso2.developerstudio.eclipse.registry.manager.remote.utils' version='4.1.0'/>
+      <provided namespace='java.package' name='org.wso2.developerstudio.eclipse.registry.manager.remote.views' version='4.1.0'/>
+      <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
+    </provides>
+    <requires size='60'>
+      <required namespace='osgi.bundle' name='org.eclipse.ui' range='0.0.0'/>
+      <required namespace='osgi.bundle' name='org.eclipse.core.runtime' range='0.0.0'/>
+      <required namespace='osgi.bundle' name='org.eclipse.ui.forms' range='0.0.0'/>
+      <required namespace='osgi.bundle' name='org.wso2.developerstudio.eclipse.libraries' range='0.0.0'/>
+      <required namespace='java.package' name='javax.xml.stream' range='1.0.1'/>
+      <required namespace='java.package' name='org.apache.axiom.om' range='0.0.0'/>
+      <required namespace='java.package' name='org.apache.commons.io' range='2.0.0.wso2v1'/>
+      <required namespace='java.package' name='org.eclipse.core.filesystem' range='0.0.0'/>
+      <required namespace='java.package' name='org.eclipse.core.resources' range='0.0.0'/>
+      <required namespace='java.package' name='org.eclipse.e4.core.contexts' range='0.0.0'/>
+      <required namespace='java.package' name='org.eclipse.e4.core.services.events' range='0.0.0'/>
+      <required namespace='java.package' name='org.eclipse.e4.core.services.log' range='0.0.0'/>
+      <required namespace='java.package' name='org.eclipse.e4.ui.di' range='0.0.0'/>
+      <required namespace='java.package' name='org.eclipse.jface.text' range='0.0.0'/>
+      <required namespace='java.package' name='org.eclipse.search.internal.ui.text' range='0.0.0'/>
+      <required namespace='java.package' name='org.eclipse.search.ui' range='0.0.0'/>
+      <required namespace='java.package' name='org.eclipse.search.ui.text' range='0.0.0'/>
+      <required namespace='java.package' name='org.eclipse.ui.dialogs' range='0.0.0'/>
+      <required namespace='java.package' name='org.eclipse.ui.forms' range='0.0.0'/>
+      <required namespace='java.package' name='org.eclipse.ui.forms.editor' range='0.0.0'/>
+      <required namespace='java.package' name='org.eclipse.ui.ide' range='0.0.0'/>
+      <required namespace='java.package' name='org.eclipse.ui.model' range='0.0.0'/>
+      <required namespace='java.package' name='org.eclipse.wst.command.internal.env.context' range='0.0.0'/>
+      <required namespace='java.package' name='org.eclipse.wst.command.internal.env.core.context' range='0.0.0'/>
+      <required namespace='java.package' name='org.osgi.service.event' range='1.3.0'/>
+      <required namespace='java.package' name='org.wso2.carbon.core.services.authentication' range='0.0.0'/>
+      <required namespace='java.package' name='org.wso2.carbon.registry.app' range='0.0.0'/>
+      <required namespace='java.package' name='org.wso2.carbon.registry.core' range='0.0.0'/>
+      <required namespace='java.package' name='org.wso2.carbon.registry.core.exceptions' range='0.0.0'/>
+      <required namespace='java.package' name='org.wso2.carbon.registry.core.jdbc' range='0.0.0'/>
+      <required namespace='java.package' name='org.wso2.carbon.registry.ws.client.registry' range='0.0.0'/>
+      <required namespace='java.package' name='org.wso2.carbon.registry.ws.stub.xsd' range='0.0.0'/>
+      <required namespace='java.package' name='org.wso2.carbon.user.core' range='0.0.0'/>
+      <required namespace='java.package' name='org.wso2.developerstudio.eclipse.logging.core' range='[4.1.0,5.0.0)'/>
+      <required namespace='java.package' name='org.wso2.developerstudio.eclipse.platform.core.event' range='[4.1.0,5.0.0)'/>
+      <required namespace='java.package' name='org.wso2.developerstudio.eclipse.platform.core.project.model' range='[4.1.0,5.0.0)'/>
+      <required namespace='java.package' name='org.wso2.developerstudio.eclipse.platform.core.templates' range='[4.1.0,5.0.0)'/>
+      <required namespace='java.package' name='org.wso2.developerstudio.eclipse.platform.ui.utils' range='[4.1.0,5.0.0)'/>
+      <required namespace='java.package' name='org.wso2.developerstudio.eclipse.platform.ui.wizard' range='[4.1.0,5.0.0)'/>
+      <required namespace='java.package' name='org.wso2.developerstudio.eclipse.registry.base' range='[4.1.0,5.0.0)'/>
+      <required namespace='java.package' name='org.wso2.developerstudio.eclipse.registry.base.core' range='[4.1.0,5.0.0)'/>
+      <required namespace='java.package' name='org.wso2.developerstudio.eclipse.registry.base.editor.input' range='[4.1.0,5.0.0)'/>
+      <required namespace='java.package' name='org.wso2.developerstudio.eclipse.registry.base.heartbeat' range='[4.1.0,5.0.0)'/>
+      <required namespace='java.package' name='org.wso2.developerstudio.eclipse.registry.base.interfaces' range='[4.1.0,5.0.0)'/>
+      <required namespace='java.package' name='org.wso2.developerstudio.eclipse.registry.base.logger' range='[4.1.0,5.0.0)'/>
+      <required namespace='java.package' name='org.wso2.developerstudio.eclipse.registry.base.managers' range='[4.1.0,5.0.0)'/>
+      <required namespace='java.package' name='org.wso2.developerstudio.eclipse.registry.base.model' range='[4.1.0,5.0.0)'/>
+      <required namespace='java.package' name='org.wso2.developerstudio.eclipse.registry.base.persistent' range='[4.1.0,5.0.0)'/>
+      <required namespace='java.package' name='org.wso2.developerstudio.eclipse.registry.base.ui.controls' range='[4.1.0,5.0.0)'/>
+      <required namespace='java.package' name='org.wso2.developerstudio.eclipse.registry.base.ui.dialog' range='[4.1.0,5.0.0)'/>
+      <required namespace='java.package' name='org.wso2.developerstudio.eclipse.registry.base.ui.editor' range='[4.1.0,5.0.0)'/>
+      <required namespace='java.package' name='org.wso2.developerstudio.eclipse.registry.base.ui.util' range='[4.1.0,5.0.0)'/>
+      <required namespace='java.package' name='org.wso2.developerstudio.eclipse.registry.base.usermgt.model' range='[4.1.0,5.0.0)'/>
+      <required namespace='java.package' name='org.wso2.developerstudio.eclipse.registry.base.usermgt.ui.controls' range='[4.1.0,5.0.0)'/>
+      <required namespace='java.package' name='org.wso2.developerstudio.eclipse.registry.base.util' range='[4.1.0,5.0.0)'/>
+      <required namespace='java.package' name='org.wso2.developerstudio.eclipse.registry.core.exception' range='[4.1.0,5.0.0)'/>
+      <required namespace='java.package' name='org.wso2.developerstudio.eclipse.registry.resource.authorization' range='[4.1.0,5.0.0)'/>
+      <required namespace='java.package' name='org.wso2.developerstudio.eclipse.usermgt.remote' range='[4.1.0,5.0.0)'/>
+      <required namespace='java.package' name='org.wso2.developerstudio.eclipse.utils' range='[4.1.0,5.0.0)'/>
+      <required namespace='java.package' name='org.wso2.developerstudio.eclipse.utils.file' range='[4.1.0,5.0.0)'/>
+    </requires>
+    <artifacts size='1'>
+      <artifact classifier='osgi.bundle' id='org.wso2.developerstudio.eclipse.registry.manager.remote' version='4.1.0.201603310520'/>
+    </artifacts>
+    <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
+    <touchpointData size='1'>
+      <instructions size='1'>
+        <instruction key='manifest'>
+          Bundle-SymbolicName: org.wso2.developerstudio.eclipse.registry.manager.remote;singleton:=true&#xA;Bundle-Version: 4.1.0.201603310520&#xA;
+        </instruction>
+      </instructions>
+    </touchpointData>
+  </unit>
+  <unit id='org.wso2.developerstudio.eclipse.registry.manager.remote.source' version='4.1.0.201603310520' singleton='false'>
+    <update id='org.wso2.developerstudio.eclipse.registry.manager.remote.source' range='[0.0.0,4.1.0.201603310520)' severity='0'/>
+    <properties size='9'>
+      <property name='df_LT.bundleVendor' value='unknown'/>
+      <property name='df_LT.bundleName' value='App Source'/>
+      <property name='org.eclipse.equinox.p2.name' value='%bundleName'/>
+      <property name='org.eclipse.equinox.p2.provider' value='%bundleVendor'/>
+      <property name='org.eclipse.equinox.p2.bundle.localization' value='OSGI-INF/l10n/bundle-src'/>
+      <property name='maven-groupId' value='org.wso2.developerstudio'/>
+      <property name='maven-artifactId' value='org.wso2.developerstudio.eclipse.registry.manager.remote'/>
+      <property name='maven-version' value='4.1.0-SNAPSHOT'/>
+      <property name='maven-classifier' value='sources'/>
+    </properties>
+    <provides size='4'>
+      <provided namespace='org.eclipse.equinox.p2.iu' name='org.wso2.developerstudio.eclipse.registry.manager.remote.source' version='4.1.0.201603310520'/>
+      <provided namespace='osgi.bundle' name='org.wso2.developerstudio.eclipse.registry.manager.remote.source' version='4.1.0.201603310520'/>
+      <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='source' version='1.0.0'/>
+      <provided namespace='org.eclipse.equinox.p2.localization' name='df_LT' version='1.0.0'/>
+    </provides>
+    <artifacts size='1'>
+      <artifact classifier='osgi.bundle' id='org.wso2.developerstudio.eclipse.registry.manager.remote.source' version='4.1.0.201603310520'/>
+    </artifacts>
+    <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
+    <touchpointData size='1'>
+      <instructions size='1'>
+        <instruction key='manifest'>
+          Bundle-SymbolicName: org.wso2.developerstudio.eclipse.registry.manager.remote.source&#xA;Bundle-Version: 4.1.0.201603310520&#xA;
+        </instruction>
+      </instructions>
+    </touchpointData>
+  </unit>
+</units>

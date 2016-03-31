@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension point="org.eclipse.wst.server.ui.wizardFragments">
+      <fragment
+         id="org.wso2.developerstudio.eclipse.carbon.runtime.remote"
+         typeIds="org.wso2.developerstudio.eclipse.carbon.server.remote"
+         class="org.wso2.developerstudio.eclipse.carbonserver.remote.ui.RemoteServerWizardFragment"/>
+   </extension>
+
+   <extension
+         point="org.eclipse.wst.server.core.runtimeTypes">
+      <runtimeType
+            class="org.wso2.developerstudio.eclipse.carbonserver.remote.internal.RemoteCarbonRuntimeDeligate"
+            description="WSO2 Carbon remote server"
+            id="org.wso2.developerstudio.eclipse.carbon.runtime.remote"
+            name="WSO2 Carbon remote server"
+            vendor="WSO2"
+            vendorId="wso2"
+            version="1.0">
+         <moduleType
+               types="org.wso2.developerstudio.eclipse.carbon.module"
+               versions="1.0">
+         </moduleType>
+         <moduleType
+               types="jst.web"
+               versions="2.2, 2.3, 2.4">
+     	</moduleType>
+      </runtimeType>
+   </extension>
+   <extension point="org.eclipse.wst.server.core.serverTypes">
+      <serverType
+            behaviourClass="org.wso2.developerstudio.eclipse.carbonserver.remote.internal.RemoteCarbonServerBehavior"
+            class="org.wso2.developerstudio.eclipse.carbonserver.remote.internal.RemoteCarbonServer"
+            description="WSO2 Carbon remote server"
+            hasConfiguration="false"
+            id="org.wso2.developerstudio.eclipse.carbon.server.remote"
+            initialState="starting"
+            launchConfigId="org.wso2.developerstudio.eclipse.carbon.runtime.remote.launchConfigurationType"
+            launchModes="run"
+            name="WSO2 Carbon remote server"
+            runtime="false"
+            runtimeTypeId="org.wso2.developerstudio.eclipse.carbon.runtime.remote"
+            startBeforePublish="true"
+            startTimeout="600000"
+            stopTimeout="15000"
+            supportsRemoteHosts="true">
+      </serverType>
+   </extension>
+   <extension point="org.eclipse.debug.core.launchConfigurationTypes">
+     <launchConfigurationType
+        id="org.wso2.developerstudio.eclipse.carbon.runtime.remote.launchConfigurationType"
+        name="Carbon Remote Launch Configuration"
+        delegate="org.wso2.developerstudio.eclipse.carbonserver.remote.internal.CarbonRemoteServerLaunchConfigurationDelegate"
+        modes="run"/>
+   </extension>
+   <extension
+         point="org.eclipse.wst.common.project.facet.core.runtimes">
+      <runtime-component-type
+            id="org.wso2.developerstudio.eclipse.server.carbon.remoteserver">
+      </runtime-component-type>
+      <runtime-component-version
+            type="org.wso2.developerstudio.eclipse.server.carbon.remoteserver"
+            version="1.0">
+      </runtime-component-version>
+      <supported>
+         <facet
+               id="jst.web"
+               version="2.2, 2.3, 2.4">
+         </facet>
+         <facet
+               id="org.wso2.developerstudio.eclipse.carbon.facetId"
+               version="1.0">
+         </facet>         
+         <runtime-component
+               id="org.wso2.developerstudio.eclipse.server.carbon.remoteserver"
+               version="1.0">
+         </runtime-component>
+      </supported>
+      <adapter>
+         <runtime-component
+               id="org.wso2.developerstudio.eclipse.server.carbon.remoteserver">
+         </runtime-component>
+         <factory
+               class="org.eclipse.jst.server.ui.internal.RuntimeLabelProvider$Factory">
+         </factory>
+         <type
+               class="org.eclipse.wst.common.project.facet.ui.IRuntimeComponentLabelProvider">
+         </type>
+      </adapter>
+   </extension>
+   <extension
+         point="org.eclipse.jst.server.core.runtimeFacetMappings">
+      <runtimeFacetMapping
+            runtime-component="org.wso2.developerstudio.eclipse.server.carbon.remoteserver"
+            runtimeTypeId="org.wso2.developerstudio.eclipse.carbon.runtime.remote"
+            version="1.0">
+      </runtimeFacetMapping>
+   </extension>
+  
+   <extension point="org.eclipse.wst.server.ui.serverImages">
+      <image
+            icon="icons/wsas.ico"
+            id="org.wso2.developerstudio.eclipse.carbon.runtime.remote.image"
+            typeIds="org.wso2.developerstudio.eclipse.carbon.runtime.remote">
+      </image>
+      <image
+            icon="icons/wsas.ico"
+            id="org.wso2.developerstudio.eclipse.carbon.server.remote.image"
+            typeIds="org.wso2.developerstudio.eclipse.carbon.server.remote">
+      </image>
+   </extension>
+  <extension point="org.eclipse.jst.server.generic.core.serverdefinition">
+      <serverdefinition
+            definitionfile="serverdefinition/carbon.definition.xml"
+            id="org.wso2.developerstudio.eclipse.carbon.runtime.remote">
+      </serverdefinition>
+   </extension>
+   
+   <extension
+         point="org.wso2.developerstudio.eclipse.carbonserver.base.register">
+         <server 
+            name="WSO2 Remote Carbon Server"
+            id="org.wso2.developerstudio.eclipse.carbon.server.remote"
+            server-id="org.wso2.developerstudio.eclipse.carbon.server.remote"
+            class="org.wso2.developerstudio.eclipse.carbonserver.remote.operations.RemoteCarbonOperationsManager" />
+   </extension>
+  <extension point="org.eclipse.wst.server.ui.editorPageSections">
+      <section
+         id="org.wso2.developerstudio.eclipse.carbon.server.remote.configuration.editor.credentials"
+         order="10"
+         insertionId="org.eclipse.wst.server.editor.overview.left"
+         typeIds="org.wso2.developerstudio.eclipse.carbon.server.remote"
+         class="org.wso2.developerstudio.eclipse.carbonserver.remote.configuration.ConfigurationCredentialsEditorSection">
+  	</section>
+  	<section
+         id="org.wso2.developerstudio.eclipse.carbon.server.remote.configuration.editor.serverInfo"
+         order="10"
+         insertionId="org.eclipse.wst.server.editor.overview.left"
+         typeIds="org.wso2.developerstudio.eclipse.carbon.server.remote"
+         class="org.wso2.developerstudio.eclipse.carbonserver.remote.configuration.ConfigurationServerInfoSection">
+  	</section>
+   </extension>
+</plugin>

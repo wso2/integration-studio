@@ -26,6 +26,7 @@ import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.graphics.Image;
 import org.wso2.developerstudio.eclipse.platform.ui.Activator;
 import org.wso2.developerstudio.eclipse.wso2plugin.template.manager.ui.wizard.WSO2PluginListSelectionPage;
+import org.wso2.developerstudio.eclipse.wso2plugin.template.manager.util.AbstractDefaultProjectTemplateManager;
 import org.wso2.developerstudio.eclipse.wso2plugin.template.manager.util.WSO2PluginConstants;
 
 import com.google.gson.annotations.SerializedName;
@@ -55,6 +56,17 @@ public class WSO2PluginSampleExt {
 
 	@SerializedName("isUpdatedFromGit")
 	String isUpdatedFromGit;
+	
+	@SerializedName("class")
+	AbstractDefaultProjectTemplateManager projectTemplatemanager;
+
+	public AbstractDefaultProjectTemplateManager getProjectTemplatemanager() {
+		return projectTemplatemanager;
+	}
+
+	public void setProjectTemplatemanager(AbstractDefaultProjectTemplateManager projectTemplatemanager) {
+		this.projectTemplatemanager = projectTemplatemanager;
+	}
 
 	@SerializedName("id")
 	String id;
@@ -84,7 +96,7 @@ public class WSO2PluginSampleExt {
 	}
 
 	public WSO2PluginSampleExt(String pluginName, String pluginArchive, String description, String pluginBundleID,
-	                           String iconLoc, String isPluginUpdatedFromGit, String pluginId) {
+	                           String iconLoc, String isPluginUpdatedFromGit, String pluginId, AbstractDefaultProjectTemplateManager projectTempManager) {
 		super();
 		this.pluginName = pluginName;
 		this.pluginArchive = pluginArchive;
@@ -93,6 +105,7 @@ public class WSO2PluginSampleExt {
 		this.iconLoc = iconLoc;
 		this.isUpdatedFromGit = isPluginUpdatedFromGit;
 		this.id = pluginId;
+		this.projectTemplatemanager = projectTempManager;
 	}
 
 	public Image getImage(String iconLocation, String id, String isFromGit) {

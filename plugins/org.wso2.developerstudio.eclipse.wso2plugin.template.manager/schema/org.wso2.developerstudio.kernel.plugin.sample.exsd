@@ -127,6 +127,16 @@ represent the template.
                </appinfo>
             </annotation>
          </attribute>
+         <attribute name="class" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+               <appinfo>
+                  <meta.attribute kind="java" basedOn="org.wso2.developerstudio.eclipse.wso2plugin.template.manager.util.DefaultProjectTemplateManager:"/>
+               </appinfo>
+            </annotation>
+         </attribute>
       </complexType>
    </element>
 

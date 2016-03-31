@@ -32,6 +32,7 @@ public class WSO2PluginConstants {
 	public static final String CREATE_PLUGIN_PROJECT_JOB = "Create Plugin project";
 	public static final String JAVA_PERSPECTIVE_ID = "org.eclipse.jdt.ui.JavaBrowsingPerspective";
 	public static final String ICON = "icon";
+	public static final String CLASS = "class";
 	public static final String ICONS = "icons";
 	public static final String FILE_PROTOCOL = "file://";
 	public static final String SAMPLE_DESCRIPTION_FILE = "sample_description.json";

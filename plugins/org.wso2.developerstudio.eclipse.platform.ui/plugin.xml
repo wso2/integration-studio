@@ -35,7 +35,7 @@
     </extension>
 
     <extension point="org.eclipse.ui.menus">
-        <menuContribution locationURI="menu:org.eclipse.ui.main.menu?after=additions">
+        <menuContribution locationURI="menu:org.eclipse.ui.main.menu?before=file">
             <menu label="Developer Studio"
                   mnemonic="C"
                   id="org.wso2.developerstudio.eclipse.platform.ui.main">

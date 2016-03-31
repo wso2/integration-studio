@@ -16,6 +16,7 @@
 
 package org.wso2.developerstudio.eclipse.platform.ui.handlers;
 
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.swt.graphics.Image;
@@ -90,7 +91,7 @@ public class AboutDialog extends Dialog {
 		Label lblVersion = new Label(composite, SWT.NONE);
 		lblVersion.setForeground(SWTResourceManager.getColor(SWT.COLOR_WIDGET_BORDER));
 		lblVersion.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
-		lblVersion.setText("Version ".concat(getVersion()));
+		lblVersion.setText("Kernel Version ".concat(getVersion()));
 
 		Label lblLicense = new Label(composite, SWT.NONE);
 		lblLicense.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
@@ -115,8 +116,8 @@ public class AboutDialog extends Dialog {
 
 	private String getVersion() {
 		String version = VERSION;
-		try {
-			version = (String) Activator.getDefault().getBundle().getHeaders().get("Bundle-Version");
+		try {	
+			version = Platform.getBundle(Activator.PLUGIN_ID).getHeaders().get("Bundle-Version");
 			version = version.replaceAll(".qualifier", "-SNAPSHOT");
 		} catch (Exception ignored) {
 		}

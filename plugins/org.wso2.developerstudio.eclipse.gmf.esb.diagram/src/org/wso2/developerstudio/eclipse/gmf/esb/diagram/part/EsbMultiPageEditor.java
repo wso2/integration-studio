@@ -805,7 +805,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
 	/**
      * Saves the multi-page editor's document.
      */
-    public void doSave(IProgressMonitor monitor) {
+    public void doSave(final IProgressMonitor monitor) {
     	ESBDebuggerUtil.updateModifiedDebugPoints();
     	ESBDebuggerUtil.setPageSaveOperationActivated(true);
     	//Fixing TOOLS-2958
@@ -846,35 +846,51 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
 		getEditor(0).doSave(monitor);
 		EsbServer esbServer = EditorUtils.getEsbServer(graphicalEditor);
 		// Since Complex endpoint type editors dose not have assiociated xml file do not need to call this.
-        try {
-        	IFile updateAssociatedXMLFile = updateAssociatedXMLFile(monitor);
-        	IEventBroker iEventBroker = EsbEditorEvent.getiEventBroker();
-    	     if(iEventBroker!=null){
-    	    
-				iEventBroker.send(EsbEditorEvent.EVENT_TOPIC_SAVE_EDITORS, updateAssociatedXMLFile.getLocation()
-						.toOSString());
-    	     }
-		} catch (Exception e) {
-			sourceDirty=true;
-			log.error("Error while saving the diagram", e);
-			String errorMsgHeader = "Save failed. Following error(s) have been detected."
+		Display.getDefault().asyncExec(new Runnable() {
+			@Override
+			public void run() {
+				try {
+					IFile updateAssociatedXMLFile = updateAssociatedXMLFile(monitor);
+					IEventBroker iEventBroker = EsbEditorEvent
+							.getiEventBroker();
+					if (iEventBroker != null) {
+
+						iEventBroker.send(
+								EsbEditorEvent.EVENT_TOPIC_SAVE_EDITORS,
+								updateAssociatedXMLFile.getLocation()
+										.toOSString());
+					}
+				} catch (Exception e) {
+					sourceDirty = true;
+					log.error("Error while saving the diagram", e);
+					String errorMsgHeader = "Save failed. Following error(s) have been detected."
 							+ " Please see the error log for more details.";
-			String simpleMessage = ExceptionMessageMapper.getNonTechnicalMessage(e.getMessage());
-			IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, simpleMessage);
-			ErrorDialog.openError(Display.getCurrent().getActiveShell(), "Error", errorMsgHeader, editorStatus);
-		}
-        //}
-        
-		EditorUtils.setLockmode(graphicalEditor, true);
-        
-		//IFile file = ((IFileEditorInput)getEditorInput()).getFile();
-/*        ElementDuplicator endPointDuplicator = new ElementDuplicator(file.getProject(),getGraphicalEditor());        
-        endPointDuplicator.updateAssociatedDiagrams(this);*/
-        updateAssociatedDiagrams();
-        getEditor(0).doSave(monitor);
-        ESBDebuggerUtil.setPageSaveOperationActivated(false);
-		EditorUtils.setLockmode(graphicalEditor, false);
+					String simpleMessage = ExceptionMessageMapper
+							.getNonTechnicalMessage(e.getMessage());
+					IStatus editorStatus = new Status(IStatus.ERROR,
+							Activator.PLUGIN_ID, simpleMessage);
+					ErrorDialog.openError(
+							Display.getCurrent().getActiveShell(), "Error",
+							errorMsgHeader, editorStatus);
+				}
+				// }
+
+				EditorUtils.setLockmode(graphicalEditor, true);
+
+				// IFile file = ((IFileEditorInput)getEditorInput()).getFile();
+				/*
+				 * ElementDuplicator endPointDuplicator = new
+				 * ElementDuplicator(file.getProject(),getGraphicalEditor());
+				 * endPointDuplicator.updateAssociatedDiagrams(this);
+				 */
+				updateAssociatedDiagrams();
+				getEditor(0).doSave(monitor);
+				ESBDebuggerUtil.setPageSaveOperationActivated(false);
+				EditorUtils.setLockmode(graphicalEditor, false);
+			}
+		});
     }
+		
     
 
 	public boolean isDirty() {

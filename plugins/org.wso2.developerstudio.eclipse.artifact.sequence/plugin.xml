@@ -183,7 +183,7 @@
       </sequence>
    </extension>
    
-   <extension point="org.wso2.developerstudio.eclipse.platform.core.intro.ui.dashboard">
+   <extension point="org.wso2.developerstudio.eclipse.dashboad.link">
 	   <wizardLink category="dashboard.category.esb" id="6dashboard.wizardLink.esb.sequence"
 		wizard="org.wso2.developerstudio.eclipse.artifact.newsequenceartifact"
 		priority="6">

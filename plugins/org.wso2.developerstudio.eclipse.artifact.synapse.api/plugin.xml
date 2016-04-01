@@ -69,7 +69,7 @@
     </extension>
     
    <extension
-		point="org.wso2.developerstudio.eclipse.platform.core.intro.ui.dashboard">	
+		point="org.wso2.developerstudio.eclipse.dashboad.link">	
 	<wizardLink category="dashboard.category.esb" id="8dashboard.wizardLink.esb.synapse.api"
 			wizard="org.wso2.developerstudio.eclipse.artifact.synapse.api.wizard" priority="8">
 		</wizardLink>

@@ -36,7 +36,9 @@ import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.swt.widgets.Text;
-import org.wso2.developerstudio.eclipse.platform.ui.utils.UserManagerUtils;
+import org.wso2.developerstudio.eclipse.usermgt.remote.UserManagerUtils;
+
+
 
 public abstract class UserRolesDialog extends Dialog {
 	

@@ -16,5 +16,5 @@ Bundle-ActivationPolicy: lazy
 Import-Package: org.eclipse.emf.ecore.xmi,
  org.eclipse.emf.ecore.xmi.impl,
  org.wso2.developerstudio.eclipse.esb.core.utils,
- org.wso2.developerstudio.eclipse.platform.core.mediatype;version="[4.0.0,4.1.0)",
- org.wso2.developerstudio.eclipse.platform.core.utils;version="[4.0.0,4.1.0)"
+ org.wso2.developerstudio.eclipse.platform.core.mediatype;version="[4.1.0,4.2.0)",
+ org.wso2.developerstudio.eclipse.platform.core.utils;version="[4.1.0,4.2.0)"

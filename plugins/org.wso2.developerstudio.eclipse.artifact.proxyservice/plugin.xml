@@ -13,7 +13,7 @@
 		</wizard>
    </extension>
    
-<extension point="org.wso2.developerstudio.eclipse.platform.core.intro.ui.dashboard">
+<extension point="org.wso2.developerstudio.eclipse.dashboad.link">
    <wizardLink category="dashboard.category.esb" id="2dashboard.wizardLink.esb.proxy"
 	wizard="org.wso2.developerstudio.eclipse.artifact.newproxyservice"
 	priority="2">

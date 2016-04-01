@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="CONTENT-TYPE" />
+<link rel="stylesheet" href="../book.css" type="text/css" />
+<title>Creating correlation sets</title>
+</head>
+
+<body>
+	<h1>Creating correlation sets</h1>
+	<p>Correlation sets are used to identify ongoing conversations
+		between a client and the BPEL process. Typically, a correlation is an
+		element in a message that uniquely identifies the conversation between
+		client and service; for example, an Order ID or Social Security
+		Number. This also identifies a specific process instance being managed
+		by the BPEL engine.</p>
+	<p>In many cases a single element of a message is not enough to
+		make it unique, so correlations can be defined as composites of
+		several fields. Since a conversation can involve many different types
+		of messages. Different correlations will need to be defined for each
+		message type.</p>
+	<p>
+		To create a correlation for a messaging activity (for example: <strong>Invoke</strong>, 
+		<strong>Receive</strong>, <strong>Reply</strong>), select the activity and then
+		click <strong>Add</strong>  on the <strong>Correlation Detail</strong>  property
+		tab. This will display the <strong>Select
+				a Property</strong>  dialog.
+	</p>
+	<p>
+		<img src="../../images/reference/Handlers_07.png" alt="Select a Property" />
+	</p>
+	<p>
+		You can select an existing property defined in the WSDL or click <strong>New</strong>  
+		to create a new WSDL property, which will display the <strong>Create
+		Message Property</strong>  dialog.
+	</p>
+	<p>
+		<img src="../../images/reference/Handlers_08.png" alt="Create Message Property" />
+	</p>
+	<p>Enter a name for the new WSDL property and its type. Either an
+		XSD simple type or an XML Schema element.</p>
+	<p>
+		Next, click the <strong>Browse</strong>
+		 button to select a type. This will display the <strong>Type
+				Selection</strong>  dialog.
+	</p>
+	<p>
+		Click <strong>New</strong>  in the <strong>Aliases</strong>  section to create a
+		new WSDL property alias.
+	</p>
+	<p>
+		<img src="../../images/reference/Handlers_09.png" alt="Create Property Alias" />
+	</p>
+	<p>
+		Select either the <strong>Message
+		Type</strong> , XSD <strong>Simple
+		Type</strong>  or XML scheme <strong>Element</strong>
+		 radio button and click <strong>Browse</strong>
+		 to select its type. Then click <strong>OK</strong>
+		.
+	</p>
+</body>
+</html>

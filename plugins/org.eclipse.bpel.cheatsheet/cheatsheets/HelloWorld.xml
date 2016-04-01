@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cheatsheet title="&quot;Hello World&quot; Tutorial">
+  <intro>
+    <description>This cheatsheet will guide you through the creation,
+    deployment and execution of the classic "Hello World" BPEL
+    process.</description>
+  </intro>
+
+  <item dialog="true" skip="true" title="Create a BPEL Project">
+    <description>In order to associate a BPEL process and its related
+    artifacts (WSDL and XSD files) with an appropriate runtime, you must first
+    create a BPEL project. If you are interested in using the BPEL Designer
+    for modeling or documentation purposes only and do &lt;b&gt;not&lt;/b&gt;
+    intend to deploy the process for execution, then you can skip this step; a
+    BPEL process file can actually be created in any type of
+    project.<br /><br />To create a BPEL Project, select "File &gt; New &gt;
+    Project... &gt; BPEL 2.0 &gt; BPEL Project" from the main
+    menu.<br /><br />On the first page of the New Project wizard, enter the
+    project name "HelloWorld" and click Finish.</description>
+
+    <command required="false"
+             serialization="org.eclipse.ui.newWizard(newWizardId=org.eclipse.bpel.runtimes.wizards.newBPELProject)" />
+  </item>
+
+  <item dialog="true" skip="true" title="Create a BPEL Process file">
+    <description>Next select a target folder in your project where the BPEL
+    process file and its artifacts will be created. If you have created a BPEL
+    Project, it will contain a folder called "bpelContent" which is intended
+    to be used for containing all of your BPEL resources.<br /><br />From the
+    "File" main menu, or from the popup (right-click) menu of the Navigator or
+    Project Explorer views, select "New &gt; New BPEL Process
+    File".<br /><br />On the first page of the New File wizard, enter the
+    process name "HelloWorld" and select a namespace for your process. A
+    namespace is simply a URI that declares the context of your business
+    process' variables, and other identifiers so that they do not collide with
+    identifiers in other web services that your process may eventually
+    use.<br /><br />Next, select a process template. The New File wizard
+    defines three types of templates: Asynchronous, Empty and Synchronous. For
+    this tutorial, select the "Synchronous Process" template and click
+    "Finish".</description>
+
+    <command serialization="org.eclipse.ui.newWizard(newWizardId=org.eclipse.bpel.ui.newFile)" />
+  </item>
+
+  <item skip="true" title="Edit the BPEL Process file">
+    <description>When the BPEL Designer opens it will display a skeleton of a
+    simple request-response process which consists of a Receive activity, an
+    empty activity labeled "FIX_ME-Add_Business_Logic_Here" and a Reply. The
+    arrows connecting these activities indicate the process flow from top to
+    bottom, or from left to right depending on your choice of
+    layout.<br /><br />At this time, if the Property View is not visible you
+    can open it from either the BPEL Designer's popup menu ("Show in
+    Properties") or from the main menu by clicking "Window &gt; Show View &gt;
+    Properties".<br /><br />Click on the "Fix Me" activity and select the
+    Details tab in the Property Sheet and select action 4 (Assign) which will
+    replace the empty activity with an Assign. This will also display the
+    Assign activity properties in the Details tab of the Property Sheet. You
+    may want to change the name of the "Fix Me" to something more appropriate,
+    for example "Build_Response_Message". You can do this using either the
+    in-line editor on the Design Canvas (select the Assign activity, then
+    click again to begin editing the text label) or using the Description tab
+    of the Property Sheet. When done, switch back to the Details tab of the
+    Property Sheet.<br /><br />The Assign Details tab consists of an
+    (initially empty) list of assignment operations, and two empty "From" and
+    "To" combo boxes. The assignment list has four buttons labeled "New"
+    "Delete", "Move Up" and "Move Down", which are used to manage the list of
+    assignment operations.<br /><br />Click the "New" button to add a new
+    assignment operation to the list. Notice that the "From" and "To" combo
+    boxes are now active and display "Variable". These allow you to select the
+    source and target items' categories ("Variable", "Expression", "Fixed
+    Value", etc.). Also notice that additional selection/data entry widgets
+    appear below the "From" and "To" combo boxes. These will change based on
+    the source and target item categories selected in the combo boxes, but
+    initially they show tree selection widgets for the input and output
+    variables that were automatically created by the New File
+    wizard.<br /><br />Select "Expression" in the "From" combo box; this will
+    display an XPath expression editor widget. Notice that BPEL allows you to
+    define which version of XPath you wish to use for each expression
+    although,only XPath 1.0 is supported at this time.<br /><br /> In the
+    XPath expression editor, enter the following:<br /><br />concat("Hello,
+    ".$input.payload/tns:input)<br /><br />As you type, the editor widget
+    provides a popup list of valid proposals; this can also be activated by
+    typing CTRL-Space.<br /><br />In the tree selection widget under the "To"
+    combo box, expand the "output" variable and navigate down to the "result"
+    string element. The assignment operation list should now show "Expression
+    to Variable"; click on this entry in the list. The action of changing
+    focus from the "To" tree selection widget to another widget, triggers
+    validation of the assignment operation and a popup dialog asking if you
+    want to initialize the output variable should appear; click "Yes" to do so
+    now.<br />The BPEL Designer will automatically insert another entry in the
+    assignment operations list labeled "Fixed Value to Variable". Select this
+    entry in the list and you will see an XML fragment that corresponds to the
+    structure of the output variable. A "Selection Failure Fault" will result
+    if the BPEL engine encounters a variable that has not been properly
+    initialized. <br /><br />This completes the "HelloWorld" process; select
+    "File &gt; Save" to save the process and then close the
+    editor.</description>
+  </item>
+
+  <item skip="true" title="Create a Deployment Descriptor file">
+    <description>A Deployment Descriptor is simply a manifest of the BPEL
+    artifacts. It describes the services provided and their interfaces, to the
+    BPEL runtime engine. To create a Deployment Descriptor select the project
+    folder that contains your BPEL artifacts, then from either the "File" main
+    menu or the Navigator or Project Explorer popup menu select "New &gt; BPEL
+    2.0 &gt; Apache ODE Deployment Descriptor". <br /><br />Finish the New
+    wizard and the Deployment Descriptor editor will open. <br /><br />In the
+    "Inbound Interfaces (Services)" section, click on the "Associated Port"
+    combo box and select the "HelloWorldPort". Leave all other settings as
+    they are and then save and close the editor.</description>
+  </item>
+
+  <item skip="true" title="Create a JBoss BPEL Server">
+    <description> These last steps assume that you have already installed
+    either:<br /><br />JBoss Application Server version 5.1.0 and RiftSaw 2.2,
+    the BPEL engine, or<br />JBoss Enterprise Application Platform 5.0 or
+    later.<br /><br /><b>CAUTION: make sure the server you intend to use for
+    testing is not a production environment!</b><br /><br />Open the Servers
+    View by selecting "Window &gt; Show View &gt; Servers" from the main
+    menu.<br /><br />From the Servers View popup menu or from the "File" main
+    menu, click "New &gt; Server"<br /><br />Select either the "JBoss
+    Community &gt; JBoss AS 5.1" or "JBoss Enterprise Middleware &gt; JBoss
+    Enterprise Application Platform 5.x" server.<br /><br />Finish the New
+    Server Definition wizard but do not add the HelloWorld service on the last
+    page of the wizard.<br /><br />Start the server by selecting it in the
+    Servers View and clicking the "Run" menu button.</description>
+
+    <command required="false"
+             serialization="org.eclipse.ui.browser.openBrowser(url=http://www.jboss.org/riftsaw/,tooltip=JBoss Riftsaw BPEL Engine)" />
+  </item>
+
+  <item skip="true" title="Deploy the BPEL Process to the JBoss BPEL Server">
+    <description>Select the newly created server in the Servers View and from
+    the popup menu, click "Add and Remove..."<br /><br />In the Add and Remove
+    Wizard, select the HelloWorld process and click "Add".<br /><br />The
+    server should log some messages to the Console View indicating that the
+    BPEL process has been deployed successfully. If you see deployment error
+    messages then something is wrong with the BPEL process; if you see no
+    messages at all, then the Riftsaw engine was not installed
+    properly.</description>
+  </item>
+
+  <item skip="true" title="Test the BPEL Process">
+    <description>Assuming "HelloWorld" was successfully deployed, you can now
+    test your service. <br /><br />Select the "HelloWorldArtifacts.wsdl" file
+    in your BPEL project and from the popup menu select "Web Services &gt;
+    Test with Web Services Explorer".<br /><br />In the Web Services Explorer
+    browser, navigate to the HelloWorld "process" operation in the "Navigator"
+    panel on the left, and then enter the word "world" in the "Actions" panel
+    on the right, then click "Go"<br /><br />The Riftsaw engine will log some
+    more messages to the Console View indicating that it has processed the
+    message, and you should see the response "Hello, world" in the "Status"
+    panel on the bottom-right.<br /><br />Congratulations! You have just
+    created your first BPEL process.</description>
+  </item>
+</cheatsheet>

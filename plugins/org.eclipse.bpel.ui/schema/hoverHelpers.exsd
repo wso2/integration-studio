@@ -1,0 +1,126 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- Schema file written by PDE -->
+<schema targetNamespace="org.eclipse.bpel.ui">
+<annotation>
+      <appInfo>
+         <meta.schema plugin="org.eclipse.bpel.ui" id="hoverHelpers" name="Hover Helpers for BPEL Editor Extension Point"/>
+      </appInfo>
+      <documentation>
+         The hover helper extension point. It is used to present hover help for markers and model objects in the main editor diagram.
+      </documentation>
+   </annotation>
+
+   <element name="extension">
+      <annotation>
+         <documentation>
+            The Hover Helper extension point.
+         </documentation>
+      </annotation>
+      <complexType>
+         <sequence>
+            <element ref="hoverHelper"/>
+         </sequence>
+         <attribute name="point" type="string" use="required">
+            <annotation>
+               <documentation>
+                  The extension point name.
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="id" type="string">
+            <annotation>
+               <documentation>
+                  A unique id assigned to this extension point implementation.
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="name" type="string">
+            <annotation>
+               <documentation>
+                  The name associated with this extension point implementation.
+               </documentation>
+               <appInfo>
+                  <meta.attribute translatable="true"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="hoverHelper">
+      <annotation>
+         <documentation>
+            The hover helper extension point element.
+         </documentation>
+      </annotation>
+      <complexType>
+         <attribute name="class" type="string" use="required">
+            <annotation>
+               <documentation>
+                  Class which implements org.eclipse.bpel.ui.IHoverHelper. 
+               </documentation>
+               <appInfo>
+                  <meta.attribute kind="java" basedOn="org.eclipse.bpel.ui.IHoverHelper"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="since"/>
+      </appInfo>
+      <documentation>
+         0.0.1
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="examples"/>
+      </appInfo>
+      <documentation>
+         Here is the simple hover helper extension point provided in the BPEL Editor.
+
+&lt;pre&gt;
+&lt;extension
+     id=&quot;org.eclipse.bpel.ui.hover.simple.hover.helper&quot;
+     name=&quot;Marker Hover Help&quot;
+      point=&quot;org.eclipse.bpel.ui.hoverHelpers&quot;&gt;
+     &lt;hoverHelper class=&quot;org.eclipse.bpel.ui.hovers.SimpleHoverHelper&quot;/&gt;
+&lt;/extension&gt;
+&lt;/pre&gt;
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="apiInfo"/>
+      </appInfo>
+      <documentation>
+         [Enter API information here.]
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="implementation"/>
+      </appInfo>
+      <documentation>
+         There is an implementation of this extension point in org.eclipse.bpel.ui plugin.
+The class which implements this is org.eclipse.bpel.ui.hovers.SimpleHoverHelper.
+
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="copyright"/>
+      </appInfo>
+      <documentation>
+         
+      </documentation>
+   </annotation>
+
+</schema>

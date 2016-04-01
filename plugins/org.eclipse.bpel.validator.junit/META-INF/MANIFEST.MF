@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-SymbolicName: org.eclipse.bpel.validator.junit
+Bundle-Version: 4.0.0.qualifier
+Fragment-Host: org.eclipse.bpel.validator;bundle-version="1.0.1"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-ClassPath: .
+Require-Bundle: org.junit;bundle-version="4.8.1"
+Bundle-Vendor: %providerName
+Bundle-Localization: plugin

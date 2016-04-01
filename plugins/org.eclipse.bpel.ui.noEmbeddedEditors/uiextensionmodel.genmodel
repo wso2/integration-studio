@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.eclipse.bpel.ui/src"
+    modelPluginID="org.eclipse.bpel.ui" modelName="Uiextensionmodel" editPluginClass="org.eclipse.bpel.ui.provider.UiextensionmodelEditPlugin"
+    editorPluginClass="org.eclipse.bpel.ui.presentation.UiextensionmodelEditorPlugin"
+    testSuiteClass="org.eclipse.bpel.ui.tests.UiextensionmodelAllTests" importerID="org.eclipse.emf.importer.java"
+    complianceLevel="5.0" usedGenPackages="../org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore ../org.eclipse.emf.ecore/model/XMLNamespace.genmodel#//namespace ../org.eclipse.emf.ecore/model/XMLType.genmodel#//type">
+  <foreignModel>@model</foreignModel>
+  <genPackages prefix="Uiextensionmodel" basePackage="org.eclipse.bpel.ui" disposableProviderFactory="true"
+      ecorePackage="uiextensionmodel.ecore#/">
+    <genClasses ecoreClass="uiextensionmodel.ecore#//ActivityExtension">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute uiextensionmodel.ecore#//ActivityExtension/x"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute uiextensionmodel.ecore#//ActivityExtension/y"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute uiextensionmodel.ecore#//ActivityExtension/width"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute uiextensionmodel.ecore#//ActivityExtension/height"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute uiextensionmodel.ecore#//ActivityExtension/implicit"/>
+    </genClasses>
+    <genClasses ecoreClass="uiextensionmodel.ecore#//CaseExtension">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute uiextensionmodel.ecore#//CaseExtension/displayName"/>
+    </genClasses>
+    <genClasses ecoreClass="uiextensionmodel.ecore#//CopyExtension">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute uiextensionmodel.ecore#//CopyExtension/fromType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute uiextensionmodel.ecore#//CopyExtension/toType"/>
+    </genClasses>
+    <genClasses ecoreClass="uiextensionmodel.ecore#//EndNode"/>
+    <genClasses ecoreClass="uiextensionmodel.ecore#//LinkExtension"/>
+    <genClasses ecoreClass="uiextensionmodel.ecore#//OnAlarmExtension">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute uiextensionmodel.ecore#//OnAlarmExtension/displayName"/>
+    </genClasses>
+    <genClasses ecoreClass="uiextensionmodel.ecore#//OnEventExtension">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute uiextensionmodel.ecore#//OnEventExtension/displayName"/>
+    </genClasses>
+    <genClasses ecoreClass="uiextensionmodel.ecore#//OnMessageExtension">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute uiextensionmodel.ecore#//OnMessageExtension/displayName"/>
+    </genClasses>
+    <genClasses ecoreClass="uiextensionmodel.ecore#//PartnerLinkExtension">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute uiextensionmodel.ecore#//PartnerLinkExtension/partnerKind"/>
+    </genClasses>
+    <genClasses ecoreClass="uiextensionmodel.ecore#//ProcessExtension">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute uiextensionmodel.ecore#//ProcessExtension/specCompliant"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute uiextensionmodel.ecore#//ProcessExtension/modificationStamp"/>
+    </genClasses>
+    <genClasses ecoreClass="uiextensionmodel.ecore#//ReferencePartnerLinks"/>
+    <genClasses ecoreClass="uiextensionmodel.ecore#//StartNode"/>
+    <genClasses ecoreClass="uiextensionmodel.ecore#//VariableExtension">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute uiextensionmodel.ecore#//VariableExtension/advancedKind"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute uiextensionmodel.ecore#//VariableExtension/variableKind"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

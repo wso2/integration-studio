@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.eclipse.bpel.common.extension.model/src"
+    modelPluginID="org.eclipse.bpel.common.extension.model" modelName="Extensionmodel"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="5.0">
+  <foreignModel>extensionmodel.ecore</foreignModel>
+  <genPackages prefix="Extensionmodel" basePackage="org.eclipse.bpel.common.extension"
+      disposableProviderFactory="true" ecorePackage="extensionmodel.ecore#/">
+    <genClasses ecoreClass="extensionmodel.ecore#//ExtensionMap">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute extensionmodel.ecore#//ExtensionMap/namespace"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference extensionmodel.ecore#//ExtensionMap/extensions"/>
+      <genOperations ecoreOperation="extensionmodel.ecore#//ExtensionMap/initializeAdapter"/>
+    </genClasses>
+    <genClasses ecoreClass="extensionmodel.ecore#//Extension">
+      <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference extensionmodel.ecore#//Extension/extendedObject"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference extensionmodel.ecore#//Extension/extensionObject"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

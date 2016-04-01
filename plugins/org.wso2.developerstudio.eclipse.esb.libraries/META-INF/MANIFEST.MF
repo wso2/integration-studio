@@ -108,7 +108,8 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.core.resources,
  javax.servlet;bundle-version="3.0.0",
  javax.servlet.jsp;bundle-version="2.2.0",
- org.wso2.developerstudio.eclipse.libraries;bundle-version="4.1.0"
+ org.wso2.developerstudio.eclipse.libraries;bundle-version="4.1.0",
+ org.wso2.developerstudio.eclipse.kernel.libraries;bundle-version="4.1.0"
 Bundle-Activator: org.wso2.developerstudio.eclipse.esb.libraries.Activator
 Import-Package: org.eclipse.jdt.core,
  org.wso2.developerstudio.eclipse.logging.core;version="[4.1.0,4.2.0)",

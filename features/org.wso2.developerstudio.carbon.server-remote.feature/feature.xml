@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="org.wso2.developerstudio.carbon.server-remote.feature"
-      label="Carbon Remote Server Tool"
+      label="Carbon Remote Server Feature"
       version="4.1.0.qualifier"
       provider-name="%providerName">
 
    <description url="http://wso2.com">
-      Enables remote connectivity for Carbon based servers for CAPP deployment.
+      Enables remote connectivity for Carbon Server.
    </description>
 
    <copyright url="%copyrightURL">

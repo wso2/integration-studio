@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="org.wso2.developerstudio.library.artifact.feature"
-      label="Library Bundle Tool"
+      label="Library Bundle Feature"
       version="4.1.0.qualifier"
       provider-name="%providerName">
 

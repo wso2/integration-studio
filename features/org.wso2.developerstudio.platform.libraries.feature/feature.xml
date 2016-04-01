@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
-      id="org.wso2.developerstudio.kernel.utils.feature"
-      label="Platform Utils Features"
+      id="org.wso2.developerstudio.platform.libraries.feature"
+      label="platform Libraries Feature"
       version="4.1.0.qualifier"
       provider-name="%providerName">
 
    <description url="http://wso2.com">
-      Provides utilities for maven and eclipse workbench for WSO2 plugins.
+      Provides the platform libraries.
    </description>
 
    <copyright url="%copyrightURL">
@@ -18,7 +18,7 @@
    </license>
 
    <plugin
-         id="org.wso2.developerstudio.eclipse.ui"
+         id="org.wso2.developerstudio.eclipse.libraries"
          download-size="0"
          install-size="0"
          version="0.0.0"

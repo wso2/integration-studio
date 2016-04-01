@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
-      id="org.wso2.developerstudio.kernel.security.feature"
-      label="WS Policy Feature"
+      id="org.wso2.developerstudio.dashboard.feature"
+      label="Developer Studio Dashboard Feature"
       version="4.1.0.qualifier"
       provider-name="%providerName">
 
    <description url="http://wso2.com">
-      Provides a WS Policy editor.
+      Provides support for Developer Studio Dashboard Components. 
    </description>
 
    <copyright url="%copyrightURL">
@@ -17,15 +17,8 @@
       %license
    </license>
 
-  <plugin
-         id="org.wso2.developerstudio.eclipse.artifact.security"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-  <plugin
-         id="org.wso2.developerstudio.eclipse.security.ui"
+   <plugin
+         id="org.wso2.developerstudio.eclipse.dashboard"
          download-size="0"
          install-size="0"
          version="0.0.0"

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="org.wso2.developerstudio.carbon.server-44.feature"
-      label="Carbon 4.4.0 Server Tool"
+      label="Carbon 4.4.0 Server Feature"
       version="4.1.0.qualifier"
       provider-name="%providerName">
 

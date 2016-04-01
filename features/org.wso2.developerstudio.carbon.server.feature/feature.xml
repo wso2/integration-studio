@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
-      id="org.wso2.developerstudio.kernel.registry.feature"
-      label="Registry Tool"
+      id="org.wso2.developerstudio.carbon.server.feature"
+      label="Carbon Server Core Feature"
       version="4.1.0.qualifier"
       provider-name="%providerName">
 
    <description url="http://wso2.com">
-      Provides tools for DevStudio integration with Carbon Registry.
+      Provides support for Developer Studio Carbon Server Core components. 
    </description>
 
    <copyright url="%copyrightURL">
@@ -18,36 +18,25 @@
    </license>
 
    <plugin
-         id="org.wso2.developerstudio.eclipse.registry.perspective"
+         id="org.wso2.developerstudio.eclipse.server.base"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
-
    <plugin
-         id="org.wso2.developerstudio.eclipse.registry.search"
+         id="org.wso2.developerstudio.eclipse.carbon.server.model"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
-
    <plugin
-         id="org.wso2.developerstudio.eclipse.registry.connector"
+         id="org.wso2.developerstudio.eclipse.carbonfeatures"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
-
-
    <plugin
-         id="org.wso2.developerstudio.eclipse.general.project"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.wso2.developerstudio.eclipse.artifact.registry"
+         id="org.wso2.developerstudio.eclipse.carbonserver.base"
          download-size="0"
          install-size="0"
          version="0.0.0"

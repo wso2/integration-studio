@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="org.wso2.developerstudio.kernel.registry.core.feature"
-      label="Registry Tool"
+      label="Registry Feature"
       version="4.1.0.qualifier"
       provider-name="%providerName">
 
@@ -18,16 +18,71 @@
    </license>
 
    <plugin
-         id="org.wso2.developerstudio.eclipse.registry.perspective"
+         id="org.wso2.developerstudio.eclipse.general.project"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
 
    <plugin
+         id="org.wso2.developerstudio.eclipse.artifact.registry"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+   <plugin
          id="org.wso2.developerstudio.eclipse.registry.search"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
+   <plugin
+         id="org.wso2.developerstudio.eclipse.registry.resource.authorization"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+   <plugin
+         id="org.wso2.developerstudio.eclipse.registry.perspective"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+   <plugin
+         id="org.wso2.developerstudio.eclipse.registry.manager.remote"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+   <plugin
+         id="org.wso2.developerstudio.eclipse.registry.manager.local"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+   <plugin
+         id="org.wso2.developerstudio.eclipse.registry.libraries"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+   <plugin
+         id="org.wso2.developerstudio.eclipse.registry.core"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+   <plugin
+         id="org.wso2.developerstudio.eclipse.registry.connector"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+   <plugin
+         id="org.wso2.developerstudio.eclipse.registry.base"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
 </feature>

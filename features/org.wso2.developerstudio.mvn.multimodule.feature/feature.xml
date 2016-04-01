@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
-      id="org.wso2.developerstudio.kernel.tools.feature"
-      label="Kernel PDT Tools"
+      id="org.wso2.developerstudio.mvn.multimodule.feature"
+      label="Maven Multi Module Feature"
       version="4.1.0.qualifier"
       provider-name="%providerName">
 
    <description url="http://wso2.com">
-      Provides a updater tool and a templates manager tool.
+      Provides the Maven Multi Module Feature
    </description>
 
    <copyright url="%copyrightURL">
@@ -18,18 +18,9 @@
    </license>
 
    <plugin
-         id="org.wso2.developerstudio.eclipse.updater"
+         id="org.wso2.developerstudio.eclipse.maven.multi.module"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
-
-   <plugin
-         id="org.wso2.developerstudio.eclipse.wso2plugin.template.manager"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-
 </feature>

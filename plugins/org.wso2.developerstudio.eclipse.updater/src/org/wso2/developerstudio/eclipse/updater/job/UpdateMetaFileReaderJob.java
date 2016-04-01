@@ -155,7 +155,7 @@ public class UpdateMetaFileReaderJob extends Job {
 			FileUtils.copyURLToFile(link, updateFile, TIME_OUT_MS, TIME_OUT_MS);
 		} catch (IOException e) {
 			// log while reading file
-			log.error("error in cosing file stream from the downloaded meta data file for updates", e);
+			log.error("error in writing the the content from the downloaded meta data file for updates", e);
 		}
 	}
 

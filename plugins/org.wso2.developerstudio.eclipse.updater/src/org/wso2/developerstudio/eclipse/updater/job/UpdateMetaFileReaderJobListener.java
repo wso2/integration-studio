@@ -111,7 +111,7 @@ public class UpdateMetaFileReaderJobListener extends JobChangeAdapter {
 	}
 
 	public static int getUserPreference(String message, String title) {
-	//	Display activeDisplay = Display.getDefault();
+		// Display activeDisplay = Display.getDefault();
 		MessageDialog dialog = new MessageDialog(Display.getDefault().getActiveShell(), title, null, message,
 				MessageDialog.INFORMATION, new String[] { YES, NO, SET_LATER }, 0);
 		return dialog.open();

@@ -153,9 +153,9 @@
         <category name="Message Mediation" id="org.wso2.developerstudio.eclipse.message.mediation"
                   parentCategory="org.wso2.developerstudio.eclipse.capp.project">
         </category>
-        <!-- category name="Repository" id="org.wso2.developerstudio.eclipse.repository"
+        <category name="Repository" id="org.wso2.developerstudio.eclipse.repository"
                   parentCategory="org.wso2.developerstudio.eclipse.capp.project">
-        </category>-->
+        </category>
         <category name="Business Processes" id="org.wso2.developerstudio.eclipse.business.processes"
                   parentCategory="org.wso2.developerstudio.eclipse.capp.project">
         </category>

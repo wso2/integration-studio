@@ -367,7 +367,7 @@
                 properties="projectNature"
                 type="org.eclipse.jdt.core.IPackageFragment"></propertyTester>
     </extension>
-<!--    <extension point="org.wso2.developerstudio.eclipse.platform.core.intro.ui.dashboard">
+  <extension point="org.wso2.developerstudio.eclipse.dashboad.link">
         <wizardCategory category="org.wso2.developerstudio.eclipse.web.apps"/>
         <wizardCategory category="org.wso2.developerstudio.eclipse.message.mediation"/>
         <wizardCategory category="org.wso2.developerstudio.eclipse.repository"/>
@@ -381,7 +381,7 @@
         <wizardCategory category="org.wso2.developerstudio.eclipse.extensions.features"/>
         <wizardCategory category="org.wso2.developerstudio.eclipse.message.mediation.project.types"/>
         <wizardCategory category="org.wso2.developerstudio.eclipse.message.mediation.features"/>
-    </extension> -->
+    </extension>
     <extension point="org.eclipse.ui.startup">
         <startup class="org.wso2.developerstudio.eclipse.platform.core.startup.alert.JavaVersionAlertHandler"/>
     </extension>

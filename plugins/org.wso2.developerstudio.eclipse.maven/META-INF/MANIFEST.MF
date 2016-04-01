@@ -30,5 +30,5 @@ Export-Package: org.wso2.developerstudio.eclipse.maven;version="4.1.0",
  org.wso2.developerstudio.eclipse.maven.util;version="4.1.0"
 Require-Bundle: org.eclipse.equinox.registry,
  org.eclipse.core.runtime,
- org.eclipse.m2e.maven.runtime;bundle-version="1.6.2"
+ org.wso2.developerstudio.eclipse.kernel.libraries;bundle-version="4.1.0"
 

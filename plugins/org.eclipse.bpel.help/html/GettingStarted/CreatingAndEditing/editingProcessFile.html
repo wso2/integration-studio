@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="CONTENT-TYPE" />
+<link rel="stylesheet" href="../../book.css" type="text/css" />
+<title>Editing a BPEL process file</title>
+</head>
+
+<body>
+	<h1>Editing a BPEL process file</h1>
+	<p>
+		If the <strong>Properties view</strong> and <strong>Palette view</strong>
+		are not opened, you can open the views by right-clicking the BPEL
+		editor and selecting the <strong>Show in Properties</strong> or 
+		<strong>Show Palette in Palette view</strong> options. 
+		
+		<br />Then you should have the view like this:
+	</p>
+	<p>
+		<img src="../../../images/detail_editprocess_1.png" alt="The BPEL editor view" />
+	</p>
+	<p>
+		In the <strong>Palette</strong> view, you can drag a BPEL element to the 
+		BPEL editor and drop it in the place you want.
+	</p>
+	<p>
+		In the <strong>Properties</strong> view, you can view the information 
+		on every element in the BPEL process. <br />The contents of the <strong>Properties</strong>
+		view is automatically updated as elements are selected in the BPEL editor. <br /><br />The table 
+		below describes the tabs shown in the <strong>Properties</strong> view:
+	</p>
+
+	<table summary="Tabs of the Property view" border="1">
+		<colgroup>
+			<col align="left" />
+			<col />
+		</colgroup>
+		<thead>
+			<tr>
+				<th align="left">Tab</th>
+				<th>Description</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td align="left"><p>Description</p></td>
+				<td><p>Shows the descriptive information about the element, e.g. Name of the element.</p></td>
+			</tr>
+			<tr>
+				<td align="left"><p>Details</p></td>
+				<td><p>Shows the detailed and important information about the
+						element. It is the most important section of an element. Most of
+						the properties of an element are set in this section.
+					</p></td>
+			</tr>
+			<tr>
+				<td align="left"><p>Join Behavior</p></td>
+				<td><p>Shows the Join Failure property of the element.</p></td>
+			</tr>
+			<tr>
+				<td align="left"><p>Documentation</p></td>
+				<td><p>Shows the documentation sub-element of an element.</p></td>
+			</tr>
+			<tr>
+				<td align="left"><p>Other</p></td>
+				<td><p>Every BPEL element has its own sections: Correlation
+						section, Message Exchange section, and so on. These sections will
+						be covered in later sections.
+					</p></td>
+			</tr>
+		</tbody>
+	</table>
+	
+	<p>
+		In order to see how a simple BPEL process works in action,
+		you should do some steps as below:
+	</p>
+	<ul>
+		<li><p>Modify two variables of the process:</p>
+			<div>
+				<ul>
+					<li><p>
+							Click on the details tab of the input variable, and then click
+							the <strong>Browse...</strong> button.
+						</p>
+						<p>
+							<img src="../../../images/bpel_task_0.png" alt="Select the input variable" />
+						</p>		
+						<p>
+							Then choose <strong>string</strong> primitive from the list of <strong>Matches</strong>.
+						</p>
+						<p>
+							<img src="../../../images/bpel_task_1.png" alt="Edit variable in process file" />
+						</p>
+					</li>
+					<li><p>Select <strong>xsd</strong> as a namespace in the popup menu.</p></li>
+				</ul>
+			</div>
+		</li>
+		<li>
+			<p>
+				Add an <strong>Assign</strong> element between the <strong>receiveInput</strong> element 
+				and <strong>replyOutput</strong> element.
+			</p>
+		</li>
+		<li>
+			<p>Select the <strong>Assign</strong> element in the BPEL editor in order to get the properties information of it in the Properties view.</p>
+		</li>
+		<li>
+			<p>Set its name in the <strong>Description</strong> tab as <i>assignHelloMesg</i>.</p>
+			<p>In the <strong>Details</strong> section of Properties view, you should click
+				<strong>New</strong> to add a copy sub-element to the element. Assign
+				"Variable to Variable"(input:string to output). At this time, an
+				"initializer" popup dialog appears. Click <strong>Yes</strong> in the dialog.
+			</p>
+			<p><img src="../../../images/bpel_task_3.png" alt="Add Assign to the process" /></p>
+			<p>
+				Then you should click <strong>New</strong>
+				once more and select <strong>Expression to Variable</strong> (assign 
+				<code>concat($input,' World')</code> ) to <strong>result:string</strong>. 
+			</p>
+			<p><img src="../../../images/bpel_task_2.png" alt="Add Expression assign to the process" /></p>
+		</li>
+	</ul>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.eclipse.bpel.wsil.model/src"
+    modelPluginID="org.eclipse.bpel.wsil.model" runtimeJar="true" modelName="Wsil"
+    importerID="org.eclipse.xsd.ecore.importer" complianceLevel="5.0" usedGenPackages="platform:/plugin/org.eclipse.emf.ecore/model/XMLNamespace.genmodel#//namespace">
+  <foreignModel>schema/wsil.xsd</foreignModel>
+  <genPackages prefix="Inspection" basePackage="org.eclipse.bpel.wsil.model" resource="XML"
+      disposableProviderFactory="true" ecorePackage="inspection.ecore#/">
+    <genClasses ecoreClass="inspection.ecore#//Description">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute inspection.ecore#//Description/any"/>
+    </genClasses>
+    <genClasses ecoreClass="inspection.ecore#//WSILDocument">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute inspection.ecore#//WSILDocument/mixed"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference inspection.ecore#//WSILDocument/xMLNSPrefixMap"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference inspection.ecore#//WSILDocument/xSISchemaLocation"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference inspection.ecore#//WSILDocument/inspection"/>
+    </genClasses>
+    <genClasses ecoreClass="inspection.ecore#//Inspection">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute inspection.ecore#//Inspection/groups"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference inspection.ecore#//Inspection/services"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference inspection.ecore#//Inspection/links"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="inspection.ecore#//ItemWithAbstracts">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference inspection.ecore#//ItemWithAbstracts/abstract"/>
+    </genClasses>
+    <genClasses ecoreClass="inspection.ecore#//Link">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute inspection.ecore#//Link/any"/>
+    </genClasses>
+    <genClasses ecoreClass="inspection.ecore#//Name">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute inspection.ecore#//Name/value"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute inspection.ecore#//Name/lang"/>
+    </genClasses>
+    <genClasses ecoreClass="inspection.ecore#//Reference">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute inspection.ecore#//Reference/location"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute inspection.ecore#//Reference/referencedNamespace"/>
+    </genClasses>
+    <genClasses ecoreClass="inspection.ecore#//Service">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference inspection.ecore#//Service/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference inspection.ecore#//Service/description"/>
+    </genClasses>
+    <genClasses ecoreClass="inspection.ecore#//TypeOfAbstract">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute inspection.ecore#//TypeOfAbstract/value"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute inspection.ecore#//TypeOfAbstract/lang"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

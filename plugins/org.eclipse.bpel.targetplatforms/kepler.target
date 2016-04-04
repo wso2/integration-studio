@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?pde version="3.8"?>
+
+<target name="kepler" sequenceNumber="25">
+<locations>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+<unit id="org.eclipse.swtbot.eclipse.feature.group" version="2.0.5.20111003_1754-3676ac8-dev-e36"/>
+<unit id="org.eclipse.swtbot.eclipse.gef.feature.group" version="2.0.5.20111003_1754-3676ac8-dev-e36"/>
+<unit id="org.eclipse.swtbot.ide.feature.group" version="2.0.5.20111003_1754-3676ac8-dev-e36"/>
+<repository location="http://download.eclipse.org/technology/swtbot/helios/dev-build/update-site"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+<unit id="org.eclipse.xtend.sdk.feature.group" version="2.3.1.v201208210947"/>
+<unit id="org.eclipse.xtext.sdk.feature.group" version="2.3.1.v201208210947"/>
+<repository location="http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+<unit id="org.eclipse.jst.enterprise_ui.feature.feature.group" version="3.4.1.v201210040825-7b7JIM1FSK2WNbPS9Ar7BFV-TyUq"/>
+<unit id="org.eclipse.jst.web_ui.feature.feature.group" version="3.4.2.v201209272000-7F7DFUMC26SskZbptjeU4Nd-Fuy3Cz-FqjFv6ef7"/>
+<unit id="org.eclipse.sdk.ide" version="4.3.0.I20121031-2000"/>
+<unit id="org.eclipse.emf.sdk.feature.group" version="2.9.0.v20121109-0549"/>
+<unit id="org.eclipse.emf.compare.feature.group" version="2.1.0.201211131624"/>
+<unit id="org.eclipse.emf.compare.ide.ui.feature.group" version="2.1.0.201211131624"/>
+<unit id="org.eclipse.emf.diffmerge.sdk.feature.feature.group" version="0.1.0.v20121106-1043"/>
+<unit id="org.eclipse.gef.sdk.feature.group" version="3.9.0.201211121753"/>
+<unit id="org.eclipse.gmf.sdk.feature.group" version="3.0.0.v201206221900"/>
+<unit id="org.eclipse.jst.server_adapters.feature.feature.group" version="3.2.200.v20120517_1442-20A77w31231628a2553"/>
+<unit id="org.eclipse.jst.server_adapters.ext.feature.feature.group" version="3.3.101.v20120821_1416-777HFL6CcNBDmBjKOFHIEB"/>
+<unit id="org.eclipse.jst.server_ui.feature.feature.group" version="3.4.0.v20120503_1042-7A77FHr9xFcC2CFLZBCJMHLg7D64"/>
+<unit id="org.eclipse.wst.ws_wsdl15.feature.feature.group" version="1.5.301.v201102200555-2407w312123151655"/>
+<unit id="org.eclipse.wst.common_core.feature.feature.group" version="3.4.2.v201211080300-7B7EFMUF7RZHOjJlRtR-QS"/>
+<unit id="org.eclipse.wst.common_ui.feature.feature.group" version="3.4.2.v201211080300-7C7AFeFEdhOaweKhCnQfykKmSuS0RT"/>
+<unit id="org.eclipse.wst.server_adapters.feature.feature.group" version="3.2.202.v20121107_1651-51F9yAkF7AL9MCRl8GCM"/>
+<unit id="org.eclipse.wst.server_core.feature.feature.group" version="3.3.200.v20121107_1651-33F8S8s7356476La2653"/>
+<unit id="org.eclipse.wst.server_ui.feature.feature.group" version="3.3.201.v20120927_1316-7B7AFMXAtMe9qFHLb-LmR_yg8FB4"/>
+<unit id="org.eclipse.wst.xml_core.feature.feature.group" version="3.5.0.v201209252144-7C7OFqlF7RZHQRLdKwRiWw"/>
+<repository location="http://download.eclipse.org/releases/kepler"/>
+</location>
+</locations>
+<environment>
+<nl>en_US</nl>
+</environment>
+<launcherArgs>
+<vmArgs>-Xms40m -Xmx512m -Declipse.p2.mirrors=true -Djava.net.preferIPv4Stack=true</vmArgs>
+</launcherArgs>
+</target>

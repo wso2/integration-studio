@@ -1,0 +1,176 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- Schema file written by PDE -->
+<schema targetNamespace="org.eclipse.bpel.common.ui">
+<annotation>
+      <appInfo>
+         <meta.schema plugin="org.eclipse.bpel.common.ui" id="paletteAdditions" name="Palette Additions"/>
+      </appInfo>
+      <documentation>
+         This exension point allows for contributing BPEL pallette items. You can either create an individual addition for each palette element or you can create a bulk addition by specifying a palette provider.
+      </documentation>
+   </annotation>
+
+   <element name="extension">
+      <complexType>
+         <sequence>
+            <element ref="additions"/>
+         </sequence>
+         <attribute name="point" type="string" use="required">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="id" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="name" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="additions">
+      <annotation>
+         <documentation>
+            Additions represents the palette additions that will be made by this extension. Either &lt;b&gt;provider&lt;/b&gt; must be set or a list of &lt;tt&gt;addition&lt;/tt&gt; childrens must be specified. When setting &lt;b&gt;provider&lt;/b&gt; it allows for bulk in-code creation of the palette items and categories.
+         </documentation>
+      </annotation>
+      <complexType>
+         <sequence>
+            <element ref="addition" minOccurs="0" maxOccurs="unbounded"/>
+         </sequence>
+         <attribute name="targetEditor" type="string" use="required">
+            <annotation>
+               <documentation>
+                  The target editor for the palette additions (the editor id). While this value must be set, it currently does not have any affect other then it must much the BPEL editor id, which is org.eclipse.bpel.ui.bpeleditor.
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="provider" type="string">
+            <annotation>
+               <documentation>
+                  The provider is a class which implements IPaletteProvider.
+It allows for &quot;bulk&quot; creation and addition of palette items to the BPEL palette.
+               </documentation>
+               <appInfo>
+                  <meta.attribute kind="java" basedOn="org.eclipse.bpel.common.ui.palette.IPaletteProvider"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+         <attribute name="importance" type="string">
+            <annotation>
+               <documentation>
+                  An importance assigned to these palette additions. A lower number means a contribution is more important and will be added first. The default value for importance is 10. It is a numeric value. The BPEL palette additions which the editor itself provides are of importance 5.
+               </documentation>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="addition">
+      <annotation>
+         <appInfo>
+            <meta.element labelAttribute="class"/>
+         </appInfo>
+         <documentation>
+            A palette addition.
+         </documentation>
+      </annotation>
+      <complexType>
+         <attribute name="class" type="string" use="required">
+            <annotation>
+               <documentation>
+                  A class which extends org.eclipse.gef.palette.CreationToolEntry.
+               </documentation>
+               <appInfo>
+                  <meta.attribute kind="java" basedOn="org.eclipse.gef.palette.CreationToolEntry"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+         <attribute name="category" type="string">
+            <annotation>
+               <documentation>
+                  The label of the category id that will be used for this category. Note that only the first tool entry with the category id will be used to create a palette container in the palette. 
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="default" type="boolean">
+            <annotation>
+               <documentation>
+                  Whether this single tool addition is the default tool for the category. Last tool setting this value to &lt;b&gt;true&lt;/b&gt; within a palette container wins.
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="categoryId" type="string">
+            <annotation>
+               <documentation>
+                  The categoryid represents an internal category specification. The format of this entry is a dotted identifier, something like &lt;tt&gt;bpel.actions&lt;/tt&gt; or &lt;tt&gt;bpel.faults&lt;/tt&gt; or &lt;tt&gt;user.macros&lt;/tt&gt;. It is used instead of the category as a way of slotting and creating new categories in the palette. The category attribute is the actual label of the category.
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="categoryOrder" type="string">
+            <annotation>
+               <documentation>
+                  Represents the category order. Default order is 100. The built-in BPEL categories are 10,20,30 respectively and have category ids &lt;tt&gt;bpel.actions&lt;/tt&gt;, &lt;tt&gt;bpel.control&lt;/tt&gt;, and &lt;tt&gt;bpel.faults&lt;/tt&gt;. 
+               </documentation>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="since"/>
+      </appInfo>
+      <documentation>
+         0.0.1
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="examples"/>
+      </appInfo>
+      <documentation>
+         [Enter extension point usage example here.]
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="apiInfo"/>
+      </appInfo>
+      <documentation>
+         [Enter API information here.]
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="implementation"/>
+      </appInfo>
+      <documentation>
+         
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="copyright"/>
+      </appInfo>
+      <documentation>
+         
+      </documentation>
+   </annotation>
+
+</schema>

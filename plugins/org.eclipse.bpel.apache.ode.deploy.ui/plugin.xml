@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.editors">
+      <editor
+            class="org.eclipse.bpel.apache.ode.deploy.ui.editors.ODEDeployMultiPageEditor"
+            contributorClass="org.eclipse.bpel.apache.ode.deploy.ui.editors.ODEDeployMultiPageEditorContributor"
+            filenames="deploy.xml"
+            icon="icons/obj16/ode.gif"
+            id="org.eclipse.bpel.apache.ode.deploy.ui.editors.ODEDeployMultiPageEditor"
+            name="ODE Deployment Descriptor Editor">
+         <contentTypeBinding
+               contentTypeId="org.eclipse.bpel.apache.ode.deploy.ui.content-type">
+         </contentTypeBinding>
+      </editor>
+   </extension>
+   
+   <extension
+         point="org.eclipse.ui.newWizards">
+      <wizard
+            name="BPEL Deployment Descriptor"
+            icon="icons/obj16/ode.gif"
+            category="org.eclipse.bpel.wizards"
+            class="org.eclipse.bpel.apache.ode.deploy.ui.wizards.NewODEDeployWizard"
+            id="org.eclipse.bpel.apache.ode.deploy.ui.wizards.NewODEDeployWizard">
+      </wizard>
+   </extension>
+   <extension
+         point="org.eclipse.core.contenttype.contentTypes">
+      <content-type
+            base-type="org.eclipse.core.runtime.xml"
+            default-charset="UTF-8"
+            file-names="deploy.xml"
+            id="org.eclipse.bpel.apache.ode.deploy.ui.content-type"
+            name="ODE BPEL Deployment Descriptor"
+            priority="normal">
+      </content-type>
+   </extension>
+   <extension
+         point="org.eclipse.ui.decorators">
+      <decorator
+            adaptable="true"
+            icon="icons/obj16/ode.gif"
+            id="org.eclipse.bpel.apache.ode.deploy.ui.icondecorator"
+            label="ODE DD Resource Decorator"
+            lightweight="true"
+            location="TOP_LEFT"
+            state="true">
+         <enablement>
+            <and>
+               <objectClass
+                     name="org.eclipse.core.resources.IFile">
+               </objectClass>
+               <objectState
+                     name="contentTypeId"
+                     value="org.eclipse.bpel.apache.ode.deploy.ui.content-type">
+               </objectState>
+            </and>
+         </enablement>
+      </decorator>
+   </extension>
+
+</plugin>

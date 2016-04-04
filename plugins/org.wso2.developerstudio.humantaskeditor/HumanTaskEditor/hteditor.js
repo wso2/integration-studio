@@ -52,56 +52,66 @@ function makeUnDirty() {
  * 
  * 
  */
-function createFile(currentTaskName) { //createFile
-    alert(currentTaskName);
+function createFile(currentTaskName,state) { //createFile
     // Create Task WSDL
-    $.get('resources/dummy.wsdl', function(data) {
-        try {
+    var serviceURL = $('#' + currentTaskName + 'wrapper #taskCallbackServiceURL').val();
+    var operationName = $('#' + currentTaskName + 'wrapper #taskCallbackOperationName')
+        .val();
+    var serviceName = $('#' + currentTaskName + 'wrapper #taskCallbackServiceName').val();
+
+    var outputElements = $('#' + currentTaskName + 'wrapper #outputmappingTable tr');
+ $.get('resources/dummy.wsdl', function(data) {
+            
+
+       try {
             wsdlDom = marshalEditorTextContent(data);
             generateInputWSDL(wsdlDom, currentTaskName);
-            saveWSDL(wsdlDom, currentTaskName + "Task");
+            saveWSDL(wsdlDom, currentTaskName + "Task"); 
+
         } catch (err) {
-            alert("wsdl"+err);
+            alert("wsdl" + err);
         }
 
     });
     // Create Task Callback WSDL
     $.get('resources/dummy.wsdl', function(data) {
         try {
-            wsdlCBDom = marshalEditorTextContent(data);
-            generateOutputWSDL(wsdlCBDom, currentTaskName);
+             wsdlCBDom = marshalEditorTextContent(data);
+            generateOutputWSDL(wsdlCBDom, currentTaskName,serviceURL,operationName,serviceName,outputElements);
             saveWSDL(wsdlCBDom, currentTaskName + "CBTask");
             // generateUI();
-           
+          
         } catch (err) {
-            alert("wsdlCBDomB"+err);
+            alert("wsdlCBDomB" + err);
         }
 
     });
 
     $.get('resources/dummyhtconfig.ht', function(data) {
-       
+
         try {
             htconfigDom = marshalEditorTextContent(data);
-            generateHTConfig(htconfigDom,xmlDom, currentTaskName);
+            generateHTConfig(htconfigDom, xmlDom, currentTaskName);
             saveHTConfig(htconfigDom);
-
+            generateUI();
+            if(state=="initial"){
+                generateTasks();
+            }
         } catch (err) {
-            alert("config"+err);
+            alert("config" + err);
         }
 
     });
 }
 
 function readCBWSDL(currentTaskName) { //createFile
-    try{
-    var cbWsdl = ExecuteCustomFunction("getWSDL", currentTaskName); 
-    }catch(err){
-        alert(cbWsdl);
+    try {
+        cbWsdl = ExecuteCustomFunction("getWSDL", currentTaskName);
+    } catch (err) {
         alert('Error Reading CallBack WSDL');
     }
     return marshalEditorTextContent(cbWsdl);
- }
+}
 
 /*
  * Signature: addTask(){...}
@@ -116,14 +126,14 @@ function addTask() { //createFile
             taskPartDom = marshalEditorTextContent(data);
             tasks = xmlDom.getElementsByTagName("tasks")[0];
             i = parseInt($('#nooftasks').val());
-            createFile("newTask" + i);
+            createFile("newTask" + i,"");
             taskPartDom.getElementsByTagName("task")[0].setAttribute("name", "newTask" + i);
             xmlDom.getElementsByTagName("tasks")[0].appendChild(xmlDom.importNode(taskPartDom.getElementsByTagName("task")[0], true));
             IDESaveContent(new XMLSerializer().serializeToString((xmlDom)));
-            generateUI();
-           
+            //generateUI();
+
         } catch (err) {
-            alert("addTask"+err);
+            alert("addTask" + err);
         }
 
     });
@@ -158,7 +168,7 @@ function addInitalTask() { //createFile
             $("#page-content-wrapper").tabs();
             $("#page-content-wrapper").tabs("refresh");
         } catch (err) {
-            alert("initial"+err);
+            alert("initial" + err);
         }
 
     });
@@ -166,6 +176,7 @@ function addInitalTask() { //createFile
 
 var xmlDom;
 loadModel();
+//createFile("ApproveClaim"); // todo  - Test and omit
 process();
 
 /*
@@ -210,7 +221,7 @@ function loadModel() {
         xmlDom = marshalEditorTextContent(IDEGetFileContent());
 
     } catch (err) {
-        alert("LoadModel"+err);
+        alert("LoadModel" + err);
     }
 }
 
@@ -220,7 +231,7 @@ function loadModelWithText() {
         xmlDom = marshalEditorTextContent(contents);
 
     } catch (err) {
-        alert("loadmodelwithtext"+err);
+        alert("loadmodelwithtext" + err);
     }
 }
 
@@ -312,12 +323,11 @@ function generateTaskDiv(taskNode) {
     $('#' + taskDivName + " #taskMappingNo").val(0);
     $('#' + taskDivName + " #taskOutputMappingNo").val(0);
     $('#' + taskDivName + " #taskName").val(taskName.trim().replace(/ /g, ''));
-    $('#' + taskDivName +' #taskName').change(function() {
-        
-        createFile($('#' + taskNode.getAttribute("name") + "wrapper #taskName").val());
+    $('#' + taskDivName + ' #taskName').change(function() {
+
         makeDirty();
-        taskNode.setAttribute("name",$('#' + taskNode.getAttribute("name") + "wrapper #taskName").val());
-        generateUI();
+        taskNode.setAttribute("name", $('#' + taskNode.getAttribute("name") + "wrapper #taskName").val());
+        createFile(taskNode.getAttribute("name"),"");
         //generateTasks();
     });
 
@@ -423,7 +433,7 @@ function generateTaskDiv(taskNode) {
                     $(
                             "#" + taskNode.getAttribute("name") + "wrapper #outputmappingTable")
                         .append(outputmapping);
-                   
+
                     outputmappingNo++;
                     $(
                             '#' + taskNode.getAttribute("name") + "wrapper #taskOutputMappingNo")
@@ -438,12 +448,12 @@ function generateTaskDiv(taskNode) {
             });
 
     // sync rendering values into input mapping table
-     var inputNodes = taskNode.getElementsByTagName("renderings")[0]
+    var inputNodes = taskNode.getElementsByTagName("renderings")[0]
         .getElementsByTagName("inputs")[0].childNodes;
     $("#" + taskDivName + " #inputmappingTable")
         .html(
             '<tr><th width="25%" scope="col">Element Name</th><th width="25%" scope="col">Display Name</th><th width="10%" scope="col">Value</th><th width="20%" scope="col">Type</th></tr>');
-    
+
     for (i = 0; i < inputNodes.length; i++) {
         if (inputNodes[i].nodeName != "#text") {
             try {
@@ -554,7 +564,7 @@ function generateTaskDiv(taskNode) {
             }
         }
     }
- //alert($('#' +taskDivName + ' #taskCallbackServiceName').val());
+    //alert($('#' +taskDivName + ' #taskCallbackServiceName').val());
     // sync other fields
     if (taskNode.getElementsByTagName("documentation").length != 0) {
         $('#' + taskDivName + " #taskDocumentation")
@@ -600,151 +610,31 @@ function generateTaskDiv(taskNode) {
                 .getElementsByTagName("description")[0].childNodes[0].nodeValue
                 .trim());
     }
-    // sync People assignments potential owners
+    
     try {
-        if (taskNode.getElementsByTagName("peopleAssignments")[0]
-            .getElementsByTagName("potentialOwners").length != 0) {
-            ownerType = toTitleCase(taskNode.getElementsByTagName("peopleAssignments")[0]
-                .getElementsByTagName("potentialOwners")[0]
-                .getElementsByTagName("argument")[0].getAttribute("name"));
-            $('#' + taskDivName + " input[name=potentialOwners" + taskDivName + "][value=potentialOwners" + ownerType + "]").prop("checked", true);
-            if (ownerType != "Literal") {
-                $('#' + taskDivName + " #potentialOwners" + ownerType)
-                    .val(
-                        taskNode.getElementsByTagName("peopleAssignments")[0]
-                        .getElementsByTagName("potentialOwners")[0]
-                        .getElementsByTagName("argument")[0].childNodes[0].nodeValue
-                        .trim());
-            } else {
-                $('#' + taskDivName + " #potentialOwnersLiteralUsers")
-                    .val(
-                        taskNode.getElementsByTagName("peopleAssignments")[0]
-                        .getElementsByTagName("potentialOwners")[0]
-                        .getElementsByTagName("users")[0].childNodes[0].nodeValue
-                        .trim());
-                        usersList = taskNode.getElementsByTagName("peopleAssignments")[0]
-                        .getElementsByTagName("potentialOwners")[0]
-                        .getElementsByTagName("users");
-                        for(var t=0;t<=usersList.length;t++){
-                            
-                        }
+        // sync People assignments potential owners
+        unmarshalPeopleAssignment(taskNode, "potentialOwners");
 
-            }
-        } else {
-            $('#' + taskDivName + " input[name=potentialOwners" + taskDivName + "][value=na]").prop("checked", true);
-        }
-        if (taskNode.getElementsByTagName("peopleAssignments")[0]
-            .getElementsByTagName("businessAdministrators").length != 0) {
-            ownerType = toTitleCase(taskNode.getElementsByTagName("peopleAssignments")[0]
-                .getElementsByTagName("businessAdministrators")[0]
-                .getElementsByTagName("argument")[0].getAttribute("name"));
-            $('#' + taskDivName + " input[name=businessAdministrators" + taskDivName + "][value=businessAdministrators" + ownerType + "]").prop("checked", true);
-            if (ownerType != "Literal") {
-                $('#' + taskDivName + " #businessAdministrators" + ownerType)
-                    .val(
-                        taskNode.getElementsByTagName("peopleAssignments")[0]
-                        .getElementsByTagName("businessAdministrators")[0]
-                        .getElementsByTagName("argument")[0].childNodes[0].nodeValue
-                        .trim());
-            } else {
-                $('#' + taskDivName + " #businessAdministratorsLiteralUsers")
-                    .val(
-                        taskNode.getElementsByTagName("peopleAssignments")[0]
-                        .getElementsByTagName("businessAdministrators")[0]
-                        .getElementsByTagName("argument")[0].childNodes[0].nodeValue
-                        .trim());
-            }
-        } else {
-            $('#' + taskDivName + " input[name=businessAdministrators" + taskDivName + "][value=na]").prop("checked", true);
-        }
-        if (taskNode.getElementsByTagName("peopleAssignments")[0]
-            .getElementsByTagName("excludedOwners").length != 0) {
-            ownerType = toTitleCase(taskNode.getElementsByTagName("peopleAssignments")[0]
-                .getElementsByTagName("excludedOwners")[0]
-                .getElementsByTagName("argument")[0].getAttribute("name"));
-            $('#' + taskDivName + " input[name=excludedOwners" + taskDivName + "][value=excludedOwners" + ownerType + "]").prop("checked", true);
-            if (ownerType != "Literal") {
-                $('#' + taskDivName + " #excludedOwners" + ownerType)
-                    .val(
-                        taskNode.getElementsByTagName("peopleAssignments")[0]
-                        .getElementsByTagName("excludedOwners")[0]
-                        .getElementsByTagName("argument")[0].childNodes[0].nodeValue
-                        .trim());
-            } else {
-                $('#' + taskDivName + " #excludedOwnersLiteralUsers")
-                    .val(
-                        taskNode.getElementsByTagName("peopleAssignments")[0]
-                        .getElementsByTagName("excludedOwners")[0]
-                        .getElementsByTagName("argument")[0].childNodes[0].nodeValue
-                        .trim());
-            }
-        } else {
-            $('#' + taskDivName + " input[name=excludedOwners" + taskDivName + "][value=na]").prop("checked", true);
-        }
-        if (taskNode.getElementsByTagName("peopleAssignments")[0]
-            .getElementsByTagName("taskInitiator").length != 0) {
-            ownerType = toTitleCase(taskNode.getElementsByTagName("peopleAssignments")[0]
-                .getElementsByTagName("taskInitiator")[0]
-                .getElementsByTagName("argument")[0].getAttribute("name"));
-            $('#' + taskDivName + " input[name=taskInitiator" + taskDivName + "][value=taskInitiator" + ownerType + "]").prop("checked", true);
-            if (ownerType != "Literal") {
-                $('#' + taskDivName + " #taskInitiator" + ownerType)
-                    .val(
-                        taskNode.getElementsByTagName("peopleAssignments")[0]
-                        .getElementsByTagName("taskInitiator")[0]
-                        .getElementsByTagName("argument")[0].childNodes[0].nodeValue
-                        .trim());
-            } else {
-                $('#' + taskDivName + " #taskInitiatorLiteralUsers")
-                    .val(
-                        taskNode.getElementsByTagName("peopleAssignments")[0]
-                        .getElementsByTagName("taskInitiator")[0]
-                        .getElementsByTagName("argument")[0].childNodes[0].nodeValue
-                        .trim());
-            }
-        } else {
-            $('#' + taskDivName + " input[name=taskInitiator" + taskDivName + "][value=na]").prop("checked", true);
-        }
-        if (taskNode.getElementsByTagName("peopleAssignments")[0]
-            .getElementsByTagName("taskStakeholders").length != 0) {
-            ownerType = toTitleCase(taskNode.getElementsByTagName("peopleAssignments")[0]
-                .getElementsByTagName("taskStakeholders")[0]
-                .getElementsByTagName("argument")[0].getAttribute("name"));
-            $('#' + taskDivName + " input[name=taskStakeholders" + taskDivName + "][value=taskStakeholders" + ownerType + "]").prop("checked", true);
-            if (ownerType != "Literal") {
-                $('#' + taskDivName + " #taskStakeholders" + ownerType)
-                    .val(
-                        taskNode.getElementsByTagName("peopleAssignments")[0]
-                        .getElementsByTagName("taskStakeholders")[0]
-                        .getElementsByTagName("argument")[0].childNodes[0].nodeValue
-                        .trim());
-            } else {
-                $('#' + taskDivName + " #taskStakeholdersLiteralUsers")
-                    .val(
-                        taskNode.getElementsByTagName("peopleAssignments")[0]
-                        .getElementsByTagName("taskStakeholders")[0]
-                        .getElementsByTagName("argument")[0].childNodes[0].nodeValue
-                        .trim());
-            }
-        } else {
-            $('#' + taskDivName + " input[name=taskStakeholders" + taskDivName + "][value=na]").prop("checked", true);
-        }
+        // sync People assignments businessAdministrators
+        unmarshalPeopleAssignment(taskNode, "businessAdministrators");
+
+        // sync People assignments excludedOwners
+        unmarshalPeopleAssignment(taskNode, "excludedOwners");
+
+        // sync People assignments taskInitiator
+        unmarshalPeopleAssignment(taskNode, "taskInitiator");
+
+        // sync People assignments taskStakeholders
+        unmarshalPeopleAssignment(taskNode, "taskStakeholders");
+
     } catch (err) {
         alert("People Assignments Couldnt be synced \nCaused by : " + err);
     }
     $('#' + taskDivName + ' .taskDiv').show();
-    
     bindChangeEvents();
-    try{
-    wsdlRead = readCBWSDL(taskName);
-    }catch (err) {
-        alert("Error Reading WSDL");
-    }
-    if(typeof wsdlRead != 'undefined' || wsdlRead != 'undefined'){
-        $('#' + taskDivName + ' #taskCallbackServiceURL').val(wsdlRead.getElementsByTagName("definitions")[0].getElementsByTagName("address")[0].getAttribute("location"));
-        $('#' + taskDivName + ' #taskCallbackServiceName').val(wsdlRead.getElementsByTagName("definitions")[0].getElementsByTagName("service")[0].getAttribute("name"));
-    }
-    
+    syncWSDLFields(taskName);
+            
+    //syncwsdlFields syncWSDLFields(taskNode);
 }
 
 /*
@@ -758,6 +648,8 @@ function generateText(taskNode) {
     taskName = taskNode.getAttribute("name");
     taskDivName = taskName + "wrapper";
     // fill general details
+
+    
     taskNode.setAttribute("name", $('#' + taskDivName + " #taskName").val().replace(/ /g, ''));
     taskNode.getElementsByTagName("documentation")[0].childNodes[0].nodeValue = $(
         '#' + taskDivName + " #taskDocumentation").val();
@@ -772,16 +664,16 @@ function generateText(taskNode) {
     taskNode.getElementsByTagName("presentationElements")[0]
         .getElementsByTagName("description")[0].childNodes[0].nodeValue = $(
             '#' + taskDivName + " #presentationElementDescription").val();
-   
+
     taskNode.getElementsByTagName("interface")[0].setAttribute("operation", $(
         '#' + taskDivName + " #taskOperation").val());
     taskNode.getElementsByTagName("interface")[0].setAttribute(
         "responseOperation", $(
             '#' + taskDivName + " #taskCallbackOperationName").val())
-    taskNode.getElementsByTagName("interface")[0].setAttribute("portType", "cl:"+
+    taskNode.getElementsByTagName("interface")[0].setAttribute("portType", "cl:" +
         taskName + "PT");
     taskNode.getElementsByTagName("interface")[0].setAttribute(
-            "responsePortType","cl:"+ taskName + "CBPT")
+            "responsePortType", "cl:" + taskName + "CBPT")
         // fill input mappings
     inputmappingNo = parseInt($('#' + taskDivName + " #taskMappingNo").val());
     inputNodes = taskNode.getElementsByTagName("renderings")[0]
@@ -841,214 +733,31 @@ function generateText(taskNode) {
         }
     }
 
-    // fill people assignments
-    if (taskNode.getElementsByTagName("peopleAssignments")[0]
-        .getElementsByTagName("potentialOwners").length != 0)
-        taskNode.getElementsByTagName("peopleAssignments")[0]
-        .getElementsByTagName("potentialOwners")[0]
-        .getElementsByTagName("argument")[0]
-        .setAttribute(
-            "name",
-            getArgumentName($(
-                    '#' + taskDivName + " input[name=potentialOwners" + taskDivName + "]:checked")
-                .val()));
-    else {
-        if ($('#' + taskDivName + " input[name=potentialOwners" + taskDivName + "]:checked").val() != "na") {
-            addPeopleAssignementNode(taskNode, xmlDom, "potentialOwners");
-            taskNode.getElementsByTagName("peopleAssignments")[0]
-                .getElementsByTagName("potentialOwners")[0]
-                .getElementsByTagName("argument")[0]
-                .setAttribute(
-                    "name",
-                    getArgumentName($(
-                            '#' + taskDivName + " input[name=potentialOwners" + taskDivName + "]:checked")
-                        .val()));
-        }
-    }
+    // fill people assignments - potentialOwners
+    marshalPeopleAssignment(taskNode,"potentialOwners");
 
+    // fill people assignments - Business Admin
+    marshalPeopleAssignment(taskNode,"businessAdministrators");
+        
+    // fill people assignments - Excluded Owners
+    marshalPeopleAssignment(taskNode,"excludedOwners");
 
-    if ($('#' + taskDivName + " input[name=potentialOwners" + taskDivName + "]:checked").val() == "potentialOwnersRole")
-        taskNode.getElementsByTagName("peopleAssignments")[0]
-        .getElementsByTagName("potentialOwners")[0]
-        .getElementsByTagName("argument")[0].childNodes[0].nodeValue = $(
-            '#' + taskDivName + " #potentialOwnersRole").val();
+    // fill people assignments - taskInitiator
+    marshalPeopleAssignment(taskNode,"taskInitiator");
 
-    if ($('#' + taskDivName + " input[name=potentialOwners" + taskDivName + "]:checked").val() == "potentialOwnersExpression")
-        taskNode.getElementsByTagName("peopleAssignments")[0]
-        .getElementsByTagName("potentialOwners")[0]
-        .getElementsByTagName("argument")[0].childNodes[0].nodeValue = $(
-            '#' + taskDivName + " #potentialOwnersExpression").val();
+    // fill people assignments - taskStakeholders
+    marshalPeopleAssignment(taskNode,"taskStakeholders");
 
-    if ($('#' + taskDivName + " input[name=potentialOwners" + taskDivName + "]:checked").val() == "potentialOwnersLiteral"){
-        createNewLiteral(xmlDom,taskNode.getElementsByTagName("peopleAssignments")[0]
-        .getElementsByTagName("potentialOwners")[0]
-        .getElementsByTagName("from")[0],$('#' + taskDivName + " #potentialOwnersLiteralUsers").val(),"user");
-
-    }
-    if (taskNode.getElementsByTagName("peopleAssignments")[0]
-        .getElementsByTagName("businessAdministrators").length != 0)
-        taskNode.getElementsByTagName("peopleAssignments")[0]
-        .getElementsByTagName("businessAdministrators")[0]
-        .getElementsByTagName("argument")[0]
-        .setAttribute(
-            "name",
-            getArgumentName($(
-                    '#' + taskDivName + " input[name=businessAdministrators" + taskDivName + "]:checked")
-                .val()));
-    else {
-        if ($('#' + taskDivName + " input[name=businessAdministrators" + taskDivName + "]:checked").val() != "na") {
-            addPeopleAssignementNode(taskNode, xmlDom, "businessAdministrators");
-            taskNode.getElementsByTagName("peopleAssignments")[0]
-                .getElementsByTagName("businessAdministrators")[0]
-                .getElementsByTagName("argument")[0]
-                .setAttribute(
-                    "name",
-                    getArgumentName($(
-                            '#' + taskDivName + " input[name=businessAdministrators" + taskDivName + "]:checked")
-                        .val()));
-
-        }
-    }
-
-    if ($('#' + taskDivName + " input[name=businessAdministrators" + taskDivName + "]:checked")
-        .val() == "businessAdministratorsRole")
-        taskNode.getElementsByTagName("peopleAssignments")[0]
-        .getElementsByTagName("businessAdministrators")[0]
-        .getElementsByTagName("argument")[0].childNodes[0].nodeValue = $(
-            '#' + taskDivName + " #businessAdministratorsRole").val();
-    
-    if ($('#' + taskDivName + " input[name=businessAdministrators" + taskDivName + "]:checked")
-        .val() == "businessAdministratorsExpression")
-        taskNode.getElementsByTagName("peopleAssignments")[0]
-        .getElementsByTagName("businessAdministrators")[0]
-        .getElementsByTagName("argument")[0].childNodes[0].nodeValue = $(
-            '#' + taskDivName + " #businessAdministratorsExpression").val();
-
-    if ($('#' + taskDivName + " input[name=businessAdministrators" + taskDivName + "]:checked")
-        .val() == "businessAdministratorsLiteral")
-        taskNode.getElementsByTagName("peopleAssignments")[0]
-        .getElementsByTagName("businessAdministrators")[0]
-        .getElementsByTagName("argument")[0].childNodes[0].nodeValue = $(
-            '#' + taskDivName + " #businessAdministratorsLiteralUsers").val();
-
-
-    if (taskNode.getElementsByTagName("peopleAssignments")[0]
-        .getElementsByTagName("excludedOwners").length != 0)
-        taskNode.getElementsByTagName("peopleAssignments")[0]
-        .getElementsByTagName("excludedOwners")[0]
-        .getElementsByTagName("argument")[0]
-        .setAttribute("name", getArgumentName($(
-            '#' + taskDivName + " input[name=excludedOwners" + taskDivName + "]:checked").val()));
-    else {
-        if ($('#' + taskDivName + " input[name=excludedOwners" + taskDivName + "]:checked").val() != "na") {
-            addPeopleAssignementNode(taskNode, xmlDom, "excludedOwners");
-            taskNode.getElementsByTagName("peopleAssignments")[0]
-                .getElementsByTagName("excludedOwners")[0]
-                .getElementsByTagName("argument")[0]
-                .setAttribute("name", getArgumentName($(
-                    '#' + taskDivName + " input[name=excludedOwners" + taskDivName + "]:checked").val()));
-        }
-    }
-    if ($('#' + taskDivName + " input[name=excludedOwners" + taskDivName + "]:checked").val() == "excludedOwnersRole")
-        taskNode.getElementsByTagName("peopleAssignments")[0]
-        .getElementsByTagName("excludedOwners")[0]
-        .getElementsByTagName("argument")[0].childNodes[0].nodeValue = $(
-            '#' + taskDivName + " #excludedOwnersRole").val();
-    // Set Literal Values
-    if ($('#' + taskDivName + " input[name=excludedOwners" + taskDivName + "]:checked").val() == "excludedOwnersExpression")
-        taskNode.getElementsByTagName("peopleAssignments")[0]
-        .getElementsByTagName("excludedOwners")[0]
-        .getElementsByTagName("argument")[0].childNodes[0].nodeValue = $(
-            '#' + taskDivName + " #excludedOwnersExpression").val();
-
-    if ($('#' + taskDivName + " input[name=excludedOwners" + taskDivName + "]:checked").val() == "excludedOwnersLiteral")
-        taskNode.getElementsByTagName("peopleAssignments")[0]
-        .getElementsByTagName("excludedOwners")[0]
-        .getElementsByTagName("argument")[0].childNodes[0].nodeValue = $(
-            '#' + taskDivName + " #excludedOwnersLiteralUsers").val();
-
-    if (taskNode.getElementsByTagName("peopleAssignments")[0]
-        .getElementsByTagName("taskInitiator").length != 0)
-        taskNode.getElementsByTagName("peopleAssignments")[0]
-        .getElementsByTagName("taskInitiator")[0]
-        .getElementsByTagName("argument")[0].setAttribute("name",
-            getArgumentName($(
-                '#' + taskDivName + " input[name=taskInitiator" + taskDivName + "]:checked").val()));
-    else {
-        if ($('#' + taskDivName + " input[name=taskInitiator" + taskDivName + "]:checked").val() != "na") {
-            addPeopleAssignementNode(taskNode, xmlDom, "taskInitiator");
-            taskNode.getElementsByTagName("peopleAssignments")[0]
-                .getElementsByTagName("taskInitiator")[0]
-                .getElementsByTagName("argument")[0].setAttribute("name",
-                    getArgumentName($(
-                        '#' + taskDivName + " input[name=taskInitiator" + taskDivName + "]:checked").val()));
-        }
-    }
-    if ($('#' + taskDivName + " input[name=taskInitiator" + taskDivName + "]:checked").val() == "taskInitiatorRole")
-        taskNode.getElementsByTagName("peopleAssignments")[0]
-        .getElementsByTagName("taskInitiator")[0]
-        .getElementsByTagName("argument")[0].childNodes[0].nodeValue = $(
-            '#' + taskDivName + " #taskInitiatorRole").val();
-    // Set Literal Values
-    if ($('#' + taskDivName + " input[name=taskInitiator" + taskDivName + "]:checked").val() == "taskInitiatorExpression")
-        taskNode.getElementsByTagName("peopleAssignments")[0]
-        .getElementsByTagName("taskInitiator")[0]
-        .getElementsByTagName("argument")[0].childNodes[0].nodeValue = $(
-            '#' + taskDivName + " #taskInitiatorExpression").val();
-
-    if ($('#' + taskDivName + " input[name=taskInitiator" + taskDivName + "]:checked").val() == "taskInitiatorLiteral")
-        taskNode.getElementsByTagName("peopleAssignments")[0]
-        .getElementsByTagName("taskInitiator")[0]
-        .getElementsByTagName("argument")[0].childNodes[0].nodeValue = $(
-            '#' + taskDivName + " #taskInitiatorLiteralUsers").val();
-
-    if (taskNode.getElementsByTagName("peopleAssignments")[0]
-        .getElementsByTagName("taskStakeholders").length != 0)
-        taskNode.getElementsByTagName("peopleAssignments")[0]
-        .getElementsByTagName("taskStakeholders")[0]
-        .getElementsByTagName("argument")[0].setAttribute("name",
-            getArgumentName($(
-                    '#' + taskDivName + " input[name=taskStakeholders" + taskDivName + "]:checked")
-                .val()));
-    else {
-        if ($('#' + taskDivName + " input[name=taskStakeholders" + taskDivName + "]:checked").val() != "na") {
-            addPeopleAssignementNode(taskNode, xmlDom, "taskStakeholders");
-            taskNode.getElementsByTagName("peopleAssignments")[0]
-                .getElementsByTagName("taskStakeholders")[0]
-                .getElementsByTagName("argument")[0].setAttribute("name",
-                    getArgumentName($(
-                            '#' + taskDivName + " input[name=taskStakeholders" + taskDivName + "]:checked")
-                        .val()));
-        }
-    }
-    if ($('#' + taskDivName + " input[name=taskStakeholders" + taskDivName + "]:checked").val() == "taskStakeholdersRole")
-        taskNode.getElementsByTagName("peopleAssignments")[0]
-        .getElementsByTagName("taskStakeholders")[0]
-        .getElementsByTagName("argument")[0].childNodes[0].nodeValue = $(
-            '#' + taskDivName + " #taskStakeholdersRole").val();
-    // Set Literal Values
-    if ($('#' + taskDivName + " input[name=taskStakeholders" + taskDivName + "]:checked").val() == "taskStakeholdersExpression")
-        taskNode.getElementsByTagName("peopleAssignments")[0]
-        .getElementsByTagName("taskStakeholders")[0]
-        .getElementsByTagName("argument")[0].childNodes[0].nodeValue = $(
-            '#' + taskDivName + " #taskStakeholdersExpression").val();
-
-    if ($('#' + taskDivName + " input[name=taskStakeholders" + taskDivName + "]:checked").val() == "taskStakeholdersLiteral")
-        taskNode.getElementsByTagName("peopleAssignments")[0]
-        .getElementsByTagName("taskStakeholders")[0]
-        .getElementsByTagName("argument")[0].childNodes[0].nodeValue = $(
-            '#' + taskDivName + " #taskStakeholdersLiteralUsers").val();
-
+    //Remove people assignments with no argument or argument value none
     var peopleAssignmentsList = taskNode.getElementsByTagName("peopleAssignments")[0].childNodes;
     for (i = 0; i < peopleAssignmentsList.length; i++) {
         if (peopleAssignmentsList[i].nodeName != "#text") {
-            if (peopleAssignmentsList[i].getElementsByTagName("argument")[0].getAttribute("name") == "None") {
+            if (peopleAssignmentsList[i].getElementsByTagName("argument").length != 0 && peopleAssignmentsList[i].getElementsByTagName("argument")[0].getAttribute("name") == "None") {
                 taskNode.getElementsByTagName("peopleAssignments")[0].removeChild(peopleAssignmentsList[i]);
             }
         }
     }
-
-    createFile(taskName);
+    createFile(taskName,"");
 }
 
 
@@ -1079,9 +788,26 @@ function marshalEditorTextContent(textContent) {
         var parser = new DOMParser();
         var root = parser.parseFromString(textContent, "text/xml");
     } catch (err) {
-        alert("Marshalling Error"+err);
+        alert("Marshalling Error" + err);
     }
     return root;
+}
+
+function syncWSDLFields(taskName){
+    taskDivName = taskName + "wrapper";
+    try {
+        wsdlRead = readCBWSDL(taskName);
+    } catch (err) {
+        alert("Error Reading WSDL");
+    }
+    if (typeof wsdlRead != 'undefined' || wsdlRead != 'undefined') {
+        if(wsdlRead.getElementsByTagName("definitions").length!=0){
+        $('#' + taskDivName + ' #taskCallbackServiceURL').val(wsdlRead.getElementsByTagName("definitions")[0].getElementsByTagName("address")[0].getAttribute("location"));
+        $('#' + taskDivName + ' #taskCallbackServiceName').val(wsdlRead.getElementsByTagName("definitions")[0].getElementsByTagName("service")[0].getAttribute("name"));
+        }else{
+            createFile(taskName,"initial");
+        }
+    }
 }
 
 /*
@@ -1102,6 +828,7 @@ function loadFileContent() {
  */
 function addPeopleAssignementNode(taskNode, xmlDom, assignmentName) {
     try {
+        taskNode.getElementsByTagName("peopleAssignments")[0].removeChild(taskNode.getElementsByTagName("peopleAssignments")[0].getElementsByTagName(assignmentName)[0]);
         var newAssignmentNode = xmlDom.createElementNS(
             "http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803",
             "htd:" + assignmentName);
@@ -1140,9 +867,107 @@ $('.sectionHeader').click(function() {
 
 });
 
+function marshalPeopleAssignment(taskNode, peopleAssignmentName) {
+    taskName = taskNode.getAttribute("name");
+    taskDivName = taskName + "wrapper";
+    if (taskNode.getElementsByTagName("peopleAssignments")[0]
+        .getElementsByTagName(peopleAssignmentName).length != 0 && taskNode.getElementsByTagName("peopleAssignments")[0]
+        .getElementsByTagName(peopleAssignmentName)[0]
+        .getElementsByTagName("argument").length != 0)
+        taskNode.getElementsByTagName("peopleAssignments")[0]
+        .getElementsByTagName(peopleAssignmentName)[0]
+        .getElementsByTagName("argument")[0]
+        .setAttribute(
+            "name",
+            getArgumentName($(
+                    '#' + taskDivName + " input[name="+peopleAssignmentName+ "" + taskDivName + "]:checked")
+                .val()));
+    else {
+        if ($('#' + taskDivName + " input[name="+peopleAssignmentName+ "" + taskDivName + "]:checked").val() != "na") {
+            addPeopleAssignementNode(taskNode, xmlDom, peopleAssignmentName);
+            taskNode.getElementsByTagName("peopleAssignments")[0]
+                .getElementsByTagName(peopleAssignmentName)[0]
+                .getElementsByTagName("argument")[0]
+                .setAttribute(
+                    "name",
+                    getArgumentName($(
+                            '#' + taskDivName + " input[name="+peopleAssignmentName+ "" + taskDivName + "]:checked")
+                        .val()));
+        }
+    }
+
+    if(taskNode.getElementsByTagName("peopleAssignments")[0]
+        .getElementsByTagName(peopleAssignmentName).length != 0 && taskNode.getElementsByTagName("peopleAssignments")[0]
+        .getElementsByTagName(peopleAssignmentName)[0]
+        .getElementsByTagName("argument").length != 0 ){
+    if ($('#' + taskDivName + " input[name="+peopleAssignmentName+ "" + taskDivName + "]:checked").val() == peopleAssignmentName+ "Role")
+        taskNode.getElementsByTagName("peopleAssignments")[0]
+        .getElementsByTagName(peopleAssignmentName)[0]
+        .getElementsByTagName("argument")[0].childNodes[0].nodeValue = $(
+            '#' + taskDivName + " #"+peopleAssignmentName+ "Role").val();
+
+    if ($('#' + taskDivName + " input[name="+peopleAssignmentName+ "" + taskDivName + "]:checked").val() == peopleAssignmentName+ "Expression")
+        taskNode.getElementsByTagName("peopleAssignments")[0]
+        .getElementsByTagName(peopleAssignmentName)[0]
+        .getElementsByTagName("argument")[0].childNodes[0].nodeValue = $(
+            '#' + taskDivName + " #"+peopleAssignmentName+ "Expression").val();
+    }
+
+    if ($('#' + taskDivName + " input[name="+peopleAssignmentName+ "" + taskDivName + "]:checked").val() == peopleAssignmentName+ "Literal") {
+        // taskNode.removeChild(taskNode.getElementsByTagName("peopleAssignments")[0]);
+        createNewLiteral(xmlDom, taskNode.getElementsByTagName("peopleAssignments")[0]
+            .getElementsByTagName(peopleAssignmentName)[0]
+            .getElementsByTagName("from")[0], $('#' + taskDivName + " #"+peopleAssignmentName+"LiteralUsers").val(),$('#' + taskDivName + " #"+peopleAssignmentName+"LiteralGroups").val());
+
+    }
+
+}
+
+function unmarshalPeopleAssignment(taskNode, peopleAssignmentName) {
+    taskName = taskNode.getAttribute("name");
+    taskDivName = taskName + "wrapper";
+    if (taskNode.getElementsByTagName("peopleAssignments")[0]
+            .getElementsByTagName(peopleAssignmentName).length != 0) { //&& TaskNode.getElementsByTagName("peopleAssignments")[0].getElementsByTagName("potentialOwners").getElementsByTagName("argument").length!=0
+            if (taskNode.getElementsByTagName("peopleAssignments")[0].getElementsByTagName(peopleAssignmentName)[0].getElementsByTagName("argument").length != 0) {
+                ownerType = toTitleCase(taskNode.getElementsByTagName("peopleAssignments")[0]
+                    .getElementsByTagName(peopleAssignmentName)[0]
+                    .getElementsByTagName("argument")[0].getAttribute("name"));
+                $('#' + taskDivName + " input[name="+peopleAssignmentName+""+ taskDivName + "][value="+peopleAssignmentName+"" + ownerType + "]").prop("checked", true);
+                $('#' + taskDivName + " #"+peopleAssignmentName+"" + ownerType)
+                    .val(
+                        taskNode.getElementsByTagName("peopleAssignments")[0]
+                        .getElementsByTagName(peopleAssignmentName)[0]
+                        .getElementsByTagName("argument")[0].childNodes[0].nodeValue
+                        .trim());
+            } else {
+
+                $('#' + taskDivName + " input[name="+peopleAssignmentName+"" + taskDivName + "][value="+peopleAssignmentName+"Literal]").prop("checked", true);
+                usersList = taskNode.getElementsByTagName("peopleAssignments")[0]
+                    .getElementsByTagName(peopleAssignmentName)[0]
+                    .getElementsByTagName("user");
+                groupsList = taskNode.getElementsByTagName("peopleAssignments")[0]
+                    .getElementsByTagName(peopleAssignmentName)[0]
+                    .getElementsByTagName("group");
+                for (var t = 0; t < usersList.length; t++) {
+                    if(usersList[t].childNodes.length!=0)
+                    $('#' + taskDivName + " #"+peopleAssignmentName+"LiteralUsers").val($('#' + taskDivName + " #"+peopleAssignmentName+"LiteralUsers").val() + ',' + usersList[t].childNodes[0].nodeValue);
+                }
+                for (var k = 0; k < groupsList.length; k++) {
+                    if(groupsList[k].childNodes.length!=0)
+                    $('#' + taskDivName + " #"+peopleAssignmentName+"LiteralGroups").val($('#' + taskDivName + " #"+peopleAssignmentName+"LiteralGroups").val() + ',' + groupsList[k].childNodes[0].nodeValue);
+                }
+
+            }
+        } else {
+            $('#' + taskDivName + " input[name="+peopleAssignmentName+"" + taskDivName + "][value=na]").prop("checked", true);
+        }
+
+}
+
+
 function bindChangeEvents() {
 
-   $('input').keyup(function() {
+    $('input').keyup(function() {
         makeDirty();
         //generateText();
     });
@@ -1157,41 +982,47 @@ function bindChangeEvents() {
         //generateTasks();
     });
 
- }
+}
 
- function createNewLiteral(xmlDom,parent,text,type){
+function createNewLiteral(xmlDom, parent, text, grouptext) {
+    while (parent.firstChild) {
+    parent.removeChild(parent.firstChild);
+    }
     var splitList = text.split(",");
+    var groupSplitList = grouptext.split(",");
     newLiteral = xmlDom.createElementNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803",
-    "htd:literal"); // scheme.appendchild()
+        "htd:literal"); // scheme.appendchild()
     newOrgEntity = xmlDom.createElementNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/types/200803",
-    "htt:organizationalEntity");
-    for(var i=0;i<=splitList.length;i++){
-        if(type=="user"){
-        newUser = xmlDom.createElementNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/types/200803",
-        "htt:user");
-        newUserText = xmlDom.createTextNode(splitList[i]);
-        newUser.appendChild(newUserText);
-        newLiteral.appendChild(newUser);
-        }else if(type=="group"){
-        newGroup = xmlDom.createElementNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/types/200803",
-        "htt:group");
-        newGroupText = xmlDom.createTextNode(splitList[i]);
-        newGroup.appendChild(newGroupText);
-        newLiteral.appendChild(newGroup);    
-        }
+        "htt:organizationalEntity");
+    for (var i = 0; i < splitList.length; i++) {
+           newUser = xmlDom.createElementNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/types/200803",
+                "htt:user");
+            newUserText = xmlDom.createTextNode(splitList[i]);
+            newUser.appendChild(newUserText);
+            newOrgEntity.appendChild(newUser);
+        
+    }
+    for (var i = 0; i < groupSplitList.length; i++) {
+            
+            newGroup = xmlDom.createElementNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/types/200803",
+                "htt:group");
+            newGroupText = xmlDom.createTextNode(groupSplitList[i]);
+            newGroup.appendChild(newGroupText);
+            newOrgEntity.appendChild(newGroup);
+        
     }
     newLiteral.appendChild(newOrgEntity);
     parent.appendChild(newLiteral);
-        
- }
 
-function removeUnwantedArtifacts(){
+}
+
+function removeUnwantedArtifacts() {
     var taskNames = ["removeWSDL"];
     tasksList = xmlDom.getElementsByTagName("task");
     nodes = Array.prototype.slice.call(tasksList, 0);
     nodes.forEach(function(taskNode) {
         taskNames.push(taskNode.getAttribute("name"));
     });
-   
-    ExecuteCustomFunction.apply(this,taskNames);
+
+    ExecuteCustomFunction.apply(this, taskNames);
 }

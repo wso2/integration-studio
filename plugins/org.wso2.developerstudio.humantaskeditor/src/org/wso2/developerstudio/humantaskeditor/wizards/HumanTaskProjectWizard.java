@@ -183,6 +183,27 @@ public class HumanTaskProjectWizard extends Wizard implements INewWizard {
         String contents = readDummyHT();
         return new ByteArrayInputStream(contents.getBytes());
     }
+    /**
+     * We will initialize file contents with a sample text.
+     *
+     * @throws IOException
+     */
+
+    private InputStream openWSDLStream() throws IOException {
+        String contents = readDummyWSDL();
+        return new ByteArrayInputStream(contents.getBytes());
+    }
+    
+    /**
+     * We will initialize file contents with a sample text.
+     *
+     * @throws IOException
+     */
+
+    private InputStream openHTConfigStream() throws IOException {
+        String contents = readDummyHtConfig();
+        return new ByteArrayInputStream(contents.getBytes());
+    }
 
     /**
      * Read dummy ht file which is needed to initialize a new ht file
@@ -209,6 +230,59 @@ public class HumanTaskProjectWizard extends Wizard implements INewWizard {
             logger.log(Level.FINE, "Error reading from HT file", e);
             IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage());
             ErrorDialog.openError(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), "Error", "Error reading from project", editorStatus);
+        }
+        return sb.toString();
+    }
+    
+    /**
+     * Read dummy ht file which is needed to initialize a new ht file
+     *
+     * @throws IOException
+     */
+    private String readDummyWSDL() throws IOException {
+        StringBuilder sb = new StringBuilder();
+        URL url;
+        try {
+            url = new URL(
+                    "platform:/plugin/org.wso2.developerstudio.humantaskeditor/HumanTaskEditor/resources/dummy.wsdl");
+            InputStream inputStream = url.openConnection().getInputStream();
+            BufferedReader in = new BufferedReader(new InputStreamReader(inputStream));
+            String inputLine;
+            while ((inputLine = in.readLine()) != null) {
+                sb.append(inputLine + "\n");
+            }
+
+            in.close();
+
+        } catch (IOException e) {
+            logger.log(Level.FINE, "Error reading from WSDL file", e);
+            IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage());
+            ErrorDialog.openError(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), "Error",
+                    "Error reading from project", editorStatus);
+        }
+        return sb.toString();
+    }
+    
+    private String readDummyHtConfig() throws IOException {
+        StringBuilder sb = new StringBuilder();
+        URL url;
+        try {
+            url = new URL(
+                    "platform:/plugin/org.wso2.developerstudio.humantaskeditor/HumanTaskEditor/resources/dummyhtconfig.ht");
+            InputStream inputStream = url.openConnection().getInputStream();
+            BufferedReader in = new BufferedReader(new InputStreamReader(inputStream));
+            String inputLine;
+            while ((inputLine = in.readLine()) != null) {
+                sb.append(inputLine + "\n");
+            }
+
+            in.close();
+
+        } catch (IOException e) {
+            logger.log(Level.FINE, "Error reading from HTConfig file", e);
+            IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage());
+            ErrorDialog.openError(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), "Error",
+                    "Error reading from project", editorStatus);
         }
         return sb.toString();
     }

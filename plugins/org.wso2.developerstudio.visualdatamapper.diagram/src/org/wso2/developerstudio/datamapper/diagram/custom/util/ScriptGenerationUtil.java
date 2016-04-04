@@ -46,7 +46,7 @@ public class ScriptGenerationUtil {
                 && getArrayElementCount(variable.getName(), variableTypeMap) == 1) {
             // implement list to single mapping
             String[] variableNameArray = variable.getName().split("\\.");
-            boolean isPerviousVariableTypeRecord = false;
+            boolean isPerviousVariableTypePrimitive = false;
             for (String nextName : variableNameArray) {
                 variableName += nextName;
                 if (variableTypeMap.containsKey(variableName)) {
@@ -67,15 +67,17 @@ public class ScriptGenerationUtil {
                                 prettyVariableName += "." + nextName + "[0]";
                             }
                         }
-                    } else if (nextName.contains("@") && isPerviousVariableTypeRecord) {
+                    } else if (nextName.contains("@") && isPerviousVariableTypePrimitive) {
                         prettyVariableName += "ATTR." + nextName.replaceFirst("@", "attr_");
                     } else {
-                        prettyVariableName += "." + nextName;
+                        prettyVariableName += "." + nextName.replaceFirst("@", "attr_");
                     }
-                    if (SchemaDataType.RECORD.equals(variableType) || SchemaDataType.STRING.equals(variableType)) {
-                        isPerviousVariableTypeRecord = true;
+                    if (SchemaDataType.DOUBLE.equals(variableType) || SchemaDataType.INT.equals(variableType)
+                            || SchemaDataType.BOOLEAN.equals(variableType)
+                            || SchemaDataType.STRING.equals(variableType)) {
+                        isPerviousVariableTypePrimitive = true;
                     } else {
-                        isPerviousVariableTypeRecord = false;
+                        isPerviousVariableTypePrimitive = false;
                     }
                 } else {
                     throw new IllegalArgumentException("Unregistered Variable name found : " + variableName + " in - ["

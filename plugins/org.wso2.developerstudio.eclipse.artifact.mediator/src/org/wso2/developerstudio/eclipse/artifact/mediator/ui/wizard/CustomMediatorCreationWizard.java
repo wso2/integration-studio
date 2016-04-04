@@ -38,7 +38,7 @@ import org.eclipse.ui.IEditorPart;
 import org.wso2.developerstudio.eclipse.artifact.mediator.model.CustomMediatorModel;
 import org.wso2.developerstudio.eclipse.artifact.mediator.template.CustomMediatorClassTemplate;
 import org.wso2.developerstudio.eclipse.artifact.mediator.utils.MediatorImageUtils;
-import org.wso2.developerstudio.eclipse.libraries.utils.LibraryUtils;
+import org.wso2.developerstudio.eclipse.esb.libraries.utils.LibraryUtils;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.maven.Activator;
@@ -198,6 +198,7 @@ public class CustomMediatorCreationWizard extends AbstractWSO2ProjectCreationWiz
 		return project;
 	}
 	
+	// FIXME - need to get these lib from project scope now
 	private void addDependancies(IProject project) throws JavaModelException {
  
 			String[] depedencyList1 = getDepandanceyList();
@@ -211,7 +212,7 @@ public class CustomMediatorCreationWizard extends AbstractWSO2ProjectCreationWiz
 		 
 	}
 	
-	private String[] getDepandanceyList(){
+ private String[] getDepandanceyList(){
 		String[] depedencyList = new String[] { LibraryUtils.abdera_wso2vXX_jar, LibraryUtils.axiom_1_2_11_wso2vXX_jar,
 				LibraryUtils.axis2_1_6_1_wso2vXX_jar, LibraryUtils.commons_codec_wso2vXX_jar,
 				LibraryUtils.commons_httpclient_wso2vXX_jar, LibraryUtils.commons_io_wso2vXX_jar,

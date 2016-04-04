@@ -53,12 +53,12 @@ import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
 import org.wso2.developerstudio.eclipse.platform.core.interfaces.IDeveloperStudioElement;
 import org.wso2.developerstudio.eclipse.platform.core.interfaces.IDeveloperStudioProvider;
 import org.wso2.developerstudio.eclipse.platform.core.interfaces.IDeveloperStudioProviderData;
-import org.wso2.developerstudio.eclipse.platform.core.registry.util.RegistryResourceInfo;
-import org.wso2.developerstudio.eclipse.platform.core.registry.util.RegistryResourceInfoDoc;
-import org.wso2.developerstudio.eclipse.platform.core.registry.util.RegistryResourceUtils;
 import org.wso2.developerstudio.eclipse.platform.core.templates.ArtifactTemplate;
 import org.wso2.developerstudio.eclipse.platform.core.templates.ArtifactTemplateHandler;
 import org.wso2.developerstudio.eclipse.registry.core.interfaces.RegistryFileImpl;
+import org.wso2.developerstudio.eclipse.registry.core.utils.RegistryResourceInfo;
+import org.wso2.developerstudio.eclipse.registry.core.utils.RegistryResourceInfoDoc;
+import org.wso2.developerstudio.eclipse.registry.core.utils.RegistryResourceUtils;
 import org.wso2.developerstudio.eclipse.utils.data.ITemporaryFileTag;
 import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
 

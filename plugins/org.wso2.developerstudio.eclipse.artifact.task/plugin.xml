@@ -65,7 +65,7 @@
             </commonWizard>
     </extension>
    <extension
-		point="org.wso2.developerstudio.eclipse.platform.core.intro.ui.dashboard">	
+		point="org.wso2.developerstudio.eclipse.dashboad.link">	
 	<wizardLink category="dashboard.category.esb" id="9dashboard.wizardLink.esb.task"
 			wizard="org.wso2.developerstudio.eclipse.artifact.task.wizard" priority="9">
 		</wizardLink>

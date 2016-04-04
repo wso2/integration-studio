@@ -130,7 +130,7 @@
    </extension>
    
   <extension
-		point="org.wso2.developerstudio.eclipse.platform.core.intro.ui.dashboard">	
+		point="org.wso2.developerstudio.eclipse.dashboad.link">	
    <wizardLink category="dashboard.category.esb" id="3dashboard.wizardLink.esb.endpoint"
 	wizard="org.wso2.developerstudio.eclipse.artifact.newendpointartifact"
 	priority="3">

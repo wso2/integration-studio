@@ -18,7 +18,7 @@ package org.wso2.developerstudio.eclipse.artifact.sequence.ui.wizard;
 
 import static org.wso2.developerstudio.eclipse.artifact.sequence.model.SequenceModel.CONF_REG_ID;
 import static org.wso2.developerstudio.eclipse.artifact.sequence.model.SequenceModel.GOV_REG_ID;
-import static org.wso2.developerstudio.eclipse.platform.core.registry.util.Constants.REGISTRY_RESOURCE;
+import static org.wso2.developerstudio.eclipse.registry.core.utils.Constants.REGISTRY_RESOURCE;
 
 import java.io.File;
 import java.io.IOException;
@@ -62,14 +62,14 @@ import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
 import org.wso2.developerstudio.eclipse.platform.core.project.model.ProjectDataModel;
-import org.wso2.developerstudio.eclipse.platform.core.registry.util.RegistryResourceInfo;
-import org.wso2.developerstudio.eclipse.platform.core.registry.util.RegistryResourceInfoDoc;
-import org.wso2.developerstudio.eclipse.platform.core.registry.util.RegistryResourceUtils;
 import org.wso2.developerstudio.eclipse.platform.core.templates.ArtifactTemplate;
 import org.wso2.developerstudio.eclipse.platform.core.templates.ArtifactTemplateHandler;
 import org.wso2.developerstudio.eclipse.platform.ui.editor.Openable;
 import org.wso2.developerstudio.eclipse.platform.ui.startup.ESBGraphicalEditor;
 import org.wso2.developerstudio.eclipse.platform.ui.wizard.AbstractWSO2ProjectCreationWizard;
+import org.wso2.developerstudio.eclipse.registry.core.utils.RegistryResourceInfo;
+import org.wso2.developerstudio.eclipse.registry.core.utils.RegistryResourceInfoDoc;
+import org.wso2.developerstudio.eclipse.registry.core.utils.RegistryResourceUtils;
 import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
 
 public class SequenceProjectCreationWizard extends AbstractWSO2ProjectCreationWizard {

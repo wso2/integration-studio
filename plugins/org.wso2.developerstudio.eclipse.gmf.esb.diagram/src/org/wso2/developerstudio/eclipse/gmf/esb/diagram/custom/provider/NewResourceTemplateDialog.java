@@ -16,7 +16,7 @@
 
 package org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.provider;
 
-import static org.wso2.developerstudio.eclipse.platform.core.registry.util.Constants.REGISTRY_RESOURCE;
+import static org.wso2.developerstudio.eclipse.registry.core.utils.Constants.REGISTRY_RESOURCE;
 
 import java.io.File;
 import java.io.IOException;
@@ -71,12 +71,12 @@ import org.wso2.developerstudio.eclipse.general.project.utils.GeneralProjectUtil
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
-import org.wso2.developerstudio.eclipse.platform.core.registry.util.RegistryResourceInfo;
-import org.wso2.developerstudio.eclipse.platform.core.registry.util.RegistryResourceInfoDoc;
-import org.wso2.developerstudio.eclipse.platform.core.registry.util.RegistryResourceUtils;
 import org.wso2.developerstudio.eclipse.platform.core.templates.ArtifactTemplate;
 import org.wso2.developerstudio.eclipse.platform.core.templates.ArtifactTemplateHandler;
 import org.wso2.developerstudio.eclipse.platform.core.utils.Constants;
+import org.wso2.developerstudio.eclipse.registry.core.utils.RegistryResourceInfo;
+import org.wso2.developerstudio.eclipse.registry.core.utils.RegistryResourceInfoDoc;
+import org.wso2.developerstudio.eclipse.registry.core.utils.RegistryResourceUtils;
 import org.wso2.developerstudio.eclipse.utils.data.ITemporaryFileTag;
 import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
 

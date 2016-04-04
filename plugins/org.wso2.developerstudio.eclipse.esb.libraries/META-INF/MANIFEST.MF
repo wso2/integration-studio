@@ -300,5 +300,6 @@ Export-Package: com.damnhandy.uri.template,
  org.wso2.carbon.rule.common,
  org.wso2.carbon.rule.mediator,
  org.wso2.carbon.rule.mediator.config,
- org.wso2.carbon.rule.mediator.internal.config
+ org.wso2.carbon.rule.mediator.internal.config,
+ org.wso2.developerstudio.eclipse.esb.libraries.utils
 

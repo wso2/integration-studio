@@ -33,9 +33,6 @@
  <feature id="org.wso2.developerstudio.kernel.wso2plugins.default.samples.feature" version="0.0.0">
       <category name="org.wso2.developerstudio.kernel.platform.bundles"/>
    </feature>
- <feature id="org.wso2.developerstudio.eclipse.samples" version="0.0.0">
-      <category name="org.wso2.developerstudio.kernel.platform.bundles"/>
-   </feature>
  <feature id="org.wso2.developerstudio.library.artifact.feature" version="0.0.0">
       <category name="org.wso2.developerstudio.kernel.platform.bundles"/>
    </feature>

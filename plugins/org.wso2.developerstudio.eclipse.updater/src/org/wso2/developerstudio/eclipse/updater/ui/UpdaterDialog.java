@@ -48,7 +48,7 @@ import org.eclipse.swt.widgets.TabItem;
 import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
-import org.wso2.developerstudio.eclipse.platform.ui.preferences.UpdateCheckerPreferencePage;
+import org.wso2.developerstudio.eclipse.platform.ui.preferences.DeveloperPreferencePage;
 import org.wso2.developerstudio.eclipse.updater.UpdaterPlugin;
 import org.wso2.developerstudio.eclipse.updater.core.UpdateManager;
 import org.wso2.developerstudio.eclipse.updater.model.EnhancedFeature;
@@ -184,7 +184,7 @@ public class UpdaterDialog extends Dialog {
 	private void listFeatures(Group group, ActiveTab tab) {
 		IPreferenceStore prefPage = PlatformUI.getPreferenceStore();
 		boolean showHiddenFeatures = prefPage
-				.getBoolean(UpdateCheckerPreferencePage.SHOW_HIDDEN_FEATURES);
+				.getBoolean(DeveloperPreferencePage.SHOW_HIDDEN_FEATURES);
 		
 		Iterator<Entry<String, EnhancedFeature>> featureList;
 		if (tab == ActiveTab.ALL_FEATURES) {

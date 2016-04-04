@@ -48,6 +48,7 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Listener;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
+import org.wso2.developerstudio.eclipse.platform.ui.preferences.DeveloperPreferencePage;
 import org.wso2.developerstudio.eclipse.platform.ui.preferences.PreferenceInitializer;
 import org.wso2.developerstudio.eclipse.platform.ui.preferences.UpdateCheckerPreferencePage;
 import org.wso2.developerstudio.eclipse.platform.ui.utils.MessageDialogUtils;
@@ -215,7 +216,10 @@ public class WSO2PluginListSelectionPage extends WizardSelectionPage {
 
 	private boolean updateSampleTemplates() {
 		IEclipsePreferences prefs = InstanceScope.INSTANCE.getNode(PreferenceInitializer.PREFERENCES_PLUGIN_ID);
-		String value = prefs.get(UpdateCheckerPreferencePage.PLUGIN_TEMPLATE_URL, PreferenceInitializer.KERNEL_SAMPLES_GIT);
+		String value = prefs.get(DeveloperPreferencePage.PLUGIN_TEMPLATE_URL, PreferenceInitializer.KERNEL_SAMPLES_GIT);
+		if (value == null || value.isEmpty()) {
+			value = PreferenceInitializer.KERNEL_SAMPLES_GIT;
+		}
 		String gitRepoURL = value;
 		File yourTempFile = new File(tempCloneDir);
 		try {

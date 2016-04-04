@@ -143,7 +143,7 @@ public class UpdateMetaFileReaderJob extends Job {
 			File updateFile = new File(fileLoc);
 			// needs to enable once the pref store values are up
 			IPreferenceStore preferenceStore = PlatformUI.getPreferenceStore();
-			String url = preferenceStore.getString(UpdateCheckerPreferencePage.RELESE_SITE_URL) + UPDATES_TXT_FILE;// TODO
+			String url = preferenceStore.getString(UpdateCheckerPreferencePage.UPDATE_SITE_URL) + UPDATES_TXT_FILE;// TODO
 																													// replace
 			if (url == null || url.isEmpty()) {
 				url = PreferenceInitializer.DEFAULT_UPDATE_SITE + UPDATES_TXT_FILE;

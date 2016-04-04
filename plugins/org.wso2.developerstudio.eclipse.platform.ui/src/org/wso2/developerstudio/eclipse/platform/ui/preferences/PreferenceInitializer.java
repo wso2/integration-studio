@@ -40,17 +40,7 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
 	public void initializeDefaultPreferences() {
 
 		IPreferenceStore store = PlatformUI.getPreferenceStore();
-		store.setDefault(UpdateCheckerPreferencePage.PLUGIN_TEMPLATE_URL,
-				KERNEL_SAMPLES_GIT);
-		store.setDefault(UpdateCheckerPreferencePage.RELESE_SITE_URL,
-				DEFAULT_RELEASE_SITE);
-		store.setDefault(UpdateCheckerPreferencePage.UPDATE_SITE_URL,
-				DEFAULT_UPDATE_SITE);
-		store.setDefault(UpdateCheckerPreferencePage.UPDATE_INTAVAL, UpdateCheckerPreferencePage.WEEKLY);
-		store.setDefault(UpdateCheckerPreferencePage.SET_AUTOMATIC_UPDATE_PREF,
-				UpdateCheckerPreferencePage.YES);
-		store.setDefault(UpdateCheckerPreferencePage.SHOW_HIDDEN_FEATURES,
-				false);
+		UpdateCheckerPreferencePage.setPreferenceDefaults(store);
 	}
 
 }

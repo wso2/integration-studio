@@ -33,7 +33,7 @@ import org.eclipse.swt.widgets.Text;
 import org.wso2.developerstudio.humantaskeditor.HumantaskEditorConstants;
 
 public class HumanTaskProjectWizardPage extends WizardPage {
-    
+
     private Text containerText;
 
     private Text fileText;
@@ -97,8 +97,7 @@ public class HumanTaskProjectWizardPage extends WizardPage {
      */
 
     private void initialize() {
-        if (selection != null && selection.isEmpty() == false
-                && selection instanceof IStructuredSelection) {
+        if (selection != null && selection.isEmpty() == false && selection instanceof IStructuredSelection) {
             IStructuredSelection ssel = (IStructuredSelection) selection;
             if (ssel.size() > 1) {
                 return;
@@ -128,15 +127,19 @@ public class HumanTaskProjectWizardPage extends WizardPage {
             updateStatus(HumantaskEditorConstants.FILE_CONTAINER_MUST_BE_SPECIFIED_MESSAGE);
             return;
         }
-        /*if (container == null
-                || (container.getType() & (IResource.PROJECT | IResource.FOLDER)) == 0) {
-            updateStatus("File container must exist");
-            return;
-        }*/
-        /*if (!container.isAccessible()) {
-            updateStatus("Project must be writable");
-            return;
-        }*/
+        /*
+         * if (container == null
+         * || (container.getType() & (IResource.PROJECT | IResource.FOLDER)) == 0) {
+         * updateStatus("File container must exist");
+         * return;
+         * }
+         */
+        /*
+         * if (!container.isAccessible()) {
+         * updateStatus("Project must be writable");
+         * return;
+         * }
+         */
         if (fileName.length() == 0) {
             updateStatus(HumantaskEditorConstants.FILE_NAME_MUST_BE_SPECIFIED_MESSAGE);
             return;

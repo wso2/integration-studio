@@ -37,7 +37,7 @@ import org.wso2.developerstudio.humantaskeditor.HumantaskEditorConstants;
  * editors in the multi-page editor.
  */
 public class HumanTaskMultiPageEditorContributor extends MultiPageEditorActionBarContributor {
-    
+
     private IEditorPart activeEditorPart;
     private Action htAction;
 
@@ -102,7 +102,8 @@ public class HumanTaskMultiPageEditorContributor extends MultiPageEditorActionBa
         htAction = new Action() {
             @Override
             public void run() {
-                MessageDialog.openInformation(null, HumantaskEditorConstants.HUMANTASKEDITOR_DIALOG_BOX_HEADER, HumantaskEditorConstants.CREATE_HUMAN_TASK_FILE_MESSAGE);
+                MessageDialog.openInformation(null, HumantaskEditorConstants.HUMANTASKEDITOR_DIALOG_BOX_HEADER,
+                        HumantaskEditorConstants.CREATE_HUMAN_TASK_FILE_MESSAGE);
             }
         };
         htAction.setText("Create HumanTask File");

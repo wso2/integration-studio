@@ -32,7 +32,7 @@ import org.wso2.developerstudio.humantaskeditor.Activator;
 import org.wso2.developerstudio.humantaskeditor.HumantaskEditorConstants;
 
 public class EditorContentFunction implements AbstractEditorFunctionExecutor {
-    
+
     private static String text;
     private static String projectName;
     private static final Logger logger = Logger.getLogger(Activator.PLUGIN_ID);
@@ -47,7 +47,8 @@ public class EditorContentFunction implements AbstractEditorFunctionExecutor {
         } else if (functionName.equals(HumantaskEditorConstants.JS_CUSTOMFUNC_GET_WSDL)) {
             IWorkspace workspace = ResourcesPlugin.getWorkspace();
             IResource resource = null;
-            resource = workspace.getRoot().getProject(getProjectName()).findMember(parameters[1] + HumantaskEditorConstants.CALLBACK_WSDL_PREFIX);
+            resource = workspace.getRoot().getProject(getProjectName())
+                    .findMember(parameters[1] + HumantaskEditorConstants.CALLBACK_WSDL_PREFIX);
 
             if (resource.exists()) {
                 File file = resource.getLocation().toFile();

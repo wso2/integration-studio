@@ -76,7 +76,8 @@ public class HumanTaskMultiPageEditor extends MultiPageEditorPart implements IRe
             setPageText(index, HumantaskEditorConstants.GUI_EDITOR_NAME);
             humanTaskUIEditor.setEditorFunctionExecutor(new EditorContentFunction());
         } catch (PartInitException e) {
-            ErrorDialog.openError(getSite().getShell(), HumantaskEditorConstants.ERROR_CREATING_UI_EDITOR, null, e.getStatus());
+            ErrorDialog.openError(getSite().getShell(), HumantaskEditorConstants.ERROR_CREATING_UI_EDITOR, null,
+                    e.getStatus());
         }
     }
 
@@ -91,7 +92,8 @@ public class HumanTaskMultiPageEditor extends MultiPageEditorPart implements IRe
             EditorContentFunction.setProjectName(((FileEditorInput) textEditor.getEditorInput()).getFile().getProject()
                     .getName());
         } catch (PartInitException e) {
-            ErrorDialog.openError(getSite().getShell(), HumantaskEditorConstants.ERROR_CREATING_NESTED_TEXT_EDITOR, null, e.getStatus());
+            ErrorDialog.openError(getSite().getShell(), HumantaskEditorConstants.ERROR_CREATING_NESTED_TEXT_EDITOR,
+                    null, e.getStatus());
         }
     }
 

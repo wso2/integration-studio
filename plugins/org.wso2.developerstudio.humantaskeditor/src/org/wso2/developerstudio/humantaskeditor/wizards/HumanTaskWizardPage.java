@@ -45,7 +45,7 @@ import org.wso2.developerstudio.humantaskeditor.HumantaskEditorConstants;
  */
 
 public class HumanTaskWizardPage extends WizardPage {
-    
+
     private Text containerText;
 
     private Text fileText;
@@ -117,8 +117,7 @@ public class HumanTaskWizardPage extends WizardPage {
      */
 
     private void initialize() {
-        if (selection != null && selection.isEmpty() == false
-                && selection instanceof IStructuredSelection) {
+        if (selection != null && selection.isEmpty() == false && selection instanceof IStructuredSelection) {
             IStructuredSelection ssel = (IStructuredSelection) selection;
             if (ssel.size() > 1) {
                 return;
@@ -143,9 +142,8 @@ public class HumanTaskWizardPage extends WizardPage {
      */
 
     private void handleBrowse() {
-        ContainerSelectionDialog dialog = new ContainerSelectionDialog(
-                getShell(), ResourcesPlugin.getWorkspace().getRoot(), false,
-                "Select new file container");
+        ContainerSelectionDialog dialog = new ContainerSelectionDialog(getShell(), ResourcesPlugin.getWorkspace()
+                .getRoot(), false, "Select new file container");
         if (dialog.open() == Window.OK) {
             Object[] result = dialog.getResult();
             if (result.length == 1) {
@@ -159,8 +157,7 @@ public class HumanTaskWizardPage extends WizardPage {
      */
 
     private void dialogChanged() {
-        IResource container = ResourcesPlugin.getWorkspace().getRoot()
-                .findMember(new Path(getContainerName()));
+        IResource container = ResourcesPlugin.getWorkspace().getRoot().findMember(new Path(getContainerName()));
 
         String fileName = getFileName();
 
@@ -168,8 +165,7 @@ public class HumanTaskWizardPage extends WizardPage {
             updateStatus(HumantaskEditorConstants.FILE_CONTAINER_MUST_BE_SPECIFIED_MESSAGE);
             return;
         }
-        if (container == null
-                || (container.getType() & (IResource.PROJECT | IResource.FOLDER)) == 0) {
+        if (container == null || (container.getType() & (IResource.PROJECT | IResource.FOLDER)) == 0) {
             updateStatus(HumantaskEditorConstants.FILE_CONTAINER_MUST_EXIST_MESSAGE);
             return;
         }

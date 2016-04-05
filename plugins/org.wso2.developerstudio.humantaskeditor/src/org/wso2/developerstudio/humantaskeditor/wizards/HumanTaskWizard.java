@@ -46,7 +46,7 @@ import org.wso2.developerstudio.humantaskeditor.HumantaskEditorConstants;
  */
 
 public class HumanTaskWizard extends Wizard implements INewWizard {
-    
+
     private HumanTaskWizardPage page;
     private ISelection selection;
     private static final Logger logger = Logger.getLogger(Activator.PLUGIN_ID);
@@ -141,7 +141,9 @@ public class HumanTaskWizard extends Wizard implements INewWizard {
         } catch (IOException e) {
             logger.log(Level.FINE, HumantaskEditorConstants.ERROR_CREATING_INITIAL_FILE_MESSAGE, e);
             IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage());
-            ErrorDialog.openError(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), HumantaskEditorConstants.ERROR_MESSAGE, HumantaskEditorConstants.ERROR_CREATING_INITIAL_FILE_MESSAGE, editorStatus);
+            ErrorDialog.openError(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
+                    HumantaskEditorConstants.ERROR_MESSAGE,
+                    HumantaskEditorConstants.ERROR_CREATING_INITIAL_FILE_MESSAGE, editorStatus);
 
         }
         monitor.worked(1);
@@ -155,7 +157,9 @@ public class HumanTaskWizard extends Wizard implements INewWizard {
                 } catch (PartInitException e) {
                     logger.log(Level.FINE, HumantaskEditorConstants.ERROR_OPENING_THE_EDITOR_MESSAGE, e);
                     IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage());
-                    ErrorDialog.openError(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), HumantaskEditorConstants.ERROR_MESSAGE, HumantaskEditorConstants.ERROR_OPENING_THE_EDITOR_MESSAGE, editorStatus);
+                    ErrorDialog.openError(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
+                            HumantaskEditorConstants.ERROR_MESSAGE,
+                            HumantaskEditorConstants.ERROR_OPENING_THE_EDITOR_MESSAGE, editorStatus);
 
                 }
             }
@@ -173,7 +177,7 @@ public class HumanTaskWizard extends Wizard implements INewWizard {
         String contents = readDummyHT();
         return new ByteArrayInputStream(contents.getBytes());
     }
-    
+
     /**
      * We will initialize file contents with a sample text.
      *
@@ -184,7 +188,7 @@ public class HumanTaskWizard extends Wizard implements INewWizard {
         String contents = readDummyWSDL();
         return new ByteArrayInputStream(contents.getBytes());
     }
-    
+
     /**
      * We will initialize file contents with a sample text.
      *
@@ -205,8 +209,7 @@ public class HumanTaskWizard extends Wizard implements INewWizard {
         StringBuilder sb = new StringBuilder();
         URL url;
         try {
-            url = new URL(
-                    HumantaskEditorConstants.DUMMY_HT_LOCATION);
+            url = new URL(HumantaskEditorConstants.DUMMY_HT_LOCATION);
             InputStream inputStream = url.openConnection().getInputStream();
             BufferedReader in = new BufferedReader(new InputStreamReader(inputStream));
             String inputLine;
@@ -224,7 +227,7 @@ public class HumanTaskWizard extends Wizard implements INewWizard {
         }
         return sb.toString();
     }
-    
+
     /**
      * Read dummy ht file which is needed to initialize a new ht file
      *
@@ -234,8 +237,7 @@ public class HumanTaskWizard extends Wizard implements INewWizard {
         StringBuilder sb = new StringBuilder();
         URL url;
         try {
-            url = new URL(
-                    HumantaskEditorConstants.DUMMY_WSDL_LOCATION);
+            url = new URL(HumantaskEditorConstants.DUMMY_WSDL_LOCATION);
             InputStream inputStream = url.openConnection().getInputStream();
             BufferedReader in = new BufferedReader(new InputStreamReader(inputStream));
             String inputLine;
@@ -253,13 +255,12 @@ public class HumanTaskWizard extends Wizard implements INewWizard {
         }
         return sb.toString();
     }
-    
+
     private String readDummyHtConfig() throws IOException {
         StringBuilder sb = new StringBuilder();
         URL url;
         try {
-            url = new URL(
-                    HumantaskEditorConstants.DUMMY_HTCONFIG_LOCATION);
+            url = new URL(HumantaskEditorConstants.DUMMY_HTCONFIG_LOCATION);
             InputStream inputStream = url.openConnection().getInputStream();
             BufferedReader in = new BufferedReader(new InputStreamReader(inputStream));
             String inputLine;
@@ -279,8 +280,7 @@ public class HumanTaskWizard extends Wizard implements INewWizard {
     }
 
     private void throwCoreException(String message) throws CoreException {
-        IStatus status = new Status(IStatus.ERROR, HumantaskEditorConstants.PLUGIN_ID, IStatus.OK, message,
-                null);
+        IStatus status = new Status(IStatus.ERROR, HumantaskEditorConstants.PLUGIN_ID, IStatus.OK, message, null);
         throw new CoreException(status);
     }
 

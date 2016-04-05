@@ -11,6 +11,7 @@ public class Messages extends NLS {
 	public static String UpdateCheckerJob_4;
 	public static String UpdateCheckerJobListener_0;
 	public static String UpdatemetaFileReaderJobListener_0;
+	public static String UpdatemetaFileReaderJobListener_1;
 	public static String UpdateManager_13;
 	public static String UpdateManager_14;
 	public static String UpdateManager_15;

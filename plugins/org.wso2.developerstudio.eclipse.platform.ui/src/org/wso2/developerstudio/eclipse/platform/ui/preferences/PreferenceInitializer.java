@@ -26,7 +26,7 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
 	public static final String PREFERENCES_PLUGIN_ID = "org.wso2.developerstudio.eclipse.platform.ui";
 
 	public static final String DEFAULT_RELEASE_SITE = "http://product-dist.wso2.com/p2/developer-studio-kernel/4.0.0/releases/";
-	public static final String DEFAULT_UPDATE_SITE = "http://product-dist.wso2.com/p2/developer-studio-kernel/4.0.0/updates/";
+	public static final String DEFAULT_UPDATE_SITE = "http://builder1.us1.wso2.org/~developerstudio/developer-studio-kernel/4.0.0/updates/";
 
 	/*
 	 * (non-Javadoc)
@@ -34,8 +34,6 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
 	 * @see org.eclipse.core.runtime.preferences.AbstractPreferenceInitializer#
 	 * initializeDefaultPreferences()
 	 */
-	
-	 
 
 	public void initializeDefaultPreferences() {
 

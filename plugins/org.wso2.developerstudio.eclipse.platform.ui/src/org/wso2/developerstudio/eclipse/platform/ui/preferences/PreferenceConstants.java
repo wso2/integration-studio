@@ -18,9 +18,6 @@ package org.wso2.developerstudio.eclipse.platform.ui.preferences;
 
 public class PreferenceConstants {
 
-	public static final String INSTALL_AUTOMATICALLY = "AUTOMATIC";
-	public static final String NOTIFY_ME = "NOTIFY_ME";
-	
 	/**
 	 * Automatic update Day setting
 	 */
@@ -70,6 +67,14 @@ public class PreferenceConstants {
 	public static final String DOWNLOAD_UPDATES = "&Install available updates automatically";
 	public static final String NOTIFY_ME_IF_UPDATES_AVAILABLE = "&Notify me when updates are available";
 	public static final String UPDATE_NOTIFICATION_CONFIGURATION = "UPDATE_NOTIFICATION_CONFIGURATION";
+	public static final String INSTALL_AUTOMATICALLY = "AUTOMATIC";
+	public static final String NOTIFY_ME = "NOTIFY_ME";
+	
+	public static final String RUN_ON_STARTUP = "&Check for Updates every time eclipse starts up";
+	public static final String SCHEDULE_UPDATER = "&Check for Updates at the configured time";
+	public static final String UPDATE_RUNNING_CONFIGURATION = "UPDATE_RUNNING_CONFIGURATION";
+	public static final String STARTUP = "STARTUP";
+	public static final String SCHEDULE = "SCHEDULE";
 
 	public static final String RELESE_SITE_URL = "RELESE_SITE_URL";
 	public static final String UPDATE_SITE_URL = "UPDATE_SITE_URL";

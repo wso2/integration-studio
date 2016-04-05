@@ -25,6 +25,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.commons.io.FileUtils;
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -53,14 +54,22 @@ import org.wso2.developerstudio.eclipse.updater.core.UpdateManager;
  */
 public class UpdateMetaFileReaderJob extends Job {
 
+	private static final int AVAILABLE_VERSION_GREATER = 1;
+	private static final String FEATURE_GROUP_APPEND = ".feature.group";
 	private static final String ERROR_TITLE = "Automatic Updater error";
 	private static final String ERROR_MESSAGE = "Error in retrieving available updates automatically";
 	private static final String UPDATES_TXT_FILE = "updates.txt";
-	private static final int TIME_OUT_MS = 1000;
-	protected UpdateManager updateManager;
 	public static final String JAVA_IO_TMPDIR = "java.io.tmpdir";
 	public static final String folderLoc = System.getProperty(JAVA_IO_TMPDIR) + File.separator + "DevStudioUpdater";
 	public static final String fileLoc = folderLoc + File.separator + UPDATES_TXT_FILE;
+	private static final int TIME_OUT_MS = 1000;
+	protected UpdateManager updateManager;
+	public static int updateCount = 0;
+
+	public static int getUpdateCount() {
+		return updateCount;
+	}
+
 	protected static IDeveloperStudioLog log = Logger.getLog(UpdaterPlugin.PLUGIN_ID);
 
 	public UpdateMetaFileReaderJob(UpdateManager updateManager) {
@@ -76,30 +85,36 @@ public class UpdateMetaFileReaderJob extends Job {
 					.getInstalledWSO2Features(progress.newChild(1));
 			// read the meta file
 			downloadMetaFile();
-			HashMap<String, String> availaleDevStudioFeatureVerions = new HashMap<String, String>();
+			Map<String, String> availaleDevStudioFeatureVerions = new HashMap<String, String>();
 			availaleDevStudioFeatureVerions = readMetaDataFiletoMap();
 			if (availaleDevStudioFeatureVerions.isEmpty()) {
 				log.error(Messages.UpdateCheckerJob_4);
-				promptUserError(ERROR_MESSAGE, ERROR_TITLE);
 				return Status.CANCEL_STATUS;
 			}
-			List<String> updatedFeatureList = new ArrayList<String>();
 			for (IInstallableUnit iInstallableUnit : installedWSO2Features) {
 				if (availaleDevStudioFeatureVerions.containsKey(iInstallableUnit.getId())) {
 					Version availableVersion = generateVersionFromString(
 							availaleDevStudioFeatureVerions.get(iInstallableUnit.getId()));
-					if (availableVersion != null && iInstallableUnit.getVersion().compareTo(availableVersion) == 1) {
-						updatedFeatureList.add(iInstallableUnit.getId());
-						return Status.OK_STATUS;// if at least one update is
-												// available return OK
+					if (availableVersion != null
+							&& availableVersion.compareTo(iInstallableUnit.getVersion()) == AVAILABLE_VERSION_GREATER) {
+						updateCount++;
 					} else if (availableVersion == null) {
 						log.error(Messages.UpdateCheckerJob_4);
 						promptUserError(ERROR_MESSAGE, ERROR_TITLE);
-						return Status.CANCEL_STATUS;// return OK since we need to
+						return Status.CANCEL_STATUS;
 					}
 				}
 			}
+			if (updateCount > 0) {
+				return Status.OK_STATUS; // OK if there are updates
+			}
 		} catch (Exception e) {
+			/**
+			 * We are catching the run time exception here since a runtime
+			 * exception here should not prevent the user from running developer
+			 * studio instead we are popping up an error dialog and let the user
+			 * proceed.
+			 */
 			log.error(Messages.UpdateCheckerJob_4, e);
 			promptUserError(ERROR_MESSAGE, ERROR_TITLE);
 			return Status.CANCEL_STATUS;
@@ -115,26 +130,25 @@ public class UpdateMetaFileReaderJob extends Job {
 	 * @param versionString
 	 */
 	private Version generateVersionFromString(String versionString) {
-		String[] versionVal = versionString.split("-");
-		String[] minorMajorNumbers = versionVal[0].split("\\."); // . is \\. in regex
+		String[] minorMajorNumbers = versionString.split("\\."); // . is \\. in
 		Version availableVersion = Version.createOSGi(Integer.parseInt(minorMajorNumbers[0]),
-				Integer.parseInt(minorMajorNumbers[1]), Integer.parseInt(minorMajorNumbers[2]), versionVal[1]);
+				Integer.parseInt(minorMajorNumbers[1]), Integer.parseInt(minorMajorNumbers[2]), minorMajorNumbers[3]);
 		return availableVersion;
 	}
 
 	private HashMap<String, String> readMetaDataFiletoMap() {
-		HashMap<String, String> featureMap = new HashMap<String, String>();
+		Map<String, String> featureMap = new HashMap<String, String>();
 		try (BufferedReader br = new BufferedReader(new FileReader(fileLoc))) {
 			for (String line; (line = br.readLine()) != null;) {
 				if (line.contains(",")) {
 					String[] feature = line.split(",");
-					featureMap.put(feature[0], feature[1]);
+					featureMap.put(feature[0] + FEATURE_GROUP_APPEND, feature[1]);
 				}
 			}
 		} catch (IOException e) {
 			log.error(Messages.UpdateCheckerJob_3, e);
 		}
-		return featureMap;
+		return (HashMap<String, String>) featureMap;
 	}
 
 	private void downloadMetaFile() {
@@ -142,18 +156,13 @@ public class UpdateMetaFileReaderJob extends Job {
 			File updateFile = new File(fileLoc);
 			// needs to enable once the pref store values are up
 			IPreferenceStore preferenceStore = PlatformUI.getPreferenceStore();
-			String url = preferenceStore.getString(PreferenceConstants.UPDATE_SITE_URL) + UPDATES_TXT_FILE;// TODO
-																													// replace
+			String url = preferenceStore.getString(PreferenceConstants.UPDATE_SITE_URL);
 			if (url == null || url.isEmpty()) {
-				url = PreferenceInitializer.DEFAULT_UPDATE_SITE + UPDATES_TXT_FILE;
+				url = PreferenceInitializer.DEFAULT_UPDATE_SITE;
 			}
-			URL link = new URL(url); // The file that you want to download
-			// apache commons file utils, creates the directory structure if not
-			// exist and write the content from the online file to the file
-			// system.
+			URL link = new URL(url + UPDATES_TXT_FILE);
 			FileUtils.copyURLToFile(link, updateFile, TIME_OUT_MS, TIME_OUT_MS);
 		} catch (IOException e) {
-			// log while reading file
 			log.error("error in writing the the content from the downloaded meta data file for updates", e);
 		}
 	}
@@ -163,11 +172,8 @@ public class UpdateMetaFileReaderJob extends Job {
 		Display.getDefault().syncExec(new Runnable() {
 			@Override
 			public void run() {
-				// if exception occurred dont run automatic updater,
-				// prompt user.
 				MessageDialog.openError(Display.getDefault().getActiveShell(), title, message);
 			}
 		});
 	}
-
 }

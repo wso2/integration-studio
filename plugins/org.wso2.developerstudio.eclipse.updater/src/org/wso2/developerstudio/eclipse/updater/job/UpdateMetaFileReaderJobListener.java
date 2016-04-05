@@ -16,26 +16,22 @@
 
 package org.wso2.developerstudio.eclipse.updater.job;
 
-import java.util.Date;
+import java.util.Calendar;
 import java.util.concurrent.TimeUnit;
 
-import org.eclipse.core.runtime.Status;
+
 import org.eclipse.core.runtime.jobs.IJobChangeEvent;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.core.runtime.jobs.JobChangeAdapter;
-import org.eclipse.core.runtime.preferences.ConfigurationScope;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.swt.widgets.Display;
-import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
-import org.osgi.service.prefs.Preferences;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
-import org.wso2.developerstudio.eclipse.platform.ui.preferences.UpdateCheckerPreferencePage;
+import org.wso2.developerstudio.eclipse.platform.ui.preferences.PreferenceConstants;
 import org.wso2.developerstudio.eclipse.updater.Messages;
 import org.wso2.developerstudio.eclipse.updater.UpdaterPlugin;
-import org.wso2.developerstudio.eclipse.updater.core.Constants;
 import org.wso2.developerstudio.eclipse.updater.core.UpdateManager;
 import org.wso2.developerstudio.eclipse.updater.ui.UpdaterDialog.ActiveTab;
 
@@ -44,7 +40,6 @@ public class UpdateMetaFileReaderJobListener extends JobChangeAdapter {
 	private static final String SET_LATER = "Not Now";
 	private static final String UPDATER_DIALOG_MESSAGE = "Do you want to update now ?";
 	private static final String TITLE = "There are updates for developer studio features you have installed. It is recommended to install these updates";
-	protected static final String SELECT = "Select";
 	protected static final String YES = "Yes";
 	protected static final String NO = "No";
 	protected static final String DAILY = "Daily";
@@ -56,9 +51,11 @@ public class UpdateMetaFileReaderJobListener extends JobChangeAdapter {
 	protected UpdateManager updateManager;
 	protected ActiveTab activeTab;
 	protected boolean isAutomaticUpdater;
+	protected static IPreferenceStore prefPage;
 
 	public UpdateMetaFileReaderJobListener(UpdateManager updateManager, ActiveTab activeTab,
 			boolean isAutomaticUpdater) {
+		this.prefPage = PlatformUI.getPreferenceStore();
 		this.updateManager = updateManager;
 		this.activeTab = activeTab;
 		this.isAutomaticUpdater = isAutomaticUpdater;
@@ -72,32 +69,64 @@ public class UpdateMetaFileReaderJobListener extends JobChangeAdapter {
 				public void run() {
 					try {
 						if (getUserPreference(TITLE, UPDATER_DIALOG_MESSAGE) == 0) {
-							runUpdaterJob();
+							runUpdaterJob(false);
+						} else if (getUserPreference(TITLE, UPDATER_DIALOG_MESSAGE) == 15) {
+							runUpdaterJob(true);// do check user set preference
+												// time to install updates
 						}
 					} catch (Exception e) {
 						log.error(Messages.UpdatemetaFileReaderJobListener_0, e);
 					}
 				}
 
-				private void runUpdaterJob() {
-					Date today = new Date();
-					IPreferenceStore prefPage = PlatformUI.getPreferenceStore();
-					String updateInterval = prefPage.getString(UpdateCheckerPreferencePage.UPDATE_INTAVAL);
-					Preferences bundlePrefs = ConfigurationScope.INSTANCE.getNode(Constants.NODE_UPDATE_HANDER);
-					long lastPromptTime = bundlePrefs.getLong(Constants.PREF_LAST_PROMPT_FOR_UPDATES, today.getTime());
-					// check duration since last check for updates
-					if (lastPromptTime != today.getTime()) {
-						long dateDiff = getTimeDiff(lastPromptTime, today.getTime(), TimeUnit.DAYS);
-						if ((updateInterval.equals(MONTHLY) && dateDiff < 30)
-								|| (updateInterval.equals(WEEKLY) && dateDiff < 7)
-								|| (updateInterval.equals(DAILY) && dateDiff < 1)) {
-							// do not check updates
-						} else {
-							executeUpdateJob();
-						}
-					} else {
-						executeUpdateJob();
+				private void runUpdaterJob(boolean doCheckTime) {
+					Calendar cal = Calendar.getInstance();
+					String updateIntervalDay = prefPage.getString(PreferenceConstants.UPDATE_DATE_INTERVAL);
+					if (updateIntervalDay == null || updateIntervalDay.isEmpty()) {
+						updateIntervalDay = PreferenceConstants.DEFAULT_SUNDAY;
 					}
+					int intValOfDay = getIntValOfDay(updateIntervalDay);
+					String updateIntervalTime = prefPage.getString(PreferenceConstants.UPDATE_TIME_INTERVAL);
+					if (updateIntervalTime == null || updateIntervalTime.isEmpty()) {
+						updateIntervalTime = PreferenceConstants.DEFAULT_EIGHT_AM;
+					}
+					if (!doCheckTime) { // if OKed by user, run irrespective of
+										// time setting
+						executeUpdateJob();
+					} else { // if running automatically check
+								// if current time is user
+								// preferred update time
+						if (Math.abs(cal.get(Calendar.DAY_OF_WEEK) - intValOfDay) == 0) {
+							// no possibility of being null, hard-coded values
+							// from drop down
+							String[] hourValFromIntervalTime = updateIntervalTime.split(":");
+							Integer intHourVal = Integer.parseInt(hourValFromIntervalTime[0]);
+							if (Math.abs(cal.get(Calendar.HOUR_OF_DAY) - intHourVal) == 0
+									&& cal.get(Calendar.MINUTE) == 0) {
+								executeUpdateJob();
+							}
+						}
+					}
+				}
+
+				private int getIntValOfDay(String updateIntervalDay) {
+					switch (updateIntervalDay) {
+					case (PreferenceConstants.EVERY_MONDAY):
+						return Calendar.MONDAY;
+					case (PreferenceConstants.EVERY_TUESDAY):
+						return Calendar.TUESDAY;
+					case (PreferenceConstants.EVERY_WEDNESDAY):
+						return Calendar.WEDNESDAY;
+					case (PreferenceConstants.EVERY_THURSDAY):
+						return Calendar.THURSDAY;
+					case (PreferenceConstants.EVERY_FRIDAY):
+						return Calendar.FRIDAY;
+					case (PreferenceConstants.EVERY_SATURDAY):
+						return Calendar.SATURDAY;
+					default:
+						return Calendar.SUNDAY; // case SUNDAY default setting 
+					}
+
 				}
 
 				private void executeUpdateJob() {
@@ -112,9 +141,17 @@ public class UpdateMetaFileReaderJobListener extends JobChangeAdapter {
 
 	public static int getUserPreference(String message, String title) {
 		// Display activeDisplay = Display.getDefault();
-		MessageDialog dialog = new MessageDialog(Display.getDefault().getActiveShell(), title, null, message,
-				MessageDialog.INFORMATION, new String[] { YES, NO, SET_LATER }, 0);
-		return dialog.open();
+		String userChoice = prefPage.getString(PreferenceConstants.UPDATE_NOTIFICATION_CONFIGURATION);
+		if (userChoice == null || userChoice.isEmpty()) {
+			userChoice = PreferenceConstants.NOTIFY_ME_IF_UPDATES_AVAILABLE;
+		}
+		if (userChoice.equals(PreferenceConstants.NOTIFY_ME_IF_UPDATES_AVAILABLE)) {
+			MessageDialog dialog = new MessageDialog(Display.getDefault().getActiveShell(), title, null, message,
+					MessageDialog.INFORMATION, new String[] { YES, NO, SET_LATER }, 0);
+			return dialog.open();
+		}
+		return 15;// in case if user configured to install updates automatically
+					// with time preference
 	}
 
 	protected static long getTimeDiff(long date1, long date2, TimeUnit timeUnit) {

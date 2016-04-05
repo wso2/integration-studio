@@ -21,6 +21,9 @@ import org.eclipse.ui.IStartup;
 import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
+import org.wso2.developerstudio.eclipse.platform.ui.WorkbenchToolkit;
+import org.wso2.developerstudio.eclipse.platform.ui.preferences.PreferenceConstants;
+import org.wso2.developerstudio.eclipse.platform.ui.preferences.PreferenceInitializer;
 import org.wso2.developerstudio.eclipse.platform.ui.preferences.UpdateCheckerPreferencePage;
 import org.wso2.developerstudio.eclipse.updater.UpdaterPlugin;
 import org.wso2.developerstudio.eclipse.updater.core.UpdateManager;
@@ -33,9 +36,6 @@ public class StartupUpdateHandler implements IStartup {
 	protected static final String DAILY = "Daily";
 	protected static final String WEEKLY = "Weekly";
 	protected static final String MONTHLY = "Monthly";
-	protected static final String SELECT = "Select";
-	protected static final String YES = "Yes";
-	protected static final String NO = "No";
 
 	protected UpdateManager updateManager = new UpdateManager();
 
@@ -44,9 +44,10 @@ public class StartupUpdateHandler implements IStartup {
 	@Override
 	public void earlyStartup() {
 		// Read updater preferences
+		setPrefDefaultVals();
 		IPreferenceStore prefPage = PlatformUI.getPreferenceStore();
-		String isAutomaticUpdate = prefPage.getString(UpdateCheckerPreferencePage.SET_AUTOMATIC_UPDATE_PREF);
-		if (isAutomaticUpdate.equals(NO)) {
+		boolean isAutomaticUpdate = prefPage.getBoolean(PreferenceConstants.ENABLE_AUTOMATIC_UPDATES);
+		if (!isAutomaticUpdate) {
 			return;
 		}
 		// before running the update checker job, read the updates meta file and
@@ -57,5 +58,19 @@ public class StartupUpdateHandler implements IStartup {
 		readMetaFileJob.schedule();
 		readMetaFileJob.addJobChangeListener(
 				new UpdateMetaFileReaderJobListener(updateManager, ActiveTab.UPDATE_FEATURES, true));
+	}
+
+	/**
+	 * Set the default values of the updater preference values on start up.
+	 * Will override the preferences if they are not set by the user.
+	 */
+	private void setPrefDefaultVals() {
+		IPreferenceStore preferenceStore = PlatformUI.getPreferenceStore();
+		preferenceStore = WorkbenchToolkit.getPrefernaceStore();
+		preferenceStore.setDefault(PreferenceConstants.RELESE_SITE_URL, PreferenceInitializer.DEFAULT_RELEASE_SITE);
+		preferenceStore.setDefault(PreferenceConstants.UPDATE_SITE_URL, PreferenceInitializer.DEFAULT_UPDATE_SITE);
+		preferenceStore.setDefault(PreferenceConstants.UPDATE_DATE_INTERVAL, WEEKLY);
+		preferenceStore.setDefault(PreferenceConstants.ENABLE_AUTOMATIC_UPDATES, true);
+		
 	}
 }

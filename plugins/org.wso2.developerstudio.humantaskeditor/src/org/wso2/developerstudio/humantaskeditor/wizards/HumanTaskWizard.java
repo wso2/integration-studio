@@ -39,12 +39,14 @@ import java.io.*;
 import org.eclipse.ui.*;
 import org.eclipse.ui.ide.IDE;
 import org.wso2.developerstudio.humantaskeditor.Activator;
+import org.wso2.developerstudio.humantaskeditor.HumantaskEditorConstants;
 
 /**
  * This class contains the wizard for creating a new ht file
  */
 
 public class HumanTaskWizard extends Wizard implements INewWizard {
+    
     private HumanTaskWizardPage page;
     private ISelection selection;
     private static final Logger logger = Logger.getLogger(Activator.PLUGIN_ID);
@@ -94,7 +96,7 @@ public class HumanTaskWizard extends Wizard implements INewWizard {
             return false;
         } catch (InvocationTargetException e) {
             Throwable realException = e.getTargetException();
-            MessageDialog.openError(getShell(), "Error", realException.getMessage());
+            MessageDialog.openError(getShell(), HumantaskEditorConstants.ERROR_MESSAGE, realException.getMessage());
             return false;
         }
         return true;
@@ -115,9 +117,9 @@ public class HumanTaskWizard extends Wizard implements INewWizard {
         }
         IContainer container = (IContainer) resource;
         final IFile file = container.getFile(new Path(fileName));
-        final IFile wsdlfile = container.getFile(new Path("ApproveClaimTask.wsdl"));
-        final IFile cbWsdlfile = container.getFile(new Path("ApproveClaimCBTask.wsdl"));
-        final IFile htconfigfile = container.getFile(new Path("htconfig.xml"));
+        final IFile wsdlfile = container.getFile(new Path(HumantaskEditorConstants.INITIAL_WSDL_NAME));
+        final IFile cbWsdlfile = container.getFile(new Path(HumantaskEditorConstants.INITIAL_CALLBACK_WSDL_NAME));
+        final IFile htconfigfile = container.getFile(new Path(HumantaskEditorConstants.INITIAL_HTCONFIG_NAME));
         addNature(container.getProject());
 
         try {
@@ -137,14 +139,13 @@ public class HumanTaskWizard extends Wizard implements INewWizard {
             wsdlStream.close();
             htconfigStream.close();
         } catch (IOException e) {
-            logger.log(Level.FINE, "Error Creating Initial File", e);
+            logger.log(Level.FINE, HumantaskEditorConstants.ERROR_CREATING_INITIAL_FILE_MESSAGE, e);
             IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage());
-            ErrorDialog.openError(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), "Error",
-                    "Error Creating Initial File", editorStatus);
+            ErrorDialog.openError(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), HumantaskEditorConstants.ERROR_MESSAGE, HumantaskEditorConstants.ERROR_CREATING_INITIAL_FILE_MESSAGE, editorStatus);
 
         }
         monitor.worked(1);
-        monitor.setTaskName("Open file for editing...");
+        monitor.setTaskName(HumantaskEditorConstants.OPENING_FILE_FOR_EDITING_MESSAGE);
         getShell().getDisplay().asyncExec(new Runnable() {
             @Override
             public void run() {
@@ -152,10 +153,9 @@ public class HumanTaskWizard extends Wizard implements INewWizard {
                 try {
                     IDE.openEditor(page, file, true);
                 } catch (PartInitException e) {
-                    logger.log(Level.FINE, "Error Opening the Editor", e);
+                    logger.log(Level.FINE, HumantaskEditorConstants.ERROR_OPENING_THE_EDITOR_MESSAGE, e);
                     IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage());
-                    ErrorDialog.openError(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), "Error",
-                            "Error Opening the Editor", editorStatus);
+                    ErrorDialog.openError(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), HumantaskEditorConstants.ERROR_MESSAGE, HumantaskEditorConstants.ERROR_OPENING_THE_EDITOR_MESSAGE, editorStatus);
 
                 }
             }
@@ -206,7 +206,7 @@ public class HumanTaskWizard extends Wizard implements INewWizard {
         URL url;
         try {
             url = new URL(
-                    "platform:/plugin/org.wso2.developerstudio.humantaskeditor/HumanTaskEditor/resources/dummy.ht");
+                    HumantaskEditorConstants.DUMMY_HT_LOCATION);
             InputStream inputStream = url.openConnection().getInputStream();
             BufferedReader in = new BufferedReader(new InputStreamReader(inputStream));
             String inputLine;
@@ -235,7 +235,7 @@ public class HumanTaskWizard extends Wizard implements INewWizard {
         URL url;
         try {
             url = new URL(
-                    "platform:/plugin/org.wso2.developerstudio.humantaskeditor/HumanTaskEditor/resources/dummy.wsdl");
+                    HumantaskEditorConstants.DUMMY_WSDL_LOCATION);
             InputStream inputStream = url.openConnection().getInputStream();
             BufferedReader in = new BufferedReader(new InputStreamReader(inputStream));
             String inputLine;
@@ -259,7 +259,7 @@ public class HumanTaskWizard extends Wizard implements INewWizard {
         URL url;
         try {
             url = new URL(
-                    "platform:/plugin/org.wso2.developerstudio.humantaskeditor/HumanTaskEditor/resources/dummyhtconfig.ht");
+                    HumantaskEditorConstants.DUMMY_HTCONFIG_LOCATION);
             InputStream inputStream = url.openConnection().getInputStream();
             BufferedReader in = new BufferedReader(new InputStreamReader(inputStream));
             String inputLine;
@@ -279,7 +279,7 @@ public class HumanTaskWizard extends Wizard implements INewWizard {
     }
 
     private void throwCoreException(String message) throws CoreException {
-        IStatus status = new Status(IStatus.ERROR, "org.wso2.developerstudio.humantaskeditor", IStatus.OK, message,
+        IStatus status = new Status(IStatus.ERROR, HumantaskEditorConstants.PLUGIN_ID, IStatus.OK, message,
                 null);
         throw new CoreException(status);
     }

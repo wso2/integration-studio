@@ -36,6 +36,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.dialogs.ContainerSelectionDialog;
+import org.wso2.developerstudio.humantaskeditor.HumantaskEditorConstants;
 
 /**
  * The "New" wizard page allows setting the container for the new file as well
@@ -44,6 +45,7 @@ import org.eclipse.ui.dialogs.ContainerSelectionDialog;
  */
 
 public class HumanTaskWizardPage extends WizardPage {
+    
     private Text containerText;
 
     private Text fileText;
@@ -56,9 +58,9 @@ public class HumanTaskWizardPage extends WizardPage {
      * @param pageName
      */
     public HumanTaskWizardPage(ISelection selection) {
-        super("wizardPage");
-        setTitle("Human Task File");
-        setDescription("This wizard creates a humantask artifact which can be deployed");
+        super(HumantaskEditorConstants.WIZARD_PAGE_NAME);
+        setTitle(HumantaskEditorConstants.FILE_WIZARD_PAGE_TITLE);
+        setDescription(HumantaskEditorConstants.FILE_QIZARD_PAGE_DESCRIPTION);
         this.selection = selection;
     }
 
@@ -86,7 +88,7 @@ public class HumanTaskWizardPage extends WizardPage {
         });
 
         Button button = new Button(container, SWT.PUSH);
-        button.setText("Browse...");
+        button.setText(HumantaskEditorConstants.BROWSE_BUTTON_TEXT);
         button.addSelectionListener(new SelectionAdapter() {
             @Override
             public void widgetSelected(SelectionEvent e) {
@@ -132,7 +134,7 @@ public class HumanTaskWizardPage extends WizardPage {
                 containerText.setText(container.getFullPath().toString());
             }
         }
-        fileText.setText("newfile.ht");
+        fileText.setText(HumantaskEditorConstants.NEW_HT_FILE_NAME);
     }
 
     /**
@@ -163,31 +165,31 @@ public class HumanTaskWizardPage extends WizardPage {
         String fileName = getFileName();
 
         if (getContainerName().length() == 0) {
-            updateStatus("File container must be specified");
+            updateStatus(HumantaskEditorConstants.FILE_CONTAINER_MUST_BE_SPECIFIED_MESSAGE);
             return;
         }
         if (container == null
                 || (container.getType() & (IResource.PROJECT | IResource.FOLDER)) == 0) {
-            updateStatus("File container must exist");
+            updateStatus(HumantaskEditorConstants.FILE_CONTAINER_MUST_EXIST_MESSAGE);
             return;
         }
         if (!container.isAccessible()) {
-            updateStatus("Project must be writable");
+            updateStatus(HumantaskEditorConstants.PROJECT_MUST_BE_WRITABLE_MESSAGE);
             return;
         }
         if (fileName.length() == 0) {
-            updateStatus("File name must be specified");
+            updateStatus(HumantaskEditorConstants.FILE_NAME_MUST_BE_SPECIFIED_MESSAGE);
             return;
         }
         if (fileName.replace('\\', '/').indexOf('/', 1) > 0) {
-            updateStatus("File name must be valid");
+            updateStatus(HumantaskEditorConstants.FILE_NAME_MUST_BE_VALID_MESSAGE);
             return;
         }
         int dotLoc = fileName.lastIndexOf('.');
         if (dotLoc != -1) {
             String ext = fileName.substring(dotLoc + 1);
             if (ext.equalsIgnoreCase("ht") == false) {
-                updateStatus("File extension must be \"ht\"");
+                updateStatus(HumantaskEditorConstants.FILE_EXTENSION_MUST_BE_HT_MESSAGE);
                 return;
             }
         }

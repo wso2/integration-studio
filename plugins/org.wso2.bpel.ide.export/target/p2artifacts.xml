@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?artifactRepository version='1.1.0'?>
+<artifacts size='2'>
+  <artifact classifier='osgi.bundle' id='org.wso2.wsf.ide.bpel.export' version='4.0.0.201604050830'>
+    <properties size='5'>
+      <property name='artifact.size' value='25274'/>
+      <property name='download.size' value='25274'/>
+      <property name='maven-groupId' value='org.wso2.developerstudio'/>
+      <property name='maven-artifactId' value='org.wso2.wsf.ide.bpel.export'/>
+      <property name='maven-version' value='4.0.0-SNAPSHOT'/>
+    </properties>
+  </artifact>
+  <artifact classifier='osgi.bundle' id='org.wso2.wsf.ide.bpel.export.source' version='4.0.0.201604050830'>
+    <properties size='6'>
+      <property name='artifact.size' value='14751'/>
+      <property name='download.size' value='14751'/>
+      <property name='maven-groupId' value='org.wso2.developerstudio'/>
+      <property name='maven-artifactId' value='org.wso2.wsf.ide.bpel.export'/>
+      <property name='maven-version' value='4.0.0-SNAPSHOT'/>
+      <property name='maven-classifier' value='sources'/>
+    </properties>
+  </artifact>
+</artifacts>

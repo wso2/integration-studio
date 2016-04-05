@@ -37,6 +37,7 @@ import org.eclipse.ui.part.MultiPageEditorPart;
 import org.eclipse.ui.texteditor.IDocumentProvider;
 import org.eclipse.ui.texteditor.ITextEditor;
 import org.eclipse.wst.sse.ui.StructuredTextEditor;
+import org.wso2.developerstudio.humantaskeditor.HumantaskEditorConstants;
 
 /**
  * Web based Human Task Editor for eclipse
@@ -72,10 +73,10 @@ public class HumanTaskMultiPageEditor extends MultiPageEditorPart implements IRe
         int index;
         try {
             index = addPage(humanTaskUIEditor, getEditorInput());
-            setPageText(index, "GUI Editor");
+            setPageText(index, HumantaskEditorConstants.GUI_EDITOR_NAME);
             humanTaskUIEditor.setEditorFunctionExecutor(new EditorContentFunction());
         } catch (PartInitException e) {
-            ErrorDialog.openError(getSite().getShell(), "Error creating UI editor", null, e.getStatus());
+            ErrorDialog.openError(getSite().getShell(), HumantaskEditorConstants.ERROR_CREATING_UI_EDITOR, null, e.getStatus());
         }
     }
 
@@ -87,9 +88,10 @@ public class HumanTaskMultiPageEditor extends MultiPageEditorPart implements IRe
             textEditor = new StructuredTextEditor();
             int index = addPage(textEditor, getEditorInput());
             setPageText(index, textEditor.getTitle());
-            EditorContentFunction.setProjectName(((FileEditorInput)textEditor.getEditorInput()).getFile().getProject().getName());
+            EditorContentFunction.setProjectName(((FileEditorInput) textEditor.getEditorInput()).getFile().getProject()
+                    .getName());
         } catch (PartInitException e) {
-            ErrorDialog.openError(getSite().getShell(), "Error creating nested text editor", null, e.getStatus());
+            ErrorDialog.openError(getSite().getShell(), HumantaskEditorConstants.ERROR_CREATING_NESTED_TEXT_EDITOR, null, e.getStatus());
         }
     }
 
@@ -122,10 +124,10 @@ public class HumanTaskMultiPageEditor extends MultiPageEditorPart implements IRe
     public void doSave(IProgressMonitor monitor) {
         getEditor(1).doSave(monitor);
         if (getActivePage() == 0) {
-            humanTaskUIEditor.getBrowser().execute("makeUnDirty();");
+            humanTaskUIEditor.getBrowser().execute(HumantaskEditorConstants.JS_FUNC_MAKE_UN_DIRTY);
         } else if (getActivePage() == 1) {
-            humanTaskUIEditor.getBrowser().execute("loadModel();");
-            humanTaskUIEditor.getBrowser().execute("IDESetDirty(false);");
+            humanTaskUIEditor.getBrowser().execute(HumantaskEditorConstants.JS_FUNC_LOAD_MODEL);
+            humanTaskUIEditor.getBrowser().execute(HumantaskEditorConstants.JS_FUNC_IDESETDIRTY_FALSE);
         }
         /*
          * ITextEditor editor = (ITextEditor)getEditor(1); IDocumentProvider dp
@@ -162,7 +164,7 @@ public class HumanTaskMultiPageEditor extends MultiPageEditorPart implements IRe
     @Override
     public void init(IEditorSite site, IEditorInput editorInput) throws PartInitException {
         if (!(editorInput instanceof IFileEditorInput)) {
-            throw new PartInitException("Invalid Input: Must be IFileEditorInput");
+            throw new PartInitException(HumantaskEditorConstants.ERROR_INVALID_INPUT_MUST_BE_IFILE_EDITOR_INPUT);
         }
         super.init(site, editorInput);
     }
@@ -185,14 +187,14 @@ public class HumanTaskMultiPageEditor extends MultiPageEditorPart implements IRe
         IDocumentProvider dp = editor.getDocumentProvider();
         IDocument doc = dp.getDocument(editor.getEditorInput());
         if (newPageIndex == 1) {
-            humanTaskUIEditor.getBrowser().execute("saveSource();");
+            humanTaskUIEditor.getBrowser().execute(HumantaskEditorConstants.JS_FUNC_SAVE_SOURCE);
             if (humanTaskUIEditor.isDirty()) {
                 doc.set(EditorContentFunction.getText());
             }
         } else if (newPageIndex == 0) {
             EditorContentFunction.setText(doc.get());
-            humanTaskUIEditor.getBrowser().execute("loadModelWithText();");
-            humanTaskUIEditor.getBrowser().execute("process();");
+            humanTaskUIEditor.getBrowser().execute(HumantaskEditorConstants.JS_FUNC_LOAD_MODEL_WITH_TEXT);
+            humanTaskUIEditor.getBrowser().execute(HumantaskEditorConstants.JS_FUNC_PROCESS);
         }
     }
 

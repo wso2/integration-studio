@@ -69,7 +69,7 @@ function createFile(currentTaskName,state) { //createFile
             saveWSDL(wsdlDom, currentTaskName + "Task"); 
 
         } catch (err) {
-            alert("wsdl" + err);
+            alert("WSDL Error " + err);
         }
 
     });
@@ -82,7 +82,7 @@ function createFile(currentTaskName,state) { //createFile
             // generateUI();
           
         } catch (err) {
-            alert("wsdlCBDomB" + err);
+            alert("Callback WSDL Error " + err);
         }
 
     });
@@ -98,7 +98,7 @@ function createFile(currentTaskName,state) { //createFile
                 generateTasks();
             }
         } catch (err) {
-            alert("config" + err);
+            alert("HTConfig file Error " + err);
         }
 
     });
@@ -133,7 +133,7 @@ function addTask() { //createFile
             //generateUI();
 
         } catch (err) {
-            alert("addTask" + err);
+            alert("Error Adding New Task \n" + err);
         }
 
     });
@@ -168,7 +168,7 @@ function addInitalTask() { //createFile
             $("#page-content-wrapper").tabs();
             $("#page-content-wrapper").tabs("refresh");
         } catch (err) {
-            alert("initial" + err);
+            alert("Error initializing Tasks \n" + err);
         }
 
     });
@@ -194,7 +194,7 @@ function saveSource() {
         var text = new XMLSerializer().serializeToString((xmlDom));
         ExecuteCustomFunction("settext", text);
     } catch (err) {
-        alert(err);
+        alert("Error Saving Source \n"+err);
     }
 
 }
@@ -221,7 +221,7 @@ function loadModel() {
         xmlDom = marshalEditorTextContent(IDEGetFileContent());
 
     } catch (err) {
-        alert("LoadModel" + err);
+        alert("Error Loading Model \n" + err);
     }
 }
 
@@ -231,7 +231,7 @@ function loadModelWithText() {
         xmlDom = marshalEditorTextContent(contents);
 
     } catch (err) {
-        alert("loadmodelwithtext" + err);
+        alert("Error Loading Model with text \n" + err);
     }
 }
 
@@ -628,7 +628,7 @@ function generateTaskDiv(taskNode) {
         unmarshalPeopleAssignment(taskNode, "taskStakeholders");
 
     } catch (err) {
-        alert("People Assignments Couldnt be synced \nCaused by : " + err);
+        alert("People Assignments Couldnt be synced \n" + err);
     }
     $('#' + taskDivName + ' .taskDiv').show();
     bindChangeEvents();
@@ -788,7 +788,7 @@ function marshalEditorTextContent(textContent) {
         var parser = new DOMParser();
         var root = parser.parseFromString(textContent, "text/xml");
     } catch (err) {
-        alert("Marshalling Error" + err);
+        alert("Marshalling Error \n" + err);
     }
     return root;
 }
@@ -828,6 +828,7 @@ function loadFileContent() {
  */
 function addPeopleAssignementNode(taskNode, xmlDom, assignmentName) {
     try {
+        if(taskNode.getElementsByTagName("peopleAssignments")[0].getElementsByTagName(assignmentName).length!=0)
         taskNode.getElementsByTagName("peopleAssignments")[0].removeChild(taskNode.getElementsByTagName("peopleAssignments")[0].getElementsByTagName(assignmentName)[0]);
         var newAssignmentNode = xmlDom.createElementNS(
             "http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803",

@@ -1,0 +1,101 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<units size='2'>
+  <unit id='org.wso2.developerstudio.eclipse.artifact.bpel' version='4.0.0.201604050830'>
+    <update id='org.wso2.developerstudio.eclipse.artifact.bpel' range='[0.0.0,4.0.0.201604050830)' severity='0'/>
+    <properties size='4'>
+      <property name='org.eclipse.equinox.p2.name' value='BPEL'/>
+      <property name='maven-groupId' value='org.wso2.developerstudio'/>
+      <property name='maven-artifactId' value='org.wso2.developerstudio.eclipse.artifact.bpel'/>
+      <property name='maven-version' value='4.0.0-SNAPSHOT'/>
+    </properties>
+    <provides size='3'>
+      <provided namespace='org.eclipse.equinox.p2.iu' name='org.wso2.developerstudio.eclipse.artifact.bpel' version='4.0.0.201604050830'/>
+      <provided namespace='osgi.bundle' name='org.wso2.developerstudio.eclipse.artifact.bpel' version='4.0.0.201604050830'/>
+      <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
+    </provides>
+    <requires size='40'>
+      <required namespace='osgi.bundle' name='org.eclipse.ui' range='0.0.0'/>
+      <required namespace='osgi.bundle' name='org.eclipse.core.runtime' range='0.0.0'/>
+      <required namespace='osgi.bundle' name='org.eclipse.core.resources' range='0.0.0'/>
+      <required namespace='osgi.bundle' name='org.eclipse.emf.ecore' range='0.0.0'/>
+      <required namespace='osgi.bundle' name='org.eclipse.wst.wsdl' range='0.0.0'/>
+      <required namespace='osgi.bundle' name='org.eclipse.wst.common.modulecore' range='0.0.0'/>
+      <required namespace='osgi.bundle' name='org.eclipse.bpel.apache.ode.deploy.ui' range='0.0.0'/>
+      <required namespace='osgi.bundle' name='org.wso2.developerstudio.eclipse.libraries' range='[4.0.0,4.1.0)'/>
+      <required namespace='java.package' name='org.apache.commons.io' range='[2.0.0.wso2v1,2.0.1)'/>
+      <required namespace='java.package' name='org.apache.maven.project' range='0.0.0'/>
+      <required namespace='java.package' name='org.eclipse.jdt.core' range='0.0.0'/>
+      <required namespace='java.package' name='org.eclipse.ui.ide' range='0.0.0'/>
+      <required namespace='java.package' name='org.eclipse.ui.wizards.newresource' range='0.0.0'/>
+      <required namespace='java.package' name='org.wso2.developerstudio.eclipse.capp.core.artifacts.manager' range='[4.0.0,4.1.0)'/>
+      <required namespace='java.package' name='org.wso2.developerstudio.eclipse.capp.core.model' range='[4.0.0,4.1.0)'/>
+      <required namespace='java.package' name='org.wso2.developerstudio.eclipse.capp.maven.sample' range='[4.0.0,4.1.0)'/>
+      <required namespace='java.package' name='org.wso2.developerstudio.eclipse.distribution.project.export' range='[4.0.0,4.1.0)'/>
+      <required namespace='java.package' name='org.wso2.developerstudio.eclipse.general.project.dialogs' range='[4.0.0,4.1.0)'/>
+      <required namespace='java.package' name='org.wso2.developerstudio.eclipse.logging.core' range='[4.0.0,4.1.0)'/>
+      <required namespace='java.package' name='org.wso2.developerstudio.eclipse.maven.util' range='[4.0.0,4.1.0)'/>
+      <required namespace='java.package' name='org.wso2.developerstudio.eclipse.platform.core.exception' range='[4.0.0,4.1.0)'/>
+      <required namespace='java.package' name='org.wso2.developerstudio.eclipse.platform.core.model' range='[4.0.0,4.1.0)'/>
+      <required namespace='java.package' name='org.wso2.developerstudio.eclipse.platform.core.nature' range='[4.0.0,4.1.0)'/>
+      <required namespace='java.package' name='org.wso2.developerstudio.eclipse.platform.core.project.export' range='[4.0.0,4.1.0)'/>
+      <required namespace='java.package' name='org.wso2.developerstudio.eclipse.platform.core.project.model' range='[4.0.0,4.1.0)'/>
+      <required namespace='java.package' name='org.wso2.developerstudio.eclipse.platform.core.utils' range='[4.0.0,4.1.0)'/>
+      <required namespace='java.package' name='org.wso2.developerstudio.eclipse.platform.ui.validator' range='[4.0.0,4.1.0)'/>
+      <required namespace='java.package' name='org.wso2.developerstudio.eclipse.platform.ui.wizard' range='[4.0.0,4.1.0)'/>
+      <required namespace='java.package' name='org.wso2.developerstudio.eclipse.platform.ui.wizard.pages' range='[4.0.0,4.1.0)'/>
+      <required namespace='java.package' name='org.wso2.developerstudio.eclipse.registry.core' range='[4.0.0,4.1.0)'/>
+      <required namespace='java.package' name='org.wso2.developerstudio.eclipse.registry.core.interfaces' range='[4.0.0,4.1.0)'/>
+      <required namespace='java.package' name='org.wso2.developerstudio.eclipse.samples.contributor' range='[4.0.0,4.1.0)'/>
+      <required namespace='java.package' name='org.wso2.developerstudio.eclipse.utils.archive' range='[4.0.0,4.1.0)'/>
+      <required namespace='java.package' name='org.wso2.developerstudio.eclipse.utils.data' range='[4.0.0,4.1.0)'/>
+      <required namespace='java.package' name='org.wso2.developerstudio.eclipse.utils.file' range='[4.0.0,4.1.0)'/>
+      <required namespace='java.package' name='org.wso2.developerstudio.eclipse.utils.jdt' range='[4.0.0,4.1.0)'/>
+      <required namespace='java.package' name='org.wso2.developerstudio.eclipse.utils.project' range='[4.0.0,4.1.0)'/>
+      <required namespace='java.package' name='org.wso2.developerstudio.eclipse.utils.template' range='[4.0.0,4.1.0)'/>
+      <required namespace='java.package' name='org.wso2.developerstudio.eclipse.utils.ui' range='[4.0.0,4.1.0)'/>
+      <required namespace='java.package' name='org.wso2.developerstudio.eclipse.utils.wst' range='[4.0.0,4.1.0)'/>
+    </requires>
+    <artifacts size='1'>
+      <artifact classifier='osgi.bundle' id='org.wso2.developerstudio.eclipse.artifact.bpel' version='4.0.0.201604050830'/>
+    </artifacts>
+    <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
+    <touchpointData size='1'>
+      <instructions size='1'>
+        <instruction key='manifest'>
+          Bundle-SymbolicName: org.wso2.developerstudio.eclipse.artifact.bpel;singleton:=true&#xA;Bundle-Version: 4.0.0.201604050830&#xA;
+        </instruction>
+      </instructions>
+    </touchpointData>
+  </unit>
+  <unit id='org.wso2.developerstudio.eclipse.artifact.bpel.source' version='4.0.0.201604050830' singleton='false'>
+    <update id='org.wso2.developerstudio.eclipse.artifact.bpel.source' range='[0.0.0,4.0.0.201604050830)' severity='0'/>
+    <properties size='9'>
+      <property name='df_LT.bundleVendor' value='unknown'/>
+      <property name='df_LT.bundleName' value='BPEL Source'/>
+      <property name='org.eclipse.equinox.p2.name' value='%bundleName'/>
+      <property name='org.eclipse.equinox.p2.provider' value='%bundleVendor'/>
+      <property name='org.eclipse.equinox.p2.bundle.localization' value='OSGI-INF/l10n/bundle-src'/>
+      <property name='maven-groupId' value='org.wso2.developerstudio'/>
+      <property name='maven-artifactId' value='org.wso2.developerstudio.eclipse.artifact.bpel'/>
+      <property name='maven-version' value='4.0.0-SNAPSHOT'/>
+      <property name='maven-classifier' value='sources'/>
+    </properties>
+    <provides size='4'>
+      <provided namespace='org.eclipse.equinox.p2.iu' name='org.wso2.developerstudio.eclipse.artifact.bpel.source' version='4.0.0.201604050830'/>
+      <provided namespace='osgi.bundle' name='org.wso2.developerstudio.eclipse.artifact.bpel.source' version='4.0.0.201604050830'/>
+      <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='source' version='1.0.0'/>
+      <provided namespace='org.eclipse.equinox.p2.localization' name='df_LT' version='1.0.0'/>
+    </provides>
+    <artifacts size='1'>
+      <artifact classifier='osgi.bundle' id='org.wso2.developerstudio.eclipse.artifact.bpel.source' version='4.0.0.201604050830'/>
+    </artifacts>
+    <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
+    <touchpointData size='1'>
+      <instructions size='1'>
+        <instruction key='manifest'>
+          Bundle-SymbolicName: org.wso2.developerstudio.eclipse.artifact.bpel.source&#xA;Bundle-Version: 4.0.0.201604050830&#xA;
+        </instruction>
+      </instructions>
+    </touchpointData>
+  </unit>
+</units>

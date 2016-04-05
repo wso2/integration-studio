@@ -21,21 +21,22 @@ import org.eclipse.core.resources.IProjectNature;
 import org.eclipse.core.runtime.CoreException;
 
 public class HumanTaskNature implements IProjectNature {
-    
+
     public static final String NATURE_ID = "org.wso2.developerstudio.humantaskeditor.humantasknature";
-        
+
     private IProject project;
 
     public void configure() throws CoreException {
     }
-    
+
     public void deconfigure() throws CoreException {
     }
-    
+
     public IProject getProject() {
-       return project;
+        return project;
     }
+
     public void setProject(IProject value) {
-       project = value;
+        project = value;
     }
- }
+}

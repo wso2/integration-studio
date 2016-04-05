@@ -1,0 +1,44 @@
+Manifest-Version: 1.0
+Bundle-SymbolicName: org.eclipse.bpel.common.model; singleton:=true
+Require-Bundle: org.eclipse.core.runtime;bundle-version="[3.4.0,4.0.0)
+ ",org.eclipse.emf.ecore.xmi;bundle-version="[2.4.0,3.0.0)"
+Bundle-ManifestVersion: 2
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-Vendor: %providerName
+Export-Package: org.eclipse.bpel.common,org.eclipse.bpel.common.extens
+ ion.model; uses:="org.eclipse.core.runtime,  org.eclipse.emf.ecore,  
+ org.eclipse.emf.common.util,  org.osgi.framework,  org.eclipse.emf.co
+ mmon.notify",org.eclipse.bpel.common.extension.model.adapters;uses:="
+ org.eclipse.emf.ecore,org.eclipse.bpel.common.extension.model,org.ecl
+ ipse.emf.common.notify",org.eclipse.bpel.common.extension.model.adapt
+ ers.impl; uses:="org.eclipse.emf.ecore,  org.eclipse.emf.common.notif
+ y.impl,  org.eclipse.bpel.common.extension.model,  org.eclipse.emf.co
+ mmon.notify,  org.eclipse.bpel.common.extension.model.adapters",org.e
+ clipse.bpel.common.extension.model.impl; uses:="org.eclipse.emf.ecore
+ ,  org.eclipse.emf.common.util,  org.eclipse.bpel.common.extension.mo
+ del,  org.eclipse.emf.ecore.impl,  org.eclipse.emf.common.notify,  or
+ g.eclipse.bpel.common.extension.model.adapters",org.eclipse.bpel.comm
+ on.extension.model.notify;uses:="org.eclipse.emf.common.notify",org.e
+ clipse.bpel.common.extension.model.notify.impl;uses:="org.eclipse.emf
+ .ecore,org.eclipse.bpel.common.extension.model.notify,org.eclipse.emf
+ .common.notify.impl",org.eclipse.bpel.common.extension.model.util; us
+ es:="org.eclipse.emf.ecore,  org.eclipse.emf.common.notify.impl,  org
+ .eclipse.bpel.common.extension.model,  org.eclipse.emf.common.notify"
+ ,org.eclipse.bpel.fnmeta,org.eclipse.bpel.fnmeta.model;uses:="org.ecl
+ ipse.emf.ecore,org.eclipse.emf.common.util",org.eclipse.bpel.fnmeta.m
+ odel.impl; uses:="org.eclipse.emf.ecore,  org.eclipse.emf.common.util
+ ,  org.eclipse.bpel.fnmeta.model,  org.eclipse.emf.common.notify,  or
+ g.eclipse.emf.ecore.impl",org.eclipse.bpel.fnmeta.model.proxy,org.ecl
+ ipse.bpel.fnmeta.model.util; uses:="org.eclipse.emf.ecore.xmi.impl,  
+ org.eclipse.emf.ecore.resource,  org.eclipse.emf.ecore,  org.eclipse.
+ emf.common.notify.impl,  org.eclipse.emf.common.util,  org.eclipse.bp
+ el.fnmeta.model,  org.eclipse.emf.common.notify,  org.eclipse.emf.eco
+ re.resource.impl,  org.eclipse.emf.ecore.xmi.util",org.eclipse.bpel.n
+ ames
+Bundle-Name: %pluginName
+Bundle-Version: 4.0.0.201604050830
+Bundle-Localization: plugin
+Bundle-ClassPath: .
+Bundle-Activator: org.eclipse.bpel.common.extension.model.Activator
+

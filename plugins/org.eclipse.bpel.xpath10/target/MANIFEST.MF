@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bundle-SymbolicName: org.eclipse.bpel.xpath10
+Export-Package: org.antlr.runtime;uses:="org.antlr.runtime.tree",org.a
+ ntlr.runtime.debug;uses:="org.antlr.runtime.tree,org.antlr.runtime",o
+ rg.antlr.runtime.misc,org.antlr.runtime.tree;uses:="org.antlr.runtime
+ ,org.antlr.stringtemplate",org.eclipse.bpel.xpath10,org.eclipse.bpel.
+ xpath10.parser;uses:="org.antlr.runtime.tree,org.antlr.runtime,org.ec
+ lipse.bpel.xpath10"
+Bundle-Name: %pluginName
+Bundle-Version: 4.0.0.201604050830
+Bundle-Localization: plugin
+Bundle-ClassPath: .,lib/antlr-runtime-3.0.1.jar
+Bundle-ManifestVersion: 2
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-Vendor: %providerName
+

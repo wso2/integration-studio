@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Bundle-SymbolicName: org.eclipse.bpel.help;singleton:=true
+Bundle-Name: %pluginName
+Bundle-Version: 4.0.0.201604050830
+Bundle-Localization: plugin
+Require-Bundle: org.eclipse.help
+Bundle-ManifestVersion: 2
+Bundle-ActivationPolicy: lazy
+Bundle-Vendor: %providerName
+

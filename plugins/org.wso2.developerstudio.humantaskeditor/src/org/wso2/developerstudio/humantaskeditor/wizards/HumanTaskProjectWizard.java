@@ -21,7 +21,6 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.ObjectInputStream.GetField;
 import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 import java.util.logging.Level;
@@ -53,11 +52,13 @@ import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.ide.IDE;
 import org.wso2.developerstudio.humantaskeditor.Activator;
+import org.wso2.developerstudio.humantaskeditor.HumantaskEditorConstants;
 
 public class HumanTaskProjectWizard extends Wizard implements INewWizard {
+    
     private HumanTaskProjectWizardPage page;
     private ISelection selection;
-    private final static Logger logger=Logger.getLogger(Activator.PLUGIN_ID);
+    private static final Logger logger = Logger.getLogger(Activator.PLUGIN_ID);
 
     /**
      * Constructor for HumanTaskWizard.
@@ -104,7 +105,7 @@ public class HumanTaskProjectWizard extends Wizard implements INewWizard {
             return false;
         } catch (InvocationTargetException e) {
             Throwable realException = e.getTargetException();
-            MessageDialog.openError(getShell(), "Error",
+            MessageDialog.openError(getShell(), HumantaskEditorConstants.ERROR_MESSAGE,
                     realException.getMessage());
             return false;
         }
@@ -122,9 +123,9 @@ public class HumanTaskProjectWizard extends Wizard implements INewWizard {
         monitor.beginTask("Creating " + fileName, 2);
         IWorkspaceRoot root = ResourcesPlugin.getWorkspace().getRoot();
         IProject project = root.getProject(containerName);
-        if(project.exists()){
-            IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, "Project Exists");
-            ErrorDialog.openError(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), "Error", "The project exists in the workspace", editorStatus);
+        if (project.exists()) {
+            IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, HumantaskEditorConstants.PROJECT_EXISTS_MESSAGE);
+            ErrorDialog.openError(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), HumantaskEditorConstants.ERROR_MESSAGE, HumantaskEditorConstants.THE_PROJECT_EXISTS_IN_THE_WORKSPACE_MESSAGE, editorStatus);
         }else{
             project.create(null);
             project.open(null);
@@ -137,24 +138,34 @@ public class HumanTaskProjectWizard extends Wizard implements INewWizard {
         }
         IContainer container = (IContainer) resource;
         final IFile file = container.getFile(new Path(fileName));
+        final IFile wsdlfile = container.getFile(new Path("ApproveClaimTask.wsdl"));
+        final IFile cbWsdlfile = container.getFile(new Path("ApproveClaimCBTask.wsdl"));
+        final IFile htconfigfile = container.getFile(new Path("htconfig.xml"));
         addNature(file.getProject());
         try {
             InputStream stream = openContentStream();
+            InputStream wsdlStream = openWSDLStream();
+            InputStream htconfigStream = openHTConfigStream();
             if (file.exists()) {
                 file.setContents(stream, true, true, monitor);
             } else {
                 file.create(stream, true, monitor);
+                wsdlfile.create(wsdlStream, true, monitor);
+                cbWsdlfile.create(wsdlStream, true, monitor);
+                htconfigfile.create(htconfigStream, true, monitor);
 
             }
             stream.close();
+            wsdlStream.close();
+            htconfigStream.close();
         } catch (IOException e) {
-            logger.log(Level.FINE, "Error Creating Initial File", e);
+            logger.log(Level.FINE, HumantaskEditorConstants.ERROR_CREATING_INITIAL_FILE_MESSAGE, e);
             IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage());
-            ErrorDialog.openError(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), "Error", "Error Creating Initial File", editorStatus);
+            ErrorDialog.openError(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), HumantaskEditorConstants.ERROR_MESSAGE, HumantaskEditorConstants.ERROR_CREATING_INITIAL_FILE_MESSAGE, editorStatus);
 
         }
         monitor.worked(1);
-        monitor.setTaskName("Opening file for editing...");
+        monitor.setTaskName(HumantaskEditorConstants.OPENING_FILE_FOR_EDITING_MESSAGE);
         getShell().getDisplay().asyncExec(new Runnable() {
             @Override
             public void run() {
@@ -163,9 +174,9 @@ public class HumanTaskProjectWizard extends Wizard implements INewWizard {
                 try {
                     IDE.openEditor(page, file, true);
                 } catch (PartInitException e) {
-                    logger.log(Level.FINE, "Error Opening the Editor", e);
+                    logger.log(Level.FINE, HumantaskEditorConstants.ERROR_OPENING_THE_EDITOR_MESSAGE, e);
                     IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage());
-                    ErrorDialog.openError(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), "Error", "Error Opening the Editor", editorStatus);
+                    ErrorDialog.openError(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), HumantaskEditorConstants.ERROR_MESSAGE, HumantaskEditorConstants.ERROR_OPENING_THE_EDITOR_MESSAGE, editorStatus);
 
                 }
             }
@@ -215,7 +226,7 @@ public class HumanTaskProjectWizard extends Wizard implements INewWizard {
         URL url;
         try {
             url = new URL(
-                    "platform:/plugin/org.wso2.developerstudio.humantaskeditor/HumanTaskEditor/resources/dummy.ht");
+                    HumantaskEditorConstants.DUMMY_HT_LOCATION);
             InputStream inputStream = url.openConnection().getInputStream();
             BufferedReader in = new BufferedReader(new InputStreamReader(
                     inputStream));
@@ -229,7 +240,7 @@ public class HumanTaskProjectWizard extends Wizard implements INewWizard {
         } catch (IOException e) {
             logger.log(Level.FINE, "Error reading from HT file", e);
             IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage());
-            ErrorDialog.openError(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), "Error", "Error reading from project", editorStatus);
+            ErrorDialog.openError(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), HumantaskEditorConstants.ERROR_MESSAGE, "Error reading from project", editorStatus);
         }
         return sb.toString();
     }
@@ -244,7 +255,7 @@ public class HumanTaskProjectWizard extends Wizard implements INewWizard {
         URL url;
         try {
             url = new URL(
-                    "platform:/plugin/org.wso2.developerstudio.humantaskeditor/HumanTaskEditor/resources/dummy.wsdl");
+                    HumantaskEditorConstants.DUMMY_WSDL_LOCATION);
             InputStream inputStream = url.openConnection().getInputStream();
             BufferedReader in = new BufferedReader(new InputStreamReader(inputStream));
             String inputLine;
@@ -257,7 +268,7 @@ public class HumanTaskProjectWizard extends Wizard implements INewWizard {
         } catch (IOException e) {
             logger.log(Level.FINE, "Error reading from WSDL file", e);
             IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage());
-            ErrorDialog.openError(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), "Error",
+            ErrorDialog.openError(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), HumantaskEditorConstants.ERROR_MESSAGE,
                     "Error reading from project", editorStatus);
         }
         return sb.toString();
@@ -268,7 +279,7 @@ public class HumanTaskProjectWizard extends Wizard implements INewWizard {
         URL url;
         try {
             url = new URL(
-                    "platform:/plugin/org.wso2.developerstudio.humantaskeditor/HumanTaskEditor/resources/dummyhtconfig.ht");
+                    HumantaskEditorConstants.DUMMY_HTCONFIG_LOCATION);
             InputStream inputStream = url.openConnection().getInputStream();
             BufferedReader in = new BufferedReader(new InputStreamReader(inputStream));
             String inputLine;
@@ -281,7 +292,7 @@ public class HumanTaskProjectWizard extends Wizard implements INewWizard {
         } catch (IOException e) {
             logger.log(Level.FINE, "Error reading from HTConfig file", e);
             IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage());
-            ErrorDialog.openError(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), "Error",
+            ErrorDialog.openError(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), HumantaskEditorConstants.ERROR_MESSAGE,
                     "Error reading from project", editorStatus);
         }
         return sb.toString();
@@ -289,7 +300,7 @@ public class HumanTaskProjectWizard extends Wizard implements INewWizard {
 
     private void throwCoreException(String message) throws CoreException {
         IStatus status = new Status(IStatus.ERROR,
-                "org.wso2.developerstudio.humantaskeditor", IStatus.OK,
+                HumantaskEditorConstants.PLUGIN_ID, IStatus.OK,
                 message, null);
         throw new CoreException(status);
     }

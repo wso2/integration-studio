@@ -27,26 +27,27 @@ import java.util.logging.Logger;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.IWorkspace;
 import org.eclipse.core.resources.ResourcesPlugin;
-import org.eclipse.core.runtime.CoreException;
 import org.wso2.developerstudio.eclipse.webui.core.editor.AbstractEditorFunctionExecutor;
 import org.wso2.developerstudio.humantaskeditor.Activator;
+import org.wso2.developerstudio.humantaskeditor.HumantaskEditorConstants;
 
 public class EditorContentFunction implements AbstractEditorFunctionExecutor {
+    
     private static String text;
     private static String projectName;
     private static final Logger logger = Logger.getLogger(Activator.PLUGIN_ID);
 
     @Override
     public Object executeFunction(String functionName, Object[] parameters) {
-        if (functionName.equals("settext")) {
+        if (functionName.equals(HumantaskEditorConstants.JS_CUSTOMFUNC_SETTEXT)) {
             EditorContentFunction.setText((String) parameters[1]);
             return null;
-        } else if (functionName.equals("gettext")) {
+        } else if (functionName.equals(HumantaskEditorConstants.JS_CUSTOMFUNC_GETTEXT)) {
             return EditorContentFunction.getText();
-        } else if (functionName.equals("getWSDL")) {
+        } else if (functionName.equals(HumantaskEditorConstants.JS_CUSTOMFUNC_GET_WSDL)) {
             IWorkspace workspace = ResourcesPlugin.getWorkspace();
             IResource resource = null;
-            resource = workspace.getRoot().getProject(getProjectName()).findMember(parameters[1] + "CBTask.wsdl");
+            resource = workspace.getRoot().getProject(getProjectName()).findMember(parameters[1] + HumantaskEditorConstants.CALLBACK_WSDL_PREFIX);
 
             if (resource.exists()) {
                 File file = resource.getLocation().toFile();
@@ -62,46 +63,20 @@ public class EditorContentFunction implements AbstractEditorFunctionExecutor {
                                 break;
                             }
                             sb.append(line);
-                            
+
                         }
-                      
+
                     } catch (FileNotFoundException e1) {
-                        logger.log(Level.FINE, "Error Finding Corresponding WSDL File", e1);
+                        logger.log(Level.FINE, HumantaskEditorConstants.ERROR_FINDING_CORRESPONDING_WSDL_FILE, e1);
                     } catch (IOException e) {
-                        logger.log(Level.FINE, "Error Creating Corresponding WSDL File", e);
+                        logger.log(Level.FINE, HumantaskEditorConstants.ERROR_CREATING_CORRESPONDING_WSDL_FILE, e);
                     }
                     return sb.toString();
                 }
             } else {
-                return "undefined";
+                return HumantaskEditorConstants.UNDEFINED_LITERAL;
             }
 
-        } else if (functionName.equals("removeWSDL")) {
-            IWorkspace workspace = ResourcesPlugin.getWorkspace();
-            File taskFile = workspace.getRoot().getProject(getProjectName()).findMember(parameters[1] + "CBTask.wsdl")
-                    .getLocation().toFile();
-            IResource[] memberArray;
-            try {
-                memberArray = workspace.getRoot().getProject(getProjectName()).members();
-                for (int i = 0; i < memberArray.length; i++) {
-                    String memberFileExtention = memberArray[i].getFileExtension();
-                    if (memberFileExtention.equals("wsdl")) {
-                        System.out.println("Equals : " + memberArray[i].getName());
-                    }
-                }
-            } catch (CoreException e) {
-                logger.log(Level.FINE, "Error Finding Corresponding WSDL File", e);
-            }
-
-            // if(taskFile.exists())taskFile.delete();
-
-            /*
-             * if(cbTaskFile.exists())cbTaskFile.delete();
-             * for(int i=1;i<parameters.length;i++){
-             * System.out.println(parameters[i]);
-             * }
-             */
-            return null;
         } else {
             return null;
         }

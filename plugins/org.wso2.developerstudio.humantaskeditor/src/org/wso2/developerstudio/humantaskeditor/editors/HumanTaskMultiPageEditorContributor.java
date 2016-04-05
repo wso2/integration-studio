@@ -28,6 +28,7 @@ import org.eclipse.ui.ide.IDEActionFactory;
 import org.eclipse.ui.part.MultiPageEditorActionBarContributor;
 import org.eclipse.ui.texteditor.ITextEditor;
 import org.eclipse.ui.texteditor.ITextEditorActionConstants;
+import org.wso2.developerstudio.humantaskeditor.HumantaskEditorConstants;
 
 /**
  * Manages the installation/deinstallation of global actions for multi-page
@@ -36,6 +37,7 @@ import org.eclipse.ui.texteditor.ITextEditorActionConstants;
  * editors in the multi-page editor.
  */
 public class HumanTaskMultiPageEditorContributor extends MultiPageEditorActionBarContributor {
+    
     private IEditorPart activeEditorPart;
     private Action htAction;
 
@@ -100,7 +102,7 @@ public class HumanTaskMultiPageEditorContributor extends MultiPageEditorActionBa
         htAction = new Action() {
             @Override
             public void run() {
-                MessageDialog.openInformation(null, "Humantaskeditor", "Create HumanTask file");
+                MessageDialog.openInformation(null, HumantaskEditorConstants.HUMANTASKEDITOR_DIALOG_BOX_HEADER, HumantaskEditorConstants.CREATE_HUMAN_TASK_FILE_MESSAGE);
             }
         };
         htAction.setText("Create HumanTask File");

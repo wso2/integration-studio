@@ -1,0 +1,22 @@
+Manifest-Version: 1.0
+Bundle-SymbolicName: org.wso2.developerstudio.bpel.humantask.model;sin
+ gleton:=true
+Require-Bundle: org.eclipse.core.runtime,org.eclipse.emf.ecore;visibil
+ ity:=reexport,org.eclipse.bpel.model;visibility:=reexport,org.eclipse
+ .wst.wsdl;visibility:=reexport,org.eclipse.xsd;visibility:=reexport,j
+ avax.wsdl;bundle-version="[1.5.0,1.6.0)"
+Bundle-ManifestVersion: 2
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-ActivationPolicy: lazy
+Bundle-Vendor: %providerName
+Import-Package: org.eclipse.bpel.ui.util
+Export-Package: org.wso2.developerstudio.bpel.humantask.model,org.wso2
+ .developerstudio.bpel.humantask.model.util,org.wso2.developerstudio.b
+ pel.humantask.record,org.wso2.developerstudio.bpel.humantask.record.i
+ mpl,org.wso2.developerstudio.bpel.humantask.record.util
+Bundle-Name: HumanTask Model
+Bundle-Version: 4.0.0.201604050830
+Bundle-ClassPath: .,lib/org.eclipse.smila.processing.designer.model_0.
+ 9.11.201107211249.jar
+Bundle-Localization: plugin
+

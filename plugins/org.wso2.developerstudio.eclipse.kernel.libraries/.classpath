@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry exported="true" kind="lib" path="lib/neethi_2.0.4.wso2v4.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/neethi-2.0.4.wso2v4.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/commons-logging-1.1.1.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/axis2-1.6.1.wso2v14.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/maven-invoker-2.0.11.jar"/>

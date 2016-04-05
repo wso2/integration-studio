@@ -69,6 +69,11 @@
     		   <artifactId>axis2</artifactId>
     		  <version>1.6.1.wso2v14</version>
         </dependency>
+        		<dependency>
+    			<groupId>org.apache.neethi.wso2</groupId>
+    			<artifactId>neethi</artifactId>
+    			<version>2.0.4.wso2v4</version>
+		</dependency>
     </dependencies>
     <repositories>
         <repository>
@@ -110,6 +115,17 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+				<artifactId>maven-clean-plugin</artifactId>
+				<version>2.3</version>
+				<configuration>
+					<filesets>
+						<fileset>
+							<directory>lib</directory>
+						</fileset>
+					</filesets>
+				</configuration>
+			</plugin>
         </plugins>
     </build>
 </project>

@@ -484,9 +484,7 @@ public class SchemaKeyEditorDialog extends Dialog {
 		try {
 			DataMapperSchemaEditorUtil schemaEditorUtil = new DataMapperSchemaEditorUtil(inputFile);
 			FileType option = FileType.values()[schemaTypeCombo.getSelectionIndex()];
-			Display display = Display.getDefault();
-			Shell shell = new Shell(display);
-			FileDialog fid = new FileDialog(shell);
+			FileDialog fid = new FileDialog(Display.getDefault().getActiveShell());
 			if (option != FileType.JSONSCHEMA) {
 				fid.setFilterExtensions(new String[] { fileExtensionForFileType(option) });
 			}

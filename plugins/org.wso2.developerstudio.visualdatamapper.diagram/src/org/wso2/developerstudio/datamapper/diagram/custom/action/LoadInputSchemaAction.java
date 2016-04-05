@@ -64,9 +64,8 @@ public class LoadInputSchemaAction extends AbstractActionHandler {
 				EObject selectedObj = ((View) selectedEP.getModel()).getElement();
 				Assert.isTrue(selectedObj instanceof InputImpl, INVALID_SELECTION);
 			}
-			Shell shell = new Shell(Display.getDefault());
 			// Schema key editor dialog : create/import schema
-			SchemaKeyEditorDialog dialog = new SchemaKeyEditorDialog(shell, selectedEP,
+			SchemaKeyEditorDialog dialog = new SchemaKeyEditorDialog(Display.getDefault().getActiveShell(), selectedEP,
 					getWorkbenchPart(), SCHEMA_TYPE_INPUT);
 
 			dialog.create();

@@ -22,6 +22,7 @@ import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.platform.ui.WorkbenchToolkit;
+import org.wso2.developerstudio.eclipse.platform.ui.preferences.PreferenceConstants;
 import org.wso2.developerstudio.eclipse.platform.ui.preferences.PreferenceInitializer;
 import org.wso2.developerstudio.eclipse.platform.ui.preferences.UpdateCheckerPreferencePage;
 import org.wso2.developerstudio.eclipse.updater.UpdaterPlugin;
@@ -45,7 +46,7 @@ public class StartupUpdateHandler implements IStartup {
 		// Read updater preferences
 		setPrefDefaultVals();
 		IPreferenceStore prefPage = PlatformUI.getPreferenceStore();
-		boolean isAutomaticUpdate = prefPage.getBoolean(UpdateCheckerPreferencePage.ENABLE_AUTOMATIC_UPDATES);
+		boolean isAutomaticUpdate = prefPage.getBoolean(PreferenceConstants.ENABLE_AUTOMATIC_UPDATES);
 		if (!isAutomaticUpdate) {
 			return;
 		}
@@ -66,10 +67,10 @@ public class StartupUpdateHandler implements IStartup {
 	private void setPrefDefaultVals() {
 		IPreferenceStore preferenceStore = PlatformUI.getPreferenceStore();
 		preferenceStore = WorkbenchToolkit.getPrefernaceStore();
-		preferenceStore.setDefault(UpdateCheckerPreferencePage.RELESE_SITE_URL, PreferenceInitializer.DEFAULT_RELEASE_SITE);
-		preferenceStore.setDefault(UpdateCheckerPreferencePage.UPDATE_SITE_URL, PreferenceInitializer.DEFAULT_UPDATE_SITE);
-		preferenceStore.setDefault(UpdateCheckerPreferencePage.UPDATE_DATE_INTERVAL, WEEKLY);
-		preferenceStore.setDefault(UpdateCheckerPreferencePage.ENABLE_AUTOMATIC_UPDATES, true);
+		preferenceStore.setDefault(PreferenceConstants.RELESE_SITE_URL, PreferenceInitializer.DEFAULT_RELEASE_SITE);
+		preferenceStore.setDefault(PreferenceConstants.UPDATE_SITE_URL, PreferenceInitializer.DEFAULT_UPDATE_SITE);
+		preferenceStore.setDefault(PreferenceConstants.UPDATE_DATE_INTERVAL, WEEKLY);
+		preferenceStore.setDefault(PreferenceConstants.ENABLE_AUTOMATIC_UPDATES, true);
 		
 	}
 }

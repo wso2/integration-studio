@@ -40,8 +40,8 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
+import org.wso2.developerstudio.eclipse.platform.ui.preferences.PreferenceConstants;
 import org.wso2.developerstudio.eclipse.platform.ui.preferences.PreferenceInitializer;
-import org.wso2.developerstudio.eclipse.platform.ui.preferences.UpdateCheckerPreferencePage;
 import org.wso2.developerstudio.eclipse.updater.Messages;
 import org.wso2.developerstudio.eclipse.updater.UpdaterPlugin;
 import org.wso2.developerstudio.eclipse.updater.core.UpdateManager;
@@ -116,8 +116,7 @@ public class UpdateMetaFileReaderJob extends Job {
 	 */
 	private Version generateVersionFromString(String versionString) {
 		String[] versionVal = versionString.split("-");
-		String[] minorMajorNumbers = versionVal[0].split("\\."); // . is \\. in
-																	// regex
+		String[] minorMajorNumbers = versionVal[0].split("\\."); // . is \\. in regex
 		Version availableVersion = Version.createOSGi(Integer.parseInt(minorMajorNumbers[0]),
 				Integer.parseInt(minorMajorNumbers[1]), Integer.parseInt(minorMajorNumbers[2]), versionVal[1]);
 		return availableVersion;
@@ -143,7 +142,7 @@ public class UpdateMetaFileReaderJob extends Job {
 			File updateFile = new File(fileLoc);
 			// needs to enable once the pref store values are up
 			IPreferenceStore preferenceStore = PlatformUI.getPreferenceStore();
-			String url = preferenceStore.getString(UpdateCheckerPreferencePage.UPDATE_SITE_URL) + UPDATES_TXT_FILE;// TODO
+			String url = preferenceStore.getString(PreferenceConstants.UPDATE_SITE_URL) + UPDATES_TXT_FILE;// TODO
 																													// replace
 			if (url == null || url.isEmpty()) {
 				url = PreferenceInitializer.DEFAULT_UPDATE_SITE + UPDATES_TXT_FILE;

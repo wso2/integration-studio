@@ -27,63 +27,12 @@ import org.eclipse.jface.util.PropertyChangeEvent;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPreferencePage;
-import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.eclipse.platform.ui.WorkbenchToolkit;
 
 public class UpdateCheckerPreferencePage extends FieldEditorPreferencePage implements IWorkbenchPreferencePage {
-
-	private static final String INSTALL_AUTOMATICALLY = "AUTOMATIC";
-	private static final String NOTIFY_ME = "NOTIFY_ME";
-	public static final String MONTHLY = "Monthly";
-	public static final String DEFAULT_SUNDAY = "Every Sunday";
-	public static final String EVERY_MONDAY = "Every Monday";
-	public static final String EVERY_TUESDAY = "Every Tuesday";
-	public static final String EVERY_WEDNESDAY = "Every Wednesday";
-	public static final String EVERY_THURSDAY = "Every Thursday";
-	public static final String EVERY_FRIDAY = "Every Friday";
-	public static final String EVERY_SATURDAY = "Every Saturday";
-
-	public static final String MIDNIGHT = "00:00";
-	public static final String ONEAM = "01:00";
-	public static final String TWOAM = "02:00";
-	public static final String THREEAM = "03:00";
-	public static final String FOURAM = "04:00";
-	public static final String FIVEAM = "05:00";
-	public static final String SIXAM = "06:00";
-	public static final String SEVENAM = "07:00";
-	public static final String DEFAULT_EIGHT_AM = "08:00";
-	public static final String NINEAM = "09:00";
-	public static final String TENAM = "10:00";
-	public static final String ELEVENAM = "11:00";
-	public static final String TWELEVENOON = "12:00";
-	public static final String ONEPM = "13:00";
-	public static final String TWOPM = "14:00";
-	public static final String THREEPM = "15:00";
-	public static final String FOURPM = "16:00";
-	public static final String FIVEPM = "17:00";
-	public static final String SIXPM = "18:00";
-	public static final String SEVENPM = "19:00";
-	public static final String EIGHTPM = "20:00";
-	public static final String NINEPM = "21:00";
-	public static final String TENPM = "22:00";
-	public static final String ELEVENPM = "23:00";
-
-	public static final String DAILY = "Daily";
-	public static final String UPDATE_DATE_INTERVAL = "UPDATE_INTAVAL";
-	public static final String UPDATE_TIME_INTERVAL = "UPDATE_TIME_INTAVAL";
-	public static final String AUTOMATIC_UPDATE_STATUS = "AUTOMATIC_UPATE_STATUS";
-	public static final String ENABLE_AUTOMATIC_UPDATES = "ENABLE_AUTOMATIC_UPDATES";
-
-	public static final String DOWNLOAD_UPDATES = "&Install available updates automatically";
-	public static final String NOTIFY_ME_IF_UPDATES_AVAILABLE = "&Notify me when updates are available";
-	public static final String UPDATE_NOTIFICATION_CONFIGURATION = "UPDATE_NOTIFICATION_CONFIGURATION";
-
-	public static final String RELESE_SITE_URL = "RELESE_SITE_URL";
-	public static final String UPDATE_SITE_URL = "UPDATE_SITE_URL";
 
 	public static final String PREFERENCE_PLUGIN_ID = "org.wso2.developerstudio.eclipse.platform.ui";
 
@@ -105,40 +54,40 @@ public class UpdateCheckerPreferencePage extends FieldEditorPreferencePage imple
 	}
 
 	public static void setPreferenceDefaults(IPreferenceStore preferenceStore) {
-		preferenceStore.setDefault(RELESE_SITE_URL, PreferenceInitializer.DEFAULT_RELEASE_SITE);
-		preferenceStore.setDefault(UPDATE_SITE_URL, PreferenceInitializer.DEFAULT_UPDATE_SITE);
-		preferenceStore.setDefault(UPDATE_DATE_INTERVAL, DEFAULT_SUNDAY);
-		preferenceStore.setDefault(UPDATE_TIME_INTERVAL, DEFAULT_EIGHT_AM);
-		preferenceStore.setDefault(ENABLE_AUTOMATIC_UPDATES, true);
+		preferenceStore.setDefault(PreferenceConstants.RELESE_SITE_URL, PreferenceInitializer.DEFAULT_RELEASE_SITE);
+		preferenceStore.setDefault(PreferenceConstants.UPDATE_SITE_URL, PreferenceInitializer.DEFAULT_UPDATE_SITE);
+		preferenceStore.setDefault(PreferenceConstants.UPDATE_DATE_INTERVAL, PreferenceConstants.DEFAULT_SUNDAY);
+		preferenceStore.setDefault(PreferenceConstants.UPDATE_TIME_INTERVAL, PreferenceConstants.DEFAULT_EIGHT_AM);
+		preferenceStore.setDefault(PreferenceConstants.ENABLE_AUTOMATIC_UPDATES, true);
 	}
 
 	@Override
 	protected void createFieldEditors() {
 		fieldEditorParent = getFieldEditorParent();
 
-		BooleanFieldEditor enableAutomaticUpdates = new BooleanFieldEditor(ENABLE_AUTOMATIC_UPDATES,
+		BooleanFieldEditor enableAutomaticUpdates = new BooleanFieldEditor(PreferenceConstants.ENABLE_AUTOMATIC_UPDATES,
 				"Check for updates Automatically", fieldEditorParent);
 		addField(enableAutomaticUpdates);
-		boolean isUpdatesEnabled = preferenceStore.getBoolean(UpdateCheckerPreferencePage.ENABLE_AUTOMATIC_UPDATES);
+		boolean isUpdatesEnabled = preferenceStore.getBoolean(PreferenceConstants.ENABLE_AUTOMATIC_UPDATES);
 		addBlankSeparator(fieldEditorParent);
 		setSeparator(fieldEditorParent);
 
 		enableDisableSet = new Composite(fieldEditorParent, SWT.LEFT);
 		addBlankSeparator(enableDisableSet);
-		String[][] intervals = { { DAILY, DAILY }, { DEFAULT_SUNDAY, DEFAULT_SUNDAY }, { EVERY_MONDAY, EVERY_MONDAY },
-				{ EVERY_TUESDAY, EVERY_TUESDAY }, { EVERY_WEDNESDAY, EVERY_WEDNESDAY },
-				{ EVERY_THURSDAY, EVERY_THURSDAY }, { EVERY_FRIDAY, EVERY_FRIDAY },
-				{ EVERY_SATURDAY, EVERY_SATURDAY } };
-		intervalDayEditor = new ComboFieldEditor(UPDATE_DATE_INTERVAL, "Check for updates ", intervals, enableDisableSet);
+		String[][] intervals = { { PreferenceConstants.DAILY, PreferenceConstants.DAILY }, { PreferenceConstants.DEFAULT_SUNDAY, PreferenceConstants.DEFAULT_SUNDAY }, { PreferenceConstants.EVERY_MONDAY, PreferenceConstants.EVERY_MONDAY },
+				{ PreferenceConstants.EVERY_TUESDAY, PreferenceConstants.EVERY_TUESDAY }, { PreferenceConstants.EVERY_WEDNESDAY, PreferenceConstants.EVERY_WEDNESDAY },
+				{ PreferenceConstants.EVERY_THURSDAY, PreferenceConstants.EVERY_THURSDAY }, { PreferenceConstants.EVERY_FRIDAY, PreferenceConstants.EVERY_FRIDAY },
+				{ PreferenceConstants.EVERY_SATURDAY, PreferenceConstants.EVERY_SATURDAY } };
+		intervalDayEditor = new ComboFieldEditor(PreferenceConstants.UPDATE_DATE_INTERVAL, "Check for updates ", intervals, enableDisableSet);
 		addField(intervalDayEditor);
 		intervalDayEditor.setEnabled(isUpdatesEnabled, enableDisableSet);
 
-		String[][] timeIntervals = { { MIDNIGHT, MIDNIGHT }, { ONEAM, ONEAM }, { TWOAM, TWOAM }, { THREEAM, THREEAM },
-				{ FOURAM, FOURAM }, { FIVEAM, FIVEAM }, { SIXAM, SIXAM }, { SEVENAM, SEVENAM }, { DEFAULT_EIGHT_AM, NINEAM },
-				{ TENAM, TENAM }, { ELEVENAM, ELEVENAM }, { TWELEVENOON, TWELEVENOON }, { ONEPM, ONEPM }, { TWOPM, TWOPM },
-				{ THREEPM, THREEPM }, { FOURPM, FOURPM }, { FIVEPM, FIVEPM }, { SIXPM, SIXPM }, { SIXPM, SIXPM },
-				{ SEVENPM, SEVENPM }, { EIGHTPM, EIGHTPM }, { NINEPM, NINEPM }, { TENPM, TENPM }, { ELEVENPM, ELEVENPM } };
-		intervalTimeEditor = new ComboFieldEditor(UPDATE_TIME_INTERVAL, ""
+		String[][] timeIntervals = { { PreferenceConstants.MIDNIGHT, PreferenceConstants.MIDNIGHT }, { PreferenceConstants.ONEAM, PreferenceConstants.ONEAM }, {PreferenceConstants.TWOAM, PreferenceConstants.TWOAM }, { PreferenceConstants.THREEAM, PreferenceConstants.THREEAM },
+				{ PreferenceConstants.FOURAM, PreferenceConstants.FOURAM }, { PreferenceConstants.FIVEAM, PreferenceConstants.FIVEAM }, { PreferenceConstants.SIXAM, PreferenceConstants.SIXAM }, { PreferenceConstants.SEVENAM, PreferenceConstants.SEVENAM }, { PreferenceConstants.DEFAULT_EIGHT_AM, PreferenceConstants.NINEAM },
+				{ PreferenceConstants.TENAM, PreferenceConstants.TENAM }, { PreferenceConstants.ELEVENAM, PreferenceConstants.ELEVENAM }, { PreferenceConstants.TWELEVENOON, PreferenceConstants.TWELEVENOON }, { PreferenceConstants.ONEPM, PreferenceConstants.ONEPM }, { PreferenceConstants.TWOPM, PreferenceConstants.TWOPM },
+				{ PreferenceConstants.THREEPM, PreferenceConstants.THREEPM }, { PreferenceConstants.FOURPM, PreferenceConstants.FOURPM }, { PreferenceConstants.FIVEPM, PreferenceConstants.FIVEPM }, { PreferenceConstants.SIXPM, PreferenceConstants.SIXPM }, { PreferenceConstants.SIXPM, PreferenceConstants.SIXPM },
+				{ PreferenceConstants.SEVENPM, PreferenceConstants.SEVENPM }, { PreferenceConstants.EIGHTPM, PreferenceConstants.EIGHTPM }, { PreferenceConstants.NINEPM, PreferenceConstants.NINEPM }, { PreferenceConstants.TENPM, PreferenceConstants.TENPM }, { PreferenceConstants.ELEVENPM, PreferenceConstants.ELEVENPM } };
+		intervalTimeEditor = new ComboFieldEditor(PreferenceConstants.UPDATE_TIME_INTERVAL, ""
 				, timeIntervals,
 				enableDisableSet);
 		intervalTimeEditor.setEnabled(isUpdatesEnabled, enableDisableSet);
@@ -146,17 +95,17 @@ public class UpdateCheckerPreferencePage extends FieldEditorPreferencePage imple
 
 		setSeparator(enableDisableSet);
 		addBlankSeparator(enableDisableSet);
-		updateInstallationRadioBttn = new RadioGroupFieldEditor(UPDATE_NOTIFICATION_CONFIGURATION,
+		updateInstallationRadioBttn = new RadioGroupFieldEditor(PreferenceConstants.UPDATE_NOTIFICATION_CONFIGURATION,
 				"Update Notification and Installation", 1, new String[][] {
-						{ NOTIFY_ME_IF_UPDATES_AVAILABLE, NOTIFY_ME }, { DOWNLOAD_UPDATES, INSTALL_AUTOMATICALLY } },
+						{ PreferenceConstants.NOTIFY_ME_IF_UPDATES_AVAILABLE, PreferenceConstants.NOTIFY_ME }, { PreferenceConstants.DOWNLOAD_UPDATES, PreferenceConstants.INSTALL_AUTOMATICALLY } },
 				enableDisableSet);
 		addField(updateInstallationRadioBttn);
 		updateInstallationRadioBttn.setEnabled(isUpdatesEnabled, enableDisableSet);
 
 		setSeparator(enableDisableSet);
 
-		updateSiteURL = new StringFieldEditor(UPDATE_SITE_URL, "Update site:", enableDisableSet);
-		releaseSiteURL = new StringFieldEditor(RELESE_SITE_URL, "Release site:", enableDisableSet);
+		updateSiteURL = new StringFieldEditor(PreferenceConstants.UPDATE_SITE_URL, "Update site:", enableDisableSet);
+		releaseSiteURL = new StringFieldEditor(PreferenceConstants.RELESE_SITE_URL, "Release site:", enableDisableSet);
 		updateSiteURL.setEnabled(isUpdatesEnabled, enableDisableSet);
 		releaseSiteURL.setEnabled(isUpdatesEnabled, enableDisableSet);
 		addField(updateSiteURL);
@@ -178,22 +127,20 @@ public class UpdateCheckerPreferencePage extends FieldEditorPreferencePage imple
 
 	public void propertyChange(PropertyChangeEvent event) {
 		FieldEditor fe = (FieldEditor) event.getSource();
-		if (ENABLE_AUTOMATIC_UPDATES.equals(fe.getPreferenceName())) {
+		if (PreferenceConstants.ENABLE_AUTOMATIC_UPDATES.equals(fe.getPreferenceName())) {
 			boolean isAutomaticUpdateEnabled = (boolean) event.getNewValue();
 			intervalDayEditor.setEnabled(isAutomaticUpdateEnabled, enableDisableSet);
 			updateSiteURL.setEnabled(isAutomaticUpdateEnabled, enableDisableSet);
 			releaseSiteURL.setEnabled(isAutomaticUpdateEnabled, enableDisableSet);
 			updateInstallationRadioBttn.setEnabled(isAutomaticUpdateEnabled, enableDisableSet);
 			intervalTimeEditor.setEnabled(isAutomaticUpdateEnabled, enableDisableSet);
-		} /*else  {
-			preferenceStore.putValue(fe.getPreferenceName(), (String) event.getNewValue());
-		}*/
+		} 
 		setPreferenceDefaults(preferenceStore);
 		super.propertyChange(event);
 	}
 
 	public static void setAutomaticUpdatePreference(String value) {
-		preferenceStore.setDefault(ENABLE_AUTOMATIC_UPDATES, value);
+		preferenceStore.setDefault(PreferenceConstants.ENABLE_AUTOMATIC_UPDATES, value);
 	}
 
 }

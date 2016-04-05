@@ -29,7 +29,7 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
-import org.wso2.developerstudio.eclipse.platform.ui.preferences.UpdateCheckerPreferencePage;
+import org.wso2.developerstudio.eclipse.platform.ui.preferences.PreferenceConstants;
 import org.wso2.developerstudio.eclipse.updater.Messages;
 import org.wso2.developerstudio.eclipse.updater.UpdaterPlugin;
 import org.wso2.developerstudio.eclipse.updater.core.UpdateManager;
@@ -64,7 +64,6 @@ public class UpdateMetaFileReaderJobListener extends JobChangeAdapter {
 	@Override
 	public void done(IJobChangeEvent event) {
 		if (event.getResult().isOK()) {
-
 			Display.getDefault().syncExec(new Runnable() {
 				@Override
 				public void run() {
@@ -82,14 +81,14 @@ public class UpdateMetaFileReaderJobListener extends JobChangeAdapter {
 
 				private void runUpdaterJob(boolean doCheckTime) {
 					Calendar cal = Calendar.getInstance();
-					String updateIntervalDay = prefPage.getString(UpdateCheckerPreferencePage.UPDATE_DATE_INTERVAL);
+					String updateIntervalDay = prefPage.getString(PreferenceConstants.UPDATE_DATE_INTERVAL);
 					if (updateIntervalDay == null || updateIntervalDay.isEmpty()) {
-						updateIntervalDay = UpdateCheckerPreferencePage.DEFAULT_SUNDAY;
+						updateIntervalDay = PreferenceConstants.DEFAULT_SUNDAY;
 					}
 					int intValOfDay = getIntValOfDay(updateIntervalDay);
-					String updateIntervalTime = prefPage.getString(UpdateCheckerPreferencePage.UPDATE_TIME_INTERVAL);
+					String updateIntervalTime = prefPage.getString(PreferenceConstants.UPDATE_TIME_INTERVAL);
 					if (updateIntervalTime == null || updateIntervalTime.isEmpty()) {
-						updateIntervalTime = UpdateCheckerPreferencePage.DEFAULT_EIGHT_AM;
+						updateIntervalTime = PreferenceConstants.DEFAULT_EIGHT_AM;
 					}
 					if (!doCheckTime) { // if OKed by user, run irrespective of
 										// time setting
@@ -112,20 +111,20 @@ public class UpdateMetaFileReaderJobListener extends JobChangeAdapter {
 
 				private int getIntValOfDay(String updateIntervalDay) {
 					switch (updateIntervalDay) {
-					case (UpdateCheckerPreferencePage.EVERY_MONDAY):
+					case (PreferenceConstants.EVERY_MONDAY):
 						return Calendar.MONDAY;
-					case (UpdateCheckerPreferencePage.EVERY_TUESDAY):
+					case (PreferenceConstants.EVERY_TUESDAY):
 						return Calendar.TUESDAY;
-					case (UpdateCheckerPreferencePage.EVERY_WEDNESDAY):
+					case (PreferenceConstants.EVERY_WEDNESDAY):
 						return Calendar.WEDNESDAY;
-					case (UpdateCheckerPreferencePage.EVERY_THURSDAY):
+					case (PreferenceConstants.EVERY_THURSDAY):
 						return Calendar.THURSDAY;
-					case (UpdateCheckerPreferencePage.EVERY_FRIDAY):
+					case (PreferenceConstants.EVERY_FRIDAY):
 						return Calendar.FRIDAY;
-					case (UpdateCheckerPreferencePage.EVERY_SATURDAY):
+					case (PreferenceConstants.EVERY_SATURDAY):
 						return Calendar.SATURDAY;
 					default:
-						return Calendar.SUNDAY; // case SUNDAY
+						return Calendar.SUNDAY; // case SUNDAY default setting 
 					}
 
 				}
@@ -142,11 +141,11 @@ public class UpdateMetaFileReaderJobListener extends JobChangeAdapter {
 
 	public static int getUserPreference(String message, String title) {
 		// Display activeDisplay = Display.getDefault();
-		String userChoice = prefPage.getString(UpdateCheckerPreferencePage.UPDATE_NOTIFICATION_CONFIGURATION);
+		String userChoice = prefPage.getString(PreferenceConstants.UPDATE_NOTIFICATION_CONFIGURATION);
 		if (userChoice == null || userChoice.isEmpty()) {
-			userChoice = UpdateCheckerPreferencePage.NOTIFY_ME_IF_UPDATES_AVAILABLE;
+			userChoice = PreferenceConstants.NOTIFY_ME_IF_UPDATES_AVAILABLE;
 		}
-		if (userChoice.equals(UpdateCheckerPreferencePage.NOTIFY_ME_IF_UPDATES_AVAILABLE)) {
+		if (userChoice.equals(PreferenceConstants.NOTIFY_ME_IF_UPDATES_AVAILABLE)) {
 			MessageDialog dialog = new MessageDialog(Display.getDefault().getActiveShell(), title, null, message,
 					MessageDialog.INFORMATION, new String[] { YES, NO, SET_LATER }, 0);
 			return dialog.open();

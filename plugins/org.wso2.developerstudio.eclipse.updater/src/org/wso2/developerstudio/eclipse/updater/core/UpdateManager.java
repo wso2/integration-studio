@@ -31,6 +31,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
+import java.util.TreeMap;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
@@ -77,8 +78,8 @@ import org.osgi.framework.BundleContext;
 import org.osgi.framework.FrameworkUtil;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
+import org.wso2.developerstudio.eclipse.platform.ui.preferences.PreferenceConstants;
 import org.wso2.developerstudio.eclipse.platform.ui.preferences.PreferenceInitializer;
-import org.wso2.developerstudio.eclipse.platform.ui.preferences.UpdateCheckerPreferencePage;
 import org.wso2.developerstudio.eclipse.updater.Messages;
 import org.wso2.developerstudio.eclipse.updater.UpdaterPlugin;
 import org.wso2.developerstudio.eclipse.updater.model.EnhancedFeature;
@@ -126,6 +127,7 @@ public class UpdateManager {
 	// lists and maps related to Release Repository and available Features
 	protected Map<String, IInstallableUnit> allAvailableFeatures;
 	protected Map<String, EnhancedFeature> availableNewFeatures;
+	protected Map<String, EnhancedFeature> unsortedAvailableNewFeatures;
 	protected Collection<IInstallableUnit> selectedFeatures;
 
 	protected static IDeveloperStudioLog log = Logger
@@ -186,10 +188,11 @@ public class UpdateManager {
 				.loadRepository(getDevStudioUpdateSite(), progress.newChild(1));
 
 		// read meta-data of all available features
-		Map<String, EnhancedFeature> allFeaturesInUpdateRepo = loadWSO2FeaturesInRepo(
+		Map<String, EnhancedFeature> unsortedMap = loadWSO2FeaturesInRepo(
 				artifactRepo, allIUQueryResult,
 				progress.newChild(1));
-
+		//sort the map in alphabetical order
+		Map<String, EnhancedFeature> allFeaturesInUpdateRepo = new TreeMap<String, EnhancedFeature>(unsortedMap);
 		// get all installed wso2 features
 		Collection<IInstallableUnit> installedWSO2Features = getInstalledWSO2Features(progress
 				.newChild(1));
@@ -226,6 +229,8 @@ public class UpdateManager {
 			// good to proceed installing updates
 			setPossibleUpdates(updateOperation.getPossibleUpdates(), allFeaturesInUpdateRepo);
 		}
+		//sort the available updates in alphabetical order
+		
 	}
 
 	/**
@@ -264,12 +269,12 @@ public class UpdateManager {
 				WSO2_FEATURE_PREFIX, FEATURE_GROUP_IU_ID_SFX, allIUQueryResult,
 				progress.newChild(1));
 		allAvailableFeatures = new HashMap<String, IInstallableUnit>();
-		availableNewFeatures = new HashMap<String, EnhancedFeature>();
+		unsortedAvailableNewFeatures = new HashMap<String, EnhancedFeature>();
 		for (IInstallableUnit iInstallableUnit : filteredIUs) {
 			allAvailableFeatures
 					.put(iInstallableUnit.getId(), iInstallableUnit);
 			if (!installedWSO2FeaturesMap.containsKey(iInstallableUnit.getId())) {
-				availableNewFeatures
+				unsortedAvailableNewFeatures
 						.put(iInstallableUnit.getId(),
 								allFeaturesInReleaseRepo.get(iInstallableUnit
 										.getId()));
@@ -277,7 +282,7 @@ public class UpdateManager {
 				Version versionInstalled = installedWSO2FeaturesMap.get(iInstallableUnit.getId()).getVersion(); 
 				// if the version we have is greater than the installed version view it in the available feature list
 				if (versionInstalled != null && (iInstallableUnit.getVersion().compareTo(versionInstalled) == 1)) {
-						availableNewFeatures
+					unsortedAvailableNewFeatures
 						.put(iInstallableUnit.getId(),
 								allFeaturesInReleaseRepo.get(iInstallableUnit
 										.getId()));
@@ -285,6 +290,8 @@ public class UpdateManager {
 				}
 			}
 		}
+		// sort the available new features according to alphabetical order
+		availableNewFeatures = new TreeMap<String, EnhancedFeature>(unsortedAvailableNewFeatures);
 	}
 
 	/**
@@ -583,7 +590,7 @@ public class UpdateManager {
 		Iterator<IInstallableUnit> iterator = queryResult.iterator();
 		SubMonitor progress = SubMonitor.convert(monitor,
 				Messages.UpdateManager_24, queryResult.toSet().size());
-		;
+	
 		while (iterator.hasNext()) {
 			if (progress.isCanceled()) {
 				throw new OperationCanceledException();
@@ -666,7 +673,7 @@ public class UpdateManager {
 		try {
 			IPreferenceStore preferenceStore = PlatformUI.getPreferenceStore();
 			String url = preferenceStore
-					.getString(UpdateCheckerPreferencePage.UPDATE_SITE_URL);
+					.getString(PreferenceConstants.UPDATE_SITE_URL);
 			if (url == null || url.isEmpty()) {
 				url = PreferenceInitializer.DEFAULT_UPDATE_SITE;
 			}
@@ -682,7 +689,7 @@ public class UpdateManager {
 		try {
 			IPreferenceStore preferenceStore = PlatformUI.getPreferenceStore();
 			String url = preferenceStore
-					.getString(UpdateCheckerPreferencePage.RELESE_SITE_URL);
+					.getString(PreferenceConstants.RELESE_SITE_URL);
 			releaseSite = new URI(url);
 		} catch (URISyntaxException e) {
 			log.error(e);

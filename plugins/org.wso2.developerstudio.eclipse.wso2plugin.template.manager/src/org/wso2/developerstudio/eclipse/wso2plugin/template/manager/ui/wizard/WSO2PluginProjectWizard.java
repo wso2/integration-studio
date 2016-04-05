@@ -295,7 +295,7 @@ public class WSO2PluginProjectWizard extends AbstractWSO2ProjectCreationWizard {
 		ISafeRunnable runnable = new ISafeRunnable() {
 			@Override
 			public void handleException(Throwable e) {
-				System.out.println("Exception in client");
+				log.error("Exception in client");
 			}
 
 			@Override

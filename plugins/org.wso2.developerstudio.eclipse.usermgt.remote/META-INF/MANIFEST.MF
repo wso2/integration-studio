@@ -5,7 +5,8 @@ Bundle-SymbolicName: org.wso2.developerstudio.eclipse.usermgt.remote
 Bundle-Version: 4.1.0.qualifier
 Bundle-Activator: org.wso2.developerstudio.eclipse.usermgt.remote.Activator
 Require-Bundle: org.eclipse.ui,
- org.eclipse.core.runtime
+ org.eclipse.core.runtime,
+ org.wso2.developerstudio.eclipse.libraries
 Bundle-ActivationPolicy: lazy
 Import-Package: javax.activation;version="1.1.0",
  javax.wsdl;version="[1.6.2.wso2v1,1.7.0)",

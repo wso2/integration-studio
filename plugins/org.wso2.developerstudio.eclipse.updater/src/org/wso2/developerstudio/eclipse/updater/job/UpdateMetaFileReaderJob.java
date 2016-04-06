@@ -64,6 +64,10 @@ public class UpdateMetaFileReaderJob extends Job {
 	protected UpdateManager updateManager;
 	public static int updateCount = 0;
 
+	public static void setUpdateCount(int updateCount) {
+		UpdateMetaFileReaderJob.updateCount = updateCount;
+	}
+
 	public static int getUpdateCount() {
 		return updateCount;
 	}
@@ -95,7 +99,8 @@ public class UpdateMetaFileReaderJob extends Job {
 							availaleDevStudioFeatureVerions.get(iInstallableUnit.getId()));
 					if (availableVersion != null
 							&& availableVersion.compareTo(iInstallableUnit.getVersion()) == AVAILABLE_VERSION_GREATER) {
-						updateCount++;
+						updateCount = updateCount + 1;
+						setUpdateCount(updateCount);
 					} else if (availableVersion == null) {
 						log.error(Messages.UpdateCheckerJob_4);
 						promptUserError(ERROR_MESSAGE, ERROR_TITLE);

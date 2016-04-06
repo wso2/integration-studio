@@ -29,7 +29,7 @@
     <packaging>eclipse-plugin</packaging>
     <name>Developer Studio kernel.libraries</name>
     <dependencies>
-        <dependency>
+        <!-- <dependency>
             <groupId>commons-io.wso2</groupId>
             <artifactId>commons-io</artifactId>
             <version>2.0.0.wso2v1</version>
@@ -73,7 +73,7 @@
     			<groupId>org.apache.neethi.wso2</groupId>
     			<artifactId>neethi</artifactId>
     			<version>2.0.4.wso2v4</version>
-		</dependency>
+		</dependency> -->
     </dependencies>
     <repositories>
         <repository>
@@ -115,7 +115,7 @@
                     </execution>
                 </executions>
             </plugin>
-            <plugin>
+            <!-- <plugin>
 				<artifactId>maven-clean-plugin</artifactId>
 				<version>2.3</version>
 				<configuration>
@@ -125,7 +125,7 @@
 						</fileset>
 					</filesets>
 				</configuration>
-			</plugin>
+			</plugin> -->
         </plugins>
     </build>
 </project>

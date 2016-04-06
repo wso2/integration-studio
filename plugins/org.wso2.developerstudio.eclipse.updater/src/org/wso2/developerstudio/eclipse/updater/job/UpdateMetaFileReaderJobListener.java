@@ -36,8 +36,7 @@ public class UpdateMetaFileReaderJobListener extends JobChangeAdapter {
 	private static final int USER_SCHEDULED_AUTOMATIC_INSTALL = 15;
 	private static final String SET_LATER = "Not Now";
 	private static final String UPDATER_DIALOG_MESSAGE = Messages.UpdatemetaFileReaderJobListener_1;
-	private static final String TITLE = "There are " + UpdateMetaFileReaderJob.getUpdateCount()
-			+ " updates for developer studio features you have installed. It is recommended to install these updates. Do you want to install now ?";
+	private static final String TITLE = "There are updates for developer studio features you have installed. It is recommended to install these updates. Do you want to install now ?";
 	protected static final String YES = "Yes";
 	protected static final String NO = "No";
 	protected static final String DAILY = "Daily";

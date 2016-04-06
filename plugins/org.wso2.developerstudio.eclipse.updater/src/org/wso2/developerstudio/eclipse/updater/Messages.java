@@ -4,6 +4,8 @@ import org.eclipse.osgi.util.NLS;
 
 public class Messages extends NLS {
 	private static final String BUNDLE_NAME = "org.wso2.developerstudio.eclipse.updater.messages"; //$NON-NLS-1$
+	public static String UpdateMetaFileReaderJob_1;
+	public static String UpdateMetaFileReaderJob_0;
 	public static String UpdateCheckerJob_0;
 	public static String UpdateCheckerJob_1;
 	public static String UpdateCheckerJob_2;

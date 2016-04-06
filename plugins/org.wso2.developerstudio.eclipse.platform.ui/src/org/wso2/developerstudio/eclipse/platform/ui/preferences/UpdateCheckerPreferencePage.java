@@ -135,7 +135,7 @@ public class UpdateCheckerPreferencePage extends FieldEditorPreferencePage imple
 		setSeparator(enableDisableSet);
 		addBlankSeparator(enableDisableSet);
 		updateInstallationRadioBttn = new RadioGroupFieldEditor(PreferenceConstants.UPDATE_NOTIFICATION_CONFIGURATION,
-				"", 1,
+				"Specify Update Schedule", 1,
 				new String[][] { { PreferenceConstants.NOTIFY_ME_IF_UPDATES_AVAILABLE, PreferenceConstants.NOTIFY_ME },
 						{ PreferenceConstants.DOWNLOAD_UPDATES, PreferenceConstants.INSTALL_AUTOMATICALLY } },
 				enableDisableSet);

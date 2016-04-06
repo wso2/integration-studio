@@ -21,10 +21,8 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.io.FileUtils;
@@ -56,8 +54,8 @@ public class UpdateMetaFileReaderJob extends Job {
 
 	private static final int AVAILABLE_VERSION_GREATER = 1;
 	private static final String FEATURE_GROUP_APPEND = ".feature.group";
-	private static final String ERROR_TITLE = "Automatic Updater error";
-	private static final String ERROR_MESSAGE = "Error in retrieving available updates automatically";
+	private static final String ERROR_TITLE = Messages.UpdateMetaFileReaderJob_0;
+	private static final String ERROR_MESSAGE = Messages.UpdateMetaFileReaderJob_1;
 	private static final String UPDATES_TXT_FILE = "updates.txt";
 	public static final String JAVA_IO_TMPDIR = "java.io.tmpdir";
 	public static final String folderLoc = System.getProperty(JAVA_IO_TMPDIR) + File.separator + "DevStudioUpdater";

@@ -20,6 +20,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.swing.Icon;
+
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.gef.EditPart;
@@ -32,7 +34,10 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeNodeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.providers.DiagramContextMenuProvider;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.jface.action.IContributionItem;
+import org.eclipse.jface.action.IContributionManagerOverrides;
 import org.eclipse.jface.action.IMenuManager;
+import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IWorkbenchPart;
@@ -207,6 +212,8 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
 							menu.remove(ActionIds.MENU_FILE);
 							menu.remove(MENU_PROPERTIES);
 							menu.remove(MENU_ADDITIONS);
+							menu.remove(ActionIds.ACTION_ADD_NOTELINK);
+							menu.remove(ActionIds.ACTION_DELETE_FROM_DIAGRAM);
 
 							List<?> selectedEPs = getViewer().getSelectedEditParts();
 							if (selectedEPs.size() == 1) {
@@ -272,19 +279,18 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
 									AbstractActionHandler contextAction = contextActions.get(selectedEditorPart
 											.getClass());
 									if (null != contextAction) {
-										menu.appendToGroup(NAVIGATE_GROUP_ID, contextAction);
+										menu.appendToGroup(EDIT_GROUP_ID, contextAction);
 									}
 
 									// Append export schema item to menu
 									AbstractActionHandler exportSchemaAction = exportSchemaActions
 											.get(selectedEditorPart.getClass());
 									if (null != exportSchemaAction) {
-										menu.appendToGroup(NAVIGATE_GROUP_ID, exportSchemaAction);
+										menu.appendToGroup(EDIT_GROUP_ID, exportSchemaAction);
 									}
 								}
 
 							}
-
 							menu.prependToGroup(PROPERTIES_GROUP_ID, deleteAction);
 						}
 					});

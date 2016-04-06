@@ -100,7 +100,16 @@
                 <checksumPolicy>ignore</checksumPolicy>
             </releases>
             <id>DevS-Deps-p2-Repository</id>
-            <url>http://builder1.us1.wso2.org/~developerstudio/developer-studio-kernel/dependencies/4.1.0/p2/</url>
+            <url>http://builder1.us1.wso2.org/~developerstudio/developer-studio-kernel/dependencies/other/p2/</url>
+            <layout>p2</layout>
+        </repository>       <repository>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>daily</updatePolicy>
+                <checksumPolicy>ignore</checksumPolicy>
+            </releases>
+            <id>DevS-Deps-Luna-p2-Repository</id>
+            <url>http://builder1.us1.wso2.org/~developerstudio/developer-studio-kernel/dependencies/eclipse/luna/p2/</url>
             <layout>p2</layout>
         </repository>
         <repository>

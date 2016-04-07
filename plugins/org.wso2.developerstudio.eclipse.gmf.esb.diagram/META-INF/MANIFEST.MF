@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.wso2.developerstudio.eclipse.gmf.esb.diagram; singleton:=true
-Bundle-Version: 4.0.0.qualifier
+Bundle-Version: 4.1.0.qualifier
 Bundle-ClassPath: .
 Bundle-Activator: org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbDiagramEditorPlugin
 Bundle-Vendor: %providerName
@@ -52,7 +52,7 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.debug.core,
  org.eclipse.debug.ui,
  org.eclipse.osgi.services;bundle-version="3.4.0",
- org.wso2.developerstudio.eclipse.esb.libraries;bundle-version="4.0.0",
+ org.wso2.developerstudio.eclipse.esb.libraries;bundle-version="4.1.0",
  org.wso2.developerstudio.eclipse.platform.core;bundle-version="[4.1.0,4.2.0)",
  org.wso2.developerstudio.eclipse.platform.ui;bundle-version="[4.1.0,4.2.0)",
  org.wso2.developerstudio.eclipse.kernel.libraries;bundle-version="4.1.0"

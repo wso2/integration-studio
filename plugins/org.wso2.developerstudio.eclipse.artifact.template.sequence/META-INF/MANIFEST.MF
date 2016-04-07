@@ -2,12 +2,12 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Template
 Bundle-SymbolicName: org.wso2.developerstudio.eclipse.artifact.template.sequence;singleton:=true
-Bundle-Version: 4.0.0.qualifier
+Bundle-Version: 4.1.0.qualifier
 Bundle-Activator: org.wso2.developerstudio.eclipse.artifact.template.Activator
 Require-Bundle: org.wso2.developerstudio.eclipse.kernel.libraries;bundle-version="4.1.0",
  org.wso2.developerstudio.eclipse.platform.core;bundle-version="4.1.0",
  org.wso2.developerstudio.eclipse.platform.ui;bundle-version="4.1.0",
- org.wso2.developerstudio.eclipse.esb.libraries;bundle-version="4.0.0"
+ org.wso2.developerstudio.eclipse.esb.libraries;bundle-version="4.1.0"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Import-Package: org.eclipse.core.resources,

@@ -86,8 +86,8 @@ import org.wso2.developerstudio.eclipse.registry.core.interfaces.IRegistryFile;
 public class DataMapperMediatorEditPart extends FixedSizedAbstractMediator {
 
 	private static final String DATAMAPPER_FILTER_TYPE = "application/datamapper"; //$NON-NLS-1$
-	private static final String INPUT_AVROSCHEMA = "_inputSchema.avsc"; //$NON-NLS-1$
-	private static final String OUTPUT_AVROSCHEMA = "_outputSchema.avsc"; //$NON-NLS-1$
+	private static final String INPUT_AVROSCHEMA = "_inputSchema.json"; //$NON-NLS-1$
+	private static final String OUTPUT_AVROSCHEMA = "_outputSchema.json"; //$NON-NLS-1$
 	private static final String G_REG_PATH_PREFIX = "/_system/governance/"; //$NON-NLS-1$
 	private static final String C_REG_PATH_PREFIX = "/_system/config/"; //$NON-NLS-1$
 	private static final String G_REG_PREFIX = "gov:%s"; //$NON-NLS-1$

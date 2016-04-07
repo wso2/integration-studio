@@ -1,0 +1,102 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- Schema file written by PDE -->
+<schema targetNamespace="org.wso2.developerstudio.embedded.tomcat" xmlns="http://www.w3.org/2001/XMLSchema">
+<annotation>
+      <appinfo>
+         <meta.schema plugin="org.wso2.developerstudio.embedded.tomcat" id="org.wso2.developerstudio.embedded.webapp" name="Embedded Web App"/>
+      </appinfo>
+      <documentation>
+         Deploy a web application to embedded tomcat server of WSO2 Developer Studio.
+      </documentation>
+   </annotation>
+
+   <element name="extension">
+      <annotation>
+         <appinfo>
+            <meta.element />
+         </appinfo>
+      </annotation>
+      <complexType>
+         <attribute name="point" type="string" use="required">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="id" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="name" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+               <appinfo>
+                  <meta.attribute translatable="true"/>
+               </appinfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="webapp">
+      <complexType>
+         <attribute name="appID" type="string" use="required">
+            <annotation>
+               <documentation>
+                  A unique ID for the web application.
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="relativePath" type="string" use="required">
+            <annotation>
+               <documentation>
+                  Relative path to web app directory or war file. Web app should be added to the bundle as a resource and the URL should be provided relatively to bundle root.
+               </documentation>
+               <appinfo>
+                  <meta.attribute kind="resource"/>
+               </appinfo>
+            </annotation>
+         </attribute>
+         <attribute name="context" type="string" use="required">
+            <annotation>
+               <documentation>
+                  Context, to which, the web app should be deployed.
+               </documentation>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <annotation>
+      <appinfo>
+         <meta.section type="since"/>
+      </appinfo>
+      <documentation>
+         WSO2 Developer Studio Kernel 4.0.0
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appinfo>
+         <meta.section type="examples"/>
+      </appinfo>
+      <documentation>
+         &lt;extension point=&quot;org.wso2.developerstudio.embedded.webapp&quot;&gt;
+         &lt;webapp appID=&quot;SampleEditorApp&quot;
+            relativePath=&quot;SampleWebEditor/&quot;
+            context=&quot;/SampleEditorApp&quot;&gt;
+         &lt;/webapp&gt;
+&lt;/extension&gt;
+      </documentation>
+   </annotation>
+
+
+
+
+</schema>

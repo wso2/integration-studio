@@ -60,7 +60,7 @@ public class HumanTaskWizardPage extends WizardPage {
     public HumanTaskWizardPage(ISelection selection) {
         super(HumantaskEditorConstants.WIZARD_PAGE_NAME);
         setTitle(HumantaskEditorConstants.FILE_WIZARD_PAGE_TITLE);
-        setDescription(HumantaskEditorConstants.FILE_QIZARD_PAGE_DESCRIPTION);
+        setDescription(HumantaskEditorConstants.FILE_WIZARD_PAGE_DESCRIPTION);
         this.selection = selection;
     }
 

@@ -88,7 +88,7 @@ public class HumantaskEditorConstants {
 
     public static final String NEW_HT_FILE_NAME = "newfile.ht";
 
-    public static final String FILE_QIZARD_PAGE_DESCRIPTION = "This wizard creates a humantask artifact which can be deployed";
+    public static final String FILE_WIZARD_PAGE_DESCRIPTION = "This wizard creates a humantask artifact which can be deployed";
 
     public static final String FILE_WIZARD_PAGE_TITLE = "Human Task File";
 

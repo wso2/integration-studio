@@ -485,7 +485,6 @@ function generateTaskDiv(taskNode) {
                                                 .getElementsByTagName("renderings")[0]
                                                 .getElementsByTagName("inputs")[0]
                                                 .removeChild(inputNodes[j]);
-
                                             break;
                                         }
                                         deleteNodeId++;
@@ -679,6 +678,10 @@ function generateText(taskNode) {
     inputNodes = taskNode.getElementsByTagName("renderings")[0]
         .getElementsByTagName("inputs")[0].childNodes;
     inputmapping = 0;
+    presentationParametersa = taskNode.getElementsByTagName("presentationElements")[0].getElementsByTagName("presentationParameters")[0];
+    while (presentationParametersa.firstChild) {
+                    presentationParametersa.removeChild(presentationParametersa.firstChild);
+    }
     for (i = 0; i < inputNodes.length; i++) {
         if (inputNodes[i].nodeName != '#text') {
             inputNodes[i].setAttribute("id", $(
@@ -695,6 +698,8 @@ function generateText(taskNode) {
                     '#' + taskDivName + " #taskInputMappingOrder" + inputmapping).val();
             else
                 addTextNode(inputNodes[i].getElementsByTagName("value")[0], xmlDom, $('#' + taskDivName + " #taskInputMappingOrder" + inputmapping).val());
+                addPresentationParameter(xmlDom,taskNode,taskName,inputNodes[i].getElementsByTagName("value")[0].childNodes[0].nodeValue,inputNodes[i].getAttribute("type"));
+             
             inputmapping++;
         }
     }
@@ -1015,6 +1020,21 @@ function createNewLiteral(xmlDom, parent, text, grouptext) {
     newLiteral.appendChild(newOrgEntity);
     parent.appendChild(newLiteral);
 
+}
+
+function addPresentationParameter(xmlDom, taskNode, taskName , name, type) { //should be presentationParameters
+    if(name.indexOf("$")==0 && name.lastIndexOf("$")==(name.length-1)){
+    name = name.replace(/[&\/\\#,+()$~%.'":*?<>{}]/g, '');
+    parent = taskNode.getElementsByTagName("presentationElements")[0]
+        .getElementsByTagName("presentationParameters")[0];
+    newPresentationParameter = xmlDom.createElementNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803",
+        "htd:presentationParameter"); 
+    newPresentationParameter.setAttribute("name",name);   
+    newPresentationParameter.setAttribute("type",type); 
+    newPresentationParameterText = xmlDom.createTextNode("htd:getInput(\""+taskName+"Request\")/test10:"+name);
+    newPresentationParameter.appendChild(newPresentationParameterText);
+    parent.appendChild(newPresentationParameter);
+    }
 }
 
 function removeUnwantedArtifacts() {

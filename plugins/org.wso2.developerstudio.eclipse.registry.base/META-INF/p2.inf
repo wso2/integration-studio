@@ -1,0 +1,4 @@
+instructions.configure = \
+org.eclipse.equinox.p2.touchpoint.eclipse.addJvmArg(jvmArg:-Djavax.net.ssl.trustStoreType="JKS");\
+org.eclipse.equinox.p2.touchpoint.eclipse.addJvmArg(jvmArg:-Djavax.net.ssl.trustStore="${installFolder}/configuration/wso2carbon.jks");\
+org.eclipse.equinox.p2.touchpoint.eclipse.addJvmArg(jvmArg:-Djavax.net.ssl.trustStorePassword="wso2carbon");

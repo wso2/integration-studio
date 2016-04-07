@@ -16,20 +16,42 @@
 
 package org.wso2.developerstudio.eclipse.registry.base;
 
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
+
+import javax.xml.parsers.FactoryConfigurationError;
+
+import org.apache.commons.validator.Field;
+import org.eclipse.core.runtime.FileLocator;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleContext;
+import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
+import org.wso2.developerstudio.eclipse.logging.core.Logger;
+import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
 
 /**
  * The activator class controls the plug-in life cycle
  */
 public class Activator extends AbstractUIPlugin {
 
+	private static final String WSO2CARBON_JKS = "wso2carbon.jks";
+
+	private static final String CONFIGURATION = "configuration";
+
+	private static final String ECLIPSE_INSTALLTION_DIRECTORY = "eclipse.home.location";
+
 	// The plug-in ID
 	public static final String PLUGIN_ID = "org.wso2.developerstudio.eclipse.registry.base";
 
 	// The shared instance
 	private static Activator plugin;
-	
+
 	/**
 	 * The constructor
 	 */
@@ -38,16 +60,45 @@ public class Activator extends AbstractUIPlugin {
 
 	/*
 	 * (non-Javadoc)
-	 * @see org.eclipse.ui.plugin.AbstractUIPlugin#start(org.osgi.framework.BundleContext)
+	 * 
+	 * @see org.eclipse.ui.plugin.AbstractUIPlugin#start(org.osgi.framework.
+	 * BundleContext)
 	 */
 	public void start(BundleContext context) throws Exception {
 		super.start(context);
 		plugin = this;
+//		 copy the jks file from the bundle to eclipse installation directory.This is required to enable remote registry connection from 
+//		 developer studio 
+		Platform.getBundle(PLUGIN_ID);
+		IDeveloperStudioLog log = Logger.getLog(PLUGIN_ID);
+		Bundle bundle = Platform.getBundle(PLUGIN_ID);
+		URL fileURL = bundle.getEntry(WSO2CARBON_JKS);
+		File file = null;
+		try {
+			URL resolvedFileURL = FileLocator.toFileURL(fileURL);
+			URI resolvedURI = new URI(resolvedFileURL.getProtocol(), resolvedFileURL.getPath(), null);
+			file = new File(resolvedURI);
+		} catch (URISyntaxException e1) {
+			log.error("Error occurres in copying the jks default file to eclipse configurations location");
+		} catch (Exception e1) {
+			log.error("Error occurres in copying the jks default file to eclipse configurations location");
+		}
+		String eclipseDirectory = System.getProperty(ECLIPSE_INSTALLTION_DIRECTORY);
+		URI uri = new URI(eclipseDirectory);
+		String localFilePath = uri.getPath();
+
+		File jksFile = new File(localFilePath + File.separator + CONFIGURATION + File.separator + WSO2CARBON_JKS);
+		if (!jksFile.exists()) {
+			jksFile.createNewFile();
+		}
+		FileUtils.copy(file, jksFile);
 	}
 
 	/*
 	 * (non-Javadoc)
-	 * @see org.eclipse.ui.plugin.AbstractUIPlugin#stop(org.osgi.framework.BundleContext)
+	 * 
+	 * @see org.eclipse.ui.plugin.AbstractUIPlugin#stop(org.osgi.framework.
+	 * BundleContext)
 	 */
 	public void stop(BundleContext context) throws Exception {
 		plugin = null;

@@ -252,25 +252,26 @@ public class InNodeEditPart extends AbstractInNodeEditPart {
 		private void createContents() {
 
 			ImageDescriptor mainImgDesc = AbstractUIPlugin.imageDescriptorFromPlugin(
-					"org.wso2.developerstudio.visualdatamapper.diagram", "icons/gmf/black.jpg");
+					"org.wso2.developerstudio.visualdatamapper.diagram", "icons/gmf/blueArrow.png");
 
 			int nodeDimension = 10; // width for connection nodes
 
 			ImageFigure mainImg = new ImageFigure(mainImgDesc.createImage());
 			mainImg.setSize(new Dimension(nodeDimension, nodeDimension));
 			RectangleFigure mainImageRectangle = new RectangleFigure();
-
+			mainImageRectangle.setOutline(false);
 			mainImageRectangle.setBackgroundColor(new Color(null, 255, 255, 255));
 			mainImageRectangle.setPreferredSize(new Dimension(nodeDimension, nodeDimension));
 			mainImageRectangle.add(mainImg);
-			mainImageRectangle.setBackgroundColor(new Color(null, 0, 0, 0));
-			mainImageRectangle.setOpaque(false);
+
+			mainImageRectangle.setFill(false);
+			mainImageRectangle.setOutline(false);
 			this.add(mainImageRectangle);
 			this.setOpaque(false);
-			this.setFill(false);
 			this.setOutline(false);
-
+			this.setFill(false);
 		}
+		
 		public void highlightElementOnSelection() {
 			ImageDescriptor mainImgDesc = AbstractUIPlugin.imageDescriptorFromPlugin(
 					"org.wso2.developerstudio.visualdatamapper.diagram", "icons/gmf/black-coloured.jpg");

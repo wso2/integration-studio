@@ -481,6 +481,8 @@ public class DataMapperDiagramModel {
             return SchemaDataType.DOUBLE;
         case "integer":
             return SchemaDataType.INT;
+        case "null":
+            return SchemaDataType.NULL;
         default:
             throw new IllegalArgumentException("Illegal schema data type found : " + type);
         }

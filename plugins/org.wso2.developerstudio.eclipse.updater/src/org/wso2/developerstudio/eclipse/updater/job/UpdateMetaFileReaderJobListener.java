@@ -38,9 +38,6 @@ public class UpdateMetaFileReaderJobListener extends JobChangeAdapter {
 	private static final String UPDATER_DIALOG_TITLE = Messages.UpdatemetaFileReaderJobListener_1;
 	protected static final String YES = "Yes";
 	protected static final String NO = "No";
-	protected static final String DAILY = "Daily";
-	protected static final String WEEKLY = "Weekly";
-	protected static final String MONTHLY = "Monthly";
 	private static org.wso2.developerstudio.eclipse.updater.job.UpdateMetaFileReaderJob UpdateMetaFileReaderJob;
 
 	protected static IDeveloperStudioLog log = Logger.getLog(UpdaterPlugin.PLUGIN_ID);

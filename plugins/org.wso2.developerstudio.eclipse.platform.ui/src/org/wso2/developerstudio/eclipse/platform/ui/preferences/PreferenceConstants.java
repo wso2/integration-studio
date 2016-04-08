@@ -59,23 +59,23 @@ public class PreferenceConstants {
 	public static final String ELEVENPM = "23:00";
 
 	
-	public static final String UPDATE_DATE_INTERVAL = "UPDATE_INTAVAL";
-	public static final String UPDATE_TIME_INTERVAL = "UPDATE_TIME_INTAVAL";
+	public static final String UPDATE_DATE_INTERVAL = "UPDATE_INTAVAL_DATE";
+	public static final String UPDATE_TIME_INTERVAL = "UPDATE_INTAVAL_TIME";
 	public static final String AUTOMATIC_UPDATE_STATUS = "AUTOMATIC_UPATE_STATUS";
-	public static final String ENABLE_AUTOMATIC_UPDATES = "ENABLE_AUTOMATIC_UPDATES";
+	public static final String ENABLE_AUTOMATIC_UPDATES = "ENABLING_DEVSTUDIO_AUTOMATIC_UPDATES";
 
 	public static final String DOWNLOAD_UPDATES = "&Install available updates automatically";
 	public static final String NOTIFY_ME_IF_UPDATES_AVAILABLE = "&Notify me when updates are available";
-	public static final String UPDATE_NOTIFICATION_CONFIGURATION = "UPDATE_NOTIFICATION_CONFIGURATION";
+	public static final String UPDATE_NOTIFICATION_CONFIGURATION = "UPDATE_INSTALLATION_PROCESS_CONFIGURATION";
 	public static final String INSTALL_AUTOMATICALLY = "AUTOMATIC";
 	public static final String NOTIFY_ME = "NOTIFY_ME";
 	
 	public static final String RUN_ON_STARTUP = "&Check for Updates every time eclipse starts up";
 	public static final String SCHEDULE_UPDATER = "&Check for Updates at the configured time";
-	public static final String UPDATE_RUNNING_CONFIGURATION = "UPDATE_RUNNING_CONFIGURATION";
+	public static final String UPDATE_RUNNING_CONFIGURATION = "UPDATE_INSTALLATION_CONFIGURATION";
 	public static final String STARTUP = "STARTUP";
 	public static final String SCHEDULE = "SCHEDULE";
 
-	public static final String RELESE_SITE_URL = "RELESE_SITE_URL";
+	public static final String RELESE_SITE_URL = "RELEASE_SITE_URL";
 	public static final String UPDATE_SITE_URL = "UPDATE_SITE_URL";
 }

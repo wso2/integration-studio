@@ -46,9 +46,13 @@ public class UpdateCheckerPreferencePage extends FieldEditorPreferencePage imple
 	private RadioGroupFieldEditor updateInstallationRadioBttn;
 	private RadioGroupFieldEditor updateSchedulingRadioBttn;
 
+	public UpdateCheckerPreferencePage() {
+		super(GRID);
+	}
+
 	@Override
-	public void init(IWorkbench workbench) {
-		preferenceStore = WorkbenchToolkit.getPrefernaceStore();
+	public void init(IWorkbench arg) {
+		preferenceStore = WorkbenchToolkit.getPreferenceStore();
 		setPreferenceStore(preferenceStore);
 		setDescription("Set Preferences for WSO2 Developer Studio Updates and Install Process ");
 		setPreferenceDefaults(preferenceStore);
@@ -60,23 +64,28 @@ public class UpdateCheckerPreferencePage extends FieldEditorPreferencePage imple
 		preferenceStore.setDefault(PreferenceConstants.UPDATE_RUNNING_CONFIGURATION, PreferenceConstants.STARTUP);
 		preferenceStore.setDefault(PreferenceConstants.UPDATE_DATE_INTERVAL, PreferenceConstants.DEFAULT_SUNDAY);
 		preferenceStore.setDefault(PreferenceConstants.UPDATE_TIME_INTERVAL, PreferenceConstants.DEFAULT_EIGHT_AM);
+		preferenceStore.setDefault(PreferenceConstants.UPDATE_NOTIFICATION_CONFIGURATION,
+				PreferenceConstants.NOTIFY_ME);
 		preferenceStore.setDefault(PreferenceConstants.ENABLE_AUTOMATIC_UPDATES, true);
 	}
 
 	@Override
 	protected void createFieldEditors() {
+		
+		
 		fieldEditorParent = getFieldEditorParent();
 		boolean isSchedulingEnabled = false;
-		BooleanFieldEditor enableAutomaticUpdates = new BooleanFieldEditor(PreferenceConstants.ENABLE_AUTOMATIC_UPDATES,
-				"Check for updates Automatically", fieldEditorParent);
-		addField(enableAutomaticUpdates);
-		boolean isUpdatesEnabled = preferenceStore.getBoolean(PreferenceConstants.ENABLE_AUTOMATIC_UPDATES);
 		addBlankSeparator(fieldEditorParent);
 		setSeparator(fieldEditorParent);
+		addField(new BooleanFieldEditor(PreferenceConstants.ENABLE_AUTOMATIC_UPDATES, "Check for updates Automatically",
+				fieldEditorParent));
+		setSeparator(fieldEditorParent);
+
+		boolean isUpdatesEnabled = preferenceStore.getBoolean(PreferenceConstants.ENABLE_AUTOMATIC_UPDATES);
 
 		enableDisableSet = new Composite(fieldEditorParent, SWT.LEFT);
-		addBlankSeparator(enableDisableSet);
 
+		addBlankSeparator(enableDisableSet);
 		updateSchedulingRadioBttn = new RadioGroupFieldEditor(PreferenceConstants.UPDATE_RUNNING_CONFIGURATION,
 				"Automatic Updates Scheduling", 1,
 				new String[][] { { PreferenceConstants.RUN_ON_STARTUP, PreferenceConstants.STARTUP },
@@ -90,7 +99,7 @@ public class UpdateCheckerPreferencePage extends FieldEditorPreferencePage imple
 			isSchedulingEnabled = true;
 		}
 
-		String[][] intervals = { { PreferenceConstants.DAILY, PreferenceConstants.DAILY },
+		String[][] dayIntervals = { { PreferenceConstants.DAILY, PreferenceConstants.DAILY },
 				{ PreferenceConstants.DEFAULT_SUNDAY, PreferenceConstants.DEFAULT_SUNDAY },
 				{ PreferenceConstants.EVERY_MONDAY, PreferenceConstants.EVERY_MONDAY },
 				{ PreferenceConstants.EVERY_TUESDAY, PreferenceConstants.EVERY_TUESDAY },
@@ -99,7 +108,7 @@ public class UpdateCheckerPreferencePage extends FieldEditorPreferencePage imple
 				{ PreferenceConstants.EVERY_FRIDAY, PreferenceConstants.EVERY_FRIDAY },
 				{ PreferenceConstants.EVERY_SATURDAY, PreferenceConstants.EVERY_SATURDAY } };
 		intervalDayEditor = new ComboFieldEditor(PreferenceConstants.UPDATE_DATE_INTERVAL, "Check for updates ",
-				intervals, enableDisableSet);
+				dayIntervals, enableDisableSet);
 		addField(intervalDayEditor);
 		intervalDayEditor.setEnabled(isUpdatesEnabled && isSchedulingEnabled, enableDisableSet);
 
@@ -127,15 +136,15 @@ public class UpdateCheckerPreferencePage extends FieldEditorPreferencePage imple
 				{ PreferenceConstants.NINEPM, PreferenceConstants.NINEPM },
 				{ PreferenceConstants.TENPM, PreferenceConstants.TENPM },
 				{ PreferenceConstants.ELEVENPM, PreferenceConstants.ELEVENPM } };
-		intervalTimeEditor = new ComboFieldEditor(PreferenceConstants.UPDATE_TIME_INTERVAL, "", timeIntervals,
+		intervalTimeEditor = new ComboFieldEditor(PreferenceConstants.UPDATE_TIME_INTERVAL, "at", timeIntervals,
 				enableDisableSet);
-		intervalTimeEditor.setEnabled(isUpdatesEnabled && isSchedulingEnabled, enableDisableSet);
 		addField(intervalTimeEditor);
+		intervalTimeEditor.setEnabled(isUpdatesEnabled && isSchedulingEnabled, enableDisableSet);
 
 		setSeparator(enableDisableSet);
 		addBlankSeparator(enableDisableSet);
 		updateInstallationRadioBttn = new RadioGroupFieldEditor(PreferenceConstants.UPDATE_NOTIFICATION_CONFIGURATION,
-				"Specify Update Schedule", 1,
+				"Specify Installation Preference", 1,
 				new String[][] { { PreferenceConstants.NOTIFY_ME_IF_UPDATES_AVAILABLE, PreferenceConstants.NOTIFY_ME },
 						{ PreferenceConstants.DOWNLOAD_UPDATES, PreferenceConstants.INSTALL_AUTOMATICALLY } },
 				enableDisableSet);
@@ -165,6 +174,7 @@ public class UpdateCheckerPreferencePage extends FieldEditorPreferencePage imple
 		label.setLayoutData(new GridData(SWT.FILL, SWT.TOP, false, false, 3, 1));
 	}
 
+	@Override
 	public void propertyChange(PropertyChangeEvent event) {
 		FieldEditor fe = (FieldEditor) event.getSource();
 		if (PreferenceConstants.ENABLE_AUTOMATIC_UPDATES.equals(fe.getPreferenceName())) {
@@ -190,13 +200,10 @@ public class UpdateCheckerPreferencePage extends FieldEditorPreferencePage imple
 			}
 			intervalDayEditor.setEnabled(isScheduler, enableDisableSet);
 			intervalTimeEditor.setEnabled(isScheduler, enableDisableSet);
-		}
-		setPreferenceDefaults(preferenceStore);
-		super.propertyChange(event);
-	}
+		} else if (PreferenceConstants.UPDATE_DATE_INTERVAL.equals(fe.getPreferenceName())) {
 
-	public static void setAutomaticUpdatePreference(String value) {
-		preferenceStore.setDefault(PreferenceConstants.ENABLE_AUTOMATIC_UPDATES, value);
+		}
+		super.propertyChange(event);
 	}
 
 }

@@ -22,7 +22,7 @@ import org.eclipse.ui.PlatformUI;
 
 public class WorkbenchToolkit {
 	
-	public static IPreferenceStore getPrefernaceStore(){
+	public static IPreferenceStore getPreferenceStore(){
 		IPreferenceStore preferenceStore = PlatformUI.getPreferenceStore();
 		return preferenceStore;
 	}

@@ -91,6 +91,7 @@ public class UpdateMetaFileReaderJob extends Job {
 			downloadMetaFile();
 			Map<String, String> availaleDevStudioFeatureVerions = new HashMap<String, String>();
 			availaleDevStudioFeatureVerions = readMetaDataFiletoMap();
+			deleteDownloadedTempFile();
 			if (availaleDevStudioFeatureVerions.isEmpty()) {
 				log.error(Messages.UpdateCheckerJob_4);
 				promptUserError(Messages.UpdateMetaFileReaderJob_3, ERROR_TITLE);
@@ -126,6 +127,17 @@ public class UpdateMetaFileReaderJob extends Job {
 		}
 		return Status.CANCEL_STATUS;// if no exceptions and no updates to be
 									// installed return cancel
+	}
+
+	private void deleteDownloadedTempFile() {
+		File downloadedMetaFile =  new File(fileLoc);
+		File downloadedFolderLoc = new File(folderLoc);
+		if (downloadedMetaFile.exists()) {
+			downloadedMetaFile.delete();
+			if (downloadedFolderLoc.exists()) {
+				downloadedFolderLoc.delete();
+			}
+		}
 	}
 
 	/**

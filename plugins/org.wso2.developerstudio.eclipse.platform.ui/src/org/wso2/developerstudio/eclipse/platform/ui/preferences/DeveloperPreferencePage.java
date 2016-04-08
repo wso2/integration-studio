@@ -23,6 +23,7 @@ import org.eclipse.jface.preference.StringFieldEditor;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPreferencePage;
 import org.eclipse.ui.PlatformUI;
+import org.wso2.developerstudio.eclipse.platform.ui.WorkbenchToolkit;
 
 public class DeveloperPreferencePage extends FieldEditorPreferencePage implements IWorkbenchPreferencePage {
 
@@ -47,7 +48,7 @@ public class DeveloperPreferencePage extends FieldEditorPreferencePage implement
 
     @Override
     public void init(IWorkbench arg0) {
-            preferenceStore = PlatformUI.getPreferenceStore();
+            preferenceStore = WorkbenchToolkit.getPreferenceStore();
             setPreferenceStore(preferenceStore);
         	preferenceStore.setDefault(PLUGIN_TEMPLATE_URL, PreferenceInitializer.KERNEL_SAMPLES_GIT);
         	preferenceStore.setDefault(SHOW_HIDDEN_FEATURES, false);

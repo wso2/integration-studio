@@ -76,8 +76,8 @@
                             <artifactItems>
                                 <artifactItem>
                                     <groupId>org.eclipse</groupId>
-                                    <artifactId>eclipse-jee-luna-win32</artifactId>
-                                    <version>4.4.2</version>
+                                    <artifactId>eclipse-jee-mars-win32</artifactId>
+                                    <version>4.5.2</version>
                                     <type>zip</type>
                                     <overWrite>true</overWrite>
                                     <outputDirectory>target</outputDirectory>

@@ -35,13 +35,13 @@ public class UpdateMetaFileReaderJobListener extends JobChangeAdapter {
 
 	private static final int USER_SCHEDULED_AUTOMATIC_INSTALL = 15;
 	private static final String SET_LATER = "Not Now";
-	private static final String UPDATER_DIALOG_MESSAGE = Messages.UpdatemetaFileReaderJobListener_1;
-	private static final String TITLE = "There are updates for developer studio features you have installed. It is recommended to install these updates. Do you want to install now ?";
+	private static final String UPDATER_DIALOG_TITLE = Messages.UpdatemetaFileReaderJobListener_1;
 	protected static final String YES = "Yes";
 	protected static final String NO = "No";
 	protected static final String DAILY = "Daily";
 	protected static final String WEEKLY = "Weekly";
 	protected static final String MONTHLY = "Monthly";
+	private static org.wso2.developerstudio.eclipse.updater.job.UpdateMetaFileReaderJob UpdateMetaFileReaderJob;
 
 	protected static IDeveloperStudioLog log = Logger.getLog(UpdaterPlugin.PLUGIN_ID);
 
@@ -59,15 +59,21 @@ public class UpdateMetaFileReaderJobListener extends JobChangeAdapter {
 
 	@Override
 	public void done(IJobChangeEvent event) {
+
 		if (event.getResult().isOK()) {
+			UpdateMetaFileReaderJob = ((UpdateMetaFileReaderJob) event.getJob());
+			final int count = UpdateMetaFileReaderJob.getUpdateCount();
 			Display.getDefault().syncExec(new Runnable() {
 				@Override
 				public void run() {
 					try {
-						int userPref = getUserPreference(TITLE, UPDATER_DIALOG_MESSAGE);
+						String displayMsg = "There are " + String.valueOf(count)
+								+ " update(s) for developer studio features you have installed. It is recommended to install these updates. Do you want to install now ?";
+						int userPref = getUserPreference(UPDATER_DIALOG_TITLE, displayMsg);
 						if (userPref == 0 || userPref == USER_SCHEDULED_AUTOMATIC_INSTALL) {
 							executeUpdateJob();
 						}
+
 					} catch (Exception e) {
 						log.error(Messages.UpdatemetaFileReaderJobListener_0, e);
 					}
@@ -83,7 +89,7 @@ public class UpdateMetaFileReaderJobListener extends JobChangeAdapter {
 		}
 	}
 
-	public static int getUserPreference(String message, String title) {
+	public static int getUserPreference(String title, String message) {
 		// Display activeDisplay = Display.getDefault();
 		String userChoice = prefPage.getString(PreferenceConstants.UPDATE_NOTIFICATION_CONFIGURATION);
 		if (userChoice == null || userChoice.isEmpty()) {

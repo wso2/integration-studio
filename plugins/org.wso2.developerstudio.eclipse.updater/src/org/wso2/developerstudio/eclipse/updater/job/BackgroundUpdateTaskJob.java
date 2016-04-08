@@ -16,7 +16,6 @@
 
 package org.wso2.developerstudio.eclipse.updater.job;
 
-
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
@@ -25,6 +24,14 @@ import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.eclipse.platform.ui.preferences.PreferenceConstants;
 
+/**
+ * This is the background job that runs on the scheduled time by user to execute
+ * the automatic updates.
+ * 
+ * once run, it will self reschedule it to run again in a day or a week
+ * depending on user specification
+ *
+ */
 public class BackgroundUpdateTaskJob extends Job {
 	private boolean running = true;
 	protected long repeatDayDelay = 86400000;
@@ -37,15 +44,15 @@ public class BackgroundUpdateTaskJob extends Job {
 
 	protected IStatus run(IProgressMonitor monitor) {
 		/**
-		 * If the updater is scheduled daily schedule the next run in a day
-		 * if not schedule the next run in a week.
+		 * If the updater is scheduled daily schedule the next run in a day if
+		 * not schedule the next run in a week.
 		 */
-		 IPreferenceStore prefPage = PlatformUI.getPreferenceStore();
-			String updateIntervalDay = prefPage.getString(PreferenceConstants.UPDATE_DATE_INTERVAL);
-			if (updateIntervalDay == null || updateIntervalDay.isEmpty()) {
-				updateIntervalDay = PreferenceConstants.DEFAULT_SUNDAY;
-			}
-		if (! updateIntervalDay.equals(PreferenceConstants.DAILY)) {
+		IPreferenceStore prefPage = PlatformUI.getPreferenceStore();
+		String updateIntervalDay = prefPage.getString(PreferenceConstants.UPDATE_DATE_INTERVAL);
+		if (updateIntervalDay == null || updateIntervalDay.isEmpty()) {
+			updateIntervalDay = PreferenceConstants.DEFAULT_SUNDAY;
+		}
+		if (!updateIntervalDay.equals(PreferenceConstants.DAILY)) {
 			repeatTime = repeatWeekDelay;
 		}
 		schedule(repeatTime);

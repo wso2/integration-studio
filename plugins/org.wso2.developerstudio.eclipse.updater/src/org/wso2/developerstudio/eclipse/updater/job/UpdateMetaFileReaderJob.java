@@ -62,13 +62,15 @@ public class UpdateMetaFileReaderJob extends Job {
 	public static final String fileLoc = folderLoc + File.separator + UPDATES_TXT_FILE;
 	private static final int TIME_OUT_MS = 1000;
 	protected UpdateManager updateManager;
-	public static int updateCount = 0;
+	public int updateCount = 0;
 
-	public static void setUpdateCount(int updateCount) {
-		UpdateMetaFileReaderJob.updateCount = updateCount;
-	}
-
-	public static int getUpdateCount() {
+	/**
+	 * returns the updateCount when accessed in the job listener Used to update
+	 * the UI thread to display the number of available updates to the user
+	 * 
+	 * @return updateCount
+	 */
+	public int getUpdateCount() {
 		return updateCount;
 	}
 
@@ -91,6 +93,7 @@ public class UpdateMetaFileReaderJob extends Job {
 			availaleDevStudioFeatureVerions = readMetaDataFiletoMap();
 			if (availaleDevStudioFeatureVerions.isEmpty()) {
 				log.error(Messages.UpdateCheckerJob_4);
+				promptUserError(Messages.UpdateMetaFileReaderJob_3, ERROR_TITLE);
 				return Status.CANCEL_STATUS;
 			}
 			for (IInstallableUnit iInstallableUnit : installedWSO2Features) {
@@ -100,7 +103,6 @@ public class UpdateMetaFileReaderJob extends Job {
 					if (availableVersion != null
 							&& availableVersion.compareTo(iInstallableUnit.getVersion()) == AVAILABLE_VERSION_GREATER) {
 						updateCount = updateCount + 1;
-						setUpdateCount(updateCount);
 					} else if (availableVersion == null) {
 						log.error(Messages.UpdateCheckerJob_4);
 						promptUserError(ERROR_MESSAGE, ERROR_TITLE);

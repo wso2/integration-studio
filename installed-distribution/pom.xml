@@ -4,7 +4,7 @@
     <parent>
         <artifactId>wso2-developerstudio-esb-toolkit</artifactId>
         <groupId>org.wso2.developerstudio</groupId>
-        <version>4.0.0-SNAPSHOT</version>
+        <version>4.1.0-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
@@ -52,11 +52,11 @@
         </dependencies>
     </dependencyManagement>    
     <modules>
-        <module>developer-studio-esb-eclipse-jee-luna-linux-gtk</module>
-        <module>developer-studio-esb-eclipse-jee-luna-linux-gtk-x86_64</module>
-        <module>developer-studio-esb-eclipse-jee-luna-macosx-cocoa</module>
-        <module>developer-studio-esb-eclipse-jee-luna-macosx-cocoa-x86_64</module>
-        <module>developer-studio-esb-eclipse-jee-luna-win32</module>
-        <module>developer-studio-esb-eclipse-jee-luna-win64-x86_64</module>
+        <module>developer-studio-esb-eclipse-jee-mars-linux-gtk</module>
+        <module>developer-studio-esb-eclipse-jee-mars-linux-gtk-x86_64</module>
+        <module>developer-studio-esb-eclipse-jee-mars-macosx-cocoa</module>
+        <module>developer-studio-esb-eclipse-jee-mars-macosx-cocoa-x86_64</module>
+        <module>developer-studio-esb-eclipse-jee-mars-win32</module>
+        <module>developer-studio-esb-eclipse-jee-mars-win64-x86_64</module>
     </modules>        
 </project>

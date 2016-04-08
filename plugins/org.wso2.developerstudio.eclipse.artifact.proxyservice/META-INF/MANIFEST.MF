@@ -2,13 +2,13 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Proxy Service
 Bundle-SymbolicName: org.wso2.developerstudio.eclipse.artifact.proxyservice;singleton:=true
-Bundle-Version: 4.0.0.qualifier
+Bundle-Version: 4.1.0.qualifier
 Bundle-Activator: org.wso2.developerstudio.eclipse.artifact.proxyservice.Activator
 Require-Bundle: org.wso2.developerstudio.eclipse.gmf.esb,
  org.wso2.developerstudio.eclipse.platform.core,
  org.wso2.developerstudio.eclipse.platform.ui,
  org.wso2.developerstudio.eclipse.kernel.libraries;bundle-version="4.1.0",
- org.wso2.developerstudio.eclipse.esb.libraries;bundle-version="4.0.0"
+ org.wso2.developerstudio.eclipse.esb.libraries;bundle-version="4.1.0"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Import-Package: org.wso2.developerstudio.eclipse.esb.core,

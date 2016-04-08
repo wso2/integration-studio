@@ -21,7 +21,7 @@
     <parent>
         <groupId>org.wso2.developerstudio</groupId>
          <artifactId>wso2-developer-studio-eclipse-esb-installed-distributions</artifactId>
-        <version>4.0.0-SNAPSHOT</version>
+        <version>4.1.0-SNAPSHOT</version>
 	<relativePath>../pom.xml</relativePath>
     </parent>
     <groupId>org.wso2.developerstudio</groupId>
@@ -43,7 +43,7 @@
                 <checksumPolicy>ignore</checksumPolicy>
             </releases>
             <id>DevS-Deps-p2-alpha-Repository</id>
-            <url>http://builder1.us1.wso2.org/~developerstudio/developer-studio-kernel/4.0.0/kernel/releases/</url>
+            <url>http://builder1.us1.wso2.org/~developerstudio/developer-studio-kernel/4.1.0/kernel/releases/</url>
             <layout>p2</layout>
         </repository>
     </repositories>
@@ -76,8 +76,8 @@
                             <artifactItems>
                                 <artifactItem>
                                     <groupId>org.eclipse</groupId>
-                                    <artifactId>eclipse-jee-luna-win64-x86_64</artifactId>
-                                    <version>4.4.2</version>
+                                    <artifactId>eclipse-jee-mars-win64-x86_64</artifactId>
+                                    <version>4.5.2</version>
                                     <type>zip</type>
                                     <overWrite>true</overWrite>
                                     <outputDirectory>target</outputDirectory>
@@ -85,7 +85,7 @@
                                 <artifactItem>
                                     <groupId>org.wso2.developerstudio</groupId>
                                     <artifactId>wso2-developer-studio-kernel-esb-composite-p2</artifactId>
-				    <version>4.0.0-SNAPSHOT</version>
+				    <version>4.1.0-SNAPSHOT</version>
                                     <type>zip</type>
                                     <overWrite>true</overWrite>
                                     <outputDirectory>target/p2-repo</outputDirectory>

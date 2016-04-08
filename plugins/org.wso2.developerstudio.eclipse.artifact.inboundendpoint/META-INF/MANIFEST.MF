@@ -2,12 +2,12 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Inboundendpoint
 Bundle-SymbolicName: org.wso2.developerstudio.eclipse.artifact.inboundendpoint;singleton:=true
-Bundle-Version: 4.0.0.qualifier
+Bundle-Version: 4.1.0.qualifier
 Bundle-Activator: org.wso2.developerstudio.eclipse.artifact.inboundendpoint.Activator
 Require-Bundle: org.wso2.developerstudio.eclipse.kernel.libraries;bundle-version="4.1.0",
  org.wso2.developerstudio.eclipse.platform.core;bundle-version="4.1.0",
  org.wso2.developerstudio.eclipse.platform.ui;bundle-version="4.1.0",
- org.wso2.developerstudio.eclipse.esb.libraries;bundle-version="4.0.0"
+ org.wso2.developerstudio.eclipse.esb.libraries;bundle-version="4.1.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Import-Package: org.wso2.developerstudio.eclipse.esb.core,
  org.wso2.developerstudio.eclipse.esb.core.configuration.impl,

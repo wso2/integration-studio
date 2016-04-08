@@ -11,10 +11,11 @@
         <page id="org.wso2.developerstudio.eclipse.ui.developerstudio.preferences" name="Developer Studio"
               class="org.wso2.developerstudio.eclipse.platform.ui.preferences.DeveloperStudioPreferencePage">
         </page>
-        <page id="org.wso2.developerstudio.eclipse.ui.developerstudio.preferences.client.trust.store"
+        <!--Removing the option to set client trust store via preferences as this is not working with platform-->
+        <!--page id="org.wso2.developerstudio.eclipse.ui.developerstudio.preferences.client.trust.store"
               name="SSL Client Trust Store"
               class="org.wso2.developerstudio.eclipse.platform.ui.preferences.ClientTrustStorePreferencePage"
-              category="org.wso2.developerstudio.eclipse.ui.developerstudio.preferences"/>
+              category="org.wso2.developerstudio.eclipse.ui.developerstudio.preferences"/-->
         <page id="org.wso2.developerstudio.eclipse.ui.developerstudio.preferences.parent.maven" name="Maven Information"
               class="org.wso2.developerstudio.eclipse.platform.ui.preferences.MavenInfoPreferencePage"
               category="org.wso2.developerstudio.eclipse.ui.developerstudio.preferences"/>

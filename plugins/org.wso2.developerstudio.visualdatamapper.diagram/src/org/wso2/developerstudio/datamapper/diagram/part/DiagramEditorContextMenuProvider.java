@@ -227,7 +227,7 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
 											.get(selectedEditorPart.getClass());
 									if (selectedEditorPart.getChildren().isEmpty()) {
 										if (null != addNewRootRecordContextAction) {
-											menu.appendToGroup(EDIT_GROUP_ID, addNewRootRecordContextAction);
+											//menu.appendToGroup(EDIT_GROUP_ID, addNewRootRecordContextAction);
 										}
 									}
 									
@@ -237,42 +237,42 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
 									AbstractActionHandler addNewRecordContextAction = addNewObjectContextActions
 											.get(selectedEditorPart.getClass());
 									if (null != addNewRecordContextAction) {
-										menu.appendToGroup(EDIT_GROUP_ID, addNewRecordContextAction);
+										//menu.appendToGroup(EDIT_GROUP_ID, addNewRecordContextAction);
 									}
 
 									// Append new records list item to menu
 									AbstractActionHandler addNewRecordsListContextAction = addNewArrayContextActions
 											.get(selectedEditorPart.getClass());
 									if (null != addNewRecordsListContextAction) {
-										menu.appendToGroup(EDIT_GROUP_ID, addNewRecordsListContextAction);
+										//menu.appendToGroup(EDIT_GROUP_ID, addNewRecordsListContextAction);
 									}
 
 									// Append new field item to menu
 									AbstractActionHandler addNewFieldContextAction = addNewFieldContextActions
 											.get(selectedEditorPart.getClass());
 									if (null != addNewFieldContextAction) {
-										menu.appendToGroup(EDIT_GROUP_ID, addNewFieldContextAction);
+										//menu.appendToGroup(EDIT_GROUP_ID, addNewFieldContextAction);
 									}
 
 									// Append new field item to menu
 									AbstractActionHandler addNewAttributeContextAction = addNewAttributeContextActions
 											.get(selectedEditorPart.getClass());
 									if (null != addNewAttributeContextAction) {
-										menu.appendToGroup(EDIT_GROUP_ID, addNewAttributeContextAction);
+										//menu.appendToGroup(EDIT_GROUP_ID, addNewAttributeContextAction);
 									}
 
 									// Append edit field item to menu
 									AbstractActionHandler addEditFieldAction = addEditNodeActions
 											.get(selectedEditorPart.getClass());
 									if (null != addEditFieldAction) {
-										menu.appendToGroup(EDIT_GROUP_ID, addEditFieldAction);
+										//menu.appendToGroup(EDIT_GROUP_ID, addEditFieldAction);
 									}
 
 									// Append edit field item to menu
 									AbstractActionHandler addEditAttributeAction = addEditAttributeActions
 											.get(selectedEditorPart.getClass());
 									if (null != addEditAttributeAction) {
-										menu.appendToGroup(EDIT_GROUP_ID, addEditAttributeAction);
+										//menu.appendToGroup(EDIT_GROUP_ID, addEditAttributeAction);
 									}
 
 									// Append load from file item to menu

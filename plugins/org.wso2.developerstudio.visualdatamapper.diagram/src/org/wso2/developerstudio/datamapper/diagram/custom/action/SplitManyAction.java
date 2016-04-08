@@ -59,16 +59,11 @@ public class SplitManyAction extends AbstractActionHandler {
 	 */
 	protected void doRun(IProgressMonitor progressMonitor) {
 		EditPart selectedEP = getSelectedEditPart();
-		
 		EObject selectedObj = ((View) selectedEP.getModel()).getElement();
-		
-
-		Display display = Display.getDefault();
-		Shell shell = new Shell(display);		
-		Dialog configureConcat = new ConfigureSplitOperatorDialog(shell, (Split) selectedObj, getEditingDomain(), selectedEP);
+		Dialog configureConcat = new ConfigureSplitOperatorDialog(Display.getDefault().getActiveShell(),
+				(Split) selectedObj, getEditingDomain(), selectedEP);
 		configureConcat.setBlockOnOpen(true);
 		configureConcat.open();
-		
 	}
 
 

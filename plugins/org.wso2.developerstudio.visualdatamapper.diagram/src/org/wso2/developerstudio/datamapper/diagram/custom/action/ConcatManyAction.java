@@ -61,16 +61,11 @@ public class ConcatManyAction extends AbstractActionHandler {
 	 */
 	protected void doRun(IProgressMonitor progressMonitor) {
 		EditPart selectedEP = getSelectedEditPart();
-
 		EObject selectedObj = ((View) selectedEP.getModel()).getElement();
-
-		Display display = Display.getDefault();
-		Shell shell = new Shell(display);
-		Dialog configureConcat = new ConfigureConcatOperatorDialog(shell,
+		Dialog configureConcat = new ConfigureConcatOperatorDialog(Display.getDefault().getActiveShell(),
 				(Concat) selectedObj, getEditingDomain(), selectedEP);
 		configureConcat.setBlockOnOpen(true);
 		configureConcat.open();
-
 	}
 
 	@Override

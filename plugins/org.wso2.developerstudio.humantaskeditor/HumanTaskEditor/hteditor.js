@@ -69,7 +69,7 @@ function createFile(currentTaskName,state) { //createFile
             saveWSDL(wsdlDom, currentTaskName + "Task"); 
 
         } catch (err) {
-            alert("WSDL Error " + err);
+            handleError("WSDL Error " + err);
         }
 
     });
@@ -82,7 +82,7 @@ function createFile(currentTaskName,state) { //createFile
             // generateUI();
           
         } catch (err) {
-            alert("Callback WSDL Error " + err);
+            handleError("Callback WSDL Error " + err);
         }
 
     });
@@ -98,7 +98,7 @@ function createFile(currentTaskName,state) { //createFile
                 generateTasks();
             }
         } catch (err) {
-            alert("HTConfig file Error " + err);
+            handleError("HTConfig file Error " + err);
         }
 
     });
@@ -108,7 +108,7 @@ function readCBWSDL(currentTaskName) { //createFile
     try {
         cbWsdl = ExecuteCustomFunction("getWSDL", currentTaskName);
     } catch (err) {
-        alert('Error Reading CallBack WSDL');
+        handleError('Error Reading CallBack WSDL');
     }
     return marshalEditorTextContent(cbWsdl);
 }
@@ -133,7 +133,7 @@ function addTask() { //createFile
             //generateUI();
 
         } catch (err) {
-            alert("Error Adding New Task \n" + err);
+            handleError("Error Adding New Task \n" + err);
         }
 
     });
@@ -168,7 +168,7 @@ function addInitalTask() { //createFile
             $("#page-content-wrapper").tabs();
             $("#page-content-wrapper").tabs("refresh");
         } catch (err) {
-            alert("Error initializing Tasks \n" + err);
+            handleError("Error initializing Tasks \n" + err);
         }
 
     });
@@ -194,7 +194,7 @@ function saveSource() {
         var text = new XMLSerializer().serializeToString((xmlDom));
         ExecuteCustomFunction("settext", text);
     } catch (err) {
-        alert("Error Saving Source \n"+err);
+        handleError("Error Saving Source \n"+err);
     }
 
 }
@@ -212,7 +212,7 @@ function process() {
         generateUI();
 
     } catch (err) {
-        alert(err);
+        handleError(err);
     }
 }
 
@@ -221,7 +221,7 @@ function loadModel() {
         xmlDom = marshalEditorTextContent(IDEGetFileContent());
 
     } catch (err) {
-        alert("Error Loading Model \n" + err);
+        handleError("Error Loading Model \n" + err);
     }
 }
 
@@ -231,7 +231,7 @@ function loadModelWithText() {
         xmlDom = marshalEditorTextContent(contents);
 
     } catch (err) {
-        alert("Error Loading Model with text \n" + err);
+        handleError("Error Loading Model with text \n" + err);
     }
 }
 
@@ -261,7 +261,7 @@ function generateTasks() {
  */
 function generateUI() {
     if (xmlDom.childNodes.length == 1 && xmlDom.childNodes[0].nodeValue == null) {
-        alert("XML couldnt be parsed");
+        handleError("XML couldnt be parsed");
         $('body').hide();
     } else {
         $('body').show();
@@ -332,7 +332,7 @@ function generateTaskDiv(taskNode) {
     });
 
     i = parseInt($('#nooftasks').val());
-    //alert(i);
+    //handleError(i);
     i++;
     $('#nooftasks').val(i);
     $('#' + taskDivName + ' input:radio').each(function() {
@@ -440,7 +440,7 @@ function generateTaskDiv(taskNode) {
                         .val(outputmappingNo);
 
                 } catch (err) {
-                    alert(err);
+                    handleError(err);
                 }
                 makeDirty();
                 generateText(taskNode);
@@ -494,13 +494,13 @@ function generateTaskDiv(taskNode) {
                                 generateTaskDiv(taskNode);
 
                             } catch (err) {
-                                alert(err);
+                                handleError(err);
                             }
                         });
                 mappingNo++;
                 $('#' + taskDivName + " #taskMappingNo").val(mappingNo);
             } catch (err) {
-                alert(err);
+                handleError(err);
             }
         }
 
@@ -552,18 +552,18 @@ function generateTaskDiv(taskNode) {
                                 generateTaskDiv(taskNode);
 
                             } catch (err) {
-                                alert(err);
+                                handleError(err);
                             }
                         });
                 outputmappingNo++;
                 $('#' + taskDivName + " #taskOutputMappingNo").val(
                     outputmappingNo);
             } catch (err) {
-                alert(err);
+                handleError(err);
             }
         }
     }
-    //alert($('#' +taskDivName + ' #taskCallbackServiceName').val());
+    //handleError($('#' +taskDivName + ' #taskCallbackServiceName').val());
     // sync other fields
     if (taskNode.getElementsByTagName("documentation").length != 0) {
         $('#' + taskDivName + " #taskDocumentation")
@@ -627,7 +627,7 @@ function generateTaskDiv(taskNode) {
         unmarshalPeopleAssignment(taskNode, "taskStakeholders");
 
     } catch (err) {
-        alert("People Assignments Couldnt be synced \n" + err);
+        handleError("People Assignments Couldnt be synced \n" + err);
     }
     $('#' + taskDivName + ' .taskDiv').show();
     bindChangeEvents();
@@ -793,7 +793,7 @@ function marshalEditorTextContent(textContent) {
         var parser = new DOMParser();
         var root = parser.parseFromString(textContent, "text/xml");
     } catch (err) {
-        alert("Marshalling Error \n" + err);
+        handleError("Marshalling Error \n" + err);
     }
     return root;
 }
@@ -803,7 +803,7 @@ function syncWSDLFields(taskName){
     try {
         wsdlRead = readCBWSDL(taskName);
     } catch (err) {
-        alert("Error Reading WSDL");
+        handleError("Error Reading WSDL");
     }
     if (typeof wsdlRead != 'undefined' || wsdlRead != 'undefined') {
         if(wsdlRead.getElementsByTagName("definitions").length!=0){
@@ -852,7 +852,7 @@ function addPeopleAssignementNode(taskNode, xmlDom, assignmentName) {
         newAssignmentNode.appendChild(newFrom);
         taskNode.getElementsByTagName("peopleAssignments")[0].appendChild(newAssignmentNode);
     } catch (err) {
-        alert(err);
+        handleError(err);
     }
 }
 
@@ -1046,4 +1046,8 @@ function removeUnwantedArtifacts() {
     });
 
     ExecuteCustomFunction.apply(this, taskNames);
+}
+
+function handleError(message) {
+    alert(message); // A functionality to log errors is requested in https://wso2.org/jira/browse/TOOLS-3366
 }

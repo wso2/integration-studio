@@ -98,7 +98,6 @@ public class ESBDebuggerInterface implements IESBDebuggerInterface {
         String commandString = messageFactory.createCommand(command);
         requestWriter.println(commandString);
         requestWriter.flush();
-        log.info("Sent command : " + commandString);
     }
 
     /**
@@ -113,7 +112,6 @@ public class ESBDebuggerInterface implements IESBDebuggerInterface {
                 log.info("NULL value read from ChannelResponceDispatcher.ESB Server shutting down.");
                 esbDebugger.fireTerminatedEvent();
             } else {
-                log.info("Event message recieved : " + eventMessage);
                 esbDebugger.notifyEvent(messageFactory.convertEventToIEventMessage(eventMessage));
             }
         } catch (Exception e) {
@@ -138,7 +136,6 @@ public class ESBDebuggerInterface implements IESBDebuggerInterface {
                 log.info("NULL value read from ChannelEventDispatcher.ESB Server shutting down.");
                 esbDebugger.fireTerminatedEvent();
             } else {
-                log.info("Response message recieved : " + responseMessage);
                 esbDebugger.notifyResponce(messageFactory.convertResponseToIResponseMessage(responseMessage));
             }
         } catch (Exception e) {
@@ -154,7 +151,6 @@ public class ESBDebuggerInterface implements IESBDebuggerInterface {
         String getPropertyCommandString = messageFactory.createGetPropertiesCommand(getPropertyCommand);
         requestWriter.println(getPropertyCommandString);
         requestWriter.flush();
-        log.info("Get properties command sent : " + getPropertyCommandString);
     }
 
     @Override
@@ -162,7 +158,6 @@ public class ESBDebuggerInterface implements IESBDebuggerInterface {
         String breakpointCommandString = messageFactory.createBreakpointCommand(debugPoint);
         requestWriter.println(breakpointCommandString);
         requestWriter.flush();
-        log.info("Breakpoint command sent : " + breakpointCommandString);
     }
 
     @Override
@@ -170,7 +165,6 @@ public class ESBDebuggerInterface implements IESBDebuggerInterface {
         String propertyChangeCommandString = messageFactory.createPropertyChangeCommand(propertyChangeCommand);
         requestWriter.println(propertyChangeCommandString);
         requestWriter.flush();
-        log.info("Property Change command sent : " + propertyChangeCommandString);
     }
 
     @Override

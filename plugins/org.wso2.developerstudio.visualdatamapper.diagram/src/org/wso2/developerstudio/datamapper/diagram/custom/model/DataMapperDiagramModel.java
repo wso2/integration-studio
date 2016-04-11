@@ -66,11 +66,15 @@ public class DataMapperDiagramModel {
     private String outputRootName;
 
     public DataMapperDiagramModel(DataMapperRoot rootDiagram) throws DataMapperException {
-        setInputAndOutputRootNames(rootDiagram);
-        populateOutputVariablesDepthFirst(rootDiagram.getOutput());
-        populateInputVariablesDepthFirst(rootDiagram.getInput());
-        resetDiagramTraversalProperties();
-        updateExecutionSequence();
+        if (!rootDiagram.getOutput().eContents().isEmpty() && !rootDiagram.getInput().eContents().isEmpty()) {
+            setInputAndOutputRootNames(rootDiagram);
+            populateOutputVariablesDepthFirst(rootDiagram.getOutput());
+            populateInputVariablesDepthFirst(rootDiagram.getInput());
+            resetDiagramTraversalProperties();
+            updateExecutionSequence();
+        } else {
+            throw new DataMapperException("Both input and output message formats needed to generate mapping");
+        }
     }
 
     private void populateInputVariablesDepthFirst(Input input) {
@@ -222,8 +226,8 @@ public class DataMapperDiagramModel {
                 for (DataMapperLink dataMapperLink : outgoingLinks) {
                     EObject linkedNode = getLinkedElement(dataMapperLink);
                     if (linkedNode instanceof TreeNodeImpl) {
-                        operationsList.add(new DMOperation(DMOperatorType.DIRECT, getUniqueDirectId(linkedNode,
-                                operationsList.size()), operationsList.size()));
+                        operationsList.add(new DMOperation(DMOperatorType.DIRECT,
+                                getUniqueDirectId(linkedNode, operationsList.size()), operationsList.size()));
                         outputAdjList.add(new ArrayList<Integer>());
                         outputAdjList.get(operationsList.size() - 1).add(((TreeNodeImpl) linkedNode).getIndex());
                         inputAdjList.add(new ArrayList<Integer>());
@@ -274,9 +278,9 @@ public class DataMapperDiagramModel {
                                     + indexOfConnector;
                             if (operatorElement.getPortVariableIndex().size() <= indexOfConnector) {
                                 int variableIndex = variablesArray.size();
-                                DMVariable tempVar = new DMVariable(variablePrefix, getUniqueDirectId(operatorElement,
-                                        indexOfConnector), DMVariableType.INTERMEDIATE, SchemaDataType.STRING,
-                                        variableIndex, index);
+                                DMVariable tempVar = new DMVariable(variablePrefix,
+                                        getUniqueDirectId(operatorElement, indexOfConnector),
+                                        DMVariableType.INTERMEDIATE, SchemaDataType.STRING, variableIndex, index);
                                 addVariableTypeToMap(tempVar.getName(), SchemaDataType.STRING);
                                 variablesArray.add(tempVar);
                                 operatorElement.getPortVariableIndex().add(variableIndex);
@@ -303,8 +307,8 @@ public class DataMapperDiagramModel {
                         } else if (sourceElement.isVisited()) {
                             int indexOfSourceRightContainer = getVaribleIndexInSourceElementWithLink(sourceElement,
                                     dataMapperLink);
-                            inputAdjList.get(operator.getIndex()).add(
-                                    sourceElement.getPortVariableIndex().get(indexOfSourceRightContainer));
+                            inputAdjList.get(operator.getIndex())
+                                    .add(sourceElement.getPortVariableIndex().get(indexOfSourceRightContainer));
                         }
                     }
                 }

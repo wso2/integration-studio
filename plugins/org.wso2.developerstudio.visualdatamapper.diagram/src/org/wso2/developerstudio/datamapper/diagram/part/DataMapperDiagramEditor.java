@@ -451,7 +451,7 @@ public class DataMapperDiagramEditor extends DiagramDocumentEditor implements IG
 				DataMapperRoot rootDiagram = (DataMapperRoot) this.getDiagram().getElement();
 				String source = DataMapperModelTransformer.getInstance().transform(rootDiagram);
 				if (source == null) {
-					log.warn("Could get source"); //$NON-NLS-1$
+					log.warn("Could not found source"); //$NON-NLS-1$
 					return;
 				}
 				is = new ByteArrayInputStream(source.getBytes());
@@ -463,6 +463,7 @@ public class DataMapperDiagramEditor extends DiagramDocumentEditor implements IG
 
 			} catch (DataMapperException e) {
 				log.warn(e.getMessage(), e);
+				popupErrorDialogBox(e);
 			} catch (Exception e) {
 				log.warn("Could not save file " + configFile + " : " + e); //$NON-NLS-1$
 				popupErrorDialogBox(e);

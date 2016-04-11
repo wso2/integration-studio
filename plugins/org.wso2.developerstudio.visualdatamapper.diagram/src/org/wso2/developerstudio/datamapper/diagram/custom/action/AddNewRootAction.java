@@ -16,6 +16,11 @@
 
 package org.wso2.developerstudio.datamapper.diagram.custom.action;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import org.apache.commons.lang.StringUtils;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.util.BasicEList;
@@ -67,6 +72,8 @@ public class AddNewRootAction extends AbstractActionHandler {
 	private static final String JSON_SCHEMA_ID = "id";
 	private static final String JSON_SCHEMA_TYPE = "type";
 	private static final String JSON_SCHEMA_NAMESPACES = "namespaces";
+	private static final String NAMESPACE_PREFIX = "prefix";
+	private static final String NAMESPACE_URL = "url";
 
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
@@ -107,7 +114,16 @@ public class AddNewRootAction extends AbstractActionHandler {
 
 					TreeNode treeNodeNew = DataMapperFactory.eINSTANCE.createTreeNode();
 					if (StringUtils.isNotEmpty(rootElementDialog.getTitle())) {
-						treeNodeNew.setName(rootElementDialog.getTitle());
+						if(StringUtils.isNotEmpty(rootElementDialog.getNamespaces())){
+						String objectNamespace = createNamespaceArray(rootElementDialog.getNamespaces());
+							//Adds the prefix to the object
+							String prefix = getNamespacePrefix(objectNamespace);
+							String newNodeName = prefix+":"+ rootElementDialog.getTitle();
+							treeNodeNew.setName(newNodeName);
+						}else{
+							treeNodeNew.setName(rootElementDialog.getTitle());
+						}
+						
 					}
 					treeNodeNew.setLevel(1);
 					if (StringUtils.isNotEmpty(rootElementDialog.getSchemaType())) {
@@ -127,8 +143,9 @@ public class AddNewRootAction extends AbstractActionHandler {
 								rootElementDialog.getRequired());
 					}
 					if (StringUtils.isNotEmpty(rootElementDialog.getNamespaces())) {
+						String namespaces = createNamespaceArray(rootElementDialog.getNamespaces());
 						setPropertyKeyValuePairforTreeNodes(treeNodeNew, propertyValueList, JSON_SCHEMA_NAMESPACES,
-								rootElementDialog.getNamespaces());
+								namespaces);
 					}
 					String selectedInputOutputEditPart = getSelectedInputOutputEditPart();
 					if (null != selectedInputOutputEditPart) {
@@ -225,6 +242,69 @@ public class AddNewRootAction extends AbstractActionHandler {
 			}
 
 		}
+	}
+
+	/**
+	 * Gets the namespace prefix
+	 * 
+	 * @param objectNamespace
+	 * @return
+	 */
+	private String getNamespacePrefix(String objectNamespace) {
+		String prefix = null;
+		Pattern logEntry = Pattern.compile("\\{(.*?)\\}");
+		Matcher matchPattern = logEntry.matcher(objectNamespace);
+		while (matchPattern.find()) {
+			String namespaceValue = matchPattern.group(1);
+			String[] namespaceStringArrs = namespaceValue.split(",");
+			for (String namespaceStringArr : namespaceStringArrs) {
+				if (namespaceStringArr.contains("=")) {
+					String[] namespacearr = namespaceStringArr.split("=");
+					String firstElement = namespacearr[0].trim();
+					String secondElement = namespacearr[1].trim();
+					if (firstElement.contains("\\") || secondElement.contains("\\")) {
+						String first = firstElement.replace("\\", "");
+						String second = secondElement.replace("\\", "");
+						if (first.equals(NAMESPACE_PREFIX)) {
+							prefix = second;
+							break;
+						}
+
+					} else {
+						if (firstElement.equals(NAMESPACE_PREFIX)) {
+							prefix = secondElement;
+							break;
+						}
+					}
+				}
+			}
+
+		}
+		return prefix;
+	}
+
+	/**
+	 * Creates namespace array
+	 * 
+	 * @param namespaces
+	 * @return
+	 */
+	private String createNamespaceArray(String namespaces) {
+		ArrayList<String> namespacesList = new ArrayList<String>();
+		String[] namespaceArray = namespaces.split(",");
+		for (String item : namespaceArray) {
+			String[] fullItem = item.split("=");
+			String prefix = fullItem[0];
+			String url = fullItem[1];
+			String prefixItem = NAMESPACE_PREFIX + "=" + prefix;
+			String urlItem = NAMESPACE_URL + "=" + url;
+			String[] namespaceItem = { prefixItem, urlItem };
+			String namespaceArrayAsString = Arrays.toString(namespaceItem).substring(1,
+					Arrays.toString(namespaceItem).length() - 1);
+			namespacesList.add("{" + namespaceArrayAsString + "}");
+		}
+		String value = StringUtils.join(namespacesList, ',');
+		return value;
 	}
 
 	private String getSelectedInputOutputEditPart() {

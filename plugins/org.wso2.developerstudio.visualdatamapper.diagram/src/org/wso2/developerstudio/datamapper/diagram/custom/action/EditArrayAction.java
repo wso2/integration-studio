@@ -52,33 +52,35 @@ import org.wso2.developerstudio.datamapper.diagram.edit.parts.TreeNode3EditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.TreeNodeEditPart;
 import org.wso2.developerstudio.eclipse.registry.core.interfaces.IRegistryFile;
 
-public class EditAttributeAction extends AbstractActionHandler {
+public class EditArrayAction extends AbstractActionHandler {
+
 	private EditPart selectedEP;
-	private static final String RENAME_ACTION_ID = "rename-field-action-id"; //$NON-NLS-1$
-	private static final String RENAME_FIELD = Messages.EditActions_editAttribute;
+	private static final String RENAME_ACTION_ID = "rename-node-action-id"; //$NON-NLS-1$
+	private static final String RENAME_FIELD = Messages.EditActions_editArray;
 
-
+	private static final String JSON_SCHEMA_REQUIRED = "required";
+	private static final String JSON_SCHEMA_SCHEMA_VALUE = "$schema";
 	private static final String JSON_SCHEMA_ID = "id";
 	private static final String JSON_SCHEMA_TYPE = "type";
 	private static final String JSON_SCHEMA_TITLE = "title";
-	private static final String PREFIX = "@";
-	private static final String NAMESPACE_PREFIX = "prefix";
-	private static final String NAMESPACE_URL = "url";
-	private static final String JSON_SCHEMA_ATTRIBUTE_NAMESPACES = "attributeNamespaces";
-	private static final String JSON_SCHEMA_ADDED_ATTRIBUTE_ID = "added_attribute_id";
-	private static final String JSON_SCHEMA_ADDED_ATTRIBUTE_TYPE = "added_attribute_type";
+	private static final String JSON_SCHEMA_ARRAY_NAMESPACES = "arrayNamespaces";
+	private static final String JSON_SCHEMA_ADDED_ARRAY_ITEMS_TYPE = "added_items_type";
+	private static final String JSON_SCHEMA_OBJECT = "object";
+	private static final String JSON_SCHEMA_ARRAY_ITEMS_ID = "items_id";
 
 	private String title = null;
-	private String name = null;
 	private String schemaType = null;
 	private String id = null;
+	private String name = null;
 	private String schemaValue = null;
-	private String required = null;
 	private String namespaces = null;
+	private String required = null;
 	private String formatedNamespace = null;
+	private static final String NAMESPACE_PREFIX = "prefix";
+	private static final String NAMESPACE_URL = "url";
 
 
-	public EditAttributeAction(IWorkbenchPart workbenchPart) {
+	public EditArrayAction(IWorkbenchPart workbenchPart) {
 		super(workbenchPart);
 
 		setId(RENAME_ACTION_ID);
@@ -90,7 +92,6 @@ public class EditAttributeAction extends AbstractActionHandler {
 
 	@Override
 	protected void doRun(IProgressMonitor progressMonitor) {
-
 		selectedEP = getSelectedEditPart();
 
 		if (null != selectedEP) {
@@ -100,26 +101,25 @@ public class EditAttributeAction extends AbstractActionHandler {
 			TreeNode selectedNode = (TreeNode) object;
 
 			title = selectedNode.getName();
-			if(title.startsWith(PREFIX) && title.contains(":")){
+			if(title.contains(":")){
 				int index = title.indexOf(":");
 				name = title.substring(index+1, title.length());
-			}else if(title.startsWith(PREFIX)){
-				name = title.substring(1);
 			}else{
 				name = title;
 			}
-			
+
 			schemaType = setProerties(selectedNode, JSON_SCHEMA_TYPE);
 			id = setProerties(selectedNode, JSON_SCHEMA_ID);
-
-			namespaces = setProerties(selectedNode, JSON_SCHEMA_ATTRIBUTE_NAMESPACES);
+			required = setProerties(selectedNode, JSON_SCHEMA_REQUIRED);
+			schemaValue = setProerties(selectedNode, JSON_SCHEMA_SCHEMA_VALUE);
+			namespaces = setProerties(selectedNode, JSON_SCHEMA_ARRAY_NAMESPACES);
 			formatedNamespace = formatNamespace(namespaces).toString();
 			String newNamespace = formatedNamespace.substring(1, formatedNamespace.toString().length()-1);
-			openEditFieldDialog(selectedNode, name, schemaType, id, required, schemaValue,newNamespace);
+			openEditRecordDialog(selectedNode, name, schemaType, id, required, schemaValue,newNamespace);
 
 		}
 	}
-	
+
 	private String setProerties(TreeNode selectedNode, String key) {
 		String value = null;
 		for (PropertyKeyValuePair keyValue : selectedNode.getProperties()) {
@@ -131,35 +131,36 @@ public class EditAttributeAction extends AbstractActionHandler {
 		return value;
 	}
 
-
 	/**
 	 * Reflects the changes in the tree view
+	 * 
 	 * @param selectedElem
 	 * @param map
 	 */
 	private void reflectChanges(TreeNode selectedNode, HashMap<String, String> map) {
-		
+
 		@SuppressWarnings("rawtypes")
 		Iterator entries = map.entrySet().iterator();
 		executeRemoveCommand(selectedNode);
 		renameTitle(map);
+
 		while (entries.hasNext()) {
-		  @SuppressWarnings("rawtypes")
-		  Entry thisEntry = (Entry) entries.next();
-		  Object key = thisEntry.getKey();
-		  Object value = thisEntry.getValue();
-		  if(key.equals(JSON_SCHEMA_TITLE)){
-				executeCommand(selectedNode, DataMapperPackage.Literals.TREE_NODE__NAME, PREFIX+map.get(JSON_SCHEMA_TITLE));
-		  }else{
-			 
-			  PropertyKeyValuePair pair = setPropertyKeyValuePairforTreeNodes(selectedNode, key.toString(),
+
+			@SuppressWarnings("rawtypes")
+			Entry thisEntry = (Entry) entries.next();
+			Object key = thisEntry.getKey();
+			Object value = thisEntry.getValue();
+			if (key.equals(JSON_SCHEMA_TITLE)) {
+				executeCommand(selectedNode, DataMapperPackage.Literals.TREE_NODE__NAME, map.get(JSON_SCHEMA_TITLE));
+			} else {
+				PropertyKeyValuePair pair = setPropertyKeyValuePairforTreeNodes(selectedNode, key.toString(),
 						value.toString());
-		      executeAddCommand(selectedNode, pair);
-		  }
+				executeAddCommand(selectedNode, pair);
+			}
 		}
-	
+		
 	}
-	
+
 	/**
 	 * Renames the title
 	 * @param map
@@ -175,6 +176,7 @@ public class EditAttributeAction extends AbstractActionHandler {
 			}
 		}
 	}
+
 	/**
 	 * Removes the existing properties
 	 * 
@@ -190,7 +192,6 @@ public class EditAttributeAction extends AbstractActionHandler {
 
 	}
 
-	
 	/**
 	 * Saves the properties to tree
 	 * 
@@ -204,72 +205,55 @@ public class EditAttributeAction extends AbstractActionHandler {
 			((GraphicalEditPart) selectedEP).getEditingDomain().getCommandStack().execute(addCmd);
 		}
 	}
-	/**
-	 * sets the property values
-	 * 
-	 * @param treeNode
-	 * @param key
-	 * @param value
-	 * @return
-	 */
-	private PropertyKeyValuePair setPropertyKeyValuePairforTreeNodes(TreeNode treeNode, String key, String value) {
-		PropertyKeyValuePair keyValuePair = DataMapperFactory.eINSTANCE.createPropertyKeyValuePair();
-		keyValuePair.setKey(key);
-		keyValuePair.setValue(value);
-		return keyValuePair;
-	}
-	
 
 	/**
 	 * Save edited values into the model
 	 * 
-	 * @param selectedElem
-	 * @param feature
-	 * @param value
+	 * @param selectedNode
+	 *            node
+	 * @param String
+	 *            value
 	 */
 	private void executeCommand(TreeNode selectedNode, EStructuralFeature feature, String value) {
-		SetCommand renameComd = new SetCommand(((GraphicalEditPart) selectedEP).getEditingDomain(), selectedNode,
+		SetCommand editComd = new SetCommand(((GraphicalEditPart) selectedEP).getEditingDomain(), selectedNode,
 				feature, value);
-		if (renameComd.canExecute()) {
-			((GraphicalEditPart) selectedEP).getEditingDomain().getCommandStack().execute(renameComd);
+		if (editComd.canExecute()) {
+			((GraphicalEditPart) selectedEP).getEditingDomain().getCommandStack().execute(editComd);
 		}
 	}
 
 	/**
-	 * Opens the dialog
-	 * @param selectedElem 
+	 * opens the dilaog
 	 * 
-	 * @param editFieldDialog
-	 * @param name
-	 *            name
-	 * @param prefix
-	 *            prefix
+	 * @param selectedNode
+	 *            node
+	 * @param title
+	 *            title
 	 * @param schemaType
-	 *            schemaType
-	 * @param namespace
-	 *            namespace
-	 * @param aliases
-	 *            aliases
-	 * @return map
+	 *            schematype
+	 * @param id
+	 *            id
+	 * @param required
+	 *            required
+	 * @param schemaValue
+	 *            schema value
 	 */
-	private void openEditFieldDialog(TreeNode selectedNode, String title, String schemaType, String id,
-			String required, String schemaValue,String namespaces) {
-
+	private void openEditRecordDialog(TreeNode selectedNode, String title, String schemaType, String id,
+			String required, String schemaValue, String namespaces) {
 		Display display = Display.getDefault();
 		Shell shell = new Shell(display);
 		AddNewObjectDialog editTypeDialog = new AddNewObjectDialog(shell, new Class[] { IRegistryFile.class });
-	
+
 		editTypeDialog.create();
 		editTypeDialog.setTypeWhenEditing(schemaType);
-		editTypeDialog.setValues(	title, schemaType, id, required, schemaValue,namespaces);
+		editTypeDialog.setValues(title, schemaType, id, required, schemaValue,namespaces);
 		editTypeDialog.open();
-		
-		if(editTypeDialog.getOkValue()){
-		
-		HashMap<String, String> valueMap = new HashMap<String, String>();
-		
-		if (StringUtils.isNotEmpty(editTypeDialog.getTitle())) {
-			if(StringUtils.isNotEmpty(editTypeDialog.getNamespaces())){
+
+		if (editTypeDialog.getOkValue()) {
+			HashMap<String, String> valueMap = new HashMap<String, String>();
+			
+			if (StringUtils.isNotEmpty(editTypeDialog.getTitle())) {				
+				if(StringUtils.isNotEmpty(editTypeDialog.getNamespaces())){
 				String objectNamespace = createNamespaceArray(editTypeDialog.getNamespaces());
 					//Adds the prefix to the object
 					String prefix = getNamespacePrefix(objectNamespace);
@@ -277,24 +261,36 @@ public class EditAttributeAction extends AbstractActionHandler {
 					valueMap.put(JSON_SCHEMA_TITLE, newNodeName);
 				}else{
 					valueMap.put(JSON_SCHEMA_TITLE, editTypeDialog.getTitle());
-			}			
+				}
 		}
-		valueMap.put(JSON_SCHEMA_TYPE, editTypeDialog.getSchemaType());
-		if (StringUtils.isNotEmpty(editTypeDialog.getID())) {
-			valueMap.put(JSON_SCHEMA_ID, editTypeDialog.getID());
+
+			valueMap.put(JSON_SCHEMA_TYPE, editTypeDialog.getSchemaType());
+
+			if (StringUtils.isNotEmpty(editTypeDialog.getID())) {
+				valueMap.put(JSON_SCHEMA_ID, editTypeDialog.getID());
+			}
+
+			if (StringUtils.isNotEmpty(editTypeDialog.getSchemaValue())) {
+				valueMap.put(JSON_SCHEMA_SCHEMA_VALUE, editTypeDialog.getSchemaValue());
+			}
+
+			if (StringUtils.isNotEmpty(editTypeDialog.getRequired())) {
+				valueMap.put(JSON_SCHEMA_REQUIRED, editTypeDialog.getRequired());
+			}
+
+			if (StringUtils.isNotEmpty(editTypeDialog.getNamespaces())) {
+				String namespacesValue = createNamespaceArray(editTypeDialog.getNamespaces());
+				valueMap.put(JSON_SCHEMA_ARRAY_NAMESPACES, namespacesValue);
+			}
+			
+			//Sets the values for items field which is used for serializing the array
+			//FIXME with user added values for type and id
+			valueMap.put(JSON_SCHEMA_ARRAY_ITEMS_ID, editTypeDialog.getID()+"/0");
+			valueMap.put(JSON_SCHEMA_ADDED_ARRAY_ITEMS_TYPE, JSON_SCHEMA_OBJECT);
+			reflectChanges(selectedNode, valueMap);
+
 		}
-		
-		if (StringUtils.isNotEmpty(editTypeDialog.getNamespaces())) {
-			String namespacesValue = createNamespaceArray(editTypeDialog.getNamespaces());
-			valueMap.put(JSON_SCHEMA_ATTRIBUTE_NAMESPACES, namespacesValue);
-		}
-	
-		//Sets the attribute ID and type to be used in serialization of the attributes
-		valueMap.put(JSON_SCHEMA_ADDED_ATTRIBUTE_ID, editTypeDialog.getID());
-		valueMap.put(JSON_SCHEMA_ADDED_ATTRIBUTE_TYPE, editTypeDialog.getSchemaType());
-	
-		reflectChanges(selectedNode, valueMap);
-		}
+
 	}
 
 	private EditPart getSelectedEditPart() {
@@ -312,6 +308,22 @@ public class EditAttributeAction extends AbstractActionHandler {
 	@Override
 	public void refresh() {
 		// refresh action. Does not do anything
+	}
+
+
+	/**
+	 * sets the property values
+	 * 
+	 * @param treeNode
+	 * @param key
+	 * @param value
+	 * @return
+	 */
+	private PropertyKeyValuePair setPropertyKeyValuePairforTreeNodes(TreeNode treeNode, String key, String value) {
+		PropertyKeyValuePair keyValuePair = DataMapperFactory.eINSTANCE.createPropertyKeyValuePair();
+		keyValuePair.setKey(key);
+		keyValuePair.setValue(value);
+		return keyValuePair;
 	}
 	
 	/**

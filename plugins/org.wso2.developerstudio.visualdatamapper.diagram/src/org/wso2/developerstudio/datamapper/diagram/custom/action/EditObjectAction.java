@@ -16,9 +16,14 @@
 
 package org.wso2.developerstudio.datamapper.diagram.custom.action;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
 import java.util.Map.Entry;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.apache.commons.lang.StringUtils;
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -47,11 +52,11 @@ import org.wso2.developerstudio.datamapper.diagram.edit.parts.TreeNode3EditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.TreeNodeEditPart;
 import org.wso2.developerstudio.eclipse.registry.core.interfaces.IRegistryFile;
 
-public class EditNodeAction extends AbstractActionHandler {
+public class EditObjectAction extends AbstractActionHandler {
 
 	private EditPart selectedEP;
 	private static final String RENAME_ACTION_ID = "rename-node-action-id"; //$NON-NLS-1$
-	private static final String RENAME_FIELD = Messages.EditActions_editRootElement;
+	private static final String RENAME_FIELD = Messages.EditActions_editObject;
 
 	private static final String JSON_SCHEMA_REQUIRED = "required";
 	private static final String JSON_SCHEMA_SCHEMA_VALUE = "$schema";
@@ -59,18 +64,23 @@ public class EditNodeAction extends AbstractActionHandler {
 	private static final String JSON_SCHEMA_TYPE = "type";
 	private static final String JSON_SCHEMA_TITLE = "title";
 	private static final String JSON_SCHEMA_NAMESPACES = "namespaces";
-	private static final String PREFIX = "@";
+	private static final String JSON_SCHEMA_ADDED_PROPERTIES_ID = "added_properties_id";
+	private static final String HAS_PROPERTIES = "hasProperties";
+	private static final String JSON_SCHEMA_OBJECT_NAMESPACES = "objectNamespaces";
 
 	private String title = null;
 	private String schemaType = null;
 	private String id = null;
-	private String name = null;
 	private String schemaValue = null;
 	private String namespaces = null;
+	private String formatedNamespace = null;
+	private String newNamespace = null;
 	private String required = null;
-	private boolean isAttribute = false;
+	private String name = null;
+	private static final String NAMESPACE_PREFIX = "prefix";
+	private static final String NAMESPACE_URL = "url";
 
-	public EditNodeAction(IWorkbenchPart workbenchPart) {
+	public EditObjectAction(IWorkbenchPart workbenchPart) {
 		super(workbenchPart);
 
 		setId(RENAME_ACTION_ID);
@@ -90,24 +100,67 @@ public class EditNodeAction extends AbstractActionHandler {
 			// Used to identify the selected resource of the model
 			TreeNode selectedNode = (TreeNode) object;
 
-			title = selectedNode.getName();
-			title = selectedNode.getName();
-			if (title.startsWith(PREFIX)) {
-				isAttribute = true;
-				name = title.substring(1);
-			} else {
+			title = selectedNode.getName();			
+			if(title.contains(":")){
+				int index = title.indexOf(":");
+				name = title.substring(index+1, title.length());
+			}else{
 				name = title;
 			}
-
 			schemaType = setProerties(selectedNode, JSON_SCHEMA_TYPE);
 			id = setProerties(selectedNode, JSON_SCHEMA_ID);
 			required = setProerties(selectedNode, JSON_SCHEMA_REQUIRED);
 			schemaValue = setProerties(selectedNode, JSON_SCHEMA_SCHEMA_VALUE);
+			//gets the root element's namespace
 			namespaces = setProerties(selectedNode, JSON_SCHEMA_NAMESPACES);
-
-			openEditRecordDialog(selectedNode, name, schemaType, id, required, schemaValue,namespaces);
+			if(namespaces == null){
+				//gets the namespaces for other objects than root element
+				namespaces = setProerties(selectedNode, JSON_SCHEMA_OBJECT_NAMESPACES);
+			}
+			if(namespaces != null){
+				formatedNamespace = formatNamespace(namespaces).toString();
+				newNamespace = formatedNamespace.substring(1, formatedNamespace.toString().length()-1);
+			}
+			openEditRecordDialog(selectedNode, name, schemaType, id, required, schemaValue,newNamespace);
 
 		}
+	}
+
+	/**
+	 * Formats the namespace to the required format
+	 * @param namespaces in {prefix=w, url=r}
+	 * @return w=r
+	 */
+	private ArrayList<String> formatNamespace(String namespaces) {
+		Map<String,String> namespaceMap = new HashMap<String,String>();
+		ArrayList<String> namespaceArray = new ArrayList<String>();
+		String newNamespace = null;
+		if (namespaces != null) {
+			Pattern logEntry = Pattern.compile("\\{(.*?)\\}");
+			Matcher matchPattern = logEntry.matcher(namespaces);
+			while (matchPattern.find()) {
+				String namespaceValue = matchPattern.group(1);
+				String[] namespaceStringArrs = namespaceValue.split(",");
+				for (String namespaceStringArr : namespaceStringArrs) {
+					if (namespaceStringArr.contains("=")) {
+						String[] namespacearr = namespaceStringArr.split("=");
+						String firstElement = namespacearr[0].trim();
+						String secondElement = namespacearr[1].trim();
+						if (firstElement.contains("\\") || secondElement.contains("\\")) {
+							String first = firstElement.replace("\\", "");
+							String second = secondElement.replace("\\", "");
+							namespaceMap.put(first, second);
+						} else {
+							namespaceMap.put(firstElement, secondElement);	
+						}
+					}
+					 
+				}
+				newNamespace= namespaceMap.get(NAMESPACE_PREFIX)+ "=" + namespaceMap.get(NAMESPACE_URL);
+				namespaceArray.add(newNamespace);		
+			}
+		}
+		return namespaceArray;
 	}
 
 	private String setProerties(TreeNode selectedNode, String key) {
@@ -141,7 +194,7 @@ public class EditNodeAction extends AbstractActionHandler {
 			Object key = thisEntry.getKey();
 			Object value = thisEntry.getValue();
 			if (key.equals(JSON_SCHEMA_TITLE)) {
-				executeCommand(selectedNode, DataMapperPackage.Literals.TREE_NODE__NAME, title);
+				executeCommand(selectedNode, DataMapperPackage.Literals.TREE_NODE__NAME, map.get(JSON_SCHEMA_TITLE));
 			} else {
 				PropertyKeyValuePair pair = setPropertyKeyValuePairforTreeNodes(selectedNode, key.toString(),
 						value.toString());
@@ -242,18 +295,16 @@ public class EditNodeAction extends AbstractActionHandler {
 		if (editTypeDialog.getOkValue()) {
 			HashMap<String, String> valueMap = new HashMap<String, String>();
 
-			if (StringUtils.isNotEmpty(editTypeDialog.getTitle())) {
-				if(isAttribute){
-					//If it's an attribute 
-					if(editTypeDialog.getTitle().startsWith(PREFIX)){
-						valueMap.put(JSON_SCHEMA_TITLE,editTypeDialog.getTitle());
+			if (StringUtils.isNotEmpty(editTypeDialog.getTitle())) {				
+					if(StringUtils.isNotEmpty(editTypeDialog.getNamespaces())){
+					String objectNamespace = createNamespaceArray(editTypeDialog.getNamespaces());
+						//Adds the prefix to the object
+						String prefix = getNamespacePrefix(objectNamespace);
+						String newNodeName = prefix+":"+ editTypeDialog.getTitle();
+						valueMap.put(JSON_SCHEMA_TITLE, newNodeName);
 					}else{
-					    //if user hasn't add @ then append @ before executing the command
-						valueMap.put(JSON_SCHEMA_TITLE, PREFIX+editTypeDialog.getTitle());
-					}	
-				}else{
-					valueMap.put(JSON_SCHEMA_TITLE, editTypeDialog.getTitle());
-				}
+						valueMap.put(JSON_SCHEMA_TITLE, editTypeDialog.getTitle());
+					}
 			}
 
 			valueMap.put(JSON_SCHEMA_TYPE, editTypeDialog.getSchemaType());
@@ -271,8 +322,14 @@ public class EditNodeAction extends AbstractActionHandler {
 			}
 			
 			if (StringUtils.isNotEmpty(editTypeDialog.getNamespaces())) {
-				valueMap.put(JSON_SCHEMA_NAMESPACES, editTypeDialog.getNamespaces());
+				String namespacesValue = createNamespaceArray(editTypeDialog.getNamespaces());
+				valueMap.put(JSON_SCHEMA_NAMESPACES, namespacesValue);
+				valueMap.put(JSON_SCHEMA_OBJECT_NAMESPACES, namespacesValue);
 			}
+			
+			//sets the properties ID to be used in serialization
+			valueMap.put(JSON_SCHEMA_ADDED_PROPERTIES_ID, HAS_PROPERTIES);
+			
 			reflectChanges(selectedNode, valueMap);
 
 		}
@@ -310,5 +367,68 @@ public class EditNodeAction extends AbstractActionHandler {
 		keyValuePair.setKey(key);
 		keyValuePair.setValue(value);
 		return keyValuePair;
+	}
+	
+	/**
+	 * Creates namespace array
+	 * 
+	 * @param namespaces
+	 * @return
+	 */
+	private String createNamespaceArray(String namespaces) {
+		ArrayList<String> namespacesList = new ArrayList<String>();
+		String[] namespaceArray = namespaces.split(",");
+		for (String item : namespaceArray) {
+			String[] fullItem = item.split("=");
+			String prefix = fullItem[0];
+			String url = fullItem[1];
+			String prefixItem = NAMESPACE_PREFIX + "=" + prefix;
+			String urlItem = NAMESPACE_URL + "=" + url;
+			String[] namespaceItem = { prefixItem, urlItem };
+			String namespaceArrayAsString = Arrays.toString(namespaceItem).substring(1,
+					Arrays.toString(namespaceItem).length() - 1);
+			namespacesList.add("{" + namespaceArrayAsString + "}");
+		}
+		String value = StringUtils.join(namespacesList, ',');
+		return value;
+	}
+
+	/**
+	 * Gets the namespace prefix
+	 * 
+	 * @param objectNamespace
+	 * @return
+	 */
+	private String getNamespacePrefix(String objectNamespace) {
+		String prefix = null;
+		Pattern logEntry = Pattern.compile("\\{(.*?)\\}");
+		Matcher matchPattern = logEntry.matcher(objectNamespace);
+		while (matchPattern.find()) {
+			String namespaceValue = matchPattern.group(1);
+			String[] namespaceStringArrs = namespaceValue.split(",");
+			for (String namespaceStringArr : namespaceStringArrs) {
+				if (namespaceStringArr.contains("=")) {
+					String[] namespacearr = namespaceStringArr.split("=");
+					String firstElement = namespacearr[0].trim();
+					String secondElement = namespacearr[1].trim();
+					if (firstElement.contains("\\") || secondElement.contains("\\")) {
+						String first = firstElement.replace("\\", "");
+						String second = secondElement.replace("\\", "");
+						if (first.equals(NAMESPACE_PREFIX)) {
+							prefix = second;
+							break;
+						}
+
+					} else {
+						if (firstElement.equals(NAMESPACE_PREFIX)) {
+							prefix = secondElement;
+							break;
+						}
+					}
+				}
+			}
+
+		}
+		return prefix;
 	}
 }

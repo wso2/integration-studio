@@ -31,7 +31,7 @@ import org.eclipse.debug.core.DebugException;
 import org.eclipse.debug.core.model.IVariable;
 import org.eclipse.e4.core.services.events.IEventBroker;
 import org.eclipse.jface.window.Window;
-import org.eclipse.swt.widgets.Shell;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.PlatformUI;
 import org.osgi.service.event.Event;
 import org.osgi.service.event.EventHandler;
@@ -79,8 +79,7 @@ public class PropertyChangeCommandHandler extends AbstractHandler implements Eve
         initializeHandler();
         String commandId = handlerEvent.getCommand().getId();
         if (ESB_MESSAGE_MEDIATION_PROPERTY_INJECT_COMMAND_ID.equals(commandId)) {
-            Shell shell = new Shell();
-            InjectPropertyDialog injectPropertyDialog = new InjectPropertyDialog(shell);
+            InjectPropertyDialog injectPropertyDialog = new InjectPropertyDialog(Display.getDefault().getActiveShell());
             injectPropertyDialog.create();
             PropertyChangeCommand propertyCommandMessage = null;
             if (injectPropertyDialog.open() == Window.OK) {
@@ -111,10 +110,9 @@ public class PropertyChangeCommandHandler extends AbstractHandler implements Eve
         Object eventObject = eventFromBroker.getProperty(ESB_DEBUGGER_EVENT_BROKER_DATA_NAME);
         if (eventObject instanceof List) {
             variables = (List<IVariable>) eventObject;
-            Shell shell = new Shell();
             ClearPropertyDialog clearPropertyDialog = null;
             try {
-                clearPropertyDialog = new ClearPropertyDialog(shell, variables);
+                clearPropertyDialog = new ClearPropertyDialog(Display.getDefault().getActiveShell(), variables);
                 clearPropertyDialog.create();
             } catch (DebugException e) {
                 log.error("Error while opening Property clear window : " + e.getMessage(), e);

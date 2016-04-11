@@ -36,7 +36,7 @@ import org.eclipse.debug.core.model.IThread;
 import org.eclipse.debug.core.model.IVariable;
 import org.eclipse.e4.core.services.events.IEventBroker;
 import org.eclipse.jface.window.Window;
-import org.eclipse.swt.widgets.Shell;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PartInitException;
@@ -85,16 +85,12 @@ public class ESBStackFrame extends ESBDebugElement implements IStackFrame, Event
         propertyChangeCommandEB = (IEventBroker) PlatformUI.getWorkbench().getService(IEventBroker.class);
         propertyChangeCommandEB.subscribe(ESB_STACK_FRAME_PROPERTY_CHANGE_EVENT, this);
         try {
-            IViewPart envelopeView = PlatformUI
-                    .getWorkbench()
-                    .getActiveWorkbenchWindow()
-                    .getActivePage()
-                    .showView(MESSAGE_ENVELOPE_VIEW_PRIMARY_ID, MESSAGE_ENVELOPE_VIEW_SECONDARY_ID,
-                            IWorkbenchPage.VIEW_VISIBLE);
+            IViewPart envelopeView = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().showView(
+                    MESSAGE_ENVELOPE_VIEW_PRIMARY_ID, MESSAGE_ENVELOPE_VIEW_SECONDARY_ID, IWorkbenchPage.VIEW_VISIBLE);
             if (envelopeView instanceof ContentAcceptHandler) {
                 for (DefaultPropertyValues propertyValue : DefaultPropertyValues.values()) {
-                    ((ContentAcceptHandler) envelopeView).acceptContent(new String[] { propertyValue.getPropertyName(),
-                            "" }, AcceptedContentAction.ADD);
+                    ((ContentAcceptHandler) envelopeView).acceptContent(
+                            new String[] { propertyValue.getPropertyName(), "" }, AcceptedContentAction.ADD);
                     tablePropertySet.add(propertyValue.getPropertyName());
                 }
             }
@@ -208,10 +204,9 @@ public class ESBStackFrame extends ESBDebugElement implements IStackFrame, Event
         } else if (eventObject instanceof FetchVariablesRequest) {
             propertyChangeCommandEB.send(PROPERTY_CHANGE_COMMAND_HANDLER_EVENT_TOPIC, variables);
         } else if (eventObject instanceof AddPropertyToTableDialogRequest) {
-            Shell shell = new Shell();
             AddPropertyToTableDialog addPropertyDialog = null;
             try {
-                addPropertyDialog = new AddPropertyToTableDialog(shell, variables);
+                addPropertyDialog = new AddPropertyToTableDialog(Display.getDefault().getActiveShell(), variables);
                 addPropertyDialog.create();
             } catch (DebugException e) {
                 log.error("Error while opening Property add property window : " + e.getMessage(), e);
@@ -225,10 +220,7 @@ public class ESBStackFrame extends ESBDebugElement implements IStackFrame, Event
                     tablePropertySet.add(propertyName);
                     try {
                         String propertyValue = getPropertyValueFromVariableList(propertyName, propertyContext);
-                        IViewPart envelopeView = PlatformUI
-                                .getWorkbench()
-                                .getActiveWorkbenchWindow()
-                                .getActivePage()
+                        IViewPart envelopeView = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
                                 .showView(MESSAGE_ENVELOPE_VIEW_PRIMARY_ID, MESSAGE_ENVELOPE_VIEW_SECONDARY_ID,
                                         IWorkbenchPage.VIEW_VISIBLE);
                         if (envelopeView instanceof ContentAcceptHandler) {
@@ -242,9 +234,9 @@ public class ESBStackFrame extends ESBDebugElement implements IStackFrame, Event
                 }
             }
         } else if (eventObject instanceof ClearPropertyFromTableDialogRequest) {
-            Shell shell = new Shell();
             RemovePropertyFromTableDialog removePropertyDialog = null;
-            removePropertyDialog = new RemovePropertyFromTableDialog(shell, tablePropertySet);
+            removePropertyDialog = new RemovePropertyFromTableDialog(Display.getDefault().getActiveShell(),
+                    tablePropertySet);
             removePropertyDialog.create();
             PropertyChangeCommand propertyCommandMessage = null;
             if (removePropertyDialog.open() == Window.OK) {
@@ -252,15 +244,12 @@ public class ESBStackFrame extends ESBDebugElement implements IStackFrame, Event
                 if (propertyCommandMessage.getContext() != null) {
                     tablePropertySet.remove(propertyCommandMessage.getProperty().getPropertyName());
                     try {
-                        IViewPart envelopeView = PlatformUI
-                                .getWorkbench()
-                                .getActiveWorkbenchWindow()
-                                .getActivePage()
+                        IViewPart envelopeView = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
                                 .showView(MESSAGE_ENVELOPE_VIEW_PRIMARY_ID, MESSAGE_ENVELOPE_VIEW_SECONDARY_ID,
                                         IWorkbenchPage.VIEW_VISIBLE);
                         if (envelopeView instanceof ContentAcceptHandler) {
-                            ((ContentAcceptHandler) envelopeView).acceptContent(new String[] {
-                                    propertyCommandMessage.getProperty().getPropertyName(), "" },
+                            ((ContentAcceptHandler) envelopeView).acceptContent(
+                                    new String[] { propertyCommandMessage.getProperty().getPropertyName(), "" },
                                     AcceptedContentAction.REMOVE);
                         }
                     } catch (PartInitException e) {
@@ -282,8 +271,8 @@ public class ESBStackFrame extends ESBDebugElement implements IStackFrame, Event
 
     private String getPropertyValueFromVariableList(String propertyName, String propertyContext) throws DebugException {
         for (IVariable contextVariable : variables) {
-            if (ESBDebuggerUtil.getPropertyContextNameOfUIPropertyName(contextVariable.getName()).equals(
-                    propertyContext)) {
+            if (ESBDebuggerUtil.getPropertyContextNameOfUIPropertyName(contextVariable.getName())
+                    .equals(propertyContext)) {
                 IVariable[] properties = contextVariable.getValue().getVariables();
                 for (IVariable propertyVariable : properties) {
                     if (propertyVariable.getName().equals(propertyName)) {
@@ -292,8 +281,8 @@ public class ESBStackFrame extends ESBDebugElement implements IStackFrame, Event
                 }
             }
         }
-        throw new IllegalArgumentException("Property value for given argument not exist : " + propertyContext + " "
-                + propertyName);
+        throw new IllegalArgumentException(
+                "Property value for given argument not exist : " + propertyContext + " " + propertyName);
     }
 
 }

@@ -63,11 +63,14 @@ public class SchemaTransformer implements ISchemaTransformer {
 	private static final String JSON_SCHEMA_SCHEMA_VALUE = "$schema";
 	private static final String JSON_SCHEMA_ID = "id";
 	private static final String JSON_SCHEMA_PROPERTIES = "properties";
+	private static final String JSON_SCHEMA_VALUE = "value";
 	private static final String JSON_SCHEMA_ATTRIBUTES = "attributes";
 	private static final String JSON_SCHEMA_TYPE = "type";
 	private static final String JSON_SCHEMA_OBJECT = "object";
 	private static final String JSON_SCHEMA_ARRAY_ITEMS_ID = "items_id";
 	private static final String JSON_SCHEMA_ARRAY_ITEMS_TYPE = "items_type";
+	private static final String JSON_SCHEMA_ARRAY_ITEMS_VALUE_TYPE = "items_value_type";
+	private static final String JSON_SCHEMA_OBJECT_VALUE_TYPE = "object_value_type";
 	private static final String JSON_SCHEMA_ATTRIBUTE_ID = "attribute_id";
 	private static final String JSON_SCHEMA_ATTRIBUTE_TYPE = "attribute_type";
 	private static final String JSON_SCHEMA_ADDED_ATTRIBUTE_ID = "added_attribute_id";
@@ -620,15 +623,34 @@ public class SchemaTransformer implements ISchemaTransformer {
 					itemsSchema = (Map<String, Object>) subSchema.get(JSON_SCHEMA_ITEMS);
 				}
 				if (itemsSchema.size() > 0) {
-					setPropertyKeyValuePairforTreeNodes(treeNode, propertyValueList, JSON_SCHEMA_ARRAY_ITEMS_ID,
-							itemsSchema.get(JSON_SCHEMA_ID).toString());
-					setPropertyKeyValuePairforTreeNodes(treeNode, propertyValueList, JSON_SCHEMA_ARRAY_ITEMS_TYPE,
-							itemsSchema.get(JSON_SCHEMA_TYPE).toString());
+					if(itemsSchema.containsKey(JSON_SCHEMA_ID)){
+						setPropertyKeyValuePairforTreeNodes(treeNode, propertyValueList, JSON_SCHEMA_ARRAY_ITEMS_ID,
+								itemsSchema.get(JSON_SCHEMA_ID).toString());
+						}
+					if(itemsSchema.containsKey(JSON_SCHEMA_TYPE)){
+						setPropertyKeyValuePairforTreeNodes(treeNode, propertyValueList, JSON_SCHEMA_ARRAY_ITEMS_TYPE,
+								itemsSchema.get(JSON_SCHEMA_TYPE).toString());
+						}
+					if(itemsSchema.containsKey(JSON_SCHEMA_REQUIRED)){
 					setPropertyKeyValuePairforTreeNodes(treeNode, propertyValueList, JSON_SCHEMA_ARRAY_ITEMS_REQUIRED,
 							getRequiredValue(itemsSchema));
+					}
+					//If item has a value block then save the type
+					if(itemsSchema.containsKey(JSON_SCHEMA_VALUE)){
+						Map<String,Object> valueMap = (Map<String, Object>) itemsSchema.get(JSON_SCHEMA_VALUE);
+						setPropertyKeyValuePairforTreeNodes(treeNode, propertyValueList, JSON_SCHEMA_ARRAY_ITEMS_VALUE_TYPE,
+								valueMap.get(JSON_SCHEMA_TYPE).toString());
+					}
 				}
 			}
-		}
+		}else if(schemaType.equals(JSON_SCHEMA_OBJECT)){
+			//If object has a value block then save ID and type
+			if(subSchema.containsKey(JSON_SCHEMA_VALUE)){
+				Map<String,Object> valueMap = (Map<String, Object>) subSchema.get(JSON_SCHEMA_VALUE);
+				setPropertyKeyValuePairforTreeNodes(treeNode, propertyValueList, JSON_SCHEMA_OBJECT_VALUE_TYPE,
+						valueMap.get(JSON_SCHEMA_TYPE).toString());
+			}
+		}	
 		return treeNode;
 	}
 
@@ -892,10 +914,13 @@ public class SchemaTransformer implements ISchemaTransformer {
 				String attributeID = getPropertyKeyValuePairforTreeNode(node, JSON_SCHEMA_ATTRIBUTE_ID);
 				String attributeType = getPropertyKeyValuePairforTreeNode(node, JSON_SCHEMA_ATTRIBUTE_TYPE);
 				String propertiesId = getPropertyKeyValuePairforTreeNode(node, JSON_SCHEMA_PROPERTIES_ID);
+				String objectValueBlockType = getPropertyKeyValuePairforTreeNode(node, JSON_SCHEMA_OBJECT_VALUE_TYPE);
+				String arrayValueBlockType = getPropertyKeyValuePairforTreeNode(node, JSON_SCHEMA_ARRAY_ITEMS_VALUE_TYPE);
 				if (schemaType != null && schemaType.equals(JSON_SCHEMA_OBJECT)) {
 					JSONObject nodeObject = new JSONObject();
 					JSONObject propertiesObject = new JSONObject();
 					JSONObject attributeObject = new JSONObject();
+					JSONObject valueObject = new JSONObject();
 					//Check if there are attributes in the child nodes of an object when creating the tree by hand
 					addedObjectHasAttributes = checkForAttributes(node);
 					//Check if there are properties in the child nodes of an object when creating the tree by hand
@@ -907,6 +932,11 @@ public class SchemaTransformer implements ISchemaTransformer {
 					// handle the other elements the object
 					if (!hasAttributes) {
 						insetIDAndTypeForJsonObject(node, nodeObject);
+						//If object contains a value block then handle it
+						if(objectValueBlockType != null){
+							valueObject.put(JSON_SCHEMA_TYPE, objectValueBlockType);
+							nodeObject.put(JSON_SCHEMA_VALUE, valueObject);		
+						}
 						if(propertiesId != null){
 						nodeObject.put(JSON_SCHEMA_PROPERTIES, propertiesObject);
 						}
@@ -953,6 +983,7 @@ public class SchemaTransformer implements ISchemaTransformer {
 					JSONArray arrayItemsObject = new JSONArray();
 					JSONObject attributeObject = new JSONObject();
 					JSONObject itemProperties = new JSONObject();
+					JSONObject valueObject = new JSONObject();
 					//Check if there are attributes in the child nodes of the array when creating the tree by hand
 					addedObjectHasAttributes = checkForAttributes(node);
 					//Check if there are properties in the child nodes of the array when creating the tree by hand
@@ -989,6 +1020,11 @@ public class SchemaTransformer implements ISchemaTransformer {
 							itemProperties.put(JSON_SCHEMA_ATTRIBUTES, attributeObject);
 							recursiveSchemaGenerator((TreeNodeImpl) node, attributeObject,root);
 							hasAttributes = false;
+							}
+							//handle value block
+							if(arrayValueBlockType != null){
+								valueObject.put(JSON_SCHEMA_TYPE, arrayValueBlockType);
+								itemProperties.put(JSON_SCHEMA_VALUE, valueObject);		
 							}
 							
 							//Handle properties when creating tree by hand
@@ -1110,7 +1146,8 @@ public class SchemaTransformer implements ISchemaTransformer {
 		}
 		nodeObject.put(JSON_SCHEMA_TYPE, schemaType);
 	}
-
+	
+	
 	/**
 	 * Inserts the namespace array
 	 * 

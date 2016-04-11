@@ -175,10 +175,6 @@ public class ESBDebugger implements IESBDebugger, EventHandler {
                 fireSuspendedEvent((DebugPointEventMessage) event);
             }
         } else if (event instanceof SpecialCoordinationEventMessage) {
-            SpecialCoordinationEventMessage cordinationMessage = (SpecialCoordinationEventMessage) event;
-            log.info("Event : " + cordinationMessage.getEvent().toString() + " , Message-Reciever : "
-                    + cordinationMessage.getMessageReciever() + " , Callback-Reciever : "
-                    + cordinationMessage.getCallbackReciever());
             switch (((SpecialCoordinationEventMessage) event).getEvent()) {
             case TERMINATED:
                 mediationFlowCompleted();
@@ -187,8 +183,6 @@ public class ESBDebugger implements IESBDebugger, EventHandler {
                 break;
             }
         } else if (event instanceof GeneralEventMessage) {
-            GeneralEventMessage generalMessage = (GeneralEventMessage) event;
-            log.info("Event : " + generalMessage.getEvent().toString());
             switch (((GeneralEventMessage) event).getEvent()) {
             case DEBUG_INFO_LOST:
                 ESBDebuggerUtil.repopulateESBServerBreakpoints();

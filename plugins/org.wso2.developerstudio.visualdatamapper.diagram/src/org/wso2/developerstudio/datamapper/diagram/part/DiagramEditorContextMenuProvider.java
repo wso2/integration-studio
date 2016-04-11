@@ -284,6 +284,7 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
 									String type = null;
 									String name = null;
 									if (!selectedEditorPart.getChildren().isEmpty()) {
+										if(selectedEditorPart instanceof TreeNodeEditPart){
 										for (PropertyKeyValuePair keyValue : (((TreeNode) ((View) selectedEditorPart
 												.getModel()).getElement()).getProperties())) {
 											if (keyValue.getKey().equals(JSON_SCHEMA_TYPE)) {
@@ -293,6 +294,7 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
 										}
 										name = (((TreeNode) ((View) selectedEditorPart.getModel()).getElement())
 												.getName());
+										}
 									}
 									
 									if(type != null){

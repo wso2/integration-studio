@@ -159,6 +159,11 @@ public class SchemaBuilder {
 				leaf.setId(parent.getId() + "/" + idwithoutAtSign);
 				leaf.setType(attributeValueType.toString().toLowerCase());
 				primitive.addAttribute(idwithoutAtSign, leaf);
+			} else	if (attributeId.equals(HASHCONTENT)){
+				JsonObject object = new JsonObject();
+				object.addProperty("type", attributeValueType.toString().toLowerCase());
+				primitive.setType(TypeEnum.OBJECT.toString().toLowerCase());
+				primitive.addCustomObject("value", object);
 			} else {
 				primitive.setType(attributeValueType.toString().toLowerCase());
 			}

@@ -50,9 +50,12 @@ public class SchemaBuilderWithNamepaces extends SchemaBuilder {
 			parent.addAttribute(idwithoutAtSign, leaf);
 			return leaf;
 		} else if (id.equals(HASHCONTENT)) {
+		   JsonObject object = new JsonObject();
+		   object.addProperty("type", propertyValueType.toString().toLowerCase());
+		   parent.addCustomObject("value", object);	
 		   return null;	
 		} else {
-			return super.addPrimitiveToParent(parent, id, value, propertyValueType);
+		   return super.addPrimitiveToParent(parent, id, value, propertyValueType);
 		}
 	}
 

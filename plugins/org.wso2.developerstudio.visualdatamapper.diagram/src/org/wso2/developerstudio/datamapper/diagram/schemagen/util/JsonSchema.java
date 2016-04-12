@@ -142,8 +142,8 @@ public class JsonSchema {
 		schema.add(name, new JsonArray());
 	}
 	
-	public void addCustomObject(String name) {
-		schema.add(name, new JsonObject());
+	public void addCustomObject(String name, JsonObject jsonObject) {
+		schema.add(name, jsonObject);
 	}
 
 	public JsonArray getCustomArray(String name) {

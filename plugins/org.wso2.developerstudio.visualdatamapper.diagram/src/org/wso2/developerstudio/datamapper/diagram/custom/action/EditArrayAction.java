@@ -64,9 +64,8 @@ public class EditArrayAction extends AbstractActionHandler {
 	private static final String JSON_SCHEMA_TYPE = "type";
 	private static final String JSON_SCHEMA_TITLE = "title";
 	private static final String JSON_SCHEMA_ARRAY_NAMESPACES = "arrayNamespaces";
-	private static final String JSON_SCHEMA_ADDED_ARRAY_ITEMS_TYPE = "added_items_type";
-	private static final String JSON_SCHEMA_OBJECT = "object";
 	private static final String JSON_SCHEMA_ARRAY_ITEMS_ID = "items_id";
+	private static final String JSON_SCHEMA_ARRAY_ITEMS_VALUE_TYPE = "items_value_type";
 
 	private String title = null;
 	private String schemaType = null;
@@ -76,6 +75,7 @@ public class EditArrayAction extends AbstractActionHandler {
 	private String namespaces = null;
 	private String required = null;
 	private String formatedNamespace = null;
+	private String value = null;
 	private static final String NAMESPACE_PREFIX = "prefix";
 	private static final String NAMESPACE_URL = "url";
 
@@ -112,10 +112,11 @@ public class EditArrayAction extends AbstractActionHandler {
 			id = setProerties(selectedNode, JSON_SCHEMA_ID);
 			required = setProerties(selectedNode, JSON_SCHEMA_REQUIRED);
 			schemaValue = setProerties(selectedNode, JSON_SCHEMA_SCHEMA_VALUE);
+			value = setProerties(selectedNode, JSON_SCHEMA_ARRAY_ITEMS_VALUE_TYPE);
 			namespaces = setProerties(selectedNode, JSON_SCHEMA_ARRAY_NAMESPACES);
 			formatedNamespace = formatNamespace(namespaces).toString();
 			String newNamespace = formatedNamespace.substring(1, formatedNamespace.toString().length()-1);
-			openEditRecordDialog(selectedNode, name, schemaType, id, required, schemaValue,newNamespace);
+			openEditRecordDialog(selectedNode, name, schemaType, id, required, schemaValue,newNamespace,value);
 
 		}
 	}
@@ -168,11 +169,11 @@ public class EditArrayAction extends AbstractActionHandler {
 	private void renameTitle(HashMap<String, String> map) {
 		if (map.get(JSON_SCHEMA_TITLE) != null) {
 			if (getSelectedEditPart() instanceof TreeNodeEditPart) {
-				((TreeNodeEditPart) getSelectedEditPart()).renameElementItem(map.get(JSON_SCHEMA_TITLE));
+				((TreeNodeEditPart) getSelectedEditPart()).renameElementItem(map.get(JSON_SCHEMA_TITLE),map.get(JSON_SCHEMA_TYPE));
 			} else if (getSelectedEditPart() instanceof TreeNode2EditPart) {
-					((TreeNode2EditPart) getSelectedEditPart()).renameElementItem(map.get(JSON_SCHEMA_TITLE));
+					((TreeNode2EditPart) getSelectedEditPart()).renameElementItem(map.get(JSON_SCHEMA_TITLE),map.get(JSON_SCHEMA_TYPE));
 			} else if (getSelectedEditPart() instanceof TreeNode3EditPart) {
-				((TreeNode3EditPart) getSelectedEditPart()).renameElementItem(map.get(JSON_SCHEMA_TITLE));
+				((TreeNode3EditPart) getSelectedEditPart()).renameElementItem(map.get(JSON_SCHEMA_TITLE),map.get(JSON_SCHEMA_TYPE));
 			}
 		}
 	}
@@ -239,14 +240,14 @@ public class EditArrayAction extends AbstractActionHandler {
 	 *            schema value
 	 */
 	private void openEditRecordDialog(TreeNode selectedNode, String title, String schemaType, String id,
-			String required, String schemaValue, String namespaces) {
+			String required, String schemaValue, String namespaces,String value) {
 		Display display = Display.getDefault();
 		Shell shell = new Shell(display);
 		AddNewObjectDialog editTypeDialog = new AddNewObjectDialog(shell, new Class[] { IRegistryFile.class });
 
 		editTypeDialog.create();
 		editTypeDialog.setTypeWhenEditing(schemaType);
-		editTypeDialog.setValues(title, schemaType, id, required, schemaValue,namespaces);
+		editTypeDialog.setValues(title, schemaType, id, required, schemaValue,namespaces,value);
 		editTypeDialog.open();
 
 		if (editTypeDialog.getOkValue()) {
@@ -284,9 +285,10 @@ public class EditArrayAction extends AbstractActionHandler {
 			}
 			
 			//Sets the values for items field which is used for serializing the array
-			//FIXME with user added values for type and id
 			valueMap.put(JSON_SCHEMA_ARRAY_ITEMS_ID, editTypeDialog.getID()+"/0");
-			valueMap.put(JSON_SCHEMA_ADDED_ARRAY_ITEMS_TYPE, JSON_SCHEMA_OBJECT);
+			//sets the value type if item holds a value
+			valueMap.put(JSON_SCHEMA_ARRAY_ITEMS_VALUE_TYPE, editTypeDialog.getValue());
+			
 			reflectChanges(selectedNode, valueMap);
 
 		}

@@ -167,11 +167,11 @@ public class EditFieldAction extends AbstractActionHandler {
 	private void renameTitle(HashMap<String, String> map) {
 		if (map.get(JSON_SCHEMA_TITLE) != null) {
 			if (getSelectedEditPart() instanceof TreeNodeEditPart) {
-				((TreeNodeEditPart) getSelectedEditPart()).renameElementItem(map.get(JSON_SCHEMA_TITLE));
+				((TreeNodeEditPart) getSelectedEditPart()).renameElementItem(map.get(JSON_SCHEMA_TITLE),map.get(JSON_SCHEMA_TYPE));
 			} else if (getSelectedEditPart() instanceof TreeNode2EditPart) {
-					((TreeNode2EditPart) getSelectedEditPart()).renameElementItem(map.get(JSON_SCHEMA_TITLE));
+					((TreeNode2EditPart) getSelectedEditPart()).renameElementItem(map.get(JSON_SCHEMA_TITLE),map.get(JSON_SCHEMA_TYPE));
 			} else if (getSelectedEditPart() instanceof TreeNode3EditPart) {
-				((TreeNode3EditPart) getSelectedEditPart()).renameElementItem(map.get(JSON_SCHEMA_TITLE));
+				((TreeNode3EditPart) getSelectedEditPart()).renameElementItem(map.get(JSON_SCHEMA_TITLE),map.get(JSON_SCHEMA_TYPE));
 			}
 		}
 	}
@@ -245,7 +245,7 @@ public class EditFieldAction extends AbstractActionHandler {
 
 		editTypeDialog.create();
 		editTypeDialog.setTypeWhenEditing(schemaType);
-		editTypeDialog.setValues(title, schemaType, id, required, schemaValue,namespaces);
+		editTypeDialog.setValues(title, schemaType, id, required, schemaValue,namespaces,null);
 		editTypeDialog.open();
 
 		if (editTypeDialog.getOkValue()) {

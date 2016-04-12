@@ -45,7 +45,9 @@ public class AddNewObjectDialog extends Dialog {
 	private Text textID;
 	private Text textRequired;
 	private Text textNamespaces;
+	private Combo comboValue;
 	private Composite compositeType;
+	private Button checkBox;
 
 	private Label lblTitleLabel;
 	private Label lblSchemaTypeLabel;
@@ -53,6 +55,8 @@ public class AddNewObjectDialog extends Dialog {
 	private Label lblSchemaValue;
 	private Label lblRequired;
 	private Label lblNamespaces;
+	private Label lblCheckBox;
+	private Label lblValue;
 	private Button btnNamespaces;
 
 	private String title;
@@ -61,6 +65,7 @@ public class AddNewObjectDialog extends Dialog {
 	private String id;
 	private String required;
 	private String namespaces;
+	private String value;
 
 	private String[] DATA_TYPES = { "string", "number", "boolean", "bytes", "double", "enum", "fixed", "float", "long",
 			"map", "union" };
@@ -78,7 +83,9 @@ public class AddNewObjectDialog extends Dialog {
 	private static final String LABEL_TITLE = "Name :";
 	private static final String LABEL_SCHEMATYPE = "Schema Type :";
 	private static final String LABEL_SCHEMA_VALUE = "Schema Value :";
+	private static final String LABEL_CHECKBOX = "Object holds a value";
 	private static final String LABEL_REQUIRED = "Required :";
+	private static final String LABEL_VALUE = "Value :";
 	private static final String LABEL_ID = "ID :";
 	private static final String LABEL_NAMESPACES_URL = "Namespaces :";
 	private static final String NEW_ROOT_RECORD_ID = "NewRootType";
@@ -136,6 +143,10 @@ public class AddNewObjectDialog extends Dialog {
 			textSchemaValue.setVisible(true);
 			lblNamespaces.setVisible(true);
 			textNamespaces.setVisible(true);
+			checkBox.setVisible(false);
+			lblCheckBox.setVisible(false);
+			lblValue.setVisible(false);
+			comboValue.setVisible(false);
 		}
 		if (title.equals(DIALOG_TITLE_OBJECT) || title.equals(DIALOG_TITLE_ARRAY) || title.equals(DIALOG_TITLE_FIELD)
 				|| title.equals(DIALOG_TITLE_ATTRIBUTE)) {
@@ -143,9 +154,17 @@ public class AddNewObjectDialog extends Dialog {
 			textSchemaValue.setVisible(false);
 			lblNamespaces.setVisible(true);
 			textNamespaces.setVisible(true);
+			checkBox.setVisible(true);
+			lblCheckBox.setVisible(true);
+			lblValue.setVisible(false);
+			comboValue.setVisible(false);
 		} if (title.equals(DIALOG_TITLE_FIELD)|| title.equals(DIALOG_TITLE_ATTRIBUTE) ) {
 			lblRequired.setVisible(false);
 			textRequired.setVisible(false);
+			checkBox.setVisible(false);
+			lblCheckBox.setVisible(false);
+			lblValue.setVisible(false);
+			comboValue.setVisible(false);
 		}
 	}
 	
@@ -200,7 +219,7 @@ public class AddNewObjectDialog extends Dialog {
 	 * @param schemaValue
 	 *            schemaValue
 	 */
-	public void setValues(String title, String schemaType, String id, String required, String schemaValue, String namespaces) {
+	public void setValues(String title, String schemaType, String id, String required, String schemaValue, String namespaces, String value) {
 		if (StringUtils.isNotEmpty(title)) {
 			textTitle.setText(title);
 		}
@@ -216,6 +235,10 @@ public class AddNewObjectDialog extends Dialog {
 				textSchemaValue.setVisible(true);
 				lblNamespaces.setVisible(true);
 				textNamespaces.setVisible(true);
+				checkBox.setVisible(true);
+				lblCheckBox.setVisible(true);
+				lblValue.setVisible(false);
+				comboValue.setVisible(false);
 				break;
 			case "array":
 				comboSchemaType.select(0);
@@ -227,6 +250,10 @@ public class AddNewObjectDialog extends Dialog {
 				textSchemaValue.setVisible(false);
 				lblNamespaces.setVisible(true);
 				textNamespaces.setVisible(true);
+				checkBox.setVisible(true);
+				lblCheckBox.setVisible(true);
+				lblValue.setVisible(false);
+				comboValue.setVisible(false);
 				break;
 			case "string":
 				comboSchemaType.select(0);
@@ -238,6 +265,10 @@ public class AddNewObjectDialog extends Dialog {
 				textSchemaValue.setVisible(false);
 				lblNamespaces.setVisible(true);
 				textNamespaces.setVisible(true);
+				checkBox.setVisible(false);
+				lblCheckBox.setVisible(false);
+				lblValue.setVisible(false);
+				comboValue.setVisible(false);
 				break;
 			case "number":
 				comboSchemaType.select(1);
@@ -249,6 +280,10 @@ public class AddNewObjectDialog extends Dialog {
 				textSchemaValue.setVisible(false);
 				lblNamespaces.setVisible(true);
 				textNamespaces.setVisible(true);
+				checkBox.setVisible(false);
+				lblCheckBox.setVisible(false);
+				lblValue.setVisible(false);
+				comboValue.setVisible(false);
 				break;
 			case "boolean":
 				comboSchemaType.select(2);
@@ -260,6 +295,10 @@ public class AddNewObjectDialog extends Dialog {
 				textSchemaValue.setVisible(false);
 				lblNamespaces.setVisible(true);
 				textNamespaces.setVisible(true);
+				checkBox.setVisible(false);
+				lblCheckBox.setVisible(false);
+				lblValue.setVisible(false);
+				comboValue.setVisible(false);
 				break;
 			case "bytes":
 				comboSchemaType.select(3);
@@ -271,6 +310,10 @@ public class AddNewObjectDialog extends Dialog {
 				textSchemaValue.setVisible(false);
 				lblNamespaces.setVisible(true);
 				textNamespaces.setVisible(true);
+				checkBox.setVisible(false);
+				lblCheckBox.setVisible(false);
+				lblValue.setVisible(false);
+				comboValue.setVisible(false);
 				break;
 			case "double":
 				comboSchemaType.select(4);
@@ -282,6 +325,10 @@ public class AddNewObjectDialog extends Dialog {
 				textSchemaValue.setVisible(false);
 				lblNamespaces.setVisible(true);
 				textNamespaces.setVisible(true);
+				checkBox.setVisible(false);
+				lblCheckBox.setVisible(false);
+				lblValue.setVisible(false);
+				comboValue.setVisible(false);
 				break;
 			case "enum":
 				comboSchemaType.select(5);
@@ -293,6 +340,10 @@ public class AddNewObjectDialog extends Dialog {
 				textSchemaValue.setVisible(false);
 				lblNamespaces.setVisible(true);
 				textNamespaces.setVisible(true);
+				checkBox.setVisible(false);
+				lblCheckBox.setVisible(false);
+				lblValue.setVisible(false);
+				comboValue.setVisible(false);
 				break;
 			case "fixed":
 				comboSchemaType.select(6);
@@ -304,6 +355,10 @@ public class AddNewObjectDialog extends Dialog {
 				textSchemaValue.setVisible(false);
 				lblNamespaces.setVisible(true);
 				textNamespaces.setVisible(true);
+				checkBox.setVisible(false);
+				lblCheckBox.setVisible(false);
+				lblValue.setVisible(false);
+				comboValue.setVisible(false);
 				break;
 			case "float":
 				comboSchemaType.select(7);
@@ -315,6 +370,10 @@ public class AddNewObjectDialog extends Dialog {
 				textSchemaValue.setVisible(false);
 				lblNamespaces.setVisible(true);
 				textNamespaces.setVisible(true);
+				checkBox.setVisible(false);
+				lblCheckBox.setVisible(false);
+				lblValue.setVisible(false);
+				comboValue.setVisible(false);
 				break;
 			case "long":
 				comboSchemaType.select(8);
@@ -326,6 +385,10 @@ public class AddNewObjectDialog extends Dialog {
 				textSchemaValue.setVisible(false);
 				lblNamespaces.setVisible(true);
 				textNamespaces.setVisible(true);
+				checkBox.setVisible(false);
+				lblCheckBox.setVisible(false);
+				lblValue.setVisible(false);
+				comboValue.setVisible(false);
 				break;
 			case "map":
 				comboSchemaType.select(9);
@@ -337,6 +400,10 @@ public class AddNewObjectDialog extends Dialog {
 				textSchemaValue.setVisible(false);
 				lblNamespaces.setVisible(true);
 				textNamespaces.setVisible(true);
+				checkBox.setVisible(false);
+				lblCheckBox.setVisible(false);
+				lblValue.setVisible(false);
+				comboValue.setVisible(false);
 				break;
 			case "union":
 				comboSchemaType.select(10);
@@ -348,11 +415,53 @@ public class AddNewObjectDialog extends Dialog {
 				textSchemaValue.setVisible(false);
 				lblNamespaces.setVisible(true);
 				textNamespaces.setVisible(true);
+				checkBox.setVisible(false);
+				lblCheckBox.setVisible(false);
+				lblValue.setVisible(false);
+				comboValue.setVisible(false);
 				break;
 			default:
 				break;
 			}
-
+			if (StringUtils.isNotEmpty(value)) {
+				switch (value) {
+				case "string":
+					comboValue.select(0);
+					break;
+				case "number":
+					comboValue.select(1);
+					break;
+				case "boolean":
+					comboValue.select(2);
+					break;
+				case "bytes":
+					comboValue.select(3);
+					break;
+				case "double":
+					comboValue.select(4);
+					break;
+				case "enum":
+					comboValue.select(5);
+					break;
+				case "fixed":
+					comboValue.select(6);
+					break;
+				case "float":
+					comboValue.select(7);
+					break;
+				case "long":
+					comboValue.select(8);
+					break;
+				case "map":
+					comboValue.select(9);
+					break;
+				case "union":
+					comboValue.select(10);
+					break;
+				default:
+					break;
+				}
+				}
 		}
 		if (StringUtils.isNotEmpty(id)) {
 			textID.setText(id);
@@ -488,8 +597,49 @@ public class AddNewObjectDialog extends Dialog {
 
 		textSchemaValue.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 3, 1));
 		
-	
+		checkBox = new Button(compositeType,SWT.CHECK);
+		lblCheckBox = new Label(compositeType, SWT.NONE);
+		lblCheckBox.setText(LABEL_CHECKBOX);
+		
+		lblCheckBox.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 3, 1));
+		
+		lblValue = new Label(compositeType, SWT.NONE);
+		lblValue.setText(LABEL_VALUE);
+		lblValue.setVisible(false);
 
+		
+		comboValue = new Combo(compositeType, SWT.DROP_DOWN | SWT.READ_ONLY);
+		comboValue.addModifyListener(new ModifyListener() {
+			public void modifyText(ModifyEvent arg0) {
+			}
+		});
+
+		comboValue.setItems(DATA_TYPES);
+		comboValue.select(0);
+	
+		comboValue.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 3, 1));
+	
+		checkBox.addSelectionListener(new SelectionListener() {
+		
+			@Override
+			public void widgetSelected(SelectionEvent event) {
+				
+				if (((Button)event.widget).getSelection()) {
+					lblValue.setVisible(true);
+					comboValue.setVisible(true);
+				}else{
+					lblValue.setVisible(false);
+					comboValue.setVisible(false);
+				}		
+			}
+			
+			@Override
+			public void widgetDefaultSelected(SelectionEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+	
 		return container;
 	}
 
@@ -524,7 +674,7 @@ public class AddNewObjectDialog extends Dialog {
 	 */
 	@Override
 	protected Point getInitialSize() {
-		return new Point(620, 340);
+		return new Point(620, 380);
 	}
 
 	@Override
@@ -536,6 +686,7 @@ public class AddNewObjectDialog extends Dialog {
 		setRequired(textRequired.getText());
 		setID(textID.getText());
 		setNamespaces(textNamespaces.getText());
+		setValue(comboValue.getText());
 		super.okPressed();
 	}
 
@@ -568,6 +719,9 @@ public class AddNewObjectDialog extends Dialog {
 		this.okPressed = okPressed;
 	}
 
+	public void setValue(String value){
+		this.value = value;
+	}
 	public String getTitle() {
 		return title;
 	}
@@ -595,6 +749,10 @@ public class AddNewObjectDialog extends Dialog {
 
 	public String getRequired() {
 		return required;
+	}
+	
+	public String getValue(){
+		return value;
 	}
 
 }

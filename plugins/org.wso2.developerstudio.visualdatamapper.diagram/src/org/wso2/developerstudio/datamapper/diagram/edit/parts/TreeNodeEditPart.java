@@ -593,9 +593,9 @@ public class TreeNodeEditPart extends AbstractBorderedShapeEditPart {
 			Label nodeLabel = new Label();
 			if (StringUtils.isNotEmpty(name) && name.startsWith(PREFIX)) {
 				nodeLabel.setIcon(attributeImg.getImage());
-			}else if(type.equals(JSON_SCHEMA_ARRAY)){
+			}else if(type != null && type.equals(JSON_SCHEMA_ARRAY)){
 				nodeLabel.setIcon(arrayImg.getImage());
-			}else if(type.equals(JSON_SCHEMA_OBJECT)){
+			}else if(type != null && type.equals(JSON_SCHEMA_OBJECT)){
 				nodeLabel.setIcon(objectImg.getImage());
 			}else{
 				nodeLabel.setIcon(mainImg.getImage());
@@ -658,15 +658,47 @@ public class TreeNodeEditPart extends AbstractBorderedShapeEditPart {
 			}
 		}
 
-		public void renameElement(String newName) {
-			ImageDescriptor mainImgDesc = AbstractUIPlugin.imageDescriptorFromPlugin(
+		public void renameElement(String name,String type) {
+			ImageDescriptor mainImgDescCollapse = AbstractUIPlugin.imageDescriptorFromPlugin(
 					ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM, ELEMENT_ICON);
-
-			final ImageFigure mainImg = new ImageFigure(mainImgDesc.createImage());
+			ImageDescriptor attributeImgDesc = AbstractUIPlugin.imageDescriptorFromPlugin(
+					ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM, ATTRIBUTE_ICON);
+			ImageDescriptor arrayImgDesc = AbstractUIPlugin.imageDescriptorFromPlugin(
+					ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM, ARRAY_ICON);
+			ImageDescriptor objectImgDesc = AbstractUIPlugin.imageDescriptorFromPlugin(
+					ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM, OBJECT_ICON);
+			
+			final ImageFigure mainImg = new ImageFigure(mainImgDescCollapse.createImage());
 			mainImg.setSize(new Dimension(10, 8));
+			
+			ImageFigure attributeImg = new ImageFigure(attributeImgDesc.createImage()); //attribute symbole figure 
+			attributeImg.setSize(new Dimension(10, 8));
+			
+			ImageFigure arrayImg = new ImageFigure(arrayImgDesc.createImage()); //array symbole figure 
+			attributeImg.setSize(new Dimension(10, 8));
+			
+			ImageFigure objectImg = new ImageFigure(objectImgDesc.createImage()); //object symbole figure 
+			attributeImg.setSize(new Dimension(10, 8));
 
 			Label nodeLabel = new Label();
-			nodeLabel.setIcon(mainImg.getImage());
+			
+			String newName = null;
+			if (StringUtils.isNotEmpty(name) && name.startsWith(PREFIX)) {
+				String[] fullName = name.split(PREFIX);
+				newName = fullName[1];
+			} else {
+				newName = name;
+			}
+			if (StringUtils.isNotEmpty(name) && name.startsWith(PREFIX)) {
+				nodeLabel.setIcon(attributeImg.getImage());
+			}else if(type != null  && type.equals(JSON_SCHEMA_ARRAY)){
+				nodeLabel.setIcon(arrayImg.getImage());
+			}else if(type != null  && type.equals(JSON_SCHEMA_OBJECT)){
+				nodeLabel.setIcon(objectImg.getImage());
+			}else{
+				nodeLabel.setIcon(mainImg.getImage());
+			}
+			
 			Display display = Display.getCurrent();
 			Color black = display.getSystemColor(SWT.COLOR_BLACK);
 			nodeLabel.setForegroundColor(black);
@@ -701,8 +733,8 @@ public class TreeNodeEditPart extends AbstractBorderedShapeEditPart {
 		}
 	}
 
-	public void renameElementItem(String newName) {
-		getPrimaryShape().renameElement(newName);
+	public void renameElementItem(String newName, String type) {
+		getPrimaryShape().renameElement(newName,type);
 	}
 
 	public void removeHighlightOnElem() {

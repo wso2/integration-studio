@@ -68,6 +68,7 @@ public class AddNewObjectAction extends AbstractActionHandler {
 	private static final String NAMESPACE_PREFIX = "prefix";
 	private static final String NAMESPACE_URL = "url";
 	private static final String HAS_PROPERTIES = "hasProperties";
+	private static final String JSON_SCHEMA_OBJECT_VALUE_TYPE = "object_value_type";
 
 	public AddNewObjectAction(IWorkbenchPart workbenchPart) {
 		super(workbenchPart);
@@ -135,6 +136,8 @@ public class AddNewObjectAction extends AbstractActionHandler {
 				}
 				//sets the properties ID to be used in the serialization of the object
 				setPropertyKeyValuePairforTreeNodes(treeNodeNew, propertyValueList, JSON_SCHEMA_ADDED_PROPERTIES_ID, HAS_PROPERTIES);
+				//sets the object's type if object hold a value
+				setPropertyKeyValuePairforTreeNodes(treeNodeNew, propertyValueList, JSON_SCHEMA_OBJECT_VALUE_TYPE,objectDialog.getValue());
 				
 				/*
 				 * AddCommand is used to avoid concurrent updating. index 0 to

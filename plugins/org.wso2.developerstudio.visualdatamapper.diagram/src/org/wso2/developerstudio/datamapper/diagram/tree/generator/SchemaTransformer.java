@@ -932,7 +932,7 @@ public class SchemaTransformer implements ISchemaTransformer {
 					// handle the other elements the object
 					if (!hasAttributes) {
 						insetIDAndTypeForJsonObject(node, nodeObject);
-						//If object contains a value block then handle it
+						//If object contains a value block then handle it ( when generating and creating tree)
 						if(objectValueBlockType != null){
 							valueObject.put(JSON_SCHEMA_TYPE, objectValueBlockType);
 							nodeObject.put(JSON_SCHEMA_VALUE, valueObject);		
@@ -950,6 +950,7 @@ public class SchemaTransformer implements ISchemaTransformer {
 							recursiveSchemaGenerator((TreeNodeImpl) node, nodeObject,root);
 							hasAttributes = false;
 						}
+				
 						//Handle attributes when creating tree by hand
 						if(addedObjectHasAttributes){		
 							//Fixing DEVTOOLESB-154
@@ -1021,10 +1022,34 @@ public class SchemaTransformer implements ISchemaTransformer {
 							recursiveSchemaGenerator((TreeNodeImpl) node, attributeObject,root);
 							hasAttributes = false;
 							}
-							//handle value block
+							//handle value block ( when generating and creating tree)
 							if(arrayValueBlockType != null){
 								valueObject.put(JSON_SCHEMA_TYPE, arrayValueBlockType);
 								itemProperties.put(JSON_SCHEMA_VALUE, valueObject);		
+							}
+							
+						/*	Handle type in items block based on the value block when creating tree by hand
+							"items": [{
+		                         "id": "http://wso2jsonschema.org/phone/0",
+				                 "type": "object",
+		                          "value":{
+		                               "type": "number"
+		                              },
+		                          "properties": {
+					                        "ext": {
+						                            "id": "http://wso2jsonschema.org/phone/0/ext",
+						                            "type": "number"
+				                           	}
+			                    	}]}*/
+							if(addedObjectHasAttributes || addedObjectHasProperties){
+								itemProperties.put(JSON_SCHEMA_TYPE, JSON_SCHEMA_OBJECT);
+							}else{
+								/*If it doesn't contain attributes or properties then set the user entered type
+								"items": [{
+									"id": "http://wso2jsonschema.org/phone/phone",
+									"type" :"number"
+									}]*/	
+								itemProperties.put(JSON_SCHEMA_TYPE, arrayValueBlockType);
 							}
 							
 							//Handle properties when creating tree by hand
@@ -1045,6 +1070,14 @@ public class SchemaTransformer implements ISchemaTransformer {
 									namespaceList.add(addedObjectNamespaces);
 								}
 							}
+						}
+						else{
+							/*If array item doesn't contain attributes or properties then set the user entered type as the item's type
+							"items": [{
+								"id": "http://wso2jsonschema.org/phone/phone",
+								"type" :"number"
+								}]*/	
+							itemProperties.put(JSON_SCHEMA_TYPE, arrayValueBlockType);
 						}
 					}
 				} else if (schemaType != null) {

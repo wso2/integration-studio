@@ -441,7 +441,7 @@ public class TreeNode2EditPart extends AbstractBorderedShapeEditPart {
 	 */
 	public class TreeNodeFigure extends RectangleFigure {
 		
-		private static final String PARENT_ICON = "icons/gmf/symbol_element_of.gif";
+		private static final String ELEMENT_ICON = "icons/gmf/symbol_element_of.gif";
 		private static final String ATTRIBUTE_ICON = "icons/gmf/AttributeIcon.png";
 		private static final String ARRAY_ICON = "icons/gmf/arrays.jpg";
 		private static final String OBJECT_ICON = "icons/gmf/object.jpg";
@@ -503,7 +503,7 @@ public class TreeNode2EditPart extends AbstractBorderedShapeEditPart {
 			figure2.setOpaque(false);
 
 			ImageDescriptor mainImgDescCollapse = AbstractUIPlugin.imageDescriptorFromPlugin(
-					ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM, PARENT_ICON);//plus 
+					ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM, ELEMENT_ICON);//plus 
 			
 			ImageDescriptor attributeImgDesc = AbstractUIPlugin.imageDescriptorFromPlugin(
 					ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM, ATTRIBUTE_ICON);
@@ -582,9 +582,9 @@ public class TreeNode2EditPart extends AbstractBorderedShapeEditPart {
 			Label nodeLabel = new Label();
 			if (StringUtils.isNotEmpty(name) && name.startsWith(PREFIX)) {
 				nodeLabel.setIcon(attributeImg.getImage());
-			}else if(type.equals(JSON_SCHEMA_ARRAY)){
+			}else if(type != null  && type.equals(JSON_SCHEMA_ARRAY)){
 				nodeLabel.setIcon(arrayImg.getImage());
-			}else if(type.equals(JSON_SCHEMA_OBJECT)){
+			}else if(type != null  && type.equals(JSON_SCHEMA_OBJECT)){
 				nodeLabel.setIcon(objectImg.getImage());
 			}else{
 				nodeLabel.setIcon(mainImg.getImage());
@@ -706,32 +706,48 @@ public class TreeNode2EditPart extends AbstractBorderedShapeEditPart {
 			}
 		}
 
-		public void renameElement(String name) {
-			ImageDescriptor mainImgDesc = AbstractUIPlugin.imageDescriptorFromPlugin(
-					ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM, PARENT_ICON);
+		public void renameElement(String name, String type) {
+			
+			ImageDescriptor mainImgDescCollapse = AbstractUIPlugin.imageDescriptorFromPlugin(
+					ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM, ELEMENT_ICON);
 			ImageDescriptor attributeImgDesc = AbstractUIPlugin.imageDescriptorFromPlugin(
 					ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM, ATTRIBUTE_ICON);
-
-			final ImageFigure mainImg = new ImageFigure(mainImgDesc.createImage());
+			ImageDescriptor arrayImgDesc = AbstractUIPlugin.imageDescriptorFromPlugin(
+					ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM, ARRAY_ICON);
+			ImageDescriptor objectImgDesc = AbstractUIPlugin.imageDescriptorFromPlugin(
+					ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM, OBJECT_ICON);
+			
+			final ImageFigure mainImg = new ImageFigure(mainImgDescCollapse.createImage());
 			mainImg.setSize(new Dimension(10, 8));
 			
 			ImageFigure attributeImg = new ImageFigure(attributeImgDesc.createImage()); //attribute symbole figure 
 			attributeImg.setSize(new Dimension(10, 8));
+			
+			ImageFigure arrayImg = new ImageFigure(arrayImgDesc.createImage()); //array symbole figure 
+			attributeImg.setSize(new Dimension(10, 8));
+			
+			ImageFigure objectImg = new ImageFigure(objectImgDesc.createImage()); //object symbole figure 
+			attributeImg.setSize(new Dimension(10, 8));
 
+			Label nodeLabel = new Label();
 			
 			String newName = null;
-			if (name.startsWith(PREFIX)) {
+			if (StringUtils.isNotEmpty(name) && name.startsWith(PREFIX)) {
 				String[] fullName = name.split(PREFIX);
 				newName = fullName[1];
 			} else {
 				newName = name;
 			}
-			Label nodeLabel = new Label();
-			if (name.startsWith(PREFIX)) {
+			if (StringUtils.isNotEmpty(name) && name.startsWith(PREFIX)) {
 				nodeLabel.setIcon(attributeImg.getImage());
+			}else if(type != null  && type.equals(JSON_SCHEMA_ARRAY)){
+				nodeLabel.setIcon(arrayImg.getImage());
+			}else if(type != null  && type.equals(JSON_SCHEMA_OBJECT)){
+				nodeLabel.setIcon(objectImg.getImage());
 			}else{
 				nodeLabel.setIcon(mainImg.getImage());
 			}
+			
 			Display display = Display.getCurrent();
 			Color black = display.getSystemColor(SWT.COLOR_BLACK);
 			nodeLabel.setForegroundColor(black);
@@ -767,8 +783,8 @@ public class TreeNode2EditPart extends AbstractBorderedShapeEditPart {
 		}
 	}
 
-	public void renameElementItem(String newName) {
-		getPrimaryShape().renameElement(newName);
+	public void renameElementItem(String newName, String type) {
+		getPrimaryShape().renameElement(newName,type);
 	}
 
 	public void removeHighlightOnElem() {

@@ -58,16 +58,14 @@ public class AddNewArrayAction extends AbstractActionHandler {
 	private static final String ADD_NEW_RECORDS_LIST_ACTION_ID = "add-new-records-list-action-id"; //$NON-NLS-1$
 	private static final String ADD_NEW_RECORDS_LIST = Messages.AddNewArrayAction_addNewArray;
 	private static final String DIALOG_TITLE = "Add new Array";
-	private static final String JSON_SCHEMA_ADDED_ARRAY_ITEMS_TYPE = "added_items_type";
-
 	private static final String JSON_SCHEMA_REQUIRED = "required";
 	private static final String JSON_SCHEMA_ID = "id";
 	private static final String JSON_SCHEMA_TYPE = "type";
-	private static final String JSON_SCHEMA_OBJECT = "object";
 	private static final String NAMESPACE_PREFIX = "prefix";
 	private static final String NAMESPACE_URL = "url";
 	private static final String JSON_SCHEMA_ARRAY_NAMESPACES = "arrayNamespaces";
 	private static final String JSON_SCHEMA_ARRAY_ITEMS_ID = "items_id";
+	private static final String JSON_SCHEMA_ARRAY_ITEMS_VALUE_TYPE = "items_value_type";
 
 	public AddNewArrayAction(IWorkbenchPart workbenchPart) {
 		super(workbenchPart);
@@ -135,9 +133,9 @@ public class AddNewArrayAction extends AbstractActionHandler {
 				}
 			
 				//Sets the values for items field which is used for serializing the array
-				//FIXME with user added values for type and id
 				setPropertyKeyValuePairforTreeNodes(treeNodeNew, propertyValueList, JSON_SCHEMA_ARRAY_ITEMS_ID, objectDialog.getID()+"/0");
-				setPropertyKeyValuePairforTreeNodes(treeNodeNew, propertyValueList, JSON_SCHEMA_ADDED_ARRAY_ITEMS_TYPE,JSON_SCHEMA_OBJECT);
+				//sets the value type if item holds a value
+				setPropertyKeyValuePairforTreeNodes(treeNodeNew, propertyValueList, JSON_SCHEMA_ARRAY_ITEMS_VALUE_TYPE,objectDialog.getValue());
 				
 				/*
 				 * AddCommand is used to avoid concurrent updating. index 0 to

@@ -67,6 +67,7 @@ public class EditObjectAction extends AbstractActionHandler {
 	private static final String JSON_SCHEMA_ADDED_PROPERTIES_ID = "added_properties_id";
 	private static final String HAS_PROPERTIES = "hasProperties";
 	private static final String JSON_SCHEMA_OBJECT_NAMESPACES = "objectNamespaces";
+	private static final String JSON_SCHEMA_OBJECT_VALUE_TYPE = "object_value_type";
 
 	private String title = null;
 	private String schemaType = null;
@@ -77,6 +78,7 @@ public class EditObjectAction extends AbstractActionHandler {
 	private String newNamespace = null;
 	private String required = null;
 	private String name = null;
+	private String value = null;
 	private static final String NAMESPACE_PREFIX = "prefix";
 	private static final String NAMESPACE_URL = "url";
 
@@ -111,6 +113,7 @@ public class EditObjectAction extends AbstractActionHandler {
 			id = setProerties(selectedNode, JSON_SCHEMA_ID);
 			required = setProerties(selectedNode, JSON_SCHEMA_REQUIRED);
 			schemaValue = setProerties(selectedNode, JSON_SCHEMA_SCHEMA_VALUE);
+			value = setProerties(selectedNode, JSON_SCHEMA_OBJECT_VALUE_TYPE);
 			//gets the root element's namespace
 			namespaces = setProerties(selectedNode, JSON_SCHEMA_NAMESPACES);
 			if(namespaces == null){
@@ -121,7 +124,7 @@ public class EditObjectAction extends AbstractActionHandler {
 				formatedNamespace = formatNamespace(namespaces).toString();
 				newNamespace = formatedNamespace.substring(1, formatedNamespace.toString().length()-1);
 			}
-			openEditRecordDialog(selectedNode, name, schemaType, id, required, schemaValue,newNamespace);
+			openEditRecordDialog(selectedNode, name, schemaType, id, required, schemaValue,newNamespace,value);
 
 		}
 	}
@@ -211,11 +214,11 @@ public class EditObjectAction extends AbstractActionHandler {
 	private void renameTitle(HashMap<String, String> map) {
 		if (map.get(JSON_SCHEMA_TITLE) != null) {
 			if (getSelectedEditPart() instanceof TreeNodeEditPart) {
-				((TreeNodeEditPart) getSelectedEditPart()).renameElementItem(map.get(JSON_SCHEMA_TITLE));
+				((TreeNodeEditPart) getSelectedEditPart()).renameElementItem(map.get(JSON_SCHEMA_TITLE),map.get(JSON_SCHEMA_TYPE));
 			} else if (getSelectedEditPart() instanceof TreeNode2EditPart) {
-					((TreeNode2EditPart) getSelectedEditPart()).renameElementItem(map.get(JSON_SCHEMA_TITLE));
+					((TreeNode2EditPart) getSelectedEditPart()).renameElementItem(map.get(JSON_SCHEMA_TITLE),map.get(JSON_SCHEMA_TYPE));
 			} else if (getSelectedEditPart() instanceof TreeNode3EditPart) {
-				((TreeNode3EditPart) getSelectedEditPart()).renameElementItem(map.get(JSON_SCHEMA_TITLE));
+				((TreeNode3EditPart) getSelectedEditPart()).renameElementItem(map.get(JSON_SCHEMA_TITLE), map.get(JSON_SCHEMA_TYPE));
 			}
 		}
 	}
@@ -282,14 +285,14 @@ public class EditObjectAction extends AbstractActionHandler {
 	 *            schema value
 	 */
 	private void openEditRecordDialog(TreeNode selectedNode, String title, String schemaType, String id,
-			String required, String schemaValue, String namespaces) {
+			String required, String schemaValue, String namespaces, String value) {
 		Display display = Display.getDefault();
 		Shell shell = new Shell(display);
 		AddNewObjectDialog editTypeDialog = new AddNewObjectDialog(shell, new Class[] { IRegistryFile.class });
 
 		editTypeDialog.create();
 		editTypeDialog.setTypeWhenEditing(schemaType);
-		editTypeDialog.setValues(title, schemaType, id, required, schemaValue,namespaces);
+		editTypeDialog.setValues(title, schemaType, id, required, schemaValue,namespaces,value);
 		editTypeDialog.open();
 
 		if (editTypeDialog.getOkValue()) {
@@ -329,6 +332,8 @@ public class EditObjectAction extends AbstractActionHandler {
 			
 			//sets the properties ID to be used in serialization
 			valueMap.put(JSON_SCHEMA_ADDED_PROPERTIES_ID, HAS_PROPERTIES);
+			//sets the object's type if object hold a value
+			valueMap.put(JSON_SCHEMA_OBJECT_VALUE_TYPE, editTypeDialog.getValue());
 			
 			reflectChanges(selectedNode, valueMap);
 

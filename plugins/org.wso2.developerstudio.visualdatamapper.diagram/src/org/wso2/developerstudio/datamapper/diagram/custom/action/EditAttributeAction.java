@@ -149,7 +149,7 @@ public class EditAttributeAction extends AbstractActionHandler {
 		  Object key = thisEntry.getKey();
 		  Object value = thisEntry.getValue();
 		  if(key.equals(JSON_SCHEMA_TITLE)){
-				executeCommand(selectedNode, DataMapperPackage.Literals.TREE_NODE__NAME, PREFIX+map.get(JSON_SCHEMA_TITLE));
+				executeCommand(selectedNode, DataMapperPackage.Literals.TREE_NODE__NAME, map.get(JSON_SCHEMA_TITLE));
 		  }else{
 			 
 			  PropertyKeyValuePair pair = setPropertyKeyValuePairforTreeNodes(selectedNode, key.toString(),
@@ -167,11 +167,11 @@ public class EditAttributeAction extends AbstractActionHandler {
 	private void renameTitle(HashMap<String, String> map) {
 		if (map.get(JSON_SCHEMA_TITLE) != null) {
 			if (getSelectedEditPart() instanceof TreeNodeEditPart) {
-				((TreeNodeEditPart) getSelectedEditPart()).renameElementItem(map.get(JSON_SCHEMA_TITLE));
+				((TreeNodeEditPart) getSelectedEditPart()).renameElementItem(map.get(JSON_SCHEMA_TITLE),map.get(JSON_SCHEMA_TYPE));
 			} else if (getSelectedEditPart() instanceof TreeNode2EditPart) {
-					((TreeNode2EditPart) getSelectedEditPart()).renameElementItem(map.get(JSON_SCHEMA_TITLE));
+					((TreeNode2EditPart) getSelectedEditPart()).renameElementItem(map.get(JSON_SCHEMA_TITLE),map.get(JSON_SCHEMA_TYPE));
 			} else if (getSelectedEditPart() instanceof TreeNode3EditPart) {
-				((TreeNode3EditPart) getSelectedEditPart()).renameElementItem(map.get(JSON_SCHEMA_TITLE));
+				((TreeNode3EditPart) getSelectedEditPart()).renameElementItem(map.get(JSON_SCHEMA_TITLE),map.get(JSON_SCHEMA_TYPE));
 			}
 		}
 	}
@@ -261,7 +261,7 @@ public class EditAttributeAction extends AbstractActionHandler {
 	
 		editTypeDialog.create();
 		editTypeDialog.setTypeWhenEditing(schemaType);
-		editTypeDialog.setValues(	title, schemaType, id, required, schemaValue,namespaces);
+		editTypeDialog.setValues(	title, schemaType, id, required, schemaValue,namespaces,null);
 		editTypeDialog.open();
 		
 		if(editTypeDialog.getOkValue()){
@@ -276,7 +276,7 @@ public class EditAttributeAction extends AbstractActionHandler {
 					String newNodeName = prefix+":"+ editTypeDialog.getTitle();
 					valueMap.put(JSON_SCHEMA_TITLE, newNodeName);
 				}else{
-					valueMap.put(JSON_SCHEMA_TITLE, editTypeDialog.getTitle());
+					valueMap.put(JSON_SCHEMA_TITLE, PREFIX+editTypeDialog.getTitle());
 			}			
 		}
 		valueMap.put(JSON_SCHEMA_TYPE, editTypeDialog.getSchemaType());

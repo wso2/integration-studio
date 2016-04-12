@@ -284,7 +284,7 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
 									String type = null;
 									String name = null;
 									if (!selectedEditorPart.getChildren().isEmpty()) {
-										if(selectedEditorPart instanceof TreeNodeEditPart){
+										if(selectedEditorPart instanceof TreeNodeEditPart| selectedEditorPart instanceof TreeNode2EditPart | selectedEditorPart instanceof TreeNode3EditPart){
 										for (PropertyKeyValuePair keyValue : (((TreeNode) ((View) selectedEditorPart
 												.getModel()).getElement()).getProperties())) {
 											if (keyValue.getKey().equals(JSON_SCHEMA_TYPE)) {

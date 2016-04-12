@@ -45,9 +45,17 @@
  <feature id="org.wso2.developerstudio.mvn.multimodule.feature" version="0.0.0">
       <category name="org.wso2.developerstudio.kernel.platform.bundles"/>
    </feature>
-   <category-def name="org.wso2.developerstudio.kernel.platform.bundles" label="WSO2 Developer Studio Kernel Platform Bundles">
+<feature id="org.wso2.developerstudio.web.ui.feature" version="0.0.0">
+      <category name="org.wso2.developerstudio.kernel.web.ui.bundles"/>
+   </feature>
+   <category-def name="org.wso2.developerstudio.kernel.platform.bundles" label="WSO2 Developer Studio Tooling for Carbon">
       <description>
 		WSO2 Developer Studio Kernel provides a set of core plugins which can be used to develop Eclipse plugins for the WSO2 products which are based on award wining WSO2 carbon platform. After a major architecture revamping with version 4.0.0, WSO2 Developer Studio is moved in to a kernel based model. All the product specific plugins will use the Developer Studio Kernel as the base for their implementation.
+      </description>
+   </category-def>
+ <category-def name="org.wso2.developerstudio.kernel.web.ui.bundles" label="WSO2 Developer Studio Tooling for Web Platform">
+      <description>
+		WSO2 Developer Studio provides a WEB UI platform that provides support to implement Eclipse UI using web technologies.
       </description>
    </category-def>
 </site>

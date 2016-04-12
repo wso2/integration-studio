@@ -487,6 +487,11 @@ public class SchemaTransformer implements ISchemaTransformer {
 						setPropertyKeyValuePairforTreeNodes(treeNode, propertyValueList, JSON_SCHEMA_PROPERTIES_ID,
 								getSchemaProperties(getSchemaItems(subSchema)).toString());
 						setProperties(getSchemaItems(subSchema), treeNode, count, namespaceMap);
+						//When the array is a primitive array then add the type to the map
+					}if(getSchemaItems(subSchema).containsKey(JSON_SCHEMA_TYPE)){
+						Map<String, Object> itemMap = getSchemaItems(subSchema);
+						setPropertyKeyValuePairforTreeNodes(treeNode, propertyValueList, JSON_SCHEMA_ARRAY_ITEMS_VALUE_TYPE,
+								itemMap.get(JSON_SCHEMA_TYPE).toString());
 					}
 				}
 			}else {
@@ -1043,13 +1048,6 @@ public class SchemaTransformer implements ISchemaTransformer {
 			                    	}]}*/
 							if(addedObjectHasAttributes || addedObjectHasProperties){
 								itemProperties.put(JSON_SCHEMA_TYPE, JSON_SCHEMA_OBJECT);
-							}else{
-								/*If it doesn't contain attributes or properties then set the user entered type
-								"items": [{
-									"id": "http://wso2jsonschema.org/phone/phone",
-									"type" :"number"
-									}]*/	
-								itemProperties.put(JSON_SCHEMA_TYPE, arrayValueBlockType);
 							}
 							
 							//Handle properties when creating tree by hand

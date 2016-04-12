@@ -70,7 +70,7 @@ public class RegistrySearchQuery extends FileSearchQuery {
 
 	public IStatus run(IProgressMonitor monitor)
 			throws OperationCanceledException {
-		Registry.registryInit();
+//		Registry.registryInit();
 		if (getSearchQueryData().isAllRegistries()) {
 			List<RegistryURLInfo> allRegistryUrls = RegistryUrlStore
 					.getInstance().getAllRegistryUrls();

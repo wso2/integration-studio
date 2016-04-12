@@ -66,7 +66,7 @@ public class UpdateAction extends BaseRegistryAction {
 							return;
 						}
 					}
-					Registry.registryInit();
+//					Registry.registryInit();
 					RegistryCheckInClientUtils.update(path, 
 											   credentials.getUsername(),
 											   credentials.getPassword());

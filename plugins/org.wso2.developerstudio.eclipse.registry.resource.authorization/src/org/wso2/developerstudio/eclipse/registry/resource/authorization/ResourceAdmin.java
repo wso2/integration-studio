@@ -44,6 +44,7 @@ import org.wso2.carbon.registry.resource.services.ResourceAdminServiceStub.Permi
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.platform.ui.preferences.ClientTrustStorePreferencePage;
+import org.wso2.developerstudio.eclipse.platform.ui.utils.SSLUtils;
 
 public class ResourceAdmin {
 	private static IDeveloperStudioLog log=Logger.getLog(Activator.PLUGIN_ID);
@@ -60,61 +61,11 @@ public class ResourceAdmin {
 	private AuthenticationAdminStub authenticationAdminStub;
 
 	public ResourceAdmin(String url, String username, String password) {
-		init();
 		setUrl(url);
 		setUsername(username);
 		setPassword(password);
 	}
 
-	private static void init() {
-		
-		if (!loadJKSfromEclipsePrefernaces()){	
-			//Then loading the default JKS which is shipping with DevS
-		System.setProperty("javax.net.ssl.trustStore", getJKSPath());
-		System.setProperty("javax.net.ssl.trustStorePassword", "wso2carbon");
-		System.setProperty("javax.net.ssl.trustStoreType", "JKS");
-		}
-	}
-	
-	private static boolean loadJKSfromEclipsePrefernaces(){
-				
-		try{
-
-		IPreferenceStore preferenceStore = org.wso2.developerstudio.eclipse.platform.ui.Activator.getDefault()
-					.getPreferenceStore();
-
-		if(preferenceStore.getString(ClientTrustStorePreferencePage.TRUST_STORE_LOCATION).isEmpty()){
-			return false;
-		}
-		if(preferenceStore.getString(ClientTrustStorePreferencePage.TRUST_STORE_PASSWORD).isEmpty()){
-			return false;
-		}
-		if(preferenceStore.getString(ClientTrustStorePreferencePage.TRUST_STORE_TYPE).isEmpty()){
-			return false;
-		}
-		
-			System.setProperty("javax.net.ssl.trustStore",
-					preferenceStore.getString(ClientTrustStorePreferencePage.TRUST_STORE_LOCATION));
-			System.setProperty("javax.net.ssl.trustStorePassword",
-					preferenceStore.getString(ClientTrustStorePreferencePage.TRUST_STORE_PASSWORD));
-			System.setProperty("javax.net.ssl.trustStoreType",
-					preferenceStore.getString(ClientTrustStorePreferencePage.TRUST_STORE_TYPE));		
-		return true;
-		
-		}catch(Exception e){
-			log.error("Cannot load values from Eclipse perfernces to read JKS"+e.getMessage(), e);
-		}
-		
-		return false;
-	}
-
-	private static String getJKSPath() {
-		extractFilesToLocation("resources/security",
-				new File(getMetaDataPath()));
-		String path = getMetaDataPath() + File.separator + "security"
-				+ File.separator + "wso2carbon.jks";
-		return path;
-	}
 
 	public static void extractFilesToLocation(String resourcePath,
 			File destination) {
@@ -188,6 +139,7 @@ public class ResourceAdmin {
 		AuthenticationAdminStub authenticationStub;
 		boolean loginStatus=false;
 		authenticationStub = new AuthenticationAdminStub(getUrl() + "services/AuthenticationAdmin");
+		SSLUtils.setSSLProtocolHandler(authenticationStub);
 		authenticationStub._getServiceClient().getOptions().setManageSession(true);
 		loginStatus = authenticationStub.login(getUsername(), getPassword(), hostUrl.getHost());
 		setAuthenticationAdminStub(authenticationStub);
@@ -198,6 +150,11 @@ public class ResourceAdmin {
 	
 	public String getgetAuthenticatedSessionId(){
 		AuthenticationAdminStub authenticationStub = getAuthenticationAdminStub();
+		try {
+			SSLUtils.setSSLProtocolHandler(authenticationStub);
+		} catch (Exception e) {
+			//log
+		}
 		if(authenticationStub!=null){
 		ServiceContext serviceContext = authenticationStub
 				._getServiceClient().getLastOperationContext()
@@ -257,7 +214,7 @@ public class ResourceAdmin {
 			}
 			AuthenticationAdminStub authenticationStub = new AuthenticationAdminStub(
 					getUrl() + "services/AuthenticationAdmin");
-
+			SSLUtils.setSSLProtocolHandler(authenticationStub);
 			authenticationStub._getServiceClient().getOptions()
 					.setManageSession(true);
 			boolean loginStatus = authenticationStub.login(getUsername(),
@@ -275,6 +232,7 @@ public class ResourceAdmin {
 
 			stub = new ResourceAdminServiceStub(getUrl()
 					+ "services/ResourceAdminService");
+			SSLUtils.setSSLProtocolHandler(stub);
 			stub._getServiceClient().getOptions().setManageSession(true);
 			stub._getServiceClient().getOptions().setTimeOutInMilliSeconds(
 					60000000);

@@ -30,8 +30,6 @@ import java.util.Enumeration;
 import java.util.List;
 
 import org.apache.axis2.AxisFault;
-import org.apache.axis2.client.Options;
-import org.apache.axis2.client.ServiceClient;
 import org.apache.axis2.context.ServiceContext;
 import org.apache.axis2.transport.http.HTTPConstants;
 import org.eclipse.core.resources.IFile;
@@ -46,13 +44,7 @@ import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.QualifiedName;
 import org.eclipse.core.runtime.preferences.IPreferencesService;
-import org.eclipse.swt.widgets.Display;
-import org.wso2.carbon.authenticator.stub.LoginAuthenticationExceptionException;
 import org.wso2.carbon.core.services.authentication.AuthenticationAdminStub;
-import org.wso2.carbon.core.services.authentication.AuthenticationExceptionException;
-import org.wso2.carbon.feature.mgt.stub.ProvisioningAdminServiceStub;
-import org.wso2.carbon.feature.mgt.stub.prov.data.Feature;
-import org.wso2.carbon.registry.app.RemoteRegistry;
 import org.wso2.carbon.registry.core.Association;
 import org.wso2.carbon.registry.core.Collection;
 import org.wso2.carbon.registry.core.Comment;
@@ -67,9 +59,9 @@ import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.platform.core.MediaManager;
 import org.wso2.developerstudio.eclipse.platform.core.mediatype.PlatformMediaTypeConstants;
-import org.wso2.developerstudio.eclipse.platform.ui.preferences.ClientTrustStorePreferencePage;
-import org.wso2.developerstudio.eclipse.platform.ui.utils.MessageDialogUtils;
+import org.wso2.developerstudio.eclipse.platform.ui.utils.SSLUtils;
 import org.wso2.developerstudio.eclipse.registry.base.Activator;
+import org.wso2.developerstudio.eclipse.registry.base.remote.RemoteRegistry;
 import org.wso2.developerstudio.eclipse.registry.core.exception.InvalidRegistryURLException;
 import org.wso2.developerstudio.eclipse.registry.core.exception.RegistryContentRetrieveException;
 import org.wso2.developerstudio.eclipse.registry.core.exception.UnknownRegistryException;
@@ -77,14 +69,14 @@ import org.wso2.developerstudio.eclipse.registry.core.interfaces.IGARImportDepen
 import org.wso2.developerstudio.eclipse.registry.core.utils.GARUtils;
 
 public class Registry {
+	private static final String _SYSTEM_GOVERNANCE = "/_system/governance";
+
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
-	private static final String REGISTRY_WS_FEATURE_ID = "org.wso2.carbon.registry.ws.feature.group";
 	private static final String AUTHENTICATION_ADMIN_SERVICE_URL = "/services/AuthenticationAdmin";
 	private static final String PROVISIONING_ADMIN_SERVICE_URL = "/services/ProvisioningAdminService";
 	private static final String REMOTE_REGISTRY_URL = "/registry";
 	private static final String WS_REGISTRY_URL = "/services/";
-	private static final int MIN_WS_API_VERSION = 320;
 
 	private String[] rootCollection = null;
 	private org.wso2.carbon.registry.core.Registry remregistry;
@@ -122,8 +114,8 @@ public class Registry {
 			IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(".tmp");
 			project.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
 			URL url = new URL(serverUrl);
-			propertyFile = project.getFile(Activator.PLUGIN_ID + File.separator + url.getHost() + "." + url.getPort()
-					+ ".txt");
+			propertyFile = project
+					.getFile(Activator.PLUGIN_ID + File.separator + url.getHost() + "." + url.getPort() + ".txt");
 		} catch (CoreException e) {
 			log.error("Registry init has failed " + e.getMessage(), e);
 		} catch (MalformedURLException e) {
@@ -145,8 +137,8 @@ public class Registry {
 	 * @throws MalformedURLException
 	 * @throws RegistryException
 	 */
-	private org.wso2.carbon.registry.core.Registry getWSRegistryServiceClient() throws InvalidRegistryURLException,
-			UnknownRegistryException {
+	private org.wso2.carbon.registry.core.Registry getWSRegistryServiceClient()
+			throws InvalidRegistryURLException, UnknownRegistryException {
 		try {
 			URL url = new URL(serverUrl + WS_REGISTRY_URL);
 			if (propertyFile.exists()) {
@@ -156,9 +148,10 @@ public class Registry {
 				}
 			}
 
-			registryInit();
-			AuthenticationAdminStub authenticationStub = new AuthenticationAdminStub(serverUrl
-					+ AUTHENTICATION_ADMIN_SERVICE_URL);
+//			registryInit();
+			AuthenticationAdminStub authenticationStub = new AuthenticationAdminStub(
+					serverUrl + AUTHENTICATION_ADMIN_SERVICE_URL);
+			SSLUtils.setSSLProtocolHandler(authenticationStub);
 			authenticationStub._getServiceClient().getOptions().setManageSession(true);
 			boolean loginStatus = authenticationStub.login(userName, passwd, (new URL(serverUrl)).getHost());
 			if (!loginStatus) {
@@ -169,6 +162,13 @@ public class Registry {
 			String sessionCookie = (String) serviceContext.getProperty(HTTPConstants.COOKIE_STRING);
 
 			remregistry = new WSRegistryServiceClient(serverUrl + WS_REGISTRY_URL, sessionCookie);
+			/*
+			 * calling the remote registry to ensure that the WS feature is
+			 * available in registry this will throw an exception if WS feature
+			 * is not available which is handled in the calling method
+			 */
+			remregistry.get(_SYSTEM_GOVERNANCE);
+			SSLUtils.setSSLProtocolHandler(((WSRegistryServiceClient) remregistry).getStub());
 
 			if (propertyFile.exists()) {
 				propertyFile.setSessionProperty(new QualifiedName("", url.toString()), remregistry);
@@ -191,18 +191,17 @@ public class Registry {
 	 * @throws InvalidRegistryURLException
 	 * @throws UnknownRegistryException
 	 */
-	private org.wso2.carbon.registry.core.Registry getRemoteRegistry() throws InvalidRegistryURLException,
-			UnknownRegistryException {
+	private org.wso2.carbon.registry.core.Registry getRemoteRegistry()
+			throws InvalidRegistryURLException, UnknownRegistryException {
 		try {
 			URL url = new URL(serverUrl + REMOTE_REGISTRY_URL);
-
 			if (propertyFile.exists()) {
 				Object sessionProperty = propertyFile.getSessionProperty(new QualifiedName("", url.toString()));
 				if (sessionProperty != null) {
 					return (org.wso2.carbon.registry.core.Registry) sessionProperty;
 				}
 			}
-			registryInit();
+//			registryInit();
 			remregistry = new RemoteRegistry(url, userName, passwd);
 			if (propertyFile.exists()) {
 				propertyFile.setSessionProperty(new QualifiedName("", url.toString()), remregistry);
@@ -214,85 +213,23 @@ public class Registry {
 			throw new UnknownRegistryException(e);
 		} catch (CoreException e) {
 			log.error("Remote registry init has failed " + e.getMessage(), e);
+		} catch (Exception e) {
+			log.error("Remote registry init has failed " + e.getMessage(), e);
 		}
 		return remregistry;
 	}
 
-	private boolean isRegistryWSFeatureAvailable() {
-		try {
-			URL url = new URL(serverUrl + PROVISIONING_ADMIN_SERVICE_URL);
-			if (propertyFile.exists()) {
-				Object sessionProperty = propertyFile.getSessionProperty(new QualifiedName("", url.toString()));
-				if (sessionProperty != null) {
-					return (Boolean) sessionProperty;
-				}
-			}
-			registryInit();
-			AuthenticationAdminStub authenticationStub = new AuthenticationAdminStub(serverUrl
-					+ AUTHENTICATION_ADMIN_SERVICE_URL);
-			authenticationStub._getServiceClient().getOptions().setManageSession(false);
-			boolean loginStatus = authenticationStub.login(userName, passwd, (new URL(serverUrl)).getHost());
-			if (!loginStatus) {
-				throw new LoginAuthenticationExceptionException("Invalid Login");
-			}
-			ServiceContext serviceContext = authenticationStub._getServiceClient().getLastOperationContext()
-					.getServiceContext();
-			String sessionCookie = (String) serviceContext.getProperty(HTTPConstants.COOKIE_STRING);
-			ProvisioningAdminServiceStub provisioningAdminService = new ProvisioningAdminServiceStub(serverUrl
-					+ PROVISIONING_ADMIN_SERVICE_URL);
-			ServiceClient client = provisioningAdminService._getServiceClient();
-			Options option = client.getOptions();
-			option.setManageSession(true);
-			option.setProperty(org.apache.axis2.transport.http.HTTPConstants.COOKIE_STRING, sessionCookie);
-
-			Feature[] allInstalledFeatures = provisioningAdminService.getAllInstalledFeatures();
-
-			for (Feature feature : allInstalledFeatures) {
-				if (REGISTRY_WS_FEATURE_ID.equals(feature.getFeatureID())) {
-					int featureVersion = Integer.parseInt(feature.getFeatureVersion().replace(".", ""));
-					if (featureVersion >= MIN_WS_API_VERSION) {
-						if (propertyFile.exists()) {
-							propertyFile.setSessionProperty(new QualifiedName("", url.toString()), true);
-						}
-						return true;
-					}
-				}
-			}
-
-		} catch (LoginAuthenticationExceptionException e) {
-
-			log.error("Getting WS Feature Available in Regisrty check failed " + e.getMessage(), e);
-			MessageDialogUtils.error(Display.getCurrent().getActiveShell(), e.getMessage());
-			return false;
-		} catch (MalformedURLException e) {
-
-			log.error("Getting WS Feature Available in Regisrty check failed " + e.getMessage(), e);
-			MessageDialogUtils.error(Display.getCurrent().getActiveShell(), e.getMessage());
-			return false;
-		} catch (CoreException e) {
-
-			log.error("Getting WS Feature Available in Regisrty check failed " + e.getMessage(), e);
-			MessageDialogUtils.error(Display.getCurrent().getActiveShell(), e.getMessage());
-			return false;
-		} catch (RemoteException e) {
-			log.error("Getting WS Feature Available in Regisrty check failed " + e.getMessage(), e);
-			MessageDialogUtils.error(Display.getCurrent().getActiveShell(), e.getMessage());
-			return false;
-		} catch (AuthenticationExceptionException e) {
-			log.error("Getting WS Feature Available in Regisrty check failed " + e.getMessage(), e);
-			MessageDialogUtils.error(Display.getCurrent().getActiveShell(), e.getMessage());
-			return false;
-		}
-		return false;
-	}
-
-	public org.wso2.carbon.registry.core.Registry getRegistry() throws InvalidRegistryURLException,
-			UnknownRegistryException {
+	public org.wso2.carbon.registry.core.Registry getRegistry() throws InvalidRegistryURLException {
 		if (remregistry == null) {
-			if (isRegistryWSFeatureAvailable()) {
+			try {
 				remregistry = getWSRegistryServiceClient();
-			} else {
-				remregistry = getRemoteRegistry();
+			} catch (UnknownRegistryException e) {
+				log.warn("WS Registry feature not available in server, accessing remote server from abdera client", e);
+				try {
+					remregistry = getRemoteRegistry();
+				} catch (UnknownRegistryException e1) {
+					throw new InvalidRegistryURLException(e);
+				}
 			}
 		}
 		return remregistry;
@@ -335,7 +272,12 @@ public class Registry {
 	 * setting system properties to initialize the remote registry instance
 	 */
 	public static void registryInit() {
-
+		/**
+		 * This is deprecated. 
+		 * WSO2 Developer Studio is not using trust store set as VM arguments from 4.1.0 onwards (Eclipse Mars)
+		 * We are not setting setting SSLUtils to trust all calls 
+		 */
+/*
 		String clientTrustStoreLocation = preferenceStore.getString("org.wso2.developerstudio.eclipse.platform.ui",
 				ClientTrustStorePreferencePage.TRUST_STORE_LOCATION, null, null);
 		String clientTrustStoreType = preferenceStore.getString("org.wso2.developerstudio.eclipse.platform.ui",
@@ -352,7 +294,7 @@ public class Registry {
 			System.setProperty("javax.net.ssl.trustStoreType", "JKS");
 			System.setProperty("javax.net.ssl.trustStore", getJKSPath());
 			System.setProperty("javax.net.ssl.trustStorePassword", "wso2carbon");
-		}
+		}*/
 	}
 
 	/**
@@ -364,8 +306,8 @@ public class Registry {
 	 * @throws RegistryException
 	 * @throws MalformedURLException
 	 */
-	public Resource getResourcesPerCollection(String collectionPath) throws InvalidRegistryURLException,
-			UnknownRegistryException {
+	public Resource getResourcesPerCollection(String collectionPath)
+			throws InvalidRegistryURLException, UnknownRegistryException {
 		Resource resource;
 		try {
 			resource = getRegistry().get(collectionPath);
@@ -391,7 +333,8 @@ public class Registry {
 	}
 
 	/**
-	 * to define the content type of the resource, we need to get the extension of the resource
+	 * to define the content type of the resource, we need to get the extension
+	 * of the resource
 	 * 
 	 * @param resource
 	 * @return
@@ -410,7 +353,8 @@ public class Registry {
 	}
 
 	/**
-	 * get the file content from the registry and write it in to a temperory file
+	 * get the file content from the registry and write it in to a temperory
+	 * file
 	 * 
 	 * @param resourcePath
 	 * @param filePath
@@ -434,7 +378,8 @@ public class Registry {
 			// read the extension from mediaTypes.properties file
 			extension = getMediaTypeFileExtension(mediaType);
 			/**
-			 * if the media type is not specified in the properties file, get the extension by file path
+			 * if the media type is not specified in the properties file, get
+			 * the extension by file path
 			 */
 			if (extension == null) {
 				extension = getExtension(resource);
@@ -446,7 +391,8 @@ public class Registry {
 		byte[] content = getResourceContent(resource);
 		File tempFile;
 
-		// if the resource content is taking for the first time, save the content to the temp file
+		// if the resource content is taking for the first time, save the
+		// content to the temp file
 		if (filePath == null) {
 			File tempDir = File.createTempFile("test", "test");
 			tempDir.delete();
@@ -469,8 +415,8 @@ public class Registry {
 
 	}
 
-	private byte[] getResourceContent(Resource resource) throws UnknownRegistryException,
-			RegistryContentRetrieveException {
+	private byte[] getResourceContent(Resource resource)
+			throws UnknownRegistryException, RegistryContentRetrieveException {
 		try {
 			Object resContent = resource.getContent();
 			byte[] content = getResourceContent(resContent);
@@ -604,7 +550,6 @@ public class Registry {
 		String path = getMetaDataPath() + File.separator + "security" + File.separator + "wso2carbon.jks";
 		return path;
 	}
-
 	/**
 	 * 
 	 * @param path
@@ -679,6 +624,7 @@ public class Registry {
 		}
 	}
 
+
 	public void addRegistryCollection(org.wso2.carbon.registry.core.Registry remote_reg, String description,
 			String mediaType, String collectionPath) throws UnknownRegistryException {
 		try {
@@ -691,6 +637,7 @@ public class Registry {
 		}
 	}
 
+
 	/**
 	 * add files to remote registry
 	 * 
@@ -701,8 +648,8 @@ public class Registry {
 	 * @throws UnknownRegistryException
 	 * @throws InvalidRegistryURLException
 	 */
-	public void addFileToRegistry(File path, String registryPath, String name) throws InvalidRegistryURLException,
-			UnknownRegistryException, FileNotFoundException {
+	public void addFileToRegistry(File path, String registryPath, String name)
+			throws InvalidRegistryURLException, UnknownRegistryException, FileNotFoundException {
 		String selectedPath = registryPath;
 		selectedPath = selectedPath.endsWith("/") ? selectedPath : selectedPath + "/";
 		String mediaType = MediaManager.getMediaType(path);
@@ -753,8 +700,8 @@ public class Registry {
 		public void uploadFileDone(File file);
 	}
 
-	public RegistryAssociation[] getAllAssociations(String registryResourcePath) throws InvalidRegistryURLException,
-			UnknownRegistryException {
+	public RegistryAssociation[] getAllAssociations(String registryResourcePath)
+			throws InvalidRegistryURLException, UnknownRegistryException {
 		List<RegistryAssociation> regAssociations = new ArrayList<RegistryAssociation>();
 		try {
 			Association[] associations = getRegistry().getAllAssociations(registryResourcePath);
@@ -819,8 +766,8 @@ public class Registry {
 
 	}
 
-	public void addAssociation(String selectedPath, String path, String type) throws InvalidRegistryURLException,
-			UnknownRegistryException {
+	public void addAssociation(String selectedPath, String path, String type)
+			throws InvalidRegistryURLException, UnknownRegistryException {
 		try {
 			getRegistry().addAssociation(selectedPath, path, type);
 		} catch (RegistryException e) {
@@ -844,8 +791,8 @@ public class Registry {
 			try {
 				return getRegistry().get(selectedPath);
 			} catch (RegistryException e1) {
-				throw new UnknownRegistryException("Error occured while retrieving the registry resource: "
-						+ e1.getMessage(), e1);
+				throw new UnknownRegistryException(
+						"Error occured while retrieving the registry resource: " + e1.getMessage(), e1);
 			}
 		}
 	}
@@ -859,8 +806,8 @@ public class Registry {
 			try {
 				return getRegistry().newCollection();
 			} catch (RegistryException e1) {
-				throw new UnknownRegistryException("Error occured while trying to create a new collection: "
-						+ e1.getMessage(), e1);
+				throw new UnknownRegistryException(
+						"Error occured while trying to create a new collection: " + e1.getMessage(), e1);
 			}
 		}
 	}
@@ -874,13 +821,14 @@ public class Registry {
 			try {
 				return getRegistry().newResource();
 			} catch (RegistryException e1) {
-				throw new UnknownRegistryException("Error occured while trying to create a new resource: "
-						+ e1.getMessage(), e1);
+				throw new UnknownRegistryException(
+						"Error occured while trying to create a new resource: " + e1.getMessage(), e1);
 			}
 		}
 	}
 
-	public void rename(String currentPath, String newPath) throws InvalidRegistryURLException, UnknownRegistryException {
+	public void rename(String currentPath, String newPath)
+			throws InvalidRegistryURLException, UnknownRegistryException {
 		try {
 			getRegistry().rename(currentPath, newPath);
 		} catch (RegistryException e) {
@@ -889,8 +837,8 @@ public class Registry {
 			try {
 				getRegistry().rename(currentPath, newPath);
 			} catch (RegistryException e1) {
-				throw new UnknownRegistryException("Error occured while trying to rename the registry resource: "
-						+ e1.getMessage(), e1);
+				throw new UnknownRegistryException(
+						"Error occured while trying to rename the registry resource: " + e1.getMessage(), e1);
 			}
 		}
 
@@ -906,14 +854,15 @@ public class Registry {
 				return getRegistry().put(path, resource);
 			} catch (RegistryException e1) {
 				throw new UnknownRegistryException(
-						"Error occured while trying to add a registry resource to the registry: " + e1.getMessage(), e1);
+						"Error occured while trying to add a registry resource to the registry: " + e1.getMessage(),
+						e1);
 			}
 		}
 
 	}
 
-	public Comment[] getComments(String registryResourcePath) throws InvalidRegistryURLException,
-			UnknownRegistryException {
+	public Comment[] getComments(String registryResourcePath)
+			throws InvalidRegistryURLException, UnknownRegistryException {
 		try {
 			return getRegistry().getComments(registryResourcePath);
 		} catch (RegistryException e) {
@@ -922,14 +871,14 @@ public class Registry {
 			try {
 				return getRegistry().getComments(registryResourcePath);
 			} catch (RegistryException e1) {
-				throw new UnknownRegistryException("Error occured while retrieving comments for the resource: "
-						+ e1.getMessage(), e1);
+				throw new UnknownRegistryException(
+						"Error occured while retrieving comments for the resource: " + e1.getMessage(), e1);
 			}
 		}
 	}
 
-	public void addComment(String selectedPath, Comment comment) throws InvalidRegistryURLException,
-			UnknownRegistryException {
+	public void addComment(String selectedPath, Comment comment)
+			throws InvalidRegistryURLException, UnknownRegistryException {
 		try {
 			getRegistry().addComment(selectedPath, comment);
 		} catch (RegistryException e) {
@@ -957,8 +906,8 @@ public class Registry {
 		}
 	}
 
-	public void editComment(String commentPath, String comment) throws InvalidRegistryURLException,
-			UnknownRegistryException {
+	public void editComment(String commentPath, String comment)
+			throws InvalidRegistryURLException, UnknownRegistryException {
 		try {
 			getRegistry().editComment(commentPath, comment);
 		} catch (RegistryException e) {
@@ -997,8 +946,8 @@ public class Registry {
 		}
 	}
 
-	public String[] getVersions(String registryResourcePath) throws InvalidRegistryURLException,
-			UnknownRegistryException {
+	public String[] getVersions(String registryResourcePath)
+			throws InvalidRegistryURLException, UnknownRegistryException {
 		try {
 			return getRegistry().getVersions(registryResourcePath);
 		} catch (RegistryException e) {
@@ -1007,8 +956,8 @@ public class Registry {
 			try {
 				return getRegistry().getVersions(registryResourcePath);
 			} catch (RegistryException e1) {
-				throw new UnknownRegistryException("Error occured while retrieving versions of the registry resource: "
-						+ e1.getMessage(), e1);
+				throw new UnknownRegistryException(
+						"Error occured while retrieving versions of the registry resource: " + e1.getMessage(), e1);
 			}
 		}
 	}
@@ -1018,7 +967,8 @@ public class Registry {
 		try {
 			lifeCycle = resource.getProperty("registry.LC.name");
 		} catch (Exception e) {
-			// This is an expected situation where the life cycle is not available
+			// This is an expected situation where the life cycle is not
+			// available
 		}
 		if (lifeCycle == null || lifeCycle.length() == 0) {
 			return "No Life Cycle available for this resource";
@@ -1030,10 +980,11 @@ public class Registry {
 	public String getLifeCycleState(Resource resource) {
 		String lifeCycleState = null;
 		try {
-			lifeCycleState = resource.getProperty("registry.lifecycle." + resource.getProperty("registry.LC.name")
-					+ ".state");
+			lifeCycleState = resource
+					.getProperty("registry.lifecycle." + resource.getProperty("registry.LC.name") + ".state");
 		} catch (Exception e) {
-			// This is an expected situation where the life cycle is not available
+			// This is an expected situation where the life cycle is not
+			// available
 		}
 		if (lifeCycleState == null || lifeCycleState.length() == 0) {
 			return "N/A";
@@ -1066,13 +1017,14 @@ public class Registry {
 			try {
 				return getRegistry().getTags(registryResourcePath);
 			} catch (RegistryException e1) {
-				throw new UnknownRegistryException("Error occured while trying to retrive tags: " + e1.getMessage(), e1);
+				throw new UnknownRegistryException("Error occured while trying to retrive tags: " + e1.getMessage(),
+						e1);
 			}
 		}
 	}
 
-	public void removeTag(String registryResourcePath, String tagName) throws InvalidRegistryURLException,
-			UnknownRegistryException {
+	public void removeTag(String registryResourcePath, String tagName)
+			throws InvalidRegistryURLException, UnknownRegistryException {
 		try {
 			getRegistry().removeTag(registryResourcePath, tagName);
 		} catch (RegistryException e) {
@@ -1086,8 +1038,8 @@ public class Registry {
 		}
 	}
 
-	public void applyTag(String registryResourcePath, String tag) throws InvalidRegistryURLException,
-			UnknownRegistryException {
+	public void applyTag(String registryResourcePath, String tag)
+			throws InvalidRegistryURLException, UnknownRegistryException {
 		try {
 			getRegistry().applyTag(registryResourcePath, tag);
 		} catch (RegistryException e) {
@@ -1110,8 +1062,8 @@ public class Registry {
 			try {
 				return getRegistry().getRating(path, username);
 			} catch (RegistryException e1) {
-				throw new UnknownRegistryException("Error occured while retrieving ratings from the user: "
-						+ e1.getMessage(), e1);
+				throw new UnknownRegistryException(
+						"Error occured while retrieving ratings from the user: " + e1.getMessage(), e1);
 			}
 		}
 	}
@@ -1141,7 +1093,8 @@ public class Registry {
 			} catch (RegistryException e1) {
 				throw new UnknownRegistryException(
 						"Error occured while retrieving the average ratings for the registry resource: "
-								+ e1.getMessage(), e1);
+								+ e1.getMessage(),
+						e1);
 			}
 		}
 	}
@@ -1155,8 +1108,8 @@ public class Registry {
 			try {
 				getRegistry().delete(path);
 			} catch (RegistryException e1) {
-				throw new UnknownRegistryException("Error occured while attempting to delete registry resource: "
-						+ e1.getMessage(), e1);
+				throw new UnknownRegistryException(
+						"Error occured while attempting to delete registry resource: " + e1.getMessage(), e1);
 			}
 		}
 	}
@@ -1177,8 +1130,8 @@ public class Registry {
 
 	}
 
-	public void restore(String destinationPath, Reader input) throws InvalidRegistryURLException,
-			UnknownRegistryException {
+	public void restore(String destinationPath, Reader input)
+			throws InvalidRegistryURLException, UnknownRegistryException {
 		try {
 			getRegistry().restore(destinationPath, input);
 		} catch (RegistryException e) {
@@ -1187,8 +1140,8 @@ public class Registry {
 			try {
 				getRegistry().restore(destinationPath, input);
 			} catch (RegistryException e1) {
-				throw new UnknownRegistryException("Error occured while restoring registry resource: "
-						+ e1.getMessage(), e1);
+				throw new UnknownRegistryException(
+						"Error occured while restoring registry resource: " + e1.getMessage(), e1);
 			}
 		}
 	}
@@ -1200,8 +1153,8 @@ public class Registry {
 						new QualifiedName("", new URL(serverUrl + REMOTE_REGISTRY_URL).toString()), null);
 				propertyFile.setSessionProperty(new QualifiedName("", new URL(serverUrl + WS_REGISTRY_URL).toString()),
 						null);
-				propertyFile.setSessionProperty(new QualifiedName("", new URL(serverUrl
-						+ PROVISIONING_ADMIN_SERVICE_URL).toString()), null);
+				propertyFile.setSessionProperty(
+						new QualifiedName("", new URL(serverUrl + PROVISIONING_ADMIN_SERVICE_URL).toString()), null);
 			}
 		} catch (CoreException e) {
 			log.error("Session property clearing process has failed due to  " + e.getMessage(), e);
@@ -1212,15 +1165,12 @@ public class Registry {
 
 	public WSResourceData getAll(String registryResourcePath) {
 		try {
-			if (isRegistryWSFeatureAvailable()) {
-
+			if (getRegistry() instanceof WSRegistryServiceClient) {
 				return ((WSRegistryServiceClient) getRegistry()).getStub().getAll(registryResourcePath);
 			}
 		} catch (RemoteException e) {
 			log.error("WS resource getting failed due to " + e.getMessage(), e);
 		} catch (InvalidRegistryURLException e) {
-			log.error("WS resource getting failed due to " + e.getMessage(), e);
-		} catch (UnknownRegistryException e) {
 			log.error("WS resource getting failed due to " + e.getMessage(), e);
 		} catch (WSRegistryServiceRegistryExceptionException e) {
 			log.error("WS resource getting failed due to " + e.getMessage(), e);

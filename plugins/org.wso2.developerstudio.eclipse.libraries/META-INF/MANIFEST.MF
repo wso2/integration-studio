@@ -612,6 +612,7 @@ Export-Package: com.damnhandy.uri.template;version="1.1.7.wso2v1",
    org.wso2.carbon.user.core,
    org.wso2.carbon.registry.core.jdbc.dataobjects,
    org.wso2.carbon.registry.core.dao",
+ org.wso2.carbon.registry.core.config,
  org.wso2.carbon.registry.core.exceptions;version="4.4.1";uses:="org.wso2.carbon.registry.api",
  org.wso2.carbon.registry.core.jdbc;version="4.4.1";
   uses:="org.wso2.carbon.registry.core.service,

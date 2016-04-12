@@ -98,7 +98,7 @@ public class CommitAction extends BaseRegistryAction {
 							return;
 						}
 					}
-					Registry.registryInit();
+//					Registry.registryInit();
 					RegistryCheckInClientUtils.commit(path, credentials.getUsername(), credentials.getUsername());
 					RegistryResourceDecorator.refreshProjectResource(file.getProject());
 					file.refreshLocal(IResource.DEPTH_INFINITE,new NullProgressMonitor());
@@ -237,7 +237,7 @@ public class CommitAction extends BaseRegistryAction {
 						return;
 					}
 				}
-				Registry.registryInit();
+//				Registry.registryInit();
 				RegistryCheckInClientUtils.commit(path, 
 										   credentials.getUsername(),
 										   credentials.getUsername());

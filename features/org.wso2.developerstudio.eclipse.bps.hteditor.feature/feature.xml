@@ -33,7 +33,7 @@
    <license url="%licenseURL">
       %license
    </license>
-   
+
    <plugin
          id="org.wso2.developerstudio.eclipse.embedded.tomcat"
          download-size="0"
@@ -54,7 +54,7 @@
          install-size="0"
          version="7.0.59.wso2v3"
          unpack="false"/>
-
+         
    <plugin
          id="org.wso2.developerstudio.humantaskeditor"
          download-size="0"

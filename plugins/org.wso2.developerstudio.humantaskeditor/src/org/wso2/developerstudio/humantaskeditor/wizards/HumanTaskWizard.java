@@ -96,7 +96,7 @@ public class HumanTaskWizard extends Wizard implements INewWizard {
             return false;
         } catch (InvocationTargetException e) {
             Throwable realException = e.getTargetException();
-            MessageDialog.openError(getShell(), HumantaskEditorConstants.ERROR_MESSAGE, realException.getMessage());
+            MessageDialog.openError(getShell(), HumantaskEditorConstants.ERROR_MESSAGE+"At Get Container", realException.getMessage());
             return false;
         }
         return true;
@@ -142,9 +142,8 @@ public class HumanTaskWizard extends Wizard implements INewWizard {
             logger.log(Level.FINE, HumantaskEditorConstants.ERROR_CREATING_INITIAL_FILE_MESSAGE, e);
             IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage());
             ErrorDialog.openError(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
-                    HumantaskEditorConstants.ERROR_MESSAGE,
+                    HumantaskEditorConstants.ERROR_MESSAGE+"At Streams",
                     HumantaskEditorConstants.ERROR_CREATING_INITIAL_FILE_MESSAGE, editorStatus);
-
         }
         monitor.worked(1);
         monitor.setTaskName(HumantaskEditorConstants.OPENING_FILE_FOR_EDITING_MESSAGE);
@@ -158,9 +157,9 @@ public class HumanTaskWizard extends Wizard implements INewWizard {
                     logger.log(Level.FINE, HumantaskEditorConstants.ERROR_OPENING_THE_EDITOR_MESSAGE, e);
                     IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage());
                     ErrorDialog.openError(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
-                            HumantaskEditorConstants.ERROR_MESSAGE,
+                            HumantaskEditorConstants.ERROR_MESSAGE+"At Display",
                             HumantaskEditorConstants.ERROR_OPENING_THE_EDITOR_MESSAGE, editorStatus);
-
+                    e.printStackTrace();
                 }
             }
         });

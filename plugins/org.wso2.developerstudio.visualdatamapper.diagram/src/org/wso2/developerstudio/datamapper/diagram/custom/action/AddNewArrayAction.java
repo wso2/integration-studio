@@ -66,6 +66,10 @@ public class AddNewArrayAction extends AbstractActionHandler {
 	private static final String JSON_SCHEMA_ARRAY_NAMESPACES = "arrayNamespaces";
 	private static final String JSON_SCHEMA_ARRAY_ITEMS_ID = "items_id";
 	private static final String JSON_SCHEMA_ARRAY_ITEMS_VALUE_TYPE = "items_value_type";
+	private static final String ELEMENT_IDENTIFIER = "type";
+	private static final String JSON_SCHEMA_ARRAY_ELEMENT_IDENTIFIERS = "arrayElementIdentifiers";
+	private static final String JSON_SCHEMA_ADDED_PROPERTIES_ID = "added_properties_id";
+	private static final String HAS_PROPERTIES = "hasProperties";
 
 	public AddNewArrayAction(IWorkbenchPart workbenchPart) {
 		super(workbenchPart);
@@ -131,11 +135,24 @@ public class AddNewArrayAction extends AbstractActionHandler {
 					setPropertyKeyValuePairforTreeNodes(treeNodeNew, propertyValueList, JSON_SCHEMA_ARRAY_NAMESPACES,
 							namespaces);
 				}
+				if(StringUtils.isNotEmpty(objectDialog.getIdentifierType())){
+					String type = "{"+ ELEMENT_IDENTIFIER + "="+ objectDialog.getIdentifierType()+"}";
+					setPropertyKeyValuePairforTreeNodes(treeNodeNew, propertyValueList, JSON_SCHEMA_ARRAY_ELEMENT_IDENTIFIERS,
+							type);
+				}
+				if(StringUtils.isNotEmpty(objectDialog.getIdentifierType()) && StringUtils.isNotEmpty(objectDialog.getIdentifierValue())){
+					String fullName = objectDialog.getIdentifierType() + "=" + objectDialog.getIdentifierValue();
+					treeNodeNew.setName(objectDialog.getTitle()+", "+fullName);
+				}
 			
 				//Sets the values for items field which is used for serializing the array
 				setPropertyKeyValuePairforTreeNodes(treeNodeNew, propertyValueList, JSON_SCHEMA_ARRAY_ITEMS_ID, objectDialog.getID()+"/0");
 				//sets the value type if item holds a value
+				if(StringUtils.isNotEmpty(objectDialog.getValue())){
 				setPropertyKeyValuePairforTreeNodes(treeNodeNew, propertyValueList, JSON_SCHEMA_ARRAY_ITEMS_VALUE_TYPE,objectDialog.getValue());
+				}
+				//sets the properties ID to be used in the serialization of the object
+				setPropertyKeyValuePairforTreeNodes(treeNodeNew, propertyValueList, JSON_SCHEMA_ADDED_PROPERTIES_ID, HAS_PROPERTIES);
 				
 				/*
 				 * AddCommand is used to avoid concurrent updating. index 0 to

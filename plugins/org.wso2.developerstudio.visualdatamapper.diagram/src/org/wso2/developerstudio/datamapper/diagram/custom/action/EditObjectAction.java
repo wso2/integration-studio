@@ -68,6 +68,9 @@ public class EditObjectAction extends AbstractActionHandler {
 	private static final String HAS_PROPERTIES = "hasProperties";
 	private static final String JSON_SCHEMA_OBJECT_NAMESPACES = "objectNamespaces";
 	private static final String JSON_SCHEMA_OBJECT_VALUE_TYPE = "object_value_type";
+	private static final String ELEMENT_IDENTIFIER = "type";
+	private static final String JSON_SCHEMA_OBJECT_ELEMENT_IDENTIFIERS = "objectElementIdentifiers";
+
 
 	private String title = null;
 	private String schemaType = null;
@@ -79,6 +82,8 @@ public class EditObjectAction extends AbstractActionHandler {
 	private String required = null;
 	private String name = null;
 	private String value = null;
+	private String identifierType = null;
+	private String identifierValue = null;
 	private static final String NAMESPACE_PREFIX = "prefix";
 	private static final String NAMESPACE_URL = "url";
 
@@ -102,18 +107,40 @@ public class EditObjectAction extends AbstractActionHandler {
 			// Used to identify the selected resource of the model
 			TreeNode selectedNode = (TreeNode) object;
 
-			title = selectedNode.getName();			
-			if(title.contains(":")){
+			title = selectedNode.getName();	
+			String[] valueofElementIdentifier = null;
+			// If the element contains a xsi:type then split from ',' and get the
+			// name with the prefix
+			if (title.contains(",")) {
+				valueofElementIdentifier = title.split(",");
+				title = valueofElementIdentifier[0];
+				if (title.contains(":")) {
+					// If element contains both xsi:type and namespace prefix
+					int index = title.indexOf(":");
+					name = title.substring(index+1, title.length());
+				} else {
+					// If element contains only the xsi:type
+					name = title;
+				}
+			} else if (title.contains(":")) {
+				// If element conatains a namespace prefix
 				int index = title.indexOf(":");
 				name = title.substring(index+1, title.length());
-			}else{
+			} else {
+				// If element doesn't contains a namespace prefix or xsi:type
 				name = title;
 			}
+	
 			schemaType = setProerties(selectedNode, JSON_SCHEMA_TYPE);
 			id = setProerties(selectedNode, JSON_SCHEMA_ID);
 			required = setProerties(selectedNode, JSON_SCHEMA_REQUIRED);
 			schemaValue = setProerties(selectedNode, JSON_SCHEMA_SCHEMA_VALUE);
 			value = setProerties(selectedNode, JSON_SCHEMA_OBJECT_VALUE_TYPE);
+			if(valueofElementIdentifier != null){
+			String[] identifier = valueofElementIdentifier[1].split("=");
+			identifierType = identifier[0];
+			identifierValue= identifier[1];
+			}
 			//gets the root element's namespace
 			namespaces = setProerties(selectedNode, JSON_SCHEMA_NAMESPACES);
 			if(namespaces == null){
@@ -124,7 +151,7 @@ public class EditObjectAction extends AbstractActionHandler {
 				formatedNamespace = formatNamespace(namespaces).toString();
 				newNamespace = formatedNamespace.substring(1, formatedNamespace.toString().length()-1);
 			}
-			openEditRecordDialog(selectedNode, name, schemaType, id, required, schemaValue,newNamespace,value);
+			openEditRecordDialog(selectedNode, name, schemaType, id, required, schemaValue,newNamespace,value,identifierType,identifierValue);
 
 		}
 	}
@@ -283,16 +310,18 @@ public class EditObjectAction extends AbstractActionHandler {
 	 *            required
 	 * @param schemaValue
 	 *            schema value
+	 * @param identifierValue2 
+	 * @param identifierType2 
 	 */
 	private void openEditRecordDialog(TreeNode selectedNode, String title, String schemaType, String id,
-			String required, String schemaValue, String namespaces, String value) {
+			String required, String schemaValue, String namespaces, String value, String identifierType, String identifierValue) {
 		Display display = Display.getDefault();
 		Shell shell = new Shell(display);
 		AddNewObjectDialog editTypeDialog = new AddNewObjectDialog(shell, new Class[] { IRegistryFile.class });
 
 		editTypeDialog.create();
 		editTypeDialog.setTypeWhenEditing(schemaType);
-		editTypeDialog.setValues(title, schemaType, id, required, schemaValue,namespaces,value);
+		editTypeDialog.setValues(title, schemaType, id, required, schemaValue,namespaces,value,identifierType,identifierValue);
 		editTypeDialog.open();
 
 		if (editTypeDialog.getOkValue()) {
@@ -333,8 +362,18 @@ public class EditObjectAction extends AbstractActionHandler {
 			//sets the properties ID to be used in serialization
 			valueMap.put(JSON_SCHEMA_ADDED_PROPERTIES_ID, HAS_PROPERTIES);
 			//sets the object's type if object hold a value
+			if(StringUtils.isNotEmpty(editTypeDialog.getValue())){
 			valueMap.put(JSON_SCHEMA_OBJECT_VALUE_TYPE, editTypeDialog.getValue());
+			}
 			
+			if(StringUtils.isNotEmpty(editTypeDialog.getIdentifierType())){
+				String type = "{"+ ELEMENT_IDENTIFIER + "="+ editTypeDialog.getIdentifierType()+"}";
+				valueMap.put(JSON_SCHEMA_OBJECT_ELEMENT_IDENTIFIERS, type);
+			}
+			if(StringUtils.isNotEmpty(editTypeDialog.getIdentifierType()) && StringUtils.isNotEmpty(editTypeDialog.getIdentifierValue())){
+				String fullName = editTypeDialog.getIdentifierType() + "=" + editTypeDialog.getIdentifierValue();
+				valueMap.put(JSON_SCHEMA_TITLE, editTypeDialog.getTitle()+", "+fullName);
+			}
 			reflectChanges(selectedNode, valueMap);
 
 		}

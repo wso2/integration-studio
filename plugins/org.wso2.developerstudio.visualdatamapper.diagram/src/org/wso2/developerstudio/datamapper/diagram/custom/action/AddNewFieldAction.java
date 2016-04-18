@@ -67,7 +67,8 @@ public class AddNewFieldAction extends AbstractActionHandler {
 	private static final String JSON_SCHEMA_FIELD_NAMESPACES = "fieldNamespaces";
 	private static final String JSON_SCHEMA_ADDED_PROPERTIES_ID = "added_properties_id";
 	private static final String HAS_PROPERTIES = "hasProperties";
-
+	private static final String ELEMENT_IDENTIFIER = "type";
+	private static final String JSON_SCHEMA_FIELD_ELEMENT_IDENTIFIERS = "fieldElementIdentifiers";
 
 	public AddNewFieldAction(IWorkbenchPart workbenchPart) {
 		super(workbenchPart);
@@ -130,7 +131,15 @@ public class AddNewFieldAction extends AbstractActionHandler {
 					setPropertyKeyValuePairforTreeNodes(treeNodeNew, propertyValueList, JSON_SCHEMA_FIELD_NAMESPACES,
 							namespaces);
 				}
-				
+				if(StringUtils.isNotEmpty(objectDialog.getIdentifierType())){
+					String type = "{"+ ELEMENT_IDENTIFIER + "="+ objectDialog.getIdentifierType()+"}";
+					setPropertyKeyValuePairforTreeNodes(treeNodeNew, propertyValueList, JSON_SCHEMA_FIELD_ELEMENT_IDENTIFIERS,
+							type);
+				}
+				if(StringUtils.isNotEmpty(objectDialog.getIdentifierType()) && StringUtils.isNotEmpty(objectDialog.getIdentifierValue())){
+					String fullName = objectDialog.getIdentifierType() + "=" + objectDialog.getIdentifierValue();
+					treeNodeNew.setName(objectDialog.getTitle()+", "+fullName);
+				}
 				//sets the properties ID to be used in the serialization for fields
 				setPropertyKeyValuePairforTreeNodes(treeNodeNew, propertyValueList, JSON_SCHEMA_ADDED_PROPERTIES_ID, HAS_PROPERTIES);
 				

@@ -935,11 +935,11 @@ public class SchemaTransformer implements ISchemaTransformer {
 			recursiveSchemaGenerator(treeNodeModel, propertiesObject, root);
 			// Adds all the namespaces to the root element
 			String newNamespaceArray = StringUtils.join(namespaceList, ',');
-			JSONArray nameArray = getNameJSONArray(namespaceArray, newNamespaceArray);
+			JSONArray nameArray = getJSONArray(namespaceArray, newNamespaceArray);
 			root.put(JSON_SCHEMA_NAMESPACES, nameArray);
 			// Adds element identifiers to the root element
 			String newElementIdentifiersArray = StringUtils.join(elementIdentifierList, ',');
-			JSONArray identifierArray = getNameJSONArray(elementIdentifiersArray, newElementIdentifiersArray);
+			JSONArray identifierArray = getJSONArray(elementIdentifiersArray, newElementIdentifiersArray);
 			root.put(JSON_SCHEMA_ELEMENT_IDENTIFIERS, identifierArray);
 		}
 		return root.toJSONString();
@@ -1348,7 +1348,7 @@ public class SchemaTransformer implements ISchemaTransformer {
 	 * @return
 	 */
 	@SuppressWarnings("unchecked")
-	private JSONArray getNameJSONArray(JSONArray requiredArayArray, String schemaElement) {
+	private JSONArray getJSONArray(JSONArray requiredArayArray, String schemaElement) {
 		JSONObject jsonObj;
 		Pattern logEntry = Pattern.compile("\\{(.*?)\\}");
 		Matcher matchPattern = logEntry.matcher(schemaElement);

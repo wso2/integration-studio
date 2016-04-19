@@ -26,6 +26,8 @@ import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
+import org.eclipse.swt.events.MouseEvent;
+import org.eclipse.swt.events.MouseListener;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.layout.GridData;
@@ -36,6 +38,7 @@ import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
+import org.wso2.developerstudio.appcloud.utils.authentication.CloudLogin;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.registry.base.logger.ExceptionHandler;
@@ -45,7 +48,7 @@ import org.wso2.developerstudio.eclipse.registry.manager.remote.Activator;
 
 public class RegistryInfoDialog extends Dialog {
 
-	private static IDeveloperStudioLog log=Logger.getLog(Activator.PLUGIN_ID);
+	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 	private static final String DEFAULT_USERNAME = "admin";
 	private static final String DEFAULT_PASSWORD = "admin";
 	private static final String DEFAULT_CARBON_SERVER_URL = "https://localhost:9443/";
@@ -56,6 +59,8 @@ public class RegistryInfoDialog extends Dialog {
 	private Text urlText;
 	private Text userNameText;
 	private Text pwdText;
+	private Button isCloud;
+	private Label userNameLabel;
 	private Shell mainShell;
 	private RegistryURLNode regURLData;
 	private boolean savePassword;
@@ -70,20 +75,21 @@ public class RegistryInfoDialog extends Dialog {
 		mainShell = parentShell;
 		this.regURLData = regUrlData;
 	}
-	
-	public RegistryInfoDialog(Shell parentShell, RegistryURLNode regUrlData,String path) {
+
+	public RegistryInfoDialog(Shell parentShell, RegistryURLNode regUrlData, String path) {
 		super(parentShell);
 		mainShell = parentShell;
 		this.regURLData = regUrlData;
 		startpath = path;
 
 	}
+
 	public void create() {
 		super.create();
 	}
 
 	public Control createDialogArea(final Composite parent) {
-		String title="Add Registry";
+		String title = "Add Registry";
 
 		parent.getShell().setText(title);
 		GridData gd;
@@ -91,8 +97,42 @@ public class RegistryInfoDialog extends Dialog {
 		GridLayout layout = new GridLayout();
 		layout.numColumns = 2;
 		container.setLayout(layout);
-		gd = new GridData(GridData.FILL_HORIZONTAL
-				| GridData.VERTICAL_ALIGN_FILL);
+
+		gd = new GridData(GridData.FILL_HORIZONTAL | GridData.VERTICAL_ALIGN_FILL);
+		container.setLayoutData(gd);
+		Label chkBoxLabel = new Label(container, SWT.NONE);
+		chkBoxLabel.setText("Connect to WSO2 App Cloud");
+		gd = new GridData();
+		chkBoxLabel.setLayoutData(gd);
+
+		isCloud = new Button(container, SWT.CHECK);
+		gd = new GridData(GridData.FILL_BOTH);
+		isCloud.setLayoutData(gd);
+		isCloud.setSelection(false);
+		isCloud.addSelectionListener(new SelectionListener() {
+
+			@Override
+			public void widgetSelected(SelectionEvent arg0) {
+				urlText.setEnabled(!isCloud.getSelection());
+				if (isCloud.getSelection()) {
+					urlText.setText("https://apps.cloud.wso2.com");
+					userNameLabel.setText("E mail : ");
+				} else {
+					urlText.setText(DEFAULT_CARBON_SERVER_URL);
+					userNameLabel.setText("User Name : ");
+				}
+
+			}
+
+			@Override
+			public void widgetDefaultSelected(SelectionEvent arg0) {
+				// TODO Auto-generated method stub
+
+			}
+
+		});
+
+		gd = new GridData(GridData.FILL_HORIZONTAL | GridData.VERTICAL_ALIGN_FILL);
 		container.setLayoutData(gd);
 		Label urlLabel = new Label(container, SWT.NONE);
 		urlLabel.setText("URL: ");
@@ -102,6 +142,7 @@ public class RegistryInfoDialog extends Dialog {
 		urlText = new Text(container, SWT.BORDER);
 		gd = new GridData(GridData.FILL_HORIZONTAL);
 		urlText.setLayoutData(gd);
+		urlText.setEnabled(!isCloud.getSelection());
 
 		urlText.addModifyListener(new ModifyListener() {
 			public void modifyText(ModifyEvent event) {
@@ -113,8 +154,8 @@ public class RegistryInfoDialog extends Dialog {
 
 		setPath(startpath);
 
-		Label userNameLabel = new Label(container, SWT.NONE);
-		userNameLabel.setText("User Name: ");
+		userNameLabel = new Label(container, SWT.NONE);
+		userNameLabel.setText("User Name : ");
 
 		gd = new GridData(GridData.FILL_HORIZONTAL);
 		gd.heightHint = 18;
@@ -130,7 +171,7 @@ public class RegistryInfoDialog extends Dialog {
 		});
 
 		Label pwdLabel = new Label(container, SWT.NONE);
-		pwdLabel.setText("Password: ");
+		pwdLabel.setText("Password : ");
 		gd = new GridData(GridData.FILL_HORIZONTAL);
 		gd.heightHint = 18;
 		gd.widthHint = 100;
@@ -144,18 +185,19 @@ public class RegistryInfoDialog extends Dialog {
 				setPasswd(passwd);
 
 			}
-		});		
-		
+		});
 		createAdditionalUIs(container);
-		//FIXME - This should be taken from Eclipse Preference store then a user can defien his/her default path...etc
+
+		// FIXME - This should be taken from Eclipse Preference store then a
+		// user can defien his/her default path...etc
 		setDefaultValuesForLoginDialog(DEFAULT_CARBON_SERVER_URL, DEFAULT_USERNAME, DEFAULT_PASSWORD);
 		return super.createDialogArea(parent);
 	}
 
-	public void createAdditionalUIs(Composite container ) {
-	    // TODO Auto-generated method stub
-	    
-    }
+	public void createAdditionalUIs(Composite container) {
+		// TODO Auto-generated method stub
+
+	}
 
 	public void setDefaultValuesForLoginDialog(String url, String userName, String pwd) {
 		urlText.setText(url);
@@ -166,16 +208,18 @@ public class RegistryInfoDialog extends Dialog {
 	protected void okPressed() {
 		exceptionHandler = new ExceptionHandler();
 		try {
+			if (isCloud.getSelection() == true) {
+				CloudLogin cloudLogin = new CloudLogin();
+				cloudLogin.setAppCloud(true);
+				cloudLogin.login(userNameText.getText(), pwdText.getText());
+			}
 			doFinish();
 		} catch (MalformedURLException e) {
-			dialogStatus = exceptionHandler.showMessage(mainShell,
-					"Cannot establish the connection with given URL");
+			dialogStatus = exceptionHandler.showMessage(mainShell, "Cannot establish the connection with given URL");
 		} catch (URISyntaxException e) {
-			dialogStatus = exceptionHandler.showMessage(mainShell,
-					"Cannot establish the connection with given URL");
+			dialogStatus = exceptionHandler.showMessage(mainShell, "Cannot establish the connection with given URL");
 		} catch (Exception e) {
-			dialogStatus = exceptionHandler.showMessage(mainShell,
-					"Cannot establish the connection with given URL");
+			dialogStatus = exceptionHandler.showMessage(mainShell, "Cannot establish the connection with given URL");
 		}
 
 		if (dialogStatus == true) {
@@ -192,7 +236,7 @@ public class RegistryInfoDialog extends Dialog {
 		URI pathUri = new URI(getServerUrl());
 		URL path = pathUri.toURL();
 	}
-	
+
 	public String getServerUrl() {
 		return serverUrl;
 	}

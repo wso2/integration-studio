@@ -45,6 +45,7 @@
 		<module>org.wso2.developerstudio.eclipse.artifact.library</module>
 		<module>org.wso2.developerstudio.eclipse.maven.multi.module</module>
 		<module>org.wso2.developerstudio.webeditor</module>
+		<module>org.wso2.developerstudio.appcloud.utils</module>
 	</modules>
 	<build>
 		<plugins>

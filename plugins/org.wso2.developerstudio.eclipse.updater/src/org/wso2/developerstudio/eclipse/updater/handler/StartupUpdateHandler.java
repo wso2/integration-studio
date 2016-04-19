@@ -52,6 +52,7 @@ public class StartupUpdateHandler implements IStartup {
 		// check if user has set startup updates
 		// Read updater preferences
 		IPreferenceStore prefPage = PlatformUI.getPreferenceStore();
+		UpdateCheckerPreferencePage.setPreferenceDefaults(prefPage);
 		boolean isAutomaticUpdate = prefPage.getBoolean(PreferenceConstants.ENABLE_AUTOMATIC_UPDATES);
 		String updateRunConfig = prefPage.getString(PreferenceConstants.UPDATE_RUNNING_CONFIGURATION);
 		if (updateRunConfig == null || updateRunConfig.isEmpty()) {

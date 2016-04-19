@@ -61,6 +61,7 @@ public class UpdateMetaFileReaderJob extends Job {
 	public static final String folderLoc = System.getProperty(JAVA_IO_TMPDIR) + File.separator + "DevStudioUpdater";
 	public static final String fileLoc = folderLoc + File.separator + UPDATES_TXT_FILE;
 	private static final int TIME_OUT_MS = 1000;
+	private static final String URL_VALIDATOR = "/";
 	protected UpdateManager updateManager;
 	public int updateCount = 0;
 
@@ -176,6 +177,10 @@ public class UpdateMetaFileReaderJob extends Job {
 			String url = preferenceStore.getString(PreferenceConstants.UPDATE_SITE_URL);
 			if (url == null || url.isEmpty()) {
 				url = PreferenceInitializer.DEFAULT_UPDATE_SITE;
+			}
+			//If user doesn't include a '/' after the url then adds a '/'
+			if(!url.endsWith(URL_VALIDATOR)){
+				url = url + URL_VALIDATOR;
 			}
 			URL link = new URL(url + UPDATES_TXT_FILE);
 			FileUtils.copyURLToFile(link, updateFile, TIME_OUT_MS, TIME_OUT_MS);

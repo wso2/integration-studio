@@ -545,11 +545,6 @@ public class SchemaTransformer implements ISchemaTransformer {
 						// When the array is a primitive array then add the type
 						// to the map
 					}
-					if (getSchemaItems(subSchema).containsKey(JSON_SCHEMA_TYPE)) {
-						Map<String, Object> itemMap = getSchemaItems(subSchema);
-						setPropertyKeyValuePairforTreeNodes(treeNode, propertyValueList,
-								JSON_SCHEMA_ARRAY_ITEMS_VALUE_TYPE, itemMap.get(JSON_SCHEMA_TYPE).toString());
-					}
 				}
 			} else {
 				// If the element is an attribute then adds the prefix @
@@ -1065,7 +1060,9 @@ public class SchemaTransformer implements ISchemaTransformer {
 							valueObject.put(JSON_SCHEMA_TYPE, objectValueBlockType);
 							nodeObject.put(JSON_SCHEMA_VALUE, valueObject);
 						}
-						if (propertiesId != null) {
+						//If an object doesn't contain properties, then avoid serializing the properties field
+						EList<TreeNode> childList = node.getNode();
+						if(childList.size()>0){
 							nodeObject.put(JSON_SCHEMA_PROPERTIES, propertiesObject);
 						}
 						parent.put(node.getName(), nodeObject);
@@ -1220,7 +1217,9 @@ public class SchemaTransformer implements ISchemaTransformer {
 							 * "http://wso2jsonschema.org/phone/phone", "type"
 							 * :"number" }]
 							 */
+							if(!itemProperties.containsKey(JSON_SCHEMA_TYPE)){
 							itemProperties.put(JSON_SCHEMA_TYPE, arrayValueBlockType);
+							}
 						
 							if (StringUtils.isNotEmpty(addedObjectNamespaces)) {
 								// If namespaces are available when creating the

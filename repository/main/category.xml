@@ -45,6 +45,9 @@
  <feature id="org.wso2.developerstudio.mvn.multimodule.feature" version="0.0.0">
       <category name="org.wso2.developerstudio.kernel.platform.bundles"/>
    </feature>
+ <feature id="org.wso2.developerstudio.cloud.utils.feature" version="0.0.0">
+      <category name="org.wso2.developerstudio.kernel.platform.bundles"/>
+   </feature>
 <feature id="org.wso2.developerstudio.web.ui.feature" version="0.0.0">
       <category name="org.wso2.developerstudio.kernel.web.ui.bundles"/>
    </feature>

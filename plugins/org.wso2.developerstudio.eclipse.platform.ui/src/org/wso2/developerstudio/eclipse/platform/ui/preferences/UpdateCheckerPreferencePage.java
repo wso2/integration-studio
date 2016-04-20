@@ -200,9 +200,7 @@ public class UpdateCheckerPreferencePage extends FieldEditorPreferencePage imple
 			}
 			intervalDayEditor.setEnabled(isScheduler, enableDisableSet);
 			intervalTimeEditor.setEnabled(isScheduler, enableDisableSet);
-		} else if (PreferenceConstants.UPDATE_DATE_INTERVAL.equals(fe.getPreferenceName())) {
-
-		}
+		} 
 		super.propertyChange(event);
 	}
 

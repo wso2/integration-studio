@@ -61,7 +61,6 @@ public class PreferenceConstants {
 	
 	public static final String UPDATE_DATE_INTERVAL = "UPDATE_INTAVAL_DATE";
 	public static final String UPDATE_TIME_INTERVAL = "UPDATE_INTAVAL_TIME";
-	public static final String AUTOMATIC_UPDATE_STATUS = "AUTOMATIC_UPATE_STATUS";
 	public static final String ENABLE_AUTOMATIC_UPDATES = "ENABLING_DEVSTUDIO_AUTOMATIC_UPDATES";
 
 	public static final String DOWNLOAD_UPDATES = "&Install available updates automatically";

@@ -26,6 +26,7 @@ import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.platform.ui.preferences.PreferenceConstants;
+import org.wso2.developerstudio.eclipse.platform.ui.preferences.UpdateCheckerPreferencePage;
 import org.wso2.developerstudio.eclipse.updater.Messages;
 import org.wso2.developerstudio.eclipse.updater.UpdaterPlugin;
 import org.wso2.developerstudio.eclipse.updater.core.UpdateManager;
@@ -37,7 +38,7 @@ public class UpdateMetaFileReaderJobListener extends JobChangeAdapter {
 	private static final String SET_LATER = "Not Now";
 	private static final String UPDATER_DIALOG_TITLE = Messages.UpdatemetaFileReaderJobListener_1;
 	protected static final String YES = "Yes";
-	protected static final String NO = "No";
+	protected static final String NO = "Never";
 	private static org.wso2.developerstudio.eclipse.updater.job.UpdateMetaFileReaderJob UpdateMetaFileReaderJob;
 
 	protected static IDeveloperStudioLog log = Logger.getLog(UpdaterPlugin.PLUGIN_ID);
@@ -69,6 +70,9 @@ public class UpdateMetaFileReaderJobListener extends JobChangeAdapter {
 						int userPref = getUserPreference(UPDATER_DIALOG_TITLE, displayMsg);
 						if (userPref == 0 || userPref == USER_SCHEDULED_AUTOMATIC_INSTALL) {
 							executeUpdateJob();
+						} else if (userPref == 1) { // user specified "never"
+							IPreferenceStore prefPage = PlatformUI.getPreferenceStore();
+							prefPage.setValue(PreferenceConstants.ENABLE_AUTOMATIC_UPDATES, false);
 						}
 
 					} catch (Exception e) {

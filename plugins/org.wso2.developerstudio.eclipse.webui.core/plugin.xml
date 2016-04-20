@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>  
+    <extension point="org.wso2.developerstudio.kernel.wso2plugin.template">
+       <template
+           id="org.wso2.webeditor.plugin.sample"
+           name="Web Editor"
+           archive="samples/SampleWebEditor.zip"
+           icon="icons/web-ui.png"
+           description="This is a sample Web Editor. This is a platform to implement user interfaces and editors using web technologies 
+           (HTML, CSS and Javascript front-end with a J2EE backend or with a no backend - static app). 
+           This platform utilizes SWT Browser widget and Embedded Apache Tomcat server as the base." >       
+      </template>
+   </extension>
+</plugin>
+

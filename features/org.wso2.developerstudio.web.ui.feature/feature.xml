@@ -18,7 +18,7 @@
    </license>
 
    <plugin
-         id="org.wso2.developerstudio.webeditor"
+         id="org.wso2.developerstudio.eclipse.webui.core"
          download-size="0"
          install-size="0"
          version="0.0.0"

@@ -40,7 +40,6 @@ import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.ui.part.MultiPageEditorPart;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
-import org.wso2.developerstudio.eclipse.platform.ui.utils.WebEngineUtils;
 import org.wso2.developerstudio.eclipse.webui.core.WebUICorePlugin;
 import org.wso2.developerstudio.eclipse.webui.core.editor.function.CustomEditorFunction;
 import org.wso2.developerstudio.eclipse.webui.core.editor.function.ExecuteUndoableTaskFunction;
@@ -136,7 +135,8 @@ public abstract class AbstractWebBasedEditor extends EditorPart {
 	@Override
 	public void createPartControl(Composite parent) {
 		try {
-			browser = new Browser(parent, WebEngineUtils.getBrowserType());
+
+			browser = new Browser(parent, SWT.NONE);
 			browser.setUrl(getEditorURL());
 			browser.addControlListener(new ControlListener() {
 				public void controlResized(ControlEvent e) {

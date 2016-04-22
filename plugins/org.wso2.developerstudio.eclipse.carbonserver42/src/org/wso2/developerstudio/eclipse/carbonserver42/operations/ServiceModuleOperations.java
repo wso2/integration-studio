@@ -101,9 +101,11 @@ public class ServiceModuleOperations {
 		if (projectPublishers != null && !projectPublishers.isEmpty()) {
 			for (ICarbonServerModulePublisher publisher : projectPublishers) {
 				try {
-					carbonUtils.publishWebApp(publisher, CARBONSERVER_PUBLISHER_EXTENSION_ID,
+					if (!carbonUtils.publishWebApp(publisher, CARBONSERVER_PUBLISHER_EXTENSION_ID,
 					                          WEBAPP_PROJECT_PUBLISHER42_ID, resource, resourceChngeKind, project,
-					                          server);
+					                          server)) {
+						publisher.hotUpdate(project, server, null, null);
+					}
 				} catch (Exception e) {
 					log.error(e);
 				}

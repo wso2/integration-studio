@@ -17,6 +17,8 @@ package org.wso2.developerstudio.eclipse.updater.job;
 
 import java.util.Date;
 
+import javax.net.ssl.SSLEngineResult.Status;
+
 import org.eclipse.core.runtime.jobs.IJobChangeEvent;
 import org.eclipse.core.runtime.jobs.JobChangeAdapter;
 import org.eclipse.core.runtime.preferences.ConfigurationScope;
@@ -33,16 +35,13 @@ import org.wso2.developerstudio.eclipse.updater.ui.UpdaterDialog.ActiveTab;
 
 public class UpdateCheckerJobListener extends JobChangeAdapter {
 
-	protected static IDeveloperStudioLog log = Logger
-			.getLog(UpdaterPlugin.PLUGIN_ID);
+	protected static IDeveloperStudioLog log = Logger.getLog(UpdaterPlugin.PLUGIN_ID);
 
 	protected UpdateManager updateManager;
 	protected ActiveTab activeTab;
 	protected boolean isAutomaticUpdater;
 
-	public UpdateCheckerJobListener(UpdateManager updateManager,
-			ActiveTab activeTab,
-			boolean isAutomaticUpdater) {
+	public UpdateCheckerJobListener(UpdateManager updateManager, ActiveTab activeTab, boolean isAutomaticUpdater) {
 		this.updateManager = updateManager;
 		this.activeTab = activeTab;
 		this.isAutomaticUpdater = isAutomaticUpdater;
@@ -50,34 +49,32 @@ public class UpdateCheckerJobListener extends JobChangeAdapter {
 
 	@Override
 	public void done(IJobChangeEvent event) {
-		Display.getDefault().syncExec(new Runnable() {
-			@Override
-			public void run() {
-				try {
-					// Wait half a second to let progress reporting complete
-					// FIXME: Find a proper fix
-					Thread.sleep(500);	
-					// Set last check for Updates Time-stamp in OSGI bundle prefs
-					Preferences preferences = ConfigurationScope.INSTANCE
-							.getNode(Constants.NODE_UPDATE_HANDER);
-					preferences.putLong(Constants.PREF_LAST_PROMPT_FOR_UPDATES,
-							new Date().getTime());
-					preferences.flush();
-					
-					if(isAutomaticUpdater && !updateManager.hasPossibleUpdates()){
-						// no updates - no need to open the window
-						return;
+		if (event.getResult().isOK()) {
+			Display.getDefault().syncExec(new Runnable() {
+				@Override
+				public void run() {
+					try {
+						// Wait half a second to let progress reporting complete
+						// FIXME: Find a proper fix
+						Thread.sleep(500);
+						// Set last check for Updates Time-stamp in OSGI bundle
+						// prefs
+						Preferences preferences = ConfigurationScope.INSTANCE.getNode(Constants.NODE_UPDATE_HANDER);
+						preferences.putLong(Constants.PREF_LAST_PROMPT_FOR_UPDATES, new Date().getTime());
+						preferences.flush();
+						UpdateCheckerJob.setIsJobRunning(false);
+						if (isAutomaticUpdater && !updateManager.hasPossibleUpdates()) {
+							// no updates - no need to open the window
+							return;
+						}
+
+						UpdaterDialog dialog = new UpdaterDialog(updateManager, activeTab);
+						dialog.open();
+					} catch (Exception e) {
+						log.error(Messages.UpdateCheckerJobListener_0, e);
 					}
-
-					UpdaterDialog dialog = new UpdaterDialog(updateManager,
-							activeTab);
-					dialog.open();
-
-				} catch (Exception e) {
-					log.error(Messages.UpdateCheckerJobListener_0, e);
 				}
-			}
-		});
+			});
+		}
 	}
-
 }

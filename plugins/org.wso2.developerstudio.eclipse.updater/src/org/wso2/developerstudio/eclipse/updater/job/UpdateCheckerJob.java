@@ -20,6 +20,9 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.SubMonitor;
 import org.eclipse.core.runtime.jobs.Job;
+import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.swt.widgets.Display;
+import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.updater.Messages;
@@ -29,10 +32,18 @@ import org.wso2.developerstudio.eclipse.updater.core.UpdateManager;
 public class UpdateCheckerJob extends Job {
 
 	protected UpdateManager updateManager;
-	
-	protected static IDeveloperStudioLog log = Logger
-			.getLog(UpdaterPlugin.PLUGIN_ID);
-	
+
+	protected static boolean isCurrentJobRunning = false;
+	public synchronized static boolean isJobRunning() {
+		return isCurrentJobRunning;
+	}
+
+	public synchronized static void setIsJobRunning(boolean isJobRunning) {
+		isCurrentJobRunning = isJobRunning;
+	}
+
+	protected static IDeveloperStudioLog log = Logger.getLog(UpdaterPlugin.PLUGIN_ID);
+
 	public UpdateCheckerJob(UpdateManager updateManager) {
 		super(Messages.UpdateCheckerJob_0);
 		this.updateManager = updateManager;
@@ -41,16 +52,41 @@ public class UpdateCheckerJob extends Job {
 	@Override
 	protected IStatus run(IProgressMonitor monitor) {
 		try {
-			SubMonitor progress = SubMonitor.convert(monitor,
-					Messages.UpdateCheckerJob_1, 2);
-			updateManager
-					.checkForAvailableUpdates(progress.newChild(1));
-			updateManager.checkForAvailableFeatures(progress
-					.newChild(1));
+			if (!isJobRunning()) {
+				setIsJobRunning(true);
+				SubMonitor progress = SubMonitor.convert(monitor, Messages.UpdateCheckerJob_1, 2);
+				updateManager.checkForAvailableUpdates(progress.newChild(1));
+				updateManager.checkForAvailableFeatures(progress.newChild(1));
+				return Status.OK_STATUS;
+			} else {
+				Display.getDefault().syncExec(new Runnable() {
+					@Override
+					public void run() {
+						try {
+							MessageDialog dialog = new MessageDialog(Display.getDefault().getActiveShell(),
+									"Updater Tool in Progress", null, "Updater tool is already in Progress",
+									MessageDialog.INFORMATION, new String[] { "OK" }, 0);
+							dialog.open();
+						} catch (Exception e) {
+							
+						}
+					}
+					// pop up user message saying an updater job is already
+					// running
+				});
+			}
 		} catch (Exception e) {
 			log.error(Messages.UpdateCheckerJob_2, e);
 		}
-		return Status.OK_STATUS;
+		return Status.CANCEL_STATUS;
 	}
+	
+	@Override
+	protected void canceling() {
+		setIsJobRunning(false);
+		super.canceling();
+	}
+	
+	
 
 }

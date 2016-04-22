@@ -133,10 +133,11 @@ public class CarbonUtils {
 		return srcPaths;
 	}
 
-	public void publishWebApp(ICarbonServerModulePublisher publisher, String extensionID, String webProjectPublisherID,
+	public boolean publishWebApp(ICarbonServerModulePublisher publisher, String extensionID, String webProjectPublisherID,
 	                          IResource resource, int resourceChngeKind, IProject project, IServer server)
 	                                                                                                      throws CoreException,
 	                                                                                                      Exception {
+		boolean status = false;
 		DeveloperStudioProviderUtils developerstudioUtils = new DeveloperStudioProviderUtils();
 		IConfigurationElement[] registeredPublishers = developerstudioUtils.getExtensionPointmembers(extensionID);
 		for (IConfigurationElement registeredPublisher : registeredPublishers) {
@@ -144,8 +145,10 @@ public class CarbonUtils {
 				execClassObject = registeredPublisher.createExecutableExtension("class");
 				executeExtension(execClassObject, resource, resourceChngeKind);
 				publisher.hotUpdate(project, server, null, null);
+				status = true;
 			}
 		}
+		return status;
 	}
 
 	public void executeExtension(final Object execClass, final IResource resource, final int resourceChngeKind) {

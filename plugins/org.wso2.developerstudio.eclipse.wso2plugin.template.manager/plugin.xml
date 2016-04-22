@@ -29,4 +29,15 @@
 			<description>WSO2 Plugin Project</description>
 		</wizard>
    </extension>
+      <extension point="org.eclipse.ui.menus">
+        <menuContribution locationURI="menu:org.eclipse.ui.main.menu?before=file">
+            <menu label="Developer Studio"
+                  mnemonic="C"
+                  id="org.wso2.developerstudio.eclipse.platform.ui.main">
+                <command commandId="org.eclipse.ui.newWizard">
+            <parameter name="newWizardId" value="org.wso2.developerstudio.eclipse.artifact.newwso2pluginproject" />
+         </command>
+            </menu>
+        </menuContribution>
+         </extension>
 </plugin>

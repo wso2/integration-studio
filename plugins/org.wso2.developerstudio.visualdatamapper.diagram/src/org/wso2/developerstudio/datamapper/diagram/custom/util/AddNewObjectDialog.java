@@ -732,49 +732,6 @@ public class AddNewObjectDialog extends Dialog {
 
 		textSchemaValue.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 3, 1));
 		
-		checkBoxForValue = new Button(compositeType,SWT.CHECK);
-		lblCheckBoxForValue = new Label(compositeType, SWT.NONE);
-		lblCheckBoxForValue.setText(LABEL_CHECKBOX_VALUE);
-		
-		lblCheckBoxForValue.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 3, 1));
-		
-		lblValue = new Label(compositeType, SWT.NONE);
-		lblValue.setText(LABEL_VALUE);
-		lblValue.setVisible(false);
-
-		
-		comboValue = new Combo(compositeType, SWT.DROP_DOWN | SWT.READ_ONLY);
-		comboValue.addModifyListener(new ModifyListener() {
-			public void modifyText(ModifyEvent arg0) {
-			}
-		});
-
-		comboValue.setItems(DATA_TYPES_FOR_VALUE);
-		comboValue.select(0);
-	
-		comboValue.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 3, 1));
-	
-		checkBoxForValue.addSelectionListener(new SelectionListener() {
-		
-			@Override
-			public void widgetSelected(SelectionEvent event) {
-				
-				if (((Button)event.widget).getSelection()) {
-					lblValue.setVisible(true);
-					comboValue.setVisible(true);
-				}else{
-					lblValue.setVisible(false);
-					comboValue.setVisible(false);
-				}		
-			}
-			
-			@Override
-			public void widgetDefaultSelected(SelectionEvent arg0) {
-				// TODO Auto-generated method stub
-				
-			}
-		});
-		
 		checkBoxForIdentifiers = new Button(compositeType,SWT.CHECK);
 		lblCheckBoxForIdentifiers = new Label(compositeType, SWT.NONE);
 		lblCheckBoxForIdentifiers.setText(LABEL_CHECKBOX_IDENTIFIER);
@@ -837,6 +794,50 @@ public class AddNewObjectDialog extends Dialog {
 				
 			}
 		});
+		
+		checkBoxForValue = new Button(compositeType,SWT.CHECK);
+		lblCheckBoxForValue = new Label(compositeType, SWT.NONE);
+		lblCheckBoxForValue.setText(LABEL_CHECKBOX_VALUE);
+		
+		lblCheckBoxForValue.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 3, 1));
+		
+		lblValue = new Label(compositeType, SWT.NONE);
+		lblValue.setText(LABEL_VALUE);
+		lblValue.setVisible(false);
+
+		
+		comboValue = new Combo(compositeType, SWT.DROP_DOWN | SWT.READ_ONLY);
+		comboValue.addModifyListener(new ModifyListener() {
+			public void modifyText(ModifyEvent arg0) {
+			}
+		});
+
+		comboValue.setItems(DATA_TYPES_FOR_VALUE);
+		comboValue.select(0);
+	
+		comboValue.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 3, 1));
+	
+		checkBoxForValue.addSelectionListener(new SelectionListener() {
+		
+			@Override
+			public void widgetSelected(SelectionEvent event) {
+				
+				if (((Button)event.widget).getSelection()) {
+					lblValue.setVisible(true);
+					comboValue.setVisible(true);
+				}else{
+					lblValue.setVisible(false);
+					comboValue.setVisible(false);
+				}		
+			}
+			
+			@Override
+			public void widgetDefaultSelected(SelectionEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+		
 		
 	
 		return container;

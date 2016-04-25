@@ -38,7 +38,6 @@ public class UpdateMetaFileReaderJobListener extends JobChangeAdapter {
 	private static final String SET_LATER = "Not Now";
 	private static final String UPDATER_DIALOG_TITLE = Messages.UpdatemetaFileReaderJobListener_1;
 	protected static final String YES = "Yes";
-	protected static final String NO = "Never";
 	private static org.wso2.developerstudio.eclipse.updater.job.UpdateMetaFileReaderJob UpdateMetaFileReaderJob;
 
 	protected static IDeveloperStudioLog log = Logger.getLog(UpdaterPlugin.PLUGIN_ID);
@@ -70,11 +69,7 @@ public class UpdateMetaFileReaderJobListener extends JobChangeAdapter {
 						int userPref = getUserPreference(UPDATER_DIALOG_TITLE, displayMsg);
 						if (userPref == 0 || userPref == USER_SCHEDULED_AUTOMATIC_INSTALL) {
 							executeUpdateJob();
-						} else if (userPref == 1) { // user specified "never"
-							IPreferenceStore prefPage = PlatformUI.getPreferenceStore();
-							prefPage.setValue(PreferenceConstants.ENABLE_AUTOMATIC_UPDATES, false);
-						}
-
+						} 
 					} catch (Exception e) {
 						log.error(Messages.UpdatemetaFileReaderJobListener_0, e);
 					}
@@ -98,7 +93,7 @@ public class UpdateMetaFileReaderJobListener extends JobChangeAdapter {
 		}
 		if (userChoice.equals(PreferenceConstants.NOTIFY_ME)) {
 			MessageDialog dialog = new MessageDialog(Display.getDefault().getActiveShell(), title, null, message,
-					MessageDialog.INFORMATION, new String[] { YES, NO, SET_LATER }, 0);
+					MessageDialog.INFORMATION, new String[] { YES, SET_LATER }, 0);
 			return dialog.open();
 		}
 		return USER_SCHEDULED_AUTOMATIC_INSTALL;// in case if user configured to

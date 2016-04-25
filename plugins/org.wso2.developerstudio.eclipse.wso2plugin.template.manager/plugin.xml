@@ -34,9 +34,9 @@
             <menu label="Developer Studio"
                   mnemonic="C"
                   id="org.wso2.developerstudio.eclipse.platform.ui.main">
-                <command commandId="org.eclipse.ui.newWizard">
-            <parameter name="newWizardId" value="org.wso2.developerstudio.eclipse.artifact.newwso2pluginproject" />
-         </command>
+                <command commandId="org.eclipse.ui.newWizard" icon="icons/plugin-icon-16.png">
+            		<parameter name="newWizardId" value="org.wso2.developerstudio.eclipse.artifact.newwso2pluginproject" />
+         		</command>
             </menu>
         </menuContribution>
          </extension>

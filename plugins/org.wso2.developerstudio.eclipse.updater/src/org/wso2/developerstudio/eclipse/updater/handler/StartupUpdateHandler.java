@@ -37,6 +37,7 @@ import org.wso2.developerstudio.eclipse.updater.ui.UpdaterDialog.ActiveTab;
 
 public class StartupUpdateHandler implements IStartup {
 
+	private static final int DELAY_ONE_MINUTE = 60000;
 	protected static final String DAILY = "Daily";
 	protected static final String WEEKLY = "Weekly";
 	protected static final String MONTHLY = "Monthly";
@@ -51,6 +52,13 @@ public class StartupUpdateHandler implements IStartup {
 	public void earlyStartup() {
 		// check if user has set startup updates
 		// Read updater preferences
+		// Let updater wait a minute till workspace preferences are initialized
+		try {
+			Thread.sleep(DELAY_ONE_MINUTE);
+		} catch (InterruptedException e) {
+			log.error("error while running automatic updates", e);
+			Thread.currentThread().interrupt();
+		}
 		IPreferenceStore prefPage = PlatformUI.getPreferenceStore();
 		UpdateCheckerPreferencePage.setPreferenceDefaults(prefPage);
 		boolean isAutomaticUpdate = prefPage.getBoolean(PreferenceConstants.ENABLE_AUTOMATIC_UPDATES);
@@ -63,15 +71,16 @@ public class StartupUpdateHandler implements IStartup {
 										// scheduled the updater job
 			BackgroundUpdateTaskJob job = new BackgroundUpdateTaskJob("BackgroundScheduler", minute);
 			// start at user specified time.
-			job.schedule(evaluateTimeToUserScheduledTime()); 
+			job.schedule(evaluateTimeToUserScheduledTime());
 			job.addJobChangeListener(new BackgroundUpdaterTaskListener(updateManager));
 		}
 		if (!isAutomaticUpdate) {
 			return;
 		}
 		/**
-		 *  before running the update checker job, read the updates meta file and see 
-		 *  if it has updates before iterating through the updater repository. UpdateMetaFileReaderJob
+		 * before running the update checker job, read the updates meta file and
+		 * see if it has updates before iterating through the updater
+		 * repository. UpdateMetaFileReaderJob
 		 */
 		runUpdateMetaFileReaderJob();
 	}

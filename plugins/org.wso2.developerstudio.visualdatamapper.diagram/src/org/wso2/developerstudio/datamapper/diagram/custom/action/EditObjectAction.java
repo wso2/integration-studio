@@ -70,6 +70,11 @@ public class EditObjectAction extends AbstractActionHandler {
 	private static final String JSON_SCHEMA_OBJECT_VALUE_TYPE = "object_value_type";
 	private static final String ELEMENT_IDENTIFIER = "type";
 	private static final String JSON_SCHEMA_OBJECT_ELEMENT_IDENTIFIERS = "objectElementIdentifiers";
+	private static final String JSON_SCHEMA_OBJECT_ELEMENT_IDENTIFIERS_URL = "objectElementIdentifiersURL";
+	private static final String PREFIX = "@";
+	private static final String JSON_SCHEMA_ADDED_ATTRIBUTE_ID = "added_attribute_id";
+	private static final String JSON_SCHEMA_ADDED_ATTRIBUTE_TYPE = "added_attribute_type";
+	private static final String STRING = "string";
 
 
 	private String title = null;
@@ -370,10 +375,30 @@ public class EditObjectAction extends AbstractActionHandler {
 				String type = "{"+ ELEMENT_IDENTIFIER + "="+ editTypeDialog.getIdentifierType()+"}";
 				valueMap.put(JSON_SCHEMA_OBJECT_ELEMENT_IDENTIFIERS, type);
 			}
+			if(StringUtils.isNotEmpty(editTypeDialog.getIdentifierURL())){
+				valueMap.put(JSON_SCHEMA_OBJECT_ELEMENT_IDENTIFIERS_URL, editTypeDialog.getIdentifierURL());
+			}
 			if(StringUtils.isNotEmpty(editTypeDialog.getIdentifierType()) && StringUtils.isNotEmpty(editTypeDialog.getIdentifierValue())){
 				String fullName = editTypeDialog.getIdentifierType() + "=" + editTypeDialog.getIdentifierValue();
 				valueMap.put(JSON_SCHEMA_TITLE, editTypeDialog.getTitle()+", "+fullName);
+				TreeNode treeNodeChild = DataMapperFactory.eINSTANCE.createTreeNode();
+				treeNodeChild.setName(PREFIX+editTypeDialog.getIdentifierType());
+				treeNodeChild.setLevel(selectedNode.getLevel() + 1);
+				String[] identifierArray =  null;
+				String identifierPrefix = null;
+				if(editTypeDialog.getIdentifierType().contains(":")){
+					identifierArray = editTypeDialog.getIdentifierType().split(":");
+					identifierPrefix = identifierArray[0];
+				}else{
+					identifierPrefix = editTypeDialog.getIdentifierType();
+				}
+				//Sets the attribute ID and type to be used in serialization of the attributes
+				valueMap.put(JSON_SCHEMA_TYPE, STRING);
+				valueMap.put(JSON_SCHEMA_ADDED_ATTRIBUTE_ID, editTypeDialog.getID()+"/"+identifierPrefix);
+				valueMap.put(JSON_SCHEMA_ADDED_ATTRIBUTE_TYPE, STRING);
+				//selectedNode.getNode().add(treeNodeChild);
 			}
+			
 			reflectChanges(selectedNode, valueMap);
 
 		}

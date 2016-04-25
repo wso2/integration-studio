@@ -71,6 +71,11 @@ public class AddNewObjectAction extends AbstractActionHandler {
 	private static final String JSON_SCHEMA_OBJECT_VALUE_TYPE = "object_value_type";
 	private static final String ELEMENT_IDENTIFIER = "type";
 	private static final String JSON_SCHEMA_OBJECT_ELEMENT_IDENTIFIERS = "objectElementIdentifiers";
+	private static final String JSON_SCHEMA_OBJECT_ELEMENT_IDENTIFIERS_URL = "objectElementIdentifiersURL";
+	private static final String PREFIX = "@";
+	private static final String JSON_SCHEMA_ADDED_ATTRIBUTE_ID = "added_attribute_id";
+	private static final String JSON_SCHEMA_ADDED_ATTRIBUTE_TYPE = "added_attribute_type";
+	private static final String STRING = "string";
 
 	public AddNewObjectAction(IWorkbenchPart workbenchPart) {
 		super(workbenchPart);
@@ -145,12 +150,41 @@ public class AddNewObjectAction extends AbstractActionHandler {
 					String fullName = objectDialog.getIdentifierType() + "=" + objectDialog.getIdentifierValue();
 					treeNodeNew.setName(objectDialog.getTitle()+", "+fullName);
 				}
+				
+				if(StringUtils.isNotEmpty(objectDialog.getIdentifierURL()) && StringUtils.isNotEmpty(objectDialog.getIdentifierType())){
+					String identifierNamespace = createNamespaceArrayForIdentifiers(objectDialog.getIdentifierType(),objectDialog.getIdentifierURL());
+					setPropertyKeyValuePairforTreeNodes(treeNodeNew, propertyValueList, JSON_SCHEMA_OBJECT_ELEMENT_IDENTIFIERS_URL,
+							identifierNamespace);
+				}
 				//sets the properties ID to be used in the serialization of the object
 				setPropertyKeyValuePairforTreeNodes(treeNodeNew, propertyValueList, JSON_SCHEMA_ADDED_PROPERTIES_ID, HAS_PROPERTIES);
 				//sets the object's type if object hold a value
 				if(StringUtils.isNotEmpty(objectDialog.getValue())){
 				setPropertyKeyValuePairforTreeNodes(treeNodeNew, propertyValueList, JSON_SCHEMA_OBJECT_VALUE_TYPE,objectDialog.getValue());
 				}
+				
+				//If element contains an element identifier then add it as an attribute(child node)to the tree node
+				if(StringUtils.isNotEmpty(objectDialog.getIdentifierType()) && StringUtils.isNotEmpty(objectDialog.getIdentifierValue())){
+					EList<PropertyKeyValuePair> propertyValueListChild = new BasicEList<PropertyKeyValuePair>();
+					TreeNode treeNodeChild = DataMapperFactory.eINSTANCE.createTreeNode();
+					treeNodeChild.setName(PREFIX+objectDialog.getIdentifierType());
+					treeNodeChild.setLevel(treeNodeNew.getLevel() + 1);
+					//Sets the attribute ID and type to be used in serialization of the attributes
+					String[] identifierArray =  null;
+					String identifierPrefix = null;
+					if(objectDialog.getIdentifierType().contains(":")){
+						identifierArray = objectDialog.getIdentifierType().split(":");
+						identifierPrefix = identifierArray[0];
+					}else{
+						identifierPrefix = objectDialog.getIdentifierType();
+					}
+					setPropertyKeyValuePairforTreeNodes(treeNodeChild, propertyValueListChild, JSON_SCHEMA_TYPE, STRING);
+					setPropertyKeyValuePairforTreeNodes(treeNodeChild, propertyValueListChild, JSON_SCHEMA_ADDED_ATTRIBUTE_ID, objectDialog.getID()+"/"+identifierPrefix);
+					setPropertyKeyValuePairforTreeNodes(treeNodeChild, propertyValueListChild, JSON_SCHEMA_ADDED_ATTRIBUTE_TYPE,STRING);
+					treeNodeNew.getNode().add(treeNodeChild);
+				}
+				
+				
 				/*
 				 * AddCommand is used to avoid concurrent updating. index 0 to
 				 * add as the first child
@@ -223,6 +257,31 @@ public class AddNewObjectAction extends AbstractActionHandler {
 		}
 	}
 	
+	/**
+	 * Creates namespace array for identifiers
+	 * @param identifierType
+	 * @param identifierURL
+	 * @return
+	 */
+	private String createNamespaceArrayForIdentifiers(String identifierType, String identifierURL) {
+		ArrayList<String> namespacesList = new ArrayList<String>();
+		String[] identifierArray = null;
+		String identifierPrefix =  null;
+		if(identifierType.contains(":")){
+			identifierArray = identifierType.split(":");
+			identifierPrefix = identifierArray[0];
+		}else{
+			identifierPrefix = identifierType;
+		}
+		String prefixItem = NAMESPACE_PREFIX + "=" + identifierPrefix;
+		String urlItem = NAMESPACE_URL + "=" + identifierURL;
+		String [] namespaceItem = {prefixItem,urlItem};
+		String namespaceArrayAsString =Arrays.toString(namespaceItem).substring(1, Arrays.toString(namespaceItem).length()-1);
+		namespacesList.add("{"+ namespaceArrayAsString + "}");
+		String value = StringUtils.join(namespacesList, ',');
+		return value;
+	}
+
 	/**
 	 * Gets the namespace prefix
 	 * @param objectNamespace

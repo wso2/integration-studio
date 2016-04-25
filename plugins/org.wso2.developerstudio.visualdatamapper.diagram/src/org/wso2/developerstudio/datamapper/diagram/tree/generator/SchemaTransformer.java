@@ -90,8 +90,11 @@ public class SchemaTransformer implements ISchemaTransformer {
 	private static final String NAMESPACE_URL = "url";
 	private static final String ELEMENT_IDENTIFIER = "type";
 	private static final String JSON_SCHEMA_OBJECT_ELEMENT_IDENTIFIERS = "objectElementIdentifiers";
+	private static final String JSON_SCHEMA_OBJECT_ELEMENT_IDENTIFIERS_URL = "objectElementIdentifiersURL";
 	private static final String JSON_SCHEMA_ARRAY_ELEMENT_IDENTIFIERS = "arrayElementIdentifiers";
+	private static final String JSON_SCHEMA_ARRAY_ELEMENT_IDENTIFIERS_URL = "arrayElementIdentifiersURL";
 	private static final String JSON_SCHEMA_FIELD_ELEMENT_IDENTIFIERS = "fieldElementIdentifiers";
+	private static final String JSON_SCHEMA_FIELD_ELEMENT_IDENTIFIERS_URL = "fieldElementIdentifiersURL";
 
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 	private static String ERROR_TEXT = "File cannot be found ";
@@ -745,6 +748,13 @@ public class SchemaTransformer implements ISchemaTransformer {
 				// If element contains only the xsi:type
 				nodeName = element;
 			}
+			//If the element is an element identifier @xsi:type
+		}else if(element.contains(":") && element.startsWith(PREFIX)){
+			String[] fullName = element.split(":");
+			String firstPart = fullName[0];
+			String prefix = firstPart.substring(1);
+			nodeName = checkValidity(namespaceMap, nodeName, prefix);
+			nodeName = PREFIX+nodeName+":"+fullName[1];
 		} else if (element.contains(":")) {
 			// If element conatains a namespace prefix
 			nodeName = checkValidity(namespaceMap, nodeName, element);
@@ -1030,6 +1040,9 @@ public class SchemaTransformer implements ISchemaTransformer {
 				String attributeType = getPropertyKeyValuePairforTreeNode(node, JSON_SCHEMA_ATTRIBUTE_TYPE);
 				String propertiesId = getPropertyKeyValuePairforTreeNode(node, JSON_SCHEMA_PROPERTIES_ID);
 				String objectValueBlockType = getPropertyKeyValuePairforTreeNode(node, JSON_SCHEMA_OBJECT_VALUE_TYPE);
+				String objectElementIdentifier = getPropertyKeyValuePairforTreeNode(node, JSON_SCHEMA_OBJECT_ELEMENT_IDENTIFIERS_URL);
+				String objectAddedAttributeID = getPropertyKeyValuePairforTreeNode(node,JSON_SCHEMA_ADDED_ATTRIBUTE_ID);
+				String objectAddedAttributeType = getPropertyKeyValuePairforTreeNode(node, JSON_SCHEMA_ADDED_ATTRIBUTE_TYPE);
 				String arrayValueBlockType = getPropertyKeyValuePairforTreeNode(node,
 						JSON_SCHEMA_ARRAY_ITEMS_VALUE_TYPE);
 				if (schemaType != null && schemaType.equals(JSON_SCHEMA_OBJECT)) {
@@ -1075,18 +1088,6 @@ public class SchemaTransformer implements ISchemaTransformer {
 							recursiveSchemaGenerator((TreeNodeImpl) node, nodeObject, root);
 							hasAttributes = false;
 						}
-
-						// Handle attributes when creating tree by hand
-						if (addedObjectHasAttributes) {
-							// Fixing DEVTOOLESB-154
-							if (((TreeNodeImpl) node).getNode().size() > 0) {
-								hasAttributes = true;
-								nodeObject.put(JSON_SCHEMA_ATTRIBUTES, attributeObject);
-								parent.put(node.getName(), nodeObject);
-								recursiveSchemaGenerator((TreeNodeImpl) node, nodeObject, root);
-								hasAttributes = false;
-							}
-						}
 						// Handle properties when creating tree by hand
 						if (addedObjectHasProperties) {
 							// Fixing DEVTOOLESB-154
@@ -1101,6 +1102,16 @@ public class SchemaTransformer implements ISchemaTransformer {
 								namespaceList.add(addedObjectNamespaces);
 							}
 						}
+						
+						if (StringUtils.isNotEmpty(objectElementIdentifier)) {
+							// If element identifiers are available when creating the
+							// tree by hand then add those to the root elements
+							if (!namespaceList.contains(objectElementIdentifier)) {
+								namespaceList.add(objectElementIdentifier);
+							}
+						}
+						
+
 						if(StringUtils.isNotEmpty(addedObjectElementIdentifiers)){
 							// If element identifiers are available when creating the
 							// tree by hand then add those to the root elements
@@ -1108,6 +1119,19 @@ public class SchemaTransformer implements ISchemaTransformer {
 								elementIdentifierList.add(addedObjectElementIdentifiers);
 							}
 						}
+						// Handle attributes when creating tree by hand
+						if (addedObjectHasAttributes) {
+							// Fixing DEVTOOLESB-154
+							if (((TreeNodeImpl) node).getNode().size() > 0) {
+								hasAttributes = true;
+								nodeObject.put(JSON_SCHEMA_ATTRIBUTES, attributeObject);
+								parent.put(node.getName(), nodeObject);
+								recursiveSchemaGenerator((TreeNodeImpl) node, nodeObject, root);
+								hasAttributes = false;
+							}
+						}
+						
+						
 						recursiveSchemaGenerator((TreeNodeImpl) node, propertiesObject, root);
 					}
 
@@ -1130,6 +1154,7 @@ public class SchemaTransformer implements ISchemaTransformer {
 					// Check if there are element identifiers in the array when creating
 					// the tree by hand
 					addedObjectElementIdentifiers = checkValueFromPropertyKeyValuePair(node, JSON_SCHEMA_ARRAY_ELEMENT_IDENTIFIERS);
+					String arrayElementIdentifier = getPropertyKeyValuePairforTreeNode(node, JSON_SCHEMA_ARRAY_ELEMENT_IDENTIFIERS_URL);
 					// If the iteration happens not because of attributes (
 					// properties), then
 					// handle the other elements in the array
@@ -1181,18 +1206,6 @@ public class SchemaTransformer implements ISchemaTransformer {
 								itemProperties.put(JSON_SCHEMA_TYPE, JSON_SCHEMA_OBJECT);
 							}
 
-							// Handle properties when creating tree by hand
-							if (addedObjectHasProperties) {
-								itemProperties.put(JSON_SCHEMA_PROPERTIES, itemsObject);
-								recursiveSchemaGenerator((TreeNodeImpl) node, itemsObject, root);
-							}
-							// Handle attributes when creating tree by hand
-							if (addedObjectHasAttributes) {
-								hasAttributes = true;
-								itemProperties.put(JSON_SCHEMA_ATTRIBUTES, attributeObject);
-								recursiveSchemaGenerator((TreeNodeImpl) node, attributeObject, root);
-								hasAttributes = false;
-							}
 							if (StringUtils.isNotEmpty(addedObjectNamespaces)) {
 								// If namespaces are available when creating the
 								// tree by hand then add those to the root
@@ -1201,6 +1214,15 @@ public class SchemaTransformer implements ISchemaTransformer {
 									namespaceList.add(addedObjectNamespaces);
 								}
 							}
+							if (StringUtils.isNotEmpty(arrayElementIdentifier)) {
+								// If identifiers are available when creating the
+								// tree by hand then add those to the root
+								// elements
+								if (!namespaceList.contains(arrayElementIdentifier)) {
+									namespaceList.add(arrayElementIdentifier);
+								}
+							}
+							
 							if(StringUtils.isNotEmpty(addedObjectElementIdentifiers)){
 								// If element identifiers are available when creating the
 								// tree by hand then add those to the root
@@ -1208,7 +1230,22 @@ public class SchemaTransformer implements ISchemaTransformer {
 								if (!elementIdentifierList.contains(addedObjectElementIdentifiers)) {
 									elementIdentifierList.add(addedObjectElementIdentifiers);
 								}
+								
 							}
+							// Handle properties when creating tree by hand
+							if (addedObjectHasProperties) {
+								itemProperties.put(JSON_SCHEMA_PROPERTIES, itemsObject);
+								recursiveSchemaGenerator((TreeNodeImpl) node, itemsObject, root);
+							}
+							
+							// Handle attributes when creating tree by hand
+							if (addedObjectHasAttributes) {
+								hasAttributes = true;
+								itemProperties.put(JSON_SCHEMA_ATTRIBUTES, attributeObject);
+								recursiveSchemaGenerator((TreeNodeImpl) node, attributeObject, root);
+								hasAttributes = false;
+							}
+							
 						} else {
 							/*
 							 * If array item doesn't contain attributes or
@@ -1238,13 +1275,31 @@ public class SchemaTransformer implements ISchemaTransformer {
 									elementIdentifierList.add(addedObjectElementIdentifiers);
 								}
 							}
+							if (StringUtils.isNotEmpty(arrayElementIdentifier)) {
+								// If identifiers are available when creating the
+								// tree by hand then add those to the root
+								// elements
+								if (!namespaceList.contains(arrayElementIdentifier)) {
+									namespaceList.add(arrayElementIdentifier);
+								}
+							}
 						}
 					}
 				} else if (schemaType != null) {
+					String fieldElementIdentifier = getPropertyKeyValuePairforTreeNode(node, JSON_SCHEMA_FIELD_ELEMENT_IDENTIFIERS_URL);
 					// Adds attributes
 					if (hasAttributes) {
-						JSONObject elemObject = createElementObject(schemaID);
-						elemObject.put(JSON_SCHEMA_TYPE, schemaType);
+						JSONObject elemObject = null;
+						//If the attribute is an element identifier then set the id and type
+						if(objectAddedAttributeID != null && objectAddedAttributeType != null){
+							elemObject = new JSONObject();
+						    elemObject.put(JSON_SCHEMA_ID,objectAddedAttributeID);
+						    elemObject.put(JSON_SCHEMA_TYPE, objectAddedAttributeType);	
+						}else{
+							elemObject = createElementObject(schemaID);
+							elemObject.put(JSON_SCHEMA_TYPE, schemaType);
+						}
+						
 						// ignore other elements comes from attribute iteration
 						if (name.startsWith(PREFIX)) {
 							// Check if there are namespaces in the attributes
@@ -1255,6 +1310,14 @@ public class SchemaTransformer implements ISchemaTransformer {
 								// root elements
 								if (!namespaceList.contains(addedObjectNamespaces)) {
 									namespaceList.add(addedObjectNamespaces);
+								}
+							}
+							if (StringUtils.isNotEmpty(fieldElementIdentifier)) {
+								// If identifiers are available when creating the
+								// tree by hand then add those to the root
+								// elements
+								if (!namespaceList.contains(fieldElementIdentifier)) {
+									namespaceList.add(fieldElementIdentifier);
 								}
 							}
 							addedObjectElementIdentifiers = checkValueFromPropertyKeyValuePair(node, JSON_SCHEMA_FIELD_ELEMENT_IDENTIFIERS);
@@ -1296,6 +1359,14 @@ public class SchemaTransformer implements ISchemaTransformer {
 								// elements
 								if (!elementIdentifierList.contains(addedObjectElementIdentifiers)) {
 									elementIdentifierList.add(addedObjectElementIdentifiers);
+								}
+							}
+							if (StringUtils.isNotEmpty(fieldElementIdentifier)) {
+								// If identifiers are available when creating the
+								// tree by hand then add those to the root
+								// elements
+								if (!namespaceList.contains(fieldElementIdentifier)) {
+									namespaceList.add(fieldElementIdentifier);
 								}
 							}
 							parent.put(name, elemObject);

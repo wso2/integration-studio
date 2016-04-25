@@ -48,9 +48,11 @@ public class AddNewObjectDialog extends Dialog {
 	private Combo comboValue;
 	private Text textIdentifierType;
 	private Text textIdentifierValue;
+	private Text textIdentifierURL;
 	private Composite compositeType;
 	private Button checkBoxForValue;
 	private Button checkBoxForIdentifiers;
+	
 
 	private Label lblTitleLabel;
 	private Label lblSchemaTypeLabel;
@@ -63,6 +65,7 @@ public class AddNewObjectDialog extends Dialog {
 	private Label lblValue;
 	private Label lblIdentifierType;
 	private Label lblIdentifierValue;
+	private Label lblIdentifierURL;
 	private Button btnNamespaces;
 
 	private String title;
@@ -74,6 +77,7 @@ public class AddNewObjectDialog extends Dialog {
 	private String value;
 	private String identifierType;
 	private String identifierValue;
+	private String identifierURL;
 
 	private String[] DATA_TYPES = { "string", "number", "boolean", "bytes", "double", "enum", "fixed", "float", "long",
 			"map", "union" };
@@ -99,6 +103,7 @@ public class AddNewObjectDialog extends Dialog {
 	private static final String LABEL_VALUE = "Value :";
 	private static final String LABEL_IDENTIFIER_TYPE = "Identifier Type :";
 	private static final String LABEL_IDENTIFIER_VALUE = "Identifier Value :";
+	private static final String LABEL_IDENTIFIER_URL = "Identifier URL :";
 	private static final String LABEL_ID = "ID :";
 	private static final String LABEL_NAMESPACES_URL = "Namespaces :";
 	private static final String NEW_ROOT_RECORD_ID = "NewRootType";
@@ -166,6 +171,8 @@ public class AddNewObjectDialog extends Dialog {
 			lblIdentifierValue.setVisible(false);
 			textIdentifierType.setVisible(false);
 			textIdentifierValue.setVisible(false);
+			lblIdentifierURL.setVisible(false);
+			textIdentifierURL.setVisible(false);
 		}
 		if (title.equals(DIALOG_TITLE_OBJECT) || title.equals(DIALOG_TITLE_ARRAY) || title.equals(DIALOG_TITLE_FIELD)
 				|| title.equals(DIALOG_TITLE_ATTRIBUTE)) {
@@ -183,6 +190,8 @@ public class AddNewObjectDialog extends Dialog {
 			lblIdentifierValue.setVisible(false);
 			textIdentifierType.setVisible(false);
 			textIdentifierValue.setVisible(false);
+			lblIdentifierURL.setVisible(false);
+			textIdentifierURL.setVisible(false);
 		} if (title.equals(DIALOG_TITLE_FIELD)) {
 			lblRequired.setVisible(false);
 			textRequired.setVisible(false);
@@ -196,6 +205,8 @@ public class AddNewObjectDialog extends Dialog {
 			lblIdentifierValue.setVisible(false);
 			textIdentifierType.setVisible(false);
 			textIdentifierValue.setVisible(false);
+			lblIdentifierURL.setVisible(false);
+			textIdentifierURL.setVisible(false);
 		}if(title.equals(DIALOG_TITLE_ATTRIBUTE)){
 			lblRequired.setVisible(false);
 			textRequired.setVisible(false);
@@ -209,6 +220,8 @@ public class AddNewObjectDialog extends Dialog {
 			lblIdentifierValue.setVisible(false);
 			textIdentifierType.setVisible(false);
 			textIdentifierValue.setVisible(false);
+			lblIdentifierURL.setVisible(false);
+			textIdentifierURL.setVisible(false);
 		}
 	}
 	
@@ -291,6 +304,8 @@ public class AddNewObjectDialog extends Dialog {
 				lblIdentifierValue.setVisible(false);
 				textIdentifierType.setVisible(false);
 				textIdentifierValue.setVisible(false);
+				lblIdentifierURL.setVisible(false);
+				textIdentifierURL.setVisible(false);
 				break;
 			case "array":
 				comboSchemaType.select(0);
@@ -312,6 +327,8 @@ public class AddNewObjectDialog extends Dialog {
 				lblIdentifierValue.setVisible(false);
 				textIdentifierType.setVisible(false);
 				textIdentifierValue.setVisible(false);
+				lblIdentifierURL.setVisible(false);
+				textIdentifierURL.setVisible(false);
 				break;
 			case "string":
 				comboSchemaType.select(0);
@@ -333,6 +350,8 @@ public class AddNewObjectDialog extends Dialog {
 				lblIdentifierValue.setVisible(false);
 				textIdentifierType.setVisible(false);
 				textIdentifierValue.setVisible(false);
+				lblIdentifierURL.setVisible(false);
+				textIdentifierURL.setVisible(false);
 				break;
 			case "number":
 				comboSchemaType.select(1);
@@ -354,6 +373,10 @@ public class AddNewObjectDialog extends Dialog {
 				lblIdentifierValue.setVisible(false);
 				textIdentifierType.setVisible(false);
 				textIdentifierValue.setVisible(false);
+				lblIdentifierURL.setVisible(false);
+				textIdentifierURL.setVisible(false);
+				lblIdentifierURL.setVisible(false);
+				textIdentifierURL.setVisible(false);
 				break;
 			case "boolean":
 				comboSchemaType.select(2);
@@ -375,6 +398,8 @@ public class AddNewObjectDialog extends Dialog {
 				lblIdentifierValue.setVisible(false);
 				textIdentifierType.setVisible(false);
 				textIdentifierValue.setVisible(false);
+				lblIdentifierURL.setVisible(false);
+				textIdentifierURL.setVisible(false);
 				break;
 			case "bytes":
 				comboSchemaType.select(3);
@@ -396,6 +421,8 @@ public class AddNewObjectDialog extends Dialog {
 				lblIdentifierValue.setVisible(false);
 				textIdentifierType.setVisible(false);
 				textIdentifierValue.setVisible(false);
+				lblIdentifierURL.setVisible(false);
+				textIdentifierURL.setVisible(false);
 				break;
 			case "double":
 				comboSchemaType.select(4);
@@ -417,6 +444,8 @@ public class AddNewObjectDialog extends Dialog {
 				lblIdentifierValue.setVisible(false);
 				textIdentifierType.setVisible(false);
 				textIdentifierValue.setVisible(false);
+				lblIdentifierURL.setVisible(false);
+				textIdentifierURL.setVisible(false);
 				break;
 			case "enum":
 				comboSchemaType.select(5);
@@ -438,6 +467,8 @@ public class AddNewObjectDialog extends Dialog {
 				lblIdentifierValue.setVisible(false);
 				textIdentifierType.setVisible(false);
 				textIdentifierValue.setVisible(false);
+				lblIdentifierURL.setVisible(false);
+				textIdentifierURL.setVisible(false);
 				break;
 			case "fixed":
 				comboSchemaType.select(6);
@@ -459,6 +490,8 @@ public class AddNewObjectDialog extends Dialog {
 				lblIdentifierValue.setVisible(false);
 				textIdentifierType.setVisible(false);
 				textIdentifierValue.setVisible(false);
+				lblIdentifierURL.setVisible(false);
+				textIdentifierURL.setVisible(false);
 				break;
 			case "float":
 				comboSchemaType.select(7);
@@ -480,6 +513,8 @@ public class AddNewObjectDialog extends Dialog {
 				lblIdentifierValue.setVisible(false);
 				textIdentifierType.setVisible(false);
 				textIdentifierValue.setVisible(false);
+				lblIdentifierURL.setVisible(false);
+				textIdentifierURL.setVisible(false);
 				break;
 			case "long":
 				comboSchemaType.select(8);
@@ -501,6 +536,8 @@ public class AddNewObjectDialog extends Dialog {
 				lblIdentifierValue.setVisible(false);
 				textIdentifierType.setVisible(false);
 				textIdentifierValue.setVisible(false);
+				lblIdentifierURL.setVisible(false);
+				textIdentifierURL.setVisible(false);
 				break;
 			case "map":
 				comboSchemaType.select(9);
@@ -522,6 +559,8 @@ public class AddNewObjectDialog extends Dialog {
 				lblIdentifierValue.setVisible(false);
 				textIdentifierType.setVisible(false);
 				textIdentifierValue.setVisible(false);
+				lblIdentifierURL.setVisible(false);
+				textIdentifierURL.setVisible(false);
 				break;
 			case "union":
 				comboSchemaType.select(10);
@@ -543,6 +582,8 @@ public class AddNewObjectDialog extends Dialog {
 				lblIdentifierValue.setVisible(false);
 				textIdentifierType.setVisible(false);
 				textIdentifierValue.setVisible(false);
+				lblIdentifierURL.setVisible(false);
+				textIdentifierURL.setVisible(false);
 				break;
 			default:
 				break;
@@ -609,6 +650,7 @@ public class AddNewObjectDialog extends Dialog {
 			textIdentifierValue.setVisible(true);
 			textIdentifierType.setText(identifierType);
 			textIdentifierValue.setText(identifierValue);
+			//TODO when editing the xsi:type display the added URL
 		}
 	}
 
@@ -625,7 +667,7 @@ public class AddNewObjectDialog extends Dialog {
 		GridData gd_composite_2 = new GridData(SWT.LEFT, SWT.CENTER, false, false, 1, 1);
 		gd_composite_2.widthHint = 575;
 		compositeType.setLayoutData(gd_composite_2);
-		compositeType.setLayout(new GridLayout(4, false));
+		compositeType.setLayout(new GridLayout(6, false));
 	
 		lblTitleLabel = new Label(compositeType, SWT.NONE);
 		lblTitleLabel.setText(LABEL_TITLE);
@@ -637,7 +679,7 @@ public class AddNewObjectDialog extends Dialog {
 
 			}
 		});
-		textTitle.setLayoutData(new GridData(SWT.FILL, SWT.BEGINNING, true, false, 3, 1));
+		textTitle.setLayoutData(new GridData(SWT.FILL, SWT.BEGINNING, true, false, 5, 1));
 
 		lblSchemaTypeLabel = new Label(compositeType, SWT.NONE);
 		lblSchemaTypeLabel.setText(LABEL_SCHEMATYPE);
@@ -651,7 +693,7 @@ public class AddNewObjectDialog extends Dialog {
 		comboSchemaType.setItems(DATA_TYPES);
 		comboSchemaType.select(0);
 
-		comboSchemaType.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 3, 1));
+		comboSchemaType.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 5, 1));
 
 		lblID = new Label(compositeType, SWT.NONE);
 		lblID.setText(LABEL_ID);
@@ -665,7 +707,7 @@ public class AddNewObjectDialog extends Dialog {
 			}
 		});
 
-		textID.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 3, 1));
+		textID.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 5, 1));
 		
 
 		lblNamespaces = new Label(compositeType, SWT.NONE);
@@ -680,7 +722,7 @@ public class AddNewObjectDialog extends Dialog {
 
 			}
 		});
-		textNamespaces.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 2, 1));
+		textNamespaces.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 4, 1));
 
 		btnNamespaces = new Button(compositeType, SWT.NONE);
 		btnNamespaces.setText("...");
@@ -715,7 +757,7 @@ public class AddNewObjectDialog extends Dialog {
 			}
 		});
 
-		textRequired.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 3, 1));
+		textRequired.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 5, 1));
 		
 
 		lblSchemaValue = new Label(compositeType, SWT.NONE);
@@ -730,13 +772,13 @@ public class AddNewObjectDialog extends Dialog {
 			}
 		});
 
-		textSchemaValue.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 3, 1));
+		textSchemaValue.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 5, 1));
 		
 		checkBoxForIdentifiers = new Button(compositeType,SWT.CHECK);
 		lblCheckBoxForIdentifiers = new Label(compositeType, SWT.NONE);
 		lblCheckBoxForIdentifiers.setText(LABEL_CHECKBOX_IDENTIFIER);
 		
-		lblCheckBoxForIdentifiers.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 3, 1));
+		lblCheckBoxForIdentifiers.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 5, 1));
 		
 		lblIdentifierType = new Label(compositeType, SWT.NONE);
 		lblIdentifierType.setText(LABEL_IDENTIFIER_TYPE);
@@ -769,6 +811,22 @@ public class AddNewObjectDialog extends Dialog {
 		});
 
 		textIdentifierValue.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
+		
+		lblIdentifierURL = new Label(compositeType, SWT.NONE);
+		lblIdentifierURL.setText(LABEL_IDENTIFIER_URL);
+		lblIdentifierURL.setVisible(false);
+
+		
+		textIdentifierURL = new Text(compositeType, SWT.BORDER);
+		textIdentifierURL.setText("");
+
+		textIdentifierURL.addModifyListener(new ModifyListener() {
+			public void modifyText(ModifyEvent arg0) {
+
+			}
+		});
+
+		textIdentifierURL.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
 	
 		checkBoxForIdentifiers.addSelectionListener(new SelectionListener() {
 		
@@ -780,11 +838,15 @@ public class AddNewObjectDialog extends Dialog {
 					textIdentifierType.setVisible(true);
 					lblIdentifierValue.setVisible(true);
 					textIdentifierValue.setVisible(true);
+					lblIdentifierURL.setVisible(true);
+					textIdentifierURL.setVisible(true);
 				}else{
 					lblIdentifierType.setVisible(false);
 					textIdentifierType.setVisible(false);
 					lblIdentifierValue.setVisible(false);
 					textIdentifierValue.setVisible(false);
+					lblIdentifierURL.setVisible(false);
+					textIdentifierURL.setVisible(false);
 				}		
 			}
 			
@@ -799,7 +861,7 @@ public class AddNewObjectDialog extends Dialog {
 		lblCheckBoxForValue = new Label(compositeType, SWT.NONE);
 		lblCheckBoxForValue.setText(LABEL_CHECKBOX_VALUE);
 		
-		lblCheckBoxForValue.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 3, 1));
+		lblCheckBoxForValue.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 5, 1));
 		
 		lblValue = new Label(compositeType, SWT.NONE);
 		lblValue.setText(LABEL_VALUE);
@@ -815,7 +877,7 @@ public class AddNewObjectDialog extends Dialog {
 		comboValue.setItems(DATA_TYPES_FOR_VALUE);
 		comboValue.select(0);
 	
-		comboValue.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 3, 1));
+		comboValue.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 5, 1));
 	
 		checkBoxForValue.addSelectionListener(new SelectionListener() {
 		
@@ -889,6 +951,7 @@ public class AddNewObjectDialog extends Dialog {
 		setValue(comboValue.getText());
 		setIdentifierType(textIdentifierType.getText());
 		setIdentifierValue(textIdentifierValue.getText());
+		setIdentifierURL(textIdentifierURL.getText());
 		super.okPressed();
 	}
 
@@ -930,6 +993,9 @@ public class AddNewObjectDialog extends Dialog {
 	public void setIdentifierValue(String identifierValue){
 		this.identifierValue = identifierValue;
 	}
+	public void setIdentifierURL(String identifierURL){
+		this.identifierURL = identifierURL;
+	}
 	public String getTitle() {
 		return title;
 	}
@@ -969,5 +1035,9 @@ public class AddNewObjectDialog extends Dialog {
 
 	public String getIdentifierValue(){
 		return identifierValue;
+	}
+	
+	public String getIdentifierURL(){
+		return identifierURL;
 	}
 }

@@ -3,9 +3,17 @@
    <feature id="org.wso2.developerstudio.kernel.feature" version="0.0.0">
       <category name="org.wso2.developerstudio.kernel"/>
    </feature>
+ <feature id="org.wso2.developerstudio.kernel.wso2plugins.default.samples.feature" version="0.0.0">
+      <category name="org.wso2.developerstudio.kernel.samples"/>
+   </feature>
    <category-def name="org.wso2.developerstudio.kernel" label="WSO2 Developer Studio Kernel">
       <description>
 		WSO2 Developer Studio Kernel provides a set of core plugins which can be used to develop Eclipse plugins for the WSO2 products which are based on award wining WSO2 carbon platform. After a major architecture revamping with version 4.0.0, WSO2 Developer Studio is moved in to a kernel based model. All the product specific plugins will use the Developer Studio Kernel as the base for their implementation.
+      </description>
+   </category-def>
+ <category-def name="org.wso2.developerstudio.kernel.samples" label="WSO2 Developer Studio Kernel SDK">
+      <description>
+		WSO2 Developer Studio lugin Samples provide support for basic plugin development with Developer Studio Kernel. This feature brings the defaut samples provided with Developer Studio release.
       </description>
    </category-def>
 </site>

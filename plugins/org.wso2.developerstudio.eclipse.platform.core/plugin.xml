@@ -22,12 +22,12 @@
     <extension-point id="org.wso2.developerstudio.eclipse.project.export.handler" name="Export Handler"
                      schema="schema/org.wso2.developerstudio.eclipse.project.export.exsd"/>
 
-    <extension point="org.eclipse.ui.intro.configExtension">
+    <!--extension point="org.eclipse.ui.intro.configExtension">
     
     
         <configExtension content="intro/welcome.xml"
                          configId="org.eclipse.ui.intro.universalConfig"></configExtension>
-    </extension>
+    </extension-->
     
     <extension point="org.wso2.developerstudio.eclipse.platform.core.mediatype">
         <resolver

@@ -22,13 +22,7 @@
          install-size="0"
          version="0.0.0"
          unpack="false"/>
-  <plugin
-         id="org.wso2.developerstudio.eclipse.wso2plugin.template.manager"
-               download-size="0"
-               install-size="0"
-               version="0.0.0"
-               unpack="false"/>
-    <plugin
+   <plugin
           id="org.wso2.developerstudio.eclipse.updater"
           download-size="0"
           install-size="0"

@@ -27,7 +27,7 @@
     <name>WSO2 Developer Studio Kernel Features</name>
     <modules>
         <module>org.wso2.developerstudio.kernel.feature</module>
-	<module>org.wso2.developerstudio.kernel.wso2plugins.default.samples.feature</module>
+	<module>org.wso2.developerstudio.kernel.wso2plugins.samples.feature</module>
     </modules>
     <distributionManagement>
         <repository>

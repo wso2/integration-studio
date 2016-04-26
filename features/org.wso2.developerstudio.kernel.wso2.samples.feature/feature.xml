@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
-      id="org.wso2.developerstudio.kernel.wso2plugins.default.samples.feature"
+      id="org.wso2.developerstudio.kernel.wso2.samples.feature"
       label="Developer Studio Samples Feature"
       version="4.1.0.qualifier"
       provider-name="%providerName">
@@ -17,12 +17,6 @@
       %license
    </license>
 
-   <plugin
-         id="org.wso2.developerstudio.eclipse.kernel.defaultsamples"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
   <plugin
          id="org.wso2.developerstudio.eclipse.samples"
          download-size="0"

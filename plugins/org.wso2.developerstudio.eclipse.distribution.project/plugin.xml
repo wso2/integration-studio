@@ -17,7 +17,29 @@
 			<description>Composite Application Project</description>
 		</wizard>
    </extension>
-   
+      <extension
+         point="org.eclipse.ui.menus">
+     <menuContribution
+            allPopups="false"
+            locationURI="menu:org.wso2.developerstudio.eclipse.platform.ui.main">
+            <menu
+               id="new"
+               label="New">
+            <!--command
+                  commandId="cn.ggfan.dmp.commands.addCP"
+                  label="Connection  Profiles"
+                  style="push">
+            </command>
+              <command
+                  commandId="cn.ggfan.dmp.commands.addCP3"
+                  label="Connection  Profiles 2"
+                  style="push">
+            </command-->
+            <command commandId="org.eclipse.ui.newWizard">
+            <parameter name="newWizardId" value="org.wso2.developerstudio.eclipse.distribution.project" /> </command>
+         </menu>
+      </menuContribution>
+   </extension>
    <extension point="org.eclipse.ui.newWizards">
 		<primaryWizard id="org.wso2.developerstudio.eclipse.distribution.project" />
 	</extension>

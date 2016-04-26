@@ -24,7 +24,7 @@
 			class="org.wso2.developerstudio.eclipse.wso2plugin.template.manager.ui.wizard.WSO2PluginProjectWizard"
 			id="org.wso2.developerstudio.eclipse.artifact.newwso2pluginproject"
 			wizardManifest="project_wizard.xml"
-			icon="icons/plugin-icon.png"
+			icon="icons/plugin-icon-16.png"
 			project="true">
 			<description>WSO2 Plugin Project</description>
 		</wizard>
@@ -34,7 +34,7 @@
             <menu label="Developer Studio"
                   mnemonic="C"
                   id="org.wso2.developerstudio.eclipse.platform.ui.main">
-                <command commandId="org.eclipse.ui.newWizard" icon="icons/plugin-icon-16.png">
+                <command commandId="org.eclipse.ui.newWizard">
             		<parameter name="newWizardId" value="org.wso2.developerstudio.eclipse.artifact.newwso2pluginproject" />
          		</command>
             </menu>

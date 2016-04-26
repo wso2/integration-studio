@@ -43,14 +43,6 @@
                   mnemonic="C"
                   id="org.wso2.developerstudio.eclipse.platform.ui.main">
                 <command
-                        commandId="org.wso2.developerstudio.eclipse.platform.ui.commands.opendashboard"
-                        icon="icons/carbon-normal.png"
-                        id="org.wso2.developerstudio.eclipse.platform.ui.toolbars.opendashboard"
-                        label="Open Dashboard"
-                        tooltip="Open Developer Studio Dashboard">
-                </command>
-                <separator name="group.filter" visible="false"/>
-                <command
                         commandId="org.wso2.developerstudio.eclipse.platform.ui.commands.sampleCommand"
                         icon="icons/carbon-studio-small-logo.gif"
                         id="org.wso2.developerstudio.eclipse.platform.ui.toolbars.sampleCommand"
@@ -59,29 +51,6 @@
                 </command>
             </menu>
         </menuContribution>
-<!--
-        <menuContribution locationURI="popup:org.eclipse.ui.popup.any?after=additions">
-            <command
-                    commandId="org.wso2.developerstudio.eclipse.maven.pom.generator"
-                    style="push">
-                <visibleWhen checkEnabled="false">
-                    <with variable="activeMenuSelection">
-                        <iterate ifEmpty="false" operator="and">
-                            <instanceof
-                                    value="org.eclipse.core.resources.IProject">
-                            </instanceof>
-                            <and>
-                                <test
-                                        property="org.wso2.developerstudio.eclipse.pomgenModuleVisibility"
-                                        value="org.eclipse.core.resources.IProject">
-                                </test>
-                            </and>
-                        </iterate>
-                    </with>
-                </visibleWhen>
-            </command>
-        </menuContribution>
-        -->
     </extension>
 
     <extension

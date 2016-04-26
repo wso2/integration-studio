@@ -14,7 +14,21 @@
                 id="org.wso2.developerstudio.eclipse.dashboard"
                 name="Developer Studio Dashboard"></editor>
     </extension>
-    
+        <extension point="org.eclipse.ui.menus">
+        <menuContribution locationURI="menu:org.eclipse.ui.main.menu?before=file">
+            <menu label="Developer Studio"
+                  mnemonic="C"
+                  id="org.wso2.developerstudio.eclipse.platform.ui.main">
+                <command
+                        commandId="org.wso2.developerstudio.eclipse.platform.ui.commands.opendashboard"
+                        icon="icons/carbon-normal.png"
+                        id="org.wso2.developerstudio.eclipse.platform.ui.toolbars.opendashboard"
+                        label="Open Dashboard"
+                        tooltip="Open Developer Studio Dashboard">
+                </command>
+            </menu>
+        </menuContribution>
+    </extension>
     
     <extension point="org.eclipse.ui.newWizards">
   <category name="WSO2BASS" id="org.wso2.developerstudio.eclipse.capp.projectBASS">

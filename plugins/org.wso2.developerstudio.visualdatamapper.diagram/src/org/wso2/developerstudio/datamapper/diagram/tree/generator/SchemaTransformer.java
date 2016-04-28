@@ -1175,10 +1175,10 @@ public class SchemaTransformer implements ISchemaTransformer {
 						arrayObject.put(JSON_SCHEMA_ITEMS, arrayItemsObject);
 						if (((TreeNodeImpl) node).getNode().size() > 0) {
 							// Handle properties in array
-							if (propertiesId != null) {
+							//if (propertiesId != null) {
 								itemProperties.put(JSON_SCHEMA_PROPERTIES, itemsObject);
 								recursiveSchemaGenerator((TreeNodeImpl) node, itemsObject, root);
-							}
+							//}
 							// Handle attributes in array
 							if (attributeID != null && attributeType != null) {
 								hasAttributes = true;

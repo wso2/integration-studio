@@ -16,16 +16,11 @@
 
 package org.wso2.developerstudio.datamapper.diagram.schemagen.util;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
-import java.io.Reader;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
-import java.util.Map.Entry;
 
 import javax.xml.stream.XMLStreamException;
 
@@ -37,10 +32,6 @@ import org.apache.axiom.om.OMNode;
 import org.apache.axiom.om.OMText;
 import org.apache.axiom.om.util.AXIOMUtil;
 import org.apache.commons.io.FileUtils;
-import org.apache.xmlbeans.XmlException;
-import org.apache.xmlbeans.XmlOptions;
-import org.apache.xmlbeans.impl.inst2xsd.Inst2XsdOptions;
-import org.apache.xmlbeans.impl.xb.xsdschema.SchemaDocument;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.XML;
@@ -50,6 +41,8 @@ public class SchemaGeneratorForXML extends SchemaGeneratorForJSON implements ISc
 	private static final String TEMP_AVRO_GEN_LOCATION = "tempXSDGenLocation";
 	private static final String JAVA_IO_TMPDIR = "java.io.tmpdir";
 	private static final String TEMP_OUTPUT = System.getProperty(JAVA_IO_TMPDIR) + File.separator + TEMP_AVRO_GEN_LOCATION;
+	protected static final String AT_PREFIX = "@";
+	protected static final String DOLLLAR_AT_PREFIX = "$@";
 	
 	@Override
 	public String getSchemaContent(String content) throws IOException {
@@ -112,15 +105,24 @@ public class SchemaGeneratorForXML extends SchemaGeneratorForJSON implements ISc
 
 	private OMElement traverseChildrenAndReplaceAttributes(OMElement element, OMFactory factory) {
 
+		
 		Iterator attributeIterator = element.getAllAttributes();
 		List<OMAttribute> removeList = new ArrayList<OMAttribute>();
 		List<OMElement> addList = new ArrayList<OMElement>();
 		
 		while (attributeIterator.hasNext()) {
 			OMAttribute atttrib = (OMAttribute) attributeIterator.next();
-			//remove attribute and instead add a element with @ infront
-			// eg <person age="30"></person> will be replaced by <person><@age>30</@age></person>
-			OMElement attributeElement = factory.createOMElement("@"+ atttrib.getLocalName(), null);
+			OMElement attributeElement = null;
+			//If the attribute is an element handler append the prefix to the name
+			if(atttrib.getNamespace() != null){
+				String prefix = atttrib.getNamespace().getPrefix();
+				attributeElement = factory.createOMElement(DOLLLAR_AT_PREFIX+ prefix+":"+atttrib.getLocalName(), null);
+			}else{
+				//remove attribute and instead add a element with @ infront
+				// eg <person age="30"></person> will be replaced by <person><@age>30</@age></person>
+				attributeElement = factory.createOMElement(AT_PREFIX+ atttrib.getLocalName(), null);
+			}
+			
 			OMText attributeValue = factory.createOMText(atttrib.getAttributeValue());
 			attributeElement.addChild(attributeValue);
 			// add to list and later remove

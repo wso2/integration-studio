@@ -17,6 +17,8 @@
 
 package org.wso2.developerstudio.datamapper.diagram.schemagen.util;
 
+import java.util.Map;
+
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
@@ -24,10 +26,11 @@ public class SchemaBuilderWithNamepaces extends SchemaBuilder {
 
 	private static final String NAMESPACES = "namespaces";
 	private static final String XMLNS = "xmlns:";
+	private static final String ELEMENT_IDENTIFIERS = "elementIdentifiers";
 
 
 	@Override
-	protected JsonSchema addPrimitiveToParent(JsonSchema parent, String id, String value, TypeEnum propertyValueType) {
+	protected JsonSchema addPrimitiveToParent(JsonSchema parent, String id, String value, TypeEnum propertyValueType, Map<String,String> elementIdentifierMap) {
 		if (id.contains(XMLNS)) {
 			String prefix = id.substring(XMLNS.length());
 			JsonObject obj = new JsonObject();
@@ -41,10 +44,31 @@ public class SchemaBuilderWithNamepaces extends SchemaBuilder {
 				namespaces = root.getCustomArray(NAMESPACES);
 				namespaces.add(obj);
 			}
+			//Create element identifier block
+			if(elementIdentifierMap.containsKey(prefix)){
+				JsonArray identifiers = root.getCustomArray(ELEMENT_IDENTIFIERS);
+				JsonObject identifierObj = new JsonObject();
+				identifierObj.addProperty("type", elementIdentifierMap.get(prefix));
+				if(identifiers != null){
+					identifiers.add(identifierObj);
+				}else{
+					root.addCustomArray(ELEMENT_IDENTIFIERS);
+					identifiers = root.getCustomArray(ELEMENT_IDENTIFIERS);
+					identifiers.add(identifierObj);
+				}
+				elementIdentifierMap.clear();
+			}
 			return null;
 		} else if (id.startsWith(AT_PREFIX)) {
 			JsonSchema leaf = new JsonSchema();
 		    String idwithoutAtSign = id.substring(1);
+			leaf.setId(parent.getId() + "/" + idwithoutAtSign);
+			leaf.setType(propertyValueType.toString().toLowerCase());
+			parent.addAttribute(idwithoutAtSign, leaf);
+			return leaf;
+		}else if (id.startsWith(DOLLLAR_AT_PREFIX)) {
+			JsonSchema leaf = new JsonSchema();
+		    String idwithoutAtSign = id.substring(2);
 			leaf.setId(parent.getId() + "/" + idwithoutAtSign);
 			leaf.setType(propertyValueType.toString().toLowerCase());
 			parent.addAttribute(idwithoutAtSign, leaf);
@@ -55,7 +79,7 @@ public class SchemaBuilderWithNamepaces extends SchemaBuilder {
 		   parent.addCustomObject("value", object);	
 		   return null;	
 		} else {
-		   return super.addPrimitiveToParent(parent, id, value, propertyValueType);
+		   return super.addPrimitiveToParent(parent, id, value, propertyValueType,elementIdentifierMap);
 		}
 	}
 

@@ -65,6 +65,9 @@
  <feature id="org.wso2.developerstudio.usr.management.feature" version="0.0.0">
       <category name="org.wso2.developerstudio.eclipse.esb.feature.category"/>
    </feature>
+ <feature id="org.wso2.developerstudio.cloud.utils.feature" version="0.0.0">
+      <category name="org.wso2.developerstudio.eclipse.esb.feature.category"/>
+   </feature>
  <feature id="org.wso2.developerstudio.mvn.multimodule.feature" version="0.0.0">
       <category name="org.wso2.developerstudio.eclipse.esb.feature.category"/>
    </feature>

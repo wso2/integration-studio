@@ -162,10 +162,10 @@ public class SchemaBuilder {
 						// Adds the newly created object with element identifier
 						// appended to the name, to the map
 						objectMap.put(key, value);
+						// Saves the key of the array which has element identifiers
+						arrayKey = entry.getKey();
 					}
 				}
-				// Saves the key of the array which has element identifiers
-				arrayKey = entry.getKey();
 
 			} else {
 				addPrimitiveToParent(parent, id, element.getAsString(), propertyValueType, elementIdentifierMap);

@@ -65,11 +65,11 @@ public class PaletteFactory implements IPaletteProvider {
 		UIObjectFactoryProvider provider = UIObjectFactoryProvider
 				.getInstance();
 		
-		PaletteCategory basicActionsCategory = new PaletteCategory("Actions"); //$NON-NLS-1$
+		PaletteCategory basicActionsCategory = new PaletteCategory(Messages.PaletteFactory_Actions);
 		basicActionsCategory.setOrder(10);
-		basicActionsCategory.setCategoryId("bpel.actions");
+		basicActionsCategory.setCategoryId("bpel.actions"); //$NON-NLS-1$
 		
-		String term = BPELTerms.getString("Empty"); //$NON-NLS-1$
+		String term = BPELTerms.getString(Messages.PaletteFactory_Empty);
 			
 		basicActionsCategory.add(new BPELCreationToolEntry(term, term, provider
 				.getFactoryFor(bpelPackage.getEmpty())));
@@ -94,9 +94,9 @@ public class PaletteFactory implements IPaletteProvider {
 						.getFactoryFor(bpelPackage.getValidate())));
 		palette.add(basicActionsCategory);
 
-		PaletteCategory controlCategory = new PaletteCategory("Control2"); //$NON-NLS-1$
+		PaletteCategory controlCategory = new PaletteCategory(Messages.PaletteFactory_Control);
 		controlCategory.setOrder(20);
-		controlCategory.setCategoryId("bpel.control");
+		controlCategory.setCategoryId("bpel.control"); //$NON-NLS-1$
 
 		controlCategory.add(new BPELCreationToolEntry(
 				Messages.BPELEditor_If_17, Messages.BPELEditor_If_18, provider
@@ -138,9 +138,9 @@ public class PaletteFactory implements IPaletteProvider {
 
 		palette.add(controlCategory);
 
-		PaletteCategory faultCategory = new PaletteCategory("Faults"); //$NON-NLS-1$
+		PaletteCategory faultCategory = new PaletteCategory(Messages.PaletteFactory_Faults);
 		faultCategory.setOrder(30);
-		faultCategory.setCategoryId("bpel.faults");
+		faultCategory.setCategoryId("bpel.faults"); //$NON-NLS-1$
 
 		faultCategory.add(new BPELCreationToolEntry(
 				Messages.BPELEditor_Exit_26, Messages.BPELEditor_Exit_27,
@@ -168,7 +168,7 @@ public class PaletteFactory implements IPaletteProvider {
 		OrderedPaletteGroup controlGroup = new OrderedPaletteGroup(
 				Messages.BPELEditor_Top_Control_Group_37);
 		controlGroup.setOrder(5);
-		controlGroup.setCategoryId("bpel.top.control");
+		controlGroup.setCategoryId("bpel.top.control"); //$NON-NLS-1$
 
 		SelectionToolEntry selectionTool = new SelectionToolEntry(
 				Messages.BPELEditor_Selection_Tool_38);
@@ -183,13 +183,13 @@ public class PaletteFactory implements IPaletteProvider {
 	}
 
 	void createBottomControlPaletteEntries(PaletteContainer palette) {
-		PaletteSeparator separator = new PaletteSeparator("separator");
+		PaletteSeparator separator = new PaletteSeparator("separator"); //$NON-NLS-1$
 		palette.add(separator);
 		
 		OrderedPaletteGroup controlGroup = new OrderedPaletteGroup(
 				Messages.BPELEditor_Bottom_Control_Group_39);
 		controlGroup.setOrder(200);
-		controlGroup.setCategoryId("bpel.bottom.control");
+		controlGroup.setCategoryId("bpel.bottom.control"); //$NON-NLS-1$
 
 		ZoominToolEntry zoomIn = new ZoominToolEntry(
 				Messages.BPELEditor_Zoom_In_40);

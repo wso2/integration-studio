@@ -28,16 +28,16 @@ public class RepeatUntilAdapter extends ContainerActivityAdapter implements IAnn
 	}
 
 	/* EditPartFactory */
-	
+
 	@Override
-	public EditPart createEditPart(EditPart context, Object model) {	
+	public EditPart createEditPart(EditPart context, Object model) {
 		EditPart result = new SequenceEditPart();
 		result.setModel(model);
 		return result;
 	}
 
 	/* IOutlineEditPartFactory */
-	
+
 	@Override
 	public EditPart createOutlineEditPart(EditPart context, Object model) {
 		EditPart result = new OutlineTreeEditPart();
@@ -46,12 +46,11 @@ public class RepeatUntilAdapter extends ContainerActivityAdapter implements IAnn
 	}
 
 	/* IAnnotatedElement */
-	
+
 	public String[] getAnnotation(Object object) {
 		Expression expression = ((RepeatUntil)object).getCondition();
 		return new String[] {
-			Messages.CONDITION, AnnotationHelper.getAnnotation(expression),
-			Messages.LANGUAGE, AnnotationHelper.getExpressionLanguage(expression)
-			};
+			Messages.CONDITION, AnnotationHelper.getAnnotation(expression)
+		};
 	}
 }

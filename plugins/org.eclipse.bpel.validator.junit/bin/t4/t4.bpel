@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpws:process
+	xmlns:bpws="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+	xmlns:ns="http://eclipse.org/bpel/sampleArtifacts"
+	xmlns:tns="http://eclipse.org/bpel/sample" 
+	xmlns:tnstoo="http://eclipse.org/bpel/sample"
+	xmlns:xsdmapped = "http://www.w3.org/2001/XMLSchema"
+	exitOnStandardFault="yes"
+	name="T4"
+	suppressJoinFailure="yes"
+	targetNamespace="http://eclipse.org/bpel/sample">
+  
+	<bpws:import importType="http://schemas.xmlsoap.org/wsdl/"
+		location="t4.wsdl" namespace="http://eclipse.org/bpel/sample" />
+ 
+	<bpws:import importType="http://schemas.xmlsoap.org/wsdl/"
+		location="t4Artifacts.wsdl"
+		namespace="http://eclipse.org/bpel/sampleArtifacts" />
+	<!--  Comment  -->
+	<bpws:partnerLinks>
+		<bpws:partnerLink myRole="SimpleProvider" name="client"
+			partnerLinkType="tns:Simple" partnerRole="SimpleRequester"/>									
+		<bpws:partnerLink name="partner1"
+			partnerLinkType="tns:Simple" partnerRole="SimpleRequester"/>									
+		<bpws:partnerLink name="partner2"
+			partnerLinkType="tns:Simple" myRole="SimpleRequester"/>									
+			
+	</bpws:partnerLinks>
+
+	<bpws:variables>
+		<bpws:variable messageType="tns:SimpleRequestMessage"
+			name="input" />
+		<bpws:variable messageType="tns:SimpleResponseMessage"
+			name="output"/>		
+		<bpws:variable type="xsdmapped:integer" name="varx"/>		
+		<bpws:variable type="xsdmapped:integer" name="vary"/>
+				
+	</bpws:variables>
+	<bpws:sequence name="main">
+   		<bpws:receive name="receiveInput"
+			operation="initiate" 
+			partnerLink="client" 
+			portType="tns:Simple"
+			variable="input"
+			createInstance="yes"/>
+	
+		<bpws:link name="AB"/>
+		<bpws:links/>
+        <bpws:links>
+		     <bpws:link name="A"/>
+		</bpws:links>
+				
+		<bpws:scope name="outer">
+		    <bpws:sequence>	
+  			<bpws:scope name="scope_foo">
+		    	<bpws:sequence>
+		      		<bpws:empty/>
+		    	</bpws:sequence>
+			</bpws:scope>
+			<bpws:scope name="scope_foo">
+		   		<bpws:sequence>
+		      		<bpws:empty/>
+		   		</bpws:sequence>
+			</bpws:scope>	
+		    </bpws:sequence>			
+		</bpws:scope>
+		
+		
+		<bpws:flow name="first flow">
+		  <bpws:links>
+		     <bpws:link name="A"/>
+		     <bpws:link name="AA"/>		
+			 <bpws:link name="AAA"/>
+			 <bpws:link name="B"/>
+		     <bpws:link name="C"/>
+   			 <bpws:link name="B"/>
+		     <bpws:link name="D"/>
+		     <bpws:link name="E"/>		     
+   		     <bpws:link name="G"/>		     
+   		     <bpws:link name="H"/>		     
+		     <bpws:link name="B"/>
+		     <bpws:link name="B Z"/>		     
+		  </bpws:links>
+
+		  <bpws:sequence name="seq1">
+		      <bpws:targets/>
+		      <bpws:empty>
+		         <bpws:targets>
+		            <bpws:target linkName="A"/>
+   		            <bpws:target linkName="AA"/>
+		            <bpws:target linkName="AAA"/>
+   		            <bpws:target linkName="G"/>
+   		            <bpws:target linkName="Z"/>
+		         </bpws:targets>
+		      </bpws:empty>
+
+		      <bpws:empty>
+		         <bpws:targets>
+		            <bpws:target linkName="A"/>
+		            <bpws:target linkName="A"/>		            
+   		            <bpws:target linkName="Z"/>
+		         </bpws:targets>
+		      </bpws:empty>
+		      
+		      <bpws:while>
+		         <bpws:condition>boolean(true)</bpws:condition>
+		         <bpws:empty>
+		            <bpws:targets>		            
+		              <bpws:target linkName="C"/>
+		            </bpws:targets>
+					<bpws:sources>
+		              <bpws:source linkName="C"/>
+		            </bpws:sources>		            
+		         </bpws:empty>
+		      </bpws:while>
+
+		      <bpws:while>
+	            <bpws:targets>
+	              <bpws:target linkName="D"/>
+	            </bpws:targets>		
+				<bpws:sources>
+		           <bpws:source linkName="D"/>
+ 	            </bpws:sources>			                  
+		        <bpws:condition>boolean(true)</bpws:condition>		        
+		        <bpws:empty/>		        
+		      </bpws:while>
+		      
+		  </bpws:sequence>
+
+		  <bpws:sequence name="seq2">
+		         <bpws:sources>
+		            <bpws:source linkName="A"/>
+		            <bpws:source linkName="AA"/>		            
+		            <bpws:source linkName="AAA"/>		            		            
+		            <bpws:source linkName="A"/>		            
+   		            <bpws:source linkName="Z"/>
+		         </bpws:sources>
+		         <bpws:empty/>
+		  </bpws:sequence>
+
+		  <bpws:sequence name="seq2">
+		     <bpws:empty>
+		         <bpws:targets>		         
+		            <bpws:target linkName="B"/>
+	                <bpws:target linkName="A"/>
+	                <bpws:joinCondition>
+	                    $bar:foo and 
+	                          $A and $B and $BBB or $BBB
+	                             and $C
+	                </bpws:joinCondition>
+		         </bpws:targets>
+		      </bpws:empty>		  
+		  </bpws:sequence>
+
+		  <bpws:sequence name="seq2">
+  		  	 <bpws:empty>
+		         <bpws:sources>
+		            <bpws:source linkName="A"/>
+		            <bpws:source linkName="B"/>
+		            <bpws:source linkName="C"/>
+		         </bpws:sources>
+		      </bpws:empty>	
+		  </bpws:sequence>
+		  
+		  <bpws:scope name="faultHandlersBoundaryScope">
+		      <bpws:faultHandlers>
+		          <bpws:catchAll>
+		              <bpws:sequence>
+		                  <bpws:empty>
+		                     <bpws:sources>
+		                        <bpws:source linkName="G"/>
+		                        <bpws:source linkName="H"/>		                        
+		                     </bpws:sources>
+		                  </bpws:empty>
+						  <bpws:empty>
+		                     <bpws:targets>
+		                        <bpws:target linkName="H"/>
+		                     </bpws:targets>
+		                  </bpws:empty>		                  
+		              </bpws:sequence>
+		          </bpws:catchAll>
+		      </bpws:faultHandlers>
+		      <bpws:empty/>
+		  </bpws:scope>
+		</bpws:flow>
+		
+		<bpws:forEach counterName="counter1">
+
+		   <bpws:startCounterValue/>
+		   
+   		   <bpws:finalCounterValue/>
+   		      		   
+		</bpws:forEach>
+
+		<bpws:forEach counterName="counter2">
+		
+		   <bpws:startCounterValue>"Hello"</bpws:startCounterValue>
+		   <!-- Hello -->
+   		   <bpws:finalCounterValue>string(1)</bpws:finalCounterValue>
+   		   <!-- Hello -->
+   		   <bpws:completionCondition>
+   		   </bpws:completionCondition> 
+   		      		   
+		</bpws:forEach>
+		
+		<bpws:forEach counterName="counter2" parallel="no">
+		   <bpws:startCounterValue>1</bpws:startCounterValue>
+   		   <bpws:finalCounterValue>3</bpws:finalCounterValue>
+   		   <bpws:completionCondition>
+   		      <bpws:branches>"Hello"</bpws:branches>
+   		   </bpws:completionCondition>   		   
+		</bpws:forEach>
+		
+		<bpws:forEach counterName="counter3" parallel="true">
+		
+		   <bpws:startCounterValue>1</bpws:startCounterValue>
+   		   <bpws:finalCounterValue>3</bpws:finalCounterValue>		   
+   		   <bpws:completionCondition>
+   		     <bpws:branches>1 + 3 * $foo + 3</bpws:branches>
+   		   </bpws:completionCondition>
+   		   
+   		   <bpws:scope>
+   		      <bpws:variables>   		      
+   		      	<bpws:variable name="counter4" type="xsdmapped:integer"/>
+   		      	<bpws:variable name="counter3" type="xsdmapped:integer"/>
+   		      </bpws:variables>   		      
+   		      <bpws:empty/>   		      
+   		   </bpws:scope>
+   		   
+		</bpws:forEach>
+		
+		<!-- foo --> 
+	</bpws:sequence>
+	
+</bpws:process>

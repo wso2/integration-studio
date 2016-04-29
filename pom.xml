@@ -71,14 +71,14 @@
         <wso2.tomcat.version>7.0.59.wso2v3</wso2.tomcat.version>
     </properties>
     <repositories>
-        <repository>
+       <repository>
             <releases>
                 <enabled>true</enabled>
                 <updatePolicy>daily</updatePolicy>
                 <checksumPolicy>ignore</checksumPolicy>
             </releases>
             <id>Eclipse-p2-repo</id>
-            <url>http://download.eclipse.org/releases/luna/</url>
+            <url>http://download.eclipse.org/releases/mars/</url>
             <layout>p2</layout>
         </repository>
         <repository>
@@ -91,6 +91,16 @@
             <url>http://maven.wso2.org/nexus/content/groups/wso2-public/</url>
             <layout>default</layout>
         </repository>
+	<repository>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>daily</updatePolicy>
+                <checksumPolicy>ignore</checksumPolicy>
+            </releases>
+            <id>Maven-Central-Repo</id>
+            <url>http://repo1.maven.org/maven/</url>
+            <layout>default</layout>
+        </repository>
         <repository>
             <releases>
                 <enabled>true</enabled>
@@ -98,7 +108,7 @@
                 <checksumPolicy>ignore</checksumPolicy>
             </releases>
             <id>DevS-Deps-p2-Repository</id>
-            <url>http://builder1.us1.wso2.org/~developerstudio/developer-studio-kernel/dependencies/p2/</url>
+            <url>http://builder1.us1.wso2.org/~developerstudio/developer-studio-kernel/dependencies/other/p2/</url>
             <layout>p2</layout>
         </repository>
         <repository>
@@ -107,8 +117,28 @@
                 <updatePolicy>daily</updatePolicy>
                 <checksumPolicy>ignore</checksumPolicy>
             </releases>
-            <id>DevS-Kernel-p2-Repository</id>
-            <url>http://builder1.us1.wso2.org/~developerstudio/developer-studio-kernel/4.0.0/kernel/releases/</url>
+            <id>DevS-Kernel-p2-releases-Repository</id>
+            <url>http://builder1.us1.wso2.org/~developerstudio/developer-studio-kernel/4.1.0/kernel/releases/</url>
+            <layout>p2</layout>
+        </repository>
+	<repository>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>daily</updatePolicy>
+                <checksumPolicy>ignore</checksumPolicy>
+            </releases>
+            <id>DevS-Platform-p2-releases-Repository</id>
+            <url>http://builder1.us1.wso2.org/~developerstudio/developer-studio-kernel/4.1.0/platform-bundles/releases/</url>
+            <layout>p2</layout>
+        </repository>
+        <repository>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>daily</updatePolicy>
+                <checksumPolicy>ignore</checksumPolicy>
+            </releases>
+            <id>Additional-Tools-p2-Repository</id>
+            <url>http://builder1.us1.wso2.org/~developerstudio/developer-studio-kernel/4.0.0/additional-tools/releases/p2/</url>
             <layout>p2</layout>
         </repository>
         <repository>

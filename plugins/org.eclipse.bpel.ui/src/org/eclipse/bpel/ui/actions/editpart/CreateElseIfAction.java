@@ -12,6 +12,7 @@ package org.eclipse.bpel.ui.actions.editpart;
 
 import org.eclipse.bpel.model.BPELPackage;
 import org.eclipse.bpel.model.ElseIf;
+import org.eclipse.bpel.model.If;
 import org.eclipse.bpel.ui.BPELEditor;
 import org.eclipse.bpel.ui.BPELUIPlugin;
 import org.eclipse.bpel.ui.IBPELUIConstants;
@@ -50,7 +51,11 @@ public class CreateElseIfAction extends AbstractAction {
 		final ElseIf child = (ElseIf)UIObjectFactoryProvider.getInstance().getFactoryFor(
 			BPELPackage.eINSTANCE.getElseIf()).createInstance();
 
-		command.add(new InsertInContainerCommand((EObject)modelObject, child, null));
+		EObject before = null;
+		If ifObject = (If)modelObject;
+		if (ifObject.getElse()!=null)
+			before = ifObject.getElse();
+		command.add(new InsertInContainerCommand((EObject)modelObject, child, before));
 		command.add(new SetNameAndDirectEditCommand(child, viewer));
 		BPELEditor bpelEditor = ModelHelper.getBPELEditor(modelObject);
 		bpelEditor.getCommandStack().execute(command);

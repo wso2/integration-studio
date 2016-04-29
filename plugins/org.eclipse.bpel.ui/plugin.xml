@@ -3,11 +3,10 @@
 <plugin>
 
    <extension-point id="hoverHelpers" name="%HOVERHELP_HELPER_NAME" schema="schema/hoverHelpers.exsd"/>
-   <extension-point id="expressionEditors" name="%EXPRESSION_LANGUAGE_EDITORS" schema="schemas/expressionEditors.exsd"/>
    <extension-point id="actions" name="%ACTIONS_NAME" schema="schemas/actions.exsd"/>
    <extension-point id="modelListener" name="Model Listener" schema="schemas/modelListener.exsd"/>
    <extension-point id="uiObjectFactories" name="UIObjectFactories" schema="schemas/uiObjectFactories.exsd"/>
-
+   <extension-point id="assignCategoryAdditions" name="Assign Section Additions" schema="schema/assignCategoryAdditions.exsd"/>
 
    <extension
          point="org.eclipse.ui.editors">
@@ -110,7 +109,7 @@
             name="%PREFERENCE_PAGE_EDITOR">
       </page>
       <page
-            category="org.eclipse.bpel.ui.preferences.ExpressionEditorsPreferencePage"
+            category="org.eclipse.bpel.ui.preferences.BPELHomePreferencePage"
             class="org.eclipse.bpel.ui.preferences.XPathTemplatePreferencePage"
             id="org.eclipse.bpel.ui.preferences.BPELPreferencePage.XPathTemplatePreferencePage"
             name="%PREFERENCE_PAGE_XPATH_EDITOR_TEMPLATES"/>
@@ -118,11 +117,6 @@
             class="org.eclipse.bpel.ui.preferences.BPELHomePreferencePage"
             id="org.eclipse.bpel.ui.preferences.BPELHomePreferencePage"
             name="%PREFERENCE_PAGE_HOME"/>
-      <page
-            category="org.eclipse.bpel.ui.preferences.BPELHomePreferencePage"
-            class="org.eclipse.bpel.ui.preferences.ExpressionEditorsPreferencePage"
-            id="org.eclipse.bpel.ui.preferences.ExpressionEditorsPreferencePage"
-            name="%PREFERENCE_PAGE_EXPRESSION_EDITOR"/>
       <page
             category="org.eclipse.bpel.ui.preferences.BPELHomePreferencePage"
             class="org.eclipse.bpel.ui.preferences.WSILPreferencePage"
@@ -226,12 +220,6 @@
               tab="org.eclipse.bpel.ui.tabs.details"
               id="org.eclipse.bpel.ui.sections.ActionImplementationSection">
            <input type="org.eclipse.bpel.model.Empty"/>
-        </propertySection>
-        <propertySection
-               tab="org.eclipse.bpel.ui.tabs.details"
-               class="org.eclipse.bpel.ui.properties.AttributesSection"
-               id="org.eclipse.bpel.ui.sections.Attributes">
-            <input type="org.eclipse.bpel.model.Process"/>
         </propertySection>
         <propertySection
                tab="org.eclipse.bpel.ui.tabs.description"
@@ -582,10 +570,6 @@
             project="false"/>
    </extension>
    <extension
-         point="org.eclipse.core.runtime.preferences">
-      <initializer class="org.eclipse.bpel.ui.preferences.PreferenceInitializer"/>
-   </extension>
-   <extension
          point="org.eclipse.ui.editors.templates">
       <contextType
             class="org.eclipse.jface.text.templates.TemplateContextType"
@@ -608,36 +592,6 @@
       </factory>
    </extension>
 
-   <extension
-         point="org.eclipse.bpel.common.ui.embeddedEditors">
-      <editor
-            contributorClass="org.eclipse.ui.texteditor.BasicTextEditorActionContributor"
-            class="org.eclipse.bpel.ui.editors.xpath.XPathTextEditor"
-            name="XPath 1.0 Text Editor."
-            id="org.eclipse.bpel.ui.editors.xpath.XPathTextEditor">
-             <!-- TODO: remove the name="" in the future -->
-      </editor>
-      <editor
-            contributorClass="org.eclipse.ui.texteditor.BasicTextEditorActionContributor"
-            class="org.eclipse.bpel.ui.editors.TextEditor"
-            name="Default Expression Editor"
-            id="org.eclipse.bpel.ui.editors.TextEditor">
-             <!-- TODO: remove the name="" in the future -->
-      </editor>
-   </extension>
-   
-   <extension
-         point="org.eclipse.bpel.ui.expressionEditors">
-      <editor
-            label="%XPATH_LABEL"
-            class="org.eclipse.bpel.ui.expressions.XPathExpressionEditor"
-            expressionLanguage="http://www.w3.org/TR/1999/REC-xpath-19991116">
-      </editor>
-      <editor
-            class="org.eclipse.bpel.ui.expressions.XPathExpressionEditor"
-            expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"
-            label="%XPATH_LABEL20"/>
-   </extension>
    <extension
          id="org.eclipse.bpel.ui.bpel.provider"
          name="BPEL Palette Provider"

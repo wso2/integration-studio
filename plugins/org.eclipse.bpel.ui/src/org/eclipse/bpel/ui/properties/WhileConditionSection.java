@@ -13,94 +13,51 @@ package org.eclipse.bpel.ui.properties;
 import org.eclipse.bpel.model.BPELPackage;
 import org.eclipse.bpel.model.RepeatUntil;
 import org.eclipse.bpel.model.While;
-import org.eclipse.bpel.ui.IBPELUIConstants;
-import org.eclipse.bpel.ui.Messages;
 import org.eclipse.bpel.ui.expressions.IEditorConstants;
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.swt.widgets.Composite;
-
 
 /**
  * Details section for the WhileCondition of an activity (a boolean expression).
  */
 public class WhileConditionSection extends ExpressionSection {
 
+	/*
+	 * (non-Javadoc)
+	 * @see org.eclipse.bpel.ui.properties.ExpressionSection
+	 * #getExpressionType()
+	 */
 	@Override
-	protected String getExpressionType() { 
-		return IEditorConstants.ET_BOOLEAN; 
-	}
-	
-	
-	@Override
-	protected Composite createNoEditorWidgets (Composite composite) {
-			    	    
-		return super.createNoEditorWidgetsCreateComposite(composite,
-				
-				Messages.WhileConditionSection_No_condition_specified_1 + NL + NL +
-				Messages.WhileConditionSection_Mandatory_condition_text_2 ,
-				
-				Messages.WhileConditionSection_Create_a_New_Condition_3);
+	protected String getExpressionType() {
+		return IEditorConstants.ET_BOOLEAN;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see org.eclipse.bpel.ui.properties.ExpressionSection
+	 * #getStructuralFeature(org.eclipse.emf.ecore.EObject)
+	 */
 	@Override
 	protected EStructuralFeature getStructuralFeature (EObject object) {
-		
-		if (object instanceof While) {
+
+		if( object instanceof While )
 			return BPELPackage.eINSTANCE.getWhile_Condition() ;
-		}
-		if (object instanceof RepeatUntil) {
+
+		if( object instanceof RepeatUntil )
 			return BPELPackage.eINSTANCE.getRepeatUntil_Condition();
-		}
-		
-		return super.getStructuralFeature(object);
+
+		return null;
 	}
 
 
-	@Override
-	protected boolean isValidClientUseType (String useType) {
-		return IBPELUIConstants.USE_TYPE_CONDITION.equals(useType);
-	}
-	
-	
-	
-	
-	
-	/**
-	 * @see org.eclipse.bpel.ui.properties.BPELPropertySection#getMarkers(java.lang.Object)
+	/*
+	 * (non-Javadoc)
+	 * @see org.eclipse.bpel.ui.properties.BPELPropertySection
+	 * #getMarkers(java.lang.Object)
 	 */
 	@Override
 	protected IMarker[] getMarkers (Object input) {
-		
-		if ( input instanceof While ) {
-			While _while = (While) input;
-			return super.getMarkers( _while.getCondition() );
-		}
-		
-		return EMPTY_MARKERS;
+		return input instanceof While ? super.getMarkers(((While) input).getCondition()) : EMPTY_MARKERS;
 	}
-
-
-	/**
-	 * Return true if the marker is valid for this section.
-	 * @return true if so, false otherwise.
-	 */
-	
-
-	/**
-	 * @see org.eclipse.bpel.ui.properties.BPELPropertySection#isValidMarker(org.eclipse.core.resources.IMarker)
-	 */
-	@Override
-	public boolean isValidMarker (IMarker marker) {
-		String context = null;
-		try {
-			context = (String) marker.getAttribute("href.context");
-		} catch (Exception ex) {
-			return false;
-		}
-		
-		return "name".equals (context) == false ;
-	}	
-	
 }

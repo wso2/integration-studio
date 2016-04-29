@@ -33,136 +33,137 @@ import org.eclipse.ui.PlatformUI;
  */
 public class ForEachSuccessfulBranchesOnlySection extends BPELPropertySection {
 
-	Button		fSuccessfulBranchesOnlyCheckbox;
-	Composite	fSuccessfulBranchesOnlyComposite;
+    Button fSuccessfulBranchesOnlyCheckbox;
+    Composite fSuccessfulBranchesOnlyComposite;
 
-	/**
-	 * @see org.eclipse.bpel.ui.properties.BPELPropertySection#refresh()
-	 */
-	@Override
-	public void refresh() {
-		super.refresh();
-				
-		updateSuccessfulBranchesOnlyWidgets();
-	}
+    /**
+     * @see org.eclipse.bpel.ui.properties.BPELPropertySection#refresh()
+     */
+    @Override
+    public void refresh() {
+        super.refresh();
 
-	/**
-	 * @see org.eclipse.bpel.ui.properties.BPELPropertySection#restoreUserContext(java.lang.Object)
-	 */
-	@Override
-	public void restoreUserContext(Object userContext) {
-		updateSuccessfulBranchesOnlyWidgets();
-		fSuccessfulBranchesOnlyCheckbox.setFocus();
-	}
+        updateSuccessfulBranchesOnlyWidgets();
+    }
 
-	void createSuccessfulBranchesOnlyWidgets(Composite parentComposite) {
-		FlatFormData data;
+    /**
+     * @see org.eclipse.bpel.ui.properties.BPELPropertySection#restoreUserContext(java.lang.Object)
+     */
+    @Override
+    public void restoreUserContext(Object userContext) {
+        updateSuccessfulBranchesOnlyWidgets();
+        fSuccessfulBranchesOnlyCheckbox.setFocus();
+    }
 
-		fSuccessfulBranchesOnlyComposite = createFlatFormComposite(parentComposite);
-		data = new FlatFormData();
-		data.left = new FlatFormAttachment(0, 0);
-		data.top = new FlatFormAttachment(0, 0);
-		data.right = new FlatFormAttachment(100, 0);
-		fSuccessfulBranchesOnlyComposite.setLayoutData(data);
+    void createSuccessfulBranchesOnlyWidgets(Composite parentComposite) {
+        FlatFormData data;
 
-		fSuccessfulBranchesOnlyCheckbox = fWidgetFactory
-				.createButton(
-						fSuccessfulBranchesOnlyComposite,
-						Messages.ForEachSuccessfulBranchesOnlySection_1,
-						SWT.CHECK);
-		data = new FlatFormData();
-		data.left = new FlatFormAttachment(0, 0);
-		data.top = new FlatFormAttachment(0, 0);
-		fSuccessfulBranchesOnlyCheckbox.setLayoutData(data);
-		
-		fSuccessfulBranchesOnlyCheckbox.addSelectionListener(new SelectionListener() {
+        fSuccessfulBranchesOnlyComposite = createFlatFormComposite(parentComposite);
+        data = new FlatFormData();
+        data.left = new FlatFormAttachment(0, 0);
+        data.top = new FlatFormAttachment(0, 0);
+        data.right = new FlatFormAttachment(100, 0);
+        fSuccessfulBranchesOnlyComposite.setLayoutData(data);
 
-			public void widgetDefaultSelected(SelectionEvent e) {
-				
-			}
+        fSuccessfulBranchesOnlyCheckbox = fWidgetFactory.createButton(fSuccessfulBranchesOnlyComposite,
+                Messages.ForEachSuccessfulBranchesOnlySection_1, SWT.CHECK);
+        data = new FlatFormData();
+        data.left = new FlatFormAttachment(0, 0);
+        data.top = new FlatFormAttachment(0, 0);
+        fSuccessfulBranchesOnlyCheckbox.setLayoutData(data);
 
-			@SuppressWarnings("boxing")
-			public void widgetSelected(SelectionEvent e) {
-				ForEach input = getModel();
-				getCommandFramework().execute( wrapInShowContextCommand(
-						new SetCommand(input.getCompletionCondition().getBranches(), 
-								fSuccessfulBranchesOnlyCheckbox.getSelection(),
-								BPELPackage.eINSTANCE.getBranches_CountCompletedBranchesOnly() )) );
-			}
-			
-		});
-	}
+        fSuccessfulBranchesOnlyCheckbox.addSelectionListener(new SelectionListener() {
 
-	@SuppressWarnings("boxing")
-	void updateSuccessfulBranchesOnlyWidgets() {
-		
-		ForEach input = getModel();
-		CompletionCondition completionCondition = input.getCompletionCondition();
-		if (completionCondition == null) {
-			
-			fSuccessfulBranchesOnlyCheckbox.setEnabled(false);
-			fSuccessfulBranchesOnlyCheckbox.setSelection(false);
-			
-		} else {
-			Branches branches = completionCondition.getBranches();
-			if (branches == null) {
-				fSuccessfulBranchesOnlyCheckbox.setEnabled(false);
-				fSuccessfulBranchesOnlyCheckbox.setSelection(false);
-			} else {
-				fSuccessfulBranchesOnlyCheckbox.setEnabled(true);
-				Boolean value = branches.getCountCompletedBranchesOnly();
-				
-				fSuccessfulBranchesOnlyCheckbox.setSelection(value == null ? false : value );
-			}
-		}
-	}		
+            public void widgetDefaultSelected(SelectionEvent e) {
 
-	/**
-	 * This implementation just hooks the first adapter on the input object.
-	 * Subclasses may override.
-	 */
-	
-	@Override
-	protected void addAllAdapters() {
-		
-		super.addAllAdapters();
-		
-		ForEach input = getModel();
-		CompletionCondition cc = input.getCompletionCondition();
-		if (cc == null) {
-			return ;
-		}
-		fAdapters[0].addToObject( cc );
-		Branches branches = cc.getBranches();
-		if (branches == null) {
-			return;
-		}
-		fAdapters[0].addToObject( branches );
-	}
+            }
 
-	
-	@Override
-	protected MultiObjectAdapter[] createAdapters() {
-		return new MultiObjectAdapter[] { new MultiObjectAdapter() {
+            @SuppressWarnings("boxing")
+            public void widgetSelected(SelectionEvent e) {
+                ForEach input = getModel();
+                getCommandFramework()
+                        .execute(wrapInShowContextCommand(new SetCommand(input.getCompletionCondition().getBranches(),
+                                fSuccessfulBranchesOnlyCheckbox.getSelection(),
+                                BPELPackage.eINSTANCE.getBranches_CountCompletedBranchesOnly())));
+            }
 
-			@Override
-			public void notify(Notification n) {
-				if (n.getFeature() == BPELPackage.eINSTANCE.getBranches_CountCompletedBranchesOnly() ||
-					n.getFeature() == BPELPackage.eINSTANCE.getCompletionCondition_Branches() ||
-					n.getFeature() == BPELPackage.eINSTANCE.getForEach_CompletionCondition() )
-				{
-					updateSuccessfulBranchesOnlyWidgets();
-				}
-			}
+        });
+    }
 
-		}};
-	}
+    @SuppressWarnings("boxing")
+    void updateSuccessfulBranchesOnlyWidgets() {
 
-	
-	@Override
-	protected void createClient(Composite parent) {
-		Composite parentComposite = createFlatFormComposite(parent);
-		createSuccessfulBranchesOnlyWidgets(parentComposite);
-    PlatformUI.getWorkbench().getHelpSystem().setHelp(parentComposite, IHelpContextIds.PROPERTY_PAGE_FOR_EACH_SUCCESSFUL);
-	}
+        ForEach input = getModel();
+        CompletionCondition completionCondition = input.getCompletionCondition();
+        Object body = null;
+        if (completionCondition != null && completionCondition.getBranches() != null) {
+            body = completionCondition.getBranches().getBody();
+            if (body instanceof String && ((String) body).isEmpty())
+                body = null;
+        }
+        if (body == null) {
+
+            fSuccessfulBranchesOnlyCheckbox.setEnabled(false);
+            fSuccessfulBranchesOnlyCheckbox.setSelection(false);
+
+        } else {
+            Branches branches = completionCondition.getBranches();
+            if (branches == null) {
+                fSuccessfulBranchesOnlyCheckbox.setEnabled(false);
+                fSuccessfulBranchesOnlyCheckbox.setSelection(false);
+            } else {
+                fSuccessfulBranchesOnlyCheckbox.setEnabled(true);
+                Boolean value = branches.getCountCompletedBranchesOnly();
+
+                fSuccessfulBranchesOnlyCheckbox.setSelection(value == null ? false : value);
+            }
+        }
+    }
+
+    /**
+     * This implementation just hooks the first adapter on the input object.
+     * Subclasses may override.
+     */
+
+    @Override
+    protected void addAllAdapters() {
+
+        super.addAllAdapters();
+
+        ForEach input = getModel();
+        CompletionCondition cc = input.getCompletionCondition();
+        if (cc == null) {
+            return;
+        }
+        fAdapters[0].addToObject(cc);
+        Branches branches = cc.getBranches();
+        if (branches == null) {
+            return;
+        }
+        fAdapters[0].addToObject(branches);
+    }
+
+    @Override
+    protected MultiObjectAdapter[] createAdapters() {
+        return new MultiObjectAdapter[] { new MultiObjectAdapter() {
+
+            @Override
+            public void notify(Notification n) {
+                if (n.getFeature() == BPELPackage.eINSTANCE.getBranches_CountCompletedBranchesOnly()
+                        || n.getFeature() == BPELPackage.eINSTANCE.getCompletionCondition_Branches()
+                        || n.getFeature() == BPELPackage.eINSTANCE.getForEach_CompletionCondition()) {
+                    updateSuccessfulBranchesOnlyWidgets();
+                }
+            }
+
+        } };
+    }
+
+    @Override
+    protected void createClient(Composite parent) {
+        Composite parentComposite = createFlatFormComposite(parent);
+        createSuccessfulBranchesOnlyWidgets(parentComposite);
+        PlatformUI.getWorkbench().getHelpSystem().setHelp(parentComposite,
+                IHelpContextIds.PROPERTY_PAGE_FOR_EACH_SUCCESSFUL);
+    }
 }

@@ -56,30 +56,30 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetWidgetFactory;
  * An abstract implementation which provides some adapter support and useful stuff.
  * This was based on the common implementation characteristics of bpel.ui properties
  * pages.
- * 
+ *
  * Implementors may subclass this class, or they could extend AbstractPropertySection directly.
- */ 
+ */
 @SuppressWarnings("nls")
-public abstract class BPELPropertySection extends AbstractPropertySection 	
+public abstract class BPELPropertySection extends AbstractPropertySection
 {
 	protected static final String EMPTY_STRING = ""; //$NON-NLS-1$
-			
+
 	protected static final IMarker EMPTY_MARKERS[] = new IMarker[] {};
-		
+
 	protected static final MultiObjectAdapter[] EMPTY_MULTI_OBJECT_ARRAY = new MultiObjectAdapter[0];
-	
+
 	/** Standard label width */
 	public static final int STANDARD_LABEL_WIDTH_SM = 105;
-	
+
 	/** Standard label width - applying the 25% fudge factor */
 	public static final int STANDARD_LABEL_WIDTH_AVG = STANDARD_LABEL_WIDTH_SM * 5/4;
-	
+
 	/** Standard label width - applying the 50% fudge factor */
 	public static final int STANDARD_LABEL_WIDTH_LRG = STANDARD_LABEL_WIDTH_SM * 3/2;
-	
+
 	/** Standard button width */
 	public static final int STANDARD_BUTTON_WIDTH = 60;
-	
+
 	/** Short button width */
 	public static final int SHORT_BUTTON_WIDTH = 45;
 
@@ -87,21 +87,21 @@ public abstract class BPELPropertySection extends AbstractPropertySection
 	protected boolean isCreated;
 	protected boolean isHidden;
 	protected EObject fModelObject;
-	
+
 	protected TabbedPropertySheetWidgetFactory fWidgetFactory;
-	
-	
+
+
 	protected BPELTabbedPropertySheetPage fTabbedPropertySheetPage;
 
-	
-		
+
+
 	final protected ModelContentProposalProvider.ValueProvider inputValueProvider =  new ModelContentProposalProvider.ValueProvider () {
 		@Override
 		public Object value() {
 			return getModel();
-		}		
+		}
 	};
-	
+
 
 	/**
 	 * @see org.eclipse.ui.views.properties.tabbed.AbstractPropertySection#getWidgetFactory()
@@ -116,10 +116,10 @@ public abstract class BPELPropertySection extends AbstractPropertySection
 	/**
 	 * Brand new shiny BPELPropertySection
 	 */
-	
+
 	public BPELPropertySection() {
 		super();
-		fAdapters = createAdapters();
+		this.fAdapters = createAdapters();
 	}
 
 	/**
@@ -135,7 +135,7 @@ public abstract class BPELPropertySection extends AbstractPropertySection
 	 * Subclasses may override.
 	 */
 	protected void removeAllAdapters() {
-		for (MultiObjectAdapter a : fAdapters) {
+		for (MultiObjectAdapter a : this.fAdapters) {
 			a.removeFromAll();
 		}
 	}
@@ -145,19 +145,19 @@ public abstract class BPELPropertySection extends AbstractPropertySection
 	 * Subclasses may override.
 	 */
 	protected void addAllAdapters() {
-		assert isCreated : "Not yet created!" ;
-		
-		if (fAdapters.length > 0) {
+		assert this.isCreated : "Not yet created!" ;
+
+		if (this.fAdapters.length > 0) {
 			if (getModel() != null) {
-				fAdapters[0].addToObject(getModel());
+				this.fAdapters[0].addToObject(getModel());
 			}
 		}
 	}
 
 	/**
-	 * Convenience method for removing and re-adding adapters.  This is a simple and general 
+	 * Convenience method for removing and re-adding adapters.  This is a simple and general
 	 * way to react to model changes that grow or shrink the set of model objects we want our
-	 * adapters to be on.  
+	 * adapters to be on.
 	 */
 	protected void refreshAdapters() {
 		removeAllAdapters();
@@ -168,71 +168,70 @@ public abstract class BPELPropertySection extends AbstractPropertySection
 	 * This method is intended to set the input object.  Subclasses may override this
 	 * method to perform necessary cleanup before changing the input object, and/or
 	 * perform initialization after changing the input object.
-	 * 
+	 *
 	 * Subclasses may also override to change the policy of which object is used as
 	 * the input for a particular properties section.
-	 * 
+	 *
 	 * For example: a section for a custom activity, may wish to override this method
 	 * to use the custom activity ExtensibilityElement as the "main" input object.
 	 */
-	@SuppressWarnings("unchecked")
 	protected void basicSetInput(EObject newInput) {
-		fModelObject = newInput;
+		this.fModelObject = newInput;
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	protected void restoreUserContextFromInput () {
-		IProperty<String,Object> prop = BPELUtil.adapt(fModelObject, IProperty.class);
+		IProperty<String,Object> prop = BPELUtil.adapt(this.fModelObject, IProperty.class);
 		if (prop != null) {
-			restoreUserContext( prop.getProperty( getClass().getName() ) );			
+			restoreUserContext( prop.getProperty( getClass().getName() ) );
 		}
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	protected void saveUserContextToInput () {
-		IProperty<String,Object> prop = BPELUtil.adapt(fModelObject, IProperty.class);
+		IProperty<String,Object> prop = BPELUtil.adapt(this.fModelObject, IProperty.class);
 		if (prop != null) {
-			prop.setProperty(getClass().getName(), getUserContext() );			
-		}		
+			prop.setProperty(getClass().getName(), getUserContext() );
+		}
 	}
-	
-	
+
+
 	/**
 	 * @see org.eclipse.ui.views.properties.tabbed.AbstractPropertySection#setInput(org.eclipse.ui.IWorkbenchPart, org.eclipse.jface.viewers.ISelection)
 	 */
 	@Override
 	public final void setInput(IWorkbenchPart part, ISelection selection) {
-		
+
 		super.setInput(part, selection);
-		
+
 		if ((selection instanceof IStructuredSelection) == false) {
 			return ;
 		}
-		
+
 		Object model = ((IStructuredSelection)selection).getFirstElement();
-		if (model == fModelObject) {
+		if (model == this.fModelObject) {
 			return;
 		}
-				
+
 		removeAllAdapters();
-		
+
 		super.setInput(part, selection);
-		
+
 	    basicSetInput((EObject)model);
-	    
+
 		// Careful: don't assume input == newInput.
 		// There are basicSetInput() hacks that violate that assumption  =)
 		// TODO: is this comment related to the custom activities?
-		addAllAdapters();		
+		addAllAdapters();
 	}
 
-	
+
 	/**
 	 * @see org.eclipse.ui.views.properties.tabbed.AbstractPropertySection#aboutToBeHidden()
 	 */
 	@Override
 	public void aboutToBeHidden() {
-		isHidden = true;
+		this.isHidden = true;
 	}
 
 	/**
@@ -240,25 +239,25 @@ public abstract class BPELPropertySection extends AbstractPropertySection
 	 */
 	@Override
 	public void aboutToBeShown() {
-		isHidden = false;
+		this.isHidden = false;
 	}
 
 	@SuppressWarnings("unchecked")
 	protected <T extends EObject> T getModel() {
-		return (T) fModelObject;
+		return (T) this.fModelObject;
 	}
 
 	protected final <T extends EObject> T getInput() {
 		return getModel();
 	}
-	
-	
+
+
 	/**
 	 * Refresh the given CComboViewer, and also make sure selectedObject is selected in it.
 	 */
 	protected void refreshCCombo(CComboViewer viewer, Object selectedObject) {
 		viewer.refresh();
-		
+
 		if (selectedObject == null) {
 			viewer.setSelectionNoNotify ( StructuredSelection.EMPTY ,false );
 		} else {
@@ -268,38 +267,38 @@ public abstract class BPELPropertySection extends AbstractPropertySection
 
 	/**
 	 * Create the controls.
-	 * 
+	 *
 	 * @see org.eclipse.ui.views.properties.tabbed.AbstractPropertySection#createControls(org.eclipse.swt.widgets.Composite, org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage)
 	 */
-	
+
 	@Override
 	public void createControls (final Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
-		
+
 		super.createControls(parent, aTabbedPropertySheetPage);
-		
+
 		this.fTabbedPropertySheetPage = (BPELTabbedPropertySheetPage)aTabbedPropertySheetPage;
 		this.fWidgetFactory = getWidgetFactory();
-		
-		assert !isCreated : "Not yet created!";
-		
-		Composite marginComposite = fWidgetFactory.createComposite(parent); 
+
+		assert !this.isCreated : "Not yet created!";
+
+		Composite marginComposite = this.fWidgetFactory.createComposite(parent);
 		FillLayout fillLayout = new FillLayout();
 		fillLayout.marginWidth = IDetailsAreaConstants.HMARGIN;
 		fillLayout.marginHeight = IDetailsAreaConstants.VMARGIN/2;
 		marginComposite.setLayout(fillLayout);
 		createClient(marginComposite);
-		isHidden = true;
-		isCreated = true;
-			
+		this.isHidden = true;
+		this.isCreated = true;
+
 		parent.addDisposeListener(new DisposeListener() {
 			public void widgetDisposed(DisposeEvent e) {
 				dispose();
 			}
-			
+
 		});
-		
+
 	}
-	
+
 	/**
 	 * Subclasses should override this to create the child controls of the section.
 	 */
@@ -309,13 +308,13 @@ public abstract class BPELPropertySection extends AbstractPropertySection
 	 * @see org.eclipse.ui.views.properties.tabbed.AbstractPropertySection#dispose()
 	 */
 	@Override
-	public void dispose() {		
-		if (isCreated) {
+	public void dispose() {
+		if (this.isCreated) {
 			// TODO HACK: this shouldn't really be here!  But where should it be??
 			getCommandFramework().applyCurrentChange();
 			removeAllAdapters();
 		}
-		isCreated = false;
+		this.isCreated = false;
 	}
 
 	/**
@@ -328,21 +327,21 @@ public abstract class BPELPropertySection extends AbstractPropertySection
 	}
 
 	/**
-	 * Subclasses must override this method in order to refresh the status labels 
+	 * Subclasses must override this method in order to refresh the status labels
 	 */
 	protected void updateStatusLabels() {
 	}
 
 	/**
 	 * Gets all IMarker according to the passed input model.
-	 * @see IMarkerHolder.getMarkers 
+	 * @see IMarkerHolder.getMarkers
 	 */
-	
+
 	protected IMarker[] getMarkers (Object input) {
-		
+
 		IMarkerHolder markerHolder = BPELUtil.adapt(input, IMarkerHolder.class);
 		if (markerHolder != null) {
-			ArrayList<IMarker> filteredMarkers = new ArrayList<IMarker>(4);			
+			ArrayList<IMarker> filteredMarkers = new ArrayList<IMarker>(4);
 			for(IMarker m : markerHolder.getMarkers(input)) {
 				if (isValidMarker(m)) {
 					filteredMarkers.add(m);
@@ -354,20 +353,20 @@ public abstract class BPELPropertySection extends AbstractPropertySection
 		}
 		return EMPTY_MARKERS;
 	}
-	
-	
-	protected boolean markersHaveChanged  ( Notification n ) {		
-		int eventGroup = n.getEventType() / 100; 
+
+
+	protected boolean markersHaveChanged  ( Notification n ) {
+		int eventGroup = n.getEventType() / 100;
 		return eventGroup == AdapterNotification.NOTIFICATION_MARKERS_CHANGED_GROUP ;
 	}
-	
-	
+
+
 	protected void updateMarkers ( ) {
-		
+
 	}
 
 	protected CompoundCommand makeCompound ( Command command ) {
-		
+
 		if (command == null) {
 			return null;
 		}
@@ -378,12 +377,12 @@ public abstract class BPELPropertySection extends AbstractPropertySection
 		cc.add(command);
 		return cc;
 	}
-	
-	
+
+
 	protected void runCommand ( Command command ) {
 		getCommandFramework().execute( wrapInShowContextCommand(command) );
 	}
-	
+
 	protected ICommandFramework getCommandFramework() {
 		BPELEditor editor = getBPELEditor();
 		if (editor != null) {
@@ -395,10 +394,10 @@ public abstract class BPELPropertySection extends AbstractPropertySection
 	/**
 	 * @return the BPELEditor
 	 */
-	
+
 	public BPELEditor getBPELEditor() {
-		if (fTabbedPropertySheetPage != null) {
-			return fTabbedPropertySheetPage.getEditor();
+		if (this.fTabbedPropertySheetPage != null) {
+			return this.fTabbedPropertySheetPage.getEditor();
 		}
 		return null;
 	}
@@ -413,13 +412,13 @@ public abstract class BPELPropertySection extends AbstractPropertySection
 	protected EditController createEditController ( ) {
 		return new EditController ( getCommandFramework() ) {
 			@Override
-			public Command createApplyCommand() {				
+			public Command createApplyCommand() {
 				return wrapInShowContextCommand( super.createApplyCommand() );
-			}			
+			}
 		};
 	}
-	
-	
+
+
 	/**
 	 * Convenience accessor with default policy (this is overridden in certain subclasses).
 	 */
@@ -429,25 +428,25 @@ public abstract class BPELPropertySection extends AbstractPropertySection
 
 	/**
 	 * Create a command that wraps the command passed in the show/restore context commands.
-	 * 
+	 *
 	 * @param inner the inner command to be run.
 	 * @param section the BPEL property section
 	 * @return the command new wrapped command.
 	 */
-	
+
 	protected Command wrapInShowContextCommand(final Command inner, BPELPropertySection section) {
-		
+
 		/**
 		 * Sometimes we have property sections inside property sections.
-		 *  
+		 *
 		 * The owners section's input needs to be saved, because it is used to restore
 		 * the selection later on in the "wrapping" command. The "inner" section's input
 		 * may not be visibly selectable. For example, consider "Variable" property sheet.
-		 * A separate section is used for the "From" part of Variable.  
+		 * A separate section is used for the "From" part of Variable.
 		 */
-		
-		final Object previousInput = section.getInput(); 
-		
+
+		final Object previousInput = section.getInput();
+
 		final TabbedPropertyViewer viewer = getTabbedPropertySheetPage().getTabbedPropertyViewer();
 		final int tabIndex = viewer.getSelectionIndex();
 		// Bug 120110 - found this problem while building the extension activity examples
@@ -456,73 +455,73 @@ public abstract class BPELPropertySection extends AbstractPropertySection
 		final int sectionIndex = getTabbedPropertySheetPage().getCurrentTab()==null
 				? -1
 				: getTabbedPropertySheetPage().getCurrentTab().getSectionIndex(section);
-		
+
 		if (!inner.canExecute()) {
 			System.out.println("WARNING: unexecutable command passed to wrapInShowContextCommand():"); //$NON-NLS-1$
 			System.out.println("    "+inner.getDebugLabel()); //$NON-NLS-1$
 		}
-		
+
 		return new AbstractEditModelCommand() {
 			Object beforeContext, afterContext;
-			
+
 			@Override
 			public String getLabel() {
 				return inner.getLabel();
 			}
-			
+
 			@Override
 			public void setLabel(String label) {
 				inner.setLabel(label);
 			}
-			
+
 			@Override
 			public String getDebugLabel() {
 				return "ShowContext wrapper:[" + inner.getDebugLabel() + "]"; //$NON-NLS-1$ //$NON-NLS-2$
 			}
-			
+
 			@Override
 			public boolean canExecute() {
 				return inner.canExecute();
 			}
-			
+
 			@Override
 			public void execute() {
-				BPELPropertySection aSection = getSection(sectionIndex); 
-				beforeContext = (aSection==null)? null : aSection.getUserContext();
+				BPELPropertySection aSection = getSection(sectionIndex);
+				this.beforeContext = (aSection==null)? null : aSection.getUserContext();
 				inner.execute();
-				afterContext = (aSection==null)? null : aSection.getUserContext();
+				this.afterContext = (aSection==null)? null : aSection.getUserContext();
 			}
-			
+
 			@Override
 			public boolean canUndo() {
 				return inner.canUndo();
 			}
-			
+
 			@Override
 			public void undo() {
 				inner.undo();
 				showPropertiesTab();
 				BPELPropertySection aSection = getSection(sectionIndex);
 				if (aSection != null) {
-					aSection.restoreUserContext(beforeContext);
+					aSection.restoreUserContext(this.beforeContext);
 				}
 			}
-			
+
 			@Override
 			public void redo() {
 				inner.redo();
 				showPropertiesTab();
 				BPELPropertySection aSection = getSection(sectionIndex);
 				if (aSection != null) {
-					aSection.restoreUserContext(afterContext);
+					aSection.restoreUserContext(this.afterContext);
 				}
 			}
-			
+
 			@Override
 			public void dispose() {
 				inner.dispose();
 			}
-			
+
 			protected BPELPropertySection getSection (int index) {
 				 TabContents tab = getTabbedPropertySheetPage().getCurrentTab();
 				 if (tab != null) {
@@ -530,12 +529,12 @@ public abstract class BPELPropertySection extends AbstractPropertySection
 				 }
 				 return null;
 			}
-			
+
 			protected void showPropertiesTab() {
 				// TODO: Try to avoid selecting the model object all
 				// the time, as it could cause unnecessary flashing.
 				getBPELEditor().selectModelObject(previousInput);
-				
+
 				if (tabIndex != viewer.getSelectionIndex()) {
 					Object selectedTab = viewer.getElementAt(tabIndex);
 					if (selectedTab != null) {
@@ -543,18 +542,18 @@ public abstract class BPELPropertySection extends AbstractPropertySection
 					}
 				}
 			}
-			
+
 			// TODO: THIS IS A HACK.. these helpers might belong somewhere else.
 			@Override
-			public Resource[] getResources() { 
-				return EditModelCommandStack.getResources(inner); 
+			public Resource[] getResources() {
+				return EditModelCommandStack.getResources(inner);
 			}
-			
+
 			@Override
-			public Resource[] getModifiedResources() { 
-				return EditModelCommandStack.getModifiedResources(inner); 
+			public Resource[] getModifiedResources() {
+				return EditModelCommandStack.getModifiedResources(inner);
 			}
-			
+
 		};
 	}
 
@@ -562,9 +561,9 @@ public abstract class BPELPropertySection extends AbstractPropertySection
 	 * Creates a composite with a flat border around it.
 	 */
 	protected Composite createBorderComposite(Composite parent) {
-	    return BPELUtil.createBorderComposite(parent, fWidgetFactory);
+	    return BPELUtil.createBorderComposite(parent, this.fWidgetFactory);
 	}
-	
+
 	/**
 	 * NOTE: use this method, NOT the method in TabbedPropertySheetWidgetFactory,
 	 * whose semantics were inexplicably changed.
@@ -572,80 +571,80 @@ public abstract class BPELPropertySection extends AbstractPropertySection
 	 * 	TODO: We need a new/better story for layouts and borders ??
 	 */
 	protected Composite createFlatFormComposite(Composite parent) {
-		Composite result = fWidgetFactory.createFlatFormComposite(parent);
+		Composite result = this.fWidgetFactory.createFlatFormComposite(parent);
 		FlatFormLayout formLayout = new FlatFormLayout();
-		formLayout.marginWidth = formLayout.marginHeight = 0;		
+		formLayout.marginWidth = formLayout.marginHeight = 0;
 		result.setLayout(formLayout);
 		return result;
 	}
-	
+
 	/**
 	 * @return the BPEL Tabbed Property Sheet page.
 	 */
-	
+
 	public BPELTabbedPropertySheetPage getTabbedPropertySheetPage() {
-		return fTabbedPropertySheetPage;
+		return this.fTabbedPropertySheetPage;
 	}
-	
-	
+
+
 	/**
 	 * @return the IFile that the editor is editing.
 	 */
-	
+
 	public IFile getBPELFile() {
 		return ((IFileEditorInput) getBPELEditor().getEditorInput()).getFile();
 	}
 
-	/** 
+	/**
 	 * Returns a token indicating which widget should have focus.  Note that the token can't
 	 * be tied to this particular instance of the section; after the section is destroyed
 	 * and re-created, the token must still be valid.
-	 * @return the user context 
+	 * @return the user context
 	 */
 	public Object getUserContext() {
 		return null;
 	}
 
-	/** 
+	/**
 	 * Accepts a token created by getUserContext() and gives focus to the widget represented
 	 * by the token.
 	 * @param userContext the user context to restore.
 	 */
 	public void restoreUserContext(Object userContext) {
 	}
-	
+
 	/**
 	 * Shows the given marker.
 	 * @param marker
 	 */
 	public void gotoMarker (IMarker marker) {
-		
+
 	}
-	
+
 	/**
 	 * Returns true if this section knows how to show the given marker.
-	 * 
-	 * @param marker the marker to be checked. 
-	 * @return true if so, false otherwise ... 
+	 *
+	 * @param marker the marker to be checked.
+	 * @return true if so, false otherwise ...
 	 */
-	
+
 	public boolean isValidMarker (IMarker marker) {
 		return true;
 	}
 
-	
+
 	/**
-	 * Return the Context names that allows us to point markers correctly at this 
+	 * Return the Context names that allows us to point markers correctly at this
 	 * section.
-	 * 
-	 * @return an array of context names 
+	 *
+	 * @return an array of context names
 	 */
-	
+
 	public String[] getContextNames () {
-		return new String[] {}; 
+		return new String[] {};
 	}
-	
-	
+
+
 	/**
 	 * Given a model object, selects it in the BPEL Editor and makes sure the
 	 * properties pages are also shown for it.

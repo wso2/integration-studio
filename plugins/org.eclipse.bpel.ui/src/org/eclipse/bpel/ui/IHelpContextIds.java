@@ -10,27 +10,52 @@
  *******************************************************************************/
 package org.eclipse.bpel.ui;
 
-import org.eclipse.bpel.ui.dialogs.*;
-import org.eclipse.bpel.ui.expressions.XPathExpressionEditor;
-import org.eclipse.bpel.ui.preferences.*;
-import org.eclipse.bpel.ui.properties.*;
+import org.eclipse.bpel.ui.dialogs.EditMessagePropertyDialog;
+import org.eclipse.bpel.ui.dialogs.EditPropertyAliasDialog;
+import org.eclipse.bpel.ui.preferences.BPELPreferencePage;
+import org.eclipse.bpel.ui.preferences.WSILPreferencePage;
+import org.eclipse.bpel.ui.properties.ActionImplementationSection;
+import org.eclipse.bpel.ui.properties.AssignImplSection;
+import org.eclipse.bpel.ui.properties.CompensateScopeSection;
+import org.eclipse.bpel.ui.properties.CorrSetImplSection;
+import org.eclipse.bpel.ui.properties.CorrelationSection;
+import org.eclipse.bpel.ui.properties.CreateInstanceSection;
+import org.eclipse.bpel.ui.properties.DocumentationSection;
+import org.eclipse.bpel.ui.properties.ExitOnStandardFaultSection;
+import org.eclipse.bpel.ui.properties.FaultCatchNameSection;
+import org.eclipse.bpel.ui.properties.FaultThrowNameSection;
+import org.eclipse.bpel.ui.properties.ForEachSection;
+import org.eclipse.bpel.ui.properties.ForEachSuccessfulBranchesOnlySection;
+import org.eclipse.bpel.ui.properties.ImportsSection;
+import org.eclipse.bpel.ui.properties.InvokeImplSection;
+import org.eclipse.bpel.ui.properties.JoinFailureSection;
+import org.eclipse.bpel.ui.properties.MessageExchangeSection;
+import org.eclipse.bpel.ui.properties.NameSection;
+import org.eclipse.bpel.ui.properties.NamespacePrefixesSection;
+import org.eclipse.bpel.ui.properties.NamespaceSection;
+import org.eclipse.bpel.ui.properties.PartnerLinkImplSection;
+import org.eclipse.bpel.ui.properties.RepeatingAlarmConditionSection;
+import org.eclipse.bpel.ui.properties.ScopeImplSection;
+import org.eclipse.bpel.ui.properties.ValidateSection;
+import org.eclipse.bpel.ui.properties.ValidateVariablesSection;
+import org.eclipse.bpel.ui.properties.WaitConditionSection;
 
 /**
- * This class contains context IDs that are used by different sections 
+ * This class contains context IDs that are used by different sections
  * of the BPEL designer and may be used by a help plugin.
  */
 public interface IHelpContextIds {
-  
+
   /** The prefix for all context IDs in this class. */
 	public static final String PREFIX = BPELUIPlugin.PLUGIN_ID + '.';
 
 	// Preferences
-	
+
 	/** Context ID for the {@link BPELPreferencePage} and {@link WSILPreferencePage}. */
 	public static final String PREFERENCES_PAGE = PREFIX + "preferences_page"; //$NON-NLS-1$
-	
+
 	// Editor
-	
+
 	/** Context ID for the {@link BPELEditor}. */
 	public static final String EDITOR_CANVAS = PREFIX + "editor_canvas"; //$NON-NLS-1$
 	/** Context ID for the palette of the {@link BPELEditor}. */
@@ -69,8 +94,6 @@ public interface IHelpContextIds {
   public static final String PROPERTY_PAGE_NAMESPACE = PREFIX + "property_namespace"; //$NON-NLS-1$
 	/** Context ID for the {@link RepeatingAlarmConditionSection}. */
 	public static final String PROPERTY_PAGE_REPEAT_ALARM = PREFIX + "property_repeat_alarm"; //$NON-NLS-1$
-	/** Context ID for the {@link AttributesSection}. */
-	public static final String PROPERTY_PAGE_ATTRIBUTES = PREFIX + "property_attributes"; //$NON-NLS-1$
 	/** Context ID for the {@link ValidateSection} and {@link ValidateVariablesSection}. */
 	public static final String PROPERTY_PAGE_VALIDATE_DETAILS = PREFIX + "property_validate"; //$NON-NLS-1$
   /** Context ID for the {@link DocumentationSection}. */

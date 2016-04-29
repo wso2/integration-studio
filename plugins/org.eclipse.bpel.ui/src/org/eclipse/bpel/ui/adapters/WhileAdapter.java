@@ -25,7 +25,7 @@ public class WhileAdapter extends ContainerActivityAdapter implements IAnnotated
 	 * @see org.eclipse.bpel.ui.adapters.ContainerActivityAdapter#createContainerDelegate()
 	 */
 	/* IContainer delegate */
-	
+
 	@Override
 	public IContainer createContainerDelegate() {
 		return new ActivityContainer(BPELPackage.eINSTANCE.getWhile_Activity());
@@ -33,14 +33,14 @@ public class WhileAdapter extends ContainerActivityAdapter implements IAnnotated
 
 	/**
 	 * @see org.eclipse.bpel.ui.adapters.ActivityAdapter#createEditPart(org.eclipse.gef.EditPart, java.lang.Object)
-	 */	
+	 */
 	@Override
 	public EditPart createEditPart(EditPart context, Object model) {
 		EditPart result = new SequenceEditPart();
 		result.setModel(model);
 		return result;
-	}	
-	
+	}
+
 	/**
 	 * @see org.eclipse.bpel.ui.adapters.ActivityAdapter#createOutlineEditPart(org.eclipse.gef.EditPart, java.lang.Object)
 	 */
@@ -52,12 +52,11 @@ public class WhileAdapter extends ContainerActivityAdapter implements IAnnotated
 	}
 
 	/* IAnnotatedElement */
-	
+
 	public String[] getAnnotation(Object object) {
 		Expression expression = ((While)object).getCondition();
 		return new String[] {
-			Messages.CONDITION, AnnotationHelper.getAnnotation(expression),
-			Messages.LANGUAGE, AnnotationHelper.getExpressionLanguage(expression)
-			};
+			Messages.CONDITION, AnnotationHelper.getAnnotation(expression)
+		};
 	}
 }

@@ -23,13 +23,12 @@ public class Messages extends NLS {
 	public static String INPUT;
 	public static String OUTPUT;
 	public static String CONDITION;
-	public static String LANGUAGE;
 	public static String MY_ROLE;
 	public static String PARTNER_ROLE;
 	public static String NONE;
 	public static String OPERATION;
 
-	
+
 	static {
 		// initialize resource bundle
 		NLS.initializeMessages(BUNDLE_NAME, Messages.class);

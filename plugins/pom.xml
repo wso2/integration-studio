@@ -34,11 +34,11 @@
 	<module>org.eclipse.bpel.apache.ode.runtime</module>
 	<module>org.eclipse.bpel.cheatsheet</module>
 	<module>org.eclipse.bpel.common.model</module>
-	<module>org.eclipse.bpel.common.ui.noEmbeddedEditors</module>
+	<module>org.eclipse.bpel.common.ui</module>
 	<module>org.eclipse.bpel.common.wsdl</module>
 	<module>org.eclipse.bpel.model</module>
 	<module>org.eclipse.bpel.runtimes</module>
-	<module>org.eclipse.bpel.ui.noEmbeddedEditors</module>
+	<module>org.eclipse.bpel.ui</module>
 	<module>org.eclipse.bpel.validator</module>
 	<module>org.eclipse.bpel.wsil.model</module>
 	<module>org.eclipse.bpel.xpath10</module>

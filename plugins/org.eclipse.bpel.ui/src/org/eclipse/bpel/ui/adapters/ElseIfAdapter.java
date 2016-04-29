@@ -32,7 +32,7 @@ public class ElseIfAdapter extends ContainerAdapter implements ILabeledElement,
 {
 
 	/* IContainer delegate */
-	
+
 	@Override
 	public IContainer createContainerDelegate() {
 		// TODO: IfAdapter ensures the ElseIf always has an activity inside it,
@@ -43,34 +43,34 @@ public class ElseIfAdapter extends ContainerAdapter implements ILabeledElement,
 	}
 
 	/* ILabeledElement */
-	
+
 	public Image getSmallImage(Object object) {
 		return BPELUIPlugin.INSTANCE.getImage(IBPELUIConstants.ICON_CASE_16);
 	}
-	
+
 	public Image getLargeImage(Object object) {
 		return BPELUIPlugin.INSTANCE.getImage(IBPELUIConstants.ICON_CASE_32);
-	}	
-	
+	}
+
 	public String getTypeLabel(Object object) {
-		String s = Messages.ElseIfAdapter_ElseIf_1; 
-		return s; 
-	}	
-	
+		String s = Messages.ElseIfAdapter_ElseIf_1;
+		return s;
+	}
+
 	public String getLabel(Object object) {
 		String s = ModelHelper.getDisplayName(object);
 		if (s != null && !("".equals(s))) return s; //$NON-NLS-1$
 		return getTypeLabel(object);
 	}
-	
+
 	/* EditPartFactory */
-	
+
 	public EditPart createEditPart(EditPart context, Object model) {
 		EditPart result = new ElseIfEditPart();
 		result.setModel(model);
 		return result;
 	}
-	
+
 	/* IOutlineEditPartFactory */
 
 	public EditPart createOutlineEditPart(EditPart context, Object model) {
@@ -80,18 +80,17 @@ public class ElseIfAdapter extends ContainerAdapter implements ILabeledElement,
 	}
 
 	/* IExtensionFactory */
-	
+
 	public EObject createExtension(EObject object) {
 		return UiextensionmodelFactory.eINSTANCE.createCaseExtension();
 	}
 
 	/* IAnnotatedElement */
-	
+
 	public String[] getAnnotation(Object object) {
 		Expression expression = ((ElseIf)object).getCondition();
 		return new String[] {
-				org.eclipse.bpel.ui.adapters.Messages.CONDITION, AnnotationHelper.getAnnotation(expression),
-				org.eclipse.bpel.ui.adapters.Messages.LANGUAGE, AnnotationHelper.getExpressionLanguage(expression)
+				org.eclipse.bpel.ui.adapters.Messages.CONDITION, AnnotationHelper.getAnnotation(expression)
 			};
 	}
 }

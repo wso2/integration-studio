@@ -58,11 +58,8 @@ function createFile(currentTaskName,state) { //createFile
     var operationName = $('#' + currentTaskName + 'wrapper #taskCallbackOperationName')
         .val();
     var serviceName = $('#' + currentTaskName + 'wrapper #taskCallbackServiceName').val();
-
     var outputElements = $('#' + currentTaskName + 'wrapper #outputmappingTable tr');
- $.get('resources/dummy.wsdl', function(data) {
-            
-
+    $.get('resources/dummy.wsdl', function(data) {
        try {
             wsdlDom = marshalEditorTextContent(data);
             generateInputWSDL(wsdlDom, currentTaskName);
@@ -80,15 +77,12 @@ function createFile(currentTaskName,state) { //createFile
             generateOutputWSDL(wsdlCBDom, currentTaskName,serviceURL,operationName,serviceName,outputElements);
             saveWSDL(wsdlCBDom, currentTaskName + "CBTask");
             // generateUI();
-          
         } catch (err) {
             handleError("Callback WSDL Error " + err);
         }
 
     });
-
     $.get('resources/dummyhtconfig.ht', function(data) {
-
         try {
             htconfigDom = marshalEditorTextContent(data);
             generateHTConfig(htconfigDom, xmlDom, currentTaskName);
@@ -100,7 +94,6 @@ function createFile(currentTaskName,state) { //createFile
         } catch (err) {
             handleError("HTConfig file Error " + err);
         }
-
     });
 }
 
@@ -131,11 +124,9 @@ function addTask() { //createFile
             xmlDom.getElementsByTagName("tasks")[0].appendChild(xmlDom.importNode(taskPartDom.getElementsByTagName("task")[0], true));
             IDESaveContent(new XMLSerializer().serializeToString((xmlDom)));
             //generateUI();
-
         } catch (err) {
             handleError("Error Adding New Task \n" + err);
         }
-
     });
 }
 
@@ -164,13 +155,11 @@ function addInitalTask() { //createFile
             $('#addNewTask').click(function() {
                 addTask();
             });
-
             $("#page-content-wrapper").tabs();
             $("#page-content-wrapper").tabs("refresh");
         } catch (err) {
             handleError("Error initializing Tasks \n" + err);
         }
-
     });
 }
 
@@ -196,7 +185,6 @@ function saveSource() {
     } catch (err) {
         handleError("Error Saving Source \n"+err);
     }
-
 }
 
 /*
@@ -210,7 +198,6 @@ function saveSource() {
 function process() {
     try {
         generateUI();
-
     } catch (err) {
         handleError(err);
     }
@@ -219,7 +206,6 @@ function process() {
 function loadModel() {
     try {
         xmlDom = marshalEditorTextContent(IDEGetFileContent());
-
     } catch (err) {
         handleError("Error Loading Model \n" + err);
     }
@@ -229,7 +215,6 @@ function loadModelWithText() {
     var contents = ExecuteCustomFunction("gettext");
     try {
         xmlDom = marshalEditorTextContent(contents);
-
     } catch (err) {
         handleError("Error Loading Model with text \n" + err);
     }
@@ -249,7 +234,6 @@ function generateTasks() {
     nodes.forEach(function(taskNode) {
         generateText(taskNode);
     });
-    //removeUnwantedArtifacts();
 }
 
 /*
@@ -283,8 +267,6 @@ function generateUI() {
         $("#page-content-wrapper").tabs();
         $("#page-content-wrapper").tabs("refresh");
     }
-
-
 }
 
 /*
@@ -324,7 +306,6 @@ function generateTaskDiv(taskNode) {
     $('#' + taskDivName + " #taskOutputMappingNo").val(0);
     $('#' + taskDivName + " #taskName").val(taskName.trim().replace(/ /g, ''));
     $('#' + taskDivName + ' #taskName').change(function() {
-
         makeDirty();
         taskNode.setAttribute("name", $('#' + taskNode.getAttribute("name") + "wrapper #taskName").val());
         createFile(taskNode.getAttribute("name"),"");
@@ -366,7 +347,6 @@ function generateTaskDiv(taskNode) {
                 newValue.appendChild(newValueText);
                 newInputElement.appendChild(newValue);
                 inputNode.appendChild(newInputElement);
-
                 // bind click event
                 e.preventDefault();
                 var mappingNo = parseInt($('#' + taskNode.getAttribute("name") + "wrapper #taskMappingNo").val());
@@ -389,7 +369,6 @@ function generateTaskDiv(taskNode) {
         .click(
             function(el) {
                 try {
-
                     // create dom node
                     var outputNode = taskNode
                         .getElementsByTagName("renderings")[0]
@@ -423,7 +402,6 @@ function generateTaskDiv(taskNode) {
                     newDefault.appendChild(newDefaultText);
                     newOutputElement.appendChild(newDefault);
                     outputNode.appendChild(newOutputElement);
-
                     // bind click event
                     el.preventDefault();
                     var outputmappingNo = parseInt($(
@@ -463,7 +441,6 @@ function generateTaskDiv(taskNode) {
                     mapping = '<tr id="inputmapping' + mappingNo + '"><td width="25%"><input name="taskInputMappingid" type="hidden" id="taskInputMappingid" value="' + mappingNo + '"/><input name="textfield6" type="text" id="taskInputMappingElementName' + mappingNo + '" value="' + inputNodes[i].getAttribute("id") + '"/></td><td width="25%"><input name="textfield7" type="text" id="taskInputMappingDisplayName' + mappingNo + '" value="' + inputNodes[i].getElementsByTagName("label")[0].childNodes[0].nodeValue + '"/></td><td width="10%"><input name="textfield8" type="text" id="taskInputMappingOrder' + mappingNo + '" value="' + inputNodes[i].getElementsByTagName("value")[0].childNodes[0].nodeValue + '"/></td><td width="20%"><label><select id="taskInputMappingType' + mappingNo + '" name="select3"><option value="string" selected>string</option><option value="int">int</option><option value="double">double</option><option value="float">float</option><option value="boolean">boolean</option><option value="organizationalEntity">organizationalEntity</option></select></label></td><td><label><input type="button" class="inputDeleteButton btn btn-danger" name="deleteButton' + mappingNo + '" id="deleteButton' + mappingNo + '" value="Delete"></input></label></td></tr>';
                 else
                     mapping = '<tr id="inputmapping' + mappingNo + '"><td width="25%"><input name="taskInputMappingid" type="hidden" id="taskInputMappingid" value="' + mappingNo + '"/><input name="textfield6" type="text" id="taskInputMappingElementName' + mappingNo + '" value="' + inputNodes[i].getAttribute("id") + '"/></td><td width="25%"><input name="textfield7" type="text" id="taskInputMappingDisplayName' + mappingNo + '" value=""/></td><td width="10%"><input name="textfield8" type="text" id="taskInputMappingOrder' + mappingNo + '" value=""/></td><td width="20%"><label><select id="taskInputMappingType' + mappingNo + '" name="select3"><option value="string" selected>string</option><option value="int">int</option><option value="double">double</option><option value="float">float</option><option value="boolean">boolean</option><option value="organizationalEntity">organizationalEntity</option></select></label></td><td><label><input type="button" class="inputDeleteButton btn btn-danger" name="deleteButton' + mappingNo + '" id="deleteButton' + mappingNo + '" value="Delete"></label></td></tr>';
-
                 $("#" + taskDivName + " #inputmappingTable").append(mapping);
                 $('#' + taskDivName + ' #taskInputMappingType' + mappingNo).val(inputNodes[i].getAttribute("type").replace("xsd:", ""));
                 // bind delete event
@@ -503,7 +480,6 @@ function generateTaskDiv(taskNode) {
                 handleError(err);
             }
         }
-
     }
 
     // sync output rendering values into output mapping table
@@ -550,7 +526,6 @@ function generateTaskDiv(taskNode) {
                                 }
                                 makeDirty();
                                 generateTaskDiv(taskNode);
-
                             } catch (err) {
                                 handleError(err);
                             }
@@ -586,7 +561,6 @@ function generateTaskDiv(taskNode) {
     $('#' + taskDivName + " #taskCallbackOperationName").val(
         taskNode.getElementsByTagName("interface")[0].getAttribute(
             "responseOperation").trim());
-
     if (taskNode.getElementsByTagName("presentationElements")[0]
         .getElementsByTagName("name").length != 0) {
         $('#' + taskDivName + " #presentationElementDisplayName").val(
@@ -632,8 +606,7 @@ function generateTaskDiv(taskNode) {
     $('#' + taskDivName + ' .taskDiv').show();
     bindChangeEvents();
     syncWSDLFields(taskName);
-            
-    //syncwsdlFields syncWSDLFields(taskNode);
+     //syncwsdlFields syncWSDLFields(taskNode);
 }
 
 /*
@@ -647,8 +620,6 @@ function generateText(taskNode) {
     taskName = taskNode.getAttribute("name");
     taskDivName = taskName + "wrapper";
     // fill general details
-
-    
     taskNode.setAttribute("name", $('#' + taskDivName + " #taskName").val().replace(/ /g, ''));
     taskNode.getElementsByTagName("documentation")[0].childNodes[0].nodeValue = $(
         '#' + taskDivName + " #taskDocumentation").val();
@@ -663,7 +634,6 @@ function generateText(taskNode) {
     taskNode.getElementsByTagName("presentationElements")[0]
         .getElementsByTagName("description")[0].childNodes[0].nodeValue = $(
             '#' + taskDivName + " #presentationElementDescription").val();
-
     taskNode.getElementsByTagName("interface")[0].setAttribute("operation", $(
         '#' + taskDivName + " #taskOperation").val());
     taskNode.getElementsByTagName("interface")[0].setAttribute(
@@ -709,7 +679,6 @@ function generateText(taskNode) {
         .val());
     outputNodes = taskNode.getElementsByTagName("renderings")[0]
         .getElementsByTagName("outputs")[0].childNodes;
-
     outputmapping = 0;
     for (i = 0; i < outputNodes.length; i++) {
         if (outputNodes[i].nodeName != '#text') {
@@ -727,13 +696,11 @@ function generateText(taskNode) {
                     '#' + taskDivName + " #taskOutputMappingOrder" + outputmapping).val();
             else
                 addTextNode(outputNodes[i].getElementsByTagName("value")[0], xmlDom, $('#' + taskDivName + " #taskOutputMappingOrder" + outputmapping).val());
-
             if (outputNodes[i].getElementsByTagName("default")[0].childNodes.length != 0)
                 outputNodes[i].getElementsByTagName("default")[0].childNodes[0].nodeValue = $(
                     '#' + taskDivName + " #taskOutputMappingDefaultValues" + outputmapping).val();
             else
                 addTextNode(outputNodes[i].getElementsByTagName("default")[0], xmlDom, $('#' + taskDivName + " #taskOutputMappingDefaultValues" + outputmapping).val());
-
             outputmapping++;
         }
     }
@@ -911,22 +878,18 @@ function marshalPeopleAssignment(taskNode, peopleAssignmentName) {
         .getElementsByTagName(peopleAssignmentName)[0]
         .getElementsByTagName("argument")[0].childNodes[0].nodeValue = $(
             '#' + taskDivName + " #"+peopleAssignmentName+ "Role").val();
-
     if ($('#' + taskDivName + " input[name="+peopleAssignmentName+ "" + taskDivName + "]:checked").val() == peopleAssignmentName+ "Expression")
         taskNode.getElementsByTagName("peopleAssignments")[0]
         .getElementsByTagName(peopleAssignmentName)[0]
         .getElementsByTagName("argument")[0].childNodes[0].nodeValue = $(
             '#' + taskDivName + " #"+peopleAssignmentName+ "Expression").val();
     }
-
     if ($('#' + taskDivName + " input[name="+peopleAssignmentName+ "" + taskDivName + "]:checked").val() == peopleAssignmentName+ "Literal") {
         // taskNode.removeChild(taskNode.getElementsByTagName("peopleAssignments")[0]);
         createNewLiteral(xmlDom, taskNode.getElementsByTagName("peopleAssignments")[0]
             .getElementsByTagName(peopleAssignmentName)[0]
             .getElementsByTagName("from")[0], $('#' + taskDivName + " #"+peopleAssignmentName+"LiteralUsers").val(),$('#' + taskDivName + " #"+peopleAssignmentName+"LiteralGroups").val());
-
     }
-
 }
 
 function unmarshalPeopleAssignment(taskNode, peopleAssignmentName) {
@@ -962,12 +925,10 @@ function unmarshalPeopleAssignment(taskNode, peopleAssignmentName) {
                     if(groupsList[k].childNodes.length!=0)
                     $('#' + taskDivName + " #"+peopleAssignmentName+"LiteralGroups").val($('#' + taskDivName + " #"+peopleAssignmentName+"LiteralGroups").val() + ',' + groupsList[k].childNodes[0].nodeValue);
                 }
-
             }
         } else {
             $('#' + taskDivName + " input[name="+peopleAssignmentName+"" + taskDivName + "][value=na]").prop("checked", true);
         }
-
 }
 
 
@@ -977,17 +938,14 @@ function bindChangeEvents() {
         makeDirty();
         //generateText();
     });
-
     $('textarea').keyup(function() {
         makeDirty();
         //generateTasks();
     });
-
     $('select').change(function() {
         makeDirty();
         //generateTasks();
     });
-
 }
 
 function createNewLiteral(xmlDom, parent, text, grouptext) {
@@ -1006,8 +964,7 @@ function createNewLiteral(xmlDom, parent, text, grouptext) {
             newUserText = xmlDom.createTextNode(splitList[i]);
             newUser.appendChild(newUserText);
             newOrgEntity.appendChild(newUser);
-        
-    }
+   }
     for (var i = 0; i < groupSplitList.length; i++) {
             
             newGroup = xmlDom.createElementNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/types/200803",
@@ -1015,11 +972,9 @@ function createNewLiteral(xmlDom, parent, text, grouptext) {
             newGroupText = xmlDom.createTextNode(groupSplitList[i]);
             newGroup.appendChild(newGroupText);
             newOrgEntity.appendChild(newGroup);
-        
     }
     newLiteral.appendChild(newOrgEntity);
     parent.appendChild(newLiteral);
-
 }
 
 function addPresentationParameter(xmlDom, taskNode, taskName , name, type) { //should be presentationParameters
@@ -1044,7 +999,6 @@ function removeUnwantedArtifacts() {
     nodes.forEach(function(taskNode) {
         taskNames.push(taskNode.getAttribute("name"));
     });
-
     ExecuteCustomFunction.apply(this, taskNames);
 }
 

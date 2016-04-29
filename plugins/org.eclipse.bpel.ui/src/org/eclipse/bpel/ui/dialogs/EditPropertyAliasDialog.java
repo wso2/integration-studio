@@ -74,91 +74,60 @@ public class EditPropertyAliasDialog extends Dialog {
 	protected BPELEditor bpelEditor;
 	protected Property property;
 	protected PropertyAlias alias;
-	
+
 	protected EObject activeTypeElementOrMessage;
 	protected Query activeQuery;
-	
+
 	protected XSDTypeDefinition xsdTypeDefinition;
 	protected Query xsdTypeQuery;
-	
+
 	protected XSDElementDeclaration xsdElementDeclaration;
 	protected Query xsdElementQuery;
-	
+
 	protected Message message;
 	protected String messagePart;
 	protected Query messageQuery;
-	
+
 	protected Label typeElementOrMessageNameLabel;
 	protected Label typeElementOrMessageNameText;
 	private Button typeRadio;
 	private Button elementRadio;
 	private Button messageRadio;
 	private int typeElementOrMessage;
-	
+
 	private QueryEditor queryEditor;
 
 	protected Button browseTypeButton;
-	
+
 	protected TabbedPropertySheetWidgetFactory wf;
-	
+
 	public class QueryEditor extends ExpressionSection {
-	
-		public void create(Composite parent)
-		{
-			createControls(parent, null);
-		}
-		
-		public void setInput(EObject obj)
-		{
+		public void setInput(EObject obj) {
 			basicSetInput(obj);
 		}
-		
-		public String getQuery()
-		{
-			if (getExpressionEditor()!=null)
-				return getExpressionEditor().getEditorContent();
-			return null;
-		}
-		
-		public String getQueryLanguage()
-		{
-			Object elm = selectedExpressionLanguage();
-			if (elm == NO_EXPRESSION || elm == null )
-				return null;
-			return getExpressionLanguage(elm);
-		}
-		
-		@Override
-		protected String getExpressionType() { 
-			return IEditorConstants.ET_ANY; 
-		}
-		
-		@Override
-		public BPELEditor getBPELEditor() {
-			return bpelEditor;
-		}
-		
-		@Override
-		public TabbedPropertySheetWidgetFactory getWidgetFactory() {
-			return wf;
-		}
-		
-		@Override
-		protected EStructuralFeature getStructuralFeature () {
-			fStructuralFeature = MessagepropertiesPackage.eINSTANCE.getPropertyAlias_Query();
-			return fStructuralFeature;
+
+		public String getQuery() {
+			return this.expressionText.getText().trim();
 		}
 
 		@Override
-		protected void setStructuralFeature ( EStructuralFeature feature ) {
-			fStructuralFeature = feature;
+		protected String getExpressionType() {
+			return IEditorConstants.ET_ANY;
+		}
+
+		@Override
+		public BPELEditor getBPELEditor() {
+			return EditPropertyAliasDialog.this.bpelEditor;
+		}
+
+		@Override
+		public TabbedPropertySheetWidgetFactory getWidgetFactory() {
+			return EditPropertyAliasDialog.this.wf;
 		}
 
 		@Override
 		protected EStructuralFeature getStructuralFeature ( EObject eObject ) {
-			if (eObject != null)
-				return MessagepropertiesPackage.eINSTANCE.getPropertyAlias_Query();
-			return null;
+			return eObject != null ? MessagepropertiesPackage.eINSTANCE.getPropertyAlias_Query() : null;
 		}
 
 		@Override
@@ -168,7 +137,7 @@ public class EditPropertyAliasDialog extends Dialog {
 		}
 
 	}
-	
+
 	public EditPropertyAliasDialog(Shell parentShell, Property property, PropertyAlias alias, BPELEditor bpelEditor, TabbedPropertySheetWidgetFactory wf) {
 		super(parentShell);
 		setShellStyle(getShellStyle() | SWT.RESIZE);
@@ -177,26 +146,26 @@ public class EditPropertyAliasDialog extends Dialog {
 		this.property = property;
 		this.bpelEditor = bpelEditor;
 		this.wf = wf;
-		if (isNew) {
-			typeElementOrMessage = BID_USE_MESSAGE;
+		if (this.isNew) {
+			this.typeElementOrMessage = BID_USE_MESSAGE;
 			this.alias = MessagepropertiesFactory.eINSTANCE.createPropertyAlias();
 		}
 		else  {
 			if (alias.getMessageType() != null) {
-				typeElementOrMessage = BID_USE_MESSAGE;
-				message = (Message)alias.getMessageType();
-				messagePart = alias.getPart();
-				messageQuery = alias.getQuery();
+				this.typeElementOrMessage = BID_USE_MESSAGE;
+				this.message = (Message)alias.getMessageType();
+				this.messagePart = alias.getPart();
+				this.messageQuery = alias.getQuery();
 			}
 			else if (alias.getType() != null) {
-				typeElementOrMessage = BID_USE_TYPE;
-				xsdTypeDefinition = (XSDTypeDefinition)alias.getType();
-				xsdTypeQuery = alias.getQuery();
+				this.typeElementOrMessage = BID_USE_TYPE;
+				this.xsdTypeDefinition = (XSDTypeDefinition)alias.getType();
+				this.xsdTypeQuery = alias.getQuery();
 			}
 			else if (alias.getXSDElement() != null) {
-				typeElementOrMessage = BID_USE_ELEMENT;
-				xsdElementDeclaration = (XSDElementDeclaration)alias.getXSDElement();
-				xsdElementQuery = alias.getQuery();
+				this.typeElementOrMessage = BID_USE_ELEMENT;
+				this.xsdElementDeclaration = (XSDElementDeclaration)alias.getXSDElement();
+				this.xsdElementQuery = alias.getQuery();
 			}
 		}
 	}
@@ -213,225 +182,225 @@ public class EditPropertyAliasDialog extends Dialog {
 				updateEnablement();
 			}
 		};
-		
+
 		// create widgets
 		String groupText = Messages.EditMessagePropertyDialog_10;
 		// PropertyAlias must have either XSD Type or XSD Element or (message type and part): create radio button group
 		Group typeElementOrMessageRadioGroup = new Group(composite,SWT.SHADOW_ETCHED_IN);
 		typeElementOrMessageRadioGroup.setText(groupText);
 		layout = new GridLayout();
-		layout.makeColumnsEqualWidth = true;		
-		layout.numColumns = 1;		
+		layout.makeColumnsEqualWidth = true;
+		layout.numColumns = 1;
 		typeElementOrMessageRadioGroup.setLayout(layout);
-		messageRadio = createRadioButton(typeElementOrMessageRadioGroup,Messages.EditMessagePropertyDialog_13, BID_USE_MESSAGE, typeElementOrMessage == BID_USE_MESSAGE);
-		typeRadio = createRadioButton(typeElementOrMessageRadioGroup,Messages.EditMessagePropertyDialog_11, BID_USE_TYPE, typeElementOrMessage == BID_USE_TYPE);
-		elementRadio = createRadioButton(typeElementOrMessageRadioGroup,Messages.EditMessagePropertyDialog_12, BID_USE_ELEMENT, typeElementOrMessage == BID_USE_ELEMENT);
-		messageRadio.addListener(SWT.Selection, enablementListener);
-		typeRadio.addListener(SWT.Selection, enablementListener);
-		elementRadio.addListener(SWT.Selection, enablementListener);
+		this.messageRadio = createRadioButton(typeElementOrMessageRadioGroup,Messages.EditMessagePropertyDialog_13, BID_USE_MESSAGE, this.typeElementOrMessage == BID_USE_MESSAGE);
+		this.typeRadio = createRadioButton(typeElementOrMessageRadioGroup,Messages.EditMessagePropertyDialog_11, BID_USE_TYPE, this.typeElementOrMessage == BID_USE_TYPE);
+		this.elementRadio = createRadioButton(typeElementOrMessageRadioGroup,Messages.EditMessagePropertyDialog_12, BID_USE_ELEMENT, this.typeElementOrMessage == BID_USE_ELEMENT);
+		this.messageRadio.addListener(SWT.Selection, enablementListener);
+		this.typeRadio.addListener(SWT.Selection, enablementListener);
+		this.elementRadio.addListener(SWT.Selection, enablementListener);
 
 		// type label and text
-		typeElementOrMessageNameLabel = new Label(composite, SWT.NONE);
-		typeElementOrMessageNameText = new Label(composite, SWT.NONE);
-		browseTypeButton = new Button(composite, SWT.PUSH);
-		browseTypeButton.setText(Messages.EditMessagePropertyDialog_18); 
-		browseTypeButton.addListener(SWT.Selection, new Listener() {
+		this.typeElementOrMessageNameLabel = new Label(composite, SWT.NONE);
+		this.typeElementOrMessageNameText = new Label(composite, SWT.NONE);
+		this.browseTypeButton = new Button(composite, SWT.PUSH);
+		this.browseTypeButton.setText(Messages.EditMessagePropertyDialog_18);
+		this.browseTypeButton.addListener(SWT.Selection, new Listener() {
 			public void handleEvent(Event event) {
 				browsePropertyType();
 			}
 		});
 
-		
+
 		// layout widgets
 		GridData data;
-		
-		queryEditor = new QueryEditor();
+
+		this.queryEditor = new QueryEditor();
 		Group queryGroup = new Group(composite,SWT.SHADOW_ETCHED_IN);
 		queryGroup.setText("Query");
 		layout = new GridLayout();
-		layout.makeColumnsEqualWidth = true;		
-		layout.numColumns = 1;		
+		layout.makeColumnsEqualWidth = true;
+		layout.numColumns = 1;
 		queryGroup.setLayout(layout);
 		data = new GridData(GridData.FILL_BOTH);
 		data.horizontalSpan = 3;
 		queryGroup.setLayoutData(data);
-		queryEditor.create(queryGroup);
-		
+		this.queryEditor.createControls( queryGroup, null );
+
 		data = new GridData(GridData.FILL_BOTH);
 		data.horizontalSpan = 3;
 //		data.widthHint = convertHorizontalDLUsToPixels(IDialogConstants.MINIMUM_MESSAGE_AREA_WIDTH);
 //		topLabel.setLayoutData(data);
 		typeElementOrMessageRadioGroup.setLayoutData(data);
 		data = new GridData(GridData.FILL_HORIZONTAL);
-		messageRadio.setLayoutData(data);
+		this.messageRadio.setLayoutData(data);
 		data = new GridData(GridData.FILL_HORIZONTAL);
-		typeRadio.setLayoutData(data);
+		this.typeRadio.setLayoutData(data);
 		data = new GridData(GridData.FILL_HORIZONTAL);
-		elementRadio.setLayoutData(data);
-		
+		this.elementRadio.setLayoutData(data);
+
 		data = new GridData(GridData.HORIZONTAL_ALIGN_BEGINNING);
-		typeElementOrMessageNameLabel.setLayoutData(data);
+		this.typeElementOrMessageNameLabel.setLayoutData(data);
 		data = new GridData(GridData.HORIZONTAL_ALIGN_BEGINNING | GridData.FILL_HORIZONTAL);
-		typeElementOrMessageNameText.setLayoutData(data);
+		this.typeElementOrMessageNameText.setLayoutData(data);
 		data = new GridData(GridData.HORIZONTAL_ALIGN_END);
-		browseTypeButton.setLayoutData(data);
+		this.browseTypeButton.setLayoutData(data);
 
 		// update widgets
 		updateWidgets();
-		
+
 		PlatformUI.getWorkbench().getHelpSystem().setHelp(
-			parent, IHelpContextIds.PROPERTY_ALIAS_DIALOG);	
-		
+			parent, IHelpContextIds.PROPERTY_ALIAS_DIALOG);
+
 		composite.pack();
-		
+
 		return composite;
 	}
-	
+
 	protected Button createRadioButton(Composite parent, String label, int id, boolean checked) {
-		
+
 		Button button = new Button(parent,SWT.RADIO);
 		button.setText(label);
 		button.setFont(JFaceResources.getDialogFont());
-		button.setData( Integer.valueOf( id ));		
+		button.setData( Integer.valueOf( id ));
 		button.setSelection( checked );
-		
+
 		button.addSelectionListener (new SelectionAdapter() {
 			@Override
 			public void widgetSelected (SelectionEvent event) {
 				Button b = (Button) event.widget;
 				int val = ((Integer) b.getData()).intValue();
-				
+
 				buttonPressed(val, b.getSelection(), true );
 			}
 		});
-		
+
 		return button;
-	
+
 	}
 
 	/**
 	 * Handle the check button and radio button callbacks.
-	 * 
+	 *
 	 * @param id
 	 * @param checked
 	 * @param refresh unless this is set, no refresh is done.
 	 */
-	
+
 	protected void buttonPressed(int id, boolean checked, boolean bRefresh) {
-				
+
 		switch (id) {
-		
+
 		case BID_USE_ELEMENT:
 		case BID_USE_TYPE:
 		case BID_USE_MESSAGE:
 			if (!checked)
 				return;
-			typeElementOrMessage = id;
+			this.typeElementOrMessage = id;
 			break;
-		
-		default : 			
+
+		default :
 			break;
 		}
-	
-	
+
+
 		if (bRefresh) {
 			updateWidgets();
 		}
 	}
 
 	protected void updateWidgets() {
-		String s = queryEditor.getQuery();
-		if (s!=null && activeQuery!=null) {
-			activeQuery.setValue(s);
-			activeQuery.setQueryLanguage(queryEditor.getQueryLanguage());
-		}
-		
-		if (typeElementOrMessage == BID_USE_TYPE) {
-			typeRadio.setSelection(true);
-			elementRadio.setSelection(false);
-			messageRadio.setSelection(false);
-			activeTypeElementOrMessage = xsdTypeDefinition;
-			if (xsdTypeQuery == null) {
-				xsdTypeQuery = MessagepropertiesFactory.eINSTANCE.createQuery();
-			}
-			activeQuery = xsdTypeQuery;
-			typeElementOrMessageNameLabel.setText(Messages.EditMessagePropertyDialog_Type_1);
-			
-			alias.setMessageType(null);
-			alias.setPart(null);
-			alias.setType(xsdTypeDefinition);
-			alias.setXSDElement(null);
-		}
-		else if (typeElementOrMessage == BID_USE_ELEMENT) {
-			typeRadio.setSelection(false);
-			elementRadio.setSelection(true);
-			messageRadio.setSelection(false);
-			activeTypeElementOrMessage = xsdElementDeclaration;
-			if (xsdElementQuery == null) {
-				xsdElementQuery = MessagepropertiesFactory.eINSTANCE.createQuery();
-			}
-			activeQuery = xsdElementQuery;
-			typeElementOrMessageNameLabel.setText(Messages.EditMessagePropertyDialog_Element_1);
+//		String s = this.queryEditor.getQuery();
+//		if (s!=null && this.activeQuery!=null) {
+//			this.activeQuery.setValue(s);
+//			this.activeQuery.setQueryLanguage(this.queryEditor.getQueryLanguage());
+//		}
 
-			alias.setMessageType(null);
-			alias.setPart(null);
-			alias.setType(null);
-			alias.setXSDElement(xsdElementDeclaration);
-		}
-		else if (typeElementOrMessage == BID_USE_MESSAGE) {
-			typeRadio.setSelection(false);
-			elementRadio.setSelection(false);
-			messageRadio.setSelection(true);
-			activeTypeElementOrMessage = message;
-			if (messageQuery == null) {
-				messageQuery = MessagepropertiesFactory.eINSTANCE.createQuery();
+		if (this.typeElementOrMessage == BID_USE_TYPE) {
+			this.typeRadio.setSelection(true);
+			this.elementRadio.setSelection(false);
+			this.messageRadio.setSelection(false);
+			this.activeTypeElementOrMessage = this.xsdTypeDefinition;
+			if (this.xsdTypeQuery == null) {
+				this.xsdTypeQuery = MessagepropertiesFactory.eINSTANCE.createQuery();
 			}
-			activeQuery = messageQuery;
-			typeElementOrMessageNameLabel.setText(Messages.EditMessagePropertyDialog_Message_1);
+			this.activeQuery = this.xsdTypeQuery;
+			this.typeElementOrMessageNameLabel.setText(Messages.EditMessagePropertyDialog_Type_1);
 
-			alias.setMessageType(message);
-			alias.setPart(messagePart);
-			alias.setType(null);
-			alias.setXSDElement(null);
+			this.alias.setMessageType(null);
+			this.alias.setPart(null);
+			this.alias.setType(this.xsdTypeDefinition);
+			this.alias.setXSDElement(null);
 		}
-		alias.setQuery(activeQuery);
-		queryEditor.setInput(alias);
+		else if (this.typeElementOrMessage == BID_USE_ELEMENT) {
+			this.typeRadio.setSelection(false);
+			this.elementRadio.setSelection(true);
+			this.messageRadio.setSelection(false);
+			this.activeTypeElementOrMessage = this.xsdElementDeclaration;
+			if (this.xsdElementQuery == null) {
+				this.xsdElementQuery = MessagepropertiesFactory.eINSTANCE.createQuery();
+			}
+			this.activeQuery = this.xsdElementQuery;
+			this.typeElementOrMessageNameLabel.setText(Messages.EditMessagePropertyDialog_Element_1);
+
+			this.alias.setMessageType(null);
+			this.alias.setPart(null);
+			this.alias.setType(null);
+			this.alias.setXSDElement(this.xsdElementDeclaration);
+		}
+		else if (this.typeElementOrMessage == BID_USE_MESSAGE) {
+			this.typeRadio.setSelection(false);
+			this.elementRadio.setSelection(false);
+			this.messageRadio.setSelection(true);
+			this.activeTypeElementOrMessage = this.message;
+			if (this.messageQuery == null) {
+				this.messageQuery = MessagepropertiesFactory.eINSTANCE.createQuery();
+			}
+			this.activeQuery = this.messageQuery;
+			this.typeElementOrMessageNameLabel.setText(Messages.EditMessagePropertyDialog_Message_1);
+
+			this.alias.setMessageType(this.message);
+			this.alias.setPart(this.messagePart);
+			this.alias.setType(null);
+			this.alias.setXSDElement(null);
+		}
+		this.alias.setQuery(this.activeQuery);
+		this.queryEditor.setInput(this.alias);
 
 		updateTypeElementOrMessageName();
 		updateEnablement();
 	}
-	
+
 	protected void updateTypeElementOrMessageName() {
-		if (activeTypeElementOrMessage instanceof XSDTypeDefinition) {
-			xsdTypeDefinition = (XSDTypeDefinition) activeTypeElementOrMessage;
-			xsdTypeQuery = activeQuery;
-			typeElementOrMessageNameText.setText(xsdTypeDefinition.getName());
-		} else if (activeTypeElementOrMessage instanceof XSDElementDeclaration) {
-			xsdElementDeclaration = (XSDElementDeclaration) activeTypeElementOrMessage;
-			xsdElementQuery = activeQuery;
-			typeElementOrMessageNameText.setText(xsdElementDeclaration.getName());
-		} else if (activeTypeElementOrMessage instanceof Message) {
-			message = (Message) activeTypeElementOrMessage;
-			String s = message.getQName().getLocalPart();
-			messageQuery = activeQuery;
-			if (messagePart!=null) {
-				s += "." + messagePart;
+		if (this.activeTypeElementOrMessage instanceof XSDTypeDefinition) {
+			this.xsdTypeDefinition = (XSDTypeDefinition) this.activeTypeElementOrMessage;
+			this.xsdTypeQuery = this.activeQuery;
+			this.typeElementOrMessageNameText.setText(this.xsdTypeDefinition.getName());
+		} else if (this.activeTypeElementOrMessage instanceof XSDElementDeclaration) {
+			this.xsdElementDeclaration = (XSDElementDeclaration) this.activeTypeElementOrMessage;
+			this.xsdElementQuery = this.activeQuery;
+			this.typeElementOrMessageNameText.setText(this.xsdElementDeclaration.getName());
+		} else if (this.activeTypeElementOrMessage instanceof Message) {
+			this.message = (Message) this.activeTypeElementOrMessage;
+			String s = this.message.getQName().getLocalPart();
+			this.messageQuery = this.activeQuery;
+			if (this.messagePart!=null) {
+				s += "." + this.messagePart;
 			}
-			typeElementOrMessageNameText.setText(s);
+			this.typeElementOrMessageNameText.setText(s);
 		}
 		else
 		{
-			typeElementOrMessageNameText.setText("");
+			this.typeElementOrMessageNameText.setText("");
 		}
 	}
 
 	@Override
 	protected void configureShell(Shell newShell) {
 		super.configureShell(newShell);
-		if (isNew) {
-			newShell.setText(Messages.EditPropertyAliasDialog_9); 
+		if (this.isNew) {
+			newShell.setText(Messages.EditPropertyAliasDialog_9);
 		} else {
-			newShell.setText(Messages.EditPropertyAliasDialog_10); 
+			newShell.setText(Messages.EditPropertyAliasDialog_10);
 		}
 	}
 
@@ -440,48 +409,49 @@ public class EditPropertyAliasDialog extends Dialog {
 	 * Updates the property type according to the user choice.
 	 */
 	protected void browsePropertyType() {
-		
+
 		Object type = null;
 		Object part = null;
 		Object query = null;
 		Object result[] = null;
-		if (typeElementOrMessage == BID_USE_TYPE)
-			result = BrowseUtil.browseForXSDType(bpelEditor.getProcess(), getShell());
-		else if (typeElementOrMessage == BID_USE_ELEMENT)
-			result = BrowseUtil.browseForXSDElement(bpelEditor.getProcess(), getShell(), true);
+		if (this.typeElementOrMessage == BID_USE_TYPE)
+			result = BrowseUtil.browseForXSDType(this.bpelEditor.getProcess(), getShell());
+		else if (this.typeElementOrMessage == BID_USE_ELEMENT)
+			result = BrowseUtil.browseForXSDElement(this.bpelEditor.getProcess(), getShell(), true);
 		else {
-			result = BrowseUtil.browseForMessageType(bpelEditor.getProcess(), getShell(), true);
+			result = BrowseUtil.browseForMessageType(this.bpelEditor.getProcess(), getShell(), true);
 		}
 		if (result!=null) {
 			if (result.length>=1) {
-				
+
 				type = result[0];
 				int index = 1;
 				if (type instanceof Message) {
-					message = (Message) type;
+					this.message = (Message) type;
 					if (result.length>=2 && result[1] instanceof Part) {
 						part = ((Part)result[1]).getName();
 						index = 2;
 					}
 				}
-				
+
 				// build the query string
 				// NOTE: The namespace for the XSD type may be different from the message namespace
 				// e.g. the message is defined in a WSDL and the XSD type is defined in externally
 				// with a different namespace.
-				Definition definition = property.getEnclosingDefinition();
+				Definition definition = this.property.getEnclosingDefinition();
 				if (definition==null) {
-					IFile targetFile = bpelEditor.getEditModelClient().getArtifactsResourceInfo().getFile();
-					URI uri = URI.createPlatformResourceURI(targetFile.getFullPath().toString());
-					Resource resource = bpelEditor.getResourceSet().getResource(uri, true);
+					IFile targetFile = this.bpelEditor.getEditModelClient().getArtifactsResourceInfo().getFile();
+					URI uri = URI.createPlatformResourceURI( targetFile.getFullPath().toString(), true );
+					Resource resource = this.bpelEditor.getResourceSet().getResource(uri, true);
 					definition = (Definition) resource.getContents().get(0);
 				}
+
 				query = "";
 				while (index<result.length) {
 					if (result[index] instanceof XSDComponent) {
 						XSDNamedComponent nc = (XSDNamedComponent)result[index];
 						WSDLImportHelper.addImportAndNamespace(definition, nc.getSchema(),
-								bpelEditor.getEditModelClient().getPrimaryResourceInfo().getFile());
+								this.bpelEditor.getEditModelClient().getPrimaryResourceInfo().getFile());
 						String prefix = definition.getPrefix(nc.getTargetNamespace());
 						if (prefix!=null)
 							query = query + "/" + prefix + ":" + nc.getName();
@@ -491,65 +461,65 @@ public class EditPropertyAliasDialog extends Dialog {
 					++index;
 				}
 			}
-			
-			activeTypeElementOrMessage = (EObject)type;
+
+			this.activeTypeElementOrMessage = (EObject)type;
 			if (query!=null)
-				activeQuery.setValue(query.toString());
+				this.activeQuery.setValue(query.toString());
 			else
-				activeQuery.setValue("");
-			
-			if (typeElementOrMessage == BID_USE_TYPE) {
-				xsdTypeDefinition = (XSDTypeDefinition) type;
-				xsdTypeQuery = activeQuery;
+				this.activeQuery.setValue("");
+
+			if (this.typeElementOrMessage == BID_USE_TYPE) {
+				this.xsdTypeDefinition = (XSDTypeDefinition) type;
+				this.xsdTypeQuery = this.activeQuery;
 			}
-			else if (typeElementOrMessage == BID_USE_ELEMENT) {
-				xsdElementDeclaration = (XSDElementDeclaration) type;
-				xsdElementQuery = activeQuery;
+			else if (this.typeElementOrMessage == BID_USE_ELEMENT) {
+				this.xsdElementDeclaration = (XSDElementDeclaration) type;
+				this.xsdElementQuery = this.activeQuery;
 			}
 			else {
-				message = (Message)type;
+				this.message = (Message)type;
 				if (part!=null)
-					messagePart = part.toString();
-				messageQuery = activeQuery;
+					this.messagePart = part.toString();
+				this.messageQuery = this.activeQuery;
 			}
-			
+
 			// hack: don't fetch query from XPath Expression Editor
 			// because it will overwrite the currently selected element
-			activeQuery = null;
+			this.activeQuery = null;
 			updateWidgets();
 		}
 	}
-	
+
 	/**
 	 * @return Returns the alias.
 	 */
 	public PropertyAlias getPropertyAlias() {
-		return alias;
+		return this.alias;
 	}
 
 	@Override
 	protected void okPressed() {
-		alias.setPropertyName(property);
-		if (typeElementOrMessage == BID_USE_TYPE) {
-			alias.setType(xsdTypeDefinition);
-			if (xsdTypeQuery!=null && (xsdTypeQuery.getValue()==null || xsdTypeQuery.getValue().trim().equals("")) )
-				xsdTypeQuery = null;
-			alias.setQuery(xsdTypeQuery);
+		this.alias.setPropertyName(this.property);
+		if (this.typeElementOrMessage == BID_USE_TYPE) {
+			this.alias.setType(this.xsdTypeDefinition);
+			if (this.xsdTypeQuery!=null && (this.xsdTypeQuery.getValue()==null || this.xsdTypeQuery.getValue().trim().equals("")) )
+				this.xsdTypeQuery = null;
+			this.alias.setQuery(this.xsdTypeQuery);
 		}
-		else if (typeElementOrMessage == BID_USE_ELEMENT) {
-			alias.setXSDElement(xsdElementDeclaration);
-			if (xsdElementQuery!=null && (xsdElementQuery.getValue()==null || xsdElementQuery.getValue().trim().equals("")) )
-				xsdElementQuery = null;
-			alias.setQuery(xsdElementQuery);
+		else if (this.typeElementOrMessage == BID_USE_ELEMENT) {
+			this.alias.setXSDElement(this.xsdElementDeclaration);
+			if (this.xsdElementQuery!=null && (this.xsdElementQuery.getValue()==null || this.xsdElementQuery.getValue().trim().equals("")) )
+				this.xsdElementQuery = null;
+			this.alias.setQuery(this.xsdElementQuery);
 		}
 		else {
-			alias.setMessageType(message);
-			alias.setPart(messagePart);
-			if (messageQuery!=null && (messageQuery.getValue()==null || messageQuery.getValue().trim().equals("")) )
-				messageQuery = null;
-			alias.setQuery(messageQuery);
+			this.alias.setMessageType(this.message);
+			this.alias.setPart(this.messagePart);
+			if (this.messageQuery!=null && (this.messageQuery.getValue()==null || this.messageQuery.getValue().trim().equals("")) )
+				this.messageQuery = null;
+			this.alias.setQuery(this.messageQuery);
 		}
-		
+
 		super.okPressed();
 	}
 

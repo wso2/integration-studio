@@ -10,6 +10,10 @@
  *******************************************************************************/
 package org.eclipse.bpel.ui.properties;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import org.eclipse.bpel.common.ui.details.ButtonIValue;
 import org.eclipse.bpel.common.ui.details.IDetailsAreaConstants;
 import org.eclipse.bpel.common.ui.flatui.FlatFormAttachment;
@@ -25,6 +29,7 @@ import org.eclipse.bpel.ui.Messages;
 import org.eclipse.bpel.ui.commands.AddCopyCommand;
 import org.eclipse.bpel.ui.commands.RemoveCopyCommand;
 import org.eclipse.bpel.ui.commands.SwapCopyCommand;
+import org.eclipse.bpel.ui.extensions.BPELUIRegistry;
 import org.eclipse.bpel.ui.util.BPELUtil;
 import org.eclipse.bpel.ui.util.MultiObjectAdapter;
 import org.eclipse.core.resources.IMarker;
@@ -90,21 +95,36 @@ public class AssignImplSection extends BPELPropertySection {
 	public AssignImplSection() {
 		super();
 
-		fToSection.fAllowed = new IAssignCategory[] {
-				new VariablePartAssignCategory(this),
-				new ExpressionAssignCategory(this),
-				new VariablePropertyAssignCategory(this),
-				new PartnerRoleAssignCategory(this, false) };
+		List<IAssignCategory> fToAllowed = defaultToCategories();
+		fToAllowed.addAll(BPELUIRegistry.getInstance()
+				.getAdditionalAssignCategories());
+		List<IAssignCategory> fFromAllowed = defaultFromCategories();
+		fFromAllowed.addAll(BPELUIRegistry.getInstance()
+				.getAdditionalAssignCategories());
 
-		fFromSection.fAllowed = new IAssignCategory[] {
-				new VariablePartAssignCategory(this),
-				new ExpressionAssignCategory(this),
-				new LiteralAssignCategory(this),
-				new VariablePropertyAssignCategory(this),
-				new PartnerRoleAssignCategory(this, true),
-				new EndpointReferenceAssignCategory(this),
-				new OpaqueAssignCategory(this) };
+		fToSection.fAllowed = fToAllowed.toArray(fToSection.fAllowed);
+		fFromSection.fAllowed = fFromAllowed.toArray(fFromSection.fAllowed);
+	}
 
+	protected ArrayList<IAssignCategory> defaultToCategories() {
+		return new ArrayList<IAssignCategory>(
+				Arrays.asList(new IAssignCategory[] {
+						new VariablePartAssignCategory(this),
+						new ExpressionAssignCategory(this),
+						new VariablePropertyAssignCategory(this),
+						new PartnerRoleAssignCategory(this, false) }));
+	}
+
+	protected ArrayList<IAssignCategory> defaultFromCategories() {
+		return new ArrayList<IAssignCategory>(
+				Arrays.asList(new IAssignCategory[] {
+						new VariablePartAssignCategory(this),
+						new ExpressionAssignCategory(this),
+						new LiteralAssignCategory(this),
+						new VariablePropertyAssignCategory(this),
+						new PartnerRoleAssignCategory(this, true),
+						new EndpointReferenceAssignCategory(this),
+						new OpaqueAssignCategory(this) }));
 	}
 
 	@Override

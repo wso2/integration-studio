@@ -28,7 +28,7 @@ import org.eclipse.gef.EditPart;
 public class IfAdapter extends ContainerActivityAdapter implements IAnnotatedElement {
 
 	/* IContainer delegate */
-		
+
 	@Override
 	public IContainer createContainerDelegate() {
 		MultiContainer omc = new MultiContainer();
@@ -39,7 +39,7 @@ public class IfAdapter extends ContainerActivityAdapter implements IAnnotatedEle
 	}
 
 	/* EditPartFactory */
-	
+
 	@Override
 	public EditPart createEditPart(EditPart context, Object model) {
 		EditPart result = new IfEditPart();
@@ -48,37 +48,35 @@ public class IfAdapter extends ContainerActivityAdapter implements IAnnotatedEle
 	}
 
 	/* IOutlineEditPartFactory */
-	
+
 	@Override
 	public EditPart createOutlineEditPart(EditPart context, Object model) {
 		EditPart result = new OutlineTreeEditPart();
 		result.setModel(model);
-		return result;	
+		return result;
 	}
-	
+
 	/* IEditPartActionContributor */
-	
+
 	@Override
 	public List getEditPartActions(final EditPart editPart) {
 		List actions = super.getEditPartActions(editPart);
 		Object modelObject = editPart.getModel();
-		
+
 		actions.add(new CreateElseIfAction(editPart));
-		  
+
 		if (((If)modelObject).getElse() == null) {
 			actions.add(new CreateElseAction(editPart));
 		}
 		return actions;
 	}
-	
+
 	/* IAnnotatedElement */
-	
+
 	public String[] getAnnotation(Object object) {
 		Expression expression = ((If)object).getCondition();
 		return new String[] {
-			Messages.CONDITION, AnnotationHelper.getAnnotation(expression),
-			Messages.LANGUAGE, AnnotationHelper.getExpressionLanguage(expression)
-			};
+			Messages.CONDITION, AnnotationHelper.getAnnotation(expression)
+		};
 	}
 }
-	

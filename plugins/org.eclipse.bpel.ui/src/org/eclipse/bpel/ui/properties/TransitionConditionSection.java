@@ -15,70 +15,59 @@ import java.util.List;
 import org.eclipse.bpel.model.BPELPackage;
 import org.eclipse.bpel.model.Link;
 import org.eclipse.bpel.model.Source;
-import org.eclipse.bpel.ui.IBPELUIConstants;
-import org.eclipse.bpel.ui.Messages;
 import org.eclipse.bpel.ui.expressions.IEditorConstants;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.swt.widgets.Composite;
-
 
 /**
  * Details section for the TransitionCondition of a link source (a boolean expression).
  */
 public class TransitionConditionSection extends ExpressionSection {
-	
+
+	/*
+	 * (non-Javadoc)
+	 * @see org.eclipse.bpel.ui.properties.ExpressionSection
+	 * #addAllAdapters()
+	 */
 	@Override
 	protected void addAllAdapters() {
 		super.addAllAdapters();
+
 		Link link = getModel();
 		for(Object next : link.getSources()) {
 			Source source = (Source) next;
-			fAdapters[0].addToObject(source);		
-		}		
-	}
-	
-	@Override
-	protected String getExpressionType() { 
-		return IEditorConstants.ET_TRANSITION; 
+			this.fAdapters[0].addToObject( source );
+		}
 	}
 
-	
+	/*
+	 * (non-Javadoc)
+	 * @see org.eclipse.bpel.ui.properties.ExpressionSection
+	 * #getExpressionType()
+	 */
 	@Override
-	protected boolean isExpressionOptional() { 
-		return true; 
-	}	
-	
-	@Override
-	protected Composite createNoEditorWidgets(Composite composite) {
-	
-		return createNoEditorWidgetsCreateComposite(composite,
-				
-				Messages.TransitionConditionSection_No_condition_specified_1 + NL + NL +
-				Messages.TransitionConditionSection_Optional_condition_text_2 ,
-				
-				Messages.TransitionConditionSection_Create_a_New_Condition_3);
+	protected String getExpressionType() {
+		return IEditorConstants.ET_TRANSITION;
 	}
 
-
+	/*
+	 * (non-Javadoc)
+	 * @see org.eclipse.bpel.ui.properties.ExpressionSection
+	 * #getStructuralFeature(org.eclipse.emf.ecore.EObject)
+	 */
 	@Override
 	protected EStructuralFeature getStructuralFeature (EObject object) {
-		return BPELPackage.eINSTANCE.getSource_TransitionCondition() ;		
+		return BPELPackage.eINSTANCE.getSource_TransitionCondition() ;
 	}
-	
-	
+
+	/*
+	 * (non-Javadoc)
+	 * @see org.eclipse.bpel.ui.properties.ExpressionSection
+	 * #getExpressionTarget()
+	 */
 	@Override
 	protected EObject getExpressionTarget() {
-		Link link = getModel();
-		List<?> sources = link.getSources();
-		if (sources.size() > 0) {
-			return (Source) sources.get(0);
-		}
-		return  null;			
-	}
-	
-	@Override
-	protected boolean isValidClientUseType(String useType) {		
-		return IBPELUIConstants.USE_TYPE_TRANSITION_CONDITION.equals(useType);
+		List<Source> sources = ((Link) getModel()).getSources();
+		return sources.size() > 0 ? sources.get( 0 ) : null;
 	}
 }

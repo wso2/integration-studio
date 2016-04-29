@@ -45,6 +45,24 @@ public class CloudLogin {
 	private Label error;
 	private String selectedTenant;
 	private boolean isAppCloud;
+	private boolean isTenant;
+	private String tenantString;
+	
+	public boolean isTenant() {
+		return isTenant;
+	}
+
+	public void setTenant(boolean isTenant) {
+		this.isTenant = isTenant;
+	}
+
+	public String getTenantString() {
+		return tenantString;
+	}
+
+	public void setTenantString(String tenantString) {
+		this.tenantString = tenantString;
+	}
 
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
@@ -91,7 +109,11 @@ public class CloudLogin {
 					String selectedTenant = getSelectedTenant(dialog);
 
 					if (selectedTenant != null) {
+						setTenant(true);
+						setTenantString(selectedTenant);
 						Authenticator.getInstance().setSelectedTenant(selectedTenant);
+						String tenantUser = user + "@" + selectedTenant;
+						credentials = new UserPasswordCredentials(tenantUser, password);
 						val = Authenticator.getInstance().Authenticate(JagApiProperties.getLoginUrl(), credentials);
 					} else {
 

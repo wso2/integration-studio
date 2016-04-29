@@ -39,6 +39,7 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.wso2.developerstudio.appcloud.utils.authentication.CloudLogin;
+import org.wso2.developerstudio.appcloud.utils.authentication.JagApiProperties;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.registry.base.logger.ExceptionHandler;
@@ -115,7 +116,7 @@ public class RegistryInfoDialog extends Dialog {
 			public void widgetSelected(SelectionEvent arg0) {
 				urlText.setEnabled(!isCloud.getSelection());
 				if (isCloud.getSelection()) {
-					urlText.setText("https://apps.cloud.wso2.com");
+					urlText.setText(JagApiProperties.getDomain());
 					userNameLabel.setText("E mail : ");
 				} else {
 					urlText.setText(DEFAULT_CARBON_SERVER_URL);
@@ -212,6 +213,9 @@ public class RegistryInfoDialog extends Dialog {
 				CloudLogin cloudLogin = new CloudLogin();
 				cloudLogin.setAppCloud(true);
 				cloudLogin.login(userNameText.getText(), pwdText.getText());
+				if (cloudLogin.isTenant()) {
+					setUserName(userNameText.getText() + "@" + cloudLogin.getTenantString());
+				}
 			}
 			doFinish();
 		} catch (MalformedURLException e) {

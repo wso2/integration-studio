@@ -152,7 +152,7 @@ public class AddNewArrayAction extends AbstractActionHandler {
 				}
 				if(StringUtils.isNotEmpty(objectDialog.getIdentifierType()) && StringUtils.isNotEmpty(objectDialog.getIdentifierValue())){
 					String fullName = objectDialog.getIdentifierType() + "=" + objectDialog.getIdentifierValue();
-					treeNodeNew.setName(objectDialog.getTitle()+", "+fullName);
+					treeNodeNew.setName(objectDialog.getTitle()+","+fullName);
 				}
 			
 				//Sets the values for items field which is used for serializing the array

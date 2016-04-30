@@ -148,7 +148,7 @@ public class AddNewObjectAction extends AbstractActionHandler {
 				}
 				if(StringUtils.isNotEmpty(objectDialog.getIdentifierType()) && StringUtils.isNotEmpty(objectDialog.getIdentifierValue())){
 					String fullName = objectDialog.getIdentifierType() + "=" + objectDialog.getIdentifierValue();
-					treeNodeNew.setName(objectDialog.getTitle()+", "+fullName);
+					treeNodeNew.setName(objectDialog.getTitle()+","+fullName);
 				}
 				
 				if(StringUtils.isNotEmpty(objectDialog.getIdentifierURL()) && StringUtils.isNotEmpty(objectDialog.getIdentifierType())){

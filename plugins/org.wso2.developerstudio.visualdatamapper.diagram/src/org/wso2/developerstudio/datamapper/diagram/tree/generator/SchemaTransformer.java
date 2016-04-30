@@ -109,6 +109,7 @@ public class SchemaTransformer implements ISchemaTransformer {
 	private boolean addedObjectHasProperties = false;
 	private String addedObjectElementIdentifiers = null;
 	private String addedObjectNamespaces = null;
+	
 
 	/**
 	 * Generates the tree
@@ -545,8 +546,6 @@ public class SchemaTransformer implements ISchemaTransformer {
 						setPropertyKeyValuePairforTreeNodes(treeNode, propertyValueList, JSON_SCHEMA_PROPERTIES_ID,
 								getSchemaProperties(getSchemaItems(subSchema)).toString());
 						setProperties(getSchemaItems(subSchema), treeNode, count, namespaceMap);
-						// When the array is a primitive array then add the type
-						// to the map
 					}
 				}
 			} else {
@@ -743,7 +742,7 @@ public class SchemaTransformer implements ISchemaTransformer {
 			if (elementKey.contains(":")) {
 				// If element contains both xsi:type and namespace prefix
 				String nameWithPrefix = checkValidity(namespaceMap, nodeName, elementKey);
-				nodeName = nameWithPrefix + ", " + name[1];
+				nodeName = nameWithPrefix + "," + name[1];
 			} else {
 				// If element contains only the xsi:type
 				nodeName = element;

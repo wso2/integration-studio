@@ -149,7 +149,7 @@ public class AddNewFieldAction extends AbstractActionHandler {
 				}
 				if(StringUtils.isNotEmpty(objectDialog.getIdentifierType()) && StringUtils.isNotEmpty(objectDialog.getIdentifierValue())){
 					String fullName = objectDialog.getIdentifierType() + "=" + objectDialog.getIdentifierValue();
-					treeNodeNew.setName(objectDialog.getTitle()+", "+fullName);
+					treeNodeNew.setName(objectDialog.getTitle()+","+fullName);
 				}
 				//sets the properties ID to be used in the serialization for fields
 				setPropertyKeyValuePairforTreeNodes(treeNodeNew, propertyValueList, JSON_SCHEMA_ADDED_PROPERTIES_ID, HAS_PROPERTIES);

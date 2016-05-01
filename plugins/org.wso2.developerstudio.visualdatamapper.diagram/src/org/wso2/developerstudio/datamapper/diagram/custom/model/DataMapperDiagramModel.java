@@ -497,15 +497,15 @@ public class DataMapperDiagramModel {
         for (EObject eObject : parentVariableStack) {
             if (eObject instanceof TreeNodeImpl) {
                 variableName = variableName
-                        + ScriptGenerationUtil.modifyNameSpaceForName(((TreeNodeImpl) eObject).getName()) + ".";
+                        + ScriptGenerationUtil.removeInvalidCharaters(((TreeNodeImpl) eObject).getName()) + ".";
             } else if (eObject instanceof ElementImpl) {
                 variableName = variableName
-                        + ScriptGenerationUtil.modifyNameSpaceForName(((ElementImpl) eObject).getName()) + ".";
+                        + ScriptGenerationUtil.removeInvalidCharaters(((ElementImpl) eObject).getName()) + ".";
             } else {
                 throw new IllegalArgumentException("Illegal element type found : " + eObject.toString());
             }
         }
-        return variableName + ScriptGenerationUtil.modifyNameSpaceForName(name);
+        return variableName + ScriptGenerationUtil.removeInvalidCharaters(name);
     }
 
     public List<Integer> getInputVariablesArray() {

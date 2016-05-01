@@ -22,6 +22,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import javax.xml.namespace.QName;
 import javax.xml.stream.XMLStreamException;
 
 import org.apache.axiom.om.OMAbstractFactory;
@@ -43,6 +44,8 @@ public class SchemaGeneratorForXML extends SchemaGeneratorForJSON implements ISc
 	private static final String TEMP_OUTPUT = System.getProperty(JAVA_IO_TMPDIR) + File.separator + TEMP_AVRO_GEN_LOCATION;
 	protected static final String AT_PREFIX = "@";
 	protected static final String DOLLLAR_AT_PREFIX = "$@";
+	protected static final String XSI_NAMESPACE_URI = "http://www.w3.org/2001/XMLSchema-instance";
+	protected static final String XSI_TYPE = "type";
 	
 	@Override
 	public String getSchemaContent(String content) throws IOException {
@@ -109,12 +112,19 @@ public class SchemaGeneratorForXML extends SchemaGeneratorForJSON implements ISc
 		Iterator attributeIterator = element.getAllAttributes();
 		List<OMAttribute> removeList = new ArrayList<OMAttribute>();
 		List<OMElement> addList = new ArrayList<OMElement>();
+		String modifiedElementName = null;
 		
 		while (attributeIterator.hasNext()) {
 			OMAttribute atttrib = (OMAttribute) attributeIterator.next();
 			OMElement attributeElement = null;
 			//If the attribute is an element handler append the prefix to the name
 			if(atttrib.getNamespace() != null){
+				QName qName = atttrib.getQName();
+				//construct a modified element name when we have xsi:type attribute in the element. 
+				if (XSI_NAMESPACE_URI.equals(qName.getNamespaceURI()) && XSI_TYPE.equals(qName.getLocalPart())) {
+					modifiedElementName = element.getQName().getLocalPart() + "_" + DOLLLAR_AT_PREFIX
+							+ qName.getPrefix() + ":" + qName.getLocalPart() + "_" + atttrib.getAttributeValue();
+				}
 				String prefix = atttrib.getNamespace().getPrefix();
 				attributeElement = factory.createOMElement(DOLLLAR_AT_PREFIX+ prefix+":"+atttrib.getLocalName(), null);
 			}else{
@@ -157,6 +167,10 @@ public class SchemaGeneratorForXML extends SchemaGeneratorForJSON implements ISc
 			if (child instanceof OMElement) {
 				traverseChildrenAndReplaceAttributes((OMElement) child, factory);
 			}
+		}
+		
+		if(modifiedElementName != null){
+			element.setLocalName(modifiedElementName);
 		}
 		
 		return element;

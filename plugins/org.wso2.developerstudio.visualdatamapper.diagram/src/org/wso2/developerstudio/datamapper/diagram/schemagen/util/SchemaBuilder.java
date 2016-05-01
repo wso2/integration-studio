@@ -43,6 +43,8 @@ public class SchemaBuilder {
 	protected static final String AT_PREFIX = "@";
 	protected static final String DOLLLAR_AT_PREFIX = "$@";
 	protected static final String HASHCONTENT = "#@content";
+	protected static final String XSI_TYPE_OLD = "_$@xsi:type_";
+	protected static final String XSI_TYPE_READABLE = ",xsi:type=";
 	protected JsonSchema root;
 	Map<String, JsonElement> objectMap = new HashMap<>();
 	String arrayKey = null;
@@ -107,6 +109,10 @@ public class SchemaBuilder {
 				elementIdentifierValue = id.substring(2) + "=" + entryValue;
 				identifierKey = getKeyOfElementIdentifier(id);
 				elementIdentifierMap.put(identifierKey, id.substring(2));
+			}
+			//rename to a readable xsi:type format 
+			if(id.contains(XSI_TYPE_OLD)){
+				id = id.replace(XSI_TYPE_OLD, XSI_TYPE_READABLE);
 			}
 			JsonElement element = entry.getValue();
 			TypeEnum propertyValueType = RealTypeOf(element);

@@ -48,13 +48,13 @@ public abstract class AbstractMappingConfigGenerator implements MappingConfigGen
     protected String getMainFunctionDefinition(String inRoot, String outRoot, String outputVariableRootName) {
         StringBuilder mainFunctionBuilder = new StringBuilder();
         mainFunctionBuilder.append("function map_S_");
-        mainFunctionBuilder.append(ScriptGenerationUtil.modifyNameSpaceForName(inRoot));
+        mainFunctionBuilder.append(ScriptGenerationUtil.removeInvalidCharaters(inRoot));
         mainFunctionBuilder.append("_S_");
-        mainFunctionBuilder.append(ScriptGenerationUtil.modifyNameSpaceForName(outRoot));
+        mainFunctionBuilder.append(ScriptGenerationUtil.removeInvalidCharaters(outRoot));
         mainFunctionBuilder.append("( )");
         mainFunctionBuilder.append("{ ");
         mainFunctionBuilder.append("\n");
-        mainFunctionBuilder.append("var " + ScriptGenerationUtil.modifyNameSpaceForName(outputVariableRootName)
+        mainFunctionBuilder.append("var " + ScriptGenerationUtil.removeInvalidCharaters(outputVariableRootName)
                 + "={};");
         mainFunctionBuilder.append("\n");
         return mainFunctionBuilder.toString();
@@ -62,7 +62,7 @@ public abstract class AbstractMappingConfigGenerator implements MappingConfigGen
 
     protected String getFunctionReturnString(String outRoot) {
         StringBuilder functionBuilder = new StringBuilder();
-        functionBuilder.append("return " + ScriptGenerationUtil.modifyNameSpaceForName(outRoot));
+        functionBuilder.append("return " + ScriptGenerationUtil.removeInvalidCharaters(outRoot));
         functionBuilder.append(";");
         functionBuilder.append("\n");
         functionBuilder.append("}");

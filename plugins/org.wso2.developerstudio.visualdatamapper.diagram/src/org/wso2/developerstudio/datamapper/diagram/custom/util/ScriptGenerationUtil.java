@@ -125,8 +125,8 @@ public class ScriptGenerationUtil {
         return prettyVariableName;
     }
 
-    public static String modifyNameSpaceForName(String variableName) {
-        return variableName.replace(':', '_');
+    public static String removeInvalidCharaters(String variableName) {
+        return variableName.replace(':', '_').replace(',', '_').replace('=', '_');
     }
 
     private static String getAccumulatedIterativeVariableString(Stack<ForLoopBean> parentForLoopBeanStack) {

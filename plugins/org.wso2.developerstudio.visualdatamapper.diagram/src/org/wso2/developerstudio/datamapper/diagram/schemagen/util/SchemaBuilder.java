@@ -16,10 +16,14 @@
 
 package org.wso2.developerstudio.datamapper.diagram.schemagen.util;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.apache.commons.lang.StringUtils;
 
@@ -45,11 +49,14 @@ public class SchemaBuilder {
 	protected static final String HASHCONTENT = "#@content";
 	protected static final String XSI_TYPE_OLD = "_$@xsi:type_";
 	protected static final String XSI_TYPE_READABLE = ",xsi:type=";
+	private static final String NAMESPACES = "namespaces";
+	private static final String XSI_NAMESPACE_URI = "http://www.w3.org/2001/XMLSchema-instance";
 	protected JsonSchema root;
 	Map<String, JsonElement> objectMap = new HashMap<>();
 	String arrayKey = null;
 	Map<String, String> elementIdentifierMap = new HashMap<>();
 	Map<String, String> elementIdentifierArrayNameMap = new HashMap<>();
+	private List<String> elementsToModified = new ArrayList<>();
 
 	public SchemaBuilder() {
 	}
@@ -80,7 +87,29 @@ public class SchemaBuilder {
 		root.setId(HTTP_WSO2JSONSCHEMA_ORG);
 		root.setType(OBJECT);
 		createSchemaForObject(firstObject, root);
-		return root.getAsJsonObject().toString();
+		
+		String content = root.getAsJsonObject().toString();
+		//rename to a readable xsi:type format 
+		for (String element : elementsToModified) {
+			Pattern identifierPattern = Pattern.compile("(_.+:type)");
+			Matcher matcher = identifierPattern.matcher(element);
+			while (matcher.find()) {
+				String s = matcher.group(0);
+				String prefix = s.split(":")[0].substring(3);
+				if (root.getCustomArray(NAMESPACES) != null) {
+					JsonArray jsonArray = root.getCustomArray(NAMESPACES);
+					for (int i = 0; i < jsonArray.size(); ++i) {
+						JsonElement jsonElement = jsonArray.get(i);
+						if (XSI_NAMESPACE_URI.equals(jsonElement.getAsJsonObject().get("url").getAsString())) {
+							content = content.replace("_$@" + prefix + ":type_", "," + prefix + ":type=");
+							break;
+						}
+					}
+				}
+			}
+		}
+		elementsToModified.clear();		
+		return content;
 	}
 
 	private boolean isAPrimitiveWithAttributes(JsonObject object) {
@@ -110,10 +139,13 @@ public class SchemaBuilder {
 				identifierKey = getKeyOfElementIdentifier(id);
 				elementIdentifierMap.put(identifierKey, id.substring(2));
 			}
-			//rename to a readable xsi:type format 
-			if(id.contains(XSI_TYPE_OLD)){
-				id = id.replace(XSI_TYPE_OLD, XSI_TYPE_READABLE);
+			// find xsi:type ids and put them in a list
+			Pattern identifierPattern = Pattern.compile("(_.+:type)");
+			Matcher matcher = identifierPattern.matcher(id);
+			while (matcher.find()) {
+				elementsToModified.add(id);
 			}
+
 			JsonElement element = entry.getValue();
 			TypeEnum propertyValueType = RealTypeOf(element);
 

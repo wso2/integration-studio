@@ -126,7 +126,7 @@ public class SchemaGeneratorForXML extends SchemaGeneratorForJSON implements ISc
 							+ qName.getPrefix() + ":" + qName.getLocalPart() + "_" + atttrib.getAttributeValue();
 				}
 				String prefix = atttrib.getNamespace().getPrefix();
-				attributeElement = factory.createOMElement(DOLLLAR_AT_PREFIX+ prefix+":"+atttrib.getLocalName(), null);
+				attributeElement = factory.createOMElement(AT_PREFIX+ prefix+":"+atttrib.getLocalName(), null);
 			}else{
 				//remove attribute and instead add a element with @ infront
 				// eg <person age="30"></person> will be replaced by <person><@age>30</@age></person>

@@ -56,7 +56,7 @@ public class UpdateMetaFileReaderJob extends Job {
 	private static final String FEATURE_GROUP_APPEND = ".feature.group";
 	private static final String ERROR_TITLE = Messages.UpdateMetaFileReaderJob_0;
 	private static final String ERROR_MESSAGE = Messages.UpdateMetaFileReaderJob_1;
-	private static final String UPDATES_TXT_FILE = "updates.txt";
+	private static final String UPDATES_TXT_FILE = "updates.index";
 	public static final String JAVA_IO_TMPDIR = "java.io.tmpdir";
 	public static final String folderLoc = System.getProperty(JAVA_IO_TMPDIR) + File.separator + "DevStudioUpdater";
 	public static final String fileLoc = folderLoc + File.separator + UPDATES_TXT_FILE;

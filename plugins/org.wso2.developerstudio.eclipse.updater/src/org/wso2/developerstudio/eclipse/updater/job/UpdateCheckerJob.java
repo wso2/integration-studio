@@ -55,8 +55,13 @@ public class UpdateCheckerJob extends Job {
 			if (!isJobRunning()) {
 				setIsJobRunning(true);
 				SubMonitor progress = SubMonitor.convert(monitor, Messages.UpdateCheckerJob_1, 2);
+				try {
 				updateManager.checkForAvailableUpdates(progress.newChild(1));
 				updateManager.checkForAvailableFeatures(progress.newChild(1));
+				} catch (Exception e){
+					setIsJobRunning(false);
+					return Status.CANCEL_STATUS;
+				}
 				return Status.OK_STATUS;
 			} else {
 				Display.getDefault().syncExec(new Runnable() {

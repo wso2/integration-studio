@@ -82,6 +82,7 @@ import org.wso2.developerstudio.eclipse.platform.ui.preferences.PreferenceConsta
 import org.wso2.developerstudio.eclipse.platform.ui.preferences.PreferenceInitializer;
 import org.wso2.developerstudio.eclipse.updater.Messages;
 import org.wso2.developerstudio.eclipse.updater.UpdaterPlugin;
+import org.wso2.developerstudio.eclipse.updater.job.UpdateMetaFileReaderJob;
 import org.wso2.developerstudio.eclipse.updater.model.EnhancedFeature;
 
 public class UpdateManager {
@@ -177,8 +178,14 @@ public class UpdateManager {
 				Messages.UpdateManager_18, 6);
 
 		// get all available IUs in update repository
-		IMetadataRepository metadataRepo = metadataRepoManager
+		IMetadataRepository metadataRepo = null;
+		try {
+		metadataRepo = metadataRepoManager
 				.loadRepository(getDevStudioUpdateSite(), progress.newChild(1));
+		} catch (ProvisionException e) {
+			UpdateMetaFileReaderJob.promptUserError("The P2 Does not existed at the given location, please set the update/releases P2 for Developer Studio in the Preference Store", "P2 Repository Error");
+		    throw e;
+		}
 		IQuery<IInstallableUnit> allIUQuery = QueryUtil.createIUAnyQuery();
 		IQueryResult<IInstallableUnit> allIUQueryResult = metadataRepo
 				.query(allIUQuery, progress.newChild(1));
@@ -250,8 +257,14 @@ public class UpdateManager {
 				Messages.UpdateManager_21, 5);
 
 		// get all available IUs in release repository
-		IMetadataRepository metadataRepository = metadataRepoManager
+		IMetadataRepository metadataRepository = null;
+		try {
+		metadataRepository = metadataRepoManager
 				.loadRepository(getDevStudioReleaseSite(), progress.newChild(1));
+		} catch (ProvisionException e) {
+			UpdateMetaFileReaderJob.promptUserError("The P2 Does not existed at the given location, please set the update/releases P2 for Developer Studio in the Preference Store", "P2 Repository Error");
+		    throw e;
+		}
 		IQuery<IInstallableUnit> allIUQuery = QueryUtil.createIUAnyQuery();
 		IQueryResult<IInstallableUnit> allIUQueryResult = metadataRepository
 				.query(allIUQuery, progress.newChild(1));
@@ -274,10 +287,16 @@ public class UpdateManager {
 			allAvailableFeatures
 					.put(iInstallableUnit.getId(), iInstallableUnit);
 			if (!installedWSO2FeaturesMap.containsKey(iInstallableUnit.getId())) {
+				// check if the available feature versions are compatible with the current kernel
+				Version currVersion = generateOSGIVersion(PreferenceInitializer.currentDevSVersion);
+				Version nextVersion = generateOSGIVersion(PreferenceInitializer.nextDevSVersion);
+				if (iInstallableUnit.getVersion().compareTo(currVersion) >= 0
+						&& iInstallableUnit.getVersion().compareTo(nextVersion) == -1) {
 				unsortedAvailableNewFeatures
 						.put(iInstallableUnit.getId(),
 								allFeaturesInReleaseRepo.get(iInstallableUnit
 										.getId()));
+				}
 			} else { 
 				Version versionInstalled = installedWSO2FeaturesMap.get(iInstallableUnit.getId()).getVersion(); 
 				// if the version we have is greater than the installed version view it in the available feature list
@@ -292,6 +311,13 @@ public class UpdateManager {
 		}
 		// sort the available new features according to alphabetical order
 		availableNewFeatures = new TreeMap<String, EnhancedFeature>(unsortedAvailableNewFeatures);
+	}
+
+	private Version generateOSGIVersion(String currentVersionStr) {
+		String[] minorMajorNumbers = currentVersionStr.split("\\.");
+		Version currVersion = Version.createOSGi(Integer.parseInt(minorMajorNumbers[0]),
+				Integer.parseInt(minorMajorNumbers[1]), Integer.parseInt(minorMajorNumbers[2]));
+		return currVersion;
 	}
 
 	/**

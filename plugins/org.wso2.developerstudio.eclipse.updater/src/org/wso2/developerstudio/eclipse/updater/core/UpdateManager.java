@@ -87,6 +87,7 @@ import org.wso2.developerstudio.eclipse.updater.model.EnhancedFeature;
 
 public class UpdateManager {
 
+	private static final int LESS_THAN = -1;
 	private static final String FEATURE_GROUP_IU_ID_SFX = "feature.group"; //$NON-NLS-1$
 	private static final String PROP_IS_HIDDEN = "isHidden"; //$NON-NLS-1$
 	private static final String PROP_IS_KERNEL_FEATURE = "isKernelFeature"; //$NON-NLS-1$
@@ -102,7 +103,6 @@ public class UpdateManager {
 	private static final String DEVS_UPDATER_TMP = "DevSUpdaterTmp"; //$NON-NLS-1$
 	private static final String JAVA_IO_TMPDIR = "java.io.tmpdir"; //$NON-NLS-1$
 	private static final String NOT_RESOLVED_ERROR = Messages.UpdateManager_13;
-	
 
 	@Inject
 	protected IProvisioningAgentProvider agentProvider;
@@ -131,8 +131,7 @@ public class UpdateManager {
 	protected Map<String, EnhancedFeature> unsortedAvailableNewFeatures;
 	protected Collection<IInstallableUnit> selectedFeatures;
 
-	protected static IDeveloperStudioLog log = Logger
-			.getLog(UpdaterPlugin.PLUGIN_ID);
+	protected static IDeveloperStudioLog log = Logger.getLog(UpdaterPlugin.PLUGIN_ID);
 
 	public UpdateManager() throws RuntimeException {
 		initProvisioningAgent();
@@ -141,10 +140,8 @@ public class UpdateManager {
 	protected void initProvisioningAgent() throws RuntimeException {
 		try {
 			// Inject references
-			BundleContext bundleContext = FrameworkUtil.getBundle(
-					UpdateManager.class).getBundleContext();
-			IEclipseContext serviceContext = EclipseContextFactory
-					.getServiceContext(bundleContext);
+			BundleContext bundleContext = FrameworkUtil.getBundle(UpdateManager.class).getBundleContext();
+			IEclipseContext serviceContext = EclipseContextFactory.getServiceContext(bundleContext);
 			ContextInjectionFactory.inject(this, serviceContext);
 			// get p2 agent for current system(Eclipse instance in this
 			// case)
@@ -163,51 +160,46 @@ public class UpdateManager {
 	}
 
 	/**
-	 * Finds available WSO2 features in current profile and 
-	 * search for updates to them in WSO2 p2 repository for updates.
+	 * Finds available WSO2 features in current profile and search for updates
+	 * to them in WSO2 p2 repository for updates.
 	 * 
 	 * @param monitor
 	 * @throws Exception
 	 */
-	public void checkForAvailableUpdates(IProgressMonitor monitor)
-			throws Exception {
+	public void checkForAvailableUpdates(IProgressMonitor monitor) throws Exception {
 		if (monitor == null) {
 			monitor = new NullProgressMonitor();
 		}
-		SubMonitor progress = SubMonitor.convert(monitor,
-				Messages.UpdateManager_18, 6);
+		SubMonitor progress = SubMonitor.convert(monitor, Messages.UpdateManager_18, 6);
 
 		// get all available IUs in update repository
 		IMetadataRepository metadataRepo = null;
 		try {
-		metadataRepo = metadataRepoManager
-				.loadRepository(getDevStudioUpdateSite(), progress.newChild(1));
+			metadataRepo = metadataRepoManager.loadRepository(getDevStudioUpdateSite(), progress.newChild(1));
 		} catch (ProvisionException e) {
-			UpdateMetaFileReaderJob.promptUserError("The P2 Does not existed at the given location, please set the update/releases P2 for Developer Studio in the Preference Store", "P2 Repository Error");
-		    throw e;
+			UpdateMetaFileReaderJob.promptUserError(
+					"The P2 Does not existed at the given location, please set the update/releases P2 for Developer Studio in the Preference Store",
+					"P2 Repository Error");
+			throw e;
 		}
 		IQuery<IInstallableUnit> allIUQuery = QueryUtil.createIUAnyQuery();
-		IQueryResult<IInstallableUnit> allIUQueryResult = metadataRepo
-				.query(allIUQuery, progress.newChild(1));
+		IQueryResult<IInstallableUnit> allIUQueryResult = metadataRepo.query(allIUQuery, progress.newChild(1));
 
 		// read artifact repository for updates
-		IArtifactRepository artifactRepo = artifactRepoManager
-				.loadRepository(getDevStudioUpdateSite(), progress.newChild(1));
+		IArtifactRepository artifactRepo = artifactRepoManager.loadRepository(getDevStudioUpdateSite(),
+				progress.newChild(1));
 
 		// read meta-data of all available features
-		Map<String, EnhancedFeature> unsortedMap = loadWSO2FeaturesInRepo(
-				artifactRepo, allIUQueryResult,
+		Map<String, EnhancedFeature> unsortedMap = loadWSO2FeaturesInRepo(artifactRepo, allIUQueryResult,
 				progress.newChild(1));
-		//sort the map in alphabetical order
+		// sort the map in alphabetical order
 		Map<String, EnhancedFeature> allFeaturesInUpdateRepo = new TreeMap<String, EnhancedFeature>(unsortedMap);
 		// get all installed wso2 features
-		Collection<IInstallableUnit> installedWSO2Features = getInstalledWSO2Features(progress
-				.newChild(1));
+		Collection<IInstallableUnit> installedWSO2Features = getInstalledWSO2Features(progress.newChild(1));
 
 		installedWSO2FeaturesMap = new HashMap<String, IInstallableUnit>();
 		for (IInstallableUnit iInstallableUnit : installedWSO2Features) {
-			installedWSO2FeaturesMap.put(iInstallableUnit.getId(),
-					iInstallableUnit);
+			installedWSO2FeaturesMap.put(iInstallableUnit.getId(), iInstallableUnit);
 		}
 
 		if (progress.isCanceled()) {
@@ -218,7 +210,7 @@ public class UpdateManager {
 		updateOperation = new UpdateOperation(session, installedWSO2Features);
 		updateOperation.getProvisioningContext().setArtifactRepositories(repos);
 		updateOperation.getProvisioningContext().setMetadataRepositories(repos);
-		
+
 		// resolve update operation
 		IStatus status = updateOperation.resolveModal(progress.newChild(1));
 		// user cancelled the job while resolving
@@ -230,94 +222,72 @@ public class UpdateManager {
 			featuresWithPossibleUpdates = new HashMap<String, EnhancedFeature>();
 			log.info(Messages.UpdateManager_19);
 		} else if (status.getSeverity() == IStatus.ERROR) { // resolution errors
-			//something wrong with the updates
+			// something wrong with the updates
 			log.info(Messages.UpdateManager_20);
 		} else {
 			// good to proceed installing updates
 			setPossibleUpdates(updateOperation.getPossibleUpdates(), allFeaturesInUpdateRepo);
 		}
-		//sort the available updates in alphabetical order
-		
+		// sort the available updates in alphabetical order
+
 	}
 
 	/**
-	 * Searches available features in WSO2 p2 repository for the 
-	 * current version of Developer Studio and filters new
-	 * features that can be installed.
+	 * Searches available features in WSO2 p2 repository for the current version
+	 * of Developer Studio and filters new features that can be installed.
 	 * 
 	 * @param monitor
 	 * @throws Exception
 	 */
-	public void checkForAvailableFeatures(IProgressMonitor monitor)
-			throws Exception {
+	public void checkForAvailableFeatures(IProgressMonitor monitor) throws Exception {
 		if (monitor == null) {
 			monitor = new NullProgressMonitor();
 		}
-		SubMonitor progress = SubMonitor.convert(monitor,
-				Messages.UpdateManager_21, 5);
+		SubMonitor progress = SubMonitor.convert(monitor, Messages.UpdateManager_21, 5);
 
 		// get all available IUs in release repository
 		IMetadataRepository metadataRepository = null;
 		try {
-		metadataRepository = metadataRepoManager
-				.loadRepository(getDevStudioReleaseSite(), progress.newChild(1));
+			metadataRepository = metadataRepoManager.loadRepository(getDevStudioReleaseSite(), progress.newChild(1));
 		} catch (ProvisionException e) {
-			UpdateMetaFileReaderJob.promptUserError("The P2 Does not existed at the given location, please set the update/releases P2 for Developer Studio in the Preference Store", "P2 Repository Error");
-		    throw e;
+			UpdateMetaFileReaderJob.promptUserError(
+					"The P2 Does not existed at the given location, please set the update/releases P2 for Developer Studio in the Preference Store",
+					"P2 Repository Error");
+			throw e;
 		}
 		IQuery<IInstallableUnit> allIUQuery = QueryUtil.createIUAnyQuery();
-		IQueryResult<IInstallableUnit> allIUQueryResult = metadataRepository
-				.query(allIUQuery, progress.newChild(1));
+		IQueryResult<IInstallableUnit> allIUQueryResult = metadataRepository.query(allIUQuery, progress.newChild(1));
 
 		// load artifact repository for releases
-		IArtifactRepository artifactRepository = artifactRepoManager
-				.loadRepository(getDevStudioReleaseSite(), progress.newChild(1));
+		IArtifactRepository artifactRepository = artifactRepoManager.loadRepository(getDevStudioReleaseSite(),
+				progress.newChild(1));
 
 		// read meta-data of all available features
-		Map<String, EnhancedFeature> allFeaturesInReleaseRepo = loadWSO2FeaturesInRepo(
-				artifactRepository, allIUQueryResult,
-				progress.newChild(1));
+		Map<String, EnhancedFeature> allFeaturesInReleaseRepo = loadWSO2FeaturesInRepo(artifactRepository,
+				allIUQueryResult, progress.newChild(1));
 
-		Collection<IInstallableUnit> filteredIUs = filterInstallableUnits(
-				WSO2_FEATURE_PREFIX, FEATURE_GROUP_IU_ID_SFX, allIUQueryResult,
-				progress.newChild(1));
+		Collection<IInstallableUnit> filteredIUs = filterInstallableUnits(WSO2_FEATURE_PREFIX, FEATURE_GROUP_IU_ID_SFX,
+				allIUQueryResult, progress.newChild(1));
 		allAvailableFeatures = new HashMap<String, IInstallableUnit>();
 		unsortedAvailableNewFeatures = new HashMap<String, EnhancedFeature>();
 		for (IInstallableUnit iInstallableUnit : filteredIUs) {
-			allAvailableFeatures
-					.put(iInstallableUnit.getId(), iInstallableUnit);
+			allAvailableFeatures.put(iInstallableUnit.getId(), iInstallableUnit);
 			if (!installedWSO2FeaturesMap.containsKey(iInstallableUnit.getId())) {
-				// check if the available feature versions are compatible with the current kernel
-				Version currVersion = generateOSGIVersion(PreferenceInitializer.currentDevSVersion);
-				Version nextVersion = generateOSGIVersion(PreferenceInitializer.nextDevSVersion);
-				if (iInstallableUnit.getVersion().compareTo(currVersion) >= 0
-						&& iInstallableUnit.getVersion().compareTo(nextVersion) == -1) {
-				unsortedAvailableNewFeatures
-						.put(iInstallableUnit.getId(),
-								allFeaturesInReleaseRepo.get(iInstallableUnit
-										.getId()));
-				}
-			} else { 
-				Version versionInstalled = installedWSO2FeaturesMap.get(iInstallableUnit.getId()).getVersion(); 
-				// if the version we have is greater than the installed version view it in the available feature list
+				unsortedAvailableNewFeatures.put(iInstallableUnit.getId(),
+						allFeaturesInReleaseRepo.get(iInstallableUnit.getId()));
+			} else {
+				Version versionInstalled = installedWSO2FeaturesMap.get(iInstallableUnit.getId()).getVersion();
+				// if the version we have is greater than the installed version
+				// view it in the available feature list
 				if (versionInstalled != null && (iInstallableUnit.getVersion().compareTo(versionInstalled) == 1)) {
-					unsortedAvailableNewFeatures
-						.put(iInstallableUnit.getId(),
-								allFeaturesInReleaseRepo.get(iInstallableUnit
-										.getId()));
-						
+					unsortedAvailableNewFeatures.put(iInstallableUnit.getId(),
+							allFeaturesInReleaseRepo.get(iInstallableUnit.getId()));
+
 				}
 			}
 		}
 		// sort the available new features according to alphabetical order
 		availableNewFeatures = new TreeMap<String, EnhancedFeature>(unsortedAvailableNewFeatures);
-	}
-
-	private Version generateOSGIVersion(String currentVersionStr) {
-		String[] minorMajorNumbers = currentVersionStr.split("\\.");
-		Version currVersion = Version.createOSGi(Integer.parseInt(minorMajorNumbers[0]),
-				Integer.parseInt(minorMajorNumbers[1]), Integer.parseInt(minorMajorNumbers[2]));
-		return currVersion;
 	}
 
 	/**
@@ -330,8 +300,7 @@ public class UpdateManager {
 		selectedUpdates = new Update[selectedFeaturesList.size()];
 		int count = 0;
 		for (EnhancedFeature selectedFeature : selectedFeaturesList) {
-			selectedUpdates[count] = availableUpdates.get(selectedFeature
-					.getId());
+			selectedUpdates[count] = availableUpdates.get(selectedFeature.getId());
 			count++;
 		}
 
@@ -344,8 +313,7 @@ public class UpdateManager {
 	 * @param monitor
 	 */
 	public void installSelectedUpdates(IProgressMonitor monitor) {
-		SubMonitor progress = SubMonitor.convert(monitor,
-				Messages.UpdateManager_26, 2);
+		SubMonitor progress = SubMonitor.convert(monitor, Messages.UpdateManager_26, 2);
 		URI[] repos = new URI[] { getDevStudioUpdateSite() };
 		session = new ProvisioningSession(p2Agent);
 		updateOperation = new UpdateOperation(session);
@@ -360,8 +328,7 @@ public class UpdateManager {
 			String message = status.getChildren()[0].getMessage();
 			log.error(Messages.UpdateManager_27 + message);
 		} else {
-			final ProvisioningJob provisioningJob = updateOperation
-					.getProvisioningJob(progress.newChild(1));
+			final ProvisioningJob provisioningJob = updateOperation.getProvisioningJob(progress.newChild(1));
 			if (provisioningJob != null) {
 				provisioningJob.addJobChangeListener(new JobChangeAdapter() {
 					@Override
@@ -369,11 +336,9 @@ public class UpdateManager {
 						Display.getDefault().syncExec(new Runnable() {
 							@Override
 							public void run() {
-								boolean restart = MessageDialog.openQuestion(
-										Display.getDefault().getActiveShell(),
+								boolean restart = MessageDialog.openQuestion(Display.getDefault().getActiveShell(),
 										Messages.UpdateManager_28,
-										Messages.UpdateManager_29
-												+ Messages.UpdateManager_30);
+										Messages.UpdateManager_29 + Messages.UpdateManager_30);
 								if (restart) {
 									PlatformUI.getWorkbench().restart();
 								}
@@ -386,12 +351,8 @@ public class UpdateManager {
 					@Override
 					public void run() {
 						try {
-							PlatformUI
-									.getWorkbench()
-									.getActiveWorkbenchWindow()
-									.getActivePage()
-									.showView(
-											IProgressConstants.PROGRESS_VIEW_ID);
+							PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
+									.showView(IProgressConstants.PROGRESS_VIEW_ID);
 						} catch (PartInitException e) {
 							log.error(e);
 						}
@@ -409,15 +370,17 @@ public class UpdateManager {
 	 * @param selectedDevSFeatures
 	 *            Features to install.
 	 */
-	public void setSelectedFeaturesToInstall(
-			List<EnhancedFeature> selectedDevSFeatures) {
+	public void setSelectedFeaturesToInstall(List<EnhancedFeature> selectedDevSFeatures) {
 		this.selectedFeatures = new ArrayList<IInstallableUnit>();
 		for (EnhancedFeature devStudioFeature : selectedDevSFeatures) {
-			selectedFeatures.add(allAvailableFeatures.get(devStudioFeature
-					.getId()));
+			selectedFeatures.add(allAvailableFeatures.get(devStudioFeature.getId()));
 			if (devStudioFeature.getChildFeatures() != null && devStudioFeature.getChildFeatures().length != 0) {
 				String[] childFeaturesToInstall = devStudioFeature.getChildFeatures();
-				for (String childFeature : childFeaturesToInstall) {//set all children of selected features
+				for (String childFeature : childFeaturesToInstall) {// set all
+																	// children
+																	// of
+																	// selected
+																	// features
 					String featureID = childFeature + ".feature.group";
 					selectedFeatures.add(allAvailableFeatures.get(featureID));
 				}
@@ -433,16 +396,13 @@ public class UpdateManager {
 	 * @param monitor
 	 */
 	public void installSelectedFeatures(IProgressMonitor monitor) {
-		SubMonitor progress = SubMonitor.convert(monitor,
-				Messages.UpdateManager_32, 2);
+		SubMonitor progress = SubMonitor.convert(monitor, Messages.UpdateManager_32, 2);
 
 		URI[] repos = new URI[] { getDevStudioReleaseSite() };
 		session = new ProvisioningSession(p2Agent);
 		installOperation = new InstallOperation(session, selectedFeatures);
-		installOperation.getProvisioningContext()
-				.setArtifactRepositories(repos);
-		installOperation.getProvisioningContext()
-				.setMetadataRepositories(repos);
+		installOperation.getProvisioningContext().setArtifactRepositories(repos);
+		installOperation.getProvisioningContext().setMetadataRepositories(repos);
 		IStatus status = installOperation.resolveModal(progress.newChild(1));
 		if (status.getSeverity() == IStatus.CANCEL || progress.isCanceled()) {
 			throw new OperationCanceledException();
@@ -450,8 +410,7 @@ public class UpdateManager {
 			String message = status.getChildren()[0].getMessage();
 			log.error(Messages.UpdateManager_33 + message);
 		} else {
-			ProvisioningJob provisioningJob = installOperation
-					.getProvisioningJob(progress.newChild(1));
+			ProvisioningJob provisioningJob = installOperation.getProvisioningJob(progress.newChild(1));
 			if (provisioningJob != null) {
 				provisioningJob.addJobChangeListener(new JobChangeAdapter() {
 					@Override
@@ -459,11 +418,9 @@ public class UpdateManager {
 						Display.getDefault().syncExec(new Runnable() {
 							@Override
 							public void run() {
-								boolean restart = MessageDialog.openQuestion(
-										Display.getDefault().getActiveShell(),
+								boolean restart = MessageDialog.openQuestion(Display.getDefault().getActiveShell(),
 										Messages.UpdateManager_34,
-										Messages.UpdateManager_35
-												+ Messages.UpdateManager_36);
+										Messages.UpdateManager_35 + Messages.UpdateManager_36);
 								if (restart) {
 									PlatformUI.getWorkbench().restart();
 								}
@@ -476,12 +433,8 @@ public class UpdateManager {
 					@Override
 					public void run() {
 						try {
-							PlatformUI
-									.getWorkbench()
-									.getActiveWorkbenchWindow()
-									.getActivePage()
-									.showView(
-											IProgressConstants.PROGRESS_VIEW_ID);
+							PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
+									.showView(IProgressConstants.PROGRESS_VIEW_ID);
 						} catch (PartInitException e) {
 							log.error(e);
 						}
@@ -493,8 +446,7 @@ public class UpdateManager {
 		}
 	}
 
-	public Map<String, EnhancedFeature> getPossibleUpdatesMap()
-			throws IllegalStateException {
+	public Map<String, EnhancedFeature> getPossibleUpdatesMap() throws IllegalStateException {
 		if (featuresWithPossibleUpdates == null) {
 			throw new IllegalStateException(NOT_RESOLVED_ERROR);
 		}
@@ -508,46 +460,37 @@ public class UpdateManager {
 		return (featuresWithPossibleUpdates.size() > 0) ? true : false;
 	}
 
-	public Map<String, EnhancedFeature> getAvailableFeaturesMap()
-			throws IllegalStateException {
+	public Map<String, EnhancedFeature> getAvailableFeaturesMap() throws IllegalStateException {
 		if (availableNewFeatures == null) {
 			throw new IllegalStateException(NOT_RESOLVED_ERROR);
 		}
 		return availableNewFeatures;
 	}
 
-	private Map<String, EnhancedFeature> loadWSO2FeaturesInRepo(
-			IArtifactRepository artifactRepository,
-			IQueryResult<IInstallableUnit> allAvailableIUs,
-			IProgressMonitor monitor) throws ProvisionException,
-			URISyntaxException, IOException {
+	private Map<String, EnhancedFeature> loadWSO2FeaturesInRepo(IArtifactRepository artifactRepository,
+			IQueryResult<IInstallableUnit> allAvailableIUs, IProgressMonitor monitor)
+			throws ProvisionException, URISyntaxException, IOException {
 		if (monitor == null) {
 			monitor = new NullProgressMonitor();
 		}
-		SubMonitor progress = SubMonitor.convert(monitor,
-				Messages.UpdateManager_15, 10);
+		SubMonitor progress = SubMonitor.convert(monitor, Messages.UpdateManager_15, 10);
 
-		String tmpRoot = System.getProperty(JAVA_IO_TMPDIR) + File.separator
-				+ DEVS_UPDATER_TMP;
+		String tmpRoot = System.getProperty(JAVA_IO_TMPDIR) + File.separator + DEVS_UPDATER_TMP;
 
-		Collection<IInstallableUnit> wso2FeatureJars = filterInstallableUnits(
-				WSO2_FEATURE_PREFIX, FEATURE_JAR_IU_ID_SFX, allAvailableIUs,
-				progress.newChild(1));
+		Collection<IInstallableUnit> wso2FeatureJars = filterInstallableUnits(WSO2_FEATURE_PREFIX,
+				FEATURE_JAR_IU_ID_SFX, allAvailableIUs, progress.newChild(1));
 
 		Map<String, EnhancedFeature> loadedFeatureMap = new HashMap<>();
 
 		for (IInstallableUnit iu : wso2FeatureJars) {
-			SubMonitor downloadProgress = SubMonitor.convert(progress,
-					Messages.UpdateManager_16, wso2FeatureJars.size() * 2);
+			SubMonitor downloadProgress = SubMonitor.convert(progress, Messages.UpdateManager_16,
+					wso2FeatureJars.size() * 2);
 			Collection<IArtifactKey> artifacts = iu.getArtifacts();
 			// ideally there should be only one artifact in a feature.jar iu
 			for (IArtifactKey iArtifactKey : artifacts) {
-				IArtifactDescriptor[] artifactDescriptors = artifactRepository
-						.getArtifactDescriptors(iArtifactKey);
-				File featureCacheRoot = new File(tmpRoot, iu.getId()
-						+ File.separator + iu.getVersion().toString());
-				File cachedFeatureDir = new File(featureCacheRoot,
-						FEATURE_JAR_EXTRCT_FOLDER);
+				IArtifactDescriptor[] artifactDescriptors = artifactRepository.getArtifactDescriptors(iArtifactKey);
+				File featureCacheRoot = new File(tmpRoot, iu.getId() + File.separator + iu.getVersion().toString());
+				File cachedFeatureDir = new File(featureCacheRoot, FEATURE_JAR_EXTRCT_FOLDER);
 
 				if (cachedFeatureDir.exists() && cachedFeatureDir.isDirectory()) {
 					downloadProgress.worked(2);
@@ -562,8 +505,7 @@ public class UpdateManager {
 						}
 						FileOutputStream fop = new FileOutputStream(jarFile);
 						// jar iu only contains a single artifact. hence [0]
-						artifactRepository.getArtifact(artifactDescriptors[0],
-								fop, downloadProgress.newChild(1));
+						artifactRepository.getArtifact(artifactDescriptors[0], fop, downloadProgress.newChild(1));
 						cachedFeatureDir.mkdirs();
 						extractJar(jarFile, cachedFeatureDir);
 						downloadProgress.worked(1);
@@ -571,31 +513,25 @@ public class UpdateManager {
 						throw new IOException(Messages.UpdateManager_17, e);
 					}
 				}
-				EnhancedFeature feature = readEnhancedMetadata(iu,
-						cachedFeatureDir);
+				EnhancedFeature feature = readEnhancedMetadata(iu, cachedFeatureDir);
 				loadedFeatureMap.put(feature.getId(), feature);
 			}
 		}
 		return loadedFeatureMap;
 	}
 
-	private EnhancedFeature readEnhancedMetadata(IInstallableUnit iu,
-			File cachedFeatureDir) {
+	private EnhancedFeature readEnhancedMetadata(IInstallableUnit iu, File cachedFeatureDir) {
 		EnhancedFeature feature = new EnhancedFeature(iu);
-		feature.setIconURL(FILE_PROTOCOL + cachedFeatureDir + File.separator
-				+ ICON_FILE);
+		feature.setIconURL(FILE_PROTOCOL + cachedFeatureDir + File.separator + ICON_FILE);
 		try {
-			File updateProperties = new File(cachedFeatureDir,
-					UPDATE_PROPERTIES_FILE);
+			File updateProperties = new File(cachedFeatureDir, UPDATE_PROPERTIES_FILE);
 			Properties prop = new Properties();
 			InputStream input = new FileInputStream(updateProperties);
 			prop.load(input);
 			feature.setWhatIsNew(prop.getProperty(PROP_WHAT_IS_NEW));
 			feature.setBugFixes(prop.getProperty(PROP_BUG_FIXES));
-			feature.setKernelFeature(Boolean.parseBoolean(prop
-					.getProperty(PROP_IS_KERNEL_FEATURE)));
-			feature.setHidden(Boolean.parseBoolean(prop
-					.getProperty(PROP_IS_HIDDEN)));
+			feature.setKernelFeature(Boolean.parseBoolean(prop.getProperty(PROP_IS_KERNEL_FEATURE)));
+			feature.setHidden(Boolean.parseBoolean(prop.getProperty(PROP_IS_HIDDEN)));
 			String childrenStr = prop.getProperty(CHILD_FEATURES);
 			feature.setChildFeatures(childrenStr.split(","));
 		} catch (Exception e) {
@@ -605,18 +541,15 @@ public class UpdateManager {
 		return feature;
 	}
 
-	private Collection<IInstallableUnit> filterInstallableUnits(
-			String idPrefix, String idSuffix,
-			IQueryResult<IInstallableUnit> queryResult, IProgressMonitor monitor)
-			throws OperationCanceledException {
+	private Collection<IInstallableUnit> filterInstallableUnits(String idPrefix, String idSuffix,
+			IQueryResult<IInstallableUnit> queryResult, IProgressMonitor monitor) throws OperationCanceledException {
 		if (monitor == null) {
 			monitor = new NullProgressMonitor();
 		}
 		Collection<IInstallableUnit> wso2IUs = new ArrayList<IInstallableUnit>();
 		Iterator<IInstallableUnit> iterator = queryResult.iterator();
-		SubMonitor progress = SubMonitor.convert(monitor,
-				Messages.UpdateManager_24, queryResult.toSet().size());
-	
+		SubMonitor progress = SubMonitor.convert(monitor, Messages.UpdateManager_24, queryResult.toSet().size());
+
 		while (iterator.hasNext()) {
 			if (progress.isCanceled()) {
 				throw new OperationCanceledException();
@@ -624,8 +557,7 @@ public class UpdateManager {
 			IInstallableUnit iu = iterator.next();
 			String versionedID = iu.getId();
 			progress.subTask(Messages.UpdateManager_25 + versionedID);
-			if (versionedID != null && versionedID.startsWith(idPrefix)
-					&& versionedID.endsWith(idSuffix)) {
+			if (versionedID != null && versionedID.startsWith(idPrefix) && versionedID.endsWith(idSuffix)) {
 				wso2IUs.add(iu);
 			}
 			progress.worked(1);
@@ -666,20 +598,16 @@ public class UpdateManager {
 		}
 	}
 
-	public Collection<IInstallableUnit> getInstalledWSO2Features(
-			IProgressMonitor monitor) throws OperationCanceledException {
-		SubMonitor progress = SubMonitor.convert(monitor,
-				Messages.UpdateManager_23, 2);
+	public Collection<IInstallableUnit> getInstalledWSO2Features(IProgressMonitor monitor)
+			throws OperationCanceledException {
+		SubMonitor progress = SubMonitor.convert(monitor, Messages.UpdateManager_23, 2);
 
 		OperationFactory operationFactory = new OperationFactory();
-		IQueryResult<IInstallableUnit> queryResult = operationFactory
-				.listInstalledElements(true, progress.newChild(1));
-		return filterInstallableUnits(WSO2_FEATURE_PREFIX,
-				FEATURE_GROUP_IU_ID_SFX, queryResult, progress.newChild(1));
+		IQueryResult<IInstallableUnit> queryResult = operationFactory.listInstalledElements(true, progress.newChild(1));
+		return filterInstallableUnits(WSO2_FEATURE_PREFIX, FEATURE_GROUP_IU_ID_SFX, queryResult, progress.newChild(1));
 	}
 
-	private void setPossibleUpdates(Update[] possibleUpdates,
-			Map<String, EnhancedFeature> allFeaturesInUpdateRepo) {
+	private void setPossibleUpdates(Update[] possibleUpdates, Map<String, EnhancedFeature> allFeaturesInUpdateRepo) {
 		availableUpdates = new HashMap<String, Update>();
 		featuresWithPossibleUpdates = new HashMap<String, EnhancedFeature>();
 		for (Update update : possibleUpdates) {
@@ -689,17 +617,26 @@ public class UpdateManager {
 			EnhancedFeature updatebleFeature = allFeaturesInUpdateRepo.get(id);
 			updatebleFeature.setCurrentVersion(oldVersion);
 			updatebleFeature.setVersion(newVersion);
-			availableUpdates.put(id, update);
-			featuresWithPossibleUpdates.put(id, updatebleFeature);
+			if (isNewVersionCompatible(oldVersion, update.replacement.getVersion())) {
+				availableUpdates.put(id, update);
+				featuresWithPossibleUpdates.put(id, updatebleFeature);
+			}
 		}
+	}
+
+	private boolean isNewVersionCompatible(String currVersion, Version availableVerion) {
+		Version upperLimit = generateUpperLimitforUpdates(currVersion);
+		if (availableVerion.compareTo(upperLimit) == LESS_THAN) {
+			return true;
+		}
+		return false;
 	}
 
 	private URI getDevStudioUpdateSite() {
 		URI updateSite = null;
 		try {
 			IPreferenceStore preferenceStore = PlatformUI.getPreferenceStore();
-			String url = preferenceStore
-					.getString(PreferenceConstants.UPDATE_SITE_URL);
+			String url = preferenceStore.getString(PreferenceConstants.UPDATE_SITE_URL);
 			if (url == null || url.isEmpty()) {
 				url = PreferenceInitializer.DEFAULT_UPDATE_SITE;
 			}
@@ -714,13 +651,22 @@ public class UpdateManager {
 		URI releaseSite = null;
 		try {
 			IPreferenceStore preferenceStore = PlatformUI.getPreferenceStore();
-			String url = preferenceStore
-					.getString(PreferenceConstants.RELESE_SITE_URL);
+			String url = preferenceStore.getString(PreferenceConstants.RELESE_SITE_URL);
 			releaseSite = new URI(url);
 		} catch (URISyntaxException e) {
 			log.error(e);
 		}
 		return releaseSite;
+	}
+
+	private Version generateUpperLimitforUpdates(String installedVersion) {
+		String[] majorMinorUpperLmit = installedVersion.split("\\.");
+		int currentMinorVerions = Integer.parseInt(majorMinorUpperLmit[1]);
+		int nextMinorVersion = currentMinorVerions + 1;
+		Version upperLimit = Version.createOSGi(Integer.parseInt(majorMinorUpperLmit[0]),
+				Integer.parseInt(String.valueOf(nextMinorVersion)), Integer.parseInt(majorMinorUpperLmit[2]),
+				majorMinorUpperLmit[3]);
+		return upperLimit;
 	}
 
 }

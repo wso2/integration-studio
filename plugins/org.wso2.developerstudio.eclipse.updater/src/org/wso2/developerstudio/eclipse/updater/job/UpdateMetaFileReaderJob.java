@@ -52,6 +52,7 @@ import org.wso2.developerstudio.eclipse.updater.core.UpdateManager;
  */
 public class UpdateMetaFileReaderJob extends Job {
 
+	private static final int AVAILABLE_VERSION_LESS = -1;
 	private static final int AVAILABLE_VERSION_GREATER = 1;
 	private static final String FEATURE_GROUP_APPEND = ".feature.group";
 	private static final String ERROR_TITLE = Messages.UpdateMetaFileReaderJob_0;
@@ -102,8 +103,10 @@ public class UpdateMetaFileReaderJob extends Job {
 				if (availaleDevStudioFeatureVerions.containsKey(iInstallableUnit.getId())) {
 					Version availableVersion = generateVersionFromString(
 							availaleDevStudioFeatureVerions.get(iInstallableUnit.getId()));
+					Version upperLimit = generateUpperLimitforUpdates(iInstallableUnit.getVersion());
 					if (availableVersion != null
-							&& availableVersion.compareTo(iInstallableUnit.getVersion()) == AVAILABLE_VERSION_GREATER) {
+							&& availableVersion.compareTo(iInstallableUnit.getVersion()) == AVAILABLE_VERSION_GREATER
+							&& availableVersion.compareTo(upperLimit) == AVAILABLE_VERSION_LESS) {
 						updateCount = updateCount + 1;
 					} else if (availableVersion == null) {
 						log.error(Messages.UpdateCheckerJob_4);
@@ -130,8 +133,19 @@ public class UpdateMetaFileReaderJob extends Job {
 									// installed return cancel
 	}
 
+	private Version generateUpperLimitforUpdates(Version version) {
+		String installedVersion = version.toString();
+		String[] majorMinorUpperLmit = installedVersion.split("\\.");
+		int currentMinorVerions = Integer.parseInt(majorMinorUpperLmit[1]);
+		int nextMinorVersion = currentMinorVerions + 1;
+		Version upperLimit = Version.createOSGi(Integer.parseInt(majorMinorUpperLmit[0]),
+				Integer.parseInt(String.valueOf(nextMinorVersion)), Integer.parseInt(majorMinorUpperLmit[2]),
+				majorMinorUpperLmit[3]);
+		return upperLimit;
+	}
+
 	private void deleteDownloadedTempFile() {
-		File downloadedMetaFile =  new File(fileLoc);
+		File downloadedMetaFile = new File(fileLoc);
 		File downloadedFolderLoc = new File(folderLoc);
 		if (downloadedMetaFile.exists()) {
 			downloadedMetaFile.delete();
@@ -178,8 +192,8 @@ public class UpdateMetaFileReaderJob extends Job {
 			if (url == null || url.isEmpty()) {
 				url = PreferenceInitializer.DEFAULT_UPDATE_SITE;
 			}
-			//If user doesn't include a '/' after the url then adds a '/'
-			if(!url.endsWith(URL_VALIDATOR)){
+			// If user doesn't include a '/' after the url then adds a '/'
+			if (!url.endsWith(URL_VALIDATOR)) {
 				url = url + URL_VALIDATOR;
 			}
 			URL link = new URL(url + UPDATES_TXT_FILE);

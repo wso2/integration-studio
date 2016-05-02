@@ -1,0 +1,136 @@
+<htd:task 
+xmlns:htd="http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803"
+xmlns:htt="http://docs.oasis-open.org/ns/bpel4people/ws-humantask/types/200803"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+xmlns:cl="http://www.example.com/claims/"
+xmlns:tns="http://www.example.com"
+xmlns:wso2="http://wso2.org/ht/schema/renderings/"
+
+ name="ApproveClaim">
+            <htd:documentation xml:lang="en-US">
+                This task is used to handle claims that require manual
+                approval.
+            </htd:documentation>
+
+            <htd:interface portType="cl:ClaimsHandlingPT"
+                           operation="approve"
+                           responsePortType="cl:ClaimsHandlingCallbackPT"
+                           responseOperation="approvalResponse"/>
+
+            <htd:priority>
+                htd:getInput("ClaimApprovalRequest")/test10:priority
+            </htd:priority>
+
+            <htd:peopleAssignments>
+                <htd:potentialOwners>
+                    <htd:from logicalPeopleGroup="regionalClerks">
+                        <htd:argument name="role">
+                            regionalClerksRole
+                        </htd:argument>
+                    </htd:from>
+                </htd:potentialOwners>
+                <htd:businessAdministrators>
+                    <htd:from logicalPeopleGroup="regionalManager">
+                        <htd:argument name="role">
+                            regionalManagerRole
+                        </htd:argument>
+                    </htd:from>
+                </htd:businessAdministrators>
+            </htd:peopleAssignments>
+
+            <htd:delegation potentialDelegatees="nobody"/>
+
+            <htd:presentationElements>
+                <htd:name xml:lang="en-US">Approve Claim</htd:name>
+                <htd:name xml:lang="de-DE">
+                    Genehmigung der Schadensforderung
+                </htd:name>
+                <htd:presentationParameters>
+                    <htd:presentationParameter name="firstname"
+                                               type="xsd:string">
+                        htd:getInput("ClaimApprovalRequest")/test10:cust/test10:firstname
+                    </htd:presentationParameter>
+                    <htd:presentationParameter name="lastname"
+                                               type="xsd:string">
+                        htd:getInput("ClaimApprovalRequest")/test10:cust/test10:lastname
+                    </htd:presentationParameter>
+                    <htd:presentationParameter name="euroAmount"
+                                               type="xsd:double">
+                        htd:getInput("ClaimApprovalRequest")/test10:amount
+                    </htd:presentationParameter>
+                </htd:presentationParameters>
+
+                <htd:subject xml:lang="en-US">
+                    Approve the insurance claim for €$euroAmount$ on behalf of
+                    $firstname$ $lastname$
+                </htd:subject>
+                <htd:subject xml:lang="de-DE">
+                    Genehmigung der Schadensforderung über €$euroAmount$ für
+                    $firstname$ $lastname$
+                </htd:subject>
+                <htd:description xml:lang="en-US" contentType="text/plain">
+                    Approve this claim following corporate guideline
+                    #4711.0815/7 ...
+                </htd:description>
+                <htd:description xml:lang="en-US" contentType="text/html">
+                    <![CDATA[
+                      <p>
+                        Approve this claim following corporate guideline
+                        <b>#4711.0815/7</b>
+                      </p>
+                    ]]>
+                </htd:description>
+                <htd:description xml:lang="de-DE" contentType="text/plain">
+                    Genehmigen Sie diese Schadensforderung entsprechend
+                    Richtlinie Nr. 4711.0815/7 ...
+                </htd:description>
+                <htd:description xml:lang="de-DE" contentType="text/html">
+                    <![CDATA[
+                      <p>
+                        Genehmigen Sie diese Schadensforderung entsprechend
+                        Richtlinie
+                        <b>Nr. 4711.0815/7</b>
+                        ...
+                      </p>
+                    ]]>
+                </htd:description>
+            </htd:presentationElements>
+
+            <htd:renderings>
+                <!-- Display Input Information to the User -->
+                <htd:rendering type="wso2:input">
+                    <wso2:inputs>
+                        <wso2:element id="fname" type="xsd:string">
+                            <wso2:label>First Name</wso2:label>
+                            <wso2:value>$firstname$</wso2:value>
+                        </wso2:element>
+                        <wso2:element id="lname" type="xsd:string">
+                            <wso2:label>Last Name</wso2:label>
+                            <wso2:value>$lastname$</wso2:value>
+                        </wso2:element>
+                        <wso2:element id="amount" type="xsd:string">
+                            <wso2:label>Loan Amount</wso2:label>
+                            <wso2:value>$euroAmount$</wso2:value>
+                        </wso2:element>
+                        <wso2:element id="custId" type="xsd:string">
+                            <wso2:label>Customer Identifier</wso2:label>
+                            <wso2:value>/test10:ClaimApprovalData/test10:cust/test10:id</wso2:value>
+                        </wso2:element>
+                    </wso2:inputs>
+                </htd:rendering>
+
+                <!-- Display elements to the user workspace which implements output message -->
+                <htd:rendering type="wso2:output">
+                    <wso2:outputs>
+                        <wso2:element id="approved" type="xsd:string">
+                            <wso2:label>Loan Approval Status</wso2:label>
+                            <wso2:xpath>/test10:ClaimApprovalResponse/test10:approved</wso2:xpath>
+                            <wso2:value type="boolean">Approved, Disapproved</wso2:value>
+                            <wso2:default>Disapproved</wso2:default>
+                        </wso2:element>
+                    </wso2:outputs>
+                </htd:rendering>
+            </htd:renderings>
+
+        </htd:task>

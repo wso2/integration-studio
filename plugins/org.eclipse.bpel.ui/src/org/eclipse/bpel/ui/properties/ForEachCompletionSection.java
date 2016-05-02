@@ -16,87 +16,88 @@ import org.eclipse.bpel.model.Branches;
 import org.eclipse.bpel.model.CompletionCondition;
 import org.eclipse.bpel.model.Expression;
 import org.eclipse.bpel.model.ForEach;
-import org.eclipse.bpel.ui.IBPELUIConstants;
-import org.eclipse.bpel.ui.Messages;
 import org.eclipse.bpel.ui.expressions.IEditorConstants;
+import org.eclipse.bpel.ui.util.MultiObjectAdapter;
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.swt.widgets.Composite;
-
 
 /**
  * Details section for the CompletionCondition of an forEach activity (a unsignedInteger expression).
  */
 public class ForEachCompletionSection extends ExpressionSection {
 
+	/*
+	 * (non-Javadoc)
+	 * @see org.eclipse.bpel.ui.properties.ExpressionSection
+	 * #getExpressionType()
+	 */
 	@Override
-	protected String getExpressionType() { 
-		return IEditorConstants.ET_UNSIGNED_INT; 
-	}	
-	
+	protected String getExpressionType() {
+		return IEditorConstants.ET_UNSIGNED_INT;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see org.eclipse.bpel.ui.properties.ExpressionSection
+	 * #addAllAdapters()
+	 */
 	@Override
 	protected void addAllAdapters() {
-		super.addAllAdapters();		
-		fAdapters[0].addToObject( getExpressionTarget() );		
+		super.addAllAdapters();
+//		this.fAdapters[0].addToObject( getExpressionTarget() );
 	}
-	
-	@Override
-	protected Composite createNoEditorWidgets(Composite composite) {
-		
-		return createNoEditorWidgetsCreateComposite(composite,			
-				Messages.ForEachCompletionConditionSection_No_condition_specified_1 + NL + NL +
-				Messages.ForEachCompletionConditionSection_Optional_condition_text_2 ,
-				
-				Messages.ForEachCompletionConditionSection_Create_a_New_Condition_3);			
-	}
-	
+
+	/*
+	 * (non-Javadoc)
+	 * @see org.eclipse.bpel.ui.properties.ExpressionSection
+	 * #getStructuralFeature(org.eclipse.emf.ecore.EObject)
+	 */
 	@Override
 	protected EStructuralFeature getStructuralFeature (EObject object) {
-		if (object instanceof ForEach) {
-			return BPELPackage.eINSTANCE.getCompletionCondition_Branches() ;
-		}
-		return super.getStructuralFeature(object);
+		return object instanceof ForEach ? BPELPackage.eINSTANCE.getCompletionCondition_Branches() : null;
 	}
-	
-	
+
+	/*
+	 * (non-Javadoc)
+	 * @see org.eclipse.bpel.ui.properties.ExpressionSection
+	 * #getExpressionTarget()
+	 */
 	@Override
 	protected EObject getExpressionTarget() {
-		
+
 		EObject obj = getInput();
-		
-		if (obj instanceof ForEach) {
-			
+		if( obj instanceof ForEach ) {
+
 			ForEach _for = (ForEach) obj;
 			CompletionCondition target = _for.getCompletionCondition();
 			if (target == null) {
 				target = BPELFactory.eINSTANCE.createCompletionCondition();
 				_for.setCompletionCondition( target );
 			}
+
 			return target;
-			
 		}
-		
+
 		return super.getExpressionTarget();
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see org.eclipse.bpel.ui.properties.ExpressionSection
+	 * #getExpression4Target(org.eclipse.bpel.model.Expression)
+	 */
 	@Override
 	protected Expression getExpression4Target ( Expression expression ) {
-		
+
 		if (expression instanceof Branches) {
 			return expression;
 		}
-		
-		Branches branches = BPELFactory.eINSTANCE.createBranches();
-		
-		branches.setBody( expression.getBody() );
-		branches.setExpressionLanguage( expression.getExpressionLanguage() );
-		
-		return branches;
-	}
-	
 
-	@Override
-	protected boolean isValidClientUseType(String useType) {
-		return IBPELUIConstants.USE_TYPE_CONDITION.equals(useType);
+		Branches branches = BPELFactory.eINSTANCE.createBranches();
+		branches.setBody( expression.getBody());
+		branches.setExpressionLanguage( expression.getExpressionLanguage());
+
+		return branches;
 	}
 }

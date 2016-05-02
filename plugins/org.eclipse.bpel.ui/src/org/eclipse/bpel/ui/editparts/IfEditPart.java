@@ -14,6 +14,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import org.eclipse.bpel.model.Else;
+import org.eclipse.bpel.model.If;
 import org.eclipse.bpel.ui.editparts.borders.PickBorder;
 import org.eclipse.bpel.ui.editparts.policies.BPELOrderedLayoutEditPolicy;
 import org.eclipse.bpel.ui.figures.CenteredConnectionAnchor;
@@ -302,7 +304,21 @@ public class IfEditPart extends PickEditPart {
 	protected void addChildVisual(EditPart childEditPart, int index) {
 		if (childEditPart instanceof ElseIfEditPart) {
 			// add the "nodes" to the IfEditPart
-			super.addChildVisual(childEditPart, -1);
+			Object childObject = childEditPart.getModel();
+			if (childObject instanceof Else) {
+				// Else object visuals always go on the end
+				index = -1;
+			}
+			else if (childObject instanceof If) {
+				// If object visuals always go at beginning
+				index = 0;
+			}
+			else {
+				// must be an ElseIf - add the visual at the same index as it appears in model
+				If thisObject = (If)getModel();
+				index = thisObject.getElseIf().indexOf(childObject) + 1;
+			}
+			super.addChildVisual(childEditPart, index);
 		} else {
 			// add everything else to the IfNodeEditPart
 			getIfNodeEditPart().addChildVisual(childEditPart, index);

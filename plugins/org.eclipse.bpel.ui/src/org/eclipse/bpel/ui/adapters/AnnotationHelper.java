@@ -17,8 +17,6 @@ import org.eclipse.bpel.model.PartnerLink;
 import org.eclipse.bpel.model.Variable;
 import org.eclipse.bpel.model.partnerlinktype.PartnerLinkType;
 import org.eclipse.bpel.model.partnerlinktype.Role;
-import org.eclipse.bpel.ui.extensions.BPELUIRegistry;
-import org.eclipse.bpel.ui.extensions.ExpressionEditorDescriptor;
 import org.eclipse.wst.wsdl.Message;
 import org.eclipse.wst.wsdl.Operation;
 import org.eclipse.xsd.XSDTypeDefinition;
@@ -52,7 +50,7 @@ public class AnnotationHelper {
 		}
 		return var.getName();
 	}
-	
+
 	public static String getAnnotation(PartnerLink pLink) {
 		if (pLink == null || pLink.getName() == null) {
 			return null;
@@ -63,7 +61,7 @@ public class AnnotationHelper {
 		}
 		return pLink.getName();
 	}
-	
+
 	public static String getAnnotation(Role role) {
 		if (role == null) {
 			return Messages.NONE;
@@ -77,25 +75,12 @@ public class AnnotationHelper {
 		}
 		return operation.getName();
 	}
-	
+
 	public static String getAnnotation(Expression expression) {
 		if (expression == null) {
 			return null;
 		}
-		return (expression.getBody() instanceof String) ? 
+		return (expression.getBody() instanceof String) ?
 				(String)expression.getBody() : null;
-	}
-
-	public static String getExpressionLanguage(Expression expression) {
-		if (expression == null) {
-			return null;
-		}
-		String language = expression.getExpressionLanguage();
-		ExpressionEditorDescriptor descriptor = 
-			BPELUIRegistry.getInstance().getExpressionEditorDescriptor(language);
-		if (descriptor != null) {
-			language = descriptor.getLabel();
-		}
-		return language;
 	}
 }

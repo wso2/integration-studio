@@ -17,6 +17,8 @@ import org.eclipse.bpel.model.CompletionCondition;
 import org.eclipse.bpel.model.Expression;
 import org.eclipse.bpel.model.ForEach;
 import org.eclipse.bpel.ui.expressions.IEditorConstants;
+import org.eclipse.bpel.ui.util.MultiObjectAdapter;
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 
@@ -43,7 +45,7 @@ public class ForEachCompletionSection extends ExpressionSection {
 	@Override
 	protected void addAllAdapters() {
 		super.addAllAdapters();
-		this.fAdapters[0].addToObject( getExpressionTarget() );
+		//this.fAdapters[0].addToObject( getExpressionTarget() );
 	}
 
 	/*

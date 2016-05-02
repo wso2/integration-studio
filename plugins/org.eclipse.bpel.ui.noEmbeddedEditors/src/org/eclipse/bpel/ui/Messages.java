@@ -78,6 +78,10 @@ public final class Messages extends NLS {
 	public static String NamespaceMappingDialog_9;
 	public static String OperationAdapter_0;
 	public static String OutputMessageAdapter_0;
+	public static String PaletteFactory_Actions;
+    public static String PaletteFactory_Control;
+    public static String PaletteFactory_Empty;
+    public static String PaletteFactory_Faults;
 	public static String PartnerLinkAdapter_0;
 	public static String PartnerLinkImplSection_0;
 	public static String PartnerLinkImplSection_1;

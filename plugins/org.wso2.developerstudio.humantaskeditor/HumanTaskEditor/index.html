@@ -1,0 +1,507 @@
+<html xmlns:ns2="http://wso2.org/ht/schema/renderings/" xmlns:ht="http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Untitled Document</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link href="css/main.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/jquery-ui.css" rel="stylesheet">
+    <style>
+        #inputmappingTable input[type="text"] {
+            border: 0;
+        }
+        #inputmappingTable input[type="text"]:focus {
+            outline: none;
+        }
+        #outputmappingTable input[type="text"] {
+            border: 0;
+        }
+        #outputmappingTable input[type="text"]:focus {
+            outline: none;
+        }
+        input[type="text"] {
+            width: 300px;
+        }
+    </style>
+</head>
+
+<body class="twoColFixLtHdr">
+    <div id="wrapper">
+
+        <div id="page-content-wrapper">
+            <input type="hidden" id="nooftasks" value="1" />
+            <div id="tabs">
+                <ul id="tabNames">
+                </ul>
+                <div class='taskDiv' id="genericForm">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div id="container">
+                                    <table border="0">
+                                        <tr>
+                                            <td valign="top">
+                                                <div id="sidebar1">
+
+                                                </div>
+                                            </td>
+                                            <td valign="top">
+                                                <div id="mainContent">
+                                                    <!-- <h1 id="taskTitle" class="menu-toggle">Not Approve</h1> -->
+
+                                                    <div id="tasks">
+                                                        <div class="task_view" id="task_ApproveClaim">
+                                                            <div>
+                                                                <h3 class="sectionHeader">Task Properties</h3>
+                                                                <hr>
+                                                                <div class="taskSection">
+                                                                    <br>
+                                                                    <table width="100%" border="0" cellspacing="5" cellpadding="5">
+                                                                        <tr class="header">
+                                                                            <td width="30%">Task Name</td>
+                                                                            <td>
+                                                                                <label>
+                                                                                    <input width="100%" name="TaskName" type="text" id="taskName" />
+                                                                                </label>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td width="30%">Documentation</td>
+                                                                            <td>
+                                                                                <label>
+                                                                                    <textarea name="Documentation" id="taskDocumentation" cols="45" rows="5">
+                                                                                    </textarea>
+                                                                                </label>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td width="30%">Priority</td>
+                                                                            <td>
+                                                                                <!-- <label><select name="Priority" id="taskPriority_option"><option value="0">highest - 0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">medium - 5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">lowest - 10</option><option value="xpath" selected>Xpath</option></select></label><label>
+																<br>
+																Xpath -->
+                                                                                <input type="text" name="textfield13" id="taskPriority">
+                                                                                </label>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </table>
+                                                                    <br>
+                                                                    <br>
+                                                                </div>
+                                                            </div>
+                                                            <div>
+                                                                <h3 class="sectionHeader">Task Input </h3>
+                                                                <hr>
+                                                                <div class="taskSection">
+                                                                    <br>
+                                                                    <table width="100%" border="0" cellspacing="5" cellpadding="5">
+                                                                        <tr>
+                                                                            <td width="30%">Operation</td>
+                                                                            <td>
+                                                                                <input name="textfield2" type="text" id="taskOperation">
+                                                                            </td>
+                                                                        </tr>
+                                                                    </table>
+                                                                    <br>
+                                                                    <p>
+                                                                        Input Data mapping
+                                                                        <input type="hidden" id="taskMappingNo" name="taskMappingNo" value="0">
+                                                                        <input type="button" class="btn btn-primary" name="button3" id="addInput" value="Add Input">
+                                                                    </p>
+                                                                    <table id="inputmappingTable" class="table table-hover" width="100%" border="0" cellspacing="5" cellpadding="5">
+
+                                                                        <!-- <tr id="inputmapping1">
+																<td width="25%"><input name="textfield6" type="text" id="taskInputMappingElementName" value="ApproveClaimResult"></td><td width="25%"><input name="textfield7" type="text" id="taskInputMappingDisplayName" value="ApproveClaimResult"></td><td width="10%"><input name="textfield8" type="text" id="taskInputMappingOrder" value="ApproveClaimResult"></td><td width="20%"><label><select id="taskInputMappingType" name="select3" id="select3"><option value="string" selected>string</option><option value="int">int</option><option value="double">double</option><option value="float">float</option><option value="boolean">boolean</option><option value="organizationalEntity">organizationalEntity</option></select></label></td><td width="10%"><label><select name="taskInputMappingHide" id="select2"><option value="yes">yes</option><option value="no">no</option></select></label></td><td><label><input type="button" name="deleteButton" id="deleteButton" value="Delete"></label></td>
+															</tr> -->
+                                                                    </table>
+                                                                    <br>
+                                                                    <br>
+                                                                </div>
+                                                            </div>
+                                                            <div>
+                                                                <h3 class="sectionHeader">Task Output </h3>
+                                                                <hr>
+                                                                <div class="taskSection">
+                                                                    <br>
+                                                                    <table width="100%" border="0" cellspacing="5" cellpadding="5">
+                                                                        <tr class="header">
+                                                                            <td width="30%">Callback Service Name</td>
+                                                                            <td>
+                                                                                <input name="textfield3" type="text" id="taskCallbackServiceName" value="ApproveClaimResult">
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>Callback Operation Name</td>
+                                                                            <td>
+                                                                                <input name="textfield4" type="text" id="taskCallbackOperationName" value="ApproveClaimResult">
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>Callback Service URL</td>
+                                                                            <td>
+                                                                                <input name="textfield5" type="text" id="taskCallbackServiceURL" value="ApproveClaimResult">
+                                                                            </td>
+                                                                        </tr>
+                                                                    </table>
+                                                                    <br>
+                                                                    <br>
+                                                                    <p>
+                                                                        Output Data mapping
+                                                                        <input type="submit" name="button" class="btn btn-primary" id="addOutput" value="Add Output">
+                                                                        <input type="hidden" id="taskOutputMappingNo" name="taskOutputMappingNo" value="0">
+                                                                        <br>
+                                                                    </p>
+                                                                    <table id="outputmappingTable" class="table table-hover" width="100%" border="0" cellspacing="5" cellpadding="5">
+                                                                        <!-- 	<td width="25%"><input name="textfield9" type="text" id="taskOutputMappingElementName" value="ApproveClaimResult"></td><td width="25%"><input name="taskOutputMappingDisplayName" type="text" id="textfield10" value="ApproveClaimResult"></td><td width="10%"><input name="textfield11" type="text" id="taskOutputMappingOrder" value="ApproveClaimResult"></td><td width="20%"><label><select name="select4" id="select4"><option value="string" selected>string</option><option value="int">int</option><option value="double">double</option><option value="float">float</option><option value="boolean">boolean</option><option value="list">list</option></select></label></td><td width="20%"><input name="textfield12" type="text" id="taskOutputMappingDefaultValues" value="ApproveClaimResult"></td><td><label><input type="submit" name="button2" id="button2" value="Delete"></label></td> -->
+
+                                                                    </table>
+                                                                    <br>
+                                                                    <br>
+                                                                </div>
+                                                            </div>
+                                                            <div>
+                                                                <h3 class="sectionHeader">Presentation Elements</h3>
+                                                                <hr>
+                                                                <div class="taskSection">
+                                                                    <br>
+                                                                    <table width="100%" border="0" cellspacing="5" cellpadding="5">
+                                                                        <tr class="header">
+                                                                            <td width="30%">Display Name</td>
+                                                                            <td>
+                                                                                <label>
+                                                                                    <input name="textfield" type="text" id="presentationElementDisplayName">
+                                                                                </label>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td width="30%">Display Subject</td>
+                                                                            <td>
+                                                                                <label>
+                                                                                    <input name="textfield" type="text" id="presentationElementDisplaySubject">
+                                                                                </label>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td width="30%">Description</td>
+                                                                            <td>
+                                                                                <label>
+                                                                                    <textarea name="textarea" id="presentationElementDescription" cols="45" rows="5"></textarea>
+                                                                                </label>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </table>
+                                                                    <br>
+                                                                    <br>
+                                                                </div>
+                                                            </div>
+                                                            <div>
+                                                                <h3 class="sectionHeader">People Assignment </h3>
+                                                                <hr>
+                                                                <div class="taskSection">
+                                                                    <br>
+                                                                    <table width="100%" border="0" class="table" cellcellspacing="5" cellpadding="5">
+                                                                        <tr class="header">
+                                                                            <td width="23%">Potential Owners</td>
+                                                                            <td width="77%">
+                                                                                <table width="100%" border="0">
+                                                                                    <div id="potentialOwners">
+                                                                                        <tr>
+                                                                                            <td width="198">
+                                                                                                <label>
+                                                                                                    <input class="peopleassignmentradio" name="potentialOwners" type="radio" id="potentialOwnersNA" value="na" checked> Not Defined</input>
+                                                                                                </label>
+                                                                                            </td>
+                                                                                            <td width="524"></td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <td>
+                                                                                                <label>
+                                                                                                    <input type="radio" class="peopleassignmentradio" name="potentialOwners" value="potentialOwnersRole" id="PeopleAssignmentRole"> Role
+                                                                                                    </input>
+                                                                                                </label>
+                                                                                            </td>
+                                                                                            <td>
+                                                                                                <input type="text" name="textfield14" id="potentialOwnersRole">
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <td>
+                                                                                                <label>
+                                                                                                    <input type="radio" class="peopleassignmentradio" name="potentialOwners" value="potentialOwnersLiteral" id="RadioGroup1_2"> Literal
+                                                                                                    </input>
+                                                                                                </label>
+                                                                                            </td>
+                                                                                            <td>
+                                                                                                
+                                                                                                <input type="text" name="textfield15" id="potentialOwnersLiteralUsers" placeholder="Users (Comma Seprated)">
+                                                                                                <br>
+                                                                                                <input type="text" name="textfield16" id="potentialOwnersLiteralGroups" placeholder="Groups (Comma Seprated)">
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <td>
+                                                                                                <label>
+                                                                                                    <input type="radio" class="peopleassignmentradio" name="potentialOwners" value="potentialOwnersExpression" id="RadioGroup1_3"> Expression
+                                                                                                    </input>
+                                                                                                </label>
+                                                                                            </td>
+                                                                                            <td>
+                                                                                                <input type="text" name="textfield22" id="potentialOwnersExpression">
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                    </div>
+                                                                                </table>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>Business Administrators</td>
+                                                                            <td>
+                                                                                <table width="100%" border="0">
+                                                                                    <div id="businessAdministrators">
+                                                                                        <tr>
+                                                                                            <td width="198">
+                                                                                                <label>
+                                                                                                    <input class="peopleassignmentradio" name="businessAdministrators" type="radio" id="businessAdministratorsNA" value="na" checked> Not Defined</input>
+                                                                                                </label>
+                                                                                            </td>
+                                                                                            <td width="524"></td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <td>
+                                                                                                <label>
+                                                                                                    <input type="radio" class="peopleassignmentradio" name="businessAdministrators" value="businessAdministratorsRole" id="RadioGroup1_5"> Role
+                                                                                                    </input>
+                                                                                                </label>
+                                                                                            </td>
+                                                                                            <td>
+                                                                                                <input type="text" name="textfield17" id="businessAdministratorsRole">
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <td>
+                                                                                                <label>
+                                                                                                    <input type="radio" class="peopleassignmentradio" name="businessAdministrators" value="businessAdministratorsLiteral" id="businessAdministratorsLiteral"> Literal
+                                                                                                    </input>
+                                                                                                </label>
+                                                                                            </td>
+                                                                                            <td>
+                                                                                                <input type="text" name="textfield17" id="businessAdministratorsLiteralUsers" placeholder="Users (Comma Seprated)">
+                                                                                                <br>
+                                                                                                <input type="text" name="textfield17" id="businessAdministratorsLiteralGroups" placeholder="Groups (Comma Seprated)">
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <td>
+                                                                                                <label>
+                                                                                                    <input type="radio" class="peopleassignmentradio" name="businessAdministrators" value="businessAdministratorsRoleExpression" id="RadioGroup1_7"> Expression
+                                                                                                    </input>
+                                                                                                </label>
+                                                                                            </td>
+                                                                                            <td>
+                                                                                                <input type="text" name="textfield23" id="businessAdministratorsExpression">
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                    </div>
+                                                                                </table>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>Excluded Owners</td>
+                                                                            <td>
+                                                                                <table width="100%" border="0">
+                                                                                    <div id="excludedOwners">
+                                                                                        <tr>
+                                                                                            <td width="198">
+                                                                                                <label>
+                                                                                                    <input name="excludedOwners" class="peopleassignmentradio" type="radio" id="excludedOwnersNA" value="na" checked> Not Defined</input>
+                                                                                                </label>
+                                                                                            </td>
+                                                                                            <td width="524"></td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <td>
+                                                                                                <label>
+                                                                                                    <input type="radio" class="peopleassignmentradio" name="excludedOwners" value="excludedOwnersRole" id="RadioGroup1_9"> Role
+                                                                                                    </input>
+                                                                                                </label>
+                                                                                            </td>
+                                                                                            <td>
+                                                                                                <input type="text" name="textfield18" id="excludedOwnersRole">
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <td>
+                                                                                                <label>
+                                                                                                    <input type="radio" class="peopleassignmentradio" name="excludedOwners" value="excludedOwnersLiteral" id="RadioGroup1_10"> Literal
+                                                                                                    </input>
+                                                                                                </label>
+                                                                                            </td>
+                                                                                            <td>
+                                                                                                <input type="text" name="textfield18" id="excludedOwnersLiteralUsers" placeholder="Users (Comma Seprated)">
+                                                                                                <br>
+                                                                                                <input type="text" name="textfield18" id="excludedOwnersLiteralGroups" placeholder="Groups (Comma Seprated)">
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <td>
+                                                                                                <label>
+                                                                                                    <input type="radio" class="peopleassignmentradio" name="excludedOwners" value="excludedOwnersExpression" id="RadioGroup1_11"> Expression
+                                                                                                    </input>
+                                                                                                </label>
+                                                                                            </td>
+                                                                                            <td>
+                                                                                                <input type="text" name="textfield24" id="excludedOwnersExpression">
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                    </div>
+                                                                                </table>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>Task Initiator</td>
+                                                                            <td>
+                                                                                <table width="100%" border="0">
+                                                                                    <div id="excludedOwners">
+                                                                                        <tr>
+                                                                                            <td width="198">
+                                                                                                <label>
+                                                                                                    <input name="taskInitiator" class="peopleassignmentradio" type="radio" id="taskInitiatorNA" value="na" checked> Not Defined</input>
+                                                                                                </label>
+                                                                                            </td>
+                                                                                            <td width="524"></td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <td>
+                                                                                                <label>
+                                                                                                    <input type="radio" class="peopleassignmentradio" name="taskInitiator" value="taskInitiatorRole" id="RadioGroup1_13"> Role
+                                                                                                    </input>
+                                                                                                </label>
+                                                                                            </td>
+                                                                                            <td>
+                                                                                                <input type="text" name="textfield19" id="taskInitiatorRole">
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <td>
+                                                                                                <label>
+                                                                                                    <input type="radio" class="peopleassignmentradio" name="taskInitiator" value="taskInitiatorLiteral" id="RadioGroup1_14"> Literal
+                                                                                                    </input>
+                                                                                                </label>
+                                                                                            </td>
+                                                                                            <td>
+                                                                                               <input type="text" name="textfield19" id="taskInitiatorLiteralUsers" placeholder="Users (Comma Seprated)" >
+                                                                                                <br>
+                                                                                                <input type="text" name="textfield19" id="taskInitiatorLiteralGroups" placeholder="Groups (Comma Seprated)">
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <td>
+                                                                                                <label>
+                                                                                                    <input type="radio" class="peopleassignmentradio" name="taskInitiator" value="taskInitiatorExpression" id="RadioGroup1_15"> Expression
+                                                                                                    </input>
+                                                                                                </label>
+                                                                                            </td>
+                                                                                            <td>
+                                                                                                <input type="text" name="textfield25" id="taskInitiatorExpression">
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                    </div>
+                                                                                </table>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>Task Stakeholders</td>
+                                                                            <td>
+                                                                                <table width="100%" border="0">
+                                                                                    <div id="taskStakeholders">
+                                                                                        <tr>
+                                                                                            <td width="198">
+                                                                                                <label>
+                                                                                                    <input class="peopleassignmentradio" name="taskStakeholders" type="radio" id="taskStakeholdersNA" value="na" checked> Not Defined</input>
+                                                                                                </label>
+                                                                                            </td>
+                                                                                            <td width="524"></td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <td>
+                                                                                                <label>
+                                                                                                    <input class="peopleassignmentradio" type="radio" name="taskStakeholders" value="taskStakeholdersRole" id="RadioGroup1_17"> Role
+                                                                                                    </input>
+                                                                                                </label>
+                                                                                            </td>
+                                                                                            <td>
+                                                                                                <input type="text" name="textfield20" id="taskStakeholdersRole">
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <td>
+                                                                                                <label>
+                                                                                                    <input class="peopleassignmentradio" type="radio" name="taskStakeholders" value="taskStakeholdersLiteral" id="RadioGroup1_18"> Literal
+                                                                                                    </input>
+                                                                                                </label>
+                                                                                            </td>
+                                                                                            <td>
+                                                                                                <input type="text" name="textfield20" id="taskStakeholdersLiteralUsers" placeholder="Users (Comma Seprated)">
+                                                                                                <br>
+                                                                                                <input type="text" name="textfield20" id="taskStakeholdersLiteralGroups"  placeholder="Groups (Comma Seprated)">
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <td>
+                                                                                                <label>
+                                                                                                    <input class="peopleassignmentradio" type="radio" name="taskStakeholders" value="taskStakeholdersExpression" id="RadioGroup1_19"> Expression
+                                                                                                    </input>
+                                                                                                </label>
+                                                                                            </td>
+                                                                                            <td>
+                                                                                                <input type="text" name="textfield21" id="taskStakeholdersExpression">
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                    </div>
+                                                                                </table>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </table>
+                                                                </div>
+                                                                <br>
+                                                                <br>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <br class="clearfloat">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+
+</body>
+ <script src="js/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="js/jquery-ui.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/WSDLOperations.js"></script>
+<script src="hteditor.js"></script>
+<script>
+    //$( "#tabs" ).tabs();
+
+
+    /*$("input[class=peopleassignmentradio]:radio").change(function () {
+    	$('#potentialOwners input:text').attr('disabled', 'disabled');
+    	$('#'+$(this).val()+':input').removeAttr('disabled');
+    	alert(this.id);
+     })*/
+</script>
+
+</html>

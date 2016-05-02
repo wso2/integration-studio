@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+	<extension point="org.eclipse.core.contenttype.contentTypes">
+   <content-type base-type="org.eclipse.core.runtime.xml"
+                 file-extensions="ht"
+                 id="org.wso2.developerstudio.humantaskeditor"
+                 name="Human Task File"
+                 priority="normal">
+      <describer class="org.eclipse.core.runtime.content
+                        .XMLRootElementContentDescriber">
+         <parameter name="element"
+                    value="Human Task">
+         </parameter>
+      </describer>
+   </content-type>
+</extension>
+   <extension
+         point="org.eclipse.ui.editors">
+      <editor
+            name="Human Task Editor"
+            extensions="ht"
+            icon="icons/sample.gif"
+            contributorClass="org.wso2.developerstudio.humantaskeditor.editors.HumanTaskMultiPageEditorContributor"
+            class="org.wso2.developerstudio.humantaskeditor.editors.HumanTaskMultiPageEditor"
+            id="org.wso2.developerstudio.humantaskeditor.editors.HumanTaskMultiPageEditor">
+      </editor>
+   </extension>
+   <extension
+         point="org.eclipse.ui.newWizards">
+      <category
+            name="Human Task"
+            id="org.wso2.developerstudio.humantaskeditor">
+      </category>
+      <wizard
+            name="Human Task File"
+            icon="icons/sample.gif"
+            category="org.wso2.developerstudio.humantaskeditor"
+            class="org.wso2.developerstudio.humantaskeditor.wizards.HumanTaskWizard"
+            id="org.wso2.developerstudio.humantaskeditor.wizards.HumanTaskWizard">
+      </wizard>
+      <wizard
+            name="Human Task Project"
+            icon="icons/sample.gif"
+            category="org.wso2.developerstudio.humantaskeditor"
+            class="org.wso2.developerstudio.humantaskeditor.wizards.HumanTaskProjectWizard"
+            id="org.wso2.developerstudio.humantaskeditor.wizards.HumanTaskProjectWizard">
+      </wizard>
+   </extension>
+	<extension
+      point="org.eclipse.core.resources.natures"
+      id="humantasknature"
+      name="Human Task Nature">
+      <runtime>
+         <run class="org.wso2.developerstudio.humantaskeditor.wizards.HumanTaskNature">
+         </run>
+      </runtime>
+   </extension>
+</plugin>

@@ -11,6 +11,7 @@
 package org.eclipse.bpel.ui.properties;
 
 import org.eclipse.bpel.model.Activity;
+import org.eclipse.bpel.model.BPELFactory;
 import org.eclipse.bpel.model.BPELPackage;
 import org.eclipse.bpel.model.Targets;
 import org.eclipse.bpel.ui.expressions.IEditorConstants;
@@ -23,69 +24,72 @@ import org.eclipse.emf.ecore.EStructuralFeature;
  */
 public class JoinConditionSection extends ExpressionSection {
 
-	/*
-	 * (non-Javadoc)
-	 * @see org.eclipse.bpel.ui.properties.ExpressionSection
-	 * #addAllAdapters()
-	 */
-	@Override
-	protected void addAllAdapters() {
-		super.addAllAdapters();
+    /*
+     * (non-Javadoc)
+     * 
+     * @see org.eclipse.bpel.ui.properties.ExpressionSection
+     * #getExpressionType()
+     */
+    @Override
+    protected String getExpressionType() {
+        return IEditorConstants.ET_JOIN;
+    }
 
-		Activity activity = getModel();
-		Targets targets = activity.getTargets();
-		if( targets != null )
-			this.fAdapters[0].addToObject( targets );
-	}
+    /*
+     * (non-Javadoc)
+     * 
+     * @see org.eclipse.bpel.ui.properties.ExpressionSection
+     * #getExpressionTarget()
+     */
+    @Override
+    protected EObject getExpressionTarget() {
+        Activity activity = getModel();
+        return activity.getTargets();
+    }
 
-	/*
-	 * (non-Javadoc)
-	 * @see org.eclipse.bpel.ui.properties.ExpressionSection
-	 * #getExpressionType()
-	 */
-	@Override
-	protected String getExpressionType() {
-		return IEditorConstants.ET_JOIN;
-	}
+    @Override
+    protected void saveExpressionToModel() {
 
-	/*
-	 * (non-Javadoc)
-	 * @see org.eclipse.bpel.ui.properties.ExpressionSection
-	 * #getExpressionTarget()
-	 */
-	@Override
-	protected EObject getExpressionTarget() {
-		Activity activity = getModel();
-		return activity.getTargets();
-	}
+        if (this.modelUpdate.get())
+            return;
 
-	/*
-	 * (non-Javadoc)
-	 * @see org.eclipse.bpel.ui.properties.ExpressionSection
-	 * #getStructuralFeature(org.eclipse.emf.ecore.EObject)
-	 */
-	@Override
-	protected EStructuralFeature getStructuralFeature (EObject object) {
-		return object instanceof Activity ? BPELPackage.eINSTANCE.getTargets_JoinCondition() : null;
-	}
+        if (getExpressionTarget() == null) {
+            Targets targets = BPELFactory.eINSTANCE.createTargets();
+            Activity activity = getModel();
+            activity.setTargets(targets);
+        }
+        super.saveExpressionToModel();
+    }
 
-	/*
-	 * (non-Javadoc)
-	 * @see org.eclipse.bpel.ui.properties.BPELPropertySection
-	 * #getMarkers(java.lang.Object)
-	 */
-	@Override
-	protected IMarker[] getMarkers (Object input) {
+    /*
+     * (non-Javadoc)
+     * 
+     * @see org.eclipse.bpel.ui.properties.ExpressionSection
+     * #getStructuralFeature(org.eclipse.emf.ecore.EObject)
+     */
+    @Override
+    protected EStructuralFeature getStructuralFeature(EObject object) {
+        return object instanceof Activity ? BPELPackage.eINSTANCE.getTargets_JoinCondition() : null;
+    }
 
-		IMarker[] result = EMPTY_MARKERS;
-		if( input instanceof Activity ) {
-			Activity activity = (Activity) input;
-			Targets targets = activity.getTargets();
-			if( targets != null )
-				result = super.getMarkers( targets.getJoinCondition());
-		}
+    /*
+     * (non-Javadoc)
+     * 
+     * @see org.eclipse.bpel.ui.properties.BPELPropertySection
+     * #getMarkers(java.lang.Object)
+     */
+    @Override
+    protected IMarker[] getMarkers(Object input) {
 
-		return result;
-	}
+        IMarker[] result = EMPTY_MARKERS;
+        if (input instanceof Activity) {
+            Activity activity = (Activity) input;
+            Targets targets = activity.getTargets();
+            if (targets != null)
+                result = super.getMarkers(targets.getJoinCondition());
+        }
+
+        return result;
+    }
 
 }

@@ -108,7 +108,7 @@ public class InvokeVariableSection extends BPELPropertySection {
 						ModelHelper.OUTGOING));
 			}
 			// Null out the fromParts and toParts
-			ccmd.add(new AutoUndoCommand(getInput()) {
+			ccmd.add(new AutoUndoCommand((EObject)getInput()) {
 				@Override
 				public void doExecute() {
 					try {

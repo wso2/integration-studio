@@ -16,45 +16,37 @@ import org.eclipse.bpel.ui.Messages;
 import org.eclipse.bpel.ui.expressions.IEditorConstants;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.swt.widgets.Composite;
-
 
 /**
- * @author IBM
  * @author Michal Chmielewski (michal.chmielewski@oracle.com)
- * @date Jul 13, 2007
- *
  */
 public class ForEachStartCounterValueSection extends ExpressionSection {
 
-	@Override
-	protected String getExpressionType() { 
-		return IEditorConstants.ET_UNSIGNED_INT; 
-	}	
-	
-	@Override
-	protected Composite createNoEditorWidgets(Composite composite) {
-		
-		return super.createNoEditorWidgetsCreateComposite(composite,			
-				Messages.ForEachStartCounterValuesSection_No_Expression_specified_1 + NL + NL +
-				Messages.ForEachCounterValuesSection_Mandatory_Expression_2 ,
-				
-				Messages.ForEachCounterValuesSection_Create_a_New_Expression_3);
+	/**
+	 * Constructor.
+	 */
+	public ForEachStartCounterValueSection() {
+		super();
+		this.title = Messages.ForEachStartCounterValuesSection_TITLE_3;
 	}
-	
+
+	/*
+	 * (non-Javadoc)
+	 * @see org.eclipse.bpel.ui.properties.ExpressionSection
+	 * #getExpressionType()
+	 */
+	@Override
+	protected String getExpressionType() {
+		return IEditorConstants.ET_UNSIGNED_INT;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see org.eclipse.bpel.ui.properties.ExpressionSection
+	 * #getStructuralFeature(org.eclipse.emf.ecore.EObject)
+	 */
 	@Override
 	protected EStructuralFeature getStructuralFeature(EObject object) {
-		if (object instanceof ForEach) {
-			return BPELPackage.eINSTANCE.getForEach_StartCounterValue();
-		}
-		return super.getStructuralFeature(object);
+		return object instanceof ForEach ? BPELPackage.eINSTANCE.getForEach_StartCounterValue() : null;
 	}
-	
-	@Override
-	protected void createClient(Composite parent) {
-		this.title = Messages.ForEachStartCounterValuesSection_TITLE_3;
-		super.createClient(parent);
-	}
-	
-	
 }

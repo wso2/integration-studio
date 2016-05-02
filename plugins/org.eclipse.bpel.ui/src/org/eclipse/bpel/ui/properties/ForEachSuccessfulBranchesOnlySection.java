@@ -98,7 +98,13 @@ public class ForEachSuccessfulBranchesOnlySection extends BPELPropertySection {
 		
 		ForEach input = getModel();
 		CompletionCondition completionCondition = input.getCompletionCondition();
-		if (completionCondition == null) {
+		Object body = null;
+		if (completionCondition!=null && completionCondition.getBranches()!=null) {
+			body = completionCondition.getBranches().getBody();
+			if (body instanceof String && ((String)body).isEmpty())
+				body = null;
+		}
+		if (body == null ) {
 			
 			fSuccessfulBranchesOnlyCheckbox.setEnabled(false);
 			fSuccessfulBranchesOnlyCheckbox.setSelection(false);

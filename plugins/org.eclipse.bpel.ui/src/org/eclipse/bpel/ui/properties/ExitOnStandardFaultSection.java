@@ -30,65 +30,59 @@ import org.eclipse.ui.PlatformUI;
  * ExitOnStandardFaultSection provides viewing and editing of the
  * exitOnStandardFault attribute of Process elements.
  */
-
 @SuppressWarnings({ "boxing", "nls" })
-
 public class ExitOnStandardFaultSection extends BPELPropertySection {
-	
-	
+
+
 	protected Button yesRadio, noRadio ;
 
 	EditController fRadioController;
-	
+
 	protected void createWidgets(Composite composite) {
 		FlatFormData data;
-		
-		Label suppressLabel = fWidgetFactory.createLabel(composite, Messages.ExitOnStandardFault_1); 
-		
-		yesRadio = fWidgetFactory.createButton(composite, Messages.ExitOnStandardFault_Yes_2, SWT.RADIO); 
+
+		Label suppressLabel = this.fWidgetFactory.createLabel(composite, Messages.ExitOnStandardFault_1);
+
+		this.yesRadio = this.fWidgetFactory.createButton(composite, Messages.ExitOnStandardFault_Yes_2, SWT.RADIO);
 		data = new FlatFormData();
 		data.left = new FlatFormAttachment(0, BPELUtil.calculateLabelWidth(suppressLabel, STANDARD_LABEL_WIDTH_LRG));
 		data.top = new FlatFormAttachment(0, 0);
-		yesRadio.setLayoutData(data);	
-		yesRadio.setData(RadioButtonIValue.VALUE, Boolean.TRUE);
+		this.yesRadio.setLayoutData(data);
+		this.yesRadio.setData(RadioButtonIValue.VALUE, Boolean.TRUE);
 
-		noRadio = fWidgetFactory.createButton(composite, Messages.ExitOnStandardFault_No_3, SWT.RADIO); 
+		this.noRadio = this.fWidgetFactory.createButton(composite, Messages.ExitOnStandardFault_No_3, SWT.RADIO);
 		data = new FlatFormData();
-		data.left = new FlatFormAttachment(yesRadio, IDetailsAreaConstants.HSPACE);
+		data.left = new FlatFormAttachment(this.yesRadio, IDetailsAreaConstants.HSPACE);
 		data.top = new FlatFormAttachment(0, 0);
-		noRadio.setLayoutData(data);
-		noRadio.setData(RadioButtonIValue.VALUE, Boolean.FALSE);
+		this.noRadio.setLayoutData(data);
+		this.noRadio.setData(RadioButtonIValue.VALUE, Boolean.FALSE);
 
 		data = new FlatFormData();
 		data.left = new FlatFormAttachment(0, 0);
-		data.right = new FlatFormAttachment(yesRadio, -IDetailsAreaConstants.HSPACE);
-		data.top = new FlatFormAttachment(yesRadio, 0, SWT.CENTER);
+		data.right = new FlatFormAttachment(this.yesRadio, -IDetailsAreaConstants.HSPACE);
+		data.top = new FlatFormAttachment(this.yesRadio, 0, SWT.CENTER);
 		suppressLabel.setLayoutData(data);
 	}
-	
+
 	protected void createControllers () {
-		fRadioController = createEditController();
-		fRadioController.setFeature(BPELPackage.eINSTANCE.getProcess_ExitOnStandardFault() );		
-		fRadioController.setViewIValue(new RadioButtonIValue ( yesRadio , noRadio )) ;		
-		fRadioController.startListeningTo(yesRadio,noRadio);
+		this.fRadioController = createEditController();
+		this.fRadioController.setFeature(BPELPackage.eINSTANCE.getProcess_ExitOnStandardFault() );
+		this.fRadioController.setViewIValue(new RadioButtonIValue ( this.yesRadio , this.noRadio )) ;
+		this.fRadioController.startListeningTo(this.yesRadio,this.noRadio);
 	}
-	
+
 	@Override
 	protected void createClient(Composite parent) {
 		Composite composite = createFlatFormComposite(parent);
 		createWidgets(composite);
 		createControllers();
-		
-    PlatformUI.getWorkbench().getHelpSystem().setHelp(
-      composite, IHelpContextIds.PROPERTY_PAGE_EXIT_ON_FAULT);
-	}
 
-	
+		PlatformUI.getWorkbench().getHelpSystem().setHelp( composite, IHelpContextIds.PROPERTY_PAGE_EXIT_ON_FAULT );
+	}
 
 	@Override
-	protected void basicSetInput (EObject newInput) {		
+	protected void basicSetInput (EObject newInput) {
 		super.basicSetInput(newInput);
-		fRadioController.setInput(newInput);		
+		this.fRadioController.setInput(newInput);
 	}
-	
 }

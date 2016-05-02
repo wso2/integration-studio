@@ -130,8 +130,9 @@ public class XPathTextEditor extends TextEditor {
 			caproc.setModelObject( eObj );
 		}
 
-		String expressionContext = (String) input.getAdapter(Integer.class);
-		if (expressionContext != null) {
+		Integer value = (Integer) input.getAdapter(Integer.class);
+		if (value != null) {
+			String expressionContext = value.toString();
 			caproc.setExpressionContext(expressionContext);
 			//
 			if (this.fVariablePickerAction != null) {

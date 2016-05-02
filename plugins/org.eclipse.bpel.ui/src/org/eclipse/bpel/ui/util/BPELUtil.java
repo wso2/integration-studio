@@ -1840,10 +1840,6 @@ public class BPELUtil {
 			if (fproj.hasProjectFacet(getBPELFacetVersion())) {
 				return true;
 			}
-			// added for backward compatibility with jbt.bpel.facet.core:
-			if (fproj.hasProjectFacet(getJBT_BPELFacetVersion())) {
-				return true;
-			}
 		}
 		return false;
 
@@ -1851,12 +1847,6 @@ public class BPELUtil {
 
 	public static IProjectFacetVersion getBPELFacetVersion() {
 		IProjectFacet bpelFacet = ProjectFacetsManager.getProjectFacet(IBPELModuleFacetConstants.BPEL20_PROJECT_FACET);
-		IProjectFacetVersion bpelFacetVersion = bpelFacet.getVersion(IBPELModuleFacetConstants.BPEL20_MODULE_VERSION);
-		return bpelFacetVersion;
-	}
-
-	public static IProjectFacetVersion getJBT_BPELFacetVersion() {
-		IProjectFacet bpelFacet = ProjectFacetsManager.getProjectFacet(IBPELModuleFacetConstants.JBT_BPEL20_PROJECT_FACET);
 		IProjectFacetVersion bpelFacetVersion = bpelFacet.getVersion(IBPELModuleFacetConstants.BPEL20_MODULE_VERSION);
 		return bpelFacetVersion;
 	}

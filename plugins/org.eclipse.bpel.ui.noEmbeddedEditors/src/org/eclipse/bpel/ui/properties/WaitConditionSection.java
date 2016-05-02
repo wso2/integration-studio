@@ -42,204 +42,201 @@ import org.eclipse.ui.PlatformUI;
  */
 public class WaitConditionSection extends ExpressionSection {
 
-	protected Button[] radioButtons;
-	protected int fButtonCount ;
-	protected int fCurrentButtonIndex;
+    protected Button[] radioButtons;
+    protected int fButtonCount;
+    protected int fCurrentButtonIndex;
 
-	@Override
-	protected String getExpressionType() {
-		return getButtonExprType(this.fCurrentButtonIndex);
-	}
+    @Override
+    protected String getExpressionType() {
+        return getButtonExprType(this.fCurrentButtonIndex);
+    }
 
-	/**
-	 * Change the input.
-	 */
-	@Override
-	protected void basicSetInput(EObject newInput) {
+    /**
+     * Change the input.
+     */
+    @Override
+    protected void basicSetInput(EObject newInput) {
 
-		super.basicSetInput(newInput);
-		this.fCurrentButtonIndex = getButtonIndexFromModel();
-		updateRadioButtonWidgets();
-	}
+        super.basicSetInput(newInput);
+        this.fCurrentButtonIndex = getButtonIndexFromModel();
+        updateRadioButtonWidgets();
+    }
 
+    /**
+     * Update the Radio button widgets according to the state of the model.
+     */
+    protected void updateRadioButtonWidgets() {
 
-	/**
-	 * Update the Radio button widgets according to the state of the model.
-	 */
-	protected void updateRadioButtonWidgets() {
+        this.fCurrentButtonIndex = getButtonIndexFromModel();
+        if (this.fCurrentButtonIndex >= 0)
+            this.radioButtons[this.fCurrentButtonIndex].setSelection(true);
+        for (int i = 0; i < this.radioButtons.length; i++) {
+            if (i != this.fCurrentButtonIndex)
+                this.radioButtons[i].setSelection(false);
+        }
+    }
 
-		this.fCurrentButtonIndex = getButtonIndexFromModel();
-		if (this.fCurrentButtonIndex >= 0) this.radioButtons[this.fCurrentButtonIndex].setSelection(true);
-		for (int i = 0; i<this.radioButtons.length; i++) {
-			if (i != this.fCurrentButtonIndex)
-				this.radioButtons[i].setSelection(false);
-		}
-	}
+    /**
+     * Creates the radio button widgets.
+     * 
+     * @param parent
+     */
+    protected void createRadioButtonWidgets(Composite parent) {
 
-	/**
-	 * Creates the radio button widgets.
-	 * @param parent
-	 */
-	protected void createRadioButtonWidgets(Composite parent) {
+        this.fButtonCount = gLabels.length;
 
-		this.fButtonCount = gLabels.length;
+        Composite radioComposite = getWidgetFactory().createComposite(parent);
+        radioComposite.setLayout(new GridLayout(2, true));
 
-		Composite radioComposite = getWidgetFactory().createComposite( parent );
-		radioComposite.setLayout( new GridLayout( 2, true ));
+        this.radioButtons = new Button[this.fButtonCount];
+        for (int i = 0; i < this.fButtonCount; i++) {
+            this.radioButtons[i] = this.fWidgetFactory.createButton(radioComposite, gLabels[i], SWT.RADIO);
+            this.radioButtons[i].addSelectionListener(new SelectionListener() {
+                public void widgetSelected(SelectionEvent e) {
+                    Button button = (Button) e.getSource();
+                    if (button.getSelection()) {
+                        for (int i = 0; i < radioButtons.length; i++) {
+                            if (radioButtons[i] == button) {
+                                fCurrentButtonIndex = i;
+                                saveExpressionToModel();
+                                break;
+                            }
+                        }
+                    }
+                }
+                public void widgetDefaultSelected(SelectionEvent e) {
+                }
+            });
+        }
+    }
 
-		this.radioButtons = new Button[ this.fButtonCount ];
-		for(int i = 0; i < this.fButtonCount; i++) {
-			this.radioButtons[i] = this.fWidgetFactory.createButton(radioComposite, gLabels[i], SWT.RADIO);
-			this.radioButtons[i].addSelectionListener(new SelectionListener() {
-				public void widgetSelected (SelectionEvent e) {
-					// TODO: store the information
-				}
-				public void widgetDefaultSelected(SelectionEvent e) { }
-			});
-		}
-	}
+    protected void createClient(Composite parent) {
+        super.createClient(parent);
+        createRadioButtonWidgets(parent);
+        PlatformUI.getWorkbench().getHelpSystem().setHelp(parent, IHelpContextIds.PROPERTY_PAGE_WAIT);
+    }
 
-	protected void createClient(Composite parent) {
-		super.createClient(parent);
-		createRadioButtonWidgets( parent );
-		PlatformUI.getWorkbench().getHelpSystem().setHelp( parent, IHelpContextIds.PROPERTY_PAGE_WAIT );
-	}
+    protected String getButtonExprType(int buttonIndex) {
+        if (buttonIndex == 0) {
+            return IEditorConstants.ET_DATETIME;
+        }
+        if (buttonIndex == 1) {
+            return IEditorConstants.ET_DURATION;
+        }
+        throw new IllegalArgumentException();
+    }
 
-	protected String getButtonExprType (int buttonIndex) {
-		if (buttonIndex == 0) {
-			return IEditorConstants.ET_DATETIME;
-		}
-		if (buttonIndex == 1) {
-			return IEditorConstants.ET_DURATION;
-		}
-		throw new IllegalArgumentException();
-	}
+    /**
+     * This is a map between classes (Wait, OnAlarm)
+     * and the structural features that they support (For and Until).
+     *
+     * Pay particular attention to the indices of the arrays because they are ...
+     * let's just say "connected"
+     */
 
+    static final String[] gLabels = { Messages.WaitConditionSection_Date_1, Messages.WaitConditionSection_Duration_2 };
 
-	/**
-	 * This is a map between classes (Wait, OnAlarm)
-	 * and the structural features that they support (For and Until).
-	 *
-	 * Pay particular attention to the indices of the arrays because they are ...
-	 * let's just say "connected"
-	 */
+    /**
+     * Button 0 is for "until" (date time)
+     * Button 1 is for "for" (duration)
+     */
+    static Map<EClass, EStructuralFeature[]> CLASS2FEATURES = new HashMap<EClass, EStructuralFeature[]>();
+    static {
+        CLASS2FEATURES.put(BPELPackage.eINSTANCE.getWait(),
+                new EStructuralFeature[] { BPELPackage.eINSTANCE.getWait_Until(), BPELPackage.eINSTANCE.getWait_For()
 
-	static final String[] gLabels =
-		{
-			Messages.WaitConditionSection_Date_1,
-			Messages.WaitConditionSection_Duration_2
-		};
+                });
+        CLASS2FEATURES.put(BPELPackage.eINSTANCE.getOnAlarm(), new EStructuralFeature[] {
+                BPELPackage.eINSTANCE.getOnAlarm_Until(), BPELPackage.eINSTANCE.getOnAlarm_For() });
+    }
 
-	/**
-	 * Button 0 is for "until" (date time)
-	 * Button 1 is for "for"   (duration)
-	 */
-	static Map<EClass, EStructuralFeature[]> CLASS2FEATURES  = new HashMap<EClass, EStructuralFeature[]>();
-	static {
-		CLASS2FEATURES.put( BPELPackage.eINSTANCE.getWait() ,
-				new EStructuralFeature [] {
-					BPELPackage.eINSTANCE.getWait_Until(),
-			 		BPELPackage.eINSTANCE.getWait_For()
+    @Override
+    protected Expression getExprFromModel() {
 
-				});
-		CLASS2FEATURES.put( BPELPackage.eINSTANCE.getOnAlarm() ,
-				new EStructuralFeature [] {
-					BPELPackage.eINSTANCE.getOnAlarm_Until(),
-			 		BPELPackage.eINSTANCE.getOnAlarm_For()
-				});
-	}
+        EObject input = getInput();
 
+        EStructuralFeature feature = getStructuralFeature(input);
+        if (feature == null) {
+            return null;
+        }
 
-	@Override
-	protected Expression getExprFromModel() {
+        Object result = input.eGet(feature);
+        if (result != null && result instanceof Expression) {
+            return (Expression) result;
+        }
+        return null;
+    }
 
-		EObject input = getInput();
+    protected int getButtonIndexFromModel() {
+        EObject input = getInput();
+        EStructuralFeature feature = getStructuralFeature(input);
+        if (feature == null) {
+            return 1;
+        }
+        if (feature.getName().indexOf("until") >= 0) {
+            return 0;
+        }
+        return 1;
+    }
 
-		EStructuralFeature feature = getStructuralFeature (input);
-		if (feature == null) {
-			return null;
-		}
+    protected boolean isValidClientUseType(String useType) {
+        return IBPELUIConstants.USE_TYPE_DEADLINE_CONDITION.equals(useType)
+                || IBPELUIConstants.USE_TYPE_DURATION_CONDITION.equals(useType);
+    }
 
-		Object result = input.eGet(feature);
-		if (result != null && result instanceof Expression) {
-			return (Expression) result;
-		}
-		return null;
-	}
+    /**
+     * We override this parameter-less method since the feature changes as the button selection changes.
+     * The target of this structural feature (for the SetCommand model mutation change) is the target itself,
+     * that is the Wait activity.
+     */
+    @Override
+    protected EStructuralFeature getStructuralFeature() {
+        return getStructuralFeature(this.fCurrentButtonIndex);
+    }
 
-	protected int getButtonIndexFromModel() {
-		EObject input = getInput();
-		EStructuralFeature feature = getStructuralFeature(input);
-		if (feature == null) {
-			return 1;
-		}
-		if (feature.getName().indexOf("until") >= 0) {
-			return 0;
-		}
-		return 1;
-	}
+    protected EStructuralFeature getStructuralFeature(int index) {
+        EStructuralFeature features[] = CLASS2FEATURES.get(getInput().eClass());
+        assert (features != null) : "Features cannot be null";
+        return features[index];
+    }
 
-	protected boolean isValidClientUseType (String useType) {
-		return IBPELUIConstants.USE_TYPE_DEADLINE_CONDITION.equals(useType)
-			|| IBPELUIConstants.USE_TYPE_DURATION_CONDITION.equals(useType);
-	}
+    @Override
+    protected EStructuralFeature getStructuralFeature(EObject eObj) {
 
+        EStructuralFeature features[] = CLASS2FEATURES.get(eObj.eClass());
+        for (EStructuralFeature f : features) {
+            Object result = eObj.eGet(f);
+            if (result != null) {
+                return f;
+            }
+        }
 
-	/**
-	 * We override this parameter-less method since the feature changes as the button selection changes.
-	 * The target of this structural feature (for the SetCommand model mutation change) is the target itself,
-	 * that is the Wait activity.
-	 */
-	@Override
-	protected EStructuralFeature getStructuralFeature() {
-		return getStructuralFeature ( this.fCurrentButtonIndex );
-	}
+        return null;
+    }
 
-	protected EStructuralFeature getStructuralFeature( int index ) {
-		EStructuralFeature features []  = CLASS2FEATURES.get( getInput().eClass());
-		assert (features != null) : "Features cannot be null";
-		return features[ index ];
-	}
+    /**
+     * Saves the expression to the model.
+     */
+    protected void saveExpressionToModel() {
 
+        if (this.modelUpdate.get())
+            return;
 
-	@Override
-	protected EStructuralFeature getStructuralFeature( EObject eObj ) {
+        // Usual behavior
+        EStructuralFeature aFeature = getStructuralFeature();
+        EObject target = getExpressionTarget();
 
-		EStructuralFeature features [] = CLASS2FEATURES.get(eObj.eClass() );
-		for (EStructuralFeature f : features) {
-			Object result = eObj.eGet(f);
-			if (result != null) {
-				return f;
-			}
-		}
+        CompoundCommand result = new CompoundCommand();
+        Expression exp = BPELFactory.eINSTANCE.createCondition();
+        exp.setBody(this.expressionText != null ? this.expressionText.getText().trim() : "");
+        result.add(new SetCommand(target, getExpression4Target(exp), aFeature));
 
-		return null;
-	}
+        // Unset the features that should not be set
+        for (EStructuralFeature feature : CLASS2FEATURES.get(getInput().eClass())) {
+            if (!feature.equals(aFeature) && target.eIsSet(feature))
+                result.add(new SetCommand(target, null, feature));
+        }
 
-
-	/**
-	 * Saves the expression to the model.
-	 */
-	protected void saveExpressionToModel() {
-
-		if( this.modelUpdate.get())
-			return;
-
-		// Usual behavior
-		EStructuralFeature aFeature = getStructuralFeature();
-		EObject target = getExpressionTarget();
-
-		CompoundCommand result = new CompoundCommand();
-		Expression exp = BPELFactory.eINSTANCE.createCondition();
-		exp.setBody( this.expressionText != null ? this.expressionText.getText().trim() : "" );
-		result.add( new SetCommand( target, getExpression4Target( exp ) , aFeature ));
-
-		// Unset the features that should not be set
-		for (EStructuralFeature feature : CLASS2FEATURES.get( getInput().eClass() ) ) {
-			if( ! feature.equals( aFeature ) && target.eIsSet(feature))
-				result.add( new SetCommand(target,null,feature)) ;
-		}
-
-		getCommandFramework().execute( result );
-	}
+        getCommandFramework().execute(result);
+    }
 }

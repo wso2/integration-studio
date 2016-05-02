@@ -78,6 +78,10 @@ public final class Messages extends NLS {
 	public static String NamespaceMappingDialog_9;
 	public static String OperationAdapter_0;
 	public static String OutputMessageAdapter_0;
+	public static String PaletteFactory_Actions;
+	public static String PaletteFactory_Control;
+	public static String PaletteFactory_Empty;
+	public static String PaletteFactory_Faults;
 	public static String PartnerLinkAdapter_0;
 	public static String PartnerLinkImplSection_0;
 	public static String PartnerLinkImplSection_1;
@@ -134,8 +138,6 @@ public final class Messages extends NLS {
 	public static String TypeSelectorDialog_7;
 	public static String TypeSelectorDialog_9;
 	public static String Validate;
-	public static String AttributesDetails_Expression_Language__2;
-	public static String AttributesDetails_Query_Language__2;
 	public static String AutoArrangeFlowsAction_Arrange_Flow_Contents_2;
 	public static String AutoArrangeFlowsAction_Auto_arrange_flow_contents_3;
 	public static String ToggleLayoutOrientation_1;
@@ -165,7 +167,7 @@ public final class Messages extends NLS {
 	public static String BPELEditor_Compensate_1;
 	public static String BPELEditor_Compensate_2;
 	public static String BPELEditor_CompensateScope_1;
-	public static String BPELEditor_CompensateScope_2;	
+	public static String BPELEditor_CompensateScope_2;
 	public static String BPELEditor_Flow_1;
 	public static String BPELEditor_Flow_2;
 	public static String BPELEditor_Invoke_35;
@@ -210,14 +212,13 @@ public final class Messages extends NLS {
 	public static String BPELPasteAction_Paste_2;
 	public static String BPELPasteAction_Paste_3;
 	public static String BPELPreferencePage_HomePage_Description;
-	public static String BPELPreferencePage_ExpressionEditorPage_Description;
 	public static String BPELPreferencePage_0;
 	public static String BPELPreferencePage_0TT;
 	public static String BPELPreferencePage_1;
-	public static String BPELPreferencePage_1TT;	
+	public static String BPELPreferencePage_1TT;
 	public static String BPELPreferencePage_2;
-	public static String BPELPreferencePage_2TT;	
-	public static String BPELPreferencePage_3;	
+	public static String BPELPreferencePage_2TT;
+	public static String BPELPreferencePage_3;
 	public static String BPELPreferencePage_3TT;
 	public static String BPELPreferencePage_4;
 	public static String BPELPreferencePage_4TT;
@@ -237,11 +238,10 @@ public final class Messages extends NLS {
 	public static String BPELPreferencePage_WSIL_NameLimit;
 	public static String BPELPreferencePage_WSIL_EnterLocation;
 	public static String BPELPreferencePage_WSIL_EnterDescription;
-	public static String BPELUIRegistry_Expression_language_editors_must_provide_expressionLanguage_and_class__8;
 	public static String BPELUtil__unknown_URI__54;
 	public static String BPELUtil_HiddenSequence_2;
 	public static String BPELUtil_Sequence_1;
-	
+
 	// https://issues.jboss.org/browse/JBIDE-8601
 	public static String BPELUtil__Error;
 	public static String BPELUtil_NoEditorForNullObject;
@@ -251,9 +251,6 @@ public final class Messages extends NLS {
 	public static String BPELXYLayoutEditPolicy_Add_Part_1;
 	public static String BPELXYLayoutEditPolicy_Move_Part_2;
 	public static String ElseIfAdapter_ElseIf_1;
-	public static String ElseIfConditionSection_Create_a_New_Condition_2;
-	public static String ElseIfConditionSection_Create_condition_text_2;
-	public static String ElseIfConditionSection_No_condition_specified_1;
 	public static String CatchAdapter_Catch_1;
 	public static String CatchAllAdapter_0;
 	public static String CatchAllDetails_0;
@@ -317,11 +314,8 @@ public final class Messages extends NLS {
 	public static String EditMessagePropertyDialog_23;
 	public static String EditMessagePropertyDialog_26;
 	public static String EditMessagePropertyDialog_27;
-	public static String EditMessagePropertyDialog_2;
-	public static String EditMessagePropertyDialog_3;
 	public static String EditMessagePropertyDialog_4;
-	public static String EditMessagePropertyDialog_9;
-
+	
 	// https://jira.jboss.org/browse/JBIDE-7107
 	public static String EditMessagePropertyDialog_11;
 	public static String EditMessagePropertyDialog_12;
@@ -333,9 +327,6 @@ public final class Messages extends NLS {
 	public static String EditMessagePropertyDialog_Element_1;
 	public static String EditMessagePropertyDialog_Message_1;
 	public static String EditPropertyAliasDialog_10;
-	public static String EditPropertyAliasDialog_3;
-	public static String EditPropertyAliasDialog_4;
-	public static String EditPropertyAliasDialog_8;
 	public static String EditPropertyAliasDialog_9;
 	public static String EndNodeAdapter_End_1;
 	public static String EndpointReferenceAssignCategory_Endpoint_Reference;
@@ -344,9 +335,6 @@ public final class Messages extends NLS {
 	public static String ExitOnStandardFault_Yes_2;
 	public static String ExitOnStandardFault_No_3;
 	public static String ExpressionAssignCategory_Expression_1;
-	public static String ExpressionSection_Expression_language_1;
-	public static String ExpressionSection_No_Expression_2;
-	public static String ExpressionSection_Same_as_Process_1;
 	public static String FaultAdapter_Fault_1;
 	public static String FaultCatchNameDetails_Built_in_14;
 	public static String FaultCatchNameDetails_Fault_Name__16;
@@ -367,7 +355,6 @@ public final class Messages extends NLS {
 	public static String FaultThrowNameSection_Browse_1;
 	public static String FaultThrowNameSection_None_3;
 	public static String FaultThrowNameSection_Select_Fault_Variable_2;
-	public static String FileAndComboSelectionDialog_Browse_1;
 	public static String FlowXYLayoutEditPolicy_Create_1;
 	public static String IBPELUIConstants_Activity_Change_36;
 	public static String IBPELUIConstants_Add_Compensation_Handler_11;
@@ -381,7 +368,7 @@ public final class Messages extends NLS {
 	public static String IBPELUIConstants_Add_Custom_Setting_13;
 	public static String IBPELUIConstants_Add_Event_Handler_11;
 	public static String IBPELUIConstants_Add_Fault_Handler_11;
-	public static String IBPELUIConstants_Add_Import;	
+	public static String IBPELUIConstants_Add_Import;
 	public static String IBPELUIConstants_Add_Link_5;
 	public static String IBPELUIConstants_Add_Partner_7;
 	public static String IBPELUIConstants_Add_Property_9;
@@ -464,9 +451,6 @@ public final class Messages extends NLS {
 	public static String InvokeImplDetails_MessageTypeOrElement;
 
 	public static String InvokeImplSection_None_1;
-	public static String JoinConditionSection_Create_a_New_Condition_3;
-	public static String JoinConditionSection_No_condition_specified_1;
-	public static String JoinConditionSection_Optional_condition_text_2;
 	public static String JoinFailureDetails_No_3;
 	public static String JoinFailureDetails_Suppress_Join_Failure__1;
 	public static String JoinFailureDetails_Use_Same_Value_as_Parent__No__6;
@@ -489,12 +473,12 @@ public final class Messages extends NLS {
 	public static String MessageExchangeImplSection_Create_Global;
 	public static String MessageExchangeImplSection_Create_Local;
 	public static String MessageExchangeImplSection_Clear;
-	
-	public static String MessageExchange_Create_Dialog_Title; 
-	public static String MessageExchange_Create_Dialog_NameField_Label; 
-	
-	
-	
+
+	public static String MessageExchange_Create_Dialog_Title;
+	public static String MessageExchange_Create_Dialog_NameField_Label;
+
+
+
 	public static String ModelLabelProvider____None____1;
 	public static String ModelTreeLabelProvider_s1_s2;
 	public static String NameDetails_BPEL_Name__3;
@@ -551,10 +535,6 @@ public final class Messages extends NLS {
 	public static String RenameAction_Rename_0;
 	public static String RenameAction_Rename_1;
 	public static String ReorderInContainerCommand_Reorder_1;
-	public static String RepeatingAlarmConditionSection_Choose_type_text_2;
-	public static String RepeatingAlarmConditionSection_Create_a_New_Repeat_Condition_3;
-	public static String RepeatingAlarmConditionSection_No_condition_specified_1;
-	public static String RepeatingAlarmConditionSection_Not_supported_in_Pick_text_3;
 	public static String ReplaceInContainerCommand_Replace_1;
 	public static String ReplyAction_Reply_HTML_Description_1;
 	public static String RevertAction_0;
@@ -586,9 +566,6 @@ public final class Messages extends NLS {
 	public static String ToggleShowEventHandler_Shows_event_handler_activities_3;
 	public static String ToggleShowFaultHandler_Show_Fault_Handler_2;
 	public static String ToggleShowFaultHandler_Shows_fault_handler_activities_3;
-	public static String TransitionConditionSection_Create_a_New_Condition_3;
-	public static String TransitionConditionSection_No_condition_specified_1;
-	public static String TransitionConditionSection_Optional_condition_text_2;
 	public static String VariableAdapter_0;
 	public static String VariableImplDetails_Isolated__6;
 	public static String VariablePartAssignCategory_Query__8;
@@ -621,35 +598,15 @@ public final class Messages extends NLS {
 	public static String VariablesEditPart_Add_Variable_1;
 	public static String VariablesEditPart_Remove_Variable_1;
 	public static String VariablesEditPart_Variables_1;
-	public static String WaitConditionSection_Create_a_New_Condition_2;
-	public static String WaitConditionSection_Create_condition_text_2;
 	public static String WaitConditionSection_Date_1;
 	public static String WaitConditionSection_Duration_2;
-	public static String WaitConditionSection_No_condition_specified_1;
-	public static String WhileConditionSection_Create_a_New_Condition_3;
-	public static String WhileConditionSection_Mandatory_condition_text_2;
-	public static String WhileConditionSection_No_condition_specified_1;
-	
+
 	public static String ForEachSection_IS_PARALLEL;
 	public static String ForEachSection_COUNTER_NAME;
-	public static String ForEachCompletionConditionSection_No_condition_specified_1;
-	public static String ForEachCompletionConditionSection_Optional_condition_text_2;
-	public static String ForEachCompletionConditionSection_Create_a_New_Condition_3;
 	public static String ForEachSuccessfulBranchesOnlySection_1;
-	public static String ForEachStartCounterValuesSection_No_Expression_specified_1;
 	public static String ForEachStartCounterValuesSection_TITLE_3;
 	public static String ForEachFinalCounterValuesSection_TITLE_3;
-	public static String ForEachFinalCounterValuesSection_No_Expression_specified_1;
-	public static String ForEachCounterValuesSection_Mandatory_Expression_2;
-	public static String ForEachCounterValuesSection_Create_a_New_Expression_3;
-	
-	public static String WorkbenchFileSelectionDialog_Browse_2;
-	public static String WsdlFileSelectionDialog_Select_a_WSDL_File_1;
-	public static String XPathExpressionEditor_Date_Time_UTC_3;
-	public static String XPathExpressionEditor_Duration_4;
-	public static String XPathExpressionEditor_Expression_Type_2;
-	public static String XPathExpressionEditor_Literal_1;
-	public static String XPathExpressionEditor_Text_0;
+
 	public static String XSDAttributeDeclarationAdapter_XSD_Attribute_1;
 	public static String XSDComplexTypeDefinitionAdapter_0;
 	public static String XSDElementDeclarationAdapter_XSD_Element_1;
@@ -686,7 +643,7 @@ public final class Messages extends NLS {
 
     public static String OutlinePage_showOverviewView;
     public static String OutlinePage_showOutlineView;
-    
+
 	public static String DeletePartnerLinkTypeWarningMessage;
 	public static String DeletePartnerLinkTypeWarningDialogTitle;
 
@@ -700,12 +657,12 @@ public final class Messages extends NLS {
 	public static String Editor_load_error_title;
 	public static String Editor_load_error;
 	public static String Editor_design_page_error;
-	
+
 	public static String Make_Process_Abstract_Title;
 	public static String Make_Process_Abstract_Message;
-	
+
 	static {
-		
+
 		NLS.initializeMessages(BUNDLE_NAME, Messages.class);
 	}
 }

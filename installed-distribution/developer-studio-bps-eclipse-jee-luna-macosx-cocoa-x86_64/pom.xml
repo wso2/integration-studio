@@ -14,7 +14,6 @@
  ~ See the License for the specific language governing permissions and
  ~ limitations under the License.
 -->
-
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
@@ -25,7 +24,7 @@
 	<relativePath>../pom.xml</relativePath>
     </parent>
     <groupId>org.wso2.developerstudio</groupId>
-    <artifactId>developer-studio-bps-eclipse-jee-luna-macosx-cocoa-x86_64</artifactId>
+    <artifactId>developer-studio-bps-eclipse-jee-mars-macosx-cocoa-x86_64</artifactId>
     <modelVersion>4.0.0</modelVersion>
     <packaging>pom</packaging>
     <name>WSO2 Developer Studio Eclipse BPS distribution-macosx-cocoa-x86_64</name>
@@ -36,14 +35,14 @@
     		<name>WSO2 Maven2 Repo</name>
     		<url>http://dist.wso2.org/maven2/</url>
     	</repository>
-<repository>
+        <repository>
             <releases>
                 <enabled>true</enabled>
                 <updatePolicy>daily</updatePolicy>
                 <checksumPolicy>ignore</checksumPolicy>
             </releases>
             <id>DevS-Deps-p2-Repository</id>
-            <url>http://builder1.us1.wso2.org/~developerstudio/developer-studio-kernel/4.0.0/kernel/releases/</url>
+            <url>http://builder1.us1.wso2.org/~developerstudio/developer-studio-kernel/4.1.0/kernel/releases/</url>
             <layout>p2</layout>
         </repository>
     </repositories>
@@ -57,7 +56,6 @@
             <url>http://dist.wso2.org/snapshots/maven2</url>
         </pluginRepository>
     </pluginRepositories>
-    
     <build>
         <plugins>
             <plugin>
@@ -76,7 +74,7 @@
                             <artifactItems>
                                 <artifactItem>
                                     <groupId>org.eclipse</groupId>
-                                    <artifactId>eclipse-jee-luna-macosx-cocoa-x86_64</artifactId>
+                                    <artifactId>eclipse-jee-mars-macosx-cocoa-x86_64</artifactId>
                                     <version>4.4.2</version>
                                     <type>tar.gz</type>
                                     <overWrite>true</overWrite>
@@ -176,5 +174,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>

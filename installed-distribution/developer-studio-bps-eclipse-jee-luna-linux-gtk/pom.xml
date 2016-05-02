@@ -25,7 +25,7 @@
 	<relativePath>../pom.xml</relativePath>
     </parent>
     <groupId>org.wso2.developerstudio</groupId>
-    <artifactId>developer-studio-bps-eclipse-jee-luna-linux-gtk</artifactId>
+    <artifactId>developer-studio-bps-eclipse-jee-mars-linux-gtk</artifactId>
     <modelVersion>4.0.0</modelVersion>
     <packaging>pom</packaging>
     <name>WSO2 Developer Studio Eclipse BPS distribution-linux-gtk</name>
@@ -36,14 +36,14 @@
     		<name>WSO2 Maven2 Repo</name>
     		<url>http://dist.wso2.org/maven2/</url>
     	</repository>
-<repository>
+        <repository>
             <releases>
                 <enabled>true</enabled>
                 <updatePolicy>daily</updatePolicy>
                 <checksumPolicy>ignore</checksumPolicy>
             </releases>
             <id>DevS-Deps-p2-Repository</id>
-            <url>http://builder1.us1.wso2.org/~developerstudio/developer-studio-kernel/4.0.0/kernel/releases/</url>
+            <url>http://builder1.us1.wso2.org/~developerstudio/developer-studio-kernel/4.1.0/kernel/releases/</url>
             <layout>p2</layout>
         </repository>
     </repositories>
@@ -57,8 +57,7 @@
             <url>http://dist.wso2.org/snapshots/maven2</url>
         </pluginRepository>
     </pluginRepositories>
-    
-    <build>
+      <build>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -76,7 +75,7 @@
                             <artifactItems>
                                 <artifactItem>
                                     <groupId>org.eclipse</groupId>
-                                    <artifactId>eclipse-jee-luna-linux-gtk</artifactId>
+                                    <artifactId>eclipse-jee-mars-linux-gtk</artifactId>
                                     <version>4.4.2</version>
                                     <type>tar.gz</type>
                                     <overWrite>true</overWrite>
@@ -176,5 +175,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>

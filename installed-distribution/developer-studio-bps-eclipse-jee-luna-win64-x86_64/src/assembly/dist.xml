@@ -16,7 +16,6 @@
  ~ under the License.
  -->
 <assembly>
-
     <!--baseDirectory>target</baseDirectory-->
   <formats>
     <format>zip</format>

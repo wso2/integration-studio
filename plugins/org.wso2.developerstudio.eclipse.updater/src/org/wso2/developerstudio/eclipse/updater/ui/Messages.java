@@ -11,6 +11,7 @@ public class Messages extends NLS {
 	public static String UpdaterDialog_5;
 	public static String UpdaterDialog_6;
 	public static String UpdaterDialog_8;
+	public static String UpdaterDialog_9;
 	static {
 		// initialize resource bundle
 		NLS.initializeMessages(BUNDLE_NAME, Messages.class);

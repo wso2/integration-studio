@@ -87,6 +87,7 @@ import org.wso2.developerstudio.eclipse.updater.model.EnhancedFeature;
 
 public class UpdateManager {
 
+	private static final String ORG_ECLIPSE_EQUINOX_P2_DESCRIPTION = "org.eclipse.equinox.p2.description";
 	private static final int LESS_THAN = -1;
 	private static final String FEATURE_GROUP_IU_ID_SFX = "feature.group"; //$NON-NLS-1$
 	private static final String PROP_IS_HIDDEN = "isHidden"; //$NON-NLS-1$
@@ -615,6 +616,8 @@ public class UpdateManager {
 			String oldVersion = update.toUpdate.getVersion().toString();
 			String newVersion = update.replacement.getVersion().toString();
 			EnhancedFeature updatebleFeature = allFeaturesInUpdateRepo.get(id);
+			String updateDescription = update.replacement.getProperty(ORG_ECLIPSE_EQUINOX_P2_DESCRIPTION);
+			updatebleFeature.setDescription(updateDescription);
 			updatebleFeature.setCurrentVersion(oldVersion);
 			updatebleFeature.setVersion(newVersion);
 			if (isNewVersionCompatible(oldVersion, update.replacement.getVersion())) {

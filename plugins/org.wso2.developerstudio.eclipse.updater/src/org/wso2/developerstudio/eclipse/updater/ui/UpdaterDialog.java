@@ -221,9 +221,29 @@ public class UpdaterDialog extends Dialog {
 					featureInfoGroup);
 			FontData fontData = featureName.getFont().getFontData()[0];
 			Font font = new Font(featureInfoGroup.getDisplay(), new FontData(
-					fontData.getName(), fontData.getHeight() + 3, SWT.BOLD));
+					fontData.getName(), fontData.getHeight() + 1, SWT.BOLD));
 			featureName.setFont(font);
 			createFeatureNewVersionText(feature, featureInfoGroup);
+			createFeatureDescr(feature, featureInfoGroup);
+		}
+	}
+
+	private void createFeatureDescr(EnhancedFeature feature, final Group featureInfoGroup) {
+		String featureDescrpTxt = feature.getDescription();
+		if (featureDescrpTxt != null && !featureDescrpTxt.isEmpty()) {
+			StyledText featuredescription = new StyledText(featureInfoGroup, SWT.WRAP);
+			if (featureDescrpTxt.contains(".")) {
+				String[] featureDescr = featureDescrpTxt.split("\\.");
+				if (featureDescr[0] != null && !featureDescr[0].isEmpty()) {
+					featuredescription.setText(featureDescr[0]);
+				}
+				if (featureDescr[1] != null && !featureDescr[1].isEmpty()) {
+					StyledText featuredJira = new StyledText(featureInfoGroup, SWT.WRAP);
+					featuredJira.setText(Messages.UpdaterDialog_9 + featureDescr[1]);
+				}
+			} else {
+				featuredescription.setText(featureDescrpTxt);
+			}
 		}
 	}
 

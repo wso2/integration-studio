@@ -53,6 +53,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.ArtifactType;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
+import org.wso2.developerstudio.eclipse.platform.core.project.model.ProjectDataModel;
 import org.wso2.developerstudio.eclipse.platform.core.templates.ArtifactTemplate;
 import org.wso2.developerstudio.eclipse.platform.ui.editor.Openable;
 import org.wso2.developerstudio.eclipse.platform.ui.startup.ESBGraphicalEditor;
@@ -81,6 +82,11 @@ public class TemplateProjectCreationWizard extends AbstractWSO2ProjectCreationWi
 
 	protected boolean isRequireProjectLocationSection() {
 		return false;
+	}
+	
+	public void setModel(ProjectDataModel model) {
+		super.setModel(model);
+		this.templateModel = (TemplateModel) model;
 	}
 
 	public boolean performFinish() {
@@ -316,6 +322,10 @@ public class TemplateProjectCreationWizard extends AbstractWSO2ProjectCreationWi
 	@Override
 	public IResource getCreatedResource() {
 		return null;
+	}
+
+	public void setProject(IProject project) {
+		this.project = project;
 	} 
 
 }

@@ -204,7 +204,6 @@ public class UpdateMetaFileReaderJob extends Job {
 	}
 
 	public static void promptUserError(final String message, final String title) {
-
 		Display.getDefault().syncExec(new Runnable() {
 			@Override
 			public void run() {

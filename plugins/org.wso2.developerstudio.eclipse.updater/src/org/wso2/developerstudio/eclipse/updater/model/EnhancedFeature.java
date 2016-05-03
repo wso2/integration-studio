@@ -25,6 +25,15 @@ public class EnhancedFeature extends InstallableFeature {
 	protected boolean isKernelFeature;
 	protected boolean isHidden;
 	protected String[] children;
+	protected boolean isUpdateFeature;
+	
+	public boolean isUpdateFeature() {
+		return isUpdateFeature;
+	}
+
+	public void setUpdateFeature(boolean isUpdateFeature) {
+		this.isUpdateFeature = isUpdateFeature;
+	}
 
 	public String[] getChildFeatures() {
 		return children;

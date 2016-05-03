@@ -619,6 +619,7 @@ public class UpdateManager {
 			EnhancedFeature updatebleFeature = allFeaturesInUpdateRepo.get(id);
 			updatebleFeature.setCurrentVersion(oldVersion);
 			updatebleFeature.setVersion(newVersion);
+			updatebleFeature.setUpdateFeature(true);
 			if (isNewVersionCompatible(oldVersion, update.replacement.getVersion())) {
 				availableUpdates.put(id, update);
 				featuresWithPossibleUpdates.put(id, updatebleFeature);

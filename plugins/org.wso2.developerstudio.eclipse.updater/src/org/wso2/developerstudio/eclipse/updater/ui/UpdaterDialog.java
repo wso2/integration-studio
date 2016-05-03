@@ -212,7 +212,7 @@ public class UpdaterDialog extends Dialog {
 					new FontData(fontData.getName(), fontData.getHeight() + 1, SWT.BOLD));
 			featureName.setFont(font);
 			createFeatureNewVersionText(feature, featureInfoGroup);
-			if (feature.getWhatIsNew() != null && !feature.getDescription().isEmpty()) {
+			if (feature.isUpdateFeature() && feature.getWhatIsNew() != null && !feature.getWhatIsNew().isEmpty()) {
 				createFeatureDescr(feature.getWhatIsNew(), feature.getBugFixes(), featureInfoGroup);
 			}
 		}

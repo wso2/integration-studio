@@ -49,7 +49,10 @@ public class ChannelResponseDispatcher implements Runnable {
                 synchronized (requestReader) {
                     buffer = requestReader.readLine();
                 }
-                esbDebuggerInterface.notifyResponce(buffer);
+//                System.out.println("*********************************************************");
+//                System.out.println(buffer);
+//                System.out.println("*********************************************************");
+                esbDebuggerInterface.notifyResponce(buffer);                
             }
         } catch (IOException ex) {
             log.error("Error occured during reading response message sent from ESB Server Debugger", ex);

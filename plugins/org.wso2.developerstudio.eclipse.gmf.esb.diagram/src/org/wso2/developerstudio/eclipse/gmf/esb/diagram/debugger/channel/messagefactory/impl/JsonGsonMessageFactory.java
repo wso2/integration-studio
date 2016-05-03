@@ -29,6 +29,9 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ES
 import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.STARTED_EVENT_TYPE;
 import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.TEMPLATE_LABEL;
 import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.TERMINATED_EVENT_TYPE;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.WIRE_LOG_EVENT;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.COMMAND_ARGUMENT_LABEL;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.WIRE_LOG_LABEL;
 
 import java.util.Map.Entry;
 import java.util.Set;
@@ -56,6 +59,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.EventMess
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 /**
@@ -121,6 +125,8 @@ public class JsonGsonMessageFactory implements ICommunicationMessageFactory {
         for (Entry<String, JsonElement> entry : entrySet) {
 
             switch (entry.getKey()) {
+            case WIRE_LOG_LABEL:
+            	break;
             case EVENT_LABEL:
                 event = getEventMessageType(entry.getValue().getAsString());
                 break;
@@ -181,6 +187,8 @@ public class JsonGsonMessageFactory implements ICommunicationMessageFactory {
         case SKIPPOINT:
             return new DebugPointEventMessage(event, ESBDebuggerUtil.getESBDebugPoint(debugPointType, event,
                     recievedArtifactInfo));
+        case WIRE_LOG:
+            return new GeneralEventMessage(event);
         default:
             throw new IllegalArgumentException("Invalid Event Message Recieved from ESB Server Debugger : "
                     + eventMessage);
@@ -203,6 +211,8 @@ public class JsonGsonMessageFactory implements ICommunicationMessageFactory {
             return EventMessageType.RESUMED_CLIENT;
         case DEBUG_INFO_LOST_EVENT:
             return EventMessageType.DEBUG_INFO_LOST;
+        case WIRE_LOG_EVENT:
+            return EventMessageType.WIRE_LOG;
         default:
             throw new IllegalArgumentException("Invalid Event Message Type : " + event);
         }
@@ -217,6 +227,18 @@ public class JsonGsonMessageFactory implements ICommunicationMessageFactory {
         Gson debugPointMessage = builder.create();
         return debugPointMessage.toJson(debugPoint);
     }
+    
+    @Override
+    public JsonObject createMediatoLocationJsonObj(AbstractESBDebugPointMessage debugPoint) {
+        GsonBuilder builder = new GsonBuilder();
+        builder.registerTypeAdapter(ESBMediatorPosition.class, new MediatorPositionGsonSerializer());
+        builder.setFieldNamingStrategy(new PojoToGsonCustomNamingStrategy());
+        Gson debugPointMessage = builder.create();
+        String jsonString = debugPointMessage.toJson(debugPoint);        
+        JsonObject jsonObject = new JsonParser().parse(jsonString).getAsJsonObject();        
+        jsonObject.remove(COMMAND_ARGUMENT_LABEL);        
+        return jsonObject;
+    }
 
     @Override
     public String createPropertyChangeCommand(PropertyChangeCommand propertyChangeCommand) {
@@ -225,5 +247,26 @@ public class JsonGsonMessageFactory implements ICommunicationMessageFactory {
         Gson propertyChangeMessage = builder.create();
         return propertyChangeMessage.toJson(propertyChangeCommand);
     }
+
+	@Override
+	public boolean checkForWirelogMessage(String buffer) {
+		JsonElement jsonElement = new JsonParser().parse(buffer);
+        Set<Entry<String, JsonElement>> entrySet = jsonElement.getAsJsonObject().entrySet();
+
+        EventMessageType event = null;
+        String callbackReciever = null;
+        String messageReciever = null;
+        JsonElement recievedArtifactInfo = null;
+        ArtifactType debugPointType = null;
+
+        for (Entry<String, JsonElement> entry : entrySet) {
+
+            switch (entry.getKey()) {
+            case WIRE_LOG_LABEL:
+            	return true;
+            }
+        }
+		return false;
+	}
 
 }

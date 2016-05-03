@@ -34,6 +34,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbServer;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.debugpoint.impl.ESBDebugPoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.exception.ESBDebuggerException;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.messages.util.AbstractESBDebugPointMessage;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.messages.util.ESBMediatorPosition;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.messages.util.ESBProxyBean;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.messages.util.ESBProxyDebugPointMessage;
@@ -59,30 +60,31 @@ public class ProxyDebugPointBuilder extends AbstractESBDebugPointBuilder {
             String commandArgument) throws ESBDebuggerException, CoreException {
 
         int lineNumber = -1;
-        ProxyServiceImpl proxy = (ProxyServiceImpl) esbServer.eContents().get(INDEX_OF_FIRST_ELEMENT);
-        List<Integer> position = null;
-        EObject selection = ((View) part.getModel()).getElement();
-        String sequenceType = EMPTY_STRING;
-        EditPart container = getContainerFromEditPart(part, ProxyServiceContainerEditPart.class);
-        if (container instanceof ProxyServiceSequenceAndEndpointContainerEditPart) {
-            if (part.reversed) {
-                position = getMediatorPosition(proxy.getOutSequenceOutputConnector(), selection);
-                sequenceType = PROXY_OUTSEQ_LABEL;
-            } else {
-                position = getMediatorPosition(proxy.getOutputConnector(), selection);
-                sequenceType = PROXY_INSEQ_LABEL;
-            }
-        } else if (container instanceof ProxyServiceFaultContainerEditPart) {
-            position = getMediatorPositionInFaultSeq(proxy.getContainer().getFaultContainer().getMediatorFlow()
-                    .getChildren(), selection);
-            sequenceType = PROXY_FAULTSEQ_LABEL;
-        } else {
-            throw new IllegalArgumentException(MEDIATOR_IN_A_UNKNOWN_POSITION_LOG_MESSAGE + container.toString());
-        }
-
-        ESBProxyBean proxyBean = new ESBProxyBean(proxy.getName(), sequenceType, new ESBMediatorPosition(position));
-        ESBProxyDebugPointMessage proxyDebugPoint = new ESBProxyDebugPointMessage(null, commandArgument,
-                new ESBProxySequenceBean(proxyBean));
+//        ProxyServiceImpl proxy = (ProxyServiceImpl) esbServer.eContents().get(INDEX_OF_FIRST_ELEMENT);
+//        List<Integer> position = null;
+//        EObject selection = ((View) part.getModel()).getElement();
+//        String sequenceType = EMPTY_STRING;
+//        EditPart container = getContainerFromEditPart(part, ProxyServiceContainerEditPart.class);
+//        if (container instanceof ProxyServiceSequenceAndEndpointContainerEditPart) {
+//            if (part.reversed) {
+//                position = getMediatorPosition(proxy.getOutSequenceOutputConnector(), selection);
+//                sequenceType = PROXY_OUTSEQ_LABEL;
+//            } else {
+//                position = getMediatorPosition(proxy.getOutputConnector(), selection);
+//                sequenceType = PROXY_INSEQ_LABEL;
+//            }
+//        } else if (container instanceof ProxyServiceFaultContainerEditPart) {
+//            position = getMediatorPositionInFaultSeq(proxy.getContainer().getFaultContainer().getMediatorFlow()
+//                    .getChildren(), selection);
+//            sequenceType = PROXY_FAULTSEQ_LABEL;
+//        } else {
+//            throw new IllegalArgumentException(MEDIATOR_IN_A_UNKNOWN_POSITION_LOG_MESSAGE + container.toString());
+//        }
+//
+//        ESBProxyBean proxyBean = new ESBProxyBean(proxy.getName(), sequenceType, new ESBMediatorPosition(position));
+//        ESBProxyDebugPointMessage proxyDebugPoint = new ESBProxyDebugPointMessage(null, commandArgument,
+//                new ESBProxySequenceBean(proxyBean));
+        ESBProxyDebugPointMessage proxyDebugPoint = (ESBProxyDebugPointMessage)getESBDebugPointMessage(esbServer, part, commandArgument);
         return new ESBDebugPoint(resource, lineNumber, proxyDebugPoint);
     }
 
@@ -124,5 +126,35 @@ public class ProxyDebugPointBuilder extends AbstractESBDebugPointBuilder {
         }
 
     }
+
+	@Override
+	public AbstractESBDebugPointMessage getESBDebugPointMessage(EsbServer esbServer, AbstractMediator part,
+            String commandArgument) throws CoreException, ESBDebuggerException {
+        ProxyServiceImpl proxy = (ProxyServiceImpl) esbServer.eContents().get(INDEX_OF_FIRST_ELEMENT);
+        List<Integer> position = null;
+        EObject selection = ((View) part.getModel()).getElement();
+        String sequenceType = EMPTY_STRING;
+        EditPart container = getContainerFromEditPart(part, ProxyServiceContainerEditPart.class);
+        if (container instanceof ProxyServiceSequenceAndEndpointContainerEditPart) {
+            if (part.reversed) {
+                position = getMediatorPosition(proxy.getOutSequenceOutputConnector(), selection);
+                sequenceType = PROXY_OUTSEQ_LABEL;
+            } else {
+                position = getMediatorPosition(proxy.getOutputConnector(), selection);
+                sequenceType = PROXY_INSEQ_LABEL;
+            }
+        } else if (container instanceof ProxyServiceFaultContainerEditPart) {
+            position = getMediatorPositionInFaultSeq(proxy.getContainer().getFaultContainer().getMediatorFlow()
+                    .getChildren(), selection);
+            sequenceType = PROXY_FAULTSEQ_LABEL;
+        } else {
+            throw new IllegalArgumentException(MEDIATOR_IN_A_UNKNOWN_POSITION_LOG_MESSAGE + container.toString());
+        }
+
+        ESBProxyBean proxyBean = new ESBProxyBean(proxy.getName(), sequenceType, new ESBMediatorPosition(position));
+        ESBProxyDebugPointMessage proxyDebugPoint = new ESBProxyDebugPointMessage(null, commandArgument,
+                new ESBProxySequenceBean(proxyBean));
+		return proxyDebugPoint;
+	}
 
 }

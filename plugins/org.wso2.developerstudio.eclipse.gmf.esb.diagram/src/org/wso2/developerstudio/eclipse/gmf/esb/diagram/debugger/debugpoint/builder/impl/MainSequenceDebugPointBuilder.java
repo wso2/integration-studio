@@ -30,7 +30,9 @@ import org.eclipse.gmf.runtime.notation.View;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbServer;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.debugpoint.impl.ESBDebugPoint;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.exception.ESBDebuggerException;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.exception.MediatorNotFoundException;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.messages.util.AbstractESBDebugPointMessage;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.messages.util.ESBMediatorPosition;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.messages.util.ESBSequenceBean;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.messages.util.ESBSequenceDebugPointMessage;
@@ -51,26 +53,27 @@ public class MainSequenceDebugPointBuilder extends AbstractESBDebugPointBuilder 
      */
     @Override
     public ESBDebugPoint getESBDebugPoint(EsbServer esbServer, IResource resource, AbstractMediator part,
-            String commandArgument) throws CoreException, MediatorNotFoundException {
+            String commandArgument) throws CoreException, ESBDebuggerException {
 
         int lineNumber = -1;
-        ProxyServiceImpl mainSequence = (ProxyServiceImpl) esbServer.eContents().get(INDEX_OF_FIRST_ELEMENT);
-
-        int listSeqPosition;
-        List<Integer> position = null;
-        EObject selection = ((View) part.getModel()).getElement();
-        if (part.reversed) {
-            listSeqPosition = OUT_SEQ_POSITION;
-            position = getMediatorPosition(mainSequence.getOutSequenceOutputConnector(), selection);
-        } else {
-            listSeqPosition = IN_SEQ_POSITION;
-            position = getMediatorPosition(mainSequence.getOutputConnector(), selection);
-        }
-        position.add(INDEX_OF_FIRST_ELEMENT, listSeqPosition);
-        ESBSequenceBean mainSequenceBean = new ESBSequenceBean(NAMED_SEQUENCE_LABEL, MAIN_SEQUENCE_NAME,
-                new ESBMediatorPosition(position));
-        ESBSequenceDebugPointMessage mainSeqDebugPoint = new ESBSequenceDebugPointMessage(null, commandArgument,
-                MAIN_SEQUENCE_LABEL, mainSequenceBean);
+//        ProxyServiceImpl mainSequence = (ProxyServiceImpl) esbServer.eContents().get(INDEX_OF_FIRST_ELEMENT);
+//
+//        int listSeqPosition;
+//        List<Integer> position = null;
+//        EObject selection = ((View) part.getModel()).getElement();
+//        if (part.reversed) {
+//            listSeqPosition = OUT_SEQ_POSITION;
+//            position = getMediatorPosition(mainSequence.getOutSequenceOutputConnector(), selection);
+//        } else {
+//            listSeqPosition = IN_SEQ_POSITION;
+//            position = getMediatorPosition(mainSequence.getOutputConnector(), selection);
+//        }
+//        position.add(INDEX_OF_FIRST_ELEMENT, listSeqPosition);
+//        ESBSequenceBean mainSequenceBean = new ESBSequenceBean(NAMED_SEQUENCE_LABEL, MAIN_SEQUENCE_NAME,
+//                new ESBMediatorPosition(position));
+//        ESBSequenceDebugPointMessage mainSeqDebugPoint = new ESBSequenceDebugPointMessage(null, commandArgument,
+//                MAIN_SEQUENCE_LABEL, mainSequenceBean);
+        ESBSequenceDebugPointMessage mainSeqDebugPoint = (ESBSequenceDebugPointMessage)getESBDebugPointMessage(esbServer, part, commandArgument);
         return new ESBDebugPoint(resource, lineNumber, mainSeqDebugPoint);
     }
 
@@ -113,5 +116,28 @@ public class MainSequenceDebugPointBuilder extends AbstractESBDebugPointBuilder 
             }
         }
     }
+
+	@Override
+	public AbstractESBDebugPointMessage getESBDebugPointMessage(EsbServer esbServer, AbstractMediator part,
+            String commandArgument) throws CoreException, ESBDebuggerException {
+        ProxyServiceImpl mainSequence = (ProxyServiceImpl) esbServer.eContents().get(INDEX_OF_FIRST_ELEMENT);
+
+        int listSeqPosition;
+        List<Integer> position = null;
+        EObject selection = ((View) part.getModel()).getElement();
+        if (part.reversed) {
+            listSeqPosition = OUT_SEQ_POSITION;
+            position = getMediatorPosition(mainSequence.getOutSequenceOutputConnector(), selection);
+        } else {
+            listSeqPosition = IN_SEQ_POSITION;
+            position = getMediatorPosition(mainSequence.getOutputConnector(), selection);
+        }
+        position.add(INDEX_OF_FIRST_ELEMENT, listSeqPosition);
+        ESBSequenceBean mainSequenceBean = new ESBSequenceBean(NAMED_SEQUENCE_LABEL, MAIN_SEQUENCE_NAME,
+                new ESBMediatorPosition(position));
+        ESBSequenceDebugPointMessage mainSeqDebugPoint = new ESBSequenceDebugPointMessage(null, commandArgument,
+                MAIN_SEQUENCE_LABEL, mainSequenceBean);
+		return mainSeqDebugPoint;
+	}
 
 }

@@ -15,6 +15,8 @@
  */
 package org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.messages.command;
 
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.messages.util.PropertyValueBean;
+
 /**
  * This class represents the message sent to ESB Server Debugger asking values
  * of a certain property scope
@@ -25,11 +27,19 @@ public class GetPropertyCommand {
     private String command;
     private String commandArgument;
     private String context;
+    private PropertyValueBean property;
 
     public GetPropertyCommand(String command, String commandArgument, String context) {
         this.command = command;
         this.commandArgument = commandArgument;
         this.context = context;
+    }
+    
+    public GetPropertyCommand(String command, String commandArgument, String context, PropertyValueBean property) {
+        this.command = command;
+        this.commandArgument = commandArgument;
+        this.context = context;
+        this.property = property;
     }
 
     public String getCommand() {
@@ -56,4 +66,12 @@ public class GetPropertyCommand {
         this.context = context;
     }
 
+	public PropertyValueBean getProperty() {
+		return property;
+	}
+
+	public void setProperty(PropertyValueBean property) {
+		this.property = property;
+	}
+    
 }

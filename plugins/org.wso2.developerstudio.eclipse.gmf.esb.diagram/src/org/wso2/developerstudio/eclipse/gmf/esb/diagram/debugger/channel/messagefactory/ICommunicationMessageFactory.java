@@ -22,6 +22,8 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.messages.comman
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.messages.command.PropertyChangeCommand;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.messages.util.AbstractESBDebugPointMessage;
 
+import com.google.gson.JsonObject;
+
 /**
  * Implementations for ESB Debugger Interface message communication channels
  * should implement {@link ICommunicationMessageFactory} interface
@@ -45,6 +47,14 @@ public interface ICommunicationMessageFactory {
      * @return
      */
     String createBreakpointCommand(AbstractESBDebugPointMessage debugPoint);
+    
+    /**
+     * This method is to create mediator location json object
+     * 
+     * @param debugPoint
+     * @return
+     */
+    JsonObject createMediatoLocationJsonObj(AbstractESBDebugPointMessage debugPoint);
 
     /**
      * This method creates the specified get properties command message to send
@@ -70,6 +80,14 @@ public interface ICommunicationMessageFactory {
      * @return
      */
     IEventMessage convertEventToIEventMessage(String buffer);
+    
+    /**
+     * This method will check whether received event is a wirelog response or a actual debug event
+     * 
+     * @param buffer
+     * @return
+     */
+    boolean checkForWirelogMessage(String buffer);
 
     /**
      * This method creates the specified change properties command message to send

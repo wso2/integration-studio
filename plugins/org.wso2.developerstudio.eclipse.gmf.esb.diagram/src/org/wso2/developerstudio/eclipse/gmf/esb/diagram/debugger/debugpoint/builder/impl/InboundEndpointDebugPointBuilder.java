@@ -29,6 +29,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.debugpoint.impl.ESBDebugPoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.exception.ESBDebuggerException;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.exception.MediatorNotFoundException;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.messages.util.AbstractESBDebugPointMessage;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.messages.util.ESBInboundEndpointBean;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.messages.util.ESBInboundEndpointDebugPointMessage;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.messages.util.ESBInboundEndpointSequenceBean;
@@ -54,6 +55,39 @@ public class InboundEndpointDebugPointBuilder extends AbstractESBDebugPointBuild
             String commandArgument) throws ESBDebuggerException, CoreException {
 
         int lineNumber = -1;
+//        InboundEndpointImpl inboundEndpoint = (InboundEndpointImpl) esbServer.eContents().get(INDEX_OF_FIRST_ELEMENT);
+//        List<Integer> position = new ArrayList<>();
+//        String sequenceType = EMPTY_STRING;
+//        EditPart container = getContainerFromEditPart(part, InboundEndpointContainerEditPart.class);
+//        if (container instanceof InboundEndpointSequenceContainerEditPart) {
+//            position.add(0);
+//            sequenceType = INBOUND_SEQ_LABEL;
+//        } else if (container instanceof InboundEndpointOnErrorSequenceContainerEditPart) {
+//            position.add(0);
+//            sequenceType = INBOUND_FAULT_SEQ_LABEL;
+//        } else {
+//            throw new IllegalArgumentException("Selected Metdiator Edit Part is in a unknown position : "
+//                    + container.toString());
+//        }
+//
+//        ESBInboundEndpointBean inboundBean = new ESBInboundEndpointBean(inboundEndpoint.getName(), sequenceType,
+//                new ESBMediatorPosition(position));
+//        ESBInboundEndpointDebugPointMessage inboundDebugPoint = new ESBInboundEndpointDebugPointMessage(null,
+//                commandArgument, new ESBInboundEndpointSequenceBean(inboundBean));
+        ESBInboundEndpointDebugPointMessage inboundDebugPoint = (ESBInboundEndpointDebugPointMessage)getESBDebugPointMessage(esbServer, part, commandArgument);
+        return new ESBDebugPoint(resource, lineNumber, inboundDebugPoint);
+    }
+
+    @Override
+    public void updateExistingDebugPoints(IResource resource, AbstractMediator abstractMediator, EsbServer esbServer,
+            String action) throws MediatorNotFoundException {
+        // no implementation because Inbound endpoint can only have one sequence
+        // on both "onErrorSequence" and "sequence"
+    }
+
+	@Override
+	public AbstractESBDebugPointMessage getESBDebugPointMessage(EsbServer esbServer, AbstractMediator part,
+            String commandArgument) throws CoreException, ESBDebuggerException {
         InboundEndpointImpl inboundEndpoint = (InboundEndpointImpl) esbServer.eContents().get(INDEX_OF_FIRST_ELEMENT);
         List<Integer> position = new ArrayList<>();
         String sequenceType = EMPTY_STRING;
@@ -73,14 +107,7 @@ public class InboundEndpointDebugPointBuilder extends AbstractESBDebugPointBuild
                 new ESBMediatorPosition(position));
         ESBInboundEndpointDebugPointMessage inboundDebugPoint = new ESBInboundEndpointDebugPointMessage(null,
                 commandArgument, new ESBInboundEndpointSequenceBean(inboundBean));
-        return new ESBDebugPoint(resource, lineNumber, inboundDebugPoint);
-    }
-
-    @Override
-    public void updateExistingDebugPoints(IResource resource, AbstractMediator abstractMediator, EsbServer esbServer,
-            String action) throws MediatorNotFoundException {
-        // no implementation because Inbound endpoint can only have one sequence
-        // on both "onErrorSequence" and "sequence"
-    }
+		return inboundDebugPoint;
+	}
 
 }

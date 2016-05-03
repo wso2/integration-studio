@@ -70,6 +70,7 @@ public class ESBDebuggerConstants {
     public static final String COMMAND_ARGUMENT_LABEL = "command-argument";
     public static final String SKIP_POINT_LABEL = "skip";
     public static final String BREAKPOINT_LABEL = "breakpoint";
+    public static final String WIRE_LOG_POINT_LABEL = "wireLogPoint";
     public static final String SEQUENCE_TYPE_LABEL = "sequence-type";
     public static final String SEQUENCE_KEY_LABEL = "sequence-key";
     public static final String NAMED_SEQUENCE_LABEL = "named";
@@ -99,6 +100,7 @@ public class ESBDebuggerConstants {
     public static final String INBOUND_ENDPOINT_LABEL = "inbound";
     public static final String API_LABEL = "api";
     public static final String EVENT_LABEL = "event";
+    public static final String WIRE_LOG_LABEL = "wirelogs";
 
     // Event Message Type constants
     public static final String BREAKPOINT_EVENT_TYPE = "breakpoint";
@@ -107,6 +109,7 @@ public class ESBDebuggerConstants {
     public static final String RESUMED_CLIENT_EVENT_TYPE = "resumed client";
     public static final String TERMINATED_EVENT_TYPE = "terminated";
     public static final String DEBUG_INFO_LOST_EVENT = "synapse configuration updated-debug information lost";
+    public static final String WIRE_LOG_EVENT = "wire";
     public static final String MESSAGE_RECIEVER_LABEL = "message-receiver";
     public static final String CALLBACK_RECIEVER_LABEL = "callback-receiver";
 
@@ -135,6 +138,7 @@ public class ESBDebuggerConstants {
     public static final String ESB_DEBUGGER_EVENT_BROKER_DATA_NAME = "org.eclipse.e4.data";
     public static final String ESB_DEBUG_TARGET_EVENT_TOPIC = "ESBDebugTarget_Events";
     public static final String ESB_STACK_FRAME_PROPERTY_CHANGE_EVENT = "ESBStackFrame_Events";
+    public static final String ESB_STACK_FRAME_WIRE_LOGS_RECEIVED_EVENT = "ESBStackFrame_wireLogs_received_Event";
     public static final String ESBDEBUGGER_EVENT_TOPIC = "ESBDebugger_Events";
     public static final String PROPERTY_CHANGE_COMMAND_HANDLER_EVENT_TOPIC = "PropertyChangeCommandHandler_Events";
 
@@ -144,6 +148,7 @@ public class ESBDebuggerConstants {
     public static final String AXIS2_CLIENT_PROPERTY_TAG = "axis2-client";
     public static final String TRANSPORT_PROPERTY_TAG = "transport";
     public static final String SYANPSE_PROPERTY_TAG = "synapse";
+    public static final String WIRE_LOG_PROPERTY_TAG = "wire";
 
     // Message Property attribute key values
     public static final String AXIS2_PROPERTIES_KEY = "axis2-properties";
@@ -182,6 +187,12 @@ public class ESBDebuggerConstants {
     public static final String ESB_SKIPPOINT_COMMAND_LABEL = "Toggle Skip Point";
     public static final String ESB_SKIPPOINT_ACTION_ID = "org.wos2.developerstudio.eclipse.esb.debugger.skippoint.action";
     public static final String ESB_SKIPPOINT_COMMAND_TOOL_TIP = "Set skip point for this mediator";
+    public static final String ESB_WIRE_LOG_POINT_COMMAND_LABEL = "Toggle Wire Log point";
+    public static final String ESB_WIRE_LOG_POINT_ACTION_ID = "org.wos2.developerstudio.eclipse.esb.debugger.wire.logs.action";
+    public static final String ESB_WIRE_LOG_POINT_COMMAND_TOOL_TIP = "Set wire log point for this mediator";
+    public static final String ESB_SHOW_WIRE_LOGS_COMMAND_LABEL = "Show WireLogs";
+    public static final String ESB_SHOW_WIRE_LOGS_ACTION_ID = "org.wos2.developerstudio.eclipse.esb.debugger.show.wire.logs.action";
+    public static final String ESB_SHOW_WIRE_LOGS_COMMAND_TOOL_TIP = "Show wire logs for this mediator";
 
     // Property Value Change command ID's
     public static final String ESB_MESSAGE_MEDIATION_PROPERTY_INJECT_COMMAND_ID = "org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.ui.commands.InjectNewProperty";
@@ -191,4 +202,7 @@ public class ESBDebuggerConstants {
 
     public static final String MESSAGE_ENVELOPE_VIEW_PRIMARY_ID = "org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.envelope.view";
     public static final String MESSAGE_ENVELOPE_VIEW_SECONDARY_ID = "org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.envelope.view.secondary";
+    public static final String WIRE_LOG_VIEW_PRIMARY_ID = "org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.wirelog.view";
+    public static final String WIRE_LOG_VIEW_SECONDARY_ID = "org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.wirelog.secondary";
+    
 }

@@ -232,8 +232,8 @@ public class UpdaterDialog extends Dialog {
 		String featureDescrpTxt = feature.getDescription();
 		if (featureDescrpTxt != null && !featureDescrpTxt.isEmpty()) {
 			StyledText featuredescription = new StyledText(featureInfoGroup, SWT.WRAP);
-			if (featureDescrpTxt.contains(".")) {
-				String[] featureDescr = featureDescrpTxt.split("\\.");
+			if (featureDescrpTxt.contains(",")) {
+				String[] featureDescr = featureDescrpTxt.split(",");
 				if (featureDescr[0] != null && !featureDescr[0].isEmpty()) {
 					featuredescription.setText(featureDescr[0]);
 				}

@@ -87,7 +87,6 @@ import org.wso2.developerstudio.eclipse.updater.model.EnhancedFeature;
 
 public class UpdateManager {
 
-	private static final String ORG_ECLIPSE_EQUINOX_P2_DESCRIPTION = "org.eclipse.equinox.p2.description";
 	private static final int LESS_THAN = -1;
 	private static final String FEATURE_GROUP_IU_ID_SFX = "feature.group"; //$NON-NLS-1$
 	private static final String PROP_IS_HIDDEN = "isHidden"; //$NON-NLS-1$
@@ -327,6 +326,7 @@ public class UpdateManager {
 			throw new OperationCanceledException();
 		} else if (status.getSeverity() == IStatus.ERROR) {
 			String message = status.getChildren()[0].getMessage();
+			UpdateMetaFileReaderJob.promptUserError(message, Messages.UpdateManager_27);
 			log.error(Messages.UpdateManager_27 + message);
 		} else {
 			final ProvisioningJob provisioningJob = updateOperation.getProvisioningJob(progress.newChild(1));
@@ -410,6 +410,7 @@ public class UpdateManager {
 		} else if (status.getSeverity() == IStatus.ERROR) {
 			String message = status.getChildren()[0].getMessage();
 			log.error(Messages.UpdateManager_33 + message);
+			UpdateMetaFileReaderJob.promptUserError(message, Messages.UpdateManager_33);
 		} else {
 			ProvisioningJob provisioningJob = installOperation.getProvisioningJob(progress.newChild(1));
 			if (provisioningJob != null) {
@@ -616,8 +617,6 @@ public class UpdateManager {
 			String oldVersion = update.toUpdate.getVersion().toString();
 			String newVersion = update.replacement.getVersion().toString();
 			EnhancedFeature updatebleFeature = allFeaturesInUpdateRepo.get(id);
-			String updateDescription = update.replacement.getProperty(ORG_ECLIPSE_EQUINOX_P2_DESCRIPTION);
-			updatebleFeature.setDescription(updateDescription);
 			updatebleFeature.setCurrentVersion(oldVersion);
 			updatebleFeature.setVersion(newVersion);
 			if (isNewVersionCompatible(oldVersion, update.replacement.getVersion())) {

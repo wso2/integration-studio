@@ -54,7 +54,7 @@ import org.wso2.developerstudio.eclipse.updater.core.UpdateManager;
 import org.wso2.developerstudio.eclipse.updater.model.EnhancedFeature;
 
 public class UpdaterDialog extends Dialog {
-	
+
 	private static final String CANCEL_BTN_TXT = Messages.UpdaterDialog_0;
 	private static final String VERSION_LABEL = Messages.UpdaterDialog_1;
 	private static final String INSTALL_BTN_TXT = Messages.UpdaterDialog_2;
@@ -62,7 +62,7 @@ public class UpdaterDialog extends Dialog {
 	private static final String TITLE = Messages.UpdaterDialog_4;
 	private static final String UPDATES_TAB_TITLE = Messages.UpdaterDialog_5;
 	private static final String ALL_FEATURES_TAB_TITLE = Messages.UpdaterDialog_6;
-	
+
 	private UpdateManager updateManager;
 	private ActiveTab activeTab;
 	protected List<EnhancedFeature> selectedFeatures;
@@ -71,8 +71,7 @@ public class UpdaterDialog extends Dialog {
 	private Dialog dialog;
 	private TabFolder tabFolder;
 
-	protected static IDeveloperStudioLog log = Logger
-			.getLog(UpdaterPlugin.PLUGIN_ID);
+	protected static IDeveloperStudioLog log = Logger.getLog(UpdaterPlugin.PLUGIN_ID);
 
 	public enum ActiveTab {
 		ALL_FEATURES, UPDATE_FEATURES
@@ -92,7 +91,7 @@ public class UpdaterDialog extends Dialog {
 		final Composite topContainer = createTopContainer(parent);
 		Composite leftContainer = createSubColumnContainer(topContainer);
 		tabFolder = createLeftContainerTabFolder(leftContainer);
-		
+
 		createFeatureItemsInTabFolder(tabFolder);
 		if (activeTab == ActiveTab.ALL_FEATURES) {
 			tabFolder.setSelection(0);
@@ -104,20 +103,17 @@ public class UpdaterDialog extends Dialog {
 
 	private void createFeatureItemsInTabFolder(TabFolder tabFolder) {
 		createFeatureListTab(tabFolder, ActiveTab.ALL_FEATURES);
-		createFeatureListTab(tabFolder,
-				ActiveTab.UPDATE_FEATURES);
+		createFeatureListTab(tabFolder, ActiveTab.UPDATE_FEATURES);
 	}
 
-	private void createFeatureListTab(TabFolder tabFolder,
-			ActiveTab type) {
+	private void createFeatureListTab(TabFolder tabFolder, ActiveTab type) {
 		TabItem tabItem = new TabItem(tabFolder, SWT.NULL);
 		if (type == ActiveTab.ALL_FEATURES) {
 			tabItem.setText(ALL_FEATURES_TAB_TITLE);
 		} else {
 			tabItem.setText(UPDATES_TAB_TITLE);
 		}
-		ScrolledComposite scroll = new ScrolledComposite(tabFolder,
-				SWT.V_SCROLL | SWT.H_SCROLL);
+		ScrolledComposite scroll = new ScrolledComposite(tabFolder, SWT.V_SCROLL | SWT.H_SCROLL);
 		scroll.setLayout(new GridLayout());
 		scroll.setLayoutData(new GridData());
 
@@ -142,16 +138,13 @@ public class UpdaterDialog extends Dialog {
 		tabGridData.heightHint = 600;
 		tabGridData.widthHint = 700;
 
-		final TabFolder tabFolder = new TabFolder(leftContainer, SWT.CHECK
-				| SWT.BORDER | SWT.H_SCROLL);
+		final TabFolder tabFolder = new TabFolder(leftContainer, SWT.CHECK | SWT.BORDER | SWT.H_SCROLL);
 		tabFolder.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent event) {
-				if (tabFolder.getSelection()[0].getText().equals(
-						ALL_FEATURES_TAB_TITLE)) {
+				if (tabFolder.getSelection()[0].getText().equals(ALL_FEATURES_TAB_TITLE)) {
 					installBtn.setEnabled(!selectedFeatures.isEmpty());
-				} else if (tabFolder.getSelection()[0].getText().equals(
-						UPDATES_TAB_TITLE)) {
+				} else if (tabFolder.getSelection()[0].getText().equals(UPDATES_TAB_TITLE)) {
 					installBtn.setEnabled(!selectedUpdates.isEmpty());
 				}
 			}
@@ -183,81 +176,64 @@ public class UpdaterDialog extends Dialog {
 
 	private void listFeatures(Group group, ActiveTab tab) {
 		IPreferenceStore prefPage = PlatformUI.getPreferenceStore();
-		boolean showHiddenFeatures = prefPage
-				.getBoolean(DeveloperPreferencePage.SHOW_HIDDEN_FEATURES);
-		
+		boolean showHiddenFeatures = prefPage.getBoolean(DeveloperPreferencePage.SHOW_HIDDEN_FEATURES);
+
 		Iterator<Entry<String, EnhancedFeature>> featureList;
 		if (tab == ActiveTab.ALL_FEATURES) {
-			featureList = updateManager.getAvailableFeaturesMap().entrySet()
-					.iterator();
+			featureList = updateManager.getAvailableFeaturesMap().entrySet().iterator();
 		} else {
-			featureList = updateManager.getPossibleUpdatesMap().entrySet()
-					.iterator();
+			featureList = updateManager.getPossibleUpdatesMap().entrySet().iterator();
 		}
 		while (featureList.hasNext()) {
 			EnhancedFeature feature = featureList.next().getValue();
-			// set isKernelFeature=true or isHidden=true in update.properties file in features to
+			// set isKernelFeature=true or isHidden=true in update.properties
+			// file in features to
 			// ignore them in available Features tab
 			if (tab == ActiveTab.ALL_FEATURES && !showHiddenFeatures) {
 				if (feature.isKernelFeature() || feature.isHidden()) {
 					continue;
-				} 
+				}
 			}
 			GridData gridData = new GridData(SWT.FILL, SWT.FILL, true, false);
-			final Group featureGroup = createFeatureRepresentationGroup(group,
-					gridData);
+			final Group featureGroup = createFeatureRepresentationGroup(group, gridData);
 			createCheckBoxInFeatureGroup(feature, featureGroup, tab);
 
 			Label featureImageLabel = new Label(featureGroup, SWT.NONE);
 			try {
-				Image image = new Image(Display.getDefault(), feature
-						.getIconURL().replace(FILE_PROTOCOL, "")); //$NON-NLS-1$
+				Image image = new Image(Display.getDefault(), feature.getIconURL().replace(FILE_PROTOCOL, "")); //$NON-NLS-1$
 				featureImageLabel.setImage(image);
 			} catch (Exception ex) {
 				log.warn(Messages.UpdaterDialog_8 + feature.getId(), ex);
 			}
 			final Group featureInfoGroup = createFeatureInfoRepresentationGroup(featureGroup);
-			StyledText featureName = createFeatureNameText(feature,
-					featureInfoGroup);
+			StyledText featureName = createFeatureNameText(feature, featureInfoGroup);
 			FontData fontData = featureName.getFont().getFontData()[0];
-			Font font = new Font(featureInfoGroup.getDisplay(), new FontData(
-					fontData.getName(), fontData.getHeight() + 1, SWT.BOLD));
+			Font font = new Font(featureInfoGroup.getDisplay(),
+					new FontData(fontData.getName(), fontData.getHeight() + 1, SWT.BOLD));
 			featureName.setFont(font);
 			createFeatureNewVersionText(feature, featureInfoGroup);
-			createFeatureDescr(feature, featureInfoGroup);
-		}
-	}
-
-	private void createFeatureDescr(EnhancedFeature feature, final Group featureInfoGroup) {
-		String featureDescrpTxt = feature.getDescription();
-		if (featureDescrpTxt != null && !featureDescrpTxt.isEmpty()) {
-			StyledText featuredescription = new StyledText(featureInfoGroup, SWT.WRAP);
-			if (featureDescrpTxt.contains(",")) {
-				String[] featureDescr = featureDescrpTxt.split(",");
-				if (featureDescr[0] != null && !featureDescr[0].isEmpty()) {
-					featuredescription.setText(featureDescr[0]);
-				}
-				if (featureDescr[1] != null && !featureDescr[1].isEmpty()) {
-					StyledText featuredJira = new StyledText(featureInfoGroup, SWT.WRAP);
-					featuredJira.setText(Messages.UpdaterDialog_9 + featureDescr[1]);
-				}
-			} else {
-				featuredescription.setText(featureDescrpTxt);
+			if (feature.getWhatIsNew() != null && !feature.getDescription().isEmpty()) {
+				createFeatureDescr(feature.getWhatIsNew(), feature.getBugFixes(), featureInfoGroup);
 			}
 		}
 	}
 
-	private void createFeatureNewVersionText(EnhancedFeature feature,
-			final Group featureInfoGroup) {
-		StyledText featureNewVersion = new StyledText(featureInfoGroup,
-				SWT.WRAP);
-		String featureVersionString = VERSION_LABEL
-				+ feature.getVersion();
+	private void createFeatureDescr(String featureDescrpTxt, String bugFixes, final Group featureInfoGroup) {
+			StyledText featuredescription = new StyledText(featureInfoGroup, SWT.WRAP);
+			featuredescription.setText(featureDescrpTxt);
+			if (bugFixes != null && !bugFixes.isEmpty()) {
+				StyledText featuredJira = new StyledText(featureInfoGroup, SWT.WRAP);
+				featuredJira.setText(Messages.UpdaterDialog_9 + bugFixes);
+			}
+	}
+
+	private void createFeatureNewVersionText(EnhancedFeature feature, final Group featureInfoGroup) {
+		StyledText featureNewVersion = new StyledText(featureInfoGroup, SWT.WRAP);
+		String featureVersionString = VERSION_LABEL + feature.getVersion();
 		featureNewVersion.setText(featureVersionString);
 	}
 
-	private StyledText createFeatureNameText(EnhancedFeature feature,
-			final Group featureInfoGroup) {
+	private StyledText createFeatureNameText(EnhancedFeature feature, final Group featureInfoGroup) {
 		StyledText featureName = new StyledText(featureInfoGroup, SWT.WRAP);
 		final String featureNameString = feature.getLabel();
 		featureName.setText(featureNameString);
@@ -267,8 +243,7 @@ public class UpdaterDialog extends Dialog {
 	private Group createFeatureInfoRepresentationGroup(final Group featureGroup) {
 		GridData gridData;
 		final Group featureInfoGroup = new Group(featureGroup, SWT.NONE);
-		featureInfoGroup.setBackground(featureGroup.getDisplay()
-				.getSystemColor(SWT.COLOR_WHITE));
+		featureInfoGroup.setBackground(featureGroup.getDisplay().getSystemColor(SWT.COLOR_WHITE));
 		gridData = new GridData(SWT.FILL, SWT.FILL, true, false);
 		gridData.horizontalSpan = 2;
 		featureInfoGroup.setLayoutData(gridData);
@@ -276,10 +251,8 @@ public class UpdaterDialog extends Dialog {
 		return featureInfoGroup;
 	}
 
-	private void createCheckBoxInFeatureGroup(EnhancedFeature feature,
-			final Group featureGroup, final ActiveTab type) {
-		final SelectableFeatureButton btn = new SelectableFeatureButton(
-				featureGroup, SWT.CHECK);
+	private void createCheckBoxInFeatureGroup(EnhancedFeature feature, final Group featureGroup, final ActiveTab type) {
+		final SelectableFeatureButton btn = new SelectableFeatureButton(featureGroup, SWT.CHECK);
 		btn.setFeature(feature);
 		btn.getCheckBox().addSelectionListener(new SelectionAdapter() {
 			@Override
@@ -306,52 +279,47 @@ public class UpdaterDialog extends Dialog {
 		});
 	}
 
-	private Group createFeatureRepresentationGroup(Group group,
-			GridData gridData) {
+	private Group createFeatureRepresentationGroup(Group group, GridData gridData) {
 		final Group featureGroup = new Group(group, SWT.NONE);
-		featureGroup.setBackground(featureGroup.getDisplay().getSystemColor(
-				SWT.COLOR_WHITE));
+		featureGroup.setBackground(featureGroup.getDisplay().getSystemColor(SWT.COLOR_WHITE));
 		gridData.horizontalSpan = 2;
 		featureGroup.setLayout(new GridLayout(4, false));
 		featureGroup.setLayoutData(gridData);
 		return featureGroup;
 	}
-	
-	protected void createButtonsForButtonBar(Composite parent)
-	{
-	  // Change parent layout data to fill the whole bar
-	  parent.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false));
 
-	  installBtn = createButton(parent, IDialogConstants.NO_ID, INSTALL_BTN_TXT, true);
-	  installBtn.setEnabled(false);
-	  installBtn.addListener(SWT.Selection, new Listener() {
-	      public void handleEvent(Event e) {
-	          switch (e.type) {
+	protected void createButtonsForButtonBar(Composite parent) {
+		// Change parent layout data to fill the whole bar
+		parent.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false));
+
+		installBtn = createButton(parent, IDialogConstants.NO_ID, INSTALL_BTN_TXT, true);
+		installBtn.setEnabled(false);
+		installBtn.addListener(SWT.Selection, new Listener() {
+			public void handleEvent(Event e) {
+				switch (e.type) {
 				case SWT.Selection:
-					if (tabFolder.getSelection()[0].getText().equals(
-							ALL_FEATURES_TAB_TITLE)) {
+					if (tabFolder.getSelection()[0].getText().equals(ALL_FEATURES_TAB_TITLE)) {
 						updateManager.setSelectedFeaturesToInstall(selectedFeatures);
 						updateManager.installSelectedFeatures(new NullProgressMonitor());
-					} else if (tabFolder.getSelection()[0].getText().equals(
-							UPDATES_TAB_TITLE)) {
+					} else if (tabFolder.getSelection()[0].getText().equals(UPDATES_TAB_TITLE)) {
 						updateManager.setSelectedUpdates(selectedUpdates);
 						updateManager.installSelectedUpdates(new NullProgressMonitor());
 					}
 					dialog.close();
 					break;
-	          }
-	        }
-	  });
+				}
+			}
+		});
 
-	  // Create a spacer label
-	  Label spacer = new Label(parent, SWT.NONE);
-	  spacer.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false));
+		// Create a spacer label
+		Label spacer = new Label(parent, SWT.NONE);
+		spacer.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false));
 
-	  // Update layout of the parent composite to count the spacer
-	  GridLayout layout = (GridLayout)parent.getLayout();
-	  layout.numColumns++;
-	  layout.makeColumnsEqualWidth = false;
-	  createButton(parent, IDialogConstants.CANCEL_ID, CANCEL_BTN_TXT , false);
+		// Update layout of the parent composite to count the spacer
+		GridLayout layout = (GridLayout) parent.getLayout();
+		layout.numColumns++;
+		layout.makeColumnsEqualWidth = false;
+		createButton(parent, IDialogConstants.CANCEL_ID, CANCEL_BTN_TXT, false);
 	}
 
 	protected void configureShell(Shell shell) {

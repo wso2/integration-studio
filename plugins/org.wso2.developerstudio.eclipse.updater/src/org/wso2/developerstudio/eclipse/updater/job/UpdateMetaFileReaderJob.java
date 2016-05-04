@@ -90,13 +90,15 @@ public class UpdateMetaFileReaderJob extends Job {
 			Collection<IInstallableUnit> installedWSO2Features = updateManager
 					.getInstalledWSO2Features(progress.newChild(1));
 			// read the meta file
-			downloadMetaFile();
+			if (!downloadMetaFile()) {
+				promptUserError(Messages.UpdateMetaFileReaderJob_3, ERROR_TITLE);
+				return Status.CANCEL_STATUS;
+			}
 			Map<String, String> availaleDevStudioFeatureVerions = new HashMap<String, String>();
 			availaleDevStudioFeatureVerions = readMetaDataFiletoMap();
 			deleteDownloadedTempFile();
 			if (availaleDevStudioFeatureVerions.isEmpty()) {
 				log.error(Messages.UpdateCheckerJob_4);
-				promptUserError(Messages.UpdateMetaFileReaderJob_3, ERROR_TITLE);
 				return Status.CANCEL_STATUS;
 			}
 			for (IInstallableUnit iInstallableUnit : installedWSO2Features) {
@@ -183,7 +185,7 @@ public class UpdateMetaFileReaderJob extends Job {
 		return (HashMap<String, String>) featureMap;
 	}
 
-	private void downloadMetaFile() {
+	private boolean downloadMetaFile() {
 		try {
 			File updateFile = new File(fileLoc);
 			// needs to enable once the pref store values are up
@@ -198,8 +200,10 @@ public class UpdateMetaFileReaderJob extends Job {
 			}
 			URL link = new URL(url + UPDATES_TXT_FILE);
 			FileUtils.copyURLToFile(link, updateFile, TIME_OUT_MS, TIME_OUT_MS);
+			return true;
 		} catch (IOException e) {
 			log.error("error in writing the the content from the downloaded meta data file for updates", e);
+			return false;
 		}
 	}
 

@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Platform UI
 Bundle-SymbolicName: org.wso2.developerstudio.eclipse.platform.ui;singleton:=true
-Bundle-Version: 4.1.0.qualifier
+Bundle-Version: 4.2.0.qualifier
 Bundle-Activator: org.wso2.developerstudio.eclipse.platform.ui.Activator
 Require-Bundle: org.wso2.developerstudio.eclipse.platform.core;bundle-version="4.1.0",
  org.wso2.developerstudio.eclipse.kernel.libraries;bundle-version="4.0.0"
@@ -24,16 +24,16 @@ Import-Package: org.eclipse.core.expressions,
  org.wso2.developerstudio.eclipse.utils.file;version="[4.0.0,5.0.0)",
  org.wso2.developerstudio.eclipse.utils.project;version="[4.0.0,5.0.0)",
  org.wso2.developerstudio.eclipse.utils.ui;version="[4.0.0,5.0.0)"
-Export-Package: org.wso2.developerstudio.eclipse.platform.ui;version="4.1.0",
- org.wso2.developerstudio.eclipse.platform.ui.dialogs;version="4.1.0",
- org.wso2.developerstudio.eclipse.platform.ui.editor;version="4.1.0",
- org.wso2.developerstudio.eclipse.platform.ui.interfaces;version="4.1.0",
- org.wso2.developerstudio.eclipse.platform.ui.manager;version="4.1.0",
- org.wso2.developerstudio.eclipse.platform.ui.preferences;version="4.1.0",
- org.wso2.developerstudio.eclipse.platform.ui.startup;version="4.1.0",
- org.wso2.developerstudio.eclipse.platform.ui.utils;version="4.1.0",
- org.wso2.developerstudio.eclipse.platform.ui.validator;version="4.1.0",
- org.wso2.developerstudio.eclipse.platform.ui.wizard;version="4.1.0",
- org.wso2.developerstudio.eclipse.platform.ui.wizard.pages;version="4.1.0"
+Export-Package: org.wso2.developerstudio.eclipse.platform.ui;version="4.2.0",
+ org.wso2.developerstudio.eclipse.platform.ui.dialogs;version="4.2.0",
+ org.wso2.developerstudio.eclipse.platform.ui.editor;version="4.2.0",
+ org.wso2.developerstudio.eclipse.platform.ui.interfaces;version="4.2.0",
+ org.wso2.developerstudio.eclipse.platform.ui.manager;version="4.2.0",
+ org.wso2.developerstudio.eclipse.platform.ui.preferences;version="4.2.0",
+ org.wso2.developerstudio.eclipse.platform.ui.startup;version="4.2.0",
+ org.wso2.developerstudio.eclipse.platform.ui.utils;version="4.2.0",
+ org.wso2.developerstudio.eclipse.platform.ui.validator;version="4.2.0",
+ org.wso2.developerstudio.eclipse.platform.ui.wizard;version="4.2.0",
+ org.wso2.developerstudio.eclipse.platform.ui.wizard.pages;version="4.2.0"
 Bundle-Vendor: WSO2
 Bundle-ClassPath: .

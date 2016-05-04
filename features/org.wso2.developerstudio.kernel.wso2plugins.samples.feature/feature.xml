@@ -2,7 +2,7 @@
 <feature
       id="org.wso2.developerstudio.kernel.wso2plugins.samples.feature"
       label="Developer Studio Samples Feature"
-      version="4.1.0.qualifier"
+      version="4.2.0.qualifier"
       provider-name="%providerName">
 
    <description url="http://wso2.com">

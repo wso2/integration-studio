@@ -75,7 +75,7 @@ public class TemplateProjectCreationWizard extends AbstractWSO2ProjectCreationWi
 	
 	public TemplateProjectCreationWizard() {
 		this.templateModel = new TemplateModel();
-		setModel(this.templateModel);
+		super.setModel(this.templateModel);
 		setWindowTitle(PROJECT_WIZARD_WINDOW_TITLE);
 		setDefaultPageImageDescriptor(TemplateImageUtils.getInstance().getImageDescriptor("template.png"));
 	}

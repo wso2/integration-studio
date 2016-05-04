@@ -15,6 +15,8 @@
  */
 package org.wso2.developerstudio.eclipse.updater.ui;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -26,9 +28,13 @@ import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.ScrolledComposite;
+import org.eclipse.swt.custom.StyleRange;
 import org.eclipse.swt.custom.StyledText;
+import org.eclipse.swt.events.MouseEvent;
+import org.eclipse.swt.events.MouseListener;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.FontData;
 import org.eclipse.swt.graphics.Image;
@@ -45,12 +51,14 @@ import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.TabFolder;
 import org.eclipse.swt.widgets.TabItem;
+import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.platform.ui.preferences.DeveloperPreferencePage;
 import org.wso2.developerstudio.eclipse.updater.UpdaterPlugin;
 import org.wso2.developerstudio.eclipse.updater.core.UpdateManager;
+import org.wso2.developerstudio.eclipse.updater.job.UpdateMetaFileReaderJob;
 import org.wso2.developerstudio.eclipse.updater.model.EnhancedFeature;
 
 public class UpdaterDialog extends Dialog {
@@ -218,12 +226,46 @@ public class UpdaterDialog extends Dialog {
 		}
 	}
 
-	private void createFeatureDescr(String featureDescrpTxt, String bugFixes, final Group featureInfoGroup) {
+	private void createFeatureDescr(final String featureDescrpTxt, final String bugFixes, final Group featureInfoGroup) {
 			StyledText featuredescription = new StyledText(featureInfoGroup, SWT.WRAP);
 			featuredescription.setText(featureDescrpTxt);
 			if (bugFixes != null && !bugFixes.isEmpty()) {
 				StyledText featuredJira = new StyledText(featureInfoGroup, SWT.WRAP);
-				featuredJira.setText(Messages.UpdaterDialog_9 + bugFixes);
+				String displayTxt = Messages.UpdaterDialog_9 + bugFixes;
+				featuredJira.setText(displayTxt);
+				StyleRange style = new StyleRange();
+				style.underline = true;
+				style.underlineStyle = SWT.UNDERLINE_LINK;
+
+				int[] ranges = {displayTxt.indexOf(bugFixes), bugFixes.length()};
+				StyleRange[] styles = {style};
+				featuredJira.setStyleRanges(ranges, styles);
+				featuredJira.addMouseListener(new MouseListener() {
+					
+					@Override
+					public void mouseUp(MouseEvent arg0) {
+					}
+					
+					@Override
+					public void mouseDown(MouseEvent arg0) {
+						openLinkInDefaultBrowser(bugFixes);
+					}
+
+					@Override
+					public void mouseDoubleClick(MouseEvent arg0) {
+						openLinkInDefaultBrowser(bugFixes);
+					}
+					
+					private void openLinkInDefaultBrowser(final String bugFixes) {
+						try {
+							PlatformUI.getWorkbench().getBrowserSupport().getExternalBrowser().openURL(new URL(bugFixes.trim()));
+						} catch (PartInitException e) {
+							UpdateMetaFileReaderJob.promptUserError(e.getLocalizedMessage(), "Error opening " + bugFixes.trim());
+						} catch (MalformedURLException e) {
+							UpdateMetaFileReaderJob.promptUserError(bugFixes.trim() + "Cannot be opened in browser, Malformed URL", "Error opening " + bugFixes.trim());
+						}
+					}
+				});
 			}
 	}
 

@@ -49,9 +49,6 @@ public class ChannelResponseDispatcher implements Runnable {
                 synchronized (requestReader) {
                     buffer = requestReader.readLine();
                 }
-//                System.out.println("*********************************************************");
-//                System.out.println(buffer);
-//                System.out.println("*********************************************************");
                 esbDebuggerInterface.notifyResponce(buffer);                
             }
         } catch (IOException ex) {

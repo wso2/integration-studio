@@ -54,7 +54,7 @@ public interface ICommunicationMessageFactory {
      * @param debugPoint
      * @return
      */
-    JsonObject createMediatoLocationJsonObj(AbstractESBDebugPointMessage debugPoint);
+    JsonObject createMediatorLocationJsonObj(AbstractESBDebugPointMessage debugPoint);
 
     /**
      * This method creates the specified get properties command message to send

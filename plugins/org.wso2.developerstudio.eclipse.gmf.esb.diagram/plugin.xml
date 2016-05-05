@@ -6549,10 +6549,7 @@
             name="Data Mapper"
             mediaType="application/datamapper"
             extension="dmc"></template>
- </extension>
- 
- 
- 
+ </extension> 
  <extension 
    point="org.eclipse.ui.views">
       <category

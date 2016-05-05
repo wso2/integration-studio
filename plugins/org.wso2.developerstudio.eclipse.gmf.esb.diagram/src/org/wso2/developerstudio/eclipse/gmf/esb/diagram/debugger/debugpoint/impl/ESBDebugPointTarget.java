@@ -32,7 +32,6 @@ import org.eclipse.ui.part.FileEditorInput;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbDiagram;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbServer;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.Activator;
-import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractBaseFigureEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EditorUtils;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.channel.messagefactory.impl.JsonGsonMessageFactory;
@@ -93,13 +92,13 @@ public class ESBDebugPointTarget {
      * @return
      */
     public static boolean canUsedAsWireLogViewLocation(EditPart part) {
-    	if (part instanceof AbstractMediator) {
-			return true;
-		}
-    	//ProxyServiceEditPart extends AbstractBaseFigureEditPart
-    	if (part instanceof ProxyServiceEditPart) {
-			return true;
-		}
+        if (part instanceof AbstractMediator) {
+            return true;
+        }
+        // ProxyServiceEditPart extends AbstractBaseFigureEditPart
+        if (part instanceof ProxyServiceEditPart) {
+            return true;
+        }
         return false;
     }
 
@@ -163,13 +162,12 @@ public class ESBDebugPointTarget {
         IEditorPart activeEditor = EditorUtils.getActiveEditor();
 
         if (activeEditor instanceof EsbMultiPageEditor) {
-//        	String commandArgument = "dummy";
             EsbServer esbServer = getESBServerFromESBMultiPageEditor(activeEditor);
             IESBDebugPointBuilder breakpointBuilder = ESBDebugPointBuilderFactory.getBreakpointBuilder(esbServer
                     .getType());
             AbstractESBDebugPointMessage debugPointMsg = breakpointBuilder.getESBDebugPointMessage(esbServer, part, null);
             JsonObject breakpointCommandJsonObject = new JsonGsonMessageFactory()
-					.createMediatoLocationJsonObj(debugPointMsg);
+					.createMediatorLocationJsonObj(debugPointMsg);
             wirelLogsReceiveEB.send(ESB_STACK_FRAME_WIRE_LOGS_RECEIVED_EVENT, breakpointCommandJsonObject);
         }
     }

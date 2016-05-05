@@ -229,7 +229,7 @@ public class JsonGsonMessageFactory implements ICommunicationMessageFactory {
     }
     
     @Override
-    public JsonObject createMediatoLocationJsonObj(AbstractESBDebugPointMessage debugPoint) {
+    public JsonObject createMediatorLocationJsonObj(AbstractESBDebugPointMessage debugPoint) {
         GsonBuilder builder = new GsonBuilder();
         builder.registerTypeAdapter(ESBMediatorPosition.class, new MediatorPositionGsonSerializer());
         builder.setFieldNamingStrategy(new PojoToGsonCustomNamingStrategy());
@@ -248,9 +248,9 @@ public class JsonGsonMessageFactory implements ICommunicationMessageFactory {
         return propertyChangeMessage.toJson(propertyChangeCommand);
     }
 
-	@Override
-	public boolean checkForWirelogMessage(String buffer) {
-		JsonElement jsonElement = new JsonParser().parse(buffer);
+    @Override
+    public boolean checkForWirelogMessage(String buffer) {
+        JsonElement jsonElement = new JsonParser().parse(buffer);
         Set<Entry<String, JsonElement>> entrySet = jsonElement.getAsJsonObject().entrySet();
 
         EventMessageType event = null;
@@ -260,13 +260,12 @@ public class JsonGsonMessageFactory implements ICommunicationMessageFactory {
         ArtifactType debugPointType = null;
 
         for (Entry<String, JsonElement> entry : entrySet) {
-
             switch (entry.getKey()) {
             case WIRE_LOG_LABEL:
-            	return true;
+                return true;
             }
         }
-		return false;
-	}
+        return false;
+    }
 
 }

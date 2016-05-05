@@ -59,21 +59,6 @@ public class TemplateDebugPointBuilder extends AbstractESBDebugPointBuilder {
     public ESBDebugPoint getESBDebugPoint(EsbServer esbServer, IResource resource, AbstractMediator part,
             String commandArgument) throws ESBDebuggerException, CoreException {
 
-//        TemplateImpl template = (TemplateImpl) esbServer.eContents().get(INDEX_OF_FIRST_ELEMENT);
-//
-//        if (template.getChild() instanceof SequencesImpl) {
-//            EsbElement sequnce = template.getChild();
-//            EObject selection = ((View) part.getModel()).getElement();
-//            List<Integer> position = getMediatorPosition(((SequencesImpl) sequnce).getOutputConnector(), selection);
-//            int lineNumber = -1;
-//            ESBTemplateBean templateBean = new ESBTemplateBean(template.getName(), new ESBMediatorPosition(position));
-//            ESBTemplateDebugPointMessage templateDebugPoint = new ESBTemplateDebugPointMessage(null, commandArgument,
-//                    TEMPLATE_LABEL, templateBean);
-//            return new ESBDebugPoint(resource, lineNumber, templateDebugPoint);
-//        } else {
-//            throw new UnsupportedOperationException("Debug Point Integration not supported for template : "
-//                    + template.getChild());
-//        }
     	int lineNumber = -1;
     	ESBTemplateDebugPointMessage templateDebugPoint = (ESBTemplateDebugPointMessage)getESBDebugPointMessage(esbServer, part, commandArgument);
     	return new ESBDebugPoint(resource, lineNumber, templateDebugPoint);

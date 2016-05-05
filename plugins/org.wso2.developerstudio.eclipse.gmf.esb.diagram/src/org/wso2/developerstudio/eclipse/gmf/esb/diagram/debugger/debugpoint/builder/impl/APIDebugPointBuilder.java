@@ -64,34 +64,6 @@ public class APIDebugPointBuilder extends AbstractESBDebugPointBuilder {
     public ESBDebugPoint getESBDebugPoint(EsbServer esbServer, IResource resource, AbstractMediator part,
             String commandArgument) throws CoreException, ESBDebuggerException {
         int lineNumber = -1;
-//        SynapseAPIImpl api = (SynapseAPIImpl) esbServer.eContents().get(INDEX_OF_FIRST_ELEMENT);
-//
-//        EditPart proxyContainer = getContainerFromEditPart(part, ProxyServiceContainer2EditPart.class);
-//        EditPart apiContainer = getContainerFromEditPart(proxyContainer, SynapseAPIAPICompartmentEditPart.class);
-//        EList<APIResource> apiResources = api.getResources();
-//        APIResource apiResource = getAPIResourceFromAPIEditPart(apiResources, apiContainer);
-//        EObject selection = ((View) part.getModel()).getElement();
-//        List<Integer> position;
-//        String sequenceType;
-//        if (proxyContainer instanceof ProxyServiceSequenceAndEndpointContainerEditPart) {
-//            if (part.reversed) {
-//                position = getMediatorPosition(apiResource.getOutSequenceOutputConnector(), selection);
-//                sequenceType = API_OUTSEQ_LABEL;
-//            } else {
-//                position = getMediatorPosition(apiResource.getOutputConnector(), selection);
-//                sequenceType = API_INSEQ_LABEL;
-//            }
-//        } else {
-//            position = getMediatorPositionInFaultSeq(apiResource.getContainer().getFaultContainer().getMediatorFlow()
-//                    .getChildren(), selection);
-//            sequenceType = API_FAULTSEQ_LABEL;
-//        }
-//        ESBAPIResourceBean resourse = new ESBAPIResourceBean(ESBDebuggerUtil.getMethodValuesFromResource(apiResource),
-//                apiResource.getUrlMapping(), apiResource.getUriTemplate());
-//
-//        ESBAPIBean apiBean = new ESBAPIBean(api.getApiName(), resourse, sequenceType, new ESBMediatorPosition(position));
-//        ESBAPIDebugPointMessage apiDebugPoint = new ESBAPIDebugPointMessage(null, commandArgument,
-//                new ESBAPISequenceBean(apiBean));
         ESBAPIDebugPointMessage apiDebugPoint = (ESBAPIDebugPointMessage)getESBDebugPointMessage(esbServer, part, commandArgument);
         return new ESBDebugPoint(resource, lineNumber, apiDebugPoint);
 

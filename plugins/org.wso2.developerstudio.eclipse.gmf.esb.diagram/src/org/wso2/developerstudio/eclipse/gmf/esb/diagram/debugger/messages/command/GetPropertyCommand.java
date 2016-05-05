@@ -66,12 +66,12 @@ public class GetPropertyCommand {
         this.context = context;
     }
 
-	public PropertyValueBean getProperty() {
-		return property;
-	}
+    public PropertyValueBean getProperty() {
+        return property;
+    }
 
-	public void setProperty(PropertyValueBean property) {
-		this.property = property;
-	}
-    
+    public void setProperty(PropertyValueBean property) {
+        this.property = property;
+    }
+
 }

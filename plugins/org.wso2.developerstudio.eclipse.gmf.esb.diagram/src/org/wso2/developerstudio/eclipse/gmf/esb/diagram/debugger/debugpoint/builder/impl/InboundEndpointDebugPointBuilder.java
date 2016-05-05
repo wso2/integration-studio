@@ -55,25 +55,6 @@ public class InboundEndpointDebugPointBuilder extends AbstractESBDebugPointBuild
             String commandArgument) throws ESBDebuggerException, CoreException {
 
         int lineNumber = -1;
-//        InboundEndpointImpl inboundEndpoint = (InboundEndpointImpl) esbServer.eContents().get(INDEX_OF_FIRST_ELEMENT);
-//        List<Integer> position = new ArrayList<>();
-//        String sequenceType = EMPTY_STRING;
-//        EditPart container = getContainerFromEditPart(part, InboundEndpointContainerEditPart.class);
-//        if (container instanceof InboundEndpointSequenceContainerEditPart) {
-//            position.add(0);
-//            sequenceType = INBOUND_SEQ_LABEL;
-//        } else if (container instanceof InboundEndpointOnErrorSequenceContainerEditPart) {
-//            position.add(0);
-//            sequenceType = INBOUND_FAULT_SEQ_LABEL;
-//        } else {
-//            throw new IllegalArgumentException("Selected Metdiator Edit Part is in a unknown position : "
-//                    + container.toString());
-//        }
-//
-//        ESBInboundEndpointBean inboundBean = new ESBInboundEndpointBean(inboundEndpoint.getName(), sequenceType,
-//                new ESBMediatorPosition(position));
-//        ESBInboundEndpointDebugPointMessage inboundDebugPoint = new ESBInboundEndpointDebugPointMessage(null,
-//                commandArgument, new ESBInboundEndpointSequenceBean(inboundBean));
         ESBInboundEndpointDebugPointMessage inboundDebugPoint = (ESBInboundEndpointDebugPointMessage)getESBDebugPointMessage(esbServer, part, commandArgument);
         return new ESBDebugPoint(resource, lineNumber, inboundDebugPoint);
     }

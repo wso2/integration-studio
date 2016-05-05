@@ -120,7 +120,7 @@
 						<java classname="org.eclipse.equinox.launcher.Main" fork="true"
 							spawn="false" failonerror="true" maxmemory="1024m">
 						<classpath>
-							<fileset dir="${project.basedir}/target/eclipse/plugins" includes="org.eclipse.equinox.launcher*.jar" />
+							<fileset dir="${project.basedir}/target/Eclipse.app/Contents/Eclipse/plugins" includes="org.eclipse.equinox.launcher*.jar" />
 						</classpath>
 						<arg value="-nosplash" />
 						<arg value="-application" />
@@ -128,7 +128,7 @@
 						<arg value="-repository" />
 						<arg value="file:${project.basedir}/target/p2-repo" />
 						<arg value="-destination" />
-						<arg value="${project.basedir}/target/eclipse" />
+						<arg value="${project.basedir}/target/Eclipse.app/Contents/Eclipse" />
 						<arg value="-installIU" />
 						<arg value="Q:everything.select(x | x.properties ~= filter('(org.eclipse.equinox.p2.type.group=true)'))"/>
 					</java>
@@ -147,15 +147,15 @@
         			<configuration>
             				<tasks>
 						<replace token="512m" value="1024m"
-                         dir="target/eclipse">
+                         dir="target/Eclipse.app/Contents/Eclipse">
                                                         <include name="**/eclipse.ini"/>
                                                 </replace>
 						<replace token="40m" value="512m"
-                         dir="target/eclipse">
+                         dir="target/Eclipse.app/Contents/Eclipse">
                                                         <include name="**/eclipse.ini"/>
                                                 </replace>
 						<replace token="256m" value="512m"
-                         dir="target/eclipse">
+                         dir="target/Eclipse.app/Contents/Eclipse">
                                                         <include name="**/eclipse.ini"/>
                                                 </replace>
             				</tasks>

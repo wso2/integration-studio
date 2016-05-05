@@ -15,11 +15,14 @@
  */
 package org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.debugpoint.impl;
 
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.ESB_STACK_FRAME_WIRE_LOGS_RECEIVED_EVENT;
+
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.debug.core.DebugPlugin;
 import org.eclipse.debug.core.model.IBreakpoint;
+import org.eclipse.e4.core.services.events.IEventBroker;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.jface.viewers.ISelection;
@@ -31,16 +34,21 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbServer;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.Activator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EditorUtils;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.channel.messagefactory.impl.JsonGsonMessageFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.debugpoint.builder.IESBDebugPointBuilder;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.debugpoint.builder.impl.ESBDebugPointBuilderFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.exception.DebugPointMarkerNotFoundException;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.exception.ESBDebuggerException;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.messages.util.AbstractESBDebugPointMessage;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.model.ESBDebugModelPresentation;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerUtil;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.ProxyServiceEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbMultiPageEditor;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
+
+import com.google.gson.JsonObject;
 
 /**
  * This is a utility class which contains methods related to breakpoints
@@ -75,6 +83,23 @@ public class ESBDebugPointTarget {
      */
     public static boolean canToggleDiagramDebugpoints(EditPart part) {
         return true;
+    }
+    
+    /**
+     * This method checks whether selected part can used as a wirelogView Point
+     * 
+     * @param part //TODO delete
+     * @return
+     */
+    public static boolean canUsedAsWireLogViewLocation(EditPart part) {
+        if (part instanceof AbstractMediator) {
+            return true;
+        }
+        // ProxyServiceEditPart extends AbstractBaseFigureEditPart
+        if (part instanceof ProxyServiceEditPart) {
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -121,6 +146,29 @@ public class ESBDebugPointTarget {
                     ESBDebuggerUtil.removeSkippointMark(part);
                 }
             }
+        }
+    }
+    
+    /**
+     * This method performs the graphical view breakpoint insertion action
+     * 
+     * @param part
+     * @throws CoreException
+     * @throws ESBDebuggerException
+     */
+    public static void triggerWirelogRetrieveEventWithMediatorId(AbstractMediator part, IEventBroker wirelLogsReceiveEB) throws CoreException,
+            ESBDebuggerException {
+
+        IEditorPart activeEditor = EditorUtils.getActiveEditor();
+
+        if (activeEditor instanceof EsbMultiPageEditor) {
+            EsbServer esbServer = getESBServerFromESBMultiPageEditor(activeEditor);
+            IESBDebugPointBuilder breakpointBuilder = ESBDebugPointBuilderFactory.getBreakpointBuilder(esbServer
+                    .getType());
+            AbstractESBDebugPointMessage debugPointMsg = breakpointBuilder.getESBDebugPointMessage(esbServer, part, null);
+            JsonObject breakpointCommandJsonObject = new JsonGsonMessageFactory()
+					.createMediatorLocationJsonObj(debugPointMsg);
+            wirelLogsReceiveEB.send(ESB_STACK_FRAME_WIRE_LOGS_RECEIVED_EVENT, breakpointCommandJsonObject);
         }
     }
 

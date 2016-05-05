@@ -22,6 +22,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbServer;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.debugpoint.impl.ESBDebugPoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.exception.ESBDebuggerException;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.messages.util.AbstractESBDebugPointMessage;
 
 /**
  * This interface should be implemented by all Debug Point builder classes.
@@ -45,6 +46,20 @@ public interface IESBDebugPointBuilder {
      * @throws ESBDebuggerException
      */
     ESBDebugPoint getESBDebugPoint(EsbServer esbServer, IResource resource, AbstractMediator mediatorPart,
+            String commandArguement) throws CoreException, ESBDebuggerException;
+    
+    /**
+     * This method return a {@link AbstractESBDebugPointMessage} of mediatorPart which is in
+     * file resource and esbServer
+     * 
+     * @param esbServer
+     * @param mediatorPart
+     * @param commandArguement
+     * @return
+     * @throws CoreException
+     * @throws ESBDebuggerException
+     */
+    AbstractESBDebugPointMessage getESBDebugPointMessage(EsbServer esbServer, AbstractMediator mediatorPart,
             String commandArguement) throws CoreException, ESBDebuggerException;
 
     /**

@@ -29,6 +29,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.debugpoint.impl.ESBDebugPoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.exception.ESBDebuggerException;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.exception.MediatorNotFoundException;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.messages.util.AbstractESBDebugPointMessage;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.messages.util.ESBInboundEndpointBean;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.messages.util.ESBInboundEndpointDebugPointMessage;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.messages.util.ESBInboundEndpointSequenceBean;
@@ -54,6 +55,20 @@ public class InboundEndpointDebugPointBuilder extends AbstractESBDebugPointBuild
             String commandArgument) throws ESBDebuggerException, CoreException {
 
         int lineNumber = -1;
+        ESBInboundEndpointDebugPointMessage inboundDebugPoint = (ESBInboundEndpointDebugPointMessage)getESBDebugPointMessage(esbServer, part, commandArgument);
+        return new ESBDebugPoint(resource, lineNumber, inboundDebugPoint);
+    }
+
+    @Override
+    public void updateExistingDebugPoints(IResource resource, AbstractMediator abstractMediator, EsbServer esbServer,
+            String action) throws MediatorNotFoundException {
+        // no implementation because Inbound endpoint can only have one sequence
+        // on both "onErrorSequence" and "sequence"
+    }
+
+	@Override
+	public AbstractESBDebugPointMessage getESBDebugPointMessage(EsbServer esbServer, AbstractMediator part,
+            String commandArgument) throws CoreException, ESBDebuggerException {
         InboundEndpointImpl inboundEndpoint = (InboundEndpointImpl) esbServer.eContents().get(INDEX_OF_FIRST_ELEMENT);
         List<Integer> position = new ArrayList<>();
         String sequenceType = EMPTY_STRING;
@@ -73,14 +88,7 @@ public class InboundEndpointDebugPointBuilder extends AbstractESBDebugPointBuild
                 new ESBMediatorPosition(position));
         ESBInboundEndpointDebugPointMessage inboundDebugPoint = new ESBInboundEndpointDebugPointMessage(null,
                 commandArgument, new ESBInboundEndpointSequenceBean(inboundBean));
-        return new ESBDebugPoint(resource, lineNumber, inboundDebugPoint);
-    }
-
-    @Override
-    public void updateExistingDebugPoints(IResource resource, AbstractMediator abstractMediator, EsbServer esbServer,
-            String action) throws MediatorNotFoundException {
-        // no implementation because Inbound endpoint can only have one sequence
-        // on both "onErrorSequence" and "sequence"
-    }
+		return inboundDebugPoint;
+	}
 
 }

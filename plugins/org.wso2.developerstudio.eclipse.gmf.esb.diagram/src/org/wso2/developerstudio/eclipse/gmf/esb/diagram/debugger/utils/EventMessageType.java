@@ -52,7 +52,11 @@ public enum EventMessageType {
      * This event type represent a debug points and other debugger related info
      * lost event
      */
-    DEBUG_INFO_LOST(DEBUG_INFO_LOST_EVENT);
+    DEBUG_INFO_LOST(DEBUG_INFO_LOST_EVENT),
+    /*
+     * This event type represent a wirelogs are ready to be retrieved 
+     */
+    WIRE_LOG(WIRE_LOG_EVENT);
 
     private final String event;
 

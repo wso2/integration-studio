@@ -14,4 +14,32 @@
     <modules>
         <module>org.wso2.developerstudio.eclipse.kernel.defaultsamples</module>
     </modules>
+	<profiles>
+	 <profile>
+		 <id>devsrelease</id>
+				 <build>
+						<plugins>
+							 <plugin>
+								<groupId>org.apache.maven.plugins</groupId>
+								<artifactId>maven-jarsigner-plugin</artifactId>
+								<version>1.2</version>
+								<configuration>
+									<keystore>${keystore.path}</keystore>
+									<storepass>${keystore.store.password}</storepass>
+									<alias>selfsigned</alias>
+									<keypass>${keystore.key.password}</keypass>
+								</configuration>
+									<executions>
+										<execution>
+											<id>sign</id>
+											<goals>
+												<goal>sign</goal>
+											</goals>
+										</execution>
+									</executions>
+							</plugin>
+						</plugins>
+				 </build>
+	 </profile>
+ </profiles>
 </project>

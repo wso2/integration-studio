@@ -33,6 +33,11 @@
     		<name>WSO2 Maven2 Repo</name>
     		<url>http://dist.wso2.org/maven2/</url>
     	</repository>
+        <repository> 
+            <id>eclipse-indigo</id> 
+            <url>http://download.eclipse.org/releases/mars</url> 
+            <layout>p2</layout> 
+        </repository>
     </repositories>
     <pluginRepositories>
         <pluginRepository>

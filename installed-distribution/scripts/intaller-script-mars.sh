@@ -33,7 +33,7 @@ mvn install:install-file \
   -DgeneratePom=true
 mvn install:install-file \
   -DgroupId=org.eclipse \
-  -DartifactId=eclipse-jee-2-mars-win32 \
+  -DartifactId=eclipse-jee-mars-2-win32 \
   -Dpackaging=zip \
   -Dversion=4.5.2 \
   -Dfile=eclipse-jee-mars-2-win32.zip \

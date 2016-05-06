@@ -237,6 +237,23 @@ function generateTasks() {
 }
 
 /*
+ * Signature: addTask(){...}
+ * 
+ * This method generates creates a new task. This method add a dummy task node into the ht file and adds a new task tab and Ui elements respectively
+ * 
+ * 
+ */
+function deleteTask(taskNode) { //createFile
+    taskNode.parentNode.removeChild(taskNode); 
+    saveSource();
+    process();
+    i = parseInt($('#nooftasks').val());
+    i--;
+    $('#nooftasks').val(i);
+    makeDirty();
+}
+
+/*
  * Signature: generateUI() {...}
  * 
  * This method iterates over the task nodes and creates the UI elements(using
@@ -257,7 +274,10 @@ function generateUI() {
             taskName = taskNode.getAttribute("name");
             generateTaskDiv(taskNode); // create respective Div for each task
 
-            $("#page-content-wrapper #tabNames").append("<li class='taskDivHolder' ><a href='#" + taskName + "wrapper'>" + taskName + "</a></li>");
+            $("#page-content-wrapper #tabNames").append("<li class='taskDivHolder' ><a href='#" + taskName + "wrapper'>" + taskName + " </a><a id='deleteTask"+taskName+"' href='#" + taskName + "wrapper'>X</a></li>");
+            $('#deleteTask'+taskName).click(function() {
+                deleteTask(taskNode);
+            });
         });
         $("#page-content-wrapper #tabNames li:contains('+')").remove();
         $("#page-content-wrapper #tabNames").append("<li><a id='addNewTask' href=''>+</a></li>");

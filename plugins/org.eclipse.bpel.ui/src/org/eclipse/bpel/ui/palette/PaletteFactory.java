@@ -162,6 +162,16 @@ public class PaletteFactory implements IPaletteProvider {
 						.getFactoryFor(bpelPackage.getCompensateScope())));
 		
 		palette.add(faultCategory);
+		
+		// Creating new Category for New Extensions
+
+		PaletteCategory extension = new PaletteCategory("Extensions"); 
+		extension.setOrder(40);
+		extension.setCategoryId("bpel.extensions");
+
+		extension.add(new BPELCreationToolEntry("AssignE4X", "E4X Assign Activity",provider.getFactoryFor(bpelPackage.getAssignE4X())));
+		palette.add(extension);
+
 	}
 
 	void createTopControlPaletteEntries(PaletteRoot root) {

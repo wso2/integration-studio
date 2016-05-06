@@ -23,17 +23,12 @@
     <version>4.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>WSO2 Developer Studio BPS Tooling Updates Publisher</name>
-   
- 
     <repositories>
     </repositories>
     <pluginRepositories>
-       
     </pluginRepositories>
-
 <build>
     <plugins>
-
 	<!-- template>
 	   java -jar <targetProductFolder>/plugins/org.eclipse.equinox.launcher_*.jar
 	   -application org.eclipse.equinox.p2.publisher.FeaturesAndBundlesPublisher
@@ -44,17 +39,14 @@
 	   -compress
 	   -publishArtifacts
 	<-->
-
 <!-- template>
 	   java -jar /home/susinda/eclipseIDEs/kernelTest/pureEclipse/eclipse/plugins/org.eclipse.equinox.launcher_1.3.0.v20140415-2008.jar -application org.eclipse.equinox.p2.publisher.FeaturesAndBundlesPublisher -metadataRepository file:///home/susinda/Projects/wso2Git/wso2-devstudio/developer-studio/esb/publisher/newp2 -artifactRepository file:///home/susinda/Projects/wso2Git/wso2-devstudio/developer-studio/esb/publisher/newp2 -source ./p2/ -configs gtk.linux.x86 -compress -publishArtifacts
 	<-->
-
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>exec-maven-plugin</artifactId>
         <version>1.4.0</version>
         <executions>
-         
           <execution>
  	    <phase>test</phase>
             <goals>
@@ -89,5 +81,4 @@
       </plugin>
     </plugins>
   </build>    
-
 </project>

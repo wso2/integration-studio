@@ -17,7 +17,6 @@
   under the License.
    -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
- 
   <parent>
         <artifactId>wso2-developerstudio-bps-plugins</artifactId>
         <groupId>org.wso2.developerstudio</groupId>
@@ -33,7 +32,6 @@
   <properties>
   <tycho-version>0.23.0</tycho-version>
 </properties>
-
 <build>
   <plugins>
     <plugin>

@@ -39,8 +39,8 @@ import org.eclipse.swt.widgets.Label;
  * @author Vincent Zurczak - EBM WebSourcing (Merge this class with TextSection, simplify it by only using the XPath
  *         viewer)
  * @author Lorenzo Bettini abstract class for all StyledText based expression sections
- *         FIXME: There are probably cases that are not handled correctly. To be fixed on the fly.
- *         FIXME: Undo is not supported correctly.
+ * FIXME: There are probably cases that are not handled correctly. To be fixed on the fly.
+ * FIXME: Undo is not supported correctly.
  */
 public abstract class AbstractStyledTextExpressionSection extends BPELPropertySection {
 

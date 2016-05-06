@@ -20,7 +20,7 @@
       <editor
             name="Human Task Editor"
             extensions="ht"
-            icon="icons/sample.gif"
+            icon="icons/humanTask.png"
             contributorClass="org.wso2.developerstudio.humantaskeditor.editors.HumanTaskMultiPageEditorContributor"
             class="org.wso2.developerstudio.humantaskeditor.editors.HumanTaskMultiPageEditor"
             id="org.wso2.developerstudio.humantaskeditor.editors.HumanTaskMultiPageEditor">
@@ -34,14 +34,15 @@
       </category>
       <wizard
             name="Human Task File"
-            icon="icons/sample.gif"
+            icon="icons/humanTask.png"
             category="org.wso2.developerstudio.humantaskeditor"
             class="org.wso2.developerstudio.humantaskeditor.wizards.HumanTaskWizard"
             id="org.wso2.developerstudio.humantaskeditor.wizards.HumanTaskWizard">
       </wizard>
       <wizard
             name="Human Task Project"
-            icon="icons/sample.gif"
+            icon="icons/humanTask.png"
+            project="true"
             category="org.wso2.developerstudio.humantaskeditor"
             class="org.wso2.developerstudio.humantaskeditor.wizards.HumanTaskProjectWizard"
             id="org.wso2.developerstudio.humantaskeditor.wizards.HumanTaskProjectWizard">

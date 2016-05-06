@@ -43,4 +43,8 @@ public class ExpressionSourceViewerConfiguration extends
 		}
 		return bpelAssistant;
 	}
+
+	public ContentAssistant getBpelAssistant() {
+		return bpelAssistant;
+	}
 }

@@ -27,6 +27,21 @@ public class JoinConditionSection extends ExpressionSection {
 	/*
 	 * (non-Javadoc)
 	 * @see org.eclipse.bpel.ui.properties.ExpressionSection
+	 * #addAllAdapters()
+	 */
+	@Override
+	protected void addAllAdapters() {
+		super.addAllAdapters();
+
+		Activity activity = getModel();
+		Targets targets = activity.getTargets();
+		if( targets != null )
+			this.fAdapters[0].addToObject( targets );
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see org.eclipse.bpel.ui.properties.ExpressionSection
 	 * #getExpressionType()
 	 */
 	@Override

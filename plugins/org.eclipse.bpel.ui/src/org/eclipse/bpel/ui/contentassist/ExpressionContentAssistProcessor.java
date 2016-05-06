@@ -22,6 +22,7 @@ import org.eclipse.bpel.ui.BPELUIPlugin;
 import org.eclipse.bpel.ui.IBPELUIConstants;
 import org.eclipse.bpel.ui.details.providers.LinkContentProvider;
 import org.eclipse.bpel.ui.expressions.IEditorConstants;
+import org.eclipse.bpel.ui.properties.BPELPropertySection;
 import org.eclipse.bpel.ui.util.BPELUtil;
 import org.eclipse.bpel.ui.util.XSDUtils;
 import org.eclipse.emf.ecore.EObject;
@@ -61,12 +62,20 @@ public class ExpressionContentAssistProcessor
 	static ICompletionProposal[] EMPTY_COMPLETION_PROPOSALS = {} ; 
 	
 	// members of class ExpressionContentAssistProcessor
-	private Object theModel = null;
+	private Object theModel = null; 
+	private BPELPropertySection propertySection;
+
+	public void setPropertySection(BPELPropertySection propertySection) {
+		this.propertySection = propertySection;
+	}
+		
 	private int theToggle = 3;
 	private String theLastBeginsWith = EMPTY_STRING; 
 	private String theExpressionContext = EMPTY_STRING; 
 	private IContentAssistantExtension2 theContentAssistant;
 	
+	
+
 	/**
 	 * The function templates content assist processor.
 	 */
@@ -938,7 +947,8 @@ public class ExpressionContentAssistProcessor
 				
 		Image linkImg = BPELUIPlugin.INSTANCE.getImage(IBPELUIConstants.ICON_LINK_16);
 		
-		for( Object next : new LinkContentProvider( LinkContentProvider.INCOMING ).getElements(theModel) ) {
+		//for( Object next : new LinkContentProvider( LinkContentProvider.INCOMING ).getElements(theModel) ) {
+		for( Object next : new LinkContentProvider(LinkContentProvider.INCOMING ).getElements(propertySection.getInput())) {
 			Link link = (Link) next;
 			
 			String replName = DOLLAR + link.getName();
@@ -991,7 +1001,8 @@ public class ExpressionContentAssistProcessor
 		if ((slash > -1) || (dot > -1) || (at > -1))
 			seekChildren = true;
 		
-		Variable[] variables = BPELUtil.getVisibleVariables((EObject)theModel);
+		//Variable[] variables = BPELUtil.getVisibleVariables((EObject)theModel); 
+		Variable[] variables = BPELUtil.getVisibleVariables(propertySection.getInput());
 		ArrayList<ICompletionProposal> results = new ArrayList<ICompletionProposal>();
 		CompletionProposal prop = null;
 		String name;

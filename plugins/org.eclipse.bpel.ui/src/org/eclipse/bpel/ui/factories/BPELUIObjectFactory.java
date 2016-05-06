@@ -11,12 +11,14 @@
 package org.eclipse.bpel.ui.factories;
 
 import org.eclipse.bpel.model.Assign;
+import org.eclipse.bpel.model.AssignE4X;
 import org.eclipse.bpel.model.BPELFactory;
 import org.eclipse.bpel.model.BPELPackage;
 import org.eclipse.bpel.model.Catch;
 import org.eclipse.bpel.model.CatchAll;
 import org.eclipse.bpel.model.CompensationHandler;
 import org.eclipse.bpel.model.Copy;
+import org.eclipse.bpel.model.ExtensionAssignOperation;
 import org.eclipse.bpel.model.ForEach;
 import org.eclipse.bpel.model.OnAlarm;
 import org.eclipse.bpel.model.OnEvent;
@@ -24,6 +26,7 @@ import org.eclipse.bpel.model.OnMessage;
 import org.eclipse.bpel.model.Pick;
 import org.eclipse.bpel.model.Scope;
 import org.eclipse.bpel.model.Sequence;
+import org.eclipse.bpel.model.Snippet;
 import org.eclipse.bpel.model.TerminationHandler;
 import org.eclipse.bpel.model.Variable;
 import org.eclipse.bpel.ui.BPELUIPlugin;
@@ -98,7 +101,10 @@ public class BPELUIObjectFactory extends AbstractUIObjectFactory {
 			BPELPackage.eINSTANCE.getMessageExchange(),
 			BPELPackage.eINSTANCE.getValidate(),
 			// Bugzilla 324115
-			BPELPackage.eINSTANCE.getExtensionActivity()
+			BPELPackage.eINSTANCE.getExtensionActivity(),
+			// E4X Extension
+			BPELPackage.eINSTANCE.getAssignE4X(),
+			BPELPackage.eINSTANCE.getExtension()
 	};
 
 	protected EClass modelType;
@@ -248,7 +254,20 @@ public class BPELUIObjectFactory extends AbstractUIObjectFactory {
 			Copy copy = BPELFactory.eINSTANCE.createCopy();
 			assign.getCopy().add(copy);
 
-		} else if (result instanceof ForEach) {
+		} else if (result instanceof AssignE4X) {
+			// E4X Extension 
+			AssignE4X assignE4X = (AssignE4X) result;
+			 
+			ExtensionAssignOperation eao = BPELFactory.eINSTANCE.createExtensionAssignOperation();
+			Snippet snippet = BPELFactory.eINSTANCE.createSnippet();
+			// creates a snippet element in extensionAssignOperation
+			eao.setSnippet(snippet);
+			// create a free ExtensionAssignOperation inside the AssignE4X.
+			assignE4X.getExtensionAssignOperation().add(eao);
+			// set validate value to no by default. 
+			assignE4X.setValidate(false);
+
+		}else if (result instanceof ForEach) {
 
 			ForEach forEach = (ForEach) result;
 

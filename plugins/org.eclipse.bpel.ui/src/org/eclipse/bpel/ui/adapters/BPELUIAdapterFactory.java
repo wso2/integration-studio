@@ -70,6 +70,31 @@ public class BPELUIAdapterFactory extends BPELAdapterFactory {
 		return fProvider.getAdapter(AssignAdapter.class);
 	}
 
+
+	/**
+	 * @see org.eclipse.bpel.model.util.BPELAdapterFactory#createAssignE4XAdapter()
+	 */
+	@Override
+	public Adapter createAssignE4XAdapter() {
+		return fProvider.getAdapter(AssignE4XAdapter.class);
+	}
+	
+	/**
+	 * @see org.eclipse.bpel.model.util.BPELAdapterFactory#createExtensionAssignOperationAdapter()
+	 */
+	@Override
+	public Adapter createExtensionAssignOperationAdapter() {
+		return fProvider.getAdapter(ExtensionAssignOperationAdapter.class);
+	}
+	
+	/**
+	 * @see org.eclipse.bpel.model.util.BPELAdapterFactory#createSnippetAdapter()
+	 */
+	@Override
+	public Adapter createSnippetAdapter() {
+		return fProvider.getAdapter(SnippetAdapter.class);
+	}
+
 	/**
 	 * (non-Javadoc)
 	 * 

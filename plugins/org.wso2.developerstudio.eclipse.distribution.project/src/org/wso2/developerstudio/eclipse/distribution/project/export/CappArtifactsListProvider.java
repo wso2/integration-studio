@@ -39,27 +39,30 @@ import org.wso2.developerstudio.eclipse.platform.core.model.AbstractListDataProv
 import org.wso2.developerstudio.eclipse.platform.core.model.AbstractListDataProvider.ListData;
 import org.wso2.developerstudio.eclipse.platform.core.project.model.ProjectDataModel;
 import org.wso2.developerstudio.eclipse.platform.core.utils.Constants;
+import org.wso2.developerstudio.eclipse.project.extensions.handlers.ProjectNatureListProvider;
+import org.wso2.developerstudio.eclipse.project.extensions.handlers.WSO2ProjectNature;
 
-public class CappArtifactsListProvider extends AbstractListDataProvider{
-	
+public class CappArtifactsListProvider extends AbstractListDataProvider {
+	ProjectNatureListProvider projectNatureListProvider = new ProjectNatureListProvider();
+
 	public List<ListData> getArtifactsListForCappExport() throws Exception {
-		
+
 		List<ListData> list = new ArrayList<ListData>();
 		IWorkspace workspace = ResourcesPlugin.getWorkspace();
 		IWorkspaceRoot root = workspace.getRoot();
 		IProject[] projects = root.getProjects();
-				
+
 		for (IProject project : projects) {
 			if (project.isOpen() && isDevStudioSupportedProject(project)) {
 				list.addAll(getArtifactsListForCappExport(project));
 			}
 		}
-		
+
 		return list;
 	}
-	
-	public List<ListData> getArtifactsListForCappExport(IProject project) throws Exception{
-		
+
+	public List<ListData> getArtifactsListForCappExport(IProject project) throws Exception {
+
 		List<ListData> artifactsList = new ArrayList<ListData>();
 		if (isMultipleArtifactProject(project)) {
 			artifactsList.addAll(getArtifactsListForMultipleArtifactsProject(project));
@@ -68,10 +71,9 @@ public class CappArtifactsListProvider extends AbstractListDataProvider{
 		}
 		return artifactsList;
 	}
-	
-	
+
 	public List<ListData> getArtifactsListForMultipleArtifactsProject(IProject project) throws Exception {
-		
+
 		MavenProject mavenProject = DistProjectUtils.getMavenProject(project);
 		List<ListData> projectArtifactsList = new ArrayList<ListData>();
 		IFile artifactXMLFile = project.getFile(Constants.ARTIFACT_XML);
@@ -86,7 +88,7 @@ public class CappArtifactsListProvider extends AbstractListDataProvider{
 		return projectArtifactsList;
 	}
 
-	public List<ListData> getArtifactsListForSingleArtifactProject(IProject project)	throws Exception {
+	public List<ListData> getArtifactsListForSingleArtifactProject(IProject project) throws Exception {
 		MavenProject mavenProject = DistProjectUtils.getMavenProject(project);
 		ArtifactTypeMapping artifactTypeMapping = new ArtifactTypeMapping();
 		List<ListData> singleProjectArtifactAsAList = new ArrayList<ListData>();
@@ -100,7 +102,7 @@ public class CappArtifactsListProvider extends AbstractListDataProvider{
 				cAppType = (String) mavenProject.getModel().getProperties().get("CApp.type");
 			}
 		}
-		
+
 		dependency.setType(artifactTypeMapping.getType(cAppType));
 		ServerRoleMapping serverRoleMapping = new ServerRoleMapping();
 		String serverRole = serverRoleMapping.getServerRole(cAppType);
@@ -111,12 +113,13 @@ public class CappArtifactsListProvider extends AbstractListDataProvider{
 		dependencyData.setCApptype(cAppType);
 		dependencyData.setServerRole(getServerRole(serverRole));
 
-		singleProjectArtifactAsAList.add(createListData(DistProjectUtils.getArtifactInfoAsString(dependency), dependencyData));
+		singleProjectArtifactAsAList
+				.add(createListData(DistProjectUtils.getArtifactInfoAsString(dependency), dependencyData));
 		return singleProjectArtifactAsAList;
 	}
 
 	private ListData getListDataForArtifact(IProject project, MavenProject mavenProject, GeneralArtifact artifact) {
-		
+
 		ListData artifactListData;
 		ArtifactTypeMapping artifactTypeMapping = new ArtifactTypeMapping();
 		Dependency dependency = new Dependency();
@@ -129,7 +132,8 @@ public class CappArtifactsListProvider extends AbstractListDataProvider{
 		dependency.setVersion(artifact.getVersion());
 		dependency.setType(artifactTypeMapping.getType(artifact.getType()));
 
-		// Following artifact types should be changed to common template artifact type
+		// Following artifact types should be changed to common template
+		// artifact type
 		String artifactType;
 		if ((Constants.SEQUENCE_TEMPLATE_TYPE.equals(artifact.getType()))
 				|| (Constants.ENDPOINT_TEMPLATE_TYPE.equals(artifact.getType()))) {
@@ -144,50 +148,44 @@ public class CappArtifactsListProvider extends AbstractListDataProvider{
 		dependencyData.setSelf(artifact.getFile());
 		dependencyData.setCApptype(artifactType);
 		dependencyData.setServerRole(Constants.CAPP_PREFIX + artifact.getServerRole());
-		artifactListData = createListData(DistProjectUtils.getArtifactInfoAsString(dependency, project.getName()), dependencyData);
-		
+		artifactListData = createListData(DistProjectUtils.getArtifactInfoAsString(dependency, project.getName()),
+				dependencyData);
+
 		return artifactListData;
 	}
-	
+
 	private boolean isMultipleArtifactDSSProject(IProject project) throws CoreException {
-		return project.hasNature(Constants.DS_PROJECT_NATURE) &&
-		       (project.getFile(Constants.ARTIFACT_XML) != null && project.getFile(Constants.ARTIFACT_XML).exists());
+		return project.hasNature(Constants.DS_PROJECT_NATURE) && (project.getFile(Constants.ARTIFACT_XML) != null
+				&& project.getFile(Constants.ARTIFACT_XML).exists());
 	}
-	
-	
-	
+
 	private boolean isMultipleArtifactProject(IProject project) {
 		try {
-			if (project.hasNature(Constants.ESB_PROJECT_NATURE)
-				|| project.hasNature(Constants.GENERAL_PROJECT_NATURE)
-			    || isMultipleArtifactDSSProject(project) 
-			    || project.hasNature(Constants.CONNECTOR_PROJECT_NATURE)
-			    || project.hasNature(Constants.ANALYTICS_PROJECT_NATURE)){
+			if (isMultipleArtifactDSSProject(project) || projectNatureListProvider.isProjectMultipleArtifact(project)) {
 				return true;
 			}
+			
 		} catch (CoreException e) {
 		}
 		return false;
 	}
-	
+
 	private String getServerRole(String serverRole) {
 		if (!"".equals(serverRole)) {
 			return "capp/" + serverRole;
 		} else {
-			return"capp/ApplicationServer";
+			return "capp/ApplicationServer";
 		}
 	}
-
 
 	@Override
 	public List<ListData> getListData(String modelProperty, ProjectDataModel model) {
 		return null;
 	}
-	
+
 	private boolean isDevStudioSupportedProject(IProject project) {
-		
 		try {
-			if (project.hasNature(Constants.AXIS2_PROJECT_NATURE)
+			if (/*project.hasNature(Constants.AXIS2_PROJECT_NATURE)
 				|| project.hasNature(Constants.BPEL_PROJECT_NATURE)
 				|| project.hasNature(Constants.DS_PROJECT_NATURE)
 				|| project.hasNature(Constants.DS_VALIDATOR_PROJECT_NATURE)
@@ -206,13 +204,14 @@ public class CappArtifactsListProvider extends AbstractListDataProvider{
 				|| project.hasNature(Constants.BRS_PROJECT_NATURE)
 				|| project.hasNature(Constants.JAGGERY_NATURE)
 				|| project.hasNature(Constants.SERVICE_META_PROJECT_NATURE)
-				|| project.hasNature(Constants.CONNECTOR_PROJECT_NATURE)){
+				|| project.hasNature(Constants.CONNECTOR_PROJECT_NATURE)
+				|| */ projectNatureListProvider.isCappSupported(project)){
 					return true;
-				}
+			}
 		} catch (CoreException e) {
 			
 		} 
 		return false;
 	}
-	
+
 }

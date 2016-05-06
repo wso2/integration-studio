@@ -21,6 +21,7 @@ Import-Package: org.eclipse.core.expressions,
  org.wso2.developerstudio.eclipse.platform.core.utils;version="4.0.0",
  org.wso2.developerstudio.eclipse.platform.ui.validator;version="4.0.0",
  org.wso2.developerstudio.eclipse.platform.ui.wizard;version="4.0.0",
+ org.wso2.developerstudio.eclipse.project.extensions.handlers;version="4.1.0",
  org.wso2.developerstudio.eclipse.utils.file;version="4.0.0",
  org.wso2.developerstudio.eclipse.utils.project;version="4.0.0",
  org.wso2.developerstudio.eclipse.utils.ui

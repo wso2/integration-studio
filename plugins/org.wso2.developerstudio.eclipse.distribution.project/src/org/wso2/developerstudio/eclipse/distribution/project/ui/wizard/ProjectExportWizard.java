@@ -41,6 +41,8 @@ import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.platform.core.project.export.util.ExportUtil;
 import org.wso2.developerstudio.eclipse.platform.core.utils.Constants;
+import org.wso2.developerstudio.eclipse.project.extensions.handlers.ProjectNatureListProvider;
+import org.wso2.developerstudio.eclipse.project.extensions.handlers.WSO2ProjectNature;
 import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
 
 public class ProjectExportWizard extends Wizard implements IExportWizard {
@@ -64,27 +66,14 @@ public class ProjectExportWizard extends Wizard implements IExportWizard {
 		MessageBox exportMsg = new MessageBox(getShell(), SWT.ICON_ERROR);
 		exportMsg.setText("WSO2 Platform Distribution");
 		IProject project = detailsPage.getSelectedProject();
+		ProjectNatureListProvider projectNatureListProvider = new ProjectNatureListProvider();
 		try {
-			if(project.hasNature(Constants.AXIS2_PROJECT_NATURE) ||
-					   project.hasNature(Constants.BPEL_PROJECT_NATURE) ||
-					   project.hasNature(Constants.DS_VALIDATOR_PROJECT_NATURE) ||
-					   project.hasNature(Constants.JAXWS_PROJECT_NATURE) ||
-					   project.hasNature(Constants.JAXRS_PROJECT_NATURE) ||
-					   project.hasNature(Constants.WEBAPP_PROJECT_NATURE) ||
-					   project.hasNature(Constants.GADGET_PROJECT_NATURE) ||
-					   project.hasNature(Constants.LIBRARY_PROJECT_NATURE) ||
-					   project.hasNature(Constants.MEDIATOR_PROJECT_NATURE) ||
-					   project.hasNature(Constants.REGISTRY_FILTER_PROJECT_NATURE) ||
-					   project.hasNature(Constants.REGISTRY_HANDLER_PROJECT_NATURE) ||
-					   project.hasNature(Constants.CARBON_UI_PROJECT_NATURE)||
-					   project.hasNature(Constants.ANALYTICS_PROJECT_NATURE)||
-					   project.hasNature(Constants.BRS_PROJECT_NATURE)||
-					   project.hasNature(Constants.JAGGERY_NATURE)){
+			if (project.hasNature(Constants.ESB_PROJECT_NATURE)) {
+				exportNonArchivable(project, ESB_PROJECT);
+			} else if (project.hasNature(Constants.GENERAL_PROJECT_NATURE)) {
+				exportNonArchivable(project, GENERAL_PROJECT);
+			} else if (projectNatureListProvider.isCappSupported(project)) {
 				exportArchivable(project);
-			} else if(project.hasNature(Constants.ESB_PROJECT_NATURE)){
-				exportNonArchivable(project,ESB_PROJECT);
-			} else if(project.hasNature(Constants.GENERAL_PROJECT_NATURE)){
-				exportNonArchivable(project,GENERAL_PROJECT);
 			}
 		} catch (Exception e) {
 			log.error("An error occured while creating the archive file", e);

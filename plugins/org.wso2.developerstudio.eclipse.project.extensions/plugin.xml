@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension-point id="org.wso2.developerstudio.project.nature.provider" name="WSO2 Project Natures" 
+                                                          schema="schema/org.wso2.developerstudio.project.nature.provider.exsd"/>
+   <extension
+         point="org.wso2.developerstudio.project.nature.provider">
+      <projectnature
+            id="org.wso2.sample.project.nature"
+            ismultipleartifact="true"
+            projectnature="org.wso2.sample.project.nature.multiple"
+            iscappsupported="false">
+      </projectnature>
+      <projectnature
+            id="org.wso2.sample.project.nature.simgle"
+            ismultipleartifact="false"
+            projectnature="org.wso2.sample.project.nature.single"
+            iscappsupported="true">
+      </projectnature>
+   </extension>
+</plugin>

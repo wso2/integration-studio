@@ -30,6 +30,7 @@ import org.wso2.developerstudio.eclipse.maven.multi.module.Activator;
 import org.wso2.developerstudio.eclipse.platform.core.model.AbstractListDataProvider;
 import org.wso2.developerstudio.eclipse.platform.core.project.model.ProjectDataModel;
 import org.wso2.developerstudio.eclipse.platform.core.utils.Constants;
+import org.wso2.developerstudio.eclipse.project.extensions.handlers.ProjectNatureListProvider;
 
 
 public class MvnMultiModuleProjectList extends AbstractListDataProvider {
@@ -47,30 +48,12 @@ public class MvnMultiModuleProjectList extends AbstractListDataProvider {
 			moduleModel.getArtifactId();
 		}
 		for (IProject project : projects) {
+			ProjectNatureListProvider projectNatureListProvider = new ProjectNatureListProvider();
 			if (project != null && project.exists() && project.isOpen() &&
 			    !moduleModel.getArtifactId().equals(project.getName())) {
 				try {
-					if (project.hasNature(Constants.AXIS2_PROJECT_NATURE) ||
-					    project.hasNature(Constants.BPEL_PROJECT_NATURE) ||
-					    project.hasNature(Constants.DS_PROJECT_NATURE) ||
-					    project.hasNature(Constants.DS_VALIDATOR_PROJECT_NATURE) ||
-					    project.hasNature(Constants.ESB_PROJECT_NATURE) ||
-					    project.hasNature(Constants.JAXWS_PROJECT_NATURE) ||
-					    project.hasNature(Constants.JAXRS_PROJECT_NATURE) ||
-					    project.hasNature(Constants.ANALYTICS_PROJECT_NATURE) ||
-					    project.hasNature(Constants.WEBAPP_PROJECT_NATURE) ||
-					    project.hasNature(Constants.GADGET_PROJECT_NATURE) ||
-					    project.hasNature(Constants.LIBRARY_PROJECT_NATURE) ||
-					    project.hasNature(Constants.MEDIATOR_PROJECT_NATURE) ||
-					    project.hasNature(Constants.REGISTRY_FILTER_PROJECT_NATURE) ||
-					    project.hasNature(Constants.REGISTRY_HANDLER_PROJECT_NATURE) ||
-					    project.hasNature(Constants.GENERAL_PROJECT_NATURE) ||
-					    project.hasNature(Constants.CARBON_UI_PROJECT_NATURE) ||
-					    project.hasNature(Constants.JAVA_PROJECT_NATURE) ||
-					    project.hasNature(Constants.JAGGERY_NATURE) ||
-					    project.hasNature(Constants.DISTRIBUTION_PROJECT_NATURE) ||
-					    project.hasNature(Constants.CONNECTOR_PROJECT_NATURE) ||
-					    project.hasNature(Constants.MAVEN_MULTI_MODULE_PROJECT_NATURE)) {
+					if (project.hasNature(Constants.JAVA_PROJECT_NATURE)
+							|| projectNatureListProvider.isWSO2ProjectType(project)) {
 
 						ListData data = new ListData(project.getName(), project);
 						list.add(data);

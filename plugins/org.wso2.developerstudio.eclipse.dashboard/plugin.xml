@@ -7,7 +7,6 @@
                      
   <extension-point id="org.wso2.developerstudio.create.dashbaord.new.section" 
   name="Dashboard Section RHS" schema="schema/org.wso2.developerstudio.create.dashbaord.new.section.exsd"/>
-
    <extension point="org.eclipse.ui.editors">
         <editor
                 class="org.wso2.developerstudio.eclipse.dashboard.handlers.Dashboard"

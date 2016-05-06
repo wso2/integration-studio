@@ -18,6 +18,7 @@ package org.wso2.developerstudio.eclipse.distribution.project.ui.wizard;
 
 
 import java.io.File;
+import java.util.List;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
@@ -46,6 +47,8 @@ import org.wso2.developerstudio.eclipse.distribution.project.Activator;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.platform.core.utils.Constants;
+import org.wso2.developerstudio.eclipse.project.extensions.handlers.ProjectNatureListProvider;
+import org.wso2.developerstudio.eclipse.project.extensions.handlers.WSO2ProjectNature;
 
 public class ExportDetailsWizardPage extends WizardPage {
 	
@@ -157,11 +160,12 @@ public class ExportDetailsWizardPage extends WizardPage {
 		IWorkspace workspace = ResourcesPlugin.getWorkspace();
 		IWorkspaceRoot root = workspace.getRoot();
 		IProject[] projects = root.getProjects();
+		ProjectNatureListProvider projectNatureListProvider = new ProjectNatureListProvider();
 		cmbProjects.removeAll();
 		try {
 			for (IProject project : projects) {
 					if(project.isOpen()){
-						if(project.hasNature(Constants.AXIS2_PROJECT_NATURE) ||
+						if(/*project.hasNature(Constants.AXIS2_PROJECT_NATURE) ||
 						   project.hasNature(Constants.BPEL_PROJECT_NATURE) ||
 						   project.hasNature(Constants.DS_VALIDATOR_PROJECT_NATURE) ||
 						   project.hasNature(Constants.JAXWS_PROJECT_NATURE) ||
@@ -176,7 +180,8 @@ public class ExportDetailsWizardPage extends WizardPage {
 						   project.hasNature(Constants.CARBON_UI_PROJECT_NATURE)||
 						   project.hasNature(Constants.ANALYTICS_PROJECT_NATURE)||
 						   project.hasNature(Constants.BRS_PROJECT_NATURE)||
-						   project.hasNature(Constants.JAGGERY_NATURE)){
+						   project.hasNature(Constants.JAGGERY_NATURE)|| */
+						   projectNatureListProvider.isCappSupported(project)){
 							cmbProjects.add(project.getName());
 							cmbProjects.setData(project.getName(), project);
 							}
@@ -186,6 +191,7 @@ public class ExportDetailsWizardPage extends WizardPage {
 			log.error("Error reading projects", e);
 		}
 	}
+	
 	
 	private void validate() {
 		if ((getExportPath() == null || getExportPath().equals(""))) {

@@ -46,6 +46,7 @@
 		<module>org.wso2.developerstudio.eclipse.maven.multi.module</module>
 		<module>org.wso2.developerstudio.eclipse.webui.core</module>
 		<module>org.wso2.developerstudio.appcloud.utils</module>
+		<module>org.wso2.developerstudio.eclipse.project.extensions</module>
 	</modules>
 	<build>
 		<plugins>

@@ -58,7 +58,7 @@
     </pluginRepositories>
     <build>
         <plugins>
-<plugin>
+            <plugin>
 				<artifactId>exec-maven-plugin</artifactId>
 				<groupId>org.codehaus.mojo</groupId>
 				<executions>

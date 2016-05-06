@@ -42,6 +42,7 @@
       <wizard
             name="Human Task Project"
             icon="icons/humanTask.png"
+            project="true"
             category="org.wso2.developerstudio.humantaskeditor"
             class="org.wso2.developerstudio.humantaskeditor.wizards.HumanTaskProjectWizard"
             id="org.wso2.developerstudio.humantaskeditor.wizards.HumanTaskProjectWizard">

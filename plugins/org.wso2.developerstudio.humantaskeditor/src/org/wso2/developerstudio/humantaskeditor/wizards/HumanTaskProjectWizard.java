@@ -121,11 +121,7 @@ public class HumanTaskProjectWizard extends Wizard implements INewWizard {
         IWorkspaceRoot root = ResourcesPlugin.getWorkspace().getRoot();
         IProject project = root.getProject(containerName);
         if (project.exists()) {
-            IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID,
-                    HumantaskEditorConstants.PROJECT_EXISTS_MESSAGE);
-            ErrorDialog.openError(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
-                    HumantaskEditorConstants.ERROR_MESSAGE,
-                    HumantaskEditorConstants.THE_PROJECT_EXISTS_IN_THE_WORKSPACE_MESSAGE, editorStatus);
+            throwCoreException(HumantaskEditorConstants.THE_PROJECT_EXISTS_IN_THE_WORKSPACE_MESSAGE);
         } else {
             project.create(null);
             project.open(null);

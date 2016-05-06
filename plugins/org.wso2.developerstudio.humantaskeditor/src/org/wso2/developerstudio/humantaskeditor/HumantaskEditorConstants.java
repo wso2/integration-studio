@@ -54,7 +54,7 @@ public class HumantaskEditorConstants {
 
     public static final String ERROR_CREATING_INITIAL_FILE_MESSAGE = "Error Creating Initial File";
 
-    public static final String THE_PROJECT_EXISTS_IN_THE_WORKSPACE_MESSAGE = "The project exists in the workspace";
+    public static final String THE_PROJECT_EXISTS_IN_THE_WORKSPACE_MESSAGE = "The project already exists in the workspace. Please use a different project name";
 
     public static final String PROJECT_EXISTS_MESSAGE = "Project Exists";
 

@@ -1,4 +1,4 @@
-#WSO2 Developer Studio Platform
+#WSO2 Developer Studio Plugins for Carbon Platform
 
 WSO2 Developer Studio has moved in to a kernel-based model with its new architecture revamp from version 4.0.0. WSO2 Developer Studio Platform acts as a middle layer from Devleoper Studio Kernel to Developer Studio product Tooling by bridging the gap for carbon specific requirement implementation on top of Eclipse.
 

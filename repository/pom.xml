@@ -19,7 +19,7 @@
     	<version>4.1.0-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
-    <artifactId>wso2-developer-studio-kernel-p2-parent</artifactId>
+    <artifactId>wso2-developer-studio-tooling-platform-p2-parent</artifactId>
     <packaging>pom</packaging>
     <name>WSO2 Developer Studio Kernel - P2 Repositories</name>
     <url>http://wso2.org</url>

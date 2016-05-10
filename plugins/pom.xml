@@ -15,7 +15,6 @@
 		<module>org.wso2.developerstudio.eclipse.libraries</module>
 		<module>org.wso2.developerstudio.eclipse.ui</module>
 		<module>org.wso2.developerstudio.eclipse.samples</module>
-		<module>org.wso2.developerstudio.eclipse.dashboard</module>
 		<module>org.wso2.developerstudio.eclipse.registry.core</module>
 		<module>org.wso2.developerstudio.eclipse.registry.libraries</module>
 		<module>org.wso2.developerstudio.eclipse.registry.manager.remote</module>
@@ -46,6 +45,7 @@
 		<module>org.wso2.developerstudio.eclipse.maven.multi.module</module>
 		<module>org.wso2.developerstudio.eclipse.webui.core</module>
 		<module>org.wso2.developerstudio.appcloud.utils</module>
+		<module>org.wso2.developerstudio.eclipse.dashboard</module>
 		<module>org.wso2.developerstudio.eclipse.project.extensions</module>
 	</modules>
 	<build>

@@ -1,8 +1,16 @@
 package org.wso2.developerstudio.eclipse.dashboard;
 
+import java.util.Map;
+
+import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
+import org.wso2.developerstudio.eclipse.carbonserver.base.util.ServerExtensionsRegistryUtils;
+import org.wso2.developerstudio.eclipse.carbonserver40.register.product.servers.DynamicServer40ExtensionGenerator;
+import org.wso2.developerstudio.eclipse.carbonserver42.register.product.servers.DynamicServer42ExtensionGenerator;
+import org.wso2.developerstudio.eclipse.carbonserver44.register.product.servers.DynamicServer44ExtensionGenerator;
+import org.wso2.developerstudio.eclipse.platform.core.utils.DeveloperStudioProviderUtils;
 
 /**
  * The activator class controls the plug-in life cycle
@@ -26,8 +34,23 @@ public class Activator extends AbstractUIPlugin {
 	 * @see org.eclipse.ui.plugin.AbstractUIPlugin#start(org.osgi.framework.BundleContext)
 	 */
 	public void start(BundleContext context) throws Exception {
+		// Registering WSO2 servers
+		registerProductServers();
 		super.start(context);
 		plugin = this;
+	}
+
+	private void registerProductServers() {
+		ServerExtensionsRegistryUtils serverExtensionsRegistryUtils = new ServerExtensionsRegistryUtils();
+			IConfigurationElement[] registeredServers = serverExtensionsRegistryUtils.retrieveRegisteredProductServers();
+			
+			DynamicServer44ExtensionGenerator dynamicServerExtensionGenerator = new DynamicServer44ExtensionGenerator();
+			dynamicServerExtensionGenerator.readProductServerExtensions(registeredServers,serverExtensionsRegistryUtils);
+			DynamicServer42ExtensionGenerator dynamicServer42ExtensionGenerator = new DynamicServer42ExtensionGenerator();
+			dynamicServer42ExtensionGenerator.readProductServerExtensions(registeredServers,serverExtensionsRegistryUtils);
+			DynamicServer40ExtensionGenerator dynamicServer40ExtensionGenerator = new DynamicServer40ExtensionGenerator();
+			dynamicServer40ExtensionGenerator.readProductServerExtensions(registeredServers,serverExtensionsRegistryUtils);
+
 	}
 
 	/*

@@ -5,6 +5,7 @@
    <extension-point id="org.wso2.developerstudio.eclipse.carbonserver.monitor" name="Extention point to trigger when server states change" schema="schema/org.wso2.developerstudio.eclipse.carbonserver.monitor.exsd"/>
    <extension-point id="org.wso2.developerstudio.eclipse.carbonserver.base.register" name="WSAS Server Registration Extension Point" schema="schema/org.wso2.developerstudio.eclipse.carbonserver.base.register.exsd"/>
    <extension-point id="org.wso2.developerstudio.eclipse.carbonserver.base.serverProperties" name="serverProperties" schema="schema/org.wso2.developerstudio.eclipse.carbonserver.base.serverProperties.exsd"/>
+   <extension-point id="org.wso2.developerstudio.carbon.product.server.registry" name="Register Product Servers" schema="schema/org.wso2.developerstudio.product.server.registry.exsd"/>
    <extension
          point="org.wso2.developerstudio.eclipse.server.base.servermanager">
       <servermanager

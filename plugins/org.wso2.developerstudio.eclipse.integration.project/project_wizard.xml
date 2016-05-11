@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wizard>
+	<projectOptions title="New Integration Project" 
+					description="Create new Integration Project" 
+					error="Please select a method to create the endpoint artifact">
+		<option id="new.integration" default="true">New Integration Config Project</option>
+		<option id="new.integration.integrationConfig" default="false">Point To Existing Integration-Config Folder</option>
+	</projectOptions>
+	<projectOptionSettings>
+		<settings optionId="new.integration" 
+				  title="New Integration Project" 
+				  description="Create new Integration Project" 
+				  error="Please give a name for the Integration Project">
+			<data modelProperty="project.name" type="string" fieldController="org.wso2.developerstudio.eclipse.integration.project.controller.IntegrationProjectFieldController">Project Name</data>
+			<projectNatures>
+				<nature>org.eclipse.jdt.core.javanature</nature>
+			</projectNatures>
+		</settings>
+		<settings optionId="new.integration.integrationConfig" 
+				  title="New Integration Project" 
+				  description="Create new Integration Project using existing integration-configs" 
+				  error="Please locate a integration-configs folder">
+			<!-- <data modelProperty="project.name" type="string" fieldController="org.wso2.developerstudio.eclipse.integration.project.controller.IntegrationProjectFieldController">Project Name</data>
+			<data modelProperty="integrationConfig.location" type="dir" filter="integration-configs" fieldController="org.wso2.developerstudio.eclipse.integration.project.controller.IntegrationProjectFieldController">Synapse-configs Location</data>
+			 --><projectNatures>
+				<nature>org.eclipse.jdt.core.javanature</nature>
+			</projectNatures>
+		</settings>
+	</projectOptionSettings>
+</wizard>

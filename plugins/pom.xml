@@ -10,33 +10,36 @@
     <artifactId>wso2-developerstudio-esb-plugins</artifactId>
     <packaging>pom</packaging>
     <name>WSO2 Developer Studio ESB Plugins</name>
-
     <modules>
-	<module>org.wso2.developerstudio.eclipse.esb.libraries</module>
-	<module>org.wso2.developerstudio.eclipse.esb.core</module>
+        <module>org.wso2.developerstudio.eclipse.esb.libraries</module>
+        <module>org.wso2.developerstudio.eclipse.esb.core</module>
         <module>org.wso2.developerstudio.eclipse.gmf.esb</module>
         <module>org.wso2.developerstudio.eclipse.gmf.esb.edit</module>
-	<module>org.wso2.developerstudio.eclipse.gmf.esb.persistence</module>
-	<module>org.wso2.developerstudio.eclipse.esb.project</module>
-	<module>org.wso2.developerstudio.eclipse.artifact.endpoint</module>
-	<module>org.wso2.developerstudio.eclipse.artifact.proxyservice</module>
-	<module>org.wso2.developerstudio.eclipse.artifact.sequence</module>
-	<module>org.wso2.developerstudio.eclipse.artifact.localentry</module>
-	<module>org.wso2.developerstudio.eclipse.artifact.mediator</module>
-	<module>org.wso2.developerstudio.eclipse.artifact.synapse</module>
-	<module>org.wso2.developerstudio.eclipse.artifact.synapse.api</module>
-	<module>org.wso2.developerstudio.eclipse.artifact.task</module>
-	<module>org.wso2.developerstudio.eclipse.artifact.template.sequence</module>
-	<module>org.wso2.developerstudio.eclipse.artifact.messagestore</module>
-	<module>org.wso2.developerstudio.eclipse.artifact.messageprocessor</module>
-	<module>org.wso2.developerstudio.eclipse.artifact.inboundendpoint</module>
-	<module>org.wso2.developerstudio.eclipse.artifact.connector</module>
-	<module>org.wso2.developerstudio.eclipse.gmf.esb.diagram</module>
+        <module>org.wso2.developerstudio.eclipse.gmf.esb.persistence</module>
+        <module>org.wso2.developerstudio.eclipse.esb.project</module>
+        <module>org.wso2.developerstudio.eclipse.artifact.endpoint</module>
+        <module>org.wso2.developerstudio.eclipse.artifact.proxyservice</module>
+        <module>org.wso2.developerstudio.eclipse.artifact.sequence</module>
+        <module>org.wso2.developerstudio.eclipse.artifact.localentry</module>
+        <module>org.wso2.developerstudio.eclipse.artifact.mediator</module>
+        <module>org.wso2.developerstudio.eclipse.artifact.synapse</module>
+        <module>org.wso2.developerstudio.eclipse.artifact.synapse.api</module>
+        <module>org.wso2.developerstudio.eclipse.artifact.task</module>
+        <module>org.wso2.developerstudio.eclipse.artifact.template.sequence</module>
+        <module>org.wso2.developerstudio.eclipse.artifact.messagestore</module>
+        <module>org.wso2.developerstudio.eclipse.artifact.messageprocessor</module>
+        <module>org.wso2.developerstudio.eclipse.artifact.inboundendpoint</module>
+        <module>org.wso2.developerstudio.eclipse.artifact.connector</module>
+        <module>org.wso2.developerstudio.eclipse.gmf.esb.diagram</module>
         <module>org.wso2.developerstudio.visualdatamapper</module>
         <module>org.wso2.developerstudio.visualdatamapper.diagram</module>
         <module>org.wso2.developerstudio.visualdatamapper.edit</module>
         <module>org.wso2.developerstudio.visualdatamapper.editor</module>
         <module>org.wso2.developerstudio.visualdatamapper.project</module>
+        <module>org.wso2.developerstudio.eclipse.integration.core</module>
+        <module>org.wso2.developerstudio.eclipse.integration.project</module>
+        <module>org.wso2.developerstudio.eclipse.artifact.connection</module>
+        <module>org.wso2.developerstudio.eclipse.artifact.template.integration</module>
     </modules>
     <build>
         <plugins>

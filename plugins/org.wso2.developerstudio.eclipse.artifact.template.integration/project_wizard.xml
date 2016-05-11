@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wizard>
+	<projectOptions title="Integration Template Artifact Creation Options"
+					description="Create a new integration template"
+					error="Please select a method to create a integration template">
+		<option id="integrationtempate" default="true">Create a New Integration Template</option>
+		<option id="import.integrationtemplate">Import an Integration Template</option>	
+    </projectOptions>
+	<projectOptionSettings>
+		<settings optionId="integrationtempate"
+				  title="Integration Template Artifact"
+				  description="Create a new Integration Template Artifact"
+				  error="Create a integration template">
+			<data modelProperty="temp.name" type="string" 
+			fieldController="org.wso2.developerstudio.eclipse.artifact.template.validators.TemplateProjectFieldController">Integration Template Name</data>	
+		
+			<data modelProperty="save.file" type="workspacefolder" fieldController="org.wso2.developerstudio.eclipse.artifact.template.validators.TemplateProjectFieldController" 
+			controlData="filterClass=org.wso2.developerstudio.eclipse.artifact.template.integration.validators.ProjectFilter">Save integration template in:</data>	
+			
+			<data modelProperty="create.integration.project" type="link" fieldController="org.wso2.developerstudio.eclipse.artifact.template.validators.TemplateProjectFieldController" controlData="align=right">&lt;a&gt;Create new Project...&lt;/a&gt;</data>
+			
+		</settings>
+		<settings optionId="import.integrationtemplate"
+				  title="Integration Template Artifact"
+				  description="Create an Integration Template Artifact using a configuration file"
+				  error="Browse an integration template">
+			
+			<data modelProperty="import.file" type="file" filter="*.xml" 
+			fieldController="org.wso2.developerstudio.eclipse.artifact.template.validators.TemplateProjectFieldController">Integration Template</data>		
+			<data modelProperty="save.file" type="workspacefolder" fieldController="org.wso2.developerstudio.eclipse.artifact.template.validators.TemplateProjectFieldController" 
+			controlData="filterClass=org.wso2.developerstudio.eclipse.artifact.template.validators.ProjectFilter">Save Integration Template in:</data>		
+			<data modelProperty="create.esb.prj" type="link" fieldController="org.wso2.developerstudio.eclipse.artifact.template.validators.TemplateProjectFieldController" controlData="align=right">&lt;a&gt;Create new Project...&lt;/a&gt;</data>
+		</settings>
+	</projectOptionSettings>
+</wizard>

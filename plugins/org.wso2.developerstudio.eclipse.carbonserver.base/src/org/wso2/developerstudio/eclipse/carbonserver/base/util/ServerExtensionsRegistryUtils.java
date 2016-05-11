@@ -39,7 +39,6 @@ public class ServerExtensionsRegistryUtils {
 		inputString = inputString.replace("\"descr\"", "\"" + displayName + "\"");
 		inputString = inputString.replace("\"name\"", "\"" + displayName + "\"");
 		inputStream = new ByteArrayInputStream(inputString.getBytes("UTF-8"));
-		System.out.println(inputString);
 		return inputStream;
 	}
 	

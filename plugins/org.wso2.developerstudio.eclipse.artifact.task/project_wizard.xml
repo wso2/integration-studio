@@ -41,7 +41,7 @@
 				group="trigger.info">Count</data>
 			<data modelProperty="task.interval" type="string"
 				fieldController="org.wso2.developerstudio.eclipse.artifact.task.validator.ProjectFieldController"
-				group="trigger.info">Interval (in milliseconds)*</data>
+				group="trigger.info">Interval (in seconds)*</data>
 			<data modelProperty="task.cron" type="string"
 				fieldController="org.wso2.developerstudio.eclipse.artifact.task.validator.ProjectFieldController"
 				group="trigger.info">Cron*</data>

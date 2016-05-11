@@ -6549,7 +6549,20 @@
             name="Data Mapper"
             mediaType="application/datamapper"
             extension="dmc"></template>
- </extension>
+ </extension> 
+ <extension 
+   point="org.eclipse.ui.views">
+      <category
+            id="org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.envelope"
+            name="%debugger.envelope.view.category">
+      </category>
+      <view
+            category="org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.envelope"
+            class="org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.ui.views.WireLogView"
+            id="org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.wirelog.view"
+            name="%debugger.wirelog.view.name">
+      </view>
+</extension>
   </plugin>
 
 

@@ -23,7 +23,9 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ES
 import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.GET_COMMAND_VALUE;
 import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.OPERATION_PROPERTY_TAG;
 import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.PROPERTIES_VALUE;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.PROPERTY_VALUE;
 import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.SYANPSE_PROPERTY_TAG;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.WIRE_LOG_PROPERTY_TAG;
 import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.TRANSPORT_PROPERTY_TAG;
 
 import java.io.IOException;
@@ -60,6 +62,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.messages.event.
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.messages.response.CommandResponseMessage;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.messages.response.PropertyRespondMessage;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.messages.util.AbstractESBDebugPointMessage;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.messages.util.PropertyValueBean;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerCommands;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerResumeType;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerUtil;
@@ -187,6 +190,10 @@ public class ESBDebugger implements IESBDebugger, EventHandler {
             case DEBUG_INFO_LOST:
                 ESBDebuggerUtil.repopulateESBServerBreakpoints();
                 break;
+            case WIRE_LOG:
+            	debuggerInterface.sendGetPropertiesCommand(new GetPropertyCommand(GET_COMMAND_VALUE, PROPERTY_VALUE,
+                        WIRE_LOG_PROPERTY_TAG, new PropertyValueBean("log", null)));
+                break;
             default:
                 break;
             }
@@ -208,7 +215,9 @@ public class ESBDebugger implements IESBDebugger, EventHandler {
         debuggerInterface.sendGetPropertiesCommand(new GetPropertyCommand(GET_COMMAND_VALUE, PROPERTIES_VALUE,
                 OPERATION_PROPERTY_TAG));
         debuggerInterface.sendGetPropertiesCommand(new GetPropertyCommand(GET_COMMAND_VALUE, PROPERTIES_VALUE,
-                SYANPSE_PROPERTY_TAG));
+        		SYANPSE_PROPERTY_TAG));
+        debuggerInterface.sendGetPropertiesCommand(new GetPropertyCommand(GET_COMMAND_VALUE, PROPERTY_VALUE,
+                WIRE_LOG_PROPERTY_TAG, new PropertyValueBean("log", null)));
     }
 
     private void sendDebugPointForServer(DebugPointRequest event) throws Exception {

@@ -321,7 +321,7 @@ public abstract class AbstractESBDebugPointBuilder implements IESBDebugPointBuil
                 "Selected Mediator is not found in a valid position. Unknown Complex Mediator Type found : "
                         + mediatorImpl.getClass());
     }
-
+    
     private Stack<EObject> removeTopObjectsUntilFirstMediator(Stack<EObject> parentStack) {
         while (!(parentStack.peek() instanceof MediatorImpl)) {
             parentStack.pop();

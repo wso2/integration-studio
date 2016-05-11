@@ -111,9 +111,11 @@ public class ESBDebuggerInterface implements IESBDebuggerInterface {
             if (eventMessage == null) {
                 log.info("NULL value read from ChannelResponceDispatcher.ESB Server shutting down.");
                 esbDebugger.fireTerminatedEvent();
+            } else if (messageFactory.checkForWirelogMessage(eventMessage)){
+            	esbDebugger.notifyResponce(messageFactory.convertResponseToIResponseMessage(eventMessage));
             } else {
                 esbDebugger.notifyEvent(messageFactory.convertEventToIEventMessage(eventMessage));
-            }
+            } 
         } catch (Exception e) {
             log.error("Error while converting Event message from ESB Server to IEventMessage : " + e.getMessage(), e);
         }

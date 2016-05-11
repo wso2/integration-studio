@@ -21,10 +21,15 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ES
 import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.MESSAGE_ENVELOPE_VIEW_PRIMARY_ID;
 import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.MESSAGE_ENVELOPE_VIEW_SECONDARY_ID;
 import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.PROPERTY_CHANGE_COMMAND_HANDLER_EVENT_TOPIC;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.ESB_STACK_FRAME_WIRE_LOGS_RECEIVED_EVENT;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.WIRE_LOG_VIEW_PRIMARY_ID;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.WIRE_LOG_VIEW_SECONDARY_ID;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import org.eclipse.debug.core.DebugEvent;
@@ -63,6 +68,9 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.OpenEdito
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+
 /**
  * This class represents an execution context in a suspended thread. And it
  * contains variables representing visible locals and arguments at the current
@@ -78,12 +86,15 @@ public class ESBStackFrame extends ESBDebugElement implements IStackFrame, Event
     private IEventBroker propertyChangeCommandEB;
     private Set<String> tablePropertySet = new HashSet<>();
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
+    
+    private Map<JsonObject, ESBWirelog> wireLogs = new HashMap<JsonObject, ESBWirelog>();
 
     public ESBStackFrame(IDebugTarget target, IThread thread) {
         super(target);
         this.thread = thread;
         propertyChangeCommandEB = (IEventBroker) PlatformUI.getWorkbench().getService(IEventBroker.class);
         propertyChangeCommandEB.subscribe(ESB_STACK_FRAME_PROPERTY_CHANGE_EVENT, this);
+        propertyChangeCommandEB.subscribe(ESB_STACK_FRAME_WIRE_LOGS_RECEIVED_EVENT, this);
         try {
             IViewPart envelopeView = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().showView(
                     MESSAGE_ENVELOPE_VIEW_PRIMARY_ID, MESSAGE_ENVELOPE_VIEW_SECONDARY_ID, IWorkbenchPage.VIEW_VISIBLE);
@@ -149,11 +160,34 @@ public class ESBStackFrame extends ESBDebugElement implements IStackFrame, Event
 
     public void setVariables(PropertyRespondMessage propertyRespondMessage) throws DebugException {
         String name = propertyRespondMessage.getScope();
+        if (name.equalsIgnoreCase("wirelogs")) {
+            wireLogs.clear();
+            JsonArray wireLogsArray = propertyRespondMessage.getPropertyValues().getAsJsonArray();
+            for (int i = 0; i < wireLogsArray.size(); i++) {
+                JsonObject wireLog = wireLogsArray.get(i).getAsJsonObject();
+                JsonObject mediatorId = wireLog.get("mediatorId").getAsJsonObject();
+                String requestWireLog = "";
+                if (wireLog.get("wireLogEntry").getAsJsonObject().get("requestWireLog") != null) {
+                    requestWireLog = wireLog.get("wireLogEntry").getAsJsonObject().get("requestWireLog").getAsString();
+                }
+                String responseWireLog = "";
+                if (wireLog.get("wireLogEntry").getAsJsonObject().get("responseWireLog") != null) {
+                    responseWireLog = wireLog.get("wireLogEntry").getAsJsonObject().get("responseWireLog")
+                            .getAsString();
+                }
+                ESBWirelog esbWirelog = new ESBWirelog();
+                esbWirelog.setMediatorId(mediatorId);
+                esbWirelog.setRequestWireLog(requestWireLog);
+                esbWirelog.setResponseWireLog(responseWireLog);
+                wireLogs.put(mediatorId, esbWirelog);
+            }
+            return;
+        }
         boolean processed = false;
-        for (IVariable variable : variables) {
-            if (variable.getName().equals(getUITableVariableName(name))) {
-                ((ESBVariable) variable).setValue(propertyRespondMessage.getPropertyValues());
-                ((ESBVariable) variable).fireChangeEvent(DebugEvent.CONTENT);
+        for (int index = 0; index < variables.size(); index++) {
+            if (variables.get(index).getName().equals(getUITableVariableName(name))) {
+                ((ESBVariable) variables.get(index)).setValue(propertyRespondMessage.getPropertyValues());
+                ((ESBVariable) variables.get(index)).fireChangeEvent(DebugEvent.CONTENT);
                 processed = true;
                 break;
             }
@@ -257,6 +291,19 @@ public class ESBStackFrame extends ESBDebugElement implements IStackFrame, Event
                     }
                 }
             }
+        } else if (eventObject instanceof JsonObject) {
+            JsonObject breakpointCommandJsonObject = (JsonObject) eventObject;
+            ESBWirelog relaventWireLog = wireLogs.get(breakpointCommandJsonObject);
+            try {
+                IViewPart wireLogView = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
+                        .showView(WIRE_LOG_VIEW_PRIMARY_ID, WIRE_LOG_VIEW_SECONDARY_ID, IWorkbenchPage.VIEW_VISIBLE);
+                if (wireLogView instanceof ContentAcceptHandler) {
+                    ((ContentAcceptHandler) wireLogView).acceptContent(relaventWireLog, null);
+                }
+            } catch (PartInitException e) {
+                log.error("Error while updating the wirelog view", e);
+            }
+
         } else {
             log.warn("Unhandled Event type recived for ESBStackFrame : " + eventObject.toString());
         }

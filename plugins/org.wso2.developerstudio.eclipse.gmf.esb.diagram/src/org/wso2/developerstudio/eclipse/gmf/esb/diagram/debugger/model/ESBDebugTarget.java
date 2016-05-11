@@ -135,23 +135,31 @@ public class ESBDebugTarget extends ESBDebugElement implements IDebugTarget, Eve
 
                 } else if (event instanceof TerminatedEvent) {
                     setState(ESBDebuggerState.TERMINATED);
-
+                    clearSuspendedEventStatus();
                     DebugPlugin.getDefault().getBreakpointManager().removeBreakpointListener(this);
                     debugTargetEventBroker.unsubscribe(this);
                     this.fireTerminateEvent();
                 } else if (event instanceof MediationFlowCompleteEvent) {
                     setState(ESBDebuggerState.RESUMED);
-                    OpenEditorUtil.removeBreakpointHitStatus();
-                    try {
-                        deletePreviousSuspendPointsFromBreakpointManager();
-                    } catch (CoreException e) {
-                        log.error("Error while deleting previous suspend point : " //$NON-NLS-1$
-                                + e.getMessage(), e);
-                    }
+                    clearSuspendedEventStatus();
                 }
             } else {
                 log.warn("Unhandled event type detected for Event Broker Topic : " + ESBDEBUGGER_EVENT_TOPIC);
             }
+        }
+    }
+
+    /**
+     * This method clear the breakpoint hit mark from the suspended mediators and remove the suspended point from
+     * breakpoint manager
+     */
+    private void clearSuspendedEventStatus() {
+        OpenEditorUtil.removeBreakpointHitStatus();
+        try {
+            deletePreviousSuspendPointsFromBreakpointManager();
+        } catch (CoreException e) {
+            log.error("Error while deleting previous suspend point : " //$NON-NLS-1$
+                    + e.getMessage(), e);
         }
     }
 

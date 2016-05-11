@@ -28,7 +28,9 @@ import org.eclipse.gmf.runtime.notation.View;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbServer;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.debugpoint.impl.ESBDebugPoint;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.exception.ESBDebuggerException;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.exception.MediatorNotFoundException;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.messages.util.AbstractESBDebugPointMessage;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.messages.util.ESBMediatorPosition;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.messages.util.ESBSequenceBean;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.messages.util.ESBSequenceDebugPointMessage;
@@ -46,16 +48,10 @@ public class SequenceDebugPointBuilder extends AbstractESBDebugPointBuilder {
      */
     @Override
     public ESBDebugPoint getESBDebugPoint(EsbServer esbServer, IResource resource, AbstractMediator part,
-            String commandArgument) throws CoreException, MediatorNotFoundException {
+            String commandArgument) throws CoreException, ESBDebuggerException {
 
         int lineNumber = -1;
-        SequencesImpl sequence = (SequencesImpl) esbServer.eContents().get(INDEX_OF_FIRST_ELEMENT);
-        EObject selection = ((View) part.getModel()).getElement();
-        List<Integer> position = getMediatorPosition(sequence.getOutputConnector(), selection);
-        ESBSequenceBean sequenceBean = new ESBSequenceBean(NAMED_SEQUENCE_LABEL, sequence.getName(),
-                new ESBMediatorPosition(position));
-        ESBSequenceDebugPointMessage sequenceDebugPoint = new ESBSequenceDebugPointMessage(null, commandArgument,
-                SEQUENCE_LABEL, sequenceBean);
+        ESBSequenceDebugPointMessage sequenceDebugPoint = (ESBSequenceDebugPointMessage)getESBDebugPointMessage(esbServer, part, commandArgument);
         return new ESBDebugPoint(resource, lineNumber, sequenceDebugPoint);
     }
 
@@ -81,4 +77,17 @@ public class SequenceDebugPointBuilder extends AbstractESBDebugPointBuilder {
             decreaseBreakpointPosition(breakpontList, position);
         }
     }
+
+	@Override
+	public AbstractESBDebugPointMessage getESBDebugPointMessage(EsbServer esbServer, AbstractMediator part,
+            String commandArgument) throws CoreException, ESBDebuggerException {
+        SequencesImpl sequence = (SequencesImpl) esbServer.eContents().get(INDEX_OF_FIRST_ELEMENT);
+        EObject selection = ((View) part.getModel()).getElement();
+        List<Integer> position = getMediatorPosition(sequence.getOutputConnector(), selection);
+        ESBSequenceBean sequenceBean = new ESBSequenceBean(NAMED_SEQUENCE_LABEL, sequence.getName(),
+                new ESBMediatorPosition(position));
+        ESBSequenceDebugPointMessage sequenceDebugPoint = new ESBSequenceDebugPointMessage(null, commandArgument,
+                SEQUENCE_LABEL, sequenceBean);
+		return sequenceDebugPoint;
+	}
 }

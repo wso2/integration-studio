@@ -108,6 +108,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.export.EsbModelEx
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.debugpoint.impl.ESBBreakpointAction;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.debugpoint.impl.ESBBreakpointDeleteAllAction;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.debugpoint.impl.ESBBreakpointRePopulateAction;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.debugpoint.impl.ESBShowWireLogsAction;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.debugpoint.impl.ESBSkipPointAction;
 
 /**
@@ -326,7 +327,7 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
 											new ESBBreakpointAction(part));
 									menu.appendToGroup(
 											ESB_DEBUGGER_ACTIONS_MENU_GROUP,
-											new ESBSkipPointAction(part));
+											new ESBSkipPointAction(part));									
 									menu.appendToGroup(
 											ESB_DEBUGGER_ACTIONS_MENU_GROUP,
 											new ESBBreakpointRePopulateAction(
@@ -335,6 +336,9 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
 											ESB_DEBUGGER_ACTIONS_MENU_GROUP,
 											new ESBBreakpointDeleteAllAction(
 													part));
+									menu.appendToGroup(
+											ESB_DEBUGGER_ACTIONS_MENU_GROUP,
+											new ESBShowWireLogsAction(part));
 								}
 
 								if (null != contextAction) {

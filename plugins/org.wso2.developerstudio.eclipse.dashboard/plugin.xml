@@ -18,6 +18,10 @@
             <menu label="Developer Studio"
                   mnemonic="C"
                   id="org.wso2.developerstudio.eclipse.platform.ui.main">
+                  <separator
+                        name="separator-id-dashoad-up"
+                        visible="true">
+                 </separator>
                 <command
                         commandId="org.wso2.developerstudio.eclipse.platform.ui.commands.opendashboard"
                         icon="icons/carbon-normal.png"
@@ -25,6 +29,10 @@
                         label="Open Dashboard"
                         tooltip="Open Developer Studio Dashboard">
                 </command>
+                  <separator
+                        name="separator-id-dashoad-down"
+                        visible="true">
+                 </separator>
             </menu>
         </menuContribution>
     </extension>

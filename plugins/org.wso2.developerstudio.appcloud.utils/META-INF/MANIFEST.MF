@@ -15,7 +15,8 @@ Require-Bundle: org.eclipse.ui;bundle-version="3.106.0",
  org.apache.commons.io;bundle-version="2.0.1",
  org.junit;bundle-version="4.11.0",
  org.wso2.developerstudio.eclipse.kernel.libraries;bundle-version="[4.1.0,5.0.0)",
- org.wso2.developerstudio.eclipse.libraries;bundle-version="[4.1.0,5.0.0)"
+ org.wso2.developerstudio.eclipse.libraries;bundle-version="[4.1.0,5.0.0)",
+ org.wso2.developerstudio.eclipse.registry.base
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
 Bundle-ClassPath: .,

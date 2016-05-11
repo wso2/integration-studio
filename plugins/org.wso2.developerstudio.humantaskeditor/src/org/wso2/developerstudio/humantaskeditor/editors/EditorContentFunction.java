@@ -33,17 +33,17 @@ import org.wso2.developerstudio.humantaskeditor.HumantaskEditorConstants;
 
 public class EditorContentFunction implements AbstractEditorFunctionExecutor {
 
-    private static String text;
-    private static String projectName;
+    private String text;
+    private String projectName;
     private static final Logger logger = Logger.getLogger(Activator.PLUGIN_ID);
 
     @Override
     public Object executeFunction(String functionName, Object[] parameters) {
         if (functionName.equals(HumantaskEditorConstants.JS_CUSTOMFUNC_SETTEXT)) {
-            EditorContentFunction.setText((String) parameters[1]);
+            setText((String) parameters[1]);
             return null;
         } else if (functionName.equals(HumantaskEditorConstants.JS_CUSTOMFUNC_GETTEXT)) {
-            return EditorContentFunction.getText();
+            return getText();
         } else if (functionName.equals(HumantaskEditorConstants.JS_CUSTOMFUNC_GET_WSDL)) {
             IWorkspace workspace = ResourcesPlugin.getWorkspace();
             IResource resource = null;
@@ -58,13 +58,10 @@ public class EditorContentFunction implements AbstractEditorFunctionExecutor {
                 } else {
                     try {
                         BufferedReader reader = new BufferedReader(new FileReader(file));
-                        while (true) {
-                            String line = reader.readLine();
-                            if (line == null) {
-                                break;
-                            }
-                            sb.append(line);
+                        String sCurrentLine;
 
+                        while ((sCurrentLine = reader.readLine()) != null) {
+                            sb.append(sCurrentLine);
                         }
 
                     } catch (FileNotFoundException e1) {
@@ -84,20 +81,20 @@ public class EditorContentFunction implements AbstractEditorFunctionExecutor {
 
     }
 
-    public static String getText() {
+    public String getText() {
         return text;
     }
 
-    public static void setText(String text) {
-        EditorContentFunction.text = text;
+    public void setText(String text) {
+        this.text = text;
     }
 
-    public static String getProjectName() {
+    public String getProjectName() {
         return projectName;
     }
 
-    public static void setProjectName(String projectName) {
-        EditorContentFunction.projectName = projectName;
+    public void setProjectName(String projectName) {
+        this.projectName = projectName;
     }
 
 }

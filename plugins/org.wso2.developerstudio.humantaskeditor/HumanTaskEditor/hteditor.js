@@ -99,7 +99,7 @@ function createFile(currentTaskName,state) { //createFile
 
 function readCBWSDL(currentTaskName) { //createFile
     try {
-        cbWsdl = ExecuteCustomFunction("getWSDL", currentTaskName);
+        cbWsdl = ExecuteCustomFunction("getwsdl", currentTaskName);
     } catch (err) {
         handleError('Error Reading CallBack WSDL');
     }
@@ -119,6 +119,13 @@ function addTask() { //createFile
             taskPartDom = marshalEditorTextContent(data);
             tasks = xmlDom.getElementsByTagName("tasks")[0];
             i = parseInt($('#nooftasks').val());
+            nodes = Array.prototype.slice.call(xmlDom.getElementsByTagName("task"), 0);
+            taskExists = false;
+            nodes.forEach(function(taskNode) {
+                if(taskNode.getAttribute("name") == ("newTask" + i)){
+                    i++;
+                }
+            });
             createFile("newTask" + i,"");
             taskPartDom.getElementsByTagName("task")[0].setAttribute("name", "newTask" + i);
             xmlDom.getElementsByTagName("tasks")[0].appendChild(xmlDom.importNode(taskPartDom.getElementsByTagName("task")[0], true));
@@ -244,13 +251,14 @@ function generateTasks() {
  * 
  */
 function deleteTask(taskNode) { //createFile
-    taskNode.parentNode.removeChild(taskNode); 
-    saveSource();
-    process();
-    i = parseInt($('#nooftasks').val());
-    i--;
-    $('#nooftasks').val(i);
-    makeDirty();
+    if(taskNode.parentNode.getElementsByTagName("task").length!=1){
+     taskNode.parentNode.removeChild(taskNode); 
+     saveSource();
+     process();
+     makeDirty();
+    }else{
+    handleError("HT File should have at least one task");    
+    }
 }
 
 /*
@@ -261,8 +269,8 @@ function deleteTask(taskNode) { //createFile
  * 
  */
 function generateUI() {
-    if (xmlDom.childNodes.length == 1 && xmlDom.childNodes[0].nodeValue == null) {
-        handleError("XML couldnt be parsed");
+    if (xmlDom.childNodes.length == 1 && xmlDom.childNodes[0].childNodes == 0) {
+        handleError("XML couldnt be parsed"); //Toggle Logic Here
         $('body').hide();
     } else {
         $('body').show();
@@ -788,14 +796,14 @@ function marshalEditorTextContent(textContent) {
 function syncWSDLFields(taskName){
     taskDivName = taskName + "wrapper";
     try {
-        wsdlRead = readCBWSDL(taskName);
+        var wsdlRead = readCBWSDL(taskName);
     } catch (err) {
         handleError("Error Reading WSDL");
     }
     if (typeof wsdlRead != 'undefined' || wsdlRead != 'undefined') {
         if(wsdlRead.getElementsByTagName("definitions").length!=0){
-        $('#' + taskDivName + ' #taskCallbackServiceURL').val(wsdlRead.getElementsByTagName("definitions")[0].getElementsByTagName("address")[0].getAttribute("location"));
-        $('#' + taskDivName + ' #taskCallbackServiceName').val(wsdlRead.getElementsByTagName("definitions")[0].getElementsByTagName("service")[0].getAttribute("name"));
+            $('#' + taskDivName + ' #taskCallbackServiceURL').val(wsdlRead.getElementsByTagName("definitions")[0].getElementsByTagName("address")[0].getAttribute("location"));
+            $('#' + taskDivName + ' #taskCallbackServiceName').val(wsdlRead.getElementsByTagName("definitions")[0].getElementsByTagName("service")[0].getAttribute("name"));
         }else{
             createFile(taskName,"initial");
         }

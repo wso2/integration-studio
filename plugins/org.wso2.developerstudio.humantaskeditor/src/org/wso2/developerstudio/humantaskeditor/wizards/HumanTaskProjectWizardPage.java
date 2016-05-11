@@ -37,6 +37,8 @@ public class HumanTaskProjectWizardPage extends WizardPage {
     private Text containerText;
 
     private Text fileText;
+    
+    private Text taskText;
 
     private ISelection selection;
 
@@ -63,7 +65,7 @@ public class HumanTaskProjectWizardPage extends WizardPage {
         layout.numColumns = 2;
         layout.verticalSpacing = 9;
         Label label = new Label(container, SWT.NULL);
-        label.setText("&Project Name:");
+        label.setText("&Project Name :");
 
         containerText = new Text(container, SWT.BORDER | SWT.SINGLE);
         GridData gd = new GridData(GridData.FILL_HORIZONTAL);
@@ -76,12 +78,25 @@ public class HumanTaskProjectWizardPage extends WizardPage {
         });
 
         label = new Label(container, SWT.NULL);
-        label.setText("&File name:");
+        label.setText("&File name :");
 
         fileText = new Text(container, SWT.BORDER | SWT.SINGLE);
         gd = new GridData(GridData.FILL_HORIZONTAL);
         fileText.setLayoutData(gd);
         fileText.addModifyListener(new ModifyListener() {
+            @Override
+            public void modifyText(ModifyEvent e) {
+                dialogChanged();
+            }
+        });
+        
+        label = new Label(container, SWT.NULL);
+        label.setText("&Task Name :");
+
+        taskText = new Text(container, SWT.BORDER | SWT.SINGLE);
+        gd = new GridData(GridData.FILL_HORIZONTAL);
+        taskText.setLayoutData(gd);
+        taskText.addModifyListener(new ModifyListener() {
             @Override
             public void modifyText(ModifyEvent e) {
                 dialogChanged();
@@ -122,7 +137,8 @@ public class HumanTaskProjectWizardPage extends WizardPage {
 
     private void dialogChanged() {
         String fileName = getFileName();
-
+        String taskName = getTaskName();
+        
         if (getContainerName().length() == 0) {
             updateStatus(HumantaskEditorConstants.FILE_CONTAINER_MUST_BE_SPECIFIED_MESSAGE);
             return;
@@ -140,6 +156,11 @@ public class HumanTaskProjectWizardPage extends WizardPage {
          * return;
          * }
          */
+        
+        if (taskName.contains(" ")) {
+            updateStatus(HumantaskEditorConstants.TASK_NAME_CANNOT_HAVE_SPACES);
+            return;
+        }
         if (fileName.length() == 0) {
             updateStatus(HumantaskEditorConstants.FILE_NAME_MUST_BE_SPECIFIED_MESSAGE);
             return;
@@ -170,5 +191,9 @@ public class HumanTaskProjectWizardPage extends WizardPage {
 
     public String getFileName() {
         return fileText.getText();
+    }
+    
+    public String getTaskName() {
+        return taskText.getText();
     }
 }

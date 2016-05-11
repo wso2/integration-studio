@@ -98,7 +98,7 @@ public class HumanTaskWizard extends Wizard implements INewWizard {
             @Override
             public void run(IProgressMonitor monitor) throws InvocationTargetException {
                 try {
-                    doFinish(containerName, fileName,taskName, monitor);
+                    doFinish(containerName, fileName, taskName, monitor);
                 } catch (CoreException e) {
                     throw new InvocationTargetException(e);
                 } finally {
@@ -113,7 +113,8 @@ public class HumanTaskWizard extends Wizard implements INewWizard {
             return false;
         } catch (InvocationTargetException e) {
             Throwable realException = e.getTargetException();
-            MessageDialog.openError(getShell(), HumantaskEditorConstants.ERROR_MESSAGE+"At Get Container", realException.getMessage());
+            MessageDialog.openError(getShell(), HumantaskEditorConstants.ERROR_MESSAGE + "At Get Container",
+                    realException.getMessage());
             return false;
         }
         return true;
@@ -125,7 +126,8 @@ public class HumanTaskWizard extends Wizard implements INewWizard {
      * file.
      */
 
-    private void doFinish(String containerName, String fileName, String taskName, IProgressMonitor monitor) throws CoreException {
+    private void doFinish(String containerName, String fileName, String taskName, IProgressMonitor monitor)
+            throws CoreException {
         monitor.beginTask("Creating " + fileName, 2);
         IWorkspaceRoot root = ResourcesPlugin.getWorkspace().getRoot();
         IResource resource = root.findMember(new Path(containerName));
@@ -159,7 +161,7 @@ public class HumanTaskWizard extends Wizard implements INewWizard {
             logger.log(Level.FINE, HumantaskEditorConstants.ERROR_CREATING_INITIAL_FILE_MESSAGE, e);
             IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage());
             ErrorDialog.openError(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
-                    HumantaskEditorConstants.ERROR_MESSAGE+"At Streams",
+                    HumantaskEditorConstants.ERROR_MESSAGE + "At Streams",
                     HumantaskEditorConstants.ERROR_CREATING_INITIAL_FILE_MESSAGE, editorStatus);
         }
         monitor.worked(1);
@@ -174,7 +176,7 @@ public class HumanTaskWizard extends Wizard implements INewWizard {
                     logger.log(Level.FINE, HumantaskEditorConstants.ERROR_OPENING_THE_EDITOR_MESSAGE, e);
                     IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage());
                     ErrorDialog.openError(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
-                            HumantaskEditorConstants.ERROR_MESSAGE+" At Display",
+                            HumantaskEditorConstants.ERROR_MESSAGE + " At Display",
                             HumantaskEditorConstants.ERROR_OPENING_THE_EDITOR_MESSAGE, editorStatus);
                     e.printStackTrace();
                 }
@@ -187,11 +189,11 @@ public class HumanTaskWizard extends Wizard implements INewWizard {
      * We will initialize file contents with a sample text.
      *
      * @throws IOException
-     * @throws CoreException 
+     * @throws CoreException
      */
 
     private InputStream openContentStream(String taskName) throws IOException, CoreException {
-        String contents = changeXMLName(readDummyHT(),taskName);
+        String contents = changeXMLName(readDummyHT(), taskName);
         return new ByteArrayInputStream(contents.getBytes());
     }
 
@@ -323,7 +325,7 @@ public class HumanTaskWizard extends Wizard implements INewWizard {
     public void init(IWorkbench workbench, IStructuredSelection selection) {
         this.selection = selection;
     }
-    
+
     private String changeXMLName(String content, String taskName) throws CoreException {
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
         Document dom = null;

@@ -36,10 +36,26 @@ import org.eclipse.core.runtime.CoreException;
 
 import java.io.*;
 
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.OutputKeys;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerConfigurationException;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+
 import org.eclipse.ui.*;
 import org.eclipse.ui.ide.IDE;
+import org.w3c.dom.Document;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 import org.wso2.developerstudio.humantaskeditor.Activator;
 import org.wso2.developerstudio.humantaskeditor.HumantaskEditorConstants;
+import org.xml.sax.InputSource;
+import org.xml.sax.SAXException;
 
 /**
  * This class contains the wizard for creating a new ht file
@@ -77,11 +93,12 @@ public class HumanTaskWizard extends Wizard implements INewWizard {
     public boolean performFinish() {
         final String containerName = page.getContainerName();
         final String fileName = page.getFileName();
+        final String taskName = page.getTaskName();
         IRunnableWithProgress op = new IRunnableWithProgress() {
             @Override
             public void run(IProgressMonitor monitor) throws InvocationTargetException {
                 try {
-                    doFinish(containerName, fileName, monitor);
+                    doFinish(containerName, fileName, taskName, monitor);
                 } catch (CoreException e) {
                     throw new InvocationTargetException(e);
                 } finally {
@@ -96,7 +113,8 @@ public class HumanTaskWizard extends Wizard implements INewWizard {
             return false;
         } catch (InvocationTargetException e) {
             Throwable realException = e.getTargetException();
-            MessageDialog.openError(getShell(), HumantaskEditorConstants.ERROR_MESSAGE+"At Get Container", realException.getMessage());
+            MessageDialog.openError(getShell(), HumantaskEditorConstants.ERROR_MESSAGE + "At Get Container",
+                    realException.getMessage());
             return false;
         }
         return true;
@@ -108,7 +126,8 @@ public class HumanTaskWizard extends Wizard implements INewWizard {
      * file.
      */
 
-    private void doFinish(String containerName, String fileName, IProgressMonitor monitor) throws CoreException {
+    private void doFinish(String containerName, String fileName, String taskName, IProgressMonitor monitor)
+            throws CoreException {
         monitor.beginTask("Creating " + fileName, 2);
         IWorkspaceRoot root = ResourcesPlugin.getWorkspace().getRoot();
         IResource resource = root.findMember(new Path(containerName));
@@ -117,13 +136,13 @@ public class HumanTaskWizard extends Wizard implements INewWizard {
         }
         IContainer container = (IContainer) resource;
         final IFile file = container.getFile(new Path(fileName));
-        final IFile wsdlfile = container.getFile(new Path(HumantaskEditorConstants.INITIAL_WSDL_NAME));
-        final IFile cbWsdlfile = container.getFile(new Path(HumantaskEditorConstants.INITIAL_CALLBACK_WSDL_NAME));
+        final IFile wsdlfile = container.getFile(new Path(taskName + "Task.wsdl"));
+        final IFile cbWsdlfile = container.getFile(new Path(taskName + "CBTask.wsdl"));
         final IFile htconfigfile = container.getFile(new Path(HumantaskEditorConstants.INITIAL_HTCONFIG_NAME));
         addNature(container.getProject());
 
         try {
-            InputStream stream = openContentStream();
+            InputStream stream = openContentStream(taskName);
             InputStream wsdlStream = openWSDLStream();
             InputStream htconfigStream = openHTConfigStream();
             if (file.exists()) {
@@ -142,7 +161,7 @@ public class HumanTaskWizard extends Wizard implements INewWizard {
             logger.log(Level.FINE, HumantaskEditorConstants.ERROR_CREATING_INITIAL_FILE_MESSAGE, e);
             IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage());
             ErrorDialog.openError(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
-                    HumantaskEditorConstants.ERROR_MESSAGE+"At Streams",
+                    HumantaskEditorConstants.ERROR_MESSAGE + "At Streams",
                     HumantaskEditorConstants.ERROR_CREATING_INITIAL_FILE_MESSAGE, editorStatus);
         }
         monitor.worked(1);
@@ -157,7 +176,7 @@ public class HumanTaskWizard extends Wizard implements INewWizard {
                     logger.log(Level.FINE, HumantaskEditorConstants.ERROR_OPENING_THE_EDITOR_MESSAGE, e);
                     IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage());
                     ErrorDialog.openError(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
-                            HumantaskEditorConstants.ERROR_MESSAGE+"At Display",
+                            HumantaskEditorConstants.ERROR_MESSAGE + " At Display",
                             HumantaskEditorConstants.ERROR_OPENING_THE_EDITOR_MESSAGE, editorStatus);
                     e.printStackTrace();
                 }
@@ -170,10 +189,11 @@ public class HumanTaskWizard extends Wizard implements INewWizard {
      * We will initialize file contents with a sample text.
      *
      * @throws IOException
+     * @throws CoreException
      */
 
-    private InputStream openContentStream() throws IOException {
-        String contents = readDummyHT();
+    private InputStream openContentStream(String taskName) throws IOException, CoreException {
+        String contents = changeXMLName(readDummyHT(), taskName);
         return new ByteArrayInputStream(contents.getBytes());
     }
 
@@ -304,5 +324,45 @@ public class HumanTaskWizard extends Wizard implements INewWizard {
     @Override
     public void init(IWorkbench workbench, IStructuredSelection selection) {
         this.selection = selection;
+    }
+
+    private String changeXMLName(String content, String taskName) throws CoreException {
+        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+        Document dom = null;
+        String xmlString = null;
+        try {
+
+            DocumentBuilder db = dbf.newDocumentBuilder();
+            InputSource is = new InputSource(new StringReader(content));
+            dom = db.parse(is);
+            NodeList taskList = dom.getElementsByTagName(HumantaskEditorConstants.QUALIFIED_TASK_NODE_NAME);
+            for (int i = 0; i < taskList.getLength(); i++) {
+                Node task = taskList.item(i);
+                task.getAttributes().getNamedItem("name").setNodeValue(taskName);
+            }
+            TransformerFactory transfactory = TransformerFactory.newInstance();
+            Transformer transformer = transfactory.newTransformer();
+            transformer.setOutputProperty(OutputKeys.METHOD, "xml");
+            transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+            transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", Integer.toString(2));
+
+            StringWriter stringWriter = new StringWriter();
+            StreamResult result = new StreamResult(stringWriter);
+            DOMSource source = new DOMSource(dom.getDocumentElement());
+
+            transformer.transform(source, result);
+            xmlString = stringWriter.toString();
+        } catch (ParserConfigurationException pce) {
+            throwCoreException(HumantaskEditorConstants.EXCEPTION_OCCURED_IN_PARSING_XML);
+        } catch (SAXException se) {
+            throwCoreException(HumantaskEditorConstants.EXCEPTION_OCCURED_IN_PARSING_XML);
+        } catch (IOException ioe) {
+            throwCoreException(HumantaskEditorConstants.EXCEPTION_OCCURED_IN_FILE_IO);
+        } catch (TransformerConfigurationException e) {
+            throwCoreException(HumantaskEditorConstants.EXCEPTION_OCCURED_IN_TRANSFORM_CONFIG);
+        } catch (TransformerException e) {
+            throwCoreException(HumantaskEditorConstants.EXCEPTION_OCCURED_IN_TRANSFORMING_XML_TO_TEXT);
+        }
+        return xmlString;
     }
 }

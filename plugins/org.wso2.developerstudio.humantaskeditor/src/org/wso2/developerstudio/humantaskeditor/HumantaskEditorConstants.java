@@ -2,7 +2,7 @@ package org.wso2.developerstudio.humantaskeditor;
 
 public class HumantaskEditorConstants {
 
-    public static final String JS_CUSTOMFUNC_GET_WSDL = "getWSDL";
+    public static final String JS_CUSTOMFUNC_GET_WSDL = "getwsdl";
 
     public static final String JS_CUSTOMFUNC_GETTEXT = "gettext";
 
@@ -54,7 +54,7 @@ public class HumantaskEditorConstants {
 
     public static final String ERROR_CREATING_INITIAL_FILE_MESSAGE = "Error Creating Initial File";
 
-    public static final String THE_PROJECT_EXISTS_IN_THE_WORKSPACE_MESSAGE = "The project exists in the workspace";
+    public static final String THE_PROJECT_EXISTS_IN_THE_WORKSPACE_MESSAGE = "The project already exists in the workspace. Please use a different project name";
 
     public static final String PROJECT_EXISTS_MESSAGE = "Project Exists";
 
@@ -74,6 +74,8 @@ public class HumantaskEditorConstants {
 
     public static final String FILE_CONTAINER_MUST_BE_SPECIFIED_MESSAGE = "File container must be specified";
 
+    public static final String TASK_NAME_CANNOT_HAVE_SPACES = "Task name should'nt have spaces";
+    
     public static final String WIZARD_PAGE_TEXT = "Human Task Artifact";
 
     public static final String PROJECT_WIZARD_PAGE_DESCRIPTION = "This wizard creates a humantask artifact Project which can be deployed";
@@ -93,5 +95,15 @@ public class HumantaskEditorConstants {
     public static final String FILE_WIZARD_PAGE_TITLE = "Human Task File";
 
     public static final String BROWSE_BUTTON_TEXT = "Browse...";
-
+    
+    public static final String EXCEPTION_OCCURED_IN_TRANSFORMING_XML_TO_TEXT = "Exception occured in Transforming XML to Text";
+    
+    public static final String EXCEPTION_OCCURED_IN_TRANSFORM_CONFIG = "Exception occured in Transform config";
+    
+    public static final String EXCEPTION_OCCURED_IN_FILE_IO = "Exception occured in File IO";
+    
+    public static final String EXCEPTION_OCCURED_IN_PARSING_XML = "Exception occured in parsing XML";
+    
+    public static final String QUALIFIED_TASK_NODE_NAME = "htd:task";
+ 
 }

@@ -1,4 +1,4 @@
-<htd:task 
+<htd:tasks 
 xmlns:htd="http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803"
 xmlns:htt="http://docs.oasis-open.org/ns/bpel4people/ws-humantask/types/200803"
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -6,8 +6,8 @@ xmlns:xsd="http://www.w3.org/2001/XMLSchema"
 xmlns:cl="http://www.example.com/claims/"
 xmlns:tns="http://www.example.com"
 xmlns:wso2="http://wso2.org/ht/schema/renderings/"
-
- name="ApproveClaim">
+>
+<htd:task name="ApproveClaim">
             <htd:documentation xml:lang="en-US">
                 This task is used to handle claims that require manual
                 approval.
@@ -134,3 +134,4 @@ xmlns:wso2="http://wso2.org/ht/schema/renderings/"
             </htd:renderings>
 
         </htd:task>
+ <htd:tasks>

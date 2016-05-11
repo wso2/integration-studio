@@ -54,11 +54,13 @@ public class HumanTaskMultiPageEditor extends MultiPageEditorPart implements IRe
     /** The UI editor used in page 0. */
     private HumanTaskUIEditor humanTaskUIEditor;
 
+    private EditorContentFunction editorContentFunction;
     /**
      * Creates a humantask editor.
      */
     public HumanTaskMultiPageEditor() {
         super();
+        editorContentFunction = new EditorContentFunction();
         ResourcesPlugin.getWorkspace().addResourceChangeListener(this);
     }
 
@@ -74,7 +76,7 @@ public class HumanTaskMultiPageEditor extends MultiPageEditorPart implements IRe
         try {
             index = addPage(humanTaskUIEditor, getEditorInput());
             setPageText(index, HumantaskEditorConstants.GUI_EDITOR_NAME);
-            humanTaskUIEditor.setEditorFunctionExecutor(new EditorContentFunction());
+            humanTaskUIEditor.setEditorFunctionExecutor(editorContentFunction);
         } catch (PartInitException e) {
             ErrorDialog.openError(getSite().getShell(), HumantaskEditorConstants.ERROR_CREATING_UI_EDITOR, null,
                     e.getStatus());
@@ -89,7 +91,7 @@ public class HumanTaskMultiPageEditor extends MultiPageEditorPart implements IRe
             textEditor = new StructuredTextEditor();
             int index = addPage(textEditor, getEditorInput());
             setPageText(index, textEditor.getTitle());
-            EditorContentFunction.setProjectName(((FileEditorInput) textEditor.getEditorInput()).getFile().getProject()
+            editorContentFunction.setProjectName(((FileEditorInput) textEditor.getEditorInput()).getFile().getProject()
                     .getName());
         } catch (PartInitException e) {
             ErrorDialog.openError(getSite().getShell(), HumantaskEditorConstants.ERROR_CREATING_NESTED_TEXT_EDITOR,
@@ -191,10 +193,10 @@ public class HumanTaskMultiPageEditor extends MultiPageEditorPart implements IRe
         if (newPageIndex == 1) {
             humanTaskUIEditor.getBrowser().execute(HumantaskEditorConstants.JS_FUNC_SAVE_SOURCE);
             if (humanTaskUIEditor.isDirty()) {
-                doc.set(EditorContentFunction.getText());
+                doc.set(editorContentFunction.getText());
             }
         } else if (newPageIndex == 0) {
-            EditorContentFunction.setText(doc.get());
+            editorContentFunction.setText(doc.get());
             humanTaskUIEditor.getBrowser().execute(HumantaskEditorConstants.JS_FUNC_LOAD_MODEL_WITH_TEXT);
             humanTaskUIEditor.getBrowser().execute(HumantaskEditorConstants.JS_FUNC_PROCESS);
         }

@@ -105,5 +105,15 @@ public class HumantaskEditorConstants {
     public static final String EXCEPTION_OCCURED_IN_PARSING_XML = "Exception occured in parsing XML";
     
     public static final String QUALIFIED_TASK_NODE_NAME = "htd:task";
+    
+    public static final String XML_INDENT_YES = "yes";
+
+    public static final String XML_OUTPUT_METHOD = "xml";
+
+    public static final String TASK_NAME_ATTRIBUTE = "name";
+
+    public static final String CALLBACK_TASK_WSDL_SUFFIX = "CBTask.wsdl";
+
+    public static final String TASK_WSDL_SUFFIX = "Task.wsdl";
  
 }

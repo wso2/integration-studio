@@ -244,11 +244,9 @@ function generateTasks() {
 }
 
 /*
- * Signature: addTask(){...}
+ * Signature: deleteTask(){...}
  * 
- * This method generates creates a new task. This method add a dummy task node into the ht file and adds a new task tab and Ui elements respectively
- * 
- * 
+ * This method deletes an existing task.
  */
 function deleteTask(taskNode) { //createFile
     if(taskNode.parentNode.getElementsByTagName("task").length!=1){

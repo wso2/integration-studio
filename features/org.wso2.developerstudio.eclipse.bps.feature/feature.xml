@@ -34,9 +34,8 @@
       %license
    </license>
 
-
-	 <requires>
-      <import feature="org.wso2.developerstudio.kernel.feature"
+   <requires>
+       <import feature="org.wso2.developerstudio.kernel.feature"
 			version="0.0.0"/>
 		 <import feature="org.wso2.developerstudio.capp.feature"
 			version="0.0.0"/>
@@ -69,9 +68,10 @@
 		 <import feature="org.wso2.developerstudio.usr.management.feature"
 			version="0.0.0"/>
 		 <import feature="org.wso2.developerstudio.mvn.multimodule.feature"
-			version="0.0.0"/> </requires>
-   
-  <plugin
+			version="0.0.0"/>
+   </requires>
+
+   <plugin
          id="org.eclipse.bpel.apache.ode.deploy.model"
          download-size="0"
          install-size="0"

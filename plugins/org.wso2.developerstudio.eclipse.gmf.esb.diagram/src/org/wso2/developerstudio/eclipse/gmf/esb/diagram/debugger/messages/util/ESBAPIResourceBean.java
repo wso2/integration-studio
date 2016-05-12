@@ -44,7 +44,7 @@ public class ESBAPIResourceBean {
     public boolean equals(Object apiBean) {
         if (apiBean instanceof ESBAPIResourceBean) {
             ESBAPIResourceBean apiBeanTemp = (ESBAPIResourceBean) apiBean;
-            if (!(getMethod().equals((apiBeanTemp).getMethod()))) {
+            if (!((apiBeanTemp).getMethod().contains(getMethod()))) {
                 return false;
             }
             return true;

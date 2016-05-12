@@ -255,6 +255,7 @@ function deleteTask(taskNode) { //createFile
             taskNode.parentNode.removeChild(taskNode); 
             saveSource();
             process();
+            ExecuteCustomFunction("removewsdl", taskNode.getAttribute("name"));
             makeDirty();
         } else {} 
     }else{

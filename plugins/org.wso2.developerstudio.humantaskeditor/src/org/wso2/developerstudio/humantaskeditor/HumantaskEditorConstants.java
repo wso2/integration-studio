@@ -3,6 +3,8 @@ package org.wso2.developerstudio.humantaskeditor;
 public class HumantaskEditorConstants {
 
     public static final String JS_CUSTOMFUNC_GET_WSDL = "getwsdl";
+    
+    public static final String JS_CUSTOMFUNC_REMOVE_WSDL = "removewsdl";
 
     public static final String JS_CUSTOMFUNC_GETTEXT = "gettext";
 
@@ -25,8 +27,6 @@ public class HumantaskEditorConstants {
     public static final String ERROR_FINDING_CORRESPONDING_WSDL_FILE = "Error Finding Corresponding WSDL File";
 
     public static final String UNDEFINED_LITERAL = "undefined";
-
-    public static final String CALLBACK_WSDL_PREFIX = "CBTask.wsdl";
 
     public static final String ERROR_INVALID_INPUT_MUST_BE_IFILE_EDITOR_INPUT = "Invalid Input: Must be IFileEditorInput";
 

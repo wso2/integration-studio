@@ -48,7 +48,7 @@ public class EditorContentFunction implements AbstractEditorFunctionExecutor {
             IWorkspace workspace = ResourcesPlugin.getWorkspace();
             IResource resource = null;
             resource = workspace.getRoot().getProject(getProjectName())
-                    .findMember(parameters[1] + HumantaskEditorConstants.CALLBACK_WSDL_PREFIX);
+                    .findMember(parameters[1] + HumantaskEditorConstants.CALLBACK_TASK_WSDL_SUFFIX);
 
             if (resource.exists()) {
                 File file = resource.getLocation().toFile();
@@ -70,6 +70,31 @@ public class EditorContentFunction implements AbstractEditorFunctionExecutor {
                         logger.log(Level.FINE, HumantaskEditorConstants.ERROR_CREATING_CORRESPONDING_WSDL_FILE, e);
                     }
                     return sb.toString();
+                }
+            } else {
+                return HumantaskEditorConstants.UNDEFINED_LITERAL;
+            }
+
+        } else if (functionName.equals(HumantaskEditorConstants.JS_CUSTOMFUNC_REMOVE_WSDL)) {
+            IWorkspace workspace = ResourcesPlugin.getWorkspace();
+            IResource resource = null;
+            IResource cbResource = null;
+            cbResource = workspace.getRoot().getProject(getProjectName())
+                    .findMember(parameters[1] + HumantaskEditorConstants.CALLBACK_TASK_WSDL_SUFFIX);
+            resource = workspace.getRoot().getProject(getProjectName())
+                    .findMember(parameters[1] + HumantaskEditorConstants.TASK_WSDL_SUFFIX);
+
+            if (resource.exists()) {
+                File file = resource.getLocation().toFile();
+                File cbFile = cbResource.getLocation().toFile();
+                if (!file.exists()) {
+                    return "File not found";
+                }else if (!cbFile.exists()) {
+                    return "File not found";
+                }  else {
+                    file.delete();
+                    cbFile.delete();
+                    return "Deleted Successfully";
                 }
             } else {
                 return HumantaskEditorConstants.UNDEFINED_LITERAL;

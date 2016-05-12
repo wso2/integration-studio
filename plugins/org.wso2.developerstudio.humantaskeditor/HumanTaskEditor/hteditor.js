@@ -250,10 +250,13 @@ function generateTasks() {
  */
 function deleteTask(taskNode) { //createFile
     if(taskNode.parentNode.getElementsByTagName("task").length!=1){
-     taskNode.parentNode.removeChild(taskNode); 
-     saveSource();
-     process();
-     makeDirty();
+        confirmInput = confirm("Do you really want to delete " + taskNode.getAttribute("name") + " ? ");
+        if (confirmInput == true) {
+            taskNode.parentNode.removeChild(taskNode); 
+            saveSource();
+            process();
+            makeDirty();
+        } else {} 
     }else{
     handleError("HT File should have at least one task");    
     }

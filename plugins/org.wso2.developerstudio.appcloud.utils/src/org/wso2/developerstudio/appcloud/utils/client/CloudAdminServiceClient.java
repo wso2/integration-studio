@@ -112,7 +112,8 @@ public class CloudAdminServiceClient {
 					// TODO Auto-generated method stub
 					return null;
 				}
-	        } };
+	        } 
+	        };
 	        sc.init(null, trustAllCerts, new java.security.SecureRandom());
 	        HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory());
 	        HttpsURLConnection.setDefaultHostnameVerifier(hv);

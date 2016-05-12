@@ -13,7 +13,7 @@
           point="org.wso2.developerstudio.project.nature.provider">
            <projectnature id="org.wso2.developerstudio.eclipse.integration.project.nature"
               projectnature="org.wso2.developerstudio.eclipse.integration.project.nature"
-              ismultipleartifact="false"
+              ismultipleartifact="true"
               iscappsupported="true">              
            </projectnature>
     </extension>

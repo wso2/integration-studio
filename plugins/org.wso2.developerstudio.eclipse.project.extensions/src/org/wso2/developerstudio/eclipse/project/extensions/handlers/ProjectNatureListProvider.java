@@ -62,6 +62,7 @@ public class ProjectNatureListProvider {
 					projectNatureItem.setMultipleArtifactProject(Boolean.valueOf(isMultiple));
 					projectNatureItem.setProjectNature(projectNture);
 					projectNatureItem.setCappSupported(Boolean.valueOf(CappSupported));
+					allprojectNatures.add(projectNatureItem);
 				}
 			}
 		}

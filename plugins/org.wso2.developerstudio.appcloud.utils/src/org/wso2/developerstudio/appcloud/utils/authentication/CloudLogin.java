@@ -87,7 +87,6 @@ public class CloudLogin {
 				Map<String, String> tenants = CloudAdminServiceClient
 						.getTenantDomains(new UserPasswordCredentials(user, password));
 				if (tenants.size() == 0) {
-					error.setText(Messages.APP_CLOUD_ZERO_TENANTS_WARNING);
 					val = false;
 				} else if (tenants.size() == 1) {
 					Authenticator.getInstance().setSelectedTenant(tenants.entrySet().iterator().next().getValue());

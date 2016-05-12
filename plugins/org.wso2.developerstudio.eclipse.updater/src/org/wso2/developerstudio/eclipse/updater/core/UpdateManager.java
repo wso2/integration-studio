@@ -288,6 +288,7 @@ public class UpdateManager {
 		}
 		// sort the available new features according to alphabetical order
 		availableNewFeatures = new TreeMap<String, EnhancedFeature>(unsortedAvailableNewFeatures);
+		System.out.println("done!!");
 	}
 
 	/**
@@ -605,7 +606,7 @@ public class UpdateManager {
 		SubMonitor progress = SubMonitor.convert(monitor, Messages.UpdateManager_23, 2);
 
 		OperationFactory operationFactory = new OperationFactory();
-		IQueryResult<IInstallableUnit> queryResult = operationFactory.listInstalledElements(true, progress.newChild(1));
+		IQueryResult<IInstallableUnit> queryResult = operationFactory.listInstalledElements(false, progress.newChild(1));
 		return filterInstallableUnits(WSO2_FEATURE_PREFIX, FEATURE_GROUP_IU_ID_SFX, queryResult, progress.newChild(1));
 	}
 

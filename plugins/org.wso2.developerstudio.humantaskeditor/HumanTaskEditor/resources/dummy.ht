@@ -53,41 +53,21 @@
 
     <htd:tasks>
         <htd:task name="ApproveClaim">
-            <htd:documentation xml:lang="en-US">
-                This task is used to handle claims that require manual
-                approval.
-            </htd:documentation>
+            <htd:documentation xml:lang="en-US"></htd:documentation>
 
             <htd:interface portType="cl:ClaimsHandlingPT"
                            operation="approve"
                            responsePortType="cl:ClaimsHandlingCallbackPT"
                            responseOperation="approvalResponse"/>
 
-            <htd:priority>
-                htd:getInput("ClaimApprovalRequest")/test10:priority
-            </htd:priority>
+            <htd:priority></htd:priority>
 
-            <htd:peopleAssignments>
-                <htd:potentialOwners>
-                    <htd:from logicalPeopleGroup="regionalClerks">
-                        <htd:argument name="role">
-                            regionalClerksRole
-                        </htd:argument>
-                    </htd:from>
-                </htd:potentialOwners>
-                <htd:businessAdministrators>
-                    <htd:from logicalPeopleGroup="regionalManager">
-                        <htd:argument name="role">
-                            regionalManagerRole
-                        </htd:argument>
-                    </htd:from>
-                </htd:businessAdministrators>
-            </htd:peopleAssignments>
+            <htd:peopleAssignments></htd:peopleAssignments>
 
             <htd:delegation potentialDelegatees="nobody"/>
 
             <htd:presentationElements>
-                <htd:name xml:lang="en-US">Approve Claim</htd:name>
+                <htd:name xml:lang="en-US"></htd:name>
                 <htd:name xml:lang="de-DE">
                     Genehmigung der Schadensforderung
                 </htd:name>
@@ -106,18 +86,12 @@
                     </htd:presentationParameter>
                 </htd:presentationParameters>
 
-                <htd:subject xml:lang="en-US">
-                    Approve the insurance claim for €$euroAmount$ on behalf of
-                    $firstname$ $lastname$
-                </htd:subject>
+                <htd:subject xml:lang="en-US"></htd:subject>
                 <htd:subject xml:lang="de-DE">
                     Genehmigung der Schadensforderung über €$euroAmount$ für
                     $firstname$ $lastname$
                 </htd:subject>
-                <htd:description xml:lang="en-US" contentType="text/plain">
-                    Approve this claim following corporate guideline
-                    #4711.0815/7 ...
-                </htd:description>
+                <htd:description xml:lang="en-US" contentType="text/plain"></htd:description>
                 <htd:description xml:lang="en-US" contentType="text/html">
                     <![CDATA[
                       <p>
@@ -150,19 +124,7 @@
                             <wso2:label>First Name</wso2:label>
                             <wso2:value>$firstname$</wso2:value>
                         </wso2:element>
-                        <wso2:element id="lname" type="xsd:string">
-                            <wso2:label>Last Name</wso2:label>
-                            <wso2:value>$lastname$</wso2:value>
-                        </wso2:element>
-                        <wso2:element id="amount" type="xsd:string">
-                            <wso2:label>Loan Amount</wso2:label>
-                            <wso2:value>$euroAmount$</wso2:value>
-                        </wso2:element>
-                        <wso2:element id="custId" type="xsd:string">
-                            <wso2:label>Customer Identifier</wso2:label>
-                            <wso2:value>/test10:ClaimApprovalData/test10:cust/test10:id</wso2:value>
-                        </wso2:element>
-                    </wso2:inputs>
+                     </wso2:inputs>
                 </htd:rendering>
 
                 <!-- Display elements to the user workspace which implements output message -->

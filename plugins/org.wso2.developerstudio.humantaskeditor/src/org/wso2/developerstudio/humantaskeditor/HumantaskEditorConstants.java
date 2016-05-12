@@ -71,10 +71,14 @@ public class HumantaskEditorConstants {
     public static final String FILE_NAME_MUST_BE_VALID_MESSAGE = "File name must be valid";
 
     public static final String FILE_NAME_MUST_BE_SPECIFIED_MESSAGE = "File name must be specified";
+    
+    public static final String FILE_NAME_MUST_BE_VALID = "Enter a Valid File Name";
 
     public static final String FILE_CONTAINER_MUST_BE_SPECIFIED_MESSAGE = "File container must be specified";
 
-    public static final String TASK_NAME_CANNOT_HAVE_SPACES = "Task name should'nt have spaces";
+    public static final String TASK_NAME_CANNOT_HAVE_SPACES_MESSAGE = "Task name should'nt have spaces";
+    
+    public static final String TASK_NAME_CANNOT_BE_EMPTY_MESSAGE = "Task name cannot be empty";
     
     public static final String WIZARD_PAGE_TEXT = "Human Task Artifact";
 

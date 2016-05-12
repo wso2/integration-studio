@@ -176,11 +176,27 @@ public class HumanTaskWizardPage extends WizardPage {
         
         String taskName = getTaskName();
         
-        if (taskName.contains(" ")) {
-            updateStatus(HumantaskEditorConstants.TASK_NAME_CANNOT_HAVE_SPACES);
+        if (taskName.trim().isEmpty()) {
+            updateStatus(HumantaskEditorConstants.TASK_NAME_CANNOT_BE_EMPTY_MESSAGE);
             return;
         }
-
+        if (taskName.contains(" ")) {
+            updateStatus(HumantaskEditorConstants.TASK_NAME_CANNOT_HAVE_SPACES_MESSAGE);
+            return;
+        }
+        if (fileName.length() == 0) {
+            updateStatus(HumantaskEditorConstants.FILE_NAME_MUST_BE_SPECIFIED_MESSAGE);
+            return;
+        }
+        if (fileName.split("\\.").length!= 0 && fileName.split("\\.")[0].length()==0) {
+            updateStatus(HumantaskEditorConstants.FILE_NAME_MUST_BE_VALID_MESSAGE);
+            return;
+        }
+        if (fileName.replace('\\', '/').indexOf('/', 1) > 0) {
+            updateStatus(HumantaskEditorConstants.FILE_NAME_MUST_BE_VALID_MESSAGE);
+            return;
+        }
+        
         if (getContainerName().length() == 0) {
             updateStatus(HumantaskEditorConstants.FILE_CONTAINER_MUST_BE_SPECIFIED_MESSAGE);
             return;
@@ -193,14 +209,7 @@ public class HumanTaskWizardPage extends WizardPage {
             updateStatus(HumantaskEditorConstants.PROJECT_MUST_BE_WRITABLE_MESSAGE);
             return;
         }
-        if (fileName.length() == 0) {
-            updateStatus(HumantaskEditorConstants.FILE_NAME_MUST_BE_SPECIFIED_MESSAGE);
-            return;
-        }
-        if (fileName.replace('\\', '/').indexOf('/', 1) > 0) {
-            updateStatus(HumantaskEditorConstants.FILE_NAME_MUST_BE_VALID_MESSAGE);
-            return;
-        }
+        
         int dotLoc = fileName.lastIndexOf('.');
         if (dotLoc != -1) {
             String ext = fileName.substring(dotLoc + 1);

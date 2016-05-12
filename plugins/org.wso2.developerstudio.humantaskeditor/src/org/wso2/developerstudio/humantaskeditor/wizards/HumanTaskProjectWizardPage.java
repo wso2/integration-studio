@@ -156,13 +156,20 @@ public class HumanTaskProjectWizardPage extends WizardPage {
          * return;
          * }
          */
-        
+        if (taskName.trim().isEmpty()) {
+            updateStatus(HumantaskEditorConstants.TASK_NAME_CANNOT_BE_EMPTY_MESSAGE);
+            return;
+        }
         if (taskName.contains(" ")) {
-            updateStatus(HumantaskEditorConstants.TASK_NAME_CANNOT_HAVE_SPACES);
+            updateStatus(HumantaskEditorConstants.TASK_NAME_CANNOT_HAVE_SPACES_MESSAGE);
             return;
         }
         if (fileName.length() == 0) {
             updateStatus(HumantaskEditorConstants.FILE_NAME_MUST_BE_SPECIFIED_MESSAGE);
+            return;
+        }
+        if (fileName.split("\\.").length!= 0 && fileName.split("\\.")[0].length()==0) {
+            updateStatus(HumantaskEditorConstants.FILE_NAME_MUST_BE_VALID_MESSAGE);
             return;
         }
         if (fileName.replace('\\', '/').indexOf('/', 1) > 0) {

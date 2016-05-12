@@ -18,7 +18,7 @@
    -->
 <feature
       id="org.wso2.developerstudio.eclipse.bps.feature"
-      label="WSO2 BPS Tooling Feature"
+      label="WSO2 BPS Tooling BPEL Feature"
       version="4.0.0.qualifier"
       provider-name="%providerName">
 

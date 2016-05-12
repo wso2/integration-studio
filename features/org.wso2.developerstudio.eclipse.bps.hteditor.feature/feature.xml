@@ -18,7 +18,7 @@
    -->
 <feature
       id="org.wso2.developerstudio.eclipse.bps.hteditor.feature"
-      label="WSO2 BPS Tooling HumanTask Editor Feature"
+      label="WSO2 BPS Tooling HumanTask Feature"
       version="4.0.0.qualifier"
       provider-name="%providerName">
 

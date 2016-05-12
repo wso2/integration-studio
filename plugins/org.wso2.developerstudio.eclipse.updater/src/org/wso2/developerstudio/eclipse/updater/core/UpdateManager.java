@@ -282,13 +282,11 @@ public class UpdateManager {
 				if (versionInstalled != null && (iInstallableUnit.getVersion().compareTo(versionInstalled) == 1)) {
 					unsortedAvailableNewFeatures.put(iInstallableUnit.getId(),
 							allFeaturesInReleaseRepo.get(iInstallableUnit.getId()));
-
 				}
 			}
 		}
 		// sort the available new features according to alphabetical order
 		availableNewFeatures = new TreeMap<String, EnhancedFeature>(unsortedAvailableNewFeatures);
-		System.out.println("done!!");
 	}
 
 	/**

@@ -1,7 +1,7 @@
 <proxy xmlns="http://ws.apache.org/ns/synapse" name="{proxy.name}"
 	transports="https,http" statistics="disable" trace="disable"
 	startOnLoad="true">
-	<target { endpoint.key.def }>
+	<target {endpoint.key.def}>
 		<inSequence>
 			<log level="{reqloglevel}" />
 		</inSequence>

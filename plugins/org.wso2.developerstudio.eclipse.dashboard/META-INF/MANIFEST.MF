@@ -5,7 +5,8 @@ Bundle-SymbolicName: org.wso2.developerstudio.eclipse.dashboard;singleton:=true
 Bundle-Version: 4.1.0.qualifier
 Bundle-Activator: org.wso2.developerstudio.eclipse.dashboard.Activator
 Require-Bundle: org.eclipse.ui,
- org.eclipse.core.runtime
+ org.eclipse.core.runtime,
+ org.wso2.developerstudio.eclipse.platform.ui
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
 Import-Package: org.eclipse.core.resources,

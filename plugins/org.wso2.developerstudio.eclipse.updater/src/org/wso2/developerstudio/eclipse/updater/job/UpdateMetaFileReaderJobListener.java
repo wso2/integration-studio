@@ -64,8 +64,8 @@ public class UpdateMetaFileReaderJobListener extends JobChangeAdapter {
 				@Override
 				public void run() {
 					try {
-						String displayMsg = "There are " + String.valueOf(count)
-								+ " update(s) for developer studio features you have installed. It is recommended to install these updates. Do you want to install now ?";
+						String displayMsg = String.valueOf(count)
+								+ " update(s) available for developer studio. List them now ?";
 						int userPref = getUserPreference(UPDATER_DIALOG_TITLE, displayMsg);
 						if (userPref == 0 || userPref == USER_SCHEDULED_AUTOMATIC_INSTALL) {
 							executeUpdateJob();

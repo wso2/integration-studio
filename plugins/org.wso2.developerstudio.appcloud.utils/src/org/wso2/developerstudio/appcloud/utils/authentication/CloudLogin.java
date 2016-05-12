@@ -42,7 +42,7 @@ import org.wso2.developerstudio.eclipse.logging.core.Logger;
 public class CloudLogin {
 
 	private UserPasswordCredentials credentials;
-	private Label error;
+	private static Label error;
 	private String selectedTenant;
 	private boolean isAppCloud;
 	private boolean isTenant;
@@ -87,7 +87,6 @@ public class CloudLogin {
 				Map<String, String> tenants = CloudAdminServiceClient
 						.getTenantDomains(new UserPasswordCredentials(user, password));
 				if (tenants.size() == 0) {
-					error.setText(Messages.APP_CLOUD_ZERO_TENANTS_WARNING);
 					val = false;
 				} else if (tenants.size() == 1) {
 					Authenticator.getInstance().setSelectedTenant(tenants.entrySet().iterator().next().getValue());
@@ -206,7 +205,7 @@ public class CloudLogin {
 	}
 
 	@SuppressWarnings("unused")
-	private String getSelectedTenant(ListDialog dialog) {
+	private static String getSelectedTenant(ListDialog dialog) {
 
 		int feedback = dialog.open();
 

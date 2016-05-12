@@ -16,11 +16,19 @@
 
 package org.wso2.developerstudio.appcloud.utils.client;
 
+import java.security.cert.CertificateException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.net.ssl.HostnameVerifier;
+import javax.net.ssl.HttpsURLConnection;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.SSLSession;
+import javax.net.ssl.TrustManager;
+import javax.net.ssl.X509TrustManager;
+import javax.security.cert.X509Certificate;
 import javax.xml.namespace.QName;
 import javax.xml.soap.MessageFactory;
 import javax.xml.soap.SOAPBody;
@@ -75,6 +83,41 @@ public class CloudAdminServiceClient {
 			service = Service.create(serviceName);
 			service.addPort(portName, SOAPBinding.SOAP11HTTP_BINDING, USER_MGR_SERVICE);
 
+			  // Install the all-trusting trust manager
+	        SSLContext sc = SSLContext.getInstance("SSL");
+	        // Create empty HostnameVerifier
+	        HostnameVerifier hv = new HostnameVerifier() {
+	            public boolean verify(String arg0, SSLSession arg1) {
+	                return true;
+	            }
+	        };
+	        TrustManager[] trustAllCerts = new TrustManager[] { new X509TrustManager() {
+
+				@Override
+				public void checkClientTrusted(java.security.cert.X509Certificate[] chain, String authType)
+						throws CertificateException {
+					// TODO Auto-generated method stub
+					
+				}
+
+				@Override
+				public void checkServerTrusted(java.security.cert.X509Certificate[] chain, String authType)
+						throws CertificateException {
+					// TODO Auto-generated method stub
+					
+				}
+
+				@Override
+				public java.security.cert.X509Certificate[] getAcceptedIssuers() {
+					// TODO Auto-generated method stub
+					return null;
+				}
+	        } 
+	        };
+	        sc.init(null, trustAllCerts, new java.security.SecureRandom());
+	        HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory());
+	        HttpsURLConnection.setDefaultHostnameVerifier(hv);
+	        
 			dispatch = service.createDispatch(portName, SOAPMessage.class,
 					Service.Mode.MESSAGE);
 			provider = (BindingProvider) dispatch;
@@ -106,7 +149,7 @@ public class CloudAdminServiceClient {
 
 			cookieList.add(getCookie(credentials.getCloudUserName(),
 					credentials.getPassword()));
-
+			
 			reqHeaders.put("Cookie", cookieList);
 
 			headers.put(MessageContext.HTTP_REQUEST_HEADERS, reqHeaders);
@@ -154,9 +197,9 @@ public class CloudAdminServiceClient {
 
 		service = Service.create(serviceName);
 		service.addPort(portName, SOAPBinding.SOAP11HTTP_BINDING, AUTH_ADMIN_SERVICE);
-
 		dispatch = service.createDispatch(portName, SOAPMessage.class,
 				Service.Mode.MESSAGE);
+		
 
 		provider = (BindingProvider) dispatch;
 

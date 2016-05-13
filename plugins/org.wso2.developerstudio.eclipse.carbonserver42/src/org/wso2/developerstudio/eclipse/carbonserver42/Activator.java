@@ -16,12 +16,8 @@
 
 package org.wso2.developerstudio.eclipse.carbonserver42;
 
-import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
-import org.wso2.developerstudio.eclipse.carbonserver.base.util.ServerExtensionsRegistryUtils;
-import org.wso2.developerstudio.eclipse.carbonserver42.register.product.servers.DynamicServer42ExtensionGenerator;
-
 
 public class Activator extends AbstractUIPlugin {
 
@@ -35,7 +31,6 @@ public class Activator extends AbstractUIPlugin {
 	public void start(BundleContext context) throws Exception {
 		super.start(context);
 		plugin = this;
-		registerProductServers();
 	}
 
 	public void stop(BundleContext context) throws Exception {
@@ -47,10 +42,4 @@ public class Activator extends AbstractUIPlugin {
 		return plugin;
 	}
 
-	private void registerProductServers() {
-		    ServerExtensionsRegistryUtils serverExtensionsRegistryUtils = new ServerExtensionsRegistryUtils();
-			IConfigurationElement[] registeredServers = serverExtensionsRegistryUtils.retrieveRegisteredProductServers();
-			DynamicServer42ExtensionGenerator dynamicServer42ExtensionGenerator = new DynamicServer42ExtensionGenerator();
-			dynamicServer42ExtensionGenerator.readProductServerExtensions(registeredServers,serverExtensionsRegistryUtils);		
-	}
 }

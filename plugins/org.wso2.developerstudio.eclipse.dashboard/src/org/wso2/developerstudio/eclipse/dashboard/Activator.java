@@ -34,10 +34,24 @@ public class Activator extends AbstractUIPlugin {
 	 * @see org.eclipse.ui.plugin.AbstractUIPlugin#start(org.osgi.framework.BundleContext)
 	 */
 	public void start(BundleContext context) throws Exception {
+		// Registering WSO2 servers
+		registerProductServers();
 		super.start(context);
 		plugin = this;
 	}
 
+	private void registerProductServers() {
+		ServerExtensionsRegistryUtils serverExtensionsRegistryUtils = new ServerExtensionsRegistryUtils();
+			IConfigurationElement[] registeredServers = serverExtensionsRegistryUtils.retrieveRegisteredProductServers();
+			
+			DynamicServer44ExtensionGenerator dynamicServerExtensionGenerator = new DynamicServer44ExtensionGenerator();
+			dynamicServerExtensionGenerator.readProductServerExtensions(registeredServers,serverExtensionsRegistryUtils);
+			DynamicServer42ExtensionGenerator dynamicServer42ExtensionGenerator = new DynamicServer42ExtensionGenerator();
+			dynamicServer42ExtensionGenerator.readProductServerExtensions(registeredServers,serverExtensionsRegistryUtils);
+			DynamicServer40ExtensionGenerator dynamicServer40ExtensionGenerator = new DynamicServer40ExtensionGenerator();
+			dynamicServer40ExtensionGenerator.readProductServerExtensions(registeredServers,serverExtensionsRegistryUtils);
+
+	}
 
 	/*
 	 * (non-Javadoc)

@@ -37,8 +37,7 @@ public class ConfigureCloneMediatorAction extends ConfigureEsbNodeAction {
 		EObject selectedObj = ((View) selectedEP.getModel()).getElement();
 		Assert.isTrue(selectedObj instanceof CloneMediator, "Invalid selection.");
 
-		Display display = Display.getDefault();
-		Shell shell = new Shell(display);	
+		Shell shell = Display.getDefault().getActiveShell();	
 		
 		Dialog cloneMediatorConfigurDialog = new ConfigureCloneMediatorDialog(shell,(CloneMediator)selectedObj);
 		

@@ -52,8 +52,7 @@ public class CloudConnectorNewConfigPropertyDescriptor extends PropertyDescripto
 		return new ExtendedDialogCellEditor(parent, getLabelProvider()) {
 			
 			protected Object openDialogBox(Control cellEditorWindow) {
-				Display display = Display.getDefault();
-				Shell shell = new Shell(display);
+			    Shell shell = Display.getDefault().getActiveShell();
 				CloudConnectorOperation operation = null;
 				if(object instanceof CloudConnectorOperation){
 					operation = (CloudConnectorOperation)object;

@@ -38,8 +38,7 @@ public class AddBranchLoadBalanceEndpointAction extends ConfigureEsbNodeAction {
 		Assert.isTrue(selectedObj instanceof LoadBalanceEndPoint, "Invalid selection.");
 
 		
-		Display display = Display.getDefault();
-		Shell shell = new Shell(display);
+		Shell shell = Display.getDefault().getActiveShell();
 		shell.setLocation(300, 200);
 		Dialog addBranchDialog = new AddbranchEndpointDialog(shell, (EndPoint) selectedObj,getEditingDomain(),selectedEP);
 		addBranchDialog.setBlockOnOpen(true);

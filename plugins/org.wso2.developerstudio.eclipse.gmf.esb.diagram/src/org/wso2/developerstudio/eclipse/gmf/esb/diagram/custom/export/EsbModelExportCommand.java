@@ -63,8 +63,7 @@ public class EsbModelExportCommand extends Command {
 	 */
 	public void execute() {
 		// TODO: Open file browser.
-		Display display = Display.getDefault();
-		Shell shell = new Shell(display);
+		Shell shell = Display.getDefault().getActiveShell();
 		FileDialog fileDialog = new FileDialog(shell, SWT.SAVE);
 		fileDialog.setFilterExtensions(new String [] {"*.xml"});
 		String filePath = fileDialog.open();

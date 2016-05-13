@@ -40,8 +40,7 @@ public class PropertyMediatorOMPropertyDescriptor extends PropertyDescriptor {
 			return new ExtendedDialogCellEditor(parent, getLabelProvider()) {
 				
 				protected Object openDialogBox(Control cellEditorWindow) {
-					Display display = Display.getDefault();
-					Shell shell = new Shell(display);
+				    Shell shell = Display.getDefault().getActiveShell();
 					String title = EMFEditUIPlugin.INSTANCE.getString("_UI_FeatureEditorDialog_title", 
 											new Object [] { getDisplayName(), getEditLabelProvider().getText(object) });
 					PropertyMediator propertyMediator = (PropertyMediator) object;

@@ -41,8 +41,7 @@ public class AddBranchCloneMediatorAction extends ConfigureEsbNodeAction {
 		EObject selectedObj = ((View) selectedEP.getModel()).getElement();
 		Assert.isTrue(selectedObj instanceof CloneMediator, "Invalid selection.");
 		
-		Display display = Display.getDefault();
-		Shell shell = new Shell(display);	
+		Shell shell = Display.getDefault().getActiveShell();	
 		shell.setLocation(300, 200);
 		Dialog addBranchDialog = new AddTargetBranchDialog(shell, (CloneMediator) selectedObj,getEditingDomain(),selectedEP);
 		addBranchDialog.setBlockOnOpen(true);

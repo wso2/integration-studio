@@ -42,8 +42,7 @@ public class EndPointPropertiesPropertyDescriptor extends PropertyDescriptor {
 		return new ExtendedDialogCellEditor(parent, getLabelProvider()) {
 
 			protected Object openDialogBox(Control cellEditorWindow) {
-				Display display = Display.getDefault();
-				Shell shell = new Shell(display);
+			    Shell shell = Display.getDefault().getActiveShell();
 				EndPoint endPoint = (EndPoint) object;
 				ConfigureEndPointPropertiesDialog propertyDialog = new ConfigureEndPointPropertiesDialog(
 						shell, endPoint, TransactionUtil.getEditingDomain(endPoint));

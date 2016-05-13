@@ -23,11 +23,8 @@ public class ValidateFeaturePropertyDescriptor extends PropertyDescriptor {
 		return new ExtendedDialogCellEditor(parent, getLabelProvider()) {
 			
 			protected Object openDialogBox(Control cellEditorWindow) {
-				Display display = Display.getDefault();
-				Shell shell = new Shell(display);
-				
+			    Shell shell = Display.getDefault().getActiveShell();
 				ValidateMediator  validateMediator = (ValidateMediator)object;
-
 				ValidateFeatureDialog featureDialog = new ValidateFeatureDialog(shell,validateMediator);
 				featureDialog.setBlockOnOpen(true);
 				featureDialog.open();

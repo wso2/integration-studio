@@ -37,8 +37,7 @@ public class APIHandlersPropertyDescriptor extends PropertyDescriptor {
 		return new ExtendedDialogCellEditor(parent, getLabelProvider()) {
 
 			protected Object openDialogBox(Control cellEditorWindow) {
-				Display display = Display.getDefault();
-				Shell shell = new Shell(display);
+			    Shell shell = Display.getDefault().getActiveShell();
 				SynapseAPI api = (SynapseAPI) object;
 
 				ConfigureAPIHandlersDialog paramDialog = new ConfigureAPIHandlersDialog(

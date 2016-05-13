@@ -36,8 +36,7 @@ public class ConfigureURLRewriteMediatorAction  extends ConfigureEsbNodeAction  
 		EObject selectedObj = ((View) selectedEP.getModel()).getElement();
 		Assert.isTrue(selectedObj instanceof URLRewriteMediator, "Invalid selection.");
 
-		Display display = Display.getDefault();
-		Shell shell = new Shell(display);	
+		Shell shell = Display.getDefault().getActiveShell();	
 		
 		Dialog urlMediatorConfigurDialog = new ConfigureURLrewriteruleDialog(shell,(URLRewriteMediator)selectedObj,TransactionUtil.getEditingDomain(selectedObj));
 		

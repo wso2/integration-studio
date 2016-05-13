@@ -38,8 +38,7 @@ public class CloneTargetConfigurationPropertyDescriptor extends PropertyDescript
 		return new ExtendedDialogCellEditor(parent, getLabelProvider()) {
 			
 			protected Object openDialogBox(Control cellEditorWindow) {
-				Display display = Display.getDefault();
-				Shell shell = new Shell(display);
+			    Shell shell = Display.getDefault().getActiveShell();
 				CloneMediator cloneMediator = (CloneMediator) object;
 				 //.getEditingDomain()
 				ConfigureCloneMediatorDialog cloneMediatorConfigurationDialog = new ConfigureCloneMediatorDialog(shell, cloneMediator);

@@ -48,8 +48,7 @@ public class ConfigureRouterMediatorAction extends ConfigureEsbNodeAction{
 		EObject selectedObj = ((View) selectedEP.getModel()).getElement();
 		Assert.isTrue(selectedObj instanceof RouterMediator, "Invalid selection.");
 
-		Display display = Display.getDefault();
-		Shell shell = new Shell(display);		
+		Shell shell = Display.getDefault().getActiveShell();		
 		ConfigureRouterMediatorDialog configurationDialog = new ConfigureRouterMediatorDialog(shell,  (RouterMediator) selectedObj,
 				getEditingDomain());
 		configurationDialog.setBlockOnOpen(true);

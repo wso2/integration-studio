@@ -23,8 +23,7 @@ public class URLRewiterConfigurationPropertyDescriptor extends PropertyDescripto
 		return new ExtendedDialogCellEditor(parent, getLabelProvider()) {
 			
 		   protected Object openDialogBox(Control cellEditorWindow) {
-				Display display = Display.getDefault();
-				Shell shell = new Shell(display);
+		        Shell shell = Display.getDefault().getActiveShell();
 				URLRewriteMediator urlMediator = (URLRewriteMediator) object;
 		        ConfigureURLrewriteruleDialog urlMediatorConfigurationDialog = new ConfigureURLrewriteruleDialog(shell, urlMediator,TransactionUtil.getEditingDomain(urlMediator));
 		        urlMediatorConfigurationDialog.setBlockOnOpen(true);

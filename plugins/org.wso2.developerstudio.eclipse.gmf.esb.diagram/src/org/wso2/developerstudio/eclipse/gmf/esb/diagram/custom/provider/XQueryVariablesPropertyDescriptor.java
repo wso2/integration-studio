@@ -39,8 +39,7 @@ public class XQueryVariablesPropertyDescriptor extends PropertyDescriptor {
 		return new ExtendedDialogCellEditor(parent, getLabelProvider()) {
 			
 			protected Object openDialogBox(Control cellEditorWindow) {
-				Display display = Display.getDefault();
-				Shell shell = new Shell(display);
+			    Shell shell = Display.getDefault().getActiveShell();
 				XQueryMediator xQueryMediator = (XQueryMediator) object;
 				ConfigureXQueryMediatorDialog xqueryMediatorConfigurationDialog = new ConfigureXQueryMediatorDialog(shell, xQueryMediator, TransactionUtil.getEditingDomain(xQueryMediator));
 				xqueryMediatorConfigurationDialog.setBlockOnOpen(true);

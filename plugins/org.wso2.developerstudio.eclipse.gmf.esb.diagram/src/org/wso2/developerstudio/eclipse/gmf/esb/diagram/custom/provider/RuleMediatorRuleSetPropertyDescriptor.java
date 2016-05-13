@@ -22,11 +22,8 @@ public class RuleMediatorRuleSetPropertyDescriptor extends PropertyDescriptor {
 		return new ExtendedDialogCellEditor(parent, getLabelProvider()) {
 			
 			protected Object openDialogBox(Control cellEditorWindow) {
-				Display display = Display.getDefault();
-				Shell shell = new Shell(display);
-				
+			    Shell shell = Display.getDefault().getActiveShell();
 				RuleMediator ruleMediator = (RuleMediator)object;
-				
 				ConfigureRuleMediatorSetPropertyDialog propDialog = 
 					new ConfigureRuleMediatorSetPropertyDialog(shell,ruleMediator);
 				propDialog.setBlockOnOpen(true);

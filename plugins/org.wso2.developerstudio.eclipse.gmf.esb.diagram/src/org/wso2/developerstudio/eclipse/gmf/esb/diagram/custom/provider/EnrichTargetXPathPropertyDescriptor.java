@@ -23,8 +23,7 @@ public class EnrichTargetXPathPropertyDescriptor extends PropertyDescriptor {
 		return new ExtendedDialogCellEditor(parent, getLabelProvider()) {
 			
 			protected Object openDialogBox(Control cellEditorWindow) {
-				Display display = Display.getDefault();
-				Shell shell = new Shell(display);
+			    Shell shell = Display.getDefault().getActiveShell();
 				EnrichMediator enrichMediator = (EnrichMediator) object;
 				 //.getEditingDomain()
 				NamespacedPropertyEditorDialog enrichMediatorConfigurationDialog = new NamespacedPropertyEditorDialog(shell, enrichMediator.getTargetXpath());

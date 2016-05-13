@@ -38,8 +38,7 @@ public class MessageProcessorParamCustomPropertyDescriptor extends PropertyDescr
 		return new ExtendedDialogCellEditor(parent, getLabelProvider()) {
 
 			protected Object openDialogBox(Control cellEditorWindow) {
-				Display display = Display.getDefault();
-				Shell shell = new Shell(display);
+			    Shell shell = Display.getDefault().getActiveShell();
 				MessageProcessor messageProcessor = (MessageProcessor) object;
 
 				ConfigureMessageProcessorParametersDialog paramDialog = new ConfigureMessageProcessorParametersDialog(

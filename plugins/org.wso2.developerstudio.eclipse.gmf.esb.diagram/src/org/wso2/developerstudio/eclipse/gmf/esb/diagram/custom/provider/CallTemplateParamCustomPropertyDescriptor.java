@@ -27,8 +27,7 @@ public class CallTemplateParamCustomPropertyDescriptor extends PropertyDescripto
 		return new ExtendedDialogCellEditor(parent, getLabelProvider()) {
 			
 			protected Object openDialogBox(Control cellEditorWindow) {
-				Display display = Display.getDefault();
-				Shell shell = new Shell(display);
+			    Shell shell = Display.getDefault().getActiveShell();
 				Mediator mediator =(Mediator)object;
 				if(mediator instanceof CallTemplateMediator){
 					mediator = (CallTemplateMediator)mediator;

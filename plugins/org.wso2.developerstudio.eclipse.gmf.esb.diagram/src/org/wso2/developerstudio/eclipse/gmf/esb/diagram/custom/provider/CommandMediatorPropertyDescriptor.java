@@ -43,8 +43,7 @@ public class CommandMediatorPropertyDescriptor extends PropertyDescriptor {
 		return new ExtendedDialogCellEditor(parent, getLabelProvider()) {
 			
 			protected Object openDialogBox(Control cellEditorWindow) {
-				Display display = Display.getDefault();
-				Shell shell = new Shell(display);
+			    Shell shell = Display.getDefault().getActiveShell();
 				CommandMediator commandMediator = (CommandMediator) object;
 				ConfigureCommandMediatorDialog configurationDialog = new ConfigureCommandMediatorDialog(shell, commandMediator, TransactionUtil.getEditingDomain(commandMediator));
 				configurationDialog.setBlockOnOpen(true);

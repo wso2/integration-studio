@@ -194,7 +194,7 @@ public class XPathSelectorDialog extends Dialog {
 	public XPathSelectorDialog(Shell parent) {
 		super(parent);
 		this.dialogShell = new Shell(parent, SWT.DIALOG_TRIM
-				| SWT.APPLICATION_MODAL);//new Shell(parent);
+				| SWT.APPLICATION_MODAL);
 	}
 
 	/**
@@ -204,8 +204,7 @@ public class XPathSelectorDialog extends Dialog {
 	 *            arguments.
 	 */
 	public static void main(String[] args) {
-		XPathSelectorDialog dialog = new XPathSelectorDialog(new Shell(
-				Display.getDefault()));
+		XPathSelectorDialog dialog = new XPathSelectorDialog(Display.getDefault().getActiveShell());
 		dialog.open();
 	}
 

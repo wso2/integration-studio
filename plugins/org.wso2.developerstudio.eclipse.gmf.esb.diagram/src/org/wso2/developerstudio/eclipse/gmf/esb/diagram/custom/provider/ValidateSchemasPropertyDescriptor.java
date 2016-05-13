@@ -23,9 +23,7 @@ public class ValidateSchemasPropertyDescriptor extends PropertyDescriptor {
 		return new ExtendedDialogCellEditor(parent, getLabelProvider()) {
 			
 			protected Object openDialogBox(Control cellEditorWindow) {
-				Display display = Display.getDefault();
-				Shell shell = new Shell(display);
-				
+			    Shell shell = Display.getDefault().getActiveShell();
 				ValidateMediator  validateMediator = (ValidateMediator)object;
 				ValidateSchemasDialog schemadialog = new ValidateSchemasDialog(shell,validateMediator);
 				schemadialog.setBlockOnOpen(true);

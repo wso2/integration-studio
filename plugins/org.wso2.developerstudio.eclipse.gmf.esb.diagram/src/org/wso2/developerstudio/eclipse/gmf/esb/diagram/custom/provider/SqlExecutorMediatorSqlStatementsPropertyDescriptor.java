@@ -43,8 +43,7 @@ public class SqlExecutorMediatorSqlStatementsPropertyDescriptor extends Property
 		return new ExtendedDialogCellEditor(parent, getLabelProvider()) {
 			
 			protected Object openDialogBox(Control cellEditorWindow) {
-				Display display = Display.getDefault();
-				Shell shell = new Shell(display);
+			    Shell shell = Display.getDefault().getActiveShell();
 				AbstractSqlExecutorMediator sqlExecutorMediator = (AbstractSqlExecutorMediator) object;
 				ConfigureSqlStatementsDialog configurationDialog = new ConfigureSqlStatementsDialog(shell, sqlExecutorMediator, TransactionUtil.getEditingDomain(sqlExecutorMediator));
 				configurationDialog.setBlockOnOpen(true);

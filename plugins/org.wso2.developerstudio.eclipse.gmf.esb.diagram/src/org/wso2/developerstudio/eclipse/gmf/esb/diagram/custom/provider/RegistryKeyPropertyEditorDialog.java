@@ -134,8 +134,7 @@ public class RegistryKeyPropertyEditorDialog extends Dialog {
 	 * @param args arguments.
 	 */
 	public static void main(String[] args) {
-		Display display = Display.getDefault();
-		Shell shell = new Shell(display);
+		Shell shell = Display.getDefault().getActiveShell();
 		RegistryKeyPropertyEditorDialog dialog = new RegistryKeyPropertyEditorDialog(shell, SWT.NULL,
 				EsbFactory.eINSTANCE.createRegistryKeyProperty(), new ArrayList<NamedEntityDescriptor>());
 		dialog.open();

@@ -2,6 +2,7 @@
 <?eclipse version="3.4"?>
 <plugin>
    <extension-point id="org.wso2.developerstudio.platfom.ui.resourceManger" name="ResourceManager" schema="schema/org.wso2.developerstudio.platfom.ui.resourceManger.exsd"/>
+   <extension-point id="org.wso2.developerstudio.aboutDialog.contributor" name="AboutDialogContributor" schema="schema/org.wso2.developerstudio.aboutDialog.contributor.exsd"/>
 
     <extension point="org.eclipse.ui.startup">
         <startup class="org.wso2.developerstudio.eclipse.platform.ui.startup.PlatformStartup"/>

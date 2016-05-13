@@ -117,7 +117,7 @@ public class POJOCommandMediatorDeserializer extends AbstractEsbNodeDeserializer
         }
         
         for (CommandProperty property : properties.values()) {
-			executeAddValueCommand(mediatorModel.getProperties(), property);
+			executeAddValueCommand(mediatorModel.getProperties(), property, false);
 		}
 		
 		return mediatorModel;

@@ -90,7 +90,7 @@ public class RuleMediatorDeserializer extends AbstractEsbNodeDeserializer<Abstra
 					ruleFact.setValueExpression(createNamespacedProperty(fact.getXpath(),fact.getPrefixToNamespaceMap()));
 				}
 				
-				executeAddValueCommand(mediatorModel.getFactsConfiguration().getFacts(), ruleFact);
+				executeAddValueCommand(mediatorModel.getFactsConfiguration().getFacts(), ruleFact, false);
 			}
 		}
 
@@ -122,7 +122,7 @@ public class RuleMediatorDeserializer extends AbstractEsbNodeDeserializer<Abstra
 					}
 				}
 				
-				executeAddValueCommand(mediatorModel.getResultsConfiguration().getResults(), ruleResult);
+				executeAddValueCommand(mediatorModel.getResultsConfiguration().getResults(), ruleResult, false);
 			}
 		}
 		

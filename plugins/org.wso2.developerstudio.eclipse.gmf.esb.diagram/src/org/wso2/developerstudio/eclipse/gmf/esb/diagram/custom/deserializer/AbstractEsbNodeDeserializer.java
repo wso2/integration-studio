@@ -81,8 +81,10 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractSequences
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.ConnectionUtils;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EditorUtils;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.complexFiguredAbstractMediator;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.APIResourceEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.APIResourceInSequenceInputConnectorEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.APIResourceInputConnectorEditPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.APIResourceOutSequenceOutputConnectorEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.APIResourceOutputConnectorEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.EsbLinkEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.InboundEndpointOnErrorSequenceInputConnectorEditPart;
@@ -90,7 +92,10 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.InboundEndpoi
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.InboundEndpointSequenceInputConnectorEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.InboundEndpointSequenceOutputConnectorEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.ProxyInputConnectorEditPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.ProxyOutSequenceOutputConnectorEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.ProxyOutputConnectorEditPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.ProxyServiceEditPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.ProxyServiceFaultContainerEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.SequencesEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.SequencesInputConnectorEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.SequencesOutputConnectorEditPart;
@@ -176,51 +181,40 @@ public abstract class AbstractEsbNodeDeserializer<T,R extends EsbNode> implement
 	 * @param reversed
 	 */
 	protected void deserializeSequence(IGraphicalEditPart part, SequenceMediator sequenceMediator, EsbConnector connector, boolean reversed) {
-		LinkedList<EsbNode> nodeList = new LinkedList<EsbNode>();
-		
-		SequenceMediator sequence = EditorUtils.stripUnsupportedMediators(sequenceMediator);
+		LinkedList<EsbNode> nodeList = new LinkedList<>();
+        LinkedList<CommentMediator> commentMediatorList = new LinkedList<>();
+        SequenceMediator sequence = EditorUtils.stripUnsupportedMediators(sequenceMediator);
 	
 		TransactionalEditingDomain domain = part.getEditingDomain();
 
-		if(connector instanceof OutputConnector){
-			for (int i = 0; i < sequence.getList().size(); ++i) {
-				AbstractMediator mediator = (AbstractMediator) sequence.getList().get(i);
-				if(reversedNodes.contains(connector.eContainer())){
-					executeMediatorDeserializer(part, nodeList, domain, mediator,true);					
-					reversedNodes.addAll(nodeList);
-				} else{
-					executeMediatorDeserializer(part, nodeList, domain, mediator,reversed);
-					if(reversed){
-						reversedNodes.addAll(nodeList);
-					}
-				}
-			}
-			
-			/*safe to remove : not valid in current implementation/UI*/ 
-			/*
-			if (!reversed) {
-								if (!nodeList.isEmpty()) {
-									EsbNode last = nodeList.getLast();
-									if (last instanceof Sequence) {
-										Sequence seq = (Sequence) last;
-										if (seq.getReferringSequenceType() == KeyType.DYNAMIC ||(seq.getReferringSequenceType()==KeyType.STATIC && seq.getName().matches("^(conf:|gov:|/).*"))) {
-										AddressingEndpoint visualEndPoint = (AddressingEndpoint) DeserializerUtils
-													.createNode(
-															getRootCompartment(),
-															EsbElementTypes.AddressingEndpoint_3689);
-											setAddedAddressingEndPoint(true);
-											nodeList.add(visualEndPoint);
-											
-										}
-									}
-								}
-							}
-			*/
+        if (connector instanceof OutputConnector) {
+            int mediatorsCount = sequence.getList().size();
+            boolean lastMediator=false;
+            for (int i = 0; i < mediatorsCount; ++i) {
+                AbstractMediator mediator = (AbstractMediator) sequence.getList().get(i);
+                if(mediatorsCount==(i+1)){
+                    lastMediator=true;
+                }
+                if (reversedNodes.contains(connector.eContainer())) {
+                    executeMediatorDeserializer(part, nodeList, domain, mediator, true, commentMediatorList,lastMediator);
+                    reversedNodes.addAll(nodeList);
+                } else {
+                    executeMediatorDeserializer(part, nodeList, domain, mediator, reversed, commentMediatorList,lastMediator);
+                    if (reversed) {
+                        reversedNodes.addAll(nodeList);
+                    }
+                }
+            }
 			connectionFlowMap.put(connector, nodeList);
 		} else if(connector instanceof InputConnector){
-			for (int i = sequence.getList().size() -1; i >= 0; --i) {
-				AbstractMediator mediator = (AbstractMediator) sequence.getList().get(i);
-				executeMediatorDeserializer(part, nodeList, domain, mediator,true);
+            int mediatorsCount = sequence.getList().size();
+            boolean lastMediator=false;
+			for (int i = mediatorsCount -1; i >= 0; --i) {
+			    if(i==0){
+                    lastMediator=true;
+                }
+                AbstractMediator mediator = (AbstractMediator) sequence.getList().get(i);
+                executeMediatorDeserializer(part, nodeList, domain, mediator, true, commentMediatorList,lastMediator);
 			}
 			connectionFlowMap.put(connector, nodeList);
 			reversedNodes.addAll(nodeList);
@@ -235,13 +229,14 @@ public abstract class AbstractEsbNodeDeserializer<T,R extends EsbNode> implement
 	 * @param domain
 	 * @param mediator
 	 * @param reversed
+	 * @param commentMediatorList
+	 * @param lastMediator
 	 */
-	private void executeMediatorDeserializer(IGraphicalEditPart part,
-			LinkedList<EsbNode> nodeList, TransactionalEditingDomain domain,
-			AbstractMediator mediator,boolean reversed) {
-		@SuppressWarnings("rawtypes")
-		IEsbNodeDeserializer deserializer = EsbDeserializerRegistry.getInstance().getDeserializer(
-				mediator);
+    private void executeMediatorDeserializer(IGraphicalEditPart part, LinkedList<EsbNode> nodeList,
+            TransactionalEditingDomain domain, AbstractMediator mediator, boolean reversed,
+            LinkedList<CommentMediator> commentMediatorList, boolean lastMediator) {
+        @SuppressWarnings("rawtypes")
+        IEsbNodeDeserializer deserializer = EsbDeserializerRegistry.getInstance().getDeserializer(mediator);
 		if (deserializer != null) {
 			deserializer.setReversed(reversed);
 			@SuppressWarnings("unchecked")
@@ -253,39 +248,88 @@ public abstract class AbstractEsbNodeDeserializer<T,R extends EsbNode> implement
 				// So that comment mediators have been encapsulated inside
 				// output connectors which will prevent editor representing
 				// comment mediators graphically.
-				if (node instanceof CommentMediator) {
-					AbstractOutputConnectorEditPart abstractOutputConnectorEditPart = getPreviousOutputConnector(part,
-							nodeList);
-					if (abstractOutputConnectorEditPart != null) {
-						executeAddValueCommand(
-								((OutputConnector) ((Node) abstractOutputConnectorEditPart.getModel()).getElement())
-										.getCommentMediators(),
-								(CommentMediator) node);
-					}
-				} else {
-					nodeList.add(node);
-				}
-				if (node instanceof SendMediator/* && !reversed*/) {
-					if (getRootCompartment() != null) {
-						SendMediator sendMediator = (SendMediator) node;
-						EndPoint endPoint = sendMediator.getNextNode();
-						// Extract the endPoint info from the sendMediator
-						if (endPoint != null) {
-							if(reversed){
-								nodeList.add(nodeList.size(), endPoint);
-							} else{
-								nodeList.add(endPoint);
-							}
-							
-						}
-					}
-				}
+                if (node instanceof CommentMediator) {
+                    AbstractOutputConnectorEditPart abstractOutputConnectorEditPart = null;
+                    if (reversed) {
+                        ProxyServiceEditPart proxyEditPart = EditorUtils.getProxy(part);
+                        commentMediatorList.add((CommentMediator) node);
+                        boolean faultSequence = isMediationFlowInFaultSequence(part);
+                        if (lastMediator && !faultSequence) {
+                            if(proxyEditPart!=null){
+                                abstractOutputConnectorEditPart =  EditorUtils.getProxyOutSequenceOutputConnector(proxyEditPart);
+                            }
+                            APIResourceEditPart apiEditPart = EditorUtils.getApiResourceFromEditPart(part);
+                            if(apiEditPart!=null){
+                                abstractOutputConnectorEditPart =  EditorUtils.getProxyOutSequenceOutputConnector(apiEditPart);
+                            }
+                            for (CommentMediator commentMediator : commentMediatorList) {
+                                if (abstractOutputConnectorEditPart != null) {
+                                    executeAddValueCommand(
+                                            ((OutputConnector) ((Node) abstractOutputConnectorEditPart.getModel())
+                                                    .getElement()).getCommentMediators(),
+                                            commentMediator, reversed);
+                                }
+                            }
+                        }
+                    } else {
+                        abstractOutputConnectorEditPart = getPreviousOutputConnector(
+                                part, nodeList, reversed);
+                        if (abstractOutputConnectorEditPart != null) {
+                            executeAddValueCommand(
+                                    ((OutputConnector) ((Node) abstractOutputConnectorEditPart.getModel()).getElement())
+                                            .getCommentMediators(),
+                                    (CommentMediator) node, reversed);
+                        }
+                    }
+                } else {
+                    nodeList.add(node);
+                    if (reversed) {
+                        for (CommentMediator commentMediator : commentMediatorList) {
+                            AbstractOutputConnectorEditPart abstractOutputConnectorEditPart = getPreviousOutputConnector(
+                                    part, nodeList, reversed);
+                            if (abstractOutputConnectorEditPart != null) {
+                                executeAddValueCommand(
+                                        ((OutputConnector) ((Node) abstractOutputConnectorEditPart.getModel())
+                                                .getElement()).getCommentMediators(),
+                                        commentMediator, reversed);
+                            }
+                        }
+                        commentMediatorList.clear();
+                    }
+                }
+                if (node instanceof SendMediator) {
+                    if (getRootCompartment() != null) {
+                        SendMediator sendMediator = (SendMediator) node;
+                        EndPoint endPoint = sendMediator.getNextNode();
+                        // Extract the endPoint info from the sendMediator
+                        if (endPoint != null) {
+                            if (reversed) {
+                                nodeList.add(nodeList.size(), endPoint);
+                            } else {
+                                nodeList.add(endPoint);
+                            }
+
+                        }
+                    }
+                }
 			}
 
 		}
 	}
-	
-	/**
+
+    private boolean isMediationFlowInFaultSequence(IGraphicalEditPart part) {
+        EditPart temp = part;
+        while ((temp != null) && ((!(temp instanceof ProxyServiceFaultContainerEditPart)))) {
+            temp = temp.getParent();
+        }
+        if (temp instanceof ProxyServiceFaultContainerEditPart) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
 	 * This method will return the OutputConnector of previous mediator in the
 	 * mediator list. If the mediator list is empty, this will return the output
 	 * connector associated with that mediatorFlow
@@ -294,20 +338,25 @@ public abstract class AbstractEsbNodeDeserializer<T,R extends EsbNode> implement
 	 * @param nodeList
 	 * @return
 	 */
-	private AbstractOutputConnectorEditPart getPreviousOutputConnector(IGraphicalEditPart part, LinkedList<EsbNode> nodeList){
-		if(nodeList.isEmpty()){
-			EditPart mediatorFlow = part.getParent();
-			if(mediatorFlow instanceof AbstractMediatorFlowEditPart){
-				return ((AbstractMediatorFlowEditPart)mediatorFlow).getAssociatedOutputConnector();
-			}else{
-				return null;
-			}
-		}else{
-			org.wso2.developerstudio.eclipse.gmf.esb.Mediator mediator = (org.wso2.developerstudio.eclipse.gmf.esb.Mediator) nodeList.getLast();
-			refreshEditPartMap();
-			return EditorUtils.getMediatorOutputConnector((ShapeNodeEditPart) getEditpart(mediator));
-		}
-	}
+    private AbstractOutputConnectorEditPart getPreviousOutputConnector(IGraphicalEditPart part,
+            LinkedList<EsbNode> nodeList, boolean reversed) {
+        if (nodeList.isEmpty()) {
+            ProxyServiceEditPart proxyEditPart = EditorUtils.getProxy(part);
+            if(proxyEditPart!=null){
+                return EditorUtils.getOutputConnector(proxyEditPart);
+            }
+            APIResourceEditPart apiResourceEditPart = EditorUtils.getApiResourceFromEditPart(part);
+            if (apiResourceEditPart != null) {
+                return EditorUtils.getProxyOutputConnector(apiResourceEditPart);
+            }
+            return null;
+        } else {
+            org.wso2.developerstudio.eclipse.gmf.esb.Mediator mediator = (org.wso2.developerstudio.eclipse.gmf.esb.Mediator) nodeList
+                    .getLast();
+            refreshEditPartMap();
+            return EditorUtils.getMediatorOutputConnector((ShapeNodeEditPart) getEditpart(mediator));
+        }
+    }
 	
 	protected void addPairMediatorFlow(EsbConnector startEnd,EsbConnector stopEnd) {
 		pairMediatorFlowMap.put(startEnd, stopEnd);
@@ -950,19 +999,29 @@ public abstract class AbstractEsbNodeDeserializer<T,R extends EsbNode> implement
 		return false;		
 	}
 		
-	protected <E extends EObject> boolean executeAddValueCommand(final EList<E> list, final E value) {
-		TransactionalEditingDomain editingDomain = getDiagramEditor().getEditingDomain();
-		RecordingCommand command = new RecordingCommand(editingDomain) {
-			protected void doExecute() {
-				list.add(value);
-			}
-		};
-		if (command.canExecute()) {
-			editingDomain.getCommandStack().execute(command);
-			return true;
-		}
-		return false;
-	}
+    protected <E extends EObject> boolean executeAddValueCommand(final EList<E> list, final E value,
+            boolean addToFront) {
+        TransactionalEditingDomain editingDomain = getDiagramEditor().getEditingDomain();
+        RecordingCommand command;
+        if (!addToFront) {
+            command = new RecordingCommand(editingDomain) {
+                protected void doExecute() {
+                    list.add(value);
+                }
+            };
+        } else {
+            command = new RecordingCommand(editingDomain) {
+                protected void doExecute() {
+                    list.add(0, value);
+                }
+            };
+        }
+        if (command.canExecute()) {
+            editingDomain.getCommandStack().execute(command);
+            return true;
+        }
+        return false;
+    }
 	
 	protected <E extends Object> boolean executeAddAllCommand(final EList<E> list, final List<E> valueList) {
 		TransactionalEditingDomain editingDomain = getDiagramEditor().getEditingDomain();

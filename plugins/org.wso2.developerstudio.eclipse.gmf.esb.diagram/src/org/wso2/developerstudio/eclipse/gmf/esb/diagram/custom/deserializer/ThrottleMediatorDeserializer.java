@@ -100,7 +100,7 @@ public class ThrottleMediatorDeserializer extends AbstractEsbNodeDeserializer<Ab
 								
 							     ThrottlePolicyEntry throttlePolicyEntry = createVisualPolicyEntry(outerPolicy);
 							    
-							     executeAddValueCommand(visualThrottle.getPolicyEntries(), throttlePolicyEntry);
+							     executeAddValueCommand(visualThrottle.getPolicyEntries(), throttlePolicyEntry, false);
 							 
 							}
 						}

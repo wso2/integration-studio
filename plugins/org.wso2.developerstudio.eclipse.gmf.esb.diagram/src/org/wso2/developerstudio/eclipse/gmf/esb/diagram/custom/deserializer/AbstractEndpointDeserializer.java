@@ -179,7 +179,7 @@ public abstract class AbstractEndpointDeserializer extends AbstractEsbNodeDeseri
 				property.setScope(EndPointPropertyScope.SYNAPSE);
 			}
 
-			executeAddValueCommand(visualEndpoint.getProperties(), property);
+			executeAddValueCommand(visualEndpoint.getProperties(), property, false);
 		}
 		
 	}

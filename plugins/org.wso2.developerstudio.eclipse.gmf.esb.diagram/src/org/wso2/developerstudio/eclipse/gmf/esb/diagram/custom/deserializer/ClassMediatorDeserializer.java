@@ -46,7 +46,7 @@ public class ClassMediatorDeserializer extends AbstractEsbNodeDeserializer<Abstr
 			final ClassProperty property = EsbFactory.eINSTANCE.createClassProperty();
 			property.setPropertyName(entry.getKey());
 			property.setPropertyValue(entry.getValue().toString());
-			executeAddValueCommand(mediatorModel.getProperties(),property);
+			executeAddValueCommand(mediatorModel.getProperties(),property, false);
 		}
 		
 		return mediatorModel;

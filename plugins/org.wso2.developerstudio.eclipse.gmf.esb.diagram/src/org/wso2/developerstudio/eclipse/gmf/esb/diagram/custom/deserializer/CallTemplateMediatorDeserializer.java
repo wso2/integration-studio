@@ -63,7 +63,7 @@ public class CallTemplateMediatorDeserializer extends AbstractEsbNodeDeserialize
 				parameter.setParameterValue(value.getKeyValue());
 				parameter.setTemplateParameterType(RuleOptionType.VALUE);
 			}
-			executeAddValueCommand(mediatorModel.getTemplateParameters(), parameter);
+			executeAddValueCommand(mediatorModel.getTemplateParameters(), parameter, false);
 		}
 		
 		return mediatorModel;

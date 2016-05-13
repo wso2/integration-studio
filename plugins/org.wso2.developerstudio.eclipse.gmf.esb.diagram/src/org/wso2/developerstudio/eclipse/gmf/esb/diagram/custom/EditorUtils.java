@@ -23,6 +23,7 @@ import java.util.List;
 
 import org.apache.synapse.Mediator;
 import org.apache.synapse.mediators.base.SequenceMediator;
+import org.apache.synapse.mediators.builtin.CommentMediator;
 import org.apache.synapse.mediators.builtin.SendMediator;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
@@ -104,6 +105,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.APIResourceEd
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.APIResourceFaultInputConnectorEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.APIResourceInputConnectorEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.APIResourceOutSequenceOutputConnectorEditPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.APIResourceOutputConnectorEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.CloneMediatorContainerEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.CloneMediatorEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.ComplexEndpointsEditPart;
@@ -126,6 +128,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.MediatorFlowM
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.ProxyFaultInputConnectorEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.ProxyInputConnectorEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.ProxyOutSequenceOutputConnectorEditPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.ProxyOutputConnectorEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.ProxyServiceEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.Sequences2EditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.SequencesEditPart;
@@ -504,7 +507,7 @@ public class EditorUtils {
 	}
 	
 	public static AbstractOutputConnectorEditPart getProxyOutSequenceOutputConnector(ShapeNodeEditPart parent){
-		for(int i=0;i<parent.getChildren().size();++i){					
+		for(int i=0;i<parent.getChildren().size();++i){
 			if(parent.getChildren().get(i) instanceof ProxyOutSequenceOutputConnectorEditPart){
 				return (ProxyOutSequenceOutputConnectorEditPart) parent.getChildren().get(i);
 			}else if(parent.getChildren().get(i) instanceof APIResourceOutSequenceOutputConnectorEditPart){
@@ -513,7 +516,18 @@ public class EditorUtils {
 		}
 		return null;
 	}
-	
+
+	   public static AbstractOutputConnectorEditPart getProxyOutputConnector(ShapeNodeEditPart parent){
+	        for(int i=0;i<parent.getChildren().size();++i){
+	            if(parent.getChildren().get(i) instanceof ProxyOutputConnectorEditPart){
+	                return (ProxyOutputConnectorEditPart) parent.getChildren().get(i);
+	            }else if(parent.getChildren().get(i) instanceof APIResourceOutputConnectorEditPart){
+	                return (APIResourceOutputConnectorEditPart) parent.getChildren().get(i);
+	            }
+	        }
+	        return null;
+	    }
+
 	public static AbstractInputConnectorEditPart getBaseFigureInputConnector(ShapeNodeEditPart parent){
 		for(int i=0;i<parent.getChildren().size();++i){					
 			if(parent.getChildren().get(i) instanceof ProxyInputConnectorEditPart){
@@ -608,7 +622,7 @@ public class EditorUtils {
 	}
 	
 	public static ProxyServiceEditPart getProxy(EditPart child){
-		while ((child.getParent()!=null)&&!(child.getParent() instanceof ProxyServiceEditPart)){
+		while ((child.getParent()!=null)&&(!(child.getParent() instanceof ProxyServiceEditPart))){
 			child=child.getParent();
 		}		
 		if(child.getParent()!=null){
@@ -618,6 +632,17 @@ public class EditorUtils {
 		}
 	}
 	
+	   public static APIResourceEditPart getApiResourceFromEditPart(EditPart child){
+	        while ((child.getParent()!=null)&&!(child.getParent() instanceof APIResourceEditPart)){
+	            child=child.getParent();
+	        }
+	        if(child.getParent()!=null){
+	            return (APIResourceEditPart) child.getParent();
+	        }else{
+	            return null;
+	        }
+	    }
+
 	public static AbstractBaseFigureEditPart getAbstractBaseFigureEditPart(EditPart child){
 		while ((child.getParent()!=null)&&!(child.getParent() instanceof AbstractBaseFigureEditPart)){
 			child=child.getParent();
@@ -868,24 +893,23 @@ public class EditorUtils {
 	/**
 	 * A utility method to remove currently unsupported mediators/flows from a
 	 * sequence
+	 * current implementation does not support any mediator rather than comment mediator after send
+     * mediator in given sequence, this might be changed in next releases
 	 * 
 	 * @param sequence
 	 * @return
 	 */
 	public static SequenceMediator stripUnsupportedMediators(SequenceMediator sequence) {
 		SequenceMediator newSequence = new SequenceMediator();
+		boolean addedSendMediator = false;
 		for (Iterator<Mediator> i = sequence.getList().iterator(); i.hasNext();) {
 			Mediator next = i.next();
-			newSequence.addChild(next);
-			if (next instanceof SendMediator) {
-				/*
-				 * current impemetaion does not support any mediator after send
-				 * mediator in given sequence, this might be changed in next
-				 * releases
-				 */
-				break;
+			if(!addedSendMediator || (addedSendMediator && (next instanceof CommentMediator))){
+			    newSequence.addChild(next);
 			}
-
+			if (next instanceof SendMediator) {
+			    addedSendMediator=true;
+			}
 		}
 		return newSequence;
 	}

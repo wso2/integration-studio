@@ -27,7 +27,7 @@ public class BuilderMediatorDeserializer extends AbstractEsbNodeDeserializer<Abs
 		
 			for(MessageBuilder msgBuilder : msgbuilderlist){
 				
-				executeAddValueCommand(visualBuilderMediator.getMessageBuilders(), msgBuilder);
+				executeAddValueCommand(visualBuilderMediator.getMessageBuilders(), msgBuilder, false);
 			}
 		}
 		

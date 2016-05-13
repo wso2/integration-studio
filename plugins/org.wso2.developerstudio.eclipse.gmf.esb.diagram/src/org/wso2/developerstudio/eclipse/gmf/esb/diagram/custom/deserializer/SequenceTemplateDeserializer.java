@@ -49,7 +49,7 @@ public class SequenceTemplateDeserializer extends AbstractEsbNodeDeserializer<Te
 		for (String parameter : template.getParameters()) {
 			TemplateParameter templateParameter = EsbFactory.eINSTANCE.createTemplateParameter();
 			templateParameter.setName(parameter);
-			executeAddValueCommand(templateModel.getParameters(), templateParameter);
+			executeAddValueCommand(templateModel.getParameters(), templateParameter, false);
 		}
 		
 		SequenceMediator sequenceMediator = new SequenceMediator();

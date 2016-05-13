@@ -55,7 +55,7 @@ public class EndPointTemplateDeserializer extends AbstractEsbNodeDeserializer<or
 			if (parameter != null && !(parameter.equals("name") || parameter.equals("uri"))) {
 				TemplateParameter templateParameter = EsbFactory.eINSTANCE.createTemplateParameter();
 				templateParameter.setName(parameter);
-				executeAddValueCommand(templateModel.getParameters(), templateParameter);
+				executeAddValueCommand(templateModel.getParameters(), templateParameter, false);
 			}
 		}
 		

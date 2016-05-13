@@ -67,7 +67,7 @@ public class RecipientListEndpointDeserializer extends AbstractComplexEndPointDe
 			} else {
 				property.setScope(EndPointPropertyScope.SYNAPSE);
 			}
-			executeAddValueCommand(model.getProperties(), property);
+			executeAddValueCommand(model.getProperties(), property, false);
 		}
 
 		if (endpoint.getDynamicEnpointSet() != null) {

@@ -56,16 +56,4 @@
         <wizardCategory category="org.wso2.developerstudio.eclipse.message.mediation.project.types"/>
         <wizardCategory category="org.wso2.developerstudio.eclipse.message.mediation.features"/>
     </extension>
-     <!--extension
-           point="org.wso2.developerstudio.aboutDialog.contributor">
-        <product
-              bundle_id="org.wso2.developerstudio.eclipse.dashboard"
-              name="Carbon"
-              icon="icons/carbon-normal.png"
-              version="4.4.x">
-        </product>
-     </extension-->
-      <extension point="org.eclipse.ui.startup">
-     <startup class="org.wso2.developerstudio.eclipse.dashboard.handlers.PlatformEarlyStartUpHandler"/>
-   </extension>
 </plugin>

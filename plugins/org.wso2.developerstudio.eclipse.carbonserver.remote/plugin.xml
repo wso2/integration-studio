@@ -12,9 +12,9 @@
          point="org.eclipse.wst.server.core.runtimeTypes">
       <runtimeType
             class="org.wso2.developerstudio.eclipse.carbonserver.remote.internal.RemoteCarbonRuntimeDeligate"
-            description="WSO2 Carbon remote server"
+            description="WSO2 Remote Server"
             id="org.wso2.developerstudio.eclipse.carbon.runtime.remote"
-            name="WSO2 Carbon remote server"
+            name="WSO2 Remote Server"
             vendor="WSO2"
             vendorId="wso2"
             version="1.0">

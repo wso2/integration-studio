@@ -57,7 +57,7 @@ public class FailoverEndpointDeserializer extends AbstractComplexEndPointDeseria
 			} else{
 				property.setScope(EndPointPropertyScope.SYNAPSE);
 			}
-			executeAddValueCommand(endPoint.getProperties(), property);
+			executeAddValueCommand(endPoint.getProperties(), property, false);
 		}
 		
 		deserializeComplexEndpoint(failoverEndpoint,part);

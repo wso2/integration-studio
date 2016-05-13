@@ -83,7 +83,7 @@ public class LoadBalanceEndpointDeserializer extends AbstractComplexEndPointDese
 			} else{
 				property.setScope(EndPointPropertyScope.SYNAPSE);
 			}
-			executeAddValueCommand(visualEndPoint.getProperties(), property);
+			executeAddValueCommand(visualEndPoint.getProperties(), property, false);
 		}
 		
 		executeSetValueCommand(LOAD_BALANCE_END_POINT__ALGORITHM, loadbalanceEndpoint.getAlgorithm().getClass().getName());
@@ -105,7 +105,7 @@ public class LoadBalanceEndpointDeserializer extends AbstractComplexEndPointDese
 
 				vishualMember.setHttpsPort(Integer.toString(member.getHttpsPort()));
 
-				executeAddValueCommand(visualEndPoint.getMember(),vishualMember);
+				executeAddValueCommand(visualEndPoint.getMember(),vishualMember, false);
 
 			}
 

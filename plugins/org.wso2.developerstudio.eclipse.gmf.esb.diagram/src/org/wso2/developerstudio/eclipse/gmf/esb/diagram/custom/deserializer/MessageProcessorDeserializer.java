@@ -263,7 +263,7 @@ public class MessageProcessorDeserializer
 						processorParameter.setParameterValue(parameters.get(parameter).toString());
 						executeAddValueCommand(
 								messageProcessor.getParameters(),
-								processorParameter);
+								processorParameter, false);
 					}
 	
 				} else if (dummyMessageProcessor
@@ -421,7 +421,7 @@ public class MessageProcessorDeserializer
 						processorParameter.setParameterValue(parameters.get(parameter).toString());
 						executeAddValueCommand(
 								messageProcessor.getParameters(),
-								processorParameter);
+								processorParameter, false);
 					}
 					
 				} else if (dummyMessageProcessor.getClassName().equals(
@@ -508,7 +508,7 @@ public class MessageProcessorDeserializer
 						processorParameter.setParameterValue(parameters.get(parameter).toString());
 						executeAddValueCommand(
 								messageProcessor.getParameters(),
-								processorParameter);
+								processorParameter, false);
 					}
 					
 				} else {
@@ -528,7 +528,7 @@ public class MessageProcessorDeserializer
 								.getValue().toString());
 						executeAddValueCommand(
 								messageProcessor.getParameters(),
-								processorParameter);
+								processorParameter, false);
 					}
 				}
 			}

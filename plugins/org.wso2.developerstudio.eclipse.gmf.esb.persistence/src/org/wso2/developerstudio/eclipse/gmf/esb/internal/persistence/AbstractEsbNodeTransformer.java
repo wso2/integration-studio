@@ -27,6 +27,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
 import org.wso2.developerstudio.eclipse.gmf.esb.InputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.OutputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.SequencesInputConnector;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.SendMediatorImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.Activator;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.EsbNodeTransformer;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.EsbTransformerRegistry;
@@ -55,6 +56,10 @@ public abstract class AbstractEsbNodeTransformer implements EsbNodeTransformer {
 			EObject previousNode = outputConnector.eContainer();
 			info.setPreviousNode(previousNode);
 			
+			// Adding XML comments after send mediator into synapse config.
+			if(previousNode instanceof SendMediatorImpl){
+			    addXMLCommnets(info, ((SendMediatorImpl) previousNode).getOutputConnector().getCommentMediators());
+			}
 			// Adding XML comments into synapse config.
 			addXMLCommnets(info, outputConnector.getCommentMediators());
 			

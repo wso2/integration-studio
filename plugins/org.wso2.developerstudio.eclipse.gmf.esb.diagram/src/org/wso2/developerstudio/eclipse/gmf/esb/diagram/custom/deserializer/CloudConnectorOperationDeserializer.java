@@ -99,7 +99,7 @@ public class CloudConnectorOperationDeserializer extends AbstractEsbNodeDeserial
 			} else {
 				// parameter does not exist in the config.
 			}
-			executeAddValueCommand(operationModel.getConnectorParameters(), visualParameter);
+			executeAddValueCommand(operationModel.getConnectorParameters(), visualParameter, false);
 
 		}
 		

@@ -108,6 +108,7 @@ public class APIDeserializer extends AbstractEsbNodeDeserializer<API, SynapseAPI
 				executeSetValueCommand(API_RESOURCE__URL_STYLE,ApiResourceUrlStyle.NONE);
 			}
 			
+
 			addRootInputConnector(resource.getInputConnector());
 			MediatorFlow mediatorFlow = resource.getContainer().getSequenceAndEndpointContainer().getMediatorFlow();
 			GraphicalEditPart compartment = (GraphicalEditPart)((getEditpart(mediatorFlow)).getChildren().get(0));
@@ -218,8 +219,8 @@ public class APIDeserializer extends AbstractEsbNodeDeserializer<API, SynapseAPI
 				handlerProperty.setValue((String)handler.getProperties().get(propertyName));
 				apiHandler.getProperties().add(handlerProperty);
 				
-			}
-			executeAddValueCommand(synapseAPI.getHandlers(),apiHandler);
+            }
+            executeAddValueCommand(synapseAPI.getHandlers(), apiHandler, false);
 		}
 		
 		return synapseAPI;

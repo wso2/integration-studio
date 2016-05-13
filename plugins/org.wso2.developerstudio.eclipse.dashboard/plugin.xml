@@ -65,4 +65,7 @@
               version="4.4.x">
         </product>
      </extension-->
+      <extension point="org.eclipse.ui.startup">
+     <startup class="org.wso2.developerstudio.eclipse.dashboard.handlers.PlatformEarlyStartUpHandler"/>
+   </extension>
 </plugin>

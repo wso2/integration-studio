@@ -341,7 +341,7 @@ function generateTaskDiv(taskNode) {
         createFile(taskNode.getAttribute("name"),"");
         //generateTasks();
     });
-
+    initValues(taskName);
     i = parseInt($('#nooftasks').val());
     //handleError(i);
     i++;
@@ -586,6 +586,8 @@ function generateTaskDiv(taskNode) {
                 "operation").trim());
     }
     // service URL mapping
+    if(taskNode.getElementsByTagName("interface")[0].getAttribute(
+            "responseOperation").trim() != "")
     $('#' + taskDivName + " #taskCallbackOperationName").val(
         taskNode.getElementsByTagName("interface")[0].getAttribute(
             "responseOperation").trim());
@@ -825,7 +827,9 @@ function syncWSDLFields(taskName){
     }
     if (typeof wsdlRead != 'undefined' || wsdlRead != 'undefined') {
         if(wsdlRead.getElementsByTagName("definitions").length!=0){
+            if(wsdlRead.getElementsByTagName("definitions")[0].getElementsByTagName("address")[0].getAttribute("location")!='undefined')
             $('#' + taskDivName + ' #taskCallbackServiceURL').val(wsdlRead.getElementsByTagName("definitions")[0].getElementsByTagName("address")[0].getAttribute("location"));
+            if(wsdlRead.getElementsByTagName("definitions")[0].getElementsByTagName("service")[0].getAttribute("name")!='undefined')
             $('#' + taskDivName + ' #taskCallbackServiceName').val(wsdlRead.getElementsByTagName("definitions")[0].getElementsByTagName("service")[0].getAttribute("name"));
         }else{
             createFile(taskName,"initial");
@@ -1081,6 +1085,13 @@ function removeUnwantedArtifacts() {
     ExecuteCustomFunction.apply(this, taskNames);
 }
 
+function initValues(currentTaskName) {
+    $('#' + currentTaskName + 'wrapper #taskCallbackServiceName').val(currentTaskName+"Result");
+    $('#' + currentTaskName + 'wrapper #taskCallbackOperationName').val(currentTaskName+"Response");
+    $('#' + currentTaskName + 'wrapper #taskCallbackServiceURL').val("http://localhost:9763/service/"+currentTaskName+"Result");
+}
+
 function handleError(message) {
     alert(message); // A functionality to log errors is requested in https://wso2.org/jira/browse/TOOLS-3366
 }
+

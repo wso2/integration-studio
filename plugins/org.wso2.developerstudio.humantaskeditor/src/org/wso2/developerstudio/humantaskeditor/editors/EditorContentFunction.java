@@ -89,9 +89,9 @@ public class EditorContentFunction implements AbstractEditorFunctionExecutor {
                 File cbFile = cbResource.getLocation().toFile();
                 if (!file.exists()) {
                     return "File not found";
-                }else if (!cbFile.exists()) {
+                } else if (!cbFile.exists()) {
                     return "File not found";
-                }  else {
+                } else {
                     file.delete();
                     cbFile.delete();
                     return "Deleted Successfully";

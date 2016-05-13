@@ -37,7 +37,7 @@ public class HumanTaskProjectWizardPage extends WizardPage {
     private Text containerText;
 
     private Text fileText;
-    
+
     private Text taskText;
 
     private ISelection selection;
@@ -89,7 +89,7 @@ public class HumanTaskProjectWizardPage extends WizardPage {
                 dialogChanged();
             }
         });
-        
+
         label = new Label(container, SWT.NULL);
         label.setText("&Task Name :");
 
@@ -138,7 +138,7 @@ public class HumanTaskProjectWizardPage extends WizardPage {
     private void dialogChanged() {
         String fileName = getFileName();
         String taskName = getTaskName();
-        
+
         if (getContainerName().length() == 0) {
             updateStatus(HumantaskEditorConstants.FILE_CONTAINER_MUST_BE_SPECIFIED_MESSAGE);
             return;
@@ -168,7 +168,7 @@ public class HumanTaskProjectWizardPage extends WizardPage {
             updateStatus(HumantaskEditorConstants.FILE_NAME_MUST_BE_SPECIFIED_MESSAGE);
             return;
         }
-        if (fileName.split("\\.").length!= 0 && fileName.split("\\.")[0].length()==0) {
+        if (fileName.split("\\.").length != 0 && fileName.split("\\.")[0].length() == 0) {
             updateStatus(HumantaskEditorConstants.FILE_NAME_MUST_BE_VALID_MESSAGE);
             return;
         }
@@ -176,6 +176,12 @@ public class HumanTaskProjectWizardPage extends WizardPage {
             updateStatus(HumantaskEditorConstants.FILE_NAME_MUST_BE_VALID_MESSAGE);
             return;
         }
+
+        if (!fileName.contains(".")) {
+            updateStatus(HumantaskEditorConstants.FILE_EXTENSION_MUST_BE_HT_MESSAGE);
+            return;
+        }
+
         int dotLoc = fileName.lastIndexOf('.');
         if (dotLoc != -1) {
             String ext = fileName.substring(dotLoc + 1);
@@ -199,7 +205,7 @@ public class HumanTaskProjectWizardPage extends WizardPage {
     public String getFileName() {
         return fileText.getText();
     }
-    
+
     public String getTaskName() {
         return taskText.getText();
     }

@@ -96,6 +96,8 @@ public class SchemaKeyEditorDialog extends Dialog {
 	private Combo cmbConnector;
 	private Label lblConnectorOperation;
 	private Combo cmbConnectorOperation;
+	private Link link;
+	private Group grpPropertyKey;
 	private SchemaGeneratorHelper schemaGeneratorHelper;
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 	private static final String FILE_NAME_VALUE = "tempSchemaContnt";
@@ -192,7 +194,7 @@ public class SchemaKeyEditorDialog extends Dialog {
 		fl_container.spacing = 10;
 		container.setLayout(fl_container);
 
-		Group grpPropertyKey = new Group(container, SWT.None);
+		grpPropertyKey = new Group(container, SWT.None);
 		grpPropertyKey.setText(RESOURCE_KEY);
 
 		FormLayout fl_grpPropertyKey = new FormLayout();
@@ -207,7 +209,7 @@ public class SchemaKeyEditorDialog extends Dialog {
 		lblConnectorOperation = new Label(grpPropertyKey, SWT.NORMAL);
 		cmbConnector = new Combo(grpPropertyKey, SWT.DROP_DOWN | SWT.READ_ONLY);
 		cmbConnectorOperation = new Combo(grpPropertyKey, SWT.DROP_DOWN | SWT.READ_ONLY);
-		Link link = new Link(grpPropertyKey, SWT.NONE);
+		link = new Link(grpPropertyKey, SWT.NONE);
 		schemaKeyTextField = new Text(grpPropertyKey, SWT.BORDER);
 
 		FormData lableLayoutData = new FormData();

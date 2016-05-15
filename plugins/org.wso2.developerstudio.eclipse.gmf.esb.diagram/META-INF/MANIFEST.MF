@@ -8,14 +8,15 @@ Bundle-Activator: org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbDiagr
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Export-Package: org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom,
+ org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.cloudconnector,
  org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.configure,
  org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.configure.ui,
+ org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer,
  org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.export,
  org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.perspective,
  org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.provider,
  org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts,
  org.wso2.developerstudio.eclipse.gmf.esb.diagram.part,
- org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer,
  org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.core.resources,

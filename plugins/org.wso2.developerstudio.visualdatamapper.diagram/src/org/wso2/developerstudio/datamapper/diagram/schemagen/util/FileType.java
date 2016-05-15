@@ -21,7 +21,8 @@ public enum FileType {
 	XML,
 	JSON,
 	XSD,
-	JSONSCHEMA
+	JSONSCHEMA,
+	CONNECTOR
 	
 
 }

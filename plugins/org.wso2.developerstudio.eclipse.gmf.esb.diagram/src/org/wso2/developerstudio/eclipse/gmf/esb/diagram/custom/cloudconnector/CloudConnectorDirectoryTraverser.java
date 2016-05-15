@@ -32,6 +32,7 @@ import org.apache.axiom.om.util.AXIOMUtil;
 import org.apache.synapse.config.xml.TemplateMediatorFactory;
 import org.apache.synapse.mediators.template.TemplateMediator;
 import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.IWorkspace;
 import org.eclipse.emf.ecore.xml.type.internal.QName;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.ui.PlatformUI;
@@ -47,6 +48,8 @@ public class CloudConnectorDirectoryTraverser {
 	private static final String synapseNS = "http://ws.apache.org/ns/synapse";
 	private static final String connectorFileName = "connector.xml";
 	private static final String componentFileName = "component.xml";
+	private static final String inputSchemaFolderName = "input_schema";
+	private static final String outputSchemaFolderName = "output_schema";
 	private static final String initFileName = "init.xml";
 	private static final String DIR_DOT_METADATA = ".metadata";
 	public static final String connectorPathFromWorkspace = DIR_DOT_METADATA + File.separator + ".Connectors";
@@ -104,9 +107,22 @@ public class CloudConnectorDirectoryTraverser {
 		return readTemplateConfiguration(getConfigurationFileLocation(getOperationFileNamesMap())).getParameters();
 	}
 	
-	public boolean validate(IProject activeProject){
+	public String getCloudConnectorOperationInputSchemaFilePath(String connectorOperation) throws Exception {
+		Map<String, String> operationFileNames = getOperationFileNamesMap();
+		return rootDirectory + File.separator + operationFileNames.get(connectorOperation) +
+		                  File.separator + inputSchemaFolderName + File.separator +  connectorOperation + ".json";
+	}
+	
+	public String getCloudConnectorOperationOutputSchemaFilePath(String connectorOperation) throws Exception{
+		Map<String, String> operationFileNames = getOperationFileNamesMap();
+		return rootDirectory + File.separator + operationFileNames.get(connectorOperation) +
+		                  File.separator + outputSchemaFolderName + File.separator +  connectorOperation + ".json";
+	}
+	
+	
+	public boolean validate(IWorkspace workspace) {
 		try{			
-			String connectorDirectory = activeProject.getWorkspace().getRoot().getLocation().toOSString() + File.separator
+			String connectorDirectory = workspace.getRoot().getLocation().toOSString() + File.separator
 					+ CloudConnectorDirectoryTraverser.connectorPathFromWorkspace;
 					File directory=new File(connectorDirectory);
 					List<String> errorList = new ArrayList<String>();
@@ -171,7 +187,10 @@ public class CloudConnectorDirectoryTraverser {
 			log.error("Error while validating the connectors", e);
 			return false;
 		}
-		
+	}
+	
+	public boolean validate(IProject activeProject){
+		return validate(activeProject.getWorkspace());
 	}
 	
 
@@ -333,4 +352,5 @@ public class CloudConnectorDirectoryTraverser {
 
 		return parameters;
 	}
+
 }

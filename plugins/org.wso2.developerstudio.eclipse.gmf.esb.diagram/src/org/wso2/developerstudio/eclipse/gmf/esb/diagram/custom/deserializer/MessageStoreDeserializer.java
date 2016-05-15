@@ -178,7 +178,7 @@ public class MessageStoreDeserializer
 										.createMessageStoreParameter();
 								parameter.setParameterName(param.getKey());
 								parameter.setParameterValue(param.getValue().toString());
-								executeAddValueCommand(messageStore.getParameters(), parameter);
+								executeAddValueCommand(messageStore.getParameters(), parameter, false);
 							}
 
 						}
@@ -302,7 +302,7 @@ public class MessageStoreDeserializer
 						MessageStoreParameter parameter = EsbFactory.eINSTANCE.createMessageStoreParameter();
 						parameter.setParameterName(param.getKey());
 						parameter.setParameterValue(param.getValue().toString());
-						executeAddValueCommand(messageStore.getParameters(), parameter);
+						executeAddValueCommand(messageStore.getParameters(), parameter, false);
 					}
 					
 				}

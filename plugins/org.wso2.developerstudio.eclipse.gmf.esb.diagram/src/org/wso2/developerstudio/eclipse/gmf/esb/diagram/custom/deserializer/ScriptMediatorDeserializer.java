@@ -63,7 +63,7 @@ public class ScriptMediatorDeserializer extends AbstractEsbNodeDeserializer<Abst
 		  for (Value value : keySet) {
 			  RegistryKeyProperty keyProperty=EsbFactory.eINSTANCE.createRegistryKeyProperty();
 			  keyProperty.setKeyValue(value.getKeyValue());
-			  executeAddValueCommand(visualScriptMediator.getScriptKeys(),keyProperty);
+			  executeAddValueCommand(visualScriptMediator.getScriptKeys(),keyProperty, false);
 		  }
 		  Value key = scriptMediator.getKey();
 		  SynapsePath expression = key.getExpression();

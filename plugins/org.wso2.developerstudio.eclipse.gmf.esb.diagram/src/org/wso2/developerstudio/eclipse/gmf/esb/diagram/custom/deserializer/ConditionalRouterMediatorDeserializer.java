@@ -78,7 +78,7 @@ public class ConditionalRouterMediatorDeserializer extends
 				routeBranch.setTargetSequence(regkey);
 			}
 
-			executeAddValueCommand(mediatorModel.getConditionalRouteBranches(), routeBranch);
+			executeAddValueCommand(mediatorModel.getConditionalRouteBranches(), routeBranch, false);
 		}
 
 		return mediatorModel;

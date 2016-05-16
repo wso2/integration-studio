@@ -133,9 +133,9 @@
     </sample>
  </extension>
 
-<extension point="org.wso2.developerstudio.eclipse.platform.core.intro.ui.dashboard">
+<extension point="org.wso2.developerstudio.eclipse.dashboad.link">
      <category id="dashboard.category.bps" showTitle="true"
-                  title="Business Process Server"
+                  title="BPS BPEL Tooling"
                   priority="6">
      </category>
      <wizardLink category="dashboard.category.bps" id="dashboard.wizardLink.bpel"

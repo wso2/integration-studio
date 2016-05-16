@@ -257,9 +257,9 @@ function deleteTask(taskNode) { //createFile
             process();
             ExecuteCustomFunction("removewsdl", taskNode.getAttribute("name"));
             makeDirty();
-        } else {} 
+        } 
     }else{
-    handleError("HT File should have at least one task");    
+        handleError("HT File should have at least one task");    
     }
 }
 

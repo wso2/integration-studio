@@ -57,4 +57,18 @@
          </run>
       </runtime>
    </extension>
+   <extension
+point="org.wso2.developerstudio.eclipse.dashboad.link">
+<wizardCategory category="org.wso2.developerstudio.humantaskeditor"/>
+    <category id="dashboard.category.bps.hteditor" showTitle="true"
+                 title="BPS Human Task Tooling"
+                 priority="8">
+       </category>
+       <wizardLink category="dashboard.category.bps.hteditor" id="dashboard.wizardLink.bps.hteditor.project"
+                   wizard="org.wso2.developerstudio.humantaskeditor.wizards.HumanTaskProjectWizard">
+       </wizardLink>
+       <wizardLink category="dashboard.category.bps.hteditor" id="dashboard.wizardLink.bps.hteditor.file"
+                   wizard="org.wso2.developerstudio.humantaskeditor.wizards.HumanTaskWizard">
+       </wizardLink>
+  </extension>
 </plugin>

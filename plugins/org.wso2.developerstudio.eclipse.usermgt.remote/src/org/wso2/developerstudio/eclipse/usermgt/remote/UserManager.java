@@ -49,6 +49,7 @@ import org.wso2.carbon.user.mgt.stub.types.carbon.FlaggedName;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 //import org.wso2.developerstudio.eclipse.platform.ui.preferences.ClientTrustStorePreferencePage;
+import org.wso2.developerstudio.eclipse.platform.ui.utils.SSLUtils;
 
 public class UserManager {
 	private static IDeveloperStudioLog log=Logger.getLog(Activator.PLUGIN_ID);
@@ -71,7 +72,7 @@ public class UserManager {
 	
 	
 	public UserManager(String url, String username, String password) {
-		init();
+//		init();
 		setUrl(url);
 		setUsername(username);
 		setPassword(password);
@@ -311,10 +312,14 @@ public class UserManager {
 				log.error(e);
 			}
 			
-			init();
+//			init();
 			AuthenticationAdminStub authenticationStub = new AuthenticationAdminStub(
 					getUrl() + "services/AuthenticationAdmin");
-
+			try {
+				SSLUtils.setSSLProtocolHandler(authenticationStub);
+			} catch (Exception e) {
+				throw new AuthenticationExceptionException(e);
+			}
 			authenticationStub._getServiceClient().getOptions()
 					.setManageSession(true);
 			boolean loginStatus = authenticationStub.login(getUsername(),getPassword(), url.getHost());
@@ -329,6 +334,11 @@ public class UserManager {
 					.getProperty(HTTPConstants.COOKIE_STRING);
 
 			stub = new UserAdminStub(getUrl() + "services/UserAdmin");
+			try {
+				SSLUtils.setSSLProtocolHandler(stub);
+			} catch (Exception e) {
+				throw new AuthenticationExceptionException(e);
+			}
 			stub._getServiceClient().getOptions().setManageSession(true);
 			stub._getServiceClient().getOptions().setTimeOutInMilliSeconds(
 					60000000);

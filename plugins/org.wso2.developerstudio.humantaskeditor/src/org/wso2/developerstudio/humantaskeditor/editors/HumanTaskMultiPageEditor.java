@@ -90,7 +90,7 @@ public class HumanTaskMultiPageEditor extends MultiPageEditorPart implements IRe
         try {
             textEditor = new StructuredTextEditor();
             int index = addPage(textEditor, getEditorInput());
-            setPageText(index, textEditor.getTitle());
+            setPageText(index, HumantaskEditorConstants.SOURCE_EDITOR_NAME);
             editorContentFunction.setProjectName(((FileEditorInput) textEditor.getEditorInput()).getFile().getProject()
                     .getName());
         } catch (PartInitException e) {

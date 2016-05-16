@@ -34,7 +34,9 @@ public class HumantaskEditorConstants {
 
     public static final String ERROR_CREATING_UI_EDITOR = "Error creating UI editor";
 
-    public static final String GUI_EDITOR_NAME = "GUI Editor";
+    public static final String GUI_EDITOR_NAME = "Design";
+    
+    public static final String SOURCE_EDITOR_NAME = "Source";
 
     public static final String CREATE_HUMAN_TASK_FILE_MESSAGE = "Create HumanTask file";
 

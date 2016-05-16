@@ -23,8 +23,11 @@ import org.wso2.developerstudio.datamapper.SchemaDataType;
 import org.wso2.developerstudio.datamapper.diagram.custom.generator.ForLoopBean;
 import org.wso2.developerstudio.datamapper.diagram.custom.generator.DifferentLevelArrayMappingConfigGenerator;
 import org.wso2.developerstudio.datamapper.diagram.custom.generator.SameLevelRecordMappingConfigGenerator;
+import org.wso2.developerstudio.datamapper.diagram.custom.model.DMOperation;
 import org.wso2.developerstudio.datamapper.diagram.custom.model.DMVariable;
 import org.wso2.developerstudio.datamapper.diagram.custom.util.ScriptGenerationUtil;
+
+import static org.wso2.developerstudio.datamapper.diagram.custom.model.transformers.TransformerConstants.DELIMITER_TAG;
 
 /**
  * This class extended from the {@link AbstractDMOperatorTransformer} abstract class and generate script for concat
@@ -34,8 +37,9 @@ public class ConcatOperatorTransformer extends AbstractDMOperatorTransformer {
 
     @Override
     public String generateScriptForOperation(Class<?> generatorClass, List<DMVariable> inputVariables,
-            Map<String, SchemaDataType> variableTypeMap, Stack<ForLoopBean> parentForLoopBeanStack) {
-        String concatOperator = " ";
+            Map<String, SchemaDataType> variableTypeMap, Stack<ForLoopBean> parentForLoopBeanStack,
+            DMOperation operator) {
+        String concatOperator = (String) operator.getProperty(DELIMITER_TAG);
         StringBuilder operationBuilder = new StringBuilder();
         if (SameLevelRecordMappingConfigGenerator.class.equals(generatorClass)) {
             if (inputVariables.size() >= 2) {
@@ -53,11 +57,10 @@ public class ConcatOperatorTransformer extends AbstractDMOperatorTransformer {
                 operationBuilder.append(ScriptGenerationUtil.getPrettyVariableNameInForOperation(inputVariables.get(0),
                         variableTypeMap, parentForLoopBeanStack));
                 for (int variableIndex = 1; variableIndex < inputVariables.size(); variableIndex++) {
-                    operationBuilder.append(".concat('"
-                            + concatOperator
-                            + "',"
+                    operationBuilder.append(".concat('" + concatOperator + "',"
                             + ScriptGenerationUtil.getPrettyVariableNameInForOperation(
-                                    inputVariables.get(variableIndex), variableTypeMap, tempParentForLoopBeanStack)+")");
+                                    inputVariables.get(variableIndex), variableTypeMap, tempParentForLoopBeanStack)
+                            + ")");
                 }
                 operationBuilder.append(";");
             } else if (inputVariables.size() == 1) {

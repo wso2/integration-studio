@@ -32,6 +32,7 @@ import org.wso2.developerstudio.datamapper.Output;
 import org.wso2.developerstudio.datamapper.PropertyKeyValuePair;
 import org.wso2.developerstudio.datamapper.SchemaDataType;
 import org.wso2.developerstudio.datamapper.diagram.custom.exception.DataMapperException;
+import org.wso2.developerstudio.datamapper.diagram.custom.model.transformers.ModelTransformerFactory;
 import org.wso2.developerstudio.datamapper.diagram.custom.util.ScriptGenerationUtil;
 import org.wso2.developerstudio.datamapper.impl.ConcatImpl;
 import org.wso2.developerstudio.datamapper.impl.ConstantImpl;
@@ -240,8 +241,8 @@ public class DataMapperDiagramModel {
             } else if (currentElement instanceof OperatorImpl && !((OperatorImpl) currentElement).isVisited()) {
                 int index = operationsList.size();
                 OperatorImpl operatorElement = (OperatorImpl) currentElement;
-                DMOperation operator = new DMOperation(getOperatorType(operatorElement), getUniqueId(operatorElement),
-                        index);
+                DMOperation operator = ModelTransformerFactory.getModelTransformer(getOperatorType(operatorElement))
+                        .transform(operatorElement, index);
                 operationsList.add(operator);
                 graphOperationElements.add(operatorElement);
                 ((OperatorImpl) currentElement).setIndex(index);
@@ -372,10 +373,6 @@ public class DataMapperDiagramModel {
 
     private String getUniqueDirectId(EObject parent, int size) {
         return parent.toString() + " " + size;
-    }
-
-    private String getUniqueId(EObject nextElement) {
-        return nextElement.toString();
     }
 
     private DMOperatorType getOperatorType(OperatorImpl nextElement) {

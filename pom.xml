@@ -147,6 +147,16 @@
                 <updatePolicy>daily</updatePolicy>
                 <checksumPolicy>ignore</checksumPolicy>
             </releases>
+            <id>Activiti-releases-Repository</id>
+            <url>http://www.activiti.org/designer/update/</url>
+            <layout>p2</layout>
+        </repository>
+        <repository>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>daily</updatePolicy>
+                <checksumPolicy>ignore</checksumPolicy>
+            </releases>
             <id>WSO2-p2-Repository</id>
             <url>http://product-dist.wso2.com/p2/carbon/releases/wilkes/</url>
             <layout>p2</layout>

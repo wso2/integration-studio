@@ -21,6 +21,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.CallTemplateMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.CalloutMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.ClassMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.CloneMediator;
+import org.wso2.developerstudio.eclipse.gmf.esb.CloudConnectorOperation;
 import org.wso2.developerstudio.eclipse.gmf.esb.CommandMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.ConditionalRouterMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.DBLookupMediator;
@@ -73,6 +74,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.configure.Configu
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.configure.ConfigureSwitchMediatorAction;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.configure.ConfigureTaskAction;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.configure.ConfigureXQueryMediatorAction;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.configure.LoadParametersFromSchemaAction;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.direction.DirectionAggregateMediatorAction;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.direction.DirectionCacheMediatorAction;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.direction.DirectionCalloutMediatorAction;
@@ -181,6 +183,8 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
 		contextActions.put(DBReportMediator.class, new ConfigureSqlStatementsAction(part));
 
 		contextActions.put(Task.class, new ConfigureTaskAction(part));
+
+        contextActions.put(CloudConnectorOperation.class, new LoadParametersFromSchemaAction(part));
 
 		//Initialize branch context sensitive actions.
 		addBranchContextActions = new HashMap<Class<? extends EsbNode>, ConfigureEsbNodeAction>();

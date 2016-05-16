@@ -17,13 +17,17 @@
 package org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.cloudconnector;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Properties;
+import java.util.Set;
 
 import javax.xml.stream.XMLStreamException;
 
@@ -352,5 +356,35 @@ public class CloudConnectorDirectoryTraverser {
 
 		return parameters;
 	}
+
+    public Map<String, String> getInputDefaultParameterValuesMap(String connectorOperation) {
+        Map<String, String> operationFileNames;
+        try {
+            operationFileNames = getOperationFileNamesMap();
+        } catch (Exception e) {
+            log.error("Error getting operations file map", e);
+            return null;
+        }
+        String mappingPropertiesFilePath = rootDirectory + File.separator +
+                                           operationFileNames.get(connectorOperation) +
+                                           File.separator + inputSchemaFolderName + File.separator +
+                                           connectorOperation + ".properties";
+
+        Properties properties = new Properties();
+        try {
+            properties.load(new FileInputStream(mappingPropertiesFilePath));
+        } catch (IOException e) {
+            log.error("Error getting operations file map", e);
+            return null;
+        }
+
+        Map<String, String> propertiesMap = new HashMap<String, String>();
+
+        for (Entry<Object, Object> property : properties.entrySet()) {
+            propertiesMap.put((String) property.getKey(), (String) property.getValue());
+        }
+
+        return propertiesMap;
+    }
 
 }

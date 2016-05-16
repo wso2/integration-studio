@@ -320,8 +320,7 @@ public class EditObjectAction extends AbstractActionHandler {
 	 */
 	private void openEditRecordDialog(TreeNode selectedNode, String title, String schemaType, String id,
 			String required, String schemaValue, String namespaces, String value, String identifierType, String identifierValue) {
-		Display display = Display.getDefault();
-		Shell shell = new Shell(display);
+		Shell shell = Display.getDefault().getActiveShell();
 		AddNewObjectDialog editTypeDialog = new AddNewObjectDialog(shell, new Class[] { IRegistryFile.class });
 
 		editTypeDialog.create();

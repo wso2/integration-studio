@@ -255,8 +255,7 @@ public class EditAttributeAction extends AbstractActionHandler {
 	private void openEditFieldDialog(TreeNode selectedNode, String title, String schemaType, String id,
 			String required, String schemaValue,String namespaces) {
 
-		Display display = Display.getDefault();
-		Shell shell = new Shell(display);
+		Shell shell = Display.getDefault().getActiveShell();
 		AddNewObjectDialog editTypeDialog = new AddNewObjectDialog(shell, new Class[] { IRegistryFile.class });
 	
 		editTypeDialog.create();

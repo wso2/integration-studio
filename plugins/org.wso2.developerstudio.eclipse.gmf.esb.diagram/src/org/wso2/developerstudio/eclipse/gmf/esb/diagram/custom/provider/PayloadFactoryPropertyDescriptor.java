@@ -43,8 +43,7 @@ public class PayloadFactoryPropertyDescriptor extends PropertyDescriptor {
 		return new ExtendedDialogCellEditor(parent, getLabelProvider()) {
 			
 			protected Object openDialogBox(Control cellEditorWindow) {
-				Display display = Display.getDefault();
-				Shell shell = new Shell(display);
+			    Shell shell = Display.getDefault().getActiveShell();
 				PayloadFactoryMediator mediator = (PayloadFactoryMediator) object;
 				ConfigurePayloadFactoryMediatorDialog configurationDialog = new ConfigurePayloadFactoryMediatorDialog(shell, mediator, TransactionUtil.getEditingDomain(mediator));
 				configurationDialog.setBlockOnOpen(true);

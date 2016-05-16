@@ -130,8 +130,8 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
                         SchemaDataType variableType = variableMap.get(variableName);
                         if (SchemaDataType.ARRAY.equals(variableType)) {
                             if (forLoopBeanNotCreated(variableName)) {
-                                int indexOfForLoopBean = addForLoopInToMap(variableName, new ForLoopBean("i_"
-                                        + nextName, variableName));
+                                int indexOfForLoopBean = addForLoopInToMap(variableName,
+                                        new ForLoopBean("i_" + nextName, variableName));
                                 addForLoopBeanIndexToParent(variableName, indexOfForLoopBean, parentArrayVariable);
                                 parentArrayVariable = variableName;
                             } else {
@@ -142,8 +142,8 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
                         } else if (SchemaDataType.RECORD.equals(variableType)) {
                             // record variable element
                         } else {
-                            throw new DataMapperException("Unsupported schemaDataType in WSO2 Data Mapper found : "
-                                    + variableType);
+                            throw new DataMapperException(
+                                    "Unsupported schemaDataType in WSO2 Data Mapper found : " + variableType);
                         }
                     } else {
                         throw new IllegalArgumentException("Unknown variable name found : " + variableName);
@@ -182,8 +182,8 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
         }
         // All operations are now assign to ForLoopBean map. Transform
         // forLoopBean map for JS script.
-        functionBuilder.append(transformForLoopBeansToJS(getRootBean(), mappingOperationList,
-                model.getVariableTypeMap()));
+        functionBuilder
+                .append(transformForLoopBeansToJS(getRootBean(), mappingOperationList, model.getVariableTypeMap()));
         return functionBuilder.toString();
     }
 
@@ -228,8 +228,8 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
                         previousObjectForLoopIndex = outputObjectVariableForLoopMap.get(variableName);
                     }
                 } else {
-                    throw new DataMapperException("Unsupported schemaDataType in WSO2 Data Mapper found : "
-                            + variableType);
+                    throw new DataMapperException(
+                            "Unsupported schemaDataType in WSO2 Data Mapper found : " + variableType);
                 }
             } else {
                 throw new IllegalArgumentException("Unknown variable name found : " + variableName);
@@ -301,8 +301,8 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
         functionBuilder.append("\n");
 
         if (!ROOT_TAG.equals(forLoopBean.getVariableName())) {
-            String forLoopVariableName = ScriptGenerationUtil.getPrettyVariableNameInForOperation(new DMVariable(
-                    forLoopBean.getVariableName(), "", DMVariableType.INPUT, SchemaDataType.ARRAY, -1),
+            String forLoopVariableName = ScriptGenerationUtil.getPrettyVariableNameInForOperation(
+                    new DMVariable(forLoopBean.getVariableName(), "", DMVariableType.INPUT, SchemaDataType.ARRAY, -1),
                     variableTypeMap, tempForLoopBeanParentStack);
             functionBuilder.append("for(" + forLoopBean.getIterativeName() + " in "
                     + forLoopVariableName.substring(0, forLoopVariableName.lastIndexOf("[")) + "){");
@@ -310,8 +310,8 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
         }
         tempForLoopBeanParentStack = (Stack<ForLoopBean>) forLoopBeanParentStack.clone();
         // Initiating arrays of the output variable going to instantiate in below for loop
-        functionBuilder.append(initiateArrayTypeVariablesObjects(forLoopBean, tempForLoopBeanParentStack,
-                variableTypeMap));
+        functionBuilder
+                .append(initiateArrayTypeVariablesObjects(forLoopBean, tempForLoopBeanParentStack, variableTypeMap));
         functionBuilder.append("\n");
 
         tempForLoopBeanParentStack = (Stack<ForLoopBean>) forLoopBeanParentStack.clone();
@@ -324,8 +324,8 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
         // call operations and nested for loops
         List<Integer> operationsInForLoopList = forLoopBean.getOperationList();
         for (Integer operationIndex : operationsInForLoopList) {
-            functionBuilder.append(getJSCommandForOperation(mappingOperationList.get(operationIndex), variableTypeMap,
-                    forLoopBean));
+            functionBuilder.append(
+                    getJSCommandForOperation(mappingOperationList.get(operationIndex), variableTypeMap, forLoopBean));
         }
         List<Integer> nestedForLoopList = forLoopBean.getNestedForLoopList();
         for (Integer nestedForLoopIndex : nestedForLoopList) {
@@ -346,8 +346,9 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
         StringBuilder functionBuilder = new StringBuilder();
         for (String variableName : forLoopBean.getObjectVariableListToInstantiate()) {
             functionBuilder.append("\n");
-            variableName = ScriptGenerationUtil.getPrettyVariableNameInForOperation(new DMVariable(variableName, "",
-                    DMVariableType.INPUT, SchemaDataType.RECORD, -1), variableTypeMap, tempForLoopBeanParentStack);
+            variableName = ScriptGenerationUtil.getPrettyVariableNameInForOperation(
+                    new DMVariable(variableName, "", DMVariableType.INPUT, SchemaDataType.RECORD, -1), variableTypeMap,
+                    tempForLoopBeanParentStack);
             functionBuilder.append(variableName + " = {};");
         }
         functionBuilder.append("\n");
@@ -359,8 +360,9 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
         StringBuilder functionBuilder = new StringBuilder();
         for (String variableName : forLoopBean.getArrayVariableListToInstantiate()) {
             functionBuilder.append("\n");
-            variableName = ScriptGenerationUtil.getPrettyVariableNameInForOperation(new DMVariable(variableName, "",
-                    DMVariableType.INPUT, SchemaDataType.ARRAY, -1), variableTypeMap, tempForLoopBeanParentStack);
+            variableName = ScriptGenerationUtil.getPrettyVariableNameInForOperation(
+                    new DMVariable(variableName, "", DMVariableType.INPUT, SchemaDataType.ARRAY, -1), variableTypeMap,
+                    tempForLoopBeanParentStack);
             functionBuilder.append(variableName + " = {};");
         }
         functionBuilder.append("\n");
@@ -372,8 +374,9 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
         StringBuilder functionBuilder = new StringBuilder();
         for (String variableName : forLoopBean.getArrayVariableListToInstantiate()) {
             functionBuilder.append("\n");
-            variableName = ScriptGenerationUtil.getPrettyVariableNameInForOperation(new DMVariable(variableName, "",
-                    DMVariableType.INPUT, SchemaDataType.ARRAY, -1), variableTypeMap, tempForLoopBeanParentStack);
+            variableName = ScriptGenerationUtil.getPrettyVariableNameInForOperation(
+                    new DMVariable(variableName, "", DMVariableType.INPUT, SchemaDataType.ARRAY, -1), variableTypeMap,
+                    tempForLoopBeanParentStack);
             functionBuilder.append(variableName.substring(0, variableName.lastIndexOf('[')) + " = [];");
         }
         functionBuilder.append("\n");
@@ -391,8 +394,8 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
     }
 
     @SuppressWarnings("unchecked")
-    private List<String> getArrayTypeVariablesList(ForLoopBean forLoopBean,
-            List<MappingOperation> mappingOperationList, Map<String, SchemaDataType> variableTypeMap) {
+    private List<String> getArrayTypeVariablesList(ForLoopBean forLoopBean, List<MappingOperation> mappingOperationList,
+            Map<String, SchemaDataType> variableTypeMap) {
         List<String> initializedVariableList = new ArrayList<>();
         Stack<ForLoopBean> forLoopBeanParentStack = getParentForLoopBeanStack(forLoopBean);
         Stack<ForLoopBean> tempForLoopBeanParentStack = new Stack<ForLoopBean>();
@@ -461,7 +464,7 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
 
         operationBuilder.append(operatorTransformer.generateScriptForOperation(
                 DifferentLevelArrayMappingConfigGenerator.class, mappingOperation.getInputVariables(), variableTypeMap,
-                forLoopBeanParentStack));
+                forLoopBeanParentStack, mappingOperation.getOperation()));
         operationBuilder.append("\n");
         return operationBuilder.toString();
     }

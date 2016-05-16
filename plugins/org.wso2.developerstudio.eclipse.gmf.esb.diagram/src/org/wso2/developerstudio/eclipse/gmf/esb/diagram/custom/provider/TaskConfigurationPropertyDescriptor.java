@@ -27,8 +27,7 @@ public class TaskConfigurationPropertyDescriptor extends PropertyDescriptor{
 		return new ExtendedDialogCellEditor(parent, getLabelProvider()) {
 			
 			protected Object openDialogBox(Control cellEditorWindow) {
-				Display display = Display.getDefault();
-				Shell shell = new Shell(display);
+			    Shell shell = Display.getDefault().getActiveShell();
 				Task task = (Task) object;
 				 //.getEditingDomain()
 				Dialog taskConfigurationDialog = new TaskPropertyDialog(shell, task, TransactionUtil.getEditingDomain(task));

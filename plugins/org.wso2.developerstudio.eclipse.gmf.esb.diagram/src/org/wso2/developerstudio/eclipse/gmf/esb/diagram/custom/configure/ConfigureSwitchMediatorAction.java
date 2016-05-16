@@ -70,8 +70,7 @@ public class ConfigureSwitchMediatorAction extends ConfigureEsbNodeAction {
 		EObject selectedObj = ((View) selectedEP.getModel()).getElement();
 		Assert.isTrue(selectedObj instanceof SwitchMediator, "Invalid selection.");
 
-		Display display = Display.getDefault();
-		Shell shell = new Shell(display);		
+		Shell shell = Display.getDefault().getActiveShell();		
 		Dialog ConfigureSwitchMediatorDialog = new ConfigureSwitchMediatorDialog(shell, (SwitchMediator) selectedObj);
 		ConfigureSwitchMediatorDialog.setBlockOnOpen(true);
 		ConfigureSwitchMediatorDialog.open();

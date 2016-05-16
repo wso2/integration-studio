@@ -42,8 +42,7 @@ public class MessageStoreParamCustomPropertyDescriptor extends PropertyDescripto
 		return new ExtendedDialogCellEditor(parent, getLabelProvider()) {
 			
 			protected Object openDialogBox(Control cellEditorWindow) {
-				Display display = Display.getDefault();
-				Shell shell = new Shell(display);
+			    Shell shell = Display.getDefault().getActiveShell();
 				MessageStore store = (MessageStore)object;
 			
 				ConfigureMessageStoreParametersDialog paramDialog = new ConfigureMessageStoreParametersDialog(shell,

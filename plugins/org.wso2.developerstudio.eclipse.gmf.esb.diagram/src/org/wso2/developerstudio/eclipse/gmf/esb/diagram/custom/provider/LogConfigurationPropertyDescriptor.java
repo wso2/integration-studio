@@ -24,8 +24,7 @@ public class LogConfigurationPropertyDescriptor extends PropertyDescriptor {
 		return new ExtendedDialogCellEditor(parent, getLabelProvider()) {
 			
 			protected Object openDialogBox(Control cellEditorWindow) {
-				Display display = Display.getDefault();
-				Shell shell = new Shell(display);
+				Shell shell = Display.getDefault().getActiveShell();
 				LogMediator logMediator = (LogMediator) object;
 				 //.getEditingDomain()
 				ConfigureLogMediatorDialog logMediatorConfigurationDialog = new ConfigureLogMediatorDialog(shell, logMediator, TransactionUtil.getEditingDomain(logMediator));

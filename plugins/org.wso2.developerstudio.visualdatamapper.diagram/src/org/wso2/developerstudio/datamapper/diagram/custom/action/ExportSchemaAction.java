@@ -110,8 +110,7 @@ public class ExportSchemaAction extends AbstractActionHandler {
 					ISchemaTransformer schemaTransformer = SchemaTransformerRegistry.getInstance()
 							.getSchemaTransformer().newInstance();
 					exportContent = schemaTransformer.getSchemaContentFromModel((TreeNodeImpl) treeNode, null);
-					Display display = Display.getDefault();
-					Shell shell = new Shell(display);
+					Shell shell = Display.getDefault().getActiveShell();
 					FileDialog dialog = new FileDialog(shell, SWT.SAVE);
 					dialog.setFilterExtensions(new String[] { FILTER_EXTENSION_AVSC, FILTER_EXTENSION_TXT });
 					dialog.setText(FILE_DIALOG_HEADER);

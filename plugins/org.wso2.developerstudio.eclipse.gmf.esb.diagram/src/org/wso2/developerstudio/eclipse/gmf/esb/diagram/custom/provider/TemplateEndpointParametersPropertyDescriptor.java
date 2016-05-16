@@ -39,8 +39,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.configure.ui.Conf
                 return new ExtendedDialogCellEditor(parent, getLabelProvider()) {
  
                         protected Object openDialogBox(Control cellEditorWindow) {
-                                Display display = Display.getDefault();
-                                Shell shell = new Shell(display);
+                                Shell shell = Display.getDefault().getActiveShell();
                                 TemplateEndpoint templateEndpoint=(TemplateEndpoint) object;
  
                                 ConfigureTemplateEndpointParameterDialog dialog = new ConfigureTemplateEndpointParameterDialog(

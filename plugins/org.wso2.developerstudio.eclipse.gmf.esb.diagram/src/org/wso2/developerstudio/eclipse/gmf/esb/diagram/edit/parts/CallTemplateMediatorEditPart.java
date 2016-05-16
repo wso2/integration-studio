@@ -509,13 +509,13 @@ public class CallTemplateMediatorEditPart extends FixedSizedAbstractMediator {
 
 			};
 			String defaultName = calculateDefaultName();
-			final InputDialog templateNameInput = new InputDialog(new Shell(), "Enter Target Template",
-					"Target Template", defaultName, validator) {
-				protected Control createDialogArea(Composite parent) {
-					Composite composite = (Composite) super.createDialogArea(parent);
-					return composite;
-				}
-			};
+            final InputDialog templateNameInput = new InputDialog(Display.getDefault().getActiveShell(),
+                    "Enter Target Template", "Target Template", defaultName, validator) {
+                protected Control createDialogArea(Composite parent) {
+                    Composite composite = (Composite) super.createDialogArea(parent);
+                    return composite;
+                }
+            };
 			int open = templateNameInput.open();
 			if (open == Dialog.OK) {
 				Display.getDefault().asyncExec(new Runnable() {

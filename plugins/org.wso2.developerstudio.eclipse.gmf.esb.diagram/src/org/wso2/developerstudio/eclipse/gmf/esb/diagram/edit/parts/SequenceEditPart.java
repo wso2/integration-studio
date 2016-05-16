@@ -694,24 +694,11 @@ public class SequenceEditPart extends FixedSizedAbstractMediator {
 				}
 
 			};
-			//String defaultName = "Sequence_" + (((EsbDiagram) diagram).getTest() + 1);
 			String defaultName = calculateDefaultName();
-			final InputDialog sequenceNameInput = new InputDialog(new Shell(), "Enter Sequence Name", "Sequence Name", //$NON-NLS-1$ //$NON-NLS-2$
+			final InputDialog sequenceNameInput = new InputDialog(new Shell(), "Enter Sequence Name", "Sequence Name",
 					defaultName, validator) {
 				protected Control createDialogArea(Composite parent) {
 					Composite composite = (Composite) super.createDialogArea(parent);
-					/*					recieveCheckBox = new Button(composite, SWT.CHECK);
-					 recieveCheckBox.setText("Use this sequence as a Recieving sequence.");
-					 recieveCheckBox.addSelectionListener(new SelectionListener() {
-
-					 public void widgetSelected(SelectionEvent arg0) {
-					 checked = recieveCheckBox.getSelection();
-					 }
-
-					 public void widgetDefaultSelected(SelectionEvent arg0) {
-
-					 }
-					 });*/
 					return composite;
 				}
 			};
@@ -722,27 +709,6 @@ public class SequenceEditPart extends FixedSizedAbstractMediator {
 					public void run() {
 						String sequenceName = sequenceNameInput.getValue();
 						TransactionalEditingDomain editingDomain = getEditingDomain();
-						/*						SetRequest setRequestSequenceCount = new SetRequest(editingDomain, diagram,
-						 EsbPackage.eINSTANCE.getEsbDiagram_Test(), ((EsbDiagram) diagram)
-						 .getTest() + 1);
-						 SetValueCommand operationSequenceCount = new SetValueCommand(
-						 setRequestSequenceCount) {
-
-						 public boolean canUndo() {
-						 return true;
-						 }
-
-						 public boolean canRedo() {
-						 return true;
-						 }
-						 };
-
-						 ICommandProxy commandSequenceCount = new ICommandProxy(
-						 operationSequenceCount);
-						 if (commandSequenceCount.canExecute()) {
-						 getEditDomain().getCommandStack().execute(commandSequenceCount);
-						 }*/
-		
 						SetRequest setRequest = new SetRequest(editingDomain, sequence, EsbPackage.eINSTANCE
 								.getSequence_Name(), sequenceName);
 						SetValueCommand operation = new SetValueCommand(setRequest) {
@@ -757,27 +723,6 @@ public class SequenceEditPart extends FixedSizedAbstractMediator {
 						};
 
 						getEditDomain().getCommandStack().execute(new ICommandProxy(operation));
-
-						/*						if (checked) {
-						 info.setRecieveSequence(true);
-						 info.setAssociatedProxy(((ProxyService) ((Node) EditorUtils.getProxy(
-						 sequenceEditPart.getParent()).getModel()).getElement())
-						 .getName());
-						 }*/
-
-						/*						IProject activeProject = getActiveProject();
-						 ESBProjectArtifact esbProjectArtifact = new ESBProjectArtifact();
-						 try {
-						 esbProjectArtifact.fromFile(activeProject.getFile("artifact.xml")
-						 .getLocation().toFile());
-						 esbProjectArtifact.addESBArtifact(createArtifact(sequenceName,
-						 getMavenGroupID(activeProject), "1.0.0",
-						 "src/main/synapse-config/sequences/" + sequenceName + ".xml",
-						 "synapse/sequence"));
-						 esbProjectArtifact.toFile();
-						 } catch (Exception e) {
-						 log.error("Error while updating Artifact.xml");
-						 }*/
 						try {
 							openWithSeparateEditor();
 						} catch (Exception e) {

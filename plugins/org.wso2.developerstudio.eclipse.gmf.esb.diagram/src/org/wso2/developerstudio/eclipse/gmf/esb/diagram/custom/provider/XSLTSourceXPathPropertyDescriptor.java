@@ -23,8 +23,7 @@ public class XSLTSourceXPathPropertyDescriptor extends PropertyDescriptor {
 		return new ExtendedDialogCellEditor(parent, getLabelProvider()) {
 			
 			protected Object openDialogBox(Control cellEditorWindow) {
-				Display display = Display.getDefault();
-				Shell shell = new Shell(display);
+			    Shell shell = Display.getDefault().getActiveShell();
 				XSLTMediator xsltMediator = (XSLTMediator) object;
 				NamespacedPropertyEditorDialog xsltMediatorConfigurationDialog = new NamespacedPropertyEditorDialog(shell, xsltMediator.getSourceXPath());
 				xsltMediatorConfigurationDialog.open();

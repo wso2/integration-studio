@@ -172,8 +172,7 @@ public class NamespacedPropertyEditorDialog extends Dialog {
 	 * @param args arguments.
 	 */
 	public static void main(String[] args) {
-		Display display = Display.getDefault();
-		Shell shell = new Shell(display);
+		Shell shell = Display.getDefault().getActiveShell();
 		NamespacedPropertyEditorDialog dialog = new NamespacedPropertyEditorDialog(shell, SWT.NULL,
 				EsbFactory.eINSTANCE.createNamespacedProperty());
 		dialog.open();

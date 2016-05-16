@@ -48,8 +48,7 @@ public class ConfigurePayloadFactoryMediatorAction extends ConfigureEsbNodeActio
 		EObject selectedObj = ((View) selectedEP.getModel()).getElement();
 		Assert.isTrue(selectedObj instanceof PayloadFactoryMediator, "Invalid selection.");
 
-		Display display = Display.getDefault();
-		Shell shell = new Shell(display);		
+		Shell shell = Display.getDefault().getActiveShell();		
 		ConfigurePayloadFactoryMediatorDialog configurationDialog = new ConfigurePayloadFactoryMediatorDialog(shell,  (PayloadFactoryMediator) selectedObj,
 				getEditingDomain());
 		configurationDialog.setBlockOnOpen(true);

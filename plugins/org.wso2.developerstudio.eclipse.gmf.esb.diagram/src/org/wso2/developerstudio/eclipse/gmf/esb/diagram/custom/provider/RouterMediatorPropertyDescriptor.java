@@ -43,8 +43,7 @@ public class RouterMediatorPropertyDescriptor extends PropertyDescriptor {
 		return new ExtendedDialogCellEditor(parent, getLabelProvider()) {
 			
 			protected Object openDialogBox(Control cellEditorWindow) {
-				Display display = Display.getDefault();
-				Shell shell = new Shell(display);
+			    Shell shell = Display.getDefault().getActiveShell();
 				RouterMediator routerMediator = (RouterMediator) object;
 				ConfigureRouterMediatorDialog configurationDialog = new ConfigureRouterMediatorDialog(shell, routerMediator, TransactionUtil.getEditingDomain(routerMediator));
 				configurationDialog.setBlockOnOpen(true);

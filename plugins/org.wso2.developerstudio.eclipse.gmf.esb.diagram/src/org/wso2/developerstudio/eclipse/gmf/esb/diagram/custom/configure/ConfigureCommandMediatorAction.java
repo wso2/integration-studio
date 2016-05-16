@@ -49,8 +49,7 @@ public class ConfigureCommandMediatorAction extends ConfigureEsbNodeAction{
 		EObject selectedObj = ((View) selectedEP.getModel()).getElement();
 		Assert.isTrue(selectedObj instanceof CommandMediator, "Invalid selection.");
 
-		Display display = Display.getDefault();
-		Shell shell = new Shell(display);		
+		Shell shell = Display.getDefault().getActiveShell();		
 		Dialog configurationDialog = new ConfigureCommandMediatorDialog(shell, (CommandMediator) selectedObj,
 				getEditingDomain());
 		configurationDialog.setBlockOnOpen(true);

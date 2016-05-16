@@ -103,8 +103,6 @@ public class ConfigureXSLTMediatorDialog extends Dialog {
 	public ConfigureXSLTMediatorDialog(Shell parentShell, XSLTMediator med,
 			int activeTab) {
 		super(parentShell);
-		//dialogShell = new Shell(parentShell, SWT.DIALOG_TRIM | SWT.APPLICATION_MODAL);
-		
 		this.mediator = med;
 		this.activeTab = activeTab;
 		domain = TransactionUtil.getEditingDomain(mediator);

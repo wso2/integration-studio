@@ -431,8 +431,8 @@ public class NamedEndpointEditPart extends ComplexFiguredAbstractEndpoint {
 			/*			String defaultName = "Default"
 			 + (((EsbDiagram) diagram).getTest() + 1);*/
 			String defaultName = "Default";
-			final InputDialog endpointNameInput = new InputDialog(new Shell(), "Enter Endpoint Name", "Endpoint Name",
-					defaultName, validator) {
+			final InputDialog endpointNameInput = new InputDialog(Display.getDefault().getActiveShell(),
+			        "Enter Endpoint Name", "Endpoint Name",defaultName, validator) {
 				protected Control createDialogArea(Composite parent) {
 					Composite composite = (Composite) super.createDialogArea(parent);
 					Label label = new Label(composite, SWT.WRAP);

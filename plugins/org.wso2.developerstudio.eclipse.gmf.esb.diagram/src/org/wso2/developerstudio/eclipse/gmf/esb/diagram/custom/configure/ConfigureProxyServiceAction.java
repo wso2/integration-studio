@@ -35,8 +35,7 @@ public class ConfigureProxyServiceAction extends ConfigureEsbNodeAction{
 		EObject selectedObj = ((View) selectedEP.getModel()).getElement();
 		Assert.isTrue(selectedObj instanceof ProxyService, "Invalid selection.");
 
-		Display display = Display.getDefault();
-		Shell shell = new Shell(display);		
+		Shell shell = Display.getDefault().getActiveShell();		
 		Dialog ConfigureProxyServiceDialog = new ConfigureProxyServiceDialog(shell, (ProxyService) selectedObj);
 		ConfigureProxyServiceDialog.setBlockOnOpen(true);
 		ConfigureProxyServiceDialog.open();

@@ -52,7 +52,7 @@ public class SameLevelRecordMappingConfigGenerator extends AbstractMappingConfig
         String outRoot = model.getOutputRootName();
         StringBuilder functionBuilder = new StringBuilder();
         String ouputVariableRootName = model.getVariablesArray().get(FIRST_ELEMENT_INDEX).getName();
-        functionBuilder.append(getMainFunctionDefinition(inRoot, outRoot,ouputVariableRootName));
+        functionBuilder.append(getMainFunctionDefinition(inRoot, outRoot, ouputVariableRootName));
         for (MappingOperation mappingOperation : mappingOperationList) {
             functionBuilder.append(getJSCommandForOperation(mappingOperation, model.getVariableTypeMap()));
         }
@@ -60,7 +60,8 @@ public class SameLevelRecordMappingConfigGenerator extends AbstractMappingConfig
         return functionBuilder.toString();
     }
 
-    private String getJSCommandForOperation(MappingOperation mappingOperation, Map<String, SchemaDataType> variableMap) {
+    private String getJSCommandForOperation(MappingOperation mappingOperation,
+            Map<String, SchemaDataType> variableMap) {
         StringBuilder operationBuilder = new StringBuilder();
         List<DMVariable> outputVariables = mappingOperation.getOutputVariables();
         if (outputVariables.size() > 1) {
@@ -79,8 +80,9 @@ public class SameLevelRecordMappingConfigGenerator extends AbstractMappingConfig
         operationBuilder.append(" = ");
         DMOperatorTransformer operatorTransformer = DMOperatorTransformerFactory
                 .getDMOperatorTransformer(mappingOperation.getOperation().getOperatorType());
-        operationBuilder.append(operatorTransformer.generateScriptForOperation(
-                SameLevelRecordMappingConfigGenerator.class, mappingOperation.getInputVariables(), variableMap, null));
+        operationBuilder
+                .append(operatorTransformer.generateScriptForOperation(SameLevelRecordMappingConfigGenerator.class,
+                        mappingOperation.getInputVariables(), variableMap, null, mappingOperation.getOperation()));
         operationBuilder.append("\n");
         return operationBuilder.toString();
     }

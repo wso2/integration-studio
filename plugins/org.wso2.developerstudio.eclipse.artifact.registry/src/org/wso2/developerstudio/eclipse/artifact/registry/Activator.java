@@ -17,33 +17,9 @@
 
 package org.wso2.developerstudio.eclipse.artifact.registry;
 
-import java.io.ByteArrayInputStream;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.lang.reflect.Field;
-import java.net.URL;
-import java.util.List;
 
-import org.eclipse.core.internal.plugins.PluginRegistry;
-import org.eclipse.core.internal.registry.ExtensionRegistry;
-import org.eclipse.core.runtime.ContributorFactoryOSGi;
-import org.eclipse.core.runtime.FileLocator;
-import org.eclipse.core.runtime.IConfigurationElement;
-import org.eclipse.core.runtime.IContributor;
-import org.eclipse.core.runtime.IExtensionPoint;
-import org.eclipse.core.runtime.IExtensionRegistry;
-import org.eclipse.core.runtime.Platform;
-import org.eclipse.core.runtime.RegistryFactory;
-import org.eclipse.core.runtime.spi.RegistryContributor;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
-import org.jdom2.Document;
-import org.jdom2.Element;
-import org.jdom2.JDOMException;
-import org.jdom2.input.SAXBuilder;
-import org.jdom2.output.XMLOutputter;
-import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleContext;
 
 
@@ -65,34 +41,6 @@ public class Activator extends AbstractUIPlugin {
 	
 	}
 	
-	
-	private void loadFromFile(File Xml){
-		
-		 try{
-			 Bundle bundle = plugin.getBundle();
-			 InputStream inputStream = bundle.getEntry("extention.xml").openStream();
-		//	 Bundle resourcebundle = Platform.getBundle("de.vogella.extensionpoint.contribution");
-			 String bundleIdStr = ""+bundle.getBundleId();
-			 IContributor contributor = new RegistryContributor(bundleIdStr, bundle.getSymbolicName(),
-						null, null);
-			 ExtensionRegistry extensionRegistry = (ExtensionRegistry) Platform.getExtensionRegistry();
-			 
-			 Field declaredField = ExtensionRegistry.class.getDeclaredField("masterToken");
-				declaredField.setAccessible(true);
-				Object masterToken = declaredField.get(extensionRegistry); 
-				 		 
-		 	boolean addContribution = extensionRegistry.addContribution(inputStream, contributor, false, bundle.getSymbolicName(), null, masterToken);
-					 			 
-			 System.out.println(addContribution);
-			 
-			 
-		 }catch(Exception ex){
-			 ex.printStackTrace();
-		 }
-			
-			
-		}
-	
 
 	/*
 	 * (non-Javadoc)
@@ -101,10 +49,6 @@ public class Activator extends AbstractUIPlugin {
 	public void start(BundleContext context) throws Exception {
 		super.start(context);
 		plugin = this;
-		loadFromFile(null);
-		
-	
-	 
 	}
 
 	/*

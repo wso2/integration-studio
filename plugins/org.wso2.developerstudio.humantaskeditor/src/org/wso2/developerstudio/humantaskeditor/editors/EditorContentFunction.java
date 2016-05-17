@@ -92,8 +92,12 @@ public class EditorContentFunction implements AbstractEditorFunctionExecutor {
                 } else if (!cbFile.exists()) {
                     return "File not found";
                 } else {
-                    file.delete();
-                    cbFile.delete();
+                    try {
+                        file.delete();
+                        cbFile.delete();
+                    } catch (SecurityException e) {
+                        logger.log(Level.FINE, HumantaskEditorConstants.ERROR_DELETING_CORRESPONDING_WSDL_FILE, e);
+                    }
                     return "Deleted Successfully";
                 }
             } else {

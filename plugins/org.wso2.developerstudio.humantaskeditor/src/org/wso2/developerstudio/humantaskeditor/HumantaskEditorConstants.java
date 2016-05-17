@@ -26,6 +26,8 @@ public class HumantaskEditorConstants {
 
     public static final String ERROR_FINDING_CORRESPONDING_WSDL_FILE = "Error Finding Corresponding WSDL File";
 
+    public static final String ERROR_DELETING_CORRESPONDING_WSDL_FILE = "Error Deleting Corresponding WSDL File";
+    
     public static final String UNDEFINED_LITERAL = "undefined";
 
     public static final String ERROR_INVALID_INPUT_MUST_BE_IFILE_EDITOR_INPUT = "Invalid Input: Must be IFileEditorInput";
@@ -81,6 +83,8 @@ public class HumantaskEditorConstants {
     public static final String TASK_NAME_CANNOT_HAVE_SPACES_MESSAGE = "Task name should'nt have spaces";
     
     public static final String TASK_NAME_CANNOT_BE_EMPTY_MESSAGE = "Task name cannot be empty";
+    
+    public static final String ENTER_A_VALID_FILENAME = "Enter a valid file name";
     
     public static final String WIZARD_PAGE_TEXT = "Human Task Artifact";
 

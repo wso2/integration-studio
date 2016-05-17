@@ -23,7 +23,7 @@
       provider-name="%providerName">
 
    <description url="http://wso2.com">
-      This feature will install plugins related WSO2 Business Process Service Support.
+      This feature will install plugins related WSO2 Business Process Server Human Task Editor. With this plugins you can create a deployable Human Task artifact using GUI tools.
    </description>
 
    <copyright url="%copyrightURL">

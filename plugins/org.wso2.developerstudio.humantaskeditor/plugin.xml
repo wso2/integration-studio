@@ -30,12 +30,13 @@
          point="org.eclipse.ui.newWizards">
       <category
             name="Human Task"
-            id="org.wso2.developerstudio.humantaskeditor">
+            id="org.wso2.developerstudio.humantaskeditor"
+            parentCategory="org.wso2.developerstudio.eclipse.capp.project">
       </category>
       <wizard
             name="Human Task File"
             icon="icons/humanTask.png"
-            category="org.wso2.developerstudio.humantaskeditor"
+            category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.humantaskeditor"
             class="org.wso2.developerstudio.humantaskeditor.wizards.HumanTaskWizard"
             id="org.wso2.developerstudio.humantaskeditor.wizards.HumanTaskWizard">
       </wizard>
@@ -43,7 +44,7 @@
             name="Human Task Project"
             icon="icons/humanTask.png"
             project="true"
-            category="org.wso2.developerstudio.humantaskeditor"
+            category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.humantaskeditor"
             class="org.wso2.developerstudio.humantaskeditor.wizards.HumanTaskProjectWizard"
             id="org.wso2.developerstudio.humantaskeditor.wizards.HumanTaskProjectWizard">
       </wizard>

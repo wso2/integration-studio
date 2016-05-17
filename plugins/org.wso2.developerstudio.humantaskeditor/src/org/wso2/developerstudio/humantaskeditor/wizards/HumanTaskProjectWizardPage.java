@@ -156,6 +156,10 @@ public class HumanTaskProjectWizardPage extends WizardPage {
          * return;
          * }
          */
+        if (fileName.matches("[A-Za-z][A-Za-z0-9]*.ht")) {
+            updateStatus(HumantaskEditorConstants.ENTER_A_VALID_FILENAME);
+            return;
+        }
         if (taskName.trim().isEmpty()) {
             updateStatus(HumantaskEditorConstants.TASK_NAME_CANNOT_BE_EMPTY_MESSAGE);
             return;

@@ -3,7 +3,12 @@
 <plugin>
    <extension
          point="org.eclipse.ui.newWizards">
-         <wizard name="BPEL Workflow" category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.eclipse.business.processes"
+         <category
+            name="BPEL"
+            id="org.wso2.developerstudio.bpeleditor"
+            parentCategory="org.wso2.developerstudio.eclipse.capp.project">
+      	</category>
+         <wizard name="BPEL Workflow" category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.bpeleditor"
 			class="org.wso2.developerstudio.eclipse.artifact.bpel.ui.wizard.BPELProjectCreationWizard"
 			wizardManifest="project_wizard.xml"
 			id="org.wso2.developerstudio.eclipse.artifact.newbpelartifact"
@@ -18,7 +23,7 @@
           nature="org.wso2.developerstudio.eclipse.bpel.project.nature"></provider>
    </extension>
    <extension point="org.eclipse.ui.newWizards">
- 		 <wizard name="Apply Security" category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.eclipse.business.processes"
+ 		 <wizard name="Apply Security" category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.bpeleditor"
  			class="org.wso2.developerstudio.eclipse.artifact.bpel.ui.wizard.BPELSecurityWizard"
  			wizardManifest="project_wizard.xml"
  			id="org.wso2.developerstudio.eclipse.artifact.applySecurity"

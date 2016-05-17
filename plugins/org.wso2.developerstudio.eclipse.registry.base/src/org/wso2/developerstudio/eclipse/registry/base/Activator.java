@@ -69,29 +69,6 @@ public class Activator extends AbstractUIPlugin {
 		plugin = this;
 //		 copy the jks file from the bundle to eclipse installation directory.This is required to enable remote registry connection from 
 //		 developer studio 
-		Platform.getBundle(PLUGIN_ID);
-		IDeveloperStudioLog log = Logger.getLog(PLUGIN_ID);
-		Bundle bundle = Platform.getBundle(PLUGIN_ID);
-		URL fileURL = bundle.getEntry(WSO2CARBON_JKS);
-		File file = null;
-		try {
-			URL resolvedFileURL = FileLocator.toFileURL(fileURL);
-			URI resolvedURI = new URI(resolvedFileURL.getProtocol(), resolvedFileURL.getPath(), null);
-			file = new File(resolvedURI);
-		} catch (URISyntaxException e1) {
-			log.error("Error occurres in copying the jks default file to eclipse configurations location");
-		} catch (Exception e1) {
-			log.error("Error occurres in copying the jks default file to eclipse configurations location");
-		}
-		String eclipseDirectory = System.getProperty(ECLIPSE_INSTALLTION_DIRECTORY);
-		URI uri = new URI(eclipseDirectory);
-		String localFilePath = uri.getPath();
-
-		File jksFile = new File(localFilePath + File.separator + CONFIGURATION + File.separator + WSO2CARBON_JKS);
-		if (!jksFile.exists()) {
-			jksFile.createNewFile();
-		}
-		FileUtils.copy(file, jksFile);
 	}
 
 	/*

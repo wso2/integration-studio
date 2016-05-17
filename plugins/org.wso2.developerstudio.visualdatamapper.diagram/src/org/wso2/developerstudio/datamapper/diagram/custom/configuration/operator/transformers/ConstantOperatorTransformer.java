@@ -26,6 +26,8 @@ import org.wso2.developerstudio.datamapper.diagram.custom.generator.SameLevelRec
 import org.wso2.developerstudio.datamapper.diagram.custom.model.DMOperation;
 import org.wso2.developerstudio.datamapper.diagram.custom.model.DMVariable;
 
+import static org.wso2.developerstudio.datamapper.diagram.custom.model.transformers.TransformerConstants.CONSTANT_VALUE_TAG;
+
 /**
  * This class extended from the {@link AbstractDMOperatorTransformer} abstract class and generate script for constant
  * operation
@@ -37,7 +39,7 @@ public class ConstantOperatorTransformer extends AbstractDMOperatorTransformer {
             Map<String, SchemaDataType> variableTypeMap, Stack<ForLoopBean> parentForLoopBeanStack,
             DMOperation operator) {
         StringBuilder operationBuilder = new StringBuilder();
-        String constantValue = (String) operator.getProperty("value");
+        String constantValue = (String) operator.getProperty(CONSTANT_VALUE_TAG);
         if (SameLevelRecordMappingConfigGenerator.class.equals(generatorClass)) {
             operationBuilder.append("'" + constantValue + "';");
         } else if (DifferentLevelArrayMappingConfigGenerator.class.equals(generatorClass)) {

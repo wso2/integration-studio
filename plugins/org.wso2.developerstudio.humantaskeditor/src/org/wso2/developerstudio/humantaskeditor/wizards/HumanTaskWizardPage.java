@@ -102,6 +102,7 @@ public class HumanTaskWizardPage extends WizardPage {
 
         fileText = new Text(container, SWT.BORDER | SWT.SINGLE);
         gd = new GridData(GridData.FILL_HORIZONTAL);
+        gd.horizontalSpan = 2;
         fileText.setLayoutData(gd);
         fileText.addModifyListener(new ModifyListener() {
             @Override
@@ -109,9 +110,12 @@ public class HumanTaskWizardPage extends WizardPage {
                 dialogChanged();
             }
         });
+        label = new Label(container, SWT.NULL);
+        label.setText("&Task name:");
         
         taskText = new Text(container, SWT.BORDER | SWT.SINGLE);
         gd = new GridData(GridData.FILL_HORIZONTAL);
+        gd.horizontalSpan = 2;
         taskText.setLayoutData(gd);
         taskText.addModifyListener(new ModifyListener() {
             @Override

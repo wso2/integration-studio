@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: org.wso2.developerstudio.appcloud.utils
 Bundle-SymbolicName: org.wso2.developerstudio.appcloud.utils;singleton:=true
-Bundle-Version: 4.1.0.qualifier
+Bundle-Version: 4.2.0.qualifier
 Bundle-Vendor: WSO2
 Bundle-Activator: org.wso2.developerstudio.appcloud.utils.Activator
 Require-Bundle: org.eclipse.ui;bundle-version="3.106.0",
@@ -23,6 +23,6 @@ Bundle-ClassPath: .,
  lib/gson-2.2.4.jar,
  lib/httpcore_4.3.3.wso2v1.jar
 Export-Package: org.wso2.developerstudio.appcloud.utils,
- org.wso2.developerstudio.appcloud.utils.authentication;version="4.1.0"
+ org.wso2.developerstudio.appcloud.utils.authentication;version="4.2.0"
 Import-Package: org.wso2.developerstudio.eclipse.logging.core;version="[4.1.0,5.0.0)"
 Plugin-Class: org.wso2.developerstudio.appcloud.utils.Activator

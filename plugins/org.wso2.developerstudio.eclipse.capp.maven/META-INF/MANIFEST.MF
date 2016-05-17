@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: CApp Maven
 Bundle-SymbolicName: org.wso2.developerstudio.eclipse.capp.maven;singleton:=true
-Bundle-Version: 4.1.0.qualifier
+Bundle-Version: 4.2.0.qualifier
 Bundle-Activator: org.wso2.developerstudio.eclipse.capp.maven.Activator
 Bundle-Vendor: WSO2
 Require-Bundle: org.eclipse.ui,
@@ -16,6 +16,6 @@ Import-Package: org.wso2.developerstudio.eclipse.capp.core.artifacts.manager;ver
  org.wso2.developerstudio.eclipse.maven.util;version="[4.1.0,5.0.0)",
  org.wso2.developerstudio.eclipse.samples.contributor;version="[4.1.0,5.0.0)",
  org.wso2.developerstudio.eclipse.utils.file;version="[4.1.0,5.0.0)"
-Export-Package: org.wso2.developerstudio.eclipse.capp.maven;version="4.1.0",
- org.wso2.developerstudio.eclipse.capp.maven.sample;version="4.1.0",
- org.wso2.developerstudio.eclipse.capp.maven.utils;version="4.1.0"
+Export-Package: org.wso2.developerstudio.eclipse.capp.maven;version="4.2.0",
+ org.wso2.developerstudio.eclipse.capp.maven.sample;version="4.2.0",
+ org.wso2.developerstudio.eclipse.capp.maven.utils;version="4.2.0"

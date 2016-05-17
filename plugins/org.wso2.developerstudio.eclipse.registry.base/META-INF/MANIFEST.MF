@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Base
 Bundle-SymbolicName: org.wso2.developerstudio.eclipse.registry.base;singleton:=true
-Bundle-Version: 4.1.0.qualifier
+Bundle-Version: 4.2.0.qualifier
 Bundle-Activator: org.wso2.developerstudio.eclipse.registry.base.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
@@ -11,22 +11,22 @@ Require-Bundle: org.eclipse.ui,
 Export-Package: org.wso2.carbon.authenticator.stub,
  org.wso2.carbon.registry.ws.client.registry,
  org.wso2.carbon.registry.ws.stub.xsd,
- org.wso2.developerstudio.eclipse.registry.base;version="4.1.0",
- org.wso2.developerstudio.eclipse.registry.base.core;version="4.1.0",
- org.wso2.developerstudio.eclipse.registry.base.editor.input;version="4.1.0",
- org.wso2.developerstudio.eclipse.registry.base.heartbeat;version="4.1.0",
- org.wso2.developerstudio.eclipse.registry.base.interfaces;version="4.1.0",
- org.wso2.developerstudio.eclipse.registry.base.logger;version="4.1.0",
- org.wso2.developerstudio.eclipse.registry.base.managers;version="4.1.0",
- org.wso2.developerstudio.eclipse.registry.base.model;version="4.1.0",
- org.wso2.developerstudio.eclipse.registry.base.persistent;version="4.1.0",
- org.wso2.developerstudio.eclipse.registry.base.ui.controls;version="4.1.0",
- org.wso2.developerstudio.eclipse.registry.base.ui.dialog;version="4.1.0",
- org.wso2.developerstudio.eclipse.registry.base.ui.editor;version="4.1.0",
- org.wso2.developerstudio.eclipse.registry.base.ui.util;version="4.1.0",
- org.wso2.developerstudio.eclipse.registry.base.usermgt.model;version="4.1.0",
- org.wso2.developerstudio.eclipse.registry.base.usermgt.ui.controls;version="4.1.0",
- org.wso2.developerstudio.eclipse.registry.base.util;version="4.1.0"
+ org.wso2.developerstudio.eclipse.registry.base;version="4.2.0",
+ org.wso2.developerstudio.eclipse.registry.base.core;version="4.2.0",
+ org.wso2.developerstudio.eclipse.registry.base.editor.input;version="4.2.0",
+ org.wso2.developerstudio.eclipse.registry.base.heartbeat;version="4.2.0",
+ org.wso2.developerstudio.eclipse.registry.base.interfaces;version="4.2.0",
+ org.wso2.developerstudio.eclipse.registry.base.logger;version="4.2.0",
+ org.wso2.developerstudio.eclipse.registry.base.managers;version="4.2.0",
+ org.wso2.developerstudio.eclipse.registry.base.model;version="4.2.0",
+ org.wso2.developerstudio.eclipse.registry.base.persistent;version="4.2.0",
+ org.wso2.developerstudio.eclipse.registry.base.ui.controls;version="4.2.0",
+ org.wso2.developerstudio.eclipse.registry.base.ui.dialog;version="4.2.0",
+ org.wso2.developerstudio.eclipse.registry.base.ui.editor;version="4.2.0",
+ org.wso2.developerstudio.eclipse.registry.base.ui.util;version="4.2.0",
+ org.wso2.developerstudio.eclipse.registry.base.usermgt.model;version="4.2.0",
+ org.wso2.developerstudio.eclipse.registry.base.usermgt.ui.controls;version="4.2.0",
+ org.wso2.developerstudio.eclipse.registry.base.util;version="4.2.0"
 Import-Package: org.eclipse.core.filesystem,
  org.eclipse.core.resources,
  org.eclipse.emf.common.ui.celleditor,

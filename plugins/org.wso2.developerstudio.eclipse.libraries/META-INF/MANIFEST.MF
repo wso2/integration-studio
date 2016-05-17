@@ -2,12 +2,18 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Libraries
 Bundle-SymbolicName: org.wso2.developerstudio.eclipse.libraries;singleton:=true
-Bundle-Version: 4.1.0.qualifier
+Bundle-Version: 4.2.0.qualifier
 Bundle-Vendor: WSO2
 Bundle-ActivationPolicy: lazy
 Export-Package: com.damnhandy.uri.template;version="1.1.7.wso2v1",
- com.jayway.jsonpath;uses:="com.jayway.jsonpath.internal,com.jayway.jsonpath.spi,new com.jayway.jsonpath",
- com.sun.phobos.script.javascript;uses:="com.sun.phobos.script.util,org.mozilla.javascript,javax.script",
+ com.jayway.jsonpath;
+  uses:="com.jayway.jsonpath.internal,
+   com.jayway.jsonpath.spi,
+   new com.jayway.jsonpath",
+ com.sun.phobos.script.javascript;
+  uses:="com.sun.phobos.script.util,
+   org.mozilla.javascript,
+   javax.script",
  groovy.lang;
   uses:="groovyjarjarasm.asm,
    new groovy.lang,
@@ -19,10 +25,19 @@ Export-Package: com.damnhandy.uri.template;version="1.1.7.wso2v1",
    junit.framework,
    org.codehaus.groovy.ast,
    org.codehaus.groovy.util",
- javax.wsdl;version="1.6.2.wso2v1";uses:="javax.wsdl.extensions,org.w3c.dom,javax.xml.namespace",
- javax.wsdl.extensions;version="1.6.2.wso2v1";uses:="org.w3c.dom,javax.wsdl,javax.xml.namespace",
+ javax.wsdl;version="1.6.2.wso2v1";
+  uses:="javax.wsdl.extensions,
+   org.w3c.dom,
+   javax.xml.namespace",
+ javax.wsdl.extensions;version="1.6.2.wso2v1";
+  uses:="org.w3c.dom,
+   javax.wsdl,
+   javax.xml.namespace",
  javax.wsdl.extensions.schema;version="1.6.2.wso2v1";uses:="javax.wsdl.extensions,org.w3c.dom",
- javax.wsdl.factory;version="1.6.2.wso2v1";uses:="javax.wsdl.xml,javax.wsdl.extensions,javax.wsdl",
+ javax.wsdl.factory;version="1.6.2.wso2v1";
+  uses:="javax.wsdl.xml,
+   javax.wsdl.extensions,
+   javax.wsdl",
  javax.wsdl.xml;version="1.6.2.wso2v1";
   uses:="javax.wsdl.extensions,
    org.w3c.dom,
@@ -33,7 +48,10 @@ Export-Package: com.damnhandy.uri.template;version="1.1.7.wso2v1",
    javax.xml.transform,
    javax.xml.stream.events,
    javax.xml.namespace",
- net.lingala.zip4j.core;uses:="net.lingala.zip4j.model,net.lingala.zip4j.io,net.lingala.zip4j.progress",
+ net.lingala.zip4j.core;
+  uses:="net.lingala.zip4j.model,
+   net.lingala.zip4j.io,
+   net.lingala.zip4j.progress",
  net.lingala.zip4j.exception,
  net.sf.saxon.s9api,
  org.apache.abdera;version="1.0.0.wso2v3";
@@ -183,7 +201,10 @@ Export-Package: com.damnhandy.uri.template;version="1.1.7.wso2v1",
    org.apache.abdera.i18n.iri,
    org.apache.abdera.model,
    org.apache.abdera.i18n.templates",
- org.apache.abdera.protocol.server.multipart;version="1.0.0.wso2v3";uses:="org.apache.abdera.protocol.server.impl,org.apache.abdera.protocol.server,org.apache.abdera.model",
+ org.apache.abdera.protocol.server.multipart;version="1.0.0.wso2v3";
+  uses:="org.apache.abdera.protocol.server.impl,
+   org.apache.abdera.protocol.server,
+   org.apache.abdera.model",
  org.apache.abdera.protocol.server.processors;version="1.0.0.wso2v3";
   uses:="org.apache.abdera.protocol.server,
    org.apache.abdera,
@@ -270,8 +291,14 @@ Export-Package: com.damnhandy.uri.template;version="1.1.7.wso2v1",
  org.apache.commons.lang.reflect;version="2.6.0.wso2v1",
  org.apache.commons.lang.text;version="2.6.0.wso2v1",
  org.apache.commons.lang.time;version="2.6.0.wso2v1",
- org.apache.http;version="4.1.0.wso2v1";uses:="org.apache.http.protocol,org.apache.http.params,org.apache.http.util",
- org.apache.http.auth;version="4.1.2";uses:="org.apache.http.protocol,org.apache.http.params,org.apache.http",
+ org.apache.http;version="4.1.0.wso2v1";
+  uses:="org.apache.http.protocol,
+   org.apache.http.params,
+   org.apache.http.util",
+ org.apache.http.auth;version="4.1.2";
+  uses:="org.apache.http.protocol,
+   org.apache.http.params,
+   org.apache.http",
  org.apache.http.auth.params;version="4.1.2";uses:="org.apache.http.params",
  org.apache.http.client;version="4.1.2";
   uses:="org.apache.http.conn,
@@ -282,7 +309,10 @@ Export-Package: com.damnhandy.uri.template;version="1.1.7.wso2v1",
    org.apache.http.auth,
    org.apache.http",
  org.apache.http.client.entity;version="4.1.2";uses:="org.apache.http.entity,org.apache.http",
- org.apache.http.client.methods;version="4.1.2";uses:="org.apache.http.message,org.apache.http.conn,org.apache.http",
+ org.apache.http.client.methods;version="4.1.2";
+  uses:="org.apache.http.message,
+   org.apache.http.conn,
+   org.apache.http",
  org.apache.http.client.protocol;version="4.1.2";
   uses:="org.apache.http.cookie,
    org.apache.http.protocol,
@@ -298,7 +328,10 @@ Export-Package: com.damnhandy.uri.template;version="1.1.7.wso2v1",
    org.apache.http.conn.routing,
    org.apache.http",
  org.apache.http.conn.scheme;version="4.1.2";uses:="org.apache.http.params,org.apache.http",
- org.apache.http.conn.ssl;version="4.1.2";uses:="org.apache.http.conn.scheme,org.apache.http.params,javax.net.ssl",
+ org.apache.http.conn.ssl;version="4.1.2";
+  uses:="org.apache.http.conn.scheme,
+   org.apache.http.params,
+   javax.net.ssl",
  org.apache.http.entity;version="4.3.3.wso2v1";uses:="org.apache.http",
  org.apache.http.impl.auth;version="4.1.2";
   uses:="org.apache.http.protocol,
@@ -342,7 +375,10 @@ Export-Package: com.damnhandy.uri.template;version="1.1.7.wso2v1",
    org.apache.http.impl.conn,
    org.apache.http.conn.routing,
    org.apache.http.conn",
- org.apache.http.message;version="4.1.0.wso2v1";uses:="org.apache.http.params,org.apache.http.util,org.apache.http",
+ org.apache.http.message;version="4.1.0.wso2v1";
+  uses:="org.apache.http.params,
+   org.apache.http.util,
+   org.apache.http",
  org.apache.http.protocol;version="4.1.4";uses:="org.apache.http.params,org.apache.http",
  org.apache.http.util;version="4.1.4";uses:="org.apache.http",
  org.apache.neethi;version="2.0.4.wso2v4";
@@ -509,11 +545,20 @@ Export-Package: com.damnhandy.uri.template;version="1.1.7.wso2v1",
    org.codehaus.jackson.map,
    org.codehaus.jackson,
    org.codehaus.jackson.type",
- org.codehaus.jackson.node;version="1.8.10";uses:="org.codehaus.jackson.map,org.codehaus.jackson.impl,org.codehaus.jackson",
- org.codehaus.jackson.schema;version="1.8.10";uses:="org.codehaus.jackson.node,org.codehaus.jackson.map,org.codehaus.jackson",
+ org.codehaus.jackson.node;version="1.8.10";
+  uses:="org.codehaus.jackson.map,
+   org.codehaus.jackson.impl,
+   org.codehaus.jackson",
+ org.codehaus.jackson.schema;version="1.8.10";
+  uses:="org.codehaus.jackson.node,
+   org.codehaus.jackson.map,
+   org.codehaus.jackson",
  org.codehaus.jackson.sym;version="1.8.10",
  org.codehaus.jackson.type;version="1.8.10",
- org.codehaus.jackson.util;version="1.8.10";uses:="org.codehaus.jackson.io,org.codehaus.jackson.impl,org.codehaus.jackson",
+ org.codehaus.jackson.util;version="1.8.10";
+  uses:="org.codehaus.jackson.io,
+   org.codehaus.jackson.impl,
+   org.codehaus.jackson",
  org.codehaus.jettison;version="1.3.4.wso2v1";
   uses:="org.codehaus.jettison.util,
    javax.xml.stream,
@@ -538,7 +583,10 @@ Export-Package: com.damnhandy.uri.template;version="1.1.7.wso2v1",
  org.codehaus.jettison.util;version="1.3.4.wso2v1",
  org.milyn.scribe.register;version="1.4.0.wso2v1";uses:="new org.milyn.scribe.register",
  org.osgi.framework;version="1.3.0",
- org.quartz;version="2.1.1";uses:="org.quartz.utils,org.quartz.spi,org.quartz.impl.matchers",
+ org.quartz;version="2.1.1";
+  uses:="org.quartz.utils,
+   org.quartz.spi,
+   org.quartz.impl.matchers",
  org.springframework.beans.factory.support;version="3.2.9.wso2v1";
   uses:="org.apache.commons.logging,
    org.springframework.util,
@@ -677,7 +725,10 @@ Export-Package: com.damnhandy.uri.template;version="1.1.7.wso2v1",
    org.osgi.framework,
    org.wso2.carbon.user.core.config.multitenancy,
    org.wso2.carbon.user.core.system",
- org.wso2.carbon.user.core.config;version="4.2.0";uses:="org.wso2.carbon.user.api,org.osgi.framework,org.apache.axiom.om",
+ org.wso2.carbon.user.core.config;version="4.2.0";
+  uses:="org.wso2.carbon.user.api,
+   org.osgi.framework,
+   org.apache.axiom.om",
  org.wso2.carbon.user.core.config.multitenancy;version="4.2.0";uses:="org.wso2.carbon.user.api,org.wso2.carbon.user.core.tenant",
  org.wso2.carbon.user.core.listener;version="4.2.0";uses:="org.wso2.carbon.user.api,org.wso2.carbon.user.core",
  org.wso2.carbon.user.core.profile;version="4.2.0";uses:="org.wso2.carbon.user.api,javax.sql",
@@ -716,7 +767,7 @@ Export-Package: com.damnhandy.uri.template;version="1.1.7.wso2v1",
    org.apache.axis2.context,
    javax.servlet.http,
    javax.xml.namespace",
- org.wso2.developerstudio.eclipse.libraries.utils;version="4.1.0";
+ org.wso2.developerstudio.eclipse.libraries.utils;version="4.2.0";
   uses:="org.apache.woden.wsdl20,
    org.eclipse.jface.resource,
    org.wso2.developerstudio.eclipse.utils.ui,

@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Registry Artifact Wizard
 Bundle-SymbolicName: org.wso2.developerstudio.eclipse.artifact.registry;singleton:=true
-Bundle-Version: 4.1.0.qualifier
+Bundle-Version: 4.2.0.qualifier
 Bundle-Activator: org.wso2.developerstudio.eclipse.artifact.registry.Activator
 Bundle-Vendor: WSO2 Inc,
 Require-Bundle: org.eclipse.ui,
@@ -56,8 +56,8 @@ Import-Package: org.eclipse.core.internal.plugins,
  org.wso2.developerstudio.eclipse.utils.ui;version="[4.1.0,5.0.0)",
  org.wso2.developerstudio.eclipse.utils.wst;version="[4.1.0,5.0.0)",
  org.wso2.registry.checkin
-Export-Package: org.wso2.developerstudio.eclipse.artifact.registry.filter;version="4.1.0",
- org.wso2.developerstudio.eclipse.artifact.registry.utils;version="4.1.0"
+Export-Package: org.wso2.developerstudio.eclipse.artifact.registry.filter;version="4.2.0",
+ org.wso2.developerstudio.eclipse.artifact.registry.utils;version="4.2.0"
 Bundle-ClassPath: lib/jdom-2.0.6-contrib.jar,
  lib/jdom-2.0.6.jar,
  .

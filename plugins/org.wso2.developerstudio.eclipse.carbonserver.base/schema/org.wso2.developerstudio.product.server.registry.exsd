@@ -5,7 +5,7 @@
       <appinfo>
          <meta.schema plugin="org.wso2.developerstudio.eclipse.carbonserver.base" id="org.wso2.developerstudio.product.server.registry" name="Register Product Servers"/>
       </appinfo>
-          <documentation>
+      <documentation>
          [Enter description of this extension point.]
       </documentation>
    </annotation>
@@ -18,7 +18,7 @@
       </annotation>
       <complexType>
          <sequence>
-            <element ref="product.server"/>
+            <element ref="product.server" minOccurs="1" maxOccurs="unbounded"/>
          </sequence>
          <attribute name="point" type="string" use="required">
             <annotation>

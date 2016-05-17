@@ -156,10 +156,6 @@ public class HumanTaskProjectWizardPage extends WizardPage {
          * return;
          * }
          */
-        if (fileName.matches("[A-Za-z][A-Za-z0-9]*.ht")) {
-            updateStatus(HumantaskEditorConstants.ENTER_A_VALID_FILENAME);
-            return;
-        }
         if (taskName.trim().isEmpty()) {
             updateStatus(HumantaskEditorConstants.TASK_NAME_CANNOT_BE_EMPTY_MESSAGE);
             return;
@@ -180,11 +176,15 @@ public class HumanTaskProjectWizardPage extends WizardPage {
             updateStatus(HumantaskEditorConstants.FILE_NAME_MUST_BE_VALID_MESSAGE);
             return;
         }
-
         if (!fileName.contains(".")) {
             updateStatus(HumantaskEditorConstants.FILE_EXTENSION_MUST_BE_HT_MESSAGE);
             return;
         }
+        if (!fileName.matches("[A-Za-z][A-Za-z0-9]*.ht")) {
+            updateStatus(HumantaskEditorConstants.ENTER_A_VALID_FILENAME);
+            return;
+        }
+        
 
         int dotLoc = fileName.lastIndexOf('.');
         if (dotLoc != -1) {

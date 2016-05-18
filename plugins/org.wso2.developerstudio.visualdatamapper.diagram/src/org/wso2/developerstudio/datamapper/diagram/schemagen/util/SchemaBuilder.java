@@ -72,10 +72,16 @@ public class SchemaBuilder {
 		Set<Entry<String, JsonElement>> entrySet = jsonObject.entrySet();
 		if (entrySet.size() == 1) {
 			for (Entry<String, JsonElement> entry : entrySet) {
-				title = entry.getKey();
 				JsonElement element = entry.getValue();
-				firstObject = element.getAsJsonObject();
-				break;
+				if(element instanceof JsonObject){
+					title = entry.getKey();
+					firstObject = element.getAsJsonObject();
+					break;
+				}else{
+					//If the json has a single parameter DEVTOOLESB-224
+					firstObject = jsonObject;
+				}
+				
 			}
 		} else {
 			firstObject = jsonObject;

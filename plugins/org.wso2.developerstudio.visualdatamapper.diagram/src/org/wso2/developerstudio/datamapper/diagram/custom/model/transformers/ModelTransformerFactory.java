@@ -30,6 +30,8 @@ public class ModelTransformerFactory {
             return new ToUpperCaseModelTransformer();
         case LOWERCASE:
             return new ToLowerCaseModelTransformer();
+        case CONSTANT:
+            return new ConstantModelTransformer();
         default:
             throw new IllegalArgumentException("Unable to find transformer to operator type : " + type);
         }

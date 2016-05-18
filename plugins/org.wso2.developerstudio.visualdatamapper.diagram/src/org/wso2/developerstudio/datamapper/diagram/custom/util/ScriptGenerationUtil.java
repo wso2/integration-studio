@@ -36,11 +36,19 @@ public class ScriptGenerationUtil {
         String prettyVariableName = "";
         String variableName = "";
         if (DMVariableType.INTERMEDIATE.equals(variable.getType())) {
-            if (parentForLoopBeanStack.size() > 0) {
-                prettyVariableName = variable.getName() + "[";
-                prettyVariableName += (getForLoopIteratorNames(parentForLoopBeanStack)) + "]";
+            variableName=variable.getName();
+            if (variableName.startsWith("{")) {
+                prettyVariableName = variableName.substring(1, variableName.length()-1);
+                if(SchemaDataType.STRING.equals(variable.getSchemaVariableType())){
+                    prettyVariableName = "'"+prettyVariableName+"'";
+                }
             } else {
-                prettyVariableName = variable.getName()+"[0]";
+                if (parentForLoopBeanStack.size() > 0) {
+                    prettyVariableName = variable.getName() + "[";
+                    prettyVariableName += (getForLoopIteratorNames(parentForLoopBeanStack)) + "]";
+                } else {
+                    prettyVariableName = variable.getName() + "[0]";
+                }
             }
         } else if (DMVariableType.OUTPUT.equals(variable.getType())
                 && getArrayElementCount(variable.getName(), variableTypeMap) == 1) {

@@ -60,16 +60,6 @@
 			<url>http://maven.wso2.org/nexus/content/groups/wso2-public/</url>
 			<layout>default</layout>
 		</repository>
-		<repository>
-			<releases>
-				<enabled>true</enabled>
-				<updatePolicy>daily</updatePolicy>
-				<checksumPolicy>ignore</checksumPolicy>
-			</releases>
-			<id>DevS-Deps-p2-Repository</id>
-			<url>http://builder1.us1.wso2.org/~developerstudio/developer-studio-kernel/dependencies/p2/</url>
-			<layout>p2</layout>
-		</repository>
    		 <repository>
             <releases>
                 <enabled>true</enabled>
@@ -77,7 +67,7 @@
                 <checksumPolicy>ignore</checksumPolicy>
             </releases>
             <id>DevS-Kernel-p2-releases-Repository</id>
-            <url>http://builder1.us1.wso2.org/~developerstudio/developer-studio-kernel/4.1.0/kernel/releases/</url>
+            <url>http://product-dist.wso2.com/p2/developer-studio-kernel/4.1.0/kernel/releases/</url>
             <layout>p2</layout>
         </repository>
 		<repository>

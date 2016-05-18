@@ -29,6 +29,7 @@ import org.apache.commons.lang.StringUtils;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
+import com.google.gson.JsonNull;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.google.gson.JsonPrimitive;
@@ -212,7 +213,12 @@ public class SchemaBuilder {
 				}
 
 			} else {
-				addPrimitiveToParent(parent, id, element.getAsString(), propertyValueType, elementIdentifierMap);
+				if(element instanceof JsonNull){
+					//Fixing DEVTOOLESB-225
+					addPrimitiveToParent(parent, id, null, propertyValueType, elementIdentifierMap);
+				}else{
+					addPrimitiveToParent(parent, id, element.getAsString(), propertyValueType, elementIdentifierMap);
+				}
 			}
 		}
 		return elementIdentifierValue;

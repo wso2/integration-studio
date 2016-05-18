@@ -44,6 +44,7 @@ import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.FormAttachment;
 import org.eclipse.swt.layout.FormData;
 import org.eclipse.swt.layout.FormLayout;
+import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
@@ -201,17 +202,25 @@ public class SchemaKeyEditorDialog extends Dialog {
 		fl_grpPropertyKey.marginHeight = 10;
 		fl_grpPropertyKey.marginWidth = 10;
 		grpPropertyKey.setLayout(fl_grpPropertyKey);
+		
+		GridData gridDataCombo = new GridData();
+		gridDataCombo.grabExcessHorizontalSpace = true;
+		gridDataCombo.horizontalAlignment = GridData.FILL;
 
 		// initialize components
 		lblSchemaTypeLabel = new Label(grpPropertyKey, SWT.NORMAL);
-		schemaTypeCombo = new Combo(grpPropertyKey, SWT.DROP_DOWN | SWT.READ_ONLY);
+		schemaTypeCombo = new Combo(grpPropertyKey, SWT.DROP_DOWN | SWT.READ_ONLY | SWT.BORDER);
 		lblConnector = new Label(grpPropertyKey, SWT.NORMAL);
 		lblConnectorOperation = new Label(grpPropertyKey, SWT.NORMAL);
-		cmbConnector = new Combo(grpPropertyKey, SWT.DROP_DOWN | SWT.READ_ONLY);
-		cmbConnectorOperation = new Combo(grpPropertyKey, SWT.DROP_DOWN | SWT.READ_ONLY);
+		cmbConnector = new Combo(grpPropertyKey, SWT.DROP_DOWN | SWT.READ_ONLY | SWT.BORDER);
+		cmbConnectorOperation = new Combo(grpPropertyKey, SWT.DROP_DOWN | SWT.READ_ONLY | SWT.BORDER);
 		link = new Link(grpPropertyKey, SWT.NONE);
 		schemaKeyTextField = new Text(grpPropertyKey, SWT.BORDER);
 
+		schemaTypeCombo.setLayoutData(gridDataCombo);
+		cmbConnector.setLayoutData(gridDataCombo);
+		cmbConnectorOperation.setLayoutData(gridDataCombo);
+		
 		FormData lableLayoutData = new FormData();
 
 		lblSchemaTypeLabel.setText(SELECT_SCHEMA_SOURCE);

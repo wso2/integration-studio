@@ -16,11 +16,13 @@ import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.dialogs.Dialog;
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PlatformUI;
+import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.gmf.esb.CallTemplateParameter;
 import org.wso2.developerstudio.eclipse.gmf.esb.CloneMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.CloneMediatorTargetOutputConnector;
@@ -32,12 +34,16 @@ import org.wso2.developerstudio.eclipse.gmf.esb.LogLevel;
 import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.RuleOptionType;
 import org.wso2.developerstudio.eclipse.gmf.esb.SwitchMediator;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.Activator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.cloudconnector.CloudConnectorDirectoryTraverser;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.configure.ui.AddCaseBranchDialog;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.configure.ui.AddTargetBranchDialog;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
+import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 
 public class LoadParametersFromSchemaAction extends ConfigureEsbNodeAction {
+
+    private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
     public LoadParametersFromSchemaAction(IWorkbenchPart part) {
         super(part);
@@ -61,6 +67,14 @@ public class LoadParametersFromSchemaAction extends ConfigureEsbNodeAction {
                                                                           CloudConnectorDirectoryTraverser.getInstance();
         Map<String, String> parameterDefaultValuesMap =
                                                       cloudConnectorDirectoryTraverser.getInputDefaultParameterValuesMap(cloudConnector.getOperationName());
+        if (parameterDefaultValuesMap == null) {
+            log.warn("Default values for connector operation not found");
+            MessageDialog.openWarning(PlatformUI.getWorkbench().getDisplay().getActiveShell(),
+                                      "Connector default values loading error",
+                                      "Default values for connector operation parameters could not be found");
+            return;
+        }
+
         EList<CallTemplateParameter> cloudConnectorParameters =
                                                               cloudConnector.getConnectorParameters();
 

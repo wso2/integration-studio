@@ -23,8 +23,7 @@ public class FilterSourcePropertyDescriptor extends PropertyDescriptor {
 		return new ExtendedDialogCellEditor(parent, getLabelProvider()) {
 			
 			protected Object openDialogBox(Control cellEditorWindow) {
-				Display display = Display.getDefault();
-				Shell shell = new Shell(display);
+			    Shell shell = Display.getDefault().getActiveShell();
 				FilterMediator filterMediator = (FilterMediator) object;
 				NamespacedPropertyEditorDialog filterMediatorConfigurationDialog = new NamespacedPropertyEditorDialog(shell, filterMediator.getSource());
 				filterMediatorConfigurationDialog.open();

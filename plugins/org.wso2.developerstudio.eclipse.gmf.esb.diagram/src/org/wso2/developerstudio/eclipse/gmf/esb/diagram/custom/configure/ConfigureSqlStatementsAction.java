@@ -48,8 +48,7 @@ public class ConfigureSqlStatementsAction extends ConfigureEsbNodeAction{
 		EObject selectedObj = ((View) selectedEP.getModel()).getElement();
 		Assert.isTrue(selectedObj instanceof AbstractSqlExecutorMediator, "Invalid selection.");
 
-		Display display = Display.getDefault();
-		Shell shell = new Shell(display);		
+		Shell shell = Display.getDefault().getActiveShell();		
 		ConfigureSqlStatementsDialog configurationDialog = new ConfigureSqlStatementsDialog(shell,  (AbstractSqlExecutorMediator) selectedObj,
 				getEditingDomain());
 		configurationDialog.setBlockOnOpen(true);

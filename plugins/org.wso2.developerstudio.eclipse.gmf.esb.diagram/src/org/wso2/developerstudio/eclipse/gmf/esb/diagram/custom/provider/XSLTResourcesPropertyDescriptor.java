@@ -23,8 +23,7 @@ public class XSLTResourcesPropertyDescriptor extends PropertyDescriptor {
 		return new ExtendedDialogCellEditor(parent, getLabelProvider()) {
 			
 			protected Object openDialogBox(Control cellEditorWindow) {
-				Display display = Display.getDefault();
-				Shell shell = new Shell(display);
+			    Shell shell = Display.getDefault().getActiveShell();
 				XSLTMediator xsltMediator = (XSLTMediator) object;
 				ConfigureXSLTMediatorDialog configDiag = new ConfigureXSLTMediatorDialog(
 						shell, xsltMediator,

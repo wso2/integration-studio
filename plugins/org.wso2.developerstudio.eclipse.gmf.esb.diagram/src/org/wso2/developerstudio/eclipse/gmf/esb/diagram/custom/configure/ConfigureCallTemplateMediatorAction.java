@@ -48,8 +48,7 @@ public class ConfigureCallTemplateMediatorAction extends ConfigureEsbNodeAction 
 		EObject selectedObj = ((View) selectedEP.getModel()).getElement();
 		Assert.isTrue(selectedObj instanceof CallTemplateMediator, "Invalid selection.");
 
-		Display display = Display.getDefault();
-		Shell shell = new Shell(display);
+		Shell shell = Display.getDefault().getActiveShell();
 		Dialog configurationDialog = new CallTemplateParamDialog(shell,
 				(CallTemplateMediator) selectedObj, getEditingDomain());
 		configurationDialog.setBlockOnOpen(true);

@@ -38,8 +38,7 @@ public class EJBMediatorMethodArgumentConfigurationPropertyDescriptor extends Pr
 		return new ExtendedDialogCellEditor(parent, getLabelProvider()) {
 
 			protected Object openDialogBox(Control cellEditorWindow) {
-				Display display = Display.getDefault();
-				Shell shell = new Shell(display);
+			    Shell shell = Display.getDefault().getActiveShell();
 				EJBMediator ejbMediator = (EJBMediator) object;
 				ConfigureEJBMediatorMethodArgumentsDialog ejbMediatorConfigurationDialog = new ConfigureEJBMediatorMethodArgumentsDialog(
 						shell, ejbMediator, TransactionUtil.getEditingDomain(ejbMediator));

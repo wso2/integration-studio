@@ -58,8 +58,7 @@ public class ConfigureLogMediatorAction extends ConfigureEsbNodeAction {
 		EObject selectedObj = ((View) selectedEP.getModel()).getElement();
 		Assert.isTrue(selectedObj instanceof LogMediator, "Invalid selection.");
 
-		Display display = Display.getDefault();
-		Shell shell = new Shell(display);		
+		Shell shell = Display.getDefault().getActiveShell();		
 		Dialog logMediatorConfigurationDialog = new ConfigureLogMediatorDialog(shell, (LogMediator) selectedObj,
 				getEditingDomain());
 		logMediatorConfigurationDialog.setBlockOnOpen(true);

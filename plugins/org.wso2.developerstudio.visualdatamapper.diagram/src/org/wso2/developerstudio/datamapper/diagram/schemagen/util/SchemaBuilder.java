@@ -29,6 +29,7 @@ import org.apache.commons.lang.StringUtils;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
+import com.google.gson.JsonNull;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.google.gson.JsonPrimitive;
@@ -72,10 +73,16 @@ public class SchemaBuilder {
 		Set<Entry<String, JsonElement>> entrySet = jsonObject.entrySet();
 		if (entrySet.size() == 1) {
 			for (Entry<String, JsonElement> entry : entrySet) {
-				title = entry.getKey();
 				JsonElement element = entry.getValue();
-				firstObject = element.getAsJsonObject();
-				break;
+				if(element instanceof JsonObject){
+					title = entry.getKey();
+					firstObject = element.getAsJsonObject();
+					break;
+				}else{
+					//If the json has a single parameter DEVTOOLESB-224
+					firstObject = jsonObject;
+				}
+				
 			}
 		} else {
 			firstObject = jsonObject;
@@ -83,32 +90,38 @@ public class SchemaBuilder {
 
 		root = new JsonSchema();
 		root.setDolarSchema(HTTP_JSON_SCHEMA_ORG_DRAFT_04_SCHEMA);
-		root.setTitle(title);
 		root.setId(HTTP_WSO2JSONSCHEMA_ORG);
 		root.setType(OBJECT);
 		createSchemaForObject(firstObject, root);
 		
+		Pattern identifierPattern = Pattern.compile("(_.+:type)");
+		title = findAndModifyElements(identifierPattern, title, title);
+		root.setTitle(title);
 		String content = root.getAsJsonObject().toString();
 		//rename to a readable xsi:type format 
 		for (String element : elementsToModified) {
-			Pattern identifierPattern = Pattern.compile("(_.+:type)");
-			Matcher matcher = identifierPattern.matcher(element);
-			while (matcher.find()) {
-				String s = matcher.group(0);
-				String prefix = s.split(":")[0].substring(3);
-				if (root.getCustomArray(NAMESPACES) != null) {
-					JsonArray jsonArray = root.getCustomArray(NAMESPACES);
-					for (int i = 0; i < jsonArray.size(); ++i) {
-						JsonElement jsonElement = jsonArray.get(i);
-						if (XSI_NAMESPACE_URI.equals(jsonElement.getAsJsonObject().get("url").getAsString())) {
-							content = content.replace("_$@" + prefix + ":type_", "," + prefix + ":type=");
-							break;
-						}
+			content = findAndModifyElements(identifierPattern, content, element);
+		}
+		elementsToModified.clear();
+		return content;
+	}
+
+	private String findAndModifyElements(Pattern identifierPattern, String content, String element) {
+		Matcher matcher = identifierPattern.matcher(element);
+		while (matcher.find()) {
+			String s = matcher.group(0);
+			String prefix = s.split(":")[0].substring(3);
+			if (root.getCustomArray(NAMESPACES) != null) {
+				JsonArray jsonArray = root.getCustomArray(NAMESPACES);
+				for (int i = 0; i < jsonArray.size(); ++i) {
+					JsonElement jsonElement = jsonArray.get(i);
+					if (XSI_NAMESPACE_URI.equals(jsonElement.getAsJsonObject().get("url").getAsString())) {
+						content = content.replace("_$@" + prefix + ":type_", "," + prefix + ":type=");
+						break;
 					}
 				}
 			}
 		}
-		elementsToModified.clear();		
 		return content;
 	}
 
@@ -206,7 +219,12 @@ public class SchemaBuilder {
 				}
 
 			} else {
-				addPrimitiveToParent(parent, id, element.getAsString(), propertyValueType, elementIdentifierMap);
+				if(element instanceof JsonNull){
+					//Fixing DEVTOOLESB-225
+					addPrimitiveToParent(parent, id, null, propertyValueType, elementIdentifierMap);
+				}else{
+					addPrimitiveToParent(parent, id, element.getAsString(), propertyValueType, elementIdentifierMap);
+				}
 			}
 		}
 		return elementIdentifierValue;

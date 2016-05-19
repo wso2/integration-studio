@@ -23,8 +23,11 @@ import org.wso2.developerstudio.datamapper.SchemaDataType;
 import org.wso2.developerstudio.datamapper.diagram.custom.generator.DifferentLevelArrayMappingConfigGenerator;
 import org.wso2.developerstudio.datamapper.diagram.custom.generator.ForLoopBean;
 import org.wso2.developerstudio.datamapper.diagram.custom.generator.SameLevelRecordMappingConfigGenerator;
+import org.wso2.developerstudio.datamapper.diagram.custom.model.DMOperation;
 import org.wso2.developerstudio.datamapper.diagram.custom.model.DMVariable;
 import org.wso2.developerstudio.datamapper.diagram.custom.util.ScriptGenerationUtil;
+
+import static org.wso2.developerstudio.datamapper.diagram.custom.model.transformers.TransformerConstants.DELIMITER_TAG;
 
 /**
  * This class extended from the {@link AbstractDMOperatorTransformer} abstract class and generate script for split
@@ -34,8 +37,9 @@ public class SplitOperatorTransformer extends AbstractDMOperatorTransformer {
 
     @Override
     public String generateScriptForOperation(Class<?> generatorClass, List<DMVariable> inputVariables,
-            Map<String, SchemaDataType> variableTypeMap, Stack<ForLoopBean> parentForLoopBeanStack) {
-        String splitOperator = ",";
+            Map<String, SchemaDataType> variableTypeMap, Stack<ForLoopBean> parentForLoopBeanStack,
+            DMOperation operator) {
+        String splitOperator = (String) operator.getProperty(DELIMITER_TAG);
         StringBuilder operationBuilder = new StringBuilder();
         if (SameLevelRecordMappingConfigGenerator.class.equals(generatorClass)) {
             if (inputVariables.size() >= 1) {

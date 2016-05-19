@@ -25,8 +25,7 @@ public class ScriptKeysPropertyDescriptor extends PropertyDescriptor {
 		return new ExtendedDialogCellEditor(parent, getLabelProvider()) {
 
 			protected Object openDialogBox(Control cellEditorWindow) {
-				Display display = Display.getDefault();
-				Shell shell = new Shell(display);
+			    Shell shell = Display.getDefault().getActiveShell();
 				ScriptMediator ruleMediator = (ScriptMediator) object;
 				ConfigureScriptKeysDialog configurationDialog = new ConfigureScriptKeysDialog(
 						shell, ruleMediator, TransactionUtil.getEditingDomain(ruleMediator));

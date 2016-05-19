@@ -41,8 +41,7 @@ public class ProxyParametersPropertyDescriptor extends PropertyDescriptor {
 		return new ExtendedDialogCellEditor(parent, getLabelProvider()) {
 
 			protected Object openDialogBox(Control cellEditorWindow) {
-				Display display = Display.getDefault();
-				Shell shell = new Shell(display);
+			    Shell shell = Display.getDefault().getActiveShell();
 				ProxyService proxy=(ProxyService) object;
 				
 				ConfigureProxyServiceDialog dialog = new ConfigureProxyServiceDialog(

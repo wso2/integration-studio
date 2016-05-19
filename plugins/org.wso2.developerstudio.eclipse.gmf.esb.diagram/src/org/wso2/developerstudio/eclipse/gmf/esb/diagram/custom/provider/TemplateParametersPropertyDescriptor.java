@@ -44,8 +44,7 @@ public class TemplateParametersPropertyDescriptor extends PropertyDescriptor {
 		return new ExtendedDialogCellEditor(parent, getLabelProvider()) {
 
 			protected Object openDialogBox(Control cellEditorWindow) {
-				Display display = Display.getDefault();
-				Shell shell = new Shell(display);
+			    Shell shell = Display.getDefault().getActiveShell();
 				Template template=null;
 				if(object instanceof Sequences){
 					template = (Template) ((Sequences)object).eContainer();

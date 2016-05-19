@@ -23,7 +23,10 @@ import org.wso2.developerstudio.datamapper.SchemaDataType;
 import org.wso2.developerstudio.datamapper.diagram.custom.generator.DifferentLevelArrayMappingConfigGenerator;
 import org.wso2.developerstudio.datamapper.diagram.custom.generator.ForLoopBean;
 import org.wso2.developerstudio.datamapper.diagram.custom.generator.SameLevelRecordMappingConfigGenerator;
+import org.wso2.developerstudio.datamapper.diagram.custom.model.DMOperation;
 import org.wso2.developerstudio.datamapper.diagram.custom.model.DMVariable;
+
+import static org.wso2.developerstudio.datamapper.diagram.custom.model.transformers.TransformerConstants.CONSTANT_VALUE_TAG;
 
 /**
  * This class extended from the {@link AbstractDMOperatorTransformer} abstract class and generate script for constant
@@ -33,9 +36,10 @@ public class ConstantOperatorTransformer extends AbstractDMOperatorTransformer {
 
     @Override
     public String generateScriptForOperation(Class<?> generatorClass, List<DMVariable> inputVariables,
-            Map<String, SchemaDataType> variableTypeMap, Stack<ForLoopBean> parentForLoopBeanStack) {
+            Map<String, SchemaDataType> variableTypeMap, Stack<ForLoopBean> parentForLoopBeanStack,
+            DMOperation operator) {
         StringBuilder operationBuilder = new StringBuilder();
-        String constantValue = "CONSTANT_VALUE";
+        String constantValue = (String) operator.getProperty(CONSTANT_VALUE_TAG);
         if (SameLevelRecordMappingConfigGenerator.class.equals(generatorClass)) {
             operationBuilder.append("'" + constantValue + "';");
         } else if (DifferentLevelArrayMappingConfigGenerator.class.equals(generatorClass)) {

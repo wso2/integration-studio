@@ -15,8 +15,9 @@
  */
 package org.wso2.developerstudio.datamapper.diagram.custom.model;
 
+import java.util.HashMap;
 import java.util.List;
-
+import java.util.Map;
 
 /**
  * This class should be extend by operation types of datamapper
@@ -28,29 +29,32 @@ public class DMOperation {
     private String id;
     private int index = -1;
     private boolean visited;
-    
-	List<Integer> inputs;
+    private Map<String, Object> properties;
+
+    List<Integer> inputs;
     List<Integer> outPuts;
-    public List<Integer> getInputs() {
-		return inputs;
-	}
-	public void setInputs(List<Integer> inputs) {
-		this.inputs = inputs;
-	}
-
-	public List<Integer> getOutputs() {
-		return outPuts;
-	}
-	public void setOutputs(List<Integer> outPuts) {
-		this.outPuts = outPuts;
-	}
-
-
 
     public DMOperation(DMOperatorType operatorType, String id, int index) {
         this.operatorType = operatorType;
         this.id = id;
         this.index = index;
+        properties = new HashMap<>();
+    }
+
+    public List<Integer> getInputs() {
+        return inputs;
+    }
+
+    public void setInputs(List<Integer> inputs) {
+        this.inputs = inputs;
+    }
+
+    public List<Integer> getOutputs() {
+        return outPuts;
+    }
+
+    public void setOutputs(List<Integer> outPuts) {
+        this.outPuts = outPuts;
     }
 
     public DMOperatorType getOperatorType() {
@@ -89,4 +93,24 @@ public class DMOperation {
     public String toString() {
         return super.toString() + "-" + operatorType + "-" + index;
     }
+
+    public Map<String, Object> getProperties() {
+        return properties;
+    }
+
+    public void setProperties(Map<String, Object> properties) {
+        this.properties = properties;
+    }
+
+    public void addProperty(String key, Object value) {
+        this.properties.put(key, value);
+    }
+
+    public Object getProperty(String key) {
+        if (properties.containsKey(key)) {
+            return properties.get(key);
+        }
+        throw new IllegalArgumentException("Property value not found for key :" + key);
+    }
+
 }

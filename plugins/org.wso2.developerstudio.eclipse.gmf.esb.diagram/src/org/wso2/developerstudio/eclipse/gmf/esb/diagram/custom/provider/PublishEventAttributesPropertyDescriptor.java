@@ -26,9 +26,7 @@ import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.wso2.developerstudio.eclipse.gmf.esb.PublishEventMediator;
-import org.wso2.developerstudio.eclipse.gmf.esb.XQueryMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.configure.ui.ConfigurePublishEventAttributesDialog;
-import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.configure.ui.ConfigureXQueryMediatorDialog;
 
 public class PublishEventAttributesPropertyDescriptor extends PropertyDescriptor {
 
@@ -43,8 +41,7 @@ public class PublishEventAttributesPropertyDescriptor extends PropertyDescriptor
 		return new ExtendedDialogCellEditor(parent, getLabelProvider()) {
 
 			protected Object openDialogBox(Control cellEditorWindow) {
-				Display display = Display.getDefault();
-				Shell shell = new Shell(display);
+				Shell shell = Display.getDefault().getActiveShell();
 				PublishEventMediator publishEventMediator = (PublishEventMediator) object;
 				ConfigurePublishEventAttributesDialog configurePublishEventAttributesDialog = new ConfigurePublishEventAttributesDialog(
 						shell, publishEventMediator, TransactionUtil.getEditingDomain(publishEventMediator), attributeCategory);

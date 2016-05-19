@@ -21,6 +21,7 @@ import java.util.Stack;
 
 import org.wso2.developerstudio.datamapper.SchemaDataType;
 import org.wso2.developerstudio.datamapper.diagram.custom.generator.ForLoopBean;
+import org.wso2.developerstudio.datamapper.diagram.custom.model.DMOperation;
 import org.wso2.developerstudio.datamapper.diagram.custom.model.DMVariable;
 
 /**
@@ -35,9 +36,11 @@ public interface DMOperatorTransformer {
      * 
      * @param generator
      * @param inputVariables
+     * @param operator
      * @return script for operation
      */
     String generateScriptForOperation(Class<?> generatorClass, List<DMVariable> inputVariables,
-            Map<String, SchemaDataType> variableTypeMap, Stack<ForLoopBean> parentForLoopBeanStack);
+            Map<String, SchemaDataType> variableTypeMap, Stack<ForLoopBean> parentForLoopBeanStack,
+            DMOperation operator);
 
 }

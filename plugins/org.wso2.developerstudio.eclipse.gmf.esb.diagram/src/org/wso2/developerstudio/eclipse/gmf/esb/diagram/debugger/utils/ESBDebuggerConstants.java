@@ -109,6 +109,7 @@ public class ESBDebuggerConstants {
     public static final String RESUMED_CLIENT_EVENT_TYPE = "resumed client";
     public static final String TERMINATED_EVENT_TYPE = "terminated";
     public static final String DEBUG_INFO_LOST_EVENT = "synapse configuration updated-debug information lost";
+    public static final String CONFIGURATION_UPDATED = "configuration updated";
     public static final String WIRE_LOG_EVENT = "wire";
     public static final String MESSAGE_RECIEVER_LABEL = "message-receiver";
     public static final String CALLBACK_RECIEVER_LABEL = "callback-receiver";

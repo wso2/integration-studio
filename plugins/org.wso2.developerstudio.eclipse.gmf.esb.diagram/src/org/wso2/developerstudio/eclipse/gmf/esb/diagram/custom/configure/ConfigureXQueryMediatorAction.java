@@ -33,8 +33,7 @@ public class ConfigureXQueryMediatorAction extends ConfigureEsbNodeAction {
 		EObject selectedObj = ((View) selectedEP.getModel()).getElement();
 		Assert.isTrue(selectedObj instanceof XQueryMediator, "Invalid selection.");
 
-		Display display = Display.getDefault();
-		Shell shell = new Shell(display);		
+		Shell shell = Display.getDefault().getActiveShell();		
 		Dialog xqueryMediatorConfigurationDialog = new ConfigureXQueryMediatorDialog(shell, (XQueryMediator) selectedObj,
 				getEditingDomain());
 		xqueryMediatorConfigurationDialog.setBlockOnOpen(true);

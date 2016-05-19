@@ -23,11 +23,8 @@ public class ValidateResourcePropertyDescriptor extends PropertyDescriptor {
 		return new ExtendedDialogCellEditor(parent, getLabelProvider()) {
 			
 			protected Object openDialogBox(Control cellEditorWindow) {
-				Display display = Display.getDefault();
-				Shell shell = new Shell(display);
-				
+			    Shell shell = Display.getDefault().getActiveShell();
 				ValidateMediator  validateMediator = (ValidateMediator)object;
-
 				ConfigureValidateResourceDialog resourceDialog = new ConfigureValidateResourceDialog(shell,validateMediator);
 				resourceDialog.setBlockOnOpen(true);
 				resourceDialog.open();

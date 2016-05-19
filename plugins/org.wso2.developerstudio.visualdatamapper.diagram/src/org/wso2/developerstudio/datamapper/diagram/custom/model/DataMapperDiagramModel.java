@@ -23,6 +23,12 @@ import java.util.Stack;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeNodeEditPart;
+import org.eclipse.gmf.runtime.notation.Node;
+import org.eclipse.gmf.runtime.notation.impl.ShapeImpl;
+import org.eclipse.ui.IEditorPart;
+import org.eclipse.ui.IEditorReference;
+import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.datamapper.DataMapperLink;
 import org.wso2.developerstudio.datamapper.DataMapperRoot;
 import org.wso2.developerstudio.datamapper.Input;
@@ -31,8 +37,13 @@ import org.wso2.developerstudio.datamapper.OperatorRightConnector;
 import org.wso2.developerstudio.datamapper.Output;
 import org.wso2.developerstudio.datamapper.PropertyKeyValuePair;
 import org.wso2.developerstudio.datamapper.SchemaDataType;
+import org.wso2.developerstudio.datamapper.diagram.custom.edit.part.AbstractOperatorEditPart;
 import org.wso2.developerstudio.datamapper.diagram.custom.exception.DataMapperException;
+import org.wso2.developerstudio.datamapper.diagram.custom.model.transformers.ModelTransformerFactory;
+import org.wso2.developerstudio.datamapper.diagram.custom.model.transformers.TransformerConstants;
 import org.wso2.developerstudio.datamapper.diagram.custom.util.ScriptGenerationUtil;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.ConstantEditPart;
+import org.wso2.developerstudio.datamapper.diagram.part.DataMapperDiagramEditor;
 import org.wso2.developerstudio.datamapper.impl.ConcatImpl;
 import org.wso2.developerstudio.datamapper.impl.ConstantImpl;
 import org.wso2.developerstudio.datamapper.impl.ElementImpl;
@@ -42,9 +53,11 @@ import org.wso2.developerstudio.datamapper.impl.OperatorRightConnectorImpl;
 import org.wso2.developerstudio.datamapper.impl.SplitImpl;
 import org.wso2.developerstudio.datamapper.impl.TreeNodeImpl;
 import org.wso2.developerstudio.datamapper.impl.UpperCaseImpl;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EditorUtils;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbMultiPageEditor;
 
 /**
- * This class represent the object model of the Data-Mapper Diagram.
+ * This class represent the object model of the Data-Mapping Diagram.
  */
 public class DataMapperDiagramModel {
 
@@ -128,7 +141,48 @@ public class DataMapperDiagramModel {
             }
             nodeStack.addAll(((TreeNodeImpl) currentNode).getNode());
         }
+        addOtherRootElemetsToNodeArray(tempNodeArray);
         populateAdjacencyLists(tempNodeArray);
+    }
+
+    private void addOtherRootElemetsToNodeArray(List<EObject> tempNodeArray) {
+
+        IEditorReference[] references = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
+                .getEditorReferences();
+        for (IEditorReference iEditorReference : references) {
+            IEditorPart editorReference = iEditorReference.getEditor(true);
+            if (editorReference instanceof DataMapperDiagramEditor) {
+                DataMapperDiagramEditor dataMapperDiagramEditor = (DataMapperDiagramEditor) iEditorReference
+                        .getEditor(true);
+                @SuppressWarnings("rawtypes")
+                Map editPartRegistry = dataMapperDiagramEditor.getDiagramEditPart().getViewer().getEditPartRegistry();
+                addSourceOperatorsFromEditPartRegistry(tempNodeArray, editPartRegistry);
+            }
+        }
+    }
+
+    private void addSourceOperatorsFromEditPartRegistry(List<EObject> tempNodeArray, Map editPartRegistry) {
+        for (Object object : editPartRegistry.keySet()) {
+            if (object instanceof Node) {
+                Node nodeImpl = (Node) object;
+                Object editPart = editPartRegistry.get(nodeImpl);
+                if (editPart instanceof AbstractOperatorEditPart) {
+                    OperatorImpl operator = (OperatorImpl) ((ShapeImpl) ((AbstractOperatorEditPart) editPart)
+                            .getModel()).getElement();
+                    if (isSourceOperator(operator)) {
+                        operator.setMarked(true);
+                        tempNodeArray.add(operator);
+                    }
+                }
+            }
+        }
+    }
+
+    private static boolean isSourceOperator(OperatorImpl operator) {
+        if (operator instanceof ConstantImpl) {
+            return true;
+        }
+        return false;
     }
 
     private boolean isCurrentTreeNodeALeafNode(SchemaDataType variableType) {
@@ -240,8 +294,8 @@ public class DataMapperDiagramModel {
             } else if (currentElement instanceof OperatorImpl && !((OperatorImpl) currentElement).isVisited()) {
                 int index = operationsList.size();
                 OperatorImpl operatorElement = (OperatorImpl) currentElement;
-                DMOperation operator = new DMOperation(getOperatorType(operatorElement), getUniqueId(operatorElement),
-                        index);
+                DMOperation operator = ModelTransformerFactory.getModelTransformer(getOperatorType(operatorElement))
+                        .transform(operatorElement, index);
                 operationsList.add(operator);
                 graphOperationElements.add(operatorElement);
                 ((OperatorImpl) currentElement).setIndex(index);
@@ -274,11 +328,10 @@ public class DataMapperDiagramModel {
                             }
                         } else {
                             indexOfConnector++;
-                            String variablePrefix = operator.getOperatorType() + "_" + operator.getIndex() + "_"
-                                    + indexOfConnector;
-                            if (operatorElement.getPortVariableIndex().size() <= indexOfConnector) {
+                            if (DMOperatorType.CONSTANT.equals(operator.getOperatorType())) {
                                 int variableIndex = variablesArray.size();
-                                DMVariable tempVar = new DMVariable(variablePrefix,
+                                DMVariable tempVar = new DMVariable(
+                                        "{" + operator.getProperty(TransformerConstants.CONSTANT_VALUE_TAG) + "}",
                                         getUniqueDirectId(operatorElement, indexOfConnector),
                                         DMVariableType.INTERMEDIATE, SchemaDataType.STRING, variableIndex, index);
                                 addVariableTypeToMap(tempVar.getName(), SchemaDataType.STRING);
@@ -289,6 +342,23 @@ public class DataMapperDiagramModel {
                                     inputAdjList.get(operationElement.getIndex()).add(variableIndex);
                                 }
                                 visitedConnectorVariableMap.put(rightConnector, tempVar);
+                            } else {
+                                String variablePrefix = operator.getOperatorType() + "_" + operator.getIndex() + "_"
+                                        + indexOfConnector;
+                                if (operatorElement.getPortVariableIndex().size() <= indexOfConnector) {
+                                    int variableIndex = variablesArray.size();
+                                    DMVariable tempVar = new DMVariable(variablePrefix,
+                                            getUniqueDirectId(operatorElement, indexOfConnector),
+                                            DMVariableType.INTERMEDIATE, SchemaDataType.STRING, variableIndex, index);
+                                    addVariableTypeToMap(tempVar.getName(), SchemaDataType.STRING);
+                                    variablesArray.add(tempVar);
+                                    operatorElement.getPortVariableIndex().add(variableIndex);
+                                    outputAdjList.get(operator.getIndex()).add(variableIndex);
+                                    if (operationElement.isVisited()) {
+                                        inputAdjList.get(operationElement.getIndex()).add(variableIndex);
+                                    }
+                                    visitedConnectorVariableMap.put(rightConnector, tempVar);
+                                }
                             }
                         }
                     }
@@ -372,10 +442,6 @@ public class DataMapperDiagramModel {
 
     private String getUniqueDirectId(EObject parent, int size) {
         return parent.toString() + " " + size;
-    }
-
-    private String getUniqueId(EObject nextElement) {
-        return nextElement.toString();
     }
 
     private DMOperatorType getOperatorType(OperatorImpl nextElement) {

@@ -43,8 +43,7 @@ public class ConditionalRouterMediatorPropertyDescriptor extends PropertyDescrip
 		return new ExtendedDialogCellEditor(parent, getLabelProvider()) {
 			
 			protected Object openDialogBox(Control cellEditorWindow) {
-				Display display = Display.getDefault();
-				Shell shell = new Shell(display);
+			    Shell shell = Display.getDefault().getActiveShell();
 				ConditionalRouterMediator mediator = (ConditionalRouterMediator) object;
 				ConfigureConditionalRouterMediatorDialog configurationDialog = new ConfigureConditionalRouterMediatorDialog(
 						shell, mediator, TransactionUtil.getEditingDomain(mediator));

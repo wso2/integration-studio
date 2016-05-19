@@ -32,6 +32,7 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ES
 import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.WIRE_LOG_EVENT;
 import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.COMMAND_ARGUMENT_LABEL;
 import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.WIRE_LOG_LABEL;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.CONFIGURATION_UPDATED;
 
 import java.util.Map.Entry;
 import java.util.Set;
@@ -213,6 +214,8 @@ public class JsonGsonMessageFactory implements ICommunicationMessageFactory {
             return EventMessageType.DEBUG_INFO_LOST;
         case WIRE_LOG_EVENT:
             return EventMessageType.WIRE_LOG;
+        case CONFIGURATION_UPDATED:
+            return EventMessageType.DEBUG_INFO_LOST;
         default:
             throw new IllegalArgumentException("Invalid Event Message Type : " + event);
         }

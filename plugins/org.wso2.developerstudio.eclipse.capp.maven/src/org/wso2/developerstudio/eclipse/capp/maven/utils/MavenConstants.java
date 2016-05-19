@@ -21,27 +21,6 @@ public class MavenConstants {
 	public static final String MAVEN_GADGET_PLUGIN_VERSION = Messages.MAVEN_GADGET_PLUGIN_VERSION;
 	public static final String MAVEN_JAXWS_PLUGIN_VERSION = Messages.MAVEN_JAXWS_PLUGIN_VERSION;
 	
-	//Commenting as these have moved to a class in analytics plugin
-//	public static final String WSO2_ANALYTICS_VERSION = Messages.WSO2_ANALYTICS_VERSION;
-//	public static final String WSO2_ANALYTICS_STREAM_VERSION = Messages.WSO2_ANALYTICS_STREAM_VERSION;
-//	public static final String WSO2_ANALYTICS_PUBLISHER_VERSION = Messages.WSO2_ANALYTICS_PUBLISHER_VERSION;
-//	public static final String WSO2_ANALYTICS_RECEIVER_VERSION = Messages.WSO2_ANALYTICS_RECEIVER_VERSION;
-//	public static final String WSO2_ANALYTICS_EXECUTIONPLAN_VERSION = Messages.WSO2_ANALYTICS_EXECUTIONPLAN_VERSION;
-	
-	//Commenting as these have moved to a class in esb.core plugin
-//	public static final String WSO2_ESB_ENDPOINT_VERSION = Messages.WSO2_ESB_ENDPOINT_VERSION;
-//	public static final String WSO2_ESB_LOCAL_ENTRY_VERSION = Messages.WSO2_ESB_LOCAL_ENTRY_VERSION;
-//	public static final String WSO2_ESB_PROXY_VERSION = Messages.WSO2_ESB_PROXY_VERSION;
-//	public static final String WSO2_ESB_SEQUENCE_VERSION = Messages.WSO2_ESB_SEQUENCE_VERSION;
-//	public static final String WSO2_ESB_SYNAPSE_VERSION = Messages.WSO2_ESB_SYNAPSE_VERSION;
-//	public static final String WSO2_ESB_API_VERSION = Messages.WSO2_ESB_API_VERSION;
-//	public static final String WSO2_ESB_TASK_VERSION = Messages.WSO2_ESB_TASK_VERSION;
-//	public static final String WSO2_ESB_MESSAGE_STORE_PLUGIN_VERSION = Messages.WSO2_ESB_MESSAGE_STORE_PLUGIN_VERSION;
-//	public static final String WSO2_ESB_MESSAGE_PROCESSOR_PLUGIN_VERSION = Messages.WSO2_ESB_MESSAGE_PROCESSOR_PLUGIN_VERSION;
-//	public static final String WSO2_ESB_TEMPLATE_VERSION = Messages.WSO2_ESB_TEMPLATE_VERSION;
-//	public static final String WSO2_ESB_INBOUND_ENDPOINT_VERSION = Messages.WSO2_ESB_INBOUND_ENDPOINT_VERSION;
-//	public static final String WSO2_ESB_CONNECTOR_VERSION = Messages.WSO2_ESB_CONNECTOR_VERSION;
-	
 	public static final String WSO2_GENERAL_PROJECT_VERSION = Messages.WSO2_GENERAL_PROJECT_VERSION;
 	public static final String MAVEN_CAR_DEPLOY_VERSION = Messages.MAVEN_CAR_DEPLOY_VERSION;
 	public static final String MAVEN_BRS_PLUGIN_VERSION=Messages.MAVEN_BRS_VERSION;

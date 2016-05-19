@@ -415,11 +415,11 @@ public class SchemaKeyEditorDialog extends Dialog {
 			if (Messages.LoadInputSchemaAction_SchemaTypeInput.equals(schemaType)) {
 				schemaFilePath =
 				               CloudConnectorDirectoryTraverser.getInstance()
-				                                               .getCloudConnectorOperationInputSchemaFilePath(connectorOperation);
+				                                               .getCloudConnectorOperationOutputSchemaFilePath(connectorOperation);
 			} else if (Messages.LoadOutputSchemaAction_SchemaTypeOutput.equals(schemaType)) {
 				schemaFilePath =
 				               CloudConnectorDirectoryTraverser.getInstance()
-				                                               .getCloudConnectorOperationOutputSchemaFilePath(connectorOperation);
+				                                               .getCloudConnectorOperationInputSchemaFilePath(connectorOperation);
 			}
 
 			String schema = schemaGeneratorHelper.getSchemaContent(FileType.JSONSCHEMA, schemaFilePath);

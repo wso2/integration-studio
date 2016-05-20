@@ -15,8 +15,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.ValidateMediatorOnFailOutputConn
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Validate Mediator On Fail Output Connector</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */

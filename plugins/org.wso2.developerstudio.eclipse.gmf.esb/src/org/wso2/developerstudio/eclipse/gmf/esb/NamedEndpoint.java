@@ -14,6 +14,7 @@ package org.wso2.developerstudio.eclipse.gmf.esb;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.NamedEndpoint#getInputConnector <em>Input Connector</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.NamedEndpoint#getOutputConnector <em>Output Connector</em>}</li>
@@ -22,7 +23,6 @@ package org.wso2.developerstudio.eclipse.gmf.esb;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.NamedEndpoint#getDynamicReferenceKey <em>Dynamic Reference Key</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.NamedEndpoint#getStaticReferenceKey <em>Static Reference Key</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getNamedEndpoint()
  * @model

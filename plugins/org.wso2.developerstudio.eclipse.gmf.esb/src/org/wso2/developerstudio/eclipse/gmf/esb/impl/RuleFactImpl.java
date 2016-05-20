@@ -29,6 +29,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.RuleFactValueType;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.RuleFactImpl#getFactType <em>Fact Type</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.RuleFactImpl#getFactCustomType <em>Fact Custom Type</em>}</li>
@@ -38,7 +39,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.RuleFactValueType;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.RuleFactImpl#getValueExpression <em>Value Expression</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.RuleFactImpl#getValueKey <em>Value Key</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

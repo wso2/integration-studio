@@ -23,6 +23,7 @@ package org.wso2.developerstudio.eclipse.gmf.esb;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ForEachMediator#getForEachID <em>For Each ID</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ForEachMediator#getForEachExpression <em>For Each Expression</em>}</li>
@@ -36,7 +37,6 @@ package org.wso2.developerstudio.eclipse.gmf.esb;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ForEachMediator#getSequenceKey <em>Sequence Key</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ForEachMediator#getSequenceName <em>Sequence Name</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getForEachMediator()
  * @model

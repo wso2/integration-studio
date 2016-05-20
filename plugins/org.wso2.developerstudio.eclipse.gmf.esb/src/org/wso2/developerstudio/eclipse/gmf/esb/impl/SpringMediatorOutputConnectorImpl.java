@@ -15,8 +15,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.SpringMediatorOutputConnector;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Spring Mediator Output Connector</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */

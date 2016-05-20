@@ -26,12 +26,12 @@ import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ConditionalRouteBranchImpl#isBreakAfterRoute <em>Break After Route</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ConditionalRouteBranchImpl#getEvaluatorExpression <em>Evaluator Expression</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ConditionalRouteBranchImpl#getTargetSequence <em>Target Sequence</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

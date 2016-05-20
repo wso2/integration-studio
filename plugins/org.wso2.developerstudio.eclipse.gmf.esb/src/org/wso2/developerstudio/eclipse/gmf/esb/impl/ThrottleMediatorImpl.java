@@ -39,6 +39,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.ThrottleSequenceType;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ThrottleMediatorImpl#getGroupId <em>Group Id</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ThrottleMediatorImpl#getPolicyType <em>Policy Type</em>}</li>
@@ -58,7 +59,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.ThrottleSequenceType;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ThrottleMediatorImpl#getOnRejectBranchsequenceType <em>On Reject Branchsequence Type</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ThrottleMediatorImpl#getOnRejectBranchsequenceKey <em>On Reject Branchsequence Key</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

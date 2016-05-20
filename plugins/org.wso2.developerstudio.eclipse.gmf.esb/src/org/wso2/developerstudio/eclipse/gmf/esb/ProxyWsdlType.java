@@ -172,6 +172,8 @@ public enum ProxyWsdlType implements Enumerator {
 	 * Returns the '<em><b>Proxy Wsdl Type</b></em>' literal with the specified literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param literal the literal.
+	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
 	public static ProxyWsdlType get(String literal) {
@@ -188,6 +190,8 @@ public enum ProxyWsdlType implements Enumerator {
 	 * Returns the '<em><b>Proxy Wsdl Type</b></em>' literal with the specified name.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param name the name.
+	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
 	public static ProxyWsdlType getByName(String name) {
@@ -204,6 +208,8 @@ public enum ProxyWsdlType implements Enumerator {
 	 * Returns the '<em><b>Proxy Wsdl Type</b></em>' literal with the specified integer value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param value the integer value.
+	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
 	public static ProxyWsdlType get(int value) {

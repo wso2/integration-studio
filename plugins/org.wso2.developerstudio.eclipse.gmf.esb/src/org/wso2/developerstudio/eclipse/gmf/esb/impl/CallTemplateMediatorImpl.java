@@ -33,6 +33,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CallTemplateMediatorImpl#getAvailableTemplates <em>Available Templates</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CallTemplateMediatorImpl#getTemplateParameters <em>Template Parameters</em>}</li>
@@ -40,7 +41,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CallTemplateMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CallTemplateMediatorImpl#getTargetTemplate <em>Target Template</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

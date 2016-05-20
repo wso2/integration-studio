@@ -35,6 +35,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.LogProperty;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.LogMediatorImpl#getLogCategory <em>Log Category</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.LogMediatorImpl#getLogLevel <em>Log Level</em>}</li>
@@ -43,7 +44,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.LogProperty;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.LogMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.LogMediatorImpl#getProperties <em>Properties</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

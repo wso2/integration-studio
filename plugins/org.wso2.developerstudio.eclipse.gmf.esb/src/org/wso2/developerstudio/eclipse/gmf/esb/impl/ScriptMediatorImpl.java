@@ -34,6 +34,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.scriptKeyTypeEnum;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ScriptMediatorImpl#getScriptType <em>Script Type</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ScriptMediatorImpl#getScriptLanguage <em>Script Language</em>}</li>
@@ -46,7 +47,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.scriptKeyTypeEnum;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ScriptMediatorImpl#getScriptStaticKey <em>Script Static Key</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ScriptMediatorImpl#getScriptKeys <em>Script Keys</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

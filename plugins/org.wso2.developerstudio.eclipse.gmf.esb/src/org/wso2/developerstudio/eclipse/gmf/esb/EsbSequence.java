@@ -15,13 +15,13 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EsbSequence#getName <em>Name</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EsbSequence#getInput <em>Input</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EsbSequence#getOutput <em>Output</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EsbSequence#getChildMediators <em>Child Mediators</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEsbSequence()
  * @model

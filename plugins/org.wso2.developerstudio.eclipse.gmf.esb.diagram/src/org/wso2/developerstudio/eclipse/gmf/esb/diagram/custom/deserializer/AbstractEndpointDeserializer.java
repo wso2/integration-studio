@@ -47,19 +47,18 @@ public abstract class AbstractEndpointDeserializer extends AbstractEsbNodeDeseri
              executeSetValueCommand(END_POINT__END_POINT_NAME, endpoint.getName());
 		}
 		
-		// Fixing TOOLS-2652
-		if (endpoint.getDefinition().getTraceState() == 1) {
-			executeSetValueCommand(ABSTRACT_END_POINT__TRACE_ENABLED, new Boolean(true));
-		} else {
-			executeSetValueCommand(ABSTRACT_END_POINT__TRACE_ENABLED, new Boolean(false));
-		}
-		
-        StatisticsConfigurable  statisticsConfigurable = endpoint.getDefinition().getAspectConfiguration();
-		if (statisticsConfigurable != null && statisticsConfigurable.isStatisticsEnable()) {
-			executeSetValueCommand(ABSTRACT_END_POINT__STATISTICS_ENABLED, new Boolean(true));
-		}else{
-			executeSetValueCommand(ABSTRACT_END_POINT__STATISTICS_ENABLED, new Boolean(false));
-		}
+        StatisticsConfigurable statisticsConfigurable = endpoint.getDefinition().getAspectConfiguration();
+        if (statisticsConfigurable != null && statisticsConfigurable.isStatisticsEnable()) {
+            executeSetValueCommand(ABSTRACT_END_POINT__STATISTICS_ENABLED, new Boolean(true));
+        } else {
+            executeSetValueCommand(ABSTRACT_END_POINT__STATISTICS_ENABLED, new Boolean(false));
+        }
+        // Fixing TOOLS-2652
+        if (endpoint.getDefinition().isTracingEnabled()) {
+            executeSetValueCommand(ABSTRACT_END_POINT__TRACE_ENABLED, new Boolean(true));
+        } else {
+            executeSetValueCommand(ABSTRACT_END_POINT__TRACE_ENABLED, new Boolean(false));
+        }
 		
 		if("soap11".equals(endpoint.getDefinition().getFormat())){
 			executeSetValueCommand(ABSTRACT_END_POINT__FORMAT, EndPointMessageFormat.SOAP_11);

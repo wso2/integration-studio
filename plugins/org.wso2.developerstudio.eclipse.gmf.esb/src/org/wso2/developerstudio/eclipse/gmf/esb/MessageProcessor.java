@@ -24,6 +24,7 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getProcessorName <em>Processor Name</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getProcessorType <em>Processor Type</em>}</li>
@@ -51,7 +52,6 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getParameters <em>Parameters</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getTaskCount <em>Task Count</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getMessageProcessor()
  * @model

@@ -34,6 +34,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.PropertyValueType;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.AbstractNameValueExpressionAttributeImpl#getAttributeName <em>Attribute Name</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.AbstractNameValueExpressionAttributeImpl#getAttributeValueType <em>Attribute Value Type</em>}</li>
@@ -41,7 +42,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.PropertyValueType;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.AbstractNameValueExpressionAttributeImpl#getAttributeType <em>Attribute Type</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.AbstractNameValueExpressionAttributeImpl#getAttributeExpression <em>Attribute Expression</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

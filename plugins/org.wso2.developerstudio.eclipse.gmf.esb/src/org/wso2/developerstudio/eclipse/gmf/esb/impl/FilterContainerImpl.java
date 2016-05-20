@@ -26,11 +26,11 @@ import org.wso2.developerstudio.eclipse.gmf.esb.MediatorFlow;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.FilterContainerImpl#getPassContainer <em>Pass Container</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.FilterContainerImpl#getFailContainer <em>Fail Container</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

@@ -16,13 +16,13 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty#getPrettyName <em>Pretty Name</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty#getKeyName <em>Key Name</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty#getKeyValue <em>Key Value</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty#getFilters <em>Filters</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getRegistryKeyProperty()
  * @model

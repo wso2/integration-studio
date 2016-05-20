@@ -28,11 +28,11 @@ import org.wso2.developerstudio.eclipse.gmf.esb.ForEachTarget;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ForEachTargetImpl#getSoapAction <em>Soap Action</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ForEachTargetImpl#getToAddress <em>To Address</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

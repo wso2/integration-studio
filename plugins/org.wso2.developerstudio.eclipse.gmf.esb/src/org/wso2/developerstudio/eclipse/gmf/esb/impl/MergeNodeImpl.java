@@ -26,12 +26,12 @@ import org.wso2.developerstudio.eclipse.gmf.esb.MergeNodeSecondInputConnector;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MergeNodeImpl#getFirstInputConnector <em>First Input Connector</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MergeNodeImpl#getSecondInputConnector <em>Second Input Connector</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MergeNodeImpl#getOutputConnector <em>Output Connector</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

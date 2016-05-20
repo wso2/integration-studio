@@ -157,6 +157,8 @@ public enum BeanMediatorAction implements Enumerator {
 	 * Returns the '<em><b>Bean Mediator Action</b></em>' literal with the specified literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param literal the literal.
+	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
 	public static BeanMediatorAction get(String literal) {
@@ -173,6 +175,8 @@ public enum BeanMediatorAction implements Enumerator {
 	 * Returns the '<em><b>Bean Mediator Action</b></em>' literal with the specified name.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param name the name.
+	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
 	public static BeanMediatorAction getByName(String name) {
@@ -189,6 +193,8 @@ public enum BeanMediatorAction implements Enumerator {
 	 * Returns the '<em><b>Bean Mediator Action</b></em>' literal with the specified integer value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param value the integer value.
+	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
 	public static BeanMediatorAction get(int value) {

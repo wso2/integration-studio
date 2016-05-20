@@ -15,11 +15,11 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.URLRewriteRule#getUrlRewriteRuleCondition <em>Url Rewrite Rule Condition</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.URLRewriteRule#getRewriteRuleAction <em>Rewrite Rule Action</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getURLRewriteRule()
  * @model

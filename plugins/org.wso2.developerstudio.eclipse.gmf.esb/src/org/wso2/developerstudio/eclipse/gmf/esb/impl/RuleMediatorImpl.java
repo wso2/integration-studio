@@ -40,6 +40,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.RuleType;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.RuleMediatorImpl#getRuleSetURL <em>Rule Set URL</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.RuleMediatorImpl#getRuleSetSourceType <em>Rule Set Source Type</em>}</li>
@@ -66,7 +67,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.RuleType;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.RuleMediatorImpl#getOutputNameSpace <em>Output Name Space</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.RuleMediatorImpl#getRuleSetType <em>Rule Set Type</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

@@ -64,6 +64,8 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 		addNamePropertyDescriptor(object);
 		addTypePropertyDescriptor(object);
 		addSuspendPropertyDescriptor(object);
+		addTraceEnabledPropertyDescriptor(object);
+		addStatisticsEnabledPropertyDescriptor(object);
 
 		switch (inboundEndpoint.getType()) {
 		case HTTP:
@@ -2136,6 +2138,50 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 	}
 
 	/**
+	 * This adds a property descriptor for the Trace Enabled feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addTraceEnabledPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_InboundEndpoint_traceEnabled_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_traceEnabled_feature", "_UI_InboundEndpoint_type"),
+				 EsbPackage.Literals.INBOUND_ENDPOINT__TRACE_ENABLED,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Statistics Enabled feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addStatisticsEnabledPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_InboundEndpoint_statisticsEnabled_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_statisticsEnabled_feature", "_UI_InboundEndpoint_type"),
+				 EsbPackage.Literals.INBOUND_ENDPOINT__STATISTICS_ENABLED,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This adds a property descriptor for the Class feature. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 * 
@@ -3805,6 +3851,8 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_VERSION:
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_FEED_URL:
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_FEED_TYPE:
+			case EsbPackage.INBOUND_ENDPOINT__TRACE_ENABLED:
+			case EsbPackage.INBOUND_ENDPOINT__STATISTICS_ENABLED:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case EsbPackage.INBOUND_ENDPOINT__SEQUENCE_INPUT_CONNECTOR:

@@ -36,6 +36,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.AggregateMediatorImpl#getAggregateID <em>Aggregate ID</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.AggregateMediatorImpl#getCorrelationExpression <em>Correlation Expression</em>}</li>
@@ -55,7 +56,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.AggregateMediatorImpl#getSequenceKey <em>Sequence Key</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.AggregateMediatorImpl#getEnclosingElementProperty <em>Enclosing Element Property</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

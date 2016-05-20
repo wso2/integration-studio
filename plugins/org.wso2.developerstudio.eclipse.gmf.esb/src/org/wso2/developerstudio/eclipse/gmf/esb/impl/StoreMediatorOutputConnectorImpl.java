@@ -15,8 +15,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.StoreMediatorOutputConnector;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Store Mediator Output Connector</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */

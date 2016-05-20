@@ -28,6 +28,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.TargetSequenceType;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.AbstractCommonTargetImpl#getSequenceType <em>Sequence Type</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.AbstractCommonTargetImpl#getSequence <em>Sequence</em>}</li>
@@ -36,7 +37,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.TargetSequenceType;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.AbstractCommonTargetImpl#getEndpoint <em>Endpoint</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.AbstractCommonTargetImpl#getEndpointKey <em>Endpoint Key</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CommandProperty#getPropertyName <em>Property Name</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CommandProperty#getValueType <em>Value Type</em>}</li>
@@ -24,7 +25,6 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CommandProperty#getContextAction <em>Context Action</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CommandProperty#getMessageAction <em>Message Action</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getCommandProperty()
  * @model

@@ -15,8 +15,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.LoadBalanceEndPointInputConnecto
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Load Balance End Point Input Connector</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */

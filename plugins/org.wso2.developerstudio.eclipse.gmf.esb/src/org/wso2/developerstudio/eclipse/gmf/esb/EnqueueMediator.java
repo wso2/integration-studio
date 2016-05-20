@@ -14,6 +14,7 @@ package org.wso2.developerstudio.eclipse.gmf.esb;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EnqueueMediator#getExecutor <em>Executor</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EnqueueMediator#getPriority <em>Priority</em>}</li>
@@ -21,7 +22,6 @@ package org.wso2.developerstudio.eclipse.gmf.esb;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EnqueueMediator#getInputConnector <em>Input Connector</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EnqueueMediator#getOutputConnector <em>Output Connector</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEnqueueMediator()
  * @model

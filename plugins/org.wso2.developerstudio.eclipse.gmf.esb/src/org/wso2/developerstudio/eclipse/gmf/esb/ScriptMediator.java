@@ -16,6 +16,7 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ScriptMediator#getScriptType <em>Script Type</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ScriptMediator#getScriptLanguage <em>Script Language</em>}</li>
@@ -28,7 +29,6 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ScriptMediator#getScriptStaticKey <em>Script Static Key</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ScriptMediator#getScriptKeys <em>Script Keys</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getScriptMediator()
  * @model

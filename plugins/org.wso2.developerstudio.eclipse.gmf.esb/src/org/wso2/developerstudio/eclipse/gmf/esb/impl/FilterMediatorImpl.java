@@ -33,6 +33,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.FilterMediatorImpl#getConditionType <em>Condition Type</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.FilterMediatorImpl#getRegex <em>Regex</em>}</li>
@@ -44,7 +45,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.FilterMediatorImpl#getSource <em>Source</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.FilterMediatorImpl#getFilterContainer <em>Filter Container</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

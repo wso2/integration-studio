@@ -36,6 +36,7 @@ import org.wso2.developerstudio.eclipse.platform.core.utils.DeveloperStudioProvi
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.SmooksMediatorImpl#getConfigurationKey <em>Configuration Key</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.SmooksMediatorImpl#getInputType <em>Input Type</em>}</li>
@@ -48,7 +49,6 @@ import org.wso2.developerstudio.eclipse.platform.core.utils.DeveloperStudioProvi
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.SmooksMediatorImpl#getInputConnector <em>Input Connector</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.SmooksMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

@@ -15,8 +15,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.RMSequenceMediatorOutputConnecto
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>RM Sequence Mediator Output Connector</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */

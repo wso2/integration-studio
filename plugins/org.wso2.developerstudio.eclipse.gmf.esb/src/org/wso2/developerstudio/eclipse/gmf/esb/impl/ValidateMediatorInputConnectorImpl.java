@@ -15,8 +15,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.ValidateMediatorInputConnector;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Validate Mediator Input Connector</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */

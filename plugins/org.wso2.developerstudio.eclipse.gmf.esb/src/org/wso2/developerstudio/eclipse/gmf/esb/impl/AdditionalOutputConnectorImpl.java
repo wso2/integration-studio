@@ -25,10 +25,10 @@ import org.wso2.developerstudio.eclipse.gmf.esb.InputConnector;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.AdditionalOutputConnectorImpl#getAdditionalOutgoingLink <em>Additional Outgoing Link</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

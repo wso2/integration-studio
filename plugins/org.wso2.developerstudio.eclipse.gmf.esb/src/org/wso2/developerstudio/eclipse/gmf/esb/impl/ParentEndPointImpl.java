@@ -30,11 +30,11 @@ import org.wso2.developerstudio.eclipse.gmf.esb.ParentEndPoint;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ParentEndPointImpl#getChildren <em>Children</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ParentEndPointImpl#getName <em>Name</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

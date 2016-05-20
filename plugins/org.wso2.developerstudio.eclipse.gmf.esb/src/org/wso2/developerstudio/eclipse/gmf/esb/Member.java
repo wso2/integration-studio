@@ -24,12 +24,12 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.Member#getHostName <em>Host Name</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.Member#getHttpPort <em>Http Port</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.Member#getHttpsPort <em>Https Port</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getMember()
  * @model

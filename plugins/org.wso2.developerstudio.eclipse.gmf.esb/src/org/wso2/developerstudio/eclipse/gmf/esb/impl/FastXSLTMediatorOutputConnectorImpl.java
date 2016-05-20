@@ -24,8 +24,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.FastXSLTMediatorOutputConnector;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Fast XSLT Mediator Output Connector</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */

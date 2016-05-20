@@ -45,6 +45,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.RecipientListEndpointType;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.RecipientListEndPointImpl#getInputConnector <em>Input Connector</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.RecipientListEndPointImpl#getOutputConnector <em>Output Connector</em>}</li>
@@ -55,7 +56,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.RecipientListEndpointType;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.RecipientListEndPointImpl#getMaxCache <em>Max Cache</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.RecipientListEndPointImpl#getMediatorFlow <em>Mediator Flow</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

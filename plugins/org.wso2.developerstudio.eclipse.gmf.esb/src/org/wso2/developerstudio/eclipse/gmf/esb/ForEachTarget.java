@@ -23,11 +23,11 @@ package org.wso2.developerstudio.eclipse.gmf.esb;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ForEachTarget#getSoapAction <em>Soap Action</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ForEachTarget#getToAddress <em>To Address</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getForEachTarget()
  * @model

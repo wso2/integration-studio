@@ -36,13 +36,13 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EntitlementContainerImpl#getOnRejectContainer <em>On Reject Container</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EntitlementContainerImpl#getOnAcceptContainer <em>On Accept Container</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EntitlementContainerImpl#getAdviceContainer <em>Advice Container</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EntitlementContainerImpl#getObligationsContainer <em>Obligations Container</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

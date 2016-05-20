@@ -53,7 +53,12 @@ public class CustomAPISerializer {
 		OMElement apiElt = fac.createOMElement("api", SynapseConstants.SYNAPSE_OMNAMESPACE);
 		apiElt.addAttribute("name", api.getAPIName(), null);
 		apiElt.addAttribute("context", api.getContext(), null);
-
+		if(api.getAspectConfiguration().isStatisticsEnable()){
+			apiElt.addAttribute("statistics","enable",null);
+		}
+		if(api.getAspectConfiguration().isTracingEnabled()){
+			apiElt.addAttribute("trace","enable",null);
+		}
 		VersionStrategySerializer.serializeVersioningStrategy(api.getVersionStrategy(), apiElt);
 		if (api.getHost() != null) {
 			apiElt.addAttribute("hostname", api.getHost(), null);

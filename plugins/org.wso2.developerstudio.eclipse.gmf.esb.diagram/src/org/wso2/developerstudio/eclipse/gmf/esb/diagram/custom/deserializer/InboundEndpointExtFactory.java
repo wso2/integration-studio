@@ -22,6 +22,7 @@ import javax.xml.namespace.QName;
 
 import org.apache.axiom.om.OMElement;
 import org.apache.synapse.SynapseException;
+import org.apache.synapse.aspects.AspectConfiguration;
 import org.apache.synapse.config.xml.XMLConfigConstants;
 import org.apache.synapse.inbound.InboundEndpoint;
 import org.apache.synapse.inbound.InboundEndpointConstants;
@@ -33,6 +34,8 @@ import org.apache.synapse.inbound.InboundEndpointConstants;
  */
 public class InboundEndpointExtFactory {
 
+	private static final QName ATT_TRACE = new QName("trace");
+	private static final QName ATT_STAT = new QName("statistics");
     private static final QName ATT_NAME = new QName(InboundEndpointConstants.INBOUND_ENDPOINT_NAME);
     private static final QName ATT_PROTOCOL = new QName(InboundEndpointConstants.INBOUND_ENDPOINT_PROTOCOL);
     private static final QName ATT_ENDPOINT_CLASS = new QName(InboundEndpointConstants.INBOUND_ENDPOINT_CLASS);
@@ -42,6 +45,7 @@ public class InboundEndpointExtFactory {
     private static final String XML_EXTENTION = ".xml";
     private static final String INBOUND_ENDPOINT_NAME_ID = "inbound.endpoint.name";
     private static final String EMPTY_STRING = "";
+	private static final Object ENABLE_TAG = "enable";
 
     /**
      * This method create an {@link InboundEndpoint} instance from given {@link OMElement}
@@ -52,11 +56,21 @@ public class InboundEndpointExtFactory {
     public static InboundEndpoint createInboundEndpointDev(OMElement inboundEndpointElem) {
 
         InboundEndpoint inboundEndpoint = new InboundEndpoint();
+
         if (inboundEndpointElem.getAttributeValue(ATT_NAME) != null) {
             inboundEndpoint.setName(inboundEndpointElem.getAttributeValue(ATT_NAME));
         } else {
             throw new SynapseException("Inbound Endpoint name cannot be null");
         }
+        inboundEndpoint.configure(new AspectConfiguration(inboundEndpointElem.getAttributeValue(ATT_NAME)));
+		if (inboundEndpointElem.getAttributeValue(ATT_TRACE) != null
+				&& ENABLE_TAG.equals(inboundEndpointElem.getAttributeValue(ATT_TRACE))) {
+			inboundEndpoint.getAspectConfiguration().enableStatistics();
+		}
+		if (inboundEndpointElem.getAttributeValue(ATT_STAT) != null
+				&& ENABLE_TAG.equals(inboundEndpointElem.getAttributeValue(ATT_STAT))) {
+			inboundEndpoint.getAspectConfiguration().enableTracing();
+		}
         if (inboundEndpointElem.getAttributeValue(ATT_PROTOCOL) != null) {
             inboundEndpoint.setProtocol(inboundEndpointElem.getAttributeValue(ATT_PROTOCOL));
         }

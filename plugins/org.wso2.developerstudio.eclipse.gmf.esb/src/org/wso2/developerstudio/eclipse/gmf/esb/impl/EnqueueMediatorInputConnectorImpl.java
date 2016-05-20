@@ -15,8 +15,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Enqueue Mediator Input Connector</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */

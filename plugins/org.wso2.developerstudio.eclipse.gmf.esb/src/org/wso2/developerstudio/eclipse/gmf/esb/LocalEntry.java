@@ -14,6 +14,7 @@ package org.wso2.developerstudio.eclipse.gmf.esb;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.LocalEntry#getEntryName <em>Entry Name</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.LocalEntry#getLocalEntryType <em>Local Entry Type</em>}</li>
@@ -21,7 +22,6 @@ package org.wso2.developerstudio.eclipse.gmf.esb;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.LocalEntry#getValueXML <em>Value XML</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.LocalEntry#getValueURL <em>Value URL</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getLocalEntry()
  * @model

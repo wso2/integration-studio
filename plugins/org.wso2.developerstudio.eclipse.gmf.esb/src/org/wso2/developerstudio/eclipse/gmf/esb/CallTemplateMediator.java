@@ -15,6 +15,7 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CallTemplateMediator#getAvailableTemplates <em>Available Templates</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CallTemplateMediator#getTemplateParameters <em>Template Parameters</em>}</li>
@@ -22,7 +23,6 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CallTemplateMediator#getOutputConnector <em>Output Connector</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CallTemplateMediator#getTargetTemplate <em>Target Template</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getCallTemplateMediator()
  * @model

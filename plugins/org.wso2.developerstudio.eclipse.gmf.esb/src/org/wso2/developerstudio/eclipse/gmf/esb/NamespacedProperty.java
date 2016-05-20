@@ -15,6 +15,7 @@ import java.util.Map;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty#getPrettyName <em>Pretty Name</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty#getPropertyName <em>Property Name</em>}</li>
@@ -23,7 +24,6 @@ import java.util.Map;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty#isSupportsDynamicXPaths <em>Supports Dynamic XPaths</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty#isDynamic <em>Dynamic</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getNamespacedProperty()
  * @model

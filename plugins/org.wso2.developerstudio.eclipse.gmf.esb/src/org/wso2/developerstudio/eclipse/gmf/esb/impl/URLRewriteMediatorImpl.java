@@ -33,6 +33,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.URLRewriteRule;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.URLRewriteMediatorImpl#getUrlRewriteRules <em>Url Rewrite Rules</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.URLRewriteMediatorImpl#getInProperty <em>In Property</em>}</li>
@@ -40,7 +41,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.URLRewriteRule;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.URLRewriteMediatorImpl#getInputConnector <em>Input Connector</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.URLRewriteMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

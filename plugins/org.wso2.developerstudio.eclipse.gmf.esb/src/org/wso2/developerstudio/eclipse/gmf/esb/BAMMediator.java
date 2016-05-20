@@ -23,6 +23,7 @@ package org.wso2.developerstudio.eclipse.gmf.esb;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.BAMMediator#getInputConnector <em>Input Connector</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.BAMMediator#getOutputConnector <em>Output Connector</em>}</li>
@@ -30,7 +31,6 @@ package org.wso2.developerstudio.eclipse.gmf.esb;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.BAMMediator#getStreamName <em>Stream Name</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.BAMMediator#getStreamVersion <em>Stream Version</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getBAMMediator()
  * @model

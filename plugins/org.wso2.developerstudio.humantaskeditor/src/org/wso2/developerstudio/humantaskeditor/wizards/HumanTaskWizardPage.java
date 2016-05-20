@@ -199,8 +199,7 @@ public class HumanTaskWizardPage extends WizardPage {
         if (fileName.replace('\\', '/').indexOf('/', 1) > 0) {
             updateStatus(HumantaskEditorConstants.FILE_NAME_MUST_BE_VALID_MESSAGE);
             return;
-        }
-        
+        }        
         if (getContainerName().length() == 0) {
             updateStatus(HumantaskEditorConstants.FILE_CONTAINER_MUST_BE_SPECIFIED_MESSAGE);
             return;
@@ -211,6 +210,14 @@ public class HumanTaskWizardPage extends WizardPage {
         }
         if (!container.isAccessible()) {
             updateStatus(HumantaskEditorConstants.PROJECT_MUST_BE_WRITABLE_MESSAGE);
+            return;
+        }
+        if (!fileName.contains(".")) {
+            updateStatus(HumantaskEditorConstants.FILE_EXTENSION_MUST_BE_HT_MESSAGE);
+            return;
+        }
+        if (!fileName.matches("[A-Za-z][A-Za-z0-9]*.ht")) {
+            updateStatus(HumantaskEditorConstants.ENTER_A_VALID_FILENAME);
             return;
         }
         

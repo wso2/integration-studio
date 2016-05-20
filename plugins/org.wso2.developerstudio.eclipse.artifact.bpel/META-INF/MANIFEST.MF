@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: BPEL
 Bundle-SymbolicName: org.wso2.developerstudio.eclipse.artifact.bpel;singleton:=true
-Bundle-Version: 4.0.0.qualifier
+Bundle-Version: 3.5.1.qualifier
 Bundle-Activator: org.wso2.developerstudio.eclipse.artifact.bpel.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
@@ -12,7 +12,7 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.wst.common.modulecore,
  org.wso2.developerstudio.eclipse.libraries;bundle-version="[4.1.0,5.0.0)",
  org.wso2.developerstudio.eclipse.kernel.libraries;bundle-version="4.1.0",
- org.eclipse.bpel.apache.ode.deploy.ui;bundle-version="4.0.0"
+ org.eclipse.bpel.apache.ode.deploy.ui;bundle-version="3.5.0"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Import-Package: org.apache.commons.io;version="[2.0.0.wso2v1,2.0.1)",

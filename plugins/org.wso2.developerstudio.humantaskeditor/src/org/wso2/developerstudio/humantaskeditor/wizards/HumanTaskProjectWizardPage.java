@@ -185,7 +185,6 @@ public class HumanTaskProjectWizardPage extends WizardPage {
             return;
         }
         
-
         int dotLoc = fileName.lastIndexOf('.');
         if (dotLoc != -1) {
             String ext = fileName.substring(dotLoc + 1);

@@ -1,8 +1,10 @@
 package org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.configure;
 
+import java.io.File;
 import java.util.Map;
 
 import org.apache.commons.lang.StringUtils;
+import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.command.CompoundCommand;
@@ -35,6 +37,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.RuleOptionType;
 import org.wso2.developerstudio.eclipse.gmf.esb.SwitchMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.Activator;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EditorUtils;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.cloudconnector.CloudConnectorDirectoryTraverser;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.configure.ui.AddCaseBranchDialog;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.configure.ui.AddTargetBranchDialog;
@@ -63,8 +66,18 @@ public class LoadParametersFromSchemaAction extends ConfigureEsbNodeAction {
 
         CloudConnectorOperation cloudConnector = (CloudConnectorOperation) selectedObj;
 
+        IProject activeProject = EditorUtils.getActiveProject();
+
+        String connectorPath =
+                             CloudConnectorDirectoryTraverser.getInstance()
+                                                             .getConnectorDirectoryPathFromConnectorName(activeProject.getWorkspace()
+                                                                                                                      .getRoot()
+                                                                                                                      .getLocation()
+                                                                                                                      .toOSString(),
+                                                                                                         cloudConnector.getCloudConnectorName());
         CloudConnectorDirectoryTraverser cloudConnectorDirectoryTraverser =
-                                                                          CloudConnectorDirectoryTraverser.getInstance();
+                                                                          CloudConnectorDirectoryTraverser.getInstance(connectorPath);
+
         Map<String, String> parameterDefaultValuesMap =
                                                       cloudConnectorDirectoryTraverser.getInputDefaultParameterValuesMap(cloudConnector.getOperationName());
         if (parameterDefaultValuesMap == null) {

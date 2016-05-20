@@ -2,7 +2,7 @@
 <feature
       id="org.wso2.developerstudio.eclipse.esb.dependencies.feature"
       label="ESB Tool Dependencies"
-      version="4.1.0.qualifier"
+      version="5.0.0.qualifier"
       provider-name="%providerName">
 
    <description url="http://wso2.com">

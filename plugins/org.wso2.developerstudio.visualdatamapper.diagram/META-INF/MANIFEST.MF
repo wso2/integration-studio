@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.wso2.developerstudio.visualdatamapper.diagram; singleton:=true
-Bundle-Version: 4.1.0.qualifier
+Bundle-Version: 5.0.0.qualifier
 Bundle-ClassPath: .,
  lib/jaxb-impl-2.2.4-1.jar,
  lib/jaxb-xjc-2.2.4-1.jar,
@@ -228,7 +228,7 @@ Require-Bundle: org.eclipse.core.runtime,
  org.wso2.developerstudio.eclipse.gmf.esb,
  org.eclipse.equinox.registry,
  org.wso2.developerstudio.eclipse.kernel.libraries;bundle-version="4.1.0",
- org.wso2.developerstudio.eclipse.esb.libraries;bundle-version="4.1.0"
+ org.wso2.developerstudio.eclipse.esb.libraries;bundle-version="5.0.0"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Import-Package: com.fasterxml.jackson.annotation;version="2.7.2",

@@ -2,10 +2,10 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: ESB Core
 Bundle-SymbolicName: org.wso2.developerstudio.eclipse.esb.core;singleton:=true
-Bundle-Version: 4.1.0.qualifier
+Bundle-Version: 5.0.0.qualifier
 Bundle-Activator: org.wso2.developerstudio.eclipse.esb.core.Activator
 Require-Bundle: org.wso2.developerstudio.eclipse.kernel.libraries;bundle-version="4.1.0",
- org.wso2.developerstudio.eclipse.esb.libraries;bundle-version="4.1.0"
+ org.wso2.developerstudio.eclipse.esb.libraries;bundle-version="5.0.0"
 Bundle-ActivationPolicy: lazy
 Export-Package: org.wso2.developerstudio.eclipse.esb.core;uses:="org.eclipse.ui.plugin,org.osgi.framework",
  org.wso2.developerstudio.eclipse.esb.core.configuration.impl;uses:="org.eclipse.jface.resource,org.wso2.developerstudio.eclipse.esb.core.interfaces",

@@ -19,9 +19,11 @@ package org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence;
 import java.util.List;
 import java.util.Map.Entry;
 
+import org.apache.synapse.config.xml.SynapsePath;
 import org.apache.synapse.endpoints.Endpoint;
 import org.apache.synapse.mediators.Value;
 import org.apache.synapse.mediators.base.SequenceMediator;
+import org.apache.synapse.util.xpath.SynapseJsonPath;
 import org.apache.synapse.util.xpath.SynapseXPath;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.emf.ecore.EObject;
@@ -85,8 +87,15 @@ public class CloudConnectorOperationTransformer extends AbstractEsbNodeTransform
 
 					if (xpathValue.startsWith("{") && xpathValue.endsWith("}")) {
 						xpathValue = xpathValue.substring(1, xpathValue.length() - 1);
-						SynapseXPath paramExpression = new SynapseXPath(xpathValue);
-						for (Entry<String, String> entry : namespacedExpression.getNamespaces().entrySet()) {;
+                        SynapsePath paramExpression = null;
+                        if (xpathValue.startsWith("json-eval")) {
+                            paramExpression = new SynapseJsonPath(xpathValue.substring(10,
+                                                                                       xpathValue.length() -
+                                                                                           1));
+                        } else {
+                            paramExpression = new SynapseXPath(xpathValue);
+						}
+						for (Entry<String, String> entry : namespacedExpression.getNamespaces().entrySet()) {
 							paramExpression.addNamespace(entry.getKey(), entry.getValue());
 						}
 						cloudConnectorOperation.getpName2ExpressionMap().put(param.getParameterName(), new Value(paramExpression));

@@ -33,13 +33,13 @@ import org.wso2.developerstudio.eclipse.gmf.esb.SqlStatement;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.SqlStatementImpl#getQueryString <em>Query String</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.SqlStatementImpl#getParameters <em>Parameters</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.SqlStatementImpl#isResultsEnabled <em>Results Enabled</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.SqlStatementImpl#getResults <em>Results</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

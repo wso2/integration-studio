@@ -25,13 +25,13 @@ import org.wso2.developerstudio.eclipse.gmf.esb.RuleOptionType;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CallTemplateParameterImpl#getParameterName <em>Parameter Name</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CallTemplateParameterImpl#getTemplateParameterType <em>Template Parameter Type</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CallTemplateParameterImpl#getParameterValue <em>Parameter Value</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CallTemplateParameterImpl#getParameterExpression <em>Parameter Expression</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

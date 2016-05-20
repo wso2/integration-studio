@@ -31,6 +31,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.PropertyValueType;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.PropertyMediatorImpl#getInputConnector <em>Input Connector</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.PropertyMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
@@ -50,7 +51,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.PropertyValueType;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.PropertyMediatorImpl#getValueStringCapturingGroup <em>Value String Capturing Group</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.PropertyMediatorImpl#getNewPropertyName <em>New Property Name</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

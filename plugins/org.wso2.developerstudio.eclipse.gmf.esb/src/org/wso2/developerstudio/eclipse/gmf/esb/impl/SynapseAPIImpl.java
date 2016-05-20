@@ -33,6 +33,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.SynapseAPI;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.SynapseAPIImpl#getApiName <em>Api Name</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.SynapseAPIImpl#getContext <em>Context</em>}</li>
@@ -40,8 +41,9 @@ import org.wso2.developerstudio.eclipse.gmf.esb.SynapseAPI;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.SynapseAPIImpl#getPort <em>Port</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.SynapseAPIImpl#getResources <em>Resources</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.SynapseAPIImpl#getHandlers <em>Handlers</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.SynapseAPIImpl#isTraceEnabled <em>Trace Enabled</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.SynapseAPIImpl#isStatisticsEnabled <em>Statistics Enabled</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -145,6 +147,46 @@ public class SynapseAPIImpl extends EsbElementImpl implements SynapseAPI {
 	 * @ordered
 	 */
 	protected EList<APIHandler> handlers;
+
+	/**
+	 * The default value of the '{@link #isTraceEnabled() <em>Trace Enabled</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isTraceEnabled()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean TRACE_ENABLED_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isTraceEnabled() <em>Trace Enabled</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isTraceEnabled()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean traceEnabled = TRACE_ENABLED_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isStatisticsEnabled() <em>Statistics Enabled</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isStatisticsEnabled()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean STATISTICS_ENABLED_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isStatisticsEnabled() <em>Statistics Enabled</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isStatisticsEnabled()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean statisticsEnabled = STATISTICS_ENABLED_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -278,6 +320,48 @@ public class SynapseAPIImpl extends EsbElementImpl implements SynapseAPI {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isTraceEnabled() {
+		return traceEnabled;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTraceEnabled(boolean newTraceEnabled) {
+		boolean oldTraceEnabled = traceEnabled;
+		traceEnabled = newTraceEnabled;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.SYNAPSE_API__TRACE_ENABLED, oldTraceEnabled, traceEnabled));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isStatisticsEnabled() {
+		return statisticsEnabled;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setStatisticsEnabled(boolean newStatisticsEnabled) {
+		boolean oldStatisticsEnabled = statisticsEnabled;
+		statisticsEnabled = newStatisticsEnabled;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.SYNAPSE_API__STATISTICS_ENABLED, oldStatisticsEnabled, statisticsEnabled));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -309,6 +393,10 @@ public class SynapseAPIImpl extends EsbElementImpl implements SynapseAPI {
 				return getResources();
 			case EsbPackage.SYNAPSE_API__HANDLERS:
 				return getHandlers();
+			case EsbPackage.SYNAPSE_API__TRACE_ENABLED:
+				return isTraceEnabled();
+			case EsbPackage.SYNAPSE_API__STATISTICS_ENABLED:
+				return isStatisticsEnabled();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -342,6 +430,12 @@ public class SynapseAPIImpl extends EsbElementImpl implements SynapseAPI {
 				getHandlers().clear();
 				getHandlers().addAll((Collection<? extends APIHandler>)newValue);
 				return;
+			case EsbPackage.SYNAPSE_API__TRACE_ENABLED:
+				setTraceEnabled((Boolean)newValue);
+				return;
+			case EsbPackage.SYNAPSE_API__STATISTICS_ENABLED:
+				setStatisticsEnabled((Boolean)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -372,6 +466,12 @@ public class SynapseAPIImpl extends EsbElementImpl implements SynapseAPI {
 			case EsbPackage.SYNAPSE_API__HANDLERS:
 				getHandlers().clear();
 				return;
+			case EsbPackage.SYNAPSE_API__TRACE_ENABLED:
+				setTraceEnabled(TRACE_ENABLED_EDEFAULT);
+				return;
+			case EsbPackage.SYNAPSE_API__STATISTICS_ENABLED:
+				setStatisticsEnabled(STATISTICS_ENABLED_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -396,6 +496,10 @@ public class SynapseAPIImpl extends EsbElementImpl implements SynapseAPI {
 				return resources != null && !resources.isEmpty();
 			case EsbPackage.SYNAPSE_API__HANDLERS:
 				return handlers != null && !handlers.isEmpty();
+			case EsbPackage.SYNAPSE_API__TRACE_ENABLED:
+				return traceEnabled != TRACE_ENABLED_EDEFAULT;
+			case EsbPackage.SYNAPSE_API__STATISTICS_ENABLED:
+				return statisticsEnabled != STATISTICS_ENABLED_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -418,6 +522,10 @@ public class SynapseAPIImpl extends EsbElementImpl implements SynapseAPI {
 		result.append(hostName);
 		result.append(", port: ");
 		result.append(port);
+		result.append(", traceEnabled: ");
+		result.append(traceEnabled);
+		result.append(", statisticsEnabled: ");
+		result.append(statisticsEnabled);
 		result.append(')');
 		return result.toString();
 	}

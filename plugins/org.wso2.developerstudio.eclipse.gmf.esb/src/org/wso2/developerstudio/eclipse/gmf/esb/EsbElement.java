@@ -16,11 +16,11 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EsbElement#getDescription <em>Description</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EsbElement#getCommentsList <em>Comments List</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEsbElement()
  * @model abstract="true"

@@ -32,6 +32,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CalloutMediatorImpl#getServiceURL <em>Service URL</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CalloutMediatorImpl#getSoapAction <em>Soap Action</em>}</li>
@@ -55,7 +56,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CalloutMediatorImpl#getPolicyKey <em>Policy Key</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CalloutMediatorImpl#isInitAxis2ClientOptions <em>Init Axis2 Client Options</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

@@ -24,6 +24,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.NamespacedPropertyImpl#getPrettyName <em>Pretty Name</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.NamespacedPropertyImpl#getPropertyName <em>Property Name</em>}</li>
@@ -32,7 +33,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.NamespacedPropertyImpl#isSupportsDynamicXPaths <em>Supports Dynamic XPaths</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.NamespacedPropertyImpl#isDynamic <em>Dynamic</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

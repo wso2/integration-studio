@@ -37,6 +37,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.SequenceType;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ForEachMediatorImpl#getForEachID <em>For Each ID</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ForEachMediatorImpl#getForEachExpression <em>For Each Expression</em>}</li>
@@ -50,7 +51,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.SequenceType;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ForEachMediatorImpl#getSequenceKey <em>Sequence Key</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ForEachMediatorImpl#getSequenceName <em>Sequence Name</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

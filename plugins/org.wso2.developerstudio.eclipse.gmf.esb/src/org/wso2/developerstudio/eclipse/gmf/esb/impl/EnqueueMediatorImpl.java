@@ -26,6 +26,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EnqueueMediatorImpl#getExecutor <em>Executor</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EnqueueMediatorImpl#getPriority <em>Priority</em>}</li>
@@ -33,7 +34,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EnqueueMediatorImpl#getInputConnector <em>Input Connector</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EnqueueMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

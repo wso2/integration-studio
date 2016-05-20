@@ -15,6 +15,7 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SynapseAPI#getApiName <em>Api Name</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SynapseAPI#getContext <em>Context</em>}</li>
@@ -22,8 +23,9 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SynapseAPI#getPort <em>Port</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SynapseAPI#getResources <em>Resources</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SynapseAPI#getHandlers <em>Handlers</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SynapseAPI#isTraceEnabled <em>Trace Enabled</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SynapseAPI#isStatisticsEnabled <em>Statistics Enabled</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getSynapseAPI()
  * @model
@@ -167,5 +169,57 @@ public interface SynapseAPI extends EsbElement {
 	 * @generated
 	 */
 	EList<APIHandler> getHandlers();
+
+	/**
+	 * Returns the value of the '<em><b>Trace Enabled</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Trace Enabled</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Trace Enabled</em>' attribute.
+	 * @see #setTraceEnabled(boolean)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getSynapseAPI_TraceEnabled()
+	 * @model
+	 * @generated
+	 */
+	boolean isTraceEnabled();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.SynapseAPI#isTraceEnabled <em>Trace Enabled</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Trace Enabled</em>' attribute.
+	 * @see #isTraceEnabled()
+	 * @generated
+	 */
+	void setTraceEnabled(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Statistics Enabled</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Statistics Enabled</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Statistics Enabled</em>' attribute.
+	 * @see #setStatisticsEnabled(boolean)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getSynapseAPI_StatisticsEnabled()
+	 * @model
+	 * @generated
+	 */
+	boolean isStatisticsEnabled();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.SynapseAPI#isStatisticsEnabled <em>Statistics Enabled</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Statistics Enabled</em>' attribute.
+	 * @see #isStatisticsEnabled()
+	 * @generated
+	 */
+	void setStatisticsEnabled(boolean value);
 
 } // SynapseAPI

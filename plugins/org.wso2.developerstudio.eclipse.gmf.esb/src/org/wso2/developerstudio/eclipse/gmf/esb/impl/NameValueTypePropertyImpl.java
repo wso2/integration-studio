@@ -22,12 +22,12 @@ import org.wso2.developerstudio.eclipse.gmf.esb.TaskPropertyType;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.NameValueTypePropertyImpl#getPropertyName <em>Property Name</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.NameValueTypePropertyImpl#getPropertyValue <em>Property Value</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.NameValueTypePropertyImpl#getPropertyType <em>Property Type</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

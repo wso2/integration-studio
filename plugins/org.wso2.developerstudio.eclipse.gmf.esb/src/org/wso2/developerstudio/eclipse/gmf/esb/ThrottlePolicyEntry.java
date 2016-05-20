@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ThrottlePolicyEntry#getThrottleType <em>Throttle Type</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ThrottlePolicyEntry#getThrottleRange <em>Throttle Range</em>}</li>
@@ -23,7 +24,6 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ThrottlePolicyEntry#getUnitTime <em>Unit Time</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ThrottlePolicyEntry#getProhibitPeriod <em>Prohibit Period</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getThrottlePolicyEntry()
  * @model

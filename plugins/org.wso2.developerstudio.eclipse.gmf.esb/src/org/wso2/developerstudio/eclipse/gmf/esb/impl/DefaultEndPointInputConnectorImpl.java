@@ -16,8 +16,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.OutputConnector;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Default End Point Input Connector</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */

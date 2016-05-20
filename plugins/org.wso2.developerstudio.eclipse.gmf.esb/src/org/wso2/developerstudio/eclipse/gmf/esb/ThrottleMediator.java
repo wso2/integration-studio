@@ -16,6 +16,7 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ThrottleMediator#getGroupId <em>Group Id</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ThrottleMediator#getPolicyType <em>Policy Type</em>}</li>
@@ -35,7 +36,6 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ThrottleMediator#getOnRejectBranchsequenceType <em>On Reject Branchsequence Type</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ThrottleMediator#getOnRejectBranchsequenceKey <em>On Reject Branchsequence Key</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getThrottleMediator()
  * @model

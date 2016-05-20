@@ -15,8 +15,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.TransactionMediatorOutputConnect
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Transaction Mediator Output Connector</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */

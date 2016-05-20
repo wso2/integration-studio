@@ -17,13 +17,13 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ThrottlePolicyConfiguration#getPolicyType <em>Policy Type</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ThrottlePolicyConfiguration#getPolicyKey <em>Policy Key</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ThrottlePolicyConfiguration#getMaxConcurrentAccessCount <em>Max Concurrent Access Count</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ThrottlePolicyConfiguration#getPolicyEntries <em>Policy Entries</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getThrottlePolicyConfiguration()
  * @model

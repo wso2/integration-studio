@@ -120,6 +120,8 @@ public enum HeaderValueType implements Enumerator {
 	 * Returns the '<em><b>Header Value Type</b></em>' literal with the specified literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param literal the literal.
+	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
 	public static HeaderValueType get(String literal) {
@@ -136,6 +138,8 @@ public enum HeaderValueType implements Enumerator {
 	 * Returns the '<em><b>Header Value Type</b></em>' literal with the specified name.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param name the name.
+	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
 	public static HeaderValueType getByName(String name) {
@@ -152,6 +156,8 @@ public enum HeaderValueType implements Enumerator {
 	 * Returns the '<em><b>Header Value Type</b></em>' literal with the specified integer value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param value the integer value.
+	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
 	public static HeaderValueType get(int value) {

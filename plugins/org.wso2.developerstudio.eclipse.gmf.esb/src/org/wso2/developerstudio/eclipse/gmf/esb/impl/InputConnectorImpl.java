@@ -40,10 +40,10 @@ import org.wso2.developerstudio.eclipse.gmf.esb.SendMediatorOutputConnector;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InputConnectorImpl#getIncomingLinks <em>Incoming Links</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

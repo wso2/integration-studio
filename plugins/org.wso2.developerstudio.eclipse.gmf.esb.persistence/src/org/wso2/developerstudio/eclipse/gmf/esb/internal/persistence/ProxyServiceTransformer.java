@@ -365,15 +365,23 @@ public class ProxyServiceTransformer extends AbstractEsbNodeTransformer {
 					info.getSynapseConfiguration().getProxyService(visualService.getName()) == null,
 					"Circular reference detected while serializing proxy service!");
 
-			ProxyService proxyService = new org.apache.synapse.core.axis2.ProxyService(
-					visualService.getName());
+			ProxyService proxyService = new ProxyService(visualService.getName());
 			info.setCurrentProxy(proxyService);
 
 			if (visualService.getServiceGroup() != null) {
 				proxyService.setServiceGroup(visualService.getServiceGroup());
 			}
-
-			proxyService.setTraceState(visualService.isTraceEnabled() ? 1 : 0);
+			AspectConfiguration aspectConfiguration = new AspectConfiguration(visualService.getName());
+			if (visualService.isStatisticsEnabled()) {
+				proxyService.getAspectConfiguration().enableStatistics();
+			} else {
+				proxyService.getAspectConfiguration().disableStatistics();
+			}
+			if (visualService.isTraceEnabled()) {
+				proxyService.getAspectConfiguration().enableTracing();
+			} else {
+				proxyService.getAspectConfiguration().disableTracing();
+			}
 			proxyService.setWsSecEnabled(visualService.isSecurityEnabled());
 			proxyService.setWsRMEnabled(visualService
 					.isReliableMessagingEnabled());
@@ -414,15 +422,6 @@ public class ProxyServiceTransformer extends AbstractEsbNodeTransformer {
 			}
 			if (pinnedServers.size() > 0)
 				proxyService.setPinnedServers(pinnedServers);
-			
-		   //Fixing TOOLS-2735	
-		   AspectConfiguration aspectConfiguration = new AspectConfiguration(visualService.getName());
-		   proxyService.configure(aspectConfiguration);
-		   if(visualService.isStatisticsEnabled()){
-			   aspectConfiguration.enableStatistics();
-		   }else{
-			   aspectConfiguration.disableStatistics();
-		   }
 		   
 			info.getSynapseConfiguration().addProxyService(
 					visualService.getName(), proxyService);

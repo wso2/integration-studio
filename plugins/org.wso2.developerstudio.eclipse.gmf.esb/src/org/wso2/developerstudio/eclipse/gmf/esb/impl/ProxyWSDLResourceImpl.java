@@ -32,8 +32,6 @@ import org.wso2.developerstudio.eclipse.platform.core.utils.DeveloperStudioProvi
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Proxy WSDL Resource</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */

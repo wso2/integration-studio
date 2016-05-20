@@ -33,12 +33,12 @@ import org.wso2.developerstudio.eclipse.gmf.esb.MessageBuilder;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.BuilderMediatorImpl#getMessageBuilders <em>Message Builders</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.BuilderMediatorImpl#getInputConnector <em>Input Connector</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.BuilderMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

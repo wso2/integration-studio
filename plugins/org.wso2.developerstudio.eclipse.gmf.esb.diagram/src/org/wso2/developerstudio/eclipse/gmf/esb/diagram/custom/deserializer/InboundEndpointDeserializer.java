@@ -28,11 +28,13 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOU
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__NAME;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__SEQUENTIAL;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__SERVICE_PARAMETERS;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__STATISTICS_ENABLED;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__SUSPEND;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TOPICS_NAME;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TOPICS_OR_TOPIC_FILTER;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TOPIC_FILTER_FROM;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TOPIC_FILTER_NAME;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRACE_ENABLED;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_FEED_TYPE;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_JMS_CACHE_LEVEL;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_JMS_CONNECTION_FACTORY_TYPE;
@@ -55,6 +57,7 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOU
 import java.util.Map;
 
 import org.apache.commons.lang.StringUtils;
+import org.apache.synapse.aspects.AspectConfiguration;
 import org.apache.synapse.inbound.InboundEndpoint;
 import org.apache.synapse.mediators.Value;
 import org.apache.synapse.mediators.base.SequenceMediator;
@@ -101,9 +104,18 @@ public class InboundEndpointDeserializer extends
 
         setElementToEdit(inboundEndpoint);
         refreshEditPartMap();
-
         executeSetValueCommand(INBOUND_ENDPOINT__NAME, object.getName());
-
+        AspectConfiguration aspectConfiguration = object.getAspectConfiguration();
+		if (aspectConfiguration != null && object.getAspectConfiguration().isStatisticsEnable()) {
+			executeSetValueCommand(INBOUND_ENDPOINT__STATISTICS_ENABLED, new Boolean(true));
+		} else {
+			executeSetValueCommand(INBOUND_ENDPOINT__STATISTICS_ENABLED, new Boolean(false));
+		}
+		if (aspectConfiguration != null && object.getAspectConfiguration().isTracingEnabled()) {
+			executeSetValueCommand(INBOUND_ENDPOINT__TRACE_ENABLED, new Boolean(true));
+		} else {
+			executeSetValueCommand(INBOUND_ENDPOINT__TRACE_ENABLED, new Boolean(false));
+		}
         if (object.isSuspend()) {
             executeSetValueCommand(INBOUND_ENDPOINT__SUSPEND, true);
         } else {

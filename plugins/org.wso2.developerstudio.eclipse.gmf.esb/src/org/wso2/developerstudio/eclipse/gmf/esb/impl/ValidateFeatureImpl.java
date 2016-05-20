@@ -15,8 +15,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.ValidateFeature;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Validate Feature</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */

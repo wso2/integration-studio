@@ -28,6 +28,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CommandPropertyImpl#getPropertyName <em>Property Name</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CommandPropertyImpl#getValueType <em>Value Type</em>}</li>
@@ -37,7 +38,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CommandPropertyImpl#getContextAction <em>Context Action</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CommandPropertyImpl#getMessageAction <em>Message Action</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

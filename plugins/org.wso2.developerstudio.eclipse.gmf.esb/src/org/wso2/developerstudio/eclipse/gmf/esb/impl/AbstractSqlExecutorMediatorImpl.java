@@ -35,6 +35,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.SqlStatement;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.AbstractSqlExecutorMediatorImpl#getConnectionType <em>Connection Type</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.AbstractSqlExecutorMediatorImpl#getConnectionDsType <em>Connection Ds Type</em>}</li>
@@ -58,7 +59,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.SqlStatement;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.AbstractSqlExecutorMediatorImpl#getPropertyInitialsize <em>Property Initialsize</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.AbstractSqlExecutorMediatorImpl#getSqlStatements <em>Sql Statements</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

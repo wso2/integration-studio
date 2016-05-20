@@ -32,11 +32,11 @@ import org.wso2.developerstudio.eclipse.gmf.esb.URLRewriteRuleAction;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.URLRewriteRuleImpl#getUrlRewriteRuleCondition <em>Url Rewrite Rule Condition</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.URLRewriteRuleImpl#getRewriteRuleAction <em>Rewrite Rule Action</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

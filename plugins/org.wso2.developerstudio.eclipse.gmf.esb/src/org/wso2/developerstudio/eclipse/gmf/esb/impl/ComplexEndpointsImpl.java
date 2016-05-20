@@ -41,12 +41,12 @@ import org.wso2.developerstudio.eclipse.gmf.esb.MediatorFlow;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ComplexEndpointsImpl#getOutputConnector <em>Output Connector</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ComplexEndpointsImpl#getMediatorFlow <em>Mediator Flow</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ComplexEndpointsImpl#getName <em>Name</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

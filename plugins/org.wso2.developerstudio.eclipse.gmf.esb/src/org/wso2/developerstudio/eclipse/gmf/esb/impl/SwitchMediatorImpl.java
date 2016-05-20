@@ -37,6 +37,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.SwitchMediatorOutputConnector;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.SwitchMediatorImpl#getSourceXpath <em>Source Xpath</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.SwitchMediatorImpl#getSource <em>Source</em>}</li>
@@ -48,7 +49,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.SwitchMediatorOutputConnector;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.SwitchMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.SwitchMediatorImpl#getSwitchContainer <em>Switch Container</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

@@ -23,8 +23,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Cache On Hit Branch</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */

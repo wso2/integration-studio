@@ -25,11 +25,11 @@ import org.wso2.developerstudio.eclipse.gmf.esb.ProxyServiceSequenceAndEndpointC
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ProxyServiceContainerImpl#getSequenceAndEndpointContainer <em>Sequence And Endpoint Container</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ProxyServiceContainerImpl#getFaultContainer <em>Fault Container</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

@@ -24,8 +24,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.TemplateEndpointOutputConnector;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Template Endpoint Output Connector</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */

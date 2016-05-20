@@ -26,6 +26,7 @@ import org.apache.axiom.om.OMNode;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.synapse.SynapseException;
+import org.apache.synapse.aspects.AspectConfiguration;
 import org.apache.synapse.config.xml.XMLConfigConstants;
 import org.apache.synapse.config.xml.rest.APIFactory;
 import org.apache.synapse.config.xml.rest.ResourceFactory;
@@ -60,6 +61,18 @@ public class DummyAPIFactory {
 
 		API api = new API(nameAtt.getAttributeValue(), contextAtt.getAttributeValue());
 
+		api.configure(new AspectConfiguration(nameAtt.getAttributeValue()));
+		
+		OMAttribute traceAtt = apiElt.getAttribute(new QName("trace"));
+		if (traceAtt != null && "enable".equals(traceAtt.getAttributeValue())) {
+			api.getAspectConfiguration().setTracingEnabled(true);
+		}
+		
+		OMAttribute statisticsAtt = apiElt.getAttribute(new QName("statistics"));
+		if (statisticsAtt != null && "enable".equals(statisticsAtt.getAttributeValue())) {
+			api.getAspectConfiguration().setStatisticsEnable(true);
+		}
+		
 		OMAttribute hostAtt = apiElt.getAttribute(new QName("hostname"));
 		if (hostAtt != null && !"".equals(hostAtt.getAttributeValue())) {
 			api.setHost(hostAtt.getAttributeValue());

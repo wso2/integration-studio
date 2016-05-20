@@ -15,12 +15,12 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.RouterRoute#isBreakAfterRoute <em>Break After Route</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.RouterRoute#getRouteExpression <em>Route Expression</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.RouterRoute#getRoutePattern <em>Route Pattern</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getRouterRoute()
  * @model

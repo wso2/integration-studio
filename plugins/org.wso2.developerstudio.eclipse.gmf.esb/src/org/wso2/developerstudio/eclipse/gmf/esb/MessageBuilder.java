@@ -14,12 +14,12 @@ package org.wso2.developerstudio.eclipse.gmf.esb;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageBuilder#getContentType <em>Content Type</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageBuilder#getBuilderClass <em>Builder Class</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageBuilder#getFormatterClass <em>Formatter Class</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getMessageBuilder()
  * @model

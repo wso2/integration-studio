@@ -20,6 +20,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.LocalEntryValueType;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.LocalEntryImpl#getEntryName <em>Entry Name</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.LocalEntryImpl#getLocalEntryType <em>Local Entry Type</em>}</li>
@@ -27,7 +28,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.LocalEntryValueType;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.LocalEntryImpl#getValueXML <em>Value XML</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.LocalEntryImpl#getValueURL <em>Value URL</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

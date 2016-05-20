@@ -28,6 +28,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.NamedEndpointImpl#getInputConnector <em>Input Connector</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.NamedEndpointImpl#getOutputConnector <em>Output Connector</em>}</li>
@@ -36,7 +37,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.NamedEndpointImpl#getDynamicReferenceKey <em>Dynamic Reference Key</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.NamedEndpointImpl#getStaticReferenceKey <em>Static Reference Key</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

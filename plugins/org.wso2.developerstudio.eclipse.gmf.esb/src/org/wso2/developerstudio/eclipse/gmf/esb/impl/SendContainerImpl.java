@@ -24,10 +24,10 @@ import org.wso2.developerstudio.eclipse.gmf.esb.SendContainer;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.SendContainerImpl#getEndpointFlow <em>Endpoint Flow</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

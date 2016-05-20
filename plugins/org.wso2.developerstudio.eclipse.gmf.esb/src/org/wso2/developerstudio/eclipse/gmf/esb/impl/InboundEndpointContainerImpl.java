@@ -34,11 +34,11 @@ import org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointSequenceContainer
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointContainerImpl#getSequenceContainer <em>Sequence Container</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointContainerImpl#getOnErrorSequenceContainer <em>On Error Sequence Container</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

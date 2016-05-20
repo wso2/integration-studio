@@ -35,6 +35,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CloneMediatorImpl#getCloneID <em>Clone ID</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CloneMediatorImpl#isSequentialMediation <em>Sequential Mediation</em>}</li>
@@ -45,7 +46,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CloneMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CloneMediatorImpl#getCloneContainer <em>Clone Container</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

@@ -27,11 +27,11 @@ import org.wso2.developerstudio.eclipse.gmf.esb.OutputConnector;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.OutputConnectorImpl#getOutgoingLink <em>Outgoing Link</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.OutputConnectorImpl#getCommentMediators <em>Comment Mediators</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

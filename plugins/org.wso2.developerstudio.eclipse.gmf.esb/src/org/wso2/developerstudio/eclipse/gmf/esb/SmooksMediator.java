@@ -14,6 +14,7 @@ package org.wso2.developerstudio.eclipse.gmf.esb;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SmooksMediator#getConfigurationKey <em>Configuration Key</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SmooksMediator#getInputType <em>Input Type</em>}</li>
@@ -26,7 +27,6 @@ package org.wso2.developerstudio.eclipse.gmf.esb;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SmooksMediator#getInputConnector <em>Input Connector</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SmooksMediator#getOutputConnector <em>Output Connector</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getSmooksMediator()
  * @model

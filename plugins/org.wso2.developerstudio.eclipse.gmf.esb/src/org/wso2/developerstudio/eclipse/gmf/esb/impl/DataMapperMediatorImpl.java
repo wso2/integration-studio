@@ -41,6 +41,7 @@ import org.wso2.developerstudio.eclipse.platform.core.utils.DeveloperStudioProvi
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.DataMapperMediatorImpl#getInputConnector <em>Input Connector</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.DataMapperMediatorImpl#getInputType <em>Input Type</em>}</li>
@@ -53,7 +54,6 @@ import org.wso2.developerstudio.eclipse.platform.core.utils.DeveloperStudioProvi
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.DataMapperMediatorImpl#getOutputSchemaLocalPath <em>Output Schema Local Path</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.DataMapperMediatorImpl#getOutputType <em>Output Type</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

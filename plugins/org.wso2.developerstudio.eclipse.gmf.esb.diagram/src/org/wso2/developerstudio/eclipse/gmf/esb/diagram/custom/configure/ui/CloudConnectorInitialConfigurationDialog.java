@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
@@ -24,6 +25,8 @@ import org.apache.synapse.SynapseConstants;
 import org.apache.synapse.mediators.Value;
 import org.apache.synapse.mediators.template.InvokeMediator;
 import org.eclipse.core.resources.IContainer;
+import org.eclipse.core.resources.IProject;
+import org.eclipse.core.runtime.CoreException;
 import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.jface.dialogs.Dialog;
@@ -63,6 +66,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.RuleOptionType;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.Activator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EditorUtils;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.extensions.CustomPaletteToolTransferDropTargetListener;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.factory.ConnectionFileCreator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.factory.LocalEntryFileCreator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbMultiPageEditor;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbPaletteFactory;
@@ -403,28 +407,54 @@ public class CloudConnectorInitialConfigurationDialog extends TitleAreaDialog {
 	
 	@Override
 	protected void okPressed() {
-        IContainer location = EditorUtils.getActiveProject().getFolder("src" + File.separator + "main"
-				+ File.separator + "synapse-config" + File.separator
-				+ "local-entries");		
-			
-		try {
-			
-			LocalEntryFileCreator localEntryFileCreator = new LocalEntryFileCreator();
-			String content="<?xml version=\"1.0\" encoding=\"UTF-8\"?><localEntry xmlns=\"http://ws.apache.org/ns/synapse\" key=\""+configName+"\"/>";
-			
-			OMElement payload = AXIOMUtil.stringToOM(content); 
-			serializeParams(payload);			
-			localEntryFileCreator.createLocalEntryFile(payload.toString(), location, configName);
-		} catch (Exception e) {
-			log.error("Error occured while creating the Local entry file", e);
+        IProject activeProject = EditorUtils.getActiveProject();
+        
+        boolean isIntegrationProject = false; 
+       	
+        try {
+			if(Arrays.asList(activeProject.getDescription().getNatureIds()).contains("org.wso2.developerstudio.eclipse.integration.project.nature")){
+				isIntegrationProject = true;	
+			}
+		} catch (CoreException e) {
+			log.error("Error occured when getting project nature", e);
 		}
-		
-		
+        
+        if(isIntegrationProject){
+        	IContainer location = activeProject.getFolder("src" + File.separator + "main"
+					+ File.separator + "integration-config" + File.separator
+					+ "connections");
+        	try {
+     			ConnectionFileCreator connectionFileCreator = new ConnectionFileCreator();
+     			String content="<?xml version=\"1.0\" encoding=\"UTF-8\"?><localEntry xmlns=\"http://ws.apache.org/ns/synapse\" key=\""+configName+"\"/>";
+     			
+     			OMElement payload = AXIOMUtil.stringToOM(content); 
+     			serializeParams(payload);			
+     			connectionFileCreator.createConnectionFile(payload.toString(), location, configName);
+     		} catch (Exception e) {
+     			log.error("Error occured while creating the connection file", e);
+     		}
+        }else{
+        	 IContainer location = activeProject.getFolder("src" + File.separator + "main"
+     				+ File.separator + "synapse-config" + File.separator
+     				+ "local-entries");	
+			try {
+				LocalEntryFileCreator localEntryFileCreator = new LocalEntryFileCreator();
+				String content = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><localEntry xmlns=\"http://ws.apache.org/ns/synapse\" key=\""
+						+ configName + "\"/>";
+
+				OMElement payload = AXIOMUtil.stringToOM(content);
+				serializeParams(payload);
+				localEntryFileCreator.createLocalEntryFile(payload.toString(), location, configName);
+			} catch (Exception e) {
+				log.error("Error occured while creating the Local entry file", e);
+			}
+        }
+			
 		/**
 		 *  put a entry in cloudConnector.properties file
 		 */
 		
-		String pathName=EditorUtils.getActiveProject().getLocation().toOSString()+File.separator+"resources";
+		String pathName=activeProject.getLocation().toOSString()+File.separator+"resources";
 		File resources=new File(pathName);
 		try {
 			resources.mkdir();

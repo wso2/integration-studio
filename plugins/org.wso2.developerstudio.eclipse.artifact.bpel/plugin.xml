@@ -139,12 +139,16 @@
  </extension>
 
 <extension point="org.wso2.developerstudio.eclipse.dashboad.link">
-     <category id="dashboard.category.bps" showTitle="true"
+<wizardCategory category="org.wso2.developerstudio.bpeleditor"/>
+     <category id="dashboard.category.bps.bpeleditor" showTitle="true"
                   title="BPS BPEL Tooling"
-                  priority="6">
+                  priority="7">
      </category>
-     <wizardLink category="dashboard.category.bps" id="dashboard.wizardLink.bpel"
+     <wizardLink category="dashboard.category.bps.bpeleditor" id="dashboard.wizardLink.bpel"
                     wizard="org.wso2.developerstudio.eclipse.artifact.newbpelartifact">
+     </wizardLink>
+     <wizardLink category="dashboard.category.bps.bpeleditor" id="dashboard.wizardLink.applySecurity"
+                    wizard="org.wso2.developerstudio.eclipse.artifact.applySecurity">
      </wizardLink>
  </extension>
 </plugin>

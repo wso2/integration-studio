@@ -244,20 +244,22 @@ function generateTasks() {
 }
 
 /*
- * Signature: addTask(){...}
+ * Signature: deleteTask(){...}
  * 
- * This method generates creates a new task. This method add a dummy task node into the ht file and adds a new task tab and Ui elements respectively
- * 
- * 
+ * This method deletes an existing task.
  */
 function deleteTask(taskNode) { //createFile
     if(taskNode.parentNode.getElementsByTagName("task").length!=1){
-     taskNode.parentNode.removeChild(taskNode); 
-     saveSource();
-     process();
-     makeDirty();
+        confirmInput = confirm("Do you really want to delete " + taskNode.getAttribute("name") + " ? ");
+        if (confirmInput == true) {
+            taskNode.parentNode.removeChild(taskNode); 
+            saveSource();
+            process();
+            ExecuteCustomFunction("removewsdl", taskNode.getAttribute("name"));
+            makeDirty();
+        } 
     }else{
-    handleError("HT File should have at least one task");    
+        handleError("HT File should have at least one task");    
     }
 }
 
@@ -339,7 +341,7 @@ function generateTaskDiv(taskNode) {
         createFile(taskNode.getAttribute("name"),"");
         //generateTasks();
     });
-
+    initValues(taskName);
     i = parseInt($('#nooftasks').val());
     //handleError(i);
     i++;
@@ -568,48 +570,48 @@ function generateTaskDiv(taskNode) {
     }
     //handleError($('#' +taskDivName + ' #taskCallbackServiceName').val());
     // sync other fields
-    if (taskNode.getElementsByTagName("documentation").length != 0) {
+    if (taskNode.getElementsByTagName("documentation").length != 0 && taskNode.getElementsByTagName("documentation")[0].hasChildNodes()) {
         $('#' + taskDivName + " #taskDocumentation")
             .val(
-                taskNode.getElementsByTagName("documentation")[0].childNodes[0].nodeValue
-                .trim());
+                taskNode.getElementsByTagName("documentation")[0].childNodes[0].nodeValue.trim());
     }
-    if (taskNode.getElementsByTagName("priority").length != 0) {
+    if (taskNode.getElementsByTagName("priority").length != 0 && taskNode.getElementsByTagName("priority")[0].hasChildNodes()) {
         $('#' + taskDivName + " #taskPriority")
             .val(
-                taskNode.getElementsByTagName("priority")[0].childNodes[0].nodeValue
-                .trim());
+                taskNode.getElementsByTagName("priority")[0].childNodes[0].nodeValue.trim());
     }
-    if (taskNode.getElementsByTagName("interface").length != 0) {
+    if (taskNode.getElementsByTagName("interface").length != 0 && taskNode.getElementsByTagName("interface")[0].hasChildNodes()) {
         $('#' + taskDivName + " #taskOperation").val(
             taskNode.getElementsByTagName("interface")[0].getAttribute(
                 "operation").trim());
     }
     // service URL mapping
+    if(taskNode.getElementsByTagName("interface")[0].getAttribute(
+            "responseOperation").trim() != "")
     $('#' + taskDivName + " #taskCallbackOperationName").val(
         taskNode.getElementsByTagName("interface")[0].getAttribute(
             "responseOperation").trim());
     if (taskNode.getElementsByTagName("presentationElements")[0]
-        .getElementsByTagName("name").length != 0) {
+        .getElementsByTagName("name").length != 0 && taskNode.getElementsByTagName("presentationElements")[0]
+            .getElementsByTagName("name")[0].hasChildNodes()) {
         $('#' + taskDivName + " #presentationElementDisplayName").val(
             taskNode.getElementsByTagName("presentationElements")[0]
-            .getElementsByTagName("name")[0].childNodes[0].nodeValue
-            .trim());
+            .getElementsByTagName("name")[0].childNodes[0].nodeValue.trim());
     }
     if (taskNode.getElementsByTagName("presentationElements")[0]
-        .getElementsByTagName("subject").length != 0) {
+        .getElementsByTagName("subject").length != 0 && taskNode.getElementsByTagName("presentationElements")[0]
+            .getElementsByTagName("subject")[0].hasChildNodes()) {
         $('#' + taskDivName + " #presentationElementDisplaySubject").val(
             taskNode.getElementsByTagName("presentationElements")[0]
-            .getElementsByTagName("subject")[0].childNodes[0].nodeValue
-            .trim());
+            .getElementsByTagName("subject")[0].childNodes[0].nodeValue.trim());
     }
     if (taskNode.getElementsByTagName("presentationElements")[0]
-        .getElementsByTagName("description").length != 0) {
+        .getElementsByTagName("description").length != 0 && taskNode.getElementsByTagName("presentationElements")[0]
+                .getElementsByTagName("description")[0].hasChildNodes()) {
         $('#' + taskDivName + " #presentationElementDescription")
             .val(
                 taskNode.getElementsByTagName("presentationElements")[0]
-                .getElementsByTagName("description")[0].childNodes[0].nodeValue
-                .trim());
+                .getElementsByTagName("description")[0].childNodes[0].nodeValue.trim());
     }
     
     try {
@@ -649,19 +651,42 @@ function generateText(taskNode) {
     taskDivName = taskName + "wrapper";
     // fill general details
     taskNode.setAttribute("name", $('#' + taskDivName + " #taskName").val().replace(/ /g, ''));
+    if(taskNode.getElementsByTagName("documentation")[0].hasChildNodes())
     taskNode.getElementsByTagName("documentation")[0].childNodes[0].nodeValue = $(
-        '#' + taskDivName + " #taskDocumentation").val();
+        '#' + taskDivName + " #taskDocumentation").val(); //else create node and add
+    else
+        taskNode.getElementsByTagName("documentation")[0].appendChild(xmlDom.createTextNode($(
+        '#' + taskDivName + " #taskDocumentation").val()));
+    if(taskNode.getElementsByTagName("priority")[0].hasChildNodes())
     taskNode.getElementsByTagName("priority")[0].childNodes[0].nodeValue = $(
         '#' + taskDivName + " #taskPriority").val();
+    else
+        taskNode.getElementsByTagName("priority")[0].appendChild(xmlDom.createTextNode($(
+        '#' + taskDivName + " #taskPriority").val()));
+    if(taskNode.getElementsByTagName("presentationElements")[0]
+        .getElementsByTagName("name")[0].hasChildNodes())
     taskNode.getElementsByTagName("presentationElements")[0]
         .getElementsByTagName("name")[0].childNodes[0].nodeValue = $(
             '#' + taskDivName + " #presentationElementDisplayName").val();
+    else
+        taskNode.getElementsByTagName("presentationElements")[0].getElementsByTagName("name")[0].appendChild(xmlDom.createTextNode($(
+        '#' + taskDivName + " #presentationElementDisplayName").val()));    
+    if(taskNode.getElementsByTagName("presentationElements")[0]
+        .getElementsByTagName("subject")[0].hasChildNodes())    
     taskNode.getElementsByTagName("presentationElements")[0]
         .getElementsByTagName("subject")[0].childNodes[0].nodeValue = $(
             '#' + taskDivName + " #presentationElementDisplaySubject").val();
+    else
+        taskNode.getElementsByTagName("presentationElements")[0].getElementsByTagName("subject")[0].appendChild(xmlDom.createTextNode($(
+        '#' + taskDivName + " #presentationElementDisplaySubject").val()));    
+    if(taskNode.getElementsByTagName("presentationElements")[0]
+        .getElementsByTagName("description")[0].hasChildNodes())    
     taskNode.getElementsByTagName("presentationElements")[0]
         .getElementsByTagName("description")[0].childNodes[0].nodeValue = $(
             '#' + taskDivName + " #presentationElementDescription").val();
+    else
+        taskNode.getElementsByTagName("presentationElements")[0].getElementsByTagName("description")[0].appendChild(xmlDom.createTextNode($(
+        '#' + taskDivName + " #presentationElementDescription").val()));    
     taskNode.getElementsByTagName("interface")[0].setAttribute("operation", $(
         '#' + taskDivName + " #taskOperation").val());
     taskNode.getElementsByTagName("interface")[0].setAttribute(
@@ -802,7 +827,9 @@ function syncWSDLFields(taskName){
     }
     if (typeof wsdlRead != 'undefined' || wsdlRead != 'undefined') {
         if(wsdlRead.getElementsByTagName("definitions").length!=0){
+            if(wsdlRead.getElementsByTagName("definitions")[0].getElementsByTagName("address")[0].getAttribute("location")!='undefined')
             $('#' + taskDivName + ' #taskCallbackServiceURL').val(wsdlRead.getElementsByTagName("definitions")[0].getElementsByTagName("address")[0].getAttribute("location"));
+            if(wsdlRead.getElementsByTagName("definitions")[0].getElementsByTagName("service")[0].getAttribute("name")!='undefined')
             $('#' + taskDivName + ' #taskCallbackServiceName').val(wsdlRead.getElementsByTagName("definitions")[0].getElementsByTagName("service")[0].getAttribute("name"));
         }else{
             createFile(taskName,"initial");
@@ -833,6 +860,35 @@ function addPeopleAssignementNode(taskNode, xmlDom, assignmentName) {
         var newAssignmentNode = xmlDom.createElementNS(
             "http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803",
             "htd:" + assignmentName);
+        newFrom = xmlDom.createElementNS(
+            "http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803",
+            "htd:from");
+        newArgument = xmlDom.createElementNS(
+            "http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803",
+            "htd:argument");
+        newArgument.setAttribute("name", "role");
+        newFrom.setAttribute("logicalPeopleGroup", "regionalClerks");
+        newArgumentText = xmlDom.createTextNode("regionalClerksRole");
+        newArgument.appendChild(newArgumentText);
+        newFrom.appendChild(newArgument);
+        newAssignmentNode.appendChild(newFrom);
+        taskNode.getElementsByTagName("peopleAssignments")[0].appendChild(newAssignmentNode);
+    } catch (err) {
+        handleError(err);
+    }
+}
+
+/*
+ * Signature: addGeneralNode(taskNode, xmlDom, assignmentName)  {...}
+ * 
+ * This function adds a people assignment node to the relevant taskNode
+ * 
+ */
+function addGeneralNode(taskNode, xmlDom, nodeName) {
+    try {
+        var newNode = xmlDom.createElementNS(
+            "http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803",
+            "htd:" + nodeName);
         newFrom = xmlDom.createElementNS(
             "http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803",
             "htd:from");
@@ -934,8 +990,7 @@ function unmarshalPeopleAssignment(taskNode, peopleAssignmentName) {
                     .val(
                         taskNode.getElementsByTagName("peopleAssignments")[0]
                         .getElementsByTagName(peopleAssignmentName)[0]
-                        .getElementsByTagName("argument")[0].childNodes[0].nodeValue
-                        .trim());
+                        .getElementsByTagName("argument")[0].childNodes[0].nodeValue.trim());
             } else {
 
                 $('#' + taskDivName + " input[name="+peopleAssignmentName+"" + taskDivName + "][value="+peopleAssignmentName+"Literal]").prop("checked", true);
@@ -1030,6 +1085,13 @@ function removeUnwantedArtifacts() {
     ExecuteCustomFunction.apply(this, taskNames);
 }
 
+function initValues(currentTaskName) {
+    $('#' + currentTaskName + 'wrapper #taskCallbackServiceName').val(currentTaskName+"Result");
+    $('#' + currentTaskName + 'wrapper #taskCallbackOperationName').val(currentTaskName+"Response");
+    $('#' + currentTaskName + 'wrapper #taskCallbackServiceURL').val("http://localhost:9763/service/"+currentTaskName+"Result");
+}
+
 function handleError(message) {
     alert(message); // A functionality to log errors is requested in https://wso2.org/jira/browse/TOOLS-3366
 }
+

@@ -43,7 +43,7 @@ import org.wso2.developerstudio.humantaskeditor.HumantaskEditorConstants;
  * Web based Human Task Editor for eclipse
  * <ul>
  * <li>page 0 contains Human Task GUI Editor
- * <li>page 1 contians nested text editor
+ * <li>page 1 contains nested text editor
  * </ul>
  */
 public class HumanTaskMultiPageEditor extends MultiPageEditorPart implements IResourceChangeListener {
@@ -90,7 +90,7 @@ public class HumanTaskMultiPageEditor extends MultiPageEditorPart implements IRe
         try {
             textEditor = new StructuredTextEditor();
             int index = addPage(textEditor, getEditorInput());
-            setPageText(index, textEditor.getTitle());
+            setPageText(index, HumantaskEditorConstants.SOURCE_EDITOR_NAME);
             editorContentFunction.setProjectName(((FileEditorInput) textEditor.getEditorInput()).getFile().getProject()
                     .getName());
         } catch (PartInitException e) {

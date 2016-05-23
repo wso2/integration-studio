@@ -3,6 +3,8 @@ package org.wso2.developerstudio.humantaskeditor;
 public class HumantaskEditorConstants {
 
     public static final String JS_CUSTOMFUNC_GET_WSDL = "getwsdl";
+    
+    public static final String JS_CUSTOMFUNC_REMOVE_WSDL = "removewsdl";
 
     public static final String JS_CUSTOMFUNC_GETTEXT = "gettext";
 
@@ -24,9 +26,9 @@ public class HumantaskEditorConstants {
 
     public static final String ERROR_FINDING_CORRESPONDING_WSDL_FILE = "Error Finding Corresponding WSDL File";
 
+    public static final String ERROR_DELETING_CORRESPONDING_WSDL_FILE = "Error Deleting Corresponding WSDL File";
+    
     public static final String UNDEFINED_LITERAL = "undefined";
-
-    public static final String CALLBACK_WSDL_PREFIX = "CBTask.wsdl";
 
     public static final String ERROR_INVALID_INPUT_MUST_BE_IFILE_EDITOR_INPUT = "Invalid Input: Must be IFileEditorInput";
 
@@ -34,7 +36,9 @@ public class HumantaskEditorConstants {
 
     public static final String ERROR_CREATING_UI_EDITOR = "Error creating UI editor";
 
-    public static final String GUI_EDITOR_NAME = "GUI Editor";
+    public static final String GUI_EDITOR_NAME = "Design";
+    
+    public static final String SOURCE_EDITOR_NAME = "Source";
 
     public static final String CREATE_HUMAN_TASK_FILE_MESSAGE = "Create HumanTask file";
 
@@ -71,10 +75,16 @@ public class HumantaskEditorConstants {
     public static final String FILE_NAME_MUST_BE_VALID_MESSAGE = "File name must be valid";
 
     public static final String FILE_NAME_MUST_BE_SPECIFIED_MESSAGE = "File name must be specified";
+    
+    public static final String FILE_NAME_MUST_BE_VALID = "Enter a Valid File Name";
 
     public static final String FILE_CONTAINER_MUST_BE_SPECIFIED_MESSAGE = "File container must be specified";
 
-    public static final String TASK_NAME_CANNOT_HAVE_SPACES = "Task name should'nt have spaces";
+    public static final String TASK_NAME_CANNOT_HAVE_SPACES_MESSAGE = "Task name should'nt have spaces";
+    
+    public static final String TASK_NAME_CANNOT_BE_EMPTY_MESSAGE = "Task name cannot be empty";
+    
+    public static final String ENTER_A_VALID_FILENAME = "Enter a valid file name";
     
     public static final String WIZARD_PAGE_TEXT = "Human Task Artifact";
 
@@ -105,5 +115,15 @@ public class HumantaskEditorConstants {
     public static final String EXCEPTION_OCCURED_IN_PARSING_XML = "Exception occured in parsing XML";
     
     public static final String QUALIFIED_TASK_NODE_NAME = "htd:task";
+    
+    public static final String XML_INDENT_YES = "yes";
+
+    public static final String XML_OUTPUT_METHOD = "xml";
+
+    public static final String TASK_NAME_ATTRIBUTE = "name";
+
+    public static final String CALLBACK_TASK_WSDL_SUFFIX = "CBTask.wsdl";
+
+    public static final String TASK_WSDL_SUFFIX = "Task.wsdl";
  
 }

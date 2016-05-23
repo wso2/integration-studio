@@ -18,12 +18,12 @@
    -->
 <feature
       id="org.wso2.developerstudio.eclipse.bps.feature"
-      label="WSO2 BPS Tooling Feature"
-      version="4.0.0.qualifier"
+      label="WSO2 BPS Tooling BPEL Feature"
+      version="3.5.1.qualifier"
       provider-name="%providerName">
 
    <description url="http://wso2.com">
-      This feature will install plugins related WSO2 Business Process Service Support.
+      This feature will install plugins related WSO2 Business Process Server BPEL Editor. With this plugins you can create a deployable BPEL artifact using GUI tools.
    </description>
 
    <copyright url="%copyrightURL">
@@ -34,9 +34,8 @@
       %license
    </license>
 
-
-	 <requires>
-      <import feature="org.wso2.developerstudio.kernel.feature"
+   <requires>
+       <import feature="org.wso2.developerstudio.kernel.feature"
 			version="0.0.0"/>
 		 <import feature="org.wso2.developerstudio.capp.feature"
 			version="0.0.0"/>
@@ -69,9 +68,10 @@
 		 <import feature="org.wso2.developerstudio.usr.management.feature"
 			version="0.0.0"/>
 		 <import feature="org.wso2.developerstudio.mvn.multimodule.feature"
-			version="0.0.0"/> </requires>
-   
-  <plugin
+			version="0.0.0"/>
+   </requires>
+
+   <plugin
          id="org.eclipse.bpel.apache.ode.deploy.model"
          download-size="0"
          install-size="0"

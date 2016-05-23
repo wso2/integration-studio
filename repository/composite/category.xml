@@ -25,6 +25,9 @@
    <feature id="org.wso2.developerstudio.eclipse.bps.hteditor.feature" version="0.0.0">
       <category name="org.wso2.developerstudio.eclipse.bps.feature.category"/>
    </feature>
+   <feature id="org.wso2.developerstudio.eclipse.bps.bpmn.feature" version="0.0.0">
+      <category name="org.wso2.developerstudio.eclipse.bps.feature.category"/>
+   </feature>
 
    <!-- Kernel Features and category--> 
  <feature id="org.wso2.developerstudio.kernel.feature" version="0.0.0">

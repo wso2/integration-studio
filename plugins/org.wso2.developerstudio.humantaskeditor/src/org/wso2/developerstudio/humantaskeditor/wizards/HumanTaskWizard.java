@@ -136,8 +136,8 @@ public class HumanTaskWizard extends Wizard implements INewWizard {
         }
         IContainer container = (IContainer) resource;
         final IFile file = container.getFile(new Path(fileName));
-        final IFile wsdlfile = container.getFile(new Path(taskName + "Task.wsdl"));
-        final IFile cbWsdlfile = container.getFile(new Path(taskName + "CBTask.wsdl"));
+        final IFile wsdlfile = container.getFile(new Path(taskName + HumantaskEditorConstants.TASK_WSDL_SUFFIX));
+        final IFile cbWsdlfile = container.getFile(new Path(taskName + HumantaskEditorConstants.CALLBACK_TASK_WSDL_SUFFIX));
         final IFile htconfigfile = container.getFile(new Path(HumantaskEditorConstants.INITIAL_HTCONFIG_NAME));
         addNature(container.getProject());
 
@@ -338,12 +338,12 @@ public class HumanTaskWizard extends Wizard implements INewWizard {
             NodeList taskList = dom.getElementsByTagName(HumantaskEditorConstants.QUALIFIED_TASK_NODE_NAME);
             for (int i = 0; i < taskList.getLength(); i++) {
                 Node task = taskList.item(i);
-                task.getAttributes().getNamedItem("name").setNodeValue(taskName);
+                task.getAttributes().getNamedItem(HumantaskEditorConstants.TASK_NAME_ATTRIBUTE).setNodeValue(taskName);
             }
             TransformerFactory transfactory = TransformerFactory.newInstance();
             Transformer transformer = transfactory.newTransformer();
-            transformer.setOutputProperty(OutputKeys.METHOD, "xml");
-            transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+            transformer.setOutputProperty(OutputKeys.METHOD, HumantaskEditorConstants.XML_OUTPUT_METHOD);
+            transformer.setOutputProperty(OutputKeys.INDENT, HumantaskEditorConstants.XML_INDENT_YES);
             transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", Integer.toString(2));
 
             StringWriter stringWriter = new StringWriter();

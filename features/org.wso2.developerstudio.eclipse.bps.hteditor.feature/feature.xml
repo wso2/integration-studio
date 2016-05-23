@@ -18,12 +18,12 @@
    -->
 <feature
       id="org.wso2.developerstudio.eclipse.bps.hteditor.feature"
-      label="WSO2 BPS Tooling HumanTask Editor Feature"
-      version="4.0.0.qualifier"
+      label="WSO2 BPS Tooling HumanTask Feature"
+      version="3.5.1.qualifier"
       provider-name="%providerName">
 
    <description url="http://wso2.com">
-      This feature will install plugins related WSO2 Business Process Service Support.
+      This feature will install plugins related WSO2 Business Process Server Human Task Editor. With this plugins you can create a deployable Human Task artifact using GUI tools.
    </description>
 
    <copyright url="%copyrightURL">

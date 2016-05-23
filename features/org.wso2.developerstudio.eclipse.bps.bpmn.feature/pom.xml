@@ -25,10 +25,10 @@
         <version>3.5.1-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
-    <artifactId>org.wso2.developerstudio.eclipse.bps.feature</artifactId>
+    <artifactId>org.wso2.developerstudio.eclipse.bps.bpmn.feature</artifactId>
     <packaging>eclipse-feature</packaging>
-    <name>WSO2 Developer Studio BPS Feature</name>
-    <description>This feature contains the bundles for WSO2 Business Process Server feature.</description>
+    <name>WSO2 Developer Studio BPMN Feature</name>
+    <description>This feature contains the bundles for WSO2 Business Process Server BPMN feature.</description>
     <build>
         <plugins>
             <plugin>

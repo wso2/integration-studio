@@ -16,6 +16,33 @@
 
 package org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer;
 
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.API_RESOURCE__ALLOW_DELETE;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.API_RESOURCE__ALLOW_GET;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.API_RESOURCE__ALLOW_HEAD;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.API_RESOURCE__ALLOW_OPTIONS;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.API_RESOURCE__ALLOW_PATCH;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.API_RESOURCE__ALLOW_POST;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.API_RESOURCE__ALLOW_PUT;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.API_RESOURCE__FAULT_SEQUENCE_KEY;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.API_RESOURCE__FAULT_SEQUENCE_NAME;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.API_RESOURCE__FAULT_SEQUENCE_TYPE;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.API_RESOURCE__IN_SEQUENCE_KEY;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.API_RESOURCE__IN_SEQUENCE_NAME;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.API_RESOURCE__IN_SEQUENCE_TYPE;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.API_RESOURCE__OUT_SEQUENCE_KEY;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.API_RESOURCE__OUT_SEQUENCE_NAME;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.API_RESOURCE__OUT_SEQUENCE_TYPE;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.API_RESOURCE__PROTOCOL;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.API_RESOURCE__URI_TEMPLATE;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.API_RESOURCE__URL_MAPPING;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.API_RESOURCE__URL_STYLE;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.SYNAPSE_API__API_NAME;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.SYNAPSE_API__CONTEXT;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.SYNAPSE_API__HOST_NAME;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.SYNAPSE_API__PORT;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.SYNAPSE_API__STATISTICS_ENABLED;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.SYNAPSE_API__TRACE_ENABLED;
+
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
@@ -29,8 +56,6 @@ import org.apache.synapse.rest.dispatch.URITemplateHelper;
 import org.apache.synapse.rest.dispatch.URLMappingHelper;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
-import org.eclipse.emf.common.util.BasicEList;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy;
 import org.eclipse.gmf.runtime.diagram.ui.commands.SetBoundsCommand;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart;
@@ -42,7 +67,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.APIHandlerProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.APIResource;
 import org.wso2.developerstudio.eclipse.gmf.esb.ApiResourceUrlStyle;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
-import org.wso2.developerstudio.eclipse.gmf.esb.LogProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.MediatorFlow;
 import org.wso2.developerstudio.eclipse.gmf.esb.Protocol;
 import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
@@ -50,8 +74,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.SequenceType;
 import org.wso2.developerstudio.eclipse.gmf.esb.SynapseAPI;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
 import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom.DummyHandler;
-
-import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.*;
 
 /**
  * Synapse API deserializer
@@ -63,7 +85,17 @@ public class APIDeserializer extends AbstractEsbNodeDeserializer<API, SynapseAPI
 		SynapseAPI synapseAPI = (SynapseAPI) DeserializerUtils.createNode(part, EsbElementTypes.SynapseAPI_3668);
 		setElementToEdit(synapseAPI);
 		refreshEditPartMap();
-		
+		//api.configure(new AspectConfiguration(synapseAPI.getApiName()));
+		if (api.getAspectConfiguration().isStatisticsEnable()) {
+			executeSetValueCommand(SYNAPSE_API__STATISTICS_ENABLED, new Boolean(true));
+		} else {
+			executeSetValueCommand(SYNAPSE_API__STATISTICS_ENABLED, new Boolean(false));
+		}
+		if (api.getAspectConfiguration().isTracingEnabled()) {
+			executeSetValueCommand(SYNAPSE_API__TRACE_ENABLED, new Boolean(true));
+		} else {
+			executeSetValueCommand(SYNAPSE_API__TRACE_ENABLED, new Boolean(false));
+		}
 		executeSetValueCommand(SYNAPSE_API__API_NAME, api.getAPIName());
 		executeSetValueCommand(SYNAPSE_API__CONTEXT, api.getContext());
 		if (api.getHost() != null) {

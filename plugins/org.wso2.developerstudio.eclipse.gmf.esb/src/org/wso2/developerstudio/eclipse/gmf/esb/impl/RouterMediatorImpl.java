@@ -36,6 +36,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.RouterTarget;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.RouterMediatorImpl#isContinueAfterRouting <em>Continue After Routing</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.RouterMediatorImpl#getTargetOutputConnector <em>Target Output Connector</em>}</li>
@@ -43,7 +44,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.RouterTarget;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.RouterMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.RouterMediatorImpl#getRouterContainer <em>Router Container</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

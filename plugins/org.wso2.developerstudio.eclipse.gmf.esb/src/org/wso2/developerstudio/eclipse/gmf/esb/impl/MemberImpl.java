@@ -31,12 +31,12 @@ import org.wso2.developerstudio.eclipse.gmf.esb.Member;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MemberImpl#getHostName <em>Host Name</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MemberImpl#getHttpPort <em>Http Port</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MemberImpl#getHttpsPort <em>Https Port</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

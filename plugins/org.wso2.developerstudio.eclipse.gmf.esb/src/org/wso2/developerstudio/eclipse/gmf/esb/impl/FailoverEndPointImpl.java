@@ -33,13 +33,13 @@ import org.wso2.developerstudio.eclipse.gmf.esb.MediatorFlow;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.FailoverEndPointImpl#getInputConnector <em>Input Connector</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.FailoverEndPointImpl#getOutputConnector <em>Output Connector</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.FailoverEndPointImpl#getWestOutputConnector <em>West Output Connector</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.FailoverEndPointImpl#getMediatorFlow <em>Mediator Flow</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

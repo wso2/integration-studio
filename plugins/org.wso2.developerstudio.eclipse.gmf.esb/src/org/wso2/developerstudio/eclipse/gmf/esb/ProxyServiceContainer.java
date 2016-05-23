@@ -14,11 +14,11 @@ package org.wso2.developerstudio.eclipse.gmf.esb;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ProxyServiceContainer#getSequenceAndEndpointContainer <em>Sequence And Endpoint Container</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ProxyServiceContainer#getFaultContainer <em>Fault Container</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getProxyServiceContainer()
  * @model

@@ -23,11 +23,11 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbElementImpl#getDescription <em>Description</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbElementImpl#getCommentsList <em>Comments List</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

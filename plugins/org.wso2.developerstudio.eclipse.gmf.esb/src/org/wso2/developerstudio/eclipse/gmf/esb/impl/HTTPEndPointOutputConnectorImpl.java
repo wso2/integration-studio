@@ -24,8 +24,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.HTTPEndPointOutputConnector;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>HTTP End Point Output Connector</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */

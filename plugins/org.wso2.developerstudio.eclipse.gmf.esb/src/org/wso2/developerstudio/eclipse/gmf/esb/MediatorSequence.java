@@ -15,6 +15,7 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MediatorSequence#isAnonymous <em>Anonymous</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MediatorSequence#getSequenceName <em>Sequence Name</em>}</li>
@@ -22,7 +23,6 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MediatorSequence#getOnError <em>On Error</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MediatorSequence#getDescription <em>Description</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getMediatorSequence()
  * @model

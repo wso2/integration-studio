@@ -26,6 +26,7 @@ import org.wso2.developerstudio.datamapper.SchemaDataType;
 import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.DMOperatorTransformerFactory;
 import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.DMOperatorTransformer;
 import org.wso2.developerstudio.datamapper.diagram.custom.exception.DataMapperException;
+import org.wso2.developerstudio.datamapper.diagram.custom.model.DMOperatorType;
 import org.wso2.developerstudio.datamapper.diagram.custom.model.DMVariable;
 import org.wso2.developerstudio.datamapper.diagram.custom.model.DMVariableType;
 import org.wso2.developerstudio.datamapper.diagram.custom.model.DataMapperDiagramModel;
@@ -118,6 +119,9 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
                                 variableArray);
                         if (mostChildVariableIndex >= 0) {
                             mostChildVariableName = variableArray.get(mostChildVariableIndex).getName();
+                        } else {
+                            mostChildVariableIndex = model.getInputVariablesArray().get(0);
+                            mostChildVariableName = model.getVariablesArray().get(mostChildVariableIndex).getName();
                         }
                         dmVariable.setMostChildVariableIndex(mostChildVariableIndex);
                     } else {
@@ -186,7 +190,8 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
                     functionBuilder.append("var " + outputVariable.getName() + " = [];");
                     functionBuilder.append("\n");
                 } else if (DMVariableType.OUTPUT.equals(outputVariable.getType())) {
-                    updateOutputVariableForLoopMap(outputVariable, variableMap, indexOfMostInnerForLoopBean,operationForLoopBeansList);
+                    updateOutputVariableForLoopMap(outputVariable, variableMap, indexOfMostInnerForLoopBean,
+                            operationForLoopBeansList);
                 }
             }
             indexOfMostInnerForLoopBean = getMostInnerForLoopBeanFromList(operationForLoopBeansList);
@@ -466,6 +471,11 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
         List<DMVariable> outputVariables = mappingOperation.getOutputVariables();
         if (outputVariables.size() > 1) {
             operationBuilder.append("[ ");
+        } else if (outputVariables.size() == 1) {
+            if (DMOperatorType.CONSTANT.equals(mappingOperation.getOperation().getOperatorType())
+                    && DMVariableType.INTERMEDIATE.equals(outputVariables.get(0).getType())) {
+                return "";
+            }
         }
         Stack<ForLoopBean> forLoopBeanParentStack = getParentForLoopBeanStack(forLoopBean);
         Stack<ForLoopBean> tempForLoopBeanParentStack = new Stack<ForLoopBean>();
@@ -537,7 +547,7 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
     }
 
     private int getMostInnerForLoopBeanFromList(List<Integer> operationForLoopBeansList) {
-        if(operationForLoopBeansList.isEmpty()){
+        if (operationForLoopBeansList.isEmpty()) {
             return 0;
         }
         int mostChildForLoopIndex = operationForLoopBeansList.get(0);

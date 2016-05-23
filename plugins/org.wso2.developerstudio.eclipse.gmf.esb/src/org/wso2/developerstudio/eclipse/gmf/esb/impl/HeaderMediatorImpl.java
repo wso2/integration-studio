@@ -29,6 +29,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.ScopeType;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.HeaderMediatorImpl#getHeaderName <em>Header Name</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.HeaderMediatorImpl#getHeaderAction <em>Header Action</em>}</li>
@@ -40,7 +41,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.ScopeType;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.HeaderMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.HeaderMediatorImpl#getValueInline <em>Value Inline</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

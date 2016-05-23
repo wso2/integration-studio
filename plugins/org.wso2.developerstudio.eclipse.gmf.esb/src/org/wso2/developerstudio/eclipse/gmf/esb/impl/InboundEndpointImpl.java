@@ -61,6 +61,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.VFSFileSort;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getSequenceInputConnector <em>Sequence Input Connector</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getSequenceOutputConnector <em>Sequence Output Connector</em>}</li>
@@ -228,8 +229,9 @@ import org.wso2.developerstudio.eclipse.gmf.esb.VFSFileSort;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqConnectionSslVersion <em>Transport Rabbit Mq Connection Ssl Version</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportFeedURL <em>Transport Feed URL</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportFeedType <em>Transport Feed Type</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isTraceEnabled <em>Trace Enabled</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isStatisticsEnabled <em>Statistics Enabled</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -3495,6 +3497,46 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	protected FeedType transportFeedType = TRANSPORT_FEED_TYPE_EDEFAULT;
 
 	/**
+	 * The default value of the '{@link #isTraceEnabled() <em>Trace Enabled</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isTraceEnabled()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean TRACE_ENABLED_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isTraceEnabled() <em>Trace Enabled</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isTraceEnabled()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean traceEnabled = TRACE_ENABLED_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isStatisticsEnabled() <em>Statistics Enabled</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isStatisticsEnabled()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean STATISTICS_ENABLED_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isStatisticsEnabled() <em>Statistics Enabled</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isStatisticsEnabled()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean statisticsEnabled = STATISTICS_ENABLED_EDEFAULT;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -5488,6 +5530,48 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isTraceEnabled() {
+		return traceEnabled;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTraceEnabled(boolean newTraceEnabled) {
+		boolean oldTraceEnabled = traceEnabled;
+		traceEnabled = newTraceEnabled;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRACE_ENABLED, oldTraceEnabled, traceEnabled));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isStatisticsEnabled() {
+		return statisticsEnabled;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setStatisticsEnabled(boolean newStatisticsEnabled) {
+		boolean oldStatisticsEnabled = statisticsEnabled;
+		statisticsEnabled = newStatisticsEnabled;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__STATISTICS_ENABLED, oldStatisticsEnabled, statisticsEnabled));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public String getClass_() {
 		return class_;
 	}
@@ -7464,6 +7548,10 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 				return getTransportFeedURL();
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_FEED_TYPE:
 				return getTransportFeedType();
+			case EsbPackage.INBOUND_ENDPOINT__TRACE_ENABLED:
+				return isTraceEnabled();
+			case EsbPackage.INBOUND_ENDPOINT__STATISTICS_ENABLED:
+				return isStatisticsEnabled();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -7976,6 +8064,12 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_FEED_TYPE:
 				setTransportFeedType((FeedType)newValue);
 				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRACE_ENABLED:
+				setTraceEnabled((Boolean)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__STATISTICS_ENABLED:
+				setStatisticsEnabled((Boolean)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -8486,6 +8580,12 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_FEED_TYPE:
 				setTransportFeedType(TRANSPORT_FEED_TYPE_EDEFAULT);
 				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRACE_ENABLED:
+				setTraceEnabled(TRACE_ENABLED_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__STATISTICS_ENABLED:
+				setStatisticsEnabled(STATISTICS_ENABLED_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -8830,6 +8930,10 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 				return TRANSPORT_FEED_URL_EDEFAULT == null ? transportFeedURL != null : !TRANSPORT_FEED_URL_EDEFAULT.equals(transportFeedURL);
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_FEED_TYPE:
 				return transportFeedType != TRANSPORT_FEED_TYPE_EDEFAULT;
+			case EsbPackage.INBOUND_ENDPOINT__TRACE_ENABLED:
+				return traceEnabled != TRACE_ENABLED_EDEFAULT;
+			case EsbPackage.INBOUND_ENDPOINT__STATISTICS_ENABLED:
+				return statisticsEnabled != STATISTICS_ENABLED_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -9164,6 +9268,10 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 		result.append(transportFeedURL);
 		result.append(", transportFeedType: ");
 		result.append(transportFeedType);
+		result.append(", traceEnabled: ");
+		result.append(traceEnabled);
+		result.append(", statisticsEnabled: ");
+		result.append(statisticsEnabled);
 		result.append(')');
 		return result.toString();
 	}

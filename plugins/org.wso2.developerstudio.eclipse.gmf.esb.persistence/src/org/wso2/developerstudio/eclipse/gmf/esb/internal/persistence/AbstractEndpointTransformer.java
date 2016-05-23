@@ -59,16 +59,19 @@ public abstract class AbstractEndpointTransformer extends AbstractEsbNodeTransfo
 			synapseEPDef.setUseSwa(true);
 		}
 		
-		// Fixing TOOLS-2652
-		synapseEPDef.setTraceState(visualEndPoint.isTraceEnabled() ? 1 : 0);
-		
-		AspectConfiguration aspectConfiguration = new AspectConfiguration(visualEndPoint.getEndPointName());
-		synapseEPDef.configure(aspectConfiguration);
-		if (visualEndPoint.isStatisticsEnabled()) {
-			aspectConfiguration.enableStatistics();
-		} else {
-			aspectConfiguration.disableStatistics();
-		}		
+        AspectConfiguration aspectConfiguration = new AspectConfiguration(visualEndPoint.getEndPointName());
+        synapseEPDef.configure(aspectConfiguration);
+        if (visualEndPoint.isStatisticsEnabled()) {
+            aspectConfiguration.enableStatistics();
+        } else {
+            aspectConfiguration.disableStatistics();
+        }
+
+        if (visualEndPoint.isTraceEnabled()) {
+            synapseEPDef.getAspectConfiguration().enableTracing();
+        } else {
+            synapseEPDef.getAspectConfiguration().disableTracing();
+        }
 		
 		String suspendErrorCodes=visualEndPoint.getSuspendErrorCodes();
 		if(suspendErrorCodes!=null && !"".equals(suspendErrorCodes)){

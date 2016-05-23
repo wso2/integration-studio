@@ -28,6 +28,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.RMSpecVersion;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.RMSequenceMediatorImpl#getRmSpecVersion <em>Rm Spec Version</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.RMSequenceMediatorImpl#getSequenceType <em>Sequence Type</em>}</li>
@@ -36,7 +37,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.RMSpecVersion;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.RMSequenceMediatorImpl#getInputConnector <em>Input Connector</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.RMSequenceMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

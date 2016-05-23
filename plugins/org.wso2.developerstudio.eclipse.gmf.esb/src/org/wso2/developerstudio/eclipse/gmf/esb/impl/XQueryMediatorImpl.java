@@ -36,6 +36,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.XQueryVariable;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.XQueryMediatorImpl#getVariables <em>Variables</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.XQueryMediatorImpl#getTargetXPath <em>Target XPath</em>}</li>
@@ -46,7 +47,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.XQueryVariable;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.XQueryMediatorImpl#getInputConnector <em>Input Connector</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.XQueryMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

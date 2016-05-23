@@ -15,8 +15,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.LogMediatorOutputConnector;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Log Mediator Output Connector</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */

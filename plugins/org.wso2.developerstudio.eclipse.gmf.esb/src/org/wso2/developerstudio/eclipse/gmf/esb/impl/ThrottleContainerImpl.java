@@ -25,11 +25,11 @@ import org.wso2.developerstudio.eclipse.gmf.esb.ThrottleOnRejectContainer;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ThrottleContainerImpl#getOnAcceptContainer <em>On Accept Container</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ThrottleContainerImpl#getOnRejectContainer <em>On Reject Container</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

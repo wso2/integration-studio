@@ -122,6 +122,8 @@ public enum ThrottleAccessType implements Enumerator {
 	 * Returns the '<em><b>Throttle Access Type</b></em>' literal with the specified literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param literal the literal.
+	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
 	public static ThrottleAccessType get(String literal) {
@@ -138,6 +140,8 @@ public enum ThrottleAccessType implements Enumerator {
 	 * Returns the '<em><b>Throttle Access Type</b></em>' literal with the specified name.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param name the name.
+	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
 	public static ThrottleAccessType getByName(String name) {
@@ -154,6 +158,8 @@ public enum ThrottleAccessType implements Enumerator {
 	 * Returns the '<em><b>Throttle Access Type</b></em>' literal with the specified integer value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param value the integer value.
+	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
 	public static ThrottleAccessType get(int value) {

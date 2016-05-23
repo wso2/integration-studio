@@ -174,6 +174,8 @@ public enum FaultCodeSoap12 implements Enumerator {
 	 * Returns the '<em><b>Fault Code Soap12</b></em>' literal with the specified literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param literal the literal.
+	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
 	public static FaultCodeSoap12 get(String literal) {
@@ -190,6 +192,8 @@ public enum FaultCodeSoap12 implements Enumerator {
 	 * Returns the '<em><b>Fault Code Soap12</b></em>' literal with the specified name.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param name the name.
+	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
 	public static FaultCodeSoap12 getByName(String name) {
@@ -206,6 +210,8 @@ public enum FaultCodeSoap12 implements Enumerator {
 	 * Returns the '<em><b>Fault Code Soap12</b></em>' literal with the specified integer value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param value the integer value.
+	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
 	public static FaultCodeSoap12 get(int value) {

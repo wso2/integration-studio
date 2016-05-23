@@ -41,6 +41,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.PublishEventMediatorOutputConnec
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.PublishEventMediatorImpl#getInputConnector <em>Input Connector</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.PublishEventMediatorImpl#getOutputconnector <em>Outputconnector</em>}</li>
@@ -52,7 +53,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.PublishEventMediatorOutputConnec
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.PublishEventMediatorImpl#getPayloadAttributes <em>Payload Attributes</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.PublishEventMediatorImpl#getArbitraryAttributes <em>Arbitrary Attributes</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

@@ -25,6 +25,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.OAuthMediatorOutputConnector;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.OAuthMediatorImpl#getRemoteServiceUrl <em>Remote Service Url</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.OAuthMediatorImpl#getUsername <em>Username</em>}</li>
@@ -32,7 +33,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.OAuthMediatorOutputConnector;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.OAuthMediatorImpl#getInputConnector <em>Input Connector</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.OAuthMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

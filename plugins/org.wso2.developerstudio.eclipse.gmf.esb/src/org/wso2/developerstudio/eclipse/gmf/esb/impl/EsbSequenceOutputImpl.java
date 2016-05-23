@@ -24,10 +24,10 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbSequenceOutputConnector;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbSequenceOutputImpl#getConnector <em>Connector</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

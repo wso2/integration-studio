@@ -14,11 +14,11 @@ package org.wso2.developerstudio.eclipse.gmf.esb;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EndpointDiagram#getChild <em>Child</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EndpointDiagram#getName <em>Name</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEndpointDiagram()
  * @model

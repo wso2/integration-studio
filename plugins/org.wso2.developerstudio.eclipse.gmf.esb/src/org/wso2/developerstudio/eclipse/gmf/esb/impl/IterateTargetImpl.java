@@ -29,11 +29,11 @@ import org.wso2.developerstudio.eclipse.esb.core.utils.ESBMediaTypeConstants;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.IterateTargetImpl#getSoapAction <em>Soap Action</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.IterateTargetImpl#getToAddress <em>To Address</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

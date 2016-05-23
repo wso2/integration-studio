@@ -60,7 +60,7 @@ public class ProxyServiceDeserializer extends AbstractEsbNodeDeserializer<ProxyS
 		executeSetValueCommand(PROXY_SERVICE__NAME,object.getName());
 		
 		// Fixing TOOLS-2033.
-		if (object.getTraceState() == 1) {
+		if (object.getAspectConfiguration().isTracingEnabled()) {
 			executeSetValueCommand(PROXY_SERVICE__TRACE_ENABLED, new Boolean(true));
 		} else {
 			executeSetValueCommand(PROXY_SERVICE__TRACE_ENABLED, new Boolean(false));

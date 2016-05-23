@@ -35,6 +35,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.MediatorFlow;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ConditionalRouterMediatorImpl#isContinueAfterRoute <em>Continue After Route</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ConditionalRouterMediatorImpl#getConditionalRouteBranches <em>Conditional Route Branches</em>}</li>
@@ -43,7 +44,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.MediatorFlow;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ConditionalRouterMediatorImpl#getAdditionalOutputConnector <em>Additional Output Connector</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ConditionalRouterMediatorImpl#getMediatorFlow <em>Mediator Flow</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

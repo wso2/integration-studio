@@ -31,6 +31,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.SequenceType;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.IterateMediatorImpl#getIterateID <em>Iterate ID</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.IterateMediatorImpl#isSequentialMediation <em>Sequential Mediation</em>}</li>
@@ -47,7 +48,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.SequenceType;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.IterateMediatorImpl#getSequenceKey <em>Sequence Key</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.IterateMediatorImpl#getSequenceName <em>Sequence Name</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

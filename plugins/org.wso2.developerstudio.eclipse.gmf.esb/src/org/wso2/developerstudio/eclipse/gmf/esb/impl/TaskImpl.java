@@ -22,6 +22,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.TaskTriggerType;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.TaskImpl#getTaskName <em>Task Name</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.TaskImpl#getTaskGroup <em>Task Group</em>}</li>
@@ -33,7 +34,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.TaskTriggerType;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.TaskImpl#getTaskImplementation <em>Task Implementation</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.TaskImpl#getTaskProperties <em>Task Properties</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

@@ -15,8 +15,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediatorInputConnector;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Property Mediator Input Connector</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */

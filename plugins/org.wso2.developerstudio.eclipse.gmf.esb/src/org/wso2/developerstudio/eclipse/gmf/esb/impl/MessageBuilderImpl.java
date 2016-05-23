@@ -21,12 +21,12 @@ import org.wso2.developerstudio.eclipse.gmf.esb.MessageBuilder;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageBuilderImpl#getContentType <em>Content Type</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageBuilderImpl#getBuilderClass <em>Builder Class</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageBuilderImpl#getFormatterClass <em>Formatter Class</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

@@ -14,6 +14,7 @@ package org.wso2.developerstudio.eclipse.gmf.esb;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.HeaderMediator#getHeaderName <em>Header Name</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.HeaderMediator#getHeaderAction <em>Header Action</em>}</li>
@@ -25,7 +26,6 @@ package org.wso2.developerstudio.eclipse.gmf.esb;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.HeaderMediator#getOutputConnector <em>Output Connector</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.HeaderMediator#getValueInline <em>Value Inline</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getHeaderMediator()
  * @model

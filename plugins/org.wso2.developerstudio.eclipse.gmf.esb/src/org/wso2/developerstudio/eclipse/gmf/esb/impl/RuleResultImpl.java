@@ -29,6 +29,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.RuleResultValueType;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.RuleResultImpl#getResultType <em>Result Type</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.RuleResultImpl#getResultCustomType <em>Result Custom Type</em>}</li>
@@ -38,7 +39,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.RuleResultValueType;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.RuleResultImpl#getValueExpression <em>Value Expression</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.RuleResultImpl#getValueKey <em>Value Key</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

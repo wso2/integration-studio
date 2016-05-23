@@ -27,6 +27,7 @@ public class SchemaBuilderWithNamepaces extends SchemaBuilder {
 	private static final String NAMESPACES = "namespaces";
 	private static final String XMLNS = "xmlns:";
 	private static final String ELEMENT_IDENTIFIERS = "elementIdentifiers";
+	private static final String DEFAULT_NAMESPACE = "xmlns";
 
 
 	@Override
@@ -63,7 +64,7 @@ public class SchemaBuilderWithNamepaces extends SchemaBuilder {
 			JsonSchema leaf = new JsonSchema();
 		    String idwithoutAtSign = id.substring(1);
 			leaf.setId(parent.getId() + "/" + idwithoutAtSign);
-			leaf.setType(propertyValueType.toString().toLowerCase());
+			leaf.setType("string");
 			parent.addAttribute(idwithoutAtSign, leaf);
 			return leaf;
 		}else if (id.startsWith(DOLLLAR_AT_PREFIX)) {
@@ -78,6 +79,8 @@ public class SchemaBuilderWithNamepaces extends SchemaBuilder {
 		   object.addProperty("type", propertyValueType.toString().toLowerCase());
 		   parent.addCustomObject("value", object);	
 		   return null;	
+		} else if(id.equals(DEFAULT_NAMESPACE)){
+		  return null;
 		} else {
 		   return super.addPrimitiveToParent(parent, id, value, propertyValueType,elementIdentifierMap);
 		}

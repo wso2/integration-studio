@@ -47,11 +47,14 @@ public class SchemaBuilder {
 	private static final String ROOT_TITLE = "root";
 	protected static final String AT_PREFIX = "@";
 	protected static final String DOLLLAR_AT_PREFIX = "$@";
+	protected static final String DOLLAR_PREFIX = "$";
 	protected static final String HASHCONTENT = "#@content";
+	protected static final String CONTENT = "content";
 	protected static final String XSI_TYPE_OLD = "_$@xsi:type_";
 	protected static final String XSI_TYPE_READABLE = ",xsi:type=";
 	private static final String NAMESPACES = "namespaces";
 	private static final String XSI_NAMESPACE_URI = "http://www.w3.org/2001/XMLSchema-instance";
+	
 	protected JsonSchema root;
 	Map<String, JsonElement> objectMap = new HashMap<>();
 	String arrayKey = null;
@@ -146,7 +149,7 @@ public class SchemaBuilder {
 
 			String id = entry.getKey();
 			// If it's an element identifier then save the value
-			if (id.startsWith("$")) {
+			if (id.startsWith(DOLLAR_PREFIX)) {
 				String entryValue = entry.getValue().toString().replace("\"", "");
 				elementIdentifierValue = id.substring(2) + "=" + entryValue;
 				identifierKey = getKeyOfElementIdentifier(id);
@@ -161,71 +164,87 @@ public class SchemaBuilder {
 
 			JsonElement element = entry.getValue();
 			TypeEnum propertyValueType = RealTypeOf(element);
-
-			if (propertyValueType == TypeEnum.OBJECT) {
-				if (isAPrimitiveWithAttributes(element.getAsJsonObject())) {
-					addAttributedPrimitiveToParent(parent, id, element);
-				} else {
-					JsonSchema schema = addObjectToParent(parent, id);
-					createSchemaForObject(element.getAsJsonObject(), schema);
-					// If the element contains the array key(if the child of
-					// this element holds an element identifier) then remove the
-					// child
-					// from the json object and adds the new child
-					if (StringUtils.isNotEmpty(arrayKey)) {
-						JsonObject arrayObj = new JsonObject();
-						if (!objectMap.isEmpty()) {
-							JsonObject proObj = createNewPropertiesObject();
-							// adss the properties object to the root
-							arrayObj.add(PROPERTIES, proObj);
-							// Adds it and type for the newly created object
-							Set<Entry<String, JsonElement>> idTypeSet = schema.getAsJsonObject().entrySet();
-							for (Entry<String, JsonElement> idType : idTypeSet) {
-								if (idType.getKey().equals(ID)) {
-									arrayObj.add(ID, idType.getValue());
-								} else if (idType.getKey().equals(TYPE)) {
-									arrayObj.add(TYPE, idType.getValue());
+			
+			if(entry.getKey().equals(HASHCONTENT)){
+				Set<Entry<String, JsonElement>> contentEntrySet = element.getAsJsonObject().entrySet();
+				for (Entry<String, JsonElement> contentEntry : contentEntrySet) {
+						addPrimitiveToParent(parent, id, contentEntry.getValue().toString(), propertyValueType, elementIdentifierMap);
+				}
+			}else if(entry.getKey().startsWith(AT_PREFIX)){
+				Set<Entry<String, JsonElement>> contentEntrySet = element.getAsJsonObject().entrySet();
+				for (Entry<String, JsonElement> contentEntry : contentEntrySet) {
+					String contentKey = contentEntry.getKey();
+					if(contentKey.equals(CONTENT)){
+						addPrimitiveToParent(parent, id, contentEntry.getValue().toString(), propertyValueType, elementIdentifierMap);
+					}
+				}
+			}else{
+				if (propertyValueType == TypeEnum.OBJECT) {
+					if (isAPrimitiveWithAttributes(element.getAsJsonObject())) {
+						addAttributedPrimitiveToParent(parent, id, element);
+					} else {
+						JsonSchema schema = addObjectToParent(parent, id);
+						createSchemaForObject(element.getAsJsonObject(), schema);
+						// If the element contains the array key(if the child of
+						// this element holds an element identifier) then remove the
+						// child
+						// from the json object and adds the new child
+						if (StringUtils.isNotEmpty(arrayKey)) {
+							JsonObject arrayObj = new JsonObject();
+							if (!objectMap.isEmpty()) {
+								JsonObject proObj = createNewPropertiesObject();
+								// adss the properties object to the root
+								arrayObj.add(PROPERTIES, proObj);
+								// Adds it and type for the newly created object
+								Set<Entry<String, JsonElement>> idTypeSet = schema.getAsJsonObject().entrySet();
+								for (Entry<String, JsonElement> idType : idTypeSet) {
+									if (idType.getKey().equals(ID)) {
+										arrayObj.add(ID, idType.getValue());
+									} else if (idType.getKey().equals(TYPE)) {
+										arrayObj.add(TYPE, idType.getValue());
+									}
 								}
 							}
+
+							parent.getCustomObject(PROPERTIES).remove(id);
+							parent.getCustomObject(PROPERTIES).add(id, arrayObj);
+							arrayKey = null;
+							objectMap.clear();
 						}
-
-						parent.getCustomObject(PROPERTIES).remove(id);
-						parent.getCustomObject(PROPERTIES).add(id, arrayObj);
-						arrayKey = null;
-						objectMap.clear();
 					}
-				}
-			} else if (propertyValueType == TypeEnum.ARRAY) {
+				} else if (propertyValueType == TypeEnum.ARRAY) {
 
-				JsonObject newObject = null;
-				for (JsonElement childElement : element.getAsJsonArray()) {
-					JsonSchema schemaArray = addArrayToParent(parent, id);
-					elementIdentifierArrayNameMap.put(ELEMENT_IDENTIFIER_ARRAY_NAME, id);
-					newObject = createSchemaForArray(childElement, schemaArray, id, jsonObject);
-					if (newObject.entrySet().size() > 0) {
-						Set<Entry<String, JsonElement>> entrySets = newObject.entrySet();
-						String key = null;
-						JsonElement value = null;
-						for (Entry<String, JsonElement> entryNew : entrySets) {
-							key = entryNew.getKey();
-							value = entryNew.getValue();
+					JsonObject newObject = null;
+					for (JsonElement childElement : element.getAsJsonArray()) {
+						JsonSchema schemaArray = addArrayToParent(parent, id);
+						elementIdentifierArrayNameMap.put(ELEMENT_IDENTIFIER_ARRAY_NAME, id);
+						newObject = createSchemaForArray(childElement, schemaArray, id, jsonObject);
+						if (newObject.entrySet().size() > 0) {
+							Set<Entry<String, JsonElement>> entrySets = newObject.entrySet();
+							String key = null;
+							JsonElement value = null;
+							for (Entry<String, JsonElement> entryNew : entrySets) {
+								key = entryNew.getKey();
+								value = entryNew.getValue();
+							}
+							// Adds the newly created object with element identifier
+							// appended to the name, to the map
+							objectMap.put(key, value);
+							// Saves the key of the array which has element identifiers
+							arrayKey = entry.getKey();
 						}
-						// Adds the newly created object with element identifier
-						// appended to the name, to the map
-						objectMap.put(key, value);
-						// Saves the key of the array which has element identifiers
-						arrayKey = entry.getKey();
 					}
-				}
 
-			} else {
-				if(element instanceof JsonNull){
-					//Fixing DEVTOOLESB-225
-					addPrimitiveToParent(parent, id, null, propertyValueType, elementIdentifierMap);
-				}else{
-					addPrimitiveToParent(parent, id, element.getAsString(), propertyValueType, elementIdentifierMap);
+				} else {
+					if(element instanceof JsonNull){
+						//Fixing DEVTOOLESB-225
+						addPrimitiveToParent(parent, id, null, propertyValueType, elementIdentifierMap);
+					}else{
+						addPrimitiveToParent(parent, id, element.getAsString(), propertyValueType, elementIdentifierMap);
+					}
 				}
 			}
+
 		}
 		return elementIdentifierValue;
 	}

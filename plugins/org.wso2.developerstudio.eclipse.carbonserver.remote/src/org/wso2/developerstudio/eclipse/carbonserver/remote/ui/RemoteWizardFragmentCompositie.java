@@ -3,6 +3,14 @@ package org.wso2.developerstudio.eclipse.carbonserver.remote.ui;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.security.cert.CertificateException;
+
+import javax.net.ssl.HostnameVerifier;
+import javax.net.ssl.HttpsURLConnection;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.SSLSession;
+import javax.net.ssl.TrustManager;
+import javax.net.ssl.X509TrustManager;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.jface.dialogs.MessageDialog;
@@ -173,8 +181,39 @@ public class RemoteWizardFragmentCompositie extends Composite {
 	}
 
 	private void validateURL() throws Exception {
-		HttpURLConnection conn = (HttpURLConnection) getServerURL().openConnection();
-		conn.connect();
+		   SSLContext sc = SSLContext.getInstance("SSL");
+		   	        // Create empty HostnameVerifier
+		   	        HostnameVerifier hv = new HostnameVerifier() {
+		   	            public boolean verify(String arg0, SSLSession arg1) {
+		   	                return true;
+		   	            }
+		   	        };
+		   	        TrustManager[] trustAllCerts = new TrustManager[] { new X509TrustManager() {
+		   
+		   				@Override
+		   				public void checkClientTrusted(java.security.cert.X509Certificate[] chain, String authType)
+		   						throws CertificateException {
+		   					// TODO Auto-generated method stub
+		   					
+		   				}
+		   
+		   				@Override
+		   				public void checkServerTrusted(java.security.cert.X509Certificate[] chain, String authType)
+		   						throws CertificateException {
+		   					// TODO Auto-generated method stub
+		   					
+		   				}
+		   
+		   				@Override
+		   				public java.security.cert.X509Certificate[] getAcceptedIssuers() {
+		   					// TODO Auto-generated method stub
+		   					return null;
+		   				}
+		   	        } };
+		   	        sc.init(null, trustAllCerts, new java.security.SecureRandom());
+		   	        HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory());
+		   	        HttpsURLConnection.setDefaultHostnameVerifier(hv);
+		   	     HttpsURLConnection conn = (HttpsURLConnection) getServerURL().openConnection();
 		int responseCode = conn.getResponseCode();
 		if (HttpURLConnection.HTTP_OK != responseCode && HttpURLConnection.HTTP_MOVED_TEMP != conn.getResponseCode()) {
 			throw new Exception("Server is has not fully started or incorrect URL");

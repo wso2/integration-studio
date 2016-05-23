@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.editors">
+      <editor
+            name="Sample XML Editor"
+            extensions="xml"
+            icon="icons/sample.gif"
+            contributorClass="org.eclipse.ui.texteditor.BasicTextEditorActionContributor"
+            class="org.wso2.developerstudio.eclipse.integration.core.editors.XMLEditor"
+            id="org.wso2.developerstudio.eclipse.integration.core.editors.XMLEditor">
+      </editor>
+   </extension>
+
+</plugin>

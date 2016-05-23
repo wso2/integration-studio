@@ -1,12 +1,12 @@
 /*
- * Copyright (c) 2011, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
- * 
+ * Copyright (c) 2016, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -32,130 +32,162 @@ import org.wso2.developerstudio.eclipse.platform.core.nature.AbstractWSO2Project
 import org.wso2.developerstudio.eclipse.utils.project.ProjectUtils;
 
 public class IntegrationProjectNature extends AbstractWSO2ProjectNature {
-	private static final String CAPP_TYPE = "bpel/workflow=zip,lib/registry/filter=jar,webapp/jaxws=war,lib/library/bundle=jar,service/dataservice=dbs,synapse/local-entry=xml,synapse/proxy-service=xml,carbon/application=car,registry/resource=zip,lib/dataservice/validator=jar,synapse/endpoint=xml,web/application=war,lib/carbon/ui=jar,service/axis2=aar,synapse/sequence=xml,synapse/configuration=xml,wso2/gadget=dar,lib/registry/handlers=jar,lib/synapse/mediator=jar,synapse/task=xml,synapse/api=xml,synapse/template=xml,synapse/message-store=xml,synapse/message-processors=xml,synapse/inbound-endpoint=xml";
-	
-	public void configure() throws CoreException {
-		String[] childrenList = { "integration-templates", "connections"};
-		IFolder parentFolder =
-		        ProjectUtils.getWorkspaceFolder(getProject(), "src", "main", "integration-config");
-		ProjectUtils.createFolder(parentFolder);
-		getProject().refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
-		for (String child : childrenList) {
-			createChildren(parentFolder, child);
-		}
-		updatePom();
-	}
+    private static final String CAPP_TYPE =
+                                          "bpel/workflow=zip,lib/registry/filter=jar,webapp/jaxws=war,lib/library/bundle=jar,service/dataservice=dbs,synapse/local-entry=xml,synapse/proxy-service=xml,carbon/application=car,registry/resource=zip,lib/dataservice/validator=jar,synapse/endpoint=xml,web/application=war,lib/carbon/ui=jar,service/axis2=aar,synapse/sequence=xml,synapse/configuration=xml,wso2/gadget=dar,lib/registry/handlers=jar,lib/synapse/mediator=jar,synapse/task=xml,synapse/api=xml,synapse/template=xml,synapse/message-store=xml,synapse/message-processors=xml,synapse/inbound-endpoint=xml";
 
-	private void updatePom() {
-		// TODO update the pom with the relavant packaging types & maven pligins
-		File mavenProjectPomLocation = getProject().getFile("pom.xml").getLocation().toFile();
-		try {
-			MavenProject mavenProject = MavenUtils.getMavenProject(mavenProjectPomLocation);
-			//Adding typrLidt property
-			MavenUtils.updateMavenProjectWithCAppType(mavenProject, CAPP_TYPE);
-			//Setting the directory
-			mavenProject.getBuild().setDirectory("target/capp");
-//			Adding maven test skip property
-			MavenUtils.updateMavenProjectWithSkipTests(mavenProject);
-			
-			//Adding maven exec plugin entry
-			Plugin plugin = MavenUtils.createPluginEntry(mavenProject, "org.codehaus.mojo", "exec-maven-plugin", "1.4.0", true);
-		
-			{
-				PluginExecution pluginExecution = new PluginExecution();
-				pluginExecution.setId(IntegrationMavenConstants.PACKAGE_PHASE);
-				pluginExecution.addGoal(IntegrationMavenConstants.EXEC_GOAL);
-				pluginExecution.setPhase(IntegrationMavenConstants.PACKAGE_PHASE);
+    public void configure() throws CoreException {
+        String[] childrenList = { "integration-templates", "connections" };
+        IFolder parentFolder = ProjectUtils.getWorkspaceFolder(getProject(), "src", "main",
+                                                               "integration-config");
+        ProjectUtils.createFolder(parentFolder);
+        getProject().refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
+        for (String child : childrenList) {
+            createChildren(parentFolder, child);
+        }
+        updatePom();
+    }
 
-				Xpp3Dom configurationNode = MavenUtils.createMainConfigurationNode();
-				Xpp3Dom executableNode = MavenUtils.createXpp3Node(configurationNode, IntegrationMavenConstants.EXECUTABLE_TAG);
-				executableNode.setValue(IntegrationMavenConstants.EXECUTABLE_VALUE);
-				Xpp3Dom workingDirectoryNode = MavenUtils.createXpp3Node(configurationNode,
-						IntegrationMavenConstants.WORKING_DIRECTORY_TAG);
-				workingDirectoryNode.setValue(IntegrationMavenConstants.WORKING_DIRECTORY_VALUE);
-				Xpp3Dom argumentsNode = MavenUtils.createXpp3Node(configurationNode, IntegrationMavenConstants.ARGUMENTS_TAG);
-				Xpp3Dom cleanArgumentNode = MavenUtils.createXpp3Node(argumentsNode, IntegrationMavenConstants.ARGUMENT_TAG);
-				cleanArgumentNode.setValue(IntegrationMavenConstants.ARGUMENT_VALUE_CLEAN);
-				Xpp3Dom installArgumentNode = MavenUtils.createXpp3Node(argumentsNode, IntegrationMavenConstants.ARGUMENT_TAG);
-				installArgumentNode.setValue(IntegrationMavenConstants.PACKAGE_PHASE);
-				Xpp3Dom testSkipArgumentNode = MavenUtils.createXpp3Node(argumentsNode, IntegrationMavenConstants.ARGUMENT_TAG);
-				testSkipArgumentNode.setValue(IntegrationMavenConstants.ARGUMENT_VALUE_SKIP_TESTS);
+    private void updatePom() {
+        // TODO update the pom with the relavant packaging types & maven pligins
+        File mavenProjectPomLocation = getProject().getFile("pom.xml").getLocation().toFile();
+        try {
+            MavenProject mavenProject = MavenUtils.getMavenProject(mavenProjectPomLocation);
+            // Adding typrLidt property
+            MavenUtils.updateMavenProjectWithCAppType(mavenProject, CAPP_TYPE);
+            // Setting the directory
+            mavenProject.getBuild().setDirectory("target/capp");
+            // Adding maven test skip property
+            MavenUtils.updateMavenProjectWithSkipTests(mavenProject);
 
-				pluginExecution.setConfiguration(configurationNode);
+            // Adding maven exec plugin entry
+            Plugin plugin = MavenUtils.createPluginEntry(mavenProject, "org.codehaus.mojo",
+                                                         "exec-maven-plugin", "1.4.0", true);
 
-				plugin.addExecution(pluginExecution);
-			}
-			{
-				PluginExecution pluginExecution = new PluginExecution();
-				pluginExecution.setId(IntegrationMavenConstants.INSTALL_PHASE);
-				pluginExecution.addGoal(IntegrationMavenConstants.EXEC_GOAL);
-				pluginExecution.setPhase(IntegrationMavenConstants.INSTALL_PHASE);
+            {
+                PluginExecution pluginExecution = new PluginExecution();
+                pluginExecution.setId(IntegrationMavenConstants.PACKAGE_PHASE);
+                pluginExecution.addGoal(IntegrationMavenConstants.EXEC_GOAL);
+                pluginExecution.setPhase(IntegrationMavenConstants.PACKAGE_PHASE);
 
-				Xpp3Dom configurationNode = MavenUtils.createMainConfigurationNode();
-				Xpp3Dom executableNode = MavenUtils.createXpp3Node(configurationNode, IntegrationMavenConstants.EXECUTABLE_TAG);
-				executableNode.setValue(IntegrationMavenConstants.EXECUTABLE_VALUE);
-				Xpp3Dom workingDirectoryNode = MavenUtils.createXpp3Node(configurationNode,
-						IntegrationMavenConstants.WORKING_DIRECTORY_TAG);
-				workingDirectoryNode.setValue(IntegrationMavenConstants.WORKING_DIRECTORY_VALUE);
-				Xpp3Dom argumentsNode = MavenUtils.createXpp3Node(configurationNode, IntegrationMavenConstants.ARGUMENTS_TAG);
-				Xpp3Dom cleanArgumentNode = MavenUtils.createXpp3Node(argumentsNode, IntegrationMavenConstants.ARGUMENT_TAG);
-				cleanArgumentNode.setValue(IntegrationMavenConstants.ARGUMENT_VALUE_CLEAN);
-				Xpp3Dom installArgumentNode = MavenUtils.createXpp3Node(argumentsNode, IntegrationMavenConstants.ARGUMENT_TAG);
-				installArgumentNode.setValue(IntegrationMavenConstants.INSTALL_PHASE);
-				Xpp3Dom testSkipArgumentNode = MavenUtils.createXpp3Node(argumentsNode, IntegrationMavenConstants.ARGUMENT_TAG);
-				testSkipArgumentNode.setValue(IntegrationMavenConstants.ARGUMENT_VALUE_SKIP_TESTS);
+                Xpp3Dom configurationNode = MavenUtils.createMainConfigurationNode();
+                Xpp3Dom executableNode =
+                                       MavenUtils.createXpp3Node(configurationNode,
+                                                                 IntegrationMavenConstants.EXECUTABLE_TAG);
+                executableNode.setValue(IntegrationMavenConstants.EXECUTABLE_VALUE);
+                Xpp3Dom workingDirectoryNode =
+                                             MavenUtils.createXpp3Node(configurationNode,
+                                                                       IntegrationMavenConstants.WORKING_DIRECTORY_TAG);
+                workingDirectoryNode.setValue(IntegrationMavenConstants.WORKING_DIRECTORY_VALUE);
+                Xpp3Dom argumentsNode =
+                                      MavenUtils.createXpp3Node(configurationNode,
+                                                                IntegrationMavenConstants.ARGUMENTS_TAG);
+                Xpp3Dom cleanArgumentNode =
+                                          MavenUtils.createXpp3Node(argumentsNode,
+                                                                    IntegrationMavenConstants.ARGUMENT_TAG);
+                cleanArgumentNode.setValue(IntegrationMavenConstants.ARGUMENT_VALUE_CLEAN);
+                Xpp3Dom installArgumentNode =
+                                            MavenUtils.createXpp3Node(argumentsNode,
+                                                                      IntegrationMavenConstants.ARGUMENT_TAG);
+                installArgumentNode.setValue(IntegrationMavenConstants.PACKAGE_PHASE);
+                Xpp3Dom testSkipArgumentNode =
+                                             MavenUtils.createXpp3Node(argumentsNode,
+                                                                       IntegrationMavenConstants.ARGUMENT_TAG);
+                testSkipArgumentNode.setValue(IntegrationMavenConstants.ARGUMENT_VALUE_SKIP_TESTS);
 
-				pluginExecution.setConfiguration(configurationNode);
+                pluginExecution.setConfiguration(configurationNode);
 
-				plugin.addExecution(pluginExecution);
-			}
-			{
-				PluginExecution pluginExecution = new PluginExecution();
-				pluginExecution.setId(IntegrationMavenConstants.DEPLOY_PHASE);
-				pluginExecution.addGoal(IntegrationMavenConstants.EXEC_GOAL);
-				pluginExecution.setPhase(IntegrationMavenConstants.DEPLOY_PHASE);
+                plugin.addExecution(pluginExecution);
+            }
+            {
+                PluginExecution pluginExecution = new PluginExecution();
+                pluginExecution.setId(IntegrationMavenConstants.INSTALL_PHASE);
+                pluginExecution.addGoal(IntegrationMavenConstants.EXEC_GOAL);
+                pluginExecution.setPhase(IntegrationMavenConstants.INSTALL_PHASE);
 
-				Xpp3Dom configurationNode = MavenUtils.createMainConfigurationNode();
-				Xpp3Dom executableNode = MavenUtils.createXpp3Node(configurationNode, IntegrationMavenConstants.EXECUTABLE_TAG);
-				executableNode.setValue(IntegrationMavenConstants.EXECUTABLE_VALUE);
-				Xpp3Dom workingDirectoryNode = MavenUtils.createXpp3Node(configurationNode,
-						IntegrationMavenConstants.WORKING_DIRECTORY_TAG);
-				workingDirectoryNode.setValue(IntegrationMavenConstants.WORKING_DIRECTORY_VALUE);
-				Xpp3Dom argumentsNode = MavenUtils.createXpp3Node(configurationNode, IntegrationMavenConstants.ARGUMENTS_TAG);
-				Xpp3Dom deployArgumentNode = MavenUtils.createXpp3Node(argumentsNode, IntegrationMavenConstants.ARGUMENT_TAG);
-				deployArgumentNode.setValue(IntegrationMavenConstants.DEPLOY_PHASE);
-				Xpp3Dom testSkipArgumentNode = MavenUtils.createXpp3Node(argumentsNode, IntegrationMavenConstants.ARGUMENT_TAG);
-				testSkipArgumentNode.setValue(IntegrationMavenConstants.ARGUMENT_VALUE_SKIP_TESTS);
+                Xpp3Dom configurationNode = MavenUtils.createMainConfigurationNode();
+                Xpp3Dom executableNode =
+                                       MavenUtils.createXpp3Node(configurationNode,
+                                                                 IntegrationMavenConstants.EXECUTABLE_TAG);
+                executableNode.setValue(IntegrationMavenConstants.EXECUTABLE_VALUE);
+                Xpp3Dom workingDirectoryNode =
+                                             MavenUtils.createXpp3Node(configurationNode,
+                                                                       IntegrationMavenConstants.WORKING_DIRECTORY_TAG);
+                workingDirectoryNode.setValue(IntegrationMavenConstants.WORKING_DIRECTORY_VALUE);
+                Xpp3Dom argumentsNode =
+                                      MavenUtils.createXpp3Node(configurationNode,
+                                                                IntegrationMavenConstants.ARGUMENTS_TAG);
+                Xpp3Dom cleanArgumentNode =
+                                          MavenUtils.createXpp3Node(argumentsNode,
+                                                                    IntegrationMavenConstants.ARGUMENT_TAG);
+                cleanArgumentNode.setValue(IntegrationMavenConstants.ARGUMENT_VALUE_CLEAN);
+                Xpp3Dom installArgumentNode =
+                                            MavenUtils.createXpp3Node(argumentsNode,
+                                                                      IntegrationMavenConstants.ARGUMENT_TAG);
+                installArgumentNode.setValue(IntegrationMavenConstants.INSTALL_PHASE);
+                Xpp3Dom testSkipArgumentNode =
+                                             MavenUtils.createXpp3Node(argumentsNode,
+                                                                       IntegrationMavenConstants.ARGUMENT_TAG);
+                testSkipArgumentNode.setValue(IntegrationMavenConstants.ARGUMENT_VALUE_SKIP_TESTS);
 
-				pluginExecution.setConfiguration(configurationNode);
+                pluginExecution.setConfiguration(configurationNode);
 
-				plugin.addExecution(pluginExecution);
-			}
-			MavenUtils.saveMavenProject(mavenProject, mavenProjectPomLocation);
-			
-		} catch (Exception e) {
-			// TODO Handle this properly.
-			e.printStackTrace();
-		}
-		
-		try {
-			getProject().refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
-		} catch (CoreException e) {
-			// TODO Handle this properly.
-			e.printStackTrace();
-		}
-	}
+                plugin.addExecution(pluginExecution);
+            }
+            {
+                PluginExecution pluginExecution = new PluginExecution();
+                pluginExecution.setId(IntegrationMavenConstants.DEPLOY_PHASE);
+                pluginExecution.addGoal(IntegrationMavenConstants.EXEC_GOAL);
+                pluginExecution.setPhase(IntegrationMavenConstants.DEPLOY_PHASE);
 
-	public void createChildren(IFolder parent, String... children) throws CoreException {
-		IFolder childFolder = ProjectUtils.getWorkspaceFolder(parent, children);
-		ProjectUtils.createFolder(childFolder);
-		getProject().refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
+                Xpp3Dom configurationNode = MavenUtils.createMainConfigurationNode();
+                Xpp3Dom executableNode =
+                                       MavenUtils.createXpp3Node(configurationNode,
+                                                                 IntegrationMavenConstants.EXECUTABLE_TAG);
+                executableNode.setValue(IntegrationMavenConstants.EXECUTABLE_VALUE);
+                Xpp3Dom workingDirectoryNode =
+                                             MavenUtils.createXpp3Node(configurationNode,
+                                                                       IntegrationMavenConstants.WORKING_DIRECTORY_TAG);
+                workingDirectoryNode.setValue(IntegrationMavenConstants.WORKING_DIRECTORY_VALUE);
+                Xpp3Dom argumentsNode =
+                                      MavenUtils.createXpp3Node(configurationNode,
+                                                                IntegrationMavenConstants.ARGUMENTS_TAG);
+                Xpp3Dom deployArgumentNode =
+                                           MavenUtils.createXpp3Node(argumentsNode,
+                                                                     IntegrationMavenConstants.ARGUMENT_TAG);
+                deployArgumentNode.setValue(IntegrationMavenConstants.DEPLOY_PHASE);
+                Xpp3Dom testSkipArgumentNode =
+                                             MavenUtils.createXpp3Node(argumentsNode,
+                                                                       IntegrationMavenConstants.ARGUMENT_TAG);
+                testSkipArgumentNode.setValue(IntegrationMavenConstants.ARGUMENT_VALUE_SKIP_TESTS);
 
-	}
+                pluginExecution.setConfiguration(configurationNode);
 
-	
-	public void deconfigure() throws CoreException {
-		// TODO Auto-generated method stub
+                plugin.addExecution(pluginExecution);
+            }
+            MavenUtils.saveMavenProject(mavenProject, mavenProjectPomLocation);
 
-	}
+        } catch (Exception e) {
+            // TODO Handle this properly.
+            e.printStackTrace();
+        }
+
+        try {
+            getProject().refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
+        } catch (CoreException e) {
+            // TODO Handle this properly.
+            e.printStackTrace();
+        }
+    }
+
+    public void createChildren(IFolder parent, String... children) throws CoreException {
+        IFolder childFolder = ProjectUtils.getWorkspaceFolder(parent, children);
+        ProjectUtils.createFolder(childFolder);
+        getProject().refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
+
+    }
+
+    public void deconfigure() throws CoreException {
+        // TODO Auto-generated method stub
+
+    }
 }

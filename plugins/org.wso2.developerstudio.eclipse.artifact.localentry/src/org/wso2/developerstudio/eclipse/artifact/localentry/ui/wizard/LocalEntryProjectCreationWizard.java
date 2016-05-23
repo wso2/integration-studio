@@ -66,7 +66,6 @@ public class LocalEntryProjectCreationWizard extends AbstractWSO2ProjectCreation
 
 	private LocalEntryModel localEntryModel;
 	private IFile localEntryFile;
-	//private LocalEntryModel leModel;
 	private ESBProjectArtifact esbProjectArtifact;
 	private List<File> fileLst = new ArrayList<File>();
 	private IProject esbProject;

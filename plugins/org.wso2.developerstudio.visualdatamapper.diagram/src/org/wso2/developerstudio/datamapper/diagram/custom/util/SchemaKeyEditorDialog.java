@@ -34,6 +34,7 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.gef.EditPart;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.dialogs.ErrorDialog;
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.window.Window;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
@@ -58,6 +59,7 @@ import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IFileEditorInput;
 import org.eclipse.ui.IWorkbenchPart;
+import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.datamapper.diagram.Activator;
 import org.wso2.developerstudio.datamapper.diagram.custom.action.Messages;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.InputEditPart;
@@ -436,7 +438,11 @@ public class SchemaKeyEditorDialog extends Dialog {
 						iep.resetOutputTreeFromFile(schemaSaveFilePath);
 					}
 				}
-			}
+            } else {
+                MessageDialog.openWarning(PlatformUI.getWorkbench().getDisplay().getActiveShell(),
+                                          "Error Loading Schema from Connector Operation",
+                                          "Schema definition cannot be found for connector operation");
+            }
 
 		} catch (Exception e) {
 			log.error(ERROR_OPENING_FILE, e);

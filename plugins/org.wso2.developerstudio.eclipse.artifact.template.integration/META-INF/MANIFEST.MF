@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Integration
 Bundle-SymbolicName: org.wso2.developerstudio.eclipse.artifact.template.integration;singleton:=true
-Bundle-Version: 4.1.0.qualifier
+Bundle-Version: 5.0.0.qualifier
 Bundle-Activator: org.wso2.developerstudio.eclipse.artifact.template.integration.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,

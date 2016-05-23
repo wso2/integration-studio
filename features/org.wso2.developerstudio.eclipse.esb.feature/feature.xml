@@ -57,6 +57,13 @@
          install-size="0"
          version="0.0.0"
          unpack="false"/>
+   
+   <plugin
+         id="org.wso2.developerstudio.eclipse.integration.core"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
 
    <plugin
          id="org.wso2.developerstudio.eclipse.artifact.connector"
@@ -81,6 +88,13 @@
 
    <plugin
          id="org.wso2.developerstudio.eclipse.artifact.localentry"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+         
+   <plugin
+         id="org.wso2.developerstudio.eclipse.artifact.connection"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -148,9 +162,23 @@
          install-size="0"
          version="0.0.0"
          unpack="false"/>
+    
+    <plugin
+         id="org.wso2.developerstudio.eclipse.artifact.template.integration"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
 
    <plugin
          id="org.wso2.developerstudio.eclipse.esb.project"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+         
+   <plugin
+         id="org.wso2.developerstudio.eclipse.integration.project"
          download-size="0"
          install-size="0"
          version="0.0.0"

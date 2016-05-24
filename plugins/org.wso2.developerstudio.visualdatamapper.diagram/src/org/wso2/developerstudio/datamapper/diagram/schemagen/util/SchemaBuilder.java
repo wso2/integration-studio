@@ -54,54 +54,62 @@ public class SchemaBuilder {
 	protected static final String XSI_TYPE_READABLE = ",xsi:type=";
 	private static final String NAMESPACES = "namespaces";
 	private static final String XSI_NAMESPACE_URI = "http://www.w3.org/2001/XMLSchema-instance";
-	
+
 	protected JsonSchema root;
 	Map<String, JsonElement> objectMap = new HashMap<>();
 	String arrayKey = null;
 	Map<String, String> elementIdentifierMap = new HashMap<>();
 	Map<String, String> elementIdentifierArrayNameMap = new HashMap<>();
 	private List<String> elementsToModified = new ArrayList<>();
+	boolean isRootJSON = false;
 
 	public SchemaBuilder() {
 	}
 
 	public String createSchema(String jsonString) {
 		JsonParser jsonParser = new JsonParser();
-		JsonObject jsonObject = (JsonObject) jsonParser.parse(jsonString); // TODO
-																			// handle
-																			// parsing
-																			// exception
 		JsonObject firstObject = null;
 		String title = ROOT_TITLE;
-		Set<Entry<String, JsonElement>> entrySet = jsonObject.entrySet();
-		if (entrySet.size() == 1) {
-			for (Entry<String, JsonElement> entry : entrySet) {
-				JsonElement element = entry.getValue();
-				if(element instanceof JsonObject){
-					title = entry.getKey();
-					firstObject = element.getAsJsonObject();
-					break;
-				}else{
-					//If the json has a single parameter DEVTOOLESB-224
-					firstObject = jsonObject;
-				}
-				
-			}
-		} else {
-			firstObject = jsonObject;
-		}
+		JsonObject jsonObject = null;
+		JsonArray jsonArray = null;
 
 		root = new JsonSchema();
 		root.setDolarSchema(HTTP_JSON_SCHEMA_ORG_DRAFT_04_SCHEMA);
 		root.setId(HTTP_WSO2JSONSCHEMA_ORG);
-		root.setType(OBJECT);
-		createSchemaForObject(firstObject, root);
-		
+
+		if (jsonParser.parse(jsonString) instanceof JsonObject) {
+			// TODO handle parsing exception
+			jsonObject = (JsonObject) jsonParser.parse(jsonString); 
+			Set<Entry<String, JsonElement>> entrySet = jsonObject.entrySet();
+			if (entrySet.size() == 1) {
+				for (Entry<String, JsonElement> entry : entrySet) {
+					JsonElement element = entry.getValue();
+					if (element instanceof JsonObject) {
+						title = entry.getKey();
+						firstObject = element.getAsJsonObject();
+						break;
+					} else {
+						// If the json has a single parameter DEVTOOLESB-224
+						firstObject = jsonObject;
+					}
+				}
+			} else {
+				firstObject = jsonObject;
+			}
+			root.setType(OBJECT);
+			createSchemaForObject(firstObject, root);
+
+		} else {
+			jsonArray = (JsonArray) jsonParser.parse(jsonString);
+			root.setType(ARRAY);
+			createSchemaForArrayRoot(jsonArray, root);
+		}
+
 		Pattern identifierPattern = Pattern.compile("(_.+:type)");
 		title = findAndModifyElements(identifierPattern, title, title);
 		root.setTitle(title);
 		String content = root.getAsJsonObject().toString();
-		//rename to a readable xsi:type format 
+		// rename to a readable xsi:type format
 		for (String element : elementsToModified) {
 			content = findAndModifyElements(identifierPattern, content, element);
 		}
@@ -164,31 +172,39 @@ public class SchemaBuilder {
 
 			JsonElement element = entry.getValue();
 			TypeEnum propertyValueType = RealTypeOf(element);
-			
-			if(entry.getKey().equals(HASHCONTENT)){
-				Set<Entry<String, JsonElement>> contentEntrySet = element.getAsJsonObject().entrySet();
-				for (Entry<String, JsonElement> contentEntry : contentEntrySet) {
-						addPrimitiveToParent(parent, id, contentEntry.getValue().toString(), propertyValueType, elementIdentifierMap);
-				}
-			}else if(entry.getKey().startsWith(AT_PREFIX)){
-				Set<Entry<String, JsonElement>> contentEntrySet = element.getAsJsonObject().entrySet();
-				for (Entry<String, JsonElement> contentEntry : contentEntrySet) {
-					String contentKey = contentEntry.getKey();
-					if(contentKey.equals(CONTENT)){
-						addPrimitiveToParent(parent, id, contentEntry.getValue().toString(), propertyValueType, elementIdentifierMap);
+
+			if (entry.getKey().equals(HASHCONTENT)) {
+
+				addPrimitiveToParent(parent, id, entry.getKey(), propertyValueType, elementIdentifierMap);
+			} else if (entry.getKey().startsWith(AT_PREFIX)) {
+				if (!element.isJsonNull()) {
+					if (element instanceof JsonObject) {
+						Set<Entry<String, JsonElement>> contentEntrySet = element.getAsJsonObject().entrySet();
+						for (Entry<String, JsonElement> contentEntry : contentEntrySet) {
+							String contentKey = contentEntry.getKey();
+							if (contentKey.equals(CONTENT)) {
+								addPrimitiveToParent(parent, id, contentEntry.getValue().toString(), propertyValueType,
+										elementIdentifierMap);
+							}
+						}
+					} else {
+						addPrimitiveToParent(parent, id, entry.getValue().toString(), propertyValueType,
+								elementIdentifierMap);
 					}
 				}
-			}else{
+			} else {
 				if (propertyValueType == TypeEnum.OBJECT) {
 					if (isAPrimitiveWithAttributes(element.getAsJsonObject())) {
 						addAttributedPrimitiveToParent(parent, id, element);
 					} else {
 						JsonSchema schema = addObjectToParent(parent, id);
 						createSchemaForObject(element.getAsJsonObject(), schema);
-						// If the element contains the array key(if the child of
-						// this element holds an element identifier) then remove the
-						// child
-						// from the json object and adds the new child
+						/*If the element contains the array key(if the child of
+						* this element holds an element identifier) then remove
+						* the
+						* child
+						*from the json object and adds the new child
+						**/
 						if (StringUtils.isNotEmpty(arrayKey)) {
 							JsonObject arrayObj = new JsonObject();
 							if (!objectMap.isEmpty()) {
@@ -227,26 +243,80 @@ public class SchemaBuilder {
 								key = entryNew.getKey();
 								value = entryNew.getValue();
 							}
-							// Adds the newly created object with element identifier
-							// appended to the name, to the map
+							/*Adds the newly created object with element
+							* identifier
+							* appended to the name, to the map
+							* */
 							objectMap.put(key, value);
-							// Saves the key of the array which has element identifiers
+							/*Saves the key of the array which has element
+							* identifiers
+							* */
 							arrayKey = entry.getKey();
 						}
 					}
 
 				} else {
-					if(element instanceof JsonNull){
-						//Fixing DEVTOOLESB-225
+					if (element instanceof JsonNull) {
+						// Fixing DEVTOOLESB-225
 						addPrimitiveToParent(parent, id, null, propertyValueType, elementIdentifierMap);
-					}else{
-						addPrimitiveToParent(parent, id, element.getAsString(), propertyValueType, elementIdentifierMap);
+					} else {
+						addPrimitiveToParent(parent, id, element.getAsString(), propertyValueType,
+								elementIdentifierMap);
 					}
 				}
 			}
 
 		}
 		return elementIdentifierValue;
+	}
+
+	/**
+	 * Creates the schema when the root is an array
+	 * 
+	 * @param jsonArray
+	 * @param parent
+	 */
+	public void createSchemaForArrayRoot(JsonArray jsonArray, JsonSchema parent) {
+
+		String id = ROOT_TITLE;
+		JsonObject newJObj = new JsonObject();
+		for (JsonElement childElement : jsonArray) {
+			TypeEnum propertyValueType = RealTypeOf(childElement);
+			if (propertyValueType == TypeEnum.OBJECT) {
+				if (isAPrimitiveWithAttributes(childElement.getAsJsonObject())) {
+					addAttributedPrimitiveToParentItemsArray(parent, id, childElement);
+				} else {
+					JsonSchema schema = addObjectToParentItemsArray(parent, "0");
+					String identifierValue = createSchemaForObject(childElement.getAsJsonObject(), schema);
+
+					/*If the element contains the array key(if the child of
+					* this
+					* element holds an element identifier) then remove it from
+					* the
+					* json object and adds the new object
+					* */
+					if (StringUtils.isNotEmpty(arrayKey)) {
+
+					}
+					JsonElement value = parent.getAsJsonObject();
+					/* If an element contains an identifier value then create a
+					 * new
+					 * object appending the identifier to the name
+					 * */
+					if (StringUtils.isNotEmpty(identifierValue)) {
+						String name = null;
+						if (elementIdentifierArrayNameMap.containsKey(ELEMENT_IDENTIFIER_ARRAY_NAME)) {
+							name = elementIdentifierArrayNameMap.get(ELEMENT_IDENTIFIER_ARRAY_NAME) + ","
+									+ identifierValue;
+						}
+						newJObj.add(name, value);
+					}
+				}
+			} else {
+				addPrimitiveToParentItemsArray(parent, "0", propertyValueType);
+			}
+
+		}
 	}
 
 	/**

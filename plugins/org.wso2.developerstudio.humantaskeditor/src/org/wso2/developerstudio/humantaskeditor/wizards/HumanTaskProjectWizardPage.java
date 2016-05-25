@@ -39,6 +39,8 @@ public class HumanTaskProjectWizardPage extends WizardPage {
     private Text fileText;
 
     private Text taskText;
+    
+    private Text tnsText;
 
     private ISelection selection;
 
@@ -102,6 +104,19 @@ public class HumanTaskProjectWizardPage extends WizardPage {
                 dialogChanged();
             }
         });
+        
+        label = new Label(container, SWT.NULL);
+        label.setText("&Target Namespace :");
+
+        tnsText = new Text(container, SWT.BORDER | SWT.SINGLE);
+        gd = new GridData(GridData.FILL_HORIZONTAL);
+        tnsText.setLayoutData(gd);
+        tnsText.addModifyListener(new ModifyListener() {
+            @Override
+            public void modifyText(ModifyEvent e) {
+                dialogChanged();
+            }
+        });
         initialize();
         dialogChanged();
         setControl(container);
@@ -138,6 +153,7 @@ public class HumanTaskProjectWizardPage extends WizardPage {
     private void dialogChanged() {
         String fileName = getFileName();
         String taskName = getTaskName();
+        String tnsName = getTNSName();
 
         if (getContainerName().length() == 0) {
             updateStatus(HumantaskEditorConstants.FILE_CONTAINER_MUST_BE_SPECIFIED_MESSAGE);
@@ -184,6 +200,10 @@ public class HumanTaskProjectWizardPage extends WizardPage {
             updateStatus(HumantaskEditorConstants.ENTER_A_VALID_FILENAME);
             return;
         }
+        if (tnsName.trim().isEmpty()) {
+            updateStatus(HumantaskEditorConstants.TARGET_NAME_SPACE_CANNOT_BE_EMPTY_MESSAGE);
+            return;
+        }
         
         int dotLoc = fileName.lastIndexOf('.');
         if (dotLoc != -1) {
@@ -211,5 +231,9 @@ public class HumanTaskProjectWizardPage extends WizardPage {
 
     public String getTaskName() {
         return taskText.getText();
+    }
+    
+    public String getTNSName() {
+        return tnsText.getText();
     }
 }

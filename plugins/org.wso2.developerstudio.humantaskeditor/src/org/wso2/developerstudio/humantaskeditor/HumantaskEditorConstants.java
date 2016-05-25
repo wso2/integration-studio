@@ -84,6 +84,8 @@ public class HumantaskEditorConstants {
     
     public static final String TASK_NAME_CANNOT_BE_EMPTY_MESSAGE = "Task name cannot be empty";
     
+    public static final String TARGET_NAME_SPACE_CANNOT_BE_EMPTY_MESSAGE = "Target Namespace cannot be empty";
+    
     public static final String ENTER_A_VALID_FILENAME = "Enter a valid file name";
     
     public static final String WIZARD_PAGE_TEXT = "Human Task Artifact";
@@ -116,13 +118,19 @@ public class HumantaskEditorConstants {
     
     public static final String QUALIFIED_TASK_NODE_NAME = "htd:task";
     
+    public static final String XMLNS_TNS = "xmlns:tns";
+    
+    public static final String TARGET_NAMESPACE = "targetNamespace";
+    
+    public static final String QUALIFIED_HUMAN_INTERACTIONS_NODE_NAME = "htd:humanInteractions";
+    
     public static final String XML_INDENT_YES = "yes";
 
     public static final String XML_OUTPUT_METHOD = "xml";
 
     public static final String TASK_NAME_ATTRIBUTE = "name";
 
-    public static final String CALLBACK_TASK_WSDL_SUFFIX = "CBTask.wsdl";
+    public static final String CALLBACK_TASK_WSDL_SUFFIX = "TaskCallBack.wsdl";
 
     public static final String TASK_WSDL_SUFFIX = "Task.wsdl";
  

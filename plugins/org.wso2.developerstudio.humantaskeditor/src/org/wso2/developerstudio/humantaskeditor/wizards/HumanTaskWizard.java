@@ -94,11 +94,12 @@ public class HumanTaskWizard extends Wizard implements INewWizard {
         final String containerName = page.getContainerName();
         final String fileName = page.getFileName();
         final String taskName = page.getTaskName();
+        final String tnsName = page.getTNSName();
         IRunnableWithProgress op = new IRunnableWithProgress() {
             @Override
             public void run(IProgressMonitor monitor) throws InvocationTargetException {
                 try {
-                    doFinish(containerName, fileName, taskName, monitor);
+                    doFinish(containerName, fileName, taskName, tnsName, monitor);
                 } catch (CoreException e) {
                     throw new InvocationTargetException(e);
                 } finally {
@@ -126,7 +127,7 @@ public class HumanTaskWizard extends Wizard implements INewWizard {
      * file.
      */
 
-    private void doFinish(String containerName, String fileName, String taskName, IProgressMonitor monitor)
+    private void doFinish(String containerName, String fileName, String taskName, String tnsName, IProgressMonitor monitor)
             throws CoreException {
         monitor.beginTask("Creating " + fileName, 2);
         IWorkspaceRoot root = ResourcesPlugin.getWorkspace().getRoot();
@@ -142,7 +143,7 @@ public class HumanTaskWizard extends Wizard implements INewWizard {
         addNature(container.getProject());
 
         try {
-            InputStream stream = openContentStream(taskName);
+            InputStream stream = openContentStream(taskName,tnsName);
             InputStream wsdlStream = openWSDLStream();
             InputStream htconfigStream = openHTConfigStream();
             if (file.exists()) {
@@ -192,8 +193,8 @@ public class HumanTaskWizard extends Wizard implements INewWizard {
      * @throws CoreException
      */
 
-    private InputStream openContentStream(String taskName) throws IOException, CoreException {
-        String contents = changeXMLName(readDummyHT(), taskName);
+    private InputStream openContentStream(String taskName, String tnsName) throws IOException, CoreException {
+        String contents = changeXMLName(readDummyHT(), taskName ,tnsName);
         return new ByteArrayInputStream(contents.getBytes());
     }
 
@@ -326,7 +327,7 @@ public class HumanTaskWizard extends Wizard implements INewWizard {
         this.selection = selection;
     }
 
-    private String changeXMLName(String content, String taskName) throws CoreException {
+    private String changeXMLName(String content, String taskName, String tnsName) throws CoreException {
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
         Document dom = null;
         String xmlString = null;
@@ -336,6 +337,8 @@ public class HumanTaskWizard extends Wizard implements INewWizard {
             InputSource is = new InputSource(new StringReader(content));
             dom = db.parse(is);
             NodeList taskList = dom.getElementsByTagName(HumantaskEditorConstants.QUALIFIED_TASK_NODE_NAME);
+            NodeList tnsList = dom.getElementsByTagName(HumantaskEditorConstants.QUALIFIED_HUMAN_INTERACTIONS_NODE_NAME);
+            tnsList.item(0).getAttributes().getNamedItem(HumantaskEditorConstants.XMLNS_TNS).setNodeValue(tnsName);
             for (int i = 0; i < taskList.getLength(); i++) {
                 Node task = taskList.item(i);
                 task.getAttributes().getNamedItem(HumantaskEditorConstants.TASK_NAME_ATTRIBUTE).setNodeValue(taskName);

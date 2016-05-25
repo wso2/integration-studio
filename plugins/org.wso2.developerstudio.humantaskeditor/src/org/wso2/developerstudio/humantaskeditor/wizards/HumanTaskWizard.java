@@ -339,6 +339,7 @@ public class HumanTaskWizard extends Wizard implements INewWizard {
             NodeList taskList = dom.getElementsByTagName(HumantaskEditorConstants.QUALIFIED_TASK_NODE_NAME);
             NodeList tnsList = dom.getElementsByTagName(HumantaskEditorConstants.QUALIFIED_HUMAN_INTERACTIONS_NODE_NAME);
             tnsList.item(0).getAttributes().getNamedItem(HumantaskEditorConstants.XMLNS_TNS).setNodeValue(tnsName);
+            tnsList.item(0).getAttributes().getNamedItem(HumantaskEditorConstants.TARGET_NAMESPACE).setNodeValue(tnsName);
             for (int i = 0; i < taskList.getLength(); i++) {
                 Node task = taskList.item(i);
                 task.getAttributes().getNamedItem(HumantaskEditorConstants.TASK_NAME_ATTRIBUTE).setNodeValue(taskName);

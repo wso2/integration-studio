@@ -105,9 +105,11 @@ function generateInputWSDL(wsdlDom, xmlDom, currentTask) {
     inputElements = $('#' + currentTaskName + ' #inputmappingTable tr');
     targetnamespace = xmlDom.getElementsByTagName("humanInteractions")[0].getAttribute("targetNamespace");
     wsdlDom.getElementsByTagName("definitions")[0].setAttribute("xmlns:tns",targetnamespace);
-    wsdlDom.getElementsByTagName("definitions")[0].setAttribute("targetNamespace",targetnamespace);// get Definitions node and Schema node from dummy wsdl dom
+    wsdlDom.getElementsByTagName("definitions")[0].setAttribute("targetNamespace",targetnamespace);
+    // get Definitions node and Schema node from dummy wsdl dom
     wsdlSchema = wsdlDom.getElementsByTagName("schema")[0];
     wsdlDefinitions = wsdlDom.getElementsByTagName("definitions")[0];
+    wsdlSchema.setAttribute("targetNamespace",targetnamespace);
     //alert("Inside generate Input "+currentTask+" : "+ $('#' + currentTask + 'wrapper #taskCallbackServiceName').val());
     // create Data type elements
     newComplexType = wsdlDom.createElementNS(
@@ -148,7 +150,7 @@ function generateInputWSDL(wsdlDom, xmlDom, currentTask) {
     newPart = wsdlDom.createElementNS(wsdlNameSpace,
         "wsdl:part");
     newPart.setAttribute("name", newMessage.getAttribute("name"));
-    newPart.setAttribute("element", "tschema:" + newElement.getAttribute("name")); // Data binding
+    newPart.setAttribute("element", "tns:" + newElement.getAttribute("name")); // Data binding
     newMessage.appendChild(newPart);
     wsdlDefinitions.appendChild(newMessage);
 
@@ -246,7 +248,8 @@ function generateOutputWSDL(wsdlDom, xmlDom, currentTask,serviceURL,operationNam
     // Name
     targetnamespace = xmlDom.getElementsByTagName("humanInteractions")[0].getAttribute("targetNamespace");
     wsdlDom.getElementsByTagName("definitions")[0].setAttribute("xmlns:tns",targetnamespace);
-    wsdlDom.getElementsByTagName("definitions")[0].setAttribute("targetNamespace",targetnamespace);// get Definitions node and Schema node from dummy wsdl dom
+    wsdlDom.getElementsByTagName("definitions")[0].setAttribute("targetNamespace",targetnamespace);
+    wsdlSchema.setAttribute("targetNamespace",targetnamespace);
 
     newSequence = wsdlDom.createElementNS(xsdNameSpace,
         "xsd:sequence");
@@ -287,7 +290,7 @@ function generateOutputWSDL(wsdlDom, xmlDom, currentTask,serviceURL,operationNam
     newPart = wsdlDom.createElementNS(wsdlNameSpace,
         "wsdl:part");
     newPart.setAttribute("name", newMessage.getAttribute("name")); // ClaimApprovalRequest
-    newPart.setAttribute("element", "tschema:" + newElement.getAttribute("name")); // Data
+    newPart.setAttribute("element", "tns:" + newElement.getAttribute("name")); // Data
     // binding
     newMessage.appendChild(newPart);
     wsdlDefinitions.appendChild(newMessage);

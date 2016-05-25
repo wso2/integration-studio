@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+ <copyright>
+ </copyright>
+
+ $Id$
+-->
+
+<plugin>
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated ds -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="org.wso2.developerstudio.eclipse.ds.presentation.DsModelWizardID"
+            name="%_UI_DsModelWizard_label"
+            class="org.wso2.developerstudio.eclipse.ds.presentation.DsModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/DsModelFile.gif">
+         <description>%_UI_DsModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+	 <editor id="org.wso2.developerstudio.eclipse.ds.presentation.DsEditorID"
+			name="%_UI_DsEditor_label" icon="icons/wso2/dbsIcon.gif"
+			extensions="dbs" class="org.wso2.developerstudio.eclipse.ds.presentation.DsEditor"
+			contributorClass="org.wso2.developerstudio.eclipse.ds.presentation.DsActionBarContributor">
+			<contentTypeBinding
+				contentTypeId="org.wso2.developerstudio.eclipse.ds.contenttype.dsconfxml">
+			</contentTypeBinding>
+		</editor> 
+	</extension> 
+	
+	
+	<extension point="org.eclipse.core.contenttype.contentTypes">
+		<content-type base-type="org.eclipse.core.runtime.xml"
+			file-extensions="dbs"
+			id="org.wso2.developerstudio.eclipse.ds.contenttype.dsconfxml"
+			name="DS Editor File" priority="high"
+		    describer=" org.eclipse.core.runtime.content.XMLRootElementContentDescriber:data">
+		</content-type>
+	</extension>
+	<!--Extention points for delete command. -->
+ <extension
+       point="org.eclipse.ui.commands">
+    <command
+          id="org.wso2.developerstudio.eclipse.ds.editor.delete"
+          name="Delete">
+    </command>
+ </extension>
+ 
+ <extension
+       point="org.eclipse.ui.handlers">
+    <handler
+          class="org.wso2.developerstudio.eclipse.ds.command.DesignViewActionHandler"
+          commandId="org.wso2.developerstudio.eclipse.ds.editor.delete">
+    </handler>
+ </extension>
+ 
+ <extension
+       point="org.eclipse.ui.menus">
+    <menuContribution
+          locationURI="popup:org.wso2.developerstudio.eclipse.ds.presentation.DsEditorID?after=edit">
+           <command
+               commandId="org.wso2.developerstudio.eclipse.ds.editor.delete"
+               icon="icons/wso2/del.gif"
+               label="Delete"
+               tooltip="Delete this tree item">
+          </command>
+    </menuContribution>
+ </extension> 
+	<!--Extention points for delete command ended. -->
+	
+ <!--extension point="org.eclipse.ui.newWizards">
+    <wizard
+          category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.eclipse.ds"
+          class="org.wso2.developerstudio.eclipse.ds.wizards.DataServiceCreationWizard"
+          id="org.wso2.developerstudio.eclipse.ds.editor.DsWizardID"
+          name="New Data Service Wizard">
+         <description>%_UI_DsModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+    </wizard>
+ </extension-->
+ 
+ <!--<extension point="org.eclipse.ui.commands">
+ 	<category
+          description="WSO2 Data Service Editor Command Category"
+          id="org.wso2.developerstudio.eclipse.ds.editor.keybindings.category"
+          name="WSO2 Data Service Category">
+    </category>
+    
+   <command categoryId="org.wso2.developerstudio.eclipse.ds.editor.keybindings.category"
+   			id="org.wso2.developerstudio.eclipse.ds.editor.delcommand" 
+   			name="DsDelete">
+   </command>
+</extension>
+
+ <extension point="org.eclipse.ui.bindings">
+   <key commandId="org.wso2.developerstudio.eclipse.ds.editor.delcommand" 
+        schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+        sequence="DELETE"/>
+ </extension>
+ 
+ <extension
+       point="org.eclipse.ui.handlers">
+    <handler
+          class="org.wso2.developerstudio.eclipse.ds.command.DeleteHandler"
+          commandId="org.wso2.developerstudio.eclipse.ds.editor.delcommand" >
+         
+        <activeWhen>
+       	<with variable="activeEditor">
+       		<test
+             property="org.wso2.developerstudio.eclipse.ds.editor.prop.Index">
+       		</test>
+       	</with>
+       </activeWhen> 
+    </handler>
+ </extension>
+ 
+ <extension
+       point="org.eclipse.core.expressions.propertyTesters">
+    <propertyTester
+          class="org.wso2.developerstudio.eclipse.ds.command.PropertyTester"
+          id="org.wso2.developerstudio.eclipse.ds.editor.propertyTester"
+          namespace="org.wso2.developerstudio.eclipse.ds.editor.prop"
+          properties="Index"
+          type="org.eclipse.ui.IEditorPart">
+    </propertyTester>
+ </extension> -->
+
+</plugin>

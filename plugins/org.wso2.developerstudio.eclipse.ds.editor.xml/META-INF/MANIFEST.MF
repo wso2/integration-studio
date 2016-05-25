@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: ABC
+Bundle-SymbolicName: org.wso2.developerstudio.eclipse.ds.editor.xml;singleton:=true
+Bundle-Version: 4.1.0.qualifier
+Bundle-Activator: org.wso2.developerstudio.eclipse.ds.Activator
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.wst.xml.ui,
+ org.eclipse.wst.sse.core,
+ org.eclipse.wst.sse.ui,
+ org.eclipse.wst.xml.core,
+ org.eclipse.jface.text,
+ org.eclipse.core.filesystem,
+ org.eclipse.core.resources
+Bundle-ActivationPolicy: lazy
+Import-Package: org.wso2.developerstudio.eclipse.logging.core;version="[4.1.0,5.0.0)"

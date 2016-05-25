@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.wso2.developerstudio.eclipse.ds/src" modelPluginID="org.wso2.developerstudio.eclipse.ds"
+    modelName="Ds" importerID="org.eclipse.emf.importer.ecore" complianceLevel="6.0"
+    copyrightFields="false">
+  <foreignModel>ds.ecore</foreignModel>
+  <genPackages prefix="Ds" basePackage="org.wso2.developerstudio.eclipse" resource="XML"
+      disposableProviderFactory="true" ecorePackage="ds.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="ds.ecore#//ServiceStatus">
+      <genEnumLiterals ecoreEnumLiteral="ds.ecore#//ServiceStatus/active"/>
+      <genEnumLiterals ecoreEnumLiteral="ds.ecore#//ServiceStatus/inactive"/>
+    </genEnums>
+    <genDataTypes ecoreDataType="ds.ecore#//ServiceStatusObject"/>
+    <genDataTypes ecoreDataType="ds.ecore#//Map">
+      <genTypeParameters ecoreTypeParameter="ds.ecore#//Map/K"/>
+      <genTypeParameters ecoreTypeParameter="ds.ecore#//Map/V"/>
+    </genDataTypes>
+    <genClasses ecoreClass="ds.ecore#//AttributeMapping">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//AttributeMapping/column"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//AttributeMapping/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//AttributeMapping/requiredRoles"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//AttributeMapping/xsdType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//AttributeMapping/optional"/>
+    </genClasses>
+    <genClasses ecoreClass="ds.ecore#//CallQuery">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute ds.ecore#//CallQuery/mixed"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ds.ecore#//CallQuery/withParam"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//CallQuery/href"/>
+    </genClasses>
+    <genClasses ecoreClass="ds.ecore#//CallQueryList">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute ds.ecore#//CallQueryList/mixed"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ds.ecore#//CallQueryList/callQuery"/>
+    </genClasses>
+    <genClasses ecoreClass="ds.ecore#//ConfigurationProperty">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//ConfigurationProperty/value"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//ConfigurationProperty/name"/>
+    </genClasses>
+    <genClasses ecoreClass="ds.ecore#//CustomValidator">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//CustomValidator/class"/>
+    </genClasses>
+    <genClasses ecoreClass="ds.ecore#//DataService">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute ds.ecore#//DataService/mixed"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ds.ecore#//DataService/description"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ds.ecore#//DataService/config"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ds.ecore#//DataService/query"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ds.ecore#//DataService/eventTrigger"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ds.ecore#//DataService/operation"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ds.ecore#//DataService/resource"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//DataService/baseURI"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//DataService/enableBatchRequests"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//DataService/enableBoxcarring"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//DataService/enableDTP"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//DataService/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//DataService/serviceGroup"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//DataService/serviceNamespace"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//DataService/serviceStatus"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//DataService/disableStreaming"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//DataService/enableSec"/>
+      <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference ds.ecore#//DataService/policy"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//DataService/transports"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference ds.ecore#//DataService/featureAllowRoles"/>
+    </genClasses>
+    <genClasses ecoreClass="ds.ecore#//DataSourceConfiguration">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute ds.ecore#//DataSourceConfiguration/mixed"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ds.ecore#//DataSourceConfiguration/property"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//DataSourceConfiguration/id"/>
+    </genClasses>
+    <genClasses ecoreClass="ds.ecore#//Description">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//Description/value"/>
+    </genClasses>
+    <genClasses ecoreClass="ds.ecore#//DocumentRoot">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//DocumentRoot/mixed"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference ds.ecore#//DocumentRoot/xMLNSPrefixMap"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference ds.ecore#//DocumentRoot/xSISchemaLocation"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ds.ecore#//DocumentRoot/callQuery"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ds.ecore#//DocumentRoot/data"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ds.ecore#//DocumentRoot/hasheader"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ds.ecore#//DocumentRoot/maxrowcount"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ds.ecore#//DocumentRoot/property"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ds.ecore#//DocumentRoot/sql"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ds.ecore#//DocumentRoot/startingrow"/>
+    </genClasses>
+    <genClasses ecoreClass="ds.ecore#//DoubleRangeValidator">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//DoubleRangeValidator/maximum"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//DoubleRangeValidator/minimum"/>
+    </genClasses>
+    <genClasses ecoreClass="ds.ecore#//ElementMapping">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute ds.ecore#//ElementMapping/mixed"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//ElementMapping/column"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//ElementMapping/export"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//ElementMapping/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//ElementMapping/requiredRoles"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//ElementMapping/exportType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//ElementMapping/namespace"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//ElementMapping/xsdType"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ds.ecore#//ElementMapping/element"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ds.ecore#//ElementMapping/attribute"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ds.ecore#//ElementMapping/callQuery"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//ElementMapping/isComplexType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//ElementMapping/queryParam"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//ElementMapping/value"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//ElementMapping/optional"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//ElementMapping/arrayName"/>
+    </genClasses>
+    <genClasses ecoreClass="ds.ecore#//EventSubscriptionList">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute ds.ecore#//EventSubscriptionList/mixed"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ds.ecore#//EventSubscriptionList/subscription"/>
+    </genClasses>
+    <genClasses ecoreClass="ds.ecore#//EventTrigger">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute ds.ecore#//EventTrigger/mixed"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ds.ecore#//EventTrigger/expression"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ds.ecore#//EventTrigger/targetTopic"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ds.ecore#//EventTrigger/subscriptions"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//EventTrigger/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//EventTrigger/language"/>
+    </genClasses>
+    <genClasses ecoreClass="ds.ecore#//ExcelQuery">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute ds.ecore#//ExcelQuery/mixed"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ds.ecore#//ExcelQuery/workbookname"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ds.ecore#//ExcelQuery/hasheader"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ds.ecore#//ExcelQuery/startingrow"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ds.ecore#//ExcelQuery/maxrowcount"/>
+    </genClasses>
+    <genClasses ecoreClass="ds.ecore#//Expression">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//Expression/value"/>
+    </genClasses>
+    <genClasses ecoreClass="ds.ecore#//GSpreadQuery">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute ds.ecore#//GSpreadQuery/mixed"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ds.ecore#//GSpreadQuery/worksheetnumber"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ds.ecore#//GSpreadQuery/startingrow"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ds.ecore#//GSpreadQuery/maxrowcount"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ds.ecore#//GSpreadQuery/hasheader"/>
+    </genClasses>
+    <genClasses ecoreClass="ds.ecore#//HasHeader">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//HasHeader/value"/>
+    </genClasses>
+    <genClasses ecoreClass="ds.ecore#//LengthValidator">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//LengthValidator/maximum"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//LengthValidator/minimum"/>
+    </genClasses>
+    <genClasses ecoreClass="ds.ecore#//LongRangeValidator">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//LongRangeValidator/maximum"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//LongRangeValidator/minimum"/>
+    </genClasses>
+    <genClasses ecoreClass="ds.ecore#//MaxRowCount">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//MaxRowCount/value"/>
+    </genClasses>
+    <genClasses ecoreClass="ds.ecore#//Operation">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute ds.ecore#//Operation/mixed"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ds.ecore#//Operation/callQuery"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ds.ecore#//Operation/callQueryGroup"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//Operation/disableStreaming"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//Operation/returnRequestStatus"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//Operation/name"/>
+    </genClasses>
+    <genClasses ecoreClass="ds.ecore#//ParameterMapping">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//ParameterMapping/column"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//ParameterMapping/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//ParameterMapping/queryParam"/>
+    </genClasses>
+    <genClasses ecoreClass="ds.ecore#//PatternValidator">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//PatternValidator/pattern"/>
+    </genClasses>
+    <genClasses ecoreClass="ds.ecore#//Query">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute ds.ecore#//Query/mixed"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ds.ecore#//Query/expression"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ds.ecore#//Query/sql"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ds.ecore#//Query/sparql"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ds.ecore#//Query/properties"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ds.ecore#//Query/result"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ds.ecore#//Query/excel"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ds.ecore#//Query/gspread"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ds.ecore#//Query/param"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//Query/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//Query/inputEventTrigger"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//Query/outputEventTrigger"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//Query/returnGeneratedKeys"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//Query/useConfig"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//Query/keyColumns"/>
+    </genClasses>
+    <genClasses ecoreClass="ds.ecore#//QueryParameter">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute ds.ecore#//QueryParameter/mixed"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ds.ecore#//QueryParameter/validateLongRange"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ds.ecore#//QueryParameter/validateDoubleRange"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ds.ecore#//QueryParameter/validateLength"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ds.ecore#//QueryParameter/validatePattern"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ds.ecore#//QueryParameter/validateCustom"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//QueryParameter/defaultValue"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//QueryParameter/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//QueryParameter/ordinal"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//QueryParameter/paramType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//QueryParameter/sqlType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//QueryParameter/structType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//QueryParameter/type"/>
+    </genClasses>
+    <genClasses ecoreClass="ds.ecore#//QueryProperty">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//QueryProperty/value"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//QueryProperty/name"/>
+    </genClasses>
+    <genClasses ecoreClass="ds.ecore#//QueryPropertyList">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute ds.ecore#//QueryPropertyList/mixed"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ds.ecore#//QueryPropertyList/property"/>
+    </genClasses>
+    <genClasses ecoreClass="ds.ecore#//Resource">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute ds.ecore#//Resource/mixed"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ds.ecore#//Resource/callQuery"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//Resource/method"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//Resource/path"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//Resource/returnRequestStatus"/>
+    </genClasses>
+    <genClasses ecoreClass="ds.ecore#//ResultMapping">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute ds.ecore#//ResultMapping/mixed"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ds.ecore#//ResultMapping/element"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ds.ecore#//ResultMapping/attribute"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ds.ecore#//ResultMapping/callQuery"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//ResultMapping/defaultNamespace"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//ResultMapping/elementName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//ResultMapping/rowName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//ResultMapping/useColumnNumbers"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//ResultMapping/escapeNonPrintableChar"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//ResultMapping/xsltPath"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//ResultMapping/outputType"/>
+    </genClasses>
+    <genClasses ecoreClass="ds.ecore#//Sparql">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//Sparql/value"/>
+    </genClasses>
+    <genClasses ecoreClass="ds.ecore#//Sql">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//Sql/value"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//Sql/dialect"/>
+    </genClasses>
+    <genClasses ecoreClass="ds.ecore#//QueryExpression">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//QueryExpression/value"/>
+    </genClasses>
+    <genClasses ecoreClass="ds.ecore#//StartingRow">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//StartingRow/value"/>
+    </genClasses>
+    <genClasses ecoreClass="ds.ecore#//Subscription">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//Subscription/value"/>
+    </genClasses>
+    <genClasses ecoreClass="ds.ecore#//TargetTopic">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//TargetTopic/value"/>
+    </genClasses>
+    <genClasses ecoreClass="ds.ecore#//WorkBookName">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//WorkBookName/value"/>
+    </genClasses>
+    <genClasses ecoreClass="ds.ecore#//WorkSheetNumber">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//WorkSheetNumber/value"/>
+    </genClasses>
+    <genClasses ecoreClass="ds.ecore#//Policy">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//Policy/key"/>
+    </genClasses>
+    <genClasses ecoreClass="ds.ecore#//DataServiceParameter">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//DataServiceParameter/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//DataServiceParameter/value"/>
+    </genClasses>
+    <genClasses ecoreClass="ds.ecore#//RegistryKeyProperty">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//RegistryKeyProperty/key"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

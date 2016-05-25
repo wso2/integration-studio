@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wizard>
+ <projectOptions title="Data Services Validator Artifact Creation wizard "
+ 				 description="Select how you would like to create your Data Services Validator Project"
+ 				 error="Please select a method to create the project">
+ 	<option id="new.validator" default="true">Create New Data Services Validator Project</option>
+ 	<option id="import.validator">Import Project From Workspace</option>
+ </projectOptions>
+ <projectOptionSettings>
+ 	<settings optionId="new.validator"
+ 			  		title="Data Services Validator"
+ 			  		description="Create a new Data Services Validator"
+ 			  		error="Please give a name to create the Data Services Validator">
+ 		<data modelProperty="project.name"
+ 					type="string" 
+ 					fieldController="org.wso2.developerstudio.eclipse.artifact.ds.validator.validators.ValidatorFieldsController">Project Name   </data>
+ 		<data modelProperty="vaildatorClass.package.name" 
+ 					type="string" 
+ 					fieldController="org.wso2.developerstudio.eclipse.artifact.ds.validator.validators.ValidatorFieldsController" group="testid">Package Name</data>
+ 		<data modelProperty="vaildatorClass.name" 
+ 					type="string" 
+ 					fieldController="org.wso2.developerstudio.eclipse.artifact.ds.validator.validators.ValidatorFieldsController" group="testid">Class Name</data>	 
+ 		<group id="testid"></group>
+ 		
+ 		<projectNatures>
+			<nature>org.eclipse.jdt.core.javanature</nature>
+		</projectNatures>
+		
+ 	</settings>
+ 	 	<settings optionId="import.validator"
+ 			 				title="Data Services Validator"
+ 			  			description="Create Data Services Validator using a project with Data Services Validator Class"
+ 			  			error="Please select the project">	  
+ 	 		<data modelProperty="import.project.list" type="list" 
+ 					fieldController="org.wso2.developerstudio.eclipse.artifact.ds.validator.validators.ValidatorFieldsController"
+ 					controlData="select=single;class=org.wso2.developerstudio.eclipse.artifact.ds.validator.utils.ProjectData">Validator Project</data>		
+ 		<projectNatures>
+			<nature>org.eclipse.jdt.core.javanature</nature>
+		</projectNatures>
+		
+ 	</settings>
+ </projectOptionSettings>
+</wizard>
+S

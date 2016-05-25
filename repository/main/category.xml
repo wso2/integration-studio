@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <category-def name="org.wso2.developerstudio.eclipse.data.service.feature.category" label="WSO2 Data Service Tools"/>
+<description>
+		This is the Data Service Feature for the Developer Studio. This provides tooling support for WSO2 Data Service Artifact creation and deployment with Developer Studio.
+      </description>
+ <feature id="org.wso2.developerstudio.eclipse.data.service.feature" version="0.0.0">
+      <category name="org.wso2.developerstudio.eclipse.data.service.feature.category"/>
+   </feature>
+   <feature id="org.wso2.developerstudio.eclipse.dss.dependencies.feature" version="0.0.0">
+      <category name="org.wso2.developerstudio.eclipse.data.service.feature.category"/>
+   </feature>
+</site>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wizard>
+	<projectOptions title="Data Service Artifact Creation Options"
+		description="Select how you would like to create your new dataservice"
+		error="Please select a method to create the dataservice">
+		<option id="new.ds" default="true">Create a New Data Service</option>
+		<option id="import.ds">Import a Data Service</option>
+	</projectOptions>
+	<projectOptionSettings>
+		<settings optionId="new.ds" title="Data Service"
+			description="Create a new Data Service" error="Please give a name to the project">
+			<data modelProperty="service.name" type="string"
+				fieldController="org.wso2.developerstudio.eclipse.artifact.dataservice.validators.DataServiceFieldController">Data Service Name*</data>
+			<data modelProperty="service.group" type="string"
+				fieldController="org.wso2.developerstudio.eclipse.artifact.dataservice.validators.DataServiceFieldController">Data Service Group</data>
+			<data modelProperty="service.ns" type="string"
+				fieldController="org.wso2.developerstudio.eclipse.artifact.dataservice.validators.DataServiceFieldController">Data Service Namespace</data>
+			<data modelProperty="service.description" type="string"
+				fieldController="org.wso2.developerstudio.eclipse.artifact.dataservice.validators.DataServiceFieldController"
+				controlData="multiline=true">Description</data>
+			<!-- data modelProperty="project.name" type="string"
+				fieldController="org.wso2.developerstudio.eclipse.artifact.dataservice.validators.DataServiceFieldController">Project Name</data-->
+			<data modelProperty="save.file" type="workspacefolder"
+				fieldController="org.wso2.developerstudio.eclipse.artifact.dataservice.validators.DataServiceFieldController"
+				controlData="filterClass=org.wso2.developerstudio.eclipse.artifact.dataservice.validators.DSSProjectFilter">Save Data Service in:</data>
+			<data modelProperty="create.ds.prj" type="link" fieldController="org.wso2.developerstudio.eclipse.artifact.dataservice.validators.DataServiceFieldController" controlData="align=right">&lt;a&gt;Create new DSS Project...&lt;/a&gt;</data>
+			
+			<projectNatures>
+				<nature>org.eclipse.jdt.core.javanature</nature>
+			</projectNatures>
+
+		</settings>
+		<settings optionId="import.ds" title="Data Service"
+			description="Create Data Service using a Data Service descriptor file"
+			error="Browse and select a Data Service descriptor file">
+			<data modelProperty="import.file" type="file" filter="*.dbs"
+				fieldController="org.wso2.developerstudio.eclipse.artifact.dataservice.validators.DataServiceFieldController">Data Service Descriptor File*</data>
+			<data modelProperty="save.file" type="workspacefolder"
+				fieldController="org.wso2.developerstudio.eclipse.artifact.dataservice.validators.DataServiceFieldController"
+				controlData="filterClass=org.wso2.developerstudio.eclipse.artifact.dataservice.validators.DSSProjectFilter">Save Data Service in:</data>
+			<data modelProperty="create.ds.prj" type="link" fieldController="org.wso2.developerstudio.eclipse.artifact.dataservice.validators.DataServiceFieldController" controlData="align=right">&lt;a&gt;Create new DSS Project...&lt;/a&gt;</data>
+			
+			<projectNatures>
+				<nature>org.eclipse.jdt.core.javanature</nature>
+			</projectNatures>
+		</settings>
+	</projectOptionSettings>
+</wizard>

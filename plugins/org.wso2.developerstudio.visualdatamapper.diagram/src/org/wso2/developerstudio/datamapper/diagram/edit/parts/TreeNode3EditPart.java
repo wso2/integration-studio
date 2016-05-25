@@ -328,7 +328,7 @@ public class TreeNode3EditPart extends AbstractBorderedShapeEditPart {
 	}
 
 	private boolean createInNode(EditPart childEditPart) {
-		BorderItemLocator locator = new BorderItemLocator(getMainFigure(), PositionConstants.EAST);
+		BorderItemLocator locator = new BorderItemLocator(getMainFigure(), PositionConstants.WEST);
 		getBorderedFigure().getBorderItemContainer().add(((InNodeEditPart) childEditPart).getFigure(),
 				locator);
 		return true;

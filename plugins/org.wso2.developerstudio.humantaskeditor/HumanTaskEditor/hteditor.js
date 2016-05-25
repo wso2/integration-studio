@@ -59,10 +59,11 @@ function createFile(currentTaskName,state) { //createFile
         .val();
     var serviceName = $('#' + currentTaskName + 'wrapper #taskCallbackServiceName').val();
     var outputElements = $('#' + currentTaskName + 'wrapper #outputmappingTable tr');
+
     $.get('resources/dummy.wsdl', function(data) {
        try {
             wsdlDom = marshalEditorTextContent(data);
-            generateInputWSDL(wsdlDom, currentTaskName);
+            generateInputWSDL(wsdlDom, xmlDom, currentTaskName);
             saveWSDL(wsdlDom, currentTaskName + "Task"); 
 
         } catch (err) {
@@ -74,8 +75,8 @@ function createFile(currentTaskName,state) { //createFile
     $.get('resources/dummy.wsdl', function(data) {
         try {
              wsdlCBDom = marshalEditorTextContent(data);
-            generateOutputWSDL(wsdlCBDom, currentTaskName,serviceURL,operationName,serviceName,outputElements);
-            saveWSDL(wsdlCBDom, currentTaskName + "CBTask");
+            generateOutputWSDL(wsdlCBDom, xmlDom, currentTaskName,serviceURL,operationName,serviceName,outputElements);
+            saveWSDL(wsdlCBDom, currentTaskName + "TaskCallBack");
             // generateUI();
         } catch (err) {
             handleError("Callback WSDL Error " + err);
@@ -460,7 +461,7 @@ function generateTaskDiv(taskNode) {
         .getElementsByTagName("inputs")[0].childNodes;
     $("#" + taskDivName + " #inputmappingTable")
         .html(
-            '<tr><th width="25%" scope="col">Element Name</th><th width="25%" scope="col">Display Name</th><th width="10%" scope="col">Value</th><th width="20%" scope="col">Type</th></tr>');
+            '<tr><th width="25%" scope="col">Element Name</th><th width="25%" scope="col">Display Name</th><th width="10%" scope="col">Presentation Parameters</th><th width="20%" scope="col">Type</th></tr>');
 
     for (i = 0; i < inputNodes.length; i++) {
         if (inputNodes[i].nodeName != "#text") {
@@ -749,6 +750,11 @@ function generateText(taskNode) {
                     '#' + taskDivName + " #taskOutputMappingOrder" + outputmapping).val();
             else
                 addTextNode(outputNodes[i].getElementsByTagName("value")[0], xmlDom, $('#' + taskDivName + " #taskOutputMappingOrder" + outputmapping).val());
+            if (outputNodes[i].getElementsByTagName("xpath")[0].childNodes.length != 0)
+                outputNodes[i].getElementsByTagName("xpath")[0].childNodes[0].nodeValue = "/tns:"+ $(
+                    '#' + taskDivName + " #taskOutputMappingElementName" + outputmapping).val();
+            else
+                addTextNode(outputNodes[i].getElementsByTagName("xpath")[0], xmlDom, "/tns:" + $('#' + taskDivName + " #taskOutputMappingElementName" + outputmapping).val());
             if (outputNodes[i].getElementsByTagName("default")[0].childNodes.length != 0)
                 outputNodes[i].getElementsByTagName("default")[0].childNodes[0].nodeValue = $(
                     '#' + taskDivName + " #taskOutputMappingDefaultValues" + outputmapping).val();
@@ -1061,7 +1067,7 @@ function createNewLiteral(xmlDom, parent, text, grouptext) {
 }
 
 function addPresentationParameter(xmlDom, taskNode, taskName , name, type) { //should be presentationParameters
-    if(name.indexOf("$")==0 && name.lastIndexOf("$")==(name.length-1)){
+    //if(name.indexOf("$")==0 && name.lastIndexOf("$")==(name.length-1)){ //uncomment this for $ validation
     name = name.replace(/[&\/\\#,+()$~%.'":*?<>{}]/g, '');
     parent = taskNode.getElementsByTagName("presentationElements")[0]
         .getElementsByTagName("presentationParameters")[0];
@@ -1069,10 +1075,11 @@ function addPresentationParameter(xmlDom, taskNode, taskName , name, type) { //s
         "htd:presentationParameter"); 
     newPresentationParameter.setAttribute("name",name);   
     newPresentationParameter.setAttribute("type",type); 
-    newPresentationParameterText = xmlDom.createTextNode("htd:getInput(\""+taskName+"Request\")/test10:"+name);
+    //newPresentationParameterText = xmlDom.createTextNode("htd:getInput(\""+taskName+"Request\")/test10:"+name);
+    newPresentationParameterText = xmlDom.createTextNode("/tns:"+name);
     newPresentationParameter.appendChild(newPresentationParameterText);
     parent.appendChild(newPresentationParameter);
-    }
+   // }
 }
 
 function removeUnwantedArtifacts() {

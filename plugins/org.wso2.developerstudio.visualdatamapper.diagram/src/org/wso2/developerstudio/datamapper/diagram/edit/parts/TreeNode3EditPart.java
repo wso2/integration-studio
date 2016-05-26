@@ -264,7 +264,7 @@ public class TreeNode3EditPart extends AbstractBorderedShapeEditPart {
 		}
 		if (childEditPart instanceof OutNodeEditPart) {
 			if (temp instanceof OutputEditPart) {
-				createEmptyInNode(childEditPart);
+				createEmptyOutNode(childEditPart);
 			} else {
 				//If an element has children, then disable the outnode connector arrow
 				if (((TreeNode) ((View) getModel()).getElement()).getNode().size() > 0) {

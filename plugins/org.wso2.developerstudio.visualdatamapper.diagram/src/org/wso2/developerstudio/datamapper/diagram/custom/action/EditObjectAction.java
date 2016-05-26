@@ -89,6 +89,7 @@ public class EditObjectAction extends AbstractActionHandler {
 	private String value = null;
 	private String identifierType = null;
 	private String identifierValue = null;
+	private String identifierURL = null;
 	private static final String NAMESPACE_PREFIX = "prefix";
 	private static final String NAMESPACE_URL = "url";
 
@@ -136,27 +137,28 @@ public class EditObjectAction extends AbstractActionHandler {
 				name = title;
 			}
 	
-			schemaType = setProerties(selectedNode, JSON_SCHEMA_TYPE);
-			id = setProerties(selectedNode, JSON_SCHEMA_ID);
-			required = setProerties(selectedNode, JSON_SCHEMA_REQUIRED);
-			schemaValue = setProerties(selectedNode, JSON_SCHEMA_SCHEMA_VALUE);
-			value = setProerties(selectedNode, JSON_SCHEMA_OBJECT_VALUE_TYPE);
+			schemaType = setProperties(selectedNode, JSON_SCHEMA_TYPE);
+			id = setProperties(selectedNode, JSON_SCHEMA_ID);
+			required = setProperties(selectedNode, JSON_SCHEMA_REQUIRED);
+			schemaValue = setProperties(selectedNode, JSON_SCHEMA_SCHEMA_VALUE);
+			value = setProperties(selectedNode, JSON_SCHEMA_OBJECT_VALUE_TYPE);
 			if(valueofElementIdentifier != null){
 			String[] identifier = valueofElementIdentifier[1].split("=");
 			identifierType = identifier[0];
 			identifierValue= identifier[1];
 			}
+			identifierURL = setProperties(selectedNode, JSON_SCHEMA_OBJECT_ELEMENT_IDENTIFIERS_URL);
 			//gets the root element's namespace
-			namespaces = setProerties(selectedNode, JSON_SCHEMA_NAMESPACES);
+			namespaces = setProperties(selectedNode, JSON_SCHEMA_NAMESPACES);
 			if(namespaces == null){
 				//gets the namespaces for other objects than root element
-				namespaces = setProerties(selectedNode, JSON_SCHEMA_OBJECT_NAMESPACES);
+				namespaces = setProperties(selectedNode, JSON_SCHEMA_OBJECT_NAMESPACES);
 			}
 			if(namespaces != null){
 				formatedNamespace = formatNamespace(namespaces).toString();
 				newNamespace = formatedNamespace.substring(1, formatedNamespace.toString().length()-1);
 			}
-			openEditRecordDialog(selectedNode, name, schemaType, id, required, schemaValue,newNamespace,value,identifierType,identifierValue);
+			openEditRecordDialog(selectedNode, name, schemaType, id, required, schemaValue,newNamespace,value,identifierType,identifierValue,identifierURL);
 
 		}
 	}
@@ -198,7 +200,7 @@ public class EditObjectAction extends AbstractActionHandler {
 		return namespaceArray;
 	}
 
-	private String setProerties(TreeNode selectedNode, String key) {
+	private String setProperties(TreeNode selectedNode, String key) {
 		String value = null;
 		for (PropertyKeyValuePair keyValue : selectedNode.getProperties()) {
 			if (keyValue.getKey().equals(key)) {
@@ -319,13 +321,13 @@ public class EditObjectAction extends AbstractActionHandler {
 	 * @param identifierType2 
 	 */
 	private void openEditRecordDialog(TreeNode selectedNode, String title, String schemaType, String id,
-			String required, String schemaValue, String namespaces, String value, String identifierType, String identifierValue) {
+			String required, String schemaValue, String namespaces, String value, String identifierType, String identifierValue, String identifierURL) {
 		Shell shell = Display.getDefault().getActiveShell();
 		AddNewObjectDialog editTypeDialog = new AddNewObjectDialog(shell, new Class[] { IRegistryFile.class });
 
 		editTypeDialog.create();
 		editTypeDialog.setTypeWhenEditing(schemaType);
-		editTypeDialog.setValues(title, schemaType, id, required, schemaValue,namespaces,value,identifierType,identifierValue);
+		editTypeDialog.setValues(title, schemaType, id, required, schemaValue,namespaces,value,identifierType,identifierValue,identifierURL);
 		editTypeDialog.open();
 
 		if (editTypeDialog.getOkValue()) {

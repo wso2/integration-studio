@@ -278,7 +278,7 @@ public class AddNewObjectDialog extends Dialog {
 	 * @param identifierValue2 
 	 * @param identifierType2 
 	 */
-	public void setValues(String title, String schemaType, String id, String required, String schemaValue, String namespaces, String value, String identifierType, String identifierValue) {
+	public void setValues(String title, String schemaType, String id, String required, String schemaValue, String namespaces, String value, String identifierType, String identifierValue, String identifierURL) {
 		if (StringUtils.isNotEmpty(title)) {
 			textTitle.setText(title);
 		}
@@ -640,16 +640,17 @@ public class AddNewObjectDialog extends Dialog {
 		if (StringUtils.isNotEmpty(namespaces)) {
 			textNamespaces.setText(namespaces);
 		}
-		if(StringUtils.isNotEmpty(identifierType) && StringUtils.isNotEmpty(identifierValue)){
+		if(StringUtils.isNotEmpty(identifierType) && StringUtils.isNotEmpty(identifierValue) && StringUtils.isNotEmpty(identifierURL)){
 			checkBoxForIdentifiers.setVisible(true);
 			lblCheckBoxForIdentifiers.setVisible(true);
 			checkBoxForIdentifiers.setSelection(true);
 			lblIdentifierType.setVisible(true);
 			lblIdentifierValue.setVisible(true);
 			textIdentifierType.setVisible(true);
-			textIdentifierValue.setVisible(true);
+			textIdentifierURL.setVisible(true);
 			textIdentifierType.setText(identifierType);
 			textIdentifierValue.setText(identifierValue);
+			textIdentifierURL.setText(identifierURL);
 			//TODO when editing the xsi:type display the added URL
 		}
 	}

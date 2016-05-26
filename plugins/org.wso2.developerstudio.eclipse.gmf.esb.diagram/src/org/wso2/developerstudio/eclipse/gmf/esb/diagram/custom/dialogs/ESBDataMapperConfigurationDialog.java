@@ -278,7 +278,7 @@ public class ESBDataMapperConfigurationDialog extends Dialog {
 		/* Get projects that provide datamapper configurations */
 		IDeveloperStudioProviderData[] providerProjectsList = RegistryResourcesUtils.loadProviderProjectsList(type);
 		setImportConfigurationsList(providerProjectsList);
-
+		validate();
 		return container;
 	}
 
@@ -291,6 +291,7 @@ public class ESBDataMapperConfigurationDialog extends Dialog {
 	protected void createButtonsForButtonBar(Composite parent) {
 		createButton(parent, IDialogConstants.OK_ID, IDialogConstants.OK_LABEL, true);
 		createButton(parent, IDialogConstants.CANCEL_ID, IDialogConstants.CANCEL_LABEL, false);
+		validate();
 	}
 
 	/**

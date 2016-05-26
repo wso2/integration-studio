@@ -257,7 +257,9 @@ public class TreeNodeEditPart extends AbstractBorderedShapeEditPart {
 						// If an element has values then enable the connector
 						// arrow
 						if (itemsType.equals(NULL_VALUE)) {
-							createEmptyInNode(childEditPart);				
+							createEmptyInNode(childEditPart);
+						} else if(StringUtils.isEmpty(type)) {
+							createEmptyInNode(childEditPart);
 						} else {
 							return createInNode(childEditPart);
 						}
@@ -294,6 +296,8 @@ public class TreeNodeEditPart extends AbstractBorderedShapeEditPart {
 						// If an element has values then enable the connector
 						// arrow
 						if (itemsType.equals(NULL_VALUE)) {
+							createEmptyOutNode(childEditPart);
+						} else if(StringUtils.isEmpty(type)) {
 							createEmptyOutNode(childEditPart);
 						} else {
 							return createOutNode(childEditPart);

@@ -65,6 +65,7 @@ public class AddNewArrayAction extends AbstractActionHandler {
 	private static final String NAMESPACE_URL = "url";
 	private static final String JSON_SCHEMA_ARRAY_NAMESPACES = "arrayNamespaces";
 	private static final String JSON_SCHEMA_ARRAY_ITEMS_ID = "items_id";
+	private static final String JSON_SCHEMA_ARRAY_ITEMS_TYPE = "items_type";
 	private static final String JSON_SCHEMA_ARRAY_ITEMS_VALUE_TYPE = "items_value_type";
 	private static final String ELEMENT_IDENTIFIER = "type";
 	private static final String JSON_SCHEMA_ARRAY_ELEMENT_IDENTIFIERS = "arrayElementIdentifiers";
@@ -157,6 +158,7 @@ public class AddNewArrayAction extends AbstractActionHandler {
 			
 				//Sets the values for items field which is used for serializing the array
 				setPropertyKeyValuePairforTreeNodes(treeNodeNew, propertyValueList, JSON_SCHEMA_ARRAY_ITEMS_ID, objectDialog.getID()+"/0");
+				setPropertyKeyValuePairforTreeNodes(treeNodeNew, propertyValueList, JSON_SCHEMA_ARRAY_ITEMS_TYPE, objectDialog.getValue());
 				//sets the value type if item holds a value
 				if(StringUtils.isNotEmpty(objectDialog.getValue())){
 				setPropertyKeyValuePairforTreeNodes(treeNodeNew, propertyValueList, JSON_SCHEMA_ARRAY_ITEMS_VALUE_TYPE,objectDialog.getValue());

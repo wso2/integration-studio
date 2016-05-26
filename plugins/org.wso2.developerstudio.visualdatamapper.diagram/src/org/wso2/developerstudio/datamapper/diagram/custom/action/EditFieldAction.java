@@ -87,6 +87,7 @@ public class EditFieldAction extends AbstractActionHandler {
 	private String formatedNamespace = null;
 	private String identifierType = null;
 	private String identifierValue = null;
+    private String identifierURL = null;
 
 	public EditFieldAction(IWorkbenchPart workbenchPart) {
 		super(workbenchPart);
@@ -140,10 +141,11 @@ public class EditFieldAction extends AbstractActionHandler {
 			identifierType = identifier[0];
 			identifierValue= identifier[1];
 			}
+			identifierURL = setProerties(selectedNode, JSON_SCHEMA_FIELD_ELEMENT_IDENTIFIERS_URL);
 			namespaces = setProerties(selectedNode, JSON_SCHEMA_FIELD_NAMESPACES);
 			formatedNamespace = formatNamespace(namespaces).toString();
 			String newNamespace = formatedNamespace.substring(1, formatedNamespace.toString().length()-1);
-			openEditRecordDialog(selectedNode, name, schemaType, id, required, schemaValue,newNamespace,identifierType,identifierValue);
+			openEditRecordDialog(selectedNode, name, schemaType, id, required, schemaValue,newNamespace,identifierType,identifierValue,identifierURL);
 
 		}
 	}
@@ -269,13 +271,13 @@ public class EditFieldAction extends AbstractActionHandler {
 	 * @param identifierType2 
 	 */
 	private void openEditRecordDialog(TreeNode selectedNode, String title, String schemaType, String id,
-			String required, String schemaValue, String namespaces, String identifierType, String identifierValue) {
+			String required, String schemaValue, String namespaces, String identifierType, String identifierValue, String identifierURL) {
 		Shell shell = Display.getDefault().getActiveShell();
 		AddNewObjectDialog editTypeDialog = new AddNewObjectDialog(shell, new Class[] { IRegistryFile.class });
 
 		editTypeDialog.create();
 		editTypeDialog.setTypeWhenEditing(schemaType);
-		editTypeDialog.setValues(title, schemaType, id, required, schemaValue,namespaces,null,identifierType,identifierValue);
+		editTypeDialog.setValues(title, schemaType, id, required, schemaValue,namespaces,null,identifierType,identifierValue,identifierURL);
 		editTypeDialog.open();
 
 		if (editTypeDialog.getOkValue()) {

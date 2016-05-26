@@ -241,7 +241,7 @@ public class TreeNode3EditPart extends AbstractBorderedShapeEditPart {
 						createEmptyInNode(childEditPart);
 					}
 				} else {
-					if (type.equals(JSON_SCHEMA_OBJECT) || type.equals(JSON_SCHEMA_ARRAY)) {
+					if (type.equals(JSON_SCHEMA_ARRAY)) {
 						String itemsType = getItemsType();
 						// If an element has values then enable the connector
 						// arrow
@@ -251,6 +251,14 @@ public class TreeNode3EditPart extends AbstractBorderedShapeEditPart {
 							createEmptyInNode(childEditPart);
 						} else {
 							return createInNode(childEditPart);
+						}
+					} else if(type.equals(JSON_SCHEMA_OBJECT)){
+						String value = getNodeValue(type);
+						// If an element has values then enable the connector arrow
+						if (StringUtils.isNotEmpty(value)) {
+							return createInNode(childEditPart);
+						} else {
+							createEmptyInNode(childEditPart);
 						}
 					} else {
 						if (type.equals(NULL_VALUE)) {
@@ -282,7 +290,7 @@ public class TreeNode3EditPart extends AbstractBorderedShapeEditPart {
 						createEmptyOutNode(childEditPart);
 					}
 				} else {
-					if (type.equals(JSON_SCHEMA_OBJECT) || type.equals(JSON_SCHEMA_ARRAY)) {
+					if (type.equals(JSON_SCHEMA_ARRAY)) {
 						String itemsType = getItemsType();
 						// If an element has values then enable the connector
 						// arrow
@@ -292,6 +300,14 @@ public class TreeNode3EditPart extends AbstractBorderedShapeEditPart {
 							createEmptyOutNode(childEditPart);
 						} else {
 							return createOutNode(childEditPart);
+						}
+					} else if(type.equals(JSON_SCHEMA_OBJECT)){
+						String value = getNodeValue(type);
+						// If an element has values then enable the connector arrow
+						if (StringUtils.isNotEmpty(value)) {
+							return createOutNode(childEditPart);
+						} else {
+							createEmptyOutNode(childEditPart);
 						}
 					} else {
 						if (type.equals(NULL_VALUE)) {

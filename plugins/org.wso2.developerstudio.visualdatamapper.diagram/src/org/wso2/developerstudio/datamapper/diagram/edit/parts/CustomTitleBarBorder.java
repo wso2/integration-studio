@@ -40,7 +40,7 @@ public class CustomTitleBarBorder extends TitleBarBorder {
 		Color bgColor = graphics.getBackgroundColor();
 		Color fgColor = graphics.getForegroundColor();
 		// Set the graphics color
-		graphics.setBackgroundColor(new Color(null, 219,219,219));
+		graphics.setBackgroundColor(DataMapperColorConstants.titleBarColor);
 		graphics.setForegroundColor(DataMapperColorConstants.titleBarColor);
 		// Restore the original colors
 		graphics.fillGradient(tempRect, true);

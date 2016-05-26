@@ -242,7 +242,7 @@ public class TreeNode2EditPart extends AbstractBorderedShapeEditPart {
 					// If an element has values then enable the connector arrow
 					if (StringUtils.isNotEmpty(value)) {
 						return createInNode(childEditPart);
-					}else {
+					} else {
 						createEmptyInNode(childEditPart);
 					}
 				} else {
@@ -251,7 +251,9 @@ public class TreeNode2EditPart extends AbstractBorderedShapeEditPart {
 						// If an element has values then enable the connector
 						// arrow
 						if (itemsType.equals(NULL_VALUE)) {
-							createEmptyInNode(childEditPart);				
+							createEmptyInNode(childEditPart);
+						} else if (StringUtils.isEmpty(itemsType)) {
+							createEmptyInNode(childEditPart);
 						} else {
 							return createInNode(childEditPart);
 						}
@@ -259,6 +261,8 @@ public class TreeNode2EditPart extends AbstractBorderedShapeEditPart {
 						if (type.equals(NULL_VALUE)) {
 							// If type is null, then disable the in node
 							// connector
+							createEmptyInNode(childEditPart);
+						} else if (StringUtils.isEmpty(type)) {
 							createEmptyInNode(childEditPart);
 						} else {
 							return createInNode(childEditPart);
@@ -278,7 +282,7 @@ public class TreeNode2EditPart extends AbstractBorderedShapeEditPart {
 					// If an element has values then enable the connector arrow
 					if (StringUtils.isNotEmpty(value)) {
 						return createOutNode(childEditPart);
-					}else {
+					} else {
 						createEmptyOutNode(childEditPart);
 					}
 				} else {
@@ -288,6 +292,8 @@ public class TreeNode2EditPart extends AbstractBorderedShapeEditPart {
 						// arrow
 						if (itemsType.equals(NULL_VALUE)) {
 							createEmptyOutNode(childEditPart);
+						} else if (StringUtils.isEmpty(itemsType)) {
+							createEmptyOutNode(childEditPart);
 						} else {
 							return createOutNode(childEditPart);
 						}
@@ -295,6 +301,8 @@ public class TreeNode2EditPart extends AbstractBorderedShapeEditPart {
 						if (type.equals(NULL_VALUE)) {
 							// If type is null, then disable the out node
 							// connector
+							createEmptyOutNode(childEditPart);
+						} else if (StringUtils.isEmpty(type)) {
 							createEmptyOutNode(childEditPart);
 						} else {
 							return createOutNode(childEditPart);
@@ -338,8 +346,8 @@ public class TreeNode2EditPart extends AbstractBorderedShapeEditPart {
 
 		return value;
 	}
-	
-	public String getItemsType(){
+
+	public String getItemsType() {
 		String type = "";
 		for (PropertyKeyValuePair keyValue : (((TreeNode) ((View) getModel()).getElement()).getProperties())) {
 			if (keyValue.getKey().equals(JSON_SCHEMA_ARRAY_ITEMS_TYPE)) {

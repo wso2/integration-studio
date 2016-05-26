@@ -462,8 +462,14 @@ public class SchemaBuilder {
 				String idwithoutAtSign = attributeId.substring(1);
 				leaf.setId(parent.getId() + "/" + idwithoutAtSign);
 				leaf.setType(attributeValueType.toString().toLowerCase());
+				primitive.setType(TypeEnum.OBJECT.toString().toLowerCase());
 				primitive.addAttribute(idwithoutAtSign, leaf);
-			} else {
+			}else if (attributeId.startsWith(HASHCONTENT)) {
+				JsonObject object = new JsonObject();
+				object.addProperty("type", attributeValueType.toString().toLowerCase());
+				primitive.setType(TypeEnum.OBJECT.toString().toLowerCase());
+				primitive.addCustomObject("value", object);
+			}else {
 				primitive.setType(attributeValueType.toString().toLowerCase());
 			}
 		}
@@ -487,6 +493,7 @@ public class SchemaBuilder {
 				leaf.setId(parent.getId() + "/" + idwithoutAtSign);
 				leaf.setType(attributeValueType.toString().toLowerCase());
 				primitive.addAttribute(idwithoutAtSign, leaf);
+				primitive.setType(TypeEnum.OBJECT.toString().toLowerCase());
 			} else if (attributeId.equals(HASHCONTENT)) {
 				JsonObject object = new JsonObject();
 				object.addProperty("type", attributeValueType.toString().toLowerCase());

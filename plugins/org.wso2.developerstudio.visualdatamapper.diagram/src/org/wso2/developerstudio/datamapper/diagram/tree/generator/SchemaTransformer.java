@@ -22,7 +22,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -95,6 +94,11 @@ public class SchemaTransformer implements ISchemaTransformer {
 	private static final String JSON_SCHEMA_ARRAY_ELEMENT_IDENTIFIERS_URL = "arrayElementIdentifiersURL";
 	private static final String JSON_SCHEMA_FIELD_ELEMENT_IDENTIFIERS = "fieldElementIdentifiers";
 	private static final String JSON_SCHEMA_FIELD_ELEMENT_IDENTIFIERS_URL = "fieldElementIdentifiersURL";
+	private static final String ERROR = "Error";
+	private static final String ERROR_IN_PARSING_JSONSCHEMA = "Error in parsing the JSONSchema";
+	private static final String ERROR_IN_MAPPING_JSONSCHEMA = "Error in mapping the JSONSchema";
+	private static final String ERROR_IN_PROCESSING_JSONSCHEMA = "Error in processing the JSONSchema";
+
 
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 	private static String ERROR_TEXT = "File cannot be found ";
@@ -212,10 +216,13 @@ public class SchemaTransformer implements ISchemaTransformer {
 			jsonSchemaMap = objectMapper.readValue(schema, Map.class);
 		} catch (JsonParseException e) {
 			log.error("error in parsing the JSONSchema", e);
+			MessageDialog.openError(Display.getCurrent().getActiveShell(), ERROR,ERROR_IN_PARSING_JSONSCHEMA);
 		} catch (JsonMappingException e) {
 			log.error("error in mapping the JSONSchema", e);
+			MessageDialog.openError(Display.getCurrent().getActiveShell(), ERROR,ERROR_IN_MAPPING_JSONSCHEMA);
 		} catch (IOException e) {
 			log.error("error in processing the JSONSchema", e);
+			MessageDialog.openError(Display.getCurrent().getActiveShell(), ERROR,ERROR_IN_PROCESSING_JSONSCHEMA);
 		}
 		return jsonSchemaMap;
 	}
@@ -900,6 +907,7 @@ public class SchemaTransformer implements ISchemaTransformer {
 	/**
 	 * Gets the schema content
 	 */
+	@SuppressWarnings("resource")
 	@Override
 	public String getSchemaContentFromFile(String path) {
 		File jschema = new File(path);
@@ -1496,7 +1504,6 @@ public class SchemaTransformer implements ISchemaTransformer {
 	 * @param node
 	 * @param nodeObject
 	 */
-	@SuppressWarnings("unchecked")
 	private void insetIDAndTypeForJsonObject(TreeNode node, JSONObject nodeObject) {
 		String schemaType = getPropertyKeyValuePairforTreeNode(node, JSON_SCHEMA_TYPE);
 		String schemaID = getPropertyKeyValuePairforTreeNode(node, JSON_SCHEMA_ID);

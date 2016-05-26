@@ -95,7 +95,7 @@ public class TreeNodeEditPart extends AbstractBorderedShapeEditPart {
 	 * @generated NOT
 	 */
 	boolean isActivated = false;
-	
+
 	private static final String JSON_SCHEMA_ARRAY_ITEMS_VALUE_TYPE = "items_value_type";
 	private static final String JSON_SCHEMA_OBJECT_VALUE_TYPE = "object_value_type";
 	private static final String JSON_SCHEMA_ARRAY_ITEMS_TYPE = "items_type";
@@ -144,9 +144,8 @@ public class TreeNodeEditPart extends AbstractBorderedShapeEditPart {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see
-	 * org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart#isSelectable
-	 * ()
+	 * @see org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart#
+	 * isSelectable ()
 	 */
 	@Override
 	public boolean isSelectable() {
@@ -157,7 +156,8 @@ public class TreeNodeEditPart extends AbstractBorderedShapeEditPart {
 	 * @generated NOT
 	 */
 	protected void createDefaultEditPolicies() {
-//		installEditPolicy(EditPolicyRoles.CREATION_ROLE, new CreationEditPolicy());
+		// installEditPolicy(EditPolicyRoles.CREATION_ROLE, new
+		// CreationEditPolicy());
 		installEditPolicy(EditPolicyRoles.CREATION_ROLE, new CreationEditPolicyWithCustomReparent(
 				org.wso2.developerstudio.datamapper.diagram.part.DataMapperVisualIDRegistry.TYPED_INSTANCE));
 		super.createDefaultEditPolicies();
@@ -242,22 +242,25 @@ public class TreeNodeEditPart extends AbstractBorderedShapeEditPart {
 			if (temp instanceof InputEditPart) {
 				createEmptyInNode(childEditPart);
 			} else {
-				//If an element has children, then disable the innode connector arrow
+				// If an element has children, then disable the innode connector
+				// arrow
 				if (((TreeNode) ((View) getModel()).getElement()).getNode().size() > 0) {
 					String value = getNodeValue(type);
 					// If an element has values then enable the connector arrow
 					if (StringUtils.isNotEmpty(value)) {
 						return createInNode(childEditPart);
-					}else {
+					} else {
 						createEmptyInNode(childEditPart);
-					}	
+					}
 				} else {
 					if (type.equals(JSON_SCHEMA_OBJECT) || type.equals(JSON_SCHEMA_ARRAY)) {
 						String itemsType = getItemsType();
 						// If an element has values then enable the connector
 						// arrow
 						if (itemsType.equals(NULL_VALUE)) {
-							createEmptyInNode(childEditPart);				
+							createEmptyInNode(childEditPart);
+						} else if (StringUtils.isEmpty(itemsType)) {
+							createEmptyInNode(childEditPart);
 						} else {
 							return createInNode(childEditPart);
 						}
@@ -266,6 +269,8 @@ public class TreeNodeEditPart extends AbstractBorderedShapeEditPart {
 							// If type is null, then disable the in node
 							// connector
 							createEmptyInNode(childEditPart);
+						} else if (StringUtils.isEmpty(type)) {
+							createEmptyInNode(childEditPart);
 						} else {
 							return createInNode(childEditPart);
 						}
@@ -273,19 +278,19 @@ public class TreeNodeEditPart extends AbstractBorderedShapeEditPart {
 				}
 			}
 		}
-		
-		
+
 		if (childEditPart instanceof OutNodeEditPart) {
 			if (temp instanceof OutputEditPart) {
 				createEmptyInNode(childEditPart);
 			} else {
-				//If an element has children, then disable the outnode connector arrow
+				// If an element has children, then disable the outnode
+				// connector arrow
 				if (((TreeNode) ((View) getModel()).getElement()).getNode().size() > 0) {
 					String value = getNodeValue(type);
 					// If an element has values then enable the connector arrow
 					if (StringUtils.isNotEmpty(value)) {
 						return createOutNode(childEditPart);
-					}else {
+					} else {
 						createEmptyOutNode(childEditPart);
 					}
 				} else {
@@ -295,6 +300,8 @@ public class TreeNodeEditPart extends AbstractBorderedShapeEditPart {
 						// arrow
 						if (itemsType.equals(NULL_VALUE)) {
 							createEmptyOutNode(childEditPart);
+						} else if (StringUtils.isEmpty(itemsType)) {
+							createEmptyOutNode(childEditPart);
 						} else {
 							return createOutNode(childEditPart);
 						}
@@ -302,6 +309,8 @@ public class TreeNodeEditPart extends AbstractBorderedShapeEditPart {
 						if (type.equals(NULL_VALUE)) {
 							// If type is null, then disable the out node
 							// connector
+							createEmptyOutNode(childEditPart);
+						} else if (StringUtils.isEmpty(type)) {
 							createEmptyOutNode(childEditPart);
 						} else {
 							return createOutNode(childEditPart);
@@ -315,7 +324,7 @@ public class TreeNodeEditPart extends AbstractBorderedShapeEditPart {
 		return false;
 	}
 
-	public String getItemsType(){
+	public String getItemsType() {
 		String type = "";
 		for (PropertyKeyValuePair keyValue : (((TreeNode) ((View) getModel()).getElement()).getProperties())) {
 			if (keyValue.getKey().equals(JSON_SCHEMA_ARRAY_ITEMS_TYPE)) {
@@ -325,7 +334,7 @@ public class TreeNodeEditPart extends AbstractBorderedShapeEditPart {
 		}
 		return type;
 	}
-	
+
 	public String getNodeType() {
 		String type = "";
 		for (PropertyKeyValuePair keyValue : (((TreeNode) ((View) getModel()).getElement()).getProperties())) {
@@ -336,7 +345,7 @@ public class TreeNodeEditPart extends AbstractBorderedShapeEditPart {
 		}
 		return type;
 	}
-	
+
 	public String getNodeValue(String type) {
 		String value = "";
 		if (type.equals(JSON_SCHEMA_ARRAY)) {
@@ -357,21 +366,18 @@ public class TreeNodeEditPart extends AbstractBorderedShapeEditPart {
 
 		return value;
 	}
-	
+
 	private boolean createInNode(EditPart childEditPart) {
 		BorderItemLocator locator = new BorderItemLocator(getMainFigure(), PositionConstants.WEST);
-		getBorderedFigure().getBorderItemContainer().add(((InNodeEditPart) childEditPart).getFigure(),
-				locator);
+		getBorderedFigure().getBorderItemContainer().add(((InNodeEditPart) childEditPart).getFigure(), locator);
 		return true;
 	}
 
 	private boolean createOutNode(EditPart childEditPart) {
 		BorderItemLocator locator = new BorderItemLocator(getMainFigure(), PositionConstants.EAST);
-		getBorderedFigure().getBorderItemContainer().add(((OutNodeEditPart) childEditPart).getFigure(),
-				locator);
+		getBorderedFigure().getBorderItemContainer().add(((OutNodeEditPart) childEditPart).getFigure(), locator);
 		return true;
 	}
-
 
 	private void createEmptyInNode(EditPart childEditPart) {
 		NodeFigure figureInput = (NodeFigure) ((InNodeEditPart) childEditPart).getFigure();
@@ -379,14 +385,14 @@ public class TreeNodeEditPart extends AbstractBorderedShapeEditPart {
 		Figure emptyFigure = new Figure();
 		figureInput.add(emptyFigure);
 	}
-	
+
 	private void createEmptyOutNode(EditPart childEditPart) {
 		NodeFigure figureInput = (NodeFigure) ((OutNodeEditPart) childEditPart).getFigure();
 		figureInput.removeAll();
 		Figure emptyFigure = new Figure();
 		figureInput.add(emptyFigure);
 	}
-	
+
 	/**
 	 * @generated
 	 */
@@ -446,8 +452,8 @@ public class TreeNodeEditPart extends AbstractBorderedShapeEditPart {
 	/**
 	 * Creates figure for this edit part.
 	 * 
-	 * Body of this method does not depend on settings in generation model
-	 * so you may safely remove <i>generated</i> tag and modify it.
+	 * Body of this method does not depend on settings in generation model so
+	 * you may safely remove <i>generated</i> tag and modify it.
 	 * 
 	 * @generated
 	 */
@@ -461,8 +467,8 @@ public class TreeNodeEditPart extends AbstractBorderedShapeEditPart {
 	}
 
 	/**
-	 * Default implementation treats passed figure as content pane.
-	 * Respects layout one may have set for generated figure.
+	 * Default implementation treats passed figure as content pane. Respects
+	 * layout one may have set for generated figure.
 	 * 
 	 * @param nodeShape
 	 *            instance of generated figure class
@@ -534,7 +540,7 @@ public class TreeNodeEditPart extends AbstractBorderedShapeEditPart {
 	 * @generated NOT
 	 */
 	public class TreeNodeFigure extends RectangleFigure {
-		
+
 		private static final String ELEMENT_ICON = "icons/gmf/symbol_element_of.gif";
 		private static final String ATTRIBUTE_ICON = "icons/gmf/AttributeIcon.png";
 		private static final String ARRAY_ICON = "icons/gmf/arrays.jpg";
@@ -543,7 +549,7 @@ public class TreeNodeEditPart extends AbstractBorderedShapeEditPart {
 		private static final String JSON_SCHEMA_TYPE = "type";
 		private static final String JSON_SCHEMA_ARRAY = "array";
 		private static final String JSON_SCHEMA_OBJECT = "object";
-		
+
 		private static final String PREFIX = "@";
 		/**
 		 * @generated
@@ -566,7 +572,7 @@ public class TreeNodeEditPart extends AbstractBorderedShapeEditPart {
 			ToolbarLayout layoutThis = new ToolbarLayout();
 			layoutThis.setStretchMinorAxis(true);
 			layoutThis.setMinorAlignment(ToolbarLayout.ALIGN_TOPLEFT);
-			//layoutThis.setSpacing(1);
+			// layoutThis.setSpacing(1);
 			layoutThis.setVertical(true);
 			this.setLayoutManager(layoutThis);
 			this.setOutline(true);
@@ -579,8 +585,6 @@ public class TreeNodeEditPart extends AbstractBorderedShapeEditPart {
 		 * @generated NOT
 		 */
 		private void createContents() {
-			
-			
 
 			RectangleFigure figure = new RectangleFigure();
 			ToolbarLayout l = new ToolbarLayout();
@@ -595,49 +599,54 @@ public class TreeNodeEditPart extends AbstractBorderedShapeEditPart {
 			figure2.setBorder(null);
 			figure2.setOpaque(false);
 
-			ImageDescriptor mainImgDescCollapse = AbstractUIPlugin.imageDescriptorFromPlugin(
-					ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM, ELEMENT_ICON);
-			ImageDescriptor attributeImgDesc = AbstractUIPlugin.imageDescriptorFromPlugin(
-					ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM, ATTRIBUTE_ICON);
-			ImageDescriptor arrayImgDesc = AbstractUIPlugin.imageDescriptorFromPlugin(
-					ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM, ARRAY_ICON);
-			ImageDescriptor objectImgDesc = AbstractUIPlugin.imageDescriptorFromPlugin(
-					ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM, OBJECT_ICON);
-
+			ImageDescriptor mainImgDescCollapse = AbstractUIPlugin
+					.imageDescriptorFromPlugin(ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM, ELEMENT_ICON);
+			ImageDescriptor attributeImgDesc = AbstractUIPlugin
+					.imageDescriptorFromPlugin(ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM, ATTRIBUTE_ICON);
+			ImageDescriptor arrayImgDesc = AbstractUIPlugin
+					.imageDescriptorFromPlugin(ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM, ARRAY_ICON);
+			ImageDescriptor objectImgDesc = AbstractUIPlugin
+					.imageDescriptorFromPlugin(ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM, OBJECT_ICON);
 
 			final ImageFigure mainImg = new ImageFigure(mainImgDescCollapse.createImage());
 			mainImg.setSize(new Dimension(10, 8));
-			
-			ImageFigure attributeImg = new ImageFigure(attributeImgDesc.createImage()); //attribute symbole figure 
+
+			ImageFigure attributeImg = new ImageFigure(attributeImgDesc.createImage()); // attribute
+																						// symbole
+																						// figure
 			attributeImg.setSize(new Dimension(10, 8));
-			
-			ImageFigure arrayImg = new ImageFigure(arrayImgDesc.createImage()); //array symbole figure 
+
+			ImageFigure arrayImg = new ImageFigure(arrayImgDesc.createImage()); // array
+																				// symbole
+																				// figure
 			attributeImg.setSize(new Dimension(10, 8));
-			
-			ImageFigure objectImg = new ImageFigure(objectImgDesc.createImage()); //object symbole figure 
+
+			ImageFigure objectImg = new ImageFigure(objectImgDesc.createImage()); // object
+																					// symbole
+																					// figure
 			attributeImg.setSize(new Dimension(10, 8));
-			
+
 			RectangleFigure mainImageRectangle = new RectangleFigure();
 
 			mainImageRectangle.setBackgroundColor(new Color(null, 255, 255, 255));
 			mainImageRectangle.setPreferredSize(new Dimension(10, 7));
 			mainImageRectangle.add(mainImg);
 			mainImageRectangle.setBorder(null);
-			
+
 			RectangleFigure attributeImageRectangle = new RectangleFigure();
 
 			attributeImageRectangle.setBackgroundColor(new Color(null, 255, 255, 255));
 			attributeImageRectangle.setPreferredSize(new Dimension(10, 7));
 			attributeImageRectangle.add(attributeImg);
 			attributeImageRectangle.setBorder(null);
-			
+
 			RectangleFigure arrayImageRectangle = new RectangleFigure();
 
 			arrayImageRectangle.setBackgroundColor(new Color(null, 255, 255, 255));
 			arrayImageRectangle.setPreferredSize(new Dimension(10, 7));
 			arrayImageRectangle.add(attributeImg);
 			arrayImageRectangle.setBorder(null);
-			
+
 			RectangleFigure objectImageRectangle = new RectangleFigure();
 
 			objectImageRectangle.setBackgroundColor(new Color(null, 255, 255, 255));
@@ -646,9 +655,12 @@ public class TreeNodeEditPart extends AbstractBorderedShapeEditPart {
 			objectImageRectangle.setBorder(null);
 
 			fFigureTreeNodeNameFigure = new WrappingLabel();
-			//String name = (((TreeNode) ((View) getModel()).getElement()).getName()).split(",")[1];
-			/*int count = Integer.parseInt((((TreeNode) ((View) getModel()).getElement()).getName())
-					.split(",")[0]);*/
+			// String name = (((TreeNode) ((View)
+			// getModel()).getElement()).getName()).split(",")[1];
+			/*
+			 * int count = Integer.parseInt((((TreeNode) ((View)
+			 * getModel()).getElement()).getName()) .split(",")[0]);
+			 */
 			String name = (((TreeNode) ((View) getModel()).getElement()).getName());
 			String type = null;
 			for (PropertyKeyValuePair keyValue : (((TreeNode) ((View) getModel()).getElement()).getProperties())) {
@@ -672,9 +684,8 @@ public class TreeNodeEditPart extends AbstractBorderedShapeEditPart {
 				@Override
 				public void mouseEntered(MouseEvent me) {
 					highlightElementOnSelection();
-					getEditDomain().getPaletteViewer().setActiveTool(
-							(ToolEntry) (((PaletteContainer) getEditDomain().getPaletteViewer().getPaletteRoot()
-									.getChildren().get(1)).getChildren().get(0)));
+					getEditDomain().getPaletteViewer().setActiveTool((ToolEntry) (((PaletteContainer) getEditDomain()
+							.getPaletteViewer().getPaletteRoot().getChildren().get(1)).getChildren().get(0)));
 
 				}
 
@@ -716,7 +727,7 @@ public class TreeNodeEditPart extends AbstractBorderedShapeEditPart {
 
 				}
 			});
-			
+
 			String newName = null;
 			if (StringUtils.isNotEmpty(name) && name.startsWith(PREFIX)) {
 				String[] fullName = name.split(PREFIX);
@@ -728,11 +739,11 @@ public class TreeNodeEditPart extends AbstractBorderedShapeEditPart {
 			Label nodeLabel = new Label();
 			if (StringUtils.isNotEmpty(name) && name.startsWith(PREFIX)) {
 				nodeLabel.setIcon(attributeImg.getImage());
-			}else if(type != null && type.equals(JSON_SCHEMA_ARRAY)){
+			} else if (type != null && type.equals(JSON_SCHEMA_ARRAY)) {
 				nodeLabel.setIcon(arrayImg.getImage());
-			}else if(type != null && type.equals(JSON_SCHEMA_OBJECT)){
+			} else if (type != null && type.equals(JSON_SCHEMA_OBJECT)) {
 				nodeLabel.setIcon(objectImg.getImage());
-			}else{
+			} else {
 				nodeLabel.setIcon(mainImg.getImage());
 			}
 			Display display = Display.getCurrent();
@@ -793,30 +804,36 @@ public class TreeNodeEditPart extends AbstractBorderedShapeEditPart {
 			}
 		}
 
-		public void renameElement(String name,String type) {
-			ImageDescriptor mainImgDescCollapse = AbstractUIPlugin.imageDescriptorFromPlugin(
-					ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM, ELEMENT_ICON);
-			ImageDescriptor attributeImgDesc = AbstractUIPlugin.imageDescriptorFromPlugin(
-					ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM, ATTRIBUTE_ICON);
-			ImageDescriptor arrayImgDesc = AbstractUIPlugin.imageDescriptorFromPlugin(
-					ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM, ARRAY_ICON);
-			ImageDescriptor objectImgDesc = AbstractUIPlugin.imageDescriptorFromPlugin(
-					ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM, OBJECT_ICON);
-			
+		public void renameElement(String name, String type) {
+			ImageDescriptor mainImgDescCollapse = AbstractUIPlugin
+					.imageDescriptorFromPlugin(ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM, ELEMENT_ICON);
+			ImageDescriptor attributeImgDesc = AbstractUIPlugin
+					.imageDescriptorFromPlugin(ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM, ATTRIBUTE_ICON);
+			ImageDescriptor arrayImgDesc = AbstractUIPlugin
+					.imageDescriptorFromPlugin(ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM, ARRAY_ICON);
+			ImageDescriptor objectImgDesc = AbstractUIPlugin
+					.imageDescriptorFromPlugin(ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM, OBJECT_ICON);
+
 			final ImageFigure mainImg = new ImageFigure(mainImgDescCollapse.createImage());
 			mainImg.setSize(new Dimension(10, 8));
-			
-			ImageFigure attributeImg = new ImageFigure(attributeImgDesc.createImage()); //attribute symbole figure 
+
+			ImageFigure attributeImg = new ImageFigure(attributeImgDesc.createImage()); // attribute
+																						// symbole
+																						// figure
 			attributeImg.setSize(new Dimension(10, 8));
-			
-			ImageFigure arrayImg = new ImageFigure(arrayImgDesc.createImage()); //array symbole figure 
+
+			ImageFigure arrayImg = new ImageFigure(arrayImgDesc.createImage()); // array
+																				// symbole
+																				// figure
 			attributeImg.setSize(new Dimension(10, 8));
-			
-			ImageFigure objectImg = new ImageFigure(objectImgDesc.createImage()); //object symbole figure 
+
+			ImageFigure objectImg = new ImageFigure(objectImgDesc.createImage()); // object
+																					// symbole
+																					// figure
 			attributeImg.setSize(new Dimension(10, 8));
 
 			Label nodeLabel = new Label();
-			
+
 			String newName = null;
 			if (StringUtils.isNotEmpty(name) && name.startsWith(PREFIX)) {
 				String[] fullName = name.split(PREFIX);
@@ -826,14 +843,14 @@ public class TreeNodeEditPart extends AbstractBorderedShapeEditPart {
 			}
 			if (StringUtils.isNotEmpty(name) && name.startsWith(PREFIX)) {
 				nodeLabel.setIcon(attributeImg.getImage());
-			}else if(type != null  && type.equals(JSON_SCHEMA_ARRAY)){
+			} else if (type != null && type.equals(JSON_SCHEMA_ARRAY)) {
 				nodeLabel.setIcon(arrayImg.getImage());
-			}else if(type != null  && type.equals(JSON_SCHEMA_OBJECT)){
+			} else if (type != null && type.equals(JSON_SCHEMA_OBJECT)) {
 				nodeLabel.setIcon(objectImg.getImage());
-			}else{
+			} else {
 				nodeLabel.setIcon(mainImg.getImage());
 			}
-			
+
 			Display display = Display.getCurrent();
 			Color black = display.getSystemColor(SWT.COLOR_BLACK);
 			nodeLabel.setForegroundColor(black);
@@ -869,7 +886,7 @@ public class TreeNodeEditPart extends AbstractBorderedShapeEditPart {
 	}
 
 	public void renameElementItem(String newName, String type) {
-		getPrimaryShape().renameElement(newName,type);
+		getPrimaryShape().renameElement(newName, type);
 	}
 
 	public void removeHighlightOnElem() {

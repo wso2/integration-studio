@@ -37,6 +37,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.PropertyValueType;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.BeanMediatorImpl#getInputConnector <em>Input Connector</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.BeanMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
@@ -51,7 +52,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.PropertyValueType;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.BeanMediatorImpl#getTargetLiteral <em>Target Literal</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.BeanMediatorImpl#getTargetExpression <em>Target Expression</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

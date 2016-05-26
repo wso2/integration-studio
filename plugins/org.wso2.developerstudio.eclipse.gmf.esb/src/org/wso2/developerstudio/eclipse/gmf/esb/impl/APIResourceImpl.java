@@ -37,6 +37,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.SequenceType;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.APIResourceImpl#getInputConnector <em>Input Connector</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.APIResourceImpl#getOutputConnector <em>Output Connector</em>}</li>
@@ -65,7 +66,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.SequenceType;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.APIResourceImpl#getFaultSequenceName <em>Fault Sequence Name</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.APIResourceImpl#getProtocol <em>Protocol</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

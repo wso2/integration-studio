@@ -46,6 +46,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CallMediatorImpl#getInputConnector <em>Input Connector</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CallMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
@@ -57,7 +58,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CallMediatorImpl#getEndpointRegistrykey <em>Endpoint Registrykey</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CallMediatorImpl#getEndpointXpath <em>Endpoint Xpath</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

@@ -34,11 +34,11 @@ import org.wso2.developerstudio.eclipse.gmf.esb.SwitchMediatorContainer;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.SwitchMediatorContainerImpl#getSwitchCaseParentContainer <em>Switch Case Parent Container</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.SwitchMediatorContainerImpl#getSwitchDefaultParentContainer <em>Switch Default Parent Container</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

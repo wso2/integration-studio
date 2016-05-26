@@ -15,8 +15,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.FilterMediatorPassOutputConnecto
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Filter Mediator Pass Output Connector</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */

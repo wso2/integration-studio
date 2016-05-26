@@ -34,6 +34,7 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.gef.EditPart;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.dialogs.ErrorDialog;
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.window.Window;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
@@ -44,6 +45,7 @@ import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.FormAttachment;
 import org.eclipse.swt.layout.FormData;
 import org.eclipse.swt.layout.FormLayout;
+import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
@@ -57,6 +59,7 @@ import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IFileEditorInput;
 import org.eclipse.ui.IWorkbenchPart;
+import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.datamapper.diagram.Activator;
 import org.wso2.developerstudio.datamapper.diagram.custom.action.Messages;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.InputEditPart;
@@ -201,17 +204,25 @@ public class SchemaKeyEditorDialog extends Dialog {
 		fl_grpPropertyKey.marginHeight = 10;
 		fl_grpPropertyKey.marginWidth = 10;
 		grpPropertyKey.setLayout(fl_grpPropertyKey);
+		
+		GridData gridDataCombo = new GridData();
+		gridDataCombo.grabExcessHorizontalSpace = true;
+		gridDataCombo.horizontalAlignment = GridData.FILL;
 
 		// initialize components
 		lblSchemaTypeLabel = new Label(grpPropertyKey, SWT.NORMAL);
-		schemaTypeCombo = new Combo(grpPropertyKey, SWT.DROP_DOWN | SWT.READ_ONLY);
+		schemaTypeCombo = new Combo(grpPropertyKey, SWT.DROP_DOWN | SWT.READ_ONLY | SWT.BORDER);
 		lblConnector = new Label(grpPropertyKey, SWT.NORMAL);
 		lblConnectorOperation = new Label(grpPropertyKey, SWT.NORMAL);
-		cmbConnector = new Combo(grpPropertyKey, SWT.DROP_DOWN | SWT.READ_ONLY);
-		cmbConnectorOperation = new Combo(grpPropertyKey, SWT.DROP_DOWN | SWT.READ_ONLY);
+		cmbConnector = new Combo(grpPropertyKey, SWT.DROP_DOWN | SWT.READ_ONLY | SWT.BORDER);
+		cmbConnectorOperation = new Combo(grpPropertyKey, SWT.DROP_DOWN | SWT.READ_ONLY | SWT.BORDER);
 		link = new Link(grpPropertyKey, SWT.NONE);
 		schemaKeyTextField = new Text(grpPropertyKey, SWT.BORDER);
 
+		schemaTypeCombo.setLayoutData(gridDataCombo);
+		cmbConnector.setLayoutData(gridDataCombo);
+		cmbConnectorOperation.setLayoutData(gridDataCombo);
+		
 		FormData lableLayoutData = new FormData();
 
 		lblSchemaTypeLabel.setText(SELECT_SCHEMA_SOURCE);
@@ -406,11 +417,11 @@ public class SchemaKeyEditorDialog extends Dialog {
 			if (Messages.LoadInputSchemaAction_SchemaTypeInput.equals(schemaType)) {
 				schemaFilePath =
 				               CloudConnectorDirectoryTraverser.getInstance()
-				                                               .getCloudConnectorOperationInputSchemaFilePath(connectorOperation);
+				                                               .getCloudConnectorOperationOutputSchemaFilePath(connectorOperation);
 			} else if (Messages.LoadOutputSchemaAction_SchemaTypeOutput.equals(schemaType)) {
 				schemaFilePath =
 				               CloudConnectorDirectoryTraverser.getInstance()
-				                                               .getCloudConnectorOperationOutputSchemaFilePath(connectorOperation);
+				                                               .getCloudConnectorOperationInputSchemaFilePath(connectorOperation);
 			}
 
 			String schema = schemaGeneratorHelper.getSchemaContent(FileType.JSONSCHEMA, schemaFilePath);
@@ -427,7 +438,11 @@ public class SchemaKeyEditorDialog extends Dialog {
 						iep.resetOutputTreeFromFile(schemaSaveFilePath);
 					}
 				}
-			}
+            } else {
+                MessageDialog.openWarning(PlatformUI.getWorkbench().getDisplay().getActiveShell(),
+                                          "Error Loading Schema from Connector Operation",
+                                          "Schema definition cannot be found for connector operation");
+            }
 
 		} catch (Exception e) {
 			log.error(ERROR_OPENING_FILE, e);

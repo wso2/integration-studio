@@ -14,6 +14,7 @@ package org.wso2.developerstudio.eclipse.gmf.esb;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.IterateMediator#getIterateID <em>Iterate ID</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.IterateMediator#isSequentialMediation <em>Sequential Mediation</em>}</li>
@@ -30,7 +31,6 @@ package org.wso2.developerstudio.eclipse.gmf.esb;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.IterateMediator#getSequenceKey <em>Sequence Key</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.IterateMediator#getSequenceName <em>Sequence Name</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getIterateMediator()
  * @model

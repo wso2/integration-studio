@@ -35,13 +35,13 @@ import org.wso2.developerstudio.eclipse.gmf.esb.Mediator;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbSequenceImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbSequenceImpl#getInput <em>Input</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbSequenceImpl#getOutput <em>Output</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbSequenceImpl#getChildMediators <em>Child Mediators</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

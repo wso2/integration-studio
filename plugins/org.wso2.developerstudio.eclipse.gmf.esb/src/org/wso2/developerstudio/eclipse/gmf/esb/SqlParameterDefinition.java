@@ -15,13 +15,13 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SqlParameterDefinition#getDataType <em>Data Type</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SqlParameterDefinition#getValueType <em>Value Type</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SqlParameterDefinition#getValueLiteral <em>Value Literal</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SqlParameterDefinition#getValueExpression <em>Value Expression</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getSqlParameterDefinition()
  * @model

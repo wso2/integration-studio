@@ -122,6 +122,8 @@ public enum LocalEntryValueType implements Enumerator {
 	 * Returns the '<em><b>Local Entry Value Type</b></em>' literal with the specified literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param literal the literal.
+	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
 	public static LocalEntryValueType get(String literal) {
@@ -138,6 +140,8 @@ public enum LocalEntryValueType implements Enumerator {
 	 * Returns the '<em><b>Local Entry Value Type</b></em>' literal with the specified name.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param name the name.
+	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
 	public static LocalEntryValueType getByName(String name) {
@@ -154,6 +158,8 @@ public enum LocalEntryValueType implements Enumerator {
 	 * Returns the '<em><b>Local Entry Value Type</b></em>' literal with the specified integer value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param value the integer value.
+	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
 	public static LocalEntryValueType get(int value) {

@@ -45,6 +45,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CloudConnectorOperationImpl#getInputConnector <em>Input Connector</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CloudConnectorOperationImpl#getOutputConnector <em>Output Connector</em>}</li>
@@ -57,7 +58,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CloudConnectorOperationImpl#getAvailableConfigs <em>Available Configs</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CloudConnectorOperationImpl#getParameterEditorType <em>Parameter Editor Type</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

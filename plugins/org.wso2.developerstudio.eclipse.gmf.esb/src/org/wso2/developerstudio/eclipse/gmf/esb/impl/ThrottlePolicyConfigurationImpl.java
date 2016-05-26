@@ -34,13 +34,13 @@ import org.wso2.developerstudio.eclipse.gmf.esb.ThrottlePolicyType;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ThrottlePolicyConfigurationImpl#getPolicyType <em>Policy Type</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ThrottlePolicyConfigurationImpl#getPolicyKey <em>Policy Key</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ThrottlePolicyConfigurationImpl#getMaxConcurrentAccessCount <em>Max Concurrent Access Count</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ThrottlePolicyConfigurationImpl#getPolicyEntries <em>Policy Entries</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

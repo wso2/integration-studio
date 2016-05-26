@@ -26,12 +26,12 @@ import org.wso2.developerstudio.eclipse.gmf.esb.RouterRoute;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.RouterRouteImpl#isBreakAfterRoute <em>Break After Route</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.RouterRouteImpl#getRouteExpression <em>Route Expression</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.RouterRouteImpl#getRoutePattern <em>Route Pattern</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

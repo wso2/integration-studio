@@ -15,8 +15,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.WSDLEndPointInputConnector;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>WSDL End Point Input Connector</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */

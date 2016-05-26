@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
+	<classpathentry exported="true" kind="lib" path="lib/synapse-commons_2.1.7.wso2v3.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/synapse-core_2.1.7.wso2v3.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/synapse-extensions_2.1.7.wso2v3.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/synapse-fix-transport_2.1.7.wso2v3.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/synapse-nhttp-transport_2.1.7.wso2v3.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/synapse-samples_2.1.7.wso2v3.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/synapse-tasks_2.1.7.wso2v3.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/synapse-vfs-transport_2.1.7.wso2v3.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/bcprov-jdk16-1.46.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/commons-codec_1.4.0.wso2v1.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/commons-collections_3.2.0.wso2v1.jar"/>
@@ -91,11 +99,6 @@
 	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.rule.common_4.4.1.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.rule.kernel_4.4.1.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.rule.mediation_4.4.1.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/synapse-commons_2.1.3.wso2v11.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/synapse-core_2.1.3.wso2v11.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/synapse-extensions_2.1.3.wso2v11.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/synapse-nhttp-transport_2.1.3.wso2v11.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/synapse-tasks_2.1.3.wso2v11.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
 	<classpathentry kind="src" path="src"/>

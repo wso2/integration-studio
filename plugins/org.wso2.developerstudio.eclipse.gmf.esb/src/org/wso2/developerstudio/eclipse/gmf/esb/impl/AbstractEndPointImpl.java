@@ -33,6 +33,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.TemplateParameter;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.AbstractEndPointImpl#isReliableMessagingEnabled <em>Reliable Messaging Enabled</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.AbstractEndPointImpl#isSecurityEnabled <em>Security Enabled</em>}</li>
@@ -58,7 +59,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.TemplateParameter;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.AbstractEndPointImpl#getInboundPolicy <em>Inbound Policy</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.AbstractEndPointImpl#getOutboundPolicy <em>Outbound Policy</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

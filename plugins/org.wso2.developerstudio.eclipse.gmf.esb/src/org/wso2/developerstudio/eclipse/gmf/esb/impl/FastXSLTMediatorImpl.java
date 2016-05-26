@@ -40,6 +40,7 @@ import org.wso2.developerstudio.eclipse.platform.core.utils.DeveloperStudioProvi
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.FastXSLTMediatorImpl#getFastXsltSchemaKeyType <em>Fast Xslt Schema Key Type</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.FastXSLTMediatorImpl#getFastXsltStaticSchemaKey <em>Fast Xslt Static Schema Key</em>}</li>
@@ -47,7 +48,6 @@ import org.wso2.developerstudio.eclipse.platform.core.utils.DeveloperStudioProvi
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.FastXSLTMediatorImpl#getInputConnector <em>Input Connector</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.FastXSLTMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

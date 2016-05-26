@@ -26,11 +26,11 @@ import org.wso2.developerstudio.eclipse.gmf.esb.ThrottleSequenceType;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ThrottleOnRejectBranchImpl#getSequenceType <em>Sequence Type</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ThrottleOnRejectBranchImpl#getSequenceKey <em>Sequence Key</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

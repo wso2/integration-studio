@@ -28,13 +28,13 @@ import org.wso2.developerstudio.eclipse.gmf.esb.ValidateSchema;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ValidateSchemaImpl#getValidateStaticSchemaKey <em>Validate Static Schema Key</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ValidateSchemaImpl#getValidateDynamicSchemaKey <em>Validate Dynamic Schema Key</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ValidateSchemaImpl#getValidateSchemaKeyType <em>Validate Schema Key Type</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ValidateSchemaImpl#getSchemaKey <em>Schema Key</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

@@ -14,13 +14,13 @@ package org.wso2.developerstudio.eclipse.gmf.esb;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SpringMediator#getBeanName <em>Bean Name</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SpringMediator#getConfigurationKey <em>Configuration Key</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SpringMediator#getInputConnector <em>Input Connector</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SpringMediator#getOutputConnector <em>Output Connector</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getSpringMediator()
  * @model

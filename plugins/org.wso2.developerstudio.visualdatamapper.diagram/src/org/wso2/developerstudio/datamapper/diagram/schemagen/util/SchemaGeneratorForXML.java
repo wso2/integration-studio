@@ -19,8 +19,10 @@ package org.wso2.developerstudio.datamapper.diagram.schemagen.util;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import javax.xml.namespace.QName;
 import javax.xml.stream.XMLStreamException;
@@ -29,6 +31,7 @@ import org.apache.axiom.om.OMAbstractFactory;
 import org.apache.axiom.om.OMAttribute;
 import org.apache.axiom.om.OMElement;
 import org.apache.axiom.om.OMFactory;
+import org.apache.axiom.om.OMNamespace;
 import org.apache.axiom.om.OMNode;
 import org.apache.axiom.om.OMText;
 import org.apache.axiom.om.util.AXIOMUtil;
@@ -42,10 +45,12 @@ public class SchemaGeneratorForXML extends SchemaGeneratorForJSON implements ISc
 	private static final String TEMP_AVRO_GEN_LOCATION = "tempXSDGenLocation";
 	private static final String JAVA_IO_TMPDIR = "java.io.tmpdir";
 	private static final String TEMP_OUTPUT = System.getProperty(JAVA_IO_TMPDIR) + File.separator + TEMP_AVRO_GEN_LOCATION;
+	private static final String CONTENT_TAG = "#@content";
 	protected static final String AT_PREFIX = "@";
 	protected static final String DOLLLAR_AT_PREFIX = "$@";
 	protected static final String XSI_NAMESPACE_URI = "http://www.w3.org/2001/XMLSchema-instance";
 	protected static final String XSI_TYPE = "type";
+	
 	
 	@Override
 	public String getSchemaContent(String content) throws IOException {
@@ -98,7 +103,15 @@ public class SchemaGeneratorForXML extends SchemaGeneratorForJSON implements ISc
 		try {
 			OMElement element = AXIOMUtil.stringToOM(entireFileText);
 			OMFactory factory = OMAbstractFactory.getOMFactory();
-			element = traverseChildrenAndReplaceAttributes(element, factory);
+			Map<String,String> namespaces = new HashMap<>();
+			element = traverseChildrenAndReplaceAttributes(element, factory,namespaces);
+			for (Map.Entry<String, String> entry : namespaces.entrySet())
+			{
+				String prefix = entry.getKey();
+				String uri = entry.getValue();
+				element.declareNamespace(uri, prefix);
+			}
+            
 			entireFileText = element.toString();
 		} catch (XMLStreamException e) {
 			throw new IOException(e);
@@ -106,14 +119,14 @@ public class SchemaGeneratorForXML extends SchemaGeneratorForJSON implements ISc
 		return entireFileText;
 	}
 
-	private OMElement traverseChildrenAndReplaceAttributes(OMElement element, OMFactory factory) {
+	private OMElement traverseChildrenAndReplaceAttributes(OMElement element, OMFactory factory, Map<String, String> namespaces) {
 
 		
 		Iterator attributeIterator = element.getAllAttributes();
 		List<OMAttribute> removeList = new ArrayList<OMAttribute>();
 		List<OMElement> addList = new ArrayList<OMElement>();
 		String modifiedElementName = null;
-		
+			
 		while (attributeIterator.hasNext()) {
 			OMAttribute atttrib = (OMAttribute) attributeIterator.next();
 			OMElement attributeElement = null;
@@ -150,7 +163,7 @@ public class SchemaGeneratorForXML extends SchemaGeneratorForJSON implements ISc
 			String elementText = element.getText();
 			if (!elementText.isEmpty()) {
 				element.setText("");
-				OMElement contentElement = factory.createOMElement("#@content", null);
+				OMElement contentElement = factory.createOMElement(CONTENT_TAG, null);
 				OMText contentValue = factory.createOMText(elementText);
 				contentElement.addChild(contentValue);
 				element.addChild(contentElement);
@@ -160,14 +173,25 @@ public class SchemaGeneratorForXML extends SchemaGeneratorForJSON implements ISc
 			}
 		}
 		
-		
+	
 		Iterator elementIterator = element.getChildren();
 		while (elementIterator.hasNext()) {
 			OMNode child = (OMNode) elementIterator.next();
 			if (child instanceof OMElement) {
-				traverseChildrenAndReplaceAttributes((OMElement) child, factory);
+				traverseChildrenAndReplaceAttributes((OMElement) child, factory,namespaces);
 			}
 		}
+		
+		//Iterate over namespaces and add to a map
+		Iterator iter = element.getAllDeclaredNamespaces();
+        while (iter.hasNext()) {
+            OMNamespace ns = (OMNamespace) iter.next();
+            String prefix = ns.getPrefix();
+            String uri = ns.getNamespaceURI();
+            if(!namespaces.containsKey(prefix)){
+            	namespaces.put(prefix, uri);
+            }
+        }
 		
 		if(modifiedElementName != null){
 			element.setLocalName(modifiedElementName);

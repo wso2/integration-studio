@@ -31,6 +31,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.WSDLEndPointOutputConnector;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.WSDLEndPointImpl#getInputConnector <em>Input Connector</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.WSDLEndPointImpl#getOutputConnector <em>Output Connector</em>}</li>
@@ -38,7 +39,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.WSDLEndPointOutputConnector;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.WSDLEndPointImpl#getService <em>Service</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.WSDLEndPointImpl#getPort <em>Port</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

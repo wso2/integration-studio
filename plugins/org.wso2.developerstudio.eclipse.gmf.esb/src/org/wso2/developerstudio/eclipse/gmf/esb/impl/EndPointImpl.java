@@ -28,6 +28,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EndPointImpl#getEndPointName <em>End Point Name</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EndPointImpl#isAnonymous <em>Anonymous</em>}</li>
@@ -36,7 +37,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EndPointImpl#getProperties <em>Properties</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EndPointImpl#isReversed <em>Reversed</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

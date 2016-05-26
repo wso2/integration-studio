@@ -53,6 +53,7 @@ import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBProjectArtifact;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
+import org.wso2.developerstudio.eclipse.platform.core.project.model.ProjectDataModel;
 import org.wso2.developerstudio.eclipse.platform.ui.editor.Openable;
 import org.wso2.developerstudio.eclipse.platform.ui.startup.ESBGraphicalEditor;
 import org.wso2.developerstudio.eclipse.platform.ui.validator.CommonFieldValidator;
@@ -65,7 +66,6 @@ public class LocalEntryProjectCreationWizard extends AbstractWSO2ProjectCreation
 
 	private LocalEntryModel localEntryModel;
 	private IFile localEntryFile;
-	private LocalEntryModel leModel;
 	private ESBProjectArtifact esbProjectArtifact;
 	private List<File> fileLst = new ArrayList<File>();
 	private IProject esbProject;
@@ -102,7 +102,7 @@ public class LocalEntryProjectCreationWizard extends AbstractWSO2ProjectCreation
 	
 	
 	public boolean createLocalEntryArtifact(LocalEntryModel localEntryModel) throws Exception {
-		leModel=localEntryModel;
+		this.localEntryModel=localEntryModel;
 		boolean isNewArtifact = true;
 		IContainer location = esbProject.getFolder("src" + File.separator + "main" + File.separator
 				+ "synapse-config" + File.separator + "local-entries");
@@ -167,9 +167,9 @@ public class LocalEntryProjectCreationWizard extends AbstractWSO2ProjectCreation
 		}
 		try {
 			boolean isNewArtifact = true;
-			leModel = (LocalEntryModel)getModel();
-			esbProject =  leModel.getLocalEntrySaveLocation().getProject();
-			createLocalEntryArtifact(leModel);
+			localEntryModel = (LocalEntryModel)getModel();
+			esbProject =  localEntryModel.getLocalEntrySaveLocation().getProject();
+			createLocalEntryArtifact(localEntryModel);
 			
 			if(fileLst.size()>0){
 				openEditor(fileLst.get(0));
@@ -214,33 +214,33 @@ public class LocalEntryProjectCreationWizard extends AbstractWSO2ProjectCreation
 		return false;
 	}
 	
-	private void writeTemplete(File localEntryFile){
+	protected void writeTemplete(File localEntryFile){
 		try {
 			String content = "";
 			String templateToUse = "InLineTextLE.xml";
-			if(leModel.getSelectedLocalEntryType().equals(LocalEntryArtifactConstants.TYPE_IN_LINE_TEXT_LE)){
+			if(localEntryModel.getSelectedLocalEntryType().equals(LocalEntryArtifactConstants.TYPE_IN_LINE_TEXT_LE)){
 				templateToUse = "InLineTextLE.xml";
 				
 				content =
 					      MessageFormat.format(LocalEntryTemplateUtils.getInstance()
 					                                                  .getTemplateString(templateToUse),
-					                                                  leModel.getLocalENtryName(), leModel.getInLineTextValue());
+					                                                  localEntryModel.getLocalENtryName(), localEntryModel.getInLineTextValue());
 				
-			}else if(leModel.getSelectedLocalEntryType().equals(LocalEntryArtifactConstants.TYPE_IN_LINE_XML_LE)){
+			}else if(localEntryModel.getSelectedLocalEntryType().equals(LocalEntryArtifactConstants.TYPE_IN_LINE_XML_LE)){
 				templateToUse = "InLineXmlLE.xml";
 				
 				content =
 					      MessageFormat.format(LocalEntryTemplateUtils.getInstance()
 					                                                  .getTemplateString(templateToUse),
-					                                                  leModel.getLocalENtryName(), leModel.getInLineXMLValue());
+					                                                  localEntryModel.getLocalENtryName(), localEntryModel.getInLineXMLValue());
 				
-			}else if(leModel.getSelectedLocalEntryType().equals(LocalEntryArtifactConstants.TYPE_SOURCE_URL_LE)){
+			}else if(localEntryModel.getSelectedLocalEntryType().equals(LocalEntryArtifactConstants.TYPE_SOURCE_URL_LE)){
 				templateToUse = "SourceURLLE.xml";
 				
 				content =
 					      MessageFormat.format(LocalEntryTemplateUtils.getInstance()
 					                                                  .getTemplateString(templateToUse),
-					                                                  leModel.getLocalENtryName(), leModel.getSourceURL());
+					                                                  localEntryModel.getLocalENtryName(), localEntryModel.getSourceURL());
 			}else{
 				
 			}
@@ -253,7 +253,7 @@ public class LocalEntryProjectCreationWizard extends AbstractWSO2ProjectCreation
 	
 	public void copyImportFile(IContainer importLocation,boolean isNewArtifact,String groupId) throws IOException {
 		File importFile = getModel().getImportFile();
-		List<OMElement> selectedLEList = leModel.getSelectedLEList();
+		List<OMElement> selectedLEList = localEntryModel.getSelectedLEList();
 		File destFile = null;
 		if(selectedLEList != null && selectedLEList.size() >0 ){
 			for (OMElement element : selectedLEList) {
@@ -316,5 +316,10 @@ public class LocalEntryProjectCreationWizard extends AbstractWSO2ProjectCreation
 	
 	public void setProject(IProject project) {
 		this.esbProject = project;
+	}
+
+	public void setModel(ProjectDataModel model){
+		super.setModel(model);
+		this.localEntryModel = (LocalEntryModel) model;
 	}
 }

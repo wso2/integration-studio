@@ -26,6 +26,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.RouterTargetContainer;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.RouterTargetContainerImpl#getMediatorFlow <em>Mediator Flow</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.RouterTargetContainerImpl#isBreakAfterRoute <em>Break After Route</em>}</li>
@@ -33,7 +34,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.RouterTargetContainer;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.RouterTargetContainerImpl#getRoutePattern <em>Route Pattern</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.RouterTargetContainerImpl#getTarget <em>Target</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

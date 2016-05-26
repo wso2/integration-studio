@@ -2,13 +2,13 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Endpoint
 Bundle-SymbolicName: org.wso2.developerstudio.eclipse.artifact.endpoint;singleton:=true
-Bundle-Version: 4.1.0.qualifier
+Bundle-Version: 5.0.0.qualifier
 Bundle-Activator: org.wso2.developerstudio.eclipse.artifact.endpoint.Activator
 Require-Bundle: org.eclipse.text,
  org.wso2.developerstudio.eclipse.kernel.libraries;bundle-version="4.1.0",
  org.wso2.developerstudio.eclipse.platform.core;bundle-version="4.1.0",
  org.wso2.developerstudio.eclipse.platform.ui;bundle-version="4.1.0",
- org.wso2.developerstudio.eclipse.esb.libraries;bundle-version="4.1.0"
+ org.wso2.developerstudio.eclipse.esb.libraries;bundle-version="5.0.0"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Import-Package: org.eclipse.ltk.core.refactoring,

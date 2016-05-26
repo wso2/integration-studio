@@ -15,6 +15,7 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryMediator#getPayload <em>Payload</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryMediator#getPayloadKey <em>Payload Key</em>}</li>
@@ -24,7 +25,6 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryMediator#getMediaType <em>Media Type</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryMediator#getPayloadFormat <em>Payload Format</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getPayloadFactoryMediator()
  * @model

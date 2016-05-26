@@ -14,6 +14,7 @@ package org.wso2.developerstudio.eclipse.gmf.esb;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.FilterMediator#getConditionType <em>Condition Type</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.FilterMediator#getRegex <em>Regex</em>}</li>
@@ -25,7 +26,6 @@ package org.wso2.developerstudio.eclipse.gmf.esb;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.FilterMediator#getSource <em>Source</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.FilterMediator#getFilterContainer <em>Filter Container</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getFilterMediator()
  * @model

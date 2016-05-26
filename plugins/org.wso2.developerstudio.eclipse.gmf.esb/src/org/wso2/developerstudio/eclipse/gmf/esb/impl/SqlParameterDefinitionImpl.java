@@ -27,13 +27,13 @@ import org.wso2.developerstudio.eclipse.gmf.esb.SqlParameterValueType;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.SqlParameterDefinitionImpl#getDataType <em>Data Type</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.SqlParameterDefinitionImpl#getValueType <em>Value Type</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.SqlParameterDefinitionImpl#getValueLiteral <em>Value Literal</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.SqlParameterDefinitionImpl#getValueExpression <em>Value Expression</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

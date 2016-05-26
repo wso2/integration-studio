@@ -15,12 +15,12 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.BuilderMediator#getMessageBuilders <em>Message Builders</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.BuilderMediator#getInputConnector <em>Input Connector</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.BuilderMediator#getOutputConnector <em>Output Connector</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getBuilderMediator()
  * @model

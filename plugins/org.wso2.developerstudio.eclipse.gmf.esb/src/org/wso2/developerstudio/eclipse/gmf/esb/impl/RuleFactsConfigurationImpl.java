@@ -30,10 +30,10 @@ import org.wso2.developerstudio.eclipse.gmf.esb.RuleFactsConfiguration;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.RuleFactsConfigurationImpl#getFacts <em>Facts</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

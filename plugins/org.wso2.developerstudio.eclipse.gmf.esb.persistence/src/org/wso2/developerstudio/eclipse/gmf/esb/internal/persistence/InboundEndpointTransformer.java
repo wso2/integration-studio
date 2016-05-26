@@ -18,6 +18,7 @@ package org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence;
 import java.util.List;
 
 import org.apache.commons.lang.StringUtils;
+import org.apache.synapse.aspects.AspectConfiguration;
 import org.apache.synapse.endpoints.Endpoint;
 import org.apache.synapse.inbound.InboundEndpoint;
 import org.apache.synapse.mediators.base.SequenceMediator;
@@ -49,7 +50,6 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
 				subject instanceof org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint,
 				"Invalid subject.");
 		org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint visualInboundEndpoint = (org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint) subject;
-
 		information.getSynapseConfiguration().addInboundEndpoint(
 				visualInboundEndpoint.getName(), create(visualInboundEndpoint));
 	}
@@ -110,7 +110,17 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
 				.getSequenceOutputConnector());
 		Sequence onErrorSequence = getSequence(visualInboundEndpoint
 				.getOnErrorSequenceOutputConnector());
-
+		inboundEndpoint.configure(new AspectConfiguration(visualInboundEndpoint.getName()));
+		if (visualInboundEndpoint.isStatisticsEnabled()) {
+			inboundEndpoint.getAspectConfiguration().enableStatistics();
+		} else {
+			inboundEndpoint.getAspectConfiguration().disableStatistics();
+		}
+		if (visualInboundEndpoint.isTraceEnabled()) {
+			inboundEndpoint.getAspectConfiguration().enableTracing();
+		} else {
+			inboundEndpoint.getAspectConfiguration().disableTracing();
+		}
 		if (sequence != null) {
 			inboundEndpoint.setInjectingSeq(sequence.getName());
 		}

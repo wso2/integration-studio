@@ -18,6 +18,7 @@ package org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence;
 
 import java.util.List;
 
+import org.apache.synapse.aspects.AspectConfiguration;
 import org.apache.synapse.endpoints.Endpoint;
 import org.apache.synapse.mediators.base.SequenceMediator;
 import org.apache.synapse.rest.API;
@@ -45,7 +46,17 @@ public class APITransformer extends AbstractEsbNodeTransformer{
 				"Invalid subject.");
 		org.wso2.developerstudio.eclipse.gmf.esb.SynapseAPI visualAPI = (org.wso2.developerstudio.eclipse.gmf.esb.SynapseAPI) subject;
 		API api = create(visualAPI);
-		
+		if (visualAPI.isStatisticsEnabled()) {
+			api.getAspectConfiguration().setStatisticsEnable(true);
+		} else {
+			api.getAspectConfiguration().setStatisticsEnable(false);
+		}
+
+		if (visualAPI.isTraceEnabled()) {
+			api.getAspectConfiguration().setTracingEnabled(true);
+		} else {
+			api.getAspectConfiguration().setTracingEnabled(false);
+		}
 		for(APIResource apiResource:visualAPI.getResources()){
 			APIResourceTransformer tr= new APIResourceTransformer();
 			information.setCurrentAPI(api);
@@ -91,6 +102,7 @@ public class APITransformer extends AbstractEsbNodeTransformer{
 		if(visualAPI.getPort() > 0){
 			api.setPort(visualAPI.getPort());
 		}
+		api.configure(new AspectConfiguration(visualAPI.getApiName()));
 		return api;
 	}
 	

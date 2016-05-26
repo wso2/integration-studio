@@ -25,11 +25,11 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbServer;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbDiagramImpl#getServer <em>Server</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbDiagramImpl#getTest <em>Test</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

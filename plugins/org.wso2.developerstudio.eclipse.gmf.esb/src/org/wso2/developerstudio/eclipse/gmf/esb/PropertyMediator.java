@@ -14,6 +14,7 @@ package org.wso2.developerstudio.eclipse.gmf.esb;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#getInputConnector <em>Input Connector</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#getOutputConnector <em>Output Connector</em>}</li>
@@ -33,7 +34,6 @@ package org.wso2.developerstudio.eclipse.gmf.esb;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#getValueStringCapturingGroup <em>Value String Capturing Group</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#getNewPropertyName <em>New Property Name</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getPropertyMediator()
  * @model

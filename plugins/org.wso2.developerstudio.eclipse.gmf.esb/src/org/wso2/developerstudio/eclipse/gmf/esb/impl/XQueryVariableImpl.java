@@ -28,6 +28,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.XQueryVariableValueType;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.XQueryVariableImpl#getVariableName <em>Variable Name</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.XQueryVariableImpl#getVariableType <em>Variable Type</em>}</li>
@@ -36,7 +37,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.XQueryVariableValueType;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.XQueryVariableImpl#getValueExpression <em>Value Expression</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.XQueryVariableImpl#getValueKey <em>Value Key</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

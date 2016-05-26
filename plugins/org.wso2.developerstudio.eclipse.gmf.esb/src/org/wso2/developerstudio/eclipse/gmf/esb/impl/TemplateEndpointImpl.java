@@ -39,6 +39,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.TemplateEndpointParameter;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.TemplateEndpointImpl#getInputConnector <em>Input Connector</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.TemplateEndpointImpl#getOutputConnector <em>Output Connector</em>}</li>
@@ -47,7 +48,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.TemplateEndpointParameter;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.TemplateEndpointImpl#getParameters <em>Parameters</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.TemplateEndpointImpl#getAvailableTemplates <em>Available Templates</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

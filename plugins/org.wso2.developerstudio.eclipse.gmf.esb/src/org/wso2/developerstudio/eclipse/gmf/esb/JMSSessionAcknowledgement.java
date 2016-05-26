@@ -157,6 +157,8 @@ public enum JMSSessionAcknowledgement implements Enumerator {
 	 * Returns the '<em><b>JMS Session Acknowledgement</b></em>' literal with the specified literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param literal the literal.
+	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
 	public static JMSSessionAcknowledgement get(String literal) {
@@ -173,6 +175,8 @@ public enum JMSSessionAcknowledgement implements Enumerator {
 	 * Returns the '<em><b>JMS Session Acknowledgement</b></em>' literal with the specified name.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param name the name.
+	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
 	public static JMSSessionAcknowledgement getByName(String name) {
@@ -189,6 +193,8 @@ public enum JMSSessionAcknowledgement implements Enumerator {
 	 * Returns the '<em><b>JMS Session Acknowledgement</b></em>' literal with the specified integer value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param value the integer value.
+	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
 	public static JMSSessionAcknowledgement get(int value) {

@@ -30,11 +30,11 @@ import org.wso2.developerstudio.eclipse.gmf.esb.TemplateEndpointParameter;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.TemplateEndpointParameterImpl#getParameterName <em>Parameter Name</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.TemplateEndpointParameterImpl#getParameterValue <em>Parameter Value</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

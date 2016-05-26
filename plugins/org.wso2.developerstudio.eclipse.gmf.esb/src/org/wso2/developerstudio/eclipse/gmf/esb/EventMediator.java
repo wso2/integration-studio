@@ -14,6 +14,7 @@ package org.wso2.developerstudio.eclipse.gmf.esb;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EventMediator#getTopicType <em>Topic Type</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EventMediator#getStaticTopic <em>Static Topic</em>}</li>
@@ -22,7 +23,6 @@ package org.wso2.developerstudio.eclipse.gmf.esb;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EventMediator#getInputConnector <em>Input Connector</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EventMediator#getOutputConnector <em>Output Connector</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEventMediator()
  * @model

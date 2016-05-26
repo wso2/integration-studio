@@ -21,12 +21,12 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EvaluatorExpressionProperty;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EvaluatorExpressionPropertyImpl#getPrettyName <em>Pretty Name</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EvaluatorExpressionPropertyImpl#getEvaluatorName <em>Evaluator Name</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EvaluatorExpressionPropertyImpl#getEvaluatorValue <em>Evaluator Value</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

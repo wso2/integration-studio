@@ -36,6 +36,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.PropertyValueType;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EndPointPropertyImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EndPointPropertyImpl#getValue <em>Value</em>}</li>
@@ -43,7 +44,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.PropertyValueType;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EndPointPropertyImpl#getValueType <em>Value Type</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EndPointPropertyImpl#getValueExpression <em>Value Expression</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

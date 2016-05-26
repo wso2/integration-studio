@@ -26,6 +26,7 @@ import org.wso2.developerstudio.datamapper.SchemaDataType;
 import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.DMOperatorTransformerFactory;
 import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.DMOperatorTransformer;
 import org.wso2.developerstudio.datamapper.diagram.custom.exception.DataMapperException;
+import org.wso2.developerstudio.datamapper.diagram.custom.model.DMOperatorType;
 import org.wso2.developerstudio.datamapper.diagram.custom.model.DMVariable;
 import org.wso2.developerstudio.datamapper.diagram.custom.model.DMVariableType;
 import org.wso2.developerstudio.datamapper.diagram.custom.model.DataMapperDiagramModel;
@@ -104,81 +105,99 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
             List<DMVariable> outputVariables = mappingOperation.getOutputVariables();
             List<Integer> operationForLoopBeansList = new ArrayList<>();
             List<String> operationElementsParentList = new ArrayList<>();
-            for (DMVariable dmVariable : inputVariables) {
-                String mostChildVariableName = "";
-                if (DMVariableType.INTERMEDIATE.equals(dmVariable.getType())
-                        || DMVariableType.OUTPUT.equals(dmVariable.getType())) {
-                    List<DMVariable> variableArray = model.getVariablesArray();
-                    int mostChildVariableIndex = getMostChildAssociatedVariableIndex(
-                            model.getInputAdjList().get(dmVariable.getparentVariableOrOperationIndex()), variableArray);
-                    mostChildVariableName = variableArray.get(mostChildVariableIndex).getName();
-                    dmVariable.setMostChildVariableIndex(mostChildVariableIndex);
-                } else {
-                    mostChildVariableName = dmVariable.getName();
-                }
-                String[] variableNameArray = mostChildVariableName.split("\\.");
-                String variableName = "";
-                String parentVariableName = "";
-                String parentArrayVariable = "";
-                boolean firstIteration = true;
-                for (String nextName : variableNameArray) {
-                    if (!firstIteration) {
-                        parentVariableName = variableName.substring(0, variableName.length() - 1);
-                    }
-                    variableName += nextName;
-                    if (variableMap.containsKey(variableName)) {
-                        SchemaDataType variableType = variableMap.get(variableName);
-                        if (SchemaDataType.ARRAY.equals(variableType)) {
-                            if (forLoopBeanNotCreated(variableName)) {
-                                int indexOfForLoopBean = addForLoopInToMap(variableName,
-                                        new ForLoopBean("i_" + nextName, variableName));
-                                addForLoopBeanIndexToParent(variableName, indexOfForLoopBean, parentArrayVariable);
-                                parentArrayVariable = variableName;
-                            } else {
-                                parentArrayVariable = variableName;
-                            }
-                        } else if (ScriptGenerationUtil.isVariableTypePrimitive(variableType)) {
-                            // leaf variable element
-                        } else if (SchemaDataType.RECORD.equals(variableType)) {
-                            // record variable element
+            if (inputVariables.isEmpty()) {
+                operationForLoopBeansList.add(0);
+            } else {
+                for (DMVariable dmVariable : inputVariables) {
+                    String mostChildVariableName = "";
+                    int mostChildVariableIndex = -1;
+                    if (DMVariableType.INTERMEDIATE.equals(dmVariable.getType())
+                            || DMVariableType.OUTPUT.equals(dmVariable.getType())) {
+                        List<DMVariable> variableArray = model.getVariablesArray();
+                        mostChildVariableIndex = getMostChildAssociatedVariableIndex(
+                                model.getInputAdjList().get(dmVariable.getparentVariableOrOperationIndex()),
+                                variableArray);
+                        if (mostChildVariableIndex >= 0) {
+                            mostChildVariableName = variableArray.get(mostChildVariableIndex).getName();
                         } else {
-                            throw new DataMapperException(
-                                    "Unsupported schemaDataType in WSO2 Data Mapper found : " + variableType);
+                            mostChildVariableIndex = model.getInputVariablesArray().get(0);
+                            mostChildVariableName = model.getVariablesArray().get(mostChildVariableIndex).getName();
                         }
+                        dmVariable.setMostChildVariableIndex(mostChildVariableIndex);
                     } else {
-                        throw new IllegalArgumentException("Unknown variable name found : " + variableName);
+                        mostChildVariableName = dmVariable.getName();
+                        mostChildVariableIndex = dmVariable.getIndex();
                     }
-                    variableName += ".";
-                    firstIteration = false;
+                    if (mostChildVariableIndex >= 0) {
+                        String[] variableNameArray = mostChildVariableName.split("\\.");
+                        String variableName = "";
+                        String parentVariableName = "";
+                        String parentArrayVariable = "";
+                        boolean firstIteration = true;
+                        for (String nextName : variableNameArray) {
+                            if (!firstIteration) {
+                                parentVariableName = variableName.substring(0, variableName.length() - 1);
+                            }
+                            variableName += nextName;
+                            if (variableMap.containsKey(variableName)) {
+                                SchemaDataType variableType = variableMap.get(variableName);
+                                if (SchemaDataType.ARRAY.equals(variableType)) {
+                                    if (forLoopBeanNotExist(variableName)) {
+                                        int indexOfForLoopBean = addForLoopInToMap(variableName,
+                                                new ForLoopBean("i_" + nextName, variableName));
+                                        addForLoopBeanIndexToParent(variableName, indexOfForLoopBean,
+                                                parentArrayVariable);
+                                        parentArrayVariable = variableName;
+                                    } else {
+                                        parentArrayVariable = variableName;
+                                    }
+                                } else if (ScriptGenerationUtil.isVariableTypePrimitive(variableType)) {
+                                    // leaf variable element
+                                } else if (SchemaDataType.RECORD.equals(variableType)) {
+                                    // record variable element
+                                } else {
+                                    throw new DataMapperException(
+                                            "Unsupported schemaDataType in WSO2 Data Mapper found : " + variableType);
+                                }
+                            } else {
+                                throw new IllegalArgumentException("Unknown variable name found : " + variableName);
+                            }
+                            variableName += ".";
+                            firstIteration = false;
+                        }
+                        // add most parent array for operationForLoopBeansList
+                        if (StringUtils.isEmpty(parentArrayVariable)) {
+                            // root bean value
+                            operationForLoopBeansList.add(0);
+                        } else {
+                            operationForLoopBeansList.add(getForLoopBeanMap().get(parentArrayVariable));
+                        }
+                        // add parent Element of the variable to
+                        // operationElementsParentList
+                        operationElementsParentList.add(parentVariableName);
+                    }
                 }
-                // add most parent array for operationForLoopBeansList
-                if (StringUtils.isEmpty(parentArrayVariable)) {
-                    // root bean value
-                    operationForLoopBeansList.add(0);
-                } else {
-                    operationForLoopBeansList.add(getForLoopBeanMap().get(parentArrayVariable));
-                }
-                // add parent Element of the variable to
-                // operationElementsParentList
-                operationElementsParentList.add(parentVariableName);
             }
+
             // validate the for loop beans of the variables. They should be in
             // one branch.
             int indexOfMostInnerForLoopBean = -1;
             if (isValidOperationWithInputVariables(operationElementsParentList)) {
                 indexOfMostInnerForLoopBean = getMostInnerForLoopBeanFromList(operationForLoopBeansList);
             }
-            // find the most inner for loop bean to assign this operation
-            getForLoopBeanList().get(indexOfMostInnerForLoopBean).getOperationList().add(mappingOperationIndex);
-            mappingOperationIndex++;
             for (DMVariable outputVariable : outputVariables) {
                 if (DMVariableType.INTERMEDIATE.equals(outputVariable.getType())) {
                     functionBuilder.append("var " + outputVariable.getName() + " = [];");
                     functionBuilder.append("\n");
                 } else if (DMVariableType.OUTPUT.equals(outputVariable.getType())) {
-                    updateOutputVariableForLoopMap(outputVariable, variableMap, indexOfMostInnerForLoopBean);
+                    updateOutputVariableForLoopMap(outputVariable, variableMap, indexOfMostInnerForLoopBean,
+                            operationForLoopBeansList);
                 }
             }
+            indexOfMostInnerForLoopBean = getMostInnerForLoopBeanFromList(operationForLoopBeansList);
+            // find the most inner for loop bean to assign this operation
+            getForLoopBeanList().get(indexOfMostInnerForLoopBean).getOperationList().add(mappingOperationIndex);
+            mappingOperationIndex++;
         }
         // All operations are now assign to ForLoopBean map. Transform
         // forLoopBean map for JS script.
@@ -188,7 +207,7 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
     }
 
     private void updateOutputVariableForLoopMap(DMVariable outputVariable, Map<String, SchemaDataType> variableMap,
-            int indexOfMostInnerForLoopBean) throws DataMapperException {
+            int indexOfMostInnerForLoopBean, List<Integer> operationForLoopBeansList) throws DataMapperException {
         String outputVariableName = outputVariable.getName();
         String[] variableNameArray = outputVariableName.split("\\.");
         String variableName = "";
@@ -208,6 +227,13 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
                     if (!outputArrayVariableForLoopMap.containsKey(variableName)) {
                         int targetForLoopIndex = getParentForLoopBeanIndex(previousForLoopIndex,
                                 indexOfMostInnerForLoopBean);
+                        if (targetForLoopIndex < 0) {
+                            int indexOfForLoopBean = addForLoopInToMap(variableName,
+                                    new ForLoopBean("i_" + nextName, variableName));
+                            addForLoopBeanIndexToParent(variableName, indexOfForLoopBean,
+                                    getForLoopBeanList().get(previousForLoopIndex).getVariableName());
+                            targetForLoopIndex = indexOfForLoopBean;
+                        }
                         outputArrayVariableForLoopMap.put(variableName, targetForLoopIndex);
                         getForLoopBeanList().get(targetForLoopIndex).getArrayVariableListToInstantiate()
                                 .add(variableName);
@@ -215,6 +241,7 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
                     } else {
                         previousForLoopIndex = outputArrayVariableForLoopMap.get(variableName);
                     }
+                    parentArrayVariable = variableName;
                 } else if (ScriptGenerationUtil.isVariableTypePrimitive(variableType)) {
                     // leaf variable element
                 } else if (SchemaDataType.RECORD.equals(variableType)) {
@@ -237,6 +264,7 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
             variableName += ".";
             firstIteration = false;
         }
+        operationForLoopBeansList.add(previousForLoopIndex);
     }
 
     /**
@@ -252,12 +280,11 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
         int forLoopBeanIndex = mostChildForLoopBean;
         while (childForLoopBean.getParentIndex() != targetRootForLoopIndex) {
             forLoopBeanIndex = childForLoopBean.getParentIndex();
-            childForLoopBean = getForLoopBeanList().get(forLoopBeanIndex);
             if (forLoopBeanIndex == rootBean.getParentIndex()) {
-                throw new IllegalArgumentException("ForLoopBean "
-                        + getForLoopBeanList().get(mostChildForLoopBean).getVariableName() + " is not a child of "
-                        + getForLoopBeanList().get(mostChildForLoopBean).getVariableName());
+                // Doesn't exist a for loop bean which is a child of targetRootForLoop and a parent of mostChildForLoop
+                return -1;
             }
+            childForLoopBean = getForLoopBeanList().get(forLoopBeanIndex);
         }
         return forLoopBeanIndex;
     }
@@ -444,6 +471,11 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
         List<DMVariable> outputVariables = mappingOperation.getOutputVariables();
         if (outputVariables.size() > 1) {
             operationBuilder.append("[ ");
+        } else if (outputVariables.size() == 1) {
+            if (DMOperatorType.CONSTANT.equals(mappingOperation.getOperation().getOperatorType())
+                    && DMVariableType.INTERMEDIATE.equals(outputVariables.get(0).getType())) {
+                return "";
+            }
         }
         Stack<ForLoopBean> forLoopBeanParentStack = getParentForLoopBeanStack(forLoopBean);
         Stack<ForLoopBean> tempForLoopBeanParentStack = new Stack<ForLoopBean>();
@@ -491,6 +523,9 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
     private boolean isValidOperationWithInputVariables(List<String> operationElementsParentList)
             throws DataMapperException {
         // parent variables should be in a same branch
+        if (operationElementsParentList.isEmpty()) {
+            return true;
+        }
         String mostChildParentName = operationElementsParentList.get(0);
         for (int i = 1; i < operationElementsParentList.size(); i++) {
             String parentName = operationElementsParentList.get(i);
@@ -512,6 +547,9 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
     }
 
     private int getMostInnerForLoopBeanFromList(List<Integer> operationForLoopBeansList) {
+        if (operationForLoopBeansList.isEmpty()) {
+            return 0;
+        }
         int mostChildForLoopIndex = operationForLoopBeansList.get(0);
         for (int i = 1; i < operationForLoopBeansList.size(); i++) {
             int thisForLoopBeanIndex = operationForLoopBeansList.get(i);
@@ -534,7 +572,7 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
         }
     }
 
-    private boolean forLoopBeanNotCreated(String variableName) {
+    private boolean forLoopBeanNotExist(String variableName) {
         return !getForLoopBeanMap().containsKey(variableName);
     }
 

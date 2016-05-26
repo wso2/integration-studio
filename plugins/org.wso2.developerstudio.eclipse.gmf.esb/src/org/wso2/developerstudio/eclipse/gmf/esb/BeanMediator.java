@@ -23,6 +23,7 @@ package org.wso2.developerstudio.eclipse.gmf.esb;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.BeanMediator#getInputConnector <em>Input Connector</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.BeanMediator#getOutputConnector <em>Output Connector</em>}</li>
@@ -37,7 +38,6 @@ package org.wso2.developerstudio.eclipse.gmf.esb;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.BeanMediator#getTargetLiteral <em>Target Literal</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.BeanMediator#getTargetExpression <em>Target Expression</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getBeanMediator()
  * @model

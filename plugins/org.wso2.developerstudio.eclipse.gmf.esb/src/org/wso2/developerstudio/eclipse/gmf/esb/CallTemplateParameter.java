@@ -14,13 +14,13 @@ package org.wso2.developerstudio.eclipse.gmf.esb;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CallTemplateParameter#getParameterName <em>Parameter Name</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CallTemplateParameter#getTemplateParameterType <em>Template Parameter Type</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CallTemplateParameter#getParameterValue <em>Parameter Value</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CallTemplateParameter#getParameterExpression <em>Parameter Expression</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getCallTemplateParameter()
  * @model

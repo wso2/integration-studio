@@ -63,6 +63,8 @@ public class SynapseAPIItemProvider
 			addHostNamePropertyDescriptor(object);
 			addPortPropertyDescriptor(object);
 			addHandlersPropertyDescriptor(object);
+			addTraceEnabledPropertyDescriptor(object);
+			addStatisticsEnabledPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -178,6 +180,50 @@ public class SynapseAPIItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Trace Enabled feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addTraceEnabledPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_SynapseAPI_traceEnabled_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_SynapseAPI_traceEnabled_feature", "_UI_SynapseAPI_type"),
+				 EsbPackage.Literals.SYNAPSE_API__TRACE_ENABLED,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Statistics Enabled feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addStatisticsEnabledPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_SynapseAPI_statisticsEnabled_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_SynapseAPI_statisticsEnabled_feature", "_UI_SynapseAPI_type"),
+				 EsbPackage.Literals.SYNAPSE_API__STATISTICS_ENABLED,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -248,6 +294,8 @@ public class SynapseAPIItemProvider
 			case EsbPackage.SYNAPSE_API__CONTEXT:
 			case EsbPackage.SYNAPSE_API__HOST_NAME:
 			case EsbPackage.SYNAPSE_API__PORT:
+			case EsbPackage.SYNAPSE_API__TRACE_ENABLED:
+			case EsbPackage.SYNAPSE_API__STATISTICS_ENABLED:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case EsbPackage.SYNAPSE_API__RESOURCES:

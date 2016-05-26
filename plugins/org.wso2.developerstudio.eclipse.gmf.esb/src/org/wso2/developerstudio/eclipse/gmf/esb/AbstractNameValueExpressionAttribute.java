@@ -23,6 +23,7 @@ package org.wso2.developerstudio.eclipse.gmf.esb;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractNameValueExpressionAttribute#getAttributeName <em>Attribute Name</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractNameValueExpressionAttribute#getAttributeValueType <em>Attribute Value Type</em>}</li>
@@ -30,7 +31,6 @@ package org.wso2.developerstudio.eclipse.gmf.esb;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractNameValueExpressionAttribute#getAttributeType <em>Attribute Type</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractNameValueExpressionAttribute#getAttributeExpression <em>Attribute Expression</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getAbstractNameValueExpressionAttribute()
  * @model abstract="true"

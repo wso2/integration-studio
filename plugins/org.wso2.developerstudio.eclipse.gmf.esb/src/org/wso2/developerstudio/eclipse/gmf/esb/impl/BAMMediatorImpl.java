@@ -34,6 +34,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.BAMMediatorImpl#getInputConnector <em>Input Connector</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.BAMMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
@@ -41,7 +42,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.BAMMediatorImpl#getStreamName <em>Stream Name</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.BAMMediatorImpl#getStreamVersion <em>Stream Version</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

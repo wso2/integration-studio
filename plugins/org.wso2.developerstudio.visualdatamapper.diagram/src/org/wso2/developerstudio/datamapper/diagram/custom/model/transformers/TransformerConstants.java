@@ -18,5 +18,6 @@ package org.wso2.developerstudio.datamapper.diagram.custom.model.transformers;
 public class TransformerConstants {
 
     public static final String DELIMITER_TAG = "delimiter";
+    public static final String CONSTANT_VALUE_TAG = "constantValue";
     
 }

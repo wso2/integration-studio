@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Core
+Bundle-SymbolicName: org.wso2.developerstudio.eclipse.integration.core;singleton:=true
+Bundle-Version: 5.0.0.qualifier
+Bundle-Activator: org.wso2.developerstudio.eclipse.integration.core.Activator
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.jface.text,
+ org.eclipse.ui.editors
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ActivationPolicy: lazy
+Import-Package: org.apache.axiom.om,
+ org.apache.axiom.om.impl.builder;version="1.2.11.wso2v10"
+Export-Package: org.wso2.developerstudio.eclipse.integration.core,
+ org.wso2.developerstudio.eclipse.integration.core.utils

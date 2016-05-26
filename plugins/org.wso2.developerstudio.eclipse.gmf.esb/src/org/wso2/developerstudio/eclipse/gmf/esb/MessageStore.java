@@ -24,6 +24,7 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getStoreName <em>Store Name</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getStoreType <em>Store Type</em>}</li>
@@ -55,7 +56,6 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#isEnableProducerGuaranteedDelivery <em>Enable Producer Guaranteed Delivery</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getFailoverMessageStore <em>Failover Message Store</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getMessageStore()
  * @model

@@ -27,6 +27,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.URLRewriteRuleAction;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.URLRewriteRuleActionImpl#getRuleAction <em>Rule Action</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.URLRewriteRuleActionImpl#getRuleFragment <em>Rule Fragment</em>}</li>
@@ -35,7 +36,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.URLRewriteRuleAction;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.URLRewriteRuleActionImpl#getActionValue <em>Action Value</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.URLRewriteRuleActionImpl#getActionRegex <em>Action Regex</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

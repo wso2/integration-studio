@@ -96,6 +96,8 @@ public enum CacheSequenceType implements Enumerator {
 	 * Returns the '<em><b>Cache Sequence Type</b></em>' literal with the specified literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param literal the literal.
+	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
 	public static CacheSequenceType get(String literal) {
@@ -112,6 +114,8 @@ public enum CacheSequenceType implements Enumerator {
 	 * Returns the '<em><b>Cache Sequence Type</b></em>' literal with the specified name.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param name the name.
+	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
 	public static CacheSequenceType getByName(String name) {
@@ -128,6 +132,8 @@ public enum CacheSequenceType implements Enumerator {
 	 * Returns the '<em><b>Cache Sequence Type</b></em>' literal with the specified integer value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param value the integer value.
+	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
 	public static CacheSequenceType get(int value) {

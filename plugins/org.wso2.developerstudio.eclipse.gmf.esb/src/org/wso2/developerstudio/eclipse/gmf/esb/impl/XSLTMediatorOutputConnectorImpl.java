@@ -15,8 +15,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.XSLTMediatorOutputConnector;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>XSLT Mediator Output Connector</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */

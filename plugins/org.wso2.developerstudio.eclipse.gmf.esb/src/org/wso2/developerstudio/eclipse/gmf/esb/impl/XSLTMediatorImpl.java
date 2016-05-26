@@ -46,6 +46,7 @@ import org.wso2.developerstudio.eclipse.platform.core.utils.DeveloperStudioProvi
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.XSLTMediatorImpl#getInputConnector <em>Input Connector</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.XSLTMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
@@ -58,7 +59,6 @@ import org.wso2.developerstudio.eclipse.platform.core.utils.DeveloperStudioProvi
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.XSLTMediatorImpl#getFeatures <em>Features</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.XSLTMediatorImpl#getResources <em>Resources</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

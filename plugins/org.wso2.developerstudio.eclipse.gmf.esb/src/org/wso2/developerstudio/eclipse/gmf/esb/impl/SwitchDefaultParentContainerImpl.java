@@ -33,10 +33,10 @@ import org.wso2.developerstudio.eclipse.gmf.esb.SwitchDefaultParentContainer;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.SwitchDefaultParentContainerImpl#getSwitchDefaultContainer <em>Switch Default Container</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

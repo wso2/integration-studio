@@ -50,6 +50,7 @@ import org.wso2.developerstudio.eclipse.platform.core.utils.DeveloperStudioProvi
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getProcessorName <em>Processor Name</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getProcessorType <em>Processor Type</em>}</li>
@@ -77,7 +78,6 @@ import org.wso2.developerstudio.eclipse.platform.core.utils.DeveloperStudioProvi
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getParameters <em>Parameters</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getTaskCount <em>Task Count</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

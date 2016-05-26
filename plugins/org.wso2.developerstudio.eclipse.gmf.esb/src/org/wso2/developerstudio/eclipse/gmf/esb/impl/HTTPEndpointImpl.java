@@ -35,13 +35,13 @@ import org.wso2.developerstudio.eclipse.gmf.esb.HttpMethodType;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.HTTPEndpointImpl#getInputConnector <em>Input Connector</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.HTTPEndpointImpl#getOutputConnector <em>Output Connector</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.HTTPEndpointImpl#getURITemplate <em>URI Template</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.HTTPEndpointImpl#getHttpMethod <em>Http Method</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

@@ -42,7 +42,7 @@ public class RegistryBrowserAPIMViewLabelProvider extends StyledCellLabelProvide
 		}else if(element instanceof RegistryResourceNode){
 			RegistryResourceNode node = (RegistryResourceNode)element;
 			
-		if(node.getResourceType()==RegistryResourceType.RESOURCE){
+		if(node.getResourceType() == RegistryResourceType.RESOURCE || node.getResourceType() == RegistryResourceType.REMOTELINK ){
 			ImageDescriptor imageDesSeq = ImageUtils.getImageDescriptor(ImageUtils.STATE_NORMAL);
 			Styler seqStyle = StyledString.DECORATIONS_STYLER;
 			

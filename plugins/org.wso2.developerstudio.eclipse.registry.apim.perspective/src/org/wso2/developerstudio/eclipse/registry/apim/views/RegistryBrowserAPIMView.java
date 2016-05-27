@@ -575,7 +575,7 @@ public class RegistryBrowserAPIMView extends ViewPart implements Observer {
 
 						if (selection.getFirstElement() instanceof RegistryResourceNode) {
 							RegistryResourceNode node = (RegistryResourceNode) selection.getFirstElement();
-							if (node.getResourceType() == RegistryResourceType.RESOURCE) {
+							if (node.getResourceType() == RegistryResourceType.RESOURCE  || node.getResourceType() == RegistryResourceType.REMOTELINK ) {
 
 								manager.add(new GroupMarker(IWorkbenchActionConstants.MB_ADDITIONS));
 								manager.add(new Separator());
@@ -926,7 +926,7 @@ public class RegistryBrowserAPIMView extends ViewPart implements Observer {
 		boolean closeEditor = true;
 		RegistryResourceType resourceType = regResourceNode.getResourceType();
 		IEditorPart fileEditor = regResourceNode.getFileEditor();
-		if (resourceType == RegistryResourceType.RESOURCE && fileEditor != null) {
+		if ((resourceType == RegistryResourceType.RESOURCE  || resourceType == RegistryResourceType.REMOTELINK )&& fileEditor != null) {
 			closeEditor = regResourceNode.getFileEditor().getEditorSite().getPage()
 					.closeEditor(regResourceNode.getFileEditor(), false);
 		}

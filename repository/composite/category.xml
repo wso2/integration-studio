@@ -9,24 +9,17 @@
       <category name="org.wso2.developerstudio.eclipse.apim.feature.category"/>
    </feature>
 
-   <!-- Kernel Features and category-->	
-   <feature id="org.wso2.developerstudio.kernel.core.feature" version="0.0.0">
+  <!-- Kernel features and required core features-->	
+    <feature id="org.wso2.developerstudio.kernel.feature" version="0.0.0">
       <category name="org.wso2.developerstudio.eclipse.apim.feature.category"/>
    </feature>
-   <feature id="org.wso2.developerstudio.kernel.core.ui.feature" version="0.0.0">
-      <category name="org.wso2.developerstudio.eclipse.apim.feature.category"/>
-   </feature>
-   <feature id="org.wso2.developerstudio.kernel.tools.feature" version="0.0.0">
-      <category name="org.wso2.developerstudio.eclipse.apim.feature.category"/>
-   </feature>
-   <feature id="org.wso2.developerstudio.kernel.utils.feature" version="0.0.0">
-      <category name="org.wso2.developerstudio.eclipse.apim.feature.category"/>
-   </feature>
-   <!-- Kernel core Features and category-->	
-   <feature id="org.wso2.developerstudio.kernel.webui.tools.feature" version="0.0.0">
+    <feature id="org.wso2.developerstudio.cloud.utils.feature" version="0.0.0">
       <category name="org.wso2.developerstudio.eclipse.apim.feature.category"/>
    </feature>
    <feature id="org.wso2.developerstudio.capp.feature" version="0.0.0">
+      <category name="org.wso2.developerstudio.eclipse.apim.feature.category"/>
+   </feature>
+   <feature id="org.wso2.developerstudio.carbon.server.feature" version="0.0.0">
       <category name="org.wso2.developerstudio.eclipse.apim.feature.category"/>
    </feature>
    <feature id="org.wso2.developerstudio.carbon.server-40.feature" version="0.0.0">
@@ -35,25 +28,37 @@
    <feature id="org.wso2.developerstudio.carbon.server-42.feature" version="0.0.0">
       <category name="org.wso2.developerstudio.eclipse.apim.feature.category"/>
    </feature>
-   <feature id="org.wso2.developerstudio.carbon.server-44.feature" version="0.0.0">
+ <feature id="org.wso2.developerstudio.carbon.server-remote.feature" version="0.0.0">
       <category name="org.wso2.developerstudio.eclipse.apim.feature.category"/>
    </feature>
-   <feature id="org.wso2.developerstudio.carbon.server-remote.feature" version="0.0.0">
+ <feature id="org.wso2.developerstudio.carbon.server-44.feature" version="0.0.0">
       <category name="org.wso2.developerstudio.eclipse.apim.feature.category"/>
    </feature>
-   <feature id="org.wso2.developerstudio.kernel.dependencies.feature" version="0.0.0">
+ <feature id="org.wso2.developerstudio.dashboard.feature" version="0.0.0">
       <category name="org.wso2.developerstudio.eclipse.apim.feature.category"/>
    </feature>
-   <feature id="org.wso2.developerstudio.kernel.registry.feature" version="0.0.0">
+ <feature id="org.wso2.developerstudio.kernel.registry.core.feature" version="0.0.0">
       <category name="org.wso2.developerstudio.eclipse.apim.feature.category"/>
    </feature>
-   <feature id="org.wso2.developerstudio.kernel.security.feature" version="0.0.0">
+ <feature id="org.wso2.developerstudio.kernel.security.feature" version="0.0.0">
       <category name="org.wso2.developerstudio.eclipse.apim.feature.category"/>
    </feature>
-   <feature id="org.wso2.developerstudio.library.artifact.feature" version="0.0.0">
+ <feature id="org.wso2.developerstudio.kernel.wso2plugins.default.samples.feature" version="0.0.0">
       <category name="org.wso2.developerstudio.eclipse.apim.feature.category"/>
    </feature>
-   <feature id="org.wso2.developerstudio.kernel.wso2plugins.default.samples.feature" version="0.0.0">
+ <feature id="org.wso2.developerstudio.kernel.utils.feature" version="0.0.0">
+      <category name="org.wso2.developerstudio.eclipse.apim.feature.category"/>
+   </feature>
+ <feature id="org.wso2.developerstudio.library.artifact.feature" version="0.0.0">
+      <category name="org.wso2.developerstudio.eclipse.apim.feature.category"/>
+   </feature>
+ <feature id="org.wso2.developerstudio.platform.libraries.feature" version="0.0.0">
+      <category name="org.wso2.developerstudio.eclipse.apim.feature.category"/>
+   </feature>
+ <feature id="org.wso2.developerstudio.usr.management.feature" version="0.0.0">
+      <category name="org.wso2.developerstudio.eclipse.apim.feature.category"/>
+   </feature>
+ <feature id="org.wso2.developerstudio.mvn.multimodule.feature" version="0.0.0">
       <category name="org.wso2.developerstudio.eclipse.apim.feature.category"/>
    </feature>
   <!-- ESB features -->
@@ -61,6 +66,9 @@
       <category name="org.wso2.developerstudio.eclipse.apim.feature.category"/>
    </feature>
    <feature id="org.wso2.developerstudio.eclipse.esb.feature" version="0.0.0">
+      <category name="org.wso2.developerstudio.eclipse.apim.feature.category"/>
+   </feature>
+   <feature id="org.wso2.developerstudio.eclipse.esb.dependencies.feature" version="0.0.0">
       <category name="org.wso2.developerstudio.eclipse.apim.feature.category"/>
    </feature>
 </site>

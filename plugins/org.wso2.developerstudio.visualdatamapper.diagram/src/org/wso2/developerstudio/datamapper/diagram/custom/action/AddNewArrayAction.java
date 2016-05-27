@@ -70,6 +70,7 @@ public class AddNewArrayAction extends AbstractActionHandler {
 	private static final String ELEMENT_IDENTIFIER = "type";
 	private static final String JSON_SCHEMA_ARRAY_ELEMENT_IDENTIFIERS = "arrayElementIdentifiers";
 	private static final String JSON_SCHEMA_ARRAY_ELEMENT_IDENTIFIERS_URL = "arrayElementIdentifiersURL";
+	private static final String JSON_SCHEMA_ARRAY_ELEMENT_IDENTIFIERS_URL_VALUE = "arrayElementIdentifiersURLValue";
 	private static final String JSON_SCHEMA_ADDED_PROPERTIES_ID = "added_properties_id";
 	private static final String HAS_PROPERTIES = "hasProperties";
 	private static final String PREFIX = "@";
@@ -150,6 +151,10 @@ public class AddNewArrayAction extends AbstractActionHandler {
 					String identifierNamespace = createNamespaceArrayForIdentifiers(objectDialog.getIdentifierType(),objectDialog.getIdentifierURL());
 					setPropertyKeyValuePairforTreeNodes(treeNodeNew, propertyValueList, JSON_SCHEMA_ARRAY_ELEMENT_IDENTIFIERS_URL,
 							identifierNamespace);
+				}
+				if(StringUtils.isNotEmpty(objectDialog.getIdentifierURL())){
+					setPropertyKeyValuePairforTreeNodes(treeNodeNew, propertyValueList, JSON_SCHEMA_ARRAY_ELEMENT_IDENTIFIERS_URL_VALUE,
+							objectDialog.getIdentifierURL());
 				}
 				if(StringUtils.isNotEmpty(objectDialog.getIdentifierType()) && StringUtils.isNotEmpty(objectDialog.getIdentifierValue())){
 					String fullName = objectDialog.getIdentifierType() + "=" + objectDialog.getIdentifierValue();

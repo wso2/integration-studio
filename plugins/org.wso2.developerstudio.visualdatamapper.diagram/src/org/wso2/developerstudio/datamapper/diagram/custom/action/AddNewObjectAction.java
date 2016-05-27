@@ -72,6 +72,7 @@ public class AddNewObjectAction extends AbstractActionHandler {
 	private static final String ELEMENT_IDENTIFIER = "type";
 	private static final String JSON_SCHEMA_OBJECT_ELEMENT_IDENTIFIERS = "objectElementIdentifiers";
 	private static final String JSON_SCHEMA_OBJECT_ELEMENT_IDENTIFIERS_URL = "objectElementIdentifiersURL";
+	private static final String JSON_SCHEMA_OBJECT_ELEMENT_IDENTIFIERS_URL_VALUE = "objectElementIdentifiersURLValue";
 	private static final String PREFIX = "@";
 	private static final String JSON_SCHEMA_ADDED_ATTRIBUTE_ID = "added_attribute_id";
 	private static final String JSON_SCHEMA_ADDED_ATTRIBUTE_TYPE = "added_attribute_type";
@@ -156,6 +157,12 @@ public class AddNewObjectAction extends AbstractActionHandler {
 					setPropertyKeyValuePairforTreeNodes(treeNodeNew, propertyValueList, JSON_SCHEMA_OBJECT_ELEMENT_IDENTIFIERS_URL,
 							identifierNamespace);
 				}
+				
+				if(StringUtils.isNotEmpty(objectDialog.getIdentifierURL())){
+					setPropertyKeyValuePairforTreeNodes(treeNodeNew, propertyValueList, JSON_SCHEMA_OBJECT_ELEMENT_IDENTIFIERS_URL_VALUE,
+							objectDialog.getIdentifierURL());
+				}
+				
 				//sets the properties ID to be used in the serialization of the object
 				setPropertyKeyValuePairforTreeNodes(treeNodeNew, propertyValueList, JSON_SCHEMA_ADDED_PROPERTIES_ID, HAS_PROPERTIES);
 				//sets the object's type if object hold a value

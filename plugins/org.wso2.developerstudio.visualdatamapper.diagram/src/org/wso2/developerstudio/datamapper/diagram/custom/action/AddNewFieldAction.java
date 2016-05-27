@@ -70,6 +70,7 @@ public class AddNewFieldAction extends AbstractActionHandler {
 	private static final String ELEMENT_IDENTIFIER = "type";
 	private static final String JSON_SCHEMA_FIELD_ELEMENT_IDENTIFIERS = "fieldElementIdentifiers";
 	private static final String JSON_SCHEMA_FIELD_ELEMENT_IDENTIFIERS_URL = "fieldElementIdentifiersURL";
+	private static final String JSON_SCHEMA_FIELD_ELEMENT_IDENTIFIERS_URL_VALUE = "fieldElementIdentifiersURLValue";
 	private static final String PREFIX = "@";
 	private static final String JSON_SCHEMA_ADDED_ATTRIBUTE_ID = "added_attribute_id";
 	private static final String JSON_SCHEMA_ADDED_ATTRIBUTE_TYPE = "added_attribute_type";
@@ -147,6 +148,12 @@ public class AddNewFieldAction extends AbstractActionHandler {
 					setPropertyKeyValuePairforTreeNodes(treeNodeNew, propertyValueList, JSON_SCHEMA_FIELD_ELEMENT_IDENTIFIERS_URL,
 							identifierNamespace);
 				}
+				
+				if(StringUtils.isNotEmpty(objectDialog.getIdentifierURL())){
+					setPropertyKeyValuePairforTreeNodes(treeNodeNew, propertyValueList, JSON_SCHEMA_FIELD_ELEMENT_IDENTIFIERS_URL_VALUE,
+							objectDialog.getIdentifierURL());
+				}
+				
 				if(StringUtils.isNotEmpty(objectDialog.getIdentifierType()) && StringUtils.isNotEmpty(objectDialog.getIdentifierValue())){
 					String fullName = objectDialog.getIdentifierType() + "=" + objectDialog.getIdentifierValue();
 					treeNodeNew.setName(objectDialog.getTitle()+","+fullName);

@@ -72,6 +72,7 @@ public class EditFieldAction extends AbstractActionHandler {
 	private static final String ELEMENT_IDENTIFIER = "type";
 	private static final String JSON_SCHEMA_FIELD_ELEMENT_IDENTIFIERS = "fieldElementIdentifiers";
 	private static final String JSON_SCHEMA_FIELD_ELEMENT_IDENTIFIERS_URL = "fieldElementIdentifiersURL";
+	private static final String JSON_SCHEMA_FIELD_ELEMENT_IDENTIFIERS_URL_VALUE = "fieldElementIdentifiersURLValue";
 	private static final String PREFIX = "@";
 	private static final String JSON_SCHEMA_ADDED_ATTRIBUTE_ID = "added_attribute_id";
 	private static final String JSON_SCHEMA_ADDED_ATTRIBUTE_TYPE = "added_attribute_type";
@@ -141,7 +142,7 @@ public class EditFieldAction extends AbstractActionHandler {
 			identifierType = identifier[0];
 			identifierValue= identifier[1];
 			}
-			identifierURL = setProerties(selectedNode, JSON_SCHEMA_FIELD_ELEMENT_IDENTIFIERS_URL);
+			identifierURL = setProerties(selectedNode, JSON_SCHEMA_FIELD_ELEMENT_IDENTIFIERS_URL_VALUE);
 			namespaces = setProerties(selectedNode, JSON_SCHEMA_FIELD_NAMESPACES);
 			formatedNamespace = formatNamespace(namespaces).toString();
 			String newNamespace = formatedNamespace.substring(1, formatedNamespace.toString().length()-1);
@@ -324,6 +325,16 @@ public class EditFieldAction extends AbstractActionHandler {
 			if(StringUtils.isNotEmpty(editTypeDialog.getIdentifierURL())){
 				valueMap.put(JSON_SCHEMA_FIELD_ELEMENT_IDENTIFIERS_URL, editTypeDialog.getIdentifierURL());
 			}
+			
+			if(StringUtils.isNotEmpty(editTypeDialog.getIdentifierURL())){
+				valueMap.put(JSON_SCHEMA_FIELD_ELEMENT_IDENTIFIERS_URL_VALUE, editTypeDialog.getIdentifierURL());
+			}
+			
+			if(StringUtils.isNotEmpty(editTypeDialog.getIdentifierURL()) && StringUtils.isNotEmpty(editTypeDialog.getIdentifierType())){
+				String identifierNamespace = createNamespaceArrayForIdentifiers(editTypeDialog.getIdentifierType(),editTypeDialog.getIdentifierURL());
+				valueMap.put(JSON_SCHEMA_FIELD_ELEMENT_IDENTIFIERS_URL, identifierNamespace);
+			}
+			
 			if(StringUtils.isNotEmpty(editTypeDialog.getIdentifierType()) && StringUtils.isNotEmpty(editTypeDialog.getIdentifierValue())){
 				String fullName = editTypeDialog.getIdentifierType() + "=" + editTypeDialog.getIdentifierValue();
 				valueMap.put(JSON_SCHEMA_TITLE, editTypeDialog.getTitle()+", "+fullName);
@@ -350,6 +361,31 @@ public class EditFieldAction extends AbstractActionHandler {
 
 		}
 
+	}
+	
+	/**
+	 * Creates namespace array for identifiers
+	 * @param identifierType
+	 * @param identifierURL
+	 * @return
+	 */
+	private String createNamespaceArrayForIdentifiers(String identifierType, String identifierURL) {
+		ArrayList<String> namespacesList = new ArrayList<String>();
+		String[] identifierArray = null;
+		String identifierPrefix =  null;
+		if(identifierType.contains(":")){
+			identifierArray = identifierType.split(":");
+			identifierPrefix = identifierArray[0];
+		}else{
+			identifierPrefix = identifierType;
+		}
+		String prefixItem = NAMESPACE_PREFIX + "=" + identifierPrefix;
+		String urlItem = NAMESPACE_URL + "=" + identifierURL;
+		String [] namespaceItem = {prefixItem,urlItem};
+		String namespaceArrayAsString =Arrays.toString(namespaceItem).substring(1, Arrays.toString(namespaceItem).length()-1);
+		namespacesList.add("{"+ namespaceArrayAsString + "}");
+		String value = StringUtils.join(namespacesList, ',');
+		return value;
 	}
 
 	private EditPart getSelectedEditPart() {

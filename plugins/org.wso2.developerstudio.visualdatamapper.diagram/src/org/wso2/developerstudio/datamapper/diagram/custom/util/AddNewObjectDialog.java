@@ -646,8 +646,10 @@ public class AddNewObjectDialog extends Dialog {
 			checkBoxForIdentifiers.setSelection(true);
 			lblIdentifierType.setVisible(true);
 			lblIdentifierValue.setVisible(true);
+			lblIdentifierURL.setVisible(true);
 			textIdentifierType.setVisible(true);
 			textIdentifierURL.setVisible(true);
+			textIdentifierValue.setVisible(true);
 			textIdentifierType.setText(identifierType);
 			textIdentifierValue.setText(identifierValue);
 			textIdentifierURL.setText(identifierURL);

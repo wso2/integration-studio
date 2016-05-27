@@ -248,65 +248,9 @@ public class EditObjectAction extends AbstractActionHandler {
 			}
 		}
 		
-		
-		DataMapperRootEditPart rep = getDataMapperRootEditPart();
-		DataMapperRoot rootDiagram = (DataMapperRoot) ((DiagramImpl) rep.getModel()).getElement();
-		EList<TreeNode> inputTreeNodesList = rootDiagram.getInput().getTreeNode();
-		recreateTree(rootDiagram, inputTreeNodesList);
-		
-		
+
 	}
 
-	/**
-	 * Recreates the tree
-	 * @param rootDiagram
-	 * @param inputTreeNodesList
-	 */
-	private void recreateTree(DataMapperRoot rootDiagram, EList<TreeNode> inputTreeNodesList) {
-		if (null != inputTreeNodesList && !inputTreeNodesList.isEmpty()) {
-			// keep a temp reference
-			TreeNodeImpl inputTreeNode = (TreeNodeImpl) inputTreeNodesList.get(0);
-			// remove and add to rectify placing
-			RemoveCommand rootRemCmd = new RemoveCommand(
-					((GraphicalEditPart) selectedEP).getEditingDomain(), rootDiagram.getInput(),
-					DataMapperPackage.Literals.INPUT__TREE_NODE, inputTreeNode);
-			if (rootRemCmd.canExecute()) {
-				((GraphicalEditPart) selectedEP).getEditingDomain().getCommandStack()
-						.execute(rootRemCmd);
-			}
-
-			AddCommand rootAddCmd = new AddCommand(
-					((GraphicalEditPart) selectedEP).getEditingDomain(), rootDiagram.getInput(),
-					DataMapperPackage.Literals.INPUT__TREE_NODE, inputTreeNode, 0);
-			if (rootAddCmd.canExecute()) {
-				((GraphicalEditPart) selectedEP).getEditingDomain().getCommandStack()
-						.execute(rootAddCmd);
-			}
-		}
-	}
-
-	
-	/**
-	 * Gets the DataMapperRootEditPart
-	 * @return
-	 */
-	private DataMapperRootEditPart getDataMapperRootEditPart() {
-		DataMapperRootEditPart rep = null;
-		if(selectedEP.getParent() instanceof InputEditPart){
-			InputEditPart iep =  (InputEditPart) selectedEP.getParent();
-			rep = (DataMapperRootEditPart) iep.getParent();
-		}else if(selectedEP.getParent() instanceof OutputEditPart){
-			OutputEditPart oep =  (OutputEditPart) selectedEP.getParent();
-			rep = (DataMapperRootEditPart) oep.getParent();
-		}else if(selectedEP.getParent().getParent() instanceof InputEditPart){
-			InputEditPart iep =  (InputEditPart) selectedEP.getParent();
-			rep = (DataMapperRootEditPart) iep.getParent().getParent();
-		}else if(selectedEP.getParent().getParent() instanceof OutputEditPart){
-			OutputEditPart oep =  (OutputEditPart) selectedEP.getParent().getParent();
-			rep = (DataMapperRootEditPart) oep.getParent();
-		}
-		return rep;
-	}
 
 	/**
 	 * Renames the title

@@ -185,7 +185,6 @@ public class AddNewObjectAction extends AbstractActionHandler {
 					}else{
 						identifierPrefix = objectDialog.getIdentifierType();
 					}
-					setPropertyKeyValuePairforTreeNodes(treeNodeChild, propertyValueListChild, JSON_SCHEMA_TYPE, STRING);
 					setPropertyKeyValuePairforTreeNodes(treeNodeChild, propertyValueListChild, JSON_SCHEMA_ADDED_ATTRIBUTE_ID, objectDialog.getID()+"/"+identifierPrefix);
 					setPropertyKeyValuePairforTreeNodes(treeNodeChild, propertyValueListChild, JSON_SCHEMA_ADDED_ATTRIBUTE_TYPE,STRING);
 					treeNodeNew.getNode().add(treeNodeChild);

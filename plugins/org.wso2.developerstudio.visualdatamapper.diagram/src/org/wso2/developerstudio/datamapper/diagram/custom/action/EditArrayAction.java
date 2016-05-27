@@ -27,6 +27,7 @@ import java.util.regex.Pattern;
 
 import org.apache.commons.lang.StringUtils;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.command.AddCommand;
@@ -36,6 +37,7 @@ import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.common.ui.action.AbstractActionHandler;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart;
 import org.eclipse.gmf.runtime.notation.Node;
+import org.eclipse.gmf.runtime.notation.impl.DiagramImpl;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
@@ -44,12 +46,17 @@ import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.datamapper.DataMapperFactory;
 import org.wso2.developerstudio.datamapper.DataMapperPackage;
+import org.wso2.developerstudio.datamapper.DataMapperRoot;
 import org.wso2.developerstudio.datamapper.PropertyKeyValuePair;
 import org.wso2.developerstudio.datamapper.TreeNode;
 import org.wso2.developerstudio.datamapper.diagram.custom.util.AddNewObjectDialog;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.DataMapperRootEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.InputEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.OutputEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.TreeNode2EditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.TreeNode3EditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.TreeNodeEditPart;
+import org.wso2.developerstudio.datamapper.impl.TreeNodeImpl;
 import org.wso2.developerstudio.eclipse.registry.core.interfaces.IRegistryFile;
 
 public class EditArrayAction extends AbstractActionHandler {
@@ -195,6 +202,11 @@ public class EditArrayAction extends AbstractActionHandler {
 				executeAddCommand(selectedNode, pair);
 			}
 		}
+		
+		DataMapperRootEditPart rep = getDataMapperRootEditPart();
+		DataMapperRoot rootDiagram = (DataMapperRoot) ((DiagramImpl) rep.getModel()).getElement();
+		EList<TreeNode> inputTreeNodesList = rootDiagram.getInput().getTreeNode();
+		recreateTree(rootDiagram, inputTreeNodesList);
 		
 	}
 
@@ -361,7 +373,6 @@ public class EditArrayAction extends AbstractActionHandler {
 					identifierPrefix = editTypeDialog.getIdentifierType();
 				}
 				//Sets the attribute ID and type to be used in serialization of the attributes
-				valueMap.put(JSON_SCHEMA_TYPE, STRING);
 				valueMap.put(JSON_SCHEMA_ADDED_ATTRIBUTE_ID, editTypeDialog.getID()+"/"+identifierPrefix);
 				valueMap.put(JSON_SCHEMA_ADDED_ATTRIBUTE_TYPE, STRING);
 				//selectedNode.getNode().add(treeNodeChild);
@@ -373,6 +384,57 @@ public class EditArrayAction extends AbstractActionHandler {
 
 	}
 	
+	
+	/**
+	 * Recreates the tree
+	 * @param rootDiagram
+	 * @param inputTreeNodesList
+	 */
+	private void recreateTree(DataMapperRoot rootDiagram, EList<TreeNode> inputTreeNodesList) {
+		if (null != inputTreeNodesList && !inputTreeNodesList.isEmpty()) {
+			// keep a temp reference
+			TreeNodeImpl inputTreeNode = (TreeNodeImpl) inputTreeNodesList.get(0);
+			// remove and add to rectify placing
+			RemoveCommand rootRemCmd = new RemoveCommand(
+					((GraphicalEditPart) selectedEP).getEditingDomain(), rootDiagram.getInput(),
+					DataMapperPackage.Literals.INPUT__TREE_NODE, inputTreeNode);
+			if (rootRemCmd.canExecute()) {
+				((GraphicalEditPart) selectedEP).getEditingDomain().getCommandStack()
+						.execute(rootRemCmd);
+			}
+
+			AddCommand rootAddCmd = new AddCommand(
+					((GraphicalEditPart) selectedEP).getEditingDomain(), rootDiagram.getInput(),
+					DataMapperPackage.Literals.INPUT__TREE_NODE, inputTreeNode, 0);
+			if (rootAddCmd.canExecute()) {
+				((GraphicalEditPart) selectedEP).getEditingDomain().getCommandStack()
+						.execute(rootAddCmd);
+			}
+		}
+	}
+
+	
+	/**
+	 * Gets the DataMapperRootEditPart
+	 * @return
+	 */
+	private DataMapperRootEditPart getDataMapperRootEditPart() {
+		DataMapperRootEditPart rep = null;
+		if(selectedEP.getParent() instanceof InputEditPart){
+			InputEditPart iep =  (InputEditPart) selectedEP.getParent();
+			rep = (DataMapperRootEditPart) iep.getParent();
+		}else if(selectedEP.getParent() instanceof OutputEditPart){
+			OutputEditPart oep =  (OutputEditPart) selectedEP.getParent();
+			rep = (DataMapperRootEditPart) oep.getParent();
+		}else if(selectedEP.getParent().getParent() instanceof InputEditPart){
+			InputEditPart iep =  (InputEditPart) selectedEP.getParent().getParent();
+			rep = (DataMapperRootEditPart) iep.getParent();
+		}else if(selectedEP.getParent().getParent() instanceof OutputEditPart){
+			OutputEditPart oep =  (OutputEditPart) selectedEP.getParent().getParent();
+			rep = (DataMapperRootEditPart) oep.getParent();
+		}
+		return rep;
+	}
 	/**
 	 * Creates namespace array for identifiers
 	 * @param identifierType

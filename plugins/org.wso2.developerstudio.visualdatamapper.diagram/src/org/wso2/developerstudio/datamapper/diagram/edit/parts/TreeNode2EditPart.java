@@ -1,6 +1,7 @@
 package org.wso2.developerstudio.datamapper.diagram.edit.parts;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.apache.commons.lang.StringUtils;
@@ -30,6 +31,7 @@ import org.eclipse.gef.palette.PaletteContainer;
 import org.eclipse.gef.palette.ToolEntry;
 import org.eclipse.gef.requests.CreateRequest;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.AbstractBorderedShapeEditPart;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IBorderItemEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.BorderItemSelectionEditPolicy;
@@ -100,6 +102,7 @@ public class TreeNode2EditPart extends AbstractBorderedShapeEditPart {
 	protected void addChild(EditPart child, int index) {
 		super.addChild(child, index);
 	}
+
 
 	/**
 	 * @generated NOT
@@ -870,7 +873,7 @@ public class TreeNode2EditPart extends AbstractBorderedShapeEditPart {
 				newName = fullName[1];
 			} else {
 				newName = name;
-			}
+			}	
 			if (StringUtils.isNotEmpty(name) && name.startsWith(PREFIX)) {
 				nodeLabel.setIcon(attributeImg.getImage());
 			} else if (type != null && type.equals(JSON_SCHEMA_ARRAY)) {
@@ -918,6 +921,34 @@ public class TreeNode2EditPart extends AbstractBorderedShapeEditPart {
 
 	public void renameElementItem(String newName, String type) {
 		getPrimaryShape().renameElement(newName, type);
+	}
+	
+	/**
+	 * Adds the child nodes
+	 * @param editPart
+	 */
+	@SuppressWarnings("rawtypes")
+	public void addFixedChildToNodes(EditPart editPart){
+		EditPart parent = editPart.getParent();
+		List children = parent.getChildren();
+		Iterator iterator = children.iterator();
+		updatConnectors(iterator);
+		super.refreshChild((GraphicalEditPart) editPart);
+	}
+	
+
+	/**
+	 * Updats the connectors
+	 * @param iterator
+	 */
+	@SuppressWarnings("rawtypes")
+	private void updatConnectors(Iterator iterator) {
+		while (iterator.hasNext()) {
+			EditPart child = (EditPart) iterator.next();
+			if (addFixedChild(child)) {
+				return;
+			}
+		}
 	}
 
 	public void removeHighlightOnElem() {

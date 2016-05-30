@@ -64,7 +64,6 @@ public class EditAttributeAction extends AbstractActionHandler {
 	private static final String RENAME_ACTION_ID = "rename-field-action-id"; //$NON-NLS-1$
 	private static final String RENAME_FIELD = Messages.EditActions_editAttribute;
 
-
 	private static final String JSON_SCHEMA_ID = "id";
 	private static final String JSON_SCHEMA_TYPE = "type";
 	private static final String JSON_SCHEMA_TITLE = "title";
@@ -83,7 +82,6 @@ public class EditAttributeAction extends AbstractActionHandler {
 	private String required = null;
 	private String namespaces = null;
 	private String formatedNamespace = null;
-
 
 	public EditAttributeAction(IWorkbenchPart workbenchPart) {
 		super(workbenchPart);
@@ -107,26 +105,26 @@ public class EditAttributeAction extends AbstractActionHandler {
 			TreeNode selectedNode = (TreeNode) object;
 
 			title = selectedNode.getName();
-			if(title.startsWith(PREFIX) && title.contains(":")){
+			if (title.startsWith(PREFIX) && title.contains(":")) {
 				int index = title.indexOf(":");
-				name = title.substring(index+1, title.length());
-			}else if(title.startsWith(PREFIX)){
+				name = title.substring(index + 1, title.length());
+			} else if (title.startsWith(PREFIX)) {
 				name = title.substring(1);
-			}else{
+			} else {
 				name = title;
 			}
-			
+
 			schemaType = setProerties(selectedNode, JSON_SCHEMA_TYPE);
 			id = setProerties(selectedNode, JSON_SCHEMA_ID);
 
 			namespaces = setProerties(selectedNode, JSON_SCHEMA_ATTRIBUTE_NAMESPACES);
 			formatedNamespace = formatNamespace(namespaces).toString();
-			String newNamespace = formatedNamespace.substring(1, formatedNamespace.toString().length()-1);
-			openEditFieldDialog(selectedNode, name, schemaType, id, required, schemaValue,newNamespace);
+			String newNamespace = formatedNamespace.substring(1, formatedNamespace.toString().length() - 1);
+			openEditFieldDialog(selectedNode, name, schemaType, id, required, schemaValue, newNamespace);
 
 		}
 	}
-	
+
 	private String setProerties(TreeNode selectedNode, String key) {
 		String value = null;
 		for (PropertyKeyValuePair keyValue : selectedNode.getProperties()) {
@@ -138,51 +136,69 @@ public class EditAttributeAction extends AbstractActionHandler {
 		return value;
 	}
 
-
 	/**
 	 * Reflects the changes in the tree view
+	 * 
 	 * @param selectedElem
 	 * @param map
 	 */
 	private void reflectChanges(TreeNode selectedNode, HashMap<String, String> map) {
-		
+
 		@SuppressWarnings("rawtypes")
 		Iterator entries = map.entrySet().iterator();
 		executeRemoveCommand(selectedNode);
 		renameTitle(map);
 		while (entries.hasNext()) {
-		  @SuppressWarnings("rawtypes")
-		  Entry thisEntry = (Entry) entries.next();
-		  Object key = thisEntry.getKey();
-		  Object value = thisEntry.getValue();
-		  if(key.equals(JSON_SCHEMA_TITLE)){
+			@SuppressWarnings("rawtypes")
+			Entry thisEntry = (Entry) entries.next();
+			Object key = thisEntry.getKey();
+			Object value = thisEntry.getValue();
+			if (key.equals(JSON_SCHEMA_TITLE)) {
 				executeCommand(selectedNode, DataMapperPackage.Literals.TREE_NODE__NAME, map.get(JSON_SCHEMA_TITLE));
-		  }else{
-			 
-			  PropertyKeyValuePair pair = setPropertyKeyValuePairforTreeNodes(selectedNode, key.toString(),
+			} else {
+
+				PropertyKeyValuePair pair = setPropertyKeyValuePairforTreeNodes(selectedNode, key.toString(),
 						value.toString());
-		      executeAddCommand(selectedNode, pair);
-		  }
+				executeAddCommand(selectedNode, pair);
+			}
 		}
-		
+
+		updateConnector();
 	}
-	
-	
+
+	/**
+	 * Updates the connector
+	 */
+	private void updateConnector() {
+		if (getSelectedEditPart() instanceof TreeNodeEditPart) {
+			((TreeNodeEditPart) getSelectedEditPart()).addFixedChildToNodes(getSelectedEditPart());
+		} else if (getSelectedEditPart() instanceof TreeNode2EditPart) {
+			((TreeNode2EditPart) getSelectedEditPart()).addFixedChildToNodes(getSelectedEditPart());
+		} else if (getSelectedEditPart() instanceof TreeNode3EditPart) {
+			((TreeNode3EditPart) getSelectedEditPart()).addFixedChildToNodes(getSelectedEditPart());
+		}
+	}
+
 	/**
 	 * Renames the title
+	 * 
 	 * @param map
 	 */
 	private void renameTitle(HashMap<String, String> map) {
 		if (map.get(JSON_SCHEMA_TITLE) != null) {
 			if (getSelectedEditPart() instanceof TreeNodeEditPart) {
-				((TreeNodeEditPart) getSelectedEditPart()).renameElementItem(map.get(JSON_SCHEMA_TITLE),map.get(JSON_SCHEMA_TYPE));
+				((TreeNodeEditPart) getSelectedEditPart()).renameElementItem(map.get(JSON_SCHEMA_TITLE),
+						map.get(JSON_SCHEMA_TYPE));
 			} else if (getSelectedEditPart() instanceof TreeNode2EditPart) {
-					((TreeNode2EditPart) getSelectedEditPart()).renameElementItem(map.get(JSON_SCHEMA_TITLE),map.get(JSON_SCHEMA_TYPE));
+				((TreeNode2EditPart) getSelectedEditPart()).renameElementItem(map.get(JSON_SCHEMA_TITLE),
+						map.get(JSON_SCHEMA_TYPE));
 			} else if (getSelectedEditPart() instanceof TreeNode3EditPart) {
-				((TreeNode3EditPart) getSelectedEditPart()).renameElementItem(map.get(JSON_SCHEMA_TITLE),map.get(JSON_SCHEMA_TYPE));
+				((TreeNode3EditPart) getSelectedEditPart()).renameElementItem(map.get(JSON_SCHEMA_TITLE),
+						map.get(JSON_SCHEMA_TYPE));
 			}
 		}
 	}
+
 	/**
 	 * Removes the existing properties
 	 * 
@@ -198,7 +214,6 @@ public class EditAttributeAction extends AbstractActionHandler {
 
 	}
 
-	
 	/**
 	 * Saves the properties to tree
 	 * 
@@ -212,6 +227,7 @@ public class EditAttributeAction extends AbstractActionHandler {
 			((GraphicalEditPart) selectedEP).getEditingDomain().getCommandStack().execute(addCmd);
 		}
 	}
+
 	/**
 	 * sets the property values
 	 * 
@@ -226,7 +242,6 @@ public class EditAttributeAction extends AbstractActionHandler {
 		keyValuePair.setValue(value);
 		return keyValuePair;
 	}
-	
 
 	/**
 	 * Save edited values into the model
@@ -245,7 +260,8 @@ public class EditAttributeAction extends AbstractActionHandler {
 
 	/**
 	 * Opens the dialog
-	 * @param selectedElem 
+	 * 
+	 * @param selectedElem
 	 * 
 	 * @param editFieldDialog
 	 * @param name
@@ -260,47 +276,48 @@ public class EditAttributeAction extends AbstractActionHandler {
 	 *            aliases
 	 * @return map
 	 */
-	private void openEditFieldDialog(TreeNode selectedNode, String title, String schemaType, String id,
-			String required, String schemaValue,String namespaces) {
+	private void openEditFieldDialog(TreeNode selectedNode, String title, String schemaType, String id, String required,
+			String schemaValue, String namespaces) {
 
 		Shell shell = Display.getDefault().getActiveShell();
 		AddNewObjectDialog editTypeDialog = new AddNewObjectDialog(shell, new Class[] { IRegistryFile.class });
-	
+
 		editTypeDialog.create();
 		editTypeDialog.setTypeWhenEditing(schemaType);
-		editTypeDialog.setValues(title, schemaType, id, required, schemaValue,namespaces,null,null,null,null);
+		editTypeDialog.setValues(title, schemaType, id, required, schemaValue, namespaces, null, null, null, null);
 		editTypeDialog.open();
-		
-		if(editTypeDialog.getOkValue()){
-		
-		HashMap<String, String> valueMap = new HashMap<String, String>();
-		
-		if (StringUtils.isNotEmpty(editTypeDialog.getTitle())) {
-			if(StringUtils.isNotEmpty(editTypeDialog.getNamespaces())){
-				String objectNamespace = createNamespaceArray(editTypeDialog.getNamespaces());
-					//Adds the prefix to the object
+
+		if (editTypeDialog.getOkValue()) {
+
+			HashMap<String, String> valueMap = new HashMap<String, String>();
+
+			if (StringUtils.isNotEmpty(editTypeDialog.getTitle())) {
+				if (StringUtils.isNotEmpty(editTypeDialog.getNamespaces())) {
+					String objectNamespace = createNamespaceArray(editTypeDialog.getNamespaces());
+					// Adds the prefix to the object
 					String prefix = getNamespacePrefix(objectNamespace);
-					String newNodeName = prefix+":"+ editTypeDialog.getTitle();
+					String newNodeName = prefix + ":" + editTypeDialog.getTitle();
 					valueMap.put(JSON_SCHEMA_TITLE, newNodeName);
-				}else{
-					valueMap.put(JSON_SCHEMA_TITLE, PREFIX+editTypeDialog.getTitle());
-			}			
-		}
-		valueMap.put(JSON_SCHEMA_TYPE, editTypeDialog.getSchemaType());
-		if (StringUtils.isNotEmpty(editTypeDialog.getID())) {
-			valueMap.put(JSON_SCHEMA_ID, editTypeDialog.getID());
-		}
-		
-		if (StringUtils.isNotEmpty(editTypeDialog.getNamespaces())) {
-			String namespacesValue = createNamespaceArray(editTypeDialog.getNamespaces());
-			valueMap.put(JSON_SCHEMA_ATTRIBUTE_NAMESPACES, namespacesValue);
-		}
-	
-		//Sets the attribute ID and type to be used in serialization of the attributes
-		valueMap.put(JSON_SCHEMA_ADDED_ATTRIBUTE_ID, editTypeDialog.getID());
-		valueMap.put(JSON_SCHEMA_ADDED_ATTRIBUTE_TYPE, editTypeDialog.getSchemaType());
-	
-		reflectChanges(selectedNode, valueMap);
+				} else {
+					valueMap.put(JSON_SCHEMA_TITLE, PREFIX + editTypeDialog.getTitle());
+				}
+			}
+			valueMap.put(JSON_SCHEMA_TYPE, editTypeDialog.getSchemaType());
+			if (StringUtils.isNotEmpty(editTypeDialog.getID())) {
+				valueMap.put(JSON_SCHEMA_ID, editTypeDialog.getID());
+			}
+
+			if (StringUtils.isNotEmpty(editTypeDialog.getNamespaces())) {
+				String namespacesValue = createNamespaceArray(editTypeDialog.getNamespaces());
+				valueMap.put(JSON_SCHEMA_ATTRIBUTE_NAMESPACES, namespacesValue);
+			}
+
+			// Sets the attribute ID and type to be used in serialization of the
+			// attributes
+			valueMap.put(JSON_SCHEMA_ADDED_ATTRIBUTE_ID, editTypeDialog.getID());
+			valueMap.put(JSON_SCHEMA_ADDED_ATTRIBUTE_TYPE, editTypeDialog.getSchemaType());
+
+			reflectChanges(selectedNode, valueMap);
 		}
 	}
 
@@ -320,14 +337,16 @@ public class EditAttributeAction extends AbstractActionHandler {
 	public void refresh() {
 		// refresh action. Does not do anything
 	}
-	
+
 	/**
 	 * Formats the namespace to the required format
-	 * @param namespaces in {prefix=w, url=r}
+	 * 
+	 * @param namespaces
+	 *            in {prefix=w, url=r}
 	 * @return w=r
 	 */
 	private ArrayList<String> formatNamespace(String namespaces) {
-		Map<String,String> namespaceMap = new HashMap<String,String>();
+		Map<String, String> namespaceMap = new HashMap<String, String>();
 		ArrayList<String> namespaceArray = new ArrayList<String>();
 		String newNamespace = null;
 		if (namespaces != null) {
@@ -346,18 +365,18 @@ public class EditAttributeAction extends AbstractActionHandler {
 							String second = secondElement.replace("\\", "");
 							namespaceMap.put(first, second);
 						} else {
-							namespaceMap.put(firstElement, secondElement);	
+							namespaceMap.put(firstElement, secondElement);
 						}
 					}
-					 
+
 				}
-				newNamespace= namespaceMap.get(NAMESPACE_PREFIX)+ "=" + namespaceMap.get(NAMESPACE_URL);
-				namespaceArray.add(newNamespace);		
+				newNamespace = namespaceMap.get(NAMESPACE_PREFIX) + "=" + namespaceMap.get(NAMESPACE_URL);
+				namespaceArray.add(newNamespace);
 			}
 		}
 		return namespaceArray;
 	}
-	
+
 	/**
 	 * Creates namespace array
 	 * 

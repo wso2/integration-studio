@@ -1,6 +1,7 @@
 package org.wso2.developerstudio.datamapper.diagram.edit.parts;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.apache.commons.lang.StringUtils;
@@ -32,6 +33,7 @@ import org.eclipse.gef.palette.PaletteContainer;
 import org.eclipse.gef.palette.ToolEntry;
 import org.eclipse.gef.requests.CreateRequest;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.AbstractBorderedShapeEditPart;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IBorderItemEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeNodeEditPart;
@@ -428,6 +430,34 @@ public class TreeNodeEditPart extends AbstractBorderedShapeEditPart {
 			return true;
 		}
 		return false;
+	}
+
+	/**
+	 * Adds the child nodes
+	 * @param editPart
+	 */
+	@SuppressWarnings("rawtypes")
+	public void addFixedChildToNodes(EditPart editPart){
+		EditPart parent = editPart.getParent();
+		List children = parent.getChildren();
+		Iterator iterator = children.iterator();
+		updatConnectors(iterator);
+		super.refreshChild((GraphicalEditPart) editPart);
+	}
+	
+
+	/**
+	 * Updats the connectors
+	 * @param iterator
+	 */
+	@SuppressWarnings("rawtypes")
+	private void updatConnectors(Iterator iterator) {
+		while (iterator.hasNext()) {
+			EditPart child = (EditPart) iterator.next();
+			if (addFixedChild(child)) {
+				return;
+			}
+		}
 	}
 
 	/**

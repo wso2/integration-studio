@@ -172,6 +172,7 @@ function addInitalTask() { //createFile
 }
 
 var xmlDom;
+var selectedindex = 0;
 loadModel();
 //createFile("ApproveClaim"); // todo  - Test and omit
 process();
@@ -297,6 +298,7 @@ function generateUI() {
         });
         $("#page-content-wrapper").tabs();
         $("#page-content-wrapper").tabs("refresh");
+        $('#page-content-wrapper').tabs("option", "active", selectedindex);
     }
 }
 
@@ -392,6 +394,7 @@ function generateTaskDiv(taskNode) {
                 makeDirty();
                 generateText(taskNode);
                 generateTaskDiv(taskNode);
+                selectedindex = $('#page-content-wrapper a[href="#'+taskNode.getAttribute("name")+'wrapper"]').parent().index();
             });
 
     // Add output mapping row
@@ -454,6 +457,7 @@ function generateTaskDiv(taskNode) {
                 makeDirty();
                 generateText(taskNode);
                 generateTaskDiv(taskNode);
+                selectedindex = $('#page-content-wrapper a[href="#'+taskNode.getAttribute("name")+'wrapper"]').parent().index();
             });
 
     // sync rendering values into input mapping table
@@ -500,7 +504,7 @@ function generateTaskDiv(taskNode) {
                                 }
                                 makeDirty();
                                 generateTaskDiv(taskNode);
-
+                                selectedindex = $('#page-content-wrapper a[href="#'+taskNode.getAttribute("name")+'wrapper"]').parent().index();
                             } catch (err) {
                                 handleError(err);
                             }
@@ -557,6 +561,7 @@ function generateTaskDiv(taskNode) {
                                 }
                                 makeDirty();
                                 generateTaskDiv(taskNode);
+                                selectedindex = $('#page-content-wrapper a[href="#'+taskNode.getAttribute("name")+'wrapper"]').parent().index();
                             } catch (err) {
                                 handleError(err);
                             }
@@ -581,7 +586,7 @@ function generateTaskDiv(taskNode) {
             .val(
                 taskNode.getElementsByTagName("priority")[0].childNodes[0].nodeValue.trim());
     }
-    if (taskNode.getElementsByTagName("interface").length != 0 && taskNode.getElementsByTagName("interface")[0].hasChildNodes()) {
+    if (taskNode.getElementsByTagName("interface").length != 0 && !taskNode.getElementsByTagName("interface")[0].hasChildNodes()) {
         $('#' + taskDivName + " #taskOperation").val(
             taskNode.getElementsByTagName("interface")[0].getAttribute(
                 "operation").trim());
@@ -637,7 +642,7 @@ function generateTaskDiv(taskNode) {
     $('#' + taskDivName + ' .taskDiv').show();
     bindChangeEvents();
     syncWSDLFields(taskName);
-     //syncwsdlFields syncWSDLFields(taskNode);
+    //syncwsdlFields syncWSDLFields(taskNode);
 }
 
 /*
@@ -693,10 +698,10 @@ function generateText(taskNode) {
     taskNode.getElementsByTagName("interface")[0].setAttribute(
         "responseOperation", $(
             '#' + taskDivName + " #taskCallbackOperationName").val())
-    taskNode.getElementsByTagName("interface")[0].setAttribute("portType", "cl:" +
+    taskNode.getElementsByTagName("interface")[0].setAttribute("portType", "tns:" +
         taskName + "PT");
     taskNode.getElementsByTagName("interface")[0].setAttribute(
-            "responsePortType", "cl:" + taskName + "CBPT")
+            "responsePortType", "tns:" + taskName + "CBPT")
         // fill input mappings
     inputmappingNo = parseInt($('#' + taskDivName + " #taskMappingNo").val());
     inputNodes = taskNode.getElementsByTagName("renderings")[0]

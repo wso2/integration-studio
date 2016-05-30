@@ -933,7 +933,7 @@ public class TreeNode2EditPart extends AbstractBorderedShapeEditPart {
 		List children = parent.getChildren();
 		Iterator iterator = children.iterator();
 		updatConnectors(iterator);
-		super.refreshChild((GraphicalEditPart) editPart);
+		super.refreshChildren();
 	}
 	
 

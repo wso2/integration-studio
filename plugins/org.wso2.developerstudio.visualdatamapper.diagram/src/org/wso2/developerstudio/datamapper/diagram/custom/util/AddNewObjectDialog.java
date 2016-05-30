@@ -199,8 +199,8 @@ public class AddNewObjectDialog extends Dialog {
 			lblCheckBoxForValue.setVisible(false);
 			lblValue.setVisible(false);
 			comboValue.setVisible(false);
-			checkBoxForIdentifiers.setVisible(true);
-			lblCheckBoxForIdentifiers.setVisible(true);
+			checkBoxForIdentifiers.setVisible(false);
+			lblCheckBoxForIdentifiers.setVisible(false);
 			lblIdentifierType.setVisible(false);
 			lblIdentifierValue.setVisible(false);
 			textIdentifierType.setVisible(false);

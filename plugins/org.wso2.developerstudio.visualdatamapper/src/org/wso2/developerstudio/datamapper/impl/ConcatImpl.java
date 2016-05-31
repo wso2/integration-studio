@@ -60,6 +60,28 @@ public class ConcatImpl extends OperatorImpl implements Concat {
 	protected ConcatImpl() {
 		super();
 	}
+	
+	 
+    /**
+     * @generated NOT
+     */
+    protected String delimiterValue;
+    
+    
+    /**
+     * @generated NOT
+     */
+    public String getDelimiterValue() {
+		return delimiterValue;
+	}
+    
+    
+    /**
+     * @generated NOT
+     */
+	public void setDelimiterValue(String delimiterValue) {
+		this.delimiterValue = delimiterValue;
+	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -77,6 +99,7 @@ public class ConcatImpl extends OperatorImpl implements Concat {
 	 * @generated
 	 */
 	public String getDelimiter() {
+		delimiter = delimiterValue;
 		return delimiter;
 	}
 

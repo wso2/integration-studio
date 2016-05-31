@@ -61,8 +61,29 @@ public class SplitImpl extends OperatorImpl implements Split {
 	 * @ordered
 	 */
     protected int arrayOutput = ARRAY_OUTPUT_EDEFAULT;
-
+    
     /**
+     * @generated NOT
+     */
+    protected String delimiterValue;
+    
+    
+    /**
+     * @generated NOT
+     */
+    public String getDelimiterValue() {
+		return delimiterValue;
+	}
+    
+    
+    /**
+     * @generated NOT
+     */
+	public void setDelimiterValue(String delimiterValue) {
+		this.delimiterValue = delimiterValue;
+	}
+
+	/**
 	 * The default value of the '{@link #getArrayOutputResultOmitingIndices() <em>Array Output Result Omiting Indices</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -106,6 +127,7 @@ public class SplitImpl extends OperatorImpl implements Split {
 	 * @generated
 	 */
 	public String getDelimiter() {
+		delimiter = delimiterValue;
 		return delimiter;
 	}
 

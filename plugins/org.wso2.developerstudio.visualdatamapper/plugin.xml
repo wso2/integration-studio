@@ -12,5 +12,11 @@
             class="org.wso2.developerstudio.datamapper.DataMapperPackage"
             genModel="model/dataMapper.genmodel"/>
    </extension>
-
+<extension point="org.eclipse.ui.perspectives">
+		<perspective
+			class="org.wso2.developerstudio.datamapper.diagram.custom.perspective.EsbDataMapperEditorPerspective"
+			icon="icons/obj16/DataMapperDiagramFile.gif" id="org.wso2.developerstudio.datamapper.diagram.custom.perspective"
+			name="WSO2 Data Mapper Graphical">
+		</perspective>
+	</extension>
 </plugin>

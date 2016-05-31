@@ -236,6 +236,7 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
 							menu.remove(MENU_ADDITIONS);
 							menu.remove(ActionIds.ACTION_ADD_NOTELINK);
 							menu.remove(ActionIds.ACTION_DELETE_FROM_DIAGRAM);
+							menu.remove(ActionIds.ACTION_SHOW_PROPERTIES_VIEW);
 
 							List<?> selectedEPs = getViewer().getSelectedEditParts();
 							if (selectedEPs.size() == 1) {

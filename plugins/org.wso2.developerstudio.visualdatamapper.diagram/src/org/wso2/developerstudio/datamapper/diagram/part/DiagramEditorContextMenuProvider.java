@@ -122,7 +122,6 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
 		contextActions.put(OutputEditPart.class, new LoadOutputSchemaAction(part));
 		contextActions.put(ConcatEditPart.class, new ConcatManyAction(part));
 		contextActions.put(SplitEditPart.class, new SplitManyAction(part));
-		contextActions.put(InputEditPart.class, new org.wso2.developerstudio.datamapper.diagram.part.DeleteElementAction(part));
 
 		// Initialize new root record context sensitive actions.
 		addNewRootElementContextActions = new HashMap<Class<? extends ShapeNodeEditPart>, AbstractActionHandler>();

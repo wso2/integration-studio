@@ -67,6 +67,8 @@ public class AddNewAttributeAction extends AbstractActionHandler {
 	private static final String JSON_SCHEMA_ADDED_ATTRIBUTE_ID = "added_attribute_id";
 	private static final String JSON_SCHEMA_ADDED_ATTRIBUTE_TYPE = "added_attribute_type";
 	private static final String JSON_SCHEMA_ATTRIBUTE_NAMESPACES = "attributeNamespaces";
+	private static final String JSON_SCHEMA_ARRAY_ITEMS_ID = "items_id";
+	private static final String JSON_SCHEMA_ARRAY_ITEMS_TYPE = "items_type";
 
 
 	public AddNewAttributeAction(IWorkbenchPart workbenchPart) {
@@ -135,6 +137,9 @@ public class AddNewAttributeAction extends AbstractActionHandler {
 				setPropertyKeyValuePairforTreeNodes(treeNodeNew, propertyValueList, JSON_SCHEMA_ADDED_ATTRIBUTE_ID, objectDialog.getID());
 				setPropertyKeyValuePairforTreeNodes(treeNodeNew, propertyValueList, JSON_SCHEMA_ADDED_ATTRIBUTE_TYPE, objectDialog.getSchemaType());
 
+				//If the field adds as a child to an array( root is an array) then enable these properties
+				setPropertyKeyValuePairforTreeNodes(treeNodeNew, propertyValueList, JSON_SCHEMA_ARRAY_ITEMS_ID, objectDialog.getID()+"/"+ "0");
+				setPropertyKeyValuePairforTreeNodes(treeNodeNew, propertyValueList, JSON_SCHEMA_ARRAY_ITEMS_TYPE, objectDialog.getSchemaType());
 
 				/*
 				 * AddCommand is used to avoid concurrent updating. index 0 to

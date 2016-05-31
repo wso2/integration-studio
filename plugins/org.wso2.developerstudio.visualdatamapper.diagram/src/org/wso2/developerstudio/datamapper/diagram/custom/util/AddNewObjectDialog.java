@@ -199,8 +199,8 @@ public class AddNewObjectDialog extends Dialog {
 			lblCheckBoxForValue.setVisible(false);
 			lblValue.setVisible(false);
 			comboValue.setVisible(false);
-			checkBoxForIdentifiers.setVisible(true);
-			lblCheckBoxForIdentifiers.setVisible(true);
+			checkBoxForIdentifiers.setVisible(false);
+			lblCheckBoxForIdentifiers.setVisible(false);
 			lblIdentifierType.setVisible(false);
 			lblIdentifierValue.setVisible(false);
 			textIdentifierType.setVisible(false);
@@ -589,39 +589,44 @@ public class AddNewObjectDialog extends Dialog {
 				break;
 			}
 			if (StringUtils.isNotEmpty(value)) {
+				checkBoxForValue.setVisible(true);
+				checkBoxForValue.setSelection(true);
+				lblCheckBoxForValue.setVisible(true);
+				lblValue.setVisible(true);
+				comboValue.setVisible(true);
 				switch (value) {
 				case "string":
-					comboValue.select(0);
-					break;
-				case "number":
 					comboValue.select(1);
 					break;
-				case "boolean":
+				case "number":
 					comboValue.select(2);
 					break;
-				case "bytes":
+				case "boolean":
 					comboValue.select(3);
 					break;
-				case "double":
+				case "bytes":
 					comboValue.select(4);
 					break;
-				case "enum":
+				case "double":
 					comboValue.select(5);
 					break;
-				case "fixed":
+				case "enum":
 					comboValue.select(6);
 					break;
-				case "float":
+				case "fixed":
 					comboValue.select(7);
 					break;
-				case "long":
+				case "float":
 					comboValue.select(8);
 					break;
-				case "map":
+				case "long":
 					comboValue.select(9);
 					break;
-				case "union":
+				case "map":
 					comboValue.select(10);
+					break;
+				case "union":
+					comboValue.select(11);
 					break;
 				default:
 					break;
@@ -646,13 +651,16 @@ public class AddNewObjectDialog extends Dialog {
 			checkBoxForIdentifiers.setSelection(true);
 			lblIdentifierType.setVisible(true);
 			lblIdentifierValue.setVisible(true);
+			lblIdentifierURL.setVisible(true);
 			textIdentifierType.setVisible(true);
 			textIdentifierURL.setVisible(true);
+			textIdentifierValue.setVisible(true);
 			textIdentifierType.setText(identifierType);
 			textIdentifierValue.setText(identifierValue);
 			textIdentifierURL.setText(identifierURL);
 			//TODO when editing the xsi:type display the added URL
 		}
+		
 	}
 
 	/**

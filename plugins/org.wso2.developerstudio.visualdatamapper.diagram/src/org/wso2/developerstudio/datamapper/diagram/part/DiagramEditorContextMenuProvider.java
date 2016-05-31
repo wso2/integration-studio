@@ -224,7 +224,6 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
 						public void run() {
 							ContributionItemService.getInstance()
 									.contributeToPopupMenu(DiagramEditorContextMenuProvider.this, part);
-							menu.remove(ActionIds.ACTION_DELETE_FROM_MODEL);
 
 							// Fixing TOOLS-2425
 							menu.remove(ActionIds.MENU_NAVIGATE);
@@ -237,7 +236,6 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
 							menu.remove(ActionIds.ACTION_ADD_NOTELINK);
 							menu.remove(ActionIds.ACTION_DELETE_FROM_DIAGRAM);
 							menu.remove(ActionIds.ACTION_SHOW_PROPERTIES_VIEW);
-
 							List<?> selectedEPs = getViewer().getSelectedEditParts();
 							if (selectedEPs.size() == 1) {
 								EditPart selectedEditorPart = (IGraphicalEditPart) selectedEPs.get(0);
@@ -350,7 +348,7 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
 								}
 
 							}
-							menu.prependToGroup(PROPERTIES_GROUP_ID, deleteAction);
+							menu.appendToGroup(EDIT_GROUP_ID, deleteAction);
 						}
 					});
 		} catch (Exception e) {

@@ -211,7 +211,7 @@ public class SchemaBuilder {
 								JsonObject proObj = createNewPropertiesObject();
 								// adss the properties object to the root
 								arrayObj.add(PROPERTIES, proObj);
-								// Adds it and type for the newly created object
+								// Adds id and type for the newly created object
 								Set<Entry<String, JsonElement>> idTypeSet = schema.getAsJsonObject().entrySet();
 								for (Entry<String, JsonElement> idType : idTypeSet) {
 									if (idType.getKey().equals(ID)) {

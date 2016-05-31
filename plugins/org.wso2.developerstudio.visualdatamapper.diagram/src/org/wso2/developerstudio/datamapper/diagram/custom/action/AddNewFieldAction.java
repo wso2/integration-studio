@@ -65,6 +65,8 @@ public class AddNewFieldAction extends AbstractActionHandler {
 	private static final String NAMESPACE_PREFIX = "prefix";
 	private static final String NAMESPACE_URL = "url";
 	private static final String JSON_SCHEMA_FIELD_NAMESPACES = "fieldNamespaces";
+	private static final String JSON_SCHEMA_ARRAY_ITEMS_ID = "items_id";
+	private static final String JSON_SCHEMA_ARRAY_ITEMS_TYPE = "items_type";
 	
 
 	public AddNewFieldAction(IWorkbenchPart workbenchPart) {
@@ -128,6 +130,10 @@ public class AddNewFieldAction extends AbstractActionHandler {
 					setPropertyKeyValuePairforTreeNodes(treeNodeNew, propertyValueList, JSON_SCHEMA_FIELD_NAMESPACES,
 							namespaces);
 				}
+				
+				//If the field adds as a child to an array( root is an array) then enable these properties
+				setPropertyKeyValuePairforTreeNodes(treeNodeNew, propertyValueList, JSON_SCHEMA_ARRAY_ITEMS_ID, objectDialog.getID()+"/"+ "0");
+				setPropertyKeyValuePairforTreeNodes(treeNodeNew, propertyValueList, JSON_SCHEMA_ARRAY_ITEMS_TYPE, objectDialog.getSchemaType());
 				
 				/*
 				 * AddCommand is used to avoid concurrent updating. index 0 to

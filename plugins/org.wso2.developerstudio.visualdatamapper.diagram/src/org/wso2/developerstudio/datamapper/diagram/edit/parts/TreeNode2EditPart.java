@@ -275,8 +275,6 @@ public class TreeNode2EditPart extends AbstractBorderedShapeEditPart {
 			if (temp instanceof InputEditPart) {
 				createEmptyInNode(childEditPart);
 			} else {
-				// If an element has children, then disable the innode connector
-				// arrow
 				if (((TreeNode) ((View) getModel()).getElement()).getNode().size() > 0) {
 					String value = getNodeValue(type);
 					// If an element has values then enable the connector arrow

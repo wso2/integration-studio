@@ -98,6 +98,44 @@ public class TreeNodeEditPart extends AbstractBorderedShapeEditPart {
 	 * @generated NOT
 	 */
 	boolean isActivated = false;
+	
+	/**
+	 * @generated NOT
+	 */
+	private boolean isInNodeEmpty;
+	
+	/**
+	 * @generated NOT
+	 */
+	private boolean isOutNodeEmpty;
+	
+	/**
+	 * @generated NOT
+	 */
+	public boolean isInNodeEmpty() {
+		return isInNodeEmpty;
+	}
+
+	/**
+	 * @generated NOT
+	 */
+	public void setInNodeEmpty(boolean isInNodeEmpty) {
+		this.isInNodeEmpty = isInNodeEmpty;
+	}
+
+	/**
+	 * @generated NOT
+	 */
+	public boolean isOutNodeEmpty() {
+		return isOutNodeEmpty;
+	}
+
+	/**
+	 * @generated NOT
+	 */
+	public void setOutNodeEmpty(boolean isOutNodeEmpty) {
+		this.isOutNodeEmpty = isOutNodeEmpty;
+	}
 
 	private static final String JSON_SCHEMA_ARRAY_ITEMS_VALUE_TYPE = "items_value_type";
 	private static final String JSON_SCHEMA_OBJECT_VALUE_TYPE = "object_value_type";
@@ -401,6 +439,7 @@ public class TreeNodeEditPart extends AbstractBorderedShapeEditPart {
 	}
 
 	private void createEmptyInNode(EditPart childEditPart) {
+		setInNodeEmpty(true);
 		NodeFigure figureInput = (NodeFigure) ((InNodeEditPart) childEditPart).getFigure();
 		figureInput.removeAll();
 		Figure emptyFigure = new Figure();
@@ -408,6 +447,7 @@ public class TreeNodeEditPart extends AbstractBorderedShapeEditPart {
 	}
 
 	private void createEmptyOutNode(EditPart childEditPart) {
+		setOutNodeEmpty(true);
 		NodeFigure figureInput = (NodeFigure) ((OutNodeEditPart) childEditPart).getFigure();
 		figureInput.removeAll();
 		Figure emptyFigure = new Figure();

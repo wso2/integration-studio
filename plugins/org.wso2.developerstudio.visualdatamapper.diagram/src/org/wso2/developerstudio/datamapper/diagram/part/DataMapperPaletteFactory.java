@@ -292,7 +292,7 @@ public class DataMapperPaletteFactory {
 					if (getTargetEditPart() instanceof TreeNodeEditPart) {
 						for (int i = 0; i < ((TreeNodeEditPart) getTargetEditPart()).getChildren().size(); ++i) {
 							TreeNodeEditPart treeNodeEditPart = (TreeNodeEditPart) getTargetEditPart();
-							if (getRoot(getTargetEditPart()) instanceof OutputEditPart) {
+							if (getRoot(getTargetEditPart()) instanceof OutputEditPart && !treeNodeEditPart.isInNodeEmpty()) {
 
 								if (treeNodeEditPart.getChildren().get(i) instanceof InNodeEditPart) {
 									return ((EditPart) treeNodeEditPart.getChildren().get(i))
@@ -303,7 +303,7 @@ public class DataMapperPaletteFactory {
 											.get(i)).getCommand(getTargetRequest());
 
 								}
-							} else if (getRoot(getTargetEditPart()) instanceof InputEditPart) {
+							} else if (getRoot(getTargetEditPart()) instanceof InputEditPart && !treeNodeEditPart.isInNodeEmpty()) {
 
 								if (treeNodeEditPart.getChildren().get(i) instanceof OutNodeEditPart) {
 									setTargetEditPart((OutNodeEditPart) treeNodeEditPart.getChildren().get(i));
@@ -323,7 +323,7 @@ public class DataMapperPaletteFactory {
 						String nodeType = treeNode2EditPart.getNodeType();
 						for (int i = 0; i < treeNode2EditPart.getChildren().size(); ++i) {
 							//TreeNode2EditPart treeNode2EditPart = (TreeNode2EditPart) getTargetEditPart();
-							if (getRoot(getTargetEditPart()) instanceof OutputEditPart) {
+							if (getRoot(getTargetEditPart()) instanceof OutputEditPart && !treeNode2EditPart.isInNodeEmpty()) {
 								if (treeNode2EditPart.getChildren().get(i) instanceof InNodeEditPart) {
 									return ((InNodeEditPart) treeNode2EditPart.getChildren()
 											.get(i)).getCommand(getTargetRequest());
@@ -336,7 +336,7 @@ public class DataMapperPaletteFactory {
 											.get(i)).getCommand(getTargetRequest());
 
 								}
-							} else if (getRoot(getTargetEditPart()) instanceof InputEditPart) {
+							} else if (getRoot(getTargetEditPart()) instanceof InputEditPart && !treeNode2EditPart.isOutNodeEmpty()) {
 								if (treeNode2EditPart.getChildren().get(i) instanceof OutNodeEditPart) {
 										setTargetEditPart((OutNodeEditPart) treeNode2EditPart.getChildren().get(i));
 										return super.getCommand();
@@ -361,7 +361,7 @@ public class DataMapperPaletteFactory {
 					} else if (getTargetEditPart() instanceof TreeNode3EditPart) {
 						for (int i = 0; i < ((TreeNode3EditPart) getTargetEditPart()).getChildren().size(); ++i) {
 							TreeNode3EditPart treeNode3EditPart = (TreeNode3EditPart) getTargetEditPart();
-							if (getRoot(getTargetEditPart()) instanceof OutputEditPart) {
+							if (getRoot(getTargetEditPart()) instanceof OutputEditPart && !treeNode3EditPart.isInNodeEmpty()) {
 
 								if (treeNode3EditPart.getChildren().get(i) instanceof InNodeEditPart) {
 									return ((EditPart) treeNode3EditPart.getChildren().get(i))
@@ -372,7 +372,7 @@ public class DataMapperPaletteFactory {
 											.get(i)).getCommand(getTargetRequest());
 
 								}
-							} else if (getRoot(getTargetEditPart()) instanceof InputEditPart) {
+							} else if (getRoot(getTargetEditPart()) instanceof InputEditPart && !treeNode3EditPart.isOutNodeEmpty()) {
 								if (treeNode3EditPart.getChildren().get(i) instanceof OutNodeEditPart) {
 									setTargetEditPart((OutNodeEditPart) treeNode3EditPart.getChildren().get(i));
 									return super.getCommand();

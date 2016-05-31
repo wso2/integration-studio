@@ -102,7 +102,44 @@ public class TreeNode2EditPart extends AbstractBorderedShapeEditPart {
 	protected void addChild(EditPart child, int index) {
 		super.addChild(child, index);
 	}
+	
+	/**
+	 * @generated NOT
+	 */
+	private boolean isInNodeEmpty;
+	
+	/**
+	 * @generated NOT
+	 */
+	private boolean isOutNodeEmpty;
+	
+	/**
+	 * @generated NOT
+	 */
+	public boolean isInNodeEmpty() {
+		return isInNodeEmpty;
+	}
 
+	/**
+	 * @generated NOT
+	 */
+	public void setInNodeEmpty(boolean isInNodeEmpty) {
+		this.isInNodeEmpty = isInNodeEmpty;
+	}
+
+	/**
+	 * @generated NOT
+	 */
+	public boolean isOutNodeEmpty() {
+		return isOutNodeEmpty;
+	}
+
+	/**
+	 * @generated NOT
+	 */
+	public void setOutNodeEmpty(boolean isOutNodeEmpty) {
+		this.isOutNodeEmpty = isOutNodeEmpty;
+	}
 
 	/**
 	 * @generated NOT
@@ -396,6 +433,7 @@ public class TreeNode2EditPart extends AbstractBorderedShapeEditPart {
 	}
 
 	private void createEmptyOutNode(EditPart childEditPart) {
+		setOutNodeEmpty(true);
 		NodeFigure figureInput = (NodeFigure) ((OutNodeEditPart) childEditPart).getFigure();
 		figureInput.removeAll();
 		Figure emptyFigure = new Figure();
@@ -411,6 +449,7 @@ public class TreeNode2EditPart extends AbstractBorderedShapeEditPart {
 	}
 
 	private void createEmptyInNode(EditPart childEditPart) {
+		setInNodeEmpty(true);
 		NodeFigure figureInput = (NodeFigure) ((InNodeEditPart) childEditPart).getFigure();
 		figureInput.removeAll();
 		Figure emptyFigure = new Figure();

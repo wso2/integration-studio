@@ -948,6 +948,21 @@
          </enablement>
       </actionProvider>
    </extension>
+      <!-- Fixing TOOLS-1872 -->
+   <extension point="org.eclipse.gmf.runtime.diagram.ui.paletteProviders"> 
+  	   <paletteProvider class="org.eclipse.gmf.runtime.diagram.ui.providers.DefaultPaletteProvider">
+    	<Priority name="Medium"/>
+    	<editor
+            class="org.wso2.developerstudio.datamapper.diagram.part.DataMapperDiagramEditor">
+      </editor>
+      	<contribution>
+     		<predefinedEntry id="zoomTool" remove="true"/>
+     		<predefinedEntry id="standardGroup/noteStack/noteTool" remove="true"/> 
+			<predefinedEntry id="standardGroup/noteStack/textTool" remove="true"/> 
+			<predefinedEntry id="standardGroup/noteStack/noteattachmentTool" remove="true"/>
+      	</contribution>
+  	  </paletteProvider>
+	</extension>
 <extension point="org.eclipse.gmf.runtime.common.ui.services.parserProviders" id="parser-provider">
       <?gmfgen generated="true"?>
       <ParserProvider class="org.wso2.developerstudio.datamapper.diagram.providers.DataMapperParserProvider">

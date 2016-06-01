@@ -118,6 +118,7 @@ public class SchemaTransformer implements ISchemaTransformer {
 	/**
 	 * Generates the tree
 	 */
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
 	public TreeNode generateTree(String content, TreeNode inputRootTreeNode)
 			throws NullPointerException, IllegalArgumentException, IOException {
@@ -143,11 +144,14 @@ public class SchemaTransformer implements ISchemaTransformer {
 		setAttributesForElements(jsonSchema, count, namespaceMap, inputRootTreeNode);
 		isAttribute = false;
 		
-		if(getSchemaType(jsonSchema).equals(JSON_SCHEMA_ARRAY)){
-			jsonSchema = getSchemaItems(jsonSchema);
-			// Creates the tree by adding tree node and elements when the root is an array
-			if(jsonSchema.containsKey(JSON_SCHEMA_PROPERTIES)){
-			inputRootTreeNode = setProperties(jsonSchema, inputRootTreeNode, count, namespaceMap);
+		if(getSchemaType(jsonSchema).equals(JSON_SCHEMA_ARRAY)){			
+			ArrayList<Object> items = getSchemaItemsMap(jsonSchema);
+			for(Object item: items){
+				jsonSchema = (Map)item;
+				if(jsonSchema.containsKey(JSON_SCHEMA_PROPERTIES)){
+					// Creates the tree by adding tree node and elements when the root is an array
+					inputRootTreeNode = setProperties(jsonSchema, inputRootTreeNode, count, namespaceMap);
+					}
 			}
 		}else{
 			// Creates the tree by adding tree node and elements
@@ -473,6 +477,35 @@ public class SchemaTransformer implements ISchemaTransformer {
 				itemsSchema = (Map<String, Object>) jsonSchemaMap.get(JSON_SCHEMA_ITEMS);
 			}
 			return itemsSchema;
+		} else {
+			log.error("Invalid input schema, items value not found");
+			displayUserError("WARNING",
+					" Invalid schema,Given schema does not contain value under key : " + JSON_SCHEMA_ITEMS);
+			throw new IllegalArgumentException("Given schema does not contain value under key : " + JSON_SCHEMA_ITEMS);
+		}
+	}
+	
+	/**
+	 * Gets schema items map
+	 * 
+	 * @param schema
+	 *            schema
+	 * @return item map
+	 */
+	@SuppressWarnings("unchecked")
+	private ArrayList<Object> getSchemaItemsMap(Map<String, Object> jsonSchemaMap) {
+		if (jsonSchemaMap.containsKey(JSON_SCHEMA_ITEMS)) {
+			ArrayList<Object> items = null;
+			// If items block starts with [{ and ends with }] then convert the
+			// arraylist into a Map and then use
+			if (jsonSchemaMap.get(JSON_SCHEMA_ITEMS) instanceof ArrayList) {
+			     items = (ArrayList<Object>) jsonSchemaMap.get(JSON_SCHEMA_ITEMS);
+			} else {
+				// If items block doesn't starts with [ and ends with ] then get
+				// the Map directly
+				items = (ArrayList<Object>)jsonSchemaMap.get(JSON_SCHEMA_ITEMS);
+			}
+			return items;
 		} else {
 			log.error("Invalid input schema, items value not found");
 			displayUserError("WARNING",

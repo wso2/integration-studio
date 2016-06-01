@@ -14,7 +14,6 @@
          class="org.eclipse.gmf.runtime.emf.core.resources.GMFResourceFactory">
       </parser>
    </extension>
-
    <extension point="org.eclipse.ui.editors" id="gmf-editor">
       <?gmfgen generated="false"?>
       <editor
@@ -159,7 +158,7 @@
       </page>
    </extension>
 
-   <extension point="org.eclipse.ui.views.properties.tabbed.propertyContributor" id="prop-contrib">
+   <!--extension point="org.eclipse.ui.views.properties.tabbed.propertyContributor" id="prop-contrib">
       <?gmfgen generated="true"?>
       <propertyContributor
             contributorId="org.wso2.developerstudio.visualdatamapper.diagram"
@@ -220,7 +219,7 @@
             <input type="org.wso2.developerstudio.datamapper.diagram.navigator.DataMapperAbstractNavigatorItem"/>
          </propertySection>
       </propertySections>
-   </extension>
+   </extension-->
 
    <extension point="org.eclipse.gmf.runtime.diagram.core.viewProviders" id="view-provider">
       <?gmfgen generated="true"?>
@@ -949,14 +948,26 @@
          </enablement>
       </actionProvider>
    </extension>
+      <!-- Fixing TOOLS-1872 -->
+   <extension point="org.eclipse.gmf.runtime.diagram.ui.paletteProviders"> 
+  	   <paletteProvider class="org.eclipse.gmf.runtime.diagram.ui.providers.DefaultPaletteProvider">
+    	<Priority name="Medium"/>
+    	<editor
+            class="org.wso2.developerstudio.datamapper.diagram.part.DataMapperDiagramEditor">
+      </editor>
+      	<contribution>
+     		<predefinedEntry id="zoomTool" remove="true"/>
+     		<predefinedEntry id="standardGroup/noteStack/noteTool" remove="true"/> 
+			<predefinedEntry id="standardGroup/noteStack/textTool" remove="true"/> 
+			<predefinedEntry id="standardGroup/noteStack/noteattachmentTool" remove="true"/>
+      	</contribution>
+  	  </paletteProvider>
+	</extension>
 <extension point="org.eclipse.gmf.runtime.common.ui.services.parserProviders" id="parser-provider">
       <?gmfgen generated="true"?>
       <ParserProvider class="org.wso2.developerstudio.datamapper.diagram.providers.DataMapperParserProvider">
          <Priority name="Lowest"/>
       </ParserProvider>
    </extension>
-
-
-
    <!-- optionally, specify keybindings -->
 </plugin>

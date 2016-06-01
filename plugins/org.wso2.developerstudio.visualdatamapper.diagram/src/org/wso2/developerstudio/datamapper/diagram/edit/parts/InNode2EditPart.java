@@ -355,7 +355,7 @@ public class InNode2EditPart extends AbstractInNodeEditPart {
 		}
 	}
 	
-	public void highlightElementItem() {
+	public void highlightElementItem() {//debug and check how we can access the parent element
 		((InNode2Figure) getPrimaryShape()).highlightElementOnSelection();
 	}
 

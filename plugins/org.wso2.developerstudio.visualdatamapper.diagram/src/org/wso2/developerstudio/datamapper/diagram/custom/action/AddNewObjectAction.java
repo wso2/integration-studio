@@ -72,10 +72,13 @@ public class AddNewObjectAction extends AbstractActionHandler {
 	private static final String ELEMENT_IDENTIFIER = "type";
 	private static final String JSON_SCHEMA_OBJECT_ELEMENT_IDENTIFIERS = "objectElementIdentifiers";
 	private static final String JSON_SCHEMA_OBJECT_ELEMENT_IDENTIFIERS_URL = "objectElementIdentifiersURL";
+	private static final String JSON_SCHEMA_OBJECT_ELEMENT_IDENTIFIERS_URL_VALUE = "objectElementIdentifiersURLValue";
 	private static final String PREFIX = "@";
 	private static final String JSON_SCHEMA_ADDED_ATTRIBUTE_ID = "added_attribute_id";
 	private static final String JSON_SCHEMA_ADDED_ATTRIBUTE_TYPE = "added_attribute_type";
 	private static final String STRING = "string";
+	private static final String JSON_SCHEMA_ARRAY_ITEMS_ID = "items_id";
+	private static final String JSON_SCHEMA_ARRAY_ITEMS_TYPE = "items_type";
 
 	public AddNewObjectAction(IWorkbenchPart workbenchPart) {
 		super(workbenchPart);
@@ -156,6 +159,16 @@ public class AddNewObjectAction extends AbstractActionHandler {
 					setPropertyKeyValuePairforTreeNodes(treeNodeNew, propertyValueList, JSON_SCHEMA_OBJECT_ELEMENT_IDENTIFIERS_URL,
 							identifierNamespace);
 				}
+				
+				if(StringUtils.isNotEmpty(objectDialog.getIdentifierURL())){
+					setPropertyKeyValuePairforTreeNodes(treeNodeNew, propertyValueList, JSON_SCHEMA_OBJECT_ELEMENT_IDENTIFIERS_URL_VALUE,
+							objectDialog.getIdentifierURL());
+				}
+				
+				//If the object adds as a child to an array( root is an array) then enable these properties
+				setPropertyKeyValuePairforTreeNodes(treeNodeNew, propertyValueList, JSON_SCHEMA_ARRAY_ITEMS_ID, objectDialog.getID()+"/"+ "0");
+				setPropertyKeyValuePairforTreeNodes(treeNodeNew, propertyValueList, JSON_SCHEMA_ARRAY_ITEMS_TYPE, objectDialog.getSchemaType());
+				
 				//sets the properties ID to be used in the serialization of the object
 				setPropertyKeyValuePairforTreeNodes(treeNodeNew, propertyValueList, JSON_SCHEMA_ADDED_PROPERTIES_ID, HAS_PROPERTIES);
 				//sets the object's type if object hold a value
@@ -178,6 +191,7 @@ public class AddNewObjectAction extends AbstractActionHandler {
 					}else{
 						identifierPrefix = objectDialog.getIdentifierType();
 					}
+					setPropertyKeyValuePairforTreeNodes(treeNodeChild, propertyValueListChild, JSON_SCHEMA_ID, objectDialog.getID()+"/"+identifierPrefix);
 					setPropertyKeyValuePairforTreeNodes(treeNodeChild, propertyValueListChild, JSON_SCHEMA_TYPE, STRING);
 					setPropertyKeyValuePairforTreeNodes(treeNodeChild, propertyValueListChild, JSON_SCHEMA_ADDED_ATTRIBUTE_ID, objectDialog.getID()+"/"+identifierPrefix);
 					setPropertyKeyValuePairforTreeNodes(treeNodeChild, propertyValueListChild, JSON_SCHEMA_ADDED_ATTRIBUTE_TYPE,STRING);

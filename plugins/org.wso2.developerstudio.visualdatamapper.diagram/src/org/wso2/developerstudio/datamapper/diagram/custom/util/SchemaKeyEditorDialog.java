@@ -128,7 +128,6 @@ public class SchemaKeyEditorDialog extends Dialog {
 	private static final String FILE_SYSTEM = "file system"; //$NON-NLS-1$
 
 	private static final String ERROR_MSG_HEADER = Messages.SchemaKeyEditorDialog_ErrorMsgHeader;
-	private static final String RESOURCE_KEY = Messages.SchemaKeyEditorDialog_ResourceKey;
 	private static final String SCHEMA_KEY_EDITOR_DIALOG_TEXT =
 	                                                          Messages.SchemaKeyEditorDialog_SchemaKeyEditorDialogMessage +
 	                                                            FILE_SYSTEM + "</a> or <a>" + //$NON-NLS-1$
@@ -198,7 +197,6 @@ public class SchemaKeyEditorDialog extends Dialog {
 		container.setLayout(fl_container);
 
 		grpPropertyKey = new Group(container, SWT.None);
-		grpPropertyKey.setText(RESOURCE_KEY);
 
 		FormLayout fl_grpPropertyKey = new FormLayout();
 		fl_grpPropertyKey.marginHeight = 10;

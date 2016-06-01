@@ -1,6 +1,7 @@
 package org.wso2.developerstudio.datamapper.diagram.edit.parts;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.apache.commons.lang.StringUtils;
@@ -32,6 +33,7 @@ import org.eclipse.gef.palette.PaletteContainer;
 import org.eclipse.gef.palette.ToolEntry;
 import org.eclipse.gef.requests.CreateRequest;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.AbstractBorderedShapeEditPart;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IBorderItemEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeNodeEditPart;
@@ -96,6 +98,44 @@ public class TreeNodeEditPart extends AbstractBorderedShapeEditPart {
 	 * @generated NOT
 	 */
 	boolean isActivated = false;
+	
+	/**
+	 * @generated NOT
+	 */
+	private boolean isInNodeEmpty;
+	
+	/**
+	 * @generated NOT
+	 */
+	private boolean isOutNodeEmpty;
+	
+	/**
+	 * @generated NOT
+	 */
+	public boolean isInNodeEmpty() {
+		return isInNodeEmpty;
+	}
+
+	/**
+	 * @generated NOT
+	 */
+	public void setInNodeEmpty(boolean isInNodeEmpty) {
+		this.isInNodeEmpty = isInNodeEmpty;
+	}
+
+	/**
+	 * @generated NOT
+	 */
+	public boolean isOutNodeEmpty() {
+		return isOutNodeEmpty;
+	}
+
+	/**
+	 * @generated NOT
+	 */
+	public void setOutNodeEmpty(boolean isOutNodeEmpty) {
+		this.isOutNodeEmpty = isOutNodeEmpty;
+	}
 
 	private static final String JSON_SCHEMA_ARRAY_ITEMS_VALUE_TYPE = "items_value_type";
 	private static final String JSON_SCHEMA_OBJECT_VALUE_TYPE = "object_value_type";
@@ -243,8 +283,6 @@ public class TreeNodeEditPart extends AbstractBorderedShapeEditPart {
 			if (temp instanceof InputEditPart) {
 				createEmptyInNode(childEditPart);
 			} else {
-				// If an element has children, then disable the innode connector
-				// arrow
 				if (((TreeNode) ((View) getModel()).getElement()).getNode().size() > 0) {
 					String value = getNodeValue(type);
 					// If an element has values then enable the connector arrow
@@ -254,7 +292,7 @@ public class TreeNodeEditPart extends AbstractBorderedShapeEditPart {
 						createEmptyInNode(childEditPart);
 					}
 				} else {
-					if (type.equals(JSON_SCHEMA_OBJECT) || type.equals(JSON_SCHEMA_ARRAY)) {
+					if (type.equals(JSON_SCHEMA_ARRAY)) {
 						String itemsType = getItemsType();
 						// If an element has values then enable the connector
 						// arrow
@@ -264,6 +302,14 @@ public class TreeNodeEditPart extends AbstractBorderedShapeEditPart {
 							createEmptyInNode(childEditPart);
 						} else {
 							return createInNode(childEditPart);
+						}
+					} else if(type.equals(JSON_SCHEMA_OBJECT)){
+						String value = getNodeValue(type);
+						// If an element has values then enable the connector arrow
+						if (StringUtils.isNotEmpty(value)) {
+							return createInNode(childEditPart);
+						} else {
+							createEmptyInNode(childEditPart);
 						}
 					} else {
 						if (type.equals(NULL_VALUE)) {
@@ -295,7 +341,7 @@ public class TreeNodeEditPart extends AbstractBorderedShapeEditPart {
 						createEmptyOutNode(childEditPart);
 					}
 				} else {
-					if (type.equals(JSON_SCHEMA_OBJECT) || type.equals(JSON_SCHEMA_ARRAY)) {
+					if (type.equals(JSON_SCHEMA_ARRAY)) {
 						String itemsType = getItemsType();
 						// If an element has values then enable the connector
 						// arrow
@@ -305,6 +351,14 @@ public class TreeNodeEditPart extends AbstractBorderedShapeEditPart {
 							createEmptyOutNode(childEditPart);
 						} else {
 							return createOutNode(childEditPart);
+						}
+					} else if(type.equals(JSON_SCHEMA_OBJECT)){
+						String value = getNodeValue(type);
+						// If an element has values then enable the connector arrow
+						if (StringUtils.isNotEmpty(value)) {
+							return createOutNode(childEditPart);
+						} else {
+							createEmptyOutNode(childEditPart);
 						}
 					} else {
 						if (type.equals(NULL_VALUE)) {
@@ -383,6 +437,7 @@ public class TreeNodeEditPart extends AbstractBorderedShapeEditPart {
 	}
 
 	private void createEmptyInNode(EditPart childEditPart) {
+		setInNodeEmpty(true);
 		NodeFigure figureInput = (NodeFigure) ((InNodeEditPart) childEditPart).getFigure();
 		figureInput.removeAll();
 		Figure emptyFigure = new Figure();
@@ -390,6 +445,7 @@ public class TreeNodeEditPart extends AbstractBorderedShapeEditPart {
 	}
 
 	private void createEmptyOutNode(EditPart childEditPart) {
+		setOutNodeEmpty(true);
 		NodeFigure figureInput = (NodeFigure) ((OutNodeEditPart) childEditPart).getFigure();
 		figureInput.removeAll();
 		Figure emptyFigure = new Figure();
@@ -412,6 +468,34 @@ public class TreeNodeEditPart extends AbstractBorderedShapeEditPart {
 			return true;
 		}
 		return false;
+	}
+
+	/**
+	 * Adds the child nodes
+	 * @param editPart
+	 */
+	@SuppressWarnings("rawtypes")
+	public void addFixedChildToNodes(EditPart editPart){
+		EditPart parent = editPart.getParent();
+		List children = parent.getChildren();
+		Iterator iterator = children.iterator();
+		updatConnectors(iterator);
+		super.refreshChild((GraphicalEditPart) editPart);
+	}
+	
+
+	/**
+	 * Updats the connectors
+	 * @param iterator
+	 */
+	@SuppressWarnings("rawtypes")
+	private void updatConnectors(Iterator iterator) {
+		while (iterator.hasNext()) {
+			EditPart child = (EditPart) iterator.next();
+			if (addFixedChild(child)) {
+				return;
+			}
+		}
 	}
 
 	/**

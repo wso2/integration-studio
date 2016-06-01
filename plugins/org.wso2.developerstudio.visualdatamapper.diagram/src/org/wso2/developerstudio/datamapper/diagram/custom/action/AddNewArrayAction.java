@@ -65,10 +65,12 @@ public class AddNewArrayAction extends AbstractActionHandler {
 	private static final String NAMESPACE_URL = "url";
 	private static final String JSON_SCHEMA_ARRAY_NAMESPACES = "arrayNamespaces";
 	private static final String JSON_SCHEMA_ARRAY_ITEMS_ID = "items_id";
+	private static final String JSON_SCHEMA_ARRAY_ITEMS_TYPE = "items_type";
 	private static final String JSON_SCHEMA_ARRAY_ITEMS_VALUE_TYPE = "items_value_type";
 	private static final String ELEMENT_IDENTIFIER = "type";
 	private static final String JSON_SCHEMA_ARRAY_ELEMENT_IDENTIFIERS = "arrayElementIdentifiers";
 	private static final String JSON_SCHEMA_ARRAY_ELEMENT_IDENTIFIERS_URL = "arrayElementIdentifiersURL";
+	private static final String JSON_SCHEMA_ARRAY_ELEMENT_IDENTIFIERS_URL_VALUE = "arrayElementIdentifiersURLValue";
 	private static final String JSON_SCHEMA_ADDED_PROPERTIES_ID = "added_properties_id";
 	private static final String HAS_PROPERTIES = "hasProperties";
 	private static final String PREFIX = "@";
@@ -150,6 +152,10 @@ public class AddNewArrayAction extends AbstractActionHandler {
 					setPropertyKeyValuePairforTreeNodes(treeNodeNew, propertyValueList, JSON_SCHEMA_ARRAY_ELEMENT_IDENTIFIERS_URL,
 							identifierNamespace);
 				}
+				if(StringUtils.isNotEmpty(objectDialog.getIdentifierURL())){
+					setPropertyKeyValuePairforTreeNodes(treeNodeNew, propertyValueList, JSON_SCHEMA_ARRAY_ELEMENT_IDENTIFIERS_URL_VALUE,
+							objectDialog.getIdentifierURL());
+				}
 				if(StringUtils.isNotEmpty(objectDialog.getIdentifierType()) && StringUtils.isNotEmpty(objectDialog.getIdentifierValue())){
 					String fullName = objectDialog.getIdentifierType() + "=" + objectDialog.getIdentifierValue();
 					treeNodeNew.setName(objectDialog.getTitle()+","+fullName);
@@ -157,6 +163,7 @@ public class AddNewArrayAction extends AbstractActionHandler {
 			
 				//Sets the values for items field which is used for serializing the array
 				setPropertyKeyValuePairforTreeNodes(treeNodeNew, propertyValueList, JSON_SCHEMA_ARRAY_ITEMS_ID, objectDialog.getID()+"/0");
+				setPropertyKeyValuePairforTreeNodes(treeNodeNew, propertyValueList, JSON_SCHEMA_ARRAY_ITEMS_TYPE, objectDialog.getValue());
 				//sets the value type if item holds a value
 				if(StringUtils.isNotEmpty(objectDialog.getValue())){
 				setPropertyKeyValuePairforTreeNodes(treeNodeNew, propertyValueList, JSON_SCHEMA_ARRAY_ITEMS_VALUE_TYPE,objectDialog.getValue());
@@ -179,6 +186,7 @@ public class AddNewArrayAction extends AbstractActionHandler {
 					}else{
 						identifierPrefix = objectDialog.getIdentifierType();
 					}
+					setPropertyKeyValuePairforTreeNodes(treeNodeChild, propertyValueListChild, JSON_SCHEMA_ID, objectDialog.getID()+"/"+identifierPrefix);
 					setPropertyKeyValuePairforTreeNodes(treeNodeChild, propertyValueListChild, JSON_SCHEMA_TYPE, STRING);
 					setPropertyKeyValuePairforTreeNodes(treeNodeChild, propertyValueListChild, JSON_SCHEMA_ADDED_ATTRIBUTE_ID, objectDialog.getID()+"/"+identifierPrefix);
 					setPropertyKeyValuePairforTreeNodes(treeNodeChild, propertyValueListChild, JSON_SCHEMA_ADDED_ATTRIBUTE_TYPE,STRING);

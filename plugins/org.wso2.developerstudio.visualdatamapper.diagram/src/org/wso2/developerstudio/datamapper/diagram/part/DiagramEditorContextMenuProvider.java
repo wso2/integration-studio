@@ -112,8 +112,10 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
 	public DiagramEditorContextMenuProvider(IWorkbenchPart part, EditPartViewer viewer) {
 		super(part, viewer);
 		this.part = part;
-		deleteAction = new org.wso2.developerstudio.datamapper.diagram.part.DeleteElementAction(part);
-		deleteAction.init();
+		/*deleteAction = new org.wso2.developerstudio.datamapper.diagram.part.DeleteElementAction(part);
+		deleteAction.init();*/
+		
+//		deleteAction = new org.wso2.developerstudio.datamapper.diagram.part.DeleteElementAction(part);
 
 		contextActions = new HashMap<Class<? extends ShapeNodeEditPart>, AbstractActionHandler>();
 		contextActions.put(InputEditPart.class, new LoadInputSchemaAction(part));
@@ -202,15 +204,15 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
 	}
 
 	/**
-	 * @generated
+	 * @generated NOT
 	 */
-	public void dispose() {
+	/*public void dispose() {
 		if (deleteAction != null) {
 			deleteAction.dispose();
 			deleteAction = null;
 		}
 		super.dispose();
-	}
+	}*/
 
 	/**
 	 * @generated NOT
@@ -224,7 +226,6 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
 						public void run() {
 							ContributionItemService.getInstance()
 									.contributeToPopupMenu(DiagramEditorContextMenuProvider.this, part);
-							menu.remove(ActionIds.ACTION_DELETE_FROM_MODEL);
 
 							// Fixing TOOLS-2425
 							menu.remove(ActionIds.MENU_NAVIGATE);
@@ -236,7 +237,8 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
 							menu.remove(MENU_ADDITIONS);
 							menu.remove(ActionIds.ACTION_ADD_NOTELINK);
 							menu.remove(ActionIds.ACTION_DELETE_FROM_DIAGRAM);
-
+//							menu.remove(ActionIds.ACTION_DELETE_FROM_MODEL);
+							menu.remove(ActionIds.ACTION_SHOW_PROPERTIES_VIEW);
 							List<?> selectedEPs = getViewer().getSelectedEditParts();
 							if (selectedEPs.size() == 1) {
 								EditPart selectedEditorPart = (IGraphicalEditPart) selectedEPs.get(0);
@@ -349,7 +351,7 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
 								}
 
 							}
-							menu.prependToGroup(PROPERTIES_GROUP_ID, deleteAction);
+//							menu.appendToGroup(EDIT_GROUP_ID, deleteAction);
 						}
 					});
 		} catch (Exception e) {

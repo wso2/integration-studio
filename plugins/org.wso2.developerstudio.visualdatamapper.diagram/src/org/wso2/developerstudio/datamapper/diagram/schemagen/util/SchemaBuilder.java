@@ -53,6 +53,7 @@ public class SchemaBuilder {
 	protected static final String XSI_TYPE_OLD = "_$@xsi:type_";
 	protected static final String XSI_TYPE_READABLE = ",xsi:type=";
 	private static final String NAMESPACES = "namespaces";
+	private static final String STRING = "string";
 	private static final String XSI_NAMESPACE_URI = "http://www.w3.org/2001/XMLSchema-instance";
 
 	protected JsonSchema root;
@@ -211,7 +212,7 @@ public class SchemaBuilder {
 								JsonObject proObj = createNewPropertiesObject();
 								// adss the properties object to the root
 								arrayObj.add(PROPERTIES, proObj);
-								// Adds it and type for the newly created object
+								// Adds id and type for the newly created object
 								Set<Entry<String, JsonElement>> idTypeSet = schema.getAsJsonObject().entrySet();
 								for (Entry<String, JsonElement> idType : idTypeSet) {
 									if (idType.getKey().equals(ID)) {
@@ -461,7 +462,7 @@ public class SchemaBuilder {
 				JsonSchema leaf = new JsonSchema();
 				String idwithoutAtSign = attributeId.substring(1);
 				leaf.setId(parent.getId() + "/" + idwithoutAtSign);
-				leaf.setType(attributeValueType.toString().toLowerCase());
+				leaf.setType(STRING);
 				primitive.setType(TypeEnum.OBJECT.toString().toLowerCase());
 				primitive.addAttribute(idwithoutAtSign, leaf);
 			}else if (attributeId.startsWith(HASHCONTENT)) {
@@ -491,7 +492,7 @@ public class SchemaBuilder {
 				JsonSchema leaf = new JsonSchema();
 				String idwithoutAtSign = attributeId.substring(1);
 				leaf.setId(parent.getId() + "/" + idwithoutAtSign);
-				leaf.setType(attributeValueType.toString().toLowerCase());
+				leaf.setType(STRING);
 				primitive.addAttribute(idwithoutAtSign, leaf);
 				primitive.setType(TypeEnum.OBJECT.toString().toLowerCase());
 			} else if (attributeId.equals(HASHCONTENT)) {

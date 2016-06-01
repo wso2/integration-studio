@@ -929,6 +929,7 @@ public class SchemaTransformer implements ISchemaTransformer {
 
 		JSONObject root = new JSONObject();
 		JSONObject propertiesObject = new JSONObject();
+		JSONArray arrayItems = new JSONArray();
 		JSONObject itemsObject = new JSONObject();
 		JSONObject attributesObject = new JSONObject();
 		JSONArray namespaceArray = new JSONArray();
@@ -954,7 +955,7 @@ public class SchemaTransformer implements ISchemaTransformer {
 			if(schemaType.equals(JSON_SCHEMA_OBJECT)){
 				root.put(JSON_SCHEMA_PROPERTIES, propertiesObject);
 			}else if(schemaType.equals(JSON_SCHEMA_ARRAY)){
-				root.put(JSON_SCHEMA_ITEMS, itemsObject);
+				root.put(JSON_SCHEMA_ITEMS, arrayItems);
 			}			
 			// sets the attribute values
 			if (hasAttributes) {
@@ -978,11 +979,13 @@ public class SchemaTransformer implements ISchemaTransformer {
 							itemsObject.put(JSON_SCHEMA_PROPERTIES, propertiesObject);
 							insertIDandTypeforItemsBlock(itemsObject, schemaArrayItemsID, schemaArrayItemsType);
 							insertRequiredArray(itemsObject, treeNodeModel, false);
+							arrayItems.add(itemsObject);
 							recursiveSchemaGenerator(treeNodeModel, propertiesObject, root);
 					}
 						
 				}else{
 					insertIDandTypeforItemsBlock(itemsObject, schemaArrayItemsID, schemaArrayItemsType);
+					arrayItems.add(itemsObject);
 					String arrayElementIdentifier = getPropertyKeyValuePairforTreeNode(treeNodeModel, JSON_SCHEMA_ARRAY_ELEMENT_IDENTIFIERS_URL);
 					if (StringUtils.isNotEmpty(addedObjectNamespaces)) {
 						// If namespaces are available when creating the

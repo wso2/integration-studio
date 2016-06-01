@@ -18,44 +18,50 @@ package org.wso2.developerstudio.datamapper.diagram.custom.util;
 import org.apache.commons.lang.StringUtils;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gef.EditPart;
-import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.dialogs.IDialogConstants;
+import org.eclipse.jface.dialogs.IMessageProvider;
+import org.eclipse.jface.dialogs.TitleAreaDialog;
 import org.eclipse.papyrus.infra.gmfdiag.css.CSSShapeImpl;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.events.ModifyEvent;
-import org.eclipse.swt.events.ModifyListener;
-import org.eclipse.swt.layout.FormAttachment;
-import org.eclipse.swt.layout.FormData;
-import org.eclipse.swt.layout.FormLayout;
+import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.wso2.developerstudio.datamapper.Constant;
 import org.wso2.developerstudio.datamapper.impl.ConstantImpl;
 
-public class ConfigureConstantOperatorDialog extends Dialog {
+public class ConfigureConstantOperatorDialog extends TitleAreaDialog {
 
     private Constant constantOperator;
-    private Label caseType;
-    private Label caseValue;
-    private Text type;
-    private Text value;
+    private String type;
+    private String value;
     private EditPart editpart;
     private TransactionalEditingDomain editingDomain;
     ConstantImpl constant = null;
+    private String propertyContext;
 
     public ConfigureConstantOperatorDialog(Shell parentShell, Constant constantOperator,
             TransactionalEditingDomain editingDomain, EditPart editpart) {
-
         super(parentShell);
         this.constantOperator = constantOperator;
         this.editpart = editpart;
         this.editingDomain = editingDomain;
         CSSShapeImpl constantdd = (CSSShapeImpl) this.editpart.getModel();
         constant = (ConstantImpl) constantdd.getElement();
+    }
+
+    @Override
+    public void create() {
+        super.create();
+        setTitle("Configure Constant Operator");
+        setMessage("Set constant operator properties", IMessageProvider.INFORMATION);
     }
 
     protected void configureShell(Shell newShell) {
@@ -65,58 +71,64 @@ public class ConfigureConstantOperatorDialog extends Dialog {
     }
 
     protected Control createDialogArea(Composite parent) {
-        Composite container = (Composite) super.createDialogArea(parent);
-        FormLayout mainLayout = new FormLayout();
-        mainLayout.marginHeight = 5;
-        mainLayout.marginWidth = 5;
-        container.setLayout(mainLayout);
 
-        caseType = new Label(container, SWT.NONE);
-        caseType.setText("Constant Operator Type : ");
-        FormData caseTypeLabelLayoutData = new FormData();
-        caseTypeLabelLayoutData.top = new FormAttachment(0, 5);
-        caseTypeLabelLayoutData.left = new FormAttachment(0);
-        caseType.setLayoutData(caseTypeLabelLayoutData);
+        Composite area = (Composite) super.createDialogArea(parent);
+        Composite container = new Composite(area, SWT.NONE);
+        container.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
+        GridLayout layout = new GridLayout(2, false);
+        container.setLayout(layout);
 
-        type = new Text(container, SWT.NONE);
-        type.addModifyListener(new ModifyListener() {
-            public void modifyText(ModifyEvent arg0) {
-                validate();
+        GridData dataPropertyConfigText = new GridData();
+        dataPropertyConfigText.grabExcessHorizontalSpace = true;
+        dataPropertyConfigText.horizontalAlignment = GridData.FILL;
+
+        Label constantTypeLabel = new Label(container, SWT.NULL);
+        constantTypeLabel.setText("Constant Type : ");
+        final Combo constantTypeDropDown = new Combo(container, SWT.DROP_DOWN | SWT.BORDER | SWT.READ_ONLY);
+        constantTypeDropDown.setLayoutData(dataPropertyConfigText);
+        constantTypeDropDown.add("STRING");
+        constantTypeDropDown.add("INT");
+        constantTypeDropDown.add("BOOLEAN");
+        constantTypeDropDown.add("FLOAT");
+
+        constantTypeDropDown.addListener(SWT.Modify, new Listener() {
+
+            public void handleEvent(Event event) {
+                try {
+                    type = new String(constantTypeDropDown.getText());
+                    if (!(StringUtils.isEmpty(type) && StringUtils.isEmpty(value))) {
+                        getButton(IDialogConstants.OK_ID).setEnabled(true);
+                    } else {
+                        getButton(IDialogConstants.OK_ID).setEnabled(false);
+                    }
+                } catch (Exception e) {
+                    getButton(IDialogConstants.OK_ID).setEnabled(false);
+                }
             }
         });
-        FormData countLayoutData = new FormData();
-        countLayoutData.width = 50;
-        countLayoutData.top = new FormAttachment(caseType, 0, SWT.CENTER);
-        countLayoutData.left = new FormAttachment(caseType, 5);
-        type.setLayoutData(countLayoutData);
-        int i = constantOperator.getBasicContainer().getRightContainer().getRightConnectors().size();
-        type.setText(Integer.toString(i));
-        caseValue = new Label(container, SWT.NONE);
-        caseValue.setText("Constant Operator Value : ");
-        FormData caseValueLabelLayoutData = new FormData();
-        caseValueLabelLayoutData.top = new FormAttachment(0, 40);
-        caseValueLabelLayoutData.left = new FormAttachment(0);
-        caseValue.setLayoutData(caseValueLabelLayoutData);
 
-        value = new Text(container, SWT.NONE);
+        Label constantValueLabel = new Label(container, SWT.NULL);
+        constantValueLabel.setText("Constant Value : ");
 
-        if (constant.getConstValue() != null) {
-            value.setText(constant.getConstValue());
-        } else {
-            value.setText(",");
-        }
-        value.addModifyListener(new ModifyListener() {
-            public void modifyText(ModifyEvent arg0) {
-                validate();
+        final Text constantValue = new Text(container, SWT.BORDER);
+        constantValue.setLayoutData(dataPropertyConfigText);
+
+        constantValue.addListener(SWT.Modify, new Listener() {
+            public void handleEvent(Event event) {
+                try {
+                    value = new String(constantValue.getText());
+                    if (!(StringUtils.isEmpty(type) && StringUtils.isEmpty(value))) {
+                        getButton(IDialogConstants.OK_ID).setEnabled(true);
+                    } else {
+                        getButton(IDialogConstants.OK_ID).setEnabled(false);
+                    }
+                } catch (Exception e) {
+                    getButton(IDialogConstants.OK_ID).setEnabled(false);
+                }
             }
         });
-        FormData valueLayoutData = new FormData();
-        valueLayoutData.width = 50;
-        valueLayoutData.top = new FormAttachment(caseValue, 0, SWT.CENTER);
-        valueLayoutData.left = new FormAttachment(caseValue, 40);
-        value.setLayoutData(valueLayoutData);
 
-        return container;
+        return area;
     }
 
     /**
@@ -134,10 +146,8 @@ public class ConfigureConstantOperatorDialog extends Dialog {
     private void validate() {
         boolean isEnabled = false;
         Button okButton = getButton(IDialogConstants.OK_ID);
-        if (value != null && type != null) {
-            if (StringUtils.isNotEmpty(value.getText()) && StringUtils.isNotEmpty(value.getText())) {
-                isEnabled = true;
-            }
+        if (StringUtils.isNotEmpty(value) && StringUtils.isNotEmpty(type)) {
+            isEnabled = true;
         }
         if (okButton != null) {
             okButton.setEnabled(isEnabled);
@@ -145,11 +155,11 @@ public class ConfigureConstantOperatorDialog extends Dialog {
     }
 
     protected void okPressed() {
-        if (value.getText() != null && !value.getText().isEmpty()) {
-            constant.setConstValue(value.getText());
+        if (StringUtils.isNotEmpty(value)) {
+            constant.setConstValue(value);
         }
-        if (type.getText() != null && !type.getText().isEmpty()) {
-            constant.setConstType(type.getText());
+        if (StringUtils.isNotEmpty(type)) {
+            constant.setConstType(type);
         }
 
         super.okPressed();

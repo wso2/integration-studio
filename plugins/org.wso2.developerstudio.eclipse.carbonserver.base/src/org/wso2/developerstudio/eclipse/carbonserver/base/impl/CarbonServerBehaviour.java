@@ -39,6 +39,7 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.debug.core.ILaunch;
 import org.eclipse.debug.core.ILaunchConfigurationWorkingCopy;
 import org.eclipse.debug.core.ILaunchManager;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.jdt.launching.IJavaLaunchConfigurationConstants;
 import org.eclipse.jdt.launching.IRuntimeClasspathEntry;
 import org.eclipse.jdt.launching.IVMInstall;
@@ -167,6 +168,8 @@ public abstract class CarbonServerBehaviour extends GenericServerBehaviour imple
 		setServerState(IServer.STATE_STARTING);
 		setMode(launchMode);
 	}
+	
+	
 
 	protected void checkPorts() throws CoreException {
 		String host = getServer().getHost();
@@ -226,30 +229,9 @@ public abstract class CarbonServerBehaviour extends GenericServerBehaviour imple
 	}
 
 	protected String getVmArguments() {
-		String defaultVMParameters =
-		                             getServerDefinition().getResolver()
-		                                                  .resolveProperties(getServerDefinition().getStart()
-		                                                                                          .getVmParametersAsString());
-		String serverLocalWorkspacePath = CarbonServerUtils.getCarbonServerHome(getServer()).toOSString();
-		CarbonServerScriptParser parser = new CarbonServerScriptParser(serverLocalWorkspacePath);
-		Map<String, String> serverVMParamaters = parser.getVMParamaters();
+		String defaultVMParameters = getServerDefinition().getResolver()
+				.resolveProperties(getServerDefinition().getStart().getVmParametersAsString());
 		String[] array = defaultVMParameters.split(" ");
-
-		for (int i = 0; i < array.length; i++) {
-			if (array[i].contains(CarbonServerScriptParser.MIN_MEMORY_STRING)) {
-				array[i] =
-				           CarbonServerScriptParser.MIN_MEMORY_STRING +
-				                   serverVMParamaters.get(CarbonServerScriptParser.MIN_MEMORY_STRING);
-			} else if (array[i].contains(CarbonServerScriptParser.MAX_MEMORY_STRING)) {
-				array[i] =
-				           CarbonServerScriptParser.MAX_MEMORY_STRING +
-				                   serverVMParamaters.get(CarbonServerScriptParser.MAX_MEMORY_STRING);
-			} else if (array[i].contains(CarbonServerScriptParser.MAX_PERM_SIZE_STRING)) {
-				array[i] =
-				           CarbonServerScriptParser.MAX_PERM_SIZE_STRING + "=" +
-				                   serverVMParamaters.get(CarbonServerScriptParser.MAX_PERM_SIZE_STRING);
-			}
-		}
 
 		StringBuffer buffer = new StringBuffer();
 		for (String string : array) {

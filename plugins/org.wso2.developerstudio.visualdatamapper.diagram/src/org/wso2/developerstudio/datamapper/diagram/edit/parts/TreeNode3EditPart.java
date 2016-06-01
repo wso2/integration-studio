@@ -50,6 +50,7 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.wso2.developerstudio.datamapper.PropertyKeyValuePair;
 import org.wso2.developerstudio.datamapper.TreeNode;
+import org.wso2.developerstudio.datamapper.diagram.custom.util.AbsoluteBorderedItemLocator;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.custom.CustomNonResizableEditPolicyEx;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.custom.FixedBorderItemLocator;
 import org.wso2.developerstudio.datamapper.diagram.part.DataMapperVisualIDRegistry;
@@ -396,14 +397,14 @@ public class TreeNode3EditPart extends AbstractBorderedShapeEditPart {
 
 	private boolean createInNode(EditPart childEditPart) {
 			IFigure borderItemFigure = ((InNodeEditPart) childEditPart).getFigure();
-			BorderItemLocator locator = new FixedBorderItemLocator(getMainFigure(),borderItemFigure, PositionConstants.WEST, 0.5);
+			BorderItemLocator locator = new AbsoluteBorderedItemLocator(getMainFigure(),borderItemFigure, PositionConstants.WEST, 4);
 		getBorderedFigure().getBorderItemContainer().add(((InNodeEditPart) childEditPart).getFigure(), locator);
 		return true;
 	}
 
 	private boolean createOutNode(EditPart childEditPart) {
 			IFigure borderItemFigure = ((OutNodeEditPart) childEditPart).getFigure();
-			BorderItemLocator locator = new FixedBorderItemLocator(getMainFigure(),borderItemFigure, PositionConstants.EAST, 0.5);
+			BorderItemLocator locator = new AbsoluteBorderedItemLocator(getMainFigure(),borderItemFigure, PositionConstants.EAST, 4);
 		getBorderedFigure().getBorderItemContainer().add(((OutNodeEditPart) childEditPart).getFigure(), locator);
 		return true;
 	}

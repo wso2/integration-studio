@@ -967,6 +967,7 @@ public class SchemaTransformer implements ISchemaTransformer {
 		JSONObject attributesObject = new JSONObject();
 		JSONArray namespaceArray = new JSONArray();
 		JSONArray elementIdentifiersArray = new JSONArray();
+		JSONObject valueObject = new JSONObject();
 		if(namespaceList.size()>0 || elementIdentifierList.size()>0){
 			namespaceList.clear();
 			elementIdentifierList.clear();
@@ -1002,6 +1003,12 @@ public class SchemaTransformer implements ISchemaTransformer {
 			// Sets the element identifiers value
 			insertElementIdentifiersArray(root, treeNodeModel, false);
 			if(schemaType.equals(JSON_SCHEMA_OBJECT)){
+				//If root has a value then append it to the root element
+				String objectValueBlockType = getPropertyKeyValuePairforTreeNode(treeNodeModel, JSON_SCHEMA_OBJECT_VALUE_TYPE);
+				if (StringUtils.isNotEmpty(objectValueBlockType)) {
+					valueObject.put(JSON_SCHEMA_TYPE, objectValueBlockType);
+					root.put(JSON_SCHEMA_VALUE, valueObject);
+				}
 				recursiveSchemaGenerator(treeNodeModel, propertiesObject, root);
 			}else if(schemaType.equals(JSON_SCHEMA_ARRAY)){
 				//If the root is an array then add the items block
@@ -1012,13 +1019,12 @@ public class SchemaTransformer implements ISchemaTransformer {
 							itemsObject.put(JSON_SCHEMA_PROPERTIES, propertiesObject);
 							insertIDandTypeforItemsBlock(itemsObject, schemaArrayItemsID, schemaArrayItemsType);
 							insertRequiredArray(itemsObject, treeNodeModel, false);
-							arrayItems.add(itemsObject);
 							recursiveSchemaGenerator(treeNodeModel, propertiesObject, root);
 					}
 						
 				}else{
 					insertIDandTypeforItemsBlock(itemsObject, schemaArrayItemsID, schemaArrayItemsType);
-					arrayItems.add(itemsObject);
+				}
 					String arrayElementIdentifier = getPropertyKeyValuePairforTreeNode(treeNodeModel, JSON_SCHEMA_ARRAY_ELEMENT_IDENTIFIERS_URL);
 					if (StringUtils.isNotEmpty(addedObjectNamespaces)) {
 						// If namespaces are available when creating the
@@ -1044,9 +1050,15 @@ public class SchemaTransformer implements ISchemaTransformer {
 						if (!namespaceList.contains(arrayElementIdentifier)) {
 							namespaceList.add(arrayElementIdentifier);
 						}
+					}	
+					
+					//If root has a value then append it to the root element
+					String objectValueBlockType = getPropertyKeyValuePairforTreeNode(treeNodeModel, JSON_SCHEMA_ARRAY_ITEMS_VALUE_TYPE);
+					if (StringUtils.isNotEmpty(objectValueBlockType)) {
+						valueObject.put(JSON_SCHEMA_TYPE, objectValueBlockType);
+						itemsObject.put(JSON_SCHEMA_VALUE, valueObject);
 					}
-				}
-				
+					arrayItems.add(itemsObject);
 			}
 			// Adds all the namespaces to the root element
 			String newNamespaceArray = StringUtils.join(namespaceList, ',');

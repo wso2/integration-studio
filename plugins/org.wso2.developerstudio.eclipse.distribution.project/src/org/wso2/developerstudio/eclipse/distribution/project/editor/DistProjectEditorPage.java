@@ -447,7 +447,7 @@ public class DistProjectEditorPage extends FormPage {
 					}
 				}
 				if (conflict) {
-					MessageDialog.openWarning(new Shell(), "Add dependencies",
+					MessageDialog.openWarning(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), "Add dependencies",
 					                          "Cannot add multiple dependencies with same identity");
 				}
 			} else {
@@ -469,7 +469,7 @@ public class DistProjectEditorPage extends FormPage {
 					setPageDirty(true);
 				} else {
 					item.setChecked(false);
-					MessageDialog.openWarning(new Shell(), "Add dependencies",
+					MessageDialog.openWarning(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), "Add dependencies",
 					                          "Cannot add multiple dependencies with same identity");
 				}
 			} else {

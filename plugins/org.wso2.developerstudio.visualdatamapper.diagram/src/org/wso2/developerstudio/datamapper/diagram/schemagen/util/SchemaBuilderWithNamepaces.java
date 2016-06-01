@@ -21,6 +21,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.Map.Entry;
 
+import org.apache.commons.lang.StringUtils;
 import org.wso2.developerstudio.datamapper.diagram.schemagen.util.SchemaBuilder.TypeEnum;
 
 import com.google.gson.JsonArray;
@@ -88,8 +89,12 @@ public class SchemaBuilderWithNamepaces extends SchemaBuilder {
 			return leaf;
 		} else if (id.equals(HASHCONTENT)) {
 		   JsonParser jsonParser = new JsonParser();
+		   if(StringUtils.isNotEmpty(value)){
+			   if(jsonParser.parse(value) instanceof JsonObject){
 		   JsonObject valueObject = (JsonObject)jsonParser.parse(value);
 		   addValueObject(parent, valueObject); 
+			   }
+		   }
 		   return null;	
 		} else if(id.equals(DEFAULT_NAMESPACE)){
 		  return null;

@@ -26,6 +26,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.apache.commons.lang.StringUtils;
+import org.wso2.developerstudio.datamapper.diagram.schemagen.util.SchemaBuilder.TypeEnum;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -175,8 +176,7 @@ public class SchemaBuilder {
 			TypeEnum propertyValueType = RealTypeOf(element);
 
 			if (entry.getKey().equals(HASHCONTENT)) {
-
-				addPrimitiveToParent(parent, id, entry.getKey(), propertyValueType, elementIdentifierMap);
+				addPrimitiveToParent(parent, id, entry.getValue().toString(), propertyValueType, elementIdentifierMap);
 			} else if (entry.getKey().startsWith(AT_PREFIX)) {
 				if (!element.isJsonNull()) {
 					if (element instanceof JsonObject) {
@@ -289,16 +289,6 @@ public class SchemaBuilder {
 				} else {
 					JsonSchema schema = addObjectToParentItemsArray(parent, "0");
 					String identifierValue = createSchemaForObject(childElement.getAsJsonObject(), schema);
-
-					/*If the element contains the array key(if the child of
-					* this
-					* element holds an element identifier) then remove it from
-					* the
-					* json object and adds the new object
-					* */
-					if (StringUtils.isNotEmpty(arrayKey)) {
-
-					}
 					JsonElement value = parent.getAsJsonObject();
 					/* If an element contains an identifier value then create a
 					 * new
@@ -466,10 +456,8 @@ public class SchemaBuilder {
 				primitive.setType(TypeEnum.OBJECT.toString().toLowerCase());
 				primitive.addAttribute(idwithoutAtSign, leaf);
 			}else if (attributeId.startsWith(HASHCONTENT)) {
-				JsonObject object = new JsonObject();
-				object.addProperty("type", attributeValueType.toString().toLowerCase());
+				addValueObject(primitive, (JsonObject) attributeElement); 
 				primitive.setType(TypeEnum.OBJECT.toString().toLowerCase());
-				primitive.addCustomObject("value", object);
 			}else {
 				primitive.setType(attributeValueType.toString().toLowerCase());
 			}
@@ -496,10 +484,8 @@ public class SchemaBuilder {
 				primitive.addAttribute(idwithoutAtSign, leaf);
 				primitive.setType(TypeEnum.OBJECT.toString().toLowerCase());
 			} else if (attributeId.equals(HASHCONTENT)) {
-				JsonObject object = new JsonObject();
-				object.addProperty("type", attributeValueType.toString().toLowerCase());
+			    addValueObject(primitive, (JsonObject) attributeElement); 
 				primitive.setType(TypeEnum.OBJECT.toString().toLowerCase());
-				primitive.addCustomObject("value", object);
 			} else {
 				primitive.setType(attributeValueType.toString().toLowerCase());
 			}
@@ -570,4 +556,23 @@ public class SchemaBuilder {
 	public enum TypeEnum {
 		STRING, NUMBER, BOOLEAN, OBJECT, ARRAY, NULL, ANY, UNDEFINED
 	}
+	
+	/**
+	 * Adds the value object
+	 * @param parent
+	 * @param valueObject
+	 */
+	private void addValueObject(JsonSchema parent, JsonObject valueObject) {
+		Set<Entry<String, JsonElement>> contentEntrySet = valueObject.getAsJsonObject().entrySet();
+			for (Entry<String, JsonElement> contentEntry : contentEntrySet) {
+				String contentKey = contentEntry.getKey();
+				if (contentKey.equals(CONTENT)) {
+					TypeEnum propertyType = RealTypeOf(contentEntry.getValue());
+					JsonObject object = new JsonObject();
+					object.addProperty("type", propertyType.toString().toLowerCase());
+					parent.addCustomObject("value", object);	
+				}
+			}
+	}
+	
 }

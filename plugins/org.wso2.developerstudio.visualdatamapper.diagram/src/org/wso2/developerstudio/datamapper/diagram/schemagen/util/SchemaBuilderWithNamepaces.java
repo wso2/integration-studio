@@ -77,7 +77,7 @@ public class SchemaBuilderWithNamepaces extends SchemaBuilder {
 			JsonSchema leaf = new JsonSchema();
 		    String idwithoutAtSign = id.substring(1);
 			leaf.setId(parent.getId() + "/" + idwithoutAtSign);
-			leaf.setType(STRING);
+			leaf.setType(value);
 			parent.addAttribute(idwithoutAtSign, leaf);
 			return leaf;
 		}else if (id.startsWith(DOLLLAR_AT_PREFIX)) {

@@ -275,6 +275,7 @@ public class TreeNodeEditPart extends AbstractBorderedShapeEditPart {
 	protected boolean addFixedChild(EditPart childEditPart) {
 		EditPart temp = this.getParentBox();
 		String type = getNodeType();
+		String name = (((TreeNode) ((View) getModel()).getElement()).getName());
 		if (childEditPart instanceof TreeNodeNameEditPart) {
 			((TreeNodeNameEditPart) childEditPart).setLabel(getPrimaryShape().getFigureTreeNodeNameFigure());
 			return true;
@@ -424,14 +425,14 @@ public class TreeNodeEditPart extends AbstractBorderedShapeEditPart {
 
 	private boolean createInNode(EditPart childEditPart) {
 		IFigure borderItemFigure = ((InNodeEditPart) childEditPart).getFigure();
-		BorderItemLocator locator = new FixedBorderItemLocator(getMainFigure(),borderItemFigure, PositionConstants.WEST, 0.5);
+		BorderItemLocator locator = new AbsoluteBorderedItemLocator(getMainFigure(),borderItemFigure, PositionConstants.WEST, 4);
 		getBorderedFigure().getBorderItemContainer().add(((InNodeEditPart) childEditPart).getFigure(), locator);
 		return true;
 	}
 
 	private boolean createOutNode(EditPart childEditPart) {
 		IFigure borderItemFigure = ((OutNodeEditPart) childEditPart).getFigure();
-		BorderItemLocator locator = new FixedBorderItemLocator(getMainFigure(),borderItemFigure, PositionConstants.EAST, 0.5);
+		BorderItemLocator locator = new AbsoluteBorderedItemLocator(getMainFigure(),borderItemFigure, PositionConstants.EAST, 4);
 		getBorderedFigure().getBorderItemContainer().add(((OutNodeEditPart) childEditPart).getFigure(), locator);
 		return true;
 	}

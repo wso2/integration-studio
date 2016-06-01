@@ -20,7 +20,7 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ES
 
 /**
  * This enum represents the event message types which are received for ESB
- * Mediation Debugger Tool form ESB Server.
+ * Mediation Debugger Tool from ESB Server.
  *
  */
 public enum EventMessageType {

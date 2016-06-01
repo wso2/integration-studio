@@ -53,6 +53,8 @@ public class MediatorLocatorFactory {
             return new APIMediatorLocator();
         case MAIN_SEQUENCE:
             return new MainSequenceMediatorLocator();
+        case INBOUND_ENDPOINT:
+            return new InboundEndpointMediatorLocator();
         default:
             throw new ESBDebuggerException("Unsupported Project Type for Debugging Requested from Mediator Locator");
         }

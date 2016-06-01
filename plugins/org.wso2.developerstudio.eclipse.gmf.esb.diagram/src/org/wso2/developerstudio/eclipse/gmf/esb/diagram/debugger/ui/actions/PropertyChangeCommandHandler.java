@@ -20,6 +20,8 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ES
 import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.ESB_MESSAGE_MEDIATION_PROPERTY_CLEAR_COMMAND_ID;
 import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.ESB_MESSAGE_MEDIATION_PROPERTY_INJECT_COMMAND_ID;
 import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.ESB_STACK_FRAME_PROPERTY_CHANGE_EVENT;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.MESSAGE_ENVELOPE_VIEW_PRIMARY_ID;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.MESSAGE_ENVELOPE_VIEW_SECONDARY_ID;
 import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerConstants.PROPERTY_CHANGE_COMMAND_HANDLER_EVENT_TOPIC;
 
 import java.util.List;
@@ -32,6 +34,9 @@ import org.eclipse.debug.core.model.IVariable;
 import org.eclipse.e4.core.services.events.IEventBroker;
 import org.eclipse.jface.window.Window;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.ui.IViewPart;
+import org.eclipse.ui.IWorkbenchPage;
+import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.osgi.service.event.Event;
 import org.osgi.service.event.EventHandler;
@@ -39,6 +44,9 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.Activator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.internal.communication.requests.FetchVariablesRequest;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.messages.command.PropertyChangeCommand;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.model.ESBStackFrame;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.ui.views.AcceptedContentAction;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.ui.views.ContentAcceptHandler;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.ui.views.DefaultPropertyValues;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
@@ -122,6 +130,18 @@ public class PropertyChangeCommandHandler extends AbstractHandler implements Eve
                 propertyCommandMessage = clearPropertyDialog.getCommandMessage();
                 if (propertyCommandMessage.getContext() != null) {
                     propertyChangeCommandEB.send(ESB_STACK_FRAME_PROPERTY_CHANGE_EVENT, propertyCommandMessage);
+                    try {
+                        IViewPart envelopeView = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().showView(
+                                MESSAGE_ENVELOPE_VIEW_PRIMARY_ID, MESSAGE_ENVELOPE_VIEW_SECONDARY_ID, IWorkbenchPage.VIEW_VISIBLE);
+                        if (envelopeView instanceof ContentAcceptHandler) {
+                            for (DefaultPropertyValues propertyValue : DefaultPropertyValues.values()) {
+                                ((ContentAcceptHandler) envelopeView).acceptContent(
+                                        new String[] { propertyValue.getPropertyName(), "" }, AcceptedContentAction.REMOVE);
+                            }
+                        }
+                    } catch (PartInitException e) {
+                        log.error("Error while removing a property from Envelope Property table", e);
+                    }
                 }
             }
         } else {

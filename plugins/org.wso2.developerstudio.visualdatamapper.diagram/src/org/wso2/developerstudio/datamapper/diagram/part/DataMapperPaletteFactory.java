@@ -303,7 +303,7 @@ public class DataMapperPaletteFactory {
 											.get(i)).getCommand(getTargetRequest());
 
 								}
-							} else if (getRoot(getTargetEditPart()) instanceof InputEditPart && !treeNodeEditPart.isInNodeEmpty()) {
+							} else if (getRoot(getTargetEditPart()) instanceof InputEditPart && !treeNodeEditPart.isOutNodeEmpty()) {
 
 								if (treeNodeEditPart.getChildren().get(i) instanceof OutNodeEditPart) {
 									setTargetEditPart((OutNodeEditPart) treeNodeEditPart.getChildren().get(i));

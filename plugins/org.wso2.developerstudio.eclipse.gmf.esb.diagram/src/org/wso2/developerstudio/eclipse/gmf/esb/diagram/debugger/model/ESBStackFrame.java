@@ -186,8 +186,10 @@ public class ESBStackFrame extends ESBDebugElement implements IStackFrame, Event
         boolean processed = false;
         for (int index = 0; index < variables.size(); index++) {
             if (variables.get(index).getName().equals(getUITableVariableName(name))) {
-                ((ESBVariable) variables.get(index)).setValue(propertyRespondMessage.getPropertyValues());
-                ((ESBVariable) variables.get(index)).fireChangeEvent(DebugEvent.CONTENT);
+                ESBVariable esbVariable = ((ESBVariable) variables.get(index));
+                esbVariable.setValue(propertyRespondMessage.getPropertyValues());
+                esbVariable.fireChangeEvent(DebugEvent.CONTENT);
+                ((ESBValue) esbVariable.getValue()).fireChangeEvent(DebugEvent.CONTENT);
                 processed = true;
                 break;
             }

@@ -89,7 +89,7 @@ public class ClearPropertyDialog extends TitleAreaDialog {
 
         Label propertyContextLabel = new Label(container, SWT.NULL);
         propertyContextLabel.setText(Messages.ClearPropertyDialog_PropertContextLabel);
-        final Combo propertyContextValueDropDown = new Combo(container, SWT.DROP_DOWN | SWT.BORDER);
+        final Combo propertyContextValueDropDown = new Combo(container, SWT.DROP_DOWN | SWT.BORDER | SWT.READ_ONLY);
         propertyContextValueDropDown.setLayoutData(dataPropertyConfigText);
         propertyContextValueDropDown.add(AXIS2_CLIENT_PROPERTY_TAG);
         propertyContextValueDropDown.add(TRANSPORT_PROPERTY_TAG);

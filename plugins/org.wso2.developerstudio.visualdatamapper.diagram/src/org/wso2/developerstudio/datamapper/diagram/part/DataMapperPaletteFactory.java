@@ -71,7 +71,7 @@ public class DataMapperPaletteFactory {
 	private PaletteEntry createDataMapperLinkGroup() {
 		PaletteDrawer paletteContainer = new PaletteDrawer("Connectors");
 
-		/*		PaletteGroup paletteContainer = new PaletteGroup(
+		/*PaletteGroup paletteContainer = new PaletteGroup(
 		 org.wso2.developerstudio.datamapper.diagram.part.Messages.DataMapper1Group_title);*/
 		paletteContainer.setId("createDataMapper1Group"); //$NON-NLS-1$
 		paletteContainer.add(createDataMapperLink1CreationTool());
@@ -320,7 +320,6 @@ public class DataMapperPaletteFactory {
 						}// for
 					} else if (getTargetEditPart() instanceof TreeNode2EditPart) {
 						TreeNode2EditPart treeNode2EditPart = (TreeNode2EditPart) getTargetEditPart();
-						String nodeType = treeNode2EditPart.getNodeType();
 						for (int i = 0; i < treeNode2EditPart.getChildren().size(); ++i) {
 							//TreeNode2EditPart treeNode2EditPart = (TreeNode2EditPart) getTargetEditPart();
 							if (getRoot(getTargetEditPart()) instanceof OutputEditPart && !treeNode2EditPart.isInNodeEmpty()) {

@@ -18,9 +18,17 @@
 package org.wso2.developerstudio.datamapper.diagram.schemagen.util;
 
 import java.util.Map;
+import java.util.Set;
+import java.util.Map.Entry;
+
+import org.apache.commons.lang.StringUtils;
+import org.wso2.developerstudio.datamapper.diagram.schemagen.util.SchemaBuilder.TypeEnum;
 
 import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.google.gson.JsonPrimitive;
 
 public class SchemaBuilderWithNamepaces extends SchemaBuilder {
 
@@ -28,6 +36,11 @@ public class SchemaBuilderWithNamepaces extends SchemaBuilder {
 	private static final String XMLNS = "xmlns:";
 	private static final String ELEMENT_IDENTIFIERS = "elementIdentifiers";
 	private static final String DEFAULT_NAMESPACE = "xmlns";
+	private static final String TYPE = "type";
+	private static final String VALUE = "value";
+	private static final String PREFIX = "prefix";
+	private static final String URL = "url";
+	private static final String STRING = "string";
 
 
 	@Override
@@ -35,8 +48,8 @@ public class SchemaBuilderWithNamepaces extends SchemaBuilder {
 		if (id.contains(XMLNS)) {
 			String prefix = id.substring(XMLNS.length());
 			JsonObject obj = new JsonObject();
-			obj.addProperty("prefix", prefix);
-			obj.addProperty("url", value);
+			obj.addProperty(PREFIX, prefix);
+			obj.addProperty(URL, value);
 			JsonArray namespaces = root.getCustomArray(NAMESPACES);
 			if (namespaces != null) {
 				namespaces.add(obj);
@@ -49,7 +62,7 @@ public class SchemaBuilderWithNamepaces extends SchemaBuilder {
 			if(elementIdentifierMap.containsKey(prefix)){
 				JsonArray identifiers = root.getCustomArray(ELEMENT_IDENTIFIERS);
 				JsonObject identifierObj = new JsonObject();
-				identifierObj.addProperty("type", elementIdentifierMap.get(prefix));
+				identifierObj.addProperty(TYPE, elementIdentifierMap.get(prefix));
 				if(identifiers != null){
 					identifiers.add(identifierObj);
 				}else{
@@ -64,7 +77,7 @@ public class SchemaBuilderWithNamepaces extends SchemaBuilder {
 			JsonSchema leaf = new JsonSchema();
 		    String idwithoutAtSign = id.substring(1);
 			leaf.setId(parent.getId() + "/" + idwithoutAtSign);
-			leaf.setType("string");
+			leaf.setType(STRING);
 			parent.addAttribute(idwithoutAtSign, leaf);
 			return leaf;
 		}else if (id.startsWith(DOLLLAR_AT_PREFIX)) {
@@ -75,9 +88,13 @@ public class SchemaBuilderWithNamepaces extends SchemaBuilder {
 			parent.addAttribute(idwithoutAtSign, leaf);
 			return leaf;
 		} else if (id.equals(HASHCONTENT)) {
-		   JsonObject object = new JsonObject();
-		   object.addProperty("type", propertyValueType.toString().toLowerCase());
-		   parent.addCustomObject("value", object);	
+		   JsonParser jsonParser = new JsonParser();
+		   if(StringUtils.isNotEmpty(value)){
+			   if(jsonParser.parse(value) instanceof JsonObject){
+		   JsonObject valueObject = (JsonObject)jsonParser.parse(value);
+		   addValueObject(parent, valueObject); 
+			   }
+		   }
 		   return null;	
 		} else if(id.equals(DEFAULT_NAMESPACE)){
 		  return null;
@@ -86,4 +103,41 @@ public class SchemaBuilderWithNamepaces extends SchemaBuilder {
 		}
 	}
 
+	/**
+	 * Adds the value object
+	 * @param parent
+	 * @param valueObject
+	 */
+	private void addValueObject(JsonSchema parent, JsonObject valueObject) {
+		Set<Entry<String, JsonElement>> contentEntrySet = valueObject.getAsJsonObject().entrySet();
+			for (Entry<String, JsonElement> contentEntry : contentEntrySet) {
+				String contentKey = contentEntry.getKey();
+				if (contentKey.equals(CONTENT)) {
+					TypeEnum propertyType = RealTypeOf(contentEntry.getValue());
+					JsonObject object = new JsonObject();
+					object.addProperty(TYPE, propertyType.toString().toLowerCase());
+					parent.addCustomObject(VALUE, object);	
+				}
+			}
+	}
+
+	private static TypeEnum RealTypeOf(JsonElement element) {
+		if (element == null || element.isJsonNull()) {
+			return TypeEnum.NULL;
+		} else if (element.isJsonArray()) {
+			return TypeEnum.ARRAY;
+		} else if (element.isJsonObject()) {
+			return TypeEnum.OBJECT;
+		} else if (element.isJsonPrimitive()) {
+			JsonPrimitive p = element.getAsJsonPrimitive();
+			if (p.isNumber()) {
+				return TypeEnum.NUMBER;
+			} else if (p.isBoolean()) {
+				return TypeEnum.BOOLEAN;
+			} else if (p.isString()) {
+				return TypeEnum.STRING;
+			}
+		}
+		return TypeEnum.UNDEFINED;
+	}
 }

@@ -118,6 +118,7 @@ public class SchemaTransformer implements ISchemaTransformer {
 	/**
 	 * Generates the tree
 	 */
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
 	public TreeNode generateTree(String content, TreeNode inputRootTreeNode)
 			throws NullPointerException, IllegalArgumentException, IOException {
@@ -143,11 +144,14 @@ public class SchemaTransformer implements ISchemaTransformer {
 		setAttributesForElements(jsonSchema, count, namespaceMap, inputRootTreeNode);
 		isAttribute = false;
 		
-		if(getSchemaType(jsonSchema).equals(JSON_SCHEMA_ARRAY)){
-			jsonSchema = getSchemaItems(jsonSchema);
-			// Creates the tree by adding tree node and elements when the root is an array
-			if(jsonSchema.containsKey(JSON_SCHEMA_PROPERTIES)){
-			inputRootTreeNode = setProperties(jsonSchema, inputRootTreeNode, count, namespaceMap);
+		if(getSchemaType(jsonSchema).equals(JSON_SCHEMA_ARRAY)){			
+			ArrayList<Object> items = getSchemaItemsMap(jsonSchema);
+			for(Object item: items){
+				jsonSchema = (Map)item;
+				if(jsonSchema.containsKey(JSON_SCHEMA_PROPERTIES)){
+					// Creates the tree by adding tree node and elements when the root is an array
+					inputRootTreeNode = setProperties(jsonSchema, inputRootTreeNode, count, namespaceMap);
+					}
 			}
 		}else{
 			// Creates the tree by adding tree node and elements
@@ -473,6 +477,35 @@ public class SchemaTransformer implements ISchemaTransformer {
 				itemsSchema = (Map<String, Object>) jsonSchemaMap.get(JSON_SCHEMA_ITEMS);
 			}
 			return itemsSchema;
+		} else {
+			log.error("Invalid input schema, items value not found");
+			displayUserError("WARNING",
+					" Invalid schema,Given schema does not contain value under key : " + JSON_SCHEMA_ITEMS);
+			throw new IllegalArgumentException("Given schema does not contain value under key : " + JSON_SCHEMA_ITEMS);
+		}
+	}
+	
+	/**
+	 * Gets schema items map
+	 * 
+	 * @param schema
+	 *            schema
+	 * @return item map
+	 */
+	@SuppressWarnings("unchecked")
+	private ArrayList<Object> getSchemaItemsMap(Map<String, Object> jsonSchemaMap) {
+		if (jsonSchemaMap.containsKey(JSON_SCHEMA_ITEMS)) {
+			ArrayList<Object> items = null;
+			// If items block starts with [{ and ends with }] then convert the
+			// arraylist into a Map and then use
+			if (jsonSchemaMap.get(JSON_SCHEMA_ITEMS) instanceof ArrayList) {
+			     items = (ArrayList<Object>) jsonSchemaMap.get(JSON_SCHEMA_ITEMS);
+			} else {
+				// If items block doesn't starts with [ and ends with ] then get
+				// the Map directly
+				items = (ArrayList<Object>)jsonSchemaMap.get(JSON_SCHEMA_ITEMS);
+			}
+			return items;
 		} else {
 			log.error("Invalid input schema, items value not found");
 			displayUserError("WARNING",
@@ -934,6 +967,7 @@ public class SchemaTransformer implements ISchemaTransformer {
 		JSONObject attributesObject = new JSONObject();
 		JSONArray namespaceArray = new JSONArray();
 		JSONArray elementIdentifiersArray = new JSONArray();
+		JSONObject valueObject = new JSONObject();
 		if(namespaceList.size()>0 || elementIdentifierList.size()>0){
 			namespaceList.clear();
 			elementIdentifierList.clear();
@@ -969,6 +1003,12 @@ public class SchemaTransformer implements ISchemaTransformer {
 			// Sets the element identifiers value
 			insertElementIdentifiersArray(root, treeNodeModel, false);
 			if(schemaType.equals(JSON_SCHEMA_OBJECT)){
+				//If root has a value then append it to the root element
+				String objectValueBlockType = getPropertyKeyValuePairforTreeNode(treeNodeModel, JSON_SCHEMA_OBJECT_VALUE_TYPE);
+				if (StringUtils.isNotEmpty(objectValueBlockType)) {
+					valueObject.put(JSON_SCHEMA_TYPE, objectValueBlockType);
+					root.put(JSON_SCHEMA_VALUE, valueObject);
+				}
 				recursiveSchemaGenerator(treeNodeModel, propertiesObject, root);
 			}else if(schemaType.equals(JSON_SCHEMA_ARRAY)){
 				//If the root is an array then add the items block
@@ -979,13 +1019,12 @@ public class SchemaTransformer implements ISchemaTransformer {
 							itemsObject.put(JSON_SCHEMA_PROPERTIES, propertiesObject);
 							insertIDandTypeforItemsBlock(itemsObject, schemaArrayItemsID, schemaArrayItemsType);
 							insertRequiredArray(itemsObject, treeNodeModel, false);
-							arrayItems.add(itemsObject);
 							recursiveSchemaGenerator(treeNodeModel, propertiesObject, root);
 					}
 						
 				}else{
 					insertIDandTypeforItemsBlock(itemsObject, schemaArrayItemsID, schemaArrayItemsType);
-					arrayItems.add(itemsObject);
+				}
 					String arrayElementIdentifier = getPropertyKeyValuePairforTreeNode(treeNodeModel, JSON_SCHEMA_ARRAY_ELEMENT_IDENTIFIERS_URL);
 					if (StringUtils.isNotEmpty(addedObjectNamespaces)) {
 						// If namespaces are available when creating the
@@ -1011,9 +1050,15 @@ public class SchemaTransformer implements ISchemaTransformer {
 						if (!namespaceList.contains(arrayElementIdentifier)) {
 							namespaceList.add(arrayElementIdentifier);
 						}
+					}	
+					
+					//If root has a value then append it to the root element
+					String objectValueBlockType = getPropertyKeyValuePairforTreeNode(treeNodeModel, JSON_SCHEMA_ARRAY_ITEMS_VALUE_TYPE);
+					if (StringUtils.isNotEmpty(objectValueBlockType)) {
+						valueObject.put(JSON_SCHEMA_TYPE, objectValueBlockType);
+						itemsObject.put(JSON_SCHEMA_VALUE, valueObject);
 					}
-				}
-				
+					arrayItems.add(itemsObject);
 			}
 			// Adds all the namespaces to the root element
 			String newNamespaceArray = StringUtils.join(namespaceList, ',');

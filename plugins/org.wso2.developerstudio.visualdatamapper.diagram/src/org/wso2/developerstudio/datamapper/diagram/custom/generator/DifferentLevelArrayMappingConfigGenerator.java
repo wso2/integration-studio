@@ -542,7 +542,7 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
     private void checkTwoParentsInTheSameBranch(String mostChildParentName, String parentName)
             throws DataMapperException {
         if (!mostChildParentName.startsWith(parentName)) {
-            throw new DataMapperException("Cannot use varibales in different parent elements in different branches");
+            throw new DataMapperException("Cannot use varibales in different types of objects to map. Cannot find a unique identifier for the items mapped. Re-Evaluate your mappping.");
         }
     }
 

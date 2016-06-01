@@ -92,6 +92,7 @@ public class OutputEditPart extends ShapeNodeEditPart {
 	private static final int Y = 200;
 	TreeNode outputRootTreeNode;
 	private static final int LEAF_HEIGHT = 20;
+	private static final int LEAF_WIDTH = 3;
 	private static final int OUTPUT_BOX_WIDTH = 250;
 
 	/**
@@ -462,7 +463,7 @@ public class OutputEditPart extends ShapeNodeEditPart {
 		if (notification.getFeature() instanceof EAttributeImpl) {
 			if (notification.getNotifier() instanceof BoundsImpl) {
 				reposition(((BoundsImpl) notification.getNotifier()).getX(),
-						((BoundsImpl) notification.getNotifier()).getY(), OUTPUT_BOX_WIDTH,
+						((BoundsImpl) notification.getNotifier()).getY(), TreeNodeUtils.getTreeWidth(outputRootTreeNode, LEAF_WIDTH),
 						TreeNodeUtils.getTreeHeight(outputRootTreeNode, LEAF_HEIGHT));
 				FigureCanvas canvas = (FigureCanvas) getViewer().getControl();
 				canvas.getViewport().repaint();
@@ -497,7 +498,7 @@ public class OutputEditPart extends ShapeNodeEditPart {
 	}
 
 	private void reposition() {
-		reposition(getFigure().getBounds().x, getFigure().getBounds().y, OUTPUT_BOX_WIDTH,
+		reposition(getFigure().getBounds().x, getFigure().getBounds().y, TreeNodeUtils.getTreeWidth(outputRootTreeNode, LEAF_WIDTH),
 				TreeNodeUtils.getTreeHeight(outputRootTreeNode, LEAF_HEIGHT));
 	}
 

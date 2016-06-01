@@ -16,6 +16,8 @@
 
 package org.wso2.developerstudio.datamapper.diagram.custom.util;
 
+import org.eclipse.emf.common.util.EList;
+import org.wso2.developerstudio.datamapper.Element;
 import org.wso2.developerstudio.datamapper.TreeNode;
 
 public class TreeNodeUtils {
@@ -37,5 +39,29 @@ public class TreeNodeUtils {
 			return height;
 		}
 		return 0;
+	}
+	
+	public static int getTreeWidth(TreeNode tree, int leafWidth) {
+ 		int w = getTreeWidth(tree);
+ 		int boxWidth = w * leafWidth;
+ 		if (boxWidth < 250) {
+ 			return 250;
+ 		}
+ 		else return boxWidth;
+ 	}
+	
+	private static int getTreeWidth(TreeNode tree) {
+		int width = 0;
+		if (tree != null) {
+			EList<Element> treeElems = tree.getElement();
+			for (Element elem : treeElems) {
+				if (elem.getLevel() > width)
+				width = elem.getLevel();
+			}
+			for (TreeNode childTree : tree.getNode()) {
+				width += 1 + getTreeWidth(childTree);
+			}
+		}
+		return width;
 	}
 }

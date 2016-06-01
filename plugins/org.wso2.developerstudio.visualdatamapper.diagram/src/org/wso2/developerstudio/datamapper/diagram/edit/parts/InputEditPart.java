@@ -26,6 +26,7 @@ import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.LineBorder;
 import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.RectangleFigure;
+import org.eclipse.draw2d.ScrollPane;
 import org.eclipse.draw2d.Shape;
 import org.eclipse.draw2d.StackLayout;
 import org.eclipse.draw2d.ToolbarLayout;
@@ -47,6 +48,7 @@ import org.eclipse.gef.requests.CreateRequest;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeNodeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.DragDropEditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
+import org.eclipse.gmf.runtime.diagram.ui.editpolicies.ResizableShapeEditPolicy;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.ConstrainedToolbarLayout;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel;
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
@@ -90,6 +92,7 @@ public class InputEditPart extends ShapeNodeEditPart {
 	private static final int Y = 200;
 	TreeNode inputRootTreeNode;
 	private static final int LEAF_HEIGHT = 20;
+	private static final int LEAF_WIDTH = 3;
 	private static final int INPUT_BOX_WIDTH = 250;
 
 	/**
@@ -395,7 +398,7 @@ public class InputEditPart extends ShapeNodeEditPart {
 			protected EditPolicy createChildEditPolicy(EditPart child) {
 				EditPolicy result = child.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
 				if (result == null) {
-					result = new NonResizableEditPolicy();
+					result = new CustomNonResizableEditPolicyEx();
 				}
 				return result;
 			}
@@ -423,7 +426,7 @@ public class InputEditPart extends ShapeNodeEditPart {
 		if (notification.getFeature() instanceof EAttributeImpl) {
 			if (notification.getNotifier() instanceof BoundsImpl) {
 				reposition(((BoundsImpl) notification.getNotifier()).getX(),
-						((BoundsImpl) notification.getNotifier()).getY(), INPUT_BOX_WIDTH,
+						((BoundsImpl) notification.getNotifier()).getY(), TreeNodeUtils.getTreeWidth(inputRootTreeNode, LEAF_WIDTH),
 						TreeNodeUtils.getTreeHeight(inputRootTreeNode, LEAF_HEIGHT));
 				FigureCanvas canvas = (FigureCanvas) getViewer().getControl();
 				canvas.getViewport().repaint();
@@ -456,7 +459,7 @@ public class InputEditPart extends ShapeNodeEditPart {
 	}
 
 	private void reposition() {
-		reposition(getFigure().getBounds().x, getFigure().getBounds().y, INPUT_BOX_WIDTH,
+		reposition(getFigure().getBounds().x, getFigure().getBounds().y, TreeNodeUtils.getTreeWidth(inputRootTreeNode, LEAF_WIDTH),
 				TreeNodeUtils.getTreeHeight(inputRootTreeNode, LEAF_HEIGHT));
 	}
 
@@ -473,6 +476,8 @@ public class InputEditPart extends ShapeNodeEditPart {
 
 		return figure;
 	}
+	
+	
 
 	/**
 	 * @generated NOT
@@ -509,10 +514,8 @@ public class InputEditPart extends ShapeNodeEditPart {
 			CompoundBorder compoundBorder = new CompoundBorder(titleBarBorder, lineBorder);
 			CompoundBorder compoundBorderTop = new CompoundBorder(border, compoundBorder);
 			this.setBorder(compoundBorderTop);
-			
 
 		}
-		
 		/**
 		 * @generated NOT
 		 */

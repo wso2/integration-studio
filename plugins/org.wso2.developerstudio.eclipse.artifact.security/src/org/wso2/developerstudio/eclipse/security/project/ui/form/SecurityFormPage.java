@@ -49,6 +49,7 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
@@ -536,15 +537,16 @@ public class SecurityFormPage extends FormPage {
      * @param scenarioNumber :Id of the security scenario
      */
     private void showPolicyUseCase(int scenarioNumber) {
+    	
         String shellTitle = SecurityFormConstants.SHELL_WINDOW_TITLE_PREFIX + scenarioNumber;
         Shell existingShell = getExistingUseCaseShell(shellTitle);
-
+        //FIXME
         if (existingShell == null) {
             String fileName = SecurityFormConstants.IMAGE_PREFIX + scenarioNumber + SecurityFormConstants.IMAGE_POSTFIX;
             String relativeFilePath = SecurityFormConstants.RELATIVE_FOLDER_PATH + fileName;
             String securityScenarioTitle = getSecurityScenarioTitle(scenarioNumber);
-
-            Shell shell = new Shell(parentShell);
+            
+            Shell shell = new Shell(PlatformUI.getWorkbench().getDisplay());
             Composite parent = new Composite(shell, SWT.NONE);
             shell.setBackgroundImage(securityScenarioBalloonBackgroundImage);
             shell.setLayout(new RowLayout());

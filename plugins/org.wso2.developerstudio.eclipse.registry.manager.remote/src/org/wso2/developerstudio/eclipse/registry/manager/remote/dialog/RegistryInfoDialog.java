@@ -76,6 +76,15 @@ public class RegistryInfoDialog extends Dialog {
 		mainShell = parentShell;
 		this.regURLData = regUrlData;
 	}
+	
+	@Override
+	protected Button createButton(Composite parent, int id, String label, boolean defaultButton) {
+		GridLayout layout = new GridLayout();
+		layout.numColumns = 4;
+		parent.setLayout(layout);
+		// TODO Auto-generated method stub
+		return super.createButton(parent, id, label, defaultButton);
+	}
 
 	public RegistryInfoDialog(Shell parentShell, RegistryURLNode regUrlData, String path) {
 		super(parentShell);
@@ -89,6 +98,10 @@ public class RegistryInfoDialog extends Dialog {
 		super.create();
 	}
 
+	@Override
+	protected boolean isResizable() {
+		return true;
+	}
 	public Control createDialogArea(final Composite parent) {
 		String title = "Add Registry";
 

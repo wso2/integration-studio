@@ -1655,7 +1655,7 @@ public class RegistryBrowserView extends ViewPart implements Observer {
 				   regUrlNode);
 		dialog.setBlockOnOpen(true);
 		dialog.create();
-		dialog.getShell().setSize(600, 250);
+		dialog.getShell().setMinimumSize(600, 300);
 		int status = dialog.open();
 		if (status == dialog.OK) {
 			URI pathUri = null;

@@ -42,6 +42,7 @@ import org.wso2.developerstudio.datamapper.diagram.custom.action.AddNewFieldActi
 import org.wso2.developerstudio.datamapper.diagram.custom.action.AddNewObjectAction;
 import org.wso2.developerstudio.datamapper.diagram.custom.action.AddNewRootAction;
 import org.wso2.developerstudio.datamapper.diagram.custom.action.ConcatManyAction;
+import org.wso2.developerstudio.datamapper.diagram.custom.action.ConstantConfigureAction;
 import org.wso2.developerstudio.datamapper.diagram.custom.action.EditArrayAction;
 import org.wso2.developerstudio.datamapper.diagram.custom.action.EditAttributeAction;
 import org.wso2.developerstudio.datamapper.diagram.custom.action.EditFieldAction;
@@ -51,6 +52,7 @@ import org.wso2.developerstudio.datamapper.diagram.custom.action.LoadInputSchema
 import org.wso2.developerstudio.datamapper.diagram.custom.action.LoadOutputSchemaAction;
 import org.wso2.developerstudio.datamapper.diagram.custom.action.SplitManyAction;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.ConcatEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.ConstantEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.InputEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.OutputEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.SplitEditPart;
@@ -122,6 +124,7 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
 		contextActions.put(OutputEditPart.class, new LoadOutputSchemaAction(part));
 		contextActions.put(ConcatEditPart.class, new ConcatManyAction(part));
 		contextActions.put(SplitEditPart.class, new SplitManyAction(part));
+		contextActions.put(ConstantEditPart.class, new ConstantConfigureAction(part));
 
 		// Initialize new root record context sensitive actions.
 		addNewRootElementContextActions = new HashMap<Class<? extends ShapeNodeEditPart>, AbstractActionHandler>();

@@ -19,5 +19,6 @@ public class TransformerConstants {
 
     public static final String DELIMITER_TAG = "delimiter";
     public static final String CONSTANT_VALUE_TAG = "constantValue";
+    public static final String CONSTANT_TYPE_TAG = "canstantType";
     
 }

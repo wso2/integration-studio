@@ -105,7 +105,9 @@ public class Messages extends NLS {
 	public static String ExportSchemaAction_warnNotSavedToFile;
 	public static String ExportSchemaAction_warnNoSchematoExport;
 	public static String ExportSchemaAction_warnTitle;
-
+	public static String Configure_Constant_Operator_Action_Id;
+	public static String Configure_Constant_Operator_Text;
+	public static String Configure_Constant_Operator_Tool_Tip;
 	static {
 		// initialize resource bundle
 		NLS.initializeMessages(BUNDLE_NAME, Messages.class);

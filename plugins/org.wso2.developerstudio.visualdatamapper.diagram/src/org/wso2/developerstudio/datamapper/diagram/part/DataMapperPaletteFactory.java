@@ -394,7 +394,7 @@ public class DataMapperPaletteFactory {
 							}
 
 						} // for
-					} 
+					}
 
 					/*
 					 * for leftconnector
@@ -422,7 +422,8 @@ public class DataMapperPaletteFactory {
 							}
 
 						} // for
-					} // for leftconnector mouse enter
+					} 
+					// for leftconnector mouse enter
 					return super.getCommand();
 				}// get command
 			}; // UnspecifiedTypeConnectionTool

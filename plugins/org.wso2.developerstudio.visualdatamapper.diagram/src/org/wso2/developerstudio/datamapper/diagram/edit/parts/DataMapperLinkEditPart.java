@@ -14,21 +14,34 @@
  */
 package org.wso2.developerstudio.datamapper.diagram.edit.parts;
 
+import org.eclipse.draw2d.ColorConstants;
 import org.eclipse.draw2d.Connection;
 import org.eclipse.draw2d.Graphics;
+import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.ManhattanConnectionRouter;
+import org.eclipse.draw2d.MouseEvent;
+import org.eclipse.draw2d.MouseListener;
+import org.eclipse.draw2d.MouseMotionListener;
 import org.eclipse.draw2d.PolylineConnection;
 import org.eclipse.draw2d.RectangleFigure;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.PointList;
 import org.eclipse.gef.EditPolicy;
+import org.eclipse.gmf.runtime.common.core.util.StringStatics;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionNodeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ITreeBranchEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
+import org.eclipse.gmf.runtime.diagram.ui.figures.BorderedNodeFigure;
+import org.eclipse.gmf.runtime.diagram.ui.figures.DiagramColorConstants;
+import org.eclipse.gmf.runtime.diagram.ui.internal.properties.Properties;
+import org.eclipse.gmf.runtime.diagram.ui.requests.ChangePropertyValueRequest;
 import org.eclipse.gmf.runtime.diagram.ui.requests.CreateConnectionViewRequest;
+import org.eclipse.gmf.runtime.draw2d.ui.figures.FigureUtilities;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx;
+import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.swt.graphics.Color;
+import org.eclipse.swt.graphics.LineAttributes;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.InNode2EditPart.InNode2Figure;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.InNode3EditPart.InNode3Figure;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.InNodeEditPart.InNodeFigure;
@@ -108,7 +121,8 @@ public class DataMapperLinkEditPart extends ConnectionNodeEditPart implements IT
 				super.paintFigure(graphics);
 				
 			}
-
+			
+			
 			public PointList getPoints() {
 				
 				PointList list = super.getPoints();
@@ -128,7 +142,115 @@ public class DataMapperLinkEditPart extends ConnectionNodeEditPart implements IT
 				return list;
 			}
 		};
+		
+		
 		connection.setConnectionRouter(new ManhattanConnectionRouter());
+		
+		connection.addMouseListener(new MouseListener() {
+			
+			@Override
+			public void mouseReleased(MouseEvent me) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mousePressed(MouseEvent me) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseDoubleClicked(MouseEvent me) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+		
+		connection.addMouseMotionListener(new MouseMotionListener() {
+			
+			@Override
+			public void mouseMoved(MouseEvent me) {
+				
+			}
+			
+			@Override
+			public void mouseHover(MouseEvent me) {
+				
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent me) {
+				if (getSource() instanceof OutNodeEditPart) {
+					
+					OutNodeEditPart outNodeEditPart = (OutNodeEditPart) getSource();
+					if (outNodeEditPart.getParent() instanceof TreeNode2EditPart) {
+						TreeNode2EditPart num =(TreeNode2EditPart) outNodeEditPart.getParent();
+					    num.removeHighlightOnElem();
+					}if (outNodeEditPart.getParent() instanceof TreeNodeEditPart) {
+						TreeNodeEditPart num =(TreeNodeEditPart) outNodeEditPart.getParent();
+					    num.removeHighlightOnElem();
+					}
+					if (outNodeEditPart.getParent() instanceof TreeNode3EditPart) {
+						TreeNode3EditPart num =(TreeNode3EditPart) outNodeEditPart.getParent();
+					    num.removeHighlightOnElem();
+					}
+				} if (getTarget() instanceof InNodeEditPart) {
+					InNodeEditPart inNodeEditPart = (InNodeEditPart) getTarget();
+					if (inNodeEditPart.getParent() instanceof TreeNode2EditPart) {
+						TreeNode2EditPart num =(TreeNode2EditPart) inNodeEditPart.getParent();
+					    num.removeHighlightOnElem();
+					}if (inNodeEditPart.getParent() instanceof TreeNodeEditPart) {
+						TreeNodeEditPart num =(TreeNodeEditPart) inNodeEditPart.getParent();
+					    num.removeHighlightOnElem();
+					}
+					if (inNodeEditPart.getParent() instanceof TreeNode3EditPart) {
+						TreeNode3EditPart num =(TreeNode3EditPart) inNodeEditPart.getParent();
+					    num.removeHighlightOnElem();
+					}
+				}
+			}
+			
+			@Override
+			public void mouseEntered(MouseEvent me) {
+				if (getSource() instanceof OutNodeEditPart) {
+					OutNodeEditPart outNodeEditPart = (OutNodeEditPart) getSource();
+					if (outNodeEditPart.getParent() instanceof TreeNode2EditPart) {
+						TreeNode2EditPart num =(TreeNode2EditPart) outNodeEditPart.getParent();
+					    num.highlightElementItem();
+					}if (outNodeEditPart.getParent() instanceof TreeNodeEditPart) {
+						TreeNodeEditPart num =(TreeNodeEditPart) outNodeEditPart.getParent();
+					    num.highlightElementItem();
+					}
+					if (outNodeEditPart.getParent() instanceof TreeNode3EditPart) {
+						TreeNode3EditPart num =(TreeNode3EditPart) outNodeEditPart.getParent();
+					    num.highlightElementItem();
+					}
+				}
+				if (getTarget() instanceof InNodeEditPart) {
+					InNodeEditPart inNodeEditPart = (InNodeEditPart) getTarget();
+					if (inNodeEditPart.getParent() instanceof TreeNode2EditPart) {
+						TreeNode2EditPart num =(TreeNode2EditPart) inNodeEditPart.getParent();
+					    num.highlightElementItem();
+					}if (inNodeEditPart.getParent() instanceof TreeNodeEditPart) {
+						TreeNodeEditPart num =(TreeNodeEditPart) inNodeEditPart.getParent();
+					    num.highlightElementItem();
+					}
+					if (inNodeEditPart.getParent() instanceof TreeNode3EditPart) {
+						TreeNode3EditPart num =(TreeNode3EditPart) inNodeEditPart.getParent();
+					    num.highlightElementItem();
+					}
+				}
+				
+			}
+			
+			@Override
+			public void mouseDragged(MouseEvent me) {
+				
+			}
+		});
+		
+		
 		return connection;
 	}
 

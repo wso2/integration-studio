@@ -36,6 +36,7 @@ import org.eclipse.gmf.runtime.emf.type.core.IElementType;
 import org.eclipse.gmf.runtime.notation.View;
 import org.wso2.developerstudio.datamapper.PropertyKeyValuePair;
 import org.wso2.developerstudio.datamapper.TreeNode;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.DataMapperLinkEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.DataMapperRootEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.InNode2EditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.InNode3EditPart;
@@ -71,8 +72,11 @@ public class DataMapperPaletteFactory {
 	private PaletteEntry createDataMapperLinkGroup() {
 		PaletteDrawer paletteContainer = new PaletteDrawer("Connectors");
 
-		/*PaletteGroup paletteContainer = new PaletteGroup(
-		 org.wso2.developerstudio.datamapper.diagram.part.Messages.DataMapper1Group_title);*/
+		/*
+		 * PaletteGroup paletteContainer = new PaletteGroup(
+		 * org.wso2.developerstudio.datamapper.diagram.part.Messages.
+		 * DataMapper1Group_title);
+		 */
 		paletteContainer.setId("createDataMapper1Group"); //$NON-NLS-1$
 		paletteContainer.add(createDataMapperLink1CreationTool());
 		paletteContainer.setInitialState(INITIAL_STATE_CLOSED);
@@ -88,16 +92,19 @@ public class DataMapperPaletteFactory {
 
 		PaletteDrawer paletteContainer = new PaletteDrawer("Operators");
 
-		/*		PaletteGroup paletteContainer = new PaletteGroup(
-		 org.wso2.developerstudio.datamapper.diagram.part.Messages.DataMapper1Group_title);*/
+		/*
+		 * PaletteGroup paletteContainer = new PaletteGroup(
+		 * org.wso2.developerstudio.datamapper.diagram.part.Messages.
+		 * DataMapper1Group_title);
+		 */
 		paletteContainer.setId("createDataMapper1Group"); //$NON-NLS-1$
-//		paletteContainer.add(createDataMapperLink1CreationTool());
-		//		paletteContainer.add(createEqual2CreationTool());
+		// paletteContainer.add(createDataMapperLink1CreationTool());
+		// paletteContainer.add(createEqual2CreationTool());
 		paletteContainer.add(createConcat3CreationTool());
 		paletteContainer.add(createSplit4CreationTool());
 		paletteContainer.add(createConstant5CreationTool());
 		paletteContainer.add(createLowerCase6CreationTool());
-		//paletteContainer.add(createContains7CreationTool());
+		// paletteContainer.add(createContains7CreationTool());
 		paletteContainer.add(createUpperCase8CreationTool());
 		paletteContainer.setInitialState(INITIAL_STATE_OPEN);
 		return paletteContainer;
@@ -107,9 +114,8 @@ public class DataMapperPaletteFactory {
 	 * @generated NOT
 	 */
 	private ToolEntry createDataMapperLink1CreationTool() {
-		//removing the datamapper link entry in the operator tool palette
-		LinkToolEntry entry = new LinkToolEntry("Data Mapper Link",
-				"Data Mapper Link",
+		// removing the datamapper link entry in the operator tool palette
+		LinkToolEntry entry = new LinkToolEntry("Data Mapper Link", "Data Mapper Link",
 				Collections.singletonList(DataMapperElementTypes.DataMapperLink_4001));
 		entry.setId("createDataMapperLink1CreationTool"); //$NON-NLS-1$
 		entry.setSmallIcon(DataMapperElementTypes.getImageDescriptor(DataMapperElementTypes.DataMapperLink_4001));
@@ -285,25 +291,27 @@ public class DataMapperPaletteFactory {
 
 				@Override
 				protected Command getCommand() {
-						
+
 					/*
 					 * for Tree nodes
 					 */
 					if (getTargetEditPart() instanceof TreeNodeEditPart) {
 						for (int i = 0; i < ((TreeNodeEditPart) getTargetEditPart()).getChildren().size(); ++i) {
 							TreeNodeEditPart treeNodeEditPart = (TreeNodeEditPart) getTargetEditPart();
-							if (getRoot(getTargetEditPart()) instanceof OutputEditPart && !treeNodeEditPart.isInNodeEmpty()) {
+							if (getRoot(getTargetEditPart()) instanceof OutputEditPart
+									&& !treeNodeEditPart.isInNodeEmpty()) {
 
 								if (treeNodeEditPart.getChildren().get(i) instanceof InNodeEditPart) {
 									return ((EditPart) treeNodeEditPart.getChildren().get(i))
 											.getCommand(getTargetRequest());
 
 								} else if (treeNodeEditPart.getChildren().get(i) instanceof InNode2EditPart) {
-									return ((InNode2EditPart) treeNodeEditPart.getChildren()
-											.get(i)).getCommand(getTargetRequest());
+									return ((InNode2EditPart) treeNodeEditPart.getChildren().get(i))
+											.getCommand(getTargetRequest());
 
 								}
-							} else if (getRoot(getTargetEditPart()) instanceof InputEditPart && !treeNodeEditPart.isOutNodeEmpty()) {
+							} else if (getRoot(getTargetEditPart()) instanceof InputEditPart
+									&& !treeNodeEditPart.isOutNodeEmpty()) {
 
 								if (treeNodeEditPart.getChildren().get(i) instanceof OutNodeEditPart) {
 									setTargetEditPart((OutNodeEditPart) treeNodeEditPart.getChildren().get(i));
@@ -317,61 +325,64 @@ public class DataMapperPaletteFactory {
 
 							}
 
-						}// for
+						} // for
 					} else if (getTargetEditPart() instanceof TreeNode2EditPart) {
 						TreeNode2EditPart treeNode2EditPart = (TreeNode2EditPart) getTargetEditPart();
 						for (int i = 0; i < treeNode2EditPart.getChildren().size(); ++i) {
-							//TreeNode2EditPart treeNode2EditPart = (TreeNode2EditPart) getTargetEditPart();
-							if (getRoot(getTargetEditPart()) instanceof OutputEditPart && !treeNode2EditPart.isInNodeEmpty()) {
+							// TreeNode2EditPart treeNode2EditPart =
+							// (TreeNode2EditPart) getTargetEditPart();
+							if (getRoot(getTargetEditPart()) instanceof OutputEditPart
+									&& !treeNode2EditPart.isInNodeEmpty()) {
 								if (treeNode2EditPart.getChildren().get(i) instanceof InNodeEditPart) {
-									return ((InNodeEditPart) treeNode2EditPart.getChildren()
-											.get(i)).getCommand(getTargetRequest());
+									return ((InNodeEditPart) treeNode2EditPart.getChildren().get(i))
+											.getCommand(getTargetRequest());
 								} else if (treeNode2EditPart.getChildren().get(i) instanceof InNode2EditPart) {
-									return ((InNode2EditPart) treeNode2EditPart.getChildren()
-											.get(i)).getCommand(getTargetRequest());
+									return ((InNode2EditPart) treeNode2EditPart.getChildren().get(i))
+											.getCommand(getTargetRequest());
 
-								}else if (treeNode2EditPart.getChildren().get(i) instanceof InNode3EditPart) {
-									return ((InNode3EditPart) treeNode2EditPart.getChildren()
-											.get(i)).getCommand(getTargetRequest());
-
+								} else if (treeNode2EditPart.getChildren().get(i) instanceof InNode3EditPart) {
+									return ((InNode3EditPart) treeNode2EditPart.getChildren().get(i))
+											.getCommand(getTargetRequest());
 								}
-							} else if (getRoot(getTargetEditPart()) instanceof InputEditPart && !treeNode2EditPart.isOutNodeEmpty()) {
+							} else if (getRoot(getTargetEditPart()) instanceof InputEditPart
+									&& !treeNode2EditPart.isOutNodeEmpty()) {
 								if (treeNode2EditPart.getChildren().get(i) instanceof OutNodeEditPart) {
-										setTargetEditPart((OutNodeEditPart) treeNode2EditPart.getChildren().get(i));
-										return super.getCommand();
+									setTargetEditPart((OutNodeEditPart) treeNode2EditPart.getChildren().get(i));
+									return super.getCommand();
 								} else if (treeNode2EditPart.getChildren().get(i) instanceof OutNode2EditPart) {
-//									((OutNode2EditPart) treeNode2EditPart.getChildren().get(i)).highlightConnectedNode();
+									// ((OutNode2EditPart)
+									// treeNode2EditPart.getChildren().get(i)).highlightConnectedNode();
 									setTargetEditPart((OutNode2EditPart) treeNode2EditPart.getChildren().get(i));
 									return super.getCommand();
 
-								}  else if (treeNode2EditPart.getChildren().get(i) instanceof OutNode3EditPart) {
-//									((OutNode3EditPart) treeNode2EditPart.getChildren().get(i)).highlightConnectedNode();
+								} else if (treeNode2EditPart.getChildren().get(i) instanceof OutNode3EditPart) {
+									// ((OutNode3EditPart)
+									// treeNode2EditPart.getChildren().get(i)).highlightConnectedNode();
 									setTargetEditPart((OutNode3EditPart) treeNode2EditPart.getChildren().get(i));
 									return super.getCommand();
-
-
 								}
 
 							}
 
-						}// for
-						
-						
+						} // for
+
 					} else if (getTargetEditPart() instanceof TreeNode3EditPart) {
 						for (int i = 0; i < ((TreeNode3EditPart) getTargetEditPart()).getChildren().size(); ++i) {
 							TreeNode3EditPart treeNode3EditPart = (TreeNode3EditPart) getTargetEditPart();
-							if (getRoot(getTargetEditPart()) instanceof OutputEditPart && !treeNode3EditPart.isInNodeEmpty()) {
+							if (getRoot(getTargetEditPart()) instanceof OutputEditPart
+									&& !treeNode3EditPart.isInNodeEmpty()) {
 
 								if (treeNode3EditPart.getChildren().get(i) instanceof InNodeEditPart) {
 									return ((EditPart) treeNode3EditPart.getChildren().get(i))
 											.getCommand(getTargetRequest());
 
 								} else if (treeNode3EditPart.getChildren().get(i) instanceof InNode2EditPart) {
-									return ((InNode2EditPart) treeNode3EditPart.getChildren()
-											.get(i)).getCommand(getTargetRequest());
+									return ((InNode2EditPart) treeNode3EditPart.getChildren().get(i))
+											.getCommand(getTargetRequest());
 
 								}
-							} else if (getRoot(getTargetEditPart()) instanceof InputEditPart && !treeNode3EditPart.isOutNodeEmpty()) {
+							} else if (getRoot(getTargetEditPart()) instanceof InputEditPart
+									&& !treeNode3EditPart.isOutNodeEmpty()) {
 								if (treeNode3EditPart.getChildren().get(i) instanceof OutNodeEditPart) {
 									setTargetEditPart((OutNodeEditPart) treeNode3EditPart.getChildren().get(i));
 									return super.getCommand();
@@ -379,19 +390,18 @@ public class DataMapperPaletteFactory {
 								} else if (treeNode3EditPart.getChildren().get(i) instanceof OutNode2EditPart) {
 									setTargetEditPart((OutNode2EditPart) treeNode3EditPart.getChildren().get(i));
 									return super.getCommand();
-
 								}
 							}
 
-						}// for
-					}
-					// for treenode mouse enter
+						} // for
+					} 
 
 					/*
 					 * for leftconnector
 					 */
 					if (getTargetEditPart() instanceof OperatorLeftConnectorEditPart) {
-						for (int i = 0; i < ((OperatorLeftConnectorEditPart) getTargetEditPart()).getChildren().size(); ++i) {
+						for (int i = 0; i < ((OperatorLeftConnectorEditPart) getTargetEditPart()).getChildren()
+								.size(); ++i) {
 
 							if ((getTargetEditPart()).getChildren().get(i) instanceof InNode3EditPart) {
 								return ((EditPart) (getTargetEditPart()).getChildren().get(i))
@@ -399,19 +409,20 @@ public class DataMapperPaletteFactory {
 
 							}
 
-						}// for
-					}else if (getTargetEditPart() instanceof OperatorRightConnectorEditPart) {
-						for (int i = 0; i < ((OperatorRightConnectorEditPart) getTargetEditPart()).getChildren().size(); ++i) {
+						} // for
+					} else if (getTargetEditPart() instanceof OperatorRightConnectorEditPart) {
+						for (int i = 0; i < ((OperatorRightConnectorEditPart) getTargetEditPart()).getChildren()
+								.size(); ++i) {
 
 							if ((getTargetEditPart()).getChildren().get(i) instanceof OutNode3EditPart) {
-								setTargetEditPart((OutNode3EditPart) (EditPart) (getTargetEditPart()).getChildren().get(i));
+								setTargetEditPart(
+										(OutNode3EditPart) (EditPart) (getTargetEditPart()).getChildren().get(i));
 								return super.getCommand();
-
 
 							}
 
-						}// for
-					}// for leftconnector mouse enter
+						} // for
+					} // for leftconnector mouse enter
 					return super.getCommand();
 				}// get command
 			}; // UnspecifiedTypeConnectionTool

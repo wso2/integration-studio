@@ -80,6 +80,11 @@ public class ConfigureSplitOperatorDialog extends Dialog {
 		newShell.setText("Split Operator Properties");
 	}
 
+    @Override
+    protected boolean isResizable() {
+        return true;
+    }
+    
 	protected Control createDialogArea(Composite parent) {
 		Composite container = (Composite) super.createDialogArea(parent);
 		FormLayout mainLayout = new FormLayout();

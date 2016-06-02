@@ -26,6 +26,7 @@ import org.eclipse.gmf.runtime.common.ui.action.AbstractActionHandler;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.jface.window.Window;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.IWorkbenchPart;
@@ -60,10 +61,10 @@ public class ConstantConfigureAction extends AbstractActionHandler {
     protected void doRun(IProgressMonitor progressMonitor) {
         EditPart selectedEP = getSelectedEditPart();
         EObject selectedObj = ((View) selectedEP.getModel()).getElement();
-        Dialog configureConcat = new ConfigureConstantOperatorDialog(Display.getDefault().getActiveShell(),
+        Dialog configureConstantDialog= new ConfigureConstantOperatorDialog(Display.getDefault().getActiveShell(),
                 (Constant) selectedObj, getEditingDomain(), selectedEP);
-        configureConcat.setBlockOnOpen(true);
-        configureConcat.open();
+        configureConstantDialog.create();
+        configureConstantDialog.open();
     }
     
     protected EditPart getSelectedEditPart() {

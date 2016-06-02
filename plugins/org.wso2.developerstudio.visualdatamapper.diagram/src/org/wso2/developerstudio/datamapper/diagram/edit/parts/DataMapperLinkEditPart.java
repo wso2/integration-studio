@@ -111,15 +111,6 @@ public class DataMapperLinkEditPart extends ConnectionNodeEditPart implements IT
 
 			public PointList getPoints() {
 				
-				if (getTarget() instanceof InNode2Figure) {
-					((InNode2Figure) getTarget()).highlightElementOnSelection();
-				}else if (getTarget() instanceof InNode3Figure) {
-					((InNode3Figure) getTarget()).highlightElementOnSelection();
-				}else if (getTarget() instanceof InNodeFigure) {
-					((InNodeFigure) getTarget()).highlightElementOnSelection();
-				}
-				if (getSource() instanceof OutNode2Figure){
-				}
 				PointList list = super.getPoints();
 				if (list.size() == 0) {
 					return list;

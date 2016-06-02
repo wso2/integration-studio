@@ -186,7 +186,7 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
                 indexOfMostInnerForLoopBean = getMostInnerForLoopBeanFromList(operationForLoopBeansList);
             }
             for (DMVariable outputVariable : outputVariables) {
-                if (DMVariableType.INTERMEDIATE.equals(outputVariable.getType())) {
+                if (DMVariableType.INTERMEDIATE.equals(outputVariable.getType()) && !outputVariable.getName().contains("{")) {
                     functionBuilder.append("var " + outputVariable.getName() + " = [];");
                     functionBuilder.append("\n");
                 } else if (DMVariableType.OUTPUT.equals(outputVariable.getType())) {

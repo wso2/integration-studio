@@ -23,6 +23,7 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ES
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.synapse.commons.json.JsonBuilder;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IMarkerDelta;
 import org.eclipse.core.runtime.CoreException;
@@ -56,10 +57,14 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.suspendpoint.ES
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.DebugPointEventAction;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerResumeType;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerUtil;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBPropertyScopeType;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.Messages;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.OpenEditorUtil;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
+
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 
 /**
  * This is the root of the ESB Mediation Debugger debug element hierarchy. It
@@ -124,7 +129,6 @@ public class ESBDebugTarget extends ESBDebugElement implements IDebugTarget, Eve
                     }
 
                 } else if (event instanceof PropertyRecievedEvent) {
-
                     try {
                         ESBStackFrame stackFrame = getThreads()[0].getTopStackFrame();
                         PropertyRespondMessage propertyMessage = ((PropertyRecievedEvent) event).getVariables();
@@ -140,6 +144,7 @@ public class ESBDebugTarget extends ESBDebugElement implements IDebugTarget, Eve
                     debugTargetEventBroker.unsubscribe(this);
                     this.fireTerminateEvent();
                 } else if (event instanceof MediationFlowCompleteEvent) {
+                    clearVariableTable();
                     setState(ESBDebuggerState.RESUMED);
                     clearSuspendedEventStatus();
                 }
@@ -147,6 +152,23 @@ public class ESBDebugTarget extends ESBDebugElement implements IDebugTarget, Eve
                 log.warn("Unhandled event type detected for Event Broker Topic : " + ESBDEBUGGER_EVENT_TOPIC);
             }
         }
+    }
+
+    private void clearVariableTable() {
+        ESBStackFrame stackFrame = getThreads()[0].getTopStackFrame();
+        for (ESBPropertyScopeType scope : ESBPropertyScopeType.values()) {
+            try {
+                PropertyRespondMessage propertyMessage = getEmptyVariableMessage(scope.toString());
+                stackFrame.setVariables(propertyMessage);
+            } catch (Exception e) {
+                log.error("Error while seting variable values", e); //$NON-NLS-1$
+            }
+        }
+    }
+
+    private PropertyRespondMessage getEmptyVariableMessage(String variableScope) {
+        PropertyRespondMessage variableMessage = new PropertyRespondMessage(variableScope, new JsonObject());
+        return variableMessage;
     }
 
     /**

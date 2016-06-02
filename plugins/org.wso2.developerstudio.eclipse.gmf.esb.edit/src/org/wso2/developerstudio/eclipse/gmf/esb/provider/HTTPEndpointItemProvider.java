@@ -63,7 +63,8 @@ public class HTTPEndpointItemProvider
 		if (itemPropertyDescriptors != null) {
 			itemPropertyDescriptors.clear();
 		}
-		
+		addStatisticsEnabledPropertyDescriptor(object);
+		addTraceEnabledPropertyDescriptor(object);
 		addURITemplatePropertyDescriptor(object);
 		addHttpMethodPropertyDescriptor(object);
 		addDescriptionPropertyDescriptor(object);

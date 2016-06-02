@@ -22,6 +22,7 @@ import org.wso2.developerstudio.datamapper.impl.ConstantImpl;
 import org.wso2.developerstudio.datamapper.impl.OperatorImpl;
 
 import static org.wso2.developerstudio.datamapper.diagram.custom.model.transformers.TransformerConstants.CONSTANT_VALUE_TAG;
+import static org.wso2.developerstudio.datamapper.diagram.custom.model.transformers.TransformerConstants.CONSTANT_TYPE_TAG;
 
 public class ConstantModelTransformer implements IModelTransformer {
 
@@ -30,7 +31,8 @@ public class ConstantModelTransformer implements IModelTransformer {
         if (operator instanceof ConstantImpl) {
             ConstantImpl constantOperator = (ConstantImpl) operator;
             DMOperation constantOperatorModel = new DMOperation(DMOperatorType.CONSTANT, operator.toString(), index);
-            constantOperatorModel.addProperty(CONSTANT_VALUE_TAG, constantOperator.getConstantValue());
+            constantOperatorModel.addProperty(CONSTANT_VALUE_TAG, constantOperator.getConstValue());
+            constantOperatorModel.addProperty(CONSTANT_TYPE_TAG, constantOperator.getConstType());
             return constantOperatorModel;
         }
         throw new IllegalArgumentException("ConstantImpl operator expected. Found : " + operator.toString());

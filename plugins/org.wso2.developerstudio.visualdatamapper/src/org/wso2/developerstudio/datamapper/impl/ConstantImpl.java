@@ -41,6 +41,9 @@ public class ConstantImpl extends OperatorImpl implements Constant {
 	 */
 	protected String constantValue = CONSTANT_VALUE_EDEFAULT;
 
+	private String constValue = "";
+	
+	private String constType = "";
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -154,5 +157,21 @@ public class ConstantImpl extends OperatorImpl implements Constant {
 		result.append(')');
 		return result.toString();
 	}
+
+    public String getConstValue() {
+        return constValue;
+    }
+
+    public void setConstValue(String constValue) {
+        this.constValue = constValue;
+    }
+
+    public String getConstType() {
+        return constType;
+    }
+
+    public void setConstType(String constType) {
+        this.constType = constType;
+    }
 
 } //ConstantImpl

@@ -184,7 +184,8 @@ public class SchemaBuilder {
 						for (Entry<String, JsonElement> contentEntry : contentEntrySet) {
 							String contentKey = contentEntry.getKey();
 							if (contentKey.equals(CONTENT)) {
-								addPrimitiveToParent(parent, id, contentEntry.getValue().toString(), propertyValueType,
+								TypeEnum propertyType = RealTypeOf(contentEntry.getValue());
+								addPrimitiveToParent(parent, id, propertyType.toString().toLowerCase(), propertyValueType,
 										elementIdentifierMap);
 							}
 						}
@@ -452,7 +453,8 @@ public class SchemaBuilder {
 				JsonSchema leaf = new JsonSchema();
 				String idwithoutAtSign = attributeId.substring(1);
 				leaf.setId(parent.getId() + "/" + idwithoutAtSign);
-				leaf.setType(STRING);
+				String type = getAttributeType(parent, (JsonObject) attributeElement);
+				leaf.setType(type);
 				primitive.setType(TypeEnum.OBJECT.toString().toLowerCase());
 				primitive.addAttribute(idwithoutAtSign, leaf);
 			}else if (attributeId.startsWith(HASHCONTENT)) {
@@ -480,7 +482,8 @@ public class SchemaBuilder {
 				JsonSchema leaf = new JsonSchema();
 				String idwithoutAtSign = attributeId.substring(1);
 				leaf.setId(parent.getId() + "/" + idwithoutAtSign);
-				leaf.setType(STRING);
+				String type = getAttributeType(parent, (JsonObject) attributeElement);
+				leaf.setType(type);
 				primitive.addAttribute(idwithoutAtSign, leaf);
 				primitive.setType(TypeEnum.OBJECT.toString().toLowerCase());
 			} else if (attributeId.equals(HASHCONTENT)) {
@@ -573,6 +576,24 @@ public class SchemaBuilder {
 					parent.addCustomObject("value", object);	
 				}
 			}
+	}
+	
+	/**
+	 * Adds the value object
+	 * @param parent
+	 * @param valueObject
+	 */
+	private String getAttributeType(JsonSchema parent, JsonObject attrObject) {
+		TypeEnum propertyType = null;
+		Set<Entry<String, JsonElement>> contentEntrySet = attrObject.getAsJsonObject().entrySet();
+			for (Entry<String, JsonElement> contentEntry : contentEntrySet) {
+				String contentKey = contentEntry.getKey();
+				if (contentKey.equals(CONTENT)) {
+					propertyType = RealTypeOf(contentEntry.getValue());
+	
+				}
+			}
+			return propertyType.toString().toLowerCase();
 	}
 	
 }

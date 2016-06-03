@@ -110,7 +110,7 @@ public class DataMapperLinkEditPart extends ConnectionNodeEditPart implements IT
 	 * @generated NOT
 	 */
 	protected Connection createConnectionFigure() {
-		PolylineConnection connection = new PolylineConnection() {
+		final PolylineConnection connection = new PolylineConnection() {
 
 			@Override
 			public void paintFigure(Graphics graphics) {

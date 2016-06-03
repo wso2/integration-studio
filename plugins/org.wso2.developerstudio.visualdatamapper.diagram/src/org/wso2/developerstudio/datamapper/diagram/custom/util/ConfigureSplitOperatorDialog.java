@@ -17,6 +17,7 @@ package org.wso2.developerstudio.datamapper.diagram.custom.util;
 
 import java.util.ArrayList;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.synapse.transport.http.conn.ClientSSLSetupHandler;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.util.EList;
@@ -29,6 +30,8 @@ import org.eclipse.gmf.runtime.emf.type.core.commands.SetValueCommand;
 import org.eclipse.gmf.runtime.emf.type.core.requests.SetRequest;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.dialogs.IDialogConstants;
+import org.eclipse.jface.dialogs.IMessageProvider;
+import org.eclipse.jface.dialogs.TitleAreaDialog;
 import org.eclipse.papyrus.infra.gmfdiag.css.CSSShapeImpl;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
@@ -36,187 +39,192 @@ import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.layout.FormAttachment;
 import org.eclipse.swt.layout.FormData;
 import org.eclipse.swt.layout.FormLayout;
+import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.wso2.developerstudio.datamapper.DataMapperFactory;
 import org.wso2.developerstudio.datamapper.DataMapperPackage;
+import org.wso2.developerstudio.datamapper.OperatorLeftConnector;
 import org.wso2.developerstudio.datamapper.OperatorRightConnector;
 import org.wso2.developerstudio.datamapper.Split;
 import org.wso2.developerstudio.datamapper.diagram.part.DataMapperDiagramEditor;
 import org.wso2.developerstudio.datamapper.impl.SplitImpl;
 
-public class ConfigureSplitOperatorDialog extends Dialog {
+public class ConfigureSplitOperatorDialog extends TitleAreaDialog {
 
-	private Split splitOperator;
-	private Label caseCount;
-	private Label caseDelimiter;
-	private Text count;
-	private Text delimiter;
-	private EditPart editpart;
-	private TransactionalEditingDomain editingDomain;
-	SplitImpl spliter = null;
-	// private ArrayList<OperatorLeftContainer> caseBranches=new
-	// ArrayList<OperatorLeftContainer>();
-	private ArrayList<OperatorRightConnector> caseOutputConnectors = new ArrayList<OperatorRightConnector>();
+    private Split splitOperator;
+    private String outputCount;
+    private Label caseCount;
+    private Label caseDelimiter;
+    private Text count;
+    private String delimiter;
+    private EditPart editpart;
+    private TransactionalEditingDomain editingDomain;
+    SplitImpl splitImpl = null;
+    private ArrayList<OperatorRightConnector> caseOutputConnectors = new ArrayList<OperatorRightConnector>();
 
-	public ConfigureSplitOperatorDialog(Shell parentShell, Split splitOperator,
-			TransactionalEditingDomain editingDomain, EditPart editpart) {
-		
-		super(parentShell);
-		this.splitOperator = splitOperator;
-		this.editpart = editpart;
-		this.editingDomain = editingDomain;
-		CSSShapeImpl spliterdd = (CSSShapeImpl) this.editpart.getModel();
-		spliter = (SplitImpl) spliterdd.getElement();
-	}
+    public ConfigureSplitOperatorDialog(Shell parentShell, Split splitOperator,
+            TransactionalEditingDomain editingDomain, EditPart editpart) {
+        super(parentShell);
+        this.splitOperator = splitOperator;
+        this.editpart = editpart;
+        this.editingDomain = editingDomain;
+        CSSShapeImpl spliterdd = (CSSShapeImpl) this.editpart.getModel();
+        splitImpl = (SplitImpl) spliterdd.getElement();
+    }
 
-	protected void configureShell(Shell newShell) {
-		super.configureShell(newShell);
-		// Set title.
-		newShell.setText("Split Operator Properties");
-	}
+    @Override
+    public void create() {
+        super.create();
+        setTitle("Configure Split Operator");
+        setMessage("Set split operator properties", IMessageProvider.INFORMATION);
+    }
+
+    protected void configureShell(Shell newShell) {
+        super.configureShell(newShell);
+        // Set title.
+        newShell.setText("Split Operator Properties");
+    }
 
     @Override
     protected boolean isResizable() {
         return true;
     }
-    
-	protected Control createDialogArea(Composite parent) {
-		Composite container = (Composite) super.createDialogArea(parent);
-		FormLayout mainLayout = new FormLayout();
-		mainLayout.marginHeight = 5;
-		mainLayout.marginWidth = 5;
-		container.setLayout(mainLayout);
 
-		caseCount = new Label(container, SWT.NONE);
-		{
-			caseCount.setText("No of Branches :         ");
-			FormData caseCountLabelLayoutData = new FormData();
-			caseCountLabelLayoutData.top = new FormAttachment(0, 5);
-			caseCountLabelLayoutData.left = new FormAttachment(0);
-			caseCount.setLayoutData(caseCountLabelLayoutData);
-		}
+    protected Control createDialogArea(Composite parent) {
+        Composite area = (Composite) super.createDialogArea(parent);
+        Composite container = new Composite(area, SWT.NONE);
+        container.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
+        GridLayout layout = new GridLayout(2, false);
+        container.setLayout(layout);
 
-		count = new Text(container, SWT.NONE);
-		{
-			count.addModifyListener(new ModifyListener() {
-				public void modifyText(ModifyEvent arg0) {
-					validate();
-				}
-			});
-			FormData countLayoutData = new FormData();
-			countLayoutData.width = 50;
-			countLayoutData.top = new FormAttachment(caseCount, 0, SWT.CENTER);
-			countLayoutData.left = new FormAttachment(caseCount, 5);
-			count.setLayoutData(countLayoutData);
-			int i = splitOperator.getBasicContainer().getRightContainer().getRightConnectors().size();
-			count.setText(Integer.toString(i));
-		}
-		caseDelimiter = new Label(container, SWT.NONE);
-		{
-			caseDelimiter.setText("Delimiter to Split : ");
-			FormData caseDelimiterLabelLayoutData = new FormData();
-			caseDelimiterLabelLayoutData.top = new FormAttachment(0, 40);
-			caseDelimiterLabelLayoutData.left = new FormAttachment(0);
-			caseDelimiter.setLayoutData(caseDelimiterLabelLayoutData);
-		}
+        GridData dataPropertyConfigText = new GridData();
+        dataPropertyConfigText.grabExcessHorizontalSpace = true;
+        dataPropertyConfigText.horizontalAlignment = GridData.FILL;
 
-		delimiter = new Text(container, SWT.NONE);
-		
-		if (spliter.getDelimiterValue() != null) {
-		delimiter.setText(spliter.getDelimiterValue());
-		} else {
-			delimiter.setText(",");
-		}
-		{
-			delimiter.addModifyListener(new ModifyListener() {
-				public void modifyText(ModifyEvent arg0) {
-					validate();
-				}
-			});
-			FormData delimiterLayoutData = new FormData();
-			delimiterLayoutData.width = 50;
-			delimiterLayoutData.top = new FormAttachment(caseDelimiter, 0, SWT.CENTER);
-			delimiterLayoutData.left = new FormAttachment(caseDelimiter, 40);
-			delimiter.setLayoutData(delimiterLayoutData);
-		}
+        Label splitOutputConnectorCountLabel = new Label(container, SWT.NULL);
+        splitOutputConnectorCountLabel.setText("Number of Outputs : ");
 
-		return container;
-	}
+        final Text outputConnectorCount = new Text(container, SWT.BORDER);
+        outputConnectorCount.setLayoutData(dataPropertyConfigText);
+        outputConnectorCount
+                .setText(splitOperator.getBasicContainer().getRightContainer().getRightConnectors().size() + "");
+        outputCount = outputConnectorCount.getText();
+        outputConnectorCount.addListener(SWT.Modify, new Listener() {
+            public void handleEvent(Event event) {
+                try {
+                    outputCount = new String(outputConnectorCount.getText());
+                    if (!(StringUtils.isEmpty(outputCount) && StringUtils.isEmpty(delimiter))) {
+                        getButton(IDialogConstants.OK_ID).setEnabled(true);
+                        validate();
+                    } else {
+                        getButton(IDialogConstants.OK_ID).setEnabled(false);
+                    }
+                } catch (Exception e) {
+                    getButton(IDialogConstants.OK_ID).setEnabled(false);
+                }
+            }
+        });
 
-	/**
-	 * Create contents of the button bar.
-	 * 
-	 * @param parent
-	 */
-	@Override
-	protected void createButtonsForButtonBar(Composite parent) {
-		createButton(parent, IDialogConstants.OK_ID, IDialogConstants.OK_LABEL, true);
-		createButton(parent, IDialogConstants.CANCEL_ID, IDialogConstants.CANCEL_LABEL, false);
-		validate();
-	}
+        Label splitDelimiterLabel = new Label(container, SWT.NULL);
+        splitDelimiterLabel.setText("Split Delimiter : ");
 
-	private void validate() {
-		boolean isEnabled = false;
-		Button okButton = getButton(IDialogConstants.OK_ID);
-		if (delimiter != null && count != null) {
-			if (!delimiter.getText().equals("") && delimiter.getText() != null && !delimiter.getText().isEmpty()
-					&& delimiter.getText().length() == 1) {
-				if (!count.getText().equals("0") && !count.getText().equals("") && count.getText() != null && !count.getText().isEmpty()) {
-				isEnabled = true;
-				}
-			}
-		}
-	if (okButton != null) {
-		okButton.setEnabled(isEnabled);
-	}
-	}
+        final Text delimiterText = new Text(container, SWT.BORDER);
+        delimiterText.setLayoutData(dataPropertyConfigText);
+        if (splitImpl.getDelimiterValue() != null) {
+            delimiterText.setText(splitImpl.getDelimiterValue());
+        } else {
+            delimiterText.setText("");
+        }
+        delimiter = delimiterText.getText();
 
-	protected void okPressed() {
-		if (delimiter.getText() != null && !delimiter.getText().isEmpty()) {
-			/*SetRequest reqSet = new SetRequest(editingDomain,
-					spliter, DataMapperPackage.Literals.SPLIT__DELIMITER, delimiter.getText());
-			 SetValueCommand operation = new SetValueCommand(reqSet);*/
-			/*if (operation.canExecute()) {
-				editingDomain.getCommandStack().execute((Command) operation);
-			}*/
-			spliter.setDelimiterValue(delimiter.getText());
-		}
-		int number = Integer.parseInt(count.getText())
-				- splitOperator.getBasicContainer().getRightContainer().getRightConnectors().size();
-		if (number > 0) {
-			for (int i = 0; i < number; ++i) {
-				OperatorRightConnector concatOperatorContainers = DataMapperFactory.eINSTANCE
-						.createOperatorRightConnector();
-				AddCommand addCmd = new AddCommand(editingDomain, splitOperator.getBasicContainer().getRightContainer(),
-						DataMapperPackage.Literals.OPERATOR_RIGHT_CONTAINER__RIGHT_CONNECTORS,
-						concatOperatorContainers);
-				if (addCmd.canExecute()) {
-					editingDomain.getCommandStack().execute(addCmd);
-				}
+        delimiterText.addListener(SWT.Modify, new Listener() {
+            public void handleEvent(Event event) {
+                try {
+                    delimiter = new String(delimiterText.getText());
+                    if (!(StringUtils.isEmpty(outputCount) && StringUtils.isEmpty(delimiter))) {
+                        getButton(IDialogConstants.OK_ID).setEnabled(true);
+                        validate();
+                    } else {
+                        getButton(IDialogConstants.OK_ID).setEnabled(false);
+                    }
+                } catch (Exception e) {
+                    getButton(IDialogConstants.OK_ID).setEnabled(false);
+                }
+            }
+        });
 
-			}
-		} else if (number < 0) {
+        return area;
+    }
 
-			for (int i = 0; i < Math.abs(number); i++) {
-				EList<OperatorRightConnector> listOfRightConnectors = splitOperator.getBasicContainer()
-						.getRightContainer().getRightConnectors();
-				OperatorRightConnector splitOperatorConnector = listOfRightConnectors
-						.get(listOfRightConnectors.size() - 1);
-				caseOutputConnectors.add(splitOperatorConnector);
-				DeleteCommand deleteCmd = new DeleteCommand(editingDomain, caseOutputConnectors);
-				if (deleteCmd.canExecute()) {
-					editingDomain.getCommandStack().execute(deleteCmd);
-				}
-				caseOutputConnectors.remove(splitOperatorConnector);
-			}
-		}
+    /**
+     * Create contents of the button bar.
+     * 
+     * @param parent
+     */
+    @Override
+    protected void createButtonsForButtonBar(Composite parent) {
+        createButton(parent, IDialogConstants.OK_ID, IDialogConstants.OK_LABEL, true);
+        createButton(parent, IDialogConstants.CANCEL_ID, IDialogConstants.CANCEL_LABEL, false);
+        validate();
+    }
 
-		super.okPressed();
-	}
+    private void validate() {
+        boolean isEnabled = false;
+        Button okButton = getButton(IDialogConstants.OK_ID);
+        if (delimiter != null && outputCount != null) {
+            if (!StringUtils.isEmpty(delimiter)) {
+                if (!outputCount.equals("0") && !StringUtils.isEmpty(outputCount)) {
+                    isEnabled = true;
+                }
+            }
+        }
+        if (okButton != null) {
+            okButton.setEnabled(isEnabled);
+        }
+    }
+
+    protected void okPressed() {
+        if (!StringUtils.isEmpty(delimiter)) {
+            splitImpl.setDelimiterValue(delimiter);
+        }
+        int number = Integer.parseInt(outputCount)
+                - splitOperator.getBasicContainer().getRightContainer().getRightConnectors().size();
+        if (number > 0) {
+            for (int i = 0; i < number; ++i) {
+                OperatorRightConnector splitOperatorContainers = DataMapperFactory.eINSTANCE
+                        .createOperatorRightConnector();
+                AddCommand addCmd = new AddCommand(editingDomain, splitOperator.getBasicContainer().getRightContainer(),
+                        DataMapperPackage.Literals.OPERATOR_RIGHT_CONTAINER__RIGHT_CONNECTORS, splitOperatorContainers);
+                if (addCmd.canExecute()) {
+                    editingDomain.getCommandStack().execute(addCmd);
+                }
+
+            }
+        } else if (number < 0) {
+
+            for (int i = 0; i < Math.abs(number); i++) {
+                EList<OperatorRightConnector> listOfRightConnectors = splitOperator.getBasicContainer()
+                        .getRightContainer().getRightConnectors();
+                OperatorRightConnector splitOperatorConnector = listOfRightConnectors
+                        .get(listOfRightConnectors.size() - 1);
+                caseOutputConnectors.add(splitOperatorConnector);
+                DeleteCommand deleteCmd = new DeleteCommand(editingDomain, caseOutputConnectors);
+                if (deleteCmd.canExecute()) {
+                    editingDomain.getCommandStack().execute(deleteCmd);
+                }
+                caseOutputConnectors.remove(splitOperatorConnector);
+            }
+        }
+
+        super.okPressed();
+    }
 
 }

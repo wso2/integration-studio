@@ -40,6 +40,9 @@ public class SplitOperatorTransformer extends AbstractDMOperatorTransformer {
             Map<String, SchemaDataType> variableTypeMap, Stack<ForLoopBean> parentForLoopBeanStack,
             DMOperation operator) {
         String splitOperator = (String) operator.getProperty(DELIMITER_TAG);
+        if (splitOperator == null) {
+            splitOperator = ",";
+        }
         StringBuilder operationBuilder = new StringBuilder();
         if (SameLevelRecordMappingConfigGenerator.class.equals(generatorClass)) {
             if (inputVariables.size() >= 1) {

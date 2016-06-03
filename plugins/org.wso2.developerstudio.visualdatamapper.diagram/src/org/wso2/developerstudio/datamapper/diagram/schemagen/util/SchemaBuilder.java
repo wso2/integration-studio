@@ -190,7 +190,8 @@ public class SchemaBuilder {
 							}
 						}
 					} else {
-						addPrimitiveToParent(parent, id, entry.getValue().toString(), propertyValueType,
+						TypeEnum propertyType = RealTypeOf(entry.getValue());
+						addPrimitiveToParent(parent, id, propertyType.toString().toLowerCase(), propertyValueType,
 								elementIdentifierMap);
 					}
 				}
@@ -453,7 +454,7 @@ public class SchemaBuilder {
 				JsonSchema leaf = new JsonSchema();
 				String idwithoutAtSign = attributeId.substring(1);
 				leaf.setId(parent.getId() + "/" + idwithoutAtSign);
-				String type = getAttributeType(parent, attributeElement);
+				String type = getAttributeType(attributeElement);
 				leaf.setType(type);
 				primitive.setType(TypeEnum.OBJECT.toString().toLowerCase());
 				primitive.addAttribute(idwithoutAtSign, leaf);
@@ -482,7 +483,7 @@ public class SchemaBuilder {
 				JsonSchema leaf = new JsonSchema();
 				String idwithoutAtSign = attributeId.substring(1);
 				leaf.setId(parent.getId() + "/" + idwithoutAtSign);
-				String type = getAttributeType(parent, attributeElement);
+				String type = getAttributeType(attributeElement);
 				leaf.setType(type);
 				primitive.addAttribute(idwithoutAtSign, leaf);
 				primitive.setType(TypeEnum.OBJECT.toString().toLowerCase());
@@ -591,7 +592,7 @@ public class SchemaBuilder {
 	 * @param parent
 	 * @param valueObject
 	 */
-	private String getAttributeType(JsonSchema parent, JsonElement attrObject) {
+	private String getAttributeType(JsonElement attrObject) {
 		TypeEnum propertyType = null;
 		if(attrObject instanceof JsonObject){
 		Set<Entry<String, JsonElement>> contentEntrySet = attrObject.getAsJsonObject().entrySet();

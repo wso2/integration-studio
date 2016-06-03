@@ -862,6 +862,7 @@ public class EditorUtils {
 						if(paletteViewer.getKeyHandler() instanceof CustomPaletteViewerKeyHandler) {
 							((CustomPaletteViewerKeyHandler)paletteViewer.getKeyHandler()).initializeKeyHandler();	
 						}
+						esbPaletteFactory.updateToolPaletteItems(((EsbMultiPageEditor) editor).getGraphicalEditor());
 					}
 				}
 			}

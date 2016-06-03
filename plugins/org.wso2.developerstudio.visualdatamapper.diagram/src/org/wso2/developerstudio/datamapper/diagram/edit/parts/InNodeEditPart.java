@@ -20,6 +20,8 @@ import java.util.HashMap;
 
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.ImageFigure;
+import org.eclipse.draw2d.MouseEvent;
+import org.eclipse.draw2d.MouseMotionListener;
 import org.eclipse.draw2d.RectangleFigure;
 import org.eclipse.draw2d.Shape;
 import org.eclipse.draw2d.StackLayout;
@@ -34,6 +36,8 @@ import org.eclipse.gef.editpolicies.LayoutEditPolicy;
 import org.eclipse.gef.editpolicies.NonResizableEditPolicy;
 import org.eclipse.gef.requests.CreateRequest;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
+import org.eclipse.gmf.runtime.diagram.ui.figures.BorderedNodeFigure;
+import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.resource.ImageDescriptor;
@@ -242,6 +246,67 @@ public class InNodeEditPart extends AbstractInNodeEditPart {
 			this.setFill(false);
 			this.setOutline(false);
 
+			this.addMouseMotionListener(new MouseMotionListener() {
+
+				@Override
+				public void mouseDragged(MouseEvent me) {
+					if(getParent() instanceof TreeNode2EditPart) {
+						TreeNode2EditPart treeNode2EditPart = (TreeNode2EditPart) getParent();
+						treeNode2EditPart.highlightElementItem();
+					}
+				}
+
+				@Override
+				public void mouseEntered(MouseEvent me) {
+					highlightParentElem();
+				}
+
+				@Override
+				public void mouseExited(MouseEvent me) {
+					removeParentHighlight();
+				}
+				private void highlightParentElem() {
+					IFigure treeFigure = (IFigure) ((DefaultSizeNodeFigure) ((BorderedNodeFigure) getParent().getParent().getParent()).getChildren().get(0)).getChildren().get(0) ;
+					if (treeFigure instanceof TreeNode2EditPart.TreeNodeFigure) {
+						TreeNode2EditPart.TreeNodeFigure num =(TreeNode2EditPart.TreeNodeFigure) treeFigure;
+					    num.highlightElementOnSelection();
+					}
+					if (treeFigure instanceof TreeNodeEditPart.TreeNodeFigure) {
+						TreeNodeEditPart.TreeNodeFigure num =(TreeNodeEditPart.TreeNodeFigure) treeFigure;
+					    num.highlightElementOnSelection();
+					}
+					if (treeFigure instanceof TreeNode3EditPart.TreeNodeFigure) {
+						TreeNode3EditPart.TreeNodeFigure num =(TreeNode3EditPart.TreeNodeFigure)treeFigure;
+					    num.highlightElementOnSelection();
+					}
+				}
+				
+				private void removeParentHighlight() {
+					IFigure treeFigure = (IFigure) ((DefaultSizeNodeFigure) ((BorderedNodeFigure) getParent().getParent().getParent()).getChildren().get(0)).getChildren().get(0) ;
+					if (treeFigure instanceof TreeNode2EditPart.TreeNodeFigure) {
+						TreeNode2EditPart.TreeNodeFigure num =(TreeNode2EditPart.TreeNodeFigure)treeFigure;
+					    num.removeHighlight();
+					}
+					if (treeFigure instanceof TreeNodeEditPart.TreeNodeFigure) {
+						TreeNodeEditPart.TreeNodeFigure num =(TreeNodeEditPart.TreeNodeFigure) treeFigure;
+					    num.removeHighlight();
+					}
+					if (treeFigure instanceof TreeNode3EditPart.TreeNodeFigure) {
+						TreeNode3EditPart.TreeNodeFigure num =(TreeNode3EditPart.TreeNodeFigure) treeFigure;
+					    num.removeHighlight();
+					}
+				}
+
+
+				@Override
+				public void mouseHover(MouseEvent me) {
+				}
+
+				@Override
+				public void mouseMoved(MouseEvent me) {
+				}
+
+			});
 			createContents();
 
 		}
@@ -272,7 +337,7 @@ public class InNodeEditPart extends AbstractInNodeEditPart {
 			this.setFill(false);
 		}
 		
-		public void highlightElementOnSelection() {
+	/*	public void highlightElementOnSelection() {
 			ImageDescriptor mainImgDesc = AbstractUIPlugin.imageDescriptorFromPlugin(
 					"org.wso2.developerstudio.visualdatamapper.diagram", "icons/gmf/black-coloured.jpg");
 
@@ -291,11 +356,11 @@ public class InNodeEditPart extends AbstractInNodeEditPart {
 			this.setOpaque(false);
 			this.setOutline(false);
 			this.setFill(false);
-		}
+		}*/
 	}
 	
-	public void highlightElementItem() {
+/*	public void highlightElementItem() {
 		((InNode2Figure) getPrimaryShape()).highlightElementOnSelection();
-	}
+	}*/
 
 }

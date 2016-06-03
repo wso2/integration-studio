@@ -40,6 +40,7 @@ import org.eclipse.gef.palette.ToolEntry;
 import org.eclipse.gef.requests.CreateRequest;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.AbstractBorderItemEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
+import org.eclipse.gmf.runtime.diagram.ui.figures.BorderedNodeFigure;
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
@@ -262,19 +263,50 @@ public class OutNode3EditPart extends AbstractBorderItemEditPart {
 
 				@Override
 				public void mouseExited(MouseEvent me) {
-
 					getEditDomain().getPaletteViewer().setActiveTool(null);
-
+					removeParentHighlight();
 				}
 
 				@Override
 				public void mouseEntered(MouseEvent me) {
-
 					getEditDomain().getPaletteViewer().setActiveTool(
 							(ToolEntry) (((PaletteContainer) getEditDomain().getPaletteViewer().getPaletteRoot()
 									.getChildren().get(1)).getChildren().get(0)));
-
+					highlightParentElem();
 				}
+
+				private void highlightParentElem() {
+					IFigure treeFigure = (IFigure) ((DefaultSizeNodeFigure) ((BorderedNodeFigure) getParent().getParent().getParent()).getChildren().get(0)).getChildren().get(0) ;
+					if (treeFigure instanceof TreeNode2EditPart.TreeNodeFigure) {
+						TreeNode2EditPart.TreeNodeFigure num =(TreeNode2EditPart.TreeNodeFigure) treeFigure;
+					    num.highlightElementOnSelection();
+					}
+					if (treeFigure instanceof TreeNodeEditPart.TreeNodeFigure) {
+						TreeNodeEditPart.TreeNodeFigure num =(TreeNodeEditPart.TreeNodeFigure) treeFigure;
+					    num.highlightElementOnSelection();
+					}
+					if (treeFigure instanceof TreeNode3EditPart.TreeNodeFigure) {
+						TreeNode3EditPart.TreeNodeFigure num =(TreeNode3EditPart.TreeNodeFigure)treeFigure;
+					    num.highlightElementOnSelection();
+					}
+				}
+				
+				private void removeParentHighlight() {
+					IFigure treeFigure = (IFigure) ((DefaultSizeNodeFigure) ((BorderedNodeFigure) getParent().getParent().getParent()).getChildren().get(0)).getChildren().get(0) ;
+					if (treeFigure instanceof TreeNode2EditPart.TreeNodeFigure) {
+						TreeNode2EditPart.TreeNodeFigure num =(TreeNode2EditPart.TreeNodeFigure)treeFigure;
+					    num.removeHighlight();
+					}
+					if (treeFigure instanceof TreeNodeEditPart.TreeNodeFigure) {
+						TreeNodeEditPart.TreeNodeFigure num =(TreeNodeEditPart.TreeNodeFigure) treeFigure;
+					    num.removeHighlight();
+					}
+					if (treeFigure instanceof TreeNode3EditPart.TreeNodeFigure) {
+						TreeNode3EditPart.TreeNodeFigure num =(TreeNode3EditPart.TreeNodeFigure) treeFigure;
+					    num.removeHighlight();
+					}
+				}
+
 
 				@Override
 				public void mouseDragged(MouseEvent me) {

@@ -83,6 +83,7 @@ public class AddNewObjectDialog extends Dialog {
 			"map", "union" };
 	private String[] DATA_TYPES_FOR_VALUE = { "","string", "number", "boolean", "bytes", "double", "enum", "fixed", "float", "long",
 			"map", "union" };
+	private String[] ROOT_TYPE = {"object","array"};
 	private String[] OBJECT_TYPE = { "object" };
 	private String[] ARRAY_TYPE = { "array" };
 
@@ -233,9 +234,12 @@ public class AddNewObjectDialog extends Dialog {
 	public void setType(String title){
 			getShell().setText(title);
 		    //Sets the visibility based on the type
-		    if(title.equals(DIALOG_TITLE_ROOT) || title.equals(DIALOG_TITLE_OBJECT)){
-		    	comboSchemaType.setItems(OBJECT_TYPE);                       
+		    if(title.equals(DIALOG_TITLE_ROOT)){
+		    	comboSchemaType.setItems(ROOT_TYPE);                       
                 comboSchemaType.select(0);
+		    }else if(title.equals(DIALOG_TITLE_OBJECT)){
+    		    	comboSchemaType.setItems(OBJECT_TYPE);                       
+                    comboSchemaType.select(0);
 		    }else if(title.equals(DIALOG_TITLE_ARRAY)){
 		    	comboSchemaType.setItems(ARRAY_TYPE);                       
                 comboSchemaType.select(0);

@@ -41,17 +41,16 @@ import org.wso2.developerstudio.eclipse.gmf.esb.RuleOptionType;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
 
-public class CallTemplateMediatorTransformer extends AbstractEsbNodeTransformer{
-	
-	private static final String JSON_EVAL ="json-eval";	
+public class CallTemplateMediatorTransformer extends AbstractEsbNodeTransformer {
+
+	private static final String JSON_EVAL = "json-eval";
 	private static final String INVALID_SUBJECT = "Invalid subject.";
-	
+
 	public void transform(TransformationInfo information, EsbNode subject) throws TransformerException {
 		Assert.isTrue(subject instanceof CallTemplateMediator, INVALID_SUBJECT);
 		CallTemplateMediator visuaCallTemplate = (CallTemplateMediator) subject;
 		try {
-			information.getParentSequence().addChild(
-					createInvokeMediator(information, visuaCallTemplate));
+			information.getParentSequence().addChild(createInvokeMediator(information, visuaCallTemplate));
 			// Transform the callTemplate mediator output data flow path.
 			doTransform(information, visuaCallTemplate.getOutputConnector());
 		} catch (JaxenException e) {
@@ -59,54 +58,51 @@ public class CallTemplateMediatorTransformer extends AbstractEsbNodeTransformer{
 		}
 	}
 
-	public void createSynapseObject(TransformationInfo info, EObject subject,
-			List<Endpoint> endPoints) {
+	public void createSynapseObject(TransformationInfo info, EObject subject, List<Endpoint> endPoints) {
 	}
 
-	public void transformWithinSequence(TransformationInfo information, EsbNode subject,
-			SequenceMediator sequence) throws TransformerException {
+	public void transformWithinSequence(TransformationInfo information, EsbNode subject, SequenceMediator sequence)
+			throws TransformerException {
 		Assert.isTrue(subject instanceof CallTemplateMediator, INVALID_SUBJECT);
 		CallTemplateMediator visuaCallTemplate = (CallTemplateMediator) subject;
 		try {
 			sequence.addChild(createInvokeMediator(information, visuaCallTemplate));
-			doTransformWithinSequence(information, visuaCallTemplate.getOutputConnector()
-					.getOutgoingLink(), sequence);
+			doTransformWithinSequence(information, visuaCallTemplate.getOutputConnector().getOutgoingLink(), sequence);
 		} catch (JaxenException e) {
 			throw new TransformerException(e);
 		}
 	}
-	
-	private InvokeMediator createInvokeMediator(TransformationInfo information,
-			CallTemplateMediator obj) throws JaxenException {
-		
+
+	private InvokeMediator createInvokeMediator(TransformationInfo information, CallTemplateMediator obj)
+			throws JaxenException {
+
 		InvokeMediator invokeMediator = new InvokeMediator();
 		setCommonProperties(invokeMediator, obj);
 		invokeMediator.setTargetTemplate(obj.getTargetTemplate());
-		
+
 		for (CallTemplateParameter param : obj.getTemplateParameters()) {
 			if (param.getParameterName() != null && !param.getParameterName().isEmpty()) {
 				if (param.getTemplateParameterType().equals(RuleOptionType.EXPRESSION)) {
-					
+
 					NamespacedProperty namespacedExpression = param.getParameterExpression();
 					String xpathValue = namespacedExpression.getPropertyValue();
 					Boolean dynamic = namespacedExpression.isDynamic();
-					
-					if (dynamic){
-						
+
+					if (dynamic) {
+
 						xpathValue = "{" + xpathValue + "}";
 						Value value = new Value(xpathValue);
-						
-						if (namespacedExpression.getNamespaces().size() > 0)
-						{
+
+						if (namespacedExpression.getNamespaces().size() > 0) {
 							OMFactory factory = OMAbstractFactory.getOMFactory();
 							OMElement root = null;
 							int i = 0;
 							for (Entry<String, String> entry : namespacedExpression.getNamespaces().entrySet()) {
 								if (i == 0) {
-									OMNamespace firstNameSpace = factory.createOMNamespace(entry.getValue(), entry.getKey());
-									root = factory.createOMElement("root",firstNameSpace);
-								}
-								else {
+									OMNamespace firstNameSpace = factory.createOMNamespace(entry.getValue(),
+											entry.getKey());
+									root = factory.createOMElement("root", firstNameSpace);
+								} else {
 									root.declareNamespace(entry.getValue(), entry.getKey());
 								}
 								i++;
@@ -116,18 +112,21 @@ public class CallTemplateMediatorTransformer extends AbstractEsbNodeTransformer{
 						invokeMediator.getpName2ExpressionMap().put(param.getParameterName(), value);
 					} else {
 						SynapsePath paramExpression = getParamExpression(namespacedExpression, xpathValue);
-						invokeMediator.getpName2ExpressionMap().put(param.getParameterName(), new Value(paramExpression));
+						invokeMediator.getpName2ExpressionMap().put(param.getParameterName(),
+								new Value(paramExpression));
 					}
 				} else {
-					invokeMediator.getpName2ExpressionMap().put(param.getParameterName(), new Value(param.getParameterValue()));
+					invokeMediator.getpName2ExpressionMap().put(param.getParameterName(),
+							new Value(param.getParameterValue()));
 				}
 			}
 		}
 		return invokeMediator;
 	}
-	
+
 	/**
 	 * Gets the param expression based on json and xpath
+	 * 
 	 * @param namespacedExpression
 	 * @param xpathValue
 	 * @return
@@ -136,19 +135,39 @@ public class CallTemplateMediatorTransformer extends AbstractEsbNodeTransformer{
 
 	private SynapsePath getParamExpression(NamespacedProperty namespacedExpression, String xpathValue)
 			throws JaxenException {
-		if (JSON_EVAL.equals(xpathValue.substring(0, 9))) {
-			SynapseJsonPath paramExpression = new SynapseJsonPath(xpathValue);
-			for (Entry<String, String> entry : namespacedExpression.getNamespaces().entrySet()) {
-				paramExpression.addNamespace(entry.getKey(), entry.getValue());
+		int length = xpathValue.length();
+		if (length >= 9) {
+			// If the length of the expression is greater than 9, then check if
+			// it contains json-eval and use SynapseJsonPath
+			if (JSON_EVAL.equals(xpathValue.substring(0, 9))) {
+				SynapseJsonPath paramExpression = new SynapseJsonPath(
+						xpathValue.substring(10, xpathValue.length() - 1));
+				return addNamespaceToParam(namespacedExpression, paramExpression);
+			} else {
+				// If the length is greater than 9 and it doesn't contain the
+				// json-eval use SynapseXPath
+				SynapseXPath paramExpression = new SynapseXPath(xpathValue);
+				return addNamespaceToParam(namespacedExpression, paramExpression);
 			}
-			return paramExpression;
-		}else{
+		} else {
+			// If the length is smaller than 9 then use SynapseXPath
 			SynapseXPath paramExpression = new SynapseXPath(xpathValue);
-			for (Entry<String, String> entry : namespacedExpression.getNamespaces().entrySet()) {
-				paramExpression.addNamespace(entry.getKey(), entry.getValue());
-			}
-			return paramExpression;
-		}	
+			return addNamespaceToParam(namespacedExpression, paramExpression);
+		}
 	}
 
+	/**
+	 * Adds the namespace to param
+	 * 
+	 * @param namespacedExpression
+	 * @param paramExpression
+	 * @throws JaxenException
+	 */
+	private SynapsePath addNamespaceToParam(NamespacedProperty namespacedExpression, SynapsePath paramExpression)
+			throws JaxenException {
+		for (Entry<String, String> entry : namespacedExpression.getNamespaces().entrySet()) {
+			paramExpression.addNamespace(entry.getKey(), entry.getValue());
+		}
+		return paramExpression;
+	}
 }

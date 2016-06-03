@@ -936,8 +936,7 @@ public class TreeNode2EditPart extends AbstractBorderedShapeEditPart {
 		public void highlightElementOnSelection() {
 			RectangleFigure rectFigure = (RectangleFigure) this.getChildren().get(0);
 			List<Figure> childrenList = rectFigure.getChildren();
-			Display display = Display.getCurrent();
-			Color bckGrndColor = new Color(null, 0, 125, 133);
+			Color bckGrndColor = DataMapperColorConstants.highlightNodeColor;
 			Label newLabel = (Label) childrenList.get(1);
 			newLabel.setForegroundColor(bckGrndColor);
 			rectFigure.remove(childrenList.get(1));

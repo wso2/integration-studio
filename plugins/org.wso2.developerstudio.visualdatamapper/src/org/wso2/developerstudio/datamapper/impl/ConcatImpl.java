@@ -96,7 +96,7 @@ public class ConcatImpl extends OperatorImpl implements Concat {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public String getDelimiter() {
 		delimiter = delimiterValue;

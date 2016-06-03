@@ -17,24 +17,25 @@ package org.wso2.developerstudio.datamapper.diagram.custom.util;
 
 import java.util.ArrayList;
 
+import org.apache.commons.lang.StringUtils;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.edit.command.AddCommand;
 import org.eclipse.emf.edit.command.DeleteCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gef.EditPart;
-import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.dialogs.IDialogConstants;
+import org.eclipse.jface.dialogs.IMessageProvider;
+import org.eclipse.jface.dialogs.TitleAreaDialog;
 import org.eclipse.papyrus.infra.gmfdiag.css.CSSShapeImpl;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.events.ModifyEvent;
-import org.eclipse.swt.events.ModifyListener;
-import org.eclipse.swt.layout.FormAttachment;
-import org.eclipse.swt.layout.FormData;
-import org.eclipse.swt.layout.FormLayout;
+import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.wso2.developerstudio.datamapper.Concat;
@@ -43,159 +44,167 @@ import org.wso2.developerstudio.datamapper.DataMapperPackage;
 import org.wso2.developerstudio.datamapper.OperatorLeftConnector;
 import org.wso2.developerstudio.datamapper.impl.ConcatImpl;
 
-public class ConfigureConcatOperatorDialog extends Dialog {
+public class ConfigureConcatOperatorDialog extends TitleAreaDialog {
 
-	private Concat concatOperator;
-	private Label caseCount;
-	private Label caseDelimiter;
-	private Text count;
-	private Text delimiter;
-	private EditPart editpart;
-	private TransactionalEditingDomain editingDomain;
-	// private ArrayList<OperatorLeftContainer> caseBranches=new
-	// ArrayList<OperatorLeftContainer>();
-	private ArrayList<OperatorLeftConnector> caseOutputConnectors = new ArrayList<OperatorLeftConnector>();
-	private ConcatImpl concatImpl;
+    private Concat concatOperator;
+    private String inputCount;
+    private String delimiter;
+    private EditPart editpart;
+    private TransactionalEditingDomain editingDomain;
+    private ArrayList<OperatorLeftConnector> caseOutputConnectors = new ArrayList<OperatorLeftConnector>();
+    private ConcatImpl concatImpl;
 
-	public ConfigureConcatOperatorDialog(Shell parentShell, Concat concatOperator,
-			TransactionalEditingDomain editingDomain, EditPart editpart) {
-		super(parentShell);
-		this.concatOperator = concatOperator;
-		this.editpart = editpart;
-		this.editingDomain = editingDomain;
-		CSSShapeImpl concatDD = (CSSShapeImpl) this.editpart.getModel();
-		concatImpl = (ConcatImpl) concatDD.getElement();
-	}
+    public ConfigureConcatOperatorDialog(Shell parentShell, Concat concatOperator,
+            TransactionalEditingDomain editingDomain, EditPart editpart) {
+        super(parentShell);
+        this.concatOperator = concatOperator;
+        this.editpart = editpart;
+        this.editingDomain = editingDomain;
+        CSSShapeImpl concatDD = (CSSShapeImpl) this.editpart.getModel();
+        concatImpl = (ConcatImpl) concatDD.getElement();
+    }
 
-	protected void configureShell(Shell newShell) {
-		super.configureShell(newShell);
+    @Override
+    public void create() {
+        super.create();
+        setTitle("Configure Concat Operator");
+        setMessage("Set concat operator properties", IMessageProvider.INFORMATION);
+    }
 
-		// Set title.
-		newShell.setText("Configure Concat Operator");
-	}
+    protected void configureShell(Shell newShell) {
+        super.configureShell(newShell);
+        // Set title.
+        newShell.setText("Configure Concat Operator");
+    }
 
-	protected Control createDialogArea(Composite parent) {
-		Composite container = (Composite) super.createDialogArea(parent);
-		FormLayout mainLayout = new FormLayout();
-		mainLayout.marginHeight = 5;
-		mainLayout.marginWidth = 5;
-		container.setLayout(mainLayout);
+    protected Control createDialogArea(Composite parent) {
+        Composite area = (Composite) super.createDialogArea(parent);
+        Composite container = new Composite(area, SWT.NONE);
+        container.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
+        GridLayout layout = new GridLayout(2, false);
+        container.setLayout(layout);
 
-		caseCount = new Label(container, SWT.NONE);
-		{
-			caseCount.setText("Number of branches: ");
-			FormData caseCountLabelLayoutData = new FormData();
-			caseCountLabelLayoutData.top = new FormAttachment(0, 5);
-			caseCountLabelLayoutData.left = new FormAttachment(0);
-			caseCount.setLayoutData(caseCountLabelLayoutData);
-		}
+        GridData dataPropertyConfigText = new GridData();
+        dataPropertyConfigText.grabExcessHorizontalSpace = true;
+        dataPropertyConfigText.horizontalAlignment = GridData.FILL;
 
-		count = new Text(container, SWT.NONE);
-		{
-			count.addModifyListener(new ModifyListener() {
-				public void modifyText(ModifyEvent arg0) {
-					validate();
-				}
-			});
-			FormData countLayoutData = new FormData();
-			countLayoutData.width = 50;
-			countLayoutData.top = new FormAttachment(caseCount, 0, SWT.CENTER);
-			countLayoutData.left = new FormAttachment(caseCount, 5);
-			count.setLayoutData(countLayoutData);
-			int i = concatOperator.getBasicContainer().getLeftContainer().getLeftConnectors().size();
-			count.setText(Integer.toString(i));
-		}
+        Label concatInputConnectorCountLabel = new Label(container, SWT.NULL);
+        concatInputConnectorCountLabel.setText("Number of Inputs : ");
 
-		caseDelimiter = new Label(container, SWT.NONE);
-		{
-			caseDelimiter.setText("Delimiter to Concat : ");
-			FormData caseDelimiterLabelLayoutData = new FormData();
-			caseDelimiterLabelLayoutData.top = new FormAttachment(0, 40);
-			caseDelimiterLabelLayoutData.left = new FormAttachment(0);
-			caseDelimiter.setLayoutData(caseDelimiterLabelLayoutData);
-		}
+        final Text inputConnectorCount = new Text(container, SWT.BORDER);
+        inputConnectorCount.setLayoutData(dataPropertyConfigText);
+        inputConnectorCount
+                .setText(concatOperator.getBasicContainer().getLeftContainer().getLeftConnectors().size() + "");
+        inputCount = inputConnectorCount.getText();
+        inputConnectorCount.addListener(SWT.Modify, new Listener() {
+            public void handleEvent(Event event) {
+                try {
+                    inputCount = new String(inputConnectorCount.getText());
+                    if (!(StringUtils.isEmpty(inputCount) && StringUtils.isEmpty(delimiter))) {
+                        getButton(IDialogConstants.OK_ID).setEnabled(true);
+                        validate();
+                    } else {
+                        getButton(IDialogConstants.OK_ID).setEnabled(false);
+                    }
+                } catch (Exception e) {
+                    getButton(IDialogConstants.OK_ID).setEnabled(false);
+                }
+            }
+        });
 
-		delimiter = new Text(container, SWT.NONE);
+        Label concatDelimiterLabel = new Label(container, SWT.NULL);
+        concatDelimiterLabel.setText("Concat Delimiter : ");
 
-		if (concatImpl.getDelimiterValue() != null) {
-			delimiter.setText(concatImpl.getDelimiterValue());
-		} else {
-			delimiter.setText(",");
-		}
-		{
-			delimiter.addModifyListener(new ModifyListener() {
-				public void modifyText(ModifyEvent arg0) {
-					validate();
-				}
-			});
-			FormData delimiterLayoutData = new FormData();
-			delimiterLayoutData.width = 30;
-			delimiterLayoutData.top = new FormAttachment(caseDelimiter, 0, SWT.CENTER);
-			delimiterLayoutData.left = new FormAttachment(caseDelimiter, 40);
-			delimiter.setLayoutData(delimiterLayoutData);
-		}
+        final Text delimiterText = new Text(container, SWT.BORDER);
+        delimiterText.setLayoutData(dataPropertyConfigText);
+        if (concatImpl.getDelimiterValue() != null) {
+            delimiterText.setText(concatImpl.getDelimiterValue());
+        } else {
+            delimiterText.setText("");
+        }
+        delimiter = delimiterText.getText();
 
-		return container;
-	}
+        delimiterText.addListener(SWT.Modify, new Listener() {
+            public void handleEvent(Event event) {
+                try {
+                    delimiter = new String(delimiterText.getText());
+                    if (!(StringUtils.isEmpty(inputCount) && StringUtils.isEmpty(delimiter))) {
+                        getButton(IDialogConstants.OK_ID).setEnabled(true);
+                        validate();
+                    } else {
+                        getButton(IDialogConstants.OK_ID).setEnabled(false);
+                    }
+                } catch (Exception e) {
+                    getButton(IDialogConstants.OK_ID).setEnabled(false);
+                }
+            }
+        });
 
-	private void validate() {
-		boolean isEnabled = false;
-		Button okButton = getButton(IDialogConstants.OK_ID);
-		if (delimiter != null && count != null) {
-			if (!delimiter.getText().equals("") && delimiter.getText() != null && !delimiter.getText().isEmpty()
-					&& delimiter.getText().length() == 1) {
-				if (!count.getText().equals("0") && !count.getText().equals("") && count.getText() != null
-						&& !count.getText().isEmpty()) {
-					isEnabled = true;
-				}
-			}
-		}
-		if (okButton != null) {
-			okButton.setEnabled(isEnabled);
-		}
-	}
+        return area;
+    }
 
-	protected void okPressed() {
-		
-		if (delimiter.getText() != null && !delimiter.getText().isEmpty()) {
-			/*SetRequest reqSet = new SetRequest(editingDomain,
-					spliter, DataMapperPackage.Literals.SPLIT__DELIMITER, delimiter.getText());
-			 SetValueCommand operation = new SetValueCommand(reqSet);*/
-			/*if (operation.canExecute()) {
-				editingDomain.getCommandStack().execute((Command) operation);
-			}*/
-			concatImpl.setDelimiterValue(delimiter.getText());
-		}
-		int number = Integer.parseInt(count.getText())
-				- concatOperator.getBasicContainer().getLeftContainer().getLeftConnectors().size();
-		if (number > 0) {
-			for (int i = 0; i < number; ++i) {
-				OperatorLeftConnector concatOperatorContainers = DataMapperFactory.eINSTANCE
-						.createOperatorLeftConnector();
-				AddCommand addCmd = new AddCommand(editingDomain, concatOperator.getBasicContainer().getLeftContainer(),
-						DataMapperPackage.Literals.OPERATOR_LEFT_CONTAINER__LEFT_CONNECTORS, concatOperatorContainers);
-				if (addCmd.canExecute()) {
-					editingDomain.getCommandStack().execute(addCmd);
-				}
+    /**
+     * Create contents of the button bar.
+     * 
+     * @param parent
+     */
+    @Override
+    protected void createButtonsForButtonBar(Composite parent) {
+        createButton(parent, IDialogConstants.OK_ID, IDialogConstants.OK_LABEL, true);
+        createButton(parent, IDialogConstants.CANCEL_ID, IDialogConstants.CANCEL_LABEL, false);
+        validate();
+    }
 
-			}
-		} else if (number < 0) {
+    private void validate() {
+        boolean isEnabled = false;
+        Button okButton = getButton(IDialogConstants.OK_ID);
+        if (delimiter != null && inputCount != null) {
+            if (!StringUtils.isEmpty(delimiter)) {
+                if (!inputCount.equals("0") && !StringUtils.isEmpty(inputCount)) {
+                    isEnabled = true;
+                }
+            }
+        }
+        if (okButton != null) {
+            okButton.setEnabled(isEnabled);
+        }
+    }
 
-			for (int i = 0; i < Math.abs(number); i++) {
-				EList<OperatorLeftConnector> listOfLeftConnectors = concatOperator.getBasicContainer()
-						.getLeftContainer().getLeftConnectors();
-				OperatorLeftConnector concatOperatorConnector = listOfLeftConnectors
-						.get(listOfLeftConnectors.size() - 1);
-				caseOutputConnectors.add(concatOperatorConnector);
-				DeleteCommand deleteCmd = new DeleteCommand(editingDomain, caseOutputConnectors);
-				if (deleteCmd.canExecute()) {
-					editingDomain.getCommandStack().execute(deleteCmd);
-				}
-				caseOutputConnectors.remove(concatOperatorConnector);
-			}
-		}
+    protected void okPressed() {
 
-		super.okPressed();
-	}
+        if (!StringUtils.isEmpty(delimiter)) {
+            concatImpl.setDelimiterValue(delimiter);
+        }
+        int number = Integer.parseInt(inputCount)
+                - concatOperator.getBasicContainer().getLeftContainer().getLeftConnectors().size();
+        if (number > 0) {
+            for (int i = 0; i < number; ++i) {
+                OperatorLeftConnector concatOperatorContainers = DataMapperFactory.eINSTANCE
+                        .createOperatorLeftConnector();
+                AddCommand addCmd = new AddCommand(editingDomain, concatOperator.getBasicContainer().getLeftContainer(),
+                        DataMapperPackage.Literals.OPERATOR_LEFT_CONTAINER__LEFT_CONNECTORS, concatOperatorContainers);
+                if (addCmd.canExecute()) {
+                    editingDomain.getCommandStack().execute(addCmd);
+                }
+
+            }
+        } else if (number < 0) {
+
+            for (int i = 0; i < Math.abs(number); i++) {
+                EList<OperatorLeftConnector> listOfLeftConnectors = concatOperator.getBasicContainer()
+                        .getLeftContainer().getLeftConnectors();
+                OperatorLeftConnector concatOperatorConnector = listOfLeftConnectors
+                        .get(listOfLeftConnectors.size() - 1);
+                caseOutputConnectors.add(concatOperatorConnector);
+                DeleteCommand deleteCmd = new DeleteCommand(editingDomain, caseOutputConnectors);
+                if (deleteCmd.canExecute()) {
+                    editingDomain.getCommandStack().execute(deleteCmd);
+                }
+                caseOutputConnectors.remove(concatOperatorConnector);
+            }
+        }
+
+        super.okPressed();
+    }
 
 }

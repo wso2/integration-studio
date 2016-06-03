@@ -307,7 +307,7 @@ public class InNode2EditPart extends AbstractInNodeEditPart {
 
 				@Override
 				public void mouseDragged(MouseEvent me) {
-					highlightElementOnSelection();
+					highlightParentElem();
 
 				}
 
@@ -319,37 +319,6 @@ public class InNode2EditPart extends AbstractInNodeEditPart {
 				@Override
 				public void mouseExited(MouseEvent me) {
 					removeParentHighlight();
-				}
-				private void highlightParentElem() {
-					IFigure treeFigure = (IFigure) ((DefaultSizeNodeFigure) ((BorderedNodeFigure) getParent().getParent().getParent()).getChildren().get(0)).getChildren().get(0) ;
-					if (treeFigure instanceof TreeNode2EditPart.TreeNodeFigure) {
-						TreeNode2EditPart.TreeNodeFigure num =(TreeNode2EditPart.TreeNodeFigure) treeFigure;
-					    num.highlightElementOnSelection();
-					}
-					if (treeFigure instanceof TreeNodeEditPart.TreeNodeFigure) {
-						TreeNodeEditPart.TreeNodeFigure num =(TreeNodeEditPart.TreeNodeFigure) treeFigure;
-					    num.highlightElementOnSelection();
-					}
-					if (treeFigure instanceof TreeNode3EditPart.TreeNodeFigure) {
-						TreeNode3EditPart.TreeNodeFigure num =(TreeNode3EditPart.TreeNodeFigure)treeFigure;
-					    num.highlightElementOnSelection();
-					}
-				}
-				
-				private void removeParentHighlight() {
-					IFigure treeFigure = (IFigure) ((DefaultSizeNodeFigure) ((BorderedNodeFigure) getParent().getParent().getParent()).getChildren().get(0)).getChildren().get(0) ;
-					if (treeFigure instanceof TreeNode2EditPart.TreeNodeFigure) {
-						TreeNode2EditPart.TreeNodeFigure num =(TreeNode2EditPart.TreeNodeFigure)treeFigure;
-					    num.removeHighlight();
-					}
-					if (treeFigure instanceof TreeNodeEditPart.TreeNodeFigure) {
-						TreeNodeEditPart.TreeNodeFigure num =(TreeNodeEditPart.TreeNodeFigure) treeFigure;
-					    num.removeHighlight();
-					}
-					if (treeFigure instanceof TreeNode3EditPart.TreeNodeFigure) {
-						TreeNode3EditPart.TreeNodeFigure num =(TreeNode3EditPart.TreeNodeFigure) treeFigure;
-					    num.removeHighlight();
-					}
 				}
 
 				@Override
@@ -393,7 +362,7 @@ public class InNode2EditPart extends AbstractInNodeEditPart {
 
 		}
 		
-		public void highlightElementOnSelection() {
+	/*	public void highlightElementOnSelection() {
 			ImageDescriptor mainImgDesc = AbstractUIPlugin.imageDescriptorFromPlugin(
 					"org.wso2.developerstudio.visualdatamapper.diagram", "icons/gmf/black-coloured.jpg");
 
@@ -412,11 +381,42 @@ public class InNode2EditPart extends AbstractInNodeEditPart {
 			this.setOpaque(false);
 			this.setOutline(false);
 			this.setFill(false);
+		}*/
+		private void highlightParentElem() {
+			IFigure treeFigure = (IFigure) ((DefaultSizeNodeFigure) ((BorderedNodeFigure) getParent().getParent().getParent()).getChildren().get(0)).getChildren().get(0) ;
+			if (treeFigure instanceof TreeNode2EditPart.TreeNodeFigure) {
+				TreeNode2EditPart.TreeNodeFigure num =(TreeNode2EditPart.TreeNodeFigure) treeFigure;
+			    num.highlightElementOnSelection();
+			}
+			if (treeFigure instanceof TreeNodeEditPart.TreeNodeFigure) {
+				TreeNodeEditPart.TreeNodeFigure num =(TreeNodeEditPart.TreeNodeFigure) treeFigure;
+			    num.highlightElementOnSelection();
+			}
+			if (treeFigure instanceof TreeNode3EditPart.TreeNodeFigure) {
+				TreeNode3EditPart.TreeNodeFigure num =(TreeNode3EditPart.TreeNodeFigure)treeFigure;
+			    num.highlightElementOnSelection();
+			}
+		}
+		
+		private void removeParentHighlight() {
+			IFigure treeFigure = (IFigure) ((DefaultSizeNodeFigure) ((BorderedNodeFigure) getParent().getParent().getParent()).getChildren().get(0)).getChildren().get(0) ;
+			if (treeFigure instanceof TreeNode2EditPart.TreeNodeFigure) {
+				TreeNode2EditPart.TreeNodeFigure num =(TreeNode2EditPart.TreeNodeFigure)treeFigure;
+			    num.removeHighlight();
+			}
+			if (treeFigure instanceof TreeNodeEditPart.TreeNodeFigure) {
+				TreeNodeEditPart.TreeNodeFigure num =(TreeNodeEditPart.TreeNodeFigure) treeFigure;
+			    num.removeHighlight();
+			}
+			if (treeFigure instanceof TreeNode3EditPart.TreeNodeFigure) {
+				TreeNode3EditPart.TreeNodeFigure num =(TreeNode3EditPart.TreeNodeFigure) treeFigure;
+			    num.removeHighlight();
+			}
 		}
 	}
 	
 	public void highlightElementItem() {//debug and check how we can access the parent element
-		((InNode2Figure) getPrimaryShape()).highlightElementOnSelection();
+//		((InNode2Figure) getPrimaryShape()).highlightElementOnSelection();
 	}
 
 }

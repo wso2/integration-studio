@@ -643,10 +643,10 @@ public class OutputEditPart extends ShapeNodeEditPart {
 			LineBorder border = new LineBorder(DataMapperColorConstants.borderColor, 1, Graphics.LINE_SOLID);
 			this.setBorder(border);
 
-			CustomTitleBarBorder titleBarBorder = new CustomTitleBarBorder("Output");
+			TitleBarBorder titleBarBorder = new TitleBarBorder("Output");
 			titleBarBorder.setTextAlignment(PositionConstants.CENTER);
 			titleBarBorder.setPadding(6);
-			titleBarBorder.setBackgroundColor(DataMapperColorConstants.titleBarColor);
+			titleBarBorder.setBackgroundColor(DataMapperColorConstants.outputTitleBarColor);
 			titleBarBorder.setTextColor(new Color(null, 0, 0, 0));
 			titleBarBorder.setFont(new Font(null, "Arial", 10, SWT.BOLD));
 			LineBorder lineBorder = new LineBorder(DataMapperColorConstants.borderColor, 1, Graphics.LINE_SOLID);
@@ -654,6 +654,22 @@ public class OutputEditPart extends ShapeNodeEditPart {
 			CompoundBorder compoundBorderTop = new CompoundBorder(border, compoundBorder);
 			this.setBorder(compoundBorderTop);
 
+		}
+		
+		/**
+		 * @generated NOT
+		 */
+		protected void fillShape(Graphics graphics) {
+			// Backup the graphics colors
+			Color bgColor = graphics.getBackgroundColor();
+			Color fgColor = graphics.getForegroundColor();
+			// Set the graphics color
+			graphics.setBackgroundColor(DataMapperColorConstants.outputBoxFillColor);
+			graphics.setForegroundColor(DataMapperColorConstants.outputBoxFillColor);
+			// Restore the original colors
+			graphics.fillGradient(getBounds(), true);
+			graphics.setBackgroundColor(bgColor);
+			graphics.setForegroundColor(fgColor);
 		}
 
 		/**

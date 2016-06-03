@@ -29,6 +29,7 @@ import org.eclipse.draw2d.RectangleFigure;
 import org.eclipse.draw2d.ScrollPane;
 import org.eclipse.draw2d.Shape;
 import org.eclipse.draw2d.StackLayout;
+import org.eclipse.draw2d.TitleBarBorder;
 import org.eclipse.draw2d.ToolbarLayout;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.common.notify.Notification;
@@ -503,11 +504,11 @@ public class InputEditPart extends ShapeNodeEditPart {
 			this.setLayoutManager(layoutThis);
 			LineBorder border = new LineBorder(DataMapperColorConstants.borderColor, 1, Graphics.LINE_SOLID);
 			this.setBorder(border);
-
-			CustomTitleBarBorder titleBarBorder = new CustomTitleBarBorder("Input");
+			
+			TitleBarBorder titleBarBorder = new TitleBarBorder("Input");
 			titleBarBorder.setTextAlignment(PositionConstants.CENTER);
 			titleBarBorder.setPadding(6);
-			titleBarBorder.setBackgroundColor(DataMapperColorConstants.titleBarColor);
+			titleBarBorder.setBackgroundColor(DataMapperColorConstants.inputTitleBarColor);
 			titleBarBorder.setTextColor(new Color(null, 0, 0, 0));
 			titleBarBorder.setFont(new Font(null, "Arial", 10, SWT.BOLD));
 			LineBorder lineBorder = new LineBorder(DataMapperColorConstants.borderColor, 1, Graphics.LINE_SOLID);
@@ -519,18 +520,18 @@ public class InputEditPart extends ShapeNodeEditPart {
 		/**
 		 * @generated NOT
 		 */
-/*		protected void fillShape(Graphics graphics) {
+		protected void fillShape(Graphics graphics) {
 			// Backup the graphics colors
 			Color bgColor = graphics.getBackgroundColor();
 			Color fgColor = graphics.getForegroundColor();
 			// Set the graphics color
-			graphics.setBackgroundColor(new Color(null, 241,245,243));
-			graphics.setForegroundColor(ColorConstants.white);
+			graphics.setBackgroundColor(DataMapperColorConstants.inputBoxFillColor);
+			graphics.setForegroundColor(DataMapperColorConstants.inputBoxFillColor);
 			// Restore the original colors
 			graphics.fillGradient(getBounds(), true);
 			graphics.setBackgroundColor(bgColor);
 			graphics.setForegroundColor(fgColor);
-		}*/
+		}
 
 		/**
 		 * @generated NOT

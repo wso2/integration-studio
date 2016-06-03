@@ -181,8 +181,9 @@ public class DataMapperLinkEditPart extends ConnectionNodeEditPart implements IT
 			
 			@Override
 			public void mouseExited(MouseEvent me) {
+				connection.setLineStyle(Graphics.LINE_SOLID);
+				connection.setForegroundColor(DataMapperColorConstants.borderColor);
 				if (getSource() instanceof OutNodeEditPart) {
-					
 					OutNodeEditPart outNodeEditPart = (OutNodeEditPart) getSource();
 					if (outNodeEditPart.getParent() instanceof TreeNode2EditPart) {
 						TreeNode2EditPart num =(TreeNode2EditPart) outNodeEditPart.getParent();
@@ -213,6 +214,8 @@ public class DataMapperLinkEditPart extends ConnectionNodeEditPart implements IT
 			
 			@Override
 			public void mouseEntered(MouseEvent me) {
+				connection.setLineStyle(Graphics.LINE_DASH);
+				connection.setForegroundColor(DataMapperColorConstants.inputTitleBarColor);
 				if (getSource() instanceof OutNodeEditPart) {
 					OutNodeEditPart outNodeEditPart = (OutNodeEditPart) getSource();
 					if (outNodeEditPart.getParent() instanceof TreeNode2EditPart) {

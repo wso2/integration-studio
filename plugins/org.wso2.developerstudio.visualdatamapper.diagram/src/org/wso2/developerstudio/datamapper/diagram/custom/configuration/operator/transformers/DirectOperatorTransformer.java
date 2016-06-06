@@ -47,7 +47,7 @@ public class DirectOperatorTransformer extends AbstractDMOperatorTransformer {
         } else if (DifferentLevelArrayMappingConfigGenerator.class.equals(generatorClass)) {
             if (inputVariables.size() >= 1) {
                 operationBuilder.append(ScriptGenerationUtil.getPrettyVariableNameInForOperation(inputVariables.get(0),
-                        variableTypeMap, parentForLoopBeanStack) + ";");
+                        variableTypeMap, parentForLoopBeanStack, true) + ";");
             } else {
                 operationBuilder.append("'';");
             }

@@ -186,7 +186,8 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
                 indexOfMostInnerForLoopBean = getMostInnerForLoopBeanFromList(operationForLoopBeansList);
             }
             for (DMVariable outputVariable : outputVariables) {
-                if (DMVariableType.INTERMEDIATE.equals(outputVariable.getType()) && !outputVariable.getName().contains("{")) {
+                if (DMVariableType.INTERMEDIATE.equals(outputVariable.getType())
+                        && !outputVariable.getName().contains("{")) {
                     functionBuilder.append("var " + outputVariable.getName() + " = [];");
                     functionBuilder.append("\n");
                 } else if (DMVariableType.OUTPUT.equals(outputVariable.getType())) {
@@ -330,7 +331,7 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
         if (!ROOT_TAG.equals(forLoopBean.getVariableName())) {
             String forLoopVariableName = ScriptGenerationUtil.getPrettyVariableNameInForOperation(
                     new DMVariable(forLoopBean.getVariableName(), "", DMVariableType.INPUT, SchemaDataType.ARRAY, -1),
-                    variableTypeMap, tempForLoopBeanParentStack);
+                    variableTypeMap, tempForLoopBeanParentStack, false);
             functionBuilder.append("for(" + forLoopBean.getIterativeName() + " in "
                     + forLoopVariableName.substring(0, forLoopVariableName.lastIndexOf("[")) + "){");
             functionBuilder.append("\n");
@@ -375,7 +376,7 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
             functionBuilder.append("\n");
             variableName = ScriptGenerationUtil.getPrettyVariableNameInForOperation(
                     new DMVariable(variableName, "", DMVariableType.INPUT, SchemaDataType.RECORD, -1), variableTypeMap,
-                    tempForLoopBeanParentStack);
+                    tempForLoopBeanParentStack, false);
             functionBuilder.append(variableName + " = {};");
         }
         functionBuilder.append("\n");
@@ -389,7 +390,7 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
             functionBuilder.append("\n");
             variableName = ScriptGenerationUtil.getPrettyVariableNameInForOperation(
                     new DMVariable(variableName, "", DMVariableType.INPUT, SchemaDataType.ARRAY, -1), variableTypeMap,
-                    tempForLoopBeanParentStack);
+                    tempForLoopBeanParentStack, false);
             functionBuilder.append(variableName + " = {};");
         }
         functionBuilder.append("\n");
@@ -403,7 +404,7 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
             functionBuilder.append("\n");
             variableName = ScriptGenerationUtil.getPrettyVariableNameInForOperation(
                     new DMVariable(variableName, "", DMVariableType.INPUT, SchemaDataType.ARRAY, -1), variableTypeMap,
-                    tempForLoopBeanParentStack);
+                    tempForLoopBeanParentStack, false);
             functionBuilder.append(variableName.substring(0, variableName.lastIndexOf('[')) + " = [];");
         }
         functionBuilder.append("\n");
@@ -440,7 +441,7 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
                         if (fieldName.contains(SCHEMA_ATTRIBUTE_PREFIX)
                                 && ScriptGenerationUtil.isVariableTypePrimitive(variableTypeMap.get(variableName))) {
                             String variableString = ScriptGenerationUtil.getPrettyVariableNameInForOperation(
-                                    outputVariable, variableTypeMap, tempForLoopBeanParentStack);
+                                    outputVariable, variableTypeMap, tempForLoopBeanParentStack, true);
                             variableString = removeLastElementNameFromVariable(variableString);
                             if (!initializedVariableList.contains(variableString)) {
                                 initializedVariableList.add(variableString);
@@ -482,8 +483,9 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
         tempForLoopBeanParentStack = (Stack<ForLoopBean>) forLoopBeanParentStack.clone();
         int numOfOutputVariables = outputVariables.size();
         for (int variableIndex = 0; variableIndex < numOfOutputVariables; variableIndex++) {
-            operationBuilder.append(ScriptGenerationUtil.getPrettyVariableNameInForOperation(
-                    outputVariables.get(variableIndex), variableTypeMap, tempForLoopBeanParentStack));
+            String prettyVariableName = ScriptGenerationUtil.getPrettyVariableNameInForOperation(
+                    outputVariables.get(variableIndex), variableTypeMap, tempForLoopBeanParentStack, true);
+            operationBuilder.append(prettyVariableName);
             if (variableIndex < (numOfOutputVariables - 1)) {
                 operationBuilder.append(",");
             } else if (numOfOutputVariables > 1) {
@@ -542,7 +544,8 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
     private void checkTwoParentsInTheSameBranch(String mostChildParentName, String parentName)
             throws DataMapperException {
         if (!mostChildParentName.startsWith(parentName)) {
-            throw new DataMapperException("Cannot use varibales in different types of objects to map. Cannot find a unique identifier for the items mapped. Re-Evaluate your mappping.");
+            throw new DataMapperException(
+                    "Cannot use varibales in different types of objects to map. Cannot find a unique identifier for the items mapped. Re-Evaluate your mappping.");
         }
     }
 

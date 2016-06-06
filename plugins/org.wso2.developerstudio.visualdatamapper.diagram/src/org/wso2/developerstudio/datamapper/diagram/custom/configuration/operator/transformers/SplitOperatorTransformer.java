@@ -53,7 +53,7 @@ public class SplitOperatorTransformer extends AbstractDMOperatorTransformer {
         } else if (DifferentLevelArrayMappingConfigGenerator.class.equals(generatorClass)) {
             if (inputVariables.size() >= 1) {
                 operationBuilder.append(ScriptGenerationUtil.getPrettyVariableNameInForOperation(inputVariables.get(0),
-                        variableTypeMap, parentForLoopBeanStack) + ".split('" + splitOperator + "');");
+                        variableTypeMap, parentForLoopBeanStack, true) + ".split('" + splitOperator + "');");
             } else {
                 operationBuilder.append("'';");
             }

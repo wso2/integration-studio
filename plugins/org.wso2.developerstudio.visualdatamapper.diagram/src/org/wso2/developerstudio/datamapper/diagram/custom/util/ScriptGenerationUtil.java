@@ -31,16 +31,18 @@ import org.wso2.developerstudio.datamapper.diagram.custom.model.DMVariableType;
 public class ScriptGenerationUtil {
 
     public static String getPrettyVariableNameInForOperation(DMVariable variable,
-            Map<String, SchemaDataType> variableTypeMap, Stack<ForLoopBean> parentForLoopBeanStack) {
+            Map<String, SchemaDataType> variableTypeMap, Stack<ForLoopBean> parentForLoopBeanStack,
+            boolean isOperationVariable) {
         // put index values for array type variables
         String prettyVariableName = "";
         String variableName = "";
+        SchemaDataType variableType = null;
         if (DMVariableType.INTERMEDIATE.equals(variable.getType())) {
-            variableName=variable.getName();
+            variableName = variable.getName();
             if (variableName.startsWith("{")) {
-                prettyVariableName = variableName.substring(1, variableName.length()-1);
-                if(SchemaDataType.STRING.equals(variable.getSchemaVariableType())){
-                    prettyVariableName = "'"+prettyVariableName+"'";
+                prettyVariableName = variableName.substring(1, variableName.length() - 1);
+                if (SchemaDataType.STRING.equals(variable.getSchemaVariableType())) {
+                    prettyVariableName = "'" + prettyVariableName + "'";
                 }
             } else {
                 if (parentForLoopBeanStack.size() > 0) {
@@ -58,7 +60,7 @@ public class ScriptGenerationUtil {
             for (String nextName : variableNameArray) {
                 variableName += nextName;
                 if (variableTypeMap.containsKey(variableName)) {
-                    SchemaDataType variableType = variableTypeMap.get(variableName);
+                    variableType = variableTypeMap.get(variableName);
                     if (SchemaDataType.ARRAY.equals(variableType)) {
                         if (nextName.contains("Record")) {
                             if (parentForLoopBeanStack.size() > 0) {
@@ -101,7 +103,7 @@ public class ScriptGenerationUtil {
             for (String nextName : variableNameArray) {
                 variableName += nextName;
                 if (variableTypeMap.containsKey(variableName)) {
-                    SchemaDataType variableType = variableTypeMap.get(variableName);
+                    variableType = variableTypeMap.get(variableName);
                     if (SchemaDataType.ARRAY.equals(variableType)) {
                         if (nextName.contains("Record")) {
                             prettyVariableName += "." + nextName.substring(0, nextName.indexOf("Record")) + "["
@@ -129,6 +131,13 @@ public class ScriptGenerationUtil {
                 variableName += ".";
             }
             prettyVariableName = prettyVariableName.substring(1);
+        }
+        // If the variable is a input or output for an operation and a type of object or array and also holds a value,
+        // the value is stored as a field named _ELEMVAl
+        if (isOperationVariable) {
+            if (SchemaDataType.ARRAY.equals(variableType) || SchemaDataType.RECORD.equals(variableType)) {
+                prettyVariableName += "._ELEMVAL";
+            }
         }
         return prettyVariableName;
     }

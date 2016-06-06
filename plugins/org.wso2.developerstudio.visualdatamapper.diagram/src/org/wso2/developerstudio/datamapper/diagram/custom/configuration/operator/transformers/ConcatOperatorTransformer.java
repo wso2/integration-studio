@@ -58,17 +58,17 @@ public class ConcatOperatorTransformer extends AbstractDMOperatorTransformer {
             Stack<ForLoopBean> tempParentForLoopBeanStack = (Stack<ForLoopBean>) parentForLoopBeanStack.clone();
             if (inputVariables.size() > 1) {
                 operationBuilder.append(ScriptGenerationUtil.getPrettyVariableNameInForOperation(inputVariables.get(0),
-                        variableTypeMap, parentForLoopBeanStack));
+                        variableTypeMap, parentForLoopBeanStack, true));
                 for (int variableIndex = 1; variableIndex < inputVariables.size(); variableIndex++) {
                     operationBuilder.append(".concat('" + concatOperator + "',"
                             + ScriptGenerationUtil.getPrettyVariableNameInForOperation(
-                                    inputVariables.get(variableIndex), variableTypeMap, tempParentForLoopBeanStack)
+                                    inputVariables.get(variableIndex), variableTypeMap, tempParentForLoopBeanStack, true)
                             + ")");
                 }
                 operationBuilder.append(";");
             } else if (inputVariables.size() == 1) {
                 operationBuilder.append(ScriptGenerationUtil.getPrettyVariableNameInForOperation(inputVariables.get(0),
-                        variableTypeMap, parentForLoopBeanStack) + ".concat('" + concatOperator + "');");
+                        variableTypeMap, parentForLoopBeanStack, true) + ".concat('" + concatOperator + "');");
             } else {
                 operationBuilder.append("'';");
             }

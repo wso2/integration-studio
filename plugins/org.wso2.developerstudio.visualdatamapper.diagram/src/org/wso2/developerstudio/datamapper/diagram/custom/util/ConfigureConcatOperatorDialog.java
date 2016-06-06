@@ -21,6 +21,7 @@ import org.apache.commons.lang.StringUtils;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.edit.command.AddCommand;
 import org.eclipse.emf.edit.command.DeleteCommand;
+import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gef.EditPart;
 import org.eclipse.jface.dialogs.IDialogConstants;
@@ -173,6 +174,11 @@ public class ConfigureConcatOperatorDialog extends TitleAreaDialog {
     protected void okPressed() {
 
         if (!StringUtils.isEmpty(delimiter)) {
+        	Concat concatOperatorInstance = DataMapperFactory.eINSTANCE.createConcat();
+        	SetCommand setCmnd = new SetCommand(editingDomain, concatOperatorInstance, DataMapperPackage.Literals.CONCAT__DELIMITER, delimiter);
+              if (setCmnd.canExecute()) {
+                  editingDomain.getCommandStack().execute(setCmnd);
+              }
             concatImpl.setDelimiterValue(delimiter);
         }
         int number = Integer.parseInt(inputCount)

@@ -16,6 +16,7 @@
 package org.wso2.developerstudio.datamapper.diagram.custom.util;
 
 import org.apache.commons.lang.StringUtils;
+import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gef.EditPart;
 import org.eclipse.jface.dialogs.IDialogConstants;
@@ -35,6 +36,9 @@ import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.wso2.developerstudio.datamapper.Constant;
+import org.wso2.developerstudio.datamapper.DataMapperFactory;
+import org.wso2.developerstudio.datamapper.DataMapperPackage;
+import org.wso2.developerstudio.datamapper.Split;
 import org.wso2.developerstudio.datamapper.impl.ConstantImpl;
 
 public class ConfigureConstantOperatorDialog extends TitleAreaDialog {
@@ -43,11 +47,13 @@ public class ConfigureConstantOperatorDialog extends TitleAreaDialog {
     private String value;
     private EditPart editpart;
     ConstantImpl constant = null;
+    private TransactionalEditingDomain editingDomain;
 
     public ConfigureConstantOperatorDialog(Shell parentShell, Constant constantOperator,
             TransactionalEditingDomain editingDomain, EditPart editpart) {
         super(parentShell);
         this.editpart = editpart;
+        this.editingDomain = editingDomain;
         CSSShapeImpl constantdd = (CSSShapeImpl) this.editpart.getModel();
         constant = (ConstantImpl) constantdd.getElement();
     }
@@ -162,10 +168,16 @@ public class ConfigureConstantOperatorDialog extends TitleAreaDialog {
     }
 
     protected void okPressed() {
+    	Constant constantOperatorInstance = DataMapperFactory.eINSTANCE.createConstant();
         if (StringUtils.isNotEmpty(value)) {
+             	SetCommand setCmnd = new SetCommand(editingDomain, constantOperatorInstance, DataMapperPackage.Literals.CONSTANT__CONSTANT_VALUE, value);
+                 if (setCmnd.canExecute()) {
+                     editingDomain.getCommandStack().execute(setCmnd);
+                 }
             constant.setConstValue(value);
         }
         if (StringUtils.isNotEmpty(type)) {
+        	// need to execute set command to set the constant type
             constant.setConstType(type);
         }
 

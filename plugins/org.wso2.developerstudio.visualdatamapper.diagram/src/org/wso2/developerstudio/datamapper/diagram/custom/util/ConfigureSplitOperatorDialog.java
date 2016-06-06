@@ -23,6 +23,7 @@ import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.edit.command.AddCommand;
 import org.eclipse.emf.edit.command.DeleteCommand;
+import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy;
@@ -193,6 +194,11 @@ public class ConfigureSplitOperatorDialog extends TitleAreaDialog {
 
     protected void okPressed() {
         if (!StringUtils.isEmpty(delimiter)) {
+        	Split splitOperatorInstance = DataMapperFactory.eINSTANCE.createSplit();
+        	SetCommand setCmnd = new SetCommand(editingDomain, splitOperatorInstance, DataMapperPackage.Literals.SPLIT__DELIMITER, delimiter);
+            if (setCmnd.canExecute()) {
+                editingDomain.getCommandStack().execute(setCmnd);
+            }
             splitImpl.setDelimiterValue(delimiter);
         }
         int number = Integer.parseInt(outputCount)

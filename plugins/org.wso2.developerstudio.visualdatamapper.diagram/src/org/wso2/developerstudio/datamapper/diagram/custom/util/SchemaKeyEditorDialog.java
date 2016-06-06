@@ -428,13 +428,7 @@ public class SchemaKeyEditorDialog extends Dialog {
 				String schemaSaveFilePath = schemaEditorUtil.createDiagram(schema, schemaType);
 				if (!schemaSaveFilePath.isEmpty()) {
 					setSelectedPathForConnector(schemaSaveFilePath);
-					if (Messages.LoadInputSchemaAction_SchemaTypeInput.equals(schemaType)) {
-						InputEditPart iep = (InputEditPart) selectedEP;
-						iep.resetInputTreeFromFile(schemaSaveFilePath);
-					} else if (Messages.LoadOutputSchemaAction_SchemaTypeOutput.equals(schemaType)) {
-						OutputEditPart iep = (OutputEditPart) selectedEP;
-						iep.resetOutputTreeFromFile(schemaSaveFilePath);
-					}
+					saveInputOutputSchema(schemaSaveFilePath);
 				}
             } else {
                 MessageDialog.openWarning(PlatformUI.getWorkbench().getDisplay().getActiveShell(),
@@ -536,13 +530,7 @@ public class SchemaKeyEditorDialog extends Dialog {
 
 				if (!schemaFilePath.isEmpty()) {
 					setSelectedPath(schemaFilePath);
-					if (Messages.LoadInputSchemaAction_SchemaTypeInput.equals(schemaType)) {
-						InputEditPart iep = (InputEditPart) selectedEP;
-						iep.resetInputTreeFromFile(schemaFilePath);
-					} else if (Messages.LoadOutputSchemaAction_SchemaTypeOutput.equals(schemaType)) {
-						OutputEditPart iep = (OutputEditPart) selectedEP;
-						iep.resetOutputTreeFromFile(schemaFilePath);
-					}
+					saveInputOutputSchema(schemaFilePath);
 				}
 
 			} else {
@@ -652,13 +640,7 @@ public class SchemaKeyEditorDialog extends Dialog {
 
 			if (!schemaFilePath.isEmpty()) {
 				setSelectedPath(schemaFilePath);
-				if (Messages.LoadInputSchemaAction_SchemaTypeInput.equals(schemaType)) {
-					InputEditPart iep = (InputEditPart) selectedEP;
-					iep.resetInputTreeFromFile(schemaFilePath);
-				} else if (Messages.LoadOutputSchemaAction_SchemaTypeOutput.equals(schemaType)) {
-					OutputEditPart iep = (OutputEditPart) selectedEP;
-					iep.resetOutputTreeFromFile(schemaFilePath);
-				}
+				saveInputOutputSchema(schemaFilePath);
 			}
 
 		} catch (Exception e) {
@@ -674,6 +656,14 @@ public class SchemaKeyEditorDialog extends Dialog {
 		IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, reason);
 		ErrorDialog.openError(Display.getCurrent().getActiveShell(), ERROR_MSG_HEADER, message,
 		                      editorStatus);
+	}
+	
+	private int displayUserMssg(String header, String message) {
+		MessageDialog dialog = new MessageDialog(Display.getDefault().getActiveShell(),
+				header, null,
+				message,
+				MessageDialog.INFORMATION, new String[] { "OK" , "Cancel"}, 0);
+		return dialog.open();
 	}
 
 	/**
@@ -728,13 +718,7 @@ public class SchemaKeyEditorDialog extends Dialog {
 				if (!schemaFilePath.isEmpty()) {
 					setSelectedPath(schemaFilePath);
 
-					if (Messages.LoadInputSchemaAction_SchemaTypeInput.equals(schemaType)) {
-						InputEditPart iep = (InputEditPart) selectedEP;
-						iep.resetInputTreeFromFile(schemaFilePath);
-					} else if (Messages.LoadOutputSchemaAction_SchemaTypeOutput.equals(schemaType)) {
-						OutputEditPart iep = (OutputEditPart) selectedEP;
-						iep.resetOutputTreeFromFile(schemaFilePath);
-					}
+					saveInputOutputSchema(schemaFilePath);
 				}
 			}
 
@@ -746,6 +730,32 @@ public class SchemaKeyEditorDialog extends Dialog {
 			show();
 		}
 
+	}
+
+	private void saveInputOutputSchema(String schemaFilePath) {
+		if (Messages.LoadInputSchemaAction_SchemaTypeInput.equals(schemaType)) {
+			if (selectedEP.getChildren().isEmpty()) {
+				InputEditPart iep = (InputEditPart) selectedEP;
+				iep.resetInputTreeFromFile(schemaFilePath);
+			} else {
+				if (displayUserMssg("Input Schema will be overwritten",
+						"The current Input Schema will be overwritten with the new schema loading, you want to proceed ? ") == 0) {
+					InputEditPart iep = (InputEditPart) selectedEP;
+					iep.resetInputTreeFromFile(schemaFilePath);
+				}
+			}
+		} else if (Messages.LoadOutputSchemaAction_SchemaTypeOutput.equals(schemaType)) {
+			if (selectedEP.getChildren().isEmpty()) {
+				OutputEditPart iep = (OutputEditPart) selectedEP;
+				iep.resetOutputTreeFromFile(schemaFilePath);
+			} else {
+				if (displayUserMssg("Output Schema will be overwritten",
+						"The current Output Schema will be overwritten with the new schema loading, you want to proceed ? ") == 0) {
+					OutputEditPart iep = (OutputEditPart) selectedEP;
+					iep.resetOutputTreeFromFile(schemaFilePath);
+				}
+			}
+		}
 	}
 
 	private String fileExtensionForFileType(FileType option) {

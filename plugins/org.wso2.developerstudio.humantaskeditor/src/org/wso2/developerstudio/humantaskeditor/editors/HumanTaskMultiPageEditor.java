@@ -62,6 +62,7 @@ public class HumanTaskMultiPageEditor extends MultiPageEditorPart implements IRe
         super();
         editorContentFunction = new EditorContentFunction();
         ResourcesPlugin.getWorkspace().addResourceChangeListener(this);
+        
     }
 
     /**
@@ -171,6 +172,7 @@ public class HumanTaskMultiPageEditor extends MultiPageEditorPart implements IRe
             throw new PartInitException(HumantaskEditorConstants.ERROR_INVALID_INPUT_MUST_BE_IFILE_EDITOR_INPUT);
         }
         super.init(site, editorInput);
+        setPartName(editorInput.getName());
     }
 
     /*

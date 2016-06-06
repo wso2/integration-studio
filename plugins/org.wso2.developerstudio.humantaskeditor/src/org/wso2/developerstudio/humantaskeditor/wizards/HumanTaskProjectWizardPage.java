@@ -80,7 +80,7 @@ public class HumanTaskProjectWizardPage extends WizardPage {
         });
 
         label = new Label(container, SWT.NULL);
-        label.setText("&File name :");
+        label.setText("&File Name :");
 
         fileText = new Text(container, SWT.BORDER | SWT.SINGLE);
         gd = new GridData(GridData.FILL_HORIZONTAL);
@@ -192,26 +192,13 @@ public class HumanTaskProjectWizardPage extends WizardPage {
             updateStatus(HumantaskEditorConstants.FILE_NAME_MUST_BE_VALID_MESSAGE);
             return;
         }
-        if (!fileName.contains(".")) {
-            updateStatus(HumantaskEditorConstants.FILE_EXTENSION_MUST_BE_HT_MESSAGE);
-            return;
-        }
-        if (!fileName.matches("[A-Za-z][A-Za-z0-9]*.ht")) {
+        if (!fileName.matches("^[a-zA-Z0-9]*$")) {
             updateStatus(HumantaskEditorConstants.ENTER_A_VALID_FILENAME);
             return;
         }
         if (tnsName.trim().isEmpty()) {
             updateStatus(HumantaskEditorConstants.TARGET_NAME_SPACE_CANNOT_BE_EMPTY_MESSAGE);
             return;
-        }
-        
-        int dotLoc = fileName.lastIndexOf('.');
-        if (dotLoc != -1) {
-            String ext = fileName.substring(dotLoc + 1);
-            if (ext.equalsIgnoreCase("ht") == false) {
-                updateStatus(HumantaskEditorConstants.FILE_EXTENSION_MUST_BE_HT_MESSAGE);
-                return;
-            }
         }
         updateStatus(null);
     }

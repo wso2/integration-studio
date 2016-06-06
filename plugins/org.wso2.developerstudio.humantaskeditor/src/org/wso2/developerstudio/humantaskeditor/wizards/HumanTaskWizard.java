@@ -83,6 +83,7 @@ public class HumanTaskWizard extends Wizard implements INewWizard {
     public void addPages() {
         page = new HumanTaskWizardPage(selection);
         addPage(page);
+        setWindowTitle(HumantaskEditorConstants.HUMAN_TASK_PROJECT_WIZARD_TITLE);
     }
 
     /**
@@ -92,7 +93,7 @@ public class HumanTaskWizard extends Wizard implements INewWizard {
     @Override
     public boolean performFinish() {
         final String containerName = page.getContainerName();
-        final String fileName = page.getFileName();
+        final String fileName = page.getFileName() + ".ht";
         final String taskName = page.getTaskName();
         final String tnsName = page.getTNSName();
         IRunnableWithProgress op = new IRunnableWithProgress() {
@@ -109,12 +110,11 @@ public class HumanTaskWizard extends Wizard implements INewWizard {
         };
         try {
             getContainer().run(true, false, op);
-
         } catch (InterruptedException e) {
             return false;
         } catch (InvocationTargetException e) {
             Throwable realException = e.getTargetException();
-            MessageDialog.openError(getShell(), HumantaskEditorConstants.ERROR_MESSAGE + "At Get Container",
+            MessageDialog.openError(getShell(), HumantaskEditorConstants.ERROR_MESSAGE + " At Get Container",
                     realException.getMessage());
             return false;
         }
@@ -141,19 +141,24 @@ public class HumanTaskWizard extends Wizard implements INewWizard {
         final IFile cbWsdlfile = container.getFile(new Path(taskName + HumantaskEditorConstants.CALLBACK_TASK_WSDL_SUFFIX));
         final IFile htconfigfile = container.getFile(new Path(HumantaskEditorConstants.INITIAL_HTCONFIG_NAME));
         addNature(container.getProject());
-
+        IResource [] memberList = container.members();
+        for(IResource member : memberList){
+            IFile memberFile = (IFile)member;
+            if(memberFile.getFileExtension().equals("ht")){
+                throwCoreException("An artifact must contain only one ht file");
+            }
+        }
         try {
             InputStream stream = openContentStream(taskName,tnsName);
             InputStream wsdlStream = openWSDLStream();
             InputStream htconfigStream = openHTConfigStream();
             if (file.exists()) {
-                file.setContents(stream, true, true, monitor);
+                throwCoreException("A file with the same name exists");
             } else {
                 file.create(stream, true, monitor);
                 wsdlfile.create(wsdlStream, true, monitor);
                 cbWsdlfile.create(wsdlStream, true, monitor);
                 htconfigfile.create(htconfigStream, true, monitor);
-
             }
             stream.close();
             wsdlStream.close();
@@ -179,7 +184,6 @@ public class HumanTaskWizard extends Wizard implements INewWizard {
                     ErrorDialog.openError(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
                             HumantaskEditorConstants.ERROR_MESSAGE + " At Display",
                             HumantaskEditorConstants.ERROR_OPENING_THE_EDITOR_MESSAGE, editorStatus);
-                    e.printStackTrace();
                 }
             }
         });

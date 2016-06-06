@@ -1,3 +1,28 @@
 body {
-    background-color: lightblue;
+    background-color: #f2f2f2;
 } 
+
+#page-content-wrapper {
+	background-color: #f2f2f2;
+}
+
+#inputmappingTable {
+    font-size: 100%;
+}
+
+hr {
+  -moz-border-bottom-colors: none;
+  -moz-border-image: none;
+  -moz-border-left-colors: none;
+  -moz-border-right-colors: none;
+  -moz-border-top-colors: none;
+  border-color: #8d8d8d -moz-use-text-color #8d8d8d;
+  color: #8d8d8d;
+  border-style: solid none;
+  border-width: 1px 0;
+  margin: 18px 0;
+}
+
+#outputmappingTable {
+    font-size: 100%;
+}

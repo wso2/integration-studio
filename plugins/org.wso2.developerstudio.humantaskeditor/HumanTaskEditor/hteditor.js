@@ -23,6 +23,7 @@
  * 
  */
 function makeDirty() {
+    //if(taskN=="")handleError("task name cannot be empty");
     IDESetDirty(true);
 }
 
@@ -52,14 +53,13 @@ function makeUnDirty() {
  * 
  * 
  */
-function createFile(currentTaskName,state) { //createFile
+function createFile(currentTaskName,state,taskNode) { //createFile
     // Create Task WSDL
     var serviceURL = $('#' + currentTaskName + 'wrapper #taskCallbackServiceURL').val();
     var operationName = $('#' + currentTaskName + 'wrapper #taskCallbackOperationName')
         .val();
     var serviceName = $('#' + currentTaskName + 'wrapper #taskCallbackServiceName').val();
     var outputElements = $('#' + currentTaskName + 'wrapper #outputmappingTable tr');
-
     $.get('resources/dummy.wsdl', function(data) {
        try {
             wsdlDom = marshalEditorTextContent(data);
@@ -88,7 +88,11 @@ function createFile(currentTaskName,state) { //createFile
             htconfigDom = marshalEditorTextContent(data);
             generateHTConfig(htconfigDom, xmlDom, currentTaskName);
             saveHTConfig(htconfigDom);
+            if(state=="generateText"){
+                generateTaskDiv(taskNode);
+            }else{
             generateUI();
+            }
             if(state=="initial"){
                 generateTasks();
             }
@@ -132,6 +136,7 @@ function addTask() { //createFile
             xmlDom.getElementsByTagName("tasks")[0].appendChild(xmlDom.importNode(taskPartDom.getElementsByTagName("task")[0], true));
             IDESaveContent(new XMLSerializer().serializeToString((xmlDom)));
             //generateUI();
+            //addEvent("tabChange","page-content-wrapper ",xmlDom);
         } catch (err) {
             handleError("Error Adding New Task \n" + err);
         }
@@ -159,9 +164,15 @@ function addInitalTask() { //createFile
                 $("#page-content-wrapper #tabNames").append("<li class='taskDivHolder' ><a href='#" + taskName + "wrapper'>" + taskName + "</a></li>");
             });
             $("#page-content-wrapper #tabNames li:contains('+')").remove();
+            $("#page-content-wrapper #tabNames li:contains('Undo')").remove();
             $("#page-content-wrapper #tabNames").append("<li><a id='addNewTask' href=''>+</a></li>");
+            $("#page-content-wrapper #tabNames").append("<li><a id='undoNewTask' href=''>Undo</a></li>");
             $('#addNewTask').click(function() {
                 addTask();
+                addEvent("tabChange","page-content-wrapper "+ui.newTab.index(),xmlDom);
+            });
+            $('#undoNewTask').click(function() {
+                executeEvent();
             });
             $("#page-content-wrapper").tabs();
             $("#page-content-wrapper").tabs("refresh");
@@ -292,13 +303,20 @@ function generateUI() {
             });
         });
         $("#page-content-wrapper #tabNames li:contains('+')").remove();
-        $("#page-content-wrapper #tabNames").append("<li><a id='addNewTask' href=''>+</a></li>");
+        //$("#page-content-wrapper #tabNames li:contains('-')").remove();
+        $("#page-content-wrapper #tabNames").append("<li><a id='addNewTask' data-toggle='tooltip' title='Create new task' href=''>+</a></li>");
+        //$("#page-content-wrapper #tabNames").append("<li><a id='undoNewTask' href=''>-</a></li>");
         $('#addNewTask').click(function() {
             addTask();
         });
+        /*$('#undoNewTask').click(function() {
+           executeEvent();
+        });*/
         $("#page-content-wrapper").tabs();
         $("#page-content-wrapper").tabs("refresh");
         $('#page-content-wrapper').tabs("option", "active", selectedindex);
+        handleTabChange();
+        
     }
 }
 
@@ -339,9 +357,16 @@ function generateTaskDiv(taskNode) {
     $('#' + taskDivName + " #taskOutputMappingNo").val(0);
     $('#' + taskDivName + " #taskName").val(taskName.trim().replace(/ /g, ''));
     $('#' + taskDivName + ' #taskName').change(function() {
+        taskNameInput = $('#' + taskNode.getAttribute("name") + "wrapper #taskName").val();
+        if(taskNameInput.trim()!=""){
         makeDirty();
-        taskNode.setAttribute("name", $('#' + taskNode.getAttribute("name") + "wrapper #taskName").val());
+        taskNode.setAttribute("name", taskNameInput);
         createFile(taskNode.getAttribute("name"),"");
+        }else{
+        handleError("Task Name should not be empty");
+        $('#' + taskNode.getAttribute("name") + "wrapper #taskName").val(taskNode.getAttribute("name"));
+        makeUnDirty();
+        }
         //generateTasks();
     });
     initValues(taskName);
@@ -383,7 +408,7 @@ function generateTaskDiv(taskNode) {
                 // bind click event
                 e.preventDefault();
                 var mappingNo = parseInt($('#' + taskNode.getAttribute("name") + "wrapper #taskMappingNo").val());
-                mapping = '<tr id="inputmapping' + mappingNo + '"><td width="25%"><input name="taskInputMappingid" type="hidden" id="taskInputMappingid" value="' + mappingNo + '"><input name="textfield6" type="text" id="taskInputMappingElementName' + mappingNo + '" value="" placeholder="Element Name"></td><td width="25%"><input name="textfield7" type="text" id="taskInputMappingDisplayName' + mappingNo + '" value="" placeholder="Display Name"></td><td width="10%"><input name="textfield8" type="text" id="taskInputMappingOrder' + mappingNo + '" value="" placeholder="Value"></td><td width="20%"><label><select id="taskInputMappingType' + mappingNo + '" name="select3"><option value="string" selected>string</option><option value="int">int</option><option value="double">double</option><option value="float">float</option><option value="boolean">boolean</option><option value="organizationalEntity">organizationalEntity</option></select></label></td><td><label><input type="button" class="inputDeleteButton btn btn-danger" name="deleteButton' + mappingNo + '" id="deleteButton' + mappingNo + '" value="Delete"></label></td></tr>';
+                mapping = '<tr id="inputmapping' + mappingNo + '"><td><input name="taskInputMappingid" type="hidden" id="taskInputMappingid" value="' + mappingNo + '"><input name="textfield6" type="text" id="taskInputMappingElementName' + mappingNo + '" value="" placeholder="Element Name"></td><td><input name="textfield7" type="text" id="taskInputMappingDisplayName' + mappingNo + '" value="" placeholder="Display Name"></td><td><input name="textfield8" type="text" id="taskInputMappingOrder' + mappingNo + '" value="" placeholder="Value"></td><td><label><select id="taskInputMappingType' + mappingNo + '" name="select3"><option value="string" selected>string</option><option value="int">int</option><option value="double">double</option><option value="float">float</option><option value="boolean">boolean</option><option value="organizationalEntity">organizationalEntity</option></select></label></td><td><label><input type="button" class="inputDeleteButton btn btn-danger" name="deleteButton' + mappingNo + '" id="deleteButton' + mappingNo + '" value="Delete"></label></td></tr>';
                 $(
                     "#" + taskNode.getAttribute("name") + "wrapper #inputmappingTable").append(
                     mapping);
@@ -394,7 +419,7 @@ function generateTaskDiv(taskNode) {
                 makeDirty();
                 generateText(taskNode);
                 generateTaskDiv(taskNode);
-                selectedindex = $('#page-content-wrapper a[href="#'+taskNode.getAttribute("name")+'wrapper"]').parent().index();
+                //selectedindex = $('#page-content-wrapper a[href="#'+taskNode.getAttribute("name")+'wrapper"]').parent().index();
             });
 
     // Add output mapping row
@@ -441,7 +466,7 @@ function generateTaskDiv(taskNode) {
                     var outputmappingNo = parseInt($(
                             '#' + taskNode.getAttribute("name") + "wrapper #taskOutputMappingNo")
                         .val());
-                    outputmapping = '<tr id="outputmapping' + outputmappingNo + '"><td width="25%"><input name="taskOutputMappingid" type="hidden" id="taskOutputMappingid" value="' + outputmappingNo + '"><input name="textfield6" type="text" id="taskOutputMappingElementName' + outputmappingNo + '" value="" placeholder="Element Name"></td><td width="25%"><input name="textfield7" type="text" id="taskOutputMappingDisplayName' + outputmappingNo + '" value="" placeholder="Display Name"></td><td width="10%"><input name="textfield8" type="text" id="taskOutputMappingOrder' + outputmappingNo + '" value="" placeholder="Value"></td><td width="20%"><label><select id="taskOutputMappingType' + outputmappingNo + '" name="select3"><option value="string" selected>string</option><option value="int">int</option><option value="double">double</option><option value="float">float</option><option value="boolean">boolean</option><option value="organizationalEntity">organizationalEntity</option></select></label></td><td width="10%"><label><input name="textfield12" type="text" id="taskOutputMappingDefaultValues' + outputmappingNo + '" value="" placeholder="Default Value"></label></td><td><label><input type="button" class="outputDeleteButton btn btn-danger" name="outputDeleteButton' + outputmappingNo + '" id="outputDeleteButton' + outputmappingNo + '" value="Delete"></label></td></tr>';
+                    outputmapping = '<tr id="outputmapping' + outputmappingNo + '"><td><input name="taskOutputMappingid" type="hidden" id="taskOutputMappingid" value="' + outputmappingNo + '"><input name="textfield6" type="text" id="taskOutputMappingElementName' + outputmappingNo + '" value="" placeholder="Element Name"></td><td><input name="textfield7" type="text" id="taskOutputMappingDisplayName' + outputmappingNo + '" value="" placeholder="Display Name"></td><td><input name="textfield8" type="text" id="taskOutputMappingOrder' + outputmappingNo + '" value="" placeholder="Value"></td><td><label><select id="taskOutputMappingType' + outputmappingNo + '" name="select3"><option value="string" selected>string</option><option value="int">int</option><option value="double">double</option><option value="float">float</option><option value="boolean">boolean</option><option value="organizationalEntity">organizationalEntity</option></select></label></td><td><label><input name="textfield12" type="text" id="taskOutputMappingDefaultValues' + outputmappingNo + '" value="" placeholder="Default Value"></label></td><td><label><input type="button" class="outputDeleteButton btn btn-danger" name="outputDeleteButton' + outputmappingNo + '" id="outputDeleteButton' + outputmappingNo + '" value="Delete"></label></td></tr>';
                     $(
                             "#" + taskNode.getAttribute("name") + "wrapper #outputmappingTable")
                         .append(outputmapping);
@@ -457,15 +482,14 @@ function generateTaskDiv(taskNode) {
                 makeDirty();
                 generateText(taskNode);
                 generateTaskDiv(taskNode);
-                selectedindex = $('#page-content-wrapper a[href="#'+taskNode.getAttribute("name")+'wrapper"]').parent().index();
+                //selectedindex = $('#page-content-wrapper a[href="#'+taskNode.getAttribute("name")+'wrapper"]').parent().index();
             });
 
     // sync rendering values into input mapping table
     var inputNodes = taskNode.getElementsByTagName("renderings")[0]
         .getElementsByTagName("inputs")[0].childNodes;
     $("#" + taskDivName + " #inputmappingTable")
-        .html(
-            '<tr><th width="25%" scope="col">Element Name</th><th width="25%" scope="col">Display Name</th><th width="10%" scope="col">Presentation Parameters</th><th width="20%" scope="col">Type</th></tr>');
+        .html('<thead> <th >Element Name</th><th>Display Name</th><th>Presentation Parameters</th><th>Type</th><th>Action</th></thead>');
 
     for (i = 0; i < inputNodes.length; i++) {
         if (inputNodes[i].nodeName != "#text") {
@@ -473,9 +497,9 @@ function generateTaskDiv(taskNode) {
                 var mappingNo = parseInt($(
                     '#' + taskDivName + " #taskMappingNo").val());
                 if ((inputNodes[i].getElementsByTagName("label")[0].childNodes.length != 0) && (inputNodes[i].getElementsByTagName("value")[0].childNodes.length != 0))
-                    mapping = '<tr id="inputmapping' + mappingNo + '"><td width="25%"><input name="taskInputMappingid" type="hidden" id="taskInputMappingid" value="' + mappingNo + '"/><input name="textfield6" type="text" id="taskInputMappingElementName' + mappingNo + '" value="' + inputNodes[i].getAttribute("id") + '"/></td><td width="25%"><input name="textfield7" type="text" id="taskInputMappingDisplayName' + mappingNo + '" value="' + inputNodes[i].getElementsByTagName("label")[0].childNodes[0].nodeValue + '"/></td><td width="10%"><input name="textfield8" type="text" id="taskInputMappingOrder' + mappingNo + '" value="' + inputNodes[i].getElementsByTagName("value")[0].childNodes[0].nodeValue + '"/></td><td width="20%"><label><select id="taskInputMappingType' + mappingNo + '" name="select3"><option value="string" selected>string</option><option value="int">int</option><option value="double">double</option><option value="float">float</option><option value="boolean">boolean</option><option value="organizationalEntity">organizationalEntity</option></select></label></td><td><label><input type="button" class="inputDeleteButton btn btn-danger" name="deleteButton' + mappingNo + '" id="deleteButton' + mappingNo + '" value="Delete"></input></label></td></tr>';
+                    mapping = '<tr id="inputmapping' + mappingNo + '"><td><input name="taskInputMappingid" type="hidden" id="taskInputMappingid" value="' + mappingNo + '"/><input name="textfield6" type="text" id="taskInputMappingElementName' + mappingNo + '" value="' + inputNodes[i].getAttribute("id") + '"/></td><td><input name="textfield7" type="text" id="taskInputMappingDisplayName' + mappingNo + '" value="' + inputNodes[i].getElementsByTagName("label")[0].childNodes[0].nodeValue + '"/></td><td><input name="textfield8" type="text" id="taskInputMappingOrder' + mappingNo + '" value="' + inputNodes[i].getElementsByTagName("value")[0].childNodes[0].nodeValue + '"/></td><td><label><select id="taskInputMappingType' + mappingNo + '" name="select3"><option value="string" selected>string</option><option value="int">int</option><option value="double">double</option><option value="float">float</option><option value="boolean">boolean</option><option value="organizationalEntity">organizationalEntity</option></select></label></td><td><label><input type="button" class="inputDeleteButton btn btn-danger" name="deleteButton' + mappingNo + '" id="deleteButton' + mappingNo + '" value="Delete"></input></label></td></tr>';
                 else
-                    mapping = '<tr id="inputmapping' + mappingNo + '"><td width="25%"><input name="taskInputMappingid" type="hidden" id="taskInputMappingid" value="' + mappingNo + '"/><input name="textfield6" type="text" id="taskInputMappingElementName' + mappingNo + '" value="' + inputNodes[i].getAttribute("id") + '"/></td><td width="25%"><input name="textfield7" type="text" id="taskInputMappingDisplayName' + mappingNo + '" value=""/></td><td width="10%"><input name="textfield8" type="text" id="taskInputMappingOrder' + mappingNo + '" value=""/></td><td width="20%"><label><select id="taskInputMappingType' + mappingNo + '" name="select3"><option value="string" selected>string</option><option value="int">int</option><option value="double">double</option><option value="float">float</option><option value="boolean">boolean</option><option value="organizationalEntity">organizationalEntity</option></select></label></td><td><label><input type="button" class="inputDeleteButton btn btn-danger" name="deleteButton' + mappingNo + '" id="deleteButton' + mappingNo + '" value="Delete"></label></td></tr>';
+                    mapping = '<tr id="inputmapping' + mappingNo + '"><td><input name="taskInputMappingid" type="hidden" id="taskInputMappingid" value="' + mappingNo + '"/><input name="textfield6" type="text" id="taskInputMappingElementName' + mappingNo + '" value="' + inputNodes[i].getAttribute("id") + '"/></td><td><input name="textfield7" type="text" id="taskInputMappingDisplayName' + mappingNo + '" value=""/></td><td><input name="textfield8" type="text" id="taskInputMappingOrder' + mappingNo + '" value=""/></td><td><label><select id="taskInputMappingType' + mappingNo + '" name="select3"><option value="string" selected>string</option><option value="int">int</option><option value="double">double</option><option value="float">float</option><option value="boolean">boolean</option><option value="organizationalEntity">organizationalEntity</option></select></label></td><td><label><input type="button" class="inputDeleteButton btn btn-danger" name="deleteButton' + mappingNo + '" id="deleteButton' + mappingNo + '" value="Delete"></label></td></tr>';
                 $("#" + taskDivName + " #inputmappingTable").append(mapping);
                 $('#' + taskDivName + ' #taskInputMappingType' + mappingNo).val(inputNodes[i].getAttribute("type").replace("xsd:", ""));
                 // bind delete event
@@ -504,7 +528,7 @@ function generateTaskDiv(taskNode) {
                                 }
                                 makeDirty();
                                 generateTaskDiv(taskNode);
-                                selectedindex = $('#page-content-wrapper a[href="#'+taskNode.getAttribute("name")+'wrapper"]').parent().index();
+                                //selectedindex = $('#page-content-wrapper a[href="#'+taskNode.getAttribute("name")+'wrapper"]').parent().index();
                             } catch (err) {
                                 handleError(err);
                             }
@@ -521,17 +545,16 @@ function generateTaskDiv(taskNode) {
     var outputNodes = taskNode.getElementsByTagName("renderings")[0]
         .getElementsByTagName("outputs")[0].childNodes;
     $("#" + taskDivName + " #outputmappingTable")
-        .html(
-            '<tr><th width="25%" scope="col">Element Name</th><th width="25%" scope="col">Display Name</th><th width="10%" scope="col">Value</th><th width="20%" scope="col">Type</th><th width="20%" scope="col">Default Values</th></tr>');
+        .html('<thead><th>Element Name</th><th>Display Name</th><th>Value</th><th>Type</th><th>Default Values</th><th>Action</th></thead>');
     for (i = 0; i < outputNodes.length; i++) {
         if (outputNodes[i].nodeName != "#text") {
             try {
                 var outputmappingNo = parseInt($(
                     '#' + taskDivName + " #taskOutputMappingNo").val());
                 if ((outputNodes[i].getElementsByTagName("label")[0].childNodes.length != 0) && (outputNodes[i].getElementsByTagName("value")[0].childNodes.length != 0))
-                    outputmapping = '<tr id="outputmapping' + outputmappingNo + '"><td width="25%"><input name="taskOutputMappingid" type="hidden" id="taskOutputMappingid" value="' + outputmappingNo + '"><input name="textfield6" type="text" id="taskOutputMappingElementName' + outputmappingNo + '" value="' + outputNodes[i].getAttribute("id") + '"></td><td width="25%"><input name="textfield7" type="text" id="taskOutputMappingDisplayName' + outputmappingNo + '" value="' + outputNodes[i].getElementsByTagName("label")[0].childNodes[0].nodeValue + '"></td><td width="10%"><input name="textfield8" type="text" id="taskOutputMappingOrder' + outputmappingNo + '" value="' + outputNodes[i].getElementsByTagName("value")[0].childNodes[0].nodeValue + '"></td><td width="20%"><label><select id="taskOutputMappingType' + outputmappingNo + '" name="select3"><option value="string" selected>string</option><option value="int">int</option><option value="double">double</option><option value="float">float</option><option value="boolean">boolean</option><option value="organizationalEntity">organizationalEntity</option></select></label></td><td width="10%"><label><input name="textfield12" type="text" id="taskOutputMappingDefaultValues' + outputmappingNo + '" value="' + outputNodes[i].getElementsByTagName("default")[0].childNodes[0].nodeValue + '"></label></td><td><label><input type="button" class="outputDeleteButton btn btn-danger" name="outputDeleteButton' + outputmappingNo + '" id="outputDeleteButton' + outputmappingNo + '" value="Delete"></label></td></tr>';
+                    outputmapping = '<tr id="outputmapping' + outputmappingNo + '"><td><input name="taskOutputMappingid" type="hidden" id="taskOutputMappingid" value="' + outputmappingNo + '"><input name="textfield6" type="text" id="taskOutputMappingElementName' + outputmappingNo + '" value="' + outputNodes[i].getAttribute("id") + '"></td><td><input name="textfield7" type="text" id="taskOutputMappingDisplayName' + outputmappingNo + '" value="' + outputNodes[i].getElementsByTagName("label")[0].childNodes[0].nodeValue + '"></td><td><input name="textfield8" type="text" id="taskOutputMappingOrder' + outputmappingNo + '" value="' + outputNodes[i].getElementsByTagName("value")[0].childNodes[0].nodeValue + '"></td><td><label><select id="taskOutputMappingType' + outputmappingNo + '" name="select3"><option value="string" selected>string</option><option value="int">int</option><option value="double">double</option><option value="float">float</option><option value="boolean">boolean</option><option value="organizationalEntity">organizationalEntity</option></select></label></td><td><label><input name="textfield12" type="text" id="taskOutputMappingDefaultValues' + outputmappingNo + '" value="' + outputNodes[i].getElementsByTagName("default")[0].childNodes[0].nodeValue + '"></label></td><td><label><input type="button" class="outputDeleteButton btn btn-danger" name="outputDeleteButton' + outputmappingNo + '" id="outputDeleteButton' + outputmappingNo + '" value="Delete"></label></td></tr>';
                 else
-                    outputmapping = '<tr id="outputmapping' + outputmappingNo + '"><td width="25%"><input name="taskOutputMappingid" type="hidden" id="taskOutputMappingid" value="' + outputmappingNo + '"><input name="textfield6" type="text" id="taskOutputMappingElementName' + outputmappingNo + '" value="' + outputNodes[i].getAttribute("id") + '"></td><td width="25%"><input name="textfield7" type="text" id="taskOutputMappingDisplayName' + outputmappingNo + '" value=""></td><td width="10%"><input name="textfield8" type="text" id="taskOutputMappingOrder' + outputmappingNo + '" value=""></td><td width="20%"><label><select id="taskOutputMappingType' + outputmappingNo + '" name="select3"><option value="string" selected>string</option><option value="int">int</option><option value="double">double</option><option value="float">float</option><option value="boolean">boolean</option><option value="organizationalEntity">organizationalEntity</option></select></label></td><td width="10%"><label><input name="textfield12" type="text" id="taskOutputMappingDefaultValues' + outputmappingNo + '" value=""></label></td><td><label><input type="button" class="outputDeleteButton btn btn-danger" name="outputDeleteButton' + outputmappingNo + '" id="outputDeleteButton' + outputmappingNo + '" value="Delete"></label></td></tr>';
+                    outputmapping = '<tr id="outputmapping' + outputmappingNo + '"><td><input name="taskOutputMappingid" type="hidden" id="taskOutputMappingid" value="' + outputmappingNo + '"><input name="textfield6" type="text" id="taskOutputMappingElementName' + outputmappingNo + '" value="' + outputNodes[i].getAttribute("id") + '"></td><td><input name="textfield7" type="text" id="taskOutputMappingDisplayName' + outputmappingNo + '" value=""></td><td><input name="textfield8" type="text" id="taskOutputMappingOrder' + outputmappingNo + '" value=""></td><td><label><select id="taskOutputMappingType' + outputmappingNo + '" name="select3"><option value="string" selected>string</option><option value="int">int</option><option value="double">double</option><option value="float">float</option><option value="boolean">boolean</option><option value="organizationalEntity">organizationalEntity</option></select></label></td><td><label><input name="textfield12" type="text" id="taskOutputMappingDefaultValues' + outputmappingNo + '" value=""></label></td><td><label><input type="button" class="outputDeleteButton btn btn-danger" name="outputDeleteButton' + outputmappingNo + '" id="outputDeleteButton' + outputmappingNo + '" value="Delete"></label></td></tr>';
                 $("#" + taskDivName + " #outputmappingTable").append(
                     outputmapping);
                 $('#' + taskDivName + ' #taskOutputMappingType' + mappingNo).val(outputNodes[i].getAttribute("type").replace("xsd:", ""));
@@ -561,7 +584,7 @@ function generateTaskDiv(taskNode) {
                                 }
                                 makeDirty();
                                 generateTaskDiv(taskNode);
-                                selectedindex = $('#page-content-wrapper a[href="#'+taskNode.getAttribute("name")+'wrapper"]').parent().index();
+                                //selectedindex = $('#page-content-wrapper a[href="#'+taskNode.getAttribute("name")+'wrapper"]').parent().index();
                             } catch (err) {
                                 handleError(err);
                             }
@@ -793,7 +816,7 @@ function generateText(taskNode) {
             }
         }
     }
-    createFile(taskName,"");
+    createFile(taskName,"generateText",taskNode);
 }
 
 
@@ -1026,7 +1049,7 @@ function unmarshalPeopleAssignment(taskNode, peopleAssignmentName) {
 }
 
 
-function bindChangeEvents() {
+function bindChangeEvents() { //put all the listeners here
 
     $('input').keyup(function() {
         makeDirty();
@@ -1104,6 +1127,53 @@ function initValues(currentTaskName) {
 }
 
 function handleError(message) {
-    alert(message); // A functionality to log errors is requested in https://wso2.org/jira/browse/TOOLS-3366
+    //alert(message); // A functionality to log errors is requested in https://wso2.org/jira/browse/TOOLS-3366
+    ExecuteCustomFunction("alert","Human Task Editor Error",message);
 }
 
+function handleTabChange() {
+    $("#page-content-wrapper").tabs({ activate: function(event ,ui){
+            selectedindex = ui.newTab.index();
+            //addEvent("tabChange","page-content-wrapper "+ui.newTab.index(),xmlDom);
+        } 
+    });
+}
+
+//Undo Redo Implementation
+/* There are 3 kind of events used in the editor
+ 1) text events (eventID,textelementID)
+ 2) table add row events (eventID,rowID)
+ 3) radiobuttonselect events (eventID,radiobuttonID)    
+*/
+
+var eventStack = [];
+
+function addEvent(eventType,elementID,elementValue){
+    lastEventID =  parseInt(getLastEventID());
+    lastEventID++;
+    alert(lastEventID);
+    newElement = [lastEventID,eventType,elementID,elementValue.cloneNode(true)];
+    eventStack.push(newElement);
+}
+
+function getLastEventID(){
+    lastElement = eventStack.pop();
+    lastElementID = 0;
+    alert(lastElement);
+    if (typeof lastElement == 'undefined') lastElementID = 0;
+    else lastElementID = lastElement[0];
+    return lastElementID;
+}
+
+function getEvent(){
+    lastElement = eventStack.pop();
+    return lastElement;
+}
+
+function executeEvent(){
+    lastElement = getEvent();
+    lastElementEventType = lastElement[1];
+    xmlDom = lastElement[3];
+    alert(xmlDom);
+    process();
+}

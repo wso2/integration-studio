@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Validator
 Bundle-SymbolicName: org.wso2.developerstudio.eclipse.artifact.dataservice.validator;singleton:=true
-Bundle-Version: 4.1.0.qualifier
+Bundle-Version: 3.5.1.qualifier
 Bundle-Activator: org.wso2.developerstudio.eclipse.artifact.ds.validator.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,

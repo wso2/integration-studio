@@ -8,6 +8,7 @@ import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.gmf.tooling.runtime.structure.DiagramStructure;
 import org.wso2.developerstudio.datamapper.DataMapperPackage;
 import org.wso2.developerstudio.datamapper.DataMapperRoot;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.AddEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.ConcatEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.ConstantEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.ContainsEditPart;
@@ -90,8 +91,8 @@ public class DataMapperVisualIDRegistry {
 			return Integer.parseInt(type);
 		} catch (NumberFormatException e) {
 			if (Boolean.TRUE.toString().equalsIgnoreCase(Platform.getDebugOption(DEBUG_KEY))) {
-				DataMapperDiagramEditorPlugin.getInstance().logError(
-						"Unable to parse view type as a visualID number: " + type);
+				DataMapperDiagramEditorPlugin.getInstance()
+						.logError("Unable to parse view type as a visualID number: " + type);
 			}
 		}
 		return -1;
@@ -155,6 +156,9 @@ public class DataMapperVisualIDRegistry {
 			if (DataMapperPackage.eINSTANCE.getConcat().isSuperTypeOf(domainElement.eClass())) {
 				return ConcatEditPart.VISUAL_ID;
 			}
+			if (DataMapperPackage.eINSTANCE.getAdd().isSuperTypeOf(domainElement.eClass())) {
+				return AddEditPart.VISUAL_ID;
+			}
 			if (DataMapperPackage.eINSTANCE.getSplit().isSuperTypeOf(domainElement.eClass())) {
 				return SplitEditPart.VISUAL_ID;
 			}
@@ -187,6 +191,11 @@ public class DataMapperVisualIDRegistry {
 			}
 			break;
 		case ConcatEditPart.VISUAL_ID:
+			if (DataMapperPackage.eINSTANCE.getOperatorBasicContainer().isSuperTypeOf(domainElement.eClass())) {
+				return OperatorBasicContainerEditPart.VISUAL_ID;
+			}
+			break;
+		case AddEditPart.VISUAL_ID:
 			if (DataMapperPackage.eINSTANCE.getOperatorBasicContainer().isSuperTypeOf(domainElement.eClass())) {
 				return OperatorBasicContainerEditPart.VISUAL_ID;
 			}
@@ -332,6 +341,9 @@ public class DataMapperVisualIDRegistry {
 			if (ConcatEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
+			if (AddEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
 			if (SplitEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
@@ -364,6 +376,11 @@ public class DataMapperVisualIDRegistry {
 			}
 			break;
 		case ConcatEditPart.VISUAL_ID:
+			if (OperatorBasicContainerEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			break;
+		case AddEditPart.VISUAL_ID:
 			if (OperatorBasicContainerEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
@@ -554,52 +571,58 @@ public class DataMapperVisualIDRegistry {
 	 */
 	public static final DiagramStructure TYPED_INSTANCE = new DiagramStructure() {
 		/**
-		 * @generated
-		 */
+		* @generated
+		*/
 		@Override
+
 		public int getVisualID(View view) {
 			return org.wso2.developerstudio.datamapper.diagram.part.DataMapperVisualIDRegistry.getVisualID(view);
 		}
 
 		/**
-		 * @generated
-		 */
+		* @generated
+		*/
 		@Override
+
 		public String getModelID(View view) {
 			return org.wso2.developerstudio.datamapper.diagram.part.DataMapperVisualIDRegistry.getModelID(view);
 		}
 
 		/**
-		 * @generated
-		 */
+		* @generated
+		*/
 		@Override
+
 		public int getNodeVisualID(View containerView, EObject domainElement) {
-			return org.wso2.developerstudio.datamapper.diagram.part.DataMapperVisualIDRegistry.getNodeVisualID(
-					containerView, domainElement);
+			return org.wso2.developerstudio.datamapper.diagram.part.DataMapperVisualIDRegistry
+					.getNodeVisualID(containerView, domainElement);
 		}
 
 		/**
-		 * @generated
-		 */
+		* @generated
+		*/
 		@Override
+
 		public boolean checkNodeVisualID(View containerView, EObject domainElement, int candidate) {
-			return org.wso2.developerstudio.datamapper.diagram.part.DataMapperVisualIDRegistry.checkNodeVisualID(
-					containerView, domainElement, candidate);
+			return org.wso2.developerstudio.datamapper.diagram.part.DataMapperVisualIDRegistry
+					.checkNodeVisualID(containerView, domainElement, candidate);
 		}
 
 		/**
-		 * @generated
-		 */
+		* @generated
+		*/
 		@Override
+
 		public boolean isCompartmentVisualID(int visualID) {
 			return org.wso2.developerstudio.datamapper.diagram.part.DataMapperVisualIDRegistry
 					.isCompartmentVisualID(visualID);
 		}
 
 		/**
-		 * @generated
-		 */
+		* @generated
+		*/
 		@Override
+
 		public boolean isSemanticLeafVisualID(int visualID) {
 			return org.wso2.developerstudio.datamapper.diagram.part.DataMapperVisualIDRegistry
 					.isSemanticLeafVisualID(visualID);

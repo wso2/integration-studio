@@ -26,11 +26,11 @@ import org.wso2.developerstudio.datamapper.OutNode;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.datamapper.impl.OperatorImpl#getBasicContainer <em>Basic Container</em>}</li>
  *   <li>{@link org.wso2.developerstudio.datamapper.impl.OperatorImpl#isSerialized <em>Serialized</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

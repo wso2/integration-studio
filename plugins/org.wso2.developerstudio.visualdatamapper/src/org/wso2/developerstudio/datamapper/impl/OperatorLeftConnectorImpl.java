@@ -18,10 +18,10 @@ import org.wso2.developerstudio.datamapper.OperatorLeftConnector;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.datamapper.impl.OperatorLeftConnectorImpl#getInNode <em>In Node</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

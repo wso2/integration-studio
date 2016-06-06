@@ -22,6 +22,7 @@ import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.ui.IMemento;
 import org.eclipse.ui.navigator.ICommonContentExtensionSite;
 import org.eclipse.ui.navigator.ICommonContentProvider;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.AddEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.ConcatEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.ConstantEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.ContainsEditPart;
@@ -205,8 +206,8 @@ public class DataMapperNavigatorContentProvider implements ICommonContentProvide
 					topViews.add((View) o);
 				}
 			}
-			result.addAll(createNavigatorItems(selectViewsByType(topViews, DataMapperRootEditPart.MODEL_ID), file,
-					false));
+			result.addAll(
+					createNavigatorItems(selectViewsByType(topViews, DataMapperRootEditPart.MODEL_ID), file, false));
 			return result.toArray();
 		}
 
@@ -236,8 +237,8 @@ public class DataMapperNavigatorContentProvider implements ICommonContentProvide
 			LinkedList<DataMapperAbstractNavigatorItem> result = new LinkedList<DataMapperAbstractNavigatorItem>();
 			Diagram sv = (Diagram) view;
 			DataMapperNavigatorGroup links = new DataMapperNavigatorGroup(
-					Messages.NavigatorGroupName_DataMapperRoot_1000_links,
-					"icons/linksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
+					Messages.NavigatorGroupName_DataMapperRoot_1000_links, "icons/linksNavigatorGroup.gif", //$NON-NLS-1$
+					parentElement);
 			Collection<View> connectedViews;
 			connectedViews = getChildrenByType(Collections.singleton(sv),
 					DataMapperVisualIDRegistry.getType(InputEditPart.VISUAL_ID));
@@ -250,6 +251,9 @@ public class DataMapperNavigatorContentProvider implements ICommonContentProvide
 			result.addAll(createNavigatorItems(connectedViews, parentElement, false));
 			connectedViews = getChildrenByType(Collections.singleton(sv),
 					DataMapperVisualIDRegistry.getType(ConcatEditPart.VISUAL_ID));
+			result.addAll(createNavigatorItems(connectedViews, parentElement, false));
+			connectedViews = getChildrenByType(Collections.singleton(sv),
+					DataMapperVisualIDRegistry.getType(AddEditPart.VISUAL_ID));
 			result.addAll(createNavigatorItems(connectedViews, parentElement, false));
 			connectedViews = getChildrenByType(Collections.singleton(sv),
 					DataMapperVisualIDRegistry.getType(SplitEditPart.VISUAL_ID));
@@ -365,6 +369,16 @@ public class DataMapperNavigatorContentProvider implements ICommonContentProvide
 			return result.toArray();
 		}
 
+		case AddEditPart.VISUAL_ID: {
+			LinkedList<DataMapperAbstractNavigatorItem> result = new LinkedList<DataMapperAbstractNavigatorItem>();
+			Node sv = (Node) view;
+			Collection<View> connectedViews;
+			connectedViews = getChildrenByType(Collections.singleton(sv),
+					DataMapperVisualIDRegistry.getType(OperatorBasicContainerEditPart.VISUAL_ID));
+			result.addAll(createNavigatorItems(connectedViews, parentElement, false));
+			return result.toArray();
+		}
+
 		case TreeNodeEditPart.VISUAL_ID: {
 			LinkedList<DataMapperAbstractNavigatorItem> result = new LinkedList<DataMapperAbstractNavigatorItem>();
 			Node sv = (Node) view;
@@ -420,8 +434,8 @@ public class DataMapperNavigatorContentProvider implements ICommonContentProvide
 			LinkedList<DataMapperAbstractNavigatorItem> result = new LinkedList<DataMapperAbstractNavigatorItem>();
 			Node sv = (Node) view;
 			DataMapperNavigatorGroup incominglinks = new DataMapperNavigatorGroup(
-					Messages.NavigatorGroupName_InNode_3008_incominglinks,
-					"icons/incomingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
+					Messages.NavigatorGroupName_InNode_3008_incominglinks, "icons/incomingLinksNavigatorGroup.gif", //$NON-NLS-1$
+					parentElement);
 			Collection<View> connectedViews;
 			connectedViews = getIncomingLinksByType(Collections.singleton(sv),
 					DataMapperVisualIDRegistry.getType(DataMapperLinkEditPart.VISUAL_ID));
@@ -436,8 +450,8 @@ public class DataMapperNavigatorContentProvider implements ICommonContentProvide
 			LinkedList<DataMapperAbstractNavigatorItem> result = new LinkedList<DataMapperAbstractNavigatorItem>();
 			Node sv = (Node) view;
 			DataMapperNavigatorGroup outgoinglinks = new DataMapperNavigatorGroup(
-					Messages.NavigatorGroupName_OutNode_3009_outgoinglinks,
-					"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
+					Messages.NavigatorGroupName_OutNode_3009_outgoinglinks, "icons/outgoingLinksNavigatorGroup.gif", //$NON-NLS-1$
+					parentElement);
 			Collection<View> connectedViews;
 			connectedViews = getOutgoingLinksByType(Collections.singleton(sv),
 					DataMapperVisualIDRegistry.getType(DataMapperLinkEditPart.VISUAL_ID));
@@ -504,8 +518,8 @@ public class DataMapperNavigatorContentProvider implements ICommonContentProvide
 			LinkedList<DataMapperAbstractNavigatorItem> result = new LinkedList<DataMapperAbstractNavigatorItem>();
 			Node sv = (Node) view;
 			DataMapperNavigatorGroup incominglinks = new DataMapperNavigatorGroup(
-					Messages.NavigatorGroupName_InNode_3015_incominglinks,
-					"icons/incomingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
+					Messages.NavigatorGroupName_InNode_3015_incominglinks, "icons/incomingLinksNavigatorGroup.gif", //$NON-NLS-1$
+					parentElement);
 			Collection<View> connectedViews;
 			connectedViews = getIncomingLinksByType(Collections.singleton(sv),
 					DataMapperVisualIDRegistry.getType(DataMapperLinkEditPart.VISUAL_ID));
@@ -540,8 +554,8 @@ public class DataMapperNavigatorContentProvider implements ICommonContentProvide
 			LinkedList<DataMapperAbstractNavigatorItem> result = new LinkedList<DataMapperAbstractNavigatorItem>();
 			Node sv = (Node) view;
 			DataMapperNavigatorGroup outgoinglinks = new DataMapperNavigatorGroup(
-					Messages.NavigatorGroupName_OutNode_3018_outgoinglinks,
-					"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
+					Messages.NavigatorGroupName_OutNode_3018_outgoinglinks, "icons/outgoingLinksNavigatorGroup.gif", //$NON-NLS-1$
+					parentElement);
 			Collection<View> connectedViews;
 			connectedViews = getOutgoingLinksByType(Collections.singleton(sv),
 					DataMapperVisualIDRegistry.getType(DataMapperLinkEditPart.VISUAL_ID));
@@ -556,8 +570,8 @@ public class DataMapperNavigatorContentProvider implements ICommonContentProvide
 			LinkedList<DataMapperAbstractNavigatorItem> result = new LinkedList<DataMapperAbstractNavigatorItem>();
 			Node sv = (Node) view;
 			DataMapperNavigatorGroup outgoinglinks = new DataMapperNavigatorGroup(
-					Messages.NavigatorGroupName_OutNode_3019_outgoinglinks,
-					"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
+					Messages.NavigatorGroupName_OutNode_3019_outgoinglinks, "icons/outgoingLinksNavigatorGroup.gif", //$NON-NLS-1$
+					parentElement);
 			Collection<View> connectedViews;
 			connectedViews = getOutgoingLinksByType(Collections.singleton(sv),
 					DataMapperVisualIDRegistry.getType(DataMapperLinkEditPart.VISUAL_ID));
@@ -572,8 +586,8 @@ public class DataMapperNavigatorContentProvider implements ICommonContentProvide
 			LinkedList<DataMapperAbstractNavigatorItem> result = new LinkedList<DataMapperAbstractNavigatorItem>();
 			Node sv = (Node) view;
 			DataMapperNavigatorGroup incominglinks = new DataMapperNavigatorGroup(
-					Messages.NavigatorGroupName_InNode_3020_incominglinks,
-					"icons/incomingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
+					Messages.NavigatorGroupName_InNode_3020_incominglinks, "icons/incomingLinksNavigatorGroup.gif", //$NON-NLS-1$
+					parentElement);
 			Collection<View> connectedViews;
 			connectedViews = getIncomingLinksByType(Collections.singleton(sv),
 					DataMapperVisualIDRegistry.getType(DataMapperLinkEditPart.VISUAL_ID));
@@ -588,11 +602,11 @@ public class DataMapperNavigatorContentProvider implements ICommonContentProvide
 			LinkedList<DataMapperAbstractNavigatorItem> result = new LinkedList<DataMapperAbstractNavigatorItem>();
 			Edge sv = (Edge) view;
 			DataMapperNavigatorGroup target = new DataMapperNavigatorGroup(
-					Messages.NavigatorGroupName_DataMapperLink_4001_target,
-					"icons/linkTargetNavigatorGroup.gif", parentElement); //$NON-NLS-1$
+					Messages.NavigatorGroupName_DataMapperLink_4001_target, "icons/linkTargetNavigatorGroup.gif", //$NON-NLS-1$
+					parentElement);
 			DataMapperNavigatorGroup source = new DataMapperNavigatorGroup(
-					Messages.NavigatorGroupName_DataMapperLink_4001_source,
-					"icons/linkSourceNavigatorGroup.gif", parentElement); //$NON-NLS-1$
+					Messages.NavigatorGroupName_DataMapperLink_4001_source, "icons/linkSourceNavigatorGroup.gif", //$NON-NLS-1$
+					parentElement);
 			Collection<View> connectedViews;
 			connectedViews = getLinksTargetByType(Collections.singleton(sv),
 					DataMapperVisualIDRegistry.getType(InNode2EditPart.VISUAL_ID));

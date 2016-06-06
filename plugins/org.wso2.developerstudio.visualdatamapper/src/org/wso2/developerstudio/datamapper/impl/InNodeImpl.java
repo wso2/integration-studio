@@ -26,11 +26,11 @@ import org.wso2.developerstudio.datamapper.InNode;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.datamapper.impl.InNodeImpl#getIncomingLink <em>Incoming Link</em>}</li>
  *   <li>{@link org.wso2.developerstudio.datamapper.impl.InNodeImpl#getElementParent <em>Element Parent</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

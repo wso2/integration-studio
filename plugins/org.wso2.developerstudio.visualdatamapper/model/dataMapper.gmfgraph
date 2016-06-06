@@ -182,6 +182,12 @@
           xsi:type="gmfgraph:Rectangle"
           name="UpperCaseFigure"/>
     </descriptors>
+    <descriptors
+        name="AddFigure">
+      <actualFigure
+          xsi:type="gmfgraph:Rectangle"
+          name="AddFigure"/>
+    </descriptors>
   </figures>
   <nodes
       name="DataMapperNode"
@@ -260,6 +266,9 @@
   <nodes
       name="UpperCase"
       figure="UpperCaseFigure"/>
+  <nodes
+      name="Add"
+      figure="AddFigure"/>
   <connections
       name="DataMapperLink"
       figure="DataMapperLinkFigure"/>

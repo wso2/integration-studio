@@ -271,7 +271,7 @@ public class InNodeEditPart extends AbstractInNodeEditPart {
 				@Override
 				public void mouseMoved(MouseEvent me) {
 				}
-				
+
 			});
 			createContents();
 
@@ -302,59 +302,60 @@ public class InNodeEditPart extends AbstractInNodeEditPart {
 			this.setOutline(false);
 			this.setFill(false);
 		}
-		
+
 		private void highlightParentElem() {
-			IFigure treeFigure = (IFigure) ((DefaultSizeNodeFigure) ((BorderedNodeFigure) getParent().getParent().getParent()).getChildren().get(0)).getChildren().get(0) ;
+			IFigure treeFigure = (IFigure) ((DefaultSizeNodeFigure) ((BorderedNodeFigure) getParent().getParent()
+					.getParent()).getChildren().get(0)).getChildren().get(0);
 			if (treeFigure instanceof TreeNode2EditPart.TreeNodeFigure) {
-				TreeNode2EditPart.TreeNodeFigure num =(TreeNode2EditPart.TreeNodeFigure) treeFigure;
-			    num.highlightElementOnSelection();
+				TreeNode2EditPart.TreeNodeFigure num = (TreeNode2EditPart.TreeNodeFigure) treeFigure;
+				num.highlightElementOnSelection();
 			}
 			if (treeFigure instanceof TreeNodeEditPart.TreeNodeFigure) {
-				TreeNodeEditPart.TreeNodeFigure num =(TreeNodeEditPart.TreeNodeFigure) treeFigure;
-			    num.highlightElementOnSelection();
+				TreeNodeEditPart.TreeNodeFigure num = (TreeNodeEditPart.TreeNodeFigure) treeFigure;
+				num.highlightElementOnSelection();
 			}
 			if (treeFigure instanceof TreeNode3EditPart.TreeNodeFigure) {
-				TreeNode3EditPart.TreeNodeFigure num =(TreeNode3EditPart.TreeNodeFigure)treeFigure;
-			    num.highlightElementOnSelection();
+				TreeNode3EditPart.TreeNodeFigure num = (TreeNode3EditPart.TreeNodeFigure) treeFigure;
+				num.highlightElementOnSelection();
 			}
 		}
-		
+
 		private void removeParentHighlight() {
-			IFigure treeFigure = (IFigure) ((DefaultSizeNodeFigure) ((BorderedNodeFigure) getParent().getParent().getParent()).getChildren().get(0)).getChildren().get(0) ;
+			IFigure treeFigure = (IFigure) ((DefaultSizeNodeFigure) ((BorderedNodeFigure) getParent().getParent()
+					.getParent()).getChildren().get(0)).getChildren().get(0);
 			if (treeFigure instanceof TreeNode2EditPart.TreeNodeFigure) {
-				TreeNode2EditPart.TreeNodeFigure num =(TreeNode2EditPart.TreeNodeFigure) treeFigure;
-			    num.removeHighlight();
+				TreeNode2EditPart.TreeNodeFigure num = (TreeNode2EditPart.TreeNodeFigure) treeFigure;
+				num.removeHighlight();
 			}
 			if (treeFigure instanceof TreeNodeEditPart.TreeNodeFigure) {
-				TreeNodeEditPart.TreeNodeFigure num =(TreeNodeEditPart.TreeNodeFigure) treeFigure;
-			    num.removeHighlight();
+				TreeNodeEditPart.TreeNodeFigure num = (TreeNodeEditPart.TreeNodeFigure) treeFigure;
+				num.removeHighlight();
 			}
 			if (treeFigure instanceof TreeNode3EditPart.TreeNodeFigure) {
-				TreeNode3EditPart.TreeNodeFigure num =(TreeNode3EditPart.TreeNodeFigure) treeFigure;
-			    num.removeHighlight();
+				TreeNode3EditPart.TreeNodeFigure num = (TreeNode3EditPart.TreeNodeFigure) treeFigure;
+				num.removeHighlight();
 			}
 		}
-	/*	public void highlightElementOnSelection() {
-			ImageDescriptor mainImgDesc = AbstractUIPlugin.imageDescriptorFromPlugin(
-					"org.wso2.developerstudio.visualdatamapper.diagram", "icons/gmf/black-coloured.jpg");
-
-			int nodeDimension = 10; // width for connection nodes
-
-			ImageFigure mainImg = new ImageFigure(mainImgDesc.createImage());
-			mainImg.setSize(new Dimension(nodeDimension, nodeDimension));
-			RectangleFigure mainImageRectangle = new RectangleFigure();
-
-			mainImageRectangle.setBackgroundColor(new Color(null, 255, 255, 255));
-			mainImageRectangle.setPreferredSize(new Dimension(nodeDimension, nodeDimension));
-			mainImageRectangle.setBackgroundColor(new Color(null, 0, 0, 0));
-			mainImageRectangle.setOpaque(false);
-			mainImageRectangle.add(mainImg);
-			this.add(mainImageRectangle);
-			this.setOpaque(false);
-			this.setOutline(false);
-			this.setFill(false);
-		}*/
+		/*	public void highlightElementOnSelection() {
+				ImageDescriptor mainImgDesc = AbstractUIPlugin.imageDescriptorFromPlugin(
+						"org.wso2.developerstudio.visualdatamapper.diagram", "icons/gmf/black-coloured.jpg");
+		
+				int nodeDimension = 10; // width for connection nodes
+		
+				ImageFigure mainImg = new ImageFigure(mainImgDesc.createImage());
+				mainImg.setSize(new Dimension(nodeDimension, nodeDimension));
+				RectangleFigure mainImageRectangle = new RectangleFigure();
+		
+				mainImageRectangle.setBackgroundColor(new Color(null, 255, 255, 255));
+				mainImageRectangle.setPreferredSize(new Dimension(nodeDimension, nodeDimension));
+				mainImageRectangle.setBackgroundColor(new Color(null, 0, 0, 0));
+				mainImageRectangle.setOpaque(false);
+				mainImageRectangle.add(mainImg);
+				this.add(mainImageRectangle);
+				this.setOpaque(false);
+				this.setOutline(false);
+				this.setFill(false);
+			}*/
 	}
-	
 
 }

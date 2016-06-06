@@ -19,11 +19,11 @@ import org.wso2.developerstudio.datamapper.OperatorRightContainer;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.datamapper.impl.OperatorBasicContainerImpl#getLeftContainer <em>Left Container</em>}</li>
  *   <li>{@link org.wso2.developerstudio.datamapper.impl.OperatorBasicContainerImpl#getRightContainer <em>Right Container</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

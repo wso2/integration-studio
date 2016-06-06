@@ -818,6 +818,43 @@ public interface DataMapperPackage extends EPackage {
 	int CONSTANT_FEATURE_COUNT = OPERATOR_FEATURE_COUNT + 1;
 
 	/**
+	 * The meta object id for the '{@link org.wso2.developerstudio.datamapper.impl.AddImpl <em>Add</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.wso2.developerstudio.datamapper.impl.AddImpl
+	 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getAdd()
+	 * @generated
+	 */
+	int ADD = 18;
+
+	/**
+	 * The feature id for the '<em><b>Basic Container</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ADD__BASIC_CONTAINER = OPERATOR__BASIC_CONTAINER;
+
+	/**
+	 * The feature id for the '<em><b>Serialized</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ADD__SERIALIZED = OPERATOR__SERIALIZED;
+
+	/**
+	 * The number of structural features of the '<em>Add</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ADD_FEATURE_COUNT = OPERATOR_FEATURE_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.datamapper.impl.SplitImpl <em>Split</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -825,7 +862,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getSplit()
 	 * @generated
 	 */
-	int SPLIT = 18;
+	int SPLIT = 19;
 
 	/**
 	 * The feature id for the '<em><b>Basic Container</b></em>' containment reference.
@@ -889,7 +926,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getLowerCase()
 	 * @generated
 	 */
-	int LOWER_CASE = 19;
+	int LOWER_CASE = 20;
 
 	/**
 	 * The feature id for the '<em><b>Basic Container</b></em>' containment reference.
@@ -926,7 +963,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getContains()
 	 * @generated
 	 */
-	int CONTAINS = 20;
+	int CONTAINS = 21;
 
 	/**
 	 * The feature id for the '<em><b>Basic Container</b></em>' containment reference.
@@ -963,7 +1000,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getUpperCase()
 	 * @generated
 	 */
-	int UPPER_CASE = 21;
+	int UPPER_CASE = 22;
 
 	/**
 	 * The feature id for the '<em><b>Basic Container</b></em>' containment reference.
@@ -1000,7 +1037,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getPropertyKeyValuePair()
 	 * @generated
 	 */
-	int PROPERTY_KEY_VALUE_PAIR = 22;
+	int PROPERTY_KEY_VALUE_PAIR = 23;
 
 	/**
 	 * The feature id for the '<em><b>Key</b></em>' attribute.
@@ -1037,7 +1074,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getSchemaDataType()
 	 * @generated
 	 */
-    int SCHEMA_DATA_TYPE = 23;
+    int SCHEMA_DATA_TYPE = 24;
 
     /**
 	 * Returns the meta object for class '{@link org.wso2.developerstudio.datamapper.DataMapperNode <em>Node</em>}'.
@@ -1658,6 +1695,16 @@ public interface DataMapperPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getConstant_ConstantValue();
+
+	/**
+	 * Returns the meta object for class '{@link org.wso2.developerstudio.datamapper.Add <em>Add</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Add</em>'.
+	 * @see org.wso2.developerstudio.datamapper.Add
+	 * @generated
+	 */
+	EClass getAdd();
 
 	/**
 	 * Returns the meta object for class '{@link org.wso2.developerstudio.datamapper.Split <em>Split</em>}'.
@@ -2295,6 +2342,16 @@ public interface DataMapperPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute CONSTANT__CONSTANT_VALUE = eINSTANCE.getConstant_ConstantValue();
+
+		/**
+		 * The meta object literal for the '{@link org.wso2.developerstudio.datamapper.impl.AddImpl <em>Add</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.wso2.developerstudio.datamapper.impl.AddImpl
+		 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getAdd()
+		 * @generated
+		 */
+		EClass ADD = eINSTANCE.getAdd();
 
 		/**
 		 * The meta object literal for the '{@link org.wso2.developerstudio.datamapper.impl.SplitImpl <em>Split</em>}' class.

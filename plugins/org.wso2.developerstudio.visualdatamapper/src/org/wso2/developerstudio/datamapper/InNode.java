@@ -12,11 +12,11 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.datamapper.InNode#getIncomingLink <em>Incoming Link</em>}</li>
  *   <li>{@link org.wso2.developerstudio.datamapper.InNode#getElementParent <em>Element Parent</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.wso2.developerstudio.datamapper.DataMapperPackage#getInNode()
  * @model

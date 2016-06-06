@@ -20,10 +20,10 @@ import org.wso2.developerstudio.datamapper.TreeNode;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.datamapper.impl.OutputImpl#getTreeNode <em>Tree Node</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

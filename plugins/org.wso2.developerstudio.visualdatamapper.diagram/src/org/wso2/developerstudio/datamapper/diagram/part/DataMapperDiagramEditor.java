@@ -135,13 +135,13 @@ public class DataMapperDiagramEditor extends DiagramDocumentEditor implements IG
 	protected String getContextID() {
 		return CONTEXT_ID;
 	}
-	
+
 	/**
 	 * @generated NOT
 	 */
-	 protected int getInitialDockLocation() {
-		 return PositionConstants.WEST;
-		 }
+	protected int getInitialDockLocation() {
+		return PositionConstants.WEST;
+	}
 
 	/**
 	 * @generated

@@ -21,10 +21,10 @@ import org.wso2.developerstudio.datamapper.OperatorLeftContainer;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.datamapper.impl.OperatorLeftContainerImpl#getLeftConnectors <em>Left Connectors</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

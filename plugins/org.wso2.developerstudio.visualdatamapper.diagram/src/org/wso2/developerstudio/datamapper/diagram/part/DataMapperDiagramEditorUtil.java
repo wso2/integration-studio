@@ -91,8 +91,8 @@ public class DataMapperDiagramEditorUtil {
 		try {
 			file.setCharset("UTF-8", new NullProgressMonitor()); //$NON-NLS-1$
 		} catch (CoreException e) {
-			DataMapperDiagramEditorPlugin.getInstance().logError(
-					"Unable to set charset for file " + file.getFullPath(), e); //$NON-NLS-1$
+			DataMapperDiagramEditorPlugin.getInstance().logError("Unable to set charset for file " + file.getFullPath(), //$NON-NLS-1$
+					e);
 		}
 	}
 
@@ -154,8 +154,8 @@ public class DataMapperDiagramEditorUtil {
 							.getSaveOptions());
 				} catch (IOException e) {
 
-					DataMapperDiagramEditorPlugin.getInstance().logError(
-							"Unable to store model and diagram resources", e); //$NON-NLS-1$
+					DataMapperDiagramEditorPlugin.getInstance().logError("Unable to store model and diagram resources", //$NON-NLS-1$
+							e);
 				}
 				return CommandResult.newOKCommandResult();
 			}
@@ -172,21 +172,21 @@ public class DataMapperDiagramEditorUtil {
 	}
 
 	/**
-	 * Create a new instance of domain element associated with canvas.
-	 * <!-- begin-user-doc -->
+	* Create a new instance of domain element associated with canvas.
+	* <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+	* @generated
+	*/
 	private static DataMapperRoot createInitialModel() {
 		return DataMapperFactory.eINSTANCE.createDataMapperRoot();
 	}
 
 	/**
-	 * Store model element in the resource.
-	 * <!-- begin-user-doc -->
+	* Store model element in the resource.
+	* <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+	* @generated
+	*/
 	private static void attachModelToResource(DataMapperRoot model, Resource resource) {
 		resource.getContents().add(model);
 	}
@@ -206,8 +206,8 @@ public class DataMapperDiagramEditorUtil {
 		}
 
 		if (!editParts.isEmpty()) {
-			diagramPart.getDiagramGraphicalViewer().reveal(
-					firstPrimary != null ? firstPrimary : (EditPart) editParts.get(0));
+			diagramPart.getDiagramGraphicalViewer()
+					.reveal(firstPrimary != null ? firstPrimary : (EditPart) editParts.get(0));
 		}
 	}
 

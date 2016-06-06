@@ -250,7 +250,8 @@ public class OutputEditPart extends ShapeNodeEditPart {
 	/**
 	 * @generated NOT
 	 */
-	private void createElement(org.wso2.developerstudio.datamapper.diagram.tree.model.Element element, TreeNode treeNode) {
+	private void createElement(org.wso2.developerstudio.datamapper.diagram.tree.model.Element element,
+			TreeNode treeNode) {
 		Element ele = DataMapperFactory.eINSTANCE.createElement();
 		// ele.setName(element.getCount() + "," + element.getName());
 		ele.setName(element.getName());
@@ -463,7 +464,8 @@ public class OutputEditPart extends ShapeNodeEditPart {
 		if (notification.getFeature() instanceof EAttributeImpl) {
 			if (notification.getNotifier() instanceof BoundsImpl) {
 				reposition(((BoundsImpl) notification.getNotifier()).getX(),
-						((BoundsImpl) notification.getNotifier()).getY(), TreeNodeUtils.getTreeWidth(outputRootTreeNode, LEAF_WIDTH),
+						((BoundsImpl) notification.getNotifier()).getY(),
+						TreeNodeUtils.getTreeWidth(outputRootTreeNode, LEAF_WIDTH),
 						TreeNodeUtils.getTreeHeight(outputRootTreeNode, LEAF_HEIGHT));
 				FigureCanvas canvas = (FigureCanvas) getViewer().getControl();
 				canvas.getViewport().repaint();
@@ -498,7 +500,8 @@ public class OutputEditPart extends ShapeNodeEditPart {
 	}
 
 	private void reposition() {
-		reposition(getFigure().getBounds().x, getFigure().getBounds().y, TreeNodeUtils.getTreeWidth(outputRootTreeNode, LEAF_WIDTH),
+		reposition(getFigure().getBounds().x, getFigure().getBounds().y,
+				TreeNodeUtils.getTreeWidth(outputRootTreeNode, LEAF_WIDTH),
 				TreeNodeUtils.getTreeHeight(outputRootTreeNode, LEAF_HEIGHT));
 	}
 
@@ -655,7 +658,7 @@ public class OutputEditPart extends ShapeNodeEditPart {
 			this.setBorder(compoundBorderTop);
 
 		}
-		
+
 		/**
 		 * @generated NOT
 		 */

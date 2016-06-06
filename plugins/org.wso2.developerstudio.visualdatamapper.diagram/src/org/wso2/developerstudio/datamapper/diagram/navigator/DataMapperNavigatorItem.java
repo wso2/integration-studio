@@ -71,11 +71,8 @@ public class DataMapperNavigatorItem extends DataMapperAbstractNavigatorItem {
 	 */
 	public boolean equals(Object obj) {
 		if (obj instanceof org.wso2.developerstudio.datamapper.diagram.navigator.DataMapperNavigatorItem) {
-			return EcoreUtil
-					.getURI(getView())
-					.equals(EcoreUtil
-							.getURI(((org.wso2.developerstudio.datamapper.diagram.navigator.DataMapperNavigatorItem) obj)
-									.getView()));
+			return EcoreUtil.getURI(getView()).equals(EcoreUtil.getURI(
+					((org.wso2.developerstudio.datamapper.diagram.navigator.DataMapperNavigatorItem) obj).getView()));
 		}
 		return super.equals(obj);
 	}

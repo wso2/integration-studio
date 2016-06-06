@@ -239,7 +239,8 @@ public class InputEditPart extends ShapeNodeEditPart {
 	/**
 	 * @generated NOT
 	 */
-	private void createElement(org.wso2.developerstudio.datamapper.diagram.tree.model.Element element, TreeNode treeNode) {
+	private void createElement(org.wso2.developerstudio.datamapper.diagram.tree.model.Element element,
+			TreeNode treeNode) {
 		Element ele = DataMapperFactory.eINSTANCE.createElement();
 		ele.setName(element.getName());
 		ele.setLevel(element.getCount());
@@ -399,7 +400,7 @@ public class InputEditPart extends ShapeNodeEditPart {
 			protected EditPolicy createChildEditPolicy(EditPart child) {
 				EditPolicy result = child.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
 				if (result == null) {
-					result = new CustomNonResizableEditPolicyEx();
+					result = new NonResizableEditPolicy();
 				}
 				return result;
 			}
@@ -427,7 +428,8 @@ public class InputEditPart extends ShapeNodeEditPart {
 		if (notification.getFeature() instanceof EAttributeImpl) {
 			if (notification.getNotifier() instanceof BoundsImpl) {
 				reposition(((BoundsImpl) notification.getNotifier()).getX(),
-						((BoundsImpl) notification.getNotifier()).getY(), TreeNodeUtils.getTreeWidth(inputRootTreeNode, LEAF_WIDTH),
+						((BoundsImpl) notification.getNotifier()).getY(),
+						TreeNodeUtils.getTreeWidth(inputRootTreeNode, LEAF_WIDTH),
 						TreeNodeUtils.getTreeHeight(inputRootTreeNode, LEAF_HEIGHT));
 				FigureCanvas canvas = (FigureCanvas) getViewer().getControl();
 				canvas.getViewport().repaint();
@@ -460,7 +462,8 @@ public class InputEditPart extends ShapeNodeEditPart {
 	}
 
 	private void reposition() {
-		reposition(getFigure().getBounds().x, getFigure().getBounds().y, TreeNodeUtils.getTreeWidth(inputRootTreeNode, LEAF_WIDTH),
+		reposition(getFigure().getBounds().x, getFigure().getBounds().y,
+				TreeNodeUtils.getTreeWidth(inputRootTreeNode, LEAF_WIDTH),
 				TreeNodeUtils.getTreeHeight(inputRootTreeNode, LEAF_HEIGHT));
 	}
 
@@ -477,8 +480,6 @@ public class InputEditPart extends ShapeNodeEditPart {
 
 		return figure;
 	}
-	
-	
 
 	/**
 	 * @generated NOT
@@ -504,7 +505,7 @@ public class InputEditPart extends ShapeNodeEditPart {
 			this.setLayoutManager(layoutThis);
 			LineBorder border = new LineBorder(DataMapperColorConstants.borderColor, 1, Graphics.LINE_SOLID);
 			this.setBorder(border);
-			
+
 			TitleBarBorder titleBarBorder = new TitleBarBorder("Input");
 			titleBarBorder.setTextAlignment(PositionConstants.CENTER);
 			titleBarBorder.setPadding(6);
@@ -517,6 +518,7 @@ public class InputEditPart extends ShapeNodeEditPart {
 			this.setBorder(compoundBorderTop);
 
 		}
+
 		/**
 		 * @generated NOT
 		 */

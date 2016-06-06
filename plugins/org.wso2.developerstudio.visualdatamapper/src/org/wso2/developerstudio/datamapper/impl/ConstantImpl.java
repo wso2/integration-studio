@@ -14,10 +14,10 @@ import org.wso2.developerstudio.datamapper.DataMapperPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.datamapper.impl.ConstantImpl#getConstantValue <em>Constant Value</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

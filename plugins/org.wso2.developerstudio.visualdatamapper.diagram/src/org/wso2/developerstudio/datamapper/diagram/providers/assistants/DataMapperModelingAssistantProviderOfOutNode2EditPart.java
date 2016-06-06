@@ -50,7 +50,8 @@ public class DataMapperModelingAssistantProviderOfOutNode2EditPart extends DataM
 	/**
 	 * @generated
 	 */
-	public List<IElementType> doGetRelTypesOnSourceAndTarget(OutNode2EditPart source, IGraphicalEditPart targetEditPart) {
+	public List<IElementType> doGetRelTypesOnSourceAndTarget(OutNode2EditPart source,
+			IGraphicalEditPart targetEditPart) {
 		List<IElementType> types = new LinkedList<IElementType>();
 		if (targetEditPart instanceof InNode2EditPart) {
 			types.add(DataMapperElementTypes.DataMapperLink_4001);

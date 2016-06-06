@@ -46,7 +46,7 @@ public class DataMapperSwitch<T> extends Switch<T> {
 	 * Checks whether this is a switch for the given package.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @parameter ePackage the package in question.
+	 * @param ePackage the package in question.
 	 * @return whether this is a switch for the given package.
 	 * @generated
 	 */
@@ -179,6 +179,14 @@ public class DataMapperSwitch<T> extends Switch<T> {
 				T result = caseConstant(constant);
 				if (result == null) result = caseOperator(constant);
 				if (result == null) result = caseDataMapperNode(constant);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case DataMapperPackage.ADD: {
+				Add add = (Add)theEObject;
+				T result = caseAdd(add);
+				if (result == null) result = caseOperator(add);
+				if (result == null) result = caseDataMapperNode(add);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -491,6 +499,21 @@ public class DataMapperSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseConstant(Constant object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Add</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Add</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseAdd(Add object) {
 		return null;
 	}
 

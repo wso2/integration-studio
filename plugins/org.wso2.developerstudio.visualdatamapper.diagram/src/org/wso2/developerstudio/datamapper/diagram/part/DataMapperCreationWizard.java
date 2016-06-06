@@ -91,8 +91,8 @@ public class DataMapperCreationWizard extends Wizard implements INewWizard {
 		this.workbench = workbench;
 		this.selection = selection;
 		setWindowTitle(Messages.DataMapperCreationWizardTitle);
-		setDefaultPageImageDescriptor(DataMapperDiagramEditorPlugin
-				.getBundledImageDescriptor("icons/wizban/NewDataMapperWizard.gif")); //$NON-NLS-1$
+		setDefaultPageImageDescriptor(
+				DataMapperDiagramEditorPlugin.getBundledImageDescriptor("icons/wizban/NewDataMapperWizard.gif")); //$NON-NLS-1$
 		setNeedsProgressMonitor(true);
 	}
 
@@ -106,10 +106,10 @@ public class DataMapperCreationWizard extends Wizard implements INewWizard {
 		diagramModelFilePage = new org.wso2.developerstudio.datamapper.diagram.part.DataMapperCreationWizardPage(
 				"DiagramModelFile", getSelection(), "datamapper_diagram"); //$NON-NLS-1$ //$NON-NLS-2$
 
-		diagramModelFilePage
-				.setTitle(org.wso2.developerstudio.datamapper.diagram.part.Messages.DataMapperCreationWizard_DiagramModelFilePageTitle);
-		diagramModelFilePage
-				.setDescription(org.wso2.developerstudio.datamapper.diagram.part.Messages.DataMapperCreationWizard_DiagramModelFilePageDescription);
+		diagramModelFilePage.setTitle(
+				org.wso2.developerstudio.datamapper.diagram.part.Messages.DataMapperCreationWizard_DiagramModelFilePageTitle);
+		diagramModelFilePage.setDescription(
+				org.wso2.developerstudio.datamapper.diagram.part.Messages.DataMapperCreationWizard_DiagramModelFilePageDescription);
 		addPage(diagramModelFilePage);
 
 		domainModelFilePage = new org.wso2.developerstudio.datamapper.diagram.part.DataMapperCreationWizardPage(
@@ -126,10 +126,10 @@ public class DataMapperCreationWizard extends Wizard implements INewWizard {
 			}
 		};
 
-		domainModelFilePage
-				.setTitle(org.wso2.developerstudio.datamapper.diagram.part.Messages.DataMapperCreationWizard_DomainModelFilePageTitle);
-		domainModelFilePage
-				.setDescription(org.wso2.developerstudio.datamapper.diagram.part.Messages.DataMapperCreationWizard_DomainModelFilePageDescription);
+		domainModelFilePage.setTitle(
+				org.wso2.developerstudio.datamapper.diagram.part.Messages.DataMapperCreationWizard_DomainModelFilePageTitle);
+		domainModelFilePage.setDescription(
+				org.wso2.developerstudio.datamapper.diagram.part.Messages.DataMapperCreationWizard_DomainModelFilePageDescription);
 		addPage(domainModelFilePage);
 	}
 

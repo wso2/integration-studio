@@ -484,6 +484,29 @@ public class DataMapperItemProviderAdapterFactory extends DataMapperAdapterFacto
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.wso2.developerstudio.datamapper.Add} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected AddItemProvider addItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.wso2.developerstudio.datamapper.Add}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createAddAdapter() {
+		if (addItemProvider == null) {
+			addItemProvider = new AddItemProvider(this);
+		}
+
+		return addItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link org.wso2.developerstudio.datamapper.Split} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -715,6 +738,7 @@ public class DataMapperItemProviderAdapterFactory extends DataMapperAdapterFacto
 		if (concatItemProvider != null) concatItemProvider.dispose();
 		if (equalItemProvider != null) equalItemProvider.dispose();
 		if (constantItemProvider != null) constantItemProvider.dispose();
+		if (addItemProvider != null) addItemProvider.dispose();
 		if (splitItemProvider != null) splitItemProvider.dispose();
 		if (lowerCaseItemProvider != null) lowerCaseItemProvider.dispose();
 		if (containsItemProvider != null) containsItemProvider.dispose();

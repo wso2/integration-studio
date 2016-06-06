@@ -9,6 +9,7 @@ import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
+import org.wso2.developerstudio.datamapper.Add;
 import org.wso2.developerstudio.datamapper.Concat;
 import org.wso2.developerstudio.datamapper.Constant;
 import org.wso2.developerstudio.datamapper.Contains;
@@ -172,6 +173,13 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 	 * @generated
 	 */
 	private EClass constantEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass addEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -803,6 +811,15 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getAdd() {
+		return addEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getSplit() {
 		return splitEClass;
 	}
@@ -1001,6 +1018,8 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 		constantEClass = createEClass(CONSTANT);
 		createEAttribute(constantEClass, CONSTANT__CONSTANT_VALUE);
 
+		addEClass = createEClass(ADD);
+
 		splitEClass = createEClass(SPLIT);
 		createEAttribute(splitEClass, SPLIT__DELIMITER);
 		createEAttribute(splitEClass, SPLIT__ARRAY_OUTPUT);
@@ -1054,6 +1073,7 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 		concatEClass.getESuperTypes().add(this.getOperator());
 		equalEClass.getESuperTypes().add(this.getOperator());
 		constantEClass.getESuperTypes().add(this.getOperator());
+		addEClass.getESuperTypes().add(this.getOperator());
 		splitEClass.getESuperTypes().add(this.getOperator());
 		lowerCaseEClass.getESuperTypes().add(this.getOperator());
 		containsEClass.getESuperTypes().add(this.getOperator());
@@ -1135,6 +1155,8 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 
 		initEClass(constantEClass, Constant.class, "Constant", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getConstant_ConstantValue(), ecorePackage.getEString(), "constantValue", null, 0, 1, Constant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(addEClass, Add.class, "Add", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(splitEClass, Split.class, "Split", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getSplit_Delimiter(), ecorePackage.getEString(), "delimiter", null, 0, 1, Split.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

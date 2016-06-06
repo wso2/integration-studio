@@ -83,6 +83,7 @@ public class DataMapperFactoryImpl extends EFactoryImpl implements DataMapperFac
 			case DataMapperPackage.CONCAT: return createConcat();
 			case DataMapperPackage.EQUAL: return createEqual();
 			case DataMapperPackage.CONSTANT: return createConstant();
+			case DataMapperPackage.ADD: return createAdd();
 			case DataMapperPackage.SPLIT: return createSplit();
 			case DataMapperPackage.LOWER_CASE: return createLowerCase();
 			case DataMapperPackage.CONTAINS: return createContains();
@@ -322,6 +323,16 @@ public class DataMapperFactoryImpl extends EFactoryImpl implements DataMapperFac
 		ConstantImpl constant = new ConstantImpl();
 		constant.setBasicContainer(createOperatorBasicContainer());
 		return constant;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Add createAdd() {
+		AddImpl add = new AddImpl();
+		return add;
 	}
 
 	/**

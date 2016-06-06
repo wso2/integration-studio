@@ -11,11 +11,11 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.datamapper.PropertyKeyValuePair#getKey <em>Key</em>}</li>
  *   <li>{@link org.wso2.developerstudio.datamapper.PropertyKeyValuePair#getValue <em>Value</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.wso2.developerstudio.datamapper.DataMapperPackage#getPropertyKeyValuePair()
  * @model

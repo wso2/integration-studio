@@ -18,6 +18,7 @@ import org.wso2.developerstudio.datamapper.Concat;
 import org.wso2.developerstudio.datamapper.DataMapperPackage;
 import org.wso2.developerstudio.datamapper.InNode;
 import org.wso2.developerstudio.datamapper.OutNode;
+import org.wso2.developerstudio.datamapper.SchemaDataType;
 
 /**
  * <!-- begin-user-doc -->
@@ -55,10 +56,16 @@ public class ConcatImpl extends OperatorImpl implements Concat {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	protected ConcatImpl() {
 		super();
+		setDefaultInputConnectors(2);
+		setDefaultOutputConnectors(1);
+		setInputSizeFixed(false);
+		setOutputSizeFixed(true);
+		getInputVariableType().add(SchemaDataType.STRING);
+		getOutputVariableType().add(SchemaDataType.STRING);
 	}
 	
 	 

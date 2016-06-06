@@ -51,6 +51,12 @@ public class OperatorItemProvider extends DataMapperNodeItemProvider{
 			super.getPropertyDescriptors(object);
 
 			addSerializedPropertyDescriptor(object);
+			addDefaultInputConnectorsPropertyDescriptor(object);
+			addDefaultOutputConnectorsPropertyDescriptor(object);
+			addInputVariableTypePropertyDescriptor(object);
+			addOutputVariableTypePropertyDescriptor(object);
+			addInputSizeFixedPropertyDescriptor(object);
+			addOutputSizeFixedPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -69,6 +75,138 @@ public class OperatorItemProvider extends DataMapperNodeItemProvider{
 				 getString("_UI_Operator_serialized_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_Operator_serialized_feature", "_UI_Operator_type"),
 				 DataMapperPackage.Literals.OPERATOR__SERIALIZED,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Default Input Connectors feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addDefaultInputConnectorsPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Operator_defaultInputConnectors_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Operator_defaultInputConnectors_feature", "_UI_Operator_type"),
+				 DataMapperPackage.Literals.OPERATOR__DEFAULT_INPUT_CONNECTORS,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Default Output Connectors feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addDefaultOutputConnectorsPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Operator_defaultOutputConnectors_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Operator_defaultOutputConnectors_feature", "_UI_Operator_type"),
+				 DataMapperPackage.Literals.OPERATOR__DEFAULT_OUTPUT_CONNECTORS,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Input Variable Type feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addInputVariableTypePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Operator_inputVariableType_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Operator_inputVariableType_feature", "_UI_Operator_type"),
+				 DataMapperPackage.Literals.OPERATOR__INPUT_VARIABLE_TYPE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Output Variable Type feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addOutputVariableTypePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Operator_outputVariableType_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Operator_outputVariableType_feature", "_UI_Operator_type"),
+				 DataMapperPackage.Literals.OPERATOR__OUTPUT_VARIABLE_TYPE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Input Size Fixed feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addInputSizeFixedPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Operator_inputSizeFixed_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Operator_inputSizeFixed_feature", "_UI_Operator_type"),
+				 DataMapperPackage.Literals.OPERATOR__INPUT_SIZE_FIXED,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Output Size Fixed feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addOutputSizeFixedPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Operator_outputSizeFixed_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Operator_outputSizeFixed_feature", "_UI_Operator_type"),
+				 DataMapperPackage.Literals.OPERATOR__OUTPUT_SIZE_FIXED,
 				 true,
 				 false,
 				 false,
@@ -143,6 +281,12 @@ public class OperatorItemProvider extends DataMapperNodeItemProvider{
 
 		switch (notification.getFeatureID(Operator.class)) {
 			case DataMapperPackage.OPERATOR__SERIALIZED:
+			case DataMapperPackage.OPERATOR__DEFAULT_INPUT_CONNECTORS:
+			case DataMapperPackage.OPERATOR__DEFAULT_OUTPUT_CONNECTORS:
+			case DataMapperPackage.OPERATOR__INPUT_VARIABLE_TYPE:
+			case DataMapperPackage.OPERATOR__OUTPUT_VARIABLE_TYPE:
+			case DataMapperPackage.OPERATOR__INPUT_SIZE_FIXED:
+			case DataMapperPackage.OPERATOR__OUTPUT_SIZE_FIXED:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case DataMapperPackage.OPERATOR__BASIC_CONTAINER:

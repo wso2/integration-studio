@@ -6,6 +6,7 @@ import org.eclipse.emf.ecore.EClass;
 
 import org.wso2.developerstudio.datamapper.Add;
 import org.wso2.developerstudio.datamapper.DataMapperPackage;
+import org.wso2.developerstudio.datamapper.SchemaDataType;
 
 /**
  * <!-- begin-user-doc -->
@@ -18,10 +19,18 @@ public class AddImpl extends OperatorImpl implements Add {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	protected AddImpl() {
 		super();
+		setDefaultInputConnectors(2);
+		setDefaultOutputConnectors(1);
+		setInputSizeFixed(false);
+		setOutputSizeFixed(true);
+		getInputVariableType().add(SchemaDataType.DOUBLE);
+		getInputVariableType().add(SchemaDataType.INT);
+		getOutputVariableType().add(SchemaDataType.INT);
+		getOutputVariableType().add(SchemaDataType.DOUBLE);
 	}
 
 	/**

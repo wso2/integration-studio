@@ -174,6 +174,14 @@ public class DataMapperSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case DataMapperPackage.ABSOLUTE_VALUE: {
+				AbsoluteValue absoluteValue = (AbsoluteValue)theEObject;
+				T result = caseAbsoluteValue(absoluteValue);
+				if (result == null) result = caseOperator(absoluteValue);
+				if (result == null) result = caseDataMapperNode(absoluteValue);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case DataMapperPackage.EQUAL: {
 				Equal equal = (Equal)theEObject;
 				T result = caseEqual(equal);
@@ -198,6 +206,46 @@ public class DataMapperSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case DataMapperPackage.DIVIDE: {
+				Divide divide = (Divide)theEObject;
+				T result = caseDivide(divide);
+				if (result == null) result = caseOperator(divide);
+				if (result == null) result = caseDataMapperNode(divide);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case DataMapperPackage.FLOOR: {
+				Floor floor = (Floor)theEObject;
+				T result = caseFloor(floor);
+				if (result == null) result = caseOperator(floor);
+				if (result == null) result = caseDataMapperNode(floor);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case DataMapperPackage.ROUND: {
+				Round round = (Round)theEObject;
+				T result = caseRound(round);
+				if (result == null) result = caseOperator(round);
+				if (result == null) result = caseDataMapperNode(round);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case DataMapperPackage.MULTIPLY: {
+				Multiply multiply = (Multiply)theEObject;
+				T result = caseMultiply(multiply);
+				if (result == null) result = caseOperator(multiply);
+				if (result == null) result = caseDataMapperNode(multiply);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case DataMapperPackage.SET_PRECISION: {
+				SetPrecision setPrecision = (SetPrecision)theEObject;
+				T result = caseSetPrecision(setPrecision);
+				if (result == null) result = caseOperator(setPrecision);
+				if (result == null) result = caseDataMapperNode(setPrecision);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case DataMapperPackage.SPLIT: {
 				Split split = (Split)theEObject;
 				T result = caseSplit(split);
@@ -211,6 +259,14 @@ public class DataMapperSwitch<T> extends Switch<T> {
 				T result = caseLowerCase(lowerCase);
 				if (result == null) result = caseOperator(lowerCase);
 				if (result == null) result = caseDataMapperNode(lowerCase);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case DataMapperPackage.CELI: {
+				Celi celi = (Celi)theEObject;
+				T result = caseCeli(celi);
+				if (result == null) result = caseOperator(celi);
+				if (result == null) result = caseDataMapperNode(celi);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -496,6 +552,21 @@ public class DataMapperSwitch<T> extends Switch<T> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Absolute Value</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Absolute Value</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseAbsoluteValue(AbsoluteValue object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Equal</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -541,6 +612,81 @@ public class DataMapperSwitch<T> extends Switch<T> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Divide</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Divide</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseDivide(Divide object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Floor</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Floor</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseFloor(Floor object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Round</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Round</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseRound(Round object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Multiply</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Multiply</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseMultiply(Multiply object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Set Precision</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Set Precision</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseSetPrecision(SetPrecision object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Split</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -567,6 +713,21 @@ public class DataMapperSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseLowerCase(LowerCase object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Celi</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Celi</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseCeli(Celi object) {
 		return null;
 	}
 

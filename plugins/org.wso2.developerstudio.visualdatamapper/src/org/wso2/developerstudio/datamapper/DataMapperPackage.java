@@ -772,6 +772,43 @@ public interface DataMapperPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link org.wso2.developerstudio.datamapper.impl.AbsoluteValueImpl <em>Absolute Value</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.wso2.developerstudio.datamapper.impl.AbsoluteValueImpl
+	 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getAbsoluteValue()
+	 * @generated
+	 */
+	int ABSOLUTE_VALUE = 17;
+
+	/**
+	 * The feature id for the '<em><b>Basic Container</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSOLUTE_VALUE__BASIC_CONTAINER = OPERATOR__BASIC_CONTAINER;
+
+	/**
+	 * The feature id for the '<em><b>Serialized</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSOLUTE_VALUE__SERIALIZED = OPERATOR__SERIALIZED;
+
+	/**
+	 * The number of structural features of the '<em>Absolute Value</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSOLUTE_VALUE_FEATURE_COUNT = OPERATOR_FEATURE_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.datamapper.impl.EqualImpl <em>Equal</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -779,7 +816,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getEqual()
 	 * @generated
 	 */
-	int EQUAL = 17;
+	int EQUAL = 18;
 
 	/**
 	 * The feature id for the '<em><b>Basic Container</b></em>' containment reference.
@@ -816,7 +853,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getConstant()
 	 * @generated
 	 */
-	int CONSTANT = 18;
+	int CONSTANT = 19;
 
 	/**
 	 * The feature id for the '<em><b>Basic Container</b></em>' containment reference.
@@ -862,7 +899,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getAdd()
 	 * @generated
 	 */
-	int ADD = 19;
+	int ADD = 20;
 
 	/**
 	 * The feature id for the '<em><b>Basic Container</b></em>' containment reference.
@@ -892,6 +929,191 @@ public interface DataMapperPackage extends EPackage {
 	int ADD_FEATURE_COUNT = OPERATOR_FEATURE_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link org.wso2.developerstudio.datamapper.impl.DivideImpl <em>Divide</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.wso2.developerstudio.datamapper.impl.DivideImpl
+	 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getDivide()
+	 * @generated
+	 */
+	int DIVIDE = 21;
+
+	/**
+	 * The feature id for the '<em><b>Basic Container</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIVIDE__BASIC_CONTAINER = OPERATOR__BASIC_CONTAINER;
+
+	/**
+	 * The feature id for the '<em><b>Serialized</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIVIDE__SERIALIZED = OPERATOR__SERIALIZED;
+
+	/**
+	 * The number of structural features of the '<em>Divide</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIVIDE_FEATURE_COUNT = OPERATOR_FEATURE_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.wso2.developerstudio.datamapper.impl.FloorImpl <em>Floor</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.wso2.developerstudio.datamapper.impl.FloorImpl
+	 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getFloor()
+	 * @generated
+	 */
+	int FLOOR = 22;
+
+	/**
+	 * The feature id for the '<em><b>Basic Container</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FLOOR__BASIC_CONTAINER = OPERATOR__BASIC_CONTAINER;
+
+	/**
+	 * The feature id for the '<em><b>Serialized</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FLOOR__SERIALIZED = OPERATOR__SERIALIZED;
+
+	/**
+	 * The number of structural features of the '<em>Floor</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FLOOR_FEATURE_COUNT = OPERATOR_FEATURE_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.wso2.developerstudio.datamapper.impl.RoundImpl <em>Round</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.wso2.developerstudio.datamapper.impl.RoundImpl
+	 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getRound()
+	 * @generated
+	 */
+	int ROUND = 23;
+
+	/**
+	 * The feature id for the '<em><b>Basic Container</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROUND__BASIC_CONTAINER = OPERATOR__BASIC_CONTAINER;
+
+	/**
+	 * The feature id for the '<em><b>Serialized</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROUND__SERIALIZED = OPERATOR__SERIALIZED;
+
+	/**
+	 * The number of structural features of the '<em>Round</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROUND_FEATURE_COUNT = OPERATOR_FEATURE_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.wso2.developerstudio.datamapper.impl.MultiplyImpl <em>Multiply</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.wso2.developerstudio.datamapper.impl.MultiplyImpl
+	 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getMultiply()
+	 * @generated
+	 */
+	int MULTIPLY = 24;
+
+	/**
+	 * The feature id for the '<em><b>Basic Container</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MULTIPLY__BASIC_CONTAINER = OPERATOR__BASIC_CONTAINER;
+
+	/**
+	 * The feature id for the '<em><b>Serialized</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MULTIPLY__SERIALIZED = OPERATOR__SERIALIZED;
+
+	/**
+	 * The number of structural features of the '<em>Multiply</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MULTIPLY_FEATURE_COUNT = OPERATOR_FEATURE_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.wso2.developerstudio.datamapper.impl.SetPrecisionImpl <em>Set Precision</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.wso2.developerstudio.datamapper.impl.SetPrecisionImpl
+	 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getSetPrecision()
+	 * @generated
+	 */
+	int SET_PRECISION = 25;
+
+	/**
+	 * The feature id for the '<em><b>Basic Container</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SET_PRECISION__BASIC_CONTAINER = OPERATOR__BASIC_CONTAINER;
+
+	/**
+	 * The feature id for the '<em><b>Serialized</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SET_PRECISION__SERIALIZED = OPERATOR__SERIALIZED;
+
+	/**
+	 * The number of structural features of the '<em>Set Precision</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SET_PRECISION_FEATURE_COUNT = OPERATOR_FEATURE_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.datamapper.impl.SplitImpl <em>Split</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -899,7 +1121,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getSplit()
 	 * @generated
 	 */
-	int SPLIT = 20;
+	int SPLIT = 26;
 
 	/**
 	 * The feature id for the '<em><b>Basic Container</b></em>' containment reference.
@@ -963,7 +1185,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getLowerCase()
 	 * @generated
 	 */
-	int LOWER_CASE = 21;
+	int LOWER_CASE = 27;
 
 	/**
 	 * The feature id for the '<em><b>Basic Container</b></em>' containment reference.
@@ -993,6 +1215,43 @@ public interface DataMapperPackage extends EPackage {
 	int LOWER_CASE_FEATURE_COUNT = OPERATOR_FEATURE_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link org.wso2.developerstudio.datamapper.impl.CeliImpl <em>Celi</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.wso2.developerstudio.datamapper.impl.CeliImpl
+	 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getCeli()
+	 * @generated
+	 */
+	int CELI = 28;
+
+	/**
+	 * The feature id for the '<em><b>Basic Container</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CELI__BASIC_CONTAINER = OPERATOR__BASIC_CONTAINER;
+
+	/**
+	 * The feature id for the '<em><b>Serialized</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CELI__SERIALIZED = OPERATOR__SERIALIZED;
+
+	/**
+	 * The number of structural features of the '<em>Celi</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CELI_FEATURE_COUNT = OPERATOR_FEATURE_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.datamapper.impl.ContainsImpl <em>Contains</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1000,7 +1259,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getContains()
 	 * @generated
 	 */
-	int CONTAINS = 22;
+	int CONTAINS = 29;
 
 	/**
 	 * The feature id for the '<em><b>Basic Container</b></em>' containment reference.
@@ -1037,7 +1296,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getUpperCase()
 	 * @generated
 	 */
-	int UPPER_CASE = 23;
+	int UPPER_CASE = 30;
 
 	/**
 	 * The feature id for the '<em><b>Basic Container</b></em>' containment reference.
@@ -1074,7 +1333,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getPropertyKeyValuePair()
 	 * @generated
 	 */
-	int PROPERTY_KEY_VALUE_PAIR = 24;
+	int PROPERTY_KEY_VALUE_PAIR = 31;
 
 	/**
 	 * The feature id for the '<em><b>Key</b></em>' attribute.
@@ -1111,7 +1370,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getSchemaDataType()
 	 * @generated
 	 */
-    int SCHEMA_DATA_TYPE = 25;
+    int SCHEMA_DATA_TYPE = 32;
 
     /**
 	 * Returns the meta object for class '{@link org.wso2.developerstudio.datamapper.DataMapperNode <em>Node</em>}'.
@@ -1713,6 +1972,16 @@ public interface DataMapperPackage extends EPackage {
 	EAttribute getConcat_Delimiter();
 
 	/**
+	 * Returns the meta object for class '{@link org.wso2.developerstudio.datamapper.AbsoluteValue <em>Absolute Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Absolute Value</em>'.
+	 * @see org.wso2.developerstudio.datamapper.AbsoluteValue
+	 * @generated
+	 */
+	EClass getAbsoluteValue();
+
+	/**
 	 * Returns the meta object for class '{@link org.wso2.developerstudio.datamapper.Equal <em>Equal</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1752,6 +2021,56 @@ public interface DataMapperPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getAdd();
+
+	/**
+	 * Returns the meta object for class '{@link org.wso2.developerstudio.datamapper.Divide <em>Divide</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Divide</em>'.
+	 * @see org.wso2.developerstudio.datamapper.Divide
+	 * @generated
+	 */
+	EClass getDivide();
+
+	/**
+	 * Returns the meta object for class '{@link org.wso2.developerstudio.datamapper.Floor <em>Floor</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Floor</em>'.
+	 * @see org.wso2.developerstudio.datamapper.Floor
+	 * @generated
+	 */
+	EClass getFloor();
+
+	/**
+	 * Returns the meta object for class '{@link org.wso2.developerstudio.datamapper.Round <em>Round</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Round</em>'.
+	 * @see org.wso2.developerstudio.datamapper.Round
+	 * @generated
+	 */
+	EClass getRound();
+
+	/**
+	 * Returns the meta object for class '{@link org.wso2.developerstudio.datamapper.Multiply <em>Multiply</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Multiply</em>'.
+	 * @see org.wso2.developerstudio.datamapper.Multiply
+	 * @generated
+	 */
+	EClass getMultiply();
+
+	/**
+	 * Returns the meta object for class '{@link org.wso2.developerstudio.datamapper.SetPrecision <em>Set Precision</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Set Precision</em>'.
+	 * @see org.wso2.developerstudio.datamapper.SetPrecision
+	 * @generated
+	 */
+	EClass getSetPrecision();
 
 	/**
 	 * Returns the meta object for class '{@link org.wso2.developerstudio.datamapper.Split <em>Split</em>}'.
@@ -1805,6 +2124,16 @@ public interface DataMapperPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getLowerCase();
+
+	/**
+	 * Returns the meta object for class '{@link org.wso2.developerstudio.datamapper.Celi <em>Celi</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Celi</em>'.
+	 * @see org.wso2.developerstudio.datamapper.Celi
+	 * @generated
+	 */
+	EClass getCeli();
 
 	/**
 	 * Returns the meta object for class '{@link org.wso2.developerstudio.datamapper.Contains <em>Contains</em>}'.
@@ -2373,6 +2702,16 @@ public interface DataMapperPackage extends EPackage {
 		EAttribute CONCAT__DELIMITER = eINSTANCE.getConcat_Delimiter();
 
 		/**
+		 * The meta object literal for the '{@link org.wso2.developerstudio.datamapper.impl.AbsoluteValueImpl <em>Absolute Value</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.wso2.developerstudio.datamapper.impl.AbsoluteValueImpl
+		 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getAbsoluteValue()
+		 * @generated
+		 */
+		EClass ABSOLUTE_VALUE = eINSTANCE.getAbsoluteValue();
+
+		/**
 		 * The meta object literal for the '{@link org.wso2.developerstudio.datamapper.impl.EqualImpl <em>Equal</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2409,6 +2748,56 @@ public interface DataMapperPackage extends EPackage {
 		 * @generated
 		 */
 		EClass ADD = eINSTANCE.getAdd();
+
+		/**
+		 * The meta object literal for the '{@link org.wso2.developerstudio.datamapper.impl.DivideImpl <em>Divide</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.wso2.developerstudio.datamapper.impl.DivideImpl
+		 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getDivide()
+		 * @generated
+		 */
+		EClass DIVIDE = eINSTANCE.getDivide();
+
+		/**
+		 * The meta object literal for the '{@link org.wso2.developerstudio.datamapper.impl.FloorImpl <em>Floor</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.wso2.developerstudio.datamapper.impl.FloorImpl
+		 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getFloor()
+		 * @generated
+		 */
+		EClass FLOOR = eINSTANCE.getFloor();
+
+		/**
+		 * The meta object literal for the '{@link org.wso2.developerstudio.datamapper.impl.RoundImpl <em>Round</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.wso2.developerstudio.datamapper.impl.RoundImpl
+		 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getRound()
+		 * @generated
+		 */
+		EClass ROUND = eINSTANCE.getRound();
+
+		/**
+		 * The meta object literal for the '{@link org.wso2.developerstudio.datamapper.impl.MultiplyImpl <em>Multiply</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.wso2.developerstudio.datamapper.impl.MultiplyImpl
+		 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getMultiply()
+		 * @generated
+		 */
+		EClass MULTIPLY = eINSTANCE.getMultiply();
+
+		/**
+		 * The meta object literal for the '{@link org.wso2.developerstudio.datamapper.impl.SetPrecisionImpl <em>Set Precision</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.wso2.developerstudio.datamapper.impl.SetPrecisionImpl
+		 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getSetPrecision()
+		 * @generated
+		 */
+		EClass SET_PRECISION = eINSTANCE.getSetPrecision();
 
 		/**
 		 * The meta object literal for the '{@link org.wso2.developerstudio.datamapper.impl.SplitImpl <em>Split</em>}' class.
@@ -2453,6 +2842,16 @@ public interface DataMapperPackage extends EPackage {
 		 * @generated
 		 */
 		EClass LOWER_CASE = eINSTANCE.getLowerCase();
+
+								/**
+		 * The meta object literal for the '{@link org.wso2.developerstudio.datamapper.impl.CeliImpl <em>Celi</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.wso2.developerstudio.datamapper.impl.CeliImpl
+		 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getCeli()
+		 * @generated
+		 */
+		EClass CELI = eINSTANCE.getCeli();
 
 								/**
 		 * The meta object literal for the '{@link org.wso2.developerstudio.datamapper.impl.ContainsImpl <em>Contains</em>}' class.

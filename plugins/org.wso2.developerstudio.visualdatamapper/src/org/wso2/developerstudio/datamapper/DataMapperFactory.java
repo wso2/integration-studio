@@ -175,6 +175,15 @@ public interface DataMapperFactory extends EFactory {
 	Concat createConcat();
 
 	/**
+	 * Returns a new object of class '<em>Absolute Value</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Absolute Value</em>'.
+	 * @generated
+	 */
+	AbsoluteValue createAbsoluteValue();
+
+	/**
 	 * Returns a new object of class '<em>Equal</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -202,6 +211,51 @@ public interface DataMapperFactory extends EFactory {
 	Add createAdd();
 
 	/**
+	 * Returns a new object of class '<em>Divide</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Divide</em>'.
+	 * @generated
+	 */
+	Divide createDivide();
+
+	/**
+	 * Returns a new object of class '<em>Floor</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Floor</em>'.
+	 * @generated
+	 */
+	Floor createFloor();
+
+	/**
+	 * Returns a new object of class '<em>Round</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Round</em>'.
+	 * @generated
+	 */
+	Round createRound();
+
+	/**
+	 * Returns a new object of class '<em>Multiply</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Multiply</em>'.
+	 * @generated
+	 */
+	Multiply createMultiply();
+
+	/**
+	 * Returns a new object of class '<em>Set Precision</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Set Precision</em>'.
+	 * @generated
+	 */
+	SetPrecision createSetPrecision();
+
+	/**
 	 * Returns a new object of class '<em>Split</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -218,6 +272,15 @@ public interface DataMapperFactory extends EFactory {
 	 * @generated
 	 */
 	LowerCase createLowerCase();
+
+	/**
+	 * Returns a new object of class '<em>Celi</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Celi</em>'.
+	 * @generated
+	 */
+	Celi createCeli();
 
 	/**
 	 * Returns a new object of class '<em>Contains</em>'.

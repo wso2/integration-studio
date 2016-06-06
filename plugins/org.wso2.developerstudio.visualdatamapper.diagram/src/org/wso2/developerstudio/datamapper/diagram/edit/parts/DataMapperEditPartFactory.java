@@ -57,6 +57,27 @@ public class DataMapperEditPartFactory implements EditPartFactory {
 			case UpperCaseEditPart.VISUAL_ID:
 				return new UpperCaseEditPart(view);
 
+			case MultiplyEditPart.VISUAL_ID:
+				return new MultiplyEditPart(view);
+
+			case DivideEditPart.VISUAL_ID:
+				return new DivideEditPart(view);
+
+			case CeliEditPart.VISUAL_ID:
+				return new CeliEditPart(view);
+
+			case FloorEditPart.VISUAL_ID:
+				return new FloorEditPart(view);
+
+			case RoundEditPart.VISUAL_ID:
+				return new RoundEditPart(view);
+
+			case SetPrecisionEditPart.VISUAL_ID:
+				return new SetPrecisionEditPart(view);
+
+			case AbsoluteValueEditPart.VISUAL_ID:
+				return new AbsoluteValueEditPart(view);
+
 			case TreeNodeEditPart.VISUAL_ID:
 				return new TreeNodeEditPart(view);
 

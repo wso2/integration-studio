@@ -122,6 +122,13 @@ public class DataMapperPaletteFactory {
 		paletteContainer.setId("createDataMapperArithmaticGroup"); //$NON-NLS-1$
 		paletteContainer.add(createAdd9CreationTool());
 		paletteContainer.add(createSubtract10CreationTool());
+		paletteContainer.add(createMultiply15CreationTool());
+		paletteContainer.add(createDivide12CreationTool());
+		paletteContainer.add(createCeli17CreationTool());
+		paletteContainer.add(createFloor13CreationTool());
+		paletteContainer.add(createRound14CreationTool());
+		paletteContainer.add(createSetPrecision16CreationTool());
+		paletteContainer.add(createAbsoluteValue11CreationTool());
 		paletteContainer.setInitialState(INITIAL_STATE_CLOSED);
 		return paletteContainer;
 	}
@@ -243,6 +250,92 @@ public class DataMapperPaletteFactory {
 				Messages.Subtract10CreationTool_desc, Collections.singletonList(DataMapperElementTypes.Subtract_2013));
 		entry.setId("createSubtract10CreationTool"); //$NON-NLS-1$
 		entry.setSmallIcon(DataMapperElementTypes.getImageDescriptor(DataMapperElementTypes.Subtract_2013));
+		entry.setLargeIcon(entry.getSmallIcon());
+		return entry;
+	}
+
+	/**
+	* @generated
+	*/
+	private ToolEntry createAbsoluteValue11CreationTool() {
+		DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.AbsoluteValue11CreationTool_title,
+				Messages.AbsoluteValue11CreationTool_desc,
+				Collections.singletonList(DataMapperElementTypes.AbsoluteValue_2020));
+		entry.setId("createAbsoluteValue11CreationTool"); //$NON-NLS-1$
+		entry.setSmallIcon(DataMapperElementTypes.getImageDescriptor(DataMapperElementTypes.AbsoluteValue_2020));
+		entry.setLargeIcon(entry.getSmallIcon());
+		return entry;
+	}
+
+	/**
+	* @generated
+	*/
+	private ToolEntry createDivide12CreationTool() {
+		DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.Divide12CreationTool_title,
+				Messages.Divide12CreationTool_desc, Collections.singletonList(DataMapperElementTypes.Divide_2015));
+		entry.setId("createDivide12CreationTool"); //$NON-NLS-1$
+		entry.setSmallIcon(DataMapperElementTypes.getImageDescriptor(DataMapperElementTypes.Divide_2015));
+		entry.setLargeIcon(entry.getSmallIcon());
+		return entry;
+	}
+
+	/**
+	* @generated
+	*/
+	private ToolEntry createFloor13CreationTool() {
+		DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.Floor13CreationTool_title,
+				Messages.Floor13CreationTool_desc, Collections.singletonList(DataMapperElementTypes.Floor_2017));
+		entry.setId("createFloor13CreationTool"); //$NON-NLS-1$
+		entry.setSmallIcon(DataMapperElementTypes.getImageDescriptor(DataMapperElementTypes.Floor_2017));
+		entry.setLargeIcon(entry.getSmallIcon());
+		return entry;
+	}
+
+	/**
+	* @generated
+	*/
+	private ToolEntry createRound14CreationTool() {
+		DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.Round14CreationTool_title,
+				Messages.Round14CreationTool_desc, Collections.singletonList(DataMapperElementTypes.Round_2018));
+		entry.setId("createRound14CreationTool"); //$NON-NLS-1$
+		entry.setSmallIcon(DataMapperElementTypes.getImageDescriptor(DataMapperElementTypes.Round_2018));
+		entry.setLargeIcon(entry.getSmallIcon());
+		return entry;
+	}
+
+	/**
+	* @generated
+	*/
+	private ToolEntry createMultiply15CreationTool() {
+		DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.Multiply15CreationTool_title,
+				Messages.Multiply15CreationTool_desc, Collections.singletonList(DataMapperElementTypes.Multiply_2014));
+		entry.setId("createMultiply15CreationTool"); //$NON-NLS-1$
+		entry.setSmallIcon(DataMapperElementTypes.getImageDescriptor(DataMapperElementTypes.Multiply_2014));
+		entry.setLargeIcon(entry.getSmallIcon());
+		return entry;
+	}
+
+	/**
+	* @generated
+	*/
+	private ToolEntry createSetPrecision16CreationTool() {
+		DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.SetPrecision16CreationTool_title,
+				Messages.SetPrecision16CreationTool_desc,
+				Collections.singletonList(DataMapperElementTypes.SetPrecision_2019));
+		entry.setId("createSetPrecision16CreationTool"); //$NON-NLS-1$
+		entry.setSmallIcon(DataMapperElementTypes.getImageDescriptor(DataMapperElementTypes.SetPrecision_2019));
+		entry.setLargeIcon(entry.getSmallIcon());
+		return entry;
+	}
+
+	/**
+	* @generated
+	*/
+	private ToolEntry createCeli17CreationTool() {
+		DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.Celi17CreationTool_title,
+				Messages.Celi17CreationTool_desc, Collections.singletonList(DataMapperElementTypes.Celi_2016));
+		entry.setId("createCeli17CreationTool"); //$NON-NLS-1$
+		entry.setSmallIcon(DataMapperElementTypes.getImageDescriptor(DataMapperElementTypes.Celi_2016));
 		entry.setLargeIcon(entry.getSmallIcon());
 		return entry;
 	}

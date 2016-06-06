@@ -9,7 +9,9 @@ import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
+import org.wso2.developerstudio.datamapper.AbsoluteValue;
 import org.wso2.developerstudio.datamapper.Add;
+import org.wso2.developerstudio.datamapper.Celi;
 import org.wso2.developerstudio.datamapper.Concat;
 import org.wso2.developerstudio.datamapper.Constant;
 import org.wso2.developerstudio.datamapper.Contains;
@@ -18,11 +20,14 @@ import org.wso2.developerstudio.datamapper.DataMapperLink;
 import org.wso2.developerstudio.datamapper.DataMapperNode;
 import org.wso2.developerstudio.datamapper.DataMapperPackage;
 import org.wso2.developerstudio.datamapper.DataMapperRoot;
+import org.wso2.developerstudio.datamapper.Divide;
 import org.wso2.developerstudio.datamapper.Element;
 import org.wso2.developerstudio.datamapper.Equal;
+import org.wso2.developerstudio.datamapper.Floor;
 import org.wso2.developerstudio.datamapper.InNode;
 import org.wso2.developerstudio.datamapper.Input;
 import org.wso2.developerstudio.datamapper.LowerCase;
+import org.wso2.developerstudio.datamapper.Multiply;
 import org.wso2.developerstudio.datamapper.Operation;
 import org.wso2.developerstudio.datamapper.Operations;
 import org.wso2.developerstudio.datamapper.Operator;
@@ -36,7 +41,9 @@ import org.wso2.developerstudio.datamapper.Order;
 import org.wso2.developerstudio.datamapper.OutNode;
 import org.wso2.developerstudio.datamapper.Output;
 import org.wso2.developerstudio.datamapper.PropertyKeyValuePair;
+import org.wso2.developerstudio.datamapper.Round;
 import org.wso2.developerstudio.datamapper.SchemaDataType;
+import org.wso2.developerstudio.datamapper.SetPrecision;
 import org.wso2.developerstudio.datamapper.Split;
 import org.wso2.developerstudio.datamapper.Subtract;
 import org.wso2.developerstudio.datamapper.TreeNode;
@@ -173,6 +180,13 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass absoluteValueEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EClass equalEClass = null;
 
 	/**
@@ -194,6 +208,41 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass divideEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass floorEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass roundEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass multiplyEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass setPrecisionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EClass splitEClass = null;
 
 	/**
@@ -202,6 +251,13 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 	 * @generated
 	 */
 	private EClass lowerCaseEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass celiEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -801,6 +857,15 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getAbsoluteValue() {
+		return absoluteValueEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getEqual() {
 		return equalEClass;
 	}
@@ -830,6 +895,51 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 	 */
 	public EClass getAdd() {
 		return addEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getDivide() {
+		return divideEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getFloor() {
+		return floorEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getRound() {
+		return roundEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getMultiply() {
+		return multiplyEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getSetPrecision() {
+		return setPrecisionEClass;
 	}
 
 	/**
@@ -875,6 +985,15 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 	 */
 	public EClass getLowerCase() {
 		return lowerCaseEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getCeli() {
+		return celiEClass;
 	}
 
 	/**
@@ -1032,6 +1151,8 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 		concatEClass = createEClass(CONCAT);
 		createEAttribute(concatEClass, CONCAT__DELIMITER);
 
+		absoluteValueEClass = createEClass(ABSOLUTE_VALUE);
+
 		equalEClass = createEClass(EQUAL);
 
 		constantEClass = createEClass(CONSTANT);
@@ -1039,12 +1160,24 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 
 		addEClass = createEClass(ADD);
 
+		divideEClass = createEClass(DIVIDE);
+
+		floorEClass = createEClass(FLOOR);
+
+		roundEClass = createEClass(ROUND);
+
+		multiplyEClass = createEClass(MULTIPLY);
+
+		setPrecisionEClass = createEClass(SET_PRECISION);
+
 		splitEClass = createEClass(SPLIT);
 		createEAttribute(splitEClass, SPLIT__DELIMITER);
 		createEAttribute(splitEClass, SPLIT__ARRAY_OUTPUT);
 		createEAttribute(splitEClass, SPLIT__ARRAY_OUTPUT_RESULT_OMITING_INDICES);
 
 		lowerCaseEClass = createEClass(LOWER_CASE);
+
+		celiEClass = createEClass(CELI);
 
 		containsEClass = createEClass(CONTAINS);
 
@@ -1091,11 +1224,18 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 		operatorEClass.getESuperTypes().add(this.getDataMapperNode());
 		subtractEClass.getESuperTypes().add(this.getOperator());
 		concatEClass.getESuperTypes().add(this.getOperator());
+		absoluteValueEClass.getESuperTypes().add(this.getOperator());
 		equalEClass.getESuperTypes().add(this.getOperator());
 		constantEClass.getESuperTypes().add(this.getOperator());
 		addEClass.getESuperTypes().add(this.getOperator());
+		divideEClass.getESuperTypes().add(this.getOperator());
+		floorEClass.getESuperTypes().add(this.getOperator());
+		roundEClass.getESuperTypes().add(this.getOperator());
+		multiplyEClass.getESuperTypes().add(this.getOperator());
+		setPrecisionEClass.getESuperTypes().add(this.getOperator());
 		splitEClass.getESuperTypes().add(this.getOperator());
 		lowerCaseEClass.getESuperTypes().add(this.getOperator());
+		celiEClass.getESuperTypes().add(this.getOperator());
 		containsEClass.getESuperTypes().add(this.getOperator());
 		upperCaseEClass.getESuperTypes().add(this.getOperator());
 
@@ -1173,6 +1313,8 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 		initEClass(concatEClass, Concat.class, "Concat", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getConcat_Delimiter(), ecorePackage.getEString(), "delimiter", null, 0, 1, Concat.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEClass(absoluteValueEClass, AbsoluteValue.class, "AbsoluteValue", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
 		initEClass(equalEClass, Equal.class, "Equal", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(constantEClass, Constant.class, "Constant", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1180,12 +1322,24 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 
 		initEClass(addEClass, Add.class, "Add", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
+		initEClass(divideEClass, Divide.class, "Divide", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(floorEClass, Floor.class, "Floor", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(roundEClass, Round.class, "Round", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(multiplyEClass, Multiply.class, "Multiply", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(setPrecisionEClass, SetPrecision.class, "SetPrecision", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
 		initEClass(splitEClass, Split.class, "Split", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getSplit_Delimiter(), ecorePackage.getEString(), "delimiter", null, 0, 1, Split.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSplit_ArrayOutput(), ecorePackage.getEInt(), "arrayOutput", "-1", 0, 1, Split.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSplit_ArrayOutputResultOmitingIndices(), ecorePackage.getEString(), "arrayOutputResultOmitingIndices", null, 0, 1, Split.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(lowerCaseEClass, LowerCase.class, "LowerCase", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(celiEClass, Celi.class, "Celi", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(containsEClass, Contains.class, "Contains", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

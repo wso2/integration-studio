@@ -61,7 +61,7 @@ public class SubtractEditPart extends AbstractOperatorEditPart {
 		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE, new SubtractItemSemanticEditPolicy());
 		installEditPolicy(EditPolicyRoles.CANONICAL_ROLE, new SubtractCanonicalEditPolicy());
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
-}
+	}
 
 	/**
 	* @generated
@@ -187,7 +187,7 @@ public class SubtractEditPart extends AbstractOperatorEditPart {
 			((Shape) primaryShape).setLineStyle(style);
 		}
 	}
-	
+
 	public class SubtractFigure extends OperatorRectangle {
 
 		public SubtractFigure() {

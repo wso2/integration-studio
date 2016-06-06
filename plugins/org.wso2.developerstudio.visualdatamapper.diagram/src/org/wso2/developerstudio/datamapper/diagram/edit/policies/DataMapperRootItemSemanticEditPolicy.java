@@ -6,14 +6,21 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.emf.commands.core.commands.DuplicateEObjectsCommand;
 import org.eclipse.gmf.runtime.emf.type.core.requests.CreateElementRequest;
 import org.eclipse.gmf.runtime.emf.type.core.requests.DuplicateElementsRequest;
+import org.wso2.developerstudio.datamapper.diagram.edit.commands.AbsoluteValueCreateCommand;
 import org.wso2.developerstudio.datamapper.diagram.edit.commands.AddCreateCommand;
+import org.wso2.developerstudio.datamapper.diagram.edit.commands.CeliCreateCommand;
 import org.wso2.developerstudio.datamapper.diagram.edit.commands.ConcatCreateCommand;
 import org.wso2.developerstudio.datamapper.diagram.edit.commands.ConstantCreateCommand;
 import org.wso2.developerstudio.datamapper.diagram.edit.commands.ContainsCreateCommand;
+import org.wso2.developerstudio.datamapper.diagram.edit.commands.DivideCreateCommand;
 import org.wso2.developerstudio.datamapper.diagram.edit.commands.EqualCreateCommand;
+import org.wso2.developerstudio.datamapper.diagram.edit.commands.FloorCreateCommand;
 import org.wso2.developerstudio.datamapper.diagram.edit.commands.InputCreateCommand;
 import org.wso2.developerstudio.datamapper.diagram.edit.commands.LowerCaseCreateCommand;
+import org.wso2.developerstudio.datamapper.diagram.edit.commands.MultiplyCreateCommand;
 import org.wso2.developerstudio.datamapper.diagram.edit.commands.OutputCreateCommand;
+import org.wso2.developerstudio.datamapper.diagram.edit.commands.RoundCreateCommand;
+import org.wso2.developerstudio.datamapper.diagram.edit.commands.SetPrecisionCreateCommand;
 import org.wso2.developerstudio.datamapper.diagram.edit.commands.SplitCreateCommand;
 import org.wso2.developerstudio.datamapper.diagram.edit.commands.SubtractCreateCommand;
 import org.wso2.developerstudio.datamapper.diagram.edit.commands.UpperCaseCreateCommand;
@@ -67,6 +74,27 @@ public class DataMapperRootItemSemanticEditPolicy extends DataMapperBaseItemSema
 		}
 		if (DataMapperElementTypes.UpperCase_2011 == req.getElementType()) {
 			return getGEFWrapper(new UpperCaseCreateCommand(req));
+		}
+		if (DataMapperElementTypes.Multiply_2014 == req.getElementType()) {
+			return getGEFWrapper(new MultiplyCreateCommand(req));
+		}
+		if (DataMapperElementTypes.Divide_2015 == req.getElementType()) {
+			return getGEFWrapper(new DivideCreateCommand(req));
+		}
+		if (DataMapperElementTypes.Celi_2016 == req.getElementType()) {
+			return getGEFWrapper(new CeliCreateCommand(req));
+		}
+		if (DataMapperElementTypes.Floor_2017 == req.getElementType()) {
+			return getGEFWrapper(new FloorCreateCommand(req));
+		}
+		if (DataMapperElementTypes.Round_2018 == req.getElementType()) {
+			return getGEFWrapper(new RoundCreateCommand(req));
+		}
+		if (DataMapperElementTypes.SetPrecision_2019 == req.getElementType()) {
+			return getGEFWrapper(new SetPrecisionCreateCommand(req));
+		}
+		if (DataMapperElementTypes.AbsoluteValue_2020 == req.getElementType()) {
+			return getGEFWrapper(new AbsoluteValueCreateCommand(req));
 		}
 		return super.getCreateCommand(req);
 	}

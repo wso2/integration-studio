@@ -134,6 +134,10 @@ public class DataMapperAdapterFactory extends AdapterFactoryImpl {
 				return createConcatAdapter();
 			}
 			@Override
+			public Adapter caseAbsoluteValue(AbsoluteValue object) {
+				return createAbsoluteValueAdapter();
+			}
+			@Override
 			public Adapter caseEqual(Equal object) {
 				return createEqualAdapter();
 			}
@@ -146,12 +150,36 @@ public class DataMapperAdapterFactory extends AdapterFactoryImpl {
 				return createAddAdapter();
 			}
 			@Override
+			public Adapter caseDivide(Divide object) {
+				return createDivideAdapter();
+			}
+			@Override
+			public Adapter caseFloor(Floor object) {
+				return createFloorAdapter();
+			}
+			@Override
+			public Adapter caseRound(Round object) {
+				return createRoundAdapter();
+			}
+			@Override
+			public Adapter caseMultiply(Multiply object) {
+				return createMultiplyAdapter();
+			}
+			@Override
+			public Adapter caseSetPrecision(SetPrecision object) {
+				return createSetPrecisionAdapter();
+			}
+			@Override
 			public Adapter caseSplit(Split object) {
 				return createSplitAdapter();
 			}
 			@Override
 			public Adapter caseLowerCase(LowerCase object) {
 				return createLowerCaseAdapter();
+			}
+			@Override
+			public Adapter caseCeli(Celi object) {
+				return createCeliAdapter();
 			}
 			@Override
 			public Adapter caseContains(Contains object) {
@@ -424,6 +452,20 @@ public class DataMapperAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link org.wso2.developerstudio.datamapper.AbsoluteValue <em>Absolute Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.wso2.developerstudio.datamapper.AbsoluteValue
+	 * @generated
+	 */
+	public Adapter createAbsoluteValueAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link org.wso2.developerstudio.datamapper.Equal <em>Equal</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -466,6 +508,76 @@ public class DataMapperAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link org.wso2.developerstudio.datamapper.Divide <em>Divide</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.wso2.developerstudio.datamapper.Divide
+	 * @generated
+	 */
+	public Adapter createDivideAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.wso2.developerstudio.datamapper.Floor <em>Floor</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.wso2.developerstudio.datamapper.Floor
+	 * @generated
+	 */
+	public Adapter createFloorAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.wso2.developerstudio.datamapper.Round <em>Round</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.wso2.developerstudio.datamapper.Round
+	 * @generated
+	 */
+	public Adapter createRoundAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.wso2.developerstudio.datamapper.Multiply <em>Multiply</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.wso2.developerstudio.datamapper.Multiply
+	 * @generated
+	 */
+	public Adapter createMultiplyAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.wso2.developerstudio.datamapper.SetPrecision <em>Set Precision</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.wso2.developerstudio.datamapper.SetPrecision
+	 * @generated
+	 */
+	public Adapter createSetPrecisionAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link org.wso2.developerstudio.datamapper.Split <em>Split</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -490,6 +602,20 @@ public class DataMapperAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createLowerCaseAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.wso2.developerstudio.datamapper.Celi <em>Celi</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.wso2.developerstudio.datamapper.Celi
+	 * @generated
+	 */
+	public Adapter createCeliAdapter() {
 		return null;
 	}
 

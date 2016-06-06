@@ -14,19 +14,24 @@ import org.eclipse.gmf.tooling.runtime.providers.DiagramElementTypes;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.graphics.Image;
 import org.wso2.developerstudio.datamapper.DataMapperPackage;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.AbsoluteValueEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.AddEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.CeliEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.ConcatEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.ConstantEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.ContainsEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.DataMapperLinkEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.DataMapperRootEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.DivideEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.ElementEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.EqualEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.FloorEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.InNode2EditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.InNode3EditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.InNodeEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.InputEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.LowerCaseEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.MultiplyEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.OperatorBasicContainerEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.OperatorLeftConnectorEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.OperatorLeftContainerEditPart;
@@ -36,6 +41,8 @@ import org.wso2.developerstudio.datamapper.diagram.edit.parts.OutNode2EditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.OutNode3EditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.OutNodeEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.OutputEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.RoundEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.SetPrecisionEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.SplitEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.SubtractEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.TreeNode2EditPart;
@@ -141,6 +148,48 @@ public class DataMapperElementTypes {
 	 */
 	public static final IElementType UpperCase_2011 = getElementType(
 			"org.wso2.developerstudio.visualdatamapper.diagram.UpperCase_2011"); //$NON-NLS-1$
+
+	/**
+	* @generated
+	*/
+	public static final IElementType Multiply_2014 = getElementType(
+			"org.wso2.developerstudio.visualdatamapper.diagram.Multiply_2014"); //$NON-NLS-1$
+
+	/**
+	* @generated
+	*/
+	public static final IElementType Divide_2015 = getElementType(
+			"org.wso2.developerstudio.visualdatamapper.diagram.Divide_2015"); //$NON-NLS-1$
+
+	/**
+	* @generated
+	*/
+	public static final IElementType Celi_2016 = getElementType(
+			"org.wso2.developerstudio.visualdatamapper.diagram.Celi_2016"); //$NON-NLS-1$
+
+	/**
+	* @generated
+	*/
+	public static final IElementType Floor_2017 = getElementType(
+			"org.wso2.developerstudio.visualdatamapper.diagram.Floor_2017"); //$NON-NLS-1$
+
+	/**
+	* @generated
+	*/
+	public static final IElementType Round_2018 = getElementType(
+			"org.wso2.developerstudio.visualdatamapper.diagram.Round_2018"); //$NON-NLS-1$
+
+	/**
+	* @generated
+	*/
+	public static final IElementType SetPrecision_2019 = getElementType(
+			"org.wso2.developerstudio.visualdatamapper.diagram.SetPrecision_2019"); //$NON-NLS-1$
+
+	/**
+	* @generated
+	*/
+	public static final IElementType AbsoluteValue_2020 = getElementType(
+			"org.wso2.developerstudio.visualdatamapper.diagram.AbsoluteValue_2020"); //$NON-NLS-1$
 
 	/**
 	 * @generated
@@ -300,6 +349,20 @@ public class DataMapperElementTypes {
 
 			elements.put(UpperCase_2011, DataMapperPackage.eINSTANCE.getUpperCase());
 
+			elements.put(Multiply_2014, DataMapperPackage.eINSTANCE.getMultiply());
+
+			elements.put(Divide_2015, DataMapperPackage.eINSTANCE.getDivide());
+
+			elements.put(Celi_2016, DataMapperPackage.eINSTANCE.getCeli());
+
+			elements.put(Floor_2017, DataMapperPackage.eINSTANCE.getFloor());
+
+			elements.put(Round_2018, DataMapperPackage.eINSTANCE.getRound());
+
+			elements.put(SetPrecision_2019, DataMapperPackage.eINSTANCE.getSetPrecision());
+
+			elements.put(AbsoluteValue_2020, DataMapperPackage.eINSTANCE.getAbsoluteValue());
+
 			elements.put(TreeNode_3002, DataMapperPackage.eINSTANCE.getTreeNode());
 
 			elements.put(Element_3007, DataMapperPackage.eINSTANCE.getElement());
@@ -360,6 +423,13 @@ public class DataMapperElementTypes {
 			KNOWN_ELEMENT_TYPES.add(LowerCase_2009);
 			KNOWN_ELEMENT_TYPES.add(Contains_2010);
 			KNOWN_ELEMENT_TYPES.add(UpperCase_2011);
+			KNOWN_ELEMENT_TYPES.add(Multiply_2014);
+			KNOWN_ELEMENT_TYPES.add(Divide_2015);
+			KNOWN_ELEMENT_TYPES.add(Celi_2016);
+			KNOWN_ELEMENT_TYPES.add(Floor_2017);
+			KNOWN_ELEMENT_TYPES.add(Round_2018);
+			KNOWN_ELEMENT_TYPES.add(SetPrecision_2019);
+			KNOWN_ELEMENT_TYPES.add(AbsoluteValue_2020);
 			KNOWN_ELEMENT_TYPES.add(TreeNode_3002);
 			KNOWN_ELEMENT_TYPES.add(Element_3007);
 			KNOWN_ELEMENT_TYPES.add(InNode_3008);
@@ -409,6 +479,20 @@ public class DataMapperElementTypes {
 			return Contains_2010;
 		case UpperCaseEditPart.VISUAL_ID:
 			return UpperCase_2011;
+		case MultiplyEditPart.VISUAL_ID:
+			return Multiply_2014;
+		case DivideEditPart.VISUAL_ID:
+			return Divide_2015;
+		case CeliEditPart.VISUAL_ID:
+			return Celi_2016;
+		case FloorEditPart.VISUAL_ID:
+			return Floor_2017;
+		case RoundEditPart.VISUAL_ID:
+			return Round_2018;
+		case SetPrecisionEditPart.VISUAL_ID:
+			return SetPrecision_2019;
+		case AbsoluteValueEditPart.VISUAL_ID:
+			return AbsoluteValue_2020;
 		case TreeNodeEditPart.VISUAL_ID:
 			return TreeNode_3002;
 		case ElementEditPart.VISUAL_ID:

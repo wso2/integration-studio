@@ -82,11 +82,18 @@ public class DataMapperFactoryImpl extends EFactoryImpl implements DataMapperFac
 			case DataMapperPackage.OUT_NODE: return createOutNode();
 			case DataMapperPackage.DATA_MAPPER_LINK: return createDataMapperLink();
 			case DataMapperPackage.CONCAT: return createConcat();
+			case DataMapperPackage.ABSOLUTE_VALUE: return createAbsoluteValue();
 			case DataMapperPackage.EQUAL: return createEqual();
 			case DataMapperPackage.CONSTANT: return createConstant();
 			case DataMapperPackage.ADD: return createAdd();
+			case DataMapperPackage.DIVIDE: return createDivide();
+			case DataMapperPackage.FLOOR: return createFloor();
+			case DataMapperPackage.ROUND: return createRound();
+			case DataMapperPackage.MULTIPLY: return createMultiply();
+			case DataMapperPackage.SET_PRECISION: return createSetPrecision();
 			case DataMapperPackage.SPLIT: return createSplit();
 			case DataMapperPackage.LOWER_CASE: return createLowerCase();
+			case DataMapperPackage.CELI: return createCeli();
 			case DataMapperPackage.CONTAINS: return createContains();
 			case DataMapperPackage.UPPER_CASE: return createUpperCase();
 			case DataMapperPackage.PROPERTY_KEY_VALUE_PAIR: return createPropertyKeyValuePair();
@@ -317,6 +324,16 @@ public class DataMapperFactoryImpl extends EFactoryImpl implements DataMapperFac
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public AbsoluteValue createAbsoluteValue() {
+		AbsoluteValueImpl absoluteValue = new AbsoluteValueImpl();
+		return absoluteValue;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
 	public Equal createEqual() {
@@ -349,6 +366,56 @@ public class DataMapperFactoryImpl extends EFactoryImpl implements DataMapperFac
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Divide createDivide() {
+		DivideImpl divide = new DivideImpl();
+		return divide;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Floor createFloor() {
+		FloorImpl floor = new FloorImpl();
+		return floor;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Round createRound() {
+		RoundImpl round = new RoundImpl();
+		return round;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Multiply createMultiply() {
+		MultiplyImpl multiply = new MultiplyImpl();
+		return multiply;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public SetPrecision createSetPrecision() {
+		SetPrecisionImpl setPrecision = new SetPrecisionImpl();
+		return setPrecision;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
 	public Split createSplit() {
@@ -366,6 +433,16 @@ public class DataMapperFactoryImpl extends EFactoryImpl implements DataMapperFac
 		LowerCaseImpl lowerCase = new LowerCaseImpl();
 		lowerCase.setBasicContainer(createOperatorBasicContainer());
 		return lowerCase;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Celi createCeli() {
+		CeliImpl celi = new CeliImpl();
+		return celi;
 	}
 
 	/**

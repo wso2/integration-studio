@@ -8,6 +8,7 @@ import org.apache.commons.lang.StringUtils;
 import org.eclipse.draw2d.Clickable;
 import org.eclipse.draw2d.ColorConstants;
 import org.eclipse.draw2d.Figure;
+import org.eclipse.draw2d.FlowLayout;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.ImageFigure;
 import org.eclipse.draw2d.Label;
@@ -34,7 +35,10 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.AbstractBorderedShapeEditPar
 import org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IBorderItemEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
+import org.eclipse.gmf.runtime.diagram.ui.editpolicies.BorderItemSelectionEditPolicy;
+import org.eclipse.gmf.runtime.diagram.ui.editpolicies.DragDropEditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
+import org.eclipse.gmf.runtime.diagram.ui.editpolicies.FlowLayoutEditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.figures.BorderItemLocator;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.ConstrainedToolbarLayout;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel;
@@ -53,6 +57,8 @@ import org.wso2.developerstudio.datamapper.TreeNode;
 import org.wso2.developerstudio.datamapper.diagram.custom.util.AbsoluteBorderedItemLocator;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.custom.CustomNonResizableEditPolicyEx;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.custom.FixedBorderItemLocator;
+import org.wso2.developerstudio.datamapper.diagram.edit.policies.TreeNode3CanonicalEditPolicy;
+import org.wso2.developerstudio.datamapper.diagram.edit.policies.TreeNode3ItemSemanticEditPolicy;
 import org.wso2.developerstudio.datamapper.diagram.part.DataMapperVisualIDRegistry;
 
 /**
@@ -104,17 +110,17 @@ public class TreeNode3EditPart extends AbstractBorderedShapeEditPart {
 	public TreeNode3EditPart(View view) {
 		super(view);
 	}
-	
+
 	/**
 	 * @generated NOT
 	 */
 	private boolean isInNodeEmpty;
-	
+
 	/**
 	 * @generated NOT
 	 */
 	private boolean isOutNodeEmpty;
-	
+
 	/**
 	 * @generated NOT
 	 */
@@ -261,109 +267,19 @@ public class TreeNode3EditPart extends AbstractBorderedShapeEditPart {
 	 * @generated
 	 */
 	protected boolean addFixedChild(EditPart childEditPart) {
-		String type = getNodeType();
-		EditPart temp = this.getParentBox();
 		if (childEditPart instanceof TreeNodeName3EditPart) {
 			((TreeNodeName3EditPart) childEditPart).setLabel(getPrimaryShape().getFigureTreeNodeNameFigure());
 			return true;
 		}
-
 		if (childEditPart instanceof InNodeEditPart) {
-			if (temp instanceof InputEditPart) {
-				createEmptyInNode(childEditPart);
-			} else {
-				if (((TreeNode) ((View) getModel()).getElement()).getNode().size() > 0) {
-					String value = getNodeValue(type);
-					// If an element has values then enable the connector arrow
-					if (StringUtils.isNotEmpty(value)) {
-						return createInNode(childEditPart);
-					} else {
-						createEmptyInNode(childEditPart);
-					}
-				} else {
-					if (type.equals(JSON_SCHEMA_ARRAY)) {
-						String itemsType = getItemsType();
-						// If an element has values then enable the connector
-						// arrow
-						if (itemsType.equals(NULL_VALUE)) {
-							createEmptyInNode(childEditPart);
-						} else if (StringUtils.isEmpty(itemsType)) {
-							createEmptyInNode(childEditPart);
-						} else {
-							return createInNode(childEditPart);
-						}
-					} else if(type.equals(JSON_SCHEMA_OBJECT)){
-						String value = getNodeValue(type);
-						// If an element has values then enable the connector arrow
-						if (StringUtils.isNotEmpty(value)) {
-							return createInNode(childEditPart);
-						} else {
-							createEmptyInNode(childEditPart);
-						}
-					} else {
-						if (type.equals(NULL_VALUE)) {
-							// If type is null, then disable the in node
-							// connector
-							createEmptyInNode(childEditPart);
-						} else if (StringUtils.isEmpty(type)) {
-							createEmptyInNode(childEditPart);
-						} else {
-							return createInNode(childEditPart);
-						}
-					}
-				}
-			}
-
+			BorderItemLocator locator = new BorderItemLocator(getMainFigure(), PositionConstants.WEST);
+			getBorderedFigure().getBorderItemContainer().add(((InNodeEditPart) childEditPart).getFigure(), locator);
+			return true;
 		}
 		if (childEditPart instanceof OutNodeEditPart) {
-			if (temp instanceof OutputEditPart) {
-				createEmptyOutNode(childEditPart);
-			} else {
-				// If an element has children, then disable the outnode
-				// connector arrow
-				if (((TreeNode) ((View) getModel()).getElement()).getNode().size() > 0) {
-					String value = getNodeValue(type);
-					// If an element has values then enable the connector arrow
-					if (StringUtils.isNotEmpty(value)) {
-						return createOutNode(childEditPart);
-					} else {
-						createEmptyOutNode(childEditPart);
-					}
-				} else {
-					if (type.equals(JSON_SCHEMA_ARRAY)) {
-						String itemsType = getItemsType();
-						// If an element has values then enable the connector
-						// arrow
-						if (itemsType.equals(NULL_VALUE)) {
-							createEmptyOutNode(childEditPart);
-						} else if (StringUtils.isEmpty(itemsType)) {
-							createEmptyOutNode(childEditPart);
-						} else {
-							return createOutNode(childEditPart);
-						}
-					} else if(type.equals(JSON_SCHEMA_OBJECT)){
-						String value = getNodeValue(type);
-						// If an element has values then enable the connector arrow
-						if (StringUtils.isNotEmpty(value)) {
-							return createOutNode(childEditPart);
-						} else {
-							createEmptyOutNode(childEditPart);
-						}
-					} else {
-						if (type.equals(NULL_VALUE)) {
-							// If type is null, then disable the out node
-							// connector
-							createEmptyOutNode(childEditPart);
-						} else if (StringUtils.isEmpty(type)) {
-							createEmptyOutNode(childEditPart);
-						} else {
-							return createOutNode(childEditPart);
-						}
-					}
-				}
-
-			}
-
+			BorderItemLocator locator = new BorderItemLocator(getMainFigure(), PositionConstants.EAST);
+			getBorderedFigure().getBorderItemContainer().add(((OutNodeEditPart) childEditPart).getFigure(), locator);
+			return true;
 		}
 		return false;
 	}
@@ -396,15 +312,17 @@ public class TreeNode3EditPart extends AbstractBorderedShapeEditPart {
 	}
 
 	private boolean createInNode(EditPart childEditPart) {
-			IFigure borderItemFigure = ((InNodeEditPart) childEditPart).getFigure();
-			BorderItemLocator locator = new AbsoluteBorderedItemLocator(getMainFigure(),borderItemFigure, PositionConstants.WEST, 4);
+		IFigure borderItemFigure = ((InNodeEditPart) childEditPart).getFigure();
+		BorderItemLocator locator = new AbsoluteBorderedItemLocator(getMainFigure(), borderItemFigure,
+				PositionConstants.WEST, 4);
 		getBorderedFigure().getBorderItemContainer().add(((InNodeEditPart) childEditPart).getFigure(), locator);
 		return true;
 	}
 
 	private boolean createOutNode(EditPart childEditPart) {
-			IFigure borderItemFigure = ((OutNodeEditPart) childEditPart).getFigure();
-			BorderItemLocator locator = new AbsoluteBorderedItemLocator(getMainFigure(),borderItemFigure, PositionConstants.EAST, 4);
+		IFigure borderItemFigure = ((OutNodeEditPart) childEditPart).getFigure();
+		BorderItemLocator locator = new AbsoluteBorderedItemLocator(getMainFigure(), borderItemFigure,
+				PositionConstants.EAST, 4);
 		getBorderedFigure().getBorderItemContainer().add(((OutNodeEditPart) childEditPart).getFigure(), locator);
 		return true;
 	}
@@ -944,14 +862,13 @@ public class TreeNode3EditPart extends AbstractBorderedShapeEditPart {
 	 * @param editPart
 	 */
 	@SuppressWarnings("rawtypes")
-	public void addFixedChildToNodes(EditPart editPart){
+	public void addFixedChildToNodes(EditPart editPart) {
 		EditPart parent = editPart.getParent();
 		List children = parent.getChildren();
 		Iterator iterator = children.iterator();
 		updatConnectors(iterator);
 		super.refreshChild((GraphicalEditPart) editPart);
 	}
-	
 
 	/**
 	 * Updats the connectors

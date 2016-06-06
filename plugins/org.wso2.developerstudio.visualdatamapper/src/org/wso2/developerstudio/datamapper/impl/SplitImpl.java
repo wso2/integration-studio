@@ -14,12 +14,12 @@ import org.wso2.developerstudio.datamapper.Split;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.datamapper.impl.SplitImpl#getDelimiter <em>Delimiter</em>}</li>
  *   <li>{@link org.wso2.developerstudio.datamapper.impl.SplitImpl#getArrayOutput <em>Array Output</em>}</li>
  *   <li>{@link org.wso2.developerstudio.datamapper.impl.SplitImpl#getArrayOutputResultOmitingIndices <em>Array Output Result Omiting Indices</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -127,7 +127,6 @@ public class SplitImpl extends OperatorImpl implements Split {
 	 * @generated
 	 */
 	public String getDelimiter() {
-		delimiter = delimiterValue;
 		return delimiter;
 	}
 

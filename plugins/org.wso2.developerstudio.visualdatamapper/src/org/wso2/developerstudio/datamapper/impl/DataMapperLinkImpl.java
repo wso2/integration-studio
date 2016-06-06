@@ -20,11 +20,11 @@ import org.wso2.developerstudio.datamapper.OutNode;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.datamapper.impl.DataMapperLinkImpl#getInNode <em>In Node</em>}</li>
  *   <li>{@link org.wso2.developerstudio.datamapper.impl.DataMapperLinkImpl#getOutNode <em>Out Node</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

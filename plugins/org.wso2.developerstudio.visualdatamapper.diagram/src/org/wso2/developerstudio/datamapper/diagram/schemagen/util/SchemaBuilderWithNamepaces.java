@@ -14,7 +14,6 @@
  * limitations under the License.
  */
 
-
 package org.wso2.developerstudio.datamapper.diagram.schemagen.util;
 
 import java.util.Map;
@@ -42,9 +41,9 @@ public class SchemaBuilderWithNamepaces extends SchemaBuilder {
 	private static final String URL = "url";
 	private static final String STRING = "string";
 
-
 	@Override
-	protected JsonSchema addPrimitiveToParent(JsonSchema parent, String id, String value, TypeEnum propertyValueType, Map<String,String> elementIdentifierMap) {
+	protected JsonSchema addPrimitiveToParent(JsonSchema parent, String id, String value, TypeEnum propertyValueType,
+			Map<String, String> elementIdentifierMap) {
 		if (id.contains(XMLNS)) {
 			String prefix = id.substring(XMLNS.length());
 			JsonObject obj = new JsonObject();
@@ -58,14 +57,14 @@ public class SchemaBuilderWithNamepaces extends SchemaBuilder {
 				namespaces = root.getCustomArray(NAMESPACES);
 				namespaces.add(obj);
 			}
-			//Create element identifier block
-			if(elementIdentifierMap.containsKey(prefix)){
+			// Create element identifier block
+			if (elementIdentifierMap.containsKey(prefix)) {
 				JsonArray identifiers = root.getCustomArray(ELEMENT_IDENTIFIERS);
 				JsonObject identifierObj = new JsonObject();
 				identifierObj.addProperty(TYPE, elementIdentifierMap.get(prefix));
-				if(identifiers != null){
+				if (identifiers != null) {
 					identifiers.add(identifierObj);
-				}else{
+				} else {
 					root.addCustomArray(ELEMENT_IDENTIFIERS);
 					identifiers = root.getCustomArray(ELEMENT_IDENTIFIERS);
 					identifiers.add(identifierObj);
@@ -75,50 +74,63 @@ public class SchemaBuilderWithNamepaces extends SchemaBuilder {
 			return null;
 		} else if (id.startsWith(AT_PREFIX)) {
 			JsonSchema leaf = new JsonSchema();
-		    String idwithoutAtSign = id.substring(1);
+			String idwithoutAtSign = id.substring(1);
 			leaf.setId(parent.getId() + "/" + idwithoutAtSign);
 			leaf.setType(value);
 			parent.addAttribute(idwithoutAtSign, leaf);
 			return leaf;
-		}else if (id.startsWith(DOLLLAR_AT_PREFIX)) {
+		} else if (id.startsWith(DOLLLAR_AT_PREFIX)) {
 			JsonSchema leaf = new JsonSchema();
-		    String idwithoutAtSign = id.substring(2);
+			String idwithoutAtSign = id.substring(2);
 			leaf.setId(parent.getId() + "/" + idwithoutAtSign);
 			leaf.setType(propertyValueType.toString().toLowerCase());
 			parent.addAttribute(idwithoutAtSign, leaf);
 			return leaf;
 		} else if (id.equals(HASHCONTENT)) {
-		   JsonParser jsonParser = new JsonParser();
-		   if(StringUtils.isNotEmpty(value)){
-			   if(jsonParser.parse(value) instanceof JsonObject){
-		   JsonObject valueObject = (JsonObject)jsonParser.parse(value);
-		   addValueObject(parent, valueObject); 
-			   }
-		   }
-		   return null;	
-		} else if(id.equals(DEFAULT_NAMESPACE)){
-		  return null;
+			JsonParser jsonParser = new JsonParser();
+			if (StringUtils.isNotEmpty(value)) {
+				if (jsonParser.parse(value) instanceof JsonObject) {
+					JsonObject valueObject = (JsonObject) jsonParser.parse(value);
+					addValueObject(parent, valueObject);
+				}
+				if (jsonParser.parse(value) instanceof JsonPrimitive) {
+					JsonPrimitive valueObject = (JsonPrimitive) jsonParser.parse(value);
+					addValueObject(parent, valueObject);
+				}
+			}
+			return null;
+		} else if (id.equals(DEFAULT_NAMESPACE)) {
+			return null;
 		} else {
-		   return super.addPrimitiveToParent(parent, id, value, propertyValueType,elementIdentifierMap);
+			return super.addPrimitiveToParent(parent, id, value, propertyValueType, elementIdentifierMap);
 		}
 	}
 
 	/**
 	 * Adds the value object
+	 * 
 	 * @param parent
 	 * @param valueObject
 	 */
-	private void addValueObject(JsonSchema parent, JsonObject valueObject) {
-		Set<Entry<String, JsonElement>> contentEntrySet = valueObject.getAsJsonObject().entrySet();
+	private void addValueObject(JsonSchema parent, JsonElement valueObject) {
+		if (valueObject instanceof JsonObject) {
+			Set<Entry<String, JsonElement>> contentEntrySet = valueObject.getAsJsonObject().entrySet();
 			for (Entry<String, JsonElement> contentEntry : contentEntrySet) {
 				String contentKey = contentEntry.getKey();
 				if (contentKey.equals(CONTENT)) {
 					TypeEnum propertyType = RealTypeOf(contentEntry.getValue());
 					JsonObject object = new JsonObject();
 					object.addProperty(TYPE, propertyType.toString().toLowerCase());
-					parent.addCustomObject(VALUE, object);	
+					parent.addCustomObject(VALUE, object);
 				}
 			}
+		} else if (valueObject instanceof JsonPrimitive) {
+			TypeEnum propertyType = RealTypeOf(valueObject);
+			JsonObject object = new JsonObject();
+			object.addProperty(TYPE, propertyType.toString().toLowerCase());
+			parent.addCustomObject(VALUE, object);
+		}
+
 	}
 
 	private static TypeEnum RealTypeOf(JsonElement element) {

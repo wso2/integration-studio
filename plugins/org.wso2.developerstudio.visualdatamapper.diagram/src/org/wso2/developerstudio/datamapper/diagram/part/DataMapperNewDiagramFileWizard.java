@@ -74,8 +74,8 @@ public class DataMapperNewDiagramFileWizard extends Wizard {
 			throw new IllegalArgumentException("Unsupported URI: " + domainModelURI); //$NON-NLS-1$
 		}
 		myFileCreationPage.setContainerFullPath(filePath);
-		myFileCreationPage.setFileName(DataMapperDiagramEditorUtil.getUniqueFileName(filePath, fileName,
-				"datamapper_diagram")); //$NON-NLS-1$
+		myFileCreationPage
+				.setFileName(DataMapperDiagramEditorUtil.getUniqueFileName(filePath, fileName, "datamapper_diagram")); //$NON-NLS-1$
 
 		diagramRootElementSelectionPage = new DiagramRootElementSelectionPage(
 				Messages.DataMapperNewDiagramFileWizard_RootSelectionPageName);
@@ -111,8 +111,8 @@ public class DataMapperNewDiagramFileWizard extends Wizard {
 
 			protected CommandResult doExecuteWithResult(IProgressMonitor monitor, IAdaptable info)
 					throws ExecutionException {
-				int diagramVID = DataMapperVisualIDRegistry.getDiagramVisualID(diagramRootElementSelectionPage
-						.getModelElement());
+				int diagramVID = DataMapperVisualIDRegistry
+						.getDiagramVisualID(diagramRootElementSelectionPage.getModelElement());
 				if (diagramVID != DataMapperRootEditPart.VISUAL_ID) {
 					return CommandResult
 							.newErrorCommandResult(Messages.DataMapperNewDiagramFileWizard_IncorrectRootError);
@@ -164,11 +164,11 @@ public class DataMapperNewDiagramFileWizard extends Wizard {
 				setErrorMessage(Messages.DataMapperNewDiagramFileWizard_RootSelectionPageNoSelectionMessage);
 				return false;
 			}
-			boolean result = ViewService.getInstance().provides(
-					new CreateDiagramViewOperation(new EObjectAdapter(getModelElement()),
+			boolean result = ViewService.getInstance()
+					.provides(new CreateDiagramViewOperation(new EObjectAdapter(getModelElement()),
 							DataMapperRootEditPart.MODEL_ID, DataMapperDiagramEditorPlugin.DIAGRAM_PREFERENCES_HINT));
-			setErrorMessage(result ? null
-					: Messages.DataMapperNewDiagramFileWizard_RootSelectionPageInvalidSelectionMessage);
+			setErrorMessage(
+					result ? null : Messages.DataMapperNewDiagramFileWizard_RootSelectionPageInvalidSelectionMessage);
 			return result;
 		}
 	}

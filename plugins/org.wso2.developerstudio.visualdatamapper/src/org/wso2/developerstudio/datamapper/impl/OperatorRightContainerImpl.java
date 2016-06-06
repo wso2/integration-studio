@@ -21,10 +21,10 @@ import org.wso2.developerstudio.datamapper.OperatorRightContainer;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.datamapper.impl.OperatorRightContainerImpl#getRightConnectors <em>Right Connectors</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

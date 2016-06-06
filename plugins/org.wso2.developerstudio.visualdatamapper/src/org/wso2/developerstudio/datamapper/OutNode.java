@@ -13,11 +13,11 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.datamapper.OutNode#getOutgoingLink <em>Outgoing Link</em>}</li>
  *   <li>{@link org.wso2.developerstudio.datamapper.OutNode#getElementParent <em>Element Parent</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.wso2.developerstudio.datamapper.DataMapperPackage#getOutNode()
  * @model

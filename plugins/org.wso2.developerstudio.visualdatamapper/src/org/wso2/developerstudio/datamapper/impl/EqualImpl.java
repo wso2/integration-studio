@@ -10,8 +10,6 @@ import org.wso2.developerstudio.datamapper.Equal;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Equal</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */

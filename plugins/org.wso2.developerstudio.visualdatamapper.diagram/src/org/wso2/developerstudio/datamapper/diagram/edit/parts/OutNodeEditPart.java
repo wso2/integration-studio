@@ -90,8 +90,8 @@ public class OutNodeEditPart extends AbstractBorderItemEditPart {
 	public NodeFigure getNodeFigureOutput() {
 		return figure_;
 	}
-	
-	public void notifyChanged(org.eclipse.emf.common.notify.Notification notification){
+
+	public void notifyChanged(org.eclipse.emf.common.notify.Notification notification) {
 		super.notifyChanged(notification);
 	}
 
@@ -293,13 +293,10 @@ public class OutNodeEditPart extends AbstractBorderItemEditPart {
 
 				@Override
 				public void mouseEntered(MouseEvent me) {
-					getEditDomain().getPaletteViewer().setActiveTool(
-							(ToolEntry) (((PaletteContainer) getEditDomain().getPaletteViewer().getPaletteRoot()
-									.getChildren().get(1)).getChildren().get(0)));
+					getEditDomain().getPaletteViewer().setActiveTool((ToolEntry) (((PaletteContainer) getEditDomain()
+							.getPaletteViewer().getPaletteRoot().getChildren().get(1)).getChildren().get(0)));
 					highlightParentElem();
 				}
-
-				
 
 				@Override
 				public void mouseDragged(MouseEvent me) {
@@ -340,40 +337,41 @@ public class OutNodeEditPart extends AbstractBorderItemEditPart {
 			this.setOutline(false);
 			this.setFill(false);
 		}
-		
+
 		public void highlightParentElem() {
-			IFigure treeFigure = (IFigure) ((DefaultSizeNodeFigure) ((BorderedNodeFigure) getParent().getParent().getParent()).getChildren().get(0)).getChildren().get(0) ;
+			IFigure treeFigure = (IFigure) ((DefaultSizeNodeFigure) ((BorderedNodeFigure) getParent().getParent()
+					.getParent()).getChildren().get(0)).getChildren().get(0);
 			if (treeFigure instanceof TreeNode2EditPart.TreeNodeFigure) {
-				TreeNode2EditPart.TreeNodeFigure num =(TreeNode2EditPart.TreeNodeFigure) treeFigure;
-			    num.highlightElementOnSelection();
+				TreeNode2EditPart.TreeNodeFigure num = (TreeNode2EditPart.TreeNodeFigure) treeFigure;
+				num.highlightElementOnSelection();
 			}
 			if (treeFigure instanceof TreeNodeEditPart.TreeNodeFigure) {
-				TreeNodeEditPart.TreeNodeFigure num =(TreeNodeEditPart.TreeNodeFigure) treeFigure;
-			    num.highlightElementOnSelection();
+				TreeNodeEditPart.TreeNodeFigure num = (TreeNodeEditPart.TreeNodeFigure) treeFigure;
+				num.highlightElementOnSelection();
 			}
 			if (treeFigure instanceof TreeNode3EditPart.TreeNodeFigure) {
-				TreeNode3EditPart.TreeNodeFigure num =(TreeNode3EditPart.TreeNodeFigure)treeFigure;
-			    num.highlightElementOnSelection();
+				TreeNode3EditPart.TreeNodeFigure num = (TreeNode3EditPart.TreeNodeFigure) treeFigure;
+				num.highlightElementOnSelection();
 			}
 		}
-		
+
 		public void removeParentHighlight() {
-			IFigure treeFigure = (IFigure) ((DefaultSizeNodeFigure) ((BorderedNodeFigure) getParent().getParent().getParent()).getChildren().get(0)).getChildren().get(0) ;
+			IFigure treeFigure = (IFigure) ((DefaultSizeNodeFigure) ((BorderedNodeFigure) getParent().getParent()
+					.getParent()).getChildren().get(0)).getChildren().get(0);
 			if (treeFigure instanceof TreeNode2EditPart.TreeNodeFigure) {
-				TreeNode2EditPart.TreeNodeFigure num =(TreeNode2EditPart.TreeNodeFigure)treeFigure;
-			    num.removeHighlight();
+				TreeNode2EditPart.TreeNodeFigure num = (TreeNode2EditPart.TreeNodeFigure) treeFigure;
+				num.removeHighlight();
 			}
 			if (treeFigure instanceof TreeNodeEditPart.TreeNodeFigure) {
-				TreeNodeEditPart.TreeNodeFigure num =(TreeNodeEditPart.TreeNodeFigure) treeFigure;
-			    num.removeHighlight();
+				TreeNodeEditPart.TreeNodeFigure num = (TreeNodeEditPart.TreeNodeFigure) treeFigure;
+				num.removeHighlight();
 			}
 			if (treeFigure instanceof TreeNode3EditPart.TreeNodeFigure) {
-				TreeNode3EditPart.TreeNodeFigure num =(TreeNode3EditPart.TreeNodeFigure) treeFigure;
-			    num.removeHighlight();
+				TreeNode3EditPart.TreeNodeFigure num = (TreeNode3EditPart.TreeNodeFigure) treeFigure;
+				num.removeHighlight();
 			}
 		}
-		
+
 	}
-	
 
 }

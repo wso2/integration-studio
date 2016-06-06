@@ -10,8 +10,6 @@ import org.wso2.developerstudio.datamapper.LowerCase;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Lower Case</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */

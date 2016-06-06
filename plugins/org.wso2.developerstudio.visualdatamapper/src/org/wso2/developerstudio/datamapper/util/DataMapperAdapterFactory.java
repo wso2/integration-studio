@@ -138,6 +138,10 @@ public class DataMapperAdapterFactory extends AdapterFactoryImpl {
 				return createConstantAdapter();
 			}
 			@Override
+			public Adapter caseAdd(Add object) {
+				return createAddAdapter();
+			}
+			@Override
 			public Adapter caseSplit(Split object) {
 				return createSplitAdapter();
 			}
@@ -426,6 +430,20 @@ public class DataMapperAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createConstantAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.wso2.developerstudio.datamapper.Add <em>Add</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.wso2.developerstudio.datamapper.Add
+	 * @generated
+	 */
+	public Adapter createAddAdapter() {
 		return null;
 	}
 

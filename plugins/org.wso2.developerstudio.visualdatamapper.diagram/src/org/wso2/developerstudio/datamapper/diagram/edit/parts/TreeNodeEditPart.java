@@ -98,17 +98,17 @@ public class TreeNodeEditPart extends AbstractBorderedShapeEditPart {
 	 * @generated NOT
 	 */
 	boolean isActivated = false;
-	
+
 	/**
 	 * @generated NOT
 	 */
 	private boolean isInNodeEmpty;
-	
+
 	/**
 	 * @generated NOT
 	 */
 	private boolean isOutNodeEmpty;
-	
+
 	/**
 	 * @generated NOT
 	 */
@@ -304,7 +304,7 @@ public class TreeNodeEditPart extends AbstractBorderedShapeEditPart {
 						} else {
 							return createInNode(childEditPart);
 						}
-					} else if(type.equals(JSON_SCHEMA_OBJECT)){
+					} else if (type.equals(JSON_SCHEMA_OBJECT)) {
 						String value = getNodeValue(type);
 						// If an element has values then enable the connector arrow
 						if (StringUtils.isNotEmpty(value)) {
@@ -353,7 +353,7 @@ public class TreeNodeEditPart extends AbstractBorderedShapeEditPart {
 						} else {
 							return createOutNode(childEditPart);
 						}
-					} else if(type.equals(JSON_SCHEMA_OBJECT)){
+					} else if (type.equals(JSON_SCHEMA_OBJECT)) {
 						String value = getNodeValue(type);
 						// If an element has values then enable the connector arrow
 						if (StringUtils.isNotEmpty(value)) {
@@ -425,14 +425,16 @@ public class TreeNodeEditPart extends AbstractBorderedShapeEditPart {
 
 	private boolean createInNode(EditPart childEditPart) {
 		IFigure borderItemFigure = ((InNodeEditPart) childEditPart).getFigure();
-		BorderItemLocator locator = new AbsoluteBorderedItemLocator(getMainFigure(),borderItemFigure, PositionConstants.WEST, 4);
+		BorderItemLocator locator = new AbsoluteBorderedItemLocator(getMainFigure(), borderItemFigure,
+				PositionConstants.WEST, 4);
 		getBorderedFigure().getBorderItemContainer().add(((InNodeEditPart) childEditPart).getFigure(), locator);
 		return true;
 	}
 
 	private boolean createOutNode(EditPart childEditPart) {
 		IFigure borderItemFigure = ((OutNodeEditPart) childEditPart).getFigure();
-		BorderItemLocator locator = new AbsoluteBorderedItemLocator(getMainFigure(),borderItemFigure, PositionConstants.EAST, 4);
+		BorderItemLocator locator = new AbsoluteBorderedItemLocator(getMainFigure(), borderItemFigure,
+				PositionConstants.EAST, 4);
 		getBorderedFigure().getBorderItemContainer().add(((OutNodeEditPart) childEditPart).getFigure(), locator);
 		return true;
 	}
@@ -476,14 +478,13 @@ public class TreeNodeEditPart extends AbstractBorderedShapeEditPart {
 	 * @param editPart
 	 */
 	@SuppressWarnings("rawtypes")
-	public void addFixedChildToNodes(EditPart editPart){
+	public void addFixedChildToNodes(EditPart editPart) {
 		EditPart parent = editPart.getParent();
 		List children = parent.getChildren();
 		Iterator iterator = children.iterator();
 		updatConnectors(iterator);
 		super.refreshChild((GraphicalEditPart) editPart);
 	}
-	
 
 	/**
 	 * Updats the connectors

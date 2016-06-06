@@ -12,10 +12,10 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.datamapper.Input#getTreeNode <em>Tree Node</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.wso2.developerstudio.datamapper.DataMapperPackage#getInput()
  * @model

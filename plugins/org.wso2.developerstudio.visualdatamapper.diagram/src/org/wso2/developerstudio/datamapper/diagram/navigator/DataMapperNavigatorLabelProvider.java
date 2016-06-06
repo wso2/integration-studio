@@ -15,6 +15,7 @@ import org.eclipse.swt.graphics.Image;
 import org.eclipse.ui.IMemento;
 import org.eclipse.ui.navigator.ICommonContentExtensionSite;
 import org.eclipse.ui.navigator.ICommonLabelProvider;
+import org.wso2.developerstudio.datamapper.Add;
 import org.wso2.developerstudio.datamapper.Concat;
 import org.wso2.developerstudio.datamapper.Constant;
 import org.wso2.developerstudio.datamapper.Contains;
@@ -24,6 +25,7 @@ import org.wso2.developerstudio.datamapper.LowerCase;
 import org.wso2.developerstudio.datamapper.Split;
 import org.wso2.developerstudio.datamapper.TreeNode;
 import org.wso2.developerstudio.datamapper.UpperCase;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.AddEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.ConcatEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.ConstantEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.ContainsEditPart;
@@ -62,17 +64,17 @@ import org.wso2.developerstudio.datamapper.diagram.providers.DataMapperParserPro
 /**
  * @generated
  */
-public class DataMapperNavigatorLabelProvider extends LabelProvider implements ICommonLabelProvider,
-		ITreePathLabelProvider {
+public class DataMapperNavigatorLabelProvider extends LabelProvider
+		implements ICommonLabelProvider, ITreePathLabelProvider {
 
 	/**
 	 * @generated
 	 */
 	static {
-		DataMapperDiagramEditorPlugin.getInstance().getImageRegistry()
-				.put("Navigator?UnknownElement", ImageDescriptor.getMissingImageDescriptor()); //$NON-NLS-1$
-		DataMapperDiagramEditorPlugin.getInstance().getImageRegistry()
-				.put("Navigator?ImageNotFound", ImageDescriptor.getMissingImageDescriptor()); //$NON-NLS-1$
+		DataMapperDiagramEditorPlugin.getInstance().getImageRegistry().put("Navigator?UnknownElement", //$NON-NLS-1$
+				ImageDescriptor.getMissingImageDescriptor());
+		DataMapperDiagramEditorPlugin.getInstance().getImageRegistry().put("Navigator?ImageNotFound", //$NON-NLS-1$
+				ImageDescriptor.getMissingImageDescriptor());
 	}
 
 	/**
@@ -113,83 +115,91 @@ public class DataMapperNavigatorLabelProvider extends LabelProvider implements I
 	public Image getImage(View view) {
 		switch (DataMapperVisualIDRegistry.getVisualID(view)) {
 		case DataMapperRootEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Diagram?http:///org/wso2/developerstudio/eclipse/gmf/datamapper?DataMapperRoot", DataMapperElementTypes.DataMapperRoot_1000); //$NON-NLS-1$
+			return getImage("Navigator?Diagram?http:///org/wso2/developerstudio/eclipse/gmf/datamapper?DataMapperRoot", //$NON-NLS-1$
+					DataMapperElementTypes.DataMapperRoot_1000);
 		case InputEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?TopLevelNode?http:///org/wso2/developerstudio/eclipse/gmf/datamapper?Input", DataMapperElementTypes.Input_2002); //$NON-NLS-1$
+			return getImage("Navigator?TopLevelNode?http:///org/wso2/developerstudio/eclipse/gmf/datamapper?Input", //$NON-NLS-1$
+					DataMapperElementTypes.Input_2002);
 		case OutputEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?TopLevelNode?http:///org/wso2/developerstudio/eclipse/gmf/datamapper?Output", DataMapperElementTypes.Output_2003); //$NON-NLS-1$
+			return getImage("Navigator?TopLevelNode?http:///org/wso2/developerstudio/eclipse/gmf/datamapper?Output", //$NON-NLS-1$
+					DataMapperElementTypes.Output_2003);
 		case EqualEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?TopLevelNode?http:///org/wso2/developerstudio/eclipse/gmf/datamapper?Equal", DataMapperElementTypes.Equal_2005); //$NON-NLS-1$
+			return getImage("Navigator?TopLevelNode?http:///org/wso2/developerstudio/eclipse/gmf/datamapper?Equal", //$NON-NLS-1$
+					DataMapperElementTypes.Equal_2005);
 		case ConcatEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?TopLevelNode?http:///org/wso2/developerstudio/eclipse/gmf/datamapper?Concat", DataMapperElementTypes.Concat_2006); //$NON-NLS-1$
+			return getImage("Navigator?TopLevelNode?http:///org/wso2/developerstudio/eclipse/gmf/datamapper?Concat", //$NON-NLS-1$
+					DataMapperElementTypes.Concat_2006);
 		case SplitEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?TopLevelNode?http:///org/wso2/developerstudio/eclipse/gmf/datamapper?Split", DataMapperElementTypes.Split_2007); //$NON-NLS-1$
+			return getImage("Navigator?TopLevelNode?http:///org/wso2/developerstudio/eclipse/gmf/datamapper?Split", //$NON-NLS-1$
+					DataMapperElementTypes.Split_2007);
 		case ConstantEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?TopLevelNode?http:///org/wso2/developerstudio/eclipse/gmf/datamapper?Constant", DataMapperElementTypes.Constant_2008); //$NON-NLS-1$
+			return getImage("Navigator?TopLevelNode?http:///org/wso2/developerstudio/eclipse/gmf/datamapper?Constant", //$NON-NLS-1$
+					DataMapperElementTypes.Constant_2008);
 		case LowerCaseEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?TopLevelNode?http:///org/wso2/developerstudio/eclipse/gmf/datamapper?LowerCase", DataMapperElementTypes.LowerCase_2009); //$NON-NLS-1$
+			return getImage("Navigator?TopLevelNode?http:///org/wso2/developerstudio/eclipse/gmf/datamapper?LowerCase", //$NON-NLS-1$
+					DataMapperElementTypes.LowerCase_2009);
 		case ContainsEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?TopLevelNode?http:///org/wso2/developerstudio/eclipse/gmf/datamapper?Contains", DataMapperElementTypes.Contains_2010); //$NON-NLS-1$
+			return getImage("Navigator?TopLevelNode?http:///org/wso2/developerstudio/eclipse/gmf/datamapper?Contains", //$NON-NLS-1$
+					DataMapperElementTypes.Contains_2010);
 		case UpperCaseEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?TopLevelNode?http:///org/wso2/developerstudio/eclipse/gmf/datamapper?UpperCase", DataMapperElementTypes.UpperCase_2011); //$NON-NLS-1$
+			return getImage("Navigator?TopLevelNode?http:///org/wso2/developerstudio/eclipse/gmf/datamapper?UpperCase", //$NON-NLS-1$
+					DataMapperElementTypes.UpperCase_2011);
+		case AddEditPart.VISUAL_ID:
+			return getImage("Navigator?TopLevelNode?http:///org/wso2/developerstudio/eclipse/gmf/datamapper?Add", //$NON-NLS-1$
+					DataMapperElementTypes.Add_2012);
 		case TreeNodeEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/datamapper?TreeNode", DataMapperElementTypes.TreeNode_3002); //$NON-NLS-1$
+			return getImage("Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/datamapper?TreeNode", //$NON-NLS-1$
+					DataMapperElementTypes.TreeNode_3002);
 		case TreeNode2EditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/datamapper?TreeNode", DataMapperElementTypes.TreeNode_3003); //$NON-NLS-1$
+			return getImage("Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/datamapper?TreeNode", //$NON-NLS-1$
+					DataMapperElementTypes.TreeNode_3003);
 		case ElementEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/datamapper?Element", DataMapperElementTypes.Element_3007); //$NON-NLS-1$
+			return getImage("Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/datamapper?Element", //$NON-NLS-1$
+					DataMapperElementTypes.Element_3007);
 		case InNode2EditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/datamapper?InNode", DataMapperElementTypes.InNode_3008); //$NON-NLS-1$
+			return getImage("Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/datamapper?InNode", //$NON-NLS-1$
+					DataMapperElementTypes.InNode_3008);
 		case OutNode2EditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/datamapper?OutNode", DataMapperElementTypes.OutNode_3009); //$NON-NLS-1$
+			return getImage("Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/datamapper?OutNode", //$NON-NLS-1$
+					DataMapperElementTypes.OutNode_3009);
 		case TreeNode3EditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/datamapper?TreeNode", DataMapperElementTypes.TreeNode_3011); //$NON-NLS-1$
+			return getImage("Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/datamapper?TreeNode", //$NON-NLS-1$
+					DataMapperElementTypes.TreeNode_3011);
 		case OperatorBasicContainerEditPart.VISUAL_ID:
 			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/datamapper?OperatorBasicContainer", DataMapperElementTypes.OperatorBasicContainer_3012); //$NON-NLS-1$
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/datamapper?OperatorBasicContainer", //$NON-NLS-1$
+					DataMapperElementTypes.OperatorBasicContainer_3012);
 		case OperatorLeftContainerEditPart.VISUAL_ID:
 			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/datamapper?OperatorLeftContainer", DataMapperElementTypes.OperatorLeftContainer_3013); //$NON-NLS-1$
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/datamapper?OperatorLeftContainer", //$NON-NLS-1$
+					DataMapperElementTypes.OperatorLeftContainer_3013);
 		case OperatorLeftConnectorEditPart.VISUAL_ID:
 			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/datamapper?OperatorLeftConnector", DataMapperElementTypes.OperatorLeftConnector_3014); //$NON-NLS-1$
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/datamapper?OperatorLeftConnector", //$NON-NLS-1$
+					DataMapperElementTypes.OperatorLeftConnector_3014);
 		case InNode3EditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/datamapper?InNode", DataMapperElementTypes.InNode_3015); //$NON-NLS-1$
+			return getImage("Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/datamapper?InNode", //$NON-NLS-1$
+					DataMapperElementTypes.InNode_3015);
 		case OperatorRightContainerEditPart.VISUAL_ID:
 			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/datamapper?OperatorRightContainer", DataMapperElementTypes.OperatorRightContainer_3016); //$NON-NLS-1$
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/datamapper?OperatorRightContainer", //$NON-NLS-1$
+					DataMapperElementTypes.OperatorRightContainer_3016);
 		case OperatorRightConnectorEditPart.VISUAL_ID:
 			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/datamapper?OperatorRightConnector", DataMapperElementTypes.OperatorRightConnector_3017); //$NON-NLS-1$
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/datamapper?OperatorRightConnector", //$NON-NLS-1$
+					DataMapperElementTypes.OperatorRightConnector_3017);
 		case OutNode3EditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/datamapper?OutNode", DataMapperElementTypes.OutNode_3018); //$NON-NLS-1$
+			return getImage("Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/datamapper?OutNode", //$NON-NLS-1$
+					DataMapperElementTypes.OutNode_3018);
 		case OutNodeEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/datamapper?OutNode", DataMapperElementTypes.OutNode_3019); //$NON-NLS-1$
+			return getImage("Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/datamapper?OutNode", //$NON-NLS-1$
+					DataMapperElementTypes.OutNode_3019);
 		case InNodeEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/datamapper?InNode", DataMapperElementTypes.InNode_3020); //$NON-NLS-1$
+			return getImage("Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/datamapper?InNode", //$NON-NLS-1$
+					DataMapperElementTypes.InNode_3020);
 		case DataMapperLinkEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Link?http:///org/wso2/developerstudio/eclipse/gmf/datamapper?DataMapperLink", DataMapperElementTypes.DataMapperLink_4001); //$NON-NLS-1$
+			return getImage("Navigator?Link?http:///org/wso2/developerstudio/eclipse/gmf/datamapper?DataMapperLink", //$NON-NLS-1$
+					DataMapperElementTypes.DataMapperLink_4001);
 		}
 		return getImage("Navigator?UnknownElement", null); //$NON-NLS-1$
 	}
@@ -260,6 +270,8 @@ public class DataMapperNavigatorLabelProvider extends LabelProvider implements I
 			return getContains_2010Text(view);
 		case UpperCaseEditPart.VISUAL_ID:
 			return getUpperCase_2011Text(view);
+		case AddEditPart.VISUAL_ID:
+			return getAdd_2012Text(view);
 		case TreeNodeEditPart.VISUAL_ID:
 			return getTreeNode_3002Text(view);
 		case TreeNode2EditPart.VISUAL_ID:
@@ -404,6 +416,19 @@ public class DataMapperNavigatorLabelProvider extends LabelProvider implements I
 			return String.valueOf(domainModelElement.isSerialized());
 		} else {
 			DataMapperDiagramEditorPlugin.getInstance().logError("No domain element for view with visualID = " + 2011); //$NON-NLS-1$
+			return ""; //$NON-NLS-1$
+		}
+	}
+
+	/**
+	* @generated
+	*/
+	private String getAdd_2012Text(View view) {
+		Add domainModelElement = (Add) view.getElement();
+		if (domainModelElement != null) {
+			return String.valueOf(domainModelElement.isSerialized());
+		} else {
+			DataMapperDiagramEditorPlugin.getInstance().logError("No domain element for view with visualID = " + 2012); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}

@@ -58,8 +58,8 @@ public class DataMapperDomainNavigatorContentProvider implements ICommonContentP
 	 * @generated
 	 */
 	public DataMapperDomainNavigatorContentProvider() {
-		myAdapterFctoryContentProvier = new AdapterFactoryContentProvider(DataMapperDiagramEditorPlugin.getInstance()
-				.getItemProvidersAdapterFactory());
+		myAdapterFctoryContentProvier = new AdapterFactoryContentProvider(
+				DataMapperDiagramEditorPlugin.getInstance().getItemProvidersAdapterFactory());
 		TransactionalEditingDomain editingDomain = GMFEditingDomainFactory.INSTANCE.createEditingDomain();
 		myEditingDomain = (AdapterFactoryEditingDomain) editingDomain;
 		myEditingDomain.setResourceToReadOnlyMap(new HashMap() {
@@ -176,9 +176,8 @@ public class DataMapperDomainNavigatorContentProvider implements ICommonContentP
 		}
 
 		if (parentElement instanceof DataMapperDomainNavigatorItem) {
-			return wrapEObjects(
-					myAdapterFctoryContentProvier.getChildren(((DataMapperDomainNavigatorItem) parentElement)
-							.getEObject()), parentElement);
+			return wrapEObjects(myAdapterFctoryContentProvier
+					.getChildren(((DataMapperDomainNavigatorItem) parentElement).getEObject()), parentElement);
 		}
 		return EMPTY_ARRAY;
 	}

@@ -6,6 +6,7 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.emf.commands.core.commands.DuplicateEObjectsCommand;
 import org.eclipse.gmf.runtime.emf.type.core.requests.CreateElementRequest;
 import org.eclipse.gmf.runtime.emf.type.core.requests.DuplicateElementsRequest;
+import org.wso2.developerstudio.datamapper.diagram.edit.commands.AddCreateCommand;
 import org.wso2.developerstudio.datamapper.diagram.edit.commands.ConcatCreateCommand;
 import org.wso2.developerstudio.datamapper.diagram.edit.commands.ConstantCreateCommand;
 import org.wso2.developerstudio.datamapper.diagram.edit.commands.ContainsCreateCommand;
@@ -44,6 +45,9 @@ public class DataMapperRootItemSemanticEditPolicy extends DataMapperBaseItemSema
 		}
 		if (DataMapperElementTypes.Concat_2006 == req.getElementType()) {
 			return getGEFWrapper(new ConcatCreateCommand(req));
+		}
+		if (DataMapperElementTypes.Add_2012 == req.getElementType()) {
+			return getGEFWrapper(new AddCreateCommand(req));
 		}
 		if (DataMapperElementTypes.Split_2007 == req.getElementType()) {
 			return getGEFWrapper(new SplitCreateCommand(req));

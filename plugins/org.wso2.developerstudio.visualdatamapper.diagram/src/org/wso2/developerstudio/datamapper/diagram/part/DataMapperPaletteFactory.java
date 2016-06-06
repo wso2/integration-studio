@@ -25,7 +25,9 @@ import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.palette.PaletteContainer;
 import org.eclipse.gef.palette.PaletteDrawer;
 import org.eclipse.gef.palette.PaletteEntry;
+import org.eclipse.gef.palette.PaletteGroup;
 import org.eclipse.gef.palette.PaletteRoot;
+import org.eclipse.gef.palette.PaletteSeparator;
 import org.eclipse.gef.palette.ToolEntry;
 import org.eclipse.gef.requests.CreateConnectionRequest;
 import org.eclipse.gmf.runtime.common.core.command.UnexecutableCommand;
@@ -34,6 +36,8 @@ import org.eclipse.gmf.runtime.diagram.ui.tools.UnspecifiedTypeConnectionTool;
 import org.eclipse.gmf.runtime.diagram.ui.tools.UnspecifiedTypeCreationTool;
 import org.eclipse.gmf.runtime.emf.type.core.IElementType;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.gmf.tooling.runtime.part.DefaultLinkToolEntry;
+import org.eclipse.gmf.tooling.runtime.part.DefaultNodeToolEntry;
 import org.wso2.developerstudio.datamapper.PropertyKeyValuePair;
 import org.wso2.developerstudio.datamapper.TreeNode;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.DataMapperLinkEditPart;
@@ -67,6 +71,8 @@ public class DataMapperPaletteFactory {
 	public void fillPalette(PaletteRoot paletteRoot) {
 		paletteRoot.add(createDataMapperLinkGroup());
 		paletteRoot.add(createDataMapper1Group());
+		paletteRoot.add(createDataMapperArithmaticGroup());
+
 	}
 
 	private PaletteEntry createDataMapperLinkGroup() {
@@ -104,9 +110,18 @@ public class DataMapperPaletteFactory {
 		paletteContainer.add(createSplit4CreationTool());
 		paletteContainer.add(createConstant5CreationTool());
 		paletteContainer.add(createLowerCase6CreationTool());
-		// paletteContainer.add(createContains7CreationTool());
+		paletteContainer.add(createContains7CreationTool());
 		paletteContainer.add(createUpperCase8CreationTool());
 		paletteContainer.setInitialState(INITIAL_STATE_OPEN);
+		return paletteContainer;
+	}
+	
+	private PaletteEntry createDataMapperArithmaticGroup() {
+		PaletteDrawer paletteContainer = new PaletteDrawer("Arithmatic");
+
+		paletteContainer.setId("createDataMapperArithmaticGroup"); //$NON-NLS-1$
+		paletteContainer.add(createAdd9CreationTool());
+		paletteContainer.setInitialState(INITIAL_STATE_CLOSED);
 		return paletteContainer;
 	}
 
@@ -203,6 +218,18 @@ public class DataMapperPaletteFactory {
 				Messages.UpperCase8CreationTool_desc, Collections.singletonList(DataMapperElementTypes.UpperCase_2011));
 		entry.setId("createUpperCase8CreationTool"); //$NON-NLS-1$
 		entry.setSmallIcon(DataMapperElementTypes.getImageDescriptor(DataMapperElementTypes.UpperCase_2011));
+		entry.setLargeIcon(entry.getSmallIcon());
+		return entry;
+	}
+
+	/**
+	* @generated
+	*/
+	private ToolEntry createAdd9CreationTool() {
+		DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.Add9CreationTool_title,
+				Messages.Add9CreationTool_desc, Collections.singletonList(DataMapperElementTypes.Add_2012));
+		entry.setId("createAdd9CreationTool"); //$NON-NLS-1$
+		entry.setSmallIcon(DataMapperElementTypes.getImageDescriptor(DataMapperElementTypes.Add_2012));
 		entry.setLargeIcon(entry.getSmallIcon());
 		return entry;
 	}
@@ -422,7 +449,7 @@ public class DataMapperPaletteFactory {
 							}
 
 						} // for
-					} 
+					}
 					// for leftconnector mouse enter
 					return super.getCommand();
 				}// get command

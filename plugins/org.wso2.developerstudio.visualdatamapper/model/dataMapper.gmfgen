@@ -333,7 +333,7 @@
         childNodes="//@diagram/@childNodes.9 //@diagram/@childNodes.12"
         graphicalNodeEditPolicyClassName="OperatorBasicContainerGraphicalNodeEditPolicy"
         createCommandClassName="OperatorBasicContainerCreateCommand"
-        containers="//@diagram/@topLevelNodes.2 //@diagram/@topLevelNodes.3 //@diagram/@topLevelNodes.4 //@diagram/@topLevelNodes.5 //@diagram/@topLevelNodes.6 //@diagram/@topLevelNodes.7 //@diagram/@topLevelNodes.8">
+        containers="//@diagram/@topLevelNodes.2 //@diagram/@topLevelNodes.3 //@diagram/@topLevelNodes.4 //@diagram/@topLevelNodes.5 //@diagram/@topLevelNodes.6 //@diagram/@topLevelNodes.7 //@diagram/@topLevelNodes.8 //@diagram/@topLevelNodes.9">
       <diagramRunTimeClass
           href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
       <elementType
@@ -624,6 +624,31 @@
       </modelFacet>
     </topLevelNodes>
     <topLevelNodes
+        visualID="2012"
+        editPartClassName="AddEditPart"
+        itemSemanticEditPolicyClassName="AddItemSemanticEditPolicy"
+        canonicalEditPolicyClassName="AddCanonicalEditPolicy"
+        childNodes="//@diagram/@childNodes.8"
+        graphicalNodeEditPolicyClassName="AddGraphicalNodeEditPolicy"
+        createCommandClassName="AddCreateCommand">
+      <diagramRunTimeClass
+          href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
+      <elementType
+          xsi:type="gmfgen:MetamodelType"
+          editHelperClassName="AddEditHelper"/>
+      <viewmap
+          xsi:type="gmfgen:FigureViewmap"
+          figureQualifiedClassName="org.eclipse.draw2d.RectangleFigure"/>
+      <modelFacet>
+        <metaClass
+            href="dataMapper.genmodel#//datamapper/Add"/>
+        <containmentMetaFeature
+            href="dataMapper.genmodel#//datamapper/DataMapperRoot/operators"/>
+        <childMetaFeature
+            href="dataMapper.genmodel#//datamapper/DataMapperRoot/operators"/>
+      </modelFacet>
+    </topLevelNodes>
+    <topLevelNodes
         visualID="2007"
         editPartClassName="SplitEditPart"
         itemSemanticEditPolicyClassName="SplitItemSemanticEditPolicy"
@@ -804,27 +829,32 @@
             xsi:type="gmfgen:ToolEntry"
             title="Split"
             description="Create new Split"
-            genNodes="//@diagram/@topLevelNodes.4"/>
+            genNodes="//@diagram/@topLevelNodes.5"/>
         <entries
             xsi:type="gmfgen:ToolEntry"
             title="Constant"
             description="Create new Constant"
-            genNodes="//@diagram/@topLevelNodes.5"/>
+            genNodes="//@diagram/@topLevelNodes.6"/>
         <entries
             xsi:type="gmfgen:ToolEntry"
             title="LowerCase"
             description="Create new LowerCase"
-            genNodes="//@diagram/@topLevelNodes.6"/>
+            genNodes="//@diagram/@topLevelNodes.7"/>
         <entries
             xsi:type="gmfgen:ToolEntry"
             title="Contains"
             description="Create new Contains"
-            genNodes="//@diagram/@topLevelNodes.7"/>
+            genNodes="//@diagram/@topLevelNodes.8"/>
         <entries
             xsi:type="gmfgen:ToolEntry"
             title="UpperCase"
             description="Create new UpperCase"
-            genNodes="//@diagram/@topLevelNodes.8"/>
+            genNodes="//@diagram/@topLevelNodes.9"/>
+        <entries
+            xsi:type="gmfgen:ToolEntry"
+            title="Add"
+            description="Create new Add"
+            genNodes="//@diagram/@topLevelNodes.4"/>
       </groups>
     </palette>
     <preferencePages
@@ -976,6 +1006,12 @@
     <childReferences
         parent="//@diagram"
         child="//@diagram/@topLevelNodes.8"/>
+    <childReferences
+        parent="//@diagram/@topLevelNodes.9"
+        child="//@diagram/@childNodes.8"/>
+    <childReferences
+        parent="//@diagram"
+        child="//@diagram/@topLevelNodes.9"/>
     <childReferences
         parent="//@diagram"
         child="//@diagram/@links.0"

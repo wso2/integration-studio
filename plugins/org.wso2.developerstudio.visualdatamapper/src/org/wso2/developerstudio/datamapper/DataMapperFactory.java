@@ -184,6 +184,15 @@ public interface DataMapperFactory extends EFactory {
 	Constant createConstant();
 
 	/**
+	 * Returns a new object of class '<em>Add</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Add</em>'.
+	 * @generated
+	 */
+	Add createAdd();
+
+	/**
 	 * Returns a new object of class '<em>Split</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

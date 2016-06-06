@@ -35,6 +35,7 @@ import org.wso2.developerstudio.datamapper.TreeNode;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.datamapper.impl.ElementImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.wso2.developerstudio.datamapper.impl.ElementImpl#getValue <em>Value</em>}</li>
@@ -45,7 +46,6 @@ import org.wso2.developerstudio.datamapper.TreeNode;
  *   <li>{@link org.wso2.developerstudio.datamapper.impl.ElementImpl#getLevel <em>Level</em>}</li>
  *   <li>{@link org.wso2.developerstudio.datamapper.impl.ElementImpl#getProperties <em>Properties</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

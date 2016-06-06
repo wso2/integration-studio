@@ -32,6 +32,7 @@ import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.datamapper.DataMapperLink;
 import org.wso2.developerstudio.datamapper.DataMapperRoot;
 import org.wso2.developerstudio.datamapper.Input;
+import org.wso2.developerstudio.datamapper.Operator;
 import org.wso2.developerstudio.datamapper.OperatorLeftConnector;
 import org.wso2.developerstudio.datamapper.OperatorRightConnector;
 import org.wso2.developerstudio.datamapper.Output;
@@ -141,39 +142,16 @@ public class DataMapperDiagramModel {
             }
             nodeStack.addAll(((TreeNodeImpl) currentNode).getNode());
         }
-        addOtherRootElemetsToNodeArray(tempNodeArray);
+        addOtherRootElemetsToNodeArray(tempNodeArray, input);
         populateAdjacencyLists(tempNodeArray);
     }
 
-    private void addOtherRootElemetsToNodeArray(List<EObject> tempNodeArray) {
-
-        IEditorReference[] references = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
-                .getEditorReferences();
-        for (IEditorReference iEditorReference : references) {
-            IEditorPart editorReference = iEditorReference.getEditor(true);
-            if (editorReference instanceof DataMapperDiagramEditor) {
-                DataMapperDiagramEditor dataMapperDiagramEditor = (DataMapperDiagramEditor) iEditorReference
-                        .getEditor(true);
-                @SuppressWarnings("rawtypes")
-                Map editPartRegistry = dataMapperDiagramEditor.getDiagramEditPart().getViewer().getEditPartRegistry();
-                addSourceOperatorsFromEditPartRegistry(tempNodeArray, editPartRegistry);
-            }
-        }
-    }
-
-    private void addSourceOperatorsFromEditPartRegistry(List<EObject> tempNodeArray, Map editPartRegistry) {
-        for (Object object : editPartRegistry.keySet()) {
-            if (object instanceof Node) {
-                Node nodeImpl = (Node) object;
-                Object editPart = editPartRegistry.get(nodeImpl);
-                if (editPart instanceof AbstractOperatorEditPart) {
-                    OperatorImpl operator = (OperatorImpl) ((ShapeImpl) ((AbstractOperatorEditPart) editPart)
-                            .getModel()).getElement();
-                    if (isSourceOperator(operator)) {
-                        operator.setMarked(true);
-                        tempNodeArray.add(operator);
-                    }
-                }
+    private void addOtherRootElemetsToNodeArray(List<EObject> tempNodeArray, Input input) {
+        EList<Operator> operators = ((DataMapperRoot) input.eContainer()).getOperators();
+        for (Operator operator : operators) {
+            if (isSourceOperator((OperatorImpl) operator)) {
+                ((OperatorImpl)operator).setMarked(true);
+                tempNodeArray.add(operator);
             }
         }
     }

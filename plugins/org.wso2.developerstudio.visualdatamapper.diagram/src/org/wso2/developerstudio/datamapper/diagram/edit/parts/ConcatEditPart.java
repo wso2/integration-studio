@@ -212,7 +212,7 @@ public class ConcatEditPart extends AbstractOperatorEditPart {
 		}
 
 		public IFigure getToolTip() {
-			return new Label("Equal Operation");
+			return new Label("Concat Operation");
 		}
 
 	}

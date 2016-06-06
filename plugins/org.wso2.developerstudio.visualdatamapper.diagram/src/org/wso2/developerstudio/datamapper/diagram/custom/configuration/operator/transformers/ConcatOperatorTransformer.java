@@ -40,6 +40,9 @@ public class ConcatOperatorTransformer extends AbstractDMOperatorTransformer {
             Map<String, SchemaDataType> variableTypeMap, Stack<ForLoopBean> parentForLoopBeanStack,
             DMOperation operator) {
         String concatOperator = (String) operator.getProperty(DELIMITER_TAG);
+        if (concatOperator == null) {
+            concatOperator = "";
+        }
         StringBuilder operationBuilder = new StringBuilder();
         if (SameLevelRecordMappingConfigGenerator.class.equals(generatorClass)) {
             if (inputVariables.size() >= 2) {

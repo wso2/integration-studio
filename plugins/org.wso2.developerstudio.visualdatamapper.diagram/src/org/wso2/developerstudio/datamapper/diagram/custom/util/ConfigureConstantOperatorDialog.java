@@ -39,20 +39,15 @@ import org.wso2.developerstudio.datamapper.impl.ConstantImpl;
 
 public class ConfigureConstantOperatorDialog extends TitleAreaDialog {
 
-    private Constant constantOperator;
     private String type;
     private String value;
     private EditPart editpart;
-    private TransactionalEditingDomain editingDomain;
     ConstantImpl constant = null;
-    private String propertyContext;
 
     public ConfigureConstantOperatorDialog(Shell parentShell, Constant constantOperator,
             TransactionalEditingDomain editingDomain, EditPart editpart) {
         super(parentShell);
-        this.constantOperator = constantOperator;
         this.editpart = editpart;
-        this.editingDomain = editingDomain;
         CSSShapeImpl constantdd = (CSSShapeImpl) this.editpart.getModel();
         constant = (ConstantImpl) constantdd.getElement();
     }
@@ -90,7 +85,12 @@ public class ConfigureConstantOperatorDialog extends TitleAreaDialog {
         constantTypeDropDown.add("INT");
         constantTypeDropDown.add("BOOLEAN");
         constantTypeDropDown.add("FLOAT");
-
+        if (constant.getConstType() != null) {
+            constantTypeDropDown.setText(constant.getConstType());
+        } else {
+            constantTypeDropDown.setText("STRING");
+        }
+        type = new String(constantTypeDropDown.getText());
         constantTypeDropDown.addListener(SWT.Modify, new Listener() {
 
             public void handleEvent(Event event) {
@@ -98,6 +98,7 @@ public class ConfigureConstantOperatorDialog extends TitleAreaDialog {
                     type = new String(constantTypeDropDown.getText());
                     if (!(StringUtils.isEmpty(type) && StringUtils.isEmpty(value))) {
                         getButton(IDialogConstants.OK_ID).setEnabled(true);
+                        validate();
                     } else {
                         getButton(IDialogConstants.OK_ID).setEnabled(false);
                     }
@@ -112,13 +113,19 @@ public class ConfigureConstantOperatorDialog extends TitleAreaDialog {
 
         final Text constantValue = new Text(container, SWT.BORDER);
         constantValue.setLayoutData(dataPropertyConfigText);
-
+        if (constant.getConstValue() != null) {
+            constantValue.setText(constant.getConstValue());
+        } else {
+            constantValue.setText("");
+        }
+        value = new String(constantValue.getText());
         constantValue.addListener(SWT.Modify, new Listener() {
             public void handleEvent(Event event) {
                 try {
                     value = new String(constantValue.getText());
                     if (!(StringUtils.isEmpty(type) && StringUtils.isEmpty(value))) {
                         getButton(IDialogConstants.OK_ID).setEnabled(true);
+                        validate();
                     } else {
                         getButton(IDialogConstants.OK_ID).setEnabled(false);
                     }

@@ -22,19 +22,19 @@ import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.gmf.tooling.runtime.edit.policies.reparent.CreationEditPolicyWithCustomReparent;
 import org.eclipse.swt.graphics.Color;
 import org.wso2.developerstudio.datamapper.diagram.custom.edit.part.AbstractOperatorEditPart;
-import org.wso2.developerstudio.datamapper.diagram.edit.policies.AddCanonicalEditPolicy;
-import org.wso2.developerstudio.datamapper.diagram.edit.policies.AddItemSemanticEditPolicy;
+import org.wso2.developerstudio.datamapper.diagram.edit.policies.SubtractCanonicalEditPolicy;
+import org.wso2.developerstudio.datamapper.diagram.edit.policies.SubtractItemSemanticEditPolicy;
 import org.wso2.developerstudio.datamapper.diagram.part.DataMapperVisualIDRegistry;
 
 /**
  * @generated NOT
  */
-public class AddEditPart extends AbstractOperatorEditPart {
+public class SubtractEditPart extends AbstractOperatorEditPart {
 
 	/**
 	* @generated
 	*/
-	public static final int VISUAL_ID = 2012;
+	public static final int VISUAL_ID = 2013;
 
 	/**
 	* @generated
@@ -49,7 +49,7 @@ public class AddEditPart extends AbstractOperatorEditPart {
 	/**
 	* @generated
 	*/
-	public AddEditPart(View view) {
+	public SubtractEditPart(View view) {
 		super(view);
 	}
 
@@ -58,10 +58,10 @@ public class AddEditPart extends AbstractOperatorEditPart {
 	*/
 	protected void createDefaultEditPolicies() {
 		super.createDefaultEditPolicies();
-		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE, new AddItemSemanticEditPolicy());
-		installEditPolicy(EditPolicyRoles.CANONICAL_ROLE, new AddCanonicalEditPolicy());
+		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE, new SubtractItemSemanticEditPolicy());
+		installEditPolicy(EditPolicyRoles.CANONICAL_ROLE, new SubtractCanonicalEditPolicy());
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
-	}
+}
 
 	/**
 	* @generated
@@ -92,7 +92,7 @@ public class AddEditPart extends AbstractOperatorEditPart {
 	* @generated NOT
 	*/
 	protected IFigure createNodeShape() {
-		return primaryShape = new AddFigure();
+		return primaryShape = new SubtractFigure();
 	}
 
 	/**
@@ -187,11 +187,11 @@ public class AddEditPart extends AbstractOperatorEditPart {
 			((Shape) primaryShape).setLineStyle(style);
 		}
 	}
+	
+	public class SubtractFigure extends OperatorRectangle {
 
-	public class AddFigure extends OperatorRectangle {
-
-		public AddFigure() {
-			super("Add");
+		public SubtractFigure() {
+			super("Subtract");
 			this.setBackgroundColor(THIS_BACK);
 		}
 
@@ -204,7 +204,7 @@ public class AddEditPart extends AbstractOperatorEditPart {
 		}
 
 		public IFigure getToolTip() {
-			return new Label("Add Operation");
+			return new Label("Subtract Operation");
 		}
 
 	}

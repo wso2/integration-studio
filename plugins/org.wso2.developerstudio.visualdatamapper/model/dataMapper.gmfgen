@@ -333,7 +333,7 @@
         childNodes="//@diagram/@childNodes.9 //@diagram/@childNodes.12"
         graphicalNodeEditPolicyClassName="OperatorBasicContainerGraphicalNodeEditPolicy"
         createCommandClassName="OperatorBasicContainerCreateCommand"
-        containers="//@diagram/@topLevelNodes.2 //@diagram/@topLevelNodes.3 //@diagram/@topLevelNodes.4 //@diagram/@topLevelNodes.5 //@diagram/@topLevelNodes.6 //@diagram/@topLevelNodes.7 //@diagram/@topLevelNodes.8 //@diagram/@topLevelNodes.9">
+        containers="//@diagram/@topLevelNodes.2 //@diagram/@topLevelNodes.3 //@diagram/@topLevelNodes.4 //@diagram/@topLevelNodes.5 //@diagram/@topLevelNodes.6 //@diagram/@topLevelNodes.7 //@diagram/@topLevelNodes.8 //@diagram/@topLevelNodes.9 //@diagram/@topLevelNodes.10">
       <diagramRunTimeClass
           href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
       <elementType
@@ -598,6 +598,31 @@
       </modelFacet>
     </topLevelNodes>
     <topLevelNodes
+        visualID="2013"
+        editPartClassName="SubtractEditPart"
+        itemSemanticEditPolicyClassName="SubtractItemSemanticEditPolicy"
+        canonicalEditPolicyClassName="SubtractCanonicalEditPolicy"
+        childNodes="//@diagram/@childNodes.8"
+        graphicalNodeEditPolicyClassName="SubtractGraphicalNodeEditPolicy"
+        createCommandClassName="SubtractCreateCommand">
+      <diagramRunTimeClass
+          href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
+      <elementType
+          xsi:type="gmfgen:MetamodelType"
+          editHelperClassName="SubtractEditHelper"/>
+      <viewmap
+          xsi:type="gmfgen:FigureViewmap"
+          figureQualifiedClassName="org.eclipse.draw2d.RectangleFigure"/>
+      <modelFacet>
+        <metaClass
+            href="dataMapper.genmodel#//datamapper/Subtract"/>
+        <containmentMetaFeature
+            href="dataMapper.genmodel#//datamapper/DataMapperRoot/operators"/>
+        <childMetaFeature
+            href="dataMapper.genmodel#//datamapper/DataMapperRoot/operators"/>
+      </modelFacet>
+    </topLevelNodes>
+    <topLevelNodes
         visualID="2006"
         editPartClassName="ConcatEditPart"
         itemSemanticEditPolicyClassName="ConcatItemSemanticEditPolicy"
@@ -824,37 +849,42 @@
             xsi:type="gmfgen:ToolEntry"
             title="Concat"
             description="Create new Concat"
-            genNodes="//@diagram/@topLevelNodes.3"/>
+            genNodes="//@diagram/@topLevelNodes.4"/>
         <entries
             xsi:type="gmfgen:ToolEntry"
             title="Split"
             description="Create new Split"
-            genNodes="//@diagram/@topLevelNodes.5"/>
+            genNodes="//@diagram/@topLevelNodes.6"/>
         <entries
             xsi:type="gmfgen:ToolEntry"
             title="Constant"
             description="Create new Constant"
-            genNodes="//@diagram/@topLevelNodes.6"/>
+            genNodes="//@diagram/@topLevelNodes.7"/>
         <entries
             xsi:type="gmfgen:ToolEntry"
             title="LowerCase"
             description="Create new LowerCase"
-            genNodes="//@diagram/@topLevelNodes.7"/>
+            genNodes="//@diagram/@topLevelNodes.8"/>
         <entries
             xsi:type="gmfgen:ToolEntry"
             title="Contains"
             description="Create new Contains"
-            genNodes="//@diagram/@topLevelNodes.8"/>
+            genNodes="//@diagram/@topLevelNodes.9"/>
         <entries
             xsi:type="gmfgen:ToolEntry"
             title="UpperCase"
             description="Create new UpperCase"
-            genNodes="//@diagram/@topLevelNodes.9"/>
+            genNodes="//@diagram/@topLevelNodes.10"/>
         <entries
             xsi:type="gmfgen:ToolEntry"
             title="Add"
             description="Create new Add"
-            genNodes="//@diagram/@topLevelNodes.4"/>
+            genNodes="//@diagram/@topLevelNodes.5"/>
+        <entries
+            xsi:type="gmfgen:ToolEntry"
+            title="Subtract"
+            description="Create new Subtract"
+            genNodes="//@diagram/@topLevelNodes.3"/>
       </groups>
     </palette>
     <preferencePages
@@ -1012,6 +1042,12 @@
     <childReferences
         parent="//@diagram"
         child="//@diagram/@topLevelNodes.9"/>
+    <childReferences
+        parent="//@diagram/@topLevelNodes.10"
+        child="//@diagram/@childNodes.8"/>
+    <childReferences
+        parent="//@diagram"
+        child="//@diagram/@topLevelNodes.10"/>
     <childReferences
         parent="//@diagram"
         child="//@diagram/@links.0"

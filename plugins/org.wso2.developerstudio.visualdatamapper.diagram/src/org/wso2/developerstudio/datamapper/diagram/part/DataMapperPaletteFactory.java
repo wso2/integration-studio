@@ -115,12 +115,13 @@ public class DataMapperPaletteFactory {
 		paletteContainer.setInitialState(INITIAL_STATE_OPEN);
 		return paletteContainer;
 	}
-	
+
 	private PaletteEntry createDataMapperArithmaticGroup() {
 		PaletteDrawer paletteContainer = new PaletteDrawer("Arithmatic");
 
 		paletteContainer.setId("createDataMapperArithmaticGroup"); //$NON-NLS-1$
 		paletteContainer.add(createAdd9CreationTool());
+		paletteContainer.add(createSubtract10CreationTool());
 		paletteContainer.setInitialState(INITIAL_STATE_CLOSED);
 		return paletteContainer;
 	}
@@ -230,6 +231,18 @@ public class DataMapperPaletteFactory {
 				Messages.Add9CreationTool_desc, Collections.singletonList(DataMapperElementTypes.Add_2012));
 		entry.setId("createAdd9CreationTool"); //$NON-NLS-1$
 		entry.setSmallIcon(DataMapperElementTypes.getImageDescriptor(DataMapperElementTypes.Add_2012));
+		entry.setLargeIcon(entry.getSmallIcon());
+		return entry;
+	}
+
+	/**
+	* @generated
+	*/
+	private ToolEntry createSubtract10CreationTool() {
+		DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.Subtract10CreationTool_title,
+				Messages.Subtract10CreationTool_desc, Collections.singletonList(DataMapperElementTypes.Subtract_2013));
+		entry.setId("createSubtract10CreationTool"); //$NON-NLS-1$
+		entry.setSmallIcon(DataMapperElementTypes.getImageDescriptor(DataMapperElementTypes.Subtract_2013));
 		entry.setLargeIcon(entry.getSmallIcon());
 		return entry;
 	}

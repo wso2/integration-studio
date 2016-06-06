@@ -346,6 +346,29 @@ public class DataMapperItemProviderAdapterFactory extends DataMapperAdapterFacto
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.wso2.developerstudio.datamapper.Subtract} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected SubtractItemProvider subtractItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.wso2.developerstudio.datamapper.Subtract}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createSubtractAdapter() {
+		if (subtractItemProvider == null) {
+			subtractItemProvider = new SubtractItemProvider(this);
+		}
+
+		return subtractItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link org.wso2.developerstudio.datamapper.InNode} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -732,6 +755,7 @@ public class DataMapperItemProviderAdapterFactory extends DataMapperAdapterFacto
 		if (operatorRightConnectorItemProvider != null) operatorRightConnectorItemProvider.dispose();
 		if (elementItemProvider != null) elementItemProvider.dispose();
 		if (treeNodeItemProvider != null) treeNodeItemProvider.dispose();
+		if (subtractItemProvider != null) subtractItemProvider.dispose();
 		if (inNodeItemProvider != null) inNodeItemProvider.dispose();
 		if (outNodeItemProvider != null) outNodeItemProvider.dispose();
 		if (dataMapperLinkItemProvider != null) dataMapperLinkItemProvider.dispose();

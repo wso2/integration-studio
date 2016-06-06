@@ -33,6 +33,7 @@ import org.wso2.developerstudio.datamapper.OperatorRightContainer;
 import org.wso2.developerstudio.datamapper.OutNode;
 import org.wso2.developerstudio.datamapper.Output;
 import org.wso2.developerstudio.datamapper.Split;
+import org.wso2.developerstudio.datamapper.Subtract;
 import org.wso2.developerstudio.datamapper.TreeNode;
 import org.wso2.developerstudio.datamapper.UpperCase;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.AddEditPart;
@@ -58,6 +59,7 @@ import org.wso2.developerstudio.datamapper.diagram.edit.parts.OutNode3EditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.OutNodeEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.OutputEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.SplitEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.SubtractEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.TreeNode2EditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.TreeNode3EditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.TreeNodeEditPart;
@@ -82,6 +84,8 @@ public class DataMapperDiagramUpdater {
 			return getOutput_2003SemanticChildren(view);
 		case EqualEditPart.VISUAL_ID:
 			return getEqual_2005SemanticChildren(view);
+		case SubtractEditPart.VISUAL_ID:
+			return getSubtract_2013SemanticChildren(view);
 		case ConcatEditPart.VISUAL_ID:
 			return getConcat_2006SemanticChildren(view);
 		case AddEditPart.VISUAL_ID:
@@ -145,6 +149,10 @@ public class DataMapperDiagramUpdater {
 			Operator childElement = (Operator) it.next();
 			int visualID = DataMapperVisualIDRegistry.getNodeVisualID(view, childElement);
 			if (visualID == EqualEditPart.VISUAL_ID) {
+				result.add(new DataMapperNodeDescriptor(childElement, visualID));
+				continue;
+			}
+			if (visualID == SubtractEditPart.VISUAL_ID) {
 				result.add(new DataMapperNodeDescriptor(childElement, visualID));
 				continue;
 			}
@@ -228,6 +236,25 @@ public class DataMapperDiagramUpdater {
 			return Collections.emptyList();
 		}
 		Equal modelElement = (Equal) view.getElement();
+		LinkedList<DataMapperNodeDescriptor> result = new LinkedList<DataMapperNodeDescriptor>();
+		{
+			OperatorBasicContainer childElement = modelElement.getBasicContainer();
+			int visualID = DataMapperVisualIDRegistry.getNodeVisualID(view, childElement);
+			if (visualID == OperatorBasicContainerEditPart.VISUAL_ID) {
+				result.add(new DataMapperNodeDescriptor(childElement, visualID));
+			}
+		}
+		return result;
+	}
+
+	/**
+	* @generated
+	*/
+	public static List<DataMapperNodeDescriptor> getSubtract_2013SemanticChildren(View view) {
+		if (!view.isSetElement()) {
+			return Collections.emptyList();
+		}
+		Subtract modelElement = (Subtract) view.getElement();
 		LinkedList<DataMapperNodeDescriptor> result = new LinkedList<DataMapperNodeDescriptor>();
 		{
 			OperatorBasicContainer childElement = modelElement.getBasicContainer();
@@ -641,6 +668,8 @@ public class DataMapperDiagramUpdater {
 			return getOutput_2003ContainedLinks(view);
 		case EqualEditPart.VISUAL_ID:
 			return getEqual_2005ContainedLinks(view);
+		case SubtractEditPart.VISUAL_ID:
+			return getSubtract_2013ContainedLinks(view);
 		case ConcatEditPart.VISUAL_ID:
 			return getConcat_2006ContainedLinks(view);
 		case AddEditPart.VISUAL_ID:
@@ -702,6 +731,8 @@ public class DataMapperDiagramUpdater {
 			return getOutput_2003IncomingLinks(view);
 		case EqualEditPart.VISUAL_ID:
 			return getEqual_2005IncomingLinks(view);
+		case SubtractEditPart.VISUAL_ID:
+			return getSubtract_2013IncomingLinks(view);
 		case ConcatEditPart.VISUAL_ID:
 			return getConcat_2006IncomingLinks(view);
 		case AddEditPart.VISUAL_ID:
@@ -763,6 +794,8 @@ public class DataMapperDiagramUpdater {
 			return getOutput_2003OutgoingLinks(view);
 		case EqualEditPart.VISUAL_ID:
 			return getEqual_2005OutgoingLinks(view);
+		case SubtractEditPart.VISUAL_ID:
+			return getSubtract_2013OutgoingLinks(view);
 		case ConcatEditPart.VISUAL_ID:
 			return getConcat_2006OutgoingLinks(view);
 		case AddEditPart.VISUAL_ID:
@@ -838,6 +871,13 @@ public class DataMapperDiagramUpdater {
 	 * @generated
 	 */
 	public static List<DataMapperLinkDescriptor> getEqual_2005ContainedLinks(View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	* @generated
+	*/
+	public static List<DataMapperLinkDescriptor> getSubtract_2013ContainedLinks(View view) {
 		return Collections.emptyList();
 	}
 
@@ -1029,6 +1069,13 @@ public class DataMapperDiagramUpdater {
 	 * @generated
 	 */
 	public static List<DataMapperLinkDescriptor> getEqual_2005IncomingLinks(View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	* @generated
+	*/
+	public static List<DataMapperLinkDescriptor> getSubtract_2013IncomingLinks(View view) {
 		return Collections.emptyList();
 	}
 
@@ -1226,6 +1273,13 @@ public class DataMapperDiagramUpdater {
 	 * @generated
 	 */
 	public static List<DataMapperLinkDescriptor> getEqual_2005OutgoingLinks(View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	* @generated
+	*/
+	public static List<DataMapperLinkDescriptor> getSubtract_2013OutgoingLinks(View view) {
 		return Collections.emptyList();
 	}
 

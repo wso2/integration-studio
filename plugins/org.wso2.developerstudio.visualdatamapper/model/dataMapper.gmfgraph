@@ -188,6 +188,12 @@
           xsi:type="gmfgraph:Rectangle"
           name="AddFigure"/>
     </descriptors>
+    <descriptors
+        name="SubtractFigure">
+      <actualFigure
+          xsi:type="gmfgraph:Rectangle"
+          name="SubtractFigure"/>
+    </descriptors>
   </figures>
   <nodes
       name="DataMapperNode"
@@ -269,6 +275,9 @@
   <nodes
       name="Add"
       figure="AddFigure"/>
+  <nodes
+      name="Subtract"
+      figure="SubtractFigure"/>
   <connections
       name="DataMapperLink"
       figure="DataMapperLinkFigure"/>

@@ -54,6 +54,7 @@ import org.wso2.developerstudio.datamapper.diagram.edit.parts.OutNode3EditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.OutNodeEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.OutputEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.SplitEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.SubtractEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.TreeNode2EditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.TreeNode3EditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.TreeNodeEditPart;
@@ -129,6 +130,7 @@ public class DataMapperRootCanonicalEditPolicy extends CanonicalEditPolicy {
 		case InputEditPart.VISUAL_ID:
 		case OutputEditPart.VISUAL_ID:
 		case EqualEditPart.VISUAL_ID:
+		case SubtractEditPart.VISUAL_ID:
 		case ConcatEditPart.VISUAL_ID:
 		case AddEditPart.VISUAL_ID:
 		case SplitEditPart.VISUAL_ID:
@@ -299,6 +301,13 @@ public class DataMapperRootCanonicalEditPolicy extends CanonicalEditPolicy {
 		case EqualEditPart.VISUAL_ID: {
 			if (!domain2NotationMap.containsKey(view.getElement())) {
 				result.addAll(DataMapperDiagramUpdater.getEqual_2005ContainedLinks(view));
+			}
+			domain2NotationMap.putView(view.getElement(), view);
+			break;
+		}
+		case SubtractEditPart.VISUAL_ID: {
+			if (!domain2NotationMap.containsKey(view.getElement())) {
+				result.addAll(DataMapperDiagramUpdater.getSubtract_2013ContainedLinks(view));
 			}
 			domain2NotationMap.putView(view.getElement(), view);
 			break;

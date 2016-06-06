@@ -198,6 +198,24 @@
         href="dataMapper.ecore#//DataMapperRoot/operators"/>
     <ownedChild>
       <domainMetaElement
+          href="dataMapper.ecore#//Subtract"/>
+      <tool
+          xsi:type="gmftool:CreationTool"
+          href="dataMapper.gmftool#//@palette/@tools.0/@tools.9"/>
+      <diagramNode
+          href="dataMapper.gmfgraph#Subtract"/>
+      <children
+          referencedChild="//@nodes.2/@ownedChild/@children.0/@ownedChild">
+        <containmentFeature
+            href="dataMapper.ecore#//Operator/basicContainer"/>
+      </children>
+    </ownedChild>
+  </nodes>
+  <nodes>
+    <containmentFeature
+        href="dataMapper.ecore#//DataMapperRoot/operators"/>
+    <ownedChild>
+      <domainMetaElement
           href="dataMapper.ecore#//Concat"/>
       <tool
           xsi:type="gmftool:CreationTool"

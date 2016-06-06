@@ -37,6 +37,7 @@ import org.wso2.developerstudio.datamapper.diagram.edit.parts.OutNode3EditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.OutNodeEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.OutputEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.SplitEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.SubtractEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.TreeNode2EditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.TreeNode3EditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.TreeNodeEditPart;
@@ -92,6 +93,12 @@ public class DataMapperElementTypes {
 	 */
 	public static final IElementType Equal_2005 = getElementType(
 			"org.wso2.developerstudio.visualdatamapper.diagram.Equal_2005"); //$NON-NLS-1$
+
+	/**
+	* @generated
+	*/
+	public static final IElementType Subtract_2013 = getElementType(
+			"org.wso2.developerstudio.visualdatamapper.diagram.Subtract_2013"); //$NON-NLS-1$
 
 	/**
 	 * @generated
@@ -277,6 +284,8 @@ public class DataMapperElementTypes {
 
 			elements.put(Equal_2005, DataMapperPackage.eINSTANCE.getEqual());
 
+			elements.put(Subtract_2013, DataMapperPackage.eINSTANCE.getSubtract());
+
 			elements.put(Concat_2006, DataMapperPackage.eINSTANCE.getConcat());
 
 			elements.put(Add_2012, DataMapperPackage.eINSTANCE.getAdd());
@@ -343,6 +352,7 @@ public class DataMapperElementTypes {
 			KNOWN_ELEMENT_TYPES.add(Input_2002);
 			KNOWN_ELEMENT_TYPES.add(Output_2003);
 			KNOWN_ELEMENT_TYPES.add(Equal_2005);
+			KNOWN_ELEMENT_TYPES.add(Subtract_2013);
 			KNOWN_ELEMENT_TYPES.add(Concat_2006);
 			KNOWN_ELEMENT_TYPES.add(Add_2012);
 			KNOWN_ELEMENT_TYPES.add(Split_2007);
@@ -383,6 +393,8 @@ public class DataMapperElementTypes {
 			return Output_2003;
 		case EqualEditPart.VISUAL_ID:
 			return Equal_2005;
+		case SubtractEditPart.VISUAL_ID:
+			return Subtract_2013;
 		case ConcatEditPart.VISUAL_ID:
 			return Concat_2006;
 		case AddEditPart.VISUAL_ID:

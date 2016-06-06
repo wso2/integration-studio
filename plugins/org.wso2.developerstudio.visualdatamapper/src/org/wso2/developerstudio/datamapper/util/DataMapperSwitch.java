@@ -140,6 +140,14 @@ public class DataMapperSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case DataMapperPackage.SUBTRACT: {
+				Subtract subtract = (Subtract)theEObject;
+				T result = caseSubtract(subtract);
+				if (result == null) result = caseOperator(subtract);
+				if (result == null) result = caseDataMapperNode(subtract);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case DataMapperPackage.IN_NODE: {
 				InNode inNode = (InNode)theEObject;
 				T result = caseInNode(inNode);
@@ -409,6 +417,21 @@ public class DataMapperSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseTreeNode(TreeNode object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Subtract</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Subtract</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseSubtract(Subtract object) {
 		return null;
 	}
 

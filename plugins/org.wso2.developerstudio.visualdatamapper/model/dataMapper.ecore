@@ -82,6 +82,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="inNode" eType="#//InNode"
         containment="true"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Subtract" eSuperTypes="#//Operator"/>
   <eClassifiers xsi:type="ecore:EClass" name="InNode">
     <eStructuralFeatures xsi:type="ecore:EReference" name="incomingLink" upperBound="-1"
         eType="#//DataMapperLink" eOpposite="#//DataMapperLink/inNode"/>

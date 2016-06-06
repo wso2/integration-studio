@@ -15,6 +15,7 @@ import org.wso2.developerstudio.datamapper.diagram.edit.commands.InputCreateComm
 import org.wso2.developerstudio.datamapper.diagram.edit.commands.LowerCaseCreateCommand;
 import org.wso2.developerstudio.datamapper.diagram.edit.commands.OutputCreateCommand;
 import org.wso2.developerstudio.datamapper.diagram.edit.commands.SplitCreateCommand;
+import org.wso2.developerstudio.datamapper.diagram.edit.commands.SubtractCreateCommand;
 import org.wso2.developerstudio.datamapper.diagram.edit.commands.UpperCaseCreateCommand;
 import org.wso2.developerstudio.datamapper.diagram.providers.DataMapperElementTypes;
 
@@ -42,6 +43,9 @@ public class DataMapperRootItemSemanticEditPolicy extends DataMapperBaseItemSema
 		}
 		if (DataMapperElementTypes.Equal_2005 == req.getElementType()) {
 			return getGEFWrapper(new EqualCreateCommand(req));
+		}
+		if (DataMapperElementTypes.Subtract_2013 == req.getElementType()) {
+			return getGEFWrapper(new SubtractCreateCommand(req));
 		}
 		if (DataMapperElementTypes.Concat_2006 == req.getElementType()) {
 			return getGEFWrapper(new ConcatCreateCommand(req));

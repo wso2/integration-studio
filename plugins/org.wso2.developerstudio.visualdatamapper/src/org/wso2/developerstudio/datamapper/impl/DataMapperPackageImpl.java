@@ -38,6 +38,7 @@ import org.wso2.developerstudio.datamapper.Output;
 import org.wso2.developerstudio.datamapper.PropertyKeyValuePair;
 import org.wso2.developerstudio.datamapper.SchemaDataType;
 import org.wso2.developerstudio.datamapper.Split;
+import org.wso2.developerstudio.datamapper.Subtract;
 import org.wso2.developerstudio.datamapper.TreeNode;
 import org.wso2.developerstudio.datamapper.UpperCase;
 
@@ -131,6 +132,13 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 	 * @generated
 	 */
 	private EClass treeNodeEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass subtractEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -685,6 +693,15 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getSubtract() {
+		return subtractEClass;
+	}
+
+				/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getInNode() {
 		return inNodeEClass;
 	}
@@ -998,6 +1015,8 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 		createEReference(treeNodeEClass, TREE_NODE__OUT_NODE);
 		createEReference(treeNodeEClass, TREE_NODE__IN_NODE);
 
+		subtractEClass = createEClass(SUBTRACT);
+
 		inNodeEClass = createEClass(IN_NODE);
 		createEReference(inNodeEClass, IN_NODE__INCOMING_LINK);
 		createEReference(inNodeEClass, IN_NODE__ELEMENT_PARENT);
@@ -1070,6 +1089,7 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 		inputEClass.getESuperTypes().add(this.getDataMapperNode());
 		outputEClass.getESuperTypes().add(this.getDataMapperNode());
 		operatorEClass.getESuperTypes().add(this.getDataMapperNode());
+		subtractEClass.getESuperTypes().add(this.getOperator());
 		concatEClass.getESuperTypes().add(this.getOperator());
 		equalEClass.getESuperTypes().add(this.getOperator());
 		constantEClass.getESuperTypes().add(this.getOperator());
@@ -1135,6 +1155,8 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 		initEReference(getTreeNode_Properties(), this.getPropertyKeyValuePair(), null, "properties", null, 1, -1, TreeNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTreeNode_OutNode(), this.getOutNode(), null, "outNode", null, 0, 1, TreeNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTreeNode_InNode(), this.getInNode(), null, "inNode", null, 0, 1, TreeNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(subtractEClass, Subtract.class, "Subtract", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(inNodeEClass, InNode.class, "InNode", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getInNode_IncomingLink(), this.getDataMapperLink(), this.getDataMapperLink_InNode(), "incomingLink", null, 0, -1, InNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

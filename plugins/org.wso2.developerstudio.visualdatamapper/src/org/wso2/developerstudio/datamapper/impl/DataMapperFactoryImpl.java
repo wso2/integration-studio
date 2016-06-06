@@ -77,6 +77,7 @@ public class DataMapperFactoryImpl extends EFactoryImpl implements DataMapperFac
 			case DataMapperPackage.OPERATOR_RIGHT_CONNECTOR: return createOperatorRightConnector();
 			case DataMapperPackage.ELEMENT: return createElement();
 			case DataMapperPackage.TREE_NODE: return createTreeNode();
+			case DataMapperPackage.SUBTRACT: return createSubtract();
 			case DataMapperPackage.IN_NODE: return createInNode();
 			case DataMapperPackage.OUT_NODE: return createOutNode();
 			case DataMapperPackage.DATA_MAPPER_LINK: return createDataMapperLink();
@@ -260,6 +261,16 @@ public class DataMapperFactoryImpl extends EFactoryImpl implements DataMapperFac
 		treeNode.setInNode(createInNode());
 		treeNode.setOutNode(createOutNode());
 		return treeNode;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Subtract createSubtract() {
+		SubtractImpl subtract = new SubtractImpl();
+		return subtract;
 	}
 
 	/**

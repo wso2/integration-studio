@@ -114,6 +114,10 @@ public class DataMapperAdapterFactory extends AdapterFactoryImpl {
 				return createTreeNodeAdapter();
 			}
 			@Override
+			public Adapter caseSubtract(Subtract object) {
+				return createSubtractAdapter();
+			}
+			@Override
 			public Adapter caseInNode(InNode object) {
 				return createInNodeAdapter();
 			}
@@ -346,6 +350,20 @@ public class DataMapperAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createTreeNodeAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.wso2.developerstudio.datamapper.Subtract <em>Subtract</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.wso2.developerstudio.datamapper.Subtract
+	 * @generated
+	 */
+	public Adapter createSubtractAdapter() {
 		return null;
 	}
 

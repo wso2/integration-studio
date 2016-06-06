@@ -130,6 +130,15 @@ public interface DataMapperFactory extends EFactory {
 	TreeNode createTreeNode();
 
 	/**
+	 * Returns a new object of class '<em>Subtract</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Subtract</em>'.
+	 * @generated
+	 */
+	Subtract createSubtract();
+
+	/**
 	 * Returns a new object of class '<em>In Node</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

@@ -33,6 +33,9 @@ public class DataMapperEditPartFactory implements EditPartFactory {
 			case EqualEditPart.VISUAL_ID:
 				return new EqualEditPart(view);
 
+			case SubtractEditPart.VISUAL_ID:
+				return new SubtractEditPart(view);
+
 			case ConcatEditPart.VISUAL_ID:
 				return new ConcatEditPart(view);
 

@@ -336,6 +336,16 @@ public class Messages extends NLS {
 	public static String Add9CreationTool_desc;
 
 	/**
+	* @generated
+	*/
+	public static String Subtract10CreationTool_title;
+
+	/**
+	* @generated
+	*/
+	public static String Subtract10CreationTool_desc;
+
+	/**
 	 * @generated
 	 */
 	public static String CommandName_OpenDiagram;

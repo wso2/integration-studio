@@ -187,7 +187,7 @@ public class AddEditPart extends AbstractOperatorEditPart {
 			((Shape) primaryShape).setLineStyle(style);
 		}
 	}
-	
+
 	public class AddFigure extends OperatorRectangle {
 
 		public AddFigure() {

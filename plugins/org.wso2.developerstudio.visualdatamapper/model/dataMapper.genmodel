@@ -77,6 +77,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dataMapper.ecore#//TreeNode/outNode"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dataMapper.ecore#//TreeNode/inNode"/>
     </genClasses>
+    <genClasses ecoreClass="dataMapper.ecore#//Subtract"/>
     <genClasses ecoreClass="dataMapper.ecore#//InNode">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dataMapper.ecore#//InNode/incomingLink"/>
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference dataMapper.ecore#//InNode/elementParent"/>
@@ -92,17 +93,24 @@
     <genClasses ecoreClass="dataMapper.ecore#//Concat">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataMapper.ecore#//Concat/delimiter"/>
     </genClasses>
+    <genClasses ecoreClass="dataMapper.ecore#//AbsoluteValue"/>
     <genClasses ecoreClass="dataMapper.ecore#//Equal"/>
     <genClasses ecoreClass="dataMapper.ecore#//Constant">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataMapper.ecore#//Constant/constantValue"/>
     </genClasses>
     <genClasses ecoreClass="dataMapper.ecore#//Add"/>
+    <genClasses ecoreClass="dataMapper.ecore#//Divide"/>
+    <genClasses ecoreClass="dataMapper.ecore#//Floor"/>
+    <genClasses ecoreClass="dataMapper.ecore#//Round"/>
+    <genClasses ecoreClass="dataMapper.ecore#//Multiply"/>
+    <genClasses ecoreClass="dataMapper.ecore#//SetPrecision"/>
     <genClasses ecoreClass="dataMapper.ecore#//Split">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataMapper.ecore#//Split/delimiter"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataMapper.ecore#//Split/arrayOutput"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataMapper.ecore#//Split/arrayOutputResultOmitingIndices"/>
     </genClasses>
     <genClasses ecoreClass="dataMapper.ecore#//LowerCase"/>
+    <genClasses ecoreClass="dataMapper.ecore#//Celi"/>
     <genClasses ecoreClass="dataMapper.ecore#//Contains"/>
     <genClasses ecoreClass="dataMapper.ecore#//UpperCase"/>
     <genClasses ecoreClass="dataMapper.ecore#//PropertyKeyValuePair">

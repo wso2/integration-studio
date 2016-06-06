@@ -6,6 +6,7 @@ import org.eclipse.emf.ecore.EClass;
 
 import org.wso2.developerstudio.datamapper.DataMapperPackage;
 import org.wso2.developerstudio.datamapper.Round;
+import org.wso2.developerstudio.datamapper.SchemaDataType;
 
 /**
  * <!-- begin-user-doc -->
@@ -18,10 +19,18 @@ public class RoundImpl extends OperatorImpl implements Round {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	protected RoundImpl() {
 		super();
+		setDefaultInputConnectors(1);
+		setDefaultOutputConnectors(1);
+		setInputSizeFixed(true);
+		setOutputSizeFixed(true);
+		getInputVariableType().add(SchemaDataType.INT);
+		getInputVariableType().add(SchemaDataType.DOUBLE);
+		getOutputVariableType().add(SchemaDataType.INT);
+		getOutputVariableType().add(SchemaDataType.DOUBLE);
 	}
 
 	/**

@@ -37,6 +37,12 @@
     <genClasses ecoreClass="dataMapper.ecore#//Operator">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dataMapper.ecore#//Operator/basicContainer"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataMapper.ecore#//Operator/serialized"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataMapper.ecore#//Operator/defaultInputConnectors"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataMapper.ecore#//Operator/defaultOutputConnectors"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataMapper.ecore#//Operator/inputVariableType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataMapper.ecore#//Operator/outputVariableType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataMapper.ecore#//Operator/inputSizeFixed"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataMapper.ecore#//Operator/outputSizeFixed"/>
     </genClasses>
     <genClasses ecoreClass="dataMapper.ecore#//OperatorBasicContainer">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dataMapper.ecore#//OperatorBasicContainer/leftContainer"/>

@@ -6,6 +6,7 @@ import org.eclipse.emf.ecore.EClass;
 
 import org.wso2.developerstudio.datamapper.DataMapperPackage;
 import org.wso2.developerstudio.datamapper.Divide;
+import org.wso2.developerstudio.datamapper.SchemaDataType;
 
 /**
  * <!-- begin-user-doc -->
@@ -18,10 +19,17 @@ public class DivideImpl extends OperatorImpl implements Divide {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	protected DivideImpl() {
 		super();
+		setDefaultInputConnectors(2);
+		setDefaultOutputConnectors(1);
+		setInputSizeFixed(true);
+		setOutputSizeFixed(true);
+		getInputVariableType().add(SchemaDataType.INT);
+		getInputVariableType().add(SchemaDataType.DOUBLE);
+		getOutputVariableType().add(SchemaDataType.DOUBLE);
 	}
 
 	/**

@@ -12,19 +12,15 @@ import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.editpolicies.LayoutEditPolicy;
 import org.eclipse.gef.editpolicies.NonResizableEditPolicy;
 import org.eclipse.gef.requests.CreateRequest;
-import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeNodeEditPart;
-import org.eclipse.gmf.runtime.diagram.ui.editpolicies.DragDropEditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.ConstrainedToolbarLayout;
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
-import org.eclipse.gmf.tooling.runtime.edit.policies.reparent.CreationEditPolicyWithCustomReparent;
 import org.eclipse.swt.graphics.Color;
 import org.wso2.developerstudio.datamapper.diagram.custom.edit.part.AbstractOperatorEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.policies.MultiplyCanonicalEditPolicy;
 import org.wso2.developerstudio.datamapper.diagram.edit.policies.MultiplyItemSemanticEditPolicy;
-import org.wso2.developerstudio.datamapper.diagram.part.DataMapperVisualIDRegistry;
 
 /**
  * @generated NOT
@@ -200,7 +196,7 @@ public class MultiplyEditPart extends AbstractOperatorEditPart {
 		}
 
 		public String getNodeName() {
-			return "Equal";
+			return "Multiply";
 		}
 
 		public IFigure getToolTip() {

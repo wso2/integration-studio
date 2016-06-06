@@ -5,6 +5,7 @@ package org.wso2.developerstudio.datamapper.impl;
 import org.eclipse.emf.ecore.EClass;
 import org.wso2.developerstudio.datamapper.DataMapperPackage;
 import org.wso2.developerstudio.datamapper.LowerCase;
+import org.wso2.developerstudio.datamapper.SchemaDataType;
 
 /**
  * <!-- begin-user-doc -->
@@ -17,10 +18,16 @@ public class LowerCaseImpl extends OperatorImpl implements LowerCase {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	protected LowerCaseImpl() {
 		super();
+		setDefaultInputConnectors(1);
+		setDefaultOutputConnectors(1);
+		setInputSizeFixed(true);
+		setOutputSizeFixed(true);
+		getInputVariableType().add(SchemaDataType.STRING);
+		getOutputVariableType().add(SchemaDataType.STRING);
 	}
 
 	/**

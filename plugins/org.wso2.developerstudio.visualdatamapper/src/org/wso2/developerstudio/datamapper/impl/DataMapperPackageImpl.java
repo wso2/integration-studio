@@ -461,6 +461,60 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getOperator_DefaultInputConnectors() {
+		return (EAttribute)operatorEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getOperator_DefaultOutputConnectors() {
+		return (EAttribute)operatorEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getOperator_InputVariableType() {
+		return (EAttribute)operatorEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getOperator_OutputVariableType() {
+		return (EAttribute)operatorEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getOperator_InputSizeFixed() {
+		return (EAttribute)operatorEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getOperator_OutputSizeFixed() {
+		return (EAttribute)operatorEClass.getEStructuralFeatures().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getOperatorBasicContainer() {
 		return operatorBasicContainerEClass;
 	}
@@ -1094,6 +1148,12 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 		operatorEClass = createEClass(OPERATOR);
 		createEReference(operatorEClass, OPERATOR__BASIC_CONTAINER);
 		createEAttribute(operatorEClass, OPERATOR__SERIALIZED);
+		createEAttribute(operatorEClass, OPERATOR__DEFAULT_INPUT_CONNECTORS);
+		createEAttribute(operatorEClass, OPERATOR__DEFAULT_OUTPUT_CONNECTORS);
+		createEAttribute(operatorEClass, OPERATOR__INPUT_VARIABLE_TYPE);
+		createEAttribute(operatorEClass, OPERATOR__OUTPUT_VARIABLE_TYPE);
+		createEAttribute(operatorEClass, OPERATOR__INPUT_SIZE_FIXED);
+		createEAttribute(operatorEClass, OPERATOR__OUTPUT_SIZE_FIXED);
 
 		operatorBasicContainerEClass = createEClass(OPERATOR_BASIC_CONTAINER);
 		createEReference(operatorBasicContainerEClass, OPERATOR_BASIC_CONTAINER__LEFT_CONTAINER);
@@ -1256,6 +1316,12 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 		initEClass(operatorEClass, Operator.class, "Operator", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getOperator_BasicContainer(), this.getOperatorBasicContainer(), null, "basicContainer", null, 0, 1, Operator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getOperator_Serialized(), ecorePackage.getEBoolean(), "serialized", "false", 0, 1, Operator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getOperator_DefaultInputConnectors(), ecorePackage.getEInt(), "defaultInputConnectors", "0", 0, 1, Operator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getOperator_DefaultOutputConnectors(), ecorePackage.getEInt(), "defaultOutputConnectors", "0", 0, 1, Operator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getOperator_InputVariableType(), this.getSchemaDataType(), "inputVariableType", "STRING", 0, -1, Operator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getOperator_OutputVariableType(), this.getSchemaDataType(), "outputVariableType", "STRING", 0, -1, Operator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getOperator_InputSizeFixed(), ecorePackage.getEBoolean(), "inputSizeFixed", "true", 0, 1, Operator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getOperator_OutputSizeFixed(), ecorePackage.getEBoolean(), "outputSizeFixed", "true", 0, 1, Operator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(operatorBasicContainerEClass, OperatorBasicContainer.class, "OperatorBasicContainer", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getOperatorBasicContainer_LeftContainer(), this.getOperatorLeftContainer(), null, "leftContainer", null, 0, 1, OperatorBasicContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

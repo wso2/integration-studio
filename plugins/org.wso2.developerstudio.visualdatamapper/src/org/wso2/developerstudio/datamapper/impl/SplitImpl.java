@@ -6,6 +6,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.wso2.developerstudio.datamapper.DataMapperPackage;
+import org.wso2.developerstudio.datamapper.SchemaDataType;
 import org.wso2.developerstudio.datamapper.Split;
 
 /**
@@ -105,10 +106,16 @@ public class SplitImpl extends OperatorImpl implements Split {
 				/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	protected SplitImpl() {
 		super();
+		setDefaultInputConnectors(1);
+		setDefaultOutputConnectors(2);
+		setInputSizeFixed(true);
+		setOutputSizeFixed(false);
+		getInputVariableType().add(SchemaDataType.STRING);
+		getOutputVariableType().add(SchemaDataType.STRING);
 	}
 
 	/**

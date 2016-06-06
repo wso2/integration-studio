@@ -6,6 +6,7 @@ import org.eclipse.emf.ecore.EClass;
 
 import org.wso2.developerstudio.datamapper.DataMapperPackage;
 import org.wso2.developerstudio.datamapper.Multiply;
+import org.wso2.developerstudio.datamapper.SchemaDataType;
 
 /**
  * <!-- begin-user-doc -->
@@ -18,10 +19,18 @@ public class MultiplyImpl extends OperatorImpl implements Multiply {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	protected MultiplyImpl() {
 		super();
+		setDefaultInputConnectors(2);
+		setDefaultOutputConnectors(1);
+		setInputSizeFixed(false);
+		setOutputSizeFixed(true);
+		getInputVariableType().add(SchemaDataType.INT);
+		getInputVariableType().add(SchemaDataType.DOUBLE);
+		getOutputVariableType().add(SchemaDataType.INT);
+		getOutputVariableType().add(SchemaDataType.DOUBLE);
 	}
 
 	/**

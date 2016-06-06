@@ -171,10 +171,6 @@ public class DataMapperDiagramModel {
         return false;
     }
 
-    private boolean isCurrentTreeNodeALeafNode(SchemaDataType variableType) {
-        return ScriptGenerationUtil.isVariableTypePrimitive(variableType);
-    }
-
     private void setInputAndOutputRootNames(DataMapperRoot rootDiagram) {
         EObject inRootElement = rootDiagram.getInput().eContents().get(0);
         if (inRootElement instanceof TreeNodeImpl) {

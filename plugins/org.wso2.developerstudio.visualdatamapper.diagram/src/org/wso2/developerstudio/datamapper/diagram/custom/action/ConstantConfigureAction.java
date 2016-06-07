@@ -31,76 +31,76 @@ import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.datamapper.Constant;
-import org.wso2.developerstudio.datamapper.diagram.custom.util.ConfigureConstantOperatorDialog;
+import org.wso2.developerstudio.datamapper.diagram.custom.dialogs.ConfigureConstantOperatorDialog;
 
 public class ConstantConfigureAction extends AbstractActionHandler {
 
-    CompoundCommand resultCommand;
+	CompoundCommand resultCommand;
 
-    /**
-     * Creates a new {@link ConfigureSwitchMediatorAction} instance.
-     * 
-     * @param part a {@link IWorkbenchPart} instance.
-     */
-    public ConstantConfigureAction(IWorkbenchPart part) {
-        super(part);
-        setId(Messages.Configure_Constant_Operator_Action_Id);
-        setText(Messages.Configure_Constant_Operator_Text);
-        setToolTipText(Messages.Configure_Constant_Operator_Tool_Tip);
-        ISharedImages workbenchImages = PlatformUI.getWorkbench().getSharedImages();        
-        setImageDescriptor(workbenchImages.getImageDescriptor(ISharedImages.IMG_TOOL_NEW_WIZARD));
-    }
-    
-    @Override
-    public void refresh() {
-        // TODO Auto-generated method stub
-    }
+	/**
+	 * Creates a new {@link ConfigureSwitchMediatorAction} instance.
+	 * 
+	 * @param part
+	 *            a {@link IWorkbenchPart} instance.
+	 */
+	public ConstantConfigureAction(IWorkbenchPart part) {
+		super(part);
+		setId(Messages.Configure_Constant_Operator_Action_Id);
+		setText(Messages.Configure_Constant_Operator_Text);
+		setToolTipText(Messages.Configure_Constant_Operator_Tool_Tip);
+		ISharedImages workbenchImages = PlatformUI.getWorkbench().getSharedImages();
+		setImageDescriptor(workbenchImages.getImageDescriptor(ISharedImages.IMG_TOOL_NEW_WIZARD));
+	}
 
-    @Override
-    protected void doRun(IProgressMonitor progressMonitor) {
-        EditPart selectedEP = getSelectedEditPart();
-        EObject selectedObj = ((View) selectedEP.getModel()).getElement();
-        Dialog configureConstantDialog= new ConfigureConstantOperatorDialog(Display.getDefault().getActiveShell(),
-                (Constant) selectedObj, getEditingDomain(), selectedEP);
-        configureConstantDialog.create();
-        configureConstantDialog.open();
-    }
-    
-    protected EditPart getSelectedEditPart() {
-        IStructuredSelection selection = getStructuredSelection();
-        if (selection.size() == 1) {
-            Object selectedEP = selection.getFirstElement();
-            if (selectedEP instanceof EditPart) {
-                return (EditPart) selectedEP;
-            }
-        }
+	@Override
+	public void refresh() {
+		// TODO Auto-generated method stub
+	}
 
-        return null; /* In case of selecting the wrong editpart */
-    }
-    
-    /**
-     * Utility method for calculating the editing domain.
-     * 
-     * @return editing domain for this action.
-     */
-    protected TransactionalEditingDomain getEditingDomain() {        
-        // try adapting the workbench part
-        IWorkbenchPart part = getWorkbenchPart();
+	@Override
+	protected void doRun(IProgressMonitor progressMonitor) {
+		EditPart selectedEP = getSelectedEditPart();
+		EObject selectedObj = ((View) selectedEP.getModel()).getElement();
+		Dialog configureConstantDialog = new ConfigureConstantOperatorDialog(Display.getDefault().getActiveShell(),
+				(Constant) selectedObj, getEditingDomain());
+		configureConstantDialog.create();
+		configureConstantDialog.open();
+	}
 
-        if (part != null) {
-            IEditingDomainProvider edProvider = (IEditingDomainProvider) part
-                .getAdapter(IEditingDomainProvider.class);
+	protected EditPart getSelectedEditPart() {
+		IStructuredSelection selection = getStructuredSelection();
+		if (selection.size() == 1) {
+			Object selectedEP = selection.getFirstElement();
+			if (selectedEP instanceof EditPart) {
+				return (EditPart) selectedEP;
+			}
+		}
 
-            if (edProvider != null) {
-                EditingDomain domain = edProvider.getEditingDomain();
-                
-                if (domain instanceof TransactionalEditingDomain) {
-                    return (TransactionalEditingDomain) domain;
-                }
-            }
-        }
-        
-        return null;
-    }
+		return null; /* In case of selecting the wrong editpart */
+	}
+
+	/**
+	 * Utility method for calculating the editing domain.
+	 * 
+	 * @return editing domain for this action.
+	 */
+	protected TransactionalEditingDomain getEditingDomain() {
+		// try adapting the workbench part
+		IWorkbenchPart part = getWorkbenchPart();
+
+		if (part != null) {
+			IEditingDomainProvider edProvider = (IEditingDomainProvider) part.getAdapter(IEditingDomainProvider.class);
+
+			if (edProvider != null) {
+				EditingDomain domain = edProvider.getEditingDomain();
+
+				if (domain instanceof TransactionalEditingDomain) {
+					return (TransactionalEditingDomain) domain;
+				}
+			}
+		}
+
+		return null;
+	}
 
 }

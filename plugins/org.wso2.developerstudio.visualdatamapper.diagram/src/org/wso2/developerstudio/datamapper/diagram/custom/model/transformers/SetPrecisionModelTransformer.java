@@ -21,6 +21,8 @@ import org.wso2.developerstudio.datamapper.diagram.custom.model.IModelTransforme
 import org.wso2.developerstudio.datamapper.impl.OperatorImpl;
 import org.wso2.developerstudio.datamapper.impl.SetPrecisionImpl;
 
+import static org.wso2.developerstudio.datamapper.diagram.custom.model.transformers.TransformerConstants.NUM_OF_DECIMALS_TAG;
+
 public class SetPrecisionModelTransformer implements IModelTransformer {
 
 	@Override
@@ -29,7 +31,7 @@ public class SetPrecisionModelTransformer implements IModelTransformer {
 			SetPrecisionImpl setPrecisionOperator = (SetPrecisionImpl)operator;
 			DMOperation setPrecisionOperatorModel = new DMOperation(DataMapperOperatorType.SET_PRECISION,
 					operator.toString(), index);
-			setPrecisionOperatorModel.addProperty("numberOfDigits", setPrecisionOperator.getNumberOfDigits());
+			setPrecisionOperatorModel.addProperty(NUM_OF_DECIMALS_TAG, setPrecisionOperator.getNumberOfDigits());
 			return setPrecisionOperatorModel;
 		}
 		throw new IllegalArgumentException("SetPrecisionImpl operator expected. Found : " + operator.toString());

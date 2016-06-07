@@ -1,19 +1,18 @@
 /*
- * Copyright 2014 WSO2, Inc. (http://wso2.com)
- *
+ * Copyright (c) 2016, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
+ * 
  * http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package org.wso2.developerstudio.datamapper.diagram.custom.action;
 
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -28,14 +27,13 @@ import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.swt.widgets.Display;
-import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PlatformUI;
-import org.wso2.developerstudio.datamapper.Split;
-import org.wso2.developerstudio.datamapper.diagram.custom.dialogs.ConfigureSplitOperatorDialog;
+import org.wso2.developerstudio.datamapper.Add;
+import org.wso2.developerstudio.datamapper.diagram.custom.dialogs.ConfigureAddOperatorDialog;
 
-public class SplitManyAction extends AbstractActionHandler {
+public class AddConfigureAction extends AbstractActionHandler {
 
 	CompoundCommand resultCommand;
 
@@ -45,31 +43,28 @@ public class SplitManyAction extends AbstractActionHandler {
 	 * @param part
 	 *            a {@link IWorkbenchPart} instance.
 	 */
-	public SplitManyAction(IWorkbenchPart part) {
+	public AddConfigureAction(IWorkbenchPart part) {
 		super(part);
-		setId(Messages.Configure_Split_Operator_Action_Id);
-		setText(Messages.Add_Remove_Split_Branches);
-		setToolTipText(Messages.Configure_Split_Operator);
+		setId(Messages.AddConfigureAction_ActionId);
+		setText(Messages.AddConfigureAction_ActionText);
+		setToolTipText(Messages.AddConfigureAction_ToolTip);
 		ISharedImages workbenchImages = PlatformUI.getWorkbench().getSharedImages();
 		setImageDescriptor(workbenchImages.getImageDescriptor(ISharedImages.IMG_TOOL_NEW_WIZARD));
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	protected void doRun(IProgressMonitor progressMonitor) {
-		EditPart selectedEP = getSelectedEditPart();
-		EObject selectedObj = ((View) selectedEP.getModel()).getElement();
-		Dialog configureConcat = new ConfigureSplitOperatorDialog(Display.getDefault().getActiveShell(),
-				(Split) selectedObj, getEditingDomain());
-		configureConcat.setBlockOnOpen(true);
-		configureConcat.open();
 	}
 
 	@Override
 	public void refresh() {
 		// TODO Auto-generated method stub
+	}
 
+	@Override
+	protected void doRun(IProgressMonitor progressMonitor) {
+		EditPart selectedEP = getSelectedEditPart();
+		EObject selectedObj = ((View) selectedEP.getModel()).getElement();
+		Dialog configureConstantDialog = new ConfigureAddOperatorDialog(Display.getDefault().getActiveShell(),
+				(Add) selectedObj, getEditingDomain());
+		configureConstantDialog.create();
+		configureConstantDialog.open();
 	}
 
 	protected EditPart getSelectedEditPart() {

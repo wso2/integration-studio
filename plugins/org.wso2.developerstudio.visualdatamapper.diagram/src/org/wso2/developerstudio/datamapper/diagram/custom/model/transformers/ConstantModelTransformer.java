@@ -31,7 +31,7 @@ public class ConstantModelTransformer implements IModelTransformer {
         if (operator instanceof ConstantImpl) {
             ConstantImpl constantOperator = (ConstantImpl) operator;
             DMOperation constantOperatorModel = new DMOperation(DataMapperOperatorType.CONSTANT, operator.toString(), index);
-            constantOperatorModel.addProperty(CONSTANT_VALUE_TAG, constantOperator.getConstValue());
+            constantOperatorModel.addProperty(CONSTANT_VALUE_TAG, constantOperator.getConstantValue());
             constantOperatorModel.addProperty(CONSTANT_TYPE_TAG, constantOperator.getType());
             return constantOperatorModel;
         }

@@ -3,7 +3,7 @@
 package org.wso2.developerstudio.datamapper.impl;
 
 import org.eclipse.emf.ecore.EClass;
-
+import org.wso2.developerstudio.datamapper.DataMapperOperatorType;
 import org.wso2.developerstudio.datamapper.DataMapperPackage;
 import org.wso2.developerstudio.datamapper.Multiply;
 import org.wso2.developerstudio.datamapper.SchemaDataType;
@@ -31,6 +31,7 @@ public class MultiplyImpl extends OperatorImpl implements Multiply {
 		getInputVariableType().add(SchemaDataType.DOUBLE);
 		getOutputVariableType().add(SchemaDataType.INT);
 		getOutputVariableType().add(SchemaDataType.DOUBLE);
+		setOperatorType(DataMapperOperatorType.MULTIPLY);
 	}
 
 	/**

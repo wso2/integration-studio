@@ -3,10 +3,10 @@ package org.wso2.developerstudio.datamapper.diagram.custom.generator.lang;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.wso2.developerstudio.datamapper.DataMapperOperatorType;
 import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.ConcatOperatorTransformer;
 import org.wso2.developerstudio.datamapper.diagram.custom.generator.MappingConfigGenerator;
 import org.wso2.developerstudio.datamapper.diagram.custom.model.DMOperation;
-import org.wso2.developerstudio.datamapper.diagram.custom.model.DMOperatorType;
 import org.wso2.developerstudio.datamapper.diagram.custom.model.DMVariable;
 import org.wso2.developerstudio.datamapper.diagram.custom.model.DMVariableType;
 import org.wso2.developerstudio.datamapper.diagram.custom.model.DataMapperDiagramModel;
@@ -41,11 +41,11 @@ public class FunctoinBasedMappingConfigGenerator implements MappingConfigGenerat
 		String rhs = "";
 		DMOperation sourceOperation = getSourceOperation(outputvariable.getIndex(), model);
 		if (sourceOperation != null)  {
-			if (sourceOperation.getOperatorType() == DMOperatorType.DIRECT){
+			if (sourceOperation.getOperatorType() == DataMapperOperatorType.DIRECT){
 				int variableIndex = sourceOperation.getInputs().get(0);
 				DMVariable inputVar = model.getVariablesArray().get(variableIndex);
 				rhs =  inputVar.getName();
-			} else if (sourceOperation.getOperatorType() == DMOperatorType.CONCAT){
+			} else if (sourceOperation.getOperatorType() == DataMapperOperatorType.CONCAT){
 				List<Integer> operatorInputs = sourceOperation.getInputs();
 				List<DMVariable> operatorInputVariables = new ArrayList<DMVariable>();
 				for (Integer input : operatorInputs){
@@ -65,7 +65,7 @@ public class FunctoinBasedMappingConfigGenerator implements MappingConfigGenerat
 					}
 					rhs = rhsValues.get(0) + ".concat(" + rhsValues.get(1)  + ")";
 				}
-			} else if (sourceOperation.getOperatorType() == DMOperatorType.UPPERCASE){
+			} else if (sourceOperation.getOperatorType() == DataMapperOperatorType.UPPERCASE){
 				int variableIndex = sourceOperation.getInputs().get(0);
 				DMVariable inputVar = model.getVariablesArray().get(variableIndex);
 				if (inputVar.getType() == DMVariableType.INPUT) {

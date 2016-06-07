@@ -15,24 +15,25 @@
  */
 package org.wso2.developerstudio.datamapper.diagram.custom.model.transformers;
 
+import static org.wso2.developerstudio.datamapper.diagram.custom.model.transformers.TransformerConstants.DELIMITER_TAG;
+
+import org.wso2.developerstudio.datamapper.DataMapperOperatorType;
 import org.wso2.developerstudio.datamapper.diagram.custom.model.DMOperation;
-import org.wso2.developerstudio.datamapper.diagram.custom.model.DMOperatorType;
 import org.wso2.developerstudio.datamapper.diagram.custom.model.IModelTransformer;
 import org.wso2.developerstudio.datamapper.impl.ConcatImpl;
 import org.wso2.developerstudio.datamapper.impl.OperatorImpl;
 
-import static org.wso2.developerstudio.datamapper.diagram.custom.model.transformers.TransformerConstants.DELIMITER_TAG;
-
 public class ConcatModelTransformer implements IModelTransformer {
 
-    @Override
-    public DMOperation transform(OperatorImpl operator, int index) {
-        if (operator instanceof ConcatImpl) {
-            ConcatImpl concatOperator = (ConcatImpl) operator;
-            DMOperation concatOperatorModel = new DMOperation(DMOperatorType.CONCAT, operator.toString(), index);
-            concatOperatorModel.addProperty(DELIMITER_TAG, concatOperator.getDelimiter());
-            return concatOperatorModel;
-        }
-        throw new IllegalArgumentException("ConcatImpl operator expected. Found : " + operator.toString());
-    }
+	@Override
+	public DMOperation transform(OperatorImpl operator, int index) {
+		if (operator instanceof ConcatImpl) {
+			ConcatImpl concatOperator = (ConcatImpl) operator;
+			DMOperation concatOperatorModel = new DMOperation(DataMapperOperatorType.CONCAT, operator.toString(),
+					index);
+			concatOperatorModel.addProperty(DELIMITER_TAG, concatOperator.getDelimiter());
+			return concatOperatorModel;
+		}
+		throw new IllegalArgumentException("ConcatImpl operator expected. Found : " + operator.toString());
+	}
 }

@@ -15,13 +15,13 @@
  */
 package org.wso2.developerstudio.datamapper.diagram.custom.model.transformers;
 
+import static org.wso2.developerstudio.datamapper.diagram.custom.model.transformers.TransformerConstants.DELIMITER_TAG;
+
+import org.wso2.developerstudio.datamapper.DataMapperOperatorType;
 import org.wso2.developerstudio.datamapper.diagram.custom.model.DMOperation;
-import org.wso2.developerstudio.datamapper.diagram.custom.model.DMOperatorType;
 import org.wso2.developerstudio.datamapper.diagram.custom.model.IModelTransformer;
 import org.wso2.developerstudio.datamapper.impl.OperatorImpl;
 import org.wso2.developerstudio.datamapper.impl.SplitImpl;
-
-import static org.wso2.developerstudio.datamapper.diagram.custom.model.transformers.TransformerConstants.DELIMITER_TAG;
 
 public class SplitModelTransformer implements IModelTransformer{
 
@@ -29,7 +29,7 @@ public class SplitModelTransformer implements IModelTransformer{
     public DMOperation transform(OperatorImpl operator, int index) {
         if (operator instanceof SplitImpl) {
             SplitImpl splitOperator = (SplitImpl) operator;
-            DMOperation splitOperatorModel = new DMOperation(DMOperatorType.SPLIT, operator.toString(), index);
+            DMOperation splitOperatorModel = new DMOperation(DataMapperOperatorType.SPLIT, operator.toString(), index);
             splitOperatorModel.addProperty(DELIMITER_TAG, splitOperator.getDelimiter());
             return splitOperatorModel;
         }

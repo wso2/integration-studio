@@ -3,7 +3,7 @@
 package org.wso2.developerstudio.datamapper.impl;
 
 import org.eclipse.emf.ecore.EClass;
-
+import org.wso2.developerstudio.datamapper.DataMapperOperatorType;
 import org.wso2.developerstudio.datamapper.DataMapperPackage;
 import org.wso2.developerstudio.datamapper.Divide;
 import org.wso2.developerstudio.datamapper.SchemaDataType;
@@ -30,6 +30,7 @@ public class DivideImpl extends OperatorImpl implements Divide {
 		getInputVariableType().add(SchemaDataType.INT);
 		getInputVariableType().add(SchemaDataType.DOUBLE);
 		getOutputVariableType().add(SchemaDataType.DOUBLE);
+		setOperatorType(DataMapperOperatorType.DIVIDE);
 	}
 
 	/**

@@ -57,6 +57,7 @@ public class OperatorItemProvider extends DataMapperNodeItemProvider{
 			addOutputVariableTypePropertyDescriptor(object);
 			addInputSizeFixedPropertyDescriptor(object);
 			addOutputSizeFixedPropertyDescriptor(object);
+			addOperatorTypePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -216,6 +217,28 @@ public class OperatorItemProvider extends DataMapperNodeItemProvider{
 	}
 
 	/**
+	 * This adds a property descriptor for the Operator Type feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addOperatorTypePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Operator_operatorType_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Operator_operatorType_feature", "_UI_Operator_type"),
+				 DataMapperPackage.Literals.OPERATOR__OPERATOR_TYPE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -287,6 +310,7 @@ public class OperatorItemProvider extends DataMapperNodeItemProvider{
 			case DataMapperPackage.OPERATOR__OUTPUT_VARIABLE_TYPE:
 			case DataMapperPackage.OPERATOR__INPUT_SIZE_FIXED:
 			case DataMapperPackage.OPERATOR__OUTPUT_SIZE_FIXED:
+			case DataMapperPackage.OPERATOR__OPERATOR_TYPE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case DataMapperPackage.OPERATOR__BASIC_CONTAINER:

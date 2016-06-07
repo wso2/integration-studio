@@ -262,28 +262,117 @@ public class TreeNode3EditPart extends AbstractBorderedShapeEditPart {
 		}
 		return temp;
 	}
-
+	
 	/**
-	 * @generated
+	 * @generated NOT
 	 */
 	protected boolean addFixedChild(EditPart childEditPart) {
-		if (childEditPart instanceof TreeNodeName3EditPart) {
-			((TreeNodeName3EditPart) childEditPart).setLabel(getPrimaryShape().getFigureTreeNodeNameFigure());
-			return true;
-		}
-		if (childEditPart instanceof InNodeEditPart) {
-			BorderItemLocator locator = new BorderItemLocator(getMainFigure(), PositionConstants.WEST);
-			getBorderedFigure().getBorderItemContainer().add(((InNodeEditPart) childEditPart).getFigure(), locator);
-			return true;
-		}
-		if (childEditPart instanceof OutNodeEditPart) {
-			BorderItemLocator locator = new BorderItemLocator(getMainFigure(), PositionConstants.EAST);
-			getBorderedFigure().getBorderItemContainer().add(((OutNodeEditPart) childEditPart).getFigure(), locator);
-			return true;
-		}
-		return false;
-	}
-
+		 	String type = getNodeType();
+		 		EditPart temp = this.getParentBox();
+		 		if (childEditPart instanceof TreeNodeName3EditPart) {
+		 			((TreeNodeName3EditPart) childEditPart).setLabel(getPrimaryShape().getFigureTreeNodeNameFigure());
+		 			return true;
+		 		}
+		 
+		 		if (childEditPart instanceof InNodeEditPart) {
+		 			if (temp instanceof InputEditPart) {
+		 				createEmptyInNode(childEditPart);
+		 			} else {
+		 				if (((TreeNode) ((View) getModel()).getElement()).getNode().size() > 0) {
+		 					String value = getNodeValue(type);
+		 					// If an element has values then enable the connector arrow
+		 					if (StringUtils.isNotEmpty(value)) {
+		 						return createInNode(childEditPart);
+		 					} else {
+		 						createEmptyInNode(childEditPart);
+		 					}
+		 				} else {
+		 					if (type.equals(JSON_SCHEMA_ARRAY)) {
+		 						String itemsType = getItemsType();
+		 						// If an element has values then enable the connector
+		 						// arrow
+		 						if (itemsType.equals(NULL_VALUE)) {
+		 							createEmptyInNode(childEditPart);
+		 						} else if (StringUtils.isEmpty(itemsType)) {
+		 							createEmptyInNode(childEditPart);
+		 						} else {
+		 							return createInNode(childEditPart);
+		 						}
+		 					} else if(type.equals(JSON_SCHEMA_OBJECT)){
+		 						String value = getNodeValue(type);
+		 						// If an element has values then enable the connector arrow
+		 						if (StringUtils.isNotEmpty(value)) {
+		 							return createInNode(childEditPart);
+		 						} else {
+		 							createEmptyInNode(childEditPart);
+		 						}
+		 					} else {
+		 						if (type.equals(NULL_VALUE)) {
+		 							// If type is null, then disable the in node
+		 							// connector
+		 							createEmptyInNode(childEditPart);
+		 						} else if (StringUtils.isEmpty(type)) {
+		 							createEmptyInNode(childEditPart);
+		 						} else {
+		 						return createInNode(childEditPart);
+		 						}
+		 					}
+		 				}
+		 			}
+		 
+		  		}
+		  		if (childEditPart instanceof OutNodeEditPart) {
+		 			if (temp instanceof OutputEditPart) {
+		 				createEmptyOutNode(childEditPart);
+		 		} else {
+		 				// If an element has children, then disable the outnode
+		 				// connector arrow
+		 				if (((TreeNode) ((View) getModel()).getElement()).getNode().size() > 0) {
+		 					String value = getNodeValue(type);
+		 				// If an element has values then enable the connector arrow
+		 					if (StringUtils.isNotEmpty(value)) {
+		 						return createOutNode(childEditPart);
+		 					} else {
+		 					createEmptyOutNode(childEditPart);
+		 					}
+		 				} else {
+		 					if (type.equals(JSON_SCHEMA_ARRAY)) {
+		 						String itemsType = getItemsType();
+		 						// If an element has values then enable the connector
+		 						// arrow
+		 						if (itemsType.equals(NULL_VALUE)) {
+		 							createEmptyOutNode(childEditPart);
+		 						} else if (StringUtils.isEmpty(itemsType)) {
+		 							createEmptyOutNode(childEditPart);
+		 						} else {
+		 						return createOutNode(childEditPart);
+		 						}
+		 					} else if(type.equals(JSON_SCHEMA_OBJECT)){
+		 						String value = getNodeValue(type);
+		 						// If an element has values then enable the connector arrow
+		 						if (StringUtils.isNotEmpty(value)) {
+		 							return createOutNode(childEditPart);
+		 						} else {
+		 							createEmptyOutNode(childEditPart);
+		 					}
+		 					} else {
+		 						if (type.equals(NULL_VALUE)) {
+		 							// If type is null, then disable the out node
+		 							// connector
+		 						createEmptyOutNode(childEditPart);
+		 						} else if (StringUtils.isEmpty(type)) {
+		 							createEmptyOutNode(childEditPart);
+		 						} else {
+		 							return createOutNode(childEditPart);
+		 						}
+		 					}
+		 				}
+		 
+		 			}
+		 
+		  		}
+		  		return false;
+		  	}
 	public String getItemsType() {
 		String type = "";
 		for (PropertyKeyValuePair keyValue : (((TreeNode) ((View) getModel()).getElement()).getProperties())) {

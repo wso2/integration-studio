@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.developerstudio.datamapper.diagram.custom.util;
+package org.wso2.developerstudio.datamapper.diagram.custom.dialogs;
 
 import java.util.ArrayList;
 
@@ -23,11 +23,8 @@ import org.eclipse.emf.edit.command.AddCommand;
 import org.eclipse.emf.edit.command.DeleteCommand;
 import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
-import org.eclipse.gef.EditPart;
 import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.jface.dialogs.IMessageProvider;
-import org.eclipse.jface.dialogs.TitleAreaDialog;
-import org.eclipse.papyrus.infra.gmfdiag.css.CSSShapeImpl;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
@@ -39,43 +36,43 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
-import org.wso2.developerstudio.datamapper.Concat;
 import org.wso2.developerstudio.datamapper.DataMapperFactory;
 import org.wso2.developerstudio.datamapper.DataMapperPackage;
-import org.wso2.developerstudio.datamapper.OperatorLeftConnector;
-import org.wso2.developerstudio.datamapper.impl.ConcatImpl;
+import org.wso2.developerstudio.datamapper.OperatorRightConnector;
+import org.wso2.developerstudio.datamapper.Split;
+import org.wso2.developerstudio.datamapper.impl.SplitImpl;
 
-public class ConfigureConcatOperatorDialog extends TitleAreaDialog {
+public class ConfigureSplitOperatorDialog extends AbstractConfigureOperatorDialog {
 
-    private Concat concatOperator;
-    private String inputCount;
+    private String outputCount;
     private String delimiter;
-    private EditPart editpart;
     private TransactionalEditingDomain editingDomain;
-    private ArrayList<OperatorLeftConnector> caseOutputConnectors = new ArrayList<OperatorLeftConnector>();
-    private ConcatImpl concatImpl;
+    SplitImpl splitImpl = null;
+    private ArrayList<OperatorRightConnector> caseOutputConnectors = new ArrayList<OperatorRightConnector>();
 
-    public ConfigureConcatOperatorDialog(Shell parentShell, Concat concatOperator,
-            TransactionalEditingDomain editingDomain, EditPart editpart) {
+    public ConfigureSplitOperatorDialog(Shell parentShell, Split splitOperator,
+            TransactionalEditingDomain editingDomain) {
         super(parentShell);
-        this.concatOperator = concatOperator;
-        this.editpart = editpart;
+        this.splitImpl = (SplitImpl) splitOperator;
         this.editingDomain = editingDomain;
-        CSSShapeImpl concatDD = (CSSShapeImpl) this.editpart.getModel();
-        concatImpl = (ConcatImpl) concatDD.getElement();
     }
 
     @Override
     public void create() {
         super.create();
-        setTitle("Configure Concat Operator");
-        setMessage("Set concat operator properties", IMessageProvider.INFORMATION);
+        setTitle("Configure Split Operator");
+        setMessage("Set split operator properties", IMessageProvider.INFORMATION);
     }
 
     protected void configureShell(Shell newShell) {
         super.configureShell(newShell);
         // Set title.
-        newShell.setText("Configure Concat Operator");
+        newShell.setText("Split Operator Properties");
+    }
+
+    @Override
+    protected boolean isResizable() {
+        return true;
     }
 
     protected Control createDialogArea(Composite parent) {
@@ -85,23 +82,19 @@ public class ConfigureConcatOperatorDialog extends TitleAreaDialog {
         GridLayout layout = new GridLayout(2, false);
         container.setLayout(layout);
 
-        GridData dataPropertyConfigText = new GridData();
-        dataPropertyConfigText.grabExcessHorizontalSpace = true;
-        dataPropertyConfigText.horizontalAlignment = GridData.FILL;
+        Label splitOutputConnectorCountLabel = new Label(container, SWT.NULL);
+        splitOutputConnectorCountLabel.setText("Number of Outputs : ");
 
-        Label concatInputConnectorCountLabel = new Label(container, SWT.NULL);
-        concatInputConnectorCountLabel.setText("Number of Inputs : ");
-
-        final Text inputConnectorCount = new Text(container, SWT.BORDER);
-        inputConnectorCount.setLayoutData(dataPropertyConfigText);
-        inputConnectorCount
-                .setText(concatOperator.getBasicContainer().getLeftContainer().getLeftConnectors().size() + "");
-        inputCount = inputConnectorCount.getText();
-        inputConnectorCount.addListener(SWT.Modify, new Listener() {
+        final Text outputConnectorCount = new Text(container, SWT.BORDER);
+        outputConnectorCount.setLayoutData(dataPropertyConfigText);
+        outputConnectorCount
+                .setText(splitImpl.getBasicContainer().getRightContainer().getRightConnectors().size() + "");
+        outputCount = outputConnectorCount.getText();
+        outputConnectorCount.addListener(SWT.Modify, new Listener() {
             public void handleEvent(Event event) {
                 try {
-                    inputCount = new String(inputConnectorCount.getText());
-                    if (!(StringUtils.isEmpty(inputCount) && StringUtils.isEmpty(delimiter))) {
+                    outputCount = new String(outputConnectorCount.getText());
+                    if (!(StringUtils.isEmpty(outputCount) && StringUtils.isEmpty(delimiter))) {
                         getButton(IDialogConstants.OK_ID).setEnabled(true);
                         validate();
                     } else {
@@ -113,13 +106,13 @@ public class ConfigureConcatOperatorDialog extends TitleAreaDialog {
             }
         });
 
-        Label concatDelimiterLabel = new Label(container, SWT.NULL);
-        concatDelimiterLabel.setText("Concat Delimiter : ");
+        Label splitDelimiterLabel = new Label(container, SWT.NULL);
+        splitDelimiterLabel.setText("Split Delimiter : ");
 
         final Text delimiterText = new Text(container, SWT.BORDER);
         delimiterText.setLayoutData(dataPropertyConfigText);
-        if (concatImpl.getDelimiterValue() != null) {
-            delimiterText.setText(concatImpl.getDelimiterValue());
+        if (splitImpl.getDelimiter() != null) {
+            delimiterText.setText(splitImpl.getDelimiter());
         } else {
             delimiterText.setText("");
         }
@@ -129,7 +122,7 @@ public class ConfigureConcatOperatorDialog extends TitleAreaDialog {
             public void handleEvent(Event event) {
                 try {
                     delimiter = new String(delimiterText.getText());
-                    if (!(StringUtils.isEmpty(inputCount) && StringUtils.isEmpty(delimiter))) {
+                    if (!(StringUtils.isEmpty(outputCount) && StringUtils.isEmpty(delimiter))) {
                         getButton(IDialogConstants.OK_ID).setEnabled(true);
                         validate();
                     } else {
@@ -159,9 +152,9 @@ public class ConfigureConcatOperatorDialog extends TitleAreaDialog {
     private void validate() {
         boolean isEnabled = false;
         Button okButton = getButton(IDialogConstants.OK_ID);
-        if (delimiter != null && inputCount != null) {
+        if (delimiter != null && outputCount != null) {
             if (!StringUtils.isEmpty(delimiter)) {
-                if (!inputCount.equals("0") && !StringUtils.isEmpty(inputCount)) {
+                if (!outputCount.equals("0") && !StringUtils.isEmpty(outputCount)) {
                     isEnabled = true;
                 }
             }
@@ -172,23 +165,21 @@ public class ConfigureConcatOperatorDialog extends TitleAreaDialog {
     }
 
     protected void okPressed() {
-
         if (!StringUtils.isEmpty(delimiter)) {
-        	Concat concatOperatorInstance = DataMapperFactory.eINSTANCE.createConcat();
-        	SetCommand setCmnd = new SetCommand(editingDomain, concatOperatorInstance, DataMapperPackage.Literals.CONCAT__DELIMITER, delimiter);
-              if (setCmnd.canExecute()) {
-                  editingDomain.getCommandStack().execute(setCmnd);
-              }
-            concatImpl.setDelimiterValue(delimiter);
+        	Split splitOperatorInstance = splitImpl;
+        	SetCommand setCmnd = new SetCommand(editingDomain, splitOperatorInstance, DataMapperPackage.Literals.SPLIT__DELIMITER, delimiter);
+            if (setCmnd.canExecute()) {
+                editingDomain.getCommandStack().execute(setCmnd);
+            }
         }
-        int number = Integer.parseInt(inputCount)
-                - concatOperator.getBasicContainer().getLeftContainer().getLeftConnectors().size();
+        int number = Integer.parseInt(outputCount)
+                - splitImpl.getBasicContainer().getRightContainer().getRightConnectors().size();
         if (number > 0) {
             for (int i = 0; i < number; ++i) {
-                OperatorLeftConnector concatOperatorContainers = DataMapperFactory.eINSTANCE
-                        .createOperatorLeftConnector();
-                AddCommand addCmd = new AddCommand(editingDomain, concatOperator.getBasicContainer().getLeftContainer(),
-                        DataMapperPackage.Literals.OPERATOR_LEFT_CONTAINER__LEFT_CONNECTORS, concatOperatorContainers);
+                OperatorRightConnector splitOperatorContainers = DataMapperFactory.eINSTANCE
+                        .createOperatorRightConnector();
+                AddCommand addCmd = new AddCommand(editingDomain, splitImpl.getBasicContainer().getRightContainer(),
+                        DataMapperPackage.Literals.OPERATOR_RIGHT_CONTAINER__RIGHT_CONNECTORS, splitOperatorContainers);
                 if (addCmd.canExecute()) {
                     editingDomain.getCommandStack().execute(addCmd);
                 }
@@ -197,16 +188,16 @@ public class ConfigureConcatOperatorDialog extends TitleAreaDialog {
         } else if (number < 0) {
 
             for (int i = 0; i < Math.abs(number); i++) {
-                EList<OperatorLeftConnector> listOfLeftConnectors = concatOperator.getBasicContainer()
-                        .getLeftContainer().getLeftConnectors();
-                OperatorLeftConnector concatOperatorConnector = listOfLeftConnectors
-                        .get(listOfLeftConnectors.size() - 1);
-                caseOutputConnectors.add(concatOperatorConnector);
+                EList<OperatorRightConnector> listOfRightConnectors = splitImpl.getBasicContainer()
+                        .getRightContainer().getRightConnectors();
+                OperatorRightConnector splitOperatorConnector = listOfRightConnectors
+                        .get(listOfRightConnectors.size() - 1);
+                caseOutputConnectors.add(splitOperatorConnector);
                 DeleteCommand deleteCmd = new DeleteCommand(editingDomain, caseOutputConnectors);
                 if (deleteCmd.canExecute()) {
                     editingDomain.getCommandStack().execute(deleteCmd);
                 }
-                caseOutputConnectors.remove(concatOperatorConnector);
+                caseOutputConnectors.remove(splitOperatorConnector);
             }
         }
 

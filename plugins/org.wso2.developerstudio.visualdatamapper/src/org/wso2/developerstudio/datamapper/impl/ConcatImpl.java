@@ -59,28 +59,6 @@ public class ConcatImpl extends OperatorImpl implements Concat {
 		setOperatorType(DataMapperOperatorType.CONCAT);
 	}
 	
-	 
-    /**
-     * @generated NOT
-     */
-    protected String delimiterValue;
-    
-    
-    /**
-     * @generated NOT
-     */
-    public String getDelimiterValue() {
-		return delimiterValue;
-	}
-    
-    
-    /**
-     * @generated NOT
-     */
-	public void setDelimiterValue(String delimiterValue) {
-		this.delimiterValue = delimiterValue;
-	}
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -94,10 +72,9 @@ public class ConcatImpl extends OperatorImpl implements Concat {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
 	public String getDelimiter() {
-		delimiter = delimiterValue;
 		return delimiter;
 	}
 

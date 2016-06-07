@@ -20,20 +20,75 @@ import org.wso2.developerstudio.datamapper.diagram.custom.model.IModelTransforme
 
 public class ModelTransformerFactory {
 
-    public static IModelTransformer getModelTransformer(DataMapperOperatorType type) {
-        switch (type) {
-        case CONCAT:
-            return new ConcatModelTransformer();
-        case SPLIT:
-            return new SplitModelTransformer();
-        case UPPERCASE:
-            return new ToUpperCaseModelTransformer();
-        case LOWERCASE:
-            return new ToLowerCaseModelTransformer();
-        case CONSTANT:
-            return new ConstantModelTransformer();
-        default:
-            throw new IllegalArgumentException("Unable to find transformer to operator type : " + type);
-        }
-    }
+	public static IModelTransformer getModelTransformer(DataMapperOperatorType type) {
+		switch (type.getOperatorCategory()) {
+		case ARITHMATIC_OPERATION:
+			return getArithmaticOperatorModelTransformer(type);
+		case STRING_OPERATION:
+			return getStringOperatorModelTransformer(type);
+		case COMMON_OPERATION:
+			return getCommonOperatorModelTransformer(type);
+		case BOOLEAN_OPERATION:
+			return getBooleanOperatorModelTransformer(type);
+		case CONDITIONAL_OPERATION:
+			return getConditionalOperatorModelTransformer(type);
+		default:
+			throw new IllegalArgumentException(
+					"Unknown operator category found for tranform in ModelTransformerFactory : " + type);
+		}
+	}
+
+	private static IModelTransformer getConditionalOperatorModelTransformer(DataMapperOperatorType type) {
+		switch (type) {
+		default:
+			throw new IllegalArgumentException(
+					"Unable to find conditionl operator model transformer to operator type in ModelTransformerFactory: "
+							+ type);
+		}
+	}
+
+	private static IModelTransformer getBooleanOperatorModelTransformer(DataMapperOperatorType type) {
+		switch (type) {
+		default:
+			throw new IllegalArgumentException(
+					"Unable to find boolean operator model transformer to operator type in ModelTransformerFactory: "
+							+ type);
+		}
+	}
+
+	private static IModelTransformer getCommonOperatorModelTransformer(DataMapperOperatorType type) {
+		switch (type) {
+		case CONSTANT:
+			return new ConstantModelTransformer();
+		default:
+			throw new IllegalArgumentException(
+					"Unable to find common operator model transformer to operator type in ModelTransformerFactory: "
+							+ type);
+		}
+	}
+
+	private static IModelTransformer getStringOperatorModelTransformer(DataMapperOperatorType type) {
+		switch (type) {
+		case CONCAT:
+			return new ConcatModelTransformer();
+		case SPLIT:
+			return new SplitModelTransformer();
+		case UPPERCASE:
+			return new ToUpperCaseModelTransformer();
+		case LOWERCASE:
+			return new ToLowerCaseModelTransformer();
+		default:
+			throw new IllegalArgumentException(
+					"Unable to find string operator model transformer to operator type in ModelTransformerFactory: "
+							+ type);
+		}
+	}
+
+	private static IModelTransformer getArithmaticOperatorModelTransformer(DataMapperOperatorType type) {
+		switch (type) {
+		default:
+			throw new IllegalArgumentException(
+					"Unable to find arithmatic model transformer to operator type in ModelTransformerFactory: " + type);
+		}
+	}
 }

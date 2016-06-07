@@ -59,7 +59,8 @@ public class DataMapperDomainNavigatorItem extends PlatformObject {
 	/**
 	 * @generated
 	 */
-	public DataMapperDomainNavigatorItem(EObject eObject, Object parent, IPropertySourceProvider propertySourceProvider) {
+	public DataMapperDomainNavigatorItem(EObject eObject, Object parent,
+			IPropertySourceProvider propertySourceProvider) {
 		myParent = parent;
 		myEObject = eObject;
 		myPropertySourceProvider = propertySourceProvider;
@@ -91,8 +92,7 @@ public class DataMapperDomainNavigatorItem extends PlatformObject {
 	 */
 	public boolean equals(Object obj) {
 		if (obj instanceof org.wso2.developerstudio.datamapper.diagram.navigator.DataMapperDomainNavigatorItem) {
-			return EcoreUtil
-					.getURI(getEObject())
+			return EcoreUtil.getURI(getEObject())
 					.equals(EcoreUtil
 							.getURI(((org.wso2.developerstudio.datamapper.diagram.navigator.DataMapperDomainNavigatorItem) obj)
 									.getEObject()));

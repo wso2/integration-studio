@@ -125,8 +125,8 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
 		this.part = part;
 		/*deleteAction = new org.wso2.developerstudio.datamapper.diagram.part.DeleteElementAction(part);
 		deleteAction.init();*/
-		
-//		deleteAction = new org.wso2.developerstudio.datamapper.diagram.part.DeleteElementAction(part);
+
+		//		deleteAction = new org.wso2.developerstudio.datamapper.diagram.part.DeleteElementAction(part);
 
 		contextActions = new HashMap<Class<? extends ShapeNodeEditPart>, AbstractActionHandler>();
 		contextActions.put(InputEditPart.class, new LoadInputSchemaAction(part));
@@ -228,6 +228,17 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
 	}
 
 	/**
+	* @generated
+	*/
+	public void dispose() {
+		if (deleteAction != null) {
+			deleteAction.dispose();
+			deleteAction = null;
+		}
+		super.dispose();
+	}
+
+	/**
 	 * @generated NOT
 	 */
 	/*public void dispose() {
@@ -261,7 +272,7 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
 							menu.remove(MENU_ADDITIONS);
 							menu.remove(ActionIds.ACTION_ADD_NOTELINK);
 							menu.remove(ActionIds.ACTION_DELETE_FROM_DIAGRAM);
-//							menu.remove(ActionIds.ACTION_DELETE_FROM_MODEL);
+							//							menu.remove(ActionIds.ACTION_DELETE_FROM_MODEL);
 							menu.remove(ActionIds.ACTION_SHOW_PROPERTIES_VIEW);
 							List<?> selectedEPs = getViewer().getSelectedEditParts();
 							if (selectedEPs.size() == 1) {
@@ -306,24 +317,26 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
 									if (null != addNewAttributeContextAction) {
 										menu.appendToGroup(EDIT_GROUP_ID, addNewAttributeContextAction);
 									}
-									
+
 									String type = null;
 									String name = null;
 									if (!selectedEditorPart.getChildren().isEmpty()) {
-										if(selectedEditorPart instanceof TreeNodeEditPart| selectedEditorPart instanceof TreeNode2EditPart | selectedEditorPart instanceof TreeNode3EditPart){
-										for (PropertyKeyValuePair keyValue : (((TreeNode) ((View) selectedEditorPart
-												.getModel()).getElement()).getProperties())) {
-											if (keyValue.getKey().equals(JSON_SCHEMA_TYPE)) {
-												type = keyValue.getValue();
-												break;
+										if (selectedEditorPart instanceof TreeNodeEditPart
+												| selectedEditorPart instanceof TreeNode2EditPart
+												| selectedEditorPart instanceof TreeNode3EditPart) {
+											for (PropertyKeyValuePair keyValue : (((TreeNode) ((View) selectedEditorPart
+													.getModel()).getElement()).getProperties())) {
+												if (keyValue.getKey().equals(JSON_SCHEMA_TYPE)) {
+													type = keyValue.getValue();
+													break;
+												}
 											}
-										}
-										name = (((TreeNode) ((View) selectedEditorPart.getModel()).getElement())
-												.getName());
+											name = (((TreeNode) ((View) selectedEditorPart.getModel()).getElement())
+													.getName());
 										}
 									}
-									
-									if(type != null){
+
+									if (type != null) {
 										if (type.equals(JSON_SCHEMA_OBJECT)) {
 											// Append edit object item to menu
 											AbstractActionHandler addEditObjectAction = addEditObjectActions
@@ -357,7 +370,7 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
 											}
 										}
 									}
-										
+								
 									if (!selectedEditorPart.getChildren().isEmpty()) {
 										if(selectedEditorPart instanceof TreeNodeEditPart| selectedEditorPart instanceof TreeNode2EditPart | selectedEditorPart instanceof TreeNode3EditPart){
 										for (PropertyKeyValuePair keyValue : (((TreeNode) ((View) selectedEditorPart
@@ -385,7 +398,6 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
 												.getName());
 										}
 									}
-									
 
 									// Append load from file item to menu
 									AbstractActionHandler contextAction = contextActions
@@ -403,7 +415,7 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
 								}
 
 							}
-//							menu.appendToGroup(EDIT_GROUP_ID, deleteAction);
+							//							menu.appendToGroup(EDIT_GROUP_ID, deleteAction);
 						}
 					});
 		} catch (Exception e) {

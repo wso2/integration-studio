@@ -182,6 +182,60 @@
           xsi:type="gmfgraph:Rectangle"
           name="UpperCaseFigure"/>
     </descriptors>
+    <descriptors
+        name="AddFigure">
+      <actualFigure
+          xsi:type="gmfgraph:Rectangle"
+          name="AddFigure"/>
+    </descriptors>
+    <descriptors
+        name="SubtractFigure">
+      <actualFigure
+          xsi:type="gmfgraph:Rectangle"
+          name="SubtractFigure"/>
+    </descriptors>
+    <descriptors
+        name="AbsoluteValueFigure">
+      <actualFigure
+          xsi:type="gmfgraph:Rectangle"
+          name="AbsoluteValueFigure"/>
+    </descriptors>
+    <descriptors
+        name="DivideFigure">
+      <actualFigure
+          xsi:type="gmfgraph:Rectangle"
+          name="DivideFigure"/>
+    </descriptors>
+    <descriptors
+        name="FloorFigure">
+      <actualFigure
+          xsi:type="gmfgraph:Rectangle"
+          name="FloorFigure"/>
+    </descriptors>
+    <descriptors
+        name="RoundFigure">
+      <actualFigure
+          xsi:type="gmfgraph:Rectangle"
+          name="RoundFigure"/>
+    </descriptors>
+    <descriptors
+        name="MultiplyFigure">
+      <actualFigure
+          xsi:type="gmfgraph:Rectangle"
+          name="MultiplyFigure"/>
+    </descriptors>
+    <descriptors
+        name="SetPrecisionFigure">
+      <actualFigure
+          xsi:type="gmfgraph:Rectangle"
+          name="SetPrecisionFigure"/>
+    </descriptors>
+    <descriptors
+        name="CeliFigure">
+      <actualFigure
+          xsi:type="gmfgraph:Rectangle"
+          name="CeliFigure"/>
+    </descriptors>
   </figures>
   <nodes
       name="DataMapperNode"
@@ -260,6 +314,33 @@
   <nodes
       name="UpperCase"
       figure="UpperCaseFigure"/>
+  <nodes
+      name="Add"
+      figure="AddFigure"/>
+  <nodes
+      name="Subtract"
+      figure="SubtractFigure"/>
+  <nodes
+      name="AbsoluteValue"
+      figure="AbsoluteValueFigure"/>
+  <nodes
+      name="Divide"
+      figure="DivideFigure"/>
+  <nodes
+      name="Floor"
+      figure="FloorFigure"/>
+  <nodes
+      name="Round"
+      figure="RoundFigure"/>
+  <nodes
+      name="Multiply"
+      figure="MultiplyFigure"/>
+  <nodes
+      name="SetPrecision"
+      figure="SetPrecisionFigure"/>
+  <nodes
+      name="Celi"
+      figure="CeliFigure"/>
   <connections
       name="DataMapperLink"
       figure="DataMapperLinkFigure"/>

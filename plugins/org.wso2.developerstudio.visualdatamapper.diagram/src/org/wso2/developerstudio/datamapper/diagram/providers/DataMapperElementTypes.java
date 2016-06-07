@@ -14,18 +14,24 @@ import org.eclipse.gmf.tooling.runtime.providers.DiagramElementTypes;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.graphics.Image;
 import org.wso2.developerstudio.datamapper.DataMapperPackage;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.AbsoluteValueEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.AddEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.CeliEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.ConcatEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.ConstantEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.ContainsEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.DataMapperLinkEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.DataMapperRootEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.DivideEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.ElementEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.EqualEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.FloorEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.InNode2EditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.InNode3EditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.InNodeEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.InputEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.LowerCaseEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.MultiplyEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.OperatorBasicContainerEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.OperatorLeftConnectorEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.OperatorLeftContainerEditPart;
@@ -35,7 +41,10 @@ import org.wso2.developerstudio.datamapper.diagram.edit.parts.OutNode2EditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.OutNode3EditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.OutNodeEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.OutputEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.RoundEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.SetPrecisionEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.SplitEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.SubtractEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.TreeNode2EditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.TreeNode3EditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.TreeNodeEditPart;
@@ -72,131 +81,211 @@ public class DataMapperElementTypes {
 	/**
 	 * @generated
 	 */
-	public static final IElementType DataMapperRoot_1000 = getElementType("org.wso2.developerstudio.visualdatamapper.diagram.DataMapperRoot_1000"); //$NON-NLS-1$
+	public static final IElementType DataMapperRoot_1000 = getElementType(
+			"org.wso2.developerstudio.visualdatamapper.diagram.DataMapperRoot_1000"); //$NON-NLS-1$
 	/**
 	 * @generated
 	 */
-	public static final IElementType Input_2002 = getElementType("org.wso2.developerstudio.visualdatamapper.diagram.Input_2002"); //$NON-NLS-1$
+	public static final IElementType Input_2002 = getElementType(
+			"org.wso2.developerstudio.visualdatamapper.diagram.Input_2002"); //$NON-NLS-1$
 
 	/**
 	 * @generated
 	 */
-	public static final IElementType Output_2003 = getElementType("org.wso2.developerstudio.visualdatamapper.diagram.Output_2003"); //$NON-NLS-1$
+	public static final IElementType Output_2003 = getElementType(
+			"org.wso2.developerstudio.visualdatamapper.diagram.Output_2003"); //$NON-NLS-1$
 
 	/**
 	 * @generated
 	 */
-	public static final IElementType Equal_2005 = getElementType("org.wso2.developerstudio.visualdatamapper.diagram.Equal_2005"); //$NON-NLS-1$
+	public static final IElementType Equal_2005 = getElementType(
+			"org.wso2.developerstudio.visualdatamapper.diagram.Equal_2005"); //$NON-NLS-1$
+
+	/**
+	* @generated
+	*/
+	public static final IElementType Subtract_2013 = getElementType(
+			"org.wso2.developerstudio.visualdatamapper.diagram.Subtract_2013"); //$NON-NLS-1$
 
 	/**
 	 * @generated
 	 */
-	public static final IElementType Concat_2006 = getElementType("org.wso2.developerstudio.visualdatamapper.diagram.Concat_2006"); //$NON-NLS-1$
+	public static final IElementType Concat_2006 = getElementType(
+			"org.wso2.developerstudio.visualdatamapper.diagram.Concat_2006"); //$NON-NLS-1$
+
+	/**
+	* @generated
+	*/
+	public static final IElementType Add_2012 = getElementType(
+			"org.wso2.developerstudio.visualdatamapper.diagram.Add_2012"); //$NON-NLS-1$
 
 	/**
 	 * @generated
 	 */
-	public static final IElementType Split_2007 = getElementType("org.wso2.developerstudio.visualdatamapper.diagram.Split_2007"); //$NON-NLS-1$
+	public static final IElementType Split_2007 = getElementType(
+			"org.wso2.developerstudio.visualdatamapper.diagram.Split_2007"); //$NON-NLS-1$
 
 	/**
 	 * @generated
 	 */
-	public static final IElementType Constant_2008 = getElementType("org.wso2.developerstudio.visualdatamapper.diagram.Constant_2008"); //$NON-NLS-1$
+	public static final IElementType Constant_2008 = getElementType(
+			"org.wso2.developerstudio.visualdatamapper.diagram.Constant_2008"); //$NON-NLS-1$
 
 	/**
 	 * @generated
 	 */
-	public static final IElementType LowerCase_2009 = getElementType("org.wso2.developerstudio.visualdatamapper.diagram.LowerCase_2009"); //$NON-NLS-1$
+	public static final IElementType LowerCase_2009 = getElementType(
+			"org.wso2.developerstudio.visualdatamapper.diagram.LowerCase_2009"); //$NON-NLS-1$
 
 	/**
 	 * @generated
 	 */
-	public static final IElementType Contains_2010 = getElementType("org.wso2.developerstudio.visualdatamapper.diagram.Contains_2010"); //$NON-NLS-1$
+	public static final IElementType Contains_2010 = getElementType(
+			"org.wso2.developerstudio.visualdatamapper.diagram.Contains_2010"); //$NON-NLS-1$
 
 	/**
 	 * @generated
 	 */
-	public static final IElementType UpperCase_2011 = getElementType("org.wso2.developerstudio.visualdatamapper.diagram.UpperCase_2011"); //$NON-NLS-1$
+	public static final IElementType UpperCase_2011 = getElementType(
+			"org.wso2.developerstudio.visualdatamapper.diagram.UpperCase_2011"); //$NON-NLS-1$
+
+	/**
+	* @generated
+	*/
+	public static final IElementType Multiply_2014 = getElementType(
+			"org.wso2.developerstudio.visualdatamapper.diagram.Multiply_2014"); //$NON-NLS-1$
+
+	/**
+	* @generated
+	*/
+	public static final IElementType Divide_2015 = getElementType(
+			"org.wso2.developerstudio.visualdatamapper.diagram.Divide_2015"); //$NON-NLS-1$
+
+	/**
+	* @generated
+	*/
+	public static final IElementType Celi_2016 = getElementType(
+			"org.wso2.developerstudio.visualdatamapper.diagram.Celi_2016"); //$NON-NLS-1$
+
+	/**
+	* @generated
+	*/
+	public static final IElementType Floor_2017 = getElementType(
+			"org.wso2.developerstudio.visualdatamapper.diagram.Floor_2017"); //$NON-NLS-1$
+
+	/**
+	* @generated
+	*/
+	public static final IElementType Round_2018 = getElementType(
+			"org.wso2.developerstudio.visualdatamapper.diagram.Round_2018"); //$NON-NLS-1$
+
+	/**
+	* @generated
+	*/
+	public static final IElementType SetPrecision_2019 = getElementType(
+			"org.wso2.developerstudio.visualdatamapper.diagram.SetPrecision_2019"); //$NON-NLS-1$
+
+	/**
+	* @generated
+	*/
+	public static final IElementType AbsoluteValue_2020 = getElementType(
+			"org.wso2.developerstudio.visualdatamapper.diagram.AbsoluteValue_2020"); //$NON-NLS-1$
 
 	/**
 	 * @generated
 	 */
-	public static final IElementType TreeNode_3002 = getElementType("org.wso2.developerstudio.visualdatamapper.diagram.TreeNode_3002"); //$NON-NLS-1$
+	public static final IElementType TreeNode_3002 = getElementType(
+			"org.wso2.developerstudio.visualdatamapper.diagram.TreeNode_3002"); //$NON-NLS-1$
 
 	/**
 	 * @generated
 	 */
-	public static final IElementType TreeNode_3003 = getElementType("org.wso2.developerstudio.visualdatamapper.diagram.TreeNode_3003"); //$NON-NLS-1$
+	public static final IElementType TreeNode_3003 = getElementType(
+			"org.wso2.developerstudio.visualdatamapper.diagram.TreeNode_3003"); //$NON-NLS-1$
 
 	/**
 	 * @generated
 	 */
-	public static final IElementType InNode_3020 = getElementType("org.wso2.developerstudio.visualdatamapper.diagram.InNode_3020"); //$NON-NLS-1$
+	public static final IElementType InNode_3020 = getElementType(
+			"org.wso2.developerstudio.visualdatamapper.diagram.InNode_3020"); //$NON-NLS-1$
 
 	/**
 	 * @generated
 	 */
-	public static final IElementType OutNode_3019 = getElementType("org.wso2.developerstudio.visualdatamapper.diagram.OutNode_3019"); //$NON-NLS-1$
+	public static final IElementType OutNode_3019 = getElementType(
+			"org.wso2.developerstudio.visualdatamapper.diagram.OutNode_3019"); //$NON-NLS-1$
 
 	/**
 	 * @generated
 	 */
-	public static final IElementType Element_3007 = getElementType("org.wso2.developerstudio.visualdatamapper.diagram.Element_3007"); //$NON-NLS-1$
+	public static final IElementType Element_3007 = getElementType(
+			"org.wso2.developerstudio.visualdatamapper.diagram.Element_3007"); //$NON-NLS-1$
 
 	/**
 	 * @generated
 	 */
-	public static final IElementType InNode_3008 = getElementType("org.wso2.developerstudio.visualdatamapper.diagram.InNode_3008"); //$NON-NLS-1$
+	public static final IElementType InNode_3008 = getElementType(
+			"org.wso2.developerstudio.visualdatamapper.diagram.InNode_3008"); //$NON-NLS-1$
 
 	/**
 	 * @generated
 	 */
-	public static final IElementType OutNode_3009 = getElementType("org.wso2.developerstudio.visualdatamapper.diagram.OutNode_3009"); //$NON-NLS-1$
+	public static final IElementType OutNode_3009 = getElementType(
+			"org.wso2.developerstudio.visualdatamapper.diagram.OutNode_3009"); //$NON-NLS-1$
 
 	/**
 	 * @generated
 	 */
-	public static final IElementType TreeNode_3011 = getElementType("org.wso2.developerstudio.visualdatamapper.diagram.TreeNode_3011"); //$NON-NLS-1$
+	public static final IElementType TreeNode_3011 = getElementType(
+			"org.wso2.developerstudio.visualdatamapper.diagram.TreeNode_3011"); //$NON-NLS-1$
 
 	/**
 	 * @generated
 	 */
-	public static final IElementType OperatorBasicContainer_3012 = getElementType("org.wso2.developerstudio.visualdatamapper.diagram.OperatorBasicContainer_3012"); //$NON-NLS-1$
+	public static final IElementType OperatorBasicContainer_3012 = getElementType(
+			"org.wso2.developerstudio.visualdatamapper.diagram.OperatorBasicContainer_3012"); //$NON-NLS-1$
 
 	/**
 	 * @generated
 	 */
-	public static final IElementType OperatorLeftContainer_3013 = getElementType("org.wso2.developerstudio.visualdatamapper.diagram.OperatorLeftContainer_3013"); //$NON-NLS-1$
+	public static final IElementType OperatorLeftContainer_3013 = getElementType(
+			"org.wso2.developerstudio.visualdatamapper.diagram.OperatorLeftContainer_3013"); //$NON-NLS-1$
 
 	/**
 	 * @generated
 	 */
-	public static final IElementType OperatorLeftConnector_3014 = getElementType("org.wso2.developerstudio.visualdatamapper.diagram.OperatorLeftConnector_3014"); //$NON-NLS-1$
+	public static final IElementType OperatorLeftConnector_3014 = getElementType(
+			"org.wso2.developerstudio.visualdatamapper.diagram.OperatorLeftConnector_3014"); //$NON-NLS-1$
 
 	/**
 	 * @generated
 	 */
-	public static final IElementType InNode_3015 = getElementType("org.wso2.developerstudio.visualdatamapper.diagram.InNode_3015"); //$NON-NLS-1$
+	public static final IElementType InNode_3015 = getElementType(
+			"org.wso2.developerstudio.visualdatamapper.diagram.InNode_3015"); //$NON-NLS-1$
 
 	/**
 	 * @generated
 	 */
-	public static final IElementType OperatorRightContainer_3016 = getElementType("org.wso2.developerstudio.visualdatamapper.diagram.OperatorRightContainer_3016"); //$NON-NLS-1$
+	public static final IElementType OperatorRightContainer_3016 = getElementType(
+			"org.wso2.developerstudio.visualdatamapper.diagram.OperatorRightContainer_3016"); //$NON-NLS-1$
 
 	/**
 	 * @generated
 	 */
-	public static final IElementType OperatorRightConnector_3017 = getElementType("org.wso2.developerstudio.visualdatamapper.diagram.OperatorRightConnector_3017"); //$NON-NLS-1$
+	public static final IElementType OperatorRightConnector_3017 = getElementType(
+			"org.wso2.developerstudio.visualdatamapper.diagram.OperatorRightConnector_3017"); //$NON-NLS-1$
 
 	/**
 	 * @generated
 	 */
-	public static final IElementType OutNode_3018 = getElementType("org.wso2.developerstudio.visualdatamapper.diagram.OutNode_3018"); //$NON-NLS-1$
+	public static final IElementType OutNode_3018 = getElementType(
+			"org.wso2.developerstudio.visualdatamapper.diagram.OutNode_3018"); //$NON-NLS-1$
 
 	/**
 	 * @generated
 	 */
-	public static final IElementType DataMapperLink_4001 = getElementType("org.wso2.developerstudio.visualdatamapper.diagram.DataMapperLink_4001"); //$NON-NLS-1$
+	public static final IElementType DataMapperLink_4001 = getElementType(
+			"org.wso2.developerstudio.visualdatamapper.diagram.DataMapperLink_4001"); //$NON-NLS-1$
 
 	/**
 	 * @generated
@@ -244,7 +333,11 @@ public class DataMapperElementTypes {
 
 			elements.put(Equal_2005, DataMapperPackage.eINSTANCE.getEqual());
 
+			elements.put(Subtract_2013, DataMapperPackage.eINSTANCE.getSubtract());
+
 			elements.put(Concat_2006, DataMapperPackage.eINSTANCE.getConcat());
+
+			elements.put(Add_2012, DataMapperPackage.eINSTANCE.getAdd());
 
 			elements.put(Split_2007, DataMapperPackage.eINSTANCE.getSplit());
 
@@ -255,6 +348,20 @@ public class DataMapperElementTypes {
 			elements.put(Contains_2010, DataMapperPackage.eINSTANCE.getContains());
 
 			elements.put(UpperCase_2011, DataMapperPackage.eINSTANCE.getUpperCase());
+
+			elements.put(Multiply_2014, DataMapperPackage.eINSTANCE.getMultiply());
+
+			elements.put(Divide_2015, DataMapperPackage.eINSTANCE.getDivide());
+
+			elements.put(Celi_2016, DataMapperPackage.eINSTANCE.getCeli());
+
+			elements.put(Floor_2017, DataMapperPackage.eINSTANCE.getFloor());
+
+			elements.put(Round_2018, DataMapperPackage.eINSTANCE.getRound());
+
+			elements.put(SetPrecision_2019, DataMapperPackage.eINSTANCE.getSetPrecision());
+
+			elements.put(AbsoluteValue_2020, DataMapperPackage.eINSTANCE.getAbsoluteValue());
 
 			elements.put(TreeNode_3002, DataMapperPackage.eINSTANCE.getTreeNode());
 
@@ -308,12 +415,21 @@ public class DataMapperElementTypes {
 			KNOWN_ELEMENT_TYPES.add(Input_2002);
 			KNOWN_ELEMENT_TYPES.add(Output_2003);
 			KNOWN_ELEMENT_TYPES.add(Equal_2005);
+			KNOWN_ELEMENT_TYPES.add(Subtract_2013);
 			KNOWN_ELEMENT_TYPES.add(Concat_2006);
+			KNOWN_ELEMENT_TYPES.add(Add_2012);
 			KNOWN_ELEMENT_TYPES.add(Split_2007);
 			KNOWN_ELEMENT_TYPES.add(Constant_2008);
 			KNOWN_ELEMENT_TYPES.add(LowerCase_2009);
 			KNOWN_ELEMENT_TYPES.add(Contains_2010);
 			KNOWN_ELEMENT_TYPES.add(UpperCase_2011);
+			KNOWN_ELEMENT_TYPES.add(Multiply_2014);
+			KNOWN_ELEMENT_TYPES.add(Divide_2015);
+			KNOWN_ELEMENT_TYPES.add(Celi_2016);
+			KNOWN_ELEMENT_TYPES.add(Floor_2017);
+			KNOWN_ELEMENT_TYPES.add(Round_2018);
+			KNOWN_ELEMENT_TYPES.add(SetPrecision_2019);
+			KNOWN_ELEMENT_TYPES.add(AbsoluteValue_2020);
 			KNOWN_ELEMENT_TYPES.add(TreeNode_3002);
 			KNOWN_ELEMENT_TYPES.add(Element_3007);
 			KNOWN_ELEMENT_TYPES.add(InNode_3008);
@@ -347,8 +463,12 @@ public class DataMapperElementTypes {
 			return Output_2003;
 		case EqualEditPart.VISUAL_ID:
 			return Equal_2005;
+		case SubtractEditPart.VISUAL_ID:
+			return Subtract_2013;
 		case ConcatEditPart.VISUAL_ID:
 			return Concat_2006;
+		case AddEditPart.VISUAL_ID:
+			return Add_2012;
 		case SplitEditPart.VISUAL_ID:
 			return Split_2007;
 		case ConstantEditPart.VISUAL_ID:
@@ -359,6 +479,20 @@ public class DataMapperElementTypes {
 			return Contains_2010;
 		case UpperCaseEditPart.VISUAL_ID:
 			return UpperCase_2011;
+		case MultiplyEditPart.VISUAL_ID:
+			return Multiply_2014;
+		case DivideEditPart.VISUAL_ID:
+			return Divide_2015;
+		case CeliEditPart.VISUAL_ID:
+			return Celi_2016;
+		case FloorEditPart.VISUAL_ID:
+			return Floor_2017;
+		case RoundEditPart.VISUAL_ID:
+			return Round_2018;
+		case SetPrecisionEditPart.VISUAL_ID:
+			return SetPrecision_2019;
+		case AbsoluteValueEditPart.VISUAL_ID:
+			return AbsoluteValue_2020;
 		case TreeNodeEditPart.VISUAL_ID:
 			return TreeNode_3002;
 		case ElementEditPart.VISUAL_ID:
@@ -401,27 +535,30 @@ public class DataMapperElementTypes {
 	public static final DiagramElementTypes TYPED_INSTANCE = new DiagramElementTypes(elementTypeImages) {
 
 		/**
-		 * @generated
-		 */
+		* @generated
+		*/
 		@Override
+
 		public boolean isKnownElementType(IElementType elementType) {
 			return org.wso2.developerstudio.datamapper.diagram.providers.DataMapperElementTypes
 					.isKnownElementType(elementType);
 		}
 
 		/**
-		 * @generated
-		 */
+		* @generated
+		*/
 		@Override
+
 		public IElementType getElementTypeForVisualId(int visualID) {
 			return org.wso2.developerstudio.datamapper.diagram.providers.DataMapperElementTypes
 					.getElementType(visualID);
 		}
 
 		/**
-		 * @generated
-		 */
+		* @generated
+		*/
 		@Override
+
 		public ENamedElement getDefiningNamedElement(IAdaptable elementTypeAdapter) {
 			return org.wso2.developerstudio.datamapper.diagram.providers.DataMapperElementTypes
 					.getElement(elementTypeAdapter);

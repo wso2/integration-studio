@@ -326,6 +326,96 @@ public class Messages extends NLS {
 	public static String UpperCase8CreationTool_desc;
 
 	/**
+	* @generated
+	*/
+	public static String Add9CreationTool_title;
+
+	/**
+	* @generated
+	*/
+	public static String Add9CreationTool_desc;
+
+	/**
+	* @generated
+	*/
+	public static String Subtract10CreationTool_title;
+
+	/**
+	* @generated
+	*/
+	public static String Subtract10CreationTool_desc;
+
+	/**
+	* @generated
+	*/
+	public static String AbsoluteValue11CreationTool_title;
+
+	/**
+	* @generated
+	*/
+	public static String AbsoluteValue11CreationTool_desc;
+
+	/**
+	* @generated
+	*/
+	public static String Divide12CreationTool_title;
+
+	/**
+	* @generated
+	*/
+	public static String Divide12CreationTool_desc;
+
+	/**
+	* @generated
+	*/
+	public static String Floor13CreationTool_title;
+
+	/**
+	* @generated
+	*/
+	public static String Floor13CreationTool_desc;
+
+	/**
+	* @generated
+	*/
+	public static String Round14CreationTool_title;
+
+	/**
+	* @generated
+	*/
+	public static String Round14CreationTool_desc;
+
+	/**
+	* @generated
+	*/
+	public static String Multiply15CreationTool_title;
+
+	/**
+	* @generated
+	*/
+	public static String Multiply15CreationTool_desc;
+
+	/**
+	* @generated
+	*/
+	public static String SetPrecision16CreationTool_title;
+
+	/**
+	* @generated
+	*/
+	public static String SetPrecision16CreationTool_desc;
+
+	/**
+	* @generated
+	*/
+	public static String Celi17CreationTool_title;
+
+	/**
+	* @generated
+	*/
+	public static String Celi17CreationTool_desc;
+
+	/**
 	 * @generated
 	 */
 	public static String CommandName_OpenDiagram;

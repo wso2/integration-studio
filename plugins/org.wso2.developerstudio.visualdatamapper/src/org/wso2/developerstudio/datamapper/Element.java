@@ -13,6 +13,7 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.datamapper.Element#getName <em>Name</em>}</li>
  *   <li>{@link org.wso2.developerstudio.datamapper.Element#getValue <em>Value</em>}</li>
@@ -23,7 +24,6 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.wso2.developerstudio.datamapper.Element#getLevel <em>Level</em>}</li>
  *   <li>{@link org.wso2.developerstudio.datamapper.Element#getProperties <em>Properties</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.wso2.developerstudio.datamapper.DataMapperPackage#getElement()
  * @model

@@ -64,9 +64,10 @@ public class DataMapperDocumentProvider extends AbstractDocumentProvider impleme
 	 */
 	protected ElementInfo createElementInfo(Object element) throws CoreException {
 		if (false == element instanceof FileEditorInput && false == element instanceof URIEditorInput) {
-			throw new CoreException(new Status(IStatus.ERROR, DataMapperDiagramEditorPlugin.ID, 0, NLS.bind(
-					Messages.DataMapperDocumentProvider_IncorrectInputError, new Object[] { element,
-							"org.eclipse.ui.part.FileEditorInput", "org.eclipse.emf.common.ui.URIEditorInput" }), //$NON-NLS-1$ //$NON-NLS-2$ 
+			throw new CoreException(new Status(IStatus.ERROR, DataMapperDiagramEditorPlugin.ID, 0,
+					NLS.bind(Messages.DataMapperDocumentProvider_IncorrectInputError,
+							new Object[] { element, "org.eclipse.ui.part.FileEditorInput", //$NON-NLS-1$
+									"org.eclipse.emf.common.ui.URIEditorInput" }), //$NON-NLS-1$ 
 					null));
 		}
 		IEditorInput editorInput = (IEditorInput) element;
@@ -83,9 +84,10 @@ public class DataMapperDocumentProvider extends AbstractDocumentProvider impleme
 	 */
 	protected IDocument createDocument(Object element) throws CoreException {
 		if (false == element instanceof FileEditorInput && false == element instanceof URIEditorInput) {
-			throw new CoreException(new Status(IStatus.ERROR, DataMapperDiagramEditorPlugin.ID, 0, NLS.bind(
-					Messages.DataMapperDocumentProvider_IncorrectInputError, new Object[] { element,
-							"org.eclipse.ui.part.FileEditorInput", "org.eclipse.emf.common.ui.URIEditorInput" }), //$NON-NLS-1$ //$NON-NLS-2$ 
+			throw new CoreException(new Status(IStatus.ERROR, DataMapperDiagramEditorPlugin.ID, 0,
+					NLS.bind(Messages.DataMapperDocumentProvider_IncorrectInputError,
+							new Object[] { element, "org.eclipse.ui.part.FileEditorInput", //$NON-NLS-1$
+									"org.eclipse.emf.common.ui.URIEditorInput" }), //$NON-NLS-1$ 
 					null));
 		}
 		IDocument document = createEmptyDocument();
@@ -232,9 +234,10 @@ public class DataMapperDocumentProvider extends AbstractDocumentProvider impleme
 				throw thrownExcp;
 			}
 		} else {
-			throw new CoreException(new Status(IStatus.ERROR, DataMapperDiagramEditorPlugin.ID, 0, NLS.bind(
-					Messages.DataMapperDocumentProvider_IncorrectInputError, new Object[] { element,
-							"org.eclipse.ui.part.FileEditorInput", "org.eclipse.emf.common.ui.URIEditorInput" }), //$NON-NLS-1$ //$NON-NLS-2$ 
+			throw new CoreException(new Status(IStatus.ERROR, DataMapperDiagramEditorPlugin.ID, 0,
+					NLS.bind(Messages.DataMapperDocumentProvider_IncorrectInputError,
+							new Object[] { element, "org.eclipse.ui.part.FileEditorInput", //$NON-NLS-1$
+									"org.eclipse.emf.common.ui.URIEditorInput" }), //$NON-NLS-1$ 
 					null));
 		}
 	}
@@ -314,8 +317,8 @@ public class DataMapperDocumentProvider extends AbstractDocumentProvider impleme
 				try {
 					updateCache(element);
 				} catch (CoreException ex) {
-					DataMapperDiagramEditorPlugin.getInstance().logError(
-							Messages.DataMapperDocumentProvider_isModifiable, ex);
+					DataMapperDiagramEditorPlugin.getInstance()
+							.logError(Messages.DataMapperDocumentProvider_isModifiable, ex);
 					// Error message to log was initially taken from org.eclipse.gmf.runtime.diagram.ui.resources.editor.ide.internal.l10n.EditorMessages.StorageDocumentProvider_isModifiable
 				}
 			}
@@ -339,8 +342,8 @@ public class DataMapperDocumentProvider extends AbstractDocumentProvider impleme
 				try {
 					updateCache(element);
 				} catch (CoreException ex) {
-					DataMapperDiagramEditorPlugin.getInstance().logError(
-							Messages.DataMapperDocumentProvider_isModifiable, ex);
+					DataMapperDiagramEditorPlugin.getInstance()
+							.logError(Messages.DataMapperDocumentProvider_isModifiable, ex);
 					// Error message to log was initially taken from org.eclipse.gmf.runtime.diagram.ui.resources.editor.ide.internal.l10n.EditorMessages.StorageDocumentProvider_isModifiable
 				}
 			}
@@ -514,19 +517,19 @@ public class DataMapperDocumentProvider extends AbstractDocumentProvider impleme
 		ResourceSetInfo info = getResourceSetInfo(element);
 		if (info != null) {
 			if (!overwrite && !info.isSynchronized()) {
-				throw new CoreException(new Status(IStatus.ERROR, DataMapperDiagramEditorPlugin.ID,
-						IResourceStatus.OUT_OF_SYNC_LOCAL,
-						Messages.DataMapperDocumentProvider_UnsynchronizedFileSaveError, null));
+				throw new CoreException(
+						new Status(IStatus.ERROR, DataMapperDiagramEditorPlugin.ID, IResourceStatus.OUT_OF_SYNC_LOCAL,
+								Messages.DataMapperDocumentProvider_UnsynchronizedFileSaveError, null));
 			}
 			info.stopResourceListening();
 			fireElementStateChanging(element);
 			try {
-				monitor.beginTask(Messages.DataMapperDocumentProvider_SaveDiagramTask, info.getResourceSet()
-						.getResources().size() + 1); //"Saving diagram"
+				monitor.beginTask(Messages.DataMapperDocumentProvider_SaveDiagramTask,
+						info.getResourceSet().getResources().size() + 1); //"Saving diagram"
 				for (Iterator<Resource> it = info.getLoadedResourcesIterator(); it.hasNext();) {
 					Resource nextResource = it.next();
-					monitor.setTaskName(NLS.bind(Messages.DataMapperDocumentProvider_SaveNextResourceTask,
-							nextResource.getURI()));
+					monitor.setTaskName(
+							NLS.bind(Messages.DataMapperDocumentProvider_SaveNextResourceTask, nextResource.getURI()));
 					if (nextResource.isLoaded() && !info.getEditingDomain().isReadOnly(nextResource)) {
 						try {
 							nextResource.save(DataMapperDiagramEditorUtil.getSaveOptions());
@@ -557,27 +560,27 @@ public class DataMapperDocumentProvider extends AbstractDocumentProvider impleme
 				newResoruceURI = ((URIEditorInput) element).getURI();
 			} else {
 				fireElementStateChangeFailed(element);
-				throw new CoreException(new Status(IStatus.ERROR, DataMapperDiagramEditorPlugin.ID, 0, NLS.bind(
-						Messages.DataMapperDocumentProvider_IncorrectInputError, new Object[] { element,
-								"org.eclipse.ui.part.FileEditorInput", "org.eclipse.emf.common.ui.URIEditorInput" }), //$NON-NLS-1$ //$NON-NLS-2$ 
+				throw new CoreException(new Status(IStatus.ERROR, DataMapperDiagramEditorPlugin.ID, 0,
+						NLS.bind(Messages.DataMapperDocumentProvider_IncorrectInputError,
+								new Object[] { element, "org.eclipse.ui.part.FileEditorInput", //$NON-NLS-1$
+										"org.eclipse.emf.common.ui.URIEditorInput" }), //$NON-NLS-1$ 
 						null));
 			}
 			if (false == document instanceof IDiagramDocument) {
 				fireElementStateChangeFailed(element);
-				throw new CoreException(
-						new Status(
-								IStatus.ERROR,
-								DataMapperDiagramEditorPlugin.ID,
-								0,
-								"Incorrect document used: " + document + " instead of org.eclipse.gmf.runtime.diagram.ui.resources.editor.document.IDiagramDocument", null)); //$NON-NLS-1$ //$NON-NLS-2$
+				throw new CoreException(new Status(IStatus.ERROR, DataMapperDiagramEditorPlugin.ID, 0,
+						"Incorrect document used: " + document //$NON-NLS-1$
+								+ " instead of org.eclipse.gmf.runtime.diagram.ui.resources.editor.document.IDiagramDocument", //$NON-NLS-1$
+						null));
 			}
 			IDiagramDocument diagramDocument = (IDiagramDocument) document;
 			final Resource newResource = diagramDocument.getEditingDomain().getResourceSet()
 					.createResource(newResoruceURI);
 			final Diagram diagramCopy = (Diagram) EcoreUtil.copy(diagramDocument.getDiagram());
 			try {
-				new AbstractTransactionalCommand(diagramDocument.getEditingDomain(), NLS.bind(
-						Messages.DataMapperDocumentProvider_SaveAsOperation, diagramCopy.getName()), affectedFiles) {
+				new AbstractTransactionalCommand(diagramDocument.getEditingDomain(),
+						NLS.bind(Messages.DataMapperDocumentProvider_SaveAsOperation, diagramCopy.getName()),
+						affectedFiles) {
 					protected CommandResult doExecuteWithResult(IProgressMonitor monitor, IAdaptable info)
 							throws ExecutionException {
 						newResource.getContents().add(diagramCopy);
@@ -587,12 +590,12 @@ public class DataMapperDocumentProvider extends AbstractDocumentProvider impleme
 				newResource.save(DataMapperDiagramEditorUtil.getSaveOptions());
 			} catch (ExecutionException e) {
 				fireElementStateChangeFailed(element);
-				throw new CoreException(new Status(IStatus.ERROR, DataMapperDiagramEditorPlugin.ID, 0,
-						e.getLocalizedMessage(), null));
+				throw new CoreException(
+						new Status(IStatus.ERROR, DataMapperDiagramEditorPlugin.ID, 0, e.getLocalizedMessage(), null));
 			} catch (IOException e) {
 				fireElementStateChangeFailed(element);
-				throw new CoreException(new Status(IStatus.ERROR, DataMapperDiagramEditorPlugin.ID, 0,
-						e.getLocalizedMessage(), null));
+				throw new CoreException(
+						new Status(IStatus.ERROR, DataMapperDiagramEditorPlugin.ID, 0, e.getLocalizedMessage(), null));
 			}
 			newResource.unload();
 		}
@@ -607,8 +610,8 @@ public class DataMapperDocumentProvider extends AbstractDocumentProvider impleme
 			try {
 				file.refreshLocal(IResource.DEPTH_INFINITE, monitor);
 			} catch (CoreException ex) {
-				DataMapperDiagramEditorPlugin.getInstance().logError(
-						Messages.DataMapperDocumentProvider_handleElementContentChanged, ex);
+				DataMapperDiagramEditorPlugin.getInstance()
+						.logError(Messages.DataMapperDocumentProvider_handleElementContentChanged, ex);
 				// Error message to log was initially taken from org.eclipse.gmf.runtime.diagram.ui.resources.editor.ide.internal.l10n.EditorMessages.FileDocumentProvider_handleElementContentChanged
 			}
 		}
@@ -973,7 +976,7 @@ public class DataMapperDocumentProvider extends AbstractDocumentProvider impleme
 					Resource resource = (Resource) notification.getNotifier();
 					if (resource.isLoaded()) {
 						boolean modified = false;
-						for (Iterator/*<org.eclipse.emf.ecore.resource.Resource>*/it = myInfo
+						for (Iterator /*<org.eclipse.emf.ecore.resource.Resource>*/ it = myInfo
 								.getLoadedResourcesIterator(); it.hasNext() && !modified;) {
 							Resource nextResource = (Resource) it.next();
 							if (nextResource.isLoaded()) {

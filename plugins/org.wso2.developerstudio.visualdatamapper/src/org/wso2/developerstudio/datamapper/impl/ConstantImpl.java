@@ -7,6 +7,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.wso2.developerstudio.datamapper.Constant;
 import org.wso2.developerstudio.datamapper.DataMapperPackage;
+import org.wso2.developerstudio.datamapper.SchemaDataType;
 
 /**
  * <!-- begin-user-doc -->
@@ -14,10 +15,10 @@ import org.wso2.developerstudio.datamapper.DataMapperPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.datamapper.impl.ConstantImpl#getConstantValue <em>Constant Value</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -47,10 +48,18 @@ public class ConstantImpl extends OperatorImpl implements Constant {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	protected ConstantImpl() {
 		super();
+		setDefaultInputConnectors(0);
+		setDefaultOutputConnectors(1);
+		setInputSizeFixed(true);
+		setOutputSizeFixed(true);
+		getOutputVariableType().add(SchemaDataType.INT);
+		getOutputVariableType().add(SchemaDataType.DOUBLE);
+		getOutputVariableType().add(SchemaDataType.STRING);
+		getOutputVariableType().add(SchemaDataType.BOOLEAN);
 	}
 
 	/**

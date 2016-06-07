@@ -10,12 +10,12 @@ package org.wso2.developerstudio.datamapper;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.datamapper.Split#getDelimiter <em>Delimiter</em>}</li>
  *   <li>{@link org.wso2.developerstudio.datamapper.Split#getArrayOutput <em>Array Output</em>}</li>
  *   <li>{@link org.wso2.developerstudio.datamapper.Split#getArrayOutputResultOmitingIndices <em>Array Output Result Omiting Indices</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.wso2.developerstudio.datamapper.DataMapperPackage#getSplit()
  * @model

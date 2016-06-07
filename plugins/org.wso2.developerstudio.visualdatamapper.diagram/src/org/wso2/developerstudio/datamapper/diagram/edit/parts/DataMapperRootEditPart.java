@@ -62,20 +62,19 @@ public class DataMapperRootEditPart extends DiagramEditPart {
 		super.createDefaultEditPolicies();
 		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE, new DataMapperRootItemSemanticEditPolicy());
 		installEditPolicy(EditPolicyRoles.CANONICAL_ROLE, new DataMapperRootCanonicalEditPolicy());
-		installEditPolicy(EditPolicyRoles.CREATION_ROLE, new CreationEditPolicyWithCustomReparent(
-				DataMapperVisualIDRegistry.TYPED_INSTANCE));
+		installEditPolicy(EditPolicyRoles.CREATION_ROLE,
+				new CreationEditPolicyWithCustomReparent(DataMapperVisualIDRegistry.TYPED_INSTANCE));
 		// removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.POPUPBAR_ROLE);
 	}
 
-/*  
- * Set color theme from preference store colors
- *   protected IFigure createFigure() {
-		  IFigure fig = super.createFigure();
-		  fig.setBackgroundColor(new Color(null, 246,255,255));
-		  fig.setOpaque(true);
-		 
-		  return fig;
-		}*/
-
+	/*  
+	 * Set color theme from preference store colors
+	 *   protected IFigure createFigure() {
+			  IFigure fig = super.createFigure();
+			  fig.setBackgroundColor(new Color(null, 246,255,255));
+			  fig.setOpaque(true);
+			 
+			  return fig;
+			}*/
 
 }

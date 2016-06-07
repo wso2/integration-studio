@@ -18,10 +18,10 @@ import org.wso2.developerstudio.datamapper.OutNode;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.datamapper.impl.OperatorRightConnectorImpl#getOutNode <em>Out Node</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

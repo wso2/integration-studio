@@ -8,6 +8,7 @@ import org.apache.commons.lang.StringUtils;
 import org.eclipse.draw2d.Clickable;
 import org.eclipse.draw2d.ColorConstants;
 import org.eclipse.draw2d.Figure;
+import org.eclipse.draw2d.FlowLayout;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.ImageFigure;
 import org.eclipse.draw2d.Label;
@@ -35,7 +36,9 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IBorderItemEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.BorderItemSelectionEditPolicy;
+import org.eclipse.gmf.runtime.diagram.ui.editpolicies.DragDropEditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
+import org.eclipse.gmf.runtime.diagram.ui.editpolicies.FlowLayoutEditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.figures.BorderItemLocator;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.ConstrainedToolbarLayout;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel;
@@ -53,6 +56,8 @@ import org.wso2.developerstudio.datamapper.PropertyKeyValuePair;
 import org.wso2.developerstudio.datamapper.TreeNode;
 import org.wso2.developerstudio.datamapper.diagram.custom.util.AbsoluteBorderedItemLocator;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.custom.CustomNonResizableEditPolicyEx;
+import org.wso2.developerstudio.datamapper.diagram.edit.policies.TreeNode2CanonicalEditPolicy;
+import org.wso2.developerstudio.datamapper.diagram.edit.policies.TreeNode2ItemSemanticEditPolicy;
 import org.wso2.developerstudio.datamapper.diagram.part.DataMapperVisualIDRegistry;
 
 /**
@@ -102,17 +107,17 @@ public class TreeNode2EditPart extends AbstractBorderedShapeEditPart {
 	protected void addChild(EditPart child, int index) {
 		super.addChild(child, index);
 	}
-	
+
 	/**
 	 * @generated NOT
 	 */
 	private boolean isInNodeEmpty;
-	
+
 	/**
 	 * @generated NOT
 	 */
 	private boolean isOutNodeEmpty;
-	
+
 	/**
 	 * @generated NOT
 	 */
@@ -295,7 +300,7 @@ public class TreeNode2EditPart extends AbstractBorderedShapeEditPart {
 						} else {
 							return createInNode(childEditPart);
 						}
-					} else if(type.equals(JSON_SCHEMA_OBJECT)){
+					} else if (type.equals(JSON_SCHEMA_OBJECT)) {
 						String value = getNodeValue(type);
 						// If an element has values then enable the connector arrow
 						if (StringUtils.isNotEmpty(value)) {
@@ -303,7 +308,7 @@ public class TreeNode2EditPart extends AbstractBorderedShapeEditPart {
 						} else {
 							createEmptyInNode(childEditPart);
 						}
-					}else {
+					} else {
 						if (type.equals(NULL_VALUE)) {
 							// If type is null, then disable the in node
 							// connector
@@ -343,7 +348,7 @@ public class TreeNode2EditPart extends AbstractBorderedShapeEditPart {
 						} else {
 							return createOutNode(childEditPart);
 						}
-					} else if(type.equals(JSON_SCHEMA_OBJECT)){
+					} else if (type.equals(JSON_SCHEMA_OBJECT)) {
 						String value = getNodeValue(type);
 						// If an element has values then enable the connector arrow
 						if (StringUtils.isNotEmpty(value)) {
@@ -914,7 +919,7 @@ public class TreeNode2EditPart extends AbstractBorderedShapeEditPart {
 				newName = fullName[1];
 			} else {
 				newName = name;
-			}	
+			}
 			if (StringUtils.isNotEmpty(name) && name.startsWith(PREFIX)) {
 				nodeLabel.setIcon(attributeImg.getImage());
 			} else if (type != null && type.equals(JSON_SCHEMA_ARRAY)) {
@@ -1058,7 +1063,7 @@ public class TreeNode2EditPart extends AbstractBorderedShapeEditPart {
 	public void renameElementItem(String newName, String type) {
 		getPrimaryShape().renameElement(newName, type);
 	}
-	
+
 	/**
 	 * Recreates the content after enabling the nullable
 	 */
@@ -1071,14 +1076,13 @@ public class TreeNode2EditPart extends AbstractBorderedShapeEditPart {
 	 * @param editPart
 	 */
 	@SuppressWarnings("rawtypes")
-	public void addFixedChildToNodes(EditPart editPart){
+	public void addFixedChildToNodes(EditPart editPart) {
 		EditPart parent = editPart.getParent();
 		List children = parent.getChildren();
 		Iterator iterator = children.iterator();
 		updatConnectors(iterator);
 		super.refreshChildren();
 	}
-	
 
 	/**
 	 * Updats the connectors

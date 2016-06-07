@@ -2,24 +2,48 @@
  */
 package org.wso2.developerstudio.datamapper.impl;
 
-import java.lang.reflect.InvocationTargetException;
-
-import java.util.Map;
-import org.eclipse.emf.common.notify.Adapter;
-import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-import org.eclipse.emf.ecore.resource.Resource;
 import org.wso2.developerstudio.datamapper.*;
+import org.wso2.developerstudio.datamapper.AbsoluteValue;
+import org.wso2.developerstudio.datamapper.Add;
+import org.wso2.developerstudio.datamapper.Celi;
+import org.wso2.developerstudio.datamapper.Concat;
+import org.wso2.developerstudio.datamapper.Constant;
+import org.wso2.developerstudio.datamapper.Contains;
+import org.wso2.developerstudio.datamapper.DataMapperFactory;
+import org.wso2.developerstudio.datamapper.DataMapperLink;
+import org.wso2.developerstudio.datamapper.DataMapperNode;
+import org.wso2.developerstudio.datamapper.DataMapperPackage;
+import org.wso2.developerstudio.datamapper.DataMapperRoot;
+import org.wso2.developerstudio.datamapper.Divide;
+import org.wso2.developerstudio.datamapper.Element;
+import org.wso2.developerstudio.datamapper.Equal;
+import org.wso2.developerstudio.datamapper.Floor;
+import org.wso2.developerstudio.datamapper.InNode;
+import org.wso2.developerstudio.datamapper.Input;
+import org.wso2.developerstudio.datamapper.LowerCase;
+import org.wso2.developerstudio.datamapper.Multiply;
+import org.wso2.developerstudio.datamapper.Operator;
+import org.wso2.developerstudio.datamapper.OperatorBasicContainer;
+import org.wso2.developerstudio.datamapper.OperatorLeftConnector;
+import org.wso2.developerstudio.datamapper.OperatorLeftContainer;
+import org.wso2.developerstudio.datamapper.OperatorRightConnector;
+import org.wso2.developerstudio.datamapper.OperatorRightContainer;
+import org.wso2.developerstudio.datamapper.OutNode;
+import org.wso2.developerstudio.datamapper.Output;
+import org.wso2.developerstudio.datamapper.PropertyKeyValuePair;
+import org.wso2.developerstudio.datamapper.Round;
+import org.wso2.developerstudio.datamapper.SchemaDataType;
+import org.wso2.developerstudio.datamapper.SetPrecision;
+import org.wso2.developerstudio.datamapper.Split;
+import org.wso2.developerstudio.datamapper.Subtract;
+import org.wso2.developerstudio.datamapper.TreeNode;
+import org.wso2.developerstudio.datamapper.UpperCase;
 
 /**
  * <!-- begin-user-doc -->
@@ -77,14 +101,23 @@ public class DataMapperFactoryImpl extends EFactoryImpl implements DataMapperFac
 			case DataMapperPackage.OPERATOR_RIGHT_CONNECTOR: return createOperatorRightConnector();
 			case DataMapperPackage.ELEMENT: return createElement();
 			case DataMapperPackage.TREE_NODE: return createTreeNode();
+			case DataMapperPackage.SUBTRACT: return createSubtract();
 			case DataMapperPackage.IN_NODE: return createInNode();
 			case DataMapperPackage.OUT_NODE: return createOutNode();
 			case DataMapperPackage.DATA_MAPPER_LINK: return createDataMapperLink();
 			case DataMapperPackage.CONCAT: return createConcat();
+			case DataMapperPackage.ABSOLUTE_VALUE: return createAbsoluteValue();
 			case DataMapperPackage.EQUAL: return createEqual();
 			case DataMapperPackage.CONSTANT: return createConstant();
+			case DataMapperPackage.ADD: return createAdd();
+			case DataMapperPackage.DIVIDE: return createDivide();
+			case DataMapperPackage.FLOOR: return createFloor();
+			case DataMapperPackage.ROUND: return createRound();
+			case DataMapperPackage.MULTIPLY: return createMultiply();
+			case DataMapperPackage.SET_PRECISION: return createSetPrecision();
 			case DataMapperPackage.SPLIT: return createSplit();
 			case DataMapperPackage.LOWER_CASE: return createLowerCase();
+			case DataMapperPackage.CELI: return createCeli();
 			case DataMapperPackage.CONTAINS: return createContains();
 			case DataMapperPackage.UPPER_CASE: return createUpperCase();
 			case DataMapperPackage.PROPERTY_KEY_VALUE_PAIR: return createPropertyKeyValuePair();
@@ -264,6 +297,17 @@ public class DataMapperFactoryImpl extends EFactoryImpl implements DataMapperFac
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public Subtract createSubtract() {
+		SubtractImpl subtract = new SubtractImpl();
+		subtract.setBasicContainer(createOperatorBasicContainer());
+		return subtract;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public InNode createInNode() {
@@ -307,6 +351,17 @@ public class DataMapperFactoryImpl extends EFactoryImpl implements DataMapperFac
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
+	public AbsoluteValue createAbsoluteValue() {
+		AbsoluteValueImpl absoluteValue = new AbsoluteValueImpl();
+		absoluteValue.setBasicContainer(createOperatorBasicContainer());
+		return absoluteValue;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
 	public Equal createEqual() {
 		EqualImpl equal = new EqualImpl();
 		equal.setBasicContainer(createOperatorBasicContainer());
@@ -329,6 +384,72 @@ public class DataMapperFactoryImpl extends EFactoryImpl implements DataMapperFac
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
+	public Add createAdd() {
+		AddImpl add = new AddImpl();
+		add.setBasicContainer(createOperatorBasicContainer());
+		return add;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public Divide createDivide() {
+		DivideImpl divide = new DivideImpl();
+		divide.setBasicContainer(createOperatorBasicContainer());
+		return divide;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public Floor createFloor() {
+		FloorImpl floor = new FloorImpl();
+		floor.setBasicContainer(createOperatorBasicContainer());
+		return floor;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public Round createRound() {
+		RoundImpl round = new RoundImpl();
+		round.setBasicContainer(createOperatorBasicContainer());
+		return round;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public Multiply createMultiply() {
+		MultiplyImpl multiply = new MultiplyImpl();
+		multiply.setBasicContainer(createOperatorBasicContainer());
+		return multiply;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public SetPrecision createSetPrecision() {
+		SetPrecisionImpl setPrecision = new SetPrecisionImpl();
+		setPrecision.setBasicContainer(createOperatorBasicContainer());
+		return setPrecision;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
 	public Split createSplit() {
 		SplitImpl split = new SplitImpl();
 		split.setBasicContainer(createOperatorBasicContainer());
@@ -344,6 +465,17 @@ public class DataMapperFactoryImpl extends EFactoryImpl implements DataMapperFac
 		LowerCaseImpl lowerCase = new LowerCaseImpl();
 		lowerCase.setBasicContainer(createOperatorBasicContainer());
 		return lowerCase;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public Celi createCeli() {
+		CeliImpl celi = new CeliImpl();
+		celi.setBasicContainer(createOperatorBasicContainer());
+		return celi;
 	}
 
 	/**

@@ -24,6 +24,18 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="serialized" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
         defaultValueLiteral="false"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="defaultInputConnectors"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" defaultValueLiteral="0"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="defaultOutputConnectors"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" defaultValueLiteral="0"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="inputVariableType" upperBound="-1"
+        eType="#//SchemaDataType" defaultValueLiteral="STRING"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="outputVariableType" upperBound="-1"
+        eType="#//SchemaDataType" defaultValueLiteral="STRING"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="inputSizeFixed" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="outputSizeFixed" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="OperatorBasicContainer">
     <eStructuralFeatures xsi:type="ecore:EReference" name="leftContainer" eType="#//OperatorLeftContainer"
@@ -82,6 +94,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="inNode" eType="#//InNode"
         containment="true"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Subtract" eSuperTypes="#//Operator"/>
   <eClassifiers xsi:type="ecore:EClass" name="InNode">
     <eStructuralFeatures xsi:type="ecore:EReference" name="incomingLink" upperBound="-1"
         eType="#//DataMapperLink" eOpposite="#//DataMapperLink/inNode"/>
@@ -103,10 +116,17 @@
   <eClassifiers xsi:type="ecore:EClass" name="Concat" eSuperTypes="#//Operator">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="delimiter" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AbsoluteValue" eSuperTypes="#//Operator"/>
   <eClassifiers xsi:type="ecore:EClass" name="Equal" eSuperTypes="#//Operator"/>
   <eClassifiers xsi:type="ecore:EClass" name="Constant" eSuperTypes="#//Operator">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="constantValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Add" eSuperTypes="#//Operator"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Divide" eSuperTypes="#//Operator"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Floor" eSuperTypes="#//Operator"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Round" eSuperTypes="#//Operator"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Multiply" eSuperTypes="#//Operator"/>
+  <eClassifiers xsi:type="ecore:EClass" name="SetPrecision" eSuperTypes="#//Operator"/>
   <eClassifiers xsi:type="ecore:EClass" name="Split" eSuperTypes="#//Operator">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="delimiter" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="arrayOutput" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
@@ -131,6 +151,7 @@
     <eLiterals name="UNION" value="13"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="LowerCase" eSuperTypes="#//Operator"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Celi" eSuperTypes="#//Operator"/>
   <eClassifiers xsi:type="ecore:EClass" name="Contains" eSuperTypes="#//Operator"/>
   <eClassifiers xsi:type="ecore:EClass" name="UpperCase" eSuperTypes="#//Operator"/>
   <eClassifiers xsi:type="ecore:EClass" name="PropertyKeyValuePair">

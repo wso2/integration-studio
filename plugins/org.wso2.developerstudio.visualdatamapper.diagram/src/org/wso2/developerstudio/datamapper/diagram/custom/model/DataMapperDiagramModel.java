@@ -124,7 +124,7 @@ public class DataMapperDiagramModel {
                 currentTreeNode.setIndex(index);
                 addVariableTypeToMap(addedVariable.getName(), variableType);
                 inputVariablesArray.add(index);
-                if (isCurrentTreeNodeALeafNode(variableType)) {
+                if (isCurrentTreeNodeALeafNode(currentTreeNode)) {
                     getResolvedVariableArray().add(index);
                     tempNodeArray.add(currentTreeNode);
                 }
@@ -146,6 +146,14 @@ public class DataMapperDiagramModel {
         populateAdjacencyLists(tempNodeArray);
     }
 
+    private boolean isCurrentTreeNodeALeafNode(TreeNodeImpl currentTreeNode) {
+        EList<DataMapperLink> outgoingLinks = currentTreeNode.getOutNode().getOutgoingLink();
+        if (outgoingLinks.size() > 0) {
+            return true;
+        }
+        return false;
+    }
+
     private void addOtherRootElemetsToNodeArray(List<EObject> tempNodeArray, Input input) {
         EList<Operator> operators = ((DataMapperRoot) input.eContainer()).getOperators();
         for (Operator operator : operators) {
@@ -161,10 +169,6 @@ public class DataMapperDiagramModel {
             return true;
         }
         return false;
-    }
-
-    private boolean isCurrentTreeNodeALeafNode(SchemaDataType variableType) {
-        return ScriptGenerationUtil.isVariableTypePrimitive(variableType);
     }
 
     private void setInputAndOutputRootNames(DataMapperRoot rootDiagram) {

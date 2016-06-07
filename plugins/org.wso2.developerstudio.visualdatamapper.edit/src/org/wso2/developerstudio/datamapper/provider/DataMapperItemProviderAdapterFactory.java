@@ -346,6 +346,29 @@ public class DataMapperItemProviderAdapterFactory extends DataMapperAdapterFacto
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.wso2.developerstudio.datamapper.Subtract} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected SubtractItemProvider subtractItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.wso2.developerstudio.datamapper.Subtract}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createSubtractAdapter() {
+		if (subtractItemProvider == null) {
+			subtractItemProvider = new SubtractItemProvider(this);
+		}
+
+		return subtractItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link org.wso2.developerstudio.datamapper.InNode} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -438,6 +461,29 @@ public class DataMapperItemProviderAdapterFactory extends DataMapperAdapterFacto
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.wso2.developerstudio.datamapper.AbsoluteValue} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected AbsoluteValueItemProvider absoluteValueItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.wso2.developerstudio.datamapper.AbsoluteValue}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createAbsoluteValueAdapter() {
+		if (absoluteValueItemProvider == null) {
+			absoluteValueItemProvider = new AbsoluteValueItemProvider(this);
+		}
+
+		return absoluteValueItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link org.wso2.developerstudio.datamapper.Equal} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -484,6 +530,144 @@ public class DataMapperItemProviderAdapterFactory extends DataMapperAdapterFacto
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.wso2.developerstudio.datamapper.Add} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected AddItemProvider addItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.wso2.developerstudio.datamapper.Add}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createAddAdapter() {
+		if (addItemProvider == null) {
+			addItemProvider = new AddItemProvider(this);
+		}
+
+		return addItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.wso2.developerstudio.datamapper.Divide} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected DivideItemProvider divideItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.wso2.developerstudio.datamapper.Divide}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createDivideAdapter() {
+		if (divideItemProvider == null) {
+			divideItemProvider = new DivideItemProvider(this);
+		}
+
+		return divideItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.wso2.developerstudio.datamapper.Floor} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected FloorItemProvider floorItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.wso2.developerstudio.datamapper.Floor}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createFloorAdapter() {
+		if (floorItemProvider == null) {
+			floorItemProvider = new FloorItemProvider(this);
+		}
+
+		return floorItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.wso2.developerstudio.datamapper.Round} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected RoundItemProvider roundItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.wso2.developerstudio.datamapper.Round}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createRoundAdapter() {
+		if (roundItemProvider == null) {
+			roundItemProvider = new RoundItemProvider(this);
+		}
+
+		return roundItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.wso2.developerstudio.datamapper.Multiply} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected MultiplyItemProvider multiplyItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.wso2.developerstudio.datamapper.Multiply}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createMultiplyAdapter() {
+		if (multiplyItemProvider == null) {
+			multiplyItemProvider = new MultiplyItemProvider(this);
+		}
+
+		return multiplyItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.wso2.developerstudio.datamapper.SetPrecision} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected SetPrecisionItemProvider setPrecisionItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.wso2.developerstudio.datamapper.SetPrecision}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createSetPrecisionAdapter() {
+		if (setPrecisionItemProvider == null) {
+			setPrecisionItemProvider = new SetPrecisionItemProvider(this);
+		}
+
+		return setPrecisionItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link org.wso2.developerstudio.datamapper.Split} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -527,6 +711,29 @@ public class DataMapperItemProviderAdapterFactory extends DataMapperAdapterFacto
 		}
 
 		return lowerCaseItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.wso2.developerstudio.datamapper.Celi} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected CeliItemProvider celiItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.wso2.developerstudio.datamapper.Celi}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createCeliAdapter() {
+		if (celiItemProvider == null) {
+			celiItemProvider = new CeliItemProvider(this);
+		}
+
+		return celiItemProvider;
 	}
 
 	/**
@@ -709,14 +916,23 @@ public class DataMapperItemProviderAdapterFactory extends DataMapperAdapterFacto
 		if (operatorRightConnectorItemProvider != null) operatorRightConnectorItemProvider.dispose();
 		if (elementItemProvider != null) elementItemProvider.dispose();
 		if (treeNodeItemProvider != null) treeNodeItemProvider.dispose();
+		if (subtractItemProvider != null) subtractItemProvider.dispose();
 		if (inNodeItemProvider != null) inNodeItemProvider.dispose();
 		if (outNodeItemProvider != null) outNodeItemProvider.dispose();
 		if (dataMapperLinkItemProvider != null) dataMapperLinkItemProvider.dispose();
 		if (concatItemProvider != null) concatItemProvider.dispose();
+		if (absoluteValueItemProvider != null) absoluteValueItemProvider.dispose();
 		if (equalItemProvider != null) equalItemProvider.dispose();
 		if (constantItemProvider != null) constantItemProvider.dispose();
+		if (addItemProvider != null) addItemProvider.dispose();
+		if (divideItemProvider != null) divideItemProvider.dispose();
+		if (floorItemProvider != null) floorItemProvider.dispose();
+		if (roundItemProvider != null) roundItemProvider.dispose();
+		if (multiplyItemProvider != null) multiplyItemProvider.dispose();
+		if (setPrecisionItemProvider != null) setPrecisionItemProvider.dispose();
 		if (splitItemProvider != null) splitItemProvider.dispose();
 		if (lowerCaseItemProvider != null) lowerCaseItemProvider.dispose();
+		if (celiItemProvider != null) celiItemProvider.dispose();
 		if (containsItemProvider != null) containsItemProvider.dispose();
 		if (upperCaseItemProvider != null) upperCaseItemProvider.dispose();
 		if (propertyKeyValuePairItemProvider != null) propertyKeyValuePairItemProvider.dispose();

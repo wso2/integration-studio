@@ -25,12 +25,12 @@ import org.wso2.developerstudio.datamapper.Output;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.datamapper.impl.DataMapperRootImpl#getInput <em>Input</em>}</li>
  *   <li>{@link org.wso2.developerstudio.datamapper.impl.DataMapperRootImpl#getOutput <em>Output</em>}</li>
  *   <li>{@link org.wso2.developerstudio.datamapper.impl.DataMapperRootImpl#getOperators <em>Operators</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

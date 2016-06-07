@@ -78,7 +78,7 @@ public class DataMapperLinkEditPart extends ConnectionNodeEditPart implements IT
 	public boolean canAttachNote() {
 		return false;
 	}
-	
+
 	/**
 	 * @generated NOT
 	 */
@@ -119,12 +119,11 @@ public class DataMapperLinkEditPart extends ConnectionNodeEditPart implements IT
 				graphics.setBackgroundColor(DataMapperColorConstants.connectorColor);
 				graphics.setForegroundColor(DataMapperColorConstants.connectorColor);
 				super.paintFigure(graphics);
-				
+
 			}
-			
-			
+
 			public PointList getPoints() {
-				
+
 				PointList list = super.getPoints();
 				if (list.size() == 0) {
 					return list;
@@ -142,43 +141,42 @@ public class DataMapperLinkEditPart extends ConnectionNodeEditPart implements IT
 				return list;
 			}
 		};
-		
-		
+
 		connection.setConnectionRouter(new ManhattanConnectionRouter());
-		
+
 		connection.addMouseListener(new MouseListener() {
-			
+
 			@Override
 			public void mouseReleased(MouseEvent me) {
 				// TODO Auto-generated method stub
-				
+
 			}
-			
+
 			@Override
 			public void mousePressed(MouseEvent me) {
 				// TODO Auto-generated method stub
-				
+
 			}
-			
+
 			@Override
 			public void mouseDoubleClicked(MouseEvent me) {
 				// TODO Auto-generated method stub
-				
+
 			}
 		});
-		
+
 		connection.addMouseMotionListener(new MouseMotionListener() {
-			
+
 			@Override
 			public void mouseMoved(MouseEvent me) {
-				
+
 			}
-			
+
 			@Override
 			public void mouseHover(MouseEvent me) {
-				
+
 			}
-			
+
 			@Override
 			public void mouseExited(MouseEvent me) {
 				connection.setLineStyle(Graphics.LINE_SOLID);
@@ -186,32 +184,35 @@ public class DataMapperLinkEditPart extends ConnectionNodeEditPart implements IT
 				if (getSource() instanceof OutNodeEditPart) {
 					OutNodeEditPart outNodeEditPart = (OutNodeEditPart) getSource();
 					if (outNodeEditPart.getParent() instanceof TreeNode2EditPart) {
-						TreeNode2EditPart num =(TreeNode2EditPart) outNodeEditPart.getParent();
-					    num.removeHighlightOnElem();
-					}if (outNodeEditPart.getParent() instanceof TreeNodeEditPart) {
-						TreeNodeEditPart num =(TreeNodeEditPart) outNodeEditPart.getParent();
-					    num.removeHighlightOnElem();
+						TreeNode2EditPart num = (TreeNode2EditPart) outNodeEditPart.getParent();
+						num.removeHighlightOnElem();
+					}
+					if (outNodeEditPart.getParent() instanceof TreeNodeEditPart) {
+						TreeNodeEditPart num = (TreeNodeEditPart) outNodeEditPart.getParent();
+						num.removeHighlightOnElem();
 					}
 					if (outNodeEditPart.getParent() instanceof TreeNode3EditPart) {
-						TreeNode3EditPart num =(TreeNode3EditPart) outNodeEditPart.getParent();
-					    num.removeHighlightOnElem();
+						TreeNode3EditPart num = (TreeNode3EditPart) outNodeEditPart.getParent();
+						num.removeHighlightOnElem();
 					}
-				} if (getTarget() instanceof InNodeEditPart) {
+				}
+				if (getTarget() instanceof InNodeEditPart) {
 					InNodeEditPart inNodeEditPart = (InNodeEditPart) getTarget();
 					if (inNodeEditPart.getParent() instanceof TreeNode2EditPart) {
-						TreeNode2EditPart num =(TreeNode2EditPart) inNodeEditPart.getParent();
-					    num.removeHighlightOnElem();
-					}if (inNodeEditPart.getParent() instanceof TreeNodeEditPart) {
-						TreeNodeEditPart num =(TreeNodeEditPart) inNodeEditPart.getParent();
-					    num.removeHighlightOnElem();
+						TreeNode2EditPart num = (TreeNode2EditPart) inNodeEditPart.getParent();
+						num.removeHighlightOnElem();
+					}
+					if (inNodeEditPart.getParent() instanceof TreeNodeEditPart) {
+						TreeNodeEditPart num = (TreeNodeEditPart) inNodeEditPart.getParent();
+						num.removeHighlightOnElem();
 					}
 					if (inNodeEditPart.getParent() instanceof TreeNode3EditPart) {
-						TreeNode3EditPart num =(TreeNode3EditPart) inNodeEditPart.getParent();
-					    num.removeHighlightOnElem();
+						TreeNode3EditPart num = (TreeNode3EditPart) inNodeEditPart.getParent();
+						num.removeHighlightOnElem();
 					}
 				}
 			}
-			
+
 			@Override
 			public void mouseEntered(MouseEvent me) {
 				connection.setLineStyle(Graphics.LINE_DASH);
@@ -219,41 +220,42 @@ public class DataMapperLinkEditPart extends ConnectionNodeEditPart implements IT
 				if (getSource() instanceof OutNodeEditPart) {
 					OutNodeEditPart outNodeEditPart = (OutNodeEditPart) getSource();
 					if (outNodeEditPart.getParent() instanceof TreeNode2EditPart) {
-						TreeNode2EditPart num =(TreeNode2EditPart) outNodeEditPart.getParent();
-					    num.highlightElementItem();
-					}if (outNodeEditPart.getParent() instanceof TreeNodeEditPart) {
-						TreeNodeEditPart num =(TreeNodeEditPart) outNodeEditPart.getParent();
-					    num.highlightElementItem();
+						TreeNode2EditPart num = (TreeNode2EditPart) outNodeEditPart.getParent();
+						num.highlightElementItem();
+					}
+					if (outNodeEditPart.getParent() instanceof TreeNodeEditPart) {
+						TreeNodeEditPart num = (TreeNodeEditPart) outNodeEditPart.getParent();
+						num.highlightElementItem();
 					}
 					if (outNodeEditPart.getParent() instanceof TreeNode3EditPart) {
-						TreeNode3EditPart num =(TreeNode3EditPart) outNodeEditPart.getParent();
-					    num.highlightElementItem();
+						TreeNode3EditPart num = (TreeNode3EditPart) outNodeEditPart.getParent();
+						num.highlightElementItem();
 					}
 				}
 				if (getTarget() instanceof InNodeEditPart) {
 					InNodeEditPart inNodeEditPart = (InNodeEditPart) getTarget();
 					if (inNodeEditPart.getParent() instanceof TreeNode2EditPart) {
-						TreeNode2EditPart num =(TreeNode2EditPart) inNodeEditPart.getParent();
-					    num.highlightElementItem();
-					}if (inNodeEditPart.getParent() instanceof TreeNodeEditPart) {
-						TreeNodeEditPart num =(TreeNodeEditPart) inNodeEditPart.getParent();
-					    num.highlightElementItem();
+						TreeNode2EditPart num = (TreeNode2EditPart) inNodeEditPart.getParent();
+						num.highlightElementItem();
+					}
+					if (inNodeEditPart.getParent() instanceof TreeNodeEditPart) {
+						TreeNodeEditPart num = (TreeNodeEditPart) inNodeEditPart.getParent();
+						num.highlightElementItem();
 					}
 					if (inNodeEditPart.getParent() instanceof TreeNode3EditPart) {
-						TreeNode3EditPart num =(TreeNode3EditPart) inNodeEditPart.getParent();
-					    num.highlightElementItem();
+						TreeNode3EditPart num = (TreeNode3EditPart) inNodeEditPart.getParent();
+						num.highlightElementItem();
 					}
 				}
-				
+
 			}
-			
+
 			@Override
 			public void mouseDragged(MouseEvent me) {
-				
+
 			}
 		});
-		
-		
+
 		return connection;
 	}
 

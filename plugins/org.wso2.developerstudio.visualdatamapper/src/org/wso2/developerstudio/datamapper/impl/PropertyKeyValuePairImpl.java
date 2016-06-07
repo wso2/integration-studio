@@ -21,11 +21,11 @@ import org.wso2.developerstudio.datamapper.PropertyKeyValuePair;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.datamapper.impl.PropertyKeyValuePairImpl#getKey <em>Key</em>}</li>
  *   <li>{@link org.wso2.developerstudio.datamapper.impl.PropertyKeyValuePairImpl#getValue <em>Value</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

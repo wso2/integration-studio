@@ -28,16 +28,20 @@ import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.gmf.tooling.runtime.edit.policies.reparent.CreationEditPolicyWithCustomReparent;
+import org.eclipse.papyrus.infra.gmfdiag.css.CSSShapeImpl;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.widgets.Display;
 import org.wso2.developerstudio.datamapper.DataMapperFactory;
 import org.wso2.developerstudio.datamapper.DataMapperPackage;
+import org.wso2.developerstudio.datamapper.OperatorLeftConnector;
+import org.wso2.developerstudio.datamapper.OperatorLeftContainer;
 import org.wso2.developerstudio.datamapper.OperatorRightConnector;
 import org.wso2.developerstudio.datamapper.OperatorRightContainer;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.custom.CustomNonResizableEditPolicyEx;
 import org.wso2.developerstudio.datamapper.diagram.edit.policies.OperatorRightContainerCanonicalEditPolicy;
 import org.wso2.developerstudio.datamapper.diagram.edit.policies.OperatorRightContainerItemSemanticEditPolicy;
 import org.wso2.developerstudio.datamapper.diagram.part.DataMapperVisualIDRegistry;
+import org.wso2.developerstudio.datamapper.impl.OperatorImpl;
 
 /**
  * @generated
@@ -80,48 +84,23 @@ public class OperatorRightContainerEditPart extends ShapeNodeEditPart {
 		Display.getDefault().asyncExec(new Runnable() {
 			@Override
 			public void run() {
-
-				if (getParent().getParent() instanceof SplitEditPart) {
+				if(getParent().getParent().getModel() instanceof CSSShapeImpl){
+					CSSShapeImpl model = (CSSShapeImpl) getParent().getParent().getModel();
+					OperatorImpl operator=(OperatorImpl) model.getElement();
+					int numberOfOutputs = operator.getDefaultOutputConnectors();
 					EObject parentContainer = ((org.eclipse.gmf.runtime.notation.impl.NodeImpl) getModel())
 							.getElement();
 					if (((OperatorRightContainer) parentContainer).getRightConnectors().size() == 0) {
-						OperatorRightConnector rightConnector = DataMapperFactory.eINSTANCE
-								.createOperatorRightConnector();
-						OperatorRightConnector rightConnector2 = DataMapperFactory.eINSTANCE
-								.createOperatorRightConnector();
-						AddCommand addCaseConnectorCmd = new AddCommand(getEditingDomain(), parentContainer,
-								DataMapperPackage.Literals.OPERATOR_RIGHT_CONTAINER__RIGHT_CONNECTORS, rightConnector);
-						if (addCaseConnectorCmd.canExecute()) {
-							getEditingDomain().getCommandStack().execute(addCaseConnectorCmd);
+						for (int i = 0; i < numberOfOutputs; i++) {
+							OperatorRightConnector rightConnector = DataMapperFactory.eINSTANCE
+									.createOperatorRightConnector();
+
+							AddCommand addCaseConnectorCmd = new AddCommand(getEditingDomain(), parentContainer,
+									DataMapperPackage.Literals.OPERATOR_RIGHT_CONTAINER__RIGHT_CONNECTORS, rightConnector);
+							if (addCaseConnectorCmd.canExecute()) {
+								getEditingDomain().getCommandStack().execute(addCaseConnectorCmd);
+							}
 						}
-
-						AddCommand addCaseConnectorCmd2 = new AddCommand(getEditingDomain(), parentContainer,
-								DataMapperPackage.Literals.OPERATOR_RIGHT_CONTAINER__RIGHT_CONNECTORS, rightConnector2);
-						if (addCaseConnectorCmd2.canExecute()) {
-							getEditingDomain().getCommandStack().execute(addCaseConnectorCmd2);
-						}
-
-					}
-				}
-
-				else if (getParent().getParent() instanceof EqualEditPart
-						|| getParent().getParent() instanceof ConcatEditPart
-						|| getParent().getParent() instanceof LowerCaseEditPart
-						|| getParent().getParent() instanceof ConstantEditPart
-						|| getParent().getParent() instanceof ContainsEditPart
-						|| getParent().getParent() instanceof UpperCaseEditPart) {
-					EObject parentContainer = ((org.eclipse.gmf.runtime.notation.impl.NodeImpl) getModel())
-							.getElement();
-					if (((OperatorRightContainer) parentContainer).getRightConnectors().size() == 0) {
-						OperatorRightConnector rightConnector = DataMapperFactory.eINSTANCE
-								.createOperatorRightConnector();
-
-						AddCommand addCaseConnectorCmd = new AddCommand(getEditingDomain(), parentContainer,
-								DataMapperPackage.Literals.OPERATOR_RIGHT_CONTAINER__RIGHT_CONNECTORS, rightConnector);
-						if (addCaseConnectorCmd.canExecute()) {
-							getEditingDomain().getCommandStack().execute(addCaseConnectorCmd);
-						}
-
 					}
 				}
 			}// run end
@@ -134,8 +113,8 @@ public class OperatorRightContainerEditPart extends ShapeNodeEditPart {
 	 * @generated NOT
 	 */
 	protected void createDefaultEditPolicies() {
-		installEditPolicy(EditPolicyRoles.CREATION_ROLE, new CreationEditPolicyWithCustomReparent(
-				DataMapperVisualIDRegistry.TYPED_INSTANCE));
+		installEditPolicy(EditPolicyRoles.CREATION_ROLE,
+				new CreationEditPolicyWithCustomReparent(DataMapperVisualIDRegistry.TYPED_INSTANCE));
 		super.createDefaultEditPolicies();
 		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE, new OperatorRightContainerItemSemanticEditPolicy());
 		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE, new DragDropEditPolicy());
@@ -302,9 +281,8 @@ public class OperatorRightContainerEditPart extends ShapeNodeEditPart {
 
 				@Override
 				public void mouseEntered(MouseEvent me) {
-					getEditDomain().getPaletteViewer().setActiveTool(
-							(ToolEntry) (((PaletteContainer) getEditDomain().getPaletteViewer().getPaletteRoot()
-									.getChildren().get(1)).getChildren().get(0)));
+					getEditDomain().getPaletteViewer().setActiveTool((ToolEntry) (((PaletteContainer) getEditDomain()
+							.getPaletteViewer().getPaletteRoot().getChildren().get(1)).getChildren().get(0)));
 
 				}
 

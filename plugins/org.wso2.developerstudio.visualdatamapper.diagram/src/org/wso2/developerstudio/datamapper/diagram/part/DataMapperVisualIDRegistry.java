@@ -8,19 +8,25 @@ import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.gmf.tooling.runtime.structure.DiagramStructure;
 import org.wso2.developerstudio.datamapper.DataMapperPackage;
 import org.wso2.developerstudio.datamapper.DataMapperRoot;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.AbsoluteValueEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.AddEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.CeliEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.ConcatEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.ConstantEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.ContainsEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.DataMapperLinkEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.DataMapperRootEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.DivideEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.ElementEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.ElementNameEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.EqualEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.FloorEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.InNode2EditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.InNode3EditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.InNodeEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.InputEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.LowerCaseEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.MultiplyEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.OperatorBasicContainerEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.OperatorLeftConnectorEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.OperatorLeftContainerEditPart;
@@ -30,7 +36,10 @@ import org.wso2.developerstudio.datamapper.diagram.edit.parts.OutNode2EditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.OutNode3EditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.OutNodeEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.OutputEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.RoundEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.SetPrecisionEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.SplitEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.SubtractEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.TreeNode2EditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.TreeNode3EditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.TreeNodeEditPart;
@@ -90,8 +99,8 @@ public class DataMapperVisualIDRegistry {
 			return Integer.parseInt(type);
 		} catch (NumberFormatException e) {
 			if (Boolean.TRUE.toString().equalsIgnoreCase(Platform.getDebugOption(DEBUG_KEY))) {
-				DataMapperDiagramEditorPlugin.getInstance().logError(
-						"Unable to parse view type as a visualID number: " + type);
+				DataMapperDiagramEditorPlugin.getInstance()
+						.logError("Unable to parse view type as a visualID number: " + type);
 			}
 		}
 		return -1;
@@ -152,8 +161,14 @@ public class DataMapperVisualIDRegistry {
 			if (DataMapperPackage.eINSTANCE.getEqual().isSuperTypeOf(domainElement.eClass())) {
 				return EqualEditPart.VISUAL_ID;
 			}
+			if (DataMapperPackage.eINSTANCE.getSubtract().isSuperTypeOf(domainElement.eClass())) {
+				return SubtractEditPart.VISUAL_ID;
+			}
 			if (DataMapperPackage.eINSTANCE.getConcat().isSuperTypeOf(domainElement.eClass())) {
 				return ConcatEditPart.VISUAL_ID;
+			}
+			if (DataMapperPackage.eINSTANCE.getAdd().isSuperTypeOf(domainElement.eClass())) {
+				return AddEditPart.VISUAL_ID;
 			}
 			if (DataMapperPackage.eINSTANCE.getSplit().isSuperTypeOf(domainElement.eClass())) {
 				return SplitEditPart.VISUAL_ID;
@@ -169,6 +184,27 @@ public class DataMapperVisualIDRegistry {
 			}
 			if (DataMapperPackage.eINSTANCE.getUpperCase().isSuperTypeOf(domainElement.eClass())) {
 				return UpperCaseEditPart.VISUAL_ID;
+			}
+			if (DataMapperPackage.eINSTANCE.getMultiply().isSuperTypeOf(domainElement.eClass())) {
+				return MultiplyEditPart.VISUAL_ID;
+			}
+			if (DataMapperPackage.eINSTANCE.getDivide().isSuperTypeOf(domainElement.eClass())) {
+				return DivideEditPart.VISUAL_ID;
+			}
+			if (DataMapperPackage.eINSTANCE.getCeli().isSuperTypeOf(domainElement.eClass())) {
+				return CeliEditPart.VISUAL_ID;
+			}
+			if (DataMapperPackage.eINSTANCE.getFloor().isSuperTypeOf(domainElement.eClass())) {
+				return FloorEditPart.VISUAL_ID;
+			}
+			if (DataMapperPackage.eINSTANCE.getRound().isSuperTypeOf(domainElement.eClass())) {
+				return RoundEditPart.VISUAL_ID;
+			}
+			if (DataMapperPackage.eINSTANCE.getSetPrecision().isSuperTypeOf(domainElement.eClass())) {
+				return SetPrecisionEditPart.VISUAL_ID;
+			}
+			if (DataMapperPackage.eINSTANCE.getAbsoluteValue().isSuperTypeOf(domainElement.eClass())) {
+				return AbsoluteValueEditPart.VISUAL_ID;
 			}
 			break;
 		case InputEditPart.VISUAL_ID:
@@ -186,7 +222,17 @@ public class DataMapperVisualIDRegistry {
 				return OperatorBasicContainerEditPart.VISUAL_ID;
 			}
 			break;
+		case SubtractEditPart.VISUAL_ID:
+			if (DataMapperPackage.eINSTANCE.getOperatorBasicContainer().isSuperTypeOf(domainElement.eClass())) {
+				return OperatorBasicContainerEditPart.VISUAL_ID;
+			}
+			break;
 		case ConcatEditPart.VISUAL_ID:
+			if (DataMapperPackage.eINSTANCE.getOperatorBasicContainer().isSuperTypeOf(domainElement.eClass())) {
+				return OperatorBasicContainerEditPart.VISUAL_ID;
+			}
+			break;
+		case AddEditPart.VISUAL_ID:
 			if (DataMapperPackage.eINSTANCE.getOperatorBasicContainer().isSuperTypeOf(domainElement.eClass())) {
 				return OperatorBasicContainerEditPart.VISUAL_ID;
 			}
@@ -212,6 +258,41 @@ public class DataMapperVisualIDRegistry {
 			}
 			break;
 		case UpperCaseEditPart.VISUAL_ID:
+			if (DataMapperPackage.eINSTANCE.getOperatorBasicContainer().isSuperTypeOf(domainElement.eClass())) {
+				return OperatorBasicContainerEditPart.VISUAL_ID;
+			}
+			break;
+		case MultiplyEditPart.VISUAL_ID:
+			if (DataMapperPackage.eINSTANCE.getOperatorBasicContainer().isSuperTypeOf(domainElement.eClass())) {
+				return OperatorBasicContainerEditPart.VISUAL_ID;
+			}
+			break;
+		case DivideEditPart.VISUAL_ID:
+			if (DataMapperPackage.eINSTANCE.getOperatorBasicContainer().isSuperTypeOf(domainElement.eClass())) {
+				return OperatorBasicContainerEditPart.VISUAL_ID;
+			}
+			break;
+		case CeliEditPart.VISUAL_ID:
+			if (DataMapperPackage.eINSTANCE.getOperatorBasicContainer().isSuperTypeOf(domainElement.eClass())) {
+				return OperatorBasicContainerEditPart.VISUAL_ID;
+			}
+			break;
+		case FloorEditPart.VISUAL_ID:
+			if (DataMapperPackage.eINSTANCE.getOperatorBasicContainer().isSuperTypeOf(domainElement.eClass())) {
+				return OperatorBasicContainerEditPart.VISUAL_ID;
+			}
+			break;
+		case RoundEditPart.VISUAL_ID:
+			if (DataMapperPackage.eINSTANCE.getOperatorBasicContainer().isSuperTypeOf(domainElement.eClass())) {
+				return OperatorBasicContainerEditPart.VISUAL_ID;
+			}
+			break;
+		case SetPrecisionEditPart.VISUAL_ID:
+			if (DataMapperPackage.eINSTANCE.getOperatorBasicContainer().isSuperTypeOf(domainElement.eClass())) {
+				return OperatorBasicContainerEditPart.VISUAL_ID;
+			}
+			break;
+		case AbsoluteValueEditPart.VISUAL_ID:
 			if (DataMapperPackage.eINSTANCE.getOperatorBasicContainer().isSuperTypeOf(domainElement.eClass())) {
 				return OperatorBasicContainerEditPart.VISUAL_ID;
 			}
@@ -329,7 +410,13 @@ public class DataMapperVisualIDRegistry {
 			if (EqualEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
+			if (SubtractEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
 			if (ConcatEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			if (AddEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
 			if (SplitEditPart.VISUAL_ID == nodeVisualID) {
@@ -345,6 +432,27 @@ public class DataMapperVisualIDRegistry {
 				return true;
 			}
 			if (UpperCaseEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			if (MultiplyEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			if (DivideEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			if (CeliEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			if (FloorEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			if (RoundEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			if (SetPrecisionEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			if (AbsoluteValueEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
 			break;
@@ -363,7 +471,17 @@ public class DataMapperVisualIDRegistry {
 				return true;
 			}
 			break;
+		case SubtractEditPart.VISUAL_ID:
+			if (OperatorBasicContainerEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			break;
 		case ConcatEditPart.VISUAL_ID:
+			if (OperatorBasicContainerEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			break;
+		case AddEditPart.VISUAL_ID:
 			if (OperatorBasicContainerEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
@@ -389,6 +507,41 @@ public class DataMapperVisualIDRegistry {
 			}
 			break;
 		case UpperCaseEditPart.VISUAL_ID:
+			if (OperatorBasicContainerEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			break;
+		case MultiplyEditPart.VISUAL_ID:
+			if (OperatorBasicContainerEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			break;
+		case DivideEditPart.VISUAL_ID:
+			if (OperatorBasicContainerEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			break;
+		case CeliEditPart.VISUAL_ID:
+			if (OperatorBasicContainerEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			break;
+		case FloorEditPart.VISUAL_ID:
+			if (OperatorBasicContainerEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			break;
+		case RoundEditPart.VISUAL_ID:
+			if (OperatorBasicContainerEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			break;
+		case SetPrecisionEditPart.VISUAL_ID:
+			if (OperatorBasicContainerEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			break;
+		case AbsoluteValueEditPart.VISUAL_ID:
 			if (OperatorBasicContainerEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
@@ -554,52 +707,58 @@ public class DataMapperVisualIDRegistry {
 	 */
 	public static final DiagramStructure TYPED_INSTANCE = new DiagramStructure() {
 		/**
-		 * @generated
-		 */
+		* @generated
+		*/
 		@Override
+
 		public int getVisualID(View view) {
 			return org.wso2.developerstudio.datamapper.diagram.part.DataMapperVisualIDRegistry.getVisualID(view);
 		}
 
 		/**
-		 * @generated
-		 */
+		* @generated
+		*/
 		@Override
+
 		public String getModelID(View view) {
 			return org.wso2.developerstudio.datamapper.diagram.part.DataMapperVisualIDRegistry.getModelID(view);
 		}
 
 		/**
-		 * @generated
-		 */
+		* @generated
+		*/
 		@Override
+
 		public int getNodeVisualID(View containerView, EObject domainElement) {
-			return org.wso2.developerstudio.datamapper.diagram.part.DataMapperVisualIDRegistry.getNodeVisualID(
-					containerView, domainElement);
+			return org.wso2.developerstudio.datamapper.diagram.part.DataMapperVisualIDRegistry
+					.getNodeVisualID(containerView, domainElement);
 		}
 
 		/**
-		 * @generated
-		 */
+		* @generated
+		*/
 		@Override
+
 		public boolean checkNodeVisualID(View containerView, EObject domainElement, int candidate) {
-			return org.wso2.developerstudio.datamapper.diagram.part.DataMapperVisualIDRegistry.checkNodeVisualID(
-					containerView, domainElement, candidate);
+			return org.wso2.developerstudio.datamapper.diagram.part.DataMapperVisualIDRegistry
+					.checkNodeVisualID(containerView, domainElement, candidate);
 		}
 
 		/**
-		 * @generated
-		 */
+		* @generated
+		*/
 		@Override
+
 		public boolean isCompartmentVisualID(int visualID) {
 			return org.wso2.developerstudio.datamapper.diagram.part.DataMapperVisualIDRegistry
 					.isCompartmentVisualID(visualID);
 		}
 
 		/**
-		 * @generated
-		 */
+		* @generated
+		*/
 		@Override
+
 		public boolean isSemanticLeafVisualID(int visualID) {
 			return org.wso2.developerstudio.datamapper.diagram.part.DataMapperVisualIDRegistry
 					.isSemanticLeafVisualID(visualID);

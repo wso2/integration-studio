@@ -226,7 +226,7 @@
       <viewProvider class="org.wso2.developerstudio.datamapper.diagram.providers.DataMapperViewProvider">
          <Priority name="Lowest"/>
          <context viewClass="org.eclipse.gmf.runtime.notation.Diagram" semanticHints="DataMapper"/>
-         <context viewClass="org.eclipse.gmf.runtime.notation.Node" semanticHints="2002,2003,2005,2006,2007,2008,2009,2010,2011,3002,3007,3008,3009,3003,3020,3019,3011,3012,3013,3014,3015,3016,3017,3018"/>
+         <context viewClass="org.eclipse.gmf.runtime.notation.Node" semanticHints="2002,2003,2005,2013,2006,2012,2007,2008,2009,2010,2011,2014,2015,2016,2017,2018,2019,2020,3002,3007,3008,3009,3003,3020,3019,3011,3012,3013,3014,3015,3016,3017,3018"/>
          <context viewClass="org.eclipse.gmf.runtime.notation.Edge" semanticHints="4001"/>
       </viewProvider>
    </extension>
@@ -239,7 +239,7 @@
             <method name="getType()" value="DataMapper"/>
          </object>
          <object class="org.eclipse.gmf.runtime.notation.Node" id="generated-nodes">
-            <method name="getType()" value="2002,2003,2005,2006,2007,2008,2009,2010,2011,3002,3007,3008,3009,3003,3020,3019,3011,3012,3013,3014,3015,3016,3017,3018"/>
+            <method name="getType()" value="2002,2003,2005,2013,2006,2012,2007,2008,2009,2010,2011,2014,2015,2016,2017,2018,2019,2020,3002,3007,3008,3009,3003,3020,3019,3011,3012,3013,3014,3015,3016,3017,3018"/>
          </object>
          <object class="org.eclipse.gmf.runtime.notation.Edge" id="generated-links">
             <method name="getType()" value="4001"/>
@@ -276,10 +276,20 @@
          <object class="org.wso2.developerstudio.datamapper.diagram.edit.parts.EqualEditPart" id="Equal_2005"/>
          <context elements="Equal_2005"/>
       </modelingAssistantProvider>
+            <modelingAssistantProvider class="org.wso2.developerstudio.datamapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfSubtractEditPart">
+         <Priority name="Lowest"/>
+         <object class="org.wso2.developerstudio.datamapper.diagram.edit.parts.SubtractEditPart" id="Subtract_2013"/>
+         <context elements="Subtract_2013"/>
+      </modelingAssistantProvider>
             <modelingAssistantProvider class="org.wso2.developerstudio.datamapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfConcatEditPart">
          <Priority name="Lowest"/>
          <object class="org.wso2.developerstudio.datamapper.diagram.edit.parts.ConcatEditPart" id="Concat_2006"/>
          <context elements="Concat_2006"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="org.wso2.developerstudio.datamapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfAddEditPart">
+         <Priority name="Lowest"/>
+         <object class="org.wso2.developerstudio.datamapper.diagram.edit.parts.AddEditPart" id="Add_2012"/>
+         <context elements="Add_2012"/>
       </modelingAssistantProvider>
             <modelingAssistantProvider class="org.wso2.developerstudio.datamapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfSplitEditPart">
          <Priority name="Lowest"/>
@@ -305,6 +315,41 @@
          <Priority name="Lowest"/>
          <object class="org.wso2.developerstudio.datamapper.diagram.edit.parts.UpperCaseEditPart" id="UpperCase_2011"/>
          <context elements="UpperCase_2011"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="org.wso2.developerstudio.datamapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfMultiplyEditPart">
+         <Priority name="Lowest"/>
+         <object class="org.wso2.developerstudio.datamapper.diagram.edit.parts.MultiplyEditPart" id="Multiply_2014"/>
+         <context elements="Multiply_2014"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="org.wso2.developerstudio.datamapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfDivideEditPart">
+         <Priority name="Lowest"/>
+         <object class="org.wso2.developerstudio.datamapper.diagram.edit.parts.DivideEditPart" id="Divide_2015"/>
+         <context elements="Divide_2015"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="org.wso2.developerstudio.datamapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfCeliEditPart">
+         <Priority name="Lowest"/>
+         <object class="org.wso2.developerstudio.datamapper.diagram.edit.parts.CeliEditPart" id="Celi_2016"/>
+         <context elements="Celi_2016"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="org.wso2.developerstudio.datamapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfFloorEditPart">
+         <Priority name="Lowest"/>
+         <object class="org.wso2.developerstudio.datamapper.diagram.edit.parts.FloorEditPart" id="Floor_2017"/>
+         <context elements="Floor_2017"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="org.wso2.developerstudio.datamapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfRoundEditPart">
+         <Priority name="Lowest"/>
+         <object class="org.wso2.developerstudio.datamapper.diagram.edit.parts.RoundEditPart" id="Round_2018"/>
+         <context elements="Round_2018"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="org.wso2.developerstudio.datamapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfSetPrecisionEditPart">
+         <Priority name="Lowest"/>
+         <object class="org.wso2.developerstudio.datamapper.diagram.edit.parts.SetPrecisionEditPart" id="SetPrecision_2019"/>
+         <context elements="SetPrecision_2019"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="org.wso2.developerstudio.datamapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfAbsoluteValueEditPart">
+         <Priority name="Lowest"/>
+         <object class="org.wso2.developerstudio.datamapper.diagram.edit.parts.AbsoluteValueEditPart" id="AbsoluteValue_2020"/>
+         <context elements="AbsoluteValue_2020"/>
       </modelingAssistantProvider>
             <modelingAssistantProvider class="org.wso2.developerstudio.datamapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfTreeNodeEditPart">
          <Priority name="Lowest"/>
@@ -435,12 +480,32 @@
       </metamodel>
       <metamodel nsURI="http:///org/wso2/developerstudio/eclipse/gmf/datamapper">
          <metamodelType
+               id="org.wso2.developerstudio.visualdatamapper.diagram.Subtract_2013"
+               name="%metatype.name.Subtract_2013"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="Subtract"
+               edithelper="org.wso2.developerstudio.datamapper.diagram.edit.helpers.SubtractEditHelper">
+            <param name="semanticHint" value="2013"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http:///org/wso2/developerstudio/eclipse/gmf/datamapper">
+         <metamodelType
                id="org.wso2.developerstudio.visualdatamapper.diagram.Concat_2006"
                name="%metatype.name.Concat_2006"
                kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
                eclass="Concat"
                edithelper="org.wso2.developerstudio.datamapper.diagram.edit.helpers.ConcatEditHelper">
             <param name="semanticHint" value="2006"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http:///org/wso2/developerstudio/eclipse/gmf/datamapper">
+         <metamodelType
+               id="org.wso2.developerstudio.visualdatamapper.diagram.Add_2012"
+               name="%metatype.name.Add_2012"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="Add"
+               edithelper="org.wso2.developerstudio.datamapper.diagram.edit.helpers.AddEditHelper">
+            <param name="semanticHint" value="2012"/>
          </metamodelType>
       </metamodel>
       <metamodel nsURI="http:///org/wso2/developerstudio/eclipse/gmf/datamapper">
@@ -491,6 +556,76 @@
                eclass="UpperCase"
                edithelper="org.wso2.developerstudio.datamapper.diagram.edit.helpers.UpperCaseEditHelper">
             <param name="semanticHint" value="2011"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http:///org/wso2/developerstudio/eclipse/gmf/datamapper">
+         <metamodelType
+               id="org.wso2.developerstudio.visualdatamapper.diagram.Multiply_2014"
+               name="%metatype.name.Multiply_2014"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="Multiply"
+               edithelper="org.wso2.developerstudio.datamapper.diagram.edit.helpers.MultiplyEditHelper">
+            <param name="semanticHint" value="2014"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http:///org/wso2/developerstudio/eclipse/gmf/datamapper">
+         <metamodelType
+               id="org.wso2.developerstudio.visualdatamapper.diagram.Divide_2015"
+               name="%metatype.name.Divide_2015"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="Divide"
+               edithelper="org.wso2.developerstudio.datamapper.diagram.edit.helpers.DivideEditHelper">
+            <param name="semanticHint" value="2015"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http:///org/wso2/developerstudio/eclipse/gmf/datamapper">
+         <metamodelType
+               id="org.wso2.developerstudio.visualdatamapper.diagram.Celi_2016"
+               name="%metatype.name.Celi_2016"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="Celi"
+               edithelper="org.wso2.developerstudio.datamapper.diagram.edit.helpers.CeliEditHelper">
+            <param name="semanticHint" value="2016"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http:///org/wso2/developerstudio/eclipse/gmf/datamapper">
+         <metamodelType
+               id="org.wso2.developerstudio.visualdatamapper.diagram.Floor_2017"
+               name="%metatype.name.Floor_2017"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="Floor"
+               edithelper="org.wso2.developerstudio.datamapper.diagram.edit.helpers.FloorEditHelper">
+            <param name="semanticHint" value="2017"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http:///org/wso2/developerstudio/eclipse/gmf/datamapper">
+         <metamodelType
+               id="org.wso2.developerstudio.visualdatamapper.diagram.Round_2018"
+               name="%metatype.name.Round_2018"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="Round"
+               edithelper="org.wso2.developerstudio.datamapper.diagram.edit.helpers.RoundEditHelper">
+            <param name="semanticHint" value="2018"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http:///org/wso2/developerstudio/eclipse/gmf/datamapper">
+         <metamodelType
+               id="org.wso2.developerstudio.visualdatamapper.diagram.SetPrecision_2019"
+               name="%metatype.name.SetPrecision_2019"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="SetPrecision"
+               edithelper="org.wso2.developerstudio.datamapper.diagram.edit.helpers.SetPrecisionEditHelper">
+            <param name="semanticHint" value="2019"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http:///org/wso2/developerstudio/eclipse/gmf/datamapper">
+         <metamodelType
+               id="org.wso2.developerstudio.visualdatamapper.diagram.AbsoluteValue_2020"
+               name="%metatype.name.AbsoluteValue_2020"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="AbsoluteValue"
+               edithelper="org.wso2.developerstudio.datamapper.diagram.edit.helpers.AbsoluteValueEditHelper">
+            <param name="semanticHint" value="2020"/>
          </metamodelType>
       </metamodel>
       <metamodel nsURI="http:///org/wso2/developerstudio/eclipse/gmf/datamapper">
@@ -663,12 +798,21 @@
          <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.Input_2002"/>
          <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.Output_2003"/>
          <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.Equal_2005"/>
+         <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.Subtract_2013"/>
          <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.Concat_2006"/>
+         <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.Add_2012"/>
          <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.Split_2007"/>
          <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.Constant_2008"/>
          <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.LowerCase_2009"/>
          <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.Contains_2010"/>
          <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.UpperCase_2011"/>
+         <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.Multiply_2014"/>
+         <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.Divide_2015"/>
+         <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.Celi_2016"/>
+         <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.Floor_2017"/>
+         <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.Round_2018"/>
+         <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.SetPrecision_2019"/>
+         <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.AbsoluteValue_2020"/>
          <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.TreeNode_3002"/>
          <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.Element_3007"/>
          <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.InNode_3008"/>
@@ -969,5 +1113,68 @@
          <Priority name="Lowest"/>
       </ParserProvider>
    </extension>
+<extension point="org.eclipse.ui.views.properties.tabbed.propertyContributor" id="prop-contrib">
+      <?gmfgen generated="true"?>
+      <propertyContributor
+            contributorId="org.wso2.developerstudio.visualdatamapper.diagram"
+            labelProvider="org.wso2.developerstudio.datamapper.diagram.sheet.DataMapperSheetLabelProvider">
+         <propertyCategory category="domain"/>
+         <propertyCategory category="visual"/>
+         <propertyCategory category="extra"/>
+      </propertyContributor>
+   </extension>
+
+<extension point="org.eclipse.ui.views.properties.tabbed.propertyTabs" id="proptabs">
+      <?gmfgen generated="true"?>   
+      <propertyTabs contributorId="org.wso2.developerstudio.visualdatamapper.diagram">
+         <propertyTab
+             category="visual"
+             id="property.tab.AppearancePropertySection"
+             label="%tab.appearance"/>
+          <propertyTab
+             category="visual"
+             id="property.tab.DiagramPropertySection"
+             label="%tab.diagram"/>
+          <propertyTab
+             category="domain"
+             id="property.tab.domain"
+             label="%tab.domain"/>
+      </propertyTabs>
+   </extension>
+
+<extension point="org.eclipse.ui.views.properties.tabbed.propertySections" id="propsections">
+      <?gmfgen generated="true"?>   
+      <propertySections contributorId="org.wso2.developerstudio.visualdatamapper.diagram">
+         <propertySection id="property.section.ConnectorAppearancePropertySection" 
+            filter="org.eclipse.gmf.runtime.diagram.ui.properties.filters.ConnectionEditPartPropertySectionFilter" 
+            class="org.eclipse.gmf.runtime.diagram.ui.properties.sections.appearance.ConnectionAppearancePropertySection" 
+            tab="property.tab.AppearancePropertySection">
+         </propertySection>
+         <propertySection id="property.section.ShapeColorAndFontPropertySection" 
+            filter="org.eclipse.gmf.runtime.diagram.ui.properties.filters.ShapeEditPartPropertySectionFilter" 
+            class="org.eclipse.gmf.runtime.diagram.ui.properties.sections.appearance.ShapeColorsAndFontsPropertySection" 
+            tab="property.tab.AppearancePropertySection">
+         </propertySection> 
+         <propertySection id="property.section.DiagramColorsAndFontsPropertySection" 
+            filter="org.eclipse.gmf.runtime.diagram.ui.properties.filters.DiagramEditPartPropertySectionFilter" 
+            class="org.eclipse.gmf.runtime.diagram.ui.properties.sections.appearance.DiagramColorsAndFontsPropertySection" 
+            tab="property.tab.AppearancePropertySection">
+         </propertySection>     
+         <propertySection id="property.section.RulerGridPropertySection" 
+            filter="org.eclipse.gmf.runtime.diagram.ui.properties.filters.DiagramEditPartPropertySectionFilter" 
+            class="org.eclipse.gmf.runtime.diagram.ui.properties.sections.grid.RulerGridPropertySection" 
+            tab="property.tab.DiagramPropertySection">
+         </propertySection>     
+         <propertySection
+            id="property.section.domain" 
+            tab="property.tab.domain"
+            class="org.wso2.developerstudio.datamapper.diagram.sheet.DataMapperPropertySection">
+            <input type="org.eclipse.gmf.runtime.notation.View"/>
+            <input type="org.eclipse.gef.EditPart"/>
+            <input type="org.wso2.developerstudio.datamapper.diagram.navigator.DataMapperAbstractNavigatorItem"/>
+         </propertySection>
+      </propertySections>
+   </extension>
+
    <!-- optionally, specify keybindings -->
 </plugin>

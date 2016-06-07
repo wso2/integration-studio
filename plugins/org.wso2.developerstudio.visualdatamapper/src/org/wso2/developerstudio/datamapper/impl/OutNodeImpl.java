@@ -25,11 +25,11 @@ import org.wso2.developerstudio.datamapper.OutNode;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.datamapper.impl.OutNodeImpl#getOutgoingLink <em>Outgoing Link</em>}</li>
  *   <li>{@link org.wso2.developerstudio.datamapper.impl.OutNodeImpl#getElementParent <em>Element Parent</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

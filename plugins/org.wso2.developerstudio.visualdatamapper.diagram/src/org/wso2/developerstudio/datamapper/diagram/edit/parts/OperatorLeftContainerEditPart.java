@@ -24,6 +24,7 @@ import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.gmf.tooling.runtime.edit.policies.reparent.CreationEditPolicyWithCustomReparent;
+import org.eclipse.papyrus.infra.gmfdiag.css.CSSShapeImpl;
 import org.eclipse.swt.graphics.Color;
 //import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 import org.eclipse.swt.widgets.Display;
@@ -35,6 +36,7 @@ import org.wso2.developerstudio.datamapper.diagram.edit.parts.custom.CustomNonRe
 import org.wso2.developerstudio.datamapper.diagram.edit.policies.OperatorLeftContainerCanonicalEditPolicy;
 import org.wso2.developerstudio.datamapper.diagram.edit.policies.OperatorLeftContainerItemSemanticEditPolicy;
 import org.wso2.developerstudio.datamapper.diagram.part.DataMapperVisualIDRegistry;
+import org.wso2.developerstudio.datamapper.impl.OperatorImpl;
 
 /**
  * @generated
@@ -77,51 +79,25 @@ public class OperatorLeftContainerEditPart extends ShapeNodeEditPart {
 		Display.getDefault().asyncExec(new Runnable() {
 			@Override
 			public void run() {
-
-				if (getParent().getParent() instanceof SplitEditPart
-						|| getParent().getParent() instanceof ConstantEditPart
-						|| getParent().getParent() instanceof LowerCaseEditPart
-						|| getParent().getParent() instanceof UpperCaseEditPart) {
+				if(getParent().getParent().getModel() instanceof CSSShapeImpl){
+					CSSShapeImpl model = (CSSShapeImpl) getParent().getParent().getModel();
+					OperatorImpl operator=(OperatorImpl) model.getElement();
+					int numberOfInputs = operator.getDefaultInputConnectors();
 					EObject parentContainer = ((org.eclipse.gmf.runtime.notation.impl.NodeImpl) getModel())
 							.getElement();
 					if (((OperatorLeftContainer) parentContainer).getLeftConnectors().size() == 0) {
-						OperatorLeftConnector peratorLeftConnector = DataMapperFactory.eINSTANCE
-								.createOperatorLeftConnector();
-						AddCommand addCaseConnectorCmd = new AddCommand(getEditingDomain(), parentContainer,
-								DataMapperPackage.Literals.OPERATOR_LEFT_CONTAINER__LEFT_CONNECTORS,
-								peratorLeftConnector);
-						if (addCaseConnectorCmd.canExecute()) {
-							getEditingDomain().getCommandStack().execute(addCaseConnectorCmd);
+						for (int i = 0; i < numberOfInputs; i++) {
+							OperatorLeftConnector peratorLeftConnector = DataMapperFactory.eINSTANCE
+									.createOperatorLeftConnector();
+							AddCommand addCaseConnectorCmd = new AddCommand(getEditingDomain(), parentContainer,
+									DataMapperPackage.Literals.OPERATOR_LEFT_CONTAINER__LEFT_CONNECTORS,
+									peratorLeftConnector);
+							if (addCaseConnectorCmd.canExecute()) {
+								getEditingDomain().getCommandStack().execute(addCaseConnectorCmd);
+							}
 						}
-
 					}
 				}
-
-				else if (getParent().getParent() instanceof EqualEditPart
-						|| getParent().getParent() instanceof ConcatEditPart
-						|| getParent().getParent() instanceof ContainsEditPart) {
-					EObject parentContainer = ((org.eclipse.gmf.runtime.notation.impl.NodeImpl) getModel())
-							.getElement();
-					if (((OperatorLeftContainer) parentContainer).getLeftConnectors().size() == 0) {
-						OperatorLeftConnector leftConnector1 = DataMapperFactory.eINSTANCE
-								.createOperatorLeftConnector();
-						OperatorLeftConnector leftConnector2 = DataMapperFactory.eINSTANCE
-								.createOperatorLeftConnector();
-						AddCommand addCaseConnectorCmd1 = new AddCommand(getEditingDomain(), parentContainer,
-								DataMapperPackage.Literals.OPERATOR_LEFT_CONTAINER__LEFT_CONNECTORS, leftConnector1);
-						if (addCaseConnectorCmd1.canExecute()) {
-							getEditingDomain().getCommandStack().execute(addCaseConnectorCmd1);
-						}
-
-						AddCommand addCaseConnectorCmd2 = new AddCommand(getEditingDomain(), parentContainer,
-								DataMapperPackage.Literals.OPERATOR_LEFT_CONTAINER__LEFT_CONNECTORS, leftConnector2);
-						if (addCaseConnectorCmd2.canExecute()) {
-							getEditingDomain().getCommandStack().execute(addCaseConnectorCmd2);
-						}
-
-					}
-				}
-
 			}// runend
 		});
 
@@ -132,8 +108,8 @@ public class OperatorLeftContainerEditPart extends ShapeNodeEditPart {
 	 * @generated NOT
 	 */
 	protected void createDefaultEditPolicies() {
-		installEditPolicy(EditPolicyRoles.CREATION_ROLE, new CreationEditPolicyWithCustomReparent(
-				DataMapperVisualIDRegistry.TYPED_INSTANCE));
+		installEditPolicy(EditPolicyRoles.CREATION_ROLE,
+				new CreationEditPolicyWithCustomReparent(DataMapperVisualIDRegistry.TYPED_INSTANCE));
 		super.createDefaultEditPolicies();
 		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE, new OperatorLeftContainerItemSemanticEditPolicy());
 		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE, new DragDropEditPolicy());

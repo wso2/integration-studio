@@ -191,8 +191,8 @@ public class DataMapperCreationWizardPage extends WizardNewFileCreationPage {
 	 */
 	public void createControl(Composite parent) {
 		super.createControl(parent);
-		setFileName(DataMapperDiagramEditorUtil
-				.getUniqueFileName(getContainerFullPath(), getFileName(), getExtension()));
+		setFileName(
+				DataMapperDiagramEditorUtil.getUniqueFileName(getContainerFullPath(), getFileName(), getExtension()));
 		setPageComplete(validatePage());
 	}
 

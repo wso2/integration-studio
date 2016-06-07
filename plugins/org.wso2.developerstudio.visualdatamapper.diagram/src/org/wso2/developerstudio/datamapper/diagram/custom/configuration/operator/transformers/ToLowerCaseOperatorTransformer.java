@@ -47,7 +47,7 @@ public class ToLowerCaseOperatorTransformer extends AbstractDMOperatorTransforme
         } else if (DifferentLevelArrayMappingConfigGenerator.class.equals(generatorClass)) {
             if (inputVariables.size() >= 1) {
                 operationBuilder.append(ScriptGenerationUtil.getPrettyVariableNameInForOperation(inputVariables.get(0),
-                        variableTypeMap, parentForLoopBeanStack) + ".toLowerCase();");
+                        variableTypeMap, parentForLoopBeanStack, true) + ".toLowerCase();");
             } else {
                 operationBuilder.append("'';");
             }

@@ -76,6 +76,7 @@ public class TreeNode3EditPart extends AbstractBorderedShapeEditPart {
 	public static final String JSON_SCHEMA_TYPE = "type";
 	public static final String JSON_SCHEMA_ARRAY = "array";
 	public static final String JSON_SCHEMA_OBJECT = "object";
+	private static final String JSON_SCHEMA_NULLABLE = "nullable";
 
 	/**
 	 * @generated NOT
@@ -262,28 +263,117 @@ public class TreeNode3EditPart extends AbstractBorderedShapeEditPart {
 		}
 		return temp;
 	}
-
+	
 	/**
-	 * @generated
+	 * @generated NOT
 	 */
 	protected boolean addFixedChild(EditPart childEditPart) {
-		if (childEditPart instanceof TreeNodeName3EditPart) {
-			((TreeNodeName3EditPart) childEditPart).setLabel(getPrimaryShape().getFigureTreeNodeNameFigure());
-			return true;
-		}
-		if (childEditPart instanceof InNodeEditPart) {
-			BorderItemLocator locator = new BorderItemLocator(getMainFigure(), PositionConstants.WEST);
-			getBorderedFigure().getBorderItemContainer().add(((InNodeEditPart) childEditPart).getFigure(), locator);
-			return true;
-		}
-		if (childEditPart instanceof OutNodeEditPart) {
-			BorderItemLocator locator = new BorderItemLocator(getMainFigure(), PositionConstants.EAST);
-			getBorderedFigure().getBorderItemContainer().add(((OutNodeEditPart) childEditPart).getFigure(), locator);
-			return true;
-		}
-		return false;
-	}
-
+		 	String type = getNodeType();
+		 		EditPart temp = this.getParentBox();
+		 		if (childEditPart instanceof TreeNodeName3EditPart) {
+		 			((TreeNodeName3EditPart) childEditPart).setLabel(getPrimaryShape().getFigureTreeNodeNameFigure());
+		 			return true;
+		 		}
+		 
+		 		if (childEditPart instanceof InNodeEditPart) {
+		 			if (temp instanceof InputEditPart) {
+		 				createEmptyInNode(childEditPart);
+		 			} else {
+		 				if (((TreeNode) ((View) getModel()).getElement()).getNode().size() > 0) {
+		 					String value = getNodeValue(type);
+		 					// If an element has values then enable the connector arrow
+		 					if (StringUtils.isNotEmpty(value)) {
+		 						return createInNode(childEditPart);
+		 					} else {
+		 						createEmptyInNode(childEditPart);
+		 					}
+		 				} else {
+		 					if (type.equals(JSON_SCHEMA_ARRAY)) {
+		 						String itemsType = getItemsType();
+		 						// If an element has values then enable the connector
+		 						// arrow
+		 						if (itemsType.equals(NULL_VALUE)) {
+		 							createEmptyInNode(childEditPart);
+		 						} else if (StringUtils.isEmpty(itemsType)) {
+		 							createEmptyInNode(childEditPart);
+		 						} else {
+		 							return createInNode(childEditPart);
+		 						}
+		 					} else if(type.equals(JSON_SCHEMA_OBJECT)){
+		 						String value = getNodeValue(type);
+		 						// If an element has values then enable the connector arrow
+		 						if (StringUtils.isNotEmpty(value)) {
+		 							return createInNode(childEditPart);
+		 						} else {
+		 							createEmptyInNode(childEditPart);
+		 						}
+		 					} else {
+		 						if (type.equals(NULL_VALUE)) {
+		 							// If type is null, then disable the in node
+		 							// connector
+		 							createEmptyInNode(childEditPart);
+		 						} else if (StringUtils.isEmpty(type)) {
+		 							createEmptyInNode(childEditPart);
+		 						} else {
+		 						return createInNode(childEditPart);
+		 						}
+		 					}
+		 				}
+		 			}
+		 
+		  		}
+		  		if (childEditPart instanceof OutNodeEditPart) {
+		 			if (temp instanceof OutputEditPart) {
+		 				createEmptyOutNode(childEditPart);
+		 		} else {
+		 				// If an element has children, then disable the outnode
+		 				// connector arrow
+		 				if (((TreeNode) ((View) getModel()).getElement()).getNode().size() > 0) {
+		 					String value = getNodeValue(type);
+		 				// If an element has values then enable the connector arrow
+		 					if (StringUtils.isNotEmpty(value)) {
+		 						return createOutNode(childEditPart);
+		 					} else {
+		 					createEmptyOutNode(childEditPart);
+		 					}
+		 				} else {
+		 					if (type.equals(JSON_SCHEMA_ARRAY)) {
+		 						String itemsType = getItemsType();
+		 						// If an element has values then enable the connector
+		 						// arrow
+		 						if (itemsType.equals(NULL_VALUE)) {
+		 							createEmptyOutNode(childEditPart);
+		 						} else if (StringUtils.isEmpty(itemsType)) {
+		 							createEmptyOutNode(childEditPart);
+		 						} else {
+		 						return createOutNode(childEditPart);
+		 						}
+		 					} else if(type.equals(JSON_SCHEMA_OBJECT)){
+		 						String value = getNodeValue(type);
+		 						// If an element has values then enable the connector arrow
+		 						if (StringUtils.isNotEmpty(value)) {
+		 							return createOutNode(childEditPart);
+		 						} else {
+		 							createEmptyOutNode(childEditPart);
+		 					}
+		 					} else {
+		 						if (type.equals(NULL_VALUE)) {
+		 							// If type is null, then disable the out node
+		 							// connector
+		 						createEmptyOutNode(childEditPart);
+		 						} else if (StringUtils.isEmpty(type)) {
+		 							createEmptyOutNode(childEditPart);
+		 						} else {
+		 							return createOutNode(childEditPart);
+		 						}
+		 					}
+		 				}
+		 
+		 			}
+		 
+		  		}
+		  		return false;
+		  	}
 	public String getItemsType() {
 		String type = "";
 		for (PropertyKeyValuePair keyValue : (((TreeNode) ((View) getModel()).getElement()).getProperties())) {
@@ -511,10 +601,14 @@ public class TreeNode3EditPart extends AbstractBorderedShapeEditPart {
 		private static final String ARRAY_ICON = "icons/gmf/arrays.jpg";
 		private static final String OBJECT_ICON = "icons/gmf/object.jpg";
 		private static final String ATTRIBUTE_ICON = "icons/gmf/AttributeIcon.png";
+		private static final String NULLABLE_OBJECT_ICON = "icons/gmf/blueArrow.png";
 		private static final String ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM = "org.wso2.developerstudio.visualdatamapper.diagram";
 		private static final String JSON_SCHEMA_TYPE = "type";
 		private static final String JSON_SCHEMA_ARRAY = "array";
 		private static final String JSON_SCHEMA_OBJECT = "object";
+		private static final String TRUE = "true";
+		private static final String FALSE = "false";
+		private static final String JSON_SCHEMA_NULLABLE = "nullable";
 
 		private static final String PREFIX = "@";
 		/**
@@ -593,7 +687,7 @@ public class TreeNode3EditPart extends AbstractBorderedShapeEditPart {
 			ImageFigure objectImg = new ImageFigure(objectImgDesc.createImage()); // array
 																					// symbole
 																					// figure
-			arrayImg.setSize(new Dimension(10, 8));
+			objectImg.setSize(new Dimension(10, 8));
 
 			RectangleFigure mainImageRectangle = new RectangleFigure();
 
@@ -613,14 +707,14 @@ public class TreeNode3EditPart extends AbstractBorderedShapeEditPart {
 
 			arrayImageRectangle.setBackgroundColor(new Color(null, 255, 255, 255));
 			arrayImageRectangle.setPreferredSize(new Dimension(10, 7));
-			arrayImageRectangle.add(attributeImg);
+			arrayImageRectangle.add(arrayImg);
 			arrayImageRectangle.setBorder(new MarginBorder(1, 1, 1, 1));
 
 			RectangleFigure objectImageRectangle = new RectangleFigure();
 
 			objectImageRectangle.setBackgroundColor(new Color(null, 255, 255, 255));
 			objectImageRectangle.setPreferredSize(new Dimension(10, 7));
-			objectImageRectangle.add(attributeImg);
+			objectImageRectangle.add(objectImg);
 			objectImageRectangle.setBorder(new MarginBorder(1, 1, 1, 1));
 
 			fFigureTreeNodeNameFigure = new WrappingLabel();
@@ -796,12 +890,12 @@ public class TreeNode3EditPart extends AbstractBorderedShapeEditPart {
 			ImageFigure arrayImg = new ImageFigure(arrayImgDesc.createImage()); // array
 																				// symbole
 																				// figure
-			attributeImg.setSize(new Dimension(10, 8));
+			arrayImg.setSize(new Dimension(10, 8));
 
 			ImageFigure objectImg = new ImageFigure(objectImgDesc.createImage()); // object
 																					// symbole
 																					// figure
-			attributeImg.setSize(new Dimension(10, 8));
+			objectImg.setSize(new Dimension(10, 8));
 
 			Label nodeLabel = new Label();
 
@@ -834,6 +928,101 @@ public class TreeNode3EditPart extends AbstractBorderedShapeEditPart {
 
 		}
 
+		/**
+		 * This creates the content for nullable values
+		 * @param name
+		 * @param type
+		 */
+		public void createContentForNullables(String name, String type) {
+			ImageDescriptor mainImgDescCollapse = AbstractUIPlugin
+					.imageDescriptorFromPlugin(ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM, ELEMENT_ICON);
+			ImageDescriptor attributeImgDesc = AbstractUIPlugin
+					.imageDescriptorFromPlugin(ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM, ATTRIBUTE_ICON);
+			ImageDescriptor arrayImgDesc = AbstractUIPlugin
+					.imageDescriptorFromPlugin(ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM, ARRAY_ICON);
+			ImageDescriptor objectImgDesc = AbstractUIPlugin
+					.imageDescriptorFromPlugin(ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM, OBJECT_ICON);
+			ImageDescriptor nullableObjectImgDesc = AbstractUIPlugin
+					.imageDescriptorFromPlugin(ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM, NULLABLE_OBJECT_ICON);
+
+			final ImageFigure mainImg = new ImageFigure(mainImgDescCollapse.createImage());
+			mainImg.setSize(new Dimension(10, 8));
+
+			ImageFigure attributeImg = new ImageFigure(attributeImgDesc.createImage()); // attribute
+																						// symbole
+																						// figure
+			attributeImg.setSize(new Dimension(10, 8));
+
+			ImageFigure arrayImg = new ImageFigure(arrayImgDesc.createImage()); // array
+																				// symbole
+																				// figure
+			arrayImg.setSize(new Dimension(10, 8));
+
+			ImageFigure objectImg = new ImageFigure(objectImgDesc.createImage()); // object
+																					// symbole
+																					// figure
+			objectImg.setSize(new Dimension(10, 8));
+			
+			ImageFigure nullableObjectImg = new ImageFigure(nullableObjectImgDesc.createImage()); // object
+			// symbole
+			// figure
+			nullableObjectImg.setSize(new Dimension(10, 8));
+			
+
+			Label nodeLabel = new Label();
+			
+			String nullableValue = null;
+			for (PropertyKeyValuePair keyValue : (((TreeNode) ((View) getModel()).getElement()).getProperties())) {
+				if (keyValue.getKey().equals(JSON_SCHEMA_TYPE)) {
+					type = keyValue.getValue();
+				} else if (keyValue.getKey().equals(JSON_SCHEMA_NULLABLE)) {
+					nullableValue = keyValue.getValue();
+				}
+			}
+
+			String newName = null;
+			if (StringUtils.isNotEmpty(name) && name.startsWith(PREFIX)) {
+				String[] fullName = name.split(PREFIX);
+				newName = fullName[1];
+			} else {
+				newName = name;
+			}
+			if (StringUtils.isNotEmpty(name) && name.startsWith(PREFIX)) {
+				if (nullableValue.equals(TRUE)) {
+					nodeLabel.setIcon(nullableObjectImg.getImage());
+				} else if (nullableValue.equals(FALSE)) {
+					nodeLabel.setIcon(attributeImg.getImage());
+				}
+			} else if (type != null && type.equals(JSON_SCHEMA_ARRAY)) {
+				if (nullableValue.equals(TRUE)) {
+					nodeLabel.setIcon(nullableObjectImg.getImage());
+				} else if (nullableValue.equals(FALSE)) {
+					nodeLabel.setIcon(arrayImg.getImage());
+				}
+			} else if (type != null && type.equals(JSON_SCHEMA_OBJECT)) {
+				if (nullableValue.equals(TRUE)) {
+					nodeLabel.setIcon(nullableObjectImg.getImage());
+				} else if (nullableValue.equals(FALSE)) {
+					nodeLabel.setIcon(objectImg.getImage());
+				}
+			} else {
+				if (nullableValue.equals(TRUE)) {
+					nodeLabel.setIcon(nullableObjectImg.getImage());
+				} else if (nullableValue.equals(FALSE)) {
+					nodeLabel.setIcon(mainImg.getImage());
+				}
+			}
+
+			Display display = Display.getCurrent();
+			Color black = display.getSystemColor(SWT.COLOR_BLACK);
+			nodeLabel.setForegroundColor(black);
+			nodeLabel.setText(newName);
+			nodeLabel.setSize(new Dimension(100, 5));
+			RectangleFigure rectFigure = (RectangleFigure) this.getChildren().get(0);
+			List<Figure> childrenList = rectFigure.getChildren();
+			rectFigure.remove(childrenList.get(1));
+			rectFigure.add(nodeLabel);
+		}
 		public void highlightElementOnSelection() {
 			RectangleFigure rectFigure = (RectangleFigure) this.getChildren().get(0);
 			List<Figure> childrenList = rectFigure.getChildren();
@@ -855,6 +1044,7 @@ public class TreeNode3EditPart extends AbstractBorderedShapeEditPart {
 			rectFigure.remove(childrenList.get(1));
 			rectFigure.add(newLabel);
 		}
+
 	}
 
 	/**
@@ -886,6 +1076,13 @@ public class TreeNode3EditPart extends AbstractBorderedShapeEditPart {
 
 	public void renameElementItem(String newName, String type) {
 		getPrimaryShape().renameElement(newName, type);
+	}
+	
+	/**
+	 * Recreates the content after enabling the nullable
+	 */
+	public void recreateContent(String newName, String type) {
+		getPrimaryShape().createContentForNullables(newName,type);
 	}
 
 	public void removeHighlightOnElem() {

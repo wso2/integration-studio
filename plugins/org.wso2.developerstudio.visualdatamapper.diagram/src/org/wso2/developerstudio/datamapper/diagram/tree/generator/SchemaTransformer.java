@@ -702,9 +702,7 @@ public class SchemaTransformer implements ISchemaTransformer {
 			treeNode.setName(elementKey);
 		}
 		treeNode.setLevel(count);
-
-		//Sets the nullable to false 
-		setPropertyKeyValuePairforTreeNodes(treeNode, propertyValueList, JSON_SCHEMA_NULLABLE, FALSE);
+		
 		//Sets the schema type
 		setPropertyKeyValuePairforTreeNodes(treeNode, propertyValueList, JSON_SCHEMA_TYPE, schemaType);
 		// Sets the schema key if available
@@ -763,6 +761,7 @@ public class SchemaTransformer implements ISchemaTransformer {
 						setPropertyKeyValuePairforTreeNodes(treeNode, propertyValueList,
 								JSON_SCHEMA_ARRAY_ITEMS_VALUE_TYPE, valueMap.get(JSON_SCHEMA_TYPE).toString());
 					}
+					setPropertyKeyValuePairforTreeNodes(treeNode, propertyValueList,JSON_SCHEMA_NULLABLE, FALSE);
 				}
 			}
 		} else if (schemaType.equals(JSON_SCHEMA_OBJECT)) {
@@ -771,7 +770,13 @@ public class SchemaTransformer implements ISchemaTransformer {
 				Map<String, Object> valueMap = (Map<String, Object>) subSchema.get(JSON_SCHEMA_VALUE);
 				setPropertyKeyValuePairforTreeNodes(treeNode, propertyValueList, JSON_SCHEMA_OBJECT_VALUE_TYPE,
 						valueMap.get(JSON_SCHEMA_TYPE).toString());
-			}
+			}	
+			//Adds the nullable value 
+			setPropertyKeyValuePairforTreeNodes(treeNode, propertyValueList,
+						JSON_SCHEMA_NULLABLE, FALSE);
+		}else{
+			setPropertyKeyValuePairforTreeNodes(treeNode, propertyValueList,
+					JSON_SCHEMA_NULLABLE, FALSE);
 		}
 		return treeNode;
 	}
@@ -1261,6 +1266,9 @@ public class SchemaTransformer implements ISchemaTransformer {
 							valueObject.put(JSON_SCHEMA_TYPE, objectValueBlockType);
 							nodeObject.put(JSON_SCHEMA_VALUE, valueObject);
 						}
+						if(nullableValue != null){
+							nodeObject.put(JSON_SCHEMA_NULLABLE, nullableValue);
+						}
 						// If an object doesn't contain properties, then avoid
 						// serializing the properties field
 						EList<TreeNode> childList = node.getNode();
@@ -1268,7 +1276,6 @@ public class SchemaTransformer implements ISchemaTransformer {
 							nodeObject.put(JSON_SCHEMA_PROPERTIES, propertiesObject);
 						}
 						parent.put(node.getName(), nodeObject);
-						parent.put(JSON_SCHEMA_NULLABLE, nullableValue);
 						insertRequiredArray(nodeObject, node, false);
 						// Handles attributes
 						if (attributeID != null && attributeType != null) {
@@ -1361,10 +1368,12 @@ public class SchemaTransformer implements ISchemaTransformer {
 						}
 						insertRequiredArray(arrayObject, node, false);
 						insertRequiredArray(itemProperties, node, true);
-						parent.put(JSON_SCHEMA_NULLABLE, nullableValue);
 						parent.put(node.getName(), arrayObject);
 						if (itemProperties.size() > 0) {
 							arrayItemsObject.add(itemProperties);
+						}
+						if(nullableValue != null){
+							arrayObject.put(JSON_SCHEMA_NULLABLE, nullableValue);	
 						}
 						arrayObject.put(JSON_SCHEMA_ITEMS, arrayItemsObject);
 						if (((TreeNodeImpl) node).getNode().size() > 0) {

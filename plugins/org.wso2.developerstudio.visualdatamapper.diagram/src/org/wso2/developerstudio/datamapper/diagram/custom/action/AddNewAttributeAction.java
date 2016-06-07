@@ -69,6 +69,9 @@ public class AddNewAttributeAction extends AbstractActionHandler {
 	private static final String JSON_SCHEMA_ATTRIBUTE_NAMESPACES = "attributeNamespaces";
 	private static final String JSON_SCHEMA_ARRAY_ITEMS_ID = "items_id";
 	private static final String JSON_SCHEMA_ARRAY_ITEMS_TYPE = "items_type";
+	private static final String JSON_SCHEMA_NULLABLE = "nullable";
+	private static final String TRUE = "true";
+	private static final String FALSE = "false";
 
 
 	public AddNewAttributeAction(IWorkbenchPart workbenchPart) {
@@ -141,6 +144,16 @@ public class AddNewAttributeAction extends AbstractActionHandler {
 				setPropertyKeyValuePairforTreeNodes(treeNodeNew, propertyValueList, JSON_SCHEMA_ARRAY_ITEMS_ID, objectDialog.getID()+"/"+ "0");
 				setPropertyKeyValuePairforTreeNodes(treeNodeNew, propertyValueList, JSON_SCHEMA_ARRAY_ITEMS_TYPE, objectDialog.getSchemaType());
 
+				//Sets the nullable value
+				String nullableValue = null;
+				if(objectDialog.getNullable()){
+					nullableValue = TRUE;
+				}else{
+	                nullableValue = FALSE;
+				}
+				setPropertyKeyValuePairforTreeNodes(treeNodeNew, propertyValueList, JSON_SCHEMA_NULLABLE,
+						nullableValue);
+				
 				/*
 				 * AddCommand is used to avoid concurrent updating. index 0 to
 				 * add as the first child

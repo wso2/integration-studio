@@ -27,7 +27,6 @@ import java.util.regex.Pattern;
 
 import org.apache.commons.lang.StringUtils;
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.command.AddCommand;
@@ -37,7 +36,6 @@ import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.common.ui.action.AbstractActionHandler;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart;
 import org.eclipse.gmf.runtime.notation.Node;
-import org.eclipse.gmf.runtime.notation.impl.DiagramImpl;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
@@ -46,17 +44,12 @@ import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.datamapper.DataMapperFactory;
 import org.wso2.developerstudio.datamapper.DataMapperPackage;
-import org.wso2.developerstudio.datamapper.DataMapperRoot;
 import org.wso2.developerstudio.datamapper.PropertyKeyValuePair;
 import org.wso2.developerstudio.datamapper.TreeNode;
 import org.wso2.developerstudio.datamapper.diagram.custom.util.AddNewObjectDialog;
-import org.wso2.developerstudio.datamapper.diagram.edit.parts.DataMapperRootEditPart;
-import org.wso2.developerstudio.datamapper.diagram.edit.parts.InputEditPart;
-import org.wso2.developerstudio.datamapper.diagram.edit.parts.OutputEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.TreeNode2EditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.TreeNode3EditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.TreeNodeEditPart;
-import org.wso2.developerstudio.datamapper.impl.TreeNodeImpl;
 import org.wso2.developerstudio.eclipse.registry.core.interfaces.IRegistryFile;
 
 public class EditArrayAction extends AbstractActionHandler {
@@ -70,6 +63,7 @@ public class EditArrayAction extends AbstractActionHandler {
 	private static final String JSON_SCHEMA_ID = "id";
 	private static final String JSON_SCHEMA_TYPE = "type";
 	private static final String JSON_SCHEMA_TITLE = "title";
+	private static final String JSON_SCHEMA_NULLABLE = "nullable";
 	private static final String JSON_SCHEMA_ARRAY_NAMESPACES = "arrayNamespaces";
 	private static final String JSON_SCHEMA_ARRAY_ITEMS_ID = "items_id";
 	private static final String JSON_SCHEMA_ARRAY_ITEMS_VALUE_TYPE = "items_value_type";
@@ -83,6 +77,7 @@ public class EditArrayAction extends AbstractActionHandler {
 	private static final String JSON_SCHEMA_ADDED_ATTRIBUTE_ID = "added_attribute_id";
 	private static final String JSON_SCHEMA_ADDED_ATTRIBUTE_TYPE = "added_attribute_type";
 	private static final String STRING = "string";
+	private static final String FALSE = "false";
 
 	private String title = null;
 	private String schemaType = null;
@@ -96,8 +91,11 @@ public class EditArrayAction extends AbstractActionHandler {
 	private String identifierType = null;
 	private String identifierValue = null;
 	private String identifierURL = null;
+	private String nullableValue = null;
+	private boolean isNullable = false;
 	private static final String NAMESPACE_PREFIX = "prefix";
 	private static final String NAMESPACE_URL = "url";
+	private static final String TRUE = "true";
 
 	public EditArrayAction(IWorkbenchPart workbenchPart) {
 		super(workbenchPart);
@@ -156,10 +154,16 @@ public class EditArrayAction extends AbstractActionHandler {
 			}
 			identifierURL = setProperties(selectedNode, JSON_SCHEMA_ARRAY_ELEMENT_IDENTIFIERS_URL_VALUE);
 			namespaces = setProperties(selectedNode, JSON_SCHEMA_ARRAY_NAMESPACES);
+			nullableValue = setProperties(selectedNode, JSON_SCHEMA_NULLABLE);
+			if(nullableValue.equals(TRUE)){
+				isNullable = true;
+			}else{
+				isNullable = false;
+			}
 			formatedNamespace = formatNamespace(namespaces).toString();
 			String newNamespace = formatedNamespace.substring(1, formatedNamespace.toString().length() - 1);
 			openEditRecordDialog(selectedNode, name, schemaType, id, required, schemaValue, newNamespace, value,
-					identifierType, identifierValue, identifierURL);
+					identifierType, identifierValue, identifierURL,isNullable);
 
 		}
 	}
@@ -203,19 +207,26 @@ public class EditArrayAction extends AbstractActionHandler {
 				executeAddCommand(selectedNode, pair);
 			}
 		}
-		updateConnector();
+		updateConnector(map);
 	}
 
 	/**
 	 * Updates the connector
+	 * @param map 
 	 */
-	private void updateConnector() {
+	private void updateConnector(HashMap<String, String> map) {
 		if (getSelectedEditPart() instanceof TreeNodeEditPart) {
 			((TreeNodeEditPart) getSelectedEditPart()).addFixedChildToNodes(getSelectedEditPart());
+			((TreeNodeEditPart)getSelectedEditPart()).recreateContent(map.get(JSON_SCHEMA_TITLE),
+					map.get(JSON_SCHEMA_TYPE));
 		} else if (getSelectedEditPart() instanceof TreeNode2EditPart) {
 			((TreeNode2EditPart) getSelectedEditPart()).addFixedChildToNodes(getSelectedEditPart());
+			((TreeNode2EditPart)getSelectedEditPart()).recreateContent(map.get(JSON_SCHEMA_TITLE),
+					map.get(JSON_SCHEMA_TYPE));
 		} else if (getSelectedEditPart() instanceof TreeNode3EditPart) {
 			((TreeNode3EditPart) getSelectedEditPart()).addFixedChildToNodes(getSelectedEditPart());
+			((TreeNode3EditPart)getSelectedEditPart()).recreateContent(map.get(JSON_SCHEMA_TITLE),
+					map.get(JSON_SCHEMA_TYPE));
 		}
 	}
 
@@ -299,19 +310,20 @@ public class EditArrayAction extends AbstractActionHandler {
 	 *            required
 	 * @param schemaValue
 	 *            schema value
+	 * @param insNullable2 
 	 * @param identifierValue2
 	 * @param identifierType2
 	 */
 	private void openEditRecordDialog(TreeNode selectedNode, String title, String schemaType, String id,
 			String required, String schemaValue, String namespaces, String value, String identifierType,
-			String identifierValue, String identifierURL) {
+			String identifierValue, String identifierURL, boolean isNullable) {
 		Shell shell = Display.getDefault().getActiveShell();
 		AddNewObjectDialog editTypeDialog = new AddNewObjectDialog(shell, new Class[] { IRegistryFile.class });
 
 		editTypeDialog.create();
 		editTypeDialog.setTypeWhenEditing(schemaType);
 		editTypeDialog.setValues(title, schemaType, id, required, schemaValue, namespaces, value, identifierType,
-				identifierValue, identifierURL);
+				identifierValue, identifierURL,isNullable);
 		editTypeDialog.open();
 
 		if (editTypeDialog.getOkValue()) {
@@ -372,6 +384,12 @@ public class EditArrayAction extends AbstractActionHandler {
 				String identifierNamespace = createNamespaceArrayForIdentifiers(editTypeDialog.getIdentifierType(),
 						editTypeDialog.getIdentifierURL());
 				valueMap.put(JSON_SCHEMA_ARRAY_ELEMENT_IDENTIFIERS_URL, identifierNamespace);
+			}
+			
+			if(editTypeDialog.getNullable()){
+				valueMap.put(JSON_SCHEMA_NULLABLE, TRUE);
+			}else{
+				valueMap.put(JSON_SCHEMA_NULLABLE, FALSE);
 			}
 
 			if (StringUtils.isNotEmpty(editTypeDialog.getIdentifierType())

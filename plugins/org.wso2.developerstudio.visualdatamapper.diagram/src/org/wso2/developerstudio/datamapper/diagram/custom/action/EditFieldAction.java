@@ -67,7 +67,9 @@ public class EditFieldAction extends AbstractActionHandler {
 	private static final String JSON_SCHEMA_FIELD_NAMESPACES = "fieldNamespaces";
 	private static final String NAMESPACE_PREFIX = "prefix";
 	private static final String NAMESPACE_URL = "url";
-	
+	private static final String JSON_SCHEMA_NULLABLE = "nullable";
+	private static final String TRUE = "true";
+	private static final String FALSE = "false";
 
 	private String title = null;
 	private String schemaType = null;
@@ -76,7 +78,9 @@ public class EditFieldAction extends AbstractActionHandler {
 	private String schemaValue = null;
 	private String namespaces = null;
 	private String required = null;
-	private String formatedNamespace = null;
+	private String formatedNamespace = null;	
+	private boolean isNullable = false;
+	private String nullableValue = null;
 
 
 	public EditFieldAction(IWorkbenchPart workbenchPart) {
@@ -123,19 +127,25 @@ public class EditFieldAction extends AbstractActionHandler {
 				// If element doesn't contains a namespace prefix or xsi:type
 				name = title;
 			}
-			schemaType = setProerties(selectedNode, JSON_SCHEMA_TYPE);
-			id = setProerties(selectedNode, JSON_SCHEMA_ID);
-			required = setProerties(selectedNode, JSON_SCHEMA_REQUIRED);
-			schemaValue = setProerties(selectedNode, JSON_SCHEMA_SCHEMA_VALUE);
-			namespaces = setProerties(selectedNode, JSON_SCHEMA_FIELD_NAMESPACES);
+			schemaType = setProperties(selectedNode, JSON_SCHEMA_TYPE);
+			id = setProperties(selectedNode, JSON_SCHEMA_ID);
+			required = setProperties(selectedNode, JSON_SCHEMA_REQUIRED);
+			schemaValue = setProperties(selectedNode, JSON_SCHEMA_SCHEMA_VALUE);
+			namespaces = setProperties(selectedNode, JSON_SCHEMA_FIELD_NAMESPACES);
 			formatedNamespace = formatNamespace(namespaces).toString();
+			nullableValue = setProperties(selectedNode, JSON_SCHEMA_NULLABLE);
+			if(nullableValue.equals(TRUE)){
+				isNullable = true;
+			}else{
+				isNullable = false;
+			}
 			String newNamespace = formatedNamespace.substring(1, formatedNamespace.toString().length() - 1);
-			openEditRecordDialog(selectedNode, name, schemaType, id, required, schemaValue, newNamespace);
+			openEditRecordDialog(selectedNode, name, schemaType, id, required, schemaValue, newNamespace,isNullable);
 
 		}
 	}
 
-	private String setProerties(TreeNode selectedNode, String key) {
+	private String setProperties(TreeNode selectedNode, String key) {
 		String value = null;
 		for (PropertyKeyValuePair keyValue : selectedNode.getProperties()) {
 			if (keyValue.getKey().equals(key)) {
@@ -173,19 +183,26 @@ public class EditFieldAction extends AbstractActionHandler {
 				executeAddCommand(selectedNode, pair);
 			}
 		}
-		updateConnector();
+		updateConnector(map);
 	}
 
 	/**
 	 * Updates the connector
+	 * @param map 
 	 */
-	private void updateConnector() {
+	private void updateConnector(HashMap<String, String> map) {
 		if (getSelectedEditPart() instanceof TreeNodeEditPart) {
 			((TreeNodeEditPart) getSelectedEditPart()).addFixedChildToNodes(getSelectedEditPart());
+			((TreeNodeEditPart)getSelectedEditPart()).recreateContent(map.get(JSON_SCHEMA_TITLE),
+					map.get(JSON_SCHEMA_TYPE));
 		} else if (getSelectedEditPart() instanceof TreeNode2EditPart) {
 			((TreeNode2EditPart) getSelectedEditPart()).addFixedChildToNodes(getSelectedEditPart());
+			((TreeNode2EditPart)getSelectedEditPart()).recreateContent(map.get(JSON_SCHEMA_TITLE),
+					map.get(JSON_SCHEMA_TYPE));
 		} else if (getSelectedEditPart() instanceof TreeNode3EditPart) {
 			((TreeNode3EditPart) getSelectedEditPart()).addFixedChildToNodes(getSelectedEditPart());
+			((TreeNode3EditPart)getSelectedEditPart()).recreateContent(map.get(JSON_SCHEMA_TITLE),
+					map.get(JSON_SCHEMA_TYPE));
 		}
 	}
 
@@ -269,18 +286,19 @@ public class EditFieldAction extends AbstractActionHandler {
 	 *            required
 	 * @param schemaValue
 	 *            schema value
+	 * @param isNullable2 
 	 * @param identifierValue2
 	 * @param identifierType2
 	 */
 	private void openEditRecordDialog(TreeNode selectedNode, String title, String schemaType, String id,
-			String required, String schemaValue, String namespaces) {
+			String required, String schemaValue, String namespaces, boolean isNullable) {
 		Shell shell = Display.getDefault().getActiveShell();
 		AddNewObjectDialog editTypeDialog = new AddNewObjectDialog(shell, new Class[] { IRegistryFile.class });
 
 		editTypeDialog.create();
 		editTypeDialog.setTypeWhenEditing(schemaType);
 		editTypeDialog.setValues(title, schemaType, id, required, schemaValue, namespaces, null, null,
-				null, null);
+				null, null,isNullable);
 		editTypeDialog.open();
 
 		if (editTypeDialog.getOkValue()) {
@@ -315,6 +333,12 @@ public class EditFieldAction extends AbstractActionHandler {
 			if (StringUtils.isNotEmpty(editTypeDialog.getNamespaces())) {
 				String namespacesValue = createNamespaceArray(editTypeDialog.getNamespaces());
 				valueMap.put(JSON_SCHEMA_FIELD_NAMESPACES, namespacesValue);
+			}
+			
+			if(editTypeDialog.getNullable()){
+				valueMap.put(JSON_SCHEMA_NULLABLE, TRUE);
+			}else{
+				valueMap.put(JSON_SCHEMA_NULLABLE, FALSE);
 			}
 
 			reflectChanges(selectedNode, valueMap);

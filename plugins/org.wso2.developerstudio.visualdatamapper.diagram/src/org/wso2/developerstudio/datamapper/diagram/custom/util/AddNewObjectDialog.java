@@ -52,6 +52,8 @@ public class AddNewObjectDialog extends Dialog {
 	private Composite compositeType;
 	private Button checkBoxForValue;
 	private Button checkBoxForIdentifiers;
+	private Button btnNamespaces;
+	private Button checkBoxForNullables;
 	
 
 	private Label lblTitleLabel;
@@ -66,7 +68,8 @@ public class AddNewObjectDialog extends Dialog {
 	private Label lblIdentifierType;
 	private Label lblIdentifierValue;
 	private Label lblIdentifierURL;
-	private Button btnNamespaces;
+	private Label lblNullables;
+	
 
 	private String title;
 	private String schemaType;
@@ -78,6 +81,7 @@ public class AddNewObjectDialog extends Dialog {
 	private String identifierType;
 	private String identifierValue;
 	private String identifierURL;
+	private boolean isNullable = false;
 
 	private String[] DATA_TYPES = { "string", "number", "boolean", "bytes", "double", "enum", "fixed", "float", "long",
 			"map", "union" };
@@ -112,6 +116,7 @@ public class AddNewObjectDialog extends Dialog {
 	private static final String NEW_ARRAY_ID = "NewArray";
 	private static final String NEW_ELEMENT_ID = "NewElement";
 	private static final String NEW_ATTRIBUTE_ID = "NewAttribute";
+	private static final String LABEL_NULLABLE = "Is Nullable";
 	
 	private static final String ARRAY = "array";
 	private static final String OBJECT = "object";
@@ -174,6 +179,8 @@ public class AddNewObjectDialog extends Dialog {
 			textIdentifierValue.setVisible(false);
 			lblIdentifierURL.setVisible(false);
 			textIdentifierURL.setVisible(false);
+			checkBoxForNullables.setVisible(true);
+			lblNullables.setVisible(true);
 		}
 		if (title.equals(DIALOG_TITLE_OBJECT) || title.equals(DIALOG_TITLE_ARRAY) || title.equals(DIALOG_TITLE_FIELD)
 				|| title.equals(DIALOG_TITLE_ATTRIBUTE)) {
@@ -193,6 +200,8 @@ public class AddNewObjectDialog extends Dialog {
 			textIdentifierValue.setVisible(false);
 			lblIdentifierURL.setVisible(false);
 			textIdentifierURL.setVisible(false);
+			checkBoxForNullables.setVisible(true);
+			lblNullables.setVisible(true);
 		} if (title.equals(DIALOG_TITLE_FIELD)) {
 			lblRequired.setVisible(false);
 			textRequired.setVisible(false);
@@ -208,6 +217,8 @@ public class AddNewObjectDialog extends Dialog {
 			textIdentifierValue.setVisible(false);
 			lblIdentifierURL.setVisible(false);
 			textIdentifierURL.setVisible(false);
+			checkBoxForNullables.setVisible(true);
+			lblNullables.setVisible(true);
 		}if(title.equals(DIALOG_TITLE_ATTRIBUTE)){
 			lblRequired.setVisible(false);
 			textRequired.setVisible(false);
@@ -223,6 +234,8 @@ public class AddNewObjectDialog extends Dialog {
 			textIdentifierValue.setVisible(false);
 			lblIdentifierURL.setVisible(false);
 			textIdentifierURL.setVisible(false);
+			checkBoxForNullables.setVisible(true);
+			lblNullables.setVisible(true);
 		}
 	}
 	
@@ -282,7 +295,7 @@ public class AddNewObjectDialog extends Dialog {
 	 * @param identifierValue2 
 	 * @param identifierType2 
 	 */
-	public void setValues(String title, String schemaType, String id, String required, String schemaValue, String namespaces, String value, String identifierType, String identifierValue, String identifierURL) {
+	public void setValues(String title, String schemaType, String id, String required, String schemaValue, String namespaces, String value, String identifierType, String identifierValue, String identifierURL, boolean nullValue) {
 		if (StringUtils.isNotEmpty(title)) {
 			textTitle.setText(title);
 		}
@@ -310,6 +323,8 @@ public class AddNewObjectDialog extends Dialog {
 				textIdentifierValue.setVisible(false);
 				lblIdentifierURL.setVisible(false);
 				textIdentifierURL.setVisible(false);
+				checkBoxForNullables.setVisible(true);
+				lblNullables.setVisible(true);
 				break;
 			case "array":
 				comboSchemaType.select(0);
@@ -333,6 +348,8 @@ public class AddNewObjectDialog extends Dialog {
 				textIdentifierValue.setVisible(false);
 				lblIdentifierURL.setVisible(false);
 				textIdentifierURL.setVisible(false);
+				checkBoxForNullables.setVisible(true);
+				lblNullables.setVisible(true);
 				break;
 			case "string":
 				comboSchemaType.select(0);
@@ -356,6 +373,8 @@ public class AddNewObjectDialog extends Dialog {
 				textIdentifierValue.setVisible(false);
 				lblIdentifierURL.setVisible(false);
 				textIdentifierURL.setVisible(false);
+				checkBoxForNullables.setVisible(true);
+				lblNullables.setVisible(true);
 				break;
 			case "number":
 				comboSchemaType.select(1);
@@ -381,6 +400,8 @@ public class AddNewObjectDialog extends Dialog {
 				textIdentifierURL.setVisible(false);
 				lblIdentifierURL.setVisible(false);
 				textIdentifierURL.setVisible(false);
+				checkBoxForNullables.setVisible(true);
+				lblNullables.setVisible(true);
 				break;
 			case "boolean":
 				comboSchemaType.select(2);
@@ -404,6 +425,8 @@ public class AddNewObjectDialog extends Dialog {
 				textIdentifierValue.setVisible(false);
 				lblIdentifierURL.setVisible(false);
 				textIdentifierURL.setVisible(false);
+				checkBoxForNullables.setVisible(true);
+				lblNullables.setVisible(true);
 				break;
 			case "bytes":
 				comboSchemaType.select(3);
@@ -427,6 +450,8 @@ public class AddNewObjectDialog extends Dialog {
 				textIdentifierValue.setVisible(false);
 				lblIdentifierURL.setVisible(false);
 				textIdentifierURL.setVisible(false);
+				checkBoxForNullables.setVisible(true);
+				lblNullables.setVisible(true);
 				break;
 			case "double":
 				comboSchemaType.select(4);
@@ -450,6 +475,8 @@ public class AddNewObjectDialog extends Dialog {
 				textIdentifierValue.setVisible(false);
 				lblIdentifierURL.setVisible(false);
 				textIdentifierURL.setVisible(false);
+				checkBoxForNullables.setVisible(true);
+				lblNullables.setVisible(true);
 				break;
 			case "enum":
 				comboSchemaType.select(5);
@@ -473,6 +500,8 @@ public class AddNewObjectDialog extends Dialog {
 				textIdentifierValue.setVisible(false);
 				lblIdentifierURL.setVisible(false);
 				textIdentifierURL.setVisible(false);
+				checkBoxForNullables.setVisible(true);
+				lblNullables.setVisible(true);
 				break;
 			case "fixed":
 				comboSchemaType.select(6);
@@ -496,6 +525,8 @@ public class AddNewObjectDialog extends Dialog {
 				textIdentifierValue.setVisible(false);
 				lblIdentifierURL.setVisible(false);
 				textIdentifierURL.setVisible(false);
+				checkBoxForNullables.setVisible(true);
+				lblNullables.setVisible(true);
 				break;
 			case "float":
 				comboSchemaType.select(7);
@@ -519,6 +550,8 @@ public class AddNewObjectDialog extends Dialog {
 				textIdentifierValue.setVisible(false);
 				lblIdentifierURL.setVisible(false);
 				textIdentifierURL.setVisible(false);
+				checkBoxForNullables.setVisible(true);
+				lblNullables.setVisible(true);
 				break;
 			case "long":
 				comboSchemaType.select(8);
@@ -542,6 +575,8 @@ public class AddNewObjectDialog extends Dialog {
 				textIdentifierValue.setVisible(false);
 				lblIdentifierURL.setVisible(false);
 				textIdentifierURL.setVisible(false);
+				checkBoxForNullables.setVisible(true);
+				lblNullables.setVisible(true);
 				break;
 			case "map":
 				comboSchemaType.select(9);
@@ -565,6 +600,8 @@ public class AddNewObjectDialog extends Dialog {
 				textIdentifierValue.setVisible(false);
 				lblIdentifierURL.setVisible(false);
 				textIdentifierURL.setVisible(false);
+				checkBoxForNullables.setVisible(true);
+				lblNullables.setVisible(true);
 				break;
 			case "union":
 				comboSchemaType.select(10);
@@ -588,6 +625,8 @@ public class AddNewObjectDialog extends Dialog {
 				textIdentifierValue.setVisible(false);
 				lblIdentifierURL.setVisible(false);
 				textIdentifierURL.setVisible(false);
+				checkBoxForNullables.setVisible(true);
+				lblNullables.setVisible(true);
 				break;
 			default:
 				break;
@@ -665,6 +704,16 @@ public class AddNewObjectDialog extends Dialog {
 			//TODO when editing the xsi:type display the added URL
 		}
 		
+		if(nullValue){
+			checkBoxForNullables.setVisible(true);
+			lblNullables.setVisible(true);
+			checkBoxForNullables.setSelection(true);
+		}else{
+			checkBoxForNullables.setVisible(true);
+			lblNullables.setVisible(true);
+			checkBoxForNullables.setSelection(false);
+		}
+		
 	}
 
 	/**
@@ -722,7 +771,37 @@ public class AddNewObjectDialog extends Dialog {
 
 		textID.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 5, 1));
 		
-
+		
+		
+		
+		
+		checkBoxForNullables = new Button(compositeType,SWT.CHECK);
+		lblNullables = new Label(compositeType, SWT.NONE);
+		lblNullables.setText(LABEL_NULLABLE);
+		
+		lblNullables.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 5, 1));
+	
+		checkBoxForNullables.addSelectionListener(new SelectionListener() {
+		
+			@Override
+			public void widgetSelected(SelectionEvent event) {
+				
+				if (((Button)event.widget).getSelection()) {
+				     isNullable = true;
+					
+				}else{
+					 isNullable = false;
+				}		
+			}
+			
+			@Override
+			public void widgetDefaultSelected(SelectionEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+		
+		
 		lblNamespaces = new Label(compositeType, SWT.NONE);
 		lblNamespaces.setText(LABEL_NAMESPACES_URL);
 
@@ -965,6 +1044,7 @@ public class AddNewObjectDialog extends Dialog {
 		setIdentifierType(textIdentifierType.getText());
 		setIdentifierValue(textIdentifierValue.getText());
 		setIdentifierURL(textIdentifierURL.getText());
+		setNullable(isNullable);
 		super.okPressed();
 	}
 
@@ -986,6 +1066,10 @@ public class AddNewObjectDialog extends Dialog {
 
 	public void setRequired(String required) {
 		this.required = required;
+	}
+	
+	public void setNullable(boolean isNullable) {
+		this.isNullable = isNullable;
 	}
 	
 	public void setNamespaces(String namespaces) {
@@ -1019,6 +1103,10 @@ public class AddNewObjectDialog extends Dialog {
 
 	public String getID() {
 		return id;
+	}
+	
+	public boolean getNullable(){
+		return isNullable;
 	}
 
 	public String getSchemaValue() {

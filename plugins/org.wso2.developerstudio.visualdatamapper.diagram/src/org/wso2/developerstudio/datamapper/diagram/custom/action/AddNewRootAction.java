@@ -74,6 +74,10 @@ public class AddNewRootAction extends AbstractActionHandler {
 	private static final String JSON_SCHEMA_NAMESPACES = "namespaces";
 	private static final String NAMESPACE_PREFIX = "prefix";
 	private static final String NAMESPACE_URL = "url";
+	private static final String JSON_SCHEMA_NULLABLE = "nullable";
+	private static final String TRUE = "true";
+	private static final String FALSE = "false";
+
 
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
@@ -147,6 +151,17 @@ public class AddNewRootAction extends AbstractActionHandler {
 						setPropertyKeyValuePairforTreeNodes(treeNodeNew, propertyValueList, JSON_SCHEMA_NAMESPACES,
 								namespaces);
 					}
+					
+					//Sets the nullable value
+					String nullableValue = null;
+					if(rootElementDialog.getNullable()){
+						nullableValue = TRUE;
+					}else{
+		                nullableValue = FALSE;
+					}
+					setPropertyKeyValuePairforTreeNodes(treeNodeNew, propertyValueList, JSON_SCHEMA_NULLABLE,
+							nullableValue);
+					
 					String selectedInputOutputEditPart = getSelectedInputOutputEditPart();
 					if (null != selectedInputOutputEditPart) {
 						AddCommand addCmd;

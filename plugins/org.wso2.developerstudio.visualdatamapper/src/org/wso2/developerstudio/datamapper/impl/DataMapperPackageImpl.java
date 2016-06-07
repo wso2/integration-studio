@@ -959,6 +959,15 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getConstant_Type() {
+		return (EAttribute)constantEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getAdd() {
 		return addEClass;
 	}
@@ -1006,6 +1015,15 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 	 */
 	public EClass getSetPrecision() {
 		return setPrecisionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSetPrecision_NumberOfDigits() {
+		return (EAttribute)setPrecisionEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -1239,6 +1257,7 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 
 		constantEClass = createEClass(CONSTANT);
 		createEAttribute(constantEClass, CONSTANT__CONSTANT_VALUE);
+		createEAttribute(constantEClass, CONSTANT__TYPE);
 
 		addEClass = createEClass(ADD);
 
@@ -1251,6 +1270,7 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 		multiplyEClass = createEClass(MULTIPLY);
 
 		setPrecisionEClass = createEClass(SET_PRECISION);
+		createEAttribute(setPrecisionEClass, SET_PRECISION__NUMBER_OF_DIGITS);
 
 		splitEClass = createEClass(SPLIT);
 		createEAttribute(splitEClass, SPLIT__DELIMITER);
@@ -1409,6 +1429,7 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 
 		initEClass(constantEClass, Constant.class, "Constant", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getConstant_ConstantValue(), ecorePackage.getEString(), "constantValue", null, 0, 1, Constant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getConstant_Type(), this.getSchemaDataType(), "type", "STRING", 0, 1, Constant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(addEClass, Add.class, "Add", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -1421,6 +1442,7 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 		initEClass(multiplyEClass, Multiply.class, "Multiply", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(setPrecisionEClass, SetPrecision.class, "SetPrecision", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getSetPrecision_NumberOfDigits(), ecorePackage.getEInt(), "numberOfDigits", "1", 0, 1, SetPrecision.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(splitEClass, Split.class, "Split", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getSplit_Delimiter(), ecorePackage.getEString(), "delimiter", null, 0, 1, Split.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

@@ -86,6 +86,24 @@ public class ModelTransformerFactory {
 
 	private static IModelTransformer getArithmaticOperatorModelTransformer(DataMapperOperatorType type) {
 		switch (type) {
+		case ADD:
+			return new AddModelTransformer();
+		case SUBTRACT:
+			return new SubtractModelTransformer();
+		case MULTIPLY:
+			return new MultiplyModelTransformer();
+		case DIVIDE:
+			return new DivideModelTransformer();
+		case ABSOLUTE:
+			return new AbsoluteModelTransformer();
+		case FLOOR:
+			return new FloorModelTransformer();
+		case CEILING:
+			return new CeilingModelTransformer();
+		case SET_PRECISION:
+			return new SetPrecisionModelTransformer();
+		case ROUND:
+			return new RoundModelTransformer();
 		default:
 			throw new IllegalArgumentException(
 					"Unable to find arithmatic model transformer to operator type in ModelTransformerFactory: " + type);

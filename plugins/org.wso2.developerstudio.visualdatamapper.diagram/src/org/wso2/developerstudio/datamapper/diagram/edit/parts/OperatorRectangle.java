@@ -14,14 +14,12 @@ import org.eclipse.swt.graphics.Font;
 public class OperatorRectangle extends RoundedRectangle{
  
 	public OperatorRectangle (String title) {
-		Color blueColor = new Color(null,  0, 125, 133);
-		LineBorder border = new LineBorder(DataMapperColorConstants.borderColor, 1, Graphics.LINE_SOLID);
-		border.setColor(blueColor);
+		LineBorder border = new LineBorder(DataMapperColorConstants.color_white, 1, Graphics.LINE_SOLID);
 		this.setBorder(border);
 
 		CustomTitleBarBorder titleBarBorder = new CustomTitleBarBorder(title);
-		titleBarBorder.setBackgroundColor(blueColor);
-		titleBarBorder.setTextColor(new Color(null, 0, 0, 0));
+		titleBarBorder.setBackgroundColor(DataMapperColorConstants.color_white);
+		titleBarBorder.setTextColor(DataMapperColorConstants.color_black);
 		titleBarBorder.setFont(new Font(null, "Arial", 10, SWT.BOLD));
 		
 		LineBorder lineBorder = new LineBorder(DataMapperColorConstants.borderColor, 1, Graphics.LINE_SOLID);

@@ -192,7 +192,9 @@ public class OperatorRightConnectorEditPart extends AbstractBorderedShapeEditPar
 		NodeFigure figure = createNodePlate();
 		figure.setLayoutManager(new StackLayout());
 		IFigure shape = createNodeShape();
+		shape.setBorder(null);
 		figure.add(shape);
+		figure.setBorder(null);
 		contentPane = setupContentPane(shape);
 		return figure;
 	}

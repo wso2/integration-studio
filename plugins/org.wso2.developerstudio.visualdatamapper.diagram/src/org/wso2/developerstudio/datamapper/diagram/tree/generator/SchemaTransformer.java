@@ -67,7 +67,9 @@ public class SchemaTransformer implements ISchemaTransformer {
 	private static final String JSON_SCHEMA_VALUE = "value";
 	private static final String JSON_SCHEMA_ATTRIBUTES = "attributes";
 	private static final String JSON_SCHEMA_TYPE = "type";
+	private static final String JSON_SCHEMA_NULLABLE = "nullable";
 	private static final String JSON_SCHEMA_OBJECT = "object";
+	private static final String FALSE = "false";
 	private static final String JSON_SCHEMA_ARRAY_ITEMS_ID = "items_id";
 	private static final String JSON_SCHEMA_ARRAY_ITEMS_TYPE = "items_type";
 	private static final String JSON_SCHEMA_ARRAY_ITEMS_VALUE_TYPE = "items_value_type";
@@ -701,6 +703,9 @@ public class SchemaTransformer implements ISchemaTransformer {
 		}
 		treeNode.setLevel(count);
 
+		//Sets the nullable to false 
+		setPropertyKeyValuePairforTreeNodes(treeNode, propertyValueList, JSON_SCHEMA_NULLABLE, FALSE);
+		//Sets the schema type
 		setPropertyKeyValuePairforTreeNodes(treeNode, propertyValueList, JSON_SCHEMA_TYPE, schemaType);
 		// Sets the schema key if available
 		if (getSchemaValue(subSchema) != null) {
@@ -985,6 +990,7 @@ public class SchemaTransformer implements ISchemaTransformer {
 			root.put(JSON_SCHEMA_TITLE, treeNodeModel.getName());
 			insetIDAndTypeForJsonObject(treeNodeModel, root);
 			String schemaType = getPropertyKeyValuePairforTreeNode(treeNodeModel, JSON_SCHEMA_TYPE);
+			root.put(JSON_SCHEMA_NULLABLE, getPropertyKeyValuePairforTreeNodeImpls(treeNodeModel, JSON_SCHEMA_NULLABLE));
 			if (schemaType.equals(JSON_SCHEMA_OBJECT)) {
 				root.put(JSON_SCHEMA_PROPERTIES, propertiesObject);
 			} else if (schemaType.equals(JSON_SCHEMA_ARRAY)) {
@@ -1208,6 +1214,7 @@ public class SchemaTransformer implements ISchemaTransformer {
 			EList<TreeNode> nodeList = treeNodeModel.getNode();
 			for (TreeNode node : nodeList) {
 				String name = node.getName();
+				String nullableValue =  getPropertyKeyValuePairforTreeNode(node, JSON_SCHEMA_NULLABLE);
 				String schemaType = getPropertyKeyValuePairforTreeNode(node, JSON_SCHEMA_TYPE);
 				String schemaArrayItemsID = getPropertyKeyValuePairforTreeNode(node, JSON_SCHEMA_ARRAY_ITEMS_ID);
 				String schemaArrayItemsType = getPropertyKeyValuePairforTreeNode(node, JSON_SCHEMA_ARRAY_ITEMS_TYPE);
@@ -1261,6 +1268,7 @@ public class SchemaTransformer implements ISchemaTransformer {
 							nodeObject.put(JSON_SCHEMA_PROPERTIES, propertiesObject);
 						}
 						parent.put(node.getName(), nodeObject);
+						parent.put(JSON_SCHEMA_NULLABLE, nullableValue);
 						insertRequiredArray(nodeObject, node, false);
 						// Handles attributes
 						if (attributeID != null && attributeType != null) {
@@ -1353,6 +1361,7 @@ public class SchemaTransformer implements ISchemaTransformer {
 						}
 						insertRequiredArray(arrayObject, node, false);
 						insertRequiredArray(itemProperties, node, true);
+						parent.put(JSON_SCHEMA_NULLABLE, nullableValue);
 						parent.put(node.getName(), arrayObject);
 						if (itemProperties.size() > 0) {
 							arrayItemsObject.add(itemProperties);
@@ -1486,9 +1495,11 @@ public class SchemaTransformer implements ISchemaTransformer {
 							elemObject = new JSONObject();
 							elemObject.put(JSON_SCHEMA_ID, objectAddedAttributeID);
 							elemObject.put(JSON_SCHEMA_TYPE, objectAddedAttributeType);
+							elemObject.put(JSON_SCHEMA_NULLABLE, nullableValue);
 						} else {
 							elemObject = createElementObject(schemaID);
 							elemObject.put(JSON_SCHEMA_TYPE, schemaType);
+							elemObject.put(JSON_SCHEMA_NULLABLE, nullableValue);
 						}
 
 						// ignore other elements comes from attribute iteration
@@ -1535,6 +1546,7 @@ public class SchemaTransformer implements ISchemaTransformer {
 					} else {
 						JSONObject elemObject = createElementObject(schemaID);
 						elemObject.put(JSON_SCHEMA_TYPE, schemaType);
+						elemObject.put(JSON_SCHEMA_NULLABLE, nullableValue);
 						// ignore attributes comes with property iteration
 						if (!name.startsWith(PREFIX)) {
 							// Check if there are namespaces in the fields when

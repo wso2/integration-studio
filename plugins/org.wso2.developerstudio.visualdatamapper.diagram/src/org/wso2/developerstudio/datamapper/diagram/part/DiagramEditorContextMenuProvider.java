@@ -43,10 +43,12 @@ import org.wso2.developerstudio.datamapper.diagram.custom.action.AddNewObjectAct
 import org.wso2.developerstudio.datamapper.diagram.custom.action.AddNewRootAction;
 import org.wso2.developerstudio.datamapper.diagram.custom.action.ConcatManyAction;
 import org.wso2.developerstudio.datamapper.diagram.custom.action.ConstantConfigureAction;
+import org.wso2.developerstudio.datamapper.diagram.custom.action.DisableNullableAction;
 import org.wso2.developerstudio.datamapper.diagram.custom.action.EditArrayAction;
 import org.wso2.developerstudio.datamapper.diagram.custom.action.EditAttributeAction;
 import org.wso2.developerstudio.datamapper.diagram.custom.action.EditFieldAction;
 import org.wso2.developerstudio.datamapper.diagram.custom.action.EditObjectAction;
+import org.wso2.developerstudio.datamapper.diagram.custom.action.EnableNullableAction;
 import org.wso2.developerstudio.datamapper.diagram.custom.action.ExportSchemaAction;
 import org.wso2.developerstudio.datamapper.diagram.custom.action.LoadInputSchemaAction;
 import org.wso2.developerstudio.datamapper.diagram.custom.action.LoadOutputSchemaAction;
@@ -73,7 +75,10 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
 	private static final String JSON_SCHEMA_TYPE = "type";
 	private static final String JSON_SCHEMA_ARRAY = "array";
 	private static final String JSON_SCHEMA_OBJECT = "object";
+	private static final String JSON_SCHEMA_NULLABLE = "nullable";
 	private static final String PREFIX = "@";
+	private static final String TRUE = "true";
+	private static final String FALSE = "false";
 	private static final String ERROR_BUILDING_CONTEXT_MENU = Messages.DiagramEditorContextMenuProvider_errorContextMenu;
 
 	/**
@@ -105,6 +110,10 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
 	Map<Class<? extends ShapeNodeEditPart>, AbstractActionHandler> addEditFieldActions;
 	// Actions for Editing an attribute
 	Map<Class<? extends ShapeNodeEditPart>, AbstractActionHandler> addEditAttributeActions;
+	//Actions for adding nullable
+	Map<Class<? extends ShapeNodeEditPart>, AbstractActionHandler> enableNullableActions;
+	//Actions for removing nullable
+	Map<Class<? extends ShapeNodeEditPart>, AbstractActionHandler> disableNullableActions; 
 	// Actions for exporting schema
 	Map<Class<? extends ShapeNodeEditPart>, AbstractActionHandler> exportSchemaActions;
 
@@ -199,7 +208,19 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
 		addEditAttributeActions.put(TreeNodeEditPart.class, new EditAttributeAction(part));
 		addEditAttributeActions.put(TreeNode2EditPart.class, new EditAttributeAction(part));
 		addEditAttributeActions.put(TreeNode3EditPart.class, new EditAttributeAction(part));
-
+		
+		//Enable Nullable field actions added to tree nodes
+		enableNullableActions = new HashMap<Class<? extends ShapeNodeEditPart>, AbstractActionHandler>();
+		enableNullableActions.put(TreeNodeEditPart.class, new EnableNullableAction(part));
+		enableNullableActions.put(TreeNode2EditPart.class, new EnableNullableAction(part));
+		enableNullableActions.put(TreeNode3EditPart.class, new EnableNullableAction(part));
+		
+		//Disable Nullable field actions added to tree nodes
+		disableNullableActions = new HashMap<Class<? extends ShapeNodeEditPart>, AbstractActionHandler>();
+		disableNullableActions.put(TreeNodeEditPart.class, new DisableNullableAction(part));
+		disableNullableActions.put(TreeNode2EditPart.class, new DisableNullableAction(part));
+		disableNullableActions.put(TreeNode3EditPart.class, new DisableNullableAction(part));
+		
 		// Initialize export schema actions.
 		exportSchemaActions = new HashMap<Class<? extends ShapeNodeEditPart>, AbstractActionHandler>();
 		exportSchemaActions.put(InputEditPart.class, new ExportSchemaAction(part));
@@ -336,7 +357,35 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
 											}
 										}
 									}
-								
+										
+									if (!selectedEditorPart.getChildren().isEmpty()) {
+										if(selectedEditorPart instanceof TreeNodeEditPart| selectedEditorPart instanceof TreeNode2EditPart | selectedEditorPart instanceof TreeNode3EditPart){
+										for (PropertyKeyValuePair keyValue : (((TreeNode) ((View) selectedEditorPart
+												.getModel()).getElement()).getProperties())) {
+											if (keyValue.getKey().equals(JSON_SCHEMA_NULLABLE)) {			
+												if(keyValue.getValue().equals(FALSE)){
+													//Append nullable action to menu
+													AbstractActionHandler enableNullableAction = enableNullableActions
+															.get(selectedEditorPart.getClass());
+													if (null != enableNullableAction) {
+														menu.appendToGroup(EDIT_GROUP_ID, enableNullableAction);
+													}
+												}else if(keyValue.getValue().equals(TRUE)){
+													//Append nullable action to menu
+													AbstractActionHandler disableNullableAction = disableNullableActions
+															.get(selectedEditorPart.getClass());
+													if (null != disableNullableAction) {
+														menu.appendToGroup(EDIT_GROUP_ID, disableNullableAction);
+													}
+												}
+												
+											}
+										}
+										name = (((TreeNode) ((View) selectedEditorPart.getModel()).getElement())
+												.getName());
+										}
+									}
+									
 
 									// Append load from file item to menu
 									AbstractActionHandler contextAction = contextActions

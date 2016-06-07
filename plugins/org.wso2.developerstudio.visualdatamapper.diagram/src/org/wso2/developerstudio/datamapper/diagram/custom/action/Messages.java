@@ -89,6 +89,8 @@ public class Messages extends NLS {
 	public static String EditActions_editRootElement;
 	public static String EditActions_editArray;
 	public static String EditActions_editAttribute;
+	public static String NullableAction_enableNullable;
+	public static String NullableAction_disableNullable;
 	public static String AddNewObjectAction_addNewObject;
 	public static String AddNewArrayAction_addNewArray;
 	public static String AddNewRootRecordAction_addNewRoot;

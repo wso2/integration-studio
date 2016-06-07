@@ -13,13 +13,10 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
+import org.wso2.developerstudio.datamapper.DataMapperOperatorType;
 import org.wso2.developerstudio.datamapper.DataMapperPackage;
-import org.wso2.developerstudio.datamapper.InNode;
 import org.wso2.developerstudio.datamapper.Operator;
 import org.wso2.developerstudio.datamapper.OperatorBasicContainer;
-import org.wso2.developerstudio.datamapper.OutNode;
 import org.wso2.developerstudio.datamapper.SchemaDataType;
 
 /**
@@ -38,6 +35,7 @@ import org.wso2.developerstudio.datamapper.SchemaDataType;
  *   <li>{@link org.wso2.developerstudio.datamapper.impl.OperatorImpl#getOutputVariableType <em>Output Variable Type</em>}</li>
  *   <li>{@link org.wso2.developerstudio.datamapper.impl.OperatorImpl#isInputSizeFixed <em>Input Size Fixed</em>}</li>
  *   <li>{@link org.wso2.developerstudio.datamapper.impl.OperatorImpl#isOutputSizeFixed <em>Output Size Fixed</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.datamapper.impl.OperatorImpl#getOperatorType <em>Operator Type</em>}</li>
  * </ul>
  *
  * @generated
@@ -171,6 +169,26 @@ public class OperatorImpl extends DataMapperNodeImpl implements Operator {
 	 * @ordered
 	 */
 	protected boolean outputSizeFixed = OUTPUT_SIZE_FIXED_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getOperatorType() <em>Operator Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOperatorType()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final DataMapperOperatorType OPERATOR_TYPE_EDEFAULT = DataMapperOperatorType.OPERATOR;
+
+	/**
+	 * The cached value of the '{@link #getOperatorType() <em>Operator Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOperatorType()
+	 * @generated
+	 * @ordered
+	 */
+	protected DataMapperOperatorType operatorType = OPERATOR_TYPE_EDEFAULT;
 
 	/**
 	*<!-- begin-user-doc -->
@@ -415,6 +433,27 @@ public class OperatorImpl extends DataMapperNodeImpl implements Operator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public DataMapperOperatorType getOperatorType() {
+		return operatorType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setOperatorType(DataMapperOperatorType newOperatorType) {
+		DataMapperOperatorType oldOperatorType = operatorType;
+		operatorType = newOperatorType == null ? OPERATOR_TYPE_EDEFAULT : newOperatorType;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DataMapperPackage.OPERATOR__OPERATOR_TYPE, oldOperatorType, operatorType));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -448,6 +487,8 @@ public class OperatorImpl extends DataMapperNodeImpl implements Operator {
 				return isInputSizeFixed();
 			case DataMapperPackage.OPERATOR__OUTPUT_SIZE_FIXED:
 				return isOutputSizeFixed();
+			case DataMapperPackage.OPERATOR__OPERATOR_TYPE:
+				return getOperatorType();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -487,6 +528,9 @@ public class OperatorImpl extends DataMapperNodeImpl implements Operator {
 			case DataMapperPackage.OPERATOR__OUTPUT_SIZE_FIXED:
 				setOutputSizeFixed((Boolean)newValue);
 				return;
+			case DataMapperPackage.OPERATOR__OPERATOR_TYPE:
+				setOperatorType((DataMapperOperatorType)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -523,6 +567,9 @@ public class OperatorImpl extends DataMapperNodeImpl implements Operator {
 			case DataMapperPackage.OPERATOR__OUTPUT_SIZE_FIXED:
 				setOutputSizeFixed(OUTPUT_SIZE_FIXED_EDEFAULT);
 				return;
+			case DataMapperPackage.OPERATOR__OPERATOR_TYPE:
+				setOperatorType(OPERATOR_TYPE_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -551,6 +598,8 @@ public class OperatorImpl extends DataMapperNodeImpl implements Operator {
 				return inputSizeFixed != INPUT_SIZE_FIXED_EDEFAULT;
 			case DataMapperPackage.OPERATOR__OUTPUT_SIZE_FIXED:
 				return outputSizeFixed != OUTPUT_SIZE_FIXED_EDEFAULT;
+			case DataMapperPackage.OPERATOR__OPERATOR_TYPE:
+				return operatorType != OPERATOR_TYPE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -579,6 +628,8 @@ public class OperatorImpl extends DataMapperNodeImpl implements Operator {
 		result.append(inputSizeFixed);
 		result.append(", outputSizeFixed: ");
 		result.append(outputSizeFixed);
+		result.append(", operatorType: ");
+		result.append(operatorType);
 		result.append(')');
 		return result.toString();
 	}

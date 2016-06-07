@@ -3,8 +3,8 @@
 package org.wso2.developerstudio.datamapper.impl;
 
 import org.eclipse.emf.ecore.EClass;
-
 import org.wso2.developerstudio.datamapper.Celi;
+import org.wso2.developerstudio.datamapper.DataMapperOperatorType;
 import org.wso2.developerstudio.datamapper.DataMapperPackage;
 import org.wso2.developerstudio.datamapper.SchemaDataType;
 
@@ -31,6 +31,7 @@ public class CeliImpl extends OperatorImpl implements Celi {
 		getInputVariableType().add(SchemaDataType.INT);
 		getOutputVariableType().add(SchemaDataType.INT);
 		getOutputVariableType().add(SchemaDataType.DOUBLE);
+		setOperatorType(DataMapperOperatorType.CEILING);
 	}
 
 	/**

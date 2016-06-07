@@ -21,6 +21,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.wso2.developerstudio.datamapper.Operator#getOutputVariableType <em>Output Variable Type</em>}</li>
  *   <li>{@link org.wso2.developerstudio.datamapper.Operator#isInputSizeFixed <em>Input Size Fixed</em>}</li>
  *   <li>{@link org.wso2.developerstudio.datamapper.Operator#isOutputSizeFixed <em>Output Size Fixed</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.datamapper.Operator#getOperatorType <em>Operator Type</em>}</li>
  * </ul>
  *
  * @see org.wso2.developerstudio.datamapper.DataMapperPackage#getOperator()
@@ -224,5 +225,35 @@ public interface Operator extends DataMapperNode {
 	 * @generated
 	 */
 	void setOutputSizeFixed(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Operator Type</b></em>' attribute.
+	 * The default value is <code>"OPERATOR"</code>.
+	 * The literals are from the enumeration {@link org.wso2.developerstudio.datamapper.DataMapperOperatorType}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Operator Type</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Operator Type</em>' attribute.
+	 * @see org.wso2.developerstudio.datamapper.DataMapperOperatorType
+	 * @see #setOperatorType(DataMapperOperatorType)
+	 * @see org.wso2.developerstudio.datamapper.DataMapperPackage#getOperator_OperatorType()
+	 * @model default="OPERATOR"
+	 * @generated
+	 */
+	DataMapperOperatorType getOperatorType();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.datamapper.Operator#getOperatorType <em>Operator Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Operator Type</em>' attribute.
+	 * @see org.wso2.developerstudio.datamapper.DataMapperOperatorType
+	 * @see #getOperatorType()
+	 * @generated
+	 */
+	void setOperatorType(DataMapperOperatorType value);
 
 } // Operator

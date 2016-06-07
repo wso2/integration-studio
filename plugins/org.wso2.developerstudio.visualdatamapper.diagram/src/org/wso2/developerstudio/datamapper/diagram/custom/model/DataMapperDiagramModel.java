@@ -30,6 +30,7 @@ import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IEditorReference;
 import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.datamapper.DataMapperLink;
+import org.wso2.developerstudio.datamapper.DataMapperOperatorType;
 import org.wso2.developerstudio.datamapper.DataMapperRoot;
 import org.wso2.developerstudio.datamapper.Input;
 import org.wso2.developerstudio.datamapper.Operator;
@@ -262,7 +263,7 @@ public class DataMapperDiagramModel {
                 for (DataMapperLink dataMapperLink : outgoingLinks) {
                     EObject linkedNode = getLinkedElement(dataMapperLink);
                     if (linkedNode instanceof TreeNodeImpl) {
-                        operationsList.add(new DMOperation(DMOperatorType.DIRECT,
+                        operationsList.add(new DMOperation(DataMapperOperatorType.DIRECT,
                                 getUniqueDirectId(linkedNode, operationsList.size()), operationsList.size()));
                         outputAdjList.add(new ArrayList<Integer>());
                         outputAdjList.get(operationsList.size() - 1).add(((TreeNodeImpl) linkedNode).getIndex());
@@ -276,7 +277,7 @@ public class DataMapperDiagramModel {
             } else if (currentElement instanceof OperatorImpl && !((OperatorImpl) currentElement).isVisited()) {
                 int index = operationsList.size();
                 OperatorImpl operatorElement = (OperatorImpl) currentElement;
-                DMOperation operator = ModelTransformerFactory.getModelTransformer(getOperatorType(operatorElement))
+                DMOperation operator = ModelTransformerFactory.getModelTransformer(operatorElement.getOperatorType())
                         .transform(operatorElement, index);
                 operationsList.add(operator);
                 graphOperationElements.add(operatorElement);
@@ -310,7 +311,7 @@ public class DataMapperDiagramModel {
                             }
                         } else {
                             indexOfConnector++;
-                            if (DMOperatorType.CONSTANT.equals(operator.getOperatorType())) {
+                            if (DataMapperOperatorType.CONSTANT.equals(operator.getOperatorType())) {
                                 int variableIndex = variablesArray.size();
                                 DMVariable tempVar = new DMVariable(
                                         "{" + operator.getProperty(TransformerConstants.CONSTANT_VALUE_TAG) + "}",
@@ -424,22 +425,6 @@ public class DataMapperDiagramModel {
 
     private String getUniqueDirectId(EObject parent, int size) {
         return parent.toString() + " " + size;
-    }
-
-    private DMOperatorType getOperatorType(OperatorImpl nextElement) {
-        if (nextElement instanceof ConcatImpl) {
-            return DMOperatorType.CONCAT;
-        } else if (nextElement instanceof SplitImpl) {
-            return DMOperatorType.SPLIT;
-        } else if (nextElement instanceof UpperCaseImpl) {
-            return DMOperatorType.UPPERCASE;
-        } else if (nextElement instanceof LowerCaseImpl) {
-            return DMOperatorType.LOWERCASE;
-        } else if (nextElement instanceof ConstantImpl) {
-            return DMOperatorType.CONSTANT;
-        } else {
-            throw new IllegalArgumentException("Unknown operator detected : " + nextElement.toString());
-        }
     }
 
     private EObject getLinkedElement(DataMapperLink dataMapperLink) {

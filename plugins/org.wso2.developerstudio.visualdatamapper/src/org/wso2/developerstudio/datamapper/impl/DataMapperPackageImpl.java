@@ -2,7 +2,6 @@
  */
 package org.wso2.developerstudio.datamapper.impl;
 
-import java.util.Map;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
@@ -18,6 +17,7 @@ import org.wso2.developerstudio.datamapper.Contains;
 import org.wso2.developerstudio.datamapper.DataMapperFactory;
 import org.wso2.developerstudio.datamapper.DataMapperLink;
 import org.wso2.developerstudio.datamapper.DataMapperNode;
+import org.wso2.developerstudio.datamapper.DataMapperOperatorType;
 import org.wso2.developerstudio.datamapper.DataMapperPackage;
 import org.wso2.developerstudio.datamapper.DataMapperRoot;
 import org.wso2.developerstudio.datamapper.Divide;
@@ -28,16 +28,12 @@ import org.wso2.developerstudio.datamapper.InNode;
 import org.wso2.developerstudio.datamapper.Input;
 import org.wso2.developerstudio.datamapper.LowerCase;
 import org.wso2.developerstudio.datamapper.Multiply;
-import org.wso2.developerstudio.datamapper.Operation;
-import org.wso2.developerstudio.datamapper.Operations;
 import org.wso2.developerstudio.datamapper.Operator;
 import org.wso2.developerstudio.datamapper.OperatorBasicContainer;
 import org.wso2.developerstudio.datamapper.OperatorLeftConnector;
 import org.wso2.developerstudio.datamapper.OperatorLeftContainer;
 import org.wso2.developerstudio.datamapper.OperatorRightConnector;
 import org.wso2.developerstudio.datamapper.OperatorRightContainer;
-import org.wso2.developerstudio.datamapper.Operators;
-import org.wso2.developerstudio.datamapper.Order;
 import org.wso2.developerstudio.datamapper.OutNode;
 import org.wso2.developerstudio.datamapper.Output;
 import org.wso2.developerstudio.datamapper.PropertyKeyValuePair;
@@ -288,6 +284,13 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
     private EEnum schemaDataTypeEEnum = null;
 
     /**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum dataMapperOperatorTypeEEnum = null;
+
+				/**
 	 * Creates an instance of the model <b>Package</b>, registered with
 	 * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
 	 * package URI value.
@@ -508,6 +511,15 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 	 */
 	public EAttribute getOperator_OutputSizeFixed() {
 		return (EAttribute)operatorEClass.getEStructuralFeatures().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getOperator_OperatorType() {
+		return (EAttribute)operatorEClass.getEStructuralFeatures().get(8);
 	}
 
 	/**
@@ -1109,6 +1121,15 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EEnum getDataMapperOperatorType() {
+		return dataMapperOperatorTypeEEnum;
+	}
+
+				/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public DataMapperFactory getDataMapperFactory() {
 		return (DataMapperFactory)getEFactoryInstance();
 	}
@@ -1154,6 +1175,7 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 		createEAttribute(operatorEClass, OPERATOR__OUTPUT_VARIABLE_TYPE);
 		createEAttribute(operatorEClass, OPERATOR__INPUT_SIZE_FIXED);
 		createEAttribute(operatorEClass, OPERATOR__OUTPUT_SIZE_FIXED);
+		createEAttribute(operatorEClass, OPERATOR__OPERATOR_TYPE);
 
 		operatorBasicContainerEClass = createEClass(OPERATOR_BASIC_CONTAINER);
 		createEReference(operatorBasicContainerEClass, OPERATOR_BASIC_CONTAINER__LEFT_CONTAINER);
@@ -1249,6 +1271,7 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 
 		// Create enums
 		schemaDataTypeEEnum = createEEnum(SCHEMA_DATA_TYPE);
+		dataMapperOperatorTypeEEnum = createEEnum(DATA_MAPPER_OPERATOR_TYPE);
 	}
 
 	/**
@@ -1322,6 +1345,7 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 		initEAttribute(getOperator_OutputVariableType(), this.getSchemaDataType(), "outputVariableType", "STRING", 0, -1, Operator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getOperator_InputSizeFixed(), ecorePackage.getEBoolean(), "inputSizeFixed", "true", 0, 1, Operator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getOperator_OutputSizeFixed(), ecorePackage.getEBoolean(), "outputSizeFixed", "true", 0, 1, Operator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getOperator_OperatorType(), this.getDataMapperOperatorType(), "operatorType", "OPERATOR", 0, 1, Operator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(operatorBasicContainerEClass, OperatorBasicContainer.class, "OperatorBasicContainer", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getOperatorBasicContainer_LeftContainer(), this.getOperatorLeftContainer(), null, "leftContainer", null, 0, 1, OperatorBasicContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1431,6 +1455,31 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 		addEEnumLiteral(schemaDataTypeEEnum, SchemaDataType.RECORD);
 		addEEnumLiteral(schemaDataTypeEEnum, SchemaDataType.STRING);
 		addEEnumLiteral(schemaDataTypeEEnum, SchemaDataType.UNION);
+
+		initEEnum(dataMapperOperatorTypeEEnum, DataMapperOperatorType.class, "DataMapperOperatorType");
+		addEEnumLiteral(dataMapperOperatorTypeEEnum, DataMapperOperatorType.OPERATOR);
+		addEEnumLiteral(dataMapperOperatorTypeEEnum, DataMapperOperatorType.COMMON_OPERATION);
+		addEEnumLiteral(dataMapperOperatorTypeEEnum, DataMapperOperatorType.DIRECT);
+		addEEnumLiteral(dataMapperOperatorTypeEEnum, DataMapperOperatorType.STRING_OPERATION);
+		addEEnumLiteral(dataMapperOperatorTypeEEnum, DataMapperOperatorType.ARITHMATIC_OPERATION);
+		addEEnumLiteral(dataMapperOperatorTypeEEnum, DataMapperOperatorType.BOOLEAN_OPERATION);
+		addEEnumLiteral(dataMapperOperatorTypeEEnum, DataMapperOperatorType.CONDITIONAL_OPERATION);
+		addEEnumLiteral(dataMapperOperatorTypeEEnum, DataMapperOperatorType.CONSTANT);
+		addEEnumLiteral(dataMapperOperatorTypeEEnum, DataMapperOperatorType.EQUALS);
+		addEEnumLiteral(dataMapperOperatorTypeEEnum, DataMapperOperatorType.CONCAT);
+		addEEnumLiteral(dataMapperOperatorTypeEEnum, DataMapperOperatorType.SPLIT);
+		addEEnumLiteral(dataMapperOperatorTypeEEnum, DataMapperOperatorType.UPPERCASE);
+		addEEnumLiteral(dataMapperOperatorTypeEEnum, DataMapperOperatorType.LOWERCASE);
+		addEEnumLiteral(dataMapperOperatorTypeEEnum, DataMapperOperatorType.CONTAINS);
+		addEEnumLiteral(dataMapperOperatorTypeEEnum, DataMapperOperatorType.ADD);
+		addEEnumLiteral(dataMapperOperatorTypeEEnum, DataMapperOperatorType.SUBTRACT);
+		addEEnumLiteral(dataMapperOperatorTypeEEnum, DataMapperOperatorType.MULTIPLY);
+		addEEnumLiteral(dataMapperOperatorTypeEEnum, DataMapperOperatorType.DIVIDE);
+		addEEnumLiteral(dataMapperOperatorTypeEEnum, DataMapperOperatorType.ABSOLUTE);
+		addEEnumLiteral(dataMapperOperatorTypeEEnum, DataMapperOperatorType.ROUND);
+		addEEnumLiteral(dataMapperOperatorTypeEEnum, DataMapperOperatorType.FLOOR);
+		addEEnumLiteral(dataMapperOperatorTypeEEnum, DataMapperOperatorType.CEILING);
+		addEEnumLiteral(dataMapperOperatorTypeEEnum, DataMapperOperatorType.SET_PRECISION);
 
 		// Create resource
 		createResource(eNS_URI);

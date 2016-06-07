@@ -15,6 +15,7 @@
  */
 package org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator;
 
+import org.wso2.developerstudio.datamapper.DataMapperOperatorType;
 import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.ConcatOperatorTransformer;
 import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.ConstantOperatorTransformer;
 import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.DMOperatorTransformer;
@@ -22,7 +23,6 @@ import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator
 import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.SplitOperatorTransformer;
 import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.ToLowerCaseOperatorTransformer;
 import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.ToUpperCaseOperatorTransformer;
-import org.wso2.developerstudio.datamapper.diagram.custom.model.DMOperatorType;
 
 /**
  * This class act as a factory to provide corresponding DMOperatorTransformer
@@ -30,35 +30,88 @@ import org.wso2.developerstudio.datamapper.diagram.custom.model.DMOperatorType;
  */
 public class DMOperatorTransformerFactory {
 
-    /**
-     * This private constructor added to hide the implicit public constructor
-     */
-    private DMOperatorTransformerFactory() {
+	/**
+	 * This private constructor added to hide the implicit public constructor
+	 */
+	private DMOperatorTransformerFactory() {
 
-    }
+	}
 
-    /**
-     * This method provide the corresponding {@link DMOperatorTransformer} for the given {@link DMOperatorType}
-     * 
-     * @param type of the operator
-     * @return the corresponding {@link DMOperatorTransformer}
-     */
-    public static DMOperatorTransformer getDMOperatorTransformer(DMOperatorType type) {
-        switch (type) {
-        case CONCAT:
-            return new ConcatOperatorTransformer();
-        case DIRECT:
-            return new DirectOperatorTransformer();
-        case UPPERCASE:
-            return new ToUpperCaseOperatorTransformer();
-        case LOWERCASE:
-            return new ToLowerCaseOperatorTransformer();
-        case SPLIT:
-            return new SplitOperatorTransformer();
-        case CONSTANT:
-            return new ConstantOperatorTransformer();
-        default:
-            throw new IllegalArgumentException("Unknown operator type found for tranform : " + type);
-        }
-    }
+	/**
+	 * This method provide the corresponding {@link DMOperatorTransformer} for the given {@link DMOperatorType}
+	 * 
+	 * @param type
+	 *            of the operator
+	 * @return the corresponding {@link DMOperatorTransformer}
+	 */
+	public static DMOperatorTransformer getDMOperatorTransformer(DataMapperOperatorType type) {
+
+		switch (type.getOperatorCategory()) {
+		case ARITHMATIC_OPERATION:
+			return getArithmaticOperatorTransformer(type);
+		case STRING_OPERATION:
+			return getStringOperatorTransformer(type);
+		case COMMON_OPERATION:
+			return getCommonOperatorTransformer(type);
+		case BOOLEAN_OPERATION:
+			return getBooleanOperatorTransformer(type);
+		case CONDITIONAL_OPERATION:
+			return getConditionalOperatorTransformer(type);
+		default:
+			throw new IllegalArgumentException(
+					"Unknown operator category found for tranform in DMOperatorTransformerFactory : " + type);
+		}
+	}
+
+	private static DMOperatorTransformer getConditionalOperatorTransformer(DataMapperOperatorType type) {
+		switch (type) {
+		default:
+			throw new IllegalArgumentException(
+					"Unknown Conditional operator type found for tranform in DMOperatorTransformerFactory : " + type);
+		}
+	}
+
+	private static DMOperatorTransformer getBooleanOperatorTransformer(DataMapperOperatorType type) {
+		switch (type) {
+		default:
+			throw new IllegalArgumentException(
+					"Unknown Boolean operator type found for tranform in DMOperatorTransformerFactory : " + type);
+		}
+	}
+
+	private static DMOperatorTransformer getCommonOperatorTransformer(DataMapperOperatorType type) {
+		switch (type) {
+		case DIRECT:
+			return new DirectOperatorTransformer();
+		case CONSTANT:
+			return new ConstantOperatorTransformer();
+		default:
+			throw new IllegalArgumentException(
+					"Unknown Common operator type found for tranform in DMOperatorTransformerFactory : " + type);
+		}
+	}
+
+	private static DMOperatorTransformer getStringOperatorTransformer(DataMapperOperatorType type) {
+		switch (type) {
+		case CONCAT:
+			return new ConcatOperatorTransformer();
+		case UPPERCASE:
+			return new ToUpperCaseOperatorTransformer();
+		case LOWERCASE:
+			return new ToLowerCaseOperatorTransformer();
+		case SPLIT:
+			return new SplitOperatorTransformer();
+		default:
+			throw new IllegalArgumentException(
+					"Unknown String operator type found for tranform in DMOperatorTransformerFactory : " + type);
+		}
+	}
+
+	private static DMOperatorTransformer getArithmaticOperatorTransformer(DataMapperOperatorType type) {
+		switch (type) {
+		default:
+			throw new IllegalArgumentException(
+					"Unknown Arithmatic operator type found for tranform in DMOperatorTransformerFactory : " + type);
+		}
+	}
 }

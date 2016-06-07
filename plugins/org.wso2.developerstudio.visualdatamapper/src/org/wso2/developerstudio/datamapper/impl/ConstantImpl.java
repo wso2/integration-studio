@@ -6,6 +6,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.wso2.developerstudio.datamapper.Constant;
+import org.wso2.developerstudio.datamapper.DataMapperOperatorType;
 import org.wso2.developerstudio.datamapper.DataMapperPackage;
 import org.wso2.developerstudio.datamapper.SchemaDataType;
 
@@ -60,6 +61,7 @@ public class ConstantImpl extends OperatorImpl implements Constant {
 		getOutputVariableType().add(SchemaDataType.DOUBLE);
 		getOutputVariableType().add(SchemaDataType.STRING);
 		getOutputVariableType().add(SchemaDataType.BOOLEAN);
+		setOperatorType(DataMapperOperatorType.CONSTANT);
 	}
 
 	/**

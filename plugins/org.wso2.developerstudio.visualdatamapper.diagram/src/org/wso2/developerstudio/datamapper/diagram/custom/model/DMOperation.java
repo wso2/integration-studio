@@ -19,13 +19,15 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.wso2.developerstudio.datamapper.DataMapperOperatorType;
+
 /**
  * This class should be extend by operation types of datamapper
  *
  */
 public class DMOperation {
 
-    private DMOperatorType operatorType;
+    private DataMapperOperatorType operatorType;
     private String id;
     private int index = -1;
     private boolean visited;
@@ -34,7 +36,7 @@ public class DMOperation {
     List<Integer> inputs;
     List<Integer> outPuts;
 
-    public DMOperation(DMOperatorType operatorType, String id, int index) {
+    public DMOperation(DataMapperOperatorType operatorType, String id, int index) {
         this.operatorType = operatorType;
         this.id = id;
         this.index = index;
@@ -57,11 +59,11 @@ public class DMOperation {
         this.outPuts = outPuts;
     }
 
-    public DMOperatorType getOperatorType() {
+    public DataMapperOperatorType getOperatorType() {
         return operatorType;
     }
 
-    public void setOperatorType(DMOperatorType operatorType) {
+    public void setOperatorType(DataMapperOperatorType operatorType) {
         this.operatorType = operatorType;
     }
 

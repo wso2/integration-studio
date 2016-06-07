@@ -15,8 +15,8 @@
  */
 package org.wso2.developerstudio.datamapper.diagram.custom.model.transformers;
 
+import org.wso2.developerstudio.datamapper.DataMapperOperatorType;
 import org.wso2.developerstudio.datamapper.diagram.custom.model.DMOperation;
-import org.wso2.developerstudio.datamapper.diagram.custom.model.DMOperatorType;
 import org.wso2.developerstudio.datamapper.diagram.custom.model.IModelTransformer;
 import org.wso2.developerstudio.datamapper.impl.LowerCaseImpl;
 import org.wso2.developerstudio.datamapper.impl.OperatorImpl;
@@ -26,10 +26,9 @@ public class ToLowerCaseModelTransformer implements IModelTransformer {
     @Override
     public DMOperation transform(OperatorImpl operator, int index) {
         if (operator instanceof LowerCaseImpl) {
-            DMOperation lowerCaseOperatorModel = new DMOperation(DMOperatorType.LOWERCASE, operator.toString(), index);
+            DMOperation lowerCaseOperatorModel = new DMOperation(DataMapperOperatorType.LOWERCASE, operator.toString(), index);
             return lowerCaseOperatorModel;
         }
         throw new IllegalArgumentException("LowerCaseImpl operator expected. Found : " + operator.toString());
     }
-
 }

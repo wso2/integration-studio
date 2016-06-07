@@ -136,6 +136,8 @@ public class DataMapperFactoryImpl extends EFactoryImpl implements DataMapperFac
 		switch (eDataType.getClassifierID()) {
 			case DataMapperPackage.SCHEMA_DATA_TYPE:
 				return createSchemaDataTypeFromString(eDataType, initialValue);
+			case DataMapperPackage.DATA_MAPPER_OPERATOR_TYPE:
+				return createDataMapperOperatorTypeFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -151,6 +153,8 @@ public class DataMapperFactoryImpl extends EFactoryImpl implements DataMapperFac
 		switch (eDataType.getClassifierID()) {
 			case DataMapperPackage.SCHEMA_DATA_TYPE:
 				return convertSchemaDataTypeToString(eDataType, instanceValue);
+			case DataMapperPackage.DATA_MAPPER_OPERATOR_TYPE:
+				return convertDataMapperOperatorTypeToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -531,6 +535,26 @@ public class DataMapperFactoryImpl extends EFactoryImpl implements DataMapperFac
 	}
 
     /**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public DataMapperOperatorType createDataMapperOperatorTypeFromString(EDataType eDataType, String initialValue) {
+		DataMapperOperatorType result = DataMapperOperatorType.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+				/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertDataMapperOperatorTypeToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+				/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated

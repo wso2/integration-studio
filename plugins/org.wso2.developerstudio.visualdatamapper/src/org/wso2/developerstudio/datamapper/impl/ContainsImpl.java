@@ -4,6 +4,7 @@ package org.wso2.developerstudio.datamapper.impl;
 
 import org.eclipse.emf.ecore.EClass;
 import org.wso2.developerstudio.datamapper.Contains;
+import org.wso2.developerstudio.datamapper.DataMapperOperatorType;
 import org.wso2.developerstudio.datamapper.DataMapperPackage;
 import org.wso2.developerstudio.datamapper.SchemaDataType;
 
@@ -28,6 +29,7 @@ public class ContainsImpl extends OperatorImpl implements Contains {
 		setOutputSizeFixed(true);
 		getInputVariableType().add(SchemaDataType.STRING);
 		getOutputVariableType().add(SchemaDataType.BOOLEAN);
+		setOperatorType(DataMapperOperatorType.CONTAINS);
 	}
 
 	/**

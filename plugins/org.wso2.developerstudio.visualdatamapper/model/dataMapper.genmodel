@@ -22,6 +22,31 @@
       <genEnumLiterals ecoreEnumLiteral="dataMapper.ecore#//SchemaDataType/STRING"/>
       <genEnumLiterals ecoreEnumLiteral="dataMapper.ecore#//SchemaDataType/UNION"/>
     </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="dataMapper.ecore#//DataMapperOperatorType">
+      <genEnumLiterals ecoreEnumLiteral="dataMapper.ecore#//DataMapperOperatorType/OPERATOR"/>
+      <genEnumLiterals ecoreEnumLiteral="dataMapper.ecore#//DataMapperOperatorType/COMMON_OPERATION"/>
+      <genEnumLiterals ecoreEnumLiteral="dataMapper.ecore#//DataMapperOperatorType/DIRECT"/>
+      <genEnumLiterals ecoreEnumLiteral="dataMapper.ecore#//DataMapperOperatorType/STRING_OPERATION"/>
+      <genEnumLiterals ecoreEnumLiteral="dataMapper.ecore#//DataMapperOperatorType/ARITHMATIC_OPERATION"/>
+      <genEnumLiterals ecoreEnumLiteral="dataMapper.ecore#//DataMapperOperatorType/BOOLEAN_OPERATION"/>
+      <genEnumLiterals ecoreEnumLiteral="dataMapper.ecore#//DataMapperOperatorType/CONDITIONAL_OPERATION"/>
+      <genEnumLiterals ecoreEnumLiteral="dataMapper.ecore#//DataMapperOperatorType/CONSTANT"/>
+      <genEnumLiterals ecoreEnumLiteral="dataMapper.ecore#//DataMapperOperatorType/EQUALS"/>
+      <genEnumLiterals ecoreEnumLiteral="dataMapper.ecore#//DataMapperOperatorType/CONCAT"/>
+      <genEnumLiterals ecoreEnumLiteral="dataMapper.ecore#//DataMapperOperatorType/SPLIT"/>
+      <genEnumLiterals ecoreEnumLiteral="dataMapper.ecore#//DataMapperOperatorType/UPPERCASE"/>
+      <genEnumLiterals ecoreEnumLiteral="dataMapper.ecore#//DataMapperOperatorType/LOWERCASE"/>
+      <genEnumLiterals ecoreEnumLiteral="dataMapper.ecore#//DataMapperOperatorType/CONTAINS"/>
+      <genEnumLiterals ecoreEnumLiteral="dataMapper.ecore#//DataMapperOperatorType/ADD"/>
+      <genEnumLiterals ecoreEnumLiteral="dataMapper.ecore#//DataMapperOperatorType/SUBTRACT"/>
+      <genEnumLiterals ecoreEnumLiteral="dataMapper.ecore#//DataMapperOperatorType/MULTIPLY"/>
+      <genEnumLiterals ecoreEnumLiteral="dataMapper.ecore#//DataMapperOperatorType/DIVIDE"/>
+      <genEnumLiterals ecoreEnumLiteral="dataMapper.ecore#//DataMapperOperatorType/ABSOLUTE"/>
+      <genEnumLiterals ecoreEnumLiteral="dataMapper.ecore#//DataMapperOperatorType/ROUND"/>
+      <genEnumLiterals ecoreEnumLiteral="dataMapper.ecore#//DataMapperOperatorType/FLOOR"/>
+      <genEnumLiterals ecoreEnumLiteral="dataMapper.ecore#//DataMapperOperatorType/CEILING"/>
+      <genEnumLiterals ecoreEnumLiteral="dataMapper.ecore#//DataMapperOperatorType/SET_PRECISION"/>
+    </genEnums>
     <genClasses ecoreClass="dataMapper.ecore#//DataMapperNode"/>
     <genClasses ecoreClass="dataMapper.ecore#//DataMapperRoot">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dataMapper.ecore#//DataMapperRoot/input"/>
@@ -43,6 +68,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataMapper.ecore#//Operator/outputVariableType"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataMapper.ecore#//Operator/inputSizeFixed"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataMapper.ecore#//Operator/outputSizeFixed"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataMapper.ecore#//Operator/operatorType"/>
     </genClasses>
     <genClasses ecoreClass="dataMapper.ecore#//OperatorBasicContainer">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dataMapper.ecore#//OperatorBasicContainer/leftContainer"/>

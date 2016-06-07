@@ -2,22 +2,12 @@
  */
 package org.wso2.developerstudio.datamapper.impl;
 
-import java.util.Collection;
-
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
-import org.eclipse.emf.ecore.util.InternalEList;
 import org.wso2.developerstudio.datamapper.Concat;
+import org.wso2.developerstudio.datamapper.DataMapperOperatorType;
 import org.wso2.developerstudio.datamapper.DataMapperPackage;
-import org.wso2.developerstudio.datamapper.InNode;
-import org.wso2.developerstudio.datamapper.OutNode;
 import org.wso2.developerstudio.datamapper.SchemaDataType;
 
 /**
@@ -66,6 +56,7 @@ public class ConcatImpl extends OperatorImpl implements Concat {
 		setOutputSizeFixed(true);
 		getInputVariableType().add(SchemaDataType.STRING);
 		getOutputVariableType().add(SchemaDataType.STRING);
+		setOperatorType(DataMapperOperatorType.CONCAT);
 	}
 	
 	 

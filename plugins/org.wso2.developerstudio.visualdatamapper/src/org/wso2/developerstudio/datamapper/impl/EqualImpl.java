@@ -3,6 +3,7 @@
 package org.wso2.developerstudio.datamapper.impl;
 
 import org.eclipse.emf.ecore.EClass;
+import org.wso2.developerstudio.datamapper.DataMapperOperatorType;
 import org.wso2.developerstudio.datamapper.DataMapperPackage;
 import org.wso2.developerstudio.datamapper.Equal;
 import org.wso2.developerstudio.datamapper.SchemaDataType;
@@ -31,6 +32,7 @@ public class EqualImpl extends OperatorImpl implements Equal {
 		getInputVariableType().add(SchemaDataType.STRING);
 		getInputVariableType().add(SchemaDataType.BOOLEAN);
 		getOutputVariableType().add(SchemaDataType.BOOLEAN);
+		setOperatorType(DataMapperOperatorType.EQUALS);
 	}
 
 	/**

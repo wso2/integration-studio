@@ -1261,13 +1261,22 @@ public interface DataMapperPackage extends EPackage {
 	int CONSTANT__CONSTANT_VALUE = OPERATOR_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONSTANT__TYPE = OPERATOR_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>Constant</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONSTANT_FEATURE_COUNT = OPERATOR_FEATURE_COUNT + 1;
+	int CONSTANT_FEATURE_COUNT = OPERATOR_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.datamapper.impl.AddImpl <em>Add</em>}' class.
@@ -1861,13 +1870,22 @@ public interface DataMapperPackage extends EPackage {
 	int SET_PRECISION__OPERATOR_TYPE = OPERATOR__OPERATOR_TYPE;
 
 	/**
+	 * The feature id for the '<em><b>Number Of Digits</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SET_PRECISION__NUMBER_OF_DIGITS = OPERATOR_FEATURE_COUNT + 0;
+
+	/**
 	 * The number of structural features of the '<em>Set Precision</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SET_PRECISION_FEATURE_COUNT = OPERATOR_FEATURE_COUNT + 0;
+	int SET_PRECISION_FEATURE_COUNT = OPERATOR_FEATURE_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.datamapper.impl.SplitImpl <em>Split</em>}' class.
@@ -3171,6 +3189,17 @@ public interface DataMapperPackage extends EPackage {
 	EAttribute getConstant_ConstantValue();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.datamapper.Constant#getType <em>Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Type</em>'.
+	 * @see org.wso2.developerstudio.datamapper.Constant#getType()
+	 * @see #getConstant()
+	 * @generated
+	 */
+	EAttribute getConstant_Type();
+
+	/**
 	 * Returns the meta object for class '{@link org.wso2.developerstudio.datamapper.Add <em>Add</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3229,6 +3258,17 @@ public interface DataMapperPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getSetPrecision();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.datamapper.SetPrecision#getNumberOfDigits <em>Number Of Digits</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Number Of Digits</em>'.
+	 * @see org.wso2.developerstudio.datamapper.SetPrecision#getNumberOfDigits()
+	 * @see #getSetPrecision()
+	 * @generated
+	 */
+	EAttribute getSetPrecision_NumberOfDigits();
 
 	/**
 	 * Returns the meta object for class '{@link org.wso2.developerstudio.datamapper.Split <em>Split</em>}'.
@@ -3964,6 +4004,14 @@ public interface DataMapperPackage extends EPackage {
 		EAttribute CONSTANT__CONSTANT_VALUE = eINSTANCE.getConstant_ConstantValue();
 
 		/**
+		 * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CONSTANT__TYPE = eINSTANCE.getConstant_Type();
+
+		/**
 		 * The meta object literal for the '{@link org.wso2.developerstudio.datamapper.impl.AddImpl <em>Add</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -4022,6 +4070,14 @@ public interface DataMapperPackage extends EPackage {
 		 * @generated
 		 */
 		EClass SET_PRECISION = eINSTANCE.getSetPrecision();
+
+		/**
+		 * The meta object literal for the '<em><b>Number Of Digits</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SET_PRECISION__NUMBER_OF_DIGITS = eINSTANCE.getSetPrecision_NumberOfDigits();
 
 		/**
 		 * The meta object literal for the '{@link org.wso2.developerstudio.datamapper.impl.SplitImpl <em>Split</em>}' class.

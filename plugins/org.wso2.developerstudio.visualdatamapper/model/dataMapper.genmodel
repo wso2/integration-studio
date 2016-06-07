@@ -129,13 +129,16 @@
     <genClasses ecoreClass="dataMapper.ecore#//Equal"/>
     <genClasses ecoreClass="dataMapper.ecore#//Constant">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataMapper.ecore#//Constant/constantValue"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataMapper.ecore#//Constant/type"/>
     </genClasses>
     <genClasses ecoreClass="dataMapper.ecore#//Add"/>
     <genClasses ecoreClass="dataMapper.ecore#//Divide"/>
     <genClasses ecoreClass="dataMapper.ecore#//Floor"/>
     <genClasses ecoreClass="dataMapper.ecore#//Round"/>
     <genClasses ecoreClass="dataMapper.ecore#//Multiply"/>
-    <genClasses ecoreClass="dataMapper.ecore#//SetPrecision"/>
+    <genClasses ecoreClass="dataMapper.ecore#//SetPrecision">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataMapper.ecore#//SetPrecision/numberOfDigits"/>
+    </genClasses>
     <genClasses ecoreClass="dataMapper.ecore#//Split">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataMapper.ecore#//Split/delimiter"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataMapper.ecore#//Split/arrayOutput"/>

@@ -15,8 +15,8 @@
  */
 package org.wso2.developerstudio.datamapper.diagram.custom.model.transformers;
 
+import org.wso2.developerstudio.datamapper.DataMapperOperatorType;
 import org.wso2.developerstudio.datamapper.diagram.custom.model.DMOperation;
-import org.wso2.developerstudio.datamapper.diagram.custom.model.DMOperatorType;
 import org.wso2.developerstudio.datamapper.diagram.custom.model.IModelTransformer;
 import org.wso2.developerstudio.datamapper.impl.OperatorImpl;
 import org.wso2.developerstudio.datamapper.impl.UpperCaseImpl;
@@ -26,10 +26,9 @@ public class ToUpperCaseModelTransformer implements IModelTransformer {
     @Override
     public DMOperation transform(OperatorImpl operator, int index) {
         if (operator instanceof UpperCaseImpl) {
-            DMOperation upperCaseOperatorModel = new DMOperation(DMOperatorType.UPPERCASE, operator.toString(), index);
+            DMOperation upperCaseOperatorModel = new DMOperation(DataMapperOperatorType.UPPERCASE, operator.toString(), index);
             return upperCaseOperatorModel;
         }
         throw new IllegalArgumentException("UpperCaseImpl operator expected. Found : " + operator.toString());
     }
-
 }

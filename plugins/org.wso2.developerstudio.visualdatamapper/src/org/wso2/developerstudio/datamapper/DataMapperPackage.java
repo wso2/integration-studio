@@ -261,13 +261,22 @@ public interface DataMapperPackage extends EPackage {
 	int OPERATOR__OUTPUT_SIZE_FIXED = DATA_MAPPER_NODE_FEATURE_COUNT + 7;
 
 	/**
+	 * The feature id for the '<em><b>Operator Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATOR__OPERATOR_TYPE = DATA_MAPPER_NODE_FEATURE_COUNT + 8;
+
+	/**
 	 * The number of structural features of the '<em>Operator</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int OPERATOR_FEATURE_COUNT = DATA_MAPPER_NODE_FEATURE_COUNT + 8;
+	int OPERATOR_FEATURE_COUNT = DATA_MAPPER_NODE_FEATURE_COUNT + 9;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.datamapper.impl.OperatorBasicContainerImpl <em>Operator Basic Container</em>}' class.
@@ -711,6 +720,15 @@ public interface DataMapperPackage extends EPackage {
 	int SUBTRACT__OUTPUT_SIZE_FIXED = OPERATOR__OUTPUT_SIZE_FIXED;
 
 				/**
+	 * The feature id for the '<em><b>Operator Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SUBTRACT__OPERATOR_TYPE = OPERATOR__OPERATOR_TYPE;
+
+				/**
 	 * The number of structural features of the '<em>Subtract</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -915,6 +933,15 @@ public interface DataMapperPackage extends EPackage {
 	int CONCAT__OUTPUT_SIZE_FIXED = OPERATOR__OUTPUT_SIZE_FIXED;
 
 	/**
+	 * The feature id for the '<em><b>Operator Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCAT__OPERATOR_TYPE = OPERATOR__OPERATOR_TYPE;
+
+	/**
 	 * The feature id for the '<em><b>Delimiter</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1016,6 +1043,15 @@ public interface DataMapperPackage extends EPackage {
 	int ABSOLUTE_VALUE__OUTPUT_SIZE_FIXED = OPERATOR__OUTPUT_SIZE_FIXED;
 
 	/**
+	 * The feature id for the '<em><b>Operator Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSOLUTE_VALUE__OPERATOR_TYPE = OPERATOR__OPERATOR_TYPE;
+
+	/**
 	 * The number of structural features of the '<em>Absolute Value</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1107,6 +1143,15 @@ public interface DataMapperPackage extends EPackage {
 	int EQUAL__OUTPUT_SIZE_FIXED = OPERATOR__OUTPUT_SIZE_FIXED;
 
 	/**
+	 * The feature id for the '<em><b>Operator Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EQUAL__OPERATOR_TYPE = OPERATOR__OPERATOR_TYPE;
+
+	/**
 	 * The number of structural features of the '<em>Equal</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1196,6 +1241,15 @@ public interface DataMapperPackage extends EPackage {
 	 * @ordered
 	 */
 	int CONSTANT__OUTPUT_SIZE_FIXED = OPERATOR__OUTPUT_SIZE_FIXED;
+
+	/**
+	 * The feature id for the '<em><b>Operator Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONSTANT__OPERATOR_TYPE = OPERATOR__OPERATOR_TYPE;
 
 	/**
 	 * The feature id for the '<em><b>Constant Value</b></em>' attribute.
@@ -1298,6 +1352,15 @@ public interface DataMapperPackage extends EPackage {
 	int ADD__OUTPUT_SIZE_FIXED = OPERATOR__OUTPUT_SIZE_FIXED;
 
 	/**
+	 * The feature id for the '<em><b>Operator Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ADD__OPERATOR_TYPE = OPERATOR__OPERATOR_TYPE;
+
+	/**
 	 * The number of structural features of the '<em>Add</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1387,6 +1450,15 @@ public interface DataMapperPackage extends EPackage {
 	 * @ordered
 	 */
 	int DIVIDE__OUTPUT_SIZE_FIXED = OPERATOR__OUTPUT_SIZE_FIXED;
+
+	/**
+	 * The feature id for the '<em><b>Operator Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIVIDE__OPERATOR_TYPE = OPERATOR__OPERATOR_TYPE;
 
 	/**
 	 * The number of structural features of the '<em>Divide</em>' class.
@@ -1480,6 +1552,15 @@ public interface DataMapperPackage extends EPackage {
 	int FLOOR__OUTPUT_SIZE_FIXED = OPERATOR__OUTPUT_SIZE_FIXED;
 
 	/**
+	 * The feature id for the '<em><b>Operator Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FLOOR__OPERATOR_TYPE = OPERATOR__OPERATOR_TYPE;
+
+	/**
 	 * The number of structural features of the '<em>Floor</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1569,6 +1650,15 @@ public interface DataMapperPackage extends EPackage {
 	 * @ordered
 	 */
 	int ROUND__OUTPUT_SIZE_FIXED = OPERATOR__OUTPUT_SIZE_FIXED;
+
+	/**
+	 * The feature id for the '<em><b>Operator Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROUND__OPERATOR_TYPE = OPERATOR__OPERATOR_TYPE;
 
 	/**
 	 * The number of structural features of the '<em>Round</em>' class.
@@ -1662,6 +1752,15 @@ public interface DataMapperPackage extends EPackage {
 	int MULTIPLY__OUTPUT_SIZE_FIXED = OPERATOR__OUTPUT_SIZE_FIXED;
 
 	/**
+	 * The feature id for the '<em><b>Operator Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MULTIPLY__OPERATOR_TYPE = OPERATOR__OPERATOR_TYPE;
+
+	/**
 	 * The number of structural features of the '<em>Multiply</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1753,6 +1852,15 @@ public interface DataMapperPackage extends EPackage {
 	int SET_PRECISION__OUTPUT_SIZE_FIXED = OPERATOR__OUTPUT_SIZE_FIXED;
 
 	/**
+	 * The feature id for the '<em><b>Operator Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SET_PRECISION__OPERATOR_TYPE = OPERATOR__OPERATOR_TYPE;
+
+	/**
 	 * The number of structural features of the '<em>Set Precision</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1842,6 +1950,15 @@ public interface DataMapperPackage extends EPackage {
 	 * @ordered
 	 */
 	int SPLIT__OUTPUT_SIZE_FIXED = OPERATOR__OUTPUT_SIZE_FIXED;
+
+	/**
+	 * The feature id for the '<em><b>Operator Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPLIT__OPERATOR_TYPE = OPERATOR__OPERATOR_TYPE;
 
 	/**
 	 * The feature id for the '<em><b>Delimiter</b></em>' attribute.
@@ -1962,6 +2079,15 @@ public interface DataMapperPackage extends EPackage {
 	int LOWER_CASE__OUTPUT_SIZE_FIXED = OPERATOR__OUTPUT_SIZE_FIXED;
 
 	/**
+	 * The feature id for the '<em><b>Operator Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOWER_CASE__OPERATOR_TYPE = OPERATOR__OPERATOR_TYPE;
+
+	/**
 	 * The number of structural features of the '<em>Lower Case</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2051,6 +2177,15 @@ public interface DataMapperPackage extends EPackage {
 	 * @ordered
 	 */
 	int CELI__OUTPUT_SIZE_FIXED = OPERATOR__OUTPUT_SIZE_FIXED;
+
+	/**
+	 * The feature id for the '<em><b>Operator Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CELI__OPERATOR_TYPE = OPERATOR__OPERATOR_TYPE;
 
 	/**
 	 * The number of structural features of the '<em>Celi</em>' class.
@@ -2144,6 +2279,15 @@ public interface DataMapperPackage extends EPackage {
 	int CONTAINS__OUTPUT_SIZE_FIXED = OPERATOR__OUTPUT_SIZE_FIXED;
 
 	/**
+	 * The feature id for the '<em><b>Operator Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTAINS__OPERATOR_TYPE = OPERATOR__OPERATOR_TYPE;
+
+	/**
 	 * The number of structural features of the '<em>Contains</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2235,6 +2379,15 @@ public interface DataMapperPackage extends EPackage {
 	int UPPER_CASE__OUTPUT_SIZE_FIXED = OPERATOR__OUTPUT_SIZE_FIXED;
 
 	/**
+	 * The feature id for the '<em><b>Operator Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UPPER_CASE__OPERATOR_TYPE = OPERATOR__OPERATOR_TYPE;
+
+	/**
 	 * The number of structural features of the '<em>Upper Case</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2291,6 +2444,16 @@ public interface DataMapperPackage extends EPackage {
     int SCHEMA_DATA_TYPE = 32;
 
     /**
+	 * The meta object id for the '{@link org.wso2.developerstudio.datamapper.DataMapperOperatorType <em>Operator Type</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.wso2.developerstudio.datamapper.DataMapperOperatorType
+	 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getDataMapperOperatorType()
+	 * @generated
+	 */
+	int DATA_MAPPER_OPERATOR_TYPE = 33;
+
+				/**
 	 * Returns the meta object for class '{@link org.wso2.developerstudio.datamapper.DataMapperNode <em>Node</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2482,6 +2645,17 @@ public interface DataMapperPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getOperator_OutputSizeFixed();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.datamapper.Operator#getOperatorType <em>Operator Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Operator Type</em>'.
+	 * @see org.wso2.developerstudio.datamapper.Operator#getOperatorType()
+	 * @see #getOperator()
+	 * @generated
+	 */
+	EAttribute getOperator_OperatorType();
 
 	/**
 	 * Returns the meta object for class '{@link org.wso2.developerstudio.datamapper.OperatorBasicContainer <em>Operator Basic Container</em>}'.
@@ -3182,6 +3356,16 @@ public interface DataMapperPackage extends EPackage {
     EEnum getSchemaDataType();
 
     /**
+	 * Returns the meta object for enum '{@link org.wso2.developerstudio.datamapper.DataMapperOperatorType <em>Operator Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Operator Type</em>'.
+	 * @see org.wso2.developerstudio.datamapper.DataMapperOperatorType
+	 * @generated
+	 */
+	EEnum getDataMapperOperatorType();
+
+				/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3356,6 +3540,14 @@ public interface DataMapperPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute OPERATOR__OUTPUT_SIZE_FIXED = eINSTANCE.getOperator_OutputSizeFixed();
+
+		/**
+		 * The meta object literal for the '<em><b>Operator Type</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute OPERATOR__OPERATOR_TYPE = eINSTANCE.getOperator_OperatorType();
 
 		/**
 		 * The meta object literal for the '{@link org.wso2.developerstudio.datamapper.impl.OperatorBasicContainerImpl <em>Operator Basic Container</em>}' class.
@@ -3940,6 +4132,16 @@ public interface DataMapperPackage extends EPackage {
 		 * @generated
 		 */
         EEnum SCHEMA_DATA_TYPE = eINSTANCE.getSchemaDataType();
+
+								/**
+		 * The meta object literal for the '{@link org.wso2.developerstudio.datamapper.DataMapperOperatorType <em>Operator Type</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.wso2.developerstudio.datamapper.DataMapperOperatorType
+		 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getDataMapperOperatorType()
+		 * @generated
+		 */
+		EEnum DATA_MAPPER_OPERATOR_TYPE = eINSTANCE.getDataMapperOperatorType();
 
 	}
 

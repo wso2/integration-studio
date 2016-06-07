@@ -15,6 +15,7 @@
  */
 package org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator;
 
+import org.wso2.developerstudio.datamapper.DataMapperOperatorType;
 import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.ConcatOperatorTransformer;
 import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.ConstantOperatorTransformer;
 import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.DMOperatorTransformer;
@@ -22,7 +23,6 @@ import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator
 import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.SplitOperatorTransformer;
 import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.ToLowerCaseOperatorTransformer;
 import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.ToUpperCaseOperatorTransformer;
-import org.wso2.developerstudio.datamapper.diagram.custom.model.DMOperatorType;
 
 /**
  * This class act as a factory to provide corresponding DMOperatorTransformer
@@ -43,7 +43,7 @@ public class DMOperatorTransformerFactory {
      * @param type of the operator
      * @return the corresponding {@link DMOperatorTransformer}
      */
-    public static DMOperatorTransformer getDMOperatorTransformer(DMOperatorType type) {
+    public static DMOperatorTransformer getDMOperatorTransformer(DataMapperOperatorType type) {
         switch (type) {
         case CONCAT:
             return new ConcatOperatorTransformer();

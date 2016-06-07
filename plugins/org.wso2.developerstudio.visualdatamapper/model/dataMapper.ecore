@@ -36,6 +36,8 @@
         defaultValueLiteral="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="outputSizeFixed" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
         defaultValueLiteral="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="operatorType" eType="#//DataMapperOperatorType"
+        defaultValueLiteral="OPERATOR"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="OperatorBasicContainer">
     <eStructuralFeatures xsi:type="ecore:EReference" name="leftContainer" eType="#//OperatorLeftContainer"
@@ -149,6 +151,31 @@
     <eLiterals name="RECORD" value="11"/>
     <eLiterals name="STRING" value="12"/>
     <eLiterals name="UNION" value="13"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="DataMapperOperatorType">
+    <eLiterals name="OPERATOR"/>
+    <eLiterals name="COMMON_OPERATION" value="1"/>
+    <eLiterals name="DIRECT" value="21"/>
+    <eLiterals name="STRING_OPERATION" value="2"/>
+    <eLiterals name="ARITHMATIC_OPERATION" value="2"/>
+    <eLiterals name="BOOLEAN_OPERATION" value="3"/>
+    <eLiterals name="CONDITIONAL_OPERATION" value="4"/>
+    <eLiterals name="CONSTANT" value="5"/>
+    <eLiterals name="EQUALS" value="6"/>
+    <eLiterals name="CONCAT" value="7"/>
+    <eLiterals name="SPLIT" value="8"/>
+    <eLiterals name="UPPERCASE" value="9"/>
+    <eLiterals name="LOWERCASE" value="10"/>
+    <eLiterals name="CONTAINS" value="11"/>
+    <eLiterals name="ADD" value="12"/>
+    <eLiterals name="SUBTRACT" value="13"/>
+    <eLiterals name="MULTIPLY" value="14"/>
+    <eLiterals name="DIVIDE" value="15"/>
+    <eLiterals name="ABSOLUTE" value="16"/>
+    <eLiterals name="ROUND" value="17"/>
+    <eLiterals name="FLOOR" value="18"/>
+    <eLiterals name="CEILING" value="19"/>
+    <eLiterals name="SET_PRECISION" value="20"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="LowerCase" eSuperTypes="#//Operator"/>
   <eClassifiers xsi:type="ecore:EClass" name="Celi" eSuperTypes="#//Operator"/>

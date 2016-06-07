@@ -22,11 +22,11 @@ import java.util.Map;
 import java.util.Stack;
 
 import org.apache.commons.lang.StringUtils;
+import org.wso2.developerstudio.datamapper.DataMapperOperatorType;
 import org.wso2.developerstudio.datamapper.SchemaDataType;
 import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.DMOperatorTransformerFactory;
 import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.DMOperatorTransformer;
 import org.wso2.developerstudio.datamapper.diagram.custom.exception.DataMapperException;
-import org.wso2.developerstudio.datamapper.diagram.custom.model.DMOperatorType;
 import org.wso2.developerstudio.datamapper.diagram.custom.model.DMVariable;
 import org.wso2.developerstudio.datamapper.diagram.custom.model.DMVariableType;
 import org.wso2.developerstudio.datamapper.diagram.custom.model.DataMapperDiagramModel;
@@ -473,7 +473,7 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
         if (outputVariables.size() > 1) {
             operationBuilder.append("[ ");
         } else if (outputVariables.size() == 1) {
-            if (DMOperatorType.CONSTANT.equals(mappingOperation.getOperation().getOperatorType())
+            if (DataMapperOperatorType.CONSTANT.equals(mappingOperation.getOperation().getOperatorType())
                     && DMVariableType.INTERMEDIATE.equals(outputVariables.get(0).getType())) {
                 return "";
             }

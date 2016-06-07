@@ -3,7 +3,7 @@
 package org.wso2.developerstudio.datamapper.impl;
 
 import org.eclipse.emf.ecore.EClass;
-
+import org.wso2.developerstudio.datamapper.DataMapperOperatorType;
 import org.wso2.developerstudio.datamapper.DataMapperPackage;
 import org.wso2.developerstudio.datamapper.SchemaDataType;
 import org.wso2.developerstudio.datamapper.SetPrecision;
@@ -31,6 +31,7 @@ public class SetPrecisionImpl extends OperatorImpl implements SetPrecision {
 		getInputVariableType().add(SchemaDataType.DOUBLE);
 		getOutputVariableType().add(SchemaDataType.INT);
 		getOutputVariableType().add(SchemaDataType.DOUBLE);
+		setOperatorType(DataMapperOperatorType.SET_PRECISION);
 	}
 
 	/**

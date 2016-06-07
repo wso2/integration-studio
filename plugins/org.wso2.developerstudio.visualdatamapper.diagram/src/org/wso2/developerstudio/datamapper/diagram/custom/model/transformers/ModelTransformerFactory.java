@@ -15,12 +15,12 @@
  */
 package org.wso2.developerstudio.datamapper.diagram.custom.model.transformers;
 
-import org.wso2.developerstudio.datamapper.diagram.custom.model.DMOperatorType;
+import org.wso2.developerstudio.datamapper.DataMapperOperatorType;
 import org.wso2.developerstudio.datamapper.diagram.custom.model.IModelTransformer;
 
 public class ModelTransformerFactory {
 
-    public static IModelTransformer getModelTransformer(DMOperatorType type) {
+    public static IModelTransformer getModelTransformer(DataMapperOperatorType type) {
         switch (type) {
         case CONCAT:
             return new ConcatModelTransformer();

@@ -15,14 +15,14 @@
  */
 package org.wso2.developerstudio.datamapper.diagram.custom.model.transformers;
 
+import static org.wso2.developerstudio.datamapper.diagram.custom.model.transformers.TransformerConstants.CONSTANT_TYPE_TAG;
+import static org.wso2.developerstudio.datamapper.diagram.custom.model.transformers.TransformerConstants.CONSTANT_VALUE_TAG;
+
+import org.wso2.developerstudio.datamapper.DataMapperOperatorType;
 import org.wso2.developerstudio.datamapper.diagram.custom.model.DMOperation;
-import org.wso2.developerstudio.datamapper.diagram.custom.model.DMOperatorType;
 import org.wso2.developerstudio.datamapper.diagram.custom.model.IModelTransformer;
 import org.wso2.developerstudio.datamapper.impl.ConstantImpl;
 import org.wso2.developerstudio.datamapper.impl.OperatorImpl;
-
-import static org.wso2.developerstudio.datamapper.diagram.custom.model.transformers.TransformerConstants.CONSTANT_VALUE_TAG;
-import static org.wso2.developerstudio.datamapper.diagram.custom.model.transformers.TransformerConstants.CONSTANT_TYPE_TAG;
 
 public class ConstantModelTransformer implements IModelTransformer {
 
@@ -30,7 +30,7 @@ public class ConstantModelTransformer implements IModelTransformer {
     public DMOperation transform(OperatorImpl operator, int index) {
         if (operator instanceof ConstantImpl) {
             ConstantImpl constantOperator = (ConstantImpl) operator;
-            DMOperation constantOperatorModel = new DMOperation(DMOperatorType.CONSTANT, operator.toString(), index);
+            DMOperation constantOperatorModel = new DMOperation(DataMapperOperatorType.CONSTANT, operator.toString(), index);
             constantOperatorModel.addProperty(CONSTANT_VALUE_TAG, constantOperator.getConstValue());
             constantOperatorModel.addProperty(CONSTANT_TYPE_TAG, constantOperator.getConstType());
             return constantOperatorModel;

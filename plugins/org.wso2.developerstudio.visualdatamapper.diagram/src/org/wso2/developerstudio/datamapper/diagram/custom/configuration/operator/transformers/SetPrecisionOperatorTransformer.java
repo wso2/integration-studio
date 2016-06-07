@@ -16,6 +16,7 @@
 package org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers;
 
 import static org.wso2.developerstudio.datamapper.diagram.custom.model.transformers.TransformerConstants.CONSTANT_ADDITIVE;
+import static org.wso2.developerstudio.datamapper.diagram.custom.model.transformers.TransformerConstants.NUM_OF_DECIMALS_TAG;
 
 import java.util.List;
 import java.util.Map;
@@ -38,23 +39,17 @@ public class SetPrecisionOperatorTransformer extends AbstractDMOperatorTransform
 	public String generateScriptForOperation(Class<?> generatorClass, List<DMVariable> inputVariables,
 			Map<String, SchemaDataType> variableTypeMap, Stack<ForLoopBean> parentForLoopBeanStack,
 			DMOperation operator) {
+		int numOfDecimals = (int) operator.getProperty(NUM_OF_DECIMALS_TAG);
 		StringBuilder operationBuilder = new StringBuilder();
 		if (DifferentLevelArrayMappingConfigGenerator.class.equals(generatorClass)) {
-			@SuppressWarnings("unchecked")
-			Stack<ForLoopBean> tempParentForLoopBeanStack = (Stack<ForLoopBean>) parentForLoopBeanStack.clone();
 			if (inputVariables.size() == 0) {
 				operationBuilder.append(CONSTANT_ADDITIVE);
 			} else {
 				operationBuilder
 						.append("(" + ScriptGenerationUtil.getPrettyVariableNameInForOperation(inputVariables.get(0),
 								variableTypeMap, parentForLoopBeanStack, true) + ")");
+				operationBuilder.append(".toFixed(" + numOfDecimals + ")");
 			}
-
-			if (inputVariables.size() == 2) {
-				operationBuilder.append(".toFixed(" + ScriptGenerationUtil.getPrettyVariableNameInForOperation(
-						inputVariables.get(1), variableTypeMap, tempParentForLoopBeanStack, true) + ")");
-			}
-
 			operationBuilder.append(";");
 
 		} else {

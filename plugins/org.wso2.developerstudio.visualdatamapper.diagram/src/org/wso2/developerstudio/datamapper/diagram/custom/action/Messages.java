@@ -77,11 +77,17 @@ public class Messages extends NLS {
 	public static String SchemaKeyEditorDialog_SchemaKeyEditorDialogMessage;
 	public static String SchemaKeyEditorDialog_SelectRegistryResource;
 	public static String SchemaKeyEditorDialog_WorkspaceElementProviders;
+	public static String SetPrecisionConfigureAction_ActionId0;
+	public static String SetPrecisionConfigureAction_ActionIdActionText;
+	public static String SetPrecisionConfigureAction_ActionIdToolTip;
 	public static String Configure_Split_Operator_Action_Id;
 	public static String Add_Remove_Split_Branches;
 	public static String Configure_Split_Operator;
 	public static String Configure_Concat_Operator_Action_Id;
 	public static String Add_Remove_Concat_Branches;
+	public static String AddConfigureAction_ActionId;
+	public static String AddConfigureAction_ActionText;
+	public static String AddConfigureAction_ToolTip;
 	public static String AddNewFieldAction_addNewField;
 	public static String  AddNewAttributeAction_addNewField;
 	public static String EditActions_editField;
@@ -110,6 +116,9 @@ public class Messages extends NLS {
 	public static String Configure_Constant_Operator_Action_Id;
 	public static String Configure_Constant_Operator_Text;
 	public static String Configure_Constant_Operator_Tool_Tip;
+	public static String MultiplyConfigureAction_ActionId;
+	public static String MultiplyConfigureAction_ActionText;
+	public static String MultiplyConfigureAction_ToolTip;
 	static {
 		// initialize resource bundle
 		NLS.initializeMessages(BUNDLE_NAME, Messages.class);

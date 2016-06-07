@@ -77,9 +77,9 @@ public class ConfigureConstantOperatorDialog extends AbstractConfigureOperatorDi
 		final Combo constantTypeDropDown = new Combo(container, SWT.DROP_DOWN | SWT.BORDER | SWT.READ_ONLY);
 		constantTypeDropDown.setLayoutData(dataPropertyConfigText);
 		constantTypeDropDown.add("STRING");
-		constantTypeDropDown.add("INT");
+		constantTypeDropDown.add("NUMBER");
 		constantTypeDropDown.add("BOOLEAN");
-		constantTypeDropDown.add("FLOAT");
+		constantTypeDropDown.add("DOUBLE");
 		if (constant.getType() != null) {
 			constantTypeDropDown.setText(constant.getType().getLiteral());
 		} else {

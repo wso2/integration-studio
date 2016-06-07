@@ -36,6 +36,7 @@ import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.ui.IWorkbenchPart;
 import org.wso2.developerstudio.datamapper.PropertyKeyValuePair;
 import org.wso2.developerstudio.datamapper.TreeNode;
+import org.wso2.developerstudio.datamapper.diagram.custom.action.AddConfigureAction;
 import org.wso2.developerstudio.datamapper.diagram.custom.action.AddNewArrayAction;
 import org.wso2.developerstudio.datamapper.diagram.custom.action.AddNewAttributeAction;
 import org.wso2.developerstudio.datamapper.diagram.custom.action.AddNewFieldAction;
@@ -52,11 +53,16 @@ import org.wso2.developerstudio.datamapper.diagram.custom.action.EnableNullableA
 import org.wso2.developerstudio.datamapper.diagram.custom.action.ExportSchemaAction;
 import org.wso2.developerstudio.datamapper.diagram.custom.action.LoadInputSchemaAction;
 import org.wso2.developerstudio.datamapper.diagram.custom.action.LoadOutputSchemaAction;
+import org.wso2.developerstudio.datamapper.diagram.custom.action.MultiplyConfigureAction;
+import org.wso2.developerstudio.datamapper.diagram.custom.action.SetPrecisionConfigureAction;
 import org.wso2.developerstudio.datamapper.diagram.custom.action.SplitManyAction;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.AddEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.ConcatEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.ConstantEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.InputEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.MultiplyEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.OutputEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.SetPrecisionEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.SplitEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.TreeNode2EditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.TreeNode3EditPart;
@@ -134,6 +140,9 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
 		contextActions.put(ConcatEditPart.class, new ConcatManyAction(part));
 		contextActions.put(SplitEditPart.class, new SplitManyAction(part));
 		contextActions.put(ConstantEditPart.class, new ConstantConfigureAction(part));
+		contextActions.put(AddEditPart.class, new AddConfigureAction(part));
+		contextActions.put(MultiplyEditPart.class, new MultiplyConfigureAction(part));
+		contextActions.put(SetPrecisionEditPart.class, new SetPrecisionConfigureAction(part));
 
 		// Initialize new root record context sensitive actions.
 		addNewRootElementContextActions = new HashMap<Class<? extends ShapeNodeEditPart>, AbstractActionHandler>();

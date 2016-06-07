@@ -15,6 +15,8 @@
  */
 package org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers;
 
+import static org.wso2.developerstudio.datamapper.diagram.custom.model.transformers.TransformerConstants.CONSTANT_ADDITIVE;
+
 import java.util.List;
 import java.util.Map;
 import java.util.Stack;
@@ -26,15 +28,11 @@ import org.wso2.developerstudio.datamapper.diagram.custom.model.DMOperation;
 import org.wso2.developerstudio.datamapper.diagram.custom.model.DMVariable;
 import org.wso2.developerstudio.datamapper.diagram.custom.util.ScriptGenerationUtil;
 
-import static org.wso2.developerstudio.datamapper.diagram.custom.model.transformers.TransformerConstants.CONSTANT_ADDITIVE;
-import static org.wso2.developerstudio.datamapper.diagram.custom.model.transformers.TransformerConstants.CONSTANT_MULTIPLY_SIGN;
-import static org.wso2.developerstudio.datamapper.diagram.custom.model.transformers.TransformerConstants.CONSTANT_MULTIPLICATIVE;
-
 /**
  * This class extended from the {@link AbstractDMOperatorTransformer} abstract class and generate script for constant
  * operation
  */
-public class MultiplyOperatorTransformer extends AbstractDMOperatorTransformer {
+public class RoundOperatorTransformer extends AbstractDMOperatorTransformer {
 
 	@Override
 	public String generateScriptForOperation(Class<?> generatorClass, List<DMVariable> inputVariables,
@@ -42,20 +40,11 @@ public class MultiplyOperatorTransformer extends AbstractDMOperatorTransformer {
 			DMOperation operator) {
 		StringBuilder operationBuilder = new StringBuilder();
 		if (DifferentLevelArrayMappingConfigGenerator.class.equals(generatorClass)) {
-			@SuppressWarnings("unchecked")
-			Stack<ForLoopBean> tempParentForLoopBeanStack = (Stack<ForLoopBean>) parentForLoopBeanStack.clone();
 			if (inputVariables.size() == 0) {
 				operationBuilder.append(CONSTANT_ADDITIVE);
 			} else {
-				operationBuilder.append(CONSTANT_MULTIPLICATIVE);
-				operationBuilder
-						.append(CONSTANT_MULTIPLY_SIGN + ScriptGenerationUtil.getPrettyVariableNameInForOperation(
-								inputVariables.get(0), variableTypeMap, parentForLoopBeanStack, true));
-				for (int variableIndex = 1; variableIndex < inputVariables.size(); variableIndex++) {
-					operationBuilder.append(CONSTANT_MULTIPLY_SIGN + ScriptGenerationUtil
-							.getPrettyVariableNameInForOperation(inputVariables.get(variableIndex), variableTypeMap,
-									tempParentForLoopBeanStack, true));
-				}
+				operationBuilder.append("Math.round(" + ScriptGenerationUtil.getPrettyVariableNameInForOperation(
+						inputVariables.get(0), variableTypeMap, parentForLoopBeanStack, true) + ")");
 			}
 			operationBuilder.append(";");
 		} else {

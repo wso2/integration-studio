@@ -15,6 +15,8 @@
  */
 package org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers;
 
+import static org.wso2.developerstudio.datamapper.diagram.custom.model.transformers.TransformerConstants.CONSTANT_ADDITIVE;
+
 import java.util.List;
 import java.util.Map;
 import java.util.Stack;
@@ -22,12 +24,9 @@ import java.util.Stack;
 import org.wso2.developerstudio.datamapper.SchemaDataType;
 import org.wso2.developerstudio.datamapper.diagram.custom.generator.DifferentLevelArrayMappingConfigGenerator;
 import org.wso2.developerstudio.datamapper.diagram.custom.generator.ForLoopBean;
-import org.wso2.developerstudio.datamapper.diagram.custom.generator.SameLevelRecordMappingConfigGenerator;
 import org.wso2.developerstudio.datamapper.diagram.custom.model.DMOperation;
 import org.wso2.developerstudio.datamapper.diagram.custom.model.DMVariable;
 import org.wso2.developerstudio.datamapper.diagram.custom.util.ScriptGenerationUtil;
-
-import static org.wso2.developerstudio.datamapper.diagram.custom.model.transformers.TransformerConstants.CONSTANT_VALUE_TAG;
 
 /**
  * This class extended from the {@link AbstractDMOperatorTransformer} abstract class and generate script for constant
@@ -35,18 +34,23 @@ import static org.wso2.developerstudio.datamapper.diagram.custom.model.transform
  */
 public class AbsoluteValueOperatorTransformer extends AbstractDMOperatorTransformer {
 
-    @Override
-    public String generateScriptForOperation(Class<?> generatorClass, List<DMVariable> inputVariables,
-            Map<String, SchemaDataType> variableTypeMap, Stack<ForLoopBean> parentForLoopBeanStack,
-            DMOperation operator) {
-        StringBuilder operationBuilder = new StringBuilder();
-        if (DifferentLevelArrayMappingConfigGenerator.class.equals(generatorClass)) {
-                operationBuilder.append("Math.abs("+ScriptGenerationUtil.getPrettyVariableNameInForOperation(inputVariables.get(0),
-                        variableTypeMap, parentForLoopBeanStack, true)+");");
-        } else {
-            throw new IllegalArgumentException("Unknown MappingConfigGenerator type found : " + generatorClass);
-        }
-        return operationBuilder.toString();
-    }
+	@Override
+	public String generateScriptForOperation(Class<?> generatorClass, List<DMVariable> inputVariables,
+			Map<String, SchemaDataType> variableTypeMap, Stack<ForLoopBean> parentForLoopBeanStack,
+			DMOperation operator) {
+		StringBuilder operationBuilder = new StringBuilder();
+		if (DifferentLevelArrayMappingConfigGenerator.class.equals(generatorClass)) {
+			if (inputVariables.size() == 0) {
+				operationBuilder.append(CONSTANT_ADDITIVE);
+			} else {
+				operationBuilder.append("Math.abs(" + ScriptGenerationUtil.getPrettyVariableNameInForOperation(
+						inputVariables.get(0), variableTypeMap, parentForLoopBeanStack, true) + ")");
+			}
+			operationBuilder.append(";");
+		} else {
+			throw new IllegalArgumentException("Unknown MappingConfigGenerator type found : " + generatorClass);
+		}
+		return operationBuilder.toString();
+	}
 
 }

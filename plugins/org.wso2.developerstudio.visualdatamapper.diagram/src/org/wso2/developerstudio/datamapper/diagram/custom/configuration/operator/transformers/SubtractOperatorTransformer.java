@@ -35,32 +35,33 @@ import static org.wso2.developerstudio.datamapper.diagram.custom.model.transform
  */
 public class SubtractOperatorTransformer extends AbstractDMOperatorTransformer {
 
-    @Override
-    public String generateScriptForOperation(Class<?> generatorClass, List<DMVariable> inputVariables,
-            Map<String, SchemaDataType> variableTypeMap, Stack<ForLoopBean> parentForLoopBeanStack,
-            DMOperation operator) {
-        StringBuilder operationBuilder = new StringBuilder();
-        if (DifferentLevelArrayMappingConfigGenerator.class.equals(generatorClass)) {
-            @SuppressWarnings("unchecked")
-            Stack<ForLoopBean> tempParentForLoopBeanStack = (Stack<ForLoopBean>) parentForLoopBeanStack.clone();           
-            if (inputVariables.size() == 0) {
-            	operationBuilder.append(CONSTANT_ADDITIVE);
-            } else {
-            	operationBuilder.append(ScriptGenerationUtil.getPrettyVariableNameInForOperation(inputVariables.get(0),
-                        variableTypeMap, parentForLoopBeanStack, true));
-            }
-            
-            if (inputVariables.size() == 2) {
-            	operationBuilder.append(CONSTANT_SUBTRACT_SIGN + ScriptGenerationUtil.getPrettyVariableNameInForOperation(
-                        inputVariables.get(1), variableTypeMap, tempParentForLoopBeanStack, true));
-            }
-            
-            operationBuilder.append(";");
-            
-        } else {
-            throw new IllegalArgumentException("Unknown MappingConfigGenerator type found : " + generatorClass);
-        }
-        return operationBuilder.toString();
-    }
+	@Override
+	public String generateScriptForOperation(Class<?> generatorClass, List<DMVariable> inputVariables,
+			Map<String, SchemaDataType> variableTypeMap, Stack<ForLoopBean> parentForLoopBeanStack,
+			DMOperation operator) {
+		StringBuilder operationBuilder = new StringBuilder();
+		if (DifferentLevelArrayMappingConfigGenerator.class.equals(generatorClass)) {
+			@SuppressWarnings("unchecked")
+			Stack<ForLoopBean> tempParentForLoopBeanStack = (Stack<ForLoopBean>) parentForLoopBeanStack.clone();
+			if (inputVariables.size() == 0) {
+				operationBuilder.append(CONSTANT_ADDITIVE);
+			} else {
+				operationBuilder.append(ScriptGenerationUtil.getPrettyVariableNameInForOperation(inputVariables.get(0),
+						variableTypeMap, parentForLoopBeanStack, true));
+			}
+
+			if (inputVariables.size() == 2) {
+				operationBuilder
+						.append(CONSTANT_SUBTRACT_SIGN + ScriptGenerationUtil.getPrettyVariableNameInForOperation(
+								inputVariables.get(1), variableTypeMap, tempParentForLoopBeanStack, true));
+			}
+
+			operationBuilder.append(";");
+
+		} else {
+			throw new IllegalArgumentException("Unknown MappingConfigGenerator type found : " + generatorClass);
+		}
+		return operationBuilder.toString();
+	}
 
 }

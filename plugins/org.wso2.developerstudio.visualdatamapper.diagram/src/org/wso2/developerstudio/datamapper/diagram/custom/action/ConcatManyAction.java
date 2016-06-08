@@ -33,7 +33,7 @@ import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.datamapper.Concat;
-import org.wso2.developerstudio.datamapper.diagram.custom.util.ConfigureConcatOperatorDialog;
+import org.wso2.developerstudio.datamapper.diagram.custom.dialogs.ConfigureConcatOperatorDialog;
 
 public class ConcatManyAction extends AbstractActionHandler {
 
@@ -50,10 +50,8 @@ public class ConcatManyAction extends AbstractActionHandler {
 		setId(Messages.Configure_Concat_Operator_Action_Id);
 		setText(Messages.Add_Remove_Concat_Branches);
 		setToolTipText(Messages.Configure_Concat_Operator);
-		ISharedImages workbenchImages = PlatformUI.getWorkbench()
-				.getSharedImages();
-		setImageDescriptor(workbenchImages
-				.getImageDescriptor(ISharedImages.IMG_TOOL_NEW_WIZARD));
+		ISharedImages workbenchImages = PlatformUI.getWorkbench().getSharedImages();
+		setImageDescriptor(workbenchImages.getImageDescriptor(ISharedImages.IMG_TOOL_NEW_WIZARD));
 	}
 
 	/**
@@ -63,7 +61,7 @@ public class ConcatManyAction extends AbstractActionHandler {
 		EditPart selectedEP = getSelectedEditPart();
 		EObject selectedObj = ((View) selectedEP.getModel()).getElement();
 		Dialog configureConcat = new ConfigureConcatOperatorDialog(Display.getDefault().getActiveShell(),
-				(Concat) selectedObj, getEditingDomain(), selectedEP);
+				(Concat) selectedObj, getEditingDomain());
 		configureConcat.setBlockOnOpen(true);
 		configureConcat.open();
 	}
@@ -73,6 +71,7 @@ public class ConcatManyAction extends AbstractActionHandler {
 		// TODO Auto-generated method stub
 
 	}
+
 	protected EditPart getSelectedEditPart() {
 		IStructuredSelection selection = getStructuredSelection();
 		if (selection.size() == 1) {
@@ -95,8 +94,7 @@ public class ConcatManyAction extends AbstractActionHandler {
 		IWorkbenchPart part = getWorkbenchPart();
 
 		if (part != null) {
-			IEditingDomainProvider edProvider = (IEditingDomainProvider) part
-					.getAdapter(IEditingDomainProvider.class);
+			IEditingDomainProvider edProvider = (IEditingDomainProvider) part.getAdapter(IEditingDomainProvider.class);
 
 			if (edProvider != null) {
 				EditingDomain domain = edProvider.getEditingDomain();

@@ -79,6 +79,9 @@ public class AddNewObjectAction extends AbstractActionHandler {
 	private static final String STRING = "string";
 	private static final String JSON_SCHEMA_ARRAY_ITEMS_ID = "items_id";
 	private static final String JSON_SCHEMA_ARRAY_ITEMS_TYPE = "items_type";
+	private static final String JSON_SCHEMA_NULLABLE = "nullable";
+	private static final String TRUE = "true";
+	private static final String FALSE = "false";
 
 	public AddNewObjectAction(IWorkbenchPart workbenchPart) {
 		super(workbenchPart);
@@ -198,6 +201,15 @@ public class AddNewObjectAction extends AbstractActionHandler {
 					treeNodeNew.getNode().add(treeNodeChild);
 				}
 				
+				//Sets the nullable value
+				String nullableValue = null;
+				if(objectDialog.getNullable()){
+					nullableValue = TRUE;
+				}else{
+	                nullableValue = FALSE;
+				}
+				setPropertyKeyValuePairforTreeNodes(treeNodeNew, propertyValueList, JSON_SCHEMA_NULLABLE,
+						nullableValue);
 				
 				/*
 				 * AddCommand is used to avoid concurrent updating. index 0 to

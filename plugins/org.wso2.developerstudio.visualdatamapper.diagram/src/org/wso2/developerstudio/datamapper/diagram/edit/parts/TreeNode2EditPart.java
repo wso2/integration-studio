@@ -683,6 +683,9 @@ public class TreeNode2EditPart extends AbstractBorderedShapeEditPart {
 
 			ImageDescriptor objectImgDesc = AbstractUIPlugin
 					.imageDescriptorFromPlugin(ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM, OBJECT_ICON);
+			
+			ImageDescriptor nullableObjectImgDesc = AbstractUIPlugin
+					.imageDescriptorFromPlugin(ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM, NULLABLE_OBJECT_ICON);
 
 			final ImageFigure mainImg = new ImageFigure(mainImgDescCollapse.createImage());
 			mainImg.setSize(new Dimension(10, 8));
@@ -698,6 +701,11 @@ public class TreeNode2EditPart extends AbstractBorderedShapeEditPart {
 																					// symbole
 																					// figure
 			objectImg.setSize(new Dimension(10, 8));
+			
+			ImageFigure nullableObjectImg = new ImageFigure(nullableObjectImgDesc.createImage()); // object
+			// symbole
+			// figure
+			nullableObjectImg.setSize(new Dimension(10, 8));
 
 			RectangleFigure mainImageRectangle = new RectangleFigure();
 
@@ -726,6 +734,13 @@ public class TreeNode2EditPart extends AbstractBorderedShapeEditPart {
 			objectImageRectangle.setPreferredSize(new Dimension(10, 7));
 			objectImageRectangle.add(objectImg);
 			objectImageRectangle.setBorder(new MarginBorder(1, 1, 1, 1));
+			
+			RectangleFigure nullableObjectImageRectangle = new RectangleFigure();
+
+			nullableObjectImageRectangle.setBackgroundColor(new Color(null, 255, 255, 255));
+			nullableObjectImageRectangle.setPreferredSize(new Dimension(10, 7));
+			nullableObjectImageRectangle.add(nullableObjectImg);
+			nullableObjectImageRectangle.setBorder(null);
 
 			fFigureTreeNodeNameFigure = new WrappingLabel();
 
@@ -737,10 +752,12 @@ public class TreeNode2EditPart extends AbstractBorderedShapeEditPart {
 			 */
 			String name = (((TreeNode) ((View) getModel()).getElement()).getName());
 			String type = null;
+			String nullableValue = null;
 			for (PropertyKeyValuePair keyValue : (((TreeNode) ((View) getModel()).getElement()).getProperties())) {
 				if (keyValue.getKey().equals(JSON_SCHEMA_TYPE)) {
 					type = keyValue.getValue();
-					break;
+				} else if (keyValue.getKey().equals(JSON_SCHEMA_NULLABLE)) {
+					nullableValue = keyValue.getValue();
 				}
 			}
 
@@ -759,13 +776,29 @@ public class TreeNode2EditPart extends AbstractBorderedShapeEditPart {
 			figure2.setPreferredSize((count - 1) * 22, 3);
 			Label nodeLabel = new Label();
 			if (StringUtils.isNotEmpty(name) && name.startsWith(PREFIX)) {
-				nodeLabel.setIcon(attributeImg.getImage());
+				if (nullableValue.equals(TRUE)) {
+					nodeLabel.setIcon(nullableObjectImg.getImage());
+				} else if (nullableValue.equals(FALSE)) {
+					nodeLabel.setIcon(attributeImg.getImage());
+				}
 			} else if (type != null && type.equals(JSON_SCHEMA_ARRAY)) {
-				nodeLabel.setIcon(arrayImg.getImage());
+				if (nullableValue.equals(TRUE)) {
+					nodeLabel.setIcon(nullableObjectImg.getImage());
+				} else if (nullableValue.equals(FALSE)) {
+					nodeLabel.setIcon(arrayImg.getImage());
+				}
 			} else if (type != null && type.equals(JSON_SCHEMA_OBJECT)) {
-				nodeLabel.setIcon(objectImg.getImage());
+				if (nullableValue.equals(TRUE)) {
+					nodeLabel.setIcon(nullableObjectImg.getImage());
+				} else if (nullableValue.equals(FALSE)) {
+					nodeLabel.setIcon(objectImg.getImage());
+				}
 			} else {
-				nodeLabel.setIcon(mainImg.getImage());
+				if (nullableValue.equals(TRUE)) {
+					nodeLabel.setIcon(nullableObjectImg.getImage());
+				} else if (nullableValue.equals(FALSE)) {
+					nodeLabel.setIcon(mainImg.getImage());
+				}
 			}
 			Display display = Display.getCurrent();
 			Color black = display.getSystemColor(SWT.COLOR_BLACK);
@@ -1080,7 +1113,7 @@ public class TreeNode2EditPart extends AbstractBorderedShapeEditPart {
 		EditPart parent = editPart.getParent();
 		List children = parent.getChildren();
 		Iterator iterator = children.iterator();
-		updatConnectors(iterator);
+		updateConnectors(iterator);
 		super.refreshChildren();
 	}
 
@@ -1089,7 +1122,7 @@ public class TreeNode2EditPart extends AbstractBorderedShapeEditPart {
 	 * @param iterator
 	 */
 	@SuppressWarnings("rawtypes")
-	private void updatConnectors(Iterator iterator) {
+	private void updateConnectors(Iterator iterator) {
 		while (iterator.hasNext()) {
 			EditPart child = (EditPart) iterator.next();
 			if (addFixedChild(child)) {

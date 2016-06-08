@@ -49,6 +49,7 @@ public class ConstantItemProvider extends OperatorItemProvider {
 			super.getPropertyDescriptors(object);
 
 			addConstantValuePropertyDescriptor(object);
+			addTypePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -67,6 +68,28 @@ public class ConstantItemProvider extends OperatorItemProvider {
 				 getString("_UI_Constant_constantValue_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_Constant_constantValue_feature", "_UI_Constant_type"),
 				 DataMapperPackage.Literals.CONSTANT__CONSTANT_VALUE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Type feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addTypePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Constant_type_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Constant_type_feature", "_UI_Constant_type"),
+				 DataMapperPackage.Literals.CONSTANT__TYPE,
 				 true,
 				 false,
 				 false,
@@ -111,6 +134,7 @@ public class ConstantItemProvider extends OperatorItemProvider {
 
 		switch (notification.getFeatureID(Constant.class)) {
 			case DataMapperPackage.CONSTANT__CONSTANT_VALUE:
+			case DataMapperPackage.CONSTANT__TYPE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

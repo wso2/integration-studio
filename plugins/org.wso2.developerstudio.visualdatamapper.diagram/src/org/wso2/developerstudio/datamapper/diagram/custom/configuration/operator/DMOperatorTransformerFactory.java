@@ -16,11 +16,20 @@
 package org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator;
 
 import org.wso2.developerstudio.datamapper.DataMapperOperatorType;
+import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.AbsoluteValueOperatorTransformer;
+import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.AddOperatorTransformer;
+import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.CeilOperatorTransformer;
 import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.ConcatOperatorTransformer;
 import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.ConstantOperatorTransformer;
 import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.DMOperatorTransformer;
 import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.DirectOperatorTransformer;
+import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.DivideOperatorTransformer;
+import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.FloorOperatorTransformer;
+import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.MultiplyOperatorTransformer;
+import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.RoundOperatorTransformer;
+import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.SetPrecisionOperatorTransformer;
 import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.SplitOperatorTransformer;
+import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.SubtractOperatorTransformer;
 import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.ToLowerCaseOperatorTransformer;
 import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.ToUpperCaseOperatorTransformer;
 
@@ -109,6 +118,24 @@ public class DMOperatorTransformerFactory {
 
 	private static DMOperatorTransformer getArithmaticOperatorTransformer(DataMapperOperatorType type) {
 		switch (type) {
+		case ADD:
+			return new AddOperatorTransformer();
+		case SUBTRACT:
+			return new SubtractOperatorTransformer();
+		case MULTIPLY:
+			return new MultiplyOperatorTransformer();
+		case DIVIDE:
+			return new DivideOperatorTransformer();
+		case ABSOLUTE:
+			return new AbsoluteValueOperatorTransformer();
+		case ROUND:
+			return new RoundOperatorTransformer();
+		case SET_PRECISION:
+			return new SetPrecisionOperatorTransformer();
+		case CEILING:
+			return new CeilOperatorTransformer();
+		case FLOOR:
+			return new FloorOperatorTransformer();
 		default:
 			throw new IllegalArgumentException(
 					"Unknown Arithmatic operator type found for tranform in DMOperatorTransformerFactory : " + type);

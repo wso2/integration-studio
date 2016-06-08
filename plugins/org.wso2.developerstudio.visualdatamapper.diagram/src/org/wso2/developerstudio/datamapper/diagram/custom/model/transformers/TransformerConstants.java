@@ -19,6 +19,13 @@ public class TransformerConstants {
 
     public static final String DELIMITER_TAG = "delimiter";
     public static final String CONSTANT_VALUE_TAG = "constantValue";
-    public static final String CONSTANT_TYPE_TAG = "canstantType";
+    public static final String CONSTANT_TYPE_TAG = "constantType";
+    public static final String CONSTANT_ADD_SIGN = "+";
+    public static final String CONSTANT_SUBTRACT_SIGN = "-";
+    public static final String CONSTANT_MULTIPLY_SIGN = "*";
+    public static final String CONSTANT_DIVIDE_SIGN = "/";
+    public static final String CONSTANT_ADDITIVE = "0";
+    public static final String CONSTANT_MULTIPLICATIVE = "1";
+    public static final String NUM_OF_DECIMALS_TAG = "numberOfDigits";
     
 }

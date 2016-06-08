@@ -33,7 +33,7 @@ import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.datamapper.Split;
-import org.wso2.developerstudio.datamapper.diagram.custom.util.ConfigureSplitOperatorDialog;
+import org.wso2.developerstudio.datamapper.diagram.custom.dialogs.ConfigureSplitOperatorDialog;
 
 public class SplitManyAction extends AbstractActionHandler {
 
@@ -42,17 +42,17 @@ public class SplitManyAction extends AbstractActionHandler {
 	/**
 	 * Creates a new {@link ConfigureSwitchMediatorAction} instance.
 	 * 
-	 * @param part a {@link IWorkbenchPart} instance.
+	 * @param part
+	 *            a {@link IWorkbenchPart} instance.
 	 */
 	public SplitManyAction(IWorkbenchPart part) {
 		super(part);
 		setId(Messages.Configure_Split_Operator_Action_Id);
 		setText(Messages.Add_Remove_Split_Branches);
 		setToolTipText(Messages.Configure_Split_Operator);
-		ISharedImages workbenchImages = PlatformUI.getWorkbench().getSharedImages();		
+		ISharedImages workbenchImages = PlatformUI.getWorkbench().getSharedImages();
 		setImageDescriptor(workbenchImages.getImageDescriptor(ISharedImages.IMG_TOOL_NEW_WIZARD));
 	}
-	
 
 	/**
 	 * {@inheritDoc}
@@ -61,17 +61,17 @@ public class SplitManyAction extends AbstractActionHandler {
 		EditPart selectedEP = getSelectedEditPart();
 		EObject selectedObj = ((View) selectedEP.getModel()).getElement();
 		Dialog configureConcat = new ConfigureSplitOperatorDialog(Display.getDefault().getActiveShell(),
-				(Split) selectedObj, getEditingDomain(), selectedEP);
+				(Split) selectedObj, getEditingDomain());
 		configureConcat.setBlockOnOpen(true);
 		configureConcat.open();
 	}
 
-
 	@Override
 	public void refresh() {
 		// TODO Auto-generated method stub
-		
+
 	}
+
 	protected EditPart getSelectedEditPart() {
 		IStructuredSelection selection = getStructuredSelection();
 		if (selection.size() == 1) {
@@ -83,31 +83,29 @@ public class SplitManyAction extends AbstractActionHandler {
 
 		return null; /* In case of selecting the wrong editpart */
 	}
-	
+
 	/**
 	 * Utility method for calculating the editing domain.
 	 * 
 	 * @return editing domain for this action.
 	 */
-	protected TransactionalEditingDomain getEditingDomain() {        
-        // try adapting the workbench part
-        IWorkbenchPart part = getWorkbenchPart();
+	protected TransactionalEditingDomain getEditingDomain() {
+		// try adapting the workbench part
+		IWorkbenchPart part = getWorkbenchPart();
 
-        if (part != null) {
-            IEditingDomainProvider edProvider = (IEditingDomainProvider) part
-                .getAdapter(IEditingDomainProvider.class);
+		if (part != null) {
+			IEditingDomainProvider edProvider = (IEditingDomainProvider) part.getAdapter(IEditingDomainProvider.class);
 
-            if (edProvider != null) {
-            	EditingDomain domain = edProvider.getEditingDomain();
-            	
-            	if (domain instanceof TransactionalEditingDomain) {
-            		return (TransactionalEditingDomain) domain;
-            	}
-            }
-        }
-        
-        return null;
-    }
+			if (edProvider != null) {
+				EditingDomain domain = edProvider.getEditingDomain();
 
+				if (domain instanceof TransactionalEditingDomain) {
+					return (TransactionalEditingDomain) domain;
+				}
+			}
+		}
+
+		return null;
+	}
 
 }

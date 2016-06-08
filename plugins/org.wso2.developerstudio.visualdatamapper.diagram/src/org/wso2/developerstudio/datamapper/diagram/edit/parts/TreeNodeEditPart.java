@@ -484,17 +484,17 @@ public class TreeNodeEditPart extends AbstractBorderedShapeEditPart {
 		EditPart parent = editPart.getParent();
 		List children = parent.getChildren();
 		Iterator iterator = children.iterator();
-		updatConnectors(iterator);
+		updateConnectors(iterator);
 		super.refreshChild((GraphicalEditPart) editPart);
 	}
 
 	/**
-	 * Updats the connectors
+	 * Updates the connectors
 	 * 
 	 * @param iterator
 	 */
 	@SuppressWarnings("rawtypes")
-	private void updatConnectors(Iterator iterator) {
+	private void updateConnectors(Iterator iterator) {
 		while (iterator.hasNext()) {
 			EditPart child = (EditPart) iterator.next();
 			if (addFixedChild(child)) {
@@ -681,8 +681,6 @@ public class TreeNodeEditPart extends AbstractBorderedShapeEditPart {
 		 * @generated NOT
 		 */
 		private void createContents() {
-			
-			boolean isNullable = false;
 
 			RectangleFigure figure = new RectangleFigure();
 			ToolbarLayout l = new ToolbarLayout();
@@ -705,8 +703,8 @@ public class TreeNodeEditPart extends AbstractBorderedShapeEditPart {
 					.imageDescriptorFromPlugin(ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM, ARRAY_ICON);
 			ImageDescriptor objectImgDesc = AbstractUIPlugin
 					.imageDescriptorFromPlugin(ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM, OBJECT_ICON);
-			
-			
+			ImageDescriptor nullableObjectImgDesc = AbstractUIPlugin
+					.imageDescriptorFromPlugin(ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM, NULLABLE_OBJECT_ICON);
 
 			final ImageFigure mainImg = new ImageFigure(mainImgDescCollapse.createImage());
 			mainImg.setSize(new Dimension(10, 8));
@@ -725,7 +723,11 @@ public class TreeNodeEditPart extends AbstractBorderedShapeEditPart {
 																					// symbole
 																					// figure
 			objectImg.setSize(new Dimension(10, 8));
-			
+
+			ImageFigure nullableObjectImg = new ImageFigure(nullableObjectImgDesc.createImage()); // object
+			// symbole
+			// figure
+			nullableObjectImg.setSize(new Dimension(10, 8));
 
 			RectangleFigure mainImageRectangle = new RectangleFigure();
 
@@ -754,7 +756,13 @@ public class TreeNodeEditPart extends AbstractBorderedShapeEditPart {
 			objectImageRectangle.setPreferredSize(new Dimension(10, 7));
 			objectImageRectangle.add(objectImg);
 			objectImageRectangle.setBorder(null);
-			
+
+			RectangleFigure nullableObjectImageRectangle = new RectangleFigure();
+
+			nullableObjectImageRectangle.setBackgroundColor(new Color(null, 255, 255, 255));
+			nullableObjectImageRectangle.setPreferredSize(new Dimension(10, 7));
+			nullableObjectImageRectangle.add(nullableObjectImg);
+			nullableObjectImageRectangle.setBorder(null);
 
 			fFigureTreeNodeNameFigure = new WrappingLabel();
 			// String name = (((TreeNode) ((View)
@@ -765,11 +773,13 @@ public class TreeNodeEditPart extends AbstractBorderedShapeEditPart {
 			 */
 			String name = (((TreeNode) ((View) getModel()).getElement()).getName());
 			String type = null;
+			String nullableValue = null;
 			for (PropertyKeyValuePair keyValue : (((TreeNode) ((View) getModel()).getElement()).getProperties())) {
 				if (keyValue.getKey().equals(JSON_SCHEMA_TYPE)) {
 					type = keyValue.getValue();
-					break;
-				} 
+				} else if (keyValue.getKey().equals(JSON_SCHEMA_NULLABLE)) {
+					nullableValue = keyValue.getValue();
+				}
 			}
 			int count = ((TreeNode) ((View) getModel()).getElement()).getLevel();
 			fFigureTreeNodeNameFigure.setText(name);
@@ -840,13 +850,29 @@ public class TreeNodeEditPart extends AbstractBorderedShapeEditPart {
 			figure2.setPreferredSize((count - 1) * 22, 3);
 			Label nodeLabel = new Label();
 			if (StringUtils.isNotEmpty(name) && name.startsWith(PREFIX)) {
+				if (nullableValue.equals(TRUE)) {
+					nodeLabel.setIcon(nullableObjectImg.getImage());
+				} else if (nullableValue.equals(FALSE)) {
 					nodeLabel.setIcon(attributeImg.getImage());
+				}
 			} else if (type != null && type.equals(JSON_SCHEMA_ARRAY)) {
+				if (nullableValue.equals(TRUE)) {
+					nodeLabel.setIcon(nullableObjectImg.getImage());
+				} else if (nullableValue.equals(FALSE)) {
 					nodeLabel.setIcon(arrayImg.getImage());
+				}
 			} else if (type != null && type.equals(JSON_SCHEMA_OBJECT)) {
+				if (nullableValue.equals(TRUE)) {
+					nodeLabel.setIcon(nullableObjectImg.getImage());
+				} else if (nullableValue.equals(FALSE)) {
 					nodeLabel.setIcon(objectImg.getImage());
+				}
 			} else {
+				if (nullableValue.equals(TRUE)) {
+					nodeLabel.setIcon(nullableObjectImg.getImage());
+				} else if (nullableValue.equals(FALSE)) {
 					nodeLabel.setIcon(mainImg.getImage());
+				}
 			}
 			Display display = Display.getCurrent();
 			Color black = display.getSystemColor(SWT.COLOR_BLACK);
@@ -856,14 +882,14 @@ public class TreeNodeEditPart extends AbstractBorderedShapeEditPart {
 			figure.setOutline(false);
 			figure2.setOutline(false);
 			figure.add(figure2);
-		    figure.add(nodeLabel);
+			figure.add(nodeLabel);
 			figure.setFill(false);
 			figure2.setFill(false);
 			this.setFill(false);
 			this.setOutline(false);
 
 			this.add(figure);
-			
+
 		}
 
 		/**
@@ -967,6 +993,7 @@ public class TreeNodeEditPart extends AbstractBorderedShapeEditPart {
 
 		/**
 		 * This creates the content for nullable values
+		 * 
 		 * @param name
 		 * @param type
 		 */
@@ -999,15 +1026,14 @@ public class TreeNodeEditPart extends AbstractBorderedShapeEditPart {
 																					// symbole
 																					// figure
 			objectImg.setSize(new Dimension(10, 8));
-			
+
 			ImageFigure nullableObjectImg = new ImageFigure(nullableObjectImgDesc.createImage()); // object
 			// symbole
 			// figure
 			nullableObjectImg.setSize(new Dimension(10, 8));
-			
 
 			Label nodeLabel = new Label();
-			
+
 			String nullableValue = null;
 			for (PropertyKeyValuePair keyValue : (((TreeNode) ((View) getModel()).getElement()).getProperties())) {
 				if (keyValue.getKey().equals(JSON_SCHEMA_TYPE)) {
@@ -1060,7 +1086,7 @@ public class TreeNodeEditPart extends AbstractBorderedShapeEditPart {
 			rectFigure.remove(childrenList.get(1));
 			rectFigure.add(nodeLabel);
 		}
-		
+
 		public void highlightElementOnSelection() {
 			RectangleFigure rectFigure = (RectangleFigure) this.getChildren().get(0);
 			List<Figure> childrenList = rectFigure.getChildren();
@@ -1092,7 +1118,7 @@ public class TreeNodeEditPart extends AbstractBorderedShapeEditPart {
 	 * Recreates the content after enabling the nullable
 	 */
 	public void recreateContent(String newName, String type) {
-		getPrimaryShape().createContentForNullables(newName,type);
+		getPrimaryShape().createContentForNullables(newName, type);
 	}
 
 	public void removeHighlightOnElem() {

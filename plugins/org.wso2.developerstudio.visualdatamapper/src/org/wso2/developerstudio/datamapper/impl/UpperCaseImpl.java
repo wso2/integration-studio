@@ -30,6 +30,8 @@ public class UpperCaseImpl extends OperatorImpl implements UpperCase {
 		getInputVariableType().add(SchemaDataType.STRING);
 		getOutputVariableType().add(SchemaDataType.STRING);
 		setOperatorType(DataMapperOperatorType.UPPERCASE);
+		getInputLabelList().add("In");
+		getOutputLabelList().add("Out");
 	}
 
 	/**

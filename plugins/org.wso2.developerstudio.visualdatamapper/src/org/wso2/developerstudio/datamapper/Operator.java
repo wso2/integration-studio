@@ -2,6 +2,8 @@
  */
 package org.wso2.developerstudio.datamapper;
 
+import java.util.Set;
+
 import org.eclipse.emf.common.util.EList;
 
 /**
@@ -17,8 +19,6 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.wso2.developerstudio.datamapper.Operator#isSerialized <em>Serialized</em>}</li>
  *   <li>{@link org.wso2.developerstudio.datamapper.Operator#getDefaultInputConnectors <em>Default Input Connectors</em>}</li>
  *   <li>{@link org.wso2.developerstudio.datamapper.Operator#getDefaultOutputConnectors <em>Default Output Connectors</em>}</li>
- *   <li>{@link org.wso2.developerstudio.datamapper.Operator#getInputVariableType <em>Input Variable Type</em>}</li>
- *   <li>{@link org.wso2.developerstudio.datamapper.Operator#getOutputVariableType <em>Output Variable Type</em>}</li>
  *   <li>{@link org.wso2.developerstudio.datamapper.Operator#isInputSizeFixed <em>Input Size Fixed</em>}</li>
  *   <li>{@link org.wso2.developerstudio.datamapper.Operator#isOutputSizeFixed <em>Output Size Fixed</em>}</li>
  *   <li>{@link org.wso2.developerstudio.datamapper.Operator#getOperatorType <em>Operator Type</em>}</li>
@@ -150,9 +150,9 @@ public interface Operator extends DataMapperNode {
 	 * @see org.wso2.developerstudio.datamapper.SchemaDataType
 	 * @see org.wso2.developerstudio.datamapper.DataMapperPackage#getOperator_InputVariableType()
 	 * @model default="STRING"
-	 * @generated
+	 * @generated NOT
 	 */
-	EList<SchemaDataType> getInputVariableType();
+	Set<SchemaDataType> getInputVariableType();
 
 	/**
 	 * Returns the value of the '<em><b>Output Variable Type</b></em>' attribute list.
@@ -168,9 +168,9 @@ public interface Operator extends DataMapperNode {
 	 * @see org.wso2.developerstudio.datamapper.SchemaDataType
 	 * @see org.wso2.developerstudio.datamapper.DataMapperPackage#getOperator_OutputVariableType()
 	 * @model default="STRING"
-	 * @generated
+	 * @generated NOT
 	 */
-	EList<SchemaDataType> getOutputVariableType();
+	Set<SchemaDataType> getOutputVariableType();
 
 	/**
 	 * Returns the value of the '<em><b>Input Size Fixed</b></em>' attribute.

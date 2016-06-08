@@ -81,6 +81,7 @@ public class ConstantImpl extends OperatorImpl implements Constant {
 		getOutputVariableType().add(SchemaDataType.STRING);
 		getOutputVariableType().add(SchemaDataType.BOOLEAN);
 		setOperatorType(DataMapperOperatorType.CONSTANT);
+		getOutputLabelList().add("Const");
 	}
 
 	/**

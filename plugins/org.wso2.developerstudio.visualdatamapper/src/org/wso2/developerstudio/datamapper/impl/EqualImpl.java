@@ -33,6 +33,8 @@ public class EqualImpl extends OperatorImpl implements Equal {
 		getInputVariableType().add(SchemaDataType.BOOLEAN);
 		getOutputVariableType().add(SchemaDataType.BOOLEAN);
 		setOperatorType(DataMapperOperatorType.EQUALS);
+		getInputLabelList().add("In");
+		getOutputLabelList().add("Out");
 	}
 
 	/**

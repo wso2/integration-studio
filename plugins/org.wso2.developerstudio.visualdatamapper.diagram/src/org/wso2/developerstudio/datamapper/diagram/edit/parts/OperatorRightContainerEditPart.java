@@ -94,7 +94,6 @@ public class OperatorRightContainerEditPart extends ShapeNodeEditPart {
 						for (int i = 0; i < numberOfOutputs; i++) {
 							OperatorRightConnector rightConnector = DataMapperFactory.eINSTANCE
 									.createOperatorRightConnector();
-
 							AddCommand addCaseConnectorCmd = new AddCommand(getEditingDomain(), parentContainer,
 									DataMapperPackage.Literals.OPERATOR_RIGHT_CONTAINER__RIGHT_CONNECTORS, rightConnector);
 							if (addCaseConnectorCmd.canExecute()) {

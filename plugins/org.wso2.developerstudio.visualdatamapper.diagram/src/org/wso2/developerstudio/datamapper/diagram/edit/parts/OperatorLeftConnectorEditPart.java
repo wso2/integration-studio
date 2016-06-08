@@ -1,7 +1,10 @@
 package org.wso2.developerstudio.datamapper.diagram.edit.parts;
 
+import java.util.List;
+
 import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.IFigure;
+import org.eclipse.draw2d.Label;
 import org.eclipse.draw2d.LineBorder;
 import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.RectangleFigure;
@@ -30,12 +33,15 @@ import org.wso2.developerstudio.datamapper.diagram.edit.parts.custom.FixedBorder
 import org.wso2.developerstudio.datamapper.diagram.edit.policies.OperatorLeftConnectorCanonicalEditPolicy;
 import org.wso2.developerstudio.datamapper.diagram.edit.policies.OperatorLeftConnectorItemSemanticEditPolicy;
 import org.wso2.developerstudio.datamapper.diagram.part.DataMapperVisualIDRegistry;
+import org.wso2.developerstudio.datamapper.impl.OperatorImpl;
 
 /**
  * @generated
  */
 public class OperatorLeftConnectorEditPart extends AbstractBorderedShapeEditPart {
 
+
+	private NodeFigure nodeFigure;
 	/**
 	 * @generated
 	 */
@@ -70,16 +76,12 @@ public class OperatorLeftConnectorEditPart extends AbstractBorderedShapeEditPart
 	 * @generated NOT
 	 */
 	protected void createDefaultEditPolicies() {
-		installEditPolicy(EditPolicyRoles.CREATION_ROLE,
-				new CreationEditPolicyWithCustomReparent(DataMapperVisualIDRegistry.TYPED_INSTANCE));
 		super.createDefaultEditPolicies();
 		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE, new OperatorLeftConnectorItemSemanticEditPolicy());
 		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE, new DragDropEditPolicy());
 		installEditPolicy(EditPolicyRoles.CANONICAL_ROLE, new OperatorLeftConnectorCanonicalEditPolicy());
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
 		installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE, new CustomNonResizableEditPolicyEx());
-		// XXX need an SCR to runtime to have another abstract superclass that would let children add reasonable editpolicies
-		// removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
 	}
 
 	/**
@@ -192,14 +194,42 @@ public class OperatorLeftConnectorEditPart extends AbstractBorderedShapeEditPart
 	 * @generated
 	 */
 	protected NodeFigure createMainFigure() {
-		NodeFigure figure = createNodePlate();
-		figure.setLayoutManager(new StackLayout());
+		nodeFigure = createNodePlate();
+		nodeFigure.setLayoutManager(new StackLayout());
 		IFigure shape = createNodeShape();
 		shape.setBorder(null);
-		figure.add(shape);
-		figure.setBorder(null);
+		nodeFigure.add(shape);
+		nodeFigure.setBorder(null);
+		addLeftConnectorLabel();
 		contentPane = setupContentPane(shape);
-		return figure;
+		return nodeFigure;
+	}
+	
+	public boolean addLeftConnectorLabel() {
+		EditPart parentEditPart = this.getParent().getParent().getParent();
+		OperatorImpl operator=(OperatorImpl) ((View) parentEditPart.getModel()).getElement();
+		String inputLabel = getInputLabel(operator);
+		if (nodeFigure != null) {
+			nodeFigure.add(new Label(inputLabel+" "+operator.getInputVariableType().toString()+" "));
+			return true;
+		}
+		return false;
+	}
+
+	private String getInputLabel(OperatorImpl operator) {
+		List<String> inputLabels = operator.getInputLabelList();
+		if(inputLabels.size()==1){
+			return formatLabel(inputLabels.get(0));
+		} else if (inputLabels.size() > 1) {
+			int leftConnectorIndex = operator.getLeftConnectorCount();
+			operator.setLeftConnectorCount(leftConnectorIndex + 1);
+			return formatLabel(inputLabels.get(leftConnectorIndex));
+		}
+		return "";
+	}
+
+	private String formatLabel(String inputLabel) {
+		return " "+inputLabel+" :";
 	}
 
 	/**

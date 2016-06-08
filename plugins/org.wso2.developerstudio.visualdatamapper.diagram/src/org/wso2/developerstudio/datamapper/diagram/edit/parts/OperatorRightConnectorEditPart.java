@@ -1,8 +1,11 @@
 package org.wso2.developerstudio.datamapper.diagram.edit.parts;
 
+import java.util.List;
+
 import org.eclipse.draw2d.ColorConstants;
 import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.IFigure;
+import org.eclipse.draw2d.Label;
 import org.eclipse.draw2d.LineBorder;
 import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.RectangleFigure;
@@ -25,14 +28,17 @@ import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.gmf.tooling.runtime.edit.policies.reparent.CreationEditPolicyWithCustomReparent;
 import org.eclipse.swt.graphics.Color;
+import org.wso2.developerstudio.datamapper.diagram.custom.util.EditorUtils;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.custom.CustomNonResizableEditPolicyEx;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.custom.FixedBorderItemLocator;
+import org.wso2.developerstudio.datamapper.impl.OperatorImpl;
 
 /**
  * @generated NOT
  */
 public class OperatorRightConnectorEditPart extends AbstractBorderedShapeEditPart {
 
+	NodeFigure figure;
 	/**
 	 * @generated
 	 */
@@ -80,8 +86,6 @@ public class OperatorRightConnectorEditPart extends AbstractBorderedShapeEditPar
 		NonResizableEditPolicy selectionPolicy = new CustomNonResizableEditPolicyEx();
 		selectionPolicy.setDragAllowed(false);
 		installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE, selectionPolicy);
-		// XXX need an SCR to runtime to have another abstract superclass that would let children add reasonable editpolicies
-		// removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
 	}
 
 	/**
@@ -189,14 +193,42 @@ public class OperatorRightConnectorEditPart extends AbstractBorderedShapeEditPar
 	 * @generated
 	 */
 	protected NodeFigure createMainFigure() {
-		NodeFigure figure = createNodePlate();
+		figure = createNodePlate();
 		figure.setLayoutManager(new StackLayout());
 		IFigure shape = createNodeShape();
 		shape.setBorder(null);
 		figure.add(shape);
 		figure.setBorder(null);
+		addRightConnectorLabel();
 		contentPane = setupContentPane(shape);
 		return figure;
+	}
+	
+	public boolean addRightConnectorLabel() {
+		EditPart parentEditPart = this.getParent().getParent().getParent();
+		OperatorImpl operator = (OperatorImpl) ((View) parentEditPart.getModel()).getElement();
+		String outputLabel = getOutputLabel(operator);
+		if (figure != null) {
+			figure.add(new Label(outputLabel + " " + operator.getOutputVariableType().toString() + " "));
+			return true;
+		}
+		return false;
+	}
+
+	private String getOutputLabel(OperatorImpl operator) {
+		List<String> outputLabels = operator.getOutputLabelList();
+		if (outputLabels.size() == 1) {
+			return formatLabel(outputLabels.get(0));
+		} else if (outputLabels.size() > 1) {
+			int rightConnectorIndex = operator.getRightConnectorCount();
+			operator.setRightConnectorCount(rightConnectorIndex + 1);
+			return formatLabel(outputLabels.get(rightConnectorIndex));
+		}
+		return "";
+	}
+	
+	private String formatLabel(String inputLabel) {
+		return " "+inputLabel+" :";
 	}
 
 	/**

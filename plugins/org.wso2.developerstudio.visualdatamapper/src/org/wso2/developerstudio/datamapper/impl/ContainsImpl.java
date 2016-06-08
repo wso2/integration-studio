@@ -30,6 +30,9 @@ public class ContainsImpl extends OperatorImpl implements Contains {
 		getInputVariableType().add(SchemaDataType.STRING);
 		getOutputVariableType().add(SchemaDataType.BOOLEAN);
 		setOperatorType(DataMapperOperatorType.CONTAINS);
+		getInputLabelList().add("Input");
+		getInputLabelList().add("Pattern");
+		getOutputLabelList().add("Result");
 	}
 
 	/**

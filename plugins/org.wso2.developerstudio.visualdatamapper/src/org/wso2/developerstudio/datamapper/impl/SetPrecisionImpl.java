@@ -59,6 +59,8 @@ public class SetPrecisionImpl extends OperatorImpl implements SetPrecision {
 		getOutputVariableType().add(SchemaDataType.INT);
 		getOutputVariableType().add(SchemaDataType.DOUBLE);
 		setOperatorType(DataMapperOperatorType.SET_PRECISION);
+		getInputLabelList().add("In");
+		getOutputLabelList().add("Out");
 	}
 
 	/**

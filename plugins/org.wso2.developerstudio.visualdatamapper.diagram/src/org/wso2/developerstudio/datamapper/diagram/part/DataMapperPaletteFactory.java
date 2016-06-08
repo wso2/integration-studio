@@ -61,12 +61,11 @@ public class DataMapperPaletteFactory {
 	public void fillPalette(PaletteRoot paletteRoot) {
 		paletteRoot.add(createDataMapperLinkGroup());
 		paletteRoot.add(createDataMapperCommonGroup());
-		paletteRoot.add(createDataMapperStringGroup());
 		paletteRoot.add(createDataMapperArithmaticGroup());
 		paletteRoot.add(createDataMapperConditionalGroup());
 		paletteRoot.add(createDataMapperBooleanGroup());
 		paletteRoot.add(createDataMapperArrayGroup());
-
+		paletteRoot.add(createDataMapperStringGroup());
 	}
 
 	private PaletteEntry createDataMapperCommonGroup() {

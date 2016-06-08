@@ -482,7 +482,7 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getOperator_InputVariableType() {
+	public EAttribute getOperator_InputSizeFixed() {
 		return (EAttribute)operatorEClass.getEStructuralFeatures().get(4);
 	}
 
@@ -491,7 +491,7 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getOperator_OutputVariableType() {
+	public EAttribute getOperator_OutputSizeFixed() {
 		return (EAttribute)operatorEClass.getEStructuralFeatures().get(5);
 	}
 
@@ -500,26 +500,8 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getOperator_InputSizeFixed() {
-		return (EAttribute)operatorEClass.getEStructuralFeatures().get(6);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getOperator_OutputSizeFixed() {
-		return (EAttribute)operatorEClass.getEStructuralFeatures().get(7);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EAttribute getOperator_OperatorType() {
-		return (EAttribute)operatorEClass.getEStructuralFeatures().get(8);
+		return (EAttribute)operatorEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
@@ -1189,8 +1171,6 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 		createEAttribute(operatorEClass, OPERATOR__SERIALIZED);
 		createEAttribute(operatorEClass, OPERATOR__DEFAULT_INPUT_CONNECTORS);
 		createEAttribute(operatorEClass, OPERATOR__DEFAULT_OUTPUT_CONNECTORS);
-		createEAttribute(operatorEClass, OPERATOR__INPUT_VARIABLE_TYPE);
-		createEAttribute(operatorEClass, OPERATOR__OUTPUT_VARIABLE_TYPE);
 		createEAttribute(operatorEClass, OPERATOR__INPUT_SIZE_FIXED);
 		createEAttribute(operatorEClass, OPERATOR__OUTPUT_SIZE_FIXED);
 		createEAttribute(operatorEClass, OPERATOR__OPERATOR_TYPE);
@@ -1361,8 +1341,6 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 		initEAttribute(getOperator_Serialized(), ecorePackage.getEBoolean(), "serialized", "false", 0, 1, Operator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getOperator_DefaultInputConnectors(), ecorePackage.getEInt(), "defaultInputConnectors", "0", 0, 1, Operator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getOperator_DefaultOutputConnectors(), ecorePackage.getEInt(), "defaultOutputConnectors", "0", 0, 1, Operator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getOperator_InputVariableType(), this.getSchemaDataType(), "inputVariableType", "STRING", 0, -1, Operator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getOperator_OutputVariableType(), this.getSchemaDataType(), "outputVariableType", "STRING", 0, -1, Operator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getOperator_InputSizeFixed(), ecorePackage.getEBoolean(), "inputSizeFixed", "true", 0, 1, Operator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getOperator_OutputSizeFixed(), ecorePackage.getEBoolean(), "outputSizeFixed", "true", 0, 1, Operator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getOperator_OperatorType(), this.getDataMapperOperatorType(), "operatorType", "OPERATOR", 0, 1, Operator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

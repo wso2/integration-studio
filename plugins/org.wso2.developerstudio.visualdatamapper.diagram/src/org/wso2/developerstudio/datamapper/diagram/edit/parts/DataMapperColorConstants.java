@@ -16,7 +16,6 @@
 
 package org.wso2.developerstudio.datamapper.diagram.edit.parts;
 
-import org.eclipse.draw2d.ColorConstants;
 import org.eclipse.swt.graphics.Color;
 
 public class DataMapperColorConstants {

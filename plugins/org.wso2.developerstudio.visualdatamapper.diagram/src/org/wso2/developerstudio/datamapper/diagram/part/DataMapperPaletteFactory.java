@@ -16,6 +16,7 @@
 
 package org.wso2.developerstudio.datamapper.diagram.part;
 
+import java.net.URL;
 import java.util.Collections;
 import java.util.List;
 
@@ -38,6 +39,8 @@ import org.eclipse.gmf.runtime.emf.type.core.IElementType;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.gmf.tooling.runtime.part.DefaultLinkToolEntry;
 import org.eclipse.gmf.tooling.runtime.part.DefaultNodeToolEntry;
+import org.eclipse.jface.resource.ImageDescriptor;
+import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.wso2.developerstudio.datamapper.PropertyKeyValuePair;
 import org.wso2.developerstudio.datamapper.TreeNode;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.DataMapperLinkEditPart;
@@ -140,8 +143,10 @@ public class DataMapperPaletteFactory {
 		// removing the datamapper link entry in the operator tool palette
 		LinkToolEntry entry = new LinkToolEntry("Data Mapper Link", "Data Mapper Link",
 				Collections.singletonList(DataMapperElementTypes.DataMapperLink_4001));
+		ImageDescriptor mainImgDesc = AbstractUIPlugin.imageDescriptorFromPlugin(
+				"org.wso2.developerstudio.visualdatamapper.diagram", "icons/gmf/greyArrow.png");
 		entry.setId("createDataMapperLink1CreationTool"); //$NON-NLS-1$
-		entry.setSmallIcon(DataMapperElementTypes.getImageDescriptor(DataMapperElementTypes.DataMapperLink_4001));
+		entry.setSmallIcon(mainImgDesc);
 		entry.setLargeIcon(entry.getSmallIcon());
 		return entry;
 	}

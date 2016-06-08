@@ -124,6 +124,39 @@ public class OperatorLeftConnectorEditPart extends AbstractBorderedShapeEditPart
 
 		return false;
 	}
+	
+	/**
+	 * @generated NOT
+	 */
+	protected boolean removeFixedChild(EditPart childEditPart) {
+
+		if (childEditPart instanceof OutNode3EditPart) {
+			getBorderedFigure().getBorderItemContainer().remove(((OutNode3EditPart) childEditPart).getFigure());
+			return true;
+		}
+
+		return false;
+	}
+
+	/**
+	 * @generated NOT
+	 */
+	protected void addChildVisual(EditPart childEditPart, int index) {
+		if (addFixedChild(childEditPart)) {
+			return;
+		}
+		super.addChildVisual(childEditPart, -1);
+	}
+
+	/**
+	 * @generated NOT
+	 */
+	protected void removeChildVisual(EditPart childEditPart) {
+		if (removeFixedChild(childEditPart)) {
+			return;
+		}
+		super.removeChildVisual(childEditPart);
+	}
 
 	/**
 	 * @generated NOT

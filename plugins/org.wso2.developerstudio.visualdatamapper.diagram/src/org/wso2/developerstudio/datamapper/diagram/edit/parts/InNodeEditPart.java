@@ -281,7 +281,6 @@ public class InNodeEditPart extends AbstractInNodeEditPart {
 		 * @generated NOT
 		 */
 		private void createContents() {
-
 			ImageDescriptor mainImgDesc = AbstractUIPlugin.imageDescriptorFromPlugin(
 					"org.wso2.developerstudio.visualdatamapper.diagram", "icons/gmf/blueArrow.png");
 

@@ -484,17 +484,17 @@ public class TreeNodeEditPart extends AbstractBorderedShapeEditPart {
 		EditPart parent = editPart.getParent();
 		List children = parent.getChildren();
 		Iterator iterator = children.iterator();
-		updatConnectors(iterator);
+		updateConnectors(iterator);
 		super.refreshChild((GraphicalEditPart) editPart);
 	}
 
 	/**
-	 * Updats the connectors
+	 * Updates the connectors
 	 * 
 	 * @param iterator
 	 */
 	@SuppressWarnings("rawtypes")
-	private void updatConnectors(Iterator iterator) {
+	private void updateConnectors(Iterator iterator) {
 		while (iterator.hasNext()) {
 			EditPart child = (EditPart) iterator.next();
 			if (addFixedChild(child)) {

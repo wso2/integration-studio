@@ -40,6 +40,7 @@ public class SchemaBuilderWithNamepaces extends SchemaBuilder {
 	private static final String PREFIX = "prefix";
 	private static final String URL = "url";
 	private static final String STRING = "string";
+	private static final String NULL = "null";
 
 	@Override
 	protected JsonSchema addPrimitiveToParent(JsonSchema parent, String id, String value, TypeEnum propertyValueType,
@@ -119,16 +120,20 @@ public class SchemaBuilderWithNamepaces extends SchemaBuilder {
 				String contentKey = contentEntry.getKey();
 				if (contentKey.equals(CONTENT)) {
 					TypeEnum propertyType = RealTypeOf(contentEntry.getValue());
-					JsonObject object = new JsonObject();
-					object.addProperty(TYPE, propertyType.toString().toLowerCase());
-					parent.addCustomObject(VALUE, object);
+					if (!propertyType.toString().toLowerCase().equals(NULL)) {
+						JsonObject object = new JsonObject();
+						object.addProperty(TYPE, propertyType.toString().toLowerCase());
+						parent.addCustomObject(VALUE, object);
+					}
 				}
 			}
 		} else if (valueObject instanceof JsonPrimitive) {
 			TypeEnum propertyType = RealTypeOf(valueObject);
-			JsonObject object = new JsonObject();
-			object.addProperty(TYPE, propertyType.toString().toLowerCase());
-			parent.addCustomObject(VALUE, object);
+			if (!propertyType.toString().toLowerCase().equals(NULL)) {
+				JsonObject object = new JsonObject();
+				object.addProperty(TYPE, propertyType.toString().toLowerCase());
+				parent.addCustomObject(VALUE, object);
+			}
 		}
 
 	}
@@ -147,7 +152,12 @@ public class SchemaBuilderWithNamepaces extends SchemaBuilder {
 			} else if (p.isBoolean()) {
 				return TypeEnum.BOOLEAN;
 			} else if (p.isString()) {
-				return TypeEnum.STRING;
+				String value = p.getAsString();
+				if (StringUtils.isNotEmpty(value)) {
+					return TypeEnum.STRING;
+				} else {
+					return TypeEnum.NULL;
+				}
 			}
 		}
 		return TypeEnum.UNDEFINED;

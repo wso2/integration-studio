@@ -318,6 +318,5 @@ public class OperatorRightContainerEditPart extends ShapeNodeEditPart {
 
 	}
 
-	static final Color THIS_BACK = DataMapperColorConstants.color_white;
 
 }

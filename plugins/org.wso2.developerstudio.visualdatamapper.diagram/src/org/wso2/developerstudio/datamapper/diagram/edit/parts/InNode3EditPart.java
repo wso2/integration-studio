@@ -226,14 +226,6 @@ public class InNode3EditPart extends AbstractInNodeEditPart {
 		}
 	}
 
-	public class EastPointerFigure extends EastPointerShape {
-
-		public EastPointerFigure() {
-
-			this.setBackgroundColor(THIS_BACK);
-			this.setPreferredSize(new Dimension(getMapMode().DPtoLP(12), getMapMode().DPtoLP(10)));
-		}
-	}
 
 	class InNode3Figure extends RectangleFigure {
 		/**
@@ -310,21 +302,21 @@ public class InNode3EditPart extends AbstractInNodeEditPart {
 		 * @generated NOT
 		 */
 		private void createContents() {
-
 			ImageDescriptor mainImgDesc = AbstractUIPlugin.imageDescriptorFromPlugin(
-					"org.wso2.developerstudio.visualdatamapper.diagram", "icons/gmf/black.jpg");
+					"org.wso2.developerstudio.visualdatamapper.diagram", "icons/gmf/greyArrow.png");
 
 			int nodeDimension = 10; // width for connection nodes
 
 			ImageFigure mainImg = new ImageFigure(mainImgDesc.createImage());
 			mainImg.setSize(new Dimension(nodeDimension, nodeDimension));
 			RectangleFigure mainImageRectangle = new RectangleFigure();
-
+			mainImageRectangle.setOutline(false);
 			mainImageRectangle.setBackgroundColor(new Color(null, 255, 255, 255));
 			mainImageRectangle.setPreferredSize(new Dimension(nodeDimension, nodeDimension));
 			mainImageRectangle.add(mainImg);
-			mainImageRectangle.setBackgroundColor(new Color(null, 0, 0, 0));
-			mainImageRectangle.setOpaque(false);
+
+			mainImageRectangle.setFill(false);
+			mainImageRectangle.setOutline(false);
 			this.add(mainImageRectangle);
 			this.setOpaque(false);
 			this.setOutline(false);
@@ -391,6 +383,5 @@ public class InNode3EditPart extends AbstractInNodeEditPart {
 		//		((InNode3Figure) getPrimaryShape()).highlightElementOnSelection();
 	}
 
-	static final Color THIS_BACK = new Color(null, 50, 50, 50);
 
 }

@@ -338,21 +338,21 @@ public class InNode2EditPart extends AbstractInNodeEditPart {
 		 * @generated NOT
 		 */
 		private void createContents() {
-
 			ImageDescriptor mainImgDesc = AbstractUIPlugin.imageDescriptorFromPlugin(
-					"org.wso2.developerstudio.visualdatamapper.diagram", "icons/gmf/black.jpg");
+					"org.wso2.developerstudio.visualdatamapper.diagram", "icons/gmf/greyArrow.png");
 
 			int nodeDimension = 10; // width for connection nodes
 
 			ImageFigure mainImg = new ImageFigure(mainImgDesc.createImage());
 			mainImg.setSize(new Dimension(nodeDimension, nodeDimension));
 			RectangleFigure mainImageRectangle = new RectangleFigure();
-
+			mainImageRectangle.setOutline(false);
 			mainImageRectangle.setBackgroundColor(new Color(null, 255, 255, 255));
 			mainImageRectangle.setPreferredSize(new Dimension(nodeDimension, nodeDimension));
-			mainImageRectangle.setBackgroundColor(new Color(null, 0, 0, 0));
-			mainImageRectangle.setOpaque(false);
 			mainImageRectangle.add(mainImg);
+
+			mainImageRectangle.setFill(false);
+			mainImageRectangle.setOutline(false);
 			this.add(mainImageRectangle);
 			this.setOpaque(false);
 			this.setOutline(false);
@@ -380,6 +380,7 @@ public class InNode2EditPart extends AbstractInNodeEditPart {
 				this.setOutline(false);
 				this.setFill(false);
 			}*/
+		
 		private void highlightParentElem() {
 			IFigure treeFigure = (IFigure) ((DefaultSizeNodeFigure) ((BorderedNodeFigure) getParent().getParent()
 					.getParent()).getChildren().get(0)).getChildren().get(0);

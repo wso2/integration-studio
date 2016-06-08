@@ -16,6 +16,7 @@
 
 package org.wso2.developerstudio.datamapper.diagram.part;
 
+import java.net.URL;
 import java.util.Collections;
 import java.util.List;
 

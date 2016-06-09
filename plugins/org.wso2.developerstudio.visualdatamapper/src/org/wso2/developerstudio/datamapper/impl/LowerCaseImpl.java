@@ -30,6 +30,8 @@ public class LowerCaseImpl extends OperatorImpl implements LowerCase {
 		getInputVariableType().add(SchemaDataType.STRING);
 		getOutputVariableType().add(SchemaDataType.STRING);
 		setOperatorType(DataMapperOperatorType.LOWERCASE);
+		getInputLabelList().add("In");
+		getOutputLabelList().add("Out");
 	}
 
 	/**

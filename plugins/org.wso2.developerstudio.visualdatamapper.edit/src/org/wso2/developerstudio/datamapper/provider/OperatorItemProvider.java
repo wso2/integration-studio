@@ -53,8 +53,6 @@ public class OperatorItemProvider extends DataMapperNodeItemProvider{
 			addSerializedPropertyDescriptor(object);
 			addDefaultInputConnectorsPropertyDescriptor(object);
 			addDefaultOutputConnectorsPropertyDescriptor(object);
-			addInputVariableTypePropertyDescriptor(object);
-			addOutputVariableTypePropertyDescriptor(object);
 			addInputSizeFixedPropertyDescriptor(object);
 			addOutputSizeFixedPropertyDescriptor(object);
 			addOperatorTypePropertyDescriptor(object);
@@ -124,50 +122,6 @@ public class OperatorItemProvider extends DataMapperNodeItemProvider{
 				 false,
 				 false,
 				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Input Variable Type feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addInputVariableTypePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Operator_inputVariableType_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Operator_inputVariableType_feature", "_UI_Operator_type"),
-				 DataMapperPackage.Literals.OPERATOR__INPUT_VARIABLE_TYPE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Output Variable Type feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addOutputVariableTypePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Operator_outputVariableType_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Operator_outputVariableType_feature", "_UI_Operator_type"),
-				 DataMapperPackage.Literals.OPERATOR__OUTPUT_VARIABLE_TYPE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -306,8 +260,6 @@ public class OperatorItemProvider extends DataMapperNodeItemProvider{
 			case DataMapperPackage.OPERATOR__SERIALIZED:
 			case DataMapperPackage.OPERATOR__DEFAULT_INPUT_CONNECTORS:
 			case DataMapperPackage.OPERATOR__DEFAULT_OUTPUT_CONNECTORS:
-			case DataMapperPackage.OPERATOR__INPUT_VARIABLE_TYPE:
-			case DataMapperPackage.OPERATOR__OUTPUT_VARIABLE_TYPE:
 			case DataMapperPackage.OPERATOR__INPUT_SIZE_FIXED:
 			case DataMapperPackage.OPERATOR__OUTPUT_SIZE_FIXED:
 			case DataMapperPackage.OPERATOR__OPERATOR_TYPE:

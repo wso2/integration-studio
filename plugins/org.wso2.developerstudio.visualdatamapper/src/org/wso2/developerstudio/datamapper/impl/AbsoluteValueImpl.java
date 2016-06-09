@@ -31,6 +31,8 @@ public class AbsoluteValueImpl extends OperatorImpl implements AbsoluteValue {
 		getInputVariableType().add(SchemaDataType.INT);
 		getOutputVariableType().add(SchemaDataType.INT);
 		setOperatorType(DataMapperOperatorType.ABSOLUTE);
+		getInputLabelList().add("In");
+		getOutputLabelList().add("Out");
 	}
 
 	/**

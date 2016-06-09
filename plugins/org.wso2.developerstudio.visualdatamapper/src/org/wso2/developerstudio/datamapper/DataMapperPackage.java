@@ -225,31 +225,13 @@ public interface DataMapperPackage extends EPackage {
 	int OPERATOR__DEFAULT_OUTPUT_CONNECTORS = DATA_MAPPER_NODE_FEATURE_COUNT + 3;
 
 	/**
-	 * The feature id for the '<em><b>Input Variable Type</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OPERATOR__INPUT_VARIABLE_TYPE = DATA_MAPPER_NODE_FEATURE_COUNT + 4;
-
-	/**
-	 * The feature id for the '<em><b>Output Variable Type</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OPERATOR__OUTPUT_VARIABLE_TYPE = DATA_MAPPER_NODE_FEATURE_COUNT + 5;
-
-	/**
 	 * The feature id for the '<em><b>Input Size Fixed</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int OPERATOR__INPUT_SIZE_FIXED = DATA_MAPPER_NODE_FEATURE_COUNT + 6;
+	int OPERATOR__INPUT_SIZE_FIXED = DATA_MAPPER_NODE_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>Output Size Fixed</b></em>' attribute.
@@ -258,7 +240,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OPERATOR__OUTPUT_SIZE_FIXED = DATA_MAPPER_NODE_FEATURE_COUNT + 7;
+	int OPERATOR__OUTPUT_SIZE_FIXED = DATA_MAPPER_NODE_FEATURE_COUNT + 5;
 
 	/**
 	 * The feature id for the '<em><b>Operator Type</b></em>' attribute.
@@ -267,7 +249,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OPERATOR__OPERATOR_TYPE = DATA_MAPPER_NODE_FEATURE_COUNT + 8;
+	int OPERATOR__OPERATOR_TYPE = DATA_MAPPER_NODE_FEATURE_COUNT + 6;
 
 	/**
 	 * The number of structural features of the '<em>Operator</em>' class.
@@ -276,7 +258,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OPERATOR_FEATURE_COUNT = DATA_MAPPER_NODE_FEATURE_COUNT + 9;
+	int OPERATOR_FEATURE_COUNT = DATA_MAPPER_NODE_FEATURE_COUNT + 7;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.datamapper.impl.OperatorBasicContainerImpl <em>Operator Basic Container</em>}' class.
@@ -684,24 +666,6 @@ public interface DataMapperPackage extends EPackage {
 	int SUBTRACT__DEFAULT_OUTPUT_CONNECTORS = OPERATOR__DEFAULT_OUTPUT_CONNECTORS;
 
 				/**
-	 * The feature id for the '<em><b>Input Variable Type</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SUBTRACT__INPUT_VARIABLE_TYPE = OPERATOR__INPUT_VARIABLE_TYPE;
-
-				/**
-	 * The feature id for the '<em><b>Output Variable Type</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SUBTRACT__OUTPUT_VARIABLE_TYPE = OPERATOR__OUTPUT_VARIABLE_TYPE;
-
-				/**
 	 * The feature id for the '<em><b>Input Size Fixed</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -897,24 +861,6 @@ public interface DataMapperPackage extends EPackage {
 	int CONCAT__DEFAULT_OUTPUT_CONNECTORS = OPERATOR__DEFAULT_OUTPUT_CONNECTORS;
 
 	/**
-	 * The feature id for the '<em><b>Input Variable Type</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONCAT__INPUT_VARIABLE_TYPE = OPERATOR__INPUT_VARIABLE_TYPE;
-
-	/**
-	 * The feature id for the '<em><b>Output Variable Type</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONCAT__OUTPUT_VARIABLE_TYPE = OPERATOR__OUTPUT_VARIABLE_TYPE;
-
-	/**
 	 * The feature id for the '<em><b>Input Size Fixed</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1007,24 +953,6 @@ public interface DataMapperPackage extends EPackage {
 	int ABSOLUTE_VALUE__DEFAULT_OUTPUT_CONNECTORS = OPERATOR__DEFAULT_OUTPUT_CONNECTORS;
 
 	/**
-	 * The feature id for the '<em><b>Input Variable Type</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSOLUTE_VALUE__INPUT_VARIABLE_TYPE = OPERATOR__INPUT_VARIABLE_TYPE;
-
-	/**
-	 * The feature id for the '<em><b>Output Variable Type</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSOLUTE_VALUE__OUTPUT_VARIABLE_TYPE = OPERATOR__OUTPUT_VARIABLE_TYPE;
-
-	/**
 	 * The feature id for the '<em><b>Input Size Fixed</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1107,24 +1035,6 @@ public interface DataMapperPackage extends EPackage {
 	int EQUAL__DEFAULT_OUTPUT_CONNECTORS = OPERATOR__DEFAULT_OUTPUT_CONNECTORS;
 
 	/**
-	 * The feature id for the '<em><b>Input Variable Type</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EQUAL__INPUT_VARIABLE_TYPE = OPERATOR__INPUT_VARIABLE_TYPE;
-
-	/**
-	 * The feature id for the '<em><b>Output Variable Type</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EQUAL__OUTPUT_VARIABLE_TYPE = OPERATOR__OUTPUT_VARIABLE_TYPE;
-
-	/**
 	 * The feature id for the '<em><b>Input Size Fixed</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1205,24 +1115,6 @@ public interface DataMapperPackage extends EPackage {
 	 * @ordered
 	 */
 	int CONSTANT__DEFAULT_OUTPUT_CONNECTORS = OPERATOR__DEFAULT_OUTPUT_CONNECTORS;
-
-	/**
-	 * The feature id for the '<em><b>Input Variable Type</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONSTANT__INPUT_VARIABLE_TYPE = OPERATOR__INPUT_VARIABLE_TYPE;
-
-	/**
-	 * The feature id for the '<em><b>Output Variable Type</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONSTANT__OUTPUT_VARIABLE_TYPE = OPERATOR__OUTPUT_VARIABLE_TYPE;
 
 	/**
 	 * The feature id for the '<em><b>Input Size Fixed</b></em>' attribute.
@@ -1325,24 +1217,6 @@ public interface DataMapperPackage extends EPackage {
 	int ADD__DEFAULT_OUTPUT_CONNECTORS = OPERATOR__DEFAULT_OUTPUT_CONNECTORS;
 
 	/**
-	 * The feature id for the '<em><b>Input Variable Type</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ADD__INPUT_VARIABLE_TYPE = OPERATOR__INPUT_VARIABLE_TYPE;
-
-	/**
-	 * The feature id for the '<em><b>Output Variable Type</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ADD__OUTPUT_VARIABLE_TYPE = OPERATOR__OUTPUT_VARIABLE_TYPE;
-
-	/**
 	 * The feature id for the '<em><b>Input Size Fixed</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1423,24 +1297,6 @@ public interface DataMapperPackage extends EPackage {
 	 * @ordered
 	 */
 	int DIVIDE__DEFAULT_OUTPUT_CONNECTORS = OPERATOR__DEFAULT_OUTPUT_CONNECTORS;
-
-	/**
-	 * The feature id for the '<em><b>Input Variable Type</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DIVIDE__INPUT_VARIABLE_TYPE = OPERATOR__INPUT_VARIABLE_TYPE;
-
-	/**
-	 * The feature id for the '<em><b>Output Variable Type</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DIVIDE__OUTPUT_VARIABLE_TYPE = OPERATOR__OUTPUT_VARIABLE_TYPE;
 
 	/**
 	 * The feature id for the '<em><b>Input Size Fixed</b></em>' attribute.
@@ -1525,24 +1381,6 @@ public interface DataMapperPackage extends EPackage {
 	int FLOOR__DEFAULT_OUTPUT_CONNECTORS = OPERATOR__DEFAULT_OUTPUT_CONNECTORS;
 
 	/**
-	 * The feature id for the '<em><b>Input Variable Type</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FLOOR__INPUT_VARIABLE_TYPE = OPERATOR__INPUT_VARIABLE_TYPE;
-
-	/**
-	 * The feature id for the '<em><b>Output Variable Type</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FLOOR__OUTPUT_VARIABLE_TYPE = OPERATOR__OUTPUT_VARIABLE_TYPE;
-
-	/**
 	 * The feature id for the '<em><b>Input Size Fixed</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1623,24 +1461,6 @@ public interface DataMapperPackage extends EPackage {
 	 * @ordered
 	 */
 	int ROUND__DEFAULT_OUTPUT_CONNECTORS = OPERATOR__DEFAULT_OUTPUT_CONNECTORS;
-
-	/**
-	 * The feature id for the '<em><b>Input Variable Type</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ROUND__INPUT_VARIABLE_TYPE = OPERATOR__INPUT_VARIABLE_TYPE;
-
-	/**
-	 * The feature id for the '<em><b>Output Variable Type</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ROUND__OUTPUT_VARIABLE_TYPE = OPERATOR__OUTPUT_VARIABLE_TYPE;
 
 	/**
 	 * The feature id for the '<em><b>Input Size Fixed</b></em>' attribute.
@@ -1725,24 +1545,6 @@ public interface DataMapperPackage extends EPackage {
 	int MULTIPLY__DEFAULT_OUTPUT_CONNECTORS = OPERATOR__DEFAULT_OUTPUT_CONNECTORS;
 
 	/**
-	 * The feature id for the '<em><b>Input Variable Type</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MULTIPLY__INPUT_VARIABLE_TYPE = OPERATOR__INPUT_VARIABLE_TYPE;
-
-	/**
-	 * The feature id for the '<em><b>Output Variable Type</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MULTIPLY__OUTPUT_VARIABLE_TYPE = OPERATOR__OUTPUT_VARIABLE_TYPE;
-
-	/**
 	 * The feature id for the '<em><b>Input Size Fixed</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1823,24 +1625,6 @@ public interface DataMapperPackage extends EPackage {
 	 * @ordered
 	 */
 	int SET_PRECISION__DEFAULT_OUTPUT_CONNECTORS = OPERATOR__DEFAULT_OUTPUT_CONNECTORS;
-
-	/**
-	 * The feature id for the '<em><b>Input Variable Type</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SET_PRECISION__INPUT_VARIABLE_TYPE = OPERATOR__INPUT_VARIABLE_TYPE;
-
-	/**
-	 * The feature id for the '<em><b>Output Variable Type</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SET_PRECISION__OUTPUT_VARIABLE_TYPE = OPERATOR__OUTPUT_VARIABLE_TYPE;
 
 	/**
 	 * The feature id for the '<em><b>Input Size Fixed</b></em>' attribute.
@@ -1932,24 +1716,6 @@ public interface DataMapperPackage extends EPackage {
 	 * @ordered
 	 */
 	int SPLIT__DEFAULT_OUTPUT_CONNECTORS = OPERATOR__DEFAULT_OUTPUT_CONNECTORS;
-
-	/**
-	 * The feature id for the '<em><b>Input Variable Type</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SPLIT__INPUT_VARIABLE_TYPE = OPERATOR__INPUT_VARIABLE_TYPE;
-
-	/**
-	 * The feature id for the '<em><b>Output Variable Type</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SPLIT__OUTPUT_VARIABLE_TYPE = OPERATOR__OUTPUT_VARIABLE_TYPE;
 
 	/**
 	 * The feature id for the '<em><b>Input Size Fixed</b></em>' attribute.
@@ -2061,24 +1827,6 @@ public interface DataMapperPackage extends EPackage {
 	int LOWER_CASE__DEFAULT_OUTPUT_CONNECTORS = OPERATOR__DEFAULT_OUTPUT_CONNECTORS;
 
 	/**
-	 * The feature id for the '<em><b>Input Variable Type</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LOWER_CASE__INPUT_VARIABLE_TYPE = OPERATOR__INPUT_VARIABLE_TYPE;
-
-	/**
-	 * The feature id for the '<em><b>Output Variable Type</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LOWER_CASE__OUTPUT_VARIABLE_TYPE = OPERATOR__OUTPUT_VARIABLE_TYPE;
-
-	/**
 	 * The feature id for the '<em><b>Input Size Fixed</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2159,24 +1907,6 @@ public interface DataMapperPackage extends EPackage {
 	 * @ordered
 	 */
 	int CELI__DEFAULT_OUTPUT_CONNECTORS = OPERATOR__DEFAULT_OUTPUT_CONNECTORS;
-
-	/**
-	 * The feature id for the '<em><b>Input Variable Type</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CELI__INPUT_VARIABLE_TYPE = OPERATOR__INPUT_VARIABLE_TYPE;
-
-	/**
-	 * The feature id for the '<em><b>Output Variable Type</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CELI__OUTPUT_VARIABLE_TYPE = OPERATOR__OUTPUT_VARIABLE_TYPE;
 
 	/**
 	 * The feature id for the '<em><b>Input Size Fixed</b></em>' attribute.
@@ -2261,24 +1991,6 @@ public interface DataMapperPackage extends EPackage {
 	int CONTAINS__DEFAULT_OUTPUT_CONNECTORS = OPERATOR__DEFAULT_OUTPUT_CONNECTORS;
 
 	/**
-	 * The feature id for the '<em><b>Input Variable Type</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONTAINS__INPUT_VARIABLE_TYPE = OPERATOR__INPUT_VARIABLE_TYPE;
-
-	/**
-	 * The feature id for the '<em><b>Output Variable Type</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONTAINS__OUTPUT_VARIABLE_TYPE = OPERATOR__OUTPUT_VARIABLE_TYPE;
-
-	/**
 	 * The feature id for the '<em><b>Input Size Fixed</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2359,24 +2071,6 @@ public interface DataMapperPackage extends EPackage {
 	 * @ordered
 	 */
 	int UPPER_CASE__DEFAULT_OUTPUT_CONNECTORS = OPERATOR__DEFAULT_OUTPUT_CONNECTORS;
-
-	/**
-	 * The feature id for the '<em><b>Input Variable Type</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int UPPER_CASE__INPUT_VARIABLE_TYPE = OPERATOR__INPUT_VARIABLE_TYPE;
-
-	/**
-	 * The feature id for the '<em><b>Output Variable Type</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int UPPER_CASE__OUTPUT_VARIABLE_TYPE = OPERATOR__OUTPUT_VARIABLE_TYPE;
 
 	/**
 	 * The feature id for the '<em><b>Input Size Fixed</b></em>' attribute.
@@ -2619,28 +2313,6 @@ public interface DataMapperPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getOperator_DefaultOutputConnectors();
-
-	/**
-	 * Returns the meta object for the attribute list '{@link org.wso2.developerstudio.datamapper.Operator#getInputVariableType <em>Input Variable Type</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute list '<em>Input Variable Type</em>'.
-	 * @see org.wso2.developerstudio.datamapper.Operator#getInputVariableType()
-	 * @see #getOperator()
-	 * @generated
-	 */
-	EAttribute getOperator_InputVariableType();
-
-	/**
-	 * Returns the meta object for the attribute list '{@link org.wso2.developerstudio.datamapper.Operator#getOutputVariableType <em>Output Variable Type</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute list '<em>Output Variable Type</em>'.
-	 * @see org.wso2.developerstudio.datamapper.Operator#getOutputVariableType()
-	 * @see #getOperator()
-	 * @generated
-	 */
-	EAttribute getOperator_OutputVariableType();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.datamapper.Operator#isInputSizeFixed <em>Input Size Fixed</em>}'.
@@ -3548,22 +3220,6 @@ public interface DataMapperPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute OPERATOR__DEFAULT_OUTPUT_CONNECTORS = eINSTANCE.getOperator_DefaultOutputConnectors();
-
-		/**
-		 * The meta object literal for the '<em><b>Input Variable Type</b></em>' attribute list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute OPERATOR__INPUT_VARIABLE_TYPE = eINSTANCE.getOperator_InputVariableType();
-
-		/**
-		 * The meta object literal for the '<em><b>Output Variable Type</b></em>' attribute list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute OPERATOR__OUTPUT_VARIABLE_TYPE = eINSTANCE.getOperator_OutputVariableType();
 
 		/**
 		 * The meta object literal for the '<em><b>Input Size Fixed</b></em>' attribute feature.

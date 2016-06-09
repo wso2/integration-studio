@@ -3,16 +3,16 @@
 package org.wso2.developerstudio.datamapper.impl;
 
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
 import org.wso2.developerstudio.datamapper.DataMapperOperatorType;
 import org.wso2.developerstudio.datamapper.DataMapperPackage;
 import org.wso2.developerstudio.datamapper.Operator;
@@ -31,8 +31,6 @@ import org.wso2.developerstudio.datamapper.SchemaDataType;
  *   <li>{@link org.wso2.developerstudio.datamapper.impl.OperatorImpl#isSerialized <em>Serialized</em>}</li>
  *   <li>{@link org.wso2.developerstudio.datamapper.impl.OperatorImpl#getDefaultInputConnectors <em>Default Input Connectors</em>}</li>
  *   <li>{@link org.wso2.developerstudio.datamapper.impl.OperatorImpl#getDefaultOutputConnectors <em>Default Output Connectors</em>}</li>
- *   <li>{@link org.wso2.developerstudio.datamapper.impl.OperatorImpl#getInputVariableType <em>Input Variable Type</em>}</li>
- *   <li>{@link org.wso2.developerstudio.datamapper.impl.OperatorImpl#getOutputVariableType <em>Output Variable Type</em>}</li>
  *   <li>{@link org.wso2.developerstudio.datamapper.impl.OperatorImpl#isInputSizeFixed <em>Input Size Fixed</em>}</li>
  *   <li>{@link org.wso2.developerstudio.datamapper.impl.OperatorImpl#isOutputSizeFixed <em>Output Size Fixed</em>}</li>
  *   <li>{@link org.wso2.developerstudio.datamapper.impl.OperatorImpl#getOperatorType <em>Operator Type</em>}</li>
@@ -41,6 +39,27 @@ import org.wso2.developerstudio.datamapper.SchemaDataType;
  * @generated
  */
 public class OperatorImpl extends DataMapperNodeImpl implements Operator {
+	
+	/**
+	 * This list holds the label text for input connector
+	 */
+	protected List<String> inputLabelList;
+	
+	/**
+	 * This list holds the label text for output connector
+	 */
+	protected List<String> outputLabelList;
+	
+	/**
+	 * Number of left connectors in the operator
+	 */
+	protected int leftConnectorCount;
+	
+	/**
+	 * Number of right connectors in the operator
+	 */
+	protected int rightConnectorCount;
+	
 	/**
 	 * The cached value of the '{@link #getBasicContainer() <em>Basic Container</em>}' containment reference.
 	 * <!-- begin-user-doc -->
@@ -115,20 +134,20 @@ public class OperatorImpl extends DataMapperNodeImpl implements Operator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getInputVariableType()
-	 * @generated
+	 * @generated NOT
 	 * @ordered
 	 */
-	protected EList<SchemaDataType> inputVariableType;
+	protected Set<SchemaDataType> inputVariableType;
 
 	/**
 	 * The cached value of the '{@link #getOutputVariableType() <em>Output Variable Type</em>}' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getOutputVariableType()
-	 * @generated
+	 * @generated NOT
 	 * @ordered
 	 */
-	protected EList<SchemaDataType> outputVariableType;
+	protected Set<SchemaDataType> outputVariableType;
 
 	/**
 	 * The default value of the '{@link #isInputSizeFixed() <em>Input Size Fixed</em>}' attribute.
@@ -244,6 +263,22 @@ public class OperatorImpl extends DataMapperNodeImpl implements Operator {
     
 	protected OperatorImpl() {
 		super();
+	}
+	
+	public int getLeftConnectorCount() {
+		return leftConnectorCount;
+	}
+
+	public void setLeftConnectorCount(int leftConnectorCount) {
+		this.leftConnectorCount = leftConnectorCount;
+	}
+
+	public int getRightConnectorCount() {
+		return rightConnectorCount;
+	}
+
+	public void setRightConnectorCount(int rightConnectorCount) {
+		this.rightConnectorCount = rightConnectorCount;
 	}
 
 	/**
@@ -365,11 +400,11 @@ public class OperatorImpl extends DataMapperNodeImpl implements Operator {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
-	public EList<SchemaDataType> getInputVariableType() {
+	public Set<SchemaDataType> getInputVariableType() {
 		if (inputVariableType == null) {
-			inputVariableType = new EDataTypeUniqueEList<SchemaDataType>(SchemaDataType.class, this, DataMapperPackage.OPERATOR__INPUT_VARIABLE_TYPE);
+			inputVariableType = new HashSet<>();
 		}
 		return inputVariableType;
 	}
@@ -377,13 +412,27 @@ public class OperatorImpl extends DataMapperNodeImpl implements Operator {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
-	public EList<SchemaDataType> getOutputVariableType() {
+	public Set<SchemaDataType> getOutputVariableType() {
 		if (outputVariableType == null) {
-			outputVariableType = new EDataTypeUniqueEList<SchemaDataType>(SchemaDataType.class, this, DataMapperPackage.OPERATOR__OUTPUT_VARIABLE_TYPE);
+			outputVariableType = new HashSet<>();
 		}
 		return outputVariableType;
+	}
+	
+	public List<String> getInputLabelList() {
+		if (inputLabelList == null) {
+			inputLabelList = new ArrayList<>();
+		}
+		return inputLabelList;
+	}
+
+	public List<String> getOutputLabelList() {
+		if (outputLabelList == null) {
+			outputLabelList = new ArrayList<>();
+		}
+		return outputLabelList;
 	}
 
 	/**
@@ -479,10 +528,6 @@ public class OperatorImpl extends DataMapperNodeImpl implements Operator {
 				return getDefaultInputConnectors();
 			case DataMapperPackage.OPERATOR__DEFAULT_OUTPUT_CONNECTORS:
 				return getDefaultOutputConnectors();
-			case DataMapperPackage.OPERATOR__INPUT_VARIABLE_TYPE:
-				return getInputVariableType();
-			case DataMapperPackage.OPERATOR__OUTPUT_VARIABLE_TYPE:
-				return getOutputVariableType();
 			case DataMapperPackage.OPERATOR__INPUT_SIZE_FIXED:
 				return isInputSizeFixed();
 			case DataMapperPackage.OPERATOR__OUTPUT_SIZE_FIXED:
@@ -513,14 +558,6 @@ public class OperatorImpl extends DataMapperNodeImpl implements Operator {
 				return;
 			case DataMapperPackage.OPERATOR__DEFAULT_OUTPUT_CONNECTORS:
 				setDefaultOutputConnectors((Integer)newValue);
-				return;
-			case DataMapperPackage.OPERATOR__INPUT_VARIABLE_TYPE:
-				getInputVariableType().clear();
-				getInputVariableType().addAll((Collection<? extends SchemaDataType>)newValue);
-				return;
-			case DataMapperPackage.OPERATOR__OUTPUT_VARIABLE_TYPE:
-				getOutputVariableType().clear();
-				getOutputVariableType().addAll((Collection<? extends SchemaDataType>)newValue);
 				return;
 			case DataMapperPackage.OPERATOR__INPUT_SIZE_FIXED:
 				setInputSizeFixed((Boolean)newValue);
@@ -555,12 +592,6 @@ public class OperatorImpl extends DataMapperNodeImpl implements Operator {
 			case DataMapperPackage.OPERATOR__DEFAULT_OUTPUT_CONNECTORS:
 				setDefaultOutputConnectors(DEFAULT_OUTPUT_CONNECTORS_EDEFAULT);
 				return;
-			case DataMapperPackage.OPERATOR__INPUT_VARIABLE_TYPE:
-				getInputVariableType().clear();
-				return;
-			case DataMapperPackage.OPERATOR__OUTPUT_VARIABLE_TYPE:
-				getOutputVariableType().clear();
-				return;
 			case DataMapperPackage.OPERATOR__INPUT_SIZE_FIXED:
 				setInputSizeFixed(INPUT_SIZE_FIXED_EDEFAULT);
 				return;
@@ -590,10 +621,6 @@ public class OperatorImpl extends DataMapperNodeImpl implements Operator {
 				return defaultInputConnectors != DEFAULT_INPUT_CONNECTORS_EDEFAULT;
 			case DataMapperPackage.OPERATOR__DEFAULT_OUTPUT_CONNECTORS:
 				return defaultOutputConnectors != DEFAULT_OUTPUT_CONNECTORS_EDEFAULT;
-			case DataMapperPackage.OPERATOR__INPUT_VARIABLE_TYPE:
-				return inputVariableType != null && !inputVariableType.isEmpty();
-			case DataMapperPackage.OPERATOR__OUTPUT_VARIABLE_TYPE:
-				return outputVariableType != null && !outputVariableType.isEmpty();
 			case DataMapperPackage.OPERATOR__INPUT_SIZE_FIXED:
 				return inputSizeFixed != INPUT_SIZE_FIXED_EDEFAULT;
 			case DataMapperPackage.OPERATOR__OUTPUT_SIZE_FIXED:
@@ -620,10 +647,6 @@ public class OperatorImpl extends DataMapperNodeImpl implements Operator {
 		result.append(defaultInputConnectors);
 		result.append(", defaultOutputConnectors: ");
 		result.append(defaultOutputConnectors);
-		result.append(", inputVariableType: ");
-		result.append(inputVariableType);
-		result.append(", outputVariableType: ");
-		result.append(outputVariableType);
 		result.append(", inputSizeFixed: ");
 		result.append(inputSizeFixed);
 		result.append(", outputSizeFixed: ");

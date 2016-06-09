@@ -64,8 +64,6 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataMapper.ecore#//Operator/serialized"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataMapper.ecore#//Operator/defaultInputConnectors"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataMapper.ecore#//Operator/defaultOutputConnectors"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataMapper.ecore#//Operator/inputVariableType"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataMapper.ecore#//Operator/outputVariableType"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataMapper.ecore#//Operator/inputSizeFixed"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataMapper.ecore#//Operator/outputSizeFixed"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataMapper.ecore#//Operator/operatorType"/>

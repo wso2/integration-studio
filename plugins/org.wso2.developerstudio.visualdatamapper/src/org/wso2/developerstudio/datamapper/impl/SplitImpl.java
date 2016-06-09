@@ -96,6 +96,8 @@ public class SplitImpl extends OperatorImpl implements Split {
 		getInputVariableType().add(SchemaDataType.STRING);
 		getOutputVariableType().add(SchemaDataType.STRING);
 		setOperatorType(DataMapperOperatorType.SPLIT);
+		getInputLabelList().add("In");
+		getOutputLabelList().add("Out");
 	}
 
 	/**

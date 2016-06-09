@@ -57,6 +57,8 @@ public class ConcatImpl extends OperatorImpl implements Concat {
 		getInputVariableType().add(SchemaDataType.STRING);
 		getOutputVariableType().add(SchemaDataType.STRING);
 		setOperatorType(DataMapperOperatorType.CONCAT);
+		getInputLabelList().add("In");
+		getOutputLabelList().add("Out");
 	}
 	
 	/**

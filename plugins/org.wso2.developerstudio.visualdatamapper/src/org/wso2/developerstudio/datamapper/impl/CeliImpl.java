@@ -32,6 +32,8 @@ public class CeliImpl extends OperatorImpl implements Celi {
 		getOutputVariableType().add(SchemaDataType.INT);
 		getOutputVariableType().add(SchemaDataType.DOUBLE);
 		setOperatorType(DataMapperOperatorType.CEILING);
+		getInputLabelList().add("In");
+		getOutputLabelList().add("Out");
 	}
 
 	/**

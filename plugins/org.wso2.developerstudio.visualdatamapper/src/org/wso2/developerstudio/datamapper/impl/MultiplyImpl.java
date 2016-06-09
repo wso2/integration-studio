@@ -32,6 +32,8 @@ public class MultiplyImpl extends OperatorImpl implements Multiply {
 		getOutputVariableType().add(SchemaDataType.INT);
 		getOutputVariableType().add(SchemaDataType.DOUBLE);
 		setOperatorType(DataMapperOperatorType.MULTIPLY);
+		getInputLabelList().add("In");
+		getOutputLabelList().add("Out");
 	}
 
 	/**

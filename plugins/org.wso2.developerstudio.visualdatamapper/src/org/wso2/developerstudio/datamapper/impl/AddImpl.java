@@ -32,6 +32,8 @@ public class AddImpl extends OperatorImpl implements Add {
 		getOutputVariableType().add(SchemaDataType.INT);
 		getOutputVariableType().add(SchemaDataType.DOUBLE);
 		setOperatorType(DataMapperOperatorType.ADD);
+		getInputLabelList().add("In");
+		getOutputLabelList().add("Out");
 	}
 
 	/**

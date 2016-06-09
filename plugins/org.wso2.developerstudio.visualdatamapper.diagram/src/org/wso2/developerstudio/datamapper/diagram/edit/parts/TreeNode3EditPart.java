@@ -597,11 +597,14 @@ public class TreeNode3EditPart extends AbstractBorderedShapeEditPart {
 	 */
 	public class TreeNodeFigure extends RectangleFigure {
 
-		private static final String ELEMENT_ICON = "icons/gmf/symbol_element_of.gif";
-		private static final String ARRAY_ICON = "icons/gmf/arrays.jpg";
-		private static final String OBJECT_ICON = "icons/gmf/object.jpg";
-		private static final String ATTRIBUTE_ICON = "icons/gmf/AttributeIcon.png";
-		private static final String NULLABLE_OBJECT_ICON = "icons/gmf/blueArrow.png";
+		private static final String ELEMENT_ICON = "icons/gmf/element.png";
+		private static final String ATTRIBUTE_ICON = "icons/gmf/attribute.png";
+		private static final String ARRAY_ICON = "icons/gmf/array.png";
+		private static final String OBJECT_ICON = "icons/gmf/object.png";
+		private static final String NULLABLE_ELEMENT_ICON = "icons/gmf/element-null.png";
+		private static final String NULLABLE_ATTRIBUTE_ICON = "icons/gmf/attribute-null.png";
+		private static final String NULLABLE_ARRAY_ICON = "icons/gmf/array-null.png";
+		private static final String NULLABLE_OBJECT_ICON = "icons/gmf/object-null.png";
 		private static final String ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM = "org.wso2.developerstudio.visualdatamapper.diagram";
 		private static final String JSON_SCHEMA_TYPE = "type";
 		private static final String JSON_SCHEMA_ARRAY = "array";
@@ -662,7 +665,7 @@ public class TreeNode3EditPart extends AbstractBorderedShapeEditPart {
 			figure2.setBorder(null);
 			figure2.setOpaque(true);
 
-			ImageDescriptor mainImgDescCollapse = AbstractUIPlugin
+			ImageDescriptor elementImgDescCollapse = AbstractUIPlugin
 					.imageDescriptorFromPlugin(ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM, ELEMENT_ICON);// plus
 
 			ImageDescriptor attributeImgDesc = AbstractUIPlugin
@@ -674,10 +677,16 @@ public class TreeNode3EditPart extends AbstractBorderedShapeEditPart {
 			ImageDescriptor objectImgDesc = AbstractUIPlugin
 					.imageDescriptorFromPlugin(ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM, OBJECT_ICON);
 			
+			ImageDescriptor nullableElementImgDesc = AbstractUIPlugin
+					.imageDescriptorFromPlugin(ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM, NULLABLE_ELEMENT_ICON);
+			ImageDescriptor nullableAttributeImgDesc = AbstractUIPlugin
+					.imageDescriptorFromPlugin(ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM, NULLABLE_ATTRIBUTE_ICON);
 			ImageDescriptor nullableObjectImgDesc = AbstractUIPlugin
 					.imageDescriptorFromPlugin(ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM, NULLABLE_OBJECT_ICON);
+			ImageDescriptor nullableArrayImgDesc = AbstractUIPlugin
+					.imageDescriptorFromPlugin(ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM, NULLABLE_ARRAY_ICON);
 
-			final ImageFigure mainImg = new ImageFigure(mainImgDescCollapse.createImage());
+			final ImageFigure mainImg = new ImageFigure(elementImgDescCollapse.createImage());
 			mainImg.setSize(new Dimension(10, 8));
 			ImageFigure attributeImg = new ImageFigure(attributeImgDesc.createImage()); // attribute
 																						// symbole
@@ -696,7 +705,19 @@ public class TreeNode3EditPart extends AbstractBorderedShapeEditPart {
 			// symbole
 			// figure
 			nullableObjectImg.setSize(new Dimension(10, 8));
-
+			
+			ImageFigure nullableArrayImg = new ImageFigure(nullableArrayImgDesc.createImage()); // object
+			// symbole
+			// figure
+			nullableArrayImg.setSize(new Dimension(10, 8));
+			ImageFigure nullableAttributeImg = new ImageFigure(nullableAttributeImgDesc.createImage()); // object
+			// symbole
+			// figure
+			nullableAttributeImg.setSize(new Dimension(10, 8));
+			ImageFigure nullableElementImg = new ImageFigure(nullableElementImgDesc.createImage()); // object
+			// symbole
+			// figure
+			nullableElementImg.setSize(new Dimension(10, 8));
 
 			RectangleFigure mainImageRectangle = new RectangleFigure();
 
@@ -732,6 +753,27 @@ public class TreeNode3EditPart extends AbstractBorderedShapeEditPart {
 			nullableObjectImageRectangle.setPreferredSize(new Dimension(10, 7));
 			nullableObjectImageRectangle.add(nullableObjectImg);
 			nullableObjectImageRectangle.setBorder(null);
+			
+			RectangleFigure nullableArrayImageRectangle = new RectangleFigure();
+
+			nullableArrayImageRectangle.setBackgroundColor(new Color(null, 255, 255, 255));
+			nullableArrayImageRectangle.setPreferredSize(new Dimension(10, 7));
+			nullableArrayImageRectangle.add(nullableArrayImg);
+			nullableArrayImageRectangle.setBorder(null);
+			
+			RectangleFigure nullableAttributeImageRectangle = new RectangleFigure();
+
+			nullableAttributeImageRectangle.setBackgroundColor(new Color(null, 255, 255, 255));
+			nullableAttributeImageRectangle.setPreferredSize(new Dimension(10, 7));
+			nullableAttributeImageRectangle.add(nullableAttributeImg);
+			nullableAttributeImageRectangle.setBorder(null);
+			
+			RectangleFigure nullableElementImageRectangle = new RectangleFigure();
+
+			nullableElementImageRectangle.setBackgroundColor(new Color(null, 255, 255, 255));
+			nullableElementImageRectangle.setPreferredSize(new Dimension(10, 7));
+			nullableElementImageRectangle.add(nullableElementImg);
+			nullableElementImageRectangle.setBorder(null);
 
 			fFigureTreeNodeNameFigure = new WrappingLabel();
 
@@ -768,13 +810,13 @@ public class TreeNode3EditPart extends AbstractBorderedShapeEditPart {
 			final Label nodeLabel = new Label();
 			if (StringUtils.isNotEmpty(name) && name.startsWith(PREFIX)) {
 				if (nullableValue.equals(TRUE)) {
-					nodeLabel.setIcon(nullableObjectImg.getImage());
+					nodeLabel.setIcon(nullableAttributeImg.getImage());
 				} else if (nullableValue.equals(FALSE)) {
 					nodeLabel.setIcon(attributeImg.getImage());
 				}
 			} else if (type != null && type.equals(JSON_SCHEMA_ARRAY)) {
 				if (nullableValue.equals(TRUE)) {
-					nodeLabel.setIcon(nullableObjectImg.getImage());
+					nodeLabel.setIcon(nullableArrayImg.getImage());
 				} else if (nullableValue.equals(FALSE)) {
 					nodeLabel.setIcon(arrayImg.getImage());
 				}
@@ -786,7 +828,7 @@ public class TreeNode3EditPart extends AbstractBorderedShapeEditPart {
 				}
 			} else {
 				if (nullableValue.equals(TRUE)) {
-					nodeLabel.setIcon(nullableObjectImg.getImage());
+					nodeLabel.setIcon(nullableElementImg.getImage());
 				} else if (nullableValue.equals(FALSE)) {
 					nodeLabel.setIcon(mainImg.getImage());
 				}
@@ -976,8 +1018,14 @@ public class TreeNode3EditPart extends AbstractBorderedShapeEditPart {
 					.imageDescriptorFromPlugin(ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM, ARRAY_ICON);
 			ImageDescriptor objectImgDesc = AbstractUIPlugin
 					.imageDescriptorFromPlugin(ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM, OBJECT_ICON);
+			ImageDescriptor nullableElementImgDesc = AbstractUIPlugin
+					.imageDescriptorFromPlugin(ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM, NULLABLE_ELEMENT_ICON);
+			ImageDescriptor nullableAttributeImgDesc = AbstractUIPlugin
+					.imageDescriptorFromPlugin(ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM, NULLABLE_ATTRIBUTE_ICON);
 			ImageDescriptor nullableObjectImgDesc = AbstractUIPlugin
 					.imageDescriptorFromPlugin(ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM, NULLABLE_OBJECT_ICON);
+			ImageDescriptor nullableArrayImgDesc = AbstractUIPlugin
+					.imageDescriptorFromPlugin(ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM, NULLABLE_ARRAY_ICON);
 
 			final ImageFigure mainImg = new ImageFigure(mainImgDescCollapse.createImage());
 			mainImg.setSize(new Dimension(10, 8));
@@ -1002,6 +1050,18 @@ public class TreeNode3EditPart extends AbstractBorderedShapeEditPart {
 			// figure
 			nullableObjectImg.setSize(new Dimension(10, 8));
 			
+			ImageFigure nullableArrayImg = new ImageFigure(nullableArrayImgDesc.createImage()); // object
+			// symbole
+			// figure
+			nullableArrayImg.setSize(new Dimension(10, 8));
+			ImageFigure nullableAttributeImg = new ImageFigure(nullableAttributeImgDesc.createImage()); // object
+			// symbole
+			// figure
+			nullableAttributeImg.setSize(new Dimension(10, 8));
+			ImageFigure nullableElementImg = new ImageFigure(nullableElementImgDesc.createImage()); // object
+			// symbole
+			// figure
+			nullableElementImg.setSize(new Dimension(10, 8));
 
 			Label nodeLabel = new Label();
 			
@@ -1023,13 +1083,13 @@ public class TreeNode3EditPart extends AbstractBorderedShapeEditPart {
 			}
 			if (StringUtils.isNotEmpty(name) && name.startsWith(PREFIX)) {
 				if (nullableValue.equals(TRUE)) {
-					nodeLabel.setIcon(nullableObjectImg.getImage());
+					nodeLabel.setIcon(nullableAttributeImg.getImage());
 				} else if (nullableValue.equals(FALSE)) {
 					nodeLabel.setIcon(attributeImg.getImage());
 				}
 			} else if (type != null && type.equals(JSON_SCHEMA_ARRAY)) {
 				if (nullableValue.equals(TRUE)) {
-					nodeLabel.setIcon(nullableObjectImg.getImage());
+					nodeLabel.setIcon(nullableArrayImg.getImage());
 				} else if (nullableValue.equals(FALSE)) {
 					nodeLabel.setIcon(arrayImg.getImage());
 				}
@@ -1041,7 +1101,7 @@ public class TreeNode3EditPart extends AbstractBorderedShapeEditPart {
 				}
 			} else {
 				if (nullableValue.equals(TRUE)) {
-					nodeLabel.setIcon(nullableObjectImg.getImage());
+					nodeLabel.setIcon(nullableElementImg.getImage());
 				} else if (nullableValue.equals(FALSE)) {
 					nodeLabel.setIcon(mainImg.getImage());
 				}

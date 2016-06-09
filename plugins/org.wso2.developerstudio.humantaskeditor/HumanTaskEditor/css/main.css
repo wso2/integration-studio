@@ -72,3 +72,7 @@ a.ui-button:active,
 .list-group-item .control-label {
     font-weight: normal;
 }
+
+.sectionHeader {
+  cursor:pointer;
+}

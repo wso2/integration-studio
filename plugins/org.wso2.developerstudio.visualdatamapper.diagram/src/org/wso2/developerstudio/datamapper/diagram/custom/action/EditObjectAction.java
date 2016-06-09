@@ -27,7 +27,6 @@ import java.util.regex.Pattern;
 
 import org.apache.commons.lang.StringUtils;
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -38,7 +37,6 @@ import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.common.ui.action.AbstractActionHandler;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart;
 import org.eclipse.gmf.runtime.notation.Node;
-import org.eclipse.gmf.runtime.notation.impl.DiagramImpl;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
@@ -47,17 +45,12 @@ import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.datamapper.DataMapperFactory;
 import org.wso2.developerstudio.datamapper.DataMapperPackage;
-import org.wso2.developerstudio.datamapper.DataMapperRoot;
 import org.wso2.developerstudio.datamapper.PropertyKeyValuePair;
 import org.wso2.developerstudio.datamapper.TreeNode;
 import org.wso2.developerstudio.datamapper.diagram.custom.util.AddNewObjectDialog;
-import org.wso2.developerstudio.datamapper.diagram.edit.parts.DataMapperRootEditPart;
-import org.wso2.developerstudio.datamapper.diagram.edit.parts.InputEditPart;
-import org.wso2.developerstudio.datamapper.diagram.edit.parts.OutputEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.TreeNode2EditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.TreeNode3EditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.TreeNodeEditPart;
-import org.wso2.developerstudio.datamapper.impl.TreeNodeImpl;
 import org.wso2.developerstudio.eclipse.registry.core.interfaces.IRegistryFile;
 
 public class EditObjectAction extends AbstractActionHandler {
@@ -88,7 +81,6 @@ public class EditObjectAction extends AbstractActionHandler {
 	private static final String TRUE = "true";
 	private static final String FALSE = "false";
 
-
 	private String title = null;
 	private String schemaType = null;
 	private String id = null;
@@ -106,6 +98,7 @@ public class EditObjectAction extends AbstractActionHandler {
 	private String nullableValue = null;
 	private static final String NAMESPACE_PREFIX = "prefix";
 	private static final String NAMESPACE_URL = "url";
+	boolean hasIdentifier = false;
 
 	public EditObjectAction(IWorkbenchPart workbenchPart) {
 		super(workbenchPart);
@@ -158,7 +151,7 @@ public class EditObjectAction extends AbstractActionHandler {
 			schemaValue = setProperties(selectedNode, JSON_SCHEMA_SCHEMA_VALUE);
 			value = setProperties(selectedNode, JSON_SCHEMA_OBJECT_VALUE_TYPE);
 			if (valueofElementIdentifier != null) {
-				String[] identifier = valueofElementIdentifier[1].split("=");
+				String[] identifier = valueofElementIdentifier[1].trim().split("=");
 				identifierType = identifier[0];
 				identifierValue = identifier[1];
 			}
@@ -174,13 +167,13 @@ public class EditObjectAction extends AbstractActionHandler {
 				newNamespace = formatedNamespace.substring(1, formatedNamespace.toString().length() - 1);
 			}
 			nullableValue = setProperties(selectedNode, JSON_SCHEMA_NULLABLE);
-			if(nullableValue.equals(TRUE)){
+			if (nullableValue.equals(TRUE)) {
 				isNullable = true;
-			}else{
+			} else {
 				isNullable = false;
 			}
 			openEditRecordDialog(selectedNode, name, schemaType, id, required, schemaValue, newNamespace, value,
-					identifierType, identifierValue, identifierURL,isNullable);
+					identifierType, identifierValue, identifierURL, isNullable);
 
 		}
 	}
@@ -240,14 +233,42 @@ public class EditObjectAction extends AbstractActionHandler {
 	 * 
 	 * @param selectedElem
 	 * @param map
+	 * @param treeNodeChild
+	 * @param newValueMap
 	 */
-	private void reflectChanges(TreeNode selectedNode, HashMap<String, String> map) {
+	private void reflectChanges(TreeNode selectedNode, HashMap<String, String> map, TreeNode treeNodeChild,
+			HashMap<String, String> newValueMap) {
 
-		@SuppressWarnings("rawtypes")
-		Iterator entries = map.entrySet().iterator();
+		// Updates the root element
 		executeRemoveCommand(selectedNode);
 		renameTitle(map);
+		recreateTheTree(selectedNode, map);
 
+		// Adds the new child to the root
+		if (treeNodeChild != null) {
+			executeAddCommandForChild(selectedNode, treeNodeChild);
+			// removes the existing properties of the child node
+			executeRemoveCommand(treeNodeChild);
+		}
+
+		// Updates the child element
+		if (newValueMap.size() > 0) {
+			recreateTheTree(treeNodeChild, newValueMap);
+		}
+
+		updateConnector(map);
+
+	}
+
+	/**
+	 * Creates the tree by adding properties
+	 * 
+	 * @param selectedNode
+	 * @param map
+	 */
+	private void recreateTheTree(TreeNode selectedNode, HashMap<String, String> map) {
+		@SuppressWarnings("rawtypes")
+		Iterator entries = map.entrySet().iterator();
 		while (entries.hasNext()) {
 
 			@SuppressWarnings("rawtypes")
@@ -262,27 +283,39 @@ public class EditObjectAction extends AbstractActionHandler {
 				executeAddCommand(selectedNode, pair);
 			}
 		}
+	}
 
-		updateConnector(map);
-
+	/**
+	 * Executes the add cmd for child
+	 * 
+	 * @param selectedNode
+	 * @param treeNodeChild
+	 */
+	private void executeAddCommandForChild(TreeNode selectedNode, TreeNode treeNodeChild) {
+		AddCommand addCmd = new AddCommand(((GraphicalEditPart) selectedEP).getEditingDomain(), selectedNode,
+				DataMapperPackage.Literals.TREE_NODE__NODE, treeNodeChild, 0);
+		if (addCmd.canExecute()) {
+			((GraphicalEditPart) selectedEP).getEditingDomain().getCommandStack().execute(addCmd);
+		}
 	}
 
 	/**
 	 * Updates the connector
-	 * @param map 
+	 * 
+	 * @param map
 	 */
 	private void updateConnector(HashMap<String, String> map) {
 		if (getSelectedEditPart() instanceof TreeNodeEditPart) {
 			((TreeNodeEditPart) getSelectedEditPart()).addFixedChildToNodes(getSelectedEditPart());
-			((TreeNodeEditPart)getSelectedEditPart()).recreateContent(map.get(JSON_SCHEMA_TITLE),
+			((TreeNodeEditPart) getSelectedEditPart()).recreateContent(map.get(JSON_SCHEMA_TITLE),
 					map.get(JSON_SCHEMA_TYPE));
 		} else if (getSelectedEditPart() instanceof TreeNode2EditPart) {
 			((TreeNode2EditPart) getSelectedEditPart()).addFixedChildToNodes(getSelectedEditPart());
-			((TreeNode2EditPart)getSelectedEditPart()).recreateContent(map.get(JSON_SCHEMA_TITLE),
+			((TreeNode2EditPart) getSelectedEditPart()).recreateContent(map.get(JSON_SCHEMA_TITLE),
 					map.get(JSON_SCHEMA_TYPE));
 		} else if (getSelectedEditPart() instanceof TreeNode3EditPart) {
 			((TreeNode3EditPart) getSelectedEditPart()).addFixedChildToNodes(getSelectedEditPart());
-			((TreeNode3EditPart)getSelectedEditPart()).recreateContent(map.get(JSON_SCHEMA_TITLE),
+			((TreeNode3EditPart) getSelectedEditPart()).recreateContent(map.get(JSON_SCHEMA_TITLE),
 					map.get(JSON_SCHEMA_TYPE));
 		}
 	}
@@ -367,7 +400,7 @@ public class EditObjectAction extends AbstractActionHandler {
 	 *            required
 	 * @param schemaValue
 	 *            schema value
-	 * @param isNullable2 
+	 * @param isNullable2
 	 * @param identifierValue2
 	 * @param identifierType2
 	 */
@@ -380,11 +413,12 @@ public class EditObjectAction extends AbstractActionHandler {
 		editTypeDialog.create();
 		editTypeDialog.setTypeWhenEditing(schemaType);
 		editTypeDialog.setValues(title, schemaType, id, required, schemaValue, namespaces, value, identifierType,
-				identifierValue, identifierURL,isNullable);
+				identifierValue, identifierURL, isNullable);
 		editTypeDialog.open();
 
 		if (editTypeDialog.getOkValue()) {
 			HashMap<String, String> valueMap = new HashMap<String, String>();
+			HashMap<String, String> newValueMap = new HashMap<String, String>();
 
 			if (StringUtils.isNotEmpty(editTypeDialog.getTitle())) {
 				if (StringUtils.isNotEmpty(editTypeDialog.getNamespaces())) {
@@ -440,18 +474,34 @@ public class EditObjectAction extends AbstractActionHandler {
 				valueMap.put(JSON_SCHEMA_OBJECT_ELEMENT_IDENTIFIERS_URL, identifierNamespace);
 			}
 
-			if(editTypeDialog.getNullable()){
+			if (editTypeDialog.getNullable()) {
 				valueMap.put(JSON_SCHEMA_NULLABLE, TRUE);
-			}else{
+			} else {
 				valueMap.put(JSON_SCHEMA_NULLABLE, FALSE);
 			}
+
+			TreeNode newChild = null;
+			// Check for element identifiers
+			TreeNode treeNodeChild = getChildTreeNode(identifierType, selectedNode);
+
+			if (hasIdentifier && treeNodeChild != null) {
+				removeTreeNode(selectedNode, treeNodeChild);
+				// Create a new node for element identifiers
+				newChild = DataMapperFactory.eINSTANCE.createTreeNode();
+				hasIdentifier = false;
+			} else {
+				// Create a new node for element identifiers
+				newChild = DataMapperFactory.eINSTANCE.createTreeNode();
+			}
+
 			if (StringUtils.isNotEmpty(editTypeDialog.getIdentifierType())
 					&& StringUtils.isNotEmpty(editTypeDialog.getIdentifierValue())) {
+
 				String fullName = editTypeDialog.getIdentifierType() + "=" + editTypeDialog.getIdentifierValue();
 				valueMap.put(JSON_SCHEMA_TITLE, editTypeDialog.getTitle() + ", " + fullName);
-				TreeNode treeNodeChild = DataMapperFactory.eINSTANCE.createTreeNode();
-				treeNodeChild.setName(PREFIX + editTypeDialog.getIdentifierType());
-				treeNodeChild.setLevel(selectedNode.getLevel() + 1);
+
+				newChild.setName(PREFIX + editTypeDialog.getIdentifierType());
+				newChild.setLevel(selectedNode.getLevel() + 1);
 				String[] identifierArray = null;
 				String identifierPrefix = null;
 				if (editTypeDialog.getIdentifierType().contains(":")) {
@@ -462,15 +512,54 @@ public class EditObjectAction extends AbstractActionHandler {
 				}
 				// Sets the attribute ID and type to be used in serialization of
 				// the attributes
-				valueMap.put(JSON_SCHEMA_ADDED_ATTRIBUTE_ID, editTypeDialog.getID() + "/" + identifierPrefix);
-				valueMap.put(JSON_SCHEMA_ADDED_ATTRIBUTE_TYPE, STRING);
-				// selectedNode.getNode().add(treeNodeChild);
+				newValueMap.put(JSON_SCHEMA_ID, editTypeDialog.getID() + "/" + identifierPrefix);
+				newValueMap.put(JSON_SCHEMA_TYPE, STRING);
+				newValueMap.put(JSON_SCHEMA_ADDED_ATTRIBUTE_ID, editTypeDialog.getID() + "/" + identifierPrefix);
+				newValueMap.put(JSON_SCHEMA_ADDED_ATTRIBUTE_TYPE, STRING);
 			}
 
-			reflectChanges(selectedNode, valueMap);
+			reflectChanges(selectedNode, valueMap, newChild, newValueMap);
 
 		}
 
+	}
+
+	/**
+	 * Removes the existing element identifier node
+	 * 
+	 * @param selectedNode
+	 * @param treeNodeChild
+	 */
+	private void removeTreeNode(TreeNode selectedNode, TreeNode treeNodeChild) {
+		RemoveCommand rootRemCmd = new RemoveCommand(((GraphicalEditPart) selectedEP).getEditingDomain(), selectedNode,
+				DataMapperPackage.Literals.TREE_NODE__NODE, treeNodeChild);
+		if (rootRemCmd.canExecute()) {
+			((GraphicalEditPart) selectedEP).getEditingDomain().getCommandStack().execute(rootRemCmd);
+		}
+	}
+
+	/**
+	 * Gets the child tree node if it already has an element identifier as an
+	 * attribute
+	 * 
+	 * @param identifierType
+	 * @param hasIdentifier
+	 * @param nodeList
+	 * @return child node
+	 */
+	private TreeNode getChildTreeNode(String identifierType, TreeNode selectedNode) {
+		TreeNode childNode = null;
+		EList<TreeNode> nodeList = selectedNode.getNode();
+		for (TreeNode node : nodeList) {
+			if (StringUtils.isNotEmpty(identifierType)) {
+				if (node.getName().equals(PREFIX + identifierType)) {
+					hasIdentifier = true;
+					childNode = node;
+					break;
+				}
+			}
+		}
+		return childNode;
 	}
 
 	/**

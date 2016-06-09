@@ -809,27 +809,27 @@ public class TreeNode3EditPart extends AbstractBorderedShapeEditPart {
 			figure2.setPreferredSize((count - 1) * 22, 3);
 			final Label nodeLabel = new Label();
 			if (StringUtils.isNotEmpty(name) && name.startsWith(PREFIX)) {
-				if (nullableValue.equals(TRUE)) {
-					nodeLabel.setIcon(nullableAttributeImg.getImage());
-				} else if (nullableValue.equals(FALSE)) {
+				if (StringUtils.isNotEmpty(nullableValue)) {
+					placeIcon(attributeImg, nullableAttributeImg, nullableValue, nodeLabel);
+				} else {
 					nodeLabel.setIcon(attributeImg.getImage());
 				}
 			} else if (type != null && type.equals(JSON_SCHEMA_ARRAY)) {
-				if (nullableValue.equals(TRUE)) {
-					nodeLabel.setIcon(nullableArrayImg.getImage());
-				} else if (nullableValue.equals(FALSE)) {
+				if (StringUtils.isNotEmpty(nullableValue)) {
+					placeIcon(arrayImg, nullableArrayImg, nullableValue, nodeLabel);
+				} else {
 					nodeLabel.setIcon(arrayImg.getImage());
 				}
 			} else if (type != null && type.equals(JSON_SCHEMA_OBJECT)) {
-				if (nullableValue.equals(TRUE)) {
-					nodeLabel.setIcon(nullableObjectImg.getImage());
-				} else if (nullableValue.equals(FALSE)) {
+				if (StringUtils.isNotEmpty(nullableValue)) {
+					placeIcon(objectImg, nullableObjectImg, nullableValue, nodeLabel);
+				} else {
 					nodeLabel.setIcon(objectImg.getImage());
 				}
 			} else {
-				if (nullableValue.equals(TRUE)) {
-					nodeLabel.setIcon(nullableElementImg.getImage());
-				} else if (nullableValue.equals(FALSE)) {
+				if (StringUtils.isNotEmpty(nullableValue)) {
+					placeIcon(mainImg, nullableElementImg, nullableValue, nodeLabel);
+				} else {
 					nodeLabel.setIcon(mainImg.getImage());
 				}
 			}
@@ -1082,27 +1082,27 @@ public class TreeNode3EditPart extends AbstractBorderedShapeEditPart {
 				newName = name;
 			}
 			if (StringUtils.isNotEmpty(name) && name.startsWith(PREFIX)) {
-				if (nullableValue.equals(TRUE)) {
-					nodeLabel.setIcon(nullableAttributeImg.getImage());
-				} else if (nullableValue.equals(FALSE)) {
+				if (StringUtils.isNotEmpty(nullableValue)) {
+					placeIcon(attributeImg, nullableAttributeImg, nullableValue, nodeLabel);
+				} else {
 					nodeLabel.setIcon(attributeImg.getImage());
 				}
 			} else if (type != null && type.equals(JSON_SCHEMA_ARRAY)) {
-				if (nullableValue.equals(TRUE)) {
-					nodeLabel.setIcon(nullableArrayImg.getImage());
-				} else if (nullableValue.equals(FALSE)) {
+				if (StringUtils.isNotEmpty(nullableValue)) {
+					placeIcon(arrayImg, nullableArrayImg, nullableValue, nodeLabel);
+				} else {
 					nodeLabel.setIcon(arrayImg.getImage());
 				}
 			} else if (type != null && type.equals(JSON_SCHEMA_OBJECT)) {
-				if (nullableValue.equals(TRUE)) {
-					nodeLabel.setIcon(nullableObjectImg.getImage());
-				} else if (nullableValue.equals(FALSE)) {
+				if (StringUtils.isNotEmpty(nullableValue)) {
+					placeIcon(objectImg, nullableObjectImg, nullableValue, nodeLabel);
+				} else {
 					nodeLabel.setIcon(objectImg.getImage());
 				}
 			} else {
-				if (nullableValue.equals(TRUE)) {
-					nodeLabel.setIcon(nullableElementImg.getImage());
-				} else if (nullableValue.equals(FALSE)) {
+				if (StringUtils.isNotEmpty(nullableValue)) {
+					placeIcon(mainImg, nullableElementImg, nullableValue, nodeLabel);
+				} else {
 					nodeLabel.setIcon(mainImg.getImage());
 				}
 			}
@@ -1117,6 +1117,16 @@ public class TreeNode3EditPart extends AbstractBorderedShapeEditPart {
 			rectFigure.remove(childrenList.get(1));
 			rectFigure.add(nodeLabel);
 		}
+		
+		private void placeIcon(ImageFigure attributeImg, ImageFigure nullableAttributeImg, String nullableValue,
+				Label nodeLabel) {
+			if (nullableValue.equals(TRUE)) {
+				nodeLabel.setIcon(nullableAttributeImg.getImage());
+			} else if (nullableValue.equals(FALSE)) {
+				nodeLabel.setIcon(attributeImg.getImage());
+			}
+		}
+
 		public void highlightElementOnSelection() {
 			RectangleFigure rectFigure = (RectangleFigure) this.getChildren().get(0);
 			List<Figure> childrenList = rectFigure.getChildren();

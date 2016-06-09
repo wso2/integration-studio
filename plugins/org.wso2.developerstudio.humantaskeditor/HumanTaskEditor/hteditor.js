@@ -88,10 +88,8 @@ function createFile(currentTaskName,state,taskNode) { //createFile
             htconfigDom = marshalEditorTextContent(data);
             generateHTConfig(htconfigDom, xmlDom, currentTaskName);
             saveHTConfig(htconfigDom);
-            if(state=="generateText"){
-                //generateTaskDiv(taskNode);
-            }else{
-            generateUI();
+            if(state!="generateText"){
+                generateUI();
             }
             if(state=="initial"){
                 generateTasks();
@@ -206,11 +204,6 @@ function saveSource() {
         handleError("Error Saving Source \n"+err);
     }
 }
-
-$( document ).ready(function() {
-    //setFocus();
-});
-
 
 /*
  * Signature: process() {...}

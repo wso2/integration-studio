@@ -418,8 +418,10 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
 									// Append export schema item to menu
 									AbstractActionHandler exportSchemaAction = exportSchemaActions
 											.get(selectedEditorPart.getClass());
-									if (null != exportSchemaAction) {
-										menu.appendToGroup(EDIT_GROUP_ID, exportSchemaAction);
+									if (!selectedEditorPart.getChildren().isEmpty()) {
+										if (null != exportSchemaAction) {
+											menu.appendToGroup(EDIT_GROUP_ID, exportSchemaAction);
+										}
 									}
 								}
 

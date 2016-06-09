@@ -15,9 +15,12 @@
  */
 package org.wso2.developerstudio.datamapper.diagram.custom.dialogs;
 
+import java.util.List;
+
 import org.apache.commons.lang.StringUtils;
 import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.gef.EditPart;
 import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.jface.dialogs.IMessageProvider;
 import org.eclipse.swt.SWT;
@@ -34,7 +37,18 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.wso2.developerstudio.datamapper.Constant;
 import org.wso2.developerstudio.datamapper.DataMapperPackage;
+import org.wso2.developerstudio.datamapper.OperatorBasicContainer;
+import org.wso2.developerstudio.datamapper.OperatorLeftConnector;
+import org.wso2.developerstudio.datamapper.OperatorRightConnector;
+import org.wso2.developerstudio.datamapper.OperatorRightContainer;
 import org.wso2.developerstudio.datamapper.SchemaDataType;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.ConcatEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.ConstantEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.OperatorBasicContainerEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.OperatorLeftConnectorEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.OperatorRectangle;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.OperatorRightConnectorEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.OperatorRightContainerEditPart;
 import org.wso2.developerstudio.datamapper.impl.ConstantImpl;
 
 public class ConfigureConstantOperatorDialog extends AbstractConfigureOperatorDialog {
@@ -43,11 +57,13 @@ public class ConfigureConstantOperatorDialog extends AbstractConfigureOperatorDi
 	private String value;
 	ConstantImpl constant = null;
 	private TransactionalEditingDomain editingDomain;
+	private EditPart editPart;
 
 	public ConfigureConstantOperatorDialog(Shell parentShell, Constant constantOperator,
-			TransactionalEditingDomain editingDomain) {
+			TransactionalEditingDomain editingDomain,EditPart constantEditPart) {
 		super(parentShell);
 		this.editingDomain = editingDomain;
+		this.editPart = constantEditPart;
 		constant = (ConstantImpl) constantOperator;
 	}
 
@@ -77,7 +93,7 @@ public class ConfigureConstantOperatorDialog extends AbstractConfigureOperatorDi
 		final Combo constantTypeDropDown = new Combo(container, SWT.DROP_DOWN | SWT.BORDER | SWT.READ_ONLY);
 		constantTypeDropDown.setLayoutData(dataPropertyConfigText);
 		constantTypeDropDown.add("STRING");
-		constantTypeDropDown.add("NUMBER");
+		constantTypeDropDown.add("INT");
 		constantTypeDropDown.add("BOOLEAN");
 		constantTypeDropDown.add("DOUBLE");
 		if (constant.getType() != null) {
@@ -164,6 +180,7 @@ public class ConfigureConstantOperatorDialog extends AbstractConfigureOperatorDi
 					DataMapperPackage.Literals.CONSTANT__CONSTANT_VALUE, value);
 			if (setCmnd.canExecute()) {
 				editingDomain.getCommandStack().execute(setCmnd);
+				((OperatorRectangle)((ConstantEditPart)editPart).getConstantFigure()).changeOperatorHeader("Constant : \""+value+"\"");
 			}
 		}
 		if (StringUtils.isNotEmpty(type)) {
@@ -173,6 +190,14 @@ public class ConfigureConstantOperatorDialog extends AbstractConfigureOperatorDi
 						DataMapperPackage.Literals.CONSTANT__TYPE, constantType);
 				if (setCmnd.canExecute()) {
 					editingDomain.getCommandStack().execute(setCmnd);
+					@SuppressWarnings("unchecked")
+					List<EditPart> childContainers = ((OperatorBasicContainerEditPart)((ConstantEditPart)editPart).getChildren().get(0)).getChildren();
+					for (EditPart editPart : childContainers) {
+						if(editPart instanceof OperatorRightContainerEditPart){
+							OperatorRightConnectorEditPart rightConnector =(OperatorRightConnectorEditPart) ((OperatorRightContainerEditPart)editPart).getChildren().get(0);
+							((OperatorRightConnectorEditPart)rightConnector).setConstantTypeInConnector(constantType);
+						}
+					}
 				}
 			} else {
 				throw new IllegalArgumentException("Unknown type found : " + type);

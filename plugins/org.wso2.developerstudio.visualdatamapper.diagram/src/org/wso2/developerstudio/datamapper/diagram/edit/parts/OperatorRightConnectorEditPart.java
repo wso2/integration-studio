@@ -28,9 +28,10 @@ import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.gmf.tooling.runtime.edit.policies.reparent.CreationEditPolicyWithCustomReparent;
 import org.eclipse.swt.graphics.Color;
-import org.wso2.developerstudio.datamapper.diagram.custom.util.EditorUtils;
+import org.wso2.developerstudio.datamapper.SchemaDataType;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.custom.CustomNonResizableEditPolicyEx;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.custom.FixedBorderItemLocator;
+import org.wso2.developerstudio.datamapper.impl.ConstantImpl;
 import org.wso2.developerstudio.datamapper.impl.OperatorImpl;
 
 /**
@@ -38,6 +39,8 @@ import org.wso2.developerstudio.datamapper.impl.OperatorImpl;
  */
 public class OperatorRightConnectorEditPart extends AbstractBorderedShapeEditPart {
 
+	private Label connectorLabel;
+	
 	NodeFigure figure;
 	/**
 	 * @generated
@@ -208,9 +211,27 @@ public class OperatorRightConnectorEditPart extends AbstractBorderedShapeEditPar
 		EditPart parentEditPart = this.getParent().getParent().getParent();
 		OperatorImpl operator = (OperatorImpl) ((View) parentEditPart.getModel()).getElement();
 		String outputLabel = getOutputLabel(operator);
-		if (figure != null) {
-			figure.add(new Label(outputLabel + " " + operator.getOutputVariableType().toString() + " "));
-			return true;
+		if(operator instanceof ConstantImpl){
+			ConstantImpl constantImpl = (ConstantImpl) operator;
+			if(constantImpl.getType()!=null && constantImpl.getConstantValue()!=null){
+				if (figure != null) {
+					connectorLabel =new Label(outputLabel + " [" + constantImpl.getType().getLiteral() + "] ");
+					figure.add(connectorLabel);
+					return true;
+				}
+			} else{
+				if (figure != null) {
+					connectorLabel = new Label(outputLabel + " " + operator.getOutputVariableType().toString() + " ");
+					figure.add(connectorLabel);
+					return true;
+				}
+			}
+		} else{
+			if (figure != null) {
+				connectorLabel = new Label(outputLabel + " " + operator.getOutputVariableType().toString() + " ");
+				figure.add(connectorLabel);
+				return true;
+			}
 		}
 		return false;
 	}
@@ -289,6 +310,14 @@ public class OperatorRightConnectorEditPart extends AbstractBorderedShapeEditPar
 	protected void setLineType(int style) {
 		if (primaryShape instanceof Shape) {
 			((Shape) primaryShape).setLineStyle(style);
+		}
+	}
+	
+	public void setConstantTypeInConnector(SchemaDataType constantType) {
+		if (figure != null) {
+			figure.remove(connectorLabel);
+			connectorLabel= new Label("Const :"+" ["+constantType.getLiteral()+"] ");
+			figure.add(connectorLabel);
 		}
 	}
 

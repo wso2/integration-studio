@@ -31,7 +31,8 @@ public class DivideImpl extends OperatorImpl implements Divide {
 		getInputVariableType().add(SchemaDataType.DOUBLE);
 		getOutputVariableType().add(SchemaDataType.DOUBLE);
 		setOperatorType(DataMapperOperatorType.DIVIDE);
-		getInputLabelList().add("In");
+		getInputLabelList().add("Num");
+		getInputLabelList().add("DivideBy");
 		getOutputLabelList().add("Out");
 	}
 

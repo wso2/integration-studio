@@ -61,7 +61,7 @@ public class ConcatManyAction extends AbstractActionHandler {
 		EditPart selectedEP = getSelectedEditPart();
 		EObject selectedObj = ((View) selectedEP.getModel()).getElement();
 		Dialog configureConcat = new ConfigureConcatOperatorDialog(Display.getDefault().getActiveShell(),
-				(Concat) selectedObj, getEditingDomain());
+				(Concat) selectedObj, getEditingDomain(),selectedEP);
 		configureConcat.setBlockOnOpen(true);
 		configureConcat.open();
 	}

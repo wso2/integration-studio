@@ -23,6 +23,7 @@ import org.eclipse.emf.edit.command.AddCommand;
 import org.eclipse.emf.edit.command.DeleteCommand;
 import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.gef.EditPart;
 import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.jface.dialogs.IMessageProvider;
 import org.eclipse.swt.SWT;
@@ -40,6 +41,8 @@ import org.wso2.developerstudio.datamapper.Concat;
 import org.wso2.developerstudio.datamapper.DataMapperFactory;
 import org.wso2.developerstudio.datamapper.DataMapperPackage;
 import org.wso2.developerstudio.datamapper.OperatorLeftConnector;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.ConcatEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.OperatorRectangle;
 import org.wso2.developerstudio.datamapper.impl.ConcatImpl;
 
 public class ConfigureConcatOperatorDialog extends AbstractConfigureOperatorDialog {
@@ -49,12 +52,14 @@ public class ConfigureConcatOperatorDialog extends AbstractConfigureOperatorDial
 	private TransactionalEditingDomain editingDomain;
 	private ArrayList<OperatorLeftConnector> caseOutputConnectors = new ArrayList<OperatorLeftConnector>();
 	private ConcatImpl concatImpl;
+	private EditPart editPart;
 
 	public ConfigureConcatOperatorDialog(Shell parentShell, Concat concatOperator,
-			TransactionalEditingDomain editingDomain) {
+			TransactionalEditingDomain editingDomain, EditPart selectedEP) {
 		super(parentShell);
 		this.concatImpl = (ConcatImpl) concatOperator;
 		this.editingDomain = editingDomain;
+		this.editPart=selectedEP;
 	}
 
 	@Override
@@ -167,6 +172,7 @@ public class ConfigureConcatOperatorDialog extends AbstractConfigureOperatorDial
 			if (setCmnd.canExecute()) {
 				editingDomain.getCommandStack().execute(setCmnd);
 			}
+			((OperatorRectangle)((ConcatEditPart)editPart).getConcatFigure()).changeOperatorHeader("Concat : \""+delimiter+"\"");
 		}
 		int number = Integer.parseInt(inputCount)
 				- concatImpl.getBasicContainer().getLeftContainer().getLeftConnectors().size();

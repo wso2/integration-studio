@@ -30,7 +30,6 @@ public class RoundImpl extends OperatorImpl implements Round {
 		getInputVariableType().add(SchemaDataType.INT);
 		getInputVariableType().add(SchemaDataType.DOUBLE);
 		getOutputVariableType().add(SchemaDataType.INT);
-		getOutputVariableType().add(SchemaDataType.DOUBLE);
 		setOperatorType(DataMapperOperatorType.ROUND);
 		getInputLabelList().add("In");
 		getOutputLabelList().add("Out");

@@ -1,5 +1,6 @@
 package org.wso2.developerstudio.datamapper.diagram.edit.parts;
 
+import org.apache.commons.lang.StringUtils;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.Label;
 import org.eclipse.draw2d.RectangleFigure;
@@ -19,12 +20,15 @@ import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.swt.graphics.Color;
 import org.wso2.developerstudio.datamapper.diagram.custom.edit.part.AbstractOperatorEditPart;
+import org.wso2.developerstudio.datamapper.impl.ConcatImpl;
 
 /**
  * @generated NOT
  */
 public class ConcatEditPart extends AbstractOperatorEditPart {
 
+	private String concatDelimiter;
+	
 	/**
 	 * @generated
 	 */
@@ -88,7 +92,8 @@ public class ConcatEditPart extends AbstractOperatorEditPart {
 	 * @generated NOT
 	 */
 	protected IFigure createNodeShape() {
-		return primaryShape = new ConcatFigure();
+		concatDelimiter = ((ConcatImpl)((View) getModel()).getElement()).getDelimiter();
+		return primaryShape = new ConcatFigure(concatDelimiter);
 	}
 
 	/**
@@ -96,6 +101,10 @@ public class ConcatEditPart extends AbstractOperatorEditPart {
 	 */
 	public RectangleFigure getPrimaryShape() {
 		return (RectangleFigure) primaryShape;
+	}
+	
+	public OperatorRectangle getConcatFigure(){
+		return (OperatorRectangle) primaryShape;
 	}
 
 	/**
@@ -183,11 +192,18 @@ public class ConcatEditPart extends AbstractOperatorEditPart {
 			((Shape) primaryShape).setLineStyle(style);
 		}
 	}
-
+	
+	
 	public class ConcatFigure extends OperatorRectangle {
+		
+		private String figureHeaderLabel;
 
-		public ConcatFigure() {
+		public ConcatFigure(String concatValue) {
 			super("Concat");
+			if (StringUtils.isNotEmpty(concatValue)) {
+				this.figureHeaderLabel = "Concat : \"" + concatValue + "\"";
+				super.changeOperatorHeader(figureHeaderLabel);
+			}
 			this.setBackgroundColor(THIS_BACK);
 		}
 

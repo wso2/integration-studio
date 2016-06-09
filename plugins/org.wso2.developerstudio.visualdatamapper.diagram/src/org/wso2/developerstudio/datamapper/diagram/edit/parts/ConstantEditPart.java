@@ -1,5 +1,6 @@
 package org.wso2.developerstudio.datamapper.diagram.edit.parts;
 
+import org.apache.commons.lang.StringUtils;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.Label;
 import org.eclipse.draw2d.RectangleFigure;
@@ -19,6 +20,8 @@ import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.swt.graphics.Color;
 import org.wso2.developerstudio.datamapper.diagram.custom.edit.part.AbstractOperatorEditPart;
+import org.wso2.developerstudio.datamapper.impl.ConcatImpl;
+import org.wso2.developerstudio.datamapper.impl.ConstantImpl;
 
 /**
  * @generated NOT
@@ -88,7 +91,8 @@ public class ConstantEditPart extends AbstractOperatorEditPart {
 	 * @generated NOT
 	 */
 	protected IFigure createNodeShape() {
-		return primaryShape = new ConstantFigure();
+		String constantValue = ((ConstantImpl)((View) getModel()).getElement()).getConstantValue();
+		return primaryShape = new ConstantFigure(constantValue);
 	}
 
 	/**
@@ -186,8 +190,12 @@ public class ConstantEditPart extends AbstractOperatorEditPart {
 
 	public class ConstantFigure extends OperatorRectangle {
 
-		public ConstantFigure() {
+		public ConstantFigure(String constantValue) {
 			super("Constant");
+			if (StringUtils.isNotEmpty(constantValue)) {
+				constantValue = "Constant : \"" + constantValue + "\"";
+				super.changeOperatorHeader(constantValue);
+			}
 			this.setBackgroundColor(THIS_BACK);
 		}
 
@@ -206,5 +214,9 @@ public class ConstantEditPart extends AbstractOperatorEditPart {
 	}
 
 	static final Color THIS_BACK = DataMapperColorConstants.borderColor;
+
+	public OperatorRectangle getConstantFigure() {
+		return (OperatorRectangle) primaryShape;
+	}
 
 }

@@ -32,7 +32,8 @@ public class SubtractImpl extends OperatorImpl implements Subtract {
 		getOutputVariableType().add(SchemaDataType.INT);
 		getOutputVariableType().add(SchemaDataType.DOUBLE);
 		setOperatorType(DataMapperOperatorType.SUBTRACT);
-		getInputLabelList().add("In");
+		getInputLabelList().add("+");
+		getInputLabelList().add("-");
 		getOutputLabelList().add("Out");
 	}
 

@@ -62,7 +62,7 @@ public class ConstantConfigureAction extends AbstractActionHandler {
 		EditPart selectedEP = getSelectedEditPart();
 		EObject selectedObj = ((View) selectedEP.getModel()).getElement();
 		Dialog configureConstantDialog = new ConfigureConstantOperatorDialog(Display.getDefault().getActiveShell(),
-				(Constant) selectedObj, getEditingDomain());
+				(Constant) selectedObj, getEditingDomain(),selectedEP);
 		configureConstantDialog.create();
 		configureConstantDialog.open();
 	}

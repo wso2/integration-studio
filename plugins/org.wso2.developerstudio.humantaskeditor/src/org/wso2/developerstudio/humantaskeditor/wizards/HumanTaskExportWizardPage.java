@@ -17,6 +17,7 @@
 package org.wso2.developerstudio.humantaskeditor.wizards;
 
 import java.io.File;
+
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.jface.wizard.WizardPage;
@@ -33,6 +34,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.DirectoryDialog;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
+import org.eclipse.ui.PlatformUI;
 
 public class HumanTaskExportWizardPage extends WizardPage {
 	private String fileLocation;
@@ -193,4 +195,10 @@ public class HumanTaskExportWizardPage extends WizardPage {
 		IProject[] projects = ResourcesPlugin.getWorkspace().getRoot().getProjects();
 		return projects;
 		}
+	
+	@Override
+	public void performHelp() {
+	    PlatformUI.getWorkbench().getHelpSystem()
+	    .displayHelp("org.wso2.developerstudio.humantaskeditor.hteditor");
+	}
 }

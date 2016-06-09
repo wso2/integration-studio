@@ -30,6 +30,7 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
+import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.humantaskeditor.HumantaskEditorConstants;
 
 public class HumanTaskProjectWizardPage extends WizardPage {
@@ -223,4 +224,5 @@ public class HumanTaskProjectWizardPage extends WizardPage {
     public String getTNSName() {
         return tnsText.getText();
     }
+    
 }

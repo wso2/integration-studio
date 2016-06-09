@@ -5,8 +5,9 @@
     <title>Human Task Editor</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/main.css" rel="stylesheet">
-    <link href="css/jquery-ui.css" rel="stylesheet">
+    <link href="css/jquery-ui.css" rel="stylesheet" type="text/css">
+    <link href="css/main.css" rel="stylesheet" type="text/css">
+
     <style>
         #inputmappingTable input[type="text"] {
             border: 0;
@@ -20,6 +21,7 @@
         #outputmappingTable input[type="text"]:focus {
             outline: none;
         }
+
     </style>
 </head>
 
@@ -38,9 +40,9 @@
                             <div class="task_view" id="task_ApproveClaim">
                                 
                                 <div class="row"><!-- row start -->
-                                    <h3 class="sectionHeader">Task Properties</h3>
+                                    <h4 class="sectionHeader">Task Properties</h4>
                                     <hr>
-                                    <div class="taskSection">
+                                    <div id="taskPropertiesSection" class="taskSection collapse out">
 
                                         <form class="form-horizontal">
                                             <div class="form-group">
@@ -68,9 +70,9 @@
 
                                 <!-- row start -->
                                 <div class="row">
-                                    <h3 class="sectionHeader">Task Input</h3>
+                                    <h4 class="sectionHeader">Task Input</h4>
                                     <hr>
-                                    <div class="taskSection">
+                                    <div id="taskInputSection" class="taskSection collapse out">
                                         <form class="form-horizontal">
                                             <div class="form-group">
                                                 <label class="col-md-2 control-label">Operation</label>
@@ -85,7 +87,7 @@
                                             <div class="panel-heading clearfix">
                                                 <h4 class="panel-title">Input Data Mapping</h4>
                                                     <input type="hidden" id="taskMappingNo" name="taskMappingNo" value="0">                                               
-                                                    <input type="button" class="btn btn-primary pull-right" name="button3" id="addInput" value="Add Input">         
+                                                    <input type="button" class="btn btn-primary pull-right" name="button3" id="addInput" value="+">         
                                             </div>
                                                
                                             <!-- Table -->
@@ -100,9 +102,9 @@
 
                                 <!-- row start -->
                                 <div class="row">
-                                    <h3 class="sectionHeader">Task Output</h3>
+                                    <h4 class="sectionHeader">Task Output</h4>
                                     <hr>
-                                    <div class="taskSection">
+                                    <div id="taskOutputSection" class="taskSection collapse out">
                                         <form class="form-horizontal">
                                             <div class="form-group">
                                                 <label class="col-md-2 control-label">Callback Service Name</label>
@@ -128,7 +130,7 @@
                                             <!-- Default panel contents -->
                                             <div class="panel-heading clearfix">
                                                 <h4 class="panel-title">Output Data Mapping</h4>
-                                                    <input type="button" name="button" class="btn btn-primary pull-right" id="addOutput" value="Add Output" />
+                                                    <input type="button" name="button" class="btn btn-primary pull-right" id="addOutput" value="+" />
                                                     <input type="hidden" id="taskOutputMappingNo" name="taskOutputMappingNo" value="0" />         
                                             </div>
                                                
@@ -144,9 +146,9 @@
 
                                 <!-- row start -->
                                 <div class="row">
-                                    <h3 class="sectionHeader">Presentation Elements</h3>
+                                    <h4 class="sectionHeader">Presentation Elements</h4>
                                     <hr>
-                                    <div class="taskSection">
+                                    <div id="presentationElementsSection" class="taskSection collapse out">
                                         <form class="form-horizontal">
                                             <div class="form-group">
                                                 <label class="col-md-2 control-label">Display Name</label>
@@ -170,278 +172,289 @@
                                      </div>
                                 </div>
                                 <!-- row end -->
+                                <!-- row start -->
                                 <div class="row">
-                                    <h3 class="sectionHeader">People Assignment </h3>
+                                    <h4 class="sectionHeader">People Assignment </h4>
                                     <hr>
-                                    <div class="taskSection">
-                                        <br>
-                                        <table width="100%" border="0" class="table" cellcellspacing="5" cellpadding="5">
-                                            <tr class="header">
-                                                <td width="23%">Potential Owners</td>
-                                                <td width="77%">
-                                                    <table width="100%" border="0">
-                                                        <div id="potentialOwners">
-                                                            <tr>
-                                                                <td width="198">
-                                                                    <label>
-                                                                        <input class="peopleassignmentradio" name="potentialOwners" type="radio" id="potentialOwnersNA" value="na" checked> Not Defined</input>
-                                                                    </label>
-                                                                </td>
-                                                                <td width="524"></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    <label>
-                                                                        <input type="radio" class="peopleassignmentradio" name="potentialOwners" value="potentialOwnersRole" id="PeopleAssignmentRole"> Role
-                                                                        </input>
-                                                                    </label>
-                                                                </td>
-                                                                <td>
-                                                                    <input type="text" name="textfield14" id="potentialOwnersRole">
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    <label>
-                                                                        <input type="radio" class="peopleassignmentradio" name="potentialOwners" value="potentialOwnersLiteral" id="RadioGroup1_2"> Literal
-                                                                        </input>
-                                                                    </label>
-                                                                </td>
-                                                                <td>
-                                                                    
-                                                                    <input type="text" name="textfield15" id="potentialOwnersLiteralUsers" placeholder="Users (Comma Seprated)">
-                                                                    <br>
-                                                                    <input type="text" name="textfield16" id="potentialOwnersLiteralGroups" placeholder="Groups (Comma Seprated)">
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    <label>
-                                                                        <input type="radio" class="peopleassignmentradio" name="potentialOwners" value="potentialOwnersExpression" id="RadioGroup1_3"> Expression
-                                                                        </input>
-                                                                    </label>
-                                                                </td>
-                                                                <td>
-                                                                    <input type="text" name="textfield22" id="potentialOwnersExpression">
-                                                                </td>
-                                                            </tr>
-                                                        </div>
-                                                    </table>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Business Administrators</td>
-                                                <td>
-                                                    <table width="100%" border="0">
-                                                        <div id="businessAdministrators">
-                                                            <tr>
-                                                                <td width="198">
-                                                                    <label>
-                                                                        <input class="peopleassignmentradio" name="businessAdministrators" type="radio" id="businessAdministratorsNA" value="na" checked> Not Defined</input>
-                                                                    </label>
-                                                                </td>
-                                                                <td width="524"></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    <label>
-                                                                        <input type="radio" class="peopleassignmentradio" name="businessAdministrators" value="businessAdministratorsRole" id="RadioGroup1_5"> Role
-                                                                        </input>
-                                                                    </label>
-                                                                </td>
-                                                                <td>
-                                                                    <input type="text" name="textfield17" id="businessAdministratorsRole">
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    <label>
-                                                                        <input type="radio" class="peopleassignmentradio" name="businessAdministrators" value="businessAdministratorsLiteral" id="businessAdministratorsLiteral"> Literal
-                                                                        </input>
-                                                                    </label>
-                                                                </td>
-                                                                <td>
-                                                                    <input type="text" name="textfield17" id="businessAdministratorsLiteralUsers" placeholder="Users (Comma Seprated)">
-                                                                    <br>
-                                                                    <input type="text" name="textfield17" id="businessAdministratorsLiteralGroups" placeholder="Groups (Comma Seprated)">
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    <label>
-                                                                        <input type="radio" class="peopleassignmentradio" name="businessAdministrators" value="businessAdministratorsRoleExpression" id="RadioGroup1_7"> Expression
-                                                                        </input>
-                                                                    </label>
-                                                                </td>
-                                                                <td>
-                                                                    <input type="text" name="textfield23" id="businessAdministratorsExpression">
-                                                                </td>
-                                                            </tr>
-                                                        </div>
-                                                    </table>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Excluded Owners</td>
-                                                <td>
-                                                    <table width="100%" border="0">
-                                                        <div id="excludedOwners">
-                                                            <tr>
-                                                                <td width="198">
-                                                                    <label>
-                                                                        <input name="excludedOwners" class="peopleassignmentradio" type="radio" id="excludedOwnersNA" value="na" checked> Not Defined</input>
-                                                                    </label>
-                                                                </td>
-                                                                <td width="524"></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    <label>
-                                                                        <input type="radio" class="peopleassignmentradio" name="excludedOwners" value="excludedOwnersRole" id="RadioGroup1_9"> Role
-                                                                        </input>
-                                                                    </label>
-                                                                </td>
-                                                                <td>
-                                                                    <input type="text" name="textfield18" id="excludedOwnersRole">
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    <label>
-                                                                        <input type="radio" class="peopleassignmentradio" name="excludedOwners" value="excludedOwnersLiteral" id="RadioGroup1_10"> Literal
-                                                                        </input>
-                                                                    </label>
-                                                                </td>
-                                                                <td>
-                                                                    <input type="text" name="textfield18" id="excludedOwnersLiteralUsers" placeholder="Users (Comma Seprated)">
-                                                                    <br>
-                                                                    <input type="text" name="textfield18" id="excludedOwnersLiteralGroups" placeholder="Groups (Comma Seprated)">
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    <label>
-                                                                        <input type="radio" class="peopleassignmentradio" name="excludedOwners" value="excludedOwnersExpression" id="RadioGroup1_11"> Expression
-                                                                        </input>
-                                                                    </label>
-                                                                </td>
-                                                                <td>
-                                                                    <input type="text" name="textfield24" id="excludedOwnersExpression">
-                                                                </td>
-                                                            </tr>
-                                                        </div>
-                                                    </table>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Task Initiator</td>
-                                                <td>
-                                                    <table width="100%" border="0">
-                                                        <div id="excludedOwners">
-                                                            <tr>
-                                                                <td width="198">
-                                                                    <label>
-                                                                        <input name="taskInitiator" class="peopleassignmentradio" type="radio" id="taskInitiatorNA" value="na" checked> Not Defined</input>
-                                                                    </label>
-                                                                </td>
-                                                                <td width="524"></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    <label>
-                                                                        <input type="radio" class="peopleassignmentradio" name="taskInitiator" value="taskInitiatorRole" id="RadioGroup1_13"> Role
-                                                                        </input>
-                                                                    </label>
-                                                                </td>
-                                                                <td>
-                                                                    <input type="text" name="textfield19" id="taskInitiatorRole">
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    <label>
-                                                                        <input type="radio" class="peopleassignmentradio" name="taskInitiator" value="taskInitiatorLiteral" id="RadioGroup1_14"> Literal
-                                                                        </input>
-                                                                    </label>
-                                                                </td>
-                                                                <td>
-                                                                   <input type="text" name="textfield19" id="taskInitiatorLiteralUsers" placeholder="Users (Comma Seprated)" >
-                                                                    <br>
-                                                                    <input type="text" name="textfield19" id="taskInitiatorLiteralGroups" placeholder="Groups (Comma Seprated)">
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    <label>
-                                                                        <input type="radio" class="peopleassignmentradio" name="taskInitiator" value="taskInitiatorExpression" id="RadioGroup1_15"> Expression
-                                                                        </input>
-                                                                    </label>
-                                                                </td>
-                                                                <td>
-                                                                    <input type="text" name="textfield25" id="taskInitiatorExpression">
-                                                                </td>
-                                                            </tr>
-                                                        </div>
-                                                    </table>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Task Stakeholders</td>
-                                                <td>
-                                                    <table width="100%" border="0">
-                                                        <div id="taskStakeholders">
-                                                            <tr>
-                                                                <td width="198">
-                                                                    <label>
-                                                                        <input class="peopleassignmentradio" name="taskStakeholders" type="radio" id="taskStakeholdersNA" value="na" checked> Not Defined</input>
-                                                                    </label>
-                                                                </td>
-                                                                <td width="524"></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    <label>
-                                                                        <input class="peopleassignmentradio" type="radio" name="taskStakeholders" value="taskStakeholdersRole" id="RadioGroup1_17"> Role
-                                                                        </input>
-                                                                    </label>
-                                                                </td>
-                                                                <td>
-                                                                    <input type="text" name="textfield20" id="taskStakeholdersRole">
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    <label>
-                                                                        <input class="peopleassignmentradio" type="radio" name="taskStakeholders" value="taskStakeholdersLiteral" id="RadioGroup1_18"> Literal
-                                                                        </input>
-                                                                    </label>
-                                                                </td>
-                                                                <td>
-                                                                    <input type="text" name="textfield20" id="taskStakeholdersLiteralUsers" placeholder="Users (Comma Seprated)">
-                                                                    <br>
-                                                                    <input type="text" name="textfield20" id="taskStakeholdersLiteralGroups"  placeholder="Groups (Comma Seprated)">
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    <label>
-                                                                        <input class="peopleassignmentradio" type="radio" name="taskStakeholders" value="taskStakeholdersExpression" id="RadioGroup1_19"> Expression
-                                                                        </input>
-                                                                    </label>
-                                                                </td>
-                                                                <td>
-                                                                    <input type="text" name="textfield21" id="taskStakeholdersExpression">
-                                                                </td>
-                                                            </tr>
-                                                        </div>
-                                                    </table>
-                                                </td>
-                                            </tr>
-                                        </table>
+                                    <div id="peopleAssignmentSection" class="taskSection collapse out">                           
+                                        
+
+                                        <!-- panel card -->
+                                        <div id="potentialOwners" class="col-md-6">
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading">Potential Owners</div>
+                                                <ul class="list-group">
+                                                    <form class="form-horizontal">
+                                                        <li class="list-group-item">
+                                                            <div class="form-group">
+                                                                <div class="col-md-1">
+                                                                    <input class="peopleassignmentradio form-control" name="potentialOwners" type="radio" id="potentialOwnersNA" value="na" checked />
+                                                                </div>
+                                                                <label class="col-md-4 control-label">Not Defined</label>
+                                                                <div class="col-md-7"></div>
+                                                            </div>
+                                                        </li>
+                                                        <li class="list-group-item">
+                                                            <div class="form-group">
+                                                                <div class="col-md-1">
+                                                                    <input type="radio" class="peopleassignmentradio form-control" name="potentialOwners" value="potentialOwnersRole" id="PeopleAssignmentRole" />
+                                                                </div>
+                                                                <label class="col-md-4 control-label">Role</label>
+                                                                <div class="col-md-7">
+                                                                    <input type="text" class="form-control" name="textfield14" id="potentialOwnersRole">
+                                                                </div>
+                                                            </div>
+
+                                                        </li>
+                                                        <li class="list-group-item">
+                                                            <div class="form-group">
+                                                                <div class="col-md-1">
+                                                                    <input type="radio" class="peopleassignmentradio form-control" name="potentialOwners" value="potentialOwnersLiteral" id="RadioGroup1_2" /> 
+                                                                </div>
+                                                                <label class="col-md-4 control-label">Literal</label>
+                                                                <div class="col-md-7">
+                                                                    <input type="text" class="form-control mb10" name="textfield15" id="potentialOwnersLiteralUsers" placeholder="Users (Comma Seprated)"/>
+                                                                    <input type="text" class="form-control" name="textfield16" id="potentialOwnersLiteralGroups" placeholder="Groups (Comma Seprated)" />
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li class="list-group-item">
+                                                            <div class="form-group">
+                                                                <div class="col-md-1">
+                                                                    <input type="radio" class="peopleassignmentradio form-control" name="potentialOwners" value="potentialOwnersExpression" id="RadioGroup1_3" /> 
+                                                                </div>
+                                                                <label class="col-md-4 control-label">Expression</label>
+                                                                <div class="col-md-7">
+                                                                    <input type="text" class="form-control" name="textfield22" id="potentialOwnersExpression">
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                    </form>
+                                                </ul>
+                                            </div>
+                                        </div> 
+                                        <!-- panel card end -->     
+                                        <!-- new panel BA card -->
+                                        <div id="businessAdministrators" class="col-md-6">
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading">Business Administrators</div>
+                                                    <ul class="list-group">
+                                                    <form class="form-horizontal">
+                                                        <li class="list-group-item">
+                                                            <div class="form-group">
+                                                                <div class="col-md-1">
+                                                                    <input class="peopleassignmentradio form-control" name="businessAdministrators" type="radio" id="businessAdministratorsNA" value="na" checked/>
+                                                                </div>
+                                                                <label class="col-md-4 control-label">Not Defined</label>
+                                                                <div class="col-md-7"></div>
+                                                            </div>
+                                                        </li>
+                                                        <li class="list-group-item">
+                                                            <div class="form-group">
+                                                                <div class="col-md-1">
+                                                                    <input type="radio" class="peopleassignmentradio form-control" name="businessAdministrators" value="businessAdministratorsRole" id="RadioGroup1_5"/>
+                                                                </div>
+                                                                <label class="col-md-4 control-label">Role</label>
+                                                                <div class="col-md-7">
+                                                                    <input type="text" name="textfield17" id="businessAdministratorsRole" class="form-control">
+                                                                </div>
+                                                            </div> 
+                                                        </li>
+                                                        <li class="list-group-item">
+                                                            <div class="form-group">
+                                                                <div class="col-md-1">
+                                                                    <input type="radio" class="peopleassignmentradio form-control" name="businessAdministrators" value="businessAdministratorsLiteral" id="businessAdministratorsLiteral"/>
+                                                                </div>
+                                                                <label class="col-md-4 control-label">Literal</label>
+                                                                <div class="col-md-7">
+                                                                    <input type="text" name="textfield17" id="businessAdministratorsLiteralUsers" class="form-control mb10" placeholder="Users (Comma Seprated)">
+                                                                    <input type="text" name="textfield17" id="businessAdministratorsLiteralGroups" class="form-control" placeholder="Groups (Comma Seprated)">
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li class="list-group-item">
+                                                            <div class="form-group">
+                                                                <div class="col-md-1">
+                                                                       <input type="radio" class="peopleassignmentradio form-control" name="businessAdministrators" value="businessAdministratorsRoleExpression" id="RadioGroup1_7"/>
+                                                                </div>
+                                                                <label class="col-md-4 control-label">Expression</label>
+                                                                <div class="col-md-7">
+                                                                    <input type="text" class="form-control" name="textfield23" id="businessAdministratorsExpression">
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                    </form>
+                                                </ul>
+                                            </div>    
+                                        </div>
+                                        <!-- new BA panel card end -->
+                                        <!-- new EO panel start -->
+                                        <div id="excludedOwners" class="col-md-6">
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading">Excluded Owners</div>
+                                                <ul class="list-group">
+                                                    <form class="form-horizontal">
+                                                        <li class="list-group-item">
+                                                            <div class="form-group">
+                                                                <div class="col-md-1">
+                                                                    <input name="excludedOwners" class="peopleassignmentradio form-control" type="radio" id="excludedOwnersNA" value="na" checked/>
+                                                                </div>
+                                                                <label class="col-md-4 control-label">Not Defined</label>
+                                                                <div class="col-md-7"></div>
+                                                            </div>
+                                                        </li>
+                                                        <li class="list-group-item">
+                                                            <div class="form-group">
+                                                                <div class="col-md-1">
+                                                                    <input type="radio" class="peopleassignmentradio form-control" name="excludedOwners" value="excludedOwnersRole" id="RadioGroup1_9"/>
+                                                                </div>
+                                                                <label class="col-md-4 control-label">Role</label>
+                                                                <div class="col-md-7">
+                                                                    <input type="text" class="form-control" name="textfield18" id="excludedOwnersRole">
+                                                                </div>
+                                                            </div>
+
+                                                        </li>
+                                                        <li class="list-group-item">
+                                                            <div class="form-group">
+                                                                <div class="col-md-1">   
+                                                                    <input type="radio" class="peopleassignmentradio form-control" name="excludedOwners" value="excludedOwnersLiteral" id="RadioGroup1_10"/>
+                                                                </div>
+                                                                <label class="col-md-4 control-label">Literal</label>
+                                                                <div class="col-md-7">
+                                                                    <input type="text" name="textfield18" id="excludedOwnersLiteralUsers" class="form-control mb10" placeholder="Users (Comma Seprated)"/>
+                                                                    <input type="text" name="textfield18" id="excludedOwnersLiteralGroups" class="form-control" placeholder="Groups (Comma Seprated)"/>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li class="list-group-item">
+                                                            <div class="form-group">
+                                                                <div class="col-md-1">
+                                                                    <input type="radio" class="peopleassignmentradio form-control" name="excludedOwners" value="excludedOwnersExpression" id="RadioGroup1_11"/>
+                                                                </div>
+                                                                <label class="col-md-4 control-label">Expression</label>
+                                                                <div class="col-md-7">
+                                                                    <input type="text" name="textfield24" class="form-control" id="excludedOwnersExpression"> 
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                    </form>
+                                                </ul>
+                                            </div>       
+                                        </div>
+                                        <!-- new EO panel End -->
+                                        <!-- new TI panel start -->
+                                        <div id="taskInitiator" class="col-md-6">
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading">Task Initiator</div>
+                                                <ul class="list-group">
+                                                    <form class="form-horizontal">
+                                                        <li class="list-group-item">
+                                                            <div class="form-group">
+                                                                <div class="col-md-1">
+                                                                    <input name="taskInitiator" class="peopleassignmentradio form-control" type="radio" id="taskInitiatorNA" value="na" checked/>
+                                                                    </div>
+                                                                <label class="col-md-4 control-label">Not Defined</label>
+                                                                <div class="col-md-7"></div>
+                                                            </div>
+                                                        </li>
+                                                        <li class="list-group-item">
+                                                            <div class="form-group">
+                                                                <div class="col-md-1">
+                                                                    <input type="radio" class="peopleassignmentradio form-control" name="taskInitiator" value="taskInitiatorRole" id="RadioGroup1_13"/>
+                                                                </div>
+                                                                <label class="col-md-4 control-label">Role</label>
+                                                                <div class="col-md-7">
+                                                                    <input type="text" name="textfield19" id="taskInitiatorRole" class="form-control">
+                                                                    </div>
+                                                            </div>
+                                                        </li>
+                                                        <li class="list-group-item">
+                                                            <div class="form-group">
+                                                                <div class="col-md-1">
+                                                                    <input type="radio" class="peopleassignmentradio form-control" name="taskInitiator" value="taskInitiatorLiteral" id="RadioGroup1_14"/>
+                                                                </div>
+                                                                <label class="col-md-4 control-label">Literal</label>
+                                                                <div class="col-md-7">
+                                                                    <input type="text" name="textfield19" id="taskInitiatorLiteralUsers" placeholder="Users (Comma Seprated)"  class="form-control mb10">
+                                                                    <input type="text" name="textfield19" id="taskInitiatorLiteralGroups" placeholder="Groups (Comma Seprated)" class="form-control">
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li class="list-group-item">
+                                                            <div class="form-group">
+                                                                <div class="col-md-1">
+                                                                     <input type="radio" class="peopleassignmentradio form-control" name="taskInitiator" value="taskInitiatorExpression" id="RadioGroup1_15"/>
+                                                                </div>
+                                                                <label class="col-md-4 control-label">Expression</label>
+                                                                <div class="col-md-7">    
+                                                                    <input type="text" name="textfield25" id="taskInitiatorExpression" class="form-control">
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                    </form>
+                                                </ul>
+                                            </div>
+                                        </div> 
+                                        <!-- new TI panel End -->
+                                        <!-- new TS panel start -->
+                                        <div id="taskStakeholders" class="col-md-6">
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading">Task Stakeholders</div>
+                                                <ul class="list-group">
+                                                    <form class="form-horizontal">
+                                                        <li class="list-group-item">
+                                                            <div class="form-group">
+                                                                <div class="col-md-1">
+                                                                    <input class="peopleassignmentradio form-control" name="taskStakeholders" type="radio" id="taskStakeholdersNA" value="na" checked/>
+                                                                    </div>
+                                                                <label class="col-md-4 control-label">Not Defined</label>
+                                                                <div class="col-md-7"></div>
+                                                            </div>
+                                                        </li>
+                                                        <li class="list-group-item">
+                                                            <div class="form-group">
+                                                                <div class="col-md-1">
+                                                                    <input class="peopleassignmentradio form-control" type="radio" name="taskStakeholders" value="taskStakeholdersRole" id="RadioGroup1_17"/>
+                                                                </div>
+                                                                <label class="col-md-4 control-label">Role</label>
+                                                                <div class="col-md-7">
+                                                                     <input type="text" name="textfield20" id="taskStakeholdersRole" class="form-control">
+                                                                    </div>
+                                                            </div>
+                                                        </li>
+                                                        <li class="list-group-item">
+                                                            <div class="form-group">
+                                                                <div class="col-md-1">
+                                                                    <input class="peopleassignmentradio form-control" type="radio" name="taskStakeholders" value="taskStakeholdersLiteral" id="RadioGroup1_18"/>
+                                                                </div>
+                                                                <label class="col-md-4 control-label">Literal</label>
+                                                                <div class="col-md-7">
+                                                                    <input type="text" name="textfield20" id="taskStakeholdersLiteralUsers" placeholder="Users (Comma Seprated)" class="form-control mb10">
+                                                                    <input type="text" name="textfield20" id="taskStakeholdersLiteralGroups"  placeholder="Groups (Comma Seprated)" class="form-control">
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li class="list-group-item">
+                                                            <div class="form-group">
+                                                                <div class="col-md-1">
+                                                                    <input class="peopleassignmentradio form-control" type="radio" name="taskStakeholders" value="taskStakeholdersExpression" id="RadioGroup1_19"/>
+                                                                </div>
+                                                                <label class="col-md-4 control-label">Expression</label>
+                                                                <div class="col-md-7">
+                                                                    <input type="text" name="textfield21" id="taskStakeholdersExpression" class="form-control">
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                    </form>
+                                                </ul>
+                                            </div>
+                                        </div> 
+                                        <!-- new TS panel End -->
                                     </div>
-                                    <br>
-                                    <br>
                                 </div>
+                                <!-- row end -->
+
                             </div>
                         </div>
                     </div>

@@ -24,19 +24,19 @@ public class HumantaskEditorConstants {
 
     public static final String JS_FUNC_MAKE_UN_DIRTY = "makeUnDirty();";
 
-    public static final String ERROR_CREATING_CORRESPONDING_WSDL_FILE = "Error Creating Corresponding WSDL File";
+    public static final String ERROR_CREATING_CORRESPONDING_WSDL_FILE = "Error creating corresponding WSDL file";
 
-    public static final String ERROR_CREATING_CORRESPONDING_ZIP_FILE = "Error Creating Corresponding ZIP File";
+    public static final String ERROR_CREATING_CORRESPONDING_ZIP_FILE = "Error creating corresponding ZIP file";
     
     public static final String ERROR_COPYING_FILES = "Error copying files to artifact";
 
-    public static final String ERROR_FINDING_CORRESPONDING_WSDL_FILE = "Error Finding Corresponding WSDL File";
+    public static final String ERROR_FINDING_CORRESPONDING_WSDL_FILE = "Error finding corresponding WSDL file";
 
-    public static final String ERROR_DELETING_CORRESPONDING_WSDL_FILE = "Error Deleting Corresponding WSDL File";
+    public static final String ERROR_DELETING_CORRESPONDING_WSDL_FILE = "Error deleting corresponding WSDL file";
     
     public static final String UNDEFINED_LITERAL = "undefined";
 
-    public static final String ERROR_INVALID_INPUT_MUST_BE_IFILE_EDITOR_INPUT = "Invalid Input: Must be IFileEditorInput";
+    public static final String ERROR_INVALID_INPUT_MUST_BE_IFILE_EDITOR_INPUT = "Invalid input: Must be IFileEditorInput";
 
     public static final String ERROR_CREATING_NESTED_TEXT_EDITOR = "Error creating nested text editor";
 
@@ -46,7 +46,7 @@ public class HumantaskEditorConstants {
     
     public static final String SOURCE_EDITOR_NAME = "Source";
 
-    public static final String CREATE_HUMAN_TASK_FILE_MESSAGE = "Create Human Task file";
+    public static final String CREATE_HUMAN_TASK_FILE_MESSAGE = "Create human task file";
 
     public static final String HUMANTASKEDITOR_DIALOG_BOX_HEADER = "Humantaskeditor";
 
@@ -58,15 +58,15 @@ public class HumantaskEditorConstants {
 
     public static final String DUMMY_HT_LOCATION = "platform:/plugin/org.wso2.developerstudio.humantaskeditor/HumanTaskEditor/resources/dummy.ht";
 
-    public static final String ERROR_OPENING_THE_EDITOR_MESSAGE = "Error Opening The Editor";
+    public static final String ERROR_OPENING_THE_EDITOR_MESSAGE = "Error opening the editor";
 
     public static final String OPENING_FILE_FOR_EDITING_MESSAGE = "Opening file for editing...";
 
-    public static final String ERROR_CREATING_INITIAL_FILE_MESSAGE = "Error Creating Initial File";
+    public static final String ERROR_CREATING_INITIAL_FILE_MESSAGE = "Error creating initial file";
 
     public static final String THE_PROJECT_EXISTS_IN_THE_WORKSPACE_MESSAGE = "The project already exists in the workspace. Please use a different project name";
 
-    public static final String PROJECT_EXISTS_MESSAGE = "Project Exists";
+    public static final String PROJECT_EXISTS_MESSAGE = "Project exists";
 
     public static final String ERROR_MESSAGE = "Error";
 
@@ -90,13 +90,13 @@ public class HumantaskEditorConstants {
     
     public static final String TASK_NAME_CANNOT_BE_EMPTY_MESSAGE = "Task name cannot be empty";
     
-    public static final String TARGET_NAME_SPACE_CANNOT_BE_EMPTY_MESSAGE = "Target Namespace cannot be empty";
+    public static final String TARGET_NAME_SPACE_CANNOT_BE_EMPTY_MESSAGE = "Target namespace cannot be empty";
     
     public static final String ENTER_A_VALID_FILENAME = "Enter a valid file name";
     
     public static final String WIZARD_PAGE_TEXT = "Human Task Artifact";
 
-    public static final String PROJECT_WIZARD_PAGE_DESCRIPTION = "This wizard creates a humantask artifact project which can be deployed";
+    public static final String PROJECT_WIZARD_PAGE_DESCRIPTION = "This wizard creates a humantask artifact project";
 
     public static final String PROJECT_WIZARD_PAGE_TITLE = "Human Task Project";
 
@@ -114,7 +114,7 @@ public class HumantaskEditorConstants {
 
     public static final String BROWSE_BUTTON_TEXT = "Browse...";
     
-    public static final String EXCEPTION_OCCURED_IN_TRANSFORMING_XML_TO_TEXT = "Exception occured in transforming XML to Text";
+    public static final String EXCEPTION_OCCURED_IN_TRANSFORMING_XML_TO_TEXT = "Exception occured in transforming XML to text";
     
     public static final String EXCEPTION_OCCURED_IN_TRANSFORM_CONFIG = "Exception occured in transform config";
     

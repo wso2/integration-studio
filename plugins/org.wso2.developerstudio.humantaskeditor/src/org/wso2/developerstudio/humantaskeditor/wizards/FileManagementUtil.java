@@ -36,8 +36,6 @@ import org.wso2.developerstudio.humantaskeditor.Activator;
 import org.wso2.developerstudio.humantaskeditor.HumantaskEditorConstants;
 
 public class FileManagementUtil {
-    private static final int BUFFER = 100;
-
     private static final Logger logger = Logger.getLogger(Activator.PLUGIN_ID);
 
     public static void copyDirectory(File srcPath, File dstPath, List filesToBeCopied) throws IOException {

@@ -71,7 +71,7 @@ public class HumanTaskMultiPageEditor extends MultiPageEditorPart implements IRe
      */
     void createPage0() {
 
-        humanTaskUIEditor = new HumanTaskUIEditor();
+        humanTaskUIEditor = new HumanTaskUIEditor(this);
 
         int index;
         try {

@@ -92,4 +92,11 @@ point="org.wso2.developerstudio.eclipse.dashboad.link">
 				</enablement>
                </objectContribution>
         </extension>
-</plugin>
+        <extension
+         id="org.wso2.developerstudio.humantaskeditor.wizardhelp"
+         point="org.eclipse.help.contexts">
+      	<contexts
+            file="helpcontexts.xml"
+            />
+   		</extension>
+ </plugin>

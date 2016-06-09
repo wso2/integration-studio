@@ -69,6 +69,7 @@ public class HumanTaskExportWizard extends Wizard implements IExportWizard{
     public void init(IWorkbench arg0, IStructuredSelection arg1) {
         this.selection=arg1;
         setWindowTitle(HumantaskEditorConstants.HUMAN_TASK_EXPORT_WIZARD_TITLE);
+        setHelpAvailable(false);
     }
     public void addPages() {
         super .addPages();

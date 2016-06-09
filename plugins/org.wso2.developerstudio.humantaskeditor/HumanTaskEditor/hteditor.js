@@ -89,7 +89,7 @@ function createFile(currentTaskName,state,taskNode) { //createFile
             generateHTConfig(htconfigDom, xmlDom, currentTaskName);
             saveHTConfig(htconfigDom);
             if(state=="generateText"){
-                generateTaskDiv(taskNode);
+                //generateTaskDiv(taskNode);
             }else{
             generateUI();
             }
@@ -207,6 +207,11 @@ function saveSource() {
     }
 }
 
+$( document ).ready(function() {
+    //setFocus();
+});
+
+
 /*
  * Signature: process() {...}
  * 
@@ -218,6 +223,9 @@ function saveSource() {
 function process() {
     try {
         generateUI();
+        setFocus();
+        //$('.taskSection').slideUp(500);
+        //$('.taskSection').collapse();
     } catch (err) {
         handleError(err);
     }
@@ -316,7 +324,7 @@ function generateUI() {
         $("#page-content-wrapper").tabs("refresh");
         $('#page-content-wrapper').tabs("option", "active", selectedindex);
         handleTabChange();
-        
+        bindToggleEvent();
     }
 }
 
@@ -343,7 +351,7 @@ function toTitleCase(str) {
  * humantask DOM should be provided as a parameter(taskNode)
  * 
  */
-function generateTaskDiv(taskNode) {
+function generateTaskDiv(taskNode,caller) {
     var formDiv = $('#genericForm').clone(true, true).val("");
     taskName = taskNode.getAttribute("name");
     taskDivName = taskName + "wrapper";
@@ -360,6 +368,7 @@ function generateTaskDiv(taskNode) {
         taskNameInput = $('#' + taskNode.getAttribute("name") + "wrapper #taskName").val();
         if(taskNameInput.trim()!=""){
         makeDirty();
+        ExecuteCustomFunction("removewsdl", taskNode.getAttribute("name"));
         taskNode.setAttribute("name", taskNameInput);
         createFile(taskNode.getAttribute("name"),"");
         }else{
@@ -418,7 +427,7 @@ function generateTaskDiv(taskNode) {
                     mappingNo);
                 makeDirty();
                 generateText(taskNode);
-                generateTaskDiv(taskNode);
+                generateTaskDiv(taskNode,"taskInputSection");
                 //selectedindex = $('#page-content-wrapper a[href="#'+taskNode.getAttribute("name")+'wrapper"]').parent().index();
             });
 
@@ -481,7 +490,7 @@ function generateTaskDiv(taskNode) {
                 }
                 makeDirty();
                 generateText(taskNode);
-                generateTaskDiv(taskNode);
+                generateTaskDiv(taskNode,"taskOutputSection");
                 //selectedindex = $('#page-content-wrapper a[href="#'+taskNode.getAttribute("name")+'wrapper"]').parent().index();
             });
 
@@ -527,7 +536,7 @@ function generateTaskDiv(taskNode) {
                                     }
                                 }
                                 makeDirty();
-                                generateTaskDiv(taskNode);
+                                generateTaskDiv(taskNode,"taskInputSection");
                                 //selectedindex = $('#page-content-wrapper a[href="#'+taskNode.getAttribute("name")+'wrapper"]').parent().index();
                             } catch (err) {
                                 handleError(err);
@@ -583,7 +592,7 @@ function generateTaskDiv(taskNode) {
                                     }
                                 }
                                 makeDirty();
-                                generateTaskDiv(taskNode);
+                                generateTaskDiv(taskNode,"taskOutputSection");
                                 //selectedindex = $('#page-content-wrapper a[href="#'+taskNode.getAttribute("name")+'wrapper"]').parent().index();
                             } catch (err) {
                                 handleError(err);
@@ -665,6 +674,7 @@ function generateTaskDiv(taskNode) {
     $('#' + taskDivName + ' .taskDiv').show();
     bindChangeEvents();
     syncWSDLFields(taskName);
+    $('#' + taskDivName + ' #' + caller).collapse('show');
     //syncwsdlFields syncWSDLFields(taskNode);
 }
 
@@ -952,11 +962,13 @@ function addTextNode(parentNode, xmlDom, content) {
     parentNode.appendChild(newText);
 }
 
-
+function bindToggleEvent(){
 $('.sectionHeader').click(function() {
-    $(this).parent().find('.taskSection').slideToggle(500);
-
+    //$(this).parent().find('.taskSection').slideToggle(500);
+     $(this).parent().find('.taskSection').collapse('toggle'); 
+     $(this).parent().siblings().find('.taskSection').collapse('hide');
 });
+}
 
 function marshalPeopleAssignment(taskNode, peopleAssignmentName) {
     taskName = taskNode.getAttribute("name");
@@ -1006,7 +1018,7 @@ function marshalPeopleAssignment(taskNode, peopleAssignmentName) {
         // taskNode.removeChild(taskNode.getElementsByTagName("peopleAssignments")[0]);
         createNewLiteral(xmlDom, taskNode.getElementsByTagName("peopleAssignments")[0]
             .getElementsByTagName(peopleAssignmentName)[0]
-            .getElementsByTagName("from")[0], $('#' + taskDivName + " #"+peopleAssignmentName+"LiteralUsers").val(),$('#' + taskDivName + " #"+peopleAssignmentName+"LiteralGroups").val());
+            .getElementsByTagName("from")[0], $('#' + taskDivName + " #"+peopleAssignmentName+"LiteralUsers").val().trim(),$('#' + taskDivName + " #"+peopleAssignmentName+"LiteralGroups").val().trim());
     }
 }
 
@@ -1035,12 +1047,16 @@ function unmarshalPeopleAssignment(taskNode, peopleAssignmentName) {
                     .getElementsByTagName(peopleAssignmentName)[0]
                     .getElementsByTagName("group");
                 for (var t = 0; t < usersList.length; t++) {
-                    if(usersList[t].childNodes.length!=0)
-                    $('#' + taskDivName + " #"+peopleAssignmentName+"LiteralUsers").val($('#' + taskDivName + " #"+peopleAssignmentName+"LiteralUsers").val() + ',' + usersList[t].childNodes[0].nodeValue);
+                    if(usersList[t].childNodes.length!=0){
+                        if($('#' + taskDivName + " #"+peopleAssignmentName+"LiteralUsers").val().trim()=="") $('#' + taskDivName + " #"+peopleAssignmentName+"LiteralUsers").val(usersList[t].childNodes[0].nodeValue);
+                        else $('#' + taskDivName + " #"+peopleAssignmentName+"LiteralUsers").val($('#' + taskDivName + " #"+peopleAssignmentName+"LiteralUsers").val() + ',' + usersList[t].childNodes[0].nodeValue);
+                    }
                 }
                 for (var k = 0; k < groupsList.length; k++) {
-                    if(groupsList[k].childNodes.length!=0)
-                    $('#' + taskDivName + " #"+peopleAssignmentName+"LiteralGroups").val($('#' + taskDivName + " #"+peopleAssignmentName+"LiteralGroups").val() + ',' + groupsList[k].childNodes[0].nodeValue);
+                    if(groupsList[k].childNodes.length!=0){
+                        if($('#' + taskDivName + " #"+peopleAssignmentName+"LiteralGroups").val().trim()=="") $('#' + taskDivName + " #"+peopleAssignmentName+"LiteralGroups").val(groupsList[k].childNodes[0].nodeValue);
+                        else $('#' + taskDivName + " #"+peopleAssignmentName+"LiteralGroups").val($('#' + taskDivName + " #"+peopleAssignmentName+"LiteralGroups").val() + ',' + groupsList[k].childNodes[0].nodeValue);
+                    }
                 }
             }
         } else {
@@ -1051,12 +1067,20 @@ function unmarshalPeopleAssignment(taskNode, peopleAssignmentName) {
 
 function bindChangeEvents() { //put all the listeners here
 
-    $('input').keyup(function() {
-        makeDirty();
+    $('input').keyup(function(e) {
+        if(e.ctrlKey || (e.ctrlKey && e.which === 83)){
+            return false;
+        }else{
+            makeDirty();
+        }
         //generateText();
     });
-    $('textarea').keyup(function() {
-        makeDirty();
+    $('textarea').keyup(function(e) {
+        if(e.ctrlKey || (e.ctrlKey && e.which === 83)){
+            return false;
+        }else{
+            makeDirty();
+        }
         //generateTasks();
     });
     $('select').change(function() {
@@ -1092,6 +1116,21 @@ function createNewLiteral(xmlDom, parent, text, grouptext) {
     }
     newLiteral.appendChild(newOrgEntity);
     parent.appendChild(newLiteral);
+}
+
+function createNewRole(xmlDom, parent, text, grouptext) {
+    while (parent.firstChild) {
+    parent.removeChild(parent.firstChild);
+    }
+    var splitList = text.split(",");
+    var groupSplitList = grouptext.split(",");
+    for (var i = 0; i < splitList.length; i++) {
+           newUser = xmlDom.createElementNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803",
+                "htd:argument");
+            newUserText = xmlDom.createTextNode(splitList[i]);
+            newUser.appendChild(newUserText);
+            parent.appendChild(newUser);
+   }
 }
 
 function addPresentationParameter(xmlDom, taskNode, taskName , name, type) { //should be presentationParameters
@@ -1151,7 +1190,6 @@ var eventStack = [];
 function addEvent(eventType,elementID,elementValue){
     lastEventID =  parseInt(getLastEventID());
     lastEventID++;
-    alert(lastEventID);
     newElement = [lastEventID,eventType,elementID,elementValue.cloneNode(true)];
     eventStack.push(newElement);
 }
@@ -1159,7 +1197,6 @@ function addEvent(eventType,elementID,elementValue){
 function getLastEventID(){
     lastElement = eventStack.pop();
     lastElementID = 0;
-    alert(lastElement);
     if (typeof lastElement == 'undefined') lastElementID = 0;
     else lastElementID = lastElement[0];
     return lastElementID;
@@ -1174,6 +1211,15 @@ function executeEvent(){
     lastElement = getEvent();
     lastElementEventType = lastElement[1];
     xmlDom = lastElement[3];
-    alert(xmlDom);
     process();
+}
+
+function setFocus(){
+    // Set focus to editor part in IDE,
+    // You can call this function when 
+    // the main html component of your editor
+    // gets the focus. This is important because
+    // if the editor is not in focus, you won't
+    // be able to capture key strokes etc.
+    IDESetFocusToEditorPart();
 }

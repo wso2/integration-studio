@@ -23,6 +23,52 @@ hr {
   margin: 18px 0;
 }
 
+.form-horizontal .control-label{
+  text-align:left;
+}
+
 #outputmappingTable {
     font-size: 100%;
+}
+
+.peopleassignmentradio {
+  width: 16px;
+  height: 16px;
+  border-radius: 0.5em;
+  overflow: visible;
+  border: none;
+}
+
+.form-group {
+    margin-bottom: 3px;
+    margin-top: 3px;
+}
+
+.list-group-item {
+   padding: 5px 15px;
+}
+.panel-heading h4 {
+    width: 50%;
+    float: left;
+    margin-top: 10px;
+}
+.panel-heading form {
+    margin-bottom: 5px;
+}
+
+.mb10 {
+    margin-bottom: 10px;
+}
+
+.ui-state-active,
+.ui-widget-content .ui-state-active,
+.ui-widget-header .ui-state-active,
+a.ui-button:active,
+.ui-button:active,
+.ui-button.ui-state-active:hover  {
+    background: #337ab7;
+}
+
+.list-group-item .control-label {
+    font-weight: normal;
 }

@@ -16,6 +16,7 @@
 package org.wso2.developerstudio.datamapper.diagram.custom.util;
 
 import java.util.Map;
+import java.util.Set;
 import java.util.Stack;
 
 import org.wso2.developerstudio.datamapper.SchemaDataType;
@@ -140,9 +141,24 @@ public class ScriptGenerationUtil {
             }
         }
         return prettyVariableName;
-    }
+	}
 
-    public static String removeInvalidCharaters(String variableName) {
+	private static boolean hasAttributeOrChild(String name, Map<String, SchemaDataType> variableTypeMap) {
+		Set<String> variableSet = variableTypeMap.keySet();
+		int numberOfVariables = 0;
+		for (String variableName : variableSet) {
+			if (variableName.contains(name)) {
+				// if there are two variables which contains target name that means it has a child or attribute
+				if(numberOfVariables>0){
+					return true;
+				}
+				numberOfVariables++;
+			}
+		}
+		return false;
+	}
+
+	public static String removeInvalidCharaters(String variableName) {
         return variableName.replace(':', '_').replace(',', '_').replace('=', '_');
     }
 

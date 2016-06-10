@@ -175,9 +175,12 @@ public class SchemaGeneratorForXML extends SchemaGeneratorForJSON implements ISc
 				if (XSI_NAMESPACE_URI.equals(qName.getNamespaceURI()) && XSI_TYPE.equals(qName.getLocalPart())) {
 					modifiedElementName = element.getQName().getLocalPart() + "_" + DOLLLAR_AT_PREFIX
 							+ qName.getPrefix() + ":" + qName.getLocalPart() + "_" + atttrib.getAttributeValue();
-				}
+					String prefix = atttrib.getNamespace().getPrefix();
+					attributeElement = factory.createOMElement(DOLLLAR_AT_PREFIX + prefix + ":" + atttrib.getLocalName(), null);
+				}else{
 				String prefix = atttrib.getNamespace().getPrefix();
 				attributeElement = factory.createOMElement(AT_PREFIX + prefix + ":" + atttrib.getLocalName(), null);
+				}
 			} else {
 				// remove attribute and instead add a element with @ infront
 				// eg <person age="30"></person> will be replaced by

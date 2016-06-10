@@ -45,7 +45,7 @@ public class HumanTaskExportWizardPage extends WizardPage {
 	
 	protected HumanTaskExportWizardPage(String pageName, IProject p) {
 		super(pageName);
-		setTitle("HT export path");
+		setTitle("Human task export path");
 		setDescription("Path to export the Human task artifact");
 		if(p != null){
 			selectedProject = p;
@@ -63,7 +63,7 @@ public class HumanTaskExportWizardPage extends WizardPage {
 		layout.numColumns = 3;
 		layout.verticalSpacing = 9;
 
-		getShell().setText("combo box");
+		getShell().setText("Combo box");
 		getShell().setLayout(layout);
 		gd = new GridData(GridData.FILL_HORIZONTAL);
 		gd.horizontalSpan = 2;

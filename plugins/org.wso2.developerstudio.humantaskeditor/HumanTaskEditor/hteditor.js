@@ -368,7 +368,7 @@ function generateTaskDiv(taskNode, caller) {
         taskNode.setAttribute("name", taskNameInput);
         createFile(taskNode.getAttribute("name"),"");
         }else{
-        handleError("Task Name should not be empty");
+        handleError("Task name should not be empty");
         $('#' + taskNode.getAttribute("name") + "wrapper #taskName").val(taskNode.getAttribute("name"));
         makeUnDirty();
         }
@@ -423,7 +423,7 @@ function generateTaskDiv(taskNode, caller) {
                     mappingNo);
                 makeDirty();
                 generateText(taskNode);
-                generateTaskDiv(taskNode,"taskInputSection");
+                generateTaskDiv(taskNode, "taskInputSection");
                 //selectedindex = $('#page-content-wrapper a[href="#'+taskNode.getAttribute("name")+'wrapper"]').parent().index();
             });
 
@@ -532,7 +532,7 @@ function generateTaskDiv(taskNode, caller) {
                                     }
                                 }
                                 makeDirty();
-                                generateTaskDiv(taskNode,"taskInputSection");
+                                generateTaskDiv(taskNode, "taskInputSection");
                                 //selectedindex = $('#page-content-wrapper a[href="#'+taskNode.getAttribute("name")+'wrapper"]').parent().index();
                             } catch (err) {
                                 handleError(err);
@@ -665,7 +665,7 @@ function generateTaskDiv(taskNode, caller) {
         unmarshalPeopleAssignment(taskNode, "taskStakeholders");
 
     } catch (err) {
-        handleError("People Assignments Couldn't be synced \n" + err);
+        handleError("Could not sync people assignments \n" + err);
     }
     $('#' + taskDivName + ' .taskDiv').show();
     bindChangeEvents();
@@ -1166,7 +1166,7 @@ function initValues(currentTaskName) {
 
 function handleError(message) {
     //alert(message); // A functionality to log errors is requested in https://wso2.org/jira/browse/TOOLS-3366
-    ExecuteCustomFunction("alert","Human Task Editor Error",message);
+    ExecuteCustomFunction("alert", "Human task editor error", message);
 }
 
 function handleTabChange() {

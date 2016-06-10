@@ -41,6 +41,7 @@ public class SchemaBuilderWithNamepaces extends SchemaBuilder {
 	private static final String URL = "url";
 	private static final String STRING = "string";
 	private static final String NULL = "null";
+	private static final String DOLLLAR_AT_PREFIX = "$@";
 
 	@Override
 	protected JsonSchema addPrimitiveToParent(JsonSchema parent, String id, String value, TypeEnum propertyValueType,
@@ -58,6 +59,9 @@ public class SchemaBuilderWithNamepaces extends SchemaBuilder {
 				namespaces = root.getCustomArray(NAMESPACES);
 				namespaces.add(obj);
 			}
+			return null;
+		}else if(id.startsWith(DOLLLAR_AT_PREFIX)){
+			String prefix = getKeyOfElementIdentifier(id);
 			// Create element identifier block
 			if (elementIdentifierMap.containsKey(prefix)) {
 				JsonArray identifiers = root.getCustomArray(ELEMENT_IDENTIFIERS);
@@ -71,20 +75,18 @@ public class SchemaBuilderWithNamepaces extends SchemaBuilder {
 					identifiers.add(identifierObj);
 				}
 				elementIdentifierMap.clear();
-			}
-			return null;
+			}	
+			JsonSchema leaf = new JsonSchema();
+			String idwithoutAtSign = id.substring(2);
+			leaf.setId(parent.getId() + "/" + idwithoutAtSign);
+			leaf.setType(propertyValueType.toString().toLowerCase());
+			parent.addAttribute(idwithoutAtSign, leaf);
+			return leaf;
 		} else if (id.startsWith(AT_PREFIX)) {
 			JsonSchema leaf = new JsonSchema();
 			String idwithoutAtSign = id.substring(1);
 			leaf.setId(parent.getId() + "/" + idwithoutAtSign);
 			leaf.setType(value);
-			parent.addAttribute(idwithoutAtSign, leaf);
-			return leaf;
-		} else if (id.startsWith(DOLLLAR_AT_PREFIX)) {
-			JsonSchema leaf = new JsonSchema();
-			String idwithoutAtSign = id.substring(2);
-			leaf.setId(parent.getId() + "/" + idwithoutAtSign);
-			leaf.setType(propertyValueType.toString().toLowerCase());
 			parent.addAttribute(idwithoutAtSign, leaf);
 			return leaf;
 		} else if (id.equals(HASHCONTENT)) {
@@ -161,5 +163,19 @@ public class SchemaBuilderWithNamepaces extends SchemaBuilder {
 			}
 		}
 		return TypeEnum.UNDEFINED;
+	}
+	
+	private String getKeyOfElementIdentifier(String id) {
+		String key = null;
+		// $@xsi:type
+		if (id.contains(":")) {
+			String[] identifier = id.split(":");
+			// $@xsi
+			key = identifier[0];
+			if (key.startsWith(DOLLLAR_AT_PREFIX)) {
+				key = key.substring(2);
+			}
+		}
+		return key;
 	}
 }

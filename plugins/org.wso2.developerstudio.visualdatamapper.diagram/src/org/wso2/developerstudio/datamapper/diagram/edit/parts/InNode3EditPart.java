@@ -226,7 +226,6 @@ public class InNode3EditPart extends AbstractInNodeEditPart {
 		}
 	}
 
-
 	class InNode3Figure extends RectangleFigure {
 		/**
 		 * @generated NOT
@@ -382,6 +381,5 @@ public class InNode3EditPart extends AbstractInNodeEditPart {
 	public void highlightElementItem() {
 		//		((InNode3Figure) getPrimaryShape()).highlightElementOnSelection();
 	}
-
 
 }

@@ -28,7 +28,7 @@ import org.wso2.developerstudio.datamapper.impl.ConcatImpl;
 public class ConcatEditPart extends AbstractOperatorEditPart {
 
 	private String concatDelimiter;
-	
+
 	/**
 	 * @generated
 	 */
@@ -92,7 +92,7 @@ public class ConcatEditPart extends AbstractOperatorEditPart {
 	 * @generated NOT
 	 */
 	protected IFigure createNodeShape() {
-		concatDelimiter = ((ConcatImpl)((View) getModel()).getElement()).getDelimiter();
+		concatDelimiter = ((ConcatImpl) ((View) getModel()).getElement()).getDelimiter();
 		return primaryShape = new ConcatFigure(concatDelimiter);
 	}
 
@@ -102,8 +102,8 @@ public class ConcatEditPart extends AbstractOperatorEditPart {
 	public RectangleFigure getPrimaryShape() {
 		return (RectangleFigure) primaryShape;
 	}
-	
-	public OperatorRectangle getConcatFigure(){
+
+	public OperatorRectangle getConcatFigure() {
 		return (OperatorRectangle) primaryShape;
 	}
 
@@ -192,10 +192,9 @@ public class ConcatEditPart extends AbstractOperatorEditPart {
 			((Shape) primaryShape).setLineStyle(style);
 		}
 	}
-	
-	
+
 	public class ConcatFigure extends OperatorRectangle {
-		
+
 		private String figureHeaderLabel;
 
 		public ConcatFigure(String concatValue) {

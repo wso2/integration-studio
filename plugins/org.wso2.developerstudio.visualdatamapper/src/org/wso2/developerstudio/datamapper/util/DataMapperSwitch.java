@@ -77,10 +77,74 @@ public class DataMapperSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case DataMapperPackage.STRING_LENGTH: {
+				StringLength stringLength = (StringLength)theEObject;
+				T result = caseStringLength(stringLength);
+				if (result == null) result = caseOperator(stringLength);
+				if (result == null) result = caseDataMapperNode(stringLength);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case DataMapperPackage.STARTS_WITH: {
+				StartsWith startsWith = (StartsWith)theEObject;
+				T result = caseStartsWith(startsWith);
+				if (result == null) result = caseOperator(startsWith);
+				if (result == null) result = caseDataMapperNode(startsWith);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case DataMapperPackage.ENDS_WITH: {
+				EndsWith endsWith = (EndsWith)theEObject;
+				T result = caseEndsWith(endsWith);
+				if (result == null) result = caseOperator(endsWith);
+				if (result == null) result = caseDataMapperNode(endsWith);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case DataMapperPackage.SUBSTRING: {
+				Substring substring = (Substring)theEObject;
+				T result = caseSubstring(substring);
+				if (result == null) result = caseOperator(substring);
+				if (result == null) result = caseDataMapperNode(substring);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case DataMapperPackage.IF_ELSE: {
+				IfElse ifElse = (IfElse)theEObject;
+				T result = caseIfElse(ifElse);
+				if (result == null) result = caseOperator(ifElse);
+				if (result == null) result = caseDataMapperNode(ifElse);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case DataMapperPackage.AND: {
+				AND and = (AND)theEObject;
+				T result = caseAND(and);
+				if (result == null) result = caseOperator(and);
+				if (result == null) result = caseDataMapperNode(and);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case DataMapperPackage.OR: {
+				OR or = (OR)theEObject;
+				T result = caseOR(or);
+				if (result == null) result = caseOperator(or);
+				if (result == null) result = caseDataMapperNode(or);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case DataMapperPackage.INPUT: {
 				Input input = (Input)theEObject;
 				T result = caseInput(input);
 				if (result == null) result = caseDataMapperNode(input);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case DataMapperPackage.NOT: {
+				NOT not = (NOT)theEObject;
+				T result = caseNOT(not);
+				if (result == null) result = caseOperator(not);
+				if (result == null) result = caseDataMapperNode(not);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -327,6 +391,111 @@ public class DataMapperSwitch<T> extends Switch<T> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>String Length</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>String Length</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseStringLength(StringLength object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Starts With</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Starts With</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseStartsWith(StartsWith object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Ends With</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Ends With</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseEndsWith(EndsWith object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Substring</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Substring</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseSubstring(Substring object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>If Else</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>If Else</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseIfElse(IfElse object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>AND</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>AND</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseAND(AND object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>OR</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>OR</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseOR(OR object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Input</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -338,6 +507,21 @@ public class DataMapperSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseInput(Input object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>NOT</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>NOT</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseNOT(NOT object) {
 		return null;
 	}
 

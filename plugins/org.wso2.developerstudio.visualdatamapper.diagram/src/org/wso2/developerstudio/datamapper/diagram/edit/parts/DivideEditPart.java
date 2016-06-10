@@ -183,7 +183,7 @@ public class DivideEditPart extends AbstractOperatorEditPart {
 			((Shape) primaryShape).setLineStyle(style);
 		}
 	}
-	
+
 	public class DivideFigure extends OperatorRectangle {
 
 		public DivideFigure() {

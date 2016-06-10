@@ -41,7 +41,6 @@ import org.wso2.developerstudio.datamapper.impl.OperatorImpl;
  */
 public class OperatorLeftConnectorEditPart extends AbstractBorderedShapeEditPart {
 
-
 	private NodeFigure nodeFigure;
 	/**
 	 * @generated
@@ -127,7 +126,7 @@ public class OperatorLeftConnectorEditPart extends AbstractBorderedShapeEditPart
 
 		return false;
 	}
-	
+
 	/**
 	 * @generated NOT
 	 */
@@ -195,23 +194,20 @@ public class OperatorLeftConnectorEditPart extends AbstractBorderedShapeEditPart
 	 * @generated
 	 */
 	protected NodeFigure createMainFigure() {
-		nodeFigure = createNodePlate();
-		nodeFigure.setLayoutManager(new StackLayout());
+		NodeFigure figure = createNodePlate();
+		figure.setLayoutManager(new StackLayout());
 		IFigure shape = createNodeShape();
-		shape.setBorder(null);
-		nodeFigure.add(shape);
-		nodeFigure.setBorder(null);
-		addLeftConnectorLabel();
+		figure.add(shape);
 		contentPane = setupContentPane(shape);
-		return nodeFigure;
+		return figure;
 	}
-	
+
 	public boolean addLeftConnectorLabel() {
 		EditPart parentEditPart = this.getParent().getParent().getParent();
-		OperatorImpl operator=(OperatorImpl) ((View) parentEditPart.getModel()).getElement();
+		OperatorImpl operator = (OperatorImpl) ((View) parentEditPart.getModel()).getElement();
 		String inputLabel = getInputLabel(operator);
 		if (nodeFigure != null) {
-			nodeFigure.add(new Label(inputLabel+" "+operator.getInputVariableType().toString()+" "));
+			nodeFigure.add(new Label(inputLabel + " " + operator.getInputVariableType().toString() + " "));
 			return true;
 		}
 		return false;
@@ -219,7 +215,7 @@ public class OperatorLeftConnectorEditPart extends AbstractBorderedShapeEditPart
 
 	private String getInputLabel(OperatorImpl operator) {
 		List<String> inputLabels = operator.getInputLabelList();
-		if(inputLabels.size()==1){
+		if (inputLabels.size() == 1) {
 			return formatLabel(inputLabels.get(0));
 		} else if (inputLabels.size() > 1) {
 			int leftConnectorIndex = operator.getLeftConnectorCount();
@@ -230,7 +226,7 @@ public class OperatorLeftConnectorEditPart extends AbstractBorderedShapeEditPart
 	}
 
 	private String formatLabel(String inputLabel) {
-		return " "+inputLabel+" :";
+		return " " + inputLabel + " :";
 	}
 
 	/**

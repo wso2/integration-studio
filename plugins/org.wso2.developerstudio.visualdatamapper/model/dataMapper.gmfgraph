@@ -236,6 +236,54 @@
           xsi:type="gmfgraph:Rectangle"
           name="CeliFigure"/>
     </descriptors>
+    <descriptors
+        name="StringLengthFigure">
+      <actualFigure
+          xsi:type="gmfgraph:Rectangle"
+          name="StringLengthFigure"/>
+    </descriptors>
+    <descriptors
+        name="StartsWithFigure">
+      <actualFigure
+          xsi:type="gmfgraph:Rectangle"
+          name="StartsWithFigure"/>
+    </descriptors>
+    <descriptors
+        name="EndsWithFigure">
+      <actualFigure
+          xsi:type="gmfgraph:Rectangle"
+          name="EndsWithFigure"/>
+    </descriptors>
+    <descriptors
+        name="SubstringFigure">
+      <actualFigure
+          xsi:type="gmfgraph:Rectangle"
+          name="SubstringFigure"/>
+    </descriptors>
+    <descriptors
+        name="IfElseFigure">
+      <actualFigure
+          xsi:type="gmfgraph:Rectangle"
+          name="IfElseFigure"/>
+    </descriptors>
+    <descriptors
+        name="ANDFigure">
+      <actualFigure
+          xsi:type="gmfgraph:Rectangle"
+          name="ANDFigure"/>
+    </descriptors>
+    <descriptors
+        name="ORFigure">
+      <actualFigure
+          xsi:type="gmfgraph:Rectangle"
+          name="ORFigure"/>
+    </descriptors>
+    <descriptors
+        name="NOTFigure">
+      <actualFigure
+          xsi:type="gmfgraph:Rectangle"
+          name="NOTFigure"/>
+    </descriptors>
   </figures>
   <nodes
       name="DataMapperNode"
@@ -341,6 +389,30 @@
   <nodes
       name="Celi"
       figure="CeliFigure"/>
+  <nodes
+      name="StringLength"
+      figure="StringLengthFigure"/>
+  <nodes
+      name="StartsWith"
+      figure="StartsWithFigure"/>
+  <nodes
+      name="EndsWith"
+      figure="EndsWithFigure"/>
+  <nodes
+      name="Substring"
+      figure="SubstringFigure"/>
+  <nodes
+      name="IfElse"
+      figure="IfElseFigure"/>
+  <nodes
+      name="AND"
+      figure="ANDFigure"/>
+  <nodes
+      name="OR"
+      figure="ORFigure"/>
+  <nodes
+      name="NOT"
+      figure="NOTFigure"/>
   <connections
       name="DataMapperLink"
       figure="DataMapperLinkFigure"/>

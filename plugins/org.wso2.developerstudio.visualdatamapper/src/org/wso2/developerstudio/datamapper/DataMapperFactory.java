@@ -40,6 +40,69 @@ public interface DataMapperFactory extends EFactory {
 	DataMapperRoot createDataMapperRoot();
 
 	/**
+	 * Returns a new object of class '<em>String Length</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>String Length</em>'.
+	 * @generated
+	 */
+	StringLength createStringLength();
+
+	/**
+	 * Returns a new object of class '<em>Starts With</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Starts With</em>'.
+	 * @generated
+	 */
+	StartsWith createStartsWith();
+
+	/**
+	 * Returns a new object of class '<em>Ends With</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Ends With</em>'.
+	 * @generated
+	 */
+	EndsWith createEndsWith();
+
+	/**
+	 * Returns a new object of class '<em>Substring</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Substring</em>'.
+	 * @generated
+	 */
+	Substring createSubstring();
+
+	/**
+	 * Returns a new object of class '<em>If Else</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>If Else</em>'.
+	 * @generated
+	 */
+	IfElse createIfElse();
+
+	/**
+	 * Returns a new object of class '<em>AND</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>AND</em>'.
+	 * @generated
+	 */
+	AND createAND();
+
+	/**
+	 * Returns a new object of class '<em>OR</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>OR</em>'.
+	 * @generated
+	 */
+	OR createOR();
+
+	/**
 	 * Returns a new object of class '<em>Input</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -47,6 +110,15 @@ public interface DataMapperFactory extends EFactory {
 	 * @generated
 	 */
 	Input createInput();
+
+	/**
+	 * Returns a new object of class '<em>NOT</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>NOT</em>'.
+	 * @generated
+	 */
+	NOT createNOT();
 
 	/**
 	 * Returns a new object of class '<em>Output</em>'.

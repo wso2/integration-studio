@@ -416,6 +416,86 @@ public class Messages extends NLS {
 	public static String Celi17CreationTool_desc;
 
 	/**
+	* @generated
+	*/
+	public static String StringLength18CreationTool_title;
+
+	/**
+	* @generated
+	*/
+	public static String StringLength18CreationTool_desc;
+
+	/**
+	* @generated
+	*/
+	public static String StartsWith19CreationTool_title;
+
+	/**
+	* @generated
+	*/
+	public static String StartsWith19CreationTool_desc;
+
+	/**
+	* @generated
+	*/
+	public static String EndsWith20CreationTool_title;
+
+	/**
+	* @generated
+	*/
+	public static String EndsWith20CreationTool_desc;
+
+	/**
+	* @generated
+	*/
+	public static String Substring21CreationTool_title;
+
+	/**
+	* @generated
+	*/
+	public static String Substring21CreationTool_desc;
+
+	/**
+	* @generated
+	*/
+	public static String IfElse22CreationTool_title;
+
+	/**
+	* @generated
+	*/
+	public static String IfElse22CreationTool_desc;
+
+	/**
+	* @generated
+	*/
+	public static String AND23CreationTool_title;
+
+	/**
+	* @generated
+	*/
+	public static String AND23CreationTool_desc;
+
+	/**
+	* @generated
+	*/
+	public static String OR24CreationTool_title;
+
+	/**
+	* @generated
+	*/
+	public static String OR24CreationTool_desc;
+
+	/**
+	* @generated
+	*/
+	public static String NOT25CreationTool_title;
+
+	/**
+	* @generated
+	*/
+	public static String NOT25CreationTool_desc;
+
+	/**
 	 * @generated
 	 */
 	public static String CommandName_OpenDiagram;

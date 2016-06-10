@@ -183,7 +183,7 @@ public class MultiplyEditPart extends AbstractOperatorEditPart {
 			((Shape) primaryShape).setLineStyle(style);
 		}
 	}
-	
+
 	public class MultiplyFigure extends OperatorRectangle {
 
 		public MultiplyFigure() {

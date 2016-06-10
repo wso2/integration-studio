@@ -74,8 +74,40 @@ public class DataMapperAdapterFactory extends AdapterFactoryImpl {
 				return createDataMapperRootAdapter();
 			}
 			@Override
+			public Adapter caseStringLength(StringLength object) {
+				return createStringLengthAdapter();
+			}
+			@Override
+			public Adapter caseStartsWith(StartsWith object) {
+				return createStartsWithAdapter();
+			}
+			@Override
+			public Adapter caseEndsWith(EndsWith object) {
+				return createEndsWithAdapter();
+			}
+			@Override
+			public Adapter caseSubstring(Substring object) {
+				return createSubstringAdapter();
+			}
+			@Override
+			public Adapter caseIfElse(IfElse object) {
+				return createIfElseAdapter();
+			}
+			@Override
+			public Adapter caseAND(AND object) {
+				return createANDAdapter();
+			}
+			@Override
+			public Adapter caseOR(OR object) {
+				return createORAdapter();
+			}
+			@Override
 			public Adapter caseInput(Input object) {
 				return createInputAdapter();
+			}
+			@Override
+			public Adapter caseNOT(NOT object) {
+				return createNOTAdapter();
 			}
 			@Override
 			public Adapter caseOutput(Output object) {
@@ -242,6 +274,104 @@ public class DataMapperAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link org.wso2.developerstudio.datamapper.StringLength <em>String Length</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.wso2.developerstudio.datamapper.StringLength
+	 * @generated
+	 */
+	public Adapter createStringLengthAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.wso2.developerstudio.datamapper.StartsWith <em>Starts With</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.wso2.developerstudio.datamapper.StartsWith
+	 * @generated
+	 */
+	public Adapter createStartsWithAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.wso2.developerstudio.datamapper.EndsWith <em>Ends With</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.wso2.developerstudio.datamapper.EndsWith
+	 * @generated
+	 */
+	public Adapter createEndsWithAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.wso2.developerstudio.datamapper.Substring <em>Substring</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.wso2.developerstudio.datamapper.Substring
+	 * @generated
+	 */
+	public Adapter createSubstringAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.wso2.developerstudio.datamapper.IfElse <em>If Else</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.wso2.developerstudio.datamapper.IfElse
+	 * @generated
+	 */
+	public Adapter createIfElseAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.wso2.developerstudio.datamapper.AND <em>AND</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.wso2.developerstudio.datamapper.AND
+	 * @generated
+	 */
+	public Adapter createANDAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.wso2.developerstudio.datamapper.OR <em>OR</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.wso2.developerstudio.datamapper.OR
+	 * @generated
+	 */
+	public Adapter createORAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link org.wso2.developerstudio.datamapper.Input <em>Input</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -252,6 +382,20 @@ public class DataMapperAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createInputAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.wso2.developerstudio.datamapper.NOT <em>NOT</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.wso2.developerstudio.datamapper.NOT
+	 * @generated
+	 */
+	public Adapter createNOTAdapter() {
 		return null;
 	}
 

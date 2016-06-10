@@ -183,7 +183,7 @@ public class SetPrecisionEditPart extends AbstractOperatorEditPart {
 			((Shape) primaryShape).setLineStyle(style);
 		}
 	}
-	
+
 	public class SetPrecisionFigure extends OperatorRectangle {
 
 		public SetPrecisionFigure() {

@@ -91,7 +91,15 @@ public class DataMapperFactoryImpl extends EFactoryImpl implements DataMapperFac
 		switch (eClass.getClassifierID()) {
 			case DataMapperPackage.DATA_MAPPER_NODE: return createDataMapperNode();
 			case DataMapperPackage.DATA_MAPPER_ROOT: return createDataMapperRoot();
+			case DataMapperPackage.STRING_LENGTH: return createStringLength();
+			case DataMapperPackage.STARTS_WITH: return createStartsWith();
+			case DataMapperPackage.ENDS_WITH: return createEndsWith();
+			case DataMapperPackage.SUBSTRING: return createSubstring();
+			case DataMapperPackage.IF_ELSE: return createIfElse();
+			case DataMapperPackage.AND: return createAND();
+			case DataMapperPackage.OR: return createOR();
 			case DataMapperPackage.INPUT: return createInput();
+			case DataMapperPackage.NOT: return createNOT();
 			case DataMapperPackage.OUTPUT: return createOutput();
 			case DataMapperPackage.OPERATOR: return createOperator();
 			case DataMapperPackage.OPERATOR_BASIC_CONTAINER: return createOperatorBasicContainer();
@@ -186,11 +194,99 @@ public class DataMapperFactoryImpl extends EFactoryImpl implements DataMapperFac
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public StringLength createStringLength() {
+		StringLengthImpl stringLength = new StringLengthImpl();
+		stringLength.setBasicContainer(createOperatorBasicContainer());
+		return stringLength;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public StartsWith createStartsWith() {
+		StartsWithImpl startsWith = new StartsWithImpl();
+		startsWith.setBasicContainer(createOperatorBasicContainer());
+		return startsWith;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public EndsWith createEndsWith() {
+		EndsWithImpl endsWith = new EndsWithImpl();
+		endsWith.setBasicContainer(createOperatorBasicContainer());
+		return endsWith;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public Substring createSubstring() {
+		SubstringImpl substring = new SubstringImpl();
+		substring.setBasicContainer(createOperatorBasicContainer());
+		return substring;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public IfElse createIfElse() {
+		IfElseImpl ifElse = new IfElseImpl();
+		ifElse.setBasicContainer(createOperatorBasicContainer());
+		return ifElse;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public AND createAND() {
+		ANDImpl and = new ANDImpl();
+		and.setBasicContainer(createOperatorBasicContainer());
+		return and;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public OR createOR() {
+		ORImpl or = new ORImpl();
+		or.setBasicContainer(createOperatorBasicContainer());
+		return or;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public Input createInput() {
 		InputImpl input = new InputImpl();
 		return input;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public NOT createNOT() {
+		NOTImpl not = new NOTImpl();
+		not.setBasicContainer(createOperatorBasicContainer());
+		return not;
 	}
 
 	/**

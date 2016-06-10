@@ -78,6 +78,30 @@ public class DataMapperEditPartFactory implements EditPartFactory {
 			case AbsoluteValueEditPart.VISUAL_ID:
 				return new AbsoluteValueEditPart(view);
 
+			case StringLengthEditPart.VISUAL_ID:
+				return new StringLengthEditPart(view);
+
+			case StartsWithEditPart.VISUAL_ID:
+				return new StartsWithEditPart(view);
+
+			case EndsWithEditPart.VISUAL_ID:
+				return new EndsWithEditPart(view);
+
+			case SubstringEditPart.VISUAL_ID:
+				return new SubstringEditPart(view);
+
+			case IfElseEditPart.VISUAL_ID:
+				return new IfElseEditPart(view);
+
+			case ANDEditPart.VISUAL_ID:
+				return new ANDEditPart(view);
+
+			case OREditPart.VISUAL_ID:
+				return new OREditPart(view);
+
+			case NOTEditPart.VISUAL_ID:
+				return new NOTEditPart(view);
+
 			case TreeNodeEditPart.VISUAL_ID:
 				return new TreeNodeEditPart(view);
 

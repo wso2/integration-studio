@@ -18,9 +18,10 @@
       <genEnumLiterals ecoreEnumLiteral="dataMapper.ecore#//SchemaDataType/LONG"/>
       <genEnumLiterals ecoreEnumLiteral="dataMapper.ecore#//SchemaDataType/MAP"/>
       <genEnumLiterals ecoreEnumLiteral="dataMapper.ecore#//SchemaDataType/NULL"/>
-      <genEnumLiterals ecoreEnumLiteral="dataMapper.ecore#//SchemaDataType/RECORD"/>
+      <genEnumLiterals ecoreEnumLiteral="dataMapper.ecore#//SchemaDataType/OBJECT"/>
       <genEnumLiterals ecoreEnumLiteral="dataMapper.ecore#//SchemaDataType/STRING"/>
       <genEnumLiterals ecoreEnumLiteral="dataMapper.ecore#//SchemaDataType/UNION"/>
+      <genEnumLiterals ecoreEnumLiteral="dataMapper.ecore#//SchemaDataType/NUMBER"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="dataMapper.ecore#//DataMapperOperatorType">
       <genEnumLiterals ecoreEnumLiteral="dataMapper.ecore#//DataMapperOperatorType/OPERATOR"/>
@@ -53,9 +54,17 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dataMapper.ecore#//DataMapperRoot/output"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dataMapper.ecore#//DataMapperRoot/operators"/>
     </genClasses>
+    <genClasses ecoreClass="dataMapper.ecore#//StringLength"/>
+    <genClasses ecoreClass="dataMapper.ecore#//StartsWith"/>
+    <genClasses ecoreClass="dataMapper.ecore#//EndsWith"/>
+    <genClasses ecoreClass="dataMapper.ecore#//Substring"/>
+    <genClasses ecoreClass="dataMapper.ecore#//IfElse"/>
+    <genClasses ecoreClass="dataMapper.ecore#//AND"/>
+    <genClasses ecoreClass="dataMapper.ecore#//OR"/>
     <genClasses ecoreClass="dataMapper.ecore#//Input">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dataMapper.ecore#//Input/treeNode"/>
     </genClasses>
+    <genClasses ecoreClass="dataMapper.ecore#//NOT"/>
     <genClasses ecoreClass="dataMapper.ecore#//Output">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dataMapper.ecore#//Output/treeNode"/>
     </genClasses>

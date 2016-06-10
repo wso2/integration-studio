@@ -34,13 +34,6 @@
             parentCategory="org.wso2.developerstudio.eclipse.capp.project">
       </category>
       <wizard
-            name="Human Task File"
-            icon="icons/humanTask.png"
-            category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.humantaskeditor"
-            class="org.wso2.developerstudio.humantaskeditor.wizards.HumanTaskWizard"
-            id="org.wso2.developerstudio.humantaskeditor.wizards.HumanTaskWizard">
-      </wizard>
-      <wizard
             name="Human Task Project"
             icon="icons/humanTask.png"
             project="true"
@@ -48,10 +41,17 @@
             class="org.wso2.developerstudio.humantaskeditor.wizards.HumanTaskProjectWizard"
             id="org.wso2.developerstudio.humantaskeditor.wizards.HumanTaskProjectWizard">
       </wizard>
+      <wizard
+            name="Human Task File"
+            icon="icons/humanTask.png"
+            category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.humantaskeditor"
+            class="org.wso2.developerstudio.humantaskeditor.wizards.HumanTaskWizard"
+            id="org.wso2.developerstudio.humantaskeditor.wizards.HumanTaskWizard">
+      </wizard>      
    </extension>
 	<extension
       point="org.eclipse.core.resources.natures"
-      id="humantasknature"
+      id="org.wso2.developerstudio.humantaskeditor.humantasknature"
       name="Human Task Nature">
       <runtime>
          <run class="org.wso2.developerstudio.humantaskeditor.wizards.HumanTaskNature">
@@ -72,4 +72,31 @@ point="org.wso2.developerstudio.eclipse.dashboad.link">
                    wizard="org.wso2.developerstudio.humantaskeditor.wizards.HumanTaskWizard">
        </wizardLink>
   </extension>
-</plugin>
+  <extension point="org.eclipse.ui.popupMenus">
+                <objectContribution
+              objectClass="org.eclipse.core.resources.IProject"
+                    id="org.wso2.developerstudio.eclipse.distribution.project.popup.export">
+               <action
+                        label="Export Project as Deployable Archive"
+                        icon="icons/car.png"
+                   		class="org.wso2.developerstudio.humantaskeditor.wizards.ExportProjectAction"
+                        id="org.wso2.developerstudio.eclipse.distribution.project.ui.action.artifactexport">
+               </action>
+               <enablement>
+						<adapt type="org.eclipse.core.resources.IProject">
+						<or>
+							<test property="org.eclipse.core.resources.projectNature"
+								value="org.wso2.developerstudio.humantaskeditor.humantasknature" />
+						</or>
+						 </adapt>
+				</enablement>
+               </objectContribution>
+        </extension>
+        <extension
+         id="org.wso2.developerstudio.humantaskeditor.wizardhelp"
+         point="org.eclipse.help.contexts">
+      	<contexts
+            file="helpcontexts.xml"
+            />
+   		</extension>
+ </plugin>

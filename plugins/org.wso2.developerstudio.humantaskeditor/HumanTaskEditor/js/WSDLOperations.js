@@ -1,16 +1,21 @@
 /*
- * Signature: CreateFile(currentTaskName){...}
- * 
- * This method generates WSDL files related to the Tasks. It copies content from
- * the dummy wsdl file in the project and creates new wsdl with the intended
- * name. Then a DOM from the created dummy is created and sent to further
- * processing. The Task Name which is used for generating the wsdl should be
- * given.
- * 
- * 
+ *  Copyright (c) 2016, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ *
+ *  WSO2 Inc. licenses this file to you under the Apache License,
+ *  Version 2.0 (the "License"); you may not use this file except
+ *  in compliance with the License.
+ *  You may obtain a copy of the License at
+ *
+ *  http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *  Unless required by applicable law or agreed to in writing,
+ *  software distributed under the License is distributed on an
+ *  "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ *  KIND, either express or implied.  See the License for the
+ *  specific language governing permissions and limitations
+ *  under the License.
+ *
  */
-
-
 /*
  * Signature: saveWSDL(inputWsdl, fileName) {...}
  * 

@@ -1,10 +1,9 @@
 # Devstudio-tooling-bps
 
-Devstudio Tooling project contains three main components
+Devstudio Tooling for BPS project contains two main components
 
   - BPEL Editor
   - Human Task Editor
-  - BPMN Editor
 
 ### Version
 1.0.0 - Alpha
@@ -27,8 +26,6 @@ In eclipse go to help -> Install new software and select the respective path (re
 - BPEL Editor - Go to new wizard in eclipse(file -> new -> other). In BPEL 2.0 category you can find the new wizards for BPEL Project, BPEL Process File, BPEL deployment descriptor. Select a wizard accordingly.
 
 - Human Task Editor - Go to new wizard in eclipse(file -> new -> other). In Human Task category you can find the new wizards for Human Task Project and Human Task File. Select a wizard accordingly.
-    
-- BPMN Editor - Go to new wizard in eclipse(file -> new -> other). In Activiti category you can find the new wizards for Activiti Project and Activiti Diagram. Select a wizard accordingly.
 
 
 

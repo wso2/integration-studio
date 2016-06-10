@@ -27,6 +27,10 @@ import java.util.logging.Logger;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.IWorkspace;
 import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
+import org.eclipse.jface.dialogs.ErrorDialog;
+import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.eclipse.webui.core.editor.AbstractEditorFunctionExecutor;
 import org.wso2.developerstudio.humantaskeditor.Activator;
 import org.wso2.developerstudio.humantaskeditor.HumantaskEditorConstants;
@@ -104,6 +108,12 @@ public class EditorContentFunction implements AbstractEditorFunctionExecutor {
                 return HumantaskEditorConstants.UNDEFINED_LITERAL;
             }
 
+        } else if (functionName.equals(HumantaskEditorConstants.JS_CUSTOMFUNC_ALERT)) { // ("alert","title","message")
+            IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID,(String)parameters[2]);
+            ErrorDialog.openError(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
+                    (String) parameters[1],
+                    null, editorStatus);
+            return null;
         } else {
             return null;
         }

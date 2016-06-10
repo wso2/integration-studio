@@ -17,5 +17,6 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.wst.common.ui;bundle-version="1.1.500"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
-Import-Package: org.wso2.developerstudio.eclipse.webui.core.editor;version="[4.1.0,5.0.0)",
- org.wso2.developerstudio.eclipse.webui.core.exception;version="4.1.0"
+Import-Package: 
+ org.wso2.developerstudio.eclipse.webui.core.editor;version="[4.1.0,5.0.0)",
+ org.wso2.developerstudio.eclipse.webui.core.exception;version="[4.1.0,5.0.0)"

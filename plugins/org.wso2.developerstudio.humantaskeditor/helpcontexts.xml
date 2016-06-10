@@ -1,0 +1,7 @@
+<contexts>
+      <context id="hteditor" title="Human Task Editor Help">
+        <description>Gets help about this wizard</description>
+        <topic href="HumanTaskEditor/help/ExportHelp.html"  label="HumanTask Editor help"/> 
+        <topic href="HumanTaskEditor/help/ExportHelp.html"  label="General help"/>
+   </context>
+</contexts> 

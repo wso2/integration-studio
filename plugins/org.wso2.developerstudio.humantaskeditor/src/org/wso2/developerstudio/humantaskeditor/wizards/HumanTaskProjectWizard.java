@@ -86,6 +86,7 @@ public class HumanTaskProjectWizard extends Wizard implements INewWizard {
     public HumanTaskProjectWizard() {
         super();
         setNeedsProgressMonitor(true);
+        setWindowTitle(HumantaskEditorConstants.HUMAN_TASK_PROJECT_WIZARD_TITLE);
     }
 
     /**
@@ -105,7 +106,7 @@ public class HumanTaskProjectWizard extends Wizard implements INewWizard {
     @Override
     public boolean performFinish() {
         final String containerName = page.getContainerName();
-        final String fileName = page.getFileName();
+        final String fileName = page.getFileName() + ".ht";
         final String taskName = page.getTaskName();
         final String tnsName = page.getTNSName();
         

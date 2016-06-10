@@ -249,11 +249,10 @@ public class EditObjectAction extends AbstractActionHandler {
 			executeAddCommandForChild(selectedNode, treeNodeChild);
 			// removes the existing properties of the child node
 			executeRemoveCommand(treeNodeChild);
-		}
-
-		// Updates the child element
-		if (newValueMap.size() > 0) {
-			recreateTheTree(treeNodeChild, newValueMap);
+			// Updates the child element
+			if (newValueMap.size() > 0) {
+				recreateTheTree(treeNodeChild, newValueMap);
+			}
 		}
 
 		updateConnector(map);
@@ -480,48 +479,56 @@ public class EditObjectAction extends AbstractActionHandler {
 				valueMap.put(JSON_SCHEMA_NULLABLE, FALSE);
 			}
 
-			TreeNode newChild = null;
 			// Check for element identifiers
 			TreeNode treeNodeChild = getChildTreeNode(identifierType, selectedNode);
 
 			if (hasIdentifier && treeNodeChild != null) {
 				removeTreeNode(selectedNode, treeNodeChild);
-				// Create a new node for element identifiers
-				newChild = DataMapperFactory.eINSTANCE.createTreeNode();
 				hasIdentifier = false;
-			} else {
-				// Create a new node for element identifiers
-				newChild = DataMapperFactory.eINSTANCE.createTreeNode();
 			}
 
-			if (StringUtils.isNotEmpty(editTypeDialog.getIdentifierType())
-					&& StringUtils.isNotEmpty(editTypeDialog.getIdentifierValue())) {
-
-				String fullName = editTypeDialog.getIdentifierType() + "=" + editTypeDialog.getIdentifierValue();
-				valueMap.put(JSON_SCHEMA_TITLE, editTypeDialog.getTitle() + ", " + fullName);
-
-				newChild.setName(PREFIX + editTypeDialog.getIdentifierType());
-				newChild.setLevel(selectedNode.getLevel() + 1);
-				String[] identifierArray = null;
-				String identifierPrefix = null;
-				if (editTypeDialog.getIdentifierType().contains(":")) {
-					identifierArray = editTypeDialog.getIdentifierType().split(":");
-					identifierPrefix = identifierArray[0];
-				} else {
-					identifierPrefix = editTypeDialog.getIdentifierType();
-				}
-				// Sets the attribute ID and type to be used in serialization of
-				// the attributes
-				newValueMap.put(JSON_SCHEMA_ID, editTypeDialog.getID() + "/" + identifierPrefix);
-				newValueMap.put(JSON_SCHEMA_TYPE, STRING);
-				newValueMap.put(JSON_SCHEMA_ADDED_ATTRIBUTE_ID, editTypeDialog.getID() + "/" + identifierPrefix);
-				newValueMap.put(JSON_SCHEMA_ADDED_ATTRIBUTE_TYPE, STRING);
-			}
-
+			TreeNode newChild = updateElementIdentifier(selectedNode, editTypeDialog, valueMap, newValueMap);
 			reflectChanges(selectedNode, valueMap, newChild, newValueMap);
 
 		}
 
+	}
+
+	/**
+	 * Updates the element identifiers
+	 * 
+	 * @param selectedNode
+	 * @param editTypeDialog
+	 * @param valueMap
+	 * @param newValueMap
+	 * @return
+	 */
+	private TreeNode updateElementIdentifier(TreeNode selectedNode, AddNewObjectDialog editTypeDialog,
+			HashMap<String, String> valueMap, HashMap<String, String> newValueMap) {
+		TreeNode newChild = null;
+		if (StringUtils.isNotEmpty(editTypeDialog.getIdentifierType())
+				&& StringUtils.isNotEmpty(editTypeDialog.getIdentifierValue())) {
+			newChild = DataMapperFactory.eINSTANCE.createTreeNode();
+			String fullName = editTypeDialog.getIdentifierType() + "=" + editTypeDialog.getIdentifierValue();
+			valueMap.put(JSON_SCHEMA_TITLE, editTypeDialog.getTitle() + ", " + fullName);
+			newChild.setName(PREFIX + editTypeDialog.getIdentifierType());
+			newChild.setLevel(selectedNode.getLevel() + 1);
+			String[] identifierArray = null;
+			String identifierPrefix = null;
+			if (editTypeDialog.getIdentifierType().contains(":")) {
+				identifierArray = editTypeDialog.getIdentifierType().split(":");
+				identifierPrefix = identifierArray[0];
+			} else {
+				identifierPrefix = editTypeDialog.getIdentifierType();
+			}
+			// Sets the attribute ID and type to be used in serialization of
+			// the attributes
+			newValueMap.put(JSON_SCHEMA_ID, editTypeDialog.getID() + "/" + identifierPrefix);
+			newValueMap.put(JSON_SCHEMA_TYPE, STRING);
+			newValueMap.put(JSON_SCHEMA_ADDED_ATTRIBUTE_ID, editTypeDialog.getID() + "/" + identifierPrefix);
+			newValueMap.put(JSON_SCHEMA_ADDED_ATTRIBUTE_TYPE, STRING);
+		}
+		return newChild;
 	}
 
 	/**

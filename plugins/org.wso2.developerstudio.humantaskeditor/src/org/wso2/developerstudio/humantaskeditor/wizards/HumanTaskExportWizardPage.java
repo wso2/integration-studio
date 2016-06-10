@@ -46,7 +46,7 @@ public class HumanTaskExportWizardPage extends WizardPage {
 	protected HumanTaskExportWizardPage(String pageName, IProject p) {
 		super(pageName);
 		setTitle("HT export path");
-		setDescription("Path to export the HT artifact");
+		setDescription("Path to export the Human task artifact");
 		if(p != null){
 			selectedProject = p;
 		}

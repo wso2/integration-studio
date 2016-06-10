@@ -1186,7 +1186,7 @@ function handleTabChange() {
 
 var eventStack = [];
 
-function addEvent(eventType,elementID,elementValue){
+function addEvent(eventType, elementID, elementValue){
     lastEventID =  parseInt(getLastEventID());
     lastEventID++;
     newElement = [lastEventID,eventType,elementID,elementValue.cloneNode(true)];

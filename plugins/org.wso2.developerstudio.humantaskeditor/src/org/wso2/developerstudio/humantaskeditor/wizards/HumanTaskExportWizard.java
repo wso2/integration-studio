@@ -61,7 +61,7 @@ public class HumanTaskExportWizard extends Wizard implements IExportWizard{
                 MessageDialog.openError(getShell(), "Error", realException.getMessage());
             return false;
         }
-        MessageDialog.openInformation(getShell(), "HT Process", "HT archive Exported successfully.");
+        MessageDialog.openInformation(getShell(), "HT Process", "Human task archive is exported successfully");
         
         return true;    
     }
@@ -99,7 +99,7 @@ public class HumanTaskExportWizard extends Wizard implements IExportWizard{
                 File tmpZip=File.createTempFile("temp",".tmp");
                 tmpZip.delete();
                 tmpZip.deleteOnExit();
-                monitor.setTaskName("Creating the HT artifact...");
+                monitor.setTaskName("Creating the human task artifact...");
                 FileManagementUtil.copyDirectory(new File(path), zipFolder, bpelValidFileList);
                 FileManagementUtil.removeEmptyDirectories(zipFolder);
                 FileManagementUtil.zipFolder(zipFolder.getAbsolutePath(), tmpZip.getAbsolutePath());

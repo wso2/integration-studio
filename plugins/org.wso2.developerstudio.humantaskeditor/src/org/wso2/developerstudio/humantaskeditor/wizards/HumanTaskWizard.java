@@ -145,7 +145,7 @@ public class HumanTaskWizard extends Wizard implements INewWizard {
         for(IResource member : memberList){
             IFile memberFile = (IFile)member;
             if(memberFile.getFileExtension().equals("ht")){
-                throwCoreException("An artifact must contain only one ht file");
+                throwCoreException("An artifact must contain only one human task file");
             }
         }
         try {
@@ -153,7 +153,7 @@ public class HumanTaskWizard extends Wizard implements INewWizard {
             InputStream wsdlStream = openWSDLStream();
             InputStream htconfigStream = openHTConfigStream();
             if (file.exists()) {
-                throwCoreException("A file with the same name exists");
+                throwCoreException("A file with the same name already exists");
             } else {
                 file.create(stream, true, monitor);
                 wsdlfile.create(wsdlStream, true, monitor);

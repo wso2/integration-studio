@@ -516,9 +516,9 @@ public class DataMapperDiagramModel {
 		case "boolean":
 			return SchemaDataType.BOOLEAN;
 		case "number":
-			return SchemaDataType.DOUBLE;
+			return SchemaDataType.NUMBER;
 		case "integer":
-			return SchemaDataType.INT;
+			return SchemaDataType.NUMBER;
 		case "null":
 			return SchemaDataType.NULL;
 		default:

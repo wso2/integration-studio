@@ -161,8 +161,12 @@ public class ScriptGenerationUtil {
 	}
 
 	public static String removeInvalidCharaters(String variableName) {
-        return variableName.replace(':', '_').replace(',', '_').replace('=', '_');
-    }
+		// If variable is an constant it will be as {constant_value}. We should not remove any characters from constants
+		if (variableName.startsWith("{")) {
+			return variableName;
+		}
+		return variableName.replace(':', '_').replace(',', '_').replace('=', '_');
+	}
 
     private static String getAccumulatedIterativeVariableString(Stack<ForLoopBean> parentForLoopBeanStack) {
         String accumulatedIterativeVariableString = "";

@@ -27,13 +27,12 @@ public class DivideImpl extends OperatorImpl implements Divide {
 		setDefaultOutputConnectors(1);
 		setInputSizeFixed(true);
 		setOutputSizeFixed(true);
-		getInputVariableType().add(SchemaDataType.INT);
-		getInputVariableType().add(SchemaDataType.DOUBLE);
-		getOutputVariableType().add(SchemaDataType.DOUBLE);
+		getInputVariableType().add(SchemaDataType.NUMBER);
+		getOutputVariableType().add(SchemaDataType.NUMBER);
 		setOperatorType(DataMapperOperatorType.DIVIDE);
-		getInputLabelList().add("Num");
-		getInputLabelList().add("DivideBy");
-		getOutputLabelList().add("Out");
+		getInputLabelList().add("Number");
+		getInputLabelList().add("Divisor");
+		getOutputLabelList().add("Result");
 	}
 
 	/**

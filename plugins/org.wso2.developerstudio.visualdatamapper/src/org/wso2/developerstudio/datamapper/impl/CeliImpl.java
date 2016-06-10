@@ -27,12 +27,11 @@ public class CeliImpl extends OperatorImpl implements Celi {
 		setDefaultOutputConnectors(1);
 		setInputSizeFixed(true);
 		setOutputSizeFixed(true);
-		getInputVariableType().add(SchemaDataType.DOUBLE);
-		getInputVariableType().add(SchemaDataType.INT);
-		getOutputVariableType().add(SchemaDataType.INT);
+		getInputVariableType().add(SchemaDataType.NUMBER);
+		getOutputVariableType().add(SchemaDataType.NUMBER);
 		setOperatorType(DataMapperOperatorType.CEILING);
 		getInputLabelList().add("In");
-		getOutputLabelList().add("Out");
+		getOutputLabelList().add("Result");
 	}
 
 	/**

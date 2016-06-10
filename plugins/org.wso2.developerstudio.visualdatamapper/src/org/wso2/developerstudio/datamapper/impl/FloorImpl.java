@@ -27,12 +27,11 @@ public class FloorImpl extends OperatorImpl implements Floor {
 		setDefaultOutputConnectors(1);
 		setInputSizeFixed(true);
 		setOutputSizeFixed(true);
-		getInputVariableType().add(SchemaDataType.INT);
-		getInputVariableType().add(SchemaDataType.DOUBLE);
-		getOutputVariableType().add(SchemaDataType.INT);
+		getInputVariableType().add(SchemaDataType.NUMBER);
+		getOutputVariableType().add(SchemaDataType.NUMBER);
 		setOperatorType(DataMapperOperatorType.FLOOR);
 		getInputLabelList().add("In");
-		getOutputLabelList().add("Out");
+		getOutputLabelList().add("Result");
 	}
 
 	/**

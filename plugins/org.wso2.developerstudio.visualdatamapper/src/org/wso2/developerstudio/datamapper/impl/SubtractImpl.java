@@ -27,14 +27,12 @@ public class SubtractImpl extends OperatorImpl implements Subtract {
 		setDefaultOutputConnectors(1);
 		setInputSizeFixed(true);
 		setOutputSizeFixed(true);
-		getInputVariableType().add(SchemaDataType.INT);
-		getInputVariableType().add(SchemaDataType.DOUBLE);
-		getOutputVariableType().add(SchemaDataType.INT);
-		getOutputVariableType().add(SchemaDataType.DOUBLE);
+		getInputVariableType().add(SchemaDataType.NUMBER);
+		getOutputVariableType().add(SchemaDataType.NUMBER);
 		setOperatorType(DataMapperOperatorType.SUBTRACT);
-		getInputLabelList().add("+");
-		getInputLabelList().add("-");
-		getOutputLabelList().add("Out");
+		getInputLabelList().add("Number");
+		getInputLabelList().add("Subtrahend");
+		getOutputLabelList().add("Result");
 	}
 
 	/**

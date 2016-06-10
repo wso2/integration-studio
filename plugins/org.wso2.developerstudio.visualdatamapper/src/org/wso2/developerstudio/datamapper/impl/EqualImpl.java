@@ -27,14 +27,13 @@ public class EqualImpl extends OperatorImpl implements Equal {
 		setDefaultOutputConnectors(1);
 		setInputSizeFixed(true);
 		setOutputSizeFixed(true);
-		getInputVariableType().add(SchemaDataType.INT);
-		getInputVariableType().add(SchemaDataType.DOUBLE);
+		getInputVariableType().add(SchemaDataType.NUMBER);
 		getInputVariableType().add(SchemaDataType.STRING);
 		getInputVariableType().add(SchemaDataType.BOOLEAN);
 		getOutputVariableType().add(SchemaDataType.BOOLEAN);
 		setOperatorType(DataMapperOperatorType.EQUALS);
 		getInputLabelList().add("In");
-		getOutputLabelList().add("Out");
+		getOutputLabelList().add("Result");
 	}
 
 	/**

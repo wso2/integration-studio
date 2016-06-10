@@ -76,8 +76,7 @@ public class ConstantImpl extends OperatorImpl implements Constant {
 		setDefaultOutputConnectors(1);
 		setInputSizeFixed(true);
 		setOutputSizeFixed(true);
-		getOutputVariableType().add(SchemaDataType.INT);
-		getOutputVariableType().add(SchemaDataType.DOUBLE);
+		getOutputVariableType().add(SchemaDataType.NUMBER);
 		getOutputVariableType().add(SchemaDataType.STRING);
 		getOutputVariableType().add(SchemaDataType.BOOLEAN);
 		setOperatorType(DataMapperOperatorType.CONSTANT);

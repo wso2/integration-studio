@@ -27,12 +27,11 @@ public class RoundImpl extends OperatorImpl implements Round {
 		setDefaultOutputConnectors(1);
 		setInputSizeFixed(true);
 		setOutputSizeFixed(true);
-		getInputVariableType().add(SchemaDataType.INT);
-		getInputVariableType().add(SchemaDataType.DOUBLE);
-		getOutputVariableType().add(SchemaDataType.INT);
+		getInputVariableType().add(SchemaDataType.NUMBER);
+		getOutputVariableType().add(SchemaDataType.NUMBER);
 		setOperatorType(DataMapperOperatorType.ROUND);
 		getInputLabelList().add("In");
-		getOutputLabelList().add("Out");
+		getOutputLabelList().add("Result");
 	}
 
 	/**

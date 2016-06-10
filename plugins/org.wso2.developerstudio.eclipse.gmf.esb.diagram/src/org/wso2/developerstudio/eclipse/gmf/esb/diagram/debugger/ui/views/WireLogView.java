@@ -58,26 +58,28 @@ public class WireLogView extends ViewPart implements ContentAcceptHandler {
         Label requestLabel = new Label(compositeRequet, SWT.NONE);
         requestLabel.setText("Request Wire Log");
 
-        // request wire log area
-        requestWireLogText = new StyledText(compositeRequet, SWT.BORDER | SWT.H_SCROLL | SWT.V_SCROLL | SWT.MULTI);
-        requestWireLogText.setLayoutData(gridDataReq);
-        requestWireLogText.setBackground(tableEvenIndexColor);
+		// request wire log area
+		requestWireLogText = new StyledText(compositeRequet,
+				SWT.BORDER | SWT.H_SCROLL | SWT.V_SCROLL | SWT.MULTI | SWT.READ_ONLY);
+		requestWireLogText.setLayoutData(gridDataReq);
+		requestWireLogText.setBackground(tableEvenIndexColor);
 
-        // composite which holds response wirelog label and response wire logs
-        Composite compositeResponse = new Composite(wireLogArea, SWT.BORDER);
-        GridData gridDataRes = new GridData(SWT.FILL, SWT.FILL, true, true);
-        compositeResponse.setLayoutData(gridDataRes);
-        compositeResponse.setLayout(new GridLayout(1, false));
+		// composite which holds response wirelog label and response wire logs
+		Composite compositeResponse = new Composite(wireLogArea, SWT.BORDER);
+		GridData gridDataRes = new GridData(SWT.FILL, SWT.FILL, true, true);
+		compositeResponse.setLayoutData(gridDataRes);
+		compositeResponse.setLayout(new GridLayout(1, false));
 
-        // response wire log label
-        Label responseLabel = new Label(compositeResponse, SWT.NONE);
-        responseLabel.setText("Response Wire Log");
+		// response wire log label
+		Label responseLabel = new Label(compositeResponse, SWT.NONE);
+		responseLabel.setText("Response Wire Log");
 
-        // response wire log area
-        responseWireLogText = new StyledText(compositeResponse, SWT.BORDER | SWT.H_SCROLL | SWT.V_SCROLL | SWT.MULTI);
-        responseWireLogText.setLayoutData(gridDataRes);
-        responseWireLogText.setBackground(tableEvenIndexColor);
-    }
+		// response wire log area
+		responseWireLogText = new StyledText(compositeResponse,
+				SWT.BORDER | SWT.H_SCROLL | SWT.V_SCROLL | SWT.MULTI | SWT.READ_ONLY);
+		responseWireLogText.setLayoutData(gridDataRes);
+		responseWireLogText.setBackground(tableEvenIndexColor);
+	}
 
     @Override
     public void setFocus() {

@@ -20,8 +20,6 @@ xsi:schemaLocation="http://docs.oasis-open.org/ns/bpel4people/ws-humantask/20080
 
             <htd:peopleAssignments></htd:peopleAssignments>
 
-            <htd:delegation potentialDelegatees="nobody"/>
-
             <htd:presentationElements>
                 <htd:name xml:lang="en-US"></htd:name>
                 <htd:presentationParameters>

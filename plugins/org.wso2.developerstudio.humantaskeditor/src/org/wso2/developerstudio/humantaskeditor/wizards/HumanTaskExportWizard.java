@@ -61,7 +61,7 @@ public class HumanTaskExportWizard extends Wizard implements IExportWizard{
                 MessageDialog.openError(getShell(), "Error", realException.getMessage());
             return false;
         }
-        MessageDialog.openInformation(getShell(), "HT Process", "Human task archive is exported successfully");
+        MessageDialog.openInformation(getShell(), "Human Task Distribution", "Human task archive exported successfully");
         
         return true;    
     }
@@ -111,12 +111,12 @@ public class HumanTaskExportWizard extends Wizard implements IExportWizard{
                     if (deployedZip.exists()){
                         return;
                     }else{
-                        throw new Exception("Could not copy the BPEL archive file to the given location.");
+                        throw new Exception("Could not copy the human task archive file to the given location.");
                     }
                 }else
-                    throw new Exception("Unable to create the BPEL archive file.");
+                    throw new Exception("Unable to create the human task archive file.");
             } catch (IOException e) {
-                throw new Exception("Unable to create the BPEL archive file.");
+                throw new Exception("Unable to create the human task archive file.");
             }finally{
                 FileManagementUtil.deleteDirectories(tempFolder);
             }

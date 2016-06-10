@@ -26,8 +26,6 @@
 
             <htd:peopleAssignments></htd:peopleAssignments>
 
-            <htd:delegation potentialDelegatees="nobody"/>
-
             <htd:presentationElements>
                 <htd:name xml:lang="en-US"></htd:name>
                 <htd:presentationParameters>

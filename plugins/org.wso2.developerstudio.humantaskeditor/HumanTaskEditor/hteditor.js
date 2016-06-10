@@ -910,7 +910,7 @@ function addPeopleAssignementNode(taskNode, xmlDom, assignmentName) {
             "http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803",
             "htd:argument");
         newArgument.setAttribute("name", "role");
-        newFrom.setAttribute("logicalPeopleGroup", "regionalClerks");
+        //newFrom.setAttribute("logicalPeopleGroup", "");
         newArgumentText = xmlDom.createTextNode("regionalClerksRole");
         newArgument.appendChild(newArgumentText);
         newFrom.appendChild(newArgument);
@@ -939,7 +939,7 @@ function addGeneralNode(taskNode, xmlDom, nodeName) {
             "http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803",
             "htd:argument");
         newArgument.setAttribute("name", "role");
-        newFrom.setAttribute("logicalPeopleGroup", "regionalClerks");
+        //newFrom.setAttribute("logicalPeopleGroup", "");
         newArgumentText = xmlDom.createTextNode("regionalClerksRole");
         newArgument.appendChild(newArgumentText);
         newFrom.appendChild(newArgument);
@@ -1002,11 +1002,16 @@ function marshalPeopleAssignment(taskNode, peopleAssignmentName) {
         .getElementsByTagName(peopleAssignmentName).length != 0 && taskNode.getElementsByTagName("peopleAssignments")[0]
         .getElementsByTagName(peopleAssignmentName)[0]
         .getElementsByTagName("argument").length != 0 ){
-    if ($('#' + taskDivName + " input[name="+peopleAssignmentName+ "" + taskDivName + "]:checked").val() == peopleAssignmentName+ "Role")
+    if ($('#' + taskDivName + " input[name="+peopleAssignmentName+ "" + taskDivName + "]:checked").val() == peopleAssignmentName+ "Role"){
         taskNode.getElementsByTagName("peopleAssignments")[0]
         .getElementsByTagName(peopleAssignmentName)[0]
         .getElementsByTagName("argument")[0].childNodes[0].nodeValue = $(
             '#' + taskDivName + " #"+peopleAssignmentName+ "Role").val();
+        taskNode.getElementsByTagName("peopleAssignments")[0]
+        .getElementsByTagName(peopleAssignmentName)[0]
+        .getElementsByTagName("from")[0].setAttribute("logicalPeopleGroup", $(
+            '#' + taskDivName + " #"+peopleAssignmentName+ "RoleLogicalGroup").val());
+    }
     if ($('#' + taskDivName + " input[name="+peopleAssignmentName+ "" + taskDivName + "]:checked").val() == peopleAssignmentName+ "Expression")
         taskNode.getElementsByTagName("peopleAssignments")[0]
         .getElementsByTagName(peopleAssignmentName)[0]
@@ -1036,6 +1041,12 @@ function unmarshalPeopleAssignment(taskNode, peopleAssignmentName) {
                         taskNode.getElementsByTagName("peopleAssignments")[0]
                         .getElementsByTagName(peopleAssignmentName)[0]
                         .getElementsByTagName("argument")[0].childNodes[0].nodeValue.trim());
+                if(ownerType == "Role"){
+                    $('#' + taskDivName + " #"+peopleAssignmentName+"RoleLogicalGroup").val(
+                        taskNode.getElementsByTagName("peopleAssignments")[0]
+                        .getElementsByTagName(peopleAssignmentName)[0]
+                        .getElementsByTagName("from")[0].getAttribute("logicalPeopleGroup"))
+                }    
             } else {
 
                 $('#' + taskDivName + " input[name="+peopleAssignmentName+"" + taskDivName + "][value="+peopleAssignmentName+"Literal]").prop("checked", true);
@@ -1083,6 +1094,10 @@ function bindChangeEvents() { //put all the listeners here
         //generateTasks();
     });
     $('select').change(function() {
+        makeDirty();
+        //generateTasks();
+    });
+    $('input:radio').change(function() {
         makeDirty();
         //generateTasks();
     });

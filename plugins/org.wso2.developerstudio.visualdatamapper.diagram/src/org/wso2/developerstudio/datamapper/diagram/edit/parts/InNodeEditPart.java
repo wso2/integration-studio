@@ -62,7 +62,7 @@ public class InNodeEditPart extends AbstractInNodeEditPart {
 	/**
 	 * @generated
 	 */
-	public static final int VISUAL_ID = 3005;
+	public static final int VISUAL_ID = 3020;
 
 	/**
 	 * @generated

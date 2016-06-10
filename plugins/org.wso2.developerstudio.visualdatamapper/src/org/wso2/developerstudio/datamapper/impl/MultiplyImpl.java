@@ -27,13 +27,11 @@ public class MultiplyImpl extends OperatorImpl implements Multiply {
 		setDefaultOutputConnectors(1);
 		setInputSizeFixed(false);
 		setOutputSizeFixed(true);
-		getInputVariableType().add(SchemaDataType.INT);
-		getInputVariableType().add(SchemaDataType.DOUBLE);
-		getOutputVariableType().add(SchemaDataType.INT);
-		getOutputVariableType().add(SchemaDataType.DOUBLE);
+		getInputVariableType().add(SchemaDataType.NUMBER);
+		getOutputVariableType().add(SchemaDataType.NUMBER);
 		setOperatorType(DataMapperOperatorType.MULTIPLY);
 		getInputLabelList().add("In");
-		getOutputLabelList().add("Out");
+		getOutputLabelList().add("Result");
 	}
 
 	/**

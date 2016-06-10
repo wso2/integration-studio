@@ -27,13 +27,11 @@ public class AddImpl extends OperatorImpl implements Add {
 		setDefaultOutputConnectors(1);
 		setInputSizeFixed(false);
 		setOutputSizeFixed(true);
-		getInputVariableType().add(SchemaDataType.DOUBLE);
-		getInputVariableType().add(SchemaDataType.INT);
-		getOutputVariableType().add(SchemaDataType.DOUBLE);
-		getOutputVariableType().add(SchemaDataType.INT);
+		getInputVariableType().add(SchemaDataType.NUMBER);
+		getOutputVariableType().add(SchemaDataType.NUMBER);
 		setOperatorType(DataMapperOperatorType.ADD);
 		getInputLabelList().add("In");
-		getOutputLabelList().add("Out");
+		getOutputLabelList().add("Result");
 	}
 
 	/**

@@ -191,15 +191,18 @@ public class OperatorLeftConnectorEditPart extends AbstractBorderedShapeEditPart
 	 * Body of this method does not depend on settings in generation model
 	 * so you may safely remove <i>generated</i> tag and modify it.
 	 * 
-	 * @generated
+	 * @generated NOT
 	 */
 	protected NodeFigure createMainFigure() {
-		NodeFigure figure = createNodePlate();
-		figure.setLayoutManager(new StackLayout());
+		nodeFigure = createNodePlate();
+		nodeFigure.setLayoutManager(new StackLayout());
 		IFigure shape = createNodeShape();
-		figure.add(shape);
+		shape.setBorder(null);
+		nodeFigure.add(shape);
+		nodeFigure.setBorder(null);
+		addLeftConnectorLabel();
 		contentPane = setupContentPane(shape);
-		return figure;
+		return nodeFigure;
 	}
 
 	public boolean addLeftConnectorLabel() {

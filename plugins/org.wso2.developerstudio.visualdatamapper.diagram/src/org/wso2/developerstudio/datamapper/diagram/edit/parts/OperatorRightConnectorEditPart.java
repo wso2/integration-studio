@@ -193,7 +193,7 @@ public class OperatorRightConnectorEditPart extends AbstractBorderedShapeEditPar
 	 * Body of this method does not depend on settings in generation model
 	 * so you may safely remove <i>generated</i> tag and modify it.
 	 * 
-	 * @generated
+	 * @generated NOT
 	 */
 	protected NodeFigure createMainFigure() {
 		figure = createNodePlate();

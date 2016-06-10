@@ -19,7 +19,7 @@
         <version>5.0.0-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
-    <artifactId>wso2-developer-studio-kernel-esb-composite-p2</artifactId>
+    <artifactId>wso2esb-tooling-composite-p2</artifactId>
     <packaging>eclipse-repository</packaging>
     <name>WSO2 Developer Studio - ESB Composite P2 Repository</name>
     <url>http://wso2.org</url>

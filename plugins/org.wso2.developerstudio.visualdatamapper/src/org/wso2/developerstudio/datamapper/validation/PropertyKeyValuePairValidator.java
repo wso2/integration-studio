@@ -14,6 +14,10 @@ package org.wso2.developerstudio.datamapper.validation;
 public interface PropertyKeyValuePairValidator {
 	boolean validate();
 
+	boolean validateKey(String value);
+
+	boolean validateValue(String value);
+
 	boolean validateTypedKey(String value);
 	boolean validateTypedValue(String value);
 }

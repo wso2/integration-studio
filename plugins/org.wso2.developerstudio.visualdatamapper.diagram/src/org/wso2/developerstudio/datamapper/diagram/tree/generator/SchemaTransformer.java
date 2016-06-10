@@ -43,6 +43,7 @@ import org.json.simple.JSONObject;
 import org.wso2.developerstudio.datamapper.DataMapperFactory;
 import org.wso2.developerstudio.datamapper.Element;
 import org.wso2.developerstudio.datamapper.PropertyKeyValuePair;
+import org.wso2.developerstudio.datamapper.SchemaDataType;
 import org.wso2.developerstudio.datamapper.TreeNode;
 import org.wso2.developerstudio.datamapper.diagram.Activator;
 import org.wso2.developerstudio.datamapper.diagram.tree.model.Tree;
@@ -116,7 +117,7 @@ public class SchemaTransformer implements ISchemaTransformer {
 	private boolean addedObjectHasProperties = false;
 	private String addedObjectElementIdentifiers = null;
 	private String addedObjectNamespaces = null;
-
+	
 	/**
 	 * Generates the tree
 	 */
@@ -733,6 +734,8 @@ public class SchemaTransformer implements ISchemaTransformer {
 		
 		//Sets the schema type
 		setPropertyKeyValuePairforTreeNodes(treeNode, propertyValueList, JSON_SCHEMA_TYPE, schemaType);
+		//Sets the schema type in SchemaDataType
+		setSchemaDataType(treeNode,schemaType);
 		// Sets the schema key if available
 		if (getSchemaValue(subSchema) != null) {
 			setPropertyKeyValuePairforTreeNodes(treeNode, propertyValueList, JSON_SCHEMA_SCHEMA_VALUE,
@@ -825,6 +828,65 @@ public class SchemaTransformer implements ISchemaTransformer {
 		return treeNode;
 	}
 
+	/**
+	 * Sets the schema data type
+	 * @param treeNode
+	 * @param schemaType
+	 */
+	private void setSchemaDataType(TreeNode treeNode, String schemaType) {
+		if (StringUtils.isNotEmpty(schemaType)) {
+			switch (schemaType) {
+			case "array":
+				treeNode.setSchemaDataType(SchemaDataType.ARRAY);
+				break;
+			case "boolean":
+				treeNode.setSchemaDataType(SchemaDataType.BOOLEAN);
+				break;
+			case "bytes":
+				treeNode.setSchemaDataType(SchemaDataType.BYTES);
+				break;
+			case "double":
+				treeNode.setSchemaDataType(SchemaDataType.DOUBLE);
+				break;
+			case "enum":
+				treeNode.setSchemaDataType(SchemaDataType.ENUM);
+				break;
+			case "fixed":
+				treeNode.setSchemaDataType(SchemaDataType.FIXED);
+				break;
+			case "float":
+				treeNode.setSchemaDataType(SchemaDataType.FLOAT);
+				break;
+			case "int":
+				treeNode.setSchemaDataType(SchemaDataType.INT);
+				break;
+			case "long":
+				treeNode.setSchemaDataType(SchemaDataType.LONG);
+				break;
+			case "map":
+				treeNode.setSchemaDataType(SchemaDataType.MAP);
+				break;
+			case "null":
+				treeNode.setSchemaDataType(SchemaDataType.NULL);
+				break;
+			case "object":
+				treeNode.setSchemaDataType(SchemaDataType.OBJECT);
+				break;
+			case "string":
+				treeNode.setSchemaDataType(SchemaDataType.STRING);
+				break;
+			case "union":
+				treeNode.setSchemaDataType(SchemaDataType.UNION);
+				break;
+			case "number":
+				treeNode.setSchemaDataType(SchemaDataType.NUMBER);
+				break;
+			default:
+				break;
+			}
+		}	
+	}
+	
 	/**
 	 * Validates the prefix and sets the name
 	 * 

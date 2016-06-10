@@ -149,9 +149,10 @@
     <eLiterals name="LONG" value="8"/>
     <eLiterals name="MAP" value="9"/>
     <eLiterals name="NULL" value="10"/>
-    <eLiterals name="RECORD" value="11"/>
+    <eLiterals name="OBJECT" value="11"/>
     <eLiterals name="STRING" value="12"/>
     <eLiterals name="UNION" value="13"/>
+    <eLiterals name="NUMBER" value="14" literal="NUMBER"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="DataMapperOperatorType">
     <eLiterals name="OPERATOR"/>

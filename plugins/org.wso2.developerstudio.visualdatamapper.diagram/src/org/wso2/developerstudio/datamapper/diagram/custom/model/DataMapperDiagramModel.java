@@ -510,7 +510,7 @@ public class DataMapperDiagramModel {
 		case "string":
 			return SchemaDataType.STRING;
 		case "object":
-			return SchemaDataType.RECORD;
+			return SchemaDataType.OBJECT;
 		case "array":
 			return SchemaDataType.ARRAY;
 		case "boolean":

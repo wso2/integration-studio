@@ -153,7 +153,7 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
                                     }
                                 } else if (ScriptGenerationUtil.isVariableTypePrimitive(variableType)) {
                                     // leaf variable element
-                                } else if (SchemaDataType.RECORD.equals(variableType)) {
+                                } else if (SchemaDataType.OBJECT.equals(variableType)) {
                                     // record variable element
                                 } else {
                                     throw new DataMapperException(
@@ -245,7 +245,7 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
                     parentArrayVariable = variableName;
                 } else if (ScriptGenerationUtil.isVariableTypePrimitive(variableType)) {
                     // leaf variable element
-                } else if (SchemaDataType.RECORD.equals(variableType)) {
+                } else if (SchemaDataType.OBJECT.equals(variableType)) {
                     if (!outputObjectVariableForLoopMap.containsKey(variableName)) {
                         int targetForLoopIndex = previousForLoopIndex;
                         outputObjectVariableForLoopMap.put(variableName, targetForLoopIndex);
@@ -375,7 +375,7 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
         for (String variableName : forLoopBean.getObjectVariableListToInstantiate()) {
             functionBuilder.append("\n");
             variableName = ScriptGenerationUtil.getPrettyVariableNameInForOperation(
-                    new DMVariable(variableName, "", DMVariableType.INPUT, SchemaDataType.RECORD, -1), variableTypeMap,
+                    new DMVariable(variableName, "", DMVariableType.INPUT, SchemaDataType.OBJECT, -1), variableTypeMap,
                     tempForLoopBeanParentStack, false);
             functionBuilder.append(variableName + " = {};");
         }

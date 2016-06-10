@@ -23,6 +23,11 @@ Package datamapper <http:///org/wso2/developerstudio/eclipse/gmf/datamapper>
   Class Operator -> DataMapperNode
     Reference basicContainer : OperatorBasicContainer
     Attribute serialized : EBoolean
+    Attribute defaultInputConnectors : EInt
+    Attribute defaultOutputConnectors : EInt
+    Attribute inputSizeFixed : EBoolean
+    Attribute outputSizeFixed : EBoolean
+    Attribute operatorType : DataMapperOperatorType
 
   Class OperatorBasicContainer
     Reference leftContainer : OperatorLeftContainer
@@ -63,6 +68,8 @@ Package datamapper <http:///org/wso2/developerstudio/eclipse/gmf/datamapper>
     Reference outNode : OutNode
     Reference inNode : InNode
 
+  Class Subtract -> Operator
+
   Class InNode
     Reference incomingLink : DataMapperLink<<0..*>>
     Reference elementParent : Element
@@ -78,10 +85,26 @@ Package datamapper <http:///org/wso2/developerstudio/eclipse/gmf/datamapper>
   Class Concat -> Operator
     Attribute delimiter : EString
 
+  Class AbsoluteValue -> Operator
+
   Class Equal -> Operator
 
   Class Constant -> Operator
     Attribute constantValue : EString
+    Attribute type : SchemaDataType
+
+  Class Add -> Operator
+
+  Class Divide -> Operator
+
+  Class Floor -> Operator
+
+  Class Round -> Operator
+
+  Class Multiply -> Operator
+
+  Class SetPrecision -> Operator
+    Attribute numberOfDigits : EInt
 
   Class Split -> Operator
     Attribute delimiter : EString
@@ -89,6 +112,8 @@ Package datamapper <http:///org/wso2/developerstudio/eclipse/gmf/datamapper>
     Attribute arrayOutputResultOmitingIndices : EString
 
   Class LowerCase -> Operator
+
+  Class Celi -> Operator
 
   Class Contains -> Operator
 
@@ -110,6 +135,32 @@ Package datamapper <http:///org/wso2/developerstudio/eclipse/gmf/datamapper>
     Literal LONG = 8
     Literal MAP = 9
     Literal NULL = 10
-    Literal RECORD = 11
+    Literal OBJECT = 11
     Literal STRING = 12
     Literal UNION = 13
+    Literal NUMBER = 14
+
+  Enum DataMapperOperatorType
+    Literal OPERATOR = 0
+    Literal COMMON_OPERATION = 1
+    Literal DIRECT = 21
+    Literal STRING_OPERATION = 2
+    Literal ARITHMATIC_OPERATION = 2
+    Literal BOOLEAN_OPERATION = 3
+    Literal CONDITIONAL_OPERATION = 4
+    Literal CONSTANT = 5
+    Literal EQUALS = 6
+    Literal CONCAT = 7
+    Literal SPLIT = 8
+    Literal UPPERCASE = 9
+    Literal LOWERCASE = 10
+    Literal CONTAINS = 11
+    Literal ADD = 12
+    Literal SUBTRACT = 13
+    Literal MULTIPLY = 14
+    Literal DIVIDE = 15
+    Literal ABSOLUTE = 16
+    Literal ROUND = 17
+    Literal FLOOR = 18
+    Literal CEILING = 19
+    Literal SET_PRECISION = 20

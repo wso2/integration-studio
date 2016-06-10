@@ -129,16 +129,14 @@ public enum SchemaDataType implements Enumerator {
     NULL(10, "NULL", "NULL"),
 
     /**
-	 * The '<em><b>RECORD</b></em>' literal object.
+	 * The '<em><b>OBJECT</b></em>' literal object.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @see #RECORD_VALUE
+	 * <!-- end-user-doc -->
+	 * @see #OBJECT_VALUE
 	 * @generated
 	 * @ordered
 	 */
-    RECORD(11, "RECORD", "RECORD"),
-
-    /**
+	OBJECT(11, "OBJECT", "OBJECT"), /**
 	 * The '<em><b>STRING</b></em>' literal object.
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -156,7 +154,15 @@ public enum SchemaDataType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-    UNION(13, "UNION", "UNION");
+    UNION(13, "UNION", "UNION"), /**
+	 * The '<em><b>NUMBER</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #NUMBER_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	NUMBER(14, "NUMBER", "NUMBER");
 
     /**
 	 * The '<em><b>ARRAY</b></em>' literal value.
@@ -324,21 +330,21 @@ public enum SchemaDataType implements Enumerator {
     public static final int NULL_VALUE = 10;
 
     /**
-	 * The '<em><b>RECORD</b></em>' literal value.
+	 * The '<em><b>OBJECT</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of '<em><b>RECORD</b></em>' literal object isn't clear,
-     * there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc -->
-	 * @see #RECORD
+	 * <p>
+	 * If the meaning of '<em><b>OBJECT</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #OBJECT
 	 * @model
 	 * @generated
 	 * @ordered
 	 */
-    public static final int RECORD_VALUE = 11;
+	public static final int OBJECT_VALUE = 11;
 
-    /**
+				/**
 	 * The '<em><b>STRING</b></em>' literal value.
 	 * <!-- begin-user-doc -->
      * <p>
@@ -369,6 +375,21 @@ public enum SchemaDataType implements Enumerator {
     public static final int UNION_VALUE = 13;
 
     /**
+	 * The '<em><b>NUMBER</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>NUMBER</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #NUMBER
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int NUMBER_VALUE = 14;
+
+				/**
 	 * An array of all the '<em><b>Schema Data Type</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -387,9 +408,10 @@ public enum SchemaDataType implements Enumerator {
 			LONG,
 			MAP,
 			NULL,
-			RECORD,
+			OBJECT,
 			STRING,
 			UNION,
+			NUMBER,
 		};
 
     /**
@@ -457,9 +479,10 @@ public enum SchemaDataType implements Enumerator {
 			case LONG_VALUE: return LONG;
 			case MAP_VALUE: return MAP;
 			case NULL_VALUE: return NULL;
-			case RECORD_VALUE: return RECORD;
+			case OBJECT_VALUE: return OBJECT;
 			case STRING_VALUE: return STRING;
 			case UNION_VALUE: return UNION;
+			case NUMBER_VALUE: return NUMBER;
 		}
 		return null;
 	}

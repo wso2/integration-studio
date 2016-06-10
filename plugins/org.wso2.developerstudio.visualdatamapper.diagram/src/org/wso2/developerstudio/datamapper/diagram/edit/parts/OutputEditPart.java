@@ -213,7 +213,7 @@ public class OutputEditPart extends ShapeNodeEditPart {
 				treeNode.setSchemaDataType(SchemaDataType.NULL);
 				break;
 			case RECORD:
-				treeNode.setSchemaDataType(SchemaDataType.RECORD);
+				treeNode.setSchemaDataType(SchemaDataType.OBJECT);
 				break;
 			case STRING:
 				treeNode.setSchemaDataType(SchemaDataType.STRING);
@@ -300,7 +300,7 @@ public class OutputEditPart extends ShapeNodeEditPart {
 				ele.setSchemaDataType(SchemaDataType.NULL);
 				break;
 			case RECORD:
-				ele.setSchemaDataType(SchemaDataType.RECORD);
+				ele.setSchemaDataType(SchemaDataType.OBJECT);
 				break;
 			case STRING:
 				ele.setSchemaDataType(SchemaDataType.STRING);
@@ -374,7 +374,7 @@ public class OutputEditPart extends ShapeNodeEditPart {
 				treeNodeNew.setSchemaDataType(SchemaDataType.NULL);
 				break;
 			case RECORD:
-				treeNodeNew.setSchemaDataType(SchemaDataType.RECORD);
+				treeNodeNew.setSchemaDataType(SchemaDataType.OBJECT);
 				treeNodeNew.setName(treeN.getName());
 				treeNodeNew.setLevel(treeN.getCount());
 				/*

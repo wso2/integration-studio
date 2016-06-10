@@ -12,6 +12,7 @@ import org.wso2.developerstudio.datamapper.InNode;
 import org.wso2.developerstudio.datamapper.Input;
 import org.wso2.developerstudio.datamapper.OutNode;
 import org.wso2.developerstudio.datamapper.Output;
+import org.wso2.developerstudio.datamapper.PropertyKeyValuePair;
 import org.wso2.developerstudio.datamapper.SchemaDataType;
 import org.wso2.developerstudio.datamapper.TreeNode;
 
@@ -32,6 +33,8 @@ public interface TreeNodeValidator {
 	boolean validateInputParent(Input value);
 	boolean validateSchemaDataType(SchemaDataType value);
 	boolean validateLevel(int value);
+	boolean validateProperties(EList<PropertyKeyValuePair> value);
+
 	boolean validateProperties(EMap<String, String> value);
 	boolean validateOutNode(OutNode value);
 	boolean validateInNode(InNode value);

@@ -1452,9 +1452,10 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 		addEEnumLiteral(schemaDataTypeEEnum, SchemaDataType.LONG);
 		addEEnumLiteral(schemaDataTypeEEnum, SchemaDataType.MAP);
 		addEEnumLiteral(schemaDataTypeEEnum, SchemaDataType.NULL);
-		addEEnumLiteral(schemaDataTypeEEnum, SchemaDataType.RECORD);
+		addEEnumLiteral(schemaDataTypeEEnum, SchemaDataType.OBJECT);
 		addEEnumLiteral(schemaDataTypeEEnum, SchemaDataType.STRING);
 		addEEnumLiteral(schemaDataTypeEEnum, SchemaDataType.UNION);
+		addEEnumLiteral(schemaDataTypeEEnum, SchemaDataType.NUMBER);
 
 		initEEnum(dataMapperOperatorTypeEEnum, DataMapperOperatorType.class, "DataMapperOperatorType");
 		addEEnumLiteral(dataMapperOperatorTypeEEnum, DataMapperOperatorType.OPERATOR);

@@ -4,6 +4,7 @@
  */
 package org.wso2.developerstudio.datamapper.validation;
 
+import org.wso2.developerstudio.datamapper.DataMapperOperatorType;
 import org.wso2.developerstudio.datamapper.OperatorBasicContainer;
 
 /**
@@ -17,4 +18,14 @@ public interface OperatorValidator {
 
 	boolean validateBasicContainer(OperatorBasicContainer value);
 	boolean validateSerialized(boolean value);
+
+	boolean validateDefaultInputConnectors(int value);
+
+	boolean validateDefaultOutputConnectors(int value);
+
+	boolean validateInputSizeFixed(boolean value);
+
+	boolean validateOutputSizeFixed(boolean value);
+
+	boolean validateOperatorType(DataMapperOperatorType value);
 }

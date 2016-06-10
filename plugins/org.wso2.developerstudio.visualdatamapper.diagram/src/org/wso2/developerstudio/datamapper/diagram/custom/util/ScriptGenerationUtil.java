@@ -135,7 +135,7 @@ public class ScriptGenerationUtil {
         // If the variable is a input or output for an operation and a type of object or array and also holds a value,
         // the value is stored as a field named _ELEMVAl
         if (isOperationVariable) {
-            if (SchemaDataType.ARRAY.equals(variableType) || SchemaDataType.RECORD.equals(variableType)) {
+            if (SchemaDataType.ARRAY.equals(variableType) || SchemaDataType.OBJECT.equals(variableType)) {
                 prettyVariableName += "._ELEMVAL";
             }
         }

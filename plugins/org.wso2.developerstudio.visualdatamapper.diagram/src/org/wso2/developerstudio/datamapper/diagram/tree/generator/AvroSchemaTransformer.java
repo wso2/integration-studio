@@ -91,7 +91,7 @@ public class AvroSchemaTransformer implements ISchemaTransformer {
 				
 				if (!treeNodeModel.getNode().isEmpty()) {
 					for (TreeNode nodeInRoot : treeNodeModel.getNode()) {
-						if (nodeInRoot.getSchemaDataType().equals(SchemaDataType.RECORD)) {
+						if (nodeInRoot.getSchemaDataType().equals(SchemaDataType.OBJECT)) {
 							fields.add(createRecord(nodeInRoot));
 						} else {
 							// handles the case of schemaDataType.ARRAY
@@ -153,7 +153,7 @@ public class AvroSchemaTransformer implements ISchemaTransformer {
 
 		if (!node.getNode().isEmpty()) {
 			for (TreeNode nodeInRecord : node.getNode()) {
-				if (nodeInRecord.getSchemaDataType().equals(SchemaDataType.RECORD)) {
+				if (nodeInRecord.getSchemaDataType().equals(SchemaDataType.OBJECT)) {
 					fieldsforRecord.add(createRecord(nodeInRecord));
 				} else {
 					// handles the case of schemaDataType.ARRAY
@@ -206,7 +206,7 @@ public class AvroSchemaTransformer implements ISchemaTransformer {
 		if (!node.getNode().isEmpty() || !node.getElement().isEmpty()) {
 			if (!node.getNode().isEmpty()) {
 				for (TreeNode nodeInArray : node.getNode()) {
-					if (nodeInArray.getSchemaDataType().equals(SchemaDataType.RECORD)) {
+					if (nodeInArray.getSchemaDataType().equals(SchemaDataType.OBJECT)) {
 						fieldsForArray.add(createRecord(nodeInArray));
 					} else {
 						// handles the case of schemaDataType.ARRAY

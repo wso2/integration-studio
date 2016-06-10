@@ -4,10 +4,12 @@
  */
 package org.wso2.developerstudio.datamapper.validation;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.EMap;
 
 import org.wso2.developerstudio.datamapper.InNode;
 import org.wso2.developerstudio.datamapper.OutNode;
+import org.wso2.developerstudio.datamapper.PropertyKeyValuePair;
 import org.wso2.developerstudio.datamapper.SchemaDataType;
 import org.wso2.developerstudio.datamapper.TreeNode;
 
@@ -27,5 +29,7 @@ public interface ElementValidator {
 	boolean validateFieldParent(TreeNode value);
 	boolean validateSchemaDataType(SchemaDataType value);
 	boolean validateLevel(int value);
+	boolean validateProperties(EList<PropertyKeyValuePair> value);
+
 	boolean validateProperties(EMap<String, String> value);
 }

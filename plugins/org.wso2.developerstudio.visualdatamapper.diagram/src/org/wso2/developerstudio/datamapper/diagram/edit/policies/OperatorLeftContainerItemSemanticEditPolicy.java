@@ -30,12 +30,9 @@ public class OperatorLeftContainerItemSemanticEditPolicy extends DataMapperBaseI
 	}
 
 	/**
-	 * @generated
+	 * @generated NOT
 	 */
 	protected Command getCreateCommand(CreateElementRequest req) {
-		if (DataMapperElementTypes.OperatorLeftConnector_3014 == req.getElementType()) {
-			return getGEFWrapper(new OperatorLeftConnectorCreateCommand(req));
-		}
 		return super.getCreateCommand(req);
 	}
 

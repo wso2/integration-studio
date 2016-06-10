@@ -191,7 +191,7 @@ public class ESBDebuggerConstants {
     public static final String ESB_WIRE_LOG_POINT_COMMAND_LABEL = "Toggle Wire Log point";
     public static final String ESB_WIRE_LOG_POINT_ACTION_ID = "org.wos2.developerstudio.eclipse.esb.debugger.wire.logs.action";
     public static final String ESB_WIRE_LOG_POINT_COMMAND_TOOL_TIP = "Set wire log point for this mediator";
-    public static final String ESB_SHOW_WIRE_LOGS_COMMAND_LABEL = "Show WireLogs";
+    public static final String ESB_SHOW_WIRE_LOGS_COMMAND_LABEL = "Show Wire Logs";
     public static final String ESB_SHOW_WIRE_LOGS_ACTION_ID = "org.wos2.developerstudio.eclipse.esb.debugger.show.wire.logs.action";
     public static final String ESB_SHOW_WIRE_LOGS_COMMAND_TOOL_TIP = "Show wire logs for this mediator";
 

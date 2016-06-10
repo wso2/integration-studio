@@ -910,7 +910,7 @@ function addPeopleAssignementNode(taskNode, xmlDom, assignmentName) {
             "http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803",
             "htd:argument");
         newArgument.setAttribute("name", "role");
-        newFrom.setAttribute("logicalPeopleGroup", "regionalClerks");
+        //newFrom.setAttribute("logicalPeopleGroup", "regionalClerks");
         newArgumentText = xmlDom.createTextNode("regionalClerksRole");
         newArgument.appendChild(newArgumentText);
         newFrom.appendChild(newArgument);
@@ -939,7 +939,7 @@ function addGeneralNode(taskNode, xmlDom, nodeName) {
             "http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803",
             "htd:argument");
         newArgument.setAttribute("name", "role");
-        newFrom.setAttribute("logicalPeopleGroup", "regionalClerks");
+        //newFrom.setAttribute("logicalPeopleGroup", "regionalClerks");
         newArgumentText = xmlDom.createTextNode("regionalClerksRole");
         newArgument.appendChild(newArgumentText);
         newFrom.appendChild(newArgument);

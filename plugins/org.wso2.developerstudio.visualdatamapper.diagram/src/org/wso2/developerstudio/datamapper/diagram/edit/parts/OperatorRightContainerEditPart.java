@@ -84,9 +84,9 @@ public class OperatorRightContainerEditPart extends ShapeNodeEditPart {
 		Display.getDefault().asyncExec(new Runnable() {
 			@Override
 			public void run() {
-				if(getParent().getParent().getModel() instanceof CSSShapeImpl){
+				if (getParent().getParent().getModel() instanceof CSSShapeImpl) {
 					CSSShapeImpl model = (CSSShapeImpl) getParent().getParent().getModel();
-					OperatorImpl operator=(OperatorImpl) model.getElement();
+					OperatorImpl operator = (OperatorImpl) model.getElement();
 					int numberOfOutputs = operator.getDefaultOutputConnectors();
 					EObject parentContainer = ((org.eclipse.gmf.runtime.notation.impl.NodeImpl) getModel())
 							.getElement();
@@ -95,7 +95,8 @@ public class OperatorRightContainerEditPart extends ShapeNodeEditPart {
 							OperatorRightConnector rightConnector = DataMapperFactory.eINSTANCE
 									.createOperatorRightConnector();
 							AddCommand addCaseConnectorCmd = new AddCommand(getEditingDomain(), parentContainer,
-									DataMapperPackage.Literals.OPERATOR_RIGHT_CONTAINER__RIGHT_CONNECTORS, rightConnector);
+									DataMapperPackage.Literals.OPERATOR_RIGHT_CONTAINER__RIGHT_CONNECTORS,
+									rightConnector);
 							if (addCaseConnectorCmd.canExecute()) {
 								getEditingDomain().getCommandStack().execute(addCaseConnectorCmd);
 							}
@@ -317,6 +318,5 @@ public class OperatorRightContainerEditPart extends ShapeNodeEditPart {
 		}
 
 	}
-
 
 }

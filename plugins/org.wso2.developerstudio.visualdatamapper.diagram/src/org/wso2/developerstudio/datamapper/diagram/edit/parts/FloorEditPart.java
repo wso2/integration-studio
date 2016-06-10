@@ -183,7 +183,7 @@ public class FloorEditPart extends AbstractOperatorEditPart {
 			((Shape) primaryShape).setLineStyle(style);
 		}
 	}
-	
+
 	public class FloorFigure extends OperatorRectangle {
 
 		public FloorFigure() {

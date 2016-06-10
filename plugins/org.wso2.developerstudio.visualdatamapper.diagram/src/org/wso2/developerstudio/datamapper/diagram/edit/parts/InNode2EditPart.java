@@ -380,7 +380,7 @@ public class InNode2EditPart extends AbstractInNodeEditPart {
 				this.setOutline(false);
 				this.setFill(false);
 			}*/
-		
+
 		private void highlightParentElem() {
 			IFigure treeFigure = (IFigure) ((DefaultSizeNodeFigure) ((BorderedNodeFigure) getParent().getParent()
 					.getParent()).getChildren().get(0)).getChildren().get(0);

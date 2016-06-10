@@ -187,7 +187,7 @@ public class AbsoluteValueEditPart extends AbstractOperatorEditPart {
 			((Shape) primaryShape).setLineStyle(style);
 		}
 	}
-	
+
 	public class AbsoluteValueFigure extends OperatorRectangle {
 
 		public AbsoluteValueFigure() {

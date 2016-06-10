@@ -183,7 +183,7 @@ public class RoundEditPart extends AbstractOperatorEditPart {
 			((Shape) primaryShape).setLineStyle(style);
 		}
 	}
-	
+
 	public class RoundFigure extends OperatorRectangle {
 
 		public RoundFigure() {

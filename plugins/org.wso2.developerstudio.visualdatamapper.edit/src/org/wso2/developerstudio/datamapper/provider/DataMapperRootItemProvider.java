@@ -165,6 +165,46 @@ public class DataMapperRootItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(DataMapperPackage.Literals.DATA_MAPPER_ROOT__OPERATORS,
+				 DataMapperFactory.eINSTANCE.createStringLength()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(DataMapperPackage.Literals.DATA_MAPPER_ROOT__OPERATORS,
+				 DataMapperFactory.eINSTANCE.createStartsWith()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(DataMapperPackage.Literals.DATA_MAPPER_ROOT__OPERATORS,
+				 DataMapperFactory.eINSTANCE.createEndsWith()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(DataMapperPackage.Literals.DATA_MAPPER_ROOT__OPERATORS,
+				 DataMapperFactory.eINSTANCE.createSubstring()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(DataMapperPackage.Literals.DATA_MAPPER_ROOT__OPERATORS,
+				 DataMapperFactory.eINSTANCE.createIfElse()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(DataMapperPackage.Literals.DATA_MAPPER_ROOT__OPERATORS,
+				 DataMapperFactory.eINSTANCE.createAND()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(DataMapperPackage.Literals.DATA_MAPPER_ROOT__OPERATORS,
+				 DataMapperFactory.eINSTANCE.createOR()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(DataMapperPackage.Literals.DATA_MAPPER_ROOT__OPERATORS,
+				 DataMapperFactory.eINSTANCE.createNOT()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(DataMapperPackage.Literals.DATA_MAPPER_ROOT__OPERATORS,
 				 DataMapperFactory.eINSTANCE.createSubtract()));
 
 		newChildDescriptors.add

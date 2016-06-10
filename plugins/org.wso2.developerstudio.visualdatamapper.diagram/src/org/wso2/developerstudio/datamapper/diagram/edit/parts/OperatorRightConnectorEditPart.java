@@ -40,7 +40,7 @@ import org.wso2.developerstudio.datamapper.impl.OperatorImpl;
 public class OperatorRightConnectorEditPart extends AbstractBorderedShapeEditPart {
 
 	private Label connectorLabel;
-	
+
 	NodeFigure figure;
 	/**
 	 * @generated
@@ -206,27 +206,27 @@ public class OperatorRightConnectorEditPart extends AbstractBorderedShapeEditPar
 		contentPane = setupContentPane(shape);
 		return figure;
 	}
-	
+
 	public boolean addRightConnectorLabel() {
 		EditPart parentEditPart = this.getParent().getParent().getParent();
 		OperatorImpl operator = (OperatorImpl) ((View) parentEditPart.getModel()).getElement();
 		String outputLabel = getOutputLabel(operator);
-		if(operator instanceof ConstantImpl){
+		if (operator instanceof ConstantImpl) {
 			ConstantImpl constantImpl = (ConstantImpl) operator;
-			if(constantImpl.getType()!=null && constantImpl.getConstantValue()!=null){
+			if (constantImpl.getType() != null && constantImpl.getConstantValue() != null) {
 				if (figure != null) {
-					connectorLabel =new Label(outputLabel + " [" + constantImpl.getType().getLiteral() + "] ");
+					connectorLabel = new Label(outputLabel + " [" + constantImpl.getType().getLiteral() + "] ");
 					figure.add(connectorLabel);
 					return true;
 				}
-			} else{
+			} else {
 				if (figure != null) {
 					connectorLabel = new Label(outputLabel + " " + operator.getOutputVariableType().toString() + " ");
 					figure.add(connectorLabel);
 					return true;
 				}
 			}
-		} else{
+		} else {
 			if (figure != null) {
 				connectorLabel = new Label(outputLabel + " " + operator.getOutputVariableType().toString() + " ");
 				figure.add(connectorLabel);
@@ -247,9 +247,9 @@ public class OperatorRightConnectorEditPart extends AbstractBorderedShapeEditPar
 		}
 		return "";
 	}
-	
+
 	private String formatLabel(String inputLabel) {
-		return " "+inputLabel+" :";
+		return " " + inputLabel + " :";
 	}
 
 	/**
@@ -312,11 +312,11 @@ public class OperatorRightConnectorEditPart extends AbstractBorderedShapeEditPar
 			((Shape) primaryShape).setLineStyle(style);
 		}
 	}
-	
+
 	public void setConstantTypeInConnector(SchemaDataType constantType) {
 		if (figure != null) {
 			figure.remove(connectorLabel);
-			connectorLabel= new Label("Const :"+" ["+constantType.getLiteral()+"] ");
+			connectorLabel = new Label("Const :" + " [" + constantType.getLiteral() + "] ");
 			figure.add(connectorLabel);
 		}
 	}

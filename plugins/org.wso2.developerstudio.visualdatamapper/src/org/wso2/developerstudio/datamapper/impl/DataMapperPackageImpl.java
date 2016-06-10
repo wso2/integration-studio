@@ -22,8 +22,10 @@ import org.wso2.developerstudio.datamapper.DataMapperPackage;
 import org.wso2.developerstudio.datamapper.DataMapperRoot;
 import org.wso2.developerstudio.datamapper.Divide;
 import org.wso2.developerstudio.datamapper.Element;
+import org.wso2.developerstudio.datamapper.EndsWith;
 import org.wso2.developerstudio.datamapper.Equal;
 import org.wso2.developerstudio.datamapper.Floor;
+import org.wso2.developerstudio.datamapper.IfElse;
 import org.wso2.developerstudio.datamapper.InNode;
 import org.wso2.developerstudio.datamapper.Input;
 import org.wso2.developerstudio.datamapper.LowerCase;
@@ -41,6 +43,9 @@ import org.wso2.developerstudio.datamapper.Round;
 import org.wso2.developerstudio.datamapper.SchemaDataType;
 import org.wso2.developerstudio.datamapper.SetPrecision;
 import org.wso2.developerstudio.datamapper.Split;
+import org.wso2.developerstudio.datamapper.StartsWith;
+import org.wso2.developerstudio.datamapper.StringLength;
+import org.wso2.developerstudio.datamapper.Substring;
 import org.wso2.developerstudio.datamapper.Subtract;
 import org.wso2.developerstudio.datamapper.TreeNode;
 import org.wso2.developerstudio.datamapper.UpperCase;
@@ -71,7 +76,63 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass stringLengthEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass startsWithEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass endsWithEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass substringEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass ifElseEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass andEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass orEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EClass inputEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass notEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -401,6 +462,69 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getStringLength() {
+		return stringLengthEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getStartsWith() {
+		return startsWithEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getEndsWith() {
+		return endsWithEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getSubstring() {
+		return substringEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getIfElse() {
+		return ifElseEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getAND() {
+		return andEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getOR() {
+		return orEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getInput() {
 		return inputEClass;
 	}
@@ -412,6 +536,15 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 	 */
 	public EReference getInput_TreeNode() {
 		return (EReference)inputEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getNOT() {
+		return notEClass;
 	}
 
 	/**
@@ -1160,8 +1293,24 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 		createEReference(dataMapperRootEClass, DATA_MAPPER_ROOT__OUTPUT);
 		createEReference(dataMapperRootEClass, DATA_MAPPER_ROOT__OPERATORS);
 
+		stringLengthEClass = createEClass(STRING_LENGTH);
+
+		startsWithEClass = createEClass(STARTS_WITH);
+
+		endsWithEClass = createEClass(ENDS_WITH);
+
+		substringEClass = createEClass(SUBSTRING);
+
+		ifElseEClass = createEClass(IF_ELSE);
+
+		andEClass = createEClass(AND);
+
+		orEClass = createEClass(OR);
+
 		inputEClass = createEClass(INPUT);
 		createEReference(inputEClass, INPUT__TREE_NODE);
+
+		notEClass = createEClass(NOT);
 
 		outputEClass = createEClass(OUTPUT);
 		createEReference(outputEClass, OUTPUT__TREE_NODE);
@@ -1302,7 +1451,15 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
+		stringLengthEClass.getESuperTypes().add(this.getOperator());
+		startsWithEClass.getESuperTypes().add(this.getOperator());
+		endsWithEClass.getESuperTypes().add(this.getOperator());
+		substringEClass.getESuperTypes().add(this.getOperator());
+		ifElseEClass.getESuperTypes().add(this.getOperator());
+		andEClass.getESuperTypes().add(this.getOperator());
+		orEClass.getESuperTypes().add(this.getOperator());
 		inputEClass.getESuperTypes().add(this.getDataMapperNode());
+		notEClass.getESuperTypes().add(this.getOperator());
 		outputEClass.getESuperTypes().add(this.getDataMapperNode());
 		operatorEClass.getESuperTypes().add(this.getDataMapperNode());
 		subtractEClass.getESuperTypes().add(this.getOperator());
@@ -1330,8 +1487,24 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 		initEReference(getDataMapperRoot_Output(), this.getOutput(), null, "output", null, 0, 1, DataMapperRoot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getDataMapperRoot_Operators(), this.getOperator(), null, "operators", null, 0, -1, DataMapperRoot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEClass(stringLengthEClass, StringLength.class, "StringLength", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(startsWithEClass, StartsWith.class, "StartsWith", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(endsWithEClass, EndsWith.class, "EndsWith", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(substringEClass, Substring.class, "Substring", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(ifElseEClass, IfElse.class, "IfElse", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(andEClass, org.wso2.developerstudio.datamapper.AND.class, "AND", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(orEClass, org.wso2.developerstudio.datamapper.OR.class, "OR", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
 		initEClass(inputEClass, Input.class, "Input", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getInput_TreeNode(), this.getTreeNode(), this.getTreeNode_InputParent(), "treeNode", null, 0, -1, Input.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(notEClass, org.wso2.developerstudio.datamapper.NOT.class, "NOT", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(outputEClass, Output.class, "Output", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getOutput_TreeNode(), this.getTreeNode(), this.getTreeNode_OutputParent(), "treeNode", null, 0, -1, Output.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

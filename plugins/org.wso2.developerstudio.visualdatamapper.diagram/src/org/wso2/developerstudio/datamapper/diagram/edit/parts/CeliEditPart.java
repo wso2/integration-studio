@@ -183,7 +183,7 @@ public class CeliEditPart extends AbstractOperatorEditPart {
 			((Shape) primaryShape).setLineStyle(style);
 		}
 	}
-	
+
 	public class CeliFigure extends OperatorRectangle {
 
 		public CeliFigure() {

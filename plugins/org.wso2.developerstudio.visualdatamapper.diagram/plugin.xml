@@ -226,7 +226,7 @@
       <viewProvider class="org.wso2.developerstudio.datamapper.diagram.providers.DataMapperViewProvider">
          <Priority name="Lowest"/>
          <context viewClass="org.eclipse.gmf.runtime.notation.Diagram" semanticHints="DataMapper"/>
-         <context viewClass="org.eclipse.gmf.runtime.notation.Node" semanticHints="2002,2003,2005,2013,2006,2012,2007,2008,2009,2010,2011,2014,2015,2016,2017,2018,2019,2020,3002,3007,3008,3009,3003,3020,3019,3011,3012,3013,3014,3015,3016,3017,3018"/>
+         <context viewClass="org.eclipse.gmf.runtime.notation.Node" semanticHints="2002,2003,2005,2013,2006,2012,2007,2008,2009,2010,2011,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025,2026,2027,2028,3002,3007,3008,3009,3003,3020,3019,3011,3012,3013,3014,3015,3016,3017,3018"/>
          <context viewClass="org.eclipse.gmf.runtime.notation.Edge" semanticHints="4001"/>
       </viewProvider>
    </extension>
@@ -239,7 +239,7 @@
             <method name="getType()" value="DataMapper"/>
          </object>
          <object class="org.eclipse.gmf.runtime.notation.Node" id="generated-nodes">
-            <method name="getType()" value="2002,2003,2005,2013,2006,2012,2007,2008,2009,2010,2011,2014,2015,2016,2017,2018,2019,2020,3002,3007,3008,3009,3003,3020,3019,3011,3012,3013,3014,3015,3016,3017,3018"/>
+            <method name="getType()" value="2002,2003,2005,2013,2006,2012,2007,2008,2009,2010,2011,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025,2026,2027,2028,3002,3007,3008,3009,3003,3020,3019,3011,3012,3013,3014,3015,3016,3017,3018"/>
          </object>
          <object class="org.eclipse.gmf.runtime.notation.Edge" id="generated-links">
             <method name="getType()" value="4001"/>
@@ -350,6 +350,46 @@
          <Priority name="Lowest"/>
          <object class="org.wso2.developerstudio.datamapper.diagram.edit.parts.AbsoluteValueEditPart" id="AbsoluteValue_2020"/>
          <context elements="AbsoluteValue_2020"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="org.wso2.developerstudio.datamapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfStringLengthEditPart">
+         <Priority name="Lowest"/>
+         <object class="org.wso2.developerstudio.datamapper.diagram.edit.parts.StringLengthEditPart" id="StringLength_2021"/>
+         <context elements="StringLength_2021"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="org.wso2.developerstudio.datamapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfStartsWithEditPart">
+         <Priority name="Lowest"/>
+         <object class="org.wso2.developerstudio.datamapper.diagram.edit.parts.StartsWithEditPart" id="StartsWith_2022"/>
+         <context elements="StartsWith_2022"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="org.wso2.developerstudio.datamapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfEndsWithEditPart">
+         <Priority name="Lowest"/>
+         <object class="org.wso2.developerstudio.datamapper.diagram.edit.parts.EndsWithEditPart" id="EndsWith_2023"/>
+         <context elements="EndsWith_2023"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="org.wso2.developerstudio.datamapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfSubstringEditPart">
+         <Priority name="Lowest"/>
+         <object class="org.wso2.developerstudio.datamapper.diagram.edit.parts.SubstringEditPart" id="Substring_2024"/>
+         <context elements="Substring_2024"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="org.wso2.developerstudio.datamapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfIfElseEditPart">
+         <Priority name="Lowest"/>
+         <object class="org.wso2.developerstudio.datamapper.diagram.edit.parts.IfElseEditPart" id="IfElse_2025"/>
+         <context elements="IfElse_2025"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="org.wso2.developerstudio.datamapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfANDEditPart">
+         <Priority name="Lowest"/>
+         <object class="org.wso2.developerstudio.datamapper.diagram.edit.parts.ANDEditPart" id="AND_2026"/>
+         <context elements="AND_2026"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="org.wso2.developerstudio.datamapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfOREditPart">
+         <Priority name="Lowest"/>
+         <object class="org.wso2.developerstudio.datamapper.diagram.edit.parts.OREditPart" id="OR_2027"/>
+         <context elements="OR_2027"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="org.wso2.developerstudio.datamapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfNOTEditPart">
+         <Priority name="Lowest"/>
+         <object class="org.wso2.developerstudio.datamapper.diagram.edit.parts.NOTEditPart" id="NOT_2028"/>
+         <context elements="NOT_2028"/>
       </modelingAssistantProvider>
             <modelingAssistantProvider class="org.wso2.developerstudio.datamapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfTreeNodeEditPart">
          <Priority name="Lowest"/>
@@ -630,6 +670,86 @@
       </metamodel>
       <metamodel nsURI="http:///org/wso2/developerstudio/eclipse/gmf/datamapper">
          <metamodelType
+               id="org.wso2.developerstudio.visualdatamapper.diagram.StringLength_2021"
+               name="%metatype.name.StringLength_2021"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="StringLength"
+               edithelper="org.wso2.developerstudio.datamapper.diagram.edit.helpers.StringLengthEditHelper">
+            <param name="semanticHint" value="2021"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http:///org/wso2/developerstudio/eclipse/gmf/datamapper">
+         <metamodelType
+               id="org.wso2.developerstudio.visualdatamapper.diagram.StartsWith_2022"
+               name="%metatype.name.StartsWith_2022"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="StartsWith"
+               edithelper="org.wso2.developerstudio.datamapper.diagram.edit.helpers.StartsWithEditHelper">
+            <param name="semanticHint" value="2022"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http:///org/wso2/developerstudio/eclipse/gmf/datamapper">
+         <metamodelType
+               id="org.wso2.developerstudio.visualdatamapper.diagram.EndsWith_2023"
+               name="%metatype.name.EndsWith_2023"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="EndsWith"
+               edithelper="org.wso2.developerstudio.datamapper.diagram.edit.helpers.EndsWithEditHelper">
+            <param name="semanticHint" value="2023"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http:///org/wso2/developerstudio/eclipse/gmf/datamapper">
+         <metamodelType
+               id="org.wso2.developerstudio.visualdatamapper.diagram.Substring_2024"
+               name="%metatype.name.Substring_2024"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="Substring"
+               edithelper="org.wso2.developerstudio.datamapper.diagram.edit.helpers.SubstringEditHelper">
+            <param name="semanticHint" value="2024"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http:///org/wso2/developerstudio/eclipse/gmf/datamapper">
+         <metamodelType
+               id="org.wso2.developerstudio.visualdatamapper.diagram.IfElse_2025"
+               name="%metatype.name.IfElse_2025"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="IfElse"
+               edithelper="org.wso2.developerstudio.datamapper.diagram.edit.helpers.IfElseEditHelper">
+            <param name="semanticHint" value="2025"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http:///org/wso2/developerstudio/eclipse/gmf/datamapper">
+         <metamodelType
+               id="org.wso2.developerstudio.visualdatamapper.diagram.AND_2026"
+               name="%metatype.name.AND_2026"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="AND"
+               edithelper="org.wso2.developerstudio.datamapper.diagram.edit.helpers.ANDEditHelper">
+            <param name="semanticHint" value="2026"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http:///org/wso2/developerstudio/eclipse/gmf/datamapper">
+         <metamodelType
+               id="org.wso2.developerstudio.visualdatamapper.diagram.OR_2027"
+               name="%metatype.name.OR_2027"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="OR"
+               edithelper="org.wso2.developerstudio.datamapper.diagram.edit.helpers.OREditHelper">
+            <param name="semanticHint" value="2027"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http:///org/wso2/developerstudio/eclipse/gmf/datamapper">
+         <metamodelType
+               id="org.wso2.developerstudio.visualdatamapper.diagram.NOT_2028"
+               name="%metatype.name.NOT_2028"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="NOT"
+               edithelper="org.wso2.developerstudio.datamapper.diagram.edit.helpers.NOTEditHelper">
+            <param name="semanticHint" value="2028"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http:///org/wso2/developerstudio/eclipse/gmf/datamapper">
+         <metamodelType
                id="org.wso2.developerstudio.visualdatamapper.diagram.TreeNode_3002"
                name="%metatype.name.TreeNode_3002"
                kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
@@ -813,6 +933,14 @@
          <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.Round_2018"/>
          <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.SetPrecision_2019"/>
          <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.AbsoluteValue_2020"/>
+         <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.StringLength_2021"/>
+         <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.StartsWith_2022"/>
+         <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.EndsWith_2023"/>
+         <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.Substring_2024"/>
+         <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.IfElse_2025"/>
+         <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.AND_2026"/>
+         <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.OR_2027"/>
+         <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.NOT_2028"/>
          <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.TreeNode_3002"/>
          <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.Element_3007"/>
          <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.InNode_3008"/>

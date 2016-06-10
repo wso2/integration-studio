@@ -116,6 +116,167 @@ public class DataMapperItemProviderAdapterFactory extends DataMapperAdapterFacto
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.wso2.developerstudio.datamapper.StringLength} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected StringLengthItemProvider stringLengthItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.wso2.developerstudio.datamapper.StringLength}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createStringLengthAdapter() {
+		if (stringLengthItemProvider == null) {
+			stringLengthItemProvider = new StringLengthItemProvider(this);
+		}
+
+		return stringLengthItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.wso2.developerstudio.datamapper.StartsWith} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected StartsWithItemProvider startsWithItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.wso2.developerstudio.datamapper.StartsWith}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createStartsWithAdapter() {
+		if (startsWithItemProvider == null) {
+			startsWithItemProvider = new StartsWithItemProvider(this);
+		}
+
+		return startsWithItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.wso2.developerstudio.datamapper.EndsWith} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EndsWithItemProvider endsWithItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.wso2.developerstudio.datamapper.EndsWith}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createEndsWithAdapter() {
+		if (endsWithItemProvider == null) {
+			endsWithItemProvider = new EndsWithItemProvider(this);
+		}
+
+		return endsWithItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.wso2.developerstudio.datamapper.Substring} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected SubstringItemProvider substringItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.wso2.developerstudio.datamapper.Substring}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createSubstringAdapter() {
+		if (substringItemProvider == null) {
+			substringItemProvider = new SubstringItemProvider(this);
+		}
+
+		return substringItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.wso2.developerstudio.datamapper.IfElse} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected IfElseItemProvider ifElseItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.wso2.developerstudio.datamapper.IfElse}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createIfElseAdapter() {
+		if (ifElseItemProvider == null) {
+			ifElseItemProvider = new IfElseItemProvider(this);
+		}
+
+		return ifElseItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.wso2.developerstudio.datamapper.AND} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ANDItemProvider andItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.wso2.developerstudio.datamapper.AND}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createANDAdapter() {
+		if (andItemProvider == null) {
+			andItemProvider = new ANDItemProvider(this);
+		}
+
+		return andItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.wso2.developerstudio.datamapper.OR} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ORItemProvider orItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.wso2.developerstudio.datamapper.OR}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createORAdapter() {
+		if (orItemProvider == null) {
+			orItemProvider = new ORItemProvider(this);
+		}
+
+		return orItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link org.wso2.developerstudio.datamapper.Input} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -136,6 +297,29 @@ public class DataMapperItemProviderAdapterFactory extends DataMapperAdapterFacto
 		}
 
 		return inputItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.wso2.developerstudio.datamapper.NOT} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected NOTItemProvider notItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.wso2.developerstudio.datamapper.NOT}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createNOTAdapter() {
+		if (notItemProvider == null) {
+			notItemProvider = new NOTItemProvider(this);
+		}
+
+		return notItemProvider;
 	}
 
 	/**
@@ -906,7 +1090,15 @@ public class DataMapperItemProviderAdapterFactory extends DataMapperAdapterFacto
 	public void dispose() {
 		if (dataMapperNodeItemProvider != null) dataMapperNodeItemProvider.dispose();
 		if (dataMapperRootItemProvider != null) dataMapperRootItemProvider.dispose();
+		if (stringLengthItemProvider != null) stringLengthItemProvider.dispose();
+		if (startsWithItemProvider != null) startsWithItemProvider.dispose();
+		if (endsWithItemProvider != null) endsWithItemProvider.dispose();
+		if (substringItemProvider != null) substringItemProvider.dispose();
+		if (ifElseItemProvider != null) ifElseItemProvider.dispose();
+		if (andItemProvider != null) andItemProvider.dispose();
+		if (orItemProvider != null) orItemProvider.dispose();
 		if (inputItemProvider != null) inputItemProvider.dispose();
+		if (notItemProvider != null) notItemProvider.dispose();
 		if (outputItemProvider != null) outputItemProvider.dispose();
 		if (operatorItemProvider != null) operatorItemProvider.dispose();
 		if (operatorBasicContainerItemProvider != null) operatorBasicContainerItemProvider.dispose();

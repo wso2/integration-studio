@@ -31,6 +31,7 @@ import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.gmf.tooling.runtime.update.UpdaterLinkDescriptor;
 import org.wso2.developerstudio.datamapper.DataMapperPackage;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.ANDEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.AbsoluteValueEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.AddEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.CeliEditPart;
@@ -41,14 +42,18 @@ import org.wso2.developerstudio.datamapper.diagram.edit.parts.DataMapperLinkEdit
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.DataMapperRootEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.DivideEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.ElementEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.EndsWithEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.EqualEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.FloorEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.IfElseEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.InNode2EditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.InNode3EditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.InNodeEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.InputEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.LowerCaseEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.MultiplyEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.NOTEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.OREditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.OperatorBasicContainerEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.OperatorLeftConnectorEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.OperatorLeftContainerEditPart;
@@ -61,6 +66,9 @@ import org.wso2.developerstudio.datamapper.diagram.edit.parts.OutputEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.RoundEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.SetPrecisionEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.SplitEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.StartsWithEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.StringLengthEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.SubstringEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.SubtractEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.TreeNode2EditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.TreeNode3EditPart;
@@ -152,6 +160,14 @@ public class DataMapperRootCanonicalEditPolicy extends CanonicalEditPolicy {
 		case RoundEditPart.VISUAL_ID:
 		case SetPrecisionEditPart.VISUAL_ID:
 		case AbsoluteValueEditPart.VISUAL_ID:
+		case StringLengthEditPart.VISUAL_ID:
+		case StartsWithEditPart.VISUAL_ID:
+		case EndsWithEditPart.VISUAL_ID:
+		case SubstringEditPart.VISUAL_ID:
+		case IfElseEditPart.VISUAL_ID:
+		case ANDEditPart.VISUAL_ID:
+		case OREditPart.VISUAL_ID:
+		case NOTEditPart.VISUAL_ID:
 			return true;
 		}
 		return false;
@@ -420,6 +436,62 @@ public class DataMapperRootCanonicalEditPolicy extends CanonicalEditPolicy {
 		case AbsoluteValueEditPart.VISUAL_ID: {
 			if (!domain2NotationMap.containsKey(view.getElement())) {
 				result.addAll(DataMapperDiagramUpdater.getAbsoluteValue_2020ContainedLinks(view));
+			}
+			domain2NotationMap.putView(view.getElement(), view);
+			break;
+		}
+		case StringLengthEditPart.VISUAL_ID: {
+			if (!domain2NotationMap.containsKey(view.getElement())) {
+				result.addAll(DataMapperDiagramUpdater.getStringLength_2021ContainedLinks(view));
+			}
+			domain2NotationMap.putView(view.getElement(), view);
+			break;
+		}
+		case StartsWithEditPart.VISUAL_ID: {
+			if (!domain2NotationMap.containsKey(view.getElement())) {
+				result.addAll(DataMapperDiagramUpdater.getStartsWith_2022ContainedLinks(view));
+			}
+			domain2NotationMap.putView(view.getElement(), view);
+			break;
+		}
+		case EndsWithEditPart.VISUAL_ID: {
+			if (!domain2NotationMap.containsKey(view.getElement())) {
+				result.addAll(DataMapperDiagramUpdater.getEndsWith_2023ContainedLinks(view));
+			}
+			domain2NotationMap.putView(view.getElement(), view);
+			break;
+		}
+		case SubstringEditPart.VISUAL_ID: {
+			if (!domain2NotationMap.containsKey(view.getElement())) {
+				result.addAll(DataMapperDiagramUpdater.getSubstring_2024ContainedLinks(view));
+			}
+			domain2NotationMap.putView(view.getElement(), view);
+			break;
+		}
+		case IfElseEditPart.VISUAL_ID: {
+			if (!domain2NotationMap.containsKey(view.getElement())) {
+				result.addAll(DataMapperDiagramUpdater.getIfElse_2025ContainedLinks(view));
+			}
+			domain2NotationMap.putView(view.getElement(), view);
+			break;
+		}
+		case ANDEditPart.VISUAL_ID: {
+			if (!domain2NotationMap.containsKey(view.getElement())) {
+				result.addAll(DataMapperDiagramUpdater.getAND_2026ContainedLinks(view));
+			}
+			domain2NotationMap.putView(view.getElement(), view);
+			break;
+		}
+		case OREditPart.VISUAL_ID: {
+			if (!domain2NotationMap.containsKey(view.getElement())) {
+				result.addAll(DataMapperDiagramUpdater.getOR_2027ContainedLinks(view));
+			}
+			domain2NotationMap.putView(view.getElement(), view);
+			break;
+		}
+		case NOTEditPart.VISUAL_ID: {
+			if (!domain2NotationMap.containsKey(view.getElement())) {
+				result.addAll(DataMapperDiagramUpdater.getNOT_2028ContainedLinks(view));
 			}
 			domain2NotationMap.putView(view.getElement(), view);
 			break;

@@ -11,10 +11,18 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="operators" upperBound="-1"
         eType="#//Operator" containment="true"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="StringLength" eSuperTypes="#//Operator"/>
+  <eClassifiers xsi:type="ecore:EClass" name="StartsWith" eSuperTypes="#//Operator"/>
+  <eClassifiers xsi:type="ecore:EClass" name="EndsWith" eSuperTypes="#//Operator"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Substring" eSuperTypes="#//Operator"/>
+  <eClassifiers xsi:type="ecore:EClass" name="IfElse" eSuperTypes="#//Operator"/>
+  <eClassifiers xsi:type="ecore:EClass" name="AND" eSuperTypes="#//Operator"/>
+  <eClassifiers xsi:type="ecore:EClass" name="OR" eSuperTypes="#//Operator"/>
   <eClassifiers xsi:type="ecore:EClass" name="Input" eSuperTypes="#//DataMapperNode">
     <eStructuralFeatures xsi:type="ecore:EReference" name="treeNode" upperBound="-1"
         eType="#//TreeNode" containment="true" eOpposite="#//TreeNode/inputParent"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="NOT" eSuperTypes="#//Operator"/>
   <eClassifiers xsi:type="ecore:EClass" name="Output" eSuperTypes="#//DataMapperNode">
     <eStructuralFeatures xsi:type="ecore:EReference" name="treeNode" upperBound="-1"
         eType="#//TreeNode" containment="true" eOpposite="#//TreeNode/outputParent"/>

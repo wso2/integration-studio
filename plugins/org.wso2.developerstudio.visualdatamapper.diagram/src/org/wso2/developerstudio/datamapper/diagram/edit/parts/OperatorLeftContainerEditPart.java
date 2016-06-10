@@ -79,9 +79,9 @@ public class OperatorLeftContainerEditPart extends ShapeNodeEditPart {
 		Display.getDefault().asyncExec(new Runnable() {
 			@Override
 			public void run() {
-				if(getParent().getParent().getModel() instanceof CSSShapeImpl){
+				if (getParent().getParent().getModel() instanceof CSSShapeImpl) {
 					CSSShapeImpl model = (CSSShapeImpl) getParent().getParent().getModel();
-					OperatorImpl operator=(OperatorImpl) model.getElement();
+					OperatorImpl operator = (OperatorImpl) model.getElement();
 					int numberOfInputs = operator.getDefaultInputConnectors();
 					EObject parentContainer = ((org.eclipse.gmf.runtime.notation.impl.NodeImpl) getModel())
 							.getElement();

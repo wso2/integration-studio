@@ -23,8 +23,10 @@ import org.wso2.developerstudio.datamapper.DataMapperPackage;
 import org.wso2.developerstudio.datamapper.DataMapperRoot;
 import org.wso2.developerstudio.datamapper.Divide;
 import org.wso2.developerstudio.datamapper.Element;
+import org.wso2.developerstudio.datamapper.EndsWith;
 import org.wso2.developerstudio.datamapper.Equal;
 import org.wso2.developerstudio.datamapper.Floor;
+import org.wso2.developerstudio.datamapper.IfElse;
 import org.wso2.developerstudio.datamapper.InNode;
 import org.wso2.developerstudio.datamapper.Input;
 import org.wso2.developerstudio.datamapper.LowerCase;
@@ -40,9 +42,13 @@ import org.wso2.developerstudio.datamapper.Output;
 import org.wso2.developerstudio.datamapper.Round;
 import org.wso2.developerstudio.datamapper.SetPrecision;
 import org.wso2.developerstudio.datamapper.Split;
+import org.wso2.developerstudio.datamapper.StartsWith;
+import org.wso2.developerstudio.datamapper.StringLength;
+import org.wso2.developerstudio.datamapper.Substring;
 import org.wso2.developerstudio.datamapper.Subtract;
 import org.wso2.developerstudio.datamapper.TreeNode;
 import org.wso2.developerstudio.datamapper.UpperCase;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.ANDEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.AbsoluteValueEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.AddEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.CeliEditPart;
@@ -53,14 +59,18 @@ import org.wso2.developerstudio.datamapper.diagram.edit.parts.DataMapperLinkEdit
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.DataMapperRootEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.DivideEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.ElementEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.EndsWithEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.EqualEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.FloorEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.IfElseEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.InNode2EditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.InNode3EditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.InNodeEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.InputEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.LowerCaseEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.MultiplyEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.NOTEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.OREditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.OperatorBasicContainerEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.OperatorLeftConnectorEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.OperatorLeftContainerEditPart;
@@ -73,6 +83,9 @@ import org.wso2.developerstudio.datamapper.diagram.edit.parts.OutputEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.RoundEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.SetPrecisionEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.SplitEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.StartsWithEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.StringLengthEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.SubstringEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.SubtractEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.TreeNode2EditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.TreeNode3EditPart;
@@ -128,6 +141,22 @@ public class DataMapperDiagramUpdater {
 			return getSetPrecision_2019SemanticChildren(view);
 		case AbsoluteValueEditPart.VISUAL_ID:
 			return getAbsoluteValue_2020SemanticChildren(view);
+		case StringLengthEditPart.VISUAL_ID:
+			return getStringLength_2021SemanticChildren(view);
+		case StartsWithEditPart.VISUAL_ID:
+			return getStartsWith_2022SemanticChildren(view);
+		case EndsWithEditPart.VISUAL_ID:
+			return getEndsWith_2023SemanticChildren(view);
+		case SubstringEditPart.VISUAL_ID:
+			return getSubstring_2024SemanticChildren(view);
+		case IfElseEditPart.VISUAL_ID:
+			return getIfElse_2025SemanticChildren(view);
+		case ANDEditPart.VISUAL_ID:
+			return getAND_2026SemanticChildren(view);
+		case OREditPart.VISUAL_ID:
+			return getOR_2027SemanticChildren(view);
+		case NOTEditPart.VISUAL_ID:
+			return getNOT_2028SemanticChildren(view);
 		case TreeNodeEditPart.VISUAL_ID:
 			return getTreeNode_3002SemanticChildren(view);
 		case ElementEditPart.VISUAL_ID:
@@ -237,6 +266,38 @@ public class DataMapperDiagramUpdater {
 				continue;
 			}
 			if (visualID == AbsoluteValueEditPart.VISUAL_ID) {
+				result.add(new DataMapperNodeDescriptor(childElement, visualID));
+				continue;
+			}
+			if (visualID == StringLengthEditPart.VISUAL_ID) {
+				result.add(new DataMapperNodeDescriptor(childElement, visualID));
+				continue;
+			}
+			if (visualID == StartsWithEditPart.VISUAL_ID) {
+				result.add(new DataMapperNodeDescriptor(childElement, visualID));
+				continue;
+			}
+			if (visualID == EndsWithEditPart.VISUAL_ID) {
+				result.add(new DataMapperNodeDescriptor(childElement, visualID));
+				continue;
+			}
+			if (visualID == SubstringEditPart.VISUAL_ID) {
+				result.add(new DataMapperNodeDescriptor(childElement, visualID));
+				continue;
+			}
+			if (visualID == IfElseEditPart.VISUAL_ID) {
+				result.add(new DataMapperNodeDescriptor(childElement, visualID));
+				continue;
+			}
+			if (visualID == ANDEditPart.VISUAL_ID) {
+				result.add(new DataMapperNodeDescriptor(childElement, visualID));
+				continue;
+			}
+			if (visualID == OREditPart.VISUAL_ID) {
+				result.add(new DataMapperNodeDescriptor(childElement, visualID));
+				continue;
+			}
+			if (visualID == NOTEditPart.VISUAL_ID) {
 				result.add(new DataMapperNodeDescriptor(childElement, visualID));
 				continue;
 			}
@@ -589,6 +650,161 @@ public class DataMapperDiagramUpdater {
 	}
 
 	/**
+	* @generated
+	*/
+	public static List<DataMapperNodeDescriptor> getStringLength_2021SemanticChildren(View view) {
+		if (!view.isSetElement()) {
+			return Collections.emptyList();
+		}
+		StringLength modelElement = (StringLength) view.getElement();
+		LinkedList<DataMapperNodeDescriptor> result = new LinkedList<DataMapperNodeDescriptor>();
+		{
+			OperatorBasicContainer childElement = modelElement.getBasicContainer();
+			int visualID = DataMapperVisualIDRegistry.getNodeVisualID(view, childElement);
+			if (visualID == OperatorBasicContainerEditPart.VISUAL_ID) {
+				result.add(new DataMapperNodeDescriptor(childElement, visualID));
+			}
+		}
+		return result;
+	}
+
+	/**
+	* @generated
+	*/
+	public static List<DataMapperNodeDescriptor> getStartsWith_2022SemanticChildren(View view) {
+		if (!view.isSetElement()) {
+			return Collections.emptyList();
+		}
+		StartsWith modelElement = (StartsWith) view.getElement();
+		LinkedList<DataMapperNodeDescriptor> result = new LinkedList<DataMapperNodeDescriptor>();
+		{
+			OperatorBasicContainer childElement = modelElement.getBasicContainer();
+			int visualID = DataMapperVisualIDRegistry.getNodeVisualID(view, childElement);
+			if (visualID == OperatorBasicContainerEditPart.VISUAL_ID) {
+				result.add(new DataMapperNodeDescriptor(childElement, visualID));
+			}
+		}
+		return result;
+	}
+
+	/**
+	* @generated
+	*/
+	public static List<DataMapperNodeDescriptor> getEndsWith_2023SemanticChildren(View view) {
+		if (!view.isSetElement()) {
+			return Collections.emptyList();
+		}
+		EndsWith modelElement = (EndsWith) view.getElement();
+		LinkedList<DataMapperNodeDescriptor> result = new LinkedList<DataMapperNodeDescriptor>();
+		{
+			OperatorBasicContainer childElement = modelElement.getBasicContainer();
+			int visualID = DataMapperVisualIDRegistry.getNodeVisualID(view, childElement);
+			if (visualID == OperatorBasicContainerEditPart.VISUAL_ID) {
+				result.add(new DataMapperNodeDescriptor(childElement, visualID));
+			}
+		}
+		return result;
+	}
+
+	/**
+	* @generated
+	*/
+	public static List<DataMapperNodeDescriptor> getSubstring_2024SemanticChildren(View view) {
+		if (!view.isSetElement()) {
+			return Collections.emptyList();
+		}
+		Substring modelElement = (Substring) view.getElement();
+		LinkedList<DataMapperNodeDescriptor> result = new LinkedList<DataMapperNodeDescriptor>();
+		{
+			OperatorBasicContainer childElement = modelElement.getBasicContainer();
+			int visualID = DataMapperVisualIDRegistry.getNodeVisualID(view, childElement);
+			if (visualID == OperatorBasicContainerEditPart.VISUAL_ID) {
+				result.add(new DataMapperNodeDescriptor(childElement, visualID));
+			}
+		}
+		return result;
+	}
+
+	/**
+	* @generated
+	*/
+	public static List<DataMapperNodeDescriptor> getIfElse_2025SemanticChildren(View view) {
+		if (!view.isSetElement()) {
+			return Collections.emptyList();
+		}
+		IfElse modelElement = (IfElse) view.getElement();
+		LinkedList<DataMapperNodeDescriptor> result = new LinkedList<DataMapperNodeDescriptor>();
+		{
+			OperatorBasicContainer childElement = modelElement.getBasicContainer();
+			int visualID = DataMapperVisualIDRegistry.getNodeVisualID(view, childElement);
+			if (visualID == OperatorBasicContainerEditPart.VISUAL_ID) {
+				result.add(new DataMapperNodeDescriptor(childElement, visualID));
+			}
+		}
+		return result;
+	}
+
+	/**
+	* @generated
+	*/
+	public static List<DataMapperNodeDescriptor> getAND_2026SemanticChildren(View view) {
+		if (!view.isSetElement()) {
+			return Collections.emptyList();
+		}
+		org.wso2.developerstudio.datamapper.AND modelElement = (org.wso2.developerstudio.datamapper.AND) view
+				.getElement();
+		LinkedList<DataMapperNodeDescriptor> result = new LinkedList<DataMapperNodeDescriptor>();
+		{
+			OperatorBasicContainer childElement = modelElement.getBasicContainer();
+			int visualID = DataMapperVisualIDRegistry.getNodeVisualID(view, childElement);
+			if (visualID == OperatorBasicContainerEditPart.VISUAL_ID) {
+				result.add(new DataMapperNodeDescriptor(childElement, visualID));
+			}
+		}
+		return result;
+	}
+
+	/**
+	* @generated
+	*/
+	public static List<DataMapperNodeDescriptor> getOR_2027SemanticChildren(View view) {
+		if (!view.isSetElement()) {
+			return Collections.emptyList();
+		}
+		org.wso2.developerstudio.datamapper.OR modelElement = (org.wso2.developerstudio.datamapper.OR) view
+				.getElement();
+		LinkedList<DataMapperNodeDescriptor> result = new LinkedList<DataMapperNodeDescriptor>();
+		{
+			OperatorBasicContainer childElement = modelElement.getBasicContainer();
+			int visualID = DataMapperVisualIDRegistry.getNodeVisualID(view, childElement);
+			if (visualID == OperatorBasicContainerEditPart.VISUAL_ID) {
+				result.add(new DataMapperNodeDescriptor(childElement, visualID));
+			}
+		}
+		return result;
+	}
+
+	/**
+	* @generated
+	*/
+	public static List<DataMapperNodeDescriptor> getNOT_2028SemanticChildren(View view) {
+		if (!view.isSetElement()) {
+			return Collections.emptyList();
+		}
+		org.wso2.developerstudio.datamapper.NOT modelElement = (org.wso2.developerstudio.datamapper.NOT) view
+				.getElement();
+		LinkedList<DataMapperNodeDescriptor> result = new LinkedList<DataMapperNodeDescriptor>();
+		{
+			OperatorBasicContainer childElement = modelElement.getBasicContainer();
+			int visualID = DataMapperVisualIDRegistry.getNodeVisualID(view, childElement);
+			if (visualID == OperatorBasicContainerEditPart.VISUAL_ID) {
+				result.add(new DataMapperNodeDescriptor(childElement, visualID));
+			}
+		}
+		return result;
+	}
+
+	/**
 	 * @generated
 	 */
 	public static List<DataMapperNodeDescriptor> getTreeNode_3002SemanticChildren(View view) {
@@ -887,6 +1103,22 @@ public class DataMapperDiagramUpdater {
 			return getSetPrecision_2019ContainedLinks(view);
 		case AbsoluteValueEditPart.VISUAL_ID:
 			return getAbsoluteValue_2020ContainedLinks(view);
+		case StringLengthEditPart.VISUAL_ID:
+			return getStringLength_2021ContainedLinks(view);
+		case StartsWithEditPart.VISUAL_ID:
+			return getStartsWith_2022ContainedLinks(view);
+		case EndsWithEditPart.VISUAL_ID:
+			return getEndsWith_2023ContainedLinks(view);
+		case SubstringEditPart.VISUAL_ID:
+			return getSubstring_2024ContainedLinks(view);
+		case IfElseEditPart.VISUAL_ID:
+			return getIfElse_2025ContainedLinks(view);
+		case ANDEditPart.VISUAL_ID:
+			return getAND_2026ContainedLinks(view);
+		case OREditPart.VISUAL_ID:
+			return getOR_2027ContainedLinks(view);
+		case NOTEditPart.VISUAL_ID:
+			return getNOT_2028ContainedLinks(view);
 		case TreeNodeEditPart.VISUAL_ID:
 			return getTreeNode_3002ContainedLinks(view);
 		case ElementEditPart.VISUAL_ID:
@@ -964,6 +1196,22 @@ public class DataMapperDiagramUpdater {
 			return getSetPrecision_2019IncomingLinks(view);
 		case AbsoluteValueEditPart.VISUAL_ID:
 			return getAbsoluteValue_2020IncomingLinks(view);
+		case StringLengthEditPart.VISUAL_ID:
+			return getStringLength_2021IncomingLinks(view);
+		case StartsWithEditPart.VISUAL_ID:
+			return getStartsWith_2022IncomingLinks(view);
+		case EndsWithEditPart.VISUAL_ID:
+			return getEndsWith_2023IncomingLinks(view);
+		case SubstringEditPart.VISUAL_ID:
+			return getSubstring_2024IncomingLinks(view);
+		case IfElseEditPart.VISUAL_ID:
+			return getIfElse_2025IncomingLinks(view);
+		case ANDEditPart.VISUAL_ID:
+			return getAND_2026IncomingLinks(view);
+		case OREditPart.VISUAL_ID:
+			return getOR_2027IncomingLinks(view);
+		case NOTEditPart.VISUAL_ID:
+			return getNOT_2028IncomingLinks(view);
 		case TreeNodeEditPart.VISUAL_ID:
 			return getTreeNode_3002IncomingLinks(view);
 		case ElementEditPart.VISUAL_ID:
@@ -1041,6 +1289,22 @@ public class DataMapperDiagramUpdater {
 			return getSetPrecision_2019OutgoingLinks(view);
 		case AbsoluteValueEditPart.VISUAL_ID:
 			return getAbsoluteValue_2020OutgoingLinks(view);
+		case StringLengthEditPart.VISUAL_ID:
+			return getStringLength_2021OutgoingLinks(view);
+		case StartsWithEditPart.VISUAL_ID:
+			return getStartsWith_2022OutgoingLinks(view);
+		case EndsWithEditPart.VISUAL_ID:
+			return getEndsWith_2023OutgoingLinks(view);
+		case SubstringEditPart.VISUAL_ID:
+			return getSubstring_2024OutgoingLinks(view);
+		case IfElseEditPart.VISUAL_ID:
+			return getIfElse_2025OutgoingLinks(view);
+		case ANDEditPart.VISUAL_ID:
+			return getAND_2026OutgoingLinks(view);
+		case OREditPart.VISUAL_ID:
+			return getOR_2027OutgoingLinks(view);
+		case NOTEditPart.VISUAL_ID:
+			return getNOT_2028OutgoingLinks(view);
 		case TreeNodeEditPart.VISUAL_ID:
 			return getTreeNode_3002OutgoingLinks(view);
 		case ElementEditPart.VISUAL_ID:
@@ -1207,6 +1471,62 @@ public class DataMapperDiagramUpdater {
 	* @generated
 	*/
 	public static List<DataMapperLinkDescriptor> getAbsoluteValue_2020ContainedLinks(View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	* @generated
+	*/
+	public static List<DataMapperLinkDescriptor> getStringLength_2021ContainedLinks(View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	* @generated
+	*/
+	public static List<DataMapperLinkDescriptor> getStartsWith_2022ContainedLinks(View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	* @generated
+	*/
+	public static List<DataMapperLinkDescriptor> getEndsWith_2023ContainedLinks(View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	* @generated
+	*/
+	public static List<DataMapperLinkDescriptor> getSubstring_2024ContainedLinks(View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	* @generated
+	*/
+	public static List<DataMapperLinkDescriptor> getIfElse_2025ContainedLinks(View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	* @generated
+	*/
+	public static List<DataMapperLinkDescriptor> getAND_2026ContainedLinks(View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	* @generated
+	*/
+	public static List<DataMapperLinkDescriptor> getOR_2027ContainedLinks(View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	* @generated
+	*/
+	public static List<DataMapperLinkDescriptor> getNOT_2028ContainedLinks(View view) {
 		return Collections.emptyList();
 	}
 
@@ -1454,6 +1774,62 @@ public class DataMapperDiagramUpdater {
 	* @generated
 	*/
 	public static List<DataMapperLinkDescriptor> getAbsoluteValue_2020IncomingLinks(View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	* @generated
+	*/
+	public static List<DataMapperLinkDescriptor> getStringLength_2021IncomingLinks(View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	* @generated
+	*/
+	public static List<DataMapperLinkDescriptor> getStartsWith_2022IncomingLinks(View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	* @generated
+	*/
+	public static List<DataMapperLinkDescriptor> getEndsWith_2023IncomingLinks(View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	* @generated
+	*/
+	public static List<DataMapperLinkDescriptor> getSubstring_2024IncomingLinks(View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	* @generated
+	*/
+	public static List<DataMapperLinkDescriptor> getIfElse_2025IncomingLinks(View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	* @generated
+	*/
+	public static List<DataMapperLinkDescriptor> getAND_2026IncomingLinks(View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	* @generated
+	*/
+	public static List<DataMapperLinkDescriptor> getOR_2027IncomingLinks(View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	* @generated
+	*/
+	public static List<DataMapperLinkDescriptor> getNOT_2028IncomingLinks(View view) {
 		return Collections.emptyList();
 	}
 
@@ -1707,6 +2083,62 @@ public class DataMapperDiagramUpdater {
 	* @generated
 	*/
 	public static List<DataMapperLinkDescriptor> getAbsoluteValue_2020OutgoingLinks(View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	* @generated
+	*/
+	public static List<DataMapperLinkDescriptor> getStringLength_2021OutgoingLinks(View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	* @generated
+	*/
+	public static List<DataMapperLinkDescriptor> getStartsWith_2022OutgoingLinks(View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	* @generated
+	*/
+	public static List<DataMapperLinkDescriptor> getEndsWith_2023OutgoingLinks(View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	* @generated
+	*/
+	public static List<DataMapperLinkDescriptor> getSubstring_2024OutgoingLinks(View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	* @generated
+	*/
+	public static List<DataMapperLinkDescriptor> getIfElse_2025OutgoingLinks(View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	* @generated
+	*/
+	public static List<DataMapperLinkDescriptor> getAND_2026OutgoingLinks(View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	* @generated
+	*/
+	public static List<DataMapperLinkDescriptor> getOR_2027OutgoingLinks(View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	* @generated
+	*/
+	public static List<DataMapperLinkDescriptor> getNOT_2028OutgoingLinks(View view) {
 		return Collections.emptyList();
 	}
 

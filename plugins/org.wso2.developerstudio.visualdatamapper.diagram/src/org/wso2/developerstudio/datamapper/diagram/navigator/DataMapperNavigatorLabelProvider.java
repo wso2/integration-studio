@@ -23,16 +23,22 @@ import org.wso2.developerstudio.datamapper.Constant;
 import org.wso2.developerstudio.datamapper.Contains;
 import org.wso2.developerstudio.datamapper.Divide;
 import org.wso2.developerstudio.datamapper.Element;
+import org.wso2.developerstudio.datamapper.EndsWith;
 import org.wso2.developerstudio.datamapper.Equal;
 import org.wso2.developerstudio.datamapper.Floor;
+import org.wso2.developerstudio.datamapper.IfElse;
 import org.wso2.developerstudio.datamapper.LowerCase;
 import org.wso2.developerstudio.datamapper.Multiply;
 import org.wso2.developerstudio.datamapper.Round;
 import org.wso2.developerstudio.datamapper.SetPrecision;
 import org.wso2.developerstudio.datamapper.Split;
+import org.wso2.developerstudio.datamapper.StartsWith;
+import org.wso2.developerstudio.datamapper.StringLength;
+import org.wso2.developerstudio.datamapper.Substring;
 import org.wso2.developerstudio.datamapper.Subtract;
 import org.wso2.developerstudio.datamapper.TreeNode;
 import org.wso2.developerstudio.datamapper.UpperCase;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.ANDEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.AbsoluteValueEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.AddEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.CeliEditPart;
@@ -44,14 +50,18 @@ import org.wso2.developerstudio.datamapper.diagram.edit.parts.DataMapperRootEdit
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.DivideEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.ElementEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.ElementNameEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.EndsWithEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.EqualEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.FloorEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.IfElseEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.InNode2EditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.InNode3EditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.InNodeEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.InputEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.LowerCaseEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.MultiplyEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.NOTEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.OREditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.OperatorBasicContainerEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.OperatorLeftConnectorEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.OperatorLeftContainerEditPart;
@@ -64,6 +74,9 @@ import org.wso2.developerstudio.datamapper.diagram.edit.parts.OutputEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.RoundEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.SetPrecisionEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.SplitEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.StartsWithEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.StringLengthEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.SubstringEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.SubtractEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.TreeNode2EditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.TreeNode3EditPart;
@@ -189,6 +202,31 @@ public class DataMapperNavigatorLabelProvider extends LabelProvider
 			return getImage(
 					"Navigator?TopLevelNode?http:///org/wso2/developerstudio/eclipse/gmf/datamapper?AbsoluteValue", //$NON-NLS-1$
 					DataMapperElementTypes.AbsoluteValue_2020);
+		case StringLengthEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?TopLevelNode?http:///org/wso2/developerstudio/eclipse/gmf/datamapper?StringLength", //$NON-NLS-1$
+					DataMapperElementTypes.StringLength_2021);
+		case StartsWithEditPart.VISUAL_ID:
+			return getImage("Navigator?TopLevelNode?http:///org/wso2/developerstudio/eclipse/gmf/datamapper?StartsWith", //$NON-NLS-1$
+					DataMapperElementTypes.StartsWith_2022);
+		case EndsWithEditPart.VISUAL_ID:
+			return getImage("Navigator?TopLevelNode?http:///org/wso2/developerstudio/eclipse/gmf/datamapper?EndsWith", //$NON-NLS-1$
+					DataMapperElementTypes.EndsWith_2023);
+		case SubstringEditPart.VISUAL_ID:
+			return getImage("Navigator?TopLevelNode?http:///org/wso2/developerstudio/eclipse/gmf/datamapper?Substring", //$NON-NLS-1$
+					DataMapperElementTypes.Substring_2024);
+		case IfElseEditPart.VISUAL_ID:
+			return getImage("Navigator?TopLevelNode?http:///org/wso2/developerstudio/eclipse/gmf/datamapper?IfElse", //$NON-NLS-1$
+					DataMapperElementTypes.IfElse_2025);
+		case ANDEditPart.VISUAL_ID:
+			return getImage("Navigator?TopLevelNode?http:///org/wso2/developerstudio/eclipse/gmf/datamapper?AND", //$NON-NLS-1$
+					DataMapperElementTypes.AND_2026);
+		case OREditPart.VISUAL_ID:
+			return getImage("Navigator?TopLevelNode?http:///org/wso2/developerstudio/eclipse/gmf/datamapper?OR", //$NON-NLS-1$
+					DataMapperElementTypes.OR_2027);
+		case NOTEditPart.VISUAL_ID:
+			return getImage("Navigator?TopLevelNode?http:///org/wso2/developerstudio/eclipse/gmf/datamapper?NOT", //$NON-NLS-1$
+					DataMapperElementTypes.NOT_2028);
 		case TreeNodeEditPart.VISUAL_ID:
 			return getImage("Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/datamapper?TreeNode", //$NON-NLS-1$
 					DataMapperElementTypes.TreeNode_3002);
@@ -330,6 +368,22 @@ public class DataMapperNavigatorLabelProvider extends LabelProvider
 			return getSetPrecision_2019Text(view);
 		case AbsoluteValueEditPart.VISUAL_ID:
 			return getAbsoluteValue_2020Text(view);
+		case StringLengthEditPart.VISUAL_ID:
+			return getStringLength_2021Text(view);
+		case StartsWithEditPart.VISUAL_ID:
+			return getStartsWith_2022Text(view);
+		case EndsWithEditPart.VISUAL_ID:
+			return getEndsWith_2023Text(view);
+		case SubstringEditPart.VISUAL_ID:
+			return getSubstring_2024Text(view);
+		case IfElseEditPart.VISUAL_ID:
+			return getIfElse_2025Text(view);
+		case ANDEditPart.VISUAL_ID:
+			return getAND_2026Text(view);
+		case OREditPart.VISUAL_ID:
+			return getOR_2027Text(view);
+		case NOTEditPart.VISUAL_ID:
+			return getNOT_2028Text(view);
 		case TreeNodeEditPart.VISUAL_ID:
 			return getTreeNode_3002Text(view);
 		case TreeNode2EditPart.VISUAL_ID:
@@ -591,6 +645,113 @@ public class DataMapperNavigatorLabelProvider extends LabelProvider
 			return String.valueOf(domainModelElement.isSerialized());
 		} else {
 			DataMapperDiagramEditorPlugin.getInstance().logError("No domain element for view with visualID = " + 2020); //$NON-NLS-1$
+			return ""; //$NON-NLS-1$
+		}
+	}
+
+	/**
+	* @generated
+	*/
+	private String getStringLength_2021Text(View view) {
+		StringLength domainModelElement = (StringLength) view.getElement();
+		if (domainModelElement != null) {
+			return String.valueOf(domainModelElement.isSerialized());
+		} else {
+			DataMapperDiagramEditorPlugin.getInstance().logError("No domain element for view with visualID = " + 2021); //$NON-NLS-1$
+			return ""; //$NON-NLS-1$
+		}
+	}
+
+	/**
+	* @generated
+	*/
+	private String getStartsWith_2022Text(View view) {
+		StartsWith domainModelElement = (StartsWith) view.getElement();
+		if (domainModelElement != null) {
+			return String.valueOf(domainModelElement.isSerialized());
+		} else {
+			DataMapperDiagramEditorPlugin.getInstance().logError("No domain element for view with visualID = " + 2022); //$NON-NLS-1$
+			return ""; //$NON-NLS-1$
+		}
+	}
+
+	/**
+	* @generated
+	*/
+	private String getEndsWith_2023Text(View view) {
+		EndsWith domainModelElement = (EndsWith) view.getElement();
+		if (domainModelElement != null) {
+			return String.valueOf(domainModelElement.isSerialized());
+		} else {
+			DataMapperDiagramEditorPlugin.getInstance().logError("No domain element for view with visualID = " + 2023); //$NON-NLS-1$
+			return ""; //$NON-NLS-1$
+		}
+	}
+
+	/**
+	* @generated
+	*/
+	private String getSubstring_2024Text(View view) {
+		Substring domainModelElement = (Substring) view.getElement();
+		if (domainModelElement != null) {
+			return String.valueOf(domainModelElement.isSerialized());
+		} else {
+			DataMapperDiagramEditorPlugin.getInstance().logError("No domain element for view with visualID = " + 2024); //$NON-NLS-1$
+			return ""; //$NON-NLS-1$
+		}
+	}
+
+	/**
+	* @generated
+	*/
+	private String getIfElse_2025Text(View view) {
+		IfElse domainModelElement = (IfElse) view.getElement();
+		if (domainModelElement != null) {
+			return String.valueOf(domainModelElement.isSerialized());
+		} else {
+			DataMapperDiagramEditorPlugin.getInstance().logError("No domain element for view with visualID = " + 2025); //$NON-NLS-1$
+			return ""; //$NON-NLS-1$
+		}
+	}
+
+	/**
+	* @generated
+	*/
+	private String getAND_2026Text(View view) {
+		org.wso2.developerstudio.datamapper.AND domainModelElement = (org.wso2.developerstudio.datamapper.AND) view
+				.getElement();
+		if (domainModelElement != null) {
+			return String.valueOf(domainModelElement.isSerialized());
+		} else {
+			DataMapperDiagramEditorPlugin.getInstance().logError("No domain element for view with visualID = " + 2026); //$NON-NLS-1$
+			return ""; //$NON-NLS-1$
+		}
+	}
+
+	/**
+	* @generated
+	*/
+	private String getOR_2027Text(View view) {
+		org.wso2.developerstudio.datamapper.OR domainModelElement = (org.wso2.developerstudio.datamapper.OR) view
+				.getElement();
+		if (domainModelElement != null) {
+			return String.valueOf(domainModelElement.isSerialized());
+		} else {
+			DataMapperDiagramEditorPlugin.getInstance().logError("No domain element for view with visualID = " + 2027); //$NON-NLS-1$
+			return ""; //$NON-NLS-1$
+		}
+	}
+
+	/**
+	* @generated
+	*/
+	private String getNOT_2028Text(View view) {
+		org.wso2.developerstudio.datamapper.NOT domainModelElement = (org.wso2.developerstudio.datamapper.NOT) view
+				.getElement();
+		if (domainModelElement != null) {
+			return String.valueOf(domainModelElement.isSerialized());
+		} else {
+			DataMapperDiagramEditorPlugin.getInstance().logError("No domain element for view with visualID = " + 2028); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}

@@ -91,7 +91,7 @@ public class ConstantEditPart extends AbstractOperatorEditPart {
 	 * @generated NOT
 	 */
 	protected IFigure createNodeShape() {
-		String constantValue = ((ConstantImpl)((View) getModel()).getElement()).getConstantValue();
+		String constantValue = ((ConstantImpl) ((View) getModel()).getElement()).getConstantValue();
 		return primaryShape = new ConstantFigure(constantValue);
 	}
 

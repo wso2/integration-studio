@@ -6,6 +6,7 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.emf.commands.core.commands.DuplicateEObjectsCommand;
 import org.eclipse.gmf.runtime.emf.type.core.requests.CreateElementRequest;
 import org.eclipse.gmf.runtime.emf.type.core.requests.DuplicateElementsRequest;
+import org.wso2.developerstudio.datamapper.diagram.edit.commands.ANDCreateCommand;
 import org.wso2.developerstudio.datamapper.diagram.edit.commands.AbsoluteValueCreateCommand;
 import org.wso2.developerstudio.datamapper.diagram.edit.commands.AddCreateCommand;
 import org.wso2.developerstudio.datamapper.diagram.edit.commands.CeliCreateCommand;
@@ -13,15 +14,22 @@ import org.wso2.developerstudio.datamapper.diagram.edit.commands.ConcatCreateCom
 import org.wso2.developerstudio.datamapper.diagram.edit.commands.ConstantCreateCommand;
 import org.wso2.developerstudio.datamapper.diagram.edit.commands.ContainsCreateCommand;
 import org.wso2.developerstudio.datamapper.diagram.edit.commands.DivideCreateCommand;
+import org.wso2.developerstudio.datamapper.diagram.edit.commands.EndsWithCreateCommand;
 import org.wso2.developerstudio.datamapper.diagram.edit.commands.EqualCreateCommand;
 import org.wso2.developerstudio.datamapper.diagram.edit.commands.FloorCreateCommand;
+import org.wso2.developerstudio.datamapper.diagram.edit.commands.IfElseCreateCommand;
 import org.wso2.developerstudio.datamapper.diagram.edit.commands.InputCreateCommand;
 import org.wso2.developerstudio.datamapper.diagram.edit.commands.LowerCaseCreateCommand;
 import org.wso2.developerstudio.datamapper.diagram.edit.commands.MultiplyCreateCommand;
+import org.wso2.developerstudio.datamapper.diagram.edit.commands.NOTCreateCommand;
+import org.wso2.developerstudio.datamapper.diagram.edit.commands.ORCreateCommand;
 import org.wso2.developerstudio.datamapper.diagram.edit.commands.OutputCreateCommand;
 import org.wso2.developerstudio.datamapper.diagram.edit.commands.RoundCreateCommand;
 import org.wso2.developerstudio.datamapper.diagram.edit.commands.SetPrecisionCreateCommand;
 import org.wso2.developerstudio.datamapper.diagram.edit.commands.SplitCreateCommand;
+import org.wso2.developerstudio.datamapper.diagram.edit.commands.StartsWithCreateCommand;
+import org.wso2.developerstudio.datamapper.diagram.edit.commands.StringLengthCreateCommand;
+import org.wso2.developerstudio.datamapper.diagram.edit.commands.SubstringCreateCommand;
 import org.wso2.developerstudio.datamapper.diagram.edit.commands.SubtractCreateCommand;
 import org.wso2.developerstudio.datamapper.diagram.edit.commands.UpperCaseCreateCommand;
 import org.wso2.developerstudio.datamapper.diagram.providers.DataMapperElementTypes;
@@ -95,6 +103,30 @@ public class DataMapperRootItemSemanticEditPolicy extends DataMapperBaseItemSema
 		}
 		if (DataMapperElementTypes.AbsoluteValue_2020 == req.getElementType()) {
 			return getGEFWrapper(new AbsoluteValueCreateCommand(req));
+		}
+		if (DataMapperElementTypes.StringLength_2021 == req.getElementType()) {
+			return getGEFWrapper(new StringLengthCreateCommand(req));
+		}
+		if (DataMapperElementTypes.StartsWith_2022 == req.getElementType()) {
+			return getGEFWrapper(new StartsWithCreateCommand(req));
+		}
+		if (DataMapperElementTypes.EndsWith_2023 == req.getElementType()) {
+			return getGEFWrapper(new EndsWithCreateCommand(req));
+		}
+		if (DataMapperElementTypes.Substring_2024 == req.getElementType()) {
+			return getGEFWrapper(new SubstringCreateCommand(req));
+		}
+		if (DataMapperElementTypes.IfElse_2025 == req.getElementType()) {
+			return getGEFWrapper(new IfElseCreateCommand(req));
+		}
+		if (DataMapperElementTypes.AND_2026 == req.getElementType()) {
+			return getGEFWrapper(new ANDCreateCommand(req));
+		}
+		if (DataMapperElementTypes.OR_2027 == req.getElementType()) {
+			return getGEFWrapper(new ORCreateCommand(req));
+		}
+		if (DataMapperElementTypes.NOT_2028 == req.getElementType()) {
+			return getGEFWrapper(new NOTCreateCommand(req));
 		}
 		return super.getCreateCommand(req);
 	}

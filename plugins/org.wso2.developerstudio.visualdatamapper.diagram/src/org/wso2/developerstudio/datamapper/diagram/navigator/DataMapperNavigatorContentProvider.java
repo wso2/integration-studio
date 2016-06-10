@@ -22,6 +22,7 @@ import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.ui.IMemento;
 import org.eclipse.ui.navigator.ICommonContentExtensionSite;
 import org.eclipse.ui.navigator.ICommonContentProvider;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.ANDEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.AbsoluteValueEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.AddEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.CeliEditPart;
@@ -32,14 +33,18 @@ import org.wso2.developerstudio.datamapper.diagram.edit.parts.DataMapperLinkEdit
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.DataMapperRootEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.DivideEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.ElementEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.EndsWithEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.EqualEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.FloorEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.IfElseEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.InNode2EditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.InNode3EditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.InNodeEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.InputEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.LowerCaseEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.MultiplyEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.NOTEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.OREditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.OperatorBasicContainerEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.OperatorLeftConnectorEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.OperatorLeftContainerEditPart;
@@ -52,6 +57,9 @@ import org.wso2.developerstudio.datamapper.diagram.edit.parts.OutputEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.RoundEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.SetPrecisionEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.SplitEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.StartsWithEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.StringLengthEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.SubstringEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.SubtractEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.TreeNode2EditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.TreeNode3EditPart;
@@ -302,6 +310,30 @@ public class DataMapperNavigatorContentProvider implements ICommonContentProvide
 			connectedViews = getChildrenByType(Collections.singleton(sv),
 					DataMapperVisualIDRegistry.getType(AbsoluteValueEditPart.VISUAL_ID));
 			result.addAll(createNavigatorItems(connectedViews, parentElement, false));
+			connectedViews = getChildrenByType(Collections.singleton(sv),
+					DataMapperVisualIDRegistry.getType(StringLengthEditPart.VISUAL_ID));
+			result.addAll(createNavigatorItems(connectedViews, parentElement, false));
+			connectedViews = getChildrenByType(Collections.singleton(sv),
+					DataMapperVisualIDRegistry.getType(StartsWithEditPart.VISUAL_ID));
+			result.addAll(createNavigatorItems(connectedViews, parentElement, false));
+			connectedViews = getChildrenByType(Collections.singleton(sv),
+					DataMapperVisualIDRegistry.getType(EndsWithEditPart.VISUAL_ID));
+			result.addAll(createNavigatorItems(connectedViews, parentElement, false));
+			connectedViews = getChildrenByType(Collections.singleton(sv),
+					DataMapperVisualIDRegistry.getType(SubstringEditPart.VISUAL_ID));
+			result.addAll(createNavigatorItems(connectedViews, parentElement, false));
+			connectedViews = getChildrenByType(Collections.singleton(sv),
+					DataMapperVisualIDRegistry.getType(IfElseEditPart.VISUAL_ID));
+			result.addAll(createNavigatorItems(connectedViews, parentElement, false));
+			connectedViews = getChildrenByType(Collections.singleton(sv),
+					DataMapperVisualIDRegistry.getType(ANDEditPart.VISUAL_ID));
+			result.addAll(createNavigatorItems(connectedViews, parentElement, false));
+			connectedViews = getChildrenByType(Collections.singleton(sv),
+					DataMapperVisualIDRegistry.getType(OREditPart.VISUAL_ID));
+			result.addAll(createNavigatorItems(connectedViews, parentElement, false));
+			connectedViews = getChildrenByType(Collections.singleton(sv),
+					DataMapperVisualIDRegistry.getType(NOTEditPart.VISUAL_ID));
+			result.addAll(createNavigatorItems(connectedViews, parentElement, false));
 			connectedViews = getDiagramLinksByType(Collections.singleton(sv),
 					DataMapperVisualIDRegistry.getType(DataMapperLinkEditPart.VISUAL_ID));
 			links.addChildren(createNavigatorItems(connectedViews, links, false));
@@ -482,6 +514,86 @@ public class DataMapperNavigatorContentProvider implements ICommonContentProvide
 		}
 
 		case AbsoluteValueEditPart.VISUAL_ID: {
+			LinkedList<DataMapperAbstractNavigatorItem> result = new LinkedList<DataMapperAbstractNavigatorItem>();
+			Node sv = (Node) view;
+			Collection<View> connectedViews;
+			connectedViews = getChildrenByType(Collections.singleton(sv),
+					DataMapperVisualIDRegistry.getType(OperatorBasicContainerEditPart.VISUAL_ID));
+			result.addAll(createNavigatorItems(connectedViews, parentElement, false));
+			return result.toArray();
+		}
+
+		case StringLengthEditPart.VISUAL_ID: {
+			LinkedList<DataMapperAbstractNavigatorItem> result = new LinkedList<DataMapperAbstractNavigatorItem>();
+			Node sv = (Node) view;
+			Collection<View> connectedViews;
+			connectedViews = getChildrenByType(Collections.singleton(sv),
+					DataMapperVisualIDRegistry.getType(OperatorBasicContainerEditPart.VISUAL_ID));
+			result.addAll(createNavigatorItems(connectedViews, parentElement, false));
+			return result.toArray();
+		}
+
+		case StartsWithEditPart.VISUAL_ID: {
+			LinkedList<DataMapperAbstractNavigatorItem> result = new LinkedList<DataMapperAbstractNavigatorItem>();
+			Node sv = (Node) view;
+			Collection<View> connectedViews;
+			connectedViews = getChildrenByType(Collections.singleton(sv),
+					DataMapperVisualIDRegistry.getType(OperatorBasicContainerEditPart.VISUAL_ID));
+			result.addAll(createNavigatorItems(connectedViews, parentElement, false));
+			return result.toArray();
+		}
+
+		case EndsWithEditPart.VISUAL_ID: {
+			LinkedList<DataMapperAbstractNavigatorItem> result = new LinkedList<DataMapperAbstractNavigatorItem>();
+			Node sv = (Node) view;
+			Collection<View> connectedViews;
+			connectedViews = getChildrenByType(Collections.singleton(sv),
+					DataMapperVisualIDRegistry.getType(OperatorBasicContainerEditPart.VISUAL_ID));
+			result.addAll(createNavigatorItems(connectedViews, parentElement, false));
+			return result.toArray();
+		}
+
+		case SubstringEditPart.VISUAL_ID: {
+			LinkedList<DataMapperAbstractNavigatorItem> result = new LinkedList<DataMapperAbstractNavigatorItem>();
+			Node sv = (Node) view;
+			Collection<View> connectedViews;
+			connectedViews = getChildrenByType(Collections.singleton(sv),
+					DataMapperVisualIDRegistry.getType(OperatorBasicContainerEditPart.VISUAL_ID));
+			result.addAll(createNavigatorItems(connectedViews, parentElement, false));
+			return result.toArray();
+		}
+
+		case IfElseEditPart.VISUAL_ID: {
+			LinkedList<DataMapperAbstractNavigatorItem> result = new LinkedList<DataMapperAbstractNavigatorItem>();
+			Node sv = (Node) view;
+			Collection<View> connectedViews;
+			connectedViews = getChildrenByType(Collections.singleton(sv),
+					DataMapperVisualIDRegistry.getType(OperatorBasicContainerEditPart.VISUAL_ID));
+			result.addAll(createNavigatorItems(connectedViews, parentElement, false));
+			return result.toArray();
+		}
+
+		case ANDEditPart.VISUAL_ID: {
+			LinkedList<DataMapperAbstractNavigatorItem> result = new LinkedList<DataMapperAbstractNavigatorItem>();
+			Node sv = (Node) view;
+			Collection<View> connectedViews;
+			connectedViews = getChildrenByType(Collections.singleton(sv),
+					DataMapperVisualIDRegistry.getType(OperatorBasicContainerEditPart.VISUAL_ID));
+			result.addAll(createNavigatorItems(connectedViews, parentElement, false));
+			return result.toArray();
+		}
+
+		case OREditPart.VISUAL_ID: {
+			LinkedList<DataMapperAbstractNavigatorItem> result = new LinkedList<DataMapperAbstractNavigatorItem>();
+			Node sv = (Node) view;
+			Collection<View> connectedViews;
+			connectedViews = getChildrenByType(Collections.singleton(sv),
+					DataMapperVisualIDRegistry.getType(OperatorBasicContainerEditPart.VISUAL_ID));
+			result.addAll(createNavigatorItems(connectedViews, parentElement, false));
+			return result.toArray();
+		}
+
+		case NOTEditPart.VISUAL_ID: {
 			LinkedList<DataMapperAbstractNavigatorItem> result = new LinkedList<DataMapperAbstractNavigatorItem>();
 			Node sv = (Node) view;
 			Collection<View> connectedViews;

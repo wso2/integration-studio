@@ -14,6 +14,7 @@ import org.eclipse.gmf.tooling.runtime.providers.DiagramElementTypes;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.graphics.Image;
 import org.wso2.developerstudio.datamapper.DataMapperPackage;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.ANDEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.AbsoluteValueEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.AddEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.CeliEditPart;
@@ -24,14 +25,18 @@ import org.wso2.developerstudio.datamapper.diagram.edit.parts.DataMapperLinkEdit
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.DataMapperRootEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.DivideEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.ElementEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.EndsWithEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.EqualEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.FloorEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.IfElseEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.InNode2EditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.InNode3EditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.InNodeEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.InputEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.LowerCaseEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.MultiplyEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.NOTEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.OREditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.OperatorBasicContainerEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.OperatorLeftConnectorEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.OperatorLeftContainerEditPart;
@@ -44,6 +49,9 @@ import org.wso2.developerstudio.datamapper.diagram.edit.parts.OutputEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.RoundEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.SetPrecisionEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.SplitEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.StartsWithEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.StringLengthEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.SubstringEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.SubtractEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.TreeNode2EditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.TreeNode3EditPart;
@@ -190,6 +198,54 @@ public class DataMapperElementTypes {
 	*/
 	public static final IElementType AbsoluteValue_2020 = getElementType(
 			"org.wso2.developerstudio.visualdatamapper.diagram.AbsoluteValue_2020"); //$NON-NLS-1$
+
+	/**
+	* @generated
+	*/
+	public static final IElementType StringLength_2021 = getElementType(
+			"org.wso2.developerstudio.visualdatamapper.diagram.StringLength_2021"); //$NON-NLS-1$
+
+	/**
+	* @generated
+	*/
+	public static final IElementType StartsWith_2022 = getElementType(
+			"org.wso2.developerstudio.visualdatamapper.diagram.StartsWith_2022"); //$NON-NLS-1$
+
+	/**
+	* @generated
+	*/
+	public static final IElementType EndsWith_2023 = getElementType(
+			"org.wso2.developerstudio.visualdatamapper.diagram.EndsWith_2023"); //$NON-NLS-1$
+
+	/**
+	* @generated
+	*/
+	public static final IElementType Substring_2024 = getElementType(
+			"org.wso2.developerstudio.visualdatamapper.diagram.Substring_2024"); //$NON-NLS-1$
+
+	/**
+	* @generated
+	*/
+	public static final IElementType IfElse_2025 = getElementType(
+			"org.wso2.developerstudio.visualdatamapper.diagram.IfElse_2025"); //$NON-NLS-1$
+
+	/**
+	* @generated
+	*/
+	public static final IElementType AND_2026 = getElementType(
+			"org.wso2.developerstudio.visualdatamapper.diagram.AND_2026"); //$NON-NLS-1$
+
+	/**
+	* @generated
+	*/
+	public static final IElementType OR_2027 = getElementType(
+			"org.wso2.developerstudio.visualdatamapper.diagram.OR_2027"); //$NON-NLS-1$
+
+	/**
+	* @generated
+	*/
+	public static final IElementType NOT_2028 = getElementType(
+			"org.wso2.developerstudio.visualdatamapper.diagram.NOT_2028"); //$NON-NLS-1$
 
 	/**
 	 * @generated
@@ -363,6 +419,22 @@ public class DataMapperElementTypes {
 
 			elements.put(AbsoluteValue_2020, DataMapperPackage.eINSTANCE.getAbsoluteValue());
 
+			elements.put(StringLength_2021, DataMapperPackage.eINSTANCE.getStringLength());
+
+			elements.put(StartsWith_2022, DataMapperPackage.eINSTANCE.getStartsWith());
+
+			elements.put(EndsWith_2023, DataMapperPackage.eINSTANCE.getEndsWith());
+
+			elements.put(Substring_2024, DataMapperPackage.eINSTANCE.getSubstring());
+
+			elements.put(IfElse_2025, DataMapperPackage.eINSTANCE.getIfElse());
+
+			elements.put(AND_2026, DataMapperPackage.eINSTANCE.getAND());
+
+			elements.put(OR_2027, DataMapperPackage.eINSTANCE.getOR());
+
+			elements.put(NOT_2028, DataMapperPackage.eINSTANCE.getNOT());
+
 			elements.put(TreeNode_3002, DataMapperPackage.eINSTANCE.getTreeNode());
 
 			elements.put(Element_3007, DataMapperPackage.eINSTANCE.getElement());
@@ -430,6 +502,14 @@ public class DataMapperElementTypes {
 			KNOWN_ELEMENT_TYPES.add(Round_2018);
 			KNOWN_ELEMENT_TYPES.add(SetPrecision_2019);
 			KNOWN_ELEMENT_TYPES.add(AbsoluteValue_2020);
+			KNOWN_ELEMENT_TYPES.add(StringLength_2021);
+			KNOWN_ELEMENT_TYPES.add(StartsWith_2022);
+			KNOWN_ELEMENT_TYPES.add(EndsWith_2023);
+			KNOWN_ELEMENT_TYPES.add(Substring_2024);
+			KNOWN_ELEMENT_TYPES.add(IfElse_2025);
+			KNOWN_ELEMENT_TYPES.add(AND_2026);
+			KNOWN_ELEMENT_TYPES.add(OR_2027);
+			KNOWN_ELEMENT_TYPES.add(NOT_2028);
 			KNOWN_ELEMENT_TYPES.add(TreeNode_3002);
 			KNOWN_ELEMENT_TYPES.add(Element_3007);
 			KNOWN_ELEMENT_TYPES.add(InNode_3008);
@@ -493,6 +573,22 @@ public class DataMapperElementTypes {
 			return SetPrecision_2019;
 		case AbsoluteValueEditPart.VISUAL_ID:
 			return AbsoluteValue_2020;
+		case StringLengthEditPart.VISUAL_ID:
+			return StringLength_2021;
+		case StartsWithEditPart.VISUAL_ID:
+			return StartsWith_2022;
+		case EndsWithEditPart.VISUAL_ID:
+			return EndsWith_2023;
+		case SubstringEditPart.VISUAL_ID:
+			return Substring_2024;
+		case IfElseEditPart.VISUAL_ID:
+			return IfElse_2025;
+		case ANDEditPart.VISUAL_ID:
+			return AND_2026;
+		case OREditPart.VISUAL_ID:
+			return OR_2027;
+		case NOTEditPart.VISUAL_ID:
+			return NOT_2028;
 		case TreeNodeEditPart.VISUAL_ID:
 			return TreeNode_3002;
 		case ElementEditPart.VISUAL_ID:

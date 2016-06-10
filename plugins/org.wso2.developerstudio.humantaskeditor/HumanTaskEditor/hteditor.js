@@ -53,7 +53,7 @@ function makeUnDirty() {
  * 
  * 
  */
-function createFile(currentTaskName,state,taskNode) { //createFile
+function createFile(currentTaskName, state, taskNode) { //createFile
     // Create Task WSDL
     var serviceURL = $('#' + currentTaskName + 'wrapper #taskCallbackServiceURL').val();
     var operationName = $('#' + currentTaskName + 'wrapper #taskCallbackOperationName')
@@ -88,10 +88,10 @@ function createFile(currentTaskName,state,taskNode) { //createFile
             htconfigDom = marshalEditorTextContent(data);
             generateHTConfig(htconfigDom, xmlDom, currentTaskName);
             saveHTConfig(htconfigDom);
-            if(state!="generateText"){
+            if(state != "generateText"){
                 generateUI();
             }
-            if(state=="initial"){
+            if(state == "initial"){
                 generateTasks();
             }
         } catch (err) {
@@ -215,7 +215,7 @@ function saveSource() {
  */
 function process() {
     try {
-        generateUI();
+        generateUI("initial");
         setFocus();
         //$('.taskSection').slideUp(500);
         //$('.taskSection').collapse();
@@ -284,7 +284,7 @@ function deleteTask(taskNode) { //createFile
  * generateTaskDiv function) for each task node in the human task dom.
  * 
  */
-function generateUI() {
+function generateUI(status) {
     if (xmlDom.childNodes.length == 1 && xmlDom.childNodes[0].childNodes == 0) {
         handleError("XML couldnt be parsed"); //Toggle Logic Here
         $('body').hide();
@@ -296,8 +296,10 @@ function generateUI() {
         $('#nooftasks').val(0);
         nodes.forEach(function(taskNode) {
             taskName = taskNode.getAttribute("name");
-            generateTaskDiv(taskNode); // create respective Div for each task
-
+            if(status == "initial")
+            generateTaskDiv(taskNode,status); // create respective Div for each task
+            else
+            generateTaskDiv(taskNode);    
             $("#page-content-wrapper #tabNames").append("<li class='taskDivHolder' ><a href='#" + taskName + "wrapper'>" + taskName + " </a><a id='deleteTask"+taskName+"' href='#" + taskName + "wrapper'>X</a></li>");
             $('#deleteTask'+taskName).click(function() {
                 deleteTask(taskNode);
@@ -318,6 +320,7 @@ function generateUI() {
         $('#page-content-wrapper').tabs("option", "active", selectedindex);
         handleTabChange();
         bindToggleEvent();
+
     }
 }
 
@@ -344,7 +347,7 @@ function toTitleCase(str) {
  * humantask DOM should be provided as a parameter(taskNode)
  * 
  */
-function generateTaskDiv(taskNode,caller) {
+function generateTaskDiv(taskNode, caller) {
     var formDiv = $('#genericForm').clone(true, true).val("");
     taskName = taskNode.getAttribute("name");
     taskDivName = taskName + "wrapper";
@@ -662,11 +665,14 @@ function generateTaskDiv(taskNode,caller) {
         unmarshalPeopleAssignment(taskNode, "taskStakeholders");
 
     } catch (err) {
-        handleError("People Assignments Couldnt be synced \n" + err);
+        handleError("People Assignments Couldn't be synced \n" + err);
     }
     $('#' + taskDivName + ' .taskDiv').show();
     bindChangeEvents();
     syncWSDLFields(taskName);
+    if(caller == "initial"){
+        $('#' + taskDivName + ' #taskPropertiesSection').collapse('show');
+    }
     $('#' + taskDivName + ' #' + caller).collapse('show');
     //syncwsdlFields syncWSDLFields(taskNode);
 }
@@ -1041,13 +1047,13 @@ function unmarshalPeopleAssignment(taskNode, peopleAssignmentName) {
                     .getElementsByTagName("group");
                 for (var t = 0; t < usersList.length; t++) {
                     if(usersList[t].childNodes.length!=0){
-                        if($('#' + taskDivName + " #"+peopleAssignmentName+"LiteralUsers").val().trim()=="") $('#' + taskDivName + " #"+peopleAssignmentName+"LiteralUsers").val(usersList[t].childNodes[0].nodeValue);
+                        if($('#' + taskDivName + " #"+peopleAssignmentName+"LiteralUsers").val().trim() == "") $('#' + taskDivName + " #"+peopleAssignmentName+"LiteralUsers").val(usersList[t].childNodes[0].nodeValue);
                         else $('#' + taskDivName + " #"+peopleAssignmentName+"LiteralUsers").val($('#' + taskDivName + " #"+peopleAssignmentName+"LiteralUsers").val() + ',' + usersList[t].childNodes[0].nodeValue);
                     }
                 }
                 for (var k = 0; k < groupsList.length; k++) {
                     if(groupsList[k].childNodes.length!=0){
-                        if($('#' + taskDivName + " #"+peopleAssignmentName+"LiteralGroups").val().trim()=="") $('#' + taskDivName + " #"+peopleAssignmentName+"LiteralGroups").val(groupsList[k].childNodes[0].nodeValue);
+                        if($('#' + taskDivName + " #"+peopleAssignmentName+"LiteralGroups").val().trim() == "") $('#' + taskDivName + " #"+peopleAssignmentName+"LiteralGroups").val(groupsList[k].childNodes[0].nodeValue);
                         else $('#' + taskDivName + " #"+peopleAssignmentName+"LiteralGroups").val($('#' + taskDivName + " #"+peopleAssignmentName+"LiteralGroups").val() + ',' + groupsList[k].childNodes[0].nodeValue);
                     }
                 }

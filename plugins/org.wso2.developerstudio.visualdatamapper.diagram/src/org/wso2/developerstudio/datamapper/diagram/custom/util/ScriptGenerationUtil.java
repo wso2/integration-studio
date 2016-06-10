@@ -133,14 +133,16 @@ public class ScriptGenerationUtil {
             }
             prettyVariableName = prettyVariableName.substring(1);
         }
-        // If the variable is a input or output for an operation and a type of object or array and also holds a value,
-        // the value is stored as a field named _ELEMVAl
-        if (isOperationVariable) {
-            if (SchemaDataType.ARRAY.equals(variableType) || SchemaDataType.OBJECT.equals(variableType)) {
-                prettyVariableName += "._ELEMVAL";
-            }
-        }
-        return prettyVariableName;
+		// If the variable is a input or output for an operation and a type of object or array and also holds a value,
+		// the value is stored as a field named _ELEMVAl
+        // And primitive arrays without attributes should not contain ._ELEMVAL
+		if (isOperationVariable) {
+			if (SchemaDataType.OBJECT.equals(variableType) || (SchemaDataType.ARRAY.equals(variableType)
+					&& hasAttributeOrChild(variable.getName(), variableTypeMap))) {
+				prettyVariableName += "._ELEMVAL";
+			}
+		}
+		return prettyVariableName;
 	}
 
 	private static boolean hasAttributeOrChild(String name, Map<String, SchemaDataType> variableTypeMap) {

@@ -801,8 +801,9 @@ public class TreeNode2EditPart extends AbstractBorderedShapeEditPart {
 					nullableValue = keyValue.getValue();
 				}
 			}
-
-			int count = ((TreeNode) ((View) getModel()).getElement()).getLevel();
+			TreeNode treeNode = (TreeNode) ((View) getModel()).getElement();
+			int count = treeNode.getLevel();
+			String schemaType=treeNode.getSchemaDataType().getLiteral();
 			fFigureTreeNodeNameFigure.setText(name);
 			fFigureTreeNodeNameFigure.setForegroundColor(ColorConstants.black);
 			fFigureTreeNodeNameFigure.setFont(new Font(null, "Arial", 10, SWT.BOLD));
@@ -844,7 +845,7 @@ public class TreeNode2EditPart extends AbstractBorderedShapeEditPart {
 			Display display = Display.getCurrent();
 			Color black = display.getSystemColor(SWT.COLOR_BLACK);
 			nodeLabel.setForegroundColor(black);
-			nodeLabel.setText(newName);
+			nodeLabel.setText(newName + "  :["+schemaType+"]");
 			nodeLabel.setSize(new Dimension(100, 5));
 
 			this.addMouseMotionListener(new MouseMotionListener() {

@@ -42,6 +42,7 @@ import org.eclipse.gmf.runtime.diagram.ui.editpolicies.DragDropEditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.FlowLayoutEditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.figures.BorderItemLocator;
+import org.eclipse.gmf.runtime.diagram.ui.internal.services.palette.PaletteToolEntry;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.ConstrainedToolbarLayout;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel;
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
@@ -634,6 +635,7 @@ public class TreeNodeEditPart extends AbstractBorderedShapeEditPart {
 	 */
 	public class TreeNodeFigure extends RectangleFigure {
 
+		private static final String CREATE_DATA_MAPPER_LINK1_CREATION_TOOL = "createDataMapperLink1CreationTool";
 		private static final String ELEMENT_ICON = "icons/gmf/element.png";
 		private static final String ATTRIBUTE_ICON = "icons/gmf/attribute.png";
 		private static final String ARRAY_ICON = "icons/gmf/array.png";
@@ -840,16 +842,20 @@ public class TreeNodeEditPart extends AbstractBorderedShapeEditPart {
 				@Override
 				public void mouseEntered(MouseEvent me) {
 					highlightElementOnSelection();
-					getEditDomain().getPaletteViewer().setActiveTool((ToolEntry) (((PaletteContainer) getEditDomain()
-							.getPaletteViewer().getPaletteRoot().getChildren().get(1)).getChildren().get(0)));
-
+					if (!(getEditDomain().getPaletteViewer().getActiveTool() instanceof PaletteToolEntry)) {
+						getEditDomain().getPaletteViewer()
+								.setActiveTool((ToolEntry) (((PaletteContainer) getEditDomain().getPaletteViewer()
+										.getPaletteRoot().getChildren().get(1)).getChildren().get(0)));
+					}
 				}
 
 				@Override
 				public void mouseExited(MouseEvent me) {
 					removeHighlight();
-					getEditDomain().getPaletteViewer().setActiveTool(null);
-
+					if (CREATE_DATA_MAPPER_LINK1_CREATION_TOOL
+							.equals(getEditDomain().getPaletteViewer().getActiveTool().getId())) {
+						getEditDomain().getPaletteViewer().setActiveTool(null);
+					}
 				}
 
 				@Override

@@ -46,6 +46,7 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeNodeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
 import org.eclipse.gmf.runtime.diagram.ui.figures.BorderedNodeFigure;
+import org.eclipse.gmf.runtime.diagram.ui.internal.services.palette.PaletteToolEntry;
 import org.eclipse.gmf.runtime.emf.type.core.IElementType;
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
@@ -259,6 +260,8 @@ public class OutNodeEditPart extends AbstractBorderItemEditPart {
 	}
 
 	public class OutNodeFigure extends RectangleFigure {
+		private static final String CREATE_DATA_MAPPER_LINK1_CREATION_TOOL = "createDataMapperLink1CreationTool";
+
 		/**
 		 * @generated NOT
 		 */
@@ -287,14 +290,20 @@ public class OutNodeEditPart extends AbstractBorderItemEditPart {
 
 				@Override
 				public void mouseExited(MouseEvent me) {
-					getEditDomain().getPaletteViewer().setActiveTool(null);
+					if (CREATE_DATA_MAPPER_LINK1_CREATION_TOOL
+							.equals(getEditDomain().getPaletteViewer().getActiveTool().getId())) {
+						getEditDomain().getPaletteViewer().setActiveTool(null);
+					}
 					removeParentHighlight();
 				}
 
 				@Override
 				public void mouseEntered(MouseEvent me) {
-					getEditDomain().getPaletteViewer().setActiveTool((ToolEntry) (((PaletteContainer) getEditDomain()
-							.getPaletteViewer().getPaletteRoot().getChildren().get(1)).getChildren().get(0)));
+					if (!(getEditDomain().getPaletteViewer().getActiveTool() instanceof PaletteToolEntry)) {
+						getEditDomain().getPaletteViewer()
+								.setActiveTool((ToolEntry) (((PaletteContainer) getEditDomain().getPaletteViewer()
+										.getPaletteRoot().getChildren().get(1)).getChildren().get(0)));
+					}
 					highlightParentElem();
 				}
 

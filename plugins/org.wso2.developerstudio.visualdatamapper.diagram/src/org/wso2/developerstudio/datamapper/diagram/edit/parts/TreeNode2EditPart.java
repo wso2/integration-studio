@@ -8,7 +8,6 @@ import org.apache.commons.lang.StringUtils;
 import org.eclipse.draw2d.Clickable;
 import org.eclipse.draw2d.ColorConstants;
 import org.eclipse.draw2d.Figure;
-import org.eclipse.draw2d.FlowLayout;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.ImageFigure;
 import org.eclipse.draw2d.Label;
@@ -32,14 +31,12 @@ import org.eclipse.gef.palette.PaletteContainer;
 import org.eclipse.gef.palette.ToolEntry;
 import org.eclipse.gef.requests.CreateRequest;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.AbstractBorderedShapeEditPart;
-import org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IBorderItemEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.BorderItemSelectionEditPolicy;
-import org.eclipse.gmf.runtime.diagram.ui.editpolicies.DragDropEditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
-import org.eclipse.gmf.runtime.diagram.ui.editpolicies.FlowLayoutEditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.figures.BorderItemLocator;
+import org.eclipse.gmf.runtime.diagram.ui.internal.services.palette.PaletteToolEntry;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.ConstrainedToolbarLayout;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel;
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
@@ -56,8 +53,6 @@ import org.wso2.developerstudio.datamapper.PropertyKeyValuePair;
 import org.wso2.developerstudio.datamapper.TreeNode;
 import org.wso2.developerstudio.datamapper.diagram.custom.util.AbsoluteBorderedItemLocator;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.custom.CustomNonResizableEditPolicyEx;
-import org.wso2.developerstudio.datamapper.diagram.edit.policies.TreeNode2CanonicalEditPolicy;
-import org.wso2.developerstudio.datamapper.diagram.edit.policies.TreeNode2ItemSemanticEditPolicy;
 import org.wso2.developerstudio.datamapper.diagram.part.DataMapperVisualIDRegistry;
 
 /**
@@ -609,6 +604,7 @@ public class TreeNode2EditPart extends AbstractBorderedShapeEditPart {
 	 */
 	public class TreeNodeFigure extends RectangleFigure {
 
+		private static final String CREATE_DATA_MAPPER_LINK1_CREATION_TOOL = "createDataMapperLink1CreationTool";
 		private static final String ELEMENT_ICON = "icons/gmf/element.png";
 		private static final String ATTRIBUTE_ICON = "icons/gmf/attribute.png";
 		private static final String ARRAY_ICON = "icons/gmf/array.png";
@@ -862,16 +858,21 @@ public class TreeNode2EditPart extends AbstractBorderedShapeEditPart {
 				@Override
 				public void mouseEntered(MouseEvent me) {
 					highlightElementOnSelection();
-					getEditDomain().getPaletteViewer().setActiveTool((ToolEntry) (((PaletteContainer) getEditDomain()
-							.getPaletteViewer().getPaletteRoot().getChildren().get(1)).getChildren().get(0)));
+					if (!(getEditDomain().getPaletteViewer().getActiveTool() instanceof PaletteToolEntry)) {
+						getEditDomain().getPaletteViewer()
+								.setActiveTool((ToolEntry) (((PaletteContainer) getEditDomain().getPaletteViewer()
+										.getPaletteRoot().getChildren().get(1)).getChildren().get(0)));
+					}
 
 				}
 
 				@Override
 				public void mouseExited(MouseEvent me) {
 					removeHighlight();
-					getEditDomain().getPaletteViewer().setActiveTool(null);
-
+					if (CREATE_DATA_MAPPER_LINK1_CREATION_TOOL
+							.equals(getEditDomain().getPaletteViewer().getActiveTool().getId())) {
+						getEditDomain().getPaletteViewer().setActiveTool(null);
+					}
 				}
 
 				@Override

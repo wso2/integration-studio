@@ -788,10 +788,10 @@ function generateText(taskNode) {
             else
                 addTextNode(outputNodes[i].getElementsByTagName("value")[0], xmlDom, $('#' + taskDivName + " #taskOutputMappingOrder" + outputmapping).val());
             if (outputNodes[i].getElementsByTagName("xpath")[0].childNodes.length != 0)
-                outputNodes[i].getElementsByTagName("xpath")[0].childNodes[0].nodeValue = "/tns:"+ $(
+                outputNodes[i].getElementsByTagName("xpath")[0].childNodes[0].nodeValue = "/tns:"+taskName+"CBData/tns:"+ $(
                     '#' + taskDivName + " #taskOutputMappingElementName" + outputmapping).val();
             else
-                addTextNode(outputNodes[i].getElementsByTagName("xpath")[0], xmlDom, "/tns:" + $('#' + taskDivName + " #taskOutputMappingElementName" + outputmapping).val());
+                addTextNode(outputNodes[i].getElementsByTagName("xpath")[0], xmlDom, "/tns:"+taskName+"CBData/tns:" + $('#' + taskDivName + " #taskOutputMappingElementName" + outputmapping).val());
             if (outputNodes[i].getElementsByTagName("default")[0].childNodes.length != 0)
                 outputNodes[i].getElementsByTagName("default")[0].childNodes[0].nodeValue = $(
                     '#' + taskDivName + " #taskOutputMappingDefaultValues" + outputmapping).val();
@@ -832,11 +832,11 @@ function generateText(taskNode) {
 function getArgumentName(nameValue) {
     if (nameValue) {
         if (nameValue.indexOf("Role") != -1)
-            return "Role";
+            return "role";
         else if (nameValue.indexOf("Literal") != -1)
-            return "Literal";
+            return "literal";
         else if (nameValue.indexOf("Expression") != -1)
-            return "Expression";
+            return "expression";
         else
             return "None";
     } else {

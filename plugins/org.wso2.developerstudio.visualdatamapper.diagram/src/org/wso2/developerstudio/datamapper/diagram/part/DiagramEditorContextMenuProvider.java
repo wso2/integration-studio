@@ -282,7 +282,6 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
 							menu.remove(MENU_ADDITIONS);
 							menu.remove(ActionIds.ACTION_ADD_NOTELINK);
 							menu.remove(ActionIds.ACTION_DELETE_FROM_DIAGRAM);
-							// menu.remove(ActionIds.ACTION_DELETE_FROM_MODEL);
 							menu.remove(ActionIds.ACTION_SHOW_PROPERTIES_VIEW);
 							List<?> selectedEPs = getViewer().getSelectedEditParts();
 							if (selectedEPs.size() == 1) {
@@ -296,6 +295,22 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
 								}
 
 								if (contextObj instanceof EObject) {
+									
+									// Append load from file item to menu
+									AbstractActionHandler contextAction = contextActions
+											.get(selectedEditorPart.getClass());
+									if (null != contextAction) {
+										menu.appendToGroup(EDIT_GROUP_ID, contextAction);
+									}
+
+									// Append export schema item to menu
+									AbstractActionHandler exportSchemaAction = exportSchemaActions
+											.get(selectedEditorPart.getClass());
+									if (!selectedEditorPart.getChildren().isEmpty()) {
+										if (null != exportSchemaAction) {
+											menu.appendToGroup(EDIT_GROUP_ID, exportSchemaAction);
+										}
+									}
 
 									// Append new root item to menu
 									AbstractActionHandler addNewRootRecordContextAction = addNewRootElementContextActions
@@ -419,21 +434,6 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
 										}
 									}
 
-									// Append load from file item to menu
-									AbstractActionHandler contextAction = contextActions
-											.get(selectedEditorPart.getClass());
-									if (null != contextAction) {
-										menu.appendToGroup(EDIT_GROUP_ID, contextAction);
-									}
-
-									// Append export schema item to menu
-									AbstractActionHandler exportSchemaAction = exportSchemaActions
-											.get(selectedEditorPart.getClass());
-									if (!selectedEditorPart.getChildren().isEmpty()) {
-										if (null != exportSchemaAction) {
-											menu.appendToGroup(EDIT_GROUP_ID, exportSchemaAction);
-										}
-									}
 								}
 
 							}

@@ -47,13 +47,13 @@ public class SchemaGeneratorHelper {
 
 		if (schemaGenerator instanceof SchemaGeneratorForXSD) {
 			try {
-				return schemaGenerator.getSchemaContent(filePath);
+				return schemaGenerator.getSchemaContent(filePath, option);
 			} catch (IOException e) {
 				log.error("Error while generating schema", e);
 			}
 		} else {
 			try {
-				return schemaGenerator.getSchemaResourcePath(filePath);
+				return schemaGenerator.getSchemaResourcePath(filePath, option);
 			} catch (IOException e) {
 				log.error("Error while generating schema", e);
 			}

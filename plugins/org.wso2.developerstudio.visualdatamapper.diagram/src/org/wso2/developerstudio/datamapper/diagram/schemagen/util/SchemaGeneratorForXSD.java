@@ -28,13 +28,13 @@ public class SchemaGeneratorForXSD extends AbstractSchemaGenerator implements IS
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 	
 	@Override
-	public String getSchemaContent(String filePath) throws IOException {
+	public String getSchemaContent(String filePath, FileType type) throws IOException {
 		XSDtoAvroGen convertXSDtoAvro = new XSDtoAvroGen();
 		String avroContent = convertXSDtoAvro.generateAVRO(filePath);
 		if (avroContent == null || avroContent.isEmpty()) {
 			log.error("Error Generating Avro content from the fgiven XSD file.");
 		}
-		return super.getSchemaContent(avroContent);
+		return super.getSchemaContent(avroContent, type);
 		
 	}
 

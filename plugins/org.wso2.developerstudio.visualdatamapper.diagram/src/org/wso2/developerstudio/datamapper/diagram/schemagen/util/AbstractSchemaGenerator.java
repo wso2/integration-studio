@@ -28,7 +28,7 @@ public class AbstractSchemaGenerator implements ISchemaGenerator {
 	 * @see org.wso2.developerstudio.datamapper.diagram.schemagen.util.ISchemaGenerator#getAvroSchema(java.lang.String)
 	 */
 	@Override
-	public String getSchemaResourcePath(String filePath) throws IOException {
+	public String getSchemaResourcePath(String filePath, FileType type) throws IOException {
 
 		String entireFileText = FileUtils.readFileToString(new File(filePath));
 		//Schema schema = Schema.parse(entireFileText);
@@ -40,7 +40,7 @@ public class AbstractSchemaGenerator implements ISchemaGenerator {
 	 * @see org.wso2.developerstudio.datamapper.diagram.schemagen.util.ISchemaGenerator#getAvroSchemaContent(java.lang.String)
 	 */
 	@Override
-	public String getSchemaContent(String fileText) throws IOException {
+	public String getSchemaContent(String fileText, FileType type) throws IOException {
 		Schema schema = Schema.parse(fileText);//TODO remove the deprecated method usage
 		return schema.toString();
 	}

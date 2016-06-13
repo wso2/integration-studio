@@ -291,7 +291,7 @@ function generateOutputWSDL(wsdlDom, xmlDom, currentTask,serviceURL,operationNam
     // create message
     newMessage = wsdlDom.createElementNS(wsdlNameSpace,
         "wsdl:message");
-    newMessage.setAttribute("name", currentTask + "CBRequest");
+    newMessage.setAttribute("name", currentTask + "CBResponse");
     newPart = wsdlDom.createElementNS(wsdlNameSpace,
         "wsdl:part");
     newPart.setAttribute("name", newMessage.getAttribute("name")); // ClaimApprovalRequest

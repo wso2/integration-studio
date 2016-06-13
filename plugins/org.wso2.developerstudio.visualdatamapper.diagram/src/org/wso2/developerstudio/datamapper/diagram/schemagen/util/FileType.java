@@ -20,6 +20,7 @@ public enum FileType {
 	
 	XML,
 	JSON,
+	CSV,
 	XSD,
 	JSONSCHEMA,
 	CONNECTOR

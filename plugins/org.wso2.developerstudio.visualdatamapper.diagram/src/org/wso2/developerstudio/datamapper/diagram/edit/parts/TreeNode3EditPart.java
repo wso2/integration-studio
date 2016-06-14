@@ -812,24 +812,36 @@ public class TreeNode3EditPart extends AbstractBorderedShapeEditPart {
 			figure2.setPreferredSize((count - 1) * 22, 3);
 			final Label nodeLabel = new Label();
 			if (StringUtils.isNotEmpty(name) && name.startsWith(PREFIX)) {
+				newName = newName + "  : ["+type.toUpperCase()+"]"; 
 				if (StringUtils.isNotEmpty(nullableValue)) {
 					placeIcon(attributeImg, nullableAttributeImg, nullableValue, nodeLabel);
 				} else {
 					nodeLabel.setIcon(attributeImg.getImage());
 				}
 			} else if (type != null && type.equals(JSON_SCHEMA_ARRAY)) {
+				String value = getNodeValue(type);
+				// If an element has values then display it with the name
+				if (StringUtils.isNotEmpty(value)) {
+					newName = newName + "  : ["+value.toUpperCase()+"]"; 
+				}
 				if (StringUtils.isNotEmpty(nullableValue)) {
 					placeIcon(arrayImg, nullableArrayImg, nullableValue, nodeLabel);
 				} else {
 					nodeLabel.setIcon(arrayImg.getImage());
 				}
 			} else if (type != null && type.equals(JSON_SCHEMA_OBJECT)) {
+				String value = getNodeValue(type);
+				// If an element has values then display it with the name
+				if (StringUtils.isNotEmpty(value)) {
+					newName = newName + "  : ["+value.toUpperCase()+"]"; 
+				}
 				if (StringUtils.isNotEmpty(nullableValue)) {
 					placeIcon(objectImg, nullableObjectImg, nullableValue, nodeLabel);
 				} else {
 					nodeLabel.setIcon(objectImg.getImage());
 				}
 			} else {
+				newName = newName + "  : ["+type.toUpperCase()+"]"; 
 				if (StringUtils.isNotEmpty(nullableValue)) {
 					placeIcon(mainImg, nullableElementImg, nullableValue, nodeLabel);
 				} else {
@@ -992,12 +1004,24 @@ public class TreeNode3EditPart extends AbstractBorderedShapeEditPart {
 				newName = name;
 			}
 			if (StringUtils.isNotEmpty(name) && name.startsWith(PREFIX)) {
+				newName = newName + "  : ["+type.toUpperCase()+"]"; 
 				nodeLabel.setIcon(attributeImg.getImage());
 			} else if (type != null && type.equals(JSON_SCHEMA_ARRAY)) {
+				String value = getNodeValue(type);
+				// If an element has values then display it with the name
+				if (StringUtils.isNotEmpty(value)) {
+					newName = newName + "  : ["+value.toUpperCase()+"]"; 
+				}
 				nodeLabel.setIcon(arrayImg.getImage());
 			} else if (type != null && type.equals(JSON_SCHEMA_OBJECT)) {
+				String value = getNodeValue(type);
+				// If an element has values then display it with the name
+				if (StringUtils.isNotEmpty(value)) {
+					newName = newName + "  : ["+value.toUpperCase()+"]"; 
+				}
 				nodeLabel.setIcon(objectImg.getImage());
 			} else {
+				newName = newName + "  : ["+type.toUpperCase()+"]"; 
 				nodeLabel.setIcon(mainImg.getImage());
 			}
 
@@ -1091,24 +1115,36 @@ public class TreeNode3EditPart extends AbstractBorderedShapeEditPart {
 				newName = name;
 			}
 			if (StringUtils.isNotEmpty(name) && name.startsWith(PREFIX)) {
+				newName = newName + "  : ["+type.toUpperCase()+"]"; 
 				if (StringUtils.isNotEmpty(nullableValue)) {
 					placeIcon(attributeImg, nullableAttributeImg, nullableValue, nodeLabel);
 				} else {
 					nodeLabel.setIcon(attributeImg.getImage());
 				}
 			} else if (type != null && type.equals(JSON_SCHEMA_ARRAY)) {
+				String value = getNodeValue(type);
+				// If an element has values then display it with the name
+				if (StringUtils.isNotEmpty(value)) {
+					newName = newName + "  : ["+value.toUpperCase()+"]"; 
+				}
 				if (StringUtils.isNotEmpty(nullableValue)) {
 					placeIcon(arrayImg, nullableArrayImg, nullableValue, nodeLabel);
 				} else {
 					nodeLabel.setIcon(arrayImg.getImage());
 				}
 			} else if (type != null && type.equals(JSON_SCHEMA_OBJECT)) {
+				String value = getNodeValue(type);
+				// If an element has values then display it with the name
+				if (StringUtils.isNotEmpty(value)) {
+					newName = newName + "  : ["+value.toUpperCase()+"]"; 
+				}
 				if (StringUtils.isNotEmpty(nullableValue)) {
 					placeIcon(objectImg, nullableObjectImg, nullableValue, nodeLabel);
 				} else {
 					nodeLabel.setIcon(objectImg.getImage());
 				}
 			} else {
+				newName = newName + "  : ["+type.toUpperCase()+"]"; 
 				if (StringUtils.isNotEmpty(nullableValue)) {
 					placeIcon(mainImg, nullableElementImg, nullableValue, nodeLabel);
 				} else {

@@ -52,7 +52,7 @@ public class SchemaGeneratorForXML extends SchemaGeneratorForJSON implements ISc
 	protected static final String XSI_TYPE = "type";
 
 	@Override
-	public String getSchemaContent(String content) throws IOException {
+	public String getSchemaContent(String content, FileType type) throws IOException {
 
 		JSONObject xmlJSONObj;
 		try {
@@ -61,7 +61,7 @@ public class SchemaGeneratorForXML extends SchemaGeneratorForJSON implements ISc
 			throw new IOException(e.getMessage());
 		}
 
-		return super.getSchemaContent(xmlJSONObj.toString());
+		return super.getSchemaContent(xmlJSONObj.toString(), type);
 	}
 
 	/*
@@ -87,10 +87,10 @@ public class SchemaGeneratorForXML extends SchemaGeneratorForJSON implements ISc
 	 */
 
 	@Override
-	public String getSchemaResourcePath(String filePath) throws IOException {
+	public String getSchemaResourcePath(String filePath, FileType type) throws IOException {
 		String entireFileText = FileUtils.readFileToString(new File(filePath));
 		entireFileText = replaceAttributesWithElements(entireFileText);
-		return getSchemaContent(entireFileText);
+		return getSchemaContent(entireFileText, type);
 	}
 
 	private String replaceAttributesWithElements(String entireFileText) throws IOException {

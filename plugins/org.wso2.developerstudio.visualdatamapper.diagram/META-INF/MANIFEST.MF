@@ -18,7 +18,8 @@ Bundle-ClassPath: .,
  lib/jackson-databind-2.7.2.jar,
  lib/jackson-core-2.7.2.jar,
  lib/jackson-annotations-2.7.2.jar,
- lib/json-simple-1.1.jar
+ lib/json-simple-1.1.jar,
+ lib/jackson-dataformat-csv-2.7.2.jar
 Bundle-Activator: org.wso2.developerstudio.datamapper.diagram.part.DataMapperDiagramEditorPlugin
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin

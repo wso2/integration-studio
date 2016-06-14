@@ -56,6 +56,9 @@ public class SchemaBuilder {
 	private static final String NAMESPACES = "namespaces";
 	private static final String STRING = "string";
 	private static final String XSI_NAMESPACE_URI = "http://www.w3.org/2001/XMLSchema-instance";
+	private static final String XML = "xml";
+	private static final String JSON = "json";
+	
 
 	protected JsonSchema root;
 	Map<String, JsonElement> objectMap = new HashMap<>();
@@ -68,7 +71,7 @@ public class SchemaBuilder {
 	public SchemaBuilder() {
 	}
 
-	public String createSchema(String jsonString) {
+	public String createSchema(String jsonString, FileType type) {
 		JsonParser jsonParser = new JsonParser();
 		JsonObject firstObject = null;
 		String title = ROOT_TITLE;
@@ -83,21 +86,28 @@ public class SchemaBuilder {
 			// TODO handle parsing exception
 			jsonObject = (JsonObject) jsonParser.parse(jsonString); 
 			Set<Entry<String, JsonElement>> entrySet = jsonObject.entrySet();
-			if (entrySet.size() == 1) {
-				for (Entry<String, JsonElement> entry : entrySet) {
-					JsonElement element = entry.getValue();
-					if (element instanceof JsonObject) {
-						title = entry.getKey();
-						firstObject = element.getAsJsonObject();
-						break;
-					} else {
-						// If the json has a single parameter DEVTOOLESB-224
-						firstObject = jsonObject;
+			if(type.toString().toLowerCase().equals(XML)){
+				//If type is xml, then check if it has a root element
+				if (entrySet.size() == 1) {
+					for (Entry<String, JsonElement> entry : entrySet) {
+						JsonElement element = entry.getValue();
+						if (element instanceof JsonObject) {
+							title = entry.getKey();
+							firstObject = element.getAsJsonObject();
+							break;
+						} else {
+							// If the json has a single parameter DEVTOOLESB-224
+							firstObject = jsonObject;
+						}
 					}
+				} else {
+					firstObject = jsonObject;
 				}
-			} else {
+			}else{
+				//If type is json then wrap the content with a root element, DEVTOOLESB-373
 				firstObject = jsonObject;
 			}
+			
 			root.setType(OBJECT);
 			createSchemaForObject(firstObject, root);
 

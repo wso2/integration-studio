@@ -1794,6 +1794,7 @@ public class SchemaTransformer implements ISchemaTransformer {
 			String arrayNamespace = getPropertyKeyValuePairforTreeNode(treeNode, JSON_SCHEMA_ARRAY_NAMESPACES);
 			String fieldNamespace = getPropertyKeyValuePairforTreeNode(treeNode, JSON_SCHEMA_FIELD_NAMESPACES);
 			String attributeNamespace = getPropertyKeyValuePairforTreeNode(treeNode, JSON_SCHEMA_ATTRIBUTE_NAMESPACES);
+			String namespace = getPropertyKeyValuePairforTreeNode(treeNode, JSON_SCHEMA_NAMESPACES);
 			if (StringUtils.isNotEmpty(objectNamespace)) {
 				namespaceList.add(objectNamespace);
 			}
@@ -1805,6 +1806,9 @@ public class SchemaTransformer implements ISchemaTransformer {
 			}
 			if (StringUtils.isNotEmpty(attributeNamespace)) {
 				namespaceList.add(attributeNamespace);
+			}
+			if(StringUtils.isNotEmpty(namespace)){
+				namespaceList.add(namespace);
 			}
 		}
 		String namespacesValue = StringUtils.join(namespaceList, ',');

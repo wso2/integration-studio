@@ -18,6 +18,7 @@ package org.wso2.developerstudio.datamapper.diagram.schemagen.util;
 //TODO add a default case and remove the unreachable null return
 public class SchemaGeneratorFactory {
 	
+	@SuppressWarnings("incomplete-switch")
 	public ISchemaGenerator getSchemaGenerator(FileType fileType) {
 		switch(fileType) {
 		case JSONSCHEMA:
@@ -28,6 +29,8 @@ public class SchemaGeneratorFactory {
 			return new SchemaGeneratorForXML();
 		case JSON:
 			return new SchemaGeneratorForJSON();
+		case CSV:
+			return new SchemaGeneratorForCSV();
 		
 	}
 		return null;

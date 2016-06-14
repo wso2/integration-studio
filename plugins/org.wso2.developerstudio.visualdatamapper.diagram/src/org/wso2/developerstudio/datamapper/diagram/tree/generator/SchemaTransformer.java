@@ -710,11 +710,6 @@ public class SchemaTransformer implements ISchemaTransformer {
 	private TreeNode setBasicTreeNodeValues(Map<String, Object> subSchema, String schemaType,
 			EList<PropertyKeyValuePair> propertyValueList, int count, HashMap<String, String> namespaceMap,
 			String elementKey, TreeNode treeNode, HashMap<String, String> elementIdentifiersmap) {
-		// If the node is a root element then sets the namesapces value
-		if (getNamespaces(subSchema) != null) {
-			setPropertyKeyValuePairforTreeNodes(treeNode, propertyValueList, JSON_SCHEMA_NAMESPACES,
-					getNamespaces(subSchema));
-		}
 		// If the node is a root element then sets the element identifiers value
 		if (getElementIdentifiers(subSchema) != null) {
 			setPropertyKeyValuePairforTreeNodes(treeNode, propertyValueList, JSON_SCHEMA_ELEMENT_IDENTIFIERS,
@@ -724,7 +719,7 @@ public class SchemaTransformer implements ISchemaTransformer {
 		if (namespaceMap != null && namespaceMap.size() > 0) {
 			// Iterates through the namespaces map and validates the prefix and
 			// sets the name
-			String name = validatePrefix(elementKey, namespaceMap, treeNode);
+			String name = validatePrefix(elementKey, namespaceMap, treeNode,propertyValueList);
 			treeNode.setName(name);
 		} else {
 			// Sets the name if there are no namespaces
@@ -749,11 +744,6 @@ public class SchemaTransformer implements ISchemaTransformer {
 		if (getRequiredValue(subSchema) != null) {
 			setPropertyKeyValuePairforTreeNodes(treeNode, propertyValueList, JSON_SCHEMA_REQUIRED,
 					getRequiredValue(subSchema));
-		}
-		// Sets the namesapces value
-		if (getNamespaces(subSchema) != null) {
-			setPropertyKeyValuePairforTreeNodes(treeNode, propertyValueList, JSON_SCHEMA_NAMESPACES,
-					getNamespaces(subSchema));
 		}
 
 		if (schemaType.equals(JSON_SCHEMA_ARRAY)) {
@@ -893,8 +883,9 @@ public class SchemaTransformer implements ISchemaTransformer {
 	 * @param elementKey
 	 * @param namespaceMap
 	 * @param treeNode
+	 * @param propertyValueList 
 	 */
-	private String validatePrefix(String element, HashMap<String, String> namespaceMap, TreeNode treeNode) {
+	private String validatePrefix(String element, HashMap<String, String> namespaceMap, TreeNode treeNode, EList<PropertyKeyValuePair> propertyValueList) {
 		String elementKey = null;
 		String[] name = null;
 		String nodeName = null;
@@ -905,7 +896,7 @@ public class SchemaTransformer implements ISchemaTransformer {
 			elementKey = name[0];
 			if (elementKey.contains(":")) {
 				// If element contains both xsi:type and namespace prefix
-				String nameWithPrefix = checkValidity(namespaceMap, nodeName, elementKey);
+				String nameWithPrefix = checkValidity(namespaceMap, nodeName, elementKey,treeNode,propertyValueList);
 				nodeName = nameWithPrefix + "," + name[1];
 			} else {
 				// If element contains only the xsi:type
@@ -916,11 +907,11 @@ public class SchemaTransformer implements ISchemaTransformer {
 			String[] fullName = element.split(":");
 			String firstPart = fullName[0];
 			String prefix = firstPart.substring(1);
-			nodeName = checkValidity(namespaceMap, nodeName, prefix);
+			nodeName = checkValidity(namespaceMap, nodeName, prefix,treeNode,propertyValueList);
 			nodeName = PREFIX + nodeName + ":" + fullName[1];
 		} else if (element.contains(":")) {
 			// If element conatains a namespace prefix
-			nodeName = checkValidity(namespaceMap, nodeName, element);
+			nodeName = checkValidity(namespaceMap, nodeName, element,treeNode,propertyValueList);
 		} else {
 			// If element doesn't contains a namespace prefix or xsi:type
 			nodeName = element;
@@ -929,7 +920,7 @@ public class SchemaTransformer implements ISchemaTransformer {
 
 	}
 
-	private String checkValidity(HashMap<String, String> namespaceMap, String nodeName, String elementKey) {
+	private String checkValidity(HashMap<String, String> namespaceMap, String nodeName, String elementKey, TreeNode treeNode, EList<PropertyKeyValuePair> propertyValueList) {
 		String prefix;
 		boolean isValid = false;
 		if (namespaceMap != null && namespaceMap.size() > 0) {
@@ -937,6 +928,9 @@ public class SchemaTransformer implements ISchemaTransformer {
 			prefix = split[0];
 			for (Map.Entry<String, String> entry : namespaceMap.entrySet()) {
 				if (entry.getKey().equals(prefix)) {
+					String namespace = createNamespaceArray(entry.getKey().toString(),entry.getValue().toString());
+					setPropertyKeyValuePairforTreeNodes(treeNode, propertyValueList, JSON_SCHEMA_NAMESPACES,
+							namespace);
 					isValid = true;
 				}
 			}
@@ -952,6 +946,24 @@ public class SchemaTransformer implements ISchemaTransformer {
 		}
 		return nodeName;
 	}
+	
+	/**
+	 * Creates namespace array for identifiers
+	 * @param identifierType
+	 * @param identifierURL
+	 * @return
+	 */
+	private String createNamespaceArray(String prefix, String url) {
+		ArrayList<String> namespacesList = new ArrayList<String>();
+		String prefixItem = NAMESPACE_PREFIX + "=" + prefix;
+		String urlItem = NAMESPACE_URL + "=" + url;
+		String [] namespaceItem = {prefixItem,urlItem};
+		String namespaceArrayAsString =Arrays.toString(namespaceItem).substring(1, Arrays.toString(namespaceItem).length()-1);
+		namespacesList.add("{"+ namespaceArrayAsString + "}");
+		String value = StringUtils.join(namespacesList, ',');
+		return value;
+	}
+
 
 	/**
 	 * Gets the key and value

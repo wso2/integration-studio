@@ -71,6 +71,7 @@ import org.wso2.developerstudio.datamapper.diagram.edit.parts.IfElseEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.InputEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.MultiplyEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.OREditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.OutNodeEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.OutputEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.SetPrecisionEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.SplitEditPart;
@@ -128,9 +129,9 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
 	Map<Class<? extends ShapeNodeEditPart>, AbstractActionHandler> addEditFieldActions;
 	// Actions for Editing an attribute
 	Map<Class<? extends ShapeNodeEditPart>, AbstractActionHandler> addEditAttributeActions;
-	//Actions for adding nullable
+	// Actions for adding nullable
 	Map<Class<? extends ShapeNodeEditPart>, AbstractActionHandler> enableNullableActions;
-	//Actions for removing nullable
+	// Actions for removing nullable
 	Map<Class<? extends ShapeNodeEditPart>, AbstractActionHandler> disableNullableActions;
 	// Actions for exporting schema
 	Map<Class<? extends ShapeNodeEditPart>, AbstractActionHandler> exportSchemaActions;
@@ -141,10 +142,13 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
 	public DiagramEditorContextMenuProvider(IWorkbenchPart part, EditPartViewer viewer) {
 		super(part, viewer);
 		this.part = part;
-		/*deleteAction = new org.wso2.developerstudio.datamapper.diagram.part.DeleteElementAction(part);
-		deleteAction.init();*/
+		/*
+		 * deleteAction = new org.wso2.developerstudio.datamapper.diagram.part.DeleteElementAction( part);
+		 * deleteAction.init();
+		 */
 
-		//		deleteAction = new org.wso2.developerstudio.datamapper.diagram.part.DeleteElementAction(part);
+		// deleteAction = new
+		// org.wso2.developerstudio.datamapper.diagram.part.DeleteElementAction(part);
 
 		contextActions = new HashMap<Class<? extends ShapeNodeEditPart>, AbstractActionHandler>();
 		contextActions.put(InputEditPart.class, new LoadInputSchemaAction(part));
@@ -236,13 +240,13 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
 		addEditAttributeActions.put(TreeNode2EditPart.class, new EditAttributeAction(part));
 		addEditAttributeActions.put(TreeNode3EditPart.class, new EditAttributeAction(part));
 
-		//Enable Nullable field actions added to tree nodes
+		// Enable Nullable field actions added to tree nodes
 		enableNullableActions = new HashMap<Class<? extends ShapeNodeEditPart>, AbstractActionHandler>();
 		enableNullableActions.put(TreeNodeEditPart.class, new EnableNullableAction(part));
 		enableNullableActions.put(TreeNode2EditPart.class, new EnableNullableAction(part));
 		enableNullableActions.put(TreeNode3EditPart.class, new EnableNullableAction(part));
 
-		//Disable Nullable field actions added to tree nodes
+		// Disable Nullable field actions added to tree nodes
 		disableNullableActions = new HashMap<Class<? extends ShapeNodeEditPart>, AbstractActionHandler>();
 		disableNullableActions.put(TreeNodeEditPart.class, new DisableNullableAction(part));
 		disableNullableActions.put(TreeNode2EditPart.class, new DisableNullableAction(part));
@@ -255,8 +259,8 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
 	}
 
 	/**
-	* @generated
-	*/
+	 * @generated
+	 */
 	public void dispose() {
 		if (deleteAction != null) {
 			deleteAction.dispose();
@@ -268,13 +272,10 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
 	/**
 	 * @generated NOT
 	 */
-	/*public void dispose() {
-		if (deleteAction != null) {
-			deleteAction.dispose();
-			deleteAction = null;
-		}
-		super.dispose();
-	}*/
+	/*
+	 * public void dispose() { if (deleteAction != null) { deleteAction.dispose(); deleteAction = null; }
+	 * super.dispose(); }
+	 */
 
 	/**
 	 * @generated NOT
@@ -299,14 +300,35 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
 							menu.remove(MENU_ADDITIONS);
 							menu.remove(ActionIds.ACTION_ADD_NOTELINK);
 							menu.remove(ActionIds.ACTION_DELETE_FROM_DIAGRAM);
-							//							menu.remove(ActionIds.ACTION_DELETE_FROM_MODEL);
 							menu.remove(ActionIds.ACTION_SHOW_PROPERTIES_VIEW);
 							List<?> selectedEPs = getViewer().getSelectedEditParts();
 							if (selectedEPs.size() == 1) {
 								EditPart selectedEditorPart = (IGraphicalEditPart) selectedEPs.get(0);
 								EObject contextObj = ((View) selectedEditorPart.getModel()).getElement();
 
+								if (selectedEditorPart instanceof InputEditPart
+										|| selectedEditorPart instanceof OutputEditPart) {
+									// DEVTOOLESB-377- removing delete from model from input and output edit parts
+									menu.remove(ActionIds.ACTION_DELETE_FROM_MODEL);
+								}
+
 								if (contextObj instanceof EObject) {
+									
+									// Append load from file item to menu
+									AbstractActionHandler contextAction = contextActions
+											.get(selectedEditorPart.getClass());
+									if (null != contextAction) {
+										menu.appendToGroup(EDIT_GROUP_ID, contextAction);
+									}
+
+									// Append export schema item to menu
+									AbstractActionHandler exportSchemaAction = exportSchemaActions
+											.get(selectedEditorPart.getClass());
+									if (!selectedEditorPart.getChildren().isEmpty()) {
+										if (null != exportSchemaAction) {
+											menu.appendToGroup(EDIT_GROUP_ID, exportSchemaAction);
+										}
+									}
 
 									// Append new root item to menu
 									AbstractActionHandler addNewRootRecordContextAction = addNewRootElementContextActions
@@ -406,14 +428,16 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
 													.getModel()).getElement()).getProperties())) {
 												if (keyValue.getKey().equals(JSON_SCHEMA_NULLABLE)) {
 													if (keyValue.getValue().equals(FALSE)) {
-														//Append nullable action to menu
+														// Append nullable
+														// action to menu
 														AbstractActionHandler enableNullableAction = enableNullableActions
 																.get(selectedEditorPart.getClass());
 														if (null != enableNullableAction) {
 															menu.appendToGroup(EDIT_GROUP_ID, enableNullableAction);
 														}
 													} else if (keyValue.getValue().equals(TRUE)) {
-														//Append nullable action to menu
+														// Append nullable
+														// action to menu
 														AbstractActionHandler disableNullableAction = disableNullableActions
 																.get(selectedEditorPart.getClass());
 														if (null != disableNullableAction) {
@@ -428,25 +452,10 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
 										}
 									}
 
-									// Append load from file item to menu
-									AbstractActionHandler contextAction = contextActions
-											.get(selectedEditorPart.getClass());
-									if (null != contextAction) {
-										menu.appendToGroup(EDIT_GROUP_ID, contextAction);
-									}
-
-									// Append export schema item to menu
-									AbstractActionHandler exportSchemaAction = exportSchemaActions
-											.get(selectedEditorPart.getClass());
-									if (!selectedEditorPart.getChildren().isEmpty()) {
-										if (null != exportSchemaAction) {
-											menu.appendToGroup(EDIT_GROUP_ID, exportSchemaAction);
-										}
-									}
 								}
 
 							}
-							//							menu.appendToGroup(EDIT_GROUP_ID, deleteAction);
+							// menu.appendToGroup(EDIT_GROUP_ID, deleteAction);
 						}
 					});
 		} catch (Exception e) {

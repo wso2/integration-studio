@@ -578,7 +578,9 @@ public class SchemaKeyEditorDialog extends Dialog {
 			return FileType.XML;
 		} else if (selectedPath.endsWith(".jschema")) {
 			return FileType.JSONSCHEMA;
-		} else {
+		} else if (selectedPath.endsWith(".csv")){
+			return FileType.CSV;
+	    }else {
 			return null;
 		}
 	}
@@ -766,6 +768,8 @@ public class SchemaKeyEditorDialog extends Dialog {
 				return "*.xml";
 			case JSON:
 				return "*.json";
+			case CSV:
+				return "*.csv";
 			default:
 				return "*.jschema";// this is not used since we are not adding
 				                   // any filter to json schema files
@@ -780,7 +784,9 @@ public class SchemaKeyEditorDialog extends Dialog {
 			return FileType.XSD;
 		} else if (mediaType.contains("json")) {
 			return FileType.JSON;
-		} else {
+		} else if (mediaType.contains("csv")) {
+			return FileType.CSV;
+		}else {
 			return FileType.XML;
 		}
 	}

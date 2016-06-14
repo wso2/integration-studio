@@ -71,6 +71,7 @@ public class EditAttributeAction extends AbstractActionHandler {
 	private static final String NAMESPACE_PREFIX = "prefix";
 	private static final String NAMESPACE_URL = "url";
 	private static final String JSON_SCHEMA_ATTRIBUTE_NAMESPACES = "attributeNamespaces";
+	private static final String JSON_SCHEMA_NAMESPACES = "namespaces";
 	private static final String JSON_SCHEMA_ADDED_ATTRIBUTE_ID = "added_attribute_id";
 	private static final String JSON_SCHEMA_ADDED_ATTRIBUTE_TYPE = "added_attribute_type";
 	private static final String JSON_SCHEMA_NULLABLE = "nullable";
@@ -85,6 +86,7 @@ public class EditAttributeAction extends AbstractActionHandler {
 	private String required = null;
 	private String namespaces = null;
 	private String formatedNamespace = null;
+	private String newNamespace = null;
 	private boolean isNullable = false;
 	private String nullableValue = null;
 
@@ -122,15 +124,22 @@ public class EditAttributeAction extends AbstractActionHandler {
 			schemaType = setProperties(selectedNode, JSON_SCHEMA_TYPE);
 			id = setProperties(selectedNode, JSON_SCHEMA_ID);
 
-			namespaces = setProperties(selectedNode, JSON_SCHEMA_ATTRIBUTE_NAMESPACES);
-			formatedNamespace = formatNamespace(namespaces).toString();
+			// gets the attribute's namespace when generating the tree
+			namespaces = setProperties(selectedNode, JSON_SCHEMA_NAMESPACES);
+			if (namespaces == null) {
+				// gets the namespaces for attributes when creating tree
+				namespaces = setProperties(selectedNode, JSON_SCHEMA_ATTRIBUTE_NAMESPACES);
+			}
+			if (namespaces != null) {
+				formatedNamespace = formatNamespace(namespaces).toString();
+				newNamespace = formatedNamespace.substring(1, formatedNamespace.toString().length() - 1);
+			}
 			nullableValue = setProperties(selectedNode, JSON_SCHEMA_NULLABLE);
-			if(nullableValue.equals(TRUE)){
+			if (nullableValue.equals(TRUE)) {
 				isNullable = true;
-			}else{
+			} else {
 				isNullable = false;
 			}
-			String newNamespace = formatedNamespace.substring(1, formatedNamespace.toString().length() - 1);
 			openEditFieldDialog(selectedNode, name, schemaType, id, required, schemaValue, newNamespace, isNullable);
 
 		}
@@ -179,20 +188,21 @@ public class EditAttributeAction extends AbstractActionHandler {
 
 	/**
 	 * Updates the connector
-	 * @param map 
+	 * 
+	 * @param map
 	 */
 	private void updateConnector(HashMap<String, String> map) {
 		if (getSelectedEditPart() instanceof TreeNodeEditPart) {
 			((TreeNodeEditPart) getSelectedEditPart()).addFixedChildToNodes(getSelectedEditPart());
-			((TreeNodeEditPart)getSelectedEditPart()).recreateContent(map.get(JSON_SCHEMA_TITLE),
+			((TreeNodeEditPart) getSelectedEditPart()).recreateContent(map.get(JSON_SCHEMA_TITLE),
 					map.get(JSON_SCHEMA_TYPE));
 		} else if (getSelectedEditPart() instanceof TreeNode2EditPart) {
 			((TreeNode2EditPart) getSelectedEditPart()).addFixedChildToNodes(getSelectedEditPart());
-			((TreeNode2EditPart)getSelectedEditPart()).recreateContent(map.get(JSON_SCHEMA_TITLE),
+			((TreeNode2EditPart) getSelectedEditPart()).recreateContent(map.get(JSON_SCHEMA_TITLE),
 					map.get(JSON_SCHEMA_TYPE));
 		} else if (getSelectedEditPart() instanceof TreeNode3EditPart) {
 			((TreeNode3EditPart) getSelectedEditPart()).addFixedChildToNodes(getSelectedEditPart());
-			((TreeNode3EditPart)getSelectedEditPart()).recreateContent(map.get(JSON_SCHEMA_TITLE),
+			((TreeNode3EditPart) getSelectedEditPart()).recreateContent(map.get(JSON_SCHEMA_TITLE),
 					map.get(JSON_SCHEMA_TYPE));
 		}
 	}
@@ -288,7 +298,7 @@ public class EditAttributeAction extends AbstractActionHandler {
 	 *            prefix
 	 * @param schemaType
 	 *            schemaType
-	 * @param isNullable2 
+	 * @param isNullable2
 	 * @param namespace
 	 *            namespace
 	 * @param aliases
@@ -303,7 +313,8 @@ public class EditAttributeAction extends AbstractActionHandler {
 
 		editTypeDialog.create();
 		editTypeDialog.setTypeWhenEditing(schemaType);
-		editTypeDialog.setValues(title, schemaType, id, required, schemaValue, namespaces, null, null, null, null,isNullable);
+		editTypeDialog.setValues(title, schemaType, id, required, schemaValue, namespaces, null, null, null, null,
+				isNullable);
 		editTypeDialog.open();
 
 		if (editTypeDialog.getOkValue()) {
@@ -315,10 +326,10 @@ public class EditAttributeAction extends AbstractActionHandler {
 					String objectNamespace = createNamespaceArray(editTypeDialog.getNamespaces());
 					// Adds the prefix to the object
 					String prefix = getNamespacePrefix(objectNamespace);
-					String newNodeName = prefix + ":" + editTypeDialog.getTitle();
+					String newNodeName = PREFIX+prefix + ":" + editTypeDialog.getTitle();
 					valueMap.put(JSON_SCHEMA_TITLE, newNodeName);
 				} else {
-					valueMap.put(JSON_SCHEMA_TITLE, PREFIX + editTypeDialog.getTitle());
+					valueMap.put(JSON_SCHEMA_TITLE, PREFIX + PREFIX+editTypeDialog.getTitle());
 				}
 			}
 			valueMap.put(JSON_SCHEMA_TYPE, editTypeDialog.getSchemaType());
@@ -335,10 +346,10 @@ public class EditAttributeAction extends AbstractActionHandler {
 			// attributes
 			valueMap.put(JSON_SCHEMA_ADDED_ATTRIBUTE_ID, editTypeDialog.getID());
 			valueMap.put(JSON_SCHEMA_ADDED_ATTRIBUTE_TYPE, editTypeDialog.getSchemaType());
-			
-			if(editTypeDialog.getNullable()){
+
+			if (editTypeDialog.getNullable()) {
 				valueMap.put(JSON_SCHEMA_NULLABLE, TRUE);
-			}else{
+			} else {
 				valueMap.put(JSON_SCHEMA_NULLABLE, FALSE);
 			}
 

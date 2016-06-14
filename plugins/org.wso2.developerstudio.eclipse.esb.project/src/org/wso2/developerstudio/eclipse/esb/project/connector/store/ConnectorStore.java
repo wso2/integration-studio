@@ -41,8 +41,6 @@ import com.google.gson.reflect.TypeToken;
 
 public class ConnectorStore {
 
-    private static final int TIMEOUT = 180000;
-    private static final String HTTP_SOCKET_TIMEOUT = "http.socket.timeout";
     private static final String ASSETS = "/store/apis/assets/esbconnector";
 
 	/**
@@ -57,14 +55,7 @@ public class ConnectorStore {
 	 * @throws IOException
 	 * @throws HttpException
 	 */
-	public static List<Connector> getConnectorInfo(String url, int page) throws NoSuchAlgorithmException,
-			KeyManagementException, HttpException, IOException {
-		HttpClient httpclient = new HttpClient();
-        httpclient.getParams().setIntParameter(HTTP_SOCKET_TIMEOUT, TIMEOUT);
-		SSLContext ctx;
-		ctx = SSLContext.getInstance("TLS");
-		ctx.init(new KeyManager[0], new TrustManager[] { new DefaultTrustManager() }, new SecureRandom());
-		SSLContext.setDefault(ctx);
+	public static List<Connector> getConnectorInfo(HttpClient httpclient, String url, int page) throws HttpException, IOException {
 		GetMethod get = new GetMethod(url + ASSETS + "?page=" + page);
 		int statusCode = 0;
 		statusCode = httpclient.executeMethod(get);
@@ -75,22 +66,6 @@ public class ConnectorStore {
 			List<Connector> lcs = (List<Connector>) new Gson().fromJson(reader, collectionType);
 			return lcs;
 		} else {
-			return null;
-		}
-	}
-
-	private static class DefaultTrustManager implements X509TrustManager {
-
-		@Override
-		public void checkClientTrusted(X509Certificate[] arg0, String arg1) throws CertificateException {
-		}
-
-		@Override
-		public void checkServerTrusted(X509Certificate[] arg0, String arg1) throws CertificateException {
-		}
-
-		@Override
-		public X509Certificate[] getAcceptedIssuers() {
 			return null;
 		}
 	}

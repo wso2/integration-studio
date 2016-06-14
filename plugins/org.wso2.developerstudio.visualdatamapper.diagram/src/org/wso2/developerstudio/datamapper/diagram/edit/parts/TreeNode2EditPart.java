@@ -622,6 +622,8 @@ public class TreeNode2EditPart extends AbstractBorderedShapeEditPart {
 		private static final String JSON_SCHEMA_NULLABLE = "nullable";
 
 		private static final String PREFIX = "@";
+		private static final String SCHEMA_TYPE_PREFIX = "  :[";
+		private static final String SCHEMA_TYPE_POSTFIX = "]";
 		/**
 		 * @generated
 		 */

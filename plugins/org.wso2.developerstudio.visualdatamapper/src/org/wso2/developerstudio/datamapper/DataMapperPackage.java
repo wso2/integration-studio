@@ -389,13 +389,31 @@ public interface DataMapperPackage extends EPackage {
 	int STARTS_WITH__OPERATOR_TYPE = OPERATOR__OPERATOR_TYPE;
 
 	/**
+	 * The feature id for the '<em><b>Pattern</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STARTS_WITH__PATTERN = OPERATOR_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Get Pattern From Input</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STARTS_WITH__GET_PATTERN_FROM_INPUT = OPERATOR_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>Starts With</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STARTS_WITH_FEATURE_COUNT = OPERATOR_FEATURE_COUNT + 0;
+	int STARTS_WITH_FEATURE_COUNT = OPERATOR_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.datamapper.impl.EndsWithImpl <em>Ends With</em>}' class.
@@ -471,13 +489,31 @@ public interface DataMapperPackage extends EPackage {
 	int ENDS_WITH__OPERATOR_TYPE = OPERATOR__OPERATOR_TYPE;
 
 	/**
+	 * The feature id for the '<em><b>Pattern</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENDS_WITH__PATTERN = OPERATOR_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Get Pattern From Input</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENDS_WITH__GET_PATTERN_FROM_INPUT = OPERATOR_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>Ends With</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ENDS_WITH_FEATURE_COUNT = OPERATOR_FEATURE_COUNT + 0;
+	int ENDS_WITH_FEATURE_COUNT = OPERATOR_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.datamapper.impl.SubstringImpl <em>Substring</em>}' class.
@@ -553,13 +589,40 @@ public interface DataMapperPackage extends EPackage {
 	int SUBSTRING__OPERATOR_TYPE = OPERATOR__OPERATOR_TYPE;
 
 	/**
+	 * The feature id for the '<em><b>Start Index</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SUBSTRING__START_INDEX = OPERATOR_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>End Index</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SUBSTRING__END_INDEX = OPERATOR_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Get Pattern From Input</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SUBSTRING__GET_PATTERN_FROM_INPUT = OPERATOR_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>Substring</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SUBSTRING_FEATURE_COUNT = OPERATOR_FEATURE_COUNT + 0;
+	int SUBSTRING_FEATURE_COUNT = OPERATOR_FEATURE_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.datamapper.impl.IfElseImpl <em>If Else</em>}' class.
@@ -635,13 +698,31 @@ public interface DataMapperPackage extends EPackage {
 	int IF_ELSE__OPERATOR_TYPE = OPERATOR__OPERATOR_TYPE;
 
 	/**
+	 * The feature id for the '<em><b>Condition</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IF_ELSE__CONDITION = OPERATOR_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Get Pattern From Input</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IF_ELSE__GET_PATTERN_FROM_INPUT = OPERATOR_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>If Else</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int IF_ELSE_FEATURE_COUNT = OPERATOR_FEATURE_COUNT + 0;
+	int IF_ELSE_FEATURE_COUNT = OPERATOR_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.datamapper.impl.ANDImpl <em>AND</em>}' class.
@@ -2894,6 +2975,28 @@ public interface DataMapperPackage extends EPackage {
 	EClass getStartsWith();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.datamapper.StartsWith#getPattern <em>Pattern</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Pattern</em>'.
+	 * @see org.wso2.developerstudio.datamapper.StartsWith#getPattern()
+	 * @see #getStartsWith()
+	 * @generated
+	 */
+	EAttribute getStartsWith_Pattern();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.datamapper.StartsWith#isGetPatternFromInput <em>Get Pattern From Input</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Get Pattern From Input</em>'.
+	 * @see org.wso2.developerstudio.datamapper.StartsWith#isGetPatternFromInput()
+	 * @see #getStartsWith()
+	 * @generated
+	 */
+	EAttribute getStartsWith_GetPatternFromInput();
+
+	/**
 	 * Returns the meta object for class '{@link org.wso2.developerstudio.datamapper.EndsWith <em>Ends With</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2902,6 +3005,28 @@ public interface DataMapperPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getEndsWith();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.datamapper.EndsWith#getPattern <em>Pattern</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Pattern</em>'.
+	 * @see org.wso2.developerstudio.datamapper.EndsWith#getPattern()
+	 * @see #getEndsWith()
+	 * @generated
+	 */
+	EAttribute getEndsWith_Pattern();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.datamapper.EndsWith#isGetPatternFromInput <em>Get Pattern From Input</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Get Pattern From Input</em>'.
+	 * @see org.wso2.developerstudio.datamapper.EndsWith#isGetPatternFromInput()
+	 * @see #getEndsWith()
+	 * @generated
+	 */
+	EAttribute getEndsWith_GetPatternFromInput();
 
 	/**
 	 * Returns the meta object for class '{@link org.wso2.developerstudio.datamapper.Substring <em>Substring</em>}'.
@@ -2914,6 +3039,39 @@ public interface DataMapperPackage extends EPackage {
 	EClass getSubstring();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.datamapper.Substring#getStartIndex <em>Start Index</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Start Index</em>'.
+	 * @see org.wso2.developerstudio.datamapper.Substring#getStartIndex()
+	 * @see #getSubstring()
+	 * @generated
+	 */
+	EAttribute getSubstring_StartIndex();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.datamapper.Substring#getEndIndex <em>End Index</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>End Index</em>'.
+	 * @see org.wso2.developerstudio.datamapper.Substring#getEndIndex()
+	 * @see #getSubstring()
+	 * @generated
+	 */
+	EAttribute getSubstring_EndIndex();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.datamapper.Substring#isGetPatternFromInput <em>Get Pattern From Input</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Get Pattern From Input</em>'.
+	 * @see org.wso2.developerstudio.datamapper.Substring#isGetPatternFromInput()
+	 * @see #getSubstring()
+	 * @generated
+	 */
+	EAttribute getSubstring_GetPatternFromInput();
+
+	/**
 	 * Returns the meta object for class '{@link org.wso2.developerstudio.datamapper.IfElse <em>If Else</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2922,6 +3080,28 @@ public interface DataMapperPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getIfElse();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.datamapper.IfElse#getCondition <em>Condition</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Condition</em>'.
+	 * @see org.wso2.developerstudio.datamapper.IfElse#getCondition()
+	 * @see #getIfElse()
+	 * @generated
+	 */
+	EAttribute getIfElse_Condition();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.datamapper.IfElse#isGetPatternFromInput <em>Get Pattern From Input</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Get Pattern From Input</em>'.
+	 * @see org.wso2.developerstudio.datamapper.IfElse#isGetPatternFromInput()
+	 * @see #getIfElse()
+	 * @generated
+	 */
+	EAttribute getIfElse_GetPatternFromInput();
 
 	/**
 	 * Returns the meta object for class '{@link org.wso2.developerstudio.datamapper.AND <em>AND</em>}'.
@@ -3899,6 +4079,22 @@ public interface DataMapperPackage extends EPackage {
 		EClass STARTS_WITH = eINSTANCE.getStartsWith();
 
 		/**
+		 * The meta object literal for the '<em><b>Pattern</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute STARTS_WITH__PATTERN = eINSTANCE.getStartsWith_Pattern();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Pattern From Input</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute STARTS_WITH__GET_PATTERN_FROM_INPUT = eINSTANCE.getStartsWith_GetPatternFromInput();
+
+		/**
 		 * The meta object literal for the '{@link org.wso2.developerstudio.datamapper.impl.EndsWithImpl <em>Ends With</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3907,6 +4103,22 @@ public interface DataMapperPackage extends EPackage {
 		 * @generated
 		 */
 		EClass ENDS_WITH = eINSTANCE.getEndsWith();
+
+		/**
+		 * The meta object literal for the '<em><b>Pattern</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ENDS_WITH__PATTERN = eINSTANCE.getEndsWith_Pattern();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Pattern From Input</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ENDS_WITH__GET_PATTERN_FROM_INPUT = eINSTANCE.getEndsWith_GetPatternFromInput();
 
 		/**
 		 * The meta object literal for the '{@link org.wso2.developerstudio.datamapper.impl.SubstringImpl <em>Substring</em>}' class.
@@ -3919,6 +4131,30 @@ public interface DataMapperPackage extends EPackage {
 		EClass SUBSTRING = eINSTANCE.getSubstring();
 
 		/**
+		 * The meta object literal for the '<em><b>Start Index</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SUBSTRING__START_INDEX = eINSTANCE.getSubstring_StartIndex();
+
+		/**
+		 * The meta object literal for the '<em><b>End Index</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SUBSTRING__END_INDEX = eINSTANCE.getSubstring_EndIndex();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Pattern From Input</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SUBSTRING__GET_PATTERN_FROM_INPUT = eINSTANCE.getSubstring_GetPatternFromInput();
+
+		/**
 		 * The meta object literal for the '{@link org.wso2.developerstudio.datamapper.impl.IfElseImpl <em>If Else</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3927,6 +4163,22 @@ public interface DataMapperPackage extends EPackage {
 		 * @generated
 		 */
 		EClass IF_ELSE = eINSTANCE.getIfElse();
+
+		/**
+		 * The meta object literal for the '<em><b>Condition</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute IF_ELSE__CONDITION = eINSTANCE.getIfElse_Condition();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Pattern From Input</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute IF_ELSE__GET_PATTERN_FROM_INPUT = eINSTANCE.getIfElse_GetPatternFromInput();
 
 		/**
 		 * The meta object literal for the '{@link org.wso2.developerstudio.datamapper.impl.ANDImpl <em>AND</em>}' class.

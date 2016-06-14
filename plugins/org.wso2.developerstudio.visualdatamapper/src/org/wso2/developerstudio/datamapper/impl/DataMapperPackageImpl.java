@@ -480,8 +480,44 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getStartsWith_Pattern() {
+		return (EAttribute)startsWithEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getStartsWith_GetPatternFromInput() {
+		return (EAttribute)startsWithEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getEndsWith() {
 		return endsWithEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getEndsWith_Pattern() {
+		return (EAttribute)endsWithEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getEndsWith_GetPatternFromInput() {
+		return (EAttribute)endsWithEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -498,8 +534,53 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getSubstring_StartIndex() {
+		return (EAttribute)substringEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSubstring_EndIndex() {
+		return (EAttribute)substringEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSubstring_GetPatternFromInput() {
+		return (EAttribute)substringEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getIfElse() {
 		return ifElseEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getIfElse_Condition() {
+		return (EAttribute)ifElseEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getIfElse_GetPatternFromInput() {
+		return (EAttribute)ifElseEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -1296,12 +1377,21 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 		stringLengthEClass = createEClass(STRING_LENGTH);
 
 		startsWithEClass = createEClass(STARTS_WITH);
+		createEAttribute(startsWithEClass, STARTS_WITH__PATTERN);
+		createEAttribute(startsWithEClass, STARTS_WITH__GET_PATTERN_FROM_INPUT);
 
 		endsWithEClass = createEClass(ENDS_WITH);
+		createEAttribute(endsWithEClass, ENDS_WITH__PATTERN);
+		createEAttribute(endsWithEClass, ENDS_WITH__GET_PATTERN_FROM_INPUT);
 
 		substringEClass = createEClass(SUBSTRING);
+		createEAttribute(substringEClass, SUBSTRING__START_INDEX);
+		createEAttribute(substringEClass, SUBSTRING__END_INDEX);
+		createEAttribute(substringEClass, SUBSTRING__GET_PATTERN_FROM_INPUT);
 
 		ifElseEClass = createEClass(IF_ELSE);
+		createEAttribute(ifElseEClass, IF_ELSE__CONDITION);
+		createEAttribute(ifElseEClass, IF_ELSE__GET_PATTERN_FROM_INPUT);
 
 		andEClass = createEClass(AND);
 
@@ -1490,12 +1580,21 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 		initEClass(stringLengthEClass, StringLength.class, "StringLength", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(startsWithEClass, StartsWith.class, "StartsWith", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getStartsWith_Pattern(), ecorePackage.getEString(), "pattern", "/default", 0, 1, StartsWith.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getStartsWith_GetPatternFromInput(), ecorePackage.getEBoolean(), "getPatternFromInput", "true", 0, 1, StartsWith.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(endsWithEClass, EndsWith.class, "EndsWith", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getEndsWith_Pattern(), ecorePackage.getEString(), "pattern", "/default", 0, 1, EndsWith.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEndsWith_GetPatternFromInput(), ecorePackage.getEBoolean(), "getPatternFromInput", "true", 0, 1, EndsWith.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(substringEClass, Substring.class, "Substring", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getSubstring_StartIndex(), ecorePackage.getEInt(), "startIndex", "0", 0, 1, Substring.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSubstring_EndIndex(), ecorePackage.getEInt(), "endIndex", "0", 0, 1, Substring.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSubstring_GetPatternFromInput(), ecorePackage.getEBoolean(), "getPatternFromInput", "true", 0, 1, Substring.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(ifElseEClass, IfElse.class, "IfElse", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getIfElse_Condition(), ecorePackage.getEString(), "condition", "true", 0, 1, IfElse.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getIfElse_GetPatternFromInput(), ecorePackage.getEBoolean(), "getPatternFromInput", "true", 0, 1, IfElse.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(andEClass, org.wso2.developerstudio.datamapper.AND.class, "AND", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -1654,6 +1753,14 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 		addEEnumLiteral(dataMapperOperatorTypeEEnum, DataMapperOperatorType.FLOOR);
 		addEEnumLiteral(dataMapperOperatorTypeEEnum, DataMapperOperatorType.CEILING);
 		addEEnumLiteral(dataMapperOperatorTypeEEnum, DataMapperOperatorType.SET_PRECISION);
+		addEEnumLiteral(dataMapperOperatorTypeEEnum, DataMapperOperatorType.AND);
+		addEEnumLiteral(dataMapperOperatorTypeEEnum, DataMapperOperatorType.OR);
+		addEEnumLiteral(dataMapperOperatorTypeEEnum, DataMapperOperatorType.NOT);
+		addEEnumLiteral(dataMapperOperatorTypeEEnum, DataMapperOperatorType.ENDS_WITH);
+		addEEnumLiteral(dataMapperOperatorTypeEEnum, DataMapperOperatorType.IF_ELSE);
+		addEEnumLiteral(dataMapperOperatorTypeEEnum, DataMapperOperatorType.STARTS_WITH);
+		addEEnumLiteral(dataMapperOperatorTypeEEnum, DataMapperOperatorType.STRING_LENGTH);
+		addEEnumLiteral(dataMapperOperatorTypeEEnum, DataMapperOperatorType.SUBSTRING);
 
 		// Create resource
 		createResource(eNS_URI);

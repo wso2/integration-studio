@@ -2,10 +2,14 @@
  */
 package org.wso2.developerstudio.datamapper.impl;
 
-import org.eclipse.emf.ecore.EClass;
+import static org.wso2.developerstudio.datamapper.impl.DataMapperImplConstants.IN_TAG;
+import static org.wso2.developerstudio.datamapper.impl.DataMapperImplConstants.RESULT_TAG;
 
+import org.eclipse.emf.ecore.EClass;
+import org.wso2.developerstudio.datamapper.DataMapperOperatorType;
 import org.wso2.developerstudio.datamapper.DataMapperPackage;
 import org.wso2.developerstudio.datamapper.NOT;
+import org.wso2.developerstudio.datamapper.SchemaDataType;
 
 /**
  * <!-- begin-user-doc -->
@@ -18,10 +22,19 @@ public class NOTImpl extends OperatorImpl implements NOT {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	protected NOTImpl() {
 		super();
+		setDefaultInputConnectors(1);
+		setDefaultOutputConnectors(1);
+		setInputSizeFixed(true);
+		setOutputSizeFixed(true);
+		getInputVariableType().add(SchemaDataType.BOOLEAN);
+		getOutputVariableType().add(SchemaDataType.BOOLEAN);
+		setOperatorType(DataMapperOperatorType.NOT);
+		getInputLabelList().add(IN_TAG);
+		getOutputLabelList().add(RESULT_TAG);
 	}
 
 	/**

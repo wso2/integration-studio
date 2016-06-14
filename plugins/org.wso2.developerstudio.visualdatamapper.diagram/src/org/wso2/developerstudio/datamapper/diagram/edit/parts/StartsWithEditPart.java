@@ -1,5 +1,6 @@
 package org.wso2.developerstudio.datamapper.diagram.edit.parts;
 
+import org.apache.commons.lang.StringUtils;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.Label;
 import org.eclipse.draw2d.RectangleFigure;
@@ -21,6 +22,8 @@ import org.eclipse.swt.graphics.Color;
 import org.wso2.developerstudio.datamapper.diagram.custom.edit.part.AbstractOperatorEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.policies.StartsWithCanonicalEditPolicy;
 import org.wso2.developerstudio.datamapper.diagram.edit.policies.StartsWithItemSemanticEditPolicy;
+import org.wso2.developerstudio.datamapper.impl.EndsWithImpl;
+import org.wso2.developerstudio.datamapper.impl.StartsWithImpl;
 
 /**
  * @generated NOT
@@ -88,7 +91,8 @@ public class StartsWithEditPart extends AbstractOperatorEditPart {
 	 * @generated NOT
 	 */
 	protected IFigure createNodeShape() {
-		return primaryShape = new StartsWithFigure();
+		String pattern=((StartsWithImpl) ((View) getModel()).getElement()).getPattern();
+		return primaryShape = new StartsWithFigure(pattern);
 	}
 
 	/**
@@ -188,8 +192,14 @@ public class StartsWithEditPart extends AbstractOperatorEditPart {
 
 	public class StartsWithFigure extends OperatorRectangle {
 
-		public StartsWithFigure() {
+		private String figureHeaderLabel;
+
+		public StartsWithFigure(String pattern) {
 			super("StartsWith");
+			if (StringUtils.isNotEmpty(pattern)) {
+				this.figureHeaderLabel = "StartsWith : \"" + pattern + "\"";
+				super.changeOperatorHeader(figureHeaderLabel);
+			}
 			this.setBackgroundColor(THIS_BACK);
 		}
 
@@ -208,5 +218,9 @@ public class StartsWithEditPart extends AbstractOperatorEditPart {
 	}
 
 	static final Color THIS_BACK = DataMapperColorConstants.connectorColor;
+
+	public OperatorRectangle getStartsWithFigure() {
+		return (OperatorRectangle) primaryShape;
+	}
 
 }

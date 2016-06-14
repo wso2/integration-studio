@@ -27,9 +27,17 @@ import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
+import java.security.cert.CertificateException;
+import java.security.cert.X509Certificate;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.net.ssl.KeyManager;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.TrustManager;
+import javax.net.ssl.X509TrustManager;
+import org.apache.commons.httpclient.HttpClient;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -79,6 +87,8 @@ public class ImportCloudConnectorWizardPage extends WizardPage {
 	private static final String DIR_DOT_METADATA = ".metadata";
 	private static final String DIR_CACHE = ".cache";
 	private static final String CONNECTOR_STORE_URL = "https://store.wso2.com";
+	private static final int TIMEOUT = 180000;
+	private static final String HTTP_SOCKET_TIMEOUT = "http.socket.timeout";
 	
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
@@ -264,13 +274,13 @@ public class ImportCloudConnectorWizardPage extends WizardPage {
 						int page = 1;
                         monitor.beginTask("Fetching list of connectors", 1000);
                         monitor.subTask("Searching connectors in store : page " + page);
-                        List<Connector> tmpList = ConnectorStore.getConnectorInfo(txtConnectorStoreURL.getText(), page);
+                        List<Connector> tmpList = ConnectorStore.getConnectorInfo(getHttpClient(), txtConnectorStoreURL.getText(), page);
 						while (tmpList != null && !tmpList.isEmpty()) {
                             connectorList.addAll(tmpList);
                             monitor.worked(25);
                             ++page;
                             monitor.subTask("Searching connectors in store : page " + page);
-                            tmpList = ConnectorStore.getConnectorInfo(txtConnectorStoreURL.getText(), page);
+                            tmpList = ConnectorStore.getConnectorInfo(getHttpClient(), txtConnectorStoreURL.getText(), page);
 						}
 						int workUnit = (1000 - (25*page))/connectorList.size();
 						for (Connector connector : connectorList) {
@@ -335,7 +345,33 @@ public class ImportCloudConnectorWizardPage extends WizardPage {
 		in.close();
 		out.close();
 	}
-	
+
+	private HttpClient getHttpClient() throws NoSuchAlgorithmException, KeyManagementException {
+		HttpClient httpclient = new HttpClient();
+		httpclient.getParams().setIntParameter(HTTP_SOCKET_TIMEOUT, TIMEOUT);
+		SSLContext ctx;
+		ctx = SSLContext.getInstance("TLS");
+		ctx.init(new KeyManager[0], new TrustManager[] { new DefaultTrustManager() }, new SecureRandom());
+		SSLContext.setDefault(ctx);
+		return httpclient;
+	}
+
+	private static class DefaultTrustManager implements X509TrustManager {
+
+		@Override
+		public void checkClientTrusted(X509Certificate[] arg0, String arg1) throws CertificateException {
+		}
+
+		@Override
+		public void checkServerTrusted(X509Certificate[] arg0, String arg1) throws CertificateException {
+		}
+
+		@Override
+		public X509Certificate[] getAcceptedIssuers() {
+			return null;
+		}
+	}
+
 	@Override
 	public IWizardPage getNextPage() {
 		return null;

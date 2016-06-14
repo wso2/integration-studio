@@ -490,5 +490,5 @@ public class DataMapperDiagramEditor extends DiagramDocumentEditor implements IG
 			}
 		});
 	}
-
+	
 }

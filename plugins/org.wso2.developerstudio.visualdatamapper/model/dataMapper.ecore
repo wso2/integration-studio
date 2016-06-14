@@ -12,10 +12,32 @@
         eType="#//Operator" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="StringLength" eSuperTypes="#//Operator"/>
-  <eClassifiers xsi:type="ecore:EClass" name="StartsWith" eSuperTypes="#//Operator"/>
-  <eClassifiers xsi:type="ecore:EClass" name="EndsWith" eSuperTypes="#//Operator"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Substring" eSuperTypes="#//Operator"/>
-  <eClassifiers xsi:type="ecore:EClass" name="IfElse" eSuperTypes="#//Operator"/>
+  <eClassifiers xsi:type="ecore:EClass" name="StartsWith" eSuperTypes="#//Operator">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="pattern" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="/default"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="getPatternFromInput" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EndsWith" eSuperTypes="#//Operator">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="pattern" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="/default"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="getPatternFromInput" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Substring" eSuperTypes="#//Operator">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="startIndex" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+        defaultValueLiteral="0"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="endIndex" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+        defaultValueLiteral="0"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="getPatternFromInput" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="IfElse" eSuperTypes="#//Operator">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="condition" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="getPatternFromInput" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="true"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AND" eSuperTypes="#//Operator"/>
   <eClassifiers xsi:type="ecore:EClass" name="OR" eSuperTypes="#//Operator"/>
   <eClassifiers xsi:type="ecore:EClass" name="Input" eSuperTypes="#//DataMapperNode">
@@ -186,6 +208,14 @@
     <eLiterals name="FLOOR" value="18"/>
     <eLiterals name="CEILING" value="19"/>
     <eLiterals name="SET_PRECISION" value="20"/>
+    <eLiterals name="AND" value="21" literal="AND"/>
+    <eLiterals name="OR" value="22"/>
+    <eLiterals name="NOT" value="23"/>
+    <eLiterals name="ENDS_WITH" value="24"/>
+    <eLiterals name="IF_ELSE" value="25"/>
+    <eLiterals name="STARTS_WITH" value="26"/>
+    <eLiterals name="STRING_LENGTH" value="27"/>
+    <eLiterals name="SUBSTRING" value="28"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="LowerCase" eSuperTypes="#//Operator"/>
   <eClassifiers xsi:type="ecore:EClass" name="Celi" eSuperTypes="#//Operator"/>

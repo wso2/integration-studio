@@ -1,5 +1,6 @@
 package org.wso2.developerstudio.datamapper.diagram.edit.parts;
 
+import org.apache.commons.lang.StringUtils;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.Label;
 import org.eclipse.draw2d.RectangleFigure;
@@ -21,6 +22,8 @@ import org.eclipse.swt.graphics.Color;
 import org.wso2.developerstudio.datamapper.diagram.custom.edit.part.AbstractOperatorEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.policies.SubstringCanonicalEditPolicy;
 import org.wso2.developerstudio.datamapper.diagram.edit.policies.SubstringItemSemanticEditPolicy;
+import org.wso2.developerstudio.datamapper.impl.EndsWithImpl;
+import org.wso2.developerstudio.datamapper.impl.SubstringImpl;
 
 /**
  * @generated NOT
@@ -88,7 +91,9 @@ public class SubstringEditPart extends AbstractOperatorEditPart {
 	 * @generated NOT
 	 */
 	protected IFigure createNodeShape() {
-		return primaryShape = new SubstringFigure();
+		int startIndex = ((SubstringImpl) ((View) getModel()).getElement()).getStartIndex();
+		int endIndex = ((SubstringImpl) ((View) getModel()).getElement()).getEndIndex();
+		return primaryShape = new SubstringFigure(startIndex,endIndex);
 	}
 
 	/**
@@ -193,6 +198,13 @@ public class SubstringEditPart extends AbstractOperatorEditPart {
 			this.setBackgroundColor(THIS_BACK);
 		}
 
+		public SubstringFigure(int startIndex, int endIndex) {
+			super("Substring");
+			String figureHeaderLabel = "Substring : (start index :" + startIndex + " , end index : " + endIndex + " )";
+			super.changeOperatorHeader(figureHeaderLabel);
+			this.setBackgroundColor(THIS_BACK);
+		}
+
 		public String getIconPath() {
 			return "icons/ico20/log-mediator.gif";
 		}
@@ -208,4 +220,8 @@ public class SubstringEditPart extends AbstractOperatorEditPart {
 	}
 
 	static final Color THIS_BACK = DataMapperColorConstants.connectorColor;
+
+	public OperatorRectangle getSubstringFigure() {
+		return (OperatorRectangle) primaryShape;
+	}
 }

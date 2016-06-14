@@ -40,6 +40,8 @@ public class ModelTransformerFactory {
 
 	private static IModelTransformer getConditionalOperatorModelTransformer(DataMapperOperatorType type) {
 		switch (type) {
+		case IF_ELSE:
+			return new IfElseModelTransformer();
 		default:
 			throw new IllegalArgumentException(
 					"Unable to find conditionl operator model transformer to operator type in ModelTransformerFactory: "
@@ -49,6 +51,12 @@ public class ModelTransformerFactory {
 
 	private static IModelTransformer getBooleanOperatorModelTransformer(DataMapperOperatorType type) {
 		switch (type) {
+		case AND:
+			return new ANDModelTransformer();
+		case NOT:
+			return new NOTModelTransformer();
+		case OR:
+			return new ORModelTransformer();
 		default:
 			throw new IllegalArgumentException(
 					"Unable to find boolean operator model transformer to operator type in ModelTransformerFactory: "
@@ -77,6 +85,14 @@ public class ModelTransformerFactory {
 			return new ToUpperCaseModelTransformer();
 		case LOWERCASE:
 			return new ToLowerCaseModelTransformer();
+		case STRING_LENGTH:
+			return new StringLengthModelTransformer();
+		case SUBSTRING:
+			return new SubstringModelTransformer();
+		case STARTS_WITH:
+			return new StartsWithModelTransformer();
+		case ENDS_WITH:
+			return new EndsWithModelTransformer();
 		default:
 			throw new IllegalArgumentException(
 					"Unable to find string operator model transformer to operator type in ModelTransformerFactory: "

@@ -13,25 +13,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.developerstudio.datamapper.diagram.custom.dialogs;
+package org.wso2.developerstudio.datamapper.impl;
 
-import org.eclipse.jface.dialogs.TitleAreaDialog;
-import org.eclipse.swt.layout.GridData;
-import org.eclipse.swt.widgets.Shell;
-
-public abstract class AbstractConfigureOperatorDialog extends TitleAreaDialog{
-
-	GridData dataPropertyConfigText;
+public class DataMapperImplConstants {
 	
-	public AbstractConfigureOperatorDialog(Shell parentShell) {
-		super(parentShell);
-		init();
-	}
-	
-	protected void init(){
-		dataPropertyConfigText = new GridData();
-		dataPropertyConfigText.grabExcessHorizontalSpace = true;
-		dataPropertyConfigText.horizontalAlignment = GridData.FILL;
-	}
+	public static final String IN_TAG = "In";
+	public static final String RESULT_TAG = "Result";
+	public static final String PATTERN_TAG = "Pattern";
+	public static final String VALUE_TAG = "Value";
+	public static final String CONDITION_TAG = "Condition";
+	public static final String THEN_TAG = "Then";
+	public static final String ELSE_TAG = "Else";
+	public static final String OUT_TAG = "Out";
+	public static final String START_INDEX = "StartIndex";
+	public static final String END_INDEX = "End Index";
 
 }

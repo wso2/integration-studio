@@ -80,6 +80,12 @@ public class Messages extends NLS {
 	public static String SetPrecisionConfigureAction_ActionId0;
 	public static String SetPrecisionConfigureAction_ActionIdActionText;
 	public static String SetPrecisionConfigureAction_ActionIdToolTip;
+	public static String StartsWithConfigureAction_ActionID;
+	public static String StartsWithConfigureAction_ActionText;
+	public static String StartsWithConfigureAction_ToolTip;
+	public static String SubstringConfigureAction_ActionID;
+	public static String SubstringConfigureAction_ActionText;
+	public static String SubstringConfigureAction_ToolTip;
 	public static String Configure_Split_Operator_Action_Id;
 	public static String Add_Remove_Split_Branches;
 	public static String Configure_Split_Operator;
@@ -95,6 +101,9 @@ public class Messages extends NLS {
 	public static String EditActions_editRootElement;
 	public static String EditActions_editArray;
 	public static String EditActions_editAttribute;
+	public static String EndsWithConfigureAction_ActionID;
+	public static String EndsWithConfigureAction_ActionText;
+	public static String EndsWithConfigureAction_ToolTip;
 	public static String NullableAction_enableNullable;
 	public static String NullableAction_disableNullable;
 	public static String AddNewObjectAction_addNewObject;
@@ -104,6 +113,9 @@ public class Messages extends NLS {
 	public static String AddNewRootRecordAction_errorHeader;
 	public static String AddNewRootRecordAction_addMultipleRootElements;
 	public static String AddNewRootRecordAction_addMultipleRootElementsTitle;
+	public static String ANDConfigureAction_ActionID;
+	public static String ANDConfigureAction_ActionText;
+	public static String ANDConfigureAction_ToolTip;
 	public static String Configure_Concat_Operator;
 	
 	public static String ExportSchemaAction_errorSavingFile;
@@ -116,9 +128,15 @@ public class Messages extends NLS {
 	public static String Configure_Constant_Operator_Action_Id;
 	public static String Configure_Constant_Operator_Text;
 	public static String Configure_Constant_Operator_Tool_Tip;
+	public static String IfElseConfigureAction_ActionID;
+	public static String IfElseConfigureAction_ActionText;
+	public static String IfElseConfigureAction_ToolTip;
 	public static String MultiplyConfigureAction_ActionId;
 	public static String MultiplyConfigureAction_ActionText;
 	public static String MultiplyConfigureAction_ToolTip;
+	public static String ORConfigureAction_ActionID;
+	public static String ORConfigureAction_ActionText;
+	public static String ORConfigureAction_ToolTip;
 	static {
 		// initialize resource bundle
 		NLS.initializeMessages(BUNDLE_NAME, Messages.class);

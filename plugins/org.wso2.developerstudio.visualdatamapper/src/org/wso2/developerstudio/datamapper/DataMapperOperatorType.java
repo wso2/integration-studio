@@ -246,7 +246,71 @@ public enum DataMapperOperatorType implements Enumerator {
 	 * @generated NOT
 	 * @ordered
 	 */
-	SET_PRECISION(20, "SET_PRECISION", "SET_PRECISION",ARITHMATIC_OPERATION);
+	SET_PRECISION(20, "SET_PRECISION", "SET_PRECISION",ARITHMATIC_OPERATION), /**
+	 * The '<em><b>AND</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #AND_VALUE
+	 * @generated NOT
+	 * @ordered
+	 */
+	AND(21, "AND", "AND",BOOLEAN_OPERATION), /**
+	 * The '<em><b>OR</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #OR_VALUE
+	 * @generated NOT
+	 * @ordered
+	 */
+	OR(22, "OR", "OR",BOOLEAN_OPERATION), /**
+	 * The '<em><b>NOT</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #NOT_VALUE
+	 * @generated NOT
+	 * @ordered
+	 */
+	NOT(23, "NOT", "NOT",BOOLEAN_OPERATION), /**
+	 * The '<em><b>ENDS WITH</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #ENDS_WITH_VALUE
+	 * @generated NOT
+	 * @ordered
+	 */
+	ENDS_WITH(24, "ENDS_WITH", "ENDS_WITH",STRING_OPERATION), /**
+	 * The '<em><b>IF ELSE</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #IF_ELSE_VALUE
+	 * @generated NOT
+	 * @ordered
+	 */
+	IF_ELSE(25, "IF_ELSE", "IF_ELSE",CONDITIONAL_OPERATION), /**
+	 * The '<em><b>STARTS WITH</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #STARTS_WITH_VALUE
+	 * @generated NOT
+	 * @ordered
+	 */
+	STARTS_WITH(26, "STARTS_WITH", "STARTS_WITH",STRING_OPERATION), /**
+	 * The '<em><b>STRING LENGTH</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #STRING_LENGTH_VALUE
+	 * @generated NOT
+	 * @ordered
+	 */
+	STRING_LENGTH(27, "STRING_LENGTH", "STRING_LENGTH",STRING_OPERATION), /**
+	 * The '<em><b>SUBSTRING</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #SUBSTRING_VALUE
+	 * @generated NOT
+	 * @ordered
+	 */
+	SUBSTRING(28, "SUBSTRING", "SUBSTRING",STRING_OPERATION);
 
 	/**
 	 * The '<em><b>OPERATOR</b></em>' literal value.
@@ -594,6 +658,126 @@ public enum DataMapperOperatorType implements Enumerator {
 	public static final int SET_PRECISION_VALUE = 20;
 
 	/**
+	 * The '<em><b>AND</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>AND</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #AND
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int AND_VALUE = 21;
+
+	/**
+	 * The '<em><b>OR</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>OR</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #OR
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int OR_VALUE = 22;
+
+	/**
+	 * The '<em><b>NOT</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>NOT</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #NOT
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int NOT_VALUE = 23;
+
+	/**
+	 * The '<em><b>ENDS WITH</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>ENDS WITH</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #ENDS_WITH
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int ENDS_WITH_VALUE = 24;
+
+	/**
+	 * The '<em><b>IF ELSE</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>IF ELSE</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #IF_ELSE
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int IF_ELSE_VALUE = 25;
+
+	/**
+	 * The '<em><b>STARTS WITH</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>STARTS WITH</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #STARTS_WITH
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int STARTS_WITH_VALUE = 26;
+
+	/**
+	 * The '<em><b>STRING LENGTH</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>STRING LENGTH</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #STRING_LENGTH
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int STRING_LENGTH_VALUE = 27;
+
+	/**
+	 * The '<em><b>SUBSTRING</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>SUBSTRING</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #SUBSTRING
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int SUBSTRING_VALUE = 28;
+
+	/**
 	 * An array of all the '<em><b>Operator Type</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -624,6 +808,14 @@ public enum DataMapperOperatorType implements Enumerator {
 			FLOOR,
 			CEILING,
 			SET_PRECISION,
+			AND,
+			OR,
+			NOT,
+			ENDS_WITH,
+			IF_ELSE,
+			STARTS_WITH,
+			STRING_LENGTH,
+			SUBSTRING,
 		};
 
 	/**
@@ -702,6 +894,13 @@ public enum DataMapperOperatorType implements Enumerator {
 			case FLOOR_VALUE: return FLOOR;
 			case CEILING_VALUE: return CEILING;
 			case SET_PRECISION_VALUE: return SET_PRECISION;
+			case OR_VALUE: return OR;
+			case NOT_VALUE: return NOT;
+			case ENDS_WITH_VALUE: return ENDS_WITH;
+			case IF_ELSE_VALUE: return IF_ELSE;
+			case STARTS_WITH_VALUE: return STARTS_WITH;
+			case STRING_LENGTH_VALUE: return STRING_LENGTH;
+			case SUBSTRING_VALUE: return SUBSTRING;
 		}
 		return null;
 	}

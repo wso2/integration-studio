@@ -622,6 +622,8 @@ public class TreeNode2EditPart extends AbstractBorderedShapeEditPart {
 		private static final String JSON_SCHEMA_NULLABLE = "nullable";
 
 		private static final String PREFIX = "@";
+		private static final String SCHEMA_TYPE_PREFIX = "  :[";
+		private static final String SCHEMA_TYPE_POSTFIX = "]";
 		/**
 		 * @generated
 		 */
@@ -845,7 +847,7 @@ public class TreeNode2EditPart extends AbstractBorderedShapeEditPart {
 			Display display = Display.getCurrent();
 			Color black = display.getSystemColor(SWT.COLOR_BLACK);
 			nodeLabel.setForegroundColor(black);
-			nodeLabel.setText(newName + "  :["+schemaType+"]");
+			nodeLabel.setText(newName + SCHEMA_TYPE_PREFIX+schemaType+SCHEMA_TYPE_POSTFIX);
 			nodeLabel.setSize(new Dimension(100, 5));
 
 			this.addMouseMotionListener(new MouseMotionListener() {

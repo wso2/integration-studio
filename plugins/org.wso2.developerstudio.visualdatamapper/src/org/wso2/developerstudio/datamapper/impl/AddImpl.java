@@ -8,6 +8,8 @@ import org.wso2.developerstudio.datamapper.DataMapperOperatorType;
 import org.wso2.developerstudio.datamapper.DataMapperPackage;
 import org.wso2.developerstudio.datamapper.SchemaDataType;
 
+import static org.wso2.developerstudio.datamapper.impl.DataMapperImplConstants.*;
+
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Add</b></em>'.
@@ -30,8 +32,8 @@ public class AddImpl extends OperatorImpl implements Add {
 		getInputVariableType().add(SchemaDataType.NUMBER);
 		getOutputVariableType().add(SchemaDataType.NUMBER);
 		setOperatorType(DataMapperOperatorType.ADD);
-		getInputLabelList().add("In");
-		getOutputLabelList().add("Result");
+		getInputLabelList().add(IN_TAG);
+		getOutputLabelList().add(RESULT_TAG);
 	}
 
 	/**

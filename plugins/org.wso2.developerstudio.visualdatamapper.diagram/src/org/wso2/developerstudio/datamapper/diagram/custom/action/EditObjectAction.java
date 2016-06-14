@@ -156,10 +156,10 @@ public class EditObjectAction extends AbstractActionHandler {
 				identifierValue = identifier[1];
 			}
 			identifierURL = setProperties(selectedNode, JSON_SCHEMA_OBJECT_ELEMENT_IDENTIFIERS_URL_VALUE);
-			// gets the root element's namespace
+			// gets the objects  namespace when generating the tree
 			namespaces = setProperties(selectedNode, JSON_SCHEMA_NAMESPACES);
 			if (namespaces == null) {
-				// gets the namespaces for other objects than root element
+				// gets the namespaces for objects when creating tree
 				namespaces = setProperties(selectedNode, JSON_SCHEMA_OBJECT_NAMESPACES);
 			}
 			if (namespaces != null) {

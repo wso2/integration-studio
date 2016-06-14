@@ -79,6 +79,7 @@ public class EditArrayAction extends AbstractActionHandler {
 	private static final String JSON_SCHEMA_ADDED_ATTRIBUTE_TYPE = "added_attribute_type";
 	private static final String STRING = "string";
 	private static final String FALSE = "false";
+	private static final String JSON_SCHEMA_NAMESPACES = "namespaces";
 
 	private String title = null;
 	private String schemaType = null;
@@ -88,6 +89,7 @@ public class EditArrayAction extends AbstractActionHandler {
 	private String namespaces = null;
 	private String required = null;
 	private String formatedNamespace = null;
+	private String newNamespace = null;
 	private String value = null;
 	private String identifierType = null;
 	private String identifierValue = null;
@@ -155,15 +157,24 @@ public class EditArrayAction extends AbstractActionHandler {
 				identifierValue = identifier[1];
 			}
 			identifierURL = setProperties(selectedNode, JSON_SCHEMA_ARRAY_ELEMENT_IDENTIFIERS_URL_VALUE);
-			namespaces = setProperties(selectedNode, JSON_SCHEMA_ARRAY_NAMESPACES);
+			//Gets the array's namespace when generating the tree
+			namespaces = setProperties(selectedNode, JSON_SCHEMA_NAMESPACES);
+			if (namespaces == null) {
+				// gets the namespaces for arrays when creating tree
+				namespaces = setProperties(selectedNode, JSON_SCHEMA_ARRAY_NAMESPACES);
+			}
+			if (namespaces != null) {
+				formatedNamespace = formatNamespace(namespaces).toString();
+				newNamespace = formatedNamespace.substring(1, formatedNamespace.toString().length() - 1);
+			}
+			
 			nullableValue = setProperties(selectedNode, JSON_SCHEMA_NULLABLE);
 			if (nullableValue.equals(TRUE)) {
 				isNullable = true;
 			} else {
 				isNullable = false;
 			}
-			formatedNamespace = formatNamespace(namespaces).toString();
-			String newNamespace = formatedNamespace.substring(1, formatedNamespace.toString().length() - 1);
+
 			openEditRecordDialog(selectedNode, name, schemaType, id, required, schemaValue, newNamespace, value,
 					identifierType, identifierValue, identifierURL, isNullable);
 

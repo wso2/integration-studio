@@ -65,6 +65,7 @@ public class EditFieldAction extends AbstractActionHandler {
 	private static final String JSON_SCHEMA_TITLE = "title";
 
 	private static final String JSON_SCHEMA_FIELD_NAMESPACES = "fieldNamespaces";
+	private static final String JSON_SCHEMA_NAMESPACES = "namespaces";
 	private static final String NAMESPACE_PREFIX = "prefix";
 	private static final String NAMESPACE_URL = "url";
 	private static final String JSON_SCHEMA_NULLABLE = "nullable";
@@ -79,6 +80,7 @@ public class EditFieldAction extends AbstractActionHandler {
 	private String namespaces = null;
 	private String required = null;
 	private String formatedNamespace = null;	
+	private String newNamespace = null;
 	private boolean isNullable = false;
 	private String nullableValue = null;
 
@@ -131,15 +133,23 @@ public class EditFieldAction extends AbstractActionHandler {
 			id = setProperties(selectedNode, JSON_SCHEMA_ID);
 			required = setProperties(selectedNode, JSON_SCHEMA_REQUIRED);
 			schemaValue = setProperties(selectedNode, JSON_SCHEMA_SCHEMA_VALUE);
-			namespaces = setProperties(selectedNode, JSON_SCHEMA_FIELD_NAMESPACES);
-			formatedNamespace = formatNamespace(namespaces).toString();
+			//Gets the element's namespace when generating the tree
+			namespaces = setProperties(selectedNode, JSON_SCHEMA_NAMESPACES);
+			if (namespaces == null) {
+				// gets the namespaces for elements when creating tree
+				namespaces = setProperties(selectedNode, JSON_SCHEMA_FIELD_NAMESPACES);
+			}
+			if (namespaces != null) {
+				formatedNamespace = formatNamespace(namespaces).toString();
+				newNamespace = formatedNamespace.substring(1, formatedNamespace.toString().length() - 1);
+			}
+			
 			nullableValue = setProperties(selectedNode, JSON_SCHEMA_NULLABLE);
 			if(nullableValue.equals(TRUE)){
 				isNullable = true;
 			}else{
 				isNullable = false;
 			}
-			String newNamespace = formatedNamespace.substring(1, formatedNamespace.toString().length() - 1);
 			openEditRecordDialog(selectedNode, name, schemaType, id, required, schemaValue, newNamespace,isNullable);
 
 		}

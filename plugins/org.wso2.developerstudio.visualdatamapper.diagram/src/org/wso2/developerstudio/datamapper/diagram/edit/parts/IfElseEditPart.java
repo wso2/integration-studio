@@ -189,7 +189,7 @@ public class IfElseEditPart extends AbstractOperatorEditPart {
 	public class IfElseFigure extends OperatorRectangle {
 
 		public IfElseFigure() {
-			super("IfElse");
+			super("If Else");
 			this.setBackgroundColor(THIS_BACK);
 		}
 

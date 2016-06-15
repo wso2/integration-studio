@@ -117,7 +117,7 @@ public class SchemaTransformer implements ISchemaTransformer {
 	private boolean addedObjectHasProperties = false;
 	private String addedObjectElementIdentifiers = null;
 	private String addedObjectNamespaces = null;
-	
+
 	/**
 	 * Generates the tree
 	 */
@@ -149,20 +149,20 @@ public class SchemaTransformer implements ISchemaTransformer {
 
 		if (getSchemaType(jsonSchema).equals(JSON_SCHEMA_ARRAY)) {
 			ArrayList<Object> items = getSchemaItemsMap(jsonSchema);
-			
+
 			List<Map> list = new ArrayList();
 			for (Object item : items) {
 				jsonSchema = (Map) item;
-				if(list.contains(jsonSchema)){
+				if (list.contains(jsonSchema)) {
 					break;
-				}else{
+				} else {
 					list.add(jsonSchema);
 					if (jsonSchema.containsKey(JSON_SCHEMA_PROPERTIES)) {
 						// Creates the tree by adding tree node and elements when
 						// the root is an array
 						inputRootTreeNode = setProperties(jsonSchema, inputRootTreeNode, count, namespaceMap);
 					}
-				}	
+				}
 			}
 		} else {
 			// Creates the tree by adding tree node and elements
@@ -215,22 +215,24 @@ public class SchemaTransformer implements ISchemaTransformer {
 
 		}
 	}
-	
+
 	/**
-	 * Check for xsi:nil 
-	 * @param jsonSchema schema
+	 * Check for xsi:nil
+	 * 
+	 * @param jsonSchema
+	 *            schema
 	 * @return
 	 */
 	private boolean checkXsiNilForElements(Map<String, Object> jsonSchema) {
 		boolean hasXsiNil = false;
 		if (jsonSchema.get(JSON_SCHEMA_ATTRIBUTES) != null) {
 			for (String key : getAttributes(jsonSchema).keySet()) {
-				if(key.equals("xsi:nil")){
+				if (key.equals("xsi:nil")) {
 					hasXsiNil = true;
 					break;
 				}
 			}
-			
+
 		}
 		return hasXsiNil;
 	}
@@ -715,22 +717,27 @@ public class SchemaTransformer implements ISchemaTransformer {
 			setPropertyKeyValuePairforTreeNodes(treeNode, propertyValueList, JSON_SCHEMA_ELEMENT_IDENTIFIERS,
 					getElementIdentifiers(subSchema));
 		}
+		// If the node is a root element then sets the namesapces value
+		if (getNamespaces(subSchema) != null) {
+			setPropertyKeyValuePairforTreeNodes(treeNode, propertyValueList, JSON_SCHEMA_NAMESPACES,
+					getNamespaces(subSchema));
+		}
 		// checks the namespace prefix
 		if (namespaceMap != null && namespaceMap.size() > 0) {
 			// Iterates through the namespaces map and validates the prefix and
 			// sets the name
-			String name = validatePrefix(elementKey, namespaceMap, treeNode,propertyValueList);
+			String name = validatePrefix(elementKey, namespaceMap, treeNode, propertyValueList);
 			treeNode.setName(name);
 		} else {
 			// Sets the name if there are no namespaces
 			treeNode.setName(elementKey);
 		}
 		treeNode.setLevel(count);
-		
-		//Sets the schema type
+
+		// Sets the schema type
 		setPropertyKeyValuePairforTreeNodes(treeNode, propertyValueList, JSON_SCHEMA_TYPE, schemaType);
-		//Sets the schema type in SchemaDataType
-		setSchemaDataType(treeNode,schemaType);
+		// Sets the schema type in SchemaDataType
+		setSchemaDataType(treeNode, schemaType);
 		// Sets the schema key if available
 		if (getSchemaValue(subSchema) != null) {
 			setPropertyKeyValuePairforTreeNodes(treeNode, propertyValueList, JSON_SCHEMA_SCHEMA_VALUE,
@@ -781,15 +788,15 @@ public class SchemaTransformer implements ISchemaTransformer {
 						Map<String, Object> valueMap = (Map<String, Object>) itemsSchema.get(JSON_SCHEMA_VALUE);
 						setPropertyKeyValuePairforTreeNodes(treeNode, propertyValueList,
 								JSON_SCHEMA_ARRAY_ITEMS_VALUE_TYPE, valueMap.get(JSON_SCHEMA_TYPE).toString());
-					}		
-					//Check if there is xsi:nil attribute and then add the nullable value
-					boolean hasXsiNil = checkXsiNilForElements(itemsSchema);
-					if(hasXsiNil){
-						setPropertyKeyValuePairforTreeNodes(treeNode, propertyValueList,JSON_SCHEMA_NULLABLE, TRUE);
-					}else{
-						setPropertyKeyValuePairforTreeNodes(treeNode, propertyValueList,JSON_SCHEMA_NULLABLE, FALSE);
 					}
-					
+					// Check if there is xsi:nil attribute and then add the nullable value
+					boolean hasXsiNil = checkXsiNilForElements(itemsSchema);
+					if (hasXsiNil) {
+						setPropertyKeyValuePairforTreeNodes(treeNode, propertyValueList, JSON_SCHEMA_NULLABLE, TRUE);
+					} else {
+						setPropertyKeyValuePairforTreeNodes(treeNode, propertyValueList, JSON_SCHEMA_NULLABLE, FALSE);
+					}
+
 				}
 			}
 		} else if (schemaType.equals(JSON_SCHEMA_OBJECT)) {
@@ -798,21 +805,21 @@ public class SchemaTransformer implements ISchemaTransformer {
 				Map<String, Object> valueMap = (Map<String, Object>) subSchema.get(JSON_SCHEMA_VALUE);
 				setPropertyKeyValuePairforTreeNodes(treeNode, propertyValueList, JSON_SCHEMA_OBJECT_VALUE_TYPE,
 						valueMap.get(JSON_SCHEMA_TYPE).toString());
-			}	
-			//Check if there is xsi:nil attribute and then add the nullable value
-			boolean hasXsiNil = checkXsiNilForElements(subSchema);
-			if(hasXsiNil){
-				setPropertyKeyValuePairforTreeNodes(treeNode, propertyValueList,JSON_SCHEMA_NULLABLE, TRUE);
-			}else{
-				setPropertyKeyValuePairforTreeNodes(treeNode, propertyValueList,JSON_SCHEMA_NULLABLE, FALSE);
 			}
-		}else{
-			//Check if there is xsi:nil attribute and then add the nullable value
+			// Check if there is xsi:nil attribute and then add the nullable value
 			boolean hasXsiNil = checkXsiNilForElements(subSchema);
-			if(hasXsiNil){
-				setPropertyKeyValuePairforTreeNodes(treeNode, propertyValueList,JSON_SCHEMA_NULLABLE, TRUE);
-			}else{
-				setPropertyKeyValuePairforTreeNodes(treeNode, propertyValueList,JSON_SCHEMA_NULLABLE, FALSE);
+			if (hasXsiNil) {
+				setPropertyKeyValuePairforTreeNodes(treeNode, propertyValueList, JSON_SCHEMA_NULLABLE, TRUE);
+			} else {
+				setPropertyKeyValuePairforTreeNodes(treeNode, propertyValueList, JSON_SCHEMA_NULLABLE, FALSE);
+			}
+		} else {
+			// Check if there is xsi:nil attribute and then add the nullable value
+			boolean hasXsiNil = checkXsiNilForElements(subSchema);
+			if (hasXsiNil) {
+				setPropertyKeyValuePairforTreeNodes(treeNode, propertyValueList, JSON_SCHEMA_NULLABLE, TRUE);
+			} else {
+				setPropertyKeyValuePairforTreeNodes(treeNode, propertyValueList, JSON_SCHEMA_NULLABLE, FALSE);
 			}
 		}
 		return treeNode;
@@ -820,6 +827,7 @@ public class SchemaTransformer implements ISchemaTransformer {
 
 	/**
 	 * Sets the schema data type
+	 * 
 	 * @param treeNode
 	 * @param schemaType
 	 */
@@ -874,18 +882,19 @@ public class SchemaTransformer implements ISchemaTransformer {
 			default:
 				break;
 			}
-		}	
+		}
 	}
-	
+
 	/**
 	 * Validates the prefix and sets the name
 	 * 
 	 * @param elementKey
 	 * @param namespaceMap
 	 * @param treeNode
-	 * @param propertyValueList 
+	 * @param propertyValueList
 	 */
-	private String validatePrefix(String element, HashMap<String, String> namespaceMap, TreeNode treeNode, EList<PropertyKeyValuePair> propertyValueList) {
+	private String validatePrefix(String element, HashMap<String, String> namespaceMap, TreeNode treeNode,
+			EList<PropertyKeyValuePair> propertyValueList) {
 		String elementKey = null;
 		String[] name = null;
 		String nodeName = null;
@@ -896,7 +905,7 @@ public class SchemaTransformer implements ISchemaTransformer {
 			elementKey = name[0];
 			if (elementKey.contains(":")) {
 				// If element contains both xsi:type and namespace prefix
-				String nameWithPrefix = checkValidity(namespaceMap, nodeName, elementKey,treeNode,propertyValueList);
+				String nameWithPrefix = checkValidity(namespaceMap, nodeName, elementKey, treeNode, propertyValueList);
 				nodeName = nameWithPrefix + "," + name[1];
 			} else {
 				// If element contains only the xsi:type
@@ -907,11 +916,11 @@ public class SchemaTransformer implements ISchemaTransformer {
 			String[] fullName = element.split(":");
 			String firstPart = fullName[0];
 			String prefix = firstPart.substring(1);
-			nodeName = checkValidity(namespaceMap, nodeName, prefix,treeNode,propertyValueList);
+			nodeName = checkValidity(namespaceMap, nodeName, prefix, treeNode, propertyValueList);
 			nodeName = PREFIX + nodeName + ":" + fullName[1];
 		} else if (element.contains(":")) {
 			// If element conatains a namespace prefix
-			nodeName = checkValidity(namespaceMap, nodeName, element,treeNode,propertyValueList);
+			nodeName = checkValidity(namespaceMap, nodeName, element, treeNode, propertyValueList);
 		} else {
 			// If element doesn't contains a namespace prefix or xsi:type
 			nodeName = element;
@@ -920,7 +929,8 @@ public class SchemaTransformer implements ISchemaTransformer {
 
 	}
 
-	private String checkValidity(HashMap<String, String> namespaceMap, String nodeName, String elementKey, TreeNode treeNode, EList<PropertyKeyValuePair> propertyValueList) {
+	private String checkValidity(HashMap<String, String> namespaceMap, String nodeName, String elementKey,
+			TreeNode treeNode, EList<PropertyKeyValuePair> propertyValueList) {
 		String prefix;
 		boolean isValid = false;
 		if (namespaceMap != null && namespaceMap.size() > 0) {
@@ -928,9 +938,8 @@ public class SchemaTransformer implements ISchemaTransformer {
 			prefix = split[0];
 			for (Map.Entry<String, String> entry : namespaceMap.entrySet()) {
 				if (entry.getKey().equals(prefix)) {
-					String namespace = createNamespaceArray(entry.getKey().toString(),entry.getValue().toString());
-					setPropertyKeyValuePairforTreeNodes(treeNode, propertyValueList, JSON_SCHEMA_NAMESPACES,
-							namespace);
+					String namespace = createNamespaceArray(entry.getKey().toString(), entry.getValue().toString());
+					setPropertyKeyValuePairforTreeNodes(treeNode, propertyValueList, JSON_SCHEMA_NAMESPACES, namespace);
 					isValid = true;
 				}
 			}
@@ -946,9 +955,10 @@ public class SchemaTransformer implements ISchemaTransformer {
 		}
 		return nodeName;
 	}
-	
+
 	/**
 	 * Creates namespace array for identifiers
+	 * 
 	 * @param identifierType
 	 * @param identifierURL
 	 * @return
@@ -957,13 +967,13 @@ public class SchemaTransformer implements ISchemaTransformer {
 		ArrayList<String> namespacesList = new ArrayList<String>();
 		String prefixItem = NAMESPACE_PREFIX + "=" + prefix;
 		String urlItem = NAMESPACE_URL + "=" + url;
-		String [] namespaceItem = {prefixItem,urlItem};
-		String namespaceArrayAsString =Arrays.toString(namespaceItem).substring(1, Arrays.toString(namespaceItem).length()-1);
-		namespacesList.add("{"+ namespaceArrayAsString + "}");
+		String[] namespaceItem = { prefixItem, urlItem };
+		String namespaceArrayAsString = Arrays.toString(namespaceItem).substring(1,
+				Arrays.toString(namespaceItem).length() - 1);
+		namespacesList.add("{" + namespaceArrayAsString + "}");
 		String value = StringUtils.join(namespacesList, ',');
 		return value;
 	}
-
 
 	/**
 	 * Gets the key and value
@@ -1113,7 +1123,8 @@ public class SchemaTransformer implements ISchemaTransformer {
 			root.put(JSON_SCHEMA_TITLE, treeNodeModel.getName());
 			insetIDAndTypeForJsonObject(treeNodeModel, root);
 			String schemaType = getPropertyKeyValuePairforTreeNode(treeNodeModel, JSON_SCHEMA_TYPE);
-			root.put(JSON_SCHEMA_NULLABLE, getPropertyKeyValuePairforTreeNodeImpls(treeNodeModel, JSON_SCHEMA_NULLABLE));
+			root.put(JSON_SCHEMA_NULLABLE,
+					getPropertyKeyValuePairforTreeNodeImpls(treeNodeModel, JSON_SCHEMA_NULLABLE));
 			if (schemaType.equals(JSON_SCHEMA_OBJECT)) {
 				root.put(JSON_SCHEMA_PROPERTIES, propertiesObject);
 			} else if (schemaType.equals(JSON_SCHEMA_ARRAY)) {
@@ -1157,11 +1168,10 @@ public class SchemaTransformer implements ISchemaTransformer {
 						String schemaArrayItemID = getPropertyKeyValuePairforTreeNode(
 								((TreeNodeImpl) treeNodeModel).getNode().get(0), JSON_SCHEMA_ARRAY_ITEMS_ID);
 						/*
-						 * Type sets as object because, when the array is an
-						 * object array then the type of items block should be object and also
-						 * when a root array has elements then also it should be
-						 * included inside properties block. Therefore the
-						 * type of the items block should be object in that case as well
+						 * Type sets as object because, when the array is an object array then the type of items block
+						 * should be object and also when a root array has elements then also it should be included
+						 * inside properties block. Therefore the type of the items block should be object in that case
+						 * as well
 						 */
 						String schemaArrayItemType = JSON_SCHEMA_OBJECT;
 						processChildrenOfRootArray(treeNodeModel, root, propertiesObject, itemsObject,
@@ -1246,7 +1256,7 @@ public class SchemaTransformer implements ISchemaTransformer {
 			JSONObject itemsObject, String schemaArrayItemsID, String schemaArrayItemsType) {
 		if (schemaArrayItemsType.equals(JSON_SCHEMA_OBJECT)) {
 			itemsObject.put(JSON_SCHEMA_PROPERTIES, propertiesObject);
-			insertIDandTypeforItemsBlock(itemsObject, schemaArrayItemsID,schemaArrayItemsType);
+			insertIDandTypeforItemsBlock(itemsObject, schemaArrayItemsID, schemaArrayItemsType);
 			insertRequiredArray(itemsObject, treeNodeModel, false);
 			recursiveSchemaGenerator(treeNodeModel, propertiesObject, root);
 		} else {
@@ -1337,7 +1347,7 @@ public class SchemaTransformer implements ISchemaTransformer {
 			EList<TreeNode> nodeList = treeNodeModel.getNode();
 			for (TreeNode node : nodeList) {
 				String name = node.getName();
-				String nullableValue =  getPropertyKeyValuePairforTreeNode(node, JSON_SCHEMA_NULLABLE);
+				String nullableValue = getPropertyKeyValuePairforTreeNode(node, JSON_SCHEMA_NULLABLE);
 				String schemaType = getPropertyKeyValuePairforTreeNode(node, JSON_SCHEMA_TYPE);
 				String schemaArrayItemsID = getPropertyKeyValuePairforTreeNode(node, JSON_SCHEMA_ARRAY_ITEMS_ID);
 				String schemaArrayItemsType = getPropertyKeyValuePairforTreeNode(node, JSON_SCHEMA_ARRAY_ITEMS_TYPE);
@@ -1384,7 +1394,7 @@ public class SchemaTransformer implements ISchemaTransformer {
 							valueObject.put(JSON_SCHEMA_TYPE, objectValueBlockType);
 							nodeObject.put(JSON_SCHEMA_VALUE, valueObject);
 						}
-						if(nullableValue != null){
+						if (nullableValue != null) {
 							nodeObject.put(JSON_SCHEMA_NULLABLE, nullableValue);
 						}
 						// If an object doesn't contain properties, then avoid
@@ -1490,8 +1500,8 @@ public class SchemaTransformer implements ISchemaTransformer {
 						if (itemProperties.size() > 0) {
 							arrayItemsObject.add(itemProperties);
 						}
-						if(nullableValue != null){
-							arrayObject.put(JSON_SCHEMA_NULLABLE, nullableValue);	
+						if (nullableValue != null) {
+							arrayObject.put(JSON_SCHEMA_NULLABLE, nullableValue);
 						}
 						arrayObject.put(JSON_SCHEMA_ITEMS, arrayItemsObject);
 						if (((TreeNodeImpl) node).getNode().size() > 0) {
@@ -1515,13 +1525,10 @@ public class SchemaTransformer implements ISchemaTransformer {
 							}
 
 							/*
-							 * Handle type in items block based on the value
-							 * block when creating tree by hand "items": [{
-							 * "id": "http://wso2jsonschema.org/phone/0",
-							 * "type": "object", "value":{ "type": "number" },
-							 * "properties": { "ext": { "id":
-							 * "http://wso2jsonschema.org/phone/0/ext", "type":
-							 * "number" } }]}
+							 * Handle type in items block based on the value block when creating tree by hand "items":
+							 * [{ "id": "http://wso2jsonschema.org/phone/0", "type": "object", "value":{ "type":
+							 * "number" }, "properties": { "ext": { "id": "http://wso2jsonschema.org/phone/0/ext",
+							 * "type": "number" } }]}
 							 */
 							if (addedObjectHasAttributes || addedObjectHasProperties) {
 								itemProperties.put(JSON_SCHEMA_TYPE, JSON_SCHEMA_OBJECT);
@@ -1571,10 +1578,8 @@ public class SchemaTransformer implements ISchemaTransformer {
 
 						} else {
 							/*
-							 * If array item doesn't contain attributes or
-							 * properties then set the user entered type as the
-							 * item's type "items": [{ "id":
-							 * "http://wso2jsonschema.org/phone/phone", "type"
+							 * If array item doesn't contain attributes or properties then set the user entered type as
+							 * the item's type "items": [{ "id": "http://wso2jsonschema.org/phone/phone", "type"
 							 * :"number" }]
 							 */
 							if (!itemProperties.containsKey(JSON_SCHEMA_TYPE)) {
@@ -1789,11 +1794,34 @@ public class SchemaTransformer implements ISchemaTransformer {
 		EList<TreeNode> nodeList = node.getNode();
 		// Use to update the namespaces field with added namespaces in creating
 		// the tree by hand
+		if (nodeList.size() > 0) {
+			updateNamespaceList(nodeList);
+		}
+
+		String namespacesValue = StringUtils.join(namespaceList, ',');
+		if (StringUtils.isNotEmpty(namespacesValue) && StringUtils.isNotEmpty(schemaNamespace)) { 
+			// Appends the newly added namespaces to the root element
+			schemaNamespace = schemaNamespace + ", " + namespacesValue;
+		}
+
+		if (schemaNamespace != null) {
+			// Adds the available
+			namespaceList.add(schemaNamespace);
+		}
+	}
+
+	/**
+	 * Updates the namespace list recursively
+	 * 
+	 * @param nodeList
+	 */
+	private void updateNamespaceList(EList<TreeNode> nodeList) {
 		for (TreeNode treeNode : nodeList) {
 			String objectNamespace = getPropertyKeyValuePairforTreeNode(treeNode, JSON_SCHEMA_OBJECT_NAMESPACES);
 			String arrayNamespace = getPropertyKeyValuePairforTreeNode(treeNode, JSON_SCHEMA_ARRAY_NAMESPACES);
 			String fieldNamespace = getPropertyKeyValuePairforTreeNode(treeNode, JSON_SCHEMA_FIELD_NAMESPACES);
 			String attributeNamespace = getPropertyKeyValuePairforTreeNode(treeNode, JSON_SCHEMA_ATTRIBUTE_NAMESPACES);
+			String namespace = getPropertyKeyValuePairforTreeNode(treeNode, JSON_SCHEMA_NAMESPACES);
 			if (StringUtils.isNotEmpty(objectNamespace)) {
 				namespaceList.add(objectNamespace);
 			}
@@ -1806,16 +1834,12 @@ public class SchemaTransformer implements ISchemaTransformer {
 			if (StringUtils.isNotEmpty(attributeNamespace)) {
 				namespaceList.add(attributeNamespace);
 			}
-		}
-		String namespacesValue = StringUtils.join(namespaceList, ',');
-		if (StringUtils.isNotEmpty(namespacesValue) && StringUtils.isNotEmpty(schemaNamespace)) {
-			// Appends the newly added namespaces to the root element
-			schemaNamespace = schemaNamespace + ", " + namespacesValue;
-		}
-
-		if (schemaNamespace != null) {
-			// Adds the available
-			namespaceList.add(schemaNamespace);
+			if (StringUtils.isNotEmpty(namespace)) {
+				namespaceList.add(namespace);
+			}
+			if (treeNode.getNode().size() > 0) {
+				updateNamespaceList(treeNode.getNode());
+			}
 		}
 	}
 

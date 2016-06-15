@@ -26,15 +26,11 @@ import org.wso2.developerstudio.datamapper.diagram.custom.model.DMOperation;
 import org.wso2.developerstudio.datamapper.diagram.custom.model.DMVariable;
 import org.wso2.developerstudio.datamapper.diagram.custom.util.ScriptGenerationUtil;
 
-import static org.wso2.developerstudio.datamapper.diagram.custom.model.transformers.TransformerConstants.CONSTANT_ADDITIVE;
-import static org.wso2.developerstudio.datamapper.diagram.custom.model.transformers.TransformerConstants.CONSTANT_MULTIPLY_SIGN;
-import static org.wso2.developerstudio.datamapper.diagram.custom.model.transformers.TransformerConstants.CONSTANT_MULTIPLICATIVE;
-
 /**
- * This class extended from the {@link AbstractDMOperatorTransformer} abstract class and generate script for Multiply
+ * This class extended from the {@link AbstractDMOperatorTransformer} abstract class and generate script for IfElse
  * operation
  */
-public class MultiplyOperatorTransformer extends AbstractDMOperatorTransformer {
+public class IfElseOperatorTransformer extends AbstractDMOperatorTransformer {
 
 	@Override
 	public String generateScriptForOperation(Class<?> generatorClass, List<DMVariable> inputVariables,
@@ -44,20 +40,21 @@ public class MultiplyOperatorTransformer extends AbstractDMOperatorTransformer {
 		if (DifferentLevelArrayMappingConfigGenerator.class.equals(generatorClass)) {
 			@SuppressWarnings("unchecked")
 			Stack<ForLoopBean> tempParentForLoopBeanStack = (Stack<ForLoopBean>) parentForLoopBeanStack.clone();
-			if (inputVariables.size() == 0) {
-				operationBuilder.append(CONSTANT_ADDITIVE);
-			} else {
-				operationBuilder.append(CONSTANT_MULTIPLICATIVE);
+
+			if (inputVariables.size() > 2) {
 				operationBuilder
-						.append(CONSTANT_MULTIPLY_SIGN + ScriptGenerationUtil.getPrettyVariableNameInForOperation(
-								inputVariables.get(0), variableTypeMap, parentForLoopBeanStack, true));
-				for (int variableIndex = 1; variableIndex < inputVariables.size(); variableIndex++) {
-					operationBuilder.append(CONSTANT_MULTIPLY_SIGN + ScriptGenerationUtil
-							.getPrettyVariableNameInForOperation(inputVariables.get(variableIndex), variableTypeMap,
-									tempParentForLoopBeanStack, true));
-				}
+						.append("(" + ScriptGenerationUtil.getPrettyVariableNameInForOperation(inputVariables.get(0),
+								variableTypeMap, parentForLoopBeanStack, true) + ")");
+				operationBuilder
+						.append("?(" + ScriptGenerationUtil.getPrettyVariableNameInForOperation(inputVariables.get(1),
+								variableTypeMap, tempParentForLoopBeanStack, true) + ")");
+				operationBuilder
+						.append(":(" + ScriptGenerationUtil.getPrettyVariableNameInForOperation(inputVariables.get(2),
+								variableTypeMap, tempParentForLoopBeanStack, true) + ")");
+				operationBuilder.append(";");
+
 			}
-			operationBuilder.append(";");
+
 		} else {
 			throw new IllegalArgumentException("Unknown MappingConfigGenerator type found : " + generatorClass);
 		}

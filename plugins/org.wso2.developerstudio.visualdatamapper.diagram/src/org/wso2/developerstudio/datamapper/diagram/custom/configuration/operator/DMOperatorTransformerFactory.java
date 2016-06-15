@@ -24,14 +24,22 @@ import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator
 import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.DMOperatorTransformer;
 import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.DirectOperatorTransformer;
 import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.DivideOperatorTransformer;
+import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.EndsWithOperatorTransformer;
 import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.FloorOperatorTransformer;
+import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.IfElseOperatorTransformer;
 import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.MultiplyOperatorTransformer;
 import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.RoundOperatorTransformer;
 import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.SetPrecisionOperatorTransformer;
 import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.SplitOperatorTransformer;
+import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.StartsWithOperatorTransformer;
+import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.StringLengthOperatorTransformer;
+import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.SubstringOperatorTransformer;
 import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.SubtractOperatorTransformer;
 import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.ToLowerCaseOperatorTransformer;
 import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.ToUpperCaseOperatorTransformer;
+import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.ANDOperatorTransformer;
+import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.OROperatorTransformer;
+import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.NOTOperatorTransformer;
 
 /**
  * This class act as a factory to provide corresponding DMOperatorTransformer
@@ -74,6 +82,8 @@ public class DMOperatorTransformerFactory {
 
 	private static DMOperatorTransformer getConditionalOperatorTransformer(DataMapperOperatorType type) {
 		switch (type) {
+		case IF_ELSE:
+			return new IfElseOperatorTransformer();
 		default:
 			throw new IllegalArgumentException(
 					"Unknown Conditional operator type found for tranform in DMOperatorTransformerFactory : " + type);
@@ -82,6 +92,12 @@ public class DMOperatorTransformerFactory {
 
 	private static DMOperatorTransformer getBooleanOperatorTransformer(DataMapperOperatorType type) {
 		switch (type) {
+		case AND:
+			return new ANDOperatorTransformer();
+		case OR:
+			return new OROperatorTransformer();
+		case NOT:
+			return new NOTOperatorTransformer();
 		default:
 			throw new IllegalArgumentException(
 					"Unknown Boolean operator type found for tranform in DMOperatorTransformerFactory : " + type);
@@ -110,6 +126,14 @@ public class DMOperatorTransformerFactory {
 			return new ToLowerCaseOperatorTransformer();
 		case SPLIT:
 			return new SplitOperatorTransformer();
+		case STARTS_WITH:
+			return new StartsWithOperatorTransformer();
+		case STRING_LENGTH:
+			return new StringLengthOperatorTransformer();
+		case SUBSTRING:
+			return new SubstringOperatorTransformer();
+		case ENDS_WITH:
+			return new EndsWithOperatorTransformer();
 		default:
 			throw new IllegalArgumentException(
 					"Unknown String operator type found for tranform in DMOperatorTransformerFactory : " + type);

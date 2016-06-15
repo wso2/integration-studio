@@ -27,5 +27,12 @@ public class TransformerConstants {
     public static final String CONSTANT_ADDITIVE = "0";
     public static final String CONSTANT_MULTIPLICATIVE = "1";
     public static final String NUM_OF_DECIMALS_TAG = "numberOfDigits";
+    public static final String CONSTANT_TRUE = "true";
+    public static final String CONSTANT_FALSE = "false";
+    public static final String CONSTANT_AND_OPERATOR = "&&";
+    public static final String CONSTANT_OR_OPERATOR = "||";
+    public static final String CONSTANT_NOT_OPERATOR = "!";
+    public static final String CONSTANT_STRING_LENGTH = ".length";
+
     
 }

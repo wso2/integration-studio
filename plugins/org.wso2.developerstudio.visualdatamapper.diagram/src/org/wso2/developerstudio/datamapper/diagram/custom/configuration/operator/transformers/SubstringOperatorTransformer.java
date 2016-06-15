@@ -15,41 +15,27 @@
  */
 package org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers;
 
-import static org.wso2.developerstudio.datamapper.diagram.custom.model.transformers.TransformerConstants.CONSTANT_ADDITIVE;
-
 import java.util.List;
 import java.util.Map;
 import java.util.Stack;
 
 import org.wso2.developerstudio.datamapper.SchemaDataType;
-import org.wso2.developerstudio.datamapper.diagram.custom.generator.DifferentLevelArrayMappingConfigGenerator;
 import org.wso2.developerstudio.datamapper.diagram.custom.generator.ForLoopBean;
 import org.wso2.developerstudio.datamapper.diagram.custom.model.DMOperation;
 import org.wso2.developerstudio.datamapper.diagram.custom.model.DMVariable;
-import org.wso2.developerstudio.datamapper.diagram.custom.util.ScriptGenerationUtil;
 
 /**
- * This class extended from the {@link AbstractDMOperatorTransformer} abstract class and generate script for Round
+ * This class extended from the {@link AbstractDMOperatorTransformer} abstract class and generate script for Substring
  * operation
  */
-public class RoundOperatorTransformer extends AbstractDMOperatorTransformer {
+public class SubstringOperatorTransformer extends AbstractDMOperatorTransformer {
 
 	@Override
 	public String generateScriptForOperation(Class<?> generatorClass, List<DMVariable> inputVariables,
 			Map<String, SchemaDataType> variableTypeMap, Stack<ForLoopBean> parentForLoopBeanStack,
 			DMOperation operator) {
 		StringBuilder operationBuilder = new StringBuilder();
-		if (DifferentLevelArrayMappingConfigGenerator.class.equals(generatorClass)) {
-			if (inputVariables.size() == 0) {
-				operationBuilder.append(CONSTANT_ADDITIVE);
-			} else {
-				operationBuilder.append("Math.round(" + ScriptGenerationUtil.getPrettyVariableNameInForOperation(
-						inputVariables.get(0), variableTypeMap, parentForLoopBeanStack, true) + ")");
-			}
-			operationBuilder.append(";");
-		} else {
-			throw new IllegalArgumentException("Unknown MappingConfigGenerator type found : " + generatorClass);
-		}
+		// TODO: Write method body
 		return operationBuilder.toString();
 	}
 

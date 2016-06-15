@@ -7,6 +7,8 @@ import static org.wso2.developerstudio.datamapper.impl.DataMapperImplConstants.P
 import static org.wso2.developerstudio.datamapper.impl.DataMapperImplConstants.RESULT_TAG;
 import static org.wso2.developerstudio.datamapper.impl.DataMapperImplConstants.VALUE_TAG;
 
+import java.util.ArrayList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.wso2.developerstudio.datamapper.DataMapperOperatorType;
@@ -77,12 +79,19 @@ public class IfElseImpl extends OperatorImpl implements IfElse {
 		setDefaultOutputConnectors(1);
 		setInputSizeFixed(true);
 		setOutputSizeFixed(true);
-		getInputVariableType().add(SchemaDataType.STRING);
-		getInputVariableType().add(SchemaDataType.NUMBER);
-		getInputVariableType().add(SchemaDataType.BOOLEAN);
-		getOutputVariableType().add(SchemaDataType.BOOLEAN);
-		getOutputVariableType().add(SchemaDataType.NUMBER);
-		getOutputVariableType().add(SchemaDataType.STRING);
+		// If else input connector already built when trying assign type
+		getInputVariableTypes().put(0, new ArrayList<SchemaDataType>());
+		getInputVariableTypes().get(0).add(SchemaDataType.BOOLEAN);
+		getInputVariableTypes().put(1, new ArrayList<SchemaDataType>());
+		getInputVariableTypes().put(2, new ArrayList<SchemaDataType>());
+		getOutputVariableTypes().put(0, new ArrayList<SchemaDataType>());
+		getInputVariableTypes().get(1).add(SchemaDataType.BOOLEAN);
+		getInputVariableTypes().get(2).add(SchemaDataType.STRING);
+		getInputVariableTypes().get(2).add(SchemaDataType.NUMBER);
+		getInputVariableTypes().get(2).add(SchemaDataType.BOOLEAN);
+		getOutputVariableTypes().get(0).add(SchemaDataType.BOOLEAN);
+		getOutputVariableTypes().get(0).add(SchemaDataType.NUMBER);
+		getOutputVariableTypes().get(0).add(SchemaDataType.STRING);
 		setOperatorType(DataMapperOperatorType.IF_ELSE);
 		getInputLabelList().add(DataMapperImplConstants.CONDITION_TAG);
 		getInputLabelList().add(DataMapperImplConstants.THEN_TAG);

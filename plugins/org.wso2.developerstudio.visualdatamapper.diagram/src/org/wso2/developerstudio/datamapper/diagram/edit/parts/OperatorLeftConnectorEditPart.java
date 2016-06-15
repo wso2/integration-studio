@@ -210,10 +210,26 @@ public class OperatorLeftConnectorEditPart extends AbstractBorderedShapeEditPart
 		OperatorImpl operator = (OperatorImpl) ((View) parentEditPart.getModel()).getElement();
 		String inputLabel = getInputLabel(operator);
 		if (nodeFigure != null) {
-			nodeFigure.add(new Label(inputLabel + " " + operator.getInputVariableType().toString() + " "));
+			nodeFigure.add(new Label(inputLabel + " " + getPossibleInputVariableTypes(operator) + " "));
 			return true;
 		}
 		return false;
+	}
+
+	private String getPossibleInputVariableTypes(OperatorImpl operator) {
+		int connectorIndex = operator.getLeftConnectorCount();
+		if (operator.getInputVariableTypes().containsKey(connectorIndex)) {
+			return operator.getInputVariableTypes().get(connectorIndex).toString();
+		} else {
+			while (connectorIndex > 0) {
+				--connectorIndex;
+				if (operator.getInputVariableTypes().containsKey(connectorIndex)) {
+					return operator.getInputVariableTypes().get(connectorIndex).toString();
+				}
+			}
+		}
+		throw new IllegalArgumentException("Target connector not found in Operator " + operator.getOperatorType()
+				+ " input variable Map : " + operator.getInputVariableTypes().keySet());
 	}
 
 	private String getInputLabel(OperatorImpl operator) {

@@ -2,6 +2,10 @@
  */
 package org.wso2.developerstudio.datamapper.impl;
 
+import static org.wso2.developerstudio.datamapper.impl.DataMapperImplConstants.RESULT_TAG;
+
+import java.util.ArrayList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.wso2.developerstudio.datamapper.DataMapperOperatorType;
 import org.wso2.developerstudio.datamapper.DataMapperPackage;
@@ -27,12 +31,14 @@ public class DivideImpl extends OperatorImpl implements Divide {
 		setDefaultOutputConnectors(1);
 		setInputSizeFixed(true);
 		setOutputSizeFixed(true);
-		getInputVariableType().add(SchemaDataType.NUMBER);
-		getOutputVariableType().add(SchemaDataType.NUMBER);
+		getInputVariableTypes().put(0, new ArrayList<SchemaDataType>());
+		getOutputVariableTypes().put(0, new ArrayList<SchemaDataType>());
+		getInputVariableTypes().get(0).add(SchemaDataType.NUMBER);
+		getOutputVariableTypes().get(0).add(SchemaDataType.NUMBER);
 		setOperatorType(DataMapperOperatorType.DIVIDE);
 		getInputLabelList().add("Number");
 		getInputLabelList().add("Divisor");
-		getOutputLabelList().add("Result");
+		getOutputLabelList().add(RESULT_TAG);
 	}
 
 	/**

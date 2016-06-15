@@ -10,6 +10,8 @@ import org.wso2.developerstudio.datamapper.SchemaDataType;
 
 import static org.wso2.developerstudio.datamapper.impl.DataMapperImplConstants.*;
 
+import java.util.ArrayList;
+
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Add</b></em>'.
@@ -29,8 +31,10 @@ public class AddImpl extends OperatorImpl implements Add {
 		setDefaultOutputConnectors(1);
 		setInputSizeFixed(false);
 		setOutputSizeFixed(true);
-		getInputVariableType().add(SchemaDataType.NUMBER);
-		getOutputVariableType().add(SchemaDataType.NUMBER);
+		getInputVariableTypes().put(0, new ArrayList<SchemaDataType>());
+		getOutputVariableTypes().put(0, new ArrayList<SchemaDataType>());
+		getInputVariableTypes().get(0).add(SchemaDataType.NUMBER);
+		getOutputVariableTypes().get(0).add(SchemaDataType.NUMBER);
 		setOperatorType(DataMapperOperatorType.ADD);
 		getInputLabelList().add(IN_TAG);
 		getOutputLabelList().add(RESULT_TAG);

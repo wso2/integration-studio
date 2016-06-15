@@ -221,19 +221,35 @@ public class OperatorRightConnectorEditPart extends AbstractBorderedShapeEditPar
 				}
 			} else {
 				if (figure != null) {
-					connectorLabel = new Label(outputLabel + " " + operator.getOutputVariableType().toString() + " ");
+					connectorLabel = new Label(outputLabel + " " + getPossibleOutputVariableTypes(operator) + " ");
 					figure.add(connectorLabel);
 					return true;
 				}
 			}
 		} else {
 			if (figure != null) {
-				connectorLabel = new Label(outputLabel + " " + operator.getOutputVariableType().toString() + " ");
+				connectorLabel = new Label(outputLabel + " " + getPossibleOutputVariableTypes(operator) + " ");
 				figure.add(connectorLabel);
 				return true;
 			}
 		}
 		return false;
+	}
+	
+	private String getPossibleOutputVariableTypes(OperatorImpl operator) {
+		int connectorIndex = operator.getRightConnectorCount();
+		if (operator.getOutputVariableTypes().containsKey(connectorIndex)) {
+			return operator.getOutputVariableTypes().get(connectorIndex).toString();
+		} else {
+			while (connectorIndex > 0) {
+				--connectorIndex;
+				if (operator.getOutputVariableTypes().containsKey(connectorIndex)) {
+					return operator.getOutputVariableTypes().get(connectorIndex).toString();
+				}
+			}
+		}
+		throw new IllegalArgumentException("Target connector not found in Operator " + operator.getOperatorType()
+				+ " output variable Map : " + operator.getOutputVariableTypes().keySet());
 	}
 
 	private String getOutputLabel(OperatorImpl operator) {

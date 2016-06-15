@@ -2,6 +2,8 @@
  */
 package org.wso2.developerstudio.datamapper.impl;
 
+import java.util.ArrayList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.wso2.developerstudio.datamapper.DataMapperOperatorType;
 import org.wso2.developerstudio.datamapper.DataMapperPackage;
@@ -27,8 +29,10 @@ public class SubtractImpl extends OperatorImpl implements Subtract {
 		setDefaultOutputConnectors(1);
 		setInputSizeFixed(true);
 		setOutputSizeFixed(true);
-		getInputVariableType().add(SchemaDataType.NUMBER);
-		getOutputVariableType().add(SchemaDataType.NUMBER);
+		getInputVariableTypes().put(0, new ArrayList<SchemaDataType>());
+		getOutputVariableTypes().put(0, new ArrayList<SchemaDataType>());
+		getInputVariableTypes().get(0).add(SchemaDataType.NUMBER);
+		getOutputVariableTypes().get(0).add(SchemaDataType.NUMBER);
 		setOperatorType(DataMapperOperatorType.SUBTRACT);
 		getInputLabelList().add("Number");
 		getInputLabelList().add("Subtrahend");

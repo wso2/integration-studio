@@ -2,6 +2,11 @@
  */
 package org.wso2.developerstudio.datamapper.impl;
 
+import static org.wso2.developerstudio.datamapper.impl.DataMapperImplConstants.IN_TAG;
+import static org.wso2.developerstudio.datamapper.impl.DataMapperImplConstants.RESULT_TAG;
+
+import java.util.ArrayList;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -50,15 +55,18 @@ public class SetPrecisionImpl extends OperatorImpl implements SetPrecision {
 	 */
 	protected SetPrecisionImpl() {
 		super();
-		setDefaultInputConnectors(1);
+		setDefaultInputConnectors(2);
 		setDefaultOutputConnectors(1);
 		setInputSizeFixed(true);
 		setOutputSizeFixed(true);
-		getInputVariableType().add(SchemaDataType.NUMBER);
-		getOutputVariableType().add(SchemaDataType.NUMBER);
+		getInputVariableTypes().put(0, new ArrayList<SchemaDataType>());
+		getOutputVariableTypes().put(0, new ArrayList<SchemaDataType>());
+		getInputVariableTypes().get(0).add(SchemaDataType.NUMBER);
+		getOutputVariableTypes().get(0).add(SchemaDataType.NUMBER);
 		setOperatorType(DataMapperOperatorType.SET_PRECISION);
-		getInputLabelList().add("In");
-		getOutputLabelList().add("Result");
+		getInputLabelList().add(IN_TAG);
+		getInputLabelList().add("Num of Decimals");
+		getOutputLabelList().add(RESULT_TAG);
 	}
 
 	/**

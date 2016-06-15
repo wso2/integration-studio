@@ -2,6 +2,8 @@
  */
 package org.wso2.developerstudio.datamapper;
 
+import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import org.eclipse.emf.common.util.EList;
@@ -152,7 +154,7 @@ public interface Operator extends DataMapperNode {
 	 * @model default="STRING"
 	 * @generated NOT
 	 */
-	Set<SchemaDataType> getInputVariableType();
+	Map<Integer, List<SchemaDataType>> getInputVariableTypes();
 
 	/**
 	 * Returns the value of the '<em><b>Output Variable Type</b></em>' attribute list.
@@ -170,7 +172,7 @@ public interface Operator extends DataMapperNode {
 	 * @model default="STRING"
 	 * @generated NOT
 	 */
-	Set<SchemaDataType> getOutputVariableType();
+	Map<Integer, List<SchemaDataType>> getOutputVariableTypes();
 
 	/**
 	 * Returns the value of the '<em><b>Input Size Fixed</b></em>' attribute.

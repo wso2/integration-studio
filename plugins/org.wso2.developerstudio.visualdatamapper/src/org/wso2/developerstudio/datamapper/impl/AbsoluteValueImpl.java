@@ -5,6 +5,8 @@ package org.wso2.developerstudio.datamapper.impl;
 import static org.wso2.developerstudio.datamapper.impl.DataMapperImplConstants.IN_TAG;
 import static org.wso2.developerstudio.datamapper.impl.DataMapperImplConstants.RESULT_TAG;
 
+import java.util.ArrayList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.wso2.developerstudio.datamapper.AbsoluteValue;
 import org.wso2.developerstudio.datamapper.DataMapperOperatorType;
@@ -32,8 +34,10 @@ public class AbsoluteValueImpl extends OperatorImpl implements AbsoluteValue {
 		setDefaultOutputConnectors(1);
 		setInputSizeFixed(true);
 		setOutputSizeFixed(true);
-		getInputVariableType().add(SchemaDataType.NUMBER);
-		getOutputVariableType().add(SchemaDataType.NUMBER);
+		getInputVariableTypes().put(0, new ArrayList<SchemaDataType>());
+		getOutputVariableTypes().put(0, new ArrayList<SchemaDataType>());
+		getInputVariableTypes().get(0).add(SchemaDataType.NUMBER);
+		getOutputVariableTypes().get(0).add(SchemaDataType.NUMBER);
 		setOperatorType(DataMapperOperatorType.ABSOLUTE);
 		getInputLabelList().add(IN_TAG);
 		getOutputLabelList().add(RESULT_TAG);

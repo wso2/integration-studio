@@ -62,7 +62,7 @@ public class SetPrecisionConfigureAction extends AbstractActionHandler {
 		EditPart selectedEP = getSelectedEditPart();
 		EObject selectedObj = ((View) selectedEP.getModel()).getElement();
 		Dialog configureConstantDialog = new ConfigureSetPrecisionOperatorDialog(Display.getDefault().getActiveShell(),
-				(SetPrecision) selectedObj, getEditingDomain());
+				(SetPrecision) selectedObj, getEditingDomain(), selectedEP);
 		configureConstantDialog.create();
 		configureConstantDialog.open();
 	}

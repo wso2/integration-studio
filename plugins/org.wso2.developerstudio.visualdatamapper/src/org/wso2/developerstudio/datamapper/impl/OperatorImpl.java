@@ -3,9 +3,11 @@
 package org.wso2.developerstudio.datamapper.impl;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -130,24 +132,24 @@ public class OperatorImpl extends DataMapperNodeImpl implements Operator {
 	protected int defaultOutputConnectors = DEFAULT_OUTPUT_CONNECTORS_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getInputVariableType() <em>Input Variable Type</em>}' attribute list.
+	 * The cached value of the '{@link #getInputVariableTypes() <em>Input Variable Type</em>}' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getInputVariableType()
+	 * @see #getInputVariableTypes()
 	 * @generated NOT
 	 * @ordered
 	 */
-	protected Set<SchemaDataType> inputVariableType;
+	protected Map<Integer,List<SchemaDataType>> inputVariableTypes;
 
 	/**
-	 * The cached value of the '{@link #getOutputVariableType() <em>Output Variable Type</em>}' attribute list.
+	 * The cached value of the '{@link #getOutputVariableTypes() <em>Output Variable Type</em>}' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOutputVariableType()
+	 * @see #getOutputVariableTypes()
 	 * @generated NOT
 	 * @ordered
 	 */
-	protected Set<SchemaDataType> outputVariableType;
+	protected Map<Integer,List<SchemaDataType>> outputVariableTypes;
 
 	/**
 	 * The default value of the '{@link #isInputSizeFixed() <em>Input Size Fixed</em>}' attribute.
@@ -402,11 +404,11 @@ public class OperatorImpl extends DataMapperNodeImpl implements Operator {
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public Set<SchemaDataType> getInputVariableType() {
-		if (inputVariableType == null) {
-			inputVariableType = new HashSet<>();
+	public Map<Integer, List<SchemaDataType>> getInputVariableTypes() {
+		if (inputVariableTypes == null) {
+			inputVariableTypes = new HashMap<>();
 		}
-		return inputVariableType;
+		return inputVariableTypes;
 	}
 
 	/**
@@ -414,11 +416,11 @@ public class OperatorImpl extends DataMapperNodeImpl implements Operator {
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public Set<SchemaDataType> getOutputVariableType() {
-		if (outputVariableType == null) {
-			outputVariableType = new HashSet<>();
+	public Map<Integer, List<SchemaDataType>> getOutputVariableTypes() {
+		if (outputVariableTypes == null) {
+			outputVariableTypes = new HashMap<>();
 		}
-		return outputVariableType;
+		return outputVariableTypes;
 	}
 	
 	public List<String> getInputLabelList() {

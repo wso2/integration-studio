@@ -6,6 +6,8 @@ import static org.wso2.developerstudio.datamapper.impl.DataMapperImplConstants.P
 import static org.wso2.developerstudio.datamapper.impl.DataMapperImplConstants.RESULT_TAG;
 import static org.wso2.developerstudio.datamapper.impl.DataMapperImplConstants.VALUE_TAG;
 
+import java.util.ArrayList;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 
@@ -97,12 +99,18 @@ public class SubstringImpl extends OperatorImpl implements Substring {
 		setDefaultOutputConnectors(1);
 		setInputSizeFixed(true);
 		setOutputSizeFixed(true);
-		getInputVariableType().add(SchemaDataType.STRING);
-		getOutputVariableType().add(SchemaDataType.STRING);
+		getInputVariableTypes().put(0, new ArrayList<SchemaDataType>());
+		getInputVariableTypes().put(1, new ArrayList<SchemaDataType>());
+		getInputVariableTypes().put(2, new ArrayList<SchemaDataType>());
+		getOutputVariableTypes().put(0, new ArrayList<SchemaDataType>());
+		getInputVariableTypes().get(0).add(SchemaDataType.STRING);
+		getInputVariableTypes().get(1).add(SchemaDataType.STRING);
+		getInputVariableTypes().get(2).add(SchemaDataType.NUMBER);
+		getOutputVariableTypes().get(0).add(SchemaDataType.STRING);
 		setOperatorType(DataMapperOperatorType.SUBSTRING);
 		getInputLabelList().add(VALUE_TAG);
 		getInputLabelList().add(DataMapperImplConstants.START_INDEX);
-		getInputLabelList().add(DataMapperImplConstants.END_INDEX);
+		getInputLabelList().add(DataMapperImplConstants.LENGTH_TAG);
 		getOutputLabelList().add(RESULT_TAG);
 	}
 

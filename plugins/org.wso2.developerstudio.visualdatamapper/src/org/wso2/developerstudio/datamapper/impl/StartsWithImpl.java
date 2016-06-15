@@ -6,6 +6,8 @@ import static org.wso2.developerstudio.datamapper.impl.DataMapperImplConstants.P
 import static org.wso2.developerstudio.datamapper.impl.DataMapperImplConstants.RESULT_TAG;
 import static org.wso2.developerstudio.datamapper.impl.DataMapperImplConstants.VALUE_TAG;
 
+import java.util.ArrayList;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 
@@ -78,8 +80,10 @@ public class StartsWithImpl extends OperatorImpl implements StartsWith {
 		setDefaultOutputConnectors(1);
 		setInputSizeFixed(true);
 		setOutputSizeFixed(true);
-		getInputVariableType().add(SchemaDataType.STRING);
-		getOutputVariableType().add(SchemaDataType.BOOLEAN);
+		getInputVariableTypes().put(0, new ArrayList<SchemaDataType>());
+		getOutputVariableTypes().put(0, new ArrayList<SchemaDataType>());
+		getInputVariableTypes().get(0).add(SchemaDataType.STRING);
+		getOutputVariableTypes().get(0).add(SchemaDataType.BOOLEAN);
 		setOperatorType(DataMapperOperatorType.STARTS_WITH);
 		getInputLabelList().add(VALUE_TAG);
 		getInputLabelList().add(PATTERN_TAG);

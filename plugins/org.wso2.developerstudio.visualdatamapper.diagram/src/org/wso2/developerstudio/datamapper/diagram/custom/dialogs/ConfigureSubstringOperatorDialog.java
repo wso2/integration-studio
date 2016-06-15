@@ -54,7 +54,7 @@ public class ConfigureSubstringOperatorDialog extends AbstractConfigureOperatorD
 
 	private static final String EMPTY_STRING = "";
 	private String startIndex;
-	private String endIndex;
+	private String length;
 	private TransactionalEditingDomain editingDomain;
 	private ArrayList<OperatorLeftConnector> caseOutputConnectors = new ArrayList<OperatorLeftConnector>();
 	private SubstringImpl substringImpl;
@@ -117,12 +117,12 @@ public class ConfigureSubstringOperatorDialog extends AbstractConfigureOperatorD
 		final Text endIndexText = new Text(container, SWT.BORDER);
 		endIndexText.setLayoutData(dataPropertyConfigText);
 		endIndexText.setText(EMPTY_STRING + substringImpl.getEndIndex());
-		endIndex = endIndexText.getText();
+		length = endIndexText.getText();
 		endIndexText.addListener(SWT.Modify, new Listener() {
 			public void handleEvent(Event event) {
 				try {
-					endIndex = new String(endIndexText.getText());
-					if (!(StringUtils.isEmpty(endIndex))) {
+					length = new String(endIndexText.getText());
+					if (!(StringUtils.isEmpty(length))) {
 						getButton(IDialogConstants.OK_ID).setEnabled(true);
 						validate();
 					} else {
@@ -152,22 +152,18 @@ public class ConfigureSubstringOperatorDialog extends AbstractConfigureOperatorD
 	private void validate() {
 		boolean isEnabled = false;
 		Button okButton = getButton(IDialogConstants.OK_ID);
-		if (!StringUtils.isEmpty(endIndex) && !StringUtils.isEmpty(startIndex)) {
-			int startIndexVal = 0;
+		if (!StringUtils.isEmpty(length) && !StringUtils.isEmpty(startIndex)) {
 			try {
-				startIndexVal = Integer.parseInt(startIndex);
+				Integer.parseInt(startIndex);
 			} catch (NumberFormatException e) {
 				throw new IllegalArgumentException("Start index should be a integer. Found :" + startIndex);
 			}
-			int endIndexVal = 0;
 			try {
-				endIndexVal = Integer.parseInt(endIndex);
+				Integer.parseInt(length);
 			} catch (NumberFormatException e) {
-				throw new IllegalArgumentException("End index should be a integer. Found :" + endIndex);
+				throw new IllegalArgumentException("End index should be a integer. Found :" + length);
 			}
-			if (endIndexVal >= startIndexVal) {
-				isEnabled = true;
-			}
+			isEnabled = true;
 		} else {
 			throw new IllegalArgumentException("Any of start index or end index can not be empty");
 		}
@@ -186,17 +182,17 @@ public class ConfigureSubstringOperatorDialog extends AbstractConfigureOperatorD
 				editingDomain.getCommandStack().execute(setCmnd);
 			}
 			((OperatorRectangle) ((SubstringEditPart) editPart).getSubstringFigure()).changeOperatorHeader(
-					"Substring :(start index : " + startIndex + ", end index : " + substringImpl.getEndIndex() + ")");
+					"Substring :(start index : " + startIndex + ", length : " + substringImpl.getEndIndex() + ")");
 		}
-		if (!StringUtils.isEmpty(endIndex)) {
-			Integer endIndexVal = Integer.parseInt(endIndex);
+		if (!StringUtils.isEmpty(length)) {
+			Integer endIndexVal = Integer.parseInt(length);
 			SetCommand setCmnd = new SetCommand(editingDomain, substringOperatorInstance,
 					DataMapperPackage.Literals.SUBSTRING__END_INDEX, endIndexVal);
 			if (setCmnd.canExecute()) {
 				editingDomain.getCommandStack().execute(setCmnd);
 			}
 			((OperatorRectangle) ((SubstringEditPart) editPart).getSubstringFigure()).changeOperatorHeader(
-					"Substring :(start index : " + substringImpl.getStartIndex() + ", end index : " + endIndex + ")");
+					"Substring :(start index : " + substringImpl.getStartIndex() + ", length : " + length + ")");
 		}
 		super.okPressed();
 	}

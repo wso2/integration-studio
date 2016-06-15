@@ -2,6 +2,8 @@
  */
 package org.wso2.developerstudio.datamapper.impl;
 
+import java.util.ArrayList;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -76,9 +78,11 @@ public class ConstantImpl extends OperatorImpl implements Constant {
 		setDefaultOutputConnectors(1);
 		setInputSizeFixed(true);
 		setOutputSizeFixed(true);
-		getOutputVariableType().add(SchemaDataType.NUMBER);
-		getOutputVariableType().add(SchemaDataType.STRING);
-		getOutputVariableType().add(SchemaDataType.BOOLEAN);
+		getInputVariableTypes().put(0, new ArrayList<SchemaDataType>());
+		getOutputVariableTypes().put(0, new ArrayList<SchemaDataType>());
+		getOutputVariableTypes().get(0).add(SchemaDataType.NUMBER);
+		getOutputVariableTypes().get(0).add(SchemaDataType.STRING);
+		getOutputVariableTypes().get(0).add(SchemaDataType.BOOLEAN);
 		setOperatorType(DataMapperOperatorType.CONSTANT);
 		getOutputLabelList().add("Const");
 	}

@@ -18,6 +18,7 @@ package org.wso2.developerstudio.datamapper.diagram.custom.dialogs;
 import org.apache.commons.lang.StringUtils;
 import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.gef.EditPart;
 import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.jface.dialogs.IMessageProvider;
 import org.eclipse.swt.SWT;
@@ -33,6 +34,8 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.wso2.developerstudio.datamapper.DataMapperPackage;
 import org.wso2.developerstudio.datamapper.SetPrecision;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.OperatorRectangle;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.SetPrecisionEditPart;
 import org.wso2.developerstudio.datamapper.impl.SetPrecisionImpl;
 
 public class ConfigureSetPrecisionOperatorDialog extends AbstractConfigureOperatorDialog {
@@ -40,12 +43,14 @@ public class ConfigureSetPrecisionOperatorDialog extends AbstractConfigureOperat
 	private String numberOfDecimals;
 	private TransactionalEditingDomain editingDomain;
 	private SetPrecisionImpl setPrecisionImpl;
+	private EditPart editPart;
 
 	public ConfigureSetPrecisionOperatorDialog(Shell parentShell, SetPrecision setPrecisionOperator,
-			TransactionalEditingDomain editingDomain) {
+			TransactionalEditingDomain editingDomain, EditPart editPart) {
 		super(parentShell);
 		this.setPrecisionImpl = (SetPrecisionImpl) setPrecisionOperator;
 		this.editingDomain = editingDomain;
+		this.editPart = editPart;
 	}
 
 	@Override
@@ -115,9 +120,9 @@ public class ConfigureSetPrecisionOperatorDialog extends AbstractConfigureOperat
 		boolean isEnabled = false;
 		Button okButton = getButton(IDialogConstants.OK_ID);
 		if (!StringUtils.isEmpty(numberOfDecimals)) {
-			try{
-			Integer.parseInt(numberOfDecimals);
-			} catch (NumberFormatException e){
+			try {
+				Integer.parseInt(numberOfDecimals);
+			} catch (NumberFormatException e) {
 				okButton.setEnabled(false);
 			}
 			isEnabled = true;
@@ -137,6 +142,8 @@ public class ConfigureSetPrecisionOperatorDialog extends AbstractConfigureOperat
 			if (setCmnd.canExecute()) {
 				editingDomain.getCommandStack().execute(setCmnd);
 			}
+			((OperatorRectangle) ((SetPrecisionEditPart) editPart).getSetPrecisionFigure())
+					.changeOperatorHeader("SetPrecision : [Number of Decimals : " + numOfDecimalsInt + " ]");
 		}
 		super.okPressed();
 	}

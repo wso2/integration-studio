@@ -2,6 +2,11 @@
  */
 package org.wso2.developerstudio.datamapper.impl;
 
+import static org.wso2.developerstudio.datamapper.impl.DataMapperImplConstants.IN_TAG;
+import static org.wso2.developerstudio.datamapper.impl.DataMapperImplConstants.RESULT_TAG;
+
+import java.util.ArrayList;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -54,11 +59,17 @@ public class ConcatImpl extends OperatorImpl implements Concat {
 		setDefaultOutputConnectors(1);
 		setInputSizeFixed(false);
 		setOutputSizeFixed(true);
-		getInputVariableType().add(SchemaDataType.STRING);
-		getOutputVariableType().add(SchemaDataType.STRING);
+		getInputVariableTypes().put(0, new ArrayList<SchemaDataType>());
+		getInputVariableTypes().put(1, new ArrayList<SchemaDataType>());
+		getOutputVariableTypes().put(0, new ArrayList<SchemaDataType>());
+		getInputVariableTypes().get(0).add(SchemaDataType.STRING);
+		getInputVariableTypes().get(1).add(SchemaDataType.STRING);
+		getInputVariableTypes().get(1).add(SchemaDataType.NUMBER);
+		getInputVariableTypes().get(1).add(SchemaDataType.BOOLEAN);
+		getOutputVariableTypes().get(0).add(SchemaDataType.STRING);
 		setOperatorType(DataMapperOperatorType.CONCAT);
-		getInputLabelList().add("In");
-		getOutputLabelList().add("Out");
+		getInputLabelList().add(IN_TAG);
+		getOutputLabelList().add(RESULT_TAG);
 	}
 	
 	/**

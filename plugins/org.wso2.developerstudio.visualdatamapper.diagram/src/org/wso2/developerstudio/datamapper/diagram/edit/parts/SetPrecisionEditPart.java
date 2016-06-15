@@ -1,5 +1,6 @@
 package org.wso2.developerstudio.datamapper.diagram.edit.parts;
 
+import org.apache.commons.lang.StringUtils;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.Label;
 import org.eclipse.draw2d.RectangleFigure;
@@ -21,6 +22,7 @@ import org.eclipse.swt.graphics.Color;
 import org.wso2.developerstudio.datamapper.diagram.custom.edit.part.AbstractOperatorEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.policies.SetPrecisionCanonicalEditPolicy;
 import org.wso2.developerstudio.datamapper.diagram.edit.policies.SetPrecisionItemSemanticEditPolicy;
+import org.wso2.developerstudio.datamapper.impl.SetPrecisionImpl;
 
 /**
  * @generated NOT
@@ -88,7 +90,8 @@ public class SetPrecisionEditPart extends AbstractOperatorEditPart {
 	* @generated NOT
 	*/
 	protected IFigure createNodeShape() {
-		return primaryShape = new SetPrecisionFigure();
+		int numberOfDecimals =((SetPrecisionImpl)((View) getModel()).getElement()).getNumberOfDigits();
+		return primaryShape = new SetPrecisionFigure(numberOfDecimals);
 	}
 
 	/**
@@ -186,8 +189,17 @@ public class SetPrecisionEditPart extends AbstractOperatorEditPart {
 
 	public class SetPrecisionFigure extends OperatorRectangle {
 
+		private String figureHeaderLabel;
+
 		public SetPrecisionFigure() {
 			super("SetPrecision");
+			this.setBackgroundColor(THIS_BACK);
+		}
+
+		public SetPrecisionFigure(int numberOfDecimals) {
+			super("SetPrecision");
+			this.figureHeaderLabel = "SetPrecision : [Number of Decimals : " + numberOfDecimals + " ]";
+			super.changeOperatorHeader(figureHeaderLabel);
 			this.setBackgroundColor(THIS_BACK);
 		}
 
@@ -206,5 +218,9 @@ public class SetPrecisionEditPart extends AbstractOperatorEditPart {
 	}
 
 	static final Color THIS_BACK = DataMapperColorConstants.connectorColor;
+
+	public OperatorRectangle getSetPrecisionFigure() {
+		return (OperatorRectangle) primaryShape;
+	}
 
 }

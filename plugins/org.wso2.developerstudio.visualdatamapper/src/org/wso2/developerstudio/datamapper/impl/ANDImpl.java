@@ -5,6 +5,8 @@ package org.wso2.developerstudio.datamapper.impl;
 import static org.wso2.developerstudio.datamapper.impl.DataMapperImplConstants.IN_TAG;
 import static org.wso2.developerstudio.datamapper.impl.DataMapperImplConstants.RESULT_TAG;
 
+import java.util.ArrayList;
+
 import org.eclipse.emf.ecore.EClass;
 
 import org.wso2.developerstudio.datamapper.AND;
@@ -31,8 +33,10 @@ public class ANDImpl extends OperatorImpl implements AND {
 		setDefaultOutputConnectors(1);
 		setInputSizeFixed(false);
 		setOutputSizeFixed(true);
-		getInputVariableType().add(SchemaDataType.BOOLEAN);
-		getOutputVariableType().add(SchemaDataType.BOOLEAN);
+		getInputVariableTypes().put(0, new ArrayList<SchemaDataType>());
+		getOutputVariableTypes().put(0, new ArrayList<SchemaDataType>());
+		getInputVariableTypes().get(0).add(SchemaDataType.BOOLEAN);
+		getOutputVariableTypes().get(0).add(SchemaDataType.BOOLEAN);
 		setOperatorType(DataMapperOperatorType.AND);
 		getInputLabelList().add(IN_TAG);
 		getOutputLabelList().add(RESULT_TAG);

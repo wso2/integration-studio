@@ -2,6 +2,11 @@
  */
 package org.wso2.developerstudio.datamapper.impl;
 
+import static org.wso2.developerstudio.datamapper.impl.DataMapperImplConstants.IN_TAG;
+import static org.wso2.developerstudio.datamapper.impl.DataMapperImplConstants.RESULT_TAG;
+
+import java.util.ArrayList;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -93,11 +98,13 @@ public class SplitImpl extends OperatorImpl implements Split {
 		setDefaultOutputConnectors(2);
 		setInputSizeFixed(true);
 		setOutputSizeFixed(false);
-		getInputVariableType().add(SchemaDataType.STRING);
-		getOutputVariableType().add(SchemaDataType.STRING);
+		getInputVariableTypes().put(0, new ArrayList<SchemaDataType>());
+		getOutputVariableTypes().put(0, new ArrayList<SchemaDataType>());
+		getInputVariableTypes().get(0).add(SchemaDataType.STRING);
+		getOutputVariableTypes().get(0).add(SchemaDataType.STRING);
 		setOperatorType(DataMapperOperatorType.SPLIT);
-		getInputLabelList().add("In");
-		getOutputLabelList().add("Out");
+		getInputLabelList().add(IN_TAG);
+		getOutputLabelList().add(RESULT_TAG);
 	}
 
 	/**

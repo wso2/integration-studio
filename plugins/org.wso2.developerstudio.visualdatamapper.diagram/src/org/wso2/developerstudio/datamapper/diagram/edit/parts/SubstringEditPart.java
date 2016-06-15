@@ -198,9 +198,9 @@ public class SubstringEditPart extends AbstractOperatorEditPart {
 			this.setBackgroundColor(THIS_BACK);
 		}
 
-		public SubstringFigure(int startIndex, int endIndex) {
+		public SubstringFigure(int startIndex, int length) {
 			super("Substring");
-			String figureHeaderLabel = "Substring : (start index :" + startIndex + " , end index : " + endIndex + " )";
+			String figureHeaderLabel = "Substring : (start index :" + startIndex + " , length : " + length + " )";
 			super.changeOperatorHeader(figureHeaderLabel);
 			this.setBackgroundColor(THIS_BACK);
 		}

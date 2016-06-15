@@ -222,10 +222,11 @@ public class ScriptGenerationUtil {
     }
 
     public static boolean isVariableTypePrimitive(SchemaDataType variableType) {
-        if (SchemaDataType.STRING.equals(variableType) || SchemaDataType.INT.equals(variableType)
-                || SchemaDataType.DOUBLE.equals(variableType) || SchemaDataType.BOOLEAN.equals(variableType)) {
-            return true;
-        }
+		if (SchemaDataType.STRING.equals(variableType) || SchemaDataType.INT.equals(variableType)
+				|| SchemaDataType.DOUBLE.equals(variableType) || SchemaDataType.BOOLEAN.equals(variableType)
+				|| SchemaDataType.NUMBER.equals(variableType)) {
+			return true;
+		}
         return false;
     }
 }

@@ -29,7 +29,7 @@ import org.wso2.developerstudio.datamapper.diagram.custom.model.DMVariable;
 import org.wso2.developerstudio.datamapper.diagram.custom.util.ScriptGenerationUtil;
 
 /**
- * This class extended from the {@link AbstractDMOperatorTransformer} abstract class and generate script for constant
+ * This class extended from the {@link AbstractDMOperatorTransformer} abstract class and generate script for Ceil
  * operation
  */
 public class CeilOperatorTransformer extends AbstractDMOperatorTransformer {

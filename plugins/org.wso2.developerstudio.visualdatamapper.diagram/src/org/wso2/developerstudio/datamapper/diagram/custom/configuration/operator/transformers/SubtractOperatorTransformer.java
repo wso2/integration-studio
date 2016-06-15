@@ -30,7 +30,7 @@ import static org.wso2.developerstudio.datamapper.diagram.custom.model.transform
 import static org.wso2.developerstudio.datamapper.diagram.custom.model.transformers.TransformerConstants.CONSTANT_SUBTRACT_SIGN;
 
 /**
- * This class extended from the {@link AbstractDMOperatorTransformer} abstract class and generate script for constant
+ * This class extended from the {@link AbstractDMOperatorTransformer} abstract class and generate script for Subtract
  * operation
  */
 public class SubtractOperatorTransformer extends AbstractDMOperatorTransformer {

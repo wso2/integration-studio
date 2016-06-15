@@ -10,6 +10,7 @@
 		<xsd:schema targetNamespace="http://www.example.com/"
 			xmlns:xsd="http://www.w3.org/2001/XMLSchema"
 			elementFormDefault="qualified">
+			<xsd:import namespace="http://docs.oasis-open.org/ns/bpel4people/ws-humantask/types/200803" schemaLocation="organizationalentityschema.xsd"/>
 		</xsd:schema>
     </wsdl:types>
 </wsdl:definitions>

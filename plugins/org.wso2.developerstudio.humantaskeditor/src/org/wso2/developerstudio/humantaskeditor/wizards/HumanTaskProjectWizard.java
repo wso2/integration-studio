@@ -159,25 +159,28 @@ public class HumanTaskProjectWizard extends Wizard implements INewWizard {
         IContainer container = (IContainer) resource;
         final IFile file = container.getFile(new Path(fileName));
         final IFile wsdlfile = container.getFile(new Path(taskName + HumantaskEditorConstants.TASK_WSDL_SUFFIX));
-        final IFile cbWsdlfile = container.getFile(new Path(taskName + HumantaskEditorConstants.CALLBACK_TASK_WSDL_SUFFIX));
+        final IFile cbwsdlfile = container.getFile(new Path(taskName + HumantaskEditorConstants.CALLBACK_TASK_WSDL_SUFFIX));
+        final IFile orgSchemafile = container.getFile(new Path(HumantaskEditorConstants.ORGANIZATIONAL_ENTITY_SCHEMA_FILE));
         final IFile htconfigfile = container.getFile(new Path(HumantaskEditorConstants.INITIAL_HTCONFIG_NAME));
         addNature(file.getProject());
         try {
             InputStream stream = openContentStream(taskName, tnsName);
             InputStream wsdlStream = openWSDLStream();
             InputStream htconfigStream = openHTConfigStream();
+            InputStream orgSchemaStream = openOrgSchemaStream();
             if (file.exists()) {
                 file.setContents(stream, true, true, monitor);
             } else {
                 file.create(stream, true, monitor);
                 wsdlfile.create(wsdlStream, true, monitor);
-                cbWsdlfile.create(wsdlStream, true, monitor);
+                cbwsdlfile.create(wsdlStream, true, monitor);
                 htconfigfile.create(htconfigStream, true, monitor);
-
+                orgSchemafile.create(orgSchemaStream, true, monitor);
             }
             stream.close();
             wsdlStream.close();
             htconfigStream.close();
+            orgSchemaStream.close();
         } catch (IOException e) {
             logger.log(Level.FINE, HumantaskEditorConstants.ERROR_CREATING_INITIAL_FILE_MESSAGE, e);
             IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage());
@@ -207,7 +210,7 @@ public class HumanTaskProjectWizard extends Wizard implements INewWizard {
     }
 
     /**
-     * We will initialize file contents with a sample text.
+     * Will initialize file contents with a sample text.
      *
      * @throws IOException
      * @throws CoreException
@@ -219,7 +222,7 @@ public class HumanTaskProjectWizard extends Wizard implements INewWizard {
     }
 
     /**
-     * We will initialize file contents with a sample text.
+     * Will initialize file contents with a dummy wsdl.
      *
      * @throws IOException
      */
@@ -228,9 +231,20 @@ public class HumanTaskProjectWizard extends Wizard implements INewWizard {
         String contents = readDummyWSDL();
         return new ByteArrayInputStream(contents.getBytes());
     }
+    
+    /**
+     * Will initialize file contents with a dummy org schema.
+     *
+     * @throws IOException
+     */
+
+    private InputStream openOrgSchemaStream() throws IOException {
+        String contents = readDummyOrgSchema();
+        return new ByteArrayInputStream(contents.getBytes());
+    }
 
     /**
-     * We will initialize file contents with a sample text.
+     * Will initialize file contents with a dummy htconfig.
      *
      * @throws IOException
      */
@@ -295,6 +309,34 @@ public class HumanTaskProjectWizard extends Wizard implements INewWizard {
         }
         return sb.toString();
     }
+    
+    /**
+     * Read dummy org schema file which is needed to initialize a new ht file
+     *
+     * @throws IOException
+     */
+    private String readDummyOrgSchema() throws IOException {
+        StringBuilder sb = new StringBuilder();
+        URL url;
+        try {
+            url = new URL(HumantaskEditorConstants.DUMMY_ORG_SCHEMA_LOCATION);
+            InputStream inputStream = url.openConnection().getInputStream();
+            BufferedReader in = new BufferedReader(new InputStreamReader(inputStream));
+            String inputLine;
+            while ((inputLine = in.readLine()) != null) {
+                sb.append(inputLine + "\n");
+            }
+
+            in.close();
+
+        } catch (IOException e) {
+            logger.log(Level.FINE, "Error reading from org schema file", e);
+            IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage());
+            ErrorDialog.openError(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
+                    HumantaskEditorConstants.ERROR_MESSAGE, "Error reading from project", editorStatus);
+        }
+        return sb.toString();
+    }
 
     private String readDummyHtConfig() throws IOException {
         StringBuilder sb = new StringBuilder();
@@ -339,7 +381,7 @@ public class HumanTaskProjectWizard extends Wizard implements INewWizard {
     }
 
     /**
-     * We will accept the selection in the workbench to see if we can initialize
+     * Will accept the selection in the workbench to see if we can initialize
      * from it.
      *
      * @see IWorkbenchWizard#init(IWorkbench, IStructuredSelection)

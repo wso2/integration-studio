@@ -26,6 +26,6 @@ public class DataMapperImplConstants {
 	public static final String ELSE_TAG = "Else";
 	public static final String OUT_TAG = "Out";
 	public static final String START_INDEX = "StartIndex";
-	public static final String END_INDEX = "End Index";
+	public static final String END_INDEX = "EndIndex";
 
 }

@@ -36,7 +36,7 @@ public class ConstantOperatorTransformer extends AbstractDMOperatorTransformer {
 
     @Override
     public String generateScriptForOperation(Class<?> generatorClass, List<DMVariable> inputVariables,
-            Map<String, SchemaDataType> variableTypeMap, Stack<ForLoopBean> parentForLoopBeanStack,
+            Map<String, List<SchemaDataType>> variableTypeMap, Stack<ForLoopBean> parentForLoopBeanStack,
             DMOperation operator) {
         StringBuilder operationBuilder = new StringBuilder();
         String constantValue = (String) operator.getProperty(CONSTANT_VALUE_TAG);

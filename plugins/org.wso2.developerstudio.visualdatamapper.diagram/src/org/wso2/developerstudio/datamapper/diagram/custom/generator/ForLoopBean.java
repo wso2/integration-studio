@@ -17,83 +17,117 @@ package org.wso2.developerstudio.datamapper.diagram.custom.generator;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import org.wso2.developerstudio.datamapper.diagram.custom.util.ScriptGenerationUtil;
 
 /**
- * This class represent a for loop object with operations and nested for loops it contains
+ * This class represent a for loop object with operations and nested for loops
+ * it contains
  *
  */
 public class ForLoopBean {
 
-    private String iterativeName;
-    private String variableName;
-    private List<Integer> nestedForLoopList;
-    private List<Integer> operationList;
-    private int parentIndex;
-    private List<String> arrayVariableListToInstantiate;
-    private List<String> objectVariableListToInstantiate;
+	private String iterativeName;
+	private String variableName;
+	private List<Integer> nestedForLoopList;
+	private List<Integer> operationList;
+	private int parentIndex;
+	private List<String> arrayVariableListToInstantiate;
+	private List<String> objectVariableListToInstantiate;
+	private boolean nullable;
 
-    public ForLoopBean(String iterativeName, String variableName) {
-        nestedForLoopList = new ArrayList<>();
-        operationList = new ArrayList<>();
-        arrayVariableListToInstantiate = new ArrayList<>();
-        objectVariableListToInstantiate = new ArrayList<>();
-        this.iterativeName = iterativeName;
-        this.variableName = variableName;
-    }
+	public ForLoopBean(String iterativeName, String variableName, boolean nullable) {
+		nestedForLoopList = new ArrayList<>();
+		operationList = new ArrayList<>();
+		arrayVariableListToInstantiate = new ArrayList<>();
+		objectVariableListToInstantiate = new ArrayList<>();
+		this.iterativeName = getValidIterateName(iterativeName);
+		this.variableName = variableName;
+		this.nullable = nullable;
+	}
 
-    public List<String> getArrayVariableListToInstantiate() {
-        return arrayVariableListToInstantiate;
-    }
+	/**
+	 * This method is to format the iterate variable name if it is not an valid
+	 * variable name
+	 * 
+	 * @param iterativeName
+	 * @return
+	 */
+	private String getValidIterateName(String iterativeName) {
+		// Create a Pattern object
+		Pattern pattern = Pattern.compile(ScriptGenerationUtil.VALID_VARIABLE_NAME_REGEX);
+		// Now create matcher object.
+		Matcher matcher = pattern.matcher(iterativeName);
+		if (matcher.find()) {
+			return iterativeName;
+		} else {
+			return iterativeName.replaceAll("\\W", "_");
+		}
+	}
 
-    public void setArrayVariableListToInstantiate(List<String> arrayVariableListToInstantiate) {
-        this.arrayVariableListToInstantiate = arrayVariableListToInstantiate;
-    }
+	public List<String> getArrayVariableListToInstantiate() {
+		return arrayVariableListToInstantiate;
+	}
 
-    public List<String> getObjectVariableListToInstantiate() {
-        return objectVariableListToInstantiate;
-    }
+	public void setArrayVariableListToInstantiate(List<String> arrayVariableListToInstantiate) {
+		this.arrayVariableListToInstantiate = arrayVariableListToInstantiate;
+	}
 
-    public void setObjectVariableListToInstantiate(List<String> objectVariableListToInstantiate) {
-        this.objectVariableListToInstantiate = objectVariableListToInstantiate;
-    }
+	public List<String> getObjectVariableListToInstantiate() {
+		return objectVariableListToInstantiate;
+	}
 
-    public String getIterativeName() {
-        return iterativeName;
-    }
+	public void setObjectVariableListToInstantiate(List<String> objectVariableListToInstantiate) {
+		this.objectVariableListToInstantiate = objectVariableListToInstantiate;
+	}
 
-    public void setIterativeName(String iterativeName) {
-        this.iterativeName = iterativeName;
-    }
+	public String getIterativeName() {
+		return iterativeName;
+	}
 
-    public String getVariableName() {
-        return variableName;
-    }
+	public void setIterativeName(String iterativeName) {
+		this.iterativeName = iterativeName;
+	}
 
-    public void setVariableName(String variableName) {
-        this.variableName = variableName;
-    }
+	public String getVariableName() {
+		return variableName;
+	}
 
-    public List<Integer> getNestedForLoopList() {
-        return nestedForLoopList;
-    }
+	public void setVariableName(String variableName) {
+		this.variableName = variableName;
+	}
 
-    public void setNestedForLoopList(List<Integer> nestedForLoopList) {
-        this.nestedForLoopList = nestedForLoopList;
-    }
+	public List<Integer> getNestedForLoopList() {
+		return nestedForLoopList;
+	}
 
-    public List<Integer> getOperationList() {
-        return operationList;
-    }
+	public void setNestedForLoopList(List<Integer> nestedForLoopList) {
+		this.nestedForLoopList = nestedForLoopList;
+	}
 
-    public void setOperationList(List<Integer> operationList) {
-        this.operationList = operationList;
-    }
+	public List<Integer> getOperationList() {
+		return operationList;
+	}
 
-    public int getParentIndex() {
-        return parentIndex;
-    }
+	public void setOperationList(List<Integer> operationList) {
+		this.operationList = operationList;
+	}
 
-    public void setParentIndex(int parentIndex) {
-        this.parentIndex = parentIndex;
-    }
+	public int getParentIndex() {
+		return parentIndex;
+	}
+
+	public void setParentIndex(int parentIndex) {
+		this.parentIndex = parentIndex;
+	}
+
+	public boolean isNullable() {
+		return nullable;
+	}
+
+	public void setNullable(boolean nullable) {
+		this.nullable = nullable;
+	}
 }

@@ -4,14 +4,12 @@ package org.wso2.developerstudio.datamapper.impl;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -19,6 +17,7 @@ import org.wso2.developerstudio.datamapper.DataMapperOperatorType;
 import org.wso2.developerstudio.datamapper.DataMapperPackage;
 import org.wso2.developerstudio.datamapper.Operator;
 import org.wso2.developerstudio.datamapper.OperatorBasicContainer;
+import org.wso2.developerstudio.datamapper.OperatorLeftConnector;
 import org.wso2.developerstudio.datamapper.SchemaDataType;
 
 /**
@@ -575,14 +574,24 @@ public class OperatorImpl extends DataMapperNodeImpl implements Operator {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc --> 
+	 * [IMPORTANT] - Here we are setting generated NOT.
+	 * Which means this method will not get modified with code generation even
+	 * you do some changes in ecore model to "Operator". Remove 'NOT' if you
+	 * want to do changes for "Operator" in the ecore. 
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * 
+	 * @generated NOT
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case DataMapperPackage.OPERATOR__BASIC_CONTAINER:
+				//Fixing DEVTOOLESB-312
+				EList<OperatorLeftConnector> leftConnectors = getBasicContainer().getLeftContainer().getLeftConnectors();
+				for(OperatorLeftConnector  connector : leftConnectors){
+					connector.getInNode().getIncomingLink().clear();		
+				}
 				setBasicContainer((OperatorBasicContainer)null);
 				return;
 			case DataMapperPackage.OPERATOR__SERIALIZED:

@@ -52,13 +52,13 @@ public class HumantaskEditorConstants {
 
     public static final String PLUGIN_ID = "org.wso2.developerstudio.humantaskeditor";
 
-    public static final String DUMMY_HTCONFIG_LOCATION = "platform:/plugin/org.wso2.developerstudio.humantaskeditor/HumanTaskEditor/resources/dummyhtconfig.ht";
+    public static final String DUMMY_HTCONFIG_LOCATION = "platform:/plugin/org.wso2.developerstudio.humantaskeditor/HumanTaskEditor/resources/templatehtconfig.ht";
 
-    public static final String DUMMY_WSDL_LOCATION = "platform:/plugin/org.wso2.developerstudio.humantaskeditor/HumanTaskEditor/resources/dummy.wsdl";
+    public static final String DUMMY_WSDL_LOCATION = "platform:/plugin/org.wso2.developerstudio.humantaskeditor/HumanTaskEditor/resources/template.wsdl";
     
     public static final String DUMMY_ORG_SCHEMA_LOCATION = "platform:/plugin/org.wso2.developerstudio.humantaskeditor/HumanTaskEditor/resources/organizationalentityschema.xsd";
 
-    public static final String DUMMY_HT_LOCATION = "platform:/plugin/org.wso2.developerstudio.humantaskeditor/HumanTaskEditor/resources/dummy.ht";
+    public static final String DUMMY_HT_LOCATION = "platform:/plugin/org.wso2.developerstudio.humantaskeditor/HumanTaskEditor/resources/template.ht";
 
     public static final String ERROR_OPENING_THE_EDITOR_MESSAGE = "Error opening the editor";
 

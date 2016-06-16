@@ -60,7 +60,7 @@ function createFile(currentTaskName, state, taskNode) { //createFile
         .val();
     var serviceName = $('#' + currentTaskName + 'wrapper #taskCallbackServiceName').val();
     var outputElements = $('#' + currentTaskName + 'wrapper #outputmappingTable tr');
-    $.get('resources/dummy.wsdl', function(data) {
+    $.get('resources/template.wsdl', function(data) {
        try {
             wsdlDom = marshalEditorTextContent(data);
             generateInputWSDL(wsdlDom, xmlDom, currentTaskName);
@@ -72,7 +72,7 @@ function createFile(currentTaskName, state, taskNode) { //createFile
 
     });
     // Create Task Callback WSDL
-    $.get('resources/dummy.wsdl', function(data) {
+    $.get('resources/template.wsdl', function(data) {
         try {
              wsdlCBDom = marshalEditorTextContent(data);
             generateOutputWSDL(wsdlCBDom, xmlDom, currentTaskName,serviceURL,operationName,serviceName,outputElements);
@@ -83,7 +83,7 @@ function createFile(currentTaskName, state, taskNode) { //createFile
         }
 
     });
-    $.get('resources/dummyhtconfig.ht', function(data) {
+    $.get('resources/templatehtconfig.ht', function(data) {
         try {
             htconfigDom = marshalEditorTextContent(data);
             generateHTConfig(htconfigDom, xmlDom, currentTaskName);
@@ -117,7 +117,7 @@ function readCBWSDL(currentTaskName) { //createFile
  * 
  */
 function addTask() { //createFile
-    $.get('resources/dummytask.ht', function(data) {
+    $.get('resources/templatetask.ht', function(data) {
         try {
             taskPartDom = marshalEditorTextContent(data);
             tasks = xmlDom.getElementsByTagName("tasks")[0];
@@ -148,7 +148,7 @@ function addTask() { //createFile
  * 
  */
 function addInitalTask() { //createFile
-    $.get('resources/dummy.ht', function(data) {
+    $.get('resources/template.ht', function(data) {
         try {
             xmlDom = marshalEditorTextContent(data);
             IDESaveContent(data);

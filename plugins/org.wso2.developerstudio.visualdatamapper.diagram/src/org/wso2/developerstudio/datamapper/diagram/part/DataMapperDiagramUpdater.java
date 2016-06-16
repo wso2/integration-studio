@@ -15,9 +15,11 @@ import org.eclipse.gmf.tooling.runtime.update.DiagramUpdater;
 import org.wso2.developerstudio.datamapper.AbsoluteValue;
 import org.wso2.developerstudio.datamapper.Add;
 import org.wso2.developerstudio.datamapper.Celi;
+import org.wso2.developerstudio.datamapper.Compare;
 import org.wso2.developerstudio.datamapper.Concat;
 import org.wso2.developerstudio.datamapper.Constant;
 import org.wso2.developerstudio.datamapper.Contains;
+import org.wso2.developerstudio.datamapper.CustomFunction;
 import org.wso2.developerstudio.datamapper.DataMapperLink;
 import org.wso2.developerstudio.datamapper.DataMapperPackage;
 import org.wso2.developerstudio.datamapper.DataMapperRoot;
@@ -30,6 +32,9 @@ import org.wso2.developerstudio.datamapper.IfElse;
 import org.wso2.developerstudio.datamapper.InNode;
 import org.wso2.developerstudio.datamapper.Input;
 import org.wso2.developerstudio.datamapper.LowerCase;
+import org.wso2.developerstudio.datamapper.Match;
+import org.wso2.developerstudio.datamapper.Max;
+import org.wso2.developerstudio.datamapper.Min;
 import org.wso2.developerstudio.datamapper.Multiply;
 import org.wso2.developerstudio.datamapper.Operator;
 import org.wso2.developerstudio.datamapper.OperatorBasicContainer;
@@ -39,22 +44,29 @@ import org.wso2.developerstudio.datamapper.OperatorRightConnector;
 import org.wso2.developerstudio.datamapper.OperatorRightContainer;
 import org.wso2.developerstudio.datamapper.OutNode;
 import org.wso2.developerstudio.datamapper.Output;
+import org.wso2.developerstudio.datamapper.Properties;
+import org.wso2.developerstudio.datamapper.Replace;
 import org.wso2.developerstudio.datamapper.Round;
 import org.wso2.developerstudio.datamapper.SetPrecision;
 import org.wso2.developerstudio.datamapper.Split;
 import org.wso2.developerstudio.datamapper.StartsWith;
 import org.wso2.developerstudio.datamapper.StringLength;
+import org.wso2.developerstudio.datamapper.StringToBoolean;
+import org.wso2.developerstudio.datamapper.StringToNumber;
 import org.wso2.developerstudio.datamapper.Substring;
 import org.wso2.developerstudio.datamapper.Subtract;
 import org.wso2.developerstudio.datamapper.TreeNode;
+import org.wso2.developerstudio.datamapper.Trim;
 import org.wso2.developerstudio.datamapper.UpperCase;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.ANDEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.AbsoluteValueEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.AddEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.CeliEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.CompareEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.ConcatEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.ConstantEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.ContainsEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.CustomFunctionEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.DataMapperLinkEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.DataMapperRootEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.DivideEditPart;
@@ -68,6 +80,9 @@ import org.wso2.developerstudio.datamapper.diagram.edit.parts.InNode3EditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.InNodeEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.InputEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.LowerCaseEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.MatchEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.MaxEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.MinEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.MultiplyEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.NOTEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.OREditPart;
@@ -80,16 +95,21 @@ import org.wso2.developerstudio.datamapper.diagram.edit.parts.OutNode2EditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.OutNode3EditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.OutNodeEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.OutputEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.PropertiesEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.ReplaceEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.RoundEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.SetPrecisionEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.SplitEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.StartsWithEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.StringLengthEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.StringToBooleanEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.StringToNumberEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.SubstringEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.SubtractEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.TreeNode2EditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.TreeNode3EditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.TreeNodeEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.TrimEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.UpperCaseEditPart;
 import org.wso2.developerstudio.datamapper.diagram.providers.DataMapperElementTypes;
 
@@ -157,6 +177,26 @@ public class DataMapperDiagramUpdater {
 			return getOR_2027SemanticChildren(view);
 		case NOTEditPart.VISUAL_ID:
 			return getNOT_2028SemanticChildren(view);
+		case TrimEditPart.VISUAL_ID:
+			return getTrim_2029SemanticChildren(view);
+		case ReplaceEditPart.VISUAL_ID:
+			return getReplace_2030SemanticChildren(view);
+		case MatchEditPart.VISUAL_ID:
+			return getMatch_2031SemanticChildren(view);
+		case MinEditPart.VISUAL_ID:
+			return getMin_2032SemanticChildren(view);
+		case MaxEditPart.VISUAL_ID:
+			return getMax_2033SemanticChildren(view);
+		case CustomFunctionEditPart.VISUAL_ID:
+			return getCustomFunction_2034SemanticChildren(view);
+		case PropertiesEditPart.VISUAL_ID:
+			return getProperties_2035SemanticChildren(view);
+		case CompareEditPart.VISUAL_ID:
+			return getCompare_2036SemanticChildren(view);
+		case StringToNumberEditPart.VISUAL_ID:
+			return getStringToNumber_2037SemanticChildren(view);
+		case StringToBooleanEditPart.VISUAL_ID:
+			return getStringToBoolean_2038SemanticChildren(view);
 		case TreeNodeEditPart.VISUAL_ID:
 			return getTreeNode_3002SemanticChildren(view);
 		case ElementEditPart.VISUAL_ID:
@@ -298,6 +338,46 @@ public class DataMapperDiagramUpdater {
 				continue;
 			}
 			if (visualID == NOTEditPart.VISUAL_ID) {
+				result.add(new DataMapperNodeDescriptor(childElement, visualID));
+				continue;
+			}
+			if (visualID == TrimEditPart.VISUAL_ID) {
+				result.add(new DataMapperNodeDescriptor(childElement, visualID));
+				continue;
+			}
+			if (visualID == ReplaceEditPart.VISUAL_ID) {
+				result.add(new DataMapperNodeDescriptor(childElement, visualID));
+				continue;
+			}
+			if (visualID == MatchEditPart.VISUAL_ID) {
+				result.add(new DataMapperNodeDescriptor(childElement, visualID));
+				continue;
+			}
+			if (visualID == MinEditPart.VISUAL_ID) {
+				result.add(new DataMapperNodeDescriptor(childElement, visualID));
+				continue;
+			}
+			if (visualID == MaxEditPart.VISUAL_ID) {
+				result.add(new DataMapperNodeDescriptor(childElement, visualID));
+				continue;
+			}
+			if (visualID == CustomFunctionEditPart.VISUAL_ID) {
+				result.add(new DataMapperNodeDescriptor(childElement, visualID));
+				continue;
+			}
+			if (visualID == PropertiesEditPart.VISUAL_ID) {
+				result.add(new DataMapperNodeDescriptor(childElement, visualID));
+				continue;
+			}
+			if (visualID == CompareEditPart.VISUAL_ID) {
+				result.add(new DataMapperNodeDescriptor(childElement, visualID));
+				continue;
+			}
+			if (visualID == StringToNumberEditPart.VISUAL_ID) {
+				result.add(new DataMapperNodeDescriptor(childElement, visualID));
+				continue;
+			}
+			if (visualID == StringToBooleanEditPart.VISUAL_ID) {
 				result.add(new DataMapperNodeDescriptor(childElement, visualID));
 				continue;
 			}
@@ -805,6 +885,196 @@ public class DataMapperDiagramUpdater {
 	}
 
 	/**
+	* @generated
+	*/
+	public static List<DataMapperNodeDescriptor> getTrim_2029SemanticChildren(View view) {
+		if (!view.isSetElement()) {
+			return Collections.emptyList();
+		}
+		Trim modelElement = (Trim) view.getElement();
+		LinkedList<DataMapperNodeDescriptor> result = new LinkedList<DataMapperNodeDescriptor>();
+		{
+			OperatorBasicContainer childElement = modelElement.getBasicContainer();
+			int visualID = DataMapperVisualIDRegistry.getNodeVisualID(view, childElement);
+			if (visualID == OperatorBasicContainerEditPart.VISUAL_ID) {
+				result.add(new DataMapperNodeDescriptor(childElement, visualID));
+			}
+		}
+		return result;
+	}
+
+	/**
+	* @generated
+	*/
+	public static List<DataMapperNodeDescriptor> getReplace_2030SemanticChildren(View view) {
+		if (!view.isSetElement()) {
+			return Collections.emptyList();
+		}
+		Replace modelElement = (Replace) view.getElement();
+		LinkedList<DataMapperNodeDescriptor> result = new LinkedList<DataMapperNodeDescriptor>();
+		{
+			OperatorBasicContainer childElement = modelElement.getBasicContainer();
+			int visualID = DataMapperVisualIDRegistry.getNodeVisualID(view, childElement);
+			if (visualID == OperatorBasicContainerEditPart.VISUAL_ID) {
+				result.add(new DataMapperNodeDescriptor(childElement, visualID));
+			}
+		}
+		return result;
+	}
+
+	/**
+	* @generated
+	*/
+	public static List<DataMapperNodeDescriptor> getMatch_2031SemanticChildren(View view) {
+		if (!view.isSetElement()) {
+			return Collections.emptyList();
+		}
+		Match modelElement = (Match) view.getElement();
+		LinkedList<DataMapperNodeDescriptor> result = new LinkedList<DataMapperNodeDescriptor>();
+		{
+			OperatorBasicContainer childElement = modelElement.getBasicContainer();
+			int visualID = DataMapperVisualIDRegistry.getNodeVisualID(view, childElement);
+			if (visualID == OperatorBasicContainerEditPart.VISUAL_ID) {
+				result.add(new DataMapperNodeDescriptor(childElement, visualID));
+			}
+		}
+		return result;
+	}
+
+	/**
+	* @generated
+	*/
+	public static List<DataMapperNodeDescriptor> getMin_2032SemanticChildren(View view) {
+		if (!view.isSetElement()) {
+			return Collections.emptyList();
+		}
+		Min modelElement = (Min) view.getElement();
+		LinkedList<DataMapperNodeDescriptor> result = new LinkedList<DataMapperNodeDescriptor>();
+		{
+			OperatorBasicContainer childElement = modelElement.getBasicContainer();
+			int visualID = DataMapperVisualIDRegistry.getNodeVisualID(view, childElement);
+			if (visualID == OperatorBasicContainerEditPart.VISUAL_ID) {
+				result.add(new DataMapperNodeDescriptor(childElement, visualID));
+			}
+		}
+		return result;
+	}
+
+	/**
+	* @generated
+	*/
+	public static List<DataMapperNodeDescriptor> getMax_2033SemanticChildren(View view) {
+		if (!view.isSetElement()) {
+			return Collections.emptyList();
+		}
+		Max modelElement = (Max) view.getElement();
+		LinkedList<DataMapperNodeDescriptor> result = new LinkedList<DataMapperNodeDescriptor>();
+		{
+			OperatorBasicContainer childElement = modelElement.getBasicContainer();
+			int visualID = DataMapperVisualIDRegistry.getNodeVisualID(view, childElement);
+			if (visualID == OperatorBasicContainerEditPart.VISUAL_ID) {
+				result.add(new DataMapperNodeDescriptor(childElement, visualID));
+			}
+		}
+		return result;
+	}
+
+	/**
+	* @generated
+	*/
+	public static List<DataMapperNodeDescriptor> getCustomFunction_2034SemanticChildren(View view) {
+		if (!view.isSetElement()) {
+			return Collections.emptyList();
+		}
+		CustomFunction modelElement = (CustomFunction) view.getElement();
+		LinkedList<DataMapperNodeDescriptor> result = new LinkedList<DataMapperNodeDescriptor>();
+		{
+			OperatorBasicContainer childElement = modelElement.getBasicContainer();
+			int visualID = DataMapperVisualIDRegistry.getNodeVisualID(view, childElement);
+			if (visualID == OperatorBasicContainerEditPart.VISUAL_ID) {
+				result.add(new DataMapperNodeDescriptor(childElement, visualID));
+			}
+		}
+		return result;
+	}
+
+	/**
+	* @generated
+	*/
+	public static List<DataMapperNodeDescriptor> getProperties_2035SemanticChildren(View view) {
+		if (!view.isSetElement()) {
+			return Collections.emptyList();
+		}
+		Properties modelElement = (Properties) view.getElement();
+		LinkedList<DataMapperNodeDescriptor> result = new LinkedList<DataMapperNodeDescriptor>();
+		{
+			OperatorBasicContainer childElement = modelElement.getBasicContainer();
+			int visualID = DataMapperVisualIDRegistry.getNodeVisualID(view, childElement);
+			if (visualID == OperatorBasicContainerEditPart.VISUAL_ID) {
+				result.add(new DataMapperNodeDescriptor(childElement, visualID));
+			}
+		}
+		return result;
+	}
+
+	/**
+	* @generated
+	*/
+	public static List<DataMapperNodeDescriptor> getCompare_2036SemanticChildren(View view) {
+		if (!view.isSetElement()) {
+			return Collections.emptyList();
+		}
+		Compare modelElement = (Compare) view.getElement();
+		LinkedList<DataMapperNodeDescriptor> result = new LinkedList<DataMapperNodeDescriptor>();
+		{
+			OperatorBasicContainer childElement = modelElement.getBasicContainer();
+			int visualID = DataMapperVisualIDRegistry.getNodeVisualID(view, childElement);
+			if (visualID == OperatorBasicContainerEditPart.VISUAL_ID) {
+				result.add(new DataMapperNodeDescriptor(childElement, visualID));
+			}
+		}
+		return result;
+	}
+
+	/**
+	* @generated
+	*/
+	public static List<DataMapperNodeDescriptor> getStringToNumber_2037SemanticChildren(View view) {
+		if (!view.isSetElement()) {
+			return Collections.emptyList();
+		}
+		StringToNumber modelElement = (StringToNumber) view.getElement();
+		LinkedList<DataMapperNodeDescriptor> result = new LinkedList<DataMapperNodeDescriptor>();
+		{
+			OperatorBasicContainer childElement = modelElement.getBasicContainer();
+			int visualID = DataMapperVisualIDRegistry.getNodeVisualID(view, childElement);
+			if (visualID == OperatorBasicContainerEditPart.VISUAL_ID) {
+				result.add(new DataMapperNodeDescriptor(childElement, visualID));
+			}
+		}
+		return result;
+	}
+
+	/**
+	* @generated
+	*/
+	public static List<DataMapperNodeDescriptor> getStringToBoolean_2038SemanticChildren(View view) {
+		if (!view.isSetElement()) {
+			return Collections.emptyList();
+		}
+		StringToBoolean modelElement = (StringToBoolean) view.getElement();
+		LinkedList<DataMapperNodeDescriptor> result = new LinkedList<DataMapperNodeDescriptor>();
+		{
+			OperatorBasicContainer childElement = modelElement.getBasicContainer();
+			int visualID = DataMapperVisualIDRegistry.getNodeVisualID(view, childElement);
+			if (visualID == OperatorBasicContainerEditPart.VISUAL_ID) {
+				result.add(new DataMapperNodeDescriptor(childElement, visualID));
+			}
+		}
+		return result;
+	}
+
+	/**
 	 * @generated
 	 */
 	public static List<DataMapperNodeDescriptor> getTreeNode_3002SemanticChildren(View view) {
@@ -1119,6 +1389,26 @@ public class DataMapperDiagramUpdater {
 			return getOR_2027ContainedLinks(view);
 		case NOTEditPart.VISUAL_ID:
 			return getNOT_2028ContainedLinks(view);
+		case TrimEditPart.VISUAL_ID:
+			return getTrim_2029ContainedLinks(view);
+		case ReplaceEditPart.VISUAL_ID:
+			return getReplace_2030ContainedLinks(view);
+		case MatchEditPart.VISUAL_ID:
+			return getMatch_2031ContainedLinks(view);
+		case MinEditPart.VISUAL_ID:
+			return getMin_2032ContainedLinks(view);
+		case MaxEditPart.VISUAL_ID:
+			return getMax_2033ContainedLinks(view);
+		case CustomFunctionEditPart.VISUAL_ID:
+			return getCustomFunction_2034ContainedLinks(view);
+		case PropertiesEditPart.VISUAL_ID:
+			return getProperties_2035ContainedLinks(view);
+		case CompareEditPart.VISUAL_ID:
+			return getCompare_2036ContainedLinks(view);
+		case StringToNumberEditPart.VISUAL_ID:
+			return getStringToNumber_2037ContainedLinks(view);
+		case StringToBooleanEditPart.VISUAL_ID:
+			return getStringToBoolean_2038ContainedLinks(view);
 		case TreeNodeEditPart.VISUAL_ID:
 			return getTreeNode_3002ContainedLinks(view);
 		case ElementEditPart.VISUAL_ID:
@@ -1212,6 +1502,26 @@ public class DataMapperDiagramUpdater {
 			return getOR_2027IncomingLinks(view);
 		case NOTEditPart.VISUAL_ID:
 			return getNOT_2028IncomingLinks(view);
+		case TrimEditPart.VISUAL_ID:
+			return getTrim_2029IncomingLinks(view);
+		case ReplaceEditPart.VISUAL_ID:
+			return getReplace_2030IncomingLinks(view);
+		case MatchEditPart.VISUAL_ID:
+			return getMatch_2031IncomingLinks(view);
+		case MinEditPart.VISUAL_ID:
+			return getMin_2032IncomingLinks(view);
+		case MaxEditPart.VISUAL_ID:
+			return getMax_2033IncomingLinks(view);
+		case CustomFunctionEditPart.VISUAL_ID:
+			return getCustomFunction_2034IncomingLinks(view);
+		case PropertiesEditPart.VISUAL_ID:
+			return getProperties_2035IncomingLinks(view);
+		case CompareEditPart.VISUAL_ID:
+			return getCompare_2036IncomingLinks(view);
+		case StringToNumberEditPart.VISUAL_ID:
+			return getStringToNumber_2037IncomingLinks(view);
+		case StringToBooleanEditPart.VISUAL_ID:
+			return getStringToBoolean_2038IncomingLinks(view);
 		case TreeNodeEditPart.VISUAL_ID:
 			return getTreeNode_3002IncomingLinks(view);
 		case ElementEditPart.VISUAL_ID:
@@ -1305,6 +1615,26 @@ public class DataMapperDiagramUpdater {
 			return getOR_2027OutgoingLinks(view);
 		case NOTEditPart.VISUAL_ID:
 			return getNOT_2028OutgoingLinks(view);
+		case TrimEditPart.VISUAL_ID:
+			return getTrim_2029OutgoingLinks(view);
+		case ReplaceEditPart.VISUAL_ID:
+			return getReplace_2030OutgoingLinks(view);
+		case MatchEditPart.VISUAL_ID:
+			return getMatch_2031OutgoingLinks(view);
+		case MinEditPart.VISUAL_ID:
+			return getMin_2032OutgoingLinks(view);
+		case MaxEditPart.VISUAL_ID:
+			return getMax_2033OutgoingLinks(view);
+		case CustomFunctionEditPart.VISUAL_ID:
+			return getCustomFunction_2034OutgoingLinks(view);
+		case PropertiesEditPart.VISUAL_ID:
+			return getProperties_2035OutgoingLinks(view);
+		case CompareEditPart.VISUAL_ID:
+			return getCompare_2036OutgoingLinks(view);
+		case StringToNumberEditPart.VISUAL_ID:
+			return getStringToNumber_2037OutgoingLinks(view);
+		case StringToBooleanEditPart.VISUAL_ID:
+			return getStringToBoolean_2038OutgoingLinks(view);
 		case TreeNodeEditPart.VISUAL_ID:
 			return getTreeNode_3002OutgoingLinks(view);
 		case ElementEditPart.VISUAL_ID:
@@ -1527,6 +1857,76 @@ public class DataMapperDiagramUpdater {
 	* @generated
 	*/
 	public static List<DataMapperLinkDescriptor> getNOT_2028ContainedLinks(View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	* @generated
+	*/
+	public static List<DataMapperLinkDescriptor> getTrim_2029ContainedLinks(View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	* @generated
+	*/
+	public static List<DataMapperLinkDescriptor> getReplace_2030ContainedLinks(View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	* @generated
+	*/
+	public static List<DataMapperLinkDescriptor> getMatch_2031ContainedLinks(View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	* @generated
+	*/
+	public static List<DataMapperLinkDescriptor> getMin_2032ContainedLinks(View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	* @generated
+	*/
+	public static List<DataMapperLinkDescriptor> getMax_2033ContainedLinks(View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	* @generated
+	*/
+	public static List<DataMapperLinkDescriptor> getCustomFunction_2034ContainedLinks(View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	* @generated
+	*/
+	public static List<DataMapperLinkDescriptor> getProperties_2035ContainedLinks(View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	* @generated
+	*/
+	public static List<DataMapperLinkDescriptor> getCompare_2036ContainedLinks(View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	* @generated
+	*/
+	public static List<DataMapperLinkDescriptor> getStringToNumber_2037ContainedLinks(View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	* @generated
+	*/
+	public static List<DataMapperLinkDescriptor> getStringToBoolean_2038ContainedLinks(View view) {
 		return Collections.emptyList();
 	}
 
@@ -1830,6 +2230,76 @@ public class DataMapperDiagramUpdater {
 	* @generated
 	*/
 	public static List<DataMapperLinkDescriptor> getNOT_2028IncomingLinks(View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	* @generated
+	*/
+	public static List<DataMapperLinkDescriptor> getTrim_2029IncomingLinks(View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	* @generated
+	*/
+	public static List<DataMapperLinkDescriptor> getReplace_2030IncomingLinks(View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	* @generated
+	*/
+	public static List<DataMapperLinkDescriptor> getMatch_2031IncomingLinks(View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	* @generated
+	*/
+	public static List<DataMapperLinkDescriptor> getMin_2032IncomingLinks(View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	* @generated
+	*/
+	public static List<DataMapperLinkDescriptor> getMax_2033IncomingLinks(View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	* @generated
+	*/
+	public static List<DataMapperLinkDescriptor> getCustomFunction_2034IncomingLinks(View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	* @generated
+	*/
+	public static List<DataMapperLinkDescriptor> getProperties_2035IncomingLinks(View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	* @generated
+	*/
+	public static List<DataMapperLinkDescriptor> getCompare_2036IncomingLinks(View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	* @generated
+	*/
+	public static List<DataMapperLinkDescriptor> getStringToNumber_2037IncomingLinks(View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	* @generated
+	*/
+	public static List<DataMapperLinkDescriptor> getStringToBoolean_2038IncomingLinks(View view) {
 		return Collections.emptyList();
 	}
 
@@ -2139,6 +2609,76 @@ public class DataMapperDiagramUpdater {
 	* @generated
 	*/
 	public static List<DataMapperLinkDescriptor> getNOT_2028OutgoingLinks(View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	* @generated
+	*/
+	public static List<DataMapperLinkDescriptor> getTrim_2029OutgoingLinks(View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	* @generated
+	*/
+	public static List<DataMapperLinkDescriptor> getReplace_2030OutgoingLinks(View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	* @generated
+	*/
+	public static List<DataMapperLinkDescriptor> getMatch_2031OutgoingLinks(View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	* @generated
+	*/
+	public static List<DataMapperLinkDescriptor> getMin_2032OutgoingLinks(View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	* @generated
+	*/
+	public static List<DataMapperLinkDescriptor> getMax_2033OutgoingLinks(View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	* @generated
+	*/
+	public static List<DataMapperLinkDescriptor> getCustomFunction_2034OutgoingLinks(View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	* @generated
+	*/
+	public static List<DataMapperLinkDescriptor> getProperties_2035OutgoingLinks(View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	* @generated
+	*/
+	public static List<DataMapperLinkDescriptor> getCompare_2036OutgoingLinks(View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	* @generated
+	*/
+	public static List<DataMapperLinkDescriptor> getStringToNumber_2037OutgoingLinks(View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	* @generated
+	*/
+	public static List<DataMapperLinkDescriptor> getStringToBoolean_2038OutgoingLinks(View view) {
 		return Collections.emptyList();
 	}
 

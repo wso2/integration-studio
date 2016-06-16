@@ -90,7 +90,7 @@ public class SetPrecisionEditPart extends AbstractOperatorEditPart {
 	* @generated NOT
 	*/
 	protected IFigure createNodeShape() {
-		int numberOfDecimals =((SetPrecisionImpl)((View) getModel()).getElement()).getNumberOfDigits();
+		int numberOfDecimals = ((SetPrecisionImpl) ((View) getModel()).getElement()).getNumberOfDigits();
 		return primaryShape = new SetPrecisionFigure(numberOfDecimals);
 	}
 

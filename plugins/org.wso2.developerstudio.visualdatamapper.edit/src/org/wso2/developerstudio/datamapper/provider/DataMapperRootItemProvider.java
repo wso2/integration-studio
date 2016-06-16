@@ -165,6 +165,56 @@ public class DataMapperRootItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(DataMapperPackage.Literals.DATA_MAPPER_ROOT__OPERATORS,
+				 DataMapperFactory.eINSTANCE.createTrim()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(DataMapperPackage.Literals.DATA_MAPPER_ROOT__OPERATORS,
+				 DataMapperFactory.eINSTANCE.createReplace()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(DataMapperPackage.Literals.DATA_MAPPER_ROOT__OPERATORS,
+				 DataMapperFactory.eINSTANCE.createMatch()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(DataMapperPackage.Literals.DATA_MAPPER_ROOT__OPERATORS,
+				 DataMapperFactory.eINSTANCE.createMin()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(DataMapperPackage.Literals.DATA_MAPPER_ROOT__OPERATORS,
+				 DataMapperFactory.eINSTANCE.createMax()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(DataMapperPackage.Literals.DATA_MAPPER_ROOT__OPERATORS,
+				 DataMapperFactory.eINSTANCE.createCustomFunction()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(DataMapperPackage.Literals.DATA_MAPPER_ROOT__OPERATORS,
+				 DataMapperFactory.eINSTANCE.createProperties()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(DataMapperPackage.Literals.DATA_MAPPER_ROOT__OPERATORS,
+				 DataMapperFactory.eINSTANCE.createCompare()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(DataMapperPackage.Literals.DATA_MAPPER_ROOT__OPERATORS,
+				 DataMapperFactory.eINSTANCE.createStringToNumber()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(DataMapperPackage.Literals.DATA_MAPPER_ROOT__OPERATORS,
+				 DataMapperFactory.eINSTANCE.createStringToBoolean()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(DataMapperPackage.Literals.DATA_MAPPER_ROOT__OPERATORS,
 				 DataMapperFactory.eINSTANCE.createStringLength()));
 
 		newChildDescriptors.add

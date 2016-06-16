@@ -93,6 +93,236 @@ public class DataMapperItemProviderAdapterFactory extends DataMapperAdapterFacto
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.wso2.developerstudio.datamapper.Trim} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected TrimItemProvider trimItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.wso2.developerstudio.datamapper.Trim}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createTrimAdapter() {
+		if (trimItemProvider == null) {
+			trimItemProvider = new TrimItemProvider(this);
+		}
+
+		return trimItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.wso2.developerstudio.datamapper.Replace} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ReplaceItemProvider replaceItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.wso2.developerstudio.datamapper.Replace}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createReplaceAdapter() {
+		if (replaceItemProvider == null) {
+			replaceItemProvider = new ReplaceItemProvider(this);
+		}
+
+		return replaceItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.wso2.developerstudio.datamapper.Match} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected MatchItemProvider matchItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.wso2.developerstudio.datamapper.Match}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createMatchAdapter() {
+		if (matchItemProvider == null) {
+			matchItemProvider = new MatchItemProvider(this);
+		}
+
+		return matchItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.wso2.developerstudio.datamapper.Min} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected MinItemProvider minItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.wso2.developerstudio.datamapper.Min}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createMinAdapter() {
+		if (minItemProvider == null) {
+			minItemProvider = new MinItemProvider(this);
+		}
+
+		return minItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.wso2.developerstudio.datamapper.Max} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected MaxItemProvider maxItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.wso2.developerstudio.datamapper.Max}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createMaxAdapter() {
+		if (maxItemProvider == null) {
+			maxItemProvider = new MaxItemProvider(this);
+		}
+
+		return maxItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.wso2.developerstudio.datamapper.CustomFunction} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected CustomFunctionItemProvider customFunctionItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.wso2.developerstudio.datamapper.CustomFunction}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createCustomFunctionAdapter() {
+		if (customFunctionItemProvider == null) {
+			customFunctionItemProvider = new CustomFunctionItemProvider(this);
+		}
+
+		return customFunctionItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.wso2.developerstudio.datamapper.Properties} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected PropertiesItemProvider propertiesItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.wso2.developerstudio.datamapper.Properties}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createPropertiesAdapter() {
+		if (propertiesItemProvider == null) {
+			propertiesItemProvider = new PropertiesItemProvider(this);
+		}
+
+		return propertiesItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.wso2.developerstudio.datamapper.Compare} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected CompareItemProvider compareItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.wso2.developerstudio.datamapper.Compare}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createCompareAdapter() {
+		if (compareItemProvider == null) {
+			compareItemProvider = new CompareItemProvider(this);
+		}
+
+		return compareItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.wso2.developerstudio.datamapper.StringToNumber} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected StringToNumberItemProvider stringToNumberItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.wso2.developerstudio.datamapper.StringToNumber}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createStringToNumberAdapter() {
+		if (stringToNumberItemProvider == null) {
+			stringToNumberItemProvider = new StringToNumberItemProvider(this);
+		}
+
+		return stringToNumberItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.wso2.developerstudio.datamapper.StringToBoolean} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected StringToBooleanItemProvider stringToBooleanItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.wso2.developerstudio.datamapper.StringToBoolean}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createStringToBooleanAdapter() {
+		if (stringToBooleanItemProvider == null) {
+			stringToBooleanItemProvider = new StringToBooleanItemProvider(this);
+		}
+
+		return stringToBooleanItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link org.wso2.developerstudio.datamapper.DataMapperRoot} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1089,6 +1319,16 @@ public class DataMapperItemProviderAdapterFactory extends DataMapperAdapterFacto
 	 */
 	public void dispose() {
 		if (dataMapperNodeItemProvider != null) dataMapperNodeItemProvider.dispose();
+		if (trimItemProvider != null) trimItemProvider.dispose();
+		if (replaceItemProvider != null) replaceItemProvider.dispose();
+		if (matchItemProvider != null) matchItemProvider.dispose();
+		if (minItemProvider != null) minItemProvider.dispose();
+		if (maxItemProvider != null) maxItemProvider.dispose();
+		if (customFunctionItemProvider != null) customFunctionItemProvider.dispose();
+		if (propertiesItemProvider != null) propertiesItemProvider.dispose();
+		if (compareItemProvider != null) compareItemProvider.dispose();
+		if (stringToNumberItemProvider != null) stringToNumberItemProvider.dispose();
+		if (stringToBooleanItemProvider != null) stringToBooleanItemProvider.dispose();
 		if (dataMapperRootItemProvider != null) dataMapperRootItemProvider.dispose();
 		if (stringLengthItemProvider != null) stringLengthItemProvider.dispose();
 		if (startsWithItemProvider != null) startsWithItemProvider.dispose();

@@ -10,9 +10,11 @@ import org.wso2.developerstudio.datamapper.diagram.edit.commands.ANDCreateComman
 import org.wso2.developerstudio.datamapper.diagram.edit.commands.AbsoluteValueCreateCommand;
 import org.wso2.developerstudio.datamapper.diagram.edit.commands.AddCreateCommand;
 import org.wso2.developerstudio.datamapper.diagram.edit.commands.CeliCreateCommand;
+import org.wso2.developerstudio.datamapper.diagram.edit.commands.CompareCreateCommand;
 import org.wso2.developerstudio.datamapper.diagram.edit.commands.ConcatCreateCommand;
 import org.wso2.developerstudio.datamapper.diagram.edit.commands.ConstantCreateCommand;
 import org.wso2.developerstudio.datamapper.diagram.edit.commands.ContainsCreateCommand;
+import org.wso2.developerstudio.datamapper.diagram.edit.commands.CustomFunctionCreateCommand;
 import org.wso2.developerstudio.datamapper.diagram.edit.commands.DivideCreateCommand;
 import org.wso2.developerstudio.datamapper.diagram.edit.commands.EndsWithCreateCommand;
 import org.wso2.developerstudio.datamapper.diagram.edit.commands.EqualCreateCommand;
@@ -20,17 +22,25 @@ import org.wso2.developerstudio.datamapper.diagram.edit.commands.FloorCreateComm
 import org.wso2.developerstudio.datamapper.diagram.edit.commands.IfElseCreateCommand;
 import org.wso2.developerstudio.datamapper.diagram.edit.commands.InputCreateCommand;
 import org.wso2.developerstudio.datamapper.diagram.edit.commands.LowerCaseCreateCommand;
+import org.wso2.developerstudio.datamapper.diagram.edit.commands.MatchCreateCommand;
+import org.wso2.developerstudio.datamapper.diagram.edit.commands.MaxCreateCommand;
+import org.wso2.developerstudio.datamapper.diagram.edit.commands.MinCreateCommand;
 import org.wso2.developerstudio.datamapper.diagram.edit.commands.MultiplyCreateCommand;
 import org.wso2.developerstudio.datamapper.diagram.edit.commands.NOTCreateCommand;
 import org.wso2.developerstudio.datamapper.diagram.edit.commands.ORCreateCommand;
 import org.wso2.developerstudio.datamapper.diagram.edit.commands.OutputCreateCommand;
+import org.wso2.developerstudio.datamapper.diagram.edit.commands.PropertiesCreateCommand;
+import org.wso2.developerstudio.datamapper.diagram.edit.commands.ReplaceCreateCommand;
 import org.wso2.developerstudio.datamapper.diagram.edit.commands.RoundCreateCommand;
 import org.wso2.developerstudio.datamapper.diagram.edit.commands.SetPrecisionCreateCommand;
 import org.wso2.developerstudio.datamapper.diagram.edit.commands.SplitCreateCommand;
 import org.wso2.developerstudio.datamapper.diagram.edit.commands.StartsWithCreateCommand;
 import org.wso2.developerstudio.datamapper.diagram.edit.commands.StringLengthCreateCommand;
+import org.wso2.developerstudio.datamapper.diagram.edit.commands.StringToBooleanCreateCommand;
+import org.wso2.developerstudio.datamapper.diagram.edit.commands.StringToNumberCreateCommand;
 import org.wso2.developerstudio.datamapper.diagram.edit.commands.SubstringCreateCommand;
 import org.wso2.developerstudio.datamapper.diagram.edit.commands.SubtractCreateCommand;
+import org.wso2.developerstudio.datamapper.diagram.edit.commands.TrimCreateCommand;
 import org.wso2.developerstudio.datamapper.diagram.edit.commands.UpperCaseCreateCommand;
 import org.wso2.developerstudio.datamapper.diagram.providers.DataMapperElementTypes;
 
@@ -127,6 +137,36 @@ public class DataMapperRootItemSemanticEditPolicy extends DataMapperBaseItemSema
 		}
 		if (DataMapperElementTypes.NOT_2028 == req.getElementType()) {
 			return getGEFWrapper(new NOTCreateCommand(req));
+		}
+		if (DataMapperElementTypes.Trim_2029 == req.getElementType()) {
+			return getGEFWrapper(new TrimCreateCommand(req));
+		}
+		if (DataMapperElementTypes.Replace_2030 == req.getElementType()) {
+			return getGEFWrapper(new ReplaceCreateCommand(req));
+		}
+		if (DataMapperElementTypes.Match_2031 == req.getElementType()) {
+			return getGEFWrapper(new MatchCreateCommand(req));
+		}
+		if (DataMapperElementTypes.Min_2032 == req.getElementType()) {
+			return getGEFWrapper(new MinCreateCommand(req));
+		}
+		if (DataMapperElementTypes.Max_2033 == req.getElementType()) {
+			return getGEFWrapper(new MaxCreateCommand(req));
+		}
+		if (DataMapperElementTypes.CustomFunction_2034 == req.getElementType()) {
+			return getGEFWrapper(new CustomFunctionCreateCommand(req));
+		}
+		if (DataMapperElementTypes.Properties_2035 == req.getElementType()) {
+			return getGEFWrapper(new PropertiesCreateCommand(req));
+		}
+		if (DataMapperElementTypes.Compare_2036 == req.getElementType()) {
+			return getGEFWrapper(new CompareCreateCommand(req));
+		}
+		if (DataMapperElementTypes.StringToNumber_2037 == req.getElementType()) {
+			return getGEFWrapper(new StringToNumberCreateCommand(req));
+		}
+		if (DataMapperElementTypes.StringToBoolean_2038 == req.getElementType()) {
+			return getGEFWrapper(new StringToBooleanCreateCommand(req));
 		}
 		return super.getCreateCommand(req);
 	}

@@ -8,6 +8,7 @@ import org.apache.commons.lang.StringUtils;
 import org.eclipse.draw2d.Clickable;
 import org.eclipse.draw2d.ColorConstants;
 import org.eclipse.draw2d.Figure;
+import org.eclipse.draw2d.FlowLayout;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.ImageFigure;
 import org.eclipse.draw2d.Label;
@@ -34,7 +35,9 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.AbstractBorderedShapeEditPar
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IBorderItemEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.BorderItemSelectionEditPolicy;
+import org.eclipse.gmf.runtime.diagram.ui.editpolicies.DragDropEditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
+import org.eclipse.gmf.runtime.diagram.ui.editpolicies.FlowLayoutEditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.figures.BorderItemLocator;
 import org.eclipse.gmf.runtime.diagram.ui.internal.services.palette.PaletteToolEntry;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.ConstrainedToolbarLayout;
@@ -53,6 +56,8 @@ import org.wso2.developerstudio.datamapper.PropertyKeyValuePair;
 import org.wso2.developerstudio.datamapper.TreeNode;
 import org.wso2.developerstudio.datamapper.diagram.custom.util.AbsoluteBorderedItemLocator;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.custom.CustomNonResizableEditPolicyEx;
+import org.wso2.developerstudio.datamapper.diagram.edit.policies.TreeNode2CanonicalEditPolicy;
+import org.wso2.developerstudio.datamapper.diagram.edit.policies.TreeNode2ItemSemanticEditPolicy;
 import org.wso2.developerstudio.datamapper.diagram.part.DataMapperVisualIDRegistry;
 
 /**
@@ -815,11 +820,11 @@ public class TreeNode2EditPart extends AbstractBorderedShapeEditPart {
 			} else {
 				newName = name;
 			}
-			
+
 			figure2.setPreferredSize((count - 1) * 22, 3);
 			Label nodeLabel = new Label();
 			if (StringUtils.isNotEmpty(name) && name.startsWith(PREFIX)) {
-				newName = newName + "  : ["+type.toUpperCase()+"]";
+				newName = newName + "  : [" + type.toUpperCase() + "]";
 				if (StringUtils.isNotEmpty(nullableValue)) {
 					placeIcon(attributeImg, nullableAttributeImg, nullableValue, nodeLabel);
 				} else {
@@ -829,7 +834,7 @@ public class TreeNode2EditPart extends AbstractBorderedShapeEditPart {
 				String value = getNodeValue(type);
 				// If an element has values then display it with the name
 				if (StringUtils.isNotEmpty(value)) {
-					newName = newName + "  : ["+value.toUpperCase()+"]"; 
+					newName = newName + "  : [" + value.toUpperCase() + "]";
 				}
 				if (StringUtils.isNotEmpty(nullableValue)) {
 					placeIcon(arrayImg, nullableArrayImg, nullableValue, nodeLabel);
@@ -840,7 +845,7 @@ public class TreeNode2EditPart extends AbstractBorderedShapeEditPart {
 				String value = getNodeValue(type);
 				// If an element has values then display it with the name
 				if (StringUtils.isNotEmpty(value)) {
-					newName = newName + "  : ["+value.toUpperCase()+"]"; 
+					newName = newName + "  : [" + value.toUpperCase() + "]";
 				}
 				if (StringUtils.isNotEmpty(nullableValue)) {
 					placeIcon(objectImg, nullableObjectImg, nullableValue, nodeLabel);
@@ -848,7 +853,7 @@ public class TreeNode2EditPart extends AbstractBorderedShapeEditPart {
 					nodeLabel.setIcon(objectImg.getImage());
 				}
 			} else {
-				newName = newName + "  : ["+type.toUpperCase()+"]";
+				newName = newName + "  : [" + type.toUpperCase() + "]";
 				if (StringUtils.isNotEmpty(nullableValue)) {
 					placeIcon(mainImg, nullableElementImg, nullableValue, nodeLabel);
 				} else {
@@ -1014,24 +1019,24 @@ public class TreeNode2EditPart extends AbstractBorderedShapeEditPart {
 				newName = name;
 			}
 			if (StringUtils.isNotEmpty(name) && name.startsWith(PREFIX)) {
-				newName = newName + "  : ["+type.toUpperCase()+"]"; 
+				newName = newName + "  : [" + type.toUpperCase() + "]";
 				nodeLabel.setIcon(attributeImg.getImage());
 			} else if (type != null && type.equals(JSON_SCHEMA_ARRAY)) {
 				String value = getNodeValue(type);
 				// If an element has values then display it with the name
 				if (StringUtils.isNotEmpty(value)) {
-					newName = newName + "  : ["+value.toUpperCase()+"]"; 
+					newName = newName + "  : [" + value.toUpperCase() + "]";
 				}
 				nodeLabel.setIcon(arrayImg.getImage());
 			} else if (type != null && type.equals(JSON_SCHEMA_OBJECT)) {
 				String value = getNodeValue(type);
 				// If an element has values then display it with the name
 				if (StringUtils.isNotEmpty(value)) {
-					newName = newName + "  : ["+value.toUpperCase()+"]"; 
+					newName = newName + "  : [" + value.toUpperCase() + "]";
 				}
 				nodeLabel.setIcon(objectImg.getImage());
 			} else {
-				newName = newName + "  : ["+type.toUpperCase()+"]"; 
+				newName = newName + "  : [" + type.toUpperCase() + "]";
 				nodeLabel.setIcon(mainImg.getImage());
 			}
 
@@ -1126,7 +1131,7 @@ public class TreeNode2EditPart extends AbstractBorderedShapeEditPart {
 				newName = name;
 			}
 			if (StringUtils.isNotEmpty(name) && name.startsWith(PREFIX)) {
-				newName = newName + "  : ["+type.toUpperCase()+"]"; 
+				newName = newName + "  : [" + type.toUpperCase() + "]";
 				if (StringUtils.isNotEmpty(nullableValue)) {
 					placeIcon(attributeImg, nullableAttributeImg, nullableValue, nodeLabel);
 				} else {
@@ -1136,7 +1141,7 @@ public class TreeNode2EditPart extends AbstractBorderedShapeEditPart {
 				String value = getNodeValue(type);
 				// If an element has values then display it with the name
 				if (StringUtils.isNotEmpty(value)) {
-					newName = newName + "  : ["+value.toUpperCase()+"]"; 
+					newName = newName + "  : [" + value.toUpperCase() + "]";
 				}
 				if (StringUtils.isNotEmpty(nullableValue)) {
 					placeIcon(arrayImg, nullableArrayImg, nullableValue, nodeLabel);
@@ -1147,7 +1152,7 @@ public class TreeNode2EditPart extends AbstractBorderedShapeEditPart {
 				String value = getNodeValue(type);
 				// If an element has values then display it with the name
 				if (StringUtils.isNotEmpty(value)) {
-					newName = newName + "  : ["+value.toUpperCase()+"]"; 
+					newName = newName + "  : [" + value.toUpperCase() + "]";
 				}
 				if (StringUtils.isNotEmpty(nullableValue)) {
 					placeIcon(objectImg, nullableObjectImg, nullableValue, nodeLabel);
@@ -1155,7 +1160,7 @@ public class TreeNode2EditPart extends AbstractBorderedShapeEditPart {
 					nodeLabel.setIcon(objectImg.getImage());
 				}
 			} else {
-				newName = newName + "  : ["+type.toUpperCase()+"]"; 
+				newName = newName + "  : [" + type.toUpperCase() + "]";
 				if (StringUtils.isNotEmpty(nullableValue)) {
 					placeIcon(mainImg, nullableElementImg, nullableValue, nodeLabel);
 				} else {

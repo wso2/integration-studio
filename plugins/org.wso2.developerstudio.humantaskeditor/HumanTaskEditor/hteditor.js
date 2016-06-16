@@ -1000,7 +1000,7 @@ function marshalPeopleAssignment(taskNode, peopleAssignmentName) {
     if (taskNode.getElementsByTagName("peopleAssignments")[0]
         .getElementsByTagName(peopleAssignmentName).length != 0 && taskNode.getElementsByTagName("peopleAssignments")[0]
         .getElementsByTagName(peopleAssignmentName)[0]
-        .getElementsByTagName("argument").length != 0 && $('#' + taskDivName + " input[name="+peopleAssignmentName+ "" + taskDivName + "]:checked").val() == peopleAssignmentName+ "Role"){
+        .getElementsByTagName("argument").length != 0 && $('#' + taskDivName + " input[name = " + peopleAssignmentName + "" + taskDivName + "]:checked").val() == peopleAssignmentName+ "Role"){
         taskNode.getElementsByTagName("peopleAssignments")[0]
         .getElementsByTagName(peopleAssignmentName)[0]
         .getElementsByTagName("argument")[0]

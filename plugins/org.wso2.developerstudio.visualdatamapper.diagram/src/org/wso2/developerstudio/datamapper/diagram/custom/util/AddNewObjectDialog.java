@@ -1028,7 +1028,7 @@ public class AddNewObjectDialog extends Dialog {
 	 */
 	@Override
 	protected Point getInitialSize() {
-		return new Point(620, 450);
+		return new Point(620, 470);
 	}
 
 	@Override

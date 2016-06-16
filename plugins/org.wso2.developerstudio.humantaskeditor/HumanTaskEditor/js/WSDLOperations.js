@@ -128,7 +128,7 @@ function generateInputWSDL(wsdlDom, xmlDom, currentTask) {
     inputElements.each(function(i, obj) {
         if (i != 0) { // skip header
             k = $(this).find("input#taskInputMappingid").val();
-            type = "xsd:" + $("#" + currentTaskName + " #taskInputMappingType" + k)
+            type = $("#" + currentTaskName + " #taskInputMappingType" + k)
                 .val();
             newSubElement = wsdlDom.createElementNS(
                 xsdNameSpace, "xsd:element");
@@ -262,7 +262,7 @@ function generateOutputWSDL(wsdlDom, xmlDom, currentTask,serviceURL,operationNam
     outputElements.each(function(i, obj) {
         if (i != 0) {
             k = $(this).find("input#taskOutputMappingid").val();
-            type = "xsd:" + $("#" + currentTaskName + " #taskOutputMappingType" + k)
+            type = $("#" + currentTaskName + " #taskOutputMappingType" + k)
                 .val();
             newSubElement = wsdlDom.createElementNS(
                 xsdNameSpace, "xsd:element");

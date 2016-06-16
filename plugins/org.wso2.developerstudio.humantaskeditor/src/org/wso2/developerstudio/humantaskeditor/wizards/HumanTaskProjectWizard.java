@@ -278,9 +278,10 @@ public class HumanTaskProjectWizard extends Wizard implements INewWizard {
         StringBuilder sb = new StringBuilder();
         URL url;
         BufferedReader in = null;
+        InputStream inputStream = null;
         try {
             url = new URL(HumantaskEditorConstants.DUMMY_HT_LOCATION);
-            InputStream inputStream = url.openConnection().getInputStream();
+            inputStream = url.openConnection().getInputStream();
             in = new BufferedReader(new InputStreamReader(inputStream));
             String inputLine;
             while ((inputLine = in.readLine()) != null) {
@@ -292,7 +293,11 @@ public class HumanTaskProjectWizard extends Wizard implements INewWizard {
             ErrorDialog.openError(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
                     HumantaskEditorConstants.ERROR_MESSAGE, "Error reading from project", editorStatus);
         } finally {
-            in.close();
+            try {
+                in.close();
+                inputStream.close();
+            } catch (Exception e) {
+            }
         }
         return sb.toString();
     }
@@ -306,9 +311,10 @@ public class HumanTaskProjectWizard extends Wizard implements INewWizard {
         StringBuilder sb = new StringBuilder();
         URL url;
         BufferedReader in = null;
+        InputStream inputStream = null;
         try {
             url = new URL(HumantaskEditorConstants.DUMMY_WSDL_LOCATION);
-            InputStream inputStream = url.openConnection().getInputStream();
+            inputStream = url.openConnection().getInputStream();
             in = new BufferedReader(new InputStreamReader(inputStream));
             String inputLine;
             while ((inputLine = in.readLine()) != null) {
@@ -320,7 +326,11 @@ public class HumanTaskProjectWizard extends Wizard implements INewWizard {
             ErrorDialog.openError(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
                     HumantaskEditorConstants.ERROR_MESSAGE, "Error reading from project", editorStatus);
         } finally {
-            in.close();
+            try {
+                in.close();
+                inputStream.close();
+            } catch (Exception e) {
+            }
         }
         return sb.toString();
     }
@@ -334,9 +344,10 @@ public class HumanTaskProjectWizard extends Wizard implements INewWizard {
         StringBuilder sb = new StringBuilder();
         URL url;
         BufferedReader in = null;
+        InputStream inputStream = null;
         try {
             url = new URL(HumantaskEditorConstants.DUMMY_ORG_SCHEMA_LOCATION);
-            InputStream inputStream = url.openConnection().getInputStream();
+            inputStream = url.openConnection().getInputStream();
             in = new BufferedReader(new InputStreamReader(inputStream));
             String inputLine;
             while ((inputLine = in.readLine()) != null) {
@@ -348,7 +359,11 @@ public class HumanTaskProjectWizard extends Wizard implements INewWizard {
             ErrorDialog.openError(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
                     HumantaskEditorConstants.ERROR_MESSAGE, "Error reading from project", editorStatus);
         } finally {
-            in.close();
+            try {
+                in.close();
+                inputStream.close();
+            } catch (Exception e) {
+            }
         }
         return sb.toString();
     }
@@ -357,9 +372,10 @@ public class HumanTaskProjectWizard extends Wizard implements INewWizard {
         StringBuilder sb = new StringBuilder();
         URL url;
         BufferedReader in = null;
+        InputStream inputStream = null;
         try {
             url = new URL(HumantaskEditorConstants.DUMMY_HTCONFIG_LOCATION);
-            InputStream inputStream = url.openConnection().getInputStream();
+            inputStream = url.openConnection().getInputStream();
             in = new BufferedReader(new InputStreamReader(inputStream));
             String inputLine;
             while ((inputLine = in.readLine()) != null) {
@@ -371,7 +387,11 @@ public class HumanTaskProjectWizard extends Wizard implements INewWizard {
             ErrorDialog.openError(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
                     HumantaskEditorConstants.ERROR_MESSAGE, "Error reading from project", editorStatus);
         } finally {
-            in.close();
+            try {
+                in.close();
+                inputStream.close();
+            } catch (Exception e) {
+            }
         }
         return sb.toString();
     }

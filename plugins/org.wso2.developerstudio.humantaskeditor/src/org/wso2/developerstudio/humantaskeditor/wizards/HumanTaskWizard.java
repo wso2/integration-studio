@@ -128,8 +128,8 @@ public class HumanTaskWizard extends Wizard implements INewWizard {
      * file.
      */
 
-    private void doFinish(String containerName, String fileName, String taskName, String tnsName, IProgressMonitor monitor)
-            throws CoreException {
+    private void doFinish(String containerName, String fileName, String taskName, String tnsName,
+            IProgressMonitor monitor) throws CoreException {
         monitor.beginTask("Creating " + fileName, 2);
         IWorkspaceRoot root = ResourcesPlugin.getWorkspace().getRoot();
         IResource resource = root.findMember(new Path(containerName));
@@ -139,14 +139,16 @@ public class HumanTaskWizard extends Wizard implements INewWizard {
         IContainer container = (IContainer) resource;
         final IFile file = container.getFile(new Path(fileName));
         final IFile wsdlfile = container.getFile(new Path(taskName + HumantaskEditorConstants.TASK_WSDL_SUFFIX));
-        final IFile cbWsdlfile = container.getFile(new Path(taskName + HumantaskEditorConstants.CALLBACK_TASK_WSDL_SUFFIX));
-        final IFile orgSchemafile = container.getFile(new Path(HumantaskEditorConstants.ORGANIZATIONAL_ENTITY_SCHEMA_FILE));
+        final IFile cbWsdlfile = container.getFile(new Path(taskName
+                + HumantaskEditorConstants.CALLBACK_TASK_WSDL_SUFFIX));
+        final IFile orgSchemafile = container.getFile(new Path(
+                HumantaskEditorConstants.ORGANIZATIONAL_ENTITY_SCHEMA_FILE));
         final IFile htconfigfile = container.getFile(new Path(HumantaskEditorConstants.INITIAL_HTCONFIG_NAME));
         addNature(container.getProject());
-        IResource [] memberList = container.members();
-        for(IResource member : memberList){
-            IFile memberFile = (IFile)member;
-            if(memberFile.getFileExtension().equals("ht")){
+        IResource[] memberList = container.members();
+        for (IResource member : memberList) {
+            IFile memberFile = (IFile) member;
+            if (memberFile.getFileExtension().equals("ht")) {
                 throwCoreException("An artifact must contain only one human task file");
             }
         }
@@ -159,7 +161,7 @@ public class HumanTaskWizard extends Wizard implements INewWizard {
             wsdlStream = openWSDLStream();
             htconfigStream = openHTConfigStream();
             orgSchemaStream = openOrgSchemaStream();
-            
+
             if (file.exists()) {
                 throwCoreException("A file with the same name already exists");
             } else {
@@ -221,10 +223,10 @@ public class HumanTaskWizard extends Wizard implements INewWizard {
      */
 
     private InputStream openContentStream(String taskName, String tnsName) throws IOException, CoreException {
-        String contents = changeXMLName(readDummyHT(), taskName ,tnsName);
+        String contents = changeXMLName(readDummyHT(), taskName, tnsName);
         return new ByteArrayInputStream(contents.getBytes());
     }
-    
+
     /**
      * Will initialize file contents with a dummy org schema.
      *
@@ -267,9 +269,10 @@ public class HumanTaskWizard extends Wizard implements INewWizard {
         StringBuilder sb = new StringBuilder();
         URL url;
         BufferedReader in = null;
+        InputStream inputStream = null;
         try {
             url = new URL(HumantaskEditorConstants.DUMMY_HT_LOCATION);
-            InputStream inputStream = url.openConnection().getInputStream();
+            inputStream = url.openConnection().getInputStream();
             in = new BufferedReader(new InputStreamReader(inputStream));
             String inputLine;
             while ((inputLine = in.readLine()) != null) {
@@ -281,11 +284,15 @@ public class HumanTaskWizard extends Wizard implements INewWizard {
             ErrorDialog.openError(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), "Error",
                     "Error reading from project", editorStatus);
         } finally {
-            in.close();
+            try {
+                in.close();
+                inputStream.close();
+            } catch (Exception e) {
+            }
         }
         return sb.toString();
     }
-    
+
     /**
      * Read dummy org schema file which is needed to initialize a new ht file
      *
@@ -295,9 +302,10 @@ public class HumanTaskWizard extends Wizard implements INewWizard {
         StringBuilder sb = new StringBuilder();
         URL url;
         BufferedReader in = null;
+        InputStream inputStream = null;
         try {
             url = new URL(HumantaskEditorConstants.DUMMY_ORG_SCHEMA_LOCATION);
-            InputStream inputStream = url.openConnection().getInputStream();
+            inputStream = url.openConnection().getInputStream();
             in = new BufferedReader(new InputStreamReader(inputStream));
             String inputLine;
             while ((inputLine = in.readLine()) != null) {
@@ -309,7 +317,11 @@ public class HumanTaskWizard extends Wizard implements INewWizard {
             ErrorDialog.openError(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
                     HumantaskEditorConstants.ERROR_MESSAGE, "Error reading from project", editorStatus);
         } finally {
-            in.close();
+            try {
+                in.close();
+                inputStream.close();
+            } catch (Exception e) {
+            }
         }
         return sb.toString();
     }
@@ -323,9 +335,10 @@ public class HumanTaskWizard extends Wizard implements INewWizard {
         StringBuilder sb = new StringBuilder();
         URL url;
         BufferedReader in = null;
+        InputStream inputStream = null;
         try {
             url = new URL(HumantaskEditorConstants.DUMMY_WSDL_LOCATION);
-            InputStream inputStream = url.openConnection().getInputStream();
+            inputStream = url.openConnection().getInputStream();
             in = new BufferedReader(new InputStreamReader(inputStream));
             String inputLine;
             while ((inputLine = in.readLine()) != null) {
@@ -337,7 +350,11 @@ public class HumanTaskWizard extends Wizard implements INewWizard {
             ErrorDialog.openError(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), "Error",
                     "Error reading from project", editorStatus);
         } finally {
-            in.close();
+            try {
+                in.close();
+                inputStream.close();
+            } catch (Exception e) {
+            }
         }
         return sb.toString();
     }
@@ -346,9 +363,10 @@ public class HumanTaskWizard extends Wizard implements INewWizard {
         StringBuilder sb = new StringBuilder();
         URL url;
         BufferedReader in = null;
+        InputStream inputStream = null;
         try {
             url = new URL(HumantaskEditorConstants.DUMMY_HTCONFIG_LOCATION);
-            InputStream inputStream = url.openConnection().getInputStream();
+            inputStream = url.openConnection().getInputStream();
             in = new BufferedReader(new InputStreamReader(inputStream));
             String inputLine;
             while ((inputLine = in.readLine()) != null) {
@@ -359,8 +377,12 @@ public class HumanTaskWizard extends Wizard implements INewWizard {
             IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage());
             ErrorDialog.openError(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), "Error",
                     "Error reading from project", editorStatus);
-        }  finally {
-            in.close();
+        } finally {
+            try {
+                in.close();
+                inputStream.close();
+            } catch (Exception e) {
+            }
         }
         return sb.toString();
     }
@@ -403,9 +425,11 @@ public class HumanTaskWizard extends Wizard implements INewWizard {
             InputSource is = new InputSource(new StringReader(content));
             dom = db.parse(is);
             NodeList taskList = dom.getElementsByTagName(HumantaskEditorConstants.QUALIFIED_TASK_NODE_NAME);
-            NodeList tnsList = dom.getElementsByTagName(HumantaskEditorConstants.QUALIFIED_HUMAN_INTERACTIONS_NODE_NAME);
+            NodeList tnsList = dom
+                    .getElementsByTagName(HumantaskEditorConstants.QUALIFIED_HUMAN_INTERACTIONS_NODE_NAME);
             tnsList.item(0).getAttributes().getNamedItem(HumantaskEditorConstants.XMLNS_TNS).setNodeValue(tnsName);
-            tnsList.item(0).getAttributes().getNamedItem(HumantaskEditorConstants.TARGET_NAMESPACE).setNodeValue(tnsName);
+            tnsList.item(0).getAttributes().getNamedItem(HumantaskEditorConstants.TARGET_NAMESPACE)
+                    .setNodeValue(tnsName);
             for (int i = 0; i < taskList.getLength(); i++) {
                 Node task = taskList.item(i);
                 task.getAttributes().getNamedItem(HumantaskEditorConstants.TASK_NAME_ATTRIBUTE).setNodeValue(taskName);

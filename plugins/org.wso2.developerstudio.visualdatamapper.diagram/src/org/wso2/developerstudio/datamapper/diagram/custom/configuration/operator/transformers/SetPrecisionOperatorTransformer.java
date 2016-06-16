@@ -37,7 +37,7 @@ public class SetPrecisionOperatorTransformer extends AbstractDMOperatorTransform
 
 	@Override
 	public String generateScriptForOperation(Class<?> generatorClass, List<DMVariable> inputVariables,
-			Map<String, SchemaDataType> variableTypeMap, Stack<ForLoopBean> parentForLoopBeanStack,
+			Map<String, List<SchemaDataType>> variableTypeMap, Stack<ForLoopBean> parentForLoopBeanStack,
 			DMOperation operator) {
 		int numOfDecimals = (int) operator.getProperty(NUM_OF_DECIMALS_TAG);
 		StringBuilder operationBuilder = new StringBuilder();

@@ -40,7 +40,7 @@ public interface DMOperatorTransformer {
      * @return script for operation
      */
     String generateScriptForOperation(Class<?> generatorClass, List<DMVariable> inputVariables,
-            Map<String, SchemaDataType> variableTypeMap, Stack<ForLoopBean> parentForLoopBeanStack,
+            Map<String, List<SchemaDataType>> variableTypeMap, Stack<ForLoopBean> parentForLoopBeanStack,
             DMOperation operator);
 
 }

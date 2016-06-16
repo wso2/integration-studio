@@ -37,7 +37,7 @@ public class ConcatOperatorTransformer extends AbstractDMOperatorTransformer {
 
     @Override
     public String generateScriptForOperation(Class<?> generatorClass, List<DMVariable> inputVariables,
-            Map<String, SchemaDataType> variableTypeMap, Stack<ForLoopBean> parentForLoopBeanStack,
+            Map<String, List<SchemaDataType>> variableTypeMap, Stack<ForLoopBean> parentForLoopBeanStack,
             DMOperation operator) {
         String concatOperator = (String) operator.getProperty(DELIMITER_TAG);
         if (concatOperator == null) {

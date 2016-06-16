@@ -12,9 +12,11 @@ import org.wso2.developerstudio.datamapper.diagram.edit.parts.ANDEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.AbsoluteValueEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.AddEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.CeliEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.CompareEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.ConcatEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.ConstantEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.ContainsEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.CustomFunctionEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.DataMapperLinkEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.DataMapperRootEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.DivideEditPart;
@@ -29,6 +31,9 @@ import org.wso2.developerstudio.datamapper.diagram.edit.parts.InNode3EditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.InNodeEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.InputEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.LowerCaseEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.MatchEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.MaxEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.MinEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.MultiplyEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.NOTEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.OREditPart;
@@ -41,11 +46,15 @@ import org.wso2.developerstudio.datamapper.diagram.edit.parts.OutNode2EditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.OutNode3EditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.OutNodeEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.OutputEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.PropertiesEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.ReplaceEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.RoundEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.SetPrecisionEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.SplitEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.StartsWithEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.StringLengthEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.StringToBooleanEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.StringToNumberEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.SubstringEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.SubtractEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.TreeNode2EditPart;
@@ -54,6 +63,7 @@ import org.wso2.developerstudio.datamapper.diagram.edit.parts.TreeNodeEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.TreeNodeName2EditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.TreeNodeName3EditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.TreeNodeNameEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.TrimEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.UpperCaseEditPart;
 
 /**
@@ -238,6 +248,36 @@ public class DataMapperVisualIDRegistry {
 			if (DataMapperPackage.eINSTANCE.getNOT().isSuperTypeOf(domainElement.eClass())) {
 				return NOTEditPart.VISUAL_ID;
 			}
+			if (DataMapperPackage.eINSTANCE.getTrim().isSuperTypeOf(domainElement.eClass())) {
+				return TrimEditPart.VISUAL_ID;
+			}
+			if (DataMapperPackage.eINSTANCE.getReplace().isSuperTypeOf(domainElement.eClass())) {
+				return ReplaceEditPart.VISUAL_ID;
+			}
+			if (DataMapperPackage.eINSTANCE.getMatch().isSuperTypeOf(domainElement.eClass())) {
+				return MatchEditPart.VISUAL_ID;
+			}
+			if (DataMapperPackage.eINSTANCE.getMin().isSuperTypeOf(domainElement.eClass())) {
+				return MinEditPart.VISUAL_ID;
+			}
+			if (DataMapperPackage.eINSTANCE.getMax().isSuperTypeOf(domainElement.eClass())) {
+				return MaxEditPart.VISUAL_ID;
+			}
+			if (DataMapperPackage.eINSTANCE.getCustomFunction().isSuperTypeOf(domainElement.eClass())) {
+				return CustomFunctionEditPart.VISUAL_ID;
+			}
+			if (DataMapperPackage.eINSTANCE.getProperties().isSuperTypeOf(domainElement.eClass())) {
+				return PropertiesEditPart.VISUAL_ID;
+			}
+			if (DataMapperPackage.eINSTANCE.getCompare().isSuperTypeOf(domainElement.eClass())) {
+				return CompareEditPart.VISUAL_ID;
+			}
+			if (DataMapperPackage.eINSTANCE.getStringToNumber().isSuperTypeOf(domainElement.eClass())) {
+				return StringToNumberEditPart.VISUAL_ID;
+			}
+			if (DataMapperPackage.eINSTANCE.getStringToBoolean().isSuperTypeOf(domainElement.eClass())) {
+				return StringToBooleanEditPart.VISUAL_ID;
+			}
 			break;
 		case InputEditPart.VISUAL_ID:
 			if (DataMapperPackage.eINSTANCE.getTreeNode().isSuperTypeOf(domainElement.eClass())) {
@@ -365,6 +405,56 @@ public class DataMapperVisualIDRegistry {
 			}
 			break;
 		case NOTEditPart.VISUAL_ID:
+			if (DataMapperPackage.eINSTANCE.getOperatorBasicContainer().isSuperTypeOf(domainElement.eClass())) {
+				return OperatorBasicContainerEditPart.VISUAL_ID;
+			}
+			break;
+		case TrimEditPart.VISUAL_ID:
+			if (DataMapperPackage.eINSTANCE.getOperatorBasicContainer().isSuperTypeOf(domainElement.eClass())) {
+				return OperatorBasicContainerEditPart.VISUAL_ID;
+			}
+			break;
+		case ReplaceEditPart.VISUAL_ID:
+			if (DataMapperPackage.eINSTANCE.getOperatorBasicContainer().isSuperTypeOf(domainElement.eClass())) {
+				return OperatorBasicContainerEditPart.VISUAL_ID;
+			}
+			break;
+		case MatchEditPart.VISUAL_ID:
+			if (DataMapperPackage.eINSTANCE.getOperatorBasicContainer().isSuperTypeOf(domainElement.eClass())) {
+				return OperatorBasicContainerEditPart.VISUAL_ID;
+			}
+			break;
+		case MinEditPart.VISUAL_ID:
+			if (DataMapperPackage.eINSTANCE.getOperatorBasicContainer().isSuperTypeOf(domainElement.eClass())) {
+				return OperatorBasicContainerEditPart.VISUAL_ID;
+			}
+			break;
+		case MaxEditPart.VISUAL_ID:
+			if (DataMapperPackage.eINSTANCE.getOperatorBasicContainer().isSuperTypeOf(domainElement.eClass())) {
+				return OperatorBasicContainerEditPart.VISUAL_ID;
+			}
+			break;
+		case CustomFunctionEditPart.VISUAL_ID:
+			if (DataMapperPackage.eINSTANCE.getOperatorBasicContainer().isSuperTypeOf(domainElement.eClass())) {
+				return OperatorBasicContainerEditPart.VISUAL_ID;
+			}
+			break;
+		case PropertiesEditPart.VISUAL_ID:
+			if (DataMapperPackage.eINSTANCE.getOperatorBasicContainer().isSuperTypeOf(domainElement.eClass())) {
+				return OperatorBasicContainerEditPart.VISUAL_ID;
+			}
+			break;
+		case CompareEditPart.VISUAL_ID:
+			if (DataMapperPackage.eINSTANCE.getOperatorBasicContainer().isSuperTypeOf(domainElement.eClass())) {
+				return OperatorBasicContainerEditPart.VISUAL_ID;
+			}
+			break;
+		case StringToNumberEditPart.VISUAL_ID:
+			if (DataMapperPackage.eINSTANCE.getOperatorBasicContainer().isSuperTypeOf(domainElement.eClass())) {
+				return OperatorBasicContainerEditPart.VISUAL_ID;
+			}
+			break;
+		case StringToBooleanEditPart.VISUAL_ID:
 			if (DataMapperPackage.eINSTANCE.getOperatorBasicContainer().isSuperTypeOf(domainElement.eClass())) {
 				return OperatorBasicContainerEditPart.VISUAL_ID;
 			}
@@ -551,6 +641,36 @@ public class DataMapperVisualIDRegistry {
 			if (NOTEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
+			if (TrimEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			if (ReplaceEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			if (MatchEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			if (MinEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			if (MaxEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			if (CustomFunctionEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			if (PropertiesEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			if (CompareEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			if (StringToNumberEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			if (StringToBooleanEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
 			break;
 		case InputEditPart.VISUAL_ID:
 			if (TreeNodeEditPart.VISUAL_ID == nodeVisualID) {
@@ -678,6 +798,56 @@ public class DataMapperVisualIDRegistry {
 			}
 			break;
 		case NOTEditPart.VISUAL_ID:
+			if (OperatorBasicContainerEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			break;
+		case TrimEditPart.VISUAL_ID:
+			if (OperatorBasicContainerEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			break;
+		case ReplaceEditPart.VISUAL_ID:
+			if (OperatorBasicContainerEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			break;
+		case MatchEditPart.VISUAL_ID:
+			if (OperatorBasicContainerEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			break;
+		case MinEditPart.VISUAL_ID:
+			if (OperatorBasicContainerEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			break;
+		case MaxEditPart.VISUAL_ID:
+			if (OperatorBasicContainerEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			break;
+		case CustomFunctionEditPart.VISUAL_ID:
+			if (OperatorBasicContainerEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			break;
+		case PropertiesEditPart.VISUAL_ID:
+			if (OperatorBasicContainerEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			break;
+		case CompareEditPart.VISUAL_ID:
+			if (OperatorBasicContainerEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			break;
+		case StringToNumberEditPart.VISUAL_ID:
+			if (OperatorBasicContainerEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			break;
+		case StringToBooleanEditPart.VISUAL_ID:
 			if (OperatorBasicContainerEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}

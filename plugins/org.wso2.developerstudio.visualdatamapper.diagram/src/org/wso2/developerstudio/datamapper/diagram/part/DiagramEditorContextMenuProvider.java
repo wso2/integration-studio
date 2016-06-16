@@ -313,7 +313,7 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
 								}
 
 								if (contextObj instanceof EObject) {
-									
+
 									// Append load from file item to menu
 									AbstractActionHandler contextAction = contextActions
 											.get(selectedEditorPart.getClass());

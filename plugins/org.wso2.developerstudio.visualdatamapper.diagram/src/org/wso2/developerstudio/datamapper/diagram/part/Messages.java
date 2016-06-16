@@ -496,6 +496,106 @@ public class Messages extends NLS {
 	public static String NOT25CreationTool_desc;
 
 	/**
+	* @generated
+	*/
+	public static String Trim26CreationTool_title;
+
+	/**
+	* @generated
+	*/
+	public static String Trim26CreationTool_desc;
+
+	/**
+	* @generated
+	*/
+	public static String Replace27CreationTool_title;
+
+	/**
+	* @generated
+	*/
+	public static String Replace27CreationTool_desc;
+
+	/**
+	* @generated
+	*/
+	public static String Match28CreationTool_title;
+
+	/**
+	* @generated
+	*/
+	public static String Match28CreationTool_desc;
+
+	/**
+	* @generated
+	*/
+	public static String Min29CreationTool_title;
+
+	/**
+	* @generated
+	*/
+	public static String Min29CreationTool_desc;
+
+	/**
+	* @generated
+	*/
+	public static String Max30CreationTool_title;
+
+	/**
+	* @generated
+	*/
+	public static String Max30CreationTool_desc;
+
+	/**
+	* @generated
+	*/
+	public static String CustomFunction31CreationTool_title;
+
+	/**
+	* @generated
+	*/
+	public static String CustomFunction31CreationTool_desc;
+
+	/**
+	* @generated
+	*/
+	public static String Properties32CreationTool_title;
+
+	/**
+	* @generated
+	*/
+	public static String Properties32CreationTool_desc;
+
+	/**
+	* @generated
+	*/
+	public static String Compare33CreationTool_title;
+
+	/**
+	* @generated
+	*/
+	public static String Compare33CreationTool_desc;
+
+	/**
+	* @generated
+	*/
+	public static String StringToNumber34CreationTool_title;
+
+	/**
+	* @generated
+	*/
+	public static String StringToNumber34CreationTool_desc;
+
+	/**
+	* @generated
+	*/
+	public static String StringToBoolean35CreationTool_title;
+
+	/**
+	* @generated
+	*/
+	public static String StringToBoolean35CreationTool_desc;
+
+	/**
 	 * @generated
 	 */
 	public static String CommandName_OpenDiagram;

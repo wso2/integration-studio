@@ -90,6 +90,16 @@ public class DataMapperFactoryImpl extends EFactoryImpl implements DataMapperFac
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case DataMapperPackage.DATA_MAPPER_NODE: return createDataMapperNode();
+			case DataMapperPackage.TRIM: return createTrim();
+			case DataMapperPackage.REPLACE: return createReplace();
+			case DataMapperPackage.MATCH: return createMatch();
+			case DataMapperPackage.MIN: return createMin();
+			case DataMapperPackage.MAX: return createMax();
+			case DataMapperPackage.CUSTOM_FUNCTION: return createCustomFunction();
+			case DataMapperPackage.PROPERTIES: return createProperties();
+			case DataMapperPackage.COMPARE: return createCompare();
+			case DataMapperPackage.STRING_TO_NUMBER: return createStringToNumber();
+			case DataMapperPackage.STRING_TO_BOOLEAN: return createStringToBoolean();
 			case DataMapperPackage.DATA_MAPPER_ROOT: return createDataMapperRoot();
 			case DataMapperPackage.STRING_LENGTH: return createStringLength();
 			case DataMapperPackage.STARTS_WITH: return createStartsWith();
@@ -178,6 +188,116 @@ public class DataMapperFactoryImpl extends EFactoryImpl implements DataMapperFac
 		return dataMapperNode;
 	}
 
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public Trim createTrim() {
+		TrimImpl trim = new TrimImpl();
+		trim.setBasicContainer(createOperatorBasicContainer());
+		return trim;
+	}
+
+				/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public Replace createReplace() {
+		ReplaceImpl replace = new ReplaceImpl();
+		replace.setBasicContainer(createOperatorBasicContainer());
+		return replace;
+	}
+
+				/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public Match createMatch() {
+		MatchImpl match = new MatchImpl();
+		match.setBasicContainer(createOperatorBasicContainer());
+		return match;
+	}
+
+				/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public Min createMin() {
+		MinImpl min = new MinImpl();
+		min.setBasicContainer(createOperatorBasicContainer());
+		return min;
+	}
+
+				/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public Max createMax() {
+		MaxImpl max = new MaxImpl();
+		max.setBasicContainer(createOperatorBasicContainer());
+		return max;
+	}
+
+				/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public CustomFunction createCustomFunction() {
+		CustomFunctionImpl customFunction = new CustomFunctionImpl();
+		customFunction.setBasicContainer(createOperatorBasicContainer());
+		return customFunction;
+	}
+
+				/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public Properties createProperties() {
+		PropertiesImpl properties = new PropertiesImpl();
+		properties.setBasicContainer(createOperatorBasicContainer());
+		return properties;
+	}
+
+				/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public Compare createCompare() {
+		CompareImpl compare = new CompareImpl();
+		compare.setBasicContainer(createOperatorBasicContainer());
+		return compare;
+	}
+
+				/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public StringToNumber createStringToNumber() {
+		StringToNumberImpl stringToNumber = new StringToNumberImpl();
+		stringToNumber.setBasicContainer(createOperatorBasicContainer());
+		return stringToNumber;
+	}
+
+				/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public StringToBoolean createStringToBoolean() {
+		StringToBooleanImpl stringToBoolean = new StringToBooleanImpl();
+		stringToBoolean.setBasicContainer(createOperatorBasicContainer());
+		return stringToBoolean;
+	}
 
 	/**
 	 * <!-- begin-user-doc -->

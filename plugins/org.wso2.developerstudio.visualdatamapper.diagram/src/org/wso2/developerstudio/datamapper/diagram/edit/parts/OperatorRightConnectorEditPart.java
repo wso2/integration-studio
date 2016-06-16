@@ -235,7 +235,7 @@ public class OperatorRightConnectorEditPart extends AbstractBorderedShapeEditPar
 		}
 		return false;
 	}
-	
+
 	private String getPossibleOutputVariableTypes(OperatorImpl operator) {
 		int connectorIndex = operator.getRightConnectorCount();
 		if (operator.getOutputVariableTypes().containsKey(connectorIndex)) {

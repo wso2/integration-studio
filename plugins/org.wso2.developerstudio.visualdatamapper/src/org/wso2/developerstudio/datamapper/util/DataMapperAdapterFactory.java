@@ -70,6 +70,46 @@ public class DataMapperAdapterFactory extends AdapterFactoryImpl {
 				return createDataMapperNodeAdapter();
 			}
 			@Override
+			public Adapter caseTrim(Trim object) {
+				return createTrimAdapter();
+			}
+			@Override
+			public Adapter caseReplace(Replace object) {
+				return createReplaceAdapter();
+			}
+			@Override
+			public Adapter caseMatch(Match object) {
+				return createMatchAdapter();
+			}
+			@Override
+			public Adapter caseMin(Min object) {
+				return createMinAdapter();
+			}
+			@Override
+			public Adapter caseMax(Max object) {
+				return createMaxAdapter();
+			}
+			@Override
+			public Adapter caseCustomFunction(CustomFunction object) {
+				return createCustomFunctionAdapter();
+			}
+			@Override
+			public Adapter caseProperties(Properties object) {
+				return createPropertiesAdapter();
+			}
+			@Override
+			public Adapter caseCompare(Compare object) {
+				return createCompareAdapter();
+			}
+			@Override
+			public Adapter caseStringToNumber(StringToNumber object) {
+				return createStringToNumberAdapter();
+			}
+			@Override
+			public Adapter caseStringToBoolean(StringToBoolean object) {
+				return createStringToBooleanAdapter();
+			}
+			@Override
 			public Adapter caseDataMapperRoot(DataMapperRoot object) {
 				return createDataMapperRootAdapter();
 			}
@@ -256,6 +296,146 @@ public class DataMapperAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createDataMapperNodeAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.wso2.developerstudio.datamapper.Trim <em>Trim</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.wso2.developerstudio.datamapper.Trim
+	 * @generated
+	 */
+	public Adapter createTrimAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.wso2.developerstudio.datamapper.Replace <em>Replace</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.wso2.developerstudio.datamapper.Replace
+	 * @generated
+	 */
+	public Adapter createReplaceAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.wso2.developerstudio.datamapper.Match <em>Match</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.wso2.developerstudio.datamapper.Match
+	 * @generated
+	 */
+	public Adapter createMatchAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.wso2.developerstudio.datamapper.Min <em>Min</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.wso2.developerstudio.datamapper.Min
+	 * @generated
+	 */
+	public Adapter createMinAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.wso2.developerstudio.datamapper.Max <em>Max</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.wso2.developerstudio.datamapper.Max
+	 * @generated
+	 */
+	public Adapter createMaxAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.wso2.developerstudio.datamapper.CustomFunction <em>Custom Function</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.wso2.developerstudio.datamapper.CustomFunction
+	 * @generated
+	 */
+	public Adapter createCustomFunctionAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.wso2.developerstudio.datamapper.Properties <em>Properties</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.wso2.developerstudio.datamapper.Properties
+	 * @generated
+	 */
+	public Adapter createPropertiesAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.wso2.developerstudio.datamapper.Compare <em>Compare</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.wso2.developerstudio.datamapper.Compare
+	 * @generated
+	 */
+	public Adapter createCompareAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.wso2.developerstudio.datamapper.StringToNumber <em>String To Number</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.wso2.developerstudio.datamapper.StringToNumber
+	 * @generated
+	 */
+	public Adapter createStringToNumberAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.wso2.developerstudio.datamapper.StringToBoolean <em>String To Boolean</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.wso2.developerstudio.datamapper.StringToBoolean
+	 * @generated
+	 */
+	public Adapter createStringToBooleanAdapter() {
 		return null;
 	}
 

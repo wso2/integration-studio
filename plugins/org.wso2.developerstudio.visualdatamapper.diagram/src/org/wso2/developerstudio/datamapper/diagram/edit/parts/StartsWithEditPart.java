@@ -91,7 +91,7 @@ public class StartsWithEditPart extends AbstractOperatorEditPart {
 	 * @generated NOT
 	 */
 	protected IFigure createNodeShape() {
-		String pattern=((StartsWithImpl) ((View) getModel()).getElement()).getPattern();
+		String pattern = ((StartsWithImpl) ((View) getModel()).getElement()).getPattern();
 		return primaryShape = new StartsWithFigure(pattern);
 	}
 

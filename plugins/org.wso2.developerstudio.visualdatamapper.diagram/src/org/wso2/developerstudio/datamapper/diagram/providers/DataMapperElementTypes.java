@@ -18,9 +18,11 @@ import org.wso2.developerstudio.datamapper.diagram.edit.parts.ANDEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.AbsoluteValueEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.AddEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.CeliEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.CompareEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.ConcatEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.ConstantEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.ContainsEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.CustomFunctionEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.DataMapperLinkEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.DataMapperRootEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.DivideEditPart;
@@ -34,6 +36,9 @@ import org.wso2.developerstudio.datamapper.diagram.edit.parts.InNode3EditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.InNodeEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.InputEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.LowerCaseEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.MatchEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.MaxEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.MinEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.MultiplyEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.NOTEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.OREditPart;
@@ -46,16 +51,21 @@ import org.wso2.developerstudio.datamapper.diagram.edit.parts.OutNode2EditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.OutNode3EditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.OutNodeEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.OutputEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.PropertiesEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.ReplaceEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.RoundEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.SetPrecisionEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.SplitEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.StartsWithEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.StringLengthEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.StringToBooleanEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.StringToNumberEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.SubstringEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.SubtractEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.TreeNode2EditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.TreeNode3EditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.TreeNodeEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.TrimEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.UpperCaseEditPart;
 import org.wso2.developerstudio.datamapper.diagram.part.DataMapperDiagramEditorPlugin;
 
@@ -248,6 +258,66 @@ public class DataMapperElementTypes {
 			"org.wso2.developerstudio.visualdatamapper.diagram.NOT_2028"); //$NON-NLS-1$
 
 	/**
+	* @generated
+	*/
+	public static final IElementType Trim_2029 = getElementType(
+			"org.wso2.developerstudio.visualdatamapper.diagram.Trim_2029"); //$NON-NLS-1$
+
+	/**
+	* @generated
+	*/
+	public static final IElementType Replace_2030 = getElementType(
+			"org.wso2.developerstudio.visualdatamapper.diagram.Replace_2030"); //$NON-NLS-1$
+
+	/**
+	* @generated
+	*/
+	public static final IElementType Match_2031 = getElementType(
+			"org.wso2.developerstudio.visualdatamapper.diagram.Match_2031"); //$NON-NLS-1$
+
+	/**
+	* @generated
+	*/
+	public static final IElementType Min_2032 = getElementType(
+			"org.wso2.developerstudio.visualdatamapper.diagram.Min_2032"); //$NON-NLS-1$
+
+	/**
+	* @generated
+	*/
+	public static final IElementType Max_2033 = getElementType(
+			"org.wso2.developerstudio.visualdatamapper.diagram.Max_2033"); //$NON-NLS-1$
+
+	/**
+	* @generated
+	*/
+	public static final IElementType CustomFunction_2034 = getElementType(
+			"org.wso2.developerstudio.visualdatamapper.diagram.CustomFunction_2034"); //$NON-NLS-1$
+
+	/**
+	* @generated
+	*/
+	public static final IElementType Properties_2035 = getElementType(
+			"org.wso2.developerstudio.visualdatamapper.diagram.Properties_2035"); //$NON-NLS-1$
+
+	/**
+	* @generated
+	*/
+	public static final IElementType Compare_2036 = getElementType(
+			"org.wso2.developerstudio.visualdatamapper.diagram.Compare_2036"); //$NON-NLS-1$
+
+	/**
+	* @generated
+	*/
+	public static final IElementType StringToNumber_2037 = getElementType(
+			"org.wso2.developerstudio.visualdatamapper.diagram.StringToNumber_2037"); //$NON-NLS-1$
+
+	/**
+	* @generated
+	*/
+	public static final IElementType StringToBoolean_2038 = getElementType(
+			"org.wso2.developerstudio.visualdatamapper.diagram.StringToBoolean_2038"); //$NON-NLS-1$
+
+	/**
 	 * @generated
 	 */
 	public static final IElementType TreeNode_3002 = getElementType(
@@ -435,6 +505,26 @@ public class DataMapperElementTypes {
 
 			elements.put(NOT_2028, DataMapperPackage.eINSTANCE.getNOT());
 
+			elements.put(Trim_2029, DataMapperPackage.eINSTANCE.getTrim());
+
+			elements.put(Replace_2030, DataMapperPackage.eINSTANCE.getReplace());
+
+			elements.put(Match_2031, DataMapperPackage.eINSTANCE.getMatch());
+
+			elements.put(Min_2032, DataMapperPackage.eINSTANCE.getMin());
+
+			elements.put(Max_2033, DataMapperPackage.eINSTANCE.getMax());
+
+			elements.put(CustomFunction_2034, DataMapperPackage.eINSTANCE.getCustomFunction());
+
+			elements.put(Properties_2035, DataMapperPackage.eINSTANCE.getProperties());
+
+			elements.put(Compare_2036, DataMapperPackage.eINSTANCE.getCompare());
+
+			elements.put(StringToNumber_2037, DataMapperPackage.eINSTANCE.getStringToNumber());
+
+			elements.put(StringToBoolean_2038, DataMapperPackage.eINSTANCE.getStringToBoolean());
+
 			elements.put(TreeNode_3002, DataMapperPackage.eINSTANCE.getTreeNode());
 
 			elements.put(Element_3007, DataMapperPackage.eINSTANCE.getElement());
@@ -510,6 +600,16 @@ public class DataMapperElementTypes {
 			KNOWN_ELEMENT_TYPES.add(AND_2026);
 			KNOWN_ELEMENT_TYPES.add(OR_2027);
 			KNOWN_ELEMENT_TYPES.add(NOT_2028);
+			KNOWN_ELEMENT_TYPES.add(Trim_2029);
+			KNOWN_ELEMENT_TYPES.add(Replace_2030);
+			KNOWN_ELEMENT_TYPES.add(Match_2031);
+			KNOWN_ELEMENT_TYPES.add(Min_2032);
+			KNOWN_ELEMENT_TYPES.add(Max_2033);
+			KNOWN_ELEMENT_TYPES.add(CustomFunction_2034);
+			KNOWN_ELEMENT_TYPES.add(Properties_2035);
+			KNOWN_ELEMENT_TYPES.add(Compare_2036);
+			KNOWN_ELEMENT_TYPES.add(StringToNumber_2037);
+			KNOWN_ELEMENT_TYPES.add(StringToBoolean_2038);
 			KNOWN_ELEMENT_TYPES.add(TreeNode_3002);
 			KNOWN_ELEMENT_TYPES.add(Element_3007);
 			KNOWN_ELEMENT_TYPES.add(InNode_3008);
@@ -589,6 +689,26 @@ public class DataMapperElementTypes {
 			return OR_2027;
 		case NOTEditPart.VISUAL_ID:
 			return NOT_2028;
+		case TrimEditPart.VISUAL_ID:
+			return Trim_2029;
+		case ReplaceEditPart.VISUAL_ID:
+			return Replace_2030;
+		case MatchEditPart.VISUAL_ID:
+			return Match_2031;
+		case MinEditPart.VISUAL_ID:
+			return Min_2032;
+		case MaxEditPart.VISUAL_ID:
+			return Max_2033;
+		case CustomFunctionEditPart.VISUAL_ID:
+			return CustomFunction_2034;
+		case PropertiesEditPart.VISUAL_ID:
+			return Properties_2035;
+		case CompareEditPart.VISUAL_ID:
+			return Compare_2036;
+		case StringToNumberEditPart.VISUAL_ID:
+			return StringToNumber_2037;
+		case StringToBooleanEditPart.VISUAL_ID:
+			return StringToBoolean_2038;
 		case TreeNodeEditPart.VISUAL_ID:
 			return TreeNode_3002;
 		case ElementEditPart.VISUAL_ID:

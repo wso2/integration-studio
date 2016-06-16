@@ -3,6 +3,16 @@
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="datamapper" nsURI="http:///org/wso2/developerstudio/eclipse/gmf/datamapper"
     nsPrefix="datamapper">
   <eClassifiers xsi:type="ecore:EClass" name="DataMapperNode"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Trim" eSuperTypes="#//Operator"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Replace" eSuperTypes="#//Operator"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Match" eSuperTypes="#//Operator"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Min" eSuperTypes="#//Operator"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Max" eSuperTypes="#//Operator"/>
+  <eClassifiers xsi:type="ecore:EClass" name="CustomFunction" eSuperTypes="#//Operator"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Properties" eSuperTypes="#//Operator"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Compare" eSuperTypes="#//Operator"/>
+  <eClassifiers xsi:type="ecore:EClass" name="StringToNumber" eSuperTypes="#//Operator"/>
+  <eClassifiers xsi:type="ecore:EClass" name="StringToBoolean" eSuperTypes="#//Operator"/>
   <eClassifiers xsi:type="ecore:EClass" name="DataMapperRoot">
     <eStructuralFeatures xsi:type="ecore:EReference" name="input" eType="#//Input"
         containment="true"/>

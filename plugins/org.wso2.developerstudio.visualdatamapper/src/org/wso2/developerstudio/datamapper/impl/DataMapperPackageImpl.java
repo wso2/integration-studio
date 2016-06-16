@@ -11,9 +11,11 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.wso2.developerstudio.datamapper.AbsoluteValue;
 import org.wso2.developerstudio.datamapper.Add;
 import org.wso2.developerstudio.datamapper.Celi;
+import org.wso2.developerstudio.datamapper.Compare;
 import org.wso2.developerstudio.datamapper.Concat;
 import org.wso2.developerstudio.datamapper.Constant;
 import org.wso2.developerstudio.datamapper.Contains;
+import org.wso2.developerstudio.datamapper.CustomFunction;
 import org.wso2.developerstudio.datamapper.DataMapperFactory;
 import org.wso2.developerstudio.datamapper.DataMapperLink;
 import org.wso2.developerstudio.datamapper.DataMapperNode;
@@ -29,6 +31,9 @@ import org.wso2.developerstudio.datamapper.IfElse;
 import org.wso2.developerstudio.datamapper.InNode;
 import org.wso2.developerstudio.datamapper.Input;
 import org.wso2.developerstudio.datamapper.LowerCase;
+import org.wso2.developerstudio.datamapper.Match;
+import org.wso2.developerstudio.datamapper.Max;
+import org.wso2.developerstudio.datamapper.Min;
 import org.wso2.developerstudio.datamapper.Multiply;
 import org.wso2.developerstudio.datamapper.Operator;
 import org.wso2.developerstudio.datamapper.OperatorBasicContainer;
@@ -38,16 +43,21 @@ import org.wso2.developerstudio.datamapper.OperatorRightConnector;
 import org.wso2.developerstudio.datamapper.OperatorRightContainer;
 import org.wso2.developerstudio.datamapper.OutNode;
 import org.wso2.developerstudio.datamapper.Output;
+import org.wso2.developerstudio.datamapper.Properties;
 import org.wso2.developerstudio.datamapper.PropertyKeyValuePair;
+import org.wso2.developerstudio.datamapper.Replace;
 import org.wso2.developerstudio.datamapper.Round;
 import org.wso2.developerstudio.datamapper.SchemaDataType;
 import org.wso2.developerstudio.datamapper.SetPrecision;
 import org.wso2.developerstudio.datamapper.Split;
 import org.wso2.developerstudio.datamapper.StartsWith;
 import org.wso2.developerstudio.datamapper.StringLength;
+import org.wso2.developerstudio.datamapper.StringToBoolean;
+import org.wso2.developerstudio.datamapper.StringToNumber;
 import org.wso2.developerstudio.datamapper.Substring;
 import org.wso2.developerstudio.datamapper.Subtract;
 import org.wso2.developerstudio.datamapper.TreeNode;
+import org.wso2.developerstudio.datamapper.Trim;
 import org.wso2.developerstudio.datamapper.UpperCase;
 
 /**
@@ -63,6 +73,76 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 	 * @generated
 	 */
 	private EClass dataMapperNodeEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass trimEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass replaceEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass matchEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass minEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass maxEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass customFunctionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass propertiesEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass compareEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass stringToNumberEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass stringToBooleanEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -419,6 +499,96 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 	 */
 	public EClass getDataMapperNode() {
 		return dataMapperNodeEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getTrim() {
+		return trimEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getReplace() {
+		return replaceEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getMatch() {
+		return matchEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getMin() {
+		return minEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getMax() {
+		return maxEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getCustomFunction() {
+		return customFunctionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getProperties() {
+		return propertiesEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getCompare() {
+		return compareEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getStringToNumber() {
+		return stringToNumberEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getStringToBoolean() {
+		return stringToBooleanEClass;
 	}
 
 	/**
@@ -1369,6 +1539,26 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 		// Create classes and their features
 		dataMapperNodeEClass = createEClass(DATA_MAPPER_NODE);
 
+		trimEClass = createEClass(TRIM);
+
+		replaceEClass = createEClass(REPLACE);
+
+		matchEClass = createEClass(MATCH);
+
+		minEClass = createEClass(MIN);
+
+		maxEClass = createEClass(MAX);
+
+		customFunctionEClass = createEClass(CUSTOM_FUNCTION);
+
+		propertiesEClass = createEClass(PROPERTIES);
+
+		compareEClass = createEClass(COMPARE);
+
+		stringToNumberEClass = createEClass(STRING_TO_NUMBER);
+
+		stringToBooleanEClass = createEClass(STRING_TO_BOOLEAN);
+
 		dataMapperRootEClass = createEClass(DATA_MAPPER_ROOT);
 		createEReference(dataMapperRootEClass, DATA_MAPPER_ROOT__INPUT);
 		createEReference(dataMapperRootEClass, DATA_MAPPER_ROOT__OUTPUT);
@@ -1541,6 +1731,16 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
+		trimEClass.getESuperTypes().add(this.getOperator());
+		replaceEClass.getESuperTypes().add(this.getOperator());
+		matchEClass.getESuperTypes().add(this.getOperator());
+		minEClass.getESuperTypes().add(this.getOperator());
+		maxEClass.getESuperTypes().add(this.getOperator());
+		customFunctionEClass.getESuperTypes().add(this.getOperator());
+		propertiesEClass.getESuperTypes().add(this.getOperator());
+		compareEClass.getESuperTypes().add(this.getOperator());
+		stringToNumberEClass.getESuperTypes().add(this.getOperator());
+		stringToBooleanEClass.getESuperTypes().add(this.getOperator());
 		stringLengthEClass.getESuperTypes().add(this.getOperator());
 		startsWithEClass.getESuperTypes().add(this.getOperator());
 		endsWithEClass.getESuperTypes().add(this.getOperator());
@@ -1571,6 +1771,26 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(dataMapperNodeEClass, DataMapperNode.class, "DataMapperNode", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(trimEClass, Trim.class, "Trim", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(replaceEClass, Replace.class, "Replace", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(matchEClass, Match.class, "Match", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(minEClass, Min.class, "Min", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(maxEClass, Max.class, "Max", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(customFunctionEClass, CustomFunction.class, "CustomFunction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(propertiesEClass, Properties.class, "Properties", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(compareEClass, Compare.class, "Compare", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(stringToNumberEClass, StringToNumber.class, "StringToNumber", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(stringToBooleanEClass, StringToBoolean.class, "StringToBoolean", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(dataMapperRootEClass, DataMapperRoot.class, "DataMapperRoot", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getDataMapperRoot_Input(), this.getInput(), null, "input", null, 0, 1, DataMapperRoot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

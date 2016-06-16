@@ -71,6 +71,86 @@ public class DataMapperSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case DataMapperPackage.TRIM: {
+				Trim trim = (Trim)theEObject;
+				T result = caseTrim(trim);
+				if (result == null) result = caseOperator(trim);
+				if (result == null) result = caseDataMapperNode(trim);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case DataMapperPackage.REPLACE: {
+				Replace replace = (Replace)theEObject;
+				T result = caseReplace(replace);
+				if (result == null) result = caseOperator(replace);
+				if (result == null) result = caseDataMapperNode(replace);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case DataMapperPackage.MATCH: {
+				Match match = (Match)theEObject;
+				T result = caseMatch(match);
+				if (result == null) result = caseOperator(match);
+				if (result == null) result = caseDataMapperNode(match);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case DataMapperPackage.MIN: {
+				Min min = (Min)theEObject;
+				T result = caseMin(min);
+				if (result == null) result = caseOperator(min);
+				if (result == null) result = caseDataMapperNode(min);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case DataMapperPackage.MAX: {
+				Max max = (Max)theEObject;
+				T result = caseMax(max);
+				if (result == null) result = caseOperator(max);
+				if (result == null) result = caseDataMapperNode(max);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case DataMapperPackage.CUSTOM_FUNCTION: {
+				CustomFunction customFunction = (CustomFunction)theEObject;
+				T result = caseCustomFunction(customFunction);
+				if (result == null) result = caseOperator(customFunction);
+				if (result == null) result = caseDataMapperNode(customFunction);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case DataMapperPackage.PROPERTIES: {
+				Properties properties = (Properties)theEObject;
+				T result = caseProperties(properties);
+				if (result == null) result = caseOperator(properties);
+				if (result == null) result = caseDataMapperNode(properties);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case DataMapperPackage.COMPARE: {
+				Compare compare = (Compare)theEObject;
+				T result = caseCompare(compare);
+				if (result == null) result = caseOperator(compare);
+				if (result == null) result = caseDataMapperNode(compare);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case DataMapperPackage.STRING_TO_NUMBER: {
+				StringToNumber stringToNumber = (StringToNumber)theEObject;
+				T result = caseStringToNumber(stringToNumber);
+				if (result == null) result = caseOperator(stringToNumber);
+				if (result == null) result = caseDataMapperNode(stringToNumber);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case DataMapperPackage.STRING_TO_BOOLEAN: {
+				StringToBoolean stringToBoolean = (StringToBoolean)theEObject;
+				T result = caseStringToBoolean(stringToBoolean);
+				if (result == null) result = caseOperator(stringToBoolean);
+				if (result == null) result = caseDataMapperNode(stringToBoolean);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case DataMapperPackage.DATA_MAPPER_ROOT: {
 				DataMapperRoot dataMapperRoot = (DataMapperRoot)theEObject;
 				T result = caseDataMapperRoot(dataMapperRoot);
@@ -372,6 +452,156 @@ public class DataMapperSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseDataMapperNode(DataMapperNode object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Trim</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Trim</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseTrim(Trim object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Replace</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Replace</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseReplace(Replace object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Match</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Match</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseMatch(Match object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Min</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Min</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseMin(Min object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Max</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Max</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseMax(Max object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Custom Function</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Custom Function</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseCustomFunction(CustomFunction object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Properties</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Properties</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseProperties(Properties object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Compare</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Compare</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseCompare(Compare object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>String To Number</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>String To Number</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseStringToNumber(StringToNumber object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>String To Boolean</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>String To Boolean</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseStringToBoolean(StringToBoolean object) {
 		return null;
 	}
 

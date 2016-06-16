@@ -31,6 +31,96 @@ public interface DataMapperFactory extends EFactory {
 	DataMapperNode createDataMapperNode();
 
 	/**
+	 * Returns a new object of class '<em>Trim</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Trim</em>'.
+	 * @generated
+	 */
+	Trim createTrim();
+
+	/**
+	 * Returns a new object of class '<em>Replace</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Replace</em>'.
+	 * @generated
+	 */
+	Replace createReplace();
+
+	/**
+	 * Returns a new object of class '<em>Match</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Match</em>'.
+	 * @generated
+	 */
+	Match createMatch();
+
+	/**
+	 * Returns a new object of class '<em>Min</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Min</em>'.
+	 * @generated
+	 */
+	Min createMin();
+
+	/**
+	 * Returns a new object of class '<em>Max</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Max</em>'.
+	 * @generated
+	 */
+	Max createMax();
+
+	/**
+	 * Returns a new object of class '<em>Custom Function</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Custom Function</em>'.
+	 * @generated
+	 */
+	CustomFunction createCustomFunction();
+
+	/**
+	 * Returns a new object of class '<em>Properties</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Properties</em>'.
+	 * @generated
+	 */
+	Properties createProperties();
+
+	/**
+	 * Returns a new object of class '<em>Compare</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Compare</em>'.
+	 * @generated
+	 */
+	Compare createCompare();
+
+	/**
+	 * Returns a new object of class '<em>String To Number</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>String To Number</em>'.
+	 * @generated
+	 */
+	StringToNumber createStringToNumber();
+
+	/**
+	 * Returns a new object of class '<em>String To Boolean</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>String To Boolean</em>'.
+	 * @generated
+	 */
+	StringToBoolean createStringToBoolean();
+
+	/**
 	 * Returns a new object of class '<em>Root</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

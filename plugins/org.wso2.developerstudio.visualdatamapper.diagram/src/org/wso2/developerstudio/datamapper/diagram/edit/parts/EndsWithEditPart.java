@@ -90,7 +90,7 @@ public class EndsWithEditPart extends AbstractOperatorEditPart {
 	 * @generated NOT
 	 */
 	protected IFigure createNodeShape() {
-		String pattern=((EndsWithImpl) ((View) getModel()).getElement()).getPattern();
+		String pattern = ((EndsWithImpl) ((View) getModel()).getElement()).getPattern();
 		return primaryShape = new EndsWithFigure(pattern);
 	}
 

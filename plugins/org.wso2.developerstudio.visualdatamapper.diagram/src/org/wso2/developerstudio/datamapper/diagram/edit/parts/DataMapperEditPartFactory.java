@@ -102,6 +102,36 @@ public class DataMapperEditPartFactory implements EditPartFactory {
 			case NOTEditPart.VISUAL_ID:
 				return new NOTEditPart(view);
 
+			case TrimEditPart.VISUAL_ID:
+				return new TrimEditPart(view);
+
+			case ReplaceEditPart.VISUAL_ID:
+				return new ReplaceEditPart(view);
+
+			case MatchEditPart.VISUAL_ID:
+				return new MatchEditPart(view);
+
+			case MinEditPart.VISUAL_ID:
+				return new MinEditPart(view);
+
+			case MaxEditPart.VISUAL_ID:
+				return new MaxEditPart(view);
+
+			case CustomFunctionEditPart.VISUAL_ID:
+				return new CustomFunctionEditPart(view);
+
+			case PropertiesEditPart.VISUAL_ID:
+				return new PropertiesEditPart(view);
+
+			case CompareEditPart.VISUAL_ID:
+				return new CompareEditPart(view);
+
+			case StringToNumberEditPart.VISUAL_ID:
+				return new StringToNumberEditPart(view);
+
+			case StringToBooleanEditPart.VISUAL_ID:
+				return new StringToBooleanEditPart(view);
+
 			case TreeNodeEditPart.VISUAL_ID:
 				return new TreeNodeEditPart(view);
 

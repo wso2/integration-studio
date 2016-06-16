@@ -23,12 +23,6 @@ import java.util.Stack;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeNodeEditPart;
-import org.eclipse.gmf.runtime.notation.Node;
-import org.eclipse.gmf.runtime.notation.impl.ShapeImpl;
-import org.eclipse.ui.IEditorPart;
-import org.eclipse.ui.IEditorReference;
-import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.datamapper.DataMapperLink;
 import org.wso2.developerstudio.datamapper.DataMapperOperatorType;
 import org.wso2.developerstudio.datamapper.DataMapperRoot;
@@ -39,24 +33,15 @@ import org.wso2.developerstudio.datamapper.OperatorRightConnector;
 import org.wso2.developerstudio.datamapper.Output;
 import org.wso2.developerstudio.datamapper.PropertyKeyValuePair;
 import org.wso2.developerstudio.datamapper.SchemaDataType;
-import org.wso2.developerstudio.datamapper.diagram.custom.edit.part.AbstractOperatorEditPart;
 import org.wso2.developerstudio.datamapper.diagram.custom.exception.DataMapperException;
 import org.wso2.developerstudio.datamapper.diagram.custom.model.transformers.ModelTransformerFactory;
 import org.wso2.developerstudio.datamapper.diagram.custom.model.transformers.TransformerConstants;
 import org.wso2.developerstudio.datamapper.diagram.custom.util.ScriptGenerationUtil;
-import org.wso2.developerstudio.datamapper.diagram.edit.parts.ConstantEditPart;
-import org.wso2.developerstudio.datamapper.diagram.part.DataMapperDiagramEditor;
-import org.wso2.developerstudio.datamapper.impl.ConcatImpl;
 import org.wso2.developerstudio.datamapper.impl.ConstantImpl;
 import org.wso2.developerstudio.datamapper.impl.ElementImpl;
-import org.wso2.developerstudio.datamapper.impl.LowerCaseImpl;
 import org.wso2.developerstudio.datamapper.impl.OperatorImpl;
 import org.wso2.developerstudio.datamapper.impl.OperatorRightConnectorImpl;
-import org.wso2.developerstudio.datamapper.impl.SplitImpl;
 import org.wso2.developerstudio.datamapper.impl.TreeNodeImpl;
-import org.wso2.developerstudio.datamapper.impl.UpperCaseImpl;
-import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EditorUtils;
-import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbMultiPageEditor;
 
 /**
  * This class represent the object model of the Data-Mapping Diagram.
@@ -65,6 +50,7 @@ public class DataMapperDiagramModel {
 
 	private static final String TYPE = "type";
 	private static final String NAMESPACE_SEPERATOR = ":";
+	private static final String JSON_SCHEMA_NULLABLE = "nullable";
 	private List<DMVariable> variablesArray = new ArrayList<>();
 	private List<Integer> inputVariablesArray = new ArrayList<>();
 	private List<Integer> outputVariablesArray = new ArrayList<>();
@@ -76,7 +62,7 @@ public class DataMapperDiagramModel {
 	private List<ArrayList<Integer>> inputAdjList = new ArrayList<>();
 	private List<ArrayList<Integer>> outputAdjList = new ArrayList<>();
 	private List<Integer> executionSeq = new ArrayList<>();
-	private Map<String, SchemaDataType> variableTypeMap = new HashMap<>();
+	private Map<String, List<SchemaDataType>> variableTypeMap = new HashMap<>();
 	private String inputRootName;
 	private String outputRootName;
 
@@ -124,6 +110,9 @@ public class DataMapperDiagramModel {
 				outputVariablesArray.add(index);
 				currentTreeNode.setIndex(index);
 				addVariableTypeToMap(addedVariable.getName(), variableType);
+				if (isTreeNodeElementNullable(currentNode)) {
+					addVariableTypeToMap(addedVariable.getName(), SchemaDataType.NULL);
+				}
 				inputVariablesArray.add(index);
 				if (isCurrentTreeNodeALeafNode(currentTreeNode)) {
 					getResolvedVariableArray().add(index);
@@ -145,6 +134,16 @@ public class DataMapperDiagramModel {
 		}
 		addOtherRootElemetsToNodeArray(tempNodeArray, input);
 		populateAdjacencyLists(tempNodeArray);
+	}
+
+	private boolean isTreeNodeElementNullable(EObject currentTreeNode) {
+		EList<PropertyKeyValuePair> propertyList = ((TreeNodeImpl) currentTreeNode).getProperties();
+		for (PropertyKeyValuePair propertyKeyValuePair : propertyList) {
+			if (JSON_SCHEMA_NULLABLE.equals(propertyKeyValuePair.getKey())) {
+				return Boolean.parseBoolean(propertyKeyValuePair.getValue());
+			}
+		}
+		throw new IllegalArgumentException("Type field not found in treeNode");
 	}
 
 	private boolean isCurrentTreeNodeALeafNode(TreeNodeImpl currentTreeNode) {
@@ -227,7 +226,8 @@ public class DataMapperDiagramModel {
 	}
 
 	/**
-	 * Checks whether all input variables for the operation in inputAdjList are in the resolvedVariable list
+	 * Checks whether all input variables for the operation in inputAdjList are
+	 * in the resolvedVariable list
 	 * 
 	 * @param index
 	 * @return
@@ -445,7 +445,8 @@ public class DataMapperDiagramModel {
 	}
 
 	/**
-	 * This method will populate the outputVariables array field from diagram output tree
+	 * This method will populate the outputVariables array field from diagram
+	 * output tree
 	 * 
 	 * @param output
 	 */
@@ -555,7 +556,8 @@ public class DataMapperDiagramModel {
 	}
 
 	public void setInputRootName(String inputRootName) {
-		// removing name-space prefix from the schema name and save it as root name
+		// removing name-space prefix from the schema name and save it as root
+		// name
 		String[] rootNameArray = inputRootName.split(NAMESPACE_SEPERATOR);
 		this.inputRootName = rootNameArray[rootNameArray.length - 1];
 	}
@@ -565,7 +567,8 @@ public class DataMapperDiagramModel {
 	}
 
 	public void setOutputRootName(String outputRootName) {
-		// removing name-space prefix from the schema name and save it as root name
+		// removing name-space prefix from the schema name and save it as root
+		// name
 		String[] rootNameArray = outputRootName.split(NAMESPACE_SEPERATOR);
 		this.outputRootName = rootNameArray[rootNameArray.length - 1];
 	}
@@ -630,16 +633,19 @@ public class DataMapperDiagramModel {
 		this.operationsList = operationsList;
 	}
 
-	public Map<String, SchemaDataType> getVariableTypeMap() {
+	public Map<String, List<SchemaDataType>> getVariableTypeMap() {
 		return variableTypeMap;
 	}
 
-	public void setVariableTypeMap(Map<String, SchemaDataType> variableTypeMap) {
+	public void setVariableTypeMap(Map<String, List<SchemaDataType>> variableTypeMap) {
 		this.variableTypeMap = variableTypeMap;
 	}
 
 	private void addVariableTypeToMap(String variableName, SchemaDataType type) {
-		getVariableTypeMap().put(variableName, type);
+		if (!getVariableTypeMap().containsKey(variableName)) {
+			getVariableTypeMap().put(variableName, new ArrayList<SchemaDataType>());
+		}
+		getVariableTypeMap().get(variableName).add(type);
 	}
 
 }

@@ -284,6 +284,66 @@
           xsi:type="gmfgraph:Rectangle"
           name="NOTFigure"/>
     </descriptors>
+    <descriptors
+        name="TrimFigure">
+      <actualFigure
+          xsi:type="gmfgraph:Rectangle"
+          name="TrimFigure"/>
+    </descriptors>
+    <descriptors
+        name="ReplaceFigure">
+      <actualFigure
+          xsi:type="gmfgraph:Rectangle"
+          name="ReplaceFigure"/>
+    </descriptors>
+    <descriptors
+        name="MatchFigure">
+      <actualFigure
+          xsi:type="gmfgraph:Rectangle"
+          name="MatchFigure"/>
+    </descriptors>
+    <descriptors
+        name="MinFigure">
+      <actualFigure
+          xsi:type="gmfgraph:Rectangle"
+          name="MinFigure"/>
+    </descriptors>
+    <descriptors
+        name="MaxFigure">
+      <actualFigure
+          xsi:type="gmfgraph:Rectangle"
+          name="MaxFigure"/>
+    </descriptors>
+    <descriptors
+        name="CustomFunctionFigure">
+      <actualFigure
+          xsi:type="gmfgraph:Rectangle"
+          name="CustomFunctionFigure"/>
+    </descriptors>
+    <descriptors
+        name="PropertiesFigure">
+      <actualFigure
+          xsi:type="gmfgraph:Rectangle"
+          name="PropertiesFigure"/>
+    </descriptors>
+    <descriptors
+        name="CompareFigure">
+      <actualFigure
+          xsi:type="gmfgraph:Rectangle"
+          name="CompareFigure"/>
+    </descriptors>
+    <descriptors
+        name="StringToNumberFigure">
+      <actualFigure
+          xsi:type="gmfgraph:Rectangle"
+          name="StringToNumberFigure"/>
+    </descriptors>
+    <descriptors
+        name="StringToBooleanFigure">
+      <actualFigure
+          xsi:type="gmfgraph:Rectangle"
+          name="StringToBooleanFigure"/>
+    </descriptors>
   </figures>
   <nodes
       name="DataMapperNode"
@@ -413,6 +473,36 @@
   <nodes
       name="NOT"
       figure="NOTFigure"/>
+  <nodes
+      name="Trim"
+      figure="TrimFigure"/>
+  <nodes
+      name="Replace"
+      figure="ReplaceFigure"/>
+  <nodes
+      name="Match"
+      figure="MatchFigure"/>
+  <nodes
+      name="Min"
+      figure="MinFigure"/>
+  <nodes
+      name="Max"
+      figure="MaxFigure"/>
+  <nodes
+      name="CustomFunction"
+      figure="CustomFunctionFigure"/>
+  <nodes
+      name="Properties"
+      figure="PropertiesFigure"/>
+  <nodes
+      name="Compare"
+      figure="CompareFigure"/>
+  <nodes
+      name="StringToNumber"
+      figure="StringToNumberFigure"/>
+  <nodes
+      name="StringToBoolean"
+      figure="StringToBooleanFigure"/>
   <connections
       name="DataMapperLink"
       figure="DataMapperLinkFigure"/>

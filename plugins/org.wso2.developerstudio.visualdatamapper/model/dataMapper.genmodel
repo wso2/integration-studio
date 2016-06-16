@@ -57,6 +57,16 @@
       <genEnumLiterals ecoreEnumLiteral="dataMapper.ecore#//DataMapperOperatorType/SUBSTRING"/>
     </genEnums>
     <genClasses ecoreClass="dataMapper.ecore#//DataMapperNode"/>
+    <genClasses ecoreClass="dataMapper.ecore#//Trim"/>
+    <genClasses ecoreClass="dataMapper.ecore#//Replace"/>
+    <genClasses ecoreClass="dataMapper.ecore#//Match"/>
+    <genClasses ecoreClass="dataMapper.ecore#//Min"/>
+    <genClasses ecoreClass="dataMapper.ecore#//Max"/>
+    <genClasses ecoreClass="dataMapper.ecore#//CustomFunction"/>
+    <genClasses ecoreClass="dataMapper.ecore#//Properties"/>
+    <genClasses ecoreClass="dataMapper.ecore#//Compare"/>
+    <genClasses ecoreClass="dataMapper.ecore#//StringToNumber"/>
+    <genClasses ecoreClass="dataMapper.ecore#//StringToBoolean"/>
     <genClasses ecoreClass="dataMapper.ecore#//DataMapperRoot">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dataMapper.ecore#//DataMapperRoot/input"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dataMapper.ecore#//DataMapperRoot/output"/>

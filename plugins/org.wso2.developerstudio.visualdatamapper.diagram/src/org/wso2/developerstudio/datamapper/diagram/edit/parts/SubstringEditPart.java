@@ -93,7 +93,7 @@ public class SubstringEditPart extends AbstractOperatorEditPart {
 	protected IFigure createNodeShape() {
 		int startIndex = ((SubstringImpl) ((View) getModel()).getElement()).getStartIndex();
 		int endIndex = ((SubstringImpl) ((View) getModel()).getElement()).getEndIndex();
-		return primaryShape = new SubstringFigure(startIndex,endIndex);
+		return primaryShape = new SubstringFigure(startIndex, endIndex);
 	}
 
 	/**

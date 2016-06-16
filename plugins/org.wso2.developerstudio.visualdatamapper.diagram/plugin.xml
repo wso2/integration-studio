@@ -226,7 +226,7 @@
       <viewProvider class="org.wso2.developerstudio.datamapper.diagram.providers.DataMapperViewProvider">
          <Priority name="Lowest"/>
          <context viewClass="org.eclipse.gmf.runtime.notation.Diagram" semanticHints="DataMapper"/>
-         <context viewClass="org.eclipse.gmf.runtime.notation.Node" semanticHints="2002,2003,2005,2013,2006,2012,2007,2008,2009,2010,2011,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025,2026,2027,2028,3002,3007,3008,3009,3003,3020,3019,3011,3012,3013,3014,3015,3016,3017,3018"/>
+         <context viewClass="org.eclipse.gmf.runtime.notation.Node" semanticHints="2002,2003,2005,2013,2006,2012,2007,2008,2009,2010,2011,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025,2026,2027,2028,2029,2030,2031,2032,2033,2034,2035,2036,2037,2038,3002,3007,3008,3009,3003,3020,3019,3011,3012,3013,3014,3015,3016,3017,3018"/>
          <context viewClass="org.eclipse.gmf.runtime.notation.Edge" semanticHints="4001"/>
       </viewProvider>
    </extension>
@@ -239,7 +239,7 @@
             <method name="getType()" value="DataMapper"/>
          </object>
          <object class="org.eclipse.gmf.runtime.notation.Node" id="generated-nodes">
-            <method name="getType()" value="2002,2003,2005,2013,2006,2012,2007,2008,2009,2010,2011,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025,2026,2027,2028,3002,3007,3008,3009,3003,3020,3019,3011,3012,3013,3014,3015,3016,3017,3018"/>
+            <method name="getType()" value="2002,2003,2005,2013,2006,2012,2007,2008,2009,2010,2011,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025,2026,2027,2028,2029,2030,2031,2032,2033,2034,2035,2036,2037,2038,3002,3007,3008,3009,3003,3020,3019,3011,3012,3013,3014,3015,3016,3017,3018"/>
          </object>
          <object class="org.eclipse.gmf.runtime.notation.Edge" id="generated-links">
             <method name="getType()" value="4001"/>
@@ -390,6 +390,56 @@
          <Priority name="Lowest"/>
          <object class="org.wso2.developerstudio.datamapper.diagram.edit.parts.NOTEditPart" id="NOT_2028"/>
          <context elements="NOT_2028"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="org.wso2.developerstudio.datamapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfTrimEditPart">
+         <Priority name="Lowest"/>
+         <object class="org.wso2.developerstudio.datamapper.diagram.edit.parts.TrimEditPart" id="Trim_2029"/>
+         <context elements="Trim_2029"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="org.wso2.developerstudio.datamapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfReplaceEditPart">
+         <Priority name="Lowest"/>
+         <object class="org.wso2.developerstudio.datamapper.diagram.edit.parts.ReplaceEditPart" id="Replace_2030"/>
+         <context elements="Replace_2030"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="org.wso2.developerstudio.datamapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfMatchEditPart">
+         <Priority name="Lowest"/>
+         <object class="org.wso2.developerstudio.datamapper.diagram.edit.parts.MatchEditPart" id="Match_2031"/>
+         <context elements="Match_2031"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="org.wso2.developerstudio.datamapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfMinEditPart">
+         <Priority name="Lowest"/>
+         <object class="org.wso2.developerstudio.datamapper.diagram.edit.parts.MinEditPart" id="Min_2032"/>
+         <context elements="Min_2032"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="org.wso2.developerstudio.datamapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfMaxEditPart">
+         <Priority name="Lowest"/>
+         <object class="org.wso2.developerstudio.datamapper.diagram.edit.parts.MaxEditPart" id="Max_2033"/>
+         <context elements="Max_2033"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="org.wso2.developerstudio.datamapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfCustomFunctionEditPart">
+         <Priority name="Lowest"/>
+         <object class="org.wso2.developerstudio.datamapper.diagram.edit.parts.CustomFunctionEditPart" id="CustomFunction_2034"/>
+         <context elements="CustomFunction_2034"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="org.wso2.developerstudio.datamapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfPropertiesEditPart">
+         <Priority name="Lowest"/>
+         <object class="org.wso2.developerstudio.datamapper.diagram.edit.parts.PropertiesEditPart" id="Properties_2035"/>
+         <context elements="Properties_2035"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="org.wso2.developerstudio.datamapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfCompareEditPart">
+         <Priority name="Lowest"/>
+         <object class="org.wso2.developerstudio.datamapper.diagram.edit.parts.CompareEditPart" id="Compare_2036"/>
+         <context elements="Compare_2036"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="org.wso2.developerstudio.datamapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfStringToNumberEditPart">
+         <Priority name="Lowest"/>
+         <object class="org.wso2.developerstudio.datamapper.diagram.edit.parts.StringToNumberEditPart" id="StringToNumber_2037"/>
+         <context elements="StringToNumber_2037"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="org.wso2.developerstudio.datamapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfStringToBooleanEditPart">
+         <Priority name="Lowest"/>
+         <object class="org.wso2.developerstudio.datamapper.diagram.edit.parts.StringToBooleanEditPart" id="StringToBoolean_2038"/>
+         <context elements="StringToBoolean_2038"/>
       </modelingAssistantProvider>
             <modelingAssistantProvider class="org.wso2.developerstudio.datamapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfTreeNodeEditPart">
          <Priority name="Lowest"/>
@@ -750,6 +800,106 @@
       </metamodel>
       <metamodel nsURI="http:///org/wso2/developerstudio/eclipse/gmf/datamapper">
          <metamodelType
+               id="org.wso2.developerstudio.visualdatamapper.diagram.Trim_2029"
+               name="%metatype.name.Trim_2029"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="Trim"
+               edithelper="org.wso2.developerstudio.datamapper.diagram.edit.helpers.TrimEditHelper">
+            <param name="semanticHint" value="2029"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http:///org/wso2/developerstudio/eclipse/gmf/datamapper">
+         <metamodelType
+               id="org.wso2.developerstudio.visualdatamapper.diagram.Replace_2030"
+               name="%metatype.name.Replace_2030"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="Replace"
+               edithelper="org.wso2.developerstudio.datamapper.diagram.edit.helpers.ReplaceEditHelper">
+            <param name="semanticHint" value="2030"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http:///org/wso2/developerstudio/eclipse/gmf/datamapper">
+         <metamodelType
+               id="org.wso2.developerstudio.visualdatamapper.diagram.Match_2031"
+               name="%metatype.name.Match_2031"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="Match"
+               edithelper="org.wso2.developerstudio.datamapper.diagram.edit.helpers.MatchEditHelper">
+            <param name="semanticHint" value="2031"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http:///org/wso2/developerstudio/eclipse/gmf/datamapper">
+         <metamodelType
+               id="org.wso2.developerstudio.visualdatamapper.diagram.Min_2032"
+               name="%metatype.name.Min_2032"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="Min"
+               edithelper="org.wso2.developerstudio.datamapper.diagram.edit.helpers.MinEditHelper">
+            <param name="semanticHint" value="2032"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http:///org/wso2/developerstudio/eclipse/gmf/datamapper">
+         <metamodelType
+               id="org.wso2.developerstudio.visualdatamapper.diagram.Max_2033"
+               name="%metatype.name.Max_2033"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="Max"
+               edithelper="org.wso2.developerstudio.datamapper.diagram.edit.helpers.MaxEditHelper">
+            <param name="semanticHint" value="2033"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http:///org/wso2/developerstudio/eclipse/gmf/datamapper">
+         <metamodelType
+               id="org.wso2.developerstudio.visualdatamapper.diagram.CustomFunction_2034"
+               name="%metatype.name.CustomFunction_2034"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="CustomFunction"
+               edithelper="org.wso2.developerstudio.datamapper.diagram.edit.helpers.CustomFunctionEditHelper">
+            <param name="semanticHint" value="2034"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http:///org/wso2/developerstudio/eclipse/gmf/datamapper">
+         <metamodelType
+               id="org.wso2.developerstudio.visualdatamapper.diagram.Properties_2035"
+               name="%metatype.name.Properties_2035"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="Properties"
+               edithelper="org.wso2.developerstudio.datamapper.diagram.edit.helpers.PropertiesEditHelper">
+            <param name="semanticHint" value="2035"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http:///org/wso2/developerstudio/eclipse/gmf/datamapper">
+         <metamodelType
+               id="org.wso2.developerstudio.visualdatamapper.diagram.Compare_2036"
+               name="%metatype.name.Compare_2036"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="Compare"
+               edithelper="org.wso2.developerstudio.datamapper.diagram.edit.helpers.CompareEditHelper">
+            <param name="semanticHint" value="2036"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http:///org/wso2/developerstudio/eclipse/gmf/datamapper">
+         <metamodelType
+               id="org.wso2.developerstudio.visualdatamapper.diagram.StringToNumber_2037"
+               name="%metatype.name.StringToNumber_2037"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="StringToNumber"
+               edithelper="org.wso2.developerstudio.datamapper.diagram.edit.helpers.StringToNumberEditHelper">
+            <param name="semanticHint" value="2037"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http:///org/wso2/developerstudio/eclipse/gmf/datamapper">
+         <metamodelType
+               id="org.wso2.developerstudio.visualdatamapper.diagram.StringToBoolean_2038"
+               name="%metatype.name.StringToBoolean_2038"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="StringToBoolean"
+               edithelper="org.wso2.developerstudio.datamapper.diagram.edit.helpers.StringToBooleanEditHelper">
+            <param name="semanticHint" value="2038"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http:///org/wso2/developerstudio/eclipse/gmf/datamapper">
+         <metamodelType
                id="org.wso2.developerstudio.visualdatamapper.diagram.TreeNode_3002"
                name="%metatype.name.TreeNode_3002"
                kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
@@ -941,6 +1091,16 @@
          <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.AND_2026"/>
          <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.OR_2027"/>
          <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.NOT_2028"/>
+         <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.Trim_2029"/>
+         <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.Replace_2030"/>
+         <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.Match_2031"/>
+         <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.Min_2032"/>
+         <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.Max_2033"/>
+         <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.CustomFunction_2034"/>
+         <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.Properties_2035"/>
+         <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.Compare_2036"/>
+         <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.StringToNumber_2037"/>
+         <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.StringToBoolean_2038"/>
          <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.TreeNode_3002"/>
          <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.Element_3007"/>
          <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.InNode_3008"/>

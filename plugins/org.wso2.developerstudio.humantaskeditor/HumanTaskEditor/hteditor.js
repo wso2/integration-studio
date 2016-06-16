@@ -997,6 +997,10 @@ $('.sectionHeader').click(function() {
 function marshalPeopleAssignment(taskNode, peopleAssignmentName) {
     taskName = taskNode.getAttribute("name");
     taskDivName = taskName + "wrapper";
+    /*if(taskNode.getElementsByTagName("peopleAssignments")[0].getElementsByTagName(peopleAssignmentName).length != 0 &&
+        $('#' + taskDivName + " input[name = " + peopleAssignmentName + "" + taskDivName + "]:checked").val() == "na"){
+        emptyNode(taskNode.getElementsByTagName("peopleAssignments")[0].getElementsByTagName(peopleAssignmentName)[0]);
+    }*/ // 
     if (taskNode.getElementsByTagName("peopleAssignments")[0]
         .getElementsByTagName(peopleAssignmentName).length != 0 && taskNode.getElementsByTagName("peopleAssignments")[0]
         .getElementsByTagName(peopleAssignmentName)[0]
@@ -1253,6 +1257,12 @@ function handleTabChange() {
             //addEvent("tabChange","page-content-wrapper "+ui.newTab.index(),xmlDom);
         } 
     });
+}
+
+function emptyNode(parent) {
+    while (parent.firstChild) {
+        parent.removeChild(parent.firstChild);
+    }
 }
 
 //Undo Redo Implementation

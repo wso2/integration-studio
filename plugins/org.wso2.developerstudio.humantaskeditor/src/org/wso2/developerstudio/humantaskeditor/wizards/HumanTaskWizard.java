@@ -150,11 +150,15 @@ public class HumanTaskWizard extends Wizard implements INewWizard {
                 throwCoreException("An artifact must contain only one human task file");
             }
         }
+        InputStream stream = null;
+        InputStream wsdlStream = null;
+        InputStream htconfigStream = null;
+        InputStream orgSchemaStream = null;
         try {
-            InputStream stream = openContentStream(taskName,tnsName);
-            InputStream wsdlStream = openWSDLStream();
-            InputStream htconfigStream = openHTConfigStream();
-            InputStream orgSchemaStream = openOrgSchemaStream();
+            stream = openContentStream(taskName, tnsName);
+            wsdlStream = openWSDLStream();
+            htconfigStream = openHTConfigStream();
+            orgSchemaStream = openOrgSchemaStream();
             
             if (file.exists()) {
                 throwCoreException("A file with the same name already exists");
@@ -175,6 +179,19 @@ public class HumanTaskWizard extends Wizard implements INewWizard {
             ErrorDialog.openError(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
                     HumantaskEditorConstants.ERROR_MESSAGE + "At Streams",
                     HumantaskEditorConstants.ERROR_CREATING_INITIAL_FILE_MESSAGE, editorStatus);
+        } finally {
+            try {
+                stream.close();
+                wsdlStream.close();
+                htconfigStream.close();
+                orgSchemaStream.close();
+            } catch (IOException e) {
+                logger.log(Level.FINE, HumantaskEditorConstants.ERROR_CREATING_INITIAL_FILE_MESSAGE, e);
+                IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage());
+                ErrorDialog.openError(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
+                        HumantaskEditorConstants.ERROR_MESSAGE,
+                        HumantaskEditorConstants.ERROR_CREATING_INITIAL_FILE_MESSAGE, editorStatus);
+            }
         }
         monitor.worked(1);
         monitor.setTaskName(HumantaskEditorConstants.OPENING_FILE_FOR_EDITING_MESSAGE);
@@ -249,22 +266,22 @@ public class HumanTaskWizard extends Wizard implements INewWizard {
     private String readDummyHT() throws IOException {
         StringBuilder sb = new StringBuilder();
         URL url;
+        BufferedReader in = null;
         try {
             url = new URL(HumantaskEditorConstants.DUMMY_HT_LOCATION);
             InputStream inputStream = url.openConnection().getInputStream();
-            BufferedReader in = new BufferedReader(new InputStreamReader(inputStream));
+            in = new BufferedReader(new InputStreamReader(inputStream));
             String inputLine;
             while ((inputLine = in.readLine()) != null) {
                 sb.append(inputLine + "\n");
             }
-
-            in.close();
-
         } catch (IOException e) {
             logger.log(Level.FINE, "Error reading from HT file", e);
             IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage());
             ErrorDialog.openError(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), "Error",
                     "Error reading from project", editorStatus);
+        } finally {
+            in.close();
         }
         return sb.toString();
     }
@@ -277,22 +294,22 @@ public class HumanTaskWizard extends Wizard implements INewWizard {
     private String readDummyOrgSchema() throws IOException {
         StringBuilder sb = new StringBuilder();
         URL url;
+        BufferedReader in = null;
         try {
             url = new URL(HumantaskEditorConstants.DUMMY_ORG_SCHEMA_LOCATION);
             InputStream inputStream = url.openConnection().getInputStream();
-            BufferedReader in = new BufferedReader(new InputStreamReader(inputStream));
+            in = new BufferedReader(new InputStreamReader(inputStream));
             String inputLine;
             while ((inputLine = in.readLine()) != null) {
                 sb.append(inputLine + "\n");
             }
-
-            in.close();
-
         } catch (IOException e) {
             logger.log(Level.FINE, "Error reading from org schema file", e);
             IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage());
             ErrorDialog.openError(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
                     HumantaskEditorConstants.ERROR_MESSAGE, "Error reading from project", editorStatus);
+        } finally {
+            in.close();
         }
         return sb.toString();
     }
@@ -305,22 +322,22 @@ public class HumanTaskWizard extends Wizard implements INewWizard {
     private String readDummyWSDL() throws IOException {
         StringBuilder sb = new StringBuilder();
         URL url;
+        BufferedReader in = null;
         try {
             url = new URL(HumantaskEditorConstants.DUMMY_WSDL_LOCATION);
             InputStream inputStream = url.openConnection().getInputStream();
-            BufferedReader in = new BufferedReader(new InputStreamReader(inputStream));
+            in = new BufferedReader(new InputStreamReader(inputStream));
             String inputLine;
             while ((inputLine = in.readLine()) != null) {
                 sb.append(inputLine + "\n");
             }
-
-            in.close();
-
         } catch (IOException e) {
             logger.log(Level.FINE, "Error reading from WSDL file", e);
             IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage());
             ErrorDialog.openError(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), "Error",
                     "Error reading from project", editorStatus);
+        } finally {
+            in.close();
         }
         return sb.toString();
     }
@@ -328,22 +345,22 @@ public class HumanTaskWizard extends Wizard implements INewWizard {
     private String readDummyHtConfig() throws IOException {
         StringBuilder sb = new StringBuilder();
         URL url;
+        BufferedReader in = null;
         try {
             url = new URL(HumantaskEditorConstants.DUMMY_HTCONFIG_LOCATION);
             InputStream inputStream = url.openConnection().getInputStream();
-            BufferedReader in = new BufferedReader(new InputStreamReader(inputStream));
+            in = new BufferedReader(new InputStreamReader(inputStream));
             String inputLine;
             while ((inputLine = in.readLine()) != null) {
                 sb.append(inputLine + "\n");
             }
-
-            in.close();
-
         } catch (IOException e) {
             logger.log(Level.FINE, "Error reading from HTConfig file", e);
             IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage());
             ErrorDialog.openError(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), "Error",
                     "Error reading from project", editorStatus);
+        }  finally {
+            in.close();
         }
         return sb.toString();
     }

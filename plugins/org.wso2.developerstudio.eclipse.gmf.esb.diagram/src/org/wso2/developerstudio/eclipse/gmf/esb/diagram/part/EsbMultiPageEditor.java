@@ -128,6 +128,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.persistence.SequenceInfo;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.platform.core.event.EsbEditorEvent;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.ESBFormEditor;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
@@ -508,14 +509,15 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
      * Creates the pages of the multi-page editor.
      */
     protected void createPages() {
-
     initialPageLoad = true;
 	 createPage0();
      EsbDiagram diagram = (EsbDiagram) graphicalEditor.getDiagram().getElement();
 		EsbServer server = diagram.getServer();	
-     switch (server.getType()) {
+        switch (server.getType()) {
 		case COMPLEX_ENDPOINT:			
 			break;
+		case LOCAL_ENTRY:
+			createPageForm(server.getType());
 		default:
 			createPage1();
 			break;
@@ -524,12 +526,29 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
      EditorUtils.setLockmode(graphicalEditor, true);
 		//IFile file = ((IFileEditorInput)getEditorInput()).getFile();
 /*        ElementDuplicator endPointDuplicator = new ElementDuplicator(file.getProject(),getGraphicalEditor());        
-     endPointDuplicator.updateAssociatedDiagrams(this);*/
+          endPointDuplicator.updateAssociatedDiagrams(this);*/
      EditorUtils.setLockmode(graphicalEditor, false);
  
         //createPage2();
     }
     
+	private void createPageForm(ArtifactType artifactType) {
+		  IEditorInput editorInput = getEditorInput();
+		  ESBFormEditor simpleFormEditor = new ESBFormEditor(artifactType);
+		 
+		try {
+			addPage(DESIGN_VIEW_PAGE_INDEX, simpleFormEditor, editorInput);
+			 setPageText(DESIGN_VIEW_PAGE_INDEX, "Local Entry Form"); //$NON-NLS-1$
+		} catch (PartInitException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		// TODO Auto-generated method stub
+		
+	}
+
+
 	/**
 	 * This is used to track the active viewer. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
@@ -731,7 +750,12 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
 	private IFile updateAssociatedXMLFile(IProgressMonitor monitor) throws Exception {
 		EsbDiagram diagram = (EsbDiagram) graphicalEditor.getDiagram().getElement();
 		EsbServer server = diagram.getServer();
-		IFile xmlFile = ((EsbEditorInput) getEditor(0).getEditorInput()).getXmlResource();
+		IFile xmlFile = null;
+		if (server.getType() == ArtifactType.LOCAL_ENTRY) {
+			xmlFile = ((EsbEditorInput) getEditor(2).getEditorInput()).getXmlResource();
+		} else {
+		xmlFile = ((EsbEditorInput) getEditor(0).getEditorInput()).getXmlResource();
+		}
 		String source = EsbModelTransformer.instance.designToSource(server);
 		if (source == null) {
 			log.warn("Could not get the source");

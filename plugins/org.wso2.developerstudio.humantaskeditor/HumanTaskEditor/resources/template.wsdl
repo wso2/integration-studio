@@ -2,14 +2,16 @@
 <wsdl:definitions name="ClaimApproval" targetNamespace="http://www.example.com/"
 	xmlns:tns="http://www.example.com/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
 	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tschema="http://www.example.com/claims/schema"
-	xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:htt="http://docs.oasis-open.org/ns/bpel4people/ws-humantask/types/200803">
 	<wsdl:documentation>
 		Example for WS-HumanTask 1.1 - WS-HumanTask Task Interface Definition
 	</wsdl:documentation>
 	<wsdl:types>
 		<xsd:schema targetNamespace="http://www.example.com/"
 			xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+			xmlns:htt="http://docs.oasis-open.org/ns/bpel4people/ws-humantask/types/200803"
 			elementFormDefault="qualified">
+			<xsd:import namespace="http://docs.oasis-open.org/ns/bpel4people/ws-humantask/types/200803" schemaLocation="organizationalentityschema.xsd"/>
 		</xsd:schema>
     </wsdl:types>
 </wsdl:definitions>

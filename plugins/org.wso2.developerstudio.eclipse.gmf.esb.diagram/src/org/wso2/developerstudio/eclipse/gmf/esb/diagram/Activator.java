@@ -4,7 +4,7 @@ import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
 
 public class Activator extends AbstractUIPlugin {
-
+	
 	// The plug-in ID
 	public static final String PLUGIN_ID = "org.wso2.developerstudio.eclipse.gmf.esb.diagram";
 
@@ -49,5 +49,7 @@ public class Activator extends AbstractUIPlugin {
 	public static Activator getDefault() {
 		return plugin;
 	}
+	
+	
 
 }

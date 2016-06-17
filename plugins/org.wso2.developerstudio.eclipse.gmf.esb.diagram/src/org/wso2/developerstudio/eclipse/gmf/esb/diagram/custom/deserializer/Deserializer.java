@@ -65,6 +65,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbDiagramEditor;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.platform.ui.utils.UnrecogizedArtifactTypeException;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.ESBFormEditor;
 import org.apache.axiom.om.OMAbstractFactory;
 import org.apache.axiom.om.OMAttribute;
 import org.apache.axiom.om.OMElement;
@@ -196,6 +197,11 @@ public class Deserializer {
 		 */
 		//esbServer.setLockmode(false); 
 
+	}
+	
+	@SuppressWarnings("unchecked")
+	public void updateDesign(String source, ESBFormEditor formEditor) throws Exception {
+		
 	}
 	
 	/**

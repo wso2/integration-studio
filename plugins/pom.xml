@@ -48,6 +48,7 @@
 		<module>org.wso2.developerstudio.eclipse.artifact.inboundendpoint</module>
 		<module>org.wso2.developerstudio.eclipse.artifact.connector</module>
 		<module>org.wso2.developerstudio.eclipse.gmf.esb.diagram</module>
+		<module>org.wso2.developerstudio.esb.form.editors</module>
 		<module>org.wso2.developerstudio.visualdatamapper</module>
 		<module>org.wso2.developerstudio.visualdatamapper.diagram</module>
 		<module>org.wso2.developerstudio.visualdatamapper.edit</module>

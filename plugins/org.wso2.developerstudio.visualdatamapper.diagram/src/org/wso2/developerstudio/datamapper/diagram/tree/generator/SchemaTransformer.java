@@ -1093,12 +1093,13 @@ public class SchemaTransformer implements ISchemaTransformer {
 	/**
 	 * Gets the schema content from the model
 	 */
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
 	public String getSchemaContentFromModel(TreeNodeImpl treeNodeModel, File writeToFile) {
 
 		JSONObject root = new JSONObject();
-		JSONObject propertiesObject = new JSONObject();
+		Map propertiesObject = new LinkedHashMap<>();
+		//JSONObject propertiesObject = new JSONObject();
 		JSONArray arrayItems = new JSONArray();
 		JSONObject itemsObject = new JSONObject();
 		JSONObject attributesObject = new JSONObject();
@@ -1252,7 +1253,7 @@ public class SchemaTransformer implements ISchemaTransformer {
 	 * @param schemaArrayItemsType
 	 */
 	@SuppressWarnings("unchecked")
-	private void processChildrenOfRootArray(TreeNodeImpl treeNodeModel, JSONObject root, JSONObject propertiesObject,
+	private void processChildrenOfRootArray(TreeNodeImpl treeNodeModel, JSONObject root, Map propertiesObject,
 			JSONObject itemsObject, String schemaArrayItemsID, String schemaArrayItemsType) {
 		if (schemaArrayItemsType.equals(JSON_SCHEMA_OBJECT)) {
 			itemsObject.put(JSON_SCHEMA_PROPERTIES, propertiesObject);
@@ -1340,8 +1341,8 @@ public class SchemaTransformer implements ISchemaTransformer {
 	 * @param parent
 	 * @param root
 	 */
-	@SuppressWarnings("unchecked")
-	private void recursiveSchemaGenerator(TreeNodeImpl treeNodeModel, JSONObject parent, JSONObject root) {
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	private void recursiveSchemaGenerator(TreeNodeImpl treeNodeModel, Map parent, JSONObject root) {
 		if (treeNodeModel != null) {
 			EList<Element> elemList = treeNodeModel.getElement();
 			EList<TreeNode> nodeList = treeNodeModel.getNode();

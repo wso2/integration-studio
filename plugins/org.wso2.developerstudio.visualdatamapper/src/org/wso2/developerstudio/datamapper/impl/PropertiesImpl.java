@@ -2,10 +2,13 @@
  */
 package org.wso2.developerstudio.datamapper.impl;
 
-import org.eclipse.emf.ecore.EClass;
+import java.util.ArrayList;
 
+import org.eclipse.emf.ecore.EClass;
+import org.wso2.developerstudio.datamapper.DataMapperOperatorType;
 import org.wso2.developerstudio.datamapper.DataMapperPackage;
 import org.wso2.developerstudio.datamapper.Properties;
+import org.wso2.developerstudio.datamapper.SchemaDataType;
 
 /**
  * <!-- begin-user-doc -->
@@ -18,10 +21,21 @@ public class PropertiesImpl extends OperatorImpl implements Properties {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	protected PropertiesImpl() {
 		super();
+		setDefaultInputConnectors(0);
+		setDefaultOutputConnectors(1);
+		setInputSizeFixed(true);
+		setOutputSizeFixed(true);
+		getInputVariableTypes().put(0, new ArrayList<SchemaDataType>());
+		getOutputVariableTypes().put(0, new ArrayList<SchemaDataType>());
+		getOutputVariableTypes().get(0).add(SchemaDataType.NUMBER);
+		getOutputVariableTypes().get(0).add(SchemaDataType.STRING);
+		getOutputVariableTypes().get(0).add(SchemaDataType.BOOLEAN);
+		setOperatorType(DataMapperOperatorType.PROPERTIES);
+		getOutputLabelList().add("Value");
 	}
 
 	/**

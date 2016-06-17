@@ -12,6 +12,7 @@ import org.wso2.developerstudio.datamapper.AbsoluteValue;
 import org.wso2.developerstudio.datamapper.Add;
 import org.wso2.developerstudio.datamapper.Celi;
 import org.wso2.developerstudio.datamapper.Compare;
+import org.wso2.developerstudio.datamapper.ComparisonOperatorType;
 import org.wso2.developerstudio.datamapper.Concat;
 import org.wso2.developerstudio.datamapper.Constant;
 import org.wso2.developerstudio.datamapper.Contains;
@@ -419,6 +420,13 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 
 	/**
 	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum comparisonOperatorTypeEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -571,6 +579,15 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 	 */
 	public EClass getCompare() {
 		return compareEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getCompare_ComparisonOperator() {
+		return (EAttribute)compareEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -1493,6 +1510,15 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 
 	/**
 	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EEnum getComparisonOperatorType() {
+		return comparisonOperatorTypeEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -1554,6 +1580,7 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 		propertiesEClass = createEClass(PROPERTIES);
 
 		compareEClass = createEClass(COMPARE);
+		createEAttribute(compareEClass, COMPARE__COMPARISON_OPERATOR);
 
 		stringToNumberEClass = createEClass(STRING_TO_NUMBER);
 
@@ -1699,6 +1726,7 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 		createEAttribute(propertyKeyValuePairEClass, PROPERTY_KEY_VALUE_PAIR__VALUE);
 
 		// Create enums
+		comparisonOperatorTypeEEnum = createEEnum(COMPARISON_OPERATOR_TYPE);
 		schemaDataTypeEEnum = createEEnum(SCHEMA_DATA_TYPE);
 		dataMapperOperatorTypeEEnum = createEEnum(DATA_MAPPER_OPERATOR_TYPE);
 	}
@@ -1787,6 +1815,7 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 		initEClass(propertiesEClass, Properties.class, "Properties", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(compareEClass, Compare.class, "Compare", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getCompare_ComparisonOperator(), this.getComparisonOperatorType(), "comparisonOperator", "==", 0, 1, Compare.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(stringToNumberEClass, StringToNumber.class, "StringToNumber", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -1932,6 +1961,16 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 		initEAttribute(getPropertyKeyValuePair_Value(), ecorePackage.getEString(), "value", "", 1, 1, PropertyKeyValuePair.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
+		initEEnum(comparisonOperatorTypeEEnum, ComparisonOperatorType.class, "ComparisonOperatorType");
+		addEEnumLiteral(comparisonOperatorTypeEEnum, ComparisonOperatorType.EQUAL_VALUE);
+		addEEnumLiteral(comparisonOperatorTypeEEnum, ComparisonOperatorType.EQUAL_VALUE_TYPE);
+		addEEnumLiteral(comparisonOperatorTypeEEnum, ComparisonOperatorType.NOT_EQUAL_VALUE);
+		addEEnumLiteral(comparisonOperatorTypeEEnum, ComparisonOperatorType.NOT_EQUAL_VALUE_TYPE);
+		addEEnumLiteral(comparisonOperatorTypeEEnum, ComparisonOperatorType.GREATER_THAN);
+		addEEnumLiteral(comparisonOperatorTypeEEnum, ComparisonOperatorType.GREATER_OR_EQUAL);
+		addEEnumLiteral(comparisonOperatorTypeEEnum, ComparisonOperatorType.LOWER_THAN);
+		addEEnumLiteral(comparisonOperatorTypeEEnum, ComparisonOperatorType.LOWER_OR_EQUAL);
+
 		initEEnum(schemaDataTypeEEnum, SchemaDataType.class, "SchemaDataType");
 		addEEnumLiteral(schemaDataTypeEEnum, SchemaDataType.ARRAY);
 		addEEnumLiteral(schemaDataTypeEEnum, SchemaDataType.BOOLEAN);
@@ -1981,6 +2020,17 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 		addEEnumLiteral(dataMapperOperatorTypeEEnum, DataMapperOperatorType.STARTS_WITH);
 		addEEnumLiteral(dataMapperOperatorTypeEEnum, DataMapperOperatorType.STRING_LENGTH);
 		addEEnumLiteral(dataMapperOperatorTypeEEnum, DataMapperOperatorType.SUBSTRING);
+		addEEnumLiteral(dataMapperOperatorTypeEEnum, DataMapperOperatorType.COMPARE);
+		addEEnumLiteral(dataMapperOperatorTypeEEnum, DataMapperOperatorType.CUSTOM_FUNCTION);
+		addEEnumLiteral(dataMapperOperatorTypeEEnum, DataMapperOperatorType.MATCH);
+		addEEnumLiteral(dataMapperOperatorTypeEEnum, DataMapperOperatorType.MAX);
+		addEEnumLiteral(dataMapperOperatorTypeEEnum, DataMapperOperatorType.MIN);
+		addEEnumLiteral(dataMapperOperatorTypeEEnum, DataMapperOperatorType.PROPERTIES);
+		addEEnumLiteral(dataMapperOperatorTypeEEnum, DataMapperOperatorType.REPLACE);
+		addEEnumLiteral(dataMapperOperatorTypeEEnum, DataMapperOperatorType.STRING_TO_BOOLEAN);
+		addEEnumLiteral(dataMapperOperatorTypeEEnum, DataMapperOperatorType.STRING_TO_NUMBER);
+		addEEnumLiteral(dataMapperOperatorTypeEEnum, DataMapperOperatorType.TRIM);
+		addEEnumLiteral(dataMapperOperatorTypeEEnum, DataMapperOperatorType.TYPE_CONVERSION_OPERATION);
 
 		// Create resource
 		createResource(eNS_URI);

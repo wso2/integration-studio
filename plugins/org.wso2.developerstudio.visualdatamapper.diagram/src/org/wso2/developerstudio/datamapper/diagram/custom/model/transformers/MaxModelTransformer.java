@@ -18,19 +18,17 @@ package org.wso2.developerstudio.datamapper.diagram.custom.model.transformers;
 import org.wso2.developerstudio.datamapper.DataMapperOperatorType;
 import org.wso2.developerstudio.datamapper.diagram.custom.model.DMOperation;
 import org.wso2.developerstudio.datamapper.diagram.custom.model.IModelTransformer;
-import org.wso2.developerstudio.datamapper.impl.DivideImpl;
+import org.wso2.developerstudio.datamapper.impl.MaxImpl;
 import org.wso2.developerstudio.datamapper.impl.OperatorImpl;
 
-public class DivideModelTransformer implements IModelTransformer {
+public class MaxModelTransformer implements IModelTransformer {
 
 	@Override
 	public DMOperation transform(OperatorImpl operator, int index) {
-		if (operator instanceof DivideImpl) {
-			DMOperation divideOperatorModel = new DMOperation(DataMapperOperatorType.DIVIDE, operator.toString(),
-					index);
-			return divideOperatorModel;
+		if (operator instanceof MaxImpl) {
+			DMOperation maxOperatorModel = new DMOperation(DataMapperOperatorType.MAX, operator.toString(), index);
+			return maxOperatorModel;
 		}
-		throw new IllegalArgumentException("DivideImpl operator expected. Found : " + operator.toString());
+		throw new IllegalArgumentException("MaxImpl operator expected. Found : " + operator.toString());
 	}
-
 }

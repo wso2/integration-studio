@@ -32,9 +32,24 @@ public class ModelTransformerFactory {
 			return getBooleanOperatorModelTransformer(type);
 		case CONDITIONAL_OPERATION:
 			return getConditionalOperatorModelTransformer(type);
+		case TYPE_CONVERSION_OPERATION:
+			return getTypeConvertionOperatorModelTransformer(type);
 		default:
 			throw new IllegalArgumentException(
 					"Unknown operator category found for tranform in ModelTransformerFactory : " + type);
+		}
+	}
+
+	private static IModelTransformer getTypeConvertionOperatorModelTransformer(DataMapperOperatorType type) {
+		switch (type) {
+		case STRING_TO_BOOLEAN:
+			return new StringToBooleanModelTransformer();
+		case STRING_TO_NUMBER:
+			return new StringToNumberModelTransformer();
+		default:
+			throw new IllegalArgumentException(
+					"Unable to find type convertion operator model transformer to operator type in ModelTransformerFactory: "
+							+ type);
 		}
 	}
 
@@ -68,6 +83,12 @@ public class ModelTransformerFactory {
 		switch (type) {
 		case CONSTANT:
 			return new ConstantModelTransformer();
+		case COMPARE:
+			return new CompareModelTransformer();
+		case CUSTOM_FUNCTION:
+			return new CustomOperatorModelTransformer();
+		case PROPERTIES:
+			return new PropertiesModelTransformer();
 		default:
 			throw new IllegalArgumentException(
 					"Unable to find common operator model transformer to operator type in ModelTransformerFactory: "
@@ -93,6 +114,12 @@ public class ModelTransformerFactory {
 			return new StartsWithModelTransformer();
 		case ENDS_WITH:
 			return new EndsWithModelTransformer();
+		case TRIM:
+			return new TrimModelTransformer();
+		case REPLACE:
+			return new ReplaceModelTransformer();
+		case MATCH:
+			return new MatchModelTransformer();
 		default:
 			throw new IllegalArgumentException(
 					"Unable to find string operator model transformer to operator type in ModelTransformerFactory: "
@@ -120,6 +147,10 @@ public class ModelTransformerFactory {
 			return new SetPrecisionModelTransformer();
 		case ROUND:
 			return new RoundModelTransformer();
+		case MIN:
+			return new MinModelTransformer();
+		case MAX:
+			return new MaxModelTransformer();
 		default:
 			throw new IllegalArgumentException(
 					"Unable to find arithmatic model transformer to operator type in ModelTransformerFactory: " + type);

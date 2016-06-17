@@ -152,6 +152,8 @@ public class DataMapperFactoryImpl extends EFactoryImpl implements DataMapperFac
     @Override
     public Object createFromString(EDataType eDataType, String initialValue) {
 		switch (eDataType.getClassifierID()) {
+			case DataMapperPackage.COMPARISON_OPERATOR_TYPE:
+				return createComparisonOperatorTypeFromString(eDataType, initialValue);
 			case DataMapperPackage.SCHEMA_DATA_TYPE:
 				return createSchemaDataTypeFromString(eDataType, initialValue);
 			case DataMapperPackage.DATA_MAPPER_OPERATOR_TYPE:
@@ -169,6 +171,8 @@ public class DataMapperFactoryImpl extends EFactoryImpl implements DataMapperFac
     @Override
     public String convertToString(EDataType eDataType, Object instanceValue) {
 		switch (eDataType.getClassifierID()) {
+			case DataMapperPackage.COMPARISON_OPERATOR_TYPE:
+				return convertComparisonOperatorTypeToString(eDataType, instanceValue);
 			case DataMapperPackage.SCHEMA_DATA_TYPE:
 				return convertSchemaDataTypeToString(eDataType, instanceValue);
 			case DataMapperPackage.DATA_MAPPER_OPERATOR_TYPE:
@@ -728,6 +732,26 @@ public class DataMapperFactoryImpl extends EFactoryImpl implements DataMapperFac
 	public PropertyKeyValuePair createPropertyKeyValuePair() {
 		PropertyKeyValuePairImpl propertyKeyValuePair = new PropertyKeyValuePairImpl();
 		return propertyKeyValuePair;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ComparisonOperatorType createComparisonOperatorTypeFromString(EDataType eDataType, String initialValue) {
+		ComparisonOperatorType result = ComparisonOperatorType.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertComparisonOperatorTypeToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
 	}
 
 	/**

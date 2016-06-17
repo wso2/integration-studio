@@ -310,7 +310,95 @@ public enum DataMapperOperatorType implements Enumerator {
 	 * @generated NOT
 	 * @ordered
 	 */
-	SUBSTRING(28, "SUBSTRING", "SUBSTRING",STRING_OPERATION);
+	SUBSTRING(28, "SUBSTRING", "SUBSTRING",STRING_OPERATION), /**
+	 * The '<em><b>COMPARE</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #COMPARE_VALUE
+	 * @generated NOT
+	 * @ordered
+	 */
+	COMPARE(29, "COMPARE", "COMPARE",COMMON_OPERATION), /**
+	 * The '<em><b>CUSTOM FUNCTION</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #CUSTOM_FUNCTION_VALUE
+	 * @generated NOT
+	 * @ordered
+	 */
+	CUSTOM_FUNCTION(30, "CUSTOM_FUNCTION", "CUSTOM_FUNCTION",COMMON_OPERATION), /**
+	 * The '<em><b>MATCH</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #MATCH_VALUE
+	 * @generated NOT
+	 * @ordered
+	 */
+	MATCH(31, "MATCH", "MATCH",STRING_OPERATION), /**
+	 * The '<em><b>MAX</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #MAX_VALUE
+	 * @generated NOT
+	 * @ordered
+	 */
+	MAX(32, "MAX", "MAX",ARITHMATIC_OPERATION), /**
+	 * The '<em><b>MIN</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #MIN_VALUE
+	 * @generated NOT
+	 * @ordered
+	 */
+	MIN(33, "MIN", "MIN",ARITHMATIC_OPERATION), /**
+	 * The '<em><b>PROPERTIES</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #PROPERTIES_VALUE
+	 * @generated NOT
+	 * @ordered
+	 */
+	PROPERTIES(34, "PROPERTIES", "PROPERTIES",COMMON_OPERATION), /**
+	 * The '<em><b>REPLACE</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #REPLACE_VALUE
+	 * @generated NOT
+	 * @ordered
+	 */
+	REPLACE(35, "REPLACE", "REPLACE",STRING_OPERATION), /**
+	 * The '<em><b>TYPE CONVERSION OPERATION</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #TYPE_CONVERSION_OPERATION_VALUE
+	 * @generated NOT
+	 * @ordered NOT
+	 */
+	TYPE_CONVERSION_OPERATION(39, "TYPE_CONVERSION_OPERATION", "TYPE_CONVERSION_OPERATION",OPERATOR), /**
+	 * The '<em><b>STRING TO BOOLEAN</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #STRING_TO_BOOLEAN_VALUE
+	 * @generated NOT
+	 * @ordered
+	 */
+	STRING_TO_BOOLEAN(36, "STRING_TO_BOOLEAN", "STRING_TO_BOOLEAN",TYPE_CONVERSION_OPERATION), /**
+	 * The '<em><b>STRING TO NUMBER</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #STRING_TO_NUMBER_VALUE
+	 * @generated NOT
+	 * @ordered NOT
+	 */
+	STRING_TO_NUMBER(37, "STRING_TO_NUMBER", "STRING_TO_NUMBER",TYPE_CONVERSION_OPERATION), /**
+	 * The '<em><b>TRIM</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #TRIM_VALUE
+	 * @generated NOT
+	 * @ordered NOT
+	 */
+	TRIM(38, "TRIM", "TRIM",STRING_OPERATION);
 
 	/**
 	 * The '<em><b>OPERATOR</b></em>' literal value.
@@ -778,6 +866,171 @@ public enum DataMapperOperatorType implements Enumerator {
 	public static final int SUBSTRING_VALUE = 28;
 
 	/**
+	 * The '<em><b>COMPARE</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>COMPARE</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #COMPARE
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int COMPARE_VALUE = 29;
+
+	/**
+	 * The '<em><b>CUSTOM FUNCTION</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>CUSTOM FUNCTION</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #CUSTOM_FUNCTION
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int CUSTOM_FUNCTION_VALUE = 30;
+
+	/**
+	 * The '<em><b>MATCH</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>MATCH</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #MATCH
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int MATCH_VALUE = 31;
+
+	/**
+	 * The '<em><b>MAX</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>MAX</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #MAX
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int MAX_VALUE = 32;
+
+	/**
+	 * The '<em><b>MIN</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>MIN</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #MIN
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int MIN_VALUE = 33;
+
+	/**
+	 * The '<em><b>PROPERTIES</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>PROPERTIES</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #PROPERTIES
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int PROPERTIES_VALUE = 34;
+
+	/**
+	 * The '<em><b>REPLACE</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>REPLACE</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #REPLACE
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int REPLACE_VALUE = 35;
+
+	/**
+	 * The '<em><b>STRING TO BOOLEAN</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>STRING TO BOOLEAN</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #STRING_TO_BOOLEAN
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int STRING_TO_BOOLEAN_VALUE = 36;
+
+	/**
+	 * The '<em><b>STRING TO NUMBER</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>STRING TO NUMBER</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #STRING_TO_NUMBER
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int STRING_TO_NUMBER_VALUE = 37;
+
+	/**
+	 * The '<em><b>TRIM</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>TRIM</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #TRIM
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int TRIM_VALUE = 38;
+
+	/**
+	 * The '<em><b>TYPE CONVERSION OPERATION</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>TYPE CONVERSION OPERATION</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #TYPE_CONVERSION_OPERATION
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int TYPE_CONVERSION_OPERATION_VALUE = 39;
+
+	/**
 	 * An array of all the '<em><b>Operator Type</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -816,6 +1069,17 @@ public enum DataMapperOperatorType implements Enumerator {
 			STARTS_WITH,
 			STRING_LENGTH,
 			SUBSTRING,
+			COMPARE,
+			CUSTOM_FUNCTION,
+			MATCH,
+			MAX,
+			MIN,
+			PROPERTIES,
+			REPLACE,
+			STRING_TO_BOOLEAN,
+			STRING_TO_NUMBER,
+			TRIM,
+			TYPE_CONVERSION_OPERATION,
 		};
 
 	/**
@@ -901,6 +1165,17 @@ public enum DataMapperOperatorType implements Enumerator {
 			case STARTS_WITH_VALUE: return STARTS_WITH;
 			case STRING_LENGTH_VALUE: return STRING_LENGTH;
 			case SUBSTRING_VALUE: return SUBSTRING;
+			case COMPARE_VALUE: return COMPARE;
+			case CUSTOM_FUNCTION_VALUE: return CUSTOM_FUNCTION;
+			case MATCH_VALUE: return MATCH;
+			case MAX_VALUE: return MAX;
+			case MIN_VALUE: return MIN;
+			case PROPERTIES_VALUE: return PROPERTIES;
+			case REPLACE_VALUE: return REPLACE;
+			case STRING_TO_BOOLEAN_VALUE: return STRING_TO_BOOLEAN;
+			case STRING_TO_NUMBER_VALUE: return STRING_TO_NUMBER;
+			case TRIM_VALUE: return TRIM;
+			case TYPE_CONVERSION_OPERATION_VALUE: return TYPE_CONVERSION_OPERATION;
 		}
 		return null;
 	}

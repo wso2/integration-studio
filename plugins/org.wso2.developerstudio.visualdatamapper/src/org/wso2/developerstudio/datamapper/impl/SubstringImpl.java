@@ -91,10 +91,27 @@ public class SubstringImpl extends OperatorImpl implements Substring {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	protected SubstringImpl() {
 		super();
+		setDefaultInputConnectors(3);
+		setDefaultOutputConnectors(1);
+		setInputSizeFixed(true);
+		setOutputSizeFixed(true);
+		getInputVariableTypes().put(0, new ArrayList<SchemaDataType>());
+		getInputVariableTypes().put(1, new ArrayList<SchemaDataType>());
+		getInputVariableTypes().put(2, new ArrayList<SchemaDataType>());
+		getOutputVariableTypes().put(0, new ArrayList<SchemaDataType>());
+		getInputVariableTypes().get(1).add(SchemaDataType.STRING);
+		getInputVariableTypes().get(2).add(SchemaDataType.NUMBER);
+		getOutputVariableTypes().get(0).add(SchemaDataType.STRING);
+		setOperatorType(DataMapperOperatorType.SUBSTRING);
+		getInputLabelList().add(VALUE_TAG);
+		getInputLabelList().add(DataMapperImplConstants.START_INDEX);
+		getInputLabelList().add(DataMapperImplConstants.LENGTH_TAG);
+		getOutputLabelList().add(RESULT_TAG);
+		
 	}
 
 	/**

@@ -845,13 +845,22 @@ public interface DataMapperPackage extends EPackage {
 	int COMPARE__OPERATOR_TYPE = OPERATOR__OPERATOR_TYPE;
 
 	/**
+	 * The feature id for the '<em><b>Comparison Operator</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPARE__COMPARISON_OPERATOR = OPERATOR_FEATURE_COUNT + 0;
+
+	/**
 	 * The number of structural features of the '<em>Compare</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COMPARE_FEATURE_COUNT = OPERATOR_FEATURE_COUNT + 0;
+	int COMPARE_FEATURE_COUNT = OPERATOR_FEATURE_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.datamapper.impl.StringToNumberImpl <em>String To Number</em>}' class.
@@ -3702,6 +3711,16 @@ public interface DataMapperPackage extends EPackage {
 	int PROPERTY_KEY_VALUE_PAIR_FEATURE_COUNT = 2;
 
 	/**
+	 * The meta object id for the '{@link org.wso2.developerstudio.datamapper.ComparisonOperatorType <em>Comparison Operator Type</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.wso2.developerstudio.datamapper.ComparisonOperatorType
+	 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getComparisonOperatorType()
+	 * @generated
+	 */
+	int COMPARISON_OPERATOR_TYPE = 50;
+
+	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.datamapper.SchemaDataType <em>Schema Data Type</em>}' enum.
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -3709,7 +3728,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getSchemaDataType()
 	 * @generated
 	 */
-    int SCHEMA_DATA_TYPE = 50;
+    int SCHEMA_DATA_TYPE = 51;
 
     /**
 	 * The meta object id for the '{@link org.wso2.developerstudio.datamapper.DataMapperOperatorType <em>Operator Type</em>}' enum.
@@ -3719,7 +3738,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getDataMapperOperatorType()
 	 * @generated
 	 */
-	int DATA_MAPPER_OPERATOR_TYPE = 51;
+	int DATA_MAPPER_OPERATOR_TYPE = 52;
 
 				/**
 	 * Returns the meta object for class '{@link org.wso2.developerstudio.datamapper.DataMapperNode <em>Node</em>}'.
@@ -3810,6 +3829,17 @@ public interface DataMapperPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getCompare();
+
+				/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.datamapper.Compare#getComparisonOperator <em>Comparison Operator</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Comparison Operator</em>'.
+	 * @see org.wso2.developerstudio.datamapper.Compare#getComparisonOperator()
+	 * @see #getCompare()
+	 * @generated
+	 */
+	EAttribute getCompare_ComparisonOperator();
 
 				/**
 	 * Returns the meta object for class '{@link org.wso2.developerstudio.datamapper.StringToNumber <em>String To Number</em>}'.
@@ -4893,6 +4923,16 @@ public interface DataMapperPackage extends EPackage {
 	EAttribute getPropertyKeyValuePair_Value();
 
 	/**
+	 * Returns the meta object for enum '{@link org.wso2.developerstudio.datamapper.ComparisonOperatorType <em>Comparison Operator Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Comparison Operator Type</em>'.
+	 * @see org.wso2.developerstudio.datamapper.ComparisonOperatorType
+	 * @generated
+	 */
+	EEnum getComparisonOperatorType();
+
+	/**
 	 * Returns the meta object for enum '{@link org.wso2.developerstudio.datamapper.SchemaDataType <em>Schema Data Type</em>}'.
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -5023,6 +5063,14 @@ public interface DataMapperPackage extends EPackage {
 		 * @generated
 		 */
 		EClass COMPARE = eINSTANCE.getCompare();
+
+		/**
+		 * The meta object literal for the '<em><b>Comparison Operator</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute COMPARE__COMPARISON_OPERATOR = eINSTANCE.getCompare_ComparisonOperator();
 
 		/**
 		 * The meta object literal for the '{@link org.wso2.developerstudio.datamapper.impl.StringToNumberImpl <em>String To Number</em>}' class.
@@ -5921,6 +5969,16 @@ public interface DataMapperPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute PROPERTY_KEY_VALUE_PAIR__VALUE = eINSTANCE.getPropertyKeyValuePair_Value();
+
+								/**
+		 * The meta object literal for the '{@link org.wso2.developerstudio.datamapper.ComparisonOperatorType <em>Comparison Operator Type</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.wso2.developerstudio.datamapper.ComparisonOperatorType
+		 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getComparisonOperatorType()
+		 * @generated
+		 */
+		EEnum COMPARISON_OPERATOR_TYPE = eINSTANCE.getComparisonOperatorType();
 
 								/**
 		 * The meta object literal for the '{@link org.wso2.developerstudio.datamapper.SchemaDataType <em>Schema Data Type</em>}' enum.

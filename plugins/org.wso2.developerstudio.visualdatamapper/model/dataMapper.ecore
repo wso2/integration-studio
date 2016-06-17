@@ -10,7 +10,20 @@
   <eClassifiers xsi:type="ecore:EClass" name="Max" eSuperTypes="#//Operator"/>
   <eClassifiers xsi:type="ecore:EClass" name="CustomFunction" eSuperTypes="#//Operator"/>
   <eClassifiers xsi:type="ecore:EClass" name="Properties" eSuperTypes="#//Operator"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Compare" eSuperTypes="#//Operator"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Compare" eSuperTypes="#//Operator">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="comparisonOperator" eType="#//ComparisonOperatorType"
+        defaultValueLiteral="=="/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ComparisonOperatorType">
+    <eLiterals name="EQUAL_VALUE" literal="=="/>
+    <eLiterals name="EQUAL_VALUE_TYPE" value="1" literal="==="/>
+    <eLiterals name="NOT_EQUAL_VALUE" value="2" literal="!="/>
+    <eLiterals name="NOT_EQUAL_VALUE_TYPE" value="3" literal="!=="/>
+    <eLiterals name="GREATER_THAN" value="4" literal=">"/>
+    <eLiterals name="GREATER_OR_EQUAL" value="5" literal=">="/>
+    <eLiterals name="LOWER_THAN" value="6" literal="&lt;"/>
+    <eLiterals name="LOWER_OR_EQUAL" value="7" literal="&lt;="/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="StringToNumber" eSuperTypes="#//Operator"/>
   <eClassifiers xsi:type="ecore:EClass" name="StringToBoolean" eSuperTypes="#//Operator"/>
   <eClassifiers xsi:type="ecore:EClass" name="DataMapperRoot">
@@ -226,6 +239,17 @@
     <eLiterals name="STARTS_WITH" value="26"/>
     <eLiterals name="STRING_LENGTH" value="27"/>
     <eLiterals name="SUBSTRING" value="28"/>
+    <eLiterals name="COMPARE" value="29"/>
+    <eLiterals name="CUSTOM_FUNCTION" value="30"/>
+    <eLiterals name="MATCH" value="31"/>
+    <eLiterals name="MAX" value="32"/>
+    <eLiterals name="MIN" value="33"/>
+    <eLiterals name="PROPERTIES" value="34"/>
+    <eLiterals name="REPLACE" value="35"/>
+    <eLiterals name="STRING_TO_BOOLEAN" value="36"/>
+    <eLiterals name="STRING_TO_NUMBER" value="37" literal="STRING_TO_NUMBER"/>
+    <eLiterals name="TRIM" value="38"/>
+    <eLiterals name="TYPE_CONVERSION_OPERATION" value="39"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="LowerCase" eSuperTypes="#//Operator"/>
   <eClassifiers xsi:type="ecore:EClass" name="Celi" eSuperTypes="#//Operator"/>

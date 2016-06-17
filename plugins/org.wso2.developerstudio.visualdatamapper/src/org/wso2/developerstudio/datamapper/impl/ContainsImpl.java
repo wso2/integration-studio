@@ -39,7 +39,7 @@ public class ContainsImpl extends OperatorImpl implements Contains {
 		getOutputVariableTypes().get(0).add(SchemaDataType.BOOLEAN);
 		setOperatorType(DataMapperOperatorType.CONTAINS);
 		getInputLabelList().add(IN_TAG);
-		getInputLabelList().add(PATTERN_TAG);
+		getInputLabelList().add("Target");
 		getOutputLabelList().add(RESULT_TAG);
 	}
 

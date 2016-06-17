@@ -18,19 +18,21 @@ package org.wso2.developerstudio.datamapper.diagram.custom.model.transformers;
 import org.wso2.developerstudio.datamapper.DataMapperOperatorType;
 import org.wso2.developerstudio.datamapper.diagram.custom.model.DMOperation;
 import org.wso2.developerstudio.datamapper.diagram.custom.model.IModelTransformer;
-import org.wso2.developerstudio.datamapper.impl.DivideImpl;
+import org.wso2.developerstudio.datamapper.impl.CompareImpl;
 import org.wso2.developerstudio.datamapper.impl.OperatorImpl;
 
-public class DivideModelTransformer implements IModelTransformer {
+public class CompareModelTransformer implements IModelTransformer {
 
 	@Override
 	public DMOperation transform(OperatorImpl operator, int index) {
-		if (operator instanceof DivideImpl) {
-			DMOperation divideOperatorModel = new DMOperation(DataMapperOperatorType.DIVIDE, operator.toString(),
+		if (operator instanceof CompareImpl) {
+			CompareImpl compareImpl = (CompareImpl) operator;
+			DMOperation compareOperatorModel = new DMOperation(DataMapperOperatorType.COMPARE, operator.toString(),
 					index);
-			return divideOperatorModel;
+			compareOperatorModel.addProperty(TransformerConstants.COMPARISON_OPERATOR_TYPE,
+					compareImpl.getOperatorType().getLiteral());
+			return compareOperatorModel;
 		}
-		throw new IllegalArgumentException("DivideImpl operator expected. Found : " + operator.toString());
+		throw new IllegalArgumentException("CompareImpl operator expected. Found : " + operator.toString());
 	}
-
 }

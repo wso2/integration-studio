@@ -525,10 +525,10 @@ public class DataMapperPaletteFactory {
 	}
 
 	/**
-	* @generated
+	* @generated NOT
 	*/
 	private ToolEntry createTrim26CreationTool() {
-		DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.Trim26CreationTool_title,
+		NodeToolEntry entry = new NodeToolEntry(Messages.Trim26CreationTool_title,
 				Messages.Trim26CreationTool_desc, Collections.singletonList(DataMapperElementTypes.Trim_2029));
 		entry.setId("createTrim26CreationTool"); //$NON-NLS-1$
 		entry.setSmallIcon(DataMapperElementTypes.getImageDescriptor(DataMapperElementTypes.Trim_2029));
@@ -537,10 +537,10 @@ public class DataMapperPaletteFactory {
 	}
 
 	/**
-	* @generated
+	* @generated NOT
 	*/
 	private ToolEntry createReplace27CreationTool() {
-		DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.Replace27CreationTool_title,
+		NodeToolEntry entry = new NodeToolEntry(Messages.Replace27CreationTool_title,
 				Messages.Replace27CreationTool_desc, Collections.singletonList(DataMapperElementTypes.Replace_2030));
 		entry.setId("createReplace27CreationTool"); //$NON-NLS-1$
 		entry.setSmallIcon(DataMapperElementTypes.getImageDescriptor(DataMapperElementTypes.Replace_2030));
@@ -549,10 +549,10 @@ public class DataMapperPaletteFactory {
 	}
 
 	/**
-	* @generated
+	* @generated NOT
 	*/
 	private ToolEntry createMatch28CreationTool() {
-		DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.Match28CreationTool_title,
+		NodeToolEntry entry = new NodeToolEntry(Messages.Match28CreationTool_title,
 				Messages.Match28CreationTool_desc, Collections.singletonList(DataMapperElementTypes.Match_2031));
 		entry.setId("createMatch28CreationTool"); //$NON-NLS-1$
 		entry.setSmallIcon(DataMapperElementTypes.getImageDescriptor(DataMapperElementTypes.Match_2031));
@@ -561,10 +561,10 @@ public class DataMapperPaletteFactory {
 	}
 
 	/**
-	* @generated
+	* @generated NOT
 	*/
 	private ToolEntry createMin29CreationTool() {
-		DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.Min29CreationTool_title,
+		NodeToolEntry entry = new NodeToolEntry(Messages.Min29CreationTool_title,
 				Messages.Min29CreationTool_desc, Collections.singletonList(DataMapperElementTypes.Min_2032));
 		entry.setId("createMin29CreationTool"); //$NON-NLS-1$
 		entry.setSmallIcon(DataMapperElementTypes.getImageDescriptor(DataMapperElementTypes.Min_2032));
@@ -573,10 +573,10 @@ public class DataMapperPaletteFactory {
 	}
 
 	/**
-	* @generated
+	* @generated NOT
 	*/
 	private ToolEntry createMax30CreationTool() {
-		DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.Max30CreationTool_title,
+		NodeToolEntry entry = new NodeToolEntry(Messages.Max30CreationTool_title,
 				Messages.Max30CreationTool_desc, Collections.singletonList(DataMapperElementTypes.Max_2033));
 		entry.setId("createMax30CreationTool"); //$NON-NLS-1$
 		entry.setSmallIcon(DataMapperElementTypes.getImageDescriptor(DataMapperElementTypes.Max_2033));
@@ -585,10 +585,10 @@ public class DataMapperPaletteFactory {
 	}
 
 	/**
-	* @generated
+	* @generated NOT
 	*/
 	private ToolEntry createCustomFunction31CreationTool() {
-		DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.CustomFunction31CreationTool_title,
+		NodeToolEntry entry = new NodeToolEntry(Messages.CustomFunction31CreationTool_title,
 				Messages.CustomFunction31CreationTool_desc,
 				Collections.singletonList(DataMapperElementTypes.CustomFunction_2034));
 		entry.setId("createCustomFunction31CreationTool"); //$NON-NLS-1$
@@ -598,10 +598,10 @@ public class DataMapperPaletteFactory {
 	}
 
 	/**
-	* @generated
+	* @generated NOT
 	*/
 	private ToolEntry createProperties32CreationTool() {
-		DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.Properties32CreationTool_title,
+		NodeToolEntry entry = new NodeToolEntry(Messages.Properties32CreationTool_title,
 				Messages.Properties32CreationTool_desc,
 				Collections.singletonList(DataMapperElementTypes.Properties_2035));
 		entry.setId("createProperties32CreationTool"); //$NON-NLS-1$
@@ -611,10 +611,10 @@ public class DataMapperPaletteFactory {
 	}
 
 	/**
-	* @generated
+	* @generated NOT
 	*/
 	private ToolEntry createCompare33CreationTool() {
-		DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.Compare33CreationTool_title,
+		NodeToolEntry entry = new NodeToolEntry(Messages.Compare33CreationTool_title,
 				Messages.Compare33CreationTool_desc, Collections.singletonList(DataMapperElementTypes.Compare_2036));
 		entry.setId("createCompare33CreationTool"); //$NON-NLS-1$
 		entry.setSmallIcon(DataMapperElementTypes.getImageDescriptor(DataMapperElementTypes.Compare_2036));
@@ -623,10 +623,10 @@ public class DataMapperPaletteFactory {
 	}
 
 	/**
-	* @generated
+	* @generated NOT
 	*/
 	private ToolEntry createStringToNumber34CreationTool() {
-		DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.StringToNumber34CreationTool_title,
+		NodeToolEntry entry = new NodeToolEntry(Messages.StringToNumber34CreationTool_title,
 				Messages.StringToNumber34CreationTool_desc,
 				Collections.singletonList(DataMapperElementTypes.StringToNumber_2037));
 		entry.setId("createStringToNumber34CreationTool"); //$NON-NLS-1$
@@ -636,10 +636,10 @@ public class DataMapperPaletteFactory {
 	}
 
 	/**
-	* @generated
+	* @generated NOT
 	*/
 	private ToolEntry createStringToBoolean35CreationTool() {
-		DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.StringToBoolean35CreationTool_title,
+		NodeToolEntry entry = new NodeToolEntry(Messages.StringToBoolean35CreationTool_title,
 				Messages.StringToBoolean35CreationTool_desc,
 				Collections.singletonList(DataMapperElementTypes.StringToBoolean_2038));
 		entry.setId("createStringToBoolean35CreationTool"); //$NON-NLS-1$

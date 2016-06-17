@@ -18,19 +18,17 @@ package org.wso2.developerstudio.datamapper.diagram.custom.model.transformers;
 import org.wso2.developerstudio.datamapper.DataMapperOperatorType;
 import org.wso2.developerstudio.datamapper.diagram.custom.model.DMOperation;
 import org.wso2.developerstudio.datamapper.diagram.custom.model.IModelTransformer;
-import org.wso2.developerstudio.datamapper.impl.DivideImpl;
 import org.wso2.developerstudio.datamapper.impl.OperatorImpl;
+import org.wso2.developerstudio.datamapper.impl.TrimImpl;
 
-public class DivideModelTransformer implements IModelTransformer {
+public class TrimModelTransformer implements IModelTransformer {
 
 	@Override
 	public DMOperation transform(OperatorImpl operator, int index) {
-		if (operator instanceof DivideImpl) {
-			DMOperation divideOperatorModel = new DMOperation(DataMapperOperatorType.DIVIDE, operator.toString(),
-					index);
-			return divideOperatorModel;
+		if (operator instanceof TrimImpl) {
+			DMOperation trimOperatorModel = new DMOperation(DataMapperOperatorType.TRIM, operator.toString(), index);
+			return trimOperatorModel;
 		}
-		throw new IllegalArgumentException("DivideImpl operator expected. Found : " + operator.toString());
+		throw new IllegalArgumentException("TrimImpl operator expected. Found : " + operator.toString());
 	}
-
 }

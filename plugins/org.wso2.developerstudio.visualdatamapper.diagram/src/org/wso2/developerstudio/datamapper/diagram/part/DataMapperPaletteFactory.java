@@ -63,12 +63,12 @@ public class DataMapperPaletteFactory {
 	 * @generated NOT
 	 */
 	public void fillPalette(PaletteRoot paletteRoot) {
-		paletteRoot.add(createDataMapperLinkGroup());
+		//paletteRoot.add(createDataMapperLinkGroup());
 		paletteRoot.add(createDataMapperCommonGroup());
-		paletteRoot.add(createDataMapperArithmaticGroup());
+		paletteRoot.add(createDataMapperArithmeticGroup());
 		paletteRoot.add(createDataMapperConditionalGroup());
 		paletteRoot.add(createDataMapperBooleanGroup());
-		paletteRoot.add(createDataMapperArrayGroup());
+		//paletteRoot.add(createDataMapperArrayGroup());
 		paletteRoot.add(createDataMapperTypeConversionGroup());
 		paletteRoot.add(createDataMapperStringGroup());
 	}
@@ -185,14 +185,14 @@ public class DataMapperPaletteFactory {
 		paletteContainer.add(createTrim26CreationTool());
 		paletteContainer.add(createReplace27CreationTool());
 		paletteContainer.add(createMatch28CreationTool());
-		paletteContainer.setInitialState(INITIAL_STATE_OPEN);
+		paletteContainer.setInitialState(INITIAL_STATE_CLOSED);
 		return paletteContainer;
 	}
 
-	private PaletteEntry createDataMapperArithmaticGroup() {
-		PaletteDrawer paletteContainer = new PaletteDrawer("Arithmatic");
+	private PaletteEntry createDataMapperArithmeticGroup() {
+		PaletteDrawer paletteContainer = new PaletteDrawer("Arithmetic");
 
-		paletteContainer.setId("createDataMapperArithmaticGroup"); //$NON-NLS-1$
+		paletteContainer.setId("createDataMapperArithmeticGroup"); //$NON-NLS-1$
 		paletteContainer.add(createAdd9CreationTool());
 		paletteContainer.add(createSubtract10CreationTool());
 		paletteContainer.add(createMultiply15CreationTool());

@@ -19,26 +19,36 @@ import org.wso2.developerstudio.datamapper.DataMapperOperatorType;
 import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.AbsoluteValueOperatorTransformer;
 import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.AddOperatorTransformer;
 import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.CeilOperatorTransformer;
+import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.CompareOperatorTransformer;
 import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.ConcatOperatorTransformer;
 import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.ConstantOperatorTransformer;
+import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.CustomFunctionOperatorTransformer;
 import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.DMOperatorTransformer;
 import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.DirectOperatorTransformer;
 import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.DivideOperatorTransformer;
 import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.EndsWithOperatorTransformer;
 import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.FloorOperatorTransformer;
 import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.IfElseOperatorTransformer;
+import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.MatchOperatorTransformer;
+import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.MaxOperatorTransformer;
+import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.MinOperatorTransformer;
 import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.MultiplyOperatorTransformer;
 import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.RoundOperatorTransformer;
 import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.SetPrecisionOperatorTransformer;
 import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.SplitOperatorTransformer;
 import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.StartsWithOperatorTransformer;
 import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.StringLengthOperatorTransformer;
+import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.StringToBlooeanOperatorTransformer;
+import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.StringToNumberOperatorTransformer;
 import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.SubstringOperatorTransformer;
 import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.SubtractOperatorTransformer;
 import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.ToLowerCaseOperatorTransformer;
 import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.ToUpperCaseOperatorTransformer;
+import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.TrimOperatorTransformer;
 import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.ANDOperatorTransformer;
 import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.OROperatorTransformer;
+import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.PropertiesOperatorTransformer;
+import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.ReplaceOperatorTransformer;
 import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.NOTOperatorTransformer;
 
 /**
@@ -74,9 +84,23 @@ public class DMOperatorTransformerFactory {
 			return getBooleanOperatorTransformer(type);
 		case CONDITIONAL_OPERATION:
 			return getConditionalOperatorTransformer(type);
+		case TYPE_CONVERSION_OPERATION:
+			return getTypeConversionOperatorTransformer(type);
 		default:
 			throw new IllegalArgumentException(
 					"Unknown operator category found for tranform in DMOperatorTransformerFactory : " + type);
+		}
+	}
+
+	private static DMOperatorTransformer getTypeConversionOperatorTransformer(DataMapperOperatorType type) {
+		switch (type) {
+		case STRING_TO_BOOLEAN:
+			return new StringToBlooeanOperatorTransformer();
+		case STRING_TO_NUMBER:
+			return new StringToNumberOperatorTransformer();
+		default:
+			throw new IllegalArgumentException(
+					"Unknown Type Convertion operator type found for tranform in DMOperatorTransformerFactory : " + type);
 		}
 	}
 
@@ -110,6 +134,12 @@ public class DMOperatorTransformerFactory {
 			return new DirectOperatorTransformer();
 		case CONSTANT:
 			return new ConstantOperatorTransformer();
+		case COMPARE:
+			return new CompareOperatorTransformer();
+//		case CUSTOM_FUNCTION:
+//			return new CustomFunctionOperatorTransformer();
+//		case PROPERTIES:
+//			return new PropertiesOperatorTransformer();
 		default:
 			throw new IllegalArgumentException(
 					"Unknown Common operator type found for tranform in DMOperatorTransformerFactory : " + type);
@@ -134,6 +164,12 @@ public class DMOperatorTransformerFactory {
 			return new SubstringOperatorTransformer();
 		case ENDS_WITH:
 			return new EndsWithOperatorTransformer();
+		case TRIM:
+			return new TrimOperatorTransformer();
+//		case REPLACE:
+//			return new ReplaceOperatorTransformer();
+//		case MATCH:
+//			return new MatchOperatorTransformer();
 		default:
 			throw new IllegalArgumentException(
 					"Unknown String operator type found for tranform in DMOperatorTransformerFactory : " + type);
@@ -160,6 +196,10 @@ public class DMOperatorTransformerFactory {
 			return new CeilOperatorTransformer();
 		case FLOOR:
 			return new FloorOperatorTransformer();
+//		case MAX:
+//			return new MaxOperatorTransformer();
+//		case MIN:
+//			return new MinOperatorTransformer();
 		default:
 			throw new IllegalArgumentException(
 					"Unknown Arithmatic operator type found for tranform in DMOperatorTransformerFactory : " + type);

@@ -79,7 +79,7 @@ public class ConfigureCompareOperatorDialog extends AbstractConfigureOperatorDia
 		compareOperatorTypeLabel.setText("Comparison Operator : ");
 		final Combo compareTypeDropDown = new Combo(container, SWT.DROP_DOWN | SWT.BORDER | SWT.READ_ONLY);
 		compareTypeDropDown.setLayoutData(dataPropertyConfigText);
-		compareTypeDropDown.add(getFormattedOperatorName(ComparisonOperatorType.EQUAL_VALUE_TYPE));
+		compareTypeDropDown.add(getFormattedOperatorName(ComparisonOperatorType.EQUAL_VALUE));
 		compareTypeDropDown.add(getFormattedOperatorName(ComparisonOperatorType.EQUAL_VALUE_TYPE));
 		compareTypeDropDown.add(getFormattedOperatorName(ComparisonOperatorType.NOT_EQUAL_VALUE));
 		compareTypeDropDown.add(getFormattedOperatorName(ComparisonOperatorType.NOT_EQUAL_VALUE_TYPE));

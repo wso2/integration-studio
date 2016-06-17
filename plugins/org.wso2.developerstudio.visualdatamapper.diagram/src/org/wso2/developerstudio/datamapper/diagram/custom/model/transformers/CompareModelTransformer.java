@@ -30,7 +30,7 @@ public class CompareModelTransformer implements IModelTransformer {
 			DMOperation compareOperatorModel = new DMOperation(DataMapperOperatorType.COMPARE, operator.toString(),
 					index);
 			compareOperatorModel.addProperty(TransformerConstants.COMPARISON_OPERATOR_TYPE,
-					compareImpl.getOperatorType().getLiteral());
+					compareImpl.getComparisonOperator());
 			return compareOperatorModel;
 		}
 		throw new IllegalArgumentException("CompareImpl operator expected. Found : " + operator.toString());

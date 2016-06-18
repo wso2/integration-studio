@@ -18,8 +18,9 @@
 package org.wso2.developerstudio.esb.form.editors.article.rcp;
 
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Color;
-import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Text;
@@ -47,29 +48,30 @@ public class ScheduledTaskFormPage extends FormPage {
 	 * @param title
 	 */
 	public ScheduledTaskFormPage(FormEditor editor) {
-		super(editor, "first", Messages.getString("FreeFormPage.label")); //$NON-NLS-1$ //$NON-NLS-2$
+		super(editor, "scheduledTaskForm", Messages.getString("ScheduledTaskPage.sectionMainTitle"));
 	}
 	protected void createFormContent(IManagedForm managedForm) {
 		ScrolledForm form = managedForm.getForm();
 		FormToolkit toolkit = managedForm.getToolkit();
-		form.setText(Messages.getString("ScheduledTaskPage.sectionTitle1")); //$NON-NLS-1$
+		form.setText(Messages.getString("ScheduledTaskPage.sectionMainTitle")); 
 		form.setBackgroundImage(FormArticlePlugin.getDefault().getImage(FormArticlePlugin.IMG_FORM_BG));
-//		TableWrapLayout layout = new TableWrapLayout();
+
 		ColumnLayout layout = new ColumnLayout();
 		layout.leftMargin = 10;
 		layout.rightMargin = 10;
 		layout.maxNumColumns = 2;
 		form.getBody().setLayout(layout);
-		/*TableWrapData td;
-		td = new TableWrapData();
-		td.align = TableWrapData.LEFT;*/
-		createFormTextSection(form, toolkit);
+
+		createFormBasicSection(form, toolkit);
+		createFormMiscSection(form, toolkit);
+		createFormImplSection(form, toolkit);
+		createFormTriggerSection(form, toolkit);
+		
 	}
 	
-	private void createFormTextSection(final ScrolledForm form, FormToolkit toolkit) {
-		
+	private void createFormBasicSection(final ScrolledForm form, FormToolkit toolkit) {
 		/* Basic Section */
-		Section basicSection = toolkit.createSection(form.getBody(), Section.TWISTIE | Section.DESCRIPTION | Section.EXPANDED);
+		Section basicSection = toolkit.createSection(form.getBody(), Section.TWISTIE | Section.EXPANDED);
 		basicSection.setActiveToggleColor(toolkit.getHyperlinkGroup().getActiveForeground());
 		basicSection.setToggleColor(toolkit.getColors().getColor(FormColors.SEPARATOR));
 		toolkit.createCompositeSeparator(basicSection);
@@ -98,9 +100,12 @@ public class ScheduledTaskFormPage extends FormPage {
 		basicSection.setClient(basicSectionClient);
 		
 		
-		
+	}
+	
+	
+	private void createFormMiscSection(final ScrolledForm form, FormToolkit toolkit) {
 		 /* Misc. Section */ 
-		Section miscSection = toolkit.createSection(form.getBody(), Section.TWISTIE | Section.DESCRIPTION | Section.EXPANDED);
+		Section miscSection = toolkit.createSection(form.getBody(), Section.TWISTIE | Section.EXPANDED);
 		miscSection.setActiveToggleColor(toolkit.getHyperlinkGroup().getActiveForeground());
 		miscSection.setToggleColor(toolkit.getColors().getColor(FormColors.SEPARATOR));
 		toolkit.createCompositeSeparator(miscSection);
@@ -122,12 +127,12 @@ public class ScheduledTaskFormPage extends FormPage {
 		pinnedServers.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
 		
 		miscSection.setClient(miscSectionClient);
-		
-
-
-
+	}
+	
+	
+	private void createFormImplSection(final ScrolledForm form, FormToolkit toolkit) {
 		/* Task Implementation Section */ 
-		Section implSection = toolkit.createSection(form.getBody(), Section.TWISTIE | Section.DESCRIPTION | Section.EXPANDED);
+		Section implSection = toolkit.createSection(form.getBody(), Section.TWISTIE | Section.EXPANDED);
 		implSection.setActiveToggleColor(toolkit.getHyperlinkGroup().getActiveForeground());
 		implSection.setToggleColor(toolkit.getColors().getColor(FormColors.SEPARATOR));
 		toolkit.createCompositeSeparator(implSection);
@@ -154,18 +159,18 @@ public class ScheduledTaskFormPage extends FormPage {
 //		taskImplProp.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
 
 		
-		implSection.setClient(implSectionClient);		
-		
-		
-		
+		implSection.setClient(implSectionClient);	
+	}
+	
+	
+	private void createFormTriggerSection(final ScrolledForm form, FormToolkit toolkit) {
 		/* Trigger Information */ 
-		
-		Section triggerSection = toolkit.createSection(form.getBody(), Section.TWISTIE | Section.DESCRIPTION | Section.EXPANDED);
+		Section triggerSection = toolkit.createSection(form.getBody(), Section.TWISTIE | Section.EXPANDED);
 		triggerSection.setActiveToggleColor(toolkit.getHyperlinkGroup().getActiveForeground());
 		triggerSection.setToggleColor(toolkit.getColors().getColor(FormColors.SEPARATOR));
 		toolkit.createCompositeSeparator(triggerSection);
 		
-		implSection.addExpansionListener(new ExpansionAdapter() {
+		triggerSection.addExpansionListener(new ExpansionAdapter() {
 			public void expansionStateChanged(ExpansionEvent e) {
 				form.reflow(false);
 			}
@@ -182,14 +187,21 @@ public class ScheduledTaskFormPage extends FormPage {
 //		triggerType.setBackground(new Color(null, 229,236,253));
 		String[] triggerTypes = {"Simple", "Cron"};
 		triggerType.setItems(triggerTypes);
+		triggerType.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				// TODO Auto-generated method stub
+				super.widgetSelected(e);
+			}
+		});
 		
 		toolkit.createLabel(triggerSectionClient, "Count");
-		Text count = toolkit.createText(triggerSectionClient, "");
+		Text count = toolkit.createText(triggerSectionClient, "1");
 		count.setBackground(new Color(null, 229,236,253));
 //		count.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
 		
 		toolkit.createLabel(triggerSectionClient, "Interval");
-		Text interval = toolkit.createText(triggerSectionClient, "");
+		Text interval = toolkit.createText(triggerSectionClient, "1");
 		interval.setBackground(new Color(null, 229,236,253));
 //		interval.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
 		
@@ -200,8 +212,6 @@ public class ScheduledTaskFormPage extends FormPage {
 
 		
 		triggerSection.setClient(triggerSectionClient);		
-		
-		
 	}
 
 }

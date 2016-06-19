@@ -117,7 +117,7 @@ public class MessageStoreFormPage extends FormPage {
 				} else if (storeType.getText().equals("JDBC Message Store")) {
 					currentMessageStore = new JDBC();
 				} else if (storeType.getText().equals("Custom Message Store")) {
-					currentMessageStore = new Custom();
+					currentMessageStore = new CustomStore();
 				}
 				
 				if (currentMessageStore != null) {
@@ -513,7 +513,7 @@ class JDBC implements MessageStore {
 	
 }
 
-class Custom implements MessageStore {
+class CustomStore implements MessageStore {
 
 	@Override
 	public void createConnectionSectionFields(ScrolledForm form, FormToolkit toolkit, Composite sectionClient) {

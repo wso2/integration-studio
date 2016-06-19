@@ -26,6 +26,8 @@ import org.eclipse.ui.forms.editor.FormEditor;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.wso2.developerstudio.eclipse.gmf.esb.ArtifactType;
 import org.wso2.developerstudio.esb.forgm.editors.article.FormArticlePlugin;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.AddressEndpointFormPage;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.WsdlEndpointFormPage;
 
 /**
  * A simple multi-page form editor that uses Eclipse Forms support. Example
@@ -60,7 +62,7 @@ public class ESBFormEditor extends FormEditor {
 	protected void addPages() {
 		try {
 			if (artifactType == ArtifactType.LOCAL_ENTRY) {
-				addPage(new ScheduledTaskFormPage(this));
+				addPage(new WsdlEndpointFormPage(this));
 			} 
 
 		} catch (PartInitException e) {

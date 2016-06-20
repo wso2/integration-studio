@@ -62,7 +62,7 @@ public class ESBFormEditor extends FormEditor {
 	protected void addPages() {
 		try {
 			if (artifactType == ArtifactType.LOCAL_ENTRY) {
-				addPage(new WsdlEndpointFormPage(this));
+				addPage(new ScheduledTaskFormPage(this));
 			} 
 
 		} catch (PartInitException e) {

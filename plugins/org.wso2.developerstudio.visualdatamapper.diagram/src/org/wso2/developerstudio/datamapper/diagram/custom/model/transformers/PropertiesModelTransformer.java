@@ -15,6 +15,10 @@
  */
 package org.wso2.developerstudio.datamapper.diagram.custom.model.transformers;
 
+import static org.wso2.developerstudio.datamapper.diagram.custom.model.transformers.TransformerConstants.PROPERTY_NAME_TAG;
+import static org.wso2.developerstudio.datamapper.diagram.custom.model.transformers.TransformerConstants.PROPERTY_SCOPE_TAG;
+import static org.wso2.developerstudio.datamapper.diagram.custom.model.transformers.TransformerConstants.PROPERTY_TYPE_TAG;
+
 import org.wso2.developerstudio.datamapper.DataMapperOperatorType;
 import org.wso2.developerstudio.datamapper.diagram.custom.model.DMOperation;
 import org.wso2.developerstudio.datamapper.diagram.custom.model.IModelTransformer;
@@ -26,8 +30,12 @@ public class PropertiesModelTransformer implements IModelTransformer {
 	@Override
 	public DMOperation transform(OperatorImpl operator, int index) {
 		if (operator instanceof PropertiesImpl) {
+			PropertiesImpl propertyOperator = (PropertiesImpl) operator;
 			DMOperation propertiesOperatorModel = new DMOperation(DataMapperOperatorType.PROPERTIES,
 					operator.toString(), index);
+			propertiesOperatorModel.addProperty(PROPERTY_NAME_TAG, propertyOperator.getName());
+			propertiesOperatorModel.addProperty(PROPERTY_SCOPE_TAG, propertyOperator.getScope());
+			propertiesOperatorModel.addProperty(PROPERTY_TYPE_TAG, propertyOperator.getType());
 			return propertiesOperatorModel;
 		}
 		throw new IllegalArgumentException("PropertiesImpl operator expected. Found : " + operator.toString());

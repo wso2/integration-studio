@@ -24,14 +24,11 @@ import org.wso2.developerstudio.datamapper.diagram.custom.generator.DifferentLev
 import org.wso2.developerstudio.datamapper.diagram.custom.generator.ForLoopBean;
 import org.wso2.developerstudio.datamapper.diagram.custom.model.DMOperation;
 import org.wso2.developerstudio.datamapper.diagram.custom.model.DMVariable;
-import org.wso2.developerstudio.datamapper.diagram.custom.util.ScriptGenerationUtil;
-
-import static org.wso2.developerstudio.datamapper.diagram.custom.model.transformers.TransformerConstants.CONSTANT_ADDITIVE;
-import static org.wso2.developerstudio.datamapper.diagram.custom.model.transformers.TransformerConstants.CONSTANT_SUBTRACT_SIGN;
+import static org.wso2.developerstudio.datamapper.diagram.custom.model.transformers.TransformerConstants.*;
 
 /**
- * This class extended from the {@link AbstractDMOperatorTransformer} abstract class and generate script for Subtract
- * operation
+ * This class extended from the {@link AbstractDMOperatorTransformer} abstract
+ * class and generate script for Subtract operation
  */
 public class PropertiesOperatorTransformer extends AbstractDMOperatorTransformer {
 
@@ -41,7 +38,8 @@ public class PropertiesOperatorTransformer extends AbstractDMOperatorTransformer
 			DMOperation operator) {
 		StringBuilder operationBuilder = new StringBuilder();
 		if (DifferentLevelArrayMappingConfigGenerator.class.equals(generatorClass)) {
-
+			operationBuilder.append(PROPERTIES_PREFIX+"." + operator.getProperty(PROPERTY_SCOPE_TAG) + "."
+					+ operator.getProperty(PROPERTY_NAME_TAG));
 			operationBuilder.append(";");
 
 		} else {

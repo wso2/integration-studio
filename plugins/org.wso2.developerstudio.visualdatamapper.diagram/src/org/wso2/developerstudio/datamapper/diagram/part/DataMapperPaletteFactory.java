@@ -63,7 +63,7 @@ public class DataMapperPaletteFactory {
 	 * @generated NOT
 	 */
 	public void fillPalette(PaletteRoot paletteRoot) {
-		//paletteRoot.add(createDataMapperLinkGroup());
+		paletteRoot.add(createDataMapperLinkGroup());
 		paletteRoot.add(createDataMapperCommonGroup());
 		paletteRoot.add(createDataMapperArithmeticGroup());
 		paletteRoot.add(createDataMapperConditionalGroup());
@@ -155,7 +155,7 @@ public class DataMapperPaletteFactory {
 	}
 
 	private PaletteEntry createDataMapperLinkGroup() {
-		PaletteDrawer paletteContainer = new PaletteDrawer("Connectors");
+		PaletteDrawer paletteContainer = new PaletteDrawer("Link");
 		paletteContainer.setId("createDataMapper1Group"); //$NON-NLS-1$
 		paletteContainer.add(createDataMapperLink1CreationTool());
 		paletteContainer.setInitialState(INITIAL_STATE_CLOSED);

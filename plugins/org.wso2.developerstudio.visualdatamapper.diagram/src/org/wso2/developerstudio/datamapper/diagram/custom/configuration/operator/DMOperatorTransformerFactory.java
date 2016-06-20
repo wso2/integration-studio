@@ -136,10 +136,10 @@ public class DMOperatorTransformerFactory {
 			return new ConstantOperatorTransformer();
 		case COMPARE:
 			return new CompareOperatorTransformer();
-//		case CUSTOM_FUNCTION:
-//			return new CustomFunctionOperatorTransformer();
-//		case PROPERTIES:
-//			return new PropertiesOperatorTransformer();
+		case CUSTOM_FUNCTION:
+			return new CustomFunctionOperatorTransformer();
+		case PROPERTIES:
+			return new PropertiesOperatorTransformer();
 		default:
 			throw new IllegalArgumentException(
 					"Unknown Common operator type found for tranform in DMOperatorTransformerFactory : " + type);

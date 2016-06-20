@@ -34,6 +34,12 @@ public class TransformerConstants {
     public static final String CONSTANT_NOT_OPERATOR = "!";
     public static final String CONSTANT_STRING_LENGTH = ".length";
     public static final String COMPARISON_OPERATOR_TYPE = "ComparisonOperatorType";
+    public static final String CUSTOM_FUNCTION_NAME ="CustomOperatorName";
+    public static final String CUSTOM_FUNCTION_DEFINITION ="CustomOperatorDefinition";
+    public static final String PROPERTY_NAME_TAG = "propertiesName";
+    public static final String PROPERTY_SCOPE_TAG = "propertiesScope";
+    public static final String PROPERTY_TYPE_TAG = "propertyValueType";
+    public static final String PROPERTIES_PREFIX = "DM_PROPERTIES";
 
     
 }

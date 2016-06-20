@@ -31,7 +31,9 @@ import org.wso2.developerstudio.datamapper.diagram.custom.util.ScriptGenerationU
  */
 public abstract class AbstractMappingConfigGenerator implements MappingConfigGenerator {
 
-    protected List<MappingOperation> populateOperationListFromModel(DataMapperDiagramModel model) {
+    protected static final String JS_FUNCTION_NAME = "$function";
+
+	protected List<MappingOperation> populateOperationListFromModel(DataMapperDiagramModel model) {
         ArrayList<MappingOperation> mappingOperationList = new ArrayList<>();
         List<Integer> executionSeq = model.getExecutionSequence();
         for (Integer operationIndex : executionSeq) {
@@ -47,7 +49,7 @@ public abstract class AbstractMappingConfigGenerator implements MappingConfigGen
 
     protected String getMainFunctionDefinition(String inRoot, String outRoot, String outputVariableRootName) {
         StringBuilder mainFunctionBuilder = new StringBuilder();
-        mainFunctionBuilder.append("function map_S_");
+		mainFunctionBuilder.append(JS_FUNCTION_NAME + " map_S_");
         mainFunctionBuilder.append(ScriptGenerationUtil.removeInvalidCharaters(inRoot));
         mainFunctionBuilder.append("_S_");
         mainFunctionBuilder.append(ScriptGenerationUtil.removeInvalidCharaters(outRoot));

@@ -613,6 +613,33 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getProperties_Type() {
+		return (EAttribute)propertiesEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getProperties_Name() {
+		return (EAttribute)propertiesEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getProperties_Scope() {
+		return (EAttribute)propertiesEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getCompare() {
 		return compareEClass;
 	}
@@ -1618,6 +1645,9 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 		createEAttribute(customFunctionEClass, CUSTOM_FUNCTION__INPUT_CONNECTOR_TAG);
 
 		propertiesEClass = createEClass(PROPERTIES);
+		createEAttribute(propertiesEClass, PROPERTIES__TYPE);
+		createEAttribute(propertiesEClass, PROPERTIES__NAME);
+		createEAttribute(propertiesEClass, PROPERTIES__SCOPE);
 
 		compareEClass = createEClass(COMPARE);
 		createEAttribute(compareEClass, COMPARE__COMPARISON_OPERATOR);
@@ -1857,6 +1887,9 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 		initEAttribute(getCustomFunction_InputConnectorTag(), ecorePackage.getEString(), "InputConnectorTag", "In", 0, -1, CustomFunction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(propertiesEClass, Properties.class, "Properties", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getProperties_Type(), this.getSchemaDataType(), "type", "STRING", 0, 1, Properties.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getProperties_Name(), ecorePackage.getEString(), "name", "default_name", 0, 1, Properties.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getProperties_Scope(), ecorePackage.getEString(), "scope", "DEFAULT", 0, 1, Properties.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(compareEClass, Compare.class, "Compare", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getCompare_ComparisonOperator(), this.getComparisonOperatorType(), "comparisonOperator", "==", 0, 1, Compare.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

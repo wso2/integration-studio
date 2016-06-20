@@ -60,6 +60,7 @@ import org.wso2.developerstudio.datamapper.diagram.custom.action.LoadInputSchema
 import org.wso2.developerstudio.datamapper.diagram.custom.action.LoadOutputSchemaAction;
 import org.wso2.developerstudio.datamapper.diagram.custom.action.MultiplyConfigureAction;
 import org.wso2.developerstudio.datamapper.diagram.custom.action.ORConfigureAction;
+import org.wso2.developerstudio.datamapper.diagram.custom.action.PropertiesConfigureAction;
 import org.wso2.developerstudio.datamapper.diagram.custom.action.SetPrecisionConfigureAction;
 import org.wso2.developerstudio.datamapper.diagram.custom.action.SplitManyAction;
 import org.wso2.developerstudio.datamapper.diagram.custom.action.StartsWithConfigureAction;
@@ -77,6 +78,7 @@ import org.wso2.developerstudio.datamapper.diagram.edit.parts.MultiplyEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.OREditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.OutNodeEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.OutputEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.PropertiesEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.SetPrecisionEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.SplitEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.StartsWithEditPart;
@@ -171,6 +173,7 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
 		contextActions.put(SubstringEditPart.class, new SubstringConfigureAction(part));
 		contextActions.put(MultiplyEditPart.class, new MultiplyConfigureAction(part));
 		contextActions.put(SetPrecisionEditPart.class, new SetPrecisionConfigureAction(part));
+		contextActions.put(PropertiesEditPart.class, new PropertiesConfigureAction(part));
 
 		// Initialize new root record context sensitive actions.
 		addNewRootElementContextActions = new HashMap<Class<? extends ShapeNodeEditPart>, AbstractActionHandler>();

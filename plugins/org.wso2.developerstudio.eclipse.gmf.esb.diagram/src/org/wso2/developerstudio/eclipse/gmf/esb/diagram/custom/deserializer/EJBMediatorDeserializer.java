@@ -23,6 +23,7 @@ import org.apache.synapse.mediators.Value;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
+import org.eclipse.ui.forms.editor.FormEditor;
 import org.wso2.developerstudio.eclipse.gmf.esb.EJBMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.LogProperty;
@@ -93,6 +94,12 @@ public class EJBMediatorDeserializer extends
 		executeSetValueCommand(EJB_MEDIATOR__METHOD_ARGUMENTS, methodArgumentList);
 
 		return mediatorModel;
+	}
+
+	@Override
+	public EJBMediator createNode(FormEditor part, EJBMediatorExt object) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

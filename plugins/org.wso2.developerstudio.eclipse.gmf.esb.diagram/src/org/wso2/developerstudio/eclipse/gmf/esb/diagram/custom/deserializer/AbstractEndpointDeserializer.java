@@ -21,8 +21,10 @@ import java.util.Map;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.synapse.aspects.statistics.StatisticsConfigurable;
+import org.apache.synapse.config.Entry;
 import org.apache.synapse.endpoints.AbstractEndpoint;
 import org.apache.synapse.mediators.MediatorProperty;
+import org.eclipse.ui.forms.editor.FormEditor;
 import org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.EndPointAddressingVersion;
 import org.wso2.developerstudio.eclipse.gmf.esb.EndPointAttachmentOptimization;
@@ -31,6 +33,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EndPointProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.EndPointPropertyScope;
 import org.wso2.developerstudio.eclipse.gmf.esb.EndPointTimeOutAction;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
+import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
 import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.PropertyValueType;
 import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
@@ -191,6 +194,11 @@ public abstract class AbstractEndpointDeserializer extends AbstractEsbNodeDeseri
 			regkey.setKeyValue("");
 		}
 		return regkey;
+	}
+	
+	public EsbNode createNode(FormEditor part, Entry object) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }

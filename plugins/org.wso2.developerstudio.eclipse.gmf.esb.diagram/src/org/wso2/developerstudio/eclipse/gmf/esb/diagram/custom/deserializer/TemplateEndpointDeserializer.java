@@ -28,6 +28,7 @@ import org.apache.synapse.endpoints.AbstractEndpoint;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.emf.type.core.IElementType;
+import org.eclipse.ui.forms.editor.FormEditor;
 import org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.TemplateEndpoint;
@@ -66,4 +67,10 @@ public class TemplateEndpointDeserializer extends AbstractEsbNodeDeserializer<Ab
 
             return endPoint;
     }
+
+	@Override
+	public AbstractEndPoint createNode(FormEditor part, AbstractEndpoint object) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

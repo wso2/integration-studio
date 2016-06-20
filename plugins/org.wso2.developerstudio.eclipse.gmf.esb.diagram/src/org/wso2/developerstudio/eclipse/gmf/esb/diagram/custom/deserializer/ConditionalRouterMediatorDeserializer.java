@@ -25,6 +25,7 @@ import org.apache.synapse.mediators.AbstractMediator;
 import org.apache.synapse.mediators.filters.router.ConditionalRoute;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
+import org.eclipse.ui.forms.editor.FormEditor;
 import org.wso2.developerstudio.eclipse.gmf.esb.ConditionalRouteBranch;
 import org.wso2.developerstudio.eclipse.gmf.esb.ConditionalRouterMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
@@ -82,6 +83,12 @@ public class ConditionalRouterMediatorDeserializer extends
 		}
 
 		return mediatorModel;
+	}
+
+	@Override
+	public ConditionalRouterMediator createNode(FormEditor part, AbstractMediator object) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

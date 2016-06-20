@@ -24,6 +24,7 @@ import org.apache.synapse.mediators.AbstractMediator;
 import org.apache.synapse.mediators.Value;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
+import org.eclipse.ui.forms.editor.FormEditor;
 import org.wso2.developerstudio.eclipse.gmf.esb.CallTemplateParameter;
 import org.wso2.developerstudio.eclipse.gmf.esb.CloudConnectorOperation;
 import org.wso2.developerstudio.eclipse.gmf.esb.CloudConnectorOperationParamEditorType;
@@ -143,5 +144,11 @@ public class CloudConnectorOperationDeserializer extends AbstractEsbNodeDeserial
 		}
 		
 		return operationModel;
+	}
+
+	@Override
+	public CloudConnectorOperation createNode(FormEditor part, AbstractMediator object) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

@@ -28,6 +28,7 @@ import org.apache.synapse.mediators.Value;
 import org.apache.synapse.util.xpath.SynapseXPath;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
+import org.eclipse.ui.forms.editor.FormEditor;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.FastXSLTMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.KeyType;
@@ -103,6 +104,12 @@ public class FastXSLTMediatorDeserializer extends
 			}
 		}
 		return visualFastXSLTMediator;
+	}
+
+	@Override
+	public FastXSLTMediator createNode(FormEditor part, AbstractMediator object) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

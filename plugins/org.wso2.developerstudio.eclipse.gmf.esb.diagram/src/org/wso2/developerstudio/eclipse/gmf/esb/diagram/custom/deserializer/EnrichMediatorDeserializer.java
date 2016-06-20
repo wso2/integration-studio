@@ -25,6 +25,7 @@ import org.apache.synapse.util.xpath.SynapseXPath;
 
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
+import org.eclipse.ui.forms.editor.FormEditor;
 import org.wso2.developerstudio.eclipse.gmf.esb.EnrichMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.EnrichSourceInlineType;
 import org.wso2.developerstudio.eclipse.gmf.esb.EnrichSourceType;
@@ -214,6 +215,12 @@ public class EnrichMediatorDeserializer extends AbstractEsbNodeDeserializer<Abst
 		}
 		
 		return visualEnrichMediator;
+	}
+
+	@Override
+	public EnrichMediator createNode(FormEditor part, AbstractMediator object) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

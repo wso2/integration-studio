@@ -4,6 +4,7 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.synapse.mediators.AbstractMediator;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
+import org.eclipse.ui.forms.editor.FormEditor;
 import org.wso2.developerstudio.eclipse.gmf.esb.OAuthMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.*;
@@ -32,6 +33,12 @@ public class OAuthMediatorDeserializer extends AbstractEsbNodeDeserializer<Abstr
 		}
 		
 		return visualOauthMediator;
+	}
+
+	@Override
+	public OAuthMediator createNode(FormEditor part, AbstractMediator object) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

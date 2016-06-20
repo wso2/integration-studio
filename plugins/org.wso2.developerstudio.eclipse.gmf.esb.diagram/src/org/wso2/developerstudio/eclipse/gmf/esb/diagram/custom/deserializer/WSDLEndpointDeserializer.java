@@ -20,6 +20,7 @@ import org.apache.synapse.endpoints.AbstractEndpoint;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.emf.type.core.IElementType;
+import org.eclipse.ui.forms.editor.FormEditor;
 import org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.EndpointDiagramEndpointCompartment2EditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.EndpointDiagramEndpointCompartmentEditPart;
@@ -45,6 +46,12 @@ public class WSDLEndpointDeserializer extends AbstractEndpointDeserializer{
 		executeSetValueCommand(WSDL_END_POINT__SERVICE, wsdlEndpoint.getServiceName());
 		
 		return endPoint;
+	}
+
+	@Override
+	public AbstractEndPoint createNode(FormEditor part, AbstractEndpoint object) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

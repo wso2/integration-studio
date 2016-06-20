@@ -18,9 +18,14 @@ package org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer;
 
 import org.apache.synapse.config.Entry;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
+import org.eclipse.ui.forms.editor.FormEditor;
+import org.wso2.developerstudio.eclipse.gmf.esb.ArtifactType;
 import org.wso2.developerstudio.eclipse.gmf.esb.LocalEntry;
 import org.wso2.developerstudio.eclipse.gmf.esb.LocalEntryValueType;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.ESBFormEditor;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.LocalEntryFormPage;
+
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.*;
 import static org.apache.synapse.config.Entry.*;
 
@@ -49,5 +54,27 @@ public class LocalEntryDeserializer extends AbstractEsbNodeDeserializer<Entry, L
 
 		return localEntry;
 	}
+	
+	@Override
+	public LocalEntry createNode(FormEditor formEditor, Entry object) {
+		ESBFormEditor LocalEntryFormEditor = (ESBFormEditor) formEditor;
+		Object formPage = LocalEntryFormEditor.getFormPageForArtifact(ArtifactType.LOCAL_ENTRY);
+		if (formPage instanceof LocalEntryFormPage) {
+			LocalEntryFormPage localEntryPage = (LocalEntryFormPage) formPage;
+			localEntryPage.setLocalEntryName(object.getKey());
+			if (object.getType() == URL_SRC) {
+				localEntryPage.setLocalEntryType("URL");
+			}
+			if (object.getType() == INLINE_TEXT) {
+				localEntryPage.setLocalEntryType("TEXT");
+			}
+			if (object.getType() == INLINE_XML) {
+				localEntryPage.setLocalEntryType("XML");
+			}
+			localEntryPage.setLocalEntryValue(object.getValue().toString());
+		}
+		return (LocalEntry) super.createNode(formEditor, object);
+	}
 
+	
 }

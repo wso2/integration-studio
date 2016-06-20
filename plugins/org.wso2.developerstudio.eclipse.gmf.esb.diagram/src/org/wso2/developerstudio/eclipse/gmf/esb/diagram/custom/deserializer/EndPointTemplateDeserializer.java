@@ -29,6 +29,7 @@ import org.eclipse.gmf.runtime.diagram.ui.commands.SetBoundsCommand;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.emf.core.util.EObjectAdapter;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.ui.forms.editor.FormEditor;
 import org.wso2.developerstudio.eclipse.gmf.esb.EndpointDiagram;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
@@ -98,6 +99,12 @@ public class EndPointTemplateDeserializer extends AbstractEsbNodeDeserializer<or
 		}
 		
 		return templateModel;
+	}
+
+	@Override
+	public Template createNode(FormEditor part, org.apache.synapse.endpoints.Template object) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

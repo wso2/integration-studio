@@ -3,6 +3,8 @@ package org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer;
 import org.apache.synapse.mediators.AbstractMediator;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
+import org.eclipse.ui.forms.editor.FormEditor;
+import org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.DBReportMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.*;
@@ -20,6 +22,12 @@ public class DBReportMediatorDeserializer extends AbstractDBMediatorDeserializer
 		executeSetValueCommand(DB_REPORT_MEDIATOR__CONNECTION_USE_TRANSACTION, DBReportMediator.isUseTransaction());
 		
 		return visualDBReportMediator;
+	}
+
+	@Override
+	public AbstractSqlExecutorMediator createNode(FormEditor part, AbstractMediator object) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

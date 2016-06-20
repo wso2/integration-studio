@@ -25,6 +25,7 @@ import org.apache.synapse.rest.RESTConstants;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.emf.type.core.IElementType;
+import org.eclipse.ui.forms.editor.FormEditor;
 import org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.HttpMethodType;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.EndpointDiagramEndpointCompartment2EditPart;
@@ -68,6 +69,12 @@ public class HTTPEndpointDeserializer extends AbstractEndpointDeserializer{
         	executeSetValueCommand(HTTP_ENDPOINT__HTTP_METHOD, HttpMethodType.LEAVE_AS_IS);
         }	
 		return endPoint;
+	}
+
+	@Override
+	public AbstractEndPoint createNode(FormEditor part, AbstractEndpoint object) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

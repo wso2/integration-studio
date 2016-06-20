@@ -32,6 +32,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
+import org.eclipse.ui.forms.editor.FormEditor;
 import org.wso2.developerstudio.eclipse.gmf.esb.EndPoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
@@ -300,6 +301,12 @@ public class ProxyServiceDeserializer extends AbstractEsbNodeDeserializer<ProxyS
 		//TODO : deserialize other  properties
 		
 		return proxy;
+	}
+
+	@Override
+	public org.wso2.developerstudio.eclipse.gmf.esb.ProxyService createNode(FormEditor part, ProxyService object) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 

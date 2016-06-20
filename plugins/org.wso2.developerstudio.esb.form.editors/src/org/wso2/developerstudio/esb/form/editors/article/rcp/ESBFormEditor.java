@@ -27,6 +27,8 @@ import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.wso2.developerstudio.eclipse.gmf.esb.ArtifactType;
 import org.wso2.developerstudio.esb.forgm.editors.article.FormArticlePlugin;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.AddressEndpointFormPage;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.DefaultEndpointFormPage;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.HttpEndpointFormPage;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.WsdlEndpointFormPage;
 
 /**
@@ -61,14 +63,37 @@ public class ESBFormEditor extends FormEditor {
 	 */
 	protected void addPages() {
 		try {
-			if (artifactType == ArtifactType.LOCAL_ENTRY) {
-				addPage(new WsdlEndpointFormPage(this));
-			} 
+				if (artifactType == ArtifactType.LOCAL_ENTRY) {
+					addPage(new LocalEntryFormPage(this));	
+				}else if (artifactType == ArtifactType.MESSAGE_PROCESSOR) {
+					addPage(new MessageProcessorFormPage(this));
+				}else if (artifactType == ArtifactType.MESSAGE_STORE){
+					addPage(new MessageStoreFormPage(this));		
+				}else if (artifactType == ArtifactType.TASK){
+					addPage(new ScheduledTaskFormPage(this));		
+				}else if (artifactType == ArtifactType.TEMPLATE_ENDPOINT_DEFAULT) {
+					addPage(new DefaultEndpointFormPage(this));		
+				}else if (artifactType == ArtifactType.TEMPLATE_ENDPOINT_ADDRESS){
+					addPage(new AddressEndpointFormPage(this));		
+				}else if (artifactType == ArtifactType.TEMPLATE_ENDPOINT_WSDL){
+					addPage(new WsdlEndpointFormPage(this));		
+				}else if (artifactType == ArtifactType.TEMPLATE_ENDPOINT_HTTP){
+					addPage(new HttpEndpointFormPage(this));	
+				}
 
 		} catch (PartInitException e) {
 			//
 		}
 	}
+	
+	public Object getFormPageForArtifact(ArtifactType artifactType){
+		if (artifactType == ArtifactType.LOCAL_ENTRY) {
+			return new LocalEntryFormPage(this);
+		}
+		return artifactType; 
+		
+	}
+	
 
 	/*
 	 * (non-Javadoc)
@@ -77,6 +102,17 @@ public class ESBFormEditor extends FormEditor {
 	 * IProgressMonitor)
 	 */
 	public void doSave(IProgressMonitor monitor) {
+		/*if (p == null) {
+			return;
+		}
+		updateState(getEditorInput());
+		validateState(getEditorInput());
+		performSave(false, monitor);*/
+	}
+
+	private void performSave(boolean b, IProgressMonitor monitor) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	/*

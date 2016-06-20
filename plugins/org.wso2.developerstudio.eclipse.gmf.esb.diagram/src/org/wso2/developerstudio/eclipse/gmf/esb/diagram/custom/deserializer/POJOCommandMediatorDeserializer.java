@@ -22,6 +22,7 @@ import java.util.Map;
 import org.apache.synapse.mediators.AbstractMediator;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
+import org.eclipse.ui.forms.editor.FormEditor;
 import org.wso2.developerstudio.eclipse.gmf.esb.CommandMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.CommandProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.CommandPropertyContextAction;
@@ -128,6 +129,12 @@ public class POJOCommandMediatorDeserializer extends AbstractEsbNodeDeserializer
             m.getStaticSetterProperties().containsKey(propName) ||
             m.getMessageSetterProperties().containsKey(propName);
     }
+
+	@Override
+	public CommandMediator createNode(FormEditor part, AbstractMediator object) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 
 }

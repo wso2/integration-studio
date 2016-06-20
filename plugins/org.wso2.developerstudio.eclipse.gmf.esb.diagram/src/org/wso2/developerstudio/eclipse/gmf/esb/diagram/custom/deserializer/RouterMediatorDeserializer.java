@@ -23,6 +23,7 @@ import org.apache.synapse.mediators.eip.Target;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
+import org.eclipse.ui.forms.editor.FormEditor;
 import org.wso2.carbon.mediators.router.impl.Route;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
@@ -108,6 +109,12 @@ public class RouterMediatorDeserializer extends AbstractEsbNodeDeserializer<Abst
 			}
 		}
 		return routerModel;
+	}
+
+	@Override
+	public RouterMediator createNode(FormEditor part, AbstractMediator object) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

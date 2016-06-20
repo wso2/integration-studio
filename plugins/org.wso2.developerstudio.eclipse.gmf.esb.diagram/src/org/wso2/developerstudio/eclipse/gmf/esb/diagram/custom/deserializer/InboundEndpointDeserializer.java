@@ -65,6 +65,7 @@ import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
+import org.eclipse.ui.forms.editor.FormEditor;
 import org.wso2.developerstudio.eclipse.gmf.esb.ConsumerType;
 import org.wso2.developerstudio.eclipse.gmf.esb.ContentType;
 import org.wso2.developerstudio.eclipse.gmf.esb.Enable;
@@ -685,4 +686,11 @@ public class InboundEndpointDeserializer extends
         }
 
     }
+
+	@Override
+	public org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint createNode(FormEditor part,
+			InboundEndpoint object) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

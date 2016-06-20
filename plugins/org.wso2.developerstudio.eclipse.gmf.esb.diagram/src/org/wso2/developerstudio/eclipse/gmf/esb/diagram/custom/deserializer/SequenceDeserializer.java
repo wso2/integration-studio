@@ -30,6 +30,7 @@ import org.eclipse.core.runtime.Assert;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.emf.type.core.IElementType;
+import org.eclipse.ui.forms.editor.FormEditor;
 import org.eclipse.ui.part.FileEditorInput;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
@@ -248,6 +249,12 @@ public class SequenceDeserializer extends AbstractEsbNodeDeserializer<SequenceMe
 		ElementDuplicator duplicator = new ElementDuplicator(input.getFile().getProject());
 		//duplicator.duplicateEndPoints(rootCompartment, key);
 		
+	}
+
+	@Override
+	public EsbNode createNode(FormEditor part, SequenceMediator object) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

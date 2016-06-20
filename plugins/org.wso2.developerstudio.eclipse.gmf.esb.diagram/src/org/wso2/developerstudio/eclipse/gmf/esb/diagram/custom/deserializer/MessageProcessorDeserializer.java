@@ -25,6 +25,7 @@ import java.util.Set;
 import org.apache.commons.lang.StringUtils;
 import org.apache.synapse.message.processor.MessageProcessor;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
+import org.eclipse.ui.forms.editor.FormEditor;
 import org.wso2.developerstudio.eclipse.gmf.esb.EnableDisableState;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessorParameter;
@@ -542,5 +543,12 @@ public class MessageProcessorDeserializer
 				processor.getMessageStoreName());
 
 		return messageProcessor;
+	}
+
+	@Override
+	public org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor createNode(FormEditor part,
+			MessageProcessor object) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

@@ -20,6 +20,7 @@ import org.apache.synapse.mediators.AbstractMediator;
 import org.apache.synapse.mediators.eip.Target;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
+import org.eclipse.ui.forms.editor.FormEditor;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.ForEachMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.ForEachTarget;
@@ -60,6 +61,12 @@ public class ForEachMediatorDeserializer extends AbstractEsbNodeDeserializer<Abs
 		}
 
 		return mediatorModel;
+	}
+
+	@Override
+	public ForEachMediator createNode(FormEditor part, AbstractMediator object) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

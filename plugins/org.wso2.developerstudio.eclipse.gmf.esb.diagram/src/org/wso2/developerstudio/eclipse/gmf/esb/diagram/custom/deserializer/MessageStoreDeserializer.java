@@ -25,6 +25,7 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.synapse.message.store.MessageStore;
 import org.apache.synapse.message.store.impl.memory.InMemoryStore;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
+import org.eclipse.ui.forms.editor.FormEditor;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.JDBCConnectionInformationType;
 import org.wso2.developerstudio.eclipse.gmf.esb.JMSSpecVersion;
@@ -315,5 +316,11 @@ public class MessageStoreDeserializer
 		executeSetValueCommand(MESSAGE_STORE__STORE_NAME,store.getName());
 		
 		return messageStore;
+	}
+
+	@Override
+	public org.wso2.developerstudio.eclipse.gmf.esb.MessageStore createNode(FormEditor part, MessageStore object) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

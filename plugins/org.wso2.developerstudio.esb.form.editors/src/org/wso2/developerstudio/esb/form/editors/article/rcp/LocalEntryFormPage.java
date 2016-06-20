@@ -14,8 +14,8 @@
  * limitations under the License.
  */
 
-
 package org.wso2.developerstudio.esb.form.editors.article.rcp;
+
 import java.io.*;
 
 import org.eclipse.jface.dialogs.MessageDialog;
@@ -29,12 +29,19 @@ import org.eclipse.ui.forms.editor.*;
 import org.eclipse.ui.forms.events.*;
 import org.eclipse.ui.forms.widgets.*;
 import org.wso2.developerstudio.esb.forgm.editors.article.FormArticlePlugin;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.RealEndpointUtils;
+
 /**
  * 
  * To change the template for this generated type comment go to Window -
  * Preferences - Java - Code Generation - Code and Comments
  */
 public class LocalEntryFormPage extends FormPage {
+	
+	private String localEntryName;
+	private String localEntryValue;
+	private String localEntryType;
+	
 	/**
 	 * @param id
 	 * @param title
@@ -42,10 +49,11 @@ public class LocalEntryFormPage extends FormPage {
 	public LocalEntryFormPage(FormEditor editor) {
 		super(editor, "first", Messages.getString("FreeFormPage.label")); //$NON-NLS-1$ //$NON-NLS-2$
 	}
+
 	protected void createFormContent(IManagedForm managedForm) {
 		ScrolledForm form = managedForm.getForm();
 		FormToolkit toolkit = managedForm.getToolkit();
-		form.setText(Messages.getString("FreeFormPage.sectionTitle1")); //$NON-NLS-1$
+		form.setText(Messages.getString("Page.heading")); //$NON-NLS-1$
 		form.setBackgroundImage(FormArticlePlugin.getDefault().getImage(FormArticlePlugin.IMG_FORM_BG));
 		TableWrapLayout layout = new TableWrapLayout();
 		layout.leftMargin = 10;
@@ -56,81 +64,96 @@ public class LocalEntryFormPage extends FormPage {
 		td.align = TableWrapData.LEFT;
 		createFormTextSection(form, toolkit);
 	}
-	
-	private void createFormTextSection(final ScrolledForm form, FormToolkit toolkit) {
-		Section section =
-			toolkit.createSection(
-				form.getBody(),
-				Section.TWISTIE | Section.DESCRIPTION);
-		section.setActiveToggleColor(
-			toolkit.getHyperlinkGroup().getActiveForeground());
-		section.setToggleColor(
-			toolkit.getColors().getColor(FormColors.SEPARATOR));
-		toolkit.createCompositeSeparator(section);
-		FormText rtext = toolkit.createFormText(section, false);
-		section.setClient(rtext);
-		loadFormText(rtext, toolkit);
 
+	private void createFormTextSection(final ScrolledForm form, FormToolkit toolkit) {
+		
+		/* Error handling */
+		Section errorHandlingSection = createSection(form, toolkit, Messages.getString("Page.heading"));
+		
+		Composite localEntrySectionClient = toolkit.createComposite(errorHandlingSection);
+		localEntrySectionClient.setLayout(new TableWrapLayout());
+		
+		
+		toolkit.createLabel(form.getBody(), "Local Entry Name : ");
+		Text endpointSuspendErrorCodes = toolkit.createText(form.getBody(), getLocalEntryName());
+		endpointSuspendErrorCodes.setBackground(new Color(null, 229,236,253));
+		endpointSuspendErrorCodes.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+		
+		toolkit.createLabel(form.getBody(), "Local Entry Type :");
+		Combo localEntryTypeCombo = new Combo(form.getBody(), SWT.DROP_DOWN);
+		localEntryTypeCombo.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+		localEntryTypeCombo.setBackground(new Color(null, 229, 236, 253));
+		String[] items = { "text value", "xml value", "source URL value" };
+		localEntryTypeCombo.setItems(items);
+		localEntryTypeCombo.select(0);
+		
+		
+		toolkit.createLabel(form.getBody(), "Local Entry Value : ");
+		Text endpointSuspendInitialDuration = toolkit.createText(form.getBody(), getLocalEntryValue());
+		endpointSuspendInitialDuration.setBackground(new Color(null, 229,236,253));
+		endpointSuspendInitialDuration.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+		
+		errorHandlingSection.setClient(localEntrySectionClient);
+	}
+	
+	public static void addSeparator(final ScrolledForm form, FormToolkit toolkit, Composite client) {
+		Label padBefore = toolkit.createLabel(client, null);
+		TableWrapData padData = new TableWrapData();
+		padData.maxWidth = 0;
+		padBefore.setLayoutData(padData);
+		Label separator = new Label(client, SWT.SEPARATOR + SWT.HORIZONTAL);
+		TableWrapData separatorData = new TableWrapData();
+		separatorData.align = TableWrapData.FILL;
+		separatorData.grabHorizontal = true;
+		separatorData.maxHeight = 1;
+		separatorData.valign = TableWrapData.MIDDLE;
+		separator.setLayoutData(separatorData);
+		Label padAfter = toolkit.createLabel(client, null);
+		padAfter.setLayoutData(padData);
+	}
+	
+     public static Section createSection(final ScrolledForm form, FormToolkit toolkit, final String heading) {
+		
+		Section section = toolkit.createSection(form.getBody(), Section.TWISTIE | Section.EXPANDED);
+		section.setActiveToggleColor(toolkit.getHyperlinkGroup().getActiveForeground());
+		section.setToggleColor(toolkit.getColors().getColor(FormColors.SEPARATOR));
+		toolkit.createCompositeSeparator(section);
+		
 		section.addExpansionListener(new ExpansionAdapter() {
 			public void expansionStateChanged(ExpansionEvent e) {
 				form.reflow(false);
 			}
 		});
-		section.setExpanded(true);
-
-		section.setText(Messages.getString("FreeFormPage.sectionTitle2")); //$NON-NLS-1$
+		section.setText(heading);
 		
-		GridData data = new GridData(SWT.FILL, SWT.TOP, true, false, 2, 1);
-	    
-		TableWrapData td = new TableWrapData();
-		  td.colspan = 2;
-		  td = new TableWrapData(TableWrapData.FILL_GRAB);
-		  TableWrapData td1 = new TableWrapData();
-		  td1.colspan = 2;
-		  td1 = new TableWrapData(TableWrapData.FILL_GRAB);
-		  TableWrapData td3 = new TableWrapData();
-		  td3.colspan = 2;
-		  td3 = new TableWrapData(TableWrapData.FILL_GRAB);
-		 
-		  Label label = toolkit.createLabel(form.getBody(), "Local Entry Name :");
-		  Text text = toolkit.createText(form.getBody(), "");
-		  text.setBackground(new Color(null, 229,236,253));
-		  text.setLayoutData(td);
-		  
-		 
-		 Label label1 = toolkit.createLabel(form.getBody(), "Local Entry Type :");
-		 
-		 Combo localEntryTypeCombo = new Combo(form.getBody(), SWT.DROP_DOWN);
-		 localEntryTypeCombo.setLayoutData(td1);
-		 localEntryTypeCombo.setBackground(new Color(null, 229,236,253));
-		 String[] items = {"text value", "xml value", "source URL value"};
-		 localEntryTypeCombo.setItems(items);
-		  
-		    Label label2 = toolkit.createLabel(form.getBody(), "Local Entry Value :");
-		  Text text2 = toolkit.createText(form.getBody(), "");
-		  text2.setBackground(new Color(null, 229,236,253));
-		  text2.setLayoutData(td3);
-		 
-		section.setLayoutData(td);
+		return section;
+	}
+	
+	
+	public synchronized String getLocalEntryName() {
+		return localEntryName;
 	}
 
-	private void loadFormText(final FormText rtext, FormToolkit toolkit) {
-		rtext.addHyperlinkListener(new HyperlinkAdapter() {
-			public void linkActivated(HyperlinkEvent e) {
-				MessageDialog.openInformation(rtext.getShell(), Messages.getString("FreeFormPage.mtitle"),  //$NON-NLS-1$
-				Messages.getString("FreeFormPage.mtext") + e.getHref()); //$NON-NLS-1$
-			}
-		});
-		rtext.setHyperlinkSettings(toolkit.getHyperlinkGroup());
-		rtext.setImage("image1", FormArticlePlugin.getDefault().getImage(FormArticlePlugin.IMG_LARGE)); //$NON-NLS-1$
-		InputStream is = LocalEntryFormPage.class.getResourceAsStream("index.xml"); //$NON-NLS-1$
-		if (is!=null) {
-			rtext.setContents(is, true);
-			try {
-				is.close();
-			}
-			catch (IOException e) {
-			}
-		}
+	public synchronized void setLocalEntryName(String localEntryName) {
+		this.localEntryName = localEntryName;
 	}
+
+	public synchronized String getLocalEntryValue() {
+		return localEntryValue;
+	}
+
+	public synchronized void setLocalEntryValue(String localEntryValue) {
+		this.localEntryValue = localEntryValue;
+	}
+
+	public synchronized String getLocalEntryType() {
+		return localEntryType;
+	}
+
+	public synchronized void setLocalEntryType(String localEntryType) {
+		this.localEntryType = localEntryType;
+	}
+	
+	
+
 }

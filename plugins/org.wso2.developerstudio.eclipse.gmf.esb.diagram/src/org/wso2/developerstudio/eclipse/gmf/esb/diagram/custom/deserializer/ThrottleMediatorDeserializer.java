@@ -27,6 +27,7 @@ import org.apache.synapse.mediators.base.SequenceMediator;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
+import org.eclipse.ui.forms.editor.FormEditor;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.MediatorFlow;
 import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
@@ -254,6 +255,13 @@ public class ThrottleMediatorDeserializer extends AbstractEsbNodeDeserializer<Ab
 			
 			visualPolicyEntry.setProhibitPeriod(Integer.parseInt(prohibitTimePeriodElem.getText()));
 		}
+	}
+
+
+	@Override
+	public ThrottleMediator createNode(FormEditor part, AbstractMediator object) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

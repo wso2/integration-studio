@@ -24,6 +24,7 @@ import org.eclipse.core.runtime.Assert;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
+import org.eclipse.ui.forms.editor.FormEditor;
 import org.wso2.carbon.rule.common.Fact;
 import org.wso2.carbon.rule.common.Input;
 import org.wso2.carbon.rule.common.Output;
@@ -195,6 +196,12 @@ public class RuleMediatorDeserializer extends AbstractEsbNodeDeserializer<Abstra
 			}
 		}
 		return mediatorModel;
+	}
+
+	@Override
+	public RuleMediator createNode(FormEditor part, AbstractMediator object) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

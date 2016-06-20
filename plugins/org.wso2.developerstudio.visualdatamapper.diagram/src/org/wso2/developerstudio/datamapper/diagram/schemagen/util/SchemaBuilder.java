@@ -561,7 +561,12 @@ public class SchemaBuilder {
 			} else if (p.isBoolean()) {
 				return TypeEnum.BOOLEAN;
 			} else if (p.isString()) {
-				return TypeEnum.STRING;
+				String value = p.getAsString();
+				if (StringUtils.isNotEmpty(value)) {
+					return TypeEnum.STRING;
+				} else {
+					return TypeEnum.NULL;
+				}
 			}
 		}
 		return TypeEnum.UNDEFINED;

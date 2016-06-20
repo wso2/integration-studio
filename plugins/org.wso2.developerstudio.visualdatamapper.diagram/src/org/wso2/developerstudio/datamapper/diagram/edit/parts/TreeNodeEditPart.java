@@ -912,6 +912,21 @@ public class TreeNodeEditPart extends AbstractBorderedShapeEditPart {
 				if (StringUtils.isNotEmpty(value)) {
 					newName = newName + "  : [" + value.toUpperCase() + "]";
 				}
+				/*When the item id is not array or object eg:
+				<person>
+				  <phone>0112655655</phone>
+				  <phone>0112655655</phone>
+				</person>
+				the item type is string
+				*/
+				else{
+					String itemsType = getItemsType();
+					if(StringUtils.isNotEmpty(itemsType)){
+						if(!itemsType.equals(JSON_SCHEMA_ARRAY) && !itemsType.equals(JSON_SCHEMA_OBJECT)){
+							newName = newName + "  : [" + itemsType.toUpperCase() + "]";
+						}
+					}
+				}
 				if (StringUtils.isNotEmpty(nullableValue)) {
 					placeIcon(arrayImg, nullableArrayImg, nullableValue, nodeLabel);
 				} else {
@@ -1050,6 +1065,21 @@ public class TreeNodeEditPart extends AbstractBorderedShapeEditPart {
 				if (StringUtils.isNotEmpty(value)) {
 					newName = newName + "  : [" + value.toUpperCase() + "]";
 				}
+				/*When the item id is not array or object eg:
+				<person>
+				  <phone>0112655655</phone>
+				  <phone>0112655655</phone>
+				</person>
+				the item type is string
+				*/
+				else{
+					String itemsType = getItemsType();
+					if(StringUtils.isNotEmpty(itemsType)){
+						if(!itemsType.equals(JSON_SCHEMA_ARRAY) && !itemsType.equals(JSON_SCHEMA_OBJECT)){
+							newName = newName + "  : [" + itemsType.toUpperCase() + "]";
+						}
+					}
+				}
 				nodeLabel.setIcon(arrayImg.getImage());
 			} else if (type != null && type.equals(JSON_SCHEMA_OBJECT)) {
 				String value = getNodeValue(type);
@@ -1164,6 +1194,21 @@ public class TreeNodeEditPart extends AbstractBorderedShapeEditPart {
 				// If an element has values then display it with the name
 				if (StringUtils.isNotEmpty(value)) {
 					newName = newName + "  : [" + value.toUpperCase() + "]";
+				}
+				/*When the item id is not array or object eg:
+				<person>
+				  <phone>0112655655</phone>
+				  <phone>0112655655</phone>
+				</person>
+				the item type is string
+				*/
+				else{
+					String itemsType = getItemsType();
+					if(StringUtils.isNotEmpty(itemsType)){
+						if(!itemsType.equals(JSON_SCHEMA_ARRAY) && !itemsType.equals(JSON_SCHEMA_OBJECT)){
+							newName = newName + "  : [" + itemsType.toUpperCase() + "]";
+						}
+					}
 				}
 				if (StringUtils.isNotEmpty(nullableValue)) {
 					placeIcon(arrayImg, nullableArrayImg, nullableValue, nodeLabel);

@@ -81,7 +81,7 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
 		StringBuilder functionBuilder = new StringBuilder();
 		for (DMOperation operation : model.getOperationsList()) {
 			if (DataMapperOperatorType.CUSTOM_FUNCTION.equals(operation.getOperatorType())) {
-				functionBuilder.append(JS_FUNCTION_NAME + " " + addFunctionDefinition(operation));
+				functionBuilder.append(operation.getProperty(TransformerConstants.CUSTOM_FUNCTION_NAME) + " = " + addFunctionDefinition(operation));
 			}
 			functionBuilder.append("\n");
 		}
@@ -90,7 +90,7 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
 
 	private String addFunctionDefinition(DMOperation operation) {
 		StringBuilder functionBuilder = new StringBuilder();
-		functionBuilder.append(operation.getProperty(TransformerConstants.CUSTOM_FUNCTION_NAME));
+		functionBuilder.append("function");
 		String functionDefinition = (String) operation.getProperty(TransformerConstants.CUSTOM_FUNCTION_DEFINITION);
 		functionBuilder.append(functionDefinition.substring(functionDefinition.indexOf("(")));
 		return functionBuilder.toString();

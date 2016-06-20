@@ -12,7 +12,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="functionName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         defaultValueLiteral="customFunction"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="functionDefinition" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
-        defaultValueLiteral="customFunction($in1,$in2){ \n // do something \n return ($in1 + $in2);\n}"/>
+        defaultValueLiteral="customFunction(in1,in2){ return (in1 + in2);};"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="outputConnectorTag" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         defaultValueLiteral="Result"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="InputConnectorTag" upperBound="-1"

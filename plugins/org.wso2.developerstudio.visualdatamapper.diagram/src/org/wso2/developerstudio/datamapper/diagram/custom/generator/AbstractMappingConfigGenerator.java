@@ -31,60 +31,60 @@ import org.wso2.developerstudio.datamapper.diagram.custom.util.ScriptGenerationU
  */
 public abstract class AbstractMappingConfigGenerator implements MappingConfigGenerator {
 
-    protected static final String JS_FUNCTION_NAME = "$function";
+	protected static final String JS_FUNCTION_NAME = "function";
 
 	protected List<MappingOperation> populateOperationListFromModel(DataMapperDiagramModel model) {
-        ArrayList<MappingOperation> mappingOperationList = new ArrayList<>();
-        List<Integer> executionSeq = model.getExecutionSequence();
-        for (Integer operationIndex : executionSeq) {
-            List<DMVariable> inputVariables = getVariablesFromModel(model, operationIndex, DMVariableType.INPUT);
-            List<DMVariable> outputVariables = getVariablesFromModel(model, operationIndex, DMVariableType.OUTPUT);;
-            DMOperation operation = model.getOperationsList().get(operationIndex);
-            if (!outputVariables.isEmpty()) {
-                mappingOperationList.add(new MappingOperation(inputVariables, outputVariables, operation));
-            }
-        }
-        return mappingOperationList;
-    }
+		ArrayList<MappingOperation> mappingOperationList = new ArrayList<>();
+		List<Integer> executionSeq = model.getExecutionSequence();
+		for (Integer operationIndex : executionSeq) {
+			List<DMVariable> inputVariables = getVariablesFromModel(model, operationIndex, DMVariableType.INPUT);
+			List<DMVariable> outputVariables = getVariablesFromModel(model, operationIndex, DMVariableType.OUTPUT);
+			;
+			DMOperation operation = model.getOperationsList().get(operationIndex);
+			if (!outputVariables.isEmpty()) {
+				mappingOperationList.add(new MappingOperation(inputVariables, outputVariables, operation));
+			}
+		}
+		return mappingOperationList;
+	}
 
-    protected String getMainFunctionDefinition(String inRoot, String outRoot, String outputVariableRootName) {
-        StringBuilder mainFunctionBuilder = new StringBuilder();
-		mainFunctionBuilder.append(JS_FUNCTION_NAME + " map_S_");
-        mainFunctionBuilder.append(ScriptGenerationUtil.removeInvalidCharaters(inRoot));
-        mainFunctionBuilder.append("_S_");
-        mainFunctionBuilder.append(ScriptGenerationUtil.removeInvalidCharaters(outRoot));
-        mainFunctionBuilder.append("( )");
-        mainFunctionBuilder.append("{ ");
-        mainFunctionBuilder.append("\n");
-        mainFunctionBuilder.append("var " + ScriptGenerationUtil.removeInvalidCharaters(outputVariableRootName)
-                + "={};");
-        mainFunctionBuilder.append("\n");
-        return mainFunctionBuilder.toString();
-    }
+	protected String getMainFunctionDefinition(String inRoot, String outRoot, String outputVariableRootName) {
+		StringBuilder mainFunctionBuilder = new StringBuilder();
+		mainFunctionBuilder.append("map_S_"+ScriptGenerationUtil.removeInvalidCharaters(inRoot));
+		mainFunctionBuilder.append("_S_");
+		mainFunctionBuilder.append(ScriptGenerationUtil.removeInvalidCharaters(outRoot) + " = " + JS_FUNCTION_NAME);
+		mainFunctionBuilder.append("()");
+		mainFunctionBuilder.append("{ ");
+		mainFunctionBuilder.append("\n");
+		mainFunctionBuilder
+				.append("var " + ScriptGenerationUtil.removeInvalidCharaters(outputVariableRootName) + "={};");
+		mainFunctionBuilder.append("\n");
+		return mainFunctionBuilder.toString();
+	}
 
-    protected String getFunctionReturnString(String outRoot) {
-        StringBuilder functionBuilder = new StringBuilder();
-        functionBuilder.append("return " + ScriptGenerationUtil.removeInvalidCharaters(outRoot));
-        functionBuilder.append(";");
-        functionBuilder.append("\n");
-        functionBuilder.append("}");
-        return functionBuilder.toString();
-    }
+	protected String getFunctionReturnString(String outRoot) {
+		StringBuilder functionBuilder = new StringBuilder();
+		functionBuilder.append("return " + ScriptGenerationUtil.removeInvalidCharaters(outRoot));
+		functionBuilder.append(";");
+		functionBuilder.append("\n");
+		functionBuilder.append("};");
+		return functionBuilder.toString();
+	}
 
-    private List<DMVariable> getVariablesFromModel(DataMapperDiagramModel model, Integer operationIndex,
-            DMVariableType type) {
-        ArrayList<Integer> variableReferenceList;
-        if (DMVariableType.INPUT.equals(type)) {
-            variableReferenceList = model.getInputAdjList().get(operationIndex);
-        } else if (DMVariableType.OUTPUT.equals(type)) {
-            variableReferenceList = model.getOutputAdjList().get(operationIndex);
-        } else {
-            throw new IllegalArgumentException("Illegal Variable type for this operation : " + type);
-        }
-        List<DMVariable> variableList = new ArrayList<>();
-        for (Integer variableIndex : variableReferenceList) {
-            variableList.add(model.getVariablesArray().get(variableIndex));
-        }
-        return variableList;
-    }
+	private List<DMVariable> getVariablesFromModel(DataMapperDiagramModel model, Integer operationIndex,
+			DMVariableType type) {
+		ArrayList<Integer> variableReferenceList;
+		if (DMVariableType.INPUT.equals(type)) {
+			variableReferenceList = model.getInputAdjList().get(operationIndex);
+		} else if (DMVariableType.OUTPUT.equals(type)) {
+			variableReferenceList = model.getOutputAdjList().get(operationIndex);
+		} else {
+			throw new IllegalArgumentException("Illegal Variable type for this operation : " + type);
+		}
+		List<DMVariable> variableList = new ArrayList<>();
+		for (Integer variableIndex : variableReferenceList) {
+			variableList.add(model.getVariablesArray().get(variableIndex));
+		}
+		return variableList;
+	}
 }

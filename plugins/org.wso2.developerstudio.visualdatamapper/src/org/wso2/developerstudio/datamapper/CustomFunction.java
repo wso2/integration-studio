@@ -55,7 +55,7 @@ public interface CustomFunction extends Operator {
 
 	/**
 	 * Returns the value of the '<em><b>Function Definition</b></em>' attribute.
-	 * The default value is <code>"customFunction($in1,$in2){ \\n // do something \\n return ($in1 + $in2);\\n}"</code>.
+	 * The default value is <code>"customFunction(in1,in2){ return (in1 + in2);};"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Function Definition</em>' attribute isn't clear,
@@ -65,7 +65,7 @@ public interface CustomFunction extends Operator {
 	 * @return the value of the '<em>Function Definition</em>' attribute.
 	 * @see #setFunctionDefinition(String)
 	 * @see org.wso2.developerstudio.datamapper.DataMapperPackage#getCustomFunction_FunctionDefinition()
-	 * @model default="customFunction($in1,$in2){ \\n // do something \\n return ($in1 + $in2);\\n}"
+	 * @model default="customFunction(in1,in2){ return (in1 + in2);};"
 	 * @generated
 	 */
 	String getFunctionDefinition();

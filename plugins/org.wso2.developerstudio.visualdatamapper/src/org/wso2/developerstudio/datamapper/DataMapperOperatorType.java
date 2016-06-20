@@ -23,7 +23,7 @@ public enum DataMapperOperatorType implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #OPERATOR_VALUE
-	 * @generated
+	 * @generated NOT
 	 * @ordered
 	 */
 	OPERATOR(0, "OPERATOR", "OPERATOR"),

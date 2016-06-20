@@ -34,6 +34,8 @@ public class TransformerConstants {
     public static final String CONSTANT_NOT_OPERATOR = "!";
     public static final String CONSTANT_STRING_LENGTH = ".length";
     public static final String COMPARISON_OPERATOR_TYPE = "ComparisonOperatorType";
+    public static final String CUSTOM_FUNCTION_NAME ="CustomOperatorName";
+    public static final String CUSTOM_FUNCTION_DEFINITION ="CustomOperatorDefinition";
 
     
 }

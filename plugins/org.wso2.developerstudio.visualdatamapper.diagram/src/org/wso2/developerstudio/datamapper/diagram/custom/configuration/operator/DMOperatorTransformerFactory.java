@@ -136,8 +136,8 @@ public class DMOperatorTransformerFactory {
 			return new ConstantOperatorTransformer();
 		case COMPARE:
 			return new CompareOperatorTransformer();
-//		case CUSTOM_FUNCTION:
-//			return new CustomFunctionOperatorTransformer();
+		case CUSTOM_FUNCTION:
+			return new CustomFunctionOperatorTransformer();
 //		case PROPERTIES:
 //			return new PropertiesOperatorTransformer();
 		default:

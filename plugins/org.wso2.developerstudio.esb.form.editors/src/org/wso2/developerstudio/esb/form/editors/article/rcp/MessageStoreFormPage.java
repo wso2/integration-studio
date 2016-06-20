@@ -340,13 +340,30 @@ class WSO2MB implements MessageStore {
 
 	@Override
 	public void createConnectionSectionFields(ScrolledForm form, FormToolkit toolkit, Composite sectionClient) {
-		// TODO Auto-generated method stub
+		toolkit.createLabel(sectionClient, "Initial Context Factory");
+		Text wso2mb_initCtxFactory = toolkit.createText(sectionClient, "");
+		wso2mb_initCtxFactory.setBackground(new Color(null, 229,236,253));
+		wso2mb_initCtxFactory.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+		
+		toolkit.createLabel(sectionClient, "Queue Connection Factory");
+		Text wso2mb_QueueConnFactory = toolkit.createText(sectionClient, "");
+		wso2mb_QueueConnFactory.setBackground(new Color(null, 229,236,253));
+		wso2mb_QueueConnFactory.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
 		
 	}
 
 	@Override
 	public void createParameterSectionFields(ScrolledForm form, FormToolkit toolkit, Composite sectionClient) {
-		// TODO Auto-generated method stub
+		toolkit.createLabel(sectionClient, "JNDI Queue Name");
+		Text wso2mb_jndiQueueName = toolkit.createText(sectionClient, "");
+		wso2mb_jndiQueueName.setBackground(new Color(null, 229,236,253));
+		wso2mb_jndiQueueName.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+		
+		toolkit.createLabel(sectionClient, "JMS API Specification Version");
+		Combo wso2mb_apiVersion = new Combo(sectionClient, SWT.DROP_DOWN);
+		wso2mb_apiVersion.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+		String[] versions = {"1.1", "1.0"};
+		wso2mb_apiVersion.setItems(versions);
 		
 	}
 

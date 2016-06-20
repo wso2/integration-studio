@@ -16,20 +16,16 @@
 
 package org.wso2.developerstudio.esb.form.editors.article.rcp;
 
-import java.io.*;
 
-import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.*;
 import org.eclipse.swt.graphics.Color;
-import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.*;
 import org.eclipse.ui.forms.*;
 import org.eclipse.ui.forms.editor.*;
 import org.eclipse.ui.forms.events.*;
 import org.eclipse.ui.forms.widgets.*;
 import org.wso2.developerstudio.esb.forgm.editors.article.FormArticlePlugin;
-import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.RealEndpointUtils;
 
 /**
  * 
@@ -46,8 +42,11 @@ public class LocalEntryFormPage extends FormPage {
 	 * @param id
 	 * @param title
 	 */
+	
+	private Section selectedSection;
+	
 	public LocalEntryFormPage(FormEditor editor) {
-		super(editor, "first", Messages.getString("FreeFormPage.label")); //$NON-NLS-1$ //$NON-NLS-2$
+		super(editor, "localEntryForm", Messages.getString("LocalEntryFormPage.label"));
 	}
 
 	protected void createFormContent(IManagedForm managedForm) {
@@ -55,64 +54,106 @@ public class LocalEntryFormPage extends FormPage {
 		FormToolkit toolkit = managedForm.getToolkit();
 		form.setText(Messages.getString("Page.heading")); //$NON-NLS-1$
 		form.setBackgroundImage(FormArticlePlugin.getDefault().getImage(FormArticlePlugin.IMG_FORM_BG));
-		TableWrapLayout layout = new TableWrapLayout();
+		
+		ColumnLayout layout = new ColumnLayout();
 		layout.leftMargin = 10;
 		layout.rightMargin = 10;
-		form.getBody().setLayout(layout);
-		TableWrapData td;
-		td = new TableWrapData();
-		td.align = TableWrapData.LEFT;
-		createFormTextSection(form, toolkit);
+		layout.maxNumColumns = 2;
+		form.getBody().setLayout(layout);		
+		
+		createFormBasicSection(form, toolkit);
+	}
+	
+	private void createFormBasicSection(final ScrolledForm form, FormToolkit toolkit) {
+		Section section = createSection(form, toolkit, Messages.getString("LocalEntryFormPage.section.basic"));
+		
+		
+		Composite basicSectionClient = toolkit.createComposite(section);
+		basicSectionClient.setLayout(new TableWrapLayout());
+		
+		toolkit.createLabel(basicSectionClient, "Local Entry Name");
+		Text localEntryName = toolkit.createText(basicSectionClient, getLocalEntryName());
+		localEntryName.setBackground(new Color(null, 229,236,253));
+		localEntryName.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+		  
+		 
+		toolkit.createLabel(basicSectionClient, "Local Entry Type");
+		Combo localEntryType = new Combo(basicSectionClient, SWT.DROP_DOWN);
+		localEntryType.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+		String[] items = {"In-lined Text Entry", "In-lined XML Entry", "Source URL Entry"};
+		localEntryType.setItems(items);
+		localEntryType.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				
+				// clear previous selected section
+				if (selectedSection != null){
+					selectedSection.dispose();
+					selectedSection=null;
+				}
+
+				if (localEntryType.getText().equals("In-lined Text Entry")) {
+					createInlinedTextEntry(form,toolkit);					
+				} else if (localEntryType.getText().equals("In-lined XML Entry")) {
+					createInlinedXmlEntry(form,toolkit);
+				} else if (localEntryType.getText().equals("Source URL Entry")) {
+					createSourceUrlEntry(form,toolkit);
+				}
+			}
+		});
+		  
+	 	section.setClient(basicSectionClient);
 	}
 
-	private void createFormTextSection(final ScrolledForm form, FormToolkit toolkit) {
+	private void createInlinedTextEntry(final ScrolledForm form, FormToolkit toolkit) {
+		Section section = createSection(form, toolkit, Messages.getString("LocalEntryFormPage.section.textEntry"));
 		
-		/* Error handling */
-		Section errorHandlingSection = createSection(form, toolkit, Messages.getString("Page.heading"));
+		Composite client = toolkit.createComposite(section);
+		client.setLayout(new TableWrapLayout());
 		
-		Composite localEntrySectionClient = toolkit.createComposite(errorHandlingSection);
-		localEntrySectionClient.setLayout(new TableWrapLayout());
+		toolkit.createLabel(client, "Value Literal");
+		Text localEntryTextValue = toolkit.createText(client, getLocalEntryValue());
+		localEntryTextValue.setBackground(new Color(null, 229,236,253));
+		localEntryTextValue.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
 		
+		section.setClient(client);
 		
-		toolkit.createLabel(form.getBody(), "Local Entry Name : ");
-		Text endpointSuspendErrorCodes = toolkit.createText(form.getBody(), getLocalEntryName());
-		endpointSuspendErrorCodes.setBackground(new Color(null, 229,236,253));
-		endpointSuspendErrorCodes.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
-		
-		toolkit.createLabel(form.getBody(), "Local Entry Type :");
-		Combo localEntryTypeCombo = new Combo(form.getBody(), SWT.DROP_DOWN);
-		localEntryTypeCombo.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
-		localEntryTypeCombo.setBackground(new Color(null, 229, 236, 253));
-		String[] items = { "text value", "xml value", "source URL value" };
-		localEntryTypeCombo.setItems(items);
-		localEntryTypeCombo.select(0);
-		
-		
-		toolkit.createLabel(form.getBody(), "Local Entry Value : ");
-		Text endpointSuspendInitialDuration = toolkit.createText(form.getBody(), getLocalEntryValue());
-		endpointSuspendInitialDuration.setBackground(new Color(null, 229,236,253));
-		endpointSuspendInitialDuration.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
-		
-		errorHandlingSection.setClient(localEntrySectionClient);
+		selectedSection = section;
 	}
 	
-	public static void addSeparator(final ScrolledForm form, FormToolkit toolkit, Composite client) {
-		Label padBefore = toolkit.createLabel(client, null);
-		TableWrapData padData = new TableWrapData();
-		padData.maxWidth = 0;
-		padBefore.setLayoutData(padData);
-		Label separator = new Label(client, SWT.SEPARATOR + SWT.HORIZONTAL);
-		TableWrapData separatorData = new TableWrapData();
-		separatorData.align = TableWrapData.FILL;
-		separatorData.grabHorizontal = true;
-		separatorData.maxHeight = 1;
-		separatorData.valign = TableWrapData.MIDDLE;
-		separator.setLayoutData(separatorData);
-		Label padAfter = toolkit.createLabel(client, null);
-		padAfter.setLayoutData(padData);
+	private void createInlinedXmlEntry(final ScrolledForm form, FormToolkit toolkit) {
+		Section section = createSection(form, toolkit, Messages.getString("LocalEntryFormPage.section.xmlEntry"));
+		
+		Composite client = toolkit.createComposite(section);
+		client.setLayout(new TableWrapLayout());
+
+		toolkit.createLabel(client, "Value XML");
+		Text localEntryXmlValue = toolkit.createText(client, "");
+		localEntryXmlValue.setBackground(new Color(null, 229,236,253));
+		localEntryXmlValue.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+		
+		section.setClient(client);
+		
+		selectedSection = section;
 	}
 	
-     public static Section createSection(final ScrolledForm form, FormToolkit toolkit, final String heading) {
+	private void createSourceUrlEntry(final ScrolledForm form, FormToolkit toolkit) {
+		Section section = createSection(form, toolkit, Messages.getString("LocalEntryFormPage.section.urlEntry"));
+
+		Composite client = toolkit.createComposite(section);
+		client.setLayout(new TableWrapLayout());
+		
+		toolkit.createLabel(client, "Value URL");
+		Text localEntryUrlValue = toolkit.createText(client, "");
+		localEntryUrlValue.setBackground(new Color(null, 229,236,253));
+		localEntryUrlValue.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+		
+		section.setClient(client);
+		
+		selectedSection = section;
+	}
+	
+	private Section createSection(final ScrolledForm form, FormToolkit toolkit, final String heading) {
 		
 		Section section = toolkit.createSection(form.getBody(), Section.TWISTIE | Section.EXPANDED);
 		section.setActiveToggleColor(toolkit.getHyperlinkGroup().getActiveForeground());
@@ -128,7 +169,6 @@ public class LocalEntryFormPage extends FormPage {
 		
 		return section;
 	}
-	
 	
 	public synchronized String getLocalEntryName() {
 		return localEntryName;
@@ -154,6 +194,4 @@ public class LocalEntryFormPage extends FormPage {
 		this.localEntryType = localEntryType;
 	}
 	
-	
-
 }

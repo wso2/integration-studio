@@ -51,7 +51,7 @@ public class DefaultEndpointFormPage extends FormPage {
 	protected void createFormContent(IManagedForm managedForm) {
 		ScrolledForm form = managedForm.getForm();
 		FormToolkit toolkit = managedForm.getToolkit();
-		form.setText(Messages.getString("WsdlEndpointPage.sectionMainTitle")); 
+		form.setText(Messages.getString("DefaultEndpointPage.sectionMainTitle")); 
 		form.setBackgroundImage(FormArticlePlugin.getDefault().getImage(FormArticlePlugin.IMG_FORM_BG));
 
 		ColumnLayout layout = new ColumnLayout();
